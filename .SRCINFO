@@ -1,6 +1,6 @@
 pkgbase = gitilante
 	pkgdesc = A focused Git GUI for diffs, hunks and history
-	pkgver = 0.8.3
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://gitlab.com/rutilante/gitilante
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = gitilante
 	depends = libadwaita
 	optdepends = git-lfs: for repositories using Git LFS
 	options = !lto
-	source = gitilante-0.8.3.tar.gz::https://gitlab.com/rutilante/gitilante/-/archive/v0.8.3/gitilante-v0.8.3.tar.gz
-	sha256sums = 948e007d25fcc43d09382b46f2e0c2749b20f81a4a951abe2b417d55f758d415
+	source = gitilante-0.9.0.tar.gz::https://gitlab.com/rutilante/gitilante/-/archive/v0.9.0/gitilante-v0.9.0.tar.gz
+	sha256sums = ecca30bd966e7f7e293323ef436e82a679d5e313f47be4197662674e7b2dedd5
 
 pkgname = gitilante

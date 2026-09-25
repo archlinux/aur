@@ -4,7 +4,7 @@
 # do not edit the generated PKGBUILD by hand.
 
 pkgname=gitilante
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A focused Git GUI for diffs, hunks and history"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('cargo')
 checkdepends=('xorg-server-xvfb')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/rutilante/gitilante/-/archive/v$pkgver/gitilante-v$pkgver.tar.gz")
-sha256sums=('948e007d25fcc43d09382b46f2e0c2749b20f81a4a951abe2b417d55f758d415')
+sha256sums=('ecca30bd966e7f7e293323ef436e82a679d5e313f47be4197662674e7b2dedd5')
 
 prepare() {
     cd "$srcdir/$pkgname-v$pkgver"
