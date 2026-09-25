@@ -1,13 +1,13 @@
 # Maintainer: Hultwl <Hultwl@users.noreply.github.com>
 pkgname=rufux-git
-pkgver=2.0.tauri.test1.r1.gfb32ab5
+pkgver=2.1.r0.g54759a4
 pkgrel=1
 pkgdesc="Rufux — bootable USB creator for Linux (Rufus port, latest git)"
 arch=('x86_64')
 url="https://github.com/Hultwl/Rufux"
 license=('GPL-3.0-or-later')
-depends=('qt6-base' 'hicolor-icon-theme' 'openssl' 'udisks2' 'util-linux')
-makedepends=('git' 'cmake' 'gcc' 'pkgconf' 'gettext' 'qt6-tools')
+depends=('webkit2gtk-4.1' 'hicolor-icon-theme' 'openssl' 'udisks2' 'util-linux')
+makedepends=('git' 'cmake' 'gcc' 'pkgconf' 'gettext' 'cargo')
 optdepends=(
   'dosfstools: FAT32 formatting (mkfs.vfat)'
   'ntfsprogs: NTFS formatting (mkfs.ntfs)'
@@ -38,6 +38,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
+  cargo build --release --manifest-path Rufux/gui-tauri/Cargo.toml
 }
 
 check() {
@@ -46,4 +47,5 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  install -Dm755 Rufux/gui-tauri/target/release/rufux-gui "$pkgdir/usr/bin/rufux-gui"
 }
