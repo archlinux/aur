@@ -1,11 +1,10 @@
 # lito.lock
 _spirv_reflect_commit=355785128c1b6ba808e3a7d0e344814fe6cff502
-_rstd_version=0.1.2
-_vvk_commit=117626d9bfc6c1de0f2957f7fa42b47935bb6af8
-_wavsen_commit=294cf8156e5130122bdfca65e0401aee7a29e6d8
+_wavsen_commit=73be92f4f9db0179e93e3f28d62077a2aed77a8e
+_vrento_commit=a781859c940325a909c77613b5b2795cc3d65e48
 
 pkgname=open-wallpaper-engine
-pkgver=0.2.10
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Open source scene renderer, mostly for linux."
 arch=(x86_64)
@@ -14,36 +13,31 @@ license=(GPL-2.0-only)
 depends=(libgcc libstdc++ glibc lz4 freetype2 ffmpeg vulkan-icd-loader libglvnd
          "waywallen>=0.3.8" cef glslang fontconfig quickjs-ng glfw wayland)
 makedepends=(lito "cmake>4.3.1" ninja git "clang>=22" lld llvm eigen vulkan-headers
-             waywallen-display vulkan-memory-allocator)
+             waywallen-display)
 source=("git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v$pkgver"
         "git+https://github.com/hypengw/SPIRV-Reflect.git#commit=$_spirv_reflect_commit"
-        "git+https://github.com/litocpp/rstd.git#tag=v$_rstd_version"
-        "git+https://github.com/litocpp/vvk.git#commit=$_vvk_commit"
         "git+https://github.com/hypengw/wavsen.git#commit=$_wavsen_commit"
+        "git+https://github.com/vecren/vrento.git#commit=$_vrento_commit"
         "0001-lito-Use-system-cef.patch")
-sha256sums=('339321965b9f606a0aae4e7cd7dc34377ad74f35bda7eaa20563e75521d08278'
+sha256sums=('7891af872de820cb8d427f9b4086f7849a1528d0dac1f96ecd81a336e17ec1d3'
             'c033a38ac4e58e4a87ad43a84eb5e0fbe312c82b161a1fe5e38890751636f63f'
-            '9d7e6a4cbf1eb690e7d64af05dd7f9fc3730bf817b1152bbd99892f20101ce2d'
-            'f49079a367c7759207d56d49789f5f7c0bfa99b1a3d204566aeceddd9f097b67'
-            '3c737584b5e073ee85ad0f81203971d1bd1da1ad612fbaad724e063e1aa58aa4'
-            'b9ad138e621d6e5962e9f8bc701e947103ad36fd0f9889c53eb24f4abecc4d78')
+            '9f9212efdaab0379701eab6634cfd1c051ffe875f4a60b8d7a11d1c99540f85b'
+            'f2f5c212bfae9f6331d25840f76ddd903ae6c22a772ae536b362c36b5bbaa3d2'
+            '9b775fdccb4a86139fe5c8e50b8dee032b6aa6e11afdedc0f8798c8703393e5a')
 
 prepare() {
     cd "$srcdir/$pkgname"
     patch -Np1 -i ../0001-lito-Use-system-cef.patch
     mkdir -p .lito
     cat > .lito/config.toml <<EOF
-[patch."https://github.com/litocpp/rstd.git"]
-path = "../rstd"
-
 [patch."https://github.com/hypengw/wavsen.git"]
 path = "../wavsen"
 
-[patch."https://github.com/litocpp/vvk.git"]
-path = "../vvk"
-
 [patch."https://github.com/hypengw/SPIRV-Reflect.git"]
 path = "../SPIRV-Reflect"
+
+[patch."https://github.com/vecren/vrento.git"]
+path = "../vrento"
 
 [tools.cmake.overrides.Eigen3]
 source = "installed"
@@ -56,10 +50,8 @@ source = "installed"
 
 [tools.cmake.overrides.CEF]
 source = "installed"
-
-[tools.cmake.overrides.VulkanMemoryAllocator]
-source = "installed"
 EOF
+    lito fetch --all-features
 }
 build() {
     # https://github.com/llvm/llvm-project/issues/121709

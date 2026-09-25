@@ -1,32 +1,30 @@
-From 053edd6896735d0254a44628bdcd3caf812d4426 Mon Sep 17 00:00:00 2001
+From fe5a6cc7f5e96041cffa74de6c6738adbfd29c87 Mon Sep 17 00:00:00 2001
 From: Zhang Hua <zhanghua.00@qq.com>
-Date: Sat, 12 Sep 2026 21:34:57 +0800
+Date: Fri, 25 Sep 2026 20:00:02 +0800
 Subject: [PATCH] lito: Use system cef
 
 ---
- viewer/WebViewer/WebViewer.cpp                                | 4 ++--
- waywallen/WebRenderer/install.lua                             | 2 +-
- waywallen/WebRenderer/web_entry.cpp                           | 4 ++--
- .../plugins/org.waywallen.open-wallpaper-engine/install.lua   | 2 +-
- 4 files changed, 6 insertions(+), 6 deletions(-)
+ viewer/WebViewer/WebViewer.cpp                                  | 2 +-
+ waywallen/WebRenderer/install.lua                               | 2 +-
+ waywallen/WebRenderer/web_entry.cpp                             | 2 +-
+ .../plugins/org.waywallen.open-wallpaper-engine/install.lua     | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/viewer/WebViewer/WebViewer.cpp b/viewer/WebViewer/WebViewer.cpp
-index 1bbdd8c..ac7ca95 100644
+index 2b6af42..7ac332c 100644
 --- a/viewer/WebViewer/WebViewer.cpp
 +++ b/viewer/WebViewer/WebViewer.cpp
-@@ -280,8 +280,8 @@ int main(int argc, char** argv) {
-     auto exe_dir = viewer::ExecutableDir(argv[0]);
+@@ -300,7 +300,7 @@ int main(int argc, char** argv) {
+         return 1;
+     }
+ 
+-    auto exe_dir = viewer::ExecutableDir(argv[0]);
++    auto exe_dir = rstd::path::PathBuf::from("/usr/lib/cef"_str);
  
      weweb::BrowserHost::InitOptions opts;
--    opts.resources_dir = exe_dir;
--    opts.locales_dir   = exe_dir / "locales";
-+    opts.resources_dir = exe_dir / ".." / "lib" / "cef";
-+    opts.locales_dir   = exe_dir / ".." / "lib" / "cef" / "locales";
- #if __is_target_os(macos)
-     if (auto framework_root = CefFrameworkRoot(exe_dir); ! framework_root.empty()) {
-         opts.resources_dir = framework_root / "Resources";
+     opts.resources_dir = exe_dir.clone();
 diff --git a/waywallen/WebRenderer/install.lua b/waywallen/WebRenderer/install.lua
-index bd61600..9798084 100644
+index bd61600..a0fe6f3 100644
 --- a/waywallen/WebRenderer/install.lua
 +++ b/waywallen/WebRenderer/install.lua
 @@ -2,7 +2,7 @@ lito.install({
@@ -34,25 +32,23 @@ index bd61600..9798084 100644
          {
              target = { kind = "bin", name = "waywallen-weweb-renderer" },
 -            destination = "lib/weweb/waywallen-weweb-renderer",
-+            destination = "bin/waywallen-weweb-renderer",
++            destination = "bin/weweb/waywallen-weweb-renderer",
              runtime_search = {
                  {
                      external_asset = {
 diff --git a/waywallen/WebRenderer/web_entry.cpp b/waywallen/WebRenderer/web_entry.cpp
-index 269a980..27a7309 100644
+index 74ef247..ac128f6 100644
 --- a/waywallen/WebRenderer/web_entry.cpp
 +++ b/waywallen/WebRenderer/web_entry.cpp
-@@ -696,8 +696,8 @@ int run(int argc, char** argv) {
+@@ -696,7 +696,7 @@ int run(int argc, char** argv) {
+     });
+ 
      // BrowserHost::Init wants resources / locales relative to argv[0].
-     auto                            exe_dir = executable_dir(argv[0]);
+-    auto                            exe_dir = executable_dir(argv[0]);
++    auto                            exe_dir = rstd::path::PathBuf::from("/usr/lib/cef"_str);
      weweb::BrowserHost::InitOptions ho;
--    ho.resources_dir = exe_dir;
--    ho.locales_dir   = exe_dir / "locales";
-+    ho.resources_dir = exe_dir / ".." / "lib" / "cef";
-+    ho.locales_dir   = exe_dir / ".." / "lib" / "cef" / "locales";
-     ho.cache_dir     = derive_cache_dir(opts.workshop_id);
-     if (opts.remote_debugging_port > i32()) {
-         ho.enable_remote_debugging = true;
+     ho.resources_dir = exe_dir.clone();
+     ho.locales_dir   = exe_dir.join("locales"_str);
 diff --git a/waywallen/plugins/org.waywallen.open-wallpaper-engine/install.lua b/waywallen/plugins/org.waywallen.open-wallpaper-engine/install.lua
 index cab9494..98d4f8b 100644
 --- a/waywallen/plugins/org.waywallen.open-wallpaper-engine/install.lua
