@@ -1,0 +1,19 @@
+pkgbase = gtksourceviewmm3
+	pkgdesc = C++ bindings for the gtksourceview library (legacy 3.0 API, gtksourceviewmm-3.0 module)
+	pkgver = 3.18.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/gtksourceviewmm
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = mm-common
+	makedepends = gtkmm3-docs
+	makedepends = pkgconf
+	depends = gtkmm3
+	depends = gtksourceview3
+	depends = glibmm
+	provides = gtksourceviewmm-3.0
+	source = git+https://gitlab.gnome.org/GNOME/gtksourceviewmm.git#tag=3.18.0
+	sha512sums = SKIP
+
+pkgname = gtksourceviewmm3
