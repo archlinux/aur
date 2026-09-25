@@ -1,9 +1,12 @@
 post_install() {
   printf '%s\n' \
     'Seekey needs permission to read /dev/input/event*.' \
-    'Arch already assigns these devices to group input with mode 0660.' \
-    'Add your desktop user to the input group, then log out and back in:' \
+    'Its udev rule grants access to the active local login session.' \
+    'No persistent input-group membership is normally required.' \
+    '' \
+    'If your session does not support uaccess, use the fallback:' \
     '  sudo usermod -aG input <username>' \
+    'then log out and back in.' \
     '' \
     'Warning: input-group members can read all keyboard and mouse events.'
 }

@@ -1,0 +1,2 @@
+# Seekey: prefer an active-session ACL, with the input group as fallback.
+KERNEL=="event*", SUBSYSTEM=="input", TAG+="uaccess", GROUP="input", MODE="0660"
