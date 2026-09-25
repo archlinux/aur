@@ -16,7 +16,7 @@
 set -u
 _pkgname='cpdf'
 pkgname="${_pkgname}"
-pkgver='2.9'
+pkgver='2.9.2'
 pkgrel=1
 pkgdesc='manipulate PDF files including merge, encrypt, decrypt, scale, crop, rotate, bookmarks, stamp, logos, page numbers'
 arch=('x86_64' 'i686')
@@ -55,8 +55,8 @@ else
   pkgdesc="${pkgdesc//##/cpdf}"
 fi
 unset _srcfile _srcdirname
-md5sums=('14ad4b9168a0d6caebe37697540520d9')
-sha256sums=('944e2e578fc9653ccf09df4cf0c0b60beb3fb702ddd5b76640624d7324ae3cdb')
+md5sums=('4eabc38b55cd0e8075ea930714787aba')
+sha256sums=('bfcabf3a1e1a55840df55229afc992873b311ae50bd5a9b4135c9aef7ef91f0e')
 
 _pkgver_disabled() {
   local -; set -u
