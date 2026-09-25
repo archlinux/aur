@@ -7,3 +7,4 @@
 !puck.desktop
 
 !.gitignore
+!.nvchecker.toml

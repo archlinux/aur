@@ -1,0 +1,8 @@
+[puck]
+source = "regex"
+url = "https://www.kintip.net/"
+regex = '.*Puck-([\d+|\.]+).*'
+
+
+prefix = "v"
+
