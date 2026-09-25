@@ -3,7 +3,7 @@
 
 _name="srt"
 pkgname="lib32-${_name}"
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="Secure Reliable Transport library (32-bit)"
 arch=(
@@ -31,7 +31,7 @@ _pkgsrc="${_url##*/}"
 source=(
   "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}"
 )
-b2sums=('a14d9fb011c1276454d825ee4a52fa7738d5532ee9a131bd21398ba300db99c22a038dd808da11affdfa1deec90db87e9924f01d4f32c8a56c43a4c95d29aead')
+b2sums=('6287246e06dcc8d9e9ed7a36df1826f12ea2a15e87a9cca8845744bf127292735861d5c8818b94428d5bd07b28ccf7602f092fe1e4ccfd479bceb8446281296e')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -47,7 +47,7 @@ build() {
     -B "${_pkgsrc}/build"
     -S "${_pkgsrc}"
     -G 'Unix Makefiles'
-    -W no-dev
+    -W no-author
     -D CMAKE_BUILD_TYPE:STRING='None'
     -D CMAKE_INSTALL_PREFIX:PATH='/usr'
     -D CMAKE_INSTALL_LIBDIR='lib32'
