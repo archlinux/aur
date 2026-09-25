@@ -10,8 +10,8 @@ _pkgname=python-croniter
 pkgname="$_pkgname-git"
 _name="${_pkgname#python-}"
 pkgdesc='Parses cron schedules to iterate over datetime objects (development version)'
-pkgver=6.2.4.r3.g70564f2
-pkgrel=2
+pkgver=6.2.4.r17.g4be99c3
+pkgrel=1
 changelog="$_pkgname.changelog"
 url='https://github.com/pallets-eco/croniter'
 arch=('any')
@@ -47,7 +47,7 @@ prepare() {
 
   # Relax requirements
   sed -i 's/==/>=/g' pyproject.toml
-  sed -i 's/hatchling>=1.31.0/hatchling>=1.30.1/g' pyproject.toml
+  sed -i 's/hatchling>=1.32.4/hatchling>=1.30.1/g' pyproject.toml
 }
 
 pkgver() {
