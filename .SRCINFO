@@ -1,15 +1,15 @@
 pkgbase = r-tidyseurat
 	pkgdesc = Brings Seurat to the Tidyverse
-	pkgver = 0.8.0
-	pkgrel = 2
+	pkgver = 0.8.10
+	pkgrel = 1
 	url = https://cran.r-project.org/package=tidyseurat
 	arch = any
 	license = GPL-3.0-only
 	checkdepends = r-testthat
 	depends = r-cli
 	depends = r-dplyr
-	depends = r-ellipsis
 	depends = r-fansi
+	depends = r-generics
 	depends = r-ggplot2
 	depends = r-lifecycle
 	depends = r-magrittr
@@ -28,10 +28,10 @@ pkgbase = r-tidyseurat
 	optdepends = r-ggally
 	optdepends = r-knitr
 	optdepends = r-markdown
-	optdepends = r-singler
+	optdepends = r-rbibutils
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/tidyseurat_0.8.0.tar.gz
-	md5sums = 844d068094e1d6b8e025cddc65eb336b
-	b2sums = d53d63e8c75f2ca1e68a9cc9ed8a6dbf20714089cb67bd2c287f07115fa2890555bb4ca50edd58cd6b1f709de5950fb9b60b7bcb5ebd6aca1ac23248e23dff25
+	source = https://cran.r-project.org/src/contrib/tidyseurat_0.8.10.tar.gz
+	md5sums = ded8af83e9d864050a57418bd3b63158
+	b2sums = fc68947373fa523ed7e1d7678e5ea38d61bd3b819ce6bf5d3aed73a5d67edfa4a532873c77d268d4b50f5a3045fd2ce8680948e8188094ede8e5a7d6118f88c1
 
 pkgname = r-tidyseurat

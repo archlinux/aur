@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=tidyseurat
-_pkgver=0.8.0
+_pkgver=0.8.10
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Brings Seurat to the Tidyverse"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -12,8 +12,8 @@ license=('GPL-3.0-only')
 depends=(
   r-cli
   r-dplyr
-  r-ellipsis
   r-fansi
+  r-generics
   r-ggplot2
   r-lifecycle
   r-magrittr
@@ -37,12 +37,12 @@ optdepends=(
   r-ggally
   r-knitr
   r-markdown
-  r-singler
+  r-rbibutils
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('844d068094e1d6b8e025cddc65eb336b')
-b2sums=('d53d63e8c75f2ca1e68a9cc9ed8a6dbf20714089cb67bd2c287f07115fa2890555bb4ca50edd58cd6b1f709de5950fb9b60b7bcb5ebd6aca1ac23248e23dff25')
+md5sums=('ded8af83e9d864050a57418bd3b63158')
+b2sums=('fc68947373fa523ed7e1d7678e5ea38d61bd3b819ce6bf5d3aed73a5d67edfa4a532873c77d268d4b50f5a3045fd2ce8680948e8188094ede8e5a7d6118f88c1')
 
 build() {
   mkdir build
