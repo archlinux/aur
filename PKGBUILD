@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=bsdutils
-pkgver=13.2
-pkgrel=3
+pkgver=14.3
+pkgrel=1
 pkgdesc="Alternative to GNU coreutils using software from FreeBSD"
 arch=('i686' 'x86_64')
 url="https://codeberg.org/dcantrell/bsdutils"
@@ -10,7 +10,7 @@ license=('BSD-3-Clause')
 depends=('glibc' 'libgcc' 'libstdc++' 'libedit' 'libxo' 'ncurses' 'openssl')
 makedepends=('byacc' 'meson')
 source=("$pkgname-$pkgver-src.tar.gz::https://codeberg.org/dcantrell/bsdutils/archive/v${pkgver}.tar.gz")
-sha256sums=('4547990309afe686c6f36c2a4f7ac5806e0064b182dd1f93f52dda7661979a3c')
+sha256sums=('047d7907fcf52deb0981169180d18c80e600918ecbb3bc84718bf63500b20550')
 
 
 build() {
