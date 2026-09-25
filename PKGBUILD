@@ -11,7 +11,7 @@ depends=('nodejs' 'chromium')
 makedepends=('npm')
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ed396c0dbd095c911603a98f1d793896e7c20a1a0ed2466a5205f1377cddda85')
+sha256sums=('2fe40533a71233c5eb2001a8e80ca0cf467e25c3e565151db7026b7742532c6c')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
