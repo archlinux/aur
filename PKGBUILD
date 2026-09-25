@@ -3,7 +3,7 @@
 
 _name="aom"
 pkgname="lib32-${_name}"
-pkgver=3.15.0
+pkgver=3.15.1
 pkgrel=1
 pkgdesc="Alliance for Open Media video codec (32-bit)"
 arch=(
@@ -30,7 +30,7 @@ source=(
   "https://storage.googleapis.com/aom-releases/${_pkgsrc}.tar.gz"
   "https://storage.googleapis.com/aom-releases/${_pkgsrc}.tar.gz.asc"
 )
-b2sums=('f6952a94bb9d503af790723dad1166f2ae3252a9eb3daa882aa3111009fb3110b101b854d1a420fdd8aa02e4e14da16c833835337d2cca5a2dd2b336a3fbd3d3'
+b2sums=('34022872af58c52183f7f371e7518faa47cd87b58387b7ee07ef24acf9af60207cb0f0091a25105a9699a83d4039d3cb4b60221ec48a8b72ab1f95d5af5a4575'
         'SKIP')
 validpgpkeys=(
   'B002F08B74A148DAA01F7123A48E86DB0B830498' # AOMedia release signing key <av1-discuss@aomedia.org>
@@ -51,7 +51,7 @@ build() {
     -B "${_pkgsrc}/build"
     -S "${_pkgsrc}"
     -G 'Unix Makefiles'
-    -W no-dev
+    -W no-author
     # Upstream would like Release, adding -O3 and removing assertions
     # https://gitlab.archlinux.org/archlinux/packaging/packages/aom/-/issues/1
     -D CMAKE_BUILD_TYPE:STRING='Release'
