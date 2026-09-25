@@ -1,0 +1,18 @@
+pkgbase = python-keepassxc-browser-api
+	pkgdesc = Python library for the KeePassXC browser extension protocol
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/mietzen/keepassxc-browser-api
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	depends = python-pynacl
+	source = https://files.pythonhosted.org/packages/source/k/keepassxc-browser-api/keepassxc_browser_api-1.5.0.tar.gz
+	sha256sums = 1e429818c0aa0ab2a99203eaa625815974894cc24d6ad259330adcfe71abeda0
+
+pkgname = python-keepassxc-browser-api
