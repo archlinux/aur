@@ -1,0 +1,5 @@
+[dexo-bin]
+source = "github"
+github = "KingDasWinx/Dexo"
+use_latest_release = true
+prefix = "v"
