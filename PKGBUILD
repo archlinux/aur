@@ -2,31 +2,43 @@
 
 pkgname=ruby-ctf-party
 _gemname=ctf-party
-pkgver=4.0.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='A CLI tool & library to enhance and speed up script/exploit writing with string conversion/manipulation.'
 arch=('x86_64')
 url='https://noraj.github.io/ctf-party/'
 license=('MIT')
-depends=('ruby' 'ruby-docopt')
+depends=('ruby')
+makedepends=('git' 'ruby-bundler')
 options=(!emptydirs)
-source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
-#source=("https://github.com/noraj/$pkgname/archive/v$pkgver.tar.gz")
+source=("https://github.com/noraj/$_gemname/archive/v$pkgver.tar.gz")
 provides=('ctf-party')
 conflicts=('ctf-party')
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('d0cc9dad1891a600d9a70e1f76e8e332b9f32dbec50f2ca261f97e3d95b75bc22f094662db8dbe8c6d7a3fd3740997e647083321c13ce9965f26d4cfa17d620b')
+b2sums=('439d009f65f005c2a05dd7e7b4d7d0bb443c014f28d80be6ad2f93fc0e377408cbfdc1df18f4b6de5189a9e2fec7a77a578134f01a10326d588df12a9905b452')
+install="$_gemname.install"
 
 package() {
-  _gemdir="$(ruby -e'puts Gem.default_dir')"
+  cd "$_gemname-$pkgver"
 
-  gem install --ignore-dependencies --no-user-install --no-document \
-    -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$_gemname"
 
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  find "$pkgdir/$_gemdir/extensions/" -name *.so -delete
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$_gemname" docs/**/*.md *.md
 
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$_gemname/LICENSE"
+
+  rm -rf .github/ docs/ test/ .* Dockerfile Rakefile *.md LICENSE docker-compose.yml
+
+  cp --no-preserve=ownership -a * "$pkgdir/usr/share/$_gemname/"
+
+  # need to cd to load .bundle/
+  cat > "$pkgdir/usr/bin/$_gemname" << EOF
+#!/bin/sh
+cd /usr/share/$_gemname
+exec bundle exec ruby bin/$_gemname "\$@"
+EOF
+
+  chmod +x "$pkgdir"/usr/bin/*
 }
 
