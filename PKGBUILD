@@ -6,8 +6,8 @@ _nfver=3.5.1
 # (e.g. 22.0.5.4+nf3.5.1). The literal here is only a placeholder for the first
 # run and for tooling that parses the PKGBUILD without executing it.
 pkgver=22.0.5.4+nf3.5.1
-pkgrel=1
-pkgdesc="Apple fonts (SF Pro, SF Compact, SF Mono, SF Arabic, NY), optionally Nerd Fonts patched and/or autohinted (ttfautohint / CFF) with gasp tuning"
+pkgrel=2
+pkgdesc="Apple fonts (SF Pro, SF Compact, SF Mono, SF Arabic, NY), optionally Nerd Fonts patched and/or autohinted (ttfautohint / CFF), with fixed weight classes"
 arch=(any)
 url="https://developer.apple.com/fonts/"
 license=("custom")
@@ -28,6 +28,7 @@ source=(
   "cff_hint.py"
   "dedup_blues.py"
   "font_meta.py"
+  "fix_weights.py"
 )
 # Apple re-spins the DMGs without versioning, so those legitimately stay SKIP —
 # the real identity check is pkgver(), which reads the version out of the font
@@ -36,6 +37,7 @@ source=(
 # (no network fetch), so they are covered by makepkg's local-file hashing —
 # fill these in with `updpkgsums`.
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -82,36 +84,43 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 #                              to FontForge AutoHint. Forced to ttfautohint when
 #                              NERD_PATCH=true (patched fonts are always TTF).
 #
+#  FIX_WEIGHTS  true/false   Normalise usWeightClass (default: true). Apple ships
+#                            every New York optical size with Bold = Semibold = 600
+#                            and Black = Heavy = 800, so fc-match "New York Small:bold"
+#                            picks Black. See fix_weights.py.
+#
 #  ── ttfautohint tuning ──
 #  HINT_PRESET  name         Named bundle of ttfautohint flags (default: balanced)
-#               balanced     stem=qsq  range 8-50  x-height 14            (upstream defaults)
-#               terminal     stem=qss  range 6-50  x-height 10  +gasp     (Hack-style, small mono)
-#               ui           stem=qsq  range 8-60  x-height 14  +gasp     (proportional screen text)
-#               print        stem=nnn  range 8-50  x-height 0             (natural stems, no x-snap)
-#               light        stem=nnn  range 12-50 x-height 0             (HiDPI, minimal interference)
-#               strong       stem=sss  range 6-50  x-height 14  +gasp     (aggressive low-DPI)
+#                            ("Linux" = the stem letter FreeType v40 actually uses)
+#               balanced     stem=qsq (Linux: q)  range 8-50   x-height 14  (upstream defaults)
+#               sharp        stem=sss (Linux: s)  range 6-50   x-height 14  (max contrast, low-DPI)
+#               natural      stem=nnn (Linux: n)  range 8-50   x-height 0   (least distortion)
+#               light        stem=nnn (Linux: n)  range 12-50  x-height 0   (HiDPI; <12px left alone)
 #               custom       use the individual HINT_* vars below verbatim
 #
 #  Individual ttfautohint knobs (override the preset; empty = use preset value):
 #  HINT_MODE     nnn|qqq|qsq|sss   3-char --stem-width-mode (grayscale/GDI/DW; n/q/s)
+#                      On Linux only the 3rd letter has an effect (see below).
 #  HINT_RANGE_MIN  N    --hinting-range-min  (default 8)
 #  HINT_RANGE_MAX  N    --hinting-range-max  (default 50)
-#  HINT_LIMIT      N    --hinting-limit      (default 200; 0 = no limit)
+#  HINT_LIMIT      N    --hinting-limit      (default: same as HINT_RANGE_MAX, so
+#                        hinting really stops above the range instead of reusing
+#                        the largest hint set up to 200px; 0 = no limit)
 #  HINT_XHEIGHT    N    --increase-x-height  (default 14; 0 = disable x-height snapping bump)
-#  HINT_XSNAP_EXC  STR  --x-height-snapping-exceptions  (e.g. "13-17", "" = none)
-#  HINT_WINCOMPAT  true/false  --windows-compatibility (artificial blue zones)
+#  HINT_XSNAP_EXC  STR  --x-height-snapping-exceptions  (default "10-13", "" = none;
+#                        see the i-dot note below)
+#  HINT_WINCOMPAT  true/false  --windows-compatibility (Windows/Wine only)
 #  HINT_TTFA_TABLE true/false  -t/--ttfa-table (embed a TTFA table with all params)
 #  HINT_FAMILY_SUFFIX  STR     -F/--family-suffix (distinguish differently-hinted builds)
 #  (PUA/Nerd icon glyphs are always handled with --fallback-script=none --fallback-scaling.)
 #
 #  ── gasp grid-fitting / anti-aliasing tuning (TTF output only) ──
-#  GASP_MODE  keep|sized|smooth|gridfit   (default: keep)
+#  GASP_MODE  keep|sized|smooth|gridfit   (default: keep; Windows/Wine only,
+#             FreeType 2.14 ignores gasp)
 #               keep     leave the gasp table as ttfautohint/font-patcher wrote it
 #               sized    MS strategy: <=8 grayscale, 9-16 gridfit, 17+ both
 #               smooth   all sizes anti-aliased ({0xFFFF:15}; gftools style)
 #               gridfit  all sizes gridfit+grayscale ({0xFFFF:3})
-#             Some presets enable a sensible GASP_MODE automatically (see above);
-#             an explicit GASP_MODE always wins.
 #
 #  Font family selection:
 #  WANT_SF_PRO      true/false   (default: true)
@@ -126,9 +135,51 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 #  NY_SUBS          e.g. "Small Medium Large ExtraLarge"
 #
 #  Non-interactive examples:
-#    HINTING=true HINT_PRESET=terminal WANT_SF_MONO=true WANT_SF_PRO=false makepkg -si
+#    HINTING=true HINT_PRESET=sharp WANT_SF_MONO=true WANT_SF_PRO=false makepkg -si
 #    NERD_PATCH=false HINTING=true HINT_ENGINE=cff makepkg -si
-#    HINTING=true HINT_PRESET=custom HINT_MODE=qss HINT_RANGE_MIN=6 GASP_MODE=sized makepkg -si
+#    HINTING=true HINT_PRESET=custom HINT_MODE=qqs HINT_RANGE_MIN=6 HINT_XSNAP_EXC="" makepkg -si
+#
+# ── What the hinting options do on Linux ────────────────────────────────────
+#
+# Measured on FreeType 2.14.3 (v40 interpreter, grayscale), pango/cairo and
+# Chrome, 9-20px, on SF Pro Text (Light…Heavy), SF Mono and New York Small:
+#
+#   * Apple's static OTFs are effectively unhinted: not one glyph carries a
+#     stem hint, only (partly wrong) blue zones, and SF Pro's BlueScale is 0.
+#     FreeType's CFF engine is used for them at every hintstyle, and it is the
+#     worst result measured: round and flat letters disagree on x-height in 13
+#     of 72 SF Pro weight/size combinations and on cap height in 18.
+#   * ttfautohint fixes that: 1 of 72 for SF Pro, 0 for SF Mono and New York,
+#     with every preset.
+#   * The cff engine (otfautohint) is clearly worse than ttfautohint here (41
+#     of 72 x-height mismatches, and ~8 min for ten fonts), even with the
+#     overlapping zones deduplicated and BlueScale corrected. It stays available
+#     for anyone who wants to keep the OTF outlines.
+#   * Only the THIRD letter of --stem-width-mode matters: v40 reports itself to
+#     the bytecode as DirectWrite ClearType. qss and sss render pixel-identically,
+#     as do qsq and qqq. The presets differ where it counts: q, s or n.
+#   * --increase-x-height 14 vs 0 only differs at 10px; --hinting-limit 200 vs
+#     50 does not differ at all up to 16px; gasp and -W have no effect.
+#   * The i/j dots and diaereses (ï ä ö ü ϊ) touch the letter at Bold/Heavy
+#     10-13px with every stem mode (s and n worse than q). Leaving 10-13px out
+#     of x-height snapping (HINT_XSNAP_EXC=10-13, the default) keeps the gap
+#     in more of them (87 -> 70 of 560 cases) at the price of a slightly
+#     smaller x-height at those sizes; heights stay consistent either way.
+#   * Do not hint against Regular's blue zones (--reference): Bold's x-height
+#     really is taller (1101 vs 1078 units in SF Pro Text), which puts round
+#     letters 1px above flat ones in the heavier weights.
+#
+# FreeType only runs TrueType bytecode at hintstyle hintmedium/hintfull. With
+# the common hintslight setting it uses its own light autohinter instead and
+# ignores these hints. The package therefore ships (but does not enable)
+# /usr/share/fontconfig/conf.avail/80-nerd-fonts-apple-hinted.conf, which turns
+# on bytecode hinting for the installed families only. It uses hintmedium, not
+# hintfull: cairo/pango render the two identically, but Chrome turns off
+# subpixel positioning (whole-pixel advances, uneven gaps) only at hintfull.
+# Enable it with:
+#
+#   sudo ln -s /usr/share/fontconfig/conf.avail/80-nerd-fonts-apple-hinted.conf \
+#              /etc/fonts/conf.d/
 # ────────────────────────────────────────────────────────────────────────────
 
 _validate_hint_mode() {
@@ -140,31 +191,31 @@ _validate_hint_mode() {
   fi
 }
 
-# Map a named preset into the individual HINT_* / GASP_MODE vars.
+# Map a named preset into the individual HINT_* vars.
 # Individual vars already set in the environment are preserved (preset never
-# overrides an explicit user value).
+# overrides an explicit user value). Presets leave gasp alone: FreeType
+# ignores it, so it is only ever set explicitly through GASP_MODE.
 _apply_preset() {
   local _p="$1"
-  local _m _lo _hi _lim _xh _gasp
+  local _m _lo _hi _xh
   case "$_p" in
-    balanced) _m=qsq; _lo=8;  _hi=50; _lim=200; _xh=14; _gasp=keep ;;
-    terminal) _m=qss; _lo=6;  _hi=50; _lim=200; _xh=10; _gasp=sized ;;
-    ui)       _m=qsq; _lo=8;  _hi=60; _lim=200; _xh=14; _gasp=sized ;;
-    print)    _m=nnn; _lo=8;  _hi=50; _lim=200; _xh=0;  _gasp=keep ;;
-    light)    _m=nnn; _lo=12; _hi=50; _lim=200; _xh=0;  _gasp=keep ;;
-    strong)   _m=sss; _lo=6;  _hi=50; _lim=200; _xh=14; _gasp=smooth ;;
-    custom)   _m=qsq; _lo=8;  _hi=50; _lim=200; _xh=14; _gasp=keep ;;
+    balanced) _m=qsq; _lo=8;  _hi=50; _xh=14 ;;
+    sharp)    _m=sss; _lo=6;  _hi=50; _xh=14 ;;
+    natural)  _m=nnn; _lo=8;  _hi=50; _xh=0  ;;
+    light)    _m=nnn; _lo=12; _hi=50; _xh=0  ;;
+    custom)   _m=qsq; _lo=8;  _hi=50; _xh=14 ;;
     *)
       echo "Error: unknown HINT_PRESET='$_p'."
-      echo "  Valid: balanced terminal ui print light strong custom"
+      echo "  Valid: balanced sharp natural light custom"
       exit 1 ;;
   esac
   HINT_MODE="${HINT_MODE:-$_m}"
   HINT_RANGE_MIN="${HINT_RANGE_MIN:-$_lo}"
   HINT_RANGE_MAX="${HINT_RANGE_MAX:-$_hi}"
-  HINT_LIMIT="${HINT_LIMIT:-$_lim}"
+  HINT_LIMIT="${HINT_LIMIT:-$HINT_RANGE_MAX}"
   HINT_XHEIGHT="${HINT_XHEIGHT:-$_xh}"
-  GASP_MODE="${GASP_MODE:-$_gasp}"
+  # Unset means the measured default; an explicit "" means no exceptions.
+  if [[ "${HINT_XSNAP_EXC+set}" != set ]]; then HINT_XSNAP_EXC="10-13"; fi
 }
 
 # ── DMG extraction ──────────────────────────────────────────────────────────
@@ -380,13 +431,11 @@ _resolve_options() {
     if [[ "$_interactive" == true && -z "${HINT_PRESET:-}" && -z "${HINT_MODE:-}" ]]; then
       echo ""
       _ask_choice "Hinting preset" balanced \
-        "balanced:upstream defaults, qsq 8-50 x14" \
-        "terminal:mono/small, qss 6-50 x10 +gasp" \
-        "ui:proportional screen, qsq 8-60 x14 +gasp" \
-        "print:natural stems, nnn, no x-snap" \
-        "light:HiDPI minimal, nnn 12-50" \
-        "strong:aggressive low-DPI, sss +smooth gasp" \
-        "custom:set HINT_* vars yourself"
+        "balanced:stem q, 8-50px, x-height 14 (measured best)" \
+        "sharp:stem s, 6-50px, x-height 14 (max contrast, low-DPI)" \
+        "natural:stem n, 8-50px, no x-height boost (least distortion)" \
+        "light:stem n, 12-50px, no x-height boost (HiDPI)" \
+        "custom:use the HINT_* environment variables"
       HINT_PRESET=$_choice
     fi
     HINT_PRESET="${HINT_PRESET:-balanced}"
@@ -402,6 +451,17 @@ _resolve_options() {
     if (( HINT_RANGE_MIN > HINT_RANGE_MAX )); then
       echo "Error: HINT_RANGE_MIN ($HINT_RANGE_MIN) > HINT_RANGE_MAX ($HINT_RANGE_MAX)."; exit 1
     fi
+  fi
+
+  # ── Weight classes ─────────────────────────────────────────────────────────
+  if [[ "$_interactive" == true && -z "${FIX_WEIGHTS:-}" ]]; then
+    echo ""
+    _ask_yn "Normalise weight classes (New York Bold/Black are mislabelled)" y
+    [[ "$_yn" =~ ^[yY]$ ]] && FIX_WEIGHTS=true || FIX_WEIGHTS=false
+  fi
+  FIX_WEIGHTS="${FIX_WEIGHTS:-true}"
+  if [[ "$FIX_WEIGHTS" != true && "$FIX_WEIGHTS" != false ]]; then
+    echo "Error: FIX_WEIGHTS='$FIX_WEIGHTS' must be true or false."; exit 1
   fi
 
   # gasp default + validation (used by both engines, but only meaningful for TTF)
@@ -478,6 +538,7 @@ _resolve_options() {
   echo "  ── Build summary ───────────────────────────────────────"
   printf "  NERD_PATCH:    %s\n" "$NERD_PATCH"
   printf "  WANT_VARIABLE: %s\n" "$WANT_VARIABLE"
+  printf "  FIX_WEIGHTS:   %s\n" "$FIX_WEIGHTS"
   if [[ "$HINTING" == true ]]; then
     printf "  HINTING:       true  (engine=%s)\n" "$HINT_ENGINE"
     if [[ "$HINT_ENGINE" == ttfautohint ]]; then
@@ -505,6 +566,7 @@ _resolve_options() {
   {
     echo "NERD_PATCH=$NERD_PATCH"
     echo "WANT_VARIABLE=$WANT_VARIABLE"
+    echo "FIX_WEIGHTS=$FIX_WEIGHTS"
     echo "HINTING=$HINTING"
     echo "HINT_ENGINE=$HINT_ENGINE"
     echo "HINT_PRESET=${HINT_PRESET:-}"
@@ -543,7 +605,7 @@ _load_options() {
   [[ -f "$srcdir/.build_opts" ]] || { echo "Error: missing .build_opts; run prepare() first."; exit 1; }
   while IFS='=' read -r _k _v; do
     case "$_k" in
-      NERD_PATCH|WANT_VARIABLE|HINTING|HINT_ENGINE|HINT_PRESET|HINT_MODE| \
+      NERD_PATCH|WANT_VARIABLE|FIX_WEIGHTS|HINTING|HINT_ENGINE|HINT_PRESET|HINT_MODE| \
       HINT_RANGE_MIN|HINT_RANGE_MAX|HINT_LIMIT|HINT_XHEIGHT|HINT_WINCOMPAT| \
       HINT_TTFA_TABLE|HINT_XSNAP_EXC|HINT_FAMILY_SUFFIX|GASP_MODE| \
       WANT_SF_PRO|WANT_SF_COMPACT|WANT_SF_MONO|WANT_SF_ARABIC|WANT_NY| \
@@ -678,6 +740,13 @@ build() {
   echo "==> Selected $_sel_count font files for processing."
   if (( _sel_count == 0 )); then
     echo "Error: no fonts matched the selection. Check subfamily names."; exit 1
+  fi
+
+  # Weight classes are fixed on the selected copies, before any conversion or
+  # patching, so every later step (and fontconfig) sees the corrected values.
+  if [[ "$FIX_WEIGHTS" == true ]]; then
+    echo "==> Normalising usWeightClass..."
+    python "$srcdir/fix_weights.py" "$srcdir/selected/"*
   fi
 
   # ══════════════════════════════════════════════════════════════════════════
@@ -904,6 +973,40 @@ package() {
     if ! compgen -G "$pkgdir/usr/share/fonts/apple/*" >/dev/null; then
       echo "Error: no fonts were installed."; exit 1
     fi
+  fi
+
+  # Opt-in rendering tweak (see the header): bytecode hinting for the families
+  # this build actually installed as ttfautohinted TTFs. Shipped in conf.avail
+  # and deliberately not enabled. The family list is read from the fonts, so
+  # Nerd Fonts names ("SFMono Nerd Font") and family suffixes are covered.
+  if [[ "$HINTING" == true && "$HINT_ENGINE" == ttfautohint ]] && \
+     compgen -G "$pkgdir/usr/share/fonts/apple/*.ttf" >/dev/null; then
+    local _fam _conf="$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf"
+    install -d "${_conf%/*}"
+    {
+      echo '<?xml version="1.0" encoding="UTF-8"?>'
+      echo '<!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">'
+      echo "<!-- Installed by $pkgname. Use the ttfautohint bytecode hints in these"
+      echo "     fonts rather than FreeType's light autohinter. hintmedium, not"
+      echo "     hintfull: same rendering in cairo/pango, but Chrome keeps subpixel"
+      echo "     positioning at hintmedium. -->"
+      echo '<fontconfig>'
+      # One <match> per family: several <test>s in one <match> are ANDed.
+      while IFS= read -r _fam; do
+        _fam="${_fam//&/&amp;}"; _fam="${_fam//</&lt;}"
+        cat <<EOF
+  <match target="font">
+    <test name="family" compare="eq"><string>$_fam</string></test>
+    <edit name="hinting" mode="assign"><bool>true</bool></edit>
+    <edit name="autohint" mode="assign"><bool>false</bool></edit>
+    <edit name="hintstyle" mode="assign"><const>hintmedium</const></edit>
+  </match>
+EOF
+      done < <(python "$srcdir/font_meta.py" families "$pkgdir/usr/share/fonts/apple/"*.ttf \
+                 | cut -f2 | sort -u)
+      echo '</fontconfig>'
+    } > "$_conf"
+    chmod 644 "$_conf"
   fi
 
   install -d "$pkgdir/usr/share/licenses/$pkgname"
