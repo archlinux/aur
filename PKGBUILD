@@ -1,5 +1,6 @@
 # Maintainer: phil.d324@gmail.com <H3mul>
 pkgname=claude-mem
+# renovate: datasource=npm depName=claude-mem
 pkgver=13.25.3
 pkgrel=1
 pkgdesc='Memory compression system for Claude Code - persist context across sessions'
