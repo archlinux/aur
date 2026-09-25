@@ -4,7 +4,7 @@ pkgbase=taigikeyboard
 pkgname=(fcitx5-taigikeyboard ibus-taigikeyboard taigikeyboard-common)
 pkgver=3.6.10
 _tag="desktop-${pkgver}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://taigikeyboard.tw"
 license=('Apache-2.0')
@@ -15,7 +15,7 @@ depends=(
 )
 optdepends=(
 	'ttf-jf-openhuninn: font with more support for Taigi'
-	'ttf-iansui: font with more support for Taigi'
+	'ttf-iansui-git: font with more support for Taigi'
 )
 makedepends=(
 	'make'

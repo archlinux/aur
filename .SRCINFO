@@ -1,6 +1,6 @@
 pkgbase = taigikeyboard
 	pkgver = 3.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://taigikeyboard.tw
 	arch = x86_64
 	license = Apache-2.0
@@ -19,7 +19,7 @@ pkgbase = taigikeyboard
 	depends = pango
 	depends = libadwaita
 	optdepends = ttf-jf-openhuninn: font with more support for Taigi
-	optdepends = ttf-iansui: font with more support for Taigi
+	optdepends = ttf-iansui-git: font with more support for Taigi
 	options = !lto
 	source = taigikeyboard-3.6.10.tar.gz::https://github.com/taigikeyboard/taigikeyboard/archive/refs/tags/desktop-3.6.10.tar.gz
 	sha512sums = c98ba4034218ffccc24698a613f309c3677a604747fa7f187de6e09bda83d064514fc945a939bd63825b13ab981815a5c706def286ad528982276271bc320519
