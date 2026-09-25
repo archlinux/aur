@@ -3,7 +3,8 @@
 
 pkgname=picacg-qt-appimage
 pkgver=1.5.5.1
-pkgrel=1
+pkgrel=2
+_tagver=1.5.5
 _glibcrev=2.42
 pkgdesc="PicACG Comic PC Client For Linux"
 arch=("x86_64")
@@ -17,7 +18,7 @@ depends=("fuse2")
 optdepends=('python-waifu2x-vulkan: Waifu2x-Vulkan support')
 provides=('bika')
 conflicts=('bika')
-source=("${url}/releases/download/v${pkgver}/${_pkgname}")
+source=("${url}/releases/download/v${_tagver}/${_pkgname}")
 sha256sums=('990e70737ba11a6dad14603cd76047f6f868c5e9790f5ce3ac06e8736b237033')
 
 _installdir=/opt/appimages

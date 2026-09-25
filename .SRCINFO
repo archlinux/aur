@@ -1,7 +1,7 @@
 pkgbase = picacg-qt-appimage
 	pkgdesc = PicACG Comic PC Client For Linux
 	pkgver = 1.5.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tonquer/picacg-qt
 	arch = x86_64
 	license = LGPL3
@@ -11,7 +11,7 @@ pkgbase = picacg-qt-appimage
 	conflicts = bika
 	noextract = picacg_v1.5.5.1_linux_glibc2.42.AppImage
 	options = !strip
-	source = https://github.com/tonquer/picacg-qt/releases/download/v1.5.5.1/picacg_v1.5.5.1_linux_glibc2.42.AppImage
+	source = https://github.com/tonquer/picacg-qt/releases/download/v1.5.5/picacg_v1.5.5.1_linux_glibc2.42.AppImage
 	sha256sums = 990e70737ba11a6dad14603cd76047f6f868c5e9790f5ce3ac06e8736b237033
 
 pkgname = picacg-qt-appimage
