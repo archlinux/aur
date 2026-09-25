@@ -1,6 +1,6 @@
 # Maintainer: Xhelliom
 pkgname=aurveto-bin
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Security gate for AUR updates: delay, whitelist, static scan and AI review of the PKGBUILD diff (precompiled binaries)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk4' 'libadwaita' 'gcc-libs' 'glibc')
 provides=('aurveto')
 conflicts=('aurveto')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/aurveto-x86_64-linux.tar.gz")
-sha256sums=('6215a020e8c2ddb15f3ff135a00e12904e6584c9a42c913639baaa2499c3191e')
+sha256sums=('920c1bb5591c642b2472a052cb9584d961e18dc1bfaff2a2c39e094fdb239270')
 
 package() {
   install -Dm755 aurveto     "$pkgdir/usr/bin/aurveto"
