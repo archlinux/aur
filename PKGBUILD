@@ -1,9 +1,9 @@
 # Maintainer: lalala <lalala_233@qq.com>
 pkgname=python-comfy-kitchen
 _name=${pkgname#python-}
-pkgver=0.2.16
+pkgver=0.2.35
 pkgrel=1
-pkgdesc="Fast kernel library for Diffusion inference with multiple compute backends."
+pkgdesc="Fast Kernel Library for ComfyUI with multiple compute backends"
 arch=('any')
 url="https://github.com/Comfy-Org/comfy-kitchen"
 license=('MIT')
@@ -15,7 +15,7 @@ makedepends=(python-build python-installer python-wheel python-setuptools)
 _filename=${_name//-/_}-$pkgver-py3-none-any.whl
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
 noextract=("${_filename}")
-sha512sums=('1d6e03391782889e0d7be37c78702aa1ba6c92f396d51120cb1af05db0bd3818e022298dfa63587fd456dc146dbe139d361241871a02519dc60183b76a6a9dd5')
+sha512sums=('cc103f9073ee2a8d780f36f49affe2109d4cedd5c4a9b3c2f84c82e074cf8c10d95af0f4d509667cce58a35cf31f2e43bddd2a59a35d6cf7ef0834e63aa80791')
 
 # build() {
 #   cd ${_name//-/_}-${pkgver}
