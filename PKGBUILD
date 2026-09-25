@@ -7,7 +7,7 @@ pkgname=("${_pkgname}-git"
          "${_pkgname}-host-git"
          "obs-plugin-${_pkgname}-git")
 epoch=2
-pkgver=B7.r822.g54ea580e
+pkgver=B7.r826.g236efcb1
 pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
@@ -94,7 +94,17 @@ package_looking-glass-git() {
 
 	cd "${srcdir}/${_pkgname}/client/build"
 	make DESTDIR="${pkgdir}" install
+
 	find "${pkgdir}" -name "*.debug*" -delete
+
+	# This reverts the actions of a post_build command bound to the client make target.
+	# It not only creates a separate debug file installed to a non-conforming location (removed above),
+	# it also strips the debug information from the client binary itself.
+	# The absence results in users getting a non-functional debug package as the packaging process
+	# needs that information to be present to create a functional debug package.
+	local client_bin="${pkgdir}/usr/bin/looking-glass-client"
+	eu-unstrip -o "lgc.unstripped" "${client_bin}" "looking-glass-client.debug"
+	objcopy --remove-section=.gnu_debuglink "lgc.unstripped" "${client_bin}"
 }
 
 package_looking-glass-module-dkms-git() {
