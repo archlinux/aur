@@ -1,0 +1,8 @@
+src/
+pkg/
+podium/
+podium-*/
+*.tar.gz
+*.pacman
+*.pkg.tar.*
+*.log
