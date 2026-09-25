@@ -128,17 +128,18 @@ prepare() {
 
   local _config_opts=(
     --prefix=/usr
+    #--disable-full-static
     --enable-recursive
     --enable-native
     # --enable-rplcas
-    --disable-rplcas  # Currently (version 4.1.37), fails to built 'rplcas/giac-2.0.0'.
+    --disable-rplcas        # Currently (version 4.1.37), fails to built 'rplcas/giac-2.0.0'.
     --enable-optimization
     --enable-tex
     --enable-vim
-    --disable-embedded-gnuplot
+    --disable-embedded-gnuplot # Use system gnuplot.
     --enable-gnuplot
     # --enable-motif
-    --disable-motif   # Currently Segmentation Faults when building hellomotif.
+    --disable-motif         # Currently Segmentation Faults when building hellomotif.
     --disable-experimental  # Don't use --enable-experimental. When author uses experimental code sections, code in theses sections is very very experimental.
     --with-x
   )
@@ -156,8 +157,8 @@ build() {
 
   ## Silence some compiler warnings
   local _NOWARNINGS _warning _CFLAGSADDITIONS
-  _NOWARNINGS=("unused-value" "unused-but-set-variable" "unused-label" "unused-function" "maybe-uninitialized" "misleading-indentation" "free-nonheap-object" "stringop-overread")
   _CFLAGSADDITIONS=" -fno-strict-overflow -std=gnu17 -malign-double -funsigned-char" # From default 'CFLAGS' in 'Makefile'.
+  _NOWARNINGS=("unused-value" "unused-but-set-variable" "unused-label" "unused-function" "maybe-uninitialized" "misleading-indentation" "free-nonheap-object" "stringop-overread")
   for _warning in "${_NOWARNINGS[@]}"; do
     _CFLAGSADDITIONS+=" -Wno-${_warning} -Wno-error=${_warning}"
   done
@@ -171,10 +172,10 @@ build() {
   export FCFLAGS
   export FFLAGS
 
-  LDFLAGS+=" -pthread" # From default 'LDFLAGS' in 'Makefile'.
+  LDFLAGS+=" -pthread"                # From default 'LDFLAGS' in 'Makefile'.
   export LDFLAGS
 
-  make CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}" FCFLAGS="${FCFLAGS}" FFLAGS="${FFLAGS}" LDFLAGS="${LDFLAGS}"
+  make CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}" FCFLAGS="${FCFLAGS}" FFLAGS="${FFLAGS}" LDFLAGS="${LDFLAGS}" -j1
 }
 
 check() {
