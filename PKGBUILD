@@ -6,7 +6,7 @@
 # Maintainer: sukanka <su975853527 [AT] gmail [DOT] com>
 
 pkgname=tuxedo-control-center
-pkgver=3.0.9
+pkgver=3.0.10
 pkgrel=1
 pkgdesc="A tool to control performance, energy, fan and comfort settings on TUXEDO laptops. (With system-wide electron) "
 arch=(x86_64)
@@ -33,12 +33,12 @@ source=(
     tuxedo-control-center.install
     tuxedo-control-center.sh
 )
-sha256sums=('ba15d2d1f991f1b4ff88d18883b7f0e8f8961ea8d68f3c9f3d72234488f40cf2'
-    'fef8f708ff4ba19921f167ff9bffd2536cc0c128dfe418a30f7e5e0d04fca6e3'
-    '54f6686fe8d5f69a39605de996e659f7ce2852db3a05d7ea769dcc4a0b26b0e0')
-sha512sums=('5c354f80867ac9f368560864760fc4b57f7da5e61097f9650fb9b23f145a10b320e8859c1443b6f0105f179f58f71c3672e973b76cf8660e7877355d17410ef2'
-    'b70d3412f07c72d6de2cf18e75a184741d8f5db7f144c4d8e8c0dde752e197d831fc8f8b6c095c9b6387ff97b36567f9cf5167dbb23ebc392f7b3cc47a78111a'
-    '9411bc1b45f1096654b6c415d92f279c82a31d1f84368fc1bed19160e93fc39a6a049af8d9bb3429abc250b7a2d09b6849cbfb106734758a5dbbd170cfd90bcd')
+sha256sums=('d192391c559789c8f62af0e614e37e1222c9aa9753c61a30e3149b35d1969532'
+            'fef8f708ff4ba19921f167ff9bffd2536cc0c128dfe418a30f7e5e0d04fca6e3'
+            '54f6686fe8d5f69a39605de996e659f7ce2852db3a05d7ea769dcc4a0b26b0e0')
+sha512sums=('fa7d98ff573e873ea5791097579a31a14ff58978406681157f55c1097f35c6ca9a726a3ad2e347c2941fb16d2ab5cda6862b39858405421f935870a1c5a132b2'
+            'b70d3412f07c72d6de2cf18e75a184741d8f5db7f144c4d8e8c0dde752e197d831fc8f8b6c095c9b6387ff97b36567f9cf5167dbb23ebc392f7b3cc47a78111a'
+            '9411bc1b45f1096654b6c415d92f279c82a31d1f84368fc1bed19160e93fc39a6a049af8d9bb3429abc250b7a2d09b6849cbfb106734758a5dbbd170cfd90bcd')
 
 _patch() {
     cd "${srcdir}/${pkgname}-${pkgver}"/src/dist-data
