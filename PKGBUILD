@@ -6,7 +6,7 @@ _appname=ztl
 pkgname=${_gitname%-tui}-bin
 pkgdesc="A terminal tool for visually comparing time zones"
 
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('017b82cae83a849147a3b239cd227261a5351b241f6e7735d6c22d56f390bc48')
-sha256sums_aarch64=('5725823c077e4cfa8f9046f1cac6f5030a375dc43f5efab41b8992e16ec9be55')
+sha256sums_x86_64=('b50d573591dd08d0825d801c693af380b0ce05b2c5107743e50f35ae05d5bcca')
+sha256sums_aarch64=('e3253d148c18d9d539a2f696ff9811e2708e527bf2ac3193d0b59384b9ea32a1')
 
 
 case ${CARCH} in

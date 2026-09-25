@@ -1,6 +1,6 @@
 pkgbase = zonetimeline-bin
 	pkgdesc = A terminal tool for visually comparing time zones
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/findyourexit/zonetimeline-tui
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = zonetimeline-bin
 	provides = ztl
 	conflicts = zonetimeline
 	options = !strip
-	source_x86_64 = ztl-x86_64-0.4.0.tgz::https://github.com/findyourexit/zonetimeline-tui/releases/download/v0.4.0/ztl-0.4.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 017b82cae83a849147a3b239cd227261a5351b241f6e7735d6c22d56f390bc48
-	source_aarch64 = ztl-aarch64-0.4.0.tgz::https://github.com/findyourexit/zonetimeline-tui/releases/download/v0.4.0/ztl-0.4.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 5725823c077e4cfa8f9046f1cac6f5030a375dc43f5efab41b8992e16ec9be55
+	source_x86_64 = ztl-x86_64-0.4.1.tgz::https://github.com/findyourexit/zonetimeline-tui/releases/download/v0.4.1/ztl-0.4.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b50d573591dd08d0825d801c693af380b0ce05b2c5107743e50f35ae05d5bcca
+	source_aarch64 = ztl-aarch64-0.4.1.tgz::https://github.com/findyourexit/zonetimeline-tui/releases/download/v0.4.1/ztl-0.4.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e3253d148c18d9d539a2f696ff9811e2708e527bf2ac3193d0b59384b9ea32a1
 
 pkgname = zonetimeline-bin
