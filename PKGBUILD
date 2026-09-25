@@ -6,7 +6,7 @@
 #   2) scripts/publish-aur.sh --push   → 自动算 sha256 + 生成 .SRCINFO + 推送 AUR ✓
 #   sha256sums 里的 PLACEHOLDER 必须在发布前替换，否则 makepkg 会校验失败 ✗（这是故意的 ✗ 防误发）
 pkgname=hov-qt
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Aggregated YouTube/Bilibili/NetEase/QQ Music client (Qt6 desktop)"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -17,7 +17,7 @@ depends=('qt6-base' 'qt6-declarative' 'qt6-webengine' 'mpv' 'ffmpeg' 'yt-dlp')
 makedepends=('cmake' 'ninja' 'pkgconf')
 # clang/lld 仅在 HOV_OPTIMIZED=1（LTO+PGO 优化构建）时需要 → 作为可选说明 ✓ 不进 makedepends ✓
 source=("$pkgname-$pkgver.tar.gz::https://github.com/HougeLangley/HyperOnlineVideo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('42144a5c4439cf185c382bcec1e7711cff829d8cd59c6d9b7c2113b1eaf1b86d')
+sha256sums=('244e9d4b2ec32aae4fd083774036a4e7f5bb39df84ee81e1fa9fd9fa9e5aaa87')
 
 build() {
   cd "$srcdir/HyperOnlineVideo-$pkgver/desktop"
