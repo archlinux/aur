@@ -3,7 +3,7 @@
 pkgname=discipulus-bin
 _pkgname=discipulus
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Alternative Openbare Magister App voor Android, iOS, iPadOS, WatchOS, WearOS, macOS, Linux en Windows"
 arch=('x86_64')
 url="https://github.com/DiscipulusApp/Discipulus"
