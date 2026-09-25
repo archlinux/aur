@@ -1,6 +1,6 @@
 # Maintainer: Alexeyev Vitaly <vitamindbnfkz@gmail.com>
 pkgname=linux-legion
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Control center for Lenovo Legion laptops: power modes, fans, Spectrum RGB lighting, battery (Vantage for Linux)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'git')
 options=('!lto' '!debug')
 install=linux-legion.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a08a4683d4c93bf4874f2e2770058462dfaed80fbb755e8d5924a6dcc855afd6')
+sha256sums=('b45acd60079a3d89eec4f1c99ac872fad8625057793e6ae0c907def9249eb056')
 
 prepare() {
     cd "$pkgname-$pkgver"
