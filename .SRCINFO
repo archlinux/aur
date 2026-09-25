@@ -1,19 +1,18 @@
 pkgbase = capi-shell-mcp
 	pkgdesc = MCP provider for capi-shell — exec into cluster-api workload clusters
-	pkgver = 1.0.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/cwrau/capi-shell-mcp
 	install = capi-shell-mcp.install
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = MIT
-	makedepends = npm
-	depends = nodejs
 	provides = capo-shell-mcp
 	conflicts = capo-shell-mcp
 	replaces = capo-shell-mcp
-	source = capi-shell-mcp-1.0.0.tgz::https://github.com/cwrau/capi-shell-mcp/releases/download/capi-shell-mcp-v1.0.0/capi-shell-mcp-1.0.0.tgz
-	source = capi-shell-mcp-1.0.0.tar.gz::https://github.com/cwrau/capi-shell-mcp/archive/refs/tags/capi-shell-mcp-v1.0.0.tar.gz
-	sha256sums = 86be76ac450f92450611a5b64b9614618d4fea1363d048f706d495196ede032c
-	sha256sums = 7a56bdcd3b2cc6390183abfa1bb46b3094097da8a2615d3b2ece1b6d901bbf7f
+	source_x86_64 = capi-shell-mcp-linux-amd64.tar.gz::https://github.com/cwrau/capi-shell-mcp/releases/download/v2.0.0/capi-shell-mcp-linux-amd64.tar.gz
+	sha256sums_x86_64 = 2683dd4e381ee086a0d4570cbc681684bf4bac09a750cf9693943bf2d79fccce
+	source_aarch64 = capi-shell-mcp-linux-arm64.tar.gz::https://github.com/cwrau/capi-shell-mcp/releases/download/v2.0.0/capi-shell-mcp-linux-arm64.tar.gz
+	sha256sums_aarch64 = 56932533abb4e6532269522cd341477866e937b1586ab2491825232e8df7f5d9
 
 pkgname = capi-shell-mcp
