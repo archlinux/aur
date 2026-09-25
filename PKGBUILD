@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=sccore
-_pkgver=1.0.6
+_pkgver=1.0.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,7 +24,6 @@ depends=(
   r-tibble
   r-uwot
   r-withr
-  r-seurat
 )
 makedepends=(
   r-rcpparmadillo
@@ -34,12 +33,14 @@ makedepends=(
 optdepends=(
   r-ggrastr
   r-jsonlite
+  r-philentropy
   r-rmumps
+  r-seurat
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ea4f657003a4a8105323e28b8d5a695d')
-b2sums=('14385bc37afae1767896177a3be245b348e66a99d9ba08aeccb65efe051ca3d4c61fe232a8b16c2f22ca652a5a673984318d6743429ff6234bbfc6d2f08da422')
+md5sums=('5cfdb7d383d5e8ab6e8003aacc1193aa')
+b2sums=('ab004932c9d67938a770e19bb0906a27e8e819e8f74bae8fda1fec6d24c3a9b0918c42ebeabc11819696700f554e7c002bdd666c328c9983c8c1ab1e8d519ffc')
 
 build() {
   mkdir build
