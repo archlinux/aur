@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="matlab-proxy"
-pkgver=0.34.0
+pkgver=0.35.0
 pkgrel=1
 pkgdesc="Open a MATLAB® desktop in a web browser tab"
 arch=(
@@ -55,7 +55,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('429dd04e3ba45f25cfb2f98082a345724d5a457b4ff24d039aa98bf957eaa6b6')
+sha256sums=('5c4a4c11c4621cce8c4900caf066e67b1e23ed27c1525478359c63af2d5576cc')
 
 _source() {
   export NPM_CONFIG_CACHE="${srcdir}/.npm"
@@ -88,9 +88,9 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
 
-  install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -vsf "${site_packages}/${pkgname//-/_}-${pkgver}.dist-info/licenses/LICENSE.md" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+  install -vd "${pkgdir}/usr/share/licenses"
+  ln -vsf "${site_packages}/${pkgname//-/_}-${pkgver}.dist-info/licenses" \
+    "${pkgdir}/usr/share/licenses/${pkgname}"
 }
