@@ -13,6 +13,7 @@ pkgbase = fips-git
 	depends = gcc-libs
 	depends = glibc
 	optdepends = systemd-resolved: .fips DNS resolution
+	optdepends = nftables: fips-firewall.service ruleset
 	provides = fips
 	conflicts = fips
 	conflicts = fips-debug
