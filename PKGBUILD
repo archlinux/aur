@@ -1,6 +1,6 @@
 # Maintainer: z3475 <z3475@users.noreply.github.com>
 pkgname=gitmount
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='Read-only FUSE filesystem for git: every branch, tag and commit as plain directories'
 arch=(x86_64)
@@ -10,7 +10,7 @@ depends=(fuse3 libgit2 gcc-libs)
 makedepends=(cmake ninja catch2)
 checkdepends=(git python)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6dcb831775cd3d218dc7df1d09e916d19b77be9911879028b0da17b151593da3')
+sha256sums=('a5ccb005d30d08bb0a4cb52bd1d2acc66d0e21d2b5f97fd379c2172aeef1a7e8')
 
 # Unit tests always run; the integration suite performs real FUSE mounts
 # and self-skips when /dev/fuse or fusermount3 is unavailable (clean
