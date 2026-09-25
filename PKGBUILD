@@ -5,8 +5,8 @@
 _watch=('https://hiawatha.leisink.net/changelog' 'body' 'regex' '\"version\">(\d[\d.]*\d+)<' 'pkgver')
 
 pkgname=hiawatha
-pkgver=12.2
-pkgrel=2
+pkgver=12.4
+pkgrel=1
 pkgdesc="Secure and advanced webserver"
 url="https://hiawatha.leisink.net/"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("https://hiawatha.leisink.net/files/download/$pkgname-$pkgver.tar.gz"
         'hiawatha.service'
         'lefh-renew.service'
         'lefh-renew.timer')
-sha256sums=('f0343f5bf0a200973ebdf16668ab8e845e78498682ca83b05b78b2cc78fbe736'
+sha256sums=('c80f87b5f9f04520b57af96ac52905198f96de38c3b7d988abc0f758cdd46d2e'
             '4671d2586cbe3cd6497b16ff422c6143cdab40641ef3c9c4988c478351a8f5e7'
             'b5a2671703b52eec376cfc4697b86aafa4f7fdd9b2b9203798e2117770bafa53'
             '2598480f8b249aaf7028ea66bac0195e1c017fb17c2c169b69e0b66413728457'
