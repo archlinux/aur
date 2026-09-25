@@ -11,7 +11,7 @@
 pkgname=zomp-git
 # Snapshot only: makepkg recomputes this with pkgver() at build time, and the
 # .SRCINFO the AUR ships is generated from the same function.
-pkgver=v18.1.17.r211.g565d82c
+pkgver=v18.3.1.r50.ge513077
 pkgrel=1
 pkgdesc="Fork of oh-my-pi (omp) that runs tool calls through zish's kernel sandbox (git build)"
 arch=('x86_64' 'aarch64')
