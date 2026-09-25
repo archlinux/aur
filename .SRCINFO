@@ -1,0 +1,82 @@
+pkgbase = rpl-2
+	pkgdesc = RPL/2 ('Reverse Polish Lisp 2'), a programming language designed for scientific computations, inspired by RPL from HP calculators like HP28S, HP48, and others.
+	pkgver = 4.1.37
+	pkgrel = 1
+	url = https://rpl2.systella.fr/anglais.php
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = pentium4
+	arch = riscv64
+	license = CECILL-2.0
+	license = GPL-3.0-or-later
+	makedepends = autoconf
+	makedepends = automake>=1.17
+	makedepends = awk
+	makedepends = make
+	makedepends = gcc>=4.3
+	makedepends = gcc-fortran>=4.3
+	makedepends = bzip2
+	makedepends = expat
+	makedepends = glibc
+	makedepends = libgcc
+	makedepends = libstdc++
+	makedepends = libgomp
+	makedepends = libgfortran
+	makedepends = libseccomp
+	makedepends = libxmu
+	makedepends = libxt
+	makedepends = lzlib
+	makedepends = mariadb-libs
+	makedepends = postgresql-libs
+	makedepends = readline
+	makedepends = xz
+	makedepends = zlib
+	makedepends = zstd
+	depends = glibc
+	depends = libbz2.so
+	depends = libcrypto.so
+	depends = libgcc_s.so
+	depends = libgfortran.so
+	depends = liblzma.so
+	depends = libpq.so
+	depends = libssl.so
+	depends = libstdc++.so
+	depends = libreadline.so
+	depends = libseccomp.so
+	depends = libz.so
+	depends = libzstd.so
+	depends = lzlib
+	depends = mariadb-libs
+	optdepends = bash: For 'rplcc', 'rpllink', 'mkrplso'.
+	optdepends = gnuplot: For advanced graphical capabilities.
+	optdepends = texlive-bin: To use printer commands.
+	optdepends = gv: To use printer commands (view output).
+	optdepends = rpl-2-compiler: To compile RPL/2 code to standalone binary. ('rplc', See https://rpl2.systella.fr/produits.php#compilateur.)
+	optdepends = vim: For vim support.
+	provides = mkrplso=4.1.37
+	provides = rplcc=4.1.37
+	provides = rpllink=4.1.37
+	provides = rplpp=4.1.37
+	provides = rpltags=4.1.37
+	provides = rplawk
+	provides = rplconvert
+	provides = rplfile
+	provides = rpliconv=4.1.37
+	conflicts = rpl
+	conflicts = mkrplso
+	conflicts = rplcc
+	conflicts = rpllink
+	conflicts = rplpp
+	conflicts = rpltags
+	conflicts = rplawk
+	conflicts = rplconvert
+	conflicts = rplfile
+	conflicts = rpliconv
+	options = staticlibs
+	source = https://rpl2.systella.fr/download/rpl-4.1.37.tar.bz2
+	sha256sums = d31be7d86aba19090994bfffe2f72cafb0417989076f08b559a5124d712a39e3
+
+pkgname = rpl-2
