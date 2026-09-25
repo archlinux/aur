@@ -13,3 +13,4 @@ src/
 *.tar.xz
 *.deb
 *.rpm
+*.part
