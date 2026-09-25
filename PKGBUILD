@@ -19,8 +19,7 @@ sha512sums=('b7f8ef357318670fe7040f5686d96ba9ae0a1226ede90c75381b104920fac657b22
 options=(!lto)
 
 build() {
-	cd ${pkgbase}
-        cd linux
+	cd "$pkgbase/linux"
 	make build
 	make component
 	make build-fcitx5
@@ -33,24 +32,24 @@ build() {
 package_taigikeyboard-common() {
 	depends=(gtk4 libadwaita ttf-jf-openhuninn ttf-iansui)
 	pkgdesc='Common files for Taigi Keyboard'
-	install -d ${pkgdir}/usr/share/taigikeyboard/dictionaries
-	install -m644 ../dictionaries/dictionary.fst ../dictionaries/dictionary.bin ../dictionaries/association.bin ../dictionaries/syllables.fst ${pkgdir}/usr/share/taigikeyboard/dictionaries/
+	install -d "$pkgdir"/usr/share/taigikeyboard/dictionaries
+	install -m644 ../dictionaries/dictionary.fst ../dictionaries/dictionary.bin ../dictionaries/association.bin ../dictionaries/syllables.fst "$pkgdir"/usr/share/taigikeyboard/dictionaries/
 	for size in 16 22 24 32 48 64 128 256; do
-		install -Dm644 data/icons/hicolor/${size}x${size}/apps/taigikeyboard.png ${pkgdir}/usr/share/icons/hicolor/$${size}x$${size}/apps/taigikeyboard.png || exit 1
+		install -Dm644 data/icons/hicolor/"$size"x"$size"/apps/taigikeyboard.png "$pkgdir"/usr/share/icons/hicolor/"$size"x"$size"/apps/taigikeyboard.png || exit 1
 	done
-	install -Dm755 target/release/taigikeyboard-settings ${pkgdir}/usr/bin/taigikeyboard-settings
-	install -Dm644 data/tw.taigikeyboard.Settings.desktop ${pkgdir}/usr/share/applications/tw.taigikeyboard.Settings.desktop
+	install -Dm755 target/release/taigikeyboard-settings "$pkgdir"/usr/bin/taigikeyboard-settings
+	install -Dm644 data/tw.taigikeyboard.Settings.desktop "$pkgdir"/usr/share/applications/tw.taigikeyboard.Settings.desktop
 }
 
 package_ibus-taigikeyboard() {
 	pkgdesc='Taigi input method for IBus'
 	depends=(taigikeyboard-common ibus)
-	install -Dm755 target/release/ibus-engine-taigikeyboard ${pkgdir}/usr/libexec/ibus-engine-taigikeyboard
-	install -Dm644 target/taigikeyboard.xml ${pkgdir}/usr/share/ibus/component/taigikeyboard.xml
+	install -Dm755 target/release/ibus-engine-taigikeyboard "$pkgdir"/usr/libexec/ibus-engine-taigikeyboard
+	install -Dm644 target/taigikeyboard.xml "$pkgdir"/usr/share/ibus/component/taigikeyboard.xml
 }
 
 package_fcitx5-taigikeyboard() {
 	pkgdesc='Taigi input method for Fcitx5'
 	depends=(taigikeyboard-common fcitx5)
-	DESTDIR=$pkgdir cmake --install target/fcitx5-build
+	DESTDIR="$pkgdir" cmake --install target/fcitx5-build
 }
