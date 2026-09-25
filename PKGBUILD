@@ -14,7 +14,7 @@
 # at `cargo install --path src-tauri` in the README.
 
 pkgname=nerva-desktop-bin
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="Persistent focus workspace for deep work — timers, notes, habits, tasks"
 arch=('x86_64')
@@ -37,7 +37,7 @@ options=('!strip' '!emptydirs')
 # Repack the official .deb so /usr/bin/nerva is the same binary
 # that ships on every Linux distribution.
 source=("nerva-${pkgver}.deb::https://github.com/piyushptiwari1/nerva/releases/download/v${pkgver}/Nerva_${pkgver}_amd64.deb")
-sha256sums=('542180d5e916f2c4e5cb92e2b0817778de46aac6899efb8d42bc86a84f176610')
+sha256sums=('efe96be15ff417d7fb355003dbe30aaadb9fa634f47b4e191a8b8ffe46ff1f31')
 
 prepare() {
   # Extract data.tar.* out of the deb without `dpkg-deb` (not in core).
