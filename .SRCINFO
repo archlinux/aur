@@ -1,0 +1,13 @@
+pkgbase = word2a
+	pkgdesc = Terminal word game in Italian
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/fraa2a/word2a
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = gcc-libs
+	source = word2a-0.1.0.tar.gz::https://codeload.github.com/fraa2a/word2a/tar.gz/refs/tags/v0.1.0
+	sha256sums = cbd4e49b995699d92f123397992c70cad66c3161e35c3b4a83b6a954f557699e
+
+pkgname = word2a
