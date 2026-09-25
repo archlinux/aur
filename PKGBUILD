@@ -2,8 +2,8 @@
 
 _pkgname="linux-wifi-hotspot"
 pkgname="${_pkgname}-bin"
-pkgver=4.7.2
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="Feature-rich wifi hotspot creator"
 arch=(
   'x86_64'
@@ -59,9 +59,9 @@ source_x86_64=(
 noextract=(
   "${source_x86_64[@]##*/}"
 )
-b2sums=('04ee85002030378b57f7e0dddc16ed1ad546513fee5a6c8754b4e879e45dd3350083ced3fef268667463f05029280655f2e9ee0ee224ed046fef97eb407e52f4'
+b2sums=('2a446b233f1836591f037627c7d9f1cb75771eea279e635c9d308a9c4e98dcdf440c88e387d91f4de45fc0545bcd1c49cb19eed2d6a90c46370bbf9031110d35'
         '2864aeda3055806c3008e6d13452edf1f3b3b4fa0bca1477f0137a49899ef4cc0798b2f2385a2f2ba7e1d52363fd9ea0437088d845b8c775740e6ade858244de')
-b2sums_x86_64=('490b99dffd08f70f8405cae6426ba32f589fa529b2ec191f0f34596902a505f601c547ecc8f946f24b587c3b7b83a5fbff054410c92d4458e4ead3d6a8f36e1d')
+b2sums_x86_64=('3f3d62732428d956bf32b7fcdb3a4fc67fa179dbf5f9d60192adcc7ab1ae2ded41f7aba2321eaf5af5b740003764fd56557bff14cef4102f1a5bd11957b9ce54')
 
 prepare() {
   local source_array="source_${CARCH}[0]"
