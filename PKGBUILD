@@ -3,7 +3,7 @@
 
 set -u
 pkgname='camlpdf'
-_pkgver='2.9'
+_pkgver='2.9.2'
 pkgver="${_pkgver//atchlevel/}"
 pkgver="${pkgver//-/.}"
 pkgrel='1'
@@ -16,8 +16,8 @@ makedepends=('ocaml-findlib')
 options=('!makeflags' 'staticlibs')
 _srcdir="camlpdf-${_pkgver}"
 source=("${_srcdir}.tar.gz::https://github.com/johnwhitington/camlpdf/archive/v${_pkgver}.tar.gz")
-md5sums=('ec43131411388cab3ed5e936859497d3')
-sha256sums=('2bbc222eb6e1be4ef6ec2900a1bba1da652704ff1343e742726689e077d35a27')
+md5sums=('8362288e82dd2807ec3132c9d26cab73')
+sha256sums=('1885549dbb2e243b12d1b3752f443efc460400283ce318ec56fbe2f438a57ac8')
 
 _setvars() {
   _OCAMLFIND_DESTDIR="${pkgdir}/$(ocamlfind printconf destdir)"
