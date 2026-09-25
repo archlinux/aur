@@ -284,6 +284,28 @@ _ask_multi() {
   fi
 }
 
+# _ask_choice TITLE DEFAULT KEY:description ... -> sets _choice to a KEY.
+# Enter (or EOF) keeps DEFAULT; anything else must be a listed number. Plain
+# `select` cannot do this: it redisplays the menu on an empty line.
+_ask_choice() {
+  local _title="$1" _default="$2"; shift 2
+  local -a _items=("$@")
+  local _i _ans
+  echo "  $_title:"
+  for _i in "${!_items[@]}"; do
+    printf "    %d) %-12s %s%s\n" "$((_i + 1))" "${_items[$_i]%%:*}" "${_items[$_i]#*:}" \
+      "$([[ "${_items[$_i]%%:*}" == "$_default" ]] && echo "  (default)")"
+  done
+  while :; do
+    read -r -p "  > " _ans || _ans=""
+    if [[ -z "$_ans" ]]; then _choice="$_default"; return; fi
+    if [[ "$_ans" =~ ^[0-9]+$ ]] && (( _ans >= 1 && _ans <= ${#_items[@]} )); then
+      _choice="${_items[$((_ans - 1))]%%:*}"; return
+    fi
+    echo "  Enter 1-${#_items[@]}, or press Enter for $_default."
+  done
+}
+
 # Resolve every build option: prompt when interactive, otherwise fall back to
 # environment variables and defaults. Called from prepare() (so the answers are
 # known before pkgver() needs them) and re-read from disk by build().
@@ -341,17 +363,10 @@ _resolve_options() {
   # ── Hinting engine ─────────────────────────────────────────────────────────
   if [[ "$HINTING" == true && "$NERD_PATCH" == false && "$_interactive" == true && -z "${HINT_ENGINE:-}" ]]; then
     echo ""
-    echo "  Hinting engine:"
-    PS3="  > "
-    select _choice in "ttfautohint (TrueType bytecode, converts OTF→TTF)" \
-                      "cff (PostScript/CFF hints, keeps OTF)"; do
-      case "$REPLY" in
-        1) HINT_ENGINE=ttfautohint; break ;;
-        2) HINT_ENGINE=cff; break ;;
-        *) echo "  Please enter 1 or 2." ;;
-      esac
-      [[ -z "$REPLY" ]] && { echo "  No selection; defaulting to ttfautohint."; HINT_ENGINE=ttfautohint; break; }
-    done
+    _ask_choice "Hinting engine" ttfautohint \
+      "ttfautohint:TrueType bytecode, converts OTF→TTF" \
+      "cff:PostScript/CFF hints, keeps OTF"
+    HINT_ENGINE=$_choice
   fi
   HINT_ENGINE="${HINT_ENGINE:-ttfautohint}"
   # Patched fonts are always TTF → ttfautohint only.
@@ -364,27 +379,15 @@ _resolve_options() {
   if [[ "$HINTING" == true && "$HINT_ENGINE" == ttfautohint ]]; then
     if [[ "$_interactive" == true && -z "${HINT_PRESET:-}" && -z "${HINT_MODE:-}" ]]; then
       echo ""
-      echo "  Hinting preset:"
-      PS3="  > "
-      select _choice in "balanced (upstream defaults, qsq 8-50 x14)" \
-                        "terminal (mono/small, qss 6-50 x10 +gasp)" \
-                        "ui (proportional screen, qsq 8-60 x14 +gasp)" \
-                        "print (natural stems, nnn, no x-snap)" \
-                        "light (HiDPI minimal, nnn 12-50)" \
-                        "strong (aggressive low-DPI, sss +smooth gasp)" \
-                        "custom (set HINT_* vars yourself)"; do
-        case "$REPLY" in
-          1) HINT_PRESET=balanced; break ;;
-          2) HINT_PRESET=terminal; break ;;
-          3) HINT_PRESET=ui;       break ;;
-          4) HINT_PRESET=print;    break ;;
-          5) HINT_PRESET=light;    break ;;
-          6) HINT_PRESET=strong;   break ;;
-          7) HINT_PRESET=custom;   break ;;
-          *) echo "  Please enter 1-7." ;;
-        esac
-        [[ -z "$REPLY" ]] && { echo "  No selection; defaulting to balanced."; HINT_PRESET=balanced; break; }
-      done
+      _ask_choice "Hinting preset" balanced \
+        "balanced:upstream defaults, qsq 8-50 x14" \
+        "terminal:mono/small, qss 6-50 x10 +gasp" \
+        "ui:proportional screen, qsq 8-60 x14 +gasp" \
+        "print:natural stems, nnn, no x-snap" \
+        "light:HiDPI minimal, nnn 12-50" \
+        "strong:aggressive low-DPI, sss +smooth gasp" \
+        "custom:set HINT_* vars yourself"
+      HINT_PRESET=$_choice
     fi
     HINT_PRESET="${HINT_PRESET:-balanced}"
     _apply_preset "$HINT_PRESET"
