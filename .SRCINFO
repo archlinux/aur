@@ -10,10 +10,10 @@ pkgbase = setools
 	license = GPL
 	license = LGPL
 	checkdepends = checkpolicy
-	checkdepends = python-fastmcp-slim
 	checkdepends = python-pyqt6
 	checkdepends = python-pytest
 	checkdepends = python-pytest-qt
+	checkdepends = python-typing_extensions
 	makedepends = cython
 	makedepends = python-tox
 	depends = libsepol>=3.9

@@ -31,7 +31,7 @@ optdepends=('python-fastmcp-slim: for SETools AI tools'
             'python-pyqt6: needed for graphical tools'
             'qt6-tools: display apol help with Qt Assistant')
 makedepends=('cython' 'python-tox')
-checkdepends=('checkpolicy' 'python-fastmcp-slim' 'python-pyqt6' 'python-pytest' 'python-pytest-qt')
+checkdepends=('checkpolicy' 'python-pyqt6' 'python-pytest' 'python-pytest-qt' 'python-typing_extensions')
 conflicts=("selinux-${pkgname}")
 provides=("selinux-${pkgname}=${pkgver}-${pkgrel}")
 source=("https://github.com/SELinuxProject/setools/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
@@ -53,7 +53,10 @@ check() {
   # https://pytest-qt.readthedocs.io/en/latest/intro.html#requirements )
   # https://github.com/archlinuxhardened/selinux/issues/141
   # https://github.com/SELinuxProject/setools/issues/160
-  PYTEST_QT_API='pyqt6' pytest tests
+  #
+  # 2026-09-25 Skip MCP tests as FastMCP (from python-fastmcp-slim) requires
+  # python-mcp 2.x and Arch Linux packages 1.29.0
+  PYTEST_QT_API='pyqt6' pytest --ignore tests/library/mcp/test_server.py tests
 }
 
 package() {
