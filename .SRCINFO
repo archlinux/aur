@@ -1,6 +1,6 @@
 pkgbase = python-comfyui-workflow-templates-core
-	pkgdesc = Core helpers for ComfyUI workflow templates.
-	pkgver = 0.3.266
+	pkgdesc = Core helpers for ComfyUI workflow templates
+	pkgver = 0.3.357
 	pkgrel = 1
 	url = https://github.com/Comfy-Org/workflow_templates/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-comfyui-workflow-templates-core
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/comfyui-workflow-templates-core/comfyui_workflow_templates_core-0.3.266.tar.gz
-	sha512sums = e73fad9bbb5df08330923ded30ecc73b39cb24702b30686cae86566a70d03e16e9763d9ed1f20f7175f4174c8da825edf72e639d59278137f5a4e39b70f6eb16
+	source = https://files.pythonhosted.org/packages/source/c/comfyui-workflow-templates-core/comfyui_workflow_templates_core-0.3.357.tar.gz
+	sha512sums = b70670ae1a34c8571f5713f5a6ded79b6233d825d74e684f9ec93fb5d485bfabaebbe7b6c5eb67319b124489c8cbd403f328ee6e97b6b8dd4ad015efcefd10a2
 
 pkgname = python-comfyui-workflow-templates-core
