@@ -9,7 +9,7 @@ pkgbase="${_pkgbase}-bin"
 pkgname=(
   "${_pkgname[@]/%/-bin}"
 )
-pkgver=4.6.0
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="A file encryption software that uses the Advanced Encryption Standard (AES)"
 arch=(
@@ -33,11 +33,11 @@ source_x86_64=(
   "${url}/download/v${pkgver%%.*}/linux/${_pkgbase}_gui-${pkgver}-Linux-x86_64.tar.gz.sig"
 )
 # https://www.aescrypt.com/linux_verification.html
-sha256sums=('930f62fa023210fdf4db189641278b8303ec20388e8a9f39683c9e71759bfbec'
-            'cf91cd5635ae9d9d4d50a2fa16f17edc58278573cbe4ca075d7278ce73a9381b'
-            '9f591bf27e251244e387c87b228e03f8b921d08332e2fb8407badcd0132d3581'
+sha256sums=('b3a2553a9ed3282f4e7b3207d12b4028af9275995c3e1e6f9365b531c37435f5'
+            '339922c60f07f0e3eea66a1d8620e6cbb2cfe4d658b40fe3ea554fa35c0ba278'
+            '54aee90b1ab78295b1659ef439cd5daa5d90c488db8fcd71d069cd8c941c8fef'
             '53cb3f833f03ad93abb5bfae54a80de49ecb3181018b0237edd5df913aa67434')
-sha256sums_x86_64=('0f563cf34ebf803fa3a9e1e9319a18b5114e62ff3e81de84b7c87b95b07cf896'
+sha256sums_x86_64=('911be439ef3d2f67f8d52ce3f0d2eb01606de0943e8f45f426696689ffaa032f'
                    'SKIP')
 validpgpkeys=(
   'C264DC0F1C13A4BB18CAAF1BE7BE982BCD50DDF4' # Terrapane Support <support@terrapane.com> (https://www.terrapane.com/terrapane.asc)
