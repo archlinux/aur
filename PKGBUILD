@@ -1,7 +1,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 _pkgname=warna
-pkgname=(lua{,51,52,53}-"$_pkgname")
+pkgname=(lua{,51,52,53,54}-"$_pkgname")
 pkgver=0.3.5
 pkgrel=1
 pkgdesc="Terminal text styling library for Lua"
@@ -12,7 +12,7 @@ makedepends=(luarocks)
 _revision=2
 source=("https://luarocks.org/manifests/urnightmaree/$_pkgname-$pkgver-$_revision.src.rock")
 sha256sums=('c350fdc77e545c0e659d89de8b0f221da72f16a3748596d38ebf1925c6c0c9b9')
-_lua_version=5.4
+_lua_version=5.5
 
 _package() {
 	install -Dm644 ./*.rock -t $1
@@ -30,21 +30,21 @@ _package() {
 }
 
 package_lua51-warna() {
-	local version=5.1
-	_package $version
+	_package 5.1
 }
 
 package_lua52-warna() {
-	local version=5.2
-	_package $version
+	_package 5.2
 }
 
 package_lua53-warna() {
-	local version=5.3
-	_package $version
+	_package 5.3
+}
+
+package_lua54-warna() {
+	_package 5.4
 }
 
 package_lua-warna() {
-	local version=$_lua_version
-	_package $version
+	_package $_lua_version
 }
