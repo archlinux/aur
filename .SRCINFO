@@ -1,7 +1,7 @@
 pkgbase = zenith-gamestream
 	pkgdesc = Linux game streaming host for Moonlight, forked from Sunshine
 	pkgver = 2026.730.002631
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jacksonpate/zenith
 	install = zenith-gamestream.install
 	arch = x86_64
@@ -64,8 +64,10 @@ pkgbase = zenith-gamestream
 	source = zenith::git+https://github.com/jacksonpate/zenith.git#commit=8f5f0e95569384d4d59dad8c4fa153c287ac7670
 	source = zenith-gamestream.conf
 	sha256sums = SKIP
-	sha256sums = 0d328038322f62ff1f3319666df5f8f58c0a028415a917ad247b0446c1ff90f5
+	sha256sums = 9c16d35e68843036d95bc3216e3a569df1c67a8a0f9c84096e2da7ed516cb2d3
 	source_x86_64 = Linux-x86_64-ffmpeg.tar.gz::https://github.com/jacksonpate/build-deps/releases/download/v2026.708.4843/Linux-x86_64-ffmpeg.tar.gz
+	makedepends_x86_64 = cuda
+	makedepends_x86_64 = gcc15
 	sha256sums_x86_64 = 727256835b71bc203e962f3c6c0ee58ee37ae344c453a11b691298aa94136367
 	source_aarch64 = Linux-aarch64-ffmpeg.tar.gz::https://github.com/jacksonpate/build-deps/releases/download/v2026.708.4843/Linux-aarch64-ffmpeg.tar.gz
 	sha256sums_aarch64 = 85e2797aeebb799af32803f93d6aedafd1147dc24fb3efdbcd8f464677838157

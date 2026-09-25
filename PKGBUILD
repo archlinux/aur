@@ -2,7 +2,7 @@
 
 pkgname=zenith-gamestream
 pkgver=2026.730.002631
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux game streaming host for Moonlight, forked from Sunshine'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jacksonpate/zenith'
@@ -57,10 +57,7 @@ makedepends=(
   'uv'
   'vulkan-headers'
 )
-# Set ZENITH_USE_CUDA=1 before makepkg -s to install CUDA build dependencies.
-if [[ ${ZENITH_USE_CUDA:-auto} == 1 ]]; then
-  makedepends_x86_64=('cuda' 'gcc15')
-fi
+makedepends_x86_64=('cuda' 'gcc15')
 optdepends=(
   'evdi-dkms: virtual display fallback when all GPU ports are occupied'
   'libva-mesa-driver: hardware encoding on AMD GPUs'
@@ -78,7 +75,7 @@ source=(
 )
 source_x86_64=("Linux-x86_64-ffmpeg.tar.gz::https://github.com/jacksonpate/build-deps/releases/download/${_ffmpeg_tag}/Linux-x86_64-ffmpeg.tar.gz")
 source_aarch64=("Linux-aarch64-ffmpeg.tar.gz::https://github.com/jacksonpate/build-deps/releases/download/${_ffmpeg_tag}/Linux-aarch64-ffmpeg.tar.gz")
-sha256sums=('SKIP' '0d328038322f62ff1f3319666df5f8f58c0a028415a917ad247b0446c1ff90f5')
+sha256sums=('SKIP' '9c16d35e68843036d95bc3216e3a569df1c67a8a0f9c84096e2da7ed516cb2d3')
 sha256sums_x86_64=('727256835b71bc203e962f3c6c0ee58ee37ae344c453a11b691298aa94136367')
 sha256sums_aarch64=('85e2797aeebb799af32803f93d6aedafd1147dc24fb3efdbcd8f464677838157')
 
@@ -106,6 +103,7 @@ build() {
     -S "$srcdir/zenith"
     -B "$srcdir/build"
     -G Ninja
+    -DBUILD_WERROR=ON
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_INSTALL_LIBDIR=lib
@@ -113,6 +111,11 @@ build() {
     -DBUILD_TESTS=OFF
     -DSUNSHINE_ASSETS_DIR=share/zenith
     -DSUNSHINE_EXECUTABLE_PATH=/usr/bin/zenith
+    -DSUNSHINE_ENABLE_DRM=ON
+    -DSUNSHINE_ENABLE_KWIN=ON
+    -DSUNSHINE_ENABLE_PORTAL=ON
+    -DSUNSHINE_ENABLE_WAYLAND=ON
+    -DSUNSHINE_ENABLE_X11=ON
     -DSUNSHINE_PUBLISHER_NAME=jacksonpate
     -DSUNSHINE_PUBLISHER_WEBSITE=https://github.com/jacksonpate/zenith
     -DSUNSHINE_PUBLISHER_ISSUE_URL=https://github.com/jacksonpate/zenith/issues
@@ -120,21 +123,12 @@ build() {
     -DFFMPEG_PREPARED_BINARIES="$srcdir/ffmpeg"
   )
 
-  local use_cuda=${ZENITH_USE_CUDA:-auto}
-  if [[ $use_cuda == auto ]]; then
-    if [[ $CARCH == 'x86_64' && -x /opt/cuda/bin/nvcc ]] && command -v g++-15 >/dev/null; then
-      use_cuda=1
-    else
-      use_cuda=0
-    fi
-  fi
-
-  if [[ $CARCH == 'x86_64' && $use_cuda == 1 ]]; then
+  if [[ $CARCH == 'x86_64' ]]; then
     export CC=gcc-15 CXX=g++-15 CUDA_PATH=/opt/cuda
     cmake_options+=(
       -DSUNSHINE_ENABLE_CUDA=ON
       -DCMAKE_CUDA_COMPILER=/opt/cuda/bin/nvcc
-      -DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-15
+      -DCMAKE_CUDA_HOST_COMPILER=/usr/bin/gcc-15
     )
   else
     cmake_options+=(-DSUNSHINE_ENABLE_CUDA=OFF)
@@ -148,6 +142,10 @@ check() {
   appstreamcli validate --no-net "$srcdir/build/io.github.jacksonpate.Zenith.metainfo.xml"
   desktop-file-validate "$srcdir/build"/*.desktop
   "$srcdir/build/zenith" --version
+  if [[ $CARCH == 'x86_64' ]] && grep -qaF 'Attempting to use NVENC without CUDA support' "$srcdir/build/zenith"; then
+    printf '%s\n' 'Zenith was built without CUDA support' >&2
+    return 1
+  fi
 }
 
 package() {

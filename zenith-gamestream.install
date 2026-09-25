@@ -7,8 +7,27 @@ post_install() {
   udevadm trigger --subsystem-match=input
   modprobe uinput || true
   modprobe uhid || true
+  modprobe evdi 2>/dev/null || echo 'Zenith: EVDI is unavailable; install evdi-dkms if no GPU port is free.'
+  if [ -e /sys/devices/evdi/add ]; then
+    chmod 0666 /sys/devices/evdi/add || true
+  fi
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl --global enable app-io.github.jacksonpate.Zenith.service 2>/dev/null || \
+      echo 'Zenith: could not enable the user service globally.'
+  fi
+  echo 'Zenith: if virtual displays are unavailable, run zenith-display doctor.'
+  echo 'If no display provider is available, run sudo zenith-display setup after this pacman transaction.'
+  echo 'Zenith: if you use a firewall, allow incoming client traffic on TCP 47984, 47989, 47990, 48010'
+  echo 'and UDP 47998-48000; also allow UDP 48001 for the remote microphone.'
+  echo 'These are default ports; changing port in zenith.conf shifts them.'
 }
 
 post_upgrade() {
   post_install
+}
+
+pre_remove() {
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl --global disable app-io.github.jacksonpate.Zenith.service 2>/dev/null || true
+  fi
 }
