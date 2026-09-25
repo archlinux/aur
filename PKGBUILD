@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=vot-cli-live
-pkgver=1.7.5
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="VOT-CLI with Yandex live voices support"
 arch=(any)
@@ -17,7 +17,7 @@ provides=(${pkgname%-live})
 conflicts=(${pkgname%-live})
 options=(!debug)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('818a8667aadcf4e7bd96e634957ace120f6cb50661636ad9139f4d9a9c8c35228f783822e157443a83cce1cbf1c70e26b274e3cfdd5d27cbb6c2e6aa3b41495f')
+b2sums=('a8792288528ef27adad6befdbef87ca2d2f6e1e7d13ca519c03578498517458f15e30e5c59d50df3d302406ed590fddbb1866f4d633cc184b2d197497cfc3b27')
 
 prepare() {
   cd $pkgname-$pkgver
