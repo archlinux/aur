@@ -1,0 +1,9 @@
+post_install() {
+  systemd-sysusers
+  systemd-tmpfiles --create /usr/lib/tmpfiles.d/bookshelfng.conf
+}
+
+post_upgrade() {
+  systemd-sysusers
+  systemd-tmpfiles --create /usr/lib/tmpfiles.d/bookshelfng.conf
+}

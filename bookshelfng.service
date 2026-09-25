@@ -1,0 +1,23 @@
+[Unit]
+Description=BookshelfNG personal book library manager
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=bookshelfng
+Group=bookshelfng
+EnvironmentFile=-/etc/bookshelfng/bookshelfng.env
+ExecStart=/usr/lib/bookshelfng/Readarr -nobrowser -data=/var/lib/bookshelfng
+Restart=on-failure
+RestartSec=5
+UMask=0027
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+
+[Install]
+WantedBy=multi-user.target

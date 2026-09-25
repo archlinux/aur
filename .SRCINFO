@@ -1,0 +1,27 @@
+pkgbase = bookshelfng-bin
+	pkgdesc = Standalone book library manager and download automation server
+	pkgver = 0.4.21.35
+	pkgrel = 1
+	url = https://github.com/snapetech/bookshelfng
+	install = bookshelfng.install
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	depends = gcc-libs
+	depends = icu
+	depends = openssl
+	depends = sqlite
+	optdepends = ffmpeg: create chaptered audiobook files
+	backup = etc/bookshelfng/bookshelfng.env
+	source = https://github.com/snapetech/bookshelfng/releases/download/main-v0.4.21.35/BookshelfNG-main-v0.4.21.35-linux-x64.tar.gz
+	source = bookshelfng.service
+	source = bookshelfng.env
+	source = bookshelfng.sysusers
+	source = bookshelfng.tmpfiles
+	sha256sums = 1fcf6adea1260e9da54bb76c515c7608d5b7419dfc68b92d5220d59ff9785f3d
+	sha256sums = 4b804dd1c8b33184af270bb1997defdc866fb8a53b8b8c4cd307c18ebc533aef
+	sha256sums = 03bb0f783c495bbc1fb137f20df104c9fa02555efbcf6e499918c3eb6a17e86e
+	sha256sums = d500d4bb5f2e851a0fb2123a463f205362c878b722e1d48759c3244be7036b50
+	sha256sums = 58ff38c5f0b8fc840feb2910b34cb9d4f1829805f141fd21093670932933c420
+
+pkgname = bookshelfng-bin
