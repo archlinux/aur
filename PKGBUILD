@@ -2,7 +2,7 @@
 # Maintainer: Marcus Johansson <polarn@polarn.net>
 
 pkgname='env-exec-bin'
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='A tool to inject environment variables from various sources (GCP Secrets Manager, GitLab) before executing commands'
 url='https://github.com/polarn/env-exec'
@@ -12,13 +12,13 @@ provides=('env-exec')
 conflicts=('env-exec')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/polarn/env-exec/releases/download/${pkgver}/env-exec_Linux_arm64.tar.gz")
-sha256sums_aarch64=('9799397770faac69a70954bc45c09b584e74405047476518c9088240eb5a6772')
+sha256sums_aarch64=('e53a6cc89577295292419e4f83adf329b127fe6b3b66465b1e9999a3610ab526')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/polarn/env-exec/releases/download/${pkgver}/env-exec_Linux_i386.tar.gz")
-sha256sums_i686=('e84bf6db934bef6fd18113cc20457fb63f36741ed11dd0a56310a0fca8ab591c')
+sha256sums_i686=('81255dbb8d823b428a24d8ac4fc2ec881445ea19c54fe12805f6fe893c9fd1c2')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/polarn/env-exec/releases/download/${pkgver}/env-exec_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('83ff545537daa13005b9d58e024665c5b806559b2583e20abef14a25167c5515')
+sha256sums_x86_64=('de748d27bece761ceaaba39b14e28626327d1a80fff58ad0a049ebd6385faf73')
 
 package() {
   install -Dm755 "./env-exec" "${pkgdir}/usr/bin/env-exec"
