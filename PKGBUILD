@@ -15,7 +15,7 @@ _basename="zig"
 _suffix="-mach"
 _pkgname="${_basename}${_suffix}"
 pkgname="${_pkgname}-bin"
-pkgver=0.16.0dev.3142+5ccfeb926
+pkgver=0.17.0dev.2228+955228b68
 _pkgver="${pkgver//dev/-dev}"
 pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
@@ -45,19 +45,19 @@ source_${_carch}=(
   'https://pkg.hexops.org/zig/${_basename}-${_arch[${_carch}]}-linux-${_pkgver}.tar.xz.minisig'
 )"
 done
-sha256sums_aarch64=('4801ddd0fe720e5b0c177230caa2301ed3ce2e3701beec6c18888b49244c1a5a'
+sha256sums_aarch64=('defa288a18ca62164d62b405a78be22ede0d0827841c2f060624d0e1511ba96c'
                     'SKIP')
-sha256sums_i686=('6d9fd848262ab2c30b2025576fa4698bcee38a694efae22c3daa599a13de2cde'
+sha256sums_i686=('538cc590e3f104d6e073c33385c1c41341e927e5c20da8c45cb55791e96a6371'
                  'SKIP')
-sha256sums_riscv64=('f70af6f2f8408ab25f7033259e7acf01eb3ce6b584ec9001d981b2b2a2648390'
+sha256sums_riscv64=('df16a2c8d922c039ac7de0bd699cacf71e180895c5c67c6bb26b0b5050154caf'
                     'SKIP')
-sha256sums_x86_64=('ab4e7bf6358a63e50aeec2243547b63791c75523685ad458d0c339448d723a88'
+sha256sums_x86_64=('7ba127e73adeafd25aee6a16cc6008486c93ea0fcec5bff9d7c6b035785b22c3'
                    'SKIP')
-sha256sums_powerpc64le=('ed57b42dcb718348d13472686347b4f17afacd87cb839483e718e776af2182d6'
+sha256sums_powerpc64le=('41e0c420464410fdd6f7ace51a00d3ff432f7f48fb51951a89066fca880e3ceb'
                         'SKIP')
-sha256sums_loong64=('6c9d70ffa4d254103aab7fa5e9bb7abdc605c45a144fb736129f22d5cec78e8c'
+sha256sums_loong64=('20a7ef68610138cba89f7f141c5a27cc9320f8a27d6f1e3d245f49bca9641c2d'
                     'SKIP')
-sha256sums_armv7h=('a431a24f43431a8f8d646fbe984b6310c4ec9d124be30916a20ea056d22d19e9'
+sha256sums_armv7h=('a99a75f6ee7573577fc3b1f691a93ce462bc43eeaad464a3a21de3105db77e31'
                    'SKIP')
 
 verify() {
