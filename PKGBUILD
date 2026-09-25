@@ -12,9 +12,9 @@ conflicts=(fetchdeeznutz)
 pkgver=70
 pkgrel=1
 arch=('any')
-url='https://github.com/sirspudd/fetchdeeznutz'
+url="https://github.com/sirspudd/${_pkgname}"
 license=('MIT')
-source=("git+https://github.com/sirspudd/${_pkgname}")
+source=("git+${url}")
 sha256sums=('SKIP')
 options=('!strip')
 
