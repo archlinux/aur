@@ -4,13 +4,13 @@ pkgname=froststrap
 _tag='v2.0.2'
 pkgver=${_tag#v}
 pkgver=${pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="A fork of Fishstrap/Bloxstrap, focused on performance and customization"
 arch=('x86_64')
 url="https://github.com/Froststrap/Froststrap"
 license=('AGPL-3.0-or-later' 'MIT' 'MPL-2.0')
 depends=('dotnet-runtime-10.0' 'icu' 'fontconfig' 'hicolor-icon-theme')
-makedepends=('dotnet-sdk-10.0' 'git')
+makedepends=('dotnet-sdk-10.0' 'git' 'rust')
 source=("git+${url}.git#tag=${_tag}"
     "git+https://github.com/Froststrap/ColorPicker.git")
 sha256sums=('SKIP'
@@ -22,6 +22,9 @@ prepare() {
 }
 
 build() {
+    # TODO 2.0.3: switch to upstream's Fallout build system once it
+    # supports --no-installers:
+    #   dotnet run --project build -- publish --no-installers --configuration Release
     cd Froststrap
     dotnet publish "$srcdir/Froststrap/Froststrap/Froststrap.csproj" \
         -r linux-x64 \
@@ -59,6 +62,7 @@ TryExec=froststrap
 Icon=froststrap
 Terminal=false
 Categories=Game;
+MimeType=x-scheme-handler/roblox;x-scheme-handler/roblox-player;
 EOF
 
     # Install licenses

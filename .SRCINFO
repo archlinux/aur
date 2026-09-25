@@ -1,7 +1,7 @@
 pkgbase = froststrap
 	pkgdesc = A fork of Fishstrap/Bloxstrap, focused on performance and customization
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Froststrap/Froststrap
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -9,6 +9,7 @@ pkgbase = froststrap
 	license = MPL-2.0
 	makedepends = dotnet-sdk-10.0
 	makedepends = git
+	makedepends = rust
 	depends = dotnet-runtime-10.0
 	depends = icu
 	depends = fontconfig
