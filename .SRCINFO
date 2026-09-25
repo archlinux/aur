@@ -1,14 +1,14 @@
 pkgbase = funzzy
 	pkgdesc = A lightweight generic purpose file watcher
-	pkgver = 1.5.0
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/cristianoliveira/funzzy
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
-	source = https://github.com/cristianoliveira/funzzy/archive/refs/tags/v1.5.0/funzzy-1.5.0.tar.gz
-	sha256sums = 9c98ff08a611a8c3fc9eedd5bc56ecdc9fbd7ec5630d020cd1aa7426524df3d3
+	source = https://github.com/cristianoliveira/funzzy/archive/refs/tags/v2.0.0/funzzy-2.0.0.tar.gz
+	sha256sums = 79c4e934ea2035b365b01d5bcb1c7b72e6cc089543fae29c71800ae274638c0a
 
 pkgname = funzzy
