@@ -1,6 +1,6 @@
 pkgname=mingw-w64-pagmo
-pkgver=2.19.1
-pkgrel=2
+pkgver=2.20.0
+pkgrel=1
 pkgdesc="Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model (mingw-w64)"
 arch=('any')
 url="https://github.com/esa/pagmo2"
@@ -9,14 +9,12 @@ depends=('mingw-w64-boost' 'mingw-w64-onetbb' 'mingw-w64-nlopt' 'mingw-w64-coin-
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/esa/pagmo2/archive/v${pkgver}.tar.gz")
-sha256sums=('ecc180e669fa6bbece959429ac7d92439e89e1fd1c523aa72b11b6c82e414a1d')
+sha256sums=('8d684e9a3667dcccc844489083906c35aba7610594c5fce0f4eccce9c2264f4d')
 
 _architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare() {
   cd "${srcdir}/pagmo2-$pkgver"
-  # eigen 5.x compat
-  sed -i "s|Eigen3 3.3|Eigen3|g" CMakeLists.txt
 }
 
 build() {
