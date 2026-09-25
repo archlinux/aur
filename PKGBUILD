@@ -5,7 +5,7 @@
 pkgname=flea-git
 _pkgname=flea
 # The release workflow writes the tag's own pkgver() value here, and pushes only when the rest of this file changed.
-pkgver=0.3.3.r0.gd0823ac
+pkgver=0.3.6.r0.g65cec6f
 pkgrel=1
 pkgdesc='Fast, keyboard-first file manager for Omarchy (git version)'
 arch=('x86_64' 'aarch64')
@@ -60,6 +60,7 @@ package() {
   install -Dm644 packaging/com.thisisgm.flea.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 packaging/com.thisisgm.flea.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 packaging/flea.hook -t "$pkgdir/usr/share/libalpm/hooks"
 
   install -Dm644 ui/qmldir ui/*.qml -t "$pkgdir/usr/share/flea/ui"
   install -Dm644 ui/js/*.js -t "$pkgdir/usr/share/flea/ui/js"
