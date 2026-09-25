@@ -1,0 +1,22 @@
+pkgbase = favnyr-bin
+	pkgdesc = A modern and lightweight file manager for Windows and Linux
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/GlitchAwakened/Favnyr
+	arch = x86_64
+	license = GPL-3.0
+	depends = glibc
+	depends = libgcc
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	provides = favnyr
+	conflicts = favnyr
+	options = !strip
+	source = README-0.3.3.md::https://raw.githubusercontent.com/GlitchAwakened/Favnyr/v0.3.3/README.md
+	source = LICENSE-0.3.3::https://raw.githubusercontent.com/GlitchAwakened/Favnyr/v0.3.3/LICENSE
+	sha256sums = 555f06a8e82283ac2d624c6136af31ad26630bd9cb7be003ee9abe66dcf8c295
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = favnyr-x86_64-0.3.3.tgz::https://github.com/GlitchAwakened/Favnyr/releases/download/v0.3.3/favnyr-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 329cd76213f97031a64e89c49d7d382db611f7e725def8db818ce01a70774d3c
+
+pkgname = favnyr-bin

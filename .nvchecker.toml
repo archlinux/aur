@@ -1,0 +1,5 @@
+[favnyr-bin]
+source = "github"
+github = "GlitchAwakened/Favnyr"
+use_latest_release = true
+prefix = "v"
