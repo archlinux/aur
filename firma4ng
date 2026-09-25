@@ -1,0 +1,125 @@
+#!/usr/bin/bash
+# Package-managed launcher; all mutable vendor code runs as the invoking user.
+set -euo pipefail
+umask 077
+
+seed=/opt/firma4ng
+base="${XDG_DATA_HOME:-$HOME/.local/share}/firma4ng"
+runtime="$base/app"
+app_relative=System/Firma4NG_Linux/Firma4
+
+fail() { printf 'firma4ng: %s\n' "$*" >&2; exit 1; }
+usage() {
+    cat <<'HELP'
+Usage: firma4ng                       Open the application
+       firma4ng FILE                  Open a local file for verification
+       firma4ng --verify FILE         Open a local file for verification
+       firma4ng --import DIRECTORY    Copy an existing portable installation;
+                                      refuses to overwrite an existing runtime
+       firma4ng --show-path            Print the writable application directory
+       firma4ng --help
+
+Close Firma4NG before importing an existing installation. This launcher never
+runs the vendor setup.run or start_hid.bat. Do not run it with sudo.
+HELP
+}
+
+mode=launch
+import_from=
+args=()
+case "${1-}" in
+    --help|-h) usage; exit 0 ;;
+    --show-path) printf '%s\n' "$runtime"; exit 0 ;;
+    --import)
+        [[ $# -eq 2 ]] || fail 'Use --import DIRECTORY.'
+        mode=import
+        import_from="$(realpath -e -- "$2")"
+        [[ -d "$import_from" ]] || fail 'Import source must be a directory.'
+        ;;
+    --verify)
+        [[ $# -eq 2 ]] || fail 'Use --verify FILE.'
+        args=(verify "$(realpath -e -- "$2")")
+        [[ -f "${args[1]}" ]] || fail 'Verification input must be a regular file.'
+        ;;
+    '') [[ $# -eq 0 ]] || fail 'Empty filename.' ;;
+    -*) fail 'Unknown option. Use --help.' ;;
+    *)
+        [[ $# -eq 1 ]] || fail 'Pass one file at a time.'
+        args=(verify "$(realpath -e -- "$1")")
+        [[ -f "${args[1]}" ]] || fail 'Verification input must be a regular file.'
+        ;;
+esac
+
+(( EUID != 0 )) || fail 'Run as your ordinary desktop user, not root.'
+[[ "$base" == /* ]] || fail 'XDG_DATA_HOME must be an absolute path.'
+[[ "$base" != *:* ]] || fail 'A colon in the application path is incompatible with LD_LIBRARY_PATH.'
+
+validate_tree() {
+    [[ -d "$1/System/Commons" &&
+       -f "$1/$app_relative/kickstart.exe" &&
+       -f "$1/$app_relative/verify.exe" &&
+       -d "$1/$app_relative/lib" ]] ||
+        fail "Not a complete portable Firma4NG tree: $1"
+}
+
+if [[ "$mode" == import ]]; then
+    validate_tree "$import_from"
+fi
+
+[[ ! -L "$base" ]] || fail "Refusing a symlink as the private base directory: $base"
+mkdir -p -- "$base"
+[[ -d "$base" && -O "$base" ]] || fail "Directory is not owned by this user: $base"
+chmod 700 -- "$base"
+
+# Serialize only initialization/import. Do not keep an fd open in vendor code.
+(
+    [[ ! -L "$base/.init.lock" ]] || fail 'Refusing a symlink as the initialization lock.'
+    if [[ -e "$base/.init.lock" ]]; then
+        [[ -f "$base/.init.lock" && -O "$base/.init.lock" ]] || fail 'Invalid initialization lock.'
+    fi
+    exec 9> "$base/.init.lock"
+    flock -x 9
+
+    if [[ -e "$runtime" || -L "$runtime" ]]; then
+        [[ "$mode" != import ]] || fail "Runtime already exists; nothing overwritten: $runtime"
+        [[ ! -L "$runtime" && -d "$runtime" && -O "$runtime" ]] || fail 'Invalid runtime directory.'
+        validate_tree "$runtime"
+        exit 0
+    fi
+
+    stage="$(mktemp -d "$base/.initializing.XXXXXX")"
+    trap 'rm -rf -- "$stage"' EXIT
+    if [[ "$mode" == import ]]; then
+        # Import is explicit; the original installation remains untouched.
+        cp -a --no-preserve=ownership --reflink=auto -- "$import_from/." "$stage/"
+        printf 'imported\n' > "$stage/.firma4ng-package-seed"
+    else
+        [[ -r "$seed/Firma4NG.tar.gz" ]] || fail 'Packaged seed is missing; reinstall firma4ng-bin.'
+        (
+            cd "$seed"
+            sha256sum --check --status SHA256SUMS
+        ) || fail 'Packaged seed checksum mismatch; stopping.'
+        tar -xzf "$seed/Firma4NG.tar.gz" -C "$stage" \
+            --no-same-owner --no-same-permissions
+        cp -- "$seed/seed-version" "$stage/.firma4ng-package-seed"
+    fi
+    validate_tree "$stage"
+    # The vendor archive grants very broad write/execute modes: keep it private.
+    # No hardlinks to the package-managed seed or to an imported source are made.
+    chmod -R u+rwX,go-rwx -- "$stage"
+    mv -T -- "$stage" "$runtime"
+    trap - EXIT
+)
+
+if [[ "$mode" == import ]]; then
+    printf 'Copied existing application to:\n%s\nOriginal left unchanged. Run firma4ng to start.\n' "$runtime"
+    exit 0
+fi
+
+cd -- "$runtime/$app_relative"
+[[ -x ./kickstart.exe ]] || fail 'kickstart.exe is not executable.'
+# The already-tested direct launch: skip the privileged HID permissions helper.
+# Preserve the vendor TSL and application updater configuration unchanged.
+exec /usr/bin/env -u PYTHONPATH -u QT_PLUGIN_PATH \
+    PYTHONHOME="$PWD" LD_LIBRARY_PATH="$PWD:$PWD/lib" \
+    ./kickstart.exe "${args[@]}"

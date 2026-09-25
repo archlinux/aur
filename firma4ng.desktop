@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Name=Firma4NG
+GenericName=Digital signature and verification
+GenericName[it]=Firma digitale e verifica
+Comment=Sign documents and verify electronic signatures
+Comment[it]=Firma documenti e verifica le firme elettroniche
+Exec=firma4ng %f
+TryExec=firma4ng
+Icon=firma4ng
+Terminal=false
+StartupNotify=false
+Categories=Office;
+MimeType=application/pdf;application/pkcs7-mime;application/x-pkcs7-mime;
+Keywords=signature;smartcard;CNS;PAdES;CAdES;firma;verifica;

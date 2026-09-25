@@ -1,0 +1,124 @@
+Revision 1.6.20-2: compressed-download checksum correction
+
+Changes:
+- pkgrel 1 -> 2.
+- Pin the official gzip archive to SHA-256
+  36d39e7ca23f54e392d344901c02de5168b6700c20c2a8ca51a77d0f77811c14.
+- Keep the nested-seed hash and all launcher/packaging behavior unchanged.
+- Correct the extraction comment and README; update the README source hash.
+- Synchronize .SRCINFO. Native makepkg --printsrcinfo should regenerate it.
+
+Evidence:
+The user's terminal output confirms that the official gzip download has the new
+hash and that its entire decompressed byte stream hashes to
+4a487d568a979666e3c7d17405d9f04bbef8c67c027119b13f955daf3872a12d,
+the SHA-256 of the previously uploaded, statically inspected tar attachment.
+The official compressed bytes were NOT downloaded or independently hashed in
+this revision's container. The compression-only comparison is based on the
+user's successful, pipefail-protected command output.
+
+Tests run for this revision:
+- bash -n on PKGBUILD and launcher: passed.
+- All three local source hashes match the revised recipe and .SRCINFO: passed.
+- pkgrel and source hashes agree between PKGBUILD and .SRCINFO: passed.
+- The existing uploaded uncompressed tar still hashes to the reference: passed.
+
+Not rerun for this revision:
+- Native makepkg/fakeroot build, dependency resolution, installation or GUI.
+- Full prepare/check/package staging and launcher mock tests reported below.
+The following report is preserved verbatim as the earlier revision's record;
+its source checksum and build-file fingerprints describe revision 1 only.
+
+================ ORIGINAL REVISION 1 REPORT ================
+
+Firma4NG local packaging validation — 2026-09-25
+
+Target: firma4ng-bin 1.6.20-1 for Arch/CachyOS x86_64.
+Scope: binary repackaging, launcher/bootstrap logic and explicit migration.
+This is not an upstream release, a public AUR submission, a malware audit, or an
+assessment of legal signature validity.
+
+Inputs re-read in this turn:
+- User-uploaded Firma4NG_linux.tar.gz: 120,272,384 bytes.
+- Outer SHA-256: 4a487d568a979666e3c7d17405d9f04bbef8c67c027119b13f955daf3872a12d
+- Inner archive: Firma4NG_1.6.20/Firma4NG.tar.gz, 120,210,911 bytes.
+- Inner SHA-256: 39807b7e667514874c6ca54fc2567fe4056491f6ec7766b0ed56a2f7377491bb
+- Outer format: uncompressed tar, despite .tar.gz extension.
+- Nested format: gzip-compressed tar.
+- Source archive, vendor installer, license, README, desktop templates, icon and
+  application configuration were read; no vendor executable was run.
+- The nested archive was checked for absolute/traversal paths and non-regular/
+  non-directory entries before data-only extraction. None were found.
+- Original nested payload: 4,025 regular files and 159 directories.
+
+Tests actually performed:
+1. Bash syntax validation of PKGBUILD and the launcher.
+2. SHA-256 validation of every PKGBUILD source against the local input files.
+3. prepare(), check() and package() executed as UID 65534, not root.
+   The build and staging paths contained spaces.
+4. Nine regular files in the staged system package; no group/world-writable files
+   or directories. The packaged compressed seed was byte-for-byte unchanged.
+5. Launcher fresh initialization and second launch tested with a harmless mock
+   application archive, never the vendor executable. The seed constant alone
+   was replaced with the temporary mock-seed directory for these unit tests.
+6. Initialization under a path containing spaces; private runtime permissions.
+7. Simulated application update survived another launcher invocation unchanged.
+8. Relative/absolute file-handling, verify argument forwarding, work directory,
+   PYTHONHOME, LD_LIBRARY_PATH, PYTHONPATH removal and QT_PLUGIN_PATH removal
+   checked through the mock's logged environment/arguments.
+9. Root launch refusal, --show-path behavior, import-overwrite refusal, and
+   runtime-symlink refusal checked.
+10. Incorrect seed checksum caused a failure before mock execution. No partial
+    runtime or staging directory remained.
+11. Explicit import of a harmless tree did not execute it or hardlink source
+    files. A subsequent mock launch succeeded.
+12. Explicit import of the REAL extracted vendor tree was performed as UID 65534
+    without launching it. All 4,025 vendor files compared byte-for-byte equal by
+    SHA-256, with different inodes from the source. Source files were unchanged.
+13. .SRCINFO was generated from the actual PKGBUILD variables with a small Bash
+    emitter, NOT makepkg --printsrcinfo. Regenerate it with native makepkg before
+    any public submission.
+
+Not performed:
+- Native Arch makepkg/fakeroot package-archive generation or pacman installation.
+- Clean-chroot dependency resolution, namcap, ShellCheck or desktop-file-validate.
+- GUI launch, smart-card operations, remote signing, TSL downloads, vendor updates
+  or signature validation in this environment.
+- A complete dependency graph for all legacy/optional files in the vendor bundle.
+- Revalidation of the current remote archive bytes. The official InfoCamere page
+  was consulted; content hashes are from the already-uploaded archive.
+
+The user has independently demonstrated the earlier portable installation and
+its update/sign/verify workflow on their CachyOS machine. The new launcher must
+still be tested there after installation. This test report does not claim that
+our packaging tests establish that end-to-end runtime result.
+
+Design limits:
+- Pacman owns the compressed seed, launcher, desktop integration and documents.
+- The self-updated per-user runtime is NOT managed file-by-file by pacman.
+- Explicit import trusts the user's chosen existing installation, not the old
+  archive checksum; this preserves their already-working updates.
+- No automatic reset/downgrade of a runtime occurs on a package upgrade.
+- No setup.run, start_hid.bat, package-specific install hook, CA-trust import, NSS
+  registration, global middleware replacement or service restart is performed.
+- The vendor update settings, including an HTTP application-update URL, remain
+  unchanged. A build checksum does not authenticate subsequent vendor updates.
+- No vendor program, library, icon or font is redistributed in the build bundle.
+
+Staged files:
+  /opt/firma4ng/Firma4NG.tar.gz
+  /opt/firma4ng/SHA256SUMS
+  /opt/firma4ng/seed-version
+  /usr/bin/firma4ng
+  /usr/share/applications/firma4ng.desktop
+  /usr/share/doc/firma4ng-bin/README.md
+  /usr/share/doc/firma4ng-bin/UPSTREAM-README.txt
+  /usr/share/icons/hicolor/256x256/apps/firma4ng.png
+  /usr/share/licenses/firma4ng-bin/LICENSE
+
+Build-file fingerprints (before this report):
+02d549e43489b7dcd12eaa9badb53e4fb21bf21e342128ba3a7d8f8fb76d3079  PKGBUILD
+313c63c6c05144c1b26174e5288dde8bba0325df8675bde03eec7bc6d23f8947  firma4ng
+0458c13dcb4fb2effd0285705af41001a70e9963caddfaa3a4197bfdefc4a9b2  firma4ng.desktop
+1fe2af35a1b711774777440d5810f6842908d13538945e6348e6d89cfa8ba9be  README.md
+797613bdc6a27ba8d043a90ede8204ee24b5854fe7b19ddf3bfd3fc19e4b088a  .SRCINFO
