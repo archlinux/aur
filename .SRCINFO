@@ -1,0 +1,33 @@
+pkgbase = python-dapr
+	pkgdesc = The official release of Dapr Python SDK.
+	pkgver = 1.18.3
+	pkgrel = 1
+	url = https://github.com/dapr/python-sdk
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-opentelemetry-sdk
+	checkdepends = python-httpx
+	checkdepends = python-cryptography
+	checkdepends = python-flask
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pydantic
+	checkdepends = python-fastapi
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-protobuf
+	depends = python-grpcio
+	depends = python-grpcio-status
+	depends = python-aiohttp
+	depends = python-dateutil
+	depends = python-typing_extensions
+	source = dapr::git+https://github.com/dapr/python-sdk.git#tag=v1.18.3
+	source = fix-certs-pyopenssl.patch
+	sha256sums = 00a20294b62fb7b628b06fb454dfedf41801f7979b62da11821d99cb93af11e7
+	sha256sums = 9953c6bc1f9c3162144840a1f450044a5d1b6ffd4db26ccfe4aa48302ef02ec5
+
+pkgname = python-dapr
