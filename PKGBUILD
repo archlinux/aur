@@ -2,8 +2,8 @@
 
 _name="mpm"
 pkgname="matlab-${_name}"
-_commit="77fec96ac0eced0a65083eefe93482f11b4d12d7"
-pkgver=2026.6+r156.g77fec96
+_commit="6042363c84ac9ebee96467d5dd11e290a8f5a801"
+pkgver=2026.7+r157.g6042363
 _pkgver="${pkgver%+*}"
 pkgrel=1
 epoch=1
@@ -40,8 +40,8 @@ source=(
 source_x86_64=(
   "${pkgname}-${_pkgver}-x86_64::https://ssd.mathworks.com/supportfiles/downloads/${_name}/${_pkgver}/glnxa64/${_name}"
 )
-sha256sums=('073d5f0163679bac1de0326f26bc1b890e8610f53d3511ac7c4ff6bc8f9a530b')
-sha256sums_x86_64=('e8442d253046d154c4dcc5ead7338369a28fcaf4ee8f171992fc4eb63c65ca4d')
+sha256sums=('f3d858660aaf294e9e7d844b1940a1dbbe8cfc46502845382afaf8f5292de312')
+sha256sums_x86_64=('cdd1062dc8d30de2103ebf8713cb1935d732db6d90a69718e0d49616325f3fef')
 
 prepare() {
   # comment out after updating _commit
