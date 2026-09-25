@@ -1,0 +1,5 @@
+[duodiff]
+source = "github"
+github = "akunzai/duodiff"
+use_latest_release = true
+prefix = "v"
