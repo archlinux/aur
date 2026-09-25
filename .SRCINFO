@@ -1,12 +1,12 @@
 pkgbase = r-marima
 	pkgdesc = Multivariate ARIMA and ARIMA-X Analysis
 	pkgver = 2.2
-	pkgrel = 3
+	pkgrel = 7
 	url = https://cran.r-project.org/package=marima
 	arch = any
 	license = GPL-2.0-only
 	depends = r
-	source = https://cran.r-project.org/src/contrib/marima_2.2.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/marima/marima_2.2.tar.gz
 	md5sums = d4ed509e53612f09c04da251444481b1
 	b2sums = 6de2b81e045d2e9cfd68051265688e886a01040182440bcd06cf770cbf4a778348324b562249c29108ad9e7a708dbbb5a514d4ed7b5e6215938a0d2dccac1516
 
