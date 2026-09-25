@@ -1,0 +1,26 @@
+pre_remove() {
+    systemctl stop noodle-gallery.service 2>/dev/null || true
+}
+
+post_install() {
+    if [ ! -d /etc/noodle-gallery ]; then
+        install -d /etc/noodle-gallery
+        install -m644 /usr/share/noodle-gallery/docker-compose.yml /etc/noodle-gallery/docker-compose.yml
+        install -m600 /usr/share/noodle-gallery/noodle-gallery.env.example /etc/noodle-gallery/.env
+        _db_password="$(tr -dc 'A-Za-z0-9' < /dev/urandom | head -c 32)"
+        sed -i "s/^UPLOAD_LOCATION=.*/UPLOAD_LOCATION=\/var\/lib\/noodle-gallery\/library/" /etc/noodle-gallery/.env
+        sed -i "s/^DB_DATA_LOCATION=.*/DB_DATA_LOCATION=\/var\/lib\/noodle-gallery\/postgres/" /etc/noodle-gallery/.env
+        sed -i "s/^IMMICH_VERSION=.*/IMMICH_VERSION=v${pkgver}/" /etc/noodle-gallery/.env
+        sed -i "s/^DB_PASSWORD=.*/DB_PASSWORD=${_db_password}/" /etc/noodle-gallery/.env
+    fi
+    printf '\n==> Noodle Gallery installed.\n'
+    printf '    Edit your configuration:  /etc/noodle-gallery/.env\n'
+    printf '    Start the service:        systemctl enable --now noodle-gallery\n'
+    printf '    Open the web UI:          http://localhost:2283\n'
+    printf '    Photos live under:        /var/lib/noodle-gallery/library\n'
+    printf '    Note: single-instance only (fixed container names: immich_server, ...).\n'
+}
+
+post_upgrade() {
+    post_install
+}

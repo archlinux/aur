@@ -1,0 +1,22 @@
+pkgbase = noodle-gallery
+	pkgdesc = Self-hosted photo and video management solution, deployed via Docker Compose
+	pkgver = 5.7.0
+	pkgrel = 1
+	url = https://github.com/open-noodle/gallery
+	install = noodle-gallery.install
+	arch = any
+	license = AGPL-3.0-only
+	depends = docker
+	depends = docker-compose
+	source = https://github.com/open-noodle/gallery/releases/download/v5.7.0/docker-compose.yml
+	source = https://github.com/open-noodle/gallery/releases/download/v5.7.0/example.env
+	source = https://raw.githubusercontent.com/open-noodle/gallery/v5.7.0/LICENSE
+	source = noodle-gallery.service
+	source = noodle-gallery.install
+	sha256sums = 76804f31d768eeeea8f64b409a80383057501bc3c0ea8e7796d4bdfaf45ee5bd
+	sha256sums = 05dfd47bdd31eb8a42a62f9d37d6436388439c9ab815e166c54b85c0906231b2
+	sha256sums = a3bad629f67f442b23b5224419e49edafc32e6b9c876b89464f7aafe6091ccde
+	sha256sums = ee229ca53c4e645341eece70b7fc61fc69ea62956c3266f11c32b17ef58bd50f
+	sha256sums = 5c7a889350ac52649f0049a3e07a0c1953c04a8d7f65f69105b97e2357bd6002
+
+pkgname = noodle-gallery

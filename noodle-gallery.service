@@ -1,0 +1,15 @@
+[Unit]
+Description=Noodle Gallery - self-hosted photo and video management
+Wants=docker.service network-online.target
+After=docker.service network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/etc/noodle-gallery
+ExecStart=/usr/bin/docker compose up -d --remove-orphans
+ExecStop=/usr/bin/docker compose down
+TimeoutStartSec=infinity
+
+[Install]
+WantedBy=multi-user.target
