@@ -1,4 +1,5 @@
 # Maintainer: blazebsc <blakeisfruity@proton.me>
+# Maintainer: ofatrii <pub@oftr.me>
 pkgname=froststrap-git
 pkgver=2.0.3.r5.g3319c2c5
 pkgrel=1
@@ -24,6 +25,9 @@ prepare() {
 }
 
 build() {
+    # TODO 2.0.3: switch to upstream's Fallout build system once it
+    # supports --no-installers:
+    #   dotnet run --project build -- publish --no-installers --configuration Release
     cd Froststrap
     _appver=$(git describe --tags | sed 's/^v//')
     dotnet publish "$srcdir/Froststrap/Froststrap/Froststrap.csproj" \
