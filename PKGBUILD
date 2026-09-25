@@ -1,7 +1,7 @@
 # Maintainer: Shira
 # Contributor: Shira
 pkgname=seerrng-deb
-_srcver="v3.27.0"
+_srcver="v3.27.1"
 pkgver="${_srcver#v}"
 pkgrel=1
 pkgdesc="Seerr fork with music, books and audiobooks support. Installed from .deb, hardened service file"
@@ -15,7 +15,7 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/seerrng_${pkgver}_amd64.deb"
 	"seerrng.service")
-sha256sums=('29dca03faf7094acee603dbffae8295cde99745756f7b87e0da5bee5267104cb'
+sha256sums=('57e370a88994e720db4d8d1f54c5374ccc90de496f3e0264c54bb7f7afe651c1'
 	    'SKIP')
 
 package(){
