@@ -1,6 +1,6 @@
 # Maintainer: Igor Tolmachev <me@igorek.dev>
 pkgname=v2rs-bin
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="A small CLI for managing xray proxy"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('xray-bin' 'iproute2')
 provides=("v2rs=$pkgver")
 conflicts=('v2rs')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/linux-x86-64.tar.gz")
-sha256sums_x86_64=('489468e1918fa0acc9c4de287306bfcd90417c33854862127da83a44f6b1f160')
+sha256sums_x86_64=('e86585df5b0337fa63cc196d3b78de50a3fe0f825f053fec7490e4b03c0e0f1d')
 
 package() {
 	install -Dm755 "$srcdir/v2rs" "$pkgdir/usr/bin/v2rs"
