@@ -2,7 +2,7 @@
 
 pkgname=dida-bin
 _pkgname=dida
-pkgver=8.0.10
+pkgver=8.0.20
 pkgrel=1
 pkgdesc="Official Dida client, a todo list."
 arch=("any")
@@ -16,7 +16,7 @@ provides=(${_pkgname})
 source=("${_pkgname}_${pkgver}.deb::https://cdn.dida365.cn/download/linux/linux_deb_x64/dida-${pkgver}-amd64.deb"
     "${_pkgname}".sh
 )
-sha512sums=('cadcd108c8df7d682ef9752a2d34c2e51b0f16e667a35ee9208a00e7e7266583f3b1d5fa16ac28abe4264682fd6a6a65992e3b5c1572e38654032dc0316f158d'
+sha512sums=('52304e2f9bb3d3952ff15a0ada82bc6eeccab6a0a1bddb5a56cb9f7d8a35aa29c273146cce9b162b8c323b00de1a1770ca0506292caffee74739e94443a9fac4'
             '218ff1e8c89d1567c214d0fec91745606ab48077bb24168a2b18b28f9c69a6918d34c38fe6a70e8aeaee3b6df448e7174c343924e6fa875ba1a583cc656c91ba')
 
 prepare() {
