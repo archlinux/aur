@@ -1,35 +1,33 @@
 pkgbase = klayout-pex
 	pkgdesc = Parasitic Extraction (PEX) tool for KLayout
-	pkgver = 0.4.5
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://iic-jku.github.io/klayout-pex-website
-	arch = x86_64
+	arch = any
 	license = GPL-3.0-or-later
 	checkdepends = python-pytest
 	checkdepends = python-allure-commons
 	checkdepends = python-csv-diff
 	makedepends = git
-	makedepends = cmake
-	makedepends = protobuf
-	makedepends = abseil-cpp
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = python-poetry-core
+	makedepends = python-grpcio-tools
 	depends = klayout
 	depends = python
+	depends = python-packaging
+	depends = python-matplotlib
 	depends = python-protobuf
 	depends = python-rich
 	depends = python-rich-argparse
-	depends = python-packaging
-	optdepends = python-matplotlib
 	optdepends = python-cairosvg
 	optdepends = magic: Alternative parasitic extraction backend
 	optdepends = fastercap: Alternative parasitic extraction backend
 	optdepends = fastcap2: Alternative parasitic extraction backend
 	optdepends = meshlab: For previewing 3D geometries (STL) representing input to FasterCap
-	source = klayout-pex::git+https://github.com/iic-jku/klayout-pex#tag=v0.4.5
-	b2sums = 834cfa151f6a1885e48049c75a01d628c2bce5581352d1ed315ca8c9521e153508165f2913d15944acb42dad24e4c51ae8edfa312bfb65bf02d0b7f642e0953c
+	source = klayout-pex::git+https://github.com/iic-jku/klayout-pex#tag=v0.5.1
+	b2sums = 6b655482172b469afb0bbf27eb5de2bceb6f5fc7329f499df93707d7d56e6085b6de5d6a0f3f5c9236ea710257e24fbb0a8890360e0b4c88922c0f8ea78f84ea
 
 pkgname = klayout-pex
