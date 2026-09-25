@@ -7,3 +7,4 @@
 !fix-makefile-for-documentation.patch
 
 !.gitignore
+!.nvchecker.toml

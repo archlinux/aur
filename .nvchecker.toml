@@ -1,0 +1,6 @@
+[vectorscan]
+source = "github"
+github = "VectorCamp/vectorscan"
+use_latest_release = true
+prefix = "vectorscan/"
+
