@@ -1,7 +1,7 @@
 # Maintainer: Liviu Nicoara <lnicoara at thinkoid dot org>
 
 pkgname=tyler-git
-pkgver=r41.b713d2b
+pkgver=r42.b89a31f
 pkgrel=1
 pkgdesc="Tiling Wayland compositor on wlroots, with the bar and launcher built in"
 arch=('x86_64' 'aarch64')
