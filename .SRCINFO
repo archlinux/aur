@@ -1,0 +1,17 @@
+pkgbase = qt6-topqml
+	pkgdesc = Qt6/QML module: system monitoring collectors (btop-derived) with QML bindings
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/alexindigo/topqml
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	depends = qt6-base
+	depends = qt6-declarative
+	conflicts = qt6-topqml-git
+	options = !debug
+	source = qt6-topqml-0.1.0.tar.gz::https://github.com/alexindigo/topqml/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = f6b96ca2912ede50f829c3cbe002361f299864b6f14f0be0cbedf6d3e67fa338
+
+pkgname = qt6-topqml
