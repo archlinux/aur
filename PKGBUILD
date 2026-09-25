@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=scotty
 pkgver=0.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Transfer listens and loves between music services"
 arch=('x86_64')
 url="https://git.sr.ht/~phw/scotty"
@@ -37,6 +37,6 @@ package() {
 		./${pkgname} completion ${_shell} > "$srcdir/${pkgname}-${_shell}"
 	done
 	install -Dm644 "$srcdir"/${pkgname}-bash "$pkgdir/usr/share/bash-completion/completions/${pkgname}"
-	install -Dm644 "$srcdir"/${pkgname}-fish "$pkgdir/usr/share/fish/completions/${pkgname}.fish"
+	install -Dm644 "$srcdir"/${pkgname}-fish "$pkgdir/usr/share/fish/vendor_completions.d/${pkgname}.fish"
 	install -Dm644 "$srcdir"/${pkgname}-zsh "$pkgdir/usr/share/zsh/site-functions/_${pkgname}"
 }
