@@ -1,7 +1,7 @@
 # Maintainer: TheFeelTrain <the@feeltra.in>
 pkgname=python-fontcollector
 _origpkgname=fontcollector
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="FontCollector for Advanced SubStation Alpha file."
 arch=("x86_64")
@@ -25,7 +25,7 @@ makedepends=(
 	"python-hatchling"
 )
 source=("https://files.pythonhosted.org/packages/source/f/${_origpkgname}/${_origpkgname}-${pkgver}.tar.gz")
-sha256sums=('8dca9a33e525b69e86c235940a8504543d5e4f97010af56928e97ab8eff086ff')
+sha256sums=('77687bb54ca64e0efa01affb63b0cd7a92b183ca8d0349ebc92da5b6c7eccda2')
 
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
