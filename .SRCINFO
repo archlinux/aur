@@ -1,6 +1,6 @@
 pkgbase = dumpr
 	pkgdesc = Turn a project directory into a readable text dump
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/iktrnch/dumpr
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = dumpr
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = dumpr-1.0.2.tar.gz::https://github.com/iktrnch/dumpr/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = 9f383cfc4d7024a7372f0d1720a410f7a23d6eb793a53ea7ec9aebbcaf721b3a
+	source = dumpr-1.0.3.tar.gz::https://github.com/iktrnch/dumpr/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 71e1ac6fef68c41d9ca19e7670b1aacd5446571ea31f166737e557c2d45893c2
 
 pkgname = dumpr
