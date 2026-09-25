@@ -1,6 +1,6 @@
 # Maintainer: Omni <team@omni.dev>
 pkgname=omnidotdev-kiln-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Zero-config source-to-image container builder (pre-built)"
 arch=('x86_64')
@@ -16,5 +16,5 @@ package() {
   install -Dm755 "kiln" "$pkgdir/usr/bin/kiln"
   install -Dm644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha256sums=('ea6e0fb49caa7d8b5b56476d8c2696df34a8990133102d365051e74bea88468b'
+sha256sums=('ed550367c9b0b9905e56ab15c3597c3a55d0c51608d83b000bf40e704b039c78'
             '64d90764a9baac9d5f0797d6d9a7dfb26823396df09c872557e971cf76cc0a92')
