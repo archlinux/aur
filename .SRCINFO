@@ -1,6 +1,6 @@
 pkgbase = linux-legion
 	pkgdesc = Control center for Lenovo Legion laptops: power modes, fans, Spectrum RGB lighting, battery (Vantage for Linux)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/VitaminDB/linux-legion
 	install = linux-legion.install
@@ -21,7 +21,7 @@ pkgbase = linux-legion
 	optdepends = nvidia-utils: NVIDIA GPU monitoring
 	options = !lto
 	options = !debug
-	source = linux-legion-0.1.1.tar.gz::https://github.com/VitaminDB/linux-legion/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = b45acd60079a3d89eec4f1c99ac872fad8625057793e6ae0c907def9249eb056
+	source = linux-legion-0.1.2.tar.gz::https://github.com/VitaminDB/linux-legion/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 4c465fc44a8c7cff800fc992bedbf9ac062db4b17da75e77c6f069ea92999f15
 
 pkgname = linux-legion

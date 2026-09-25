@@ -1,6 +1,6 @@
 # Maintainer: Alexeyev Vitaly <vitamindbnfkz@gmail.com>
 pkgname=linux-legion
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Control center for Lenovo Legion laptops: power modes, fans, Spectrum RGB lighting, battery (Vantage for Linux)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'git')
 options=('!lto' '!debug')
 install=linux-legion.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b45acd60079a3d89eec4f1c99ac872fad8625057793e6ae0c907def9249eb056')
+sha256sums=('4c465fc44a8c7cff800fc992bedbf9ac062db4b17da75e77c6f069ea92999f15')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -40,6 +40,7 @@ package() {
     install -Dm755 target/release/linux_legion "$pkgdir/usr/bin/linux-legion"
     install -Dm644 packaging/linux-legion.desktop "$pkgdir/usr/share/applications/linux-legion.desktop"
     install -Dm644 packaging/70-linux-legion.rules "$pkgdir/usr/lib/udev/rules.d/70-linux-legion.rules"
+    install -Dm644 packaging/linux-legion-autoapply.service "$pkgdir/usr/lib/systemd/user/linux-legion-autoapply.service"
     install -Dm644 assets/icon/linux-legion.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/linux-legion.svg"
     for s in 16 32 48 64 128 256 512; do
         install -Dm644 "assets/icon/linux-legion-$s.png" \
