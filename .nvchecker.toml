@@ -1,0 +1,8 @@
+[elan-bin]
+source = "regex"
+url = "https://archive.mpi.nl/tla/elan/release-notes"
+regex = '.*<meta name="description.*Release ([\d+|\.]+).*'
+
+
+prefix = "v"
+

@@ -8,3 +8,4 @@
 !elan_wrapper.sh
 
 !.gitignore
+!.nvchecker.toml
