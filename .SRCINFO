@@ -1,7 +1,7 @@
 pkgbase = r-ggdist
 	pkgdesc = Visualizations of Distributions and Uncertainty
 	pkgver = 3.3.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ggdist
 	arch = x86_64
 	license = GPL-3.0-or-later
