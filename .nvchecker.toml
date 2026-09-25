@@ -1,0 +1,8 @@
+[noseyparker]
+source = "github"
+github = "praetorian-inc/noseyparker"
+use_max_tag = true
+
+
+prefix = "v"
+
