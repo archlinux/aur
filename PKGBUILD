@@ -28,6 +28,11 @@ sha512sums=('c98ba4034218ffccc24698a613f309c3677a604747fa7f187de6e09bda83d064514
 options=(!lto)
 
 build() {
+	# The way some protobuf stuff is included ends up putting references to the
+	# home and $srcdir paths into the executables and shared libraries.
+	# Work around that and fix makepkg's warning about this.
+	RUSTFLAGS="--remap-path-prefix $HOME=~/ $RUSTFLAGS"
+	RUSTFLAGS="--remap-path-prefix ${srcdir}/${pkgbase}-${_tag}=${pkgbase} $RUSTFLAGS"
 	cd "${pkgbase}-${_tag}/linux"
 	make build
 	make component
