@@ -25,6 +25,7 @@ build() {
 
 package() {
     cd "$_reponame-v$pkgver"
-    install -Dm755 "target/release/$_binname" "$pkgdir/usr/bin/$_binname"
+    install -Dm755 "target/release/$_binname" "$pkgdir/usr/bin/synapse"
+		install -Dm644 "style/synapse.css" "$pkgdir/usr/share/synapse/synapse.css"
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
