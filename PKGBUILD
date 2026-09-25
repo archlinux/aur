@@ -1,7 +1,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 _pkgname=prompt-style
-pkgname=(lua{,51,52,53}-"$_pkgname")
+pkgname=(lua{,51,52,53,54}-"$_pkgname")
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="Lua plugin for powerlevel10k style prompt and WakaTime time tracking"
@@ -9,71 +9,42 @@ arch=(any)
 url=https://github.com/wakatime/$_pkgname.lua
 license=(GPL3)
 makedepends=(luarocks)
-optdepends=('git: get project name' 'python-lupa')
+optdepends=('git: get project name')
 _revision=1
 source=("https://luarocks.org/manifests/freed-wu/$_pkgname-$pkgver-$_revision.src.rock")
 sha256sums=('470b1b4fe14e58fd3e7e0dac5841ab486e23898ee33d7b0f586813f53a5a9f8b')
-_lua_version=5.4
+_lua_version=5.5
 
 _package() {
 	install -Dm644 ./*.rock -t $1
 	luarocks install --no-manifest --lua-version=$1 --tree="$pkgdir/usr/" --deps-mode=none $1/*.rock
-	install -d "$pkgdir/usr/share/"{bash-completion/completions,zsh/site-functions,fish/vendor_completions.d}
-	rm -r "${pkgdir:?}/usr/bin"
-	export LUA_PATH_${1/./_}="./share/lua/$1/?.lua;./?.lua;./?/init.lua;;/usr/share/lua/$1/?.lua;/usr/share/lua/$1.lua"
-	export LUA_CPATH_${1/./_}="./lib/lua/$1/?.so;./?.so;./?/init.so;;/usr/lib/lua/$1/?.so;/usr/lib/lua/$1.so"
-	local v
-	if [[ "$version" != "$_lua_version" ]]; then
-		v="$version"
-	fi
-	install -D "$pkgdir/usr/lib/luarocks/rocks-$version/prompt-style/$pkgver-$_revision/bin/"lupa "$pkgdir/usr/bin/lupa$v"
-}
-
-_complete() {
-	lua="lua$1"
-	shift
-	pushd "$pkgdir/usr" || exit 1
-	for program; do
-		"$lua" "bin/$program" --completion bash | tee "$pkgdir/usr/share/bash-completion/completions/$program"
-		"$lua" "bin/$program" --completion zsh | tee "$pkgdir/usr/share/zsh/site-functions/_$program"
-		"$lua" "bin/$program" --completion fish | tee "$pkgdir/usr/share/fish/vendor_completions.d/$program.fish"
-	done
-	popd || exit 1
 }
 
 package_lua51-prompt-style() {
 	# neovim uses lua5.1
 	optdepends+=(neovim)
-	depends=(lua51-{warna,filesystem,luaprompt})
-	local version=5.1
-	_package $version
-	install -D "$pkgdir/usr/lib/luarocks/rocks-$version/prompt-style/$pkgver-$_revision/bin/"nvimp -t "$pkgdir/usr/bin"
-	rm -r "$pkgdir/usr/lib/luarocks/rocks-$version/prompt-style/$pkgver-$_revision/bin/"
-	_complete "$version" nvimp
+	depends=(lua51-{warna,filesystem,luaprompt,platformdirs})
+	_package 5.1
 }
 
 package_lua52-prompt-style() {
-	depends=(lua52-{warna,filesystem,luaprompt})
-	local version=5.2
-	_package $version
-	rm -r "$pkgdir/usr/lib/luarocks/rocks-$version/prompt-style/$pkgver-$_revision/bin/"
+	depends=(lua52-{warna,filesystem,luaprompt,platformdirs})
+	_package 5.2
 }
 
 package_lua53-prompt-style() {
-	depends=(lua53-{warna,filesystem,luaprompt})
-	local version=5.3
-	_package $version
-	rm -r "$pkgdir/usr/lib/luarocks/rocks-$version/prompt-style/$pkgver-$_revision/bin/"
+	depends=(lua53-{warna,filesystem,luaprompt,platformdirs})
+	_package 5.3
+}
+
+package_lua54-prompt-style() {
+	depends=(lua54-{warna,filesystem,luaprompt,platformdirs})
+	_package 5.4
 }
 
 package_lua-prompt-style() {
 	# pandoc, neomutt uses lua5.4
 	optdepends+=(pandoc-cli neomutt)
-	depends=(lua-{warna,filesystem,luaprompt})
-	local version=$_lua_version
-	_package $version
-	install -D "$pkgdir/usr/lib/luarocks/rocks-$version/prompt-style/$pkgver-$_revision/bin/"{pandocp,neomuttp} -t "$pkgdir/usr/bin"
-	rm -r "$pkgdir/usr/lib/luarocks/rocks-$version/prompt-style/$pkgver-$_revision/bin/"
-	# pandoc lua CLI doesn't accpet arguments
-	_complete "$version" pandocp neomuttp
+	depends=(lua-{warna,filesystem,luaprompt,platformdirs})
+	_package $_lua_version
 }

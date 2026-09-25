@@ -7,7 +7,6 @@ pkgbase = lua-prompt-style
 	license = GPL3
 	makedepends = luarocks
 	optdepends = git: get project name
-	optdepends = python-lupa
 	source = https://luarocks.org/manifests/freed-wu/prompt-style-0.1.0-1.src.rock
 	sha256sums = 470b1b4fe14e58fd3e7e0dac5841ab486e23898ee33d7b0f586813f53a5a9f8b
 
@@ -15,8 +14,8 @@ pkgname = lua-prompt-style
 	depends = lua-warna
 	depends = lua-filesystem
 	depends = lua-luaprompt
+	depends = lua-platformdirs
 	optdepends = git: get project name
-	optdepends = python-lupa
 	optdepends = pandoc-cli
 	optdepends = neomutt
 
@@ -24,16 +23,24 @@ pkgname = lua51-prompt-style
 	depends = lua51-warna
 	depends = lua51-filesystem
 	depends = lua51-luaprompt
+	depends = lua51-platformdirs
 	optdepends = git: get project name
-	optdepends = python-lupa
 	optdepends = neovim
 
 pkgname = lua52-prompt-style
 	depends = lua52-warna
 	depends = lua52-filesystem
 	depends = lua52-luaprompt
+	depends = lua52-platformdirs
 
 pkgname = lua53-prompt-style
 	depends = lua53-warna
 	depends = lua53-filesystem
 	depends = lua53-luaprompt
+	depends = lua53-platformdirs
+
+pkgname = lua54-prompt-style
+	depends = lua54-warna
+	depends = lua54-filesystem
+	depends = lua54-luaprompt
+	depends = lua54-platformdirs
