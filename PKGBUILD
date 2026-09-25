@@ -6,7 +6,7 @@ pkgname=kendex-git
 # carries the same epoch so the four stay comparable with each other.
 epoch=1
 pkgver=r0.0000000
-pkgrel=2
+pkgrel=3
 pkgdesc='Package manager for AI coding agents, skills, and hooks (desktop app and CLI, latest commit)'
 arch=('x86_64' 'aarch64')
 url='https://kendex.ai'
@@ -61,6 +61,12 @@ prepare() {
 build() {
   cd "$srcdir/kendex"
   export RUSTUP_TOOLCHAIN=stable
+  # A build of main names its commit, or it prints the tagged version it
+  # sits after and a report from it cannot say which source it runs. The
+  # assignment stands alone so a failed rev-parse stops the build; inside
+  # `export` its status would be lost and the build would name nothing.
+  KENDEX_SOURCE_COMMIT="$(git rev-parse HEAD)"
+  export KENDEX_SOURCE_COMMIT
   # The desktop binary embeds ui/dist through tauri's context macro. Only
   # `cargo tauri build` runs the frontend build on its own, and this package
   # builds plain binaries rather than a bundle, so the frontend is built
