@@ -1,8 +1,8 @@
 # Maintainer: robertfoster
 pkgname=ceasta
-pkgver=0.10.0 # renovate: datasource=github-tags depName=ngwg/ceasta
+pkgver=0.11.0 # renovate: datasource=github-tags depName=ngwg/ceasta
 pkgrel=1
-pkgdesc="Disassembler, decompiler and debugger with a built-in MCP server"
+pkgdesc="Disassembler, decompiler and debugger with a built-in MCP server (experimental glfw GUI + CLI)"
 arch=('x86_64')
 url="https://github.com/ngwg/ceasta"
 # ceasta itself; vendored lua, dear imgui (MIT) and capstone (BSD-3-Clause) are linked in
