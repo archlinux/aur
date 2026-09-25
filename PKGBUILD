@@ -24,7 +24,7 @@ pkgname=('systemd-selinux'
 # Upstream versioning is incompatible with pacman's version comparisons, one
 # way or another. We use proper version for pacman here (no dash for rc
 # release!), and change in source array below.
-pkgver=261.3
+pkgver=262
 pkgrel=1
 arch=('x86_64' 'aarch64')
 license=('LGPL-2.1-or-later')
@@ -65,8 +65,9 @@ source=("git+https://github.com/systemd/systemd#tag=v${pkgver/rc/-rc}?signed"
         '30-systemd-daemon-reload-user.hook'
         '35-systemd-enqueue-marked.hook'
         '35-systemd-udev-reload.hook'
-        '35-systemd-update.hook')
-sha512sums=('d0cb1518becf7f105c2ce60f794bcddf4f8330174f56fcdfbd6b5f5e65fa94acb4098631ffe9d60a8b4e3c04b878f32c222b42dd827b5ff052bd460f4a30652a'
+        '35-systemd-update.hook'
+        '36-systemd-modules-load.hook')
+sha512sums=('7f6b18684e8e696e0fa6fff45213d64a9bd54e6075d8950f8e5679fe14c92737cdc3a54b58a60f68867d95bad8736584e8036fc09bbd5752ee8026308f76493f'
             'ddb9401e47d0bf01874f255803a4b2167ec631484189d29d03694101fd9c77724e735f16d99c5f4ffd8061ae78839b2826ff0e0a925a6f0dbca25f2cfb271a82'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             '3194d1f8bff31b88a79657df83632b9224b66ca2cf8fd806a3ef35cf7a43f46c09c57f3dfd02256a99b6514a8f789b7d3bcfd7e17e00e34aa55ff0c6cedb5f01'
@@ -83,7 +84,8 @@ sha512sums=('d0cb1518becf7f105c2ce60f794bcddf4f8330174f56fcdfbd6b5f5e65fa94acb40
             '190112e38d5a5c0ca91b89cd58f95595262a551530a16546e1d84700fc9644aa2ca677953ffff655261e8a7bff6e6af4e431424df5f13c00bc90b77c421bc32d'
             '51ebf20a1c93c2a86e8ced0d68e91f4a2bf6a537a2d674e05da69961d5861213159e28f228ffdc897bed721abd61ff133f49aeb0a9ebbbe76020c5b847c2a2df'
             'a50d202a9c2e91a4450b45c227b295e1840cc99a5e545715d69c8af789ea3dd95a03a30f050d52855cabdc9183d4688c1b534eaa755ebe93616f9d192a855ee3'
-            '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
+            '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97'
+            '717d93fb29034398394b68510f53da8d599cb68accf1cb92baee158fca1fde3fa5a1f698d35f81661b22c7acec6da34422b852e29dbc731b296a0884ffb6fcb0')
 
 _meson_version="${pkgver}-${pkgrel}"
 _systemd_src_dir="${pkgbase/-selinux}"
@@ -208,9 +210,9 @@ package_systemd-selinux() {
   depends=(
     "systemd-libs-selinux=${pkgver}"
     'acl' 'bash' 'cryptsetup' 'dbus'
-    'dbus-units' 'kbd' 'kmod' 'hwdata'
+    'dbus-units' 'glibc' 'kbd' 'kmod' 'hwdata'
     'libgcrypt' 'libxcrypt' 'libidn2' 'lz4' 'pam-selinux'
-    'libelf' 'libseccomp' 'util-linux-selinux' 'xz' 'pcre2' 'audit'
+    'libelf' 'libgcc' 'libseccomp' 'util-linux-selinux' 'xz' 'pcre2' 'audit'
     'openssl')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver"
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
