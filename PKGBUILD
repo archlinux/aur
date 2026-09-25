@@ -10,7 +10,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/Comfy-Org/comfy-kitchen"
 license=('MIT')
 depends=('python' 'cuda' 'python-pytorch-cuda')
-provides=('python-comfy-kitchen')
+provides=("python-comfy-kitchen=$pkgver")
 conflicts=('python-comfy-kitchen')
 makedepends=(python-build python-installer python-wheel python-setuptools)
 
