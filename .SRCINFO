@@ -11,7 +11,7 @@ pkgbase = python-comfy-kitchen
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pytorch
-	provides = python-comfy-kitchen
+	provides = python-comfy-kitchen=0.2.35
 	conflicts = python-comfy-kitchen-cuda
 	noextract = comfy_kitchen-0.2.35-py3-none-any.whl
 	source = https://files.pythonhosted.org/packages/py3/c/comfy-kitchen/comfy_kitchen-0.2.35-py3-none-any.whl

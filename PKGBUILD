@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/Comfy-Org/comfy-kitchen"
 license=('MIT')
 depends=('python' 'python-pytorch')
-provides=('python-comfy-kitchen')
+provides=("python-comfy-kitchen=$pkgver")
 conflicts=('python-comfy-kitchen-cuda')
 makedepends=(python-build python-installer python-wheel python-setuptools)
 
