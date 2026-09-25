@@ -17,7 +17,7 @@ _basename="zls"
 _suffix="-mach"
 _pkgname="${_basename}${_suffix}"
 pkgname="${_pkgname}-bin"
-pkgver=0.16.0dev.300+f391142c
+pkgver=0.17.0dev.44+8da87d4f
 _pkgver="${pkgver//dev/-dev}"
 pkgrel=1
 pkgdesc="A language server for Zig"
@@ -52,17 +52,17 @@ source_${_carch}=(
 )"
 done
 sha256sums=('b9e70d344290a58c6e8199a22232fbd2a8789cf76ddf0574f0a4ea647299ea68')
-sha256sums_aarch64=('562d28283b570a22aae3805cf1dc16d9f6bfdd246e94e8ef09a866c681fc0709'
+sha256sums_aarch64=('ea9a8b194f7e74409e16b26747a1efd40c094381d22e18af340a7b826d454203'
                     'SKIP')
-sha256sums_i686=('29d0d64c69816dce5371aef284cc14dde68baeac9af533d662d9874df31440a4'
+sha256sums_i686=('b89294cacdf93936e278202d339154717a89be4facc0aae6f0c125e5ebde266c'
                  'SKIP')
-sha256sums_riscv64=('214b619c854a22a34f69230b92a133f94e0b60528ca842c0aaab8e72626e4b3b'
+sha256sums_riscv64=('a70c9fd6948548a765bd64e9bf59bd77a87fc0d3129425a2228a12cc4a6efacb'
                     'SKIP')
-sha256sums_x86_64=('af74e603d3d592581c91fcc6b2aeffbfb56a89169c831c910a02f02f91e45f9d'
+sha256sums_x86_64=('9ea223fa88424671555911beba5d689191ae080a4e827ef5c76c8f64e39ff296'
                    'SKIP')
-sha256sums_loong64=('7ca00d55068483394fcba1c310ea5a9987a4d3d08d15428c9757356ec6147bbd'
+sha256sums_loong64=('e113b5dc5ea416133098c87509fea57ad5bd42c9585314b00dc308fc71720474'
                     'SKIP')
-sha256sums_armv7h=('8bd546b49cd9707751ac08abea5fc6d1447c36f59a8c02f2ad2237b65931e061'
+sha256sums_armv7h=('82618b10507eb2ef364f1fb2801f92411bc6ac10df812e81257b6a3cf1b7b77d'
                    'SKIP')
 
 verify() {
