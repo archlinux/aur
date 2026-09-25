@@ -1,9 +1,10 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Archisman Panigrahi <apandada AT gmail DOT com>
 # Contributor: giacomogiorgianni@gmail.com
 
 pkgname=boomaga
 pkgver=3.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Virtual printer for viewing a document before printing it out using the physical printer"
 arch=(x86_64 aarch64)
 url="https://www.boomaga.org/"
@@ -15,14 +16,13 @@ depends=(
     libcups
     libgcc
     libstdc++
-    poppler libpoppler.so
+    poppler
     qt6-base
     zlib
     )
 makedepends=(
     cmake
     qt6-tools
-    vulkan-headers
     )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Boomaga/boomaga/archive/v${pkgver}.tar.gz")
 sha256sums=('58e3916fec94c714e3a42e66bb6294fb32b6ffbba811f98502b1595336d80e96')
