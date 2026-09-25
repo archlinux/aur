@@ -1,14 +1,14 @@
 # lito.lock
 _rstd_ver=0.1.4
 _luato_commit=bd4848b3d6dc2cc57928e4405c3593b67322d6f8
-_vvk_ver=0.1.0
+_vvk_commit=2761d59430d57945ac40f77c91eea445ab074fb3
 _ncrequest_commit=cdaca8b5c523906fc0c9ed58cd5f2c7981b5a255
 _wavsen_commit=e9c4983bb8851eed0823e25ad277a7bb7f6250ac
 _qextra_commit=68f752fd38e3d7a923bf36d621f4a94be7b26fd8
 
 pkgname=waywallen
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Wallpaper Manager for Linux."
 arch=(x86_64)
 url=https://github.com/waywallen/waywallen
@@ -22,7 +22,7 @@ options=(!lto)
 source=("git+https://github.com/waywallen/waywallen.git#tag=v$pkgver"
         "git+https://github.com/litocpp/rstd.git#tag=v$_rstd_ver"
         "git+https://github.com/litocpp/luato.git#commit=$_luato_commit"
-        "git+https://github.com/litocpp/vvk.git#tag=v$_vvk_ver"
+        "git+https://github.com/litocpp/vvk.git#commit=$_vvk_commit"
         "git+https://github.com/hypengw/ncrequest.git#commit=$_ncrequest_commit"
         "git+https://github.com/hypengw/wavsen.git#commit=$_wavsen_commit"
         "git+https://github.com/hypengw/QExtra.git#commit=$_qextra_commit")

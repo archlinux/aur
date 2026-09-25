@@ -1,7 +1,7 @@
 pkgbase = waywallen
 	pkgdesc = Wallpaper Manager for Linux.
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/waywallen/waywallen
 	arch = x86_64
 	license = MIT
@@ -33,7 +33,7 @@ pkgbase = waywallen
 	source = git+https://github.com/waywallen/waywallen.git#tag=v0.4.1
 	source = git+https://github.com/litocpp/rstd.git#tag=v0.1.4
 	source = git+https://github.com/litocpp/luato.git#commit=bd4848b3d6dc2cc57928e4405c3593b67322d6f8
-	source = git+https://github.com/litocpp/vvk.git#tag=v0.1.0
+	source = git+https://github.com/litocpp/vvk.git#commit=2761d59430d57945ac40f77c91eea445ab074fb3
 	source = git+https://github.com/hypengw/ncrequest.git#commit=cdaca8b5c523906fc0c9ed58cd5f2c7981b5a255
 	source = git+https://github.com/hypengw/wavsen.git#commit=e9c4983bb8851eed0823e25ad277a7bb7f6250ac
 	source = git+https://github.com/hypengw/QExtra.git#commit=68f752fd38e3d7a923bf36d621f4a94be7b26fd8
