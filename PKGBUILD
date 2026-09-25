@@ -1,7 +1,7 @@
 # This file is rendered by the release workflow. Do not publish it directly;
 # the AUR repository receives the rendered PKGBUILD and .SRCINFO.
 pkgname=sniplab-bin
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc='Filesystem-native snippet library and terminal CLI (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source_x86_64=(
 source_aarch64=(
   "snip-aarch64-unknown-linux-gnu.tar.gz::https://github.com/gitkeniwo/snip/releases/download/v$pkgver/snip-aarch64-unknown-linux-gnu.tar.gz"
 )
-sha256sums_x86_64=('dc4858bfab3bec5834c98783d7f75d3987bb48232f377966c0d8b391eb63a1f1')
-sha256sums_aarch64=('c3837bfa8dd91c014d53ab6b34d60e4866229ae21ef7a616bbafa3744fbbd6da')
+sha256sums_x86_64=('d41c3cab85b2c3fb7c53032fd82b5d7f4269df1ac2dfb722a392c0af260ca041')
+sha256sums_aarch64=('81f3f1b8b83e8a1e845508dffa75d2563a6b58cb76632b8ac239a7d24176798d')
 
 package() {
   install -Dm755 snip "$pkgdir/usr/bin/snip"
