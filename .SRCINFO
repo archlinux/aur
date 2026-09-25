@@ -1,0 +1,16 @@
+pkgbase = trancado-bin
+	pkgdesc = Trancado password manager — pre-built desktop application
+	pkgver = 0.7.9
+	pkgrel = 1
+	url = https://trancado.net
+	arch = x86_64
+	license = custom
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsecret
+	depends = libsoup3
+	depends = librsvg
+	source = https://downloads.trancado.net/trancado_v0.7.9_amd64.tar.gz
+	sha256sums = 7cd08b07d3a4f1a4b22971d0e027688000a860dfdfe76ec5003ae6227a521ece
+
+pkgname = trancado-bin
