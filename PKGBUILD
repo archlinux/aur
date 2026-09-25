@@ -1,14 +1,14 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="librepods"
-pkgver=1.0.0rc1
+pkgver=1.0.0rc2
 _pkgver="$(sed -E 's/([a-z]+)/-\1/g' <<< "$pkgver")"
 pkgrel=1
 pkgdesc="AirPods liberated from Apple's ecosystem"
 arch=(
   'x86_64'
 )
-url="https://github.com/kavishdevar/${pkgname}"
+url="https://github.com/librepods-org/${pkgname}"
 license=(
   'GPL-3.0-only'
 )
@@ -30,9 +30,9 @@ makedepends=(
 )
 _pkgsrc="${url##*/}"
 source=(
-  "${_pkgsrc}::git+${url}.git#tag=v${_pkgver}?signed"
+  "${_pkgsrc}::git+${url}.git#tag=v${_pkgver}" #?signed"
 )
-b2sums=('d3f1746162f739241d4b9920a3125f06e1c53504f6e730b1834917b4dcdeb5c0ca636702c71baf4c00c34f6212b90eb1f932b4daaa123f123cad2da37f0c4dda')
+b2sums=('3accd7d5c73462e4aa045b3d1949cc41f3d6ace7ce81b612293617611bc1f143493b066437638deed721628c9603ab662bf4e18e7e5495686b63cb5f1fb12198')
 validpgpkeys=(
   '2D58709F32193AA828ED43D72DBD7F9150AB7E67' # Kavish Devar (GitHub Signing Key) <mail@kavishdevar.me>
 )
@@ -42,7 +42,7 @@ build() {
     -B "${_pkgsrc}/build"
     -S "${_pkgsrc}/linux"
     -G 'Unix Makefiles'
-    -W no-dev
+    -W no-author
     -D CMAKE_BUILD_TYPE:STRING='None'
     -D CMAKE_INSTALL_PREFIX:PATH='/usr'
     -D CMAKE_SKIP_RPATH:BOOL=TRUE
@@ -58,6 +58,6 @@ package() {
   DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
 
   cd "${_pkgsrc}"
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm644 "LICENSE"   -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
