@@ -18,8 +18,8 @@ sha512sums=('b7f8ef357318670fe7040f5686d96ba9ae0a1226ede90c75381b104920fac657b22
 build() {
 	cd ${pkgbase}
         cd linux
-	make component
 	make build
+	make component
 	make build-fcitx5
 }
 
