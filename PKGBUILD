@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=leidenAlg
-_pkgver=1.1.6
+_pkgver=1.1.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9ecd5de47175b196a39ca5a4521cedbb')
-b2sums=('0289367d6cc81505e1cb2f7f6930150226082ac63352a9c3feab49819cd143625ef0687417d6722d510bda35fe782a13cac5e133fc7e3c018b24e02ef82b6a6a')
+md5sums=('16ed8aff53c03363d92758d4bc069c5f')
+b2sums=('90afd24ab6b9c78216c99c1eae3a7b719d48e52cd45aeb36e5dcdfd76c62a1e0075d3a1a9537f075e7662ff182a20f2e1bae0a0fb3a33aaedef80a3fa19d7870')
 
 build() {
   mkdir build
