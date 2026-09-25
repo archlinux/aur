@@ -17,7 +17,7 @@ depends=(
 )
 options=('!strip' '!debug')
 source=(
-  "${url}/releases/download/v${pkgver}/Linux.-.Discipulus.tar.gz"
+  "${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/Linux.-.Discipulus.tar.gz"
   "${url}/raw/refs/tags/v${pkgver}/icon.svg"
   "${_pkgname}.desktop"
 )
