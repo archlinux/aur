@@ -1,7 +1,7 @@
 # Maintainer: Manuel Hüsers <aur@huesers.de>
 
 pkgname=sublime-text-4
-pkgver=4.4200
+pkgver=4.4215
 pkgrel=1
 pkgdesc='Sophisticated text editor for code, html and prose - stable build'
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source_x86_64=("${pkgname//-/_}_${pkgver/./_}_${pkgrel}_x64.tar.xz::https://down
 source_aarch64=("${pkgname//-/_}_${pkgver/./_}_${pkgrel}_arm64.tar.xz::https://download.sublimetext.com/sublime_text_build_${pkgver:2}_arm64.tar.xz")
 
 sha512sums=('ac56e9b7dddaebb3d222795cfc644109c93cc3f79695b8f9ee56022c74fe04a1134dd54cab07c74ff1f96b783cb3dbc026c16095552f1d2dd83115ea274dc2e9')
-sha512sums_x86_64=('0a6ff4be7ae35ce80d568a2bf8dc5ed6fcf9f845517f7a1b8b24f180842f72ef16f9792e91fc70a277cfaf66bf1be482bb1328c98252d7c524d3412cfe9f22e3')
-sha512sums_aarch64=('bb8f314e3c0ffff2536f91331fe43fe55d42fed27fca32bced5e779331296c7ee4b619dacc0193bc7f2cfa16a770177a81783ed959c786522e9688b028c7c221')
+sha512sums_x86_64=('e49d032b4ee3b609913a9d8733f75e910f0b02accf9a77ce34a79bb1967140deaecfcf243989846b9d9e1a6fb09058ebf05676ed0981fac0c5d53ddb612e7d89')
+sha512sums_aarch64=('7e4670497be0e731e8afd3115d2152adf40180486c389f624af1ec61d780958b383211e4f14c1010bb18f8ea83b055ab3666a6f526b8ce07cc85cc6967ac0b61')
 
 prepare() {
 	sed -i -e "s|@ST_PATH@|/opt/sublime_text|g" "${pkgname}.sh"
