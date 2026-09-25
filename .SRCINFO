@@ -1,7 +1,7 @@
 pkgbase = prolewatch
 	pkgdesc = AUR security scanner and build sandbox with network isolation, optional AI review and root action inspection
 	pkgver = 0.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/holgerjh/prolewatch
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -19,7 +19,7 @@ pkgbase = prolewatch
 	depends = sudo
 	depends = systemd
 	depends = util-linux
-	optdepends = yay>=13.0.1: supported AUR transaction driver
+	optdepends = yay>=13.0.1: AUR transaction driver; run prolewatch setup after installation
 	optdepends = openai-codex: Codex-backed AI review
 	optdepends = claude-code: Anthropic-backed AI review
 	options = !debug
