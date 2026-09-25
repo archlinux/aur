@@ -1,6 +1,6 @@
 pkgbase = python-array-api-extra
 	pkgdesc = Extra array functions built on top of the array API standard
-	pkgver = 0.11.2
+	pkgver = 0.11.4
 	pkgrel = 1
 	url = https://data-apis.org/array-api-extra
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-array-api-extra
 	optdepends = python-dask
 	optdepends = python-jax
 	optdepends = python-pytorch
-	source = python-array-api-extra-0.11.2.tar.gz::https://github.com/data-apis/array-api-extra/archive/refs/tags/v0.11.2.tar.gz
-	sha256sums = 91c0f98f2118efdf1140a8d8c51bfaf37e1f71ffa4700a125e35c4679a4ddfa6
+	source = python-array-api-extra-0.11.4.tar.gz::https://github.com/data-apis/array-api-extra/archive/refs/tags/v0.11.4.tar.gz
+	sha256sums = ed67278df9c3f1fd230821005359a15e24b2979380c042c4c1654ca3a688ede3
 
 pkgname = python-array-api-extra
