@@ -2,6 +2,7 @@
 Description=Noodle Gallery - self-hosted photo and video management
 Wants=docker.service network-online.target
 After=docker.service network-online.target
+ConditionPathExists=/etc/noodle-gallery/docker-compose.yml
 
 [Service]
 Type=oneshot
