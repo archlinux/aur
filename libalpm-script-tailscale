@@ -13,29 +13,31 @@
 # from here is not worth the fragility; the second run is merely slow.
 set -uo pipefail
 
+# Next to this script when run from a checkout, installed under /usr/lib
+# otherwise.
+lib=$(dirname -- "$(readlink -f -- "${BASH_SOURCE[0]}")")/lib-presets.sh
+[[ -r $lib ]] || lib=/usr/lib/mkinitcpio-tailscale/presets.sh
+# shellcheck source=lib-presets.sh
+. "$lib"
+
 hook_enabled() {
-	# The configuration is a shell fragment and HOOKS= is an array; parsing it
-	# any way other than sourcing -- as mkinitcpio itself does -- would miss
-	# line continuations and quoting. Sourced cumulatively, main file then
-	# drop-ins, because later assignments override earlier ones: a drop-in
-	# that redefines HOOKS= without tailscale has disabled the hook, and a
-	# per-file check would keep rebuilding for it anyway. A scalar HOOKS="..."
-	# is legal too (mkinitcpio's arrayize_config splits it); ${HOOKS[*]} reads
-	# the same either way. The subshell keeps the sourcing contained.
-	(
-		HOOKS=()
-		for f in /etc/mkinitcpio.conf /etc/mkinitcpio.conf.d/*.conf; do
-			[[ -r $f ]] || continue
-			# shellcheck disable=SC1090
-			. "$f" 2>/dev/null
-		done
-		[[ " ${HOOKS[*]:-} " == *' tailscale '* ]]
-	)
+	# Every configuration `mkinitcpio -P` builds from, not just the default
+	# file: a preset may name its own (ALL_config=, <name>_config=), and one
+	# that lists tailscale needs the rebuild however the others look. The
+	# library reads each one the way mkinitcpio does, by sourcing it, drop-ins
+	# included where mkinitcpio includes them.
+	local cfg
+	while IFS= read -r cfg; do
+		ts_uses_hook "$cfg" && return 0
+	done < <(ts_configs)
+	return 1
 }
 
 hook_enabled || exit 0
 
-if ! [[ -s /etc/initcpio/tailscale/tailscaled.state ]]; then
+# The same two files the install hook refuses to build without; checking
+# fewer would let a half-configured setup fail the rebuild after all.
+if ! [[ -s /etc/initcpio/tailscale/tailscaled.state && -s /etc/initcpio/tailscale/default.env ]]; then
 	echo "tailscale is in HOOKS= but /etc/initcpio/tailscale is not set up; not rebuilding the initramfs"
 	echo "run setup-initcpio-tailscale, then mkinitcpio -P"
 	exit 0

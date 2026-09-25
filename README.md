@@ -103,7 +103,8 @@ same reason.
 
 Edit `/etc/mkinitcpio.conf` and put `tailscale` after the network hook and
 before whatever blocks waiting for a passphrase, be it `sd-encrypt`, `encrypt`
-or `encryptssh`:
+or `encryptssh`. If a preset in `/etc/mkinitcpio.d/` names a configuration
+file of its own (`ALL_config=` or `<preset>_config=`), edit that file instead:
 
 ```text
 # systemd-based
@@ -134,8 +135,9 @@ setup-initcpio-tailscale --check
 
 It verifies, without changing anything, that the configuration files exist,
 that `tailscale` sits correctly in `HOOKS=` (after `systemd`, after the
-network hook, before the encrypt hook), that the built images actually contain
-`tailscaled`, and (with `jq` installed and this machine on the tailnet) that
+network hook, before the encrypt hook) in every configuration your presets
+use, that the images they build, UKIs included, actually contain `tailscaled`,
+and (with `jq` installed and this machine on the tailnet) that
 the initrd node's key is not about to expire. Then confirm the node is live:
 
 ```sh

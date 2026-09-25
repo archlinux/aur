@@ -155,27 +155,62 @@ chk_fail() {
   CHECK_RC=1
 }
 
-# The effective HOOKS= array, resolved the way mkinitcpio resolves it: the
-# main file first, then the conf.d drop-ins in sorted order, later assignments
-# overriding earlier ones. The subshell keeps the sourcing contained.
-effective_hooks() {
-  (
-    HOOKS=()
-    for f in /etc/mkinitcpio.conf /etc/mkinitcpio.conf.d/*.conf; do
-      [[ -r $f ]] || continue
-      # shellcheck source=/dev/null
-      . "$f" 2>/dev/null
-    done
-    # HOOKS may be a plain string rather than an array -- Arch shipped that
-    # form for years and a .pacnew upgrade leaves it in place, and mkinitcpio
-    # accepts both (arrayize_config). Joining and re-splitting on spaces
-    # reads either the same way; hook names have no spaces to lose. Without
-    # it a scalar config looks like a single hook named
-    # "base udev ... filesystems" and nothing matches.
-    local -a split=()
-    IFS=' ' read -r -a split <<<"${HOOKS[*]:-}" || true
-    printf '%s\n' ${split[@]+"${split[@]}"}
-  )
+# Next to this script when run from a checkout, installed under /usr/lib
+# otherwise. Only --check needs it, so only --check loads it.
+load_presets_lib() {
+  local lib
+  lib=$(dirname -- "$(readlink -f -- "${BASH_SOURCE[0]}")")/lib-presets.sh
+  [[ -r $lib ]] || lib=/usr/lib/mkinitcpio-tailscale/presets.sh
+  # shellcheck source=lib-presets.sh
+  . "$lib"
+}
+
+# check_placement <config> <message prefix>
+#
+# The HOOKS= ordering rules for one configuration. Returns 1 when it does not
+# list tailscale, 2 when it has no readable HOOKS= at all.
+check_placement() {
+  local cfg=$1 pfx=$2
+  local hooks=() h i ts=-1 sd=-1 net=-1 enc=-1 encname=''
+  mapfile -t hooks < <(ts_hooks "$cfg")
+  i=0
+  for h in "${hooks[@]}"; do
+    case $h in
+    tailscale) ts=$i ;;
+    systemd) sd=$i ;;
+    sd-network | net | netconf) net=$i ;;
+    sd-encrypt | encrypt | encryptssh)
+      enc=$i
+      encname=$h
+      ;;
+    esac
+    i=$((i + 1))
+  done
+
+  if ((ts < 0)); then
+    # Whether a missing hook is a failure depends on the other
+    # configurations, so the caller reports it; unreadable is one regardless.
+    if ((${#hooks[@]} == 0)); then
+      chk_fail "${pfx}could not read a HOOKS= array from $(ts_config_name "$cfg")"
+      return 2
+    fi
+    return 1
+  fi
+  chk_ok "${pfx}'tailscale' is in HOOKS="
+  if ((sd >= 0)) && ((sd > ts)); then
+    chk_fail "${pfx}'tailscale' is listed before 'systemd': the hook builds the busybox layout there, which a systemd initramfs never runs"
+  fi
+  if ((enc >= 0)) && ((enc < ts)); then
+    chk_fail "${pfx}'tailscale' is listed after '${encname}': boot blocks at the passphrase prompt before tailscaled ever starts"
+  fi
+  if ((net < 0)); then
+    chk_warn "${pfx}no network hook (sd-network, net or netconf) in HOOKS=: tailscaled will have no address unless something else configures one"
+  elif ((net > ts)); then
+    chk_fail "${pfx}the network hook is listed after 'tailscale'; move it before"
+  else
+    chk_ok "${pfx}a network hook precedes 'tailscale'"
+  fi
+  return 0
 }
 
 run_check() {
@@ -194,6 +229,7 @@ run_check() {
     # shellcheck disable=SC2086
     exec $xsu "$self" --check --hostname="$TS_HOSTNAME"
   fi
+  load_presets_lib
 
   # The configuration the install hook will copy into the image.
   if [[ -s "${TS_STATEDIR}/tailscaled.state" ]]; then
@@ -213,44 +249,32 @@ run_check() {
   fi
 
   # Placement in HOOKS=. Wrong order fails silently at boot, so it is the one
-  # thing most worth checking; see the README for why each rule holds.
-  local hooks=() h i ts=-1 sd=-1 net=-1 enc=-1 encname=''
-  mapfile -t hooks < <(effective_hooks)
-  i=0
-  for h in "${hooks[@]}"; do
-    case $h in
-    tailscale) ts=$i ;;
-    systemd) sd=$i ;;
-    sd-network | net | netconf) net=$i ;;
-    sd-encrypt | encrypt | encryptssh)
-      enc=$i
-      encname=$h
-      ;;
+  # thing most worth checking; see the README for why each rule holds. Every
+  # configuration `mkinitcpio -P` builds from is checked -- a preset may name
+  # its own -- and messages about one other than the default carry its path.
+  local cfg name pfx rc
+  local -a using=() without=()
+  while IFS= read -r cfg; do
+    name=$(ts_config_name "$cfg")
+    pfx=''
+    [[ $cfg == - ]] || pfx="${name}: "
+    rc=0
+    check_placement "$cfg" "$pfx" || rc=$?
+    case $rc in
+    0) using+=("$cfg") ;;
+    1) without+=("$pfx") ;;
     esac
-    i=$((i + 1))
-  done
-
-  if ((ts < 0)); then
-    if ((${#hooks[@]} == 0)); then
-      chk_fail "could not read a HOOKS= array from /etc/mkinitcpio.conf"
-    else
-      chk_fail "'tailscale' is not in HOOKS=; add it after the network hook and before any encrypt hook"
-    fi
-  else
-    chk_ok "'tailscale' is in HOOKS="
-    if ((sd >= 0)) && ((sd > ts)); then
-      chk_fail "'tailscale' is listed before 'systemd': the hook builds the busybox layout there, which a systemd initramfs never runs"
-    fi
-    if ((enc >= 0)) && ((enc < ts)); then
-      chk_fail "'tailscale' is listed after '${encname}': boot blocks at the passphrase prompt before tailscaled ever starts"
-    fi
-    if ((net < 0)); then
-      chk_warn "no network hook (sd-network, net or netconf) in HOOKS=: tailscaled will have no address unless something else configures one"
-    elif ((net > ts)); then
-      chk_fail "the network hook is listed after 'tailscale'; move it before"
-    else
-      chk_ok "a network hook precedes 'tailscale'"
-    fi
+  done < <(ts_configs)
+  if ((${#using[@]} == 0 && ${#without[@]} == 1)); then
+    chk_fail "${without[0]}'tailscale' is not in HOOKS=; add it after the network hook and before any encrypt hook"
+  elif ((${#using[@]} == 0 && ${#without[@]} > 1)); then
+    chk_fail "no configuration the presets in ${TS_MKI_PRESETS} build from lists 'tailscale' in HOOKS="
+  elif ((${#using[@]})); then
+    # A preset with its own configuration may leave tailscale out on
+    # purpose, a fallback image say; worth a mention, not a failure.
+    for pfx in ${without[@]+"${without[@]}"}; do
+      chk_warn "${pfx:-$(ts_config_name -): }'tailscale' is not in HOOKS=, so images built from it will not join the tailnet"
+    done
   fi
 
   # Key expiry, the one setup step nothing else can verify: an expired initrd
@@ -301,11 +325,14 @@ run_check() {
     fi
   fi
 
-  # Best effort: do built images actually carry the daemon? Skipped when the
-  # tools or images are not where this expects them. When TUN= asks for a
-  # kernel device, the module has to be in the image too -- configured but not
-  # rebuilt is exactly the silent break this mode can produce.
-  local img found=0 checked=0 list tun cli tsbin
+  # Best effort: do built images actually carry the daemon? The images are
+  # the ones the presets build from a configuration that lists tailscale,
+  # UKIs included; with no usable preset, whatever /boot/initramfs-*.img
+  # holds. When TUN= asks for a kernel device, the module has to be in the
+  # image too -- configured but not rebuilt is exactly the silent break this
+  # mode can produce.
+  local img uki found=0 checked=0 list tun cli tsbin
+  local -a images=()
   # What a rebuild would put in the image, for the staleness comparison below.
   tsbin=$(command -v tailscaled 2>/dev/null || printf '')
   # The subshell keeps the sourcing contained, the same way the install hook
@@ -314,9 +341,29 @@ run_check() {
   tun=$(. "${TS_STATEDIR}/default.env" 2>/dev/null; printf '%s' "${TUN:-}")
   # shellcheck source=/dev/null
   cli=$(. "${TS_STATEDIR}/default.env" 2>/dev/null; printf '%s' "${CLI:-}")
-  if command -v lsinitcpio >/dev/null; then
+  if [[ -n $(ts_presets) ]]; then
+    while IFS=$'\t' read -r _ cfg img uki; do
+      ts_uses_hook "$cfg" || continue
+      [[ $img == - ]] || images+=("$img")
+      [[ $uki == - ]] || images+=("$uki")
+    done < <(ts_presets)
+  else
     for img in /boot/initramfs-*.img; do
-      [[ -e $img ]] || continue
+      [[ -e $img ]] && images+=("$img")
+    done
+  fi
+  if command -v lsinitcpio >/dev/null; then
+    for img in ${images[@]+"${images[@]}"}; do
+      if [[ ! -e $img ]]; then
+        chk_warn "$img has not been built yet; run 'mkinitcpio -P'"
+        continue
+      fi
+      # lsinitcpio opens a UKI by extracting its .initrd section, with
+      # objcopy. Without binutils that is a failure to look, not a finding.
+      if [[ $(head -c2 "$img" 2>/dev/null) == MZ ]] && ! command -v objcopy >/dev/null; then
+        chk_warn "$img is a UKI and objcopy (binutils) is not installed, so it cannot be inspected"
+        continue
+      fi
       checked=1
       list=$(lsinitcpio -l "$img" 2>/dev/null)
       if grep -q 'tailscaled$' <<<"$list"; then
@@ -347,7 +394,7 @@ run_check() {
         fi
       fi
     done
-    ((checked)) || chk_warn 'no /boot/initramfs-*.img found to inspect'
+    ((${#images[@]})) || chk_warn 'no built image to inspect'
     if ((checked && !found)); then
       chk_fail "no inspected image contains tailscaled; run 'mkinitcpio -P' and re-check"
     fi
@@ -365,11 +412,15 @@ cleanup() {
   # Whatever brought us here, on the way out. Exiting 0 unconditionally, as this
   # used to, reported every failure -- die() included -- as a successful setup.
   local rc=$?
-  if [[ -n "${SETUPDIR:-}" ]]; then
-    rm -rf "${SETUPDIR}"
-  fi
+  # The daemon goes first, and is waited for: removing the directory under a
+  # live tailscaled races its writes, and a file it creates mid-removal
+  # leaves the directory, node key included, behind in /tmp.
   if [[ -n "$PID" ]]; then
     kill "$PID" 2>/dev/null || true
+    wait "$PID" 2>/dev/null || true
+  fi
+  if [[ -n "${SETUPDIR:-}" ]]; then
+    rm -rf "${SETUPDIR}"
   fi
   exit "$rc"
 }
@@ -471,6 +522,12 @@ for arg in "$@"; do
     TS_TUN=${flag#*=}
     TS_TUN=${TS_TUN//[\"\']/}
     [[ -n $TS_TUN ]] || die "--tun= needs an interface name"
+    # The name lands in a sed replacement and in default.env, which root
+    # sources on every image build, so anything beyond a kernel interface
+    # name (IFNAMSIZ-1 characters) or tailscaled's own keyword is refused
+    # here rather than breaking the install half way or running as code.
+    [[ $TS_TUN =~ ^[A-Za-z0-9_.-]{1,15}$ || $TS_TUN == userspace-networking ]] ||
+      die "--tun=${TS_TUN} is not a valid interface name"
     continue
     ;;
   ssh | ssh=*)
