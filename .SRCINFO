@@ -1,6 +1,6 @@
 pkgbase = gitmount
 	pkgdesc = Read-only FUSE filesystem for git: every branch, tag and commit as plain directories
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/OrbitZore/gitmount
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = gitmount
 	depends = fuse3
 	depends = libgit2
 	depends = gcc-libs
-	source = gitmount-0.0.2.tar.gz::https://github.com/OrbitZore/gitmount/archive/refs/tags/v0.0.2.tar.gz
-	sha256sums = a5ccb005d30d08bb0a4cb52bd1d2acc66d0e21d2b5f97fd379c2172aeef1a7e8
+	source = gitmount-0.0.3.tar.gz::https://github.com/OrbitZore/gitmount/archive/refs/tags/v0.0.3.tar.gz
+	sha256sums = 12f7e3bb0b98fdf43451634b6d01ca23b32481447193fbff740407add273c88c
 
 pkgname = gitmount
