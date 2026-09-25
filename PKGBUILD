@@ -31,7 +31,11 @@ build() {
 # fonts are not installed, this pulls from the aur instead
 package_taigikeyboard-common() {
 	pkgdesc='Common files for Taigi Keyboard'
-	depends=(gtk4 libadwaita ttf-jf-openhuninn ttf-iansui)
+	depends=(gtk4 libadwaita)
+	optdepends=(
+		'ttf-jf-openhuninn: font with more support for Taigi'
+		'ttf-iansui: font with more support for Taigi'
+	)
 	cd "$pkgbase/linux"
 	install -d "$pkgdir"/usr/share/taigikeyboard/dictionaries
 	install -m644 \
