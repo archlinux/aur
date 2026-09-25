@@ -2,7 +2,7 @@
 
 pkgname=jorvik-git
 _pkgname=jorvik
-pkgver=1.0.8.r2.gd6a31a4
+pkgver=1.0.12.r2.gf2b321f
 pkgrel=1
 pkgdesc="Self-hosted Matrix client built to feel like Discord (git)"
 arch=('x86_64')
