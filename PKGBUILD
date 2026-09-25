@@ -9,14 +9,14 @@ url="https://github.com/Comfy-Org/workflow_templates/"
 license=('MIT')
 depends=(
   'python'
-  'python-comfyui-workflow-templates-core'
-  'python-comfyui-workflow-templates-json'
-  'python-comfyui-workflow-templates-media-api'
-  'python-comfyui-workflow-templates-media-assets-01'
-  'python-comfyui-workflow-templates-media-assets-02'
-  'python-comfyui-workflow-templates-media-image'
-  'python-comfyui-workflow-templates-media-other'
-  'python-comfyui-workflow-templates-media-video'
+  'python-comfyui-workflow-templates-core>=0.3.357'
+  'python-comfyui-workflow-templates-json>=0.1.92'
+  'python-comfyui-workflow-templates-media-api>=0.3.84'
+  'python-comfyui-workflow-templates-media-assets-01>=0.1.47'
+  'python-comfyui-workflow-templates-media-assets-02>=0.1.3'
+  'python-comfyui-workflow-templates-media-image>=0.3.160'
+  'python-comfyui-workflow-templates-media-other>=0.3.229'
+  'python-comfyui-workflow-templates-media-video>=0.3.101'
 )
 makedepends=(python-build python-installer python-wheel python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
