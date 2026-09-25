@@ -1,0 +1,12 @@
+pkgbase = omnidotdev-kiln
+	pkgdesc = Zero-config source-to-image container builder
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://kiln.omni.dev
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	source = https://github.com/omnidotdev/kiln/archive/v0.1.0.tar.gz
+	sha256sums = 1717e0faf4f49da293585b921e32c0654fc1ecd5eaf769f29446db3070ad095b
+
+pkgname = omnidotdev-kiln
