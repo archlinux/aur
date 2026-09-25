@@ -2,7 +2,7 @@
 
 pkgname=ortie
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI to manage OAuth tokens with pimalaya'
 arch=(any)
 url='https://github.com/pimalaya/ortie'
@@ -29,7 +29,7 @@ build() {
   export CARGO_TARGET_DIR=target
   export OPENSSL_NO_VENDOR=1
   export ZSTD_SYS_USE_PKG_CONFIG=1
-  cargo build --frozen --release
+  cargo build --frozen --release --all-features
 }
 
 check() {
@@ -41,5 +41,4 @@ check() {
 package() {
   cd $_pkgsrc
   install -Dm755 "target/release/ortie" -t "$pkgdir/usr/bin/"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

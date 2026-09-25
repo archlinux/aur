@@ -1,7 +1,7 @@
 pkgbase = ortie
 	pkgdesc = CLI to manage OAuth tokens with pimalaya
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pimalaya/ortie
 	arch = any
 	license = MIT
