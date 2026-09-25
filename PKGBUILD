@@ -2,7 +2,7 @@
 # the AUR repository receives the rendered PKGBUILD and .SRCINFO.
 pkgname=sniplab
 _pkgname=snip
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc='Filesystem-native snippet library and terminal CLI'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/gitkeniwo/snip/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
   "$pkgname-$pkgver.tar.gz.asc::https://github.com/gitkeniwo/snip/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc"
 )
-sha256sums=('52be51cb3cc6a7ecc8c240e3848f53db83b28c139594dff8800f5e21fd4b8c48' 'SKIP')
+sha256sums=('eef829c0fdd228b14f049f966b650a9fbf26f6e503a3d1ca66361ae1471556fc' 'SKIP')
 validpgpkeys=('F5B9349D9BDA6EA3327F30BE1DB2F97660CA8B2D')
 
 build() {
