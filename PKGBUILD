@@ -3,7 +3,7 @@
 
 _pkgname="dnsx"
 pkgname="${_pkgname}-bin"
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Fast and multi-purpose DNS toolkit"
 arch=(
@@ -35,10 +35,10 @@ source_i686=(
 source_x86_64=(
   "${_url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.zip"
 )
-sha256sums_aarch64=('94dc2d96aed1ae3e680dc09f070e67e48bd796583b8144c1de5bd3425a318847')
-sha256sums_armv7h=('ea44753af081f592edfbb6d4884358c5222d5cd09e8143dbea59ad05de25223b')
-sha256sums_i686=('74472fab603a054852ea0b080d96ad7179db7a5568d21dc45ea9a6d7275175ea')
-sha256sums_x86_64=('1415020474886151a4820c62b9e68a315cc062f7f111a2fd13fda99047a809a6')
+sha256sums_aarch64=('dd657dd1ccee5e137eca2dbad0e97dbd067555f744adb97efcda774f1b2fbde1')
+sha256sums_armv7h=('567a48de102ac59e1d79648fe7cd43139f26a2a0a5280dc9667b0d081b14fe79')
+sha256sums_i686=('779ed8f5766d3a9fd86d1a7ae84fd88e30d36a42c01f2f8a653a598ccf3bcc85')
+sha256sums_x86_64=('438b964653056dd51dcfe614b1a16f8bced3cc48a1d27bc07cc6fdf2ef2a9533')
 
 package() {
   cd "${srcdir}"
