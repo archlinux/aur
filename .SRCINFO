@@ -1,0 +1,19 @@
+pkgbase = arch-cleaner-git
+	pkgdesc = Interactive TUI cleanup tool for Arch Linux (pacman cache, journal, user/AI-agent caches, large and duplicate files)
+	pkgver = 0.1.0.r7.g9c2757f
+	pkgrel = 1
+	url = https://github.com/duanluan/arch-cleaner
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = pacman-contrib
+	depends = systemd
+	depends = findutils
+	provides = arch-cleaner
+	conflicts = arch-cleaner
+	source = arch-cleaner::git+https://github.com/duanluan/arch-cleaner.git
+	sha256sums = SKIP
+
+pkgname = arch-cleaner-git
