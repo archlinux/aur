@@ -5,7 +5,7 @@ pkgbase = sublime-text-4
 	url = https://www.sublimetext.com/download
 	arch = x86_64
 	arch = aarch64
-	license = custom
+	license = LicenseRef-custom
 	depends = libpng
 	depends = gtk3
 	provides = sublime-text
@@ -13,7 +13,7 @@ pkgbase = sublime-text-4
 	source = sublime-text-4.sh
 	sha512sums = ac56e9b7dddaebb3d222795cfc644109c93cc3f79695b8f9ee56022c74fe04a1134dd54cab07c74ff1f96b783cb3dbc026c16095552f1d2dd83115ea274dc2e9
 	source_x86_64 = sublime_text_4_4_4215_1_x64.tar.xz::https://download.sublimetext.com/sublime_text_build_4215_x64.tar.xz
-	sha512sums_x86_64 = 7e4670497be0e731e8afd3115d2152adf40180486c389f624af1ec61d780958b383211e4f14c1010bb18f8ea83b055ab3666a6f526b8ce07cc85cc6967ac0b61
+	sha512sums_x86_64 = e49d032b4ee3b609913a9d8733f75e910f0b02accf9a77ce34a79bb1967140deaecfcf243989846b9d9e1a6fb09058ebf05676ed0981fac0c5d53ddb612e7d89
 	source_aarch64 = sublime_text_4_4_4215_1_arm64.tar.xz::https://download.sublimetext.com/sublime_text_build_4215_arm64.tar.xz
 	sha512sums_aarch64 = 7e4670497be0e731e8afd3115d2152adf40180486c389f624af1ec61d780958b383211e4f14c1010bb18f8ea83b055ab3666a6f526b8ce07cc85cc6967ac0b61
 
