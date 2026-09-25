@@ -3,6 +3,7 @@ pkgbase = comfyui-system
 	pkgver = 0.37.0
 	pkgrel = 1
 	url = https://github.com/Comfy-Org/ComfyUI
+	install = comfyui-system.install
 	arch = any
 	license = GPL-3.0
 	depends = python

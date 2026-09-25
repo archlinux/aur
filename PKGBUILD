@@ -2,6 +2,7 @@
 
 _prefix="/opt/comfyui"
 pkgname=comfyui-system
+install=$pkgname.install
 pkgver=0.37.0
 pkgrel=1
 pkgdesc="The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface. (use system dependencies)"
@@ -76,13 +77,4 @@ package() {
     install -Dm755 "$srcdir/comfyui.sh" "$pkgdir/usr/bin/comfyui"
     install -Dm644 "$srcdir/extra_model_paths.yaml" \
         "$pkgdir/usr/share/comfyui/extra_model_paths.yaml.default"
-}
-
-post_install() {
-    echo ":: ComfyUI (system deps) installed successfully."
-    echo ":: Run 'comfyui' to start the server."
-    echo ":: All data will be stored in:"
-    echo "::   ~/.cache/comfyui/   (inputs, outputs, models)"
-    echo "::   ~/.config/comfyui/  (extra_model_paths.yaml)"
-    echo ":: For GPU acceleration, install python-torch-cuda or python-torch-rocm."
 }

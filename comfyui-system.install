@@ -1,0 +1,14 @@
+# Maintainer: lalala <lalala_233@qq.com>
+
+post_install() {
+    echo ":: Run 'comfyui' to start the server."
+    echo ":: All data will be stored in:"
+    echo "::   ~/.cache/comfyui/   (inputs, outputs, models)"
+    echo "::   ~/.config/comfyui/  (extra_model_paths.yaml)"
+    echo ":: For GPU acceleration, install python-torch-cuda or python-torch-rocm."
+}
+
+post_upgrade() {
+    echo ":: NOTE: existing ~/.config/comfyui/extra_model_paths.yaml was NOT overwritten."
+    echo ":: Compare it with /usr/share/comfyui/extra_model_paths.yaml.default if needed."
+}
