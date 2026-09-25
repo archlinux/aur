@@ -9,9 +9,6 @@ url="https://github.com/supermemoryai/supermemory"
 license=('AGPL-3.0-or-later')
 depends=()
 makedepends=()
-optdepends=('openai-python: for OpenAI embeddings'
-            'google-generativeai: for Gemini embeddings'
-            'anthropic: for Anthropic API')
 install=supermemory.install
 options=(!strip)
 
