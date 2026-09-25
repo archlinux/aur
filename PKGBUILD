@@ -5,7 +5,7 @@
 
 _pkgname="cpdf"
 pkgname="${_pkgname}-bin"
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="Coherent PDF commandline tool to manipulate PDF files"
 arch=(
@@ -45,14 +45,14 @@ source_i686=(
 source_x86_64=(
   "${_pkgsrc}-x86_64::${_url_bin}/raw/refs/tags/v${pkgver}/Linux-Intel-64bit/${_pkgname}"
 )
-sha256sums=('df2705cacee64bfd85c292d2a2663aea9bbf336a7cf88e1125a1ead8aac5309f'
+sha256sums=('c3580b9a57efdd68773e761274762da297e2f26513123b076f0273836549a3f4'
             '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
-            'fa6f87a3b1bd40091aff9ffbe1909b49a68f0d9d67af1e5d885f2d00a9e2fee1'
+            '457d7347326535a147fe81763b2724a753e1e69ceb04e381320aa6b3ae3c6050'
             'c352486a140280950126f5d9069e271d58f0026663df03c586ccce39450de47d'
-            'e95b8af8a4a2014d8995cf33bba2abb47eb29d06b3c4b107c6ab3a7f1c50f84c')
-sha256sums_aarch64=('2ebf8e3d70df1681adc1b9691e3924e8cc94ac95f8553b9dd79753341d970e5c')
-sha256sums_i686=('d61476ca3f9c9ce1c08ecb2181fd855366a7253d38a9fff36f63a04f94f52898')
-sha256sums_x86_64=('bc39ed19c90a890b819afdbe2a14674355e973314157bd1c41c176bddb8a1ee2')
+            '376e0a75c93d69568dbe96bedbb59638cf0a2ea4786068550c520141040fdbb1')
+sha256sums_aarch64=('ac0f9a0a38ac17da49bf39b950588711445965de4d852dbd467694abb825d5df')
+sha256sums_i686=('fbc31a6ff67bd8c7fd5b156d5013e447ef5d77b6052a46f9131c98cdacbcfc74')
+sha256sums_x86_64=('74577980b2ed6cf65c673acf8b8a587ce3d6f6ed44b373a9dcd1f3d113b269ed')
 
 package() {
   cd "${srcdir}"
