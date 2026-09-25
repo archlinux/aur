@@ -16,7 +16,8 @@ source=("git+https://github.com/taigikeyboard/taigikeyboard.git#tag=desktop-$pkg
 sha512sums=('b7f8ef357318670fe7040f5686d96ba9ae0a1226ede90c75381b104920fac657b22b63859a1d4b308b32a8aae30c15ad9390a86ab2e32e2054752583dcc87d1a')
 
 build() {
-	cd ${pkgname}-${pkgver}
+	cd ${pkgbase}
+        cd linux
 	make component
 	make build
 	make build-fcitx5
