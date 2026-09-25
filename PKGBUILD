@@ -3,7 +3,7 @@
 
 pkgname=stable-diffusion.cpp-git
 _name=${pkgname%-git}
-pkgver=r633.5b0267e
+pkgver=r919.19bbbca
 pkgrel=1
 pkgdesc="Stable Diffusion in pure C/C++"
 arch=('aarch64' 'x86_64')
@@ -22,7 +22,7 @@ makedepends=(
 conflicts=("$_name")
 provides=("$_name")
 source=("$_name::git+https://github.com/leejet/stable-diffusion.cpp.git"
-        'git+https://github.com/ggml-org/ggml.git'
+        'leejet-ggml::git+https://github.com/leejet/ggml.git'
         'git+https://github.com/leejet/sdcpp-webui.git'
         'git+https://github.com/webmproject/libwebm.git')
 sha256sums=('SKIP'
@@ -39,7 +39,7 @@ pkgver() {
 prepare() {
     cd "$_name"
     git submodule init
-    git config submodule.ggml.url "$srcdir/ggml"
+    git config submodule.ggml.url "$srcdir/leejet-ggml"
     git config submodule.examples/server/frontend.url "$srcdir/sdcpp-webui"
     git config submodule.thirdparty/libwebm.url "$srcdir/libwebm"
     git config submodule.thirdparty/libwebp.update none
