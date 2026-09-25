@@ -2,7 +2,7 @@
 # Maintainer: Eldred Habert <arch@(my first name).fr>
 pkgname=hister-bin
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites"
 arch=('x86_64' 'aarch64')
 provides=(hister)
@@ -19,7 +19,7 @@ source=(hister.override.service
         "LICENSE-$pkgver::https://raw.githubusercontent.com/asciimoo/hister/refs/tags/v$pkgver/LICENSE"
         "hister-$pkgver.service::https://raw.githubusercontent.com/asciimoo/hister/refs/tags/v$pkgver/contrib/systemd/hister.service")
 sha256sums=('f5713114859925e53bd9f99d26072bcf07946011545d1e69fbaf09a7623e7e23'
-            '19eb9f3eadb18f3fcdec6a7734aa13ed70293c24a4ec28b3de0f31da32cadfd1'
+            '5e9694bb6d48932dba75daa4795c541d8b6c6dbb894d02d9bfe96ae62b1d63e4'
             '5f4f3e82c42ba517d0caaa1deb4d3532c4f26cc60e42861bff1c5c6dacf34e9f'
             '57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6'
             '4752aafdb88d88697e39e19791aba5c71670bd17dc52c8ba2d9a430673430ff4')
@@ -33,10 +33,9 @@ prepare() {
 
     # We install in a location suitable for vendor installs.
     sed -i 's,/usr/local/,/usr/,g' hister-$pkgver.service
-    pwd
     # Create a separate user service file (taking in the above modification).
     cp hister{-$pkgver,-user}.service
-    echo "$srcdir/systemd-user.patch"
+
     patch --force --forward -p3 < "$srcdir/systemd-user.patch"
 }
 
@@ -47,7 +46,7 @@ build() {
     ./hister-bin-$pkgver completion $_shell > hister.$_shell
   done
 
-  ./hister-bin-$pkgver create-config >config.yml
+  ./hister-bin-$pkgver config create >config.yml
 }
 
 package() {
