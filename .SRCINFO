@@ -1,5 +1,5 @@
 pkgbase = python-fastmcp
-	pkgver = 4.0.9
+	pkgver = 4.0.10
 	pkgrel = 1
 	arch = any
 	license = Apache-2.0
@@ -10,8 +10,8 @@ pkgbase = python-fastmcp
 	makedepends = python-wheel
 	makedepends = git
 	depends = python
-	source = fastmcp::git+https://github.com/PrefectHQ/fastmcp.git#tag=v4.0.9
-	sha256sums = 254ecb51dd9844ba3797cb09449dc2e6ff3b25e6f183b85d10cbeb099c499b41
+	source = fastmcp::git+https://github.com/PrefectHQ/fastmcp.git#tag=v4.0.10
+	sha256sums = af021ed01ace1275231cf832dfa1aa37b74c67c837b4a0595efe930ed22a31fd
 
 pkgname = python-fastmcp-slim
 	pkgdesc = The dependency-slim FastMCP package.
