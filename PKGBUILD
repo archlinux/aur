@@ -1,7 +1,7 @@
 # Maintainer: isbest <icoderdev@outlook.com>
 
 pkgname=mirasim-bin
-pkgver=0.0.364
+pkgver=0.0.367
 pkgrel=1
 pkgdesc='Terminal, agent, model and tool orchestrator'
 arch=('x86_64' 'aarch64')
@@ -47,8 +47,8 @@ source=('launcher-flags.patch')
 source_x86_64=("https://cdn-assets.mirasim.ai/mirasim/releases/v${pkgver}/Mirasim-${pkgver}-linux-amd64.deb")
 source_aarch64=("https://cdn-assets.mirasim.ai/mirasim/releases/v${pkgver}/Mirasim-${pkgver}-linux-arm64.deb")
 sha256sums=('6ea545e822b05486a227c96ca68ed0b215be4b86739580a5fe7f01d1df7d744d')
-sha256sums_x86_64=('56526b16380d1efedb6d69a047067317d59816f59b6983546495f5e9d3019d94')
-sha256sums_aarch64=('1c0efe0fe52c39f6647a38c3cea21f2c0a3474683877d99e145ce928c72a55fe')
+sha256sums_x86_64=('5117ff03ea180c2450f7321837595fa5c87997da4c5afa747804db9bb2c249ec')
+sha256sums_aarch64=('1e7cd86994b4c0946bda515e0949f520f84d3c6f7ab1b1088682e751a391aa24')
 
 package() {
 	local deb
