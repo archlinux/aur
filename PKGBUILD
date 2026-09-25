@@ -1,7 +1,7 @@
 # Maintainer: tassiovirginio <tassiovirginio@gmail.com>
 
 pkgname=strata-fm-git
-pkgver=0.16.0.r28.g9b4b77a
+pkgver=0.20.1.r8.g015621c
 pkgrel=1
 pkgdesc='A fast, keyboard-first file manager for Linux (git build)'
 arch=('x86_64' 'aarch64')

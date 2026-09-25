@@ -1,6 +1,6 @@
 pkgbase = strata-fm-git
 	pkgdesc = A fast, keyboard-first file manager for Linux (git build)
-	pkgver = 0.16.0.r28.g9b4b77a
+	pkgver = 0.20.1.r8.g015621c
 	pkgrel = 1
 	url = https://stratafiles.io/
 	arch = x86_64
