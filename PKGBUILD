@@ -18,16 +18,13 @@ optdepends=(
 	'ttf-iansui: font with more support for Taigi'
 )
 makedepends=(
-	'git'
+	'make'
 	'cargo'
-	'cmake'
-	'ninja'
-	'extra-cmake-modules'
 	'pkgconf'
-	'unzip'
 	'protobuf-c'
+	'cmake'
+	'extra-cmake-modules'
 	'fcitx5'
-	'ibus'
 )
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/taigikeyboard/taigikeyboard/archive/refs/tags/${_tag}.tar.gz")
 sha512sums=('c98ba4034218ffccc24698a613f309c3677a604747fa7f187de6e09bda83d064514fc945a939bd63825b13ab981815a5c706def286ad528982276271bc320519')
