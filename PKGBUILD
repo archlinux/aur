@@ -3,15 +3,40 @@
 _name=runloop-api-client
 pkgname=python-${_name//-/_}
 pkgver=1.32.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The official Python library for the runloop API.'
 arch=('any')
 url='https://github.com/runloopai/api-client-python'
 license=('MIT')
-depends=('python' 'python-httpx' 'python-h2' 'python-pydantic' 'python-typing_extensions' 'python-anyio' 'python-distro' 'python-sniffio' 'python-uuid-utils')
-makedepends=('python-hatchling' 'python-hatch-fancy-pypi-readme' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-respx' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-timeout' 'python-time-machine' 'python-dirty-equals' 'python-rich' 'python-pytest-xdist' 'python-aiohttp' 'python-httpx-aiohttp' 'npm' 'nodejs')
-optdepends=('python-aiohttp: aiohttp' 'python-httpx-aiohttp: aiohttp')
+depends=('python'
+         'python-httpx'
+         'python-h2'
+         'python-pydantic'
+         'python-typing_extensions'
+         'python-anyio'
+         'python-distro'
+         'python-sniffio'
+         'python-uuid-utils')
+makedepends=('python-hatchling'
+             'python-hatch-fancy-pypi-readme'
+             'python-build'
+             'python-installer'
+             'python-wheel')
+checkdepends=('python-respx'
+              'python-pytest'
+              'python-pytest-asyncio'
+              'python-pytest-timeout'
+              'python-time-machine'
+              'python-dirty-equals'
+              'python-rich'
+              'python-pytest-xdist'
+              'python-aiohttp'
+              'python-httpx-aiohttp'
+              'npm'
+              'nodejs'
+              'lsof')
+optdepends=('python-aiohttp: aiohttp'
+            'python-httpx-aiohttp: aiohttp')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('f1ae6a96f0863e6b2669d0035cd726141ad0077c23472f92c141ff41f258ee91')
 
@@ -22,15 +47,18 @@ build() {
 
 check() {
   export DEFER_PYDANTIC_BUILD=false
+  export npm_config_allow_scripts=false
+  export npm_config_yes=true
   local pytest_options=(
     -vv
     --disable-warnings
     -p 'no:benchmark'
   )
   cd "$srcdir"/${_name//runloop-/}-python-$pkgver
-  trap 'pkill -f steady' EXIT
   ./scripts/mock --daemon
-  PYTHONPATH=$PWD/src pytest "${pytest_options[@]}" tests
+  local server_pid=$(lsof -t -i tcp:4010)
+  PYTHONPATH=$PWD/src pytest "${pytest_options[@]}" tests || { kill "${server_pid}"; return 1; }
+  kill "${server_pid}"
 }
 
 package() {

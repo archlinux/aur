@@ -1,7 +1,7 @@
 pkgbase = python-runloop_api_client
 	pkgdesc = The official Python library for the runloop API.
 	pkgver = 1.32.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/runloopai/api-client-python
 	arch = any
 	license = MIT
@@ -17,6 +17,7 @@ pkgbase = python-runloop_api_client
 	checkdepends = python-httpx-aiohttp
 	checkdepends = npm
 	checkdepends = nodejs
+	checkdepends = lsof
 	makedepends = python-hatchling
 	makedepends = python-hatch-fancy-pypi-readme
 	makedepends = python-build
