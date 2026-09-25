@@ -36,12 +36,12 @@ depends=(
     'python-simpleeval'
     'python-blake3'
 
-    'python-comfyui-frontend-package'
-    'python-comfyui-workflow-templates'
-    'python-comfyui-embedded-docs'
-    'python-comfy-kitchen'
-    'python-comfy-aimdo'
-    'python-comfy-angle'
+    'python-comfyui-frontend-package>=1.52.7'
+    'python-comfyui-workflow-templates>=0.11.66'
+    'python-comfyui-embedded-docs>=0.5.12'
+    'python-comfy-kitchen>=0.2.35'
+    'python-comfy-aimdo>=0.5.5'
+    'python-comfy-angle>=0.1.1'
 
     # non-essential, but can remove warings
     'python-kornia'
