@@ -2,7 +2,7 @@
 # Maintainer: coolapso <coolapso@coolapso.tech>
 
 pkgname='agent-skills-validator-bin'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Validate Agent Skills against the public specification'
 url='https://github.com/coolapso/agent-skills-validator'
@@ -12,10 +12,10 @@ provides=('agent-skills-validator')
 conflicts=('agent-skills-validator')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/coolapso/agent-skills-validator/releases/download/v${pkgver}/agent-skills-validator_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('64149b6f6858b9548c65ed6992872c5abb2b971b249f1d5990af15bc64b07bf2')
+sha256sums_aarch64=('45750d42fbb41878e622229b5b40b5d874d4f3aa6fe5e36532d27c80bcc421d2')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/agent-skills-validator/releases/download/v${pkgver}/agent-skills-validator_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('d4f1ee2b11eaf06a58dccd59ac552139fdc98a251e4f76c2ff24137b12997a78')
+sha256sums_x86_64=('11aa2494aa3fed906226d4b364d572f0d2638386157e289cc6bd4da682f7b2cf')
 
 package() {
   install -Dm755 "./agent-skills-validator" "${pkgdir}/usr/bin/agent-skills-validator"
