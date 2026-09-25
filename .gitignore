@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!.gitignore
+!.nvchecker.toml
+!.SRCINFO
+!flowkeeper.desktop
+!flowkeeper-autostart.desktop

@@ -1,0 +1,24 @@
+pkgbase = flowkeeper
+	pkgdesc = Pomodoro timer for power users and teams
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/flowkeeper-org/fk-desktop
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = qt6-base
+	depends = bash
+	depends = hicolor-icon-theme
+	depends = pyside6
+	depends = python
+	depends = python-cryptography
+	depends = python-keyring
+	depends = python-semantic-version
+	depends = qt6-charts
+	source = flowkeeper-v1.1.0.zip::https://github.com/flowkeeper-org/fk-desktop/archive/refs/tags/v1.1.0.zip
+	source = flowkeeper.desktop
+	source = flowkeeper-autostart.desktop
+	sha256sums = d308fdb7adbb892184e285b7147a464670fcf7bcfd294ca65d0dd0f81088d7c7
+	sha256sums = fb93fecc1a6bb82e0ea4a60735dff16e7db84cbf72ba3dae8d35aea8442c2848
+	sha256sums = 8eec5762b5e998430b212003b4cf699bc085bc247a779573a8116abcdd516dee
+
+pkgname = flowkeeper

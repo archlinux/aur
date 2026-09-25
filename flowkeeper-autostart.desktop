@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Flowkeeper (autostart)
+Comment=Pomodoro timer for power users (autostart)
+Exec=/usr/bin/flowkeeper --autostart
+Icon=org.flowkeeper.Flowkeeper
+Terminal=false
+Type=Application
+Categories=Utility

@@ -1,0 +1,4 @@
+[flowkeeper]
+source = "git"
+git = "https://github.com/flowkeeper-org/fk-desktop.git"
+prefix = "v"
