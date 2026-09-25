@@ -2,13 +2,13 @@
 # Contributor: TZ86
 
 pkgname=vivaldi-snapshot
-_rpmversion=8.3.4161.3-1
-pkgver=8.3.4161.3
+_rpmversion=8.3.4171.3-1
+pkgver=8.3.4171.3
 pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind. Snapshot'
 url="https://vivaldi.com"
 options=(!strip !zipman)
-license=('custom')
+license=('LicenseRef-vivaldi')
 arch=('x86_64')
 depends=(
     'alsa-lib'
@@ -42,7 +42,7 @@ optdepends=(
 )
 source=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${_rpmversion}.x86_64.rpm"
         '0001-add-support-for-user-flags.patch')
-sha512sums=('a74d6cafa49536349d40b9ffbf8471e11bd02fa45031abe33963f423d727fbb911f8f94892c45380c8d63186d31bb4505f8bc71e025ea18c196ffc28e0560bf9'
+sha512sums=('1c3f7e3ad0cf6ce762ad3cbb58d1496eb644f5b78d48ef43b4280e7aecfb0b9710d647ad2f2c0ea510ced329cf6cdc8b457fe2a1f05d923f3d5c4278977db873'
             '6b230614419416c44adf8fc2a677f8b1f1aca16949d20b7499417737001a6e9e314fc5841afaf402ad55b09910fca4c70fa7b6d38509b0546959bdbefb036726')
 
 package() {
@@ -85,6 +85,5 @@ package() {
     # license
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
     w3m -dump "$pkgdir/opt/$pkgname/LICENSE.html" \
-        | head -n 5 \
         > "$pkgdir/usr/share/licenses/$pkgname/license.txt"
 }
