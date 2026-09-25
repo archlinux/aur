@@ -1,7 +1,7 @@
 # Maintainer: Joao Costa <arch@joaocosta.dev>
 pkgname=bambustudio-appimage
 _pkgname=BambuStudio
-pkgver=2.8.3
+pkgver=2.8.4
 pkgrel=1
 pkgdesc="PC Software for BambuLab and other 3D printers"
 arch=('x86_64')
@@ -11,8 +11,8 @@ options=('!strip' '!debug')
 provides=('bambustudio')
 conflicts=('bambustudio' 'bambustudio-git' 'bambustudio-bin')
 depends=('webkit2gtk-4.1')
-source=("${_pkgname}-${pkgver}.AppImage::https://github.com/bambulab/BambuStudio/releases/download/v02.08.03.66/BambuStudio_ubu24-v02.08.03.66-20260909013025.AppImage")
-sha256sums=('711d909a75a3f5778795cc4229fca46efdd0fe6917c1de00ad992a055507739d')
+source=("${_pkgname}-${pkgver}.AppImage::https://github.com/bambulab/BambuStudio/releases/download/v02.08.04.57/BambuStudio_ubu24-v02.08.04.57-20260922164607.AppImage")
+sha256sums=('4870e355fa5e98e3a47bcd196b7ae16c2e9c15896a81ceaabe09ddbefa80d2f0')
 
 package() {
   cd "$srcdir"
