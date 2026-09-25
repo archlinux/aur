@@ -1,0 +1,21 @@
+pkgbase = lomi
+	pkgdesc = A workspace for terminal-driven development
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/lomi-dev/lomi
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = librsvg
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = hicolor-icon-theme
+	optdepends = git: source control and repository history
+	provides = lomi
+	conflicts = lomi-bin
+	source = lomi-0.5.0.tar.gz::https://github.com/lomi-dev/lomi/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 236845f4836dfa20051ba40a2357382c0498ea9f306733c32e794fb86b25fd6b
+
+pkgname = lomi
