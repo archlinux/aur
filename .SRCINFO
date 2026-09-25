@@ -1,7 +1,7 @@
 pkgbase = hp-printer-app
 	pkgdesc = Example printer application for HP PCL printers using PAPPL.
-	pkgver = 1.3.0
-	pkgrel = 2
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = https://github.com/michaelrsweet/hp-printer-app
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,10 @@ pkgbase = hp-printer-app
 	arch = armv7h
 	arch = aarch64
 	license = Apache-2.0
+	depends = glibc
 	depends = pappl
 	depends = libcups
-	source = https://github.com/michaelrsweet/hp-printer-app/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = 8d74710396babd0219a9425367f903821d4ee1f8d15c1a0ca448b33fdd5c53f9
+	source = hp-printer-app-1.3.1.tar.gz::https://github.com/michaelrsweet/hp-printer-app/archive/refs/tags/v1.3.1.tar.gz
+	b2sums = 4759308f549ff9c2c0b7618ab925829127ec366dbf0c1a40bcd0ada903d58d5cdf512cb90b355efcf657e0a1fb04d7009bc2e13f113c80684a11c79a25be447a
 
 pkgname = hp-printer-app
