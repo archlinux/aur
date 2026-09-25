@@ -17,7 +17,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip' '!debug')
 source=("https://github.com/alvinunreal/openpets/releases/download/v${pkgver}/OpenPets-${pkgver}-linux-amd64.deb"
-        "LICENSE-${pkgver}::https://raw.githubusercontent.com/alvinunreal/openpets/v${pkgver}/LICENSE")
+        "LICENSE-${pkgver}::https://github.com/alvinunreal/openpets/raw/v${pkgver}/LICENSE")
 sha256sums=('af2ae8b4bd030cf5140b580067486eafa1976d7ddedfb21748fbb3e3cbcc3d2c'
             'ff1965c8f5bdebfb28f63b208ee8e0fa381ae5e9be4146e12206bf3eeeeb72ed')
 

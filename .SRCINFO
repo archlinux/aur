@@ -29,7 +29,7 @@ pkgbase = openpets-bin
 	options = !strip
 	options = !debug
 	source = https://github.com/alvinunreal/openpets/releases/download/v4.0.0/OpenPets-4.0.0-linux-amd64.deb
-	source = LICENSE-4.0.0::https://raw.githubusercontent.com/alvinunreal/openpets/v4.0.0/LICENSE
+	source = LICENSE-4.0.0::https://github.com/alvinunreal/openpets/raw/v4.0.0/LICENSE
 	sha256sums = af2ae8b4bd030cf5140b580067486eafa1976d7ddedfb21748fbb3e3cbcc3d2c
 	sha256sums = ff1965c8f5bdebfb28f63b208ee8e0fa381ae5e9be4146e12206bf3eeeeb72ed
 
