@@ -11,7 +11,7 @@ optdepends=('git: Git repository information')
 provides=('yoo')
 conflicts=('yoo')
 source=("$url/releases/download/v$pkgver/yoo-v$pkgver-linux-x86_64.tar.gz")
-sha256sums=('640ac2ef4d3e4275e8ca3ff0d0991320b981ace97cc86b6d5e5aa602f899cda4')
+sha256sums=('b5cc967c93488c2dfffdb6ec119c6eefb251700d00003d1db495e520fb3c27f3')
 
 package() {
   cd "$srcdir/yoo-v$pkgver-linux-x86_64"
