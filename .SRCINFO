@@ -1,13 +1,13 @@
 pkgbase = fast-folder-bin
 	pkgdesc = Template-driven project folder generator with a guided TUI and CLI (fastf) — prebuilt binary
-	pkgver = 3.12.1
+	pkgver = 3.13.0
 	pkgrel = 1
 	url = https://github.com/cristocola/fast-folder
 	arch = x86_64
 	license = MIT
 	provides = fast-folder
 	conflicts = fast-folder
-	source = https://github.com/cristocola/fast-folder/releases/download/v3.12.1/fastf-v3.12.1-x86_64-unknown-linux-musl.tar.gz
-	sha256sums = f581874fb61636a52937370c7b5f97f5db2a29787cf3daa3f8efcc88db56beac
+	source = https://github.com/cristocola/fast-folder/releases/download/v3.13.0/fastf-v3.13.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = f97c536ff6ce0076474f73202fe9ddf8ab2344692e62619de7de44a090405001
 
 pkgname = fast-folder-bin
