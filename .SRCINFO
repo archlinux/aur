@@ -1,6 +1,6 @@
 pkgbase = python-comfyui-workflow-templates
-	pkgdesc = ComfyUI template workflows
-	pkgver = 0.11.1
+	pkgdesc = ComfyUI workflow templates package
+	pkgver = 0.11.66
 	pkgrel = 1
 	url = https://github.com/Comfy-Org/workflow_templates/
 	arch = any
@@ -14,10 +14,11 @@ pkgbase = python-comfyui-workflow-templates
 	depends = python-comfyui-workflow-templates-json
 	depends = python-comfyui-workflow-templates-media-api
 	depends = python-comfyui-workflow-templates-media-assets-01
+	depends = python-comfyui-workflow-templates-media-assets-02
 	depends = python-comfyui-workflow-templates-media-image
 	depends = python-comfyui-workflow-templates-media-other
 	depends = python-comfyui-workflow-templates-media-video
-	source = https://files.pythonhosted.org/packages/source/c/comfyui-workflow-templates/comfyui_workflow_templates-0.11.1.tar.gz
-	sha512sums = 33a2fb3e57c1838229cde750a0cd3dcac67249ecfbcf3d24c07b70e43e55fb8f9ecab337ce739d4a18b5de32698200b34a4a2ced68077207e9f613e2c64cda5b
+	source = https://files.pythonhosted.org/packages/source/c/comfyui-workflow-templates/comfyui_workflow_templates-0.11.66.tar.gz
+	sha512sums = 1a5d8182834de40ed2eb89be52e9f8b1d1c2d10e87951b20f61784c1446c22f1383e2302f43691620db43f9aca88a4fab48a0ba62da19d07a3efff4727b347fc
 
 pkgname = python-comfyui-workflow-templates
