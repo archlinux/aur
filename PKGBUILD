@@ -4,7 +4,7 @@ _pkgname=RVenn
 _pkgver=1.1.0
 pkgname=r-${_pkgname,,}
 pkgver=1.1.0
-pkgrel=1
+pkgrel=8
 pkgdesc='Set Operations for Many Sets'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,7 +24,7 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('c41a96dd4a9b51e7dcc8647cdbaa0faa704ab22d5b0c1d45e593a6b23b00d504')
 
 build() {
