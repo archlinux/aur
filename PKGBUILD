@@ -9,7 +9,7 @@ makedepends=('cargo')
 depends=('gcc-libs' 'glibc')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('5fb1799cfc72ba4933e21200b030a639f59a83d181faca227c2f4ecde735588c844cb92ca49f591feffca1260ea10f40067bd8c1f6646112085e8e24225e29d5')
+b2sums=('3380613f465370a879cb9b429dfc815d35932afbcf22777e8782bd077d32932d49657be428fe3ba1c8bdb8b9269f60effe18c73d82771f4a0bc432a7322d0bcd')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
