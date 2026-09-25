@@ -1,6 +1,6 @@
 # Maintainer: mlue <phanithlim2002@gmail.com>
 pkgname=mluevpn
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="GTK4 VPN manager for OpenConnect and OpenVPN 3 with encrypted credential storage"
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e1b96bea4dc6f9379878d58f5ed2e20e30926b6f0c56ec539f2f095c3b4555de')
+sha256sums=('b1b178592914924624f77e5939eb53e7aabb29d072efdfedb641c133d17b72ec')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
