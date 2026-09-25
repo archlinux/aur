@@ -2,7 +2,7 @@
 
 _name="vid.stab"
 pkgname="lib32-${_name}"
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Video stabilization library (32-bit)"
 arch=(
@@ -28,7 +28,7 @@ _pkgsrc="${_url##*/}-${pkgver}"
 source=(
   "${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-b2sums=('e2ce03d24358404c617816466ad3fd715999ef4d391617e9cec7923353ba2ce4ac3b3eedce67f3fadf3bd6fdfb2e4516a5b95c3fca9f613e367b1490ec78ae0a')
+b2sums=('17feebc900a46b266b9b1fc15aca0c4c310b2434d92324e5288fb542215f82d3894f6c5240524191b3009783073bcc782489adf3b9cd5f5e5667ad81b60cbff4')
 
 build() {
   export CFLAGS+=" -m32"
@@ -36,8 +36,10 @@ build() {
   export LDFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   local cmake_options=(
+    -B "${_pkgsrc}/build"
+    -S "${_pkgsrc}"
     -G 'Unix Makefiles'
-    -W no-dev
+    -W no-author
     -D CMAKE_BUILD_TYPE:STRING='None'
     -D CMAKE_INSTALL_PREFIX:PATH='/usr'
     -D CMAKE_INSTALL_LIBDIR:PATH='lib32'
@@ -45,21 +47,21 @@ build() {
   )
   
   cd "${srcdir}"
-  cmake -B "${_pkgsrc}/build" -S "${_pkgsrc}" "${cmake_options[@]}"
-  cmake --build "${_pkgsrc}/build"
+  cmake "${cmake_options[@]}"
+  cmake --build "${cmake_options[1]}"
 }
 
 # check() {
-#   local excluded_tests=""
-#   local ctest_flags=(
+#   local ctest_exclude_regex=""
+#   local ctest_options=(
 #     --test-dir "${_pkgsrc}/build"
 #     --output-on-failure
 #     --parallel "$(nproc)"
-#     --exclude-regex "${excluded_tests}"
+#     --exclude-regex "${ctest_exclude_regex}"
 #   )
 
 #   cd "${srcdir}"
-#   ctest "${ctest_flags[@]}"
+#   ctest "${ctest_options[@]}"
 # }
 
 package() {
