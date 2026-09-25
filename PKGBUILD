@@ -3,7 +3,7 @@
 
 _pkgname="zine"
 pkgname="${_pkgname}-bin"
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Fast, Scalable, Flexible Static Site Generator (SSG)"
 arch=(
@@ -28,8 +28,8 @@ source_x86_64=(
 )
 sha256sums=('96b5a11088711b87c4e23dfb89b85d1a258279d79307eef157209b5900edd82c'
             'fce6401325da3777483f1567966de44f712d71bb5c7dcfc5cd15e292b968a7a2')
-sha256sums_aarch64=('4182a5905d766fcdd6dd066ccfbd19ce8c203b8171bdb3571640941dc85f3c09')
-sha256sums_x86_64=('c250e029d978901b0c9a38eab0a860ef9db875bf686fe0f0abf61f180c280dba')
+sha256sums_aarch64=('cfb670abd5ca85a02e0cb9c6db57c36ed3c55a768b054727242d3243e7eceafa')
+sha256sums_x86_64=('897642f46c3872a6311f2ab3d4c622f5f8625bfee8e1de2d0de42597c1385629')
 
 package() {
   cd "${srcdir}"
