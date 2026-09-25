@@ -1,7 +1,7 @@
 pkgbase = oh-my-pi
 	pkgdesc = A coding agent with the IDE wired in
 	pkgver = 18.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://omp.sh/
 	arch = x86_64
 	license = MIT
