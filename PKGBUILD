@@ -9,10 +9,10 @@ arch=(any)
 url=https://github.com/rimeinn/rime.nvim/tree/main/packages/vim
 license=(GPL3)
 makedepends=(luarocks)
-_revision=2
-source=("https://luarocks.org/manifests/freed-wu/vim-$pkgver-1.src.rock")
+_revision=1
+source=("https://luarocks.org/manifests/freed-wu/vim-$pkgver-$_revision.src.rock")
 sha256sums=('23812e4fe4eb1fa3dbde0a6803b7bc4e6bcb958dc0927b65523d4a7739562f21')
-_lua_version=5.4
+_lua_version=5.5
 
 _package() {
 	install -Dm644 ./*.rock -t $1
