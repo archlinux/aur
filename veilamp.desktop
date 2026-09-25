@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=AudioVideo;Audio;Music;
+Comment=A retro-styled P2P audio player.
+Exec=veilamp
+StartupWMClass=veilamp
+Icon=veilamp
+Name=veilamp
+Terminal=false
+Type=Application
