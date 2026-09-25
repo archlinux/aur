@@ -1,0 +1,10 @@
+[python-ttf2web]
+source = "regex"
+url = "https://raw.githubusercontent.com/johncf/ttf2web/refs/heads/master/setup.py"
+regex = '''
+\s+version='([\d+|\.]+)',
+'''
+
+
+prefix = "v"
+
