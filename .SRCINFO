@@ -1,7 +1,7 @@
 pkgbase = nordvpn-gui
 	pkgdesc = GUI for NordVPN
 	pkgver = 5.4.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://nordvpn.com
 	arch = x86_64
 	license = GPL-3.0-only
@@ -16,6 +16,6 @@ pkgbase = nordvpn-gui
 	source = nordvpn-gui-5.4.0::https://github.com/NordSecurity/nordvpn-linux/archive/refs/tags/5.4.0.tar.gz
 	source = nordvpn-gui.desktop
 	sha256sums = 3d66bb329ff34a5a9fe1e1a642792bb637717393167ee55996da2786b8eab7f9
-	sha256sums = bce0edf1b5130899b7621f0de8355f0c6fa07374957ef893a5f5065fd9c98952
+	sha256sums = a9db53b6c1b5894bf8acf1dac3b63031377fcad3f9695ad190cce8e7d3032705
 
 pkgname = nordvpn-gui

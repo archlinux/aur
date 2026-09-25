@@ -7,3 +7,4 @@ Icon=nordvpn-gui.png
 Terminal=false
 Type=Application
 Categories=Network;Security;Utility;
+MimeType=x-scheme-handler/nordvpn-gui;
