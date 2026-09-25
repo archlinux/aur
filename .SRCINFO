@@ -1,6 +1,6 @@
 pkgbase = python-comfyui-workflow-templates-json
 	pkgdesc = Workflow template JSON definitions for ComfyUI
-	pkgver = 0.1.1
+	pkgver = 0.1.92
 	pkgrel = 1
 	url = https://github.com/Comfy-Org/workflow_templates/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-comfyui-workflow-templates-json
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/comfyui-workflow-templates-json/comfyui_workflow_templates_json-0.1.1.tar.gz
-	sha512sums = 963ab77591e30d2690195e7f1b810223f2ee4a5ec50c2bfac0d8e0a775596c78b102a136c0422e629a291ac6b4fafa3edf90e9746971e26abcc4f2f859e6d1c5
+	source = https://files.pythonhosted.org/packages/source/c/comfyui-workflow-templates-json/comfyui_workflow_templates_json-0.1.92.tar.gz
+	sha512sums = fae5c2126d44b6eaed1cef657ba24ae745e1cd4a1c28ed74ce08354fead6368a47950ab6460bff96ae50a34b3f6da08a1b9d9ca726dfe5fea2f8a691feba4361
 
 pkgname = python-comfyui-workflow-templates-json
