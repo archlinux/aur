@@ -1,7 +1,7 @@
 pkgbase = wl-mitmproxy-git
 	pkgdesc = Wayland intercepting proxy for modifying protocol messages
 	pkgver = v0.1.0.r4.g1302e7e
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/5andr0/wl-mitmproxy
 	arch = x86_64
 	license = GPL-3.0-only
@@ -13,6 +13,7 @@ pkgbase = wl-mitmproxy-git
 	depends = glibc
 	provides = wl-mitmproxy
 	conflicts = wl-mitmproxy
+	options = !lto
 	source = wl-mitmproxy-git::git+https://github.com/5andr0/wl-mitmproxy.git
 	sha256sums = SKIP
 

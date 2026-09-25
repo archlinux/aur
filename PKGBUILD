@@ -1,13 +1,14 @@
-# Maintainer: Vita Yuzu <vita.yuzupon@gmail.com>
+# Maintainer: Vita Yuzu <vita.yuzupon at gmail dot com>
 pkgname=wl-mitmproxy-git
 pkgver=v0.1.0.r4.g1302e7e
-pkgrel=1
+pkgrel=4
 pkgdesc="Wayland intercepting proxy for modifying protocol messages"
 arch=('x86_64')
 url="https://github.com/5andr0/wl-mitmproxy"
 license=('GPL-3.0-only' 'MIT' 'Apache-2.0')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'git')
+options=('!lto')
 provides=('wl-mitmproxy')
 conflicts=('wl-mitmproxy')
 source=("$pkgname::git+https://github.com/5andr0/wl-mitmproxy.git")
@@ -28,6 +29,7 @@ build() {
 	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	export RUSTFLAGS="-C force-frame-pointers=yes"
 	cargo build --frozen --release
 }
 
