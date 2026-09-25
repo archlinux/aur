@@ -1,6 +1,6 @@
 pkgbase = amethyst-mod-manager
 	pkgdesc = A Linux native mod manager for a variety of games
-	pkgver = 2.5.1
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://github.com/ChrisDKN/Amethyst-Mod-Manager
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = amethyst-mod-manager
 	depends = sqlite
 	optdepends = zenity: fallback native dialog (prefer to use XDG portal instead)
 	optdepends = kdialog: fallback native dialog (prefer to use XDG portal instead)
-	source = amethyst-mod-manager-2.5.1.tar.gz::https://github.com/ChrisDKN/Amethyst-Mod-Manager/archive/refs/tags/v2.5.1.tar.gz
-	sha256sums = 31eb2d9887565197692ae8fdd1bf1f945199a1b011c5e81efdedebff05959514
+	source = amethyst-mod-manager-2.5.2.tar.gz::https://github.com/ChrisDKN/Amethyst-Mod-Manager/archive/refs/tags/v2.5.2.tar.gz
+	sha256sums = 3d57f0bdcefbb879c098426441255269da47845dab192f48d955cc44c8b25059
 
 pkgname = amethyst-mod-manager
