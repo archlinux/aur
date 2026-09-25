@@ -1,0 +1,14 @@
+pkgbase = dumpr-bin
+	pkgdesc = Turn a project directory into a readable text dump (prebuilt binary)
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/iktrnch/dumpr
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	provides = dumpr
+	conflicts = dumpr
+	source = dumpr-1.0.2-x86_64.tar.gz::https://github.com/iktrnch/dumpr/releases/download/v1.0.2/dumpr-1.0.2-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = c2b2d4ec67c4d730a1bf4ec9e170e695c870c6a0da67816858beeed5e78a613e
+
+pkgname = dumpr-bin
