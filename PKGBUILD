@@ -4,7 +4,7 @@
 _pkgname=hplip-printer-app
 pkgname="${_pkgname}-git"
 pkgver=1.0+r142.20260109.b3fc7f3
-pkgrel=2
+pkgrel=3
 pkgdesc="HPLIP Printer Application"
 url='https://github.com/OpenPrinting/hplip-printer-app'
 license=("Apache-2.0")
@@ -80,9 +80,7 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  make DESTDIR="${pkgdir}/" install
-
-  install -Dvm644 -t "${pkgdir}"/usr/lib/systemd/system/ hplip-printer-app.service
+  make DESTDIR="${pkgdir}/" unitdir="/usr/lib/systemd/system/" install
 
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"      git.log CODE_OF_CONDUCT.md README.md NOTICE
   install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  LICENSE

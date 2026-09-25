@@ -1,7 +1,7 @@
 pkgbase = hplip-printer-app-git
 	pkgdesc = HPLIP Printer Application
 	pkgver = 1.0+r142.20260109.b3fc7f3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/OpenPrinting/hplip-printer-app
 	arch = x86_64
 	license = Apache-2.0
