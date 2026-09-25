@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scTreeViz
-_pkgver=1.14.1
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.1
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='R/Bioconductor package to interactively explore and visualize single cell RNA-seq datasets with hierarhical annotations'
 arch=('any')
@@ -43,7 +43,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f6387c7692c96d555110725622be825883964277e9c42654d7375c1d4f67c2e4')
+sha256sums=('cc3b51e2317dc471abe8a75b5e7065146593c28d2b211afdf3a187d7206063fc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
