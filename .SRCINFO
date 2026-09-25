@@ -1,6 +1,6 @@
 pkgbase = r-visdat
 	pkgdesc = Preliminary Visualisation of Data
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=visdat
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-visdat
 	optdepends = r-stringr
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/visdat_0.6.0.tar.gz
-	sha256sums = 104acdbb9d41167b861ab24de0e1e1e14f61c1b476bac112fcbc6e47c157e598
+	source = https://cran.r-project.org/src/contrib/visdat_0.6.1.tar.gz
+	sha256sums = 388d46ed56e8e2b887279d72a7016906899c3ba141072d7db6429c547a0e1201
 
 pkgname = r-visdat

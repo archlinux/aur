@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=visdat
-_pkgver=0.6.0
+_pkgver=0.6.1
 pkgname=r-${_pkgname,,}
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Preliminary Visualisation of Data'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('104acdbb9d41167b861ab24de0e1e1e14f61c1b476bac112fcbc6e47c157e598')
+sha256sums=('388d46ed56e8e2b887279d72a7016906899c3ba141072d7db6429c547a0e1201')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
