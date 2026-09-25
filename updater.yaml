@@ -10,6 +10,7 @@ verify_commands:
   - command -v pipeasio-settings
   - pipeasio-manage --version
   - test -f /usr/share/pipeasio/manager/pipeasio-check.exe
+  - test -f /usr/share/pipeasio/manager/pipeasio-check32.exe
   - test -f /usr/lib/wine/x86_64-windows/pipeasio64.dll
   - test -f /usr/lib/wine/x86_64-unix/pipeasio64.so
   - test -f /usr/lib/wine/i386-windows/pipeasio32.dll

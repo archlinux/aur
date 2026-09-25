@@ -2,51 +2,73 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=pipeasio-git
+_pkgname=pipeasio
 pkgver=1.8.1.r1.ga2bce56
-pkgrel=1
-pkgdesc="ASIO driver for Wine that talks directly to PipeWire (no libjack dependency) (git master)"
+pkgrel=2
+pkgdesc='PipeWire-native ASIO driver for Wine, with a Qt install and settings manager (git master)'
 arch=('x86_64')
-url="https://github.com/M0n7y5/pipeasio"
+url='https://github.com/M0n7y5/pipeasio'
 license=('GPL-3.0-or-later')
-# yaml-cpp, libarchive and zlib are linked by pipeasio-manage, the manager
-# backend the panel runs.
-depends=(wine libpipewire pipewire qt6-base hicolor-icon-theme yaml-cpp libarchive zlib)
-# mingw-w64-gcc builds the opt-in 32-bit WoW64 PE front end, matching the
-# official release tarballs.
-makedepends=(git cmake ninja mingw-w64-gcc)
-provides=("pipeasio=${pkgver%%.r*}")
-conflicts=(pipeasio)
-# !lto: winebuild reads symbols from the .o files; LTO bytecode objects break it.
+# pipewire is the daemon the driver connects to at run time. yaml-cpp,
+# libarchive and zlib are linked by pipeasio-manage, the manager backend.
+depends=(
+  'hicolor-icon-theme'
+  'libarchive'
+  'libgcc'
+  'libpipewire'
+  'libstdc++'
+  'pipewire'
+  'qt6-base'
+  'wine'
+  'yaml-cpp'
+  'zlib'
+)
+# mingw-w64-gcc builds the PE front ends and the installation probes.
+makedepends=(
+  'cmake'
+  'git'
+  'mingw-w64-gcc'
+  'ninja'
+)
+provides=("${_pkgname}=${pkgver%%.r*}")
+conflicts=("${_pkgname}")
+# !strip: the PE halves are not ELF, and stripping the unixlibs breaks their
+# Wine exports. !debug: nothing is left to split once stripping is off.
+# !lto: winebuild reads symbols from the .o files; LTO bytecode breaks it.
 options=('!strip' '!debug' '!lto')
-source=("${pkgname}::git+${url}.git")
+source=("${_pkgname}::git+${url}.git")
 b2sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git describe --long --abbrev=7 --tags 2>/dev/null \
+  git -C "${_pkgname}" describe --long --abbrev=7 --tags 2>/dev/null \
     | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g' \
-    || printf '0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    || printf '0.r%s.g%s' "$(git -C "${_pkgname}" rev-list --count HEAD)" \
+      "$(git -C "${_pkgname}" rev-parse --short=7 HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  cmake -B build -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_SETTINGS_PANEL=ON \
-    -DBUILD_WOW64_32=ON \
-    -DBUILD_TESTS=OFF
+  local cmake_options=(
+    -B build
+    -S "${_pkgname}"
+    -G Ninja
+    -Wno-dev
+    # Release is the configuration upstream builds and tests its releases in.
+    -D CMAKE_BUILD_TYPE=Release
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D BUILD_SETTINGS_PANEL=ON
+    # The experimental 32-bit WoW64 front end, as in the release tarball.
+    -D BUILD_WOW64_32=ON
+    # Off explicitly: these cross-build whenever clang, lld and aarch64 Wine
+    # import libraries happen to be installed.
+    -D BUILD_ARM64=OFF
+    -D BUILD_TESTS=OFF
+  )
+  cmake "${cmake_options[@]}"
   cmake --build build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-
-  # master installs the Wine arch layout, the register helper, the manager
-  # backend and its installation probes, the panel, its desktop entry and icon.
   DESTDIR="${pkgdir}" cmake --install build
-
-  install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 "${_pkgname}"/{README,CHANGELOG}.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 # vim:set ts=2 sw=2 et:
