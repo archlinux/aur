@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2148,SC2154,SC2164
 
 pkgname=marimo
-pkgver=0.24.2
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps"
 arch=(any)
@@ -49,7 +49,6 @@ optdepends=(
 
     # Sandbox (marimo edit --sandbox DIRECTORY)
     'uv: Sandbox management and local html-wasm exports'
-    'python-pyzmq: IPC communication for sandbox kernels'
 
     # SQL
     'python-duckdb: SQL cells support'
@@ -72,6 +71,7 @@ optdepends=(
     'python-pydantic-ai-slim: AI features'
     'jupyter-nbformat: Export as IPYNB'
     'ruff: Formatting'
+    'marimo-lens: Inspect and select notebook outputs'
 )
 
 # GitHub source
@@ -80,7 +80,7 @@ optdepends=(
 
 # PyPI source release
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-$pkgver.tar.gz")
-b2sums=('e3053955cdaf709e80c209a76fd3241c950f14acef342e9acc0f5340646847ddf8d7be6eacc7cd2a65d953fdf1ee285c16b20115e4a93af1e21efbde0eaa7c56')
+b2sums=('8efeae1bfe9be30f9694333a6e2db7d0a98b296bf07a72af8fdca25dc509dbf2a24442bbdb27b4a59964d978032fe7a73b425ffec0f9b955c7ac9e24da0df187')
 
 build() {
     cd $pkgname-$pkgver
