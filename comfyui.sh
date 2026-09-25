@@ -64,7 +64,8 @@ fi
 
 mkdir -p "$CACHE_DIR"/{output,input}
 mkdir -p "$CONFIG_DIR"/user
-mkdir -p "$CONFIG_DIR"/models/{audio_encoders,clip,configs,diffusers,embeddings,gligen,latent_upscale_models,model_patches,style_models,unet,vae,checkpoints,clip_vision,controlnet,diffusion_models,frame_interpolation,hypernetworks,loras,photomaker,text_encoders,upscale_models,vae_approx}
+mkdir -p "$CONFIG_DIR"/{custom_nodes,datasets}
+mkdir -p "$CONFIG_DIR"/models/{audio_encoders,background_removal,checkpoints,classifiers,clip,clip_vision,configs,controlnet,detection,diffusers,diffusion_models,embeddings,frame_interpolation,geometry_estimation,gligen,hypernetworks,latent_upscale_models,loras,model_patches,optical_flow,photomaker,style_models,t2i_adapter,text_encoders,unet,upscale_models,vae,vae_approx}
 
 if [[ "$user_provided_output" == false ]]; then
     filtered_args+=("--output-directory" "$CACHE_DIR/output")

@@ -51,7 +51,7 @@ pkgbase = comfyui-system
 	source = comfyui.sh
 	source = extra_model_paths.yaml
 	sha256sums = 40348d8f0b0fa25b532fdf216dccbeda6d98022c6b60cd623dbafc21be1dcdd4
-	sha256sums = edda27b534912b97049c38233488c7154c652485b41a9c49fe5b996fb72740d6
+	sha256sums = 3ab61291d91ec7111f3bbbb9ec83f12503d0e33d0d3e2ca150416559a586696b
 	sha256sums = 6c259a120202e252fcaceac13739d1c847b353120d56b6b1c240ebe5fd2a1a85
 
 pkgname = comfyui-system
