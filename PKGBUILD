@@ -1,6 +1,6 @@
 # Maintainer: Ryan <ryan@freyja.pw>
 pkgname=nlink-ng
-pkgver=0.6.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Native Qt 6 linking program for TI-Nspire calculators (CX-II included)"
 arch=('x86_64')
