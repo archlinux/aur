@@ -2,7 +2,7 @@
 # Contributor: xantares <xantares09 [at] hotmail.com>
 pkgbase=stanmath
 pkgname=(stanmath stanmath-docs)
-pkgver=5.3.0
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="reverse-mode automatic differentiation library"
 license=('BSD-3-Clause')
@@ -11,37 +11,37 @@ makedepends=(make doxygen patch)
 url="https://github.com/stan-dev/math"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver/_/-}.tar.gz"
 )
-sha256sums=('6ad05c37e7df8add7d0089489249ddaadb57e30cead8cdd1323f4e1283c4fe64')
+sha256sums=('f06cfc9a211efdd7341bda0a9b341eca1616826a00f5f3d8b11899de4b622797')
 options=(!strip)
 prepare() {
 
-  cd math-${pkgver/_/-}/stan/math/rev/functor
-  sed -i kinsol_data.hpp \
-    -e "s|sundials_context.h>|sundials_context.hpp>|"
-  sed -i cvodes_integrator{,_adjoint}.hpp \
-    -e "s|realtype|sunrealtype|g"
-  sed -i idas_service.hpp \
-    -e "s|RCONST|SUN_RCONST|g"
+    cd math-${pkgver/_/-}/stan/math/rev/functor
+    sed -i kinsol_data.hpp \
+        -e "s|sundials_context.h>|sundials_context.hpp>|"
+    sed -i cvodes_integrator{,_adjoint}.hpp \
+        -e "s|realtype|sunrealtype|g"
+    sed -i idas_service.hpp \
+        -e "s|RCONST|SUN_RCONST|g"
 }
 
 build() {
-  cd math-${pkgver/_/-}
-  make doxygen
+    cd math-${pkgver/_/-}
+    make doxygen
 }
 
 package_stanmath() {
-  cd math-${pkgver/_/-}
+    cd math-${pkgver/_/-}
 
-  install -d "$pkgdir"/usr/include
-  cp -r stan "$pkgdir"/usr/include
-  install -Dm644 LICENSE.md -t "$pkgdir"/usr/share/licenses/stanmath/
+    install -d "$pkgdir"/usr/include
+    cp -r stan "$pkgdir"/usr/include
+    install -Dm644 LICENSE.md -t "$pkgdir"/usr/share/licenses/stanmath/
 
 }
 
 package_stanmath-docs() {
-  pkgdesc+=" (documentation)"
+    pkgdesc+=" (documentation)"
 
-  cd math-${pkgver/_/-}
-  install -d "$pkgdir"/usr/share/doc/stan
-  cp -r doc "$pkgdir"/usr/share/doc/stan/math
+    cd math-${pkgver/_/-}
+    install -d "$pkgdir"/usr/share/doc/stan
+    cp -r doc "$pkgdir"/usr/share/doc/stan/math
 }
