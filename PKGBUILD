@@ -11,8 +11,8 @@ license=('BSD-3-Clause')
 depends=('python')
 makedepends=(python-build python-installer python-wheel python-setuptools)
 
-_filename_x86_64=${_name//-/_}-$pkgver-py3-none-manylinux_2_28_x86_64.whl
-_filename_aarch64=${_name//-/_}-$pkgver-py3-none-manylinux_2_28_aarch64.whl
+_filename_x86_64=${_name//-/_}-$pkgver-$_py-none-manylinux_2_28_x86_64.whl
+_filename_aarch64=${_name//-/_}-$pkgver-$_py-none-manylinux_2_28_aarch64.whl
 source_x86_64=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_filename_x86_64}")
 source_aarch64=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_filename_aarch64}")
 noextract=("${_filename_x86_64}" "${_filename_aarch64}")
