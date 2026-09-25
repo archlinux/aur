@@ -1,6 +1,6 @@
 pkgbase = blockwork
 	pkgdesc = A Tauri app to visually create and run macros on Windows, Linux, and macOS.
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/Blockworked/Blockwork
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = blockwork
 	provides = macros
 	conflicts = macros
 	options = !lto
-	source = blockwork-0.5.3.tar.gz::https://github.com/EthanRStokes/Blockwork/archive/refs/tags/0.5.3.tar.gz
-	sha256sums = c06cdbf31e067ef405a255a93d3e5dd54135e895249de27c07b7d5f325b2dfd1
+	source = blockwork-0.5.4.tar.gz::https://github.com/EthanRStokes/Blockwork/archive/refs/tags/0.5.4.tar.gz
+	sha256sums = 95e14e941ac89f356064f4697d1d3f9b02a33916be5fbdcff2a3f9e9aee7db33
 
 pkgname = blockwork
