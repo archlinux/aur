@@ -1,0 +1,15 @@
+pkgbase = why
+	pkgdesc = A Linux troubleshooter that explains why a program does not work
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/bjl32/why
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = why-0.1.0.tar.gz::https://github.com/bjl32/why/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 68e096e63b36f3efab7077de6e750daeafb2113b081dde13010f503fed240188
+
+pkgname = why
