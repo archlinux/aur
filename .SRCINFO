@@ -1,7 +1,7 @@
 pkgbase = crosspoint-sync-git
 	pkgdesc = Lightweight KoSync Server for Syncing Crosspoint/CrossInk stats & progress
 	pkgver = r66.d35a853
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crosspoint-reader/crosspoint-sync
 	arch = any
 	license = MIT
@@ -16,10 +16,12 @@ pkgbase = crosspoint-sync-git
 	source = crosspoint-sync.service
 	source = sysusers.conf
 	source = tmpfiles.conf
+	source = 0001-Allow-the-listening-socket-to-be-set-using-the-LISTE.patch
 	sha256sums = SKIP
-	sha256sums = 63186c14185c8325ff873f13dde8f2c8220e104a8bb03057402a6ac4ab657b40
+	sha256sums = 0c64d04f1dd9f9cc0c6d3ff100042aa6abc9014224e0a1df5e5f5cf0c8295d04
 	sha256sums = bbdd8040565e60573327c6adcbdbab2e1ea1294353f511a89b9ade66399229fe
 	sha256sums = 497f0708a4465f8426a45d33c63f9a73930d31985411c03d57abb7266e3b2c98
 	sha256sums = 76ba495d8f493c75ad18aeff4775a55aac3a8499fec3606e8e6361fc04288011
+	sha256sums = 69ecaacfac8b23c33afaf94da1d6c9d324677086fccbd8182bed444708888307
 
 pkgname = crosspoint-sync-git

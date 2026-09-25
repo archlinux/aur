@@ -1,0 +1,41 @@
+From 20b3c6faee824f5e50aeb17131a37f004c796a2a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marcel=20R=C3=B6thke?= <marcel@roethke.info>
+Date: Fri, 25 Sep 2026 18:42:44 +0200
+Subject: [PATCH] Allow the listening socket to be set using the LISTEN_ADDRESS
+ variable
+
+crosspoint-sync listens on all interfaces without a way to change this,
+add a LISTEN_ADDRESS env var to configure the listening socket.
+---
+ src/index.ts | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/index.ts b/src/index.ts
+index dd191a7..32e54c2 100644
+--- a/src/index.ts
++++ b/src/index.ts
+@@ -8,6 +8,7 @@ import { startFanInWorker } from './connectors/fanin.js';
+ 
+ const DATABASE_PATH = process.env.DATABASE_PATH ?? '/data/crosspoint.db';
+ const PORT = Number(process.env.PORT ?? 8080);
++const ADDRESS = process.env.LISTEN_ADDRESS ?? 'localhost';
+ 
+ const db = openDatabase(DATABASE_PATH);
+ migrate(db);
+@@ -24,11 +25,12 @@ if (connectorsEnabled) {
+   startFanInWorker(db, Number(process.env.FANIN_INTERVAL_MS ?? 5 * 60_000));
+ }
+ 
+-serve({ fetch: app.fetch, port: PORT }, (info) => {
++serve({ fetch: app.fetch, port: PORT, hostname: ADDRESS }, (info) => {
+   console.log(
+     JSON.stringify({
+       msg: 'crosspoint-sync listening',
+       port: info.port,
++      address: info.address,
+       db: DATABASE_PATH,
+       connectors: connectorsEnabled ? 'enabled' : 'disabled (no TOKEN_ENC_KEY)',
+     })
+-- 
+2.55.0
+
