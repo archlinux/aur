@@ -1,0 +1,23 @@
+pkgbase = ttf-misans-latin-hinted
+	pkgdesc = MiSans Latin (Latin, Greek, Cyrillic) by Xiaomi, autohinted with ttfautohint and with fontconfig-friendly weight classes
+	pkgver = 4.007
+	pkgrel = 1
+	url = https://hyperos.mi.com/font/en/download/
+	arch = any
+	license = LicenseRef-MiSans
+	makedepends = python
+	makedepends = python-fonttools
+	makedepends = ttfautohint
+	provides = ttf-misans-latin
+	conflicts = ttf-misans-latin
+	options = !strip
+	source = MiSans_Latin-4.007.zip::https://hyperos.mi.com/font-download/MiSans_Latin.zip
+	source = LICENSE.pdf::https://hyperos.mi.com/font-download/MiSans字体知识产权许可协议.pdf
+	source = fix_weights.py
+	source = set_gasp.py
+	sha256sums = d24091ccd409a4152ffcc12cd659c16df9cdcdb4c702d8ae355b321e711f0004
+	sha256sums = 4a93a27cd2bd81b3b5ecfd0a853144a876fa26938a93a68443c67d74172fcb86
+	sha256sums = f7b025ab723a672e0c821c610251199d04a5342c265483eafeb35f3e5f0be45b
+	sha256sums = 0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99
+
+pkgname = ttf-misans-latin-hinted
