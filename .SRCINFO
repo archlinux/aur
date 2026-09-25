@@ -1,0 +1,17 @@
+pkgbase = claude-mem
+	pkgdesc = Memory compression system for Claude Code - persist context across sessions
+	pkgver = 13.25.3
+	pkgrel = 1
+	url = https://github.com/thedotmack/claude-mem
+	arch = any
+	license = Apache-2.0
+	makedepends = npm
+	depends = nodejs>=20.12.0
+	depends = bun
+	noextract = claude-mem-13.25.3.tgz
+	source = https://registry.npmjs.org/claude-mem/-/claude-mem-13.25.3.tgz
+	source = claude-mem-worker.service
+	sha256sums = 02c22b3ebf06af88c8f1de80dc4e8bec05db977e176ba7243eccfeb358c4e615
+	sha256sums = aa9e319949c5aaf754e80a06ea41704309ffad7f11a9cdc5c476dc1ed02fae70
+
+pkgname = claude-mem

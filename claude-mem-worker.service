@@ -1,0 +1,12 @@
+[Unit]
+Description=claude-mem memory worker
+Documentation=https://github.com/thedotmack/claude-mem
+
+[Service]
+ExecStart=/usr/bin/bun /usr/lib/node_modules/claude-mem/plugin/scripts/worker-service.cjs
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
