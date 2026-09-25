@@ -1,0 +1,5 @@
+[shoal-bin]
+source = "github"
+github = "BT10011/shoal"
+use_latest_release = true
+prefix = "v"

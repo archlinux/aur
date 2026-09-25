@@ -1,0 +1,10 @@
+post_install() {
+    echo "Setting CAP_NET_RAW capabilities on /usr/bin/shoal..."
+    setcap 'cap_net_raw+eip' usr/bin/shoal
+}
+
+post_upgrade() {
+    post_install "$1"
+}
+
+# vim:set ts=2 sw=2 et:
