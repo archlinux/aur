@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 pkgname=ceasta-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.10.0 # renovate: datasource=github-releases depName=ngwg/ceasta
+pkgver=0.11.0 # renovate: datasource=github-releases depName=ngwg/ceasta
 pkgrel=1
 pkgdesc="Disassembler, decompiler and ptrace debugger with a built-in MCP server (CLI)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc' 'libgcc' 'libstdc++')
 provides=("${_pkgname}" "${_pkgname}-cli")
 conflicts=("${_pkgname}" "${_pkgname}-cli" "${_pkgname}-git")
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-cli-${pkgver}-linux-x64.tar.gz")
-sha256sums=('aa69ae728b505bac3f20028b4dd469c9c01f66a38ae4a657888aec462d7adc59')
+sha256sums=('3c97856810829eab2412d586ac4b70c485291152b55875f8c503348ac2123857')
 
 package() {
   cd "${_pkgname}-cli-${pkgver}-linux-x64"
