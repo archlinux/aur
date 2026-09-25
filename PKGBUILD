@@ -30,6 +30,7 @@ depends=(
   'libwebp'
   'libxkbcommon'
   'luajit'
+  'minizip-ng'
   'openexr'
   'openjpeg2'
   'wayland'
