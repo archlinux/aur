@@ -1,7 +1,7 @@
 pkgbase = rpl-2
 	pkgdesc = RPL/2 ('Reverse Polish Lisp 2'), a programming language designed for scientific computations, inspired by RPL from HP calculators like HP28S, HP48, and others.
 	pkgver = 4.1.37
-	pkgrel = 2
+	pkgrel = 3
 	url = https://rpl2.systella.fr/anglais.php
 	arch = x86_64
 	arch = i686
@@ -56,6 +56,7 @@ pkgbase = rpl-2
 	optdepends = gv: To use printer commands (view output).
 	optdepends = rpl-2-compiler: To compile RPL/2 code to standalone binary. ('rplc', See https://rpl2.systella.fr/produits.php#compilateur.)
 	optdepends = vim: For vim support.
+	provides = rpl-2-docs
 	provides = mkrplso=4.1.37
 	provides = rplcc=4.1.37
 	provides = rpllink=4.1.37
@@ -66,6 +67,7 @@ pkgbase = rpl-2
 	provides = rplfile
 	provides = rpliconv=4.1.37
 	conflicts = rpl
+	conflicts = rpl-2-docs
 	conflicts = mkrplso
 	conflicts = rplcc
 	conflicts = rpllink
@@ -75,8 +77,11 @@ pkgbase = rpl-2
 	conflicts = rplconvert
 	conflicts = rplfile
 	conflicts = rpliconv
+	noextract = reference_rpl_french.ps.bz2
 	options = staticlibs
 	source = https://rpl2.systella.fr/download/rpl-4.1.37.tar.bz2
+	source = https://rpl2.systella.fr/download/reference_rpl_french.ps.bz2
 	sha256sums = d31be7d86aba19090994bfffe2f72cafb0417989076f08b559a5124d712a39e3
+	sha256sums = def1a0405b863fda0a07215a8eda63be56e21ba7b46d1f8c2b57df9b55465b48
 
 pkgname = rpl-2

@@ -5,7 +5,7 @@
 _pkgname=rpl-2
 pkgname="${_pkgname}"
 pkgver=4.1.37
-pkgrel=2
+pkgrel=3
 arch=(
   'x86_64'
   'i686'
@@ -82,6 +82,7 @@ makedepends=(
 )
 checkdepends=()
 provides=(
+  "rpl-2-docs"
   # Provided tools, see https://rpl2.systella.fr/documentation.php
   "mkrplso=${pkgver}"
   "rplcc=${pkgver}"
@@ -95,6 +96,7 @@ provides=(
 )
 conflicts=(
   "rpl"  # Actually, there just another package called 'rpl' which also installs '/usr/bin/rpl'. (https://aur.archlinux.org/packages/rpl | https://github.com/rrthomas/rpl)
+  "rpl-2-docs"
   # Provided tools, see https://rpl2.systella.fr/documentation.php
   "mkrplso"
   "rplcc"
@@ -109,9 +111,14 @@ conflicts=(
 replaces=()
 source=(
   "https://rpl2.systella.fr/download/rpl-${pkgver}.tar.bz2"
+  "https://rpl2.systella.fr/download/reference_rpl_french.ps.bz2"
+)
+noextract=(
+  "reference_rpl_french.ps.bz2"
 )
 sha256sums=(
   'd31be7d86aba19090994bfffe2f72cafb0417989076f08b559a5124d712a39e3'  # rpl-${pkgver}.tar.bz2
+  'def1a0405b863fda0a07215a8eda63be56e21ba7b46d1f8c2b57df9b55465b48'  # reference_rpl_french.ps.bz2
 )
 validpgpkeys=()
 options=('staticlibs')
@@ -181,7 +188,7 @@ package() {
 
   make DESTDIR="${pkgdir}" install
 
-  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"           AUTHORS ChangeLog INSTALL LIMITATIONS NEWS README
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"           AUTHORS ChangeLog INSTALL LIMITATIONS NEWS README "${srcdir}/reference_rpl_french.ps.bz2"
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/doc"       doc/README
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/examples"  examples/*
   install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"       COPYING Licence_CeCILL_V2-en.txt Licence_CeCILL_V2-fr.txt
