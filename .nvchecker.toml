@@ -1,0 +1,5 @@
+[cryptare-bin]
+source = "github"
+github = "jabbott-iii/Cryptare"
+use_latest_release = true
+prefix = "v"
