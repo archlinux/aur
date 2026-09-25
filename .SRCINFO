@@ -1,0 +1,23 @@
+pkgbase = chatwithwork-local-agent
+	pkgdesc = Chat with Work Local Agent: share folders with Chat with Work through four read-only tools
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/crmne/chatwithwork-local-agent
+	install = chatwithwork-local-agent.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	optdepends = org.freedesktop.secrets: keep the device key in the Secret Service (GNOME Keyring, KWallet, KeePassXC)
+	provides = cww
+	conflicts = cww
+	conflicts = chatwithwork-local-agent-bin
+	conflicts = chatwithwork-local-agent-git
+	options = !debug
+	options = !lto
+	source = chatwithwork-local-agent-0.1.0.tar.gz::https://github.com/crmne/chatwithwork-local-agent/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 6cac1bb5a2f39a8d1981f88a57fbe3fe6597f7d76c0a87505000a3c8b0e11372
+
+pkgname = chatwithwork-local-agent
