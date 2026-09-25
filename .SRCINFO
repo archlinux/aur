@@ -1,6 +1,6 @@
 pkgbase = slk
 	pkgdesc = A blazingly fast Slack TUI
-	pkgver = 0.21.0
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://github.com/gammons/slk
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = slk
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = git+https://github.com/gammons/slk#tag=v0.21.0
-	b2sums = 13ad8d5a8e66b372742e620156ee3ef8e5e861a9e63b8ae615d13fc28c52071db1e6782456c26b13e85beb8b2e28d484cd42388f93d5ed28a7b6879018e45060
+	source = git+https://github.com/gammons/slk#tag=v0.22.0
+	b2sums = 59b93e2e802ed67a58ed563693bedf8525c8b368713db31fc5dbb44196b0c63b1f80d8eb5a61ab1f0e1c633c6c19a6211e75fd7cf8e3212f1d7c70d7d19cd20d
 
 pkgname = slk
