@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="crcpp"
-pkgver=1.2.2.0
+pkgver=1.2.3.0
 pkgrel=1
 pkgdesc="Easy to use and fast C++ CRC library"
 arch=(
@@ -19,19 +19,17 @@ _pkgsrc="${url##*/}-release-${pkgver}"
 source=(
   "${url}/archive/refs/tags/release-${pkgver}/${_pkgsrc}.tar.gz"
 )
-b2sums=('99752eb2994e320b489f4c2afb856eb71a1c52cc92389197afa8c4869bfb531ae2dffb3c476f19d5d5d4db0416f6d4a1d0467037b340b0ef4579651234039b85')
+b2sums=('cc0cc28beb0c62512ca2ad1713a66c4518dfce6546672972f40e61bc382e1fba0a1e28d1c12a088a4db1786ad63cd5daff71fdb28a66975e280f0ed86ca9b9bf')
 
 build() {
   local cmake_options=(
     -B "${_pkgsrc}/build"
     -S "${_pkgsrc}"
     -G 'Unix Makefiles'
-    -W no-dev
+    -W no-author
     -D CMAKE_BUILD_TYPE:STRING='None'
     -D CMAKE_INSTALL_PREFIX:PATH='/usr'
-    -D CMAKE_INSTALL_INCLUDE_DIR:PATH='/usr/include'
     -D BUILD_DOC:BOOL=OFF
-    -D BUILD_TEST:BOOL=ON
   )
 
   cd "${srcdir}"
