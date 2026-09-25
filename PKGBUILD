@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=spotifast
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ replaces=('fastpotify')
 # undefined ring_core_* symbols.
 options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/spotifast-v${pkgver}-source.tar.gz")
-sha256sums=('8c0aecb9353346203e1d8d2c081f6110ed68b22f7cef1f8177542abce46d4a53')
+sha256sums=('6b7b640b3996fb147f2f28ca7c40c98aae2140f92f4112b1c4c82a0bc35dd47d')
 
 # GitHub archives use the repository name; older releases used Fastpotify.
 _source_dir() {
