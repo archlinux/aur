@@ -5,7 +5,7 @@ _name1=runtime
 _name0=pydantic-monty
 pkgbase=python-$_name0
 pkgname=(python-$_name0-$_name2 python-$_name0-$_name1 python-$_name0)
-pkgver=0.0.23
+pkgver=1.0.0
 pkgrel=1
 arch=('any')
 _repo='https://github.com/pydantic/monty'
@@ -25,12 +25,12 @@ checkdepends=('python-anyio'
               'python-websockets')
 options=(!lto)
 source=("$_repo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('653bc739256dc511fa7600d1f7ee0a2f392ccbe91018a99e0c62c496197728a9')
+sha256sums=('6a00ad1e80f655d676e6c05c31a117ba131cfbc9948e899ebf01b93e1a89e636')
 
 prepare() {
   cd "$srcdir"/${_name0//pydantic-/}-$pkgver
-  # ruff >= 0.16 enables SIM117/B018 by default; docs examples predate that
-  sed -i "s/ruff_ignore=\['FA102'\]/ruff_ignore=['FA102', 'SIM117', 'B018']/" crates/${_name0//pydantic-/}-python/tests/test_readme_examples.py
+  # ruff >= 0.16 enables SIM117/B018/DTZ001 by default; docs examples predate that
+  sed -i "s/ruff_ignore=\['FA102'\]/ruff_ignore=['FA102', 'SIM117', 'B018', 'DTZ001']/" crates/${_name0//pydantic-/}-python/tests/test_readme_examples.py
   # anyio >= 4.12 parametrizes anyio_backend over every importable backend;
   # AsyncMonty is asyncio-only, so pin the backend instead of pulling in trio
   cat >> crates/${_name0//pydantic-/}-python/tests/conftest.py <<'EOF'
@@ -67,7 +67,9 @@ check() {
 
 package_python-pydantic-monty-client() {
   pkgdesc='Python client for the Monty sandboxed Python interpreter.'
-  depends+=('python-typing_extensions' 'glibc' 'libgcc')
+  depends+=('python-typing_extensions'
+            'glibc'
+            'libgcc')
   optdepends=('python-opentelemetry-api: opentelemetry')
   url="$_repo/tree/main/crates/${_name0//pydantic-/}-python"
   cd "$srcdir"/${_name0//pydantic-/}-$pkgver
@@ -76,7 +78,8 @@ package_python-pydantic-monty-client() {
 
 package_python-pydantic-monty-runtime() {
   pkgdesc='The monty CLI binary — spawned as worker subprocesses by pydantic-monty.'
-  depends=('glibc' 'libgcc')
+  depends=('glibc'
+           'libgcc')
   url="$_repo/tree/main/crates/${_name0//pydantic-/}-$_name1"
   cd "$srcdir"/${_name0//pydantic-/}-$pkgver
   python -m installer --destdir="$pkgdir" crates/${_name0//pydantic-/}-$_name1/dist/*.whl
@@ -84,7 +87,8 @@ package_python-pydantic-monty-runtime() {
 
 package_python-pydantic-monty() {
   pkgdesc='The Monty sandboxed Python interpreter: bindings plus the worker binary.'
-  depends+=('python-pydantic-monty-client' 'python-pydantic-monty-runtime')
+  depends+=('python-pydantic-monty-client'
+            'python-pydantic-monty-runtime')
   optdepends=('python-opentelemetry-api: opentelemetry')
   url="$_repo/tree/main/packages/$_name0"
   cd "$srcdir"/${_name0//pydantic-/}-$pkgver

@@ -1,5 +1,5 @@
 pkgbase = python-pydantic-monty
-	pkgver = 0.0.23
+	pkgver = 1.0.0
 	pkgrel = 1
 	arch = any
 	license = MIT
@@ -17,8 +17,8 @@ pkgbase = python-pydantic-monty
 	makedepends = python-wheel
 	depends = python
 	options = !lto
-	source = https://github.com/pydantic/monty/archive/refs/tags/v0.0.23.tar.gz
-	sha256sums = 653bc739256dc511fa7600d1f7ee0a2f392ccbe91018a99e0c62c496197728a9
+	source = https://github.com/pydantic/monty/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 6a00ad1e80f655d676e6c05c31a117ba131cfbc9948e899ebf01b93e1a89e636
 
 pkgname = python-pydantic-monty-client
 	pkgdesc = Python client for the Monty sandboxed Python interpreter.
