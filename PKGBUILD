@@ -3,12 +3,13 @@
 
 pkgname=boomaga
 pkgver=3.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual printer for viewing a document before printing it out using the physical printer"
 arch=(x86_64 aarch64)
 url="https://www.boomaga.org/"
 license=(GPL2 LGPL2.1)
 depends=(
+    cups
     glibc
     hicolor-icon-theme
     libcups

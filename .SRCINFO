@@ -1,7 +1,7 @@
 pkgbase = boomaga
 	pkgdesc = Virtual printer for viewing a document before printing it out using the physical printer
 	pkgver = 3.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.boomaga.org/
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = boomaga
 	makedepends = cmake
 	makedepends = qt6-tools
 	makedepends = vulkan-headers
+	depends = cups
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libcups
