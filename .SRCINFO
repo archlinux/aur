@@ -1,6 +1,6 @@
 pkgbase = slive-bin
 	pkgdesc = 基于Flutter的聚合直播软件，支持多平台直播源聚合与观看
-	pkgver = 1.8.12
+	pkgver = 1.8.13
 	pkgrel = 1
 	url = https://github.com/SlotSun/dart_simple_live
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = slive-bin
 	conflicts = slive
 	options = !debug
 	options = !strip
-	source_x86_64 = Slive-x86_64-linux.zip::https://github.com/SlotSun/dart_simple_live/releases/download/v1.8.12/Slive-x86_64-linux.zip
-	source_x86_64 = https://raw.githubusercontent.com/SlotSun/dart_simple_live/refs/tags/v1.8.12/simple_live_app/assets/io.github.SlotSun.Slive.desktop
-	sha256sums_x86_64 = d73e579f8a9e402c4c1d914b29fd744b2aa7d13ca15589d9c2205e97eb7081cd
+	source_x86_64 = Slive-x86_64-linux.zip::https://github.com/SlotSun/dart_simple_live/releases/download/v1.8.13/Slive-x86_64-linux.zip
+	source_x86_64 = https://raw.githubusercontent.com/SlotSun/dart_simple_live/refs/tags/v1.8.13/simple_live_app/assets/io.github.SlotSun.Slive.desktop
+	sha256sums_x86_64 = 5c74e488c523916d3161bb41388defc85850f64b011fca9d993a230282b19a94
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = Slive-aarch64-linux.zip::https://github.com/SlotSun/dart_simple_live/releases/download/v1.8.12/Slive-aarch64-linux.zip
-	source_aarch64 = https://raw.githubusercontent.com/SlotSun/dart_simple_live/refs/tags/v1.8.12/simple_live_app/assets/io.github.SlotSun.Slive.desktop
+	source_aarch64 = Slive-aarch64-linux.zip::https://github.com/SlotSun/dart_simple_live/releases/download/v1.8.13/Slive-aarch64-linux.zip
+	source_aarch64 = https://raw.githubusercontent.com/SlotSun/dart_simple_live/refs/tags/v1.8.13/simple_live_app/assets/io.github.SlotSun.Slive.desktop
 	sha256sums_aarch64 = SKIP
 	sha256sums_aarch64 = SKIP
 
