@@ -2,7 +2,7 @@
 # Contributor: K4YT3X <aur@k4yt3x.com>
 
 pkgname=nspawn
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Docker-like management of systemd-nspawn machines: OCI images from a hub, shared layers, a bridge network, driven over D-Bus'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=('polkit: let users other than root drive nspawn'
             'mkosi: build images with nspawn build'
             'iptables-nft: keep the bridge reachable next to the forwarding rules of docker or ufw')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('598ac138c2f4d3048446aa17e26a713d03714ad45ab0c6d495766e0bc010a495')
+sha256sums=('496e2941cf5dc1fd7872ed6d0cac86b03fcdd99f483759d9a200c0ad1a8e7961')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
