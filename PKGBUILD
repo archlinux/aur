@@ -1,6 +1,6 @@
 # Maintainer: xycld
 pkgname=waytranslate-git
-pkgver=0.2.0.r0.g0000000
+pkgver=0.2.0.r1.g6906c56
 pkgrel=1
 pkgdesc="Select text anywhere on Wayland, get an inline translation popup (KDE Plasma / wlroots)"
 arch=('x86_64' 'aarch64')
