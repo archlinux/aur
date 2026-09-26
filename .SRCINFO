@@ -1,6 +1,6 @@
 pkgbase = tidemail-bin
 	pkgdesc = Keyboard-first terminal email client with multi-account mail, a unified inbox, drafts, contacts, search, and optional AI tools
-	pkgver = 1.0.26
+	pkgver = 1.0.27
 	pkgrel = 1
 	url = https://github.com/allisonhere/tidemail
 	arch = x86_64
@@ -11,15 +11,19 @@ pkgbase = tidemail-bin
 	optdepends = xclip: clipboard support on X11
 	optdepends = xsel: clipboard support on X11 (alternative to xclip)
 	optdepends = libnotify: desktop notifications for new mail
-	provides = tidemail=1.0.26
+	provides = tidemail=1.0.27
 	conflicts = tidemail
 	options = !strip
 	options = !debug
-	source = LICENSE-1.0.26::https://github.com/allisonhere/tidemail/raw/v1.0.26/LICENSE
+	source = LICENSE-1.0.27::https://github.com/allisonhere/tidemail/raw/v1.0.27/LICENSE
+	source = tidemail-1.0.27.png::https://github.com/allisonhere/tidemail/raw/v1.0.27/images/tidemail-icon.png
+	source = tidemail-1.0.27.desktop::https://github.com/allisonhere/tidemail/raw/v1.0.27/packaging/linux/tidemail.desktop
 	sha256sums = 7ded3abde5f4be92306e0ee24c6db97b1825e4eaa1b8fd473669c521f5a409dd
-	source_x86_64 = tidemail-bin-1.0.26-x86_64.tar.gz::https://github.com/allisonhere/tidemail/releases/download/v1.0.26/tidemail-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 331a45e01fd2c802346012603c43a537b767e47e8bf3127a6a4120dccccec8d9
-	source_aarch64 = tidemail-bin-1.0.26-aarch64.tar.gz::https://github.com/allisonhere/tidemail/releases/download/v1.0.26/tidemail-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 87d89cf2821a45b218a78ac0419a703c30d12693658f865828891a8282c93f84
+	sha256sums = a2510a7a5185a520ea815f8c19799055a363e2cd9c98e7c9d8ce748a703db0b6
+	sha256sums = 65217068259c58ac622c1ceb73acf33c96eaa0f1905a936410ac7936853d2b44
+	source_x86_64 = tidemail-bin-1.0.27-x86_64.tar.gz::https://github.com/allisonhere/tidemail/releases/download/v1.0.27/tidemail-linux-x86_64.tar.gz
+	sha256sums_x86_64 = db2e33ab2b0fdd25fdd4434611db04d10f25f2647bdb513d1d0d5f4b54a9a61d
+	source_aarch64 = tidemail-bin-1.0.27-aarch64.tar.gz::https://github.com/allisonhere/tidemail/releases/download/v1.0.27/tidemail-linux-aarch64.tar.gz
+	sha256sums_aarch64 = a9fe218c1a011250bd8fc3ba45e52830faaeb0dbc56df009ea0591454983a000
 
 pkgname = tidemail-bin
