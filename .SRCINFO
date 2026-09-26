@@ -1,36 +1,36 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = The Linux kernel and modules | repackaged with a unique package name for each version
-	pkgver = 7.2.6.arch2
+	pkgver = 7.2.7.arch1
 	pkgrel = 1
 	url = https://github.com/archlinux/linux
 	arch = x86_64
 	license = GPL2
-	noextract = linux-7.2.6.arch2-1-x86_64.pkg.tar.zst
-	noextract = linux-headers-7.2.6.arch2-1-x86_64.pkg.tar.zst
-	noextract = linux-docs-7.2.6.arch2-1-x86_64.pkg.tar.zst
+	noextract = linux-7.2.7.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-headers-7.2.7.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-docs-7.2.7.arch1-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://archive.archlinux.org/packages/.all/linux-7.2.6.arch2-1-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-headers-7.2.6.arch2-1-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-docs-7.2.6.arch2-1-x86_64.pkg.tar.zst
-	sha256sums = 0cb7a38236285170db963826d2515c0de81b83b66ba4236da5a85ee6bc932362
-	sha256sums = de3d7ca62012203097b9185dd643cc84d3c3c7903534d293ea4a3945e5e6cb8f
-	sha256sums = 182b938d9e85485b708ed656d7900c186e566eae73bee512fc2a29dbdc668a54
+	source = https://archive.archlinux.org/packages/.all/linux-7.2.7.arch1-1-x86_64.pkg.tar.zst
+	source = https://archive.archlinux.org/packages/.all/linux-headers-7.2.7.arch1-1-x86_64.pkg.tar.zst
+	source = https://archive.archlinux.org/packages/.all/linux-docs-7.2.7.arch1-1-x86_64.pkg.tar.zst
+	sha256sums = 4c922b4be698a85e13647928992d4d099dc5a530915bf82a631c2624784802a4
+	sha256sums = ef5d385acb67a33dda980fe6ddee8a14f7b98505a1b81d43cf24a7217a6376da
+	sha256sums = 6868a8bb417e57215606f8e26272f5ad3bac185f36c34f932687dd67d5310b5a
 
 pkgname = linux-versioned-bin
-	pkgdesc = Metapackage depending on linux7.2.6.arch2-1-bin
-	depends = linux7.2.6.arch2-1-bin
+	pkgdesc = Metapackage depending on linux7.2.7.arch1-1-bin
+	depends = linux7.2.7.arch1-1-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
-	pkgdesc = Metapackage depending on linux7.2.6.arch2-1-headers-bin
-	depends = linux7.2.6.arch2-1-headers-bin
+	pkgdesc = Metapackage depending on linux7.2.7.arch1-1-headers-bin
+	depends = linux7.2.7.arch1-1-headers-bin
 
 pkgname = linux-versioned-docs-bin
-	pkgdesc = Metapackage depending on linux7.2.6.arch2-1-docs-bin
-	depends = linux7.2.6.arch2-1-docs-bin
+	pkgdesc = Metapackage depending on linux7.2.7.arch1-1-docs-bin
+	depends = linux7.2.7.arch1-1-docs-bin
 
-pkgname = linux7.2.6.arch2-1-bin
-	pkgdesc = The Linux kernel and modules, version 7.2.6-arch2-1
+pkgname = linux7.2.7.arch1-1-bin
+	pkgdesc = The Linux kernel and modules, version 7.2.7-arch1-1
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -46,8 +46,8 @@ pkgname = linux7.2.6.arch2-1-bin
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux7.2.6.arch2-1-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 7.2.6-arch2-1
+pkgname = linux7.2.7.arch1-1-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 7.2.7-arch1-1
 	depends = binutils
 	depends = glibc
 	depends = libelf
@@ -60,6 +60,6 @@ pkgname = linux7.2.6.arch2-1-headers-bin
 	provides = LINUX-HEADERS
 	conflicts = linux-headers
 
-pkgname = linux7.2.6.arch2-1-docs-bin
-	pkgdesc = Documentation for the Linux kernel 7.2.6-arch2-1
+pkgname = linux7.2.7.arch1-1-docs-bin
+	pkgdesc = Documentation for the Linux kernel 7.2.7-arch1-1
 	conflicts = linux-docs
