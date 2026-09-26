@@ -1,0 +1,24 @@
+[Desktop Entry]
+Categories=Music;Game;
+Comment[hu_HU]=Phigros pályakészítő és -szerkesztő Rust és Bevy alapokon
+Comment=Phigros pályakészítő és -szerkesztő Rust és Bevy alapokon
+Comment[de]=Phigros Charting Toolchain, geschrieben in Rust und Bevy
+Comment[es]=Herramienta de creación y edición de charts para Phigros escrita en Rust y Bevy
+Comment[fr]=Outil de création et d’édition de charts Phigros écrit en Rust et Bevy
+Comment[it]=Strumento per la creazione e modifica di chart Phigros scritto in Rust e Bevy
+Comment[ja]=Rust と Bevy で開発された Phigros 譜面制作ツール
+Comment[ru]=Инструмент для создания и редактирования карт Phigros на Rust и Bevy
+Comment[zh_CN]=使用 Rust 和 Bevy 编写的 Phigros 谱面制作与编辑工具
+Exec=phichain
+GenericName[hu_HU]=Phigros pályaszerkesztő
+GenericName=Phigros pályaszerkesztő
+Icon=applications-games-symbolic
+Keywords[hu_HU]=Phigros;pályaszerkesztő;ritmusjáték;Bevy;Rust;
+Keywords=Phigros;Chart;Charting;Rhythm;Rhythm Game;Editor;Music;Bevy;Rust;
+Name[hu_HU]=Phichain
+Name=Phichain
+StartupNotify=true
+Terminal=false
+Type=Application
+Version=1.0
+X-KDE-SubstituteUID=false

@@ -1,0 +1,223 @@
+--- a/phichain-editor/src/translation.rs	2026-09-26 20:59:18.154158505 +0200
++++ b/phichain-editor/src/translation.rs	2026-09-26 21:54:15.494349833 +0200
+@@ -14,11 +14,12 @@
+ #[derive(Resource, Debug, Serialize, Deserialize)]
+ pub struct Languages(pub IndexMap<String, String>);
+ 
+-fn load_translation_system(mut commands: Commands, working_directory: Res<WorkingDirectory>) {
+-    let meta = working_directory.0.join("lang/meta.json");
++const LANG_META: &[u8] = include_bytes!("../lang/meta.json");
++
++fn load_translation_system(mut commands: Commands) {
+     let languages: Languages =
+-        serde_json::from_reader(std::fs::File::open(meta).expect("Failed to open language meta"))
+-            .expect("Failed to parse language meta");
++    serde_json::from_slice(LANG_META)
++    .expect("Failed to parse embedded language meta");
+ 
+     commands.insert_resource(languages);
+ }
+
+--- a/phichain-editor/src/main.rs	2026-09-26 21:52:01.831175927 +0200
++++ b/phichain-editor/src/main.rs	2026-09-26 21:52:24.979022027 +0200
+@@ -218,29 +218,29 @@
+     Ok(())
+ }
+ 
++const MISANS_REGULAR: &[u8] =
++include_bytes!("../../assets/font/MiSans-Regular.ttf");
++
+ fn setup_egui_font_system(mut contexts: bevy_egui::EguiContexts) -> Result {
+     let ctx = contexts.ctx_mut()?;
+ 
+-    let font_file = utils::assets::get_base_path()
+-        .join("assets/font/MiSans-Regular.ttf")
+-        .to_str()
+-        .unwrap()
+-        .to_string();
+     let font_name = "MiSans-Regular".to_string();
+-    let font_file_bytes = std::fs::read(font_file).expect("Failed to open font file");
+ 
+-    let font_data = egui::FontData::from_owned(font_file_bytes);
++    let font_data = egui::FontData::from_owned(MISANS_REGULAR.to_vec());
++
+     let mut font_def = egui::FontDefinitions::default();
++
+     font_def
+-        .font_data
+-        .insert(font_name.to_string(), Arc::new(font_data));
++    .font_data
++    .insert(font_name.clone(), Arc::new(font_data));
++
++    let font_family = egui::FontFamily::Proportional;
+ 
+-    let font_family: egui::FontFamily = egui::FontFamily::Proportional;
+     font_def
+-        .families
+-        .get_mut(&font_family)
+-        .expect("Failed to setup font")
+-        .insert(0, font_name);
++    .families
++    .get_mut(&font_family)
++    .expect("Failed to setup font")
++    .insert(0, font_name);
+ 
+     egui_phosphor::add_to_fonts(&mut font_def, egui_phosphor::Variant::Regular);
+ 
+--- a/phichain-assets/src/lib.rs	2026-09-26 20:59:18.149639663 +0200
++++ b/phichain-assets/src/lib.rs	2026-09-26 21:48:32.149162115 +0200
+@@ -102,16 +102,11 @@
+ 
+ /// Return the path to the built-in resource pack directory.
+ pub fn builtin_respack_dir() -> PathBuf {
+-    let root =
+-        env::var("BEVY_ASSET_ROOT").expect("BEVY_ASSET_ROOT should be set by setup_assets()");
+-    PathBuf::from(root).join("assets/respack")
++    PathBuf::from("/usr/share/phichain/respack")
+ }
+ 
+-/// Return the path to the editor-only audio directory (metronome, etc.).
+ fn editor_audio_dir() -> PathBuf {
+-    let root =
+-        env::var("BEVY_ASSET_ROOT").expect("BEVY_ASSET_ROOT should be set by setup_assets()");
+-    PathBuf::from(root).join("assets/audio")
++    PathBuf::from("/usr/share/phichain/audio")
+ }
+ 
+ pub struct AssetsPlugin;
+
+
+--- a/phichain-editor/src/misc.rs	2026-09-26 22:33:16.307361392 +0200
++++ b/phichain-editor/src/misc.rs	2026-09-26 22:34:38.285303445 +0200
+@@ -1,24 +1,56 @@
+ use bevy::prelude::*;
+ use std::path::{Path, PathBuf};
+-use std::{fs, io};
++use std::{env, fs, io};
+ 
+ pub struct MiscPlugin;
+ 
+ impl MiscPlugin {
+-    // https://github.com/bevyengine/bevy/blob/dc3b4b6c850898c922dff9fd6d312823e07096f1/crates/bevy_asset/src/io/file_asset_io.rs#L65
++    // Base path for bundled/application resources.
++    //
++    // During development, this is the Cargo manifest directory.
++    // In a built application, this is the directory containing the executable.
++    //
++    // https://github.com/bevyengine/bevy/blob/dc3b4b6c850898c922dff9fd6d312823e07096c9/crates/bevy_asset/src/io/file_asset_io.rs#L65
+     pub fn get_base_path() -> PathBuf {
+-        if let Ok(manifest_dir) = std::env::var("CARGO_MANIFEST_DIR") {
++        if let Ok(manifest_dir) = env::var("CARGO_MANIFEST_DIR") {
+             PathBuf::from(manifest_dir)
+         } else {
+-            std::env::current_exe()
+-                .map(|path| {
+-                    path.parent()
+-                        .map(|exe_parent_path| exe_parent_path.to_owned())
+-                        .unwrap()
+-                })
+-                .unwrap()
++            env::current_exe()
++            .ok()
++            .and_then(|path| path.parent().map(Path::to_owned))
++            .unwrap_or_else(|| PathBuf::from("."))
+         }
+     }
++
++    /// Returns the user's configuration directory.
++    ///
++    /// On Linux, this follows the XDG Base Directory specification:
++    ///
++    /// - `$XDG_CONFIG_HOME/phichain-editor`
++    /// - `~/.config/phichain-editor` as the fallback
++    ///
++    /// The directory is created if it does not already exist.
++    fn get_config_path() -> io::Result<PathBuf> {
++        let config_home = match env::var_os("XDG_CONFIG_HOME") {
++            Some(path) if !path.is_empty() => PathBuf::from(path),
++            _ => {
++                let home = env::var_os("HOME").ok_or_else(|| {
++                    io::Error::new(
++                        io::ErrorKind::NotFound,
++                        "HOME environment variable is not set",
++                    )
++                })?;
++
++                PathBuf::from(home).join(".config")
++            }
++        };
++
++        let path = config_home.join("phichain-editor");
++
++        fs::create_dir_all(&path)?;
++
++        Ok(path)
++    }
+ }
+ 
+ impl Plugin for MiscPlugin {
+@@ -27,7 +59,11 @@
+     }
+ }
+ 
+-/// Representing the current working directory (parent directory of phichain executable)
++/// Represents the directories used by phichain.
++///
++/// `WorkingDirectory` itself is based on the executable/project location,
++/// while user-writable configuration is stored separately under the user's
++/// configuration directory.
+ #[derive(Resource, Debug)]
+ pub struct WorkingDirectory(pub PathBuf);
+ 
+@@ -38,28 +74,43 @@
+ }
+ 
+ impl WorkingDirectory {
++    /// Create and return a directory relative to the application's base path.
+     fn directory(&self, path: impl AsRef<Path>) -> io::Result<PathBuf> {
+-        let new_path = self.0.join(&path);
++        let new_path = self.0.join(path);
++
++        fs::create_dir_all(&new_path)?;
+ 
+-        if !new_path.exists() {
+-            fs::create_dir(&new_path)?;
+-        }
+         if !new_path.is_dir() {
+-            return Err(io::Error::from(io::ErrorKind::NotADirectory));
++            return Err(io::Error::new(
++                io::ErrorKind::NotADirectory,
++                format!("{} is not a directory", new_path.display()),
++            ));
+         }
+ 
+         Ok(new_path)
+     }
+ 
++    /// Returns the user's configuration directory.
++    ///
++    /// Linux:
++    /// `$XDG_CONFIG_HOME/phichain-editor`
++    /// or
++    /// `~/.config/phichain-editor`
++    pub fn config(&self) -> io::Result<PathBuf> {
++        MiscPlugin::get_config_path()
++    }
++
++    /// Returns the screenshot directory.
+     pub fn screenshot(&self) -> io::Result<PathBuf> {
+         self.directory("screenshots")
+     }
+-    pub fn config(&self) -> io::Result<PathBuf> {
+-        self.directory("config")
+-    }
++
++    /// Returns the log directory.
+     pub fn log(&self) -> io::Result<PathBuf> {
+         self.directory("logs")
+     }
++
++    /// Returns the resource-pack directory.
+     pub fn respacks(&self) -> io::Result<PathBuf> {
+         self.directory("respacks")
+     }
