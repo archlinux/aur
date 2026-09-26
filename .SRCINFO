@@ -1,6 +1,6 @@
 pkgbase = dbdelve-bin
 	pkgdesc = A modern and performant database client for PostgreSQL, MySQL and SQLite
-	pkgver = 0.1.9
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ShayanAbbas1/dbdelve
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = dbdelve-bin
 	depends = wayland
 	optdepends = org.freedesktop.secrets: store database passwords in a Secret Service keyring
 	optdepends = xdg-desktop-portal: file export dialogs
-	provides = dbdelve=0.1.9
+	provides = dbdelve=0.2.0
 	conflicts = dbdelve
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/ShayanAbbas1/dbdelve/releases/download/v0.1.9/dbdelve-0.1.9-linux-x86_64.tar.gz
-	sha256sums_x86_64 = a5e10b1810accf7f71834443341c2ee8f3a6b25e6d765f58d98324f07c45f3e5
-	source_aarch64 = https://github.com/ShayanAbbas1/dbdelve/releases/download/v0.1.9/dbdelve-0.1.9-linux-aarch64.tar.gz
-	sha256sums_aarch64 = d5598ee315f56c4e9630e207abbdb0c75dc94dce0b8aeedd97fc7e7f71594bd4
+	source_x86_64 = https://github.com/ShayanAbbas1/dbdelve/releases/download/v0.2.0/dbdelve-0.2.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 00a31f1f287db13f3bcdc9c54bbfada96fda1a84c055e2e3ac6817a141dc38a0
+	source_aarch64 = https://github.com/ShayanAbbas1/dbdelve/releases/download/v0.2.0/dbdelve-0.2.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 2cf795a9f0c97a669fd57237bfba6785b727d9fac969bf954091ddf3049aa896
 
 pkgname = dbdelve-bin
