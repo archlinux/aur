@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Terminal UI for Docker and Podman containers"
 
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('96a85e75b9a6921912f71104cbf8732925d1592104f9ecc9abae9906c95d16bb')
-sha256sums_aarch64=('dd15eba378ab72f857905d43c7051a370bf92c5e49b9219d0d577a9ab271f46c')
+sha256sums_x86_64=('c7909a728dd4f542508cd246355fa30a970f2bf99ec9b068fe7918c1c7909b05')
+sha256sums_aarch64=('aa5607e10b8c4001ad42368a95213f6cc9d6cb8ead186d0b0b4321840cb8dfb7')
 
 
 package() {
