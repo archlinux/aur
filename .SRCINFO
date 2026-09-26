@@ -1,6 +1,6 @@
 pkgbase = shotori
 	pkgdesc = Wayland-first screenshot tool with built-in OCR, self-drawn UI via gpui-kit
-	pkgver = 0.9.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/mengh04/shotori
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = shotori
 	depends = libxau
 	depends = libxdmcp
 	depends = libxkbcommon
-	source = shotori-0.9.0-x86_64.tar.gz::https://github.com/mengh04/shotori/releases/download/v0.9.0/shotori-v0.9.0-x86_64.tar.gz
-	sha256sums = f1dc9d923e2d130ee4a603970c793d69dbde499f6e8cb52b2c2e0c5d38a620bb
+	source = shotori-0.10.1-x86_64.tar.gz::https://github.com/mengh04/shotori/releases/download/v0.10.1/shotori-v0.10.1-x86_64.tar.gz
+	sha256sums = de08c4197846f4552506b7aa27bc53380b6ee32b0f4b97ef33402a3d71b2db89
 
 pkgname = shotori
