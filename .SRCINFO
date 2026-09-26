@@ -1,0 +1,22 @@
+pkgbase = qsgreeter-hyprland
+	pkgdesc = QuickShell greeter for greetd, with a Hyprland session config
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/nninkovic95/greetd-qsgreeter
+	arch = any
+	license = MIT
+	depends = greetd
+	depends = quickshell
+	depends = glib2
+	depends = accountsservice
+	optdepends = hyprland: recommended wayland compositor
+	provides = qsgreeter
+	conflicts = qsgreeter
+	conflicts = qsgreeter-git
+	backup = etc/xdg/quickshell/qsgreeter/colorscheme.json
+	backup = etc/xdg/quickshell/qsgreeter/style.json
+	backup = etc/greetd/qsgreeter-hyprland.lua
+	source = qsgreeter-hyprland-1.0.1.tar.gz::https://github.com/nninkovic95/greetd-qsgreeter/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = bc83aa2f47c87109f2aeebadbabf3f1f41c4268f783729e2bbfd10cd3139d3b3
+
+pkgname = qsgreeter-hyprland
