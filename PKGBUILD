@@ -8,6 +8,7 @@
 # NOTE(Martin): When upgrading to a new major version, go through TODOs to see if anything needs enabling on the new version
 
 # This package more or less tracks https://gitlab.archlinux.org/archlinux/packaging/packages/nvidia-utils
+# But with the Production branch - https://www.nvidia.com/en-us/drivers/unix/
 
 pkgbase=nvidia-production-utils
 pkgname=('nvidia-production-utils' 'opencl-nvidia-production' 'nvidia-production-open-dkms')
