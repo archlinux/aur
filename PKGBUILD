@@ -1,7 +1,7 @@
 # Based on zotero-extension-ocr, maintained by Corentin Cadiou <contact@cphyc.me>
 pkgname=zotero-extension-scihub
 _pkgname=zotero-scihub
-pkgver=1.4.4
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Download papers and books by DOI from Sci-Hub"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=()
 optdepends=()
 groups=(zotero-addons)
 source=(${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.xpi)
-sha512sums=('46ecf21057df781e95a3776924d6dea5620cf02e92a4371a0051939e7d8f9eba5f83f1d5f19e70c186eb669c45a6401629bc667137a538f13b68623132f89c8e')
+sha512sums=('843e0fe353ccccf47460797330b095dab3e16b7da5fb2bd33ba642937b0b0b64330f1b5e2d9041a2e6d65782f8718b6eba8f9a66787bb12ccf2b60ebf9af3e82')
 
 prepare() {
   # Make sure zotero is not running
