@@ -1,0 +1,22 @@
+pkgbase = nmail-bin
+	pkgdesc = Terminal-based email client for Linux and macOS with IMAP and SMTP support (prebuilt)
+	pkgver = 5.16.4
+	pkgrel = 1
+	url = https://github.com/d99kris/nmail
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = file
+	depends = python
+	optdepends = w3m: HTML email rendering and viewing
+	optdepends = pandoc: HTML to text and Markdown to HTML conversion
+	optdepends = lynx: fallback HTML viewer
+	optdepends = elinks: fallback HTML viewer
+	provides = nmail
+	conflicts = nmail
+	source_x86_64 = https://github.com/d99kris/nmail/releases/download/v5.16.4/nmail-5.16.4-linux-x86_64-glibc.tar.gz
+	sha256sums_x86_64 = 11553cd105c140ec91b18247ddbfb90b23d35a1a84a4cb32b8d7e72715931361
+	source_aarch64 = https://github.com/d99kris/nmail/releases/download/v5.16.4/nmail-5.16.4-linux-arm64-glibc.tar.gz
+	sha256sums_aarch64 = 1512b2c670bc7b9ad481ecf8e5eba86bfcd55cb49d0ee0459dd3dc0b6bad80b7
+
+pkgname = nmail-bin
