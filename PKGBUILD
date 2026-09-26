@@ -1,7 +1,7 @@
 
 
 pkgname=uutils-tar-git
-pkgver=0.0.1.r421.11c10da
+pkgver=0.0.1.r441.d819e6e
 pkgver() {
   cd uutils-tar
   printf 0.0.1."r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
@@ -12,7 +12,7 @@ arch=('x86_64')
 url="https://github.com/uutils/tar"
 license=('MIT')
 depends=(gcc-libs zstd)
-makedepends=(rust git)
+makedepends=(rust git pkgconf)
 conflicts=(uutils-tar)
 provides=(uutils-tar)
 source=("uutils-tar::git+${url}.git")
