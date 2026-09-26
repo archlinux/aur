@@ -2,11 +2,17 @@
 
 pkgname=easycliproxyapi-git
 pkgver=0.3.4.r539.88f2d30
-pkgrel=2
+pkgrel=3
 pkgdesc='Cross-platform GUI desktop management client for CLIProxyAPI with Linux system tray patch'
 arch=('x86_64' 'aarch64')
 url='https://github.com/router-for-me/EasyCLIProxyAPI'
 license=('MIT')
+# GCC LTO objects from bundled SQLite cannot be linked by rust-lld.
+options=('!lto')
+# Temporary workaround for the reproducible rustc 1.98.1 stack overflow.
+# Use verified standalone components, never the user's system Rust or rustup.
+_rust_version=1.97.1
+_rust_dist=https://static.rust-lang.org/dist/2026-07-16
 depends=(
   'bash'
   'cairo'
@@ -26,7 +32,6 @@ depends=(
 )
 makedepends=(
   'bun'
-  'cargo'
   'curl'
   'git'
 )
@@ -39,11 +44,32 @@ source=(
   'easycliproxyapi.sh'
   'easycliproxyapi.desktop'
 )
-b2sums=(
+source_x86_64=(
+  "${_rust_dist}/rustc-${_rust_version}-x86_64-unknown-linux-gnu.tar.xz"
+  "${_rust_dist}/cargo-${_rust_version}-x86_64-unknown-linux-gnu.tar.xz"
+  "${_rust_dist}/rust-std-${_rust_version}-x86_64-unknown-linux-gnu.tar.xz"
+)
+source_aarch64=(
+  "${_rust_dist}/rustc-${_rust_version}-aarch64-unknown-linux-gnu.tar.xz"
+  "${_rust_dist}/cargo-${_rust_version}-aarch64-unknown-linux-gnu.tar.xz"
+  "${_rust_dist}/rust-std-${_rust_version}-aarch64-unknown-linux-gnu.tar.xz"
+)
+sha256sums=(
   'SKIP'
-  '9bbfbf35ca84ec60d78696de9ab7e1fa4ff7de1a4f4e292da0a14c78cceb3ae93f8e9dab02f256b8e8420418e636a6658502181005ce6dc99319ca7a81516dbc'
-  '2f8535f8a7cd3bfb5113a870e5dc87723bd14ec8e0a8792d1bf8cee0d8c9c02e9742ce4d2bc746b5ad07c7d968301cd6faace3ee316cd9054cd7bdd7a36d0133'
-  'fe6d941b1de9807605cf15086b7f38355a4c2b8fc4662668f958989b536b2957baccab71aad45a5b9713a91bf94f421066191f7ad1d0d177b9a962c8b38893e6'
+  '727f3e7cfb25cadbd29e096faaefc534845fb0efa9dd6f0c1c6ced7b54a528e1'
+  '3d422eb9876fd5c2a365e322ef6ed3860d1ba9832ea444d5e390334b624cf83f'
+  '6b46832343f2db8f6c1513fead0ff47a7a3ec539efcecdbc478cdd218be1222e'
+)
+# SHA256 values from Rust's official channel-rust-1.97.1.toml manifest.
+sha256sums_x86_64=(
+  '9819d0a32d56bd339585319c80260e332779f5541fd66838ab7e016d6c814819'
+  'e1be5f5ff7f7f80ca506fb65770b759edbdc6d303781ed71c5de8ec8a8394779'
+  '1c1e704ae80126b7de34f72ea2825f7fd01736dec20732faed47374b95282fba'
+)
+sha256sums_aarch64=(
+  'b344b81f0cd4c2246c7da8b197fe7a339d7dd02bb15cb69b2524115d9c75224c'
+  '8f70bcaccea5ba4db187c3fd4d64e24592b4e16af513497201f5909d61691dbe'
+  '46aed8e63186350004d8ec6afca798811e6530b514352e5a8a26f3dc4939b3be'
 )
 
 _app_version() {
@@ -68,6 +94,31 @@ _rust_target() {
     x86_64|aarch64) printf '%s-unknown-linux-gnu\n' "$CARCH" ;;
     *) printf 'Unsupported architecture: %s\n' "$CARCH" >&2; return 1 ;;
   esac
+}
+
+_use_rust() {
+  local prefix="$srcdir/.rust-toolchain"
+  export PATH="$prefix/bin:$PATH"
+  export RUSTC="$prefix/bin/rustc"
+  export RUSTDOC="$prefix/bin/rustdoc"
+  export CARGO="$prefix/bin/cargo"
+  # Do not inherit user Cargo config, compiler wrappers or rustup overrides.
+  export CARGO_HOME="$srcdir/.cargo-home"
+  unset RUSTUP_TOOLCHAIN RUSTC_WRAPPER RUSTC_WORKSPACE_WRAPPER
+  export CARGO_TARGET_DIR="$srcdir/EasyCLIProxyAPI/src-tauri/target"
+  export CARGO_BUILD_TARGET="$(_rust_target)"
+}
+
+_install_rust() {
+  local target component prefix="$srcdir/.rust-toolchain"
+  target=$(_rust_target)
+  for component in rustc cargo rust-std; do
+    bash "$srcdir/${component}-${_rust_version}-${target}/install.sh" \
+      --prefix="$prefix" --sysconfdir="$prefix/etc" --disable-ldconfig || return
+  done
+  _use_rust
+  "$RUSTC" -Vv
+  "$CARGO" -V
 }
 
 # The -git source determines the core version. Always verify even cached archives
@@ -125,27 +176,25 @@ prepare() {
   git apply "$srcdir/0001-enable-linux-tray.patch"
   bun install --frozen-lockfile
 
-  export CARGO_TARGET_DIR="$srcdir/EasyCLIProxyAPI/src-tauri/target"
+  _install_rust
   local version target
   version=$(_app_version)
   target=$(_rust_target)
-  export CARGO_BUILD_TARGET="$target"
-  cargo fetch --manifest-path src-tauri/Cargo.toml --locked --target "$target"
+  "$CARGO" fetch --manifest-path src-tauri/Cargo.toml --locked --target "$target"
   # Match upstream release builds, without resolving new dependency versions.
   CARGO_NET_OFFLINE=true bun scripts/set-version.mjs "$version"
-  cargo metadata --manifest-path src-tauri/Cargo.toml --no-deps \
+  "$CARGO" metadata --manifest-path src-tauri/Cargo.toml --no-deps \
     --format-version 1 --locked --offline > /dev/null
   _download_core
 }
 
 build() {
   cd "$srcdir/EasyCLIProxyAPI"
-  export CARGO_TARGET_DIR="$srcdir/EasyCLIProxyAPI/src-tauri/target"
+  _use_rust
   export CARGO_NET_OFFLINE=true
   local target
   target=$(_rust_target)
-  export CARGO_BUILD_TARGET="$target"
-  bun tauri build --no-bundle --target "$target" -- --frozen
+  bun tauri build --runner "$CARGO" --no-bundle --target "$target" -- --frozen
 }
 
 package() {
