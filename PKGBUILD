@@ -1,7 +1,7 @@
 # Maintainer: sunnysab <i@sunnysab.cn>
 pkgname=intel-xpu-smi-bin
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 # The build version part from the filename
 _buildver=1.24.04
 pkgdesc="Intel XPU SMI - CLI tool for Intel XPU Manager (Binary, Daemon-less)"
@@ -14,9 +14,11 @@ depends=(
     'intel-compute-runtime'
     'level-zero-loader'
     'igsc>=1.3.1'
+    'intel-metee'        # xpu-smi links libmetee directly (see package())
     'hwloc'
     'libpciaccess'
 )
+makedepends=('patchelf')
 
 # Conflicts with the daemon-based manager as per Intel documentation
 conflicts=('intel-xpumanager' 'intel-xpumanager-bin' 'intel-xpu-smi')
@@ -42,9 +44,18 @@ package() {
         rmdir "${pkgdir}/usr/lib/x86_64-linux-gnu"
     fi
 
-    # --- Cleanup ---
-    # Remove unnecessary documentation if you prefer a cleaner package (Optional)
-    # rm -rf "${pkgdir}/usr/share/doc"
+    # --- Fix 2: libmetee SONAME ---
+    # Upstream builds against Ubuntu's libmetee, whose SONAME carries the full
+    # version (currently libmetee.so.6.2.5.0). Arch ships the same scheme at a
+    # different version, so rewrite the entry to whatever this system has.
+    # Rebuild this package whenever intel-metee bumps its version.
+    local _wanted _present
+    _wanted=$(patchelf --print-needed "${pkgdir}/usr/bin/xpu-smi" | grep '^libmetee\.so\.')
+    _present=$(basename "$(readlink -f /usr/lib/libmetee.so)")
+    if [[ -n $_wanted && $_wanted != "$_present" ]]; then
+        msg2 "Relinking libmetee: ${_wanted} -> ${_present}"
+        patchelf --replace-needed "$_wanted" "$_present" "${pkgdir}/usr/bin/xpu-smi"
+    fi
 
     # Note: Unlike the Manager package, SMI is daemon-less.
     # It does NOT need systemd services, sysusers, or tmpfiles configuration.
