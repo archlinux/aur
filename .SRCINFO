@@ -1,6 +1,6 @@
 pkgbase = skwd-deck-steamworks
 	pkgdesc = Optional Steam Client Workshop backend for Skwd Deck
-	pkgver = 1.0.0_beta.21
+	pkgver = 1.0.0_beta.22
 	pkgrel = 1
 	url = https://github.com/liixini/skwd-wall
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = skwd-deck-steamworks
 	optdepends = steam: running Steam client used by the backend
 	options = !debug
 	options = !lto
-	source = skwd-deck-steamworks-1.0.0-beta.21.tar.xz::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.21/skwd-deck-steamworks-x86_64-1.0.0-beta.21.tar.xz
-	sha256sums = 68692267a17fa78382634a1b4d9864ccdb80ee496a4cc42f96d658202b8a799c
+	source = skwd-deck-steamworks-1.0.0-beta.22.tar.xz::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.22/skwd-deck-steamworks-x86_64-1.0.0-beta.22.tar.xz
+	sha256sums = daf3786bd72a75afe247b9ee65f15dd2fdaad536c7d35915acf5cf15e9e49f02
 
 pkgname = skwd-deck-steamworks
