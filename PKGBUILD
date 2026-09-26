@@ -7,7 +7,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-autocomplete-bin
 pkgdesc="Shell auto-completion tool that works like code editors IntelliSense."
 
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,8 +32,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
 sha256sums=('693b9e6728565a7ebd8d38ff387affb94daad07733a4c9b3ab87e71e7b951864'
             '0db3336be1d50c18d8d0f844a996cdddaf66a018dbdee58ab94933c1c6ffc2e9')
-sha256sums_x86_64=('19cb128a4be12c8ed4792480c10bfd1c61a732df328e6d52c14147b3b83e6813')
-sha256sums_aarch64=('36629540423e25200ffd2cec1dc991069576289e2583c9874f4f311c61dc2e53')
+sha256sums_x86_64=('850c96fc1ac4b5040f9451f00f4975076c5155c31ddf7188375faef6808d20a4')
+sha256sums_aarch64=('7db939fe4721207c5a17d51866e347c7bc29ff72941484334732ddd9f5a09f6e')
 
 
 build() {
