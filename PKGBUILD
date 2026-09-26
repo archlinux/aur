@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _pkgname=vacask
 pkgname="${_pkgname}-git"
-pkgver=0.3.4.r69.gb6d63ff
+pkgver=0.3.4.r70.g55736a5
 pkgrel=1
 pkgdesc="Verilog-A Circuit Analysis Kernel is an analog circuit simulator"
 arch=(
@@ -11,14 +11,15 @@ arch=(
 url="https://codeberg.org/arpadbuermen/VACASK"
 license=('AGPL-3.0-or-later')
 depends=(
+    'openvaf-r'
     'suitesparse'
     'glibc'
     'libstdc++'
     'libgcc'
     'libgomp'
     'openblas'
-    'fftw'
     'python'
+    'fftw'
 )
 makedepends=(
     'git'
@@ -29,8 +30,9 @@ makedepends=(
     'bison'
     'flex'
     'tomlplusplus'
-    'boost-libs'
-    'openvaf-r'
+    # For CADPNIP_PARSERS
+    'rust'
+    'corrosion'
 )
 checkdepends=(
     'python-numpy'
@@ -38,16 +40,29 @@ checkdepends=(
     'python-matplotlib'
 )
 optdepends=(
-    'python-scikit-rf: For postprocessing some of the tests'
+    'python-scikit-rf: For converting from touchstone to VACASK'
 )
 conflicts=("${_pkgname}")
-options=()
-source=("${_pkgname}::git+${url}")
-b2sums=('SKIP')
+options=(!lto)
+source=(
+    "${_pkgname}::git+${url}"
+    "NetlistParsers::git+https://github.com/NyanCAD/NetlistParse.rs.git#commit=d565fd3e359893fbc4376bb9c7b5608ef786e6bb"
+    "0001-system-level-corrosion.diff::${url}/pulls/121.diff"
+)
+b2sums=('SKIP'
+        '1cbe8b3259e8d10d66bd14b314b7f7fdc8b927f9f6961b3ed77b148016e13f1b31f271bf45726858dd18da8f269106d0fa62d8c8c9c5bdf96db869fae0f84a24'
+        'd275d7422b7c7400365e38031057867aa11dd56bccdf8739c86f81d95bd4efbf39f71712e3ecd66b3868536f48d7409135ca821757438186b14dc51bafde6e46')
 
 pkgver() {
     cd "${_pkgname}"
     git describe --long --tags --abbrev=7 | sed 's/^_//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "${_pkgname}"
+    # Add support for system-level Corrosion
+    # see upstream: https://codeberg.org/arpadbuermen/VACASK/pulls/121
+    patch -Np1 < "../0001-system-level-corrosion.diff"
 }
 
 build() {
@@ -59,7 +74,9 @@ build() {
     )
 
     local vacask_options=(
-        -D TOMLPP_DIR=/usr
+        -D CADNIP_PARSERS="ON"
+        -D CORROSION_USE_SYSTEM="ON"
+        -D NETLIST_RS_DIR="${srcdir}/NetlistParsers"
         # TODO: Add superlu_mt support
         # -D SuperluMT_DIR=/usr/include/superlu_mt/
     )

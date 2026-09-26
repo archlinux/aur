@@ -1,6 +1,6 @@
 pkgbase = vacask-git
 	pkgdesc = Verilog-A Circuit Analysis Kernel is an analog circuit simulator
-	pkgver = 0.3.4.r69.gb6d63ff
+	pkgver = 0.3.4.r70.g55736a5
 	pkgrel = 1
 	url = https://codeberg.org/arpadbuermen/VACASK
 	arch = x86_64
@@ -17,19 +17,25 @@ pkgbase = vacask-git
 	makedepends = bison
 	makedepends = flex
 	makedepends = tomlplusplus
-	makedepends = boost-libs
-	makedepends = openvaf-r
+	makedepends = rust
+	makedepends = corrosion
+	depends = openvaf-r
 	depends = suitesparse
 	depends = glibc
 	depends = libstdc++
 	depends = libgcc
 	depends = libgomp
 	depends = openblas
-	depends = fftw
 	depends = python
-	optdepends = python-scikit-rf: For postprocessing some of the tests
+	depends = fftw
+	optdepends = python-scikit-rf: For converting from touchstone to VACASK
 	conflicts = vacask
+	options = !lto
 	source = vacask::git+https://codeberg.org/arpadbuermen/VACASK
+	source = NetlistParsers::git+https://github.com/NyanCAD/NetlistParse.rs.git#commit=d565fd3e359893fbc4376bb9c7b5608ef786e6bb
+	source = 0001-system-level-corrosion.diff::https://codeberg.org/arpadbuermen/VACASK/pulls/121.diff
 	b2sums = SKIP
+	b2sums = 1cbe8b3259e8d10d66bd14b314b7f7fdc8b927f9f6961b3ed77b148016e13f1b31f271bf45726858dd18da8f269106d0fa62d8c8c9c5bdf96db869fae0f84a24
+	b2sums = d275d7422b7c7400365e38031057867aa11dd56bccdf8739c86f81d95bd4efbf39f71712e3ecd66b3868536f48d7409135ca821757438186b14dc51bafde6e46
 
 pkgname = vacask-git
