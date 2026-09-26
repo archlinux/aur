@@ -1,6 +1,6 @@
 pkgbase = atago-bin
 	pkgdesc = End-to-end test runner for CLI tools
-	pkgver = 0.24.0
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/nao1215/atago
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = atago-bin
 	provides = atago
 	conflicts = atago
 	options = !strip
-	source = atago-0.24.0-checksums.txt::https://github.com/nao1215/atago/releases/download/v0.24.0/checksums.txt
-	sha256sums = 6aedd1a0b7ec2f52d5932d353dd262ba8114c55dee55d854e6752440af92d0ae
-	source_x86_64 = atago-0.24.0-x86_64.tgz::https://github.com/nao1215/atago/releases/download/v0.24.0/atago_0.24.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = bdac50bd7e7381f02b00927566314babb774700acbc718b8d89a3a97a9581616
-	source_aarch64 = atago-0.24.0-aarch64.tgz::https://github.com/nao1215/atago/releases/download/v0.24.0/atago_0.24.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 4bfd588b6a2c3501257d01b43b34e7ec7a0fd4c34764e22b2e2515622ccafd7a
+	source = atago-0.25.0-checksums.txt::https://github.com/nao1215/atago/releases/download/v0.25.0/checksums.txt
+	sha256sums = 5ac49cd9d51f0c4f0371a46b814dd172433a2eb2d0cb3dc4993954d3c7ef7c94
+	source_x86_64 = atago-0.25.0-x86_64.tgz::https://github.com/nao1215/atago/releases/download/v0.25.0/atago_0.25.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 67982d8c43a6fbe9de509d40af4ebaa77b23aa986c8179957c138b434bcd944a
+	source_aarch64 = atago-0.25.0-aarch64.tgz::https://github.com/nao1215/atago/releases/download/v0.25.0/atago_0.25.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = ece2101e0e86a574f4a3553dda2ed756c19389c8b17f41a3ac47954f6bd612b7
 
 pkgname = atago-bin
