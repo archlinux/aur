@@ -2,14 +2,14 @@
 
 _name=modelscope-hub
 pkgname=python-$_name
-pkgver=0.2.0
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='The official Python client to connect with ModelScope Hub.'
 arch=('any')
 groups=()
 url='https://www.modelscope.cn/'
 license=('Apache')
-depends=('python' 'python-filelock' 'python-requests>=2.28' 'python-setuptools' 'python-tqdm>=4.64.0' 'python-urllib3>=1.26')
+depends=('python' 'python-filelock' 'python-requests>=2.28' 'python-setuptools' 'python-tqdm>=4.64.0' 'python-urllib3>=1.26' 'python-build')
 makedepends=('python-pip')
 source=("git+https://github.com/modelscope/modelscope_hub.git#tag=v${pkgver}")
 sha512sums=('SKIP')
