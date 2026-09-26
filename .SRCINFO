@@ -8,6 +8,7 @@ pkgbase = hypa-ttfx-bin
 	license = MIT
 	provides = ttfx
 	conflicts = hypa-ttfx
+	conflicts = ttfx
 	options = !strip
 	source = README-0.3.1.md::https://raw.githubusercontent.com/Hypabolic/Hypa-TTFX/v0.3.1/README.md
 	source = LICENSE-0.3.1::https://raw.githubusercontent.com/Hypabolic/Hypa-TTFX/v0.3.1/LICENSE

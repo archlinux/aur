@@ -20,7 +20,7 @@ url=${_ghurl}
 license=('MIT')
 
 provides=("${_appname}")
-conflicts=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}" "${_appname}")
 
 options=('!strip')
 
