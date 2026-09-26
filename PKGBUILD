@@ -2,7 +2,7 @@
 # scripts/prepare-aur.py sets the release source fields for AUR builds.
 
 pkgname=omarchy-flux
-pkgver='0.2.0'
+pkgver='0.3.0'
 pkgrel=1
 pkgdesc='Connect an Omarchy computer to your phone with Flux for Android'
 arch=('x86_64' 'aarch64')
@@ -19,9 +19,9 @@ optdepends=(
 makedepends=('go>=1.27.1' 'cmake' 'ninja' 'git')
 install=omarchy-flux.install
 
-_source_url='https://github.com/bjarneo/flux/archive/refs/tags/v0.2.0.tar.gz'
-_source_sha256='81bc29f4af4b7089b6456c189dbfaf7f2d99529d96ff2d6dd1fdbc2bc9c91d92'
-_source_dir='flux-0.2.0'
+_source_url='https://github.com/bjarneo/flux/archive/refs/tags/v0.3.0.tar.gz'
+_source_sha256='9c14ebb0efa19d7819aa5575497faa295ba62e68aa6b06fc4dfa75d6858f44a3'
+_source_dir='flux-0.3.0'
 
 if [[ -n $_source_url ]]; then
 	source=("${pkgname}-${pkgver}.tar.gz::${_source_url}")
