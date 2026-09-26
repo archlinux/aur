@@ -1,6 +1,6 @@
 # Maintainer: CastSound Team <ci@castsound.app>
 pkgname=castsound-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Stream audio between computer and phone"
 arch=('x86_64' 'aarch64')
@@ -10,10 +10,10 @@ depends=('alsa-lib' 'libpulse' 'pipewire')
 optdepends=('pipewire-pulse: PulseAudio compatibility via PipeWire')
 source=('.managed_by_aur')
 sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
-source_x86_64=("CastSound-0.1.1-linux-x86_64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v${pkgver}/CastSound-0.1.1-linux-x86_64.tar.gz")
-source_aarch64=("CastSound-0.1.1-linux-aarch64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v${pkgver}/CastSound-0.1.1-linux-aarch64.tar.gz")
-sha256sums_x86_64=('f48283a8d8d20bc0b970bd2c74e10e468acd6ca2f24a1f1d4edc7945029e6d58')
-sha256sums_aarch64=('bd047d30d775943c8a1865d47180ffd391534bfb65b0080200d086ca4aebaece')
+source_x86_64=("CastSound-0.1.2-linux-x86_64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v${pkgver}/CastSound-0.1.2-linux-x86_64.tar.gz")
+source_aarch64=("CastSound-0.1.2-linux-aarch64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v${pkgver}/CastSound-0.1.2-linux-aarch64.tar.gz")
+sha256sums_x86_64=('291a666c8ac51c18091121a422cf802e9dadba62ea6beb919e83eeb3c68dba4e')
+sha256sums_aarch64=('9ffe1647790ccd6bc197b9e729394cc39d03c86351994f27b474a2dc508d5b12')
 
 package() {
   cd "${srcdir}"
