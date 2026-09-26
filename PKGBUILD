@@ -1,7 +1,7 @@
 # Maintainer: networkException <git@nwex.de>
 
 pkgname=ungoogled-chromium-bin
-pkgver=153.0.8010.47
+pkgver=153.0.8010.52
 pkgrel=1
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
@@ -54,7 +54,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 provides=("chromium=$pkgver" "chromedriver=$pkgver")
 conflicts=('chromium' 'chromedriver')
 source=(https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/$pkgver-$pkgrel/ungoogled-chromium-$pkgver-$pkgrel-x86_64.pkg.tar.zst)
-sha256sums=('4c521f515b04276e987fe117a325bbe16324ce89525754f42bf901d0e8f8c660')
+sha256sums=('514a32e2596ebbd6f9e4c7b5bfc348093f8e5a603610ddd9e42631747e3d16f2')
 
 declare -gA _system_libs=(
     [brotli]=brotli
