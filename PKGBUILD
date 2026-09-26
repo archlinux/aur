@@ -1,6 +1,6 @@
 # Maintainer: Frys (Frysuni)
 pkgname=rsdm
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Standalone Rust TTY/TUI Wayland display manager and screen locker'
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ backup=('etc/rsdm.toml'
 install='rsdm.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Frysuni/rsdm/archive/refs/tags/v$pkgver.tar.gz")
 # Replace SKIP with the release tarball's sha256 (updatepkgsums / sha256sum).
-sha256sums=('48c1171be1342dea4a7922802e96864a9be2ea8c95d7fb702cd9c813f246a3b0')
+sha256sums=('5f1f983cada940a23da5d76306f3df202d1f331f432df0688cab2cfa85474947')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
