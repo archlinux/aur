@@ -1,0 +1,27 @@
+pkgbase = vesktop-keybindings-git
+	pkgdesc = A standalone Electron-based Discord app with Vencord & improved Linux support
+	pkgver = r383.9716ff4
+	pkgrel = 1
+	url = https://github.com/Covkie/Vesktop
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = pnpm
+	makedepends = npm
+	depends = alsa-lib
+	depends = gtk3
+	depends = nss
+	optdepends = libnotify: Notifications
+	optdepends = xdg-utils: Open links, files, etc
+	provides = vesktop
+	conflicts = vesktop
+	options = !debug
+	source = vesktop::git+https://github.com/Covkie/Vesktop.git
+	source = vesktop.desktop::https://aur.archlinux.org/cgit/aur.git/plain/vesktop.desktop?h=vesktop-git
+	source = vesktop.sh::https://aur.archlinux.org/cgit/aur.git/plain/vesktop.sh?h=vesktop-git
+	sha256sums = SKIP
+	sha256sums = 455c00b862aa0a7e18ca8e23d65d5c5ee4506cdfb15f1bf6f622cce39827de46
+	sha256sums = 506c246328af639d6f6a3e52215c7b34af2a6df11d195de6f57a8bbee750cce9
+
+pkgname = vesktop-keybindings-git
