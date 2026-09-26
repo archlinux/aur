@@ -1,15 +1,16 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=lupin
-pkgver=0.1.38
+pkgver=0.1.40
 pkgrel=1
 pkgdesc='The reference interpreter for the wolf language, and the compiler differential oracle'
 arch=('x86_64' 'aarch64')
 url='https://github.com/wolffe-lang/wolf-interp'
 license=('GPL-3.0-or-later')
-# 2.39 is the floor the 0.1.38 release binary imports (objdump -T;
-# wolf-interp#447); no older glibc is a configuration anyone tests.
-depends=('gcc-libs' 'glibc>=2.39')
+# Built from source here, so it links against the builder's own glibc;
+# no floor to declare. (The release archives import at most GLIBC_2.34
+# since 0.1.39, wolf-lang#447's lupin half.)
+depends=('gcc-libs' 'glibc')
 makedepends=('rust' 'cargo' 'git')
 optdepends=('wolf-lang: the compiler lupin is differentially tested against')
 provides=('lupin')
@@ -39,7 +40,17 @@ build() {
 
 check() {
     cd wolf-interp
-    cargo test --frozen --release || true
+    export RUSTUP_TOOLCHAIN=stable
+    # The whole suite, and it can fail (homebrew-wolf#22). Two tests are
+    # skipped by name, and not for want of a counterparty: both drive
+    # lupin against ITSELF and assert what a DEBUG build of it says
+    # (`UNOPTIMIZED build`, wolf-interp#63), so under --release they are
+    # red by construction. The `|| true` this replaces hid those two and,
+    # because cargo stops at the first failing test binary, every target
+    # after tests/differ_cli.rs too.
+    cargo test --frozen --release -- \
+        --skip a_debug_harness_is_refused_by_name_before_it_can_compare \
+        --skip the_door_is_loud_and_stamps_the_profile_on_the_report
 }
 
 package() {
