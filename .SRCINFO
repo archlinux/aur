@@ -1,6 +1,6 @@
 pkgbase = mimebind
 	pkgdesc = Choose which application opens which file type
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/sachesi/mimebind
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = mimebind
 	depends = hicolor-icon-theme
 	depends = libgcc
 	depends = glibc
-	source = mimebind-0.2.0.tar.gz::https://github.com/sachesi/mimebind/archive/v0.2.0/mimebind-0.2.0.tar.gz
-	sha256sums = 08040147b034b1b941acf0c9cf4eabff46bd9356fb380a35d9a4705a8d738401
+	source = mimebind-0.3.0.tar.gz::https://github.com/sachesi/mimebind/archive/v0.3.0/mimebind-0.3.0.tar.gz
+	sha256sums = c68a49a95510e964104dae2052e7083e25991f0320b08cbd5d06e2333e2394c7
 
 pkgname = mimebind

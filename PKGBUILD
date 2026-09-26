@@ -2,7 +2,7 @@
 
 # pkgver and sha256sums are filled in by .github/workflows/aur.yml for each release.
 pkgname=mimebind
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Choose which application opens which file type'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('gtk4>=1:4.12' 'libadwaita>=1:1.5' 'glib2' 'shared-mime-info' 'hicolor-
          'libgcc' 'glibc')
 makedepends=('cargo' 'blueprint-compiler' 'just' 'gettext')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('08040147b034b1b941acf0c9cf4eabff46bd9356fb380a35d9a4705a8d738401')
+sha256sums=('c68a49a95510e964104dae2052e7083e25991f0320b08cbd5d06e2333e2394c7')
 
 prepare() {
   cd "$pkgname-$pkgver"
