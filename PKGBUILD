@@ -1,6 +1,6 @@
 _pkgname=animeko
 pkgname=${_pkgname}-appimage
-pkgver="6.1.0"
+pkgver="6.2.0"
 pkgrel=1
 pkgdesc='集找番、追番、看番的一站式弹幕追番平台'
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip')
 
 _appimage="ani-${pkgver//_/-}-linux-${CARCH}.appimage"
 source_x86_64=("${url}/releases/download/v${pkgver//_/-}/${_appimage}")
-sha256sums_x86_64=('abeeab01daf4a08ab1cd7c4d9c6999b1741a577d93ad7e2ef28b80ea12296aa7')
+sha256sums_x86_64=('e477ffef0f6acb9910424b6bc20e3b807c1ff9c9c39c14b9ae24e284612fc984')
 noextract=("${_appimage}")
 
 prepare() {
