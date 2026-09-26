@@ -1,6 +1,6 @@
 pkgbase = gob-bin
 	pkgdesc = Process manager for AI agents
-	pkgver = 3.7.1
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://github.com/juanibiapina/gob
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = gob-bin
 	provides = gob
 	conflicts = gob
 	options = !strip
-	source_x86_64 = gob-x86_64-3.7.1.tgz::https://github.com/juanibiapina/gob/releases/download/v3.7.1/gob_3.7.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 90b4ceae0e0739ff03c23b25dc9981ccc6e587d85e59778b59fb1a0653427ef2
-	source_aarch64 = gob-aarch64-3.7.1.tgz::https://github.com/juanibiapina/gob/releases/download/v3.7.1/gob_3.7.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 13ddae0c7fd59d4906dd055a41702687e541db871ee8b58466e5f7911b309f7c
+	source_x86_64 = gob-x86_64-3.8.0.tgz::https://github.com/juanibiapina/gob/releases/download/v3.8.0/gob_3.8.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 046aa8305b81ba1aaf11ba2be4e201756637123fe5e1cc7c45c4a45bd304ece4
+	source_aarch64 = gob-aarch64-3.8.0.tgz::https://github.com/juanibiapina/gob/releases/download/v3.8.0/gob_3.8.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 91c4804763f90714a528f91c755b9ca05c2f5b338b105ddcd7fa6e16ff07abf9
 
 pkgname = gob-bin
