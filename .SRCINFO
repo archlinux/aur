@@ -1,0 +1,17 @@
+pkgbase = qsd77
+	pkgdesc = CLI bridge for quickshell-d77 and Utumno
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = https://github.com/dani-77/qsd77
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	depends = quickshell
+	optdepends = quickshell-d77: the default shell qsd77 talks to
+	optdepends = utumno: alternative shell (qsd77 -c utumno)
+	source = qsd77-1.3.3.tar.gz::https://github.com/dani-77/qsd77/archive/refs/tags/1.3.3.tar.gz
+	sha256sums = 507508dfd0fd33aaf095ad75d454340dfec4db0a9824197345dfe08a8fd4c0d8
+
+pkgname = qsd77
