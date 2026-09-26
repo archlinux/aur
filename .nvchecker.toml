@@ -1,0 +1,5 @@
+[inferno-aoip]
+source = "gitlab"
+gitlab = "lumifaza/inferno"
+use_max_tag = true
+prefix = "v"
