@@ -1,9 +1,9 @@
 # Maintainer: Jenny Danzmayr <mail@evilscientress.de>
 
 pkgname="inferno-aoip"
-pkgver=0.4.0
-_tag=1f548b2f8dbe1bba4358e5cb056b22862d6c3040
-pkgrel=2
+pkgver=0.5.4
+_tag=04c0efe05aff5e3c90a22160c7f2da24160c3293
+pkgrel=1
 pkgdesc='Inferno - unofficial implementation of the Dante protocol'
 url='https://gitlab.com/lumifaza/inferno'
 license=('GPL' 'AGPL')
@@ -19,11 +19,9 @@ source=(
     "pipewire-inferno.conf"
     "pipewire-override.conf"
 )
-b2sums=(
-    'e3ba165c11580ff8d15c974fe9ea66ef882ce56a37586996f1e02b5096888ba4c24fa65d01b3875dc3c61a83c64f42de3815835107bfe672d605e3728ad5b124'
-    '0bcaef1062d4f645c7e8a1120593cac40974fb6c7687ea2b2023368344e4b43cd3606555aa6b31ca3e7aa5e80460457e16af6a09fb22ce30c6fdc64c0f7504ff'
-    'e2c9212395c6f7abfc0cb77288baf41fa89d200e5228a64008300f7cca382a714c70d37de8d26d973d0a91c41a1f215ae96f3f31bd956c0e9ec6fb1de232ec72'
-)
+b2sums=('d3d55150f2a2875a59cf9509cfb368030ac39aed43d446779939594b8a6bcfd7d71799b4cebfab74fa39db8258f59c306edb22b5812560fb44d054d4f41a1c29'
+        '0bcaef1062d4f645c7e8a1120593cac40974fb6c7687ea2b2023368344e4b43cd3606555aa6b31ca3e7aa5e80460457e16af6a09fb22ce30c6fdc64c0f7504ff'
+        'e2c9212395c6f7abfc0cb77288baf41fa89d200e5228a64008300f7cca382a714c70d37de8d26d973d0a91c41a1f215ae96f3f31bd956c0e9ec6fb1de232ec72')
 
 prepare() {
     cd "$pkgname"
@@ -37,7 +35,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src"
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release
 }
 
 #check() {
