@@ -13,7 +13,7 @@
 # development version built from git HEAD, use openkingdoms-git.
 
 pkgname=openkingdoms
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='Open-source engine for Total Annihilation: Kingdoms (1999). Requires you own the original game.'
 arch=('x86_64')
