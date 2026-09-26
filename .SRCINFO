@@ -1,13 +1,13 @@
 pkgbase = xts
 	pkgdesc = XML typesetting system, experimental playground for speedata Publisher next generation
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/speedata/xts
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = go
 	depends = glibc
-	source = https://github.com/speedata/xts/archive/v0.1.1/xts-0.1.1.tar.gz
-	sha256sums = 6187a5f695a09af59556a4876ad4a36be9e602338a852021924d72fe420bc48f
+	source = https://github.com/speedata/xts/archive/v0.1.2/xts-0.1.2.tar.gz
+	sha256sums = ad611b877a7bbf22d6705b3fac8ff0f38ca99c155fe96acf54475e931dc41e6d
 
 pkgname = xts
