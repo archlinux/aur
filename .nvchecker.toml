@@ -1,0 +1,5 @@
+[stemkit-bin]
+source = "github"
+github = "danielravina/stemkit"
+use_latest_release = true
+prefix = "v"
