@@ -5,7 +5,7 @@ _pkgname=ionix-quickshell
 # Placeholder: aur-publish.sh patches this to the real r<count>.<hash> before
 # generating .SRCINFO. Keep it in the r-scheme — a bare 0.1.0 would sort *newer*
 # than every r-version if it ever reached the AUR unpatched.
-pkgver=r31.46f3ef5
+pkgver=r32.fef6e38
 pkgrel=1
 pkgdesc="Ionix Quickshell desktop shell — bar, popouts and OSD (git)"
 arch=('any')
@@ -23,6 +23,8 @@ depends=(
     'bluez-utils'
     'upower'
     'polkit'
+    # ionix-lock: flock for its single-instance guard.
+    'util-linux'
     # ionix-calendar (the calendar sync daemon) and its meeting reminders.
     'python'
     'libnotify'
@@ -37,7 +39,9 @@ optdepends=(
     'blueman: bluetooth manager GUI fallback'
     'nm-connection-editor: advanced network settings from the network popout'
     'hyprland: workspace, window and blur integration'
-    'hyprlock: lock action in the power menu'
+    'hyprlock: fallback when the Quickshell lock screen (ionix-lock) cannot lock'
+    'qt6-multimedia-ffmpeg: video backgrounds on the lock screen'
+    'fprintd: fingerprint unlock on the lock screen'
     'ioexplorer-git: application launcher target for the logo button'
     'toxen-mini: Toxen music player integration'
     'ttf-jetbrains-mono-nerd: the glyph font the bar is designed around'
