@@ -1,7 +1,8 @@
 # Maintainer: witt <1989161762 at qq dot com>
+# Contributor: Juan Francisco Miranda <aurarchlinux.sleek355 at passfwd dot com>
 
 pkgname=drawio-desktop-bin
-pkgver=31.4.5
+pkgver=31.5.3
 pkgrel=1
 pkgdesc="Diagram drawing application built on web technology"
 arch=('x86_64' 'aarch64')
