@@ -1,6 +1,6 @@
 # Maintainer: Evert Vorster <evorster at gmail dot com>
 pkgname=pi-ext-mempalace
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='MemPalace durable memory extension for pi coding agent — structured memories, knowledge graph, session hooks, and cross-wing navigation'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://github.com/evertvorster/pi-ext-mempalace'
 license=('MIT')
 depends=('pi-coding-agent' 'python' 'python-mempalace')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/evertvorster/pi-ext-mempalace/archive/v${pkgver}.tar.gz")
-sha256sums=('7906ec9d80009b037c1b3d6481e01ccaccdfca6e4e814926a1471b1393056a02')
+sha256sums=('ac5196620c25c7a383cb356e53101d079be0406407c89307d94ff6671796588c')
 install=pi-ext.install
 
 package() {
