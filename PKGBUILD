@@ -1,6 +1,6 @@
 # Maintainer: Jozef Gaal <preklady@mayday.sk>
 pkgname=orphycleaner
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="GUI tool to find and clean up orphaned and unused app folders in your home directory"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=('yay: description lookups for AUR packages'
             'flatpak: detect and describe Flatpak-related folders'
             'xdg-utils: "Open Folder" action (xdg-open)') 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dodog/orphycleaner/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('da53b44f9babc4bfceaedde968894c7b8dec059609ee6ef31499c41df3293d7a')
+sha256sums=('2b5a1df2bce7dccde03f3f38cbd0dba975bfa0df6b80c39455aac6f4771ff3bd')
 install='orphycleaner.install'
 
 _appid=sk.mayday.OrphyCleaner
