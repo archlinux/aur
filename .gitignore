@@ -1,4 +1,9 @@
+*.tar.gz
 *.zip
-*.png
+*.zst
+*.deb
+src/
+pkg/
 *.desktop
 *.svg
+*.png
