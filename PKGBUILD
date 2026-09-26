@@ -1,4 +1,9 @@
 # Maintainer: Junyi Xu <junyixu0@gmail.com>
+#
+# NOTE for AUR helper users (yay, paru, ...): optional dependencies are easy to
+# miss in the build output, so please read this before installing.
+# kdotool is recommended for window management; python-rapidocr and
+# python-onnxruntime are only needed if you prefer local OCR over cloud.
 
 pkgname=linux-recall-git
 _pkgname=linux_recall
