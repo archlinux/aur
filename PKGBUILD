@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=maretf-bin
-pkgver=0.12.1
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="A work in progress command-line utility to work with VTF files."
 arch=('x86_64')
@@ -12,7 +12,7 @@ replaces=("vtf-thumbnailer")
 provides=("${pkgname::-4}")
 conflicts=("${pkgname::-4}" "vtf-thumbnailer")
 source=("MareTF-Linux-x86_64-${pkgver}.tar.zst::$url/releases/download/v${pkgver}/MareTF-Linux-x86_64.tar.zst")
-sha256sums=('103a317781df34e3bc089a33f032ae08fa88f35b7ac81dec81bb2d53c2171e1e')
+sha256sums=('50a82b1455c912834763b03407822d86d184c0cf0fc0b8cf61fc3b0da755eda5')
 
 package() {
 	cd "$srcdir"
