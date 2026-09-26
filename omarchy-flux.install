@@ -1,0 +1,11 @@
+post_install() {
+	sh /usr/share/flux/post-install.sh
+}
+
+post_upgrade() {
+	sh /usr/share/flux/post-install.sh
+}
+
+pre_remove() {
+	sh /usr/share/flux/pre-remove.sh
+}
