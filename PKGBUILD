@@ -11,7 +11,7 @@ arch=("x86_64" "aarch64")
 url="https://github.com/Jeric-X/${_reponame}"
 license=("MIT")
 depends=("aspnet-runtime-${_dotnet_ver}")
-makedepends=("dotnet-sdk-${_dotnet_ver}")
+makedepends=("aspnet-targeting-pack"  "dotnet-sdk-${_dotnet_ver}")
 backup=("etc/${_pkgname}/"appsettings{,.Development}.json)
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${_pkgname}.service"
@@ -25,7 +25,7 @@ sha256sums=('e46a6c6d6aa50963b621931c9810ba78bbcb47984fe2d882ead1b01323da3c3e'
 build() {
     cd "${_reponame}-${pkgver}"
 
-    rm -rf builddir appsettings* &>/dev/null
+    rm -rf builddir appsettings* global.json &>/dev/null
     dotnet restore "src/${_reponame}.Server"
     dotnet publish "src/${_reponame}.Server/${_reponame}.Server.csproj" \
         --no-restore \

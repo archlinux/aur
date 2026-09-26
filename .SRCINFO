@@ -6,6 +6,7 @@ pkgbase = syncclipboard-server
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = aspnet-targeting-pack
 	makedepends = dotnet-sdk-10.0
 	depends = aspnet-runtime-10.0
 	backup = etc/syncclipboard/appsettings.json
