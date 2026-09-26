@@ -1,0 +1,18 @@
+pkgbase = nanino-news-bin
+	pkgdesc = Your local AI news dashboard: headlines from feeds you choose, in columns, with small AI classifiers that badge, hide or rank them
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://kairollmann.de/naninonews
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = openssl
+	depends = hicolor-icon-theme
+	provides = nanino-news
+	conflicts = nanino-news
+	options = !strip
+	source = https://kairollmann.de/naninonews/releases/1.1.1/Nanino-News_1.1.1_amd64.tar.gz
+	sha256sums = fb5aac87754f1c7d35d680a6fe664661124c4f0dbd60700c83060e3d1416aa1e
+
+pkgname = nanino-news-bin
