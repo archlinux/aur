@@ -1,0 +1,5 @@
+[nchat-bin]
+source = "github"
+github = "d99kris/nchat"
+use_latest_release = "true"
+prefix = "v"
