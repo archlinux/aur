@@ -1,0 +1,8 @@
+# Only the package's own files: whatever makepkg downloads or builds stays out.
+*
+!/PKGBUILD
+!/.SRCINFO
+!/.gitignore
+!/Arsu.desktop
+!/keys/
+!/keys/**
