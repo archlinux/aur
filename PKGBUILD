@@ -1,4 +1,4 @@
-# Maintainer: fr0stb1rd - fr0stb1rd.gitlab.io
+# Maintainer: fr0stb1rd <fr0stb1rd@proton.me>
 
 pkgname=subtitle-deduplicator
 pkgver=1.0.2
@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/fr0stb1rd/subtitle-deduplicator"
 license=('MIT')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
+makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("https://files.pythonhosted.org/packages/source/s/subtitle-deduplicator/subtitle_deduplicator-${pkgver}.tar.gz")
 sha512sums=('ce71473063d8c7cb4f06b69f8cd5095c3f1cec08f2634f3dd2016f510e78173593aebbfca7b93953e9c12c057fa5bf07fe7d8f20dfa9a55eb39731475ef057e9')
 

@@ -7,7 +7,6 @@ pkgbase = subtitle-deduplicator
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	makedepends = python-hatchling
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/s/subtitle-deduplicator/subtitle_deduplicator-1.0.2.tar.gz
