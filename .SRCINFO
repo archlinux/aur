@@ -1,0 +1,20 @@
+pkgbase = diagmond
+	pkgdesc = D-Bus daemon for DiagNG privileged actions
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/P1sec/DiagNG
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = git
+	makedepends = clang
+	depends = glib2
+	depends = dbus
+	depends = polkit
+	depends = systemd-libs
+	options = !lto
+	source = DiagNG-0.1.1.tar.gz::https://github.com/P1sec/DiagNG/archive/0.1.1.tar.gz
+	sha256sums = ee2a549875d634c65aa7f8b721011ee5a58ec4041bae79ffe2ca8476535537a7
+
+pkgname = diagmond
