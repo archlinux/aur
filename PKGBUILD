@@ -1,6 +1,6 @@
 # Maintainer: Ron B <ronb1964@gmail.com>
 pkgname=talktype-appimage
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Voice dictation for Linux Wayland - press F8 to talk, powered by Whisper AI"
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=('talktype')
 options=('!strip')
 source=("TalkType-v${pkgver}-x86_64.AppImage::https://github.com/ronb1964/TalkType/releases/download/v${pkgver}/TalkType-v${pkgver}-x86_64.AppImage"
         "talktype.desktop")
-sha256sums=('3127b9f6e92d2277158230be3afac29dedf9ecc2649c3561ed9230c5299b7230'
+sha256sums=('a9d516d5526619e3225f52e09409e6503b11d9f9ad55341e4e9b8c54b79bd165'
             'SKIP')
 noextract=("TalkType-v${pkgver}-x86_64.AppImage")
 
