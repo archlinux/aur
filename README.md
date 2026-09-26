@@ -149,6 +149,12 @@ Commands:
   `lscompl <version> <project_id>`
 - Print information about setup:
   `setupinfo [path]`
+- Verify installed mods still exist on disk:
+  `mcmodm verify_installed [path]`
+  - Checks each installed package against the actual files in the target folder.
+  - If something is missing, it asks whether to reinstall, uninstall, or do nothing.
+  - The older alias `mcmodm verify-installed` is still accepted for compatibility.
+  - Path is optional if default is set.
 - List version numbers:
   `listvernums <project_id> [game_version]`
 - Manage saved instances:
