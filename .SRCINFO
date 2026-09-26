@@ -1,6 +1,6 @@
 pkgbase = assistd
 	pkgdesc = A local-model agent daemon for Linux (LLM + voice + tools + WM integration)
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/gnolruf/assistd
 	install = assistd.install
@@ -31,7 +31,7 @@ pkgbase = assistd
 	optdepends = fontconfig: tray-popup GUI text rendering (dlopened at runtime)
 	options = !lto
 	backup = etc/assistd/config.toml
-	source = assistd-1.0.0.tar.gz::https://github.com/gnolruf/assistd/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 6253dc8fa36c66c0d883f89346176ad59e037ce97cc0a77a0c14e5fa80aec341
+	source = assistd-1.1.0.tar.gz::https://github.com/gnolruf/assistd/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = d7d90864e7147220948a765e470affcf2bb781f9c555a25fb93e86a8a7482b71
 
 pkgname = assistd
