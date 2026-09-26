@@ -1,7 +1,7 @@
 pkgbase = prolewatch
 	pkgdesc = AUR security scanner and build sandbox with network isolation, optional AI review and root action inspection
-	pkgver = 0.12.2
-	pkgrel = 2
+	pkgver = 0.12.4
+	pkgrel = 1
 	url = https://github.com/holgerjh/prolewatch
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -26,10 +26,10 @@ pkgbase = prolewatch
 	options = !lto
 	options = !strip
 	backup = etc/prolewatch/config.yaml
-	source = prolewatch-0.12.2.tar.gz::https://github.com/holgerjh/prolewatch/releases/download/v0.12.2/prolewatch-0.12.2.tar.gz
-	source = prolewatch-0.12.2.tar.gz.sig::https://github.com/holgerjh/prolewatch/releases/download/v0.12.2/prolewatch-0.12.2.tar.gz.sig
+	source = prolewatch-0.12.4.tar.gz::https://github.com/holgerjh/prolewatch/releases/download/v0.12.4/prolewatch-0.12.4.tar.gz
+	source = prolewatch-0.12.4.tar.gz.sig::https://github.com/holgerjh/prolewatch/releases/download/v0.12.4/prolewatch-0.12.4.tar.gz.sig
 	validpgpkeys = 296E983E7120909958BD38E557F1F87148E02B27
-	sha256sums = 7c68635800f823860f9dd828eafca9cfcd42a32f10ec5df524d1a26dcd88dca5
+	sha256sums = d83da9a6830ca3f98f022dfd9b6c75840db742c712e2f160bbb12d87d4c90d44
 	sha256sums = SKIP
 
 pkgname = prolewatch

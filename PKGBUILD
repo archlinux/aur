@@ -1,8 +1,8 @@
 # Maintainer: Holger Heinz <79228197+holgerjh@users.noreply.github.com>
 
 pkgname=prolewatch
-pkgver=0.12.2
-pkgrel=2
+pkgver=0.12.4
+pkgrel=1
 pkgdesc='AUR security scanner and build sandbox with network isolation, optional AI review and root action inspection'
 arch=('x86_64')
 url='https://github.com/holgerjh/prolewatch'
@@ -23,7 +23,7 @@ backup=('etc/prolewatch/config.yaml')
 
 source=("prolewatch-${pkgver}.tar.gz::https://github.com/holgerjh/prolewatch/releases/download/v${pkgver}/prolewatch-${pkgver}.tar.gz"
         "prolewatch-${pkgver}.tar.gz.sig::https://github.com/holgerjh/prolewatch/releases/download/v${pkgver}/prolewatch-${pkgver}.tar.gz.sig")
-sha256sums=('7c68635800f823860f9dd828eafca9cfcd42a32f10ec5df524d1a26dcd88dca5'
+sha256sums=('d83da9a6830ca3f98f022dfd9b6c75840db742c712e2f160bbb12d87d4c90d44'
              'SKIP')
 validpgpkeys=('296E983E7120909958BD38E557F1F87148E02B27')
 
@@ -82,6 +82,8 @@ package() {
   install -Dm0644 "${source_root}/SECURITY.md" "${pkgdir}/usr/share/doc/prolewatch/SECURITY.md"
   install -Dm0644 "${source_root}/docs/architecture.md" "${pkgdir}/usr/share/doc/prolewatch/architecture.md"
   install -Dm0644 "${source_root}/docs/ai-review.md" "${pkgdir}/usr/share/doc/prolewatch/docs/ai-review.md"
+  install -Dm0644 "${source_root}/docs/man/prolewatch.1" "${pkgdir}/usr/share/man/man1/prolewatch.1"
+  install -Dm0644 "${source_root}/docs/man/prolewatch-config.5" "${pkgdir}/usr/share/man/man5/prolewatch-config.5"
   install -Dm0644 "${source_root}/LICENSE" "${pkgdir}/usr/share/licenses/prolewatch/LICENSE"
   install -Dm0644 "${source_root}/THIRD_PARTY_NOTICES" "${pkgdir}/usr/share/licenses/prolewatch/THIRD_PARTY_NOTICES"
 }
