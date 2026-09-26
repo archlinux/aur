@@ -1,14 +1,14 @@
 # Maintainer: Pavel Dobiáš <mail at paveldobias dot eu>
 
 pkgname=cubyz
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='An open-world adventure game where creativity knows no bounds!'
 arch=('x86_64' 'aarch64')
 url='https://www.cubyz.net/'
 license=('GPL-3.0')
 depends=('glibc')
-makedepends=('curl' 'tar')
+makedepends=('curl' 'tar' 'patch')
 provides=("${pkgname}")
 conflicts=(
   "${pkgname}"
@@ -22,9 +22,9 @@ source=(
   "$pkgname-$pkgver.zip::https://github.com/PixelGuys/Cubyz/archive/refs/tags/$pkgver.zip"
 )
 sha256sums=(
-  '4e09f9de852c3c3f8a7a5184515f82ed3da8b592130fb7cf07c64ec9456b8259'
+  '3799316ca24be445daa96fda427f71e67d895ec00b33a93b3e62991e2fc30b6b'
   'ec3d1bc6c14c1d0c3cbfaf1a998301d81ad28ce1ead86186a49a67d0b8e5873b'
-  'cd6d3c152ff1de5d5e4ea991b5a831e1a5705e08e890398bcf9749d185f2ffea'
+  'c39777d1c8010d6485da4bea481e2940c91675507617a8d4b892fbd275ed2d47'
 )
 
 build() {
