@@ -1,6 +1,6 @@
 pkgname=pheonix-nfx-bin
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Cross-platform package manager for the Pheonix Studios ecosystem"
 
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
   "NFX-v${pkgver}.zip::https://pheonix-studios-git.github.io/PPI/data/NFX/nfx_zip/NFX-v${pkgver}.zip"
 )
 
-sha256sums=('73ed4b676f15ef08ea66adae1d9fdc870cb85e6a4d66b61345a3590545131fb2')
+sha256sums=('607db6d3b73ef02586605b9e3bb90621626ee6b9fddf99659a93182e857dea95')
 
 prepare() {
   cd "$srcdir"
@@ -48,5 +48,11 @@ package() {
     install -Dm644 \
       "$srcdir/README.md" \
       "$pkgdir/usr/share/doc/$pkgname/README.md"
+  fi
+
+  if [[ -f "$srcdir/CHANGELOG.md" ]]; then
+    install -Dm644 \
+      "$srcdir/CHANGELOG.md" \
+      "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
   fi
 }
