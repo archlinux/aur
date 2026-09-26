@@ -1,6 +1,6 @@
 pkgbase = python-localstack-client
 	pkgdesc = A lightweight Python client for LocalStack
-	pkgver = 2.10
+	pkgver = 2.12
 	pkgrel = 1
 	url = https://github.com/localstack/localstack-python-client
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-localstack-client
 	makedepends = python-setuptools
 	depends = python
 	depends = python-boto3
-	source = python-localstack-client-2.10.tar.gz::https://files.pythonhosted.org/packages/22/11/4f10b87d634edd616d8063dd0ed1193be747e524e28801f826d72828b98f/localstack_client-2.10.tar.gz
-	sha256sums = 732a07e23fffd6a581af2714bbe006ad6f884ac4f8ac955211a8a63321cdc409
+	source = python-localstack-client-2.12.tar.gz::https://files.pythonhosted.org/packages/88/99/f0cb24bd7687765f37ce6a577736a4a13501054be66eb748ddd4a13e6592/localstack_client-2.12.tar.gz
+	sha256sums = dbb98712fd2c8869d5dfed7a2ca006b95c7750fe9a43af123ef054efc7e7ebb4
 
 pkgname = python-localstack-client
