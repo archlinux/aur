@@ -1,7 +1,7 @@
 # Maintainer: kekmacska
 
 pkgname=unisic-git
-pkgver=0.8.4.r15.ga01aeb2
+pkgver=0.8.6.r0.g2fb4833
 pkgrel=1
 pkgdesc='Screenshot & screen-recorder for Linux'
 arch=('any')
@@ -18,6 +18,8 @@ optdepends=('libx11: for X11'
             'xdg-desktop-portal-kde: KDE portal backend for screenshots and screen recording'
             'xdg-desktop-portal-gtk: generic portal backend on non-KDE desktops'
             'tesseract-data-osd: OCR language data'
+            'grim'
+            'zip'
             'pipewire'
             'kguiaddons') #according to https://github.com/unisic/unisic/blob/main/CONTRIBUTING.md#building
 provides=(unisic)
