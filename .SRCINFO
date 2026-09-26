@@ -1,0 +1,21 @@
+pkgbase = polkit-libs
+	pkgdesc = Application development toolkit for controlling system-wide privileges (libs only
+	pkgver = 127
+	pkgrel = 1
+	url = https://github.com/polkit-org/polkit
+	arch = x86_64
+	license = LGPL-2.0-or-later
+	checkdepends = python-dbusmock
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = gobject-introspection
+	makedepends = meson
+	depends = systemd-libs
+	depends = glib2
+	depends = glibc
+	provides = libpolkit-agent-1.so
+	provides = libpolkit-gobject-1.so
+	source = git+https://github.com/polkit-org/polkit#tag=127
+	b2sums = 6744385984906d97f79aedbfeb894ff274769212af44686b90f6c5ab7f3007d0e6db91b5439c95f344621aa447b570686d46eff7fac861854cfcd37fba5e73e5
+
+pkgname = polkit-libs
