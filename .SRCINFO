@@ -1,6 +1,6 @@
 pkgbase = justevery-code-bin
 	pkgdesc = Community-driven fork of the Codex CLI for local terminal coding assistance
-	pkgver = 0.6.192
+	pkgver = 0.6.193
 	pkgrel = 1
 	url = https://github.com/just-every/code
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = justevery-code-bin
 	license = Apache-2.0
 	provides = coder
 	conflicts = justevery-code
-	source = LICENSE-0.6.192::https://raw.githubusercontent.com/just-every/code/v0.6.192/LICENSE
-	source = README-0.6.192.md::https://raw.githubusercontent.com/just-every/code/v0.6.192/README.md
+	source = LICENSE-0.6.193::https://raw.githubusercontent.com/just-every/code/v0.6.193/LICENSE
+	source = README-0.6.193.md::https://raw.githubusercontent.com/just-every/code/v0.6.193/README.md
 	sha256sums = d17f227e4df5da1600391338865ce0f3055211760a36688f816941d58232d8dc
 	sha256sums = 843a4f6097631ed061841596386c596722520827e962d5e4c8a886e6051ab7da
-	source_x86_64 = code-x86_64-0.6.192.zst::https://github.com/just-every/code/releases/download/v0.6.192/code-x86_64-unknown-linux-musl.zst
-	sha256sums_x86_64 = 7047795bc9b9ed4d777cbcab5d86b04d6ab91fce7d164aff8ca89f3c2f8a1271
-	source_aarch64 = code-aarch64-0.6.192.zst::https://github.com/just-every/code/releases/download/v0.6.192/code-aarch64-unknown-linux-musl.zst
-	sha256sums_aarch64 = 900b7076f5bfe498b0ecbf24ab57747fa0bc3a2cdf05a8c5e8281f893b77fad6
+	source_x86_64 = code-x86_64-0.6.193.zst::https://github.com/just-every/code/releases/download/v0.6.193/code-x86_64-unknown-linux-musl.zst
+	sha256sums_x86_64 = 132feb4ac65dd2f8c0e5c678ba49a87e263e9169870829feff8f2cdbece96756
+	source_aarch64 = code-aarch64-0.6.193.zst::https://github.com/just-every/code/releases/download/v0.6.193/code-aarch64-unknown-linux-musl.zst
+	sha256sums_aarch64 = 98037c9cbdbb8d7db026df8d168b9647991f1400111ce95cc1ff6eb068d4809f
 
 pkgname = justevery-code-bin
