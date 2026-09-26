@@ -1,7 +1,7 @@
 # Maintainer: VisorCraft LLC <packages@visorcraft.com>
 
 pkgname=kanoprii
-pkgver=1.20.0
+pkgver=1.20.1
 pkgrel=1
 _pdfiumver=7947
 pkgdesc='High-performance PDF editor'
@@ -31,7 +31,7 @@ source=(
 )
 noextract=("pdfium-linux-x64-$_pdfiumver.tgz")
 sha256sums=(
-  'e5b4c51bf3f5c0fb3718e4455a907c43ac95ee3266c8be57aaeab6581f60c625'
+  '613c8234f528523367c6bb58c2d2a4af68878140ebc969079ee53e7983256eb0'
   'f73d69d309fe1f33cc7269dcc99be31ec44e1cf608e31d7e2fcc6545fc2f9323'
   '05dfa58465ff1838d64a870f5b7d4b8e456607fe8157ad9b60aeae65b56a860f'
 )
