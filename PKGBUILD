@@ -2,15 +2,16 @@
 
 pkgname=bit4id-xpki
 pkgver=1.4.11.836
-pkgrel=1
+pkgrel=2
 pkgdesc="Bit4ID Universal Middleware (Smart Card driver)"
 arch=('x86_64')
 license=('unknown')
 url="https://cdn.bit4id.com/es/middleware.htm"
 install=$pkgname.install
 options=('!strip')
-# bit4id-ipki also provides /usr/lib/bit4id/libbit4xpki.so
-conflicts=('bit4id-ipki')
+# Older bit4id-ipki versions shipped their own copy of /usr/lib/bit4id/libbit4xpki.so.
+# Newer ones are an add-on on top of this package.
+conflicts=('bit4id-ipki<1.4.10.542-4')
 
 # Upstream (Bit4id) publishes an unversioned zip (containing a .deb and an .rpm),
 # so we save it under a versioned name. The checksum will break when upstream replaces it with a newer release.

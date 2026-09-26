@@ -1,12 +1,12 @@
 pkgbase = bit4id-xpki
 	pkgdesc = Bit4ID Universal Middleware (Smart Card driver)
 	pkgver = 1.4.11.836
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cdn.bit4id.com/es/middleware.htm
 	install = bit4id-xpki.install
 	arch = x86_64
 	license = unknown
-	conflicts = bit4id-ipki
+	conflicts = bit4id-ipki<1.4.10.542-4
 	noextract = Bit4id_Middleware-1.4.11.836.zip
 	options = !strip
 	source = Bit4id_Middleware-1.4.11.836.zip::https://cdn.bit4id.com/es/soporte/downloads/middleware/Bit4id_Middleware.zip
