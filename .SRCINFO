@@ -1,6 +1,6 @@
 pkgbase = osc-dreamchatbox
 	pkgdesc = Native Linux alternative to MagicChatbox (VRCOSC) - VRChat OSC chatbox companion (status, now-playing, hardware, speech-to-text, OSCQuery)
-	pkgver = 1.5.7
+	pkgver = 1.5.8
 	pkgrel = 1
 	url = https://github.com/yakuda-stack/OSC-DreamChatbox
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = osc-dreamchatbox
 	optdepends = mesa-utils: exact GPU name detection (glxinfo)
 	optdepends = nvidia-utils: NVIDIA GPU stats (nvidia-smi)
 	optdepends = libpulse: grouped microphone list via pactl (without it the Speech to Text dropdown falls back to the raw ALSA device list)
-	source = osc-dreamchatbox-1.5.7.tar.gz::https://github.com/yakuda-stack/OSC-DreamChatbox/archive/refs/tags/v1.5.7.tar.gz
-	sha256sums = 7a9f7610a521cb15b3404447f6c98771518e354aa2cc83d5b51d464b403b63d1
+	source = osc-dreamchatbox-1.5.8.tar.gz::https://github.com/yakuda-stack/OSC-DreamChatbox/archive/refs/tags/v1.5.8.tar.gz
+	sha256sums = 61bb9b8eb7bb6647f45045911c9c5be59b6cb3a9f502d8093bc43a1f9de7a83f
 
 pkgname = osc-dreamchatbox
