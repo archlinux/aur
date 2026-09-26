@@ -3,7 +3,7 @@
 pkgauthor=yordan-kanchelov
 pkgname=sync-worktrees
 pkgdesc="Git cli tool for managing worktrees"
-pkgver=7.0.0
+pkgver=7.1.0
 pkgrel=1
 
 _npmname=${pkgname}
@@ -24,7 +24,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('dc67dd05641bae5cbe4ad407df57da41b2408190e3d8487d086768d237caa8a335b885072f72c12f8a8282211a8fd2b83004bda9179f4236d3d59bfa8ba9674f')
+b2sums=('998123b8d10a25a816f470dd915d1d4623331d4eee2e0a6b2189eff9181db84c8959820b7c612a62ce69ed221acef76ffac1ca2fa05835ea887af38d8fd12a61')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
