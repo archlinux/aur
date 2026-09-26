@@ -1,0 +1,21 @@
+pkgbase = moonbridge-gui-bin
+	pkgdesc = AI gateway desktop assistant for BUAA students - one-click bridge to Claude Code / Codex (binary release)
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/Micraow/MoonBridge-Release
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libappindicator-gtk3
+	provides = moonbridge-gui
+	conflicts = moonbridge-gui
+	conflicts = stuhelper-bin
+	replaces = stuhelper-bin
+	options = !strip
+	source = moonbridge-gui-0.1.4.deb::https://github.com/Micraow/MoonBridge-Release/releases/download/v0.1.4/StuHelper-v0.1.4-linux.deb
+	source = LICENSE
+	sha256sums = 97741d8813e5b839fdc6d663bb906680ad84115031a6117d31e9468c7acdeaae
+	sha256sums = a607afaac61dfc4a32e4d54b00eee51443bf34aa1b7f4fecf80750fdc25a4c22
+
+pkgname = moonbridge-gui-bin
