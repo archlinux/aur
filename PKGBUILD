@@ -1,6 +1,6 @@
 # Maintainer: Kaleb <vitor.guttler@edu.pucrs.br>
 pkgname=python-boto3-git
-pkgver=1.35.90.r0.g12345ab
+pkgver=1.43.101.r0.ga1acf79e
 pkgrel=1
 pkgdesc="Boto3, an AWS SDK for Python"
 arch=('any')
@@ -10,14 +10,19 @@ depends=('python' 'python-botocore' 'python-jmespath' 'python-s3transfer')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 provides=('python-boto3')
 conflicts=('python-boto3')
-source=("git+https://github.com/boto/boto3.git")
+# Pinned to the master branch: boto3's default branch is "develop" (an
+# integration branch with no reachable release tags), while releases are
+# actually tagged on "master". Without this pin, git describe --tags below
+# always fails to find a tag from develop's history, which is why the
+# --always fallback was previously needed and why pkgver ended up as a bare
+# commit hash (e.g. "2ad1b198") instead of a proper X.Y.Z.rN.gHASH version.
+source=("git+https://github.com/boto/boto3.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "boto3"
     # Get the latest tag version and combine with revision count and short hash
-    # Use --always to fallback to commit hash if no tags exist
-    git describe --long --tags --always | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = python-boto3-git
 	pkgdesc = Boto3, an AWS SDK for Python
-	pkgver = 1.35.90.r0.g12345ab
+	pkgver = 1.43.101.r0.ga1acf79e
 	pkgrel = 1
 	url = https://github.com/boto/boto3
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-boto3-git
 	depends = python-s3transfer
 	provides = python-boto3
 	conflicts = python-boto3
-	source = git+https://github.com/boto/boto3.git
+	source = git+https://github.com/boto/boto3.git#branch=master
 	sha256sums = SKIP
 
 pkgname = python-boto3-git
