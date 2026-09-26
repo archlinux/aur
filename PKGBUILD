@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="Like less but for Markdown"
 
-pkgver=0.3.5
+pkgver=0.4.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ provides=("${_appname}")
 options=('!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('d86ca1f11dd0c36465f68dfad9fdc59b00e2587e6f861943a578a9f218b5adc2')
+sha256sums=('f3cb8b69249d6410580bff85dad4b3133d7159d36629bdf7c0ce945416a2787c')
 
 
 prepare() {
