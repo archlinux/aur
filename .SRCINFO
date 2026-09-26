@@ -1,6 +1,6 @@
 pkgbase = dida-appimage
 	pkgdesc = 滴答清单（官网 AppImage 版） / Dida (official AppImage version)
-	pkgver = 8.0.10
+	pkgver = 8.0.20
 	pkgrel = 1
 	url = https://www.dida365.com/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = dida-appimage
 	depends = fuse2
 	provides = dida
 	conflicts = dida-bin
-	noextract = dida-8.0.10-x86_64.AppImage
+	noextract = dida-8.0.20-x86_64.AppImage
 	options = !strip
-	source = dida-8.0.10-x86_64.AppImage::https://cdn.dida365.cn/download/linux/linux_appimage_x64/dida-8.0.10-x86_64.AppImage
-	sha256sums = 66067271d51c4f66f2408a27bce961d1bd96f6e0377b51971cae5644040c72d6
+	source = dida-8.0.20-x86_64.AppImage::https://cdn.dida365.cn/download/linux/linux_appimage_x64/dida-8.0.20-x86_64.AppImage
+	sha256sums = 17819b6f98fa11e72bf1ca05b30e3bf655a9ef6a21adda9f2ada4235d198c218
 
 pkgname = dida-appimage
