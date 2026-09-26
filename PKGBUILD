@@ -6,7 +6,7 @@
 
 pkgname=pycharm
 pkgver=2026.2.3
-pkgrel=1
+pkgrel=2
 provides=("pycharm")
 replaces=("pycharm-professional")
 conflicts=('pycharm-professional' 'pycharm-community-edition')
@@ -29,8 +29,8 @@ depends=(
     fontconfig
 )
 source=("pycharm.desktop" "ltedit.desktop")
-source_x86_64=("https://download-cf.jetbrains.com/python/${pkgname}-${pkgver}.tar.gz")
-source_aarch64=("https://download-cf.jetbrains.com/python/${pkgname}-${pkgver}-aarch64.tar.gz")
+source_x86_64=("https://download.jetbrains.com/python/${pkgname}-${pkgver}.tar.gz")
+source_aarch64=("https://download.jetbrains.com/python/${pkgname}-${pkgver}-aarch64.tar.gz")
 sha256sums=('444611514a2e2e168d20ec866af0102fbdd0472af00925847471609578b187b7'
             '944d01526dcc0e6d4c321873bd42d2c7885973e929f3b363c31019f642af0101')
 sha256sums_x86_64=('e8e4fbe4dab44390d09f681e059a316e692cabd24b2e11ce98ff76c8120fa313')
