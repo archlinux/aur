@@ -1,10 +1,10 @@
 # Maintainer: fireflylabs
 _pkgname=abstract
 pkgname=abstract-editor-bin
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Minimal local-first markdown notes editor, GPU-rendered with GPUI"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/fireflylabss/abstract"
 license=('Apache-2.0' 'OFL-1.1')
 depends=(
@@ -24,15 +24,17 @@ depends=(
 provides=('abstract-editor' 'abstract')
 conflicts=('abstract-editor')
 source=(
-	"$_pkgname-$pkgver-linux-x86_64.tar.gz::https://github.com/fireflylabss/abstract/releases/download/v$pkgver/abstract-$pkgver-linux-x86_64.tar.gz"
 	"abstract.desktop::https://raw.githubusercontent.com/fireflylabss/abstract/v$pkgver/assets/abstract.desktop"
 	"abstract.png::https://raw.githubusercontent.com/fireflylabss/abstract/v$pkgver/assets/abstract.png"
 	"OFL.txt::https://raw.githubusercontent.com/fireflylabss/abstract/v$pkgver/assets/fonts/OFL.txt"
 )
-sha256sums=('054e556a9783355bf490b204d32376c98e2f8f181f57854ecf4a8bae787645d6'
-	'd004cd85b8ee160a0e87d99f041e4f8b77c75326b010ffcfbae61d080e68b94d'
+source_x86_64=("$_pkgname-$pkgver-linux-x86_64.tar.gz::https://github.com/fireflylabss/abstract/releases/download/v$pkgver/abstract-$pkgver-linux-x86_64.tar.gz")
+source_aarch64=("$_pkgname-$pkgver-linux-aarch64.tar.gz::https://github.com/fireflylabss/abstract/releases/download/v$pkgver/abstract-$pkgver-linux-aarch64.tar.gz")
+sha256sums=('d004cd85b8ee160a0e87d99f041e4f8b77c75326b010ffcfbae61d080e68b94d'
 	'39f026297aabb23e4fbf9add9a151f4a0548c1185c674caca1614a9efeaf72c5'
 	'cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a')
+sha256sums_x86_64=('6edbc0a8928d27353643fd7801acc9619a8e70b10e2559f210b3e0dde1774c88')
+sha256sums_aarch64=('27cd4852061514465306b4644e52438fbe5faffc8637d36b72df512108b50890')
 
 package() {
 	# The release tarball unpacks abstract/, README.md and LICENSE at $srcdir root.
