@@ -1,30 +1,43 @@
 # Maintainer: Slavi Pantaleev <slavi at devture.com>
 
 pkgname=bit4id-pki-manager
-pkgver=1.4.10.682
+pkgver=1.4.11.836
 pkgrel=1
 pkgdesc="Bit4ID PKI Manager application"
 arch=('x86_64')
 license=('unknown')
-url="http://www.bit4id.com/"
+url="https://cdn.bit4id.com/es/middleware.htm"
 options=('!strip')
-md5sums=('bee113c3dfeb52b805fe211739c697a8')
 optdepends=(
 	'bit4id-ipki: Bit4ID Universal Middleware (Smart Card driver)'
 	'bit4id-xpki: Bit4ID Universal Middleware (Smart Card driver)'
 )
 
-# Goes from `X.Y.Z.A` to `X.Y.Z-A`, to match file names on the source server
-pkgver_with_dash=$(echo "${pkgver}" | sed 's/\.\([0-9]\+\)$/-\1/')
-_file_name='libbit4xpki-'$pkgver_with_dash'-bit4id-user.'$CARCH'.deb'
+# Upstream (Bit4id) publishes an unversioned zip (containing a .deb and an .rpm),
+# so we save it under a versioned name. The checksum will break when upstream replaces it with a newer release.
+source=("Bit4id_Middleware-${pkgver}.zip::https://cdn.bit4id.com/es/soporte/downloads/middleware/Bit4id_Middleware.zip")
+noextract=("Bit4id_Middleware-${pkgver}.zip")
+sha256sums=('0f6d45d1f7d550f9188404feb23f977b8b19b4b7f5475eef8fc79647d9be9ff5')
 
-source=('https://repository.infonotary.com/ra/Middleware/Bit4id/Linux/'$_file_name)
+prepare() {
+	bsdtar -xf "Bit4id_Middleware-${pkgver}.zip" Bit4id_Middleware.deb
+}
 
 package() {
-	ar -xv $_file_name || return 1
-	tar -xvf data.tar.xz -C $pkgdir || return 1
+	bsdtar -xOf Bit4id_Middleware.deb data.tar.xz | bsdtar -xf - -C "$pkgdir"
 
 	# Remove drivers. They are packaged separately (as `bit4id-xpki`).
-	rm -rf $pkgdir/usr/lib/bit4id
-	rm -rf $pkgdir/usr/share/bit4id/ccid
+	rm -rf "$pkgdir/usr/lib/bit4id"
+	rm -rf "$pkgdir/usr/share/bit4id/ccid"
+
+	# The app runs on its own bundled glibc, but loads the system's /usr/lib/libpcsclite.so.1 (hardcoded path).
+	# With pcsclite >= 2.x, that is a thin wrapper which loads `libpcsclite_real.so.1`, which requires a newer glibc than the bundled one,
+	# so the app finds no readers. The wrapper searches the app's LD_LIBRARY_PATH first,
+	# so we point it at the bundled (compatible) client library.
+	ln -s libpcsclite.so.1 "$pkgdir/usr/share/bit4id/x/pinmanager/lib/libpcsclite_real.so.1"
+
+	# Upstream's postinst copies this into place, but we don't run it.
+	# We also drop lines that `desktop-file-validate` complains about.
+	install -Dm644 "$pkgdir/usr/share/bit4id/x/bit4pin.desktop" "$pkgdir/usr/share/applications/bit4id-pki-manager.desktop"
+	sed -i '/^Encoding=/d; /^GenericName\[en_US\]=$/d' "$pkgdir/usr/share/applications/bit4id-pki-manager.desktop"
 }

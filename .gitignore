@@ -6,3 +6,4 @@ pkg
 src
 vcs-repository
 *.deb
+*.zip
