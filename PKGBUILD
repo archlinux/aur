@@ -1,22 +1,22 @@
 # Maintainer: Christoph Brandau <c.brandau91@googlemail.com>
 
 pkgname=gitty-desktop
-pkgver=2026.9.9
+pkgver=2026.9.10
 pkgrel=1
 pkgdesc="A lightweight, modern Git client built with Tauri"
 arch=('x86_64')
-url="https://git.cbsk-tech.de/Christoph/GitLite"
+url="https://code.cbsk-tech.de/Christoph/Gitty"
 license=('MIT')
 depends=('webkit2gtk-4.1' 'gtk3' 'git' 'git-lfs' 'hicolor-icon-theme' 'libappindicator-gtk3' 'librsvg' 'xdotool')
 makedepends=('rust' 'nodejs' 'npm')
 options=('!lto' '!debug')
 
-_tag=2026.9.9
+_tag=2026.9.10
 source=("gitty-desktop-${pkgver}.tar.gz::${url}/archive/${_tag}.tar.gz")
-sha256sums=('0c56ba451ed1ad2423ffe75dee9be7678d41bb3120c42a38d115fc8ea05a5185')
+sha256sums=('7b504393860194180e73b6469a6f27077c90695396d9e3f993a4668fc9eba06c')
 
 prepare() {
-  cd "$srcdir/gitlite"
+  cd "$srcdir/gitty"
 
   # Keep application metadata aligned even when a release tag contains
   # leading zeroes that npm normalizes (for example 2026.7.01 -> 2026.7.1).
@@ -25,7 +25,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/gitlite"
+  cd "$srcdir/gitty"
 
   # Keep the large Rust release build within the Arch runner's memory limit.
   export CARGO_BUILD_JOBS=1
@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/gitlite"
+  cd "$srcdir/gitty"
 
   install -Dm755 "src-tauri/target/release/gitty" "$pkgdir/usr/bin/gitty-desktop"
 
