@@ -1,5 +1,5 @@
 pkgname=cognito-local
-pkgver=5.1.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Local emulator for Amazon Cognito"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('nodejs' 'npm')
 provides=('cognito-local')
 conflicts=('cognito-local-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jagregory/cognito-local/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('00cf6a89f31ec0c5bb8ccb079aaf412d383cce98939ad2d09ea9ea2ad49f77f2')
+sha256sums=('52a1f2b14dbe2e6906585d89aecc8f9dd99d6a96ffa3a115e314ab5c2cc7a03d')
 
 build() {
     cd "$pkgname-$pkgver"
