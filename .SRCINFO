@@ -1,0 +1,18 @@
+pkgbase = slingshot-git
+	pkgdesc = SystemVerilog language server based on Slang
+	pkgver = r276.f9a3673
+	pkgrel = 1
+	url = https://github.com/mlyoung101/slingshot
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = clang
+	depends = gcc-libs
+	provides = slingshot
+	conflicts = slingshot
+	source = git+https://github.com/mlyoung101/slingshot.git
+	sha256sums = SKIP
+
+pkgname = slingshot-git
