@@ -1,6 +1,6 @@
 # Maintainer: Basem Aljedai <baljedai@gmail.com>
 pkgname=omarchy-prayer
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Muslim prayer-time notifier for Omarchy: notifications + adhan, Quickshell/waybar countdown widget, themed TUI, qibla, hijri, adhan catalog"
 arch=('any')
@@ -10,15 +10,22 @@ depends=('ruby' 'ruby-tomlrb' 'ruby-racc' 'libnotify' 'mpv' 'curl' 'systemd')
 optdepends=('waybar: bar widget on Omarchy 3 and other Hyprland setups'
             'mako: notification daemon on Omarchy 3 and other Hyprland setups'
             'hyprland: reference window manager')
+checkdepends=('ruby-minitest' 'ruby-webrick')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6938ede65d2fbafde63da28e3940ab08566ea95781cd09b04b2dd704fc82b322')
+sha256sums=('ed4ff611011e0e763869045e3485b3b8f7c5ace202d1b8e5660be122b6c70182')
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  # Run the test suite if Ruby + tomlrb are available during makepkg build.
-  # minitest/webrick ship with Ruby 3.x; no Gemfile install needed at check time.
-  if ruby -e 'require "tomlrb"' 2>/dev/null; then
+  # Run the test suite if every test dependency is present.
+  #
+  # The guard used to check tomlrb ALONE, on the belief that "minitest/webrick
+  # ship with Ruby 3.x". They do not on Arch: /usr/bin/ruby has tomlrb but
+  # neither minitest nor webrick, so on a machine with no user-managed Ruby the
+  # guard passed and the suite then died with LoadError — failing check(), and
+  # with it the user's install. checkdepends now pulls them in so the suite
+  # actually runs; the widened guard keeps a missing dep a skip, not a failure.
+  if ruby -e 'require "tomlrb"; require "minitest/autorun"; require "webrick"' 2>/dev/null; then
     ruby -Ilib -Itest -e 'Dir["test/test_*.rb"].each { |f| require File.expand_path(f) }'
   fi
 }
