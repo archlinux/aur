@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgbase=shelly-git
 pkgname=('shelly-git' 'shelly-flatpak-backend-git')
-pkgver=3.1.6
+pkgver=3.1.6r4747.g8d61a9e
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Shelly-ALPM"
