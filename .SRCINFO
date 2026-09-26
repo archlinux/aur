@@ -1,0 +1,17 @@
+pkgbase = quickjs-git
+	pkgdesc = A small and embeddable Javascript engine
+	pkgver = r491.ga38171d
+	pkgrel = 1
+	url = https://bellard.org/quickjs/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = quickjs=r491.ga38171d
+	conflicts = quickjs
+	options = staticlibs
+	source = git+https://github.com/bellard/quickjs.git
+	sha256sums = SKIP
+
+pkgname = quickjs-git
