@@ -34,10 +34,28 @@ sha256sums_x86_64=('985bbe662107f7f6e9d20c84ac6ea8d81e8e9a8f30d5fbbfdcee7bcea2b8
 sha256sums_aarch64=('74415655f3491ce7564b8d735ef7f1f54ba1e29717d4427f30e7ce9b3dc7f07f')
 
 
+prepare() {
+	cd "${srcdir}/" || exit
+
+	mv "${_appname}-${CARCH}-${pkgver}" "${_appname}"
+	chmod +x "${_appname}"
+}
+
+build() {
+	cd "${srcdir}/" || exit
+
+	mkdir -p completions
+	./"${_appname}" --print-completion zsh > "completions/${_appname}.zsh"
+	./"${_appname}" --print-completion bash > "completions/${_appname}.bash"
+}
+
 package() {
 	cd "${srcdir}/" || exit
 
-	install -Dm755 "${_appname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/${_appname}"
+	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
+
+	install -Dm644 "completions/${_appname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_appname}"
+	install -Dm644 "completions/${_appname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_appname}"
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
