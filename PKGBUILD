@@ -28,4 +28,8 @@ package() {
 
 	# Remove pinmanager. It's packaged separately (as `bit4id-pki-manager`).
 	rm -rf "$pkgdir/usr/share/bit4id/x"
+
+	# Remove Bit4id's bundled CCID driver. Only Debian's postinst installs it; we rely on Arch's `ccid` package instead.
+	rm -rf "$pkgdir/usr/share/bit4id/ccid"
+	rmdir "$pkgdir/usr/share/bit4id" "$pkgdir/usr/share"
 }
