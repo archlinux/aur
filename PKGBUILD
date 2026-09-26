@@ -1,6 +1,6 @@
 # Maintainer: Xavier Pedraza <xpedraza542@gmail.com>
 _stable=892
-_build=984
+_build=985
 _base=chromapper
 pkgname="${_base}-dev-bin"
 pkgver="0.14.${_build}"
@@ -23,7 +23,7 @@ source=(
 )
 sha256sums=(
     "f4c4f2199a8b4fed4c5cd296105232b5f8ef013ab51a0f402421613352e5ae5c" 
-    "8a88f90819deeda504063a7618cb2979c5d94d801ef24700687258460ba51642"
+    "f67f8b2b55f541ba9dbb308b34305e25cb5372504502d95414320b0f97906e36"
     "533bdae8c7e95a94a4941a01de5f0ee94684ac2119d7297e4f5abe950ec64e80"
     "SKIP"
 )
