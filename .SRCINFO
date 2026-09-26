@@ -1,18 +1,18 @@
 pkgbase = entire-cli-bin
 	pkgdesc = Git-native AI agent session tracking
-	pkgver = 0.11.2
+	pkgver = 0.11.3
 	pkgrel = 1
 	url = https://github.com/entireio/cli
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = git
-	provides = entire-cli=0.11.2
+	provides = entire-cli=0.11.3
 	conflicts = entire-cli
 	options = !debug
-	source_x86_64 = entire-0.11.2-x86_64.tar.gz::https://github.com/entireio/cli/releases/download/v0.11.2/entire_linux_amd64.tar.gz
-	sha256sums_x86_64 = 6bb93b257f5321ea311f0cd8e0ca74b4ea9f8f5bdf3b11e68ded57242f824d26
-	source_aarch64 = entire-0.11.2-aarch64.tar.gz::https://github.com/entireio/cli/releases/download/v0.11.2/entire_linux_arm64.tar.gz
-	sha256sums_aarch64 = 5311e6fda6856897b74b4ed17f7da99400ecded72840bea8306f4c4193b561bd
+	source_x86_64 = entire-0.11.3-x86_64.tar.gz::https://github.com/entireio/cli/releases/download/v0.11.3/entire_linux_amd64.tar.gz
+	sha256sums_x86_64 = a491d2329fd38d215185746925d0086969262676f7ce9de55ac724bd7b2a7412
+	source_aarch64 = entire-0.11.3-aarch64.tar.gz::https://github.com/entireio/cli/releases/download/v0.11.3/entire_linux_arm64.tar.gz
+	sha256sums_aarch64 = 943c5fb0283c1ffc68a2a962660ba89c8d12fe46642f2f708b040040adb154a2
 
 pkgname = entire-cli-bin
