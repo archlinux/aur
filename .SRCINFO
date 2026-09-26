@@ -1,6 +1,6 @@
 pkgbase = vpn-bin
 	pkgdesc = TUI for managing Surfshark and ProtonVPN WireGuard connections
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/protibimbok/vpn-tui
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = vpn-bin
 	depends = iputils
 	provides = vpn
 	conflicts = vpn
-	source_x86_64 = https://github.com/protibimbok/vpn-tui/releases/download/v0.1.1/vpn_linux_amd64.tar.gz
-	sha256sums_x86_64 = 97edea5ccdf730c0e184c5ffe4611f84c94353159822c2d6db166b75eaf52fb0
-	source_aarch64 = https://github.com/protibimbok/vpn-tui/releases/download/v0.1.1/vpn_linux_arm64.tar.gz
-	sha256sums_aarch64 = ed82f6fefafc50a398f8ce1a618e55a3045750abab03f3ca47a682f36361a24c
+	source_x86_64 = vpn_linux_amd64-0.2.0.tar.gz::https://github.com/protibimbok/vpn-tui/releases/download/v0.2.0/vpn_linux_amd64.tar.gz
+	sha256sums_x86_64 = 23962264c22a462d1de14217cf86e36ffc26da94001c1bc0a0525770378434f8
+	source_aarch64 = vpn_linux_arm64-0.2.0.tar.gz::https://github.com/protibimbok/vpn-tui/releases/download/v0.2.0/vpn_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0a950efb2a1193eed48064b445a61f0e00e48e0e5080f490df44012db51b28bf
 
 pkgname = vpn-bin
