@@ -18,7 +18,7 @@
 # this repo, unlike the AMD vendored ryzen_smu), and (4) a short README.
 #
 # SOURCE — the branch-pinned RamSleuth repo (sibling pattern, like the AMD
-# extra): pkgver is the FIXED ramsleuth workspace version (2.4.0 today;
+# extra): pkgver is the FIXED ramsleuth workspace version (2.4.5 today;
 # bumped with the INTEL-20 release). The git source CANNOT be tag-pinned
 # here: the v2.2.1 tag (c82a9ad) predates the kernel/ramsleuth-intel/ merge
 # (v2-development), so only the development branch carries the module.
@@ -43,7 +43,7 @@
 # installed /usr/share copy (no clone on the target path).
 
 pkgname=ramsleuth-intel-dkms
-pkgver=2.4.0   # FIXED — the ramsleuth workspace version (no pkgver())
+pkgver=2.4.5   # FIXED — the ramsleuth workspace version (no pkgver())
 pkgrel=1
 pkgdesc="Provisioning tools for the optional ramsleuth_intel DKMS module (RamSleuth live Intel IMC subtimings)"
 arch=(x86_64)
