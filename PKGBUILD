@@ -2,10 +2,10 @@
 # https://github.com/SimonSchubert/Braincup
 
 pkgname=braincup-bin
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc='Train your math skills, memory and focus'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/SimonSchubert/Braincup'
 license=('Apache-2.0')
 depends=('hicolor-icon-theme')
@@ -13,8 +13,17 @@ provides=('braincup')
 conflicts=('braincup')
 options=('!strip')
 
-source=("Braincup-${pkgver}-linux-x86_64.tar.gz::https://github.com/SimonSchubert/Braincup/releases/download/v${pkgver}/Braincup-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('8c39cf15262f9a8d2c42d68eef12f4a46d4184216d42a1f2e7e10ce2bb6e5363')
+# One release tarball per architecture. Each is a jpackage app-image carrying
+# its own JRE, so neither depends on a system java -- the aarch64 one was run on
+# an Arch aarch64 host with no java installed at all before this arch was added.
+source_x86_64=("Braincup-${pkgver}-linux-x86_64.tar.gz::https://github.com/SimonSchubert/Braincup/releases/download/v${pkgver}/Braincup-${pkgver}-linux-x86_64.tar.gz")
+source_aarch64=("Braincup-${pkgver}-linux-aarch64.tar.gz::https://github.com/SimonSchubert/Braincup/releases/download/v${pkgver}/Braincup-${pkgver}-linux-aarch64.tar.gz")
+
+sha256sums_x86_64=('f08f6972a605bf277a11ff1cafd704f6044b54e263e76423ec4310cf80ce4a20')
+# v3.6.0 predates the aarch64 tarball, so there is nothing to hash yet. The
+# release job fills both sums in; zeros fail the integrity check rather than
+# ship an unverified download if it ever does not.
+sha256sums_aarch64=('6d8e5c26ea955eb3ac2d7a22aa1a7c1773f985018ef6b33716021cd596aebddf')
 
 package() {
     # Install application files
@@ -28,7 +37,9 @@ package() {
 exec /opt/braincup/bin/Braincup "$@"
 EOF
 
-    # Install desktop entry
+    # Install desktop entry. StartupWMClass has to be the window class AWT
+    # actually sets, which it derives from the main class -- so it tracks
+    # mainClass in composeApp/build.gradle.kts, dots turned into dashes.
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/braincup.desktop" << EOF
 [Desktop Entry]
 Name=Braincup
@@ -38,7 +49,7 @@ Icon=braincup
 Type=Application
 Categories=Game;Education;
 Keywords=Math;Memory;Focus;Brain;Training;Game;
-StartupWMClass=compose-window
+StartupWMClass=com-inspiredandroid-braincup-MainKt
 Terminal=false
 EOF
 
