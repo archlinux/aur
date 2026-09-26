@@ -1,6 +1,6 @@
 pkgbase = tine-outliner-bin
 	pkgdesc = A fast, local, Logseq-compatible outliner
-	pkgver = 0.6.984
+	pkgver = 0.6.986
 	pkgrel = 1
 	url = https://tine.page/
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = tine-outliner-bin
 	depends = glib2
 	depends = cairo
 	depends = hicolor-icon-theme
-	source_x86_64 = https://github.com/martinkoutecky/tine/releases/download/v0.6.984/Tine_0.6.984_amd64.deb
-	sha256sums_x86_64 = ab5eac973c5b4291801de19a416e864f95d98d6f81c82baef3cdc7861f847766
-	source_aarch64 = https://github.com/martinkoutecky/tine/releases/download/v0.6.984/Tine_0.6.984_arm64.deb
-	sha256sums_aarch64 = 4c34cd1393fa271e6dca295c1759764fbe3cbe3c5e73d8f0e72cb25bd9ebba03
+	source_x86_64 = https://github.com/martinkoutecky/tine/releases/download/v0.6.986/Tine_0.6.986_amd64.deb
+	sha256sums_x86_64 = 5cd33d9d6bb6b33a6c357b103fe9524d30037f107addcdd383b924481b1f8d11
+	source_aarch64 = https://github.com/martinkoutecky/tine/releases/download/v0.6.986/Tine_0.6.986_arm64.deb
+	sha256sums_aarch64 = 264e7247c9f564773e0ae7b7c0a1a1c058437c589c03b5aa73bc168efb203c0e
 
 pkgname = tine-outliner-bin
