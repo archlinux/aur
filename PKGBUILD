@@ -62,6 +62,11 @@
 #     /usr/share/ryzen-smu-dkms/vendor/ (the path the AMD helper (step 4)
 #     resolves as its offline vendored source — every file SUMS-verified
 #     before a build, zero network; GUARDED: absent in pre-vendor tags)
+#   - the repo's ryzen_smu DKMS config packaging/ryzen-smu-dkms/dkms.conf
+#     (DEST_MODULE_LOCATION=/extra — matches the helper's depmod override;
+#     the vendored copy's /kernel/drivers/ryzen_smu is the last-resort
+#     fallback only) -> /usr/share/ryzen-smu-dkms/dkms.conf (the helper's
+#     installed-location resolution; GUARDED: absent in pre-dkms.conf tags)
 #
 # No-panic contract: installation never fails on the absence of
 # the ryzen_smu module, AVX-512, or a display; after a bare install the
@@ -74,7 +79,7 @@
 # plus the eframe 0.27 / winit dlopen + fallback runtime surface.
 
 pkgname=ramsleuth
-pkgver=2.4.6   # FIXED — taken from the git tag v$pkgver (no pkgver())
+pkgver=2.4.7   # FIXED — taken from the git tag v$pkgver (no pkgver())
 pkgrel=1
 pkgdesc="Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients"
 arch=(x86_64)
@@ -83,7 +88,7 @@ license=(MIT GPL-2.0-only)
 # Integrity pin: the v$pkgver release commit (immutable; current makepkg
 # requires VCS sources to resolve to a commit — the #tag= fragment in
 # source= is a human-readable label only).
-_gitcommit=445acada45c385d8f777021e7dc1758ad5ec5695
+_gitcommit=e0890b65ea49399400c18d0ebede47ed05d7deda
 # git-tag source: makepkg clones the repo and checks out the pinned commit.
 # The "$pkgname::" rename extracts to $srcdir/ramsleuth (see header note above).
 source=("$pkgname::git+https://github.com/MadGoatHaz/RamSleuth.git#tag=v$pkgver")
@@ -234,6 +239,19 @@ package() {
             install -Dm644 "packaging/ryzen-smu-dkms/vendor/NOTICE.md" \
                 "$pkgdir/usr/share/ryzen-smu-dkms/vendor/NOTICE.md"
         fi
+    fi
+
+    # (14) The repo's ryzen_smu DKMS config -> /usr/share/ryzen-smu-dkms/dkms.conf
+    # — the helper's dual-location resolution (repo-relative first, this
+    # installed path second on a packaged run). DEST_MODULE_LOCATION=/extra
+    # matches the helper's depmod override (the vendored copy's
+    # /kernel/drivers/ryzen_smu is the last-resort fallback only — a
+    # pre-fix install resolving to it works only via the depmod.d priority
+    # fallback). GUARDED like (13): a build against a pre-dkms.conf tag
+    # skips it cleanly — the no-panic contract.
+    if [ -f "packaging/ryzen-smu-dkms/dkms.conf" ]; then
+        install -Dm644 "packaging/ryzen-smu-dkms/dkms.conf" \
+            "$pkgdir/usr/share/ryzen-smu-dkms/dkms.conf"
     fi
 
     # NOTE: the ramsleuth group is created on the TARGET system by the .install
