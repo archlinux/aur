@@ -1,0 +1,445 @@
+diff --git a/include/multipass/logging/log.h b/include/multipass/logging/log.h
+index 31d409ec3..8f13adf3f 100644
+--- a/include/multipass/logging/log.h
++++ b/include/multipass/logging/log.h
+@@ -113,6 +113,11 @@ constexpr void error(std::string_view category, fmt::format_string<Args...> fmt,
+     logging::log<Level::error>(category, fmt, std::forward<Args>(args)...);
+ }
+ 
++inline void error(std::string_view category, std::string_view message)
++{
++    logging::log(Level::error, category, message);
++}
++
+ /**
+  * Log a warning message.
+  *
+@@ -127,6 +132,11 @@ constexpr void warn(std::string_view category, fmt::format_string<Args...> fmt,
+     logging::log<Level::warning>(category, fmt, std::forward<Args>(args)...);
+ }
+ 
++inline void warn(std::string_view category, std::string_view message)
++{
++    logging::log(Level::warning, category, message);
++}
++
+ /**
+  * Log a info message.
+  *
+@@ -141,6 +151,11 @@ constexpr void info(std::string_view category, fmt::format_string<Args...> fmt,
+     logging::log<Level::info>(category, fmt, std::forward<Args>(args)...);
+ }
+ 
++inline void info(std::string_view category, std::string_view message)
++{
++    logging::log(Level::info, category, message);
++}
++
+ /**
+  * Log a debug message.
+  *
+@@ -155,6 +170,11 @@ constexpr void debug(std::string_view category, fmt::format_string<Args...> fmt,
+     logging::log<Level::debug>(category, fmt, std::forward<Args>(args)...);
+ }
+ 
++inline void debug(std::string_view category, std::string_view message)
++{
++    logging::log(Level::debug, category, message);
++}
++
+ /**
+  * Log a trace message.
+  *
+@@ -169,5 +189,10 @@ constexpr void trace(std::string_view category, fmt::format_string<Args...> fmt,
+     logging::log<Level::trace>(category, fmt, std::forward<Args>(args)...);
+ }
+ 
++inline void trace(std::string_view category, std::string_view message)
++{
++    logging::log(Level::trace, category, message);
++}
++
+ } // namespace logging
+ } // namespace multipass
+diff --git a/include/multipass/ssh/sftp_utils.h b/include/multipass/ssh/sftp_utils.h
+index fbc6cd095..342362efb 100644
+--- a/include/multipass/ssh/sftp_utils.h
++++ b/include/multipass/ssh/sftp_utils.h
+@@ -37,7 +37,7 @@ namespace multipass
+ struct SFTPError : public std::runtime_error
+ {
+     template <typename... Args>
+-    explicit SFTPError(const char* fmt, Args&&... args)
++    explicit SFTPError(fmt::format_string<Args...> fmt, Args&&... args)
+         : runtime_error(fmt::format(fmt, std::forward<Args>(args)...))
+     {
+     }
+diff --git a/src/client/cli/cmd/get.cpp b/src/client/cli/cmd/get.cpp
+index f5be9f509..184d1b80f 100644
+--- a/src/client/cli/cmd/get.cpp
++++ b/src/client/cli/cmd/get.cpp
+@@ -135,7 +135,7 @@ void cmd::Get::print_settings() const
+ void multipass::cmd::Get::print_keys() const
+ {
+     const auto keys = MP_SETTINGS.keys();
+-    const auto format = "{}\n";
++    constexpr auto format = "{}\n";
+ 
+     if (arg.isEmpty())
+         fmt::print(cout, format, fmt::join(keys, "\n"));
+diff --git a/src/client/cli/cmd/start.cpp b/src/client/cli/cmd/start.cpp
+index 14999d84f..01781b2ae 100644
+--- a/src/client/cli/cmd/start.cpp
++++ b/src/client/cli/cmd/start.cpp
+@@ -87,7 +87,7 @@ mp::ReturnCode cmd::Start::run(mp::ArgParser* parser)
+                         continue;
+                 }
+ 
+-                fmt::format_to(std::back_inserter(details), err_fmt, pair.first);
++                fmt::format_to(std::back_inserter(details), fmt::runtime(err_fmt), pair.first);
+             }
+ 
+             if (details.empty())
+diff --git a/src/client/cli/formatter/csv_formatter.cpp b/src/client/cli/formatter/csv_formatter.cpp
+index f534e1e62..e119fc14a 100644
+--- a/src/client/cli/formatter/csv_formatter.cpp
++++ b/src/client/cli/formatter/csv_formatter.cpp
+@@ -92,7 +92,7 @@ std::string generate_snapshot_details(const mp::InfoReply reply)
+                        info.disk_total(),
+                        info.memory_total());
+ 
+-        fmt::format_to(std::back_inserter(buf), format_mounts(info.mount_info()));
++        fmt::format_to(std::back_inserter(buf), "{}", format_mounts(info.mount_info()));
+ 
+         fmt::format_to(std::back_inserter(buf),
+                        ",{},{},{},\"{}\"\n",
+@@ -139,7 +139,7 @@ std::string generate_instance_details(const mp::InfoReply reply)
+                        instance_details.memory_usage(),
+                        info.memory_total());
+ 
+-        fmt::format_to(std::back_inserter(buf), format_mounts(info.mount_info()));
++        fmt::format_to(std::back_inserter(buf), "{}", format_mounts(info.mount_info()));
+ 
+         fmt::format_to(std::back_inserter(buf),
+                        ",{},{}",
+@@ -256,8 +256,9 @@ std::string mp::CSVFormatter::format(const FindReply& reply) const
+     fmt::memory_buffer buf;
+ 
+     fmt::format_to(std::back_inserter(buf), "Image,Remote,Aliases,OS,Release,Version,Type\n");
+-    fmt::format_to(std::back_inserter(buf), format_images(reply.images_info(), "Cloud Image"));
++    fmt::format_to(std::back_inserter(buf), "{}", format_images(reply.images_info(), "Cloud Image"));
+     fmt::format_to(std::back_inserter(buf),
++                   "{}",
+                    format_images(reply.blueprints_info(), "Blueprint (deprecated)"));
+ 
+     return fmt::to_string(buf);
+diff --git a/src/client/cli/formatter/table_formatter.cpp b/src/client/cli/formatter/table_formatter.cpp
+index a73aedc36..0c38b77db 100644
+--- a/src/client/cli/formatter/table_formatter.cpp
++++ b/src/client/cli/formatter/table_formatter.cpp
+@@ -281,7 +281,7 @@ std::string generate_instances_list(const mp::InstancesList& instance_list)
+     const std::string::size_type state_column_width = 18;
+     const std::string::size_type ip_column_width = 17;
+ 
+-    const auto row_format = "{:<{}}{:<{}}{:<{}}{:<}\n";
++    constexpr auto row_format = "{:<{}}{:<{}}{:<{}}{:<}\n";
+     fmt::format_to(std::back_inserter(buf),
+                    row_format,
+                    name_col_header,
+@@ -354,7 +354,7 @@ std::string generate_snapshots_list(const mp::SnapshotsList& snapshot_list)
+         [](const auto& snapshot) -> int { return snapshot.fundamentals().parent().length(); },
+         parent_col_header.length());
+ 
+-    const auto row_format = "{:<{}}{:<{}}{:<{}}{:<}\n";
++    constexpr auto row_format = "{:<{}}{:<{}}{:<{}}{:<}\n";
+     fmt::format_to(std::back_inserter(buf),
+                    row_format,
+                    name_col_header,
+@@ -405,13 +405,13 @@ std::string mp::TableFormatter::format(const InfoReply& reply) const
+     {
+         if (info.has_instance_info())
+         {
+-            fmt::format_to(std::back_inserter(buf), generate_instance_details(info));
++            fmt::format_to(std::back_inserter(buf), "{}", generate_instance_details(info));
+         }
+         else
+         {
+             assert(info.has_snapshot_info() &&
+                    "either one of instance or snapshot details should be populated");
+-            fmt::format_to(std::back_inserter(buf), generate_snapshot_details(info));
++            fmt::format_to(std::back_inserter(buf), "{}", generate_snapshot_details(info));
+         }
+ 
+         fmt::format_to(std::back_inserter(buf), "\n");
+@@ -466,7 +466,7 @@ std::string mp::TableFormatter::format(const NetworksReply& reply) const
+         [](const auto& interface) -> int { return interface.type().length(); },
+         type_col_header.length());
+ 
+-    const auto row_format = "{:<{}}{:<{}}{:<}\n";
++    constexpr auto row_format = "{:<{}}{:<{}}{:<}\n";
+     fmt::format_to(std::back_inserter(buf),
+                    row_format,
+                    name_col_header,
+@@ -503,10 +503,12 @@ std::string mp::TableFormatter::format(const FindReply& reply) const
+         {
+             if (!reply.images_info().empty())
+                 fmt::format_to(std::back_inserter(buf),
++                               "{}",
+                                format_images(reply.images_info(), "Image"));
+ 
+             if (!reply.blueprints_info().empty())
+                 fmt::format_to(std::back_inserter(buf),
++                               "{}",
+                                format_images(reply.blueprints_info(), "Blueprint (deprecated)"));
+         }
+     }
+@@ -515,7 +517,8 @@ std::string mp::TableFormatter::format(const FindReply& reply) const
+         if (reply.images_info().empty())
+             fmt::format_to(std::back_inserter(buf), "No images found.\n");
+         else
+-            fmt::format_to(std::back_inserter(buf), format_images(reply.images_info(), "Image"));
++            fmt::format_to(std::back_inserter(buf), "{}",
++                               format_images(reply.images_info(), "Image"));
+     }
+     else if (!reply.show_images() && reply.show_blueprints())
+     {
+@@ -523,7 +526,8 @@ std::string mp::TableFormatter::format(const FindReply& reply) const
+             fmt::format_to(std::back_inserter(buf), "No blueprints found.\n");
+         else
+             fmt::format_to(std::back_inserter(buf),
+-                           format_images(reply.blueprints_info(), "Blueprint (deprecated)"));
++                           "{}",
++                               format_images(reply.blueprints_info(), "Blueprint (deprecated)"));
+     }
+ 
+     return fmt::to_string(buf);
+@@ -595,7 +599,7 @@ std::string mp::TableFormatter::format(const mp::AliasDict& aliases) const
+         },
+         context_col_header.length());
+ 
+-    const auto row_format = "{:<{}}{:<{}}{:<{}}{:<{}}{:<}\n";
++    constexpr auto row_format = "{:<{}}{:<{}}{:<{}}{:<{}}{:<}\n";
+ 
+     fmt::format_to(std::back_inserter(buf),
+                    row_format,
+diff --git a/src/daemon/daemon.cpp b/src/daemon/daemon.cpp
+index 4a043bdcc..1f1a75196 100644
+--- a/src/daemon/daemon.cpp
++++ b/src/daemon/daemon.cpp
+@@ -476,7 +476,7 @@ std::vector<mp::NetworkInterface> validate_extra_interfaces(
+         {
+             if (net.id() == mp::bridged_network_name)
+                 throw std::runtime_error(
+-                    fmt::format(invalid_network_template, net_id, mp::bridged_interface_key));
++                    fmt::format(fmt::runtime(invalid_network_template), net_id, mp::bridged_interface_key));
+ 
+             mpl::log(mpl::Level::warning,
+                      category,
+@@ -768,13 +768,13 @@ const std::string& get_instance_name(InstanceElem instance_element)
+ }
+ 
+ template <typename... Ts>
+-auto add_fmt_to(fmt::memory_buffer& buffer, Ts&&... fmt_params)
++auto add_fmt_to(fmt::memory_buffer& buffer, fmt::format_string<Ts...> fmt, Ts&&... fmt_params)
+     -> std::back_insert_iterator<fmt::memory_buffer>
+ {
+     if (buffer.size())
+         buffer.push_back('\n');
+ 
+-    return fmt::format_to(std::back_inserter(buffer), std::forward<Ts>(fmt_params)...);
++    return fmt::format_to(std::back_inserter(buffer), fmt, std::forward<Ts>(fmt_params)...);
+ }
+ 
+ using SelectionComponent = std::variant<LinearInstanceSelection, MissingInstanceList>;
+@@ -799,9 +799,9 @@ grpc::StatusCode react_to_component(const SelectionComponent& selection_componen
+                     const auto& instance_name = get_instance_name(instance_element);
+ 
+                     if (status_code)
+-                        add_fmt_to(errors, msg, instance_name);
++                        add_fmt_to(errors, fmt::runtime(msg), instance_name);
+                     else
+-                        mpl::log(mpl::Level::debug, category, fmt::format(msg, instance_name));
++                        mpl::log(mpl::Level::debug, category, fmt::format(fmt::runtime(msg), instance_name));
+                 }
+             }
+         }
+@@ -815,7 +815,7 @@ grpc::StatusCode react_to_component(const SelectionComponent& selection_componen
+ auto grpc_status_for_mount_error(const std::string& instance_name)
+ {
+     return grpc::Status(grpc::StatusCode::FAILED_PRECONDITION,
+-                        fmt::format(sshfs_error_template, instance_name));
++                        fmt::format(fmt::runtime(sshfs_error_template), instance_name));
+ }
+ 
+ auto grpc_status_for(fmt::memory_buffer& errors,
+@@ -883,7 +883,7 @@ grpc::Status grpc_status_for_instance_trail(const InstanceTrail& trail,
+     const auto& status_code = relevant_reaction_component->status_code;
+     if (const auto& msg_opt = relevant_reaction_component->message_template; msg_opt)
+     {
+-        const auto& msg = fmt::format(*msg_opt, *instance_name);
++        const auto& msg = fmt::format(fmt::runtime(*msg_opt), *instance_name);
+         if (status_code)
+             return grpc::Status{status_code, msg, ""};
+ 
+@@ -1941,7 +1941,7 @@ try
+         }
+         catch (const NoSuchSnapshotException& e)
+         {
+-            add_fmt_to(errors, e.what());
++            add_fmt_to(errors, "{}", e.what());
+         }
+ 
+         return grpc_status_for(errors);
+@@ -2069,7 +2069,7 @@ try
+         }
+         catch (const NoSuchSnapshotException& e)
+         {
+-            add_fmt_to(errors, e.what());
++            add_fmt_to(errors, "{}", e.what());
+         }
+ 
+         return grpc_status_for(errors);
+@@ -2345,7 +2345,7 @@ try
+                             "Try to stop it first.",
+                             name);
+             mpl::log(mpl::Level::warning, category, error_string);
+-            fmt::format_to(std::back_inserter(start_errors), error_string);
++            fmt::format_to(std::back_inserter(start_errors), "{}", error_string);
+             continue;
+         }
+         case VirtualMachine::State::suspending:
+@@ -3872,7 +3872,7 @@ error_string mp::Daemon::async_wait_for_ssh_and_start_mounts_for(
+                 }
+                 catch (const mp::SSHFSMissingError&)
+                 {
+-                    add_fmt_to(errors, sshfs_error_template, name);
++                    add_fmt_to(errors, fmt::runtime(sshfs_error_template), name);
+                     break;
+                 }
+                 catch (const std::exception& e)
+@@ -3882,7 +3882,7 @@ error_string mp::Daemon::async_wait_for_ssh_and_start_mounts_for(
+                                            name,
+                                            e.what());
+                     mpl::log(mpl::Level::warning, category, msg);
+-                    fmt::format_to(std::back_inserter(warnings), msg);
++                    fmt::format_to(std::back_inserter(warnings), "{}", msg);
+                     invalid_mounts.push_back(target);
+                 }
+ 
+@@ -3905,7 +3905,7 @@ error_string mp::Daemon::async_wait_for_ssh_and_start_mounts_for(
+     }
+     catch (const std::exception& e)
+     {
+-        fmt::format_to(std::back_inserter(errors), e.what());
++        fmt::format_to(std::back_inserter(errors), "{}", e.what());
+     }
+ 
+     return fmt::to_string(errors);
+@@ -3962,7 +3962,7 @@ mp::Daemon::async_wait_for_ready_all(grpc::ServerReaderWriterInterface<Reply, Re
+ 
+     for (const auto& future : start_synchronizer.futures())
+         if (auto error = future.result(); !error.empty())
+-            add_fmt_to(errors, error);
++            add_fmt_to(errors, "{}", error);
+ 
+     if constexpr (std::is_same_v<Reply, StartReply> || std::is_same_v<Reply, RestartReply>)
+     {
+@@ -4201,7 +4201,7 @@ void mp::Daemon::add_bridged_interface(const std::string& instance_name)
+         info == host_nets.cend())
+     {
+         throw std::runtime_error(
+-            fmt::format(invalid_network_template, preferred_net, mp::bridged_interface_key));
++            fmt::format(fmt::runtime(invalid_network_template), preferred_net, mp::bridged_interface_key));
+     }
+     else if (info->needs_authorization && !user_authorized_bridges.count(preferred_net))
+     {
+diff --git a/src/platform/update/default_update_prompt.cpp b/src/platform/update/default_update_prompt.cpp
+index 238c872f1..1cddd8325 100644
+--- a/src/platform/update/default_update_prompt.cpp
++++ b/src/platform/update/default_update_prompt.cpp
+@@ -51,7 +51,7 @@ void mp::DefaultUpdatePrompt::populate(mp::UpdateInfo* update_info)
+     if (new_release)
+     {
+         update_info->set_version(new_release->version.toStdString());
+-        update_info->set_url(new_release->url.toEncoded());
++        update_info->set_url(new_release->url.toEncoded().constData());
+         update_info->set_title(new_release->title.toStdString());
+         update_info->set_description(new_release->description.toStdString());
+         last_shown = std::chrono::system_clock::now();
+diff --git a/src/sshfs_mount/sftp_server.cpp b/src/sshfs_mount/sftp_server.cpp
+index 66615d238..e3cea2f39 100644
+--- a/src/sshfs_mount/sftp_server.cpp
++++ b/src/sshfs_mount/sftp_server.cpp
+@@ -93,7 +93,7 @@ int reply_unsupported(sftp_client_message msg)
+ 
+ fmt::memory_buffer& operator<<(fmt::memory_buffer& buf, const char* v)
+ {
+-    fmt::format_to(std::back_inserter(buf), v);
++    fmt::format_to(std::back_inserter(buf), "{}", v);
+     return buf;
+ }
+ 
+diff --git a/src/utils/utils.cpp b/src/utils/utils.cpp
+index 4da0bd02f..b43e6d829 100644
+--- a/src/utils/utils.cpp
++++ b/src/utils/utils.cpp
+@@ -464,7 +464,7 @@ void mp::utils::check_and_create_config_file(const QString& config_file_path)
+         MP_UTILS.make_dir(
+             {},
+             QFileInfo{config_file_path}.dir().path()); // make sure parent dir is there
+-        config_file.open(QIODevice::WriteOnly);
++        (void)config_file.open(QIODevice::WriteOnly);
+     }
+ }
+ 
+@@ -494,7 +494,7 @@ void mp::utils::process_throw_on_error(const QString& program,
+                              process.exitCode()));
+ 
+         auto output = process.readAllStandardOutput();
+-        throw std::runtime_error(fmt::format(message.toStdString(),
++        throw std::runtime_error(fmt::format(fmt::runtime(message.toStdString()),
+                                              output.isEmpty() ? process.errorString().toStdString()
+                                                               : output.toStdString()));
+     }
+@@ -529,7 +529,7 @@ bool mp::utils::process_log_on_error(const QString& program,
+         auto output = process.readAllStandardOutput();
+         mpl::log(level,
+                  category.toStdString(),
+-                 fmt::format(message.toStdString(),
++                 fmt::format(fmt::runtime(message.toStdString()),
+                              output.isEmpty() ? process.errorString().toStdString()
+                                               : output.toStdString()));
+         return false;
+diff --git a/src/utils/vm_image_vault_utils.cpp b/src/utils/vm_image_vault_utils.cpp
+index c14110466..584d9dd16 100644
+--- a/src/utils/vm_image_vault_utils.cpp
++++ b/src/utils/vm_image_vault_utils.cpp
+@@ -80,7 +80,7 @@ QString mp::ImageVaultUtils::extract_file(const QString& file,
+                                           bool delete_original) const
+ {
+     const auto fs_new_path = MP_FILEOPS.remove_extension(file.toStdU16String());
+-    auto new_path = QString::fromStdString(fs_new_path.u8string());
++    auto new_path = QString::fromStdString(fs_new_path.string());
+ 
+     decoder(file, new_path);
+ 
+diff --git a/src/utils/vm_mount.cpp b/src/utils/vm_mount.cpp
+index 826549958..d4c8db37c 100644
+--- a/src/utils/vm_mount.cpp
++++ b/src/utils/vm_mount.cpp
+@@ -97,6 +97,7 @@ mp::VMMount::VMMount(const std::string& sourcePath,
+         !dup_uid_map.empty() || !dup_rev_uid_map.empty())
+     {
+         fmt::format_to(std::back_inserter(errors),
++                       "{}",
+                        fmt::format("\nuids: {}", print_mappings(dup_uid_map, dup_rev_uid_map)));
+     }
+ 
+@@ -104,6 +105,7 @@ mp::VMMount::VMMount(const std::string& sourcePath,
+         !dup_gid_map.empty() || !dup_rev_gid_map.empty())
+     {
+         fmt::format_to(std::back_inserter(errors),
++                       "{}",
+                        fmt::format("\ngids: {}", print_mappings(dup_gid_map, dup_rev_gid_map)));
+     }
+ 

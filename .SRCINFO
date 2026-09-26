@@ -1,13 +1,16 @@
 pkgbase = canonical-multipass
 	pkgdesc = Multipass is a lightweight VM manager for Linux, Windows and macOS.
-	pkgver = 1.16.1
-	pkgrel = 2
+	pkgver = 1.16.4
+	pkgrel = 1
 	url = https://multipass.run
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = cmake
 	makedepends = libvirt
+	makedepends = zip
+	makedepends = unzip
+	makedepends = ninja
 	depends = glibc
 	depends = gcc-libs
 	depends = systemd-libs
@@ -15,10 +18,15 @@ pkgbase = canonical-multipass
 	depends = openssl
 	depends = qt6-base
 	depends = qemu-base
+	depends = edk2-ovmf
 	optdepends = libvirt: to use the libvirt driver
-	source = git+https://github.com/canonical/multipass.git#tag=v1.16.1
+	source = git+https://github.com/canonical/multipass.git#tag=v1.16.4
 	source = multipassd.service
-	sha256sums = 3cfe94b4620752445faa6f2afcdcc6dc8a3047ae833126c9a0ce7bbf7049e631
+	source = fmt11-cxx20-compat.patch
+	source = yaml-cpp-cstdint.patch
+	sha256sums = SKIP
 	sha256sums = f7aebd4ab185048ee10e8185ac230c8ac549ff29b2e52722fbf366ad6f3c6b59
+	sha256sums = f3b0d8d3552f7dd79a49a0cfdc2536128bd17c3eba06d3f119157f5239d76bcc
+	sha256sums = 67c098bf446f51e80cbe6a3f88345700f816e8ac1c43e3566042707a006f43ce
 
 pkgname = canonical-multipass
