@@ -1,0 +1,58 @@
+diff --git a/src/libcamera/process.cpp b/src/libcamera/process.cpp
+--- a/src/libcamera/process.cpp
++++ b/src/libcamera/process.cpp
+@@ -10,6 +10,7 @@
+ #include <algorithm>
+ #include <dirent.h>
+ #include <fcntl.h>
++#include <poll.h>
+ #include <signal.h>
+ #include <string.h>
+ #include <sys/socket.h>
+@@ -117,10 +118,45 @@ Process::Process()
+ }
+ 
+ Process::~Process()
+ {
+ 	kill();
+-	/* \todo wait for child process to exit */
++	if (pid_ <= 0)
++		return;
++
++	/*
++	 * The pidfd notifier may not have run when a camera pipeline drops its
++	 * IPA proxy. Reap the worker before losing both its pidfd and PID, or
++	 * repeated capture sessions leave zombie workers in the relay.
++	 *
++	 * Do not block the camera pipeline indefinitely if the worker is stuck
++	 * in an uninterruptible kernel operation after SIGKILL.
++	 */
++	struct pollfd pfd = { pidfd_.get(), POLLIN, 0 };
++	int ret;
++	do {
++		ret = poll(&pfd, 1, 1000);
++	} while (ret < 0 && errno == EINTR);
++	if (ret == 0) {
++		LOG(Process, Warning) << "Timed out waiting for process " << pid_;
++		return;
++	}
++	if (ret < 0) {
++		LOG(Process, Warning) << "Failed to poll process " << pid_ << ": " << strerror(errno);
++		return;
++	}
++	if (!(pfd.revents & POLLIN)) {
++		LOG(Process, Warning) << "Unexpected pidfd event for process " << pid_;
++		return;
++	}
++
++	do {
++		ret = waitpid(pid_, nullptr, WNOHANG);
++	} while (ret < 0 && errno == EINTR);
++	if (ret == 0)
++		LOG(Process, Warning) << "Process " << pid_ << " is still running";
++	else if (ret < 0 && errno != ECHILD)
++		LOG(Process, Warning) << "Failed to reap process " << pid_ << ": " << strerror(errno);
+ }
+ 
+ /**
+  * \brief Fork and exec a process, and close fds

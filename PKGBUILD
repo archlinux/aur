@@ -8,7 +8,7 @@ pkgname=(
   v4l2-relayd-ipu7-ov08x40
 )
 pkgver=0.7.2
-pkgrel=3.13
+pkgrel=3.14
 pkgdesc="Patched libcamera for Intel IPU7 with OV08X40"
 arch=(x86_64)
 url="https://libcamera.org/"
@@ -40,6 +40,7 @@ source=(
   "vision-drivers::git+https://github.com/intel/vision-drivers.git#commit=$_vision_commit"
   "v4l2-relayd::git+https://gitlab.com/vicamo/v4l2-relayd.git#commit=$_relay_commit"
   libcamera-ipu7-ov08x40.patch
+  libcamera-process-reap.patch
   libcamera-configuration.yaml
   libcamera-ipu7-ov08x40.modules-load.conf
   wireplumber-disable-ipu7-v4l2.conf
@@ -57,6 +58,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '9f92187ce488ce31c71fc42e3478779d7b8d23ce2f0306b709549c3ed1eab678'
+            '47c397641363a379176710a53832b1dd952f9541687872b49facf515e6a7de03'
             '37990699ba1a9146cdd3dd2e2482374e02b8637ef977f7897c0002bc87d2875c'
             '587979fcba7c49194a159ae07763b0f5758abf29312059f1e50b0347d2dd1755'
             '25fd6bf5fa4938a7e00c2b7c4915b8b3cd45dd2d41a38c81307eee6188bfa5dd'
@@ -130,6 +132,7 @@ prepare() {
 
   cd libcamera
   patch -Np1 < ../libcamera-ipu7-ov08x40.patch
+  git apply ../libcamera-process-reap.patch
   printf '%s\n' "$pkgver" > .tarball-version
 
   cd ../v4l2-relayd

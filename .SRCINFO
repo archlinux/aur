@@ -1,7 +1,7 @@
 pkgbase = libcamera-ipu7-ov08x40
 	pkgdesc = Patched libcamera for Intel IPU7 with OV08X40
 	pkgver = 0.7.2
-	pkgrel = 3.13
+	pkgrel = 3.14
 	url = https://libcamera.org/
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -26,6 +26,7 @@ pkgbase = libcamera-ipu7-ov08x40
 	source = vision-drivers::git+https://github.com/intel/vision-drivers.git#commit=845d6f8bdf66ff1f455901da9de5e00a53a83dce
 	source = v4l2-relayd::git+https://gitlab.com/vicamo/v4l2-relayd.git#commit=d6ec36aae87e765eddef8308f0f58c7b5be95ad7
 	source = libcamera-ipu7-ov08x40.patch
+	source = libcamera-process-reap.patch
 	source = libcamera-configuration.yaml
 	source = libcamera-ipu7-ov08x40.modules-load.conf
 	source = wireplumber-disable-ipu7-v4l2.conf
@@ -42,6 +43,7 @@ pkgbase = libcamera-ipu7-ov08x40
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 9f92187ce488ce31c71fc42e3478779d7b8d23ce2f0306b709549c3ed1eab678
+	sha256sums = 47c397641363a379176710a53832b1dd952f9541687872b49facf515e6a7de03
 	sha256sums = 37990699ba1a9146cdd3dd2e2482374e02b8637ef977f7897c0002bc87d2875c
 	sha256sums = 587979fcba7c49194a159ae07763b0f5758abf29312059f1e50b0347d2dd1755
 	sha256sums = 25fd6bf5fa4938a7e00c2b7c4915b8b3cd45dd2d41a38c81307eee6188bfa5dd

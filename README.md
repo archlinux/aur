@@ -15,6 +15,8 @@ camera. It replaces the stock `libcamera` and `libcamera-ipa` packages.
 - Loads the required `intel_cvs` module at boot.
 - Provides an on-demand V4L2 compatibility camera for enterprise Chromium
   builds that disable PipeWire camera support.
+- Reaps terminated IPA proxy workers when the camera pipeline is released,
+  preventing zombie processes from accumulating across capture sessions.
 - Restores the direct OV08X40 media topology on Linux 7.2 through a patched
   DKMS replacement for the modular IPU bridge.
 
@@ -116,6 +118,7 @@ releases it when the last client closes.
 
 - `PKGBUILD`: split Arch package build definition.
 - `libcamera-ipu7-ov08x40.patch`: libcamera mode-selection and input hardening.
+- `libcamera-process-reap.patch`: bounded IPA proxy child cleanup.
 - `libcamera-configuration.yaml`: keeps standalone tools on CPU SoftISP.
 - `wireplumber-disable-ipu7-v4l2.conf`: hides raw ISYS capture nodes.
 - `wireplumber-libcamera-gpu.conf`: enables GPU SoftISP and pins EGL to Mesa Intel for browsers.

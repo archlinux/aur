@@ -30,6 +30,12 @@ SPDX-FileCopyrightText = "2026 Ragu Manjegowda"
 SPDX-License-Identifier = "LGPL-2.1-or-later"
 
 [[annotations]]
+path = "libcamera-process-reap.patch"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Ragu Manjegowda"
+SPDX-License-Identifier = "LGPL-2.1-or-later"
+
+[[annotations]]
 path = "v4l2-relayd-cleanup.patch"
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 Ragu Manjegowda"
