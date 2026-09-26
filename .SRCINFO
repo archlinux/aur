@@ -1,6 +1,6 @@
 pkgbase = nethlink-appimage
 	pkgdesc = A tool designed to link NethServer systems and provide remote access tools.
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/NethServer/nethlink
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = nethlink-appimage
 	conflicts = nethlink
 	options = !strip
 	options = !debug
-	source = nethlink-1.5.1.AppImage::https://github.com/NethServer/nethlink/releases/download/v1.5.1/nethlink-1.5.1.AppImage
+	source = nethlink-1.5.2.AppImage::https://github.com/NethServer/nethlink/releases/download/v1.5.2/nethlink-1.5.2.AppImage
 	source = nethlink.desktop
 	source = nethlink.png
-	sha256sums = 837c30a34b2eaa82d60ea14ec892cc74303448c2154b72ea8768bd0e33bd58ac
+	sha256sums = 9bf96918a2b7d90dbc9dfc6160ca7592c1941a1d67b9fbf2f6c5cb35c792a432
 	sha256sums = 1c5d66ad8406cb12645f26e51d5fdac5ff6ad2a90d392dd852ab027d6783aa54
 	sha256sums = 360ba441787829ab27c306cd0cdb8606d501c210e6d100bc767e2842fde2dc02
 
