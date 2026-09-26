@@ -1,15 +1,13 @@
 pkgbase = innex
 	pkgdesc = Extract Inno Setup installers
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/russellbanks/inno
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	makedepends = pkgconf
 	depends = libgcc
 	depends = glibc
-	depends = zlib
 	source = inno-0.6.0.tar.gz::https://github.com/russellbanks/inno/archive/refs/tags/v0.6.0.tar.gz
 	b2sums = 6fd5d5939a4dd8b576a00794d2242f3ad1a615da18631750ee7de3e64aa134a83d35de55a2122215c6a3262acbaad3dd83b41e4407bea10dceb6bca08d9c3a91
 
