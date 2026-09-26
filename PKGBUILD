@@ -1,4 +1,4 @@
-# Maintainer: fr0stb1rd
+# Maintainer: fr0stb1rd <fr0stb1rd@proton.me>
 
 _pkgname="nchat"
 pkgname="$_pkgname-bin"
