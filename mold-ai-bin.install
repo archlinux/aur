@@ -1,0 +1,9 @@
+post_install() {
+  echo 'mold-ai-bin is now the GPU-free CLI for remote GPU hosts.'
+  echo 'Set MOLD_HOST=http://gpu-host:7680 to generate remotely.'
+  echo 'For local CUDA generation, use mold-ai / mold-ai-git with CUDA_COMPUTE_CAP set for your GPU, or a matching CUDA release archive.'
+}
+
+post_upgrade() {
+  post_install
+}

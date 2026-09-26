@@ -1,26 +1,25 @@
 pkgbase = mold-ai-bin
-	pkgdesc = Local AI image generation CLI — FLUX, SD3.5, SD 1.5, SDXL, Z-Image, Flux.2, Qwen-Image, Wuerstchen, LTX Video, & LTX-2 diffusion models on your GPU (prebuilt binary, CUDA sm_89 / Ada Lovelace; pulls in extra/cuda ~5 GB)
-	pkgver = 0.31.0
+	pkgdesc = AI image/video CLI for remote GPU hosts (prebuilt GPU-free client)
+	pkgver = 0.32.0
 	pkgrel = 1
 	url = https://github.com/utensils/mold
+	install = mold-ai-bin.install
 	arch = x86_64
 	license = MIT
-	depends = cuda
 	depends = gcc-libs
 	depends = glibc
-	optdepends = nvidia-utils: NVIDIA GPU driver (required for any local GPU generation)
 	optdepends = ffmpeg: video output for LTX-Video / LTX-2 (mp4 mux fallback)
 	optdepends = bash-completion: Bash tab completion
 	optdepends = zsh-completions: Zsh tab completion (also auto-found via /usr/share/zsh/site-functions)
 	optdepends = fish: Fish tab completion
-	provides = mold-ai=0.31.0
+	provides = mold-ai=0.32.0
 	conflicts = mold-ai
 	conflicts = mold-ai-git
 	conflicts = mold
 	options = !strip
-	source = LICENSE-0.31.0::https://github.com/utensils/mold/raw/v0.31.0/LICENSE
+	source = LICENSE-0.32.0::https://github.com/utensils/mold/raw/v0.32.0/LICENSE
 	sha256sums = cd904e73d29dc7d62178ebc6def9e500c6b176e8e4c40f58e4b0b5f008380311
-	source_x86_64 = https://github.com/utensils/mold/releases/download/v0.31.0/mold-x86_64-unknown-linux-gnu-cuda-sm89.tar.gz
-	sha256sums_x86_64 = fc564228ae6e183df80835f9553ec6f3c04646c9b35a659a4be81c1631d5b4a6
+	source_x86_64 = https://github.com/utensils/mold/releases/download/v0.32.0/mold-x86_64-unknown-linux-gnu-cpu.tar.gz
+	sha256sums_x86_64 = dbf94cc07df3bee8d339647052368f515eef5ec4c25a6363f6d0ca58923bea42
 
 pkgname = mold-ai-bin
