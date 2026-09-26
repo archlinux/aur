@@ -1,7 +1,7 @@
 pkgbase = abstract-editor
 	pkgdesc = Minimal local-first markdown notes editor, GPU-rendered with GPUI
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/fireflylabss/abstract
 	arch = x86_64
 	arch = aarch64
@@ -24,7 +24,7 @@ pkgbase = abstract-editor
 	provides = abstract
 	conflicts = abstract-editor-bin
 	options = !lto
-	source = abstract-editor-0.1.0.tar.gz::https://github.com/fireflylabss/abstract/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = ddc61bd55cc0a3ccb1aac3f095b4da2b1cd426d25d3bba5322a280597446698c
+	source = abstract-editor-0.1.1.tar.gz::https://github.com/fireflylabss/abstract/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = f3934c0b78f9a167dbd5e1a2bcd49aeb991c18f70e2d15ce72eba5ab93e98fef
 
 pkgname = abstract-editor
