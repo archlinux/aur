@@ -1,0 +1,8 @@
+*.tar.gz
+*.zip
+*.zst
+*.deb
+src/
+pkg/
+untrunc-*-*
+*.png

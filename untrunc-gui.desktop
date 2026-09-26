@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Untrunc GUI
+GenericName=Video Repair Tool
+Comment=Restore a damaged (truncated) mp4, m4v, mov, 3gp video
+Exec=untrunc-gui
+Icon=untrunc-gui
+Terminal=false
+Categories=AudioVideo;AudioVideoEditing;
+Keywords=video;repair;restore;truncate;untrunc;mp4;

@@ -1,0 +1,5 @@
+[untrunc-anthwlock-gui-bin]
+source = "github"
+github = "fr0stb1rd/untrunc"
+use_latest_release = "true"
+prefix = "v"
