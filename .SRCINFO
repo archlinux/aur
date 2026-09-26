@@ -1,6 +1,6 @@
 pkgbase = mantle-git
 	pkgdesc = A Wayland shell engine that runs shells written in Lua
-	pkgver = r679.ge338801
+	pkgver = r1006.g5fc07590
 	pkgrel = 1
 	url = https://github.com/anasgets111/mantle
 	arch = x86_64
@@ -15,16 +15,19 @@ pkgbase = mantle-git
 	depends = libglvnd
 	depends = libpipewire
 	depends = libxkbcommon
+	depends = mesa
 	depends = pacman
 	depends = pam
 	depends = polkit
 	depends = systemd-libs
 	depends = wayland
-	optdepends = niri: workspaces and keyboard layout
-	optdepends = hyprland: workspaces and keyboard layout
+	optdepends = niri: workspaces, windows and keyboard layout
+	optdepends = hyprland: workspaces, windows and keyboard layout
+	optdepends = paru: AUR package updates
+	optdepends = yay: AUR package updates
 	optdepends = sound-theme-freedesktop: notification sounds
 	optdepends = lua-language-server: type-checking the config in an editor
-	provides = mantle=r679.ge338801
+	provides = mantle=r1006.g5fc07590
 	conflicts = mantle
 	options = !debug
 	options = !lto
