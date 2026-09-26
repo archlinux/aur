@@ -55,9 +55,9 @@ package() {
 	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 	install -Dm755 "${_pkgname}d" "${pkgdir}/usr/bin/${_pkgname}d"
 
-	install -Dm644  "${_pkgname}.service" "${pkgdir}/usr/lib/systemd/user/${_pkgname}.service"
+	install -Dm644 "${_pkgname}.service" "${pkgdir}/usr/lib/systemd/user/${_pkgname}.service"
 
-	install -Dm644  "config.example.toml" "${pkgdir}/usr/share/${_pkgname}/config.example.toml"
+	install -Dm644 "config.example.toml" "${pkgdir}/usr/share/${_pkgname}/config.example.toml"
 
 	install -D -m644 "${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
 	install -D -m644 "${_pkgname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
