@@ -9,12 +9,31 @@ provides=("linuxtoys=$pkgver")
 source=("https://github.com/psygreg/linuxtoys/releases/download/${pkgver}/linuxtoys-${pkgver}.tar.xz")
 sha256sums=('091f1eda23574af3f315c937b53587ac9d11b4165a20a9d8e8046eeeeb2d8b11')
 
+build() {
+    cd "${srcdir}/linuxtoys-${pkgver}"
+    mkdir -p target/wheels/catalog
+    (cd src/catalog-rs && maturin build --release --locked --out ../../target/wheels/catalog)
+    cargo build --release --locked --manifest-path src/gui-rs/Cargo.toml
+    rm -rf wheel-unpack-catalog
+    python -m zipfile -e "$(find target/wheels/catalog -maxdepth 1 -type f -name '*.whl' -print -quit)" wheel-unpack-catalog
+    test -n "$(find wheel-unpack-catalog -type f -name '_catalog_rs*.so' -print -quit)"
+    test -f target/release/liblinuxtoys_gui.so
+}
+
 package() {
     mkdir -p ${pkgdir}/usr
     cp -rf ${srcdir}/linuxtoys-${pkgver}/usr/* ${pkgdir}/usr/
+    catalog_extension="$(find "${srcdir}/linuxtoys-${pkgver}/wheel-unpack-catalog" -type f -name '_catalog_rs*.so' -print -quit)"
+    gui_library="${srcdir}/linuxtoys-${pkgver}/target/release/liblinuxtoys_gui.so"
+    test -n "$catalog_extension"
+    test -f "$gui_library"
+    install -Dm755 "$catalog_extension" "${pkgdir}/usr/share/linuxtoys/app/$(basename "$catalog_extension")"
+    install -Dm755 "$gui_library" "${pkgdir}/usr/share/linuxtoys/app/liblinuxtoys_gui.so"
+    test -f "${pkgdir}/usr/share/linuxtoys/app/_catalog_rs.abi3.so"
+    test -f "${pkgdir}/usr/share/linuxtoys/app/liblinuxtoys_gui.so"
     find "${pkgdir}/usr/share/linuxtoys" -type d -name '__pycache__' -prune -exec rm -rf {} +
     find "${pkgdir}/usr/share/linuxtoys" -type f \( -name '*.pyc' -o -name '*.pyo' \) -delete
-    
+
     # Set proper permissions for executable files
     chmod +x "${pkgdir}/usr/bin/linuxtoys"
     chmod +x "${pkgdir}/usr/share/linuxtoys/linuxtoys.py"
