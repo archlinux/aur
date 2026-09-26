@@ -2,7 +2,7 @@
 
 _pkgname=joplin
 pkgname=${_pkgname}-beta-bin
-pkgver=3.7.18
+pkgver=3.7.21
 pkgrel=2
 pkgdesc="A note taking and to-do application with synchronization capabilities (beta binary version)"
 arch=('x86_64')
@@ -25,5 +25,5 @@ package() {
     ln -s "/opt/Joplin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
 
-sha256sums_x86_64=('f4ca6a58731fe8a4a645cdfd22b2e54abd6ffd877e4ec9aa8b7c65f6b71b521f')
+sha256sums_x86_64=('14de2d5524e45341de5f0b68a1e78191b796a6c9817949c49b80afe5cd6ab965')
 
