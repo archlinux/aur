@@ -1,7 +1,7 @@
 pkgbase = obs-studio-rc
 	pkgdesc = Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration
-	pkgver = 32.2.0
-	pkgrel = 4
+	pkgver = 33.0.0_beta4
+	pkgrel = 1
 	epoch = 14
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
@@ -21,7 +21,6 @@ pkgbase = obs-studio-rc
 	depends = ffmpeg-obs>=9
 	depends = fontconfig
 	depends = freetype2
-	depends = gcc-libs
 	depends = glib2
 	depends = glibc
 	depends = jack
@@ -29,10 +28,12 @@ pkgbase = obs-studio-rc
 	depends = libajantv2>=18.0.0
 	depends = libdatachannel>=0.24.3
 	depends = libfdk-aac
+	depends = libgcc
 	depends = libgl
 	depends = libpipewire
 	depends = libpulse
 	depends = librist
+	depends = libstdc++
 	depends = libva
 	depends = libvpl
 	depends = libx11
@@ -79,7 +80,7 @@ pkgbase = obs-studio-rc
 	optdepends = libva-mesa-driver: VAAPI encoder support
 	optdepends = v4l2loopback-dkms: V4L2 virtual camera output
 	optdepends = decklink: Blackmagic Design DeckLink support
-	provides = obs-studio=32.2.0
+	provides = obs-studio=33.0.0_beta4
 	provides = obs-vst
 	provides = obs-websocket
 	provides = obs-browser
@@ -92,15 +93,15 @@ pkgbase = obs-studio-rc
 	conflicts = libva-vdpau-driver
 	conflicts = obs-studio-plugin-browser
 	options = debug
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=32.2.0
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=33.0.0-beta4
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v6.tar.xz
-	sha256sums_x86_64 = 7963335519a19ccdc5233f7334c5ab023026e2f3e9a0cc417007c09d86608146
-	source_aarch64 = https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64_v6.tar.xz
-	sha256sums_aarch64 = 642514469eaa29a5c887891084d2e73f7dc2d7405f7dfa7726b2dbc24b309999
+	source_x86_64 = https://cdn-fastly.obsproject.com/downloads/cef_binary_7871_linux_x86_64.tar.xz
+	sha256sums_x86_64 = 8ffc64d06ea74da613eeda7f2aa5d4e98661af6fa3ed8c68724c9a6e4e89ea8e
+	source_aarch64 = https://cdn-fastly.obsproject.com/downloads/cef_binary_7871_linux_aarch64.tar.xz
+	sha256sums_aarch64 = b05cf13b0f482e3b0149ac21268268c536d091b5e6608c742019ebd6c8e8a1e3
 
 pkgname = obs-studio-rc
