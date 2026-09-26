@@ -1,11 +1,11 @@
 pkgbase = linkwarden
 	pkgdesc = Self hosted bookmark manager
 	pkgver = 2.16.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linkwarden/linkwarden
 	arch = x86_64
 	license = AGPL-3.0
-	depends = nodejs-lts-jod
+	depends = nodejs
 	depends = yarn
 	depends = postgresql
 	depends = monolith

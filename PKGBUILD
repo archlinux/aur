@@ -1,13 +1,13 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=linkwarden
 pkgver=2.16.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Self hosted bookmark manager"
 arch=('x86_64')
 url="https://github.com/linkwarden/linkwarden"
 license=('AGPL-3.0')
 backup=("etc/linkwarden/app.conf")
-depends=('nodejs-lts-jod' 'yarn' 'postgresql' 'monolith' 'enchant' 'libwebp' 'nss' 'nspr' 'atkmm' 'libdrm' 'libxcomposite' 'libxdamage' 'libxrandr' 'mesa' 'libxkbcommon' 'pango' 'alsa-lib' 'libcups' 'corepack')
+depends=('nodejs' 'yarn' 'postgresql' 'monolith' 'enchant' 'libwebp' 'nss' 'nspr' 'atkmm' 'libdrm' 'libxcomposite' 'libxdamage' 'libxrandr' 'mesa' 'libxkbcommon' 'pango' 'alsa-lib' 'libcups' 'corepack')
 makedepends=()
 optdepends=()
 options=(!debug)
