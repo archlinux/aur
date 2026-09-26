@@ -1,0 +1,18 @@
+pkgbase = intel-igsc
+	pkgdesc = Intel Graphics System Controller firmware update library
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/intel/igsc
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	depends = glibc
+	depends = intel-metee
+	depends = systemd-libs
+	provides = igsc=1.3.2
+	provides = libigsc.so=1-64
+	conflicts = igsc
+	source = igsc-1.3.2.tar.gz::https://github.com/intel/igsc/archive/refs/tags/V1.3.2.tar.gz
+	sha256sums = 4b0c443ad3ce5037e844d9d3837538dae87f00ceb4c57222c662eec290b0be73
+
+pkgname = intel-igsc
