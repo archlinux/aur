@@ -3,7 +3,7 @@
 
 pkgname=tencent-wechat
 pkgver=4.1.13.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Tencent WeChat (Linux) with native Wayland support and privacy sandbox (Community Repackage)"
 arch=('x86_64')
 url="https://linux.weixin.qq.com/"
@@ -95,4 +95,7 @@ package() {
     # Install license and disclaimer
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/DISCLAIMER" "${pkgdir}/usr/share/licenses/${pkgname}/DISCLAIMER"
+
+    # Normalize directory permissions from upstream deb (775 -> 755)
+    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
