@@ -1,7 +1,7 @@
 # Contributor: Adam Nielsen <malvineous@shikadi.net>
 # Maintainer: Adam Nielsen <malvineous@shikadi.net>
 pkgname=siproxd
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="A masquerading SIP proxy server"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('GPL-2.0')
 depends=('libosip2')
 #source=("https://sourceforge.net/projects/siproxd/files/siproxd/${pkgver}/siproxd-${pkgver}.tar.gz/download")
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('9a9d2c89e5f0c59fdde9444a66d8372c')
-sha256sums=('9a6d7a6bb6fff162775b1e1fb7018de9c69642cbf8626185dc6ffceeeba07736')
+md5sums=('75d0075e04e37485e05a79d55b88919a')
+sha256sums=('ad5b9bf24713aed02906507a503ed0c85e26921c9bea63c72adac4a5ee39e416')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
