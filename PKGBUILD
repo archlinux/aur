@@ -1,5 +1,5 @@
 pkgname=rust-dos
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="An x86 DOS emulator written in Rust, with Sound Blaster, AdLib, Gravis Ultrasound, General MIDI, Roland MT-32 and Tandy sound, CGA composite colours and CRT shaders"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=('soundfont-fluid: General MIDI SoundFont for the MPU-401 (soundfont=
             'fluidsynth: software synthesizer to play the MIDI sent out of a MIDI port (midisynth=host)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Update with updpkgsums once v0.5.0 is tagged.
-sha256sums=('cd43636a0c6e58a069a558ff773db025af3e67b7db5f5ae3f4061361dbc86dd5')
+sha256sums=('989a5402790ad86b362c5cdc9e591d631ca4bb75b55c8282980fc8b5943cc9f1')
 
 prepare() {
     cd "$pkgname-$pkgver"
