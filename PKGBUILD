@@ -1,5 +1,5 @@
 pkgname=mbelib-neo
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="P25 Phase 1 and ProVoice IMBE and Half-rate AMBE vocoder library (modernized fork)"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('cmake')
 conflicts=('mbelib-neo-git')
 options=('staticlibs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c3fa1400d0f7a5bdbd53936152ebb00c96c014b1fe3b8bbb38461844696fb98b')
+sha256sums=('47c126de05eca9b2e4fd644ec81d40571fc0842986d2bb4823ecc73eb4ac2a09')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \
