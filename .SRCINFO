@@ -1,6 +1,6 @@
 pkgbase = computer-use-linux
 	pkgdesc = Control a real Linux desktop from any MCP host (AT-SPI, portals, multi-compositor window targeting)
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/agent-sh/computer-use-linux
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = computer-use-linux
 	optdepends = xorg-xprop: window PID hydration on X11
 	optdepends = ydotool: input fallback when the RemoteDesktop portal is unavailable
 	conflicts = computer-use-linux-bin
-	source = computer-use-linux-0.7.2.tar.gz::https://github.com/agent-sh/computer-use-linux/archive/refs/tags/v0.7.2.tar.gz
-	sha256sums = 427c771a8dd12d672a927471cddc7cd3c7b808dd94a3c9b4b26fec9199a03e42
+	source = computer-use-linux-0.7.3.tar.gz::https://github.com/agent-sh/computer-use-linux/archive/refs/tags/v0.7.3.tar.gz
+	sha256sums = eb27a1c2fad45fa92adb44089ed04293f23a9664b927156ea39295d3ff685a3a
 
 pkgname = computer-use-linux
