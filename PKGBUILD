@@ -1,14 +1,12 @@
 # lito.lock
-_rstd_ver=0.1.4
-_luato_commit=bd4848b3d6dc2cc57928e4405c3593b67322d6f8
-_vvk_commit=2761d59430d57945ac40f77c91eea445ab074fb3
+_luato_commit=df0c6f2d1cce2051b4711d36067619eda7933683
 _ncrequest_commit=cdaca8b5c523906fc0c9ed58cd5f2c7981b5a255
-_wavsen_commit=e9c4983bb8851eed0823e25ad277a7bb7f6250ac
+_wavsen_commit=529a01c632a28d57daaca2a3c8bd9fc6672df564
 _qextra_commit=68f752fd38e3d7a923bf36d621f4a94be7b26fd8
 
 pkgname=waywallen
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="Wallpaper Manager for Linux."
 arch=(x86_64)
 url=https://github.com/waywallen/waywallen
@@ -20,32 +18,22 @@ makedepends=(git cmake cargo lito "clang>=22" lld llvm vulkan-headers ninja
 optdepends=('waywallen-display: Required for layer-shell based compositors')
 options=(!lto)
 source=("git+https://github.com/waywallen/waywallen.git#tag=v$pkgver"
-        "git+https://github.com/litocpp/rstd.git#tag=v$_rstd_ver"
         "git+https://github.com/litocpp/luato.git#commit=$_luato_commit"
-        "git+https://github.com/litocpp/vvk.git#commit=$_vvk_commit"
         "git+https://github.com/hypengw/ncrequest.git#commit=$_ncrequest_commit"
         "git+https://github.com/hypengw/wavsen.git#commit=$_wavsen_commit"
         "git+https://github.com/hypengw/QExtra.git#commit=$_qextra_commit")
-sha256sums=('ee69f089d95c3d0e1dce1b22c03a522669cc5eed65f4eb816aa4c57610e712f5'
-            'edd45f5b4e745f8317ab8e0242fa63e6fc548b587ac01a6e94b904b9f8a8464b'
-            '7b09b22347e9db3206fc797f61ce69996ff7d9e909e9c1fe8564550c2b540704'
-            '4f6311b61894a24cb223cb8006de80986a5f51bd160c919217f0d698bd83bd33'
+sha256sums=('75746d20e37f5468eef7241b0123b059b6e9f68b69a1b7bd378901e28f0d61aa'
+            '255e260360f8a29c42e33e10549a1bc2caea8cabd568eb7ad81d08b38526e7c3'
             'e0b29a7179d1f35b76ca2582003c0a97c20b1a30b8e2e24cd95b025e7bfabfca'
-            '1e2f280e8a0753bcfc107ea4d3f533c9628f58c50c8c32382c82c6f263a2ac3c'
+            '99d49351909b81512fa103614aeae238c45daea6fecc0abc199c7f0b5f32f345'
             '2b2d0a9f7031c88656fde765e7118960486db25aff5ceff43d71a1c3737643ac')
 
 prepare() {
     cd "$pkgname"
     mkdir -p .lito
     cat > .lito/config.toml << EOF
-[patch."https://github.com/litocpp/rstd.git"]
-path = "../rstd"
-
 [patch."https://github.com/litocpp/luato.git"]
 path = "../luato"
-
-[patch."https://github.com/litocpp/vvk.git"]
-path = "../vvk"
 
 [patch."https://github.com/hypengw/wavsen.git"]
 path = "../wavsen"
