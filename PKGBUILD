@@ -3,7 +3,7 @@
 # Submit by pushing this (plus the generated .SRCINFO) to ssh://aur@aur.archlinux.org/tuxflix-bin.git
 #   makepkg --printsrcinfo > .SRCINFO
 pkgname=tuxflix-bin
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Watch and listen to your Plex library: a native desktop Plex client laid out like a game library"
 # aarch64 joins when its build can be tested on a clean install as the x64 one is.
@@ -22,7 +22,7 @@ optdepends=('sdl3: game controllers in the TV mode'
 options=('!strip')   # self-contained .NET bundle — stripping breaks it
 source_x86_64=("$url/releases/download/v$pkgver/Tuxflix-$pkgver-linux-x64.tar.gz")
 # The release's own tarball, hashed when it was built (packaging/build-release.sh prints it).
-sha256sums_x86_64=('be68e86306a2e9fbac2d15e93bd57d0e63e15d6d5b8cd37104bb3b17311f0d18')
+sha256sums_x86_64=('46d3e2ed68b8152bcac41d8ebe5aaa7c78caa9c030a12507f7209e797fab4ca1')
 
 package() {
     install -dm755 "$pkgdir/usr/lib/tuxflix" "$pkgdir/usr/bin" "$pkgdir/usr/share/doc/tuxflix"

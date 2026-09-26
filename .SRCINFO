@@ -1,6 +1,6 @@
 pkgbase = tuxflix-bin
 	pkgdesc = Watch and listen to your Plex library: a native desktop Plex client laid out like a game library
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/codingncaffeine/Tuxflix
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = tuxflix-bin
 	provides = tuxflix
 	conflicts = tuxflix
 	options = !strip
-	source_x86_64 = https://github.com/codingncaffeine/Tuxflix/releases/download/v0.0.5/Tuxflix-0.0.5-linux-x64.tar.gz
-	sha256sums_x86_64 = be68e86306a2e9fbac2d15e93bd57d0e63e15d6d5b8cd37104bb3b17311f0d18
+	source_x86_64 = https://github.com/codingncaffeine/Tuxflix/releases/download/v0.0.6/Tuxflix-0.0.6-linux-x64.tar.gz
+	sha256sums_x86_64 = 46d3e2ed68b8152bcac41d8ebe5aaa7c78caa9c030a12507f7209e797fab4ca1
 
 pkgname = tuxflix-bin
