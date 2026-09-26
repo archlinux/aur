@@ -2,7 +2,7 @@
 # Contributor: Catriel Müller <catriel at gmail dot com>
 pkgname=synergy1-bin
 pkgver=1.21.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Keyboard and mouse sharing solution. Synergy allows you to share one mouse and keyboard between multiple computers. Work seamlessly across Windows, macOS and Linux."
 arch=('x86_64')
 url="https://symless.com/synergy"
@@ -12,7 +12,6 @@ depends=('gcc-libs' 'glibc' 'openssl' 'libx11' 'libxi' 'libxkbfile' 'libxext' 'l
          'qt6-tools' 'libei' 'libportal')
 conflicts=('synergy' 'synergy1-bin' 'synergy-git' 'synergy-1.6' 'synergy2-bin' 'synergy3-bin' 'synergy3-beta-bin')
 options=('!strip' '!emptydirs')
-install=${pkgname}.install
 source=()
 sha256sums=()
 
@@ -38,5 +37,6 @@ prepare() {
 }
 
 package() {
-  bsdtar -xpf "${srcdir}/${_pkgfile}" -C "${pkgdir}/" usr
+  # Extract the .tar.zst file and repackage as is
+  bsdtar -xpf "${srcdir}/${_pkgfile}" -C "${pkgdir}" --exclude='.PKGINFO' --exclude='.MTREE' --exclude='.BUILDINFO' --exclude='.INSTALL'
 }
