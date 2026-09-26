@@ -3,14 +3,14 @@
 
 _name=openrsync
 pkgname="$_name-git"
-pkgver=0.5.0.r129.gf50d0f8
+pkgver=0.5.0.r231.g8235c68
 pkgrel=1
 pkgdesc="BSD-licensed implementation of rsync"
 arch=('x86_64')
 url="https://github.com/kristapsdz/openrsync"
 license=('ISC')
 depends=('glibc')
-makedepends=('git')
+makedepends=('git' 'bmake')
 provides=("$_name")
 conflicts=("$_name")
 source=("git+https://github.com/kristapsdz/$_name.git")
@@ -40,11 +40,11 @@ pkgver() {
 build() {
   cd "$_name"
   ./configure LDFLAGS="$LDFLAGS" MANDIR=/usr/share/man PREFIX=/usr
-  make
+  bmake
 }
 
 package() {
   cd "$_name"
-  make DESTDIR="$pkgdir" install
+  bmake DESTDIR="$pkgdir" install
   install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/licence"
 }
