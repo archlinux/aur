@@ -1,21 +1,18 @@
 pkgbase = imageglass
-	pkgdesc = lightweight, versatile image viewer
-	pkgver = 10.0.0.314_beta_1
+	pkgdesc = A fast, open-source, modern image viewer for 90+ formats
+	pkgver = 10.0.6.906
 	pkgrel = 1
 	url = https://imageglass.org
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = dotnet-sdk
-	makedepends = git
+	makedepends = dotnet-sdk=10.0
+	depends = dotnet-runtime=10.0
 	depends = fontconfig
 	depends = glibc
-	depends = hicolor-icon-theme
 	depends = libgomp
-	options = !strip
-	options = !debug
-	source = imageglass::git+https://github.com/d2phap/ImageGlass.git#tag=10.0.0.314-beta-1
-	source = imageglass.desktop
-	sha256sums = 72c1473abea880eaa50de0435a0a9a1d0ac12ed6c14cbf6467ae6c1c62844926
-	sha256sums = b31814a355395b002b8bd2dedc9107f5c288a56998df6e9894379900b6a7c560
+	depends = libgcc
+	depends = libstdc++
+	source = imageglass-10.0.6.906.tar.gz::https://github.com/d2phap/ImageGlass/archive/10.0.6.906.tar.gz
+	sha256sums = e9d8f4e5134c5ba39ee90030da6be7ae9b84af9d34c69b3640a652c98dab7e08
 
 pkgname = imageglass

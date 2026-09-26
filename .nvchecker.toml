@@ -1,0 +1,3 @@
+[imageglass]
+source = "git"
+git = "https://github.com/d2phap/ImageGlass.git"
