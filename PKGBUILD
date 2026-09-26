@@ -1,6 +1,6 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
-_dotnet_ver=8.0
+_dotnet_ver=10.0
 _reponame=SyncClipboard
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-server"
