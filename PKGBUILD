@@ -26,7 +26,6 @@ build(){
 }
 
 package() {
-  unset optdepends
   cd uutils-tar
   install -Dm755 target/release-fast/tarapp "$pkgdir"/usr/bin/uu-tar
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/uutils-tar
