@@ -1,9 +1,9 @@
 # Maintainer: sunnysab <i@sunnysab.cn>
 pkgname=intel-xpu-smi-bin
-pkgver=1.3.5
+pkgver=2.2.0
 pkgrel=1
 # The build version part from the filename
-_buildver=20251216.170635.605ff78d.u24.04
+_buildver=1.24.04
 pkgdesc="Intel XPU SMI - CLI tool for Intel XPU Manager (Binary, Daemon-less)"
 arch=('x86_64')
 url="https://github.com/intel/xpumanager"
@@ -13,25 +13,25 @@ license=('MIT')
 depends=(
     'intel-compute-runtime'
     'level-zero-loader'
-    'igsc'               # Required for libigsc.so.0
-    'intel-media-driver'
-    'onevpl-intel-gpu'
+    'igsc>=1.3.1'
+    'hwloc'
+    'libpciaccess'
 )
 
 # Conflicts with the daemon-based manager as per Intel documentation
 conflicts=('intel-xpumanager' 'intel-xpumanager-bin' 'intel-xpu-smi')
-provides=('intel-xpu-smi' 'libxpum.so')
+provides=('intel-xpu-smi')
 
 # Use the official GitHub release URL
-source=("https://github.com/intel/xpumanager/releases/download/v${pkgver}/xpu-smi_${pkgver}_${_buildver}_amd64.deb")
+source=("https://github.com/intel/xpumanager/releases/download/v${pkgver}/xpu-smi_${pkgver}-${_buildver}_amd64.deb")
 
 # IMPORTANT: Run 'updpkgsums' to generate real checksums before AUR submission
-sha256sums=('21c82a890f5712a659d3c31eaa42bc6c2c6c0d08a677d57fbc67eda0a54c8934')
+sha256sums=('fa8700e97b51c0e19298f53237a02e435b5e1e1377ddcd064813faae29a1d11a')
 
 package() {
-    msg2 "Extracting data.tar.gz..."
-    # Extract data.tar.gz from the deb package
-    bsdtar -O -xf "${srcdir}/xpu-smi_${pkgver}_${_buildver}_amd64.deb" data.tar.gz | bsdtar -C "${pkgdir}" -xvf -
+    msg2 "Extracting data.tar.zst..."
+    # Extract data.tar.zst from the deb package
+    bsdtar -O -xf "${srcdir}/xpu-smi_${pkgver}-${_buildver}_amd64.deb" data.tar.zst | bsdtar -C "${pkgdir}" -xvf -
 
     # --- Fix 1: Library Paths ---
     # The deb package likely puts libs in /usr/lib/x86_64-linux-gnu (Ubuntu style).
