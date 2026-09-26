@@ -2,7 +2,7 @@
 
 pkgname=bit4id-xpki
 pkgver=1.4.11.836
-pkgrel=2
+pkgrel=3
 pkgdesc="Bit4ID Universal Middleware (Smart Card driver)"
 arch=('x86_64')
 license=('unknown')
@@ -10,6 +10,9 @@ url="https://cdn.bit4id.com/es/middleware.htm"
 install=$pkgname.install
 options=('!strip')
 backup=('usr/lib/bit4id/libbit4xpki.so.conf')
+# The library loads libpcsclite.so.1 at runtime (so it's not detectable via ldd) and talks to pcscd.
+# ccid provides the driver for most USB card readers.
+depends=('pcsclite' 'ccid')
 # Older bit4id-ipki versions shipped their own copy of /usr/lib/bit4id/libbit4xpki.so.
 # Newer ones are an add-on on top of this package.
 conflicts=('bit4id-ipki<1.4.10.542-4')
