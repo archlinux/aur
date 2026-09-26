@@ -32,7 +32,7 @@ optdepends=(
   'cmus: music picker and dashboard player controls'
   'ffmpeg: read artist/album tags in the music picker (ffprobe)'
   'xdg-user-dirs: locate the music folder'
-  'xdg-terminal-exec: use the default terminal (fallback: $TERMINAL, then kitty/foot/alacritty/...)'
+  'xdg-terminal-exec: pick the default terminal when $TERMINAL is unset'
   'ollama: backend for the Ollama Chat popup'
 )
 backup=('etc/pam.d/fabric-d77')
