@@ -1,6 +1,6 @@
 pkgbase = chapar-bin
 	pkgdesc = A simple and easy to use api testing tools aims to help developers to test their api endpoints. It support http and grpc protocols.
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/chapar-rest/chapar
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = chapar-bin
 	provides = chapar
 	conflicts = chapar
 	options = !strip
-	source = README-0.6.0.md::https://raw.githubusercontent.com/chapar-rest/chapar/v0.6.0/README.md
-	sha256sums = 5e03705feb76891a539b85633ea527788a04c9b11060fa31f18165dc231ae780
-	source_x86_64 = chapar-x86_64-0.6.0.txz::https://github.com/chapar-rest/chapar/releases/download/v0.6.0/chapar-linux-v0.6.0-amd64.tar.xz
-	sha256sums_x86_64 = ce76ddb8a436412b3d94afd2cf17f96793e3587aead78de40495b92ad302b8fd
+	source = README-0.7.0.md::https://raw.githubusercontent.com/chapar-rest/chapar/v0.7.0/README.md
+	sha256sums = 795a6307e5f636494e555c1223569e4a1090b2bdea941cbd033267bc3c9fe48c
+	source_x86_64 = chapar-x86_64-0.7.0.txz::https://github.com/chapar-rest/chapar/releases/download/v0.7.0/chapar-linux-v0.7.0-amd64.tar.xz
+	sha256sums_x86_64 = f4daea52c023b74e7de0e0119bf2ef701ed6239c36d5761ba53900028d1ec912
 
 pkgname = chapar-bin
