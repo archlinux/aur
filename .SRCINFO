@@ -1,0 +1,18 @@
+pkgbase = ziso_compressor_rust-git
+	pkgdesc = A rust written ziso compressor with multipple threads support
+	pkgver = r36.3498568
+	pkgrel = 1
+	url = https://github.com/Danixu/ziso_compressor_rust
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	provides = ziso
+	conflicts = ziso
+	options = !lto
+	source = ziso_compressor_rust::git+https://github.com/Danixu/ziso_compressor_rust.git
+	b2sums = SKIP
+
+pkgname = ziso_compressor_rust-git
