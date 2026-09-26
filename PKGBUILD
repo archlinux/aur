@@ -2,11 +2,11 @@
 # Maintainer: sukanka
 
 _pkgname=linuxqq
-_base_pkgver=3.2.33-52892
+_base_pkgver=3.2.34-53644
 _update_pkgver=${_base_pkgver}
 #_md5=08c52833
-_nt_ver=9.9.35
-_md5=1763096b
+_nt_ver=9.9.36
+_md5=9ee04bef
 pkgname=linuxqq-nt-bwrap
 pkgver="${_update_pkgver//-/_}"
 pkgrel=1
@@ -15,16 +15,16 @@ arch=('x86_64' 'aarch64' 'loong64')
 url='https://im.qq.com/linuxqq/index.shtml'
 license=('custom')
 depends=('at-spi2-core' 'alsa-lib' 'desktop-file-utils' 'gtk3' 'gtk-update-icon-cache' 'libnotify' 'nss'
-	'gnutls' 'bubblewrap' 'xdg-user-dirs' 'flatpak-xdg-utils' 'snapd-xdg-open-git'
-	'libvips' 'openslide' 'autoconf'
-	'libunwind'
-	'iproute2'
+    'gnutls' 'bubblewrap' 'xdg-user-dirs' 'flatpak-xdg-utils' 'snapd-xdg-open-git'
+    'libvips' 'openslide' 'autoconf'
+    'libunwind'
+    'iproute2'
 )
 makedepends=('p7zip')
 optdepends=('libappindicator-gtk3: 以显示托盘图标'
-	'gjs: 提供 GNOME Wayland 下的截图支持'
-	'slirp4netns: 固定 MAC 地址时需要'
-	'socat: 固定 MAC 地址时需要')
+    'gjs: 提供 GNOME Wayland 下的截图支持'
+    'slirp4netns: 固定 MAC 地址时需要'
+    'socat: 固定 MAC 地址时需要')
 provides=('qq' 'linuxqq')
 conflicts=('linuxqq')
 options=('!emptydirs')
@@ -41,45 +41,45 @@ sha256sums=('2748a351259d378ab9773000cbf1ea0448de5ae92f28bb9e366fa795e1715739'
             'bb2ec0f104da4da7422d9b0f51c71d0ab38ed2a21764a7a643ab42689e098e4b'
             'cc002ee0eb2e8702c97d16f4ce628841cd5fe10195875a075432e92248741424'
             'f1c778b5a8b23bc77fd8e5e89056fea07309794c9a44ec38134a176cf1f7b675')
-sha256sums_x86_64=('502a978f2d03af9f21acefc461f9d1d1fe09b65bad620bbfcdb589a79ac53b7e')
-sha256sums_aarch64=('806e036ee1c19ffeae22f19b5f0c2e1a7789abb5f4383bd67309995a73ea26de')
-sha256sums_loong64=('3a26ac8bba6b1a007f34d4c007ca2ccf71565cbb2dd47814eee044861d124e43')
+sha256sums_x86_64=('436c65e1dd28422e128a21cbddb5fe4e2e6c079d7f27fec2541e014d38cc336e')
+sha256sums_aarch64=('181b895cb573548e396e54bb0548cca92ffdc1b1a4b018fa4551bb062385fdca')
+sha256sums_loong64=('9b6c9c2a6003de9cb6bd52a58747e955119e25f0de2310ee8961033abffb454c')
 
 prepare() {
-	local base_ver=${_base_pkgver}
-	local cur_ver=${_update_pkgver:-${base_ver}}
-	local build_ver=${cur_ver#*-}
-	sed -i "s|__BASE_VER__|${base_ver}|g;s|__CURRENT_VER__|${cur_ver}|g;s|__BUILD_VER__|${build_ver}|g" config.json start.sh
+    local base_ver=${_base_pkgver}
+    local cur_ver=${_update_pkgver:-${base_ver}}
+    local build_ver=${cur_ver#*-}
+    sed -i "s|__BASE_VER__|${base_ver}|g;s|__CURRENT_VER__|${cur_ver}|g;s|__BUILD_VER__|${build_ver}|g" config.json start.sh
 }
 
 package() {
-	# 解压程序包
-	tar -xJ -f "data.tar.xz" -C "${pkgdir}"
+    # 解压程序包
+    tar -xJ -f "data.tar.xz" -C "${pkgdir}"
 
-	chmod 755 "${pkgdir}/opt/QQ/resources/app"
+    chmod 755 "${pkgdir}/opt/QQ/resources/app"
 
-	mv "${pkgdir}/opt/QQ/qq" "${pkgdir}/opt/QQ/electron"
+    mv "${pkgdir}/opt/QQ/qq" "${pkgdir}/opt/QQ/electron"
 
-	# 打包相关处理
-	mkdir -p "${pkgdir}/opt/QQ/workarounds"
-	install -Dm755 "xdg-open.sh" "${pkgdir}/opt/QQ/workarounds/xdg-open.sh"
-	cp "${srcdir}/config.json" "${pkgdir}/opt/QQ/workarounds/config.json"
-	cp "${srcdir}/resolv.conf" "${pkgdir}/opt/QQ/workarounds/resolv.conf"
+    # 打包相关处理
+    mkdir -p "${pkgdir}/opt/QQ/workarounds"
+    install -Dm755 "xdg-open.sh" "${pkgdir}/opt/QQ/workarounds/xdg-open.sh"
+    cp "${srcdir}/config.json" "${pkgdir}/opt/QQ/workarounds/config.json"
+    cp "${srcdir}/resolv.conf" "${pkgdir}/opt/QQ/workarounds/resolv.conf"
 
-	# 将 LICENSE 移动到正确位置
-	mkdir -p "${pkgdir}/usr/share/licenses/${_pkgname}"
-	ln -s "/opt/QQ/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-	ln -s "/opt/QQ/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSES.chromium.html"
+    # 将 LICENSE 移动到正确位置
+    mkdir -p "${pkgdir}/usr/share/licenses/${_pkgname}"
+    ln -s "/opt/QQ/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    ln -s "/opt/QQ/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSES.chromium.html"
 
-	# 删除原生库
-	rm -f "${pkgdir}"/opt/QQ/resources/app/{libssh2.so.1,libunwind*}
+    # 删除原生库
+    rm -f "${pkgdir}"/opt/QQ/resources/app/{libssh2.so.1,libunwind*}
 
-	# 对 desktop 文件做处理，使其使用正确的图标，启动 start.sh
-	cp "${srcdir}/start"*".sh" "${pkgdir}/opt/QQ/"
-	sed -i "s|/opt/QQ/qq|/opt/QQ/start.sh|" "${pkgdir}/usr/share/applications/qq.desktop"
-	sed -i "s|Icon=/usr/share/icons/hicolor/512x512/apps/qq.png|Icon=qq|" "${pkgdir}/usr/share/applications/qq.desktop"
+    # 对 desktop 文件做处理，使其使用正确的图标，启动 start.sh
+    cp "${srcdir}/start"*".sh" "${pkgdir}/opt/QQ/"
+    sed -i "s|/opt/QQ/qq|/opt/QQ/start.sh|" "${pkgdir}/usr/share/applications/qq.desktop"
+    sed -i "s|Icon=/usr/share/icons/hicolor/512x512/apps/qq.png|Icon=qq|" "${pkgdir}/usr/share/applications/qq.desktop"
 
-	# 这样就可以直接输入 qq 命令启动了
-	mkdir -p "${pkgdir}/usr/bin"
-	ln -s "/opt/QQ/start.sh" "${pkgdir}/usr/bin/qq"
+    # 这样就可以直接输入 qq 命令启动了
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s "/opt/QQ/start.sh" "${pkgdir}/usr/bin/qq"
 }
