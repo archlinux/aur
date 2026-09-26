@@ -1,6 +1,6 @@
 pkgbase = shorin-contrib-git
 	pkgdesc = Shorin's personal Arch Linux toolbox and system utilities (Subcommand version)
-	pkgver = r96.e14e48f
+	pkgver = r97.bae65b8
 	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/shorin-contrib
 	install = shorin-contrib.install
