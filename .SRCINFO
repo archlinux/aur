@@ -1,20 +1,34 @@
 pkgbase = coolercontrol
-	pkgdesc = A program to monitor and control your cooling devices. This package contains the desktop application. (official package)
 	pkgver = 5.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/coolercontrol/coolercontrol
 	arch = x86_64
 	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
 	checkdepends = desktop-file-utils
 	makedepends = cmake
+	makedepends = bubblewrap
+	makedepends = rust
+	makedepends = cargo
+	makedepends = libdrm
 	makedepends = qt6-webengine
 	makedepends = hicolor-icon-theme
-	depends = qt6-webengine
-	depends = hicolor-icon-theme
-	depends = coolercontrold=5.0.1-1
+	depends = gcc-libs
+	depends = glibc
 	options = !lto
 	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/5.0.1/downloads/packages/coolercontrol-5.0.1.tar.gz
+	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/5.0.1/downloads/packages/coolercontrold-vendor-5.0.1.tar.gz
 	sha256sums = 9239f628b35cd122b6c637402caedf4b3937dd073d02ebabe17af67a73b815fb
+	sha256sums = 65cdc696c137409717e51b478778f39714e1179469d7fcf37408644118255d36
 
 pkgname = coolercontrol
+	pkgdesc = A program to monitor and control your cooling devices. This package contains the desktop application. (official package)
+	depends = qt6-webengine
+	depends = hicolor-icon-theme
+	depends = coolercontrold=5.0.1-2
+
+pkgname = coolercontrold
+	pkgdesc = A program to monitor and control your cooling devices. This package contains the service daemon. (official package)
+	depends = libdrm
+	optdepends = liquidctl: liquidctl driver support
+	optdepends = lm_sensors: kernel hwmon driver support
