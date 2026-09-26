@@ -1,6 +1,6 @@
 pkgbase = scout-agentgateway-extmcp
 	pkgdesc = agentgateway ExtMcp processor that gates MCP backends on offline-verified scout attestations
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/sebastienrousseau/scout-reporting/tree/main/integrations/agentgateway-extmcp
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = scout-agentgateway-extmcp
 	license = Apache-2.0
 	makedepends = go
 	depends = glibc
-	source = scout-reporting-0.0.6.tar.gz::https://github.com/sebastienrousseau/scout-reporting/archive/refs/tags/v0.0.6.tar.gz
-	sha256sums = db4dbf96f01a3c5307d00de3e63d76b763bec40c7495226fdd84aaef00423712
+	source = scout-reporting-0.0.7.tar.gz::https://github.com/sebastienrousseau/scout-reporting/archive/refs/tags/v0.0.7.tar.gz
+	sha256sums = b964f808c0ccf0f8ea8678761d9f066ea24f7ee43be4e0cf0c36b2dedc7f71be
 
 pkgname = scout-agentgateway-extmcp
