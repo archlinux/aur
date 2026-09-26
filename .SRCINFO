@@ -1,6 +1,6 @@
 pkgbase = resterm-bin
 	pkgdesc = Terminal REST client for .http/.rest files with HTTP, GraphQL and gRPC support
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/unkn0wn-root/resterm
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = resterm-bin
 	optdepends = resterm-runner
 	provides = resterm
 	conflicts = resterm
-	source = LICENSE-1.9.0::https://raw.githubusercontent.com/unkn0wn-root/resterm/v1.9.0/LICENSE
-	source = README-1.9.0.md::https://raw.githubusercontent.com/unkn0wn-root/resterm/v1.9.0/README.md
+	source = LICENSE-1.9.1::https://raw.githubusercontent.com/unkn0wn-root/resterm/v1.9.1/LICENSE
+	source = README-1.9.1.md::https://raw.githubusercontent.com/unkn0wn-root/resterm/v1.9.1/README.md
 	sha256sums = 69bc8d0e826b5bb133e6ff78837f6aa210020479c0202068eaca6ae8ee988418
 	sha256sums = f17928e5451ab116b8fe853b587d5a69e01403be6e8185652796a81511d52e7d
-	source_x86_64 = resterm-x86_64-1.9.0::https://github.com/unkn0wn-root/resterm/releases/download/v1.9.0/resterm_Linux_x86_64
-	sha256sums_x86_64 = 92752bb83c306c59753ddd4f836059f7b2cc17c35fb4d06b4e314ea4983bad44
-	source_aarch64 = resterm-aarch64-1.9.0::https://github.com/unkn0wn-root/resterm/releases/download/v1.9.0/resterm_Linux_arm64
-	sha256sums_aarch64 = 34ec599e26ca773957e69c8c6df7d2661120c1aa34b138ce54bc9d6b524219bd
+	source_x86_64 = resterm-x86_64-1.9.1::https://github.com/unkn0wn-root/resterm/releases/download/v1.9.1/resterm_Linux_x86_64
+	sha256sums_x86_64 = 5099517d9dcd9d2e300bf850885f8816c8f74bf73d1de37da83493441fe2e8c0
+	source_aarch64 = resterm-aarch64-1.9.1::https://github.com/unkn0wn-root/resterm/releases/download/v1.9.1/resterm_Linux_arm64
+	sha256sums_aarch64 = 70a45911bf3c8ac7cf2b0f2e5f08c2b4a93bc4ff15ae3b6f70bcce36352187e4
 
 pkgname = resterm-bin
