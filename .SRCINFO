@@ -1,9 +1,8 @@
 pkgbase = synergy3-beta-bin
 	pkgdesc = Share a single mouse and keyboard between multiple computers
 	pkgver = 3.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://symless.com/synergy
-	install = synergy3-beta-bin.install
 	arch = x86_64
 	license = unknown
 	depends = openssl
