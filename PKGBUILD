@@ -1,6 +1,6 @@
 # Maintainer: swim <swim853279614@163.com>
 pkgname=plasma-lyrics-bin
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='Native synchronized desktop lyrics widget for Plasma 6 (prebuilt)'
 arch=('x86_64')
@@ -19,8 +19,8 @@ conflicts=('plasma-lyrics')
 # stripped. Without !strip an installing user whose makepkg.conf enables debug
 # re-strips binaries that carry nothing and gets an empty -debug- package.
 options=('!strip' '!debug')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/swim233/plasma-lyrics/releases/download/v0.4.4/plasma-lyrics-0.4.4-x86_64-bin.tar.gz")
-sha256sums=('35c35a34c7956a03c5c32d2553950df2e563f2673c9e0e7480272cbb5b1879bc')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/swim233/plasma-lyrics/releases/download/v0.4.5/plasma-lyrics-0.4.5-x86_64-bin.tar.gz")
+sha256sums=('998542eb6e62a7aa1b405faf224ee4f1d5467fc85c92b6859826a5e1ec84654a')
 
 package() {
   cp -a usr "$pkgdir/"

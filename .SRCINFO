@@ -1,6 +1,6 @@
 pkgbase = plasma-lyrics-bin
 	pkgdesc = Native synchronized desktop lyrics widget for Plasma 6 (prebuilt)
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/swim233/plasma-lyrics
 	arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = plasma-lyrics-bin
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	provides = plasma-lyrics=0.4.4
+	provides = plasma-lyrics=0.4.5
 	conflicts = plasma-lyrics
 	options = !strip
 	options = !debug
-	source = plasma-lyrics-bin-0.4.4.tar.gz::https://github.com/swim233/plasma-lyrics/releases/download/v0.4.4/plasma-lyrics-0.4.4-x86_64-bin.tar.gz
-	sha256sums = 35c35a34c7956a03c5c32d2553950df2e563f2673c9e0e7480272cbb5b1879bc
+	source = plasma-lyrics-bin-0.4.5.tar.gz::https://github.com/swim233/plasma-lyrics/releases/download/v0.4.5/plasma-lyrics-0.4.5-x86_64-bin.tar.gz
+	sha256sums = 998542eb6e62a7aa1b405faf224ee4f1d5467fc85c92b6859826a5e1ec84654a
 
 pkgname = plasma-lyrics-bin
