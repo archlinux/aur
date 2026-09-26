@@ -17,11 +17,15 @@
 # INTEL-06 helper resolves (no network, no upstream pin: the module lives in
 # this repo, unlike the AMD vendored ryzen_smu), and (4) a short README.
 #
-# SOURCE — the branch-pinned RamSleuth repo (sibling pattern, like the AMD
+# SOURCE — the commit-pinned RamSleuth repo (sibling pattern, like the AMD
 # extra): pkgver is the FIXED ramsleuth workspace version (2.4.5 today;
-# bumped with the INTEL-20 release). The git source CANNOT be tag-pinned
-# here: the v2.2.1 tag (c82a9ad) predates the kernel/ramsleuth-intel/ merge
-# (v2-development), so only the development branch carries the module.
+# bumped with the INTEL-20 release). Current makepkg requires VCS sources
+# to resolve to an immutable commit, so the source pins to the v$pkgver
+# release commit via _gitcommit below; the #tag= fragment is a label only
+# (no sha256sums: the _gitcommit pin IS the integrity check). Pre-v2.3.0
+# the release tags predated the kernel/ramsleuth-intel/ tree, which is why
+# this package once tracked the moving v2-development branch; every tag
+# since v2.3.0 carries the module, so a release-commit pin is safe.
 #
 # SAFETY: no kernel-module build in the build chroot — a `dkms
 # build`/`dkms install` there would fail (no matching kernel headers) and be
@@ -63,7 +67,11 @@ conflicts=('ramsleuth' 'ramsleuth-bin')
 # The installed files come from the RamSleuth repo tree (INTEL-05 module,
 # INTEL-06 helper). The "$pkgname"-style rename extracts to $srcdir/ramsleuth
 # (sibling pattern, like the AMD extra).
-source=("ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#branch=v2-development")
+# Integrity pin: the v$pkgver release commit (immutable; current makepkg
+# requires VCS sources to resolve to a commit — the #tag= fragment in
+# source= is a human-readable label only).
+_gitcommit=a59fddbc3190dd706df73072319edf3da619cfb0
+source=("ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#tag=v$pkgver")
 
 package() {
   # 1) DKMS config (sourced by DKMS on the target; not at build time).
