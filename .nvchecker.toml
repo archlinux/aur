@@ -1,0 +1,4 @@
+[mitex]
+source = "github"
+github = "mitex-rs/mitex"
+use_latest_release = true

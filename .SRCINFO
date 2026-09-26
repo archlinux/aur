@@ -1,0 +1,15 @@
+pkgbase = mitex
+	pkgdesc = LaTeX support for Typst, powered by Rust and WASM
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/mitex-rs/mitex
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = typst
+	depends = glibc
+	depends = libgcc
+	source = mitex-0.2.7.tar.gz::https://github.com/mitex-rs/mitex/archive/refs/tags/0.2.7.tar.gz
+	sha256sums = 6e63aa314adb8963a89c80bf891884d49ad4ae489a1979b5e1bb7b61a874cfd8
+
+pkgname = mitex
