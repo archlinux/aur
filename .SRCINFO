@@ -1,25 +1,25 @@
 pkgbase = syncclipboard-desktop
 	pkgdesc = Cross-Platform Cipboard Syncing Solution (Desktop)
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/Jeric-X/SyncClipboard
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = dotnet-sdk-8.0
+	makedepends = aspnet-targeting-pack
+	makedepends = dotnet-sdk-10.0
 	makedepends = librsvg
-	depends = aspnet-runtime-8.0
+	depends = aspnet-runtime-10.0
+	source = syncclipboard-3.3.0.tar.gz::https://github.com/Jeric-X/SyncClipboard/archive/refs/tags/v3.3.0.tar.gz
+	source = syncclipboard.desktop
+	sha256sums = e46a6c6d6aa50963b621931c9810ba78bbcb47984fe2d882ead1b01323da3c3e
+	sha256sums = 77a340cd087cbfd79fdbbb1d53a33288884c21cd0945b6ea4abfd0c6a298fc75
+
+pkgname = syncclipboard-desktop
+	depends = aspnet-runtime-10.0
 	depends = fontconfig
 	depends = libxinerama
 	depends = libxt
 	depends = libxtst
 	depends = wl-clipboard
 	depends = xclip
-	source = syncclipboard-3.2.0.tar.gz::https://github.com/Jeric-X/SyncClipboard/archive/refs/tags/v3.2.0.tar.gz
-	source = syncclipboard.desktop
-	source = fix-split-ambiguity.patch
-	sha256sums = a155f59752e911b36ea2dd019a79dccab7c4a10738e7a398aeeec1b596e4a4bc
-	sha256sums = 77a340cd087cbfd79fdbbb1d53a33288884c21cd0945b6ea4abfd0c6a298fc75
-	sha256sums = e175c67f4abab57a272893d3fdef3732367f75c51b6d8d2b4eed6643da5dca12
-
-pkgname = syncclipboard-desktop

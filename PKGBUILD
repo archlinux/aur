@@ -1,23 +1,21 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
-_dotnet_ver=8.0
+_dotnet_ver=10.0
 _reponame=SyncClipboard
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-desktop"
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Cross-Platform Cipboard Syncing Solution (Desktop)"
 arch=("x86_64" "aarch64")
 url="https://github.com/Jeric-X/${_reponame}"
 license=("MIT")
-depends=("aspnet-runtime-${_dotnet_ver}" "fontconfig" "libxinerama" "libxt" "libxtst" "wl-clipboard" "xclip")
-makedepends=("dotnet-sdk-${_dotnet_ver}" "librsvg")
+depends=("aspnet-runtime-${_dotnet_ver}")
+makedepends=("aspnet-targeting-pack" "dotnet-sdk-${_dotnet_ver}" "librsvg")
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "${_pkgname}.desktop"
-        "fix-split-ambiguity.patch")
-sha256sums=('a155f59752e911b36ea2dd019a79dccab7c4a10738e7a398aeeec1b596e4a4bc'
-            '77a340cd087cbfd79fdbbb1d53a33288884c21cd0945b6ea4abfd0c6a298fc75'
-            'e175c67f4abab57a272893d3fdef3732367f75c51b6d8d2b4eed6643da5dca12')
+        "${_pkgname}.desktop")
+sha256sums=('e46a6c6d6aa50963b621931c9810ba78bbcb47984fe2d882ead1b01323da3c3e'
+            '77a340cd087cbfd79fdbbb1d53a33288884c21cd0945b6ea4abfd0c6a298fc75')
 case $CARCH in
     x86_64)  _dotnet_cpu=x64;;
     aarch64) _dotnet_cpu=arm64;;
@@ -25,9 +23,8 @@ esac
 
 prepare() {
     cd "${_reponame}-${pkgver}"
-    patch -p1 < "../fix-split-ambiguity.patch"
     cp -f build/linux/icons/icon.svg icon.svg
-    rm -rf builddir &>/dev/null
+    rm -rf builddir global.json &>/dev/null
 }
 
 build() {
@@ -49,6 +46,8 @@ build() {
 }
 
 package() {
+    depends=("aspnet-runtime-${_dotnet_ver}" "fontconfig" "libxinerama" "libxt" "libxtst" "wl-clipboard" "xclip")
+
     local _binary="/usr/lib/${_pkgname}/desktop/${_reponame}.Desktop.Default"
 
     install -Dm644 "${_pkgname}.desktop"   "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
