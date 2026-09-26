@@ -1,5 +1,4 @@
-!.gitignore
-!LICENSE
-!PKGBUILD
-!.SRCINFO
 *.zip
+*.png
+*.desktop
+*.svg
