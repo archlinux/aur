@@ -1,0 +1,17 @@
+pkgbase = quickjs-ng-git
+	pkgdesc = A mighty JavaScript engine
+	pkgver = 0.17.0.r2.g19dbe85
+	pkgrel = 1
+	url = https://quickjs-ng.github.io/quickjs/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = quickjs-ng=0.17.0.r2.g19dbe85
+	conflicts = quickjs-ng
+	source = git+https://github.com/quickjs-ng/quickjs.git
+	sha256sums = SKIP
+
+pkgname = quickjs-ng-git
