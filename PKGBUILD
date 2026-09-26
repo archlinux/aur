@@ -1,34 +1,39 @@
 # Maintainer: David Foucher <dev@tyjak.net>
 
 pkgname=wego
-pkgver=2.3
-pkgrel=2
+pkgver=2.4
+pkgrel=1
 pkgdesc='Weather app for the terminal'
 url=https://github.com/schachmat/wego
 arch=('x86_64')
 license=('ISC')
 depends=('glibc')
-makedepends=('git' 'go')
+makedepends=('go')
 source=("wego-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('1e1944ac2f3e64622e419541c741e743a53bb5e321bb9fe5781f0fed635b5474f2fd2df5010222dfc0cff601f1aa3f194326b1f688aebf3f3c41f6d419e491e4')
+sha512sums=('ded9c29e3c55e165d58315f827e9b1f056d801dddd8c5be8e37986a13b7d177e9a39d06fb665144704277106297b00b600391b983d22de4a13cb7088a7d217b6')
 
 prepare() {
-  mkdir -p src/github.com/schachmat
-  ln -rsnf wego-$pkgver src/${url#*//}
+  cd wego-$pkgver
+  export GOPATH="$srcdir/gopath"
+  go mod download
 }
 
 build() {
   cd wego-$pkgver
-  export GOPATH="$srcdir"
-  go get -u -v github.com/schachmat/ingo
-  go get -u -v github.com/mattn/go-colorable
-  go get -u -v github.com/mattn/go-runewidth
-  go build -v
+  export GOPATH="$srcdir/gopath"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o wego .
+  ./wego --man > wego.1
 }
 
 package() {
   cd wego-$pkgver
   install -Dm755 wego "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 wego.1 "$pkgdir"/usr/share/man/man1/$pkgname.1
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
