@@ -1,0 +1,19 @@
+post_install() {
+  cat <<'MESSAGE'
+melody-watch runs where the music is and tells a Melody engine elsewhere
+which files changed. Folders are HERE=WHERE_THE_ENGINE_SEES_THEM:
+
+  echo 'MELODY_WATCH_OPTIONS=--server myserver:6603 --password-file /home/you/.config/melody/password /srv/music=/mnt/nas/music' \
+    > ~/.config/melody/watch.conf
+  systemctl --user enable --now melody-watch.service
+  loginctl enable-linger $USER    # to run without being logged in
+
+Not the old Go-era melody-watcher, which does not work with the new engine.
+MESSAGE
+}
+
+post_upgrade() {
+  cat <<'MESSAGE'
+Restart the watcher to use the new one: systemctl --user restart melody-watch.service
+MESSAGE
+}
