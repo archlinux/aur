@@ -1,15 +1,16 @@
 pkgbase = protonup-rs
 	pkgdesc = Automate the installation and update of Linux Gaming Compatibility tools
-	pkgver = 0.15.0
+	pkgver = 0.15.1
 	pkgrel = 1
 	url = https://github.com/auyer/Protonup-rs
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
 	depends = glibc
+	depends = libgcc
 	depends = xz
 	depends = zstd
-	source = Protonup-rs-0.15.0.tar.gz::https://github.com/auyer/Protonup-rs/archive/refs/tags/v0.15.0.tar.gz
-	sha256sums = 077475483e0ad9b0c772f823796338da6e8ba68599382731159bcb3f5b07fc23
+	source = Protonup-rs-0.15.1.tar.gz::https://github.com/auyer/Protonup-rs/archive/refs/tags/v0.15.1.tar.gz
+	sha256sums = 0f570a3b3d01c988f7fcfedc5de39f011a7f46510a789a66307892d9e1f3aa9e
 
 pkgname = protonup-rs
