@@ -1,12 +1,12 @@
 # Maintainer: Kyler Clay <kylerclay@proton.me>
 
 pkgname=shed-sh
-pkgver=0.43.4
+pkgver=0.43.5
 pkgrel=1
 pkgdesc="A Linux shell with a powerful line editor and IPC socket extensibility"
 arch=('x86_64')
 url="https://github.com/km-clay/shed"
-license=('MIT')
+license=('GPL-3.0-or-later')
 depends=('sqlite')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
