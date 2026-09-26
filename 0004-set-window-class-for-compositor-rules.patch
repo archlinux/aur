@@ -1,0 +1,34 @@
+diff --git a/frameworks/testfw/graphics/glfwgraphicswindow.cpp b/frameworks/testfw/graphics/glfwgraphicswindow.cpp
+index c615a171..19ed715c 100644
+--- a/frameworks/testfw/graphics/glfwgraphicswindow.cpp
++++ b/frameworks/testfw/graphics/glfwgraphicswindow.cpp
+@@ -99,6 +99,12 @@ void GLFWGraphicsWindow::create(
+ #endif
+ #endif
+ 	glfwDefaultWindowHints();
++	/* local patch: window class / app id so compositor window rules can target the benchmark window */
++	glfwWindowHintString(GLFW_X11_CLASS_NAME, "GFXBench");
++	glfwWindowHintString(GLFW_X11_INSTANCE_NAME, "gfxbench");
++#ifdef GLFW_WAYLAND_APP_ID
++	glfwWindowHintString(GLFW_WAYLAND_APP_ID, "gfxbench");
++#endif
+ 
+ //NOTE: see platform.h on how statistics works
+ //NOTE: uncomment this when measuring statistics (even runtime stats)
+diff --git a/frameworks/testfw/graphics/xcbgraphicswindow.cpp b/frameworks/testfw/graphics/xcbgraphicswindow.cpp
+index 8d1cad5f..c89c804b 100644
+--- a/frameworks/testfw/graphics/xcbgraphicswindow.cpp
++++ b/frameworks/testfw/graphics/xcbgraphicswindow.cpp
+@@ -68,6 +68,12 @@ bool XCBGraphicsWindow::create(int width, int height, const std::string &title)
+                       XCB_WINDOW_CLASS_INPUT_OUTPUT, screen_->root_visual,
+                       value_mask, value_list);
+ 
++    /* local patch: set WM_CLASS so compositor window rules can target the benchmark window */
++    static const char wm_class[] = "gfxbench\0GFXBench";
++    xcb_change_property(connection_, XCB_PROP_MODE_REPLACE, window_,
++                        XCB_ATOM_WM_CLASS, XCB_ATOM_STRING, 8,
++                        sizeof(wm_class), wm_class);
++
+     /* Magic code that will send notification when window is destroyed */
+     xcb_intern_atom_cookie_t cookie =
+         xcb_intern_atom(connection_, 1, 12, "WM_PROTOCOLS");

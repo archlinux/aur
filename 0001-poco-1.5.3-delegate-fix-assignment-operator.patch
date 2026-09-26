@@ -1,0 +1,12 @@
+diff --git a/3rdparty/poco/Foundation/include/Poco/Delegate.h b/3rdparty/poco/Foundation/include/Poco/Delegate.h
+index b1745f35..884f7534 100644
+--- a/3rdparty/poco/Foundation/include/Poco/Delegate.h
++++ b/3rdparty/poco/Foundation/include/Poco/Delegate.h
+@@ -364,7 +364,6 @@ public:
+ 	{
+ 		if (&delegate != this)
+ 		{
+-			this->_pTarget        = delegate._pTarget;
+ 			this->_receiverObject = delegate._receiverObject;
+ 			this->_receiverMethod = delegate._receiverMethod;
+ 		}
