@@ -2,7 +2,7 @@
 _pkgname=abstract
 pkgname=abstract-editor-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal local-first markdown notes editor, GPU-rendered with GPUI"
 arch=('x86_64')
 url="https://github.com/fireflylabss/abstract"
@@ -29,7 +29,7 @@ source=(
 	"abstract.png::https://raw.githubusercontent.com/fireflylabss/abstract/v$pkgver/assets/abstract.png"
 	"OFL.txt::https://raw.githubusercontent.com/fireflylabss/abstract/v$pkgver/assets/fonts/OFL.txt"
 )
-sha256sums=('6e0a0f2cd2e310c51c58056d503988e55eb553a648081f0506de67d0a01e3909'
+sha256sums=('054e556a9783355bf490b204d32376c98e2f8f181f57854ecf4a8bae787645d6'
 	'd004cd85b8ee160a0e87d99f041e4f8b77c75326b010ffcfbae61d080e68b94d'
 	'39f026297aabb23e4fbf9add9a151f4a0548c1185c674caca1614a9efeaf72c5'
 	'cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a')
