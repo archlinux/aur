@@ -19,10 +19,11 @@
 #
 # SOURCE — the commit-pinned RamSleuth repo (sibling pattern, like the AMD
 # extra): pkgver is the FIXED ramsleuth workspace version (2.4.7 today;
-# bumped with the INTEL-20 release). Current makepkg requires VCS sources
-# to resolve to an immutable commit, so the source pins to the v$pkgver
-# release commit via _gitcommit below; the #tag= fragment is a label only
-# (no sha256sums: the _gitcommit pin IS the integrity check). Pre-v2.3.0
+# bumped with the INTEL-20 release). The source pins to the immutable
+# v$pkgver release commit via the standard VCS #commit= fragment, with
+# sha256sums the content-addressed checksum of the pinned commit's
+# git-archive tarball (the form makepkg 7.x generates for
+# tag/commit-pinned git sources). Pre-v2.3.0
 # the release tags predated the kernel/ramsleuth-intel/ tree, which is why
 # this package once tracked the moving v2-development branch; every tag
 # since v2.3.0 carries the module, so a release-commit pin is safe.
@@ -67,11 +68,16 @@ conflicts=('ramsleuth' 'ramsleuth-bin')
 # The installed files come from the RamSleuth repo tree (INTEL-05 module,
 # INTEL-06 helper). The "$pkgname"-style rename extracts to $srcdir/ramsleuth
 # (sibling pattern, like the AMD extra).
-# Integrity pin: the v$pkgver release commit (immutable; current makepkg
-# requires VCS sources to resolve to a commit — the #tag= fragment in
-# source= is a human-readable label only).
-_gitcommit=e0890b65ea49399400c18d0ebede47ed05d7deda
-source=("ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#tag=v$pkgver")
+# git-commit source: makepkg clones the repo and checks out the pinned
+# immutable v$pkgver release commit via the #commit= fragment.
+source=("ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=e0890b65ea49399400c18d0ebede47ed05d7deda")
+# Content-addressed VCS pin: the sha256 of `git archive --format tar
+# <commit>` for the immutable #commit= ref above — exactly what makepkg
+# 7.x generates for tag/commit-pinned git sources (makepkg -g) and what
+# its integrity gate verifies (a *sums entry per source; '-' fails the
+# gate on 7.x, and SKIP passes only as a no-op — not the form 7.x
+# generates for #commit fragments).
+sha256sums=('ccddbf65c053dc0664617d06b33ba2e0208f2f0f626312e57e371e24f4d7d0c1')
 
 package() {
   # 1) DKMS config (sourced by DKMS on the target; not at build time).

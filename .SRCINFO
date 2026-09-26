@@ -8,6 +8,7 @@ pkgbase = ramsleuth-intel-dkms
 	depends = dkms
 	conflicts = ramsleuth
 	conflicts = ramsleuth-bin
-	source = ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#tag=v2.4.7
+	source = ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=e0890b65ea49399400c18d0ebede47ed05d7deda
+	sha256sums = ccddbf65c053dc0664617d06b33ba2e0208f2f0f626312e57e371e24f4d7d0c1
 
 pkgname = ramsleuth-intel-dkms
