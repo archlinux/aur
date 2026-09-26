@@ -9,6 +9,7 @@ license=('unknown')
 url="https://cdn.bit4id.com/es/middleware.htm"
 install=$pkgname.install
 options=('!strip')
+backup=('usr/lib/bit4id/libbit4xpki.so.conf')
 # Older bit4id-ipki versions shipped their own copy of /usr/lib/bit4id/libbit4xpki.so.
 # Newer ones are an add-on on top of this package.
 conflicts=('bit4id-ipki<1.4.10.542-4')

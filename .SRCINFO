@@ -9,6 +9,7 @@ pkgbase = bit4id-xpki
 	conflicts = bit4id-ipki<1.4.10.542-4
 	noextract = Bit4id_Middleware-1.4.11.836.zip
 	options = !strip
+	backup = usr/lib/bit4id/libbit4xpki.so.conf
 	source = Bit4id_Middleware-1.4.11.836.zip::https://cdn.bit4id.com/es/soporte/downloads/middleware/Bit4id_Middleware.zip
 	sha256sums = 0f6d45d1f7d550f9188404feb23f977b8b19b4b7f5475eef8fc79647d9be9ff5
 
