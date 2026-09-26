@@ -1,6 +1,6 @@
 pkgbase = rootapp-bin
 	pkgdesc = Root App is a new Discord alternative, designed for gaming communities and large online groups
-	pkgver = 0.9.139
+	pkgver = 0.9.140
 	pkgrel = 1
 	url = https://www.rootapp.com
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = rootapp-bin
 	provides = rootapp
 	conflicts = rootapp
 	options = !strip
-	source = Root-0.9.139-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage
-	sha256sums = f1ce2bde51246878c1f434c1a16656255f0ab3a0b41ff7c654068fa07b3ed903
+	source = Root-0.9.140-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage
+	sha256sums = edbb0d09f742b05f9de54d197e29f5a2c6010c28a85937357f9e50fcf74d99c2
 
 pkgname = rootapp-bin
