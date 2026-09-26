@@ -1,6 +1,6 @@
 pkgbase = differential
 	pkgdesc = Semantic regrouping of large diffs for review
-	pkgver = 0.12.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/thepartly/differential
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = differential
 	provides = dfr
 	options = !strip
 	options = !lto
-	source = differential-0.12.1.crate::https://crates.io/api/v1/crates/differential/0.12.1/download
-	sha256sums = 39f82a4be5934094d53670bebeca1eeae22d7b624c2ff2108e552af7bb0fe913
+	source = differential-0.13.0.crate::https://crates.io/api/v1/crates/differential/0.13.0/download
+	sha256sums = 585daea334ead7da399ff7b660a1bf854181dfc03a88ed615f80e1ee42aed049
 
 pkgname = differential
