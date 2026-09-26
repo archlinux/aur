@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-openexr
 	pkgdesc = An high dynamic-range image file format library (mingw-w64)
-	pkgver = 3.5.0
+	pkgver = 3.5.1
 	pkgrel = 1
 	epoch = 1
 	url = http://www.openexr.com/
@@ -18,7 +18,7 @@ pkgbase = mingw-w64-openexr
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = openexr-3.5.0.tar.gz::https://github.com/AcademySoftwareFoundation/openexr/archive/v3.5.0.tar.gz
-	sha256sums = 0dc41a9dd84c868ad89c892382f75f6835a73decbefab9366d6f168bf9322954
+	source = openexr-3.5.1.tar.gz::https://github.com/AcademySoftwareFoundation/openexr/archive/v3.5.1.tar.gz
+	sha256sums = 61559d6d0657f228f8dd5e3165ed6b74437b95e81849ad41c6d3493c0c144c1d
 
 pkgname = mingw-w64-openexr
