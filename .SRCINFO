@@ -1,6 +1,6 @@
 pkgbase = cataclysm-tlg-bin
 	pkgdesc = Cataclysm: The Last Generation, a post-apocalyptic roguelike (fork of DDA) (curses)
-	pkgver = 1.0.r20260924.0932
+	pkgver = 1.0.r20260926.0806
 	pkgrel = 1
 	url = https://cataclysmtlg.com/
 	arch = x86_64
@@ -23,10 +23,10 @@ pkgbase = cataclysm-tlg-bin
 	noextract = cataclysm-tlg-bin-curses.tar.gz
 	noextract = cataclysm-tlg-bin-tiles.tar.gz
 	options = !debug
-	source = cataclysm-tlg-bin-curses.tar.gz::https://github.com/Cataclysm-TLG/Cataclysm-TLG/releases/download/cataclysm-tlg-1.0-2026-09-24-0932/ctlg-linux-curses-x64-2026-09-24-0932.tar.gz
-	source = cataclysm-tlg-bin-tiles.tar.gz::https://github.com/Cataclysm-TLG/Cataclysm-TLG/releases/download/cataclysm-tlg-1.0-2026-09-24-0932/ctlg-linux-tiles-sounds-x64-2026-09-24-0932.tar.gz
-	sha256sums = 1a350b11fd5d88ad2e509364754733b6a073445b750e4c7356bd4307dd1871c4
-	sha256sums = f416172648149e74ee17f76d4e111cdc9ec4d63663437026b896ab50c0bdf78c
+	source = cataclysm-tlg-bin-curses.tar.gz::https://github.com/Cataclysm-TLG/Cataclysm-TLG/releases/download/cataclysm-tlg-1.0-2026-09-26-0806/ctlg-linux-curses-x64-2026-09-26-0806.tar.gz
+	source = cataclysm-tlg-bin-tiles.tar.gz::https://github.com/Cataclysm-TLG/Cataclysm-TLG/releases/download/cataclysm-tlg-1.0-2026-09-26-0806/ctlg-linux-tiles-sounds-x64-2026-09-26-0806.tar.gz
+	sha256sums = ad6b3f6a8fc408a9912c57134418e0fc25a2772a8aceb9c544fe300689a3f9e3
+	sha256sums = 81fd48c3addc5b13870753631299447dae0c0db954eb450fd51340e36933adf7
 
 pkgname = cataclysm-tlg-bin
 
