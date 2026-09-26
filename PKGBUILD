@@ -3,7 +3,7 @@
 # Contributor: yochananmarqos <mark dot wagie at tutanota dot com>
 
 pkgname=winegui
-pkgver=4.4.0
+pkgver=4.5.1
 pkgrel=1
 pkgdesc="A user-friendly WINE graphical interface (build from source)"
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=(
 	'gtkmm-4.0'
 	'p7zip'
 	'unzip'
+	'util-linux' # provides taskset
 	'wget' # to download winetricks/Wine runner latest release
 	'wine'
 	'zenity' # used by winetricks
@@ -32,7 +33,7 @@ makedepends=(
 	'ninja'
 )
 source=("https://winegui.melroy.org/downloads/WineGUI-Source-v$pkgver.tar.gz")
-sha256sums=('69d2ef640d2fd67f18cb9f26fb2c93c903a84c0aa7c484353d58cac314fecfca')
+sha256sums=('f577fd1a83821650447aa997ee59d72c1e93ef4ff5ca5839d1ede87c9b5614f0')
 
 build() {
 	cmake -GNinja -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release -DCHECK_FOR_UPDATE=OFF -DGSETTINGS_COMPILE:BOOL=FALSE -B build_prod
