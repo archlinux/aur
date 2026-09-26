@@ -1,0 +1,5 @@
+# Whitelist: only files the AUR needs are tracked
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO

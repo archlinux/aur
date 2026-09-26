@@ -1,62 +1,35 @@
-## Maintainer: khanhas <xuankhanh963@gmail.com>, itsmeow <itsmeow@itsmeow.dev>
-pkgname=spicetify-cli
-pkgver=2.45.1
+# Maintainer: Marc-Antoine Favreau <mafavreau AT solutionfvr DOT com>
+# Contributor: khanhas <xuankhanh963 AT gmail DOT com> (original creator of spicetify-cli and its AUR package)
+# Contributor: itsmeow <itsmeow AT itsmeow DOT dev>
+
+pkgname=spicetify-cli-beta-bin
+_pkgname=spicetify-cli-beta
+pkgver=3.0.0_beta.19
 pkgrel=1
-pkgdesc='Command-line tool to customize Spotify client'
-arch=('x86_64' 'i686')
+_tag="v${pkgver//_/-}"
+pkgdesc='Command-line tool to customize Spotify client (v3 beta, prebuilt)'
+arch=('x86_64')
 url='https://github.com/spicetify/cli'
-license=('LGPL-2.1-only')
-makedepends=('go' 'pnpm')
-depends=('glibc' 'bash')
-optdepends=('xdg-utils: Allows for opening directories in default file manager')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b20a6aa0e2e54491fb4b39a2329a793ec745a068071c4a1644cae61a4307cfa1')
-
-prepare() {
-  mv "cli-${pkgver}" "${pkgname}-${pkgver}"
-}
-
-build() {
-  cd "${pkgname}-${pkgver}"
-  export GO111MODULE="auto"
-  export GOPATH="${srcdir}"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -ldflags="-X 'main.version=${pkgver}'" -o spicetify
-  
-  pnpm install --frozen-lockfile
-  pnpm build:wrapper
-}
+license=('LGPL-2.1-only AND MIT')
+depends=('glibc' 'libgcc')
+conflicts=('spicetify-cli' 'spicetify')
+options=('!debug' '!strip')
+source=("${url}/releases/download/${_tag}/spicetify-${_tag#v}-linux-x86_64.tar.zst"
+        "LICENSE-MIT-${_tag}::https://raw.githubusercontent.com/spicetify/cli/${_tag}/rust/LICENSE")
+sha256sums=('0248f402fcd2e176ea301b836fdb453706107e8cc8c3e9564c25eb71b677b47e'
+            'ef16fc852c03aa909cb55d3ae63d31f8b762abaccf0cb5144a149bf80ce5d701')
 
 check() {
-  cd "${pkgname}-${pkgver}"
-  test "v$(./spicetify -v)" = "v${pkgver}" || exit 1
-  
-  pnpm check:wrapper
+  test "$(./spicetify --version)" = "spicetify ${_tag#v}"
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  
-  # install everything to /opt
-  install -Dm755 ./spicetify "${pkgdir}/opt/${pkgname}/spicetify"
-  cp -r ./CustomApps "${pkgdir}/opt/${pkgname}/CustomApps"
-  cp -r ./Extensions "${pkgdir}/opt/${pkgname}/Extensions"
-  cp -r ./jsHelper "${pkgdir}/opt/${pkgname}/jsHelper"
-  cp -r ./Themes "${pkgdir}/opt/${pkgname}/Themes"
+  # Own directory under /opt: the binary deletes every *.old file next to
+  # itself on startup and expects spicetify-daemon as a sibling.
+  install -Dm755 -t "${pkgdir}/opt/${_pkgname}" spicetify spicetify-daemon
 
-  install -Dm755 ./css-map.json "${pkgdir}/opt/${pkgname}/css-map.json"
-  install -Dm755 ./globals.d.ts "${pkgdir}/opt/${pkgname}/globals.d.ts"
-
-  # Make shortcut
   install -dm755 "${pkgdir}/usr/bin"
-  echo "#!/bin/sh
-exec /opt/${pkgname}/spicetify \"\$@\"" > "${pkgdir}/usr/bin/spicetify"
-  chmod 755 "${pkgdir}/usr/bin/spicetify"
+  ln -s "/opt/${_pkgname}/spicetify" "${pkgdir}/usr/bin/spicetify"
 
-  # Clean up deps
-  go clean -modcache
+  install -Dm644 "LICENSE-MIT-${_tag}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
 }
