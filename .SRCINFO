@@ -1,6 +1,6 @@
 pkgbase = bettbox-bin
 	pkgdesc = 基于 Mihomo（Clash.Meta 内核）的多平台代理客户端
-	pkgver = 1.19.2
+	pkgver = 1.19.3
 	pkgrel = 1
 	url = https://github.com/appshubcc/Bettbox
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = bettbox-bin
 	options = !debug
 	source = restart-bettbox.hook
 	sha256sums = 9d8b0a54499c9325ed64d987184a229af75c34600ca28afd016dff43ebb53cd0
-	source_x86_64 = https://github.com/appshubcc/Bettbox/releases/download/v1.19.2/Bettbox-1.19.2-linux-amd64.deb
-	sha256sums_x86_64 = bb3a679846799d5c7f3e9ddd2741e8bd804dc9ec2167eedffb75e92f25b6187a
-	source_aarch64 = https://github.com/appshubcc/Bettbox/releases/download/v1.19.2/Bettbox-1.19.2-linux-arm64.deb
-	sha256sums_aarch64 = fe7262a3eb7fa01574b1ba3b70027e31fd84220b189fec81bbbc724b75187637
+	source_x86_64 = https://github.com/appshubcc/Bettbox/releases/download/v1.19.3/Bettbox-1.19.3-linux-amd64.deb
+	sha256sums_x86_64 = 501bd4940618ea992c55a964daff7966ad1ac0c40cf692a0b6dd53c769a1700d
+	source_aarch64 = https://github.com/appshubcc/Bettbox/releases/download/v1.19.3/Bettbox-1.19.3-linux-arm64.deb
+	sha256sums_aarch64 = 22245336f3c1df1de5fd79627d28d1652473e5829963593e5fee05edd9e729c6
 
 pkgname = bettbox-bin
