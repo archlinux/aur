@@ -21,6 +21,9 @@ optdepends=(
   'pandoc: HTML to text and Markdown to HTML conversion'
   'lynx: fallback HTML viewer'
   'elinks: fallback HTML viewer'
+  'discount: Markdown to HTML conversion (fallback to pandoc)'
+  'aspell: spell checking composed messages'
+  'ispell: alternative spell checker'
 )
 
 source_x86_64=("https://github.com/d99kris/nmail/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64-glibc.tar.gz")

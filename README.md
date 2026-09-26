@@ -19,6 +19,6 @@ yay -S nmail-bin
 ## Dependencies
 
 - file, python
-- optional: w3m, pandoc, lynx, elinks (HTML rendering)
+- optional: w3m, pandoc, lynx, elinks (HTML rendering), discount (Markdown), aspell/ispell (spell check)
 
 Upstream project: [https://github.com/d99kris/nmail](https://github.com/d99kris/nmail)
