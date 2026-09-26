@@ -1,6 +1,6 @@
 pkgbase = quadrant-bin
 	pkgdesc = An easy way to manage your Minecraft modpacks, written in React and Rust. (Prebuilt version)
-	pkgver = 26.9.0
+	pkgver = 26.10.0
 	pkgrel = 1
 	url = https://usequadrant.dev/
 	arch = aarch64
@@ -11,12 +11,12 @@ pkgbase = quadrant-bin
 	depends = webkit2gtk-4.1
 	depends = libappindicator
 	depends = libsecret
-	provides = quadrant=26.9.0
+	provides = quadrant=26.10.0
 	conflicts = quadrant
 	options = !strip
-	source_aarch64 = quadrant-26.9.0-aarch64.rpm::https://github.com/QuadrantMC/quadrant/releases/download/v26.9.0-stable/Quadrant-26.9.0-stable-1.aarch64.rpm
-	sha256sums_aarch64 = d1382b65fbaf4b51b3141a28353d9560293ba76d53463f7c7e9e6dbfcc5b31a6
-	source_x86_64 = quadrant-26.9.0-x86_64.rpm::https://github.com/QuadrantMC/quadrant/releases/download/v26.9.0-stable/Quadrant-26.9.0-stable-1.x86_64.rpm
-	sha256sums_x86_64 = 9caecc18aff1fb5846422bcd0b4df7c0a195a727e3f7e199169dc019b6a63e3d
+	source_aarch64 = quadrant-26.10.0-aarch64.rpm::https://github.com/QuadrantMC/quadrant/releases/download/v26.10.0-stable/Quadrant-26.10.0-stable-1.aarch64.rpm
+	sha256sums_aarch64 = d5b77ef7f5e51921b6ebd565c2cf409a20da3ad3b5ebdaab98981d62fa08b101
+	source_x86_64 = quadrant-26.10.0-x86_64.rpm::https://github.com/QuadrantMC/quadrant/releases/download/v26.10.0-stable/Quadrant-26.10.0-stable-1.x86_64.rpm
+	sha256sums_x86_64 = ef18d88026ac902471ee0a854b3687002c56ba3c855fea2b4953d96767ed231f
 
 pkgname = quadrant-bin
