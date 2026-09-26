@@ -1,6 +1,6 @@
 pkgbase = dusklight
 	pkgdesc = Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/TwilitRealm/dusklight
 	arch = x86_64
@@ -26,12 +26,12 @@ pkgbase = dusklight
 	provides = tp-dusk
 	conflicts = tp-dusk
 	replaces = tp-dusk
-	source = git+https://github.com/TwilitRealm/dusklight.git#tag=v2.0.1
+	source = git+https://github.com/TwilitRealm/dusklight.git#tag=v2.0.2
 	source = git+https://github.com/encounter/aurora.git
 	source = git+https://github.com/encounter/borealis.git
 	source = git+https://github.com/TwilitRealm/dusklight-randomizer.git
 	source = git+https://github.com/TwilitRealm/dusklight-cosmetics.git
-	sha256sums = 9cd9f9729c53e341b20df9d2bf67389742cb560dc78af5992bd1a0f4fdd31a68
+	sha256sums = 2fcfe14dd644c1d47ce1f15ea00be5b660cb66f77cccb682152ee3c3f552770b
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
