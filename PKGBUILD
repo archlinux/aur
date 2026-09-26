@@ -4,7 +4,7 @@ _pkgname=synthos
 # epoch=1: с 20.09 по 23.09.2026 версией был голый номер сборки (268…278), и
 # для pacman 278 > 0.2.278 — без epoch переход на 0.2.x считался бы откатом.
 epoch=1
-pkgver=0.2.278.r0.g4610273
+pkgver=0.2.283.r461.ge590bc7
 pkgrel=1
 pkgdesc="Local AI desktop studio: agentic chat, notes workspace, node editor for image/video/music/speech, code editor — native synaptix engine on any NVIDIA sm_80+ GPU, .syn and GGUF models (git)"
 arch=("x86_64")
