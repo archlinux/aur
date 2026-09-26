@@ -1,6 +1,6 @@
 pkgbase = r-csem
 	pkgdesc = Composite-Based Structural Equation Modeling
-	pkgver = 0.6.1
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=cSEM
 	arch = any
@@ -38,7 +38,7 @@ pkgbase = r-csem
 	optdepends = r-rootsolve
 	optdepends = r-testthat
 	optdepends = r-tidyr
-	source = https://cran.r-project.org/src/contrib/cSEM_0.6.1.tar.gz
-	sha256sums = f660989fbfabe5fc07e29c20a5f8366e99c547825df1ac16daa1836bbbc4765a
+	source = https://cran.r-project.org/src/contrib/cSEM_0.7.1.tar.gz
+	sha256sums = cb1faae049a7601b2f9ef3b360085dd53fe60c304b885edf55eb7448d5577733
 
 pkgname = r-csem
