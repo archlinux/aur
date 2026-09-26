@@ -5,7 +5,7 @@ _pkgname=fcitx5
 pkgname=${_pkgname}-shorin-patched-git
 pkgver=5.1.22
 _dictver=20121020
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation of fcitx (official build + XIM CJK character leak fix)"
 arch=('x86_64')
 url="https://github.com/fcitx/fcitx5"
@@ -24,6 +24,7 @@ sha512sums=('aeb0d44fe37289f9a6b99142c5a8453ebfbd7cced79bb5d7dcbd8159de433de6027
             '8418bd02492bfd786c0fab93be4400ef027ec8e9fac02220cc1f653f5eb67f54573a6a84a15baba19bb34ab892745c87df16499d6304ea75009131e2ab3b97f2'
             '9033006db6b8530bce9b0ac4be296e691c5d7804aad4df2a297f5d56f6a2bd0502e735e509736da33b935d657fe0d7d926decf7e09ebe3b02419c41d78e2119d')
 validpgpkeys=('2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9') # Weng Xuetian <wengxt@gmail.com>
+options=('!debug')
 
 prepare() {
   mv en_dict-$_dictver.tar.gz fcitx5/src/modules/spell/en_dict-$_dictver.tar.gz
