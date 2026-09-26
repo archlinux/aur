@@ -1,0 +1,25 @@
+pkgbase = herta-bin
+	pkgdesc = The self that uses the agent - desktop companion (AppImage payload, system Electron)
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/PersonaCLI/Herta
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	depends = electron43
+	depends = libxss
+	depends = libnotify
+	depends = libxtst
+	depends = hicolor-icon-theme
+	optdepends = gnome-keyring: keep the stored API key encrypted at rest
+	optdepends = xdg-utils: open external links from the application
+	provides = herta
+	conflicts = herta
+	options = !strip
+	options = !debug
+	source = Herta-x86_64.AppImage::https://github.com/PersonaCLI/Herta/releases/download/v0.1.6/Herta-x86_64.AppImage
+	source = herta.sh
+	sha256sums = 58488abb85e8a53583779c77edfc06c80ee5dbfc7f742d47a5c6ca7cc40554e1
+	sha256sums = SKIP
+
+pkgname = herta-bin
