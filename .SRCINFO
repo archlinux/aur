@@ -1,6 +1,6 @@
 pkgbase = librecrypt
 	pkgdesc = Offline-hardenable password hashing
-	pkgver = 1.1.1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://codeberg.org/maandree/librecrypt
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = librecrypt
 	makedepends = libar2simplified>=1.1
 	makedepends = libar2simplified-musl>=1.1
 	makedepends = gcc
-	source = librecrypt-1.1.1.1.tar.gz::https://codeberg.org/maandree/librecrypt/archive/1.1.1.1.tar.gz
-	sha256sums = bab985414ab2e23d32ce9073f63289829c56405800b7a7fc6e7bbad8fcdf3d48
+	source = librecrypt-1.2.tar.gz::https://codeberg.org/maandree/librecrypt/archive/1.2.tar.gz
+	sha256sums = b55f1242ad5a223659e151d80755c4e2a164a3f2e9858ac10eb49a4cfb59a5b9
 
 pkgname = librecrypt
 	pkgdesc = Offline-hardenable password hashing

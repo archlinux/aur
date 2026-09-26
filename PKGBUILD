@@ -2,7 +2,7 @@
 
 pkgbase=librecrypt
 pkgname=($pkgbase $pkgbase-doc $pkgbase-musl)
-pkgver=1.1.1.1
+pkgver=1.2
 pkgrel=1
 _pkgdesc="Offline-hardenable password hashing"
 pkgdesc="${_pkgdesc}"
@@ -14,7 +14,7 @@ checkdepends=(glibc musl 'libar2>=1.1' 'libar2-musl>=1.1' 'libar2simplified>=1.1
 _compiler=gcc
 makedepends=(glibc musl 'libar2>=1.1' 'libar2-musl>=1.1' 'libar2simplified>=1.1' 'libar2simplified-musl>=1.1' ${_compiler})
 source=($pkgbase-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(bab985414ab2e23d32ce9073f63289829c56405800b7a7fc6e7bbad8fcdf3d48)
+sha256sums=(b55f1242ad5a223659e151d80755c4e2a164a3f2e9858ac10eb49a4cfb59a5b9)
 
 build() {
   cd -- "$srcdir"
