@@ -3,7 +3,7 @@
 # pkgver and sha256sums are filled in for each release, by .github/workflows/aur.yml and
 # by the Arch Linux job of .github/workflows/release.yml.
 pkgname=leyen
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='Keep a library of Windows games and run them with Proton through umu-launcher'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('cargo' 'blueprint-compiler' 'just' 'gettext')
 optdepends=('winetricks: use the installed winetricks instead of downloading it'
             'mangohud: MangoHud switch')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('33e7a08ad597bf3950e3c321cd334350bb2cc95fd3d37eb69e4cf80a78b9485d')
+sha256sums=('1be474c0d3008b289bf93de58096e6a435b743464107d325751d920d1382640c')
 
 prepare() {
   cd "$pkgname-$pkgver"
