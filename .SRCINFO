@@ -1,0 +1,19 @@
+pkgbase = aw-server-rust-git
+	pkgdesc = ActivityWatch server, built from master
+	pkgver = r897.5bd198f
+	pkgrel = 1
+	url = https://github.com/ActivityWatch/aw-server-rust
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = rust
+	makedepends = npm
+	depends = gcc-libs
+	depends = glibc
+	provides = aw-server-rust
+	conflicts = aw-server-rust
+	options = !lto
+	source = git+https://github.com/ActivityWatch/aw-server-rust.git
+	sha256sums = SKIP
+
+pkgname = aw-server-rust-git
