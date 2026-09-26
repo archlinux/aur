@@ -3,7 +3,7 @@
 # Contributor: Matthew Sexton <wsdmatty@gmail.com>
 # Contributor: Lorenz Wellmer
 pkgname=clockify-desktop
-pkgver=2.7.5
+pkgver=2.7.7
 pkgrel=1
 pkgdesc="Truly free time tracker for teams, Desktop App"
 arch=("x86_64")
@@ -14,7 +14,7 @@ depends=("alsa-lib" "at-spi2-core" "cairo" "dbus" "expat" "libgcc" "glib2"
          "libx11" "libxcb" "libxcomposite" "libxdamage" "libxext" "libxfixes"
          "libxkbcommon" "libxrandr" "mesa" "nspr" "nss" "pango" "systemd-libs")
 source=("$pkgname-$pkgver.deb::https://clockify.me/downloads/Clockify_Setup_x64.deb")
-sha512sums=("2a8e3da68c104910a7764063d1f0cc2fe25006eb8f69dd72b25bf717f55e0e3da994c98215b2e75b430431fd9aad0afc4b0af803839566e8279302028c8c8903")
+sha512sums=("9c47684159fecd9a7455953fe122a34b528c49c5c4bd610a7c371935f859c32bd3841df15aff398b11c89f32e2af029dbb65e2cd2c4d9c8ea76427d86faef3f5")
 
 package() {
     # Extract package data
@@ -131,6 +131,9 @@ package() {
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/time-hover.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/time-off.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/time.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/ui-icons/favorite-star-active.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/ui-icons/favorite-star-hover.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/ui-icons/favorite-star-inactive.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/workspace-checked.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/x.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/no-user-image.png"
