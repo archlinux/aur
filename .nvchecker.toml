@@ -1,0 +1,5 @@
+[pentestcode-bin]
+source = "github"
+github = "s0ld13rr/pentestcode"
+use_latest_release = "true"
+prefix = "v"

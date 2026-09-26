@@ -1,4 +1,4 @@
-# Maintainer: fr0stb1rd <fr0stb1rd at proton dot me>
+# Maintainer: fr0stb1rd <fr0stb1rd@proton.me>
 #
 # Why "baseline" on x86_64:
 # The project ships AVX2 and baseline variants. makepkg builds one package per
