@@ -2,7 +2,7 @@
 
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend penpot-mcp)
-pkgver=2.17.2
+pkgver=2.18.0
 pkgrel=1
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://penpot.app"
 license=('MPL-2.0')
 # penpot is using 19, but archlinux only has 17 and 21. 17 and > 21 doesnt work
 # also jdk is needed and not only jre
-_jdkver="26"
+_jdkver="27"
 makedepends=('clojure' 'git' 'curl' 'npm' 'pnpm' 'rsync' 'babashka' 'rustup' 'emscripten' 'emsdk' 'jq' "java-environment>=${_jdkver}" "java-environment<=${_jdkver}")
 source=(
   https://github.com/penpot/penpot/archive/refs/tags/$pkgver.tar.gz
@@ -26,7 +26,7 @@ source=(
 )
 noextract=($pkgname-$pkgver.tgz)
 sha256sums=(
-  '77f13869b1b312d5e132ead26e4a3dc361a61aaed414acbe049586d797f08613'
+  'a92270ca9f4e543bccd0f0825da3f7872482f34c600a3b64aa11ba98b1d19fd2'
   '4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c'
   'bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523'
   '828087c8fab14fb481b4bd01d92f47e9ecc9c07551a7a873bcfbafd1e3644afb'
