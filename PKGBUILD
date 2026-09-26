@@ -15,7 +15,7 @@ sha256sums=("69950425e4ff9410e2fe5d6b54252b68f8f700053bd90cd2b7d86325a5a401cc" "
 prepare() {
 	cd "$pkgname-$pkgver"
 	# qstring patch from awesomeadam12345
-	patch -p1 -i "../qstring.patch"
+	#patch -p1 -i "../qstring.patch"
 }
 
 build() {
