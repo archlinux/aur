@@ -1,0 +1,5 @@
+[nmail-bin]
+source = "github"
+github = "d99kris/nmail"
+use_latest_release = "true"
+prefix = "v"
