@@ -4,9 +4,9 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=pycharm-eap
-_buildver=262.9437.214
-_pkgver=2026.2.1
-_eap=false
+_buildver=263.5701.41
+_pkgver=2026.3
+_eap=true
 pkgver="${_buildver}_${_pkgver}"
 pkgrel=1
 pkgdesc="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
@@ -27,14 +27,14 @@ optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
             'jupyter-notebook: For support Jupyter Notebook')
 
 if [[ $_eap = false ]]; then
-    source=("https://download-cf.jetbrains.com/python/pycharm-professional-${_pkgver}.tar.gz"
+    source=("https://download.jetbrains.com/python/pycharm-${_pkgver}.tar.gz"
     "${pkgname}.desktop")
 else
-    source=("https://download-cf.jetbrains.com/python/pycharm-professional-${_buildver}.tar.gz"
+    source=("https://download.jetbrains.com/python/pycharm-${_buildver}.tar.gz"
     "${pkgname}.desktop")
 fi
 
-sha256sums=("9cff6f18ec28a3d51643bcf47f001bed194260185fa6f5693f5a6f83cebae868"
+sha256sums=("999fd5b8da6a2d7313be930dae60e9e4d31f53dbaaafea99f59545d9152cdc17"
             "b76e9b0a64a62d0775b4fa98313f6cbc2c3a2306da3715cb1f855dea5736ece0")
 
 prepare() {
