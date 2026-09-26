@@ -1,6 +1,6 @@
 # Maintainer: Micraow <15190450708 at 163 dot com>
 pkgname=moonbridge-gui-bin
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="AI gateway desktop assistant for BUAA students - one-click bridge to Claude Code / Codex (binary release)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ replaces=('stuhelper-bin')
 options=('!strip')
 source=("moonbridge-gui-${pkgver}.deb::https://github.com/Micraow/MoonBridge-Release/releases/download/v${pkgver}/StuHelper-v${pkgver}-linux.deb"
         "LICENSE")
-sha256sums=('97741d8813e5b839fdc6d663bb906680ad84115031a6117d31e9468c7acdeaae'
+sha256sums=('e1a6d18caa83c6ce7f73ee4aad816a6ef3454ac80548e950d5d30a1352b60f08'
             'a607afaac61dfc4a32e4d54b00eee51443bf34aa1b7f4fecf80750fdc25a4c22')
 
 package() {
