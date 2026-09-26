@@ -1,0 +1,5 @@
+[lib32-nvidia-production-utils]
+source = "regex"
+# Direct API call for non-WHQL non-beta driver
+url = "https://gfwsl.geforce.com/services_toolkit/services/com/nvidia/services/AjaxDriverService.php?func=DriverManualLookup&languageCode=1033&psid=133&pfid=1075&osID=12&beta=0&isWHQL=0&dltype=-1&dch=0&upCRD=null&qnf=0&ctk=null&sort1=&numberOfResults=1"
+regex = '"DisplayVersion"\s*:\s*"([0-9]+(?:\.[0-9]+)+)"'
