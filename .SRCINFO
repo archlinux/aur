@@ -1,6 +1,6 @@
 pkgbase = ramsleuth
 	pkgdesc = Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients
-	pkgver = 2.4.0
+	pkgver = 2.4.5
 	pkgrel = 1
 	url = https://github.com/MadGoatHaz/RamSleuth
 	install = ramsleuth.install
@@ -29,6 +29,6 @@ pkgbase = ramsleuth
 	depends = mesa
 	conflicts = ramsleuth-bin
 	conflicts = ramsleuth-intel-dkms
-	source = ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#tag=v2.4.0
+	source = ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#tag=v2.4.5
 
 pkgname = ramsleuth
