@@ -61,6 +61,3 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 }
-
-# After installation:
-# systemctl --user restart plasma-kglobalaccel.service
