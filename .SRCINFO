@@ -1,7 +1,7 @@
 pkgbase = ziso_compressor_rust
 	pkgdesc = A rust written ziso compressor with multipple threads support
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Danixu/ziso_compressor_rust
 	arch = x86_64
 	arch = aarch64
