@@ -1,5 +1,5 @@
 pkgname=fvc-launcher-bin
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='Modern Minecraft launcher with isolated profiles and Modrinth integration'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "fvc-launcher.png::https://raw.githubusercontent.com/FvC-Launcher/FvC-Launcher/v$pkgver/resources/icon.png"
 )
 sha256sums=(
-  '83e30ba182135a438a384862b2e52ec4f8ab50c4c9d6195faef6d23228438921'
+  '86fb93b291cd99dc09b311e2c56adc4096fefe4157d905e6f0e8f414d401c5dc'
   'SKIP'
   '9717e74cc95bd7a5e7869fa12ecfc1a1855c55d35c336c9bc461bfd5a89975e3'
 )
