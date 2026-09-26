@@ -1,8 +1,8 @@
 pkgname=throne-sysqt-bin
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box) not pack the Qt libraries"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/throneproj/Throne"
 license=('GPL-3.0-only')
 conflicts=(throne throne-git throne-bin nekoray-mahdi-zarei-bin)
@@ -12,15 +12,24 @@ _appver=${pkgver/[a-z]/-&}
 source=(Throne.{desktop,sh})
 source_x86_64=(throne-$_appver-debian-system-qt-x64.deb::$url/releases/download/$_appver/Throne-$_appver-debian-amd64-system-qt.deb
 )
+source_aarch64=(
+  throne-$_appver-debian-system-qt-arm64.deb::$url/releases/download/$_appver/Throne-$_appver-debian-arm64-system-qt.deb
+)
 sha256sums=('1d7019ed30127fb3c7219016ed9e08bdc4809c65af13d2b02e59eed87a69082d'
             'ba44fe899a7ae34474a497a797299587d1e286e7a574578804083220caefe1bb')
-sha256sums_x86_64=('a4039a4017f37188f15726ebb78d1aaba04c4ee01f9463894d5f07143ab83b1a')
+sha256sums_x86_64=('2f2b03ca9833991cf0534a48c824e8a6341919ca62cf2fc31515f086dab73935')
+sha256sums_aarch64=('791b1987c9c511aa6d83ec45bd0d710b431cb51f9b120247b06050bcca5c4a06')
 
 prepare() {
   cd "$srcdir"
-
   mkdir -p deb
-  bsdtar -xf throne-$_appver-debian-system-qt-x64.deb -C deb
+
+  case "$CARCH" in
+    x86_64) pkg=throne-$_appver-debian-system-qt-x64.deb ;;
+    aarch64) pkg=throne-$_appver-debian-system-qt-arm64.deb ;;
+  esac
+
+  bsdtar -xf "$pkg" -C deb
   bsdtar -xf deb/data.tar.* -C "$srcdir"
 }
 
