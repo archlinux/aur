@@ -1,5 +1,5 @@
 pkgname=companion
-pkgver=5.0.2
+pkgver=5.0.6
 pkgrel=1
 pkgdesc="Control software for the Elgato Streamdeck with a focus on broadcasting."
 arch=('x86_64' 'aarch64')
@@ -13,9 +13,9 @@ _node_version="22"
 source=("${pkgname}-${pkgver}::git+https://github.com/bitfocus/companion.git#tag=v${pkgver}"
 		"bitfocus-companion.desktop")
 
-sha256sums=('a9854d2737ed7de2ff9cb0aff1fa594df500b4e33b54769380c3efb2fa51dafb'
+sha256sums=('1ad95be44696e25b39eb91f92ccd9fde5c51dfc51ded1b90b0c6afabc8423f00'
             '65289895360dae94dd710e6804709c1e3f95e6bc275b1621cb88eb8a7cbd348f')
-b2sums=('4f0a0fe6f6a05e45998cc5920d8930235f7b6b0331a7ba004d47d0c9dffb60730723b63baa51b5b2ec6f40f0523ca3e8ec9a48a351070beda6283d8ae8d03410'
+b2sums=('e9d50a3597a90b82214fbf05d051accb60fc1ff53b8cf36407e8758abb9773f712202c76f34f0de04d859ee3a2aac628c584ee2d0613f6468a5e82e097c44f45'
         '718976c7c24fa0a2a8979a6704b36650ebe71e87edec944c1cc745cfa0e7e5aba7211efb3408b1bf12dc0065f838ed976bea75a818d5abefa23471e2e4354882')
 
 _ensure_local_nvm() {
