@@ -2,9 +2,9 @@
 
 pkgbase=scopehal-apps
 pkgname=scopehal-apps
-_tagname=0.2.2
+_tagname=0.3
 pkgver=${_tagname//-/+}
-pkgrel=5
+pkgrel=1
 epoch=
 pkgdesc="ngscopeclient and other client applications for libscopehal"
 arch=($CARCH)
@@ -73,7 +73,7 @@ source=(
     "imgui_markdown::git+https://github.com/juliettef/imgui_markdown.git"
 )
 sha256sums=('625fffb174a1fcc1fac27fde302d08220262b574acb72d7ac52f82d1f3b7f0d8'
-            '0cf732ca404794deecff51c73def0ad64765ed5daa31b2cd2f069f9627cac5ae'
+            '87984696499a43d6fc7abd1948583d0112bab569030b01367092903049281334'
             'SKIP'
             'SKIP'
             'SKIP'
