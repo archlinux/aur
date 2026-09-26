@@ -1,0 +1,18 @@
+pkgbase = quickshell-d77
+	pkgdesc = Quickshell d77 shell for Wayland compositors
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://github.com/dani-77/quickshell-d77
+	arch = any
+	license = MIT
+	makedepends = rsync
+	depends = quickshell
+	depends = power-profiles-daemon
+	depends = alsa-utils
+	depends = alsa-tools
+	depends = brightnessctl
+	depends = wireless_tools
+	source = quickshell-d77-1.4.4.tar.gz::https://github.com/dani-77/quickshell-d77/archive/refs/tags/1.4.4.tar.gz
+	sha256sums = 28797d34a5447a3c1326835fa129a6701d3633b8b82a17ff5aa9f8d5c614d43e
+
+pkgname = quickshell-d77
