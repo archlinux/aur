@@ -2,12 +2,15 @@
 
 pkgname=bit4id-pki-manager
 pkgver=1.4.11.836
-pkgrel=1
+pkgrel=2
 pkgdesc="Bit4ID PKI Manager application"
 arch=('x86_64')
 license=('unknown')
 url="https://cdn.bit4id.com/es/middleware.htm"
 options=('!strip')
+# The app loads the system's /usr/lib/libpcsclite.so.1 and talks to pcscd.
+# ccid provides the driver for most USB card readers.
+depends=('pcsclite' 'ccid')
 
 # Upstream (Bit4id) publishes an unversioned zip (containing a .deb and an .rpm),
 # so we save it under a versioned name. The checksum will break when upstream replaces it with a newer release.

@@ -1,10 +1,12 @@
 pkgbase = bit4id-pki-manager
 	pkgdesc = Bit4ID PKI Manager application
 	pkgver = 1.4.11.836
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cdn.bit4id.com/es/middleware.htm
 	arch = x86_64
 	license = unknown
+	depends = pcsclite
+	depends = ccid
 	noextract = Bit4id_Middleware-1.4.11.836.zip
 	options = !strip
 	source = Bit4id_Middleware-1.4.11.836.zip::https://cdn.bit4id.com/es/soporte/downloads/middleware/Bit4id_Middleware.zip
