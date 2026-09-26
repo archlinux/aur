@@ -17,7 +17,7 @@ pkgbase = pi-coding-agent-git
 	source = pi-wrapper
 	source = APPEND_SYSTEM.md.example
 	sha256sums = SKIP
-	sha256sums = 3667009db46761988244e62c6d9f8d4e75ff7c846d2f5f979e503eecb85bf97d
+	sha256sums = 13a511a77c9c99ecd51811172f3c17bd69420f9ae82dcb15ffe3fee4661c3d21
 	sha256sums = SKIP
 
 pkgname = pi-coding-agent-git

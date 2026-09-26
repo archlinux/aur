@@ -1,6 +1,6 @@
 # Maintainer: dougefresh <dchimento@gmail.com>
 pkgname='pi-coding-agent-git'
-pkgver=0.87.1.r9.gfde38ed7c
+pkgver=0.87.1.r50.g2b0a123de
 pkgrel=1
 pkgdesc="Coding agent CLI with read, bash, edit, write tools and session management"
 url="https://github.com/earendil-works/pi"
@@ -18,7 +18,7 @@ source=(
     'pi-wrapper'
     'APPEND_SYSTEM.md.example'
 )
-sha256sums=('SKIP' '3667009db46761988244e62c6d9f8d4e75ff7c846d2f5f979e503eecb85bf97d' 'SKIP')
+sha256sums=('SKIP' '13a511a77c9c99ecd51811172f3c17bd69420f9ae82dcb15ffe3fee4661c3d21' 'SKIP')
 options=('!strip' '!debug')
 
 pkgver() {
