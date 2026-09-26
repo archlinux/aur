@@ -39,6 +39,7 @@ check() {
 	cd ${srcdir}/${pkgname}-${pkgver}/ || exit 1
 
 	export CARGO_TARGET_DIR=target
+	export CARGO_TERM_COLOR=always
 	cargo test --release --locked -- \
 		--skip "app::tests::a_subtree_rescan_keeps_a_collapsed_directory_collapsed" \
 		--skip "app::tests::test_subtree_rescan_after_copying_a_nested_file" \
@@ -53,7 +54,8 @@ check() {
 		--skip "diff::tests::test_precise_mode_hash_failure_is_not_identical" \
 		--skip "diff::tests::test_scan_does_not_follow_symlink_cycles" \
 		--skip "diff::tests::test_unique_case_mismatch_directory_recursive_alignment" \
-		--skip "tests::a_copy_updates_its_directory_from_a_background_scan"
+		--skip "tests::a_copy_updates_its_directory_from_a_background_scan" \
+		--nocapture 2>&1 --color always | tr -d '\000-\010\013\014\016-\032\034-\037\177'
 }
 
 package() {
