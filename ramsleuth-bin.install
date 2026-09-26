@@ -23,6 +23,17 @@ pre_upgrade() {
 
 post_install() {
     systemctl daemon-reload 2>/dev/null || true
+    # polkit: this (re)installs the one-click policy
+    # (/usr/share/polkit-1/actions/90-ramsleuth-setup.policy). A polkitd
+    # that started before the file landed may keep serving a stale action
+    # pool (its inotify hot-reload is not reliable for it — observed
+    # 2026-09-25), which would make the GUI's one-click prompt show the
+    # generic "run a program in a different context" dialog instead of
+    # RamSleuth's branded message. Restart it so the branded
+    # org.freedesktop.ramsleuth.setup action is live without a reboot.
+    # Guarded like every other call here: non-fatal, never fails the
+    # transaction.
+    systemctl restart polkit 2>/dev/null || true
     if ! systemctl enable --now ramsleuth.service 2>/dev/null; then
         echo "ramsleuth-bin: ramsleuth.service not started (non-fatal);" \
              "run: systemctl enable --now ramsleuth" >&2
@@ -82,6 +93,10 @@ post_install() {
 
 post_upgrade() {
     systemctl daemon-reload 2>/dev/null || true
+    # Same stale-pool reason as post_install (the policy file may have
+    # changed with the package): make the branded org.freedesktop.
+    # ramsleuth.setup action live without a reboot. Guarded: non-fatal.
+    systemctl restart polkit 2>/dev/null || true
 }
 
 pre_remove() {
