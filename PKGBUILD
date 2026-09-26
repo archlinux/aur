@@ -3,21 +3,19 @@
 
 pkgname=astrill
 pkgver=3.10.0.3073
-pkgrel=0
+pkgrel=1
 pkgdesc="VPN configuration tool for Astrill's servers"
 arch=('x86_64' 'i686')
 url="http://astrill.com/"
 license=('custom')
-depends=()
+depends=('gtk2')
 install=astrill.install
-
-# Astrill doesn't provide direct download links without authenticating
-# But their QA shared the following links for building the package
-source_i686=('https://www.astrilldownloads.com/astrill-setup-linux.rpm')
-source_x86_64=('https://www.astrilldownloads.com/astrill-setup-linux64.rpm')
 
 sha256sums_x86_64=('2211073ef66a4389d96f500e74169d8db3cb4ca1955d020104496b372581402a')
 sha256sums_i686=('cf5d376220988a6847684da1af525587dedf3cd1f0fb945d97972bdb1b477c42')
+
+source_x86_64=("https://www.astrill.com/dl/${sha256sums_x86_64[0]}/astrill-setup-linux64.rpm")
+source_i686=("https://www.astrill.com/dl/${sha256sums_i686[0]}/astrill-setup-linux.rpm")
 
 # Use this path instead of /usr/local/Astrill
 _install_path=/opt/astrill
