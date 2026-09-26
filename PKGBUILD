@@ -1,4 +1,4 @@
-# Maintainer: fr0stb1rd <fr0stb1rd at proton dot me>
+# Maintainer: fr0stb1rd <fr0stb1rd@proton.me>
 pkgname=jadx-bin
 pkgver=1.5.6
 pkgrel=1

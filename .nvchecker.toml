@@ -1,0 +1,5 @@
+[jadx-bin]
+source = "github"
+github = "skylot/jadx"
+use_latest_release = "true"
+prefix = "v"
