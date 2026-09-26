@@ -1,11 +1,14 @@
 pkgbase = vmutils
-	pkgdesc = Victoria Metrics utils
-	pkgver = 1.151.0
+	pkgdesc = VictoriaMetrics utils
+	pkgver = 1.152.0
 	pkgrel = 1
 	url = https://docs.victoriametrics.com/victoriametrics/
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
-	source = https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.151.0/vmutils-linux-amd64-v1.151.0.tar.gz
-	sha256sums = 1813b8c8f5c609b56ee01243e1c1213b302be9bbd1243e51fd67a06cb83e53d6
+	source_x86_64 = https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.152.0/vmutils-linux-amd64-v1.152.0.tar.gz
+	sha256sums_x86_64 = 8eee4a98ff1665c60682475e8a8b292b8d718b63a2f023124384dd2f6a220c79
+	source_aarch64 = https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.152.0/vmutils-linux-arm64-v1.152.0.tar.gz
+	sha256sums_aarch64 = 57c567b262962a4cb8e35c0c34efe64629a3e1ea69ac0611d8d67e168df8b1e8
 
 pkgname = vmutils
