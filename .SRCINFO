@@ -1,6 +1,6 @@
 pkgbase = duodiff
 	pkgdesc = A cross-platform TUI directory comparison tool
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/akunzai/duodiff
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = duodiff
 	depends = glibc
 	depends = libgcc
 	provides = duodiff
-	source = duodiff-0.12.0.tgz::https://github.com/akunzai/duodiff/archive/v0.12.0.tar.gz
-	sha256sums = 11aa96c148363c21405b39ed2f5ab2bef94f63eae05796d42e10d1e78c4527c6
+	source = duodiff-0.13.0.tgz::https://github.com/akunzai/duodiff/archive/v0.13.0.tar.gz
+	sha256sums = f66549db76f2a51a6a4664060af3a6accf3f7ede1505c6e4a3124919f14cba7f
 
 pkgname = duodiff
