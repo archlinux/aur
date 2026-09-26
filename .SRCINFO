@@ -1,0 +1,28 @@
+pkgbase = leetcode-fsrs-git
+	pkgdesc = Terminal-first LeetCode review planner powered by FSRS (development version)
+	pkgver = 2.0.0.r101.gb98d4ca
+	pkgrel = 1
+	url = https://github.com/SaintFore/LeetCodeCLI
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-fsrs>=6.3
+	depends = python-keyring>=25
+	depends = python-requests>=2.32
+	depends = python-textual>=8.2
+	depends = python-typer>=0.27
+	provides = leetcode-fsrs
+	conflicts = leetcode-fsrs
+	conflicts = leetcode-fsrs-cli
+	conflicts = leetcode-fsrs-cli-bin
+	source = leetcode-fsrs::git+https://github.com/SaintFore/LeetCodeCLI.git#branch=main
+	b2sums = SKIP
+
+pkgname = leetcode-fsrs-git
