@@ -1,14 +1,15 @@
+# Maintainer: Robin Trioux <robin@trioux.eu>
+
 # Maintainer: Robin
+
 pkgname=webots-git
-pkgver=nightly.24.9.2026
+pkgver=nightly.24.9.2026.r15777.g87fcc4222a
 pkgrel=1
-pkgdesc="Open-source robot simulator (git version)"
-arch=(x86_64)
+pkgdesc="Open-source robot simulator (development version)"
+arch=('x86_64')
 url="https://cyberbotics.com/"
-license=(Apache)
-groups=()
-options=('!strip' '!debug')
-install=webots.install
+license=('Apache-2.0')
+
 depends=(
   'glibc'
   'gcc-libs'
@@ -20,7 +21,6 @@ depends=(
   'libxrender'
   'libgl'
   'glu'
-  'mesa'
   'openal'
   'libjpeg-turbo'
   'libpng'
@@ -38,9 +38,8 @@ depends=(
   'qt6-base'
   'qt6-declarative'
   'qt6-svg'
-  'qt6-xcb-private-headers'
-  'qt6-wayland'
 )
+
 makedepends=(
   'git'
   'make'
@@ -49,97 +48,154 @@ makedepends=(
   'python'
   'swig'
   'wget'
+  'patchelf'
 )
+
 optdepends=(
-  'python: Python controller support'
   'matlab: MATLAB controller support'
   'espeak: Text-to-speech for some robots'
   'ffmpeg: Video recording'
 )
-provides=("webots=${pkgver}")
-conflicts=('webots')
-source=("git+https://github.com/cyberbotics/webots.git")
-md5sums=('SKIP')
+
+provides=('webots')
+conflicts=('webots' 'webots-bin')
+
+source=(
+  'git+https://github.com/cyberbotics/webots.git'
+)
+
+sha256sums=('SKIP')
+
+options=('!strip')
 
 pkgver() {
   cd "$srcdir/webots"
-  # Try to get version from git tags
-  local ver
-  if ver=$(git describe --tags --abbrev=0 2>/dev/null); then
-    # Sanitize version: remove v prefix, replace _ and - with ., remove other invalid chars
-    echo "$(echo "$ver" | sed 's/^v//;s/[_-]/./g;s/[^a-zA-Z0-9.]//g')"
-  else
-    # Fallback to date
-    echo "$(date +%Y%m%d)"
-  fi
+
+  local tag
+  tag=$(git describe --tags --abbrev=0 2>/dev/null || echo unknown)
+  tag="${tag#v}"
+  tag=$(printf '%s' "$tag" | sed 's/[_-]/./g; s/[^[:alnum:].]//g')
+
+  printf '%s.r%s.g%s\n' \
+    "$tag" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd "$srcdir/webots"
-  # Initialize submodules
+
   git submodule update --init --recursive
 }
 
 build() {
   cd "$srcdir/webots"
 
-  # Set Java environment
   export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
   export PATH="$JAVA_HOME/bin:$PATH"
-  export WEBOTS_HOME=$(pwd)
+  export WEBOTS_HOME="$PWD"
 
-  # Build Webots
-  make -j"$(nproc)" release
+  make -j"$(nproc)"
 }
 
 package() {
   cd "$srcdir/webots"
 
-  # Create destination directories
+  #
+  # Directory structure
+  #
+  # /usr/share/webots/
+  # ├── webots              <- upstream launcher
+  # ├── bin/webots-bin      <- actual executable
+  # ├── lib/webots/         <- private libraries
+  # ├── resources/
+  # ├── projects/
+  # ├── include/
+  # └── scripts/
+  #
+  # /usr/bin/webots         <- symlink to upstream launcher
+  #
+
   install -d "$pkgdir/usr/share/webots"
   install -d "$pkgdir/usr/bin"
-  install -d "$pkgdir/usr/share/applications"
-  install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
-  install -d "$pkgdir/usr/share/icons/hicolor/128x128/apps"
 
-  # Copy Webots files
-  cp -r lib "$pkgdir/usr/share/webots/"
-  cp -r include "$pkgdir/usr/share/webots/"
-  cp -r resources "$pkgdir/usr/share/webots/"
-  cp -r projects "$pkgdir/usr/share/webots/"
-  cp -r docs "$pkgdir/usr/share/webots/"
-  cp -r scripts "$pkgdir/usr/share/webots/"
+  #
+  # Webots data
+  #
+  cp -a lib "$pkgdir/usr/share/webots/"
+  cp -a resources "$pkgdir/usr/share/webots/"
+  cp -a projects "$pkgdir/usr/share/webots/"
+  cp -a include "$pkgdir/usr/share/webots/"
+  cp -a scripts "$pkgdir/usr/share/webots/"
 
-  # Install the actual binary
+  #
+  # Actual Webots executable
+  #
   install -Dm755 bin/webots-bin "$pkgdir/usr/share/webots/bin/webots-bin"
 
-  # Create a simple wrapper script that sets up the environment correctly
-  cat > "$pkgdir/usr/bin/webots" << 'EOF'
-#!/bin/bash
-export WEBOTS_HOME=/usr/share/webots
-export LD_LIBRARY_PATH="/usr/share/webots/lib/webots:${LD_LIBRARY_PATH}"
-export QT_PLUGIN_PATH="/usr/share/webots/lib/webots/qt/plugins"
-export QT_QPA_PLATFORM="xcb"
-exec /usr/share/webots/bin/webots-bin "$@"
-EOF
-  chmod 755 "$pkgdir/usr/bin/webots"
+  #
+  # Fix the build-tree RUNPATH embedded by Webots.
+  #
+  # From:
+  #   /home/robin/AUR/webots-git/src/webots/lib/webots
+  #
+  # To:
+  #   $ORIGIN/../lib/webots
+  #
+  patchelf \
+    --set-rpath '$ORIGIN/../lib/webots' \
+    "$pkgdir/usr/share/webots/bin/webots-bin"
 
-  # Install desktop file
-  install -Dm644 scripts/packaging/webots.desktop "$pkgdir/usr/share/applications/webots.desktop"
-  # Fix desktop file paths
-  sed -i "s|Exec=webots|Exec=/usr/bin/webots|" "$pkgdir/usr/share/applications/webots.desktop"
-  sed -i "s|Icon=/usr/local/webots/resources/icons/core/webots.png|Icon=/usr/share/webots/resources/icons/core/webots.png|" "$pkgdir/usr/share/applications/webots.desktop"
+  #
+  # IMPORTANT:
+  # Install the upstream launcher itself.
+  #
+  # It calculates:
+  #
+  #   webots_home="$(dirname "$(readlink -f "$0")")"
+  #
+  # Therefore it must live inside /usr/share/webots.
+  #
+  install -Dm755 \
+    webots \
+    "$pkgdir/usr/share/webots/webots"
 
-  # Install icons
-  install -Dm644 resources/icons/core/webots.png \
+  #
+  # Public command.
+  #
+  ln -s \
+    /usr/share/webots/webots \
+    "$pkgdir/usr/bin/webots"
+
+  #
+  # Desktop entry
+  #
+  install -Dm644 \
+    scripts/packaging/webots.desktop \
+    "$pkgdir/usr/share/applications/webots.desktop"
+
+  sed -i \
+    -e 's|^Exec=.*|Exec=webots|' \
+    -e 's|^Icon=.*|Icon=webots|' \
+    "$pkgdir/usr/share/applications/webots.desktop"
+
+  #
+  # Icons
+  #
+  install -Dm644 \
+    resources/icons/core/webots.png \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/webots.png"
-  install -Dm644 resources/images/webots.png \
+
+  install -Dm644 \
+    resources/images/webots.png \
     "$pkgdir/usr/share/icons/hicolor/128x128/apps/webots.png"
 
-  # Install Qt configuration
-  if [ -f bin/qt.conf ]; then
-    install -Dm644 bin/qt.conf "$pkgdir/usr/share/webots/qt.conf"
-    # Fix paths in qt.conf
-    sed -i "s|^Prefix = .*|Prefix = /usr/share/webots|" "$pkgdir/usr/share/webots/qt.conf"
+  #
+  # Qt configuration
+  #
+  if [[ -f bin/qt.conf ]]; then
+    install -Dm644 \
+      bin/qt.conf \
+      "$pkgdir/usr/share/webots/bin/qt.conf"
   fi
 }
