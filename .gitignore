@@ -1,3 +1,6 @@
-!LICENSE
-!PKGBUILD
-!.SRCINFO
+*.tar.gz
+*.zip
+*.zst
+*.deb
+src/
+pkg/
