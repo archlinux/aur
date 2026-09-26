@@ -1,0 +1,34 @@
+pkgbase = diagng
+	pkgdesc = Client for mobile baseband Diag interfaces
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/P1sec/DiagNG
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>=69
+	makedepends = python-setuptools-scm>=8
+	makedepends = python-pytest
+	makedepends = python-kaitaistruct>=0.11
+	makedepends = python-crcmod>=1.7
+	makedepends = blueprint-compiler
+	depends = python>=3.10
+	depends = python-gobject>=3.56.2
+	depends = python-kaitaistruct>=0.11
+	depends = python-crcmod>=1.7
+	depends = python-pyudev>=0.24.4
+	depends = libmm-glib
+	depends = libadwaita>=1.8
+	depends = gtksourceview5
+	depends = polkit
+	depends = diagmond
+	depends = wireshark-qt
+	depends = android-tools
+	provides = python-diagng=0.1.1
+	conflicts = python-diagng
+	options = !strip
+	source = DiagNG-0.1.1.tar.gz::https://github.com/P1sec/DiagNG/archive/refs/tags/0.1.1.tar.gz
+	sha256sums = ee2a549875d634c65aa7f8b721011ee5a58ec4041bae79ffe2ca8476535537a7
+
+pkgname = diagng
