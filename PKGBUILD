@@ -3,7 +3,7 @@
 # Author: LostRuins (concedo)
 
 pkgname=koboldcpp-hipblas-portable
-pkgver=1.121
+pkgver=1.122
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM, portable build for old CPUs)"
 arch=('x86_64')
@@ -37,7 +37,7 @@ source=(
     'koboldcpp.png'
 )
 sha256sums=(
-    '16e8b4b3bc2ad97d47dc248c34eee0d1720611212923f28e047683589cec8b85'
+    '40d3bec39673f512d2c8c935734091670f8d659079b2b77ad7ebe43a15231971'
     '2f2f45a745b30392d01472c1f5e68f82e5e7d7353a4615cf94b9f0cd4fd0505b'
     'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
@@ -54,7 +54,6 @@ package() {
     install -d "$pkgdir/usr/share/koboldcpp"
 
     install -Dm644 ./*.so "$pkgdir/usr/share/koboldcpp/"
-    install -Dm644 ./json_to_gbnf.py "$pkgdir/usr/share/koboldcpp/"
 
     install -d "$pkgdir/usr/share/koboldcpp/embd_res"
     install -Dm644 ./embd_res/* "$pkgdir/usr/share/koboldcpp/embd_res"
@@ -62,9 +61,20 @@ package() {
     install -d "$pkgdir/usr/share/koboldcpp/kcpp_adapters"
     install -m644 kcpp_adapters/* "$pkgdir/usr/share/koboldcpp/kcpp_adapters/"
 
+    install -Dm644 ./json_to_gbnf.py "$pkgdir/usr/share/koboldcpp/json_to_gbnf.py"
+    install -Dm644 ./kcpp_agent.py "$pkgdir/usr/share/koboldcpp/kcpp_agent.py"
     install -Dm644 ./koboldcpp.py "$pkgdir/usr/share/koboldcpp/koboldcpp.py"
 
     install -d "$pkgdir/usr/bin"
+
+    echo '#!/bin/sh' > "$pkgdir/usr/bin/json_to_gbnf"
+    echo 'exec /usr/bin/python3 /usr/share/koboldcpp/json_to_gbnf.py "$@"' >> "$pkgdir/usr/bin/json_to_gbnf"
+    chmod +x "$pkgdir/usr/bin/json_to_gbnf"
+
+    echo '#!/bin/sh' > "$pkgdir/usr/bin/kcpp_agent"
+    echo 'exec /usr/bin/python3 /usr/share/koboldcpp/kcpp_agent.py "$@"' >> "$pkgdir/usr/bin/kcpp_agent"
+    chmod +x "$pkgdir/usr/bin/kcpp_agent"
+
     echo '#!/bin/sh' > "$pkgdir/usr/bin/koboldcpp"
     echo 'exec /usr/bin/python3 /usr/share/koboldcpp/koboldcpp.py "$@"' >> "$pkgdir/usr/bin/koboldcpp"
     chmod +x "$pkgdir/usr/bin/koboldcpp"
@@ -77,5 +87,6 @@ package() {
 
     # Compile Python scripts
     python -m compileall -o 0 -o 1 -d '/usr/share/koboldcpp' "$pkgdir/usr/share/koboldcpp/json_to_gbnf.py"
+    python -m compileall -o 0 -o 1 -d '/usr/share/koboldcpp' "$pkgdir/usr/share/koboldcpp/kcpp_agent.py"
     python -m compileall -o 0 -o 1 -d '/usr/share/koboldcpp' "$pkgdir/usr/share/koboldcpp/koboldcpp.py"
 }
