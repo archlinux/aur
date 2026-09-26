@@ -24,9 +24,9 @@ source=(
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/jgraph/drawio-desktop/releases/download/v${pkgver}/drawio-amd64-${pkgver}.deb")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::https://github.com/jgraph/drawio-desktop/releases/download/v${pkgver}/drawio-arm64-${pkgver}.deb")
 
-sha256sums=('b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1')
-sha256sums_x86_64=('296729ee18f781dc82deb757de2b3399fbe04fe0ddad3093909013e707ee2ae4')
-sha256sums_aarch64=('b75aee5a4a24252acae14d62122ff4ab15f27199619a5a701bcbc01acd2b8127')
+sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
+sha256sums_x86_64=('b2fd41f02567929c5fae4becbdc16bf118b1ef508a827a29ad9a883924263999')
+sha256sums_aarch64=('4d2daea4c10c348699b6d7f539c7d244aac236888cc423ecf5a7baa7acf8cd7e')
 
 prepare() {
     # extract deb archive
