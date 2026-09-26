@@ -11,9 +11,8 @@ pkgdesc="Rust implementation of tar"
 arch=('x86_64')
 url="https://github.com/uutils/tar"
 license=('MIT')
-depends=(gcc-libs)
+depends=(gcc-libs zstd)
 makedepends=(rust git)
-optdepends=("rust-src: optimize with RUSTC_BOOTSTRAP=1")
 conflicts=(uutils-tar)
 provides=(uutils-tar)
 source=("uutils-tar::git+${url}.git")
@@ -22,6 +21,7 @@ b2sums=('SKIP')
 build(){
   cd uutils-tar
   test $RUSTC_BOOTSTRAP = 1 && _cargoflags='-Zbuild-std=std,panic_abort --config=profile.release.panic="immediate-abort" -Zpanic-immediate-abort'
+  export ZSTD_SYS_USE_PKG_CONFIG=1
   cargo build --profile=release-fast $_cargoflags
 }
 

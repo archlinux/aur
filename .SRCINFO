@@ -8,7 +8,7 @@ pkgbase = uutils-tar-git
 	makedepends = rust
 	makedepends = git
 	depends = gcc-libs
-	optdepends = rust-src: optimize with RUSTC_BOOTSTRAP=1
+	depends = zstd
 	provides = uutils-tar
 	conflicts = uutils-tar
 	source = uutils-tar::git+https://github.com/uutils/tar.git
