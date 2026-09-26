@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=codedb-bin
-pkgver=0.2.5856
+pkgver=0.2.5857
 pkgrel=1
 pkgdesc='Code intelligence MCP server - tree-sitter indexing, symbol search, and full-text trigram search'
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=("${pkgname%-bin}")
 options=('!debug')
 source=("${pkgname%-bin}-${pkgver}::https://github.com/justrach/codedb/releases/download/v${pkgver}/codedb-linux-x86_64"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/justrach/codedb/v${pkgver}/LICENSE")
-sha256sums=('035261027957030a540e7c259d0349578c0aa5858ac6db40e4be4b8661bbc810'
+sha256sums=('058f5accf866dd2ec673a0257da8a4594cad7203d699a0a95d642e0572116d80'
             '5f4f3b4d4698acb3e86a31812a18391146e667a3afd682de4494a8f0e55bd83b')
 
 package() {
