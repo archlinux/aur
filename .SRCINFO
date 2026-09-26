@@ -1,6 +1,6 @@
 pkgbase = scout-mcp-bin
 	pkgdesc = An MCP server exposing scout's diagnostics as read-only tools: evaluate an MCP server, or verify an attestation, from inside the agent
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/sebastienrousseau/scout-mcp
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = scout-mcp-bin
 	depends = scout
 	provides = scout-mcp
 	conflicts = scout-mcp
-	source_x86_64 = scout-mcp-0.0.6-x86_64.tar.gz::https://github.com/sebastienrousseau/scout-mcp/releases/download/v0.0.6/scout-mcp_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = da66cc2c04295a91a5ad5458e7f8a850287b4335d258c71eb1824e9475c03079
-	source_aarch64 = scout-mcp-0.0.6-aarch64.tar.gz::https://github.com/sebastienrousseau/scout-mcp/releases/download/v0.0.6/scout-mcp_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 0eb650044b6a6acf25060201296f4751905e371ffc250e07bd2c16a75fdfad55
+	source_x86_64 = scout-mcp-0.0.7-x86_64.tar.gz::https://github.com/sebastienrousseau/scout-mcp/releases/download/v0.0.7/scout-mcp_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = e1e534eb981030a115fe701b767339bb9a8c0578ee7a6ed566ca603985e044d8
+	source_aarch64 = scout-mcp-0.0.7-aarch64.tar.gz::https://github.com/sebastienrousseau/scout-mcp/releases/download/v0.0.7/scout-mcp_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 38a3c9f9f854ab5b228697300f41030323ff1029fbd37e4319234f3affdcbd4a
 
 pkgname = scout-mcp-bin
