@@ -1,6 +1,6 @@
 # Maintainer: Blip Studio Inc. <hello@blip.net>
 pkgname=blipnet
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='Send files to people and devices around the world'
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ depends=('alsa-lib' 'gcc-libs' 'glibc' 'fontconfig' 'freetype2' 'libx11')
 options=('!strip' '!debug')
 source_x86_64=("https://static.blip.net/linux/blip-${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("https://static.blip.net/linux/blip-${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('c8fdb2910b59d6cc0984162b665902127528e28c47c01719c04af17e6e836340')
-sha256sums_aarch64=('ff445c02a4edca8e89298ce2d45f120a6795feaba108ae5d2fca72a5d875fa41')
+sha256sums_x86_64=('0dcb662b4279b94f7913efa3177c5c9a1f0f3431b9089411165f5fafb2309cf4')
+sha256sums_aarch64=('38283f68e5c382f04d5a5bfb91f1cc849680ad1b437c7d4b9411f219129f0bae')
 
 package() {
   cd "$srcdir/blip-$pkgver"
