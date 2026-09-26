@@ -7,7 +7,7 @@ pkgbase=nzbget-git
 pkgdesc="Download from Usenet using .nzb files (testing release)"
 pkgname=nzbget-git
 pkgrel=1
-pkgver=27.0.r2798.8e270e33
+pkgver=27.0.r2800.d963b57e
 
 arch=('x86_64')
 install=nzbget.install
