@@ -11,13 +11,17 @@ depends=(
   'cairo'
   'gdk-pixbuf2'
   'glib2'
+  'libdrm'
+  'libglvnd'
   'libinput'
+  'libxcb'
   'libxkbcommon'
   'pango'
   'pixman'
   'scenefx0.5'
   'wayland'
   'wlroots0.20'
+  'xcb-util-wm'
 )
 makedepends=('git' 'meson' 'wayland-protocols')
 optdepends=(
