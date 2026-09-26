@@ -1,5 +1,5 @@
 pkgbase = polkit-libs
-	pkgdesc = Application development toolkit for controlling system-wide privileges (libs only
+	pkgdesc = Application development toolkit for controlling system-wide privileges (libs only)
 	pkgver = 127
 	pkgrel = 1
 	url = https://github.com/polkit-org/polkit
