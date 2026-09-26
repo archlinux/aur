@@ -62,7 +62,7 @@ conflicts=('ramsleuth' 'ramsleuth-bin')
 
 # The installed files come from the RamSleuth repo tree (P5-03 dkms.conf, P5-04 helper,
 # C21-07 vendor/).
-# Integrity pin: the v2.4.6 release commit (immutable; current makepkg
+# Integrity pin: the v2.4.7 release commit (immutable; current makepkg
 # requires VCS sources to resolve to a commit — the #tag= fragment in
 # source= is a human-readable label only). The package keeps its own 1.0
 # pkgver (not the ramsleuth workspace version), so the tag is literal, not
@@ -70,8 +70,8 @@ conflicts=('ramsleuth' 'ramsleuth-bin')
 # wave. Before this first AUR submission the source tracked the moving
 # v2-development branch (the pre-v2.4.5 integrity-gap class, closed for the
 # siblings in the v2.4.5 re-cut).
-_gitcommit=445acada45c385d8f777021e7dc1758ad5ec5695
-source=("ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#tag=v2.4.6")
+_gitcommit=e0890b65ea49399400c18d0ebede47ed05d7deda
+source=("ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#tag=v2.4.7")
 
 package() {
   # 1) DKMS config (sourced by DKMS on the target; not at build time).

@@ -9,6 +9,6 @@ pkgbase = ryzen-smu-dkms
 	depends = dkms
 	conflicts = ramsleuth
 	conflicts = ramsleuth-bin
-	source = ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#tag=v2.4.6
+	source = ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#tag=v2.4.7
 
 pkgname = ryzen-smu-dkms
