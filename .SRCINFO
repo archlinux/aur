@@ -1,6 +1,6 @@
 pkgbase = dripfetch
 	pkgdesc = A customizable terminal system information display with animated rain
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/a-shygun/dripfetch
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = dripfetch
 	depends = python-psutil
 	depends = python-ruamel-yaml
 	provides = dripfetch
-	source = dripfetch-0.2.2.tar.gz::https://github.com/a-shygun/dripfetch/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = e40cf734999ff5423e6a6d5aa18430ed6e3fc8498eacd69028a1184113605147
+	source = dripfetch-0.3.0.tar.gz::https://github.com/a-shygun/dripfetch/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 7d1fd4c013b496de1a011334bf9c89ecee04679aebf2332c9636a02ece55dd37
 
 pkgname = dripfetch

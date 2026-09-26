@@ -2,7 +2,7 @@
 
 pkgauthor="a-shygun"
 pkgname="dripfetch"
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A customizable terminal system information display with animated rain"
 
@@ -22,7 +22,7 @@ depends=('bash' 'python' 'python-psutil' 'python-ruamel-yaml')
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e40cf734999ff5423e6a6d5aa18430ed6e3fc8498eacd69028a1184113605147')
+sha256sums=('7d1fd4c013b496de1a011334bf9c89ecee04679aebf2332c9636a02ece55dd37')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/" || exit
