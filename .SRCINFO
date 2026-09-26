@@ -1,8 +1,9 @@
 pkgbase = cloudflare-warp-minimal-bin
 	pkgdesc = Minimal Cloudflare WARP client
 	pkgver = 2026.7.1377.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://developers.cloudflare.com/warp-client
+	install = cloudflare-warp-minimal-bin.install
 	arch = x86_64
 	license = LicenseRef-Unknown
 	depends = glibc

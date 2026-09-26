@@ -1,0 +1,13 @@
+post_install() {
+	echo "############################################################"
+	echo "To get completions for this program, use warp-cli generate  "
+	echo "after you have enabled the warp-srv.service.                "
+	echo "############################################################"
+}
+
+post_upgrade() {
+	echo "############################################################"
+	echo "To get completions for this program, use warp-cli generate  "
+	echo "after you have enabled the warp-srv.service.                "
+	echo "############################################################"
+}

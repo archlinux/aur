@@ -4,11 +4,12 @@
 pkgname=cloudflare-warp-minimal-bin
 #todo: remove .0 from pkgver, add it to source for regex for nvchecker
 pkgver=2026.7.1377.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Minimal Cloudflare WARP client"
 arch=('x86_64')
 url="https://developers.cloudflare.com/warp-client"
 license=('LicenseRef-Unknown')
+install=${pkgname}.install
 depends=('glibc' 'tpm2-tss' 'libgcc' 'nss' 'dbus' 'nftables')
 provides=('cloudflare-warp-bin' 'cloudflare-warp')
 conflicts=('cloudflare-warp-bin' 'cloudflare-warp')
@@ -25,14 +26,4 @@ package() {
     install -Dm755 bin/warp-svc "$pkgdir/usr/bin/warp-svc"
     install -Dm644 lib/systemd/system/warp-svc.service "$pkgdir/usr/lib/systemd/system/warp-svc.service"
     sed -i 's|^ExecStart=/bin/warp-svc|ExecStart=/usr/bin/warp-svc|' "$pkgdir/usr/lib/systemd/system/warp-svc.service"
-
-    # Generate shell completions
-    for _shell in {bash,elvish,fish,zsh}
-    do
-	    "$srcdir/bin/warp-cli" generate-completions ${_shell} > "${srcdir}/${_shell}"
-    done
-    install -Dm644 bash "$pkgdir/usr/share/bash-completion/completions/warp-cli"
-    install -Dm644 elvish "$pkgdir/usr/share/elvish/lib/warp-cli.elv"
-    install -Dm644 fish "$pkgdir/usr/share/fish/vendor_completions.d/warp-cli.fish"
-    install -Dm644 zsh "$pkgdir/usr/share/zsh/site-functions/_warp_cli"
 }
