@@ -2,20 +2,15 @@ diff --git a/contrib/systemd/hister.service b/contrib/systemd/hister-user.servic
 index 81d29a3..a8faa70 100644
 --- a/contrib/systemd/hister-user.service
 +++ b/contrib/systemd/hister-user.service
-@@ -4,11 +4,9 @@ After=network.target
+@@ -4,8 +4,6 @@ After=network.target
 
  [Service]
  Type=simple
 -User=hister
 -Group=hister
  StateDirectory=hister
--Environment=HISTER_DATA_DIR=/var/lib/hister
--EnvironmentFile=-/etc/hister/hister.env
-+Environment=HISTER_DATA_DIR=%S/hister
-+EnvironmentFile=-%E/hister/hister.env
- ExecStart=/usr/bin/hister listen
- Restart=on-failure
-
+ Environment=HISTER_DATA_DIR=%S/hister
+ EnvironmentFile=-%E/hister/hister.env
 @@ -18,7 +16,7 @@ CapabilityBoundingSet=
 
  NoNewPrivileges=true
@@ -25,11 +20,12 @@ index 81d29a3..a8faa70 100644
  PrivateTmp=true
  PrivateDevices=true
  ProtectKernelTunables=true
-@@ -35,9 +33,8 @@ RestrictRealtime=true
+@@ -35,10 +33,8 @@ RestrictRealtime=true
  RestrictSUIDSGID=true
  RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
  SystemCallArchitectures=native
--SystemCallFilter=@system-service ~@privileged
+-SystemCallFilter=@system-service
+-SystemCallFilter=~@privileged
  MemoryDenyWriteExecute=true
  UMask=0077
 

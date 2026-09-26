@@ -1,8 +1,8 @@
 # Maintainer: Eldred Habert <arch@(my first name).fr>
 # Former maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=hister
-pkgver=0.19.0
-pkgrel=4
+pkgver=0.20.0
+pkgrel=1
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites"
 arch=('x86_64' 'aarch64')
 url="https://github.com/asciimoo/hister"
@@ -16,9 +16,9 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         hister.override.service
         systemd-user.patch
         hister.sysusers)
-sha256sums=('59cbe6d03a7e7783e4922ea03fbbbe812701c50eb5f49f6a3c42d9480ebdd2ba'
+sha256sums=('211743f169766ce9a8d7b8a4ebd69a9e5d3bd656150e76c7a0e2fe4e1321a623'
             'f5713114859925e53bd9f99d26072bcf07946011545d1e69fbaf09a7623e7e23'
-            'd31841f6d6bc2213dbc64199dcbfd5047deed759306f0631c1dc7d5bdcacd11f'
+            '44253a839af41fad0d7c2700cc842089b7f8dd0455f8b58d33d4c98a06039538'
             '5f4f3e82c42ba517d0caaa1deb4d3532c4f26cc60e42861bff1c5c6dacf34e9f')
 backup=(etc/hister/{hister.env,config.yml})
 
@@ -55,7 +55,7 @@ build() {
 	cp contrib/systemd/hister{,-user}.service
 	patch --force --forward -p1 <"$srcdir/systemd-user.patch"
 
-	./hister create-config >config.yml
+	./hister config create >config.yml
 }
 
 package() {
