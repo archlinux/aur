@@ -1,0 +1,46 @@
+--- a/sys/unix/Makefile.src
++++ b/sys/unix/Makefile.src
+@@ -511,9 +511,9 @@ MAKEDEFS ?= ../util/makedefs
+ # -lm required by lua
+ LUA_VERSION ?=5.4.8
+ LUABASE ?= liblua-$(LUA_VERSION).a
+-LUALIB ?= ../lib/lua/$(LUABASE)
++LUALIB ?= /usr/lib/liblua5.4.so
+ LUALIBS ?= $(LUALIB) -lm $(DLLIB)
+-LUAHEADERS ?= lib/lua-$(LUA_VERSION)/src
++LUAHEADERS ?= /usr/include/lua5.4
+ 
+ # timestamp files to reduce `make' overhead and shorten .o dependency lists
+ CONFIG_H = ../src/config.h-t
+@@ -869,3 +869,3 @@
+-	echo '#include "../$(LUAHEADERS)/lua.h"' >> $$HFILE && \
+-	echo '#include "../$(LUAHEADERS)/lualib.h"' >> $$HFILE && \
+-	echo '#include "../$(LUAHEADERS)/lauxlib.h"' >> $$HFILE && \
++	echo '#include "$(LUAHEADERS)/lua.h"' >> $$HFILE && \
++	echo '#include "$(LUAHEADERS)/lualib.h"' >> $$HFILE && \
++	echo '#include "$(LUAHEADERS)/lauxlib.h"' >> $$HFILE && \
+--- a/sys/unix/Makefile.top
++++ b/sys/unix/Makefile.top
+@@ -129,10 +129,10 @@
+-LUAHEADERS ?= lib/lua-$(LUA_VERSION)/src
++LUAHEADERS ?= /usr/include/lua5.4
+ LUATESTTARGET ?= $(LUAHEADERS)/lua.h
+ LUATOP = $(LUAHEADERS)
+ LUAMAKEFLAGS = CC='$(CC)' SYSCFLAGS='$(SYSCFLAGS)'
+ LUA2NHTOP ?= ../../..
+ LUABASELIB ?= liblua-$(LUA_VERSION).a
+-LUATOPLIB ?= lib/lua/$(LUABASELIB)
++LUATOPLIB ?= /usr/lib/liblua5.4.so
+ LUAHPREFIX ?= ../
+ LUALIBBUILT ?= $(LUATOP)/liblua.a
+ 
+@@ -159,6 +159,6 @@
+-	@echo '#include "$(LUAHPREFIX)$(LUAHEADERS)/lua.h"' >> $@
++	@echo '#include "$(LUAHEADERS)/lua.h"' >> $@
+ 	@sed -e '/(lua_error)/!d' \
+ 		-e '/(lua_error)/s/LUA_API/ATTRNORETURN LUA_API/1' \
+ 		-e '/(lua_error)/s/;/ NORETURN;/1' < $(LUAHEADERS)/lua.h >> $@
+-	@echo '#include "$(LUAHPREFIX)$(LUAHEADERS)/lualib.h"' >> $@
+-	@echo '#include "$(LUAHPREFIX)$(LUAHEADERS)/lauxlib.h"' >> $@
++	@echo '#include "$(LUAHEADERS)/lualib.h"' >> $@
++	@echo '#include "$(LUAHEADERS)/lauxlib.h"' >> $@

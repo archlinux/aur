@@ -1,0 +1,26 @@
+pkgbase = xnethack
+	pkgdesc = A fork of the dungeon exploration game NetHack
+	pkgver = 10.0
+	pkgrel = 1
+	url = https://github.com/copperwater/xNetHack
+	arch = x86_64
+	license = NGPL
+	depends = filesystem
+	depends = ncurses
+	depends = gzip
+	depends = lua54
+	source = xnethack-10.0.tar.gz::https://github.com/copperwater/xNetHack/archive/refs/tags/xnh10.0.tar.gz
+	source = use-system-lua54.patch
+	source = tmpfiles.conf
+	sha256sums = bceedf4fc964adb2ba98f2d0c3af70c818db526b9d17c7085a806ed0ff70229b
+	sha256sums = ddeb0ef6480f652ce618c33e06bc452f3dfe1f550d40777a76ab70473c7aab10
+	sha256sums = 6dc7cca8b3b1c3fc94967ca5557a91a30404a360bd2c2fba6f6c6f7fecc91401
+
+pkgname = xnethack
+	depends = filesystem
+	depends = ncurses
+	depends = gzip
+	depends = lua54
+	depends = glibc
+	depends = sh
+	depends = util-linux-libs

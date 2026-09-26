@@ -1,0 +1,5 @@
+[xnethack]
+source = "github"
+github = "copperwater/xNetHack"
+prefix = "xnh"
+use_latest_release = true

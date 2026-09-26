@@ -1,0 +1,11 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!LICENSE
+!LICENSES
+!LICENSES/**
+!REUSE.toml
+!.nvchecker.toml
+!*.patch
+!tmpfiles.conf
