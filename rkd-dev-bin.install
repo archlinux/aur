@@ -1,0 +1,11 @@
+# pacman install script (#1145). RKD can install the rkd-activity plugin
+# from Settings -> Plugins as a systemd *user* service. Removing this package
+# runs as root and cannot reach user units, so say how to remove it.
+
+post_remove() {
+  echo "==> RKD is removed. If you installed RKD Activity from its Settings,"
+  echo "    its background service is still there. As your own user (not root):"
+  echo "        ~/.local/bin/rkd-activity uninstall"
+  echo "        rm ~/.local/bin/rkd-activity"
+  echo "    Other RKD installs on this computer (a dev build) may still use it."
+}
