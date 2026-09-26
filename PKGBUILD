@@ -56,6 +56,12 @@
 #     (GPL-2.0-only — a separate work from the MIT RamSleuth code) ->
 #     /usr/share/ramsleuth-intel-dkms/src/ (the path the Intel helper resolves as its
 #     installed copy; GUARDED: absent in pre-Intel tags)
+#   - the vendored ryzen_smu DKMS module source tree packaging/ryzen-smu-dkms/
+#     vendor/ (the 6 module files frozen at upstream d298366, GPL-2.0-only —
+#     a separate work; + vendor/SUMS.sha256 + vendor/NOTICE.md) ->
+#     /usr/share/ryzen-smu-dkms/vendor/ (the path the AMD helper (step 4)
+#     resolves as its offline vendored source — every file SUMS-verified
+#     before a build, zero network; GUARDED: absent in pre-vendor tags)
 #
 # No-panic contract: installation never fails on the absence of
 # the ryzen_smu module, AVX-512, or a display; after a bare install the
@@ -68,7 +74,7 @@
 # plus the eframe 0.27 / winit dlopen + fallback runtime surface.
 
 pkgname=ramsleuth
-pkgver=2.4.5   # FIXED — taken from the git tag v$pkgver (no pkgver())
+pkgver=2.4.6   # FIXED — taken from the git tag v$pkgver (no pkgver())
 pkgrel=1
 pkgdesc="Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients"
 arch=(x86_64)
@@ -77,15 +83,19 @@ license=(MIT GPL-2.0-only)
 # Integrity pin: the v$pkgver release commit (immutable; current makepkg
 # requires VCS sources to resolve to a commit — the #tag= fragment in
 # source= is a human-readable label only).
-_gitcommit=a59fddbc3190dd706df73072319edf3da619cfb0
+_gitcommit=445acada45c385d8f777021e7dc1758ad5ec5695
 # git-tag source: makepkg clones the repo and checks out the pinned commit.
 # The "$pkgname::" rename extracts to $srcdir/ramsleuth (see header note above).
 source=("$pkgname::git+https://github.com/MadGoatHaz/RamSleuth.git#tag=v$pkgver")
 install=ramsleuth.install
 # The in-repo ramsleuth_intel DKMS source ships bundled (package() step (12))
 # and would file-conflict with the standalone ramsleuth-intel-dkms extra, so the
-# two cannot coinstall (pacman refuses; the user picks one).
-conflicts=('ramsleuth-bin' 'ramsleuth-intel-dkms')
+# two cannot coinstall (pacman refuses; the user picks one). The vendored
+# ryzen_smu source ships bundled too (package() step (13)) and would
+# file-conflict with the standalone ryzen-smu-dkms extra, so the two cannot
+# coinstall either (the conflict is mutual: ryzen-smu-dkms lists both main
+# packages).
+conflicts=('ramsleuth-bin' 'ramsleuth-intel-dkms' 'ryzen-smu-dkms')
 makedepends=(rust cargo pkgconf libx11 libxkbcommon wayland wayland-protocols libxrandr libxi libxcursor libxinerama mesa)
 depends=(libx11 libxkbcommon wayland libxrandr libxi libxcursor libxinerama mesa)
 
@@ -194,6 +204,36 @@ package() {
                     "$pkgdir/usr/share/ramsleuth-intel-dkms/src/$f"
             fi
         done
+    fi
+
+    # (13) The vendored ryzen_smu DKMS module source tree ->
+    # /usr/share/ryzen-smu-dkms/vendor/ryzen-smu/ — the exact installed path the
+    # AMD helper (step 4) resolves as its offline vendored source (C21-08/09:
+    # vendor-first, every file verified against the sibling vendor/SUMS.sha256
+    # before any build — zero network; this is what makes the in-app one-click
+    # work on a clean source-package install without the extra). The git-tag
+    # source carries packaging/ryzen-smu-dkms/vendor/ (the 6 module files
+    # frozen at upstream d298366 + SUMS.sha256 + NOTICE.md) from the vendor
+    # landing on v2-development; GUARDED with an existence test: a build
+    # against a pre-vendor tag (no packaging/ryzen-smu-dkms/vendor/) skips it
+    # cleanly — the no-panic contract; the per-file guards cover each file
+    # present in the tag tree.
+    if [ -d "packaging/ryzen-smu-dkms/vendor/ryzen-smu" ]; then
+        local f
+        for f in LICENSE Makefile dkms.conf drv.c smu.c smu.h; do
+            if [ -f "packaging/ryzen-smu-dkms/vendor/ryzen-smu/$f" ]; then
+                install -Dm644 "packaging/ryzen-smu-dkms/vendor/ryzen-smu/$f" \
+                    "$pkgdir/usr/share/ryzen-smu-dkms/vendor/ryzen-smu/$f"
+            fi
+        done
+        if [ -f "packaging/ryzen-smu-dkms/vendor/SUMS.sha256" ]; then
+            install -Dm644 "packaging/ryzen-smu-dkms/vendor/SUMS.sha256" \
+                "$pkgdir/usr/share/ryzen-smu-dkms/vendor/SUMS.sha256"
+        fi
+        if [ -f "packaging/ryzen-smu-dkms/vendor/NOTICE.md" ]; then
+            install -Dm644 "packaging/ryzen-smu-dkms/vendor/NOTICE.md" \
+                "$pkgdir/usr/share/ryzen-smu-dkms/vendor/NOTICE.md"
+        fi
     fi
 
     # NOTE: the ramsleuth group is created on the TARGET system by the .install
