@@ -1,0 +1,18 @@
+pkgbase = ddinfo-tools
+	pkgdesc = Cross-platform Devil Daggers modding tools, practice tools, and custom leaderboards client
+	pkgver = 0.13.7.1
+	pkgrel = 1
+	url = https://devildaggers.info/tools
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	depends = glibc
+	depends = libgcc
+	depends = glib2
+	depends = libstdc++
+	depends = dotnet-runtime-10.0
+	depends = gtk3
+	source = ddinfo-tools-0.13.7.1.tar.gz::https://github.com/NoahStolk/ddinfo-tools/archive/refs/tags/v0.13.7.1.tar.gz
+	sha256sums = b81a4e3c55ac263d0b96e7d134ab3dbe96b6de0f3d311f003fedc603d9b64478
+
+pkgname = ddinfo-tools

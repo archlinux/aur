@@ -1,0 +1,5 @@
+[ddinfo-tools]
+source = "github"
+github = "NoahStolk/ddinfo-tools"
+prefix = "v"
+use_latest_release = true
