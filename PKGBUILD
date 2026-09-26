@@ -1,10 +1,10 @@
-# Maintainer: fibsussy <fibsussy@tuta.io>
+# Maintainer: noahlyk <noahlykins@gmail.com>
 pkgname=keymux
 pkgver=1.3.2
 pkgrel=1
 pkgdesc="Keyboard middleware for gaming with low-level input interception"
 arch=('x86_64' 'aarch64')
-url="https://github.com/fibsussy/keymux"
+url="https://github.com/noahlyk/keymux"
 license=('MIT')
 depends=('udev' 'libevdev')
 makedepends=()
@@ -17,6 +17,7 @@ optdepends=('systemd: for systemd service files (or use OpenRC/runit scripts)'
             'i3-wm: automatic game mode detection in i3 window manager'
             'bspwm: automatic game mode detection in bspwm window manager')
 options=('!debug')
+install=keymux.install
 
 _arch="$CARCH"
 if [ "$_arch" = "x86_64" ]; then
@@ -26,32 +27,32 @@ elif [ "$_arch" = "aarch64" ]; then
 fi
 
 source=(
-    "https://github.com/fibsussy/keymux/releases/download/v${pkgver}/keymux-${pkgver}-${_arch}.tar.gz"
-    "LICENSE::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/LICENSE"
-    "keymux.service::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/systemd/keymux.service"
-    "keymux-niri.service::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/systemd/keymux-niri.service"
-    "keymux-hyprland.service::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/systemd/keymux-hyprland.service"
-    "keymux-sway.service::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/systemd/keymux-sway.service"
-    "keymux-i3.service::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/systemd/keymux-i3.service"
-    "keymux-bspwm.service::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/systemd/keymux-bspwm.service"
-    "openrc-keymux::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/openrc/keymux"
-    "openrc-keymux-niri::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/openrc/keymux-niri"
-    "openrc-keymux-hyprland::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/openrc/keymux-hyprland"
-    "openrc-keymux-sway::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/openrc/keymux-sway"
-    "openrc-keymux-i3::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/openrc/keymux-i3"
-    "openrc-keymux-bspwm::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/openrc/keymux-bspwm"
-    "runit-keymux-run::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/runit/keymux/run"
-    "runit-keymux-log-run::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/runit/keymux/log/run"
-    "runit-keymux-niri-run::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/runit/keymux-niri/run"
-    "runit-keymux-niri-log-run::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/runit/keymux-niri/log/run"
-    "runit-keymux-hyprland-run::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/runit/keymux-hyprland/run"
-    "runit-keymux-hyprland-log-run::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/runit/keymux-hyprland/log/run"
-    "runit-keymux-sway-run::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/runit/keymux-sway/run"
-    "runit-keymux-sway-log-run::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/runit/keymux-sway/log/run"
-    "runit-keymux-i3-run::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/runit/keymux-i3/run"
-    "runit-keymux-i3-log-run::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/runit/keymux-i3/log/run"
-    "runit-keymux-bspwm-run::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/runit/keymux-bspwm/run"
-    "runit-keymux-bspwm-log-run::https://raw.githubusercontent.com/fibsussy/keymux/v${pkgver}/runit/keymux-bspwm/log/run"
+    "https://github.com/noahlyk/keymux/releases/download/v${pkgver}/keymux-${pkgver}-${_arch}.tar.gz"
+    "LICENSE::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/LICENSE"
+    "keymux.service::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/systemd/keymux.service"
+    "keymux-niri.service::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/systemd/keymux-niri.service"
+    "keymux-hyprland.service::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/systemd/keymux-hyprland.service"
+    "keymux-sway.service::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/systemd/keymux-sway.service"
+    "keymux-i3.service::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/systemd/keymux-i3.service"
+    "keymux-bspwm.service::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/systemd/keymux-bspwm.service"
+    "openrc-keymux::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/openrc/keymux"
+    "openrc-keymux-niri::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/openrc/keymux-niri"
+    "openrc-keymux-hyprland::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/openrc/keymux-hyprland"
+    "openrc-keymux-sway::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/openrc/keymux-sway"
+    "openrc-keymux-i3::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/openrc/keymux-i3"
+    "openrc-keymux-bspwm::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/openrc/keymux-bspwm"
+    "runit-keymux-run::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/runit/keymux/run"
+    "runit-keymux-log-run::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/runit/keymux/log/run"
+    "runit-keymux-niri-run::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/runit/keymux-niri/run"
+    "runit-keymux-niri-log-run::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/runit/keymux-niri/log/run"
+    "runit-keymux-hyprland-run::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/runit/keymux-hyprland/run"
+    "runit-keymux-hyprland-log-run::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/runit/keymux-hyprland/log/run"
+    "runit-keymux-sway-run::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/runit/keymux-sway/run"
+    "runit-keymux-sway-log-run::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/runit/keymux-sway/log/run"
+    "runit-keymux-i3-run::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/runit/keymux-i3/run"
+    "runit-keymux-i3-log-run::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/runit/keymux-i3/log/run"
+    "runit-keymux-bspwm-run::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/runit/keymux-bspwm/run"
+    "runit-keymux-bspwm-log-run::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/runit/keymux-bspwm/log/run"
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 

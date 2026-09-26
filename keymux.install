@@ -1,56 +1,78 @@
 post_install() {
     echo ""
-    echo "==> Keyboard Middleware installed successfully!"
-    echo ""
-    echo "==> Multi-user architecture:"
-    echo "    • Root daemon: manages keyboards (keymux.service)"
-    echo "    • User service: monitors Niri windows (keymux-niri.service)"
+    echo "==> keymux installed. Next steps:"
     echo ""
 
-    echo "==> Getting Started:"
+    if [ -d "/run/systemd/system" ]; then
+        echo "    sudo systemctl enable --now keymux.service"
+        if pacman -Qq niri &>/dev/null; then
+            echo "    systemctl --user enable --now keymux-niri.service"
+        fi
+        if pacman -Qq hyprland &>/dev/null; then
+            echo "    systemctl --user enable --now keymux-hyprland.service"
+        fi
+        if pacman -Qq sway &>/dev/null; then
+            echo "    systemctl --user enable --now keymux-sway.service"
+        fi
+        if pacman -Qq i3-wm &>/dev/null; then
+            echo "    systemctl --user enable --now keymux-i3.service"
+        fi
+        if pacman -Qq bspwm &>/dev/null; then
+            echo "    systemctl --user enable --now keymux-bspwm.service"
+        fi
+    elif [ -d "/etc/openrc" ] || [ -d "/etc/init.d" ]; then
+        echo "    rc-update add keymux default && rc-service keymux start"
+        if pacman -Qq niri &>/dev/null; then
+            echo "    rc-update add keymux-niri default && rc-service keymux-niri start"
+        fi
+        if pacman -Qq hyprland &>/dev/null; then
+            echo "    rc-update add keymux-hyprland default && rc-service keymux-hyprland start"
+        fi
+        if pacman -Qq sway &>/dev/null; then
+            echo "    rc-update add keymux-sway default && rc-service keymux-sway start"
+        fi
+        if pacman -Qq i3-wm &>/dev/null; then
+            echo "    rc-update add keymux-i3 default && rc-service keymux-i3 start"
+        fi
+        if pacman -Qq bspwm &>/dev/null; then
+            echo "    rc-update add keymux-bspwm default && rc-service keymux-bspwm start"
+        fi
+    elif [ -d "/etc/runit" ] || [ -d "/service" ]; then
+        echo "    ln -s /etc/sv/keymux /service/keymux"
+        if pacman -Qq niri &>/dev/null; then
+            echo "    ln -s /etc/sv/keymux-niri /service/keymux-niri"
+        fi
+        if pacman -Qq hyprland &>/dev/null; then
+            echo "    ln -s /etc/sv/keymux-hyprland /service/keymux-hyprland"
+        fi
+        if pacman -Qq sway &>/dev/null; then
+            echo "    ln -s /etc/sv/keymux-sway /service/keymux-sway"
+        fi
+        if pacman -Qq i3-wm &>/dev/null; then
+            echo "    ln -s /etc/sv/keymux-i3 /service/keymux-i3"
+        fi
+        if pacman -Qq bspwm &>/dev/null; then
+            echo "    ln -s /etc/sv/keymux-bspwm /service/keymux-bspwm"
+        fi
+    else
+        echo "    No supported init system detected (systemd, OpenRC, or runit)."
+        echo "    Run keymux manually: sudo keymux daemon"
+    fi
+
     echo ""
-    echo "    1. Create your config file:"
-    echo "       mkdir -p ~/.config/keymux"
-    echo "       cp /usr/share/doc/keymux/config.example.ron ~/.config/keymux/config.ron"
-    echo "       \$EDITOR ~/.config/keymux/config.ron"
+    echo "==> Create your config (bootstraps a minimal starter config):"
+    echo "    keymux init"
     echo ""
-    echo "    2. Enable and start the root daemon (as root):"
-    echo "       sudo systemctl enable --now keymux.service"
+    echo "==> The unprivileged 'keymux list/toggle/debug' commands need read access"
+    echo "    to /dev/input - either run them with sudo, or:"
+    echo "    sudo usermod -a -G input \$USER   (then log out and back in)"
     echo ""
-    echo "    3. Select which keyboards to enable:"
-    echo "       keymux toggle"
-    echo ""
-    echo "    4. (Optional) Enable Niri window watcher for automatic game mode:"
-    echo "       systemctl --user enable --now keymux-niri.service"
-    echo ""
-    echo "==> Each user needs their own config in ~/.config/keymux/config.ron"
-    echo "==> The root daemon loads configs per-user on demand"
-    echo ""
-    echo "==> Requires the uinput kernel module (for virtual keyboard device):"
+    echo "==> Key remapping needs the uinput kernel module loaded:"
     echo "    sudo modprobe uinput"
-    echo "    To load it automatically on boot:"
-    echo "    echo 'uinput' | sudo tee /etc/modules-load.d/uinput.conf"
-    echo ""
-    echo "==> Shell completions have been installed system-wide!"
-    echo ""
-    echo "==> For more info: https://github.com/fibsussy/keymux"
+    echo "    echo uinput | sudo tee /etc/modules-load.d/uinput.conf   (to load it on every boot)"
     echo ""
 }
 
 post_upgrade() {
-    echo ""
-    echo "==> Keyboard Middleware upgraded successfully!"
-    echo ""
-    echo "==> Enable and start the root daemon:"
-    echo "    sudo systemctl enable --now keymux.service"
-    echo ""
-    echo "==> Select which keyboards to enable:"
-    echo "    keymux toggle"
-    echo ""
-    echo "==> (Optional) Enable Niri watcher for automatic game mode:"
-    echo "    systemctl --user enable --now keymux-niri.service"
-    echo ""
-    echo "==> Updated example config available at:"
-    echo "    /usr/share/doc/keymux/config.example.ron"
-    echo ""
+    post_install
 }
