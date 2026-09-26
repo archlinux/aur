@@ -3,7 +3,7 @@
 _pkgauthor=wcampbell0x2a
 _pkgname=backhand
 pkgname=${_pkgname}-bin
-pkgver=0.25.4
+pkgver=0.25.5
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Read, create and modify SquashFS File Systems"
@@ -24,8 +24,8 @@ source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/downlo
 sha256sums=('2b7cadc5845c3f38dd5199b3cf225c8eae068f39e8e52be6a69b8836cbcbfc05'
             '23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3'
             'fd26644b0118c8ae84a8770bdbbe18f7db14387b5cc19d1de670ad2d98a7ad42')
-sha256sums_x86_64=('bcc90810b9cf9fbe6d21738e1c5a06472f31a9e4a97446904a1d51ff5053d9b8')
-sha256sums_aarch64=('465c8a221b3de0e36ed0c1dd689d76b4d0a8b6232fc4f3fd346558d5b87efbc2')
+sha256sums_x86_64=('d2af56617fe5ea4320019dd1d6964db07151fa618bdc2de4ff10b996a56b92d4')
+sha256sums_aarch64=('738435df40af9380a7d20eb2666eb6ffdf45f853a19feafa2dac2104d504ab4d')
 
 
 package() {
