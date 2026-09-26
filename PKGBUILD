@@ -1,6 +1,6 @@
 # Maintainer: Francesc Elpeix
 pkgname=rivulet-bin
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A terminal RSS reader with 3-panel layout, categories, rich preview, and OPML support"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ conflicts=('rivulet')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/rivulet-v${pkgver}-x86_64-linux-gnu.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/rivulet-v${pkgver}-aarch64-linux-gnu.tar.gz")
-sha256sums_x86_64=('f59a5c28fb092539a0fac4796e72a2173a0648e60f0fb9cff542d7f636ae790c')
-sha256sums_aarch64=('5192cd190557f0026f9f1117c96558487536f99a3971e347831126743a157d50')
+sha256sums_x86_64=('7ede3be11f71fe248efbd841cb6169f52785a95c724f9eae63c845b3dbe334a7')
+sha256sums_aarch64=('54da6418faf3bb52e04987cce0ba82e17b7030ff0f8fbec7980ba69718ba28b9')
 
 package() {
     local _target="${CARCH}-linux-gnu"
