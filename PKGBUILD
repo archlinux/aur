@@ -1,6 +1,6 @@
 
 pkgname=innex-git
-pkgver=0.6.0.11.g1247890
+pkgver=0.6.0.16.gbcb6628
 pkgver() {
   cd inno
   git describe --long --tags | sed -e "s/v//" -e 's/-alpha-/.r/' -e 's/\-/\./g'
@@ -10,8 +10,8 @@ pkgdesc="Extract Inno Setup installers"
 url=https://github.com/russellbanks/inno
 license=('MIT')
 arch=('x86_64')
-depends=(libgcc glibc zlib)
-makedepends=(git rust pkgconf)
+depends=(libgcc glibc)
+makedepends=(git rust)
 conflicts=(innex)
 provides=(innex)
 source=("git+${url}")
