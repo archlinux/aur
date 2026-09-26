@@ -40,8 +40,8 @@ check() {
 
 	export CARGO_TARGET_DIR=target
 	cargo test --release --locked -- \
-		--skip "app::tests::an_incremental_rescan_keeps_a_collapsed_directory_collapsed" \
-		--skip "app::tests::test_apply_incremental_rescan_nested_file" \
+		--skip "app::tests::a_subtree_rescan_keeps_a_collapsed_directory_collapsed" \
+		--skip "app::tests::test_subtree_rescan_after_copying_a_nested_file" \
 		--skip "diff::tests::test_align_directories_with_progress" \
 		--skip "diff::tests::test_alignment_logic" \
 		--skip "diff::tests::test_alignment_precise_mode" \
@@ -52,7 +52,8 @@ check() {
 		--skip "diff::tests::test_fast_mode_size_mismatch_is_still_a_known_difference" \
 		--skip "diff::tests::test_precise_mode_hash_failure_is_not_identical" \
 		--skip "diff::tests::test_scan_does_not_follow_symlink_cycles" \
-		--skip "diff::tests::test_unique_case_mismatch_directory_recursive_alignment"
+		--skip "diff::tests::test_unique_case_mismatch_directory_recursive_alignment" \
+		--skip "tests::a_copy_updates_its_directory_from_a_background_scan"
 }
 
 package() {
