@@ -1,6 +1,6 @@
 # Maintainer: Kaleb <vitor.guttler@edu.pucrs.br>
 pkgname=cognito-local-git
-pkgver=5.1.0.r0.g4b2c4c5
+pkgver=5.3.0.r0.g0b0e5f6
 pkgrel=1
 pkgdesc="Local emulator for Amazon Cognito (git version)"
 arch=('x86_64')
