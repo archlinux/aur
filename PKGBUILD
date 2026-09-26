@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Kaleb <vitor.guttler@edu.pucrs.br>
 pkgname=librewolf-extension-kagisearch-bin
 _extname=kagisearch
 # renovate: datasource=custom.amo depName=kagisearch
