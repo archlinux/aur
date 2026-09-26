@@ -1,4 +1,7 @@
-*.pkg.tar.zst
-untrunc-*-*
+*.tar.gz
+*.zip
+*.zst
+*.deb
 src/
 pkg/
+untrunc-*-*
