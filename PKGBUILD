@@ -7,13 +7,14 @@ pkgdesc='A simple ZISO compressor'
 url='https://github.com/Danixu/ziso_compressor'
 license=('Apache-2.0')
 pkgver='r81.e56b86f'
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64' 'aarch64')
 provides=("$_bin")
 conflicts=("$_bin")
 makedepends=('cmake' 'git' 'make')
 source=("${_pkgbase}::git+${url}.git")
 b2sums=('SKIP')
+install="${pkgname}.install"
 _pkgsrc="${srcdir}/${_pkgbase}"
 
 pkgver() {

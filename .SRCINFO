@@ -1,8 +1,9 @@
 pkgbase = ziso_compressor-git
 	pkgdesc = A simple ZISO compressor
 	pkgver = r81.e56b86f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Danixu/ziso_compressor
+	install = ziso_compressor-git.install
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0

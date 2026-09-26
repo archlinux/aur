@@ -1,0 +1,7 @@
+post_install() {
+	echo -e 'Unless you have a very specific reason to use this package it is recommended to use the newer and faster Rust based version instead.\n'
+	echo -e 'Replace this package with any one of the following:\n'
+	echo 'ziso_compressor_rust - https://aur.archlinux.org/packages/ziso_compressor_rust'
+	echo 'ziso_compressor_rust-git - https://aur.archlinux.org/packages/ziso_compressor_rust-git'
+	echo 'ziso_compressor_rust-bin - https://aur.archlinux.org/packages/ziso_compressor_rust-bin'
+}
