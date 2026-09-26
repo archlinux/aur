@@ -1,0 +1,23 @@
+post_install() {
+  _sandbox_note
+}
+
+post_upgrade() {
+  if [ "$(vercmp "$2" 0.1.40)" -lt 0 ]; then
+    echo "commandcode-bin: new launcher 'command-code-desktop' (named to coexist with the CLI)."
+    echo "commandcode-bin: built-in self-updaters are now disabled; update via pacman/AUR helper."
+  fi
+  _sandbox_note
+}
+
+# The app's sandbox needs unprivileged user namespaces, which linux-hardened
+# disables by default. Tell affected users how to enable the SUID fallback.
+_sandbox_note() {
+  if { [ -r /proc/sys/kernel/unprivileged_userns_clone ] \
+       && [ "$(cat /proc/sys/kernel/unprivileged_userns_clone)" = "0" ]; } \
+     || uname -r | grep -q 'hardened'; then
+    echo "commandcode-bin: unprivileged user namespaces are unavailable on this kernel;"
+    echo "commandcode-bin: the app sandbox needs the SUID helper to start."
+    echo "commandcode-bin: fix: sudo chmod 4755 '/opt/Command Code/chrome-sandbox'"
+  fi
+}
