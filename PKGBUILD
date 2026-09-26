@@ -1,9 +1,9 @@
 # Maintainer: sunnysab <i@sunnysab.cn>
 pkgname=intel-xpumanager-bin
-pkgver=1.3.7
+pkgver=1.3.8
 pkgrel=1
 # The build version part from the filename (e.g., 20251216...)
-_buildver=20260530.031049.9fc2535d.u24.04
+_buildver=20260814.060057.0ee4ba1e.u24.04
 pkgdesc="Intel XPU Manager - System management tool for Intel Discrete GPUs (Binary, Daemon-based)"
 arch=('x86_64')
 url="https://github.com/intel/xpumanager"
@@ -34,7 +34,7 @@ provides=('intel-xpumanager' 'libxpum.so')
 source=("https://github.com/intel/xpumanager/releases/download/v${pkgver}/xpumanager_${pkgver}_${_buildver}_amd64.deb")
 
 # IMPORTANT: Run 'updpkgsums' to generate the real checksum before pushing to AUR
-sha256sums=('d049fae4ec401fe24f2465dff1698c2a30710a7cc9f077669f6351053e1bd276')
+sha256sums=('2687169ab725a7fd22dc548c259fb8b131502d54fed5a72b33febd860c3aa388')
 
 package() {
     msg2 "Extracting data.tar.gz..."
