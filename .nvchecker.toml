@@ -1,0 +1,5 @@
+[ttfx]
+source = "github"
+github = "omacom/ttfx"
+use_latest_release = true
+prefix = "v"

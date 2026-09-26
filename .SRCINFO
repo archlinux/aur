@@ -1,0 +1,16 @@
+pkgbase = ttfx
+	pkgdesc = Terminal text effects as a single static binary
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/omacom/ttfx
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	provides = ttfx
+	options = !lto
+	source = ttfx-0.4.0.tgz::https://github.com/omacom/ttfx/archive/v0.4.0.tar.gz
+	sha256sums = 90a057971973917a45ae1cb2fc795cfaea33afc265180ba4a963172daf9f64ee
+
+pkgname = ttfx
