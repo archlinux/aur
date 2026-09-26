@@ -1,0 +1,24 @@
+pkgbase = phichain-git
+	pkgdesc = Phigros charting toolchain
+	pkgver = 1.0.0.beta.7.r2.geba9f70
+	pkgrel = 1
+	url = https://phichain.rs/
+	arch = any
+	license = LGPL-3.0
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = clang
+	makedepends = lld
+	depends = xz
+	depends = bzip2
+	depends = alsa-lib
+	depends = systemd-libs
+	source = git+https://github.com/Ivan-1F/phichain.git
+	source = phichain.desktop
+	source = asset-resolution.patch
+	b2sums = SKIP
+	b2sums = 9248b301702818b9bac5b83375905993d0b548f00555df41789e69c401f751d10e1388394bca4a53875f59875d547f8d0299688ce37174ffa6f804bf2c9dbe88
+	b2sums = 3f6b9ca2d2fde74f8ab6c91d79dc0aab140cae880df15a82d30f6493e36490c69c9f66fc65643c9cab36a66fb69657776f832d4c02d1ecacec5f2c3ac20b7aed
+
+pkgname = phichain-git
