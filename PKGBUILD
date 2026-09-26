@@ -2,7 +2,7 @@
 
 _pkgname=zathura-markdown
 pkgname=zathura-markdown-git
-pkgver=2026.05.10.r1.8546c28
+pkgver=2026.05.10.r3.6589e98
 pkgrel=1
 pkgdesc="Markdown support for Zathura (cmark + MuPDF backend)"
 url="https://github.com/demetrio108/zathura-markdown"
@@ -28,6 +28,12 @@ pkgver() {
 }
 
 build() {
+        # AUR helpers keep $srcdir between builds and makepkg only wipes it with
+        # -C/--cleanbuild, so a leftover build/ makes ninja report "no work to do"
+        # and the previously linked module gets repackaged unchanged. mupdf bumps
+        # its SONAME on every point release (libmupdf.so.X.Y), so that stale module
+        # then fails to load. Always configure from scratch.
+        rm -rf build
         arch-meson "${_pkgname}" build
         ninja -C build
 }

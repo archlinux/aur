@@ -1,6 +1,6 @@
 pkgbase = zathura-markdown-git
 	pkgdesc = Markdown support for Zathura (cmark + MuPDF backend)
-	pkgver = 2026.05.10.r1.8546c28
+	pkgver = 2026.05.10.r3.6589e98
 	pkgrel = 1
 	url = https://github.com/demetrio108/zathura-markdown
 	arch = x86_64
