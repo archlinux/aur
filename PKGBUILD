@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="An opinionated personal dashboard for your terminal"
 
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ conflicts=("${pkgname%-bin}")
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('fee2be0248a5ccd51645c37485df9d32267dde3df553ce0d5be2d9abe07be4de')
+sha256sums_x86_64=('4ad368b8e5febac314a486be68d9b966dbda6f2249ff844acc07b2fd49e99a38')
 
 
 case ${CARCH} in
