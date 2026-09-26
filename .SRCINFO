@@ -1,7 +1,7 @@
 pkgbase = boomaga
 	pkgdesc = Virtual printer for viewing a document before printing it out using the physical printer
-	pkgver = 3.9.1
-	pkgrel = 3
+	pkgver = 3.9.2
+	pkgrel = 1
 	url = https://www.boomaga.org/
 	arch = x86_64
 	arch = aarch64
@@ -18,7 +18,7 @@ pkgbase = boomaga
 	depends = poppler
 	depends = qt6-base
 	depends = zlib
-	source = boomaga-3.9.1.tar.gz::https://github.com/Boomaga/boomaga/archive/v3.9.1.tar.gz
-	sha256sums = 53e9ae39a74ad5162ce876a4957cc2be2d5cdcb7f9535875f2a3b6dd942bbfe1
+	source = boomaga::git+https://www.boomaga.org/.git#tag=v3.9.2
+	sha256sums = SKIP
 
 pkgname = boomaga
