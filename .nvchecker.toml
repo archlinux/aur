@@ -1,0 +1,5 @@
+[pdf-metadata-editor-bin]
+source = "github"
+github = "zaro/pdf-metadata-editor"
+use_latest_release = "true"
+prefix = "v"
