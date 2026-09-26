@@ -3,7 +3,7 @@
 # Contributor: giacomogiorgianni@gmail.com
 
 pkgname=boomaga
-pkgver=3.8.1
+pkgver=3.9.1
 pkgrel=3
 pkgdesc="Virtual printer for viewing a document before printing it out using the physical printer"
 arch=(x86_64 aarch64)
@@ -25,7 +25,7 @@ makedepends=(
     qt6-tools
     )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Boomaga/boomaga/archive/v${pkgver}.tar.gz")
-sha256sums=('58e3916fec94c714e3a42e66bb6294fb32b6ffbba811f98502b1595336d80e96')
+sha256sums=('53e9ae39a74ad5162ce876a4957cc2be2d5cdcb7f9535875f2a3b6dd942bbfe1')
 
 build() {
   # Disable warning Detected locale "C" with character encoding "ANSI_X3.4-1968", which is not UTF-8.
