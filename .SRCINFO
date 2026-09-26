@@ -1,6 +1,6 @@
 pkgbase = synthos-bin
 	pkgdesc = Local AI desktop studio: agentic chat, notes workspace, node editor for image/video/music/speech, code editor — native synaptix engine on any NVIDIA sm_80+ GPU, .syn and GGUF models (binary release)
-	pkgver = 0.2.281
+	pkgver = 0.2.283
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/VitaminDB/synthos
@@ -20,10 +20,10 @@ pkgbase = synthos-bin
 	depends = libswresample.so=7-64
 	optdepends = nvidia-utils: GPU-инференс (CUDA-драйвер грузится в рантайме)
 	optdepends = cuda: ядра NVRTC компилируются на лету под карту (sm_80+), нужен CUDA-рантайм
-	provides = synthos=0.2.281
+	provides = synthos=0.2.283
 	conflicts = synthos
 	conflicts = synthos-git
-	source = synthos-0.2.281.tar.zst::https://github.com/VitaminDB/synthos/releases/download/v0.2.281/synthos-0.2.281-x86_64-linux.tar.zst
-	sha256sums = a6ac2dbd9c8a4d5e628070f50825a8d5ca21dffc51a4ed927962279bda4339e3
+	source = synthos-0.2.283.tar.zst::https://github.com/VitaminDB/synthos/releases/download/v0.2.283/synthos-0.2.283-x86_64-linux.tar.zst
+	sha256sums = cce778db5ced65ff3ccf6f5d5d1208b2c73ef51a92a9d4eeff318f11114a3886
 
 pkgname = synthos-bin

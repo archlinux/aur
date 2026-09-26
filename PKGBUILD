@@ -4,7 +4,7 @@ _pkgname=synthos
 # epoch=1: с 20.09 по 23.09.2026 версией был голый номер сборки (268…278), и
 # для pacman 278 > 0.2.278 — без epoch переход на 0.2.x считался бы откатом.
 epoch=1
-pkgver=0.2.281
+pkgver=0.2.283
 pkgrel=1
 pkgdesc="Local AI desktop studio: agentic chat, notes workspace, node editor for image/video/music/speech, code editor — native synaptix engine on any NVIDIA sm_80+ GPU, .syn and GGUF models (binary release)"
 arch=("x86_64")
@@ -34,7 +34,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "$_pkgname-git")
 
 source=("$_pkgname-$pkgver.tar.zst::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-linux.tar.zst")
-sha256sums=('a6ac2dbd9c8a4d5e628070f50825a8d5ca21dffc51a4ed927962279bda4339e3')
+sha256sums=('cce778db5ced65ff3ccf6f5d5d1208b2c73ef51a92a9d4eeff318f11114a3886')
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
