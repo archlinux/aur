@@ -5,10 +5,10 @@
 _pkgbase=yafu
 pkgname=yafu-git
 pkgrel=1
-pkgver=r950.63df210
+pkgver=r981.963dbe9
 pkgdesc="Automated integer factorization."
 url=https://github.com/bbuhrow/yafu
-license=('custom:unknown')
+license=('GPL-3.0-or-later' 'LGPL-3.0-or-later' 'MIT')
 arch=('x86_64')
 conflicts=(${_pkgbase})
 provides=('yafu')
@@ -19,11 +19,6 @@ optdepends=('ggnfs: NFS factorization for large numbers')
 source=("git+https://github.com/bbuhrow/yafu.git")
 sha256sums=('SKIP')
 
-prepare() {
-	cd "${srcdir}/yafu"
-	cp Makefile.gcc Makefile
-}
-
 pkgver() {
 	cd "${_pkgbase}"
 	( set -o pipefail
@@ -33,10 +28,14 @@ pkgver() {
 }
 
 build() {
-	# yafu compiles its bundled ytools/ysieve/msieve sources itself, so the
-	# include paths must point at the bundled copies
+	# upstream ships a unified Makefile that auto-detects GMP and GMP-ECM.
+	# CUDA_PREFIX= disables the CUDA toolkit auto-detection so the build does
+	# not depend on whatever happens to be installed on the build host.
+	# USER_CFLAGS/USER_LDFLAGS are appended after the Makefile's own flags.
 	cd "${srcdir}/yafu"
-	make yafu CC=gcc NFS=1 CFLAGS="$CFLAGS -g -std=c11 -DUSE_SSE2 -fno-common -DUSE_NFS -O2 -fomit-frame-pointer -Wall  -I. -Iinclude -Itop/aprcl -Itop/cmdParser -Itop/ -Ims_include/ -Ifactor/gmp-ecm   -Iytools -Iysieve -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types -Wno-error=return-mismatch -Wno-error=int-conversion -DVBITS=64 -Iaprcl -Ignfs/poly/stage1 -Ignfs/poly"
+	make yafu CC=gcc ECM=1 CUDA_PREFIX= \
+		USER_CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types -Wno-error=return-mismatch -Wno-error=int-conversion" \
+		USER_LDFLAGS="$LDFLAGS"
 }
 
 check() {
@@ -52,4 +51,6 @@ package() {
 	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/yafu"
 	install -Dm644 CHANGES -t "${pkgdir}/usr/share/doc/yafu"
 	install -Dm644 docfile.txt -t "${pkgdir}/usr/share/doc/yafu"
+	# ytools and ysieve share an identical MIT license file
+	install -Dm644 ytools/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.MIT"
 }
