@@ -1,0 +1,33 @@
+pkgbase = kglobalacceld-ptt-fix
+	pkgdesc = Daemon providing Global Keyboard Shortcut (Accelerator) functionality
+	pkgver = 6.7.5
+	pkgrel = 1
+	url = https://invent.kde.org/plasma/kglobalacceld/-/merge_requests/124
+	arch = x86_64
+	license = LGPL-2.0-or-later
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = glibc
+	depends = kconfig
+	depends = kcoreaddons
+	depends = kcrash
+	depends = kdbusaddons
+	depends = kglobalaccel
+	depends = kio
+	depends = kjobwidgets
+	depends = kservice
+	depends = kwindowsystem
+	depends = libstdc++
+	depends = libx11
+	depends = libxcb
+	depends = qt6-base
+	depends = xcb-util-keysyms
+	provides = kglobalacceld=6.7.5
+	conflicts = kglobalacceld
+	options = !debug
+	source = https://download.kde.org/stable/plasma/6.7/kglobalacceld-6.7.5.tar.xz
+	source = 124.diff::https://invent.kde.org/plasma/kglobalacceld/-/merge_requests/124.diff
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = kglobalacceld-ptt-fix
