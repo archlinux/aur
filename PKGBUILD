@@ -2,7 +2,7 @@
 
 pkgname=peak-linux-driver-dkms
 _pkgname=peak-linux-driver
-pkgver=9.2.0
+pkgver=9.3.1
 pkgrel=1
 pkgdesc='Linux driver for PEAK-System CAN adapters'
 arch=('any')
@@ -16,8 +16,15 @@ source=(
   "https://www.peak-system.com/fileadmin/media/linux/files/${_pkgname}-${pkgver}.tar.gz"
   'dkms.conf'
 )
-sha256sums=('adc7e9d2459848d506b7d948fc52b1afe73db476f58537492c94f70a960a7a9a'
-            'a277e6202f8ba761b3d0a1e1c5d4de0f5306a45fa14689aa1473e814e09ce36e')
+sha256sums=('25ec72f3ba16760a94979ffb56cf6f7a51eb61cdcd4968f7cf8825ddfe164c5c'
+  'a277e6202f8ba761b3d0a1e1c5d4de0f5306a45fa14689aa1473e814e09ce36e')
+
+prepare() {
+  cd "${_pkgname}-${pkgver}"
+
+  # strncpy() was removed from the Linux kernel API
+  sed -i 's/strncpy(/strscpy(/g' driver/src/pcan_fops.c driver/src/pcan_pciec.c
+}
 
 package() {
   cd "${_pkgname}-${pkgver}"
@@ -30,8 +37,8 @@ package() {
 
   # set name and version and dkms.conf
   sed -e "s/@PKGNAME@/${_pkgname}/" \
-      -e "s/@PKGVER@/${pkgver}/" \
-      -i "${pkgdir}/usr/src/${_pkgname}-${pkgver}/dkms.conf"
+    -e "s/@PKGVER@/${pkgver}/" \
+    -i "${pkgdir}/usr/src/${_pkgname}-${pkgver}/dkms.conf"
 
   install -Dm644 "driver/udev/45-pcan.rules" "${pkgdir}/usr/lib/udev/rules.d/45-pcan.rules"
   install -Dm644 "driver/udev/blacklist-peak.conf" "${pkgdir}/usr/lib/modprobe.d/blacklist-peak.conf"
