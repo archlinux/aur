@@ -1,4 +1,8 @@
 post_install() {
+    # pacman passes the full version (pkgver-pkgrel) as $1; the message
+    # and the docs link name the release this package installed, so they
+    # cannot go stale the way a typed number did (homebrew-wolf#21).
+    local v="${1%-*}"
     cat << EOF
 
 ==> wolf is installed. Check the build it names:
@@ -6,7 +10,7 @@ post_install() {
     wolf --version
 
     A release build prints the bare version and its pin —
-    "wolf 0.2.6 (wolfgang, pin <sha>)". A "+dev" suffix means the
+    "wolf $v (wolfgang, pin <sha>)". A "+dev" suffix means the
     binary was not built at its release tag (D57).
 
 First program:
@@ -23,7 +27,7 @@ still runs your program:
 Documentation:
 --------------
     /usr/share/doc/wolf-lang-bin/README.md
-    https://github.com/wolffe-lang/wolf-lang/blob/v0.2.6/docs/platforms.md
+    https://github.com/wolffe-lang/wolf-lang/blob/v$v/docs/platforms.md
 
 EOF
 }
