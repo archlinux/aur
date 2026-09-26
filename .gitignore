@@ -2,3 +2,4 @@ src/
 pkg/
 *.pkg.tar.*
 *.pkg.tar.*.sig
+sing-box-dashboard-*.zip

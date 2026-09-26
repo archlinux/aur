@@ -1,0 +1,12 @@
+pkgbase = sing-box-dashboard
+	pkgdesc = Web dashboard for sing-box (official SagerNet build)
+	pkgver = 2026.09.18
+	pkgrel = 1
+	url = https://github.com/SagerNet/sing-box-dashboard
+	arch = any
+	license = GPL3
+	optdepends = sing-box: Serves the dashboard via experimental.clash_api external_ui
+	source = sing-box-dashboard-1f56683b9adf952b47957f5bb758d9ca7837cef0.zip::https://github.com/SagerNet/sing-box-dashboard/archive/1f56683b9adf952b47957f5bb758d9ca7837cef0.zip
+	sha256sums = af9317d9a86a8d37a44e11cd391e2e1d1d82c4a761d99c398ed473e2fbf9fc4f
+
+pkgname = sing-box-dashboard
