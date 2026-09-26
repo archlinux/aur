@@ -2,7 +2,7 @@
 
 pkgname=snishaper-bin
 pkgver=1.29.0beta5
-pkgrel=1
+pkgrel=2
 pkgdesc='Local proxy to bypass SNI blocking via ECH injection, TLS fragmentation, QUIC and a TUN device (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/SnishaperTeam/SniShaper'
@@ -15,14 +15,15 @@ optdepends=('iproute2: if your ruleset invokes the `ip` command')
 provides=('snishaper')
 conflicts=('snishaper')
 options=('!strip')
-# The release tarball checksum is filled in by the updater from the GitHub
-# asset digest. The icon and LICENSE live in the upstream repo (not in any
-# release asset), so their sha256 are pinned here on the default branch;
-# refresh them only if upstream changes those files.
+# Source local names are version-tagged (filename::url syntax) because the
+# upstream asset name is version-independent ("snishaper-linux-amd64.tar.gz"
+# for every release). Without the rename, makepkg/yay reuse the previous
+# version's cached download under the same filename and the sha256 check
+# fails on every upgrade.
 source_x86_64=(
-    "https://github.com/SnishaperTeam/SniShaper/releases/download/v1.29.0-beta.5/snishaper-linux-amd64.tar.gz"
-    "snishaper.png::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/main/Assets/AppList.targetsize-256_altform-unplated.png"
-    "LICENSE::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/main/LICENSE"
+    "snishaper-${pkgver}-linux-amd64.tar.gz::https://github.com/SnishaperTeam/SniShaper/releases/download/v1.29.0-beta.5/snishaper-linux-amd64.tar.gz"
+    "snishaper-${pkgver}-icon.png::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/main/Assets/AppList.targetsize-256_altform-unplated.png"
+    "snishaper-${pkgver}-LICENSE::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/main/LICENSE"
 )
 sha256sums_x86_64=(
     '1671ddc5e577bc0b9c039ae2004094b25c5cc46a17b24a206989ee5a713c112d'
@@ -48,7 +49,7 @@ cd /opt/snishaper
 exec ./SniShaper "$@"
 EOF
 
-    install -Dm644 "${srcdir}/snishaper.png" \
+    install -Dm644 "${srcdir}/snishaper-${pkgver}-icon.png" \
         "${pkgdir}/usr/share/icons/hicolor/256x256/apps/snishaper.png"
 
     install -Dm644 /dev/stdin \
@@ -65,6 +66,6 @@ Categories=Network;P2P;
 StartupWMClass=SniShaper
 EOF
 
-    install -Dm644 "${srcdir}/LICENSE" \
+    install -Dm644 "${srcdir}/snishaper-${pkgver}-LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
