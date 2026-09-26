@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Utility;
+Comment=Offline TOTP/HOTP authenticator with an encrypted local vault
+Exec=arsu
+StartupWMClass=arsu
+Icon=arsu
+Name=Arsu
+Terminal=false
+Type=Application
