@@ -1,6 +1,6 @@
 pkgbase = wendy-agent
 	pkgdesc = Wendy Agent - Runs on target devices for remote debugging and deployment
-	pkgver = 2026.09.16_025644
+	pkgver = 2026.09.26_062348
 	pkgrel = 1
 	url = https://wendy.dev
 	arch = x86_64
@@ -15,13 +15,14 @@ pkgbase = wendy-agent
 	optdepends = networkmanager: Wi-Fi support via NetworkManager
 	optdepends = connman: Wi-Fi support via ConnMan
 	optdepends = bluez: Bluetooth support
+	optdepends = v4l2loopback-dkms>=0.15.0: Virtual camera support
 	provides = wendy-agent
 	conflicts = wendy-agent-git
 	backup = etc/wendy-agent/config.json
 	backup = etc/default/wendy-agent
-	source_x86_64 = wendy-agent-2026.09.16-025644-x86_64.tar.gz::https://github.com/wendylabsinc/wendy-agent/releases/download/2026.09.16-025644/wendy-agent-linux-amd64-2026.09.16-025644.tar.gz
-	sha256sums_x86_64 = 37af1ad72af404d6f61dd30dd54e8eeacdf0e73b3391f607828bbde3ca793693
-	source_aarch64 = wendy-agent-2026.09.16-025644-aarch64.tar.gz::https://github.com/wendylabsinc/wendy-agent/releases/download/2026.09.16-025644/wendy-agent-linux-arm64-2026.09.16-025644.tar.gz
-	sha256sums_aarch64 = 2124de4749957d4311306c2079630939d1ca73cb631101e37fee88bdb66697c0
+	source_x86_64 = wendy-agent-2026.09.26-062348-x86_64.tar.gz::https://github.com/wendylabsinc/wendy-agent/releases/download/2026.09.26-062348/wendy-agent-linux-amd64-2026.09.26-062348.tar.gz
+	sha256sums_x86_64 = 728d4f531f6259f9f769cb81151d23a447026028a862dc95cbab3871a4eec8da
+	source_aarch64 = wendy-agent-2026.09.26-062348-aarch64.tar.gz::https://github.com/wendylabsinc/wendy-agent/releases/download/2026.09.26-062348/wendy-agent-linux-arm64-2026.09.26-062348.tar.gz
+	sha256sums_aarch64 = 48cf57af903e9ced8f7d98ce0e12dc838dfda783c08567310c6a01e12818b35a
 
 pkgname = wendy-agent

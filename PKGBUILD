@@ -1,7 +1,7 @@
 # Maintainer: Wendy Labs Inc. <support@wendy.dev>
 pkgname=wendy-agent
-_pkgver=2026.09.16-025644
-_pkgtag=2026.09.16-025644
+_pkgver=2026.09.26-062348
+_pkgtag=2026.09.26-062348
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc="Wendy Agent - Runs on target devices for remote debugging and deployment"
@@ -16,6 +16,7 @@ optdepends=(
     'networkmanager: Wi-Fi support via NetworkManager'
     'connman: Wi-Fi support via ConnMan'
     'bluez: Bluetooth support'
+    'v4l2loopback-dkms>=0.15.0: Virtual camera support'
 )
 backup=('etc/wendy-agent/config.json' 'etc/default/wendy-agent')
 
@@ -23,8 +24,8 @@ source_x86_64=("${pkgname}-${_pkgver}-x86_64.tar.gz::https://github.com/wendylab
 source_aarch64=("${pkgname}-${_pkgver}-aarch64.tar.gz::https://github.com/wendylabsinc/wendy-agent/releases/download/${_pkgtag}/wendy-agent-linux-arm64-${_pkgver}.tar.gz")
 
 # Checksums will be updated by CI
-sha256sums_x86_64=('37af1ad72af404d6f61dd30dd54e8eeacdf0e73b3391f607828bbde3ca793693')
-sha256sums_aarch64=('2124de4749957d4311306c2079630939d1ca73cb631101e37fee88bdb66697c0')
+sha256sums_x86_64=('728d4f531f6259f9f769cb81151d23a447026028a862dc95cbab3871a4eec8da')
+sha256sums_aarch64=('48cf57af903e9ced8f7d98ce0e12dc838dfda783c08567310c6a01e12818b35a')
 
 package() {
     cd "${srcdir}"
