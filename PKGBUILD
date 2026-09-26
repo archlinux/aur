@@ -7,17 +7,18 @@
 # reproducible, auditable snapshot. This is the counterpart to
 # ramsleuth-bin (the prebuilt binary package).
 #
-# Why a git source (no release tarball, no sha256sums):
+# Why a git source (no release tarball):
 #   The AUR community package must build from source that EXISTS at
 #   publish time. A release tarball only comes into existence AFTER the
-#   tag is cut (chicken-and-egg). A git source sidesteps this. Current
-#   makepkg requires every VCS (git+) source to resolve to an immutable
-#   commit — a bare `#tag=`/`#branch=` fragment is a moving ref and fails
-#   with "Integrity checks are missing for: source" — so the integrity pin
-#   is the `_gitcommit=` variable set to the v$pkgver release commit; the
-#   `#tag=v$pkgver` fragment in source= below is a human-readable label
-#   only (no sha256sums line: the _gitcommit pin IS the integrity check).
-#   When the next release is cut, update BOTH pkgver and _gitcommit here.
+#   tag is cut (chicken-and-egg). A git source sidesteps this. The source
+#   is pinned to the IMMUTABLE v$pkgver release commit via the standard
+#   VCS `#commit=` fragment (a bare `#tag=`/`#branch=` fragment is a
+#   moving ref), with sha256sums the content-addressed checksum of the
+#   pinned commit's `git archive` tarball — the form makepkg 7.x
+#   generates for tag/commit-pinned git sources (makepkg -g); makepkg
+#   7.x requires a *sums array entry per source and ignores any
+#   non-standard pin variables.
+#   When the next release is cut, update pkgver and the #commit= pin here.
 #
 # The "$pkgname::" prefix renames the cloned source dir to $srcdir/ramsleuth
 # (the pkgname) — NOT the release-tarball layout RamSleuth-$pkgver. So
@@ -85,13 +86,17 @@ pkgdesc="Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivil
 arch=(x86_64)
 url="https://github.com/MadGoatHaz/RamSleuth"
 license=(MIT GPL-2.0-only)
-# Integrity pin: the v$pkgver release commit (immutable; current makepkg
-# requires VCS sources to resolve to a commit — the #tag= fragment in
-# source= is a human-readable label only).
-_gitcommit=e0890b65ea49399400c18d0ebede47ed05d7deda
-# git-tag source: makepkg clones the repo and checks out the pinned commit.
+# git-commit source: makepkg clones the repo and checks out the pinned
+# immutable v$pkgver release commit via the #commit= fragment.
 # The "$pkgname::" rename extracts to $srcdir/ramsleuth (see header note above).
-source=("$pkgname::git+https://github.com/MadGoatHaz/RamSleuth.git#tag=v$pkgver")
+source=("$pkgname::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=e0890b65ea49399400c18d0ebede47ed05d7deda")
+# Content-addressed VCS pin: the sha256 of `git archive --format tar
+# <commit>` for the immutable #commit= ref above — exactly what makepkg
+# 7.x generates for tag/commit-pinned git sources (makepkg -g) and what
+# its integrity gate verifies (a *sums entry per source; '-' fails the
+# gate on 7.x, and SKIP passes only as a no-op — not the form 7.x
+# generates for #commit fragments).
+sha256sums=('ccddbf65c053dc0664617d06b33ba2e0208f2f0f626312e57e371e24f4d7d0c1')
 install=ramsleuth.install
 # The in-repo ramsleuth_intel DKMS source ships bundled (package() step (12))
 # and would file-conflict with the standalone ramsleuth-intel-dkms extra, so the
@@ -103,10 +108,6 @@ install=ramsleuth.install
 conflicts=('ramsleuth-bin' 'ramsleuth-intel-dkms' 'ryzen-smu-dkms')
 makedepends=(rust cargo pkgconf libx11 libxkbcommon wayland wayland-protocols libxrandr libxi libxcursor libxinerama mesa)
 depends=(libx11 libxkbcommon wayland libxrandr libxi libxcursor libxinerama mesa)
-
-# No sha256sums: the VCS integrity pin is the _gitcommit variable above
-# (current makepkg requires git sources to resolve to an immutable commit;
-# the #tag= fragment in source= is a label, not the pin).
 
 build() {
     cd "$srcdir/ramsleuth"
