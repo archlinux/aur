@@ -1,6 +1,6 @@
 pkgbase = sfpi-bin
 	pkgdesc = Tenstorrent SFPU programming interface
-	pkgver = 7.81.0
+	pkgver = 7.83.0
 	pkgrel = 1
 	url = https://github.com/tenstorrent/sfpi
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = sfpi-bin
 	makedepends = tar
 	makedepends = xz
 	depends = glibc
-	provides = sfpi=7.80.0
+	provides = sfpi=7.81.0
 	conflicts = sfpi
 	options = !strip
-	source = https://github.com/tenstorrent/sfpi/releases/download/7.81.0/sfpi_7.81.0_x86_64_debian.txz
-	b2sums = 15e648b9473c0eba3e00e6f58b8e3a54e8f976299c3320304b3947246cbf2a49510994044293020a240dab5fd2b644cf0bb2749417067e1c4448771a9b16b183
+	source = https://github.com/tenstorrent/sfpi/releases/download/7.83.0/sfpi_7.83.0_x86_64_debian.txz
+	b2sums = 61000ca8d88c0c4f2e6e0603014ca9ef07b419a7bc3810f7b8e926de013bc2f5dc723a8d2b9002e3eeee1bb1161c7b95c3883b7117d36ff434ba5a9ea96bf1a9
 
 pkgname = sfpi-bin
