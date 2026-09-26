@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=ShadeVk
+GenericName=Shader Viewer
+Comment=A cross-platform pixel shader viewer for Vulkan, written in C23.
+Categories=Graphics;
+Exec=shadevk %F
+NoDisplay=true
+Icon=shadevk
+MimeType=text/x-hlsl;text/plain;text/x-c;
