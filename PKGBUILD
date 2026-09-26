@@ -1,7 +1,7 @@
 # Maintainer: tuanapi <tuanapi@proton.me>
 pkgname=openanime
-pkgver=1.1.6
-pkgrel=2
+pkgver=1.1.7
+pkgrel=1
 pkgdesc="Unofficial OpenAnime Linux client - Compiled from source (WebGPU/Vulkan support)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tuanapi/OpenAnime-Linux"
