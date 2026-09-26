@@ -2,16 +2,16 @@
 pkgname=hermes-agent-desktop
 _pkgname=hermes-desktop          # /usr/bin launcher name (AUR convention, lowercase)
 _upstream=Hermes                 # productName + executableName
-_pkgver_tag=v2026.9.21
-_commit=d337b736aa1e8ebecfab043842d13e4a2d2f48a3
-pkgver=0.21.4
+_pkgver_tag=v2026.9.24
+_commit=f97608f178d1ffeca59860195ab7da295f7c8e5f
+pkgver=0.21.5
 pkgrel=1
 pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
 arch=('x86_64')
 url='https://github.com/NousResearch/hermes-agent'
 license=('MIT')
 depends=(
-  'curl' 'electron42' 'git' 'hicolor-icon-theme' 'libnotify' 'libsecret'
+  'curl' 'electron42' 'git' 'hicolor-icon-theme' 'libnotify' 'libsecret' 'libx11' 'libxi'
   'nodejs>=22.22' 'npm' 'uv' 'xdg-utils'
 )
 optdepends=(
@@ -32,28 +32,26 @@ source=(
   'system-browser.patch'
   'packaged-bootstrap.patch'
   'runtime-policy.patch'
+  'harden-hud-modifier-monitor.patch'
   'hermes-desktop'
   'launcher.test.cjs'
   'runtime.test.cjs'
   'runtime-policy.test.py'
 )
-sha256sums=('c38cd7639707fe695f94ecd948ee7a9ce7de0c57461e39fb022966d79a692a65'
+sha256sums=('15b15ce4e6ec8ea424a081823709d1e17f0943e7b42b59597d24ebb94cbd1742'
             'ee465a1aa2ad5789fa5c7b3a89993bbf0e68efddbf27c93109519b72a4cb90f7'
             '0d4263cdf9266f1abedc7543e44b9062e152634c1a490a1efff2345043740d53'
-            '7f8500e475a13466ecba2bb74e73fbbcba8dcb70bcbf4e789faf7a8f27df0cac'
+            '047d6e615017b2bb8584383234cdfb3169694e25c10221d7a78da864884b1481'
             'fa8933a96e58575e7d4f876a7eb380d6c1723233832b787a46fb158f79df7718'
             'ab2b14399696da255d62237f01c061ed25bf2d7d12870b78185c906edbdb0ec2'
             '252858c8127398ce631a0ea94b9899e228bda736796aee1914337b9828faad07'
+            '1602743519aa74866979707665a8641df20d966c6197b7a5d028b62860b528cb'
             '700eaf971f8aeedf0268cd85954235d1770b786b19ca7e9d7905bf17aed86d44'
             'dcb84ac7c5f5a7168d089ba082a8c8c77cf3955abc79775f530aee870a30d5df'
             '1a39719fd6b6ac2e773e6f72bd55ef313469734cf72dbe1f9adf7bff0979c873'
             '79b361c4cdd363ef8a2fdd1d6f8fab2a0116f10ab3ab63e527c87c0e3f36f8f7')
 
-# NOTE: ${srcdir} is empty at the top level of a PKGBUILD — makepkg only sets
-# it inside the function scope of prepare()/build()/package(). Computing the
-# extracted directory once at the top (as `_srcdir=...`) silently produces a
-# root-prefixed path (`/hermes-agent-2026.7.1`) and `cd` fails. Define a helper
-# and call it from each function instead.
+# Resolve srcdir inside makepkg's functions; it is empty at the top level.
 _extract_dir() {
   echo "${srcdir}/hermes-agent-${_pkgver_tag#v}"
 }
@@ -74,6 +72,7 @@ prepare() {
   patch --batch --fuzz=0 -Np1 -i "${srcdir}/system-browser.patch"
   patch --batch --fuzz=0 -Np1 -i "${srcdir}/packaged-bootstrap.patch"
   patch --batch --fuzz=0 -Np1 -i "${srcdir}/runtime-policy.patch"
+  patch --batch --fuzz=0 -Np1 -i "${srcdir}/harden-hud-modifier-monitor.patch"
   # Keep desktop metadata aligned with the Agent release, not the separately
   # versioned upstream desktop package.json.
   npm pkg set version=${pkgver} --prefix apps/desktop
@@ -108,6 +107,7 @@ build() {
   export npm_config_offline=true
   # makepkg runs build() in a separate subshell from prepare().
   export GITHUB_SHA="${_commit}" GITHUB_REF_NAME="${_pkgver_tag}"
+  export CFLAGS CXXFLAGS CPPFLAGS LDFLAGS
   local electron_version
   electron_version="$(< /usr/lib/electron42/version)"
   # Keep upstream's package.json and lockfile pins intact for deterministic
@@ -124,9 +124,7 @@ build() {
     build/install-stamp.json
   grep -Fq "\"builtAt\": \"${build_time}\"" build/install-stamp.json
 
-  # Upstream's builder wrapper resolves node_modules/electron/dist and passes it
-  # as electronDist. prepare() links that directory to Arch's Electron runtime.
-  # package() keeps only the app resources, so electron42 remains their owner.
+  # Use Arch's Electron distribution; package() retains only app resources.
   npm run builder -- --linux dir \
     -c.electronVersion="${electron_version}"
 }
@@ -135,13 +133,20 @@ check() {
   cd "$(_extract_dir)"
   _set_npm_env
   export npm_config_offline=true
+  # Hermes desktop tests expect English timestamps and isolated temporary git
+  # repositories; the default Hermes scratch directory sits inside a git repo.
+  export LANG=C.UTF-8 LC_ALL=C.UTF-8
+  export GIT_CEILING_DIRECTORIES="${TMPDIR:-/tmp}"
+  unset HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME
   node "${srcdir}/launcher.test.cjs"
   node "${srcdir}/runtime.test.cjs" "$PWD/scripts/install.sh" "$PWD"
   python -B "${srcdir}/runtime-policy.test.py" "$PWD"
   npm run typecheck --workspace apps/desktop
-  npm run test --workspace apps/desktop
+  # The upstream live-portal fixture does not forward XAUTHORITY to Electron.
+  # Without xvfb-run, a graphical host's DISPLAY would falsely enable it.
+  env -u DISPLAY -u WAYLAND_DISPLAY npm run test --workspace apps/desktop
 
-  # node-pty is the only native Node addon shipped by Hermes. Load the staged
+  # node-pty is the native Node addon shipped by Hermes. Load the staged
   # module with the exact Electron runtime used by the installed launcher; its
   # N-API build must not merely load under makepkg's system Node.
   local node_pty_root="${PWD}/apps/desktop/release/linux-unpacked/resources/app.asar.unpacked/dist/node_modules/node-pty"

@@ -1,9 +1,8 @@
 diff --git a/apps/desktop/src/store/voice-prefs.test.ts b/apps/desktop/src/store/voice-prefs.test.ts
 --- a/apps/desktop/src/store/voice-prefs.test.ts
 +++ b/apps/desktop/src/store/voice-prefs.test.ts
-@@ -9,13 +9,17 @@
- 
- import { $voiceStopPhrase, applyVoiceStopPhraseFromConfig } from './voice-prefs'
+@@ -17,12 +17,16 @@
+ } from './voice-prefs'
  
 +// jsdom methods live on the prototype; the Node fallback has own methods.
 +const storageMethods =
@@ -20,7 +19,7 @@ diff --git a/apps/desktop/src/store/voice-prefs.test.ts b/apps/desktop/src/store
  
        if (fails) {
          write.mockImplementation(() => {
-@@ -44,7 +48,7 @@
+@@ -51,7 +55,7 @@
        localStorage.clear()
        vi.resetModules()
        const prefs = await import('./voice-prefs')
