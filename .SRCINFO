@@ -1,6 +1,6 @@
 pkgbase = mdmost-bin
 	pkgdesc = Like less but for Markdown
-	pkgver = 0.3.5
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/oetiker/mdmost
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = mdmost-bin
 	provides = mdmost
 	conflicts = mdmost
 	options = !strip
-	source_x86_64 = mdmost-x86_64-0.3.5.tgz::https://github.com/oetiker/mdmost/releases/download/v0.3.5/mdmost-0.3.5-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 3b0d56a645160e98f027c8f84413919db5cd92671a41a23b14dab033cd6bbeee
-	source_aarch64 = mdmost-aarch64-0.3.5.tgz::https://github.com/oetiker/mdmost/releases/download/v0.3.5/mdmost-0.3.5-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 0e563744f0a6f33cea318ea77659de5021c0ac4220da7581d837947e59b78f89
+	source_x86_64 = mdmost-x86_64-0.4.0.tgz::https://github.com/oetiker/mdmost/releases/download/v0.4.0/mdmost-0.4.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = ad02e24036a04db1a779fb8aeefd6243adc45ba2773766d36d2e4907d0281c45
+	source_aarch64 = mdmost-aarch64-0.4.0.tgz::https://github.com/oetiker/mdmost/releases/download/v0.4.0/mdmost-0.4.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 2c42ed2d739536e66d3bbad63b4405074b8849f214f028ee03b9a01873099b56
 
 pkgname = mdmost-bin
