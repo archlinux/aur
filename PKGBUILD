@@ -1,7 +1,7 @@
 # Maintainer: Nintend0d0 <nintend0d0 at aholic dot ch>
 
 pkgname="devsy-desktop-deb-bin"
-pkgver=1.17.1
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="Enables teams to scale development using standardized workspaces."
 arch=("x86_64")
@@ -19,12 +19,16 @@ depends=(
   "util-linux-libs" # deb: libuuid1
 )
 
+optdepends=(
+  "libappindicator: Display tray icon" # deb: libappindicator3-1
+)
+
 provides=("devsy-desktop")
 
 source=(
   "devsy-desktop-$pkgver-$arch.deb::https://github.com/devsy-org/devsy/releases/download/v$pkgver/Devsy_linux_amd64.deb"
 )
-sha256sums=("37e9ccb9aa29b2efc2dcb4ca48cd4f308f830d8b3bf4f7cb3b8f86b1bbf3fc43")
+sha256sums=("02ad3be16dff24b68fe67781391a30bc0f4a35eefb39143f4097e8d71db7906c")
 
 package() {
   bsdtar -x -f "$srcdir/data.tar.xz" -C "$pkgdir"
