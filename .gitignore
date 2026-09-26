@@ -1,9 +1,6 @@
-*.jar
-pkg/
-src/
-*.pkg.tar.zst
-*.pkg.tar.xz
-*.pkg.tar.gz
-*.log
+*.tar.gz
+*.zip
+*.zst
 *.deb
-*.part
+src/
+pkg/
