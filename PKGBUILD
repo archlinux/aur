@@ -62,16 +62,24 @@ conflicts=('ramsleuth' 'ramsleuth-bin')
 
 # The installed files come from the RamSleuth repo tree (P5-03 dkms.conf, P5-04 helper,
 # C21-07 vendor/).
-# Integrity pin: the v2.4.7 release commit (immutable; current makepkg
-# requires VCS sources to resolve to a commit — the #tag= fragment in
-# source= is a human-readable label only). The package keeps its own 1.0
-# pkgver (not the ramsleuth workspace version), so the tag is literal, not
-# v$pkgver; bump the pin (and the literal tag) with each ramsleuth release
-# wave. Before this first AUR submission the source tracked the moving
-# v2-development branch (the pre-v2.4.5 integrity-gap class, closed for the
-# siblings in the v2.4.5 re-cut).
-_gitcommit=e0890b65ea49399400c18d0ebede47ed05d7deda
-source=("ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#tag=v2.4.7")
+# git-commit source: makepkg clones the repo and checks out the pinned
+# immutable v2.4.7 release commit via the #commit= fragment (standard VCS
+# form), with sha256sums the content-addressed checksum of that commit's
+# git-archive tarball (what makepkg 7.x generates for #commit sources).
+# The package keeps its own 1.0 pkgver (not the ramsleuth workspace
+# version); bump the commit pin (and the sha256sums) with each ramsleuth
+# release wave. Before
+# this first AUR submission the source tracked the moving v2-development
+# branch (the pre-v2.4.5 integrity-gap class, closed for the siblings in
+# the v2.4.5 re-cut).
+source=("ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=e0890b65ea49399400c18d0ebede47ed05d7deda")
+# Content-addressed VCS pin: the sha256 of `git archive --format tar
+# <commit>` for the immutable #commit= ref above — exactly what makepkg
+# 7.x generates for tag/commit-pinned git sources (makepkg -g) and what
+# its integrity gate verifies (a *sums entry per source; '-' fails the
+# gate on 7.x, and SKIP passes only as a no-op — not the form 7.x
+# generates for #commit fragments).
+sha256sums=('ccddbf65c053dc0664617d06b33ba2e0208f2f0f626312e57e371e24f4d7d0c1')
 
 package() {
   # 1) DKMS config (sourced by DKMS on the target; not at build time).
