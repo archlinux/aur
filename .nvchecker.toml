@@ -1,0 +1,5 @@
+[lazycmake-bin]
+source = "github"
+github = "ligogeorge/lazycmake"
+use_latest_release = true
+prefix = "v"
