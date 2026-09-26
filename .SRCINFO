@@ -1,0 +1,22 @@
+pkgbase = waytranslate-git
+	pkgdesc = Select text anywhere on Wayland, get an inline translation popup (KDE Plasma / wlroots)
+	pkgver = 0.2.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/xycld/waytranslate
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = gettext
+	makedepends = cmake
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = wayland
+	provides = waytranslate
+	conflicts = waytranslate
+	options = !lto
+	source = waytranslate::git+https://github.com/xycld/waytranslate.git
+	sha256sums = SKIP
+
+pkgname = waytranslate-git
