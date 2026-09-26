@@ -1,7 +1,7 @@
 pkgbase = vacask-git
 	pkgdesc = Verilog-A Circuit Analysis Kernel is an analog circuit simulator
 	pkgver = 0.3.4.r70.g55736a5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/arpadbuermen/VACASK
 	arch = x86_64
 	arch = aarch64
@@ -29,6 +29,7 @@ pkgbase = vacask-git
 	depends = python
 	depends = fftw
 	optdepends = python-scikit-rf: For converting from touchstone to VACASK
+	optdepends = superlu_mt: Alternative backend
 	conflicts = vacask
 	options = !lto
 	source = vacask::git+https://codeberg.org/arpadbuermen/VACASK

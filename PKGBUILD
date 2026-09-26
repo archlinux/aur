@@ -2,7 +2,7 @@
 _pkgname=vacask
 pkgname="${_pkgname}-git"
 pkgver=0.3.4.r70.g55736a5
-pkgrel=1
+pkgrel=2
 pkgdesc="Verilog-A Circuit Analysis Kernel is an analog circuit simulator"
 arch=(
     'x86_64'
@@ -41,6 +41,7 @@ checkdepends=(
 )
 optdepends=(
     'python-scikit-rf: For converting from touchstone to VACASK'
+    'superlu_mt: Alternative backend'
 )
 conflicts=("${_pkgname}")
 options=(!lto)
@@ -74,11 +75,13 @@ build() {
     )
 
     local vacask_options=(
+        # Cadnip parsers support: for alternative backends (Spice/Spectre)
         -D CADNIP_PARSERS="ON"
         -D CORROSION_USE_SYSTEM="ON"
         -D NETLIST_RS_DIR="${srcdir}/NetlistParsers"
-        # TODO: Add superlu_mt support
-        # -D SuperluMT_DIR=/usr/include/superlu_mt/
+        # SuperLU_mt backend support
+        -D SuperluMT_DIR="/usr"
+        -D SIM_SUPERLU_INCLUDE="/usr/include/superlu_mt/"
     )
 
     cmake \
