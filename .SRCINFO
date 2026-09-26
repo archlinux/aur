@@ -22,6 +22,7 @@ pkgbase = aro-git
 	optdepends = fuzzel: default launcher (mod+d)
 	optdepends = librsvg: SVG wallpapers, including the default one
 	optdepends = xdg-desktop-portal-gtk: file pickers and other portal dialogs
+	optdepends = xdg-desktop-portal-wlr: screen sharing and screenshots
 	optdepends = xorg-xwayland: X11 applications
 	provides = aro
 	conflicts = aro

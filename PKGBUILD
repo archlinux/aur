@@ -25,6 +25,7 @@ optdepends=(
   'fuzzel: default launcher (mod+d)'
   'librsvg: SVG wallpapers, including the default one'
   'xdg-desktop-portal-gtk: file pickers and other portal dialogs'
+  'xdg-desktop-portal-wlr: screen sharing and screenshots'
   'xorg-xwayland: X11 applications'
 )
 provides=("$_pkgname")
