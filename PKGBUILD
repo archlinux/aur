@@ -4,7 +4,7 @@ _pkgname=tsDyn
 _pkgver=11.0.5.2
 pkgname=r-${_pkgname,,}
 pkgver=11.0.5.2
-pkgrel=1
+pkgrel=5
 pkgdesc='Nonlinear Time Series Models with Regime Switching'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -26,7 +26,7 @@ optdepends=(
   r-sm
   r-tidyverse
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('e748c601827920fbaefa7c3d9f9f2fce0e91726d56bdb58dfc5180815c81c06c')
 
 build() {
