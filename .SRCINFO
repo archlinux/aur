@@ -6,6 +6,7 @@ pkgbase = hypa-ttfx-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	depends = glibc
 	provides = ttfx
 	conflicts = hypa-ttfx
 	conflicts = ttfx
