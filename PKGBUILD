@@ -2,7 +2,7 @@
 
 pkgname=kicad-library-espressif-git
 _repo=kicad-libraries
-pkgver=3.0.3.r1.g93d7c10
+pkgver=3.2.1.r2.gdd76561
 pkgrel=1
 pkgdesc="KiCad libraries for Espressif chips and modules (symbols, footprints and 3D models)"
 arch=('any')

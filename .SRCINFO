@@ -1,7 +1,7 @@
 pkgbase = kicad-library-espressif-git
 	pkgdesc = KiCad libraries for Espressif chips and modules (symbols, footprints and 3D models)
-	pkgver = 0
-	pkgrel = 2
+	pkgver = 3.2.1.r2.gdd76561
+	pkgrel = 1
 	url = https://github.com/espressif/kicad-libraries
 	install = kicad-library-espressif.install
 	arch = any
