@@ -3,7 +3,7 @@
 pkgauthor=unhappychoice
 pkgname=mdts
 pkgdesc="A local markdown preview server"
-pkgver=0.20.6
+pkgver=0.21.0
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/${pkgauthor}/${pkgname}"
@@ -21,7 +21,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('c40741050df8af3961fefe27e13d9845b4a7c6b98ad86024e089f99a0bc63dc44dd4a3a4d8cd725f70f466a8acacd7e5819b45bba37439bc3137fca788e88549')
+b2sums=('941e3b2cae12a6f11ea88fecef59cf7e326cef5af502be81253e34f9a393625cb9a750cfd352259abdfeef9333bd4b4a4391ac921f041089c914bc9e03a0a5a9')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
