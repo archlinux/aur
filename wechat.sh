@@ -2,7 +2,7 @@
 #
 # Launcher script for tencent-wechat
 # Provides native Wayland auto-detection, Fcitx5 text-input-v3 support,
-# chat data preservation, and a lightweight privacy sandbox using bubblewrap.
+# chat data preservation, desktop portal URL forwarding, and a lightweight privacy sandbox using bubblewrap.
 #
 
 set -e
@@ -38,8 +38,55 @@ fi
 # - Direct host $HOME mapping ensures drag-and-drop file sending works seamlessly
 # - Mask ~/.ssh and ~/.gnupg with empty tmpfs to protect user keys from proprietary software
 # - Pass through GPU (/dev/dri) and Audio (/dev/snd) for hardware acceleration and calls
+# - Forward web links and files to host browser/apps via XDG Desktop Portal (fixes duplicate browser and profile errors)
 # - Isolated PID namespace and read-only system root
 if command -v bwrap >/dev/null 2>&1; then
+    PORTAL_OPEN_WRAPPER="${XDG_RUNTIME_DIR}/wechat-xdg-open"
+    cat << 'EOF' > "${PORTAL_OPEN_WRAPPER}"
+#!/usr/bin/env bash
+target=""
+for arg in "$@"; do
+    if [[ "$arg" != -* ]]; then
+        target="$arg"
+        break
+    fi
+done
+
+if [[ -n "${target}" ]]; then
+    if [[ "${target}" =~ ^www\. ]]; then
+        target="http://${target}"
+    fi
+
+    if [[ "${target}" =~ ^[a-zA-Z][a-zA-Z0-9+.-]*:// && ! "${target}" =~ ^file:// ]]; then
+        exec gdbus call --session \
+            --dest org.freedesktop.portal.Desktop \
+            --object-path /org/freedesktop/portal/desktop \
+            --method org.freedesktop.portal.OpenURI.OpenURI \
+            --timeout 5 \
+            "" "${target}" "{}" >/dev/null 2>&1
+    fi
+
+    file_path="${target#file://}"
+    if [[ -d "${file_path}" ]]; then
+        exec gdbus call --session \
+            --dest org.freedesktop.portal.Desktop \
+            --object-path /org/freedesktop/portal/desktop \
+            --method org.freedesktop.portal.OpenURI.OpenDirectory \
+            --timeout 5 \
+            "" "3" "{}" 3< "${file_path}" >/dev/null 2>&1
+    elif [[ -e "${file_path}" ]]; then
+        exec gdbus call --session \
+            --dest org.freedesktop.portal.Desktop \
+            --object-path /org/freedesktop/portal/desktop \
+            --method org.freedesktop.portal.OpenURI.OpenFile \
+            --timeout 5 \
+            "" "3" "{}" 3< "${file_path}" >/dev/null 2>&1
+    fi
+fi
+exit 0
+EOF
+    chmod 755 "${PORTAL_OPEN_WRAPPER}"
+
     BWRAP_ARGS=(
         --ro-bind / /
         --dev /dev
@@ -49,10 +96,12 @@ if command -v bwrap >/dev/null 2>&1; then
         --proc /proc
         --ro-bind-try /sys /sys
         --tmpfs /tmp
+        --bind-try /tmp/.X11-unix /tmp/.X11-unix
         --bind /run /run
         --bind "${HOME}" "${HOME}"
         --tmpfs "${HOME}/.ssh"
         --tmpfs "${HOME}/.gnupg"
+        --ro-bind "${PORTAL_OPEN_WRAPPER}" /usr/bin/xdg-open
         --unshare-pid
     )
     for dev_node in /dev/video*; do

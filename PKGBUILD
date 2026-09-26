@@ -65,14 +65,12 @@ source_x86_64=(
 noextract=("${pkgname}-${pkgver}-x86_64.deb")
 
 sha256sums=(
-    '39e83e6f486fb8e44d6af37040fdab873654b970b790a20e427361695a001fff'
+    '23470cf9f1b95e865623b791efaa61da9fdd40ae6a385f3eb68ff62e90e1c590'
     'd2dbcae549dbeba5feb8bf9dea1be06a767032a5078358d7e7395a9d5cb5fd0a'
     'c7d3a19e099ba6e6f33d90a35891a443fdd01c62f424e31e21c955fd03168b63'
     '3f02a485084d1d7ecd0dc6b787240fd234d168f051b60456a023e8a841d5bb4b'
 )
-sha256sums_x86_64=(
-    '096865e050ba0d3c1a23887227e2400bf343037b1d7d658c84c88ff26bfdc17f'
-)
+sha256sums_x86_64=('b7d0f8d53e9f648bc2c77a6096a04100d008f2d9f0d3988a2a4859b5992aca0a')
 
 prepare() {
     bsdtar -xf "${pkgname}-${pkgver}-x86_64.deb" data.tar.xz
