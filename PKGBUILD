@@ -2,7 +2,7 @@
 
 pkgname=hydra-download-manager-bin
 _pkgname=hydra
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Multi-connection download accelerator and manager (GUI, CLI, browser integration) (precompiled binary)"
 arch=('x86_64' 'aarch64')
@@ -93,7 +93,12 @@ EOF
   "description": "Hydra Download Manager native host",
   "path": "/usr/bin/hydra-host",
   "type": "stdio",
-  "allowed_origins": ["chrome-extension://jpnonmbbkjdpeebdhkjoliklfhkdcomj/"]
+  "allowed_origins": [
+    "chrome-extension://jpnonmbbkjdpeebdhkjoliklfhkdcomj/",
+    "chrome-extension://oieelfilllghmbnhofajpgpmmilfihmo/",
+    "chrome-extension://obemipfpeenmhkdpkobdkeedhdakaoai/",
+    "chrome-extension://hcmgiggmiblkfgkndbjkfonlhbmllonb/"
+  ]
 }
 EOF
   done
