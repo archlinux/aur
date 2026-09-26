@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Name=Herta
+Name[zh_CN]=黑塔
+GenericName=AI companion
+Comment=The self that uses the agent
+Comment[zh_CN]=给自我以模型，而不是给模型以自我
+Exec=herta %U
+Icon=herta
+Terminal=false
+Categories=Development;
+# Must match the WM_CLASS Electron sets (the product name), or the desktop
+# environment will not group the running window with this entry.
+StartupWMClass=Herta
+Keywords=AI;agent;assistant;DeepSeek;

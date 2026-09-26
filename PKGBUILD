@@ -18,7 +18,7 @@ _appname=${pkgname%-bin}
 _electronversion=43
 _appdir="/usr/lib/${pkgname}"
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The self that uses the agent - desktop companion (AppImage payload, system Electron)"
 arch=('x86_64')
 url="https://github.com/PersonaCLI/Herta"
@@ -42,8 +42,10 @@ options=('!strip' '!debug')
 source=(
     "Herta-x86_64.AppImage::https://github.com/PersonaCLI/Herta/releases/download/v${pkgver}/Herta-x86_64.AppImage"
     "${_appname}.sh"
+    "herta.desktop"
 )
 sha256sums=('58488abb85e8a53583779c77edfc06c80ee5dbfc7f742d47a5c6ca7cc40554e1'
+            'SKIP'
             'SKIP')
 
 prepare() {
@@ -82,20 +84,10 @@ package() {
     install -Dm644 squashfs-root/usr/share/icons/hicolor/1024x1024/apps/herta.png \
         "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/herta.png"
 
-    install -dm755 "${pkgdir}/usr/share/applications"
-    cat > "${pkgdir}/usr/share/applications/${_appname}.desktop" <<'DESKTOP'
-[Desktop Entry]
-Type=Application
-Name=Herta
-Comment=The self that uses the agent
-Exec=herta %U
-Icon=herta
-Terminal=false
-Categories=Development;
-StartupWMClass=Herta
-StartupNotify=true
-DESKTOP
-    chmod 644 "${pkgdir}/usr/share/applications/${_appname}.desktop"
+    # Upstream's own desktop entry (packaging/arch/herta.desktop), with Exec
+    # pointed at this package's launcher. Keeps the translated name and the
+    # search keywords that a hand-rolled entry would drop.
+    install -Dm644 herta.desktop "${pkgdir}/usr/share/applications/${_appname}.desktop"
 
     install -Dm644 squashfs-root/resources/LICENSE \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
