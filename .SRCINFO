@@ -1,6 +1,6 @@
 pkgbase = scalable-cli-bin
 	pkgdesc = Command-line interface for Scalable Capital
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 3
 	url = https://github.com/ScalableCapital/scalable-cli
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = scalable-cli-bin
 	depends = gcc-libs
 	depends = ca-certificates
 	optdepends = org.freedesktop.secrets: store the session in the keyring instead of plain files
-	provides = scalable-cli=1.0.0
+	provides = scalable-cli=1.1.0
 	conflicts = scalable-cli
 	conflicts = sc
 	options = !strip
-	source_x86_64 = https://github.com/ScalableCapital/scalable-cli/releases/download/v1.0.0/sc-v1.0.0-linux-x86_64-gnu.tar.gz
-	sha256sums_x86_64 = f572bf49b853be35c56bc59b7ab2f4576be2ed524a1a3a0b0658ed69a54a6180
-	source_aarch64 = https://github.com/ScalableCapital/scalable-cli/releases/download/v1.0.0/sc-v1.0.0-linux-aarch64-gnu.tar.gz
-	sha256sums_aarch64 = 414761301b7f8c68df919484769d7086aa1477afbf2fd62e009ca792a796a0b8
+	source_x86_64 = https://github.com/ScalableCapital/scalable-cli/releases/download/v1.1.0/sc-v1.1.0-linux-x86_64-gnu.tar.gz
+	sha256sums_x86_64 = 64aa3b566f52dab82abdb44c9f6c0a82628fbb392aff1450c84894908639acb8
+	source_aarch64 = https://github.com/ScalableCapital/scalable-cli/releases/download/v1.1.0/sc-v1.1.0-linux-aarch64-gnu.tar.gz
+	sha256sums_aarch64 = 9e04c6f608bb1ac0ce4fa063f1971dece7a37842cbf1a6a231f497721298a4f8
 
 pkgname = scalable-cli-bin
