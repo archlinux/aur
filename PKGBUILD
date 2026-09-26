@@ -1,6 +1,6 @@
 # Maintainer: swim <swim853279614@163.com>
 pkgname=plasma-lyrics
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Native synchronized desktop lyrics widget for Plasma 6'
 arch=('x86_64')
@@ -21,8 +21,8 @@ depends=('plasma-workspace' 'libplasma' 'kirigami' 'ksvg' 'ki18n' 'kdeclarative'
          'qt6-base' 'qt6-declarative' 'zlib' 'fontconfig' 'glibc' 'libgcc' 'libstdc++')
 # gettext supplies msgfmt, which builds the translation catalogues.
 makedepends=('cmake' 'ninja' 'extra-cmake-modules' 'gettext')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/swim233/plasma-lyrics/releases/download/v0.4.2/plasma-lyrics-0.4.2.tar.gz")
-sha256sums=('4391c3a46b4a0240449a3372e7dc7830387f661b1f108869d8262ee7d9d6faff')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/swim233/plasma-lyrics/releases/download/v0.4.3/plasma-lyrics-0.4.3.tar.gz")
+sha256sums=('d13ed31da86a2479db93f203854e788c1b3674169f2841f89e92e0d7745d41eb')
 
 build() {
   # None rather than Release: it leaves the compiler flags to makepkg.conf, so
