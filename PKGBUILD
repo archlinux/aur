@@ -2,7 +2,7 @@
 
 pkgbase=clice-nightly-bin
 pkgname=('clice-nightly-bin' 'clice-nightly-bin-debug')
-pkgver=0.1.2026092407
+pkgver=0.1.2026092607
 pkgrel=1
 pkgdesc='Nightly C++ language server and matching crash symbols'
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source_x86_64=(
   "clice-${pkgver}.x86_64-unknown-linux-gnu.symbols.tar.xz::${url}/releases/download/v${pkgver}/clice-${pkgver}.x86_64-unknown-linux-gnu.symbols.tar.xz"
 )
 sha256sums_x86_64=(
-  '8b1235bfba38dbd8abc7682805c64ee68feca1336cf218de2ab1177a9e7fc9c0'
-  'ff88515b217a24eeef7b258b39bebf8eb536341925ff9f1a146116bc38099c15'
+  '97839324e2c6d330bc42b61e050041755d9b7d6d2d36db984d5163f2977610fc'
+  '94b8c51b7a50c39d72663bfb6cbb56e9e2c1280ee8bc6c518652b5400158cf63'
 )
 
 source_aarch64=(
@@ -28,8 +28,8 @@ source_aarch64=(
   "clice-${pkgver}.aarch64-unknown-linux-gnu.symbols.tar.xz::${url}/releases/download/v${pkgver}/clice-${pkgver}.aarch64-unknown-linux-gnu.symbols.tar.xz"
 )
 sha256sums_aarch64=(
-  'e38e486e7c412031badc9e874ffcd5216b4c1d3575d070b359e0e55b6ade6287'
-  'c0ae78e74c86b81ec6392be8e44a9bbdb1e66d4805fe1713b060871e2af708d2'
+  '8bde585601df49dc3db72470bb547e0daa5ed704a2bd6b16d85f4d4e97320a45'
+  '6600d259b23559672e67515beebfd3f178e1d3e62fd0a0edef4b5ff0c19fafbf'
 )
 
 package_clice-nightly-bin() {
