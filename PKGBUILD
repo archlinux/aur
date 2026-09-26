@@ -1,14 +1,15 @@
-# Maintainer: fr0stb1rd - fr0stb1rd.gitlab.io
+# Maintainer: fr0stb1rd <fr0stb1rd@proton.me>
+
 pkgname=untrunc-anthwlock-bin
 _pkgname=untrunc
-pkgver=d286625
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Restore a damaged (truncated) mp4, m4v, mov, 3gp video. Pre-built binary with bundled FFmpeg."
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url="https://github.com/fr0stb1rd/untrunc"
 license=('GPL-2.0-only')
 provides=("${_pkgname}")
-conflicts=('untrunc-anthwlock-cli-git' 'untrunc-git')
+conflicts=('untrunc' 'untrunc-anthwlock-cli-git' 'untrunc-git')
 options=('!strip')
 
 _releaseurl="https://github.com/fr0stb1rd/untrunc/releases/download/v1.0.0"

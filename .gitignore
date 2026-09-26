@@ -1,2 +1,4 @@
 *.pkg.tar.zst
 untrunc-*-*
+src/
+pkg/
