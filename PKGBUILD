@@ -2,7 +2,7 @@
 _pkgname=openvaf-reloaded
 pkgname=${_pkgname}-git
 pkgver=20260616.r4.g5ed9e63
-pkgrel=1
+pkgrel=2
 pkgdesc="Continuation of OpenVAF - A Next-generation VerilogA Compiler - OSDI >= 4 support"
 arch=(
   "x86_64"
@@ -49,7 +49,11 @@ prepare() {
 
   # Patch for LLVM 22 support
   # See upstream: https://github.com/OpenVAF-Reloaded/OpenVAF/pull/76/
-  git cherry-pick -n 277e3aa4d07625ba3c5179bc353e781481564966
+  git cherry-pick -n 1864b8ee1874e354124303b7c212357d2518d9b6
+
+  # Patch for LLVM 23 support
+  # See upstream: https://github.com/OpenVAF-Reloaded/OpenVAF/pull/82/
+  git cherry-pick -n d65fcc19824a14f2b1ab6a71bd61f23f71aa6532
 
   # Add the submodule(s)
   git submodule init
