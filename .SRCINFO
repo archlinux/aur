@@ -1,0 +1,14 @@
+pkgbase = scout
+	pkgdesc = Diagnose Model Context Protocol servers end to end: nine phases, every finding tied to the request that produced it
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/sebastienrousseau/scout
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go
+	depends = glibc
+	source = scout-0.0.6.tar.gz::https://github.com/sebastienrousseau/scout/archive/refs/tags/v0.0.6.tar.gz
+	sha256sums = 07a78d665456a7022e5e90712c2661f24743cadfdcb494059b8b998885611d09
+
+pkgname = scout
