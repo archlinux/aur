@@ -1,0 +1,17 @@
+pkgbase = ziso_compressor-git
+	pkgdesc = A simple ZISO compressor
+	pkgver = r81.e56b86f
+	pkgrel = 1
+	url = https://github.com/Danixu/ziso_compressor
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = make
+	provides = ziso
+	conflicts = ziso
+	source = ziso_compressor::git+https://github.com/Danixu/ziso_compressor.git
+	b2sums = SKIP
+
+pkgname = ziso_compressor-git
