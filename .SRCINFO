@@ -1,0 +1,17 @@
+pkgbase = d77run
+	pkgdesc = Minimal GTK4 run-dialog launcher (a rejuvenation of gmrun), with .desktop icon rendering
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/dani-77/d77run
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gtk4
+	depends = glib2
+	depends = gcc-libs
+	depends = glibc
+	source = d77run-0.3.0.tar.gz::https://github.com/dani-77/d77run/archive/v0.3.0.tar.gz
+	sha256sums = 48fa3ab623e03e02f9af0b3e026e0959352aaa279a74872237a5df3001346203
+
+pkgname = d77run
