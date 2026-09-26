@@ -4,10 +4,11 @@
 
 pkgname=boomaga
 pkgver=3.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual printer for viewing a document before printing it out using the physical printer"
 arch=(x86_64 aarch64)
 url="https://www.boomaga.org/"
+url_github="https://github.com/Boomaga/boomaga"
 license=(GPL2 LGPL2.1)
 depends=(
     cups
@@ -24,7 +25,7 @@ makedepends=(
     cmake
     qt6-tools
     )
-source=("$pkgname::git+$url.git#tag=v$pkgver")
+source=("$pkgname::git+$url_github.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
@@ -36,11 +37,11 @@ build() {
   export CFLAGS+=" -w"
   export CXXFLAGS+=" -w"
 
-  cmake -B build -S "boomaga-${pkgver}" -Wno-author \
+  cmake -B build -S "boomaga" -Wno-author \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr
 
-  cmake --build build
+  cmake --build build --parallel "$(nproc)"
 }
 
 package() {
