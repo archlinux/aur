@@ -1,5 +1,5 @@
 pkgname=folia-major-bin
-pkgver=0.7.8
+pkgver=0.7.9
 pkgrel=1
 pkgdesc="Lyrics Reimagine desktop app packaged from prebuilt releases"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '9dc6f7f25e6dc214cf8798e9df4d01829e2a832899313cc346e97c8db0e4c9ec'
+  'd4e077790a260ae00ff9ec6f859f6add8f404e45674968e9ae085be17b2e0d43'
   'cffe4a4fe5608706e2522de3b4cd8cc174357a9310493f107553794831312054'
 )
 
