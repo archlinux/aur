@@ -1,6 +1,6 @@
 pkgbase = git-orchard-bin
 	pkgdesc = A command-line utility for managing git trees including worktrees and subtrees
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/jmelahman/git-orchard
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = git-orchard-bin
 	license = MIT
 	provides = git-orchard
 	conflicts = git-orchard
-	source_x86_64 = https://github.com/jmelahman/git-orchard/releases/download/v1.1.1/git-orchard_1.1.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 1b45944ec20a1ba0093a45eeb24bbc30dc9ff3394612f97068d520842c037975
-	source_aarch64 = https://github.com/jmelahman/git-orchard/releases/download/v1.1.1/git-orchard_1.1.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 542f4b890a9ea196dc8ec6330c414674fe6e3516e6d3ae90ba964b1037938b2b
+	source_x86_64 = https://github.com/jmelahman/git-orchard/releases/download/v1.1.2/git-orchard_1.1.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9dd8de36466e43cfb07119620e042fc464d4906192d48679289fb3aafa4dc833
+	source_aarch64 = https://github.com/jmelahman/git-orchard/releases/download/v1.1.2/git-orchard_1.1.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = d67f4fbca4f20f26ad140c0da7bbe5492af45f8d36c236966d876f49c5f67fa1
 
 pkgname = git-orchard-bin
