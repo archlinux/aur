@@ -2,7 +2,7 @@
 
 pkgname=scalable-cli-bin
 pkgver=1.1.0
-pkgrel=3
+pkgrel=1
 pkgdesc="Command-line interface for Scalable Capital"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ScalableCapital/scalable-cli"
