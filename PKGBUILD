@@ -2,7 +2,7 @@
 
 _pkgname="nchat"
 pkgname="$_pkgname-bin"
-pkgver="5.18.20"
+pkgver="5.19.18"
 pkgrel=1
 pkgdesc=" Terminal-based messaging client for Linux and macOS with Telegram, WhatsApp and Signal support (prebuilt)"
 url="https://github.com/d99kris/nchat"
@@ -19,8 +19,8 @@ depends=(
 source_x86_64=("https://github.com/d99kris/nchat/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64-glibc.tar.gz")
 source_aarch64=("https://github.com/d99kris/nchat/releases/download/v$pkgver/$_pkgname-$pkgver-linux-arm64-glibc.tar.gz")
 
-sha256sums_x86_64=('585471728ee5fbc3ecb08ca27eea6b1167b44611f73e2401e49fcfc5bd366f7a')
-sha256sums_aarch64=('155ca0e43110df1e8c9516e5851f554423a9b55c7c0769d376e88fa609fef6d5')
+sha256sums_x86_64=('2337bf27dc2949ca0e7cbb237379a7eba1926c96485706e9960eb5f76fda3747')
+sha256sums_aarch64=('b652373bcf9e4d6e9b75be2d77a55569473c3be6cf25ea7fa9ad713fb8a5393d')
 
 package() {
   local _dir="$_pkgname-$pkgver-linux-${CARCH/aarch64/arm64}-glibc"
