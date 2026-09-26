@@ -1,55 +1,53 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=yadaw-bin
 _pkgname=yadaw
-pkgver=0.10.8
-_tag=v0.10.8
+pkgver=0.10.9
+_tag=v0.10.9
 pkgrel=1
-pkgdesc="Yet Another mini-DAW - a lightweight sfx tool in pure Rust (binary)"
+pkgdesc='Yet Another mini-DAW - a lightweight sfx tool in pure Rust (binary)'
 arch=('x86_64' 'aarch64')
 url="https://github.com/mlm-games/yadaw"
-license=('GPL3')
-depends=('alsa-lib' 'libx11' 'libxcursor' 'libxinerama' 'libxrandr' 'libxi')
+license=('AGPL-3.0-only')
+depends=(alsa-lib libx11 libxcursor libxinerama libxrandr libxi)
 optdepends=(
   'pipewire-pulse: for PipeWire audio support'
   'pulseaudio: for PulseAudio audio support'
 )
-provides=('yadaw' 'clap-host' 'lv2-host')
-conflicts=('yadaw')
-options=('!strip')
-
-source_x86_64=("${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/yadaw/releases/download/${_tag}/${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("${_pkgname}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/yadaw/releases/download/${_tag}/${_pkgname}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-
-source=("icon.png::https://raw.githubusercontent.com/mlm-games/yadaw/refs/heads/master/fastlane/metadata/android/en-US/images/icon.png")
-
-sha256sums_x86_64=('d5d6cc9df057d30bfff058348d273fc07c3a270714fbd133bb883a5ace4dab6b')
-sha256sums_aarch64=('4268fc3b7b9837684f3cb4415243f04e8a9ba5fb4fe6872d3495ab62d107e9cc')
-sha256sums=('SKIP') # for icon.png
+provides=(yadaw clap-host lv2-host)
+conflicts=(yadaw)
+options=(!strip)
+source_x86_64=("yadaw-0.10.9-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/yadaw/releases/download/${_tag}/yadaw-0.10.9-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("yadaw-0.10.9-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/yadaw/releases/download/${_tag}/yadaw-0.10.9-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('660e14f0e6dde45a02028bd40a4044aa2ed3372cb81c1f92b08f94461d6172c5')
+sha256sums_aarch64=('a19ffddfc09710678e4d33cdf76de2f455945c5b28625b0d808b3096bd0ec7f0')
+source+=("icon.png::https://raw.githubusercontent.com/mlm-games/yadaw/master/fastlane/metadata/android/en-US/images/icon.png")
+sha256sums+=('SKIP')
 
 package() {
-  local target
+  local dir
   if [[ "$CARCH" == "x86_64" ]]; then
-    target="x86_64-unknown-linux-gnu"
+    dir="${srcdir}/yadaw-0.10.9-x86_64-unknown-linux-gnu"
   else
-    target="aarch64-unknown-linux-gnu"
+    dir="${srcdir}/yadaw-0.10.9-aarch64-unknown-linux-gnu"
   fi
+  install -Dm755 "${dir}/yadaw" "${pkgdir}/usr/bin/yadaw"
 
-  local dir="${srcdir}/${_pkgname}-${pkgver}-${target}"
-  install -Dm755 "${dir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-
-  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${_pkgname}.desktop" << DESKTOP_EOF
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/yadaw.desktop" << DESKTOP_EOF
 [Desktop Entry]
-Name=YADAW
-Comment=A Sfx creation tool (maybe a little more than that)
-Exec=${_pkgname} %F
-Icon=${_pkgname}
-Terminal=false
 Type=Application
-Categories=AudioVideo;Audio;
-MimeType=audio/midi;audio/x-midi;application/x-midi;audio/x-wav;audio/wav;audio/flac;audio/mpeg;audio/ogg;
+Version=1.5
+Name=Yadaw
+Comment=Lightweight mini-DAW for sound design and prototyping with LV2/CLAP plugin support
+Categories=AudioVideo;Audio;Music;Sequencer;Midi;
+Keywords=audio;music;daw;midi;lv2;clap;plugin;sequencer;sound;
+Exec=yadaw %F
+Icon=yadaw
+Terminal=false
 StartupNotify=true
+StartupWMClass=yadaw
+MimeType=audio/midi;audio/x-midi;audio/wav;audio/x-wav;audio/flac;audio/mpeg;audio/ogg;
 DESKTOP_EOF
 
-  install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-  install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
+  install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/yadaw.png"
+  install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/yadaw.png"
 }
