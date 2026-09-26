@@ -39,8 +39,10 @@ check() {
 	cd ${srcdir}/${pkgname}-${pkgver}/ || exit 1
 
 	export CARGO_TARGET_DIR=target
+	export CARGO_TERM_COLOR=always
 	cargo test --release --locked -- \
-		--skip "tui::dispatch::tests::a_terminal_bearing_outcome_reaching_route_outcome_trips_the_assert"
+		--skip "tui::dispatch::tests::a_terminal_bearing_outcome_reaching_route_outcome_trips_the_assert" \
+		--nocapture 2>&1 --color always | tr -d '\000-\010\013\014\016-\032\034-\037\177'
 }
 
 package() {
