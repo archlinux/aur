@@ -1,7 +1,7 @@
 pkgbase = python-simpervisor
 	pkgdesc = Simple async process supervisor
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jupyterhub/simpervisor
 	arch = any
 	license = BSD-3-Clause
@@ -15,7 +15,9 @@ pkgbase = python-simpervisor
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/s/simpervisor/simpervisor-1.0.0.tar.gz
 	source = github_pr50_testfix.patch::https://patch-diff.githubusercontent.com/raw/jupyterhub/simpervisor/pull/50.patch
+	source = child_scripts_event_loop.patch
 	sha256sums = 7eb87ca86d5e276976f5bb0290975a05d452c6a7b7f58062daea7d8369c823c1
 	sha256sums = d583e17ed0971163d957ce068f9045365ac793fe6ff1ec028b0273c7cd90299a
+	sha256sums = 364a902b4e4453e87e1c93f59b8accf183d7bb5c37fb36342414138f56d81c9b
 
 pkgname = python-simpervisor

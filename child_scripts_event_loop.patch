@@ -1,0 +1,31 @@
+--- tests/child_scripts/signalprinter.py
++++ tests/child_scripts/signalprinter.py
+@@ -17,7 +17,11 @@ Fix for Python 3.14 (error instead of creating a new loop)
+ for i in range(handlercount):
+     add_handler(partial(_handle_sigterm, i))
+ 
+-loop = asyncio.get_event_loop()
++try:
++    loop = asyncio.get_event_loop()
++except RuntimeError:
++    loop = asyncio.new_event_loop()
++    asyncio.set_event_loop(loop)
+ try:
+     loop.run_forever()
+ finally:
+
+--- tests/child_scripts/signalsupervisor.py
++++ tests/child_scripts/signalsupervisor.py
+@@ -26,7 +26,11 @@ Fix for Python 3.14 (error instead of creating a new loop)
+     print(" ".join([str(pid) for pid in pids]), flush=True)
+ 
+ 
+-loop = asyncio.get_event_loop()
++try:
++    loop = asyncio.get_event_loop()
++except RuntimeError:
++    loop = asyncio.new_event_loop()
++    asyncio.set_event_loop(loop)
+ asyncio.ensure_future(main())
+ try:
+     loop.run_forever()
