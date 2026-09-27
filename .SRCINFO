@@ -1,9 +1,16 @@
 pkgbase = ampered
-	pkgdesc = Placeholder package (name reserved, not yet released)
-	pkgver = 0.0.0
+	pkgdesc = Power management daemon for Linux laptops under Wayland
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/vlukyanets/ampered
 	arch = x86_64
 	license = Unlicense
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = systemd
+	backup = etc/ampered/ampered.toml
+	source = ampered-0.2.0.tar.gz::https://github.com/vlukyanets/ampered/archive/v0.2.0.tar.gz
+	sha256sums = 78575605ae40c6acf8ba1ac33b21d3362915bcc7d02c19737c36c5f66ec8fa3b
 
 pkgname = ampered
