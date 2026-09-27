@@ -1,6 +1,6 @@
 pkgbase = python-pymssql
 	pkgdesc = DB-API (PEP-249) interface to Microsoft SQL Server
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/pymssql/pymssql
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = python-pymssql
 	makedepends = python-wheel
 	depends = freetds
 	depends = glibc
-	source = pymssql-2.4.1.tar.gz::https://files.pythonhosted.org/packages/source/p/pymssql/pymssql-2.4.1.tar.gz
-	sha512sums = 248c43c8bdf6cc4f18b7ed3ef9bafd1752702626facdc9e289a708a7c556d7231065aa0ce173c5f6ba917ab877087782afa6348c7818863a22b53ec32baaec1e
+	source = pymssql-2.4.2.tar.gz::https://files.pythonhosted.org/packages/source/p/pymssql/pymssql-2.4.2.tar.gz
+	sha512sums = c308a4ad0372489ef3790d2c21e947c2ee203ad6822e2ad46fc5d1f6142a677fcf42222803f47d48f4efc5854eed89effa69c896d0685b27c5e2015444565430
 
 pkgname = python-pymssql
