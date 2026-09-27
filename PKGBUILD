@@ -5,7 +5,7 @@
 # CI (.github/workflows/aur-release.yml) on every release; the values below
 # are only a checked-in reference snapshot.
 pkgname=runner-run
-pkgver=0.26.2
+pkgver=0.27.0
 pkgrel=1
 pkgdesc='Universal project task runner'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 checkdepends=('just')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kjanat/runner/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a634bdd8f65b2d7440474f5a99a6c679f5c4db3d5eabd606edb25633c35d28a7')
+sha256sums=('7407702ac401c74afc9ef8a93c105156c5605a5c873267e34c6b91078c2e2ff2')
 
 prepare() {
 	cd "runner-$pkgver"
@@ -28,7 +28,7 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	cargo build --frozen --release --bin runner --bin run
 	env CARGO_TARGET_DIR=target/man \
-		cargo run --frozen --features man -- man --output man
+		cargo run --frozen --features man -- man --output packaging/man
 }
 
 check() {
@@ -82,6 +82,6 @@ package() {
 	# this file from their `$PROFILE`:  . /usr/share/runner/runner.ps1
 	install -Dm0644 "$g/runner.ps1" "$pkgdir/usr/share/runner/runner.ps1"
 
-	# Man pages rendered into ./man by build(). makepkg gzips them (zipman).
-	install -Dm0644 -t "$pkgdir/usr/share/man/man1/" man/*.1
+	# Man pages rendered into ./packaging/man by build(). makepkg gzips them (zipman).
+	install -Dm0644 -t "$pkgdir/usr/share/man/man1/" packaging/man/*.1
 }
