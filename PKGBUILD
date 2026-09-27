@@ -2,7 +2,7 @@
 # Contributor: Hilton Medeiros <medeiros.hilton@gmail.com>
 
 pkgname=pixelorama
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="A free & open-source 2D sprite editor"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('hicolor-icon-theme' 'libglvnd' 'libxcursor' 'libxi' 'libxinerama' 'lib
 makedepends=('curl' 'godot>=4.3' 'godot-export-templates-linux' 'unzip')
 provides=('pixelorama')
 source=("${pkgname^}-${pkgver}.tar.gz::${_url}/archive/v${pkgver}.tar.gz")
-b2sums=('0db62062de127449f2cc1abc9fbf5956b8063960d51cef96d93e764ef7fce7ddcdc25145be9ec8a1b694070b86fe74954289e376a2ed7b83dd9f49ae8cc60b7d')
+b2sums=('c4923aab208888e62cb15920cb2e61c97352b11b0aeb8ca909ff27cfad366c298ee75b600a296a446baa5965f71e3fa6286218cb55cc8e735caa9beedefd6f1f')
 
 prepare() {
   # Set godot templates location
