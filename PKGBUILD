@@ -2,7 +2,7 @@
 
 _pkgname=gallery-tui
 pkgname=$_pkgname-git
-pkgver=0.2.10.r0.g9eb488c
+pkgver=0.2.11.r0.g537f34a
 pkgrel=1
 pkgdesc="A terminal image gallery powered by ratatui and chafa."
 arch=('x86_64' 'aarch64')
