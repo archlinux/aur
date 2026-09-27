@@ -1,29 +1,26 @@
-# Maintainer: Booglejr <rooty (a+) kwtechllc (dot) com>
+# Maintainer: Justin Woodring <jwoodrg@gmail.com>
 pkgname=aespresso
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
-epoch=0
-pkgdesc="A Gtk3 frontend for archlinux's archlinux-java script."
+pkgdesc="A GTK4 frontend for archlinux's archlinux-java script"
 arch=('x86_64')
-url="https://github.com/Booglejr/$pkgname/releases"
-license=('custom:BSD')
-depends=('gtk3' 'lxqt-sudo' 'java-runtime-common')
-makedepends=('rust')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Booglejr/$pkgname/archive/v${pkgver}.tar.gz")
-md5sums=('c8267f1ae4ea11173ba3710a655744bb')
-
+url="https://github.com/JustinWoodring/aespresso"
+license=('BSD-2-Clause')
+depends=('gtk4' 'java-runtime-common' 'polkit')
+optdepends=('lxqt-sudo: alternative privilege escalation helper')
+makedepends=('cargo')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('5c07ecf63037631bc1d16fb9e58de68715816734d1ea6324fdaf088b52b42b14')
 
 build() {
 	cd "$pkgname-$pkgver"
-	cargo build --release --bin ${pkgname} --target-dir .
+	cargo build --release --locked
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	cd release
-	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-	cd ..
-	install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm755 target/release/aespresso -t "$pkgdir/usr/bin/"
+	install -Dm644 aespresso.desktop -t "$pkgdir/usr/share/applications/"
+	install -Dm644 aespresso.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/aespresso.png"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

@@ -1,17 +1,16 @@
 pkgbase = aespresso
-	pkgdesc = A Gtk3 frontend for archlinux's archlinux-java script.
-	pkgver = 0.1.2
+	pkgdesc = A GTK4 frontend for archlinux's archlinux-java script
+	pkgver = 0.2.0
 	pkgrel = 1
-	epoch = 0
-	url = https://github.com/Booglejr/aespresso/releases
+	url = https://github.com/JustinWoodring/aespresso
 	arch = x86_64
-	license = custom:BSD
-	makedepends = rust
-	depends = gtk3
-	depends = lxqt-sudo
+	license = BSD-2-Clause
+	makedepends = cargo
+	depends = gtk4
 	depends = java-runtime-common
-	source = aespresso-0.1.2.tar.gz::https://github.com/Booglejr/aespresso/archive/v0.1.2.tar.gz
-	md5sums = c8267f1ae4ea11173ba3710a655744bb
+	depends = polkit
+	optdepends = lxqt-sudo: alternative privilege escalation helper
+	source = aespresso-0.2.0.tar.gz::https://github.com/JustinWoodring/aespresso/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 5c07ecf63037631bc1d16fb9e58de68715816734d1ea6324fdaf088b52b42b14
 
 pkgname = aespresso
-
