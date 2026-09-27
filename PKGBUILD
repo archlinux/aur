@@ -12,7 +12,7 @@
 #   modifiche non ancora rilasciate)
 
 pkgname=klamav-py
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Frontend Python minimale per ClamAV via clamd, erede spirituale di KlamAV 0.22"
 arch=('any')
@@ -36,9 +36,12 @@ install=klamav-py.install
 # debian/changelog e CHANGELOG.md (tests/test_changelog.py lo verifica).
 # Il tag v$pkgver deve essere già firmato e pubblicato su GitHub.
 source=("$pkgname::git+$url.git#tag=v$pkgver?signed")
-# SKIP: l'integrità è garantita dalla firma del tag. Con pacman recente
-# provare "makepkg -g": se restituisce un hash reale anche per il
-# sorgente git, usarlo qui al posto di SKIP (firma + checksum).
+# SKIP per scelta, non per limite di makepkg: da pacman 6.1 "makepkg -g"
+# calcola anche l'hash di un tag git (via "git archive"). Qui però sarebbe
+# circolare: questo PKGBUILD fa parte dell'albero del tag, quindi l'hash
+# di v$pkgver esiste solo dopo il tag e servirebbe un commit successivo.
+# L'integrità è già garantita dalla firma del tag (?signed + validpgpkeys).
+# tests/test_changelog.py impone SKIP.
 sha256sums=('SKIP')
 # Impronta della chiave primaria: makepkg accetta anche le firme delle
 # sue sottochiavi, quindi la rotazione della sottochiave di firma non
