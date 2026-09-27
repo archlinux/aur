@@ -6,7 +6,7 @@
 
 pkgname=python-migen-git
 epoch=1
-pkgver=0.9.2.r118.g44e5627
+pkgver=0.9.2.r126.gbeffe83
 pkgrel=1
 pkgdesc="A Python toolbox for building complex digital hardware "
 arch=(any)
@@ -18,6 +18,7 @@ makedepends=(
     'python-build'
     'python-setuptools'
     'python-installer'
+    'python-pytest'
 )
 depends=('python-colorama')
 checkdepends=('python-pytest')
@@ -34,13 +35,12 @@ pkgver() {
 
 build() {
     cd "${srcdir}/migen"
-    python -m build --wheel --no-isolation
+    python -m build --wheel
 }
 
 check() {
     cd "${srcdir}/migen"
-    PYTHONPATH=. python -m pytest \
-        -k 'not test_local_cd' # Skip unsupported test
+    PYTHONPATH=. python -m pytest
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = python-migen-git
 	pkgdesc = A Python toolbox for building complex digital hardware
-	pkgver = 0.9.2.r118.g44e5627
+	pkgver = 0.9.2.r126.gbeffe83
 	pkgrel = 1
 	epoch = 1
 	url = https://git.m-labs.hk/M-Labs/migen
@@ -11,6 +11,7 @@ pkgbase = python-migen-git
 	makedepends = python-build
 	makedepends = python-setuptools
 	makedepends = python-installer
+	makedepends = python-pytest
 	depends = python-colorama
 	provides = python-migen
 	conflicts = python-migen
