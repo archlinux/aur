@@ -1,6 +1,6 @@
 pkgbase = minaw
 	pkgdesc = X11 wallpaper setter with smooth fade transitions
-	pkgver = 1.6
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://gitlab.com/mgmillani/minaw
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = minaw
 	depends = xorg-xrandr
 	optdepends = picom: compositor providing wallpaper opacity transitions
 	optdepends = fortune: write a fortune cookie on the wallaper
-	source = minaw-1.6.tar.gz::https://gitlab.com/mgmillani/minaw/-/archive/1.6/minaw-1.6.tar.gz
-	sha256sums = 50c334a0c9895778c4f1c0312ec5cdfa0c58dcb3450f5425f72db14dc045dbe1
+	source = minaw-1.7.tar.gz::https://gitlab.com/mgmillani/minaw/-/archive/1.7/minaw-1.7.tar.gz
+	sha256sums = 57555cd460a8f30baf5608335f2f4d3a087e98a3ce4c83694c839817a6df2be6
 
 pkgname = minaw

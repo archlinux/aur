@@ -1,7 +1,7 @@
 # Maintainer: Marcelo Garlet Milani <mgmilani@pm.me>
 
 pkgname=minaw
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc='X11 wallpaper setter with smooth fade transitions'
 arch=('any')
@@ -28,7 +28,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/minaw-$pkgver.tar.gz"
 )
 
-sha256sums=('50c334a0c9895778c4f1c0312ec5cdfa0c58dcb3450f5425f72db14dc045dbe1')
+sha256sums=('57555cd460a8f30baf5608335f2f4d3a087e98a3ce4c83694c839817a6df2be6')
 
 package() {
   cd "minaw-$pkgver"
