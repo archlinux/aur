@@ -1,0 +1,14 @@
+pkgbase = topowall
+	pkgdesc = Topographic contour wallpapers from real elevation data, rendered on the GPU
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/gonzalezerik/topowall
+	arch = x86_64
+	license = MIT
+	depends = glibc>=2.35
+	depends = libgcc
+	options = !debug
+	source = topowall-0.3.0.tar.gz::https://github.com/gonzalezerik/topowall/releases/download/v0.3.0/topowall-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 21482127d24f1c2088057435b578a5f5c546fb13cf30b2b07d1d8dc7f4fa04cb
+
+pkgname = topowall
