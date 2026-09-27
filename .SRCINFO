@@ -1,25 +1,40 @@
 pkgbase = misskey-notedeck-bin
-	pkgdesc = Misskey Pro — integrated deck environment (IDE) for Misskey power users
-	pkgver = 1.72.2
+	pkgver = 1.73.0
 	pkgrel = 1
 	url = https://github.com/notedeck-dev/notedeck
 	arch = x86_64
 	license = AGPL-3.0-or-later
+	source = misskey-notedeck-bin-1.73.0.tar.gz::https://github.com/notedeck-dev/notedeck/releases/download/v1.73.0/NoteDeck-1.73.0-linux-x64.tar.gz
+	source = notecli-1.73.0-linux-amd64::https://github.com/notedeck-dev/notedeck/releases/download/v1.73.0/notecli-1.73.0-linux-amd64
+	source = notedeck.desktop
+	source = notedeck-icon-128.png::https://raw.githubusercontent.com/notedeck-dev/notedeck/v1.73.0/src-tauri/icons/128x128.png
+	source = notedeck-icon-32.png::https://raw.githubusercontent.com/notedeck-dev/notedeck/v1.73.0/src-tauri/icons/32x32.png
+	sha256sums = d09f4190d903661c475113a52f2c4a8b6a4b2bc1f593ac9ae5a14455ff20303e
+	sha256sums = 109638636930b73beb92a5667f4d3b0394f89cca9c97a4e9ba2a0dd0853cd930
+	sha256sums = 402b528d0bc1d1747ad0aba623994ab4b3efa24ad3877c80bb9c8e31d2775ba5
+	sha256sums = 20ccfc14895ab30ee165475cb8a5121711114fcab0226a2516db8dd6d0a7e017
+	sha256sums = 4b4d94d68706298000bed6f1dff338a06bb13de2ab6587cf2db65bb992bb5693
+
+pkgname = misskey-notedeck-bin
+	pkgdesc = Misskey Pro — integrated deck environment (IDE) for Misskey power users
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = librsvg
 	depends = glib-networking
+	optdepends = notecored-bin=1.73.0: 常駐コア (アプリを閉じても動き続ける。アプリと同じ版が要る)
+	optdepends = notecli-bin=1.73.0: CLI
 	provides = notedeck
 	conflicts = notedeck
 	conflicts = notedeck-bin
-	source = misskey-notedeck-bin-1.72.2.tar.gz::https://github.com/notedeck-dev/notedeck/releases/download/v1.72.2/NoteDeck-1.72.2-linux-x64.tar.gz
-	source = notedeck.desktop
-	source = notedeck-icon-128.png::https://raw.githubusercontent.com/notedeck-dev/notedeck/v1.72.2/src-tauri/icons/128x128.png
-	source = notedeck-icon-32.png::https://raw.githubusercontent.com/notedeck-dev/notedeck/v1.72.2/src-tauri/icons/32x32.png
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 
-pkgname = misskey-notedeck-bin
+pkgname = notecored-bin
+	pkgdesc = NoteDeck resident core daemon (headless notecore)
+	depends = systemd
+	provides = notecored
+	conflicts = notecored
+
+pkgname = notecli-bin
+	pkgdesc = Misskey CLI from NoteDeck
+	provides = notecli
+	conflicts = notecli
