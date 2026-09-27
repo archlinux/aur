@@ -1,6 +1,6 @@
 # Maintainer: mahirsn <mahirsuna72@gmail.com>
 pkgname=mmsimpulse-git
-pkgver=r108.1aa3e93
+pkgver=r109.90c9136
 pkgrel=1
 pkgdesc="A Wayland session of KWin plus the illogical-impulse shell — no desktop environment"
 arch=('any')
@@ -43,6 +43,7 @@ optdepends=(
   'illogical-impulse-python: colour generation for the theming scripts'
   'illogical-impulse-screencapture: region screenshot and recording'
   'ydotool: cursor warping, which KWin exposes no D-Bus call for'
+  'supergfxctl: the AMD/NVIDIA display switch in the bar, on ASUS laptops with a GPU MUX'
 )
 makedepends=('git')
 provides=('mmsimpulse')

@@ -1,6 +1,6 @@
 pkgbase = mmsimpulse-git
 	pkgdesc = A Wayland session of KWin plus the illogical-impulse shell — no desktop environment
-	pkgver = r108.1aa3e93
+	pkgver = r109.90c9136
 	pkgrel = 1
 	url = https://github.com/mahirsn/mmsimpulse
 	arch = any
@@ -46,6 +46,7 @@ pkgbase = mmsimpulse-git
 	optdepends = illogical-impulse-python: colour generation for the theming scripts
 	optdepends = illogical-impulse-screencapture: region screenshot and recording
 	optdepends = ydotool: cursor warping, which KWin exposes no D-Bus call for
+	optdepends = supergfxctl: the AMD/NVIDIA display switch in the bar, on ASUS laptops with a GPU MUX
 	provides = mmsimpulse
 	conflicts = mmsimpulse
 	source = mmsimpulse-git::git+https://github.com/mahirsn/mmsimpulse.git
