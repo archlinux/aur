@@ -2,13 +2,14 @@
 
 pkgname=umbriel-git
 pkgver=0.1.0.r0.0
-pkgrel=6
+pkgrel=7
 pkgdesc='A Wayland compositor designed for daily use, with scrolling, dwindle, and master layouts, per-output workspaces, window rules, blur, shadows, and fluid animations'
 arch=('x86_64' 'aarch64')
 url='https://github.com/noctalia-dev/umbriel'
 license=('MIT')
 depends=(
   'cairo'
+  'gcc-libs'
   'glibc'
   'jemalloc'
   'lcms2'
@@ -16,20 +17,21 @@ depends=(
   'libglvnd'
   'libinput'
   'libxkbcommon'
+  'mesa'
   'pango'
   'pixman'
+  'systemd-libs'
+  'tomlplusplus'
   'wayland'
   'xdg-desktop-portal-umbriel-git'
-  'wlroots0.20'
+  'wlroots0.20>=0.20.1'
 )
 makedepends=(
   'git'
-  'mesa'
   'meson'
   'ninja'
   'nlohmann-json'
   'pkgconf'
-  'tomlplusplus'
   'wayland-protocols'
 )
 optdepends=(
@@ -51,11 +53,10 @@ pkgver() {
 }
 
 build() {
-  meson setup "$srcdir/umbriel/build" "$srcdir/umbriel" \
-    --buildtype=release \
-    --prefix=/usr \
-    --wrap-mode=nodownload \
-    -Dtests=disabled
+  arch-meson "$srcdir/umbriel" "$srcdir/umbriel/build" \
+    -Db_ndebug=true \
+    -Dtests=disabled \
+    -Dtest_ipc=disabled
   meson compile -C "$srcdir/umbriel/build"
 }
 
