@@ -3,7 +3,7 @@
 
 pkgname=aspia-client-bin
 _pkgname=${pkgname%-bin}
-pkgver=2.7.0
+pkgver=3.0.18
 pkgrel=1
 pkgdesc="Remote desktop control and file transfer tool (client, official binary)"
 url="https://aspia.org/"
@@ -14,36 +14,16 @@ depends=(
   glibc
   hicolor-icon-theme
   libgcc
-  libgl
   libstdc++
-  libx11
-  libxcb
-  libxfixes
-  libxkbcommon
-  libxkbcommon-x11
   ttf-font
-  xcb-util-image
-  xcb-util-keysyms
-  xcb-util-renderutil
-  xcb-util-wm
 )
 provides=(aspia-client)
 conflicts=(aspia-client)
 options=(!debug !strip)
 source_x86_64=("https://github.com/dchapyshev/aspia/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${arch}.deb")
-sha256sums_x86_64=('660ec5d89f6af90696ce734389e98d9642793f5f08dd5673ae42e6db7614f6dc')
+sha256sums_x86_64=('2092ee158cbef4fa4636336ac4aad777e47af86aebbc81fb7e3ebe93ae4b6800')
 
 package() {
   cd "${srcdir}"
-  bsdtar -xzf data.tar.gz -C "${pkgdir}"
-
-  # Fix "directory permissions differ"
-  chmod 755 "$pkgdir/usr"
-  chmod 755 "$pkgdir/usr/bin"
-  chmod 755 "$pkgdir/usr/share"
-  chmod 755 "$pkgdir/usr/share/applications"
-  chmod 755 "$pkgdir/usr/share/icons"
-  chmod 755 "$pkgdir/usr/share/icons/hicolor"
-  chmod 755 "$pkgdir/usr/share/icons/hicolor"/*
-  chmod 755 "$pkgdir/usr/share/icons/hicolor"/*/apps
+  bsdtar -xzf data.tar.xz -C "${pkgdir}"
 }
