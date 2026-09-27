@@ -1,5 +1,5 @@
 pkgname=ggml-cuda-12.9
-pkgver=0.24.0
+pkgver=0.25.3
 pkgrel=1
 pkgdesc="ggml CUDA backend built against CUDA 12.9 for Tesla V100 (sm_70)"
 arch=(x86_64)
@@ -10,7 +10,7 @@ makedepends=(cmake ninja gcc14)
 provides=(ggml-cuda)
 conflicts=(ggml-cuda)
 source=("ggml-$pkgver.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('04dc8f6b74d2ee37b2d6175458ac0fd7a8a3c03d85d78191ba8ca366768f9acc')
+sha256sums=('cd9b92d5652f5e4abb41603bf59e269f8fec1b2d05ce22fded981064dd25fb89')
 
 build() {
   export PATH=/opt/cuda/bin:$PATH
