@@ -1,7 +1,7 @@
 pkgbase = python-migen
 	pkgdesc = A Python toolbox for building complex digital hardware
 	pkgver = 0.9.2
-	pkgrel = 11
+	pkgrel = 12
 	url = https://git.m-labs.hk/M-Labs/migen
 	arch = any
 	license = BSD
@@ -9,7 +9,9 @@ pkgbase = python-migen
 	depends = python-colorama
 	source = python-migen-0.9.2.tar.gz::https://git.m-labs.hk/M-Labs/migen/archive/0.9.2.tar.gz
 	source = https://git.m-labs.hk/M-Labs/migen/commit/0fb91737090fe45fd764ea3f71257a4c53c7a4ae.patch
+	source = https://git.m-labs.hk/M-Labs/migen/commit/70fc3b087637e67e5809d22c340d9b15384a3bc9.patch
 	sha512sums = 7856cce7d8c509649291196aa8124df0a4a0a72d273bca7eb12ada92705574eb6fba945cdb8a2d6a5c069188a9fa30d08adf1fc823f3b628796be0fd058cd093
 	sha512sums = d6da45f3902eb21b93bd6bd07f2a97b4231bbbf273b6fc1068c99b53d5b50855d50f8868b7dd72c25cde722065a5c4d26f4aa35bb3d799b192fa0b3cc3e534cc
+	sha512sums = cf9912d8de1aac54fd7017875a6fd4fde49906ccdac2b57c192770c644cf783ee189b11e7a948e23c6e00ca583ff8ee701b54c956d6600423f711c2c7037c0d3
 
 pkgname = python-migen

@@ -6,7 +6,7 @@
 _pkgname=migen
 pkgname=python-$_pkgname
 pkgver=0.9.2
-pkgrel=11
+pkgrel=12
 pkgdesc='A Python toolbox for building complex digital hardware'
 arch=('any')
 url='https://git.m-labs.hk/M-Labs/migen'
@@ -15,17 +15,21 @@ depends=('python-colorama')
 makedepends=('python-setuptools')
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+    # fhdl/tracer: update to support python 3.11
     "$url/commit/0fb91737090fe45fd764ea3f71257a4c53c7a4ae.patch"
+    # tracer: skip LOAD_FAST_BORROW introduced in Python 3.14
+    "$url/commit/70fc3b087637e67e5809d22c340d9b15384a3bc9.patch"
 )
 sha512sums=(
     '7856cce7d8c509649291196aa8124df0a4a0a72d273bca7eb12ada92705574eb6fba945cdb8a2d6a5c069188a9fa30d08adf1fc823f3b628796be0fd058cd093'
     'd6da45f3902eb21b93bd6bd07f2a97b4231bbbf273b6fc1068c99b53d5b50855d50f8868b7dd72c25cde722065a5c4d26f4aa35bb3d799b192fa0b3cc3e534cc'
+    'cf9912d8de1aac54fd7017875a6fd4fde49906ccdac2b57c192770c644cf783ee189b11e7a948e23c6e00ca583ff8ee701b54c956d6600423f711c2c7037c0d3'
 )
 
 prepare() {
     cd "$_pkgname"
-    # fhdl/tracer: update to support python 3.11
     patch -Np1 -i ../0fb91737090fe45fd764ea3f71257a4c53c7a4ae.patch
+    patch -Np1 -i ../70fc3b087637e67e5809d22c340d9b15384a3bc9.patch
 }
 
 build() {
@@ -37,6 +41,5 @@ package() {
     cd "$_pkgname"
 
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
     install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
