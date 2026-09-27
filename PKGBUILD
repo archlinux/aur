@@ -4,8 +4,8 @@
 #   ssh://aur@aur.archlinux.org/emudos-bin.git
 #   makepkg --printsrcinfo > .SRCINFO
 pkgname=emudos-bin
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.5
+pkgrel=1
 pkgdesc="A beautiful frontend for your classic DOS games (DOSBox Pure libretro)"
 arch=('x86_64')
 url="https://github.com/codingncaffeine/EmuDOS-For-Linux"
@@ -14,7 +14,8 @@ provides=('emudos')
 conflicts=('emudos')
 # Complete runtime set (verified against the live process's loaded libraries). The publish is
 # otherwise self-contained: .NET, the MT-32 shim and the librashader CRT runtime are bundled in the
-# tarball. sdl3 = gamepads/audio; libglvnd provides libGL/libEGL (shaders + 3dfx); the X libs are the
+# tarball, which also bundles SDL3; this package drops that copy and uses the system sdl3 (game audio +
+# gamepads, with PipeWire) instead. libglvnd provides libGL/libEGL (shaders + 3dfx); the X libs are the
 # Avalonia surface; icu = .NET globalization; dbus/systemd-libs = desktop + udev (gamepad hotplug).
 depends=('sdl3' 'fontconfig' 'libglvnd' 'libx11' 'libxi' 'libxcursor' 'libxext'
          'libxrandr' 'libxrender' 'libxfixes' 'icu' 'dbus' 'systemd-libs')
@@ -28,7 +29,7 @@ source=("$url/releases/download/v$pkgver/EmuDOS-$pkgver-linux-x64.tar.gz"
         "$url/raw/v$pkgver/LICENSE"
         "emudos-linux.png::$url/raw/v$pkgver/src/EmuDOS/Assets/emudos-linux.png"
         "io.github.codingncaffeine.EmuDOS.metainfo.xml::$url/raw/v$pkgver/packaging/io.github.codingncaffeine.EmuDOS.metainfo.xml")
-sha256sums=('74ca733b3338d401a7f8264a3c4b691cf0747d28f1cba2d1793e87c134587cc4'
+sha256sums=('ac7b847af251af98936767a5db8c40d7b4e1151dc5c31d9fc42d78499ff373fc'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -55,6 +56,9 @@ package() {
     # dropped every assembly: it installed cleanly, then failed at launch with
     # "The application to execute does not exist: '/usr/lib/emudos/EmuDOS.dll'".
     cp -a "$srcdir/publish/." "$pkgdir/usr/lib/emudos/"
+    # SDL3 comes from the system package (see depends); the app falls back to it when no copy sits
+    # next to the binary.
+    rm -f "$pkgdir/usr/lib/emudos/libSDL3.so.0"
 
     # Guard the copy above; nothing in the build or install path notices a missing assembly.
     local _dlls _f
