@@ -1,6 +1,6 @@
 # Maintainer: Michael E. Gruen <contact@michaelgruen.com>
 pkgname=tailport-bin
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="TUI to expose local ports across your tailnet via tailscale serve (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -25,9 +25,9 @@ source_aarch64=("tailport-$pkgver-aarch64::https://github.com/gruen/tailport/rel
 # The per-arch binary digests are published alongside the assets as
 # tailport-linux-amd64.sha256 / tailport-linux-arm64.sha256 (see build.yml).
 sha256sums=('6ab5a1c9312683bea5942efc33876a1fcef67cfa065029f2939c14392ee9ed7a'
-            'aeca1aa00aac8e8b15faea2d601587c76b2ab4eb8390c15ef85683e0052aad8e')
-sha256sums_x86_64=('7fa14f61e78e4028a9e64effff2296041d7c92cad11e5bbd3b5b7e8a91997950')
-sha256sums_aarch64=('c6409d21565063a38f5f3e8763d3371c674aa43248d80066f7c516ff540eb7b5')
+            'd2b1af7622343aed822aee518c34178fe8baea3180bb574abf3fbb48a82d5b34')
+sha256sums_x86_64=('bfd14aabb60c23528863b8db86f81b623306026b03cfffdd5999aeb8f30d81c4')
+sha256sums_aarch64=('e19c70f4c34f49d14c204c5cd27a03139301c4b1b32bbfa1993a0eefc033ac03')
 
 package() {
   install -Dm755 "$srcdir/tailport-$pkgver-$CARCH" "$pkgdir/usr/bin/tailport"
