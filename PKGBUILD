@@ -1,6 +1,6 @@
 # Maintainer: Balasubramanian Periannan <balathepharmacist@gmail.com>
 pkgname=lixplore-cli
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Academic Literature Search & Export CLI Tool - Search PubMed, arXiv, Crossref, DOAJ, EuropePMC"
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pryndor/Lixplore_cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('96e5b7c13e76bce3070fee2c0bc9211dfb3b1f25b3710921bc483271f5d7b09c')
+sha256sums=('6159d728caa1b9c91161d52157d3868742ebf602f009c7be3792e600c1bbe2f5')
 
 build() {
     cd "Lixplore_cli-${pkgver}"
