@@ -1,19 +1,18 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=dektec-drivers-dkms
-pkgver=2026.05.0
+pkgver=2026.09.0
 pkgrel=1
 pkgdesc='Linux DKMS for Dektec device drivers'
 arch=('x86_64')
 url="https://www.dektec.com/downloads/SDK/#linux"
 license=('LicenseRef-custom')
 depends=('dkms')
-provides=('dektec-drivers-dkms')
-conflicts=('dektec-drivers-dkms' 'dektec-dkms')
+conflicts=('dektec-dkms')
 source=("https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${pkgver}.tar.gz"
         'dkms.conf'
         'Makefile')
-sha256sums=('de710978c419ce7a5c5cfd387d8fa68a1529cd29017d23bbdcc84fdb29e48c7f'
+sha256sums=('f7bdf97421b39047efa379cfffbd208114bf0f3cb37c3565d709e46f3157fdf3'
             '0d70f1668ae0dbb608f865333eba8e188f2b97488d5f52c5fd65891ea6ab13be'
             '3ee9f2b8836d3e68451c3c29f343295f6ceaca52e84e18d040205b245473d314')
 
@@ -34,10 +33,13 @@ package() {
   install -Dm644 Makefile "${pkgdir}/usr/src/${pkgname}-${pkgver}"
   # Install license
   install -Dm644 LinuxSDK/License "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  # Install udev rules
-  install -Dm644 LinuxSDK/Drivers/Dta/Source/Linux/51-dta.rules -t "${pkgdir}/etc/udev/rules.d"
-  install -Dm644 LinuxSDK/Drivers/Dtu/Source/Linux/51-dtu.rules -t "${pkgdir}/etc/udev/rules.d"
-  install -Dm644 LinuxSDK/Drivers/DtPcie/Source/Linux/51-dtpcie.rules -t "${pkgdir}/etc/udev/rules.d"
+  # Install udev rules (usr/lib location per Arch packaging guidelines)
+  install -d "${pkgdir}/usr/lib/udev/rules.d"
+  install -m644 \
+    LinuxSDK/Drivers/Dta/Source/Linux/51-dta.rules \
+    LinuxSDK/Drivers/Dtu/Source/Linux/51-dtu.rules \
+    LinuxSDK/Drivers/DtPcie/Source/Linux/51-dtpcie.rules \
+    "${pkgdir}/usr/lib/udev/rules.d"
 }
 
 # vim:set ts=2 sw=2 et:
