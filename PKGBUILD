@@ -9,8 +9,8 @@
 
 pkgbase=phpstorm-eap
 pkgname=(phpstorm-eap phpstorm-eap-jre)
-pkgver=263.5153.42
-dl_pkgver=263.5153.42
+pkgver=263.5701.46
+dl_pkgver=263.5701.46
 pkgrel=1
 pkgdesc="Lightning-smart PHP IDE. Early Access Program."
 arch=('x86_64' 'i686')
@@ -21,7 +21,7 @@ makedepends=('rsync')
 options=('!strip')
 source=(https://download.jetbrains.com/webide/PhpStorm-${dl_pkgver}.tar.gz
         jetbrains-phpstorm-eap.desktop)
-sha256sums=('daebd8d9a9e67cf38e4de0fe391e7f101fe13e0f131a74d7739867bee5b04d47'
+sha256sums=('afb3bbf305ef81784598caa41ec4a65b08e67cb9a72cb9a88bce1c298148b484'
             '72bffbc2ca1d8c97fb0a18a9493faf6323fef28bf9e38e0c573602d8630982c7')
 
 package_phpstorm-eap() {
