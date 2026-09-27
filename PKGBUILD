@@ -2,7 +2,7 @@
 # Maintainer: combor <163394+combor@users.noreply.github.com>
 
 pkgname='vodarr-bin'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Downloads movies and series from video-on-demand sites for Sonarr and Radarr.'
 url='https://github.com/combor/vodarr'
@@ -13,10 +13,10 @@ conflicts=('vodarr')
 depends=('ca-certificates' 'ffmpeg')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/combor/vodarr/releases/download/v${pkgver}/vodarr_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('be5180206484bfee25a11865a4c040240a3fc4bbceb9eb79b5d55d79025a0ec8')
+sha256sums_aarch64=('10da6de0ce51214bc147b250314589e4a8ae6fc203cc0ce9677a8603465c2355')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/combor/vodarr/releases/download/v${pkgver}/vodarr_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('24bf9db87574abab97b67681cf92f680307174b88fa5159045d07990b3d93bcf')
+sha256sums_x86_64=('e1f9ec400fbd0f2bf2c5f2ee4f3aa8ac32b4245ebf11d0d54a1ccb65e4673093')
 
 package() {
   install -Dm755 "./vodarr" "${pkgdir}/usr/bin/vodarr"
