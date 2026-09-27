@@ -50,6 +50,12 @@ build() {
 	go build -trimpath -ldflags "${ldflags}" -o "build/${_appname}" .
 }
 
+check() {
+	cd "${srcdir}/${pkgname}/" || exit 1
+
+	go test -v -skip "^TestCLILoadsExampleWorkflow$" ./...
+}
+
 package() {
 	cd "${srcdir}/${pkgname}/" || exit 1
 
