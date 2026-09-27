@@ -63,7 +63,7 @@ conflicts=('ramsleuth' 'ramsleuth-bin')
 # The installed files come from the RamSleuth repo tree (P5-03 dkms.conf, P5-04 helper,
 # C21-07 vendor/).
 # git-commit source: makepkg clones the repo and checks out the pinned
-# immutable v2.4.10 release commit via the #commit= fragment (standard VCS
+# immutable v2.4.11 release commit via the #commit= fragment (standard VCS
 # form), with sha256sums the content-addressed checksum of that commit's
 # git-archive tarball (what makepkg 7.x generates for #commit sources).
 # The package keeps its own 1.0 pkgver (not the ramsleuth workspace
@@ -72,14 +72,14 @@ conflicts=('ramsleuth' 'ramsleuth-bin')
 # this first AUR submission the source tracked the moving v2-development
 # branch (the pre-v2.4.5 integrity-gap class, closed for the siblings in
 # the v2.4.5 re-cut).
-source=("ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=33802047f7fb6fa74cd9accc4c9335c969c87d68")
+source=("ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=5b5f6b880248e2b5bcfe71146dc530a44736d768")
 # Content-addressed VCS pin: the sha256 of `git archive --format tar
 # <commit>` for the immutable #commit= ref above — exactly what makepkg
 # 7.x generates for tag/commit-pinned git sources (makepkg -g) and what
 # its integrity gate verifies (a *sums entry per source; '-' fails the
 # gate on 7.x, and SKIP passes only as a no-op — not the form 7.x
 # generates for #commit fragments).
-sha256sums=('4faa694ae84eaf1107c90a861064f8d56ee8c78d88b594e254016fb83d1e0b2a')
+sha256sums=('944450685f548517ccab2f79e3c3717273167d1947c9a25f6e841dbce8ccd896')
 
 package() {
   # 1) DKMS config (sourced by DKMS on the target; not at build time).
