@@ -4,12 +4,12 @@
 
 pkgname=nub
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc='The fast all-in-one Node.js toolkit'
 license=('MIT')
 url="https://nubjs.com"
 arch=('x86_64' 'aarch64')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=('cargo' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nubjs/nub/archive/v${pkgver}.tar.gz")
 sha256sums=('334a0fa057149df3e08b54fc393dc10b29bb0aa6cb22f38f2a439f231594ce5b')
