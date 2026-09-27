@@ -1,0 +1,18 @@
+pkgbase = gtk-nocsd
+	pkgdesc = An LD_PRELOAD library to disable CSD in GTK3/4, LibHandy, and LibAdwaita apps.
+	pkgver = 4.8
+	pkgrel = 1
+	url = https://codeberg.org/MorsMortium/gtk-nocsd
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = libadwaita
+	provides = gtk3-nocsd
+	provides = gtk4-nocsd
+	conflicts = gtk3-nocsd
+	conflicts = gtk4-nocsd
+	replaces = gtk3-nocsd
+	replaces = gtk4-nocsd
+	source = gtk-nocsd-4.8.tar.gz::https://codeberg.org/MorsMortium/gtk-nocsd/archive/4.8.tar.gz
+	sha512sums = 421e32381e5871959b4cb762e66b618907a2145bfd3042432e6289050f6e0fd0d0af7782e2d89a8edbe97b6914a52fd846867ceea1aafd7abfed391834c47a92
+
+pkgname = gtk-nocsd
