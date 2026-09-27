@@ -1,0 +1,7 @@
+# 构建产物，不要推到 AUR
+src/
+pkg/
+*.pkg.tar.zst
+*.deb
+*.tar.gz
+license-*
