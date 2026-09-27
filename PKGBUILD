@@ -1,17 +1,17 @@
 # Maintainer: Markus <github@marang.dev>
 pkgname=bootrecov
-pkgver=0.4.10
+pkgver=0.4.11
 pkgrel=1
 pkgdesc='TUI/CLI helper for /boot recovery snapshots and bootloader fallback entries'
 arch=('x86_64' 'aarch64')
 url='https://github.com/marang/bootrecov'
 license=('MIT')
-depends=('rclone' 'grub' 'squashfs-tools')
+depends=('rclone' 'grub' 'squashfs-tools' 'file')
 makedepends=('go')
 options=('!debug')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('00dc6ea5b93eae1ff71dacee398e2a5accf61fe85509d162f2e2e01c45cd1018')
+sha256sums=('71c05c50664d4270f4e50b34714be81730af39116206aa786757a0aab249a46e')
 
 _export_go_build_env() {
   export GOPATH="${srcdir}/gopath"
