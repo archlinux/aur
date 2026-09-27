@@ -1,0 +1,22 @@
+pkgbase = neo-writing-bin
+	pkgdesc = A distraction-free word processor for authors
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/hughhowey/neo
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = hicolor-icon-theme
+	provides = neo-writing
+	conflicts = neo-writing
+	options = !strip
+	options = !debug
+	source = NEO-0.8.1.AppImage::https://github.com/hughhowey/neo/releases/download/v0.8.1/NEO-0.8.1.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/hughhowey/neo/v0.8.1/LICENSE
+	sha256sums = f6c0f529594a4b9f4a7d8d3ed2369b6fb162bf81c56e0c22efa7cccf35297bcc
+	sha256sums = 2ca9751b685b12507fc5ce8e9cb172458d86c0e4db4baf95f950a911e29a975a
+
+pkgname = neo-writing-bin
