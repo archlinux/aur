@@ -70,20 +70,15 @@ build() {
   # for kernels nobody measured. Off, it compiles to the portable baseline.
   export GGML_NATIVE=OFF
 
-  # --features wgpu: FemtoVG over wgpu instead of the default Skia renderer.
-  # skia-bindings downloads prebuilt binaries from its build script, which a
-  # package cannot do; the wgpu renderer is pure Rust. This is the same
-  # choice, for the same reason, that upstream's flake.nix makes.
-  #
   # --profile app: upstream's shipping profile - fat LTO, panic=abort,
   # stripped. See src/Cargo.toml for what each knob is for.
   #
-  # sherpa-onnx-sys, the text-to-speech backend, ships no C++ build: its build
-  # script downloads a prebuilt static-lib archive from its own release page.
-  # concat pins that archive as a checksummed source; here the version moves
-  # with main, so the build script fetches it - build() needs the network.
-  cargo build --profile app -p concat --frozen \
-    --no-default-features --features wgpu
+  # Two build scripts download prebuilt static libraries from their own
+  # release pages: sherpa-onnx-sys (text to speech) and skia-bindings (Skia,
+  # the window's renderer; main dropped the FemtoVG-over-wgpu option after
+  # 0.2.4). Their versions move with main, so they are not pinned as sources
+  # here, and build() needs the network.
+  cargo build --profile app -p concat --frozen
 }
 
 package() {
