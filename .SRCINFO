@@ -1,0 +1,19 @@
+pkgbase = alien
+	pkgdesc = Convert between package formats: deb, rpm, tgz, slp, pkg, lsb, and pacman (.pkg.tar.zst)
+	pkgver = 8.95.9
+	pkgrel = 1
+	url = https://github.com/isaacangello/alien
+	arch = any
+	license = GPL-2.0-or-later
+	depends = perl
+	optdepends = rpm-tools: for RPM package conversion
+	optdepends = dpkg: for Debian package operations
+	optdepends = fakeroot: for building packages without root
+	optdepends = libarchive: bsdtar for pacman package handling
+	optdepends = zstd: for .pkg.tar.zst compression
+	provides = alien_package_converter
+	conflicts = alien_package_converter
+	source = alien-8.95.9.tar.gz::https://github.com/isaacangello/alien/archive/refs/tags/v8.95.9-pacman1.tar.gz
+	sha256sums = ed234fcb447d26aa1c9a4174a685c06a0bfc8c2f46ec45d9bffcc01e70060665
+
+pkgname = alien
