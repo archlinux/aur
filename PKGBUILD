@@ -5,14 +5,14 @@
 _pkgname=nub
 pkgname="${_pkgname}-bin"
 pkgver=0.9.5
-pkgrel=2
+pkgrel=3
 pkgdesc='The fast all-in-one Node.js toolkit'
 license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 url="https://nubjs.com"
 arch=('x86_64' 'aarch64')
-depends=('libgcc')
+depends=('glibc' 'libgcc')
 source=("LICENSE::https://raw.githubusercontent.com/nubjs/nub/refs/tags/v${pkgver}/LICENSE")
 source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}.tar.xz::https://github.com/nubjs/nub/releases/download/v${pkgver}/nub-linux-x64.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-${arch[1]}.tar.xz::https://github.com/nubjs/nub/releases/download/v${pkgver}/nub-linux-arm64.tar.gz")
