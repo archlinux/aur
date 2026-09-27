@@ -2,7 +2,7 @@
 # Maintainer: combor <163394+combor@users.noreply.github.com>
 
 pkgname='baryon-mcp-bin'
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Read Proton Mail and save drafts through your local Proton Mail Bridge.'
 url='https://github.com/combor/baryon-mcp'
@@ -14,10 +14,10 @@ optdepends=('gnome-keyring: Secret Service keyring for the Bridge password (auto
 install=baryon-mcp.install
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/combor/baryon-mcp/releases/download/v${pkgver}/baryon-mcp_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('14350063cdb16f247232431224275cae4b2ce4ea40deed19cb1a4f7d77aee911')
+sha256sums_aarch64=('3830a6e429cf0e56a8c1a48c8350b320ce519d9cc8c4fb81601bc9cfe33419f9')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/combor/baryon-mcp/releases/download/v${pkgver}/baryon-mcp_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('95ae1115f3fa71541889d2bee18739454f2c0544573bd61313ea62337bc3b5cb')
+sha256sums_x86_64=('c90608ef1eaaf59bd4559ce29be34250bd653214a98ece56d7df9e030afd6ba9')
 
 package() {
   install -Dm755 "./baryon-mcp" "${pkgdir}/usr/bin/baryon-mcp"
