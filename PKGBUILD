@@ -2,7 +2,7 @@
 _pkgname=DumpToolbox
 pkgname=dumptoolbox-bin
 pkgdesc="A cross-platform .NET 8 and Avalonia desktop application for disc-image conversion, checksum-based recovery, and reconstruction from Redumper, DiscImageCreator, and PlayStation 3 IRD metadata"
-pkgver=0.8.109
+pkgver=0.8.111
 pkgrel=1
 
 url="https://github.com/wiggy2k/$_pkgname"
