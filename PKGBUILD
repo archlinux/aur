@@ -1,7 +1,7 @@
 # Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 
 pkgname=hfsfuse
-pkgver=0.451
+pkgver=0.466
 pkgrel=1
 pkgdesc="A FUSE filesystem for HFS+ filesystems"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/0x09/hfsfuse"
 license=('MIT' 'BSD')
 depends=('fuse3' 'libarchive' 'libutf8proc' 'zlib')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/0x09/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('9e4c75d4b0e0f52e32679e9f546bfe5b7f6ee6c5032b00c825b9cad130770e50ae68eee941c40ab7eb8d0815fea35f2d9d02e771da820dd901b24db661d9060e')
+sha512sums=('dbd4ad7f89a8bda092f9e38df4657b9e4fabe64ccc30c7ad0302c4469bab81429f0fb507db3c50370a2c98bdf08a43bcc3f53cb4b3313d60490a0a25fcb520cc')
 
 
 build() {
