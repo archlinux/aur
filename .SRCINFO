@@ -1,12 +1,12 @@
 pkgbase = nub-bin
 	pkgdesc = The fast all-in-one Node.js toolkit
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nubjs.com
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = gcc-libs
+	depends = libgcc
 	provides = nub
 	conflicts = nub
 	source = LICENSE::https://raw.githubusercontent.com/nubjs/nub/refs/tags/v0.9.5/LICENSE
