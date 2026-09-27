@@ -1,7 +1,7 @@
 pkgbase = starfish
 	pkgdesc = Starfish: Arch Depdency Viewer
 	pkgver = 0.0.8
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Starfish
 	arch = x86_64
 	license = GPL-3.0-only

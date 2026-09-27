@@ -3,7 +3,7 @@
 pkgbase=starfish
 pkgname=(starfish libstarfish)
 pkgver=0.0.8
-pkgrel=2
+pkgrel=1
 pkgdesc="Starfish: Arch Depdency Viewer"
 arch=('x86_64')
 url="https://github.com/Seafoam-Labs/Starfish"
