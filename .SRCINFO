@@ -1,0 +1,17 @@
+pkgbase = toha-bin
+	pkgdesc = Generate projects and files from templates
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/wyrd-company/toha
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = toha
+	conflicts = toha
+	options = !strip
+	source_x86_64 = toha-bin-0.1.0-x86_64.tar.gz::https://repo.wyrd.foo/artifacts/toha/0.1.0/toha_0.1.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 6ff38c2a7947e699e20932117da0e5f70062fa0465127f96b5690694eb66794f
+	source_aarch64 = toha-bin-0.1.0-aarch64.tar.gz::https://repo.wyrd.foo/artifacts/toha/0.1.0/toha_0.1.0_linux_aarch64.tar.gz
+	sha256sums_aarch64 = bf92809313b2daa84a438422d70e793a884afeeaa60dab5c2c0135682f4e6382
+
+pkgname = toha-bin
