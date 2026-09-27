@@ -2,7 +2,7 @@
 # Maintainer: Alexander Tebiev <alexander.tebiev@gmail.com>
 
 pkgname='telegram-owl-bin'
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='CLI utility to send messages and files to Telegram chats and channels'
 url='https://github.com/beeyev/telegram-owl'
@@ -13,16 +13,16 @@ conflicts=('telegram-owl')
 depends=('ca-certificates')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/beeyev/telegram-owl/releases/download/v${pkgver}/telegram-owl_v${pkgver}_Linux_ARM64.tar.gz")
-sha256sums_aarch64=('737dd0ccb4d2d02212915b7f5c26ac3aae4a602d9501d99363cdd080ff00aaa1')
+sha256sums_aarch64=('2fe6787fffb793c06f1a2f716ece73609f61de8b1490d84e731ec051a5d7c95e')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/beeyev/telegram-owl/releases/download/v${pkgver}/telegram-owl_v${pkgver}_Linux_ARM.tar.gz")
-sha256sums_armv7h=('531d2590e47acb22e36545594db67b78d309b0406c7d10641b71de2a16c89d5e')
+sha256sums_armv7h=('c89a4a7fd543a84f21db48c275fe10eeebcb2da1a9278951e6c67ba8bcb426e9')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/beeyev/telegram-owl/releases/download/v${pkgver}/telegram-owl_v${pkgver}_Linux_32bit.tar.gz")
-sha256sums_i686=('c46009301db3c4dc3ce3aa479afd619dc78e4f64ed152f5d9aad60b6982280b2')
+sha256sums_i686=('e64178b06a7a94e90e1e47107f0285ffebeedcd1f359c06b1d24832bfe6cf227')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/beeyev/telegram-owl/releases/download/v${pkgver}/telegram-owl_v${pkgver}_Linux_64bit.tar.gz")
-sha256sums_x86_64=('7f022dd7e758bb7715641b518ec50a749872262e1af86447f9b01aa94348546f')
+sha256sums_x86_64=('991f2c0fd7ab11cdb4b1c37e9eab23f936faa8fa97e4a093cd7348a059852f67')
 
 package() {
   install -Dm755 "./telegram-owl" "${pkgdir}/usr/bin/telegram-owl"
