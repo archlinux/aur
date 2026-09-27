@@ -1,0 +1,4 @@
+[factorio-demo]
+source = "jq"
+url = "https://factorio.com/api/latest-releases"
+filter = ".stable.demo"
