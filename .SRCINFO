@@ -1,0 +1,21 @@
+pkgbase = curre-bin
+	pkgdesc = A TUI workflow runner that drives your shell scripts through JSON-defined steps with live output, parallel execution, and persistent sessions
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://codeberg.org/jackdaw/curre
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = curre
+	conflicts = curre
+	options = !strip
+	source = README-0.0.4.md::https://codeberg.org/jackdaw/curre/raw/tag/v0.0.4/README.md
+	source = LICENSE-0.0.4::https://codeberg.org/jackdaw/curre/raw/tag/v0.0.4/LICENSE
+	sha256sums = d67335e24ea43704fe6cdd0dd976052bc25632dcdecbf7990d94e5525f602e6c
+	sha256sums = 2e80cedb4f0df33df2a02598070f0dce07ddfaf2e280a2fab6fd1a87a48453c5
+	source_x86_64 = curre-x86_64-0.0.4.tgz::https://codeberg.org/jackdaw/curre/releases/download/v0.0.4/curre-linux-amd64.tar.gz
+	sha256sums_x86_64 = 3de025a0a9b2d9a7621ef6d8c24b10cf2ab8fd90b55946db04f61ddbafb5b53d
+	source_aarch64 = curre-aarch64-0.0.4.tgz::https://codeberg.org/jackdaw/curre/releases/download/v0.0.4/curre-linux-arm64.tar.gz
+	sha256sums_aarch64 = f1e1162f865f92a99758300cc9f005c8826adc6d9a1cd377d7d4405a5db34c8f
+
+pkgname = curre-bin
