@@ -1,7 +1,7 @@
 # Maintainer: Fahim Montasir Misbah <fahim@scirex.me>
 # Maintainer: Ismet Togay <ismet.togay at gmail dot com>
 
-pkgname=commandcode-bin
+pkgname=command-code-desktop
 pkgver=0.1.40
 pkgrel=1
 pkgdesc="Desktop app for Command Code, an AI coding agent that learns your coding taste"
@@ -20,8 +20,10 @@ depends=(
   'xdg-utils'
 )
 optdepends=('git: repository status and diffs')
+conflicts=('commandcode-bin')
+replaces=('commandcode-bin')
 options=('!strip')
-install=commandcode-bin.install
+install=command-code-desktop.install
 # License = upstream ToS (https://commandcode.ai/terms); none shipped in source
 source=("${pkgname}-${pkgver}.deb::https://github.com/CommandCodeAI/desktop/releases/download/v${pkgver}/CommandCode-${pkgver}-amd64.deb"
         "LICENSE-command-code")
