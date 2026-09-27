@@ -1,4 +1,4 @@
-# Maintainer: Bryson Kelly <bryson@azin-lang (dot) org>
+# Maintainer: Bryson Kelly <brysonak@protonmail (dot) com>
 pkgname=bufusb-cli
 _binname=bufusb
 pkgver=0.2.4
