@@ -1,7 +1,7 @@
 pkgbase = libraw-cmake
 	pkgdesc = LibRaw configuration files for CMake
 	pkgver = r63.eb98e43
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LibRaw/LibRaw-cmake
 	arch = any
 	license = BSD-3-Clause-Tso
