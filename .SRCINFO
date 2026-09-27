@@ -1,6 +1,6 @@
 pkgbase = templar-arena-bin
 	pkgdesc = 90s-inspired free-to-play multiplayer arena shooter set in a dark fantasy world
-	pkgver = 0.1.2
+	pkgver = 0.2.0.BETA
 	pkgrel = 1
 	url = https://github.com/taxin-404/templar-arena-bin
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = templar-arena-bin
 	depends = libx11
 	depends = libxcursor
 	options = !strip
-	source = templar-arena-v0.1.2-linux.zip::https://github.com/taxin-404/templar-arena-bin/releases/download/v0.1.2/templar-arena-v0.1.2-linux.zip
+	source = templar-arena-v0.2.0-BETA-linux.zip::https://github.com/taxin-404/templar-arena-bin/releases/download/v0.2.0-BETA/templar-arena-v0.2.0-BETA-linux.zip
 	source = templar-arena.png
 	source = templar-arena.desktop
-	sha256sums = 4f3ad00fd2d782c81f5dd13716238307b78b47cd364647eba109b8c82f721010
+	sha256sums = fb179c1dffd4f66437978c097714e98bb004a4f61eba502ad7126851880c3b7a
 	sha256sums = SKIP
 	sha256sums = SKIP
 

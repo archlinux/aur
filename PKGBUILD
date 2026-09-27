@@ -1,6 +1,11 @@
 # Maintainer: taxin <mbthunter007@gmail.com>
+
+# Upstream release tag and asset name contain a hyphen, which pkgver may not
+# contain, so keep the tag in a separate variable.
+_tagver=0.2.0-BETA
+
 pkgname=templar-arena-bin
-pkgver=0.1.2
+pkgver=0.2.0.BETA
 pkgrel=1
 pkgdesc="90s-inspired free-to-play multiplayer arena shooter set in a dark fantasy world"
 arch=('x86_64')
@@ -9,11 +14,11 @@ license=('custom')
 depends=('libgl' 'libx11' 'libxcursor')
 options=('!strip')
 source=(
-  "templar-arena-v${pkgver}-linux.zip::https://github.com/taxin-404/templar-arena-bin/releases/download/v${pkgver}/templar-arena-v${pkgver}-linux.zip"
+  "templar-arena-v${_tagver}-linux.zip::https://github.com/taxin-404/templar-arena-bin/releases/download/v${_tagver}/templar-arena-v${_tagver}-linux.zip"
   "templar-arena.png"
   "templar-arena.desktop"
 )
-sha256sums=('4f3ad00fd2d782c81f5dd13716238307b78b47cd364647eba109b8c82f721010'
+sha256sums=('fb179c1dffd4f66437978c097714e98bb004a4f61eba502ad7126851880c3b7a'
   'SKIP'
   'SKIP')
 
