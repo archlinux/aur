@@ -1,7 +1,7 @@
 pkgname=guile-lsp-server-git
 pkgver=r481.gbda8785
 pkgrel=1
-pkgdesc="LSP server for Scheme (Guile implementation)"
+pkgdesc="An LSP server for Scheme. (Guile implementation)"
 arch=('any')
 url="https://codeberg.org/rgherdt/scheme-lsp-server"
 license=('MIT')
