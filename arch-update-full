@@ -1,5 +1,29 @@
 #!/bin/bash
 
+#=================================
+
+SHELL=${SHELL:-/bin/bash}
+
+# ==========================================
+# PALETA GRADIENTE: NEON BLUE -> ROXO SUAVE, LAVANDA //  GRADIENT PALETTE: NEON BLUE -> SOFT PURPLE, LAVENDER
+# ==========================================
+GRAD_1="\e[38;2;0;220;255m"   # Neon Blue
+GRAD_2="\e[38;2;80;185;255m"  # Azul Claro
+GRAD_3="\e[38;2;130;160;250m" # Azul Lavanda
+GRAD_4="\e[38;2;170;135;245m" # Roxo Suave
+GRAD_5="\e[38;2;190;120;235m" # Roxo Pastel
+GRAD_6="\e[38;2;160;100;210m" # Roxo Atenuado
+NC="\e[0m"                    # Reset de Cor
+
+#=================================
+#Paletas cores do tux 
+# Cores clássicas e limpas
+BLUE="\e[1;34m"
+WHITE="\e[1;37m"
+YELLOW="\e[1;33m"
+NC="\e[0m"
+
+#===================================
 # --- PALETA DE CORES NEON ---
 ASSINATURA_COR='\033[1;37m' 
 NEON_BLUE='\033[1;36m' 
@@ -16,276 +40,18 @@ WHITE_NEON='\033[1;37m'
 COLUMNS=$(tput cols)
 LARGURA_BOX=64
 
-SHELL=${SHELL:-/bin/bash}
+# =========================================================================================================
+# --- MÓDULO DE INTEGRAÇÃO: VIGILÂNCIA DO SENTINELA // INTEGRATION MODULE: SENTINEL OVERSIGHT ---
+# =========================================================================================================
 
-# os comentarios estão separados por//the comments are separated by ----------------------<<< para facilitar leitura dos blocos//to make the blocks easier to read
+CAMINHO_SENTINELA="/usr/bin/arch-update-full-sentinela" 
 
-# --- [SISTEMA] MODO SENTINELA: APENAS CHECAGEM // [SYSTEM] SENTINEL MODE: CHECK ONLY ----------------------------------------------------------------<<<
-
-LOG_SENTINEL_DIR="$HOME/.logs_sentinel_check"
-mkdir -p "$LOG_SENTINEL_DIR"
-
-ROTATE_SENTINEL_LOGS() {
-    # Mantém apenas os 3 logs mais recentes da sentinela//Keeps only the 3 most recent sentinel logs
-    local LOG_COUNT
-LOG_COUNT=$(find "$LOG_SENTINEL_DIR" -maxdepth 1 -name "check_*.log" | wc -l)
-    if [ "$LOG_COUNT" -ge 3 ]; then
-        find "$LOG_SENTINEL_DIR" -maxdepth 1 -name "check_*.log" -type f -printf '%T@ %p\n' | sort -n | head -n 1 | cut -d' ' -f2- | xargs rm
-    fi
-}
-
-# MÓDULO SENTINELA: NOTIFICAÇÕES VISUAIS // SENTINEL VISUAL NOTIFICATIONS --------------------------
-
-NOTIFICAR_SENTINELA(){
-    local TOTAL_UPDATES="$1"
-    local ICON_DIR="/usr/share/arch-update-full/icons"
-    local ICON_AZUL="$ICON_DIR/farol_azul_simbolo.png"
-    local ICON_AMARELO="$ICON_DIR/farol_amarelo_simbolo.png"
-    local ICON_VERMELHO="$ICON_DIR/farol_vermelho_simbolo.png"
-
-    local CRITICO_DETECTADO=0
-    local ICON_ESCOLHIDO="" URGENCIA="" TITULO="" MENSAGEM=""
-    local ACAO_ESCOLHIDA="" NOTIF_EXIT=0
-
-    # 1. Rastreia pacotes críticos
-    if command -v checkupdates &>/dev/null; then
-        if checkupdates 2>/dev/null | grep -E -i \
-            '^(linux.*|mesa.*|nvidia.*|amdgpu.*|xf86-video-amdgpu|vulkan-radeon|vulkan-intel|intel-media-driver|onevpl-intel-gpu|amd-ucode|intel-ucode)' \
-            &>/dev/null; then
-            CRITICO_DETECTADO=1
-        fi
-    fi
-
-    if [[ "$CRITICO_DETECTADO" -eq 1 ]] || [[ "$TOTAL_UPDATES" -ge 34 ]]; then
-        ICON_ESCOLHIDO="$ICON_VERMELHO"
-        URGENCIA="critical"
-        TITULO="🛡️ Sentinel: Maintenance Required!"
-        MENSAGEM="<b>$TOTAL_UPDATES</b> pending updates.\n[!] Critical packages (Kernel/Video) or high volume detected."
-
-    elif [[ "$TOTAL_UPDATES" -ge 18 ]] && [[ "$TOTAL_UPDATES" -le 33 ]]; then
-        ICON_ESCOLHIDO="$ICON_AMARELO"
-        URGENCIA="normal"
-        TITULO="🛡️ Sentinel: Updates Accumulating"
-        MENSAGEM="<b>$TOTAL_UPDATES</b> updates awaiting installation.\nRecommended to run the update soon."
-
-    else
-        ICON_ESCOLHIDO="$ICON_AZUL"
-        URGENCIA="low"
-        TITULO="🛡️ Sentinel: Updates Available"
-        MENSAGEM="<b>$TOTAL_UPDATES</b> new packages in the repository.\nSystem stable, update when desired."
-    fi
-
-    echo "Status: Triggering notification ($URGENCIA) — waiting up to 20 min for operator..."
-    
-    ACAO_ESCOLHIDA=$(timeout 1200 notify-send -w \
-        -u "$URGENCIA" \
-        -a "Arch Update Full" \
-        -i "$ICON_ESCOLHIDO" \
-        --action="run_update=Click to Launch App" \
-        "$TITULO" \
-        "$MENSAGEM" 2>/dev/null)
-    NOTIF_EXIT=$?
-
-    echo "[debug] NOTIF_EXIT=$NOTIF_EXIT | ACAO_ESCOLHIDA='$ACAO_ESCOLHIDA'"
-
-  
-    if [ "$NOTIF_EXIT" -eq 124 ]; then
-        # timeout matou o notify-send após 20min sem clique // timeout killed notify-send after 20min without click
-        echo "[info] 20-minute window expired. No action taken by operator."
-
-    elif [[ "$ACAO_ESCOLHIDA" == "run_update" ]]; then
-        # clique registrado // click registered
-        FUNCTION_BOTAO
-
-    else
-        # usuário fechou/ignorou manualmente antes dos 20min // user closed/ignored manually before 20min
-        echo "[info] Notification closed or dismissed. No action taken."
-    fi
-if [ "$NOTIF_EXIT" -eq 124 ]; then
-    # timeout matou a notificação
-    echo "A notificação excedeu o tempo limite."
-fi
-}
-
-FUNCTION_BOTAO() {
-    echo "Status: Operator confirmed. Launching application..."
-    echo "[debug] DISPLAY=$DISPLAY | WAYLAND_DISPLAY=$WAYLAND_DISPLAY"
-    echo "[debug] XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR"
-    echo "[debug] DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS"
-    echo "[debug] XDG_CURRENT_DESKTOP=$XDG_CURRENT_DESKTOP"
-
-    local LAUNCHER_PID LAUNCHER_OK=0
-
-    if command -v gio &>/dev/null; then
-        echo "[debug] usando gio"
-        gio launch /usr/share/applications/arch-update-full.desktop &
-        LAUNCHER_PID=$!
-        sleep 0.8
-        if kill -0 "$LAUNCHER_PID" 2>/dev/null; then
-            echo "[debug] gio pid=$LAUNCHER_PID vivo após 0.8s: OK"
-            disown "$LAUNCHER_PID"
-            LAUNCHER_OK=1
-        else
-            echo "[debug] gio encerrou em <0.8s (possível erro de ambiente)"
-        fi
-
-    elif command -v gtk-launch &>/dev/null; then
-        echo "[debug] usando gtk-launch"
-        gtk-launch arch-update-full.desktop &
-        LAUNCHER_PID=$!
-        sleep 0.8
-        if kill -0 "$LAUNCHER_PID" 2>/dev/null; then
-            echo "[debug] gtk-launch pid=$LAUNCHER_PID vivo: OK"
-            disown "$LAUNCHER_PID"
-            LAUNCHER_OK=1
-        else
-            echo "[debug] gtk-launch encerrou em <0.8s (possível erro de ambiente)"
-        fi
-
-    elif command -v kioclient &>/dev/null; then
-        echo "[debug] usando kioclient"
-        kioclient exec /usr/share/applications/arch-update-full.desktop &
-        LAUNCHER_PID=$!
-        sleep 0.8
-        if kill -0 "$LAUNCHER_PID" 2>/dev/null; then
-            disown "$LAUNCHER_PID"; LAUNCHER_OK=1
-            echo "[debug] kioclient pid=$LAUNCHER_PID vivo: OK"
-        else
-            echo "[debug] kioclient encerrou em <0.8s (possível erro de ambiente)"
-        fi
-
-    elif command -v kioclient5 &>/dev/null; then
-        echo "[debug] usando kioclient5"
-        kioclient5 exec /usr/share/applications/arch-update-full.desktop &
-        LAUNCHER_PID=$!
-        sleep 0.8
-        if kill -0 "$LAUNCHER_PID" 2>/dev/null; then
-            disown "$LAUNCHER_PID"; LAUNCHER_OK=1
-            echo "[debug] kioclient5 pid=$LAUNCHER_PID vivo: OK"
-        else
-            echo "[debug] kioclient5 encerrou em <0.8s (possível erro de ambiente)"
-        fi
-
-    elif command -v dex &>/dev/null; then
-        echo "[debug] usando dex"
-        dex /usr/share/applications/arch-update-full.desktop &
-        LAUNCHER_PID=$!
-        sleep 0.8
-        if kill -0 "$LAUNCHER_PID" 2>/dev/null; then
-            disown "$LAUNCHER_PID"; LAUNCHER_OK=1
-            echo "[debug] dex pid=$LAUNCHER_PID vivo: OK"
-        else
-            echo "[debug] dex encerrou em <0.8s (possível erro de ambiente)"
-        fi
-
-    else
-        echo "[debug] nenhum lançador padrão. Extraindo do .desktop..."
-        local CMD_EXEC
-        CMD_EXEC=$(awk '/^Exec=/ {sub(/^Exec=/, ""); gsub(/ *%[a-zA-Z]/, ""); print; exit}' \
-            /usr/share/applications/arch-update-full.desktop)
-
-        if [ -n "$CMD_EXEC" ]; then
-            bash -c "$CMD_EXEC" &
-            LAUNCHER_PID=$!
-            sleep 0.8
-            if kill -0 "$LAUNCHER_PID" 2>/dev/null; then
-                disown "$LAUNCHER_PID"; LAUNCHER_OK=1
-                echo "[debug] cmd direto pid=$LAUNCHER_PID vivo: OK"
-            else
-                echo "[debug] cmd direto encerrou em <0.8s (possível erro de ambiente)"
-            fi
-        else
-            echo "[warn] Falha ao extrair do .desktop. Tentando binário direto..."
-            arch-update-full &
-            LAUNCHER_PID=$!
-            sleep 0.8
-            if kill -0 "$LAUNCHER_PID" 2>/dev/null; then
-                disown "$LAUNCHER_PID"; LAUNCHER_OK=1
-                echo "[debug] binário direto pid=$LAUNCHER_PID vivo: OK"
-            else
-                echo "[debug] binário direto encerrou em <0.8s"
-            fi
-        fi
-    fi
-
-    
-    if [ "$LAUNCHER_OK" -eq 0 ]; then
-        echo "[warn] Nenhum lançador manteve processo vivo."
-        echo "[warn] Verifique as variáveis de ambiente no log acima."
-    fi
-}
-
-CHECK_FOR_UPDATES() {
-    ROTATE_SENTINEL_LOGS
-    
-    local LOG_FILE
-    LOG_FILE="$LOG_SENTINEL_DIR/check_$(date '+%Y-%m-%d_%H-%M-%S').log"
-    
-    {
-        echo "--- CHECK INICIADO EM / STARTED AT: $(date) ---"
-        
-        local AUR_H U_PACMAN U_AUR U_FLAT U_SNAP TOTAL
-        
-        AUR_H=$(command -v yay || command -v paru || command -v pikaur)
-        
-       
-        if command -v checkupdates &>/dev/null; then
-            U_PACMAN=$(checkupdates 2>/dev/null | wc -l | tr -d '[:space:]')
-        else
-            U_PACMAN=0
-        fi
-        : "${U_PACMAN:=0}"
-        
-      
-        U_AUR=0
-        if [[ -n "$AUR_H" ]]; then
-            U_AUR=$($AUR_H -Qua 2>/dev/null | wc -l | tr -d '[:space:]')
-        fi
-        : "${U_AUR:=0}"
-        
-      
-        U_FLAT=0
-        if command -v flatpak &>/dev/null; then
-            U_FLAT=$(flatpak remote-ls --updates 2>/dev/null | wc -l | tr -d '[:space:]')
-        fi
-        : "${U_FLAT:=0}"
-
-        
-        U_SNAP=0
-        if command -v snap &>/dev/null; then
-            U_SNAP=$(snap refresh --list 2>/dev/null | grep -c '^[^Name]' | tr -d '[:space:]')
-        fi
-        : "${U_SNAP:=0}"
-
-       
-        TOTAL=$(( U_PACMAN + U_AUR + U_FLAT + U_SNAP ))
-
-        echo "Pacman: $U_PACMAN | AUR: $U_AUR | Flatpak: $U_FLAT | Snap: $U_SNAP"
-        echo "Total: $TOTAL"
-        
-        if [ "$TOTAL" -gt 0 ]; then
-            NOTIFICAR_SENTINELA "$TOTAL"
-        else
-            echo "Status: No pending updates detected. System is up to date."
-            echo "Status: Sistema atualizado. Nenhuma ação necessária."
-        fi
-
-        echo "--- CHECK FINALIZADO EM / FINISHED AT: $(date) ---"
-
-    } > "$LOG_FILE" 2>&1
-}
-
-
-# --- [SISTEMA] PROTOCOLO DE AUTO-INSTALAÇÃO DA SENTINELA // Sentinel Self-Installation Protocol -------------------------------------------------------<<<
-
-SETUP_SENTINEL() {
+REPROGRAMAR_SENTINELA() {
     local SERVICE_DIR="$HOME/.config/systemd/user"
-    local SCRIPT_PATH
-    SCRIPT_PATH=$(realpath "$0") # Descobre onde o script está no seu SSD//Finds where the script is on your SSD
     
     mkdir -p "$SERVICE_DIR"
 
-    # Cria o arquivo de Serviço//Creates the Service file
+    # Cria o arquivo de Serviço apontando para o script isolado do Sentinela
     cat <<EOF > "$SERVICE_DIR/arch-sentinel.service"
 [Unit]
 Description=Sentinela de Atualizações Arch Update Full
@@ -293,13 +59,10 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=$SCRIPT_PATH --check
-
-[Install]
-WantedBy=default.target
+ExecStart=$CAMINHO_SENTINELA --check
 EOF
 
-    # Cria o arquivo de Timer (3 horas)//Creates the Timer file (3 hours)
+    # Cria o arquivo de Timer (Roda 7 min após o boot, e de 3 em 3 horas)
     cat <<EOF > "$SERVICE_DIR/arch-sentinel.timer"
 [Unit]
 Description=Roda o Sentinela a cada 3 horas
@@ -313,30 +76,36 @@ Persistent=true
 WantedBy=timers.target
 EOF
 
-    # Recarrega e Ativa a Sentinela no Espaço do Usuário//Reloads and activates the sentinel in the user space
-
-    systemctl --user daemon-reload
+    # Recarrega o daemon e ativa o timer de forma 100% invisível
+    systemctl --user daemon-reload >/dev/null 2>&1
     systemctl --user enable --now arch-sentinel.timer >/dev/null 2>&1
 }
 
-# --- INTERCEPTADOR DE SINAL (MODO SENTINELA) //SIGNAL INTERCEPTOR -------------------------------------------------------------------<<
-#nessa parte especifica mantive a verificaçao no google para apenas garantir conexao com a internet apenas checa se tem atualização não executa nada
-#In this specific section, I kept the Google verification running only to ensure an internet connection; it just checks for updates and doesn't execute anything.
+VERIFICAR_SENTINELA() {
+    local SERVICE_FILE="$HOME/.config/systemd/user/arch-sentinel.service"
+    local PRECISA_REPROGRAMAR=0
 
-if [[ "$1" == "--check" ]]; then
-    if ping -c 3 -W 7 8.8.8.8 &>/dev/null; then
-        CHECK_FOR_UPDATES
-    else
-        echo -e "${YELLOW_NEON}[!][lang: PT-BR] Nenhuma conexão com a internet disponível, protocolo abortado. ${NC}"
-        echo -e "${YELLOW_NEON}[!] Sentinel Protocol aborted. Please check your network connection ${NC}"
-        exit 1
+    # 1. Checa se o arquivo NÃO existe ou se ainda aponta para o script velho (sem o "-sentinela")
+    if [ ! -f "$SERVICE_FILE" ] || ! grep -q "arch-update-full-sentinela" "$SERVICE_FILE"; then
+        PRECISA_REPROGRAMAR=1
     fi
-    exit 0
 
-fi
+    # 2. Checa se o timer está desabilitado ou parado
+    if ! systemctl --user is-enabled --quiet arch-sentinel.timer 2>/dev/null || ! systemctl --user is-active --quiet arch-sentinel.timer 2>/dev/null; then
+        PRECISA_REPROGRAMAR=1
+    fi
 
-SETUP_SENTINEL
+    # 3. Se encontrou qualquer problema acima, ele limpa e reconfigura silenciosamente
+    if [ "$PRECISA_REPROGRAMAR" -eq 1 ]; then
+        # Para o antigo por segurança antes de sobrescrever
+        systemctl --user stop arch-sentinel.timer 2>/dev/null
+        
+        # Chama a sua função de criação (que você já fez e está perfeita)
+        REPROGRAMAR_SENTINELA
+    fi
+}
 
+#=======================================================================================================
 # --- CONFIGURAÇÃO DE LOGS ROTATIVOS // ROTATING LOGS CONFIGURATION -----------------------------------------------------------------------------------<<<
 
 LOG_DIR="$HOME/.logs_arch_update_full"
@@ -368,22 +137,23 @@ rotate_logs
 exec > >(tee -i "$LOG_ATUAL") 2>&1
 
 echo -e "${PINK_NEON}--- INICIANDO REGISTRO DE SESSÃO: $DATA_LOG ---${NC}"
+#=========================================================================================================
 
 # --- VERIFICAÇÃO DE IDIOMA DO SISTEMA // SYSTEM LANGUAGE CHECK -----------------------------------------------------------------------------------<<<
 VERIFICAR_IDIOMA() {
-    # Captura a variável de locale do sistema (LC_ALL, LANG ou LC_MESSAGES)
+    
     local sys_locale="${LC_ALL:-${LANG:-$LC_MESSAGES}}"
     
-    # Remove a codificação de caracteres se existir (ex: 'en_CA.UTF-8' vira 'en_CA')
+   
     local sys_lang="${sys_locale%%.*}"
 
-    # Variável global utilizada em todo o script para definir o idioma das mensagens
+    
     IDIOMA_SISTEMA=""
 
     echo -e "${CYAN_NEON}[LANG CHECK] Detectando idioma do sistema operacional...${NC}"
 
     case "$sys_lang" in
-        pt*)
+        pt*|PT*)
             IDIOMA_SISTEMA="PT_BR"
             if [[ "$sys_lang" == "pt_BR" ]]; then
                 echo -e "${GREEN_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Padrão definido: PT-BR (Português Brasil)${NC}"
@@ -392,7 +162,7 @@ VERIFICAR_IDIOMA() {
             fi
             ;;
 
-        es*)
+        es*|ES*)
             IDIOMA_SISTEMA="ES_ES"
             if [[ "$sys_lang" == "es_ES" ]]; then
                 echo -e "${GREEN_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Padrão definido: ES-ES (Español España)${NC}"
@@ -401,7 +171,7 @@ VERIFICAR_IDIOMA() {
             fi
             ;;
 
-        en*)
+        en*|EN*)
             IDIOMA_SISTEMA="EN_US"
             if [[ "$sys_lang" == "en_US" ]]; then
                 echo -e "${GREEN_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Padrão definido: EN-US (English United States)${NC}"
@@ -423,49 +193,55 @@ VERIFICAR_IDIOMA() {
     esac
     echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
     echo ""
+
 }
 
+#=========================================================================================================
 
+msg() {
+    local pt_msg="$1"  # 1º argumento: Português (PT-BR)
+    local en_msg="$2"  # 2º argumento: Inglês (EN-US)
+    local es_msg="$3"  # 3º argumento: Espanhol (ES-ES)
+
+    case "$IDIOMA_SISTEMA" in
+        "PT_BR") echo -e "$pt_msg" ;;
+        "EN_US") echo -e "$en_msg" ;;
+        "ES_ES") echo -e "$es_msg" ;;
+        *)       echo -e "$en_msg" ;; # Fallback padrão para Inglês
+    esac
+}
+export -f msg
+
+
+#===============================================================================================================================
 # --- CABEÇALHO: ARCH UPDATE FULL BLOCK EDITION) -------------------------------------------------------------------------------------------<<<
 CABECALHO_MENU() {
-    VERIFICAR_IDIOMA
     clear
     echo ""
-
-    local lang_tag=""
-    case "$IDIOMA_SISTEMA" in
-        "PT_BR") lang_tag="PT-BR" ;;
-        "ES_ES") lang_tag="ES-ES" ;;
-        *)       lang_tag="EN-US" ;;
-    esac
-
-    # Exibe apenas a tag minimalista e neutra no topo
-    echo "system is" 
-    echo -e "${CYAN_NEON}[ LANG: ${YELLOW_NEON}${lang_tag}${CYAN_NEON} ]${NC}"
+   msg "${GREEN_NEON}🐧 Bem-vindo ao...${NC}" \
+       "${GREEN_NEON}🐧 Welcome to...${NC}" \
+       "${GREEN_NEON}🐧 Bienvenido a...${NC}"
     echo ""
-echo ""    
-echo -e "${NEON_BLUE}"
-echo "  █████╗ ██████╗  ██████╗██╗  ██╗    ██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗"
-echo "  ██╔══██╗██╔══██╗██╔════╝██║  ██║    ██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝"
-echo "  ███████║██████╔╝██║     ███████║    ██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗  "
-echo "  ██╔══██║██╔══██╗██║     ██╔══██║    ██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝  "
-echo "  ██║  ██║██║  ██║╚██████╗██║  ██║    ╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗"
-echo "  ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝     ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝"
-echo -e "                              ${NEON_BLUE}███████╗██╗   ██╗██╗     ██╗${NC}"
-echo -e "                              ${NEON_BLUE}██╔════╝██║   ██║██║     ██║${NC}"
-echo -e "                              ${NEON_BLUE}█████╗  ██║   ██║██║     ██║${NC}"
-echo -e "                              ${NEON_BLUE}██╔══╝  ██║   ██║██║     ██║${NC}"
-echo -e "                              ${NEON_BLUE}██║     ╚██████╔╝███████╗███████╗${NC}"
-echo -e "                              ${NEON_BLUE}╚═╝      ╚═════╝ ╚══════╝╚══════╝${NC}"
-echo ""
-echo -e "  ${PINK_NEON}──────────────────────────────── ${RED_NEON}-->VERSION 4.0-3 <--${PINK_NEON} ─────────────────────────────────${NC}"
-echo -e "  ${PINK_NEON}───────────────────────>> UPDATING • AUTOMATING • SECURING <<───────────────────────${NC}"
-echo ""
-echo -e "  ${NEON_BLUE}─────────────>>[ MODULES: ROLLING_SYNC | AUR_INJECTION | INTEGRITY_AUDIT ]<<─────────────${NC}"
-echo -e "  ${NEON_BLUE}-----------------------------------------------------------------------------------------${NC}"
-echo -e "${RED_NEON}By: 𝕿𝖍𝖊 S𝖊𝖛𝖊𝖓𝖙𝖍 ${NC}"
-echo -e "${RED_NEON}-----------------${NC}"
-
+        echo -e "${GRAD_1} † ▄█████▄  ██████▄  ▄██████▄ ██╗  ██╗    ██╗  ██╗ ██████╗  ██████╗  ▄█████▄  ████████╗ ███████╗ †${NC}"
+        echo -e "${GRAD_2}   ██▓▀▀██╗ ██▓▀▀██╗ ██▓▀▀▀▀╝ ██║  ██║    ██║  ██║ ██▓▀▀██╗ ██▓▀▀██╗ ██▓▀▀██╗ ╚══██▓══╝ ██▓▀▀▀▀╝  ${NC}"
+        echo -e "${GRAD_3}   ██▒████║ ██▒███╔╝ ██▒      ███████║    ██║  ██║ ██▒███╔╝ ██▒  ██║ ██▒████║    ██▒    █████╗    ${NC}"
+        echo -e "${GRAD_4}   ██░▀▀██║ ██░▀▀██╗ ██░      ██╔══██║    ██║  ██║ ██░▀▀▀   ██░  ██║ ██░▀▀██║    ██░    ██╔══╝    ${NC}"
+        echo -e "${GRAD_5}   ██║  ██║ ██║  ██║ ▀██████╗ ██║  ██║    ▀█████╔╝ ██║      ██████╔╝ ██║  ██║    ██║    ███████╗  ${NC}"
+        echo -e "${GRAD_6} † ╚═╝  ╚═╝ ╚═╝  ╚═╝  ╚═════╝ ╚═╝  ╚═╝     ╚════╝  ╚═╝      ╚═════╝  ╚═╝  ╚═╝    ╚═╝    ╚══════╝ †${NC}"
+        echo -e "                                  ${GRAD_4} ███████╗ ██╗  ██╗ ██╗      ██╗      ${NC}"
+        echo -e "                                  ${GRAD_4} ██▓▀▀▀▀╝ ██║  ██║ ██║      ██║      ${NC}"
+        echo -e "                                  ${GRAD_5} ██▒███╗  ██║  ██║ ██║      ██║      ${NC}"
+        echo -e "                                  ${GRAD_5} ██░▀▀▀╝  ██║  ██║ ██║      ██║      ${NC}"
+        echo -e "                                  ${GRAD_6} ██║      ▀█████╔╝ ███████╗ ███████╗ ${NC}"
+        echo -e "                                  ${GRAD_6} ╚═╝       ╚════╝  ╚══════╝ ╚══════╝ ${NC}"
+    echo ""
+    echo -e "  ${PINK_NEON}──────────────────────────────── ${RED_NEON}-->VERSION 4.1-1 <--${PINK_NEON} ─────────────────────────────────${NC}"
+    echo -e "  ${PINK_NEON}───────────────────────>> UPDATING • AUTOMATING • SECURING <<───────────────────────${NC}"
+    echo ""
+    echo -e "  ${NEON_BLUE}─────────────>>[ MODULES: ROLLING_SYNC | AUR_INJECTION | INTEGRITY_AUDIT ]<<─────────────${NC}"
+    echo -e "  ${NEON_BLUE}-----------------------------------------------------------------------------------------${NC}"
+    echo -e "${RED_NEON}By: 𝕿𝖍𝖊 S𝖊𝖛𝖊𝖓𝖙𝖍 🐧${NC}"
+    echo -e "${RED_NEON}-----------------${NC}"
 }
 
 
@@ -531,17 +307,14 @@ VERIFICAR_CONECTIVIDADE() {
 
 # fazer checa de espaço em disco antes de iniciar a atualização // check disk space before starting the update
 BOX_ERROR() {
-
-    local TEXTO="$1"
-
     local LARGURA=${LARGURA_BOX:-86} 
     local INTERNO=$((LARGURA - 4))
     
     echo -e "\n${RED_NEON}╔$(printf '═%.0s' $(seq 1 $((LARGURA-2))))╗${NC}"
     
-    
-    echo "$TEXTO" | fold -s -w "$INTERNO" | while IFS= read -r LINHA; do
-        printf "${RED_NEON}║${NC} ${RED_NEON}%-${INTERNO}s${NC} ${RED_NEON}║${NC}\n" "$LINHA"
+    for LINHA in "$@"; do
+        # O printf desenha o espaço interno fixo e a cor amarela é aplicada na linha inteira de forma segura
+        printf "${RED_NEON}║${NC} ${YELLOW_NEON}%-*s${NC} ${RED_NEON}║${NC}\n" "$INTERNO" "$LINHA"
     done
     
     echo -e "${RED_NEON}╚$(printf '═%.0s' $(seq 1 $((LARGURA-2))))╝${NC}"
@@ -549,35 +322,46 @@ BOX_ERROR() {
 
 CHECK_DISK_SPACE() {
 
+    local LARGURA=${LARGURA_BOX:-86}
     local TEXTO_DISK=" ANALYZING STORAGE: CHECKING DISK INTEGRITY RESERVE"
     local TAM_TEXTO=${#TEXTO_DISK}
-    local ESPACOS=$((LARGURA_BOX - TAM_TEXTO - 2))
+    local ESPACOS=$((LARGURA - TAM_TEXTO - 2))
+    if [ "$ESPACOS" -lt 0 ]; then ESPACOS=0; fi
     local FREE_SPACE
-    local MENSAGEM_ERRO
+    FREE_SPACE=$(df --output=avail -BG / | tail -n 1 | tr -d 'G ')
 
     echo -e "${NEON_BLUE}(LANG: PT-BR) Verificando espaço em disco disponível...${NC}"
     echo -e "${NEON_BLUE}(LANG: EN-US) Checking available disk space...${NC}"
     echo ""
 
-    echo -e "${NEON_BLUE}╔$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╗${NC}"
+   echo -e "${NEON_BLUE}╔$(printf '═%.0s' $(seq 1 $((LARGURA-2))))╗${NC}"
     printf "${NEON_BLUE}║${NC}${PINK_NEON}%s%*s${NC}${NEON_BLUE}║${NC}\n" "$TEXTO_DISK" "$ESPACOS" ""
-    echo -e "${NEON_BLUE}╚$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╝${NC}"
+    echo -e "${NEON_BLUE}╚$(printf '═%.0s' $(seq 1 $((LARGURA-2))))╝${NC}"
     
     echo ""
     echo "(LANG: PT-BR): Analisando partições e espaço de segurança..."
     echo "(LANG: EN-US): Analyzing partitions and safety space..."
     echo ""
     sleep 0.7
-    # Captura espaço livre na raiz (/) // Captures free space in root (/)
-    FREE_SPACE=$(df -BG / | awk 'NR==2 {print $4}' | sed 's/G//')
-    
-    if [ "$FREE_SPACE" -lt 5 ]; then
+
+    # Captura espaço livre na raiz (/) em GB // Captures free space on root (/) in GB
+    if [ "${FREE_SPACE:-0}" -lt 5 ]; then
         
-        MENSAGEM_ERRO="[FATAL ERROR] Insufficient space (${FREE_SPACE}GB). Aborting to prevent corruption. Sentinel Protocol requires at least 5GB free. | [ERRO FATAL] pt-br: (${FREE_SPACE}GB) O Protocolo exige pelo menos 5GB livres. Libere espaço e tente novamente."
+        BOX_ERROR "⚠️ Espaço insuficiente para continuar a atualização." "⚠️ Insufficient space to continue the update."
         
-        BOX_ERROR "$MENSAGEM_ERRO"
-        
-        # Proteção caso a variável do LOG ainda não esteja inicializada // Protection in case the LOG variable is not yet initialized
+        echo ""
+        echo -e "${YELLOW_NEON}[LANG: PT-BR] O seu sistema tem apenas ${FREE_SPACE}GB de espaço livre.\nO programa de atualização exige no mínimo 5 GB livres para funcionar com segurança.${NC}"
+        echo ""
+        echo -e "${YELLOW_NEON}[LANG: EN-US] Your system has only ${FREE_SPACE}GB of free space.\nThe update program requires a minimum of 5 GB free to work safely.${NC}"
+        echo ""
+        echo -e "${YELLOW_NEON}[LANG: PT-BR] Não foi possível concluir a atualização por falta de espaço.\nPor favor, libere espaço para continuar com a atualização (5 GB de armazenamento é a margem de segurança).${NC}"
+        echo ""
+        echo -e "${YELLOW_NEON}[LANG: EN-US] Could not complete the update due to lack of space.\nPlease free up space to continue with the update (5 GB of storage is the safety margin).${NC}"
+        echo ""
+        echo -e "${RED_NEON}[LANG: PT-BR] ABORTANDO O PROTOCOLO DE ATUALIZAÇÃO.${NC}"
+        echo -e "${RED_NEON}[LANG: EN-US] ABORTING THE UPDATE PROTOCOL.${NC}"
+        echo ""
+
         if [[ -n "$LOG_ATUAL" ]]; then
             echo "[LOG] Aborting due to insufficient space (${FREE_SPACE}GB) on $(date)" >> "$LOG_ATUAL"   
         fi
@@ -585,8 +369,18 @@ CHECK_DISK_SPACE() {
         echo -e "${YELLOW_NEON}--------------------------------------------------------------------------------------${NC}"
         exit 1
     else
-        echo -e "${GREEN_NEON}(LANG: PT-BR): [OK] Reserva de disco confirmada: ${FREE_SPACE}GB disponíveis.${NC}"
-        echo -e "${GREEN_NEON}(LANG: EN-US): [OK] Disk reserve confirmed: ${FREE_SPACE}GB available.${NC}"
+        echo -e "${GREEN_NEON}(LANG: PT-BR): [OK] Reserva de disco confirmada: ${FREE_SPACE}GB disponíveis na raiz.${NC}"
+        echo -e "${GREEN_NEON}(LANG: EN-US): [OK] Disk reserve confirmed: ${FREE_SPACE}GB available on root.${NC}"
+        echo ""
+        echo -e "${CYAN_NEON}[LANG: PT-BR] Detalhamento das partições e espaço total do sistema:${NC}"
+        echo -e "${CYAN_NEON}[LANG: EN-US] System partitions and total storage details:${NC}"
+        echo ""
+        
+        # Exibe o espaço total do disco e das partições montadas de forma limpa // Displays total disk space and mounted partitions cleanly
+        df -h --output=target,size,avail,pcent | grep -E '^/|Mounted' | while read -r linha; do
+            echo -e "${YELLOW_NEON}  -> $linha${NC}"
+        done
+
         echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
     fi
 }
@@ -781,14 +575,12 @@ OTIMIZAR_ESPELHOS() {
                 else
                     echo -e "${RED_NEON}[LANG: PT-BR] [ERRO] Não foi possível otimizar os espelhos.${NC}"
                     echo -e "${RED_NEON}[LANG: PT-BR] Isso geralmente indica falha de conexão ou espelhos indisponíveis no momento — não é um erro do script.${NC}"
+                    echo ""
                     echo -e "${RED_NEON}[LANG: EN-US] [ERROR] Could not optimize the mirrors.${NC}"
                     echo -e "${RED_NEON}[LANG: EN-US] This usually indicates a connection issue or mirrors being unavailable right now — not a script error.${NC}"
                     echo ""
                 fi
-
-                echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
-                echo ""
-                ;;
+                    ;; 
             
             [Nn]* | * )
                 echo -e "${YELLOW_NEON}[LANG: PT-BR] [SKIPPED] Otimização de rede pulada pelo usuário.${NC}"
@@ -1057,7 +849,7 @@ UPDATE_SNAPS() {
 #VERIFICAÇÃO DE NECESSIDADE DE REINICIALIZAÇÃO // REBOOT CHECK -----------------------------------------------------------------------------<<<
 
 CHECK_REBOOT_NEEDED() {
-   local CRITICAL_PACKAGES="linux|nvidia|mesa|ucode|systemd|wayland|xorg|amdgpu|radeon|vulkan-radeon|amd-ucode|intel|i915|vulkan-intel|intel-media-driver|onevpl-intel-gpu|intel-ucode"
+   local CRITICAL_PACKAGES="linux|linux-firmware|ucode|nvidia|nouveau|mesa|vulkan|amdgpu|radeon|amdvlk|rocm|intel|i915|xe|onevpl|wayland|xorg|wlroots|systemd|grub|limine|refind|syslinux|efibootmgr"
     
     local BOOT_TIME
     BOOT_TIME=$(uptime -s)
@@ -1086,12 +878,19 @@ CHECK_REBOOT_NEEDED() {
         echo -e "${RED_NEON}║ [⚠️  INTEGRITY ALERT // [LANG: PT-BR] ALERTA DE INTEGRIDADE]  ║${NC}"
         echo -e "${RED_NEON}╚══════════════════════════════════════════════════════════════╝${NC}"
         echo ""
-
+        echo -e "          ${BLUE}.--.${NC}"
+        echo -e "         ${BLUE}|${WHITE}o_o ${BLUE}|${NC}"
+        echo -e "         ${BLUE}|${YELLOW}:_/${BLUE} |${NC}    ${RED_NEON}KERNEL MANAGEMENT SYSTEM${NC}"
+        echo -e "        ${BLUE}//   \\\\${NC}"
+        echo -e "       ${BLUE}(|  ${WHITE}   ${BLUE}|)${NC}"
+        echo -e "      ${BLUE}/'\\\\_${YELLOW}   ${BLUE}_/\\\`\\\\${NC}"
+        echo -e "      ${BLUE}\\\\___)${YELLOW}=${BLUE}(___/${NC}"
+        echo ""
         echo -e "${YELLOW_NEON}[LANG: PT-BR] Componentes críticos foram alterados; o reboot do sistema é necessário e recomendado:${NC}"
         echo -e "${YELLOW_NEON}[LANG: EN-US] Critical components have been altered; a system reboot is necessary and recommended.${NC}"
         echo ""
 
-        echo -e "$REBOOT_REASON" 
+       echo -e "${WHITE}📦 Pacotes atualizados: ${CYAN}$REBOOT_REASON${NC}"
         echo ""
 
         echo -e "${PINK_NEON}>>[LANG: PT-BR] RECOMENDAÇÃO: Reinicie o sistema para aplicar as mudanças.<<${NC}"
@@ -1167,8 +966,8 @@ LIMPAR_CACHE() {
 
     if command -v paccache &> /dev/null; then
         echo ""
-        echo -e "${GREEN_NEON}[LANG: PT-BR]${NC} Paccache detectado. Limpando cache e mantendo as 3 últimas versões..."
-        echo -e "${GREEN_NEON}[LANG: EN-US]${NC} Paccache detected. Cleaning cache while retaining the last 3 versions..."
+        echo -e "${GREEN_NEON}[LANG: PT-BR]${NC} Paccache detectado. Procurando caches e mantendo as 3 últimas versões..."
+        echo -e "${GREEN_NEON}[LANG: EN-US]${NC} Paccache detected. Searching for caches and retaining the last 3 versions..."
         echo ""
         echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
         echo ""
@@ -1236,40 +1035,54 @@ AUDITAR_INTEGRIDADE() {
     echo "" 
 
     local escolha_auditoria
-    read -rp "(SsYy/Nn): " escolha_auditoria 
+    while true; do
+        echo -e "${CYAN_NEON}[LANG: PT-BR] Escolha: deseja auditar os arquivos do sistema? [Ss/Nn]: ${NC}"
+        echo -ne "${CYAN_NEON}[LANG: EN-US] Choose: do you want to audit system files? [Yy/Nn]: ${NC}"
+        read -r escolha_auditoria
 
-    echo ""
-    if [[ "$escolha_auditoria" =~ ^[SsYy]$ ]]; then
-        echo -e "${NEON_BLUE}[LANG: PT-BR] [+] Iniciando auditoria de integridade do sistema...${NC}"
-        echo -e "${NEON_BLUE}[LANG: EN-US] [+] Starting system integrity audit...${NC}"
         echo ""
-        sleep 0.5
-        echo -e "${YELLOW_NEON}[LANG: PT-BR] The Seventh está verificando as digitais do Arch...${NC}"
-        echo -e "${YELLOW_NEON}[LANG: EN-US] The Seventh is verifying Arch's fingerprints...${NC}"
-        echo ""
+        case "$escolha_auditoria" in
+            [SsYy])
+                echo -e "${NEON_BLUE}[LANG: PT-BR] [+] Iniciando auditoria de integridade do sistema...${NC}"
+                echo -e "${NEON_BLUE}[LANG: EN-US] [+] Starting system integrity audit...${NC}"
+                echo ""
+                sleep 0.5
+                echo -e "${YELLOW_NEON}[LANG: PT-BR] The Seventh está verificando as digitais do Arch...${NC}"
+                echo -e "${YELLOW_NEON}[LANG: EN-US] The Seventh is verifying Arch's fingerprints...${NC}"
+                echo ""
 
-        local lista_real
-        lista_real=$(LANG=C sudo pacman -Qkk 2>&1 | grep -E "mismatch|[1-9][0-9]* altered")
-        
-        if [ -n "$lista_real" ]; then
-            echo -e "${PINK_NEON}[LANG: PT-BR] [ALERTA] Foi detectado que arquivos foram alterados:${NC}"
-            echo -e "${PINK_NEON}[LANG: EN-US] [WARNING] The Seventh has detected that files have been modified:${NC}"
-            echo ""
-            echo -e "${CYAN_NEON}--------------------------------------------------------${NC}"
-            echo -e "${YELLOW_NEON}$lista_real${NC}"
-            echo -e "${CYAN_NEON}--------------------------------------------------------${NC}"
-            echo ""
-            echo -e "${NEON_BLUE}[LANG: PT-BR] [DICA] Verifique se são configurações ou binários do sistema.${NC}"
-            echo -e "${NEON_BLUE}[LANG: EN-US] [TIP] The Seventh recommends checking if these are system configurations or binaries.${NC}"
-        else
-            echo -e "${GREEN_NEON}[LANG: PT-BR] [LIMPO] Integridade 100%. Nenhuma alteração suspeita.${NC}"
-            echo -e "${GREEN_NEON}[LANG: EN-US] [CLEAN] Integrity 100%. No suspicious alterations found.${NC}"
-        fi
-    else
-        echo -e "${RED_NEON}[LANG: PT-BR] [PULADO] Auditoria ignorada pelo operador.${NC}"
-        echo -e "${RED_NEON}[LANG: EN-US] [SKIPPED] Audit skipped by the operator.${NC}"
-        echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
-    fi
+                local lista_real
+                lista_real=$(LANG=C sudo pacman -Qkk 2>&1 | grep -E "mismatch|[1-9][0-9]* altered")
+                
+                if [ -n "$lista_real" ]; then
+                    echo -e "${PINK_NEON}[LANG: PT-BR] [ALERTA] Foi detectado que arquivos foram alterados:${NC}"
+                    echo -e "${PINK_NEON}[LANG: EN-US] [WARNING] The Seventh has detected that files have been modified:${NC}"
+                    echo ""
+                    echo -e "${CYAN_NEON}--------------------------------------------------------${NC}"
+                    echo -e "${YELLOW_NEON}$lista_real${NC}"
+                    echo -e "${CYAN_NEON}--------------------------------------------------------${NC}"
+                    echo ""
+                    echo -e "${NEON_BLUE}[LANG: PT-BR] [DICA] Verifique se são configurações ou binários do sistema.${NC}"
+                    echo -e "${NEON_BLUE}[LANG: EN-US] [TIP] The Seventh recommends checking if these are system configurations or binaries.${NC}"
+                else
+                    echo -e "${CYAN_NEON}[LANG: PT-BR] [LIMPO] Integridade 100%. Nenhuma alteração suspeita.${NC}"
+                    echo -e "${CYAN_NEON}[LANG: EN-US] [CLEAN] Integrity 100%. No suspicious alterations found.${NC}"
+                fi
+                break
+                ;;
+            [Nn])
+                echo -e "${RED_NEON}[LANG: PT-BR] [PULADO] Auditoria de integridade ignorada pelo operador.${NC}"
+                echo -e "${RED_NEON}[LANG: EN-US] [SKIPPED] Integrity audit skipped by the operator.${NC}"
+                echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
+                break
+                ;;
+            *)
+                echo -e "${RED_NEON}[LANG: PT-BR] [ERRO] Comando não reconhecido. Tente novamente.${NC}"
+                echo -e "${RED_NEON}[LANG: EN-US] [ERROR] Command not recognized. Try again.${NC}"
+                echo ""
+                ;;
+        esac
+    done
 }
 
 # --- FINALIZAÇÃO // FINALIZATION -----------------------------------------------------------------------------------<<<
@@ -1406,6 +1219,10 @@ MENU_ENCERRAMENTO() {
 # --- FUNÇÃO PRINCIPAL // MAIN EXECUTION BLOCK --------------------------------------------------------------------------<<<
 
 main() {
+    VERIFICAR_IDIOMA
+
+    VERIFICAR_SENTINELA
+
     CABECALHO_MENU
     sleep 1.5
     echo ""

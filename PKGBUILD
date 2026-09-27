@@ -1,7 +1,7 @@
 # Maintainer: The_Seventh <gustavo.gianeli13@gmail.com>
 pkgname=arch-update-full
-pkgver=4.0
-pkgrel=3
+pkgver=4.1
+pkgrel=1
 pkgdesc="Sentinel Protocol: Update automation (Pacman/AUR/Flatpak/Snap) and auditing."
 arch=('any')
 url="https://github.com/GustavoGianeli/arch-update-full"
@@ -26,35 +26,43 @@ install=arch-update-full.install
 
 source=(
   "arch-update-full"
+  "arch-update-full-sentinela"
   "arch-update-full.desktop"
   "novalogov41.png"
   "arch-update-full.install"
   "farol_azul_simbolo.png"
   "farol_amarelo_simbolo.png"
   "farol_vermelho_simbolo.png"
+  "simbolo_tux_kernel_update.png"
 )
 
 # Use 'updpkgsums' para preencher isso automaticamente // Use 'updpkgsums' to automatically fill this in.
-sha256sums=('2de77ab0c7b3a082145c3311c8f83331e66aa3f2702e39623f97f9e26e7ab296'
+sha256sums=('e935222c65b8070f93c53843ead72a06aaf316bbf2ea983c57d69c79bc9365c9'
+            '3dacab75d137b09c2ce011e8294b259173c8f750b3654835aac4caf8a7648c8f'
             'ed65d6a29af497de6c52abe86b8141282cb2b3f11264cb76a57bbfdebb7c6dff'
             '5cfc6fd23427182f589c0406225147530cf25dac3b020ec10427590be7cba917'
-            'c32ddd13aaace4abab054d1742aaa88cdae72a670b569aaea0f124a555f60a2d'
-            'ebc439c303205e80b177683cc62086fbcc3abbe24ec5c47833c0ab0a6b7b4ee0'
-            '9aaa2af5ddec871a8ec529839867994cf60aa2e65f7d86696a52c2bf2db464c8'
-            'f1be46c984f0fdeee93919229c72975187d3ea29065c571f2d1cc96da04bf6f8')
+            '04a5fa6b7ef4c65c6f61ec31d24d16f0147d9519bdc585b743c73d313f9c2afc'
+            'c58cf401d1220fe69d53a1266527d99f1aff1ab2add3d31f946aa1bf277c190f'
+            '9cbee1e5686754aa92847375e6afc65f5996cf2eb79e57b7a83efe876d853ee8'
+            '53945258786075a41ec0a95e5ef7417917f6100e2a3927138c3e765e369f1188'
+            'dfc18ff554e7d92ffbc43936def6a698856743566270c7c0684148eac7e20b55')
 
 package() {
-  # 1. Instala o script executável // Install the executable script.
+# 1. Instala o script executável
   install -Dm755 "${srcdir}/arch-update-full" "${pkgdir}/usr/bin/arch-update-full"
+  install -Dm755 "${srcdir}/arch-update-full-sentinela" "${pkgdir}/usr/bin/arch-update-full-sentinela"
   
-  # 2. Instala o atalho no menu // Install the shortcut in the menu.
+  # 2. Instala o atalho no menu
   install -Dm644 "${srcdir}/arch-update-full.desktop" "${pkgdir}/usr/share/applications/arch-update-full.desktop"
 
-  # 3. Instala o ícone no diretório global de imagens do sistema // Installs the icon in the system's global image directory.
+  # 3. Ícones globais e do sistema
   install -Dm644 "${srcdir}/novalogov41.png" "${pkgdir}/usr/share/pixmaps/novalogov41.png"
   
   # 4. Ícones do Módulo Sentinela (Faróis de Notificação)
   install -Dm644 "${srcdir}/farol_azul_simbolo.png" "${pkgdir}/usr/share/arch-update-full/icons/farol_azul_simbolo.png"
   install -Dm644 "${srcdir}/farol_amarelo_simbolo.png" "${pkgdir}/usr/share/arch-update-full/icons/farol_amarelo_simbolo.png"
   install -Dm644 "${srcdir}/farol_vermelho_simbolo.png" "${pkgdir}/usr/share/arch-update-full/icons/farol_vermelho_simbolo.png"
+  install -Dm644 "${srcdir}/simbolo_tux_kernel_update.png" "${pkgdir}/usr/share/arch-update-full/icons/simbolo_tux_kernel_update.png"
+  
 }
+

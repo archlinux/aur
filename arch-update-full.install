@@ -3,6 +3,10 @@ post_install() {
     echo -e "PT-BR: Se as extensões do GNOME forem desativadas, reative-as via app 'Extensões' ou terminal:"
     echo -e "EN: If GNOME extensions are disabled, re-enable them via the 'Extensions' app or terminal:"
     echo -e "\e[1;33m  gsettings set org.gnome.shell disable-user-extensions false\e[0m\n"
+    
+    echo -e "PT-BR: O atualizador foi dividido em dois módulos. Execute 'arch-update-full' uma vez para atualizar o caminho do Sentinela:"
+    echo -e "EN-US: The updater was split into two modules. Please run 'arch-update-full' once to update the Sentinel path:"
+    echo -e "\e[1;33m  arch-update-full\e[0m\n"
 }
 
 post_upgrade() {
