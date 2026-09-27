@@ -1,21 +1,17 @@
-# Maintainer: clove3am (aka: Caltlgin) <clove.dev.mailbox.org>
+# Maintainer: Mark Collins
+# Contributor: clove3am (aka: Caltlgin) <clove.dev.mailbox.org>
 
 pkgname='runitor'
 pkgver=1.4.1
 pkgrel=1
 pkgdesc='Command runner with healthchecks.io integration'
 arch=('x86_64')
-url='https://github.com/bdd/runitor'
+url="https://github.com/bdd/${pkgname}"
 license=('0BSD')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('192665c623bc96ed77f122510510c017197e1673ab92bb84546d652afe4416c0')
-
-prepare() {
-  cd "${pkgname}-${pkgver}"
-  mkdir build
-}
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -26,6 +22,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   BUILD_DATE=$(date '+%Y-%m-%d %H:%M:%S')
+  mkdir build
   go build -v -o "build/${pkgname}" -ldflags="-X 'main.buildVersion=${pkgver}' -X 'main.buildDate=${BUILD_DATE}'" ."/cmd/${pkgname}"
 }
 
