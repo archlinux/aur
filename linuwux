@@ -1,0 +1,125 @@
+#!/bin/sh
+set -eu
+set -f
+
+lib="${LINUWUX_PRELOAD:-/usr/lib/linuwux/LinUwUx.so}"
+
+show_error() {
+    msg="$1"
+    echo "linuwux: error: $msg" >&2
+    if [ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ]; then
+        if command -v zenity >/dev/null 2>&1; then
+            zenity --error --title="LinUwUx Runtime" --text="$msg" 2>/dev/null || true
+        elif command -v kdialog >/dev/null 2>&1; then
+            kdialog --error "$msg" --title "LinUwUx Runtime" 2>/dev/null || true
+        fi
+    fi
+}
+
+if [ ! -r "$lib" ]; then
+    show_error "Library not found: $lib\n\nPlease check your linuwux-runtime installation, or set LINUWUX_PRELOAD to its path."
+    exit 1
+fi
+
+case "$lib" in
+    *:*)
+        show_error "Library path cannot contain ':' when used in LD_PRELOAD: $lib"
+        exit 1
+        ;;
+esac
+
+if [ "$#" -eq 0 ]; then
+    echo "linuwux: no command given -- use it as a launch option:" >&2
+    echo "  linuwux %command%" >&2
+    exit 1
+fi
+
+preload="${LD_PRELOAD-}"
+command_name="${1##*/}"
+filtered=
+old_ifs=$IFS
+IFS=:
+for entry in $preload; do
+    [ -n "$entry" ] || continue
+    case "$entry" in
+        "$lib") continue ;;
+    esac
+    if [ "$command_name" = gamescope ]; then
+        case "$entry" in
+            *gameoverlayrenderer.so*) continue ;;
+        esac
+    fi
+    filtered="${filtered:+$filtered:}$entry"
+done
+IFS=$old_ifs
+set +f
+
+# Automatic management of cpuid_fault_emulation when native hardware cpuid_fault is absent
+if ! grep -q "cpuid_fault" /proc/cpuinfo 2>/dev/null; then
+    runtime_dir="${XDG_RUNTIME_DIR:-/tmp}/linuwux-clients"
+    mkdir -p "$runtime_dir"
+    client_pid="$$"
+    client_file="$runtime_dir/$client_pid"
+
+    cleanup_cpuid_fault_client() {
+        (
+            set +f
+            flock -x 200
+            rm -f "$client_file"
+            active_clients=0
+            for f in "$runtime_dir"/*; do
+                [ -e "$f" ] || continue
+                other_pid="${f##*/}"
+                case "$other_pid" in
+                    ""|*[!0-9]*) rm -f "$f"; continue ;;
+                esac
+                if kill -0 "$other_pid" 2>/dev/null; then
+                    active_clients=$((active_clients + 1))
+                else
+                    rm -f "$f"
+                fi
+            done
+
+            # Stop the service only if no other active linuwux instances remain
+            if [ "$active_clients" -eq 0 ]; then
+                systemctl stop cpuid-fault-emulation.service 2>/dev/null || true
+            fi
+        ) 200>"$runtime_dir/.lock"
+    }
+
+    (
+        flock -x 200
+        touch "$client_file"
+        if ! systemctl is-active --quiet cpuid-fault-emulation.service 2>/dev/null; then
+            if ! systemctl start cpuid-fault-emulation.service; then
+                rm -f "$client_file"
+                exit 2
+            fi
+        fi
+    ) 200>"$runtime_dir/.lock" || {
+        show_error "Hardware CPUID faulting is not supported on this CPU, and starting 'cpuid-fault-emulation.service' failed.\n\nPlease ensure 'cpuid-fault-emulation-dkms' is installed and your user belongs to the 'wheel' group."
+        exit 1
+    }
+
+    # Detached background watcher to ensure cleanup even on SIGKILL / OOM kill
+    (
+        while kill -0 "$client_pid" 2>/dev/null; do
+            sleep 2
+        done
+        cleanup_cpuid_fault_client
+    ) >/dev/null 2>&1 &
+    watcher_pid=$!
+
+    trap 'kill "$watcher_pid" 2>/dev/null || true; cleanup_cpuid_fault_client' EXIT INT TERM
+fi
+
+export LD_PRELOAD="$lib${filtered:+:$filtered}"
+
+if ! grep -q "cpuid_fault" /proc/cpuinfo 2>/dev/null; then
+    set +e
+    "$@"
+    exit_code=$?
+    exit $exit_code
+else
+    exec "$@"
+fi
