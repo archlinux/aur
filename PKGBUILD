@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A free, privacy-first automatic file organizer that quietly sorts your Downloads folder from the system tray"
 
-pkgver=0.1.6
+pkgver=0.2.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,9 +28,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname^}_${pkgver}_${_barch[0]}.deb")
-sha256sums=('9bf8592d2e739a0d593893d2abbcbf7e0df243e37552a90535bdc171f0827346'
+sha256sums=('82ece06a0572bada585b4dc582b7599467b8103539aed5d3b2cc9ddb75900dc9'
             'e27f44e9a62cf3ec22d9e2fe734772fa1b96e24459c3a3fb3957797824c3b5d1')
-sha256sums_x86_64=('849589b75e830294bf4a59379a06ee3c0807fa9b1eac5a884de1b26b1ab20041')
+sha256sums_x86_64=('38acdf0073574d5b2bf946e4cca811726ab5ef321587857dd53627c3d1b78d0d')
 
 
 package() {
