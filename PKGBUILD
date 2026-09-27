@@ -1,6 +1,6 @@
 # Maintainer: Cristo Cola <hello@argyrolabs.com>
 pkgname=fast-folder
-pkgver=3.13.0
+pkgver=3.14.0
 pkgrel=1
 pkgdesc="Template-driven project folder generator with a guided TUI and CLI (fastf)"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=(MIT)
 depends=(gcc-libs)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('049524b146019da140df4d1235623601631c18c070b1ee60652ccc34aaf0aa56')
+sha256sums=('0ef2e740c6744579f10b093076c322b30ab7700a4fcbd24d5367687a136a3ac1')
 
 prepare() {
   cd "$pkgname-$pkgver"
