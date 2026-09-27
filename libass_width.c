@@ -3,7 +3,10 @@
  *
  * A module exposing:
  *
- *     double libass_get_width(const char *fontname, int fontsize, const char *text)
+ *     double libass_get_width(const char *fontname, double fontsize,
+ *                            int bold, int italic, double scale_x,
+ *                            double scale_y, double spacing, int encoding,
+ *                            const char *text)
  *
  * which measures the rendered width of `text` with the given font and
  * size. Returns 0 for empty text, the width for measurable text, and -1
@@ -36,7 +39,7 @@ static const char *ass_template =
 "PlayResY: 1080\n"
 "[V4+ Styles]\n"
 "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\n"
-"Style: K1,%s,%d,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,2,1,64,64,240,1\n"
+"Style: K1,%s,%g,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,%d,%d,0,0,%g,%g,%g,0,1,2,2,1,64,64,240,%d\n"
 "[Events]\n"
 "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n"
 "Dialogue: 0,0:00:00.00,0:00:07.02,K1,,0,0,0,,%s\n";
@@ -49,7 +52,10 @@ static void msg_callback(int level, const char *fmt, va_list va, void *data)
 static ASS_Library *ass_library = NULL;
 static ASS_Renderer *ass_renderer = NULL;
 
-double libass_get_width(const char *fontname, int fontsize, const char *text)
+double libass_get_width(const char *fontname, double fontsize,
+                        int bold, int italic, double scale_x,
+                        double scale_y, double spacing, int encoding,
+                        const char *text)
 {
     if (!text || !text[0])
         return 0.0;
@@ -63,7 +69,8 @@ double libass_get_width(const char *fontname, int fontsize, const char *text)
     }
 
     char buf[1024];
-    snprintf(buf, sizeof(buf), ass_template, fontname, fontsize, text);
+    snprintf(buf, sizeof(buf), ass_template, fontname, fontsize,
+             bold, italic, scale_x, scale_y, spacing, encoding, text);
     ASS_Track *track = ass_read_memory(ass_library, buf, strlen(buf), "UTF8");
     if (!track)
         return -1.0;

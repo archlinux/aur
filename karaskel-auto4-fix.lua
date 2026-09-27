@@ -44,14 +44,25 @@ do
 	local ok, lib = pcall(function()
 		local ffi = require("ffi")
 		ffi.cdef[[
-			double libass_get_width(const char *fontname, int fontsize, const char *text);
+			double libass_get_width(const char *fontname, double fontsize,
+				int bold, int italic, double scale_x, double scale_y,
+				double spacing, int encoding, const char *text);
 		]]
 		return ffi.load(
 			"/usr/share/aegisub/automation/include/libass_width.so")
 	end)
 	if ok and lib then
-		libass_get_width = function(fontname, fontsize, text)
-			return lib.libass_get_width(fontname, fontsize, text)
+		libass_get_width = function(style, text)
+			return lib.libass_get_width(
+				style.fontname,
+				style.fontsize,
+				style.bold and 1 or 0,
+				style.italic and 1 or 0,
+				style.scale_x,
+				style.scale_y,
+				style.spacing,
+				style.encoding,
+				text)
 		end
 	end
 end
@@ -59,7 +70,7 @@ end
 function karaskel.text_extents(style, text)
 	local w, h, desc, ext = aegisub.text_extents(style, text)
 	if libass_get_width then
-		local mw = libass_get_width(style.fontname, style.fontsize, text)
+		local mw = libass_get_width(style, text)
 		if mw ~= nil and mw > 0 then
 			w = mw
 		end
