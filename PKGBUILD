@@ -1,6 +1,6 @@
 # Maintainer: Filippo Veneri <filippo.veneri@gmail.com>
 pkgname=doubletake-alchemy
-pkgver=0.4.0.alchemy.3
+pkgver=0.4.0.alchemy.4
 pkgrel=1
 pkgdesc='AirPlay sender for Linux with Hyprland extended desktops (alchemy fork)'
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ options=('!lto' '!debug')
 _tag=v${pkgver/.alchemy./-alchemy.}
 _source_dir=doubletake-${_tag#v}
 source=("doubletake-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('b766877a6dea95ad17fabc236f48b8e0883f1134bd9cf528d6c43798eeac61a8')
+sha256sums=('2cb04aa16e72292f09d3572d7fb1c5890d94f9ae64c06accfa79b2e8632daf66')
 
 prepare() {
   cd "${_source_dir}"
