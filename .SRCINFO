@@ -1,6 +1,6 @@
 pkgbase = doubletake-alchemy-bin
 	pkgdesc = AirPlay sender for Linux with Hyprland extended desktops (alchemy fork, prebuilt)
-	pkgver = 0.4.0.alchemy.3
+	pkgver = 0.4.0.alchemy.4
 	pkgrel = 1
 	url = https://github.com/alchemy/doubletake
 	arch = x86_64
@@ -24,14 +24,14 @@ pkgbase = doubletake-alchemy-bin
 	optdepends = gst-plugin-va: VA-API hardware video encoding
 	optdepends = xorg-xrandr: primary monitor detection for X11 capture
 	optdepends = org.freedesktop.secrets: system keyring credential storage
-	provides = doubletake=0.4.0.alchemy.3
-	provides = doubletake-alchemy=0.4.0.alchemy.3
+	provides = doubletake=0.4.0.alchemy.4
+	provides = doubletake-alchemy=0.4.0.alchemy.4
 	conflicts = doubletake
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/alchemy/doubletake/releases/download/v0.4.0-alchemy.3/doubletake-v0.4.0-alchemy.3-linux-amd64.tar.gz
-	sha256sums_x86_64 = c97aba03c410fa2077d4379cf1e6fd94ed674031a9ac5b8f78cf3bcc05fe592b
-	source_aarch64 = https://github.com/alchemy/doubletake/releases/download/v0.4.0-alchemy.3/doubletake-v0.4.0-alchemy.3-linux-arm64.tar.gz
-	sha256sums_aarch64 = 85405c0024185684d3d2b4940fa98308007ec11610f0dfb820373832115b6d65
+	source_x86_64 = https://github.com/alchemy/doubletake/releases/download/v0.4.0-alchemy.4/doubletake-v0.4.0-alchemy.4-linux-amd64.tar.gz
+	sha256sums_x86_64 = 54b8daa87d7a348a83c6bac5c84dfc1ebfcbfb7c0f3b5b050010a12bf5f3c023
+	source_aarch64 = https://github.com/alchemy/doubletake/releases/download/v0.4.0-alchemy.4/doubletake-v0.4.0-alchemy.4-linux-arm64.tar.gz
+	sha256sums_aarch64 = 851908945714dd8222414b2db7aa1d22341ed032c8fcd811f78f431edcb0fdb3
 
 pkgname = doubletake-alchemy-bin
