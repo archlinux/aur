@@ -1,6 +1,6 @@
 # Maintainer: mewset
 pkgname=better-iptv-bin
-pkgver=2.9.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Modern, powerful IPTV player for Linux, Windows, and macOS"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('mpv' 'webkit2gtk-4.1' 'gtk3')
 conflicts=('better-iptv-git')
 # Use the Arch-compatible AppImage (without bundled WebKit libs)
 source=("$pkgname-$pkgver.AppImage::https://github.com/mewset/better-iptv/releases/download/v${pkgver}/Better.IPTV_${pkgver}_amd64-arch.AppImage")
-sha256sums=('ab3d2ac681d57e7e8434c55b0e8b5bdbdfff01e3ea2fb0fd67c81a6a444cbafd')
+sha256sums=('282fa5b814e01c084eae222d4d15844fdd2856f7bdef37e4cf61ba740d01fca7')
 options=('!strip')
 
 prepare() {
