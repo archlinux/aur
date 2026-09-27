@@ -9,7 +9,7 @@
 
 pkgname=veiland
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayland screen locker with process-isolated GPU plugins"
 arch=('x86_64' 'aarch64')
 url="https://github.com/sylflo/veiland"
@@ -49,7 +49,7 @@ backup=('etc/pam.d/veiland')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # sha256 of the v$pkgver GitHub release tarball. Regenerate on each bump:
 #   curl -sL "$url/archive/refs/tags/v$pkgver.tar.gz" | sha256sum
-sha256sums=('4c7c6189315d878040c2a0d098ba6df4b60a94dffe4e0ca9e32192188b205464')
+sha256sums=('bfb4c406582d9a3d310685951490712c0a4c335fd0f3cfd394541fdbdcb957fc')
 
 # The real set, as -p flags shared by build() and check().
 _crates=(
