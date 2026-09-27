@@ -1,0 +1,13 @@
+pkgbase = neon-icon-theme
+	pkgdesc = Line icon theme featuring soft pastel colors for dark themes
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/Akr4ta/neon-icon-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	optdepends = papirus-icon-theme: for icons that might be missing
+	source = neon-icon-theme-3.0.0.tar.gz::https://github.com/Akr4ta/neon-icon-theme/archive/refs/tags/v3.0.0.tar.gz
+	sha256sums = 9179e220d1c6018873c2a94435c8bb9aa6955842c5d6ecf8f7d02cad5eb22a08
+
+pkgname = neon-icon-theme
