@@ -1,103 +1,60 @@
-# Maintainer: Lck0427 <lck0427 at hotmail dot com>
+# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 # Contributor: Lck0427 <lck0427 at hotmail dot com>
+
 pkgname=comfy-desktop
-pkgver=1.0.47
+_name=Comfy-Desktop
+pkgver=1.1.3
 pkgrel=1
-pkgdesc="Comfy Desktop is the official desktop application for ComfyUI"
+pkgdesc="The desktop app for ComfyUI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Comfy-Org/Comfy-Desktop"
-license=('MIT')
-options=('!strip')
-depends=(
-  'glibc'
-  'libstdc++'
-  'libgcc'
-  'gtk3'
-  'glib2'
-  'libx11'
-  'libxext'
-  'libxcb'
-  'libxcomposite'
-  'libxdamage'
-  'libxfixes'
-  'libxrandr'
-  'libxkbcommon'
-  'systemd-libs'
-  'python'
-  'nss'
-  'alsa-lib'
-  'mesa'
-  'cairo'
-  'dbus'
-  'expat'
-  'pango'
-  'hicolor-icon-theme'
-  'nspr'
-  'bash'
-  'python-pygit2'
-  'libxcrypt-compat'
-)
-makedepends=(
-  'nodejs>=22'
-  'pnpm>=10'
-  'git'
-  'python'
-  'gcc'
-)
-conflicts=('comfyui-desktop-2-beta')
-replaces=('comfyui-desktop-2-beta')
-source=(
-  "${pkgname}::git+${url}#tag=v${pkgver}"
-  "comfy-desktop.desktop"
-)
-sha256sums=('f30d35750c0de0638ac6d1b345954a25f4c2eaf75d063dd7748921a6f4453b17'
-            '6b7dcfbe0897075d288e844e01f42039158806c50c6ba9f7bf87f315d7cc9c4b')
-build() {
-  cd "${srcdir}/${pkgname}"
-  # Install dependencies
-  pnpm install --frozen-lockfile
-  # Build the app for Linux
-  pnpm run build:linux
+license=('AGPL-3.0-or-later')
+_electron=electron40
+depends=('bash' "${_electron}" 'glibc' 'hicolor-icon-theme' 'libgcc' 'libstdc++' 'python' 'python-pygit2')
+makedepends=('gendesk' 'pnpm')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+        "${pkgname}.sh")
+sha256sums=('12d49fd1ad4d201a920b7cadbebdbbd6986916480b36c6b7bb2f99c880d64e83'
+            '392aa4a63d71a463dcf7345271eac74fb3ca867d57ae99bc47a3a90117805fdd')
+
+prepare() {
+    cd "${_name}-${pkgver}"
+    gendesk -f -n \
+        --pkgname "${pkgname}" \
+        --pkgdesc "${pkgdesc}" \
+        --name "${_name/-/ }" \
+        --categories 'AudioVideo;Graphics;3DGraphics;'
+    sed -i "s/@ELECTRON@/${_electron}/" "${srcdir}/${pkgname}.sh"
 }
+
+build() {
+    cd "${_name}-${pkgver}"
+    pnpm install --frozen-lockfile
+    pnpm run build
+    pnpm electron-builder --linux dir \
+        --config.electronDist="/usr/lib/${_electron}" \
+        --config.electronVersion="$(cat /usr/lib/${_electron}/version)"
+}
+
 package() {
-  cd "${srcdir}/${pkgname}"
-  local _builddir="dist/linux-unpacked"
-  if [[ ! -d "$_builddir" ]]; then
-    echo "Error: Could not find expected build output directory: ${_builddir}" >&2
-    return 1
-  fi
-  #Install built binaries
-  install -d "${pkgdir}/opt"
-  cp -a "${_builddir}" "${pkgdir}/opt/${pkgname}"
-  # Cleanup unused 7zip binaries
-  local _7zip_dir="${pkgdir}/opt/${pkgname}/resources/app.asar.unpacked/node_modules/7zip-bin"
-  rm -rf ${_7zip_dir}/mac
-  local _keep_folder=""
-  case "$CARCH" in
-    x86_64)  _keep_folder="x64" ;;
-    aarch64) _keep_folder="arm64" ;;
-    *)
-      echo "Warning: Unsupported architecture '$CARCH'. You may need to handle 7zip modules yourself."
-      return 1
-      ;;
-  esac
-  if [[ -d "${_7zip_dir}/linux" ]]; then
-    plain "Cleaning up 7zip binaries for $CARCH (keeping ${_keep_folder})..."
-    find "${_7zip_dir}/linux" -mindepth 1 -maxdepth 1 -type d ! -name "$_keep_folder" -exec rm -rf {} +
-  fi
-  # Make binary link
-  install -d "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/comfyui-desktop-2" "${pkgdir}/usr/bin/${pkgname}"
-  # Install icons
-  local _icon
-  for _icon in "${srcdir}/${pkgname}/assets"/Comfy_Logo_x*.png; do
-    local _size
-    _size=$(basename "${_icon}" .png)
-    _size="${_size#Comfy_Logo_x}"
-    install -Dm644 "${_icon}" "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/comfyui-desktop-2.png"
-  done
-  # Install .desktop file
-  install -Dm644 "${srcdir}/comfy-desktop.desktop" "${pkgdir}/usr/share/applications/comfy-desktop.desktop"
-  # Install LICENSE file
-  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "${_name}-${pkgver}"
+    install -Dm644 dist/linux-unpacked/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r dist/linux-unpacked/resources/{app.asar.unpacked,lib} "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    for size in 32 64 256 512 1024; do
+        install -Dm644 "assets/Comfy_Logo_x${size}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
+    done
+    install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+
+    local find_dirs=(
+        -iwholename '*/arm' -o
+        -iwholename '*/arm64' -o
+        -iwholename '*/darwin-arm64' -o
+        -iwholename '*/darwin-x64' -o
+        -iwholename '*/ia32' -o
+        -iwholename '*/win32-arm64' -o
+        -iwholename '*/win32-x64'
+    )
+    find "${pkgdir}/usr/lib/${pkgname}/app.asar.unpacked/node_modules" -type d \( "${find_dirs[@]}" \) -exec rm -rf {} +
 }
