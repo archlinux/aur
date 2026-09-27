@@ -1,0 +1,23 @@
+pkgbase = tui2web
+	pkgdesc = Open any terminal program on your phone
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/czhu12/tui2web
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = nodejs
+	provides = tui2web
+	noextract = tui2web-0.4.0.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = tui2web-0.4.0.tgz::https://registry.npmjs.org/tui2web/-/tui2web-0.4.0.tgz
+	b2sums = db3d1dc00842b84ad0fa69ffd37b9571c384cb0e612f7446b33b238bd06b2f076a449b1b7fef1001da7a68b6da3f08ad17953a4d0bec030f1ee7d20341653de9
+
+pkgname = tui2web

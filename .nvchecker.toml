@@ -1,0 +1,3 @@
+[tui2web]
+source = "npm"
+npm = "tui2web"
