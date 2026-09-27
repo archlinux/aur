@@ -1,11 +1,11 @@
 pkgbase = miyu-voice
 	pkgdesc = Miyu 语音前端：唤醒词 + 本地语音识别(SenseVoice / sherpa-onnx)，可选组件
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/miyu-agent
 	arch = x86_64
 	license = MIT
-	depends = miyu=0.6.2-1
+	depends = miyu=0.7.0-1
 	depends = alsa-lib
 	depends = bzip2
 	depends = gcc-libs
@@ -13,7 +13,7 @@ pkgbase = miyu-voice
 	optdepends = libnotify: desktop notifications when Miyu hears you
 	options = !strip
 	options = !debug
-	source = miyu-voice-0.6.2-1-x86_64.release.pkg.tar.zst::https://github.com/SHORiN-KiWATA/miyu-agent/releases/download/v0.6.2/miyu-voice-0.6.2-1-x86_64.pkg.tar.zst
-	sha256sums = 9dfacdf56ac5d2fa213cbcfc6aa0fa7c5c0bca29ff3ce312812b8ae443653141
+	source = miyu-voice-0.7.0-1-x86_64.release.pkg.tar.zst::https://github.com/SHORiN-KiWATA/miyu-agent/releases/download/v0.7.0/miyu-voice-0.7.0-1-x86_64.pkg.tar.zst
+	sha256sums = 485807c48b76668ea0bc76d44dadc7deb76cb8221a8bc98881e23c43127280f0
 
 pkgname = miyu-voice
