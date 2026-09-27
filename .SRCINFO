@@ -1,7 +1,7 @@
 pkgbase = xfdesktop-devel
 	pkgdesc = A desktop manager for Xfce (development release)
 	pkgver = 4.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.xfce.org/xfce/xfdesktop/start
 	arch = i686
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = xfdesktop-devel
 	license = GPL2
 	makedepends = glib2-devel
 	makedepends = meson
+	makedepends = gst-plugin-gtk
 	depends = thunar
 	depends = garcon
 	depends = hicolor-icon-theme
@@ -18,11 +19,11 @@ pkgbase = xfdesktop-devel
 	depends = libxfce4windowing
 	depends = gtk-layer-shell
 	depends = libyaml
+	optdepends = gst-plugin-gtk: Video backgrounds
 	provides = xfdesktop=4.21.0
 	conflicts = xfce4-menueditor
 	conflicts = xfdesktop
 	replaces = xfce4-menueditor
-	options = !libtool
 	source = https://archive.xfce.org/src/xfce/xfdesktop/4.21/xfdesktop-4.21.0.tar.xz
 	sha256sums = 10a463b9bc474159622d861c1bf7f098e7848af15a453ac0275a3b92a8565c4e
 
