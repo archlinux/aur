@@ -5,7 +5,7 @@
 # 已随 release 资产一并打包，不再从上游单独拉取。
 
 pkgname=miyu
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='一个活在终端里的二次元少女。开箱即用的开源 AI 助手，支持接入通讯平台。'
 arch=('x86_64')
@@ -32,7 +32,7 @@ source=(
   "${pkgname}-${pkgver}-${_release_pkgrel}-${CARCH}.release.pkg.tar.zst::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-${_release_pkgrel}-${CARCH}.pkg.tar.zst"
 )
 sha256sums=(
-  '3b223f2cd1dd07076d8c088d48726aedcbe839ef6b0cc7808c2a78c19c5a7a64'
+  '53079da0da4a2918c22ccaa53ca2c25e690b208b6bf78a88f5ddc4da561c0405'
 )
 
 # Keep the last published version and checksum until channel_update records
