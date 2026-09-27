@@ -4,12 +4,12 @@
 
 pkgname=boomaga
 pkgver=3.9.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Virtual printer for viewing a document before printing it out using the physical printer"
 arch=(x86_64 aarch64)
 url="https://www.boomaga.org/"
 url_github="https://github.com/Boomaga/boomaga"
-license=(GPL2 LGPL2.1)
+license=(GPL-2.0-only LGPL-2.1+)
 depends=(
     cups
     glibc
