@@ -1,10 +1,10 @@
-# Maintainer: Serge K <arch@phnx47.net>
+# Maintainer: Serge <arch@phnx47.net>
 
 _appname=ledger-live-desktop
 _pkgname=ledger-live
 pkgname="${_pkgname}-git"
 _electron='electron43'
-pkgver=4.13.0.r0.ga24cdce
+pkgver=4.21.1.r0.g2ab0010
 pkgrel=1
 pkgdesc="Maintain your Ledger devices (git-main)"
 arch=('x86_64')
@@ -64,6 +64,8 @@ package() {
 
   install -Dm 644 "dist/__appImage-x64/${_appname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
   install -Dm 755 "dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${_appname}"
+  cp -a "dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${_appname}/"
+  find "${pkgdir}/usr/lib/${_appname}/app.asar.unpacked/node_modules/@ledgerhq/zcash-utils" \( -name '*.darwin-*.node' -o -name '*.win32-*.node' \) -delete
 
   install -Dm 644 "build/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${_appname}.png"
   for i in 128 256 512 1024; do
