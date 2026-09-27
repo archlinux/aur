@@ -6,25 +6,59 @@
 _reponame=qtutilities
 pkgname=qtutilities-git
 _name=${pkgname%-git}
-pkgver=569.fe5b3d9
+pkgver=732.90e0c5e
 pkgrel=2
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Common Qt related C++ classes and routines used by my applications such as dialogs, widgets and models'
-license=(GPL-2.0-or-later)
-depends=('c++utilities-git' 'qt6-base' 'libx11')
-optdepends=("$_name-doc: API documentation")
-makedepends=('cmake' 'git' 'ninja' 'qt6-tools' 'qt6-declarative' 'clang')
-provides=(libqtutilities-git.so)
+arch=('x86_64')
 url="https://github.com/Martchus/${_reponame}"
+license=('GPL-2.0-or-later')
+depends=(
+    'glibc'
+    'libgcc'
+    'libstdc++'
+    'libx11'
+    'qt6-base'
+)
+makedepends=(
+    'cmake'
+    'clang'
+    'git'
+    'ninja'
+    'c++utilities-git'
+    'qt6-tools'
+    'qt6-declarative'
+)
+optdepends=(
+  "$_name-doc: for API documentation"
+)
+provides=(
+    'libqtutilities-git.so'
+)
 source=("${_reponame}::${MARTCHUS_GIT_URL_PREFIX:-git+https://github.com/Martchus}/${_reponame}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    echo "$(git -C "${_reponame}" rev-list --count HEAD).$(git -C "${_reponame}" rev-parse --short HEAD)"
 }
 
 build() {
+    local cmake_options=(
+        -B build
+        -S "${PROJECT_DIR_NAME:-$_reponame}"
+        -G Ninja
+        -D QT_PACKAGE_PREFIX=Qt6
+        -D CMAKE_BUILD_TYPE=Release
+        -D CMAKE_INSTALL_PREFIX=/usr
+        -D BUILD_SHARED_LIBS=ON
+        -D BUILTIN_TRANSLATIONS=ON
+        -D BUILTIN_TRANSLATIONS_OF_QT=OFF
+        -D CONFIGURATION_NAME:STRING='git'
+        -D CONFIGURATION_PACKAGE_SUFFIX:STRING='-git'
+        -D CONFIGURATION_TARGET_SUFFIX:STRING='git'
+    )
+    cmake "${cmake_options[@]}"
+    cmake --build build --target all
+
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
   cmake \
     -G Ninja \
@@ -42,13 +76,21 @@ build() {
 }
 
 check() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  QT_QPA_PLATFORM=offscreen ninja check
+    cmake --build build --target tests
+
+    local ctest_flags=(
+        --test-dir build
+        --output-on-failure
+        --parallel $(nproc)
+    )
+    export QT_QPA_PLATFORM=offscreen
+    ctest "${ctest_flags[@]}"
 }
 
 package() {
-  depends+=('libc++utilities-git.so')
+  depends+=(
+      'libc++utilities-git.so'
+  )
 
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  DESTDIR="${pkgdir}" ninja install
+  DESTDIR="${pkgdir}" cmake --install build
 }
