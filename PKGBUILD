@@ -2,7 +2,7 @@
 
 pkgname=recoil16-dkms
 _srcname=recoil16
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Drivers and recoil16ctl for the PCSpecialist Recoil 16 AMD (TUXEDO Stellaris 16 Gen7): keyboard backlight, lightbar, power profiles, charge modes, battery health, Copilot key"
 arch=('x86_64')
@@ -17,7 +17,7 @@ install=recoil16.install
 # recoil16ctl is built stripped (Cargo.toml profile), so a -debug package would be empty
 options=('!debug')
 source=("$_srcname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d4006eb9fa0c033a442ce99e77d4caef5efc8fcd8231238ad0260e611cf16b26')
+sha256sums=('18e35e6655d8ea7856d18d1fc034c83424d987aba822119ad4ea216e1c12b372')
 
 prepare() {
   cd "$_srcname-$pkgver/recoil16ctl" || return
