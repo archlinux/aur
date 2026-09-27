@@ -3,9 +3,9 @@
 
 pkgname=recoil16-dkms-git
 _srcname=recoil16
-pkgver=1.0.0.r2.gc0cf908
+pkgver=1.1.0.r0.gee43cb4
 pkgrel=1
-pkgdesc="Drivers and recoil16ctl for the PCSpecialist Recoil 16 AMD (TUXEDO Stellaris 16 Gen7): keyboard backlight, lightbar, power profiles, charge limit, Copilot key"
+pkgdesc="Drivers and recoil16ctl for the PCSpecialist Recoil 16 AMD (TUXEDO Stellaris 16 Gen7): keyboard backlight, lightbar, power profiles, charge modes, battery health, Copilot key"
 arch=('x86_64')
 url="https://github.com/amad3v/recoil16"
 license=('GPL-2.0-only' 'GPL-2.0-or-later')
@@ -16,6 +16,8 @@ optdepends=('linux-headers: build the modules for the linux kernel'
 provides=('recoil16-dkms')
 conflicts=('recoil16-dkms')
 install=recoil16.install
+# recoil16ctl is built stripped (Cargo.toml profile), so a -debug package would be empty
+options=('!debug')
 source=("$_srcname::git+${RECOIL16_GIT:-https://github.com/amad3v/recoil16.git}")
 sha256sums=('SKIP')
 

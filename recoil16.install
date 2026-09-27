@@ -2,7 +2,7 @@ post_install() {
 	cat <<'MSG'
 ==> recoil16: the modules are built by DKMS and load automatically at boot. Reboot now.
 ==> Then:  recoil16ctl                      (status of everything)
-==>        sudo recoil16ctl battery limit 80   (or KDE/GNOME power settings)
+==>        sudo recoil16ctl battery mode long-life   (charge to ~93%; trickle ~90%)
 ==>        sudo recoil16ctl lightbar blue 60   (saved for boot)
 ==> Sc key rotates the screen in KDE after the next login (System Settings >
 ==>     Keyboard > Shortcuts > Recoil 16). Remove any Sc shortcut you added by hand.
@@ -11,18 +11,17 @@ MSG
 }
 
 post_upgrade() {
+	# 1.1.0 replaced the percentage charge limit with charge modes
+	if [ -e /etc/udev/rules.d/90-recoil16-charge-limit.rules ]; then
+		rm -f /etc/udev/rules.d/90-recoil16-charge-limit.rules
+		echo "==> recoil16: the battery charge limit is gone (it may damage the battery on this"
+		echo "==>     model). Choose a charge mode: sudo recoil16ctl battery mode long-life"
+	fi
 	echo "==> recoil16: reboot to load the updated modules."
 }
 
-pre_remove() {
-	# the EC keeps its limit after the driver is gone, so lift it while we still can
-	if [ -w /sys/class/power_supply/BAT0/charge_control_end_threshold ]; then
-		echo 100 > /sys/class/power_supply/BAT0/charge_control_end_threshold
-		echo "==> recoil16: battery charge limit reset to 100%"
-	fi
-}
-
 post_remove() {
-	rm -f /etc/udev/rules.d/90-recoil16-charge-limit.rules
+	rm -f /etc/udev/rules.d/90-recoil16-charge-mode.rules \
+	      /etc/udev/rules.d/90-recoil16-charge-limit.rules
 	echo "==> recoil16: removed. Reboot to return to the stock drivers."
 }

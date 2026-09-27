@@ -1,6 +1,6 @@
 pkgbase = recoil16-dkms-git
-	pkgdesc = Drivers and recoil16ctl for the PCSpecialist Recoil 16 AMD (TUXEDO Stellaris 16 Gen7): keyboard backlight, lightbar, power profiles, charge limit, Copilot key
-	pkgver = 1.0.0.r2.gc0cf908
+	pkgdesc = Drivers and recoil16ctl for the PCSpecialist Recoil 16 AMD (TUXEDO Stellaris 16 Gen7): keyboard backlight, lightbar, power profiles, charge modes, battery health, Copilot key
+	pkgver = 1.1.0.r0.gee43cb4
 	pkgrel = 1
 	url = https://github.com/amad3v/recoil16
 	install = recoil16.install
@@ -16,6 +16,7 @@ pkgbase = recoil16-dkms-git
 	optdepends = libkscreen: kscreen-doctor for recoil16ctl screen rotate (KDE Plasma)
 	provides = recoil16-dkms
 	conflicts = recoil16-dkms
+	options = !debug
 	source = recoil16::git+https://github.com/amad3v/recoil16.git
 	sha256sums = SKIP
 
