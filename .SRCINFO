@@ -1,11 +1,12 @@
 pkgbase = mdcat
 	pkgdesc = Sophisticated Markdown rendering for the terminal
 	pkgver = 2.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BIRSAx2/mdcat
 	arch = i686
 	arch = x86_64
 	license = MPL-2.0
+	checkdepends = less
 	makedepends = asciidoctor
 	makedepends = cargo
 	depends = gcc-libs

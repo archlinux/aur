@@ -1,9 +1,10 @@
-# Maintainer: Daurnimator <daurnimator@archlinux.org>
-# Maintainer: Justin Kromlinger <hashworks@archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Daurnimator <daurnimator@archlinux.org>
+# Contributor: Justin Kromlinger <hashworks@archlinux.org>
 # Contributor: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
 pkgver=2.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sophisticated Markdown rendering for the terminal'
 arch=('i686' 'x86_64')
 url="https://github.com/BIRSAx2/mdcat"
@@ -12,6 +13,7 @@ options=(!lto)
 depends=('gcc-libs' 'openssl' 'curl')
 makedepends=('asciidoctor'
              'cargo')
+checkdepends=('less')
 optdepends=('less: for mdless'
             'fzf: for mdpick')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
