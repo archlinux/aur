@@ -3,7 +3,7 @@
 
 _plug=muxtools
 pkgname=python-${_plug}-git
-pkgver=0.4.3.3.gfab28b1
+pkgver=0.4.3.5.gcea10d3
 pkgrel=1
 pkgdesc="Python Package: ${_plug} (GIT version)"
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
     'python-py7zr'
     'python-pydantic'
     'python-pymediainfo'
-    'python-pyparsebluray-git'
+    'python-pyparsebluray'
     'python-requests'
     'python-rich'
     'python-typed-ffmpeg-compatible3'
