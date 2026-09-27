@@ -1,5 +1,5 @@
 pkgbase = pixlay
-	pkgdesc = Make a collage out of one to nine photos and export it for printing
+	pkgdesc = Native Linux photo collage maker designed for GNOME.
 	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/YangtseSu/pixlay

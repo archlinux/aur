@@ -2,7 +2,7 @@
 pkgname=pixlay
 pkgver=0.1.2
 pkgrel=1
-pkgdesc="Make a collage out of one to nine photos and export it for printing"
+pkgdesc="Native Linux photo collage maker designed for GNOME."
 # `aarch64` is the claim that this tree builds under Arch Linux ARM too, and that half of the
 # package is built there: no GitHub runner has an aarch64 Arch userland. The release's arm64
 # binaries are the runner's (`AGENTS.md`, "AUR discipline").
