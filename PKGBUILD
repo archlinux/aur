@@ -13,7 +13,7 @@
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.1.2.31
+pkgver=7.1.2.32
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -74,7 +74,7 @@ makedepends=(
     'zlib'
     'zstd')
 source=("git+https://github.com/ImageMagick/ImageMagick.git#tag=${pkgver%.*}-${pkgver##*.}")
-sha256sums=('d37bca661cf0f32e332471b13ff18d8046301fde3fc98219c62bec02ccb5bc75')
+sha256sums=('d6f794e14cb0dd7de9935b36fa94c8258d6c77130200d4976a688c23a5701f9b')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
 
 build() {
