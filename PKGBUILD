@@ -1,6 +1,6 @@
 # Maintainer: Ryan Putrama Yahya <punkofthedeath at gmail.com>
 pkgname=apparmor-language-server
-pkgver=0.9.1
+pkgver=0.9.3
 pkgrel=1
 pkgdesc='Language server for AppArmor profiles '
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools'
   'python-build'
   'python-installer')
 source=("$url/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('6bbdd6ecbb398957a6b53d15782666084be9c428f34d76947d6263f9e1933e03')
+sha256sums=('6c8ab5011b533388e54d0036760b7d451c1e7aadfd74bb9aee9a36c6d8ca1c98')
 
 build() {
   cd "${pkgname}-v${pkgver}"
