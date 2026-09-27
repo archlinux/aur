@@ -1,7 +1,7 @@
 pkgbase = aurcache-sandbox
 	pkgdesc = Landlock sandbox used by AURCache to confine PKGBUILD execution
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gyscos/AURCache
 	arch = x86_64
 	arch = aarch64
