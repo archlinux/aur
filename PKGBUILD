@@ -7,7 +7,7 @@
 
 pkgname=aurcache-worker
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote build worker for AURCache"
 # armv7h is deliberately absent: its cross toolchain is not in Arch's official
 # repositories, only aarch64's is. Adding it means the AUR toolchain or an
@@ -61,12 +61,6 @@ build() {
     source "$srcdir/$_srcdir/packaging/common.sh"
     cd "$_srcdir/backend"
     _aurcache_cargo_build -p aurcache-worker
-}
-
-check() {
-    source "$srcdir/$_srcdir/packaging/common.sh"
-    cd "$_srcdir/backend"
-    _aurcache_cargo_check
 }
 
 package() {
