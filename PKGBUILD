@@ -1,35 +1,39 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Mark Collins
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: Thomas S Hatch <thatch45@gmail.com>
 
-pkgname=python-unittest-xml-reporting
-pkgver=3.2.0
+_name='unittest-xml-reporting'
+_usname="${_name//-/_}"
+pkgname="python-${_name}"
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='unittest-based test runner with Ant/JUnit like XML reporting.'
 arch=('any')
-url='https://github.com/xmlrunner/unittest-xml-reporting'
-license=('BSD')
-depends=('python-lxml')
-makedepends=('python-setuptools')
-source=("https://github.com/xmlrunner/unittest-xml-reporting/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('ea8b6c7d3b7995fc1750b14ca76987ff3525993be91c86e401bcfd233d4d02d629d4fa50fc7de79cade39ed4d6c9749becee279ae68c4ed90747e3d3940ab898')
+url="https://github.com/xmlrunner/${_name}"
+license=('BSD-2-Clause')
+depends=(
+  'python'
+  'python-lxml'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-setuptools-scm'
+  'python-wheel'
+)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=('bfa1ed65e9e6f33c161d04470d89050458cfb65a5a5d0358834ef7ce037d9136')
 
 build() {
-  cd unittest-xml-reporting-$pkgver
-  python setup.py build
-}
-
-check() {
-  cd unittest-xml-reporting-$pkgver
-  python setup.py test
+    cd "${_usname}-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd unittest-xml-reporting-$pkgver
-  python setup.py install --root="$pkgdir" -O1
-
-  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
-
-  # Broken data_files
-  rm "$pkgdir"/usr/LICENSE
+    cd "${_usname}-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    mkdir -p "${pkgdir}/usr/share/licenses/$pkgname"
+    install -Dm755 -t "${pkgdir}/usr/share/licenses/$pkgname" LICENSE
 }

@@ -1,0 +1,3 @@
+[python-unittest-xml-reporting]
+source = "pypi"
+pypi = "unittest_xml_reporting"

@@ -1,13 +1,18 @@
 pkgbase = python-unittest-xml-reporting
 	pkgdesc = unittest-based test runner with Ant/JUnit like XML reporting.
-	pkgver = 3.2.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/xmlrunner/unittest-xml-reporting
 	arch = any
-	license = BSD
+	license = BSD-2-Clause
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
 	depends = python-lxml
-	source = https://github.com/xmlrunner/unittest-xml-reporting/archive/3.2.0/python-unittest-xml-reporting-3.2.0.tar.gz
-	sha512sums = ea8b6c7d3b7995fc1750b14ca76987ff3525993be91c86e401bcfd233d4d02d629d4fa50fc7de79cade39ed4d6c9749becee279ae68c4ed90747e3d3940ab898
+	source = https://files.pythonhosted.org/packages/source/u/unittest_xml_reporting/unittest_xml_reporting-4.0.0.tar.gz
+	sha256sums = bfa1ed65e9e6f33c161d04470d89050458cfb65a5a5d0358834ef7ce037d9136
 
 pkgname = python-unittest-xml-reporting
