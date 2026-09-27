@@ -2,7 +2,7 @@
 # Builds kache from the latest `main`. pkgver() derives the version from git,
 # so this tracks unreleased/dev code — rebuild to update.
 pkgname=kache-git
-pkgver=0.26.3.r871.ga7aafc6
+pkgver=0.27.0.r1012.ga83f300
 pkgrel=1
 pkgdesc='Content-addressed zero-copy build cache for Rust, C/C++ and more (latest git main)'
 arch=('x86_64' 'aarch64')
@@ -53,6 +53,9 @@ package() {
   for name in cc c++ gcc g++ clang clang++; do
     ln -s /usr/bin/kache "$pkgdir/usr/lib/kache/$name"
   done
+  # Marks the farm so another kache on PATH skips it (see
+  # compiler::shim::SHIM_DIR_MARKER).
+  install -Dm0644 /dev/null "$pkgdir/usr/lib/kache/.kache-shims"
 
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
