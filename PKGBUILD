@@ -3,13 +3,13 @@
 _pkgname=libppd
 pkgname=$_pkgname-git
 pkgver=2.1.1.r24.g4afdca97
-pkgrel=1
+pkgrel=2
 pkgdesc="Legacy support library for PPD files"
 arch=('x86_64' 'aarch64')
 url="https://github.com/OpenPrinting/$_pkgname"
 license=('Apache-2.0 WITH LLVM-exception')
-depends=('libcups-git' 'libcupsfilters-git' 'libjxl')
-makedepends=('git' 'ghostscript' 'mupdf-tools')
+depends=('libcupsfilters-git' 'libjxl')
+makedepends=('git' 'ghostscript' 'mupdf-tools' 'poppler')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')

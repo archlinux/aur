@@ -1,7 +1,7 @@
 pkgbase = libppd-git
 	pkgdesc = Legacy support library for PPD files
 	pkgver = 2.1.1.r24.g4afdca97
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenPrinting/libppd
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = libppd-git
 	makedepends = git
 	makedepends = ghostscript
 	makedepends = mupdf-tools
-	depends = libcups-git
+	makedepends = poppler
 	depends = libcupsfilters-git
 	depends = libjxl
 	provides = libppd
