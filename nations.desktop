@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=TrackMania Nations Forever
+Icon=trackmania-forever-nations
+Type=Application
+Categories=Game;
+Keywords=racing;tmf;tmnf;vanilla;
+Path=/opt/TmForever
+Exec=trackmania-forever TmForever.exe /ini='Nadeo.Nations.ini' /singleinst --file-or-url %u
+MimeType=application/x-trackmania-forever-replay;application/x-trackmania-forever-challenge;x-scheme-handler/tmtp;
+Actions=launcher;
+
+[Desktop Action launcher]
+Name=Launcher
+Exec=trackmania-forever TmNationsForeverLauncher.exe /ini='Nadeo.Nations.ini'

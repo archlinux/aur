@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-trackmania-forever-replay">
+    <sub-class-of type="application/x-trackmania-replay"/>
+    <comment>Trackmania Forever replay</comment>
+    <acronym>Replay.GBX</acronym>
+    <expanded-acronym>Replay.GameBoX</expanded-acronym>
+    <generic-icon name="trackmania-forever-gbx"/>
+    <magic priority="60">
+      <match type="string" value="GBX" offset="0"> <!-- GBX file -->
+        <match type="little32" value="0x00000007" offset="37"> <!-- Replay version 7 -->
+          <match type="little32" value="0x03093000" offset="9"/> <!-- replay class id -->
+          <match type="little32" value="0x2407e000" offset="9"/> <!-- unwrapped replay class id -->
+          <!--
+            Logic-wise, we should check for class id before replay version, but you can't encode
+            "A and (B or C) and D" with this spec.
+            You can only do "A and ((B and D) or (C and D))" or "A and D and (B or C)".
+          -->
+        </match>
+      </match>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-trackmania-forever-challenge">
+    <sub-class-of type="application/x-trackmania-challenge"/>
+    <comment>Trackmania Forever challenge</comment>
+    <acronym>Challenge.GBX</acronym>
+    <expanded-acronym>Challenge.GameBoX</expanded-acronym>
+    <generic-icon name="trackmania-forever-gbx"/>
+    <magic priority="60">
+      <match type="string" value="GBX" offset="0"> <!-- GBX file -->
+        <match type="little32" value="0x03043000" offset="9"> <!-- CGameCtnChallenge -->
+          <match type="byte" value="0x0b" offset="61"/> <!-- Challenge version 11 -->
+        </match>
+      </match>
+    </magic>
+  </mime-type>
+</mime-info>
