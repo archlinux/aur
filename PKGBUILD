@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-full
 pkgver=9.0.2
-pkgrel=1
+pkgrel=2
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _whispercpp_ver='1.9.4'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
@@ -172,6 +172,7 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch'
         '060-ffmpeg-lensfun-fix-pkgconfig.patch'
         '070-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
+        '080-ffmpeg-openapv1.1-fix.patch'::'https://code.ffmpeg.org/FFmpeg/FFmpeg/commit/c54710db21c1827dbc3e47658a562525af0fe528.patch'
         'LICENSE')
 sha256sums=('8c3850283eb25fa026482078a04051e0be17347b09ef81a0849bec15a96e002e'
             'SKIP'
@@ -184,6 +185,7 @@ sha256sums=('8c3850283eb25fa026482078a04051e0be17347b09ef81a0849bec15a96e002e'
             '4a9a672f67cc0e5dd63bd7659f5a5198cd981e60bbbc1b9a63277758be6a7fdf'
             'c39addf190d25d1182c5c5658677f77ee7c1ae542969b2004441c62a425d324b'
             '2c846c629ad129ae8ce50791de4f1d390714db6d6420a35406b83b9b44999d4a'
+            '6eda059a49ec07dc8d0c872c3c1fc71d8f92c5e76463380c62fe027111b3ae2e'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -196,6 +198,7 @@ prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch"
     patch -d lensfun -Np1 -i "${srcdir}/060-ffmpeg-lensfun-fix-pkgconfig.patch"
     patch -d "whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/070-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/080-ffmpeg-openapv1.1-fix.patch"
 }
 
 build() {
