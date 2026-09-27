@@ -1,7 +1,7 @@
 # Maintainer: Fovty <38868829+Fovty@users.noreply.github.com>
 pkgname=hushmic-bin
 _srcname=hushmic
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Real-time microphone noise suppression as a virtual mic (DPDFNet via PipeWire) — prebuilt binary"
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=('hushmic')
 # bundled ONNX Runtime, and debug extraction has no sources to point at.
 options=('!strip' '!debug')
 source=("$url/releases/download/v$pkgver/hushmic-$pkgver-x86_64.tar.gz")
-sha256sums=('d485e25439e0cddfe7eb995b8e5370578cd6b37c1e65b68133ee27f69dcbd4ae')
+sha256sums=('80a1a47ada7d52cf11240390c2f4c93372f8429df151986ad3c3545c91ff3db8')
 
 package() {
   cd "$srcdir/hushmic-$pkgver-x86_64"
@@ -42,6 +42,11 @@ package() {
     "$pkgdir/usr/share/hushmic/models/dpdfnet8_48khz_hr.onnx"
   install -Dm644 share/hushmic/models/dpdfnet2_48khz_hr.onnx \
     "$pkgdir/usr/share/hushmic/models/dpdfnet2_48khz_hr.onnx"
+  # Native engine weights, next to the models they belong to.
+  install -Dm644 share/hushmic/models/dpdfnet8_48khz_hr.weights.f32 \
+    "$pkgdir/usr/share/hushmic/models/dpdfnet8_48khz_hr.weights.f32"
+  install -Dm644 share/hushmic/models/dpdfnet2_48khz_hr.weights.f32 \
+    "$pkgdir/usr/share/hushmic/models/dpdfnet2_48khz_hr.weights.f32"
 
   install -Dm644 lib/systemd/user/hushmic.service \
     "$pkgdir/usr/lib/systemd/user/hushmic.service"
