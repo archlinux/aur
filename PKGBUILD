@@ -13,7 +13,7 @@
 # slsa-verifier (see "Verifying release binaries" in README.md).
 
 pkgname=hakase-bin
-pkgver=0.1.0.alpha.7
+pkgver=0.1.0.alpha.8
 pkgrel=1
 pkgdesc="Go agent harness with an embedded Vue 3 web UI (prebuilt binary)"
 arch=('x86_64')
@@ -30,11 +30,11 @@ provides=(hakase)
 conflicts=(hakase)
 # The real git tag. AUR pkgver cannot contain '-', so the alpha separator
 # becomes a dot in pkgver; keep this in sync manually on version bumps.
-_tag="v0.1.0-alpha.7"
+_tag="v0.1.0-alpha.8"
 source=("hakase-$_tag-linux-amd64::$url/releases/download/$_tag/hakase-$_tag-linux-amd64"
         "config.json.example::$url/raw/$_tag/config.json.example"
         "LICENSE::$url/raw/$_tag/LICENSE")
-sha256sums=('79672ca4f453876a0eff4b0d47a1f4abcaaa905aa89c4b7aab27dd6b12f79a32'
+sha256sums=('349766e039f18a6b11e1b6d4d69c8960ea00eb38491f408976ef74fac19a16eb'
             '8fe427b9b9f9fa326a819bd3f3b64eca89b034369a230e51fac3683947e95e91'
             '791adc82735316a6a2ca21ce16cf6f030ad640a8a2fdcc1f388c33816272131e')
 
