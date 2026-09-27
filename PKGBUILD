@@ -1,8 +1,8 @@
 # Maintainer: NEOAPPS <asd22.info@gmail.com>
 # Co-Maintainer: TheOddCell <rayfb.to.1@gmail.com>
 pkgname=obsidianctl
-pkgver=2.0.1
-pkgrel=2
+pkgver=3.0.0
+pkgrel=0
 pkgdesc="ObsidianOS's special program to manage A/B Partitions"
 arch=('any')
 url="https://github.com/Obsidian-OS/obsidianctl"
@@ -11,7 +11,7 @@ depends=('python' 'efibootmgr' 'parted' 'dosfstools' 'squashfs-tools' 'rsync' 'c
 makedepends=('make')
 provides=('obsidianctl')
 source=("https://github.com/Obsidian-OS/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d7099370be3a0f7e40c34ff67e69ba23b53105bcdb5e30cae25b40548af2042d')
+sha256sums=('acb807a61b686f3443660c4e1f80cec5b9930f5c2aa92c923635c7c9d9d8a488')
 conflicts=("obsidianctl-git")
 build() {
   cd "$srcdir/$pkgname-$pkgver"
