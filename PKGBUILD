@@ -10,8 +10,10 @@ provides=('redumper')
 
 # The previous maintainer set pkgver against what Media Preservation Frontend had bundled. However, the lead maintainer (superg) has recommended to simply use the latest. There's also no conflicts with redump or no-intro project submissions by using the latest version.
 pkgver=b752
-pkgrel=1
+pkgrel=2
 license=('GPL3')
+
+_pkgfilename=redumper-$pkgver-linux-x64
 
 # redumper-gui is pre-packaged with a supported and recommended version of redumper, therefore this package and the GUI cannot co-exist; generally the version of redumper in redumper-gui follows recent release builds.
 
