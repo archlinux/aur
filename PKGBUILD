@@ -1,4 +1,5 @@
-# Maintainer: Karl Ljungkvist <k[dot]ljungkvist[at]gmail[dot]com>
+# Maintainer: Razvan Cojocaru <razvanc[at]mailbox[dot]org>
+# Contributor: Karl Ljungkvist <k[dot]ljungkvist[at]gmail[dot]com>
 # Contributor: Gobidev <adrian[dot]groh[at]t-online[dot]de>
 # Contributor: Dominik Schrempf <dominik dot schrempf at gmail dot com>
 # Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
