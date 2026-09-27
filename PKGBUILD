@@ -6,7 +6,7 @@
 
 _pkgname=qpdf
 pkgname="${_pkgname}-zopfli"
-pkgver=12.4.1
+pkgver=12.4.2
 pkgrel=1
 pkgdesc="QPDF: A Content-Preserving PDF Transformation System (with Zopfli support)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('cmake')
 provides=('qpdf')
 conflicts=('qpdf')
 source=("https://github.com/qpdf/qpdf/releases/download/v$pkgver/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('f045aa277be2356ff53a89a8622945958291177d2483afc20ede7c8a8cd3873c')
+sha256sums=('8a58af5b6141319287c1883bec8bd1bd545b7567b7fc5e6ce5d25a1c85f36397')
 
 build() {
   cd ${_pkgname}-${pkgver}
