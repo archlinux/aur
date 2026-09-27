@@ -5,13 +5,11 @@ pkgbase = critique
 	url = https://github.com/remorses/critique
 	arch = x86_64
 	license = MIT
-	depends = bun
+	makedepends = bun
 	depends = git
 	options = !strip
 	options = !debug
 	source = critique::git+https://github.com/remorses/critique.git#tag=critique@0.2.1
-	source = critique.sh
 	sha256sums = 7dcf7bd95b2a26a3d38d9590b23a641d3352cce329c0ba0c8e93f802de6a78ec
-	sha256sums = da25b3c236a78420d4ae39c1993183d5e6a1ae601a47f3367a2d960034a6397f
 
 pkgname = critique
