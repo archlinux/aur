@@ -1,0 +1,5 @@
+[openxplorer-bin]
+source = "github"
+github = "AKolenda/openxplorer"
+use_latest_release = true
+prefix = "v"
