@@ -4,15 +4,15 @@
 
 pkgname=concat
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open-source CapCut replacement, a video editor with a Rust engine"
 arch=('x86_64')
 url="https://github.com/jub0t/Concat"
 license=('AGPL-3.0-or-later')
-# Nothing is spawned at run time: FFmpeg is linked, whisper.cpp and
-# sherpa-onnx are compiled in. alsa-lib is cpal's playback backend;
+# Nothing is spawned at run time: FFmpeg is linked, whisper.cpp, sherpa-onnx
+# and Skia are compiled in. alsa-lib is cpal's playback backend;
 # fontconfig and freetype are the font side of the renderer; libglvnd and
-# vulkan-icd-loader are the two backends wgpu picks between, and the rest is
+# vulkan-icd-loader are the two backends Skia and wgpu draw on, and the rest is
 # what winit opens by name for whichever session the user is in. dbus is the
 # XDG portal, which is how the file dialogs and "reveal in file manager"
 # work without a toolkit. onnxruntime runs the cutout models and is linked
@@ -41,10 +41,18 @@ _tag="v0.2.4"
 # checksums instead of arriving unverified from a build script. The version
 # follows upstream's Cargo.lock and is synced by pkg.sh.
 _sherpa="1.13.7"
+# skia-bindings, behind Slint's Skia renderer, is the same: it downloads
+# prebuilt Skia libraries unless it is handed them. The archive is named by
+# the crate version and a key (rust-skia commit, target, Skia features). Both
+# are synced by pkg.sh.
+_skia="0.99.0"
+_skia_key="a25a0fdb7d90429aa2d1-x86_64-unknown-linux-gnu-gl-jpegd-jpege-pdf-textlayout-vulkan"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jub0t/Concat/archive/refs/tags/${_tag}.tar.gz"
-        "https://github.com/k2-fsa/sherpa-onnx/releases/download/v${_sherpa}/sherpa-onnx-v${_sherpa}-linux-x64-static-lib.tar.bz2")
-noextract=("sherpa-onnx-v${_sherpa}-linux-x64-static-lib.tar.bz2")
-sha256sums=('31d29842832a8f9304cff47722f64ec3f45df7279a484a62037921eca3a7c575' 'd1be7a69ac2b30120058d8302e624239a3064085383cfa47994a14fdc44c32d6')
+        "https://github.com/k2-fsa/sherpa-onnx/releases/download/v${_sherpa}/sherpa-onnx-v${_sherpa}-linux-x64-static-lib.tar.bz2"
+        "https://github.com/rust-skia/skia-binaries/releases/download/${_skia}/skia-binaries-${_skia_key}.tar.gz")
+noextract=("sherpa-onnx-v${_sherpa}-linux-x64-static-lib.tar.bz2"
+           "skia-binaries-${_skia_key}.tar.gz")
+sha256sums=('31d29842832a8f9304cff47722f64ec3f45df7279a484a62037921eca3a7c575' 'd1be7a69ac2b30120058d8302e624239a3064085383cfa47994a14fdc44c32d6' '097e78d775c9156dc4b070b9cca7008dbab587513ecb1924baf4cf9620f3119b')
 
 _srcname="Concat-${_tag#v}"
 
@@ -62,6 +70,8 @@ build() {
   export CARGO_TARGET_DIR=target
   # the checksummed archive from source[1], instead of a download in build()
   export SHERPA_ONNX_ARCHIVE_DIR="$srcdir"
+  # the same for source[2]; {key} is filled in by skia-bindings itself
+  export SKIA_BINARIES_URL="file://$srcdir/skia-binaries-{key}.tar.gz"
   # ort, the ONNX Runtime binding behind the cutout models, downloads a
   # prebuilt runtime from its build script unless it is pointed at one. Arch
   # has the library, so it is linked against that instead - dynamically, so
@@ -78,15 +88,9 @@ build() {
   # for kernels nobody measured. Off, it compiles to the portable baseline.
   export GGML_NATIVE=OFF
 
-  # --features wgpu: FemtoVG over wgpu instead of the default Skia renderer.
-  # skia-bindings downloads prebuilt binaries from its build script, which a
-  # package cannot do; the wgpu renderer is pure Rust. This is the same
-  # choice, for the same reason, that upstream's flake.nix makes.
-  #
   # --profile app: upstream's shipping profile - fat LTO, panic=abort,
   # stripped. See src/Cargo.toml for what each knob is for.
-  cargo build --profile app -p concat --frozen \
-    --no-default-features --features wgpu
+  cargo build --profile app -p concat --frozen
 }
 
 package() {
