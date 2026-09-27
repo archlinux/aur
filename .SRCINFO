@@ -1,18 +1,18 @@
 pkgbase = fastmail
-	pkgdesc = Email made better
+	pkgdesc = Desktop app for email, calendar and contacts
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.fastmail.com
 	arch = x86_64
 	license = custom:fastmail
 	makedepends = desktop-file-utils
-	depends = gtk3
-	depends = nss
-	depends = alsa-lib
+	depends = electron43
 	options = !strip
 	source = com.fastmail.Fastmail-1.8.0.AppImage::https://dl.fastmailcdn.com/desktop/production/linux/x64/com.fastmail.Fastmail-1.8.0.AppImage
+	source = fastmail.sh
 	source = LICENSE.md
 	sha512sums = b796206a7dfb3dc529b76cf86c012951bb443b84e504ce102e43f6c9c7e1681c500fd2ffa491f889623e48be1e9a0e285994899341a77a1956842a2c6b288895
+	sha512sums = 4db398692ff791a7d798bee9d6382e0f48a2ec814f1446ce54ca0c3fb4d6e17c1a2c4cc22e8cf1f209f679ddebc5b6c72f362c81070883c7c6af832965b3e045
 	sha512sums = e336da034d45735cf62687e8b917e9d995a446685b1341d823ea032f9256751a92ecf5501c48ed4daf18a76df30a3a89b4a6f07aa4f6b2c2d34224c352435d89
 
 pkgname = fastmail

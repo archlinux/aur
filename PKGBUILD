@@ -3,53 +3,65 @@
 # Auto Upgrade: https://github.com/phnx47/pkgbuilds
 
 pkgname=fastmail
+_appid=com.fastmail.Fastmail
+_electron='electron43'
 pkgver=1.8.0
-pkgrel=1
-pkgdesc='Email made better'
+pkgrel=2
+pkgdesc='Desktop app for email, calendar and contacts'
 license=('custom:fastmail')
 url='https://www.fastmail.com'
 arch=('x86_64')
 options=('!strip')
-depends=('gtk3' 'nss' 'alsa-lib')
+depends=("${_electron}")
 makedepends=('desktop-file-utils')
-_appimg="com.fastmail.Fastmail-${pkgver}.AppImage"
+_appimg="${_appid}-${pkgver}.AppImage"
 source=("${_appimg}::https://dl.fastmailcdn.com/desktop/production/linux/x64/${_appimg}"
+        "${pkgname}.sh"
         "LICENSE.md") # https://www.fastmail.com/policies/terms-of-service/
 sha512sums=('b796206a7dfb3dc529b76cf86c012951bb443b84e504ce102e43f6c9c7e1681c500fd2ffa491f889623e48be1e9a0e285994899341a77a1956842a2c6b288895'
+            '4db398692ff791a7d798bee9d6382e0f48a2ec814f1446ce54ca0c3fb4d6e17c1a2c4cc22e8cf1f209f679ddebc5b6c72f362c81070883c7c6af832965b3e045'
             'e336da034d45735cf62687e8b917e9d995a446685b1341d823ea032f9256751a92ecf5501c48ed4daf18a76df30a3a89b4a6f07aa4f6b2c2d34224c352435d89')
+
+_check_electron() {
+  expected_electron="electron$(grep -aoE 'Electron/[0-9]+' squashfs-root/${pkgname} | head -1 | cut -d/ -f2)"
+  if [[ "${_electron}" != "${expected_electron}" ]]; then
+    echo -e "Using the wrong version of Electron! Expected '\e[32m${expected_electron}\e[0m' but using '\e[31m${_electron}\e[0m'."
+    exit 1
+  fi
+}
 
 prepare() {
   chmod +x "${_appimg}"
   "./${_appimg}" --appimage-extract
 
-  cd squashfs-root
+  _check_electron
+  sed -i "s~@ELECTRON@~${_electron}~" "${pkgname}.sh"
+
   desktop-file-edit \
     --set-key=Exec \
     --set-value="${pkgname} %U" \
     --set-key=Name \
     --set-value="Fastmail" \
     --remove-key=X-AppImage-Version \
-    ${pkgname}.desktop
-
-  rm "AppRun" "resources/app-update.yml"
+    "squashfs-root/${pkgname}.desktop"
 }
 
 package() {
-  install -d "${pkgdir}/opt/${pkgname}"
-  cp -a "squashfs-root/." "${pkgdir}/opt/${pkgname}/"
+  install -Dm 755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
-  install -d "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  cd squashfs-root
 
-  install -d "${pkgdir}/usr/share/applications"
-  ln -s "/opt/${pkgname}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm 644 "resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
+  cp -a "resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}/"
+
+  install -Dm 644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${_appid}.desktop"
+  install -Dm 644 "usr/share/metainfo/${_appid}.metainfo.xml" -t "${pkgdir}/usr/share/metainfo"
 
   for i in 16 24 32 48 64 128 256 512 1024; do
-    install -d "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps"
-    ln -s "/opt/${pkgname}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
+    install -Dm 644 "usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png" -t "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps"
   done
 
-  find "${pkgdir}" -type d -exec chmod 755 {} +
+  find "${pkgdir}/usr/lib/${pkgname}" -type d -exec chmod 755 {} +
 
-  install -Dm 644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+  install -Dm 644 "${srcdir}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
