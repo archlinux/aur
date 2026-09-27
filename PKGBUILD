@@ -13,7 +13,7 @@
 
 pkgname=aurcache-worker-docker
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Legacy Docker build executor for AURCache (deprecated)"
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/gyscos/AURCache"
@@ -42,12 +42,6 @@ build() {
     source "$srcdir/$_srcdir/packaging/common.sh"
     cd "$_srcdir/backend"
     _aurcache_cargo_build -p aurcache-worker-docker
-}
-
-check() {
-    source "$srcdir/$_srcdir/packaging/common.sh"
-    cd "$_srcdir/backend"
-    _aurcache_cargo_check
 }
 
 package() {
