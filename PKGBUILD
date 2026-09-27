@@ -1,11 +1,12 @@
 # Maintainer: jarbowski <jarbowski@laposte.net>
 pkgname=tape16-bin
-pkgver=0.9.400
-pkgrel=2
+pkgver=0.9.410
+pkgrel=1
 pkgdesc="Destructive tape-style DAW (X11-backed, XWayland on Wayland sessions)"
 arch=('x86_64')
 url="https://emrmusicgroup.com/tape16/"
 license=('LicenseRef-proprietary')
+groups=('pro-audio')
 depends=(
   hicolor-icon-theme
   bash
@@ -36,7 +37,7 @@ options=(!strip !debug)
 makedepends=(unzip)
 
 source=("TAPE-16-v${pkgver}-Linux-Release.zip::https://github.com/jackpaterson1/TAPE-16-Public-Releases/releases/download/${pkgver}/TAPE-16-v${pkgver}-Linux-Release.zip")
-sha256sums=('a356d3f64dd89acdec18d60763c8b48553532da7a38c355a3010791fe87e4fea')
+sha256sums=('d789a0822c815dda10770714f0588710623f472822002a82baddb6a168e4b3ad')
 
 prepare() {
   unzip -o "TAPE-16-v${pkgver}-Linux-Release.zip"
