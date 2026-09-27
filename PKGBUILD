@@ -1,17 +1,19 @@
 # Maintainer: Vendetta1871
 pkgname=skvirt-git
-pkgver=r7.050db97
+pkgver=r10.8b73a6e
 pkgrel=1
 pkgdesc="Touch-driven on-screen keyboard for fcitx5 on KWin (Wayland)"
 arch=('x86_64')
 url="https://github.com/Vendetta1871/skvirt"
 license=('GPL-3.0-or-later')
-depends=('qt6-base' 'qt6-declarative' 'layer-shell-qt' 'fcitx5'
+depends=('qt6-base' 'qt6-declarative' 'qt6-multimedia' 'layer-shell-qt' 'fcitx5'
          'libime' 'hunspell'
          'kconfig' 'kcoreaddons' 'ki18n' 'kcmutils' 'kirigami')
 makedepends=('cmake' 'git' 'pkgconf')
 optdepends=('hunspell-en_us: English word suggestions'
-            'hunspell-ru: Russian word suggestions')
+            'hunspell-ru: Russian word suggestions'
+            'whisper-cpp: voice input via whisper-server'
+            'fcitx5-commit-git: insert dictated text as one commit instead of key taps')
 provides=('skvirt')
 conflicts=('skvirt')
 source=("skvirt::git+https://github.com/Vendetta1871/skvirt.git")
