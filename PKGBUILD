@@ -5,7 +5,7 @@
 # by CI (.github/workflows/aur-release.yml) on every release; the values below
 # are only a checked-in reference snapshot.
 pkgname=runner-run-bin
-pkgver=0.26.2
+pkgver=0.27.0
 pkgrel=1
 pkgdesc='Universal project task runner (prebuilt binary)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -25,10 +25,10 @@ source=("$_url-man.tar.gz")
 source_x86_64=("$_url-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_url-aarch64-unknown-linux-gnu.tar.gz")
 source_armv7h=("$_url-armv7-unknown-linux-gnueabihf.tar.gz")
-sha256sums=('5cebbab0bb8b6c3ada5866e37459bcaa59a5073567c77b42146d0917dfb0cedb')
-sha256sums_x86_64=('a57342e73ab9cfe85911e7099502d4270edb2c2c54d39be85ee3c3f9c7560d18')
-sha256sums_aarch64=('e33ed3855aa59268cb759bc90bddd091d20fe9bb6d0ac574e4001260eb024ad8')
-sha256sums_armv7h=('f16baed95417f9ab404f11403a70f78147012e31cd5f6614163efea9dae67bc5')
+sha256sums=('3e26cfcdd7fd95ece7f2bc8448a2c01a28fdbeb5e8f8d1cb889498d29ede2d0b')
+sha256sums_x86_64=('09146590a89961aa5eef014755c06862374a23a1977aabd484558bdbd8d4c3ac')
+sha256sums_aarch64=('7958fb6113d051adfaa6b400fe0f4514c163d66100919094fa2844c607275021')
+sha256sums_armv7h=('d4262594560a4b16f52fba07d08bb2290b25e0b04c829ddaa49a014cc204741c')
 
 package() {
 	# Archives are flat: runner, run, README.md, LICENSE at the root.
