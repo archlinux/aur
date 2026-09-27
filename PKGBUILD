@@ -2,7 +2,7 @@
 # Maintainer: ka2n <ka2n@pobox.com>
 
 pkgname='miru-go-bin'
-pkgver=0.0.22
+pkgver=0.0.23
 pkgrel=1
 pkgdesc='A command-line tool for viewing package documentation with a man-like interface'
 url='https://github.com/ka2n/miru'
@@ -12,11 +12,11 @@ provides=('miru')
 conflicts=('miru')
 optdepends=('github-cli' 'glab')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ka2n/miru/releases/download/v0.0.22/miru_v0.0.22_linux_arm64.tar.gz")
-sha256sums_aarch64=('f5ac6528faf737951c7923d7e5ddef66f17bce4b4418dd74bf024203264adcc1')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ka2n/miru/releases/download/v0.0.23/miru_v0.0.23_linux_arm64.tar.gz")
+sha256sums_aarch64=('647458ae1604cf143338825b4c263dfeea0837356bebe93f96164a91b819d309')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ka2n/miru/releases/download/v0.0.22/miru_v0.0.22_linux_amd64.tar.gz")
-sha256sums_x86_64=('6327a2d685ba481c829a7a6d1b4591d8d84d70858315c353079f32408e7025e5')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ka2n/miru/releases/download/v0.0.23/miru_v0.0.23_linux_amd64.tar.gz")
+sha256sums_x86_64=('c0916afb834664baf5832819b6f1c05eae2f6e6c4be76b1239ed233c1cf3274e')
 
 package() {
   # bin
