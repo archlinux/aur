@@ -1,0 +1,19 @@
+pkgbase = aurcache-cli
+	pkgdesc = Typed CLI for the AURCache API
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/gyscos/AURCache
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	options = !strip
+	options = !lto
+	options = !debug
+	source = aurcache-cli-0.6.0.tar.gz::https://github.com/gyscos/AURCache/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = aurcache-cli
