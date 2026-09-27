@@ -1,5 +1,5 @@
 pkgname=pirate-radio-launcher
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A launcher for Knockout City's Private Server Edition"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!debug')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/launcher-v${pkgver}/Pirate.Radio.Launcher_${pkgver}_amd64.deb")
-sha256sums_x86_64=('c5dadced8371fd3e2079b8964b3584bf6110a629684ae88bbfa0370557969161')
+sha256sums_x86_64=('011b1ea73cc328a71cf9a6a0da9d1d67d8a49f822ee2c0fd81f27e07c7969db8')
 
 package() {
   # Extract package data
