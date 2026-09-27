@@ -1,0 +1,23 @@
+pkgbase = libraw-cmake
+	pkgdesc = LibRaw configuration files for CMake
+	pkgver = r63.eb98e43
+	pkgrel = 1
+	url = https://github.com/LibRaw/LibRaw-cmake
+	arch = any
+	license = BSD-3-Clause-Tso
+	makedepends = cmake
+	makedepends = glibc
+	makedepends = lcms2
+	makedepends = libgcc
+	makedepends = libgomp
+	makedepends = libjpeg-turbo
+	makedepends = libstdc++
+	makedepends = zlib
+	depends = hicolor-icon-theme
+	depends = sdl2
+	source = LibRaw-cmake-eb98e4325aef2ce85d2eb031c2ff18640ca616d3.tar.gz::https://github.com/LibRaw/LibRaw-cmake/archive/eb98e4325aef2ce85d2eb031c2ff18640ca616d3.tar.gz
+	source = LibRaw-0.22.2.tar.gz::https://codeload.github.com/LibRaw/LibRaw/tar.gz/refs/tags/0.22.2
+	b2sums = SKIP
+	b2sums = 48e881ae2eb20c273e25f1ebc36e3ddbf0d255af8e5693cd515262cb1d66ac7e444064baa629cf7bc0a19057afe3b4ba045257589bc08afc5c0fc2b28193f377
+
+pkgname = libraw-cmake
