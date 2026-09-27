@@ -2,7 +2,7 @@
 
 pkgname=scout-mcp-bin
 _pkgname=scout-mcp
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="An MCP server exposing scout's diagnostics as read-only tools: evaluate an MCP server, or verify an attestation, from inside the agent"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ provides=('scout-mcp')
 conflicts=('scout-mcp')
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_x86_64.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_arm64.tar.gz")
-sha256sums_x86_64=('e1e534eb981030a115fe701b767339bb9a8c0578ee7a6ed566ca603985e044d8')
-sha256sums_aarch64=('38a3c9f9f854ab5b228697300f41030323ff1029fbd37e4319234f3affdcbd4a')
+sha256sums_x86_64=('7ca19aea8a8687a49ac1f4f8a6a30a4a8ef89d288f70df9141d42709474e2078')
+sha256sums_aarch64=('00f21a62c9079602be04edb2144c0410e59b2a206d8d7450d333cd30d8885017')
 
 package() {
   install -Dm755 scout-mcp "${pkgdir}/usr/bin/scout-mcp"
