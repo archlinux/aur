@@ -1,6 +1,6 @@
 # Maintainer: Balasubramanian Periannan <balathepharmacist@gmail.com>
 pkgname=lixplore-cli
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Academic Literature Search & Export CLI Tool - Search PubMed, arXiv, Crossref, DOAJ, EuropePMC"
 arch=('any')
@@ -13,7 +13,8 @@ depends=(
     'python-openpyxl'
 )
 optdepends=(
-    'python-rich: Enhanced TUI mode with colors and formatting'
+    'python-textual: Full-screen TUI (lixplore --tui)'
+    'python-rich: Colored output and fallback TUI'
 )
 makedepends=(
     'python-build'
@@ -23,7 +24,7 @@ makedepends=(
     'python-setuptools-scm'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pryndor/Lixplore_cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d83cae62e6577130e1bfc2a3d8a78216c3e18dfb9064e9151f438a749e4622fb')
+sha256sums=('b76bf31d218d01c05e2b0db4241be1ea9b46c5b85a50129adafd2cbf885d27a0')
 
 build() {
     cd "Lixplore_cli-${pkgver}"
