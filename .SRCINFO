@@ -1,0 +1,15 @@
+pkgbase = curre
+	pkgdesc = A TUI workflow runner that drives your shell scripts through JSON-defined steps with live output, parallel execution, and persistent sessions
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://codeberg.org/jackdaw/curre
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	provides = curre
+	options = !strip
+	source = curre-0.0.4.tgz::https://codeberg.org/jackdaw/curre/archive/v0.0.4.tar.gz
+	sha256sums = eaf98d38f45feb6c6e44643fbc844379d8ebb76eec5db2defa88d51d9e83157d
+
+pkgname = curre

@@ -1,0 +1,6 @@
+[curre]
+source = "gitea"
+host = "codeberg.org"
+gitea = "jackdaw/curre"
+use_latest_release = true
+prefix = "v"
