@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='A lightweight dock for KDE Plasma 6 — spiritual successor to Latte Dock'
 arch=('x86_64' 'aarch64')
 url='https://github.com/isac322/krema'
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-or-later' 'MIT-CMU')
 depends=(
     'qt6-base>=6.8'
     'qt6-declarative>=6.8'
@@ -52,4 +52,7 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
+    # MIT-CMU is not one of Arch's common licenses, so its text must ship.
+    install -Dm644 "$pkgname-$pkgver/LICENSES/MIT-CMU.txt" \
+        "$pkgdir/usr/share/licenses/$pkgname/MIT-CMU.txt"
 }
