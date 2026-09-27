@@ -1,6 +1,6 @@
 pkgbase = wallr-bin
 	pkgdesc = 🎨 GPU-accelerated animated wallpaper engine for Wayland
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/programmersd21/wallr
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = wallr-bin
 	provides = wallr
 	conflicts = wallr
 	options = !strip
-	source = LICENSE-0.6.1::https://raw.githubusercontent.com/programmersd21/wallr/v0.6.1/LICENSE
+	source = LICENSE-0.6.2::https://raw.githubusercontent.com/programmersd21/wallr/v0.6.2/LICENSE
 	sha256sums = cc3c6e9b47b26034c07cf061c660c58cf11a522d8d26eed42b68d8ece1c5076e
-	source_x86_64 = wallr-x86_64-0.6.1.tgz::https://github.com/programmersd21/wallr/releases/download/v0.6.1/wallr-linux-amd64.tar.gz
-	sha256sums_x86_64 = 208dcbb958aa2c12e7cb9172d4807d2140b147aa974355225d855430d3c6cef5
+	source_x86_64 = wallr-x86_64-0.6.2.tgz::https://github.com/programmersd21/wallr/releases/download/v0.6.2/wallr-linux-amd64.tar.gz
+	sha256sums_x86_64 = 2630ade16f36c09d7b733beb41ffb9a19438bbba193ef7e0baf80cf8cf446411
 
 pkgname = wallr-bin
