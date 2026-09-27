@@ -8,7 +8,7 @@ url="https://github.com/WiVRn/WiVRn"
 license=("GPL-3.0-or-later")
 
 depends=(
-    "openxr"
+    "openxr>=1.1.58"
     "fontconfig"
     "curl"
     "boost-libs>=1.84"
@@ -45,7 +45,7 @@ makedepends=(
     "wayland"
     "gcc-libs"
     "glibc"
-    # "openxr"
+    "openxr>=1.1.58"
 )
 
 source=("git+https://github.com/WiVRn/WiVRn.git")
