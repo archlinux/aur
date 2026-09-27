@@ -1,6 +1,6 @@
 # Maintainer: Nick Yeung <nickjyeung@gmail.com>
 pkgname=reels-bin
-pkgver=1.4.6
+pkgver=1.4.7
 pkgrel=1
 pkgdesc="Instagram reels in the terminal"
 arch=('x86_64' 'aarch64')
@@ -11,9 +11,9 @@ optdepends=('chromium: browser backend' 'google-chrome: browser backend' 'brave-
 provides=('reels')
 conflicts=('reels')
 source_x86_64=("https://github.com/njyeung/reels/releases/download/v${pkgver}/reels-linux-amd64")
-sha256sums_x86_64=('71daed376bddd64eb366722bc67f746c1ba9e893eecd1814936570c5697820f6')
+sha256sums_x86_64=('a3c1b187eb38efe586dc32b115a941d00fb32ac13383e772756577fa0edfb547')
 source_aarch64=("https://github.com/njyeung/reels/releases/download/v${pkgver}/reels-linux-arm64")
-sha256sums_aarch64=('a83fb31b874b43fafc0771a07ab9fe9db16ecfe4b42c1d36ec29f488ae45afa1')
+sha256sums_aarch64=('a08b45a2b958e293f554bca4a7c44ed2fd1494730fc71eadfbc7650be63c0836')
 
 package() {
     if [[ "$CARCH" == "x86_64" ]]; then
