@@ -4,58 +4,81 @@
 # you also find the URL of a binary repository.
 
 _reponame=qtforkawesome
-_pkgver_forkawesome=1.2.0
-_reponame_forkawesome=Fork-Awesome-$_pkgver_forkawesome
 pkgname=qtforkawesome-git
 _name=${pkgname%-git}
-pkgver=88.cef99f7
+pkgver=115.8fc8c7c
 pkgrel=2
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+_pkgver_fork_awesome=1.2.0
 pkgdesc='Library that bundles ForkAwesome for use within Qt applications'
-license=(GPL-2.0-or-later)
-depends=('qt6-base')
-optdepends=(
-  'qt6-declarative: Qt Quick integration'
-  "$_name-doc: API documentation"
-)
-makedepends=('cmake' 'git' 'ninja' 'perl-yaml-libyaml' 'qtutilities-git' 'qt6-declarative' 'clang')
-provides=(libqtforkawesome-git.so libqtquickforkawesome-git.so)
+arch=('x86_64')
 url="https://github.com/Martchus/${_reponame}"
+license=('GPL-2.0-or-later')
+depends=(
+    'glibc'
+    'libgcc'
+    'libstdc++'
+    'qt6-base'
+    'qt6-declarative'
+)
+makedepends=(
+    'cmake'
+    'git'
+    'ninja'
+    'perl-yaml-libyaml'
+    'qt6-tools'
+    'qtutilities-git'
+)
+optdepends=(
+    'qt6-declarative: Qt Quick integration'
+    "$_name-doc: API documentation"
+)
+provides=(
+    'libqtforkawesome-git.so'
+    'libqtquickforkawesome-git.so'
+)
 source=("${_reponame}::${MARTCHUS_GIT_URL_PREFIX:-git+https://github.com/Martchus}/${_reponame}.git"
-        "${_reponame_forkawesome}::https://github.com/ForkAwesome/Fork-Awesome/archive/refs/tags/${_pkgver_forkawesome}.tar.gz")
+        "Fork-Awesome-${_pkgver_fork_awesome}.tar.gz::https://github.com/ForkAwesome/Fork-Awesome/archive/refs/tags/${_pkgver_fork_awesome}.tar.gz")
 sha256sums=('SKIP'
             '23fba5f191f204e0414c547bf4c9b10fd7ca42c151260e8f64698449a75fbdb3')
 
 pkgver() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    echo "$(git -C "${_reponame}" rev-list --count HEAD).$(git -C "${_reponame}" rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  cmake \
-    -G Ninja \
-    -DCMAKE_BUILD_TYPE:STRING='Release' \
-    -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-    -DCONFIGURATION_NAME:STRING='git' \
-    -DCONFIGURATION_PACKAGE_SUFFIX:STRING='-git' \
-    -DCONFIGURATION_TARGET_SUFFIX:STRING='git' \
-    -DQT_PACKAGE_PREFIX:STRING='Qt6' \
-    -DKF_PACKAGE_PREFIX:STRING='KF6' \
-    -DBUILD_SHARED_LIBS:BOOL=ON \
-    -DBUILTIN_TRANSLATIONS:BOOL=ON \
-    -DFORK_AWESOME_FONT_FILE="$srcdir/${_reponame_forkawesome}/fonts/forkawesome-webfont.woff2" \
-    -DFORK_AWESOME_ICON_DEFINITIONS="$srcdir/${_reponame_forkawesome}/src/icons/icons.yml" \
-    .
-  ninja
+    local cmake_options=(
+        -B build
+        -S "${PROJECT_DIR_NAME:-$_reponame}"
+        -G Ninja
+        -D QT_PACKAGE_PREFIX=Qt6
+        -D CMAKE_BUILD_TYPE=Release
+        -D CMAKE_INSTALL_PREFIX=/usr
+        -D BUILD_SHARED_LIBS=ON
+        -D CONFIGURATION_NAME:STRING='git'
+        -D CONFIGURATION_PACKAGE_SUFFIX:STRING='-git'
+        -D CONFIGURATION_TARGET_SUFFIX:STRING='git'
+        -D FORK_AWESOME_FONT_FILE="${srcdir}/Fork-Awesome-${_pkgver_fork_awesome}/fonts/forkawesome-webfont.woff2"
+        -D FORK_AWESOME_ICON_DEFINITIONS="${srcdir}/Fork-Awesome-${_pkgver_fork_awesome}/src/icons/icons.yml"
+    )
+    cmake "${cmake_options[@]}"
+    cmake --build build --target all
 }
 
 check() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  QT_QPA_PLATFORM=offscreen ninja check
+    cmake --build build --target tests
+
+    local ctest_flags=(
+        --test-dir build
+        --output-on-failure
+        --parallel $(nproc)
+    )
+    QT_QPA_PLATFORM=offscreen ctest "${ctest_flags[@]}"
 }
 
 package() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  DESTDIR="${pkgdir}" ninja install
+  depends+=(
+      'libc++utilities-git.so'
+      'libqtutilities-git.so'
+  )
+  DESTDIR="${pkgdir}" cmake --install build
 }
