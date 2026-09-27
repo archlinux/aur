@@ -22,11 +22,11 @@ build(){
   cd uutils-tar
   test $RUSTC_BOOTSTRAP = 1 && _cargoflags='-Zbuild-std=std,panic_abort --config=profile.release.panic="immediate-abort" -Zpanic-immediate-abort'
   export ZSTD_SYS_USE_PKG_CONFIG=1
-  cargo build --profile=release-fast $_cargoflags
+  cargo build --release $_cargoflags
 }
 
 package() {
   cd uutils-tar
-  install -Dm755 target/release-fast/tarapp "$pkgdir"/usr/bin/uu-tar
+  install -Dm755 target/release/tarapp "$pkgdir"/usr/bin/uu-tar
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/uutils-tar
 }
