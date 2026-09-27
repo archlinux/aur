@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=radiant.data
-_pkgver=1.6.8
+_pkgver=1.6.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -51,16 +51,14 @@ checkdepends=(
 optdepends=(
   r-arrow
   r-dbi
-  r-dbplyr
   r-pkgdown
-  r-rpostgres
   r-rsqlite
   r-testthat
   r-webshot
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c760b4d84c01010300a4f954ac86f35d')
-b2sums=('f7e401e38fbea7706a367bd21d4bf8c2c72b631c119e4f6614bda0c7f2a659252427f6456998993a3ae5f62d6df5ed0178766727c2ed27ac03a0c9775b672b27')
+md5sums=('0011c8f664a7edc6f231a6bce7eaf100')
+b2sums=('fb5273eb10aed6a8291ba630d0c685697d2b5d633b5961dcde5c49c44268d48976311f9953c8960f2e95cb12e18f105e476c13f8fb2b0ddac30c956c27edda8f')
 
 build() {
   mkdir build
