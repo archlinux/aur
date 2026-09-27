@@ -7,7 +7,7 @@ _appname=ledger-live-desktop
 pkgname=ledger-live
 _electron='electron43'
 pkgver=4.21.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Maintain your Ledger devices"
 arch=('x86_64')
 url='https://shop.ledger.com/pages/ledger-wallet-download'
@@ -65,6 +65,8 @@ package() {
 
   install -Dm 644 "dist/__appImage-x64/${_appname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
   install -Dm 755 "dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${_appname}"
+  cp -a "dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${_appname}/"
+  find "${pkgdir}/usr/lib/${_appname}/app.asar.unpacked/node_modules/@ledgerhq/zcash-utils" \( -name '*.darwin-*.node' -o -name '*.win32-*.node' \) -delete
 
   install -Dm 644 "build/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${_appname}.png"
   for i in 128 256 512 1024; do
