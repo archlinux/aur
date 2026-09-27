@@ -1,0 +1,18 @@
+pkgbase = airwaves
+	pkgdesc = Internet radio from radio-browser.info: 50,000 stations by genre, country and language, for Quickshell
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/SimonSchubert/moarchy-apps
+	arch = any
+	license = MIT
+	depends = quickshell
+	depends = mpv
+	depends = util-linux
+	depends = qt6-imageformats
+	depends = ttf-jetbrains-mono-nerd
+	depends = hicolor-icon-theme
+	optdepends = mpv-mpris: the station on media keys and the lock screen
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/airwaves-v1.0.0/airwaves-1.0.0.tar.gz
+	sha256sums = fb3c31a5cf018e662ca7f4e3b9807d392803a91f592b8ea5f4c1bb31e1d2a5e1
+
+pkgname = airwaves
