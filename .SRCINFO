@@ -1,18 +1,19 @@
 pkgbase = redumper-bin
 	pkgdesc = Low level CD dumper utility
-	pkgver = b750
+	pkgver = b752
 	pkgrel = 1
 	url = https://github.com/superg/redumper
 	arch = x86_64
 	license = GPL3
 	provides = redumper
 	conflicts = redumper-gui-bin
-	conflicts = redumper-bin
+	conflicts = redumper-gui
+	conflicts = redumper-git
 	conflicts = redumper
-	source = https://github.com/superg/redumper/releases/download/b750/redumper-b750-linux-x64.zip
+	source = https://github.com/superg/redumper/releases/download/b752/redumper-b752-linux-x64.zip
 	source = https://raw.githubusercontent.com/superg/redumper/main/README.md
 	source = https://raw.githubusercontent.com/superg/redumper/main/LICENSE
-	sha256sums = 9c8260b9727800e3af6037efda272022497ea41b98b02cac623c45a17c592ac4
+	sha256sums = 9238c2fc11a0741c0e25978307fc4f8f79358a841fb85d58de4466333e6e367f
 	sha256sums = SKIP
 	sha256sums = SKIP
 
