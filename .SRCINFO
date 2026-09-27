@@ -1,6 +1,6 @@
 pkgbase = python-srsly
 	pkgdesc = Modern high-performance serialization utilities for Python
-	pkgver = 2.5.3
+	pkgver = 2.5.4
 	pkgrel = 1
 	url = https://github.com/explosion/srsly
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python-srsly
 	makedepends = cython
 	depends = python
 	depends = python-catalogue
-	source = python-srsly-2.5.3.tar.gz::https://github.com/explosion/srsly/archive/refs/tags/release-v2.5.3.tar.gz
-	sha256sums = 1b55f5c3e56d6b312578d09c17337904daaa05e15ffdb208f5e5a41add3fa2b6
+	source = python-srsly-2.5.4.tar.gz::https://github.com/explosion/srsly/archive/refs/tags/release-v2.5.4.tar.gz
+	sha256sums = 0d88eb579a0c669a78bd43927d1f1bad83a5100c22e01a73f3551b353fb5c008
 
 pkgname = python-srsly

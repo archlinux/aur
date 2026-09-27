@@ -4,7 +4,7 @@
 
 _pkgname=srsly
 pkgname=python-${_pkgname}
-pkgver=2.5.3
+pkgver=2.5.4
 pkgrel=1
 pkgdesc='Modern high-performance serialization utilities for Python'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ depends=('python' 'python-catalogue')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'cython')
 checkdepends=('python-pytest' 'python-pytest-timeout' 'python-mock')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/release-v${pkgver}.tar.gz")
-sha256sums=('1b55f5c3e56d6b312578d09c17337904daaa05e15ffdb208f5e5a41add3fa2b6')
+sha256sums=('0d88eb579a0c669a78bd43927d1f1bad83a5100c22e01a73f3551b353fb5c008')
 
 latestver() {
     curl -fsSL 'https://api.github.com/repos/explosion/srsly/releases/latest' |
