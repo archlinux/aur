@@ -1,6 +1,6 @@
 # Maintainer: koxt2 <koxt2@protonmail.com>
 pkgname=datarecovery
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="GTK4/Libadwaita application for data recovery using ddrescue and PhotoRec"
 arch=('any')
@@ -16,9 +16,11 @@ depends=(
   'rdfind'
   'udisks2'
   'polkit'
+  'hdf5'
 )
 makedepends=('meson' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/koxt2/DataRecovery/archive/refs/tags/v$pkgver.tar.gz")
+#source=("v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
