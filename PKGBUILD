@@ -18,13 +18,13 @@ source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('29eebfa6b55a283ce3d948600504d28531df5d0742e4782da80a06e1235ccc6c')
 
 prepare() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}/" || exit 1
 
 	go mod tidy
 }
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}/" || exit 1
 
 	export CGO_ENABLED=0
 
@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
+	cd "${srcdir}/${pkgname}-${pkgver}/" || exit 1
 
 	install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
