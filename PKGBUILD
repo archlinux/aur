@@ -3,7 +3,7 @@ _raw_pkgver=02.08.02.61
 
 pkgname=bambu-studio
 pkgver=2.8.2.61
-pkgrel=1
+pkgrel=2
 pkgdesc="PC Software for BambuLab and other 3D printers"
 arch=('x86_64')
 url="https://github.com/bambulab/BambuStudio"
@@ -53,6 +53,7 @@ build() {
 		-DSLIC3R_STATIC=ON \
 		-DSLIC3R_GTK=3 \
 		-DBBL_RELEASE_TO_PUBLIC=1 \
+		-DBBL_INTERNAL_TESTING=0 \
 		-DCMAKE_PREFIX_PATH=$srcdir/BambuStudio_deps/usr/local \
 		-DCMAKE_INSTALL_PREFIX=/opt/BambuStudio \
 		-DCMAKE_BUILD_TYPE=Release
