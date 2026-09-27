@@ -1,7 +1,7 @@
 # Maintainer: gui <aerofrutiger3000@gmail.com>
 pkgname=aro-git
 _pkgname=aro
-pkgver=0.2.0.r3.g62214e7
+pkgver=0.3.0.r0.g68dddf6
 pkgrel=1
 pkgdesc='Minimal tiling Wayland compositor with spring animations'
 arch=('x86_64')
