@@ -2,7 +2,7 @@
 
 pkgauthor="kanakOS01"
 pkgname="gravitype"
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A terminal typing game where the words fall from the sky"
 
@@ -24,7 +24,7 @@ depends=('bash' 'python' 'python-textual' 'python-rich')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('16d9512cc8809a447d130b2dc59abdc50e64c6258efb6325193fe6b96ec1da4b')
+sha256sums=('54be663e9d4eec09f770695b5b579b49af725944bc7804b03027744a57384ea1')
 
 
 prepare() {
