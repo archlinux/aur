@@ -6,17 +6,16 @@
 
 pkgname=transcribe
 pkgver=9.70.0
-pkgrel=1
-pkgdesc="music transcription aid"
+pkgrel=2
+pkgdesc="Software to help transcribe recorded music"
 arch=('x86_64')
 url="https://www.seventhstring.com/xscribe/overview.html"
-license=('custom')
-depends=('libsm' 'gtk3' 'gst-plugins-base-libs')
-optdepends=('gst-plugin-pipewire')
+license=('custom:seventhstring')
+depends=('libsm' 'gtk3' 'gst-plugins-base-libs' 'hicolor-icon-theme')
+optdepends=('gst-plugin-pipewire: audio output via PipeWire')
 options=(!strip)
 source=("https://www.seventhstring.com/xscribe/downlo/xscsetup-${pkgver}.tar.gz")
 sha256sums=('985bdc60971af84198500a7959d43d3594910636509d1cbd531ed726fd7f2abf')
-
 
 package() {
   cd "$srcdir/$pkgname"
@@ -24,10 +23,10 @@ package() {
   # Executable.
   install -Dm0755 "$pkgname" "$pkgdir/usr/lib/$pkgname/$pkgname"
   mkdir -p "$pkgdir/usr/bin"
-  ln -s /usr/lib/$pkgname/$pkgname "$pkgdir/usr/bin/$pkgname"
+  ln -s "/usr/lib/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   # Documentation.
-  install "xschelp.htb" "$pkgdir/usr/lib/$pkgname/"
+  install -Dm0644 "xschelp.htb" "$pkgdir/usr/lib/$pkgname/xschelp.htb"
 
   # Library.
   lib="libgstvideosection.so"
@@ -36,16 +35,15 @@ package() {
   fi
 
   # Icons.
-  for icon in gtkicons/xsc*png
-  do
+  for icon in gtkicons/xsc*png; do
     unprefixed=${icon#*xsc}
     size=${unprefixed%.png}
-    install -Dm0644 $icon "$pkgdir/usr/share/icons/hicolor/${size}/apps/seventhstring-transcribe.png"
+    install -Dm0644 "$icon" "$pkgdir/usr/share/icons/hicolor/${size}/apps/seventhstring-transcribe.png"
   done
 
   # Mime type with icon.
   mime_file=seventhstring-transcribe.xml
-  cat <<"-EOF-" > $mime_file
+  cat <<'EOF' > "$mime_file"
 <?xml version="1.0" encoding="UTF-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
   <mime-type type="application/seventhstring-transcribe">
@@ -54,12 +52,12 @@ package() {
 	<icon name="seventhstring-transcribe"/>
   </mime-type>
 </mime-info>
--EOF-
-  install -Dm0644 $mime_file "$pkgdir/usr/share/mime/packages/$mime_file"
+EOF
+  install -Dm0644 "$mime_file" "$pkgdir/usr/share/mime/packages/$mime_file"
 
   # Application .desktop file.
   desktop_file=seventhstring-transcribe.desktop
-  cat  << -EOF- > $desktop_file
+  cat <<'EOF' > "$desktop_file"
 [Desktop Entry]
 Encoding=UTF-8
 Version=1.0
@@ -70,9 +68,10 @@ Categories=Audio;
 Terminal=false
 Icon=seventhstring-transcribe
 Name=Transcribe!
--EOF-
+StartupWMClass=transcribe
+EOF
 
-  install -Dm0644 $desktop_file "$pkgdir/usr/share/applications/$desktop_file"
+  install -Dm0644 "$desktop_file" "$pkgdir/usr/share/applications/$desktop_file"
 }
 
 # vim:set ts=2 sw=2 et:
