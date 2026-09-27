@@ -2,9 +2,9 @@
 
 pkgname=prompt-exporter-git
 _pkgname=prompt-exporter
-pkgver=2.0.1.r15.ge6b01fb
+pkgver=2.2.0.r28.g65c0da5
 pkgrel=1
-pkgdesc="CLI to sync AI conversation prompts from multiple sources (ChatGPT first)"
+pkgdesc="CLI to sync AI conversation prompts from multiple sources (ChatGPT, Lumo, …)"
 arch=('any')
 url="https://github.com/azbarcea/prompt-exporter"
 license=('Apache-2.0')
@@ -31,16 +31,13 @@ build() {
   cd "${srcdir}/${_pkgname}"
   npm install --cache "${srcdir}/npm-cache"
   npm run build
-  npm prune --omit=dev --cache "${srcdir}/npm-cache"
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  local _libdir="${pkgdir}/usr/lib/${_pkgname}"
-  install -dm755 "${_libdir}"
-
-  cp -a dist package.json node_modules "${_libdir}/"
+  # Fully bundled CLI — no node_modules at runtime.
+  install -Dm755 dist/index.cjs "${pkgdir}/usr/bin/prompt-exporter"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
@@ -48,7 +45,4 @@ package() {
     install -dm755 "${pkgdir}/usr/share/doc/${_pkgname}"
     install -Dm644 docs/*.md "${pkgdir}/usr/share/doc/${_pkgname}/"
   fi
-
-  install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/${_pkgname}/dist/index.js" "${pkgdir}/usr/bin/prompt-exporter"
 }

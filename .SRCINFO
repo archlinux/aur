@@ -1,6 +1,6 @@
 pkgbase = prompt-exporter-git
-	pkgdesc = CLI to sync AI conversation prompts from multiple sources (ChatGPT first)
-	pkgver = 2.0.1.r15.ge6b01fb
+	pkgdesc = CLI to sync AI conversation prompts from multiple sources (ChatGPT, Lumo, …)
+	pkgver = 2.2.0.r28.g65c0da5
 	pkgrel = 1
 	url = https://github.com/azbarcea/prompt-exporter
 	arch = any
