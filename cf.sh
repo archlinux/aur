@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION="1.0.2"
+VERSION="1.0.3"
 
 if [ -f "${HOME}/.config/easy-config/config.conf" ]; then
     CONFIG_FILE="${HOME}/.config/easy-config/config.conf"
@@ -546,7 +546,7 @@ $results
 EOF
 
     printf 'Select 1-%s: ' "$count" >&2
-    read choice < /dev/tty
+    read -r choice < /dev/tty
 
     case "$choice" in
         ''|*[!0-9]*)
@@ -663,24 +663,13 @@ cf() {
         return 1
     fi
 
-    if [ "$SKIP_CACHE" = "true" ]; then
-        target=$(get_target "$name")
-        if [ -z "$target" ] && [ "$SMART_SEARCH" = "true" ]; then
-            target=$(smart_search "$name")
-            if [ -z "$target" ]; then
-                return 1
-            fi
-            save_cache "$name" "$target"
+    target=$(get_target "$name")
+    if [ -z "$target" ] && [ "$SMART_SEARCH" = "true" ]; then
+        target=$(smart_search "$name")
+        if [ -z "$target" ]; then
+            return 1
         fi
-    else
-        target=$(get_target "$name")
-        if [ -z "$target" ] && [ "$SMART_SEARCH" = "true" ]; then
-            target=$(smart_search "$name")
-            if [ -z "$target" ]; then
-                return 1
-            fi
-            save_cache "$name" "$target"
-        fi
+        save_cache "$name" "$target"
     fi
 
     if [ -z "$target" ]; then
@@ -713,14 +702,8 @@ cf() {
 
     echo "Opening $target_type with $cmd: $target"
 
-    case "$cmd" in
-        *\ *)
-            eval "$cmd" '"$target"'
-            ;;
-        *)
-            $cmd "$target"
-            ;;
-    esac
+    set -- $cmd "$target"
+    "$@"
 }
 
 cf "$@"

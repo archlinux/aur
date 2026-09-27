@@ -3,7 +3,7 @@
 # cf-setup: First-run setup and migration for EasyConfig (cf)
 # Copies system config to user directory, handles .ini → .conf migration
 
-VERSION="1.0.2"
+VERSION="1.0.3"
 
 USER_CONFIG_DIR="${HOME}/.config/easy-config"
 USER_CONFIG_FILE="${USER_CONFIG_DIR}/config.conf"
@@ -74,7 +74,7 @@ prompt_config_upgrade() {
     info "  2) Replace current config (no backup)"
     info "  3) Ignore (keep current config)"
     printf 'Choice [1]: '
-    read _choice < /dev/tty 2>/dev/null || _choice="1"
+    read -r _choice < /dev/tty 2>/dev/null || _choice="1"
 
     # Default to 1 if empty
     [ -z "$_choice" ] && _choice="1"
