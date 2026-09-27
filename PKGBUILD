@@ -4,31 +4,36 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname=jpilot
-pkgver=2.0.3
-pkgrel=5
-pkgGitHubCommit=870eef8
+pkgver=2.1.1
+pkgrel=1
+pkgGitHubCommit=ca409e125e1683bf842f206b13040d8c29605a69
 pkgdesc="A desktop organizer application for the Palm Pilot"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/juddmon/jpilot/"
 license=('GPL2')
-depends=('openssl' 'gtk3' 'pilot-link' 'slang')
+depends=('openssl' 'gtk3' 'pilot-link-git' 'slang')
 makedepends=('intltool')
-source=("https://codeload.github.com/juddmon/jpilot/legacy.tar.gz/$pkgGitHubCommit")
-sha256sums=('93b0bd774b2e966474ff0f8b0f186382be3c87a8a1e5870a90a140732717d638')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/juddmon/jpilot/archive/${pkgGitHubCommit}.tar.gz")
+sha256sums=('f2556cf7fbe3df2d8a6ec66aa83c25db965d28bcf3aa3763a5db8e4ec399c774')
+
+prepare() {
+	rm -rf "${srcdir}"/$pkgname-$pkgver-$pkgrel
+	mv $srcdir/$pkgname-$pkgGitHubCommit "${srcdir}"/$pkgname-$pkgver-$pkgrel
+}
 
 build() {
-	cd "${srcdir}"/juddmon-$pkgname-$pkgGitHubCommit
+	cd "${srcdir}"/$pkgname-$pkgver-$pkgrel
 
 	./autogen.sh --prefix=/usr --disable-pl-test --disable-gtktest
-	# sed command provided by Cylgalad
-	sed -e 's/return Contact_add_blob(c, blob);/return Contact_add_blob(c, (void*)blob);/' \
-	    -e 's/^#include "jp-pi-contact.h"/\/\/ #include "jp-pi-contact.h"/' jp-contact.c > /tmp/jp-contact.c
-	mv /tmp/jp-contact.c .
+	# sed command provided by Cylgalad for the old pilot-link 0.12.5-2
+	#sed -e 's/return Contact_add_blob(c, blob);/return Contact_add_blob(c, (void*)blob);/' \
+	#    -e 's/^#include "jp-pi-contact.h"/\/\/ #include "jp-pi-contact.h"/' jp-contact.c > /tmp/jp-contact.c
+	#mv /tmp/jp-contact.c .
 	make
 }
 
 package() {
-	cd "${srcdir}"/juddmon-$pkgname-$pkgGitHubCommit
+	cd "${srcdir}"/$pkgname-$pkgver-$pkgrel
 
 	make DESTDIR="${pkgdir}" install
 
