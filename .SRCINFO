@@ -1,17 +1,16 @@
 pkgbase = download-with-kget-native-git
 	pkgdesc = KGet extension native handler
-	pkgver = v0.2.r1.g21c7b6a
+	pkgver = r9.dee199a
 	pkgrel = 1
 	url = https://github.com/Takios/download-with-kget
-	arch = x86_64
-	license = MPL2
-	depends = git
+	arch = any
+	license = MPL-2.0
+	makedepends = git
+	makedepends = jq
+	depends = python
 	depends = python-pydbus
 	provides = download-with-kget
 	source = git+https://github.com/Takios/download-with-kget
-	source = Makefile.patch
-	sha256sums = SKIP
-	sha256sums = af886b2595d917054933f8936f2c83f236ee4c56e4994eb5778cc9c51ccc7c05
+	sha512sums = SKIP
 
 pkgname = download-with-kget-native-git
-
