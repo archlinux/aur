@@ -1,6 +1,6 @@
 pkgbase = gbe_fork-bin
 	pkgdesc = Goldberg Steam Emulator fork — drop-in Steam API replacement for LAN multiplayer without Steam
-	pkgver = 2026_09_16_2
+	pkgver = 2026_09_27
 	pkgrel = 1
 	url = https://github.com/Detanup01/gbe_fork
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = gbe_fork-bin
 	optdepends = wine: running Windows games with the emulator
 	provides = gbe_fork
 	conflicts = gbe_fork
-	noextract = gbe_fork-bin-win-2026_09_16_2.7z
+	noextract = gbe_fork-bin-win-2026_09_27.7z
 	options = !debug
-	source = gbe_fork-bin-linux-2026_09_16_2.tar.bz2::https://github.com/Detanup01/gbe_fork/releases/download/release-2026_09_16_2/emu-linux-release.tar.bz2
-	source = gbe_fork-bin-win-2026_09_16_2.7z::https://github.com/Detanup01/gbe_fork/releases/download/release-2026_09_16_2/emu-win-release-vs26.7z
-	sha256sums = 59b284b3a22513dabde29f2fe4e256e0e76ac154738d13bf46da064c78b9a12e
-	sha256sums = adca5355d5615d8846eac6379e89730494cfe64131d94c0b1372fcfe46670d9d
+	source = gbe_fork-bin-linux-2026_09_27.tar.bz2::https://github.com/Detanup01/gbe_fork/releases/download/release-2026_09_27/emu-linux-release.tar.bz2
+	source = gbe_fork-bin-win-2026_09_27.7z::https://github.com/Detanup01/gbe_fork/releases/download/release-2026_09_27/emu-win-release-vs26.7z
+	sha256sums = f3e08366fb8052e55d9ca29ef5bb1f80afb66d59e96879e5900aac8a6d86c7b9
+	sha256sums = 417b7d348652ee9c7d2609edc921154cac2c52299975f360f5b04b436ab8c243
 
 pkgname = gbe_fork-bin
