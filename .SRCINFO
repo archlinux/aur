@@ -1,16 +1,16 @@
 pkgbase = mssql-server-fts
 	pkgdesc = Microsoft SQL Server 2025 Full Text Search
-	pkgver = 17.0.4085.5
+	pkgver = 17.0.5005.3
 	pkgrel = 1
 	url = https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver17
 	install = mssql-server-fts.install
 	arch = x86_64
 	license = LicenseRef-Microsoft-SQL-Server-EULA
-	depends = mssql-server=17.0.4085.5
-	noextract = mssql-server-fts_17.0.4085.5-1_amd64.deb
+	depends = mssql-server=17.0.5005.3
+	noextract = mssql-server-fts_17.0.5005.3-1_amd64.deb
 	options = !strip
 	options = !debug
-	source = https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server-fts/mssql-server-fts_17.0.4085.5-1_amd64.deb
-	sha256sums = f47b81cba1f9a8c88f8b797db975a11baf84026f95a7b8bb88185c78a794acb2
+	source = https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server-fts/mssql-server-fts_17.0.5005.3-1_amd64.deb
+	sha256sums = 5d46c644c35013f2a28f23caa43400a89d06b0ea310d42a9e909da2ed18dfeb8
 
 pkgname = mssql-server-fts
