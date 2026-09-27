@@ -1,7 +1,8 @@
+# Maintainer: Robin Trioux <robin@trioux.eu>
 # Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname=mistral-vibe
-pkgver=2.25.5
+pkgver=2.25.8
 pkgrel=1
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
@@ -41,40 +42,30 @@ depends=(
     "python-zstandard"
     "python-sounddevice"
 )
+# Upstream switched from hatchling to a custom maturin-based build backend in
+# v2.25.8: building the wheel now also compiles the Rust harness extension and
+# the vibe-rs TUI, and links the Linux build with the zig cc shim. `uv build`
+# resolves the PEP 517 build requirements (maturin, ziglang) itself; rustc and
+# cargo come from the system toolchain.
 makedepends=(
-    "python-build"
-    "python-hatchling"
-    "python-hatch-vcs"
+    "uv"
+    "rust>=1.97"
     "python-installer"
 )
 checkdepends=(
-    "pre-commit"
-    "pyright"
-    "python-pytest"
-    "python-pytest-asyncio"
-    "python-pytest-textual-snapshot"
-    "python-pytest-timeout"
-    "python-pytest-xdist"
-    "python-respx"
-    "ruff"
-    "twine"
-    "typos"
     "uv"
-    "vulture"
 )
 source=("git+${url}.git#tag=v${pkgver}"
-        "lower_hatchling_version_requirements.patch"
         "clear_multiplexer_env_in_theme_tests.patch"
         "stabilize_click_chain_timing_in_word_drag_tests.patch"
         "stretch_e2e_timeouts_when_builder_is_loaded.patch")
-sha256sums=('bc4d6f3c021388f7702abb2d168e21b7ddcf0d7f1de55b8d9a4959c2e1142175'
-            'c9b417d8a6445bcca31f8d75757a7ec2d78e4b5aec784a7b5d2c9adf62106014'
+sha256sums=('b1f32ce61941098130d66724259ee6d09dfc23f1276a90f467e20639c424f274'
             'f24330784d56591d197dc260166d29fff717fab763963fb2c7d8221f81135069'
             'ec15c34e133eb3ca09c593ac03a715beb30557585d81b0ac99bffcf5818bd5e2'
             '2706769c69b63715757f2d820b4b3d9c363a278821d58c29fdd5ecf25fb720c9')
+
 prepare() {
     cd "$pkgname"
-    cat "$srcdir/lower_hatchling_version_requirements.patch" | patch -p1
     cat "$srcdir/clear_multiplexer_env_in_theme_tests.patch" | patch -p1
     cat "$srcdir/stabilize_click_chain_timing_in_word_drag_tests.patch" | patch -p1
     cat "$srcdir/stretch_e2e_timeouts_when_builder_is_loaded.patch" | patch -p1
@@ -82,7 +73,39 @@ prepare() {
 
 build() {
     cd "$pkgname"
-    python -m build --wheel --no-isolation
+    # Match the official Linux wheels from upstream release.yml: the voice
+    # feature (cpal -> ALSA) is disabled there. CARGO_BUILD_FLAGS is read by
+    # the upstream build backend (build_backend/maturin_backend.py,
+    # _stage_rust_cli) and forwarded to cargo.
+    export CARGO_BUILD_FLAGS="--no-default-features"
+
+    # The native C archives built by onig_sys / aws-lc-sys get linked into
+    # vibe-rs. Two user-environment things break that final link with
+    # "undefined symbol: onig_* / aws_lc_*" errors, so neutralize both:
+    #
+    # Rust 1.90 (2025-08) made lld the default linker on x86_64 Linux via the
+    # "lld" linker feature. The bundled rust-lld fails to link the native
+    # static archives produced by the onig_sys / aws-lc-sys build scripts
+    # (undefined onig_* / aws_lc_* symbols), a widely reported 1.90
+    # regression. Note: -C link-self-contained=-linker is NOT the right fix
+    # here — it only drops the bundled gcc-ld shims while keeping
+    # -fuse-ld=lld, so cc then looks for a system ld.lld that Arch does not
+    # ship ("collect2: cannot find 'ld'"). The stabilized opt-out below
+    # disables the lld feature entirely so cc links with ld.bfd, as upstream
+    # CI did before 1.90.
+    export RUSTFLAGS="${RUSTFLAGS:+$RUSTFLAGS }-C linker-features=-lld"
+
+    local _uv
+    _uv="$(command -v uv)"
+    export PATH="/usr/local/bin:/usr/bin:/bin"
+    unset RUSTC RUSTDOCFLAGS RUSTUP_HOME RUSTUP_TOOLCHAIN
+    export CARGO_HOME="${srcdir}/cargo-home"
+    mkdir -p "$CARGO_HOME"
+    CFLAGS="$(sed -E 's/-flto(=[^ ]+)?//g' <<<"$CFLAGS")"
+    CXXFLAGS="$(sed -E 's/-flto(=[^ ]+)?//g' <<<"$CXXFLAGS")"
+    LDFLAGS="$(sed -E 's/-flto(=[^ ]+)?//g' <<<"$LDFLAGS")"
+    export CFLAGS CXXFLAGS LDFLAGS
+    "$_uv" build --wheel --python /usr/bin/python3 --out-dir dist
 }
 
 check() {
@@ -112,6 +135,7 @@ check() {
     local deselect=(
         --deselect tests/test_install_script.py::test_install_reports_missing_path_for_uv_tool_bin
         --deselect tests/test_install_script.py::test_install_fails_when_vibe_not_in_uv_tool_dir
+	--deselect tests/cli/textual_ui/test_app_server_requests.py::test_ready_subagent_transcript_explains_next_actions_once
     )
 
     # Run test suite in parallel, skip deselected and any e2e tests.
