@@ -3,111 +3,108 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
-# if tests fail due to timeout, you can try to increase the timeout
-# by setting SYNCTHING_TEST_TIMEOUT_FACTOR
-
-# set the web view provider: either webengine, auto or none
-_webview_provider=${SYNCTHING_TRAY_WEBVIEW_PROVIDER:-webengine}
-
-# set the JavaScript provider: either script, qml, auto or none
-_js_provider=${SYNCTHING_TRAY_JS_PROVIDER:-qml}
-
-# enables KIO plugin to show Syncthing actions in Dolphin file browser
-_enable_kio_plugin=${SYNCTHING_TRAY_ENABLE_KIO_PLUGIN:-1}
-
-# enables Plasmoid for Plasma desktop
-_enable_plasmoid=${SYNCTHING_TRAY_ENABLE_PLASMOID:-1}
-
-# enables "modern" UI
-_enable_quick_gui=${SYNCTHING_TRAY_ENABLE_QUICK_GUI:-1}
-
-[[ $_enable_kio_plugin == 0 ]] && _enable_kio_plugin=
-[[ $_enable_plasmoid == 0 ]] && _enable_plasmoid=
-[[ $_enable_quick_gui == 0 ]] && _enable_quick_gui=
-
 _reponame=syncthingtray
 pkgname=syncthingtray-git
 _name=${pkgname%-git}
-pkgver=1714.7846301
-pkgrel=3
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+pkgver=3672.a2576bb4
+pkgrel=1
 pkgdesc='Tray application for Syncthing'
-license=(GPL-2.0-or-later)
-depends=('qtutilities-git' 'qtforkawesome-git' 'c++utilities-git' 'boost-libs' 'qt6-svg' 'openssl' 'desktop-file-utils')
-optdepends=('gnome-shell-extension-appindicator: tray icon support for GNOME Shell')
-[[ $_webview_provider == none ]] && depends+=('qt6-base')
-[[ $_webview_provider == webengine ]] && depends+=('qt6-webengine')
-[[ $_js_provider == qml || $_enable_quick_gui ]] && depends+=('qt6-declarative')
-[[ $_enable_kio_plugin ]] && optdepends+=('kio: KIO plugin for Syncthing actions in Dolphin')
-[[ $_enable_plasmoid ]] && optdepends+=('plasma-workspace: Plasmoid for Plasma 6 desktop')
-makedepends=('cmake' 'ninja' 'perl' 'qt6-tools' 'git' 'boost' 'clang' 'python-myst-parser')
-checkdepends=('cppunit' 'syncthing' 'iproute2')
-[[ $_enable_kio_plugin ]] && makedepends+=('kio')
-[[ $_enable_plasmoid ]] && makedepends+=('libplasma' 'extra-cmake-modules')
-#provides=("${_name}")
-conflicts=("${_name}")
+arch=('x86_64')
 url="https://github.com/Martchus/${_reponame}"
+license=('GPL-2.0-or-later')
+depends=(
+    'glibc'
+    'hicolor-icon-theme'
+    'libgcc'
+    'libstdc++'
+    'qt6-base'
+    'qt6-declarative'
+    'qt6-svg'
+    'qt6-webengine'
+)
+optdepends=(
+    'syncthing: for managing a local Syncthing instance'
+    'gnome-shell-extension-appindicator: tray icon support for GNOME Shell'
+)
+makedepends=(
+    'boost'
+    'boost-libs'
+    'c++utilities-git'
+    'cmake'
+    'git'
+    'extra-cmake-modules'
+    'kdeclarative'
+    'libplasma'
+    'ninja'
+    'qt6-tools'
+    'qt6-webengine'
+    'qtforkawesome-git'
+    'qtutilities-git'
+    'perl'
+    'python-myst-parser'
+)
+checkdepends=(
+    'cppunit'
+    'iproute2'
+    'syncthing'
+)
 source=("${_reponame}::${MARTCHUS_GIT_URL_PREFIX:-git+https://github.com/Martchus}/${_reponame}.git")
 sha256sums=('SKIP')
 
-ephemeral_port() {
-  comm -23 <(seq 49152 65535) <(ss -tan | awk '{print $4}' | cut -d':' -f2 | grep "[0-9]\{1,5\}" | sort | uniq) | shuf | head -n 1
-}
-
 pkgver() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    echo "$(git -C "${_reponame}" rev-list --count HEAD).$(git -C "${_reponame}" rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-
-  local additional_args=
-  [[ $_enable_kio_plugin ]] || additional_args+=' -DNO_FILE_ITEM_ACTION_PLUGIN=ON'
-  [[ $_enable_plasmoid ]] || additional_args+=' -DNO_PLASMOID=ON'
-  [[ $_enable_quick_gui ]] && additional_args+=' -DQUICK_GUI=ON -DQUICK_GUI_CONTROLS_STYLE=dynamic'
-
-  cmake \
-    -G Ninja \
-    -DCMAKE_BUILD_TYPE:STRING='Release' \
-    -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-    -DCONFIGURATION_NAME:STRING='git' \
-    -DCONFIGURATION_PACKAGE_SUFFIX:STRING='-git' \
-    -DQT_FORK_AWESOME_CONFIGURATION_TARGET_SUFFIX:STRING='git' \
-    -DLIB_SYNCTHING_CONNECTOR_CONFIGURATION_TARGET_SUFFIX:STRING='git' \
-    -DSYNCTHINGFILEITEMACTION_CONFIGURATION_TARGET_SUFFIX:STRING='git' \
-    -DLIB_SYNCTHING_MODEL_CONFIGURATION_TARGET_SUFFIX:STRING='git' \
-    -DSYNCTHINGPLASMOID_CONFIGURATION_TARGET_SUFFIX:STRING='git' \
-    -DSYNCTHINGWIDGETS_CONFIGURATION_TARGET_SUFFIX:STRING='git' \
-    -DQT_PACKAGE_PREFIX:STRING='Qt6' \
-    -DKF_PACKAGE_PREFIX:STRING='KF6' \
-    -DBUILD_SHARED_LIBS:BOOL=ON \
-    -DWEBVIEW_PROVIDER="${_webview_provider}" \
-    -DJS_PROVIDER="${_js_provider}" \
-    -DSYSTEMD_SUPPORT=ON \
-    -DBUILTIN_TRANSLATIONS:BOOL=ON \
-    -DBUILTIN_TRANSLATIONS_OF_QT:BOOL=OFF \
-    $additional_args \
-    .
-  # try again due to "/usr/include/c++/16.1.1/span:170:24: internal compiler error: Segmentation fault"
-  ninja || ninja
-  ninja sphinxdoc
+    local cmake_options=(
+        -B build
+        -S "${PROJECT_DIR_NAME:-$_reponame}"
+        -G Ninja
+        -D CMAKE_BUILD_TYPE=Release
+        -D CMAKE_INSTALL_PREFIX=/usr
+        -D BUILD_SHARED_LIBS=ON
+        -D CONFIGURATION_NAME:STRING='git'
+        -D CONFIGURATION_PACKAGE_SUFFIX:STRING='-git'
+        -D CONFIGURATION_TARGET_SUFFIX:STRING='git'
+        -D QT_PACKAGE_PREFIX=Qt6
+        -D KF_PACKAGE_PREFIX=KF6
+        -D BUILTIN_TRANSLATIONS=ON
+        -D BUILTIN_TRANSLATIONS_OF_QT=OFF
+        -D WEBVIEW_PROVIDER=webengine
+        -D JS_PROVIDER=qml
+        -D QUICK_GUI=ON
+        -D QUICK_GUI_CONTROLS_STYLE=dynamic
+        -D SYSTEMD_SUPPORT=ON
+    )
+    cmake "${cmake_options[@]}"
+    cmake --build build --target all sphinxdoc
 }
 
 check() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  # https://github.com/syncthing/syncthing/issues/8785
-  export HOME="$(mktemp -p "$PWD" -d testhome.XXX)"
-  # https://github.com/Martchus/syncthingtray/issues/455
-  export QT_QPA_PLATFORM=offscreen QT_QPA_PLATFORMTHEME=
-  export SYNCTHING_PORT=$(ephemeral_port)
-  export SYNCTHING_TEST_TIMEOUT_FACTOR=3
-  ninja check || ninja check
+    cmake --build build --target tests
+
+    # https://github.com/syncthing/syncthing/issues/8785
+    export HOME="$(mktemp -p "$PWD" -d testhome.XXX)"
+    # https://github.com/Martchus/syncthingtray/issues/455
+    export QT_QPA_PLATFORM=offscreen QT_QPA_PLATFORMTHEME=
+    local _ephemeral_port=$(comm -23 <(seq 49152 65535) <(ss -Htan | awk '{print $4}' | awk -F':' '{print $NF}' | grep -E '^[0-9]+$' | sort -u) | shuf -n 1)
+    export SYNCTHING_PORT=${_ephemeral_port}
+    export SYNCTHING_TEST_TIMEOUT_FACTOR=3
+    local ctest_flags=(
+        --test-dir build
+        --output-on-failure
+        --parallel $(nproc)
+    )
+    ctest "${ctest_flags[@]}"
 }
 
 package() {
-  depends+=('libqtutilities-git.so' 'libqtforkawesome-git.so' 'libc++utilities-git.so' 'libboost_filesystem.so')
+    depends+=(
+        'libqtutilities-git.so'
+        'libqtforkawesome-git.so'
+        'libc++utilities-git.so'
+        'libboost_filesystem.so'
+    )
 
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  DESTDIR="${pkgdir}" ninja install install-doc
+    DESTDIR="${pkgdir}" cmake --install build
 }
