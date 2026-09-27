@@ -17,7 +17,7 @@ checkdepends=('mingw-w64-cppunit' 'mingw-w64-wine' 'mingw-w64-openssl')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'ninja' 'iso-codes')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('eb9a8e1f736f053fe44632bfc45906f1e4f76fecf01a406fc4d570165d2101f9')
+sha256sums=('902ba1759ed54cff5e5009d6d4d1dded9ee0bd0d23fb1221aef59adf25b0e455')
 options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
