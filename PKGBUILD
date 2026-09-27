@@ -1,7 +1,7 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 _UpstreamPkgName=NVEnc
 pkgname=${_UpstreamPkgName,,}
-pkgver=9.35
+pkgver=9.36
 pkgrel=1
 pkgdesc="NVIDIA Video Codec based command line encoder"
 arch=('x86_64')
@@ -10,13 +10,13 @@ license=('MIT')
 # While cuda and nvidia are not strictly necessary accoring the ldd
 # the program will not work at all without them installed.
 depends=('cuda>=10' 'ffmpeg' 'libass' 'vapoursynth' 'libdovi' 'onnxruntime-opt-cuda')
-makedepends=('git' 'gcc15' 'cargo-c' 'meson' 'ninja')
+makedepends=('git' 'gcc' 'cargo-c' 'meson' 'ninja')
 source=(git+${url}.git#tag=${pkgver} onnxruntime-find.patch)
-sha256sums=('6db68e236fc3a5395b19603919fe178ebf4075afad7241cb90588a2075110501'
+sha256sums=('57c6b7086bddb0b2733b8f52ae29bc4cf721d469a81182c2501dc40ead4eda2f'
             '206794b06a69ee057638efeaa124e1ca92282ce8a2efa8799cfd4094b4819bd5')
 
 build() {
-	export CXX='g++-15' CC='gcc-15' 
+	#export CXX='g++-15' CC='gcc-15' 
 	unset LDFLAGS
 	cd $_UpstreamPkgName
 	patch -p1 <$srcdir/onnxruntime-find.patch
