@@ -1,7 +1,7 @@
 # Maintainer: byrdltd <byrdltd@users.noreply.github.com>
 
 pkgname=whysync
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Live one-way folder mirror: waits for unplugged disks, holds mass deletions, keeps a trash"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('libnotify: desktop notifications')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 install=whysync.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('73dc0cd02a83b9795d98eeb7bea7f4397cb61d68e21de4b0b68a5e203e9b1931')
+sha256sums=('8514c4fdbaf171c18a6e217e61af6a927e0316a8062c858d4ed2b8849bb8f3af')
 
 _appid=com.github.byrdltd.whysync
 
