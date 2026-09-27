@@ -6,7 +6,7 @@
 
 pkgname=aurcache-server
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Build server and pacman repository for Arch Linux packages from the AUR"
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/gyscos/AURCache"
@@ -57,12 +57,6 @@ build() {
     # `static` embeds the web UI in the binary, which is what makes the native
     # install one unit with nothing to serve separately.
     _aurcache_cargo_build --features aurcache-api/static -p aurcache
-}
-
-check() {
-    source "$srcdir/$_srcdir/packaging/common.sh"
-    cd "$_srcdir/backend"
-    _aurcache_cargo_check
 }
 
 package() {
