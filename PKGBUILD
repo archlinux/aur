@@ -1,4 +1,4 @@
-# Maintainer: Jay Chu <tothesong@gmail.com>
+# Maintainer: escape0707 <tothesong at gmail dot com>
 pkgname=vite-plus-bin
 pkgver=1.0.0rc.1
 _upstreamver=${pkgver/rc/-rc}
