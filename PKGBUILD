@@ -1,18 +1,49 @@
-# Maintainer: icefox <hd@revive-it.ru>
+# Maintainer: Andrey Kashlak <me@andreymal.org>
+# Contributor: icefox <hd@revive-it.ru>
 
-pkgbase=aspia-client
-pkgname=(aspia-client)
-pkgver=2.5.2
-pkgrel=3
-pkgdesc="Remote desktop and file transfer tool."
-arch=('x86_64')
-url="https://github.com/dchapyshev/aspia"
-license=('GPL3')
-options=('!strip')
-source_x86_64=("${pkgbase}-${pkgver}-${arch}.deb::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-${arch}.deb")
-sha256sums_x86_64=('5295342c21d099dd1f2ad09559875cb6f22b5367e85d16ec27d2d152775f9fad')
+pkgname=aspia-client-bin
+_pkgname=${pkgname%-bin}
+pkgver=2.7.0
+pkgrel=1
+pkgdesc="Remote desktop control and file transfer tool (client, official binary)"
+url="https://aspia.org/"
+arch=(x86_64)
+license=(GPL-3.0-only)
+depends=(
+  dbus
+  glibc
+  hicolor-icon-theme
+  libgcc
+  libgl
+  libstdc++
+  libx11
+  libxcb
+  libxfixes
+  libxkbcommon
+  libxkbcommon-x11
+  ttf-font
+  xcb-util-image
+  xcb-util-keysyms
+  xcb-util-renderutil
+  xcb-util-wm
+)
+provides=(aspia-client)
+conflicts=(aspia-client)
+options=(!debug !strip)
+source_x86_64=("https://github.com/dchapyshev/aspia/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${arch}.deb")
+sha256sums_x86_64=('660ec5d89f6af90696ce734389e98d9642793f5f08dd5673ae42e6db7614f6dc')
 
 package() {
-cd "${srcdir}"
-bsdtar -xzf data.tar.gz -C "${pkgdir}"
+  cd "${srcdir}"
+  bsdtar -xzf data.tar.gz -C "${pkgdir}"
+
+  # Fix "directory permissions differ"
+  chmod 755 "$pkgdir/usr"
+  chmod 755 "$pkgdir/usr/bin"
+  chmod 755 "$pkgdir/usr/share"
+  chmod 755 "$pkgdir/usr/share/applications"
+  chmod 755 "$pkgdir/usr/share/icons"
+  chmod 755 "$pkgdir/usr/share/icons/hicolor"
+  chmod 755 "$pkgdir/usr/share/icons/hicolor"/*
+  chmod 755 "$pkgdir/usr/share/icons/hicolor"/*/apps
 }
