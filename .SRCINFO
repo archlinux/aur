@@ -1,0 +1,21 @@
+pkgbase = acer-wmi-linuwu-dkms-git
+	pkgdesc = Acer WMI laptop extras driver with NitroSense and PredatorSense settings (DKMS)
+	pkgver = 7.3.0.1.r68.92e9d21
+	pkgrel = 1
+	url = https://github.com/adityaruplaha/acer-wmi-linuwu
+	install = acer-wmi-linuwu-dkms-git.install
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = dkms
+	provides = acer-wmi-linuwu-dkms=7.3.0.1.r68.92e9d21
+	provides = acer-wmi-linuwu=7.3.0.1.r68.92e9d21
+	provides = ACER-WMI-MODULE
+	conflicts = acer-wmi-linuwu-dkms
+	conflicts = acer-wmi-linuwu
+	conflicts = linuwu-sense-dkms
+	conflicts = linuwu-sense-an515-55-dkms
+	source = acer-wmi-linuwu::git+https://github.com/adityaruplaha/acer-wmi-linuwu.git
+	sha256sums = SKIP
+
+pkgname = acer-wmi-linuwu-dkms-git

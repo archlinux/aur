@@ -1,0 +1,11 @@
+# Ignore everything but the package sources, as the AUR submission
+# guidelines suggest, so that build output is never committed.
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!*.install
+!LICENSE
+!LICENSES/
+!LICENSES/*
+!REUSE.toml

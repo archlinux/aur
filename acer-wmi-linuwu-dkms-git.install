@@ -1,0 +1,17 @@
+post_install() {
+  cat <<'EOF'
+==> DKMS installs this acer_wmi in place of the kernel's own module, which
+==> it moves aside until the package is removed.
+==> If Linuwu-Sense was installed with its Makefile, remove
+==> /etc/modprobe.d/blacklist-acer_wmi.conf so that acer_wmi can load.
+==> To switch to the new module without rebooting, run:
+==>   modprobe -r acer_wmi && modprobe acer_wmi
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+==> To switch to the new acer_wmi without rebooting, run:
+==>   modprobe -r acer_wmi && modprobe acer_wmi
+EOF
+}
