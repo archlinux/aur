@@ -27,7 +27,7 @@
 
 pkgname=lumina-code-bin
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Tauri + React desktop GUI for OpenCode, bundling its own pinned server binary"
 arch=('x86_64' 'aarch64')
 url="https://github.com/iewnfod/lumina-code"
@@ -44,6 +44,15 @@ depends=(
 )
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
+# CRITICAL: never let makepkg's tidy 'strip' step touch the payload. The
+# bundled OpenCode server is a `bun build --compile` binary — `strip
+# --strip-all` removes symbols its runtime needs to locate the embedded
+# app, and the binary silently degrades to the bare bun CLI: `--version`
+# prints the embedded bun runtime's version (e.g. "1.4.2") instead of
+# "opencode v2.0.11" (verified byte-for-byte: stripped size 200457504 ==
+# the "corrupted" binary from the v0.1.1/v0.1.2 incidents). The main Rust
+# binary ships already-stripped, so skipping strip changes nothing else.
+options=('!strip' '!debug')
 optdepends=(
 	'xdg-utils: open files/URLs from the app'
 )
@@ -53,8 +62,8 @@ optdepends=(
 #   aarch64 -> Lumina.Code_<ver>_arm64.deb
 source_x86_64=("${pkgname}-${pkgver}-amd64.deb::${url}/releases/download/v${pkgver}/Lumina.Code_${pkgver}_amd64.deb")
 source_aarch64=("${pkgname}-${pkgver}-arm64.deb::${url}/releases/download/v${pkgver}/Lumina.Code_${pkgver}_arm64.deb")
-sha256sums_x86_64=('940790c43da6ffeb1522e9b5162281cd8e256cf49bd23bdd0182b7c6d1c40dc4')
-sha256sums_aarch64=('093ea157b51f1f5b0cd1158a5f30cb0df0a1fd4844e2c65dce3721c3c25ff94d')
+sha256sums_x86_64=('1bde62e215941e2cb69a8ad173c60ab6b6d7f61cd9cf411601954ab613987c1e')
+sha256sums_aarch64=('b564eb92ea43383d9b23ed9f1b00621908c6f72889177a2c910e3000789515d1')
 
 # No arch-independent sources — empty arrays keep makepkg's parser happy.
 source=()
