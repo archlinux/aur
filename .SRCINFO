@@ -1,0 +1,19 @@
+pkgbase = hyprquip-git
+	pkgdesc = hyprland's official splash texts on any shell: desktop overlay, cli, hyprlock, waybar, fastfetch
+	pkgver = 0.1.0.r1.g7c294e3
+	pkgrel = 1
+	url = https://github.com/iamanuclearwarhead/hyprquip
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	depends = sed
+	optdepends = quickshell: splash on the desktop
+	optdepends = hyprland: hyprquip --session reads the splash hyprland picked
+	provides = hyprquip
+	conflicts = hyprquip
+	source = hyprquip-git::git+https://github.com/iamanuclearwarhead/hyprquip.git
+	sha256sums = SKIP
+
+pkgname = hyprquip-git
