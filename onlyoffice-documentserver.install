@@ -1,28 +1,27 @@
+pre_upgrade() {
+	if command -v systemctl >/dev/null 2>&1; then
+		systemctl disable --now onlyoffice-fileconverter.service >/dev/null 2>&1 || true
+	fi
+}
+
 post_install() {
-echo "Now you need to configure database, rabbitmq and redis:
+	cat <<EOF
+Document Server 9.4 community runs as one process. RabbitMQ and a database are not used; open documents are kept in memory and do not survive a restart of the service.
 
-If you use PostgreSQL:
-psql -u postgres -c \"CREATE DATABASE onlyoffice;\"
-psql -u postgres -c \"CREATE USER onlyoffice WITH password 'PASSWORD';\"
-psql -u postgres -c \"GRANT ALL privileges ON DATABASE onlyoffice TO onlyoffice;\"
-psql -hlocalhost -Uonlyoffice -d onlyoffice -f /usr/share/webapps/onlyoffice/documentserver/server/schema/postgresql/createdb.sql
+Before the first start, edit:
+    /etc/webapps/onlyoffice/documentserver/local.json
+Replace every SECRET. The service listens on port 8080.
 
-If you use MariaDB:
-CREATE DATABASE onlyoffice;
-CREATE USER 'onlyoffice'@'localhost' IDENTIFIED BY 'PASSWORD';
-GRANT ALL PRIVILEGES ON onlyoffice.* TO 'onlyoffice'@'localhost';
-FLUSH PRIVILEGES;
-mysql -uonlyoffice -p'PASSWORD' onlyoffice < /usr/share/webapps/onlyoffice/documentserver/server/schema/mysql/createdb.sql
+Then enable and start onlyoffice-docservice.service.
+nginx is optional and can be used as a reverse proxy.
+EOF
+}
 
-RabbitMQ:
-rabbitmqctl add_vhost onlyoffice
-rabbitmqctl add_user onlyoffice PASSWORD
-rabbitmqctl set_permissions -p onlyoffice onlyoffice ".*" ".*" ".*"
+post_upgrade() {
+	cat <<EOF
+Document Server 9.4 no longer needs RabbitMQ, PostgreSQL or MariaDB.
+onlyoffice-fileconverter.service has been removed: conversion runs inside onlyoffice-docservice.service.
 
-Redis can be used with default settings.
-
-After configuring components, edit file:
-    * /etc/webapps/onlyoffice/documentserver/local.json
-
-"
+If local.json was modified, pacman keeps it and saves the new file as local.json.pacnew. Queue and SQL settings in an old local.json are ignored by the community build. Replace the SECRET placeholders if you switch to the new file.
+EOF
 }
