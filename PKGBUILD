@@ -3,7 +3,7 @@
 # packaging/linux/build-release.sh.
 pkgname=gastube
 pkgver=0.9.3
-pkgrel=14
+pkgrel=15
 pkgdesc='Ad-free YouTube client'
 arch=('x86_64')
 url='https://github.com/alpha-liu-01/GasTube'
@@ -23,7 +23,7 @@ source=(
   "gastube-64.png::https://raw.githubusercontent.com/alpha-liu-01/GasTube/${_tag}/packaging/linux/icons/64x64/apps/gastube.png"
   "gastube-256.png::https://raw.githubusercontent.com/alpha-liu-01/GasTube/${_tag}/packaging/linux/icons/256x256/apps/gastube.png"
 )
-sha256sums=('d0f8a183cd51c112bc7f3fbce29f29ddac84c9cbfa0c4ea0a8d4e3ef0e77f478'
+sha256sums=('9df346f4a56bef6c02d66d42cae0f23ee5c48ead38ca9bca0cb2dcf2d24835c3'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '47c08a805b2dad75906000d8a3c7da5c16c517e143db34ede8e5230be28d92e6'
             'a7d0b5b8baeed45f2e74e68ae7f14988e068bacc08f71e96fa7aae6a1356dd88'
