@@ -5,7 +5,7 @@
 # Not affiliated with upstream.
 
 pkgname=dsh-desktop-bin
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Cross-platform desktop shell for DeepSeek Harness: local Agent runtime, model providers, mobile phone pairing, editable PPTX generation'
 arch=('x86_64')
@@ -55,7 +55,7 @@ _archive="dsh-desktop-$pkgver-linux-x64.tar.zst"
 
 # Asset layout: app/ (electron-builder linux-unpacked), dsh-desktop.desktop, icons/, LICENSE
 source=("$pkgname-$pkgver.tar.zst::https://github.com/$_ghrepo/releases/download/v$pkgver/$_archive")
-sha256sums=('b8198fe08c02e749730b55b3bb0198e14b52661058cc753b0d909b362a48330a')
+sha256sums=('50a1346bb0017ab9a8661178d7c3480abec187f85623ecc218f9ea45e55295cc')
 
 package() {
   local src="$srcdir/dsh-desktop-$pkgver-linux-x64"
