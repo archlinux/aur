@@ -6,7 +6,7 @@
 _reponame=passwordmanager
 pkgname=mingw-w64-passwordmanager
 _name=${pkgname#mingw-w64-}
-pkgver=4.4.1
+pkgver=4.4.2
 pkgrel=1
 arch=('any')
 pkgdesc='A simple password store using AES-256-CBC encryption via OpenSSL (mingw-w64)'
@@ -15,7 +15,7 @@ depends=('mingw-w64-crt' 'mingw-w64-qt5-base' 'mingw-w64-c++utilities' 'mingw-w6
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg' 'ninja')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('242d9e82690c4ae7101d8f46d81710b2d23429721e41c9f3b93199e7b7919a90')
+sha256sums=('af6d6e7bfe931129a4a6aa13c15636cff617c6310d4f2bcb29864712d757b2c0')
 options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
