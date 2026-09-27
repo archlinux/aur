@@ -2,14 +2,18 @@
 # Contributor: Wuxxin <wuxxin@gmail.com>
 # Maintainer: Solomon <shlomochoina@gmail.com>
 pkgname=openclaw-git
-_pkgver=2026.5.25.beta.1
-pkgver=2026.4.19.beta.2.r23575.g0751b6f2c9a
+# Fallback base version only if package.json is unreadable (history rewrites make
+# git-describe tags unreliable; see pkgver()).
+_pkgver=2026.7.2
+pkgver=2026.9.6.r100853.gd9bc2066b623
 pkgrel=1
 pkgdesc="Personal AI assistant that runs on your own devices (Bun build, highly optimized)"
 arch=('x86_64')
 url="https://github.com/openclaw/openclaw"
 license=('MIT')
-depends=('nodejs>=22')
+# 2026.9+ refuses Node 22 and Node 25 (node:sqlite NUL truncation, nodejs/node#61954).
+# Satisfied by extra/nodejs (26.x) or extra/nodejs-lts-krypton (24.x). nodejs-lts-jod is 22.x.
+depends=('nodejs>=24.16.0')
 makedepends=('git' 'bun' 'npm' 'python' 'cmake' 'gcc' 'make' 'pkgconf' 'libvips')
 optdepends=('bubblewrap: for experimental additional sandboxed execution'
             'oxlint: for system-wide fast linting in doctor'
@@ -20,7 +24,6 @@ optdepends=('bubblewrap: for experimental additional sandboxed execution'
 provides=('openclaw')
 conflicts=('openclaw')
 source=('git+https://github.com/openclaw/openclaw.git'
-        'git+https://github.com/openclaw/fs-safe.git'
         'openclaw-bwrap'
         'openclaw-agent-bwrap'
         'openclaw-bwrap-install-as-systemd-user-service'
@@ -30,12 +33,11 @@ source=('git+https://github.com/openclaw/openclaw.git'
         'openclaw-restart.hook'
         'README.md')
 sha256sums=('SKIP'
-            'SKIP'
             '273910e58f512a4f1d59fe2cde328d7abc68f720f5e6e98a23a06a43c3eb9599'
             '63e557c01ca78e392ac17f37538faff9be6e568bb6d8b33980c8836197fd06ad'
             '34fa95679d51f4d5be120e98714f8b580689e57bef6eb031dcf35c0b26948e7d'
-            'd6f84cfe55eeb7e45a4e64eb442d0a0851ed78959a60c481c69d5f60bb07ad61'
-            '7f7dc1a6d0c96c018de6c73b7594dc15c268c4152a0ade8001406055962c89a7'
+            'f7226d4fa28c8708f9e7146935579b758a4b77c9a53eff6b9d365161ab58456f'
+            '9c5b93702b739c42ebe71376c417a9b7118db055a5b44d74ebf608ecc5915beb'
             'cdaf01acb58af62348c6f669f8b77675f66428a8ae41b4b4e371739492fb05c6'
             '025de14715ac9508517d3461f0c35e289c545353443f5cab312a091b630e8b3a'
             '0c177909ae593fb349c0bcbb56dcd5efdc645e75d6e9861647c9defbf604afe5')
@@ -44,26 +46,57 @@ options=('!strip' '!debug')
 
 pkgver() {
     cd "$srcdir/openclaw"
-    if git describe --long --tags >/dev/null 2>&1; then
-        git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-    else
-        local _count=$(git rev-list --count HEAD)
-        local _hash=$(git rev-parse --short HEAD)
-        printf "%s.r%s.g%s" "$_pkgver" "$_count" "$_hash"
+
+    # Upstream rewrites history and tags releases off non-main ancestry, so
+    # `git describe` often lands on old v* tags or non-version tags such as
+    # release-publish/* (which produce invalid Arch pkgver strings with '/').
+    # package.json is the authoritative release version for the tree we build.
+    local _ver=""
+    if [[ -f package.json ]]; then
+        _ver=$(node -pe 'require("./package.json").version' 2>/dev/null) || true
     fi
+    if [[ -z "$_ver" ]]; then
+        # Prefer a version-shaped tag by sort order (not ancestry).
+        _ver=$(git tag -l 'v[0-9]*' --sort=-v:refname | head -n1 | sed 's/^v//')
+    fi
+    if [[ -z "$_ver" ]]; then
+        _ver="$_pkgver"
+    fi
+    # Arch pkgver may only use alphanumerics and . _ +
+    _ver=${_ver//-/.}
+
+    local _count _hash
+    _count=$(git rev-list --count HEAD)
+    _hash=$(git rev-parse --short HEAD)
+    printf "%s.r%s.g%s" "$_ver" "$_count" "$_hash"
 }
 
 prepare() {
+    # engines.node is ">=24.16.0 <25 || >=26.1.0". Node 22 builds, then the
+    # preinstall script aborts; Node 25 is excluded (sqlite NUL truncation).
+    if ! node <<'NODE_ENGINE'
+const [major, minor, patch] = process.versions.node.split(".").map(Number);
+const in24 = major === 24 && (minor > 16 || (minor === 16 && patch >= 0));
+const in26 = major > 26 || (major === 26 && (minor > 1 || (minor === 1 && patch >= 0)));
+if (!in24 && !in26) process.exit(1);
+NODE_ENGINE
+    then
+        echo "error: OpenClaw requires Node >=24.16.0 <25 or >=26.1.0; found $(node -v) ($(command -v node))." >&2
+        echo "error: install extra/nodejs (26) or extra/nodejs-lts-krypton (24), then rebuild." >&2
+        echo "error: nodejs-lts-jod (22) cannot build or run this release." >&2
+        return 1
+    fi
+
     # Dynamically patch the install script with the correct package name
     sed -i "s/@PKGNAME@/$pkgname/g" "${srcdir}/openclaw.install"
 
-    # 1. Build @openclaw/fs-safe from source
-    echo "Building @openclaw/fs-safe from source..."
-    cd "$srcdir/fs-safe"
-    bun install
-    bun run build
+    # @openclaw/fs-safe comes from the registry during bun install, at the
+    # version package.json pins (currently 0.18.2). Building the fs-safe git
+    # checkout instead compiles a newer incompatible release and requires the
+    # wasm32-unknown-unknown Rust target, which is not a makedepend. That
+    # source build aborted prepare() before OpenClaw itself compiled.
 
-    # 2. Run the main openclaw patch script (performs bun install)
+    # Run the main openclaw patch script (performs bun install)
     cd "$srcdir/openclaw"
     bash "${srcdir}/openclaw-patch.sh"
 
@@ -75,16 +108,52 @@ prepare() {
 
     node scripts/ui.js install || true
 
-    # 3. Surgically install built fs-safe into openclaw node_modules AFTER all installations
-    echo "Surgically installing local @openclaw/fs-safe build..."
-    rm -rf "$srcdir/openclaw/node_modules/@openclaw/fs-safe"
-    mkdir -p "$srcdir/openclaw/node_modules/@openclaw/fs-safe"
-    cp -r "$srcdir/fs-safe/dist" "$srcdir/fs-safe/package.json" "$srcdir/openclaw/node_modules/@openclaw/fs-safe/"
+    if [[ ! -f node_modules/@openclaw/fs-safe/package.json ]]; then
+        echo "error: bun install did not provide node_modules/@openclaw/fs-safe." >&2
+        echo "error: OpenClaw imports @openclaw/fs-safe during tsdown-build." >&2
+        return 1
+    fi
+    echo "Using published @openclaw/fs-safe $(node -pe 'require("./node_modules/@openclaw/fs-safe/package.json").version')"
 }
 
 build() {
     cd "$srcdir/openclaw"
-    bun run build
+
+    # Bypass pnpm-shaped exec for build-all substeps. tsdown-build.mts then runs
+    # `node node_modules/tsdown/dist/run.mjs` directly (see OPENCLAW_BUILD_ALL_NO_PNPM),
+    # which is more reliable under Bun-hoisted node_modules than `.bin` shims.
+    # pnpm is not a makedepend; without this flag the runner looks for `pnpm` on PATH.
+    export OPENCLAW_BUILD_ALL_NO_PNPM=1
+    # Never restore a stale build-all cache across makepkg runs.
+    export OPENCLAW_BUILD_CACHE=0
+    # Declaration emit via rolldown-plugin-dts balloons past ~12GB RSS and never
+    # finishes writing root dist/ (zod CJS .d.cts storm). Runtime only needs JS;
+    # package() already strips *.d.ts from the payload.
+    export OPENCLAW_RUN_NODE_SKIP_DTS_BUILD=1
+
+    if [[ ! -f node_modules/tsdown/dist/run.mjs ]]; then
+        echo "error: tsdown is not installed (node_modules/tsdown/dist/run.mjs missing)." >&2
+        echo "error: the tsdown-build step cannot run; check prepare()/bun install." >&2
+        return 1
+    fi
+
+    # Do not use the default `full` profile: it runs write-plugin-sdk-entry-dts /
+    # check-plugin-sdk-exports, which require the declaration emit we skip above.
+    # qaRuntime covers the runtime graph: plugins assets, tsdown, postbuild, stamps.
+    # Upstream renamed this from scripts/build-all.mjs to scripts/build-all.mts.
+    node --import tsx scripts/build-all.mts qaRuntime
+
+    # Extra full-profile steps that do not need .d.ts output.
+    node --import tsx scripts/copy-hook-metadata.ts || true
+    node --import tsx scripts/write-build-info.ts || true
+    node --import tsx scripts/write-cli-startup-metadata.ts || true
+
+    if [[ ! -d dist ]] || [[ -z "$(find dist -name '*.js' -print -quit 2>/dev/null)" ]]; then
+        echo "error: build produced no dist/*.js output (tsdown-build failed or was incomplete)." >&2
+        return 1
+    fi
+    echo "Build OK: $(find dist -name '*.js' | wc -l) JS files in dist/ ($(du -sh dist | awk '{print $1}'))"
+
     node scripts/ui.js build || true
 }
 
@@ -94,20 +163,26 @@ package() {
     echo "Creating package directory structure..."
     install -d "$pkgdir/usr/lib/openclaw"
     
-    # Safely copy directories that exist to the package directory
-    for dir in assets dist dist-runtime docs extensions node_modules patches scripts skills git-hooks; do
+    # Safely copy directories that exist to the package directory.
+    # packages/ holds workspace libs (@openclaw/ai, agent-core, …) that dist/
+    # imports as externals — without them the CLI/TUI fails at runtime with
+    # ERR_MODULE_NOT_FOUND for @openclaw/ai (and friends).
+    for dir in assets dist dist-runtime docs extensions node_modules packages patches scripts skills git-hooks; do
         if [ -d "$dir" ]; then
-            cp -r "$dir" "$pkgdir/usr/lib/openclaw/"
+            cp -a "$dir" "$pkgdir/usr/lib/openclaw/"
         fi
     done
-    cp openclaw.mjs package.json AGENTS.md "$pkgdir/usr/lib/openclaw/"
+    # Always materialize a real entrypoint file (never preserve a dangling link).
+    install -Dm755 openclaw.mjs "$pkgdir/usr/lib/openclaw/openclaw.mjs"
+    install -Dm644 package.json "$pkgdir/usr/lib/openclaw/package.json"
+    install -Dm644 AGENTS.md "$pkgdir/usr/lib/openclaw/AGENTS.md"
 
     # Early aggressive removal of any musl packages that may have slipped through
     # (defense in depth even if bunfig.toml restricted architectures).
     cd "$pkgdir/usr/lib/openclaw"
     echo "Early removal of any musl-specific native packages in pkgdir..."
-    find node_modules -maxdepth 3 -type d \( \
-        -name '*-musl*' -o -name '*linuxmusl*' -o -name '*musl-x64*' \
+    find node_modules -maxdepth 4 -type d \( \
+        -iname '*musl*' \
       \) -exec rm -rf {} + 2>/dev/null || true
     cd "$srcdir/openclaw"
 
@@ -138,8 +213,8 @@ package() {
     # On glibc-based Arch they are useless and cause namcap/makepkg warnings about
     # missing "libc.musl-x86_64.so.1".
     echo "Removing all musl-specific native packages (glibc-only system)..."
-    find node_modules -maxdepth 2 -type d \( \
-        -name '*-musl*' -o -name '*linuxmusl*' -o -name '*musl-x64*' \
+    find node_modules -maxdepth 4 -type d \( \
+        -iname '*musl*' \
       \) -exec rm -rf {} + 2>/dev/null || true
     
     echo "Pruning development tools and caches..."
@@ -162,8 +237,14 @@ package() {
     # 2. Remove any .node binary whose path indicates a non-linux-x64 platform.
     #    Also catch common wrong-arch directories (Release, build, binding, etc.).
     find node_modules \( -name "*.node" -o -path "*/Release/*.node" -o -path "*/build/*.node" \) 2>/dev/null | while read -r f; do
-      if echo "$f" | grep -qiE '(darwin|win32|arm64|aarch64|linux-arm|android|ios|musl)'; then
-        if ! echo "$f" | grep -qiE 'linux-x64|x64'; then
+      # musl is never usable on Arch glibc, even when the path also says x64
+      # (e.g. @koromix/koffi-linux-x64/musl_x64/koffi.node).
+      if echo "$f" | grep -qiE 'musl'; then
+        rm -f "$f" 2>/dev/null || true
+        continue
+      fi
+      if echo "$f" | grep -qiE '(darwin|win32|arm64|aarch64|linux-arm|android|ios)'; then
+        if ! echo "$f" | grep -qiE 'linux-x64'; then
           rm -f "$f" 2>/dev/null || true
         fi
       fi
@@ -189,43 +270,8 @@ package() {
 
     # Final safety net: any remaining musl directories anywhere in node_modules
     # (catches deeply nested musl variants that the maxdepth-2 pass missed)
-    find node_modules -type d \( -name '*-musl*' -o -name '*linuxmusl*' \) \
+    find node_modules -type d -iname '*musl*' \
       -exec rm -rf {} + 2>/dev/null || true
-
-    # --- General high-value bloat that is never needed at runtime ---
-    # These patterns are safe for a production OpenClaw install because:
-    # - The app already has its own typescript + tsx for any TS execution.
-    # - All first-party code is pre-built into dist/.
-    # - Documentation, tests, and types are not loaded by the runtime.
-
-    # Declaration files (huge win — 25k+ of these)
-    find node_modules -name "*.d.ts" -o -name "*.d.mts" -o -name "*.d.cts" \
-      | xargs rm -f 2>/dev/null || true
-
-    # Source maps that leaked in
-    find node_modules -name "*.js.map" -o -name "*.mjs.map" \
-      | xargs rm -f 2>/dev/null || true
-
-    # Remaining TypeScript sources (we keep the typescript package itself)
-    find node_modules -path 'node_modules/typescript' -prune -o \
-      \( -name "*.ts" -o -name "*.tsx" \) -print \
-      | xargs rm -f 2>/dev/null || true
-
-    # Markdown, changelogs, licenses at any depth (very common waste)
-    find node_modules -type f \( \
-        -name "*.md" -o -name "*.markdown" \
-        -o -name "CHANGELOG*" -o -name "HISTORY*" -o -name "CONTRIBUTING*" \
-        -o -name "LICENSE*" -o -name "LICENCE*" \
-      \) -delete 2>/dev/null || true
-
-    # Test, fixture, example, benchmark, and coverage directories
-    find node_modules -type d \( \
-        -name test -o -name __tests__ -o -name tests \
-        -o -name fixtures -o -name __fixtures__ \
-        -o -name examples -o -name docs -o -name benchmarks -o -name benchmark \
-        -o -name coverage -o -name .nyc_output -o -name .turbo \
-        -o -name .github \
-      \) -prune -exec rm -rf {} + 2>/dev/null || true
 
     # Nested node_modules duplicates that hoisting didn't eliminate
     find node_modules -path '*/node_modules/*/node_modules' -type d -prune \
@@ -235,25 +281,255 @@ package() {
     find node_modules -name ".git*" -o -name ".editorconfig" -o -name ".prettierrc*" \
       | xargs rm -rf 2>/dev/null || true
 
-    # Safe aggressive src/ removal:
-    # Only delete src/ directories when the package has compiled output elsewhere
-    # (dist/, lib/, build/, cjs/, esm/). This protects tiny ESM packages like
-    # sisteransi, yoctocolors, is-unicode-supported, stdin-discriminator, etc.
-    # whose published "main" / "exports" point directly into src/.
-    echo "Safely removing src/ directories that have compiled alternatives..."
-    # Explicit allowlist of packages known to ship src/ as their runtime
-    PROTECTED_SRC_PKGS="sisteransi|yoctocolors|is-unicode-supported|stdin-discriminator|west|prompts|@clack"
-    find node_modules -path 'node_modules/typescript' -prune -o -type d -name src -print 2>/dev/null | while read -r srcdir; do
-      pkgdir=$(dirname "$srcdir")
-      pkgname=$(basename "$pkgdir")
-      if echo "$pkgname" | grep -qE "^($PROTECTED_SRC_PKGS)"; then
-        continue   # leave it alone
-      fi
-      if [ -d "$pkgdir/dist" ] || [ -d "$pkgdir/lib" ] || [ -d "$pkgdir/build" ] || \
-         [ -d "$pkgdir/cjs" ] || [ -d "$pkgdir/esm" ]; then
-        rm -rf "$srcdir" 2>/dev/null || true
-      fi
-    done
+    # Never delete a path that surviving JS or package.json still resolves.
+    # Pattern deletes (src/, .ts, .d.ts, tests, docs, …) only run on
+    # unreferenced files. Deleting protobufjs/src while minimal.js still
+    # require("./src/index-minimal") is how WhatsApp/baileys broke; deleting
+    # OpenTelemetry build/src because a directory was named "src" is the same
+    # class of bug.
+    echo "Pruning unreferenced node_modules bloat (keeping anything survivors still resolve)..."
+    node <<'PRUNE_REFS'
+const fs = require("fs");
+const path = require("path");
+
+const root = path.resolve("node_modules");
+const jsExt = new Set([".js", ".cjs", ".mjs"]);
+const skipCond = new Set(["types", "typings", "source", "@zod/source"]);
+const importRe =
+  /(?:require\s*\(\s*|from\s+|import\s*\(\s*|new\s+URL\s*\(\s*)['"](\.\.?\/[^'"]+)['"]/g;
+const bloatDirs = new Set([
+  "test",
+  "__tests__",
+  "tests",
+  "fixtures",
+  "__fixtures__",
+  "examples",
+  "docs",
+  "benchmarks",
+  "benchmark",
+  "coverage",
+  ".nyc_output",
+  ".turbo",
+  ".github",
+]);
+const compiledSiblings = ["dist", "lib", "build", "cjs", "esm"];
+const bloatFile = (name) =>
+  /\.d\.(ts|mts|cts)$/.test(name) ||
+  /\.([cm]?js)\.map$/.test(name) ||
+  /\.tsx?$/.test(name) ||
+  /^(README|CHANGELOG|HISTORY|CONTRIBUTING|AUTHORS|LICENSE|LICENCE)/i.test(name) ||
+  /\.(md|markdown)$/i.test(name);
+
+function isTsOrDts(spec) {
+  return /\.d\.(ts|mts|cts)$/.test(spec) || /\.tsx?$/.test(spec);
+}
+
+function collectRuntimeSpecs(value, cond, out) {
+  if (typeof value === "string") {
+    if (!skipCond.has(cond) && !isTsOrDts(value)) out.push(value);
+    return;
+  }
+  if (Array.isArray(value)) {
+    for (const item of value) collectRuntimeSpecs(item, cond, out);
+    return;
+  }
+  if (value && typeof value === "object") {
+    for (const [key, item] of Object.entries(value)) collectRuntimeSpecs(item, key, out);
+  }
+}
+
+function runtimeSpecs(pkg) {
+  const out = [];
+  collectRuntimeSpecs(pkg.main, "default", out);
+  collectRuntimeSpecs(pkg.module, "module", out);
+  if (typeof pkg.browser === "string") collectRuntimeSpecs(pkg.browser, "browser", out);
+  else if (pkg.browser && typeof pkg.browser === "object") {
+    for (const item of Object.values(pkg.browser)) collectRuntimeSpecs(item, "browser", out);
+  }
+  collectRuntimeSpecs(pkg.exports, "default", out);
+  if (typeof pkg.bin === "string") collectRuntimeSpecs(pkg.bin, "bin", out);
+  else if (pkg.bin && typeof pkg.bin === "object") {
+    for (const item of Object.values(pkg.bin)) collectRuntimeSpecs(item, "bin", out);
+  }
+  return out;
+}
+
+function listPackages(dir, acc = []) {
+  if (!fs.existsSync(dir)) return acc;
+  for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (!ent.isDirectory() && !ent.isSymbolicLink()) continue;
+    if (ent.name.startsWith(".")) continue;
+    const child = path.join(dir, ent.name);
+    if (ent.name.startsWith("@")) {
+      listPackages(child, acc);
+      continue;
+    }
+    if (fs.existsSync(path.join(child, "package.json"))) acc.push(child);
+  }
+  return acc;
+}
+
+const referenced = new Set();
+
+function protect(abs) {
+  let cur;
+  try {
+    cur = fs.existsSync(abs) ? fs.realpathSync(abs) : path.resolve(abs);
+  } catch {
+    cur = path.resolve(abs);
+  }
+  while (true) {
+    referenced.add(cur);
+    const parent = path.dirname(cur);
+    if (parent === cur || !parent.startsWith(root)) break;
+    cur = parent;
+  }
+}
+
+function resolveRel(fromFile, spec) {
+  const cleaned = spec.split("?")[0].split("#")[0];
+  const base = path.resolve(path.dirname(fromFile), cleaned);
+  if (cleaned.includes("*")) {
+    protect(base.replace(/\/\*.*$/, "") || base);
+    return;
+  }
+  const cands = [base];
+  if (!path.extname(path.basename(base))) {
+    cands.push(
+      base + ".js",
+      base + ".cjs",
+      base + ".mjs",
+      base + ".json",
+      base + ".node",
+      base + ".wasm",
+      path.join(base, "index.js"),
+      path.join(base, "index.cjs"),
+      path.join(base, "index.mjs"),
+      path.join(base, "package.json"),
+    );
+  }
+  let hit = false;
+  for (const cand of cands) {
+    if (fs.existsSync(cand)) {
+      protect(cand);
+      hit = true;
+    }
+  }
+  if (!hit) protect(base);
+}
+
+function walkFiles(start, onFile) {
+  const stack = [start];
+  while (stack.length) {
+    const cur = stack.pop();
+    let ents;
+    try {
+      ents = fs.readdirSync(cur, { withFileTypes: true });
+    } catch {
+      continue;
+    }
+    for (const ent of ents) {
+      const full = path.join(cur, ent.name);
+      if (ent.isDirectory()) {
+        if (ent.name === "node_modules") continue;
+        stack.push(full);
+        continue;
+      }
+      if (ent.isFile()) onFile(full);
+    }
+  }
+}
+
+for (const pkgDir of listPackages(root)) {
+  protect(path.join(pkgDir, "package.json"));
+  let pkg = {};
+  try {
+    pkg = JSON.parse(fs.readFileSync(path.join(pkgDir, "package.json"), "utf8"));
+  } catch {
+    continue;
+  }
+  for (const spec of runtimeSpecs(pkg)) {
+    const normalized = String(spec).replace(/\\/g, "/");
+    resolveRel(path.join(pkgDir, "package.json"), normalized.startsWith(".") ? normalized : "./" + normalized);
+  }
+}
+
+walkFiles(root, (full) => {
+  if (!jsExt.has(path.extname(full))) return;
+  let text;
+  try {
+    text = fs.readFileSync(full, "utf8");
+  } catch {
+    return;
+  }
+  importRe.lastIndex = 0;
+  let match;
+  while ((match = importRe.exec(text))) resolveRel(full, match[1]);
+});
+
+function isProtected(abs) {
+  return referenced.has(abs);
+}
+
+function hasCompiledSibling(pkgDir) {
+  return compiledSiblings.some((name) => fs.existsSync(path.join(pkgDir, name)));
+}
+
+let filesRemoved = 0;
+let dirsRemoved = 0;
+let srcKept = 0;
+
+walkFiles(root, (full) => {
+  const name = path.basename(full);
+  const rel = path.relative(root, full);
+  if (rel.startsWith("typescript" + path.sep) || rel === "typescript") return;
+  if (!bloatFile(name)) return;
+  if (isProtected(full)) return;
+  try {
+    fs.rmSync(full, { force: true });
+    filesRemoved++;
+  } catch {
+    /* ignore */
+  }
+});
+
+for (const pkgDir of listPackages(root)) {
+  const srcDir = path.join(pkgDir, "src");
+  if (!fs.existsSync(srcDir) || !fs.statSync(srcDir).isDirectory()) continue;
+  if (isProtected(srcDir) || !hasCompiledSibling(pkgDir)) {
+    srcKept++;
+    continue;
+  }
+  fs.rmSync(srcDir, { recursive: true, force: true });
+  dirsRemoved++;
+}
+
+const stack = [root];
+while (stack.length) {
+  const cur = stack.pop();
+  let ents;
+  try {
+    ents = fs.readdirSync(cur, { withFileTypes: true });
+  } catch {
+    continue;
+  }
+  for (const ent of ents) {
+    if (!ent.isDirectory()) continue;
+    const full = path.join(cur, ent.name);
+    if (ent.name === "node_modules") continue;
+    if (bloatDirs.has(ent.name) && !isProtected(full)) {
+      fs.rmSync(full, { recursive: true, force: true });
+      dirsRemoved++;
+      continue;
+    }
+    stack.push(full);
+  }
+}
+
+console.log(
+  `unreferenced bloat: removed ${filesRemoved} files, ${dirsRemoved} dirs; kept ${srcKept} package-root src/ trees`,
+);
+PRUNE_REFS
 
     # Leftover build caches and incremental info
     find node_modules -name "*.tsbuildinfo" -o -name ".turbo" -o -name ".cache" \
@@ -280,25 +556,42 @@ package() {
     # Note: The heavy lifting for tests, .ts, .d.ts, .md, prebuilds, nested node_modules, etc.
     # is now done in the much more aggressive block above ("Aggressive removal of native binaries...").
 
-    # --- SPECIAL HANDLING: massively duplicated nested 'openclaw' package ---
-    # Because of workspace rewriting + Bun hoisted install, node_modules/openclaw contains
-    # a near-full duplicate of dist/ (~91M), docs, src, and even its own node_modules.
-    # The top-level package already provides everything the runtime needs.
-    # We keep a tiny stub so that `import ... from "openclaw"` and the rich "exports" map continue to work.
-    if [ -d "node_modules/openclaw" ]; then
-        echo "Slimming duplicated node_modules/openclaw (biggest single win)..."
+    # --- SPECIAL HANDLING: nested 'openclaw' package / Bun self-link ---
+    # Bun often installs node_modules/openclaw as a symlink to ".." (the package
+    # root). The old "slim" path followed that symlink and ran:
+    #   ln -sfn ../../openclaw.mjs node_modules/openclaw/openclaw.mjs
+    # which rewrote the REAL /usr/lib/openclaw/openclaw.mjs into a broken link
+    # (../../openclaw.mjs → /usr/openclaw.mjs). That makes `openclaw tui` die
+    # immediately with MODULE_NOT_FOUND.
+    if [ -e "node_modules/openclaw" ] || [ -L "node_modules/openclaw" ]; then
+        echo "Normalizing node_modules/openclaw ..."
+        _oc_resolved="$(readlink -f node_modules/openclaw 2>/dev/null || true)"
+        _self_resolved="$(pwd -P)"
+        _is_self_link=0
+        if [ -L "node_modules/openclaw" ]; then
+            _target="$(readlink node_modules/openclaw)"
+            if [ "$_target" = ".." ] || [ "$_target" = "." ] || [ "$_oc_resolved" = "$_self_resolved" ]; then
+                _is_self_link=1
+            fi
+        fi
 
-        # Strategy for a robust minimal stub:
-        # - Keep (a copy of) the real package.json — it has the complete "exports" map for plugin-sdk/* etc.
-        # - Explicitly ensure "./package.json" is resolvable (some runtime code imports it directly).
-        # - Delete everything heavy (dist, docs, src, internal node_modules, etc.).
-        # - Symlink the big artifacts back to the top-level tree we already ship.
+        if [ "$_is_self_link" -eq 1 ]; then
+            echo "  Bun self-link detected (node_modules/openclaw -> package root); replacing with a real stub dir"
+            rm -f node_modules/openclaw
+            mkdir -p node_modules/openclaw
+        elif [ -d "node_modules/openclaw" ]; then
+            echo "  Slimming duplicated node_modules/openclaw directory..."
+            find node_modules/openclaw -mindepth 1 -maxdepth 1 \
+                ! -name 'package.json' \
+                ! -name 'openclaw.mjs' \
+                ! -name 'THIRD_PARTY_NOTICES.md' \
+                ! -name 'npm-shrinkwrap.json' \
+                -exec rm -rf {} + 2>/dev/null || true
+        fi
 
-        # Copy the real package.json (small, ~105k) so we have the authoritative exports map
+        # Authoritative package.json + minimal runtime wiring (paths relative to
+        # node_modules/openclaw/, NOT followed through a self-link).
         cp package.json node_modules/openclaw/package.json 2>/dev/null || true
-
-        # Patch the copied package.json to guarantee the ./package.json subpath works
-        # (the upstream exports map does not include it by default)
         node -e '
           const fs = require("fs");
           const p = "node_modules/openclaw/package.json";
@@ -308,23 +601,70 @@ package() {
             if (!pkg.exports["./package.json"]) {
               pkg.exports["./package.json"] = "./package.json";
             }
+            // Drop workspace: protocol so Node does not try to resolve workspaces.
+            for (const section of ["dependencies", "devDependencies", "optionalDependencies", "peerDependencies"]) {
+              const bag = pkg[section];
+              if (!bag) continue;
+              for (const [name, ver] of Object.entries(bag)) {
+                if (typeof ver === "string" && ver.startsWith("workspace:")) {
+                  bag[name] = "*";
+                }
+              }
+            }
             fs.writeFileSync(p, JSON.stringify(pkg, null, 2));
           } catch (e) {}
         ' 2>/dev/null || true
 
-        # Now delete all the duplicated heavy children
-        find node_modules/openclaw -mindepth 1 -maxdepth 1 \
-            ! -name 'package.json' \
-            ! -name 'openclaw.mjs' \
-            ! -name 'THIRD_PARTY_NOTICES.md' \
-            ! -name 'npm-shrinkwrap.json' \
-            -exec rm -rf {} + 2>/dev/null || true
-
-        # Wire the heavy runtime pieces back via symlinks (saves ~150 MB with zero behavior change)
         ln -sfn ../../dist node_modules/openclaw/dist 2>/dev/null || true
         ln -sfn ../../openclaw.mjs node_modules/openclaw/openclaw.mjs 2>/dev/null || true
         ln -sfn ../../docs node_modules/openclaw/docs 2>/dev/null || true
     fi
+
+    # --- Materialize @openclaw/* workspace packages ---
+    # dist/ imports e.g. @openclaw/ai as externals. After bun install those are
+    # usually symlinks into packages/<name>. Re-link so Node can resolve them.
+    if [ -d packages ]; then
+        echo "Linking workspace packages into node_modules/@openclaw/ ..."
+        mkdir -p node_modules/@openclaw
+        for pkg_dir in packages/*/; do
+            [ -f "${pkg_dir}package.json" ] || continue
+            # Only keep package.json + dist (drop src/tests).
+            find "$pkg_dir" -mindepth 1 -maxdepth 1 \
+                ! -name 'package.json' \
+                ! -name 'dist' \
+                ! -name 'LICENSE' \
+                ! -name 'README.md' \
+                -exec rm -rf {} + 2>/dev/null || true
+            if [ ! -d "${pkg_dir}dist" ]; then
+                echo "  skip $(basename "$pkg_dir") (no dist/)"
+                continue
+            fi
+            short="$(node -pe 'JSON.parse(require("fs").readFileSync(process.argv[1],"utf8")).name.replace(/^@openclaw\//,"")' "${pkg_dir}package.json" 2>/dev/null || true)"
+            [ -n "$short" ] || continue
+            rm -rf "node_modules/@openclaw/$short"
+            ln -sfn "../../packages/$(basename "$pkg_dir")" "node_modules/@openclaw/$short"
+            echo "  linked @openclaw/$short -> packages/$(basename "$pkg_dir")"
+        done
+    fi
+
+    # Root package.json still says "workspace:*" for @openclaw/ai after our patch
+    # script; Node ignores the version string if the package exists, but rewrite
+    # for honesty / tooling.
+    node -e '
+      const fs = require("fs");
+      const p = "package.json";
+      try {
+        const pkg = JSON.parse(fs.readFileSync(p, "utf8"));
+        for (const section of ["dependencies", "devDependencies", "optionalDependencies", "peerDependencies"]) {
+          const bag = pkg[section];
+          if (!bag) continue;
+          for (const [name, ver] of Object.entries(bag)) {
+            if (typeof ver === "string" && ver.startsWith("workspace:")) bag[name] = "*";
+          }
+        }
+        fs.writeFileSync(p, JSON.stringify(pkg, null, 2));
+      } catch (e) {}
+    ' 2>/dev/null || true
 
     # --- Drop large build/dev tools that are not required at runtime ---
     # typescript + tsx are intentionally kept (see earlier comment).
@@ -332,10 +672,26 @@ package() {
     # or vitest compat shims, not the vite package itself.
     echo "Removing large build-time-only packages (vite and related)..."
     rm -rf node_modules/vite node_modules/rolldown node_modules/@rolldown 2>/dev/null || true
+    rm -rf node_modules/tsdown node_modules/unrun 2>/dev/null || true
 
     # One more pass to clean any symlinks that became broken during the above
     find node_modules -xtype l -delete 2>/dev/null || true
     find node_modules -type d -empty -delete 2>/dev/null || true
+
+    # Final guard: entrypoint must be a regular file, not a symlink.
+    if [ -L openclaw.mjs ] || [ ! -f openclaw.mjs ]; then
+        echo "error: openclaw.mjs is missing or a symlink after packaging; restoring from srcdir" >&2
+        if [ -f "$srcdir/openclaw/openclaw.mjs" ] && [ ! -L "$srcdir/openclaw/openclaw.mjs" ]; then
+            install -Dm755 "$srcdir/openclaw/openclaw.mjs" openclaw.mjs
+        else
+            echo "error: cannot restore openclaw.mjs from $srcdir/openclaw" >&2
+            return 1
+        fi
+    fi
+    if [ ! -e node_modules/@openclaw/ai ]; then
+        echo "error: node_modules/@openclaw/ai missing after packaging (TUI/CLI will fail)" >&2
+        return 1
+    fi
 
     # --- END PRUNING ---
 

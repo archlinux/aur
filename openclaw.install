@@ -21,6 +21,16 @@ post_install() {
   upgrade is available at:
   /usr/share/doc/@PKGNAME@/openclaw-restart.hook.sample
   To use it, copy it to /etc/pacman.d/hooks/.
+
+  EXTERNAL CHANNEL PLUGINS (WhatsApp, etc.):
+  WhatsApp is NOT bundled in the core package — it is installed per-user via
+  ClawHub/npm (see docs: channels/whatsapp). After upgrading openclaw-git,
+  outdated plugins can fail with ERR_PACKAGE_PATH_NOT_EXPORTED (plugin-sdk
+  path renames). Refresh with:
+    openclaw plugins update whatsapp
+  # or reinstall matching host:
+    openclaw plugins install clawhub:@openclaw/whatsapp --force
+  Then restart the gateway (or rely on the pacman restart hook above).
  
   Please read further documentation and security warnings at:
   file:///usr/share/doc/@PKGNAME@/README-arch.md
