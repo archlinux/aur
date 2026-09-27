@@ -1,4 +1,4 @@
-# Maintainer: Egor Tensin <Egor.Tensin@gmail.com>
+# Maintainer: Egor Tensin <egor@tensin.name>
 pkgname=cmake-common
 _name="${pkgname//-/_}"
 pkgver=6.1.6
