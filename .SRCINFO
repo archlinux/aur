@@ -1,6 +1,6 @@
 pkgbase = prompt-exporter
-	pkgdesc = CLI to sync AI conversation prompts from multiple sources (ChatGPT first)
-	pkgver = 2.0.1
+	pkgdesc = CLI to sync AI conversation prompts from multiple sources (ChatGPT, Lumo, …)
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/azbarcea/prompt-exporter
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = prompt-exporter
 	depends = nodejs
 	depends = chromium
 	conflicts = prompt-exporter-git
-	source = prompt-exporter-2.0.1.tar.gz::https://github.com/azbarcea/prompt-exporter/archive/refs/tags/v2.0.1.tar.gz
-	sha256sums = 2fe40533a71233c5eb2001a8e80ca0cf467e25c3e565151db7026b7742532c6c
+	source = prompt-exporter-2.2.0.tar.gz::https://github.com/azbarcea/prompt-exporter/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = 9e63186f99b181db108f84482e863ef32c9a6fa65f02532fe4da28f04f2c9bdf
 
 pkgname = prompt-exporter
