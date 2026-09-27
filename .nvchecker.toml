@@ -1,0 +1,3 @@
+[python-walrus]
+source = "pypi"
+pypi = "walrus"
