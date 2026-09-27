@@ -1,7 +1,7 @@
 # Maintainer: gnoooo
 
 pkgname=typst-ide
-pkgver=1.6.3
+pkgver=1.6.9
 pkgrel=1
 pkgdesc="A modern IDE for Typst"
 arch=('x86_64')
@@ -22,6 +22,7 @@ depends=(
 
 makedepends=(
   'cargo'
+  'lld'
   'nodejs'
   'npm'
   'pkg-config'
@@ -43,7 +44,7 @@ build() {
   cd ..
 
   export CFLAGS="${CFLAGS/-flto=auto}"
-  export RUSTFLAGS="${RUSTFLAGS:-} -C linker=cc -C link-arg=-Wl,--no-as-needed"
+  export RUSTFLAGS="${RUSTFLAGS:-} -C linker=cc -C link-arg=-Wl,--no-as-needed -C link-arg=-fuse-ld=lld"
 
   cargo build --release -p typst-ide-app
 }
