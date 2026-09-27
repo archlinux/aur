@@ -1,0 +1,4 @@
+[tailor]
+source = "git"
+git = "https://altlinux.space/qualimock/Tailor.git"
+prefix = "v"

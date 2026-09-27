@@ -1,27 +1,37 @@
-# Maintainer: git-commit <snowdragon92[at]gmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=tailor
-pkgver="0.12.0"
+pkgver=1.1.2
 pkgrel=1
-pkgdesc="Cross-platform static analyzer and linter for Swift"
-arch=("x86_64")
-url="https://tailor.sh/"
-license=('MIT')
-depends=("java-runtime=8")
-makedepends=()
-optdepends=()
-source=("https://github.com/sleekbyte/tailor/releases/download/v$pkgver/$pkgname-$pkgver.tar")
-install=()
-sha256sums=('ec3810b27e9a35ecdf3a21987f17cad86918240d773172264e9abbb1a7efc415')
+pkgdesc="Create bootable drives"
+arch=('x86_64')
+url="https://altlinux.space/qualimock/Tailor"
+license=('GPL-3.0-or-later')
+depends=(
+  'gtk4'
+  'libadwaita'
+  'libgee'
+  'libosinfo'
+  'libsoup3'
+  'udisks2'
+)
+makedepends=(
+  'blueprint-compiler'
+  'git'
+  'meson'
+  'vala'
+)
+source=("git+https://altlinux.space/qualimock/Tailor.git#tag=v$pkgver")
+sha256sums=('685efecd3a13c42d7b1e616542dfaae4579fc4603f6f4c6f6c7cd4dd2b3c214a')
+
+build() {
+  arch-meson Tailor build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --no-rebuild --print-errorlogs
+}
 
 package() {
-    cd "$srcdir"
-    ls
-
-    install -d "$pkgdir/usr/bin" "$pkgdir/usr/share/man/man1/"
-
-    install -m755 -d "$pkgdir/usr/share/tailor"
-    cp -R ${srcdir}/${pkgname}-${pkgver}/* "$pkgdir/usr/share/tailor"
-    ln -s /usr/share/tailor/bin/tailor "$pkgdir/usr/bin/tailor"
-    ln -s /usr/share/tailor/tailor.1 "$pkgdir/usr/share/man/man1/tailor.1"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
