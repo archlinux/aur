@@ -1,13 +1,14 @@
 pkgbase = python-iso639-lang
 	pkgdesc = A lightweight library for the ISO 639 standard.
-	pkgver = 2.1.0
+	pkgver = 2.6.3
 	pkgrel = 1
 	url = https://github.com/LBeaudoux/iso639
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
-	source = python-iso639-lang-2.1.0.tar.gz::https://github.com/LBeaudoux/iso639/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = 2ffe80b13adb336687925ec1d6e46749f3a82e289d998e58eb2350b3fb79e486
+	source = python-iso639-lang-2.6.3.tar.gz::https://github.com/LBeaudoux/iso639/archive/refs/tags/v2.6.3.tar.gz
+	sha256sums = 4aecdb49b35abd8f56bd3b83b0d8d376556bc7f62e6176a5ca28affcb8f72303
 
 pkgname = python-iso639-lang

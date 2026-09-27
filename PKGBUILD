@@ -1,24 +1,28 @@
-# Maintainer: Sematre <sematre at gmx dot de>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: Sematre <sematre at gmx dot de>
+#
 pkgname=python-iso639-lang
-pkgver=2.1.0
+pkgver=2.6.3
 pkgrel=1
-
 pkgdesc="A lightweight library for the ISO 639 standard."
-arch=('any')
-url="https://github.com/LBeaudoux/iso639"
+arch=(any)
+url='https://github.com/LBeaudoux/iso639'
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=(
+  python-build
+  python-installer
+)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2ffe80b13adb336687925ec1d6e46749f3a82e289d998e58eb2350b3fb79e486')
+sha256sums=('4aecdb49b35abd8f56bd3b83b0d8d376556bc7f62e6176a5ca28affcb8f72303')
 
 build() {
-	cd "iso639-${pkgver}"
-	python setup.py build
+  cd "iso639-${pkgver}"
+  python -m build
 }
 
 package() {
-	cd "iso639-${pkgver}"
-	python setup.py install --prefix=/usr --root="${pkgdir}" --optimize 1 --skip-build
-	install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "iso639-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
