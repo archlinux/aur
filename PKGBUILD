@@ -2,7 +2,7 @@
 
 _pkgname=xfdesktop
 pkgname=${_pkgname}-git
-pkgver=4.20.1+84+g7b300b96
+pkgver=4.21.0+112+gdee450dc
 pkgrel=1
 pkgdesc="A desktop manager for Xfce (git checkout)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
