@@ -5,31 +5,52 @@
 
 _reponame=videodownloader
 pkgname=videodownloader
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A video downloader with Qt GUI (currently only YouTube and Vimeo are maintained)'
-license=(GPL-2.0-or-later)
-depends=('qtutilities' 'openssl' 'desktop-file-utils')
-makedepends=('cmake' 'ninja' 'qt5-tools')
+arch=('x86_64')
 url="https://github.com/Martchus/${_reponame}"
+license=('GPL-2.0-or-later')
+depends=(
+    'glibc'
+    'libgcc'
+    'libstdc++'
+    'qt6-base'
+    'openssl'
+    'hicolor-icon-theme'
+)
+makedepends=(
+    'clang'
+    'cmake'
+    'c++utilities'
+    'qtutilities'
+    'ninja'
+    'qt6-tools'
+)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('59adbb242250235d0e580fbb858c3eb30c724f5463defc49330015e2233927ed')
+sha256sums=('33fdaf12b5f14f9a7f89729a353cae478a1141b10d471fcbbb03bf47249d7991')
 
 build() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  cmake \
-    -G Ninja \
-    -DCMAKE_BUILD_TYPE:STRING='Release' \
-    -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-    -DBUILD_SHARED_LIBS:BOOL=ON \
-    -DBUILTIN_TRANSLATIONS:BOOL=ON \
-    -DBUILTIN_TRANSLATIONS_OF_QT:BOOL=OFF \
-    .
-  ninja
+    local cmake_options=(
+        -B build
+        -S "${PROJECT_DIR_NAME:-$pkgbase-$pkgver}"
+        -G Ninja
+        -D CMAKE_BUILD_TYPE=Release
+        -D CMAKE_INSTALL_PREFIX=/usr
+        -D BUILD_SHARED_LIBS=ON
+        -D QT_PACKAGE_PREFIX=Qt6
+        -D BUILTIN_TRANSLATIONS=ON
+        -D BUILTIN_TRANSLATIONS_OF_QT=OFF
+    )
+    cmake "${cmake_options[@]}"
+    cmake --build build
 }
 
 package() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  DESTDIR="${pkgdir}" ninja install
+    depends+=(
+        'libc++utilities.so'
+        'libqtutilities.so'
+    )
+
+    DESTDIR="${pkgdir}" cmake --install build
 }
