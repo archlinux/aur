@@ -20,7 +20,6 @@ pkgbase = 3ncode-git
 	provides = 3ncode
 	conflicts = 3ncode
 	source = 3ncode-git::git+https://github.com/NeptuneOS/3ncode.git#branch=kirigami_app
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = 3ncode-git
-
