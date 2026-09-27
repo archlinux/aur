@@ -3,7 +3,8 @@
 *.pkg.tar.xz
 *.pkg.tar.gz
 
-# Source tarballs
+# Sources
+*.deb
 *.tar.gz
 *.tar.bz2
 *.tar.xz

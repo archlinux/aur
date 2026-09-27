@@ -1,0 +1,30 @@
+# 上游 deb 的 postinst 会在 /opt/com.ovital.map/install.uuid 写一个安装标识，
+# dpkg 安装的会有，pacman 安装的原本没有。launcher 的
+# AppLauncher::GetInstallAppUUID 与 OMapQTUpgrade 的 AppUpgrade::DoBackInstallUuid
+# 都依赖这个文件，故在包管理器一侧补上同样的行为。
+
+post_install() {
+  _omap_gen_uuid
+}
+
+post_upgrade() {
+  _omap_gen_uuid
+}
+
+pre_remove() {
+  rm -f /opt/com.ovital.map/install.uuid
+}
+
+post_remove() {
+  rm -f /opt/com.ovital.map/install.uuid
+  rmdir /opt/com.ovital.map 2>/dev/null || true
+}
+
+_omap_gen_uuid() {
+  # 只在文件缺失时生成。上游 postinst 每次安装/升级都会无条件重写，
+  # 但应用自身带有 DoBackInstallUuid 备份逻辑，升级时更换标识与其预期冲突。
+  if [ -d /opt/com.ovital.map ] && [ ! -f /opt/com.ovital.map/install.uuid ]; then
+    cat /proc/sys/kernel/random/uuid > /opt/com.ovital.map/install.uuid
+    chmod 644 /opt/com.ovital.map/install.uuid
+  fi
+}
