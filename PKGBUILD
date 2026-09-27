@@ -2,12 +2,12 @@
 # Contributor: K4YT3X <aur@k4yt3x.com>
 
 pkgname=nspawn
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='Docker-like management of systemd-nspawn machines: OCI images from a hub, shared layers, a bridge network, driven over D-Bus'
 arch=('x86_64' 'aarch64')
 url='https://github.com/nspawn/nspawn'
-license=('GPL-3.0-or-later')
+license=('MIT' 'Apache-2.0')
 depends=('systemd>=255' 'glibc' 'gcc-libs' 'iproute2' 'nftables')
 makedepends=('cargo')
 options=('!lto')
@@ -15,7 +15,7 @@ optdepends=('polkit: let users other than root drive nspawn'
             'mkosi: build images with nspawn build'
             'iptables-nft: keep the bridge reachable next to the forwarding rules of docker or ufw')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('60dae5fd9eba3597b9cf468c8a3d3bf6ba99c3472dfc1ab63cfd1b894d67cdfe')
+sha256sums=('e22d4786e3f57837a16d9ad163ab745ba722fe61b80f74fe4da3479c84318a9e')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -44,8 +44,8 @@ package() {
   install -Dm644 packaging/dbus/org.nspawn.service "${pkgdir}/usr/share/dbus-1/system-services/org.nspawn.service"
   install -Dm644 packaging/dbus/org.nspawn.conf "${pkgdir}/usr/share/dbus-1/system.d/org.nspawn.conf"
   install -Dm644 packaging/polkit/org.nspawn.policy "${pkgdir}/usr/share/polkit-1/actions/org.nspawn.policy"
-  install -Dm644 README.md docs/ARCHITECTURE.md docs/DBUS.md packaging/polkit/nspawn-wheel.rules -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md docs/USAGE.md docs/ARCHITECTURE.md docs/DBUS.md packaging/polkit/nspawn-wheel.rules -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 LICENSE LICENSE-MIT LICENSE-APACHE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -dm755 "${pkgdir}/etc/nspawn"
   install -dm711 "${pkgdir}/var/lib/nspawn"
 }
