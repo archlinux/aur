@@ -2,7 +2,7 @@
 
 pkgname=scout-agentgateway-extmcp
 _repo=scout-reporting
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc='agentgateway ExtMcp processor that gates MCP backends on offline-verified scout attestations'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 source=("${_repo}-${pkgver}.tar.gz::https://github.com/sebastienrousseau/${_repo}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b964f808c0ccf0f8ea8678761d9f066ea24f7ee43be4e0cf0c36b2dedc7f71be')
+sha256sums=('f6539798db414841f4d88b5e1285f6e682332e871939898f6265a58e7b2b2ddc')
 
 prepare() {
   cd "${_repo}-${pkgver}/integrations/agentgateway-extmcp"
