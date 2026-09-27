@@ -1,8 +1,8 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _pkgname=vacask
 pkgname="${_pkgname}-git"
-pkgver=0.3.4.r70.g55736a5
-pkgrel=2
+pkgver=0.3.4.r73.gf62a160
+pkgrel=1
 pkgdesc="Verilog-A Circuit Analysis Kernel is an analog circuit simulator"
 arch=(
     'x86_64'
@@ -48,22 +48,13 @@ options=(!lto)
 source=(
     "${_pkgname}::git+${url}"
     "NetlistParsers::git+https://github.com/NyanCAD/NetlistParse.rs.git#commit=d565fd3e359893fbc4376bb9c7b5608ef786e6bb"
-    "0001-system-level-corrosion.diff::${url}/pulls/121.diff"
 )
 b2sums=('SKIP'
-        '1cbe8b3259e8d10d66bd14b314b7f7fdc8b927f9f6961b3ed77b148016e13f1b31f271bf45726858dd18da8f269106d0fa62d8c8c9c5bdf96db869fae0f84a24'
-        'd275d7422b7c7400365e38031057867aa11dd56bccdf8739c86f81d95bd4efbf39f71712e3ecd66b3868536f48d7409135ca821757438186b14dc51bafde6e46')
+        '1cbe8b3259e8d10d66bd14b314b7f7fdc8b927f9f6961b3ed77b148016e13f1b31f271bf45726858dd18da8f269106d0fa62d8c8c9c5bdf96db869fae0f84a24')
 
 pkgver() {
     cd "${_pkgname}"
     git describe --long --tags --abbrev=7 | sed 's/^_//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd "${_pkgname}"
-    # Add support for system-level Corrosion
-    # see upstream: https://codeberg.org/arpadbuermen/VACASK/pulls/121
-    patch -Np1 < "../0001-system-level-corrosion.diff"
 }
 
 build() {
