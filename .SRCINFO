@@ -1,0 +1,20 @@
+pkgbase = pixlay
+	pkgdesc = Make a collage out of one to nine photos and export it for printing
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/YangtseSu/pixlay
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = rust
+	makedepends = meson
+	makedepends = gettext
+	depends = gtk4
+	depends = libadwaita
+	depends = glycin
+	optdepends = libheif: decode HEIC and AVIF photos
+	source = pixlay-0.1.2.tar.gz::https://github.com/YangtseSu/pixlay/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 0aa89d76242d2e151ac7bbc2b9ce9faab6d41c706d6acbf86650f6ed985e1c8d
+
+pkgname = pixlay
