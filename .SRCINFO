@@ -1,0 +1,21 @@
+pkgbase = lixplore-cli
+	pkgdesc = Academic Literature Search & Export CLI Tool - Search PubMed, arXiv, Crossref, DOAJ, EuropePMC
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/pryndor/Lixplore_cli
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-biopython
+	depends = python-requests
+	depends = python-openpyxl
+	optdepends = python-rich: Enhanced TUI mode with colors and formatting
+	source = lixplore-cli-1.1.0.tar.gz::https://github.com/pryndor/Lixplore_cli/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = d83cae62e6577130e1bfc2a3d8a78216c3e18dfb9064e9151f438a749e4622fb
+
+pkgname = lixplore-cli
