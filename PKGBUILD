@@ -2,7 +2,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="posting"
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="The modern API client that lives in your terminal"
 arch=(
@@ -43,11 +43,17 @@ makedepends=(
 #   'python-pytest>=8.3.1'
 #   'python-pytest-xdist>=3.6.1'
 # )
+provides=(
+  "python-${pkgname}=${pkgver}"
+)
+conflicts=(
+  "python-${pkgname}"
+)
 _pkgsrc="${pkgname}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('4dab923cc9bd374f5b3d54a9f4d4d9e712c3854df6be192d407e34b77da99653')
+sha256sums=('cc4efda2f32caf325bc9516cebfacd47b54b26d1f2196f1428adda0b1b2e4377')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
@@ -67,11 +73,9 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
 
-  install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -vsf "${site_packages}/${_pkgsrc}.dist-info/licenses/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  ln -vsf "${site_packages}/${_pkgsrc}.dist-info/licenses/NOTICE"  \
-    "${pkgdir}/usr/share/doc/${pkgname}/NOTICE"
+  install -vd "${pkgdir}/usr/share/licenses"
+  ln -vsf "${site_packages}/${_pkgsrc}.dist-info/licenses" \
+    "${pkgdir}/usr/share/licenses/${pkgname}"
 }
