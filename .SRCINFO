@@ -1,8 +1,8 @@
 pkgbase = alacritree-git
-	pkgdesc = Alacritty fork with worktree-aware sidebars (built from master)
+	pkgdesc = Native terminal that turns Git worktrees into workspaces, built on Alacritty (built from master)
 	pkgver = 0.1.0.dev.r0.g0000000
 	pkgrel = 1
-	url = https://github.com/mathix420/alacritree
+	url = https://github.com/alacritree/alacritree
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
@@ -21,7 +21,7 @@ pkgbase = alacritree-git
 	provides = alacritree
 	conflicts = alacritree
 	conflicts = alacritree-bin
-	source = alacritree::git+https://github.com/mathix420/alacritree.git#branch=master
+	source = alacritree::git+https://github.com/alacritree/alacritree.git#branch=master
 	sha256sums = SKIP
 
 pkgname = alacritree-git

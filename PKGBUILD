@@ -4,9 +4,9 @@ pkgname=alacritree-git
 _pkgname=alacritree
 pkgver=0.1.0.dev.r0.g0000000
 pkgrel=1
-pkgdesc="Alacritty fork with worktree-aware sidebars (built from master)"
+pkgdesc="Native terminal that turns Git worktrees into workspaces, built on Alacritty (built from master)"
 arch=('x86_64' 'aarch64')
-url="https://github.com/mathix420/alacritree"
+url="https://github.com/alacritree/alacritree"
 license=('Apache-2.0')
 depends=(
   'fontconfig'
