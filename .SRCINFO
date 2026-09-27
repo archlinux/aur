@@ -1,7 +1,7 @@
 pkgbase = aurcache-cli
 	pkgdesc = Typed CLI for the AURCache API
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gyscos/AURCache
 	arch = x86_64
 	arch = aarch64
