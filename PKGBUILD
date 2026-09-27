@@ -3,27 +3,33 @@
 pkgname=python-vsmuxtools
 _origpkgname=vsmuxtools
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The extension to muxtools with vapoursynth and encoding stuff"
 arch=("x86_64")
 url='https://pypi.org/project/vsmuxtools/'
 license=("MPL-2.0")
 depends=(
-	"vapoursynth"
-	"vapoursynth-plugin-vsjetpack"
-	"python-numpy"
-	"python-muxtools"
-)
+    "vapoursynth"
+    "vapoursynth-plugin-vsjetpack"
+    "vapoursynth-plugin-bestsource"
+    "vapoursynth-plugin-lsmashsource"
+    "vapoursynth-plugin-scxvid"
+    "python-numpy"
+    "python-muxtools"
+    "python-pyparsebluray"
+    "python-wakepy"
+    "ffms2"
+)	
 makedepends=(
-	"python-build"
-	"python-installer"
-	"python-wheel"
-	"python-setuptools"
-	"python-hatchling"
+    "python-build"
+    "python-installer"
+    "python-wheel"
+    "python-setuptools"
+    "python-hatchling"
 )
 provides=(
-	"vapoursynth-plugin-${_origpkgname}"
-	"python-vsmuxtools"
+    "vapoursynth-plugin-${_origpkgname}"
+    "python-vsmuxtools"
 )
 conflicts=("vapoursynth-plugin-${_origpkgname}")
 source=("https://files.pythonhosted.org/packages/source/v/${_origpkgname}/${_origpkgname}-${pkgver}.tar.gz")
