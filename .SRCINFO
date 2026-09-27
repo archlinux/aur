@@ -1,6 +1,6 @@
 pkgbase = rusbmux-bin
 	pkgdesc = A usbmuxd replacement in pure Rust
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/abdullah-albanna/rusbmux
 	install = rusbmux-bin.install
@@ -13,9 +13,9 @@ pkgbase = rusbmux-bin
 	provides = rusbmux
 	provides = usbmuxd
 	conflicts = usbmuxd
-	source_x86_64 = rusbmux-0.2.1-x86_64.tar.gz::https://github.com/abdullah-albanna/rusbmux/releases/download/v0.2.1/rusbmux-0.2.1-x86_64.tar.gz
-	sha256sums_x86_64 = 0a71d402a1cf8510f334ed166d28631b3332d73593057dee92c773c0264b9a21
-	source_aarch64 = rusbmux-0.2.1-aarch64.tar.gz::https://github.com/abdullah-albanna/rusbmux/releases/download/v0.2.1/rusbmux-0.2.1-aarch64.tar.gz
-	sha256sums_aarch64 = 7edf4b442b6065765561c9c46894f8b7152eb267749c07117e5beafec1917e09
+	source_x86_64 = rusbmux-0.3.0-x86_64.tar.gz::https://github.com/abdullah-albanna/rusbmux/releases/download/v0.3.0/rusbmux-0.3.0-x86_64.tar.gz
+	sha256sums_x86_64 = fe274c7cd55db47e468c25aa9818192961694a6215ecfc3db668ac633813afdb
+	source_aarch64 = rusbmux-0.3.0-aarch64.tar.gz::https://github.com/abdullah-albanna/rusbmux/releases/download/v0.3.0/rusbmux-0.3.0-aarch64.tar.gz
+	sha256sums_aarch64 = 08b85efa872d795cdd122abb8c13c612b07b0b74c158757183a1b66c3d35bd4d
 
 pkgname = rusbmux-bin

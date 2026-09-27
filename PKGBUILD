@@ -1,7 +1,7 @@
 # Maintainer: Abdullah Al-Banna
 
 pkgname=rusbmux-bin
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A usbmuxd replacement in pure Rust"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=('usbmuxd')
 
 source_x86_64=("rusbmux-${pkgver}-x86_64.tar.gz::https://github.com/abdullah-albanna/rusbmux/releases/download/v${pkgver}/rusbmux-${pkgver}-x86_64.tar.gz")
 source_aarch64=("rusbmux-${pkgver}-aarch64.tar.gz::https://github.com/abdullah-albanna/rusbmux/releases/download/v${pkgver}/rusbmux-${pkgver}-aarch64.tar.gz")
-sha256sums_x86_64=('0a71d402a1cf8510f334ed166d28631b3332d73593057dee92c773c0264b9a21')
-sha256sums_aarch64=('7edf4b442b6065765561c9c46894f8b7152eb267749c07117e5beafec1917e09')
+sha256sums_x86_64=('fe274c7cd55db47e468c25aa9818192961694a6215ecfc3db668ac633813afdb')
+sha256sums_aarch64=('08b85efa872d795cdd122abb8c13c612b07b0b74c158757183a1b66c3d35bd4d')
 
 package() {
   cd "${srcdir}/rusbmux-${pkgver}"
