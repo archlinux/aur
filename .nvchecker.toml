@@ -1,0 +1,7 @@
+[arm-linux-gnueabi-binutils]
+source = 'git'
+git = 'https://sourceware.org/git/binutils-gdb.git'
+prefix ='binutils-'
+include_regex = 'binutils-.*'
+from_pattern = '_'
+to_pattern = '.'
