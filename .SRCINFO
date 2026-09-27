@@ -1,0 +1,28 @@
+pkgbase = tangent
+	pkgdesc = GPU-rendered terminal for GTK 4 and libadwaita
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sachesi/tangent
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = blueprint-compiler
+	makedepends = just
+	makedepends = gettext
+	depends = gtk4>=1:4.22
+	depends = libadwaita>=1:1.9
+	depends = glib2
+	depends = cairo
+	depends = pango
+	depends = graphene
+	depends = libglvnd
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = glibc
+	optdepends = xdg-terminal-exec: open Tangent from launchers that ask for a terminal
+	conflicts = tangent-git
+	source = tangent-0.1.0.tar.gz::https://github.com/sachesi/tangent/archive/v0.1.0/tangent-0.1.0.tar.gz
+	sha256sums = 16376e18e185b7637587a8e18c28cf703dc78623bbf8fae919d344c016b10d6d
+
+pkgname = tangent
