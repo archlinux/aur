@@ -6,7 +6,7 @@
 
 pkgname=aurcache-server
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Build server and pacman repository for Arch Linux packages from the AUR"
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/gyscos/AURCache"
@@ -21,11 +21,13 @@ license=(GPL-3.0-or-later)
 # here is rustls over aws-lc-rs/ring, and nothing links libssl.
 depends=(gcc-libs libgit2 xz alpm-pkgbuild-bridge aurcache-sandbox)
 # rust-wasm supplies the wasm32-unknown-unknown std the frontend compiles
-# against, and wasm-bindgen-cli emits its JS glue. The latter is an AUR package
-# and its version must match the `wasm-bindgen` crate in frontend-rs/Cargo.lock
-# (0.2.127 today) -- wasm-bindgen refuses a mismatched pair outright, which is
-# the one thing about this build that breaks on a version bump elsewhere.
-makedepends=(cargo git libgit2 rust-wasm wasm-bindgen-cli)
+# against, and wasm-bindgen emits its JS glue. The latter's version must match
+# the `wasm-bindgen` crate in frontend-rs/Cargo.lock (0.2.128 today) --
+# wasm-bindgen refuses a mismatched pair outright, which is the one thing about
+# this build that breaks on a version bump elsewhere. It is the official
+# `wasm-bindgen` package rather than AUR `wasm-bindgen-cli`, so the dependency
+# resolves inside a clean chroot; that holds only while extra tracks the lock.
+makedepends=(cargo git libgit2 rust-wasm wasm-bindgen)
 backup=(etc/aurcache/server.env)
 # !lto because makepkg's LTO puts `-flto=auto` into CFLAGS, which the `cc` crate
 # passes to the C in `aws-lc-sys` and `ring`. That yields GCC LTO bytecode in
