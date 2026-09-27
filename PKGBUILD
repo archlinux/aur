@@ -6,8 +6,8 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-whisper
-pkgver=9.0.1
-pkgrel=2
+pkgver=9.0.2
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video, with the whisper filter'
 arch=(x86_64)
 url=https://ffmpeg.org
@@ -129,7 +129,7 @@ source=(
   0001-Add-av_stream_get_first_dts-for-Chromium.patch
   0002-Expose-whisper-decode-options.patch
 )
-b2sums=('e22f57e76d587eecfdfe3ba0fbfaa37c6c95b43d4fc60da9d4feb11a2c87dcaf7ac891fbaa649289bec4ef40378743d61c77128b7127e8dc42d95f95a60aee69'
+b2sums=('97bd244a79088e862f349ef91ae75f7a02c1a0c8c1e21601abf6fa5acae1d721d104c2afa4e6e955d7caf18ffd511c175b1a3965b99cc1122754f191b9098bc5'
         '6b39a957601825b40c1e80e4051abb7865c0b0e48b992d5268fa027676551a1354820a34308e4183ec6531a7801920b768931aaa5d89e89d8d759db892a2dcf0'
         'c5987e6358b8312cd3787bba3a0bff778cfdf15baa134fbe85825974fec04c6ccbf3f5884099466bc6d504aa14361924b1fd8ba7f47ebcf60e5de5352564c20c')
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
