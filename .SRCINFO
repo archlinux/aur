@@ -1,0 +1,11 @@
+pkgbase = reticulum-meshchatx-bin
+	pkgdesc = All-in-one Reticulum client, fork of Reticulum MeshChat
+	pkgver = 4.9.1
+	pkgrel = 1
+	url = https://github.com/Quad4-Software/MeshChatX
+	arch = x86_64
+	license = 0BSD
+	source = https://github.com/Quad4-Software/MeshChatX/releases/download/v4.9.1/ReticulumMeshChatX-v4.9.1-linux-amd64.deb
+	sha256sums = 25a13a39a7fa264b35a0ad2ac5e01691bbc4162e8e673b1afc8bd3dbdb645ca5
+
+pkgname = reticulum-meshchatx-bin
