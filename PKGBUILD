@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=n-m3u8dl-re-git
-pkgver=0.6.0.beta.r3.gdde9dbe
+pkgver=0.6.0.beta.r6.gd4e49c8
 pkgrel=1
 epoch=
 pkgdesc="Cross-Platform, beautiful and powerful stream downloader for DASH/HLS."
@@ -19,6 +19,7 @@ makedepends=(
     git
     'dotnet-runtime>=9.0.0'
     'dotnet-sdk>=9.0.0'
+    'dotnet-targeting-pack>=9.0.0'
 )
 backup=()
 options=('!strip' '!debug' '!lto')
