@@ -19,12 +19,14 @@
 # are published from a single PKGBUILD via per-arch source/checksum arrays.
 #
 # NOTE on the bundled OpenCode server: the .deb carries a self-contained
-# sidecar binary (usr/lib/Lumina.Code/opencode-<triple> inside the payload),
-# which adds NO extra system dependencies — it is a statically linked
-# single-file executable.
+# sidecar binary under usr/lib/Lumina Code/opencode (a Tauri RESOURCE, not
+# externalBin — the old externalBin layout installed it as /usr/bin/opencode,
+# polluting PATH and colliding with any user-installed opencode). It adds NO
+# extra system dependencies — it is a statically linked single-file
+# executable, and the app resolves it through its private resource dir.
 
 pkgname=lumina-code-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A Tauri + React desktop GUI for OpenCode, bundling its own pinned server binary"
 arch=('x86_64' 'aarch64')
@@ -51,8 +53,8 @@ optdepends=(
 #   aarch64 -> Lumina.Code_<ver>_arm64.deb
 source_x86_64=("${pkgname}-${pkgver}-amd64.deb::${url}/releases/download/v${pkgver}/Lumina.Code_${pkgver}_amd64.deb")
 source_aarch64=("${pkgname}-${pkgver}-arm64.deb::${url}/releases/download/v${pkgver}/Lumina.Code_${pkgver}_arm64.deb")
-sha256sums_x86_64=('28458f3141ee372870aa7702f7f955bce6c153aead27b9f8d497439c271185e9')
-sha256sums_aarch64=('85424e4efc60de9912d21bceff157dd91f89c835f5663d7096119b2344bd4241')
+sha256sums_x86_64=('940790c43da6ffeb1522e9b5162281cd8e256cf49bd23bdd0182b7c6d1c40dc4')
+sha256sums_aarch64=('093ea157b51f1f5b0cd1158a5f30cb0df0a1fd4844e2c65dce3721c3c25ff94d')
 
 # No arch-independent sources — empty arrays keep makepkg's parser happy.
 source=()
@@ -85,8 +87,8 @@ package() {
 	# the .deb (verified against the lumina-terminal v0.1.5 release payload).
 	#
 	# The payload already lays out usr/{bin,lib,share/applications,share/icons/...}
-	# exactly as pacman expects it (the sidecar rides under usr/lib/Lumina.Code/),
-	# so we have nothing to reassemble here.
+	# exactly as pacman expects it (the sidecar resource rides under
+	# usr/lib/Lumina Code/), so we have nothing to reassemble here.
 	bsdtar -xOf "${deb}" 'data.tar.*' | bsdtar -xf - -C "${scratch}"
 
 	# Relocate the extracted tree into $pkgdir verbatim, preserving mode,
