@@ -9,7 +9,7 @@
 # to parse it, and makechrootpkg runs two hooks outside the chroot.
 
 pkgname=aurcache-sandbox
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Landlock sandbox used by AURCache to confine PKGBUILD execution"
 arch=(x86_64 aarch64 armv7h)
