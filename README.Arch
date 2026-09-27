@@ -1,0 +1,18 @@
+tag-release on AUR
+==================
+
+There're a bunch of useful one-liners in Makefile.
+
+  * Edit PKGBUILD.
+
+  * Build the package (this also updates .SRCINFO):
+
+      make
+
+  * Commit the changes:
+
+      make commit
+
+  * Push to the AUR repository & the upstream:
+
+      make push
