@@ -4,12 +4,12 @@ pkgname=libraw-cmake
 pkgver=r63.eb98e43
 _libraw_cmake_commit=eb98e4325aef2ce85d2eb031c2ff18640ca616d3
 _libraw_version=0.22.2
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="LibRaw configuration files for CMake"
 url="https://github.com/LibRaw/LibRaw-cmake"
 license=('BSD-3-Clause-Tso')
-depends=('cmake')
+depends=('cmake' 'libraw')
 makedepends=('glibc' 'lcms2' 'libgcc' 'libgomp' 'libjpeg-turbo' 'libstdc++' 'zlib')
 source=("LibRaw-cmake-$_libraw_cmake_commit.tar.gz::$url/archive/$_libraw_cmake_commit.tar.gz"
         "LibRaw-$_libraw_version.tar.gz::https://codeload.github.com/LibRaw/LibRaw/tar.gz/refs/tags/0.22.2")

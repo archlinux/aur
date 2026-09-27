@@ -1,7 +1,7 @@
 pkgbase = libraw-cmake
 	pkgdesc = LibRaw configuration files for CMake
 	pkgver = r63.eb98e43
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/LibRaw/LibRaw-cmake
 	arch = any
 	license = BSD-3-Clause-Tso
@@ -13,6 +13,7 @@ pkgbase = libraw-cmake
 	makedepends = libstdc++
 	makedepends = zlib
 	depends = cmake
+	depends = libraw
 	source = LibRaw-cmake-eb98e4325aef2ce85d2eb031c2ff18640ca616d3.tar.gz::https://github.com/LibRaw/LibRaw-cmake/archive/eb98e4325aef2ce85d2eb031c2ff18640ca616d3.tar.gz
 	source = LibRaw-0.22.2.tar.gz::https://codeload.github.com/LibRaw/LibRaw/tar.gz/refs/tags/0.22.2
 	b2sums = SKIP
