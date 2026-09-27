@@ -1,0 +1,23 @@
+pkgbase = chord
+	pkgdesc = Text editor built with GTK 4, libadwaita and GtkSourceView
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sachesi/chord
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = blueprint-compiler
+	makedepends = just
+	makedepends = gettext
+	depends = gtk4>=1:4.22
+	depends = libadwaita>=1:1.9
+	depends = gtksourceview5
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = glibc
+	source = chord-0.1.0.tar.gz::https://github.com/sachesi/chord/archive/v0.1.0/chord-0.1.0.tar.gz
+	sha256sums = cf13e0d321fa9af19eec50706ee08737c4e36be18d4dc34592129644ae0b0d76
+
+pkgname = chord
