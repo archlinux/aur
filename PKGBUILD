@@ -1,7 +1,7 @@
 # Maintainer: coxackie
 
 pkgname=wljs-notebook-bin
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="WLJS Notebook – interactive notebook for Wolfram Language / Wolfram Engine"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3')
 depends=('wolframengine')
 provides=('wljs-notebook')
 source=("https://github.com/JerryI/wolfram-js-frontend/releases/download/v${pkgver}/wljs-notebook-${pkgver}-amd64-gnulinux.deb")
-sha256sums=('7c4cec8b9bf0c6dbf3a8d7fa2ba12e975fb9b65bbee3e4a141f54327f2b5efac')
+sha256sums=('bf09fb22d6bdcfc2d9c80843d00d5389d3988f3575d40e099890c9fca8745f9b')
 
 noextract=('*.deb')
 
