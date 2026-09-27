@@ -1,6 +1,6 @@
 pkgbase = darwan
 	pkgdesc = Themes for the SDDM login screen and the Quickshell lockscreen, with a CLI, TUI and GUI
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/mah3uz/darwan
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = darwan
 	optdepends = libfaketime: darwan preview --at
 	optdepends = noto-fonts-cjk: Chinese text in the Genshin theme
 	options = !lto
-	source = darwan-0.1.0.tar.gz::https://github.com/mah3uz/darwan/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = bf3ab003c94aed64583dab63a7d38428dc12e2c8477decfcf203dc9d2383b45c
+	source = darwan-0.2.0.tar.gz::https://github.com/mah3uz/darwan/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = a7ef49a491c54fdb497917a35f0844de376f71d71a518e5fd16b9262436278df
 
 pkgname = darwan
