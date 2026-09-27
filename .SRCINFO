@@ -1,6 +1,6 @@
 pkgbase = wheelwizard
 	pkgdesc = Mario Kart Mod Manager & Retro Rewind Auto Updater
-	pkgver = 2.5.7
+	pkgver = 2.5.8
 	pkgrel = 1
 	url = https://github.com/TeamWheelWizard/WheelWizard
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = wheelwizard
 	provides = wheelwizard
 	conflicts = wheelwizard
 	options = !strip
-	source = WheelWizard-2.5.7-1.tar.gz::https://github.com/TeamWheelWizard/WheelWizard/archive/refs/tags/v2.5.7.tar.gz
-	b2sums = e4572d53838f758fd9e4c154f463934612fed57ced8152f46ad99f94349ab71506981cc1065181724b08e60e97d250053f317cb4728135e266151a168f935f87
+	source = WheelWizard-2.5.8-1.tar.gz::https://github.com/TeamWheelWizard/WheelWizard/archive/refs/tags/v2.5.8.tar.gz
+	b2sums = 0e6ae16c627e99dc4e39f878161b6915c79f8f0d7d690d614a22daa38c150b3295b18cdcc6dbe1ea9f7679fe7d0c6f694b71d28e23b880180cc6048f5116a215
 
 pkgname = wheelwizard
