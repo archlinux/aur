@@ -12,9 +12,9 @@ pkgrel=1
 pkgdesc="QuickTime AAC/ALAC encoder (wine version)"
 arch=('x86_64')
 url="https://github.com/nu774/qaac"
-license=('custom')
+license=('custom:qaac')
 depends=('wine')
-makedepends=('p7zip' 'wine' 'winetricks' 'binutils')
+makedepends=('p7zip' 'wine')
 source=("https://github.com/nu774/qaac/releases/download/v${pkgver}/qaac_${pkgver}.zip"
         "iTunes64Setup.exe::https://www.apple.com/itunes/download/win64"
         "https://raw.githubusercontent.com/nu774/qaac/master/COPYING"
@@ -34,13 +34,7 @@ extract_filename() {
 
 build() {
     cd "${srcdir}"
-    #mkdir -p wineprefix
-    #export WINEPREFIX=$PWD/wineprefix
-    #export WINEARCH=win64
-    #wineserver -k || true
-    #DISPLAY= winetricks win7
-    #WINEDLLOVERRIDES=winemenubuilder.exe=d msiexec /i "${srcdir}/iTunes64.msi" /qn
-    #wineserver -k || true
+    7z x -y iTunes64Setup.exe
     7z x -y iTunes64.msi
     for f in fil*; do
         filename=$(extract_filename "$f")
