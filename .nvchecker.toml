@@ -1,0 +1,3 @@
+[keeplog]
+source = "pypi"
+pypi = "keeplog"
