@@ -1,7 +1,7 @@
 # Contributor: Lex Black <autumn-wind@web.de>
 
 pkgname=pocillo-gtk-theme
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Theme for the Budgie Desktop that has Material Design elements and styled using the Arc colour palette'
 arch=('any')
@@ -11,7 +11,7 @@ depends=(gnome-themes-extra)
 makedepends=(meson dart-sass git)
 optdepends=('budgie-desktop: The Budgie desktop')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/UbuntuBudgie/pocillo-gtk-theme/archive/refs/tags/v${pkgver}.tar.gz)
-b2sums=('843b661f23ae3339d4c6e3bc4e2830acf695f67dcf7b58af0121c23aa70b82d1ea1b4a9e14343167cae385bf22021dc71158829ac6f43374cc5fe1da7dd0ad81')
+b2sums=('d2b17c8b81eb94573019b8996ae248d69678e87c2b15791438b9bcc49474ff11df04c41d41a777febe34911539f513d224cfb06d46d67a98a5444097ff156f5a')
 
 build() {
   arch-meson \
