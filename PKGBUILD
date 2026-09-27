@@ -9,44 +9,65 @@ _quick_gui=${PASSWORD_MANAGER_QUICK_GUI:-ON}
 _reponame=passwordmanager
 pkgname=passwordmanager-git
 _name=${pkgname%-git}
-pkgver=350.4bf6a91
+pkgver=514.12790ad
 pkgrel=1
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A simple password store using AES-256-CBC encryption via OpenSSL'
-license=(GPL-2.0-or-later)
-depends=('qt6-base' 'qtutilities-git' 'passwordfile-git' 'c++utilities-git' 'desktop-file-utils')
-makedepends=('cmake' 'ninja' 'qt6-tools' 'git' 'clang' 'qt6-declarative')
-[[ $_quick_gui == ON ]] && depends+=('qt6-declarative')
-provides=("${_name}")
-conflicts=("${_name}")
+arch=('x86_64')
 url="https://github.com/Martchus/${_reponame}"
+license=('GPL-2.0-or-later')
+depends=(
+    'glibc'
+    'libgcc'
+    'libstdc++'
+    'qt6-base'
+    'hicolor-icon-theme'
+)
+makedepends=(
+    'clang'
+    'cmake'
+    'git'
+    'c++utilities-git'
+    'qtutilities-git'
+    'passwordfile-git'
+    'ninja'
+    'qt6-tools'
+    'qt6-declarative'
+)
+[[ $_quick_gui == ON ]] && depends+=('qt6-declarative')
 source=("${_reponame}::${MARTCHUS_GIT_URL_PREFIX:-git+https://github.com/Martchus}/${_reponame}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    echo "$(git -C "${_reponame}" rev-list --count HEAD).$(git -C "${_reponame}" rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  cmake \
-    -G Ninja \
-    -DCMAKE_BUILD_TYPE:STRING='Release' \
-    -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-    -DCONFIGURATION_NAME:STRING='git' \
-    -DCONFIGURATION_PACKAGE_SUFFIX:STRING='-git' \
-    -DQT_PACKAGE_PREFIX:STRING='Qt6' \
-    -DQUICK_GUI="$_quick_gui" \
-    -DBUILTIN_TRANSLATIONS:BOOL=ON \
-    -DBUILTIN_TRANSLATIONS_OF_QT:BOOL=OFF \
-    .
-  ninja
+    local cmake_options=(
+        -B build
+        -S "${PROJECT_DIR_NAME:-$_reponame}"
+        -G Ninja
+        -D CMAKE_BUILD_TYPE=Release
+        -D CMAKE_INSTALL_PREFIX=/usr
+        -D BUILD_SHARED_LIBS=ON
+        -D CONFIGURATION_NAME:STRING='git'
+        -D CONFIGURATION_PACKAGE_SUFFIX:STRING='-git'
+        -D CONFIGURATION_TARGET_SUFFIX:STRING='git'
+        -D QT_PACKAGE_PREFIX=Qt6
+        -D BUILTIN_TRANSLATIONS=ON
+        -D BUILTIN_TRANSLATIONS_OF_QT=OFF
+        -D QUICK_GUI="$_quick_gui"
+        -D QUICK_GUI_CONTROLS_STYLE=dynamic
+    )
+    cmake "${cmake_options[@]}"
+    cmake --build build
 }
 
 package() {
-  depends+=('libqtutilities-git.so' 'libpasswordfile-git.so' 'libc++utilities-git.so')
+    depends+=(
+        'libqtutilities-git.so'
+        'libpasswordfile-git.so'
+        'libc++utilities-git.so'
+    )
 
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  DESTDIR="${pkgdir}" ninja install
+    DESTDIR="${pkgdir}" cmake --install build
 }
