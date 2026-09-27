@@ -1,4 +1,4 @@
-# Maintainer: nihalxkumar <nihalxkumar at gmail dot com>
+# Maintainer: Nihal Kumar <2tv8xupqg at mozmail dot com>
 # https://github.com/nihalxkumar/PKGBUILDs.git
 
 pkgname=github-account-switch-git
