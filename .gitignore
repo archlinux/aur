@@ -1,5 +1,6 @@
-# Diese Datei im AUR-Repo als ".gitignore" ablegen (nur PKGBUILD + .SRCINFO committen)
+# Diese Datei im AUR-Repo als ".gitignore" ablegen (nur PKGBUILD, .install + .SRCINFO committen)
 *
 !PKGBUILD
 !.SRCINFO
+!*.install
 !.gitignore

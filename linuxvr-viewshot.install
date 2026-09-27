@@ -1,0 +1,14 @@
+# pacman-Hinweise für linuxvr-viewshot (liegt im AUR-Repo neben dem PKGBUILD)
+
+post_install() {
+    echo ">>> LinuxVR-ViewShot: start the app once and press \"Install\" –"
+    echo ">>> it copies the VR layer to ~/.local (Steam/Proton games only see it there)."
+    echo ">>> LinuxVR-ViewShot: App einmal starten und \"Installieren\" drücken –"
+    echo ">>> der VR-Layer wird nach ~/.local kopiert (nur dort sehen ihn Steam-/Proton-Spiele)."
+}
+
+post_upgrade() {
+    # die App zieht den Layer in ~/.local beim nächsten Start selbst nach
+    echo ">>> LinuxVR-ViewShot: open the app once to update the VR layer in ~/.local."
+    echo ">>> LinuxVR-ViewShot: App einmal öffnen, dann wird der VR-Layer in ~/.local aktualisiert."
+}

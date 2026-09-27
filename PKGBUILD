@@ -1,6 +1,6 @@
 # Maintainer: yakuda <yakuda@outlook.de>
 pkgname=linuxvr-viewshot
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Take photos in VR with a hand-frame gesture on Linux (WiVRn / Monado) - OpenXR API layer + desktop app"
 # Der OpenXR-Layer ist eine native .so (Rust) -> nicht 'any'
@@ -22,7 +22,9 @@ optdepends=('python-opencv: QR code detection in photos'
 # Git-Tag darf einen Bindestrich haben (v0.5.0-alpha), pkgver nicht
 _tag="v${pkgver/_/-}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('150b079f165ff61cc8611beede785169115ce0a418eba3abebeca4d242e70145')
+# Hinweis nach Installation/Update: einmal "Installieren" in der App drücken
+install="${pkgname}.install"
+sha256sums=('348493f0691e9d11da7b78553ca550cee49a9de65c55a331aa88773c3853f767')
 
 _srcdir() { echo "LinuxVR-ViewShot-${_tag#v}"; }
 
@@ -49,16 +51,19 @@ check() {
 package() {
     cd "$(_srcdir)"
 
-    # OpenXR-Layer + systemweites Manifest (gilt fuer alle Benutzer)
-    local lib="/usr/lib/${pkgname}/liblinuxvr_viewshot_layer.so"
-    install -Dm755 target/release/liblinuxvr_viewshot_layer.so "${pkgdir}${lib}"
-    install -dm755 "${pkgdir}/usr/share/openxr/1/api_layers/implicit.d"
-    sed "s|@LIBRARY_PATH@|${lib}|" manifest/linuxvr_viewshot.json.in \
-        > "${pkgdir}/usr/share/openxr/1/api_layers/implicit.d/linuxvr_viewshot.json"
+    # OpenXR-Layer: nur die fertige .so + Manifest-VORLAGE – KEIN systemweites
+    # Manifest in /usr/share/openxr! Steam-/Proton-Spiele (VRChat) laufen im
+    # Steam-Container und sehen /usr des Systems nicht. Die App kopiert den
+    # Layer beim Klick auf "Installieren" nach ~/.local (sieht jedes Spiel) und
+    # nach Paket-Updates automatisch (UI/core/layer_install.py).
+    install -Dm755 target/release/liblinuxvr_viewshot_layer.so \
+        "${pkgdir}/usr/lib/${pkgname}/liblinuxvr_viewshot_layer.so"
+    install -Dm644 manifest/linuxvr_viewshot.json.in \
+        "${pkgdir}/usr/share/${pkgname}/manifest/linuxvr_viewshot.json.in"
 
     # App nach /usr/share/linuxvr-viewshot/UI (Struktur bleibt, core/paths.py
     # findet Icon & Co. relativ zu sich selbst). Ohne scripts/ erkennt die App,
-    # dass sie aus einem Paket kommt, und blendet "Neu bauen/Entfernen" aus.
+    # dass sie aus einem Paket kommt (Layer kopieren statt bauen).
     local app="${pkgdir}/usr/share/${pkgname}/UI"
     install -Dm644 UI/main.py "${app}/main.py"
     install -Dm644 UI/starter.py "${app}/starter.py"
