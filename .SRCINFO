@@ -1,6 +1,6 @@
 pkgbase = deviceshelf-bin
 	pkgdesc = Local-first network scanner: discover and identify every device on your LAN, with open ports and a security report
-	pkgver = 1.9.34
+	pkgver = 1.9.64
 	pkgrel = 1
 	url = https://deviceshelf.app
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = deviceshelf-bin
 	conflicts = deviceshelf
 	options = !strip
 	options = !debug
-	source = deviceshelf-bin-1.9.34.deb::https://downloads.deviceshelf.app/DeviceShelf-1.9.34.deb
-	sha256sums = 86aef72cb7dbade6a8880455b26004d78f65c2e16e8557627440736498a7b923
+	source = deviceshelf-bin-1.9.64.deb::https://downloads.deviceshelf.app/DeviceShelf-1.9.64.deb
+	sha256sums = 1872097f7a207efbd0ba15f0c09665355ae95e2d56206299e1da19ca5a7b594a
 
 pkgname = deviceshelf-bin
