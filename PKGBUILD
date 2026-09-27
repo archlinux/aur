@@ -1,6 +1,6 @@
 # Maintainer: yakuda <yakuda@outlook.de>
 pkgname=linuxvr-viewshot
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Take photos in VR with a hand-frame gesture on Linux (WiVRn / Monado) - OpenXR API layer + desktop app"
 # Der OpenXR-Layer ist eine native .so (Rust) -> nicht 'any'
@@ -24,7 +24,7 @@ _tag="v${pkgver/_/-}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
 # Hinweis nach Installation/Update: einmal "Installieren" in der App drücken
 install="${pkgname}.install"
-sha256sums=('348493f0691e9d11da7b78553ca550cee49a9de65c55a331aa88773c3853f767')
+sha256sums=('e4dc90518852ed94f49c9f6e085d86693a7e5397806fc7f0b604dbcfdd8bc0ba')
 
 _srcdir() { echo "LinuxVR-ViewShot-${_tag#v}"; }
 
