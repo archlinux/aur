@@ -1,7 +1,7 @@
 pkgbase = kanidm-bin
 	pkgdesc = Modern identity management platform (prebuilt binaries)
 	pkgver = 1.11.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://kanidm.com
 	arch = x86_64
 	arch = aarch64
@@ -9,9 +9,9 @@ pkgbase = kanidm-bin
 	options = !debug
 	options = !strip
 	source_x86_64 = kanidm-v1.11.2-x86_64-linux-gnu.tar.gz::https://github.com/bendik/kanidm/releases/download/v1.11.2-bin/kanidm-v1.11.2-x86_64-linux-gnu.tar.gz
-	sha256sums_x86_64 = eb9a83949a06d4d7e21d59e087a0896eda64424542db359f505432d17d9adc78
+	sha256sums_x86_64 = 2be32db60265834b49588e9085b9e4e57e01f5e755d5d854f538a881e35e6737
 	source_aarch64 = kanidm-v1.11.2-aarch64-linux-gnu.tar.gz::https://github.com/bendik/kanidm/releases/download/v1.11.2-bin/kanidm-v1.11.2-aarch64-linux-gnu.tar.gz
-	sha256sums_aarch64 = eee6c67750d143656d637fa2f98820c166603171b0db502f5f7d00bc04c1f6aa
+	sha256sums_aarch64 = 6b028a8d792b994e2898d33237d12283daa88a896336dc14f1a1085f4ae8c9df
 
 pkgname = kanidm-clients-bin
 	pkgdesc = Kanidm command-line client (prebuilt binaries)
@@ -24,7 +24,7 @@ pkgname = kanidm-clients-bin
 	conflicts = kanidm-clients
 
 pkgname = kanidm-unixd-clients-bin
-	pkgdesc = Kanidm UNIX integration daemons (prebuilt; PAM/NSS modules not included)
+	pkgdesc = Kanidm UNIX integration daemons and PAM/NSS modules (prebuilt)
 	depends = glibc
 	depends = gcc-libs
 	depends = openssl
@@ -37,6 +37,8 @@ pkgname = kanidm-unixd-clients-bin
 	provides = kanidm-unixd-clients
 	provides = kanidm-unixd-clients=1.11.2
 	conflicts = kanidm-unixd-clients
+	conflicts = kanidm-unix-modules
+	replaces = kanidm-unix-modules
 
 pkgname = kanidm-server-bin
 	pkgdesc = Kanidm server daemon (prebuilt binary)

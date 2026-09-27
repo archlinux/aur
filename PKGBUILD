@@ -3,7 +3,7 @@
 pkgbase=kanidm-bin
 pkgname=(kanidm-clients-bin kanidm-unixd-clients-bin kanidm-server-bin kanidm-bin)
 pkgver=1.11.2
-pkgrel=5
+pkgrel=6  # set by CI: 1 per new pkgver, +1 per packaging change
 pkgdesc='Modern identity management platform (prebuilt binaries)'
 arch=(x86_64 aarch64)
 url='https://kanidm.com'
@@ -14,8 +14,8 @@ _publisher=bendik/kanidm
 
 source_x86_64=("kanidm-v${pkgver}-x86_64-linux-gnu.tar.gz::https://github.com/${_publisher}/releases/download/v${pkgver}-bin/kanidm-v${pkgver}-x86_64-linux-gnu.tar.gz")
 source_aarch64=("kanidm-v${pkgver}-aarch64-linux-gnu.tar.gz::https://github.com/${_publisher}/releases/download/v${pkgver}-bin/kanidm-v${pkgver}-aarch64-linux-gnu.tar.gz")
-sha256sums_x86_64=('eb9a83949a06d4d7e21d59e087a0896eda64424542db359f505432d17d9adc78')
-sha256sums_aarch64=('eee6c67750d143656d637fa2f98820c166603171b0db502f5f7d00bc04c1f6aa')
+sha256sums_x86_64=('2be32db60265834b49588e9085b9e4e57e01f5e755d5d854f538a881e35e6737')
+sha256sums_aarch64=('6b028a8d792b994e2898d33237d12283daa88a896336dc14f1a1085f4ae8c9df')
 
 _srcdir() {
   if [[ $CARCH == x86_64 ]]; then echo "kanidm-v${pkgver}-x86_64-linux-gnu"
@@ -37,11 +37,16 @@ package_kanidm-clients-bin() {
 }
 
 package_kanidm-unixd-clients-bin() {
-  pkgdesc='Kanidm UNIX integration daemons (prebuilt; PAM/NSS modules not included)'
+  pkgdesc='Kanidm UNIX integration daemons and PAM/NSS modules (prebuilt)'
   depends=(glibc gcc-libs openssl sqlite pam dbus libcap tpm2-tss systemd-libs)
   provides=(kanidm-unixd-clients "kanidm-unixd-clients=${pkgver}")
-  conflicts=(kanidm-unixd-clients)
+  conflicts=(kanidm-unixd-clients kanidm-unix-modules)
+  replaces=(kanidm-unix-modules)
   local src; src=$(_srcdir)
+  install -Dm755 "${srcdir}/${src}/lib/libpam_kanidm.so" \
+                 "${pkgdir}/usr/lib/security/pam_kanidm.so"
+  install -Dm755 "${srcdir}/${src}/lib/libnss_kanidm.so" \
+                 "${pkgdir}/usr/lib/libnss_kanidm.so.2"
   install -Dm755 "${srcdir}/${src}/bin/kanidm_unixd" \
                  "${pkgdir}/usr/bin/kanidm_unixd"
   install -Dm755 "${srcdir}/${src}/bin/kanidm_unixd_tasks" \
