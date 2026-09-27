@@ -19,13 +19,13 @@ source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/a
 sha256sums=('aceb20c547645016b4feb33b7e32de79267f4796a0f26832d5b89e7329724afb')
 
 prepare() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}/" || exit 1
 
 	go mod tidy
 }
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}/" || exit 1
 
 	export GOPROOT_FINAL=${pkgdir}/usr/lib/xgo
 	export CGO_ENABLED=0
@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}/" || exit 1
 
 	mkdir -p ${pkgdir}/usr/{bin,lib/xgo}
 	cp -r * ${pkgdir}/usr/lib/xgo
