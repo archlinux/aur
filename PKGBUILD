@@ -2,7 +2,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=mylar3
-pkgver=0.9.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Comic book download automation for usenet and torrent users'
 arch=(any)
@@ -57,7 +57,7 @@ source=(
   mylar3.sysusers
 )
 
-sha256sums=('218c48c00ab899a20224cea163c59ced8cd50ede73d62bde4ca96074b899b9dd'
+sha256sums=('c53f05f3f5ba8e34492b9b3d2d905937b3c22c87315f5f3f47e4697020ee61eb'
             '5aaf0be4bf33ab8e7868c14d78603317550d8ec90298cf355116fd6f72a32886'
             'fe53997e50e9c550b4fdd26fce44101633ea88e1007554b30dfa22a592fcfdc9'
             '807d2e3acd46873645e6c47988402178fe2d0cd2005457eef1b0612d2646175d')
