@@ -1,0 +1,5 @@
+# Diese Datei im AUR-Repo als ".gitignore" ablegen (nur PKGBUILD + .SRCINFO committen)
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
