@@ -1,7 +1,7 @@
 # Maintainer: Balasubramanian Periannan <balathepharmacist@gmail.com>
 pkgname=lixplore-cli
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Academic Literature Search & Export CLI Tool - Search PubMed, arXiv, Crossref, DOAJ, EuropePMC"
 arch=('any')
 url="https://github.com/pryndor/Lixplore_cli"
@@ -11,10 +11,8 @@ depends=(
     'python-biopython'
     'python-requests'
     'python-openpyxl'
-)
-optdepends=(
-    'python-textual: Full-screen TUI (lixplore --tui)'
-    'python-rich: Colored output and fallback TUI'
+    'python-textual'
+    'python-rich'
 )
 makedepends=(
     'python-build'
