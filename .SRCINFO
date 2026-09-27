@@ -1,0 +1,15 @@
+pkgbase = cpuid-fault-emulation-dkms
+	pkgdesc = DKMS kernel module for CPUID fault emulation on AMD processors with systemd service and polkit support
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/dnmodder/cpuid-fault-emulation
+	arch = x86_64
+	license = GPL
+	depends = dkms
+	optdepends = polkit: allow non-root users in wheel group to start/stop the service
+	provides = cpuid_fault_emulation-dkms
+	conflicts = cpuid_fault_emulation-dkms
+	source = cpuid-fault-emulation-dkms-0.1.tar.gz::https://github.com/dnmodder/cpuid-fault-emulation/archive/refs/tags/v0.1.tar.gz
+	sha256sums = f842fe5f173675632c12dac33e5a5cfd8ac462cadf8dfc2ffd74278796f9001e
+
+pkgname = cpuid-fault-emulation-dkms
