@@ -1,8 +1,8 @@
 # Maintainer: pantarune
 
 pkgname=niri-screenshare
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="Portal backend for niri implementing ScreenCast"
 arch=('x86_64')
 url="https://github.com/pantarune/niri-screenshare"
@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pantarune/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('5fef49ae42e42e86e71e805cbcd743e603f4439f19c71363f2763d5725b367e0')
+sha256sums=('f99f56b716a0681654f00f2ff1e8843b34155da191ec059b95cc88f0e7cf576c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
