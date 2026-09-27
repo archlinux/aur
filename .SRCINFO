@@ -1,0 +1,38 @@
+pkgbase = tuxguitar-src
+	pkgdesc = Multitrack guitar tablature editor and player
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/helge17/tuxguitar
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-2.1-or-later
+	makedepends = fluidsynth
+	makedepends = jack
+	makedepends = java-environment>=17
+	makedepends = lilv
+	makedepends = lv2
+	makedepends = maven
+	makedepends = qt5-base
+	makedepends = suil
+	depends = alsa-lib
+	depends = gtk3
+	depends = java-runtime>=17
+	depends = webkit2gtk-4.1
+	optdepends = fluidsynth: FluidSynth synthesizer support
+	optdepends = jack: JACK MIDI support
+	optdepends = lilv: LV2 synthesizer support
+	optdepends = lv2: LV2 synthesizer support
+	optdepends = qt5-base: graphical interfaces for LV2 plugins
+	optdepends = suil: graphical interfaces for LV2 plugins
+	optdepends = lilypond: compile exported LilyPond files
+	provides = tuxguitar
+	conflicts = tuxguitar
+	options = !debug
+	source = tuxguitar-2.1.0.zip::https://github.com/helge17/tuxguitar/archive/refs/tags/2.1.0.zip
+	sha256sums = 370244eae7976b9505577ab869e39bed765d68a4feede29ac45f32e7e41738af
+	source_x86_64 = swt-4.37-gtk-linux-x86_64.zip::https://download.eclipse.org/eclipse/downloads/drops4/R-4.37-202509050730/swt-4.37-gtk-linux-x86_64.zip
+	sha256sums_x86_64 = 13ff4f7061078c03e17a2ace3c47931bca34cd5ad17494ee8cfc46780bb057db
+	source_aarch64 = swt-4.37-gtk-linux-aarch64.zip::https://download.eclipse.org/eclipse/downloads/drops4/R-4.37-202509050730/swt-4.37-gtk-linux-aarch64.zip
+	sha256sums_aarch64 = e41352cee8753c3afc72c5198abf1397779529557752b276f8bd05c1f0054ae4
+
+pkgname = tuxguitar-src
