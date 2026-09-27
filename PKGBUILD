@@ -1,5 +1,5 @@
 pkgname=niri_window_buttons
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="A Waybar module for displaying and managing traditional window buttons in the Niri compositor"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('GPL-3.0-or-later')
 depends=('niri' 'waybar' 'gtk3' 'libpulse')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adelmonte/niri_window_buttons/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d3c7070ed7556ca11374b765b93e8f8161266966cff17bf29d1b3f6b297d8433')
+sha256sums=('ebb6731735c446eeccbed242d3c65d0fc9ea4b8e71d27af2bcebaf8aeab47a49')
 
 build() {
   cd "$srcdir/niri_window_buttons-$pkgver"
