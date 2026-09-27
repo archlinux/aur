@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgbase=starfish
 pkgname=(starfish libstarfish)
-pkgver=0.0.6
+pkgver=0.0.8
 pkgrel=2
 pkgdesc="Starfish: Arch Depdency Viewer"
 arch=('x86_64')
@@ -20,6 +20,7 @@ makedepends=('dotnet-sdk-10.0' 'clang')
 
 # Source tarball from GitHub release
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Starfish/archive/v${pkgver}.tar.gz")
+sha256sums=('2af0b4644470c34f6bd8f485792ad8a1d9ffb7aec61935ea818f35487e13a943')
 
 build() {
   cd "$srcdir/Starfish-${pkgver}"
@@ -64,4 +65,3 @@ package_libstarfish() {
   cd "$srcdir/Starfish-${pkgver}"
   install -Dm755 out-widget/Starfish.GraphWidget.so "$pkgdir/usr/lib/libstarfish.so"
 }
-sha256sums=('b23454991a24aaf3d65e1c584a9eb4e0c25effd51334784badbfd83980bef8fb')
