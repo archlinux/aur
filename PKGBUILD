@@ -47,5 +47,5 @@ check() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	cmake --install "$srcdir/${pkgname%-git}/build" --prefix "$pkgdir"
+	cmake --install "$srcdir/${pkgname%-git}/build" --prefix "$pkgdir/usr"
 }
