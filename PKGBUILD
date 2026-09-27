@@ -3,16 +3,18 @@
 
 pkgname=recoil16-dkms-git
 _srcname=recoil16
-pkgver=1.2.1.r0.gc19899d
+pkgver=1.3.0.r1.g2a6fbdd
 pkgrel=1
-pkgdesc="Drivers and recoil16ctl for the PCSpecialist Recoil 16 AMD (TUXEDO Stellaris 16 Gen7): keyboard backlight, lightbar, power profiles, charge modes, battery health, Copilot key"
+pkgdesc="Drivers and recoil16ctl for the PCSpecialist Recoil 16 AMD (TUXEDO Stellaris 16 Gen7): keyboard backlight, lightbar, power profiles, charge modes, battery health, Copilot key, NVIDIA GPU power and offload, battery draw"
 arch=('x86_64')
 url="https://github.com/amad3v/recoil16"
 license=('GPL-2.0-only' 'GPL-2.0-or-later')
 depends=('dkms' 'glibc' 'libgcc')
 makedepends=('git' 'cargo')
 optdepends=('linux-headers: build the modules for the linux kernel'
-  'libkscreen: kscreen-doctor for recoil16ctl screen rotate (KDE Plasma)')
+  'libkscreen: kscreen-doctor for recoil16ctl screen and the panel line of power (KDE Plasma)'
+  'mesa-utils: eglinfo for recoil16ctl gpu test'
+  'vulkan-tools: vulkaninfo for recoil16ctl gpu test')
 provides=('recoil16-dkms')
 conflicts=('recoil16-dkms')
 install=recoil16.install
