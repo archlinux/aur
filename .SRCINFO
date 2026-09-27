@@ -12,6 +12,7 @@ pkgbase = whisper-desktop-bin
 	depends = glibc
 	depends = gcc-libs
 	optdepends = vulkan-icd-loader: Vulkan GPU hardware acceleration
+	optdepends = intel-compute-runtime: Intel Iris Xe / Arc GPU OpenVINO acceleration
 	optdepends = libayatana-appindicator: System tray indicator support
 	optdepends = ffmpeg: System FFmpeg utilities (if configured to use system binary)
 	provides = whisper-desktop

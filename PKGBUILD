@@ -15,6 +15,7 @@ depends=(
 )
 optdepends=(
   'vulkan-icd-loader: Vulkan GPU hardware acceleration'
+  'intel-compute-runtime: Intel Iris Xe / Arc GPU OpenVINO acceleration'
   'libayatana-appindicator: System tray indicator support'
   'ffmpeg: System FFmpeg utilities (if configured to use system binary)'
 )
