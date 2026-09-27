@@ -1,7 +1,9 @@
 # Maintainer: Movacx <movacx@users.noreply.github.com>
 
 pkgname=bc250-control-center-git
-pkgver=1.19.0.r57.g07a7e6f
+# pkgver() rewrites this from the cloned main branch on every build; the
+# value here is only what the AUR shows until publish-aur.sh refreshes it.
+pkgver=1.20.0.r96.gafe4c5e
 pkgrel=1
 pkgdesc='BC-250 monitoring, tuning and recovery control center'
 arch=('any')
@@ -15,6 +17,7 @@ depends=(
   'qt6-svg'
   'polkit'
   'jq'
+  'diffutils'
   'git'
   'pciutils'
   'kmod'
