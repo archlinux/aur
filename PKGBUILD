@@ -11,7 +11,7 @@ _cratename=${_pkgname}
 pkgname=${_cratename}
 pkgdesc="Semantic regrouping of large diffs for review"
 
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -30,7 +30,7 @@ depends=('glibc' 'libgcc')
 options=('!strip' '!lto')
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('585daea334ead7da399ff7b660a1bf854181dfc03a88ed615f80e1ee42aed049')
+sha256sums=('1e403c5aac7fe9956285e9285476feb87211180d13efdc887e5d25be36507d0e')
 
 
 prepare() {
