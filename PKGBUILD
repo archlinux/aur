@@ -2,7 +2,7 @@
 
 pkgname=gsl-shell
 pkgver=2.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc='GNU Scientific Library shell based on LuaJIT2'
 url='https://franko.github.io/gsl-shell/'
 license=('GPL-3.0-only')
@@ -17,16 +17,13 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/franko/${pkgname}/archi
 	"fx_console.cpp.patch"
 	"gsl_shell_window.cpp.patch"
 	"gsl-shell.desktop"
-	"gsl-shell.svg"
-	"gsl-shell.install")
+	"gsl-shell.svg")
 sha256sums=('e2b70f0acf66f1196ba062020d51a8c275a6166222f713e5020dbea69925ea66'
 	    'dd51324b13f150566221e7eb9fb0901f150d8e6937e6894ee3b21dac8afe46d7'
 	    '756772299f7935d099f151afc45191f3ff97788f8feae15d9edf47815b50936b'
 	    '82a7dfb3b6fafcf1ea6b8dc84a8c4d5547389cb741ad6cd623a2e2c6d2182aa2'
 	    '0c696e6497cbd3fd9746e0c6040759c44526d103582d8743eeedc09946738ba1'
-	    'ee7e9a0704acf18c0d8eeb46c44f5d100a72029e406b1beba27b0649a400f5c1'
-	    'ba5c9cad86e5311413b989b76f490d30f9dc13eb01a1c8334a04c72412903c31')
-install="gsl-shell.install"
+	    'ee7e9a0704acf18c0d8eeb46c44f5d100a72029e406b1beba27b0649a400f5c1')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -36,17 +33,17 @@ prepare() {
     sed -i '12a\#include <stdlib.h>' "${srcdir}/${pkgname}-${pkgver}/src/lua-gsl/lua-filesystem.c"
     sed -i '13a\'                    "${srcdir}/${pkgname}-${pkgver}/src/lua-gsl/lua-filesystem.c"
 
-    # fixing FreeType AIP type mismatch in the file: src/agg-plot/agg_font_freetype.cpp
+    # fixing FreeType API type mismatch in the file: src/agg-plot/agg_font_freetype.cpp
     # (changing variable 'tags' from 'char*' to 'unsigned char*' to prevent type-conversion error):
     sed -i '165 s/char\*/unsigned char\*/' "${srcdir}/${pkgname}-${pkgver}/src/agg-plot/agg_font_freetype.cpp"
 
-    # fix a bunch of FXMessageChannel-related erorrs in src/fox-gui foldex
+    # fix a bunch of FXMessageChannel-related erorrs in folder: src/fox-gui/
     # since Fox 1.6 removed class FOX MessageChannel, the proper approach is to create a wrapper class, so...
     # use the wrapper class from the provided file 'fox_message_channel.h'
     cp ../../fox_message_channel.h ./src/fox-gui
 
     
-    # OK, now we need to include the provided MessageChannel wrapper for various files in src/fox-gui/
+    # OK, now we need to include the provided MessageChannel wrapper for various files in the src/fox-gui/ folder
     # first the individual header files - add line '#include "fox_message_channel.h"' just after the '#include <fx.h>' declaration:
     sed -i '4a\#include "fox_message_channel.h"' "${srcdir}/${pkgname}-${pkgver}/src/fox-gui/fox_gsl_shell.h"
     sed -i '5a\#include "fox_message_channel.h"' "${srcdir}/${pkgname}-${pkgver}/src/fox-gui/fx_console.h"
@@ -90,7 +87,7 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     # using GSL-Shell's provided fallback options to solve linker issues with installed FOX libraries
-    # (they still need to be installed - forcing the fallbacks is just a workaround)
+    # (they still need to be installed - forcing the fallbacks is just a workaround for the linker)
     meson setup build --prefix=/usr --wrap-mode=forcefallback
 }
 
