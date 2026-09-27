@@ -95,7 +95,7 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-xanmod-bore
 _major=7.2
-pkgver=${_major}.5
+pkgver=${_major}.8
 _branch=7.x
 xanmod=1
 _revision=
@@ -142,9 +142,9 @@ for _patch in ${_patches[@]}; do
 done
 sha256sums=('f9fef3d14c0df53819026f4be74459835c2a0b0dcbf5b5bbd9ea19f0829402b3' # kernel
             'SKIP'                                                             # kernel signature
-            '20a0faaaba1fea95da6368e9750c2fa1224f98a7cf5a2a163dcc1b48aaf058dd' # xanmod patch
+            '0e6d0422d4f80a5278f47b72544b537a987ff96ecf459fbc5ae2c022073fcd2b' # xanmod patch
             'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f' # choose-gcc-optimization.sh
-            'b1b0d9ecc8f048bb99160f4cd6eabdbce4df8ca21ecb98c70af678d06938a3b5' # 0001-bore.patch
+            '41c5ab9ce5fdd1e87f0665d882f2b22414734fbe133d127d7e0262643b20b63f' # 0001-bore.patch
             '1f3258ce1842156fcc35ca4775f6ba50f08f8f339b8cfbc3395949bb0e368872' # 0002-glitched-cfs.patch
             '366d6e1043d869827d61a05a68571207e3b23c9a8f7cd57e84fc4ca6ec537713' # 0003-glitched-eevdf-additions.patch
             '5c8733f978d4c70a6f25c77a722df328bc387e1de66ee6c279547bc28eb69ab7' # 0004-o3-optimization.patch
@@ -355,9 +355,9 @@ scripts/config --set-str CONFIG_SECURITY_TOMOYO_ACTIVATION_TRIGGER "/usr/lib/sys
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
   if [ "$_localmodcfg" = "y" ]; then
-    if [ -f $HOME/.config/modprobed.db ]; then
+    if [ -f $HOME/.local/share/modprobed-db/modprobed.db ]; then
       echo "Running Steven Rostedt's make localmodconfig now"
-      make ${_compiler_flags} LSMOD=$HOME/.config/modprobed.db localmodconfig
+      make ${_compiler_flags} LSMOD=$HOME/.local/share/modprobed-db/modprobed.db localmodconfig
     else
       echo "No modprobed.db data found"
       exit 1
