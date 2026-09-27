@@ -1,6 +1,6 @@
 pkgbase = skillshare-bin
 	pkgdesc = Sync skills across all AI CLI tools with one command
-	pkgver = 0.21.10
+	pkgver = 0.21.11
 	pkgrel = 1
 	url = https://github.com/runkids/skillshare
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = skillshare-bin
 	license = MIT
 	provides = skillshare
 	conflicts = skillshare
-	source_x86_64 = https://github.com/runkids/skillshare/releases/download/v0.21.10/skillshare_0.21.10_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2a4568c42fe53a517181a83de85d51b9fab364d6e818d391d31af1409d8631ab
-	source_aarch64 = https://github.com/runkids/skillshare/releases/download/v0.21.10/skillshare_0.21.10_linux_arm64.tar.gz
-	sha256sums_aarch64 = ba57d166ed611fbad6809d5aaa923ae974d51103d9cd78a4ad8a50c8a53aee29
+	source_x86_64 = https://github.com/runkids/skillshare/releases/download/v0.21.11/skillshare_0.21.11_linux_amd64.tar.gz
+	sha256sums_x86_64 = 520603b9a34d886ce016e0668b2d2468ead5ff25c46d5afbbe3b9c34d443c483
+	source_aarch64 = https://github.com/runkids/skillshare/releases/download/v0.21.11/skillshare_0.21.11_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6fadb13dbb411bfa613a365e9785bbf0acef6b23d978a3a5aac74bc1d31333ef
 
 pkgname = skillshare-bin
