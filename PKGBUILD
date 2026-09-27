@@ -5,7 +5,7 @@
 # Contributor: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm
-pkgver=1.102.1
+pkgver=1.103.0
 pkgrel=1
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=('any')
@@ -35,11 +35,14 @@ optdepends=('gunicorn: proxy'
             'python-azure-identity: proxy'
             'python-azure-storage-blob: proxy'
             'python-mcp: proxy'
+            'python-httpx2: proxy'
+            'python-pydantic: proxy'
             'python-litellm-proxy-extras: proxy'
             'python-litellm-enterprise: proxy'
             'python-restrictedpython: proxy'
             'python-rich: proxy'
             'python-inquirerpy: proxy'
+            'python-tomlkit: proxy'
             'python-polars: proxy'
             'python-soundfile: proxy'
             'python-pyroscope-io: proxy'
@@ -50,6 +53,7 @@ optdepends=('gunicorn: proxy'
             'python-requests: cli'
             'python-inquirerpy: cli'
             'python-keyring: cli'
+            'python-tomlkit: cli'
             
             'python-prisma: extra_proxy'
             'python-psycopg: extra_proxy'
@@ -66,8 +70,8 @@ optdepends=('gunicorn: proxy'
             'python-diskcache: caching'
 
             'python-mcp: mcp'
-
-            'python-pymongo: mongodb'
+            'python-httpx2: mcp'
+            'python-pydantic: mcp'
 
             'python-saml: saml'
             
@@ -78,6 +82,8 @@ optdepends=('gunicorn: proxy'
             
             'python-grpcio: grpc'
 
+            'python-google-cloud-speech: stt-vertex-chirp'
+
             'python-nvidia-riva-client: stt-nvidia-riva'
             'python-soundfile: stt-nvidia-riva'
             'python-audioread: stt-nvidia-riva'
@@ -87,16 +93,16 @@ optdepends=('gunicorn: proxy'
             'python-aws-sdk-bedrock-runtime: bedrock-realtime'
             
             'python-google-cloud-aiplatform: proxy-runtime'
+            'python-google-cloud-speech: proxy-runtime'
             'python-google-genai: proxy-runtime'
             'python-anthropic: proxy-runtime'
-            'python-google-auth: proxy-runtime'
-            'python-requests: proxy-runtime'
             'python-grpcio: proxy-runtime'
             'python-prometheus-client: proxy-runtime'
             'python-langfuse: proxy-runtime'
             'python-opentelemetry-api: proxy-runtime'
             'python-opentelemetry-sdk: proxy-runtime'
             'python-opentelemetry-exporter-otlp: proxy-runtime'
+            'python-opentelemetry-instrumentation-fastapi: proxy-runtime'
             'python-ddtrace: proxy-runtime'
             'python-sentry_sdk: proxy-runtime'
             'python-mangum: proxy-runtime'
@@ -108,7 +114,7 @@ optdepends=('gunicorn: proxy'
 provides=("python-${pkgname}")
 options=(!lto !strip)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7216f46e6a1eba50f4dbb6000afdb1f5b77360eb498a4f341fc655191108cfd4')
+sha256sums=('4b0155e6147529b489f8ff62eacac52504be61c20ce3cc2e44b971e55b4b711f')
 
 prepare() {
   cd "${srcdir}"/${pkgname}-${pkgver}/
