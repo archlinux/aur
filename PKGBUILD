@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-rs-bin
 pkgdesc="AI-native TUI spreadsheet written in Rust"
 
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('be4243e068c4333f40de268d9c797fcf9664291d8deb4630cb7f74349e66fc7f')
-sha256sums_x86_64=('f0cf2dd69a479d7e230801398554f10e6fac6f5df07ad7a7e41c472a61ca0746')
-sha256sums_aarch64=('bc41f0ecf0b2a3be19e7fb86a3e6b31acaf3b62367bd6da4d3d630eba32e6a44')
+sha256sums=('120025fb6272656d3459ce3937d8c81189c60dbc1955113bfdf0d2fc6e81d77c')
+sha256sums_x86_64=('4942c85c2aa12663d0dd17b96d658aed85429c9b513c8dd932dab339a7d49ebe')
+sha256sums_aarch64=('9332590d6bf832ec556138651b8048645e855e559291debc503ebad8d3cb6ec8')
 
 
 package() {
