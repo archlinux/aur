@@ -1,7 +1,7 @@
 # Maintainer: Nakildias <nakildiaspro@gmail.com>
 pkgname=sc0710-dkms-git
 _pkgname=sc0710
-pkgver=2026.09.02.1.r227.86edea0
+pkgver=2026.09.27.1.r229.489470e
 pkgrel=1
 pkgdesc="DKMS driver for Elgato 4K60 Pro MK.2, 4K Pro, and Cam Link Pro capture cards"
 arch=('x86_64')
