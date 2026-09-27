@@ -1,6 +1,6 @@
 # Maintainer: Ashutosh Tiwari <contact@ashutoshtiwari.dev>
 pkgname=qwarp
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Qt6-based alternative desktop client for Cloudflare WARP"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('python' 'python-pyqt6' 'cloudflare-warp-bin')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'qt6-tools')
 
 source=("$pkgname-$pkgver-source.tar.gz::https://github.com/iashutoshtiwari/qwarp/releases/download/v$pkgver/$pkgname-$pkgver-source.tar.gz")
-sha256sums=('8477bdf4322a6b0459aaa7ba2a5a7184ce6ab25db817fe1de8a42bd5e472b53c')
+sha256sums=('c8d03b009f3ab1c29b1c21ebc2599a5e2de6b0fd3b052e4aa539d6066f9f767e')
 
 build() {
   # Enter the directory extracted from the GitHub tarball
