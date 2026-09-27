@@ -2,6 +2,6 @@
   "name": "vite-plus-arch-runtime",
   "private": true,
   "dependencies": {
-    "vite-plus": "0.3.1"
+    "vite-plus": "1.0.0-rc.1"
   }
 }

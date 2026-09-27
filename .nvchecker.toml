@@ -1,3 +1,5 @@
 [vite-plus-bin]
 source = "npm"
 npm = "vite-plus"
+from_pattern = "-"
+to_pattern = ""

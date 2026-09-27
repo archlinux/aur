@@ -1,6 +1,7 @@
 # Maintainer: Jay Chu <tothesong@gmail.com>
 pkgname=vite-plus-bin
-pkgver=0.3.1
+pkgver=1.0.0rc.1
+_upstreamver=${pkgver/rc/-rc}
 pkgrel=1
 pkgdesc='The Unified Toolchain for the Web'
 arch=('x86_64')
@@ -14,31 +15,22 @@ options=('!strip' '!debug')
 source=(
   'package.json'
   'package-lock.json'
-  "https://registry.npmjs.org/@voidzero-dev/vite-plus-cli-linux-x64-gnu/-/vite-plus-cli-linux-x64-gnu-$pkgver.tgz"
+  "https://registry.npmjs.org/@voidzero-dev/vite-plus-cli-linux-x64-gnu/-/vite-plus-cli-linux-x64-gnu-$_upstreamver.tgz"
 )
-sha256sums=('96ab26deeefcc9aed93f8a7bf10d3fa98ac36665374e63751ed9386b199c711a'
-            '1ff3899c30681f599649a81a0c140e1f04b1241d202e248284cc95b657182f5a'
-            '5e13716359487d987e3d437fcc0bef78a52f7db69ba128836135ace6be27e5f5')
+sha256sums=('09cea9516f54756af99ecb2e8d471c44bb12684127235d24e158a6079a1df35a'
+            '31f8605c18989581ac1c3a6223183d2fc9c15740519f740b24a689ff1358c9a8'
+            'd0561bc4c9302641d21241a3a62ebced4519565fa545045bd22b71b4ed61a1a6')
 
 prepare() {
   npm ci --cache "$srcdir/npm-cache" \
     --omit=dev --ignore-scripts --no-audit --no-fund
 }
 
-build() {
-  local shell
-  for shell in bash fish zsh; do
-    PATH="$srcdir/package:$PATH" VP_COMPLETE="$shell" vp > "vp.$shell"
-  done
-}
-
-check() {
-  VP_NO_UPDATE_CHECK=1 ./package/vp toolchain --global
-}
-
 package() {
   install -Dm755 package/vp "$pkgdir/usr/lib/vite-plus/bin/vp"
   cp -a node_modules "$pkgdir/usr/lib/vite-plus/"
+  # flatted ships a separate Python implementation; Vite+ uses its JS export.
+  rm -r "$pkgdir/usr/lib/vite-plus/node_modules/flatted/python"
 
   install -d "$pkgdir/usr/bin"
   local cmd
@@ -46,8 +38,5 @@ package() {
     ln -s ../lib/vite-plus/bin/vp "$pkgdir/usr/bin/$cmd"
   done
 
-  install -Dm644 vp.bash "$pkgdir/usr/share/bash-completion/completions/vp"
-  install -Dm644 vp.fish "$pkgdir/usr/share/fish/vendor_completions.d/vp.fish"
-  install -Dm644 vp.zsh "$pkgdir/usr/share/zsh/site-functions/_vp"
   install -Dm644 node_modules/vite-plus/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

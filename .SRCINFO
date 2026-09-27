@@ -1,6 +1,6 @@
 pkgbase = vite-plus-bin
 	pkgdesc = The Unified Toolchain for the Web
-	pkgver = 0.3.1
+	pkgver = 1.0.0rc.1
 	pkgrel = 1
 	url = https://viteplus.dev
 	arch = x86_64
@@ -8,15 +8,15 @@ pkgbase = vite-plus-bin
 	makedepends = npm
 	depends = glibc
 	depends = libgcc
-	provides = vite-plus=0.3.1
+	provides = vite-plus=1.0.0rc.1
 	conflicts = vite-plus
 	options = !strip
 	options = !debug
 	source = package.json
 	source = package-lock.json
-	source = https://registry.npmjs.org/@voidzero-dev/vite-plus-cli-linux-x64-gnu/-/vite-plus-cli-linux-x64-gnu-0.3.1.tgz
-	sha256sums = 96ab26deeefcc9aed93f8a7bf10d3fa98ac36665374e63751ed9386b199c711a
-	sha256sums = 1ff3899c30681f599649a81a0c140e1f04b1241d202e248284cc95b657182f5a
-	sha256sums = 5e13716359487d987e3d437fcc0bef78a52f7db69ba128836135ace6be27e5f5
+	source = https://registry.npmjs.org/@voidzero-dev/vite-plus-cli-linux-x64-gnu/-/vite-plus-cli-linux-x64-gnu-1.0.0-rc.1.tgz
+	sha256sums = 09cea9516f54756af99ecb2e8d471c44bb12684127235d24e158a6079a1df35a
+	sha256sums = 31f8605c18989581ac1c3a6223183d2fc9c15740519f740b24a689ff1358c9a8
+	sha256sums = d0561bc4c9302641d21241a3a62ebced4519565fa545045bd22b71b4ed61a1a6
 
 pkgname = vite-plus-bin
