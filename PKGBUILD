@@ -7,7 +7,7 @@ pkgname=${_appname}-c-bin
 pkgdesc="A high-performance terminal image/video/book browser written in C, based on the Chafa library"
 
 pkgver=1.8.4
-pkgrel=2
+pkgrel=4
 _pkgvername=v${pkgver}
 
 arch=('x86_64')
@@ -52,7 +52,7 @@ esac
 prepare() {
 	cd "${srcdir}/" || exit
 
-	patchelf --replace-needed "libmupdf.so.28.3" "libmupdf.so.28.4" "${_appname}-${_CARCH}"
+	patchelf --replace-needed "libmupdf.so.28.3" "libmupdf.so.28.5" "${_appname}-${_CARCH}"
 }
 
 package() {
