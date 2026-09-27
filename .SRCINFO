@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-notification-configurator-git
 	pkgdesc = Ultimate Notification Configurator for GNOME
-	pkgver = 2.1.0.r0.g1eeeb6b
+	pkgver = 2.6.1.r2.g6a7c528
 	pkgrel = 1
 	url = https://github.com/ExposedCat/gnome-notification-configurator
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = gnome-shell-extension-notification-configurator-git
 	makedepends = jq
 	makedepends = npm
 	depends = gnome-shell
+	depends = libnotify
 	provides = gnome-shell-extension-notification-configurator
 	conflicts = gnome-shell-extension-notification-configurator
 	source = git+https://github.com/ExposedCat/gnome-notification-configurator.git
