@@ -1,12 +1,12 @@
 pkgbase = tag-release
 	pkgdesc = Script to automate creation of semantic versioning tags
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/egor-tensin/tag-release
 	arch = any
 	license = MIT
 	depends = python
-	source = tag-release-0.3.0.tar.gz::https://github.com/egor-tensin/tag-release/archive/v0.3.0.tar.gz
+	source = tag-release-0.4.0.tar.gz::https://github.com/egor-tensin/tag-release/archive/v0.4.0.tar.gz
 	md5sums = SKIP
 
 pkgname = tag-release
