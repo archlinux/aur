@@ -1,6 +1,6 @@
 # Maintainer: Markus <github@marang.dev>
 pkgname=bootrecov
-pkgver=0.4.12
+pkgver=0.4.13
 pkgrel=1
 pkgdesc='TUI/CLI helper for /boot recovery snapshots and bootloader fallback entries'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('go')
 options=('!debug')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5de7e36ff2e3483b8a5f4062b7e193937c0e854a8aaeb781291506c8b8f633d6')
+sha256sums=('d14f48b5ae0281e0872751e88720a92cf2f0980ad50b9a0cb0dc1f4aafb8449b')
 
 _export_go_build_env() {
   export GOPATH="${srcdir}/gopath"
