@@ -15,56 +15,85 @@ _json_export=${TAGEDITOR_JSON_EXPORT:-ON}
 _reponame=tageditor
 pkgname=tageditor
 pkgver=3.9.11
-pkgrel=1
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+pkgrel=2
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska'
-license=(GPL-2.0-or-later)
-depends=('qtutilities' 'tagparser' 'c++utilities' 'desktop-file-utils')
-[[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('qt5-base')
-[[ $_webview_provider == webkit ]] && depends+=('qt5-webkit')
-[[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
-[[ $_js_provider == script ]] && depends+=('qt5-script')
-[[ $_js_provider == qml ]] && depends+=('qt5-declarative')
-makedepends=('cmake' 'ninja' 'qt5-tools')
-[[ $_json_export == ON ]] && makedepends+=('reflective-rapidjson')
-checkdepends=('cppunit' 'jq')
+arch=('x86_64')
 url="https://github.com/Martchus/${_reponame}"
+license=('GPL-2.0-or-later')
+depends=(
+    'glibc'
+    'libgcc'
+    'libstdc++'
+    'qt6-base'
+    'hicolor-icon-theme'
+)
+makedepends=(
+    'clang'
+    'cmake'
+    'c++utilities'
+    'qtutilities'
+    'tagparser'
+    'ninja'
+    'qt6-tools'
+    'qt6-declarative'
+)
+checkdepends=(
+  'cppunit'
+  'jq'
+)
+[[ $_webview_provider == webkit ]] && depends+=('qt6-webkit')
+[[ $_webview_provider == webengine ]] && depends+=('qt6-webengine')
+[[ $_js_provider == script ]] && depends+=('qt6-script')
+[[ $_js_provider == qml ]] && depends+=('qt6-declarative')
+[[ $_json_export == ON ]] && makedepends+=('reflective-rapidjson')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
 sha256sums=('ccb04b41cae2455852839bdaef94456fadc4254619b97a8736f71a0b031dcffe')
 
-prepare() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-}
-
 build() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  cmake \
-    -G Ninja \
-    -DCMAKE_BUILD_TYPE:STRING='Release' \
-    -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-    -DBUILD_SHARED_LIBS:BOOL=ON \
-    -DWEBVIEW_PROVIDER="${_webview_provider}" \
-    -DJS_PROVIDER="${_js_provider}" \
-    -DENABLE_JSON_EXPORT="${_json_export}" \
-    -DREFLECTION_GENERATOR_EXECUTABLE:FILEPATH='/usr/bin/reflective_rapidjson_generator' \
-    -DBUILTIN_TRANSLATIONS:BOOL=ON \
-    -DBUILTIN_TRANSLATIONS_OF_QT:BOOL=OFF \
-    .
-  ninja
+    local cmake_options=(
+        -B build
+        -S "${PROJECT_DIR_NAME:-$pkgbase-$pkgver}"
+        -G Ninja
+        -D CMAKE_BUILD_TYPE=Release
+        -D CMAKE_INSTALL_PREFIX=/usr
+        -D BUILD_SHARED_LIBS=ON
+        -D QT_PACKAGE_PREFIX=Qt6
+        -D BUILTIN_TRANSLATIONS=ON
+        -D BUILTIN_TRANSLATIONS_OF_QT=OFF
+        -D WEBVIEW_PROVIDER="${_webview_provider}"
+        -D JS_PROVIDER="${_js_provider}"
+        -D ENABLE_JSON_EXPORT="${_json_export}"
+        -D REFLECTION_GENERATOR_EXECUTABLE:FILEPATH='/usr/bin/reflective_rapidjson_generator'
+    )
+    cmake "${cmake_options[@]}"
+    cmake --build build
 }
 
 check() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  if [[ $TEST_FILE_PATH ]]; then
-    ninja check
-  else
-    msg2 'Skipping execution of testsuite because the environment variable TEST_FILE_PATH is not set.'
-  fi
+    if ! [[ $TEST_FILE_PATH ]]; then
+      msg2 'Skipping execution of testsuite because the environment variable TEST_FILE_PATH is not set.'
+      return 0
+    fi
+
+    cmake --build build --target tests
+
+    local ctest_flags=(
+        --test-dir build
+        --output-on-failure
+        --parallel $(nproc)
+    )
+    ctest "${ctest_flags[@]}"
 }
 
 package() {
-  depends+=('libqtutilities.so' 'libtagparser.so' 'libc++utilities.so')
+    depends+=(
+        'libc++utilities.so'
+        'libtagparser.so'
+        'libqtutilities.so'
+    )
+    provides=("${pkgname}-qt6")
+    conflicts=("${pkgname}-qt6")
+    replaces=("${pkgname}-qt6")
 
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  DESTDIR="${pkgdir}" ninja install
+    DESTDIR="${pkgdir}" cmake --install build
 }
