@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Smirnov <debugger94 at gmail dot com>
 
 pkgname=throne-bin
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source_x86_64=(throne-$_appver-x86_64.zip::$url/releases/download/$_appver/Thron
 source_aarch64=(throne-$_appver-aarch64.zip::$url/releases/download/$_appver/Throne-$_appver-linux-arm64.zip)
 sha256sums=('1d7019ed30127fb3c7219016ed9e08bdc4809c65af13d2b02e59eed87a69082d'
             'ba44fe899a7ae34474a497a797299587d1e286e7a574578804083220caefe1bb')
-sha256sums_x86_64=('39e42d109af589c1e35d12ed0d2af87baf1305a389f43cd11d6ffab020cd5456')
-sha256sums_aarch64=('651a9366421a0dbfe7cccbd76f7ebb75e2dc07c9850d6e99764afd3f1de2a527')
+sha256sums_x86_64=('1234162001dcc33d67b93702b269a8bea8627ceedd9700cefe04b04fc68abdd4')
+sha256sums_aarch64=('e8dabd1f29cbd27193c6426f9218075893a6b2014d5483f3d9a41b420219cb5b')
 
 package() {
   install -Dm755 "$srcdir"/Throne/{ThroneCore,Throne} -t "$pkgdir"/opt/Throne/
