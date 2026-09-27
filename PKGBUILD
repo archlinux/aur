@@ -1,6 +1,6 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 pkgname=buildbox
-pkgver=1.4.3
+pkgver=1.4.26
 pkgrel=1
 pkgdesc="A set of tools for remote worker build execution"
 arch=(x86_64)
