@@ -2,22 +2,24 @@
 
 pkgname=recoil16-dkms
 _srcname=recoil16
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
-pkgdesc="Drivers and recoil16ctl for the PCSpecialist Recoil 16 AMD (TUXEDO Stellaris 16 Gen7): keyboard backlight, lightbar, power profiles, charge modes, battery health, Copilot key"
+pkgdesc="Drivers and recoil16ctl for the PCSpecialist Recoil 16 AMD (TUXEDO Stellaris 16 Gen7): keyboard backlight, lightbar, power profiles, charge modes, battery health, Copilot key, NVIDIA GPU power and offload, battery draw"
 arch=('x86_64')
 url="https://github.com/amad3v/recoil16"
 license=('GPL-2.0-only' 'GPL-2.0-or-later')
 depends=('dkms' 'glibc' 'libgcc')
 makedepends=('cargo')
 optdepends=('linux-headers: build the modules for the linux kernel'
-  'libkscreen: kscreen-doctor for recoil16ctl screen rotate (KDE Plasma)')
+  'libkscreen: kscreen-doctor for recoil16ctl screen and the panel line of power (KDE Plasma)'
+  'mesa-utils: eglinfo for recoil16ctl gpu test'
+  'vulkan-tools: vulkaninfo for recoil16ctl gpu test')
 conflicts=('recoil16-dkms-git')
 install=recoil16.install
 # recoil16ctl is built stripped (Cargo.toml profile), so a -debug package would be empty
 options=('!debug')
 source=("$_srcname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('18e35e6655d8ea7856d18d1fc034c83424d987aba822119ad4ea216e1c12b372')
+sha256sums=('26d0fb5fc2963e1596d9c137ef73eb4953bac7396ec6032065abb96dbe4ceaa7')
 
 prepare() {
   cd "$_srcname-$pkgver/recoil16ctl" || return
