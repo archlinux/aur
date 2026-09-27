@@ -4,12 +4,12 @@
 # _commit pins the upstream commit; _bin_sha pins the prebuilt tarball.
 
 pkgname=paseo-cli-git-bin
-pkgver=0.9.2.r15.g8cd989529
+pkgver=0.9.2.r29.gd7b7016cc
 pkgrel=1
-_commit='8cd989529e2d86bb6d1c8a775bf695fa5970c997'
-_bin_sha='2767dd06efb35f69ce001c7530a1ccdccacf1d60d0634c131ed73d8d12f36ac3'
+_commit='d7b7016cc98da02ce5110fb218c70cac419657f3'
+_bin_sha='2bf34af11e327cefce8868219bcf8fb0d429809990a52b07ed4d0c7f1d125a02'
 _pkgdesc_base='Command-line interface for controlling Paseo AI coding agents'
-pkgdesc='Command-line interface for controlling Paseo AI coding agents (built from main 2026-09-25 @8cd9895)'
+pkgdesc='Command-line interface for controlling Paseo AI coding agents (built from main 2026-09-26 @d7b7016)'
 arch=('x86_64')
 url='https://github.com/getpaseo/paseo/tree/main/packages/cli'
 license=('Apache-2.0')
