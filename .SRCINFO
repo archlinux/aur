@@ -1,17 +1,27 @@
 pkgbase = r-randomizr
 	pkgdesc = Easy-to-Use Tools for Common Forms of Random Assignment and Sampling
-	pkgver = 1.0.1
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=randomizr
 	arch = x86_64
 	license = MIT
-	depends = r
+	depends = r-rcpp
+	optdepends = r-balancedsampling
+	optdepends = r-blocktools
+	optdepends = r-declaredesign
 	optdepends = r-dplyr
+	optdepends = r-estimatr
+	optdepends = r-fabricatr
+	optdepends = r-ggplot2
 	optdepends = r-knitr
+	optdepends = r-purrr
+	optdepends = r-readr
 	optdepends = r-rmarkdown
+	optdepends = r-sampling
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/randomizr_1.0.1.tar.gz
-	md5sums = 48d39b829955b9c76bd23e0ad926625c
-	b2sums = 7395a14bf4bc582f93b819d5c0cb09ec11bccebf4597082e4de97e40c9fc867df6136d72a44e13fe10c96b74c5b91df0552ad1e382fd136af9610c9bd7d7e6d7
+	optdepends = r-tidyr
+	source = https://cran.r-project.org/src/contrib/randomizr_2.0.1.tar.gz
+	md5sums = b5f5986f70836d372470bfa9bcd1b113
+	b2sums = 76daa1f17020cedcea52fb92e0b8a7dbff2a2e786c0953fd53b89b18a331a7885202e064df5e75bed8a70cda5e3cef1b946777e3203ae4b4b2f30e23d87d2ad9
 
 pkgname = r-randomizr
