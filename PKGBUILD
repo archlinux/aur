@@ -1,6 +1,6 @@
 # Maintainer: Fovty <38868829+Fovty@users.noreply.github.com>
 pkgname=hushmic
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Real-time microphone noise suppression as a virtual mic (DPDFNet via PipeWire)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT OR Apache-2.0')
 depends=('pipewire' 'pipewire-pulse' 'wireplumber' 'onnxruntime')
 makedepends=('rust' 'cargo' 'python' 'curl')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('42b837a5a85a749a9dd982e26fd980e1737b96db370abf823d7fd480ab67096b')
+sha256sums=('606d061da03f094b4c374061e0fb98133913c2f257662edb24b9df5d51c9a485')
 # GitHub archive dirs use the CANONICAL repo name (Fovty/HushMic), so the
 # tarball extracts to HushMic-<ver>/ regardless of the URL's casing.
 _srcname="HushMic-$pkgver"
@@ -18,7 +18,9 @@ prepare() {
   cd "$srcdir/$_srcname"
   # All network happens here (makepkg contract): crate deps for the offline
   # build below, plus the sha256-pinned models + ONNX Runtime that the source
-  # tarball does not carry (they are gitignored; setup-assets.sh verifies them).
+  # tarball does not carry (they are gitignored; setup-assets.sh verifies them),
+  # the native engine's weights included. The engine's C sources are vendored
+  # and built by cargo with base-devel's gcc.
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
   ./scripts/setup-assets.sh
 }
@@ -51,6 +53,10 @@ package() {
   install -Dm644 target/release/libdpdfnet_ladspa.so "$pkgdir/usr/lib/ladspa/libdpdfnet_ladspa.so"
   install -Dm644 assets/models/dpdfnet8_48khz_hr.onnx "$pkgdir/usr/share/hushmic/models/dpdfnet8_48khz_hr.onnx"
   install -Dm644 assets/models/dpdfnet2_48khz_hr.onnx "$pkgdir/usr/share/hushmic/models/dpdfnet2_48khz_hr.onnx"
+  # Native engine weights (setup-assets.sh fetched and verified them); the
+  # plugin runs both models natively when they sit next to the .onnx files.
+  install -Dm644 assets/models/dpdfnet8_48khz_hr.weights.f32 "$pkgdir/usr/share/hushmic/models/dpdfnet8_48khz_hr.weights.f32"
+  install -Dm644 assets/models/dpdfnet2_48khz_hr.weights.f32 "$pkgdir/usr/share/hushmic/models/dpdfnet2_48khz_hr.weights.f32"
   install -Dm644 packaging/hushmic.desktop "$pkgdir/usr/share/applications/hushmic.desktop"
   install -Dm644 packaging/systemd/hushmic.service "$pkgdir/usr/lib/systemd/user/hushmic.service"
   install -Dm644 packaging/hushmic-256.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/hushmic.png"
