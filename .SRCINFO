@@ -1,6 +1,6 @@
 pkgbase = bend-bin
 	pkgdesc = Bend programming language
-	pkgver = 2.0.31
+	pkgver = 2.0.32
 	pkgrel = 1
 	url = https://github.com/bendlang/bend
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = bend-bin
 	provides = bend
 	conflicts = bend
 	options = !strip
-	source_x86_64 = bend-2.0.31-linux-x64.tar.gz::https://github.com/bendlang/bend/releases/download/v2.0.31/bend-2.0.31-linux-x64.tar.gz
-	sha256sums_x86_64 = f7dbecc8ef5991fe15d9953b8b33911bc62a120c735e2e5902aa031e22055bad
-	source_aarch64 = bend-2.0.31-linux-arm64.tar.gz::https://github.com/bendlang/bend/releases/download/v2.0.31/bend-2.0.31-linux-arm64.tar.gz
-	sha256sums_aarch64 = c20ffee201e94b0a6ee6d52008e69379286cf546089b38d5bac09189f2667ed1
+	source_x86_64 = bend-2.0.32-linux-x64.tar.gz::https://github.com/bendlang/bend/releases/download/v2.0.32/bend-2.0.32-linux-x64.tar.gz
+	sha256sums_x86_64 = 5c365ddb12954d0933cef751802e0f7d9875f842edcb80f9661f89cd1a9ff7b6
+	source_aarch64 = bend-2.0.32-linux-arm64.tar.gz::https://github.com/bendlang/bend/releases/download/v2.0.32/bend-2.0.32-linux-arm64.tar.gz
+	sha256sums_aarch64 = f57776d20c0b6aabf47bc9d4523522c10ecd2acde98a2615049b094bb9241523
 
 pkgname = bend-bin
