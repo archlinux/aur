@@ -7,8 +7,8 @@
 
 pkgname=qaac-wine
 _pkgname=qaac
-pkgver=2.88
-pkgrel=2
+pkgver=3.07
+pkgrel=1
 _flacver=1.5.0
 pkgdesc="QuickTime AAC/ALAC encoder (wine version)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("https://github.com/nu774/qaac/releases/download/v${pkgver}/qaac_${pkgve
         "https://www.apple.com/legal/sla/docs/iTunesWindows.pdf"
         "https://github.com/xiph/flac/releases/download/${_flacver}/flac-${_flacver}-win.zip"
         "wrapper.sh")
-sha256sums=('1260ab096425f2c49042562c7ce1735435e681db60f14497df81e7b6d88fa118'
+sha256sums=('1fb3ab4aa81725e2607ac1b31afa0e13d2617ee6eb5900f5070c092f5271cbb3'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -107,9 +107,8 @@ package() {
     for f in qaac64.exe refalac64.exe; do
         install -Dm755 "qaac_${pkgver}/x64/${f}" "${pkgdir}/usr/lib/qaac/${f}"
     done
-    for f in libsoxconvolver64.dll libsoxr64.dll; do
-        install -Dm644 "qaac_${pkgver}/x64/${f}" "${pkgdir}/usr/lib/qaac/${f}"
-    done
+    install -Dm644 "qaac_${pkgver}/x64/libsoxr64.dll" \
+        "${pkgdir}/usr/lib/qaac/libsoxr64.dll"
     install -Dm644 "flac-${_flacver}-win/Win64/libFLAC.dll" \
         "${pkgdir}/usr/lib/qaac/libFLAC.dll"
     local LIBICUDT_NAME=$(find . -name 'icudt*.dll' -printf '%f')
