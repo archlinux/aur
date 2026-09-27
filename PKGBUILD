@@ -1,7 +1,7 @@
 # Maintainer: Daniel Melani <daniel.melani@gmail.com>
 
 pkgname=sanctum
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A small, reviewable, capable, pq-secure and fully privilege separated VPN daemon"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://sanctorum.se"
 license=('ISC')
 depends=('libsodium')
 source=("${url}/releases/${pkgname}-${pkgver}.tgz")
-sha256sums=('f38874300689e72eecc0857f4063b5255bd4348acd6534aef42999f1b1a70e3d')
+sha256sums=('3e92fd47c2d8046cda09e3c3b5fb826c38cf2851ea0aebfce1dee60b0f3f30b9')
 
 conflicts=('sanctum-git')
 
