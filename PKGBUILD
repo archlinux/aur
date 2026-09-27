@@ -5,7 +5,7 @@
 # together and share the `aurcache` user.
 
 pkgname=aurcache-server
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Build server and pacman repository for Arch Linux packages from the AUR"
 arch=(x86_64 aarch64 armv7h)
