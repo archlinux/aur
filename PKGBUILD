@@ -1,14 +1,16 @@
 # Maintainer: grimish@protonmail.com 
 pkgname=mesa-kraid-git
 pkgver=26.3.0_devel.r230400.g61f259049cf
-pkgrel=1
+pkgrel=2
 pkgdesc="Mesa (git main): Panfrost OpenGL + PanVK Vulkan with the KRAID shader compiler, for Arm Mali Valhall (RK3588 / Mali-G610)"
 arch=('aarch64')
 url="https://gitlab.freedesktop.org/mesa/mesa"
 license=('MIT AND BSD-3-Clause AND SGI-B-2.0')
-depends=('libdrm' 'libglvnd' 'vulkan-icd-loader' 'expat' 'zstd' 'zlib' 'wayland'
-         'libx11' 'libxext' 'libxfixes' 'libxdamage' 'libxshmfence' 'libxxf86vm'
-         'libxrandr' 'libxcb' 'llvm-libs' 'spirv-tools' 'libelf')
+depends=('glibc' 'libgcc' 'libstdc++' 'libdrm' 'libglvnd' 'vulkan-icd-loader'
+         'expat' 'zstd' 'zlib' 'wayland' 'libx11' 'libxext' 'libxxf86vm'
+         'libxcb' 'xcb-util-keysyms' 'libxshmfence' 'libdisplay-info'
+         'systemd-libs' 'lm_sensors' 'llvm-libs' 'spirv-tools')
+optdepends=('python: mesa-overlay-control.py for the overlay layer')
 makedepends=('git' 'meson' 'ninja' 'python-mako' 'python-yaml' 'python-packaging' 'python-ply'
              'bison' 'flex' 'glslang' 'wayland-protocols' 'llvm' 'clang' 'libclc'
              'spirv-llvm-translator' 'rust' 'rust-bindgen' 'cbindgen')

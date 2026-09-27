@@ -1,7 +1,7 @@
 pkgbase = mesa-kraid-git
 	pkgdesc = Mesa (git main): Panfrost OpenGL + PanVK Vulkan with the KRAID shader compiler, for Arm Mali Valhall (RK3588 / Mali-G610)
 	pkgver = 26.3.0_devel.r230400.g61f259049cf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/mesa/mesa
 	arch = aarch64
 	license = MIT AND BSD-3-Clause AND SGI-B-2.0
@@ -23,6 +23,9 @@ pkgbase = mesa-kraid-git
 	makedepends = rust
 	makedepends = rust-bindgen
 	makedepends = cbindgen
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = libdrm
 	depends = libglvnd
 	depends = vulkan-icd-loader
@@ -32,15 +35,16 @@ pkgbase = mesa-kraid-git
 	depends = wayland
 	depends = libx11
 	depends = libxext
-	depends = libxfixes
-	depends = libxdamage
-	depends = libxshmfence
 	depends = libxxf86vm
-	depends = libxrandr
 	depends = libxcb
+	depends = xcb-util-keysyms
+	depends = libxshmfence
+	depends = libdisplay-info
+	depends = systemd-libs
+	depends = lm_sensors
 	depends = llvm-libs
 	depends = spirv-tools
-	depends = libelf
+	optdepends = python: mesa-overlay-control.py for the overlay layer
 	provides = mesa=1:26.3.0
 	provides = vulkan-panfrost=1:26.3.0
 	provides = vulkan-mesa-layers=1:26.3.0
