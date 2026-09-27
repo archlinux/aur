@@ -1,0 +1,18 @@
+pkgbase = guile-lsp-server-git
+	pkgdesc = LSP server for Scheme (Guile implementation)
+	pkgver = r481.gbda8785
+	pkgrel = 1
+	url = https://codeberg.org/rgherdt/scheme-lsp-server
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = make
+	depends = guile
+	provides = guile-lsp-server
+	conflicts = guile-lsp-server
+	source = git+https://codeberg.org/rgherdt/scheme-lsp-server.git
+	sha256sums = SKIP
+
+pkgname = guile-lsp-server-git
