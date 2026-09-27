@@ -1,7 +1,7 @@
 # Generated from verified aros-tools release manifests.
-# Source commit: ff08ff9df3556113a1eafc9733c3eb0f9445007c
+# Source commit: b5a2e9ea54bdaf50712b16f5c64dc89fd8c87e62
 pkgname=aros-tools-bin
-pkgver=0.3.12
+pkgver=0.3.13
 pkgrel=1
 pkgdesc='Reproducible host-side build and development tools for AROS'
 arch=('x86_64' 'aarch64')
@@ -11,10 +11,10 @@ depends=('glibc' 'gcc-libs' 'ca-certificates' 'cmake' 'curl' 'git' 'ninja' 'patc
 provides=('aros-tools')
 conflicts=('aros-tools')
 options=('!strip')
-source_x86_64=('https://github.com/metaneutrons/aros-tools/releases/download/v0.3.12/aros-tools-v0.3.12-x86_64-unknown-linux-gnu.tar.gz')
-sha256sums_x86_64=('a05696e42e1fc3d6639c0399f058ecff78276a03c13126aa62e69a7d3d53f4c6')
-source_aarch64=('https://github.com/metaneutrons/aros-tools/releases/download/v0.3.12/aros-tools-v0.3.12-aarch64-unknown-linux-gnu.tar.gz')
-sha256sums_aarch64=('703f0d2f68e3b9b71592b807701ef3d744467bf999a022e6419560cb8097ae7e')
+source_x86_64=('https://github.com/metaneutrons/aros-tools/releases/download/v0.3.13/aros-tools-v0.3.13-x86_64-unknown-linux-gnu.tar.gz')
+sha256sums_x86_64=('1b8ca19436b467d15c9ba4a9595262d748e8739e93f5f1e403ed3471a620c437')
+source_aarch64=('https://github.com/metaneutrons/aros-tools/releases/download/v0.3.13/aros-tools-v0.3.13-aarch64-unknown-linux-gnu.tar.gz')
+sha256sums_aarch64=('8725d3edcd578b069a510784701e916050f5275fab74987b60822ee786809ecb')
 
 package() {
   local target
@@ -23,7 +23,7 @@ package() {
     aarch64) target='aarch64-unknown-linux-gnu' ;;
     *) return 1 ;;
   esac
-  local root="$srcdir/aros-tools-v0.3.12-$target"
+  local root="$srcdir/aros-tools-v0.3.13-$target"
   install -Dm755 "$root"/bin/* -t "$pkgdir/usr/bin"
   install -Dm644 "$root/README.md" -t "$pkgdir/usr/share/doc/aros-tools"
   install -Dm644 "$root/LICENSE" -t "$pkgdir/usr/share/licenses/aros-tools"
