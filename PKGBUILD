@@ -4,19 +4,19 @@ pkgname=screenie-bin
 _pkgname=screenie
 pkgver=0.1.1
 pkgrel=1
-pkgdesc='Screenshots and screen recordings for Wayland'
+pkgdesc='Beautiful screenshots & screen recording for Wayland'
 arch=('x86_64' 'aarch64')
 url='https://github.com/johnpyp/screenie'
 license=('MIT')
 depends=(
-  'fontconfig'            # loaded at runtime, as are libglvnd, vulkan-icd-loader, wayland
+  'fontconfig' # loaded at runtime, as are libglvnd, vulkan-icd-loader, wayland
   'glib2'
   'glibc'
-  'gst-libav'             # AAC audio
-  'gst-plugins-bad-libs'  # h264parse, NVENC
+  'gst-libav'            # AAC audio
+  'gst-plugins-bad-libs' # h264parse, NVENC
   'gst-plugins-base-libs'
-  'gst-plugins-good'      # MP4 muxing, PulseAudio/PipeWire capture
-  'gst-plugins-ugly'      # x264, when there's no hardware encoder
+  'gst-plugins-good' # MP4 muxing, PulseAudio/PipeWire capture
+  'gst-plugins-ugly' # x264, when there's no hardware encoder
   'gstreamer'
   'libgcc'
   'libglvnd'
