@@ -1,7 +1,7 @@
 # Maintainer: Sebastien Rousseau <sebastian.rousseau@gmail.com>
 
 pkgname=scout
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc='Diagnose Model Context Protocol servers end to end: nine phases, every finding tied to the request that produced it'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('afcd587e7912e026ff871a82418fac1c28b7635c38aa014683e84068bc9e1539')
+sha256sums=('136e5235acf7eab7594bd581cf8a419a5e4d5bb09cafec723a1c53451b9661d3')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
