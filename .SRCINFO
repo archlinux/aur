@@ -1,0 +1,21 @@
+pkgbase = mic-overlay
+	pkgdesc = Microphone mute status overlay for KDE Plasma Wayland
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/ptrj/mic-overlay
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base>=6.5
+	depends = qt6-declarative
+	depends = qt6-wayland
+	depends = qt6-svg
+	depends = layer-shell-qt>=6.6
+	depends = pipewire
+	depends = wireplumber
+	depends = hicolor-icon-theme
+	source = https://github.com/ptrj/mic-overlay/releases/download/v0.2.2/mic-overlay-0.2.2.tar.gz
+	sha256sums = 2eb00b146b40704783222cec3ce4bc83efef19f553e1892b7c847527f14344c1
+
+pkgname = mic-overlay
