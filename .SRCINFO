@@ -1,6 +1,6 @@
 pkgbase = winexe
 	pkgdesc = Remote Windows command executor via SMB (from samba/examples/winexe)
-	pkgver = 4.24.7
+	pkgver = 4.25.0
 	pkgrel = 1
 	url = https://www.samba.org/
 	install = winexe.install
@@ -12,13 +12,13 @@ pkgbase = winexe
 	makedepends = bison
 	makedepends = flex
 	makedepends = patchelf
-	depends = samba=2:4.24.7
-	source = https://download.samba.org/samba/ftp/stable/samba-4.24.7.tar.gz
-	source = https://download.samba.org/samba/ftp/stable/samba-4.24.7.tar.asc
+	depends = samba=2:4.25.0
+	source = https://download.samba.org/samba/ftp/stable/samba-4.25.0.tar.gz
+	source = https://download.samba.org/samba/ftp/stable/samba-4.25.0.tar.asc
 	source = NOTES
 	source = winexe.install
 	validpgpkeys = 81F5E2832BD2545A1897B713AA99442FB680B620
-	sha256sums = 45b7747a47452eff2b2159a44cc63eb43690d339fd1069088e023a015fed06c7
+	sha256sums = 2e2cb7296833b35b8f7a7fb76045e0c57adc0c2cd03264b37df5d58e40f28437
 	sha256sums = SKIP
 	sha256sums = 989cee777ca19230f03623357e9bdc8eb33fce17230790c466aa013ecc6c9ba9
 	sha256sums = cbd542ccd943ae95fb856ba7850ebc1ab5b03da5fe0649dafc989dd3b5bd77a0
