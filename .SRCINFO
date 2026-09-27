@@ -1,6 +1,6 @@
 pkgbase = mmsimpulse-git
 	pkgdesc = A Wayland session of KWin plus the illogical-impulse shell — no desktop environment
-	pkgver = r111.8947b8b
+	pkgver = r112.78a3abb
 	pkgrel = 1
 	url = https://github.com/mahirsn/mmsimpulse
 	arch = any
