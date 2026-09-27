@@ -37,11 +37,10 @@ prepare() {
 build() {
     cd "BibaVPN-$pkgver/apps/bibavpn-desktop"
     export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR="$srcdir/BibaVPN-$pkgver/target"
-    # Note: under a !debug makepkg.conf, makepkg injects no -ffile-prefix-map, so
-    # vendored BoringSSL bakes $srcdir into __FILE__ strings in its FIPS .rodata
-    # (cosmetic "reference to $srcdir" warning; RPATH/functional paths stay clean).
-    # The standard devtools/debug build remaps these to /usr/src/debug, so no fix
-    # is forced here.
+    # makepkg injects -ffile-prefix-map only when debug is enabled; without it the
+    # vendored BoringSSL (__FILE__) and rustc (panic locations) embed $srcdir.
+    export CFLAGS+=" -ffile-prefix-map=$srcdir/=" CXXFLAGS+=" -ffile-prefix-map=$srcdir/="
+    export RUSTFLAGS+=" --remap-path-prefix=$srcdir/="
     # --no-bundle: skip AppImage/deb packaging; we install the binary ourselves.
     npm exec -- tauri build --no-bundle
 }
