@@ -13,12 +13,15 @@ pkgbase = xfdesktop-git
 	makedepends = meson
 	makedepends = xfce4-dev-tools
 	makedepends = glib2-devel
+	makedepends = gst-plugin-gtk
 	depends = thunar
 	depends = garcon
 	depends = hicolor-icon-theme
 	depends = libxfce4ui>=4.21.0
 	depends = libxfce4windowing
 	depends = gtk-layer-shell
+	depends = libyaml
+	optdepends = gst-plugin-gtk: Video backgrounds
 	provides = xfdesktop=4.20.1
 	conflicts = xfce4-menueditor
 	conflicts = xfdesktop
