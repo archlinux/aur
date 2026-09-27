@@ -1,6 +1,6 @@
 # Maintainer: NeoTheFox
 pkgname=clipryx
-pkgver=1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A Linux Wayland clipboard history manager written in C# on .NET"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('wl-clipboard')
 makedepends=('dotnet-sdk' 'clang' 'llvm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Yot360/clipryx/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('778d237d3df8c76a2915fca88b1d7db97bd50ae1dbbd667951d74a4a22218ac0')
+sha256sums=('4c532a6c1c081a12e54b0da27d80cc9aaa6f9ddc0fba074bb85eea62df8cf818')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/clipryx"
