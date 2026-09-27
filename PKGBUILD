@@ -1,4 +1,5 @@
-# Maintainer: Michael Kuc <michaelkuc6 at gmail dot com>
+# Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
+# Contributor: Michael Kuc <michaelkuc6 at gmail dot com>
 # Contributor: Fabian Niepelt <Takios at github dot com>
 # shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
