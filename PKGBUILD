@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=nautilus-custom-icon-name
-pkgver=0.5.3
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="A Nautilus-python extension that enables setting custom folder icons using a theme-aware icon name"
 arch=('any')
 url="https://gitlab.com/benleppke/nautilus-custom-icon-name"
@@ -19,7 +19,7 @@ optdepends=(
   'papirus-folder-icons: extra folder icons for the Papirus theme'
 )
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('585a691481762bf947b75d5f6f7d0eb5cd84f09a93345d25a047cf7e2aa1d091')
+sha256sums=('f3d8065580355ab9006e0dae73b23356c4c8202d143ab1151a69658866c56c4d')
 
 package() {
   cd "$pkgname-v$pkgver"
@@ -29,6 +29,6 @@ package() {
 
   for mo in po/*/LC_MESSAGES/custom-icon-name.mo; do
     lang=$(basename "$(dirname "$(dirname "$mo")")")
-    install -Dm644 "${mo}" -t "$pkgdir/usr/share/locale/$lang/LC_MESSAGES/"
+    install -Dm644 "${mo}" -t "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES/"
   done
 }
