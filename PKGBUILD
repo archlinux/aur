@@ -2,7 +2,7 @@
 pkgname=cicada-shell
 _pkgname=cicada
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A bash-like Unix shell written in Rust"
 arch=('i686' 'x86_64')
 url="https://github.com/mitnk/cicada"
@@ -31,7 +31,7 @@ check() {
     cd "$_pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo test --frozen
+    LC_ALL=C cargo test --frozen
 }
 
 package() {
