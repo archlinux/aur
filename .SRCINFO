@@ -1,6 +1,6 @@
 pkgbase = nightcell7-bin
 	pkgdesc = Two operatives. Two countries. One manufactured war.
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://nightcell7.com
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = nightcell7-bin
 	depends = xdg-utils
 	depends = alsa-lib
 	options = !strip
-	source = nightcell7.png::https://raw.githubusercontent.com/profullstack/nightcell7/v0.4.0/apps/desktop/resources/icon.png
+	source = nightcell7.png::https://raw.githubusercontent.com/profullstack/nightcell7/v0.5.0/apps/desktop/resources/icon.png
 	sha256sums = 6e05544badfa8b9bd323cf9ab4900e0416862c9e1903d0dd092a479e106b2186
-	source_x86_64 = nightcell7-bin-0.4.0-x86_64.AppImage::https://github.com/profullstack/nightcell7/releases/download/v0.4.0/nightcell7-0.4.0-linux-x86_64.AppImage
-	sha256sums_x86_64 = 8a19409540c8cf8704a1a87b8f3cd99959a011f8aa96c1b4aed07e1e50e53758
-	source_aarch64 = nightcell7-bin-0.4.0-aarch64.AppImage::https://github.com/profullstack/nightcell7/releases/download/v0.4.0/nightcell7-0.4.0-linux-arm64.AppImage
-	sha256sums_aarch64 = 77730a1476fa0c9b2f0c17a38da365fe48b28fe8138a16c2dbc5b15fe47fd464
+	source_x86_64 = nightcell7-bin-0.5.0-x86_64.AppImage::https://github.com/profullstack/nightcell7/releases/download/v0.5.0/nightcell7-0.5.0-linux-x86_64.AppImage
+	sha256sums_x86_64 = d93e1ccfbd995600a70829f1139814e9fe6c5da30da72333ee1a828ae3dba7bd
+	source_aarch64 = nightcell7-bin-0.5.0-aarch64.AppImage::https://github.com/profullstack/nightcell7/releases/download/v0.5.0/nightcell7-0.5.0-linux-arm64.AppImage
+	sha256sums_aarch64 = fe08b0cdc2b46acf7197a27038f601c37d1b648ce97cee8ef96d299d3f45a819
 
 pkgname = nightcell7-bin
