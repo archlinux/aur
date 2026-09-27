@@ -5,21 +5,23 @@
 # shell when the plugin is installed there, and as its own Quickshell process
 # everywhere else -- so this package needs Quickshell, not Omarchy.
 pkgname=crypto-market
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='CoinGecko prices, coin pages, a watchlist and a portfolio, for Quickshell'
 arch=('any')
-url='https://github.com/SimonSchubert/omarchy-crypto-market'
+url='https://github.com/SimonSchubert/moarchy-apps'
 license=('MIT')
 # qt6-declarative (QtQuick, QtQuick.Shapes) comes with quickshell. The icons
 # are Nerd Font glyphs, which namcap cannot see, so it calls this dependency
 # unneeded -- as it does quickshell, for the same reason.
 depends=('quickshell' 'ttf-jetbrains-mono-nerd' 'hicolor-icon-theme')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2fee44cbf557b7f4ceab64848a6dad468f630e7466fd0b5ee9b1934957a8fc15')
+# A release asset that packaging/release.sh builds from apps/crypto-market at
+# the tag, not GitHub's generated archive of the whole repository.
+source=("$url/releases/download/crypto-market-v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('879e5a93196bc3c3bf3cb6346a306f98c6561de3ce3859ca558c3b3557e97909')
 
 package() {
-  cd "omarchy-crypto-market-$pkgver"
+  cd "$pkgname-$pkgver"
 
   install -d "$pkgdir/usr/share/$pkgname"
   install -m644 manifest.json ./*.qml ./*.js ./*.mjs icon.svg \
