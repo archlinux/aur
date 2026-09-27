@@ -1,30 +1,67 @@
 # Maintainer: TheMrAhmad <https://github.com/AtomicError>
 pkgname=whisper-desktop-bin
-pkgver=2.3.0
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="A gorgeous, premium Rust & Tauri GUI to manage and execute whisper.cpp transcriber tasks (precompiled binary version)"
-arch=('x86_64')
+pkgdesc="High-performance native desktop studio for local speech-to-text, subtitle translation, and video hardsubbing"
+arch=('x86_64' 'aarch64')
 url="https://github.com/AtomicError/whisper-desktop"
-license=('MIT')
-depends=('gtk3' 'webkit2gtk-4.1' 'ffmpeg')
+license=('GPL-3.0-or-later')
+depends=(
+  'gtk3'
+  'webkit2gtk-4.1'
+  'hicolor-icon-theme'
+  'glibc'
+  'gcc-libs'
+)
+optdepends=(
+  'vulkan-icd-loader: Vulkan GPU hardware acceleration'
+  'libayatana-appindicator: System tray indicator support'
+  'ffmpeg: System FFmpeg utilities (if configured to use system binary)'
+)
 provides=('whisper-desktop')
 conflicts=('whisper-desktop')
-options=('!strip' '!zipman')
+options=('!strip')
 
-source_x86_64=("https://github.com/AtomicError/whisper-desktop/releases/download/v${pkgver}/Whisper.Desktop_${pkgver}_amd64.deb")
-sha256sums_x86_64=('e9b966b2ed3bad7afb24ac86c852dd2484ab745100e9d7c66b0b959c1ce1b3f8')
+source=("LICENSE-v${pkgver}::https://raw.githubusercontent.com/AtomicError/whisper-desktop/v${pkgver}/LICENSE")
+sha256sums=('37f60e97a2677fe8cc2ad83fd4576decb90675c0fe189598450677bf5820e53a')
+
+source_x86_64=("https://github.com/AtomicError/whisper-desktop/releases/download/v${pkgver}/WhisperDesktop_${pkgver}_amd64.deb")
+sha256sums_x86_64=('f87485d5a352621721abc48d9cde6cf61d468905886e1cef594db673cb71b6ff')
+
+source_aarch64=("https://github.com/AtomicError/whisper-desktop/releases/download/v${pkgver}/WhisperDesktop_${pkgver}_arm64.deb")
+sha256sums_aarch64=('721303d72752428fbaca23fd4b24629b37c9fa58873d4deb987ebc6dddc610fe')
 
 package() {
   cd "$srcdir"
-  
+
   # Extract the main data payload of the deb package into the Arch packaging directory
   if [ -f data.tar.zst ]; then
-    tar -xf data.tar.zst -C "$pkgdir/"
+    bsdtar -xf data.tar.zst -C "$pkgdir/"
   elif [ -f data.tar.xz ]; then
-    tar -xf data.tar.xz -C "$pkgdir/"
+    bsdtar -xf data.tar.xz -C "$pkgdir/"
+  elif [ -f data.tar.gz ]; then
+    bsdtar -xf data.tar.gz -C "$pkgdir/"
   else
     # Safe fallback if makepkg didn't automatically unpack the deb archive
-    bsdtar -xf "Whisper.Desktop_${pkgver}_amd64.deb"
-    tar -xf data.tar.* -C "$pkgdir/"
+    local _deb=(WhisperDesktop_"${pkgver}"_*.deb)
+    bsdtar -xf "$srcdir/${_deb[0]}"
+    bsdtar -xf data.tar.* -C "$pkgdir/"
   fi
+
+  # FreeDesktop desktop file compatibility symlink
+  if [ -f "$pkgdir/usr/share/applications/Whisper Desktop.desktop" ]; then
+    ln -s "Whisper Desktop.desktop" "$pkgdir/usr/share/applications/whisper-desktop.desktop"
+  fi
+
+  # Ensure correct execution permissions on binaries and dynamic libraries
+  chmod 755 "$pkgdir/usr/bin/whisper-desktop"
+  if [ -d "$pkgdir/usr/lib/Whisper Desktop/resources" ]; then
+    chmod 755 "$pkgdir/usr/lib/Whisper Desktop/resources"/ffmpeg
+    chmod 755 "$pkgdir/usr/lib/Whisper Desktop/resources"/ffprobe
+    chmod 755 "$pkgdir/usr/lib/Whisper Desktop/resources"/whisper-cli-*
+    find "$pkgdir/usr/lib/Whisper Desktop/resources" -name "*.so*" -exec chmod 755 {} +
+  fi
+
+  # Install upstream license
+  install -Dm644 "$srcdir/LICENSE-v${pkgver}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
