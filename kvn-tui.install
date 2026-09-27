@@ -10,19 +10,22 @@ seed_migration_baseline() {
     local migrations=/usr/lib/kvn/migrations
     local tmp
     local introduced
+    local fresh_install=0
 
     [[ ! -e "$baseline" ]] || return 0
+    [[ -n "$installed_from" || -d "$state_dir" ]] || fresh_install=1
     install -dm755 "$state_dir"
     tmp=$(mktemp "$state_dir/.migration-baseline.XXXXXX") || return 1
     for migration in "$migrations"/*.sh; do
         [[ -f "$migration" ]] || continue
         # Only a fresh installation starts with every shipped migration in its
         # baseline. Upgrades from pre-framework versions still need all later
-        # migrations; stopping an incompatible daemon is a separate prerequisite.
-        if [[ -z "$installed_from" ]]; then
+        # migrations; launching kvn applies them and restarts an outdated daemon.
+        if (( fresh_install )); then
             basename "$migration"
             continue
         fi
+        [[ -n "$installed_from" ]] || continue
         introduced=$(sed -n 's/^# kvn:introduced=//p' "$migration" | head -n1)
         if [[ -n "$introduced" ]] && (( $(vercmp "$introduced" "$installed_from") <= 0 )); then
             basename "$migration"
