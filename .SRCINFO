@@ -8,6 +8,8 @@ pkgbase = pnpm-git
 	makedepends = git
 	makedepends = rust
 	optdepends = nodejs
+	provides = pnpm
+	conflicts = pnpm
 	source = git+https://github.com/pnpm/pnpm.git
 	b2sums = SKIP
 

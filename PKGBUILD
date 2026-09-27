@@ -11,6 +11,8 @@ url="https://github.com/pnpm/pnpm"
 license=('MIT')
 makedepends=(git rust)
 optdepends=(nodejs)
+conflicts=(pnpm)
+provides=(pnpm)
 source=("git+${url}.git")
 b2sums=('SKIP')
 prepare() {
