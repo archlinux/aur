@@ -6,49 +6,75 @@
 _reponame=reflective-rapidjson
 pkgname=reflective-rapidjson-git
 _name=${pkgname%-git}
-pkgver=268.1fba0c7
-pkgrel=1
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+pkgver=276.cd126d0
+pkgrel=2
 pkgdesc='Code generator for serializing/deserializing C++ objects to/from JSON using Clang and RapidJSON'
-license=(GPL-2.0-or-later)
-depends=('c++utilities-git' 'rapidjson' 'llvm-libs' 'clang')
-optdepends=("boost: use Boost.Hana instead of code generator"
-            "$_name-doc: API documentation")
-makedepends=('cmake' 'clang-tools-extra' 'llvm' 'git' 'ninja')
-checkdepends=('cppunit' 'boost')
-#provides=("${_name}")
-#conflicts=("${_name}")
+arch=('x86_64')
 url="https://github.com/Martchus/${_reponame}"
+license=('GPL-2.0-or-later')
+depends=(
+    'glibc'
+    'libgcc'
+    'libstdc++'
+    'c++utilities-git'
+    'rapidjson'
+    'llvm-libs'
+    'clang'
+)
+makedepends=(
+    'cmake'
+    'git'
+    'clang-tools-extra'
+    'llvm'
+    'ninja'
+)
+checkdepends=(
+    'cppunit'
+    'boost'
+)
+optdepends=(
+    "boost: use Boost.Hana instead of code generator"
+    "$_name-doc: for API documentation"
+)
 source=("${_reponame}::${MARTCHUS_GIT_URL_PREFIX:-git+https://github.com/Martchus}/${_reponame}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    echo "$(git -C "${_reponame}" rev-list --count HEAD).$(git -C "${_reponame}" rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  cmake \
-    -G Ninja \
-    -DCMAKE_BUILD_TYPE:STRING='Release' \
-    -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-    -DCONFIGURATION_NAME:STRING='git' \
-    -DCONFIGURATION_PACKAGE_SUFFIX:STRING='-git' \
-    -DCONFIGURATION_TARGET_SUFFIX:STRING='git' \
-    -DBUILD_SHARED_LIBS:BOOL=ON \
-    .
-  ninja
+    local cmake_options=(
+        -B build
+        -S "${PROJECT_DIR_NAME:-$_reponame}"
+        -G Ninja
+        -D CMAKE_BUILD_TYPE=Release
+        -D CMAKE_INSTALL_PREFIX=/usr
+        -D BUILD_SHARED_LIBS=ON
+        -D CONFIGURATION_NAME:STRING='git'
+        -D CONFIGURATION_PACKAGE_SUFFIX:STRING='-git'
+        -D CONFIGURATION_TARGET_SUFFIX:STRING='git'
+    )
+    cmake "${cmake_options[@]}"
+    cmake --build build --target all
 }
 
 check() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  ninja check
+    cmake --build build --target tests
+
+    local ctest_flags=(
+        --test-dir build
+        --output-on-failure
+        --parallel $(nproc)
+    )
+    ctest "${ctest_flags[@]}"
 }
 
 package() {
-  depends+=('libc++utilities-git.so' 'libLLVM.so')
+    depends+=(
+        'libc++utilities-git.so'
+        'libLLVM.so'
+    )
 
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  DESTDIR="${pkgdir}" ninja install
+    DESTDIR="${pkgdir}" cmake --install build
 }
