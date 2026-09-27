@@ -1,7 +1,7 @@
 # Maintainer: Daniel Azevedo <daniazevedo77@posteo.net>
 
 pkgname=spitfire
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Tiling Wayland compositor with a live-reloadable Lua config, in the spirit of dwm"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,12 @@ optdepends=(
   'greetd: use spitfire as a login-screen session'
 )
 backup=('etc/xdg-desktop-portal/spitfire-portals.conf')
+# mlua builds its vendored Lua with makepkg's CFLAGS; with -flto those
+# objects are GCC LTO bytecode that the Rust link step can't resolve
+# (undefined lua_* symbols).
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('80e7359690852931cacc2869c7a212d9326c401e239e0caf2737a262839a0d6c')
+sha256sums=('f237480dba41852c82e31b4a90ec13672b0f78d580695e1bd3ac7fdff0c8bbf1')
 
 # Smithay is pinned as a git dependency in Cargo.lock, so prepare() needs
 # network access (hence git in makedepends).
