@@ -1,0 +1,18 @@
+pkgbase = bufusb-cli
+	pkgdesc = A fast, safe bootable USB image flasher
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/brysonak/bufusb
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	optdepends = ntfs-3g: NTFS fallback for ISOs with files over the FAT32 4 GiB limit
+	conflicts = buf-cli
+	replaces = buf-cli
+	source = bufusb-cli-0.2.4.tar.gz::https://github.com/brysonak/bufusb/archive/refs/tags/v0.2.4.tar.gz
+	sha256sums = 656f6fb84bafe24b0584fb393dd3e8980d498e961b7ebfbf343cd768b4dafa5f
+
+pkgname = bufusb-cli
