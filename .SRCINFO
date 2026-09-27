@@ -1,6 +1,6 @@
 pkgbase = miru-zoom
 	pkgdesc = A Wayland-based zoom daemon and control utility
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://codeberg.org/Vaishnav-Sabari-Girish/miru
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = miru-zoom
 	depends = wayland
 	depends = mesa
 	depends = libffi
-	source = miru-0.10.0.tar.gz::https://codeberg.org/Vaishnav-Sabari-Girish/miru/archive/refs/tags/v0.10.0.tar.gz
-	sha256sums = 9f2cd923c3516eed7ad37688606013df20f54db2828f218a4db1463add877670
+	source = miru-0.11.0.tar.gz::https://codeberg.org/Vaishnav-Sabari-Girish/miru/archive/refs/tags/v0.11.0.tar.gz
+	sha256sums = f78411061165f6bf9cd0cd8381a85595a490b4fcc1a6c4601bacdad40a070511
 
 pkgname = miru-zoom
