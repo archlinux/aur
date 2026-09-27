@@ -1,5 +1,8 @@
 *.deb
 *.pkg.*
-LICENSE
+*.log
+
+LICENSE-*
+
 pkg
 src

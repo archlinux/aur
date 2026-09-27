@@ -1,0 +1,6 @@
+[chronicler-bin]
+source = "git"
+git = "https://github.com/mak-kirkland/chronicler.git"
+prefix = "v"
+from_pattern = "-"
+to_pattern = "_"
