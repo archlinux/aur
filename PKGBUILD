@@ -12,7 +12,7 @@
 # rather than copying a loose binary in.
 
 pkgname=aurcache-worker-docker
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Legacy Docker build executor for AURCache (deprecated)"
 arch=(x86_64 aarch64 armv7h)
