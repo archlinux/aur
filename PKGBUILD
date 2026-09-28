@@ -19,6 +19,7 @@ makedepends=(
   'python-installer'
   'python-wheel'
   'python-setuptools'
+  'python-mutagen'
 )
 optdepends=(
   'mopidy-tidal: required for /favorites endpoints (stats and audio work without it)'
