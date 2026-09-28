@@ -1,6 +1,6 @@
 pkgbase = hyprquip-git
 	pkgdesc = hyprland's official splash texts on any shell: desktop overlay, cli, hyprlock, waybar, fastfetch
-	pkgver = 0.1.0.r3.g6ea4897
+	pkgver = 0.1.0.r6.g5f99ed4
 	pkgrel = 1
 	url = https://github.com/iamanuclearwarhead/hyprquip
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = hyprquip-git
 	depends = coreutils
 	depends = sed
 	optdepends = quickshell: splash on the desktop
+	optdepends = imagemagick: pick text tone from wallpaper brightness
 	optdepends = hyprland: hyprquip --session reads the splash hyprland picked
 	provides = hyprquip
 	conflicts = hyprquip

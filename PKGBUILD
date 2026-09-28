@@ -1,6 +1,6 @@
 # Maintainer: Natsuki <299474069+iamanuclearwarhead@users.noreply.github.com>
 pkgname=hyprquip-git
-pkgver=0.1.0.r3.g6ea4897
+pkgver=0.1.0.r6.g5f99ed4
 pkgrel=1
 pkgdesc="hyprland's official splash texts on any shell: desktop overlay, cli, hyprlock, waybar, fastfetch"
 arch=('any')
@@ -8,6 +8,7 @@ url="https://github.com/iamanuclearwarhead/hyprquip"
 license=('BSD-3-Clause')
 depends=('bash' 'coreutils' 'sed')
 optdepends=('quickshell: splash on the desktop'
+            'imagemagick: pick text tone from wallpaper brightness'
             'hyprland: hyprquip --session reads the splash hyprland picked')
 makedepends=('git')
 provides=('hyprquip')
