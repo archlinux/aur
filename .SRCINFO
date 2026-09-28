@@ -1,0 +1,15 @@
+pkgbase = terplus
+	pkgdesc = Fork of Terminus with additional glyphs.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://kotarac.github.io/terplus/
+	arch = any
+	license = OFL-1.1
+	source = https://github.com/kotarac/terplus/releases/download/v1.0.0/terplus-v1.0.0-otb.tar.zst
+	source = https://github.com/kotarac/terplus/releases/download/v1.0.0/terplus-v1.0.0-pcf.tar.zst
+	source = https://github.com/kotarac/terplus/releases/download/v1.0.0/terplus-v1.0.0-psf.tar.zst
+	b2sums = cbd49eef4c4b212a2235eb13d866fe3843ccc4007f5edd82234a3603a701a6dab00254588657b5dbe08814f26d369d03550b9c6152ec05ae55e1303cac115587
+	b2sums = 7ba483a44c998d9d54db43542a520f9d3f835a3539fa0b3d91bb372522ceec8a7435334fb9696a92a33e9e78b9457dfd2d7f10f53ec50780c4bb1b09240ae3a8
+	b2sums = b8f35c589a2c477c709cd308c2528b7e3b9296dd1888b405fa0f8a7b2debe2c95ee08f23b633e8db9053e85cd718fb7097f8b867a7306110374125f923ee2185
+
+pkgname = terplus
