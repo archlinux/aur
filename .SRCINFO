@@ -1,7 +1,7 @@
 pkgbase = verbiste
 	pkgdesc = French conjugation system.
 	pkgver = 0.1.49
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sarrazip.com/dev/verbiste.html
 	arch = i686
 	arch = x86_64

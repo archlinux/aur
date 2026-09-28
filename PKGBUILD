@@ -8,7 +8,7 @@
 
 pkgname=verbiste
 pkgver=0.1.49
-pkgrel=2
+pkgrel=3
 pkgdesc="French conjugation system."
 url="http://sarrazip.com/dev/verbiste.html"
 license=("GPL")
