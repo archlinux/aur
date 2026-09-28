@@ -1,7 +1,7 @@
 # Maintainer: Hong Shick Pak <hong@hspak.com>
 
 pkgname=zimbr
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Native Wayland iMessage client using a self-hosted macOS relay"
 arch=("x86_64")
@@ -34,9 +34,9 @@ optdepends=(
 )
 options=("!debug")
 # Bootstrap from the public commit until the first tag; release.sh updates _ref.
-_ref=0.1.0
+_ref=0.1.1
 source=("$pkgname-$_ref.tar.gz::$url/archive/$_ref.tar.gz")
-sha256sums=("9fd85fbc2e406ee0c46a2843e96e6192a9a874660496c7b383fb2e519cc9effa")
+sha256sums=("f25ba1f6b03cbff3ea38263530bc72b24e0e3f55ee54bdedb6c1dd5245e51ef6")
 
 prepare() {
   cd "$pkgname-$_ref"
