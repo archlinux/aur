@@ -1,6 +1,6 @@
 # Maintainer: Scott Hansen (firecat53) tech at firecat53 dot net
 pkgname=tabview-git
-pkgver=r226.77846ac
+pkgver=r229.a5b120d
 pkgrel=1
 pkgdesc="Curses CSV/tabular data viewer"
 arch=('any')
@@ -31,4 +31,5 @@ build() {
 package() {
   cd "$_gitname"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
