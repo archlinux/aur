@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Pen
+Comment=Design on canvas. Land in code.
+Exec=pen-dev %U
+Icon=pen-dev
+Terminal=false
+Type=Application
+Categories=Development;Graphics;
+StartupWMClass=Pen
+MimeType=x-scheme-handler/pencil;
