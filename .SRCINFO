@@ -1,0 +1,25 @@
+pkgbase = python-nanobind-backend
+	pkgdesc = Compiled nanobind backend for extensions built in split mode
+	pkgver = 1.0.0_dev6
+	pkgrel = 1
+	url = https://github.com/wjakob/nanobind
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = cmake
+	makedepends = robin-map
+	makedepends = python-scikit-build-core
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = libgcc
+	depends = libstdc++
+	depends = python
+	optdepends = nanobind: Tiny and efficient C++/Python bindings
+	provides = python-nanobind-backend
+	conflicts = python-nanobind-backend
+	source = nanobind-backend::git+https://github.com/wjakob/nanobind.git#tag=backend-v1.0.0-dev6
+	sha256sums = b9e5ccee9d2685e20aa4a53850749f782ec43cf24548de5c2b3eb9ae9805cf8e
+
+pkgname = python-nanobind-backend
