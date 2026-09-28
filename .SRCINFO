@@ -1,6 +1,6 @@
 pkgbase = proton-drive-for-linux
 	pkgdesc = Unofficial Proton Drive client: files-on-demand FUSE mount, CLI, GTK4 app and tray
-	pkgver = 2.2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/narrrl/proton-drive-linux
 	arch = x86_64
@@ -17,18 +17,19 @@ pkgbase = proton-drive-for-linux
 	depends = hicolor-icon-theme
 	optdepends = perl-image-exiftool: thumbnails for camera RAW files
 	optdepends = ffmpeg: video thumbnails
+	optdepends = iso-codes: country names in your language under Places
 	optdepends = gnome-keyring: credential storage over the Secret Service API
 	optdepends = kwallet: credential storage over the Secret Service API
 	optdepends = xdg-utils: "Open folder" action in the tray menu
 	optdepends = fzf: search-as-you-type launcher (pdfs-prompt --fzf)
 	optdepends = foot: terminal that hosts pdfs-prompt --fzf when started from a keybinding
-	provides = proton-drive-linux=2.2.2
+	provides = proton-drive-linux=2.3.0
 	provides = pdfs
 	conflicts = proton-drive-linux
 	conflicts = proton-drive-for-linux-bin
 	conflicts = proton-drive-for-linux-git
 	options = !lto
-	source = proton-drive-for-linux-2.2.2.tar.gz::https://github.com/narrrl/proton-drive-linux/archive/refs/tags/v2.2.2.tar.gz
-	sha256sums = 23d9a3477f1dccc399bf8e90754c1be64302da86c1a220790e543d2e33de4d26
+	source = proton-drive-for-linux-2.3.0.tar.gz::https://github.com/narrrl/proton-drive-linux/archive/refs/tags/v2.3.0.tar.gz
+	sha256sums = ac89c79170bba4fda85c924739b5248d9e324a1d45c30faee25c3c9389f297f1
 
 pkgname = proton-drive-for-linux
