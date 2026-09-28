@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=oh-my-pi
-pkgver=18.3.5
+pkgver=18.4.0
 pkgrel=1
 pkgdesc="Coding agent with the IDE wired in"
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
     "https://static.crates.io/crates/opus/opus-${_opus_ver}.crate"
     "skip-native-embed-for-aur.patch"
 )
-sha256sums=('3158f2ce42255ab0f9f25ad7ad195d3fd771f3ec807ad96024b697336849893b'
+sha256sums=('990a221e52b243b84f6355a181159866f807cad1196372b06637cce03b797256'
             '33718946cc77d4032911d4efe03a66dbcbfbd2bb16c3da06aaeadcc637c32216'
             'b2fe93ad7ef36869d660cc0ec9a0a0e7196370035efd86b32901101aff2920d1'
 )
