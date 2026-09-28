@@ -2,7 +2,7 @@
 
 pkgname=kubebuilder
 pkgdesc="SDK for building Kubernetes APIs"
-pkgver=4.15.0
+pkgver=4.16.0
 pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://github.com/kubernetes-sigs/kubebuilder"
@@ -15,7 +15,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/kubernetes-sigs/kubebuilder/archive/v${pkgver}.tar.gz"
 )
 
-sha256sums=('49c85b97049dc900b3a0d29869be2462defd63b6c22513280ec4a1a3e44bd14b')
+sha256sums=('0ecad907c3f31d2a7ec5dc42f5e51066792d19a2ccb2f9e30064bb974a50f4af')
 
 build() {
     export GOPATH="$srcdir"/gopath
