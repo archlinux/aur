@@ -1,4 +1,4 @@
-# Please see https://egort.name/blog/notes/makefile.html
+# Please see https://tensin.name/blog/notes/makefile.html
 
 MAKEFLAGS += --no-builtin-rules --no-builtin-variables --warn-undefined-variables
 unexport MAKEFLAGS
@@ -21,3 +21,9 @@ ifeq ($$(origin $(1)),command line)
     override $(1) := $$(value $(1))
 endif
 endef
+
+# A helper target to force execution of pattern rules (works like .PHONY for
+# them): https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html
+#
+.PHONY: DO
+DO:
