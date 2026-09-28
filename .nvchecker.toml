@@ -1,0 +1,5 @@
+[aspia-relay-bin]
+source = "git"
+git = "https://github.com/dchapyshev/aspia.git"
+include_regex = 'v\d+\.\d+\.\d+'
+prefix = "v"
