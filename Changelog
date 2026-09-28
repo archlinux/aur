@@ -1,16 +1,24 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 6.4.1 ➙ 6.5.3
-              : 2026-07-27 ➙ 2026-09-28
+ Tags         : 6.4.2 ➙ 6.5.4
+              : 2026-09-16 ➙ 2026-09-28
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-09-28   : 6.5.4
+              - **6.5.4**
+            
+                * Manual is now live on https://sd-boot.readthedocs.io/
+              - typo
+              - update .readthedocs
+              - add theme requirement for readthedocs
 
  2026-09-28   : 6.5.3
               - **6.5.3** Mon Sep 28 09:41:04 PM UTC 2026
             
                 * Add readthedocs to repo
 
- 2026-09-28   : 6.5.2, origin/master
+ 2026-09-28   : 6.5.2
               - **6.5.2** Mon Sep 28 08:54:16 PM UTC 2026
             
                 * Documentation Improvements (no functional or code changes)
@@ -35,7 +43,3 @@
 
  2026-09-16   : 6.4.2
               - **6.4.2** - Update Readme (esp. dracut config section)
-
- 2026-07-27   : 6.4.1
-              - Update src/.clang-tidy
-                Add nvcheker to the AUR package not just packaging directory in the git repo
