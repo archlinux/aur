@@ -1,7 +1,7 @@
 # Maintainer: Uthopik <josearrillaga@ik.me>
 
 pkgname=oroboros
-pkgver=20260906
+pkgver=20260924
 pkgrel=1
 pkgdesc="Open source astrology software written in Python"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-pyqt5' 'pyswisseph' 'python-pytz' 'python-docutils')
 optdepends=('limnoria: IRC bot integration support')
 makedepends=('python-setuptools' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('09b258c9580f45cca1d71522005be131da9b0fe7caa48a7c381230c2eafe9bfc')
+sha256sums=('f4cf155a9d40d2017595da52c8a2cd741926dbb2f7504662849d76e8679f95aa')
 
 build() {
   cd "$pkgname-astrology-$pkgver"
