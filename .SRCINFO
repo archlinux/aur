@@ -1,6 +1,6 @@
 pkgbase = espanso-wayland-bin
 	pkgdesc = A Privacy-first, Cross-platform Text Expander (Wayland, Debian binary)
-	pkgver = 2.3.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://espanso.org
 	install = espanso-wayland-bin.install
@@ -19,7 +19,8 @@ pkgbase = espanso-wayland-bin
 	conflicts = espanso-x11
 	conflicts = espanso-x11-bin
 	conflicts = espanso-x11-git
-	source = https://github.com/espanso/espanso/releases/download/v2.3.0/espanso-debian-wayland-amd64.deb
-	sha256sums = d7b7c9118b77e5975aebb930836d8cf33f0ef81106daaad3425e327d9755d19d
+	options = !debug
+	source = https://github.com/espanso/espanso/releases/download/v2.4.1/espanso-debian-wayland-amd64.deb
+	sha256sums = d4b3b284c6fabf6f2a73dc269189fb5a06611547529853c87b58d07aa7d295ae
 
 pkgname = espanso-wayland-bin
