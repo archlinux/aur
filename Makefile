@@ -13,7 +13,7 @@ build:
 .PHONY: commit
 commit:
 	@echo '====================================================== Commit ==='
-	git add .SRCINFO
+	git add PKGBUILD .SRCINFO
 	source PKGBUILD && git commit -m "aur: $$pkgver-$$pkgrel"
 	@echo '================================================================='
 
