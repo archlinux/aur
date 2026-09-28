@@ -1,0 +1,20 @@
+pkgbase = manis-pocket-wayland-git
+	pkgdesc = Wayland clipboard sync client for Manis Pocket
+	pkgver = 0.1.0.r1133.gb75c51f
+	pkgrel = 1
+	url = https://github.com/kaigedong/Manis-Pocket
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	depends = glibc
+	depends = libgcc
+	depends = wl-clipboard
+	provides = manis-pocket-wayland
+	conflicts = manis-pocket-wayland
+	options = !lto
+	source = Manis-Pocket::git+https://github.com/kaigedong/Manis-Pocket.git#branch=master
+	sha256sums = SKIP
+
+pkgname = manis-pocket-wayland-git
