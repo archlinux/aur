@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-live-usb-maker
-pkgver=26.09arch
+pkgver=26.09.1arch
 pkgrel=1
 pkgdesc="Graphical utility for creating bootable live USB drives"
 arch=('x86_64' 'i686')
@@ -23,8 +23,8 @@ depends=(
 )
 optdepends=('ntfs-3g: format the data partition as NTFS')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-source=("https://github.com/MX-Linux/mx-live-usb-maker/archive/refs/tags/26.09arch.tar.gz")
-sha256sums=('cfafc29c8ab0da105f24c1f215761aa0f98989d143af1c6b303f846032c43a49')
+source=("https://github.com/MX-Linux/mx-live-usb-maker/archive/refs/tags/26.09.1arch.tar.gz")
+sha256sums=('2468b32dbd438188e0ef18d2b4fe58ade3982391d35d3232399a292a6b88c0ea')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
