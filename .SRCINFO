@@ -1,6 +1,6 @@
 pkgbase = paq8px
 	pkgdesc = Lossless data compressor achieving high compression ratios
-	pkgver = 216
+	pkgver = 217
 	pkgrel = 1
 	url = https://github.com/hxim/paq8px
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = paq8px
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	source = paq8px-216.tar.gz::https://github.com/hxim/paq8px/archive/refs/tags/v216.tar.gz
-	sha256sums = d231d814a0dc79657a2691ed166692a5dfbfa740388357654253ecadbdf8ef75
+	source = paq8px-217.tar.gz::https://github.com/hxim/paq8px/archive/refs/tags/v217.tar.gz
+	sha256sums = d00abfbc46cd926e88e37698abbb743267e53c282dec9ab21b31dde8f9314a58
 
 pkgname = paq8px
