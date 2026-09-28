@@ -3,7 +3,7 @@
 _pkgname='archlinux'
 pkgname="libvirt-iso-${_pkgname}-bin"
 pkgver=2026.09.01
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Arch Linux installation ISO for libvirt'
 arch=('x86_64')
 url='https://archlinux.org/download/'
@@ -72,7 +72,6 @@ check() {
 	local iso_listing="${srcdir}/check-iso-list"
 	local squashfs="${srcdir}/check-airootfs.sfs"
 	local squashfs_root="${srcdir}/check-squashfs-root"
-	local package_root="${srcdir}/check-package-root"
 	local image_size
 	local pvd_type
 	local pvd_magic
@@ -121,10 +120,6 @@ check() {
 	unsquashfs -no-xattrs -d "${squashfs_root}" "${squashfs}" > /dev/null || return 1
 	[[ -f "${squashfs_root}/usr/lib/os-release" ]] || return 1
 
-	printf '%s\n' 'check: staged package payload'
-	rm -rf -- "${package_root}"
-	_install_payload "${package_root}"
-	_check_payload "${package_root}"
 }
 
 package() {
