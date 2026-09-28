@@ -1,6 +1,6 @@
 pkgbase = flatpak-enhanced
 	pkgdesc = A lightweight wrapper for the flatpak tool. Features aliases for apps & quick run.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/JiiB1/flatpak-enhanced
 	arch = x86_64
