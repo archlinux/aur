@@ -2,15 +2,15 @@
 pkgbase=pam-fprint-helper
 pkgname=('pam-fprint-helper' 'pam-open-fprint-helper')
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fingerprint authorization (pam_fprintd) for privileged access on Arch/KDE Plasma: polkit, sudo, su, login, SDDM/LightDM, themed root GUI apps"
 arch=('any')
 url="https://github.com/ixnewton/PamFprint"
 license=('GPL-3.0-or-later')
 install=pam-fprint-helper.install
-_commit=65dac5f2ee4ba47393755c8de22adf2786ec571d
+_commit=3fc1f97ebd192375ef28068566a570a9d7174461
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/ixnewton/PamFprint/archive/$_commit.tar.gz")
-sha256sums=('60504f1a8ae6c7a304422c97dcc1d7d85444a648125e0b99702d3053083ce438')
+sha256sums=('ec0879cf5750ab5271ee95fd681f8bb8b8f9477262b482299b00cf2678b6f7a3')
 
 package_pam-fprint-helper() {
   pkgdesc+=" (fprintd backend)"
