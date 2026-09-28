@@ -33,6 +33,9 @@ depends=(
   # Embedded-libmpv engine (default upstream feature): the prebuilt binary
   # links libmpv.so.2, shipped in Arch's `mpv` package.
   'mpv'
+  # System-tray icon backend, dlopen'd by the tray at startup — invisible
+  # to makepkg's auto-detection (full rationale in the -git PKGBUILD).
+  'libayatana-appindicator'
   'hicolor-icon-theme'
 )
 provides=("${_pkgname}=${pkgver}")

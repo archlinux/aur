@@ -12,6 +12,7 @@ pkgbase = kappastream-bin
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	depends = mpv
+	depends = libayatana-appindicator
 	depends = hicolor-icon-theme
 	provides = kappastream=1.0.5
 	conflicts = kappastream
