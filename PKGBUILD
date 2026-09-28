@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="A terminal task manager for people who live in the shell"
 
-pkgver=2.2.1
+pkgver=3.0.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,10 +28,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
-sha256sums=('cd93ed33f9ebce85b31a1b29184c804e1b9cc2231a8f68fb9410e96612b8e3b4'
+sha256sums=('b08ce14c8f6683df99c800486e88df0da1c575a358bb6d500c08e1e7026d6253'
             '569fbda2ba6c629a5afac7f2ae5af3b5e8579c395e226c4ab144838d61f13557')
-sha256sums_x86_64=('1458cf7fc7cfbcbb58dd38ed1d5c63c2e6d4f4e55f0a829a4276fe5e66953ef1')
-sha256sums_aarch64=('099b648ccc0da4a973542abd0e5e3350b900a6746216ace1c01e8a36f42cbe16')
+sha256sums_x86_64=('a2549f849828e355c190a7a08d075615992e3aa9bfcdb9e785dd4ba5219059a9')
+sha256sums_aarch64=('a671442726f84f278f4c4aa6d5be7d2d9d691340a3a9d70beff7e6d8df984a1c')
 
 
 case ${CARCH} in
