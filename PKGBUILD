@@ -1,38 +1,40 @@
-# Maintainer: Tommaso Sardelli <lacapannadelloziotom [AT] gmail [DOT] com>
 pkgname=go-jsonnet
-_basepkgname=jsonnet
 pkgver=0.22.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An implementation of Jsonnet in pure Go"
-arch=("x86_64")
-url="https://jsonnet.org/"
-license=("Apache")
-makedepends=("go")
+arch=('x86_64')
+url="https://github.com/google/${pkgname}"
+license=('Apache-2.0')
+depends=('glibc')
+makedepends=('go')
+provides=("jsonnet=${pkgver}")
 conflicts=('jsonnet' 'go-jsonnet-git')
-provides=('jsonnet')
 source=("https://github.com/google/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 sha256sums=('aa5950b15fcd6b5add8a6aafb0aaaaee495071742f3abc6825e78aa8f5faa4dc')
 
 prepare() {
-    export GOPATH="${srcdir}"
-    export PATH="$PATH:$GOPATH/bin"
-    cd "${srcdir}/${pkgname}-v${pkgver}"
-    go mod download
+	cd "${pkgname}-v${pkgver}"
+	go mod download
 }
 
 build() {
-  cd "$srcdir/${pkgname}-v${pkgver}"
-  go build ./cmd/jsonnet
-  go build ./cmd/jsonnetfmt
-  go build ./cmd/jsonnet-deps
-  go build ./cmd/jsonnet-lint
+	cd "${pkgname}-v${pkgver}"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	go build -o build/ ./cmd/...
 }
 
-
 package() {
-  cd "$srcdir/${pkgname}-v${pkgver}"
-  install -Dm755 jsonnet "$pkgdir/usr/bin/jsonnet"
-  install -Dm755 jsonnetfmt "$pkgdir/usr/bin/jsonnetfmt"
-  install -Dm755 jsonnet-deps "$pkgdir/usr/bin/jsonnet-deps"
-  install -Dm755 jsonnet-lint "$pkgdir/usr/bin/jsonnet-lint"
+	cd "${pkgname}-v${pkgver}"
+
+	install -m755 -Dt "$pkgdir/usr/bin/" build/jsonnet
+	install -m755 -Dt "$pkgdir/usr/bin/" build/jsonnetfmt
+	install -m755 -Dt "$pkgdir/usr/bin/" build/jsonnet-deps
+	install -m755 -Dt "$pkgdir/usr/bin/" build/jsonnet-lint
+
+	install -m644 -Dt "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+	install -m644 -Dt "$pkgdir/usr/share/doc/$pkgname/"     README.md
 }
