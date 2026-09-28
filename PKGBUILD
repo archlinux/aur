@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=otel-tui
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="A terminal OpenTelemetry viewer inspired by otel-desktop-viewer"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(Apache-2.0)
 depends=(glibc libx11)
 makedepends=(go)
 source=(${url}/archive/v${pkgver}/$pkgname-$pkgver.tar.gz)
-sha256sums=('90ed095b21713704d1ab8002cb7141de382f3008036466b4c5bbde3a6dfbfbb5')
+sha256sums=('fc8a5ab4416b9428532978cb759b31f83bc27e8617e44545c53fb41d401a3d91')
 
 prepare() {
   cd $pkgname-$pkgver
