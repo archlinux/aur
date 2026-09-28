@@ -2,7 +2,7 @@
 pkgname=openchamber
 _npmname=@openchamber/web
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop and web interface for OpenCode AI agent"
 arch=('x86_64')
 url="https://github.com/btriapitsyn/openchamber"
@@ -19,7 +19,7 @@ package() {
     if ! npm view @openchamber/sdk@1.23.1 >/dev/null 2>&1; then
         sed -i 's|"@openchamber\\/sdk": "1.23.1"|"@openchamber\\/sdk": "1.24.0"|' "${srcdir}/web/package.json"
     fi
-    npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/web"
+    npm install -g --install-links --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/web"
 
     find "${pkgdir}/usr" -type d -exec chmod 755 {} +
     chown -R root:root "${pkgdir}"
