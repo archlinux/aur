@@ -1,0 +1,27 @@
+pkgbase = untis
+	pkgdesc = GTK4 + LibAdwaita client for WebUntis
+	pkgver = 4.3.2
+	pkgrel = 1
+	url = https://codeberg.org/ostfriese4/untis
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = glib2-devel
+	makedepends = gettext
+	depends = gtk4
+	depends = libadwaita
+	depends = webkitgtk-6.0
+	depends = libsecret
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = python-requests
+	depends = python-pyotp
+	depends = glib2
+	depends = hicolor-icon-theme
+	conflicts = timetable
+	source = untis-4.3.2.tar.gz::https://codeberg.org/ostfriese4/untis/archive/v4.3.2.tar.gz
+	sha256sums = febd90cac783eb1953a3f094c3122b9e47a88e2ae7b8ed33fdc9279300b4505c
+
+pkgname = untis
