@@ -1,18 +1,17 @@
 pkgbase = python-ampy-git
-	pkgdesc = ESP8266 FS management tool provided by Adafruit
-	pkgver = 0
-	pkgrel = 5
-	url = https://github.com/adafruit/ampy
+	pkgdesc = Utility to interact with a CircuitPython or MicroPython board over a serial connection - provided by Adafruit
+	pkgver = 1.0.7.r44.g3633a14
+	pkgrel = 1
+	url = https://github.com/scientifichackers/ampy
 	arch = any
-	license = GPL
+	license = MIT
 	makedepends = python-setuptools
 	depends = python
 	depends = python-click
 	depends = python-pyserial
 	provides = python-ampy
 	provides = ampy
-	source = python-ampy-git::git+https://github.com/adafruit/ampy
+	source = ampy::git+https://github.com/scientifichackers/ampy.git
 	sha512sums = SKIP
 
 pkgname = python-ampy-git
-
