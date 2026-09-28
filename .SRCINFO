@@ -1,7 +1,7 @@
 pkgbase = timetable
 	pkgdesc = GTK4 + LibAdwaita client for WebUntis
 	pkgver = 4.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/ostfriese4/untis
 	arch = any
 	license = GPL-3.0-or-later
@@ -15,6 +15,7 @@ pkgbase = timetable
 	depends = libsecret
 	depends = python
 	depends = python-gobject
+	depends = python-cairo
 	depends = python-requests
 	depends = python-pyotp
 	depends = glib2

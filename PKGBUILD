@@ -4,14 +4,14 @@
 
 pkgname=timetable
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK4 + LibAdwaita client for WebUntis"
 arch=('any')
 url="https://codeberg.org/ostfriese4/untis"
 license=('GPL-3.0-or-later')
 depends=('gtk4' 'libadwaita' 'webkitgtk-6.0' 'libsecret' 'python'
-         'python-gobject' 'python-requests' 'python-pyotp' 'glib2'
-         'hicolor-icon-theme')
+         'python-gobject' 'python-cairo' 'python-requests' 'python-pyotp'
+         'glib2' 'hicolor-icon-theme')
 makedepends=('meson' 'ninja' 'glib2-devel' 'gettext')
 provides=('untis')
 conflicts=('untis')
@@ -19,9 +19,9 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('febd90cac783eb1953a3f094c3122b9e47a88e2ae7b8ed33fdc9279300b4505c')
 
 prepare() {
-  # Upstream does not maintain the version in meson.build; use the release tag
-  # so the About dialog shows the right version.
-  sed -i "0,/version:/s/version: *'[^']*'/version: '$pkgver'/" untis/meson.build
+  # The About dialog reads the version from src/api.py, and upstream does not
+  # always update it for a release (v4.3.2 still says 4.3.1).
+  sed -i "s/^version = \"[^\"]*\"/version = \"$pkgver\"/" untis/src/api.py
 }
 
 build() {
