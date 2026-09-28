@@ -1,6 +1,6 @@
 pkgbase = yocto-uninative-tarball
 	pkgdesc = Yocto uninative libc tarball built from the glibc commit Arch ships
-	pkgver = 2.44+r24+g16be1518495f
+	pkgver = 2.44+r50+g1848099f063e
 	pkgrel = 1
 	url = https://git.openembedded.org/openembedded-core/tree/meta/classes-global/uninative.bbclass
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = yocto-uninative-tarball
 	options = !lto
 	options = !strip
 	options = !debug
-	source = glibc::git+git://sourceware.org/git/glibc.git#commit=16be1518495f1fa05481b0182c4e4c24927c62df
+	source = glibc::git+git://sourceware.org/git/glibc.git#commit=1848099f063e99d4ffecbd7667766d54862398b9
 	source = 0003-nativesdk-glibc-Look-for-host-system-ld.so.cache-as-.patch
 	source = 0004-nativesdk-glibc-Fix-buffer-overrun-with-a-relocated-.patch
 	source = 0005-nativesdk-glibc-Raise-the-size-of-arrays-containing-.patch
