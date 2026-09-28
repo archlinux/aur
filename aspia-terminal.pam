@@ -1,0 +1,9 @@
+#%PAM-1.0
+
+# PAM policy for Aspia terminal sessions. Used to validate the operating system credentials supplied
+# by the client before the terminal agent is launched under that account.
+
+auth      include   system-remote-login
+account   include   system-remote-login
+password  include   system-remote-login
+session   include   system-remote-login

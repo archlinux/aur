@@ -1,0 +1,26 @@
+pkgbase = aspia-host-bin
+	pkgdesc = Remote desktop control and file transfer tool (host, official binary)
+	pkgver = 3.0.19
+	pkgrel = 1
+	url = https://aspia.org/
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = dbus
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libstdc++
+	depends = pam
+	depends = polkit
+	depends = ttf-font
+	provides = aspia-host
+	conflicts = aspia-host
+	options = !debug
+	options = !strip
+	backup = etc/pam.d/aspia-terminal
+	source = aspia-terminal.pam
+	sha256sums = 8e0aced1c552483f1df1fe8dd7de1c18435c0c397741a9f6f60d36ec5aae1466
+	source_x86_64 = https://github.com/dchapyshev/aspia/releases/download/v3.0.19/aspia-host-3.0.19-x86_64.deb
+	sha256sums_x86_64 = 9d4d3cbffecf954f873df8e868d48fadb7a9d1fb98a98ab8fc7296d1e37b9f43
+
+pkgname = aspia-host-bin
