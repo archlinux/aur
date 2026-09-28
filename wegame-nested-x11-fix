@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: 0BSD
 
 import argparse
+from contextlib import suppress
 import json
 import os
 from pathlib import Path
@@ -341,6 +342,19 @@ def write_transition(path: Path, value: str) -> None:
         stream.write(f"{value}\n")
 
 
+def close_x11_resources(
+    connection: Any, cursor: Any | None, cursor_font: Any | None
+) -> None:
+    if cursor is not None:
+        with suppress(error.XError, error.ConnectionClosedError, OSError):
+            cursor.free()
+    if cursor_font is not None:
+        with suppress(error.XError, error.ConnectionClosedError, OSError):
+            cursor_font.close()
+    with suppress(error.XError, error.ConnectionClosedError, OSError):
+        connection.close()
+
+
 
 def connect(timeout: float) -> display.Display | None:
     deadline = time.monotonic() + max(timeout, 0.0)
@@ -470,17 +484,15 @@ def main() -> int:
                             write_transition(args.transition_file, "main")
                             return 0
                 time.sleep(0.05)
+            except error.ConnectionClosedError:
+                return 0
             except error.XError:
                 configured_ids = None
                 main_since = None
                 login_since = None
                 time.sleep(0.1)
     finally:
-        if cursor is not None:
-            cursor.free()
-        if cursor_font is not None:
-            cursor_font.close()
-        connection.close()
+        close_x11_resources(connection, cursor, cursor_font)
     return 0
 
 

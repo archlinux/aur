@@ -86,7 +86,11 @@ Recovery is refused unless all of the following are true:
 
 Before applying files, the launcher moves the update payload and status into a timestamped state backup and copies every overwritten destination file there. Each replacement is staged in the destination directory and atomically renamed. An application failure triggers rollback and restores the pending update files. Unknown or incomplete update states fail closed and are never guessed.
 
+The same recovery path handles confirmed component-update failures under `multi_group/<version>/<slot>/update_files`. Version and slot names must be numeric; the traversed directories must be non-symlink directories; every payload entry must be a regular file or directory without symbolic links; and the sibling `update.tmp` must contain the exact confirmed failure markers. Component payloads receive independent backups before their files are applied to the WeGame installation root.
+
 A strict status-only `update.tmp` produced by a normal WeGame exit is accepted only when it contains the observed `[tgp]` schema, unique expected fields, `CheckUpdateType=0` or `CheckUpdateType=1`, a valid GUID, and no update payload. Unknown keys, duplicate fields, malformed values, unobserved update types, or partial states still fail closed.
+
+When the same strict `[tgp]` status accompanies a regular `wegame_update` directory with a regular `wegame.exe`, the payload is still managed by Tencent's updater. The launcher lets WeGame process it instead of copying unconfirmed files or creating a recovery backup. `--recover-update` reports this state without changing it; if WeGame leaves it pending, start WeGame again.
 
 This operation copies Tencent's own downloaded update payload without modifying Tencent binaries. It remains an unsupported compatibility workaround.
 
