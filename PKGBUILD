@@ -5,7 +5,7 @@
 # Omarchy shell when the plugin is installed there, and as its own Quickshell
 # process everywhere else -- so this package needs Quickshell, not Omarchy.
 pkgname=couch-for-trakt
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A movie and TV tracker for Trakt: discover, up next, calendar, watchlist and history, for Quickshell'
 arch=('any')
@@ -18,7 +18,7 @@ depends=('quickshell' 'ttf-jetbrains-mono-nerd' 'hicolor-icon-theme')
 # A release asset that packaging/release.sh builds from apps/couch-for-trakt
 # at the tag, not GitHub's generated archive of the whole repository.
 source=("$url/releases/download/couch-for-trakt-v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('7ba63d1256af99082d662f4b0e1172ccc82d8fb500d9a451ea2a149facb504ad')
+sha256sums=('07bc9b5325693917f503643f5079106eda2fbc0d188247950a64527c998a825e')
 
 package() {
   cd "$pkgname-$pkgver"

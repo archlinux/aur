@@ -1,6 +1,6 @@
 pkgbase = couch-for-trakt
 	pkgdesc = A movie and TV tracker for Trakt: discover, up next, calendar, watchlist and history, for Quickshell
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/SimonSchubert/moarchy-apps
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = couch-for-trakt
 	depends = quickshell
 	depends = ttf-jetbrains-mono-nerd
 	depends = hicolor-icon-theme
-	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/couch-for-trakt-v1.1.0/couch-for-trakt-1.1.0.tar.gz
-	sha256sums = 7ba63d1256af99082d662f4b0e1172ccc82d8fb500d9a451ea2a149facb504ad
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/couch-for-trakt-v1.2.0/couch-for-trakt-1.2.0.tar.gz
+	sha256sums = 07bc9b5325693917f503643f5079106eda2fbc0d188247950a64527c998a825e
 
 pkgname = couch-for-trakt
