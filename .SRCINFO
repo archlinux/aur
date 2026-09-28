@@ -1,19 +1,19 @@
 pkgbase = perl-http-xsheaders
 	pkgdesc = Fast XS Header library, replacing HTTP::Headers and HTTP::Headers::Fast.
-	pkgver = 1.000001
+	pkgver = 1.000100
 	pkgrel = 1
 	url = https://metacpan.org/dist/HTTP-XSHeaders
 	arch = x86_64
 	license = MIT
-	checkdepends = perl-http-message
 	checkdepends = perl-test-simple
 	makedepends = perl-extutils-makemaker
 	depends = perl-exporter>=5.57
 	depends = perl-http-date
+	depends = perl-http-message
 	depends = perl-xsloader
 	depends = perl>=5.8.9
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/X/XS/XSAWYERX/HTTP-XSHeaders-1.000001.tar.gz
-	sha256sums = 0e56d6cd915884514954bec5e0ed9fba15d7824f91d547fff9e1ba4c2521596a
+	source = https://cpan.metacpan.org/authors/id/X/XS/XSAWYERX/HTTP-XSHeaders-1.000100.tar.gz
+	sha256sums = e552786548c0f14c7aa435ac5c638ee6c8e2d5ecf74dbc4fa5b98f67d1840d4b
 
 pkgname = perl-http-xsheaders
