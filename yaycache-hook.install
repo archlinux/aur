@@ -1,4 +1,15 @@
 post_install() {
-  echo "Make sure to set the user's cache dir in /etc/yaycache-hook.conf:"
-  echo "cache_dirs=(/home/<user>/.cache/yay/*/)"
+	echo "By default the hook cleans every user's yay cache (/home/*/.cache/yay/*/)."
+	echo "Restrict it or add other locations in /etc/yaycache-hook.conf:"
+	echo "  cache_dirs=(/home/<user>/.cache/yay/*/)"
+}
+
+post_upgrade() {
+	if (( $(vercmp "$2" 0.2.0) < 0 )); then
+		echo "yaycache-hook 0.2.0: settings in /etc/yaycache-hook.conf may now be arrays,"
+		echo "so option arguments with spaces work, e.g."
+		echo "  uninstalled_extra_args=(--min-mtime '30 days ago' --remove-build-files)"
+		echo "Existing string settings keep working. An empty cache_dirs now cleans"
+		echo "every user's cache instead of nothing."
+	fi
 }
