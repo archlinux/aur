@@ -1,0 +1,19 @@
+pkgbase = gnome-shell-extension-ufw-switcher
+	pkgdesc = Toggle the ufw firewall and switch between location profiles (Home/Office/Public) from GNOME Quick Settings
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jerosch/gnome-ufw-switcher
+	install = gnome-shell-extension-ufw-switcher.install
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = glib2
+	makedepends = gettext
+	depends = gnome-shell
+	depends = ufw
+	depends = python-gobject
+	depends = polkit
+	optdepends = gufw: graphical firewall configuration
+	source = gnome-shell-extension-ufw-switcher-1.0.0.tar.gz::https://github.com/jerosch/gnome-ufw-switcher/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = c516c5906c1274cfb47dd144d11a5100ac4a198074ee6e88b1c1f0356b5fbde0
+
+pkgname = gnome-shell-extension-ufw-switcher

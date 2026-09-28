@@ -1,0 +1,24 @@
+post_install() {
+  cat <<'EOF'
+==> The extension is installed system-wide. Finish setup:
+    1. Enable and start the privileged helper daemon:
+         sudo systemctl enable --now gnome-ufw-switcherd.service
+    2. Log out and back in.
+    3. Enable "UFW Switcher" in the Extensions app.
+    Verify the helper:
+      dbus-send --system --print-reply --dest=org.gnome.UfwSwitcher \
+        /org/gnome/UfwSwitcher org.gnome.UfwSwitcher.GetStatus
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+==> Restart the helper daemon to pick up the new version:
+    sudo systemctl restart gnome-ufw-switcherd.service
+    Log out and back in to reload the extension.
+EOF
+}
+
+pre_remove() {
+  systemctl disable --now gnome-ufw-switcherd.service 2>/dev/null || true
+}
