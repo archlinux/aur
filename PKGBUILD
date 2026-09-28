@@ -40,6 +40,11 @@ optdepends=(
 	'opensc: a set of libraries and utilities to work with smart cards'
 	'alsa-lib: sound support'
 )
+# Upstream removes old versions from the pool when publishing a new one.
+# To find the current version and its checksum, read the apt index (the pool has no directory listing):
+#   curl -s https://repository.infonotary.com/install/linux/DEBS24/dists/noble/non-free/binary-amd64/Packages | grep -A12 '^Package: infonotary-client-software'
+# (suite taken from https://repository.infonotary.com/install/linux/infonotary_u2404.list)
+# Don't guess URLs: the server is behind a WAF (BunkerWeb) that bans the client IP after a burst of 404s.
 source=('http://repository.infonotary.com/install/linux/DEBS24/pool/non-free/i/infonotary-client-software/infonotary-client-software_'$pkgver'_all.deb')
 sha256sums=('077e592e3dc2d4e6cfd1d9ca25646ed3a1bad2d6937a1eca6e0b4418ae2a4284')
 install=$pkgname.install
