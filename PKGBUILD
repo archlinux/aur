@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 # Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: David Runge <dvzrv@archlinux.org>
@@ -8,7 +8,7 @@
 # Contributor: Asa Marco <marcoasa90[at]gmail[.]com>
 
 pkgname=openshot
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="An award-winning free and open-source video editor"
 arch=('any')
@@ -24,13 +24,12 @@ depends=('hicolor-icon-theme'
          'python-opengl'
          'python-pillow'
          'python-pyqt6'
-         'python-pyzmq'
          'python-requests'
          'qt6-scxml')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OpenShot/openshot-qt/archive/v${pkgver}.tar.gz")
-sha512sums=('014dcbeeced9d989ea5c71dca1471e73ef5b2b359b4550b9c5778d0b4d77866ffe1d8028a6ec82b0f09bd1dde286c2458f7e59feffb4089ffa018682630a5c24')
-b2sums=('d299b787132afc3943af8682c89d2a9c34bc24e6055ac5734ed3bd064193f6dd8bf52ad93a1c1691cbf66e153b916b03f36da6243386b36cff2259c54946fb70')
+sha512sums=('7e5aa98a8791b39a7ec7ce316db5ee10c8a7483c6f62e61474956ea926d028ff82247ea7adecce5171a13815ff11d3a74217ccbedf84be7c734a6a12511dc592')
+b2sums=('2c30267dea60af52abdfc7a7203ea2f3465715ffae86aef269325e2daf9d2b346d2fbc365b0a46fe14e67745d244eb922268d1379752498f1a56289a27d9f134')
 
 prepare() {
     cd "${pkgname}-qt-${pkgver}"
@@ -43,5 +42,9 @@ build() {
 }
 
 package() {
-    python -m installer --destdir="${pkgdir}" "${pkgname}-qt-${pkgver}"/dist/*.whl
+    cd "${pkgname}-qt-${pkgver}/dist"
+    python -m installer --destdir="${pkgdir}" *.whl
+
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    rm -rf "${pkgdir}/${site_packages}/${pkgname}_qt/tests"
 }
