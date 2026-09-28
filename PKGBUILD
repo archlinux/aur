@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flyenv-bin
 _pkgname=FlyEnv
-pkgver=4.18.3
+pkgver=4.19.0
 _electronversion=39
 pkgrel=1
 pkgdesc="A modern alternative to XAMPP, MAMP, Laragon and Laravel Herd, with runtimes, databases, web servers, local sites, HTTPS, AI coding tools and MCP."
@@ -58,9 +58,9 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.rpm")
 sha256sums=('01d77fe9ffb39b0a9507ca8d1cae189f56efd625078c3b13b59ce7aae42a4f7d'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('a2718563554615c9c8653da4c7aa3faa8d2bf0befc1ffd6b7eb3369efc11f8dc')
-sha256sums_x86_64=('bbe33d2ba65689fc5d49c73e5955c21e55e6fc50ac4de09d7fa2b6f62dacc377')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+sha256sums_aarch64=('0c4ece6cd20648eea8c500203022fba3102493ccba40b244cdd7bbe06f59a704')
+sha256sums_x86_64=('88bd70eab42f12e588115ca240a2c21095755e846bcf952eccb5d36979da2b5c')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -87,24 +87,25 @@ prepare() {
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     local _app_dir=$(_get_app_dir)
+    case "${CARCH}" in
+        'aarch64')
+            _arch_rem="x64"
+            _arch7z="arm64"
+        ;;
+        'x86_64')
+            _arch_rem="arm"
+            _arch7z="x64"
+        ;;
+    esac
+    ln -sf "/usr/bin/xsel" "${_app_dir}/resources/app.asar.unpacked/node_modules/clipboardy/fallbacks/linux/xsel"
+    ln -sf "/usr/bin/7za" "${_app_dir}/resources/app.asar.unpacked/node_modules/7zip-bin/linux/${_arch7z}/7za"
+    find "${_app_dir}" \
+        \( -name "*mac*" -o -name "*darwin*" -o -name "*win32*" -o -name "*${_arch_rem}*" \) \
+        -exec rm -rf {} +
     rm -rf \
         "${_app_dir}/resources/app.asar.unpacked/node_modules/7zip-bin/"{linux/{arm,ia32},mac} \
         "${_app_dir}/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/"{darwin-*,win32-*}
     ln -sf "/usr/bin/xsel" "${_app_dir}/resources/app.asar.unpacked/node_modules/clipboardy/fallbacks/linux/xsel"
-    case "${CARCH}" in
-        'aarch64')
-            rm -rf \
-                "${_app_dir}/resources/app.asar.unpacked/node_modules/7zip-bin/linux/x64" \
-                "${_app_dir}/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/linux-x64"
-            ln -sf "/usr/bin/7za" "${_app_dir}/resources/app.asar.unpacked/node_modules/7zip-bin/linux/arm64/7za"
-            ;;
-        'x86_64')
-            rm -rf \
-                "${_app_dir}/resources/app.asar.unpacked/node_modules/7zip-bin/linux/arm64" \
-                "${_app_dir}/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/linux-arm64"
-            ln -sf "/usr/bin/7za" "${_app_dir}/resources/app.asar.unpacked/node_modules/7zip-bin/linux/x64/7za"
-            ;;
-    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
