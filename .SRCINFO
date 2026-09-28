@@ -1,0 +1,13 @@
+pkgbase = curl-cmake
+	pkgdesc = curl configuration files for CMake
+	pkgver = 8.22.0
+	pkgrel = 1
+	url = https://github.com/curl/curl
+	arch = x86_64
+	license = curl
+	depends = cmake
+	depends = curl
+	source = curl-curl-8_22_0.tar.gz::https://github.com/curl/curl/archive/refs/tags/curl-8_22_0.tar.gz
+	b2sums = d01692a64f41e6f5a5218908507e98782b46ef2076a886a05199add04d1f9c805b3074d5dc8225af82c9000c8592462acb3e9d10bca05c04f9ac2b5aeeb9411c
+
+pkgname = curl-cmake
