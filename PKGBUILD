@@ -11,11 +11,13 @@
 # (own ~/.config data dir, so it can't clobber rkd-bin's settings/auth
 # tokens) and its own .desktop identity (this file, installed as
 # rkd-dev.desktop rather than the shared rkd.desktop rkd-bin uses — sharing
-# that path was the actual reason these two used to `conflicts=`). The
-# .deb's own auto-generated rkd.desktop is still baked from the shared
-# `productName: RKD` in electron-builder.yml, so it's deleted below rather
-# than left in place — otherwise it would collide with rkd-bin's own
-# rkd.desktop the moment both packages are installed together.
+# that path was the actual reason these two used to `conflicts=`). Betas
+# before #1210 ship the .deb's binary, icon and .desktop as `rkd`, like
+# stable, so that rkd.desktop is deleted below rather than left in place —
+# otherwise it would collide with rkd-bin's own rkd.desktop the moment both
+# packages are installed together. From #1210 on the beta .deb names all
+# three `rkd-dev` (electron-builder.cjs `linux.executableName`); package()
+# takes either.
 #
 # Window-switcher-level distinction (a WM_CLASS the OS window manager can
 # tell apart, e.g. via StartupWMClass) is NOT included — Electron's actual
@@ -25,7 +27,7 @@
 # degraded-but-working state this package shipped with before #822).
 
 pkgname=rkd-dev-bin
-pkgver=0.3.0_beta.2
+pkgver=0.3.0_beta.3
 pkgrel=1
 pkgdesc="RKD desktop client (beta/development channel)"
 arch=(x86_64)
@@ -60,11 +62,11 @@ optdepends=('libayatana-appindicator: tray icon support')
 # uses the hyphenated form there even though the .deb's own control file
 # reports a tilde per Debian pre-release convention).
 # _tag: the Forgejo release tag the asset was uploaded under.
-_pkgver=0.3.0-beta.2
-_tag=v0.3.0-beta.2
+_pkgver=0.3.0-beta.3
+_tag=v0.3.0-beta.3
 
 source=("$pkgname-$pkgver.deb::https://git.rkd.nanoya.biz/rkd/releases/releases/download/${_tag}/RKD-electron-rkd_${_pkgver}_amd64.deb")
-sha256sums=('9de8344241034727f339a41c54eae2641480002ce29beace67b6e43378e93acf')
+sha256sums=('c95e827483973aba04dbb0d230b72f9d9daff27caecb50e7fea9e2b730ed8f04')
 noextract=("$pkgname-$pkgver.deb")
 # Tells whoever removes the package how to remove the rkd-activity user
 # service the app may have installed (#1145); root can't reach user units.
@@ -81,11 +83,15 @@ package() {
   # package archive and pacman applies it for real on install (as root).
   chmod 4755 "$pkgdir/opt/$pkgname/chrome-sandbox"
 
+  # The binary's name in the .deb: rkd-dev from #1210 on, rkd before.
+  local _bin=rkd-dev
+  [ -e "$pkgdir/opt/$pkgname/$_bin" ] || _bin=rkd
+
   install -d "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/rkd" "$pkgdir/usr/bin/$pkgname"
+  ln -s "/opt/$pkgname/$_bin" "$pkgdir/usr/bin/$pkgname"
 
   # Installed as rkd-dev.desktop (#822) — matches main.ts's
-  # app.setDesktopName("rkd-dev") for the beta-version-stamped build, which
+  # app.setDesktopName("rkd-dev.desktop") for the beta-version-stamped build, which
   # is what Chromium's GetXdgAppId() reports for the notification
   # desktop-entry hint (#570); has to match the installed filename exactly
   # for OS notification history to resolve this app's identity. Delete the
@@ -98,14 +104,16 @@ package() {
 [Desktop Entry]
 Name=RKD (Dev)
 Comment=RKD desktop client (beta/development channel)
-Exec=/opt/$pkgname/rkd %U
+Exec=/opt/$pkgname/$_bin %U
 Terminal=false
 Type=Application
 Icon=$pkgname
 Categories=Network;
+# rkd-terminal pair's link (#1185); per channel, so the two never share it.
+MimeType=x-scheme-handler/rkd-dev;
 EOF
 
-  mv "$pkgdir/usr/share/icons/hicolor/512x512/apps/rkd.png" \
+  mv "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_bin.png" \
      "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
 
   install -Dm644 "$pkgdir/opt/$pkgname/LICENSE.electron.txt" \
