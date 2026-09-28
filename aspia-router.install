@@ -1,0 +1,14 @@
+post_install() {
+  if [ ! -f /etc/aspia/router.conf ] ; then
+    echo 'Run "aspia_router --create-config" to create the configuration files and the "aspia" user.'
+  fi
+  if ! systemctl list-unit-files aspia-router.service >/dev/null 2>&1 ; then
+    echo 'Run "aspia_router --install" to create aspia-router.service.'
+  fi
+}
+
+pre_remove() {
+  if systemctl list-unit-files aspia-router.service >/dev/null 2>&1 ; then
+    echo 'aspia-router.service is not automatically removed.'
+  fi
+}
