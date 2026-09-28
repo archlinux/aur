@@ -1,0 +1,9 @@
+post_install() {
+  echo ':: Enable Dankmail Unread in DMS Settings > Plugins, then add it to the bar.'
+  echo ':: An existing user copy in ~/.config/DankMaterialShell/plugins takes precedence.'
+  echo ':: To use this package, move that user copy out of the plugins directory first.'
+}
+
+post_upgrade() {
+  echo ':: Reload Dankmail Unread in DMS Settings > Plugins to use the updated companion.'
+}
