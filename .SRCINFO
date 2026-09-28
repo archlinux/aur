@@ -1,0 +1,22 @@
+pkgbase = moarchy-food
+	pkgdesc = Point the camera at a barcode: nutrition facts from Open Food Facts, for Quickshell
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/SimonSchubert/moarchy-apps
+	arch = any
+	license = MIT
+	depends = quickshell
+	depends = curl
+	depends = ttf-jetbrains-mono-nerd
+	depends = hicolor-icon-theme
+	depends = python
+	depends = python-gobject
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = zbar
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/food-v0.2.0/moarchy-food-0.2.0.tar.gz
+	sha256sums = 0d049c582ab142e202747f2e3002b863afdb1a79b16bbe26872bc1d83c62ccc7
+
+pkgname = moarchy-food
