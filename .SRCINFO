@@ -1,6 +1,6 @@
 pkgbase = python-diffpy.structure
 	pkgdesc = Storage and manipulation of crystal structure data in python
-	pkgver = 3.3.1
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://www.diffpy.org/diffpy.structure/
 	arch = any
@@ -10,11 +10,11 @@ pkgbase = python-diffpy.structure
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	depends = python>=3.11
+	depends = python<3.15
 	depends = python-numpy
 	depends = python-pycifrw
 	provides = diffpy.structure
-	source = https://github.com/diffpy/diffpy.structure/archive/3.3.1.tar.gz
-	md5sums = 7fdee3b51c7ead4fa6d66cf4af70b037
+	source = https://github.com/diffpy/diffpy.structure/archive/3.5.0.tar.gz
+	sha256sums = a46159361fd9ba9ce743f177532b217ffe65dbe198a231e2a092bd6e78454fb9
 
 pkgname = python-diffpy.structure
