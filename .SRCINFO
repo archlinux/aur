@@ -1,6 +1,6 @@
 pkgbase = borg2
 	pkgdesc = Deduplicating backup program with compression and authenticated encryption
-	pkgver = 2.0.0b24
+	pkgver = 2.0.0b25
 	pkgrel = 1
 	url = https://borgbackup.org
 	arch = x86_64
@@ -9,13 +9,14 @@ pkgbase = borg2
 	checkdepends = python-pytest-cov
 	checkdepends = python-pytest-benchmark
 	checkdepends = python-dateutil
-	makedepends = cython
-	makedepends = python-sphinx
-	makedepends = python-guzzle-sphinx-theme
 	makedepends = git
-	makedepends = python-pkgconfig
+	makedepends = cython
 	makedepends = python-build
+	makedepends = python-sphinx
+	makedepends = python-sphinxcontrib-jquery
+	makedepends = python-guzzle-sphinx-theme
 	makedepends = python-installer
+	makedepends = python-pkgconfig
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
@@ -26,8 +27,8 @@ pkgbase = borg2
 	depends = zstd
 	depends = libdeflate
 	depends = python-argon2-cffi
-	depends = python-borgstore=0.6.1
-	depends = python-borghash=0.2.0
+	depends = python-borgstore>=0.7.0
+	depends = python-borghash>=0.2.0
 	depends = python-jsonargparse
 	depends = python-blake3
 	depends = python-msgpack
@@ -36,15 +37,15 @@ pkgbase = borg2
 	depends = python-shtab
 	depends = python-yaml
 	optdepends = python-llfuse
-	optdepends = python-mfusepy
 	optdepends = python-pyfuse3
+	optdepends = python-mfusepy
 	optdepends = python-textual
 	provides = borg
 	provides = borgbackup
 	conflicts = borg
 	conflicts = borgbackup
-	source = https://github.com/borgbackup/borg/releases/download/2.0.0b24/borgbackup-2.0.0b24.tar.gz
+	source = https://github.com/borgbackup/borg/releases/download/2.0.0b25/borgbackup-2.0.0b25.tar.gz
 	validpgpkeys = 6D5BEF9ADD2075805747B70F9F88FB52FAF7B393
-	b2sums = 9f4134b1c84ebece62d23e4af1ee7d2f19af15de7cb731a9bde9eaf2936d629a16dab863cab267f78d0b6841978ea44c9fa24560fa3368bd8ad2fd55effab7ce
+	b2sums = 5f275d62ec5dc7734ba4ebfaa2e4c650d21219ee9c2f49a5e46183dc9961b703b38c0e9824f370eb8d6f5e23ed4dfc9784a21caecadb90e8d3a433f6454758c5
 
 pkgname = borg2
