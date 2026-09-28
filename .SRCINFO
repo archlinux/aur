@@ -1,21 +1,19 @@
 pkgbase = masscode-git
-	pkgdesc = A free, open-source developer workspace. Snippets, notes, HTTP requests, calculations, 和 dev tools in one local-first app.
-	pkgver = 5.10.0.r15.gce3db7e
+	pkgdesc = A free, open-source developer workspace. Snippets, notes, HTTP requests, calculations, and dev tools in one local-first app.
+	pkgver = 6.0.0.r0.g8e439a2
 	pkgrel = 1
 	url = https://masscode.io/
 	arch = any
 	license = MIT
 	makedepends = npm
-	makedepends = pnpm
 	makedepends = git
 	makedepends = nvm
-	makedepends = curl
 	makedepends = gendesk
 	makedepends = jq
 	depends = electron34
 	source = masscode.git::git+https://github.com/massCodeIO/massCode.git
 	source = masscode.sh
 	sha256sums = SKIP
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
 pkgname = masscode-git
