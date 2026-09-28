@@ -1,15 +1,16 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-unstructured
-pkgver=0.27.8
+pkgver=0.27.10
 pkgrel=1
 pkgdesc="A library that prepares raw documents for downstream ML tasks."
 license=(Apache-2.0)
 arch=(any)
 url="https://github.com/Unstructured-IO/unstructured"
+depends=(python)
 makedepends=(python-build python-installer python-hatchling python-wheel)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('34dc281dab4bed851a0fb8b313a7bf281cc18a6b9a5c504e0bc417a496c082dc')
+sha256sums=('63f49db90f862dd27d4541dbe71352df76764e440455c6ee8bfd2a9faf210269')
 
 build() {
     cd "unstructured-$pkgver"
@@ -17,7 +18,7 @@ build() {
 }
 
 package() {
-    depends=(
+    depends+=(
         python-beautifulsoup4
         python-charset-normalizer
         python-click
