@@ -6,8 +6,8 @@
 _author=RJBS
 _dist=Dist-Zilla
 pkgname=perl-${_dist@L}
-pkgver=6.037
-pkgrel=2
+pkgver=6.040
+pkgrel=1
 pkgdesc='distribution builder; installer not included!'
 arch=('any')
 url=https://metacpan.org/dist/$_dist
@@ -49,13 +49,13 @@ depends=(
     'perl-moosex-types'
     'perl-moosex-types-perl'
     'perl-namespace-autoclean'
-    'perl-params-util'
+    'perl-params-someutil'
     'perl-parent'
     'perl-path-tiny>=0.052'
     'perl-pathtools'
     'perl-perl-prereqscanner>=1.016'
     'perl-pod-simple'
-    'perl-ppi>=1.222'
+    'perl-ppi>=1.256'
     'perl-scalar-list-utils'
     'perl-software-license'
     'perl-string-formatter>=0.100680'
@@ -73,7 +73,7 @@ depends=(
     'perl-try-tiny'
     'perl-version'
     'perl-yaml-tiny'
-    'perl>=5.20.0'
+    'perl>=5.22.0'
 )
 makedepends=('perl-extutils-makemaker>=6.78')
 checkdepends=(
@@ -91,14 +91,12 @@ checkdepends=(
 )
 optdepends=(
     'cpanminus'
-    'perl-cpan-meta>=2.120900'
-    'perl-data-optlist>=0.110'
     'perl-ppi-xs'
     'perl-term-readline-gnu'
 )
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('8c90db44bf09b11041761528edafb821669c87c154a757dd470608545a7dc75e')
+sha256sums=('d8d6f304022ec984612e816780336f84d0bc79036ab08621b71b26321db0bc73')
 
 build()
 {
