@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bili-shadowreplay-bin
 _pkgname='BiliBili ShadowReplay'
-pkgver=2.22.5
+pkgver=2.23.1
 pkgrel=1
 pkgdesc="A tool for caching bilibili live broadcasts and editing submissions in real time.一个缓存BiliBili直播并进行实时编辑投稿的工具"
 arch=('x86_64')
@@ -31,6 +31,7 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+    cp -a "${srcdir}/usr/lib" "${pkgdir}/usr"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
