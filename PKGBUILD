@@ -2,7 +2,7 @@
 
 pkgname=badness
 pkgver=0.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A language server, formatter, and linter for LaTeX'
 arch=(x86_64)
 url="https://github.com/jolars/$pkgname"
@@ -22,7 +22,6 @@ _srcenv() {
 	export CARGO_PROFILE_RELEASE_LTO=thin
 	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
-	CFLAGS+=' -fno-fto'
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 }
