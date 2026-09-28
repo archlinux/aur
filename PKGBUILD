@@ -1,6 +1,6 @@
 # Maintainer: Stipe Kotarac <stipe@kotarac.net>
 pkgname=terplus
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Fork of Terminus with additional glyphs.'
 arch=(any)
@@ -11,9 +11,9 @@ source=(
   "https://github.com/kotarac/terplus/releases/download/v$pkgver/$pkgname-v$pkgver-pcf.tar.zst"
   "https://github.com/kotarac/terplus/releases/download/v$pkgver/$pkgname-v$pkgver-psf.tar.zst"
 )
-b2sums=('bdc3fdf264c208980c426563b02776a0193045dd9cb396df127f74af06556d7eb63f29c202a4ddafd5467dbfe8655f9284f4f987e6de404f88b421170f7b8f60'
-        '2ab2af326003609abc87eff9847702d23b24a5d44f269d7d277607f80eb62aa0ac2eacb59ee44fd148d92ffee64b19d6be620d0cadeeade1e590b57ef1f93152'
-        '84dfe73d913dc215b332f27e39929fd5c9ca4723eeb745387ea548327bf14ea77468717245fb56548df3a7cb487512e357ab298dd7d1cca17c5d52c54c39b52a')
+b2sums=('4717dfd22546f05dd037457ac1e9a5f3c8cfca3a5202f448b0f0004ed09e1b8f877a5e05767c28932cdc62ebaaeea9110f1c4465e36e8f895c20427369345591'
+        '89308bd514f2e9e681bf4a4e807baf700d91e5a3697640f874019bdcb4dd7611039996f714190877974983c37d92dac641aad6cdcfb192a51dadad05f583e723'
+        '8de5de403454e90c43f6199ffa87d64b49f139868a5c0886a6d006ae70622190f391910f0fb1576963d1f78f1f05b4ac8c9f3831d15d911b21c19a51993dc988')
 
 package() {
   local font
