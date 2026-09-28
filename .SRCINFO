@@ -1,0 +1,26 @@
+pkgbase = pawmmit-git
+	pkgdesc = Pawmmit is a fast, native Git client focused on performance, usability and safe history handling
+	pkgver = 0.1.2.r90.g583a748b
+	pkgrel = 1
+	url = https://github.com/Pawmmit/Pawmmit
+	arch = any
+	license = GPL-3.0
+	makedepends = meson
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = svgo
+	makedepends = pkgconf
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-5compat
+	depends = libgit2
+	depends = libssh2
+	depends = luajit
+	depends = hunspell
+	depends = cmark
+	depends = qscintilla-qt6
+	provides = pawmmit
+	source = git+https://github.com/Pawmmit/Pawmmit.git
+	sha256sums = SKIP
+
+pkgname = pawmmit-git
