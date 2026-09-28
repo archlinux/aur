@@ -1,0 +1,10 @@
+# The vendor installer is not distributable and has to be placed next to the
+# PKGBUILD before building (see README.md).
+SW32_S32DS_*.bin
+*.pkg.tar
+*.pkg.tar.*
+*.sig
+
+# makepkg build directories
+/src/
+/pkg/

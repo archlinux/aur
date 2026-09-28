@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=S32 Design Studio
+GenericName=Embedded IDE
+Comment=Edit, compile, debug and flash NXP S32 designs
+Exec=/usr/bin/s32ds
+TryExec=/usr/bin/s32ds
+Icon=s32-design-studio
+Terminal=false
+Categories=Development;IDE;Engineering;
+StartupNotify=true
+StartupWMClass=S32 Design Studio

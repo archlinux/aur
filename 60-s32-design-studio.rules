@@ -1,0 +1,56 @@
+# udev rules for the debug probes used with S32 Design Studio.
+#
+# Sources:
+#   * NXP, S32 Design Studio Installation Guide (UG10229), table 8
+#   * S32 Design Studio/Drivers/PnE/drivers/libusb_64_32/58-pemicro.rules
+#   * S32 Design Studio/Drivers/Segger/99-jlink.rules
+#
+# NXP's own rules use MODE="0666", which hands every local user full access to
+# the probes.  Here the nodes are owned by group uucp and additionally tagged
+# for the active seat, so access is granted to the serial group and to whoever
+# sits at the machine:
+#
+#   sudo usermod -a -G uucp "$USER"
+#
+# The installation guide asks for the dialout group, which is a Debian and
+# Ubuntu group: a stock Arch installation does not have it, and udev drops every
+# rule that names an unknown group.  uucp is the serial group of Arch, it is
+# created by systemd and already has a sensible set of members (brltty, nut and
+# whoever runs dialconf-like setups).
+#
+# Log out and back in after changing the groups, then replug the probe.  The
+# rules are reloaded when the package is installed, upgraded or removed; already
+# plugged in probes are picked up by
+#
+#   sudo udevadm trigger --subsystem-match=usb --subsystem-match=usb_device \
+#     --subsystem-match=tty --subsystem-match=hidraw --action=add
+
+ACTION!="add|change", GOTO="s32ds_rules_end"
+
+# NXP S32 Debug probe
+SUBSYSTEM=="usb", ATTR{idVendor}=="1fc9", ATTR{idProduct}=="014d", MODE="0660", GROUP="uucp", TAG+="uaccess"
+
+# PEmicro probes (PEMicro Multilink, S32 Debugger, S32 Debug Probe)
+SUBSYSTEM=="usb", ATTR{idVendor}=="15a2", ATTR{idProduct}=="0035", MODE="0660", GROUP="uucp", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="15a2", ATTR{idProduct}=="0042", MODE="0660", GROUP="uucp", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="15a2", ATTR{idProduct}=="0058", MODE="0660", GROUP="uucp", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="15a2", ATTR{idProduct}=="005e", MODE="0660", GROUP="uucp", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="15a2", ATTR{idProduct}=="005f", MODE="0660", GROUP="uucp", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="1357", MODE="0660", GROUP="uucp", TAG+="uaccess"
+
+# SEGGER J-Link: 0x01xx is the original enumeration, 0x10xx the J-Link
+# specific one (see the table in 99-jlink.rules).
+SUBSYSTEM=="usb_device", ATTR{idVendor}=="1366", ATTR{idProduct}=="01*", MODE="0660", GROUP="uucp", TAG+="uaccess"
+SUBSYSTEM=="usb_device", ATTR{idVendor}=="1366", ATTR{idProduct}=="10*", MODE="0660", GROUP="uucp", TAG+="uaccess"
+
+# CMSIS-DAP probes (Keil ULINK/LPC-Link/OpenSDA, mbed)
+KERNEL=="hidraw*", ATTRS{idVendor}=="c251", MODE="0660", GROUP="uucp", TAG+="uaccess"
+KERNEL=="hidraw*", ATTRS{idVendor}=="0d28", MODE="0660", GROUP="uucp", TAG+="uaccess"
+KERNEL=="hidraw*", ATTRS{idVendor}=="1366", ATTRS{idProduct}=="10*", MODE="0660", GROUP="uucp", TAG+="uaccess"
+
+# Virtual serial ports of the probes
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1366", MODE="0660", GROUP="uucp", TAG+="uaccess"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="c251", MODE="0660", GROUP="uucp", TAG+="uaccess"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0d28", MODE="0660", GROUP="uucp", TAG+="uaccess"
+
+LABEL="s32ds_rules_end"

@@ -1,0 +1,46 @@
+#!/bin/sh
+# S32 Design Studio launcher.
+#
+# Every argument is handed over to the vendor launcher untouched, so the usual
+# Eclipse options work as documented by NXP, e.g.:
+#
+#   s32ds -data ~/projects/s32-workspace
+#   s32ds -clean -nosplash
+
+# The MCU configuration views (PIN, Clocks, ...) are JavaFX, embedded through
+# SWT.  The JavaFX 17 that ships with the product is GTK3 only and has no
+# Wayland support: its GTK3 glass calls gdk_x11_* and XInternAtom() on whatever
+# display GTK hands it, so on a Wayland session it trips
+#
+#   Gdk-CRITICAL: gdk_x11_display_set_window_scale: assertion
+#                 'GDK_IS_X11_DISPLAY (display)' failed
+#
+# and then segfaults the whole IDE, first touch of such a view, with
+#
+#   Problematic frame:
+#   C  [libX11.so.6+0x29532]  XInternAtom+0x42
+#   C  [libglassgtk3.so+0x24f19]
+#     Java_com_sun_glass_ui_gtk_GtkApplication_staticScreen_1getScreens
+#
+# A desktop that prefers native Wayland sets GDK_BACKEND=wayland for the whole
+# session (systemctl --user show-environment), which is right for every other
+# GTK application and wrong for this one, so the IDE overrides it instead of
+# inheriting it.  Xwayland provides the X11 display, so nothing is lost but a
+# little of the point of running Wayland.  A Wayland session without Xwayland
+# (no DISPLAY) is left alone, because forcing X11 there would cost the whole
+# IDE rather than only the JavaFX views.
+#
+# S32DS_GDK_BACKEND overrides the choice, e.g. S32DS_GDK_BACKEND=wayland.
+if [ -n "${DISPLAY:-}" ]; then
+  GDK_BACKEND="${S32DS_GDK_BACKEND:-x11}"
+  export GDK_BACKEND
+fi
+
+_s32ds_home=/opt/s32-design-studio
+
+if [ ! -x "$_s32ds_home/s32ds.sh" ]; then
+  echo "s32ds: $_s32ds_home is missing, reinstall the s32-design-studio package" >&2
+  exit 127
+fi
+
+exec "$_s32ds_home/s32ds.sh" "$@"

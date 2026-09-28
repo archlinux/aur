@@ -1,0 +1,31 @@
+# The only thing left to do at install time is the udev rule: the debug probe
+# rules of S32 Design Studio are 15 vendor rules for the S32 Debugger, the PEmicro
+# GDB server and the SEGGER probe, shipped in /usr/lib/udev/rules.d.  udev only
+# picks them up after a reload, and without them the probes are not usable until
+# the next reboot.
+#
+# The installation itself needs no help: /opt/s32-design-studio is shipped world
+# writable (see _allow_extension_installs() in the PKGBUILD), because the IDE
+# installs extensions into it and would otherwise fail with
+#
+#   Target: Path /opt/s32-design-studio/... could not be created
+
+_s32ds_reload_rules() {
+  if command -v udevadm >/dev/null; then
+    udevadm control --reload-rules
+  fi
+}
+
+post_install() {
+  _s32ds_reload_rules
+}
+
+post_upgrade() {
+  _s32ds_reload_rules
+}
+
+pre_remove() {
+  _s32ds_reload_rules
+
+  return 0
+}
