@@ -5,7 +5,7 @@
 
 pkgname=dlt-viewer
 pkgdesc='Diagnostic Log and Trace client viewer'
-pkgver=2.30.0
+pkgver=2.31.0
 pkgrel=1
 url='https://github.com/COVESA/dlt-viewer'
 arch=(x86_64 i686)
@@ -52,6 +52,6 @@ package() {
   DESTDIR="${pkgdir}" cmake --install build
 
   mv -v "${pkgdir}/usr/share/dlt-viewer/include" "${pkgdir}/usr/include"
-  # mostly redundant SDK, only required for docs
-  rm -v -rf "${pkgdir}/usr/share/dlt-viewer/sdk"
 }
+b2sums=('970288edd8709bbb21529018dbeb4cb83e82d67fbe72de57e8237678a23486f32bd6e4f5d996429cd6f3154ffa4937e4de84040f570c76127768ca1c92aa2bf1'
+        'a3e26a833c41787913b88ad4e75cec2e17d99f350314083200527b303e6dbd8c15298ec2cefc87c36be422fd0cce5ba7f7236579ae2eb65731107818d958fe39')
