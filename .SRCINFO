@@ -1,14 +1,16 @@
 pkgbase = realcopy
-	pkgdesc = GTK4 file copy utility that actually writes to slow USB drives - no more kernel cache lies
-	pkgver = 1.0.0
+	pkgdesc = GTK4 file utility that actually copies to the flashdrive
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/proshiv85-byte/realcopy
 	arch = x86_64
+	arch = aarch64
 	license = MIT
-	makedepends = gcc
 	makedepends = pkgconf
 	depends = gtk4
-	source = realcopy-1.0.0.tar.gz::https://github.com/proshiv85-byte/realcopy/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = SKIP
+	depends = glib2
+	depends = glibc
+	source = realcopy-1.1.0.tar.gz::https://github.com/proshiv85-byte/realcopy/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 11cd65d6b72a0494e96b35df56fa4e366dd1c5e374a1225ae7d60ecdb39eff1b
 
 pkgname = realcopy

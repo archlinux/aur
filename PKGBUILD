@@ -1,34 +1,29 @@
-# Maintainer: Proshiv85 <proshiv85@example.com>
+# Maintainer: Proshiv85 <proshiv85 at gmail dot com>
 pkgname=realcopy
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="GTK4 file copy utility that actually writes to slow USB drives - no more kernel cache lies"
-arch=('x86_64')
+pkgdesc="GTK4 file utility that actually copies to the flashdrive"
+arch=('x86_64' 'aarch64')
 url="https://github.com/proshiv85-byte/realcopy"
 license=('MIT')
-depends=('gtk4')
-makedepends=('gcc' 'pkgconf')
+depends=('gtk4' 'glib2' 'glibc')
+makedepends=('pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+# Run `updpkgsums` after the v1.1.0 tag is pushed to GitHub.
+sha256sums=('11cd65d6b72a0494e96b35df56fa4e366dd1c5e374a1225ae7d60ecdb39eff1b')
 
 build() {
   cd "$pkgname-$pkgver"
-  gcc -O2 -o realcopy-gui main.c $(pkg-config --cflags --libs gtk4)
+  make PREFIX=/usr
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  make check
 }
 
 package() {
   cd "$pkgname-$pkgver"
-
-  install -Dm755 realcopy-gui "$pkgdir/usr/bin/realcopy-gui"
-
-  mkdir -p "$pkgdir/usr/share/applications"
-  cat > "$pkgdir/usr/share/applications/realcopy.desktop" <<EOF
-[Desktop Entry]
-Type=Application
-Name=RealCopy
-Comment=Reliable file copy to slow USB drives
-Exec=realcopy-gui
-Terminal=false
-Categories=Utility;FileTools;
-EOF
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
