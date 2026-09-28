@@ -17,8 +17,8 @@ conflicts=('dumptoolbox')
 source=("$url/releases/download/$pkgver/Linux-x64-v$pkgver.zip"
 "$_pkgname-$pkgver.zip::$url/archive/refs/tags/$pkgver.zip")
 
-sha1sums=('2fd34afdbff3f910c96f5520a893af24713764a8'
-'6af1dcd20234f3d8ffc185ba7ddc759f93cb69c8'
+sha1sums=('33f852e5cda695fd5a876e92ed9636198a6928b9'
+'d0608efabc8455f342338aa18768a37b388413b2'
 )
 
 package() {
