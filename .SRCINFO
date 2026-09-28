@@ -1,6 +1,6 @@
 pkgbase = stao-bin
 	pkgdesc = Standing desk reminder app - track your standing and sitting time
-	pkgver = 1.5.0_10
+	pkgver = 1.5.4_15
 	pkgrel = 1
 	url = https://stao.app
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = stao-bin
 	provides = stao
 	conflicts = stao
 	options = !strip
-	source = stao-1.5.0+10-linux.AppImage::https://downloads.stao.app/releases/v1.5.0/stao-1.5.0+10-linux.AppImage
+	source = stao-1.5.4+15-linux.AppImage::https://downloads.stao.app/releases/v1.5.4/stao-1.5.4+15-linux.AppImage
 	source = terms-of-service.html::https://www.stao.app/terms
-	sha256sums = 0878360569efb839271aabb4b4fab65dd177793ffed5377d6d2ff5e2ad46fbda
+	sha256sums = 3f5978bdccde93668e57d2a7aa5ca8c84c206bcf3fbb79f8c8e0ed32ae2dfa6a
 	sha256sums = SKIP
 
 pkgname = stao-bin
