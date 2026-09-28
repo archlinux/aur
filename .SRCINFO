@@ -1,11 +1,15 @@
 pkgbase = ibgateway
-	pkgdesc = IntereactiveBrokers Gateway
-	pkgver = 10.11.2f
+	pkgdesc = InteractiveBrokers Gateway - Latest
+	pkgver = 10.51.1a
 	pkgrel = 1
-	url = https://www.interactivebrokers.com/en/?f=%2Fen%2Ftrading%2Fibgateway-latest.php
+	url = https://www.interactivebrokers.com/en/trading/ibgateway-latest.php
 	arch = x86_64
-	license = custom
+	license = custom:proprietary
+	depends = jdk-openjdk
+	provides = ibgateway
+	options = !strip
+	options = !debug
 	source = https://download2.interactivebrokers.com/installers/ibgateway/latest-standalone/ibgateway-latest-standalone-linux-x64.sh
-	sha512sums = 2c408f47f5a3ab1ad9beb695d514e9ea67eabc1dbc423862111d13adb147e50fd1b953e4681a874cf355cc8c8405bd298138d6263e2dae55a7516bfe1e6b723b
+	sha512sums = e650b9ddb21cb438d9b01e355ed6ddf3b0157f4b527ffea56ab5c02a5f8ef56504101c9f1ab593a85ddecb74f4e973a4be9e5fd06410e0e0c37c1895aef806d5
 
 pkgname = ibgateway
