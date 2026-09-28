@@ -1,7 +1,7 @@
 # Maintainer: Macro-Proto
 pkgname='desksaw'
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 _filename='deskSaw030LINUX'
 epoch=
 pkgdesc="An interactive Desktop Pet from Casualties:Unknown"
@@ -30,7 +30,7 @@ package() {
     mkdir -p "$pkgdir/usr/share/$pkgname"
     cp -r ./$_filename/* "$pkgdir/usr/share/$pkgname"
     chmod +x "$pkgdir/usr/share/$pkgname/$_filename.$CARCH"
-    mkdir -p "$pkgdir/usr/bin/" && ln -s "$pkgdir/usr/share/$pkgname/$_filename.$CARCH" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "newlogo.png" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.png"
     install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    mkdir -p "$pkgdir/usr/bin/" && ln -s "/usr/share/$pkgname/$_filename.$CARCH" "$pkgdir/usr/bin/$pkgname"
 }
