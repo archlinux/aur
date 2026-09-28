@@ -1,0 +1,15 @@
+pkgbase = moarchy-editor
+	pkgdesc = One text file at a time, and an $EDITOR that waits, for Quickshell
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/SimonSchubert/moarchy-apps
+	arch = any
+	license = MIT
+	depends = quickshell
+	depends = bash
+	depends = ttf-jetbrains-mono-nerd
+	depends = hicolor-icon-theme
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/editor-v0.2.0/moarchy-editor-0.2.0.tar.gz
+	sha256sums = 2caa73e129f0bd88d6266391aff8a2a8bf5b22a9e2e91cabb68ac6974eff12f3
+
+pkgname = moarchy-editor
