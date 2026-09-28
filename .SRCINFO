@@ -1,6 +1,6 @@
 pkgbase = adguard-tray
 	pkgdesc = System tray monitor and controller for adguard-cli (KDE Plasma & Hyprland)
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/RiDDiX/adguard-tray
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = adguard-tray
 	optdepends = adguard-cli-bin: AdGuard CLI via AUR (alternatively install upstream: curl -fsSL https://raw.githubusercontent.com/AdguardTeam/AdGuardCLI/release/install.sh | sh -s -- -v)
 	optdepends = qt6-svg: sidebar and toolbar icons in the Manager window
 	optdepends = nss: install the HTTPS certificate into browsers (certutil)
-	source = adguard-tray-2.0.0.tar.gz::https://github.com/RiDDiX/adguard-tray/archive/v2.0.0.tar.gz
-	sha256sums = 23384ac5b3bde92718fee8fc21bbe845ab20c9c99851e662cfaa6da1d8061d1c
+	source = adguard-tray-2.1.0.tar.gz::https://github.com/RiDDiX/adguard-tray/archive/v2.1.0.tar.gz
+	sha256sums = 1a43b278ebf164360a6f08bb608c0594bbb722fd7335a8fa6d60b949921c2703
 
 pkgname = adguard-tray
