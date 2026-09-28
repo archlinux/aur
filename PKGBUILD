@@ -1,7 +1,7 @@
 # Maintainer: Limehawk <128890849+limehawk@users.noreply.github.com>
 pkgname=omarchy-vpn
-pkgver=0.4.5
-pkgrel=2
+pkgver=0.4.6
+pkgrel=1
 pkgdesc="WireGuard VPN manager TUI for Omarchy"
 arch=('x86_64')
 url="https://github.com/limehawk/omarchy-vpn"
@@ -26,17 +26,14 @@ package() {
     # Binary
     install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-    # Sudoers for passwordless WireGuard management
+    # Root helper: the only command sudo allows. It takes config names,
+    # never paths, and refuses imports that carry root hook commands.
+    install -Dm755 omarchy-vpn-helper "$pkgdir/usr/lib/$pkgname/helper"
+
+    # Sudoers for passwordless WireGuard management (dir mode matches the sudo package)
+    install -dm750 "$pkgdir/etc/sudoers.d"
     install -Dm440 /dev/stdin "$pkgdir/etc/sudoers.d/$pkgname" << 'EOF'
-%wheel ALL=(ALL) NOPASSWD: /usr/bin/wg-quick up *
-%wheel ALL=(ALL) NOPASSWD: /usr/bin/wg-quick down *
-%wheel ALL=(ALL) NOPASSWD: /usr/bin/wg show *
-%wheel ALL=(ALL) NOPASSWD: /usr/bin/ls /etc/wireguard
-%wheel ALL=(ALL) NOPASSWD: /usr/bin/cat /etc/wireguard/*.conf
-%wheel ALL=(ALL) NOPASSWD: /usr/bin/cp * /etc/wireguard/*.conf
-%wheel ALL=(ALL) NOPASSWD: /usr/bin/chmod 600 /etc/wireguard/*.conf
-%wheel ALL=(ALL) NOPASSWD: /usr/bin/mv /etc/wireguard/*.conf /etc/wireguard/*.conf
-%wheel ALL=(ALL) NOPASSWD: /usr/bin/rm /etc/wireguard/*.conf
+%wheel ALL=(root) NOPASSWD: /usr/lib/omarchy-vpn/helper
 EOF
 
     # License
