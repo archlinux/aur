@@ -21,6 +21,6 @@ pkgbase = glew-wayland-git
 	source = git+https://github.com/nigels-com/glew.git
 	source = glew-install.patch
 	sha256sums = SKIP
-	sha256sums = 30c77b49ff64f5b936368426f957a217b6d8a3f8d0c83a7eaa69222ed45cd811
+	sha256sums = 16663ce392c78f3ebd8ad7c3a2defda810a10ffa179fb601bc225c2c39a72fbc
 
 pkgname = glew-wayland-git
