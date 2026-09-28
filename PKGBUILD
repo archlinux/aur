@@ -74,6 +74,6 @@ package() {
 
 	install -Dm644 "${_extracted_folder}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	install -Dm644 "${_extracted_folder}/NOTICE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${_extracted_folder}/NOTICE" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 	install -Dm644 "${_extracted_folder}/LICENSE-AGPL-3.0" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
