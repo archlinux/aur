@@ -1,19 +1,21 @@
 pkgbase = somafm-desktop-player-bin
-	pkgdesc = SomaFM desktop player built with Electron and React.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.0.24
-	pkgrel = 9
+	pkgdesc = A small desktop player for SomaFM radio, built with Tauri and React.
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://alechko.github.io/somafm-desktop-player/
 	arch = x86_64
 	license = MIT
-	depends = electron16
-	provides = somafm-desktop-player=0.0.24
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	depends = libayatana-indicator
+	depends = libappindicator
+	depends = alsa-lib
+	provides = somafm-desktop-player=0.1.2
 	conflicts = somafm-desktop-player
-	options = !emptydirs
-	source = somafm-desktop-player-0.0.24.rpm::https://github.com/alechko/somafm-desktop-player/releases/download/v0.0.24/somafm-desktop-player-0.0.24-1.x86_64.rpm
-	source = LICENSE-0.0.24::https://raw.githubusercontent.com/alechko/somafm-desktop-player/v0.0.24/LICENSE.md
-	source = somafm-desktop-player.sh
-	sha256sums = 652b951c24390438e79858c328c646fc37b5bdf82e51e93baa4a57b8a93ba712
+	source = somafm-desktop-player-0.1.2.rpm::https://github.com/alechko/somafm-desktop-player/releases/download/v0.1.2/SomaFM.Desktop.Player-0.1.2-1.x86_64.rpm
+	source = LICENSE-0.1.2::https://raw.githubusercontent.com/alechko/somafm-desktop-player/v0.1.2/LICENSE.md
+	sha256sums = c465a102304e30d01d25ec5830a1b27497857f03fe9463f5cc3cfcfaa8235693
 	sha256sums = 5e404eae8a20b20c3e2ab7e0a08d04012d2cf8d5bf266849a22d7aa810409381
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = somafm-desktop-player-bin
