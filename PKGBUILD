@@ -1,6 +1,6 @@
 pkgname=skwd-paper-plasma
 pkgver=1.0.0_beta.23
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE Plasma wallpaper integration for Skwd Paper'
 arch=(x86_64)
 url='https://github.com/liixini/skwd-paper-plasma'
@@ -21,7 +21,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib
-  cmake --build build --parallel
+  cmake --build build
 }
 
 package() {
