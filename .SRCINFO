@@ -1,15 +1,22 @@
 pkgbase = perl-test-tcp
 	pkgdesc = testing TCP program
 	pkgver = 2.22
-	pkgrel = 2
-	url = https://metacpan.org/release/Test-TCP
+	pkgrel = 3
+	url = https://metacpan.org/dist/Test-TCP
 	arch = any
-	license = GPL-1.0-only
-	license = Artistic-1.0
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-file-temp
+	checkdepends = perl-socket
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker>=6.64
+	depends = perl-io
+	depends = perl-io-socket-ip
 	depends = perl-test-sharedfork>=0.29
+	depends = perl-test-simple
+	depends = perl-time-hires
 	depends = perl>=5.8.1
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/Test-TCP-2.22.tar.gz
-	sha512sums = 2e0c8cf710f9702eee9b00422d7133efe87575805361d72becd2c3de671c765baf84827b601d26091e8a6b8595e6d9f168f90b7cfda402d668deb6fc277e37ad
+	sha256sums = 3e53c3c06d6d0980a2bfeb915602b714e682ee211ae88c11748cf2cc714e7b57
 
 pkgname = perl-test-tcp
