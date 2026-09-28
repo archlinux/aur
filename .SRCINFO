@@ -1,0 +1,15 @@
+pkgbase = moarchy-trivia
+	pkgdesc = Multiple-choice quizzes by category and difficulty, from Open Trivia DB, for Quickshell
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SimonSchubert/moarchy-apps
+	arch = any
+	license = MIT
+	depends = quickshell
+	depends = curl
+	depends = ttf-jetbrains-mono-nerd
+	depends = hicolor-icon-theme
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/trivia-v0.1.0/moarchy-trivia-0.1.0.tar.gz
+	sha256sums = 34315009582a5e3506f10d7e3a2a730237ac161fa55a53d9f138bfa47647095c
+
+pkgname = moarchy-trivia
