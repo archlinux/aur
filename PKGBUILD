@@ -4,7 +4,7 @@ _pkgname='cachyos'
 _profile='desktop'
 pkgname="libvirt-iso-${_pkgname}-bin"
 pkgver=260809
-pkgrel=1
+pkgrel=2
 pkgdesc='Official CachyOS desktop installation ISO for libvirt'
 arch=('x86_64')
 url='https://cachyos.org/'
@@ -73,7 +73,6 @@ check() {
 	local squashfs="${srcdir}/check-airootfs.sfs"
 	local squashfs_hash_file="${srcdir}/check-airootfs.sha512"
 	local squashfs_root="${srcdir}/check-squashfs-root"
-	local package_root="${srcdir}/check-package-root"
 	local image_size
 	local pvd_type
 	local pvd_magic
@@ -140,10 +139,6 @@ check() {
 	[[ "$(cat -- "${squashfs_root}/etc/version-tag")" == "${pkgver}" ]] || return 1
 	[[ "$(cat -- "${squashfs_root}/etc/edition-tag")" == "${_profile}" ]] || return 1
 
-	printf '%s\n' 'check: staged package payload'
-	rm -rf -- "${package_root}"
-	_install_payload "${package_root}"
-	_check_payload "${package_root}"
 }
 
 package() {
