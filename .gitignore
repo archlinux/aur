@@ -1,0 +1,17 @@
+# The AUR holds build scripts only, so this hides everything and lets back what a push
+# carries. What it keeps out of `git status` — and out of an accidental `git add -A` — is the
+# build's whole output: `*.pkg.tar.zst` beside the PKGBUILD, the split `-debug` package, the
+# logs `pkgctl build` and `namcap` write, `src/`, `pkg/` and the `SRCDEST` tarball.
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!*.install
+!*.patch
+!LICENSE
+!LICENSES
+!LICENSES/*
+!REUSE.toml
+# `pkgctl version setup` writes it and `REUSE.toml` annotates it, so it is a file this
+# repository is meant to carry.
+!.nvchecker.toml
