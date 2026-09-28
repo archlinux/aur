@@ -1,6 +1,6 @@
 pkgname=sdroxide
 pkgver=1.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful SDR transceiver with a native GUI, browser web UI and built in digi modes like FT8, SSTV, THOR (native RTL-SDR/RX-888/CAT/etc backends, no SoapySDR)"
 arch=('x86_64')
 url="https://github.com/dividebysandwich/sdroxide"
@@ -24,12 +24,14 @@ makedepends=('rust' 'rust-wasm' 'trunk' 'wasm-bindgen' 'binaryen' 'cmake' 'clang
 # Same /usr/bin/sdroxide as the SoapySDR-enabled build.
 conflicts=('sdroxide-soapysdr')
 options=('!lto')
-# vendor/rade_c, vendor/rtl_433 and vendor/faad2 are git submodules, and
-# GitHub's release tarballs carry no submodule contents, so all three are
-# fetched separately and put in place in prepare(). Keep in sync with the tag:
+# vendor/rade_c, vendor/rtl_433, vendor/faad2 and vendor/xng are git
+# submodules, and GitHub's release tarballs carry no submodule contents, so all
+# four are fetched separately and put in place in prepare(). Keep in sync with
+# the tag:
 #   git rev-parse "v$pkgver:vendor/rade_c"
 #   git rev-parse "v$pkgver:vendor/rtl_433"
 #   git rev-parse "v$pkgver:vendor/faad2"
+#   git rev-parse "v$pkgver:vendor/xng"
 _rade_commit=a36161bce0fb37daf3f4602344b095f6817dddb1
 _rtl433_commit=8fa6364c5c7e14665fe3d80d0553883ec14a4116
 # faad2 2.11.2. crates/sdroxide-drm builds it with DRM_SUPPORT and links it in,
@@ -37,27 +39,35 @@ _rtl433_commit=8fa6364c5c7e14665fe3d80d0553883ec14a4116
 # ships. That crate is an unconditional dependency of the sdroxide binary --
 # not behind any feature -- so this one is needed by every build.
 _faad2_commit=673a22a3c7c33e96e2ff7aae7c4d2bc190dfbf92
+# airframesio/xng. The workspace's xng-mode-hfdl dependency (the HFDL decoder,
+# crates/sdroxide-hfdl) is a path dependency into this tree, so without it cargo
+# cannot even resolve the workspace, whatever features are selected.
+_xng_commit=096c805278faa0a904de7d98066bf4cf395cb6c2
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "rade_c-$_rade_commit.tar.gz::https://github.com/freedv/rade_c/archive/$_rade_commit.tar.gz"
         "rtl_433-$_rtl433_commit.tar.gz::https://github.com/merbanan/rtl_433/archive/$_rtl433_commit.tar.gz"
-        "faad2-$_faad2_commit.tar.gz::https://github.com/knik0/faad2/archive/$_faad2_commit.tar.gz")
+        "faad2-$_faad2_commit.tar.gz::https://github.com/knik0/faad2/archive/$_faad2_commit.tar.gz"
+        "xng-$_xng_commit.tar.gz::https://github.com/airframesio/xng/archive/$_xng_commit.tar.gz")
 sha256sums=('00ecc7951536d30594f645b91f07ba706c6378f87325234f1f5d14c4568dd620'
             'eaba2ecbe61dc48748bc62f08b2eb623bccd5b21b8228bf42dedc0e232edf7cd'
             '6e164f38216f46f1d08494c2adeaa7c72d7f3d5456e0b8c5ae424159d7051753'
-            '98725cefc915771f00ffd0286901c865e7d3fd0e5ff6b98d004d6f48904776f9')
+            '98725cefc915771f00ffd0286901c865e7d3fd0e5ff6b98d004d6f48904776f9'
+            '2d7339ef9e89e711641838034ab2d039dbae9d5e907a786f39df1b931395aebe')
 
 prepare() {
   cd "sdroxide-$pkgver"
   # Stand in for `git submodule update --init --recursive`: the build scripts of
   # crates/sdroxide-rade, crates/sdroxide-ism and crates/sdroxide-drm read
   # vendor/rade_c, vendor/rtl_433 and vendor/faad2 straight out of the source
-  # tree, and panic if they are empty. vendor/dream, next to faad2, is a copied
-  # tree rather than a submodule, so it does arrive in the release tarball.
-  rm -rf vendor/rade_c vendor/rtl_433 vendor/faad2
+  # tree, and panic if they are empty; vendor/xng is a path dependency, so cargo
+  # fails to load the workspace without it. vendor/dream, next to faad2, is a
+  # copied tree rather than a submodule, so it does arrive in the release tarball.
+  rm -rf vendor/rade_c vendor/rtl_433 vendor/faad2 vendor/xng
   mkdir -p vendor
   cp -a "$srcdir/rade_c-$_rade_commit" vendor/rade_c
   cp -a "$srcdir/rtl_433-$_rtl433_commit" vendor/rtl_433
   cp -a "$srcdir/faad2-$_faad2_commit" vendor/faad2
+  cp -a "$srcdir/xng-$_xng_commit" vendor/xng
   export RUSTUP_TOOLCHAIN=stable
   # The rustup package satisfies the rust-wasm makedepend by `provides`, but it
   # only ships the targets its user has actually added -- so on a rustup box the
