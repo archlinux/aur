@@ -1,6 +1,6 @@
 pkgbase = pw-mpris-visualcard-git
 	pkgdesc = Render the currently playing MPRIS track as a PipeWire video node (album art, progress ring, synced lyrics)
-	pkgver = r3.71f5f8f
+	pkgver = r8.2f1aeba
 	pkgrel = 1
 	url = https://github.com/zlinux-live-util/pw-mpris-visualcard
 	install = pw-mpris-visualcard-git.install
