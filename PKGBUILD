@@ -1,5 +1,5 @@
 pkgname=python-pdf-inspector
-pkgver=1.24.0
+pkgver=1.25.2
 pkgrel=1
 pkgdesc="Python bindings for PDF classification and Markdown extraction with OCR"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=('libpdfium: PDF page rendering for OCR'
 # The ring dependency cannot link with GCC LTO.
 options=('!debug' '!lto')
 source=("pdf-inspector-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9d93fce64be6dbf00098e00fa249e22c3059fd7da7ff84439f093f33a1557476')
+sha256sums=('b901955b1497dde6b92d982a6f1a337fe74046641301ef49f662859819db36e9')
 
 prepare() {
   cd "pdf-inspector-${pkgver}"
