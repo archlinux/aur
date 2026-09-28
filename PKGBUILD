@@ -1,6 +1,6 @@
 # Maintainer: Shaun Lastra <shaun@revolvetrading.com>
 pkgname=hyprglaze-git
-pkgver=r201.dcf24c9
+pkgver=r203.afb0f4d
 pkgrel=1
 pkgdesc="Wayland shader wallpaper daemon for Hyprland with window-aware effects and AI desktop buddy"
 arch=('x86_64' 'aarch64')
