@@ -1,5 +1,5 @@
 pkgname=skwd-deck-steamworks-bin
-pkgver=1.0.0_beta.22
+pkgver=1.0.0_beta.23
 pkgrel=1
 pkgdesc='Prebuilt optional Steam Client Workshop backend for Skwd Deck'
 arch=(x86_64)
@@ -11,14 +11,14 @@ optdepends=('steam: running Steam client used by the backend')
 provides=("skwd-deck-steamworks=$pkgver")
 conflicts=(skwd-deck-steamworks)
 source_x86_64=(
-  'skwd-deck-steamworks-1.0.0_beta.22-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.22/skwd-deck-steamworks-1.0.0_beta.22-1-x86_64.pkg.tar.zst'
+  'skwd-deck-steamworks-1.0.0_beta.23-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.23/skwd-deck-steamworks-1.0.0_beta.23-1-x86_64.pkg.tar.zst'
 )
-noextract=('skwd-deck-steamworks-1.0.0_beta.22-1-x86_64.pkg.tar.zst')
-sha256sums_x86_64=('9b5f80cdae5f0e4bb9885542b700ce5dbf6ddda8be296ff97c913260e644fcd7')
+noextract=('skwd-deck-steamworks-1.0.0_beta.23-1-x86_64.pkg.tar.zst')
+sha256sums_x86_64=('265d123b2b69672b8ac902e676e7b1542fac79157020d8736bdbc17144de388a')
 
 prepare() {
   mkdir -p "$srcdir/steamworks"
-  bsdtar -xf "$srcdir/skwd-deck-steamworks-1.0.0_beta.22-1-x86_64.pkg.tar.zst" -C "$srcdir/steamworks" \
+  bsdtar -xf "$srcdir/skwd-deck-steamworks-1.0.0_beta.23-1-x86_64.pkg.tar.zst" -C "$srcdir/steamworks" \
     --exclude .BUILDINFO --exclude .MTREE --exclude .PKGINFO
 }
 
