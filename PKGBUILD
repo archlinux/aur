@@ -1,7 +1,7 @@
 # Maintainer: George Green <iamkarlson@gmail.com>
 
 pkgname=abtop
-pkgver=0.4.5
+pkgver=0.5.5
 pkgrel=1
 pkgdesc='AI agent monitor for your terminal'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/graykode/abtop/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aab79fb05cae990867075f0c6cac7ee11aaa2a4028c4e8942176f3b4262b2085')
+sha256sums=('6664cec768299277085dcebdca6d07fcd57137cbb3ff4fe61c222fa9ca6b34d1')
 
 prepare() {
     cd "$pkgname-$pkgver"
