@@ -1,12 +1,12 @@
 # Maintainer: Uyanide <pywang0608@foxmail.com>
 
 pkgname=voicefox
-pkgver=0.3.17
+pkgver=0.3.18
 pkgrel=1
 epoch=1
 _tag="v${pkgver}"
 _srcdir="${pkgname}-${_tag#v}"
-pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
+pkgdesc="Rust + ratatui + libmpv 驱动的键盘优先终端音乐播放器：多音源、歌词、本地音乐、下载、收藏与歌单。"
 arch=("x86_64" "aarch64")
 url="https://github.com/emoeem/voicefox"
 license=("MIT")
@@ -27,7 +27,7 @@ optdepends=(
 source=(
 	"${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${_tag}.tar.gz"
 )
-sha512sums=('018ace8bca3e1d646f33542b9432a77d1a203a1cc055429aea3a0c798e3bc3645459eb26fefd876fcc2e20504c5bb22a0b0c634136b5cbbc3d06881caba24301')
+sha512sums=('078351cfadb4dcfbd3a6f2b5be676616b18f23c45acdfa2fbcf2bc34f4418c6fb24ed763a4b95c635fdcdae777e243303f5b2686b610e3528f7d30b17a5ce1cc')
 
 prepare() {
 	cd "${_srcdir}"
