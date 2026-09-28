@@ -1,7 +1,7 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-pymatreader
 _name=${pkgname#python-}
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Python reader for MATLAB .mat files"
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-hatch-regex-commit')
 source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('19c38ef7e174f1e53f48a2433c92bf0342df56c35df32ec025c05552027cd039')
+sha256sums=('8850b52d735df75b120b6ae5c5f80c92e07d8c163ed653c814d7b904fac7afc5')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
