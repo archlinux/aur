@@ -20,9 +20,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/dee-dee-catorce/$pkgname/releases/download/v$pkgver/deskSaw030LINUX.zip")
+source=("https://github.com/dee-dee-catorce/$pkgname/releases/download/v$pkgver/deskSaw030LINUX.zip" "$pkgname.desktop" "newlogo.png")
 noextract=()
-sha256sums=('4a46273ddbe4900b96f7f3d9cddeae65fb6685f09640d9d886dd6d53a922c4d2')
+sha256sums=('4a46273ddbe4900b96f7f3d9cddeae65fb6685f09640d9d886dd6d53a922c4d2' 'SKIP' 'SKIP')
 validpgpkeys=()
 
 
