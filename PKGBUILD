@@ -1,6 +1,6 @@
 # Maintainer: D7OMDEV <hello@d7om.dev>
 pkgname=clipse-gui
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A GTK3 GUI for the clipse clipboard manager"
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=(
 	'python-setuptools'
 	'python-wheel'
 )
-source=("git+https://github.com/d7omdev/clipse-gui.git")
+source=("git+https://github.com/d7omdev/clipse-gui.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
