@@ -1,7 +1,7 @@
 pkgbase = elph-nova-bin
 	pkgdesc = A corporate communications hub designed for effective collaboration with colleagues
 	pkgver = 3.6.2
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = custom
 	depends = gtk3
