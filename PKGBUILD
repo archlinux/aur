@@ -2,20 +2,20 @@
 
 pkgname=essentials-unpackd-git
 _pkgname=Essentials-Unpackd
-pkgver=3.0.0.r111.g9463b51
+pkgver=3.0.0.r113.g7fa6e91
 pkgrel=1
 pkgdesc="Tool for unpacking and repacking Pokémon Essentials data files"
 arch=('any')
-url="https://github.com/ra101/Essentials-Unpackd"
+url="https://github.com/yorukai/Essentials-Unpackd"
 license=('MIT')
 
-depends=('ruby' 'ruby-bundler')
+depends=('ruby' 'ruby-bundler' 'ruby-optimist' 'ruby-scanf')
 makedepends=('git')
 
 provides=('essentials-unpackd')
 conflicts=('essentials-unpackd')
 
-source=("git+https://github.com/ra101/Essentials-Unpackd.git")
+source=("git+https://github.com/yorukai/Essentials-Unpackd.git")
 sha256sums=('SKIP')
 
 pkgver() {
