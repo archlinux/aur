@@ -1,0 +1,4 @@
+post_install() {
+	echo "Set MAGNETOWID_API_KEY in /etc/magnetowid/magnetowid.env, then start magnetowid with:"
+	echo "  systemctl enable --now magnetowid"
+}
