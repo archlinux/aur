@@ -2,7 +2,7 @@
 
 pkgname=carve-rs
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Rust parser and HTML renderer for the Carve markup language'
 arch=(x86_64)
 url="https://github.com/markup-carve/$pkgname"
@@ -29,9 +29,6 @@ _srcenv() {
 
 prepare() {
 	_srcenv
-	# Upstream project neglected to trock the lock file at all, this package will *not*
-	# be reproducible. See https://github.com/markup-carve/carve-rs/issues/1466
-	cargo update
 	cargo fetch --locked --target host-tuple
 }
 
