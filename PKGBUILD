@@ -4,7 +4,7 @@ pkgname=bettbox
 _pkgname=Bettbox
 pkgver=1.19.3
 _pkgver="${pkgver/pre/-pre}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash."
 arch=('x86_64' 'aarch64')
 options=('!lto')
@@ -77,7 +77,7 @@ package () {
 	patchelf --set-rpath '$ORIGIN' ${pkgdir}/usr/lib/${pkgname}/lib/*.so
 
 	# Set setuid on BettboxCore for TUN mode (to avoid password prompt)
-	chmod +sx "${pkgdir}/usr/lib/${pkgname}/BettboxCore"
+	chmod u+sx "${pkgdir}/usr/lib/${pkgname}/BettboxCore"
 
 	# Symlink
 	install -dm755 "${pkgdir}/usr/bin"
