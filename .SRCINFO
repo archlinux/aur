@@ -1,7 +1,7 @@
 pkgbase = fluxer-bin-domainchoose
 	pkgdesc = Fluxer Desktop Application (gives you the ability to change the domain)
 	pkgver = 2026.927.142044
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fluxer.app
 	arch = x86_64
 	arch = aarch64

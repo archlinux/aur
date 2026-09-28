@@ -1,6 +1,6 @@
 pkgname=fluxer-bin-domainchoose
 pkgver=2026.927.142044
-pkgrel=1
+pkgrel=2
 pkgdesc="Fluxer Desktop Application (gives you the ability to change the domain)"
 arch=('x86_64' 'aarch64')
 url="https://fluxer.app"
@@ -35,14 +35,14 @@ package() {
     return 1
   fi
 
-  install -d "$pkgdir/opt/$pkgname"
-  cp -a "$srcdir/$_dir/." "$pkgdir/opt/$pkgname/"
+  install -d "$pkgdir/opt/fluxer"
+  cp -a "$srcdir/$_dir/." "$pkgdir/opt/fluxer/"
 
   # Wrapper
   install -Dm755 "$srcdir/fluxer-wrapper.sh" "$pkgdir/usr/bin/fluxer"
 
   install -Dm644 "$srcdir/fluxer.desktop" "$pkgdir/usr/share/applications/fluxer.desktop"
-  install -dm777 "$pkgdir/opt/$pkgname/resources"
+  install -dm777 "$pkgdir/opt/fluxer/resources"
   install -Dm666 /dev/null "$pkgdir/etc/fluxer.conf"
 
   local _icon _size _found=0
