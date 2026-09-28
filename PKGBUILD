@@ -1,7 +1,7 @@
 # Maintainer: Matt Shearing <matt@block-sense.io>
 pkgname=bread-of-life-bin
 _appname=bread-of-life
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='A warm, offline-first Bible homebase — reading, journalling, and an answered-prayer log you can look back on'
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip' '!debug')
 source=("$_appname-$pkgver.deb::$url/releases/download/v$pkgver/Bread.of.Life_${pkgver}_amd64.deb"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/matt-shearing/bread-of-life/v$pkgver/LICENSE")
 noextract=("$_appname-$pkgver.deb")
-sha256sums=('8785492d15af9a422c43cef54c17b9a72fdaef8db1370619a423a382dcb388c9'
+sha256sums=('3bb1921bdb99efc17762bb61e1931c4cf9b32dd4f273e93c463b1321fe7d5c15'
             'c2f7088783011edc2e0e390ca43e79f894fef1bb3ad356b79665b2dd227f82c9')
 
 package() {
