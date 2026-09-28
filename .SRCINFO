@@ -1,0 +1,26 @@
+pkgbase = leht-git
+	pkgdesc = Fast, desktop-environment-neutral PDF toolkit for Linux
+	pkgver = 0.1.0.r98.f337c02
+	pkgrel = 1
+	url = https://github.com/mlkonrad/leht
+	arch = any
+	license = AGPL-3.0
+	makedepends = cmake
+	makedepends = make
+	makedepends = svgo
+	makedepends = pkgconf
+	makedepends = git
+	makedepends = libseccomp
+	depends = qt6-base
+	depends = openssl>=3.2
+	depends = libp11-kit
+	depends = libglvnd
+	depends = libmupdf
+	depends = tesseract
+	depends = libarchive
+	depends = curl
+	provides = leht
+	source = git+https://github.com/mlkonrad/leht.git
+	sha256sums = SKIP
+
+pkgname = leht-git
