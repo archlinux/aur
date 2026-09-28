@@ -15,7 +15,6 @@ pkgbase = mx-live-usb-maker
 	depends = dosfstools
 	depends = e2fsprogs
 	depends = exfatprogs
-	depends = ntfs-3g
 	depends = xorriso
 	depends = rsync
 	depends = syslinux
@@ -23,6 +22,7 @@ pkgbase = mx-live-usb-maker
 	depends = cryptsetup
 	depends = util-linux
 	depends = libarchive
+	optdepends = ntfs-3g: format the data partition as NTFS
 	source = https://github.com/MX-Linux/mx-live-usb-maker/archive/refs/tags/26.04arch.tar.gz
 	sha256sums = 30adf004f5fdedca96916ceba49be9299e317cf9ead5c9d72759cf6875a40e76
 

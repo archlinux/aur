@@ -13,7 +13,6 @@ depends=(
     'dosfstools'
     'e2fsprogs'
     'exfatprogs'
-    'ntfs-3g'
     'xorriso'
     'rsync'
     'syslinux'
@@ -22,6 +21,7 @@ depends=(
     'util-linux'
     'libarchive'
 )
+optdepends=('ntfs-3g: format the data partition as NTFS')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("https://github.com/MX-Linux/mx-live-usb-maker/archive/refs/tags/26.04arch.tar.gz")
 sha256sums=('30adf004f5fdedca96916ceba49be9299e317cf9ead5c9d72759cf6875a40e76')
