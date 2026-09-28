@@ -9,7 +9,7 @@ arch=('any')
 pkgdesc="Little CMS configuration files for CMake"
 url="https://github.com/mm2/Little-CMS"
 license=('MIT')
-depends=('cmake' 'lcms2')
+depends=('cmake' 'lcms2' 'tifdiff')
 source=("$_lcms2_release_name.tar.gz::$url/archive/$_lcms2_release.tar.gz")
 b2sums=('834b931ef1bc1c2bd601fd05da5eccb4caeeda653a03a9bbab55d1612fc95f269846e2e84fe8fbfe235a8dd87a6f1cfea1d06d86387903380ae3eda5370527be')
 
