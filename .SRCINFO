@@ -1,6 +1,6 @@
 pkgbase = vtcode-bin
 	pkgdesc = An open-source Rust terminal coding agent for interactive and long-running autonomous work.
-	pkgver = 0.159.0
+	pkgver = 0.169.5
 	pkgrel = 1
 	url = https://github.com/vinhnx/VTCode
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = vtcode-bin
 	optdepends = ast-grep: for search runtime
 	optdepends = ghostty: for richer PTY snapshots
 	conflicts = vtcode
-	source = https://github.com/vinhnx/VTCode/releases/download/0.159.0/vtcode-0.159.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = caf119f7fe2a1ff94a8aa1300a1ecdf8771209c955d99ffbbbb6b340421d87c6
+	source = https://github.com/vinhnx/VTCode/releases/download/0.169.5/vtcode-0.169.5-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = f60e85ba2d9babbf2ef89f19c68bd7c21081d33cc58a23c74d21ae5708b5c057
 
 pkgname = vtcode-bin
