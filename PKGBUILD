@@ -2,8 +2,9 @@
 
 pkgname=python-nanobind-backend
 _name=${pkgname#python-}
-_tagname=1.0.0-dev6
-pkgver=${_tagname//-/_}
+_tagname=backend-v1.0.0
+pkgver=${_tagname#backend-v}
+pkgver=${pkgver//-/_}
 pkgrel=1
 pkgdesc="Compiled nanobind backend for extensions built in split mode"
 provides=(${pkgname})
@@ -33,8 +34,8 @@ optdepends=(
     'nanobind: Tiny and efficient C++/Python bindings'
 )
 license=('BSD-3-Clause')
-source=("${_name}::git+${url}.git#tag=backend-v$_tagname")
-sha256sums=('b9e5ccee9d2685e20aa4a53850749f782ec43cf24548de5c2b3eb9ae9805cf8e')
+source=("${_name}::git+${url}.git#tag=$_tagname")
+sha256sums=('e9622fcd814bbad1c5ae6a5678869adcb3445465d91cba1699ce4e126f65ec14')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
