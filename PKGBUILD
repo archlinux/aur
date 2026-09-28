@@ -1,7 +1,7 @@
 # Maintainer: Slavi Pantaleev <slavi at devture.com>
 
 pkgname=infonotary-client-software
-pkgver=3.0.28
+pkgver=3.0.29
 pkgrel=1
 pkgdesc="InfoNotary client software - InfoNotary e-Doc Signer and InfoNotary Smart Card Manager."
 arch=('x86_64')
@@ -46,15 +46,12 @@ optdepends=(
 # (suite taken from https://repository.infonotary.com/install/linux/infonotary_u2404.list)
 # Don't guess URLs: the server is behind a WAF (BunkerWeb) that bans the client IP after a burst of 404s.
 source=('http://repository.infonotary.com/install/linux/DEBS24/pool/non-free/i/infonotary-client-software/infonotary-client-software_'$pkgver'_all.deb')
-sha256sums=('077e592e3dc2d4e6cfd1d9ca25646ed3a1bad2d6937a1eca6e0b4418ae2a4284')
+sha256sums=('526e5984c8943f3a9c4b9ece81f0b34e5a18aacd3287840b470302c31f0f5b0c')
 install=$pkgname.install
 
 package() {
-	bsdtar -xf "$srcdir/infonotary-client-software_${pkgver}_all.deb" 'data.tar.*'
-	bsdtar -xf data.tar.* -C "$pkgdir" --no-same-owner --no-same-permissions
-
-	# The deb mistakenly ships a per-user Thunar custom-actions file (`~/.config/Thunar/uca.xml`) at `/.config`.
-	rm -r "$pkgdir/.config"
+	bsdtar -xOf "$srcdir/infonotary-client-software_${pkgver}_all.deb" 'data.tar.*' \
+		| bsdtar -xf - -C "$pkgdir" --no-same-owner --no-same-permissions
 
 	# The deb ships files with odd permissions (group-writable, 754, executable data files, ..)
 	chmod -R go-w "$pkgdir"
