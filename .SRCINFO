@@ -1,0 +1,13 @@
+pkgbase = x3-compressor-git
+	pkgdesc = Experimental dictionary-based data compressor
+	pkgver = 2.r29.g8141560
+	pkgrel = 1
+	url = https://github.com/xbarin02/x3-compressor
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = make
+	source = git+https://github.com/xbarin02/x3-compressor.git
+	md5sums = SKIP
+
+pkgname = x3-compressor-git
