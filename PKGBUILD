@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_gitname}-bin
 pkgdesc="Measure how closely writing matches a learned author's style. Japanese & English, local-first CLI for LLMs and humans"
 
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ _pkgsrc="${_gitname}-${pkgver}"
 source=("${_pkgsrc}-checksums.txt::${url}/releases/download/${_gitversion}/checksums.txt")
 source_x86_64=("${_pkgsrc}-${arch[0]}.tgz::${url}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgsrc}-${arch[1]}.tgz::${url}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[1]}.tar.gz")
-sha256sums=('b2935bfabca4e6c0e7dbc89e475424eddf5cd9901e0d99dd121252baa26ad175')
-sha256sums_x86_64=('59ed869140e319c5e72791f3a77d5ae32284bc5bde8b0f8c66b0505b1255ef76')
-sha256sums_aarch64=('b266bc153b6dceeb5f04c4e330bc317f00766684c7ee0f80dc939acc5d1f5f70')
+sha256sums=('49ebf8a70320687807af198a9d1e97834b62c34ca18bdf4d87d66a4d081ac6cc')
+sha256sums_x86_64=('3ec7f1c48bd91b4d7d90190a219956c0f351aa15009e893457d16fb8fb91dc84')
+sha256sums_aarch64=('09d80842c49d1b4c4bc621714abc373956fff2d3bb773fa4f8017ac5d59eac7b')
 
 
 verify() {
