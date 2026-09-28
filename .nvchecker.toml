@@ -1,0 +1,4 @@
+[tincan]
+source = "git"
+git = "https://github.com/bilalyazicioglu/tincan-cli.git"
+prefix = "v"
