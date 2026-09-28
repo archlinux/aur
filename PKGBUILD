@@ -3,21 +3,27 @@
 
 pkgname=runrestic
 # renovate: datasource=pypi depName=runrestic
-pkgver=0.5.28
-pkgrel=2
+pkgver=0.5.31
+pkgrel=1
 pkgdesc='A wrapper script for Restic backup software that inits, creates, prunes and checks backups'
 arch=(any)
 url='https://pypi.org/project/runrestic'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
   'restic'
-  'python-toml'
-  'python-jsonschema'
-  'python-requests'
+  'python>=3.10'
+  'python-toml>=0.10'
+  'python-jsonschema>=3.0'
+  'python-requests>=2.27.1'
 )
 
 checkdepends=('python-pytest')
-makedepends=('python-setuptools')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-hatchling'
+  'python-wheel'
+)
 
 source=(
   "https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
@@ -25,18 +31,23 @@ source=(
   runrestic.timer
 )
 
-sha256sums=('62cd131161379607d3fba1a43e71e57a24e1d747af064bd1b8bab207ec102542'
+sha256sums=('9c5a1e49b678b7fed17c246443c46417068fc31eecb54ddadfdb2aabe81bc0bf'
             'd636f96922c1c018c8cd359c3cedc72ac3764c8ee0aace3265ddc6538a56be5d'
             '73b08193d7022f538c326bb4674712f2e2a827ccc557d48bd36416f7d08c598e')
 
+build() {
+  cd "${pkgname}-${pkgver}"
+  python -m build --wheel --no-isolation
+}
+
 check() {
   cd "${pkgname}-${pkgver}"
-  python setup.py test
+  pytest
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
 
   install -D -m 644 "${srcdir}/runrestic.service" ${pkgdir}/usr/lib/systemd/system/runrestic.service
   install -D -m 644 "${srcdir}/runrestic.timer"   ${pkgdir}/usr/lib/systemd/system/runrestic.timer
