@@ -1,6 +1,6 @@
 pkgbase = flyenv-git
 	pkgdesc = A modern alternative to XAMPP, MAMP, Laragon and Laravel Herd, with runtimes, databases, web servers, local sites, HTTPS, AI coding tools and MCP.
-	pkgver = 4.18.3.r12.g163389f
+	pkgver = 4.19.1.r2.gacaf4fb
 	pkgrel = 1
 	url = https://www.flyenv.com/
 	arch = aarch64
@@ -48,6 +48,6 @@ pkgbase = flyenv-git
 	source = flyenv.git::git+https://github.com/xpf0000/FlyEnv.git
 	source = flyenv.sh
 	sha256sums = SKIP
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
 pkgname = flyenv-git
