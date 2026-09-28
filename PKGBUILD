@@ -3,11 +3,11 @@
 # Source package - builds from source
 
 pkgname=fresh-editor
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A lightweight, fast terminal-based text editor with LSP support and TypeScript plugins"
 url="https://sinelaw.github.io/fresh/"
-license=("GPL-2.0-only")
+license=("GPL-3.0-or-later")
 arch=('x86_64' 'aarch64')
 depends=("gcc-libs" "glibc")
 makedepends=("cargo" "clang")
@@ -15,7 +15,7 @@ provides=("fresh-editor")
 conflicts=("fresh-editor-bin")
 options=('!debug')
 source=("fresh-editor-${pkgver}-source.tar.gz::https://github.com/sinelaw/fresh/releases/download/v${pkgver}/fresh-editor-${pkgver}-source.tar.gz")
-sha256sums=("a80c672114a2d093ad7e303ba5cf909e3e012d8066764e541a02d0da048ee8fc")
+sha256sums=("1474c67bebb248e6e68c98c54a91a76212cc49d037e30ac5d20a35393ae1a043")
 
 prepare() {
     cd "fresh-$pkgver"
@@ -28,7 +28,10 @@ build() {
     export CC=clang
     # Bake the install channel into the binary (compile-time provenance).
     export FRESH_BUILD_CHANNEL=aur
-    cargo build --locked --release
+    # `web` is opt-in in Cargo.toml (it embeds the browser UI and pulls in the
+    # sha1 WebSocket-handshake dep), so it has to be named here or the package
+    # ships a `fresh` that rejects `--web` (#3316).
+    cargo build --locked --release --features web
 }
 
 package() {
