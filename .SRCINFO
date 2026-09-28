@@ -1,6 +1,6 @@
 pkgbase = flea-bin
 	pkgdesc = Fast, keyboard-first file manager for Omarchy (prebuilt binary)
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/thisisgm/flea
 	arch = x86_64
@@ -40,14 +40,15 @@ pkgbase = flea-bin
 	optdepends = ffmpeg: media metadata in the preview column
 	optdepends = ffmpegthumbnailer: video thumbnails, made by one pre-linked worker through libffmpegthumbnailer.so.4, or by the ffmpegthumbnailer program per video when that library will not load
 	optdepends = dropbox-cli: Dropbox share links
-	provides = flea=0.3.5
+	optdepends = zoxide: frecent folders in the folder jump of the path bar
+	provides = flea=0.3.6
 	conflicts = flea
 	conflicts = flea-git
 	options = !strip
 	options = !debug
-	source_x86_64 = flea-v0.3.5-linux-x86_64.tar.gz::https://github.com/thisisgm/flea/releases/download/v0.3.5/flea-v0.3.5-linux-x86_64.tar.gz
-	sha256sums_x86_64 = f787d06b5ea4d56dea449440d46edec7a8fd4750cebaaafc8ec821db0b5cfeae
-	source_aarch64 = flea-v0.3.5-linux-aarch64.tar.gz::https://github.com/thisisgm/flea/releases/download/v0.3.5/flea-v0.3.5-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 0ebdc78a8362d7117334591cf1bf1135c62982c754a67256533b8da61c7812e7
+	source_x86_64 = flea-v0.3.6-linux-x86_64.tar.gz::https://github.com/thisisgm/flea/releases/download/v0.3.6/flea-v0.3.6-linux-x86_64.tar.gz
+	sha256sums_x86_64 = a2032e941154147c5727513559351d0a979d3dc92205d95a82014fca5d7aad09
+	source_aarch64 = flea-v0.3.6-linux-aarch64.tar.gz::https://github.com/thisisgm/flea/releases/download/v0.3.6/flea-v0.3.6-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 04a47eb73e0c7a59b756b3f0b55cdd30a485c0d2b35d0e4646ec04d52b64cacd
 
 pkgname = flea-bin

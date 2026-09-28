@@ -4,7 +4,7 @@
 # The release workflow's binaries with flea's own closure, whose reasons live beside it in the root PKGBUILD.
 pkgname=flea-bin
 _pkgname=flea
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc='Fast, keyboard-first file manager for Omarchy (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,8 @@ optdepends=('libarchive: archive listing and extraction'
             'tailscale: Taildrop sharing'
              'ffmpeg: media metadata in the preview column'
              'ffmpegthumbnailer: video thumbnails, made by one pre-linked worker through libffmpegthumbnailer.so.4, or by the ffmpegthumbnailer program per video when that library will not load'
-             'dropbox-cli: Dropbox share links')
+             'dropbox-cli: Dropbox share links'
+             'zoxide: frecent folders in the folder jump of the path bar')
 provides=("$_pkgname=$pkgver")
 # All three own /usr/bin/flea, so pacman refuses the pair rather than leaving one half-installed.
 conflicts=("$_pkgname" "$_pkgname-git")
@@ -26,8 +27,8 @@ options=('!strip' '!debug')
 # SKIP here keeps a version bump to one line; the release workflow pins both before the AUR ever sees them.
 source_x86_64=("$_pkgname-v$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-v$pkgver-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('f787d06b5ea4d56dea449440d46edec7a8fd4750cebaaafc8ec821db0b5cfeae')
-sha256sums_aarch64=('0ebdc78a8362d7117334591cf1bf1135c62982c754a67256533b8da61c7812e7')
+sha256sums_x86_64=('a2032e941154147c5727513559351d0a979d3dc92205d95a82014fca5d7aad09')
+sha256sums_aarch64=('04a47eb73e0c7a59b756b3f0b55cdd30a485c0d2b35d0e4646ec04d52b64cacd')
 
 # The source PKGBUILD's package() with the binary read from the tarball's root; the release workflow diffs the two.
 package() {
