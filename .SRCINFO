@@ -1,6 +1,6 @@
 pkgbase = dankmail
 	pkgdesc = Mail notifier with triage for Linux — Go daemon + Quickshell UI (DankMaterialShell aesthetic)
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/arqueon/dankmail
 	install = dankmail.install
@@ -11,7 +11,7 @@ pkgbase = dankmail
 	depends = quickshell
 	depends = xdg-utils
 	optdepends = gnome-keyring: Secret Service storage for tokens and passwords
-	source = dankmail-0.3.5.tar.gz::https://github.com/arqueon/dankmail/archive/refs/tags/v0.3.5.tar.gz
-	sha256sums = 56ea78cd4d4321743a7d2f79e3d4844b445e70526ddbf4ade3b54ed9929d0173
+	source = dankmail-0.3.6.tar.gz::https://github.com/arqueon/dankmail/archive/refs/tags/v0.3.6.tar.gz
+	sha256sums = 17bd98572f45e73731153a1aa42f67c8f2a0bd25f618491ac336074292dcb821
 
 pkgname = dankmail
