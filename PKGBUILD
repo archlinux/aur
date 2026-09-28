@@ -1,7 +1,7 @@
 # Maintainer: Mike Boiko <mike@boiko.ca>
 
 pkgname=twg-cli-bin
-pkgver=1.3.1
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='Atlassian Teamwork Graph CLI (baseline-compatible prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ provides=('twg-cli')
 conflicts=('twg' 'twg-cli')
 options=('!strip' '!debug')
 
-_bunver=1.4.1
+_bunver=1.4.2
 
 source=(
 	'twg-baseline-patcher.py'
@@ -27,10 +27,10 @@ sha256sums=(
 	'007879788b4d4a258cf924e4177a9f4f808b4aec5c2fd6ac65c09b526c07177f'
 )
 sha256sums_x86_64=(
-	'f158bc0609313fe716b19d9c6aca0a8e7f87a0e251cef0cb7702af8f7405aa63'
-	'a8c9c6738202e2fced555dd860a953c56c0cd059f75041e7010ae81a32802646'
+	'f2b27de35e2b70ca533dc544b6d41df3013743d7e4a1dcf113498528f9a38401'
+	'c678040f14fe0440eb839d37cbd0ce4c051a32da72806ac97de6a6aab6bf728f'
 )
-sha256sums_aarch64=('0a6cf5bfdf263086336fe588d128e1b5a71efcbbd3aa78de6df26849cb4d2f0c')
+sha256sums_aarch64=('a18bc47d8cb445fbf7e40e3dbbbf049efad4dc455b627dad26505caad4f21705')
 
 prepare() {
 	if [[ "$CARCH" == x86_64 ]]; then
