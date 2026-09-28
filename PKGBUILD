@@ -3,18 +3,31 @@
 _pkgname=keepmenu
 _gitname=keepmenu
 pkgname=$_pkgname-git
-pkgver=r177.aecb894
+pkgver=r326.a3ff393
 pkgrel=1
 pkgdesc="Dmenu/Rofi frontend for Keepass databases."
 
 arch=('any')
 url="https://github.com/firecat53/keepmenu"
-license=('GPL3')
-depends=('python' 'python-pykeepass' 'python-pynput')
-makedepends=('git' 'python-build' 'python-setuptools' 'python-installer' 'python-wheel' 'python-hatchling' 'python-hatch-vcs')
-optdepends=('dmenu: either dmenu or rofi is required'
-            'rofi: either dmenu or rofi is required'
-            'xdotool: required for typing non-U.S. Unicode characters')
+license=('GPL-3.0-only')
+depends=('python' 'python-pykeepass')
+makedepends=('git' 'python-build' 'python-installer' 'python-hatchling')
+optdepends=('python-pynput: autotyping with the default type_library'
+            'dmenu: dmenu backend'
+            'bemenu: bemenu backend'
+            'fuzzel: fuzzel backend'
+            'wmenu: wmenu backend'
+            'rofi: rofi backend'
+            'wofi: wofi backend'
+            'yofi: yofi backend'
+            'tofi: tofi backend'
+            'xdotool: required for typing non-U.S. Unicode characters'
+            'wtype: required for typing non-U.S. Unicode characters'
+            'ydotool: required for typing non-U.S. Unicode characters'
+            'pinentry: secure passphrase entry'
+            'xsel: clipboard support (X11)'
+            'xclip: clipboard support (X11)'
+            'wl-clipboard: clipboard support (Wayland)')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/firecat53/$_gitname.git")
@@ -39,5 +52,4 @@ package() {
   cd "$_gitname"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$srcdir/$_gitname/keepmenu.1" "$pkgdir/usr/share/man/man1/keepmenu.1"
 }
