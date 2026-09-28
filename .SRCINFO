@@ -20,6 +20,6 @@ pkgbase = brum
 	depends = webkit2gtk-4.1
 	options = !lto
 	source = brum-1.2.1.tar.gz::https://github.com/Woofson/brum/archive/refs/tags/v1.2.1.tar.gz
-	sha256sums = 4ce6ed16553aed302d014064c83a2a3f590c4dbffd65a681fcecdd4fd40842cf
+	sha256sums = 9683a57b965d68730f5922672f8f6b3df95f599c6c86b9b89291b3f619cc5bed
 
 pkgname = brum

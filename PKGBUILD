@@ -9,8 +9,8 @@ license=('MIT')
 depends=('glibc' 'sqlite' 'libssh2' 'openssl' 'ca-certificates' 'gtk3' 'webkit2gtk-4.1')
 makedepends=('cargo' 'rust' 'pkgconf' 'gtk3' 'webkit2gtk-4.1')
 options=('!lto')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4ce6ed16553aed302d014064c83a2a3f590c4dbffd65a681fcecdd4fd40842cf')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('9683a57b965d68730f5922672f8f6b3df95f599c6c86b9b89291b3f619cc5bed')
 
 prepare() {
     cd "$pkgname-$pkgver"
