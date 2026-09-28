@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli
 
 pkgname=musicrename
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="command line music library manager"
 arch=(x86_64)
@@ -16,7 +16,7 @@ optdepends=(
   "yt-dlp: automatic video downloads"
 )
 source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('5faaaabc8d6d6d7e2f94d9bebf310bcc034853821efa37ce69fe9e3a1d660089')
+sha256sums=('90b3ec85924417517ca0607af66cddc8dee67020eb75aa74caf0b6672aac963a')
 
 prepare() {
   cd $pkgname
@@ -64,6 +64,7 @@ package() {
 
   install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm0644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+  install -Dm0644 WORKFLOW.md "$pkgdir/usr/share/doc/$pkgname/WORKFLOW.md"
 }
 
 # vim: set ts=2 sw=2 et:
