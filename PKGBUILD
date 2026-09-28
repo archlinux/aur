@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FD
-_pkgver=1.0-12.5
+_pkgver=1.0-12.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8d5319fb0ec766992376375cd1bd5a8a')
-b2sums=('f24242f6bd13cdb671e671fc322548d8a4d8205c356e921604202f4e316f871f405b15ad684a3d0e8ced61357ecaf7b548e110b5123e026c1baff98c8ab2cd30')
+md5sums=('793d592290cca196b2708e506b47c81f')
+b2sums=('986b049c2c4a14a9ba9f3745e2315f2d4205d1982752dd480f5dcef615b88337cd1886a201e3d2fb28b259dfd8e8401aaa5d3fae01e214a67e196c8173a6aada')
 
 build() {
   mkdir build
