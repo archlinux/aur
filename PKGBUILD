@@ -2,20 +2,20 @@
 # Contributor: Naglis Jonaitis <naglis@mailbox.org>
 
 pkgname=thorium-reader-bin
-pkgver=3.4.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="A cross platform desktop reading app, based on the Readium Desktop toolkit"
 arch=('x86_64')
 license=(' BSD-3-Clause')
 url="https://github.com/edrlab/thorium-reader"
 depends=('libnotify' 'nss' 'libxss' 'xdg-utils' 'libappindicator-gtk3' 'libsecret')
-_filename=EDRLab.ThoriumReader_${pkgver}_amd64.deb
+_filename=Thorium-${pkgver}-amd64.deb
 options=('!strip')
 source=(
   "${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_filename}"
   ${url}/raw/v${pkgver}/LICENSE
 )
-sha512sums=('dcedc41df1c8214b0c1e2fbf589799a7806832f866759fe91efede7070845d350cbbff3200ef95c6760e88bdfd736ef044b84b72671dca8faa69e1d07945f903'
+sha512sums=('5da0b5a515c2813f553f212bd3c8760bd15c80dbf7e93aaba2b71dd5dc1b4efcb2651bdfc8f31643fcd8ca6cd0a42a7e220c67d790a3d831acaea7a83cd9dc96'
             'acb9c8cdd1225dd5e7874b5380cc597adf9cf32dfcebccfd18d13f36f525b56d9319734da28de5ec44a983197f91f2e80231211197b7201e4efe115972aae96a')
 
 package() {
