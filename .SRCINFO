@@ -1,13 +1,13 @@
 pkgbase = caddy-analyzer
 	pkgdesc = Fast, zero-dependency access log analyzer, security threat inspector, and TUI dashboard for Caddy v2
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/lenny-ts/caddy-analyzer
 	arch = any
 	license = MIT
 	makedepends = go
 	depends = go
-	source = caddy-analyzer-0.7.3.tar.gz::https://github.com/lenny-ts/caddy-analyzer/archive/refs/tags/v0.7.3.tar.gz
-	sha512sums = 9cd2b1654a85e0a8e1710fefb19cfb31d35bbaac6e46dc3c5eacc62fee899708c201cf587939214a01250412a2274afec4440f7dc0176307c0fac2ded908cd37
+	source = caddy-analyzer-0.7.4.tar.gz::https://github.com/lenny-ts/caddy-analyzer/archive/refs/tags/v0.7.4.tar.gz
+	sha512sums = 8d5180a90b6a6023fd2edb4147ab80081d81c7d93a1ed0dd4211072838b87341a24bea17c55cd1b07e898eed72bca8a677ce8e976c4328de919db8769266f189
 
 pkgname = caddy-analyzer
