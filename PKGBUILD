@@ -2,7 +2,7 @@
 
 pkgname=matedit-bin
 pkgver=20260928
-pkgrel=2
+pkgrel=3
 pkgdesc="Material editor for PrimeXT"
 arch=('x86_64')
 url="https://github.com/hgruntt/MatEdit"
