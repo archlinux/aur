@@ -1,7 +1,7 @@
 pkgbase = mt7927-bt-firmware
 	pkgdesc = Bluetooth firmware for MediaTek MT7927 (MT6639), extracted from the ASUS Windows driver
 	pkgver = 20250606
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openwrt/mt76/issues/927
 	arch = any
 	license = LicenseRef-MediaTek-Firmware

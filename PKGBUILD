@@ -2,7 +2,7 @@
 
 pkgname=mt7927-bt-firmware
 pkgver=20250606
-pkgrel=1
+pkgrel=2
 pkgdesc="Bluetooth firmware for MediaTek MT7927 (MT6639), extracted from the ASUS Windows driver"
 arch=('any')
 url='https://github.com/openwrt/mt76/issues/927'
