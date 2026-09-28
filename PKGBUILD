@@ -1,16 +1,20 @@
 # Maintainer: Scott Hansen (firecat53) tech at firecat53 dot net
 pkgname=urlscan-git
 _gitname=urlscan
-pkgver=r182.9505e7c
+pkgver=r251.1c15a8c
 pkgrel=1
 pkgdesc="Replacement for urlview with html context and other improvements."
 arch=('any')
 url="https://github.com/firecat53/urlscan"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 conflicts=('urlscan')
 provides=('urlscan')
 depends=('python' 'python-urwid')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-hatchling' 'python-hatch-vcs')
+makedepends=('git' 'python-build' 'python-installer' 'python-hatchling')
+optdepends=('xdg-utils: open URLs with the default browser'
+            'xsel: clipboard support (X11)'
+            'xclip: clipboard support (X11)'
+            'wl-clipboard: clipboard support (Wayland)')
 source=('git+https://github.com/firecat53/urlscan.git')
 md5sums=('SKIP')
 install=urlscan.install
