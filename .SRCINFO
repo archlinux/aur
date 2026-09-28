@@ -1,6 +1,6 @@
 pkgbase = dlt-viewer
 	pkgdesc = Diagnostic Log and Trace client viewer
-	pkgver = 2.30.0
+	pkgver = 2.31.0
 	pkgrel = 1
 	url = https://github.com/COVESA/dlt-viewer
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = dlt-viewer
 	depends = libstdc++
 	depends = qt6-base
 	depends = qt6-serialport
-	source = dlt-viewer-2.30.0::https://github.com/COVESA/dlt-viewer/archive/refs/tags/2.30.0.tar.gz
+	source = dlt-viewer-2.31.0::https://github.com/COVESA/dlt-viewer/archive/refs/tags/2.31.0.tar.gz
 	source = dlt-viewer-keep-pie-flag.patch
-	b2sums = 1abaa5b388a4130c99a64fb44ef5a99eb76a47823804f532117ac46c4220b58a7977da0ffb173b9dd26e44dedfcf8c5dc83e80f912780e4b3afb50893b9b615d
+	b2sums = 970288edd8709bbb21529018dbeb4cb83e82d67fbe72de57e8237678a23486f32bd6e4f5d996429cd6f3154ffa4937e4de84040f570c76127768ca1c92aa2bf1
 	b2sums = a3e26a833c41787913b88ad4e75cec2e17d99f350314083200527b303e6dbd8c15298ec2cefc87c36be422fd0cce5ba7f7236579ae2eb65731107818d958fe39
 
 pkgname = dlt-viewer
