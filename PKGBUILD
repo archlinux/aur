@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_gitname}-bin
 pkgdesc="Tool to scan onion services"
 
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ _pkgsrc="${_gitname}-${pkgver}"
 source=("${_pkgsrc}-checksums.txt::${_ghurl}/releases/download/${_gitversion}/checksums.txt")
 source_x86_64=("${_pkgsrc}-${arch[0]}.tgz::${_ghurl}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgsrc}-${arch[1]}.tgz::${_ghurl}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[1]}.tar.gz")
-sha256sums=('0423009227b9f8d53dad8735e576fd66c9e338ad00816df1653523dfe9f6f20d')
-sha256sums_x86_64=('859b13ddf9cdb95be71676279c77ffe6f31805e0306a85b95fa612a456006c41')
-sha256sums_aarch64=('b7c8917dac4f3c48a074ad9b291b6c63f07dc38e171892c46435d66db9dab732')
+sha256sums=('13d0792e18edab7aa84b5f3a0954f911189371512225e91b639aff5496f63735')
+sha256sums_x86_64=('2a89fdb06b5949a4f50d49d720b0f5247acdaeae9fe4894c0f8af8b1605f997a')
+sha256sums_aarch64=('e9cdd043b8ec47721d7fc6e3f4be98694ea570310276cecf600d0f9bc47b1fd4')
 
 
 verify() {
