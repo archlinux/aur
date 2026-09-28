@@ -1,0 +1,15 @@
+pkgbase = moarchy-atlas
+	pkgdesc = Flags, capitals and facts for every country, and a flag quiz, for Quickshell
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SimonSchubert/moarchy-apps
+	arch = any
+	license = MIT
+	depends = quickshell
+	depends = curl
+	depends = ttf-jetbrains-mono-nerd
+	depends = hicolor-icon-theme
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/atlas-v0.1.0/moarchy-atlas-0.1.0.tar.gz
+	sha256sums = 53a3f332a80fb0c74294038aeb140521086b71da78dd5bcb4160e2d948d4c89e
+
+pkgname = moarchy-atlas
