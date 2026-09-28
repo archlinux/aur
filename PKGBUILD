@@ -5,7 +5,7 @@
 # shell when the plugin is installed there, and as its own Quickshell process
 # everywhere else -- so this package needs Quickshell, not Omarchy.
 pkgname=crypto-market
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='CoinGecko prices, coin pages, a watchlist and a portfolio, for Quickshell'
 arch=('any')
@@ -18,7 +18,7 @@ depends=('quickshell' 'ttf-jetbrains-mono-nerd' 'hicolor-icon-theme')
 # A release asset that packaging/release.sh builds from apps/crypto-market at
 # the tag, not GitHub's generated archive of the whole repository.
 source=("$url/releases/download/crypto-market-v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('879e5a93196bc3c3bf3cb6346a306f98c6561de3ce3859ca558c3b3557e97909')
+sha256sums=('02979a3d87dd7d4e79676b0527217dd96f9759ca35aa818c7de78b749a4c8e19')
 
 package() {
   cd "$pkgname-$pkgver"

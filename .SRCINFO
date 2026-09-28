@@ -1,6 +1,6 @@
 pkgbase = crypto-market
 	pkgdesc = CoinGecko prices, coin pages, a watchlist and a portfolio, for Quickshell
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/SimonSchubert/moarchy-apps
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = crypto-market
 	depends = quickshell
 	depends = ttf-jetbrains-mono-nerd
 	depends = hicolor-icon-theme
-	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/crypto-market-v1.1.1/crypto-market-1.1.1.tar.gz
-	sha256sums = 879e5a93196bc3c3bf3cb6346a306f98c6561de3ce3859ca558c3b3557e97909
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/crypto-market-v1.2.0/crypto-market-1.2.0.tar.gz
+	sha256sums = 02979a3d87dd7d4e79676b0527217dd96f9759ca35aa818c7de78b749a4c8e19
 
 pkgname = crypto-market
