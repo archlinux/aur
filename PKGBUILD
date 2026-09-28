@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kunyin-desktop-bin
 _pkgname="坤音"
-pkgver=1.0.5
-_electronversion=39
+pkgver=1.0.7
+_electronversion=44
 pkgrel=1
-pkgdesc="A desktop music player that aggregates multi-platform audio sources.(Prebuilt version.Use system-wide electron)聚合多平台音源的桌面音乐播放器"
+pkgdesc="A desktop music player that aggregates multi-platform audio sources.聚合多平台音源的桌面音乐播放器"
 arch=('x86_64')
 url="https://github.com/ikunshare/kunyin-desktop"
 license=('MIT')
@@ -21,9 +21,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/ikunshare/kunyin-desktop/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d1b2421527109fbdb69d122ba6833c810b0e2267430518a0e6e045fdc410e602'
+sha256sums=('c412d12fe9b4c3b176d20c4c006cf728d43834c049127c22a8f74ed0fcdeaefe'
             '1b19fe707eab955d1070c99dfed63f5984b1deee79b57c161979eefcf0b61763'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -54,7 +54,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
     local _app_dir=$(_get_app_dir)
-    cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
