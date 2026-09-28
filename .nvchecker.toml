@@ -1,5 +1,5 @@
 [mdcat]
 source = "git"
-git = "https://github.com/swsnr/mdcat.git"
+git = "https://github.com/BIRSAx2/mdcat.git"
 prefix = "mdcat-"
 exclude_regex = "mdless-.*"
