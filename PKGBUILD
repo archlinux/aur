@@ -1,12 +1,12 @@
 # Maintainer: Dmytro Bagrii <dimich.dmb@gmail.com>
-# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 
 _pkgname=stellarium
 pkgname=${_pkgname}-lite
-pkgver=26.2
+pkgver=26.3
 pkgrel=1
 pkgdesc="Stellarium without GPS and Telescope Control support (no gpsd and libindi dependencies)"
 arch=(x86_64)
@@ -21,7 +21,7 @@ _patches=()
 source=(https://github.com/Stellarium/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz{,.asc}
         ${_patches[@]/#/https://github.com/Stellarium/stellarium/commit/})
 validpgpkeys=('79151C2E6351E7278DA1A730BF38D4D02A328DFF') # Alexander Wolf <alex.v.wolf@gmail.com>
-sha256sums=('a564cb133ab1b2ff7587ea8a9d5659433af0502743167eb354233fea2795188c'
+sha256sums=('dc153809be4450e0da20099e68ec95d1b6e22f19b33cb0019588475e0d080585'
             'SKIP')
 
 prepare() {
@@ -51,7 +51,7 @@ build() {
     -DENABLE_GPS=0 \
     -DENABLE_MEDIA=0 \
     -DUSE_PLUGIN_TELESCOPECONTROL=0 \
-    -Wno-dev
+    -Wno-author
   cmake --build build --target all -- ${MAKEFLAGS}
 }
 
