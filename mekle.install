@@ -1,0 +1,9 @@
+post_install() {
+    if [ ! -e /etc/xdg/mekle/config.toml ] && [ ! -L /etc/xdg/mekle/config.toml ]; then
+        install -Dm644 /usr/share/mekle/config.toml /etc/xdg/mekle/config.toml
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
