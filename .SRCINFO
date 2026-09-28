@@ -1,7 +1,7 @@
 pkgbase = zalo-for-linux-git
 	pkgdesc = Zalo for Linux — unofficial port with ZaDark, running on system Electron 22
 	pkgver = 26.8.20+26.2.1.r99.87b0696
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/doandat943/zalo-for-linux
 	arch = x86_64
 	arch = aarch64
