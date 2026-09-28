@@ -1,7 +1,7 @@
 # Maintainer: Mahfuz Shaikh <mah3uz at gmail dot com>
 
 pkgname=darwan
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Themes for the SDDM login screen and the Quickshell lockscreen, with a CLI, TUI and GUI'
 arch=('x86_64')
@@ -10,6 +10,7 @@ license=('GPL-3.0-only')
 depends=(
   'gcc-libs'
   'glibc'
+  'mpvqt'
   'polkit'
   'qt6-5compat'
   'qt6-base'
@@ -19,7 +20,7 @@ depends=(
   'quickshell'
   'ttf-jetbrains-mono-nerd'
 )
-makedepends=('cargo' 'librsvg' 'lld')
+makedepends=('cargo' 'cmake' 'librsvg' 'lld')
 optdepends=(
   'sddm: use the themes on the login screen'
   'libfaketime: darwan preview --at'
@@ -28,7 +29,7 @@ optdepends=(
 # makepkg's -flto turns cxx-qt's C++ into GCC LTO objects that the Rust link can't resolve.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5f0beb1e8f008a21e7654326436f497e25f77df2c2f3a7c39dc8c5b23bd89827')
+sha256sums=('85188efc5c41ac86ed0ff3f6419fb48519323e1cadcb69120a6c01650d900b44')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -43,6 +44,8 @@ build() {
   # cxx-qt's headers use __FILE__; keep the build directory out of the binary.
   export CXXFLAGS+=" -ffile-prefix-map=$srcdir=/usr/src/debug/$pkgname"
   cargo build --frozen --release --workspace
+  cmake -S plugin -B target/plugin -DCMAKE_BUILD_TYPE=None -Wno-dev
+  cmake --build target/plugin
 }
 
 check() {
@@ -57,6 +60,8 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm755 target/release/darwan target/release/darwan-gui -t "$pkgdir/usr/bin"
   install -Dm755 target/release/darwan-helper -t "$pkgdir/usr/lib/darwan"
+  install -Dm755 target/plugin/qml/Darwan/libdarwanplugin.so -t "$pkgdir/usr/lib/darwan/qml/Darwan"
+  install -Dm644 target/plugin/qml/Darwan/{qmldir,darwanplugin.qmltypes} -t "$pkgdir/usr/lib/darwan/qml/Darwan"
   install -d "$pkgdir/usr/share/darwan"
   cp -r --no-preserve=ownership runtime themes "$pkgdir/usr/share/darwan/"
   install -Dm644 packaging/arch/org.darwan.policy -t "$pkgdir/usr/share/polkit-1/actions"
