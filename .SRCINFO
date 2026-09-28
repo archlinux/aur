@@ -1,10 +1,13 @@
 pkgbase = perl-catalyst-plugin-session-store-dbic
 	pkgdesc = Store your sessions via DBIx::Class
-	pkgver = 0.14
-	pkgrel = 2
-	url = https://metacpan.org/release/BOBTFISH/Catalyst-Plugin-Session-Store-DBIC-0.14
+	pkgver = 0.15
+	pkgrel = 1
+	url = https://metacpan.org/dist/Catalyst-Plugin-Session-Store-DBIC
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-findbin
+	checkdepends = perl-test-simple
+	checkdepends = perl-test-warn>=0.20
 	makedepends = perl-extutils-makemaker
 	depends = perl
 	depends = perl-carp
@@ -12,15 +15,15 @@ pkgbase = perl-catalyst-plugin-session-store-dbic
 	depends = perl-catalyst-runtime
 	depends = perl-class-accessor
 	depends = perl-dbix-class>=0.07000
-	depends = perl-findbin
 	depends = perl-mime-base64
 	depends = perl-mro-compat
 	depends = perl-scalar-list-utils
 	depends = perl-storable
-	depends = perl-test-simple
-	depends = perl-test-warn>=0.20
+	optdepends = perl-catalyst-model-dbic-schema
+	optdepends = perl-catalyst-plugin-session-state-cookie
+	optdepends = perl-test-www-mechanize-catalyst
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/B/BO/BOBTFISH/Catalyst-Plugin-Session-Store-DBIC-0.14.tar.gz
-	sha256sums = db8f4a139e31aed0b40d62a0ff44b1bdc57308d8f5f61f54a4caa4769301e5ac
+	source = https://cpan.metacpan.org/authors/id/A/AR/ARODLAND/Catalyst-Plugin-Session-Store-DBIC-0.15.tar.gz
+	sha256sums = 298d16c2b4e96e690bf84b01400417c3f287750b5ec2f2983c1e994be88eca7e
 
 pkgname = perl-catalyst-plugin-session-store-dbic

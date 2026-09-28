@@ -1,14 +1,14 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 
-_author=BOBTFISH
+_author=ARODLAND
 _dist=Catalyst-Plugin-Session-Store-DBIC
 pkgname=perl-${_dist@L}
-pkgver=0.14
-pkgrel=2
+pkgver=0.15
+pkgrel=1
 pkgdesc='Store your sessions via DBIx::Class'
 arch=('any')
-url=https://metacpan.org/release/$_author/$_dist-$pkgver
+url=https://metacpan.org/dist/$_dist
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
     'perl'
@@ -17,18 +17,25 @@ depends=(
     'perl-catalyst-runtime'
     'perl-class-accessor'
     'perl-dbix-class>=0.07000'
-    'perl-findbin'
     'perl-mime-base64'
     'perl-mro-compat'
     'perl-scalar-list-utils'
     'perl-storable'
+)
+makedepends=('perl-extutils-makemaker')
+checkdepends=(
+    'perl-findbin'
     'perl-test-simple'
     'perl-test-warn>=0.20'
 )
-makedepends=('perl-extutils-makemaker')
+optdepends=(
+    'perl-catalyst-model-dbic-schema'
+    'perl-catalyst-plugin-session-state-cookie'
+    'perl-test-www-mechanize-catalyst'
+)
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('db8f4a139e31aed0b40d62a0ff44b1bdc57308d8f5f61f54a4caa4769301e5ac')
+sha256sums=('298d16c2b4e96e690bf84b01400417c3f287750b5ec2f2983c1e994be88eca7e')
 
 build()
 {
