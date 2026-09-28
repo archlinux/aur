@@ -1,7 +1,7 @@
 # Maintainer: Stipe Kotarac <stipe@kotarac.net>
 
 pkgname=jay
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc='A Wayland Compositor'
 arch=('x86_64')
@@ -12,6 +12,7 @@ provides=(
 )
 depends=(
   cairo
+  fontconfig
   gcc-libs
   glib2
   glibc
@@ -22,18 +23,18 @@ depends=(
   pango
 )
 optdepends=(
+  'fuse3: mount the debug filesystem'
   'sqlite: session management'
   'xdg-desktop-portal: portal support'
   'xorg-xwayland: X11 support'
 )
 makedepends=(
   cargo
-  cmake
 )
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mahkoh/jay/archive/v$pkgver.tar.gz")
 install=jay.install
-sha512sums=('20e434a84b48b8bf9fa8142e4acec2115be12504cd21bb9f81574cdca4336f5b35752a27a6bf1d1ea4741807290cc65860744a553afcf990c20b94434e515faf')
+sha512sums=('296df0ea96bb5e7050980486baf73c5c5f5373c7d23ed4ceb3665e1cd90c6f60c6b55c38ff9fe6dd88c979e874b9748ea5a189d731fef35db308f2906d22ef40')
 
 prepare() {
   cd $pkgname-$pkgver/
@@ -57,6 +58,7 @@ package() {
   cd $pkgname-$pkgver/
 
   install -D -m755 -s target/release/jay $pkgdir/usr/bin/jay
+  install -D -m644 etc/jay.desktop $pkgdir/usr/share/wayland-sessions/jay.desktop
   install -D -m644 etc/jay.portal $pkgdir/usr/share/xdg-desktop-portal/portals/jay.portal
   install -D -m644 etc/jay-portals.conf $pkgdir/usr/share/xdg-desktop-portal/jay-portals.conf
 
