@@ -1,22 +1,20 @@
 pkgbase = tailchat-desktop
 	pkgdesc = Next generation noIM application in your own workspace, not only another Slack/Discord/Rocket.chat.
-	pkgver = 1.11.14
+	pkgver = 1.11.17
 	pkgrel = 1
 	url = https://tailchat.msgbyte.com/
 	arch = any
 	license = Apache-2.0
 	makedepends = gendesk
-	makedepends = npm
 	makedepends = nvm
-	makedepends = pnpm
+	makedepends = yarn
 	makedepends = git
-	makedepends = curl
 	makedepends = jq
 	depends = electron18
 	conflicts = tailchat-desktop
-	source = tailchat-desktop-1.11.14::git+https://github.com/msgbyte/tailchat#tag=v1.11.14
+	source = tailchat-desktop-1.11.17::git+https://github.com/msgbyte/tailchat#tag=v1.11.17
 	source = tailchat-desktop.sh
-	sha256sums = ea7c6a8f87fbfe48aa649634c25006eb26e8b67a2443ba2c64078c0b290e2e41
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = 5f7f99dc78ae2b57c3765c14f016160535ca83ccf631e639bc778f1c82da527b
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
 pkgname = tailchat-desktop

@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=tailchat
 pkgname="${_pkgname}-desktop"
-pkgver=1.11.14
+pkgver=1.11.17
 _electronversion=18
 _nodeversion=16
 pkgrel=1
@@ -16,19 +16,17 @@ depends=(
 )
 makedepends=(
     'gendesk'
-    'npm'
     'nvm'
-    'pnpm'
+    'yarn'
     'git'
-    'curl'
     'jq'
 )
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('ea7c6a8f87fbfe48aa649634c25006eb26e8b67a2443ba2c64078c0b290e2e41'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums=('5f7f99dc78ae2b57c3765c14f016160535ca83ccf631e639bc778f1c82da527b'
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -37,6 +35,12 @@ _ensure_local_nvm() {
 }
 _get_app_dir() {
 	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
+}
+_get_project_dir() {
+	local d
+	while IFS= read -r d; do
+		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
+	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -91,15 +95,14 @@ _set_build_env() {
 	fi
 }
 _get_electron_version() {
-    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
-        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
-    [[ -z "${_elec_ver}" ]] && return 1
-    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
+		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
+		| grep -v '^$' | sed 's/^[^0-9]*//' | head -1)
+	[[ -z "${_elec_ver}" ]] && return 1
+	echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    # 删除 packageManager 字段以避免 Corepack 检查
-    sed -i '/"packageManager":/d' package.json
+    cd "$(_get_project_dir)/client/desktop"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -108,14 +111,14 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    _set_build_env
-    gendesk -q -f -n \
+	_set_build_env
+	gendesk -q -f -n \
         --pkgname="${_pkgname}-desktop" \
         --pkgdesc="${pkgdesc}" \
         --categories="Network" \
         --name="${pkgname}" \
         --exec="${pkgname} %U"
-    cd "${srcdir}/${pkgname}-${pkgver}/client/desktop"
+    sed -i '/"packageManager":/d' "$(_get_project_dir)/package.json"
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} \;
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/\/build//g" -i electron-builder.yml
@@ -124,20 +127,21 @@ prepare() {
     yarn add -D ts-node source-map-support
 }
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}/client/desktop"
+    cd "$(_get_project_dir)/client/desktop"
     _ensure_local_nvm
-    _set_build_env
-    export NODE_ENV=production
+	_set_build_env
+	export NODE_ENV=production
     yarn ts-node ./.erb/scripts/clean.js dist
     yarn run build
     yarn electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}" --config.asar=false
 }
 package() {
+    local _src="$(_get_project_dir)"
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
 	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/client/desktop/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${_src}/client/desktop/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${_src}/client/desktop/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${_src}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
