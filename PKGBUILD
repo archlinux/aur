@@ -1,14 +1,14 @@
 # Maintainer: rez <rez@ifwerez.ru>
 pkgname=cider-studio-bin
 pkgver=2.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="run & control roblox studio advancedly on linux (pre-built binary)"
 arch=('x86_64')
-url="https://ifwerez.ru/git/rez/cider"
+url="https://git.ifwerez.ru/rez/cider"
 license=('MIT')
-depends=('sdl2' 'libgl' 'zlib' 'xz' 'curl' 'cabextract' 'wine')
-source=("https://ifwerez.ru/git/rez/cider/releases/download/${pkgver}/cider-${pkgver}-linux-x86_64"
-        "cider.png::https://ifwerez.ru/git/rez/cider/raw/branch/main/src/resources/cider.png")
+depends=('sdl2' 'libgl' 'freetype2' 'zlib' 'xz' 'curl' 'cabextract' 'wine')
+source=("https://git.ifwerez.ru/rez/cider/releases/download/${pkgver}/cider-${pkgver}-linux-x86_64"
+        "cider.png::https://git.ifwerez.ru/rez/cider/raw/branch/main/src/resources/cider.png")
 sha256sums=('SKIP'
             'SKIP')
 
