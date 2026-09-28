@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folia-major
 _pkgname=Folia
-pkgver=0.7.8
+pkgver=0.7.9
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -21,15 +21,21 @@ makedepends=(
     'npm'
     'nvm'
     'git'
-    'curl'
+    'rustup'
     'jq'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('0f90530b31af85ef00de84d08b6b5f5762820d161ca9f75faf1318119a1901cb'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums=('7d5cbfd4155eefea5f2cd74ba78c25e6267261f2350e67d1477a2cac7ffa8615'
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+_get_project_dir() {
+	local d
+	while IFS= read -r d; do
+		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
+	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+}
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -50,19 +56,28 @@ _set_build_env() {
 	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
 	export COREPACK_HOME="${HOME}/.corepack"
 	export npm_config_audit=false
-	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}"
+	export npm_config_registry="${NPM_CONFIG_REGISTRY:-${npm_config_registry:-https://registry.npmjs.org}}"
+    export CARGO_HOME="${HOME}/.cargo"
+	export CARGO_NET_GIT_FETCH_WITH_CLI=true
+	export CARGO_NET_RETRY=5
+	export CARGO_HTTP_MULTIPLEXING=false
+	export CARGO_INCREMENTAL=0
+	export CARGO_TERM_COLOR=never
+	export CARGO_PROFILE_RELEASE_STRIP=symbols
+	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}" "${CARGO_HOME}"
 }
 _get_app_dir() {
-	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
+	find "$(_get_project_dir)" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }
 _get_electron_version() {
-    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
-        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
-    [[ -z "${_elec_ver}" ]] && return 1
-    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
+		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
+		| grep -v '^$' | sed 's/^[^0-9]*//' | head -1)
+	[[ -z "${_elec_ver}" ]] && return 1
+	echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "$(_get_project_dir)"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -75,27 +90,35 @@ prepare() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     find electron -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     cp .env.example .env
+    rustup update stable
+    rustup default stable
     export NODE_ENV=development
     export npm_config_allow_remote=all
-    npm install
+    rm -rf package-lock.json
+    npm install --legacy-peer-deps
 }
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "$(_get_project_dir)"
 	_ensure_local_nvm
     _set_build_env
     export ELECTRON=true
     export NODE_ENV=production
-    npm run build
+    export NODE_OPTIONS="--max-old-space-size=4096"
+    npm run build:vercel-api
+    npx vite build
+    npm run build:windowtolayer
+    npm run build:wallpaper-helper
     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     ln -sf "/usr/bin/ffmpeg" "${_app_dir}/resources/ffmpeg-audio/ffmpeg"
     rm -rf "${_app_dir}/resources/default_app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-	local _app_dir=$(_get_app_dir)
+	local _app_dir="$(_get_app_dir)"
 	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/packaging/aur/${pkgname}-bin/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    local _src="$(_get_project_dir)"
+    install -Dm644 "${_src}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${_src}/packaging/aur/${pkgname}-bin/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
