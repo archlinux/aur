@@ -1,15 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=easyeditor-bin
 _pkgname=Easyeditor
-pkgver=2.1.1
+pkgver=2.5.0
 pkgrel=1
-pkgdesc="An easy markdown editor that allows you to write MarkDown (MD) and preview it in real-time. You can save, load .md files and export to PDF.(Prebuilt version.Use system-wide electron)"
+pkgdesc="An easy markdown editor that allows you to write MarkDown (MD) and preview it in real-time. You can save, load .md files and export to PDF."
 arch=(
     'aarch64'
     'x86_64'
 )
-url="https://github.com/gcclinux/Easyeditor"
-license=('MIT')
+url="https://www.easyeditor.co.uk/"
+_ghurl="https://github.com/gcclinux/Easyeditor"
+license=('LicenseRef-custom')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
@@ -17,13 +18,14 @@ depends=(
     'gtk3'
 )
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/gcclinux/Easyeditor/v${pkgver}/LICENSE")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.aarch64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm")
 sha256sums=('77abfe2cc9f9b4df31d727b9b200e35ba5cd3080114d299f5df6cd089dc121de')
-sha256sums_aarch64=('478bf7f8388167692c65f146a71848ab4df281c5605e1d49a919da4d07499aef')
-sha256sums_x86_64=('45d95e6e44f23843d70f79496fa3850b2937b40868f3b1ea1b7fa8b0919539b3')
+sha256sums_aarch64=('61f91adb69e6cc0d034c3027d655a4f56066432fdbedb63c6469684ba326b25c')
+sha256sums_x86_64=('a3ce8a1b4d653b19c609ae92b56ebad3139fc316a8f4beff5ab54483b43ebbcf')
 prepare() {
     sed -i "s/Name=${pkgname%-bin}/Name=${_pkgname}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
