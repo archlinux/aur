@@ -1,0 +1,5 @@
+[ntvcm]
+source = 'github'
+github = 'davidly/ntvcm'
+use_latest_release = true
+prefix = 'v'
