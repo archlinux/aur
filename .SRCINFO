@@ -1,0 +1,14 @@
+pkgbase = brmgen
+	pkgdesc = Generate editable brModelo conceptual and logical models from YAML or JSON
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/kristyancarvalho/brmgen
+	arch = any
+	license = MIT
+	depends = java-runtime>=21
+	source = brmgen-0.4.0.tar::https://github.com/kristyancarvalho/brmgen/releases/download/v0.4.0/brmgen-0.4.0.tar
+	source = LICENSE-0.4.0::https://github.com/kristyancarvalho/brmgen/raw/v0.4.0/LICENSE
+	sha256sums = dd26f963d4435c6349d3f9a3b4e0773af5c563b6e50db670220a0a90ea8bfa84
+	sha256sums = fb6b85af7158d2f3b5784a3ee0113bbdc94371c681518acb7bb66cf806a1f472
+
+pkgname = brmgen
