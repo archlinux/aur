@@ -2,7 +2,7 @@
 
 pkgname=essentials-unpackd-git
 _pkgname=Essentials-Unpackd
-pkgver=3.0.0.r114.ge94475a
+pkgver=3.0.0.r116.g9729c63
 pkgrel=1
 pkgdesc="Tool for unpacking and repacking Pokémon Essentials data files"
 arch=('any')
