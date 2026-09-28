@@ -1,0 +1,563 @@
+diff --git a/src/qwt_bezier.h b/src/qwt_bezier.h
+index 7b0cbe3..68b5c5b 100644
+--- a/src/qwt_bezier.h
++++ b/src/qwt_bezier.h
+@@ -33,7 +33,7 @@ class QWT_EXPORT QwtBezier
+     ~QwtBezier();
+ 
+     void setTolerance( double tolerance );
+-    double tolerance() const;
++    inline double tolerance() const;
+ 
+     QPolygonF toPolygon( const QPointF& p1, const QPointF& cp1,
+         const QPointF& cp2, const QPointF& p2 ) const;
+diff --git a/src/qwt_color_map.h b/src/qwt_color_map.h
+index 247e7b8..985a570 100644
+--- a/src/qwt_color_map.h
++++ b/src/qwt_color_map.h
+@@ -64,7 +64,7 @@ class QWT_EXPORT QwtColorMap
+     virtual ~QwtColorMap();
+ 
+     void setFormat( Format );
+-    Format format() const;
++    inline Format format() const;
+ 
+     /*!
+        Map a value of a given interval into a RGB value.
+@@ -78,7 +78,7 @@ class QWT_EXPORT QwtColorMap
+     virtual uint colorIndex( int numColors,
+         const QwtInterval& interval, double value ) const;
+ 
+-    QColor color( const QwtInterval&, double value ) const;
++    inline QColor color( const QwtInterval&, double value ) const;
+     virtual QVector< QRgb > colorTable( int numColors ) const;
+     virtual QVector< QRgb > colorTable256() const;
+ 
+diff --git a/src/qwt_interval.h b/src/qwt_interval.h
+index 9d59fac..782bfb0 100644
+--- a/src/qwt_interval.h
++++ b/src/qwt_interval.h
+@@ -44,31 +44,31 @@ class QWT_EXPORT QwtInterval
+     //! Border flags
+     Q_DECLARE_FLAGS( BorderFlags, BorderFlag )
+ 
+-    QwtInterval();
+-    QwtInterval( double minValue, double maxValue,
++    inline QwtInterval();
++    inline QwtInterval( double minValue, double maxValue,
+         BorderFlags = IncludeBorders );
+ 
+-    void setInterval( double minValue, double maxValue,
++    inline void setInterval( double minValue, double maxValue,
+         BorderFlags = IncludeBorders );
+ 
+     QwtInterval normalized() const;
+     QwtInterval inverted() const;
+     QwtInterval limited( double lowerBound, double upperBound ) const;
+ 
+-    bool operator==( const QwtInterval& ) const;
+-    bool operator!=( const QwtInterval& ) const;
++    inline bool operator==( const QwtInterval& ) const;
++    inline bool operator!=( const QwtInterval& ) const;
+ 
+-    void setBorderFlags( BorderFlags );
+-    BorderFlags borderFlags() const;
++    inline void setBorderFlags( BorderFlags );
++    inline BorderFlags borderFlags() const;
+ 
+-    double minValue() const;
+-    double maxValue() const;
++    inline double minValue() const;
++    inline double maxValue() const;
+ 
+-    double width() const;
+-    long double widthL() const;
++    inline double width() const;
++    inline long double widthL() const;
+ 
+-    void setMinValue( double );
+-    void setMaxValue( double );
++    inline void setMinValue( double );
++    inline void setMaxValue( double );
+ 
+     bool contains( double value ) const;
+     bool contains( const QwtInterval& ) const;
+@@ -77,19 +77,19 @@ class QWT_EXPORT QwtInterval
+     QwtInterval intersect( const QwtInterval& ) const;
+     QwtInterval unite( const QwtInterval& ) const;
+ 
+-    QwtInterval operator|( const QwtInterval& ) const;
+-    QwtInterval operator&( const QwtInterval& ) const;
++    inline QwtInterval operator|( const QwtInterval& ) const;
++    inline QwtInterval operator&( const QwtInterval& ) const;
+ 
+     QwtInterval& operator|=( const QwtInterval& );
+     QwtInterval& operator&=( const QwtInterval& );
+ 
+     QwtInterval extend( double value ) const;
+-    QwtInterval operator|( double ) const;
++    inline QwtInterval operator|( double ) const;
+     QwtInterval& operator|=( double );
+ 
+-    bool isValid() const;
+-    bool isNull() const;
+-    void invalidate();
++    inline bool isValid() const;
++    inline bool isNull() const;
++    inline void invalidate();
+ 
+     QwtInterval symmetrize( double value ) const;
+ 
+diff --git a/src/qwt_painter.h b/src/qwt_painter.h
+index 8c175ce..eb66e1e 100644
+--- a/src/qwt_painter.h
++++ b/src/qwt_painter.h
+@@ -37,11 +37,11 @@ class QWT_EXPORT QwtPainter
+ {
+   public:
+     static void setPolylineSplitting( bool );
+-    static bool polylineSplitting();
++    static inline bool polylineSplitting();
+ 
+     static void setRoundingAlignment( bool );
+-    static bool roundingAlignment();
+-    static bool roundingAlignment( const QPainter* );
++    static inline bool roundingAlignment();
++    static inline bool roundingAlignment( const QPainter* );
+ 
+     static void drawText( QPainter*, qreal x, qreal y, const QString& );
+     static void drawText( QPainter*, const QPointF&, const QString& );
+@@ -62,9 +62,9 @@ class QWT_EXPORT QwtPainter
+     static void drawEllipse( QPainter*, const QRectF& );
+     static void drawPie( QPainter*, const QRectF& r, int a, int alen );
+ 
+-    static void drawLine( QPainter*, qreal x1, qreal y1, qreal x2, qreal y2 );
++    static inline void drawLine( QPainter*, qreal x1, qreal y1, qreal x2, qreal y2 );
+     static void drawLine( QPainter*, const QPointF& p1, const QPointF& p2 );
+-    static void drawLine( QPainter*, const QLineF& );
++    static inline void drawLine( QPainter*, const QLineF& );
+ 
+     static void drawPolygon( QPainter*, const QPolygonF& );
+     static void drawPolyline( QPainter*, const QPolygonF& );
+@@ -75,12 +75,12 @@ class QWT_EXPORT QwtPainter
+     static void drawPolyline( QPainter*, const QPoint*, int pointCount );
+ 
+     static void drawPoint( QPainter*, const QPoint& );
+-    static void drawPoints( QPainter*, const QPolygon& );
++    static inline void drawPoints( QPainter*, const QPolygon& );
+     static void drawPoints( QPainter*, const QPoint*, int pointCount );
+ 
+-    static void drawPoint( QPainter*, qreal x, qreal y );
++    static inline void drawPoint( QPainter*, qreal x, qreal y );
+     static void drawPoint( QPainter*, const QPointF& );
+-    static void drawPoints( QPainter*, const QPolygonF& );
++    static inline void drawPoints( QPainter*, const QPolygonF& );
+     static void drawPoints( QPainter*, const QPointF*, int pointCount );
+ 
+     static void drawPath( QPainter*, const QPainterPath& );
+@@ -117,7 +117,7 @@ class QWT_EXPORT QwtPainter
+     static QPixmap backingStore( QWidget*, const QSize& );
+     static qreal devicePixelRatio( const QPaintDevice* );
+ 
+-    static qreal effectivePenWidth( const QPen& );
++    static inline qreal effectivePenWidth( const QPen& );
+ 
+     static int horizontalAdvance( const QFontMetrics&, const QString& );
+     static qreal horizontalAdvance( const QFontMetricsF&, const QString& );
+diff --git a/src/qwt_painter_command.h b/src/qwt_painter_command.h
+index 87af961..3bebfb3 100644
+--- a/src/qwt_painter_command.h
++++ b/src/qwt_painter_command.h
+@@ -109,19 +109,19 @@ class QWT_EXPORT QwtPainterCommand
+ 
+     QwtPainterCommand& operator=(const QwtPainterCommand& );
+ 
+-    Type type() const;
++    inline Type type() const;
+ 
+     QPainterPath* path();
+-    const QPainterPath* path() const;
++    inline const QPainterPath* path() const;
+ 
+     PixmapData* pixmapData();
+-    const PixmapData* pixmapData() const;
++    inline const PixmapData* pixmapData() const;
+ 
+     ImageData* imageData();
+-    const ImageData* imageData() const;
++    inline const ImageData* imageData() const;
+ 
+     StateData* stateData();
+-    const StateData* stateData() const;
++    inline const StateData* stateData() const;
+ 
+   private:
+     void copy( const QwtPainterCommand& );
+diff --git a/src/qwt_pixel_matrix.h b/src/qwt_pixel_matrix.h
+index a6e2a6f..a2b54a8 100644
+--- a/src/qwt_pixel_matrix.h
++++ b/src/qwt_pixel_matrix.h
+@@ -30,10 +30,10 @@ class QWT_EXPORT QwtPixelMatrix : public QBitArray
+     void setRect( const QRect& rect );
+     QRect rect() const;
+ 
+-    bool testPixel( int x, int y ) const;
+-    bool testAndSetPixel( int x, int y, bool on );
++    inline bool testPixel( int x, int y ) const;
++    inline bool testAndSetPixel( int x, int y, bool on );
+ 
+-    int index( int x, int y ) const;
++    inline int index( int x, int y ) const;
+ 
+   private:
+     QRect m_rect;
+diff --git a/src/qwt_plot_curve.h b/src/qwt_plot_curve.h
+index 72761c6..a0f6a9d 100644
+--- a/src/qwt_plot_curve.h
++++ b/src/qwt_plot_curve.h
+@@ -275,10 +275,10 @@ class QWT_EXPORT QwtPlotCurve
+ 
+     qreal interpolatedValueAt( Qt::Orientation, double ) const;
+ 
+-    double minXValue() const;
+-    double maxXValue() const;
+-    double minYValue() const;
+-    double maxYValue() const;
++    inline double minXValue() const;
++    inline double maxXValue() const;
++    inline double minYValue() const;
++    inline double maxYValue() const;
+ 
+     void setCurveAttribute( CurveAttribute, bool on = true );
+     bool testCurveAttribute( CurveAttribute ) const;
+diff --git a/src/qwt_point_3d.h b/src/qwt_point_3d.h
+index 9c0269a..d09d519 100644
+--- a/src/qwt_point_3d.h
++++ b/src/qwt_point_3d.h
+@@ -22,28 +22,28 @@
+ class QWT_EXPORT QwtPoint3D
+ {
+   public:
+-    QwtPoint3D();
+-    QwtPoint3D( double x, double y, double z );
+-    QwtPoint3D( const QPointF& );
++    inline QwtPoint3D();
++    inline QwtPoint3D( double x, double y, double z );
++    inline QwtPoint3D( const QPointF& );
+ 
+-    bool isNull()    const;
++    inline bool isNull()    const;
+ 
+-    double x() const;
+-    double y() const;
+-    double z() const;
++    inline double x() const;
++    inline double y() const;
++    inline double z() const;
+ 
+-    double& rx();
+-    double& ry();
+-    double& rz();
++    inline double& rx();
++    inline double& ry();
++    inline double& rz();
+ 
+-    void setX( double x );
+-    void setY( double y );
+-    void setZ( double y );
++    inline void setX( double x );
++    inline void setY( double y );
++    inline void setZ( double y );
+ 
+-    QPointF toPoint() const;
++    inline QPointF toPoint() const;
+ 
+-    bool operator==( const QwtPoint3D& ) const;
+-    bool operator!=( const QwtPoint3D& ) const;
++    inline bool operator==( const QwtPoint3D& ) const;
++    inline bool operator!=( const QwtPoint3D& ) const;
+ 
+   private:
+     double m_x;
+diff --git a/src/qwt_point_polar.h b/src/qwt_point_polar.h
+index 2a25d3e..7cdc3fa 100644
+--- a/src/qwt_point_polar.h
++++ b/src/qwt_point_polar.h
+@@ -28,24 +28,24 @@
+ class QWT_EXPORT QwtPointPolar
+ {
+   public:
+-    QwtPointPolar();
+-    QwtPointPolar( double azimuth, double radius );
++    inline QwtPointPolar();
++    inline QwtPointPolar( double azimuth, double radius );
+     QwtPointPolar( const QPointF& );
+ 
+     void setPoint( const QPointF& );
+     QPointF toPoint() const;
+ 
+-    bool isValid() const;
+-    bool isNull() const;
++    inline bool isValid() const;
++    inline bool isNull() const;
+ 
+-    double radius() const;
+-    double azimuth() const;
++    inline double radius() const;
++    inline double azimuth() const;
+ 
+-    double& rRadius();
+-    double& rAzimuth();
++    inline double& rRadius();
++    inline double& rAzimuth();
+ 
+-    void setRadius( double );
+-    void setAzimuth( double );
++    inline void setRadius( double );
++    inline void setAzimuth( double );
+ 
+     bool operator==( const QwtPointPolar& ) const;
+     bool operator!=( const QwtPointPolar& ) const;
+diff --git a/src/qwt_polar_curve.h b/src/qwt_polar_curve.h
+index 768749e..b0adc10 100644
+--- a/src/qwt_polar_curve.h
++++ b/src/qwt_polar_curve.h
+@@ -87,10 +87,10 @@ class QWT_EXPORT QwtPolarCurve : public QwtPolarItem
+     bool testLegendAttribute( LegendAttribute ) const;
+ 
+     void setData( QwtSeriesData< QwtPointPolar >* data );
+-    const QwtSeriesData< QwtPointPolar >* data() const;
++    inline const QwtSeriesData< QwtPointPolar >* data() const;
+ 
+     size_t dataSize() const;
+-    QwtPointPolar sample( int i ) const;
++    inline QwtPointPolar sample( int i ) const;
+ 
+     void setPen( const QPen& );
+     const QPen& pen() const;
+diff --git a/src/qwt_round_scale_draw.h b/src/qwt_round_scale_draw.h
+index 8a52c7b..824b2eb 100644
+--- a/src/qwt_round_scale_draw.h
++++ b/src/qwt_round_scale_draw.h
+@@ -37,7 +37,7 @@ class QWT_EXPORT QwtRoundScaleDraw : public QwtAbstractScaleDraw
+     void setRadius( double radius );
+     double radius() const;
+ 
+-    void moveCenter( double x, double y );
++    inline void moveCenter( double x, double y );
+     void moveCenter( const QPointF& );
+     QPointF center() const;
+ 
+diff --git a/src/qwt_samples.h b/src/qwt_samples.h
+index 424b826..0738e30 100644
+--- a/src/qwt_samples.h
++++ b/src/qwt_samples.h
+@@ -20,12 +20,12 @@
+ class QWT_EXPORT QwtIntervalSample
+ {
+   public:
+-    QwtIntervalSample();
+-    QwtIntervalSample( double, const QwtInterval& );
+-    QwtIntervalSample( double value, double min, double max );
++    inline QwtIntervalSample();
++    inline QwtIntervalSample( double, const QwtInterval& );
++    inline QwtIntervalSample( double value, double min, double max );
+ 
+-    bool operator==( const QwtIntervalSample& ) const;
+-    bool operator!=( const QwtIntervalSample& ) const;
++    inline bool operator==( const QwtIntervalSample& ) const;
++    inline bool operator!=( const QwtIntervalSample& ) const;
+ 
+     //! Value
+     double value;
+@@ -73,13 +73,13 @@ inline bool QwtIntervalSample::operator!=( const QwtIntervalSample& other ) cons
+ class QWT_EXPORT QwtSetSample
+ {
+   public:
+-    QwtSetSample();
+-    explicit QwtSetSample( double, const QVector< double >& = QVector< double >( ) );
++    inline QwtSetSample();
++    inline explicit QwtSetSample( double, const QVector< double >& = QVector< double >( ) );
+ 
+-    bool operator==( const QwtSetSample& other ) const;
+-    bool operator!=( const QwtSetSample& other ) const;
++    inline bool operator==( const QwtSetSample& other ) const;
++    inline bool operator!=( const QwtSetSample& other ) const;
+ 
+-    double added() const;
++    inline double added() const;
+ 
+     //! value
+     double value;
+@@ -143,13 +143,13 @@ inline double QwtSetSample::added() const
+ class QWT_EXPORT QwtOHLCSample
+ {
+   public:
+-    QwtOHLCSample( double time = 0.0,
++    inline QwtOHLCSample( double time = 0.0,
+         double open = 0.0, double high = 0.0,
+         double low = 0.0, double close = 0.0 );
+ 
+-    QwtInterval boundingInterval() const;
++    inline QwtInterval boundingInterval() const;
+ 
+-    bool isValid() const;
++    inline bool isValid() const;
+ 
+     /*!
+        Time of the sample, usually a number representing
+@@ -243,15 +243,15 @@ inline QwtInterval QwtOHLCSample::boundingInterval() const
+ class QWT_EXPORT QwtVectorFieldSample
+ {
+   public:
+-    QwtVectorFieldSample( double x = 0.0, double y = 0.0,
++    inline QwtVectorFieldSample( double x = 0.0, double y = 0.0,
+         double vx = 0.0, double vy = 0.0 );
+ 
+-    QwtVectorFieldSample( const QPointF& pos,
++    inline QwtVectorFieldSample( const QPointF& pos,
+         double vx = 0.0, double vy = 0.0 );
+ 
+-    QPointF pos() const;
++    inline QPointF pos() const;
+ 
+-    bool isNull() const;
++    inline bool isNull() const;
+ 
+     //! x coordinate of the position
+     double x;
+diff --git a/src/qwt_scale_draw.h b/src/qwt_scale_draw.h
+index 5bc23ad..137aa25 100644
+--- a/src/qwt_scale_draw.h
++++ b/src/qwt_scale_draw.h
+@@ -63,7 +63,7 @@ class QWT_EXPORT QwtScaleDraw : public QwtAbstractScaleDraw
+     int minLength( const QFont& ) const;
+     virtual double extent( const QFont& ) const QWT_OVERRIDE;
+ 
+-    void move( double x, double y );
++    inline void move( double x, double y );
+     void move( const QPointF& );
+     void setLength( double length );
+ 
+diff --git a/src/qwt_scale_map.h b/src/qwt_scale_map.h
+index 7f9e038..1267b60 100644
+--- a/src/qwt_scale_map.h
++++ b/src/qwt_scale_map.h
+@@ -39,17 +39,17 @@ class QWT_EXPORT QwtScaleMap
+     void setPaintInterval( double p1, double p2 );
+     void setScaleInterval( double s1, double s2 );
+ 
+-    double transform( double s ) const;
+-    double invTransform( double p ) const;
++    inline double transform( double s ) const;
++    inline double invTransform( double p ) const;
+ 
+-    double p1() const;
+-    double p2() const;
++    inline double p1() const;
++    inline double p2() const;
+ 
+-    double s1() const;
+-    double s2() const;
++    inline double s1() const;
++    inline double s2() const;
+ 
+-    double pDist() const;
+-    double sDist() const;
++    inline double pDist() const;
++    inline double sDist() const;
+ 
+     static QRectF transform( const QwtScaleMap&,
+         const QwtScaleMap&, const QRectF& );
+@@ -63,7 +63,7 @@ class QWT_EXPORT QwtScaleMap
+     static QPointF invTransform( const QwtScaleMap&,
+         const QwtScaleMap&, const QPointF& );
+ 
+-    bool isInverting() const;
++    inline bool isInverting() const;
+ 
+   private:
+     void updateFactor();
+diff --git a/src/qwt_spline_parametrization.h b/src/qwt_spline_parametrization.h
+index 37a0859..5ed011d 100644
+--- a/src/qwt_spline_parametrization.h
++++ b/src/qwt_spline_parametrization.h
+@@ -112,12 +112,12 @@ class QWT_EXPORT QwtSplineParametrization
+ 
+     virtual double valueIncrement( const QPointF&, const QPointF& ) const;
+ 
+-    static double valueIncrementX( const QPointF&, const QPointF& );
+-    static double valueIncrementY( const QPointF&, const QPointF& );
+-    static double valueIncrementUniform( const QPointF&, const QPointF& );
+-    static double valueIncrementChordal( const QPointF&, const QPointF& );
+-    static double valueIncrementCentripetal( const QPointF&, const QPointF& );
+-    static double valueIncrementManhattan( const QPointF&, const QPointF& );
++    static inline double valueIncrementX( const QPointF&, const QPointF& );
++    static inline double valueIncrementY( const QPointF&, const QPointF& );
++    static inline double valueIncrementUniform( const QPointF&, const QPointF& );
++    static inline double valueIncrementChordal( const QPointF&, const QPointF& );
++    static inline double valueIncrementCentripetal( const QPointF&, const QPointF& );
++    static inline double valueIncrementManhattan( const QPointF&, const QPointF& );
+ 
+   private:
+     const int m_type;
+diff --git a/src/qwt_spline_polynomial.h b/src/qwt_spline_polynomial.h
+index c0fd5b5..e2b9108 100644
+--- a/src/qwt_spline_polynomial.h
++++ b/src/qwt_spline_polynomial.h
+@@ -30,27 +30,27 @@
+ class QWT_EXPORT QwtSplinePolynomial
+ {
+   public:
+-    QwtSplinePolynomial( double c3 = 0.0, double c2 = 0.0, double c1 = 0.0 );
++    inline QwtSplinePolynomial( double c3 = 0.0, double c2 = 0.0, double c1 = 0.0 );
+ 
+-    bool operator==( const QwtSplinePolynomial& ) const;
+-    bool operator!=( const QwtSplinePolynomial& ) const;
++    inline bool operator==( const QwtSplinePolynomial& ) const;
++    inline bool operator!=( const QwtSplinePolynomial& ) const;
+ 
+-    double valueAt( double x ) const;
+-    double slopeAt( double x ) const;
+-    double curvatureAt( double x ) const;
++    inline double valueAt( double x ) const;
++    inline double slopeAt( double x ) const;
++    inline double curvatureAt( double x ) const;
+ 
+-    static QwtSplinePolynomial fromSlopes(
++    static inline QwtSplinePolynomial fromSlopes(
+         const QPointF& p1, double m1,
+         const QPointF& p2, double m2 );
+ 
+-    static QwtSplinePolynomial fromSlopes(
++    static inline QwtSplinePolynomial fromSlopes(
+         double x, double y, double m1, double m2 );
+ 
+-    static QwtSplinePolynomial fromCurvatures(
++    static inline QwtSplinePolynomial fromCurvatures(
+         const QPointF& p1, double cv1,
+         const QPointF& p2, double cv2 );
+ 
+-    static QwtSplinePolynomial fromCurvatures(
++    static inline QwtSplinePolynomial fromCurvatures(
+         double dx, double dy, double cv1, double cv2 );
+ 
+   public:
+diff --git a/src/qwt_symbol.h b/src/qwt_symbol.h
+index 4999bf6..662a0b5 100644
+--- a/src/qwt_symbol.h
++++ b/src/qwt_symbol.h
+@@ -210,8 +210,8 @@ class QWT_EXPORT QwtSymbol
+ #endif
+ 
+     void drawSymbol( QPainter*, const QRectF& ) const;
+-    void drawSymbol( QPainter*, const QPointF& ) const;
+-    void drawSymbols( QPainter*, const QPolygonF& ) const;
++    inline void drawSymbol( QPainter*, const QPointF& ) const;
++    inline void drawSymbols( QPainter*, const QPolygonF& ) const;
+     void drawSymbols( QPainter*,
+         const QPointF*, int numPoints ) const;
+ 
+-- 
+2.43.0
+

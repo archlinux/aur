@@ -8,14 +8,15 @@ url="https://qwt.sourceforge.io/"
 depends=('mingw-w64-qt6-svg')
 makedepends=('mingw-w64-gcc' 'qt6-base')
 options=('staticlibs' '!strip' '!buildflags')
-source=("http://downloads.sourceforge.net/qwt/qwt-${pkgver}.tar.bz2" qt6.patch)
-sha256sums=('dcb085896c28aaec5518cbc08c0ee2b4e60ada7ac929d82639f6189851a6129a' SKIP)
+source=("http://downloads.sourceforge.net/qwt/qwt-${pkgver}.tar.bz2" qt6.patch inline.patch)
+sha256sums=('dcb085896c28aaec5518cbc08c0ee2b4e60ada7ac929d82639f6189851a6129a' SKIP SKIP)
 
 _architectures="x86_64-w64-mingw32"
 
 prepare() {
   cd qwt-${pkgver}
   patch -p1 -i "${srcdir}"/qt6.patch
+  patch -p1 -i "${srcdir}"/inline.patch
 }
 
 build() {

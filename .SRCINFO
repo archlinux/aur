@@ -13,7 +13,9 @@ pkgbase = mingw-w64-qwt
 	options = !buildflags
 	source = http://downloads.sourceforge.net/qwt/qwt-6.3.0.tar.bz2
 	source = qt6.patch
+	source = inline.patch
 	sha256sums = dcb085896c28aaec5518cbc08c0ee2b4e60ada7ac929d82639f6189851a6129a
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mingw-w64-qwt
