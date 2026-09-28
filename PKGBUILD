@@ -3,7 +3,7 @@
 pkgname=bettbox-compatible
 _pkgname=Bettbox
 pkgver=1.19.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash. (Build with GOAMD64=v1)"
 arch=('x86_64')
 options=('!lto')
@@ -23,7 +23,7 @@ sha256sums=('ff07fad289877f4e71eb64d89a61e2b86878a8a28f359df31513ece30bb144d9'
             'd7b7bdb64b1aabcedc8092a1498d743fad66d34b7f592194f805d039004d3e0f')
 prepare() {
 	cd "${_pkgname}-${pkgver}"
-	fvm use 3.44.8
+	fvm use 3.44.9
 	fvm flutter --disable-analytics
 	fvm flutter --no-version-check pub get
 }
