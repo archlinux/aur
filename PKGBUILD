@@ -1,12 +1,12 @@
 # Maintainer: rez <rez@ifwerez.ru>
 pkgname=cider-studio
 pkgver=2.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="run & control roblox studio advancedly on linux"
 arch=('x86_64')
-url="https://ifwerez.ru/git/rez/cider"
+url="https://git.ifwerez.ru/rez/cider"
 license=('MIT')
-depends=('sdl2' 'libgl' 'zlib' 'xz' 'curl' 'cabextract' 'wine')
+depends=('sdl2' 'libgl' 'freetype2' 'zlib' 'xz' 'curl' 'cabextract' 'wine')
 makedepends=('cmake' 'gcc' 'curl' 'git')
 optdepends=('bubblewrap: filesystem sandbox for studio')
 source=()
@@ -14,7 +14,7 @@ sha256sums=()
 
 build() {
     rm -rf src
-    git -c advice.detachedHead=false clone --branch "${pkgver}" --depth 1 "https://ifwerez.ru/git/rez/cider.git" src
+    git -c advice.detachedHead=false clone --branch "${pkgver}" --depth 1 "${url}.git" src
     cd src
     cmake -B build -DCMAKE_BUILD_TYPE=Release
     cmake --build build -j"$(nproc)"
