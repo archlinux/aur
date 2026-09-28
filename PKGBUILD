@@ -3,8 +3,8 @@
 pkgbase="linux-pf"
 _suffix=""
 pkgname=(${pkgbase}${_suffix} ${pkgbase}-headers${_suffix})
-_rev=8bf2dbc059c3d7dbc881f9d93d015cdb5e01959b
-pkgver=7.3.pf2
+_rev=58cd6df377ace364afcfb06ad2d221ac926987ed
+pkgver=7.3.pf3
 pkgrel=1
 pkgdesc="pf-kernel"
 arch=(x86_64)
@@ -15,7 +15,7 @@ options=(!debug !strip)
 source=(https://codeberg.org/pf-kernel/linux/archive/${_rev}.tar.gz
 		config)
 b2sums=(SKIP
-		'0e01b3bbdf0673038ed63be4017e0b40b659dce89d3b9213e69358801ef45a441e72a96f1daacad141f1fdec4e8ff095cd10207dea11c1400ad6e489f7ba8987')
+		'b1ee917dfb3a8844bc084826218bbe5077ac8d0e19e10ac525d449fb5dc239849573af98ae65809dcdf5db3aeac8e36e37c7f8fb83e83d0b3cf0734ee9e82c29')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=${pkgbase}
