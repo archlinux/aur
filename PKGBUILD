@@ -1,7 +1,7 @@
 # Maintainer: Stipe Kotarac <stipe@kotarac.net>
 
 pkgname=jay-git
-pkgver=1.13.0.r4.gcb5bc34
+pkgver=1.14.0.r534.gcc66acd
 pkgrel=1
 pkgdesc='A Wayland Compositor'
 arch=('x86_64')
@@ -16,6 +16,7 @@ conflicts=(
 )
 depends=(
   cairo
+  fontconfig
   gcc-libs
   glib2
   glibc
@@ -26,19 +27,19 @@ depends=(
   pango
 )
 optdepends=(
+  'fuse3: mount the debug filesystem'
   'sqlite: session management'
   'xdg-desktop-portal: portal support'
   'xorg-xwayland: X11 support'
 )
 makedepends=(
   cargo
-  cmake
   git
 )
 options=(!lto)
 source=('jay::git+https://github.com/mahkoh/jay.git#branch=master')
 install=jay.install
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd jay/
@@ -67,6 +68,7 @@ package() {
   cd jay/
 
   install -D -m755 -s target/release/jay $pkgdir/usr/bin/jay
+  install -D -m644 etc/jay.desktop $pkgdir/usr/share/wayland-sessions/jay.desktop
   install -D -m644 etc/jay.portal $pkgdir/usr/share/xdg-desktop-portal/portals/jay.portal
   install -D -m644 etc/jay-portals.conf $pkgdir/usr/share/xdg-desktop-portal/jay-portals.conf
 
