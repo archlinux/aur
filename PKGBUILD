@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=ntvcm
-pkgver=0.0.202603129
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='NT Virtual CP/M Machine, emulates CP/M running on an 8080/Z80 processor'
 _commit=4f4a38483ece42a5c3437883bf917c4be536f2ec
@@ -11,15 +11,12 @@ license=(CC0-1.0)
 depends=(glibc)
 makedepends=(git)
 source=("$pkgname-$pkgver::git+$url#commit=$_commit")
-b2sums=('89433a4adb1257b108ef0cfe4108c3aa57be5c0c5b80bf6ba275c732fc5ce46f086afbb9732af5c3179491a947d750ef5279e6c18ba100e822a56207d8ecd51a')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('39be15c0aee68c206dee6fc7b4a8eb281caba80b25ae7cdd22a85352638dd2970e924aed3f0d6042a61c697e5acae1cbb0992a5b07479247426e883e95aadce3')
 
 build() {
 	cd "$pkgname-$pkgver"
-	local build_id
-	build_id=$(printf "%04d" "$(git rev-list --count HEAD 2> /dev/null)")
 	"${CXX:-c++}" $CXXFLAGS $LDFLAGS -I. \
-		-DCOMMIT_ID=\"$_commit\" \
-		-DBUILD=\".$build_id\" \
 		-DNDEBUG \
 		-o ntvcm ntvcm.cxx x80.cxx
 }
