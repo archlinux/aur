@@ -1,0 +1,84 @@
+diff --git a/common/lwindex.c b/common/lwindex.c
+index 1850bb7..47e5e0a 100644
+--- a/common/lwindex.c
++++ b/common/lwindex.c
+@@ -40,6 +40,22 @@ extern "C" {
+ #include "lwindex_parser.h"
+ #include "lwindex_utils.h"
+ 
++/* AVCodecParser.split was removed from the public API in FFmpeg 9 (libavcodec 63).
++ * Parsers stopped providing it in FFmpeg 5.1, when the functionality moved to the
++ * remove_extradata bitstream filter, so on newer FFmpeg it is simply unavailable. */
++#if LIBAVCODEC_VERSION_MAJOR >= 63
++static int (*lw_parser_get_split(const AVCodecParserContext* parser_ctx))(AVCodecContext*, const uint8_t*, int)
++{
++    (void)parser_ctx;
++    return NULL;
++}
++#else
++static int (*lw_parser_get_split(const AVCodecParserContext* parser_ctx))(AVCodecContext*, const uint8_t*, int)
++{
++    return parser_ctx->parser ? parser_ctx->parser->split : NULL;
++}
++#endif
++
+ typedef struct {
+     lwlibav_extradata_handler_t exh;
+     AVCodecContext* codec_ctx;
+@@ -1104,11 +1120,12 @@ static lwindex_helper_t* get_index_helper(lwindex_indexer_t* indexer, AVStream*
+         if (helper->parser_ctx) {
+             helper->parser_ctx->flags |= PARSER_FLAG_COMPLETE_FRAMES;
+             /* Set up bitstream filter if needed. */
++            int (*parser_split)(AVCodecContext*, const uint8_t*, int) = lw_parser_get_split(helper->parser_ctx);
+             if (codecpar->codec_id == AV_CODEC_ID_H264
+                 && codecpar->extradata_size >= 8 /* 8 is the offset of the first byte of the first SPS in AVCConfigurationRecord. */
+                 && codecpar->extradata[0] == 1 /* configurationVersion == 1 */
+-                && helper->parser_ctx->parser && helper->parser_ctx->parser->split
+-                && helper->parser_ctx->parser->split(helper->codec_ctx, codecpar->extradata + 8, codecpar->extradata_size - 8) <= 0) {
++                && parser_split
++                && parser_split(helper->codec_ctx, codecpar->extradata + 8, codecpar->extradata_size - 8) <= 0) {
+                 /* Since a SPS shall have no start code and no its emulation,
+                  * therefore, this stream is not encapsulated as byte stream format. */
+                 helper->bsf = av_bsf_get_by_name("h264_mp4toannexb");
+@@ -1288,12 +1305,13 @@ static int append_extradata_if_new(lwindex_helper_t* helper, AVCodecContext* ctx
+     if (current.extradata == ctx->extradata) {
+         AVCodecParserContext* parser_ctx = helper->parser_ctx;
+         if (parser_ctx && parser_ctx->parser) {
+-            if (parser_ctx->parser->split) {
++            int (*parser_split)(AVCodecContext*, const uint8_t*, int) = lw_parser_get_split(parser_ctx);
++            if (parser_split) {
+                 /* For H.264 stream without start codes, don't split extradata from pkt->data.
+                  * Its extradata is stored as global header. so, pkt->data shall contain no extradata.
+                  * Libavcodec may not remove meaningless data which precedes data actually needed for decoding,
+                  * so get the offset to such significant data here to deduplicate extradata as much as possible. */
+-                int extradata_size = helper->bsf ? 0 : parser_ctx->parser->split(ctx, pkt->data, pkt->size);
++                int extradata_size = helper->bsf ? 0 : parser_split(ctx, pkt->data, pkt->size);
+                 if (extradata_size > 0) {
+                     int offset = get_offset_to_significant_extradata(ctx, pkt);
+                     current.extradata = pkt->data + (uintptr_t)offset;
+diff --git a/common/lwlibav_video.c b/common/lwlibav_video.c
+index 55fa516..8bb4d88 100644
+--- a/common/lwlibav_video.c
++++ b/common/lwlibav_video.c
+@@ -1147,10 +1147,21 @@ static uint32_t lwlibav_vfr2cfr(lwlibav_video_decode_handler_t* vdhp, lwlibav_vi
+ static void handle_decoder_pix_fmt(AVCodecParameters* codecpar, const AVCodec* codec, enum AVPixelFormat pix_fmt)
+ {
+     assert(codecpar && codec);
++#if LIBAVCODEC_VERSION_MAJOR >= 62
++    /* AVCodec.pix_fmts was removed in favor of avcodec_get_supported_config(). */
++    const void* supported_pix_fmts = NULL;
++    if (avcodec_get_supported_config(NULL, codec, AV_CODEC_CONFIG_PIX_FORMAT, 0, &supported_pix_fmts, NULL) < 0)
++        supported_pix_fmts = NULL;
++    if (supported_pix_fmts)
++        codecpar->format = (int)avcodec_find_best_pix_fmt_of_list((const enum AVPixelFormat*)supported_pix_fmts, pix_fmt, 1, NULL);
++    else
++        codecpar->format = (int)pix_fmt;
++#else
+     if (codec->pix_fmts)
+         codecpar->format = (int)avcodec_find_best_pix_fmt_of_list(codec->pix_fmts, pix_fmt, 1, NULL);
+     else
+         codecpar->format = (int)pix_fmt;
++#endif
+ }
+ 
+ static int get_video_frame(lwlibav_video_decode_handler_t* vdhp, lwlibav_video_output_handler_t* vohp, uint32_t frame_number)
