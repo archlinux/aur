@@ -7,7 +7,7 @@ pkgname=${_appname}-bin
 pkgdesc="The fastest open source user interface for GIT workflows"
 
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 _gitversion=v${pkgver}
 
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,11 @@ license=('AGPL-3.0')
 
 provides=("${_appname}")
 conflicts=("${pkgname%-bin}")
-depends=('glibc' 'libgcc' 'git' 'zlib' 'libx11' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'wayland' 'hicolor-icon-theme')
+depends=('glibc' 'libgcc' 'git' 'zlib' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'wayland' 'hicolor-icon-theme')
+optdepends=('vulkan-icd-loader: Vulkan Renderer (EGL is used otherwise)'
+			'xdg-desktop-portal: File Picker, Dark Mode'
+			'noto-fonts-cjk' 'noto-fonts-emoji'
+			'git-lfs' 'gnupg' 'openssh')
 
 options=('!strip')
 
