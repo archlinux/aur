@@ -37,7 +37,7 @@ prepare() {
 
 pkgver() {
   cd "$_name"
-  git describe --long --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/v//;s/-/.r/;s/-/./g'
 }
 
 build() {
