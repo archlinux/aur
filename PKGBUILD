@@ -3,8 +3,8 @@
 # Prebuilt CLI release from GitHub.
 
 pkgname=elite-insights-cli-bin
-pkgver=3.30.0.0
-pkgrel=2
+pkgver=3.30.1.0
+pkgrel=1
 pkgdesc='Guild Wars 2 Elite Insights CLI (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/baaron4/GW2-Elite-Insights-Parser'
@@ -12,7 +12,7 @@ license=('MIT')
 options=('!strip')
 depends=('dotnet-runtime-8.0>=8.0.31')
 source=("https://github.com/baaron4/GW2-Elite-Insights-Parser/releases/download/v${pkgver}/GW2EICLI.zip")
-sha256sums=('f352e46b0c3425b970ee76b505892fb259ebb32c976a8200b9b4c421b0759eba')
+sha256sums=('5485a5e605e25c24cb1bb9193dc775aeec84837b35216ceaf2ae26ebf3beae90')
 
 package() {
     install -dm755 "$pkgdir/usr/lib/elite-insights-cli"
