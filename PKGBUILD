@@ -10,6 +10,7 @@ depends=('wireguard-tools' 'systemd-resolvconf')
 optdepends=('netbird: NetBird mesh VPN row'
             'cloudflare-warp-bin: Cloudflare WARP row')
 makedepends=('go' 'git')
+options=('!debug')  # binary is built with -s -w; a debug package would be empty
 install=omarchy-vpn.install
 source=("$pkgname::git+https://github.com/limehawk/omarchy-vpn.git#tag=v$pkgver")
 sha256sums=('SKIP')

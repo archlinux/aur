@@ -12,6 +12,7 @@ pkgbase = omarchy-vpn
 	depends = systemd-resolvconf
 	optdepends = netbird: NetBird mesh VPN row
 	optdepends = cloudflare-warp-bin: Cloudflare WARP row
+	options = !debug
 	source = omarchy-vpn::git+https://github.com/limehawk/omarchy-vpn.git#tag=v0.4.8
 	sha256sums = SKIP
 
