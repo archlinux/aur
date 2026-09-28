@@ -1,6 +1,6 @@
 pkgbase = linuwux-runtime
 	pkgdesc = Lightweight Rust compatibility runtime for Windows games running through Wine and Proton
-	pkgver = 26.09.16
+	pkgver = 26.09.28.3
 	pkgrel = 1
 	url = https://github.com/brcly/linuwux-runtime
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = linuwux-runtime
 	optdepends = gamescope: micro-compositor session support
 	optdepends = cpuid-fault-emulation-dkms: CPUID fault emulation on AMD Zen 1-3 processors
 	optdepends = zenity: graphical error notification dialogs
-	provides = linuwux-runtime=26.09.16
+	provides = linuwux-runtime=26.09.28.3
 	conflicts = linuwux-runtime-git
-	source = linuwux-runtime-26.09.16.tar.gz::https://github.com/brcly/linuwux-runtime/archive/refs/tags/v26.09.16.tar.gz
+	source = linuwux-runtime-26.09.28.3.tar.gz::https://github.com/brcly/linuwux-runtime/archive/refs/tags/v26.09.28.3.tar.gz
 	source = linuwux
-	sha256sums = 3923286fd05090c810ea6d274c744c5ac5a71946fc11c2910e07845fc2002df7
+	sha256sums = 7485fb87517299216bdbd6c598bc8a46a5997ca6a422c7eee55706b17850ca54
 	sha256sums = 6bdba2db509b50fa98db60440087cdcf87a28d7c33cb68b1d1a2eb675c3c93da
 
 pkgname = linuwux-runtime
