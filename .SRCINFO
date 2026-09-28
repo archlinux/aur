@@ -1,7 +1,7 @@
 pkgbase = sql-formatter
 	pkgdesc = A whitespace formatter for different query languages
 	pkgver = 15.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sql-formatter-org/sql-formatter
 	arch = any
 	license = MIT
@@ -12,6 +12,6 @@ pkgbase = sql-formatter
 	noextract = sql-formatter-15.9.0.tar.gz
 	options = !emptydirs
 	source = sql-formatter-15.9.0.tar.gz::https://github.com/sql-formatter-org/sql-formatter/archive/refs/tags/v15.9.0.tar.gz
-	sha256sums = ca4475f0c03b22c8803dcd05f13c02961dd8363ae4f112b2a3d071edf5fa095f
+	sha256sums = 167e60c92d4a20b0877f0ad921c147509840971e047262b75f009430e35d576c
 
 pkgname = sql-formatter

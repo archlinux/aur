@@ -2,7 +2,7 @@
 
 pkgname=sql-formatter
 pkgver=15.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A whitespace formatter for different query languages"
 arch=('any')
 depends=('nodejs')
@@ -11,7 +11,7 @@ url="https://github.com/sql-formatter-org/sql-formatter"
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ca4475f0c03b22c8803dcd05f13c02961dd8363ae4f112b2a3d071edf5fa095f')
+sha256sums=('167e60c92d4a20b0877f0ad921c147509840971e047262b75f009430e35d576c')
 options=('!emptydirs')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
