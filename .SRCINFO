@@ -1,6 +1,6 @@
 pkgbase = uah-bin
 	pkgdesc = Terminal coding agent that works like Codex, built on unreal-agent
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/viktordanov/uagent-harness
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = uah-bin
 	optdepends = wl-clipboard: paste images on Wayland
 	optdepends = xclip: paste images on X11
 	optdepends = git: repository context for the agent
-	provides = uah=1.1.0
+	provides = uah=1.1.1
 	conflicts = uah
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/viktordanov/uagent-harness/releases/download/v1.1.0/uah-1.1.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = cfe1a95387fb2481fb9cc86a6a19c924e73599150166a9c75b8fad381acc0c90
-	source_aarch64 = https://github.com/viktordanov/uagent-harness/releases/download/v1.1.0/uah-1.1.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 4b5a48cb89ea9e3c3aa88a43d4d9087332c5f0bddbe55b2ea50150d572ed7bd6
+	source_x86_64 = https://github.com/viktordanov/uagent-harness/releases/download/v1.1.1/uah-1.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1e61db59985f081a1363f7885f919c22315a75f9cb49912a5860ffda47e5fde1
+	source_aarch64 = https://github.com/viktordanov/uagent-harness/releases/download/v1.1.1/uah-1.1.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f7e2df4460cd1678709b4f22a3ef3d0f74e3e8b4d5833125c05fe6f4f16a02ec
 
 pkgname = uah-bin
