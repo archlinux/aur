@@ -91,6 +91,16 @@ case "$1" in
         exit 0 ;;
 esac
 
+# wine 升级后，仍在跑的旧 wineserver 与新 wine 客户端协议不匹配（"version mismatch"），
+# 应用里再开任何新窗口（设置、消息框、外链）都会静默失败。启动时若发现 wine 版本变了且
+# 本容器还有旧 wineserver 在跑，先把它杀掉，避免再起一个注定坏掉的会话。
+_wv_file="${DATA}/wine_version"; _wv_now="$(wine --version 2>/dev/null || echo unknown)"
+if [ -f "${_wv_file}" ] && [ "$(cat "${_wv_file}")" != "${_wv_now}" ]; then
+    if wineserver -k0 2>/dev/null; then :; fi   # -k0: 温和结束本容器的旧 wineserver
+    msg "wine 已从 $(cat "${_wv_file}") 升级到 ${_wv_now}，已结束本容器的旧 wineserver。"
+fi
+mkdir -p "${DATA}"; printf '%s' "${_wv_now}" > "${_wv_file}"
+
 migrate_legacy
 if [ ! -d "${WINEPREFIX}/drive_c" ]; then
     msg "初始化 wine 容器 ${WINEPREFIX} ..."
