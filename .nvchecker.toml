@@ -1,5 +1,5 @@
-[mprocs-bin]
+[dekit-bin]
 source = "github"
-github = "pvolok/mprocs"
+github = "pvolok/dekit"
 use_latest_release = true
 prefix = "v"

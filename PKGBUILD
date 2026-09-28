@@ -1,36 +1,36 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=pvolok
-_pkgname=mprocs
+_pkgname=dekit
 pkgname=${_pkgname}-bin
 pkgdesc="Run multiple commands in parallel"
 
-pkgver=0.9.6
+pkgver=0.10.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
 arch=('x86_64' 'aarch64')
-_barch=('x86_64' 'aarch64')
+_barch=('x86_64-unknown-linux-musl' 'aarch64-unknown-linux-musl')
 
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
 
 license=('MIT')
 
+replaces=("mprocs-bin")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+
 makedepends=('help2man')
 
 source=("CHANGELOG-${pkgver}.md::${_urlraw}/CHANGELOG.md"
-		"README-${pkgver}.md::${_urlraw}/README.md"
-		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
-source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-linux-${_barch[0]}-musl.tar.gz")
-source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-linux-${_barch[1]}-musl.tar.gz")
-sha256sums=('e14f09228ca592f0a7fe4792d6021f4580d8404989fb9638757fdbba3a21163f'
-            '86cb3c8426deca7293136613f15f716f38878fca39f50db65ad3bb8409948cf1'
-            'c343db79b3fcfe53edf567483cd2f47c63c104ccc6fa6c3dfbab1c8bc2c251ca')
-sha256sums_x86_64=('52591a9aab797a5e164fa37a5f81b516fa3c25f125b59a60724e38ae98bfe77b')
-sha256sums_aarch64=('ebe73f04e02e2134df463c8f0a0e1c293aa3b41dd7909180687529b21780adb0')
+		"README-${pkgver}.md::${_urlraw}/README.md")
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
+source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
+sha256sums=('dab0873d5e77937947d0235f207821a8934fa531f8a3c66bd24ab3f4d16c46ac'
+            '48b9dc33bbf0603627fc33542252dba87c4bc2442e3fdf820eb9b83c26c17551')
+sha256sums_x86_64=('330753d26feb9f96b79a388e730f8bd4414564520257f37bfc997c626b450f44')
+sha256sums_aarch64=('35b2ae81a23a1b67c3f2fb95f993b26257af23270f651cc44cc1f64eba23d5fe')
 
 
 build() {
@@ -51,5 +51,5 @@ package() {
 	install -Dm644 "CHANGELOG-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
