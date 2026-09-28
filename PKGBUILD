@@ -5,7 +5,7 @@ pkgname=kendex
 # 5.x a machine already holds and refuses the upgrade. Every kendex package
 # carries the same epoch so the four stay comparable with each other.
 epoch=1
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Package manager for AI coding agents, skills, and hooks (desktop app and CLI)'
 arch=('x86_64' 'aarch64')
@@ -46,7 +46,7 @@ makedepends=('cargo' 'npm')
 # makepkg LTO makes ring's C objects fail to link with rust-lld.
 options=('!lto')
 source=("kendex-$pkgver.tar.gz::https://github.com/vanillagreencom/kendex/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8069d1715ed9d5a074bd11c0850476e4cbdfded61ee159db86e202bfa4e39ec7')
+sha256sums=('4f1919b61c31d0fd2a90fbaaef6dacf40a49bfdb0bd715128e025983e362d782')
 
 prepare() {
   cd "$srcdir/kendex-$pkgver"
