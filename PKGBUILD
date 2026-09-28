@@ -1,7 +1,6 @@
 # Maintainer: escape0707 <tothesong at gmail dot com>
 pkgname=vite-plus-bin
-pkgver=1.0.0rc.1
-_upstreamver=${pkgver/rc/-rc}
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='The Unified Toolchain for the Web'
 arch=('x86_64')
@@ -15,11 +14,11 @@ options=('!strip' '!debug')
 source=(
   'package.json'
   'package-lock.json'
-  "https://registry.npmjs.org/@voidzero-dev/vite-plus-cli-linux-x64-gnu/-/vite-plus-cli-linux-x64-gnu-$_upstreamver.tgz"
+  "https://registry.npmjs.org/@voidzero-dev/vite-plus-cli-linux-x64-gnu/-/vite-plus-cli-linux-x64-gnu-$pkgver.tgz"
 )
-sha256sums=('09cea9516f54756af99ecb2e8d471c44bb12684127235d24e158a6079a1df35a'
-            '31f8605c18989581ac1c3a6223183d2fc9c15740519f740b24a689ff1358c9a8'
-            'd0561bc4c9302641d21241a3a62ebced4519565fa545045bd22b71b4ed61a1a6')
+sha256sums=('a1524a627ca0d66d9c0453f8a80df77fbc84fdffa188940abfa464a532dd0d54'
+            'adedd305db9fa99fd2e71a06c1a9fb56fcd874d0da14e519f48b468908b0af85'
+            '31439b12eb8a842077ba20c1a6ee9016e1b7552587b76706b176fabce591fb52')
 
 prepare() {
   npm ci --cache "$srcdir/npm-cache" \
