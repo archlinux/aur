@@ -1,7 +1,7 @@
 pkgbase = slimcc-git
 	pkgdesc = C23 compiler with C2y/GNU extensions for x86-64 Linux/BSD, written in C99
 	pkgver = r921.ff77023
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fuhsnn/slimcc
 	arch = x86_64
 	license = MIT

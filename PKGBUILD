@@ -1,9 +1,9 @@
-# Maintainer: Andreas Baumann <mail at andreasbaumann dot cc>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 
 pkgname=slimcc-git
 _pkgname=slimcc
 pkgver=r921.ff77023
-pkgrel=1
+pkgrel=2
 pkgdesc='C23 compiler with C2y/GNU extensions for x86-64 Linux/BSD, written in C99'
 arch=(x86_64)
 url='https://github.com/fuhsnn/slimcc'
