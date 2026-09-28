@@ -5,7 +5,7 @@
 # shellcheck disable=SC2154  # srcdir/pkgdir/startdir set by makepkg
 
 pkgname=superhuman
-pkgver=1041.0.51
+pkgver=1041.0.63
 pkgrel=1
 pkgdesc="The fastest email experience ever made (unofficial)"
 arch=('x86_64')
@@ -21,18 +21,18 @@ options=('!strip')
 install=superhuman.install
 source=(
     "Superhuman-${pkgver}.exe::https://assets.mail.superhuman.com/webapp/download/Superhuman.exe"
-    "linux_tray.js"
+    "linux_patches.js"
+    "linux_shim.js"
 )
 sha256sums=('SKIP'
-            '2ca108b624f8e444e3ad4a70f5d066342a85dc6d245ce63220a91e5c2b4cfd25')
+            'e7354121be70d07d6a69150bb37376a2a16b9253b17762b723fb1a9a8714e56b'
+            '6aa49e9b7478122f42bae6a36f3599d41812f71a189c6d0480725716aa1d6d3c')
 noextract=("Superhuman-${pkgver}.exe")
 
 _electron_version="41.6.1"
-_failed_patches=()
 
 prepare() {
     cd "$srcdir" || return
-    _failed_patches=()
 
     # Extract Windows installer
     msg2 "Extracting Windows installer..."
@@ -57,9 +57,8 @@ prepare() {
     rm electron.zip
     cd ..
 
-    # Install asar tool
-    msg2 "Installing asar tool..."
-    npm install --silent @electron/asar
+    msg2 "Installing build tools..."
+    npm install --silent @electron/asar acorn
 
     # Extract app.asar
     msg2 "Extracting app.asar..."
@@ -73,144 +72,12 @@ prepare() {
         echo "${_app_version}" > VERSION
     fi
 
-    # Apply Linux compatibility patches
-    _write_patch_tool
-    _apply_patches
+    msg2 "Applying Linux compatibility patches..."
+    NODE_PATH="$srcdir/node_modules" node "$srcdir/linux_patches.js" asar-contents/dist/main.js
 
     # Repack app.asar
     msg2 "Repacking app.asar..."
     npx @electron/asar pack asar-contents app.asar
-}
-
-# The main process ships as a single webpack bundle, so every patch is an exact
-# literal replacement guarded by an expected match count. A drifted match string
-# fails loudly instead of silently clobbering an unrelated module.
-_write_patch_tool() {
-    cat > "$srcdir/apply_patch.js" << 'PATCHER'
-const fs = require('fs')
-
-const [file, expected, find, replace] = process.argv.slice(2)
-const parts = fs.readFileSync(file, 'utf8').split(find)
-const found = parts.length - 1
-
-if (found !== Number(expected)) {
-  process.stderr.write(`  expected ${expected} match(es), found ${found}\n`)
-  process.stderr.write(`  anchor: ${find.split('\n')[0].trim().slice(0, 100)}\n`)
-  process.exit(1)
-}
-
-fs.writeFileSync(file, parts.join(replace))
-PATCHER
-}
-
-# _bundle_patch <description> required|optional <expected matches> <find> <replace>
-# A required patch aborts the build; an optional one is reported in the summary.
-_bundle_patch() {
-    local desc="$1"
-    local importance="$2"
-    local count="$3"
-    local find="$4"
-    local replace="$5"
-
-    if node "$srcdir/apply_patch.js" "$srcdir/asar-contents/dist/main.js" "$count" "$find" "$replace"; then
-        msg2 "Applied: $desc"
-        return 0
-    fi
-
-    if [ "$importance" = "required" ]; then
-        error "REQUIRED PATCH FAILED: $desc"
-        error ">>> MAINTAINER: Superhuman changed, patches need review <<<"
-        return 1
-    fi
-
-    warning "OPTIONAL PATCH FAILED: $desc"
-    _failed_patches+=("$desc")
-    return 0
-}
-
-_apply_patches() {
-    msg2 "Applying Linux compatibility patches..."
-    local dist_dir="$srcdir/asar-contents/dist"
-
-    if [ ! -f "$dist_dir/main.js" ]; then
-        error "Superhuman bundle layout changed: dist/main.js not found"
-        return 1
-    fi
-
-    # Upstream already hides the last window instead of closing it, but gates
-    # that on macOS. Without this the window teardown runs on every close and
-    # destroys the tabs behind a still-visible window.
-    _bundle_patch \
-        "Window: Close to tray instead of quitting" \
-        required \
-        1 \
-        "        if (this.main.windows.length === 1 && isMac && !isForceQuitting) {" \
-        "        if (this.main.windows.length === 1 && (isMac || process.platform === 'linux') && !isForceQuitting) {"
-
-    _bundle_patch \
-        "Updater: Skip on Linux, updates come from pacman" \
-        required \
-        1 \
-        "  async _startUpdate() {" \
-        "  async _startUpdate() {
-    if (process.platform === 'linux') {
-      this.setStage(stages.SKIPPED)
-      return
-    }"
-
-    _bundle_patch \
-        "Window: Ctrl shortcuts for Linux" \
-        optional \
-        1 \
-        "    _registerShortcuts(view) {" \
-        "    _registerShortcuts(view) {
-        if (process.platform === 'linux') {
-            this._registerWindowsShortcuts(view);
-            return;
-        }"
-
-    _bundle_patch \
-        "Window: Zoom control for Linux" \
-        optional \
-        1 \
-        "(process.platform === 'win32' && input.control)" \
-        "((process.platform === 'win32' || process.platform === 'linux') && input.control)"
-
-    _bundle_patch \
-        "Main: Linux argv URL handling" \
-        optional \
-        1 \
-        "    } else if (process.platform === 'win32') {
-      // the \`open-url\` event is Mac-only, so on Windows startup we check argv directly" \
-        "    } else if (process.platform === 'win32' || process.platform === 'linux') {
-      // the \`open-url\` event is Mac-only, so on Windows startup we check argv directly"
-
-    # wasOpenedAsHidden() is macOS-only, so the autostart entry's --hidden flag
-    # is otherwise ignored.
-    _bundle_patch \
-        "Main: Honor --hidden on Linux" \
-        optional \
-        1 \
-        "    let launchHidden = process.platform === 'win32' ? false : this._loginItem.wasOpenedAsHidden()" \
-        "    let launchHidden = process.argv.includes('--hidden') || (process.platform === 'win32' ? false : this._loginItem.wasOpenedAsHidden())"
-
-    # Tray module - close to tray with a show/hide and quit menu
-    cp "$srcdir/linux_tray.js" "$dist_dir/linux_tray.js"
-    sed -i "1i\\
-if (process.platform === 'linux') require('./linux_tray');" "$dist_dir/main.js"
-    msg2 "Applied: Tray module (self-initializing)"
-
-    if [ ${#_failed_patches[@]} -gt 0 ]; then
-        warning "=========================================="
-        warning "${#_failed_patches[@]} optional patch(es) failed:"
-        local desc
-        for desc in "${_failed_patches[@]}"; do
-            warning "  - $desc"
-        done
-        warning "The app will run but these features are missing."
-        warning ">>> MAINTAINER: Superhuman updated, patches need review <<<"
-        warning "=========================================="
-    fi
 }
 
 build() {

@@ -110,7 +110,29 @@ function init() {
     app.on('browser-window-created', (event, window) => trackWindow(window));
 }
 
+function honorHiddenLaunch() {
+    if (!process.argv.includes('--hidden')) {
+        return;
+    }
+    const getLoginItemSettings = app.getLoginItemSettings.bind(app);
+    app.getLoginItemSettings = options => ({
+        ...getLoginItemSettings(options),
+        wasOpenedAtLogin: true,
+        wasOpenedAsHidden: true
+    });
+}
+
+function forwardLaunchUrl() {
+    const url = process.argv.slice(1).find(arg => /^(mailto|superhuman):/i.test(arg));
+    if (url) {
+        app.once('ready', () => app.emit('open-url', { preventDefault() {} }, url));
+    }
+}
+
 if (app.requestSingleInstanceLock()) {
+    honorHiddenLaunch();
+    forwardLaunchUrl();
+
     app.on('window-all-closed', () => {});
 
     app.on('activate', () => {

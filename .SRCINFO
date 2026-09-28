@@ -1,6 +1,6 @@
 pkgbase = superhuman
 	pkgdesc = The fastest email experience ever made (unofficial)
-	pkgver = 1041.0.51
+	pkgver = 1041.0.63
 	pkgrel = 1
 	url = https://superhuman.com
 	install = superhuman.install
@@ -21,11 +21,13 @@ pkgbase = superhuman
 	depends = libnotify
 	optdepends = libappindicator-gtk3: System tray support
 	optdepends = xdg-utils: Protocol handler registration
-	noextract = Superhuman-1041.0.51.exe
+	noextract = Superhuman-1041.0.63.exe
 	options = !strip
-	source = Superhuman-1041.0.51.exe::https://assets.mail.superhuman.com/webapp/download/Superhuman.exe
-	source = linux_tray.js
+	source = Superhuman-1041.0.63.exe::https://assets.mail.superhuman.com/webapp/download/Superhuman.exe
+	source = linux_patches.js
+	source = linux_shim.js
 	sha256sums = SKIP
-	sha256sums = 2ca108b624f8e444e3ad4a70f5d066342a85dc6d245ce63220a91e5c2b4cfd25
+	sha256sums = e7354121be70d07d6a69150bb37376a2a16b9253b17762b723fb1a9a8714e56b
+	sha256sums = 6aa49e9b7478122f42bae6a36f3599d41812f71a189c6d0480725716aa1d6d3c
 
 pkgname = superhuman
