@@ -1,16 +1,14 @@
 pkgbase = moarchy-minesweeper
-	pkgdesc = Minesweeper for a Linux phone, with a clock that stops when you do
-	pkgver = 0.1.0
+	pkgdesc = Minesweeper with portrait boards, a latching flag and a clock that stops, for Quickshell
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/SimonSchubert/moarchy-apps
 	arch = any
 	license = MIT
-	depends = python
-	depends = python-gobject
-	depends = gtk4
-	depends = libadwaita
-	depends = python-cairo
-	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/minesweeper-v0.1.0/moarchy-minesweeper-0.1.0.tar.gz
-	sha256sums = 3676b811ba71544a86a721ec54eb4a5c2ef3c031b8238ac1eb682228d83577c3
+	depends = quickshell
+	depends = ttf-jetbrains-mono-nerd
+	depends = hicolor-icon-theme
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/minesweeper-v0.2.0/moarchy-minesweeper-0.2.0.tar.gz
+	sha256sums = c71f35e4ec641c578c2edfc7f4fefe355186c81ab8cb4ebb80600dda5ea964ee
 
 pkgname = moarchy-minesweeper
