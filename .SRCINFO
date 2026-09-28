@@ -1,6 +1,6 @@
 pkgbase = cargo-fframes
 	pkgdesc = Write some Rust. Get video. Enjoy 🥤🍿
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/dmtrKovalenko/fframes
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = cargo-fframes
 	depends = x265
 	depends = opus
 	depends = clang
-	source = fframes-1.0.1.tar.gz::https://github.com/dmtrKovalenko/fframes/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 10820edbcfcb081beaf64b24dee9ac7dfd8721848e679e0830affce3e47d7350
+	source = fframes-1.0.2.tar.gz::https://github.com/dmtrKovalenko/fframes/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 2feca136b0a43c6dcf54e857cbb4abc143db49bcbe7d653e6d981c350d559768
 
 pkgname = cargo-fframes
