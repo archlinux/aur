@@ -1,18 +1,20 @@
 # Maintainer: UPdullah895 <abdullahbomozh@gmail.com>
 pkgname=opengg-bin
-pkgver=0.1.5
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Open-source Linux gaming hub — OpenGG"
 arch=('x86_64')
 url="https://github.com/UPdullah895/opengg"
 license=('MIT')
-depends=('pipewire' 'wireplumber' 'ffmpeg' 'gstreamer' 'webkit2gtk-4.1' 'libayatana-appindicator')
+depends=('pipewire' 'wireplumber' 'ffmpeg' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good'
+         'gst-plugins-bad' 'gst-plugin-qml6' 'qt6-base' 'qt6-declarative' 'qt6-multimedia'
+         'qt6-shadertools')
 optdepends=('polkit: for privileged device setup')
 provides=('opengg')
 conflicts=('opengg')
 install=opengg.install
 source=("${url}/releases/download/v${pkgver}/opengg-v${pkgver}-linux-x86_64.tar.gz"
-        "opengg.png::${url}/raw/refs/tags/v${pkgver}/frontend/src-tauri/icons/256x256.png"
+        "opengg.png::${url}/raw/refs/tags/v${pkgver}/packaging/icons/256x256.png"
         "opengg.desktop::${url}/raw/refs/tags/v${pkgver}/packaging/opengg.desktop")
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
