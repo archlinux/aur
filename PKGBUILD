@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Docker-like management of systemd-nspawn machines: OCI images from a hub, shared layers, a bridge network, driven over D-Bus'
 arch=('x86_64' 'aarch64')
 url='https://github.com/nspawn/nspawn'
-license=('GPL-3.0-or-later')
+license=('MIT' 'Apache-2.0')
 depends=('systemd>=255' 'glibc' 'gcc-libs' 'iproute2' 'nftables')
 makedepends=('git' 'cargo')
 optdepends=('polkit: let users other than root drive nspawn'
@@ -52,7 +52,7 @@ package() {
   install -Dm644 packaging/dbus/org.nspawn.conf "${pkgdir}/usr/share/dbus-1/system.d/org.nspawn.conf"
   install -Dm644 packaging/polkit/org.nspawn.policy "${pkgdir}/usr/share/polkit-1/actions/org.nspawn.policy"
   install -Dm644 README.md docs/ARCHITECTURE.md docs/DBUS.md packaging/polkit/nspawn-wheel.rules -t "${pkgdir}/usr/share/doc/${pkgname%-git}"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+  install -Dm644 LICENSE LICENSE-MIT LICENSE-APACHE -t "${pkgdir}/usr/share/licenses/${pkgname%-git}/"
   install -dm755 "${pkgdir}/etc/nspawn" "${pkgdir}/var/lib/nspawn"
   install -dm711 "${pkgdir}/var/lib/nspawn"
 }
