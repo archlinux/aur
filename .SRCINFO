@@ -1,5 +1,5 @@
 pkgbase = matedit-git
-	pkgdesc = Material editor for Xash3D / PrimeXT (git version)
+	pkgdesc = Material editor for PrimeXT (git version)
 	pkgver = r1.g0000000
 	pkgrel = 1
 	url = https://github.com/hgruntt/MatEdit
