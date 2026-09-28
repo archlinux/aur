@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=AKS desktop
+Comment=Deploy and manage workloads on Azure Kubernetes Service
+Exec=aks-desktop %U
+Icon=aks-desktop
+Terminal=false
+Type=Application
+Categories=Development;
+MimeType=x-scheme-handler/aks-desktop;
+StartupWMClass=AKS-Desktop
