@@ -1,0 +1,5 @@
+[flint-bin]
+source = "github"
+github = "programmersd21/flint"
+use_latest_release = true
+prefix = "v"
