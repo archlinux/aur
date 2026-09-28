@@ -6,7 +6,12 @@ pkgdesc="NeoArch Package Manager for Arch Linux (Lynx Edition — development bu
 arch=('any')
 url="https://github.com/Sanjaya-Danushka/Neoarch"
 license=('MIT')
-depends=('python-pyqt6' 'python-requests' 'python-keyring' 'python-defusedxml' 'qt6-svg' 'git' 'flatpak' 'nodejs' 'npm')
+# Core runtime — the app cannot work without these
+depends=('python-pyqt6' 'python-requests' 'python-keyring' 'python-defusedxml' 'qt6-svg' 'git')
+# Optional integrations — features degrade gracefully if absent
+optdepends=('flatpak: Flatpak installs and updates'
+            'nodejs: Discover page (npm)'
+            'npm: Discover page (npm)')
 makedepends=('git')
 provides=('neoarch')
 conflicts=('neoarch')
