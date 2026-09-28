@@ -1,8 +1,8 @@
 # Maintainer: Yoann Ono (aur@y0no.fr)
 
 pkgname=ligolo-ng
-pkgver=0.9
-pkgrel=2
+pkgver=0.9.2
+pkgrel=1
 pkgdesc="An advanced, yet simple, tunneling/pivoting tool that uses a TUN interface."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/nicocha30/ligolo-ng"
@@ -12,7 +12,7 @@ provides=('ligolo-ng')
 license=('GPL3')
 makedepends=('go')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('af371cf7e2cd1f7082bedd1c2bd6c04506d123f81e60c641c1a929d38ea3b42c')
+sha256sums=('e9d06817bf2e3e50e95e69310d67e7a2865feac0ed39eb76d693cc50350725f6')
 install=${pkgname}.install
 
 prepare() {
