@@ -1,6 +1,6 @@
 pkgbase = pip-player-git
 	pkgdesc = A simple application to play PiP(Picture-in-Picture) with any links that you like.
-	pkgver = 1.2.2.r0.g8979a30
+	pkgver = 1.2.4.r0.gd6e674e
 	pkgrel = 1
 	url = https://github.com/WickyPlays/pip-player
 	arch = any
@@ -11,11 +11,11 @@ pkgbase = pip-player-git
 	makedepends = git
 	makedepends = jq
 	depends = electron31
-	provides = pip-player=1.2.2
+	provides = pip-player=1.2.4
 	conflicts = pip-player
 	source = pip-player.git::git+https://github.com/WickyPlays/pip-player
 	source = pip-player.sh
 	sha256sums = SKIP
-	sha256sums = 5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
 pkgname = pip-player-git
