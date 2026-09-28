@@ -9,9 +9,9 @@ pkgbase = nenya-bin
 	provides = nenya
 	arch = aarch64
 	source_aarch64 = nenya-bin_0.16.0_aarch64.tar.gz::https://github.com/gumieri/nenya/releases/download/v0.16.0/nenya_0.16.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 01e421c255b85239773b5108fcd91fb440a8f271b6e0fd83b0a6f440e1ff1f0f
+	sha256sums_aarch64 = ad9e983123ee20126412a5b3accf8facb478f583fbda66b9a737aca458533aa8
 	arch = x86_64
 	source_x86_64 = nenya-bin_0.16.0_x86_64.tar.gz::https://github.com/gumieri/nenya/releases/download/v0.16.0/nenya_0.16.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 4ae1c46f4a7dcb49df7a1480e6031fc89ecdb4adf2c0af6235c19c9aa620751d
+	sha256sums_x86_64 = 0ba2b6aba49f81d156b34e0c30958c49a397f55544f5a4b2e5b82d162b50d4ad
 	
 pkgname = nenya-bin
