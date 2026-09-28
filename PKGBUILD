@@ -2,7 +2,7 @@
 
 _pkgname=privacynotes
 pkgname=${_pkgname}-bin
-pkgver=0.534.0
+pkgver=0.553.1
 pkgrel=1
 pkgdesc='End-to-end encrypted notes, tasks, files, passwords, journal and bookmarks. (deb version)'
 arch=('x86_64' 'aarch64')
@@ -27,8 +27,8 @@ options=(!debug)
 
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/PrivacyNotes_${pkgver}_amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/PrivacyNotes_${pkgver}_arm64.deb")
-sha256sums_x86_64=('0b39eacc352c239d53793c7d5cd0a25485e9718f14d38ab158c71a883f773681')
-sha256sums_aarch64=('bcc0577e2f15a946bb4ad946c76ca7204b2fc899be6ea6a18943b3da3a79e4d9')
+sha256sums_x86_64=('88320ddf370f4368abe7133be0d06dc4bf9ba6baa490bcc17a086bed6636d865')
+sha256sums_aarch64=('2b733ed826f12d041f1d80a3ed6c5f49e7323338ff4ad186e694a425bb6e903e')
 
 package() {
 
