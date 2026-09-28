@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=python-hcl2
-pkgver=8.1.2
+pkgver=8.1.4
 pkgrel=1
 pkgdesc="A parser for HCL2 written in Python"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(git python-build python-installer python-setuptools
              python-setuptools-scm python-wheel)
 checkdepends=(python-coverage python-mock python-nose2)
 source=(git+${url}.git#tag=v${pkgver})
-sha256sums=('7caa6cfe7f0e5ea1e3f9363f51a3dd62effb02867514da1c8017a7315da55318')
+sha256sums=('cd3f31ad94e232d681701202c0457e090c71ffda486de04bdabdafc39264c976')
 
 build() {
   cd $pkgname
