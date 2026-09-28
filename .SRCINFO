@@ -1,0 +1,11 @@
+pkgbase = desksaw
+	pkgdesc = An interactive Desktop Pet from Casualties:Unknown
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/dee-dee-catorce/desksaw
+	arch = x86_64
+	license = MIT
+	source = https://github.com/dee-dee-catorce/desksaw/releases/download/v0.3.0/deskSaw030LINUX.zip
+	sha256sums = 4a46273ddbe4900b96f7f3d9cddeae65fb6685f09640d9d886dd6d53a922c4d2
+
+pkgname = desksaw

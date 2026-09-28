@@ -1,0 +1,17 @@
+[Desktop Entry]
+
+Type=Application
+
+Version=0.3.0
+
+Name=Desksaw
+
+Comment=Experiments from hit games Casualties: Unknown and GunSaw right on your desktop!
+
+Exec=desksaw
+
+Icon=desksaw
+
+Terminal=false
+
+Categories=Games
