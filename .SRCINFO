@@ -1,0 +1,18 @@
+pkgbase = ewcalc-git
+	pkgdesc = A multi-platform electronic warfare engineering calculator covering antenna analysis, RF propagation, link budgets, receiver performance, jamming analysis, emitter location, radar (range equation, detection statistics, Doppler & resolution), and spread-spectrum communications
+	pkgver = 1.2.0.r3.g38c3caa
+	pkgrel = 1
+	url = https://github.com/OldCrow/ewcalc
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	makedepends = svgo
+	makedepends = git
+	depends = qt6-base
+	depends = libglvnd
+	provides = ewcalc
+	source = git+https://github.com/OldCrow/ewcalc.git
+	sha256sums = SKIP
+
+pkgname = ewcalc-git
