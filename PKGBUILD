@@ -2,7 +2,7 @@
 pkgname=bili-music
 _pkgname='Bili Music'
 _zhsname='午夜黑胶'
-pkgver=0.7.0
+pkgver=0.8.0
 _nodeversion=24
 pkgrel=1
 pkgdesc="A no login, no disk B station music player. Use Bilibili as your music library, listen to music without login, do not have to download.一个免登录、不落盘的 B 站音乐播放器。把哔哩哔哩当作你的曲库，听歌不必登录，不必下载。"
@@ -32,7 +32,13 @@ options=(
 source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
 )
-sha256sums=('e55ef8de78ad4bd1c8b9dce9a47f7dca1aecb2a6fa4e8174c75e3ba1eef74045')
+sha256sums=('b7d14db1110a9e26af6646875c574b4cd01e131006ab914a9e2706308b3f5229')
+_get_project_dir() {
+	local d
+	while IFS= read -r d; do
+		find "$d" -name "src-tauri" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
+	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+}
 _set_build_env() {
 	export HOME="${srcdir}/.home"
 	export CARGO_HOME="${HOME}/.cargo"
@@ -58,7 +64,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "$(_get_project_dir)"
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -73,14 +79,15 @@ prepare() {
     npm install @tauri-apps/cli@^2
 }
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "$(_get_project_dir)"
     _ensure_local_nvm
     _set_build_env
     npx tauri build
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/target/release/"{"${pkgname}",guest_playurl_verify} -t "${pkgdir}/usr/bin"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/design/app-icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    local _app_dir="$(_get_project_dir)"
+    install -Dm755 "${_app_dir}/target/release/"{"${pkgname}",guest_playurl_verify} -t "${pkgdir}/usr/bin"
+    install -Dm644 "${_app_dir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${_app_dir}/design/app-icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+    install -Dm644 "${_app_dir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

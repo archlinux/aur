@@ -1,6 +1,6 @@
 pkgbase = bili-music
 	pkgdesc = A no login, no disk B station music player. Use Bilibili as your music library, listen to music without login, do not have to download.一个免登录、不落盘的 B 站音乐播放器。把哔哩哔哩当作你的曲库，听歌不必登录，不必下载。
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/Jmiao11/bili-music
 	arch = any
@@ -16,10 +16,10 @@ pkgbase = bili-music
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
 	depends = libappindicator
-	provides = bili-music=0.7.0
+	provides = bili-music=0.8.0
 	conflicts = bili-music
 	options = !lto
-	source = bili-music-0.7.0::git+https://github.com/Jmiao11/bili-music.git#tag=v0.7.0
-	sha256sums = e55ef8de78ad4bd1c8b9dce9a47f7dca1aecb2a6fa4e8174c75e3ba1eef74045
+	source = bili-music-0.8.0::git+https://github.com/Jmiao11/bili-music.git#tag=v0.8.0
+	sha256sums = b7d14db1110a9e26af6646875c574b4cd01e131006ab914a9e2706308b3f5229
 
 pkgname = bili-music
