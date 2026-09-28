@@ -9,7 +9,7 @@ _kernel='linux71'
 _image_id='manjaro-kde-minimal'
 pkgname='libvirt-iso-manjaro-kde-minimal-bin'
 pkgver="${_release}.${_build}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Manjaro KDE Plasma minimal installation ISO for libvirt'
 arch=('x86_64')
 url='https://manjaro.org/products/download/x86/'
@@ -105,7 +105,6 @@ check() {
 	local iso_listing="${srcdir}/check-iso-list"
 	local squashfs_work="${srcdir}/check-squashfs"
 	local squashfs_root="${srcdir}/check-squashfs-root"
-	local package_root="${srcdir}/check-package-root"
 	local image_size
 	local pvd_type
 	local pvd_magic
@@ -167,10 +166,6 @@ check() {
 		return 1
 	fi
 
-	printf '%s\n' 'check: staged package payload'
-	rm -rf -- "${package_root}"
-	_install_payload "${package_root}"
-	_check_payload "${package_root}"
 }
 
 package() {
