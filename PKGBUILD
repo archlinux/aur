@@ -1,7 +1,7 @@
 # Maintainer: Macro-Proto
 pkgname='desksaw'
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 _filename='deskSaw030LINUX'
 epoch=
 pkgdesc="An interactive Desktop Pet from Casualties:Unknown"
