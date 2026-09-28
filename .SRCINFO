@@ -1,0 +1,19 @@
+pkgbase = matedit-git
+	pkgdesc = Material editor for PrimeXT (git version)
+	pkgver = r1.g0000000
+	pkgrel = 1
+	url = https://github.com/hgruntt/MatEdit
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	depends = libglvnd
+	provides = matedit
+	conflicts = matedit
+	conflicts = matedit-bin
+	source = git+https://github.com/hgruntt/MatEdit.git
+	source = icon.png::https://raw.githubusercontent.com/hgruntt/MatEdit/main/icon.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = matedit-git
