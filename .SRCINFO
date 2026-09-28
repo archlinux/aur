@@ -1,16 +1,14 @@
 pkgbase = moarchy-habits
-	pkgdesc = Habit tracking for a Linux phone, kept on the device
-	pkgver = 0.1.2
+	pkgdesc = Habit tracking with a tap a day, kept on the device, for Quickshell
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/SimonSchubert/moarchy-apps
 	arch = any
 	license = MIT
-	depends = python
-	depends = python-gobject
-	depends = gtk4
-	depends = libadwaita
-	depends = python-cairo
-	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/habits-v0.1.2/moarchy-habits-0.1.2.tar.gz
-	sha256sums = 52d2a8ae1ef4595330262ce6fd84a45dc130caf68aa7c755b4edfc4dc525f7e4
+	depends = quickshell
+	depends = ttf-jetbrains-mono-nerd
+	depends = hicolor-icon-theme
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/habits-v0.2.0/moarchy-habits-0.2.0.tar.gz
+	sha256sums = a96d6df0d071d74d319997b539953ce12c208d51b3f1e93ded14342e23339fe4
 
 pkgname = moarchy-habits
