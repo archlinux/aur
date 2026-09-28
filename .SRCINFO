@@ -1,5 +1,5 @@
 pkgbase = tag-release
-	pkgdesc = Script to automate creation of semantic versioning tags
+	pkgdesc = Automate creation of semantic versioning tags
 	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/egor-tensin/tag-release

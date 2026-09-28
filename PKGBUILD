@@ -2,7 +2,7 @@
 pkgname=tag-release
 pkgver=0.4.1
 pkgrel=1
-pkgdesc='Script to automate creation of semantic versioning tags'
+pkgdesc='Automate creation of semantic versioning tags'
 arch=(any)
 url="https://github.com/egor-tensin/$pkgname"
 license=(MIT)
