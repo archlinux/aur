@@ -1,0 +1,18 @@
+pkgbase = lunar
+	pkgdesc = Chinese lunisolar calendar CLI: a day profile, month and year grids, and a 八字 chart
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/YangtseSu/lunar
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = tzdata
+	options = !lto
+	options = !strip
+	source = lunar-0.1.0.tar.gz::https://github.com/YangtseSu/lunar/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = a875a333e356ef3c7f676b34b3754a45df1cb6562e928be95a662bace03b9c8f
+
+pkgname = lunar

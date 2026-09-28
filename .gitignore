@@ -1,0 +1,7 @@
+# Build output and downloaded sources — only PKGBUILD, .SRCINFO, LICENSE and
+# REUSE.toml belong in git.
+lunar-*.tar.gz
+src/
+pkg/
+*.pkg.tar.zst
+*.pkg.tar.zst.sig

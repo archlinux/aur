@@ -1,0 +1,16 @@
+# SPDX-FileCopyrightText: 2026 Yangtse Su
+#
+# The PKGBUILD in this repository is licensed under 0BSD; see the LICENSE file
+# at its root. Upstream lunar is a separate work under GPL-3.0-or-later, named
+# here only so that the packaging files carry an unambiguous licence of their
+# own.
+version = 1
+SPDX-PackageName = "lunar"
+SPDX-PackageSupplier = "Yangtse Su <yangtsesu@gmail.com>"
+SPDX-PackageDownloadLocation = "https://github.com/YangtseSu/lunar"
+
+[[annotations]]
+path = ["PKGBUILD", ".gitignore", "LICENSE"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Yangtse Su"
+SPDX-License-Identifier = "0BSD"
