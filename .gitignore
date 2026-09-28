@@ -1,7 +1,7 @@
-*ctags*
-src/
-pkg
-*.deb
-*.bin
-config-tools-for-imx/
-*tar.zst
+# Manually downloaded NXP installer (license-walled, not redistributable)
+*.deb.bin
+# makepkg artifacts
+/src/
+/pkg/
+*.pkg.tar*
+*.log

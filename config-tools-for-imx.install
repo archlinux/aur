@@ -1,6 +1,19 @@
 pre_install() {
-        echo "Be advised that the package you are currently installing should be downloaded through"
-        echo "NXP's License Wall at https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/config-tools-for-i-mx-applications-processors:CONFIG-TOOLS-IMX"
-        echo "By installing this package you agree to the terms of this license."
-        echo "A copy of the License is available in /usr/share/licenses/config-tools-for-imx"
+	cat <<'EOF'
+This software is subject to the NXP Software License Agreement (LA_OPT_NXP_Software_License),
+which is accepted when downloading the installer from NXP's website.
+A copy is installed to /usr/share/licenses/config-tools-for-imx/LICENSE.
+EOF
+}
+
+post_install() {
+	cat <<'EOF'
+Config Tools for i.MX are installed under /opt/nxp/ and available from the application menu.
+udev rules granting access to NXP/FTDI USB debug adapters are in /usr/lib/udev/rules.d/.
+Replug the device after install.
+EOF
+}
+
+post_upgrade() {
+	post_install
 }

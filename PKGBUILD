@@ -1,36 +1,65 @@
-# Maintainer: hendy643 <hendy643@hotmail.com>
+# Maintainer: metamacro <metamacro@tuta.com>
+# Contributor: hendy643 <hendy643@hotmail.com>
+# SPDX-License-Identifier: 0BSD
+#
+# Build instructions:
+#
+# The installer is behind NXP's login/license wall and cannot be fetched by makepkg.
+#
+# 1. Log in to nxp.com and open the URL in $url below
+# 2. Download "Config Tools for i.MX, Linux DEB package" (BIN, version matching pkgver)
+#    and accept the license terms
+# 3. Place config-tools-for-imx-<pkgver>-1_amd64.deb.bin next to this PKGBUILD
+#    (when using an AUR helper, place in e.g. ~/.cache/<aur-helper>/clone/config-tools-for-imx/)
+# 4. makepkg -si
 
 pkgname=config-tools-for-imx
-pkgver=16.1
+pkgver=26.09
 pkgrel=1
-epoch=
-pkgdesc="Integrated suite of configuration tools for NXP's i.MX Application Processors. From BIN package distributed by NXP."
+pkgdesc="NXP i.MX pin, DDR, SerDes, TEE and System Manager configuration tools"
 arch=('x86_64')
-url="https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/config-tools-for-i-mx-applications-processors:CONFIG-TOOLS-IMX"
-license=('custom:"NXP"')
-depends=('java-environment' 'libxslt' 'libxtst' 'gcc-libs-multilib' 'gtk2' 'alsa-lib' 'libnet')
-source=("file://config-tools-for-imx-v${pkgver}-${pkgrel}_amd64.deb.bin" "LICENSE" "${pkgname}.install")
-sha256sums=('5f97c8a7268149f92b2a6d5deb07d0ae5a52810995db950f1e55093c18f16e8d'
-            '41beb81990892ba157f85cd6c008f65191a763c97331ac6c8cceb18700883af5'
-            'a1f53f36f04d98667717092eedc6ccb6c5a5a3ea7ad6ded79a9ac6f004f6307c')
-
+url="https://www.nxp.com/design/design-center/software/development-software/config-tools-for-i-mx-applications-processors:CONFIG-TOOLS-IMX"
+license=('LicenseRef-NXP-LA-OPT-NXP-Software-License')
+depends=('glibc' 'libstdc++' 'libgcc' 'zlib' 'expat' 'freetype2' 'alsa-lib'
+         'gtk3' 'glib2' 'libx11' 'libxext' 'libxi' 'libxrender' 'libxtst')
+optdepends=('webkit2gtk-4.1: embedded browser views (documentation, online update site)')
+install="${pkgname}.install"
 options=('!strip' '!debug')
 
+# NXP's Debian package revision, independent from pkgrel.
+_debrel=1
+_installdir="i.MX_CFG_${pkgver}"
+_bin="${pkgname}-${pkgver}-${_debrel}_amd64.deb.bin"
+_deb="${pkgname}-${pkgver}-${_debrel}_amd64.deb"
+
+source=("local://${_bin}")
+noextract=("${_bin}")
+b2sums=('5c6bcf9c01ed3ac39ed228eede4c6f76720ead342695549f27ea38ad605d575320fcf4774b6979b4db3ce7fc9aa3170f31ba71fd1fb734a40311d57ef4007991')
+
 prepare() {
-    chmod +x config-tools-for-imx-v${pkgver}-${pkgrel}_amd64.deb.bin
-    ./config-tools-for-imx-v${pkgver}-${pkgrel}_amd64.deb.bin --noexec --keep --nox11 --target ${srcdir}
-    rm config-tools-for-imx-v${pkgver}-${pkgrel}_amd64.deb.bin
-    cd "${srcdir}"/ || exit
-    mkdir -p config-tools-for-imx
-    bsdtar -x -f config-tools-for-imx-v${pkgver}-${pkgrel}_amd64.deb -C config-tools-for-imx
-    rm config-tools-for-imx-v${pkgver}-${pkgrel}_amd64.deb
-    bsdtar -x -f config-tools-for-imx/data.tar.gz -C config-tools-for-imx
-    rm config-tools-for-imx/data.tar.gz
+	sh "${_bin}" --noexec --keep --nox11 --target "${srcdir}/extracted"
+
+	mkdir -p deb
+	bsdtar -xOf "extracted/${_deb}" 'data.tar.*' | bsdtar -x -C deb -f -
 }
 
-
 package() {
-        cp -r "${srcdir}"/config-tools-for-imx/usr "${pkgdir}"/;
-        cp -r "${srcdir}"/config-tools-for-imx/opt "${pkgdir}"/;
-        install -D -m644 "${srcdir}"/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE";        
+	cd deb
+
+	install -d "${pkgdir}/opt/nxp"
+	cp -a "opt/nxp/${_installdir}" "${pkgdir}/opt/nxp/"
+
+	# Bundled SPSDK CLI shebangs still point at NXP's Jenkins build host (Not affecting GUI App)
+	find "${pkgdir}/opt/nxp/${_installdir}/bin/python3/bin" -maxdepth 1 -type f \
+		-exec sed -i "s|#!/home/build/jenkins/workspace/config_build_python_package_linux/python3/bin/python|#!/opt/nxp/${_installdir}/bin/python3/bin/python|" {} +
+
+	install -Dm644 "usr/share/applications/com.nxp.${pkgname}-${pkgver}.desktop" \
+		-t "${pkgdir}/usr/share/applications/"
+
+	# Debian ships these in /etc/udev/rules.d; Arch packages use /usr/lib/udev/rules.d
+	install -Dm644 etc/udev/rules.d/85-config-tools.rules \
+		-t "${pkgdir}/usr/lib/udev/rules.d/"
+
+	install -Dm644 "${srcdir}/extracted/ProductLicense.txt" \
+		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
