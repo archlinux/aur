@@ -1,0 +1,14 @@
+pkgbase = moarchy-contacts
+	pkgdesc = A name, a number, an email and a note, in one file, for Quickshell
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/SimonSchubert/moarchy-apps
+	arch = any
+	license = MIT
+	depends = quickshell
+	depends = ttf-jetbrains-mono-nerd
+	depends = hicolor-icon-theme
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/contacts-v0.2.0/moarchy-contacts-0.2.0.tar.gz
+	sha256sums = be7430d958a32db2a8af98c3c6b6248e30ccd99acc252cde8b157b2484d5583d
+
+pkgname = moarchy-contacts
