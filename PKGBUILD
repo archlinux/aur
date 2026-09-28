@@ -1,7 +1,7 @@
 # Maintainer: Hong Shick Pak <hong@hspak.com>
 
 pkgname=zimbr
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Native Wayland iMessage client using a self-hosted macOS relay"
 arch=("x86_64")
@@ -18,6 +18,7 @@ depends=(
   "libpng"
   "libxkbcommon"
   "openssl"
+  "openssh"
   "pango"
   "python"
   "python-cryptography"
@@ -33,10 +34,10 @@ optdepends=(
   "ttf-font: text rendering"
 )
 options=("!debug")
-# Bootstrap from the public commit until the first tag; release.sh updates _ref.
-_ref=0.1.1
+# release.sh pins the version and source checksum before building or publishing.
+_ref=0.2.0
 source=("$pkgname-$_ref.tar.gz::$url/archive/$_ref.tar.gz")
-sha256sums=("f25ba1f6b03cbff3ea38263530bc72b24e0e3f55ee54bdedb6c1dd5245e51ef6")
+sha256sums=("0d4cf4dbdd3656e7346e9a48df6b372ebbd812c2e9fa4a14431c01ad1c601a26")
 
 prepare() {
   cd "$pkgname-$_ref"
@@ -66,6 +67,7 @@ check() {
     --system zig-pkg
   desktop-file-validate zig-out/share/applications/zimbr.desktop
   python packaging/linux/provision.py --help >/dev/null
+  python packaging/linux/provision.py setup --help >/dev/null
 }
 
 package() {
