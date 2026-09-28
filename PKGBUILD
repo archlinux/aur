@@ -7,7 +7,7 @@
 
 _pkgname=pw-mpris-visualcard
 pkgname=$_pkgname-git
-pkgver=r8.2f1aeba
+pkgver=r9.a1f7c80
 pkgrel=1
 pkgdesc='Render the currently playing MPRIS track as a PipeWire video node (album art, progress ring, synced lyrics)'
 arch=('x86_64' 'aarch64')
