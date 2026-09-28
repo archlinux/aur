@@ -1,16 +1,14 @@
 pkgbase = moarchy-mill
-	pkgdesc = Nine Men's Morris for a Linux phone, with an opponent on a clock
-	pkgver = 0.1.0
+	pkgdesc = Nine Men's Morris against the phone or across a table, for Quickshell
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/SimonSchubert/moarchy-apps
 	arch = any
 	license = MIT
-	depends = python
-	depends = python-gobject
-	depends = gtk4
-	depends = libadwaita
-	depends = python-cairo
-	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/mill-v0.1.0/moarchy-mill-0.1.0.tar.gz
-	sha256sums = d9ac4d72185f8a0ec322ca97574e4c50434d1e265c28b3a96735b2d1030fdf4e
+	depends = quickshell
+	depends = ttf-jetbrains-mono-nerd
+	depends = hicolor-icon-theme
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/mill-v0.2.0/moarchy-mill-0.2.0.tar.gz
+	sha256sums = c5d9317d0e8135d5b253f56b1c4b89019ee5fd357746d72e8b3d4f583bda4429
 
 pkgname = moarchy-mill
