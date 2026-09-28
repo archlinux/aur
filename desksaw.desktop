@@ -8,7 +8,7 @@ Name=Desksaw
 
 Comment=Experiments from hit games Casualties: Unknown and GunSaw right on your desktop!
 
-Exec=desksaw
+Exec=/usr/bin/desksaw
 
 Icon=desksaw
 
