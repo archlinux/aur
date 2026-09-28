@@ -3,7 +3,7 @@
 pkgname=ewcalc-git
 pkgver=1.2.0.r3.g38c3caa
 pkgrel=1
-pkgdesc='A multi-platform electronic warfare engineering calculator covering antenna analysis, RF propagation, link budgets, receiver performance, jamming analysis, emitter location, radar (range equation, detection statistics, Doppler & resolution), and spread-spectrum communications'
+pkgdesc='EW engineering calculator covering antenna analysis, RF propagation, link budgets, receiver performance, jamming analysis, emitter location, radar (range equation, detection statistics, Doppler & resolution), and spread-spectrum communications'
 arch=('any')
 license=('MIT')
 url='https://github.com/OldCrow/ewcalc'
