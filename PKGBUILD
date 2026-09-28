@@ -1,7 +1,7 @@
 # Maintainer: D7OMDEV <hello@d7om.dev>
 pkgname=clipse-gui
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK3 GUI for the clipse clipboard manager"
 arch=('any')
 url="https://github.com/d7omdev/clipse-gui"
@@ -11,10 +11,13 @@ depends=(
 	'python-gobject'
 	'gtk3'
 	'gtk-layer-shell'
-	'wl-clipboard'
-	'wtype'
-	'xdotool'
 	'clipse'
+)
+optdepends=(
+	'wl-clipboard: copy to the clipboard on Wayland'
+	'wtype: auto-paste after selecting an item on Wayland'
+	'xclip: copy to the clipboard on X11'
+	'xdotool: auto-paste after selecting an item on X11'
 )
 makedepends=(
 	'git'

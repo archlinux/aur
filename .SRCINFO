@@ -1,7 +1,7 @@
 pkgbase = clipse-gui
 	pkgdesc = A GTK3 GUI for the clipse clipboard manager
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/d7omdev/clipse-gui
 	arch = any
 	license = MIT
@@ -14,10 +14,11 @@ pkgbase = clipse-gui
 	depends = python-gobject
 	depends = gtk3
 	depends = gtk-layer-shell
-	depends = wl-clipboard
-	depends = wtype
-	depends = xdotool
 	depends = clipse
+	optdepends = wl-clipboard: copy to the clipboard on Wayland
+	optdepends = wtype: auto-paste after selecting an item on Wayland
+	optdepends = xclip: copy to the clipboard on X11
+	optdepends = xdotool: auto-paste after selecting an item on X11
 	source = git+https://github.com/d7omdev/clipse-gui.git#tag=v0.10.0
 	sha256sums = SKIP
 
