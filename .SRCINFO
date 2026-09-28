@@ -1,19 +1,20 @@
 pkgbase = manis-pocket-bin
-	pkgdesc = Wayland clipboard sync client for Manis Pocket
-	pkgver = 0.1.0.r1134.g65c50ae
+	pkgdesc = Manis Pocket GTK4 clipboard manager and Wayland sync client
+	pkgver = 0.1.0.r1136.gf85a27d
 	pkgrel = 1
 	url = https://github.com/kaigedong/Manis-Pocket
 	arch = x86_64
 	license = MIT
 	depends = glibc
 	depends = libgcc
+	depends = gtk4
 	depends = wl-clipboard
-	provides = manis-pocket-wayland=0.1.0.r1134.g65c50ae
+	provides = manis-pocket-wayland=0.1.0.r1136.gf85a27d
 	conflicts = manis-pocket-wayland
 	conflicts = manis-pocket-wayland-git
 	options = !debug
 	options = !strip
-	source_x86_64 = manis-pocket-wayland-0.1.0.r1134.g65c50ae-1-x86_64.pkg.tar.zst::https://github.com/kaigedong/Manis-Pocket/releases/download/wayland-0.1.0.r1134.g65c50ae/manis-pocket-wayland-0.1.0.r1134.g65c50ae-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 9465563e39e9a03f5ef6d89fb0ac09a32990e35aadd405cb82d8c21c16e6a19c
+	source_x86_64 = manis-pocket-wayland-0.1.0.r1136.gf85a27d-1-x86_64.pkg.tar.zst::https://github.com/kaigedong/Manis-Pocket/releases/download/wayland-0.1.0.r1136.gf85a27d/manis-pocket-wayland-0.1.0.r1136.gf85a27d-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 364946e43da4d48beab67c79c723af9c6f872e6e8d28f4fe98a62e75d451afd0
 
 pkgname = manis-pocket-bin
