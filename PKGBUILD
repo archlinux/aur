@@ -1,7 +1,7 @@
 # Maintainer: Ashley Piller <ashley@purrr.chat>
 # Builds the stable purrr desktop client from source (tagged release).
 pkgname=purrr-client
-pkgver=0.1.0
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Native desktop client for purrr, a cozy self-hosted Discord alternative (built from source)"
 arch=('x86_64')
