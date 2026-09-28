@@ -2,9 +2,9 @@
 pkgname=jiwu-mall-chat-bin
 _pkgname=JiwuChat
 _zhsname='极物圈聊天'
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
-pkgdesc="A lightweight multi-platform chat application that can be used anytime, anywhere.(Prebuilt version)一个轻量的多端随时随地的聊天应用 ✨"
+pkgdesc="A lightweight multi-platform chat application that can be used anytime, anywhere.一个轻量的多端随时随地的聊天应用 ✨"
 arch=('x86_64')
 url="https://chat.jiwu.kiwi233.top"
 _ghurl="https://github.com/KiWi233333/jiwu-mall-chat-tauri"
@@ -26,6 +26,7 @@ prepare() {
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
         6i\Name[zh_CN]=${_zhsname}
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
