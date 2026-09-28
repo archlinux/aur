@@ -1,7 +1,7 @@
 # Maintainer: Scott Hansen (firecat53) tech at firecat53 dot net
 pkgname=tabview-git
 pkgver=r229.a5b120d
-pkgrel=1
+pkgrel=2
 pkgdesc="Curses CSV/tabular data viewer"
 arch=('any')
 url="https://github.com/tabviewer/tabview"
