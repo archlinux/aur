@@ -1,6 +1,0 @@
-post_install() {
-	# Create users in glauth-users.conf
-	systemd-sysusers
-	
-	chown glauth:glauth -R /etc/glauth
-}

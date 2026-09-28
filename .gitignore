@@ -3,3 +3,4 @@
 *.pkg.tar.*
 /glauth
 /glauth.cfg
+/LICENSE
