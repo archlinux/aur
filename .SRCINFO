@@ -1,0 +1,14 @@
+pkgbase = moarchy-calendar
+	pkgdesc = A calendar in one file: the month, the day under it, and what is next, for Quickshell
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/SimonSchubert/moarchy-apps
+	arch = any
+	license = MIT
+	depends = quickshell
+	depends = ttf-jetbrains-mono-nerd
+	depends = hicolor-icon-theme
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/calendar-v0.2.0/moarchy-calendar-0.2.0.tar.gz
+	sha256sums = 2209dc9f0f6cda6d6db38a2a96d31da8c2d19870c2d5625a9c4cda8ce1c73e00
+
+pkgname = moarchy-calendar
