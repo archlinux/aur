@@ -1,6 +1,6 @@
 # Maintainer: Sandwich <sandwich@archworks.co>
 pkgname=mautrix-teams
-pkgver=31.1
+pkgver=31.2
 pkgrel=1
 pkgdesc="A Matrix-Microsoft Teams puppeting bridge"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'mautrix-teams.tmpfiles')
 # sha256sums are recomputed by updpkgsums in the Publish AUR workflow before
 # the PKGBUILD is pushed to AUR; the committed values are intentionally SKIP.
-sha256sums=('4025547a8e4ae2602075b79cdfd675e1c6f257f1f8ec308ba5637fd531d50263'
+sha256sums=('3d03f48fa7e757d515cc4c61811f1a9f454a5e15cf80cfcc6fab1a22a0c9746d'
             'aacb178c68e066e344a66a852fac5ee0bddb4ba5c28d3fe12dd5b3a38926444f'
             '06455386eb56393054ae9b467ebe9d78026d0e92d07e58040e6afd7ffaf0a0ba'
             '17c329e362b7caa7670f063461324db6f625b98043bad82b6c2db7544a37802c')
