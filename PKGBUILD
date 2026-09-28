@@ -2,7 +2,7 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=go-critic
-pkgver=0.14.4
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="The most opinionated Go source code linter for code audit"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(glibc)
 makedepends=(git go)
 options=(!lto)
 source=($pkgname::git+https://github.com/go-critic/go-critic.git#tag=v$pkgver)
-sha256sums=('dfdcbad32bdcd48fd55cf39ba8f1f6be26e8f2031325ec6bf271a7aa188fac1c')
+sha256sums=('51b8618e68eeed4559dda86eab442d567df7d5ca5793ee53558dc24fda87c676')
 
 prepare() {
   cd $pkgname
