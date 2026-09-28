@@ -5,7 +5,7 @@
 # the plugin is installed there, and as its own Quickshell process everywhere
 # else -- so this package needs Quickshell, not Omarchy.
 pkgname=airwaves
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Internet radio from radio-browser.info: 50,000 stations by genre, country and language, for Quickshell'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=('mpv-mpris: the station on media keys and the lock screen')
 # A release asset that packaging/release.sh builds from apps/airwaves at the
 # tag, not GitHub's generated archive of the whole repository.
 source=("$url/releases/download/airwaves-v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('fb3c31a5cf018e662ca7f4e3b9807d392803a91f592b8ea5f4c1bb31e1d2a5e1')
+sha256sums=('eac16437ce80cebc848e9bc15ef181cff2c8200d7d797d638a751bfae647b58d')
 
 package() {
   cd "$pkgname-$pkgver"
