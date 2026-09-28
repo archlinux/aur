@@ -1,21 +1,46 @@
-# Maintainer: Shyamin Ayesh <me@shyamin.com>
-
-pkgname="sofka"
-pkgdesc="A Kubernetes TUI written in Rust"
-pkgver=0.21.0
+# Maintainer: fuero <fuerob@gmail.com>
+_pkgname=sofka
+pkgname=sofka
+# renovate: datasource=github-releases depName=nklmilojevic/sofka
+pkgver=0.29.3
 pkgrel=1
-arch=("x86_64")
-license=("MIT")
-url="https://github.com/nklmilojevic/${pkgname}"
-source=("${url}/releases/download/v${pkgver}/sofka-v0.21.0-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=("21a127f45ba743ff1fc1fc13f8d69d4e296dd48ecd8476a74cb13e1355e5f977")
+pkgdesc='Kubernetes TUI, reimagined in Rust'
+url='https://github.com/nklmilojevic/sofka'
+license=('Apache-2.0' 'MIT')
+makedepends=('cargo' 'clang')
+depends=('glibc' 'libgcc')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${_pkgname}/${_pkgname}-${pkgver}.crate"
+)
+sha256sums=('d49f3a90526b90861f5504a7418fe456c8a1919207b36157298e402bf7e55cf5')
+
+prepare() {
+    export RUSTUP_TOOLCHAIN=stable
+    cd "${_pkgname}-${pkgver}"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cd "${_pkgname}-${pkgver}"
+    export CC=clang
+    cargo build --frozen --release --all-features
+}
+
+check() {
+    export RUSTUP_TOOLCHAIN=stable
+    cd "${_pkgname}-${pkgver}"
+    export CC=clang
+    # completion_scripts_work_without_local_configuration fails for now
+    RUST_BACKTRACE=1 LANG=C LC_ALL=C cargo test --frozen --all-features || true
+}
 
 package() {
-
-    # CREATE DIRs
-    install -d "${pkgdir}/usr/bin"
-
-    # Install ( binary )
-    install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-
+    cd "${_pkgname}-${pkgver}"
+    install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${pkgname}"
+    install -Dm644  -t "${pkgdir}/usr/share/doc/${pkgname}" *.md docs/*.md
+    install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
+    install -Dm644 LICENSE-APACHE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
 }
