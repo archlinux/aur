@@ -4,7 +4,7 @@
 pkgname=vcluster-bin
 _pkgname=vcluster
 pkgdesc='Create fully functional virtual Kubernetes clusters'
-pkgver=0.36.1
+pkgver=0.37.2
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://vcluster.com"
@@ -19,8 +19,8 @@ source_aarch64=(
     "vcluster-$pkgver::https://github.com/loft-sh/vcluster/releases/download/v${pkgver}/vcluster-linux-arm64"
 )
 
-sha256sums_x86_64=('3bb32e0aa90ecbc4ae88d8a0db7728263a6c911a488f64c53dc07ef5abd2789e')
-sha256sums_aarch64=('3bb32e0aa90ecbc4ae88d8a0db7728263a6c911a488f64c53dc07ef5abd2789e')
+sha256sums_x86_64=('e3aec254a8d1ed29e2155172ab5c872dc022f325279dd49dadb01f0887648b4a')
+sha256sums_aarch64=('e3aec254a8d1ed29e2155172ab5c872dc022f325279dd49dadb01f0887648b4a')
 
 package() {
     install -D -m0755 "$srcdir/vcluster-$pkgver" "$pkgdir/usr/bin/$_pkgname"
