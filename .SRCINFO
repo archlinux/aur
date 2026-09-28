@@ -1,0 +1,16 @@
+pkgbase = lcms2-cmake
+	pkgdesc = Little CMS configuration files for CMake
+	pkgver = 2.19.1
+	pkgrel = 1
+	url = https://github.com/mm2/Little-CMS
+	arch = any
+	license = MIT
+	makedepends = glibc
+	makedepends = libjpeg-turbo
+	makedepends = libtiff
+	depends = cmake
+	depends = lcms2
+	source = Little-CMS-lcms2.19.1.tar.gz::https://github.com/mm2/Little-CMS/archive/lcms2.19.1.tar.gz
+	b2sums = 834b931ef1bc1c2bd601fd05da5eccb4caeeda653a03a9bbab55d1612fc95f269846e2e84fe8fbfe235a8dd87a6f1cfea1d06d86387903380ae3eda5370527be
+
+pkgname = lcms2-cmake
