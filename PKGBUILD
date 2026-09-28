@@ -2,7 +2,7 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-orix
 pkgshort=orix
-pkgver=0.14.2
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Python library for analysing orientations and crystal symmetry."
 arch=('any')
@@ -17,6 +17,7 @@ depends=('python'
          'python-matplotlib>=3.6.1'
          'python-numba'
 	 'python-numpy'
+	 'python-packaging'
 	 'python-pooch>=0.13'
          'python-scipy'
 	 'python-tqdm'
@@ -46,4 +47,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-sha256sums=('364f4a01d7cb12638827b565be7718b4a00ad855e762e72de6f3907c33b252d4')
+sha256sums=('f63e45e96af1f263f3e7fe6b5da6e840c1a0a91f682ab9c4853ee9f5fb72e636')
