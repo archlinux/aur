@@ -1,0 +1,15 @@
+pkgbase = moarchy-books
+	pkgdesc = Open Library and a reading list of your own: discover, search, shelve, track pages
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SimonSchubert/moarchy-apps
+	arch = any
+	license = MIT
+	depends = quickshell
+	depends = curl
+	depends = ttf-jetbrains-mono-nerd
+	depends = hicolor-icon-theme
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/books-v0.1.0/moarchy-books-0.1.0.tar.gz
+	sha256sums = 6e67abb80559fb7d4096bf7e232ab015712487c02ef9f0a2501aff1519070ec7
+
+pkgname = moarchy-books
