@@ -1,6 +1,6 @@
 # Maintainer: Zynix <crossmacro@zynix.net>
 pkgname=crossmacro-git
-pkgver=1.5.0.r15.g2c27e9a
+pkgver=1.5.0.r16.g796ee98
 pkgrel=1
 pkgdesc="Development snapshot of CrossMacro mouse and keyboard macro automation"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('dotnet-sdk>=10.0' 'clang' 'zlib' 'git')
 conflicts=('crossmacro')
 provides=('crossmacro')
 options=('!strip')
-source=("crossmacro::git+https://github.com/alper-han/CrossMacro.git#commit=2c27e9a58f4464eb9cf18a4aa0efbd7f93a22588"
+source=("crossmacro::git+https://github.com/alper-han/CrossMacro.git#commit=796ee98dd8e9d4444e8f436e8cd8637f87fd7dd2"
         "crossmacro.sysusers"
         "crossmacro-modules.conf")
 sha256sums=('SKIP'
