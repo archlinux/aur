@@ -39,6 +39,18 @@ A workspace CA installed for SSL inspection becomes trusted system-wide. This
 package maps the CA path expected by UniFi Endpoint to Arch's p11-kit anchor
 directory and refreshes the trust store with `update-ca-trust`.
 
+Screen sharing
+--------------
+
+Screen sharing requires `xdg-desktop-portal`, a portal backend appropriate for
+your desktop, `pipewire`, `gst-plugin-pipewire`, and an H.264 encoder. Install
+`gst-plugins-ugly` for the recommended x264 encoder. These dependencies are
+optional; VPN, WiFi, and file access do not require them.
+
+Each screen-sharing session requires approval in UniFi Endpoint and your
+desktop's portal dialog. Use End Session in the floating indicator or your
+desktop's screen-sharing indicator to stop sharing.
+
 Removal
 -------
 

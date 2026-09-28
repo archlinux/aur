@@ -2,12 +2,12 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=unifi-endpoint
-pkgver=1.0.4
+pkgver=1.1.7
 pkgrel=1
-_upstream_pkgrel=20
+_upstream_pkgrel=28
 pkgdesc='Secure access client for UniFi-managed VPN, WiFi, and file resources'
 arch=('x86_64')
-url='https://community.ui.com/releases/UniFi-Endpoint-Linux-1-0-4/ea29f793-838d-4f03-9915-efb55ad594a6'
+url='https://community.ui.com/releases/UniFi-Endpoint-Linux-1-1-7/7e28708d-1a05-4fcd-b26a-1ab462c24497'
 license=('LicenseRef-Ubiquiti-EULA')
 depends=(
   'ca-certificates-utils'
@@ -35,12 +35,16 @@ depends=(
 )
 optdepends=(
   'gnome-keyring: Secret Service credential storage'
+  'gst-plugin-pipewire: PipeWire capture for screen sharing'
+  'gst-plugins-ugly: H.264 encoding for screen sharing'
   'gvfs: file-access integration'
   'gvfs-nfs: NFS file access'
   'gvfs-smb: SMB file access'
   'kwallet: KDE credential storage'
+  'pipewire: screen sharing'
   'systemd-resolvconf: preferred resolvconf provider with systemd-resolved'
   'vulkan-icd-loader: optional Vulkan rendering backend'
+  'xdg-desktop-portal: screen sharing (requires a backend for your desktop)'
 )
 backup=(
   'etc/NetworkManager/conf.d/90-unifi-endpoint-unmanaged-vpn.conf'
@@ -51,15 +55,15 @@ options=('!strip' '!debug')
 install='unifi-endpoint.install'
 _deb="${pkgname}_${pkgver}-${_upstream_pkgrel}_amd64.deb"
 source=(
-  "${_deb}::https://fw-download.ubnt.com/data/unifi-endpoint-desktop-app-deb/bed2-linux-1.0.4-20-ff164d14-a211-419d-9a04-43192d56a952.deb"
+  "${_deb}::https://fw-download.ubnt.com/data/unifi-endpoint-desktop-app-deb/55c2-linux-1.1.7-28-54b0e439-ddb5-41be-9e6f-56739775cdd9.deb"
   'README.Arch'
   'Ubiquiti-EULA.url'
   'unifi-endpoint-launcher'
 )
 noextract=("${_deb}")
 sha256sums=(
-  'e54342cc9c514e59469657e060149d46f7371b7fdb2d9fff1eb34434804311fa'
-  'a616f007f158a38d24dc2601dd391c24bb4f416aa672c0806036cd8287b85659'
+  '996cd570c30dc3ec95203eef0bc85ef7683b999ade3e55cadc3ddbed75ae59ad'
+  'b7d14250056e6c27c70950c8e4d44f0e3d70c1811aa7a3f33f90faed6a90ba91'
   '45fd9a9a193060c27ecc332dcdf87361b21f5e41861f053e9d65079be5d972cd'
   '7fdca3f607f4717ea9f59ce04e3cfd639b36de14a739d96f99532386a075c6bb'
 )
@@ -87,6 +91,14 @@ check() {
 
 package() {
   bsdtar --no-same-owner -xf data.tar.zst -C "${pkgdir}"
+
+  # Upstream 1.1.7 places the restart limits in [Service], where current
+  # systemd ignores StartLimitIntervalSec. Both limits belong in [Unit].
+  sed -i \
+    -e '/^StartLimitIntervalSec=/d' \
+    -e '/^StartLimitBurst=/d' \
+    -e '/^\[Unit\]$/a StartLimitIntervalSec=300\nStartLimitBurst=5' \
+    "${pkgdir}/usr/lib/systemd/user/UniFi-Endpoint-Daemon.service"
 
   # The vendor desktop entry starts the GUI directly. The Arch launcher starts
   # the socket on demand, preserving Arch's policy of not enabling services

@@ -56,6 +56,28 @@ _ensure_group() {
     groupadd --system unifi-endpoint
 }
 
+_stop_tunnel_agent() {
+  local pidfile=/run/UniFi-Endpoint/utunnel.pid
+  local pid exe
+
+  [ -r "${pidfile}" ] || return 0
+  pid=$(cat "${pidfile}" 2>/dev/null) || return 0
+  case "${pid}" in
+    ''|0|1|*[!0-9]*) return 0 ;;
+  esac
+
+  # Follow upstream's PID-file cleanup: command-line matching can also kill
+  # unrelated processes that merely mention the binary's path.
+  exe=$(readlink -f "/proc/${pid}/exe" 2>/dev/null) || return 0
+  [ "${exe}" = /usr/lib/UniFi-Endpoint/utunnel ] || return 0
+
+  kill -TERM "${pid}" 2>/dev/null || true
+  sleep 1
+  exe=$(readlink -f "/proc/${pid}/exe" 2>/dev/null) || return 0
+  [ "${exe}" = /usr/lib/UniFi-Endpoint/utunnel ] || return 0
+  kill -KILL "${pid}" 2>/dev/null || true
+}
+
 _teardown_runtime() {
   if [ -f /run/UniFi-Endpoint/wg/ui-vpn.conf ] && \
       command -v wg-quick >/dev/null 2>&1; then
@@ -70,11 +92,7 @@ _teardown_runtime() {
   rm -f /etc/NetworkManager/system-connections/unifi-endpoint-vpn.nmconnection
   rm -f /etc/NetworkManager/system-connections/unifi-endpoint-vpn
 
-  if command -v pkill >/dev/null 2>&1; then
-    pkill -TERM -f /usr/lib/UniFi-Endpoint/utunnel >/dev/null 2>&1 || true
-    sleep 1
-    pkill -KILL -f /usr/lib/UniFi-Endpoint/utunnel >/dev/null 2>&1 || true
-  fi
+  _stop_tunnel_agent
 
   nmcli connection reload >/dev/null 2>&1 || true
 }
