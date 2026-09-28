@@ -1,6 +1,6 @@
 # Maintainer: ZhymabekRoman <robanokssamit@yandex.kz>
 pkgname=ncalayer
-pkgver=1.4.0
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="NCALayer digital signature application for Kazakhstan PKI"
 arch=('x86_64')
@@ -10,13 +10,13 @@ depends=('java-runtime=8' 'nss')
 optdepends=('pcsclite: Smart card support')
 makedepends=('wget' 'unzip' 'make')
 install=ncalayer.install
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('55405ea0eaf349110a5837179617e6b70d4835cab194a396d6278aff3cafcac8')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ZhymabekRoman/NCALayer-Linux/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('72efa555ea6021d1c05bafa6553bcddfc14b2890b2d1b52760ad8150fe6a4059')
 
 prepare() {
     cd "${srcdir}/NCALayer-Linux-${pkgver}"
 
-    # Download and extract ncalayer.zip
+    # Download ncalayer.zip during prepare phase
     make download
     make verify
     make extract
@@ -37,7 +37,7 @@ package() {
     # Install certificate installer
     install -Dm755 install-certs.sh "${pkgdir}/usr/bin/${pkgname}-install-certs"
 
-    # Install launcher script
+    # Install launcher
     install -Dm755 pkg/launcher.sh "${pkgdir}/usr/bin/${pkgname}"
 
     # Install desktop entry
@@ -49,4 +49,5 @@ package() {
 
     # Install documentation
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
