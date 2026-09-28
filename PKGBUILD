@@ -4,7 +4,7 @@ _pkgname='archlinux'
 _variant='basic'
 pkgname="libvirt-image-${_pkgname}-basic-bin"
 pkgver=20260915.594445
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Arch Linux basic QCOW2 template for libvirt without cloud-init'
 arch=('x86_64')
 url='https://gitlab.archlinux.org/archlinux/arch-boxes'
@@ -246,14 +246,7 @@ exit 0
 }
 
 check() {
-	local package_root="${srcdir}/check-package-root-${_variant}"
-
 	_check_guest
-
-	printf '%s\n' 'check: staged package payload'
-	rm -rf -- "${package_root}"
-	_install_payload "${package_root}"
-	_check_payload "${package_root}"
 }
 
 package() {

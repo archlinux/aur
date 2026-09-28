@@ -1,7 +1,7 @@
 pkgbase = libvirt-image-archlinux-basic-bin
 	pkgdesc = Official Arch Linux basic QCOW2 template for libvirt without cloud-init
 	pkgver = 20260915.594445
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.archlinux.org/archlinux/arch-boxes
 	arch = x86_64
 	license = LicenseRef-Various
