@@ -3,7 +3,7 @@
 pkgbase=python-pyfive
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A pure python HDF5 reader"
 arch=('any')
@@ -14,7 +14,8 @@ makedepends=('python-setuptools-scm>=8'
              'python-installer'
              'python-sphinx_rtd_theme'
              'python-autodocsumm>=0.2.15'
-             'python-numpy')  # wheel required by new setuptools
+             'python-numpy'
+             'python-fsspec')  # wheel required by new setuptools
 checkdepends=('python-pytest-rerunfailures'
 ##            'python-pytest-cov'
 ##            'python-pytest-html'
@@ -29,7 +30,7 @@ checkdepends=('python-pytest-rerunfailures'
               'python-s3fs') # numpy already in makedepends; requests <- moto
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'Makefile')
-md5sums=('f839f75692e356b04bc3378c201b49e3'
+md5sums=('679a2dca83e6ca365cb38ad9d313c615'
          'a6aa4bc42b138d75f938065a0994c3e1')
 
 get_pyinfo() {
@@ -66,7 +67,7 @@ check() {
 }
 
 package_python-pyfive() {
-    depends=('python>=3.10' 'python-numpy>=2' 'python-typing_extensions')
+    depends=('python>=3.10' 'python-numpy>=2' 'python-fsspec' 'python-typing_extensions')
     optdepends=('python-pyfive-doc: Documentation for Pyfive')
     cd ${srcdir}/${_pyname}-${pkgver}
 
