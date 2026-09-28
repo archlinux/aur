@@ -1,11 +1,12 @@
-# Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
+# Maintainer: MaryJaneInChain <maryjaneinchain at gmail dot com>
+# Contributor: Sebastian Wiesner <sebastian@swsnr.de>
 pkgname=ja2-stracciatella
-pkgver=0.21.0
-pkgrel=2
+pkgver=0.22.1
+pkgrel=1
 pkgdesc="Jagged Alliance 2 Stracciatella"
 arch=('x86_64')
 url="https://github.com/ja2-stracciatella/ja2-stracciatella"
-license=('custom')
+license=('LicenseRef-SFI-Source-Code')
 depends=('sdl2>2.0.6' 'lua53')
 optdepends=('fltk: GUI launcher')
 makedepends=('cargo' 'cmake' 'ninja' 'string-theory' 'sol2' 'fltk')
@@ -18,12 +19,15 @@ source=(
     "magic_enum_${_magic_enum_ver}.hpp::https://github.com/Neargye/magic_enum/releases/download/v${_magic_enum_ver}/magic_enum.hpp"
     "https://github.com/mackron/miniaudio/archive/${_miniaudio_commit}.tar.gz"
 )
-sha256sums=('1c15b4f281bba9aff1c3409d4308d22840eb815a8a3ab53f7be69a5841f300a2'
+sha256sums=('ef6313f0bb826c933f0f5a7bb7866101eef4453f363c2fd605764d3084793936'
             'f34487663db05b10acae7077dd0b5cf5794112a379567322e251ef0068875dc4'
             '76c154a60e320ae2054ac0e93480f2dffc12a5129bdb2ed4a62e0cce8d345c36')
 
 build() {
     cd "${srcdir}" || return 1
+    export RUSTUP_TOOLCHAIN=stable
+    # FLTK 1.4 headers include <cairo.h>, which FindFLTK does not add
+    CXXFLAGS+=" -I/usr/include/cairo"
 
     mkdir -p "${srcdir}/magic_enum"
     cp "${srcdir}/magic_enum_${_magic_enum_ver}.hpp" "${srcdir}/magic_enum/magic_enum.hpp"
@@ -33,6 +37,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DEXTRA_DATA_DIR=/usr/share/ja2 \
         -DLOCAL_LUA_LIB=OFF \
+        -DLUA_INCLUDE_DIR=/usr/include/lua5.3 \
+        -DLUA_LIBRARY=/usr/lib/liblua5.3.so \
         -DLOCAL_SOL_LIB=OFF \
         -DLOCAL_STRING_THEORY_LIB=OFF \
         -DLOCAL_MAGICENUM_LIB=OFF \
