@@ -1,7 +1,7 @@
 # Maintainer: Hussein Hareb <hussein.hareb04@gmail.com>
 pkgname=hw-monitor
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="A lightweight hardware monitor built with Tauri"
 arch=('x86_64')
 url="https://github.com/husseinhareb/hw-monitor"
