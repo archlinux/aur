@@ -1,9 +1,9 @@
 # Maintainer: h0lylag <h0lylag@gravemind.sh>
 
 pkgname=eve-preview-manager-beta
-pkgver=1.9.0
-pkgrel=2
-_upstream_version=1.9.0
+pkgver=1.9.1beta1
+pkgrel=1
+_upstream_version=1.9.1-beta.1
 pkgdesc="EVE Online window preview manager (beta)"
 arch=('x86_64')
 url="https://github.com/h0lylag/EVE-Preview-Manager"
@@ -16,7 +16,7 @@ makedepends=('rust>=1:1.97.1' 'pkgconf')
 provides=("eve-preview-manager=$pkgver")
 conflicts=('eve-preview-manager')
 source=("${pkgname}-${_upstream_version}.tar.gz::https://github.com/h0lylag/EVE-Preview-Manager/archive/refs/tags/v${_upstream_version}.tar.gz")
-sha256sums=('9728be3787660a03d613469b727b8e66b821df267d1393ccde26868b83f60c92')
+sha256sums=('cf964e6caf69e5550ece232488e76c3c1c6c76051cf869aaef4f46ac2dd3b70a')
 
 prepare() {
   cd "EVE-Preview-Manager-${_upstream_version}"
@@ -36,9 +36,7 @@ check() {
   cd "EVE-Preview-Manager-${_upstream_version}"
   export CARGO_HOME="$srcdir/cargo-home"
   export CARGO_TARGET_DIR=target
-  # Test fails when /tmp is tmpfs; fixed upstream in the next release.
-  cargo test --frozen --all-features -- \
-    --skip config::backup::tests::create_backup_removes_incomplete_archive_after_write_failure
+  cargo test --frozen --all-features
 }
 
 package() {
