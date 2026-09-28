@@ -29,7 +29,7 @@ pkgbase = crossmacro-git
 	provides = crossmacro
 	conflicts = crossmacro
 	options = !strip
-	source = crossmacro::git+https://github.com/alper-han/CrossMacro.git#commit=57a18cd1a93f021dd26b4ca8b341fff81e85b5e5
+	source = crossmacro::git+https://github.com/alper-han/CrossMacro.git#commit=32d2f8220acbc1c413e862bfe6e46e3e5e8aea89
 	source = crossmacro.sysusers
 	source = crossmacro-modules.conf
 	sha256sums = SKIP
