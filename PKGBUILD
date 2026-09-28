@@ -13,6 +13,8 @@ source_aarch64=("$url/releases/download/$pkgver/$_pkgname-$pkgver-arm64-linux.ta
 sha256sums_x86_64=('7ce89a253facca9310c06654c6308568c1cefe084d1b1ffe669dd604178cc956')
 sha256sums_aarch64=('6d633ae20afa8784b2bbba83df77d8f0bf4ed977b9536b1018d9562b244d8a44')
 package() {
+    [ -f ./$_pkgname-amd64 ] && mv ./$_pkgname-amd64 ./$_pkgname
+    [ -f ./$_pkgname-arm64 ] && mv ./$_pkgname-arm64 ./$_pkgname
 	# binary
 	install -Dm755 ./$_pkgname "$pkgdir/usr/bin/$_pkgname"
 	# manpage
