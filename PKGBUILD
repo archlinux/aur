@@ -4,7 +4,7 @@
 
 pkgname=python-yoctopuce
 _pkg="${pkgname#python-}"
-pkgver=2.1.15681
+pkgver=2.1.16087
 pkgrel=1
 pkgdesc="Yoctopuce library for Python"
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=(
 	'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/y/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('b7ed0ea0c0c215f7aa8f27d3b02cac314fadfd99ce039f4b04445c87e5886ef6')
+sha256sums=('63676888ac488b2bc698b7ff1e80f14ae24abd40e192349643a399b5df4c6417')
 
 prepare() {
 	cd "$_pkg-$pkgver/$_pkg/"
