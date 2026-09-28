@@ -1,6 +1,6 @@
 pkgbase = purrr-client-git
 	pkgdesc = Native desktop client for purrr, a cozy self-hosted Discord alternative (latest dev, built from source)
-	pkgver = 0.1.0.r0.g0000000
+	pkgver = 0.1.6.r0.g0000000
 	pkgrel = 1
 	url = https://purrr.chat
 	arch = x86_64
