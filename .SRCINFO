@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-rivulet
 	pkgdesc = Kodi video add-on reimplementing the Stremio client experience: catalogs, add-on management, stream resolution and playback
-	pkgver = 0.24.1
+	pkgver = 0.24.2
 	pkgrel = 1
 	url = https://github.com/rivulet-kodi/plugin.video.rivulet
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = kodi-addon-rivulet
 	depends = kodi
 	optdepends = stremio-server-go: local streaming server for playback
 	options = !strip
-	source = plugin.video.rivulet-0.24.1.zip::https://github.com/rivulet-kodi/plugin.video.rivulet/releases/download/v0.24.1/plugin.video.rivulet-0.24.1.zip
-	sha256sums = ffb846df1e0a51ae336d4a08a535ae6c77cc8bb4ed9bb17c7489d5a21ef39f95
+	source = plugin.video.rivulet-0.24.2.zip::https://github.com/rivulet-kodi/plugin.video.rivulet/releases/download/v0.24.2/plugin.video.rivulet-0.24.2.zip
+	sha256sums = 3656e67540846644ff60ba8facbaad74a6d057319e4e36f1a5e2dd08c578352a
 
 pkgname = kodi-addon-rivulet
