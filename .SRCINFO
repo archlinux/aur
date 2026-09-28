@@ -1,6 +1,6 @@
 pkgbase = lupa-git
 	pkgdesc = A minimalist launcher built on gtk4-layer-shell.
-	pkgver = r70.c00ff78
+	pkgver = r71.77c9dc8
 	pkgrel = 1
 	url = https://github.com/Azakidev/lupa
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = lupa-git
 	depends = xdg-utils
 	depends = localsearch
 	depends = lua
-	provides = lupa=r70.c00ff78
+	provides = lupa=r71.77c9dc8
 	conflicts = lupa
 	options = !debug
 	options = !lto
