@@ -13,7 +13,7 @@ pkgname=genoffice-electron
 _pkgname=genoffice
 _dist_name="GenOffice"
 _electronversion=43
-pkgver=0.10.63
+pkgver=0.10.1467
 pkgrel=1
 pkgdesc="Free, open-source AI office suite by Genspark — docs, sheets, slides, PDF and Markdown (system Electron)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source_x86_64=("https://github.com/genspark-ai/genoffice/releases/download/v${pk
 source=("${_pkgname}.sh")
 
 sha256sums=('67b5d78fb2ecdc193068957df2cf90cd96352f854b7dbf1bd882e69fbe8907b6')
-sha256sums_x86_64=('29074aa1967d78a647582b84cb264c1212c75dfa8f5a99411c4404f10fd3875f')
+sha256sums_x86_64=('7be8a82b0dd3c29cf04b612d10ee1fe5ba0cf503bc6c5e4ae1dfed2e273e563f')
 
 prepare() {
     # 解压 deb 数据归档
