@@ -8,12 +8,13 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/SinTan1729/$_pkgname"
 license=("GPL3")
 provides=("immich-custom-memories")
-source_x86_64=("$_pkgname.tar.gz::$url/releases/download/$pkgver/$_pkgname-$pkgver-amd64-linux.tar.gz")
-source_aarch64=("$_pkgname.tar.gz::$url/releases/download/$pkgver/$_pkgname-$pkgver-arm64-linux.tar.gz")
-sha256sums_x86_64=('8e30510463f1ebe3e11c5c67682cbab9834b4ebb117e7a501085b97a8e2d7ea0')
-sha256sums_aarch64=('8e30510463f1ebe3e11c5c67682cbab9834b4ebb117e7a501085b97a8e2d7ea0')
+source_x86_64=("$url/releases/download/$pkgver/$_pkgname-$pkgver-amd64-linux.tar.gz")
+source_aarch64=("$url/releases/download/$pkgver/$_pkgname-$pkgver-arm64-linux.tar.gz")
+sha256sums_x86_64=('36df2b0871e29e8ce8f19e0c179022587d596b5acb31f09e1ff4ea674d5fb8c2')
+sha256sums_aarch64=('56a7bb66517932356d9d9209548e966c6cc2314c3adaabcd52dea7b2b17d8ae9')
 package() {
-    mv ./$_pkgname-* ./$_pkgname
+    [ -f ./$_pkgname-amd64 ] && mv ./$_pkgname-amd64 ./$_pkgname
+    [ -f ./$_pkgname-arm64 ] && mv ./$_pkgname-arm64 ./$_pkgname
 	# binary
 	install -Dm755 ./$_pkgname "$pkgdir/usr/bin/$_pkgname"
 	# manpage

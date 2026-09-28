@@ -7,9 +7,9 @@ pkgbase = immich-custom-memories-bin
 	arch = aarch64
 	license = GPL3
 	provides = immich-custom-memories
-	source_x86_64 = immich-custom-memories.tar.gz::https://github.com/SinTan1729/immich-custom-memories/releases/download/0.2.1/immich-custom-memories-0.2.1-amd64-linux.tar.gz
-	sha256sums_x86_64 = 8e30510463f1ebe3e11c5c67682cbab9834b4ebb117e7a501085b97a8e2d7ea0
-	source_aarch64 = immich-custom-memories.tar.gz::https://github.com/SinTan1729/immich-custom-memories/releases/download/0.2.1/immich-custom-memories-0.2.1-arm64-linux.tar.gz
-	sha256sums_aarch64 = 8e30510463f1ebe3e11c5c67682cbab9834b4ebb117e7a501085b97a8e2d7ea0
+	source_x86_64 = https://github.com/SinTan1729/immich-custom-memories/releases/download/0.2.1/immich-custom-memories-0.2.1-amd64-linux.tar.gz
+	sha256sums_x86_64 = 36df2b0871e29e8ce8f19e0c179022587d596b5acb31f09e1ff4ea674d5fb8c2
+	source_aarch64 = https://github.com/SinTan1729/immich-custom-memories/releases/download/0.2.1/immich-custom-memories-0.2.1-arm64-linux.tar.gz
+	sha256sums_aarch64 = 56a7bb66517932356d9d9209548e966c6cc2314c3adaabcd52dea7b2b17d8ae9
 
 pkgname = immich-custom-memories-bin
