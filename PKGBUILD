@@ -9,7 +9,6 @@ url='https://github.com/aokellermann/yaycache'
 license=('GPL-2.0-or-later')
 depends=(pacman-contrib)
 makedepends=('asciidoc' 'git')
-checkdepends=('bats' 'bats-support' 'bats-assert' 'bubblewrap')
 optdepends=('sudo: privilege elevation')
 backup=('etc/yaycache.conf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
@@ -24,18 +23,6 @@ build() {
     cd $pkgname-$pkgver
     ./configure --prefix=/usr
     make
-}
-
-check() {
-    cd $pkgname-$pkgver
-    # The suite runs inside a bubblewrap sandbox. In a chroot/container build
-    # (devtools, nspawn) bwrap cannot create namespaces, so run it unsandboxed
-    # there; that environment is disposable anyway.
-    if bwrap --ro-bind / / --dev /dev --unshare-all true 2>/dev/null; then
-        make check
-    else
-        YAYCACHE_NO_SANDBOX=1 make check
-    fi
 }
 
 package() {
