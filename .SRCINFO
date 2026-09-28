@@ -1,0 +1,15 @@
+pkgbase = moarchy-weather
+	pkgdesc = Now, the next day and the week, from Open-Meteo, for Quickshell
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/SimonSchubert/moarchy-apps
+	arch = any
+	license = MIT
+	depends = quickshell
+	depends = curl
+	depends = ttf-jetbrains-mono-nerd
+	depends = hicolor-icon-theme
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/weather-v0.2.0/moarchy-weather-0.2.0.tar.gz
+	sha256sums = 1a645d73cb641d1557026f357fdbc39a4f1418211b66106057d9f1b5c2fc40c1
+
+pkgname = moarchy-weather
