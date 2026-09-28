@@ -1,6 +1,6 @@
 # Maintainer: Natsuki <299474069+iamanuclearwarhead@users.noreply.github.com>
 pkgname=hyprquip-git
-pkgver=0.1.0.r1.g7c294e3
+pkgver=0.1.0.r3.g6ea4897
 pkgrel=1
 pkgdesc="hyprland's official splash texts on any shell: desktop overlay, cli, hyprlock, waybar, fastfetch"
 arch=('any')
