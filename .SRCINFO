@@ -7,12 +7,14 @@ pkgbase = brum-bin
 	license = MIT
 	provides = brum
 	conflicts = brum
+	conflicts = commanderdog
+	conflicts = commanderdog-bin
 	depends = glibc
 	depends = sqlite
 	depends = libssh2
 	depends = openssl
 	depends = ca-certificates
 	source = brum-v1.2.1-linux-x86_64.tar.gz::https://github.com/Woofson/brum/releases/download/v1.2.1/brum-v1.2.1-linux-x86_64.tar.gz
-	sha256sums = 86dda3fdef313ad12d7687279bea1eda2000ced0b92744758e955b24ffb89a36
+	sha256sums = dea2c842ede5c08dc27395b3139dc7b27fe7c2ef833959b1793b605e5777c375
 
 pkgname = brum-bin
