@@ -1,6 +1,6 @@
 pkgbase = orbien-desktop-bin
 	pkgdesc = Lightweight, high-performance intranet tunneling tool with a native desktop client
-	pkgver = 3.7.0
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://github.com/orbien-org/orbien
 	arch = x86_64
@@ -20,15 +20,15 @@ pkgbase = orbien-desktop-bin
 	depends = libxkbcommon-x11
 	depends = libxrender
 	depends = wayland
-	provides = orbien-desktop=3.7.0
+	provides = orbien-desktop=3.8.0
 	conflicts = orbien-desktop
-	noextract = orbien-desktop_3.7.0_linux_amd64.deb
-	noextract = orbien-desktop_3.7.0_linux_arm64.deb
+	noextract = orbien-desktop_3.8.0_linux_amd64.deb
+	noextract = orbien-desktop_3.8.0_linux_arm64.deb
 	options = !debug
 	options = !strip
-	source_x86_64 = orbien-desktop_3.7.0_linux_amd64.deb::https://github.com/orbien-org/orbien/releases/download/v3.7.0/orbien-desktop_3.7.0_linux_amd64.deb
-	sha256sums_x86_64 = b9df6379228c65f59292aed4e701a37e67fc5fa84158d164a96f0655aa7d453e
-	source_aarch64 = orbien-desktop_3.7.0_linux_arm64.deb::https://github.com/orbien-org/orbien/releases/download/v3.7.0/orbien-desktop_3.7.0_linux_arm64.deb
-	sha256sums_aarch64 = 5cf35083fa4bfa3463db3090ee903f7eb10aa39a377c3934a5d5f31c47d3ea7e
+	source_x86_64 = orbien-desktop_3.8.0_linux_amd64.deb::https://github.com/orbien-org/orbien/releases/download/v3.8.0/orbien-desktop_3.8.0_linux_amd64.deb
+	sha256sums_x86_64 = 12c274dc101f73ec216146e6f2f50d3fe40d6799a5973eb8775e54b9a378e918
+	source_aarch64 = orbien-desktop_3.8.0_linux_arm64.deb::https://github.com/orbien-org/orbien/releases/download/v3.8.0/orbien-desktop_3.8.0_linux_arm64.deb
+	sha256sums_aarch64 = ca1b284f114a751b2340b5d4779cf3e5889e94785ee04598bcbea94a72e8e6ff
 
 pkgname = orbien-desktop-bin
