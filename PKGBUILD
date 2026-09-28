@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=PySR
 pkgname=python-${_base,,}
-pkgver=2.5.0
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="Simple and efficient symbolic regression"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(python-sympy python-pandas python-scikit-learn python-juliacall
 makedepends=(python-build python-installer python-hatchling)
 checkdepends=(python-pytest python-nbval)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('836044752dd7c78e98851369446b0d5431a3aa2a439b64ca769b4fa077ba73a79b44b3c33c85175ea1b0e49c34a3167985b8eb62e6ea9bda171bab032e6ef227')
+sha512sums=('158887f5059c12e8283d655771f295da015a999a5966adca5a2792b69918c98885956b453fef399d76783f8420720ec806e9defb9be6664c5a5e6a1ec5dabd95')
 
 build() {
   cd ${_base}-${pkgver}
