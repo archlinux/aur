@@ -1,10 +1,10 @@
 # Maintainer: Anton Reshetov
 pkgname=masscode-bin
 _pkgname=massCode
-pkgver=5.12.0
+pkgver=6.0.0
 _electronversion=34
 pkgrel=1
-pkgdesc="A free and open source code snippets manager for developers."
+pkgdesc="A free, open-source developer workspace. Snippets, notes, HTTP requests, calculations, and dev tools in one local-first app."
 arch=('x86_64')
 url="https://masscode.io/"
 _ghurl="https://github.com/massCodeIO/massCode"
@@ -18,8 +18,8 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8d0f25e3477f83ccb6071db6aaf10a743a98d9627c539a866c3ba74d311c923f'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums=('f28119decf39659715fd25d757209b36803481f1a67dcc4d1729ba66ec4db732'
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
