@@ -2,7 +2,7 @@
 _pkgname=networkmanager-dmenu
 _gitname=networkmanager-dmenu
 pkgname=$_pkgname-git
-pkgver=r143.c98810b
+pkgver=r284.2466972
 pkgrel=1
 pkgdesc="Control NetworkManager via dmenu"
 arch=('any')
@@ -10,14 +10,20 @@ url="https://github.com/firecat53/networkmanager-dmenu"
 license=('MIT')
 depends=('python' 'networkmanager' 'python-gobject')
 makedepends=('git')
-optdepends=('dmenu: one of dmenu, rofi, bemenu, wofi, fuzzel or yofi'
-            'rofi: one of dmenu, rofi, bemenu, wofi, fuzzel or yofi'
-            'bemenu: one of dmenu, rofi, bemenu, wofi, fuzzel or yofi'
-            'wofi: one of dmenu, rofi, bemenu, wofi, fuzzel or yofi'
-            'fuzzel: one of dmenu, rofi, bemenu, wofi, fuzzel or yofi'
-            'yofi: one of dmenu, rofi, bemenu, wofi, fuzzel or yofi'
+optdepends=('dmenu: dmenu backend'
+            'bemenu: bemenu backend'
+            'fuzzel: fuzzel backend'
+            'rofi: rofi backend'
+            'tofi: tofi backend'
+            'walker: walker backend'
+            'wmenu: wmenu backend'
+            'wofi: wofi backend'
+            'yofi: yofi backend'
             'nm-connection-editor: for connection manager GUI'
-            'libnotify: any notification platform (dunst, for example)')
+            'libnotify: any notification platform (dunst, for example)'
+            'pinentry: secure passphrase entry'
+            'modemmanager: WWAN support'
+            'bluez: bluetooth control')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/firecat53/$_gitname.git")
