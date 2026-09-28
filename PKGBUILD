@@ -2,12 +2,11 @@
 pkgbase=pam-fprint-helper
 pkgname=('pam-fprint-helper' 'pam-open-fprint-helper')
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Fingerprint authorization (pam_fprintd) for privileged access on Arch/KDE Plasma: polkit, sudo, su, login, SDDM/LightDM, themed root GUI apps"
 arch=('any')
 url="https://github.com/ixnewton/PamFprint"
 license=('GPL-3.0-or-later')
-install=pam-fprint-helper.install
 _commit=3fc1f97ebd192375ef28068566a570a9d7174461
 source=("$pkgbase-$pkgver-$_commit.tar.gz::https://github.com/ixnewton/PamFprint/archive/$_commit.tar.gz")
 sha256sums=('ec0879cf5750ab5271ee95fd681f8bb8b8f9477262b482299b00cf2678b6f7a3')
@@ -16,6 +15,7 @@ package_pam-fprint-helper() {
   pkgdesc+=" (fprintd backend)"
   depends=('bash' 'fprintd' 'polkit')
   conflicts=('pam-open-fprint-helper')
+  install=pam-fprint-helper.install
   optdepends=(
     'krusader: root file-manager launcher'
     'ksystemlog: root system-log viewer launcher'
@@ -30,6 +30,7 @@ package_pam-open-fprint-helper() {
   depends=('bash' 'open-fprintd' 'polkit')
   provides=('pam-fprint-helper')
   conflicts=('pam-fprint-helper')
+  install=pam-open-fprint-helper.install
   optdepends=(
     'krusader: root file-manager launcher'
     'ksystemlog: root system-log viewer launcher'

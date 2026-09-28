@@ -1,0 +1,29 @@
+post_install() {
+  cat <<'EOF'
+==> pam-open-fprint-helper only delivers the PamFprint files — it does NOT
+==> modify /etc/pam.d by itself. To enable fingerprint authorization:
+==>
+==>     sudo bash /usr/share/pamfprint/install.sh
+==>
+==> To revert:  sudo bash /usr/share/pamfprint/uninstall.sh
+==>
+==> Note: this package is installed as "pam-open-fprint-helper" (it only
+==> provides "pam-fprint-helper"). Check it with:
+==>
+==>     pacman -Q pam-open-fprint-helper
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+==> Re-run the installer to apply updated canonical files:
+==>     sudo bash /usr/share/pamfprint/install.sh
+EOF
+}
+
+pre_remove() {
+  cat <<'EOF'
+==> If install.sh was run, revert the PAM/desktop changes first:
+==>     sudo bash /usr/share/pamfprint/uninstall.sh
+EOF
+}

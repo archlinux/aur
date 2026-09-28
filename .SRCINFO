@@ -1,9 +1,8 @@
 pkgbase = pam-fprint-helper
 	pkgdesc = Fingerprint authorization (pam_fprintd) for privileged access on Arch/KDE Plasma: polkit, sudo, su, login, SDDM/LightDM, themed root GUI apps
 	pkgver = 1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/ixnewton/PamFprint
-	install = pam-fprint-helper.install
 	arch = any
 	license = GPL-3.0-or-later
 	source = pam-fprint-helper-1.0-3fc1f97ebd192375ef28068566a570a9d7174461.tar.gz::https://github.com/ixnewton/PamFprint/archive/3fc1f97ebd192375ef28068566a570a9d7174461.tar.gz
@@ -11,6 +10,7 @@ pkgbase = pam-fprint-helper
 
 pkgname = pam-fprint-helper
 	pkgdesc = Fingerprint authorization (pam_fprintd) for privileged access on Arch/KDE Plasma: polkit, sudo, su, login, SDDM/LightDM, themed root GUI apps (fprintd backend)
+	install = pam-fprint-helper.install
 	depends = bash
 	depends = fprintd
 	depends = polkit
@@ -21,6 +21,7 @@ pkgname = pam-fprint-helper
 
 pkgname = pam-open-fprint-helper
 	pkgdesc = Fingerprint authorization (pam_fprintd) for privileged access on Arch/KDE Plasma: polkit, sudo, su, login, SDDM/LightDM, themed root GUI apps (open-fprintd backend)
+	install = pam-open-fprint-helper.install
 	depends = bash
 	depends = open-fprintd
 	depends = polkit
