@@ -21,3 +21,5 @@ sources:
     headers: {}
     converter:
       type: direct
+      # 优先使用上述客户端标识；仅当响应为 URI/Base64 时自动尝试兼容标识。
+      # 不修改 URL、不转换原始协议；最终必须取得 Clash/Mihomo YAML。

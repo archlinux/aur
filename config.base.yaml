@@ -63,15 +63,22 @@ proxy-providers:
       expected-status: 204
 
 proxy-groups:
-  - name: PROXY
+  # Primary manual exit; keep its ACL4SSR name to retain saved selections.
+  - name: 🚀 节点选择
     type: select
     proxies:
-      - AUTO
+      - ♻️ 自动选择
       - DIRECT
     use:
       - subscriptions
 
-  - name: AUTO
+  - name: 🛩 手动选择二
+    type: select
+    use:
+      - subscriptions
+    empty-fallback: REJECT
+
+  - name: ♻️ 自动选择
     type: url-test
     use:
       - subscriptions
@@ -79,11 +86,137 @@ proxy-groups:
     interval: 300
     timeout: 5000
     lazy: true
-    empty-fallback: DIRECT
+    tolerance: 50
+    empty-fallback: REJECT
+
+  # Business groups share exits instead of each expanding all subscription nodes.
+  - name: 🤖 AI 服务
+    type: select
+    proxies: [🛩 手动选择二, 🚀 节点选择, ♻️ 自动选择]
+
+  - name: 🌍 国外媒体
+    type: select
+    proxies: [🚀 节点选择, ♻️ 自动选择, 🎯 全球直连, 🛩 手动选择二]
+
+  - name: 📲 电报信息
+    type: select
+    proxies: [🚀 节点选择, 🎯 全球直连, 🛩 手动选择二, ♻️ 自动选择]
+
+  - name: Ⓜ️ 微软服务
+    type: select
+    proxies: [🎯 全球直连, 🚀 节点选择, 🛩 手动选择二, ♻️ 自动选择]
+
+  - name: 🍎 苹果服务
+    type: select
+    proxies: [🚀 节点选择, 🎯 全球直连, 🛩 手动选择二, ♻️ 自动选择]
+
+  - name: 📢 谷歌FCM
+    type: select
+    proxies: [🚀 节点选择, 🎯 全球直连, ♻️ 自动选择, 🛩 手动选择二]
+
+  - name: 🎯 全球直连
+    type: select
+    proxies: [DIRECT, 🚀 节点选择, ♻️ 自动选择, 🛩 手动选择二]
+
+  - name: 🛑 全球拦截
+    type: select
+    proxies: [REJECT, DIRECT]
+
+  - name: 🍃 应用净化
+    type: select
+    proxies: [REJECT, DIRECT]
+
+  - name: 🐟 漏网之鱼
+    type: select
+    proxies: [🚀 节点选择, 🎯 全球直连, ♻️ 自动选择, 🛩 手动选择二]
+
+# ACL4SSR Online ordering, plus its AI list before general service rules.
+# Rule data is fetched by Mihomo through the primary exit and cached locally.
+# Source: https://github.com/ACL4SSR/ACL4SSR (CC-BY-SA-4.0).
+rule-providers:
+  ACL4SSR_LocalAreaNetwork: &acl4ssr
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
+    path: ./ruleset/ACL4SSR_LocalAreaNetwork.list
+  ACL4SSR_UnBan:
+    <<: *acl4ssr
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list
+    path: ./ruleset/ACL4SSR_UnBan.list
+  ACL4SSR_BanAD:
+    <<: *acl4ssr
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
+    path: ./ruleset/ACL4SSR_BanAD.list
+  ACL4SSR_BanProgramAD:
+    <<: *acl4ssr
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list
+    path: ./ruleset/ACL4SSR_BanProgramAD.list
+  ACL4SSR_AI:
+    <<: *acl4ssr
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/AI.list
+    path: ./ruleset/ACL4SSR_AI.list
+  ACL4SSR_GoogleFCM:
+    <<: *acl4ssr
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleFCM.list
+    path: ./ruleset/ACL4SSR_GoogleFCM.list
+  ACL4SSR_GoogleCN:
+    <<: *acl4ssr
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/GoogleCN.list
+    path: ./ruleset/ACL4SSR_GoogleCN.list
+  ACL4SSR_SteamCN:
+    <<: *acl4ssr
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/SteamCN.list
+    path: ./ruleset/ACL4SSR_SteamCN.list
+  ACL4SSR_Microsoft:
+    <<: *acl4ssr
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list
+    path: ./ruleset/ACL4SSR_Microsoft.list
+  ACL4SSR_Apple:
+    <<: *acl4ssr
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list
+    path: ./ruleset/ACL4SSR_Apple.list
+  ACL4SSR_Telegram:
+    <<: *acl4ssr
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Telegram.list
+    path: ./ruleset/ACL4SSR_Telegram.list
+  ACL4SSR_ProxyMedia:
+    <<: *acl4ssr
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list
+    path: ./ruleset/ACL4SSR_ProxyMedia.list
+  ACL4SSR_ProxyLite:
+    <<: *acl4ssr
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyLite.list
+    path: ./ruleset/ACL4SSR_ProxyLite.list
+  ACL4SSR_ChinaDomain:
+    <<: *acl4ssr
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list
+    path: ./ruleset/ACL4SSR_ChinaDomain.list
+  ACL4SSR_ChinaCompanyIp:
+    <<: *acl4ssr
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaCompanyIp.list
+    path: ./ruleset/ACL4SSR_ChinaCompanyIp.list
 
 rules:
-  - GEOIP,LAN,DIRECT,no-resolve
-  - MATCH,PROXY
+  - RULE-SET,ACL4SSR_LocalAreaNetwork,🎯 全球直连
+  - RULE-SET,ACL4SSR_UnBan,🎯 全球直连
+  - RULE-SET,ACL4SSR_BanAD,🛑 全球拦截
+  - RULE-SET,ACL4SSR_BanProgramAD,🍃 应用净化
+  - RULE-SET,ACL4SSR_AI,🤖 AI 服务
+  - RULE-SET,ACL4SSR_GoogleFCM,📢 谷歌FCM
+  - RULE-SET,ACL4SSR_GoogleCN,🎯 全球直连
+  - RULE-SET,ACL4SSR_SteamCN,🎯 全球直连
+  - RULE-SET,ACL4SSR_Microsoft,Ⓜ️ 微软服务
+  - RULE-SET,ACL4SSR_Apple,🍎 苹果服务
+  - RULE-SET,ACL4SSR_Telegram,📲 电报信息
+  - RULE-SET,ACL4SSR_ProxyMedia,🌍 国外媒体
+  - RULE-SET,ACL4SSR_ProxyLite,🚀 节点选择
+  - RULE-SET,ACL4SSR_ChinaDomain,🎯 全球直连
+  - RULE-SET,ACL4SSR_ChinaCompanyIp,🎯 全球直连
+  - GEOIP,CN,🎯 全球直连
+  - MATCH,🐟 漏网之鱼
 
 # TUN is intentionally disabled by default. Verify mixed-port proxying first,
 # then enable and tune this block manually if full routing is required.

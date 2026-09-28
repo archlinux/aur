@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import argparse
 import copy
+import difflib
+import errno
 import fcntl
 import getpass
 import grp
@@ -14,7 +16,6 @@ import re
 import secrets
 import shlex
 import shutil
-import socket
 import subprocess
 import sys
 import tempfile
@@ -43,10 +44,23 @@ RAW_SCHEMES = (
     "hy2://",
     "tuic://",
 )
+POLICY_STATE_VERSION = 1
+POLICY_KEYS = ("proxy-groups", "rule-providers", "rules")
+POLICY_MAX_BYTES = 2 * 1024 * 1024
+COMPATIBLE_USER_AGENTS = (
+    "mihomo",
+    "clash.meta",
+    "Clash/1.18.0",
+    "ClashforWindows/0.20.39",
+)
 
 
 class SubscriptionError(RuntimeError):
     pass
+
+
+class RawSubscriptionError(SubscriptionError):
+    """The server returned URI/Base64 nodes instead of Clash/Mihomo YAML."""
 
 
 def log(message: str) -> None:
@@ -126,9 +140,15 @@ def apply_service_group(path: Path, group_name: str, mode: int) -> None:
 
     try:
         os.chown(path, -1, gid)
+    except OSError as exc:
+        if exc.errno not in (errno.EPERM, errno.EINVAL):
+            raise
+        log(f"警告：无法将 {path} 的属组设为 {group_name}，请用 root 运行")
+
+    try:
         os.chmod(path, mode)
     except PermissionError:
-        log(f"警告：无权将 {path} 的属组设为 {group_name}，请用 root 运行")
+        log(f"警告：无权将 {path} 的权限设为 {mode:o}，请用 root 运行")
 
 
 def expand_environment(value: Any) -> Any:
@@ -267,10 +287,7 @@ def configure_source_document(
     converter_type: str | None = None,
 ) -> dict[str, Any]:
     """Return a control-file copy with one source enabled and safely configured."""
-    if converter_type is not None and converter_type not in (
-        "direct",
-        "subconverter",
-    ):
+    if converter_type not in (None, "direct"):
         raise SubscriptionError(f"不支持的 converter.type：{converter_type}")
 
     if not isinstance(control, dict) or not isinstance(control.get("sources"), list):
@@ -285,14 +302,7 @@ def configure_source_document(
         source["url_env"] = url_env
         source.pop("url", None)
 
-        if converter_type == "subconverter":
-            source["converter"] = {
-                "type": "subconverter",
-                "endpoint": "http://127.0.0.1:25500/sub",
-                "target": "clash",
-                "allow_remote": False,
-            }
-        elif converter_type == "direct":
+        if converter_type == "direct":
             source["converter"] = {"type": "direct"}
 
         return configured
@@ -366,72 +376,6 @@ def fetch_url(
         raise SubscriptionError(f"下载失败：{type(exc).__name__}: {exc}") from exc
 
 
-def endpoint_is_loopback(endpoint: str) -> bool:
-    parsed = urllib.parse.urlparse(endpoint)
-    hostname = parsed.hostname
-
-    if not hostname:
-        return False
-
-    if hostname == "localhost":
-        return True
-
-    try:
-        return ipaddress.ip_address(hostname).is_loopback
-    except ValueError:
-        pass
-
-    try:
-        addresses = socket.getaddrinfo(hostname, parsed.port or 80)
-    except socket.gaierror:
-        return False
-
-    for item in addresses:
-        address = item[4][0]
-        try:
-            if not ipaddress.ip_address(address).is_loopback:
-                return False
-        except ValueError:
-            return False
-
-    return bool(addresses)
-
-
-def convert_with_subconverter(
-    source_url: str,
-    converter: dict[str, Any],
-    *,
-    timeout: int,
-    max_bytes: int,
-) -> bytes:
-    endpoint = str(converter.get("endpoint", "http://127.0.0.1:25500/sub"))
-    allow_remote = bool(converter.get("allow_remote", False))
-
-    if not allow_remote and not endpoint_is_loopback(endpoint):
-        raise SubscriptionError(
-            "为防止订阅 token 泄露，默认只允许本机 subconverter；"
-            "确需远程转换时显式设置 allow_remote: true"
-        )
-
-    query = urllib.parse.urlencode(
-        {
-            "target": converter.get("target", "clash"),
-            "url": source_url,
-            "emoji": "false",
-            "append_info": "false",
-        }
-    )
-    separator = "&" if "?" in endpoint else "?"
-    converted_url = f"{endpoint}{separator}{query}"
-
-    return fetch_url(
-        converted_url,
-        headers={"User-Agent": "mihomo-webui-config"},
-        timeout=timeout,
-        max_bytes=max_bytes,
-    )
-
-
 def decode_text(data: bytes) -> str:
     for encoding in ("utf-8-sig", "utf-8"):
         try:
@@ -460,9 +404,8 @@ def extract_proxies(text: str, source_id: str) -> list[dict[str, Any]]:
         document = yaml.safe_load(text)
     except yaml.YAMLError as exc:
         if looks_like_raw_subscription(text):
-            raise SubscriptionError(
-                f"来源 {source_id} 看起来是 URI/Base64 订阅；"
-                "请为该来源配置本地 subconverter"
+            raise RawSubscriptionError(
+                f"来源 {source_id} 看起来是 URI/Base64 订阅"
             ) from exc
         raise SubscriptionError(f"来源 {source_id} 的 YAML 无法解析：{exc}") from exc
 
@@ -475,10 +418,7 @@ def extract_proxies(text: str, source_id: str) -> list[dict[str, Any]]:
         proxies = document
     else:
         if looks_like_raw_subscription(text):
-            raise SubscriptionError(
-                f"来源 {source_id} 是原始订阅格式；"
-                "请配置 converter.type: subconverter"
-            )
+            raise RawSubscriptionError(f"来源 {source_id} 是 URI/Base64 原始订阅格式")
         raise SubscriptionError(f"来源 {source_id} 不包含 proxies 或 payload 列表")
 
     normalized: list[dict[str, Any]] = []
@@ -537,34 +477,58 @@ def normalize_source(
     source_id = str(source["id"])
     source_url = resolve_source_url(source)
     converter = source.get("converter") or {"type": "direct"}
-    converter_type = str(converter.get("type", "direct"))
+    if not isinstance(converter, dict) or converter.get("type", "direct") != "direct":
+        raise SubscriptionError(
+            f"来源 {source_id} 仍使用旧转换配置；本版本只支持 Clash/Mihomo YAML。"
+            "main 来源可运行 mihomo-webui-setup subscription --converter direct，"
+            "其他来源请将 converter.type 改为 direct 并提供 YAML 订阅"
+        )
+    headers = expand_environment(source.get("headers") or {})
+    headers = {str(key): str(value) for key, value in headers.items()}
+    explicit_user_agents = [
+        value for key, value in headers.items() if key.lower() == "user-agent"
+    ]
+    headers = {
+        key: value for key, value in headers.items() if key.lower() != "user-agent"
+    }
+    preferred_user_agent = (
+        explicit_user_agents[-1]
+        if explicit_user_agents
+        else str(source.get("user_agent", "mihomo"))
+    ).strip()
+    candidates: list[str] = []
+    for candidate in (preferred_user_agent, *COMPATIBLE_USER_AGENTS):
+        if candidate and candidate not in candidates:
+            candidates.append(candidate)
 
-    if converter_type == "direct":
-        user_agent = str(source.get("user_agent", "mihomo"))
-        headers = expand_environment(source.get("headers") or {})
-        headers = {str(key): str(value) for key, value in headers.items()}
-        headers.setdefault("User-Agent", user_agent)
-
+    proxies: list[dict[str, Any]] | None = None
+    for index, user_agent in enumerate(candidates):
+        request_headers = dict(headers)
+        request_headers["User-Agent"] = user_agent
         raw_data = fetch_url(
             source_url,
-            headers=headers,
+            headers=request_headers,
             timeout=timeout,
             max_bytes=max_bytes,
         )
-    elif converter_type == "subconverter":
-        raw_data = convert_with_subconverter(
-            source_url,
-            converter,
-            timeout=timeout,
-            max_bytes=max_bytes,
-        )
-    else:
-        raise SubscriptionError(
-            f"来源 {source_id} 使用了未知 converter.type：{converter_type}"
-        )
+        try:
+            proxies = extract_proxies(decode_text(raw_data), source_id)
+            break
+        except RawSubscriptionError as exc:
+            if index + 1 == len(candidates):
+                raise RawSubscriptionError(
+                    f"来源 {source_id} 已尝试 {len(candidates)} 种 Mihomo/Clash "
+                    "客户端标识，但服务商仍只返回 URI/Base64 原始订阅；"
+                    "请获取 Clash/Mihomo YAML 订阅入口。工具不会自动拼接 "
+                    "target=clash 等非标准 URL 参数，也不转换原始协议订阅"
+                ) from exc
+            log(
+                f"来源 {source_id} 返回 URI/Base64 原始订阅，"
+                f"正在尝试兼容客户端标识（{index + 2}/{len(candidates)}）"
+            )
 
-    text = decode_text(raw_data)
-    proxies = extract_proxies(text, source_id)
+    if proxies is None:  # candidates always contains at least the built-in values.
+        raise SubscriptionError(f"来源 {source_id} 没有可用的客户端标识")
     prefix = str(source.get("prefix", f"[{source_id}] "))
     proxies = apply_prefix_and_validate_names(
         proxies,
@@ -846,6 +810,449 @@ def acquire_lock() -> Any:
     return lock_handle
 
 
+def native_policy(document: Any, provider_name: str) -> dict[str, Any]:
+    """Extract native policy fields; server settings in a template are ignored."""
+    if not isinstance(document, dict):
+        raise SubscriptionError("规则模板顶层必须是 YAML 映射")
+    groups = document.get("proxy-groups")
+    rules = document.get("rules")
+    providers = document.get("rule-providers", {})
+    if not isinstance(groups, list) or not groups:
+        raise SubscriptionError("规则模板缺少 proxy-groups")
+    if not isinstance(rules, list) or not rules or not all(
+        isinstance(rule, str) and rule.strip() for rule in rules
+    ):
+        raise SubscriptionError("规则模板的 rules 必须是非空字符串列表")
+    if not isinstance(providers, dict) or not all(
+        isinstance(name, str) and isinstance(value, dict)
+        for name, value in providers.items()
+    ):
+        raise SubscriptionError("规则模板的 rule-providers 必须是映射")
+    groups = copy.deepcopy(groups)
+    names: set[str] = set()
+    for group in groups:
+        if not isinstance(group, dict) or not isinstance(group.get("name"), str):
+            raise SubscriptionError("规则模板策略组缺少有效 name")
+        name = group["name"]
+        if not name.strip() or name in names:
+            raise SubscriptionError(f"规则模板策略组名称为空或重复：{name}")
+        names.add(name)
+        for key in ("use", "proxies"):
+            if key in group and (
+                not isinstance(group[key], list)
+                or not all(isinstance(member, str) for member in group[key])
+            ):
+                raise SubscriptionError(f"策略组 {name} 的 {key} 必须是字符串列表")
+        if "use" in group:
+            group["use"] = [
+                provider_name if member == "subscriptions" else member
+                for member in group["use"]
+            ]
+    return {
+        "proxy-groups": groups,
+        "rules": copy.deepcopy(rules),
+        "rule-providers": copy.deepcopy(providers),
+    }
+
+
+def policy_state_path(settings: dict[str, Any]) -> Path:
+    state_dir = Path(str(settings.get("state_dir", "/var/lib/mihomo-subscription")))
+    return state_dir / "policy-state.yaml"
+
+
+def describe_policy(policy: dict[str, Any], source_id: str = "native") -> dict[str, Any]:
+    return {
+        "version": POLICY_STATE_VERSION,
+        "source_id": source_id,
+        "proxy_groups": sorted(group["name"] for group in policy["proxy-groups"]),
+        "rule_providers": sorted(policy.get("rule-providers", {})),
+    }
+
+
+def prepare_rule_cache(settings: dict[str, Any]) -> None:
+    """Allow the service user to cache native HTTP rule providers."""
+    home_dir = Path(str(settings.get("home_dir", "/etc/mihomo")))
+    directory = ensure_inside(home_dir, home_dir / "ruleset")
+    directory.mkdir(parents=True, exist_ok=True)
+    apply_service_group(directory, str(settings.get("provider_group", "mihomo")), 0o2770)
+
+
+def load_policy_state(path: Path) -> tuple[set[str], set[str]]:
+    if not path.exists():
+        return set(), set()
+
+    state = load_yaml(path)
+    if not isinstance(state, dict) or state.get("version") != POLICY_STATE_VERSION:
+        raise SubscriptionError(f"规则托管状态文件格式无效：{path}")
+
+    groups = state.get("proxy_groups", [])
+    providers = state.get("rule_providers", [])
+    if not isinstance(groups, list) or not all(isinstance(item, str) for item in groups):
+        raise SubscriptionError(f"规则托管状态文件的 proxy_groups 无效：{path}")
+    if not isinstance(providers, list) or not all(
+        isinstance(item, str) for item in providers
+    ):
+        raise SubscriptionError(f"规则托管状态文件的 rule_providers 无效：{path}")
+
+    return set(groups), set(providers)
+
+
+def render_policy_config(
+    existing: dict[str, Any],
+    policy: dict[str, Any],
+    *,
+    source_id: str,
+    provider_name: str,
+    previous_groups: set[str],
+    previous_rule_providers: set[str],
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Merge only ACL policy sections while preserving every other top-level key."""
+    policy = native_policy(policy, provider_name)
+    incoming_groups = policy["proxy-groups"]
+    incoming_by_name = {group["name"]: group for group in incoming_groups}
+    incoming_group_names = set(incoming_by_name)
+
+    current_groups = existing.get("proxy-groups", [])
+    if not isinstance(current_groups, list):
+        raise SubscriptionError("现有主配置的 proxy-groups 必须是列表")
+
+    preserved_groups: list[dict[str, Any]] = []
+    preserved_names: set[str] = set()
+    for index, group in enumerate(current_groups, 1):
+        if not isinstance(group, dict) or not isinstance(group.get("name"), str):
+            raise SubscriptionError(f"现有主配置的第 {index} 个策略组缺少有效 name")
+        name = str(group["name"])
+        if name in previous_groups or group == incoming_by_name.get(name):
+            continue
+        preserved_groups.append(copy.deepcopy(group))
+        preserved_names.add(name)
+
+    conflicts = sorted(incoming_group_names & preserved_names)
+    if conflicts:
+        raise SubscriptionError(
+            "ACL4SSR 策略组与本机非托管组重名，拒绝覆盖：" + "、".join(conflicts)
+        )
+
+    incoming_providers = copy.deepcopy(policy.get("rule-providers", {}))
+    incoming_provider_names = set(incoming_providers)
+    current_providers = existing.get("rule-providers", {})
+    if not isinstance(current_providers, dict):
+        raise SubscriptionError("现有主配置的 rule-providers 必须是映射")
+    preserved_providers = {
+        str(name): copy.deepcopy(value)
+        for name, value in current_providers.items()
+        if str(name) not in previous_rule_providers
+        and value != incoming_providers.get(str(name))
+    }
+    provider_conflicts = sorted(incoming_provider_names & set(preserved_providers))
+    if provider_conflicts:
+        raise SubscriptionError(
+            "ACL4SSR rule-provider 与本机非托管项重名，拒绝覆盖："
+            + "、".join(provider_conflicts)
+        )
+
+    rendered = copy.deepcopy(existing)
+    rendered["proxy-groups"] = preserved_groups + incoming_groups
+    rendered["rules"] = copy.deepcopy(policy["rules"])
+    if preserved_providers or incoming_providers:
+        rendered["rule-providers"] = {**preserved_providers, **incoming_providers}
+    else:
+        rendered.pop("rule-providers", None)
+
+    state = describe_policy(policy, source_id)
+    return rendered, state
+
+
+def command_rules(args: argparse.Namespace) -> int:
+    """Apply a local native policy without downloading or converting subscriptions."""
+    user_policy = getattr(args, "policy_document", None)
+    if user_policy is None and not args.dry_run and not args.yes:
+        if not sys.stdin.isatty():
+            raise SubscriptionError("非交互环境必须使用 --yes 确认同步规则")
+        if not ask_yes_no(
+            "将用 ACL4SSR 规则替换当前 rules，并自动维护相关策略组，继续？",
+            default=False,
+        ):
+            log("已取消，未修改任何文件")
+            return 0
+
+    lock_handle = acquire_lock()
+    try:
+        control = load_yaml(args.control_file)
+        if not isinstance(control, dict) or not isinstance(control.get("settings"), dict):
+            raise SubscriptionError("订阅控制文件缺少 settings")
+        settings = control["settings"]
+        source_id = "user" if user_policy is not None else "native"
+        policy = native_policy(
+            user_policy if user_policy is not None else load_yaml(args.template_file),
+            str(settings.get("provider_name", "subscriptions")),
+        )
+
+        home_dir = Path(str(settings.get("home_dir", "/etc/mihomo")))
+        config_file = Path(str(settings.get("config_file", home_dir / "config.yaml")))
+        provider_relative = Path(
+            str(settings.get("provider_file", "providers/subscriptions.yaml"))
+        )
+        provider_file = ensure_inside(home_dir, home_dir / provider_relative)
+        if not provider_file.exists():
+            raise SubscriptionError(f"provider 文件不存在，请先更新订阅：{provider_file}")
+
+        existing = load_yaml(config_file)
+        if not isinstance(existing, dict):
+            raise SubscriptionError("现有主配置顶层必须是映射")
+
+        state_file = policy_state_path(settings)
+        old_groups, old_providers = load_policy_state(state_file)
+        rendered, state = render_policy_config(
+            existing,
+            policy,
+            source_id=source_id,
+            provider_name=str(settings.get("provider_name", "subscriptions")),
+            previous_groups=old_groups,
+            previous_rule_providers=old_providers,
+        )
+        if user_policy is not None:
+            validate_user_policy_paths(policy, home_dir)
+            print_policy_diff(existing, rendered, "system/current", "system/candidate")
+            if not args.yes and not confirm_policy_apply():
+                log("已取消，未替换系统配置")
+                return 3
+        provider_bytes = provider_file.read_bytes()
+        validate_with_mihomo(settings, provider_bytes, config_document=rendered)
+
+        if args.dry_run:
+            log(
+                f"ACL4SSR 校验成功：{len(state['proxy_groups'])} 个策略组、"
+                f"{len(policy['rules'])} 条规则；dry-run 未修改正式文件"
+            )
+            return 0
+
+        original_config = config_file.read_bytes()
+        original_state = state_file.read_bytes() if state_file.exists() else None
+        prepare_rule_cache(settings)
+        backup = config_file.with_suffix(".yaml.policy.bak")
+        shutil.copy2(config_file, backup)
+        os.chmod(backup, 0o600)
+
+        try:
+            atomic_write(config_file, dump_yaml(rendered), 0o600)
+            apply_service_group(
+                config_file,
+                str(settings.get("provider_group", "mihomo")),
+                0o640,
+            )
+            atomic_write(state_file, dump_yaml(state), 0o600)
+            reload_mihomo(settings, no_reload=args.no_reload)
+        except Exception as exc:
+            log(f"规则同步失败（{exc}），正在回滚……")
+            rollback_problems: list[str] = []
+            try:
+                atomic_write(config_file, original_config, 0o600)
+                apply_service_group(
+                    config_file,
+                    str(settings.get("provider_group", "mihomo")),
+                    0o640,
+                )
+            except Exception as rollback_exc:
+                rollback_problems.append(f"恢复 {config_file} 失败：{rollback_exc}")
+            try:
+                if original_state is None:
+                    state_file.unlink(missing_ok=True)
+                else:
+                    atomic_write(state_file, original_state, 0o600)
+            except Exception as rollback_exc:
+                rollback_problems.append(f"恢复 {state_file} 失败：{rollback_exc}")
+
+            if rollback_problems:
+                raise SubscriptionError(
+                    "规则同步失败且回滚不完整："
+                    + "；".join(rollback_problems)
+                    + f"；可从备份手工恢复：{backup}"
+                ) from exc
+            if user_policy is not None and not args.no_reload:
+                try:
+                    reload_mihomo(settings, no_reload=False)
+                except Exception as rollback_exc:
+                    raise SubscriptionError(
+                        f"已恢复磁盘配置，但恢复后的重载失败：{rollback_exc}；备份：{backup}"
+                    ) from exc
+            raise SubscriptionError(
+                f"规则同步失败，已恢复原配置（备份：{backup}）；"
+                f"若服务状态异常请手工重启 Mihomo。原因：{exc}"
+            ) from exc
+
+        log(
+            f"ACL4SSR 已同步：{len(state['proxy_groups'])} 个策略组、"
+            f"{len(policy['rules'])} 条规则"
+        )
+        log(f"主配置：{config_file}")
+        return 0
+    finally:
+        lock_handle.close()
+
+
+def policy_sections(document: dict[str, Any]) -> dict[str, Any]:
+    return {key: copy.deepcopy(document.get(key, {} if key == "rule-providers" else []))
+            for key in POLICY_KEYS}
+
+
+def print_policy_diff(before: dict[str, Any], after: dict[str, Any],
+                      before_label: str, after_label: str) -> None:
+    lines = list(difflib.unified_diff(
+        dump_yaml(policy_sections(before)).decode().splitlines(keepends=True),
+        dump_yaml(policy_sections(after)).decode().splitlines(keepends=True),
+        fromfile=before_label, tofile=after_label,
+    ))
+    if lines:
+        print("".join(lines), end="", flush=True)
+    else:
+        log("规则与策略组没有差异")
+
+
+def validate_user_policy_paths(policy: dict[str, Any], home_dir: Path | None = None) -> None:
+    cache_dir = ensure_inside(home_dir, home_dir / "ruleset") if home_dir is not None else None
+    paths: set[str] = set()
+    for name, provider in policy["rule-providers"].items():
+        if provider.get("type") == "inline":
+            if "path" in provider:
+                raise SubscriptionError(f"inline 规则来源 {name} 不应设置 path")
+            continue
+        if provider.get("type") != "http":
+            raise SubscriptionError(f"用户规则来源 {name} 仅支持 http 或 inline")
+        url = provider.get("url", "")
+        if not isinstance(url, str) or urllib.parse.urlsplit(url).scheme not in ("http", "https"):
+            raise SubscriptionError(f"规则来源 {name} 必须使用 HTTP(S) URL")
+        path = provider.get("path")
+        if not isinstance(path, str):
+            raise SubscriptionError(f"规则来源 {name} 必须设置 ruleset/ 下的缓存 path")
+        relative = Path(path)
+        if relative.is_absolute() or ".." in relative.parts or len(relative.parts) != 2 or relative.parts[0] != "ruleset":
+            raise SubscriptionError(f"规则来源 {name} 的 path 必须是 ./ruleset/文件名")
+        resolved = ensure_inside(cache_dir, cache_dir / relative.name) if cache_dir is not None else relative
+        if str(resolved) in paths:
+            raise SubscriptionError(f"规则来源缓存 path 重复：{path}")
+        paths.add(str(resolved))
+
+
+def parse_user_policy(data: bytes) -> dict[str, Any]:
+    if len(data) > POLICY_MAX_BYTES:
+        raise SubscriptionError("用户策略文件超过 2 MiB 限制")
+    try:
+        document = yaml.safe_load(data)
+    except (yaml.YAMLError, UnicodeError) as exc:
+        raise SubscriptionError(f"用户策略 YAML 解析失败：{exc}") from exc
+    if not isinstance(document, dict):
+        raise SubscriptionError("用户策略必须是 YAML 映射")
+    unexpected = set(document) - set(POLICY_KEYS)
+    if unexpected:
+        raise SubscriptionError("用户策略只允许 proxy-groups、rule-providers、rules；不允许："
+                                + ", ".join(sorted(map(str, unexpected))))
+    policy = native_policy(document, "subscriptions")
+    # Lexical checks here; repeat against actual system paths after elevation.
+    validate_user_policy_paths(policy)
+    return policy
+
+
+def check_user_policy(policy: dict[str, Any]) -> None:
+    """Unprivileged core validation, using no system config or real subscription."""
+    with tempfile.TemporaryDirectory(prefix="mihomo-policy-check-") as temporary:
+        home = Path(temporary)
+        country = Path("/etc/clash/Country.mmdb")
+        if country.is_file():
+            shutil.copyfile(country, home / "Country.mmdb")
+        config = copy.deepcopy(policy)
+        config["proxy-providers"] = {"subscriptions": {
+            "type": "file", "path": "./providers/subscriptions.yaml",
+        }}
+        config["dns"] = {"enable": False}
+        provider = dump_yaml({"proxies": [{
+            "name": "__policy_check_node__", "type": "http", "server": "127.0.0.1", "port": 9,
+        }]})
+        validate_with_mihomo({"home_dir": str(home)}, provider, config_document=config)
+    log("本地校验通过（使用占位节点；apply 会结合真实节点和系统配置重新校验）")
+
+
+def confirm_policy_apply() -> bool:
+    try:
+        # Buffered r+ requires a seekable stream in Python. A terminal is not
+        # seekable; use separate streams, keeping stdin free for the snapshot.
+        with open("/dev/tty", "r", encoding="utf-8") as reader, \
+             open("/dev/tty", "w", encoding="utf-8") as writer:
+            writer.write("应用以上系统策略变更并重载 Mihomo？[y/N] ")
+            writer.flush()
+            return reader.readline().strip().lower() in ("y", "yes")
+    except OSError as exc:
+        raise SubscriptionError(f"无法交互确认（{exc}），请使用 --yes") from exc
+
+
+def command_apply_policy(args: argparse.Namespace) -> int:
+    """Privileged endpoint: read a bounded snapshot, never reopen a user path."""
+    if os.geteuid() != 0:
+        raise SubscriptionError("内部应用命令必须由管理员运行")
+    policy = parse_user_policy(sys.stdin.buffer.read(POLICY_MAX_BYTES + 1))
+    return command_rules(argparse.Namespace(
+        control_file=DEFAULT_CONTROL_FILE, template_file=None,
+        policy_document=policy, yes=args.yes, dry_run=False, no_reload=False,
+    ))
+
+
+def user_policy_path() -> Path:
+    root = os.environ.get("XDG_CONFIG_HOME")
+    directory = Path(root) if root and Path(root).is_absolute() else Path.home() / ".config"
+    return directory / "mihomo-webui-config" / "policy.yaml"
+
+
+def command_user_policy(args: argparse.Namespace) -> int:
+    if os.geteuid() == 0:
+        raise SubscriptionError("请以普通用户运行此命令，不要加 sudo；apply 会按需提权")
+    path = (args.file or user_policy_path()).expanduser().absolute()
+    baseline = path.with_name(path.name + ".applied")
+    if args.command == "policy-init":
+        data = dump_yaml(native_policy(load_yaml(SHARE_DIR / "config.base.yaml"), "subscriptions"))
+        path.parent.mkdir(parents=True, exist_ok=True)
+        # Exclusive creation: never overwrite an existing edit or follow a symlink.
+        descriptor = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+        with os.fdopen(descriptor, "wb") as output:
+            output.write(data)
+        log(f"已从软件包模板创建用户策略：{path}（不是运行配置的导出）")
+        return 0
+
+    with path.open("rb") as source:
+        policy = parse_user_policy(source.read(POLICY_MAX_BYTES + 1))
+    if args.command == "diff":
+        if baseline.exists():
+            before = load_yaml(baseline)
+            label = "local/last-successful-apply"
+        else:
+            before = native_policy(load_yaml(SHARE_DIR / "config.base.yaml"), "subscriptions")
+            label = "package/template (no local apply record)"
+        log("本地差异不代表系统当前状态；apply 提权后会显示实际系统差异")
+        print_policy_diff(before, policy, label, str(path))
+        return 0
+
+    check_user_policy(policy)
+    if args.command == "check":
+        return 0
+    if not args.yes and not sys.stdin.isatty():
+        raise SubscriptionError("非交互环境必须使用 --yes 确认应用")
+    snapshot = dump_yaml(policy)
+    command = ["sudo", "--", "/usr/bin/mihomo-subscription", "_apply-policy"]
+    if args.yes:
+        command.append("--yes")
+    result = subprocess.run(command, input=snapshot, check=False)
+    if result.returncode == 3:
+        return 0  # Cancelled; do not advance the local baseline.
+    if result.returncode:
+        raise SubscriptionError("系统策略未成功应用，本地成功记录未更新")
+    try:
+        atomic_write(baseline, snapshot, 0o600)
+    except OSError as exc:
+        log(f"系统应用已成功，但无法保存本地差异基线：{exc}")
+        return 1
+    log(f"已应用；用户源文件保留在 {path}")
+    return 0
+
+
 def command_update(args: argparse.Namespace) -> int:
     lock_handle = acquire_lock()
 
@@ -922,13 +1329,18 @@ def command_subscription(args: argparse.Namespace) -> int:
             )
 
         converter_type = args.converter or current_converter_type
+        if converter_type != "direct":
+            raise SubscriptionError(
+                "本版本只支持 Clash/Mihomo YAML；请使用 subscription --converter direct "
+                "输入 YAML 订阅，校验成功后才迁移旧转换设置"
+            )
         subscription_url = args.subscription_url
         if subscription_url is None:
             if not sys.stdin.isatty():
                 raise SubscriptionError(
                     "非交互环境必须使用 --subscription-url 提供新订阅 URL"
                 )
-            log(f"main 来源当前转换类型：{current_converter_type}（默认保持不变）")
+            log(f"main 来源格式：{current_converter_type}；本次将使用 {converter_type}")
             subscription_url = getpass.getpass(
                 "新订阅 URL（输入不会回显，留空取消）："
             )
@@ -945,7 +1357,7 @@ def command_subscription(args: argparse.Namespace) -> int:
             control,
             source_id="main",
             url_env=url_env,
-            converter_type=args.converter,
+            converter_type=converter_type,
         )
         settings, sources = validate_control_file(candidate_control)
 
@@ -1108,6 +1520,12 @@ def render_reset_config(
 
 
 def command_reset(args: argparse.Namespace) -> int:
+    if not args.yes and not args.dry_run:
+        if not sys.stdin.isatty():
+            raise SubscriptionError("非交互环境必须使用 --yes 确认重置")
+        if not ask_yes_no("确认按最新模板重置 Mihomo 主配置？", default=False):
+            log("已取消，未修改任何文件")
+            return 0
     lock_handle = acquire_lock()
 
     try:
@@ -1135,13 +1553,6 @@ def command_reset(args: argparse.Namespace) -> int:
         log("将按最新模板重新生成：DNS、代理组、规则和 provider 定义")
         log(f"不会修改：{args.control_file} 与订阅 URL 密钥文件")
 
-        if not args.yes:
-            if not sys.stdin.isatty():
-                raise SubscriptionError("非交互环境必须使用 --yes 确认重置")
-            if not ask_yes_no("确认重置 Mihomo 主配置？", default=False):
-                log("已取消，未修改任何文件")
-                return 0
-
         # 重置必须拿到全新节点；任一下载失败即终止，不使用旧缓存。
         provider_bytes, cache_candidates, _ = build_candidate(
             settings,
@@ -1165,6 +1576,10 @@ def command_reset(args: argparse.Namespace) -> int:
         provider_relative = Path(str(settings.get("provider_file", "providers/subscriptions.yaml")))
         provider_file = ensure_inside(home_dir, home_dir / provider_relative)
         original_provider_bytes = provider_file.read_bytes() if provider_file.exists() else None
+        state_file = policy_state_path(settings)
+        original_state = state_file.read_bytes() if state_file.exists() else None
+        policy = native_policy(rendered, str(settings.get("provider_name", "subscriptions")))
+        prepare_rule_cache(settings)
 
         # 替换阶段任一步失败都回滚到原配置与 provider，兑现"失败保留原配置"的承诺。
         try:
@@ -1178,6 +1593,7 @@ def command_reset(args: argparse.Namespace) -> int:
                 dry_run=False,
             )
 
+            atomic_write(state_file, dump_yaml(describe_policy(policy)), 0o600)
             reload_mihomo(settings, no_reload=args.no_reload)
         except Exception as exc:
             log(f"重置失败（{exc}），正在回滚到原配置……")
@@ -1201,6 +1617,14 @@ def command_reset(args: argparse.Namespace) -> int:
                     provider_file.unlink()
             except Exception as rollback_exc:
                 rollback_problems.append(f"恢复 {provider_file} 失败：{rollback_exc}")
+
+            try:
+                if original_state is None:
+                    state_file.unlink(missing_ok=True)
+                else:
+                    atomic_write(state_file, original_state, 0o600)
+            except Exception as rollback_exc:
+                rollback_problems.append(f"恢复 {state_file} 失败：{rollback_exc}")
 
             if rollback_problems:
                 raise SubscriptionError(
@@ -1303,6 +1727,7 @@ def command_init(args: argparse.Namespace) -> int:
 
     # mihomo.service 以 mihomo 用户运行，providers 目录需要该组可读
     apply_service_group(provider_dir, "mihomo", 0o750)
+    prepare_rule_cache({"home_dir": str(mihomo_home)})
 
     config_file = mihomo_home / "config.yaml"
     control_file = control_dir / "subscriptions.yaml"
@@ -1325,6 +1750,8 @@ def command_init(args: argparse.Namespace) -> int:
         )
         atomic_write(config_file, replace_secret(template).encode("utf-8"), 0o600)
         apply_service_group(config_file, "mihomo", 0o640)
+        policy = native_policy(yaml.safe_load(template), "subscriptions")
+        atomic_write(state_dir / "policy-state.yaml", dump_yaml(describe_policy(policy)), 0o600)
         log(f"已创建主配置：{config_file}")
 
     if not config_file.exists():
@@ -1377,10 +1804,7 @@ def command_init(args: argparse.Namespace) -> int:
     converter_type = args.converter
     existing_url = read_env_file_value(secrets_file, "MIHOMO_SUB_MAIN")
 
-    if subscription_url is None and existing_url and converter_type != "direct":
-        subscription_url = existing_url
-        log("检测到已有 main 订阅 URL，将复用它更新 main 来源配置")
-    elif subscription_url is None and not args.non_interactive and sys.stdin.isatty():
+    if subscription_url is None and not args.non_interactive and sys.stdin.isatty():
         if existing_url and ask_yes_no("检测到已有 main 订阅，是否复用它配置 main 来源？", default=True):
             subscription_url = existing_url
         elif args.require_subscription:
@@ -1389,10 +1813,6 @@ def command_init(args: argparse.Namespace) -> int:
                 raise SubscriptionError("订阅 URL 不能为空")
         elif ask_yes_no("是否现在配置 main 订阅？", default=False):
             subscription_url = getpass.getpass("订阅 URL（输入不会回显，留空跳过）：").strip()
-
-        if subscription_url and converter_type == "direct":
-            if ask_yes_no("这个订阅是否是原始 URI/Base64 格式，需要本地 subconverter 转换？", default=False):
-                converter_type = "subconverter"
 
     if args.require_subscription and subscription_url is None:
         raise SubscriptionError("必须在交互终端输入订阅 URL，或使用 --subscription-url")
@@ -1406,8 +1826,6 @@ def command_init(args: argparse.Namespace) -> int:
             converter_type=converter_type,
         )
         log("已写入 main 订阅 URL，并启用 main 来源")
-        if converter_type == "subconverter":
-            log("main 来源已配置为使用本机 subconverter：http://127.0.0.1:25500/sub")
         log("然后执行：sudo mihomo-subscription update --strict")
     else:
         log("下一步：编辑 subscriptions.yaml 与 secrets.env")
@@ -1441,9 +1859,9 @@ def build_parser() -> argparse.ArgumentParser:
     )
     init_parser.add_argument(
         "--converter",
-        choices=("direct", "subconverter"),
+        choices=("direct",),
         default="direct",
-        help="main 订阅格式：direct 为 Clash/Mihomo YAML，subconverter 为原始 URI/Base64",
+        help="仅支持 direct：Clash/Mihomo YAML（兼容旧命令参数）",
     )
     init_parser.add_argument(
         "--controller-listen",
@@ -1508,9 +1926,9 @@ def build_parser() -> argparse.ArgumentParser:
     )
     subscription_parser.add_argument(
         "--converter",
-        choices=("direct", "subconverter"),
+        choices=("direct",),
         default=None,
-        help="同时修改订阅格式；省略时保留 main 来源当前设置",
+        help="将旧来源迁移到 direct；仅支持 Clash/Mihomo YAML",
     )
     subscription_parser.add_argument(
         "--dry-run",
@@ -1523,6 +1941,38 @@ def build_parser() -> argparse.ArgumentParser:
         help="替换成功后不重载 Mihomo",
     )
     subscription_parser.set_defaults(func=command_subscription)
+
+    rules_parser = subparsers.add_parser(
+        "rules",
+        help="应用原生 ACL4SSR 规则模板与策略组（无转换器）",
+    )
+    rules_parser.add_argument(
+        "--control-file",
+        type=Path,
+        default=DEFAULT_CONTROL_FILE,
+    )
+    rules_parser.add_argument(
+        "--template-file",
+        type=Path,
+        default=SHARE_DIR / "config.base.yaml",
+        help="本地 Mihomo YAML 模板；仅导入规则与策略组，支持自定义副本",
+    )
+    rules_parser.add_argument(
+        "--yes",
+        action="store_true",
+        help="跳过替换 rules 的交互确认",
+    )
+    rules_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="只生成和校验，不修改正式文件",
+    )
+    rules_parser.add_argument(
+        "--no-reload",
+        action="store_true",
+        help="同步成功后不重载 Mihomo",
+    )
+    rules_parser.set_defaults(func=command_rules)
 
     reset_parser = subparsers.add_parser(
         "reset",
@@ -1562,6 +2012,21 @@ def build_parser() -> argparse.ArgumentParser:
     )
     reset_parser.set_defaults(func=command_reset)
 
+    for name, help_text in (
+        ("policy-init", "从软件包模板创建普通用户策略文件（不覆盖）"),
+        ("check", "普通用户本地策略校验（占位节点，不读系统配置）"),
+        ("diff", "比较用户策略与上次本地成功记录，首次与软件包模板比较"),
+        ("apply", "校验用户策略，按需 sudo 后确认并应用到系统服务"),
+    ):
+        policy_parser = subparsers.add_parser(name, help=help_text)
+        policy_parser.add_argument("--file", type=Path, help="用户策略路径；默认 XDG_CONFIG_HOME/mihomo-webui-config/policy.yaml")
+        if name == "apply":
+            policy_parser.add_argument("--yes", action="store_true", help="跳过系统差异确认")
+        policy_parser.set_defaults(func=command_user_policy, command=name)
+    apply_parser = subparsers.add_parser("_apply-policy", help="内部：应用 stdin 中的策略快照")
+    apply_parser.add_argument("--yes", action="store_true")
+    apply_parser.set_defaults(func=command_apply_policy)
+
     return parser
 
 
@@ -1574,7 +2039,7 @@ def main() -> int:
 
     try:
         return int(args.func(args))
-    except SubscriptionError as exc:
+    except (SubscriptionError, OSError) as exc:
         log(f"错误：{exc}")
         return 1
     except KeyboardInterrupt:

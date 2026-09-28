@@ -22,6 +22,12 @@ mihomo-webui-config 已升级。
 
 现有 /etc/mihomo/config.yaml 和订阅密钥不会被覆盖。
 可运行 mihomo-webui-setup 补齐服务配置并验证订阅。
+本版本会自动用常见客户端标识协商 Clash/Mihomo YAML，但不转换 URI/Base64，
+也不依赖 Subconverter。
+已有节点可运行 mihomo-webui-setup rules 应用原生 ACL4SSR、AI 与第二手动出口。
+旧转换来源请用 mihomo-webui-setup subscription --converter direct 迁移。
+普通用户定制：policy-init 创建用户策略，编辑后用 check / diff / apply。
+只有 apply 按需请求 sudo；已有用户策略不会因软件包升级自动覆盖或应用。
 可查看新模板：
   /usr/share/mihomo-webui-config/
 EOF

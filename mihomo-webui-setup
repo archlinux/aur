@@ -5,8 +5,6 @@ set -Eeuo pipefail
 PROGRAM=mihomo-webui-setup
 SUBSCRIPTION_COMMAND=/usr/bin/mihomo-subscription
 CONTROL_FILE=/etc/mihomo-subscription/subscriptions.yaml
-SUBCONVERTER_UNIT=subconverter.service
-SUBCONVERTER_DIR=/opt/subconverter
 
 log() {
   printf '[%s] %s\n' "$PROGRAM" "$*" >&2
@@ -23,9 +21,14 @@ show_help() {
   mihomo-webui-setup [setup] [mihomo-subscription init 参数]
   mihomo-webui-setup subscription [mihomo-subscription subscription 参数]
   mihomo-webui-setup update [mihomo-subscription update 参数]
+  mihomo-webui-setup rules [--yes] [--dry-run] [--template-file PATH]
   mihomo-webui-setup reset [--yes] [--dry-run]
+  mihomo-webui-setup policy-init [--file PATH]
+  mihomo-webui-setup check [--file PATH]
+  mihomo-webui-setup diff [--file PATH]
+  mihomo-webui-setup apply [--file PATH] [--yes]
 
-一次性初始化订阅、准备本地 subconverter、执行首次严格更新，
+一次性初始化订阅、自动协商 Clash/Mihomo YAML、执行首次严格更新、应用原生 ACL4SSR 策略，
 并启用 mihomo.service 与 mihomo-subscription-update.timer。
 
 推荐不带参数运行，按隐藏式交互提示输入订阅 URL：
@@ -40,10 +43,23 @@ show_help() {
   mihomo-webui-setup update
   mihomo-webui-setup update --strict
 
+普通用户定制策略（不加 sudo）：
+  mihomo-webui-setup policy-init     # 从软件包模板创建用户 policy.yaml，不覆盖已有文件
+  mihomo-webui-setup check           # 临时目录中用占位节点校验
+  mihomo-webui-setup diff            # 相对上次本地成功记录；首次相对软件包模板
+  mihomo-webui-setup apply           # 此时才提权，显示实际差异、确认、校验并应用
+默认文件：${XDG_CONFIG_HOME:-~/.config}/mihomo-webui-config/policy.yaml
+用户文件只包含 proxy-groups、rule-providers、rules；本机其他设置不变。
+
 安全修改 main 订阅（隐藏输入 URL，默认保留现有订阅格式）：
   mihomo-webui-setup subscription
-  mihomo-webui-setup subscription --converter subconverter
+  mihomo-webui-setup subscription --converter direct  # 迁移旧转换设置
   mihomo-webui-setup subscription --dry-run
+
+从本地原生 YAML 模板同步 ACL4SSR 规则与策略组（规则数据由 Mihomo 自动更新）：
+  mihomo-webui-setup rules            # 确认后同步
+  mihomo-webui-setup rules --yes      # 跳过确认
+  mihomo-webui-setup rules --dry-run  # 只生成和校验
 
 软件包升级后按最新模板重置主配置：
   mihomo-webui-setup reset            # 显示保留与重置的项目并确认
@@ -58,42 +74,6 @@ skip-auth-prefixes、代理监听端口和 tun 配置；DNS、代理组、规则
 注意：在命令行传 URL 可能被 shell 历史和进程列表记录。
 controller 与 allow-proxy-lan 参数只在新建 config.yaml 时应用。
 EOF
-}
-
-source_uses_local_subconverter() {
-  python - "$CONTROL_FILE" <<'PY'
-import ipaddress
-import sys
-import urllib.parse
-
-import yaml
-
-with open(sys.argv[1], encoding="utf-8") as file:
-    control = yaml.safe_load(file)
-
-if not isinstance(control, dict):
-    raise SystemExit(1)
-
-for source in control.get("sources", []):
-    if not isinstance(source, dict) or not source.get("enabled", False):
-        continue
-    converter = source.get("converter") or {}
-    if converter.get("type", "direct") != "subconverter":
-        continue
-    endpoint = urllib.parse.urlparse(
-        str(converter.get("endpoint", "http://127.0.0.1:25500/sub"))
-    )
-    try:
-        is_loopback = endpoint.hostname == "localhost" or ipaddress.ip_address(
-            endpoint.hostname or ""
-        ).is_loopback
-    except ValueError:
-        is_loopback = False
-    if is_loopback and (endpoint.port or 80) == 25500:
-        raise SystemExit(0)
-
-raise SystemExit(1)
-PY
 }
 
 has_enabled_source() {
@@ -117,78 +97,6 @@ raise SystemExit(1)
 PY
 }
 
-subconverter_port_open() {
-  python - <<'PY'
-import socket
-
-try:
-    connection = socket.create_connection(("127.0.0.1", 25500), timeout=0.25)
-except OSError:
-    raise SystemExit(1)
-else:
-    connection.close()
-PY
-}
-
-wait_for_subconverter() {
-  local attempt=0
-
-  for (( attempt = 0; attempt < 40; attempt++ )); do
-    if subconverter_port_open; then
-      return 0
-    fi
-    sleep 0.25
-  done
-
-  systemctl status --no-pager --full "$SUBCONVERTER_UNIT" >&2 || true
-  die "subconverter 未在 127.0.0.1:25500 就绪"
-}
-
-prepare_subconverter() {
-  if ! systemctl cat "$SUBCONVERTER_UNIT" >/dev/null 2>&1; then
-    die "当前订阅需要本地 subconverter；请先安装可提供 subconverter.service 的 subconverter-bin"
-  fi
-
-  if [[ ! -e "$SUBCONVERTER_DIR/pref.ini" ]]; then
-    [[ -f "$SUBCONVERTER_DIR/pref.example.ini" ]] || \
-      die "缺少 $SUBCONVERTER_DIR/pref.example.ini"
-    install -m 0644 \
-      "$SUBCONVERTER_DIR/pref.example.ini" \
-      "$SUBCONVERTER_DIR/pref.ini"
-    sed -i \
-      -e 's/^listen=0\.0\.0\.0$/listen=127.0.0.1/' \
-      -e 's/^log_level=info$/log_level=warn/' \
-      "$SUBCONVERTER_DIR/pref.ini"
-    grep -Fqx 'listen=127.0.0.1' "$SUBCONVERTER_DIR/pref.ini" || \
-      die "无法将 subconverter 限制到 127.0.0.1"
-    log "已从示例创建 subconverter 配置：$SUBCONVERTER_DIR/pref.ini"
-  else
-    log "保留已有 subconverter 配置：$SUBCONVERTER_DIR/pref.ini"
-    if grep -Fqx 'listen=0.0.0.0' "$SUBCONVERTER_DIR/pref.ini"; then
-      log "警告：已有 subconverter 配置监听 0.0.0.0，请确认防火墙或改为 127.0.0.1"
-    fi
-  fi
-
-  systemctl enable "$SUBCONVERTER_UNIT"
-  # 即使服务此前已启动，也要重启以确保新创建的 pref.ini 被加载。
-  systemctl restart "$SUBCONVERTER_UNIT"
-  wait_for_subconverter
-  log "本地 subconverter 已就绪"
-}
-
-# 只读探活，供 reset --dry-run 与确认前流程使用：不创建配置、不 enable/restart 服务。
-check_subconverter_running() {
-  if ! systemctl cat "$SUBCONVERTER_UNIT" >/dev/null 2>&1; then
-    die "当前订阅需要本地 subconverter；请先安装可提供 subconverter.service 的 subconverter-bin"
-  fi
-
-  if systemctl is-active --quiet "$SUBCONVERTER_UNIT" && subconverter_port_open; then
-    return 0
-  fi
-
-  die "本地 subconverter 未在 127.0.0.1:25500 运行；当前流程不会修改系统，请先运行 mihomo-webui-setup setup 或 systemctl start $SUBCONVERTER_UNIT"
-}
-
 main() {
   if [[ ${1-} == --help || ${1-} == -h ]]; then
     show_help
@@ -196,11 +104,16 @@ main() {
   fi
 
   local command=setup
-  if [[ ${1-} == setup || ${1-} == subscription || ${1-} == update || ${1-} == reset ]]; then
+  if [[ ${1-} == setup || ${1-} == subscription || ${1-} == update || ${1-} == rules || ${1-} == reset || ${1-} == policy-init || ${1-} == check || ${1-} == diff || ${1-} == apply ]]; then
     command=$1
     shift
   elif [[ -n ${1-} && ${1-} != -* ]]; then
-    die "未知子命令：$1（支持 setup、subscription、update、reset）"
+    die "未知子命令：$1（支持 setup、subscription、update、rules、reset、policy-init、check、diff、apply）"
+  fi
+
+  if [[ $command == policy-init || $command == check || $command == diff || $command == apply ]]; then
+    [[ -x "$SUBSCRIPTION_COMMAND" ]] || die "找不到 $SUBSCRIPTION_COMMAND"
+    exec "$SUBSCRIPTION_COMMAND" "$command" "$@"
   fi
 
   if (( EUID != 0 )); then
@@ -221,45 +134,8 @@ main() {
     return 0
   fi
 
-  if [[ $command == reset ]]; then
-    log "按最新模板重置 Mihomo 主配置"
-
-    local dry_run=false
-    local assume_yes=false
-    local arg
-    for arg in "$@"; do
-      case $arg in
-        --dry-run) dry_run=true ;;
-        --yes) assume_yes=true ;;
-      esac
-    done
-
-    if ! $dry_run && ! $assume_yes; then
-      # 确认必须发生在任何副作用（prepare_subconverter、下载、写文件）之前，
-      # 保证取消时系统零改动。
-      if [[ ! -t 0 ]]; then
-        die "非交互环境必须使用 --yes 确认重置"
-      fi
-      local reply
-      read -r -p "[mihomo-webui-setup] 确认重置 Mihomo 主配置？[y/N] " reply
-      case $reply in
-        y | Y | yes | YES | Yes) ;;
-        *)
-          log "已取消，未修改任何文件"
-          return 0
-          ;;
-      esac
-      set -- "$@" --yes
-    fi
-
-    if has_enabled_source && source_uses_local_subconverter; then
-      if $dry_run; then
-        check_subconverter_running
-      else
-        prepare_subconverter
-      fi
-    fi
-    "$SUBSCRIPTION_COMMAND" reset "$@"
+  if [[ $command == rules || $command == reset ]]; then
+    "$SUBSCRIPTION_COMMAND" "$command" "$@"
     return 0
   fi
 
@@ -268,16 +144,16 @@ main() {
     "$SUBSCRIPTION_COMMAND" init --non-interactive
     log "检测到已有启用的订阅来源，保留现有来源配置"
   else
-    log "首次运行时请按提示配置 main 订阅 URL 与格式"
+    log "首次运行时请按提示输入 main 订阅 URL（将自动协商 Clash/Mihomo YAML）"
     "$SUBSCRIPTION_COMMAND" init --require-subscription "$@"
-  fi
-
-  if source_uses_local_subconverter; then
-    prepare_subconverter
   fi
 
   log "执行首次严格订阅更新与配置校验"
   "$SUBSCRIPTION_COMMAND" update --strict --no-reload
+
+  log "首次同步 ACL4SSR 规则与策略组"
+  # Reload an already-running service too; enable --now alone does not do that.
+  "$SUBSCRIPTION_COMMAND" rules --yes
 
   systemctl enable --now mihomo.service
   systemctl enable --now mihomo-subscription-update.timer
@@ -299,4 +175,6 @@ PY
   log "API secret：/etc/mihomo/config.yaml"
 }
 
-main "$@"
+if [[ ${BASH_SOURCE[0]} == "$0" ]]; then
+  main "$@"
+fi
