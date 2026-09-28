@@ -1,6 +1,6 @@
 pkgbase = sv-lang
 	pkgdesc = SystemVerilog compiler and language services
-	pkgver = 11.0
+	pkgver = 12.0rc1
 	pkgrel = 1
 	url = https://github.com/MikePopoloski/slang
 	arch = x86_64
@@ -8,12 +8,15 @@ pkgbase = sv-lang
 	makedepends = cmake
 	makedepends = boost
 	makedepends = ninja
+	makedepends = fmt
 	makedepends = git
 	makedepends = mimalloc
 	makedepends = pkgconf
 	makedepends = vulkan-headers
 	makedepends = catch2
 	makedepends = pybind11
+	makedepends = nanobind
+	makedepends = python-nanobind-backend
 	makedepends = python-scikit-build-core
 	makedepends = python-build
 	makedepends = python-installer
@@ -23,9 +26,8 @@ pkgbase = sv-lang
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	depends = fmt
-	source = sv-lang::git+https://github.com/MikePopoloski/slang.git#tag=v11.0
-	sha256sums = 73e1eeb1419f12243523400838cd427b97130ca72543f04f01f5fc171fbebcae
+	source = sv-lang::git+https://github.com/MikePopoloski/slang.git#tag=v12.0rc1
+	sha256sums = 40ce776d9ab3a1254a95dc14870472100a9790ac319c893a3e15eaf160301cc8
 
 pkgname = sv-lang
 	provides = sv-lang
@@ -35,5 +37,9 @@ pkgname = sv-lang
 
 pkgname = python-pysvlang
 	pkgdesc = Python bindings for slang, a library for compiling SystemVerilog
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = python
 	provides = python-pysvlang
 	conflicts = python-pysvlang

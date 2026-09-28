@@ -2,7 +2,7 @@
 
 pkgbase=sv-lang
 pkgname=(sv-lang python-pysvlang)
-pkgver=11.0
+pkgver=12.0rc1
 pkgrel=1
 epoch=
 pkgdesc="SystemVerilog compiler and language services"
@@ -14,12 +14,12 @@ depends=(
     glibc
     libgcc
     libstdc++
-    fmt
 )
 makedepends=(
     cmake
     boost
     ninja
+    fmt
     git
     mimalloc
     pkgconf
@@ -27,6 +27,8 @@ makedepends=(
 
     catch2
     pybind11
+    nanobind
+    python-nanobind-backend
     python-scikit-build-core
     python-build
     python-installer
@@ -43,7 +45,7 @@ install=
 changelog=
 source=("${pkgbase}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('73e1eeb1419f12243523400838cd427b97130ca72543f04f01f5fc171fbebcae')
+sha256sums=('40ce776d9ab3a1254a95dc14870472100a9790ac319c893a3e15eaf160301cc8')
 validpgpkeys=()
 
 prepare() {
@@ -79,6 +81,9 @@ package_python-pysvlang() {
     pkgdesc="Python bindings for slang, a library for compiling SystemVerilog"
     provides=(${pkgname})
     conflicts=(${pkgname})
+    depends+=(
+        python
+    )
     cd "${srcdir}/${pkgbase}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
