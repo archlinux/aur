@@ -1,7 +1,7 @@
 pkgbase = bambu-studio
 	pkgdesc = PC Software for BambuLab and other 3D printers
 	pkgver = 2.8.2.61
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bambulab/BambuStudio
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -40,6 +40,7 @@ pkgbase = bambu-studio
 	depends = libx11
 	depends = libxext
 	depends = mesa
+	depends = openssl
 	depends = pango
 	depends = wayland
 	depends = webkit2gtk-4.1

@@ -3,7 +3,7 @@ _raw_pkgver=02.08.02.61
 
 pkgname=bambu-studio
 pkgver=2.8.2.61
-pkgrel=2
+pkgrel=3
 pkgdesc="PC Software for BambuLab and other 3D printers"
 arch=('x86_64')
 url="https://github.com/bambulab/BambuStudio"
@@ -14,7 +14,7 @@ depends=(
 	'gdk-pixbuf2' 'glib2' 'glibc' 'glu' 'glslang' 'gstreamer' 'gtk3'
 	'harfbuzz' 'imath' 'libgcc' 'libglvnd' 'libice' 'libjpeg-turbo'
 	'libsecret' 'libsm' 'libsoup3' 'libstdc++' 'libtiff' 'libx11' 'libxext'
-	'mesa' 'pango' 'wayland' 'webkit2gtk-4.1' 'xz' 'zlib' 'zstd'
+	'mesa' 'openssl' 'pango' 'wayland' 'webkit2gtk-4.1' 'xz' 'zlib' 'zstd'
 )
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'libxkbcommon' 'libxkbcommon-x11' 'wayland-protocols' 'nasm' 'yasm')
 # add '!lto' or ffmpeg build fails exact the same way described in this thread
@@ -45,18 +45,20 @@ build() {
 	cmake ../ \
 		-DDESTDIR=$srcdir/BambuStudio_deps \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DDEP_WX_GTK3=1
+		-DDEP_WX_GTK3=1 \
+		-DDEP_BUILD_OPENSSL=0
 	make
 
 	cd $srcdir/BambuStudio-$_raw_pkgver/build
 	cmake ../ \
-		-DSLIC3R_STATIC=ON \
+		-DSLIC3R_STATIC=1 \
 		-DSLIC3R_GTK=3 \
 		-DBBL_RELEASE_TO_PUBLIC=1 \
 		-DBBL_INTERNAL_TESTING=0 \
 		-DCMAKE_PREFIX_PATH=$srcdir/BambuStudio_deps/usr/local \
 		-DCMAKE_INSTALL_PREFIX=/opt/BambuStudio \
-		-DCMAKE_BUILD_TYPE=Release
+		-DCMAKE_BUILD_TYPE=Release \
+		-DOPENSSL_ROOT_DIR=/usr
 	cmake --build . --config Release
 }
 
