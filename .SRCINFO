@@ -1,7 +1,7 @@
 pkgbase = archivemount-ng
 	pkgdesc = FUSE based filesystem for mounting compressed archives (new upstream)
-	pkgver = 1b
-	pkgrel = 4
+	pkgver = 1c
+	pkgrel = 1
 	url = https://git.sr.ht/~nabijaczleweli/archivemount-ng
 	arch = x86_64
 	license = 0BSD AND LGPL-2.0-or-later
@@ -11,10 +11,10 @@ pkgbase = archivemount-ng
 	depends = libstdc++
 	provides = archivemount
 	conflicts = archivemount
-	source = archivemount-ng-1b.tar.gz::https://git.sr.ht/~nabijaczleweli/archivemount-ng/archive/1b.tar.gz
-	source = archivemount-ng-1b.tar.gz.asc::https://git.sr.ht/~nabijaczleweli/archivemount-ng/archive/1b.tar.gz.asc
+	source = archivemount-ng-1c.tar.gz::https://git.sr.ht/~nabijaczleweli/archivemount-ng/archive/1c.tar.gz
+	source = archivemount-ng-1c.tar.gz.asc::https://git.sr.ht/~nabijaczleweli/archivemount-ng/archive/1c.tar.gz.asc
 	validpgpkeys = 7D69474E84028C5CC0C44163BCFD0B018D2658F1
-	b2sums = 72f35555969fc2371bece14924d5c58775b4b75cd3786005d4c42079cad696e682919be5fe1bf7fc66d22731ba8dd3d0ac9fcb9954201689af5bfc60d0dbe717
+	b2sums = 4c401a57546e0e204e90224d19af88164320248b011544e18050ca2373c0e88043ca6d0a5f78472c30ef4866f05f8dd8de5e9c4faa2d6b3eeb79e4ba85e0a630
 	b2sums = SKIP
 
 pkgname = archivemount-ng
