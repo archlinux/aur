@@ -1,10 +1,10 @@
 pkgname=gephgui-wry-bin
-pkgver=5.9.0
+pkgver=5.9.1
 pkgrel=1
 pkgdesc="Geph desktop GUI"
 arch=('x86_64')
 url="https://github.com/geph-official/gephgui-wry"
-license=('MPL-2.0' 'BSD-3-Clause')
+license=('MPL-2.0')
 install=gephgui-wry-bin.install
 provides=('gephgui-wry' 'geph5-client' 'geph5')
 conflicts=('gephgui-wry' 'geph5-client' 'geph5-client-git' 'geph5-app-git')
@@ -19,15 +19,15 @@ depends=(
 )
 options=('!strip' '!debug')
 source=(
-  "Geph-x86_64.flatpak::https://f001.backblazeb2.com/file/geph4-dl/geph-releases/linux-stable/5.9.0/Geph-x86_64.flatpak"
+  "gephgui-wry-bin-$pkgver.flatpak::https://f001.backblazeb2.com/file/geph4-dl/geph-releases/linux-stable/$pkgver/Geph-x86_64.flatpak"
 )
-sha256sums=('69eeb74fab8279c180082c27c6e1ab6892f9f7dfb471429f27b47e27e8eb996a')
+sha256sums=('26ecb44b550b3344fba528acc8d18fad113722300c8b7c844219293e0eeabb3a')
 
 prepare() {
   rm -rf geph-repo geph-app
   mkdir geph-repo
   ostree init --repo=geph-repo --mode=bare-user
-  ostree static-delta apply-offline --repo=geph-repo Geph-x86_64.flatpak
+  ostree static-delta apply-offline --repo=geph-repo gephgui-wry-bin-$pkgver.flatpak
   local commit
   commit=$(find geph-repo/objects -name '*.commit' | sed 's|.*/\([0-9a-f]\{2\}\)/\([0-9a-f]*\)\.commit|\1\2|')
   ostree checkout --repo=geph-repo --user-mode "$commit" geph-app
