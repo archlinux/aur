@@ -1,11 +1,19 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 6.3.0 ➙ 6.5.1
-              : 2026-07-13 ➙ 2026-09-19
+ Tags         : 6.4.0 ➙ 6.5.2
+              : 2026-07-17 ➙ 2026-09-28
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-19   : 6.5.1
+ 2026-09-28   : 6.5.2
+              - **6.5.2** Mon Sep 28 08:54:16 PM UTC 2026
+            
+                * Documentation Improvements (no functional or code changes)
+            
+                  * Simplify Readme
+                  * Add new manual in PDF and HTML formats to /usr/share/sd-boot/docs
+
+ 2026-09-19   : 6.5.1, origin/master
               - **6.5.1**
             
                 * Improve documentation for "inspect" (no functional change)
@@ -20,7 +28,7 @@
             
                 * Recent changes now in separate file.
 
- 2026-09-16   : 6.4.2, origin/master
+ 2026-09-16   : 6.4.2
               - **6.4.2** - Update Readme (esp. dracut config section)
 
  2026-07-27   : 6.4.1
@@ -39,11 +47,3 @@
                   finds some (benign) reachable memory leaks. We treat any memory leak as
                   an error, including any from external libraries. Add valgrind suppression rules
                   to ignore these specific ones.
-
- 2026-07-13   : 6.3.0
-              - **6.3.0**
-            
-                * Copy file with kernel mediated copy_file_range:
-                  If copy_file_range() is not available for the pair of source and destination
-                  devices and filesystems, fallback to (slower) read source and write destination.
-                * Bug fix: file that tracks previous version can fail to be updated
