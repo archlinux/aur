@@ -1,7 +1,7 @@
 pkgbase = libvirt-iso-manjaro-gnome-bin
 	pkgdesc = Official Manjaro GNOME installation ISO for libvirt
 	pkgver = 26.1.2.260910
-	pkgrel = 1
+	pkgrel = 2
 	url = https://manjaro.org/products/download/x86/
 	arch = x86_64
 	license = LicenseRef-Various
