@@ -1,11 +1,16 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 6.4.0 ➙ 6.5.2
-              : 2026-07-17 ➙ 2026-09-28
+ Tags         : 6.4.1 ➙ 6.5.3
+              : 2026-07-27 ➙ 2026-09-28
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-28   : 6.5.2
+ 2026-09-28   : 6.5.3
+              - **6.5.3** Mon Sep 28 09:41:04 PM UTC 2026
+            
+                * Add readthedocs to repo
+
+ 2026-09-28   : 6.5.2, origin/master
               - **6.5.2** Mon Sep 28 08:54:16 PM UTC 2026
             
                 * Documentation Improvements (no functional or code changes)
@@ -13,7 +18,7 @@
                   * Simplify Readme
                   * Add new manual in PDF and HTML formats to /usr/share/sd-boot/docs
 
- 2026-09-19   : 6.5.1, origin/master
+ 2026-09-19   : 6.5.1
               - **6.5.1**
             
                 * Improve documentation for "inspect" (no functional change)
@@ -34,16 +39,3 @@
  2026-07-27   : 6.4.1
               - Update src/.clang-tidy
                 Add nvcheker to the AUR package not just packaging directory in the git repo
-
- 2026-07-17   : 6.4.0
-              - **6.4.0**
-            
-                * BugFix: sd-find-boot was not showing output unless verbose = 2 in version 6.3.0.
-                * Change how older efi-tool versions are removed when updating/(re)installing:
-                    - Scan for older versions which is more robust than a file database tracker.
-                    - When multiple older versions are found, they are all removed
-                * Uses libalpm instead of spawning pacman to get some package info.
-                  Note libalpm uses libcurl/libcrypto from which valgrind
-                  finds some (benign) reachable memory leaks. We treat any memory leak as
-                  an error, including any from external libraries. Add valgrind suppression rules
-                  to ignore these specific ones.
