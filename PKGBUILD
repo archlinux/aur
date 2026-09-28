@@ -5,7 +5,7 @@
 # https://github.com/volkszaehler/vzlogger
 
 pkgname=vzlogger
-pkgver=0.8.7
+pkgver=0.8.10
 _libsmlver=1.1.5
 _libmbusver=0.9.0
 _libmbusrel=git20250914-1
@@ -27,8 +27,9 @@ depends=(
 makedepends=(
 	'cmake'
 	'git'
-	'pkg-config'
+	'pkgconf'
 )
+options=(!debug)
 backup=('etc/vzlogger.conf')
 install="${pkgname}.install"
 source=(
@@ -39,7 +40,7 @@ source=(
 	"vzlogger.sysusers"
 	"vzlogger.tmpfiles"
 )
-sha256sums=('4ae903d5467dfe79050d70b746ec9b2b8300ee0d39470a2a507e41b4567eda16'
+sha256sums=('11c0762093fd237beb2d32b6d84a321ac26d54cd42e27bb8377c26c5cd75bd2f'
             '58dbc19edab0122e28676acc62e456f964c71894b10ed55058bcab3f4e3a8cc7'
             'd9f8282f6a02736dfc7b1bf4a59771b0c7dfe84f444d76ded6a842b8595c1b44'
             'b5e921edf07041cb3752bad521f280ecef7ce9566d262b5c570e1a6981c84977'
