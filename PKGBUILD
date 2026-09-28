@@ -3,8 +3,8 @@
 pkgname=paseo-cli-edge
 _pkgname=cli
 _npmscope=@getpaseo
-pkgver=0.10.0_beta.1
-_tarball_sha='ed1d5629b5a1c1704823e4e042da4150233ab286fc83d74c2ab0b127ae8e7266'
+pkgver=0.10.0
+_tarball_sha='216030a379ac4f6b5fed392064b328e446dce687aa3951da43d728a70212dfe9'
 _license_sha='79d5aedce6aa0adc547336dc1bd34c5cc9308ba110fac7079ed97515ee573ad3'
 pkgrel=1
 pkgdesc='Command-line interface for controlling Paseo AI coding agents (edge - latest upstream release, beta or stable)'
