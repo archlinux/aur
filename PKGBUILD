@@ -30,7 +30,7 @@ package() {
     mkdir -p "$pkgdir/usr/share/$pkgname"
     cp -r ./$_filename/* "$pkgdir/usr/share/$pkgname"
     chmod +x "$pkgdir/usr/share/$pkgname/$_filename.$CARCH"
-    mkdir -p "$pkgdir/bin/" && ln -s "$pkgdir/usr/share/$pkgname/$_filename.$CARCH" "$pkgdir/bin/$pkgname"
+    mkdir -p "$pkgdir/usr/bin/" && ln -s "$pkgdir/usr/share/$pkgname/$_filename.$CARCH" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "newlogo.png" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.png"
     install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
