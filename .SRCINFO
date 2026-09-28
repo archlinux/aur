@@ -1,6 +1,6 @@
 pkgbase = bencher-cli
 	pkgdesc = Detect and prevent performance regressions before they make it to production with continuous benchmarking
-	pkgver = 0.6.12
+	pkgver = 0.6.13
 	pkgrel = 1
 	url = https://github.com/bencherdev/bencher-cli
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = bencher-cli
 	provides = bencher
 	options = !lto
 	options = !strip
-	source = bencher-cli-0.6.12.tgz::https://github.com/bencherdev/bencher/archive/v0.6.12.tar.gz
-	sha256sums = 5534ca6a58fef3a30fd3bbc6551010488456ffe4e519e8bdb0e1b109f9ec1110
+	source = bencher-cli-0.6.13.tgz::https://github.com/bencherdev/bencher/archive/v0.6.13.tar.gz
+	sha256sums = e7241702dfb0b21e9f9f8d8847b03292a13759aba0591274d73caa6b4d151e40
 
 pkgname = bencher-cli
