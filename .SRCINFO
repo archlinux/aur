@@ -9,7 +9,6 @@ pkgbase = filmulator
 	makedepends = lcms2-cmake
 	makedepends = libraw-cmake
 	makedepends = openmp
-	makedepends = tifdiff
 	depends = exiv2
 	depends = hicolor-icon-theme
 	depends = lensfun
