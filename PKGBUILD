@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=rkdeveloptool-gui
-pkgver=5.3.3
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="RKDevelopTool GUI is a graphical front-end for Rockchip's official rkdeveloptool"
 arch=(any)
@@ -29,11 +29,8 @@ optdepends=(
 backup=()
 install=
 source=(
-    "${pkgname}::git+${url}.git#tag=${pkgver}"
-    "${pkgname}.png"
-)
-sha256sums=('10c511324f294211ad48573af91c474c56ef91682d06478d251560f0340f05b2'
-            '91619e46e6adff808ed8a3061be5226589ed07ddf9ecd8df33e1a99f5ac563c4')
+    "${pkgname}::git+${url}.git#tag=${pkgver}")
+sha256sums=('92600572294c6cd52ef00251801898496dfc318d9d1e282cc9f42b1e0308001c')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
@@ -53,6 +50,7 @@ package() {
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -vDm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
-    install -vDm644 packaging/rkdeveloptool-gui.desktop -t "${pkgdir}/usr/share/applications/"
-    install -vDm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
+    install -vDm644 packaging/*.desktop -t "${pkgdir}/usr/share/applications/"
+    install -vDm644 packaging/*.appdata.xml -t "${pkgdir}/usr/share/metainfo/"
+    install -vDm644 packaging/icon/*.svg -t "${pkgdir}//usr/share/icons/hicolor/scalable/apps/"
 }
