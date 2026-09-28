@@ -1,0 +1,14 @@
+post_install() {
+  if [ ! -f /etc/aspia/relay.conf ] ; then
+    echo 'Run "aspia_relay --create-config" to create the configuration files and the "aspia" user.'
+  fi
+  if ! systemctl list-unit-files aspia-relay.service >/dev/null 2>&1 ; then
+    echo 'Run "aspia_relay --install" to create aspia-relay.service.'
+  fi
+}
+
+pre_remove() {
+  if systemctl list-unit-files aspia-relay.service >/dev/null 2>&1 ; then
+    echo 'aspia-relay.service is not automatically removed.'
+  fi
+}
