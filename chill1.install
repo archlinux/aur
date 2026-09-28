@@ -1,0 +1,17 @@
+post_install() {
+    # The binary needs the setuid bit to create cgroups and write io.max.
+    chmod 4755 /usr/bin/chill
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    # Clean up cgroups left behind by runs that were killed outright.  chill
+    # removes its own cgroup otherwise, so there is nothing else to tidy up.
+    for cg in /sys/fs/cgroup/chill-*; do
+        [ -d "$cg" ] && rmdir "$cg" 2>/dev/null
+    done
+    true
+}

@@ -1,0 +1,7 @@
+# makepkg build artifacts
+src/
+pkg/
+*.pkg.tar.zst
+
+# source tarball, fetched from the URL in the source= array at build time
+*.tar.gz
