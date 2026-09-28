@@ -1,16 +1,18 @@
 # Maintainer: Axel McLaren <scm(at)axml(dot)uk>
 
 pkgname=keepmenu
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="dmenu/rofi frontend for KeePass databases"
 arch=('any')
 url="https://github.com/firecat53/keepmenu"
-license=('GPL3')
-depends=('python' 'python-pykeepass' 'python-pynput')
-makedepends=('python-build' 'python-setuptools' 'python-installer' 'python-wheel' 'python-hatchling' 'python-hatch-vcs')
-optdepends=('dmenu: dmenu backend'
+license=('GPL-3.0-only')
+depends=('python' 'python-pykeepass')
+makedepends=('python-build' 'python-installer' 'python-hatchling')
+optdepends=('python-pynput: autotyping with the default type_library'
+            'dmenu: dmenu backend'
             'bemenu: bemenu backend'
+            'fuzzel: fuzzel backend'
             'wmenu: wmenu backend'
             'rofi: rofi backend'
             'wofi: wofi backend'
@@ -19,17 +21,14 @@ optdepends=('dmenu: dmenu backend'
             'xdotool: required for typing non-U.S. Unicode characters'
             'wtype: required for typing non-U.S. Unicode characters'
             'ydotool: required for typing non-U.S. Unicode characters'
-            'pinentry: secure passphrase entry')
+            'pinentry: secure passphrase entry'
+            'xsel: clipboard support (X11)'
+            'xclip: clipboard support (X11)'
+            'wl-clipboard: clipboard support (Wayland)')
 
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz)
-sha256sums=('e58b5538076ccb85a46355c9147cbbba1b2dff842288cd2b21953608120c0112')
+sha256sums=('1315c525a2aebb176721e92afaddfc6b314abfe92ad195a8f2c6c06de4ba0397')
 install=${pkgname}.install
-
-prepare() {
-  cd "${pkgname}-${pkgver}"
-
-  sed -i "s:^\(fallback-version = \).*:\1\"${pkgver}\":" pyproject.toml
-}
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -43,6 +42,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  install -Dm644 keepmenu.1 "${pkgdir}/usr/share/man/man1/keepmenu.1"
 }
