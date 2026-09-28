@@ -43,6 +43,13 @@ package() {
   # Convenience: expose the app under its product name too.
   ln -s "$_pkgname-tauri-app" "$pkgdir/usr/bin/$_pkgname"
 
+  # Upstream ships an empty Categories=, which lands it in "Lost & Found" on
+  # KDE. Fill in categories plus some search metadata.
+  sed -i \
+    -e 's/^Categories=.*/Categories=AudioVideo;Video;Player;Network;P2P;/' \
+    -e '/^Comment=/a GenericName=Torrent Streaming Client\nKeywords=torrent;stream;video;movie;tv;magnet;bittorrent;' \
+    "$pkgdir/usr/share/applications/Magnolia.desktop"
+
   install -Dm644 "${srcdir}/LICENSE-${pkgver}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   chmod -R go-w "$pkgdir"
