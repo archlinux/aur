@@ -28,8 +28,9 @@ sha256sums=('SKIP' 'SKIP')
 
 prepare() {
   cd "$pkgname"
-  # 上游把 PipeWire 视频节点放在独立仓库、以 git 子模块引入。makepkg 的 git+ 源不会递归
-  # 拉子模块，所以把第二个 source 放回子模块路径，Makefile 才能找到它。
+  # Upstream keeps the PipeWire video node in a separate repository and references it as a git
+  # submodule. makepkg's git+ sources are not recursive, so the second source is placed at the
+  # submodule path for the Makefile to find it.
   rm -rf "lib/pw-video-simple-interface"
   mkdir -p lib
   cp -r "$srcdir/pw-video-simple-interface" "lib/pw-video-simple-interface"
