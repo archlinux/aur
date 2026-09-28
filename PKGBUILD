@@ -1,7 +1,7 @@
 # Maintainer: Limehawk <128890849+limehawk@users.noreply.github.com>
 pkgname=omarchy-vpn
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="WireGuard VPN manager TUI for Omarchy"
 arch=('x86_64')
 url="https://github.com/limehawk/omarchy-vpn"
@@ -9,19 +9,19 @@ license=('MIT')
 depends=('wireguard-tools' 'systemd-resolvconf')
 optdepends=('netbird: NetBird mesh VPN row'
             'cloudflare-warp-bin: Cloudflare WARP row')
-makedepends=('go')
+makedepends=('go' 'git')
 install=omarchy-vpn.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/limehawk/omarchy-vpn/archive/v$pkgver.tar.gz")
-sha256sums=('1c756ddf83b48a78dd12aac3cf0565ef9b9ffbde25116e1eaf987dd827e4a4b3')
+source=("$pkgname::git+https://github.com/limehawk/omarchy-vpn.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     export CGO_ENABLED=0
     go build -ldflags="-s -w -X main.version=$pkgver" -o "$pkgname" .
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
 
     # Binary
     install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
