@@ -1,6 +1,6 @@
 pkgbase = rust-dos
 	pkgdesc = An x86 DOS emulator written in Rust, with Sound Blaster, AdLib, Gravis Ultrasound, General MIDI, Roland MT-32 and Tandy sound, CGA composite colours and CRT shaders
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/dividebysandwich/rust-dos
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = rust-dos
 	depends = sdl2
 	optdepends = soundfont-fluid: General MIDI SoundFont for the MPU-401 (soundfont= in [sound])
 	optdepends = fluidsynth: software synthesizer to play the MIDI sent out of a MIDI port (midisynth=host)
-	source = rust-dos-0.7.1.tar.gz::https://github.com/dividebysandwich/rust-dos/archive/refs/tags/v0.7.1.tar.gz
-	sha256sums = 7e2e867a8b36910a5395daebefe435680c50536fc833ff56805b4f58b0ecd89d
+	source = rust-dos-0.8.0.tar.gz::https://github.com/dividebysandwich/rust-dos/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 8aadace98b4e945c4ac3d865f2d297fab01f1ac2144ad1b89d011709e9d5ee4e
 
 pkgname = rust-dos

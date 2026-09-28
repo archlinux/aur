@@ -1,5 +1,5 @@
 pkgname=rust-dos
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="An x86 DOS emulator written in Rust, with Sound Blaster, AdLib, Gravis Ultrasound, General MIDI, Roland MT-32 and Tandy sound, CGA composite colours and CRT shaders"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=('soundfont-fluid: General MIDI SoundFont for the MPU-401 (soundfont=
             'fluidsynth: software synthesizer to play the MIDI sent out of a MIDI port (midisynth=host)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Update with updpkgsums once v0.5.0 is tagged.
-sha256sums=('7e2e867a8b36910a5395daebefe435680c50536fc833ff56805b4f58b0ecd89d')
+sha256sums=('8aadace98b4e945c4ac3d865f2d297fab01f1ac2144ad1b89d011709e9d5ee4e')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -29,7 +29,9 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --bin "$pkgname"
+    # rust-dos-relay is the LAN relay for servers, which needs neither a
+    # display nor SDL or a sound library.
+    cargo build --frozen --release --bin "$pkgname" --bin "$pkgname-relay"
 }
 
 check() {
@@ -42,9 +44,11 @@ check() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm0755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm0755 "target/release/$pkgname-relay" "$pkgdir/usr/bin/$pkgname-relay"
     install -Dm0644 "packaging/linux/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
     install -Dm0644 "packaging/linux/$pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
     install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm0644 CONFIGURATION.md "$pkgdir/usr/share/doc/$pkgname/CONFIGURATION.md"
     install -Dm0644 rust-dos.conf.example "$pkgdir/usr/share/doc/$pkgname/rust-dos.conf.example"
 }
