@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=android-knot-bin
 _pkgname=Knot
-pkgver=26.09.20
+pkgver=26.09.28
 pkgrel=1
 pkgdesc="An intelligent multi-scenario recording tool inspired by the minimalist concept of ancient 'knot-tying' memorization."
 arch=('x86_64')
@@ -50,7 +50,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/ic005k/Knot/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2dde4702e1effe5daec7593cfee88267fbf61017ccda226bc363ac129215bdbf'
+sha256sums=('0e9d785160629b05e8269e90bf4cb058b8df0a1120b84f293ef4324f0cd62eae'
             '5076e0113e6e491d04559dd9ec0a80a35392bec88928393d47b8dd620aa96d66'
             '6f38e0cb252008b84532d5914cb851aa45518771db172e7f5a091fe16123e05e')
 prepare() {
