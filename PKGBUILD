@@ -1,12 +1,15 @@
 # Maintainer: Hussein Hareb <hussein.hareb04@gmail.com>
 pkgname=hw-monitor
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight hardware monitor built with Tauri"
 arch=('x86_64')
 url="https://github.com/husseinhareb/hw-monitor"
 license=('MIT')
-depends=('webkit2gtk-4.1' 'gtk3' 'cairo' 'glib2' 'dbus' 'hicolor-icon-theme' 'polkit')
+# libayatana-appindicator is loaded at runtime (dlopen) by the tray icon, so ldd does not show it,
+# but the app panics on startup without it
+depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'libsoup3' 'gdk-pixbuf2' 'cairo' 'glib2'
+         'dbus' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'polkit')
 optdepends=('nvidia-utils: NVIDIA GPU monitoring')
 conflicts=('hw-monitor-git')
 options=('!strip' '!debug')
