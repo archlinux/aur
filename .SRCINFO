@@ -1,0 +1,16 @@
+pkgbase = moarchy-clock
+	pkgdesc = The time, an alarm that says when it is late, a stopwatch and a timer, for Quickshell
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/SimonSchubert/moarchy-apps
+	arch = any
+	license = MIT
+	depends = quickshell
+	depends = ttf-jetbrains-mono-nerd
+	depends = hicolor-icon-theme
+	optdepends = sound-theme-freedesktop: the alarm tone
+	optdepends = pipewire: pw-play, to play it
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/clock-v0.2.0/moarchy-clock-0.2.0.tar.gz
+	sha256sums = 8aa9fd815f08501f4dacda63aa0612dd0e2a0ea85a828b99a0bd22f1b091dbca
+
+pkgname = moarchy-clock
