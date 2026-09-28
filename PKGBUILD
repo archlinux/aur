@@ -2,8 +2,8 @@
 # Contributor: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=softmaker-office-2026-bin
-pkgver=1502
-pkgrel=2
+pkgver=1504
+pkgrel=1
 pkgdesc="Proprietary office suite; word processing, spreadsheets, presentations"
 url="https://www.softmaker.com"
 arch=('x86_64')
@@ -27,7 +27,7 @@ md5sums=('dcec18ac4a8740a39aba28f9e4cdad7d'
          '1a812254c2f77ffb8b1c1488ad121927'
          '332008e1d489aabc91570e2b9a5fc9df'
          '2b27b268ad1c060bc2f2afced1b2f067'
-         'b1e1ad824c5d92b58cd7ad8e9c8a3ad0')
+         'a358fac9b37f29f3cf48d31768746140')
 sha512sums=('cbe6156230b962150eeec53f041889afde71e8818d220aafc69807d3612a1a225f494373220458cfe0f420671684f17541fe3c07f0832cba2722b95d6206e73e'
             'ed8a73b15c4d9441818d558b370344b8b0f8557b204e33fa02ee916b2b71e110f75b6ba59e7d2c2e222a47c75a3686c90b31d2ce8fabe39608a0c9fe07c8c7ef'
             '93bcb884ba3d93fd3417d0ea8640efd0bef8b30bf40b778c7d441ce926dc0021080916d7edc6829a6409c67d8e7b3982765ca94fe5dbfa1ac47e070b5e9e07a7'
@@ -35,7 +35,7 @@ sha512sums=('cbe6156230b962150eeec53f041889afde71e8818d220aafc69807d3612a1a225f4
             '64f746d18f4da7ce88d43be88718ea7bcb1136358df0c84fe3df2108188bb01ed737a890e3d85e3dbc3dc0636feeadfd1844ea444c00f952fc5634c7abe74cd2'
             'dbe2657e5b9da821f755279c2c798b38ecd4f05f6a8f2cf5f22c5a7b401867bf298f314f1dbc33c7d0c3b8618f4a782922fa2f8afc961ab3daf27ccf9941530a'
             '0c22017dc367998483895301d50ba35c2eb025a09f778b86465d8e32af10e78273a572012d9208ab51605f6a6c668b1e3dcdabae9de6d0d2e3425fb4b4ce437e'
-            '06faed6999abb9c99d24947fea076a6392e85cd468e714646b817e5c2a89a5f5203931867f48aa7231743877c4cb01b2eafbbc35ddd0596862e878ef56d9502c')
+            '8fc5cbca3a38719f928cc6727db7f36c675ebbfe6f0bd8791f280adae4aa4c595d958fb25962500b60e0620e5b13793f6409898bd5306d608e62e02748657ef3')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/office2026"
