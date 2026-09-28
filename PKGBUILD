@@ -6,7 +6,7 @@ _appname=ttfx
 pkgname=${_gitname,,}-bin
 pkgdesc="Hypa Terminal Text Effects"
 
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,8 +31,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
 sha256sums=('30554fcbb3efca4d7bc2383d3736eb62909e6509923ff5848cda04d79ad92efb'
             '0b0072e3ef3ef2d067615d7c777f65b17bc10c15c888fb2ce19f36e1366f386a')
-sha256sums_x86_64=('bd67430fcd7fa9ea51e7ee307dae361f5fa3574b2d002fb18a0d37e6457d7ee2')
-sha256sums_aarch64=('200c29f059f5f69273793e5a2d8d26e9fd3d8d8f5b53c154b71aaf2ad765cdb1')
+sha256sums_x86_64=('3dbe40f1c5266c0d4afa9730774045faaefa71dac03a0e6470bdd0735cc02ad5')
+sha256sums_aarch64=('2f2d68f7c360674e40f848bcf3dfed4199dae6007f05ad7ad86653387834ecd9')
 
 
 prepare() {
