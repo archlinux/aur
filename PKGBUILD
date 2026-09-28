@@ -1,9 +1,9 @@
 # Maintainer: doudou <951028382@qq.com>
 
 pkgname=easycliproxyapi-git
-pkgver=0.3.4.r539.88f2d30
-pkgrel=3
-pkgdesc='Cross-platform GUI desktop management client for CLIProxyAPI with Linux system tray patch'
+pkgver=0.3.6.r558.5bc3142
+pkgrel=1
+pkgdesc='Cross-platform GUI desktop management client for CLIProxyAPI'
 arch=('x86_64' 'aarch64')
 url='https://github.com/router-for-me/EasyCLIProxyAPI'
 license=('MIT')
@@ -40,7 +40,6 @@ conflicts=('easycliproxyapi' 'easycliproxyapi-bin')
 
 source=(
   'EasyCLIProxyAPI::git+https://github.com/router-for-me/EasyCLIProxyAPI.git#branch=main'
-  '0001-enable-linux-tray.patch'
   'easycliproxyapi.sh'
   'easycliproxyapi.desktop'
 )
@@ -56,7 +55,6 @@ source_aarch64=(
 )
 sha256sums=(
   'SKIP'
-  '727f3e7cfb25cadbd29e096faaefc534845fb0efa9dd6f0c1c6ced7b54a528e1'
   '3d422eb9876fd5c2a365e322ef6ed3860d1ba9832ea444d5e390334b624cf83f'
   '6b46832343f2db8f6c1513fead0ff47a7a3ec539efcecdbc478cdd218be1222e'
 )
@@ -73,12 +71,7 @@ sha256sums_aarch64=(
 )
 
 _app_version() {
-  local version
-  if version=$(git describe --tags --match 'v[0-9]*' --abbrev=0 2>/dev/null); then
-    printf '%s\n' "${version#v}"
-  else
-    bun scripts/version.mjs
-  fi
+  bun scripts/version.mjs
 }
 
 _core_arch() {
@@ -172,8 +165,6 @@ pkgver() {
 prepare() {
   cd "$srcdir/EasyCLIProxyAPI"
   git reset --hard HEAD
-  git apply --check "$srcdir/0001-enable-linux-tray.patch"
-  git apply "$srcdir/0001-enable-linux-tray.patch"
   bun install --frozen-lockfile
 
   _install_rust
