@@ -1,25 +1,22 @@
 pkgbase = perl-html-formhandler
 	pkgdesc = HTML forms using Moose
-	pkgver = 0.40068
-	pkgrel = 2
-	url = https://metacpan.org/release/GSHANK/HTML-FormHandler-0.40068
+	pkgver = 0.410002
+	pkgrel = 1
+	url = https://metacpan.org/dist/HTML-FormHandler
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	checkdepends = perl-padwalker
 	checkdepends = perl-test-differences
 	checkdepends = perl-test-exception
 	checkdepends = perl-test-memory-cycle>=1.04
+	checkdepends = perl-test-needs
 	checkdepends = perl-test-simple
 	checkdepends = perl-test-warn
 	makedepends = perl-extutils-makemaker
 	makedepends = perl-file-sharedir-install>=0.06
-	depends = perl-crypt-urandom
 	depends = perl
-	depends = perl-aliased
 	depends = perl-carp
 	depends = perl-class-load>=0.06
-	depends = perl-crypt-blowfish
-	depends = perl-crypt-cbc
 	depends = perl-data-clone
 	depends = perl-datetime
 	depends = perl-datetime-format-strptime
@@ -29,9 +26,7 @@ pkgbase = perl-html-formhandler
 	depends = perl-html-tree>=3.23
 	depends = perl-json-maybexs>=1.003003
 	depends = perl-locale-maketext>=1.09
-	depends = perl-mime-base64
 	depends = perl-moose>=2.1403
-	depends = perl-moosex-getopt>=0.16
 	depends = perl-moosex-types-common
 	depends = perl-moosex-types-loadableclass>=0.006
 	depends = perl-moosex-types>=0.20
@@ -41,8 +36,11 @@ pkgbase = perl-html-formhandler
 	depends = perl-sub-exporter
 	depends = perl-sub-name
 	depends = perl-try-tiny
+	optdepends = perl-crypt-blowfish
+	optdepends = perl-crypt-cbc
+	optdepends = perl-mime-base64
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/G/GS/GSHANK/HTML-FormHandler-0.40068.tar.gz
-	sha256sums = eb7b78dda3125752cc8bcc0396d3977fbd28da33d2d44c5042ad6d35d6cde827
+	source = https://cpan.metacpan.org/authors/id/A/AB/ABRAXXA/HTML-FormHandler-0.410002.tar.gz
+	sha256sums = c13de7e4f2c3995e50475c629529b654cf9e2c627bdd62e27ea48c7c6d63a9e5
 
 pkgname = perl-html-formhandler
