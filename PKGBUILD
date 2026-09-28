@@ -19,7 +19,7 @@ license=('GPL3')
 depends=('libadwaita' 'gtksourceview5' 'python-cairo' 'python-gobject' 'python-keyring' 'python-nbxmpp-git'
         'python-cryptography' 'python-precis_i18n' 'python-css-parser' 'python-distro' 'hicolor-icon-theme'
         'python-pillow' 'python-gssapi' 'python-netifaces' 'python-qrcode' 'python-omemo-dr' 'python-packaging'
-        'pango' 'sqlite' 'python-sqlalchemy' 'python-setuptools' 'python-emoji' 'python-httpx' 'python-truststore'
+        'pango' 'sqlite' 'python-sqlalchemy' 'python-setuptools' 'python-emoji' 'python-httpx2' 'python-truststore'
         'python-h2' 'python-socksio' 'python-pysequoia')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('python-sentry_sdk: for Sentry error reporting to dev.gajim.org (users decide whether to send reports or not)'
