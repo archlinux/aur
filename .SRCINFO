@@ -1,6 +1,6 @@
 pkgbase = universe
 	pkgdesc = Gamepad-first game launcher: a Rust core, a PySide6 UI, games inside gamescope
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/ilyasturki/universe
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = universe
 	makedepends = scdoc
 	options = !lto
 	options = !debug
-	source = universe-0.0.7.tar.gz::https://github.com/ilyasturki/universe/archive/v0.0.7.tar.gz
+	source = universe-0.0.8.tar.gz::https://github.com/ilyasturki/universe/archive/v0.0.8.tar.gz
 	source = GalaxyCommunication-comet-0.3.2.exe::https://github.com/imLinguin/comet/releases/download/v0.3.2/GalaxyCommunication-dummy.exe
-	sha256sums = 20b9de4638567d61dfb0932437869619232fcdb6b373e8d1a958300ad0efc988
+	sha256sums = 812ea104fae332a29d372628a946acfc17807709173069972851984ffeef9f49
 	sha256sums = c7695267da363a861af99db95cafe68b732ae743e5830b4feea1bc7ee745f99d
 
 pkgname = universe
@@ -65,6 +65,6 @@ pkgname = universe-desktop
 	depends = gtk4>=1:4.22
 	depends = hicolor-icon-theme
 	depends = libadwaita>=1:1.9
-	depends = universe=0.0.7
+	depends = universe=0.0.8
 	optdepends = gst-libav: recordings played in the app (H.264, HEVC)
 	optdepends = gst-plugins-bad: recordings played in the app (AV1, VA-API)

@@ -1,7 +1,7 @@
 # Maintainer: Ilyas Turki <turki.ilyass@gmail.com>
 pkgbase=universe
 pkgname=(universe universe-desktop)
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc='Gamepad-first game launcher: a Rust core, a PySide6 UI, games inside gamescope'
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
   "$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   'GalaxyCommunication-comet-0.3.2.exe::https://github.com/imLinguin/comet/releases/download/v0.3.2/GalaxyCommunication-dummy.exe'
 )
-sha256sums=('20b9de4638567d61dfb0932437869619232fcdb6b373e8d1a958300ad0efc988'
+sha256sums=('812ea104fae332a29d372628a946acfc17807709173069972851984ffeef9f49'
             'c7695267da363a861af99db95cafe68b732ae743e5830b4feea1bc7ee745f99d')
 
 prepare() {
