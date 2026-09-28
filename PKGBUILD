@@ -2,7 +2,7 @@
 
 pkgname=foxglove-bin
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An integrated visualization and diagnosis tool for robotics'
 arch=('x86_64' 'aarch64')
 license=('MPL')
@@ -14,6 +14,9 @@ conflicts=('foxglove-studio')
 replaces=('foxglove-studio-bin')
 source_x86_64=("$pkgname-$pkgver-x86_64.deb::https://get.foxglove.dev/desktop/v$pkgver/foxglove-studio-$pkgver-linux-amd64.deb")
 source_aarch64=("$pkgname-$pkgver-aarch64.deb::https://get.foxglove.dev/desktop/v$pkgver/foxglove-studio-$pkgver-linux-arm64.deb")
+source=("foxglove-studio.desktop.patch" "foxglove-studio.xml.patch")
+sha256sums=('d908f3b083609c265f07cfb681d7c7735c4f65eecf299adbeaee63c72680cbc5'
+            'c314574bc3fe3dd75290e313c2de4e3c9cb2040c3056bfb8433bfd0778484de2')
 sha256sums_x86_64=('3bbd6228fe051a2f591f6e6930d6d2fc92710cdc6314850d249c9956f5d6033a')
 sha256sums_aarch64=('e7414d56335481ef37dc9a3688c442b0037d35df218b70dec6d8119e78abe37b')
 
@@ -23,6 +26,9 @@ package() {
     install -Dm644 "$pkgdir/usr/share/icons/hicolor/512x512/apps/foxglove-studio.png" "$pkgdir/usr/share/pixmaps/foxglove-studio.png"
 
     sed -i 's|/opt/Foxglove/foxglove-studio|/usr/bin/foxglove-studio|' "$pkgdir/usr/share/applications/foxglove-studio.desktop"
+
+    patch -d "$pkgdir" -p0 < "$srcdir/foxglove-studio.desktop.patch"
+    patch -d "$pkgdir" -p0 < "$srcdir/foxglove-studio.xml.patch"
 
     ## Symlink binary which is located in /opt
     mkdir -p "$pkgdir/usr/bin"

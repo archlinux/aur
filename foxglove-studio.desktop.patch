@@ -1,0 +1,9 @@
+--- usr/share/applications/foxglove-studio.desktop
++++ usr/share/applications/foxglove-studio.desktop
+@@ -6,5 +6,5 @@
+ Icon=foxglove-studio
+ StartupWMClass=foxglove-studio
+ Comment=Integrated robotics visualization and debugging.
+-MimeType=application/octet-stream;application/octet-stream;application/zip;x-scheme-handler/foxglove;
++MimeType=application/ros-bag;application/mcap;application/foxglove;x-scheme-handler/foxglove;
+ Categories=Development;

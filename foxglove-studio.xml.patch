@@ -1,0 +1,26 @@
+--- usr/share/mime/packages/foxglove-studio.xml
++++ usr/share/mime/packages/foxglove-studio.xml
+@@ -1,18 +1,18 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+-<mime-type type="application/octet-stream">
++<mime-type type="application/ros-bag">
+   <glob pattern="*.bag"/>
+     
+   <icon name="x-office-document" />
+ </mime-type>
+-<mime-type type="application/octet-stream">
++<mime-type type="application/mcap">
+   <glob pattern="*.mcap"/>
+     
+   <icon name="x-office-document" />
+ </mime-type>
+-<mime-type type="application/zip">
++<mime-type type="application/foxglove">
+   <glob pattern="*.foxe"/>
+     
+   <icon name="x-office-document" />
+ </mime-type>
+-</mime-info>
+\ No newline at end of file
++</mime-info>
