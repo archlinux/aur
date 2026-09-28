@@ -1,6 +1,6 @@
 pkgbase = galley-pad-bin
 	pkgdesc = Desktop Markdown editor for plain .md files
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/InkyQuill/galley-pad
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = galley-pad-bin
 	provides = galley-pad
 	conflicts = galley-pad
 	options = !strip
-	source = galley-pad-bin-1.6.1.deb::https://github.com/InkyQuill/galley-pad/releases/download/v1.6.1/Galley.Pad_1.6.1_amd64.deb
-	sha256sums = 70d94eee8c475a2395e47a4c37eba42014ef72d01181c1149ed835b5fc9f5d4f
+	source = galley-pad-bin-1.6.2.deb::https://github.com/InkyQuill/galley-pad/releases/download/v1.6.2/Galley.Pad_1.6.2_amd64.deb
+	sha256sums = 2c6791e9914d94e72cec2197cfec7f7c62a56f340116b8665a3015b34083ef73
 
 pkgname = galley-pad-bin
