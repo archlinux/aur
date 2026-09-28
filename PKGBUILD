@@ -4,7 +4,7 @@ _appname=code
 _pkgname="visual-studio-${_appname}"
 pkgname="${_pkgname}-electron-bin"
 _debname=com.microsoft.VSCode
-pkgver=1.139.0
+pkgver=1.139.1
 _electronversion=43
 pkgrel=1
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications."
@@ -51,10 +51,10 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://code.visualstudi
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-armhf")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64")
 sha256sums=('68a94e4a9d746da48f5bb990d48b434363e476dfde006394a3ced94b4a54b4a7'
-            '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
-sha256sums_aarch64=('dcceb03c62eb617d5a6719fb1700821d6840d28d7e10c9f3dbe300a2b15b22d7')
-sha256sums_armv7h=('7dfb1ee62151ac9e6b21d050d1e8d1073b8735341c9e0ad2446fb04a18995300')
-sha256sums_x86_64=('72853324247010c9689d36d4b873fa52fed414de87cf2dce4f388201fc3dfcc9')
+            '0906517d45b48027d8f068e56b308b3e86151c09723680c5c1235165669520ca')
+sha256sums_aarch64=('d067f5cd1b4f9a94e0921cb869ede08db9cb1e289121f2f4657aec3822fd3f5e')
+sha256sums_armv7h=('0533582d47ac9fc1ed0a18905f78049c2c86051a4f23968bbf776e5110658bcb')
+sha256sums_x86_64=('b0676fa039df53589acdd5aa55673267cff910d260e875e7c6118144592d05f0')
 pkgver() {
     cd "${srcdir}/usr/share/${_appname}/resources/app"
     grep '"version": ' package.json | awk '{print $2}' | tr -d '"' | tr -d ','
