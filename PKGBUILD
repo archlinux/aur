@@ -1,69 +1,47 @@
 # Maintainer: Simon Schubert <simon@librem.one>
+#
+# Peg Solitaire as an app: the QML tree in /usr/share/moarchy-pegsolitaire,
+# started by /usr/bin/moarchy-pegsolitaire. That launcher opens it in the
+# running Omarchy shell when the plugin is installed there, and as its own
+# Quickshell process everywhere else -- so this package needs Quickshell, not
+# Omarchy.
+#
+# 0.1.0 was a GTK4/libadwaita app in Python. 0.2.0 is the same puzzle in QML,
+# the solver on a worker thread, reading and writing the same
+# ~/.local/share/moarchy-pegsolitaire/pegsolitaire.json.
 pkgname=moarchy-pegsolitaire
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Peg solitaire for a Linux phone, with a hint that is a proof"
+pkgdesc='Peg solitaire on nine solvable figures, with a hint that is a proof, for Quickshell'
 arch=('any')
-url="https://github.com/SimonSchubert/moarchy-apps"
+url='https://github.com/SimonSchubert/moarchy-apps'
 license=('MIT')
-# Pure Python, so arch=any. The GUI stack is all runtime, nothing is compiled.
-# python-cairo is not optional here the way it nearly is elsewhere: the board is
-# one drawing area, and the cross, the holes and every peg on it are drawn from
-# a Python draw function. Without pycairo GTK cannot hand that function a
-# context at all, and there is nothing left of the app.
-depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'python-cairo')
+# qt6-declarative (QtQuick, and WorkerScript) comes with quickshell. The icons
+# are Nerd Font glyphs, which namcap cannot see, so it calls that unneeded.
+depends=('quickshell' 'ttf-jetbrains-mono-nerd' 'hicolor-icon-theme')
+# A release asset that packaging/release.sh builds from apps/pegsolitaire at the
+# tag, with shared/kit in place of the kit link -- not GitHub's generated
+# archive, whose compression has moved under pinned checksums before.
 source=("$url/releases/download/pegsolitaire-v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('202af455d30219226d24d8f4d1427f2887318a16f7c405edcd476738aa93d16d')
-
-# The source tarball is assembled by packaging/release.sh from two subtrees of
-# one tag -- apps/solitaire and shared -- so it holds this app and the shared
-# code it uses and nothing else. That is what lets a monorepo keep per-app
-# versions: `git archive <tag>:<subdir>` means one repo does not mean one
-# version number.
-#
-# Deliberately a versioned package rather than a -git one. mobileomarchy pins
-# each package by a commit; for a VCS package that pin governs the packaging and
-# says nothing about the code makepkg then clones at HEAD, so "pinned" would
-# read as reproducible without being it. A tarball with a checksum makes the pin
-# name the exact code, and gives pacman a version it can compare for upgrades.
-#
-# The source is a release asset built with `git archive`, not GitHub's
-# auto-generated archive: those are produced on demand, and a change to the
-# compression GitHub uses has broken every checksum pinned against them before.
+# Pinned in the commit after the tag, as every app's here is.
+sha256sums=('0b24059588c49e16049c10ece2443306339cb23a40f4d60af6173aa7621a2368')
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
-  # The rules, the solver and the file. All three are deliberately GTK-free, so
-  # they run in a build chroot -- which is also where the claim that every
-  # figure this ships can be reduced to a single peg is checked, by solving all
-  # nine of them. The widget tests skip themselves without a display, which a
-  # chroot does not have. scripts/check.sh runs those.
-  PYTHONPATH=. python3 -m unittest discover -s tests
+  cd "$pkgname-$pkgver"
+  # The rules, the solver on every figure, and the file. No display needed.
+  QT_QPA_PLATFORM=offscreen /usr/lib/qt6/bin/qmltestrunner -input tests
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
-  # Deliberately NOT site-packages. That path is Python-version-specific
-  # (/usr/lib/python3.13/site-packages), and this is an arch=any package: the
-  # version that built it would be baked in, so a Python minor bump would break
-  # every installed copy until rebuilt. A private dir on sys.path is immune.
-  install -Dm644 moarchy_pegsolitaire/*.py -t "$pkgdir/usr/lib/$pkgname/moarchy_pegsolitaire/"
+  install -d "$pkgdir/usr/share/$pkgname/kit"
+  install -m644 manifest.json ./*.qml ./*.js icon.svg "$pkgdir/usr/share/$pkgname/"
+  install -m644 kit/*.qml kit/*.js "$pkgdir/usr/share/$pkgname/kit/"
 
-  # The shared code is vendored into this package rather than being a package of
-  # its own. The store reports what an app costs in packages and megabytes onto
-  # a stock image, and a second package for two hundred lines of palette
-  # arithmetic is a cost with nothing behind it. One source copy in the repo,
-  # one self-contained package here, no runtime coupling between apps.
-  install -Dm644 moarchy_ui/*.py -t "$pkgdir/usr/lib/$pkgname/moarchy_ui/"
-
-  install -Dm755 launcher "$pkgdir/usr/bin/moarchy-pegsolitaire"
-
-  install -Dm644 data/org.moarchy.PegSolitaire.desktop \
+  install -Dm755 bin/moarchy-pegsolitaire "$pkgdir/usr/bin/moarchy-pegsolitaire"
+  install -Dm644 org.moarchy.PegSolitaire.desktop \
     "$pkgdir/usr/share/applications/org.moarchy.PegSolitaire.desktop"
-  install -Dm644 data/org.moarchy.PegSolitaire.svg \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.moarchy.PegSolitaire.svg"
-
+  install -Dm644 icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.moarchy.PegSolitaire.svg"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
