@@ -21,3 +21,9 @@ ifeq ($$(origin $(1)),command line)
     override $(1) := $$(value $(1))
 endif
 endef
+
+# A helper target to force execution of pattern rules (works like .PHONY for
+# them): https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html
+#
+.PHONY: DO
+DO:
