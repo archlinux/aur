@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <filter id="cyan-glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="13"/>
+    </filter>
+  </defs>
+  <rect x="1" y="1" width="254" height="254" rx="76" fill="#0e0e13" stroke="#3b494b" stroke-width="2"/>
+  <circle cx="128" cy="128" r="82" fill="#00f0ff" opacity="0.28" filter="url(#cyan-glow)"/>
+  <circle cx="128" cy="128" r="70" fill="#00f0ff"/>
+  <ellipse cx="103" cy="116" rx="8" ry="11" fill="#00363a"/>
+  <ellipse cx="153" cy="116" rx="8" ry="11" fill="#00363a"/>
+  <path d="M94 143 C105 169 151 169 162 143" fill="none" stroke="#00363a" stroke-width="10" stroke-linecap="round"/>
+  <path d="M85 82 C101 65 128 59 151 67" fill="none" stroke="#dbfcff" stroke-width="5" stroke-linecap="round" opacity="0.38"/>
+  <path d="M188 43 C191 57 195 61 209 64 C195 67 191 71 188 85 C185 71 181 67 167 64 C181 61 185 57 188 43Z" fill="#dbfcff"/>
+</svg>

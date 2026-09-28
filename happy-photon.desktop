@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Happy Photon
+Comment=RAW photo editor
+Exec=/opt/happy-photon/HappyPhoton %F
+Icon=happy-photon
+Terminal=false
+Type=Application
+Keywords=RAW;photo;photography;image;editor;development;darkroom;digital camera;
+Categories=Graphics;Photography;
+MimeType=image/x-olympus-orf;image/x-canon-cr2;image/x-canon-cr3;image/x-nikon-nef;image/x-sony-arw;image/x-panasonic-rw2;image/x-adobe-dng;image/x-fuji-raf;image/x-pentax-pef;image/tiff;image/jpeg;
+StartupWMClass=HappyPhoton
