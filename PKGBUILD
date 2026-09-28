@@ -1,6 +1,6 @@
 # Maintainer: UPdullah895 <abdullahbomozh@gmail.com>
 pkgname=opengg-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Open-source Linux gaming hub — OpenGG"
 arch=('x86_64')
