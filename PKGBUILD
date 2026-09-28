@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=hyprmoncfg-bin
-pkgver=1.19.1
+pkgver=1.19.2
 pkgrel=1
 pkgdesc="Terminal-first monitor configurator and auto-switching daemon for Hyprland"
 arch=('x86_64' 'aarch64')
@@ -12,10 +12,10 @@ optdepends=('systemd: user service for automatic profile switching')
 provides=('hyprmoncfg')
 conflicts=('hyprmoncfg' 'hyprmoncfg-git')
 options=('!debug' '!strip')
-source_x86_64=("https://github.com/crmne/hyprmoncfg/releases/download/v1.19.1/hyprmoncfg_1.19.1_linux_amd64.tar.gz")
-source_aarch64=("https://github.com/crmne/hyprmoncfg/releases/download/v1.19.1/hyprmoncfg_1.19.1_linux_arm64.tar.gz")
-sha256sums_x86_64=('166e4fc9335f47bb23e88a356d830126a4f1e0a9604605b6b02b6c76bd77e07d')
-sha256sums_aarch64=('69ce5d46235238b99b64f38e507e99661c98f5a5eb524dd3e4252e7adcd920fe')
+source_x86_64=("https://github.com/crmne/hyprmoncfg/releases/download/v1.19.2/hyprmoncfg_1.19.2_linux_amd64.tar.gz")
+source_aarch64=("https://github.com/crmne/hyprmoncfg/releases/download/v1.19.2/hyprmoncfg_1.19.2_linux_arm64.tar.gz")
+sha256sums_x86_64=('e78f421a499f4c3416dcd2eb2490e39bd9a91c57a4b309f789a52bd02c4399c4')
+sha256sums_aarch64=('55fac060139aad96a2ef2c0d0df8721b43e4fbf862146e2995e25daff1e304da')
 
 package() {
   cd "${srcdir}"
