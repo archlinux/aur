@@ -1,7 +1,7 @@
 pkgbase = anydoc
 	pkgdesc = Convert Word, PowerPoint, Excel, OpenDocument, RTF, EPUB, CSV, and PDF to clean Markdown
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/firecrawl/anydoc
 	arch = x86_64
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname=anydoc
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert Word, PowerPoint, Excel, OpenDocument, RTF, EPUB, CSV, and PDF to clean Markdown'
 arch=(x86_64)
 url="https://github.com/firecrawl/$pkgname"
@@ -23,7 +23,6 @@ _srcenv() {
 	export CARGO_PROFILE_RELEASE_LTO=thin
 	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
-	CFLAGS+=' -fno-fto'
 	export ZSTD_SYS_USE_PKG_CONFIG=1
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
