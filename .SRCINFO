@@ -1,0 +1,19 @@
+pkgbase = mekle
+	pkgdesc = Fast project discovery tool for developers
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/kristoferssolo/mekle
+	install = mekle.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	conflicts = mekle-bin
+	conflicts = mekle-git
+	source = mekle-0.2.0.tar.gz::https://github.com/kristoferssolo/mekle/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 77f360e110c2d9ffe0de1fd6799b4a88eed7de248bd73615d02f46797179a128
+
+pkgname = mekle
