@@ -1,7 +1,7 @@
 # Maintainer: Nicoletta <info@pc-wittfoot.de>
 
 pkgname=kater-bin
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Linux-Adressbuch mit vollständiger vCard 4.0-Unterstützung"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "kater.svg"
 )
 sha256sums=(
-    '6ed75561144362f7c7282d8aa1a73ce225e9036ab43a127b4053bb17f7edfd1b'
+    'ab2f008acb024212b876871abf69e0a5c16c2a7d162fef527c5b58b84864f57b'
     'eb92c8ad7efa493e26fd4842361e1178e664c736d2c212ab80ae913ca5441891'
     '5a55e19a4c9eb87c0abfd9b89234c8b55df9a2b127cd260c10287a11604922b9'
 )
