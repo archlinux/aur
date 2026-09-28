@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=colamd-bin
 _pkgname=ColaMD
-pkgver=2.6.0
+pkgver=2.7.0
 _electronversion=44
 pkgrel=1
 pkgdesc="A free, elegant Markdown editor anyone can pick up. No toolbars, no clutter, and the file on disk is always what you see."
@@ -22,9 +22,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/marswaveai/ColaMD/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('fd73d87f17a9797f5975d54e1e09ef10e277186c78c0464c5ab4b651264f4937'
+sha256sums=('796400feb12333abe3f563b3f59ef15520580d90e3ca09424e03fcaf40ed80dd'
             'b458eb0211ec5df71f8c32cfde43027bd0471337d36f1637fe229b76369fcc45'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_app_dir() {
 	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }
@@ -47,18 +47,17 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    rm -rf "${_app_dir}/resources/app.asar"
     find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    local _app_dir=$(_get_app_dir)
-    cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    local _app_dir="$(_get_app_dir)"
+    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
