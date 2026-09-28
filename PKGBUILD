@@ -4,7 +4,7 @@ pkgname=wayshot-gnome
 _pkgname=wayshot
 _app_id=io.github.gutopardini.wayshot
 
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 
 pkgdesc="Fast screenshot and annotation tool for GNOME on Wayland"
@@ -26,6 +26,10 @@ depends=(
   'xdg-desktop-portal-gnome'
 )
 
+optdepends=(
+  'libjxl: JPEG XL export support'
+)
+
 makedepends=(
   'cargo'
 )
@@ -45,7 +49,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha256sums=('41fdf7f127e584a39de2a156fca852f714e14f4a2677f7f9dfc2d5dcc0794702')
+sha256sums=('8b73bf1b3492481414cc5837b80d5b2abae6bbf607bbca00c90471889f6688e7')
 
 prepare() {
   cd "$_pkgname-$pkgver"
