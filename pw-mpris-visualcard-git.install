@@ -1,0 +1,24 @@
+post_install() {
+  cat <<'EOF'
+The systemd user unit is installed but deliberately not enabled:
+
+  systemctl --user enable --now pw-mpris-visualcard
+
+It publishes a PipeWire video node named "pw-mpris-visualcard" (460x690, 30 fps,
+3 lyric lines). Select that node from OBS with the obs-pwvideo plugin; the
+linux-pipewire plugin shipped with OBS goes through xdg-desktop-portal and cannot
+see this kind of node.
+
+Options are the ExecStart arguments of the unit, e.g.
+
+  systemctl --user edit pw-mpris-visualcard     # override ExecStart=
+  pw-mpris-visualcard-native --help             # full list
+
+`--size` must match the source resolution configured in OBS, `--node` must match
+the name picked there.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}

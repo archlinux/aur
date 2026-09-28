@@ -1,0 +1,26 @@
+pkgbase = pw-mpris-visualcard-git
+	pkgdesc = Render the currently playing MPRIS track as a PipeWire video node (album art, progress ring, synced lyrics)
+	pkgver = r1.c44bdf8
+	pkgrel = 1
+	url = https://github.com/zlinux-live-util/pw-mpris-visualcard
+	install = pw-mpris-visualcard-git.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = cairo
+	depends = pango
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = libpipewire
+	depends = sdbus-cpp
+	depends = curl
+	depends = pipewire
+	optdepends = obs-pwvideo: OBS source plugin able to pick this PipeWire node (the bundled linux-pipewire plugin cannot)
+	optdepends = noto-fonts-cjk: CJK glyphs for titles and lyrics (any font covering the text works)
+	provides = pw-mpris-visualcard
+	conflicts = pw-mpris-visualcard
+	source = pw-mpris-visualcard-git::git+https://github.com/zlinux-live-util/pw-mpris-visualcard.git
+	sha256sums = SKIP
+
+pkgname = pw-mpris-visualcard-git
