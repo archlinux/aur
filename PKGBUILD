@@ -2,14 +2,16 @@
 # Maintainer: AnDee
 
 pkgname=asgardex-appimage
-pkgver=1.45.3
+pkgver=1.46.0
 pkgrel=1
 pkgdesc="Professional Multi-Chain Trading Platform"
 arch=('x86_64')
 url="https://github.com/asgardex/asgardex-desktop/releases"
 license=('MIT')
 provides=('asgardex')
-validpgpkeys=('9A6461A8CAAAA0AEB8EFDDA8C5334FE4FD04D709')
+# https://github.com/thorchain/Resources/blob/master/admin-GPG-keys.md
+validpgpkeys=('F98400561D4636B4A92F07CE5BA40B710C7240C4'
+              '9A6461A8CAAAA0AEB8EFDDA8C5334FE4FD04D709')
 _appimage="ASGARDEX-${pkgver}-linux.AppImage"
 _pkgbin=asgardex
 source=("$url/download/v$pkgver/$_appimage")
@@ -17,7 +19,7 @@ noextract=("$_appimage")
 options=('!strip')
 
 _msgurl="$url/download/v$pkgver/msg${pkgver//./}.asc"
-sha256sums=('b7bf49b82e44fc8a912da893f7edc35e8feb61981317e44bd1334dba8fcb5da7')
+sha256sums=('51fb2fa665e898bdd66701411500bbe0460b8429f6d5afe69636892f00e6188c')
 
 verify() {
     curl -L -o signedmsg.txt $_msgurl
