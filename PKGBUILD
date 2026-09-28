@@ -2,7 +2,7 @@
 # Contributor: ka2n <ka2n@pobox.com>
 
 pkgname=miru-go
-pkgver=0.0.22
+pkgver=0.0.23
 pkgrel=1
 pkgdesc='A command-line tool for viewing package documentation with a man-like interface'
 url='https://github.com/ka2n/miru'
@@ -13,7 +13,7 @@ makedepends=('go')
 optdepends=('github-cli' 'glab')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6ec57ea7953e5928d4ff247043b2ef8fb0539fb52909e090b66816436ce785a4')
+sha256sums=('50acf6843f02ff44749758aed36aa6ff3c3565b1181efbd343f5cf073e806bb2')
 
 prepare() {
     cd "miru-$pkgver"
