@@ -3,8 +3,8 @@
 
 pkgname=pipeasio-bin
 _pkgname=pipeasio
-pkgver=1.8.1
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 # Upstream tags use semver prerelease hyphens (v1.0.0-rc1); pkgver maps '-' to '_'.
 _pkgtag="v${pkgver//_/-}"
 pkgdesc='PipeWire-native ASIO driver for Wine, with a Qt install and settings manager (prebuilt)'
@@ -33,7 +33,7 @@ conflicts=("${_pkgname}")
 # Wine exports. !debug: nothing to split out of a prebuilt tarball.
 options=('!strip' '!debug')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/${_pkgtag}/${_pkgname}-${_pkgtag}-archlinux-x86_64.tar.gz")
-b2sums_x86_64=('6a1a2abd843fdbec902dab9a8e02693e439afd5f4f8776374fac9a1b0a45d25f094dc58990d5e57bfbc6dd86012b496efa1ae8af5cbdb7bb553047a553787528')
+b2sums_x86_64=('994b7c7a69dfc7338f6769edd59931d6d573d9f30c7cf3005f8dafbcb7c15d720c883aeeff6204fc385bcd51ab5bbe46bc60fcfe018e6904d904adede4cc80aa')
 
 package() {
   # The tarball is rooted at the install prefix: bin/, lib/, share/.
