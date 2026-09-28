@@ -1,0 +1,24 @@
+diff --git a/src/loader.rs b/src/loader.rs
+index 6d75d98..6f35226 100644
+--- a/src/loader.rs
++++ b/src/loader.rs
+@@ -1762,6 +1762,19 @@ pub fn search_roots() -> Vec<PathBuf> {
+         roots.push(home.join(".bitterasm"));
+     }
+ 
++    if cfg!(all(unix, not(target_vendor = "apple"))) {
++        const DEFAULT_DATA_DIRS: &str = "/usr/local/share:/usr/share";
++        let data_dirs = std::env::var_os("XDG_DATA_DIRS");
++        let data_dirs = data_dirs.as_deref().unwrap_or(DEFAULT_DATA_DIRS.as_ref());
++        let dirs = std::env::split_paths(data_dirs)
++            .filter(|path| !path.as_os_str().is_empty())
++            .map(|mut path| {
++                path.push("bitterasm");
++                path
++            });
++        roots.extend(dirs);
++    }
++
+     roots
+ }
+ 
