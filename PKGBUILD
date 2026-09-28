@@ -5,7 +5,7 @@
 _author=ETHER
 _dist=Catalyst-Plugin-Authentication
 pkgname=perl-${_dist@L}
-pkgver=0.10026
+pkgver=0.10028
 pkgrel=1
 pkgdesc='Infrastructure plugin for the Catalyst authentication framework.'
 arch=('any')
@@ -28,7 +28,7 @@ checkdepends=(
 )
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('fed60a17b3ad3e7a5a65284a1444ecc33d9aacb94f7cd740a166fc9a236b625d')
+sha256sums=('c219c6422d8e4ca554535838625b4bd313eeca5151f54ab942af8aa7be360c0d')
 
 build()
 {

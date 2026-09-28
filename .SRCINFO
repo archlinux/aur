@@ -1,6 +1,6 @@
 pkgbase = perl-catalyst-plugin-authentication
 	pkgdesc = Infrastructure plugin for the Catalyst authentication framework.
-	pkgver = 0.10026
+	pkgver = 0.10028
 	pkgrel = 1
 	url = https://metacpan.org/dist/Catalyst-Plugin-Authentication
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = perl-catalyst-plugin-authentication
 	depends = perl-string-rewriteprefix
 	depends = perl-try-tiny
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Catalyst-Plugin-Authentication-0.10026.tar.gz
-	sha256sums = fed60a17b3ad3e7a5a65284a1444ecc33d9aacb94f7cd740a166fc9a236b625d
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Catalyst-Plugin-Authentication-0.10028.tar.gz
+	sha256sums = c219c6422d8e4ca554535838625b4bd313eeca5151f54ab942af8aa7be360c0d
 
 pkgname = perl-catalyst-plugin-authentication
