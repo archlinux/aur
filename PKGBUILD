@@ -10,7 +10,6 @@ pkgdesc="LibRaw configuration files for CMake"
 url="https://github.com/LibRaw/LibRaw-cmake"
 license=('BSD-3-Clause-Tso')
 depends=('cmake' 'libraw')
-makedepends=('glibc' 'lcms2' 'libgcc' 'libgomp' 'libjpeg-turbo' 'libstdc++' 'zlib')
 source=("LibRaw-cmake-$_libraw_cmake_commit.tar.gz::$url/archive/$_libraw_cmake_commit.tar.gz"
         "LibRaw-$_libraw_version.tar.gz::https://codeload.github.com/LibRaw/LibRaw/tar.gz/refs/tags/0.22.2")
 b2sums=('SKIP'
