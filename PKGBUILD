@@ -5,7 +5,8 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/doandat943/zalo-for-linux"
 license=('MIT')
 pkgver=26.8.20+26.2.1.r99.87b0696
-pkgrel=3
+pkgrel=1
+epoch=1
 provides=('zalo')
 conflicts=('zalo' 'zalo-for-linux-bin')
 
