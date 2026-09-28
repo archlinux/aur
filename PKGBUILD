@@ -2,7 +2,7 @@
 # Maintainer: pml68 <contact at pml68 dot dev>
 
 pkgname=onetalker
-pkgver=2026.8
+pkgver=2026.9
 pkgrel=1
 pkgdesc='An Augmentative and Alternative Communication (AAC) Aid'
 arch=(x86_64)
@@ -30,7 +30,7 @@ source=(
   "$pkgname::https://codeberg.org/OneTalker/OneTalker/archive/v${pkgver}.tar.gz"
   "onetalker.sh"
 )
-sha256sums=('115e97db56847dc59a03d053fba35d381379f19781ec6e2e8bc24cec57b2a8af'
+sha256sums=('15c3ffc3a753ec78ce74742d10daa9d2a93c2fe23d043809942455cec23ac24c'
             '01e25123d26a68289424b1a5640c5d220f1aed8d94c41392f1a2610cac4011f5')
 
 prepare() {
