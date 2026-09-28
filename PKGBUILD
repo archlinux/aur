@@ -2,7 +2,7 @@
 
 pkgname=wuyou-toolkit
 _pkgname=wuyou-toolkit
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Native shell for wuyou-toolkit (prebuilt binary)'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gtk3' 'webkit2gtk-4.1')
 provides=("wuyou-toolkit-bin=${pkgver}")
 options=('!strip')
 source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/duanluan/wuyou-toolkit-releases/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('35721f4d8f60c76a8a938cc75a49f4fadca38cb4fa60b1ca91ca4f99193adb10')
+sha256sums=('c37d7091cf707066002d2832c30d6b63c7083c5994a64b7caa0d0f6bf8252aaf')
 
 package() {
   local _extractdir
