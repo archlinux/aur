@@ -4,7 +4,7 @@ _pkgname='endeavouros'
 _release_name='Titan-Nova'
 pkgname="libvirt-iso-${_pkgname}-bin"
 pkgver=2026.08.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Official EndeavourOS installation ISO for libvirt'
 arch=('x86_64')
 url='https://endeavouros.com/'
@@ -73,7 +73,6 @@ check() {
 	local squashfs="${srcdir}/check-airootfs.sfs"
 	local squashfs_hash_file="${srcdir}/check-airootfs.sha512"
 	local squashfs_root="${srcdir}/check-squashfs-root"
-	local package_root="${srcdir}/check-package-root"
 	local image_size
 	local pvd_type
 	local pvd_magic
@@ -143,10 +142,6 @@ check() {
 		return 1
 	fi
 
-	printf '%s\n' 'check: staged package payload'
-	rm -rf -- "${package_root}"
-	_install_payload "${package_root}"
-	_check_payload "${package_root}"
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = libvirt-iso-endeavouros-bin
 	pkgdesc = Official EndeavourOS installation ISO for libvirt
 	pkgver = 2026.08.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://endeavouros.com/
 	arch = x86_64
 	license = LicenseRef-Various
