@@ -3,7 +3,7 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r7569.2a80c492
+pkgver=r7743.8f4649d2
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64' 'aarch64')
@@ -42,7 +42,6 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/wolfpld/tracy.git'
         'git+https://github.com/Neargye/magic_enum.git'
         'git+https://github.com/Distrotech/ucl.git'
-        'git+https://github.com/gabomdq/SDL_GameControllerDB'
         'git+https://github.com/herumi/xbyak'
         'git+https://github.com/grumpycoders/zep'
         'git+https://github.com/grumpycoders/vixl.git'
@@ -57,6 +56,7 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/pcsx-redux/cueparser.git'
         'git+https://github.com/pcsx-redux/nugget.git'
         'git+https://github.com/pcsx-redux/thorvg.git'
+        'git+https://github.com/epezent/implot.git'
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -100,7 +100,6 @@ prepare() {
   git config submodule.third_party/tracy.url "$srcdir/tracy"
   git config submodule.third_party/magic_enum.url "$srcdir/magic_enum"
   git config submodule.third_party/ucl.url "$srcdir/ucl"
-  git config submodule.third_party/SDL_GameControllerDB.url "$srcdir/SDL_GameControllerDB"
   git config submodule.third_party/xbyak.url "$srcdir/xbyak"
   git config submodule.third_party/zep.url "$srcdir/zep"
   git config submodule.third_party/vixl.url "$srcdir/vixl"
@@ -114,6 +113,7 @@ prepare() {
   git config submodule.third_party/cueparser.url "$srcdir/cueparser"
   git config submodule.src/mips.url "$srcdir/nugget"
   git config submodule.third_party/thorvg.url "$srcdir/thorvg"
+  git config submodule.third_party/implot.url "$srcdir/implot"
   
 
   git -c protocol.file.allow=always submodule update third_party/imgui \
@@ -124,7 +124,6 @@ prepare() {
                        third_party/tracy \
                        third_party/magic_enum \
                        third_party/ucl \
-                       third_party/SDL_GameControllerDB \
                        third_party/xbyak \
                        third_party/zep \
                        third_party/vixl \
@@ -137,7 +136,8 @@ prepare() {
                        third_party/iec-60908b \
                        third_party/cueparser \
                        src/mips \
-                       third_party/thorvg
+                       third_party/thorvg \
+                       third_party/implot
                        
 
 
