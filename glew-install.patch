@@ -54,12 +54,3 @@ index 9a6b9ef..4a02f59 100644
 +	$(CC) -DGLEW_NO_GLU $(CFLAGS) $(CFLAGS.SO) $(LDFLAGS) -o $@ -c $<
  
  # Install targets
- 
-@@ -243,6 +243,7 @@ install.pkgconfig: glew.pc
- 	$(INSTALL) -m 0644 glew.pc "$(DESTDIR)$(PKGDIR)/"
- 
- uninstall:
-+	$(RM) "$(DESTDIR)$(INCDIR)/eglew.h"
- 	$(RM) "$(DESTDIR)$(INCDIR)/wglew.h"
- 	$(RM) "$(DESTDIR)$(INCDIR)/glew.h"
- 	$(RM) "$(DESTDIR)$(INCDIR)/glxew.h"

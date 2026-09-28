@@ -1,7 +1,7 @@
 # Maintainer: Rustmilian
 
 pkgname=glew-wayland-git
-pkgver=2.2.0.r49.gc43940a
+pkgver=2.3.1.r25.g684c84d
 pkgrel=1
 pkgdesc="The OpenGL Extension Wrangler Library (wayland enabled)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=('glew')
 source=("git+${url}.git"
         "glew-install.patch")
 sha256sums=('SKIP'
-            '30c77b49ff64f5b936368426f957a217b6d8a3f8d0c83a7eaa69222ed45cd811')
+            '16663ce392c78f3ebd8ad7c3a2defda810a10ffa179fb601bc225c2c39a72fbc')
 
 pkgver() {
   cd ${pkgname%-wayland-git}
