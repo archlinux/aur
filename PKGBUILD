@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Run real SQL — SELECT, UPDATE, INSERT, DELETE — against SharePoint Lists and CSV files from one command-line tool."
 
-pkgver=1.12.1
+pkgver=1.12.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('d445b4df8615a1a39cbd036df95257e89ca598b1fbcc1826cd52eba7c761ed9c')
-sha256sums_aarch64=('048606e30e98505a96928e9e5bb59ec28c9a7a16193306ba0472ea2e37c0dcf2')
+sha256sums_x86_64=('08fd67eff139b4b77632a71d4fc8d660216bb4ed31ce9d8b5058c71f2b71bd5f')
+sha256sums_aarch64=('bca676455a0875c9454ea60537212376e48540e0736947edc4d22fc46ece56db')
 
 
 package() {
