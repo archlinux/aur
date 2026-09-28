@@ -2,26 +2,28 @@
 # scripts/prepare-aur.py sets the release source fields for AUR builds.
 
 pkgname=omarchy-flux
-pkgver='0.4.0'
+pkgver='0.5.0'
 pkgrel=1
 pkgdesc='Connect an Omarchy computer to your phone with Flux for Android'
 arch=('x86_64' 'aarch64')
 url='https://github.com/bjarneo/flux'
 # The repository has no license yet.
 license=('LicenseRef-unknown')
-depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-wayland' 'ttf-font-nerd' 'wl-clipboard' 'pipewire' 'sound-theme-freedesktop' 'avahi' 'xdg-utils')
+depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-wayland' 'ttf-font-nerd' 'wl-clipboard' 'pipewire' 'avahi' 'xdg-utils')
 optdepends=(
 	'quickshell: the flux plugin for omarchy-shell'
 	'ffmpeg: the phone as webcam'
 	'v4l2loopback-dkms: the phone as webcam'
 	'mpv: the phone screen mirror'
+	'wtype: the phone keyboard'
+	'gpu-screen-recorder: the remote desktop on the phone'
 )
 makedepends=('go>=1.27.1' 'cmake' 'ninja' 'git')
 install=omarchy-flux.install
 
-_source_url='https://github.com/bjarneo/flux/archive/refs/tags/v0.4.0.tar.gz'
-_source_sha256='ae2a92de147e3abfb318718477fcf7139f5ad1eea154456498c7df16b6c24cc9'
-_source_dir='flux-0.4.0'
+_source_url='https://github.com/bjarneo/flux/archive/refs/tags/v0.5.0.tar.gz'
+_source_sha256='33effdd0a3a009d357d53db66a69bee1eaadc65daa14e69d4cc8615abd42608d'
+_source_dir='flux-0.5.0'
 
 if [[ -n $_source_url ]]; then
 	source=("${pkgname}-${pkgver}.tar.gz::${_source_url}")
