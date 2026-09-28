@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wubi-dict-editor
 _zhname='五笔码表助手'
-pkgver=1.4.0
+pkgver=1.4.1
 _electronversion=28
 _nodeversion=20
 pkgrel=1
@@ -35,8 +35,8 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('d6018affda7a14b473f632075b790fc268400e2ee62a99709d258a7fa2501ef9'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums=('207d842cedd27781bd61e551380651e356b0fd2a67fed8b48ad3dd2b55cb54f4'
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -56,54 +56,52 @@ _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
 	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	_ev="$(electron${_electronversion} -v)"
-	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
-	export HOME="${srcdir}/.electron-gyp"
-	export XDG_CACHE_HOME="${srcdir}/.cache"
-	export XDG_CONFIG_HOME="${srcdir}/.config"
-	export XDG_DATA_HOME="${srcdir}/.local/share"
-	export npm_config_platform=linux
-	export npm_config_arch="${CARCH}"
-	export NODE_OPTIONS="--max-old-space-size=4096"
-	export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
+	export ELECTRON_BUILDER_OFFLINE=true
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+	export HOME="${srcdir}/.home"
+	export XDG_CACHE_HOME="${HOME}/.cache"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_DATA_HOME="${HOME}/.local/share"
+	export YARN_CACHE_FOLDER="${HOME}/.yarn/cache"
 	export YARN_NETWORK_CONCURRENCY=32
+	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
+	export COREPACK_HOME="${HOME}/.corepack"
+	export npm_config_registry="${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}"
 	local _yarnver _yarnmajor=0
 	_yarnver="$(node -p "require('./package.json').packageManager?.split('@')[1]?.split('-')[0] || ''" 2>/dev/null)"
 	_yarnmajor="${_yarnver%%.*}"
 	_yarnmajor="${_yarnmajor:-0}"
 	if [[ "${_yarnmajor}" -ge 2 ]] 2>/dev/null || [[ -f .yarnrc.yml ]]; then
-		export XDG_STATE_HOME="${srcdir}/.local/state"
+		export XDG_STATE_HOME="${HOME}/.local/state"
 		export YARN_ENABLE_GLOBAL_CACHE=false
 		export YARN_ENABLE_MIRROR=false
-		export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/berry"
+		export YARN_GLOBAL_FOLDER="${HOME}/.yarn/berry"
 		export YARN_NODE_LINKER=node-modules
 		export YARN_NM_MODE=hardlinks-local
 		export YARN_ENABLE_TELEMETRY=false
 		export YARN_ENABLE_SCRIPTS=true
-		export YARN_ENABLE_IMMUTABLE_INSTALLS=false
-		export YARN_ENABLE_PROGRESS_BARS=false
-		export YARN_ENABLE_COLORS=false
 		export YARN_HTTP_TIMEOUT=600000
 		export YARN_HTTP_RETRY=5
-		export COREPACK_HOME="${srcdir}/.corepack"
-		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}"
-		install -dm755 "${srcdir}/.bin"
-		corepack enable --install-directory "${srcdir}/.bin"
-		export PATH="${srcdir}/.bin:${PATH}"
-		corepack prepare "yarn@${_yarnver}" --activate
+		export YARN_NPM_REGISTRY_SERVER="${YARN_NPM_REGISTRY_SERVER:-${NPM_CONFIG_REGISTRY:-https://registry.yarnpkg.com}}"
+		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${COREPACK_HOME}"
 	else
-		export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/global"
-		export YARN_LINK_FOLDER="${srcdir}/.yarn/link"
-		export YARN_TEMP_FOLDER="${srcdir}/.yarn/tmp"
+		export YARN_GLOBAL_FOLDER="${HOME}/.yarn/global"
+		export YARN_LINK_FOLDER="${HOME}/.yarn/link"
+		export YARN_TEMP_FOLDER="${HOME}/.yarn/tmp"
 		export YARN_NETWORK_TIMEOUT=600000
 		export YARN_CHILD_CONCURRENCY="$(nproc)"
 		export YARN_FROZEN_LOCKFILE=true
-		export YARN_NONINTERACTIVE=true
-		export YARN_NO_PROGRESS=true
 		export YARN_IGNORE_ENGINES=true
-		export NODE_ENV=production
 		export YARN_PRODUCTION=false
-		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${YARN_LINK_FOLDER}" "${YARN_TEMP_FOLDER}"
+		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${YARN_LINK_FOLDER}" "${YARN_TEMP_FOLDER}" "${COREPACK_HOME}"
+	fi
+	local _reg="${NPM_CONFIG_REGISTRY:-https://registry.yarnpkg.com}"
+	_reg="${_reg%/}"
+	if [[ -f .yarnrc ]]; then
+		sed -i "s|^registry .*|registry \"${_reg}\"|" .yarnrc
+	fi
+	if [[ -f yarn.lock ]] && grep -q 'resolved "https://registry.yarnpkg.com' yarn.lock; then
+		sed -i "s|https://registry.yarnpkg.com/|${_reg}/|g" yarn.lock
 	fi
 }
 _use_local_electron_for_forge() {
@@ -116,7 +114,9 @@ _use_local_electron_for_forge() {
 	local _zf="${_zd}/electron-v${_v}-linux-${_arch}.zip"
 	install -Dm755 -d "${_zd}"
 	( cd "${ELECTRON_DIST}" && zip -r -q -0 "${_zf}" . )
-	sed -i "/packagerConfig:[[:space:]]*{/a\\    electronZipDir: '${_zd}'," forge.config.*
+	find . -name "forge.config.*" ! -path "*/node_modules/*" -print0 | while IFS= read -r -d '' _cfg; do
+		sed -i "/packagerConfig:[[:space:]]*{/a\\    electronZipDir: '${_zd}'," "${_cfg}"
+	done
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -140,14 +140,16 @@ prepare() {
     icns2png  -d 32 -x assets/img/appIcon/appIcon.icns -o assets/img/appIcon/
     cp assets/img/appIcon/appIcon_16x16x32.png assets/img/appIcon/appicon.png
     sed -i "s/appIcon\/appicon\ico/img\/appIcon\/appicon\.png/g" main.js
-    NODE_ENV=development    yarn install
+    export NODE_ENV=development
+    yarn install
     _use_local_electron_for_forge
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     _ensure_local_nvm
     _set_build_env
-    NODE_ENV=production     yarn run package
+    export NODE_ENV=production
+    yarn run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
