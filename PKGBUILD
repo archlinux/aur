@@ -1,7 +1,7 @@
 # Maintainer: chwair <74615216+chwair@users.noreply.github.com>
 _pkgname=magnolia
 pkgname=magnolia-bin
-pkgver=2.2.4
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Torrent streaming client for PCs"
 arch=('x86_64')
@@ -11,29 +11,9 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=(
   'webkit2gtk-4.1'
-  'gtk3'
-  'openssl'
-  'fontconfig'
-  'freetype2'
-  'harfbuzz'
-  'libpng'
-  'libwebp'
-  'brotli'
-  'bzip2'
-  'zstd'
-  'xz'
-  'lz4'
-  'libxrandr'
-  'libva'
-  # audio/video backends the bundled ffmpeg + mpv link unconditionally (DT_NEEDED)
-  'alsa-lib'
+  # bundled libmpv links these directly
   'libpulse'
   'libpipewire'
-  'jack'
-  'libvdpau'
-  'ocl-icd'
-  'libbsd'
-  'libxss'
 )
 makedepends=('patchelf')
 options=('!strip' '!debug')
@@ -41,7 +21,7 @@ source=(
   "${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Magnolia_${pkgver}_amd64.deb"
   "LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE-MIT"
 )
-sha256sums=('fb853acb08a91fe3bd68c42c42518b79e823747ef3b86261b7975b3b25503d7a'
+sha256sums=('e44fdb7f70f7a6527c6419bb520c979535a44371f19802d5ee212e0846e62758'
             'e0d124d15a52e371bc20830765d7d874fde8e88abc5c2dd4debd71117f4b7ed7')
 noextract=("${pkgname}-${pkgver}.deb")
 
