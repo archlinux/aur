@@ -3,7 +3,7 @@
 pkgname=pixez-git
 _pkgname=pixez
 pkgver=0.9.109.r35.g126bd52
-pkgrel=1
+pkgrel=2
 pkgdesc="Pixiv third-party client written in Flutter"
 arch=('x86_64')
 url="https://github.com/Notsfsssf/pixez-flutter"
@@ -50,7 +50,7 @@ package() {
     patchelf --set-rpath '$ORIGIN' "${pkgdir}/opt/${_pkgname}/lib"/*.so
 
     install -Dm644 "assets/images/icon.png" \
-        "${pkgdir}/usr/share/icons/hicolor/144x144/apps/${_pkgname}.png"
+        "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
     install -Dm644 "linux/packaging/com.perol.pixez.desktop" \
         "${pkgdir}/usr/share/applications/com.perol.pixez.desktop"
 }
