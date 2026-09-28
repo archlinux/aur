@@ -1,0 +1,25 @@
+pkgbase = fluxer-bin
+	pkgdesc = Fluxer Desktop Application (self-hosted)
+	pkgver = 2026.927.142044
+	pkgrel = 1
+	url = https://fluxer.app
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = nodejs
+	provides = fluxer
+	conflicts = fluxer
+	options = !strip
+	source = fluxer.desktop
+	source = fluxer-wrapper.sh
+	sha256sums = 981daa8015b823fef254bb8e79fe6b28f77dda02cdc374796443bd64f5041de1
+	sha256sums = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+	source_x86_64 = fluxer-2026.927.142044-x64.tar.gz::https://api.fluxer.app/dl/desktop/stable/linux/x64/2026.927.142044/tar_gz
+	sha256sums_x86_64 = 126dbef18f4cad1cdc930fd469b059d82b09d10f6493ea8c9dbbfe5861364c82
+	source_aarch64 = fluxer-2026.927.142044-arm64.tar.gz::https://api.fluxer.app/dl/desktop/stable/linux/arm64/2026.927.142044/tar_gz
+	sha256sums_aarch64 = d6e40b0ee5b6adf6cbdba7c14748c2f409d5644166ed08815af6393f0900e140
+
+pkgname = fluxer-bin
