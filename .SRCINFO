@@ -1,6 +1,6 @@
 pkgbase = seerrng-deb
 	pkgdesc = Seerr fork with music, books and audiobooks support. Installed from .deb, hardened service file
-	pkgver = 3.33.0
+	pkgver = 3.34.0
 	pkgrel = 1
 	url = https://github.com/snapetech/seerrng
 	install = seerrng-deb.install
@@ -14,9 +14,9 @@ pkgbase = seerrng-deb
 	conflicts = seerrng-bin
 	options = !strip
 	options = !emptydirs
-	source = seerrng-deb-3.33.0.deb::https://github.com/snapetech/seerrng/releases/download/v3.33.0/seerrng_3.33.0_amd64.deb
+	source = seerrng-deb-3.34.0.deb::https://github.com/snapetech/seerrng/releases/download/v3.34.0/seerrng_3.34.0_amd64.deb
 	source = seerrng.service
-	sha256sums = 0734fb33d9bdbc996bae69fc44441834373f0ee24640797517f2c115ca6a0a09
+	sha256sums = b72277d46fc81fb9c0a53a12b04c29e7f63727bdd307d5e8065fdac0dc2bd641
 	sha256sums = SKIP
 
 pkgname = seerrng-deb
