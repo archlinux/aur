@@ -1,6 +1,6 @@
 # Maintainer: Lemuel De Los Santos <aur@lemueldls.dev>
 pkgname=typbase-bin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Local-first knowledge base made for Typst and the Atmosphere."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('AGPL-3.0')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'pango' 'webkit2gtk-4.1')
 options=('!strip' '!emptydirs')
 source_x86_64=("https://github.com/lemueldls/typbase/releases/download/typbase-v$pkgver/Typbase_${pkgver}_amd64.deb")
-sha256sums_x86_64=('cec70e1971444fb19cdbd3ac2905f0a3b1ecf296fc2c1ea363a5100ebebf8c8f')
+sha256sums_x86_64=('f18737ed72bedc66dac3e9749e0c57d6a6a2e4c86a422299bd990be9a6d83228')
 package() {
     tar -xz -f data.tar.gz -C "${pkgdir}"
 }
