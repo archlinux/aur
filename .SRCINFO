@@ -1,6 +1,6 @@
 pkgbase = asteroidz-bar
 	pkgdesc = The asteroidz shell: status bar and HDR10 wallpaper, out of the compositor
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/asteroidzman/asteroidz-bar
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = asteroidz-bar
 	optdepends = pipewire-audio: audible notifications (pw-play)
 	optdepends = grim: contrib/tray-test.sh
 	provides = notification-daemon
-	source = git+https://github.com/asteroidzman/asteroidz-bar.git#tag=0.5.2
+	source = git+https://github.com/asteroidzman/asteroidz-bar.git#tag=0.6.0
 	sha256sums = SKIP
 
 pkgname = asteroidz-bar

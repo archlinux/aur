@@ -1,6 +1,6 @@
 # Maintainer: ralf <ralf.wierzbicki@gmail.com>
 pkgname=asteroidz-bar
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='The asteroidz shell: status bar and HDR10 wallpaper, out of the compositor'
 arch=('x86_64')
