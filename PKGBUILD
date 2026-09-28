@@ -2,7 +2,7 @@
 # Maintainer (AUR): voron00
 
 pkgname=proton-wineland
-_srctag=11.0-20260928
+_srctag=11.0-20260928.1
 pkgver=${_srctag//-/.}
 pkgrel=1
 epoch=1
@@ -35,8 +35,8 @@ depends=(
   libxkbcommon-x11
   lsb-release
   lsof
-  ntsync-autoload
   nss
+  ntsync-autoload
   python
   ttf-font
   usbutils
@@ -98,5 +98,5 @@ package() {
     mv "${_compatdir}/${pkgname}"/{PATENTS.AV1,LICENSE{,.OFL}} \
         "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-sha256sums=('6edf7bd4e054d0fe558b87303b3c5f0e5162ac2ac64c1190a4deb64de663fa72'
+sha256sums=('9dc8eb84a7d37ad526990365ea4c489dfcdddaf3fd1980a9083e61e3405712e7'
             '6983622dc08784891929b843e8c5bf566c160eb2c23b7fc89c0f4dbabcd5db69')
