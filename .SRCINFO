@@ -1,0 +1,18 @@
+pkgbase = moarchy-video-library
+	pkgdesc = LBRY's videos through Odysee: browse, search, follow channels, watch
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SimonSchubert/moarchy-apps
+	arch = any
+	license = MIT
+	depends = quickshell
+	depends = curl
+	depends = qt6-multimedia
+	depends = qt6-multimedia-ffmpeg
+	depends = ttf-jetbrains-mono-nerd
+	depends = hicolor-icon-theme
+	optdepends = mpv: the mpv button, for a video in its own window
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/video-library-v0.1.0/moarchy-video-library-0.1.0.tar.gz
+	sha256sums = 9aced91b9086f431d6609f6ebb37869f67ea97667e9230c704c867acd6bb4138
+
+pkgname = moarchy-video-library
