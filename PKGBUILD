@@ -5,7 +5,7 @@
 # the plugin is installed there, and as its own Quickshell process everywhere
 # else -- so this package needs Quickshell, not Omarchy.
 pkgname=transit
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Public transport journeys and live departures, worldwide, on Transitous, for Quickshell'
 arch=('any')
@@ -18,7 +18,7 @@ depends=('quickshell' 'ttf-jetbrains-mono-nerd' 'hicolor-icon-theme')
 # A release asset that packaging/release.sh builds from apps/transit at the
 # tag, not GitHub's generated archive of the whole repository.
 source=("$url/releases/download/transit-v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('951192739f751cff94fe7467d76aab16b1bd2c304878d4d847154461c0e319c9')
+sha256sums=('56a36008584f23249262a4eebc6e0901e2d6d6e95b88cbe90a5965752df6899e')
 
 package() {
   cd "$pkgname-$pkgver"

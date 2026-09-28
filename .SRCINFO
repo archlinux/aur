@@ -1,6 +1,6 @@
 pkgbase = transit
 	pkgdesc = Public transport journeys and live departures, worldwide, on Transitous, for Quickshell
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/SimonSchubert/moarchy-apps
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = transit
 	depends = quickshell
 	depends = ttf-jetbrains-mono-nerd
 	depends = hicolor-icon-theme
-	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/transit-v1.1.0/transit-1.1.0.tar.gz
-	sha256sums = 951192739f751cff94fe7467d76aab16b1bd2c304878d4d847154461c0e319c9
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/transit-v1.2.0/transit-1.2.0.tar.gz
+	sha256sums = 56a36008584f23249262a4eebc6e0901e2d6d6e95b88cbe90a5965752df6899e
 
 pkgname = transit
