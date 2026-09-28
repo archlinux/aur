@@ -4,6 +4,10 @@ post_install() {
   fi
 }
 
+post_upgrade() {
+  post_install
+}
+
 pre_remove() {
   /usr/bin/geph5 unregister-manager
 }

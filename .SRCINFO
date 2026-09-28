@@ -1,7 +1,7 @@
 pkgbase = gephgui-wry-bin
 	pkgdesc = Geph desktop GUI
 	pkgver = 5.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/geph-official/gephgui-wry
 	install = gephgui-wry-bin.install
 	arch = x86_64

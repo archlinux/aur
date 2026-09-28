@@ -1,8 +1,5 @@
-gephgui-wry-bin*
+gephgui-wry-bin-*
 geph.png
 xdotool-*.tar.gz
 pkg
 src
-Geph-x86_64.flatpak
-
-!gephgui-wry-bin.install
