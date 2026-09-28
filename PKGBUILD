@@ -5,7 +5,7 @@
 # Contributor: hexchain <i@hexchain.org>
 
 pkgname=mercurygram-desktop
-pkgver=7.2.9.1
+pkgver=7.2.9.3
 _td_commit=bc9c263e2bfee06aaab41e82db51a103376030bc
 pkgrel=1
 pkgdesc='Privacy-focused Telegram Desktop fork'
@@ -30,6 +30,7 @@ depends=(
   'libpipewire'
   'libsrtp'
   'libstdc++'
+  'libvpx'
   'libxcb'
   'libxcomposite'
   'libxdamage'
@@ -43,8 +44,10 @@ depends=(
   'openal'
   'openh264'
   'openssl'
+  'opus'
   'pipewire'
   'qt6-base'
+  'qt6-declarative'
   'qt6-imageformats'
   'qt6-svg'
   'qt6-wayland'
@@ -81,7 +84,7 @@ source=(
   "https://github.com/Mercurygram/mdesktop/releases/download/v${pkgver}/Mercurygram-${pkgver}-source-full.tar.gz"
   "git+https://github.com/tdlib/td.git#commit=${_td_commit}"
 )
-sha512sums=('de1d84384155baa7208318c0005bcb9c6946da23023837c6cd35ea4d4e55613b1644617596e751657a0a28c0ab8c5abde3811f9377388914c2dac36827a3e9eb'
+sha512sums=('ea5217ef43d27b5228dc59bfa4eceeae49fba5a78e708cc3c5cf5740bdbafe3519f033c1707cd8de461d5216c4ab89b0eb4b50b0b7d5bf6fb9ea98e065126be5'
             '12d3b77dbb2a7b7deaef0e173626b9d16acfbdde5b1df4bd58a70a7541a5d8032f25ecbc14604b0e47aa3d6d76704c56409d432717412c6046efebd0ab6180f1')
 
 build() {
@@ -97,7 +100,7 @@ build() {
     -DCMAKE_VERBOSE_MAKEFILE=ON \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -Dtde2e_DIR="$PWD/td/install/lib/cmake/tde2e" \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DTDESKTOP_API_ID=575730 \
     -DTDESKTOP_API_HASH=723c7927097f8487d229438af766e329
   cmake --build build
