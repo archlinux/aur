@@ -1,0 +1,5 @@
+[codediff-bin]
+source = "github"
+github = "ivankovic/codediff"
+use_latest_release = true
+prefix = "v"
