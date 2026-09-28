@@ -1,0 +1,21 @@
+post_install() {
+    cat <<'MSG'
+==> Bioma is installed in /usr/share/bioma. Set it up once for your user:
+
+      bioma-install --autostart
+
+    It writes Bioma's keys next to niri's config.kdl and includes Bioma's
+    niri files (config.kdl is copied aside first and checked with
+    `niri validate`). Then start it with
+    `/usr/share/bioma/scripts/shell bioma`, or log in again.
+
+    Palettes reach niri only by default; other applications are switched on
+    under APPS in the theme cell (Mod+Alt+T).
+MSG
+}
+
+post_upgrade() {
+    cat <<'MSG'
+==> Restart Bioma to run the new version:  /usr/share/bioma/scripts/shell restart
+MSG
+}
