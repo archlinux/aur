@@ -2,20 +2,23 @@
 
 pkgname=python-pyreadr
 _name=${pkgname#python-}
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 pkgdesc='Reads/writes R RData and Rds files into/from pandas data frames'
 arch=('x86_64')
 url="https://github.com/ofajardo/pyreadr"
 license=('AGPL-3.0-or-later')
-depends=('bzip2' 'python-pandas' 'xz' 'zlib')
+depends=('bzip2' 'python-pandas' 'python-narwhals' 'xz' 'zlib')
 makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('python-xarray')
-optdepends=('python-xarray: for 3D array support')
+checkdepends=('python-xarray' 'python-polars')
+optdepends=(
+    'python-polars: for polars support'
+    'python-xarray: for 3D array support'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "fix_pkg_warning.patch")
-sha256sums=('1faf42327abf6bee1c4dd4e18d739f0d38dad01627d5b80fcdbda7ff5e41f77a'
-            '86b83f59ff1e0ee5b1d4e1c6652a0f872ee527e2bc2b680131654e069111d8a8')
+sha256sums=('039ca25dd68b9ff3ded4267db4e78f936b05ada2fd2bc66e08919d2a0d2a93cd'
+            '7805f6abbfb97300bdfe6a6236f89d90fa1aab303c96a71c327068628e51a212')
 
 prepare() {
     cd "${_name}-${pkgver}"
