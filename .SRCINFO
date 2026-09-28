@@ -1,0 +1,15 @@
+pkgbase = chill1
+	pkgdesc = Run a command with disk I/O bandwidth limits applied to all block devices
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/dsvi/chill
+	install = chill1.install
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = zlib
+	makedepends = gcc
+	source = chill-0.0.0.tar.gz::https://github.com/dsvi/chill/archive/refs/tags/v0.0.0.tar.gz
+	sha256sums = 473bec29dac26517553544b788f8149b96e27e639339c7c8587cac14dbdf6287
+
+pkgname = chill1
