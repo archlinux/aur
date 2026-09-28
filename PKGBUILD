@@ -7,7 +7,7 @@
 
 _pkgname=pw-mpris-visualcard
 pkgname=$_pkgname-git
-pkgver=r1.c44bdf8
+pkgver=r3.71f5f8f
 pkgrel=1
 pkgdesc='Render the currently playing MPRIS track as a PipeWire video node (album art, progress ring, synced lyrics)'
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,19 @@ optdepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install="$pkgname.install"
-source=("$pkgname::git+$url.git")
-sha256sums=('SKIP')
+source=("$pkgname::git+$url.git"
+        "pw-video-simple-interface::git+https://github.com/zlinux-live-util/pw-video-simple-interface.git")
+sha256sums=('SKIP' 'SKIP')
+
+prepare() {
+  cd "$pkgname"
+  # 上游把 PipeWire 视频节点放在独立仓库、以 git 子模块引入。makepkg 的 git+ 源不会递归
+  # 拉子模块，所以把第二个 source 放回子模块路径，Makefile 才能找到它。
+  rm -rf "lib/pw-video-simple-interface"
+  mkdir -p lib
+  cp -r "$srcdir/pw-video-simple-interface" "lib/pw-video-simple-interface"
+  rm -rf "lib/pw-video-simple-interface/.git"
+}
 
 pkgver() {
   cd "$pkgname"
