@@ -1,11 +1,10 @@
 # llavon-ime-fcitx5-git
 
-Package metadata for [`llavon-ime-fcitx5-git`][aur] in the Arch User Repository.
+Arch User Repository 上 [`llavon-ime-fcitx5-git`][aur] 的套件中繼資料。
 
-This directory is maintained from `llavon-ime/ime-unix` and published to the
-official AUR package repository by GitHub Actions.
+本目錄由 `llavon-ime/ime-unix` 維護，並由 GitHub Actions 發佈到官方 AUR 套件庫。
 
-The package downloads and installs the bundled GGUF model at
-`/usr/share/llavon-ime/models/llavon-ime-llama-250m-Q4_K_M.gguf`.
+套件會下載內附的 GGUF 模型，安裝到
+`/usr/share/llavon-ime/models/llavon-ime-llama-250m-Q4_K_M.gguf`。
 
 [aur]: https://aur.archlinux.org/packages/llavon-ime-fcitx5-git
