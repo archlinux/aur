@@ -4,7 +4,7 @@
 
 _pkgname=flet
 pkgname=python-${_pkgname}
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
@@ -31,7 +31,7 @@ arch=('x86_64')
 source=(
 	"${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}-dev/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 	'flet-linux.patch')
-sha256sums=('3ebb7726c99f48e225272071e084a56e89ff3f42157b58a19958f3c5e3dd27fb'
+sha256sums=('d628d56e9bf51393adb564824c7e2ec4bf1d7d13acfb29e456a6f78190583458'
             'e252e4eec325886d76dfc54c90604ea81ec0d6791b7e22bb93f63cec6378c50c')
 
 _srcdir="${_pkgname}-${pkgver}"
@@ -64,9 +64,11 @@ build() {
 	#python -m build --wheel --no-isolation
 
 	for dir in 'sdk/python/packages/'*; do
-		pushd "$dir"
-			python -m build --wheel --no-isolation
-		popd
+		if [[ "$dir" != 'flet-web' && "$dir" != 'flet-webview' ]]; then
+			pushd "$dir"
+				python -m build --wheel --no-isolation
+			popd
+		fi
 	done
 }
 
@@ -94,9 +96,11 @@ package() {
 	#	python -m installer --destdir="$pkgdir" 'dist/'*.whl
 	#popd
 	for dir in 'sdk/python/packages/'*; do
-		pushd "$dir"
-			python -m installer --destdir="$pkgdir" 'dist/'*.whl
-		popd
+		if [[ "$dir" != 'flet-web' && "$dir" != 'flet-webview' ]]; then
+			pushd "$dir"
+				python -m installer --destdir="$pkgdir" 'dist/'*.whl
+			popd
+		fi
 	done
 
 	local _client_installdir="${_install_path}/$pkgname"
