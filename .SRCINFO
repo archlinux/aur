@@ -8,9 +8,9 @@ pkgbase = kapi-bin
 	provides = KAPI
 	arch = aarch64
 	source_aarch64 = kapi-bin_1.3.1_beta.1_aarch64.tar.gz::https://github.com/slouowzee/KAPI/releases/download/v1.3.1-beta.1/KAPI_linux_arm64.tar.gz
-	sha256sums_aarch64 = ac5ae7e513a28a6343d70c01c5829d901e59b9f97d360eeb5ff3853b70a61b02
+	sha256sums_aarch64 = 9cad7335f1ce2df348652614d87e966b565833d5ee342a7be6ac6b1669f3b23b
 	arch = x86_64
 	source_x86_64 = kapi-bin_1.3.1_beta.1_x86_64.tar.gz::https://github.com/slouowzee/KAPI/releases/download/v1.3.1-beta.1/KAPI_linux_amd64.tar.gz
-	sha256sums_x86_64 = 85531289b05a013077c41fc60079d34549f7d7de69c41f47e8c58012ea308137
+	sha256sums_x86_64 = 8987cf75944dcdefc120945d90b789235070cfd95363d191d568f79f77bfef01
 	
 pkgname = kapi-bin
