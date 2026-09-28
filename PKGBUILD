@@ -1,6 +1,6 @@
 # Maintainer: zweiler1 <marc.zweiler@outlook.at>
 pkgname=flintc-bin
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Flint programming language compiler and language server"
 arch=('x86_64')
@@ -12,8 +12,8 @@ source=(
 	"https://github.com/flint-lang/flintc/releases/download/v${pkgver}-core/fls"
 )
 sha256sums=(
-	'ef6108d15f242fd469b6b9528dc9d4be4ebd946574514c9137e33783fbfa5943'
-	'7132224da447be86cb4908f88d175f420bb5c69b35ee24ed1db5a3dc993525bd'
+	'56525e00c1375b5fb9a07859419cc95027f8e978517353f7f184bbe6383ebe5e'
+	'47aea784e802a2e1f389f80b2c3d882cbf4cfc86d7195e95e4f5f99b4aff6771'
 )
 
 package() {
