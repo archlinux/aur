@@ -1,6 +1,6 @@
 # Maintainer: Lemuel De Los Santos <aur@lemueldls.dev>
 pkgname=typbase
-pkgver=0.2.5
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Local-first knowledge base made for Typst and the Atmosphere."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 makedepends=('cargo' 'nodejs' 'pnpm' 'git' 'file' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rustup' 'wasm-pack')
 options=('!strip' '!emptydirs')
 source=("typbase-v$pkgver.tar.gz::https://github.com/lemueldls/typbase/archive/refs/tags/typbase-v$pkgver.tar.gz")
-sha256sums=('fad1fb70128c10b34f1b645dcc18e73d6030fa514080500eb40c8a0415842e93')
+sha256sums=('4ff7e67e6b660793f425dcb3caa755c5ae315c86da5c04ac1ca29b43b75ac0ea')
 _builddir="$pkgname-typbase-v$pkgver"
 
 prepare() {
