@@ -5,7 +5,7 @@
 pkgname=flea-git
 _pkgname=flea
 # The release workflow writes the tag's own pkgver() value here, and pushes only when the rest of this file changed.
-pkgver=0.3.6.r0.g65cec6f
+pkgver=0.3.6.r0.g98404bc
 pkgrel=1
 pkgdesc='Fast, keyboard-first file manager for Omarchy (git version)'
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,8 @@ optdepends=('libarchive: archive listing and extraction'
             'tailscale: Taildrop sharing'
             'ffmpeg: media metadata in the preview column'
             'ffmpegthumbnailer: video thumbnails, made by one pre-linked worker through libffmpegthumbnailer.so.4, or by the ffmpegthumbnailer program per video when that library will not load'
-            'dropbox-cli: Dropbox share links')
+            'dropbox-cli: Dropbox share links'
+            'zoxide: frecent folders in the folder jump of the path bar')
 options=('!debug')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
