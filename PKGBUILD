@@ -2,7 +2,7 @@
 
 pkgname=carve-rs
 pkgver=0.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Rust parser and HTML renderer for the Carve markup language'
 arch=(x86_64)
 url="https://github.com/markup-carve/$pkgname"
@@ -22,7 +22,6 @@ _srcenv() {
 	export CARGO_PROFILE_RELEASE_LTO=thin
 	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
-	CFLAGS+=' -fno-fto'
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 }
