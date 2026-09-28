@@ -1,7 +1,7 @@
 pkgname=rust-dos
 pkgver=0.8.0
-pkgrel=1
-pkgdesc="An x86 DOS emulator written in Rust, with Sound Blaster, AdLib, Gravis Ultrasound, General MIDI, Roland MT-32 and Tandy sound, CGA composite colours and CRT shaders"
+pkgrel=2
+pkgdesc="x86 DOS emulator featuring 386 to Pentium CPUs, DPMI host, VGA/VSA/S3/Voodoo, SB16GUS/MT-32/GM, IDE, PnP, PCI, Win3x, Win95, NE200 with NAT, IPX over a relay, save states, rewnd, and WASM."
 arch=('x86_64' 'aarch64')
 url="https://github.com/dividebysandwich/rust-dos"
 license=('GPL-2.0-or-later')
