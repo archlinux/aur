@@ -1,0 +1,16 @@
+pkgbase = caido-mcp-server
+	pkgdesc = MCP server for interacting with the Caido web proxy
+	pkgver = 4.3.0
+	pkgrel = 2
+	url = https://github.com/c0tton-fluff/caido-mcp-server
+	install = caido-mcp-server.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	optdepends = caido-desktop: local Caido instance for the MCP server
+	options = !debug
+	source = caido-mcp-server-4.3.0.tar.gz::https://github.com/c0tton-fluff/caido-mcp-server/archive/refs/tags/v4.3.0.tar.gz
+	sha256sums = d02d57cbe865c289b3a7ecbeb0fc7bf59d83cbc0c558787726a8f64a9c76c9fb
+
+pkgname = caido-mcp-server

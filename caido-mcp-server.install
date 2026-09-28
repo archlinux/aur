@@ -1,0 +1,8 @@
+post_install() {
+    printf '\nStart Caido, then authenticate the MCP server as your user:\n'
+    printf '  caido-mcp-server login -u http://127.0.0.1:8080\n\n'
+}
+
+post_upgrade() {
+    post_install
+}
