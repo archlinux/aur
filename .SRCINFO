@@ -1,0 +1,18 @@
+pkgbase = moarchy-mail
+	pkgdesc = One email account over IMAP and SMTP, no HTML drawn, for Quickshell
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/SimonSchubert/moarchy-apps
+	arch = any
+	license = MIT
+	depends = quickshell
+	depends = python
+	depends = ttf-jetbrains-mono-nerd
+	depends = hicolor-icon-theme
+	optdepends = xdg-utils: open links and saved attachments
+	optdepends = feedbackd: a sound when new mail comes
+	optdepends = libnotify: a notification when new mail comes, outside Omarchy
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/mail-v0.2.0/moarchy-mail-0.2.0.tar.gz
+	sha256sums = 8493a3618fd70f125fff114b74491b8fa08365097468204e5427fd7a12691dd7
+
+pkgname = moarchy-mail
