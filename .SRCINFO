@@ -1,6 +1,6 @@
 pkgbase = voicefox-bin
 	pkgdesc = Rust + ratatui + libmpv 驱动的键盘优先终端音乐播放器：多音源、歌词、本地音乐、下载、收藏与歌单。
-	pkgver = 0.3.18
+	pkgver = 0.3.19
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/emoeem/voicefox
@@ -13,13 +13,13 @@ pkgbase = voicefox-bin
 	depends = openssl
 	depends = mpv
 	optdepends = nodejs>=23.5.0: support for custom JS music source
-	provides = voicefox=1:0.3.18
+	provides = voicefox=1:0.3.19
 	conflicts = voicefox
 	conflicts = voicefox-git
 	options = !debug
-	source = voicefox-0.3.18.zip::https://github.com/emoeem/voicefox/releases/download/v0.3.18/voicefox-linux-x86_64.zip
-	source = voicefox-0.3.18-src.tar.gz::https://github.com/emoeem/voicefox/archive/refs/tags/v0.3.18.tar.gz
-	sha512sums = 4bbc7698bbbadd8c4f05586fdfbf815d9416095998efec49bd616a308ab875a2b6a12f550fb1f263a124be71b217ebe80b391aa0d5fdd60b38faf8856a90d7f9
-	sha512sums = 078351cfadb4dcfbd3a6f2b5be676616b18f23c45acdfa2fbcf2bc34f4418c6fb24ed763a4b95c635fdcdae777e243303f5b2686b610e3528f7d30b17a5ce1cc
+	source = voicefox-0.3.19.zip::https://github.com/emoeem/voicefox/releases/download/v0.3.19/voicefox-linux-x86_64.zip
+	source = voicefox-0.3.19-src.tar.gz::https://github.com/emoeem/voicefox/archive/refs/tags/v0.3.19.tar.gz
+	sha512sums = 5667bd267201d7da638b9d88ef8967f84c92bd62b348d0d38e1eacaf4de857f9344eed25ad9b6e3e01c024c7c89e51195e690a6d0ef5d2ae830971f951c096bc
+	sha512sums = f5378177e9a5a73dfd989bb6f19757f6f5591fb9a759305a399dca4ffce3a9eadf5aff00749dd3539bdb85dd444a8c3587ba99f034a4af4b607e25525eab652c
 
 pkgname = voicefox-bin

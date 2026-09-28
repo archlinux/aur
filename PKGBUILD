@@ -2,7 +2,7 @@
 
 pkgname=voicefox-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.3.18
+pkgver=0.3.19
 pkgrel=1
 epoch=1
 _tag="v${pkgver}"
@@ -28,8 +28,8 @@ source=(
 	"${_pkgname}-${pkgver}.zip::${url}/releases/download/${_tag}/${_pkgname}-linux-${CARCH}.zip"
 	"${_pkgname}-${pkgver}-src.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz"
 )
-sha512sums=('4bbc7698bbbadd8c4f05586fdfbf815d9416095998efec49bd616a308ab875a2b6a12f550fb1f263a124be71b217ebe80b391aa0d5fdd60b38faf8856a90d7f9'
-            '078351cfadb4dcfbd3a6f2b5be676616b18f23c45acdfa2fbcf2bc34f4418c6fb24ed763a4b95c635fdcdae777e243303f5b2686b610e3528f7d30b17a5ce1cc')
+sha512sums=('5667bd267201d7da638b9d88ef8967f84c92bd62b348d0d38e1eacaf4de857f9344eed25ad9b6e3e01c024c7c89e51195e690a6d0ef5d2ae830971f951c096bc'
+            'f5378177e9a5a73dfd989bb6f19757f6f5591fb9a759305a399dca4ffce3a9eadf5aff00749dd3539bdb85dd444a8c3587ba99f034a4af4b607e25525eab652c')
 
 check() {
 	"${srcdir}/${_pkgname}" --check-libmpv
