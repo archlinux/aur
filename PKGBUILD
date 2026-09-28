@@ -4,7 +4,7 @@ pkgname=bettbox-compatible-bin
 _pkgname=Bettbox
 pkgver=1.19.3
 _pkgver="${pkgver/pre/-pre}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash. (Build with GOAMD64=v1)"
 arch=('x86_64')
 url="https://github.com/appshubcc/Bettbox"
@@ -47,5 +47,5 @@ package() {
     install -Dm644 -t "${pkgdir}/usr/share/libalpm/hooks/" "${srcdir}/restart-bettbox.hook"
 
     # Set setuid on BettboxCore for TUN mode (to avoid password prompt)
-    chmod +sx "${pkgdir}/usr/lib/${pkgname%-compatible-bin}/BettboxCore"
+    chmod u+sx "${pkgdir}/usr/lib/${pkgname%-compatible-bin}/BettboxCore"
 }
