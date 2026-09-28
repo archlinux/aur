@@ -5,7 +5,7 @@
 # shellcheck shell=bash disable=SC2154,SC2164
 
 pkgname=arsu
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Offline TOTP/HOTP authenticator with an encrypted local vault'
 arch=('x86_64')
