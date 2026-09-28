@@ -1,7 +1,7 @@
 # Maintainer: Lin Evelynn <lin@sz.cn.eu.org>
 pkgname=incy-bin
 _pkgname=incy
-pkgver=3.8.6
+pkgver=3.8.8
 pkgrel=1
 pkgdesc="Cross-platform proxy client built on Xray-core"
 arch=('x86_64')
@@ -22,7 +22,7 @@ install=incy-bin.install
 
 source=("${_pkgname}-${pkgver}-linux-x64.pkg.tar.zst::https://github.com/INCY-DEV/incy-platforms/releases/download/desktop-v${pkgver}/incy-linux-x64.pkg.tar.zst"
         "fix-xatom.c")
-sha256sums=('aba9c6ff8ebed35ece28f2a64568ab7c3c60403b60251b4d7e3b3b18df3023d1'
+sha256sums=('435563eddd6883d366ed8b8ff0bd1be87f558c3e4517b827457f653aaf960c16'
             'd821ef0eb09c7868faae25390dad7d847cc1d94fbb6d5432b09ae965068466cc')
 
 
@@ -51,7 +51,7 @@ package() {
     install -Dm755 "$srcdir/libfix-xatom.so" "$pkgdir/opt/incy/lib/runtime/lib/libfix-xatom.so"
     patchelf --add-needed libfix-xatom.so "$pkgdir/opt/incy/lib/runtime/lib/libawt_xawt.so"
 
-    # PolKit action policy — authorises /usr/lib/incy/incy-helper-linux.sh
+    # PolKit action policy - authorises /usr/lib/incy/incy-helper-linux.sh
     install -Dm644 "$srcdir/opt/incy/lib/app/resources/cc.incy.vpn.policy" \
         "$pkgdir/usr/share/polkit-1/actions/cc.incy.vpn.policy"
 
