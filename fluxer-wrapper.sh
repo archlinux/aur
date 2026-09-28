@@ -1,5 +1,5 @@
 #!/bin/bash
-APP_DIR="/opt/fluxer-bin"
+APP_DIR="/opt/fluxer"
 CONFIG="/etc/fluxer.conf"
 
 # If there's no config, prompt

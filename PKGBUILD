@@ -1,6 +1,6 @@
 pkgname=fluxer-bin-domainchoose
 pkgver=2026.927.142044
-pkgrel=2
+pkgrel=3
 pkgdesc="Fluxer Desktop Application (gives you the ability to change the domain)"
 arch=('x86_64' 'aarch64')
 url="https://fluxer.app"
@@ -12,7 +12,7 @@ options=('!strip')
 
 source=("fluxer.desktop" "fluxer-wrapper.sh")
 sha256sums=('981daa8015b823fef254bb8e79fe6b28f77dda02cdc374796443bd64f5041de1'
-            '77cf42d44b60ec32e3732f08ee0f0defa4e8853c3430563c82894f6beda3d94e')
+            'fb60cdb156e0a3ac03611ed451a9665a1935377354f70acf33a55332c4a758ea')
 
 source_x86_64=("fluxer-${pkgver}-x64.tar.gz::https://api.fluxer.app/dl/desktop/stable/linux/x64/${pkgver}/tar_gz")
 sha256sums_x86_64=('126dbef18f4cad1cdc930fd469b059d82b09d10f6493ea8c9dbbfe5861364c82')
