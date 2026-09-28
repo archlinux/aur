@@ -1,7 +1,7 @@
 pkgbase = superhuman
 	pkgdesc = The fastest email experience ever made (unofficial)
 	pkgver = 1041.0.63
-	pkgrel = 1
+	pkgrel = 2
 	url = https://superhuman.com
 	install = superhuman.install
 	arch = x86_64
@@ -28,6 +28,6 @@ pkgbase = superhuman
 	source = linux_shim.js
 	sha256sums = SKIP
 	sha256sums = e7354121be70d07d6a69150bb37376a2a16b9253b17762b723fb1a9a8714e56b
-	sha256sums = 6aa49e9b7478122f42bae6a36f3599d41812f71a189c6d0480725716aa1d6d3c
+	sha256sums = 859be0a8e8a72c25c8288380dae29e281cd9e20a81cc8ddb46d99537295afd20
 
 pkgname = superhuman

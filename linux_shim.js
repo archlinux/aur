@@ -1,4 +1,4 @@
-const { app, Tray, Menu, nativeImage } = require('electron');
+const { app, Tray, Menu, clipboard, dialog, nativeImage } = require('electron');
 const fs = require('fs');
 const path = require('path');
 
@@ -8,6 +8,8 @@ const ICON_PATHS = [
     '/usr/share/icons/hicolor/256x256/apps/superhuman.png',
     '/opt/superhuman/superhuman.png'
 ];
+
+const LOGIN_ORIGIN = 'https://mail.superhuman.com';
 
 let tray = null;
 
@@ -54,6 +56,46 @@ function toggleWindows() {
     rebuildTrayMenu();
 }
 
+function toLoginHandoffUrl(text) {
+    let url;
+    try {
+        url = new URL(text.trim());
+    } catch (e) {
+        return null;
+    }
+    if (url.origin !== LOGIN_ORIGIN || !url.pathname.startsWith('/~login')) {
+        return null;
+    }
+
+    const fragment = url.hash.replace(/^#/, '').replace(/#app$/, '');
+    const state = new URLSearchParams(fragment).get('state') || '';
+    const email = new URLSearchParams(state.replace('native-login:', '')).get('emailAddress');
+    const externalAuthId = url.searchParams.get('external_auth_id');
+    const query = externalAuthId ? `?${new URLSearchParams({ external_auth_id: externalAuthId })}` : '';
+
+    return `superhuman:/${email ? `/${email}` : ''}${url.pathname}/${query}${fragment}`;
+}
+
+function completeLogin(text) {
+    const url = toLoginHandoffUrl(text);
+    if (!url || !global.main) {
+        return false;
+    }
+    global.main.openUrl(null, url);
+    return true;
+}
+
+function completeLoginFromClipboard() {
+    if (completeLogin(clipboard.readText())) {
+        return;
+    }
+    void dialog.showMessageBox({
+        type: 'info',
+        message: 'No Superhuman sign-in link on the clipboard',
+        detail: 'After signing in with Google in your browser, copy the full address of the Superhuman page it lands on (it starts with https://mail.superhuman.com/~login) and try again.'
+    });
+}
+
 function rebuildTrayMenu() {
     if (!tray) {
         return;
@@ -74,6 +116,10 @@ function rebuildTrayMenu() {
                     void global.main.createWindow({});
                 }
             }
+        },
+        {
+            label: 'Finish Sign-In from Clipboard',
+            click: completeLoginFromClipboard
         },
         { type: 'separator' },
         {
@@ -134,6 +180,10 @@ if (app.requestSingleInstanceLock()) {
     forwardLaunchUrl();
 
     app.on('window-all-closed', () => {});
+
+    app.on('second-instance', (event, argv) => {
+        argv.some(completeLogin);
+    });
 
     app.on('activate', () => {
         const windows = getWindows();
