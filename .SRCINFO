@@ -1,6 +1,6 @@
 pkgbase = telemt
 	pkgdesc = Telemt - MTProxy on Rust + Tokio
-	pkgver = 3.5.8
+	pkgver = 3.5.9
 	pkgrel = 1
 	url = https://github.com/telemt/telemt
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = telemt
 	provides = telemt
 	options = !lto
 	backup = etc/telemt/telemt.toml
-	source = telemt-3.5.8.tar.gz::https://github.com/telemt/telemt/archive/refs/tags/3.5.8.tar.gz
-	sha256sums = 90052202ffa13bff368b424aa0f2e932d3d582a6b6b4aab873ab00936a7ed496
+	source = telemt-3.5.9.tar.gz::https://github.com/telemt/telemt/archive/refs/tags/3.5.9.tar.gz
+	sha256sums = c245e1a152908592aae13df4a7b9003392517aa0cae59551604decb9b84d934a
 
 pkgname = telemt
