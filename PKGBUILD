@@ -6,9 +6,10 @@
 # everywhere else -- so this package needs Quickshell, not Omarchy.
 #
 # 0.1.0 was a GTK4/libadwaita app in Python. 0.2.0 is the same task manager in
-# QML, and the Python stack it depended on is no longer needed by it.
+# QML, and the Python stack it depended on is no longer needed by it. 0.2.1
+# draws with shared/kit, which the release tarball carries as kit/.
 pkgname=moarchy-vitals
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='A task manager: processor, memory, storage, battery and network, and what is using them, for Quickshell'
 arch=('any')
@@ -23,7 +24,7 @@ depends=('quickshell' 'ttf-jetbrains-mono-nerd' 'hicolor-icon-theme')
 # A release asset that packaging/release.sh builds from apps/vitals at the
 # tag, not GitHub's generated archive of the whole repository.
 source=("$url/releases/download/vitals-v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('59184efc4d32970354755b8b8bc80955ed69ad44339e4feff7956e8947eed71e')
+sha256sums=('ca0155dbca23ee00c2c160bc2ccb4957c0ceb8048b3ff32b01797f07ec1ed682')
 
 # Deliberately a versioned package rather than a -git one. mobileomarchy pins
 # each package by a commit; for a VCS package that pin governs the packaging and
@@ -48,6 +49,8 @@ package() {
   install -d "$pkgdir/usr/share/$pkgname"
   install -m644 manifest.json ./*.qml ./*.js icon.svg \
     "$pkgdir/usr/share/$pkgname/"
+  install -d "$pkgdir/usr/share/$pkgname/kit"
+  install -m644 kit/*.qml kit/*.js "$pkgdir/usr/share/$pkgname/kit/"
 
   install -Dm755 bin/moarchy-vitals "$pkgdir/usr/bin/moarchy-vitals"
   install -Dm644 org.moarchy.Vitals.desktop \
