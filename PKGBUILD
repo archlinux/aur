@@ -11,8 +11,10 @@ license=('Apache-2.0')
 depends=("python-httpx" "python-pydantic")
 makedepends=("python-build" "python-hatchling" "python-installer")
 checkdepends=("python-pytest" "python-pytest-asyncio" "python-respx")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0f7822b8a50601b630fa6d4ba4b1b0b27bfe7603a39208b76a349cb733ce8ce0')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+        "${pkgname}-skill-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/web-skill.tgz")
+sha256sums=('0f7822b8a50601b630fa6d4ba4b1b0b27bfe7603a39208b76a349cb733ce8ce0'
+            '38d835f620d89cb6733dbecac0625d481ae18a6c07878e21f7c0d8a424b5606c')
 
 build() {
     cd "${_reponame}-${pkgver}/packages/python"
@@ -32,4 +34,7 @@ check() {
 package() {
     cd "${_reponame}-${pkgver}/packages/python"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+
+    cd "${srcdir}/.well-known/agent-skills/${pkgname}"
+    find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
 }
