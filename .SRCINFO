@@ -14,6 +14,6 @@ pkgbase = gnome-shell-extension-ufw-switcher
 	depends = polkit
 	optdepends = gufw: graphical firewall configuration
 	source = gnome-shell-extension-ufw-switcher-1.0.0.tar.gz::https://github.com/jerosch/gnome-ufw-switcher/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = c516c5906c1274cfb47dd144d11a5100ac4a198074ee6e88b1c1f0356b5fbde0
+	sha256sums = d29ee843dbf4fff99bb28620c1ca3cf2410ed10373a8fcc19e21ac4106cc0bc9
 
 pkgname = gnome-shell-extension-ufw-switcher

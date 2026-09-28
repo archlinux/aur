@@ -10,7 +10,7 @@ depends=('gnome-shell' 'ufw' 'python-gobject' 'polkit')
 makedepends=('glib2' 'gettext')
 optdepends=('gufw: graphical firewall configuration')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c516c5906c1274cfb47dd144d11a5100ac4a198074ee6e88b1c1f0356b5fbde0')
+sha256sums=('d29ee843dbf4fff99bb28620c1ca3cf2410ed10373a8fcc19e21ac4106cc0bc9')
 install="${pkgname}.install"
 
 build() {
