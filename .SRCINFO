@@ -1,6 +1,6 @@
 pkgbase = paperling
 	pkgdesc = A minimal, distraction-free markdown editor
-	pkgver = 1.0.50
+	pkgver = 1.0.51
 	pkgrel = 1
 	url = https://github.com/Razee4315/Paperling
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = paperling
 	depends = webkit2gtk-4.1
 	depends = hicolor-icon-theme
 	options = !lto
-	source = paperling-1.0.50.tar.gz::https://github.com/Razee4315/Paperling/archive/v1.0.50.tar.gz
-	source = 001-fix-version.patch::https://github.com/Razee4315/Paperling/commit/fadeb629c0d8a86e1d2afd086867dd0438b2531c.diff
-	sha256sums = 0b86bc1ed98c5440fdd55b98c60b3adde0b0150706d416dbf23815a747e4b850
-	sha256sums = 7ee45833657e1c6d28f15fb40c4bc488cba97b4db8b3538954b450289aab01f8
+	source = paperling-1.0.51.tar.gz::https://github.com/Razee4315/Paperling/archive/v1.0.51.tar.gz
+	source = 001-fix-version.patch::https://github.com/Razee4315/Paperling/commit/74d5ac73c63a5264a94e4cca98328ca2958b36a0.diff
+	sha256sums = ac15b88347c4fb53f3daba56f3455345d89e4bd250f4f6c3a0f1cfd56f136a99
+	sha256sums = afd7f81537bc9e20a8548756d15c833d42824fd2a18fd5f0c1361fb67a46a1c6
 
 pkgname = paperling
