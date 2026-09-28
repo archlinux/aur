@@ -1,16 +1,14 @@
 pkgbase = moarchy-tictactoe
-	pkgdesc = Noughts and crosses for a Linux phone, solved and told to err
-	pkgver = 0.1.0
+	pkgdesc = Noughts and crosses, solved and told to err, for Quickshell
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/SimonSchubert/moarchy-apps
 	arch = any
 	license = MIT
-	depends = python
-	depends = python-gobject
-	depends = gtk4
-	depends = libadwaita
-	depends = python-cairo
-	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/tictactoe-v0.1.0/moarchy-tictactoe-0.1.0.tar.gz
-	sha256sums = a5d815bc28535296da2c5713a6713a7e35975e004d66ef6334c4e74d987e6d40
+	depends = quickshell
+	depends = ttf-jetbrains-mono-nerd
+	depends = hicolor-icon-theme
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/tictactoe-v0.2.0/moarchy-tictactoe-0.2.0.tar.gz
+	sha256sums = 6e6443653b3be42acb9cd30c0b94dfa32ede183c6922c969b92be5502d287443
 
 pkgname = moarchy-tictactoe
