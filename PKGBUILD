@@ -1,12 +1,17 @@
 # Maintainer: Sanjaya Danushka <dsanjaya712@gmail.com>
 pkgname=neoarch
-pkgver=3.3.2
+pkgver=3.3.3
 pkgrel=1
 pkgdesc="NeoArch Package Manager for Arch Linux (stable release, use 'neoarch-git' for latest dev builds)"
 arch=('any')
 url="https://github.com/Sanjaya-Danushka/Neoarch"
 license=('MIT')
-depends=('python-pyqt6' 'python-requests' 'python-keyring' 'qt6-svg' 'flatpak' 'nodejs' 'npm')
+# Core runtime — the app cannot work without these
+depends=('python-pyqt6' 'python-requests' 'python-keyring' 'python-defusedxml' 'qt6-svg' 'git')
+# Optional integrations — features degrade gracefully if absent
+optdepends=('flatpak: Flatpak installs and updates'
+            'nodejs: Discover page (npm)'
+            'npm: Discover page (npm)')
 provides=('neoarch')
 conflicts=('neoarch-git')
 install=neoarch.install
