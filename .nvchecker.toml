@@ -1,5 +1,4 @@
 [ooniprobe-desktop]
 source = "git"
-git = "https://github.com/ooni/probe-desktop.git"
+git = "https://github.com/ooni/probe-multiplatform.git"
 prefix = "v"
-exclude_regex = ".*(alpha|beta|rc).*"

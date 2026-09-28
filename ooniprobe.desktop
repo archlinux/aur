@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=OONI Probe
+GenericName=Network Measurement Tool
+Comment=Measure internet censorship and network interference
+Exec="/usr/share/java/ooniprobe/bin/OONI Probe" %u
+Icon=ooniprobe
+Categories=Network;Utility;
+Terminal=false
+StartupWMClass=org.ooni.probe.MainKt
+Keywords=censorship;network;measurement;ooni;
+MimeType=x-scheme-handler/ooni;

@@ -1,91 +1,61 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ooniprobe-desktop
-pkgver=3.10.1
+pkgver=6.2.1
 pkgrel=1
-_cliver=3.29.0
-_nodeversion=18
-pkgdesc="The next generation OONI Probe desktop app"
+pkgdesc="Free and open source app to measure internet censorship and network interference"
 arch=('x86_64')
 url="https://ooni.org"
-license=('MIT')
+license=('GPL-3.0-or-later')
 depends=(
   'alsa-lib'
-  'gtk3'
-  'nss'
+  'fontconfig'
+  'freetype2'
+  'giflib'
+  'glibc'
+  'harfbuzz'
+  'hicolor-icon-theme'
+  'java-runtime'
+  'lcms2'
+  'libgcc'
+  'libpng'
+  'libx11'
+  'libxext'
+  'libxi'
+  'libglvnd'
+  'libjpeg-turbo'
+  'libxrender'
+  'libxtst'
+  'zlib'
 )
 makedepends=(
-  'nvm'
-  'yarn'
+  'clang'
+  'java-environment=25'
 )
 conflicts=("${pkgname%-desktop}")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ooni/probe-desktop/archive/refs/tags/v$pkgver.tar.gz"
-        "${pkgname%-desktop}-${_cliver}-linux-amd64::https://github.com/ooni/probe-cli/releases/download/v${_cliver}/${pkgname%-desktop}-linux-amd64"
-        "$pkgname.desktop"
-        'drop-fsevents.patch')
-sha256sums=('256901d276c0ff9f61d322fab47238fa67349ec409f8a72740175b3c6da1ac73'
-            'c18da912451af2b66a8c978c7d23bbd195504d20b0b8d8ebcc974124a6831869'
-            '77f39a9c8d017b391f61686ac38131a9e31435635de4b72d0f20930165404915'
-            'b869d595b6e6100373031c951d976c147050dea02e5683f341711a35f3ffba10')
-
-_ensure_local_nvm() {
-  # let's be sure we are starting clean
-  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-  export NVM_DIR="${srcdir}/.nvm"
-
-  # The init script returns 3 if version specified
-  # in ./.nvrc is not (yet) installed in $NVM_DIR
-  # but nvm itself still gets loaded ok
-  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-}
-
-prepare() {
-  cd "${pkgname#ooni}-$pkgver"
-
-  # fsevents only for Mac
-  patch -Np1 -i ../drop-fsevents.patch
-
-
-  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
-  _ensure_local_nvm
-  nvm install "${_nodeversion}"
-  yarn install --frozen-lockfile
-
-  # Place files
-  mkdir -p build/probe-cli/linux_amd64
-  cp "$srcdir/${pkgname%-desktop}-${_cliver}-linux-amd64" \
-    "build/probe-cli/linux_amd64/${pkgname%-desktop}"
-  chmod +x "build/probe-cli/linux_amd64/${pkgname%-desktop}"
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ooni/probe-multiplatform/archive/refs/tags/v$pkgver.tar.gz"
+        'ooniprobe.desktop')
+sha256sums=('7b9cb0872fe51073e1b04e7835c24238ca145a46f2801b79ebde7664b3656b4b'
+            '26be1fc84ed6b63b06b7409d0c1795d8ea3df60a27863b7385b0d9dd4f73f255')
 
 build() {
-  cd "${pkgname#ooni}-$pkgver"
-  export NODE_OPTIONS=--openssl-legacy-provider
-  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
-  _ensure_local_nvm
-  yarn next build renderer
-  yarn next export renderer
-  yarn electron-builder --linux
+  cd "probe-multiplatform-$pkgver"
+  export GRADLE_OPTS="-Dorg.gradle.daemon=false"
+  ./gradlew desktopApp:makeLibrary
+  ./gradlew createDistributable
 }
 
 package() {
-  cd "${pkgname#ooni}-$pkgver"
-  install -d "$pkgdir/opt/OONI Probe"
-  cp -a dist/linux-unpacked/* "$pkgdir/opt/OONI Probe/"
-  chmod 4755 "$pkgdir/opt/OONI Probe/chrome-sandbox"
+  cd "probe-multiplatform-$pkgver"
+  install -Dm644 icons/app.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/ooniprobe.svg"
+
+  cd "desktopApp/build/compose/binaries/main/app/OONI Probe"
+  install -Dm755 "bin/OONI Probe" -t \
+    "$pkgdir/usr/share/java/ooniprobe/bin/"
+  install -Dm755 lib/libapplauncher.so -t "$pkgdir/usr/share/java/ooniprobe/lib/"
+  cp -a lib/{app,runtime} "$pkgdir/usr/share/java/ooniprobe/lib/"
 
   install -d "$pkgdir/usr/bin"
-  ln -sf "/opt/OONI Probe/$pkgname" "$pkgdir/usr/bin/"
+  ln -sf "/usr/share/java/ooniprobe/bin/OONI Probe" "$pkgdir/usr/bin/ooniprobe"
 
-  install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
-
-  for i in 16 48; do
-    install -Dm644 "dist/.icon-set/icon_${i}x${i}.png" \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
-  done
-
-  for i in 32 64 128 256 512 1024; do
-    install -Dm644 "dist/.icon-set/app_${i}.png" \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
-  done
+  install -Dm644 "$srcdir/ooniprobe.desktop" -t "$pkgdir/usr/share/applications/"
 }
