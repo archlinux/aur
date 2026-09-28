@@ -1,7 +1,7 @@
 # Maintainer: Nils Pukropp <contact@narl.io>
 
 pkgname=proton-drive-for-linux
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Unofficial Proton Drive client: files-on-demand FUSE mount, CLI, GTK4 app and tray"
 arch=('x86_64')
@@ -23,7 +23,7 @@ conflicts=('proton-drive-linux' 'proton-drive-for-linux-bin' 'proton-drive-for-l
 # LTO has broken GTK/Rust links for this workspace; the release profile keeps it off.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ac89c79170bba4fda85c924739b5248d9e324a1d45c30faee25c3c9389f297f1')
+sha256sums=('ae0f6daec257e9f7ba464ed6385bab7ac99f4247db0176296b2a58f703c24799')
 
 _srcname="proton-drive-linux-$pkgver"
 
