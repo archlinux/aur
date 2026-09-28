@@ -1,7 +1,7 @@
 # Maintainer: djugei <ddjugei@gmail.com>
 # shellcheck disable=SC2034,SC2154
 pkgname=deltaclient-git
-pkgver=r161.78253f4
+pkgver=r167.80f4774
 pkgrel=1
 pkgdesc="Delta upgrades for archlinux"
 arch=(x86_64)
