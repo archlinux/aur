@@ -1,0 +1,37 @@
+pkgbase = zimbr
+	pkgdesc = Native Wayland iMessage client using a self-hosted macOS relay
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hspak/zimbr
+	arch = x86_64
+	license = MIT
+	license = Zlib
+	checkdepends = desktop-file-utils
+	makedepends = git
+	makedepends = librsvg
+	makedepends = zig>=0.16.0
+	makedepends = zig<0.17
+	depends = cairo
+	depends = curl
+	depends = glib2
+	depends = glibc
+	depends = harfbuzz
+	depends = libglvnd
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libxkbcommon
+	depends = openssl
+	depends = pango
+	depends = python
+	depends = python-cryptography
+	depends = sqlite
+	depends = wayland
+	optdepends = libdecor: client-side window decorations on Wayland
+	optdepends = noto-fonts-emoji: emoji rendering
+	optdepends = notification-daemon: desktop notifications
+	optdepends = ttf-font: text rendering
+	options = !debug
+	source = zimbr-0.1.0.tar.gz::https://github.com/hspak/zimbr/archive/0.1.0.tar.gz
+	sha256sums = 9fd85fbc2e406ee0c46a2843e96e6192a9a874660496c7b383fb2e519cc9effa
+
+pkgname = zimbr
