@@ -1,7 +1,10 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
+# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Contributor: éclairevoyant
+# Contributor: strawberry <strawberry@puppygock.gay>
 
 pkgname=conduit
-pkgver=0.10.13
+pkgver=0.10.14
 pkgrel=1
 pkgdesc='A simple, fast and reliable chat server powered by Matrix'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
@@ -13,7 +16,7 @@ options=('!lto')
 backup=("etc/${pkgname}.toml")
 source=("${pkgname}::git+https://gitlab.com/famedly/${pkgname}.git#tag=v${pkgver}"
         "${pkgname}.service")
-b2sums=('59a9629f3d0341180a7cbd0c2feb3fb068924ad5e8972fe03873a39c9f978532d675d10481f530091d9a16e6a24ea9320d194e9af1a2f8e83af46da817f3f384'
+b2sums=('dea0ca0e686b88855dc473763c7fbbbe84e7c9d936b0d3bd89bf45bb091b574fe5a2ea439406296320dddbc0a6593b761c46fa3a4f7c0d3480ea863fb67b35b6'
         '2fb72123f70b2521134a5cd92ff62d62f6122e2bae52ce02d821c3716f40bd92c59819bf82a84ebe80e4b9b066b98c7e6309359aeac734ae0f20d63b41906d56')
 
 prepare() {
