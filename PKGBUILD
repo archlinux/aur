@@ -1,4 +1,4 @@
-# Maintainer: yvs <VSYakovetsky@gmail.com>
+# work-in-progress mtr-fork for testing extra features
 
 _bin="mtr"
 _ver="0.85"
@@ -8,7 +8,7 @@ _build="_build"
 pkgname=mtr085
 pkgver="$_ver"
 pkgrel=1
-pkgdesc="Full screen ncurses traceroute tool, mtr v0.85 fork"
+pkgdesc="Work-in-progress mtr v0.85 fork for testing extra features"
 arch=('x86_64' 'aarch64')
 url="https://github.com/yvs2014/$pkgname"
 license=('GPL-2.0')
