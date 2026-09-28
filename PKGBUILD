@@ -1,7 +1,7 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=softmaker-office-nx-bin
-pkgver=1502
+pkgver=1504
 pkgrel=1
 pkgdesc="Proprietary office suite; word processing, spreadsheets, presentations (subscription version)"
 url="https://www.softmaker.com"
@@ -24,7 +24,7 @@ md5sums=('95fc61a87e75e525abb5b446c4e29635'
          '052615de9b1733596832e95b22d47551'
          '8b5e74ccb7ed223db25d0cafea36d36f'
          'f750f31e92221d88b72f8de1075a960f'
-         '647cc00b99dda05a4aec4b78037e5335')
+         '3ce2b975337b39bc4cbd02200ab6908c')
 sha512sums=('a2b8db4e2028bce38f37c9da2e5733aceea17cd9ebd7e96c1252e328cc7fd3e940c71967a9f41d2b04f874d86ee0050f22cead313e5fd9b5e396a6a704f475e2'
             'fc0b0dac264df8d1a9301c6c934dc5bc6cbc2c7e6eb06a109b60e2d58429f3a61117e12585c0e42388c8b064e3ac6e55e513d1c01dc8cea5999fed7e2342e449'
             'e729b7dc4246ed72fcd36e11b8dcb7880eee6b0c4cfd0837a788bab46bc9d585657171b187736e1fa4eaaf83897f285fdef720b6bb4593ef153517f549ed4934'
@@ -32,7 +32,7 @@ sha512sums=('a2b8db4e2028bce38f37c9da2e5733aceea17cd9ebd7e96c1252e328cc7fd3e940c
             '134fbddc26091d3e8dff602d67e7bd2e01e0e6b1a0b77266b289781d912684c890f54c1b8922fd8a8c3fba21439a00a4e355bb23a1816d6b13ec1576fcb53c3e'
             '83879bc58e22b58df193ef9434a292b3c4108d72000db85a7739317ecd10630c6ae578a97947a95c782f3838e6f155ce093399a42dc0044e623d5a437f1d4550'
             '94bb97083f6630b883cf1f642a5170ef17de088bfa78210068b9bf65107cc2a5984927f49014cd8040a55d9e0723d3de8ee30875f3dc3bc4f752181d7e04893d'
-            '2c7066ee529327f0a17dab530235627c3a15bdaad0a62d1ad69a1d4e1dd04ed6ceccc8e7bb4446a39039a806996facb5e8518ece07e9ec8a8481ba5898a1cff9')
+            'd112ee1aafaf9e4c88514428999fd222f3f10d1aae61ac03508c302979455e539e290238b28f52a09dcde1af797527c561bbb358cc93622ac5af82830e8bf865')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/officenx"
