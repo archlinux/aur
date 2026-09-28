@@ -5,7 +5,7 @@
 _author=CROMEDOME
 _dist=Dancer2
 pkgname=perl-${_dist@L}
-pkgver=2.1.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='Lightweight yet powerful web application framework'
 arch=('any')
@@ -14,9 +14,10 @@ license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
     'perl-attribute-handlers'
     'perl-carp'
-    'perl-cli-osprey'
+    'perl-cli-osprey>=0.09'
     'perl-clone'
     'perl-config-any'
+    'perl-crypt-urandom>=0.36'
     'perl-data-censor>=0.04'
     'perl-digest-sha'
     'perl-encode'
@@ -52,11 +53,14 @@ depends=(
     'perl-test-simple'
     'perl-type-tiny'
     'perl-uri'
-    'perl-yaml>=0.86'
+    'perl-yaml>=1.30'
     'perl>=5.14.0'
 )
 makedepends=(
+    # CPAN::Meta::Requirements has been split out into its own dist in CPAN::Meta 2.120921.
+    # 'perl-cpan-meta-requirements>=2.120620'
     'perl-cpan-meta-requirements'
+
     'perl-extutils-makemaker'
     'perl-file-sharedir-install>=0.06'
     'perl-module-metadata'
@@ -80,13 +84,10 @@ optdepends=(
     'perl-class-xsaccessor'
     'perl-cpan-meta>=2.120900'
     'perl-cpanel-json-xs'
-    'perl-crypt-urandom'
     'perl-http-xscookies>=0.000015'
     'perl-http-xsheaders'
-    'perl-math-random-isaac-xs'
     'perl-mime-types'
     'perl-moox-typetiny'
-    'perl-pod-simple'
     'perl-type-tiny-xs'
     'perl-unicode-utf8'
     'perl-url-encode-xs'
@@ -94,7 +95,7 @@ optdepends=(
 )
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('8a4d73bc9b0cee9ad01603c432349ff1584c7d9ddfb7b0bcf50f2d9066b2e98f')
+sha256sums=('f3dafb0a1b7b116182fb489a185f0bf9d19864fd42a013c612a1d3cbb125013f')
 
 build()
 {

@@ -1,6 +1,6 @@
 pkgbase = perl-dancer2
 	pkgdesc = Lightweight yet powerful web application framework
-	pkgver = 2.1.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://metacpan.org/dist/Dancer2
 	arch = any
@@ -23,9 +23,10 @@ pkgbase = perl-dancer2
 	makedepends = perl-module-metadata
 	depends = perl-attribute-handlers
 	depends = perl-carp
-	depends = perl-cli-osprey
+	depends = perl-cli-osprey>=0.09
 	depends = perl-clone
 	depends = perl-config-any
+	depends = perl-crypt-urandom>=0.36
 	depends = perl-data-censor>=0.04
 	depends = perl-digest-sha
 	depends = perl-encode
@@ -61,25 +62,22 @@ pkgbase = perl-dancer2
 	depends = perl-test-simple
 	depends = perl-type-tiny
 	depends = perl-uri
-	depends = perl-yaml>=0.86
+	depends = perl-yaml>=1.30
 	depends = perl>=5.14.0
 	optdepends = perl-cgi-deurl-xs
 	optdepends = perl-class-xsaccessor
 	optdepends = perl-cpan-meta>=2.120900
 	optdepends = perl-cpanel-json-xs
-	optdepends = perl-crypt-urandom
 	optdepends = perl-http-xscookies>=0.000015
 	optdepends = perl-http-xsheaders
-	optdepends = perl-math-random-isaac-xs
 	optdepends = perl-mime-types
 	optdepends = perl-moox-typetiny
-	optdepends = perl-pod-simple
 	optdepends = perl-type-tiny-xs
 	optdepends = perl-unicode-utf8
 	optdepends = perl-url-encode-xs
 	optdepends = perl-yaml-libyaml
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/C/CR/CROMEDOME/Dancer2-2.1.0.tar.gz
-	sha256sums = 8a4d73bc9b0cee9ad01603c432349ff1584c7d9ddfb7b0bcf50f2d9066b2e98f
+	source = https://cpan.metacpan.org/authors/id/C/CR/CROMEDOME/Dancer2-2.2.1.tar.gz
+	sha256sums = f3dafb0a1b7b116182fb489a185f0bf9d19864fd42a013c612a1d3cbb125013f
 
 pkgname = perl-dancer2
