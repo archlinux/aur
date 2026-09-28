@@ -1,6 +1,6 @@
 pkgbase = python-azure-cognitiveservices-speech
 	pkgdesc = Microsoft Cognitive Services Speech SDK for Python.
-	pkgver = 1.51.1
+	pkgver = 1.52.0
 	pkgrel = 1
 	url = https://pypi.org/project/azure-cognitiveservices-speech
 	arch = x86_64
@@ -24,11 +24,11 @@ pkgbase = python-azure-cognitiveservices-speech
 	depends = zlib
 	depends = zstd
 	depends = bzip2
-	noextract = azure_cognitiveservices_speech-1.51.1-py3-none-manylinux1_x86_64.whl
-	noextract = azure_cognitiveservices_speech-1.51.1-py3-none-manylinux2014_aarch64.whl
-	source_x86_64 = https://files.pythonhosted.org/packages/py3/a/azure-cognitiveservices-speech/azure_cognitiveservices_speech-1.51.1-py3-none-manylinux1_x86_64.whl
-	sha256sums_x86_64 = a5f19f2fa4a11fbf299db2c179a5149fefe624a9a88ef1783c2d410c46d22dad
-	source_aarch64 = https://files.pythonhosted.org/packages/py3/a/azure-cognitiveservices-speech/azure_cognitiveservices_speech-1.51.1-py3-none-manylinux2014_aarch64.whl
-	sha256sums_aarch64 = 2f0a8a15693399433b25a66e01dfb48c4404c91bcd23e963f67dcd2997d1855d
+	noextract = azure_cognitiveservices_speech-1.52.0-py3-none-manylinux1_x86_64.whl
+	noextract = azure_cognitiveservices_speech-1.52.0-py3-none-manylinux2014_aarch64.whl
+	source_x86_64 = https://files.pythonhosted.org/packages/py3/a/azure-cognitiveservices-speech/azure_cognitiveservices_speech-1.52.0-py3-none-manylinux1_x86_64.whl
+	sha256sums_x86_64 = baf3ae9bdd1e75336a22f859d854a3c0f9dd7078b9144f2d432441e77be9f91c
+	source_aarch64 = https://files.pythonhosted.org/packages/py3/a/azure-cognitiveservices-speech/azure_cognitiveservices_speech-1.52.0-py3-none-manylinux2014_aarch64.whl
+	sha256sums_aarch64 = ad4563b39f916da636de7780a00769d355c4d990f9fb2411d5200106489cd5e4
 
 pkgname = python-azure-cognitiveservices-speech
