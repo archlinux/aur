@@ -1,22 +1,26 @@
 pkgname=gnome-shell-extension-better-tray-icons
-pkgver=3.2.4
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Brings tray icons back to the GNOME top panel, with an overflow popup behind a toggle button, per-app renaming and icon overrides, configurable click actions and settings sync. Wayland only."
 arch=('any')
 url="https://github.com/nexaknight/BetterTrayIcons"
 license=('GPL-3.0-or-later')
 depends=('gnome-shell')
+makedepends=('gettext')
 conflicts=("${pkgname}-git")
 _uuid='BetterTrayIcons@nexaknight.com'
-source=("${_uuid}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_uuid}.zip")
-noextract=("${_uuid}-${pkgver}.zip")
-sha256sums=('6d517af5f18859d1a548f3116aafb1083c75beb5ed5cd50f5df5dbd861e99f21')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('15084988e9ffe8d8a3910087f4a43fb697e2c0a0c1c81ce49746c6fc80be9bfe')
+
+build() {
+  make -C "BetterTrayIcons-${pkgver}" pack
+}
 
 package() {
   local extension_dir="${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
 
   install -d "${extension_dir}"
-  bsdtar -xf "${_uuid}-${pkgver}.zip" \
+  bsdtar -xf "BetterTrayIcons-${pkgver}/${_uuid}.shell-extension.zip" \
     -C "${extension_dir}" --no-same-owner
 
   install -Dm644 \
