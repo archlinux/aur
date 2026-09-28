@@ -450,6 +450,11 @@ build() {
     )
   fi
 
+  # Optional compiler cache, used by the self-hosted CI runner.
+  if [[ -n ${CEF_VAAPI_SCCACHE:-} ]] && command -v sccache >/dev/null; then
+    _flags+=('cc_wrapper="sccache"')
+  fi
+
   _validate_cef_vaapi_invariants
 
   export GN_DEFINES="${_flags[*]}"
