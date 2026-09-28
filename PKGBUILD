@@ -1,10 +1,10 @@
-# Maintainer: Andreas Baumann <mail at andreas baumann dot com>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 
 pkgname=lacc-git
 pkgver=r1023.3083984
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, self-hosting C compiler'
-arch=(x86_64)
+arch=(x86_64 i486 i686 pentium4)
 url='https://github.com/larmel/lacc'
 license=(MIT)
 depends=(glibc)
