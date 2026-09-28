@@ -1,8 +1,8 @@
 # Maintainer: chadsr <git at ross dot ch>
 
 pkgname=openshell
-pkgver=0.0.116 # renovate: datasource=github-releases depName=NVIDIA/OpenShell
-pkgrel=2
+pkgver=0.1.2 # renovate: datasource=github-releases depName=NVIDIA/OpenShell
+pkgrel=1
 pkgdesc="The safe, private runtime for autonomous AI agents."
 arch=('x86_64' 'aarch64')
 url='https://github.com/NVIDIA/OpenShell'
@@ -11,9 +11,8 @@ install=openshell.install
 depends=('z3' 'sqlite' 'git')
 makedepends=(
 	'cargo'
-	'clang'  # z3-sys (libclang for bindgen)
-	'cmake'  # protobuf-src builds protoc via cmake
-	'pandoc' # man pages from deploy/man/*.md
+	'cmake'  # aws-lc-sys (TLS)
+	'pandoc' # man pages
 )
 optdepends=(
 	'bash-completion: bash completions'
@@ -23,10 +22,18 @@ optdepends=(
 conflicts=("$pkgname-bin" "$pkgname-git")
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('9d9632baa97b0487ed0092b8b2dee1927f515e499f5b0161f4d6dc90a2e249afc22144aa2375aa757de86aea6284c7fac4ef56a68d10b4fba46e6775e1243eb4')
+b2sums=('91fa81ac1088c0a2a0d6772a563f9545712ae6e257d8ffeb819070f9d8f7555d5ff5b9de77cda33df1478483cdbd9edb4fbbb493e4a3d0ad10afc27a4278c6a2')
 
 prepare() {
 	cd "OpenShell-$pkgver"
+
+	# stamp pkgver like openshell.spec; sync lock for --frozen
+	sed -i "s/^version = \"0.0.0\"/version = \"$pkgver\"/" Cargo.toml
+	grep -q "version = \"$pkgver\"" Cargo.toml || {
+		echo "Cargo.toml version stamp failed" >&2
+		return 1
+	}
+	sed -i "/^name = \"openshell-/{n;s/^version = \"0.0.0\"$/version = \"$pkgver\"/}" Cargo.lock
 
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -37,13 +44,18 @@ build() {
 	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	export OPENSHELL_GIT_VERSION="$pkgver"
 	export OPENSHELL_IMAGE_TAG="$pkgver"
+	export GIT_CEILING_DIRECTORIES="$PWD" # prevent git-describing the enclosing repo
+	export AWS_LC_SYS_USE_SYSTEM=0        # always build vendored aws-lc
 
-	# --no-default-features disables telemetry
+	# telemetry-free gateway; separate build to avoid telemetry via feature unification
+	cargo build --frozen --release -p openshell-gateway \
+		--no-default-features --features defaults-without-telemetry
+
 	cargo build --frozen --release --no-default-features \
 		-p openshell-cli \
-		-p openshell-server
+		-p openshell-prover-cli
 
-	# man pages (markdown -> roff via pandoc, matching the RPM)
+	# man pages (markdown -> roff)
 	pandoc -s -t man deploy/man/openshell.1.md -o openshell.1
 	pandoc -s -t man deploy/man/openshell-gateway.8.md -o openshell-gateway.8
 
@@ -59,22 +71,35 @@ check() {
 	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	export OPENSHELL_GIT_VERSION="$pkgver"
 	export OPENSHELL_IMAGE_TAG="$pkgver"
+	export GIT_CEILING_DIRECTORIES="$PWD"
+	export AWS_LC_SYS_USE_SYSTEM=0
 
-	cargo test --frozen --lib \
+	cargo test --frozen --lib -p openshell-gateway \
+		--no-default-features --features defaults-without-telemetry
+
+	cargo test --frozen --lib --no-default-features \
 		-p openshell-cli \
-		-p openshell-server
+		-p openshell-prover-cli
 }
 
 package() {
 	cd "OpenShell-$pkgver"
 	install -Dm0755 target/release/openshell -t "$pkgdir/usr/bin/"
 	install -Dm0755 target/release/openshell-gateway -t "$pkgdir/usr/bin/"
+	install -Dm0755 target/release/openshell-prover -t "$pkgdir/usr/bin/"
 
 	install -Dm0644 deploy/deb/openshell-gateway.service \
 		"$pkgdir/usr/lib/systemd/user/openshell-gateway.service"
 
 	install -Dm0644 deploy/rpm/gateway.toml.default \
 		"$pkgdir/usr/share/openshell-gateway/gateway.toml.default"
+
+	install -Dm0644 deploy/rpm/QUICKSTART.md \
+		"$pkgdir/usr/share/doc/openshell-gateway/QUICKSTART.md"
+	install -Dm0644 deploy/rpm/CONFIGURATION.md \
+		"$pkgdir/usr/share/doc/openshell-gateway/CONFIGURATION.md"
+	install -Dm0644 deploy/rpm/TROUBLESHOOTING.md \
+		"$pkgdir/usr/share/doc/openshell-gateway/TROUBLESHOOTING.md"
 
 	install -Dm0644 openshell.1 "$pkgdir/usr/share/man/man1/openshell.1"
 	install -Dm0644 openshell-gateway.8 "$pkgdir/usr/share/man/man8/openshell-gateway.8"
