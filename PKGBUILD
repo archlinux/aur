@@ -1,7 +1,7 @@
 # Maintainer: Marcel W. Wysocki <maci.stgn@gmail.com>
 pkgname=tmog-bin
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Task Manager TMOG, a native system monitor and task manager (precompiled binary)"
 arch=('x86_64')
 url="https://tmog.org"
