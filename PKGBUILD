@@ -2,43 +2,37 @@
 
 pkgname=filmulator
 _pkgname="$pkgname-gui"
-pkgver=0.11.1
-pkgrel=2
-arch=('i686' 'pentium4' 'x86_64')
+pkgver=0.12.0
+pkgrel=1
+arch=('x86_64')
 pkgdesc="Simple raw photo editor based on the process of developing film"
 url="https://filmulator.org/"
 _url="https://github.com/CarVac/filmulator-gui"
-license=('GPL3')
-depends=('exiv2' 'hicolor-icon-theme' 'lensfun-git' 'libarchive' 'libraw' 'librtprocess' 'qt5-quickcontrols2')
-makedepends=('cmake' 'openmp')
+license=('GPL-3.0-or-later')
+depends=('exiv2' 'hicolor-icon-theme' 'lensfun' 'libarchive' 'libraw' 'librtprocess' 'qt5-quickcontrols2')
+makedepends=('curl-cmake' 'lcms2-cmake' 'libraw-cmake' 'openmp' 'tifdiff')
 options=('!buildflags')
 source=("$_pkgname-$pkgver.tar.gz::$_url/archive/v$pkgver.tar.gz")
-sha512sums=('27026fac7c61691e48f589febedb9335fb841280c811d47e866128515a121fbc5a6784983057ce00a3b946d5355e11d146fee9c1d4d0f10c18be49cb288a4e97')
+b2sums=('e5f39baca780f2df09dfd9b7f7f8574db0d5cb0e8054c0ae6d51dc5b10fd921e9101749f4476eb37d34d5ac7080293d7a0f2aed61cae5f30aeb32a3057c81fb7')
 _xdg_desktop_name="org.$pkgname.${pkgname^}"
 
 prepare() {
-  if [ -d build ]
-  then
-    rm -rf build
-  fi
-
-  mkdir build
-
   sed -i "/Exec=/ s|=.*|=/usr/bin/$pkgname| ; /Icon=/ s|=.*|=$_xdg_desktop_name|" \
           $_pkgname-$pkgver/$_pkgname/$_pkgname.desktop.in
 }
 
 build() {
-  cd build
-  cmake -DCMAKE_BUILD_TYPE=Release \
+  cmake $_pkgname-$pkgver \
+        -B build \
+        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        ../$_pkgname-$pkgver/$_pkgname
-  make
+        -Dlibraw_DIR=/usr/lib/cmake \
+        -DLCMS2_DIR=/usr/lib/cmake
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 
   install -Dm644 "$srcdir/$_pkgname-$pkgver/$_pkgname/$_pkgname.desktop.in" \
                  "$pkgdir/usr/share/applications/$_xdg_desktop_name.desktop"
