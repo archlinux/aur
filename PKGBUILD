@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_gitname}-bin
 pkgdesc="BusyBox-inspired toolbox for Linux with additional original commands"
 
-pkgver=0.42.3
+pkgver=0.42.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ _pkgsrc="${_gitname}-${pkgver}"
 source=("${_pkgsrc}-checksums.txt::${url}/releases/download/${_gitversion}/checksums.txt")
 source_x86_64=("${_pkgsrc}-${arch[0]}.tgz::${url}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgsrc}-${arch[1]}.tgz::${url}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[1]}.tar.gz")
-sha256sums=('107f7d28862b4e77be79e46804f9523500a9c9a887579ec9097c5803a2ddfab9')
-sha256sums_x86_64=('4382d4df83dd773cc07fc37859610685e5deadbdd08954f8b41f780db49a1b24')
-sha256sums_aarch64=('b30ec5e3391d85ea051291f34fe0042eac62ce253511b4be6db59658b41ce17f')
+sha256sums=('623d2b9c1dee65da5580b0872c692656f391e60fe285581f1180481fee35f7d2')
+sha256sums_x86_64=('4e9548d78cb453ec976e0ed63db09354348ef3678e0976938aa8df8c4d7a61f8')
+sha256sums_aarch64=('19f033e0cf59c5a69aa226eba03142dd4c82e2a228d70abf7fd72442fb9ad202')
 
 
 case ${CARCH} in
