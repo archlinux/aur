@@ -1,8 +1,8 @@
 # Maintainer: viewerofall <joemomanugget@gmail.com>
 pkgname=veil-host-bin
-pkgver=3.1
+pkgver=3.2.3
 pkgrel=1
-pkgdesc="Nested Wayland compositor — run any GUI app inside your terminal"
+pkgdesc="The Ultimate Desktop Environment for lightweight and free"
 arch=('x86_64' 'aarch64')
 url="https://github.com/viewerofall/veilTDC"
 license=('MIT')
@@ -16,9 +16,9 @@ source_x86_64=("veil-host::https://github.com/viewerofall/veilTDC/releases/downl
 source_aarch64=("veil-host::https://github.com/viewerofall/veilTDC/releases/download/v${pkgver}/veil-host-aarch64-unknown-linux-gnu"
   "config.lua::https://raw.githubusercontent.com/viewerofall/veilTDC/v${pkgver}/config.lua")
 
-sha256sums_x86_64=('a22632c8cb2c194020c1dff87244a1c102fb5f278f253f6a44c6ee65b2f7842c'
+sha256sums_x86_64=('0a66d3a2e3646156b7c95c1c24321f2f93d27c7b184aca98b3d6ad47cb29a5d8'
   '8576b875703d2869e5c1a21d1fa0bed1029ceb252c21f8b8d6801ed77ee02c3d')
-sha256sums_aarch64=('bbec5dc12d07ae66f7e62d20447d36f1305d25bf92bd84737a944463a1ab0121'
+sha256sums_aarch64=('a29899d7fccd616848e64ad3a898ad8669cb684b82f366e83a0458adc3eaf09f'
   '8576b875703d2869e5c1a21d1fa0bed1029ceb252c21f8b8d6801ed77ee02c3d')
 
 package() {
