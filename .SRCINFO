@@ -3,7 +3,6 @@ pkgbase = gtk3-classic
 	pkgver = 3.24.52
 	pkgrel = 1
 	url = https://github.com/lah7/gtk3-classic
-	install = gtk3.install
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	makedepends = cantarell-fonts
@@ -54,10 +53,12 @@ pkgbase = gtk3-classic
 	conflicts = gtk3-print-backends
 	source = git+https://github.com/lah7/gtk3-classic.git#commit=1adb3ea1fb666564c1ec7e2bc1c567de3798b75a
 	source = https://gitlab.gnome.org/GNOME/gtk/-/archive/3.24.52/gtk-3.24.52.tar.gz
-	source = gtk-query-immodules-3.0.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/30ab95bd37954d13b583aa4294204dcd4c1f5460/gtk-query-immodules-3.0.hook
+	source = gtk-remove-immodules-cache.hook
+	source = gtk-query-immodules-3.0.hook
 	source = settings.ini
 	sha256sums = 2469fa03798678187bb9df9e0006126832a0fca9b87a8493254b9b865ca3834e
 	sha256sums = e62514019679f831fcb37f3d294a761c3a6c14f1d346745ad11d70c2be17146e
+	sha256sums = 572d6a7bf8e046c7bffaf89aceff61bc67e74b8a1c250b2332fdac1ea2275153
 	sha256sums = a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229
 	sha256sums = 01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202
 

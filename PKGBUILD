@@ -5,7 +5,7 @@
 # This file is based on original PKGBUILD of GTK3 package.
 # https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/commits/main
 
-__arch_pkg_commit="30ab95bd37954d13b583aa4294204dcd4c1f5460"
+__arch_pkg_commit="3ad1ef389f34cc098b05ac6e060a8f55ca9f5a33"
 _gtkver=3.24.52
 
 _gtk3_classic_commit="1adb3ea1fb666564c1ec7e2bc1c567de3798b75a"
@@ -74,16 +74,21 @@ makedepends=(
 	sassc
 	wayland-protocols
 )
-install=gtk3.install
 source=(
 	git+$url.git#commit=$_gtk3_classic_commit
  	"https://gitlab.gnome.org/GNOME/gtk/-/archive/$_gtkver/gtk-$_gtkver.tar.gz"
 
-	"gtk-query-immodules-3.0.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/$__arch_pkg_commit/gtk-query-immodules-3.0.hook"
+	# https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/$__arch_pkg_commit/gtk-remove-immodules-cache.hook
+	gtk-remove-immodules-cache.hook
+
+	# https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/$__arch_pkg_commit/gtk-query-immodules-3.0.hook
+	gtk-query-immodules-3.0.hook
+
 	settings.ini
 )
 sha256sums=('2469fa03798678187bb9df9e0006126832a0fca9b87a8493254b9b865ca3834e'
             'e62514019679f831fcb37f3d294a761c3a6c14f1d346745ad11d70c2be17146e'
+            '572d6a7bf8e046c7bffaf89aceff61bc67e74b8a1c250b2332fdac1ea2275153'
             'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202')
 
@@ -117,7 +122,7 @@ package_gtk3-classic()
 	DESTDIR="$pkgdir" meson install -C build
 
 	install -Dm644 settings.ini -t "$pkgdir/usr/share/gtk-3.0"
-	install -Dm644 gtk-query-immodules-3.0.hook -t "$pkgdir/usr/share/libalpm/hooks"
+	install -Dm644 gtk-*.hook -t "$pkgdir/usr/share/libalpm/hooks"
 
 	rm "$pkgdir/usr/bin/gtk-update-icon-cache"
 }
