@@ -1,6 +1,6 @@
 # Maintainer: Egor Tensin <egor@tensin.name>
 pkgname=tag-release
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='Automate creation of semantic versioning tags'
 arch=(any)
