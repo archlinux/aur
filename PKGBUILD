@@ -32,6 +32,12 @@ depends=(
   # The embedded-libmpv video engine is a default Cargo feature upstream;
   # the binary links libmpv.so.2, which Arch ships in the `mpv` package.
   'mpv'
+  # System-tray icon backend. The tray dlopens
+  # libayatana-appindicator3.so.1 (fallback: libappindicator3.so.1) at
+  # startup and the process panics before a window appears when neither
+  # resolves. Runtime-loaded libraries leave no linker record, so makepkg
+  # cannot auto-detect this — declare it by hand.
+  'libayatana-appindicator'
   'hicolor-icon-theme'
 )
 makedepends=(
