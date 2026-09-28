@@ -1,0 +1,21 @@
+pkgbase = mekle-git
+	pkgdesc = Fast project discovery tool for developers (Git version)
+	pkgver = 0.2.0.r104.g25a4c52
+	pkgrel = 1
+	url = https://github.com/kristoferssolo/mekle
+	install = mekle.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	provides = mekle
+	conflicts = mekle
+	conflicts = mekle-bin
+	source = mekle::git+https://github.com/kristoferssolo/mekle.git#branch=main
+	sha256sums = SKIP
+
+pkgname = mekle-git
