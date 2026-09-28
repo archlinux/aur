@@ -8,7 +8,7 @@
 
 _name="libbluray"
 pkgname="lib32-${_name}"
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Library to access Blu-Ray disks for video playback (32-bit)"
 url="https://www.videolan.org/developers/libbluray.html"
@@ -26,25 +26,35 @@ depends=(
   'lib32-libxml2'
 )
 makedepends=(
+  'git'
   'lib32-gcc-libs'
-
   'meson>=0.60.0'
 )
 provides=(
   "${_name}.so"
 )
-_pkgsrc="${_name}-${pkgver}"
+# _pkgsrc="${_name}-${pkgver}"
+_pkgsrc="${_name}"
 source=(
-  "https://download.videolan.org/pub/videolan/${_name}/${pkgver}/${_pkgsrc}.tar.xz"
-  "https://download.videolan.org/pub/videolan/${_name}/${pkgver}/${_pkgsrc}.tar.xz.asc"
+  "git+https://code.videolan.org/videolan/libbluray.git#tag=${pkgver}"
+  "git+https://code.videolan.org/videolan/libudfread.git"
+  # "https://download.videolan.org/pub/videolan/${_name}/${pkgver}/${_pkgsrc}.tar.xz"
+  # "https://download.videolan.org/pub/videolan/${_name}/${pkgver}/${_pkgsrc}.tar.xz.asc"
 )
-sha256sums=('f676408e91a5d321abf8b8d4dfdae36205c297dab5c54c3ec519639025f474a2'
+sha256sums=('054d1f5872ad0af36abbf75195d56c1d4b41f3a1cae28a25ff99501f9629fee1'
             'SKIP')
-sha512sums=('f35d89097ad0c263ffa2102aba0068e7fe9b85afe27b14cf3c34ed6eff5876d1528aa8a62c3941b767353be2e1de4ae765f1402bd44af4544d922ffb69cea354'
+sha512sums=('fab707e998572c32ea1d9f64a72647563a8c210a02c6f8abd64d13a392b4015c5e3c6ab154d6cb27deb534c2f859c1edff661405b3997672cb12828fd0da6b7e'
             'SKIP')
 validpgpkeys=(
   '65F7C6B4206BD057A7EB73787180713BE58D1ADC' # VideoLAN Release Signing Key (2018)
 )
+
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  git submodule init contrib/libudfread
+  git config submodule.contrib/libudfread.url "${srcdir}/libudfread"
+  git -c protocol.file.allow=always submodule update "contrib/libudfread"
+}
 
 build() {
   export CFLAGS+=" -m32"
