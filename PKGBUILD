@@ -2,7 +2,7 @@
 
 _pkgname=openzl
 pkgname="$_pkgname-git"
-pkgver=r587.3dceb648
+pkgver=r859.800de320
 pkgrel=1
 pkgdesc='A novel data compression framework'
 url='https://github.com/facebook/openzl'
