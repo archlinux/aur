@@ -2,7 +2,7 @@
 # scripts/prepare-aur.py sets the release source fields for AUR builds.
 
 pkgname=omarchy-flux
-pkgver='0.6.0'
+pkgver='0.7.0'
 pkgrel=1
 pkgdesc='Connect an Omarchy computer to your phone with Flux for Android'
 arch=('x86_64' 'aarch64')
@@ -21,17 +21,24 @@ optdepends=(
 makedepends=('go>=1.27.1' 'cmake' 'ninja' 'git')
 install=omarchy-flux.install
 
-_source_url='https://github.com/bjarneo/flux/archive/refs/tags/v0.6.0.tar.gz'
-_source_sha256='4abb6ad1a8bc2b304b04f471a6d385a632eaaa665cf76c5474adb44091a72e2f'
-_source_dir='flux-0.6.0'
+_source_url='https://github.com/bjarneo/flux/archive/refs/tags/v0.7.0.tar.gz'
+_source_sha256='7788bc8ae55e5fd35ba8ac5c8e5fd67edf40f72d03613fbb2a86ff5af9c07ee1'
+_source_dir='flux-0.7.0'
 
 if [[ -n $_source_url ]]; then
 	source=("${pkgname}-${pkgver}.tar.gz::${_source_url}")
 	sha256sums=("$_source_sha256")
 else
+	# The last release tag and the commits after it, such as
+	# 0.6.0.r3.g1a2b3c4. fluxd compares this version with the releases.
 	pkgver() {
 		_src
-		printf '0.1.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+		local tag
+		if tag=$(git describe --long --tags --abbrev=7 --match 'v[0-9]*' 2>/dev/null); then
+			printf '%s' "$tag" | sed 's/^v//;s/-\([0-9]*\)-g/.r\1.g/'
+		else
+			printf '0.1.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+		fi
 	}
 fi
 
