@@ -1,5 +1,6 @@
 #!/bin/bash
 # fix wakeup triggers to stay asleep on GPD Win Max 2 sysvinit init script.
+# Config options to be set in '/etc/gpd-winmax2_2023-sleep-wakeuptriggers.conf'.
 
 _servicename='gpd-winmax2_2023-fix-sleep-wakeuptriggers'
 _actionscript='/usr/bin/gpd-winmax2_2023-fix-sleep-wakeuptriggers'
