@@ -8,7 +8,7 @@ pkgname=(
   mssqldef
   psqldef
 )
-pkgver=3.11.24
+pkgver=3.11.25
 pkgrel=1
 pkgdesc='Idempotent schema management for MySQL, PostgreSQL, SQLite, and SQL Server'
 arch=(x86_64 aarch64)
@@ -19,7 +19,7 @@ depends=(glibc)
 makedepends=('go')
 options=(!lto)
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a5c8e7f7f682de12c648d25643b137df97a14bafc456298033e5eb3888070c6c')
+sha256sums=('0a7e3fd2bb934cea7108a403b117c9430bb61a363b5012e555890606b4345f39')
 
 prepare() {
   cd "$pkgbase-$pkgver"
