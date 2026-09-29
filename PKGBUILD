@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rayburst-bin
 _pkgname=Rayburst
-pkgver=4.0.0_beta.5
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Redefining the open-source download manager."
 arch=(
@@ -20,25 +20,31 @@ depends=(
     'libayatana-indicator'
     'libappindicator'
 )
-source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/AnInsomniacy/rayburst/v${pkgver//_/-}/LICENSE")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}-1.aarch64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}-1.x86_64.rpm")
+source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/AnInsomniacy/rayburst/v${pkgver}/LICENSE")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
 sha256sums=('82e71190970399412c9e40fc3f4e2dc1cb070d56433ee7f25af7a4e67f401f0e')
-sha256sums_aarch64=('1a83715f677a12c9aec6237a64702537e2b17a9af27f46653ee9ba067e853432')
-sha256sums_x86_64=('760295c569e53c7dabe56d6dd6d4044f20680135b971ccf51d8cbb5d8d28cda4')
+sha256sums_aarch64=('551b56338543e8a7841022354f3f3afba63bec70dcdd9f30fa463b4deb30af38')
+sha256sums_x86_64=('fd789c646d354dd4a40ef2ba61b9d995940a5904956fa6a1569cec9e717c4c14')
 prepare() {
     sed -i "s/Categories=/Categories=Network;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
 }
 package() {
-    install -Dm755 "${srcdir}/usr/bin/"* -t "${pkgdir}/usr/bin"
-    cp -a "${srcdir}/usr/lib" "${pkgdir}/usr"
+    if [ -x "/usr/bin/aria2-next" ];then
+        install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}"* -t "${pkgdir}/usr/bin"
+    else
+        install -Dm755 "${srcdir}/usr/bin/"* -t "${pkgdir}/usr/bin"
+    fi
+    if [ -d "${srcdir}/usr/lib" ];then
+        cp -a "${srcdir}/usr/lib" "${pkgdir}/usr"
+    fi
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
-		_extension="${_i##*.}"
-		_icon_path="${_i#*share/icons/}"
-		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
-		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
-	done
+        _extension="${_i##*.}"
+        _icon_path="${_i#*share/icons/}"
+        _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+        install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"  
+    done
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
