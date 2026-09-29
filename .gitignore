@@ -1,0 +1,8 @@
+# makepkg 构建目录与产物（AUR 仓库不得包含二进制包或 filelist）
+pkg/
+src/
+*.pkg.tar.*
+*.AppImage
+
+# 已不再被 PKGBUILD 引用的二进制图标（与 AppImage 内 32x32 图标逐字节相同）
+satelite-proxy.png

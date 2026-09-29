@@ -1,0 +1,23 @@
+pkgbase = satelite-proxy-bin
+	pkgdesc = Lightweight sing-box / Xray / mihomo desktop client with clash subscription import, rule-based routing, system proxy and TUN
+	pkgver = 1.0.45
+	pkgrel = 1
+	url = https://github.com/zn0wii/satelite-proxy
+	arch = x86_64
+	license = Apache-2.0
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = librsvg
+	optdepends = sing-box: use the system sing-box core instead of the bundled one
+	optdepends = xray: use the system Xray core instead of the bundled one
+	optdepends = mihomo: use the system mihomo core instead of the bundled one
+	provides = satelite-proxy
+	conflicts = satelite-proxy
+	noextract = satelite-proxy-1.0.45.AppImage
+	source = satelite-proxy-1.0.45.AppImage::https://github.com/zn0wii/satelite-proxy/releases/download/v1.0.45/Satelite_1.0.45_amd64.AppImage
+	source = LICENSE
+	sha256sums = 1fd3043c81a8df7953ed702d55e0a775edca5bd3e7a98f75d68609b7b12d247a
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+
+pkgname = satelite-proxy-bin
