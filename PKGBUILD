@@ -21,16 +21,16 @@ optdepends=(
 makedepends=('git')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-source=(${pkgname}::git+${url}.git)
-md5sums=('SKIP')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd ${srcdir}/${pkgname}
+    cd ${_pkgname}
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd ${srcdir}/${pkgname}
+    cd ${_pkgname}
     install -Dm644 -t ${pkgdir}/usr/share/licenses/${pkgname} LICENSE
     install -Dm755 -t ${pkgdir}/usr/bin ${_pkgname}
 }

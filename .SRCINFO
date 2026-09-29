@@ -15,7 +15,7 @@ pkgbase = bemoji-git
 	optdepends = xdotool: For typing selected emoji
 	provides = bemoji
 	conflicts = bemoji
-	source = bemoji-git::git+https://github.com/marty-oehme/bemoji.git
-	md5sums = SKIP
+	source = git+https://github.com/marty-oehme/bemoji.git
+	sha256sums = SKIP
 
 pkgname = bemoji-git
