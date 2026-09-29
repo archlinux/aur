@@ -1,3 +1,18 @@
+Mullvad Browser 15.0.24 - September 29 2026
+ * All Platforms
+   * Updated Firefox to 140.17.0esr
+   * Updated NoScript to 13.6.35.1984
+   * Updated uBlock Origin to 1.75.0
+   * Bug 583: Rebase Mullvad Browser stable onto 140.17.0esr [mullvad-browser]
+   * Bug 45366: Backport Security Fixes from Firefox 157 [tor-browser]
+   * Bug 45368: Account for onion aliases in NoScript site parsing [tor-browser]
+   * Bug 45371: Hook CharacterData/Range insertion sinks for content patches propagation [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 41847: Sign all releases using new gpg subkey [tor-browser-build]
+   * macOS
+     * Bug 41883: Fix sha256sum definition in projects/hfsplus-tools/config [tor-browser-build]
+
 Mullvad Browser 15.0.23 - September 15 2026
  * All Platforms
    * Updated Firefox to 140.16.0esr
