@@ -1,0 +1,3 @@
+# Members may send wireviewd's privileged socket commands (bootloader, NVM,
+# config write, serial handover).
+g wireview -

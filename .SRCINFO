@@ -1,20 +1,23 @@
 pkgbase = wireview-hwmon
 	pkgdesc = WireView Pro II hwmon daemon, CLI and DKMS kernel module
-	pkgver = 1.5.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/emaspa/wireview-hwmon
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = gcc
 	options = !debug
-	source = wireview-hwmon-1.5.1.tar.gz::https://github.com/emaspa/wireview-hwmon/archive/refs/tags/v1.5.1.tar.gz
-	sha256sums = b518f5f9a01bc6db238c362725e429d73ffb8b6c1eb59fd94303b484bcbbad56
+	source = wireview-hwmon-1.6.0.tar.gz::https://github.com/emaspa/wireview-hwmon/archive/refs/tags/v1.6.0.tar.gz
+	source = wireview-hwmon.sysusers
+	sha256sums = c17bdc6f17fb004f0c59b4bf1a20ae00d6bbb979bacaef3331cf176332bdd7fe
+	sha256sums = dec7ef8e8cc0bcfb7a692a0484b9df3fbd8909f89ee63658f1c3f77ab20d7660
 
 pkgname = wireview-hwmon
 	pkgdesc = WireView Pro II hwmon daemon and CLI (userspace)
 	depends = glibc
 	optdepends = wireview-hwmon-dkms: kernel module exposing sensors via /sys/class/hwmon
 	optdepends = dfu-util: device firmware updates via "wireviewctl flash"
+	backup = etc/wireview/config
 
 pkgname = wireview-hwmon-dkms
 	pkgdesc = WireView Pro II hwmon kernel module (DKMS)
