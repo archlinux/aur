@@ -2,7 +2,7 @@
 
 pkgname=uvtools-bin
 _pkgname="${pkgname%-bin}"
-pkgver=6.0.3
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="MSLA/DLP, file analysis, calibration, repair, conversion and manipulation"
 arch=('x86_64')
@@ -17,7 +17,7 @@ noextract=("${_appimage}")
 source_x86_64=(
     "${_appimage}::${url}/releases/download/v${pkgver}/UVtools_linux-x64_v${pkgver}.AppImage"
 )
-sha256sums_x86_64=('68a848d7357699021fd99549e4c4a5b0ba2d9fc83b54776620f577752051b4aa')
+sha256sums_x86_64=('c07a473d6c20829567174896e91b0506d4bcfd800798c88ab1b63c910b469dc6')
 
 prepare() {
     chmod +x ${srcdir}/${_appimage}
