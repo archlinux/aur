@@ -1,7 +1,8 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=promtool
 pkgver=3.15.0
-pkgrel=1
+pkgrel=2
+_commit=5241a27fe3c6983549fccc32f6e65917408c63cd
 pkgdesc='Tooling for the Prometheus monitoring system'
 arch=('x86_64' 'aarch64')
 url='https://github.com/prometheus/prometheus'
@@ -9,12 +10,12 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 conflicts=('prometheus')
-source=("prometheus-v$pkgver.tar.gz::https://github.com/prometheus/prometheus/archive/v$pkgver.tar.gz")
-sha256sums=('d6383dea2f9b26c1673a52859c453653f2c6c046f7fb6d01db59603a65a732eb')
+source=("prometheus-v$pkgver-${_commit}.tar.gz::https://github.com/prometheus/prometheus/archive/${_commit}.tar.gz")
+sha256sums=('eee7ec029ffdba7d9ee59171cad5ddaff10e71514b0bae1a6fde6dc1ae99e181')
 options=(!lto)
 
 build() {
-    cd prometheus-$pkgver
+    cd prometheus-${_commit}
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
@@ -38,12 +39,12 @@ build() {
 }
 
 check() {
-    cd prometheus-$pkgver
+    cd prometheus-${_commit}
     ./$pkgname --version
 }
 
 package() {
-    cd prometheus-$pkgver
+    cd prometheus-${_commit}
     install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
