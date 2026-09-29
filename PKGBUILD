@@ -20,7 +20,7 @@ depends=(
     'hunspell-pt-br'
     'hunspell-en_us'
     'hunspell-es_any'
-    'python-pylatex-git'
+    'python-pylatex'
     'texlive-langportuguese'
     'python-dropbox'
     'texlive-latexextra'
@@ -51,7 +51,7 @@ optdepends=(
 #conflicts=
 #provides=
 #replaces=
-pkgver=1.5.0
+pkgver=1.5.0.1
 pkgrel=1
 epoch=1
 arch=('any')
