@@ -1,23 +1,23 @@
 pkgbase = kanbanflow-app-git
-	pkgdesc = A standalone application for Kanbanflow.com.(Use system-wide electron)
-	pkgver = 1.0.0.beta.4.r265.g588fe86
+	pkgdesc = A standalone application for Kanbanflow.com.
+	pkgver = 2.0.0.r10.gdd46e3f
 	pkgrel = 1
 	url = https://github.com/metawave/kanbanflow-app
 	arch = any
 	license = MIT
 	makedepends = gendesk
-	makedepends = npm
+	makedepends = bun
 	makedepends = nvm
 	makedepends = git
-	makedepends = curl
-	makedepends = yarn
-	makedepends = jq
-	depends = electron40
-	provides = kanbanflow-app=1.0.0.beta.4
+	makedepends = rustup
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	depends = libayatana-indicator
+	depends = libappindicator
+	provides = kanbanflow-app=2.0.0
 	conflicts = kanbanflow-app
 	source = kanbanflow-app.git::git+https://github.com/metawave/kanbanflow-app
-	source = kanbanflow-app.sh
 	sha256sums = SKIP
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = kanbanflow-app-git
