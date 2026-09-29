@@ -2,10 +2,10 @@
 _appname=tabby
 pkgname="${_appname}-electron-bin"
 _pkgname=Tabby
-pkgver=1.0.236
+pkgver=1.0.237
 _electronversion=43
 pkgrel=1
-pkgdesc="A terminal for a more modern age."
+pkgdesc="Tabby (formerly Terminus) is a highly configurable terminal emulator, SSH and serial client."
 arch=(
     'aarch64'
     'armv7h'
@@ -35,10 +35,10 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-armv7l.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-x64.rpm")
 sha256sums=('ac295694b9f56e90dce3cf58313ed891d0bd9178adec02d8503a0c07d9d34c68'
-            '5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e')
-sha256sums_aarch64=('3d5d7c5b1f4bb50774851517fe95ce9603b43c7b85505b37d627cb6b53634864')
-sha256sums_armv7h=('87fd5858c91df70c8302a88169905eb5d0ec63b6615ca36188df15a127db83e6')
-sha256sums_x86_64=('f99330115e0c983b642c7c7756471c158d4a6caf1c630b3388d9652cf187e3b4')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+sha256sums_aarch64=('d4b41fddc7f529ffc03f09e15a8dceab8f97019ca0834dc11e1c92a06e8b6207')
+sha256sums_armv7h=('24a1840ca4ccd5c5a63d5ae661d9fac1c32c89f66067da42b4a57648301bd730')
+sha256sums_x86_64=('162a523b85e04c2118570edecc977c34a20c681ad8a34f63496081ddcae76e8d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
