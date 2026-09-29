@@ -1,7 +1,7 @@
 pkgbase = grafito-bin
 	pkgdesc = A linux logs web frontend
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ralsina/grafito
 	arch = x86_64
 	arch = aarch64

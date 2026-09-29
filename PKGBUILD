@@ -4,7 +4,7 @@ _pkgauthor=ralsina
 _pkgname=grafito
 pkgname=${_pkgname}-bin
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A linux logs web frontend"
 arch=('x86_64' 'aarch64')
 _barch=('amd64' 'arm64')
@@ -42,7 +42,7 @@ package() {
 
 	install -Dm755 "${_pkgname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
 
-	install -Dm644 "SERVICE-${pkgver}.service" "${pkgdir}/etc/systemd/system/${_pkgname}.service"
+	install -Dm644 "SERVICE-${pkgver}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	install -Dm644 "CHANGELOG-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
