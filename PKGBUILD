@@ -1,10 +1,10 @@
 # Maintainer: unstable-code <assa0620@gmail.com>
 pkgname=wshowlyrics-git
 pkgver=r562.58a3969
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayland-based synchronized lyrics overlay with MPRIS integration"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/wshowlyrics/wshowlyrics"
+url="https://github.com/wshowlyrics/wshowlyrics"
 license=('GPL-3.0-or-later')
 depends=(
     'cairo'
@@ -28,7 +28,7 @@ makedepends=(
 )
 provides=('wshowlyrics')
 conflicts=('wshowlyrics')
-source=("git+https://gitlab.com/wshowlyrics/wshowlyrics.git")
+source=("wshowlyrics::git+https://github.com/wshowlyrics/wshowlyrics.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -77,4 +77,7 @@ package() {
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    if [[ -f THIRD_PARTY_LICENSES.md ]]; then
+        install -Dm644 THIRD_PARTY_LICENSES.md "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_LICENSES.md"
+    fi
 }
