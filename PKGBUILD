@@ -1,6 +1,6 @@
 # Maintainer: chocolateimage <chocolateimage@protonmail.com>
 pkgname=alarm-clock
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A simple alarm clock with Outlook reminder integration"
 url="https://github.com/chocolateimage/alarm-clock"
@@ -11,12 +11,8 @@ depends=(
 	'python-pyqt6'
 	'python-requests'
 )
-optdepends=(
-	'python-selenium: Outlook integration support'
-	'selenium-manager: Outlook integration support - Auto installation of ChromeDriver'
-)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chocolateimage/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1aba1ab3ef05aa880072e7647ae4f4f4c28fe3f2fd9a342b247053aeeae3e336')
+sha256sums=('7c62a21bcf24ffeaa84b59131dcb1dc5fc3a9164854c9199c28d70a3cf91eab3')
 
 package() {
 	cd "$pkgname-$pkgver"
