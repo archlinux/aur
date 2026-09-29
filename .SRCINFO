@@ -1,16 +1,16 @@
 pkgbase = icingaweb2-module-director
 	pkgdesc = Manage Icinga 2 configuration from Icinga Web 2
-	pkgver = 1.11.9
-	pkgrel = 2
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = https://github.com/Icinga/icingaweb2-module-director
 	install = icingaweb2-module-director.install
 	arch = any
-	license = GPL
+	license = GPL-3.0-or-later
 	depends = icingaweb2
-	depends = icingaweb2-module-incubator
-	source = https://github.com/Icinga/icingaweb2-module-director/archive/v1.11.9.tar.gz
+	depends = icinga-php-legacy
+	source = icingaweb2-module-director-1.12.0.tar.gz::https://github.com/Icinga/icingaweb2-module-director/archive/v1.12.0.tar.gz
 	source = icingaweb2-module-director.sysusers
-	sha256sums = 502def81be7f67d2eb56a7d08ea3baff28b1bb38f3c4dce8ee9c378054cdfbdf
+	sha256sums = 960f795411c194c31fb0926f57e7979aab52fd88a837692000b79e5d9169e0c1
 	sha256sums = 311043f4f4da68e5fcf8ad8593475d8287fe2f681e52940b33d41bc681d74cec
 
 pkgname = icingaweb2-module-director

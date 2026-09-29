@@ -1,0 +1,5 @@
+[icingaweb2-module-director]
+source = "github"
+github = "Icinga/icingaweb2-module-director"
+use_latest_release = true
+prefix = "v"
