@@ -1,8 +1,8 @@
 # Maintainer: Ateles
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=upmd-git
-pkgver=r83.g8f7c8de
-pkgrel=4
+pkgver=r85.g3ba05c7
+pkgrel=1
 pkgdesc="Markdown-based task and workflow runner"
 arch=("x86_64")
 url="https://github.com/rezigned/upmd"
