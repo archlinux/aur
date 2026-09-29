@@ -1,0 +1,4 @@
+[exaile]
+source = "github"
+github = "exaile/exaile"
+use_latest_release = true

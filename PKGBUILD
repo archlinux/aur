@@ -1,4 +1,5 @@
-# Maintainer: UnicornDarkness
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: UnicornDarkness
 # Contributor: Tom Kwok <contact@tomkwok.com>
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: Roman Kyrylych <Roman.Kyrylych@gmail.com>
@@ -14,7 +15,9 @@ arch=('any')
 url="https://exaile.org"
 license=('GPL-2.0-only')
 depends=('python>=3.8'
+	'python-setproctitle'
 	'python-bsddb'
+	'python-pynput'
 	'gtk3>=3.24.0'
 	'gst-python>=1.16.0'
 	'gst-plugins-base>=1.16.0'
@@ -52,26 +55,28 @@ optdepends=('udisks2: device detection'
 	'moodbar: moodbar plugin'
 	'gst-plugins-bad: BPM Counter plugin'
 	'python-beautifulsoup4: lyrics from lyrics.wikia.com (lyricwiki)'
+	'python-traitlets: configuration'
 	'ipython: ipconsole plugin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/exaile/exaile/archive/$pkgver.tar.gz")
 sha512sums=('2cfb3e75155e6f6bcf02244b74857444cc62c00d14105a2ecd7f9148d3d1c6e3abf3b45c8b8b14676b3dc18179d8e7cb5dbdc902634fddeb5b6e839624800c66')
 
-# prepare() {
-# 	cd "$srcdir/$pkgname-$pkgver"
-# 	patch -Np1 -i ../0001-xxx.patch
-# }
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "${srcdir}/${pkgname}-${pkgver}"
+
 	make PREFIX="/usr"
 }
 
 check() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "${srcdir}/${pkgname}-${pkgver}"
+
 	make PYTEST=py.test test
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make PREFIX="/usr" DESTDIR="$pkgdir" install
+	cd "${srcdir}/${pkgname}-${pkgver}"
+
+	make PREFIX="/usr" DESTDIR="${pkgdir}" install
+
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }

@@ -11,7 +11,9 @@ pkgbase = exaile
 	makedepends = pygobject-devel>=3.24.0
 	makedepends = help2man
 	depends = python>=3.8
+	depends = python-setproctitle
 	depends = python-bsddb
+	depends = python-pynput
 	depends = gtk3>=3.24.0
 	depends = gst-python>=1.16.0
 	depends = gst-plugins-base>=1.16.0
@@ -45,6 +47,7 @@ pkgbase = exaile
 	optdepends = moodbar: moodbar plugin
 	optdepends = gst-plugins-bad: BPM Counter plugin
 	optdepends = python-beautifulsoup4: lyrics from lyrics.wikia.com (lyricwiki)
+	optdepends = python-traitlets: configuration
 	optdepends = ipython: ipconsole plugin
 	source = exaile-4.2.2.tar.gz::https://github.com/exaile/exaile/archive/4.2.2.tar.gz
 	sha512sums = 2cfb3e75155e6f6bcf02244b74857444cc62c00d14105a2ecd7f9148d3d1c6e3abf3b45c8b8b14676b3dc18179d8e7cb5dbdc902634fddeb5b6e839624800c66
