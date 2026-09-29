@@ -2,7 +2,7 @@
 
 pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
-pkgver=1.11.6
+pkgver=1.11.7
 srcrel=1 # Incremented when there is a new release for the same version number
 pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
@@ -12,7 +12,7 @@ arch=('x86_64')
 license=('custom')
 depends=(
   # Main Qt dependencies
-  'qt5-location' 'qt5-multimedia' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-x11extras'
+  'qt5-location' 'qt5-multimedia' 'qt5-networkauth' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-x11extras'
   # libmdk dependency
   'libc++'
   # Plugin libs
@@ -26,7 +26,7 @@ source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::https://download.xnview.
         'XnView.desktop'
         'qt5_std_fun_forwarder.S'
         'qt5_std_fun_forwarder.lds')
-sha256sums=('3a4a9f80fbf4dcbef0681c78d42cfd52b22eb0129095822e49689452c6287b2c'
+sha256sums=('8a2f3f50986acae25f6b517829327c81de4005fc0487c139a08c163ebbe094ca'
             '87ec80c5049745dc3018fcdcf4dddf0e877ae3b20706705f2a80715232ad2141'
             'f6b3a4aaa0a55b5f21d9b91ab6f3da3d6ee077ba7fdd17e7c4ab1c69ad2a9e3a'
             'd4fc1e262f68b7b6b9767ca73870a78f06410035fb97a8bc495f4e1f28416563'
