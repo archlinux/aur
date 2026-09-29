@@ -1,0 +1,3 @@
+#!/bin/sh
+export LEGIO_AUR_PACKAGE=1
+exec /opt/legio-launcher/Legio.AppImage "$@"

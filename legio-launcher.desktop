@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Legio Launcher
+Exec=legio-launcher
+Icon=legio-launcher
+Categories=Game;
+Terminal=false
