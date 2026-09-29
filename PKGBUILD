@@ -1,5 +1,5 @@
 pkgname=tmux-rime
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="rime for tmux"
 arch=(i686 x86_64 arm aarch64)
@@ -12,7 +12,7 @@ source=(
 )
 depends=(librime glib2 tmux)
 makedepends=(xmake)
-sha256sums=('1e9c8e4172c509ad7400f824798d57cb8110fdde90fa29952e9f3775298f4aaa'
+sha256sums=('fc800c931f0b63baa738a68829c6255d1af55fe34ca646ef30d03dce0a1f7cce'
             'f4a75ea7b86ed7b652e514337746ea0232f88513ec6ab61a3c687a91b31d4a3c')
 
 export XMAKE_ROOT=y
