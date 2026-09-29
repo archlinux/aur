@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=annimate-bin
 _pkgname=Annimate
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
-pkgdesc="A tool for the convenient export of query results (matches) from the ANNIS1 system for linguistic corpora.(Prebuilt version)"
+pkgdesc="A tool for the convenient export of query results (matches) from the ANNIS1 system for linguistic corpora."
 arch=('x86_64')
 url="https://matthias-stemmler.github.io/annimate/user-guide/"
 _ghurl="https://github.com/matthias-stemmler/annimate"
@@ -18,7 +18,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
 )
-sha256sums=('aba1ccc88ce5aea0b7581b152059c34dff569ab303e0ee03e35392b18f65322b')
+sha256sums=('bc80d64f22070beb3fb927bd7c18346a8d42a458726e585202296bac4cab7d28')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i -e "
@@ -26,6 +26,7 @@ prepare() {
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
         s/Categories=/Categories=Utility;/g
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"

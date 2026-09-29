@@ -1,6 +1,6 @@
 pkgbase = annimate-bin
-	pkgdesc = A tool for the convenient export of query results (matches) from the ANNIS1 system for linguistic corpora.(Prebuilt version)
-	pkgver = 1.9.0
+	pkgdesc = A tool for the convenient export of query results (matches) from the ANNIS1 system for linguistic corpora.
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://matthias-stemmler.github.io/annimate/user-guide/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = annimate-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = annimate=1.9.0
+	provides = annimate=1.9.1
 	conflicts = annimate
-	source = annimate-1.9.0.deb::https://github.com/matthias-stemmler/annimate/releases/download/v1.9.0/Annimate_1.9.0_amd64.deb
-	sha256sums = aba1ccc88ce5aea0b7581b152059c34dff569ab303e0ee03e35392b18f65322b
+	source = annimate-1.9.1.deb::https://github.com/matthias-stemmler/annimate/releases/download/v1.9.1/Annimate_1.9.1_amd64.deb
+	sha256sums = bc80d64f22070beb3fb927bd7c18346a8d42a458726e585202296bac4cab7d28
 
 pkgname = annimate-bin
