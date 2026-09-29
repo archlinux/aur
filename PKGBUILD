@@ -10,7 +10,7 @@
 #
 
 pkgname=zfs-dkms-git
-pkgver=2.4.99.r305.gb9b84445ea
+pkgver=2.4.99.r1404.gea111ca50f
 pkgrel=1
 epoch=2
 pkgdesc='Kernel modules for the Zettabyte File System.'
@@ -86,7 +86,7 @@ package() {
     install -d "${dkmsdir}"/{config,scripts}
     cp -a configure dkms.conf Makefile.in META zfs_config.h.in zfs.release.in include/ module/ "${dkmsdir}"/
     cp config/compile config/config.* config/missing config/*sh "${dkmsdir}"/config/
-    cp scripts/dkms.postbuild scripts/objtool-wrapper.in "${dkmsdir}"/scripts/
+    cp scripts/dkms.postbuild scripts/objtool-wrapper.in scripts/make_gitrev.sh "${dkmsdir}"/scripts/
 
     # Install the license
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
