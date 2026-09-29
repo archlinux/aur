@@ -3,7 +3,8 @@
 _name=tree-sitter-objc
 pkgname=python-tree-sitter-objc
 pkgver=3.0.2
-pkgrel=9
+pkgrel=10
+_commit=18802acf31d0b5c1c1d50bdbc9eb0e1636cab9ed
 pkgdesc="Objc grammar for tree-sitter"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tree-sitter-grammars/tree-sitter-objc"
@@ -15,16 +16,16 @@ makedepends=(
     'python-wheel'
     'python-setuptools'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-objc/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('186d03ecb9ae41cde85efbe283dcbe67c277fff766a946f7efd6d51fee72370d')
+source=("${pkgname}-${pkgver}-${_commit}.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-objc/archive/${_commit}.tar.gz")
+sha256sums=('c96a6b1fdebccd56419f552c416a044e94401990dcf5ccfb633f5d2b395f5578')
 
 build() {
-    cd "${_name}-${pkgver}"
+    cd "${_name}-${_commit}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${_name}-${pkgver}"
+    cd "${_name}-${_commit}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
