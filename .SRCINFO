@@ -1,0 +1,17 @@
+pkgbase = godoist-bin
+	pkgdesc = Todoist TUI and CLI for the terminal
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/biomassa/godoist
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = godoist
+	conflicts = godoist
+	options = !strip
+	source_x86_64 = godoist-x86_64-0.2.1.tgz::https://github.com/biomassa/godoist/releases/download/v0.2.1/godoist_0.2.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = ef8bf3065c980a06f0051bb80f865483ab11110141a7a95f98e4c72d03454035
+	source_aarch64 = godoist-aarch64-0.2.1.tgz::https://github.com/biomassa/godoist/releases/download/v0.2.1/godoist_0.2.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 80c1d7220184ce0f2aa3c29410e37edf6f1b66b34403342eb2ac4043db5b3c22
+
+pkgname = godoist-bin

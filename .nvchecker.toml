@@ -1,0 +1,5 @@
+[godoist-bin]
+source = "github"
+github = "biomassa/godoist"
+use_latest_release = true
+prefix = "v"
