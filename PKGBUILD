@@ -1,7 +1,7 @@
 # Maintainer: İbrahim Hakkı Ergin <ibrahimh.ergin@gmail.com>
 pkgname=pardus-boot-analyzer-git
 _pkgname=pardus-boot-analyzer
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Graphical (GUI) tool to analyze system boot time and manage startup applications"
 arch=('any')
@@ -44,19 +44,7 @@ EOF
   chmod +x "$pkgdir/usr/bin/$_pkgname"
 
   # Desktop entry
-  cat << EOF > "$pkgdir/usr/share/applications/$_pkgname.desktop"
-[Desktop Entry]
-Name=Pardus Başlangıç Yöneticisi
-Name[en]=Pardus Boot Manager
-Comment=Sistem açılış süresini analiz et ve başlangıç programlarını yönet
-Comment[en]=Analyze system boot time and manage startup applications
-Exec=$_pkgname
-Icon=$_pkgname
-Terminal=false
-Type=Application
-Categories=System;Settings;GTK;
-StartupNotify=true
-EOF
+  install -Dm644 pardus-boot-analyzer.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # Icon
   install -Dm644 pardus-boot-analyzer.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
