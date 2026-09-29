@@ -3,7 +3,7 @@ pkgname=ttf-inter-hinted
 _interver=4.1
 _nfver=3.5.1
 pkgver="${_interver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Inter, a typeface designed for UI legibility, re-hinted with ttfautohint for FreeType (optionally Nerd Fonts patched)'
 arch=('any')
 url='https://rsms.me/inter/'
@@ -49,10 +49,15 @@ sha256sums=('9883fdd4a49d4fb66bd8177ba6625ef9a64aa45899767dde3d36aa425756b11e'
 #     like qsq, and qss like sss.
 #   * x-height, cap height and baseline agree between flat and round letters in
 #     every variant, upstream included, so there is nothing to fix there.
-#   * The i/j dots and diaereses (ï ä ö ü ϊ) are what differs. With q or n
-#     stems (upstream included) the gap under them closes in 72 of 490
-#     weight/size/glyph cases, from SemiBold up at 10-13px. With s stems only 7
-#     do. Hence the default preset is "sharp".
+#   * Shape is what differs. Re-measured 2026-09-29 with real GTK4 (GSK)
+#     renders against an 8x supersampled unhinted reference, Regular/SemiBold
+#     12-16px, mean deviation from the outline: preset sharp 18.1, balanced
+#     15.4, natural 12.9, FreeType's light autohinter 12.8. sharp snaps stems
+#     to whole pixels, which reads as harsh, slightly distorted letters. Hence
+#     the default preset is "natural".
+#   * The i/j dots and diaereses (ï ä ö ü ϊ) stay clear with every stem mode:
+#     0 of 392 glued (7 weights x 10-16px x 8 glyphs) for both s and n. An
+#     earlier count that blamed n stems (72 of 490) does not reproduce.
 #   * --increase-x-height, --x-height-snapping-exceptions, --hinting-limit,
 #     gasp and --windows-compatibility made no visible difference.
 #   * The variable font ships unhinted. It can be hinted (ttfautohint keeps the
@@ -77,6 +82,10 @@ sha256sums=('9883fdd4a49d4fb66bd8177ba6625ef9a64aa45899767dde3d36aa425756b11e'
 # On GNOME set `gsettings set org.gnome.desktop.interface font-rendering manual`
 # and font-hinting to medium, and put gtk-hint-font-metrics=false in
 # ~/.config/gtk-4.0/settings.ini. See README.md.
+#
+# The alternative is to leave the snippet off and use hintslight with
+# FreeType's stem darkening. It is the smoothest option that still keeps
+# vertical metrics sharp, but it does not use this package's hints (README.md).
 #
 # ── Build-time options ───────────────────────────────────────────────────────
 #
@@ -110,12 +119,13 @@ sha256sums=('9883fdd4a49d4fb66bd8177ba6625ef9a64aa45899767dde3d36aa425756b11e'
 #                          applies to INTER_VARIANT=otf without patching.
 #                          ttfautohint converts OTF input to TTF first.
 #
-#  HINT_PRESET  name       Named bundle of ttfautohint flags (default: sharp)
+#  HINT_PRESET  name       Named bundle of ttfautohint flags (default: natural)
 #                          ("Linux" = the stem letter FreeType v40 actually uses)
-#               sharp      stem=sss (Linux: s)  range 6-48   x-height 14  (clear i/j dots)
+#               natural    stem=nnn (Linux: n)  range 8-48   x-height 0   (least distortion)
+#               sharp      stem=sss (Linux: s)  range 6-48   x-height 14  (highest contrast,
+#                                                                       most distortion)
 #               balanced   stem=qsq (Linux: q)  range 8-48   x-height 14  (ttfautohint defaults;
 #                                                                       renders like upstream)
-#               natural    stem=nnn (Linux: n)  range 8-48   x-height 0   (least distortion)
 #               light      stem=nnn (Linux: n)  range 12-48  x-height 0   (HiDPI; <12px left alone)
 #               custom     use the individual HINT_* vars below verbatim
 #
@@ -220,10 +230,10 @@ _prompt_options() {
     fi
     if [[ "$HINTING" == true && "${HINT_ENGINE:-ttfautohint}" == ttfautohint && \
           -z "${HINT_PRESET:-}" ]]; then
-      _ask_choice "Hinting preset" sharp \
-        "sharp:stem s, 6-48px (measured: keeps i/j dots clear)" \
-        "balanced:stem q, 8-48px (ttfautohint defaults, like upstream)" \
+      _ask_choice "Hinting preset" natural \
         "natural:stem n, 8-48px, no x-height boost (least distortion)" \
+        "sharp:stem s, 6-48px (highest contrast, harsher shapes)" \
+        "balanced:stem q, 8-48px (ttfautohint defaults, like upstream)" \
         "light:stem n, 12-48px, no x-height boost (HiDPI)" \
         "custom:use the HINT_* environment variables"
       HINT_PRESET=$_choice
@@ -264,7 +274,7 @@ _resolve_options() {
   NERD_PATCH="${NERD_PATCH:-false}"
   HINTING="${HINTING:-true}"
   HINT_ENGINE="${HINT_ENGINE:-ttfautohint}"
-  HINT_PRESET="${HINT_PRESET:-sharp}"
+  HINT_PRESET="${HINT_PRESET:-natural}"
   GASP_MODE="${GASP_MODE:-keep}"
   HINT_WINCOMPAT="${HINT_WINCOMPAT:-false}"
   HINT_TTFA_TABLE="${HINT_TTFA_TABLE:-false}"
@@ -304,7 +314,7 @@ _resolve_options() {
     balanced) _m=qsq; _lo=8;  _hi=48; _xh=14 ;;
     natural)  _m=nnn; _lo=8;  _hi=48; _xh=0  ;;
     light)    _m=nnn; _lo=12; _hi=48; _xh=0  ;;
-    custom)   _m=sss; _lo=6;  _hi=48; _xh=14 ;;
+    custom)   _m=nnn; _lo=8;  _hi=48; _xh=0  ;;
     *)
       echo "Error: unknown HINT_PRESET='$HINT_PRESET'." >&2
       echo "  Valid: sharp balanced natural light custom" >&2
