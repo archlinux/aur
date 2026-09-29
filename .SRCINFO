@@ -1,6 +1,6 @@
 pkgbase = mvis
 	pkgdesc = Lightweight cross-platform memory visualizer tool
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/SickleFire/m-vis
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mvis
 	depends = glibc
 	depends = libgcc
 	provides = mvis
-	source_x86_64 = mvis-x86_64-0.5.0.tgz::https://github.com/SickleFire/m-vis/archive/v0.5.0.tar.gz
-	sha256sums_x86_64 = 58778a823470c719eda9c28718a66776dd7d2f0c6bc83fd6fc0a6515b2c08e6b
+	source_x86_64 = mvis-x86_64-0.6.0.tgz::https://github.com/SickleFire/m-vis/archive/v0.6.0.tar.gz
+	sha256sums_x86_64 = 9e4bc899c3c5e21d53969a51f95322c3287a652760944360fad726feab0bbc91
 
 pkgname = mvis
