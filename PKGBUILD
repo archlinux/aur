@@ -2,7 +2,7 @@
 # Thanks to the original maintainer zlicdt <xkicdt1@gmail.com>.
 
 pkgname=open-orpheus-bin
-pkgver=0.17.1
+pkgver=0.18.0
 pkgrel=1
 _upstream_pkgname=open-orpheus
 pkgdesc="An open-source implementation of Netease Cloud Music's Orpheus browser host."
@@ -28,7 +28,7 @@ source=(
     "LICENSE"
 )
 sha256sums=(
-    'e63f464606381fc5a3e81568411f8c309ca9f3dbf323abe72eb589c3f905cf1f'
+    '15dadf85e25d332c34317893278af70a838a12b26b6a5221607f3d78240dd5a5'
     '4499595d653b7a9e65001bb09239e6fb5d33e650d1f9db808ce87905021e9ff8'
 )
 
