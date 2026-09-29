@@ -1,0 +1,15 @@
+pkgbase = python-alpheon-git
+	pkgdesc = Remembers why your project is the way it is: drafts a reviewable HANDOFF.md from your git diff
+	pkgver = r5.919d783
+	pkgrel = 1
+	url = https://github.com/BravoAlphaSix/alpheon
+	arch = any
+	license = MIT
+	depends = python
+	depends = git
+	provides = python-alpheon
+	conflicts = python-alpheon
+	source = alpheon::git+https://github.com/BravoAlphaSix/alpheon.git#branch=master
+	sha256sums = SKIP
+
+pkgname = python-alpheon-git
