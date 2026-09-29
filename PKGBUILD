@@ -1,6 +1,7 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: René Wagner
 # Contributor: Christian Sturm <reezer@reezer.org>
+# Contributor: Noah Romer <baronmog@gmail.com>
 
 _author=CHROMATIC
 _dist=Modern-Perl
