@@ -1,6 +1,6 @@
 # Maintainer: AkitaOnRails <fabio.akita@gmail.com>
 pkgname=frank-sherlock-bin
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Local-only, AI-powered image cataloging and search system"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('frank-sherlock')
 conflicts=('frank-sherlock')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/frank_sherlock_${pkgver}_amd64.AppImage")
-sha256sums=('84dbac7a614dcc36906f8aa75ea73fd39c33d6e79d4d0d840143fe6b9f8f0490')
+sha256sums=('8813485fa66d7f9852a387ee2e9de75ed8f6dd9e50626bf7d6bd23f874910bef')
 noextract=("${pkgname}-${pkgver}.AppImage")
 
 prepare() {
