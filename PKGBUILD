@@ -2,7 +2,7 @@
 
 pkgname=discipulus
 _pkgname=Discipulus
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Alternative Openbare Magister App voor Android, iOS, iPadOS, WatchOS, WearOS, macOS, Linux en Windows"
 arch=('x86_64')
@@ -29,10 +29,8 @@ options=('!strip' '!debug')
 _archivename="${_pkgname}-${pkgver}" # This matches the name of the top directory in the tar
 source=(
   "${_archivename}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-  "${pkgname}.desktop"
 )
-sha256sums=('ff37e304df37b959753babffcdc041ab1b26e390fa85c536f7322ad9c4495854'
-            '0ed077aabc79c5f452032f2c8c3ce17bb6705111ba2fe8119182d69ddf0b51eb')
+sha256sums=('6a5d9db0e405e39a6165c5069253b3845e7fe12ad312af9446df71181392157b')
 install=discipulus.install
 
 prepare() {
@@ -56,6 +54,6 @@ package() {
   ln -s "/opt/${pkgname}/discipulus" "${pkgdir}/usr/bin/discipulus" # Make a symlink in /usr/bin/
 
   # Copy the desktop file and icon
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop" 
+  install -Dm644 "${srcdir}/${_archivename}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop" 
   install -Dm644 "${srcdir}/${_archivename}/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 }

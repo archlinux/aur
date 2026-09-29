@@ -1,6 +1,6 @@
 pkgbase = discipulus
 	pkgdesc = Alternative Openbare Magister App voor Android, iOS, iPadOS, WatchOS, WearOS, macOS, Linux en Windows
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/DiscipulusApp/Discipulus
 	install = discipulus.install
@@ -21,9 +21,7 @@ pkgbase = discipulus
 	conflicts = discipulus
 	options = !strip
 	options = !debug
-	source = Discipulus-0.2.7.tar.gz::https://github.com/DiscipulusApp/Discipulus/archive/v0.2.7.tar.gz
-	source = discipulus.desktop
-	sha256sums = ff37e304df37b959753babffcdc041ab1b26e390fa85c536f7322ad9c4495854
-	sha256sums = 0ed077aabc79c5f452032f2c8c3ce17bb6705111ba2fe8119182d69ddf0b51eb
+	source = Discipulus-0.2.8.tar.gz::https://github.com/DiscipulusApp/Discipulus/archive/v0.2.8.tar.gz
+	sha256sums = 6a5d9db0e405e39a6165c5069253b3845e7fe12ad312af9446df71181392157b
 
 pkgname = discipulus
