@@ -1,6 +1,6 @@
 pkgbase = rill-torrent
 	pkgdesc = A small BitTorrent client
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/sachesi/rill
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = rill-torrent
 	conflicts = rill-git
 	conflicts = rill-bin
 	options = !lto
-	source = rill-0.3.2.tar.gz::https://github.com/sachesi/rill/archive/v0.3.2/rill-0.3.2.tar.gz
-	sha256sums = 27d4dbdd7a7f7a0dd5b61b86d88efbb167d02d1e20c90184120b5081c4edbc09
+	source = rill-0.3.3.tar.gz::https://github.com/sachesi/rill/archive/v0.3.3/rill-0.3.3.tar.gz
+	sha256sums = 26d007a1e94ca09d79b099994dbc19347ec6eebe5ec114f8285bf857a13f10db
 
 pkgname = rill-torrent
