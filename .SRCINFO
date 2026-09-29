@@ -1,6 +1,6 @@
 pkgbase = sable-bin
 	pkgdesc = An almost stable Matrix client
-	pkgver = 1.22.9
+	pkgver = 1.22.10
 	pkgrel = 1
 	url = https://github.com/SableClient/Sable
 	install = sable-bin.install
@@ -28,7 +28,7 @@ pkgbase = sable-bin
 	conflicts = sable-nightly-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = sable-bin-1.22.9.deb::https://github.com/SableClient/Sable/releases/download/v1.22.9/Sable-1.22.9-linux-x86_64.deb
-	sha256sums_x86_64 = 5dc5200dc59bfc847c463f360c47c1811e85ccae35689d2896aab11f3b868b47
+	source_x86_64 = sable-bin-1.22.10.deb::https://github.com/SableClient/Sable/releases/download/v1.22.10/Sable-1.22.10-linux-x86_64.deb
+	sha256sums_x86_64 = 9d96a6c0916cec51287eec69c1fca9ec8f2b9e4dc34547c7dfa05b5bfa0c57f0
 
 pkgname = sable-bin
