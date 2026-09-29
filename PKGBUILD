@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=liveplay-bin
 _pkgname=LivePlay
-pkgver=2.4.3
+pkgver=2.5.0
 _electronversion=42
 pkgrel=1
-pkgdesc="A free, open-source audio playback system designed for live sound operators who need reliable, flexible cue management.(Prebuilt version.Use system-wide electron)"
+pkgdesc="A free, open-source audio playback system designed for live sound operators who need reliable, flexible cue management."
 arch=('x86_64')
 url="https://tdoukinitsas.github.io/liveplay/"
 _ghurl="https://github.com/tdoukinitsas/liveplay"
@@ -26,9 +26,9 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/tdoukinitsas/liveplay/v${pkgver}/LICENCE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('135f7e4699816502909e833213c4e1527267d1172679aa0da203f9664f8a5d19'
+sha256sums=('e0ba27af6fdb49e1a7525a2dde7915a6764e364c29f8a49f06ea32a016f31014'
             '20b067f86de375aae6db0f283ab2e65de24d537733b89bd58432c101259d84cf'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -51,20 +51,19 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     _check_electron_version
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     rm -rf "${_app_dir}/resources/app-update.yml"
     ln -sf "/usr/bin/ffmpeg" "${_app_dir}/resources/app.asar.unpacked/node_modules/@ffmpeg-installer/linux-x64/ffmpeg"
     ln -sf "/usr/bin/ffprobe" "${_app_dir}/resources/app.asar.unpacked/node_modules/@ffprobe-installer/ffprobe"
     asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    rm -rf "${_app_dir}/resources/app.asar"
     find "${srcdir}/app.asar.unpacked/electron" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	local _app_dir="$(_get_app_dir)"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
