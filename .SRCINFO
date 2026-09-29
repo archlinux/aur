@@ -1,6 +1,6 @@
 pkgbase = openmodelica-git
 	pkgdesc = Open-source Modelica-based modeling and simulation environment (git)
-	pkgver = r38736.210dbef8e0
+	pkgver = r39600.aed153efac
 	pkgrel = 1
 	url = https://www.openmodelica.org
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = openmodelica-git
 	makedepends = boost
 	makedepends = java-environment
 	makedepends = qt6-tools
+	makedepends = qt6-quick3d
 	makedepends = git
+	makedepends = rust
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++

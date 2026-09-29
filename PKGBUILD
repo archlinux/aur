@@ -2,14 +2,14 @@
 # Contributor: Xwang <xwaang1976@gmail.com>
 
 pkgname=openmodelica-git
-pkgver=r38736.210dbef8e0
+pkgver=r39600.aed153efac
 pkgrel=1
 pkgdesc="Open-source Modelica-based modeling and simulation environment (git)"
 arch=('x86_64')
 url="https://www.openmodelica.org"
 license=('OSMC-PL')
 depends=('glibc' 'libgcc' 'libstdc++' 'libgomp' 'libgfortran' 'readline' 'curl' 'blas' 'lapack' 'util-linux-libs' 'boost-libs' 'libffi' 'libglvnd' 'icu' 'openscenegraph' 'qt6-base' 'qt6-httpserver' 'qt6-webengine' 'qt6-svg' 'qt6-5compat' 'zip')
-makedepends=('gcc-fortran' 'cmake' 'boost' 'java-environment' 'qt6-tools' 'git')
+makedepends=('gcc-fortran' 'cmake' 'boost' 'java-environment' 'qt6-tools' 'qt6-quick3d' 'git' 'rust')
 provides=('openmodelica')
 conflicts=('openmodelica')
 options=('!lto')
@@ -42,6 +42,5 @@ package() {
   rm -r "${pkgdir}"/usr/share/cminpack
   rm -r "${pkgdir}"/usr/include/cminpack-1
   rm -r "${pkgdir}"/usr/share/cmake
-  rm -r "${pkgdir}"/usr/doc
-  rm -r "${pkgdir}"/home
+  rm -r "${pkgdir}"/usr/include/{FMI,FMI1,FMI2,JM}
 }
