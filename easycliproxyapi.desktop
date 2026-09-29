@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=EasyCLIProxyAPI
+Comment=GUI management client for CLIProxyAPI
+Comment[zh_CN]=CLIProxyAPI 桌面管理客户端
+Exec=easycliproxyapi %U
+Icon=easycliproxyapi
+Terminal=false
+Type=Application
+Categories=Network;
+Keywords=cliproxy;api;proxy;ai;llm;
+StartupWMClass=EasyCLIProxyAPI
