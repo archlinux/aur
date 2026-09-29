@@ -1,0 +1,14 @@
+pkgbase = smash
+	pkgdesc = Smash through to find duplicate files super fast by slicing files intelligently
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/thushan/smash
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go>=1.24
+	options = !lto
+	source = smash-1.0.0.tar.gz::https://github.com/thushan/smash/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = eaf6457aafc1732033365e0eeba9d48042e7a387136c948eb03a17bfed33edd0
+
+pkgname = smash
