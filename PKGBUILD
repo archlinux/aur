@@ -32,4 +32,5 @@ package() {
         --compile-bytecode 1 \
         --destdir=$pkgdir \
         $_pkgname-$pkgver/dist/$_pkgname-$pkgver*.whl
+    rm -r "$pkgdir"/usr/lib/python*/site-packages/docs
 }
