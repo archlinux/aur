@@ -5,19 +5,17 @@
 pkgname=python-pysubs2
 _name=${pkgname#python-}
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python library for editing subtitle files"
 arch=('any')
 url="https://github.com/tkarabela/pysubs2"
 license=('MIT')
-groups=()
 depends=('python>=3.12')
 makedepends=(
     'python-build'
     'python-installer'
     'python-wheel'
     'python-hatchling'
-    'python-setuptools'
     #'python-sphinx'           # Doc dependencies:
     #'python-sphinx_rtd_theme' # TODO.
     #'python-enum-tools'
