@@ -1,6 +1,6 @@
 pkgbase = mdrv-db
 	pkgdesc = Fjall durability envelope around a SQL data port and content-addressed blob store (fleet CLI)
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://crates.io/crates/mdrv-db
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mdrv-db
 	depends = libgcc
 	options = !debug
 	options = !lto
-	source = mdrv-db-0.6.0.crate::https://static.crates.io/crates/mdrv-db/mdrv-db-0.6.0.crate
-	sha256sums = 5b904477e36e8dd7f0226585d87865d692d159af1b221b7f210bca662e19e86f
+	source = mdrv-db-0.6.1.crate::https://static.crates.io/crates/mdrv-db/mdrv-db-0.6.1.crate
+	sha256sums = 56ec5c0bd8d89e127d9ba5e5d6c86a8eb97fee4830979dd9d3a9918828cd1356
 
 pkgname = mdrv-db
