@@ -1,0 +1,3 @@
+[perl-net-curl]
+source = "cpan"
+cpan = "Net-Curl"
