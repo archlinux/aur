@@ -1,7 +1,7 @@
 pkgbase = python-tree-sitter-julia
 	pkgdesc = Julia grammar for tree-sitter
 	pkgver = 0.25.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tree-sitter/tree-sitter-julia
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = python-tree-sitter-julia
 	makedepends = python-setuptools
 	depends = python
 	depends = python-tree-sitter
-	source = python-tree-sitter-julia-0.25.0.tar.gz::https://github.com/tree-sitter/tree-sitter-julia/archive/refs/tags/v0.25.0.tar.gz
-	sha256sums = 5ab5fefc1459cff08efa28aeacf028c6e812d9f7552a758fda8c0d65c2abae54
+	source = python-tree-sitter-julia-0.25.0-e0f9dcd180fdcfcfa8d79a3531e11d99e79321d3.tar.gz::https://github.com/tree-sitter/tree-sitter-julia/archive/e0f9dcd180fdcfcfa8d79a3531e11d99e79321d3.tar.gz
+	sha256sums = 13e604be147d4d42e3640857752acf57b99ab5df84f73a026a43558da7bc4e40
 
 pkgname = python-tree-sitter-julia
