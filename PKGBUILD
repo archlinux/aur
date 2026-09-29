@@ -2,7 +2,7 @@
 
 pkgname=discipulus-git
 _pkgname=discipulus
-pkgver=0.2.7.r0.gc7cddeb
+pkgver=0.2.8.r0.g9f48145
 pkgrel=1
 pkgdesc="GIT - Alternative Openbare Magister App voor Android, iOS, iPadOS, WatchOS, WearOS, macOS, Linux en Windows"
 arch=('x86_64')
@@ -28,10 +28,8 @@ makedepends=(
 options=('!strip' '!debug')
 source=(
   "git+${url}"
-  "${_pkgname}.desktop"
 )
-sha256sums=('SKIP'
-            '0ed077aabc79c5f452032f2c8c3ce17bb6705111ba2fe8119182d69ddf0b51eb')
+sha256sums=('SKIP')
 install=discipulus.install
 
 pkgver() {
@@ -60,6 +58,6 @@ package() {
   ln -s "/opt/${pkgname}/discipulus" "${pkgdir}/usr/bin/discipulus" # Make a symlink in /usr/bin/
 
   # Copy the desktop file and icon
-  install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop" 
+  install -Dm644 "${srcdir}/Discipulus/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop" 
   install -Dm644 "${srcdir}/Discipulus/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
 }

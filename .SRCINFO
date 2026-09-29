@@ -1,6 +1,6 @@
 pkgbase = discipulus-git
 	pkgdesc = GIT - Alternative Openbare Magister App voor Android, iOS, iPadOS, WatchOS, WearOS, macOS, Linux en Windows
-	pkgver = 0.2.7.r0.gc7cddeb
+	pkgver = 0.2.8.r0.g9f48145
 	pkgrel = 1
 	url = https://github.com/DiscipulusApp/Discipulus
 	install = discipulus.install
@@ -22,8 +22,6 @@ pkgbase = discipulus-git
 	options = !strip
 	options = !debug
 	source = git+https://github.com/DiscipulusApp/Discipulus
-	source = discipulus.desktop
 	sha256sums = SKIP
-	sha256sums = 0ed077aabc79c5f452032f2c8c3ce17bb6705111ba2fe8119182d69ddf0b51eb
 
 pkgname = discipulus-git
