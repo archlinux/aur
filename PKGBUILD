@@ -1,7 +1,8 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=posthog-cli
 pkgver=0.18.9
-pkgrel=1
+pkgrel=2
+_commit=704aa99c0e84d8830bfdf352f14ae9d7b44e42a2
 pkgdesc="The command line interface for PostHog"
 arch=('x86_64' 'aarch64')
 url="https://github.com/PostHog/posthog"
@@ -11,10 +12,10 @@ conflicts=('posthog-cli-bin')
 makedepends=('cargo' 'nodejs-lts-krypton' 'pnpm')
 optdepends=('nodejs: required for the posthog-cli api command')
 options=('!lto')
-source=("$pkgname-v$pkgver.tar.gz::https://github.com/PostHog/posthog/archive/refs/tags/posthog-cli%2Fv$pkgver.tar.gz")
-sha256sums=('d81f6035a161e0ac6c2cf007a353c8e06f060c5416b942d64daeca024ac791d5')
+source=("$pkgname-v$pkgver-$_commit.tar.gz::https://github.com/PostHog/posthog/archive/$_commit.tar.gz")
+sha256sums=('fc05ed601052cb585a75cadabf3dc580800b95608845a59cf958f3a6ff1a57be')
 
-_srcdir="posthog-posthog-cli-v$pkgver"
+_srcdir="posthog-$_commit"
 
 prepare() {
     cd "$srcdir/$_srcdir"
