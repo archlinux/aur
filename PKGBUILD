@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=pi
-pkgver=0.87.1
+pkgver=0.99.0
 pkgrel=1
 pkgdesc="AI coding agent for the terminal — minimal, extensible and optimized for tool use"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ options=('!strip' '!debug')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "pi-ai-${pkgver}.tgz::https://registry.npmjs.org/@earendil-works/pi-ai/-/pi-ai-${pkgver}.tgz")
-sha256sums=('c3902f45689af9ed9c8ee225554d31a649a993b06f04ab2022bb91ed75e808dc'
-            '35b4432f27cc2665f86beebb9af6a39b1251970883c3044bd8be4f4e8c731ca0')
+sha256sums=('6fcfb58a99b235329490fa48153c07c6ac0df330896dd8a75590491f2317d51a'
+            '80566a06c66d3b2ab7f0cf2ffde7fb62657b4f08ca7b06e69833426a375f9746')
 
 prepare() {
   rm -rf "${srcdir}/${pkgname}-${pkgver}/packages/ai/src/providers/data"
