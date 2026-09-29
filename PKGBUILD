@@ -2,7 +2,7 @@
 
 pkgname=stably-orca
 pkgver=1.4.216
-pkgrel=1
+pkgrel=2
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/stablyai/orca'
@@ -56,8 +56,13 @@ install=stably-orca.install
 
 _pnpmver=12.0.0
 _electronmajor=43
+# GitHub tag archives are mutable: a retag keeps the same URL and silently
+# changes the payload, so pin the peeled commit of tag v$pkgver instead.
+# Version bumps must resolve `git ls-remote $url "refs/tags/v<ver>^{}"` and
+# update _commit together with pkgver and the source checksum.
+_commit=20d7a7d185cd66e993dcdfd60e9e604fe26e9c40
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz"
   "pnpm-$_pnpmver.tgz::https://registry.npmjs.org/pnpm/-/pnpm-$_pnpmver.tgz"
   'stably-orca.sh'
   'orca-ide.sh'
@@ -75,7 +80,7 @@ source_x86_64=(
 source_aarch64=(
   "pnpm-exe-linux-arm64-$_pnpmver.tgz::https://registry.npmjs.org/@pnpm/exe.linux-arm64/-/exe.linux-arm64-$_pnpmver.tgz"
 )
-sha256sums=('77c217b1968ec3b41afdf381465e79fa667defb2a27292a05144eb3d488c5283'
+sha256sums=('a1c5d40fb2947796f1a3740f2bf7296b0716114a01448740f220d02fba4c22c3'
             '5ef12ab545a211627c23f05eb589a051e6c207a3f2c3382add8f0573400b871d'
             'd76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d'
             '0d8e816f7dd5d46b9da40748ac7a0d709adfd7f09d79ffe71327b60c5c5abbb7'
@@ -123,7 +128,7 @@ prepare() {
     return 1
   fi
 
-  cd "$srcdir/orca-$pkgver"
+  cd "$srcdir/orca-$_commit"
   python - <<'PY'
 from pathlib import Path
 
@@ -154,7 +159,7 @@ PY
 }
 
 build() {
-  cd "$srcdir/orca-$pkgver"
+  cd "$srcdir/orca-$_commit"
 
   local electron_dist="/usr/lib/electron$_electronmajor"
   local electron_version
@@ -249,7 +254,7 @@ PY
 }
 
 package() {
-  cd "$srcdir/orca-$pkgver"
+  cd "$srcdir/orca-$_commit"
 
   local unpacked=(dist/linux*-unpacked)
   if [[ ${#unpacked[@]} -ne 1 || ! -d ${unpacked[0]} ]]; then
