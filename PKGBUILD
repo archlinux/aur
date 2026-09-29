@@ -3,7 +3,7 @@
 
 pkgname=pipeasio-bin
 _pkgname=pipeasio
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 # Upstream tags use semver prerelease hyphens (v1.0.0-rc1); pkgver maps '-' to '_'.
 _pkgtag="v${pkgver//_/-}"
@@ -33,7 +33,7 @@ conflicts=("${_pkgname}")
 # Wine exports. !debug: nothing to split out of a prebuilt tarball.
 options=('!strip' '!debug')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/${_pkgtag}/${_pkgname}-${_pkgtag}-archlinux-x86_64.tar.gz")
-b2sums_x86_64=('994b7c7a69dfc7338f6769edd59931d6d573d9f30c7cf3005f8dafbcb7c15d720c883aeeff6204fc385bcd51ab5bbe46bc60fcfe018e6904d904adede4cc80aa')
+b2sums_x86_64=('5ddb95451d3074b57135128fcd47e9ede5daac22d34fde861ce4cdc7076b77e5d17ab188a6d4edd9bc689864d9c0b486451562bf825dddb20f8f977a9aa89d02')
 
 package() {
   # The tarball is rooted at the install prefix: bin/, lib/, share/.
