@@ -1,0 +1,14 @@
+pkgbase = eosctl
+	pkgdesc = Software for managing EOS Cloud.
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://dl.eoscloud.io/eosctl
+	arch = x86_64
+	arch = aarch64
+	depends = bash-completion
+	options = !debug
+	options = !lto
+	source = eosctl-0.12.1::https://dl.eoscloud.io/eosctl/archives/v0.12.1/eosctl_0.12.1_linux_amd64.pacman
+	sha256sums = SKIP
+
+pkgname = eosctl
