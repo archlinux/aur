@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 pkgname=tbls-bin
-pkgver=1.96.0
+pkgver=1.96.1
 pkgrel=1
-pkgdesc="CI-Friendly tool for documenting a database.Written in Go.(Prebuilt version)"
+pkgdesc="CI-Friendly tool for documenting a database.Written in Go."
 arch=(
     'aarch64'
     'x86_64'
@@ -13,14 +13,12 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=()
-source=(
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/k1LoW/tbls/v${pkgver}/LICENSE"
-)
+source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/k1LoW/tbls/v${pkgver}/LICENSE")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.rpm")
 sha256sums=('6eefa0bec6e7c3654bdc29cb8f8c4adbc1327d2e912b532aacc68f6e2fa9d63c')
-sha256sums_aarch64=('381641c58186300acad943bce58e71d8558bb1502b90a390bfd8534957e6107d')
-sha256sums_x86_64=('3e21df4b3e3fabf767342268c6f8a2b9c158b338455d67e91cc751e651ed50c3')
+sha256sums_aarch64=('7fa1b6e4340005b92b932c6fabfa88c8d8573d18276de11b2630263dc1b69ebe')
+sha256sums_x86_64=('63831cf22e520713baf55918373e0d92126e14eef1d4f8086ecc8e550bca97f1')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
