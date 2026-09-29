@@ -1,6 +1,6 @@
 # Maintainer: Ranadeep Biswas <mail@rnbguy.at>
 pkgname=bend-bin
-pkgver=2.0.32
+pkgver=2.0.34
 pkgrel=1
 pkgdesc='Bend programming language'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ provides=('bend')
 conflicts=('bend')
 source_x86_64=("bend-${pkgver}-linux-x64.tar.gz::https://github.com/bendlang/bend/releases/download/v${pkgver}/bend-${pkgver}-linux-x64.tar.gz")
 source_aarch64=("bend-${pkgver}-linux-arm64.tar.gz::https://github.com/bendlang/bend/releases/download/v${pkgver}/bend-${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('5c365ddb12954d0933cef751802e0f7d9875f842edcb80f9661f89cd1a9ff7b6')
-sha256sums_aarch64=('f57776d20c0b6aabf47bc9d4523522c10ecd2acde98a2615049b094bb9241523')
+sha256sums_x86_64=('78106a97af242429dcc057258eb8d10f69cddebcd5e263022185a52d003e09bf')
+sha256sums_aarch64=('416a17d282a9fd05ab9637a238b51d5ca508114d9773c37d1c11cad595440ed1')
 options=('!strip')
 
 package() {
