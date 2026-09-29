@@ -2,7 +2,7 @@
 _appname=cherry-studio
 pkgname="${_appname}-electron-bin"
 _pkgname='Cherry Studio'
-pkgver=2.1.2
+pkgver=2.1.3
 _electronversion=44
 pkgrel=1
 pkgdesc="AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs."
@@ -42,9 +42,9 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-linux-arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-linux-x64.rpm")
 sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('41818b7352cc8edc5ab55466fd6b8484a9434ddf3aec13699624427d1b5bf176')
-sha256sums_x86_64=('6f1477f0594daa3ba5cd8288b49f8b3e7c1e8068f11255088764d5069e8cc6ba')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+sha256sums_aarch64=('9833478f8d0cff045b0b9dfda1c83544e802fe383ded12b96b27fe69e90cc629')
+sha256sums_x86_64=('f1c9fabdbe384ba69da2bdce48417ea38d08259d89acec888f966dc703b4e672')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -70,47 +70,34 @@ prepare() {
         s/\"\/opt\/${_pkgname}\/${_pkgname// /}\"/${pkgname%-bin}/g
         s/Icon=${_pkgname// /}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_pkgname// /}.desktop"
-    local _app_dir=$(_get_app_dir)
-    asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked" || continue
-    rm -rf "${_app_dir}/resources/app.asar"
-    find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
-    asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
-    local _arch_rem
+    local _app_dir="$(_get_app_dir)"
     case "${CARCH}" in
         aarch64)
             _arch_rem="x64"
-            ln -sf "/usr/bin/bun" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-arm64/bun"
-            ln -sf "/usr/bin/rg" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-arm64/rg"
-            ln -sf "/usr/bin/uv" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-arm64/uv"
-            ln -sf "/usr/bin/uvx" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-arm64/uvx"
-            ln -sf "/usr/bin/mise" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-arm64/mise"
-            rm -rf \
-                "${_app_dir}/resources/app.asar.unpacked/node_modules/@koromix/koffi-linux-x64" \
-                "${_app_dir}/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/linux-x64"
+            _archdir="linux-arm64"
             ;;
         x86_64)
             _arch_rem="arm64"
-            ln -sf "/usr/bin/bun" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-x64/bun"
-            ln -sf "/usr/bin/rg" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-x64/rg"
-            ln -sf "/usr/bin/uv" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-x64/uv"
-            ln -sf "/usr/bin/uvx" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-x64/uvx"
-            ln -sf "/usr/bin/mise" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-x64/mise"
-            rm -rf \
-                "${_app_dir}/resources/app.asar.unpacked/node_modules/@koromix/koffi-linux-arm64" \
-                "${_app_dir}/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/linux-arm64"
+            _archdir="linux-x64"
             ;;
     esac
-    find "${_app_dir}/resources" -type d \( \
-        -name "*darwin*" -o \
-        -name "*win32*" -o \
-        -name "*${_arch_rem}*" \
-    \) -exec rm -rf {} +
+    asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked" || continue
+    find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
+    find "${srcdir}" -type d \
+        \( -name "*darwin*" -o -name "*win32*" -o -name "*${_arch_rem}*" \) \
+        -exec rm -rf {} +
+    asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
+    ln -sf "/usr/bin/bun" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/${_archdir}/bun"
+            ln -sf "/usr/bin/rg" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/${_archdir}/rg"
+            ln -sf "/usr/bin/uv" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/${_archdir}/uv"
+            ln -sf "/usr/bin/uvx" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/${_archdir}/uvx"
+            ln -sf "/usr/bin/mise" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/${_archdir}/mise"
     find "${_app_dir}/resources" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(_get_app_dir)
+	local _app_dir="$(_get_app_dir)"
 	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
