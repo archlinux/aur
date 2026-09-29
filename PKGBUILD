@@ -1,6 +1,6 @@
 # Maintainer: Wisbendji Fimerlus <archledger236@gmail.com>
 pkgname=(irlume irlume-kcm)
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Face authentication for Linux: IR cameras, consent-gated, photo-spoofing resistant, TPM-sealed, password always works"
 arch=('x86_64')
@@ -16,12 +16,15 @@ backup=('etc/pam.d/irlume-retry-reset')
 # clang: v4l2-sys-mit generates its V4L2 bindings with bindgen, which needs
 # libclang at build time; without it makepkg fails on a clean system.
 makedepends=('rust' 'cargo' 'gcc' 'clang' 'cmake' 'extra-cmake-modules' 'qt6-base' 'qt6-declarative' 'kcmutils' 'kcoreaddons' 'kio')
-# The code comes from the signed git tag. The ONNX model weights are NOT in the
+# The code comes from the release tag, and makepkg checks the tag's signature
+# against validpgpkeys (the key scripts/install.sh pins) before it builds;
+# import it first: `gpg --recv-keys F35053398E3C80FE20891B82C10B8492BD7F30C6`.
+# The ONNX model weights are NOT in the
 # tag; they are hosted as release assets on the version-independent `models-v1`
 # release (kept out of Git LFS so builds do not consume the account's LFS
 # bandwidth quota). makepkg downloads and checksum-verifies them as extra
 # sources here, and prepare() stages them into the build tree.
-source=("git+https://github.com/archledger/irlume.git#tag=v${pkgver}"
+source=("git+https://github.com/archledger/irlume.git#tag=v${pkgver}?signed"
         "glintr100.onnx::https://github.com/archledger/irlume/releases/download/models-v1/glintr100.onnx"
         "face_detection_yunet_2023mar.onnx::https://github.com/archledger/irlume/releases/download/models-v1/face_detection_yunet_2023mar.onnx"
         "face_landmark.onnx::https://github.com/archledger/irlume/releases/download/models-v1/face_landmark.onnx"
@@ -42,6 +45,7 @@ sha256sums=('SKIP'
             'c7f8a6f3054b11f9719f5e24d37ec227721608fff8b90373c6c3e7659864161c'
             'df80cea7228b92562692e56aac965d35766c77399159798c552fb3c77b410c72'
             'dd3abcdbc0f35a9466a682358955ac3826a9a81590cd6b8abcf98548e17bd311')
+validpgpkeys=('F35053398E3C80FE20891B82C10B8492BD7F30C6') # archledger, signs the release tags
 install=irlume.install
 
 prepare() {

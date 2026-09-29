@@ -1,6 +1,6 @@
 pkgbase = irlume
 	pkgdesc = Face authentication for Linux: IR cameras, consent-gated, photo-spoofing resistant, TPM-sealed, password always works
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/archledger/irlume
 	install = irlume.install
@@ -24,7 +24,7 @@ pkgbase = irlume
 	depends = dbus
 	optdepends = fprintd: fingerprint companion factor
 	backup = etc/pam.d/irlume-retry-reset
-	source = git+https://github.com/archledger/irlume.git#tag=v0.14.0
+	source = git+https://github.com/archledger/irlume.git#tag=v0.15.0?signed
 	source = glintr100.onnx::https://github.com/archledger/irlume/releases/download/models-v1/glintr100.onnx
 	source = face_detection_yunet_2023mar.onnx::https://github.com/archledger/irlume/releases/download/models-v1/face_detection_yunet_2023mar.onnx
 	source = face_landmark.onnx::https://github.com/archledger/irlume/releases/download/models-v1/face_landmark.onnx
@@ -33,6 +33,7 @@ pkgbase = irlume
 	source = liveness_vit.onnx::https://github.com/archledger/irlume/releases/download/models-v1/liveness_vit.onnx
 	source = flir.onnx::https://github.com/archledger/irlume/releases/download/models-v1/flir.onnx
 	source = libtensorflowlite_c-v2.19.0-linux-x64.tar.gz::https://github.com/archledger/irlume/releases/download/tflite-runtime-v2.19.0/libtensorflowlite_c-v2.19.0-linux-x64.tar.gz
+	validpgpkeys = F35053398E3C80FE20891B82C10B8492BD7F30C6
 	sha256sums = SKIP
 	sha256sums = a7933ea5330113b01c9b60351d8f4c33003f145d8470ac5f0e52ee2effe25c60
 	sha256sums = 8f2383e4dd3cfbb4553ea8718107fc0423210dc964f9f4280604804ed2552fa4
