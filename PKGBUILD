@@ -29,13 +29,12 @@ optdepends=(
 build() {
 	cd "$srcdir/$_pkgname"
 
-	cmake -B build -DCMAKE_BUILD_TYPE=Release
+	cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
 	cmake --build build -- -j"$(nproc)"
 	# cmake --build build
 }
 
 package() {
 	cd "$srcdir/$_pkgname"
-
-	cmake --install build --prefix "$pkgdir/usr"
+	DESTDIR="$pkgdir" cmake --install build
 }
