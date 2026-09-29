@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-toon
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 epoch=
 pkgdesc="TOON (Token-Oriented Object Notation) encoder/decoder for Python - Bidirectional JSON-to-TOON converter optimized for LLMs"
@@ -26,7 +26,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('d3b08fb4db62484e87515faf1c7abf7a684074320fd56eef73e19f58a929bcf1')
+sha256sums=('9ba162fd06e81506cdd1cacf8f132d9f026c6655db9b1cc6b0694156da73af58')
 
 build() {
     cd "${srcdir}/${pkgname}"
