@@ -9,6 +9,6 @@ pkgbase = eosctl
 	options = !debug
 	options = !lto
 	source = eosctl-0.12.1::https://dl.eoscloud.io/eosctl/archives/v0.12.1/eosctl_0.12.1_linux_amd64.pacman
-	sha256sums = SKIP
+	sha256sums = 834515950fc072854cbd629148ba1cc77b12a7ddc88fb3daf756ad53b7c3084a
 
 pkgname = eosctl
