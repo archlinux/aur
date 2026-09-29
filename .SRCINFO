@@ -1,0 +1,17 @@
+pkgbase = podbox
+	pkgdesc = Podman-native container environment manager
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/bethropolis/podbox
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rustup
+	depends = podman
+	optdepends = fish: default shell in prebuilt images
+	optdepends = openssh: for SSH agent forwarding
+	conflicts = podbox-bin
+	source = https://github.com/bethropolis/podbox/archive/refs/tags/v0.8.1.tar.gz
+	b2sums = d9b7ef9c478f867f0134dd32e029983234e75e4019446b5e866ecf481d78a440e4c5164d548315e1fd3f379135999f521ce9396edbb02c0668c9af72229be8bc
+
+pkgname = podbox
