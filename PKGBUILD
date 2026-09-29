@@ -3,7 +3,7 @@ _pkgname=sofka
 pkgname=sofka
 # renovate: datasource=github-releases depName=nklmilojevic/sofka
 pkgver=0.29.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Kubernetes TUI, reimagined in Rust'
 url='https://github.com/nklmilojevic/sofka'
 license=('Apache-2.0' 'MIT')
