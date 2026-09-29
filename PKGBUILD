@@ -1,6 +1,6 @@
 # Maintainer: antlis <antlis@protonmail.com>
 pkgname=tg-media-bot
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Self-hosted Telegram media downloader bot (yt-dlp + aiogram)"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
 )
 backup=('etc/tg-media-bot/.env')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7bf749ff4cf17b9860a3cbe7859ffb2b394dc5ba81218104bc0a641d1ba89d06')
+sha256sums=('95ac295c6a7c58b5d2907dcd30c6baeea7717268e55708130cec1e8e54fa773e')
 
 package() {
   cd "$pkgname-$pkgver"
