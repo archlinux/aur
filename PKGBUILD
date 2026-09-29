@@ -2,8 +2,8 @@
 
 _pkgname=openzl
 pkgname="$_pkgname"
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='A novel data compression framework'
 url='https://github.com/facebook/openzl'
 arch=('aarch64' 'x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('clang' 'cmake')
 provides=("libopenzl.so=0.2.0")
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2ad14ed9af63d4a70cb05df5d5629871d052371ad017cf5559dc76c41ae3865f')
+sha256sums=('6e105e5c49187ebf63e0bf62fb3ecb22b628248c0bf55bd40ace434721f394f5')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
