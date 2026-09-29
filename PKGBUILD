@@ -3,7 +3,7 @@
 # release (pkgver + checksums refreshed, then pushed to the AUR). It installs
 # the official prebuilt, statically linked musl binary from GitHub Releases.
 pkgname=kache-bin
-pkgver=0.28.0
+pkgver=0.28.1
 pkgrel=1
 pkgdesc='Content-addressed zero-copy build cache for Rust, C/C++ and more (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=('kache')
 conflicts=('kache')
 source_x86_64=("kache-$pkgver-x86_64.tar.gz::https://github.com/kunobi-ninja/kache/releases/download/v$pkgver/kache-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("kache-$pkgver-aarch64.tar.gz::https://github.com/kunobi-ninja/kache/releases/download/v$pkgver/kache-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('63ce67b2ef63497882cb6cd242ae61b721b883f3e70b4937ab9e2539d693a168')
-sha256sums_aarch64=('9419d22722208ea22006498850aba508f4f502ce629a7b855cdc815f649e966e')
+sha256sums_x86_64=('68635a9f92ce5015a2c48c98b968d1b3707b6dbee0ca725e51d1671c9346f38f')
+sha256sums_aarch64=('b2110805eb24afe9b408e5b9a1e3d0584b7fdd0b79fe8cbe548ab29fbaf50176')
 
 package() {
   cd "$srcdir"
@@ -36,7 +36,7 @@ package() {
   # compiler::shim::SHIM_NAMES. Symlink target is the installed path, not
   # the extracted srcdir binary.
   install -d "$pkgdir/usr/lib/kache"
-  for name in cc c++ gcc g++ clang clang++; do
+  for name in cc c++ gcc g++ clang clang++ cargo; do
     ln -s /usr/bin/kache "$pkgdir/usr/lib/kache/$name"
   done
   # Marks the farm so another kache on PATH skips it (see
