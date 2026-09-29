@@ -2,9 +2,9 @@
 _pkgname=butterfly
 pkgname="linwood-${_pkgname}-bin"
 _appname="dev.linwood.${_pkgname}"
-pkgver=2.5.4
+pkgver=2.6.0
 pkgrel=1
-pkgdesc="Powerful, minimalistic, cross-platform, opensource note-taking app.(Prebuilt version)"
+pkgdesc="Powerful, minimalistic, cross-platform, opensource note-taking app."
 arch=(
     'aarch64'
     'x86_64'
@@ -31,8 +31,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x86_64.rpm")
 sha256sums=('8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_aarch64=('83628644cc5645797a5b83e3952ebc62b09fa04316a802ca7981c562b62ac54d')
-sha256sums_x86_64=('4e864ed1ba9e5c587dd951816aaa6f9d798d7359ebf1fcda59345a416d4e3b56')
+sha256sums_aarch64=('5198c6c0cf39a7c38708ee82d9b5110960db70e1b76c79a262d50428fa200293')
+sha256sums_x86_64=('9756b74dabd78baf6e9ff241dd3bfd0e65f02e80c2fddcb533ca046c4be616da')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
@@ -46,7 +46,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib"
-    cp -Pr --no-preserve=ownership "${srcdir}/usr/share/${pkgname%-bin}" "${pkgdir}/usr/lib"
+    cp -a "${srcdir}/usr/share/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/usr/share/${pkgname%-bin}/data/flutter_assets/images/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
