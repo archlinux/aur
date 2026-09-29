@@ -1,0 +1,22 @@
+pkgbase = arm-toolchain-for-embedded-bin
+	pkgdesc = LLVM-based bare-metal compiler toolchain for Arm (ATfE, binary release)
+	pkgver = 23.1.0
+	pkgrel = 1
+	url = https://github.com/arm/arm-toolchain
+	install = arm-toolchain-for-embedded-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0 WITH LLVM-exception
+	depends = gcc-libs
+	depends = glibc
+	depends = libedit
+	depends = zlib
+	options = !strip
+	options = !debug
+	options = staticlibs
+	source_x86_64 = https://github.com/arm/arm-toolchain/releases/download/release-23.1.0-ATfE/ATfE-23.1.0-Linux-x86_64.tar.xz
+	sha256sums_x86_64 = a7be511613af15151c93961ad39c8cf9ae6889a453c8b547f42f4051a416dc8e
+	source_aarch64 = https://github.com/arm/arm-toolchain/releases/download/release-23.1.0-ATfE/ATfE-23.1.0-Linux-AArch64.tar.xz
+	sha256sums_aarch64 = df3b055d05659d8fda710d820e6c1ceff7bca3234c5067abe82a16e781d8de99
+
+pkgname = arm-toolchain-for-embedded-bin
