@@ -1,6 +1,6 @@
 # Maintainer: Dheeraj Vittal Shenoy <dheerajshenoy22@gmail.com>
 pkgname=lektra-bin
-pkgver=0.7.7
+pkgver=0.7.8
 pkgrel=0
 pkgdesc="High-performance Document and Image viewer that prioritizes screen space and control"
 arch=('x86_64')
