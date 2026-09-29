@@ -1,7 +1,7 @@
 # Maintainer: Ignacio Perez <ignacio@feuer.me>
 
 pkgname=dbflux
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="A fast, keyboard-first database client"
 arch=('x86_64' 'aarch64')
@@ -37,9 +37,9 @@ depends=(
 source_x86_64=("https://github.com/0xErwin1/dbflux/releases/download/v${pkgver}/dbflux-linux-amd64.tar.gz"{,.asc})
 source_aarch64=("https://github.com/0xErwin1/dbflux/releases/download/v${pkgver}/dbflux-linux-arm64.tar.gz"{,.asc})
 
-sha256sums_x86_64=('d03fc5b8e26f40fb2f9b195e629e49adc24836fc178ed29def54e02fba12d4ef'
+sha256sums_x86_64=('ff48c386a2460e7a22f00d8d59fb8245254c5147d344837953120afe5b624b6d'
                    'SKIP')
-sha256sums_aarch64=('c24e76b53d9ab1461209a320d2a70f5a465b1d5b93aa61f262cebc7e6fb6b6aa'
+sha256sums_aarch64=('f9965a45dffacdbd7a9214507de64a33997bd6f88a1f630a2a34771de5796dd3'
                     'SKIP')
 
 validpgpkeys=('B39EB98E8860DAFB05670073A614B7D25134987A')
