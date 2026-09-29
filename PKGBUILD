@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://gitlab.com/agrumery/aGrUM/-/archive/${pkgver}/aGrUM-${pkgver}.tar.bz2")
-sha256sums=('0396d469e74c10c2430044542e4946cb53bd497c95aa7709d07173a8d216740b')
+sha256sums=('b8ac6ad30dcc8aa392e39ac09cf919c3ddc00ecc7630f7789b2b1c45fccc6203')
 
 _architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
