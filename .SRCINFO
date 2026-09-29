@@ -1,6 +1,6 @@
 pkgbase = cnmplayer-bin
 	pkgdesc = A terminal-based Netease cloud music player with spectrum visualizer, lyrics support. (Prebuilt binary)
-	pkgver = 0.5.4
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/professor-lee/CNMPlayer
 	arch = x86_64
@@ -14,12 +14,12 @@ pkgbase = cnmplayer-bin
 	optdepends = cava: spectrum visualization
 	optdepends = ttf-nerd-fonts-symbols: For icons and spectrum visualizer
 	optdepends = ttf-jetbrains-mono-nerd: Recommended monospace font
-	provides = cnmplayer=0.5.4
+	provides = cnmplayer=0.6.0
 	conflicts = cnmplayer
 	conflicts = cnmplayer-git
-	source_x86_64 = cnmplayer-bin-0.5.4-x86_64.tar.xz::https://github.com/professor-lee/CNMPlayer/releases/download/v0.5.4/CNMPlayer_v0.5.4_linux_amd64.tar.xz
-	sha256sums_x86_64 = 486dec97ab663beccaf33b05b26fc5716d3fdce3bb35afa11474e2da66438e21
-	source_aarch64 = cnmplayer-bin-0.5.4-aarch64.tar.xz::https://github.com/professor-lee/CNMPlayer/releases/download/v0.5.4/CNMPlayer_v0.5.4_linux_aarch64.tar.xz
-	sha256sums_aarch64 = cd555ac7eb445cfed998a0ec84c5260c03578fece9a50126b292014a376fa30c
+	source_x86_64 = cnmplayer-bin-0.6.0-x86_64.tar.xz::https://github.com/professor-lee/CNMPlayer/releases/download/v0.6.0/CNMPlayer_v0.6.0_linux_amd64.tar.xz
+	sha256sums_x86_64 = e76707e2739b1d821dfd62ef5ab9b4e2b06383ccce6c5be74edebeeadd837721
+	source_aarch64 = cnmplayer-bin-0.6.0-aarch64.tar.xz::https://github.com/professor-lee/CNMPlayer/releases/download/v0.6.0/CNMPlayer_v0.6.0_linux_aarch64.tar.xz
+	sha256sums_aarch64 = 63d7a6e2eb6b6f0a0f0bd0b10fc1a8a9b3956dc98a35e3e165a0ca514877aa0f
 
 pkgname = cnmplayer-bin
