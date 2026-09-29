@@ -2,7 +2,7 @@
 # Maintainer: Lucas Santos <hello@lsantos.dev>
 
 pkgname='proton-drive-fs'
-pkgver=0.27.0
+pkgver=0.27.1
 pkgrel=1
 pkgdesc='FUSE virtual filesystem for Proton Drive on Linux.'
 url='https://github.com/khaosdoctor/proton-drive-linux-fs'
@@ -14,7 +14,7 @@ depends=('fuse3')
 makedepends=('go' 'git')
 optdepends=('zenity: About dialog' 'libsecret: store the key password in the OS keyring')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/khaosdoctor/proton-drive-linux-fs/releases/download/v${pkgver}/proton-drive-linux-fs-${pkgver}.tar.gz")
-sha256sums=('4cf390c65082da99c754eeb329a55f8eea34c24a943ebf626fc6bd3a8312e281')
+sha256sums=('929959554cef359e39348377d94a6d798161903d18c3c4b3150d8ba5c5a0c648')
 prepare() {
   go mod download
 }
