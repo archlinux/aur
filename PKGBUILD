@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=annotatr
-_pkgver=1.38.0
+_pkgver=1.38.3
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.38.3
 pkgrel=1
 pkgdesc='Annotation of Genomic Regions to Genomic Annotations'
 arch=('any')
@@ -49,7 +49,7 @@ optdepends=(
   r-txdb.rnorvegicus.ucsc.rn6.refgene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c89c5da0271d555d59924896d415f7b12f4de96e6cd576599f4832b382870549')
+sha256sums=('2b1fd3df90c869ebb36907b0caf73312cb039c9731acd2aeff60f346e2190268')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
