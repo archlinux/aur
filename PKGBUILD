@@ -1,6 +1,6 @@
 # Maintainer: sinbud2004 <sinbud2004@gmail.com>
 pkgname=xlsxtomysql
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Excel to MySQL: convert .xlsx/.xls spreadsheets into CREATE TABLE + INSERT statements (zero-dependency single-file Rust CLI)"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('python' 'python-openpyxl')
 optdepends=('python-xlrd: read Excel 2003 (.xls) spreadsheets')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver-src.tar.gz")
-sha256sums=('8b59e1aa1257a54201f14837e1c8eeabfd57456210bd4073f8a7d8c545a34018')
+sha256sums=('4733c84c6926323e6f23a9c628ad72cea3dd0022494ead08b82636a1b5ff38f7')
 
 build() {
     cd "$pkgname-$pkgver"
