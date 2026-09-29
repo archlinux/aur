@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.6
-pkgver=1.0.0beta6
+_tag=v1.0.0-beta.7
+pkgver=1.0.0beta7
 pkgrel=1
 pkgdesc="A desktop shell for niri, built with Quickshell: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
@@ -20,6 +20,11 @@ depends=(
     'gcc-libs'
     'glibc'
     'util-linux'
+    # Dictation (PRD §9.6): installing Bioma installs all of it.
+    'whisper-cpp'
+    'ggml-vulkan'
+    'whisper.cpp-model-large-v3-turbo-q5_0'
+    'python-evdev'
 )
 makedepends=('cargo' 'clang' 'pipewire')
 optdepends=(
@@ -49,7 +54,7 @@ optdepends=(
 options=('!lto')
 install=bioma-shell.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('0ce5d12b58dbf92ee521e7492e9cdac672f8b6e109c1240b9badd5ad86278489')
+sha256sums=('4f3ef9d467c2821d230eda0d0a46cecc509c0fdc1ce995e69b3c73a39ab0782a')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
@@ -97,4 +102,11 @@ package() {
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 docs/configuration.md "$pkgdir/usr/share/doc/$pkgname/configuration.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # Dictation pastes through a uinput keyboard: the seat's user gets
+    # /dev/uinput, as steam-devices gives it for controllers.
+    install -Dm644 packaging/system/70-bioma-uinput.rules \
+        "$pkgdir/usr/lib/udev/rules.d/70-bioma-uinput.rules"
+    install -Dm644 packaging/system/bioma-uinput.conf \
+        "$pkgdir/usr/lib/modules-load.d/bioma-uinput.conf"
 }

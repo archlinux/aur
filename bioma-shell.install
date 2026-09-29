@@ -1,4 +1,12 @@
+# Dictation's paste needs /dev/uinput now, not after the next reboot: the
+# module is loaded and the node triggered, so the seat's user gets its ACL.
+_uinput() {
+    modprobe uinput 2>/dev/null || true
+    udevadm trigger --subsystem-match=misc --sysname-match=uinput 2>/dev/null || true
+}
+
 post_install() {
+    _uinput
     cat <<'MSG'
 ==> Bioma is installed in /usr/share/bioma. Set it up once for your user:
 
@@ -15,6 +23,7 @@ MSG
 }
 
 post_upgrade() {
+    _uinput
     cat <<'MSG'
 ==> Restart Bioma to run the new version:  /usr/share/bioma/scripts/shell restart
 MSG
