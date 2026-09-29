@@ -1,7 +1,7 @@
 pkgbase = libvirt-iso-archlinux-bin
 	pkgdesc = Official Arch Linux installation ISO for libvirt
 	pkgver = 2026.09.01
-	pkgrel = 2
+	pkgrel = 3
 	url = https://archlinux.org/download/
 	arch = x86_64
 	license = LicenseRef-Various
