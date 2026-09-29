@@ -1,5 +1,5 @@
 pkgname=relaybar-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='GTK manager for SSH local port forwards'
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('relaybar')
 options=('!debug')
 _source="relaybar-v$pkgver-$CARCH-unknown-linux-gnu"
 source=("$_source.tar.gz::$url/releases/download/v$pkgver/$_source.tar.gz")
-sha256sums=('e61f5a50aaf87d80f40a30c7ecf09abf9305f59f1a27ec679bc8a4ff18bda5a7')
+sha256sums=('3f6fe2e5236e8a544601fce590582fc7c77f4f8a0170d5cd3689d02940ab55cb')
 
 package() {
   cd "$_source"
