@@ -2,13 +2,13 @@
 
 pkgname=brother-dcpt735dw
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Driver for Brother DCP-T735DW printer"
 arch=("i686" "x86_64")
 url="https://support.brother.com/g/b/downloadtop.aspx?c=cn&lang=zh&prod=dcpt735dw_eu_cn"
 license=("EULA")
-source=("https://d.brother-movie.com/driver/4210/dcpt735dwpdrv-3.6.1-1.x86_64.rpm")
-md5sums=("05ea25d51abde2949218e54165b989b5")
+source=("https://d.brother-movie.com/driver/6280/dcpt735dwpdrv-3.6.1-2.x86_64.rpm")
+md5sums=('fea1f5c1d740f525b1c3b35a8b630226')
 depends=("cups")
 
 package() {
