@@ -2,7 +2,7 @@
 # Maintainer: Wu, Zhenyu <wuzhenyu@ustc.edu>
 _pkgname=pyrime
 pkgname=python-$_pkgname
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="rime for python, attached to prompt-toolkit keybindings for some prompt-toolkit applications such as ptpython"
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(python-installer)
 optdepends=(ptpython python-prompt_toolkit python-ptpython python-pynvim python-colorama)
 license=(GPL3)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('33904432f6969930a1f831362eb5b95aa88e097a8ccb6325bc074298af8627ec')
+sha256sums=('26cabb08815e6d4bfaa8228b33f48e6240b74142fdb8687428a65c37b8e9ab86')
 
 build() {
 	cd "$srcdir/pyrime-$pkgver" || return 1
