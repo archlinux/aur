@@ -10,7 +10,12 @@ SPDX-PackageSupplier = "Yangtse Su <yangtsesu@gmail.com>"
 SPDX-PackageDownloadLocation = "https://github.com/YangtseSu/lunar"
 
 [[annotations]]
-path = ["PKGBUILD", ".gitignore", "LICENSE"]
+path = [
+    "PKGBUILD",
+    ".SRCINFO",
+    ".gitignore",
+    "LICENSE",
+]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 Yangtse Su"
 SPDX-License-Identifier = "0BSD"
