@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Productivity-focused sandboxing for Linux"
 
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,11 +30,11 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurl}/releases/download/${_gitversion}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('e6dedb9324f82f8b2421a15b3549928e8c2ba13888f87786ce93e0ce6b27a939'
+sha256sums=('31b0e6225b61f06c77f7788c1531fa5884899664aa861e0d57e327aafeeb843b'
             'd78ef79ac814b25c9a02aab1a8a328b1cc5d4f603be522c072b44e70f2f3803f'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('e7398467402f20402db7734b6bab99bd1756297df8c9edd4872d53f55122b790')
-sha256sums_aarch64=('11e5f99ae4c6b952bdd41b14252598d05e516f1359fb9c2ebfdd6b70d50e2632')
+sha256sums_x86_64=('14d4300d07fa46af4a03a42ba85386c515e87cf97fb6d14b297abd689cd11629')
+sha256sums_aarch64=('7c24d1a08adae381e63bb59334c77234a5bfa7bbcc6882e19acc9890fa8b5cb6')
 
 
 package() {
