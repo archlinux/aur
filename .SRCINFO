@@ -1,0 +1,27 @@
+pkgbase = katwhisker
+	pkgdesc = Small web radio player for KDE Plasma, using the radio-browser.info directory
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/calibancode/katwhisker
+	arch = x86_64
+	license = GPL-3.0-or-later
+	license = CC-BY-SA-4.0
+	license = CC0-1.0
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = kcoreaddons
+	depends = ki18n
+	depends = kirigami
+	depends = kirigami-addons
+	depends = libstdc++
+	depends = qqc2-desktop-style
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-multimedia
+	depends = qt6-svg
+	source = katwhisker-0.1.0.tar.gz::https://github.com/calibancode/katwhisker/archive/v0.1.0.tar.gz
+	sha256sums = a99decc281354f42b8ec4f8b78664eaf9d6a7d9b0c948f09cad529b5988155bf
+
+pkgname = katwhisker
