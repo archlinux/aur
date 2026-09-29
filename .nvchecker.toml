@@ -1,0 +1,3 @@
+[perl-text-visualwidth]
+source = "cpan"
+cpan = "Text-VisualWidth"
