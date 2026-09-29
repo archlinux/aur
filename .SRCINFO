@@ -1,7 +1,7 @@
 pkgbase = python-tree-sitter-java
 	pkgdesc = Java grammar for tree-sitter
 	pkgver = 0.23.5
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/tree-sitter/tree-sitter-java
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = python-tree-sitter-java
 	makedepends = python-setuptools
 	depends = python
 	depends = python-tree-sitter
-	source = python-tree-sitter-java-0.23.5.tar.gz::https://github.com/tree-sitter/tree-sitter-java/archive/refs/tags/v0.23.5.tar.gz
-	sha256sums = cb199e0faae4b2c08425f88cbb51c1a9319612e7b96315a174a624db9bf3d9f0
+	source = python-tree-sitter-java-0.23.5-94703d5a6bed02b98e438d7cad1136c01a60ba2c.tar.gz::https://github.com/tree-sitter/tree-sitter-java/archive/94703d5a6bed02b98e438d7cad1136c01a60ba2c.tar.gz
+	sha256sums = 39dea56cc3bb5fb1658f79b195a92b6f08885886bca636adf2dc6243af641c47
 
 pkgname = python-tree-sitter-java

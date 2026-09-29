@@ -3,7 +3,8 @@
 _name=tree-sitter-java
 pkgname=python-tree-sitter-java
 pkgver=0.23.5
-pkgrel=9
+pkgrel=10
+_commit=94703d5a6bed02b98e438d7cad1136c01a60ba2c
 pkgdesc="Java grammar for tree-sitter"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tree-sitter/tree-sitter-java"
@@ -15,16 +16,16 @@ makedepends=(
     'python-wheel'
     'python-setuptools'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tree-sitter/tree-sitter-java/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cb199e0faae4b2c08425f88cbb51c1a9319612e7b96315a174a624db9bf3d9f0')
+source=("${pkgname}-${pkgver}-${_commit}.tar.gz::https://github.com/tree-sitter/tree-sitter-java/archive/${_commit}.tar.gz")
+sha256sums=('39dea56cc3bb5fb1658f79b195a92b6f08885886bca636adf2dc6243af641c47')
 
 build() {
-    cd "${_name}-${pkgver}"
+    cd "${_name}-${_commit}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${_name}-${pkgver}"
+    cd "${_name}-${_commit}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
