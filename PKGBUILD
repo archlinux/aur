@@ -3,13 +3,13 @@
 # Contributor: Kris Nóva <kris@nivenly.com> R.I.P.
 
 pkgname='falco'
-pkgver='0.44.1'
-_rules_ver='5.1.0'
-_libs_ver='0.25.4'
-_driver_ver='10.2.0'
-_ctl_ver='0.13.0'
-_p_container_ver='0.7.1'
-pkgrel='6'
+pkgver='0.45.0'
+_rules_ver='5.2.0'
+_libs_ver='0.26.0'
+_driver_ver='11.0.0'
+_ctl_ver='0.14.2'
+_p_container_ver='0.7.5'
+pkgrel='1'
 pkgdesc='Falco is a cloud native runtime security tool for Linux operating systems'
 arch=('x86_64' 'aarch64')
 url="https://${pkgname}.org/"
@@ -31,12 +31,12 @@ source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/${pkgname}/tar.gz
 	"${pkgname}.service"
 	"${pkgname}.sysusers"
 	"${pkgname}.tmpfiles")
-sha256sums=('661d0dc62f0eb82352f8b176e423bd34fdc44ca4c98b3f329fd73d984f0c50f5'
-            '8b1a9e61030e88ca3e8727cfe20bab8f662d6e2e6b13178e2be57d38e025af24'
-            '272a5a0c05e7c10a658ed9649023e6179061a4ab29e012602893586ac64b5938'
-            '0e585f5fc2b76696ef2cb902f0901ea39a2f2df87e1f091f3348f968b9085f39'
-            '804a37e6372201ee21d3bc99ffea6079484b557ece0aa17719dbc6e8cb2b5fec'
-            '111223c2c85344856ac371243efbb0ea4b07538a62738bf80e00bac17e3cf7d6'
+sha256sums=('6982fc2d00444b35c89b863ca70827383e68be8fd08c3d1551315c909da8c0ee'
+            'b9c16a1de507744a99d67717df3ecaa767782dd95fa73d027775cd576bcfbdc1'
+            '430b90236a345f913387adb4c042e7d9140b4fec128f7ef863b7e53f2fdd5e35'
+            '4120c6363fbbad75a48e8425447f89fb30c3ee2aa5537d2112486dddfcc0e336'
+            '2ac3bd90913933e7fb6f9a722e1b8999dedaaab158c1ea073405d28c491112c1'
+            '820d66250f4537acb1e121cca86b7ce9c47ac7d3e87b16de03047eedd29ebc7f'
             '64edf36a93fceb949d186505d703c1fb49a47892b63d77d49f4db92ee69df535'
             'ce971a3f52ab84182146da14651eabbac9b33157bacebe5efc087f461d18bc49'
             '5c7f1ba69b9af0e919deea901b8b9dfc1fa8d9e287b0c5a189e7dca9956558e1')
