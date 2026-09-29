@@ -2,7 +2,7 @@
 
 pkgname=pi
 pkgver=0.99.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AI coding agent for the terminal — minimal, extensible and optimized for tool use"
 arch=('x86_64' 'aarch64')
 url="https://github.com/earendil-works/pi"
@@ -50,7 +50,7 @@ package() {
   cp -a node_modules/. "$pkgdir/$mod_dir/node_modules/"
 
   local _pkg
-  for _pkg in ai agent tui telemetry chord coding-agent; do
+  for _pkg in ai agent tui telemetry chord coding-agent codemode mcp; do
     install -dm755 "$pkgdir/$mod_dir/packages/$_pkg"
     cp -a "packages/$_pkg/dist" "packages/$_pkg/package.json" "packages/$_pkg/README.md" \
       "$pkgdir/$mod_dir/packages/$_pkg/"
