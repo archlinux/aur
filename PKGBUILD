@@ -3,17 +3,18 @@
 
 _reponame=mold
 pkgname=${_reponame}-git
-pkgver=2.42.1.r466.g99d79c42
-pkgrel=2
-pkgdesc='A Modern Linker'
+pkgver=2.42.1.r513.ga9c709b8
+pkgrel=1
+pkgdesc='A Modern Linker in Rust'
 arch=('x86_64')
 url="https://github.com/rui314/$_reponame"
 license=('MIT')
-# bundled: xxhash, mimalloc, zstd, libblake3
+# bundled: xxhash, mimalloc, libblake3
 depends=(
   glibc
   libgcc
   zlib
+  zstd
 )
 makedepends=(
   cargo
@@ -37,7 +38,10 @@ prepare() {
 
 build() {
   cd "$_reponame"
+  # Options below are used by both build() and check()
+  export ZSTD_SYS_USE_PKG_CONFIG=1
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
+
   cargo build --release --locked --package mold-cli
 }
 
