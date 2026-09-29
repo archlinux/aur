@@ -2,7 +2,7 @@
 # Maintainer: Lucas Santos <hello@lsantos.dev>
 
 pkgname='proton-drive-fs-bin'
-pkgver=0.26.1
+pkgver=0.27.0
 pkgrel=1
 pkgdesc='FUSE virtual filesystem for Proton Drive on Linux.'
 url='https://github.com/khaosdoctor/proton-drive-linux-fs'
@@ -14,17 +14,17 @@ depends=('fuse3')
 optdepends=('zenity: About dialog' 'libsecret: store the key password in the OS keyring')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/khaosdoctor/proton-drive-linux-fs/releases/download/v${pkgver}/proton-drive-linux-fs_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('8a96b85ba7e9b912efaba4c103e94d0135fa54238585312bef5662e9e4271cdc')
+sha256sums_aarch64=('6540cf16399e723be1919b454bdf5ee8b64030c2036e90c3d90394e0680b3c99')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/khaosdoctor/proton-drive-linux-fs/releases/download/v${pkgver}/proton-drive-linux-fs_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('e995764760f45e4bd7a03b1b0f90c242a9e561a7470a2433154b961aa37b5878')
+sha256sums_x86_64=('89c929ca6dc51ad2cfb6be30ccd8043acdecdca0a596aa86f1e03cd2904b208b')
 
 package() {
   install -Dm755 "./proton-drive-fs" "${pkgdir}/usr/bin/proton-drive-fs"
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "./contrib/proton-drive-fs.desktop" "${pkgdir}/usr/share/applications/proton-drive-fs.desktop"
   install -Dm644 "./contrib/icons/proton-drive-fs.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/proton-drive-fs.png"
-  sed 's|@BINDIR@|/usr/bin|g' "./contrib/systemd/proton-drive-fs.service" > "${srcdir}/proton-drive-fs.service"
+  sed 's|@BINDIR@|/usr/bin|g' "./cmd/proton-drive-fs/proton-drive-fs.service" > "${srcdir}/proton-drive-fs.service"
   install -Dm644 "${srcdir}/proton-drive-fs.service" "${pkgdir}/usr/lib/systemd/user/proton-drive-fs.service"
   install -Dm644 "./contrib/io.github.khaosdoctor.proton_drive_fs.metainfo.xml" "${pkgdir}/usr/share/metainfo/io.github.khaosdoctor.proton_drive_fs.metainfo.xml"
   install -Dm644 "./contrib/packaging/proton-drive-fs-upgrade.hook" "${pkgdir}/usr/share/libalpm/hooks/proton-drive-fs-upgrade.hook"
