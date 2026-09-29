@@ -1,7 +1,7 @@
 pkgbase = vmaf-full
 	pkgdesc = Perceptual video quality assessment algorithm based on multi-method fusion with all features enabled
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Netflix/vmaf/
 	arch = x86_64
 	license = BSD-2-Clause-Patent
@@ -19,9 +19,9 @@ pkgbase = vmaf-full
 	optdepends = nsight-systems: NVTX range profiling
 	provides = vmaf=3.2.1
 	conflicts = vmaf
-	source = vmaf-3.2.1.tar.gz::https://github.com/Netflix/vmaf/archive/v3.2.1/vmaf-3.2.1.tar.gz
+	source = vmaf-3.2.1-f85a853692a8c730d0270cd733c8bb30b5b93b7c.tar.gz::https://github.com/Netflix/vmaf/archive/f85a853692a8c730d0270cd733c8bb30b5b93b7c.tar.gz
 	source = vmaf-full-cuda-include-dir.patch
-	sha256sums = 5df7386911bc15fd1ca783132528748d219768ae4fc5f8e0b61184f041648092
+	sha256sums = 0cafe43e1798e6ba5d47cb1cb475665cd8b81a8f6965ff19112d062449b6bacd
 	sha256sums = 07486510455ea887e062d61cad7e831e92fc2e49ef189be7823d7e729bbd4f00
 
 pkgname = vmaf-full

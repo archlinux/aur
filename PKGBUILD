@@ -2,7 +2,8 @@
 
 pkgname=vmaf-full
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
+_commit=f85a853692a8c730d0270cd733c8bb30b5b93b7c
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion with all features enabled'
 arch=('x86_64')
 url='https://github.com/Netflix/vmaf/'
@@ -25,14 +26,14 @@ optdepends=(
     'nvidia-utils: runtime NVIDIA driver support for CUDA feature extractors'
     'nsight-systems: NVTX range profiling')
 source=(
-    "vmaf-${pkgver}.tar.gz::https://github.com/Netflix/vmaf/archive/v${pkgver}/vmaf-${pkgver}.tar.gz"
+    "vmaf-${pkgver}-${_commit}.tar.gz::https://github.com/Netflix/vmaf/archive/${_commit}.tar.gz"
     'vmaf-full-cuda-include-dir.patch')
 sha256sums=(
-    '5df7386911bc15fd1ca783132528748d219768ae4fc5f8e0b61184f041648092'
+    '0cafe43e1798e6ba5d47cb1cb475665cd8b81a8f6965ff19112d062449b6bacd'
     '07486510455ea887e062d61cad7e831e92fc2e49ef189be7823d7e729bbd4f00')
 
 prepare() {
-    cd "vmaf-${pkgver}"
+    cd "vmaf-${_commit}"
 
     # Upstream tagged v3.2.1 without updating Meson's project version.
     local _meson='libvmaf/meson.build'
@@ -75,7 +76,7 @@ build() {
         -Denable_cuda='true' \
         -Denable_nvtx='true' \
         -Denable_nvcc='true' \
-        "vmaf-${pkgver}/libvmaf" build
+        "vmaf-${_commit}/libvmaf" build
     meson compile -C build --jobs "$_jobs"
 }
 
@@ -85,6 +86,6 @@ check() {
 
 package() {
     meson install -C build --destdir "$pkgdir"
-    install -D -m644 "vmaf-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    cp -dr --no-preserve='ownership' "vmaf-${pkgver}/model" "${pkgdir}/usr/share"
+    install -D -m644 "vmaf-${_commit}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    cp -dr --no-preserve='ownership' "vmaf-${_commit}/model" "${pkgdir}/usr/share"
 }
