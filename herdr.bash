@@ -145,11 +145,17 @@ _herdr() {
             herdr__subcmd__machine,list)
                 cmd="herdr__subcmd__machine__subcmd__list"
                 ;;
+            herdr__subcmd__machine,reconnect)
+                cmd="herdr__subcmd__machine__subcmd__reconnect"
+                ;;
             herdr__subcmd__machine,remove)
                 cmd="herdr__subcmd__machine__subcmd__remove"
                 ;;
             herdr__subcmd__machine,rename)
                 cmd="herdr__subcmd__machine__subcmd__rename"
+                ;;
+            herdr__subcmd__machine,status)
+                cmd="herdr__subcmd__machine__subcmd__status"
                 ;;
             herdr__subcmd__notification,show)
                 cmd="herdr__subcmd__notification__subcmd__show"
@@ -845,7 +851,7 @@ _herdr() {
             return 0
             ;;
         herdr__subcmd__machine)
-            opts="list add rename remove enable disable"
+            opts="list status reconnect add rename remove enable disable"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -922,6 +928,20 @@ _herdr() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
+        herdr__subcmd__machine__subcmd__reconnect)
+            opts="<LABEL_OR_ID>"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
         herdr__subcmd__machine__subcmd__remove)
             opts="<PROFILE_ID>"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
@@ -947,6 +967,20 @@ _herdr() {
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
                     ;;
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        herdr__subcmd__machine__subcmd__status)
+            opts="--json [LABEL_OR_ID]"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
                 *)
                     COMPREPLY=()
                     ;;
@@ -1301,7 +1335,7 @@ _herdr() {
             return 0
             ;;
         herdr__subcmd__pane__subcmd__report__subcmd__agent)
-            opts="--source --agent --state --message --seq --agent-session-id --agent-session-path <PANE_ID>"
+            opts="--source --agent --state --message --seq --agent-session-id --agent-session-path <PANE_ID> [RESUME_ARG]..."
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -1343,7 +1377,7 @@ _herdr() {
             return 0
             ;;
         herdr__subcmd__pane__subcmd__report__subcmd__agent__subcmd__session)
-            opts="--source --agent --seq --agent-session-id --agent-session-path --session-start-source <PANE_ID>"
+            opts="--source --agent --seq --agent-session-id --agent-session-path --session-start-source <PANE_ID> [RESUME_ARG]..."
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0

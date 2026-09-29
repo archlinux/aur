@@ -143,10 +143,21 @@ _arguments "${_arguments_options[@]}" : \
 '--json[]' \
 && ret=0
 ;;
+(status)
+_arguments "${_arguments_options[@]}" : \
+'--json[]' \
+'::machine:_default' \
+&& ret=0
+;;
+(reconnect)
+_arguments "${_arguments_options[@]}" : \
+':machine:_default' \
+&& ret=0
+;;
 (add)
 _arguments "${_arguments_options[@]}" : \
-'--label[Set the machine label shown in the sidebar]:LABEL:_default' \
-'--remote-session[Set the explicit Herdr session on the remote machine]:NAME:_default' \
+'--label[Set the machine label shown in the sidebar (defaults to the SSH host, or host/session)]:LABEL:_default' \
+'--remote-session[Select a session explicitly (default without an interactive terminal)]:NAME:_default' \
 ':ssh-target:_default' \
 && ret=0
 ;;
@@ -710,6 +721,7 @@ _arguments "${_arguments_options[@]}" : \
 '--agent-session-id[]:ID:_default' \
 '--agent-session-path[]:PATH:_files' \
 ':pane_id:_default' \
+'*::resume_argv -- Command that resumes this session after a Herdr restart; starts with a plain command name:_default' \
 && ret=0
 ;;
 (report-agent-session)
@@ -721,6 +733,7 @@ _arguments "${_arguments_options[@]}" : \
 '--agent-session-path[]:PATH:_files' \
 '--session-start-source[]:SOURCE:_default' \
 ':pane_id:_default' \
+'*::resume_argv -- Command that resumes this session after a Herdr restart; starts with a plain command name:_default' \
 && ret=0
 ;;
 (release-agent)
@@ -1262,6 +1275,8 @@ _herdr__subcmd__integration__subcmd__uninstall_commands() {
 _herdr__subcmd__machine_commands() {
     local commands; commands=(
 'list:List saved SSH machines' \
+'status:Check saved machines without prompting for authentication' \
+'reconnect:Authenticate a saved machine in this terminal and verify connectivity' \
 'add:Prepare the remote Herdr server and save an SSH machine' \
 'rename:Rename a saved SSH machine' \
 'remove:Remove a saved SSH machine' \
@@ -1290,6 +1305,11 @@ _herdr__subcmd__machine__subcmd__list_commands() {
     local commands; commands=()
     _describe -t commands 'herdr machine list commands' commands "$@"
 }
+(( $+functions[_herdr__subcmd__machine__subcmd__reconnect_commands] )) ||
+_herdr__subcmd__machine__subcmd__reconnect_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr machine reconnect commands' commands "$@"
+}
 (( $+functions[_herdr__subcmd__machine__subcmd__remove_commands] )) ||
 _herdr__subcmd__machine__subcmd__remove_commands() {
     local commands; commands=()
@@ -1299,6 +1319,11 @@ _herdr__subcmd__machine__subcmd__remove_commands() {
 _herdr__subcmd__machine__subcmd__rename_commands() {
     local commands; commands=()
     _describe -t commands 'herdr machine rename commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__machine__subcmd__status_commands] )) ||
+_herdr__subcmd__machine__subcmd__status_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr machine status commands' commands "$@"
 }
 (( $+functions[_herdr__subcmd__notification_commands] )) ||
 _herdr__subcmd__notification_commands() {

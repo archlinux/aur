@@ -63,15 +63,18 @@ complete -c herdr -n "__fish_herdr_using_subcommand config; and not __fish_seen_
 complete -c herdr -n "__fish_herdr_using_subcommand config; and not __fish_seen_subcommand_from check reset-keys" -f -a "reset-keys" -d 'Reset custom keybindings'
 complete -c herdr -n "__fish_herdr_using_subcommand channel; and not __fish_seen_subcommand_from show set" -f -a "show" -d 'Print the configured update channel'
 complete -c herdr -n "__fish_herdr_using_subcommand channel; and not __fish_seen_subcommand_from show set" -f -a "set" -d 'Choose the update channel'
-complete -c herdr -n "__fish_herdr_using_subcommand machine; and not __fish_seen_subcommand_from list add rename remove enable disable" -f -a "list" -d 'List saved SSH machines'
-complete -c herdr -n "__fish_herdr_using_subcommand machine; and not __fish_seen_subcommand_from list add rename remove enable disable" -f -a "add" -d 'Prepare the remote Herdr server and save an SSH machine'
-complete -c herdr -n "__fish_herdr_using_subcommand machine; and not __fish_seen_subcommand_from list add rename remove enable disable" -f -a "rename" -d 'Rename a saved SSH machine'
-complete -c herdr -n "__fish_herdr_using_subcommand machine; and not __fish_seen_subcommand_from list add rename remove enable disable" -f -a "remove" -d 'Remove a saved SSH machine'
-complete -c herdr -n "__fish_herdr_using_subcommand machine; and not __fish_seen_subcommand_from list add rename remove enable disable" -f -a "enable" -d 'Enable a saved SSH machine'
-complete -c herdr -n "__fish_herdr_using_subcommand machine; and not __fish_seen_subcommand_from list add rename remove enable disable" -f -a "disable" -d 'Disable a saved SSH machine'
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and not __fish_seen_subcommand_from list status reconnect add rename remove enable disable" -f -a "list" -d 'List saved SSH machines'
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and not __fish_seen_subcommand_from list status reconnect add rename remove enable disable" -f -a "status" -d 'Check saved machines without prompting for authentication'
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and not __fish_seen_subcommand_from list status reconnect add rename remove enable disable" -f -a "reconnect" -d 'Authenticate a saved machine in this terminal and verify connectivity'
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and not __fish_seen_subcommand_from list status reconnect add rename remove enable disable" -f -a "add" -d 'Prepare the remote Herdr server and save an SSH machine'
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and not __fish_seen_subcommand_from list status reconnect add rename remove enable disable" -f -a "rename" -d 'Rename a saved SSH machine'
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and not __fish_seen_subcommand_from list status reconnect add rename remove enable disable" -f -a "remove" -d 'Remove a saved SSH machine'
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and not __fish_seen_subcommand_from list status reconnect add rename remove enable disable" -f -a "enable" -d 'Enable a saved SSH machine'
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and not __fish_seen_subcommand_from list status reconnect add rename remove enable disable" -f -a "disable" -d 'Disable a saved SSH machine'
 complete -c herdr -n "__fish_herdr_using_subcommand machine; and __fish_seen_subcommand_from list" -l json
-complete -c herdr -n "__fish_herdr_using_subcommand machine; and __fish_seen_subcommand_from add" -l label -d 'Set the machine label shown in the sidebar' -r
-complete -c herdr -n "__fish_herdr_using_subcommand machine; and __fish_seen_subcommand_from add" -l remote-session -d 'Set the explicit Herdr session on the remote machine' -r
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and __fish_seen_subcommand_from status" -l json
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and __fish_seen_subcommand_from add" -l label -d 'Set the machine label shown in the sidebar (defaults to the SSH host, or host/session)' -r
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and __fish_seen_subcommand_from add" -l remote-session -d 'Select a session explicitly (default without an interactive terminal)' -r
 complete -c herdr -n "__fish_herdr_using_subcommand machine; and __fish_seen_subcommand_from rename" -l label -d 'Set the machine label shown in the sidebar' -r
 complete -c herdr -n "__fish_herdr_using_subcommand server; and not __fish_seen_subcommand_from stop reload-config agent-manifests update-agent-manifests reload-agent-manifests" -f -a "stop" -d 'Stop the running server'
 complete -c herdr -n "__fish_herdr_using_subcommand server; and not __fish_seen_subcommand_from stop reload-config agent-manifests update-agent-manifests reload-agent-manifests" -f -a "reload-config" -d 'Reload config in the running server'
