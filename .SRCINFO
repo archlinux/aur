@@ -1,6 +1,6 @@
 pkgbase = siyuan-git
 	pkgdesc = An open-source, privacy-first, self-hosted knowledge workspace where humans and AI agents work together.开源、隐私优先、自托管的知识工作空间，让人与智能体在此协作
-	pkgver = 3.8.4.r0.g9f775e8
+	pkgver = 3.8.6.r0.g1588124
 	pkgrel = 1
 	url = https://b3log.org/siyuan
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = siyuan-git
 	makedepends = nvm
 	makedepends = npm
 	makedepends = go
-	makedepends = curl
 	makedepends = pnpm
 	depends = electron44
 	provides = siyuan
@@ -19,6 +18,6 @@ pkgbase = siyuan-git
 	source = siyuan.git::git+https://github.com/siyuan-note/siyuan.git
 	source = siyuan.sh
 	sha256sums = SKIP
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
 pkgname = siyuan-git

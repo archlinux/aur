@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=3.8.4.r0.g9f775e8
+pkgver=3.8.6.r0.g1588124
 _electronversion=44
 _nodeversion=24
 pkgrel=1
@@ -25,7 +25,6 @@ makedepends=(
     'nvm'
     'npm'
     'go'
-    'curl'
     'pnpm'
 )
 source=(
@@ -33,12 +32,15 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 pkgver() {
-    cd "${srcdir}/${pkgname//-/.}"
+    cd "$(_get_project_dir)"
     set -o pipefail
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -46,75 +48,71 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-_get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+_get_project_dir() {
+    local d
+    while IFS= read -r d; do
+        find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
+    done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
 _set_build_env() {
-	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
-	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	_ev="$(electron${_electronversion} -v)"
-	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
-	export HOME="${srcdir}/.electron-gyp"
-	mkdir -p "${HOME}"
-	export XDG_CACHE_HOME="${srcdir}/.cache"
-	export XDG_CONFIG_HOME="${srcdir}/.config"
-	export XDG_DATA_HOME="${srcdir}/.local/share"
-	export XDG_STATE_HOME="${srcdir}/.local/state"
-	export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-	export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-	export PNPM_GLOBAL_DIR="${srcdir}/.pnpm/global"
-	export PNPM_GLOBAL_BIN_DIR="${srcdir}/.pnpm/bin"
-	export PNPM_STATE_DIR="${srcdir}/.pnpm/state"
-	export PNPM_MINIMUM_RELEASE_AGE=0
-	export PNPM_NODE_LINKER=hoisted
-	export PNPM_FETCH_RETRIES=3
-	export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-	export PNPM_UPDATE_NOTIFIER=false
-	export PNPM_NO_COLOR=true
-	export PNPM_NO_PROGRESS=true
-	export pnpm_config_platform=linux
-	export pnpm_config_arch="${CARCH}"
-	export NODE_OPTIONS="--max-old-space-size=4096"
-	export npm_config_node_options="--max-old-space-size=4096"
-	mkdir -p "${PNPM_CACHE_DIR}" "${PNPM_STORE_DIR}" "${PNPM_GLOBAL_DIR}" "${PNPM_GLOBAL_BIN_DIR}" "${PNPM_STATE_DIR}"
-	local _pnpmver="${_pnpmversion}"
-	if [[ -z "${_pnpmver}" ]]; then
-		_pnpmver="$(node -p "const pm=require('./package.json').packageManager; pm && pm.startsWith('pnpm@') ? pm.split('@')[1] : ''" 2>/dev/null)"
-	fi
-	if [[ -n "${_pnpmver}" ]]; then
-		export COREPACK_HOME="${srcdir}/.corepack"
-		install -dm755 "${srcdir}/.bin"
-		corepack enable --install-directory "${srcdir}/.bin"
-		export PATH="${srcdir}/.bin:${PATH}"
-		corepack prepare "pnpm@${_pnpmver}" --activate
-	fi
-    export GOPATH="${srcdir}/go"
-	export GOMODCACHE="${GOPATH}/pkg/mod"
-	export GOBIN="${GOPATH}/bin"
-	export GOCACHE="${srcdir}/go-build"
-	export GOENV="${srcdir}/go/env"
-	export XDG_CONFIG_HOME="${srcdir}/.config"
-	export XDG_CACHE_HOME="${srcdir}/.cache"
-	export CGO_ENABLED=1
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	export GOTOOLCHAIN=local
-	export GOWORK=off
-	mkdir -p "${GOMODCACHE}" "${GOBIN}" "${GOCACHE}" "${XDG_CONFIG_HOME}" "${XDG_CACHE_HOME}" "$(dirname "${GOENV}")"
-	: > "${GOENV}"
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+    export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export ELECTRON_BUILDER_OFFLINE=true
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+    export HOME="${srcdir}/.home"
+    export XDG_CACHE_HOME="${HOME}/.cache"
+    export XDG_CONFIG_HOME="${HOME}/.config"
+    export XDG_DATA_HOME="${HOME}/.local/share"
+    export XDG_STATE_HOME="${HOME}/.local/state"
+    export PNPM_HOME="${HOME}/.pnpm/bin"
+    export pnpm_config_cache_dir="${HOME}/.pnpm_cache"
+    export pnpm_config_store_dir="${HOME}/.pnpm_store"
+    export pnpm_config_global_dir="${HOME}/.pnpm/global"
+    export pnpm_config_state_dir="${HOME}/.pnpm/state"
+    export pnpm_config_node_linker=hoisted
+    export pnpm_config_minimum_release_age=0
+    export pnpm_config_update_notifier=false
+    export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
+    export COREPACK_HOME="${HOME}/.corepack"
+    export GOPATH="${HOME}/go"
+    export GOCACHE="${HOME}/go-build"
+    export GOENV="${HOME}/go/env"
+    export XDG_CONFIG_HOME="${HOME}/.config"
+    export XDG_CACHE_HOME="${HOME}/.cache"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GOTOOLCHAIN=local
+    export GOWORK=off
+    mkdir -p "${HOME}" "${PNPM_HOME}" "${pnpm_config_cache_dir}" "${pnpm_config_store_dir}" "${pnpm_config_global_dir}" "${pnpm_config_state_dir}" \
+        "${COREPACK_HOME}" "${GOCACHE}" "${XDG_CONFIG_HOME}" "${XDG_CACHE_HOME}" "$(dirname "${GOENV}")"
+    : > "${GOENV}"
+    export PATH="${PNPM_HOME}:${PATH}"
+    local _pnpmver=""
+    local _pkgjson="$(_get_project_dir)/package.json"
+    if [ -f "${_pkgjson}" ]; then
+        _pnpmver="$(grep -o '"packageManager"[^,]*' "${_pkgjson}" 2>/dev/null | grep -oE 'pnpm@[^"+]+' | head -n1 | sed 's/^pnpm@//')"
+        if [ -z "${_pnpmver}" ]; then
+            _pnpmver="$(grep -oE '"pnpm"[[:space:]]*:[[:space:]]*"[^"]+"' "${_pkgjson}" 2>/dev/null | grep -oE '[0-9][0-9.]*' | head -n1)"
+        fi
+    fi
+    if [ -n "${_pnpmver}" ]; then
+        npm install -g "pnpm@${_pnpmver}" --prefix "${HOME}/.pnpm" \
+            --registry "${COREPACK_NPM_REGISTRY}"
+    fi
 }
 _get_electron_version() {
-    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
-        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
+    _elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
+        | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
+        | grep -v '^$' | sed 's/^[^0-9]*//' | head -1)
     [[ -z "${_elec_ver}" ]] && return 1
     echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 prepare() {
-    cd "${srcdir}/${pkgname//-/.}/app"
+    cd "$(_get_project_dir)/app"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -132,14 +130,16 @@ prepare() {
         --exec="${pkgname%-git} %U" \
         --custom="Name[zh_CN]=思源笔记"
     sed -i "/build:mobile/d;s/\"electron\": \"\([^\"]*\)\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    pnpm install --no-frozen-lockfile
+    export NODE_ENV=development
+    pnpm install --no-frozen-lockfile
 }
 build() {
+    cd "$(_get_project_dir)/app"
     _ensure_local_nvm
     _set_build_env
-    cd "${srcdir}/${pkgname//-/.}/app"
-    NODE_ENV=production     pnpm run build
-    cd "${srcdir}/${pkgname//-/.}/kernel"
+    export NODE_ENV=production
+    pnpm run build
+    cd "$(_get_project_dir)/kernel"
     case "${CARCH}" in
         aarch64)
             _CFG_FILE=electron-builder-linux-arm64.yml
@@ -151,19 +151,20 @@ build() {
             ;;
     esac
     go build --tags fts5 -o "../app/${_KERNEL_DIR}/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
-    cd "${srcdir}/${pkgname//-/.}/app"
-    NODE_ENV=production pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config ${_CFG_FILE} "
+    cd "$(_get_project_dir)/app"
+    pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config ${_CFG_FILE} "
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
     rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
+    local _src="$(_get_project_dir)"
     icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${pkgname//-/.}/app/src/assets/icon/${_icons}.png" \
+        install -Dm644 "${_src}/app/src/assets/icon/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
     done
-    install -Dm644 "${srcdir}/${pkgname//-/.}/app/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${_src}/app/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
 }
