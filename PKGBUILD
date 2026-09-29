@@ -2,7 +2,7 @@
 
 pkgbase=sv-lang
 pkgname=(sv-lang python-pysvlang)
-pkgver=12.0rc1
+pkgver=12.0
 pkgrel=1
 epoch=
 pkgdesc="SystemVerilog compiler and language services"
@@ -28,13 +28,13 @@ makedepends=(
     catch2
     pybind11
     nanobind
-    python-nanobind-backend
     python-scikit-build-core
     python-build
     python-installer
     python-wheel
     python-setuptools
     # AUR
+    python-nanobind-backend
     python-pybind11-stubgen
 )
 optdepends=()
@@ -45,7 +45,7 @@ install=
 changelog=
 source=("${pkgbase}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('40ce776d9ab3a1254a95dc14870472100a9790ac319c893a3e15eaf160301cc8')
+sha256sums=('3a2e507dbeff0d9162693786a14fd03707ae2e3d8aca3bf2b48ca791f5b5c52a')
 validpgpkeys=()
 
 prepare() {
