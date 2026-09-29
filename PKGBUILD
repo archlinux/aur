@@ -1,7 +1,7 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 _name=portion
 pkgname="python-$_name"
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc='Python library providing data structure and operations for intervals'
 url="https://github.com/AlexandreDecan/$_name"
@@ -10,7 +10,7 @@ arch=(any)
 depends=(python python-sortedcontainers)
 makedepends=(python-build python-installer python-wheel python-hatch)
 source=($pkgname-$pkgver.tar.gz::"$url/archive/$pkgver.tar.gz")
-sha256sums=('2e25b37a3eb534c991db04c25b3db4863f3f1234756082647749116a0548d6bc')
+sha256sums=('1d5939c0f5f07e7f11c73511aa0c2246dd377df61725eadfe1afcd2af1a94e07')
 
 build() {
   cd $_name-$pkgver
