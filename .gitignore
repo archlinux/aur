@@ -1,0 +1,7 @@
+# 构建产物
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+pkg/
+src/
+*.tar.gz
