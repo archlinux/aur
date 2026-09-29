@@ -2,7 +2,7 @@
 _pkgname=aio-coding-hub
 pkgname=${_pkgname}-bin
 pkgver=0.60.20
-pkgrel=1
+pkgrel=2
 pkgdesc="一个All In One的本地AI工具, 支持Win/Mac/Linux"
 arch=('x86_64')
 url="https://github.com/dyndynjyxa/aio-coding-hub"
@@ -26,7 +26,7 @@ depends=(
 
 source=(
     "${_pkgname}-${pkgver}-linux-amd64.deb::${url}/releases/download/${_pkgname}-v${pkgver}/${_pkgname}-linux-amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/dyndynjyxa/aio-coding-hub/main/LICENSE"
+    "LICENSE::https://raw.githubusercontent.com/dyndynjyxa/aio-coding-hub/${_pkgname}-v${pkgver}/LICENSE"
 )
 
 noextract=(
