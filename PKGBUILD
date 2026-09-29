@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ultra-tracker-bin
 _pkgname='Ultra Tracker'
-pkgver=1.1.0
+pkgver=1.2.1
 _electronversion=43
 pkgrel=1
 pkgdesc="Track athlete times in ultra marathons."
@@ -24,9 +24,9 @@ source=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('875d832328266381c8c4bb8f58145b7cca64eb61b5d3ff4c712e2043fab1c89e')
-sha256sums_x86_64=('2fd073ad81034d289694f1b01922de5b9f0a39007e751ed8e5658f2264f8b8f3')
+sha256sums=('bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+sha256sums_aarch64=('b5e2bd98cce0c67543b221407034e094adc9f4ade86f7950cbd3051af04e9fe5')
+sha256sums_x86_64=('982a0b952d9a14d40cf0d3a8493aaadb9c3dcbea625295024f2d514ad2a496cf')
 _get_app_dir() {
 	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }
@@ -51,15 +51,13 @@ prepare() {
     _check_electron_version
     sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     case ${CARCH} in
-        aarch64)
-            _archrem="x64"
-            ;;
-        x86_64)
-            _archrem="arm64"
-            ;;
+        aarch64)    _archrem="x64"      ;;
+        x86_64)     _archrem="arm"    ;;
     esac
     local _app_dir=$(_get_app_dir)
-    find "${_app_dir}/resources/app.asar.unpacked" \( -name "darwin-*" -o -name "win32-*" -o -name "*${_archrem}*" \) -exec rm -rf {} +
+    find "${_app_dir}/resources/app.asar.unpacked" \
+        \( -name "darwin-*" -o -name "win32-*" -o -name "*${_archrem}*" \) \
+        -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
