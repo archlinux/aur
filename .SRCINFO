@@ -7,6 +7,7 @@ pkgbase = mingw-w64-vtk-git
 	license = BSD
 	makedepends = mingw-w64-cmake
 	makedepends = mingw-w64-wine
+	makedepends = qt6-base
 	makedepends = git
 	makedepends = ninja-makeflags
 	depends = mingw-w64-crt
