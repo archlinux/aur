@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _appname=p2p.kiwi
 pkgname="${_appname//./-}-bin"
-pkgver=3.4.0
+pkgver=3.6.1
 _electronversion=44
 pkgrel=1
 pkgdesc="A simple and easy-to-use screen sharing tool."
@@ -27,9 +27,9 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_amd64.deb")
 sha256sums=('24423e39863b72a85358f85dae872b061b540716a06ee120aab322cb657eec2f'
-            '5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e')
-sha256sums_aarch64=('b4b1e2469248376d5a8ab41d28a4048bcf801228cb52b4b148f5e66b846925a6')
-sha256sums_x86_64=('7705821b259d74c3d6ef54fcaf45f7e41c3b53409575c565b729b8e1cb414162')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+sha256sums_aarch64=('c3ebae83de537dedf510a487b4c220460612a0e088cd5afeadcec4024cd45f4c')
+sha256sums_x86_64=('fab5fa014a4c054f91b538d6e6e66e9b83cec883887703aec0493b49fa9c6644')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -56,7 +56,7 @@ prepare() {
     local _app_dir=$(_get_app_dir)
     asar e "${_app_dir}//resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
-    asar p "${srcdir}/app.asar.unpacked" "${_app_dir}//resources/app.asar"
+    asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
