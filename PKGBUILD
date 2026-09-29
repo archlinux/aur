@@ -1,6 +1,6 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=klayout-pex
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Parasitic Extraction (PEX) tool for KLayout"
 arch=("any")
@@ -39,7 +39,7 @@ optdepends=(
 )
 options=()
 source=("${pkgname}::git+${_git_url}#tag=v${pkgver}")
-b2sums=('6b655482172b469afb0bbf27eb5de2bceb6f5fc7329f499df93707d7d56e6085b6de5d6a0f3f5c9236ea710257e24fbb0a8890360e0b4c88922c0f8ea78f84ea')
+b2sums=('7f17ce82c5f2d1300017d3b9893c599bad46c06da55cb55474b5942c7d8448253385316f7aca3be6032a223bdb6e174299da20a9e8e797b528b10d85608a4e23')
 
 build() {
 	cd ${pkgname}
@@ -62,8 +62,7 @@ check() {
 	# TODO: slow tests require more extensive setup
 	pytest \
 		-v \
-		-m "not slow and not fastercap" \
-		-k "not LVSRunnerFailureTest" # TODO: Temporarily borked
+		-m "not slow and not fastercap"
 }
 
 package() {
