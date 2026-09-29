@@ -1,0 +1,14 @@
+pkgbase = zplit
+	pkgdesc = Lightweight terminal multiplexer written in Zig, a single static client/server binary
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/midasdf/zplit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = zig>=0.16.0
+	depends = glibc
+	source = zplit-0.2.2.tar.gz::https://github.com/midasdf/zplit/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = c42ece6cd3c9776fc6d389921bcd1853a8866db3ada38cc1c2002c4b0ee2c833
+
+pkgname = zplit
