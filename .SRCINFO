@@ -1,15 +1,15 @@
 pkgbase = misskey-notedeck-bin
-	pkgver = 1.74.2
+	pkgver = 1.74.3
 	pkgrel = 1
 	url = https://github.com/notedeck-dev/notedeck
 	arch = x86_64
 	license = AGPL-3.0-or-later
-	source = misskey-notedeck-bin-1.74.2.tar.gz::https://github.com/notedeck-dev/notedeck/releases/download/v1.74.2/NoteDeck-1.74.2-linux-x64.tar.gz
-	source = notecli-1.74.2-linux-amd64::https://github.com/notedeck-dev/notedeck/releases/download/v1.74.2/notecli-1.74.2-linux-amd64
+	source = misskey-notedeck-bin-1.74.3.tar.gz::https://github.com/notedeck-dev/notedeck/releases/download/v1.74.3/NoteDeck-1.74.3-linux-x64.tar.gz
+	source = notecli-1.74.3-linux-amd64::https://github.com/notedeck-dev/notedeck/releases/download/v1.74.3/notecli-1.74.3-linux-amd64
 	source = notedeck.desktop
-	source = notedeck-icon-128.png::https://raw.githubusercontent.com/notedeck-dev/notedeck/v1.74.2/src-tauri/icons/128x128.png
-	source = notedeck-icon-32.png::https://raw.githubusercontent.com/notedeck-dev/notedeck/v1.74.2/src-tauri/icons/32x32.png
-	sha256sums = e6a1a81458aed9f1cc94a4ece37a1b15a642788822a58a544243c3013f890265
+	source = notedeck-icon-128.png::https://raw.githubusercontent.com/notedeck-dev/notedeck/v1.74.3/src-tauri/icons/128x128.png
+	source = notedeck-icon-32.png::https://raw.githubusercontent.com/notedeck-dev/notedeck/v1.74.3/src-tauri/icons/32x32.png
+	sha256sums = 357548b5a69c1c5964b26a2cdf089d0ae954f08de7c04ddd06dd1d53ab8e417f
 	sha256sums = f1cb4bbebe5e1d4ef6ba4e5b98810300041836eb94e6e68a8c0e1f785a821879
 	sha256sums = 402b528d0bc1d1747ad0aba623994ab4b3efa24ad3877c80bb9c8e31d2775ba5
 	sha256sums = 20ccfc14895ab30ee165475cb8a5121711114fcab0226a2516db8dd6d0a7e017
@@ -22,7 +22,7 @@ pkgname = misskey-notedeck-bin
 	depends = libayatana-appindicator
 	depends = librsvg
 	depends = glib-networking
-	optdepends = notecli-bin=1.74.2: CLI
+	optdepends = notecli-bin=1.74.3: CLI
 	provides = notedeck
 	provides = notemaid
 	conflicts = notedeck
