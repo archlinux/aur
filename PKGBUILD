@@ -3,7 +3,7 @@
 
 pkgname="python-ollama"
 pkgdesc="Ollama Python library"
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 
 arch=('any')
@@ -17,7 +17,7 @@ depends=('ollama' 'python' 'python-httpx' 'python-typing_extensions' 'python-pyd
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatch-vcs')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
-sha256sums=('936d55daa684f474364c098611c933626f8d6c7d67065c5b7ae0c477b508b07f')
+sha256sums=('41fc49a8095c4a75939c4c1f8582e4d0671692fb6eac2a5a7ede8c9872b67096')
 
 build() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
