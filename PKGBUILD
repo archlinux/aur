@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=weread-bin
 _pkgname=WeRead
-pkgver=1.1.1
+pkgver=1.1.2
 _electronversion=44
 pkgrel=1
 pkgdesc="WeRead Desktop App (Unofficial) / 微信读书（网页版）桌面版客户端 (非官方)."
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/NeilYXIN/WeRead_Desktop/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2d3136bb1eff32ce943176cb0b6717a5cc086232cb65483f2bc56a386fea9be2'
+sha256sums=('b784c773f5ace7bc4956c4ff1f7f792d415880530dffad16330d89fd3a34208b'
             'ca358ebf205c75e1df2c7fb18dbf2a56a55543c606ef9cb4e1f2ac8b89c06656'
             'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_app_dir() {
