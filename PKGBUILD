@@ -1,6 +1,6 @@
 # Maintainer: Bjarne Øverli <bjarne@oever.li>
 pkgname=aether
-pkgver=4.30.0
+pkgver=4.31.0
 pkgrel=1
 pkgdesc='Desktop theming application - extract colors from wallpapers and apply cohesive themes'
 arch=('x86_64' 'aarch64')
@@ -11,9 +11,9 @@ optdepends=('omarchy: native theme activation and shell selectors')
 source=("aether-${pkgver}.tar.gz::https://github.com/omacom/aether/archive/refs/tags/v${pkgver}.tar.gz")
 source_x86_64=("aether-linux-amd64-${pkgver}::https://github.com/omacom/aether/releases/download/v${pkgver}/aether-linux-amd64")
 source_aarch64=("aether-linux-arm64-${pkgver}::https://github.com/omacom/aether/releases/download/v${pkgver}/aether-linux-arm64")
-sha256sums=('f67c8d2c6f27f67a755bc279ece5ddb194f1bb165648280b9a7be86904d36ff5')
-sha256sums_x86_64=('75bda600ddd3ecab3338de5c0c5d5e2c9f08cfc0c465b63f8e6cb9c5cb60d68e')
-sha256sums_aarch64=('a91d800736def74d86e19d8acbecc4bda3d7c3e64fb95273f809707104c3a5bc')
+sha256sums=('7ccbf7eafce7dc70fd8ea7f11e81d17efb3c818a2a943bd931ee9443df56422f')
+sha256sums_x86_64=('470b71ffca9d4ea0004042f7294673bdc245eed4396dcf76fb9724064a62978c')
+sha256sums_aarch64=('5dd88c4698aaabe8310cfd8f627055c8982d0edea434df3a2a0f351b1abb7663')
 noextract=("aether-linux-amd64-${pkgver}" "aether-linux-arm64-${pkgver}")
 
 package() {
