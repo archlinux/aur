@@ -1,6 +1,6 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=sigviewer
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="A viewing application for biosignals"
 arch=('x86_64')
@@ -8,9 +8,9 @@ url="https://github.com/cbrnr/sigviewer"
 license=('GPL')
 depends=('qt6-base' 'libbiosig' 'libxdf')
 makedepends=('cmake')
-source=(https://github.com/cbrnr/sigviewer/archive/v$pkgver.zip
+source=(https://github.com/cbrnr/sigviewer/archive/v0.7.3.zip
         sigviewer.desktop)
-sha256sums=('f22b94c50e63a9e7c36c5dbec159679cf05f80ce52865729735537e85b213308'
+sha256sums=('bbbf93cd6dd41b202d955b9ded876647d67a5b453af5443a96cf97e2dbcf22f3'
             'd6c1f691429d97876607bbd56ac6387ab11bef3f700b236a9504d04ad1728333')
 
 build() {
