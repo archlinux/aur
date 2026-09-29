@@ -1,6 +1,6 @@
 # Maintainer: byteowlz <dev@byteowlz.com>
 pkgname=sldr-bin
-pkgver=0.8.1
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Modular markdown presentations powered by slidev"
 arch=('x86_64' 'aarch64')
@@ -8,10 +8,10 @@ url="https://github.com/byteowlz/sldr"
 license=('MIT')
 provides=('sldr')
 conflicts=('sldr')
-source_x86_64=("sldr-bin-0.8.1-x86_64.tar.gz::https://github.com/byteowlz/sldr/releases/download/v0.8.1/sldr-v0.8.1-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('1713552e3506057952993f718ecaa99fa186ae3b076f97838958dff3342a6aa1')
-source_aarch64=("sldr-bin-0.8.1-aarch64.tar.gz::https://github.com/byteowlz/sldr/releases/download/v0.8.1/sldr-v0.8.1-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_aarch64=('35b27d0c724219b2d8ac3da54dd8c7e99968c4bf84581b2305d351eb0cdafd26')
+source_x86_64=("sldr-bin-0.9.1-x86_64.tar.gz::https://github.com/byteowlz/sldr/releases/download/v0.9.1/sldr-v0.9.1-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('88ec1ce3c819c26e2a325166198c0c71f9753232bb81df30a31fe0b1769e1f16')
+source_aarch64=("sldr-bin-0.9.1-aarch64.tar.gz::https://github.com/byteowlz/sldr/releases/download/v0.9.1/sldr-v0.9.1-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_aarch64=('c188bd22ebc1c2ad88a91de4fa97d26046b5ae395e35228ae4346d64cb885906')
 
 package() {
     cd "$srcdir"
