@@ -310,6 +310,32 @@ index e14228c..3b14a7b 100644
    const environment = options.environment ?? process.env
    const repositoryRoot = options.repositoryRoot ?? REPOSITORY_ROOT
    const appRoot = options.appRoot ?? APP_ROOT
+diff --git a/apps/desktop/scripts/dev.ts b/apps/desktop/scripts/dev.ts
+index 1ae2f3e..739311f 100644
+--- a/apps/desktop/scripts/dev.ts
++++ b/apps/desktop/scripts/dev.ts
+@@ -11,6 +11,7 @@ import { developmentRuntimeDirectory, resolveDesktopBuildTarget } from './deskto
+ import { prepareDevelopmentProject } from './development-project.ts'
+ import { prepareDevelopmentApp } from './development-app.ts'
+ import { preparePrimaryRuntime } from './prepare-primary-runtime.ts'
++import { pnpmInvocation } from '../../../scripts/pnpm-invocation.ts'
+ 
+ const APP_ROOT = resolve(import.meta.dirname, '..')
+ const REPOSITORY_ROOT = resolve(APP_ROOT, '..', '..')
+@@ -49,11 +50,8 @@ async function run(command: string, args: readonly string[], cwd: string, enviro
+ }
+ 
+ async function runPackageScript(script: string, cwd: string): Promise<void> {
+-  const packageManager = process.env.npm_execpath
+-  if (packageManager === undefined || packageManager === '') {
+-    throw new Error('desktop development: invoke this launcher through pnpm run dev:desktop or start:desktop')
+-  }
+-  await run(process.execPath, [packageManager, 'run', script], cwd)
++  const { command, args } = pnpmInvocation(['run', script])
++  await run(command, args, cwd)
+ }
+ 
+ async function launchElectron(): Promise<void> {
 diff --git a/apps/desktop/scripts/development-project.ts b/apps/desktop/scripts/development-project.ts
 index d544ce6..5ceb275 100644
 --- a/apps/desktop/scripts/development-project.ts
@@ -384,6 +410,35 @@ index bab440e..b407ace 100644
        target: ['AppImage'],
      },
      nsis: {
+diff --git a/apps/desktop/scripts/flock-entry.ts b/apps/desktop/scripts/flock-entry.ts
+index 7c2f3e7..1e3d2f1 100644
+--- a/apps/desktop/scripts/flock-entry.ts
++++ b/apps/desktop/scripts/flock-entry.ts
+@@ -5,6 +5,7 @@ import { once } from 'node:events'
+ import { existsSync, readFileSync } from 'node:fs'
+ import { createRequire } from 'node:module'
+ import { dirname, join, resolve } from 'node:path'
++import { pnpmInvocation } from '../../../scripts/pnpm-invocation.ts'
+ 
+ type FlockEntry = typeof import('@deepseek-ai/node-addon-system/flock')
+ 
+@@ -72,12 +73,13 @@ function hostAddonBuilt(): boolean {
+ }
+ 
+ async function buildNativeSystem(): Promise<void> {
+-  const pnpmEntry = process.env.npm_execpath
+-  if (pnpmEntry === undefined || pnpmEntry === '') {
++  // The addon may be missing for other reasons, so the message keeps naming the build commands.
++  if ((process.env.npm_execpath ?? '') === '') {
+     throw new Error(`desktop package: flock addon is not built; run ${BUILD_COMMAND_TEXT} or invoke this script through a pnpm package command`)
+   }
+   for (const args of BUILD_COMMANDS) {
+-    const child = spawn(process.execPath, [pnpmEntry, ...args], { cwd: REPOSITORY_ROOT, stdio: 'inherit' })
++    const { command, args: commandArgs } = pnpmInvocation(args)
++    const child = spawn(command, commandArgs, { cwd: REPOSITORY_ROOT, stdio: 'inherit' })
+     const [code, signal] = await once(child, 'close') as [number | null, NodeJS.Signals | null]
+     if (code !== 0) throw new Error(`desktop package: pnpm ${args.join(' ')} exited with ${String(code ?? signal)}`)
+   }
 diff --git a/apps/desktop/scripts/linux-runtime-adjustments.ts b/apps/desktop/scripts/linux-runtime-adjustments.ts
 new file mode 100644
 index 0000000..96d98e9
@@ -522,10 +577,18 @@ index 0000000..96d98e9
 +  writeFileSync(path, source.replace(OFFICE_ENGINE_EXISTENCE_CHECK, OFFICE_ENGINE_EXISTENCE_FIX))
 +}
 diff --git a/apps/desktop/scripts/package-target.ts b/apps/desktop/scripts/package-target.ts
-index 62f4fcb..806ce26 100644
+index 62f4fcb..9540946 100644
 --- a/apps/desktop/scripts/package-target.ts
 +++ b/apps/desktop/scripts/package-target.ts
-@@ -47,14 +47,14 @@ const DESKTOP_UPLOAD_CREDENTIAL_ENV_NAMES = new Set([
+@@ -24,6 +24,7 @@ import { suggestDesktopBuildVersion } from './desktop-build-version-discovery.ts
+ import { desktopBuildCommitEnvironment, readDesktopBuildCommit, resolveDesktopBuildCommit } from './desktop-build-commit.mjs'
+ import { requireDesktopToolchain } from './desktop-toolchain-preflight.ts'
+ import { withMacOSNotarizationProxy } from './macos-notarization-proxy.ts'
++import { pnpmInvocation } from '../../../scripts/pnpm-invocation.ts'
+ 
+ const APP_ROOT = resolve(import.meta.dirname, '..')
+ const REPOSITORY_ROOT = resolve(APP_ROOT, '..', '..')
+@@ -47,14 +48,14 @@ const DESKTOP_UPLOAD_CREDENTIAL_ENV_NAMES = new Set([
  const AUTOMATIC_BUILD_VERSION = 'auto'
  
  /** Fixed platform and architecture identifiers exposed by package scripts. */
@@ -543,7 +606,7 @@ index 62f4fcb..806ce26 100644
    readonly builderArch: '--arm64' | '--x64'
  }
  
-@@ -80,6 +80,13 @@ const TARGETS: Record<DesktopPackageTargetName, DesktopPackageTarget> = {
+@@ -80,6 +81,13 @@ const TARGETS: Record<DesktopPackageTargetName, DesktopPackageTarget> = {
      builderPlatform: '--win',
      builderArch: '--x64',
    },
@@ -557,7 +620,7 @@ index 62f4fcb..806ce26 100644
  }
  
  /**
-@@ -125,6 +132,16 @@ function isTargetName(value: string): value is DesktopPackageTargetName {
+@@ -125,6 +133,16 @@ function isTargetName(value: string): value is DesktopPackageTargetName {
    return Object.hasOwn(TARGETS, value)
  }
  
@@ -574,7 +637,7 @@ index 62f4fcb..806ce26 100644
  function packageVersion(path: string, label: string): string {
    const manifest = JSON.parse(readFileSync(path, 'utf8')) as { version?: unknown }
    if (typeof manifest.version !== 'string' || manifest.version === '') {
-@@ -138,6 +155,8 @@ function writeReleaseRecord(
+@@ -138,6 +156,8 @@ function writeReleaseRecord(
    environment: NodeJS.ProcessEnv,
    artifactsRoot: string,
  ): void {
@@ -583,7 +646,7 @@ index 62f4fcb..806ce26 100644
    const desktopVersion = packageVersion(join(APP_ROOT, 'package.json'), 'desktop package')
    const dshVersion = packageVersion(join(REPOSITORY_ROOT, 'package.json'), 'dsh package')
    if (desktopVersion !== dshVersion) {
-@@ -145,8 +164,8 @@ function writeReleaseRecord(
+@@ -145,8 +165,8 @@ function writeReleaseRecord(
    }
    const buildVersion = resolveDesktopBuildVersion(environment, dshVersion)
    const packaged = resolveDesktopBuildCommit(environment)
@@ -594,7 +657,7 @@ index 62f4fcb..806ce26 100644
    const temporaryPath = `${recordPath}.tmp`
    writeFileSync(temporaryPath, `${JSON.stringify({
      schemaVersion: 1,
-@@ -179,6 +198,9 @@ export function resolveDesktopPackageTarget(
+@@ -179,6 +199,9 @@ export function resolveDesktopPackageTarget(
    if (target.platform === 'win32' && (hostPlatform !== 'win32' || hostArch !== 'x64')) {
      throw new Error('desktop package: win-x64 requires a Windows x64 build host')
    }
@@ -604,7 +667,27 @@ index 62f4fcb..806ce26 100644
    if (target.platform === 'darwin' && hostPlatform !== 'darwin') {
      throw new Error(`desktop package: ${name} requires a macOS build host`)
    }
-@@ -368,8 +390,10 @@ async function main(): Promise<void> {
+@@ -287,13 +310,13 @@ function runPnpm(
+   cwd: string = APP_ROOT,
+   run?: ReturnType<typeof createPackagingRun>,
+ ): Promise<void> {
+-  const pnpmEntry = process.env.npm_execpath
+-  if (pnpmEntry === undefined || pnpmEntry === '') {
+-    throw new Error('desktop package: invoke this script through a pnpm package command')
+-  }
+-  if (run !== undefined) return run.run(args.join(' '), process.execPath, [pnpmEntry, ...args], { cwd, env })
++  // pnpm reaches a package script as either a JavaScript entrypoint or a standalone
++  // executable (the official installer's `@pnpm/exe`, which is also what realizes a
++  // pinned `packageManager` version); only the former may be handed to Node.
++  const { command, args: commandArgs } = pnpmInvocation(args)
++  if (run !== undefined) return run.run(args.join(' '), command, commandArgs, { cwd, env })
+   return new Promise((resolvePromise, reject) => {
+-    const child = spawn(process.execPath, [pnpmEntry, ...args], {
++    const child = spawn(command, commandArgs, {
+       cwd,
+       env,
+       stdio: 'inherit',
+@@ -368,8 +391,10 @@ async function main(): Promise<void> {
          notarizationProxyConfigured: settings.notarizationProxy !== undefined })
        await packagingStep(run.directory, 'macos-package', () => withMacOSSigningKeychain(environment,
          signingEnvironment => packageTarget(invocation, signingEnvironment, run)), secrets)
@@ -616,7 +699,7 @@ index 62f4fcb..806ce26 100644
      }
      success = true
    } catch (error) {
-@@ -402,8 +426,11 @@ export async function packageTarget(
+@@ -402,8 +427,11 @@ export async function packageTarget(
    const mac = target.platform === 'darwin' ? resolveMacOSPackageSettings(environment) : undefined
    const packArguments = mac === undefined ? [] : ['--concurrency', String(mac.packConcurrency)]
    const buildPaths = desktopTargetBuildPaths(target.name)
@@ -630,7 +713,7 @@ index 62f4fcb..806ce26 100644
      rmSync(releaseRecordPath, { force: true })
      rmSync(`${releaseRecordPath}.tmp`, { force: true })
    }
-@@ -496,7 +523,9 @@ export async function packageTarget(
+@@ -496,7 +524,9 @@ export async function packageTarget(
      await signedStage('artifacts', () => execute(desktopElectronBuilderArguments(target, invocation.directory), electronBuilderEnv))
      await execute(['exec', 'tsx', 'scripts/smoke-packaged-runtime.ts', ...(invocation.unsigned ? ['--unsigned'] : [])], targetEnv)
    }
@@ -746,6 +829,41 @@ index 106830b..702361f 100644
  const descriptor = await verifyDesktopRuntime(paths.dsh, readDesktopRuntime(paths.dsh).release.version,
    resolveDesktopPackageTarget(target))
  if (windows && !values.unsigned) await verifyWindowsCode(application)
+diff --git a/apps/desktop/tests/flock-entry.spec.ts b/apps/desktop/tests/flock-entry.spec.ts
+index b7d8315..dc8fc84 100644
+--- a/apps/desktop/tests/flock-entry.spec.ts
++++ b/apps/desktop/tests/flock-entry.spec.ts
+@@ -1,6 +1,6 @@
+ import { spawn } from 'node:child_process'
+ import { once } from 'node:events'
+-import { copyFile, mkdtemp, rm } from 'node:fs/promises'
++import { copyFile, mkdir, mkdtemp, rm } from 'node:fs/promises'
+ import { tmpdir } from 'node:os'
+ import { join } from 'node:path'
+ import { pathToFileURL } from 'node:url'
+@@ -93,14 +93,19 @@ it('propagates a build failure, does not import again, and retries on the next c
+ })
+ 
+ it('loads the proxy module where the addon package cannot be resolved', async () => {
+-  // A directory outside every node_modules tree stands in for a checkout whose native/system is unbuilt.
++  // A directory outside every node_modules tree stands in for a checkout whose native/system is unbuilt,
++  // keeping the layout the loader's checkout-relative imports resolve through.
+   const root = await mkdtemp(join(tmpdir(), 'flock-entry-test-'))
+   try {
++    const scripts = join(root, 'apps', 'desktop', 'scripts')
++    await mkdir(scripts, { recursive: true })
+     for (const name of ['macos-notarization-proxy.ts', 'flock-entry.ts']) {
+-      await copyFile(new URL(`../scripts/${name}`, import.meta.url), join(root, name))
++      await copyFile(new URL(`../scripts/${name}`, import.meta.url), join(scripts, name))
+     }
++    await mkdir(join(root, 'scripts'), { recursive: true })
++    await copyFile(new URL('../../../scripts/pnpm-invocation.ts', import.meta.url), join(root, 'scripts', 'pnpm-invocation.ts'))
+     const child = spawn(process.execPath, ['--input-type=module', '-e', `
+-      const module = await import(${JSON.stringify(pathToFileURL(join(root, 'macos-notarization-proxy.ts')).href)});
++      const module = await import(${JSON.stringify(pathToFileURL(join(scripts, 'macos-notarization-proxy.ts')).href)});
+       process.stdout.write(Object.keys(module).sort().join(','));
+     `], { stdio: ['ignore', 'pipe', 'pipe'], env: { PATH: process.env.PATH } })
+     let stdout = ''
 diff --git a/package.json b/package.json
 index 81a370d..2bd3f28 100644
 --- a/package.json

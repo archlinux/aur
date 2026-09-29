@@ -26,7 +26,7 @@
 pkgname=deepseek-harness-desktop
 _tag=dsh-v0.1.7-rc.2
 pkgver=0.1.7rc.2
-pkgrel=1
+pkgrel=2
 pkgdesc='DeepSeek Harness desktop application (Electron shell and bundled dsh runtime)'
 arch=('x86_64')
 url='https://github.com/deepseek-ai/deepseek-harness'
@@ -49,7 +49,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  'a089870dbfb2a5bbc7e19ffc06bedeeba6d0220a4b11d69c3bebbe37a7846763'
+  'ac01b1126816f914d87c0919ddbf895f8bdc2178c7accc6a848799f4cf61b66c'
   'c9783ffd57bf481f89ec59beb6047c7cf40098e4790c6098bf60370c408a4c7d'
 )
 
