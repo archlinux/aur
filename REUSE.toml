@@ -1,16 +1,17 @@
 # SPDX-FileCopyrightText: 2026 Yangtse Su
 #
 # The PKGBUILD in this repository is licensed under 0BSD; see the LICENSE file
-# at its root. Upstream fxrate is a separate work under GPL-3.0-only, named
-# here only so that the packaging files carry an unambiguous licence of their
-# own.
+# at its root. LICENSES/0BSD.txt is a symbolic link to that file, so the text
+# is stored one time only. Upstream fxrate is a separate work under
+# GPL-3.0-only, named here only so that the packaging files carry an
+# unambiguous licence of their own.
 version = 1
 SPDX-PackageName = "fxrate"
 SPDX-PackageSupplier = "Yangtse Su <yangtsesu@gmail.com>"
 SPDX-PackageDownloadLocation = "https://github.com/YangtseSu/fxrate"
 
 [[annotations]]
-path = ["PKGBUILD", ".gitignore", "LICENSE"]
+path = ["PKGBUILD", ".SRCINFO", ".gitignore", "LICENSE"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 Yangtse Su"
 SPDX-License-Identifier = "0BSD"
