@@ -1,16 +1,15 @@
 pkgbase = elementary-xfce-icons
 	pkgdesc = Elementary icon theme with improved Xfce support
-	pkgver = 0.22
-	pkgrel = 2
+	pkgver = 0.23
+	pkgrel = 1
 	url = https://github.com/shimmerproject/elementary-xfce
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = gdk-pixbuf2
-	makedepends = gtk-update-icon-cache
 	makedepends = librsvg
 	makedepends = optipng
 	depends = hicolor-icon-theme
-	source = elementary-xfce-icons-0.22.tar.gz::https://github.com/shimmerproject/elementary-xfce/archive/v0.22.tar.gz
-	sha256sums = 0be90252c4bf8e06bbca16ef376bd1d7891f3353a5145289bff8a48563568259
+	source = elementary-xfce-icons-0.23.tar.gz::https://github.com/shimmerproject/elementary-xfce/archive/v0.23.tar.gz
+	sha256sums = 2f4e6b6e4e46692c18c2f41cf7b7c9a2bac4433d5528e98c8a301631c5b285d2
 
 pkgname = elementary-xfce-icons
