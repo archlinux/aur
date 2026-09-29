@@ -1,7 +1,7 @@
 # Maintainer: Omar Roth <roth@omar.yt>
 pkgname=doubletake
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='AirPlay 2 mirroring sender for Linux'
 arch=('x86_64')
 url='https://github.com/omarroth/doubletake'
@@ -15,9 +15,10 @@ depends=(
   'gst-plugins-bad'
   'gst-plugins-ugly'
   'gst-libav'
+  'libpulse'
 )
 optdepends=(
-  'pipewire: Wayland screen capture backend'
+  'gst-plugin-pipewire: Wayland screen and audio capture'
   'xdg-desktop-portal: Wayland capture portal integration'
 )
 install='doubletake.install'
@@ -30,6 +31,14 @@ sha256sums=('da9ed0ae8f1e540c47f60ab9489b994fe66530bcda06602105d08f6c6e6b9f0a'
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOPATH="${srcdir}"
+  export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw'
+
   make all
 }
 
