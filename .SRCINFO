@@ -1,0 +1,16 @@
+pkgbase = keeenv
+	pkgdesc = Set local environment variables from a KeePass database
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/scross01/keeenv
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-pykeepass
+	source = keeenv-0.6.0.tar.gz::https://github.com/scross01/keeenv/archive/refs/tags/0.6.0.tar.gz
+	sha256sums = c6d99ac1511114f67639d8d312001fd42f09c3727853a6562272c9eaa26ff658
+
+pkgname = keeenv
