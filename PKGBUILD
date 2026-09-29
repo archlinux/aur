@@ -1,6 +1,6 @@
 # Maintainer: snowseven <snowseven at tuta dot io>
 pkgname=jellyrpc
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="simple jellyfin discord rpc daemon"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c20a4240e30eb5c5698f8e950a062813ced66c73f28e704cb5c4e7e3c60fc6b9')
+sha256sums=('f4e46dd752a7fd7101edefd0cea7c62b157fae9af194ad297bf4b5abcab61874')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
