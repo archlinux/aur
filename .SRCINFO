@@ -1,12 +1,17 @@
 pkgbase = rust-dos
-	pkgdesc = x86 DOS emulator featuring 386 to Pentium CPUs, DPMI host, VGA/VSA/S3/Voodoo, SB16GUS/MT-32/GM, IDE, PnP, PCI, Win3x, Win95, NE200 with NAT, IPX over a relay, save states, rewnd, and WASM.
-	pkgver = 0.8.0
-	pkgrel = 2
+	pkgver = 0.9.0
+	pkgrel = 1
 	url = https://github.com/dividebysandwich/rust-dos
 	arch = x86_64
 	arch = aarch64
 	license = GPL-2.0-or-later
 	makedepends = cargo
+	options = !lto
+	source = rust-dos-0.9.0.tar.gz::https://github.com/dividebysandwich/rust-dos/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = 9ad02665de790150adc545da104d9320bb5fd144d3011d398e7bc2d27892b54a
+
+pkgname = rust-dos
+	pkgdesc = x86 DOS emulator featuring 386 to Pentium CPUs, DPMI host, VGA/VESA/S3/Voodoo, SB16/GUS/MT-32/GM, IDE, PnP, PCI, Win3x, Win95, NE2000 with NAT, IPX and serial multiplayer, RetroAchievements, save states, rewind, and WASM.
 	depends = alsa-lib
 	depends = glibc
 	depends = hicolor-icon-theme
@@ -15,7 +20,11 @@ pkgbase = rust-dos
 	depends = sdl2
 	optdepends = soundfont-fluid: General MIDI SoundFont for the MPU-401 (soundfont= in [sound])
 	optdepends = fluidsynth: software synthesizer to play the MIDI sent out of a MIDI port (midisynth=host)
-	source = rust-dos-0.8.0.tar.gz::https://github.com/dividebysandwich/rust-dos/archive/refs/tags/v0.8.0.tar.gz
-	sha256sums = 8aadace98b4e945c4ac3d865f2d297fab01f1ac2144ad1b89d011709e9d5ee4e
 
-pkgname = rust-dos
+pkgname = libretro-rust-dos
+	pkgdesc = rust-dos x86 DOS emulator as a libretro core, for RetroArch and the other libretro frontends
+	depends = glibc
+	depends = libgcc
+	optdepends = retroarch: the libretro frontend
+	optdepends = munt: Roland MT-32 emulation (midisynth=mt32)
+	optdepends = soundfont-fluid: General MIDI SoundFont for the MPU-401 (soundfont= in rust-dos.conf)

@@ -1,48 +1,57 @@
-pkgname=rust-dos
-pkgver=0.8.0
-pkgrel=2
-pkgdesc="x86 DOS emulator featuring 386 to Pentium CPUs, DPMI host, VGA/VSA/S3/Voodoo, SB16GUS/MT-32/GM, IDE, PnP, PCI, Win3x, Win95, NE200 with NAT, IPX over a relay, save states, rewnd, and WASM."
+pkgbase=rust-dos
+pkgname=('rust-dos' 'libretro-rust-dos')
+pkgver=0.9.0
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/dividebysandwich/rust-dos"
 license=('GPL-2.0-or-later')
-# SDL2 opens the window, the sound device and the OpenGL context of the CRT
-# shaders. ALSA (alsa-lib) sends MIDI out of the system's MIDI ports
-# (midisynth=host in [sound]). munt's libmt32emu plays the Roland MT-32
-# (midisynth=mt32); rust-dos loads it when the MT-32 is chosen, and it needs
-# the MT-32's ROMs, which aren't packaged (mt32roms= in [sound]). Everything
-# else (fonts, disk noises, Ultrasound patches) is built in.
-depends=('alsa-lib' 'glibc' 'hicolor-icon-theme' 'libgcc' 'munt' 'sdl2')
 makedepends=('cargo')
-optdepends=('soundfont-fluid: General MIDI SoundFont for the MPU-401 (soundfont= in [sound])'
-            'fluidsynth: software synthesizer to play the MIDI sent out of a MIDI port (midisynth=host)')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-# Update with updpkgsums once v0.5.0 is tagged.
-sha256sums=('8aadace98b4e945c4ac3d865f2d297fab01f1ac2144ad1b89d011709e9d5ee4e')
+# makepkg's LTO makes GCC bitcode of the C code in ring (RetroAchievements'
+# HTTPS), which Rust's linker can't link; cargo does its own LTO.
+options=('!lto')
+source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+# Update with updpkgsums once v$pkgver is tagged.
+sha256sums=('9ad02665de790150adc545da104d9320bb5fd144d3011d398e7bc2d27892b54a')
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgbase-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    local target="$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target "$target"
+    # The libretro core is a workspace of its own, with its own Cargo.lock.
+    cargo fetch --locked --target "$target" --manifest-path libretro/Cargo.toml
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgbase-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
     # rust-dos-relay is the LAN relay for servers, which needs neither a
     # display nor SDL or a sound library.
-    cargo build --frozen --release --bin "$pkgname" --bin "$pkgname-relay"
+    CARGO_TARGET_DIR=target cargo build --frozen --release --bin "$pkgbase" --bin "$pkgbase-relay"
+    # The core, without SDL or ALSA, which the frontend has in their place.
+    CARGO_TARGET_DIR=target-libretro cargo build --frozen --release --manifest-path libretro/Cargo.toml
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgbase-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo test --frozen --release
+    CARGO_TARGET_DIR=target cargo test --frozen --release
+    CARGO_TARGET_DIR=target-libretro cargo test --frozen --release --manifest-path libretro/Cargo.toml
 }
 
-package() {
-    cd "$pkgname-$pkgver"
+package_rust-dos() {
+    pkgdesc="x86 DOS emulator featuring 386 to Pentium CPUs, DPMI host, VGA/VESA/S3/Voodoo, SB16/GUS/MT-32/GM, IDE, PnP, PCI, Win3x, Win95, NE2000 with NAT, IPX and serial multiplayer, RetroAchievements, save states, rewind, and WASM."
+    # SDL2 opens the window, the sound device and the OpenGL context of the
+    # CRT shaders. ALSA (alsa-lib) sends MIDI out of the system's MIDI ports
+    # (midisynth=host in [sound]). munt's libmt32emu plays the Roland MT-32
+    # (midisynth=mt32); rust-dos loads it when the MT-32 is chosen, and it
+    # needs the MT-32's ROMs, which aren't packaged (mt32roms= in [sound]).
+    # Everything else (fonts, disk noises, Ultrasound patches) is built in.
+    depends=('alsa-lib' 'glibc' 'hicolor-icon-theme' 'libgcc' 'munt' 'sdl2')
+    optdepends=('soundfont-fluid: General MIDI SoundFont for the MPU-401 (soundfont= in [sound])'
+                'fluidsynth: software synthesizer to play the MIDI sent out of a MIDI port (midisynth=host)')
+
+    cd "$pkgbase-$pkgver"
     install -Dm0755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm0755 "target/release/$pkgname-relay" "$pkgdir/usr/bin/$pkgname-relay"
     install -Dm0644 "packaging/linux/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
@@ -51,4 +60,22 @@ package() {
     install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm0644 CONFIGURATION.md "$pkgdir/usr/share/doc/$pkgname/CONFIGURATION.md"
     install -Dm0644 rust-dos.conf.example "$pkgdir/usr/share/doc/$pkgname/rust-dos.conf.example"
+}
+
+package_libretro-rust-dos() {
+    pkgdesc="rust-dos x86 DOS emulator as a libretro core, for RetroArch and the other libretro frontends"
+    # munt's libmt32emu plays the MT-32 (midisynth=mt32), loaded when it is
+    # chosen. SoundFonts and MT-32 ROMs go in RetroArch's system/rust-dos
+    # folder, set in rust-dos.conf there.
+    depends=('glibc' 'libgcc')
+    optdepends=('retroarch: the libretro frontend'
+                'munt: Roland MT-32 emulation (midisynth=mt32)'
+                'soundfont-fluid: General MIDI SoundFont for the MPU-401 (soundfont= in rust-dos.conf)')
+
+    cd "$pkgbase-$pkgver"
+    install -Dm0644 target-libretro/release/librust_dos_libretro.so "$pkgdir/usr/lib/libretro/rust_dos_libretro.so"
+    # Until libretro-core-info has it.
+    install -Dm0644 libretro/rust_dos_libretro.info "$pkgdir/usr/share/libretro/info/rust_dos_libretro.info"
+    install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm0644 libretro/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
