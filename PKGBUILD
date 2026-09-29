@@ -1,4 +1,5 @@
 # Maintainer: X-LeeHe <a2956962139@outlook.com>
+# Maintainer: w568w <w568w at outlook dot com>
 
 pkgname=tgt-client-git
 pkgver=1.0.0.r623.gc9f2acc
