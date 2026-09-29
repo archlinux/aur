@@ -2,7 +2,7 @@
 # Builds kache from the latest `main`. pkgver() derives the version from git,
 # so this tracks unreleased/dev code — rebuild to update.
 pkgname=kache-git
-pkgver=0.28.0.r1026.ga7e478c
+pkgver=0.28.1.r1034.g3cd7e83
 pkgrel=1
 pkgdesc='Content-addressed zero-copy build cache for Rust, C/C++ and more (latest git main)'
 arch=('x86_64' 'aarch64')
@@ -50,7 +50,7 @@ package() {
   # Compiler-name farm (ccache's /usr/lib/ccache). Keep in sync with
   # compiler::shim::SHIM_NAMES.
   install -d "$pkgdir/usr/lib/kache"
-  for name in cc c++ gcc g++ clang clang++; do
+  for name in cc c++ gcc g++ clang clang++ cargo; do
     ln -s /usr/bin/kache "$pkgdir/usr/lib/kache/$name"
   done
   # Marks the farm so another kache on PATH skips it (see
