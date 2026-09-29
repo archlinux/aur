@@ -1,6 +1,6 @@
 pkgbase = tgrep
 	pkgdesc = Trigram-indexed grep: fast regex search for large codebases with a client/server architecture
-	pkgver = 1.0.4
+	pkgver = 1.0.11
 	pkgrel = 1
 	url = https://github.com/microsoft/tgrep
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = tgrep
 	makedepends = rust
 	depends = glibc
 	depends = libgcc
-	source = tgrep-1.0.4.tar.gz::https://github.com/microsoft/tgrep/archive/refs/tags/v1.0.4.tar.gz
-	sha256sums = c199dc73bd98d85a0ece8834e0353d528cada6dca315cac7af572a15e93a4e1f
+	source = tgrep-1.0.11.tar.gz::https://github.com/microsoft/tgrep/archive/refs/tags/v1.0.11.tar.gz
+	sha256sums = 3fd12a6f76186b5ee7c1072d9f60d5133028b10acea125b24fa6b813c04dd839
 
 pkgname = tgrep
