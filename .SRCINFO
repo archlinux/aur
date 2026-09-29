@@ -1,0 +1,24 @@
+pkgbase = mingw-w64-scip
+	pkgdesc = Solving Constraint Integer Programs (mingw-w64)
+	pkgver = 10.1.0
+	pkgrel = 1
+	url = https://www.scipopt.org/
+	arch = any
+	license = Apache-2.0
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-boost
+	depends = mingw-w64-gmp
+	depends = mingw-w64-mpfr
+	depends = mingw-w64-onetbb
+	depends = mingw-w64-papilo
+	depends = mingw-w64-readline
+	depends = mingw-w64-soplex
+	depends = mingw-w64-zlib
+	depends = mingw-coin-or-ipopt
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = https://github.com/scipopt/scip/archive/refs/tags/v10.1.0.tar.gz
+	sha256sums = 2a56b2fa179af35431ca7c3e12ecb7aad3cba8eb08011cacf2b813f8042c07c1
+
+pkgname = mingw-w64-scip
