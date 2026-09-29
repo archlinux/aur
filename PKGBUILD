@@ -2,7 +2,7 @@
 # Maintainer: so5iso4ka <so5iso4ka@icloud.com>
 # Contributor: asyync1024 <asyync1024 at proton dot me>
 pkgname=freesmlauncher
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Minecraft launcher with offline accounts support"
 arch=(x86_64)
@@ -36,7 +36,7 @@ optdepends=(
   'flite: minecraft voice narration'
 )
 source=(https://github.com/FreesmTeam/FreesmLauncher/releases/download/${pkgver}/FreesmLauncher-${pkgver}.tar.gz)
-sha256sums=('2514d4530fc44f7d8d0654f75da1ab3e392e2608cead473939c6daa15afc758a')
+sha256sums=('6fe070f9d6211b7dedeaeef4309d4014c15e66f8b6573da5652f070cb2c6dd62')
 
 build() {
   export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
