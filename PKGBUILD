@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=orca-ide-bin
 _pkgname=Orca
-pkgver=1.4.215
+pkgver=1.4.216
 _electronversion=43
 pkgrel=1
 pkgdesc="ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription."
@@ -37,8 +37,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
 sha256sums=('ff1b611f80580d49f4b97e93a97b24eb050b0671b26b8afe16341fab699112f3'
             'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
-sha256sums_aarch64=('c1ec62a3162fcd6464cc3ac3194a3429ee92b5b039d06b818f83549656aa66e1')
-sha256sums_x86_64=('2297becbc63d98358acdd099dec0d55328f594b5002d888373254e9d91b1af00')
+sha256sums_aarch64=('562dc23b11c87cab4461d3d73ce7a88a53b0cc4dd4ae8dbd2c06b9861c76cbec')
+sha256sums_x86_64=('318998cfcb79a7205f77f18cc938f82bedb630f3aa84f4e2aa311eff8113236b')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -64,14 +64,14 @@ prepare() {
         s/\/opt\/${_pkgname}\///g
         s/Utility/Development/g
     " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     case "${CARCH}" in
         aarch64)    _archrem=x64       ;;
         x86_64)     _archrem=arm       ;;
     esac
     asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
-    find "${srcdir}" \
+    find "${srcdir}" -type d \
         \( -name "*darwin*" -o -name "*win32*" -o -name "*${_archrem}*" \) \
         -exec rm -rf {} +
     asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
@@ -88,7 +88,7 @@ SH
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
