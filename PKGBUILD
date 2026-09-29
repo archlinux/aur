@@ -1,7 +1,7 @@
 pkgname=purelive-bin
-pkgver=3.1.5
-_filever=3.1.5
-_buildnum=4104
+pkgver=3.1.17
+_filever=3.1.17
+_buildnum=4106
 pkgrel=1
 pkgdesc="纯粹直播（Pure Live）基于 Flutter 的开源多平台直播聚合播放器"
 arch=('x86_64')
@@ -23,7 +23,7 @@ conflicts=("purelive")
 options=('!strip' '!debug')
 source=("force-decor.c")
 sha256sums=('03c5ac24864086b7eb697855a6ad5df7f5ed3ef99585793dabd24853da6633f2')
-sha256sums_x86_64=('19cff69a20c2f7a97888dfd2ca08ece15beb38e46f750be5aa8e09259837d890')
+sha256sums_x86_64=('6072e9fc20ad39c3f32f99dbc7afed02eece3b1d4faeb2f603a6bdd62ae88ed8')
 source_x86_64=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/liuchuancong/pure_live/releases/download/v${pkgver}/PureLive-${_filever}-${_buildnum}-linux-x64.tar.gz"
 )
