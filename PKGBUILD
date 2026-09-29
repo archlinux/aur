@@ -2,7 +2,7 @@
 # Maintainer: Ayman Bagabas <ayman.bagabas@gmail.com>
 
 pkgname='drift-diff-bin'
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc='A standalone git diff pager for the terminal.'
 url='https://github.com/aymanbagabas/drift'
@@ -13,12 +13,15 @@ conflicts=('drift')
 depends=('git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/aymanbagabas/drift/releases/download/v${pkgver}/drift_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('76053ff81c4181647790b656ddde290e23e6f3e670e0a17ccd7afa83aa9675be')
+sha256sums_aarch64=('efc78792412398d5e6d5e367164836c82d2774ea80bc430821938ccbc403f813')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/aymanbagabas/drift/releases/download/v${pkgver}/drift_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('6768229596cf44357d8b8791285798a0082c2909715a6f973d6d1db77b75e258')
+sha256sums_x86_64=('1b967f3de18b25f1fe0b7155b273d964d0702a02569e12f06438ac1bbc104768')
 
 package() {
   install -Dm755 "./drift" "${pkgdir}/usr/bin/drift"
   install -Dm644 ./LICENSE "${pkgdir}/usr/share/licenses/drift/LICENSE"
+  install -Dm644 ./completions/drift.bash "${pkgdir}/usr/share/bash-completion/completions/drift"
+  install -Dm644 ./completions/drift.zsh "${pkgdir}/usr/share/zsh/site-functions/_drift"
+  install -Dm644 ./completions/drift.fish "${pkgdir}/usr/share/fish/vendor_completions.d/drift.fish"
 }
