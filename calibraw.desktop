@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=CalibRaw
+Comment=Digital RAW photo developer
+Exec=calibraw %F
+Icon=calibraw
+Terminal=false
+Type=Application
+Categories=Graphics;Photography;
+MimeType=image/x-adobe-dng;image/x-canon-cr2;image/x-canon-cr3;image/x-nikon-nef;image/x-sony-arw;image/x-olympus-orf;image/x-panasonic-rw2;image/x-fuji-raf;image/x-pentax-pef;image/x-sigma-x3f;image/x-epson-erf;image/x-kodak-dcr;image/x-minolta-mrw;image/x-raw;
+StartupNotify=true
