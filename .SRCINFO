@@ -1,19 +1,19 @@
 pkgbase = mootool-next-bin
 	pkgdesc = Handy tool set for developers.
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://mootool.luoboduner.com/
 	arch = x86_64
 	license = MIT
 	depends = electron43
-	provides = mootool-next=1.2.2
+	provides = mootool-next=1.2.3
 	conflicts = mootool-next
 	options = !emptydirs
 	options = !strip
-	source = mootool-next-1.2.2.deb::https://github.com/rememberber/MooTool/releases/download/next-electron-v1.2.2/MooTool-Next-Electron-1.2.2-linux-x64.deb
-	source = LICENSE-1.2.2::https://raw.githubusercontent.com/rememberber/MooTool/next-electron-v1.2.2/LICENSE.txt
+	source = mootool-next-1.2.3.deb::https://github.com/rememberber/MooTool/releases/download/next-electron-v1.2.3/MooTool-Next-Electron-1.2.3-linux-x64.deb
+	source = LICENSE-1.2.3::https://raw.githubusercontent.com/rememberber/MooTool/next-electron-v1.2.3/LICENSE.txt
 	source = mootool-next.sh
-	sha256sums = 54f1d1b09708b15babbb3a4adceaa417656b623e722ad52a1abfd6f88e01b137
+	sha256sums = 5bfa2c8073f6a1e3f4641316c9a98c8b68f3c39d09791b1bd3292ba99602f470
 	sha256sums = 91930d61ff6e2bd3ceaf0ac0de4431d4ede9a9a940ca327367820df54762e333
 	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
