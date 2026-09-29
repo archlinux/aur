@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=eagle-animation-bin
 _pkgname='Eagle Animation'
-pkgver=2.18.3
+pkgver=2.18.4
 _electronversion=44
 pkgrel=1
-pkgdesc="An awesome, free and open-source animation software.(Prebuilt version.Use system-wide electron)"
+pkgdesc="An awesome, free and open-source animation software."
 arch=('x86_64')
 url="https://eagle-animation.com/"
 _ghurl="https://github.com/brick-a-brack/eagle-animation"
@@ -20,8 +20,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6e6f36f2975f71fb35a3bccc1b0b96c9c8662ced701086c5c371d275190bc04d'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums=('19016d9064634cfb8ce3accaf2766eeffb3fcee9b99d6dcc6ccdae69030861b6'
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -47,14 +47,14 @@ prepare() {
         s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g
         s/Photography/Utility/g
     " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     ln -sf "/usr/bin/ffmpeg" "${_app_dir}/resources/app.asar.unpacked/node_modules/ffmpeg-static/ffmpeg"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	local _app_dir="$(_get_app_dir)"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
