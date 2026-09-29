@@ -4,9 +4,9 @@
 pkgname=vintagestory-server
 pkgdesc="An in-development indie sandbox game about innovation and exploration--server package"
 license=('custom')
-pkgver=1.22.2
+pkgver=1.22.7
 pkgrel=1
-depends=('dotnet-runtime' 'screen' 'procps-ng')
+depends=('dotnet-runtime-10.0' 'screen' 'procps-ng')
 arch=('x86_64')
 url='https://www.vintagestory.at/'
 source=("vintagestory-server-${pkgver}.tar.gz::https://cdn.vintagestory.at/gamefiles/stable/vs_server_linux-x64_${pkgver}.tar.gz"
@@ -15,7 +15,7 @@ source=("vintagestory-server-${pkgver}.tar.gz::https://cdn.vintagestory.at/gamef
         "vintagestory-server.sysusers"
         "vsserverd.sh")
 noextract=("vintagestory-server-${pkgver}.tar.gz")
-sha256sums=('51c0d50c8f729146396cf04e449c99e1b193889da7d837f54cd84ac88910f1e5'
+sha256sums=('a7d4a520604590a96de812ee6c6baf4404d43d86cf1ec4fbac1b3a580b52c847'
             'e9807846420e5449f8c61a3c068f79c648664734ed04849910377ad32f215234'
             'b5f68980d92967614c0da37125e05084ed12c26a829c7e29c6da7fc7bb19dc48'
             'bab3a47912d4d568d0078a7802cfde9fa184552f538e0fa6607c9370b0c7d5a8'
