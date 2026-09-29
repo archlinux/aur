@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'mautrix-teams.tmpfiles')
 # sha256sums are recomputed by updpkgsums in the Publish AUR workflow before
 # the PKGBUILD is pushed to AUR; the committed values are intentionally SKIP.
-sha256sums=('dc2aa02605d85fb46eed41e44fed272798c3dedba6264690c1c7c81d5411ef5f'
+sha256sums=('9e906762469126d871153f0ccfe9a0710cdafb34421bc5f3308b9f6c8176803e'
             'aacb178c68e066e344a66a852fac5ee0bddb4ba5c28d3fe12dd5b3a38926444f'
             '06455386eb56393054ae9b467ebe9d78026d0e92d07e58040e6afd7ffaf0a0ba'
             '17c329e362b7caa7670f063461324db6f625b98043bad82b6c2db7544a37802c')
