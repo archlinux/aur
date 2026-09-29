@@ -1,8 +1,8 @@
 # Maintainer: @aardbol
 pkgname=ironclaw-bin
 _pkgname=ironclaw
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="IronClaw is an Agent OS focused on privacy, security and extensibility"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nearai/ironclaw"
@@ -20,8 +20,8 @@ source_aarch64=("${_pkgname}-aarch64-${pkgver}-linux-gnu.tar.gz::${url}/releases
 sha256sums=('4886a92acb38c8478e6b9d377a92025c3ac01b1aa88ccccce67f3c0c3dc36f1b'
             '983bb7d3dea28d31f6fd3e6368d5d42a499db4f9aa076fc86d2d32c298c0db63'
             '08a209a0123a017691c04b2428826e1303ff8edab521af99839013880aacdda8')
-sha256sums_x86_64=('fa5d422dcaff510cdae13380304c40d4f46b5ac832d576b16131699cea5955ef')
-sha256sums_aarch64=('d68285a0dd0232d111c45d5a0bbb41e7dc3f348cc1dac0969ac4fe97708cd046')
+sha256sums_x86_64=('72b893d3e8f5f5a431cfaf9bc48e9dae71755e2d049ab4119c0646d352da4630')
+sha256sums_aarch64=('30acf81b5b8ec71e34547a27a43ef0bbc4bae8495745fee2e11ce3067718743b')
 
 package() {
     local target="${_pkgname}-${CARCH}-unknown-linux-gnu"
