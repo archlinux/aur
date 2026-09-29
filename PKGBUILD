@@ -12,7 +12,7 @@
 # =============================================================================
 
 pkgname=cosmostrix-bin
-pkgver=100.0.5
+pkgver=100.0.6
 _tag=
 pkgrel=1
 
@@ -101,8 +101,12 @@ prepare() {
     # -- curl flags (shared across all downloads) --
     # --proto '=https': force HTTPS (no plain HTTP fallback).
     # --tlsv1.2: minimum TLS 1.2 (allows TLS 1.3 negotiation — GitHub supports both).
-    # --retry 3 --retry-delay 5: if rate-limited (HTTP 429), wait 5s + retry
-    #   instead of spamming parallel requests (avoids bot detection).
+    # --retry 3 --retry-all-errors --retry-delay 5: if the CDN answers a
+    #   transient error (HTTP 429 rate-limit, 5xx), wait 5s + retry instead
+    #   of failing the install. --retry-all-errors (NIGHT-dinner-1) covers
+    #   the exit-22 class plain --retry refuses to re-attempt when --fail
+    #   converts a 5xx into a hard error (observed in the owner's fleet:
+    #   a release-asset URL answering 500 mid-download).
     # --connect-timeout 30: TCP handshake timeout.
     # --max-time 300: total download timeout (5 min for large assets).
     local curl_flags=(
@@ -111,6 +115,7 @@ prepare() {
         --proto '=https'
         --tlsv1.2
         --retry 3
+        --retry-all-errors
         --retry-delay 5
         --connect-timeout 30
         --max-time 300
