@@ -35,6 +35,7 @@ pkgbase = openmodelica-git
 	depends = qt6-5compat
 	depends = zip
 	provides = openmodelica
+	provides = openmodelica-omc
 	conflicts = openmodelica
 	options = !lto
 	source = openmodelica-git::git+https://github.com/OpenModelica/OpenModelica.git
