@@ -1,6 +1,6 @@
 pkgbase = dbflux
 	pkgdesc = A fast, keyboard-first database client
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://dbflux.dev
 	arch = x86_64
@@ -31,13 +31,13 @@ pkgbase = dbflux
 	depends = tree-sitter
 	depends = hicolor-icon-theme
 	validpgpkeys = B39EB98E8860DAFB05670073A614B7D25134987A
-	source_x86_64 = https://github.com/0xErwin1/dbflux/releases/download/v0.8.2/dbflux-linux-amd64.tar.gz
-	source_x86_64 = https://github.com/0xErwin1/dbflux/releases/download/v0.8.2/dbflux-linux-amd64.tar.gz.asc
-	sha256sums_x86_64 = 3e6be4bfb11fff1be8fd2d27920508eeaa4a1452be0b5a35a81ac377ea98ee20
+	source_x86_64 = https://github.com/0xErwin1/dbflux/releases/download/v0.8.3/dbflux-linux-amd64.tar.gz
+	source_x86_64 = https://github.com/0xErwin1/dbflux/releases/download/v0.8.3/dbflux-linux-amd64.tar.gz.asc
+	sha256sums_x86_64 = d03fc5b8e26f40fb2f9b195e629e49adc24836fc178ed29def54e02fba12d4ef
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/0xErwin1/dbflux/releases/download/v0.8.2/dbflux-linux-arm64.tar.gz
-	source_aarch64 = https://github.com/0xErwin1/dbflux/releases/download/v0.8.2/dbflux-linux-arm64.tar.gz.asc
-	sha256sums_aarch64 = 2dff50e4f466f8166bbf827f1179852c9abbe29fbd83adbd53d3987acbd2650e
+	source_aarch64 = https://github.com/0xErwin1/dbflux/releases/download/v0.8.3/dbflux-linux-arm64.tar.gz
+	source_aarch64 = https://github.com/0xErwin1/dbflux/releases/download/v0.8.3/dbflux-linux-arm64.tar.gz.asc
+	sha256sums_aarch64 = c24e76b53d9ab1461209a320d2a70f5a465b1d5b93aa61f262cebc7e6fb6b6aa
 	sha256sums_aarch64 = SKIP
 
 pkgname = dbflux
