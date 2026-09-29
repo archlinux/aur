@@ -2,15 +2,16 @@
 _appname=trilium
 pkgname="${_appname}next-bin"
 _pkgname=TriliumNotes
-pkgver=0.105.0
-_electronversion=43
+pkgver=0.106.0
+_electronversion=44
 pkgrel=1
-pkgdesc="Build your personal knowledge base with TriliumNext Notes.(Prebuilt version.Use system-wide electron)"
+pkgdesc="Build your personal knowledge base with TriliumNext Notes."
 arch=(
     'aarch64'
     'x86_64'
 )
-url="https://github.com/TriliumNext/Trilium"
+url="https://triliumnotes.org/"
+_ghurl="https://github.com/TriliumNext/Trilium"
 license=("AGPL-3.0-only")
 provides=(
     "${_appname}"
@@ -30,11 +31,11 @@ makedepends=(
 source=(
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x64.rpm")
-sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('f92edb95166929cf7d4b6c7db82d5c676d8e113357387fb850208d02d1adaa52')
-sha256sums_x86_64=('398fa443e1a4a60f6703deb03aca61b2e2a36071cebad765ed9ad704c289287c')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x64.rpm")
+sha256sums=('bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+sha256sums_aarch64=('d676cd78cae9e26a4207f414bb289b7bb5e7b49e65687ac69fa48bbf73d30104')
+sha256sums_x86_64=('5d7ba2e18951e50ffbae103497ccef29627e1e31bffc7fd3062a7eabe4bd923d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -56,18 +57,17 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
     _check_electron_version
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     sed -i "s/${_appname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_appname}.desktop"
     asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    rm -rf "${_app_dir}/resources/app.asar"
     find "${srcdir}/app.asar.unpacked" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	local _app_dir="$(_get_app_dir)"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/share/doc/${_appname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
