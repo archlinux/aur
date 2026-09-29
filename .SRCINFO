@@ -7,6 +7,7 @@ pkgbase = mingw-w64-paraview-git
 	license = custom
 	makedepends = mingw-w64-cmake
 	makedepends = mingw-w64-wine
+	makedepends = qt6-base
 	makedepends = mingw-w64-boost
 	makedepends = protobuf
 	makedepends = git
