@@ -6,7 +6,7 @@ _appname=${_gitname%-cli}
 pkgname=${_appname}
 pkgdesc="Fast, beautiful diffs in a single local binary"
 
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ depends=('glibc' 'libgcc' 'zlib')
 options=('!lto' '!strip')
 
 source=("${_appname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('db661dbdaca37bbb410134f9a542e923c4104b59c8c8cfbc3c4ae3450360ea7d')
+sha256sums=('5d4727b70eef79cb65f2ed8b305574c15d9ea083ec42fd928698fc97f3c0146f')
 
 
 prepare() {
