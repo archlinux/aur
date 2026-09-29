@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=intelis-interfacing-bin
 _pkgname='InteLIS Interfacing'
-pkgver=4.7.0
+pkgver=4.8.0
 _electronversion=44
 pkgrel=1
 pkgdesc="A standalone Electron application that receives test results from laboratory analyzers and stores them where a laboratory information system can pick them up."
@@ -24,9 +24,9 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/deforay/vlsm-interfacing/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('86452beb2aaaf1ac96704d7d90db9b1b8e1ced1ede87a01a2cc27b27056dd86a'
+sha256sums=('a7a706a510251d46fac714387cec5fec6e3107513858b4e47b7a4f06b0abfee7'
             '90e8f1d7651f22d814f741854e325de31508a7d77cdc512f7244b87961612e41'
-            '5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -54,7 +54,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
