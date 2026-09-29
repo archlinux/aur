@@ -1,6 +1,6 @@
 pkgbase = electronmail-bin
 	pkgdesc = Unofficial ProtonMail Desktop App
-	pkgver = 5.3.9
+	pkgver = 5.3.10
 	pkgrel = 1
 	url = https://github.com/vladimiry/ElectronMail
 	install = electronmail-bin.install
@@ -26,10 +26,10 @@ pkgbase = electronmail-bin
 	provides = electronmail
 	conflicts = electronmail
 	options = !debug
-	source = https://github.com/vladimiry/ElectronMail/releases/download/v5.3.9/electron-mail-5.3.9-linux-x64.pacman
+	source = https://github.com/vladimiry/ElectronMail/releases/download/v5.3.10/electron-mail-5.3.10-linux-x64.pacman
 	source = electronmail-bin.install
 	source = LICENSE
-	sha256sums = fa242fe7bffecfba9baefd0c895be4f8df16a5d4e9fc971317abc0f2d87ea51a
+	sha256sums = fb69f6fc263435920ab8a4dbe75a1e31aff7bfbb9564e46021b04f01ff3bbb46
 	sha256sums = a008441fe5eb1095cd657f5eca4ae517c48493a7389e3183131d5f299458843b
 	sha256sums = 1b3782ccad7b8614100cda30d3faf42fc39f2e97932908c543005053b654ca68
 

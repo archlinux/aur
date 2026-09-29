@@ -7,7 +7,7 @@ _root_relative_src_launcher_file_path=opt/ElectronMail/electron-mail-launcher
 _launcher_target_file_name=electron-mail
 
 pkgname=electronmail-bin
-pkgver=5.3.9
+pkgver=5.3.10
 pkgrel=1
 pkgdesc="Unofficial ProtonMail Desktop App"
 arch=('x86_64')
@@ -23,7 +23,7 @@ install="${pkgname}.install"
 source=("https://github.com/vladimiry/ElectronMail/releases/download/v${pkgver}/electron-mail-${pkgver}-linux-x64.pacman"
         "${pkgname}.install"
         "LICENSE")
-sha256sums=('fa242fe7bffecfba9baefd0c895be4f8df16a5d4e9fc971317abc0f2d87ea51a'
+sha256sums=('fb69f6fc263435920ab8a4dbe75a1e31aff7bfbb9564e46021b04f01ff3bbb46'
             'a008441fe5eb1095cd657f5eca4ae517c48493a7389e3183131d5f299458843b'
             '1b3782ccad7b8614100cda30d3faf42fc39f2e97932908c543005053b654ca68')
 options=(!debug)
