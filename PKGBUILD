@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atlassify-bin
 _pkgname=Atlassify
-pkgver=3.16.1
+pkgver=3.16.2
 _electronversion=44
 pkgrel=1
 pkgdesc="Atlassian notifications on your menu bar."
@@ -22,9 +22,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/setchy/atlassify/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7fe5b08d17fa7d77e70a3cdb8092e756227b71e9a4f8897caf332ae44e5b0b9b'
+sha256sums=('dde0dfe541afc1200ddf779e458ffc96b2a8107c17aba739cf0f6ef7445d7fe3'
             '2030af44675d6523de146944f48720295a82c2e89023ec6f579661e22ad8be2d'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_app_dir() {
 	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }
