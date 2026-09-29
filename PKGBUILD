@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=exifcleaner
 _pkgname=ExifCleaner
-pkgver=4.3.0
+pkgver=4.5.0
 _electronversion=43
 _nodeversion=22
 pkgrel=1
@@ -18,7 +18,6 @@ makedepends=(
     'npm'
     'nvm'
     'git'
-    'curl'
     'yarn'
     'jq'
 )
@@ -26,79 +25,84 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('344316ab48bef04699ad7510cf92d6c8cc4b82a9c638795d1645e9e0a857b41b'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums=('b9c881014fa5d7fb4240d308cd1573216b4d92b3acb7cf3a46a994a7887cde57'
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+_get_project_dir() {
+	local d
+	while IFS= read -r d; do
+		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
+	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+}
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_app_dir() {
+	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
+}
+_get_electron_version() {
+	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
+		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
+		| grep -v '^$' | sed 's/^[^0-9]*//' | head -1)
+	[[ -z "${_elec_ver}" ]] && return 1
+	echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+}
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
 	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	_ev="$(electron${_electronversion} -v)"
-	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
-	export HOME="${srcdir}/.electron-gyp"
-	export XDG_CACHE_HOME="${srcdir}/.cache"
-	export XDG_CONFIG_HOME="${srcdir}/.config"
-	export XDG_DATA_HOME="${srcdir}/.local/share"
-	export npm_config_platform=linux
-	export npm_config_arch="${CARCH}"
-	export NODE_OPTIONS="--max-old-space-size=4096"
-	export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
+	export ELECTRON_BUILDER_OFFLINE=true
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+	export HOME="${srcdir}/.home"
+	export XDG_CACHE_HOME="${HOME}/.cache"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_DATA_HOME="${HOME}/.local/share"
+	export YARN_CACHE_FOLDER="${HOME}/.yarn/cache"
 	export YARN_NETWORK_CONCURRENCY=32
+	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
+	export COREPACK_HOME="${HOME}/.corepack"
+	export npm_config_registry="${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}"
 	local _yarnver _yarnmajor=0
 	_yarnver="$(node -p "require('./package.json').packageManager?.split('@')[1]?.split('-')[0] || ''" 2>/dev/null)"
 	_yarnmajor="${_yarnver%%.*}"
 	_yarnmajor="${_yarnmajor:-0}"
 	if [[ "${_yarnmajor}" -ge 2 ]] 2>/dev/null || [[ -f .yarnrc.yml ]]; then
-		export XDG_STATE_HOME="${srcdir}/.local/state"
+		export XDG_STATE_HOME="${HOME}/.local/state"
 		export YARN_ENABLE_GLOBAL_CACHE=false
 		export YARN_ENABLE_MIRROR=false
-		export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/berry"
+		export YARN_GLOBAL_FOLDER="${HOME}/.yarn/berry"
 		export YARN_NODE_LINKER=node-modules
 		export YARN_NM_MODE=hardlinks-local
 		export YARN_ENABLE_TELEMETRY=false
 		export YARN_ENABLE_SCRIPTS=true
-		export YARN_ENABLE_IMMUTABLE_INSTALLS=false
-		export YARN_ENABLE_PROGRESS_BARS=false
-		export YARN_ENABLE_COLORS=false
 		export YARN_HTTP_TIMEOUT=600000
 		export YARN_HTTP_RETRY=5
-		export COREPACK_HOME="${srcdir}/.corepack"
-		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}"
-		install -dm755 "${srcdir}/.bin"
-		corepack enable --install-directory "${srcdir}/.bin"
-		export PATH="${srcdir}/.bin:${PATH}"
-		corepack prepare "yarn@${_yarnver}" --activate
+		export YARN_NPM_REGISTRY_SERVER="${YARN_NPM_REGISTRY_SERVER:-${NPM_CONFIG_REGISTRY:-https://registry.yarnpkg.com}}"
+		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${COREPACK_HOME}"
 	else
-		export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/global"
-		export YARN_LINK_FOLDER="${srcdir}/.yarn/link"
-		export YARN_TEMP_FOLDER="${srcdir}/.yarn/tmp"
+		export YARN_GLOBAL_FOLDER="${HOME}/.yarn/global"
+		export YARN_LINK_FOLDER="${HOME}/.yarn/link"
+		export YARN_TEMP_FOLDER="${HOME}/.yarn/tmp"
 		export YARN_NETWORK_TIMEOUT=600000
 		export YARN_CHILD_CONCURRENCY="$(nproc)"
 		export YARN_FROZEN_LOCKFILE=true
-		export YARN_NONINTERACTIVE=true
-		export YARN_NO_PROGRESS=true
 		export YARN_IGNORE_ENGINES=true
-		export NODE_ENV=production
 		export YARN_PRODUCTION=false
-		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${YARN_LINK_FOLDER}" "${YARN_TEMP_FOLDER}"
+		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${YARN_LINK_FOLDER}" "${YARN_TEMP_FOLDER}" "${COREPACK_HOME}"
+	fi
+	local _reg="${NPM_CONFIG_REGISTRY:-https://registry.yarnpkg.com}"
+	_reg="${_reg%/}"
+	if [[ -f .yarnrc ]]; then
+		sed -i "s|^registry .*|registry \"${_reg}\"|" .yarnrc
+	fi
+	if [[ -f yarn.lock ]] && grep -q 'resolved "https://registry.yarnpkg.com' yarn.lock; then
+		sed -i "s|https://registry.yarnpkg.com/|${_reg}/|g" yarn.lock
 	fi
 }
-_get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
-}
-_get_electron_version() {
-    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
-        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
-    [[ -z "${_elec_ver}" ]] && return 1
-    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
-}
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "$(_get_project_dir)"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -116,28 +120,34 @@ prepare() {
     _set_build_env
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    export NODE_ENV=development
+	yarn install
 }
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "$(_get_project_dir)"
 	_ensure_local_nvm
     _set_build_env
-    NODE_ENV=production     yarn compile
-    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}"
-    case "${CARCH}" in
-        aarch64)    _archrem=linux-x64  ;;
-        x86_64)     _archrem=linux-arm64 ;;
-    esac
-    local _app_dir=$(_get_app_dir)
-    rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/exifcleaner-node/prebuilds/"{darwin-*,"${_archrem}",win32-*}
+    export NODE_ENV=production
+	yarn compile
+    yarn electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}"
+    local _app_dir="$(_get_app_dir)"
+    find "${_app_dir}/resources" -type d -exec chmod 755 {} +
+	case "${CARCH}" in
+		aarch64)	_archrem=x64	;;
+		x86_64)		_archrem=arm	;;
+	esac
+	find "${_app_dir}/resources/app.asar.unpacked" -type d \
+		\( -name "darwin*" -o -name "win32*" -o -name "*${_archrem}"* \) \
+		-exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-	local _app_dir=$(_get_app_dir)
+	local _app_dir="$(_get_app_dir)"
 	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
 	rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	local _src="$(_get_project_dir)"
+    install -Dm644 "${_src}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${_src}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${_src}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
