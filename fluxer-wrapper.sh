@@ -23,7 +23,7 @@ if [ ! -s "$CONFIG" ]; then
   rm -rf /tmp/fluxer-asar-patch
 
   echo "$DOMAIN" | tee "$CONFIG"
-  zenity --info --text="Done. Configured domain: $DOMAIN. Saved in $CONFIG"
+  zenity --info --text="Done. Configured domain: $DOMAIN. Remove $CONFIG to start again."
   echo
 fi
 
