@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+_payloads=/usr/share/riftlift/payloads
+export RIFTLIFT_RUNTIME_ARCHIVE="${_payloads}/riftlift-compat.zip"
+export RIFTLIFT_OPENVR_RUNTIME_ARCHIVE="${_payloads}/riftlift-xrizer.tar.gz"
+export RIFTLIFT_DXVK_ARCHIVE="${_payloads}/riftlift-dxvk.tar.gz"
+
+exec /usr/share/riftlift/venv/bin/riftlift setup "$@"
