@@ -1,10 +1,10 @@
-# Maintainer: fibsussy <noahlykins@gmail.com>
+# Maintainer: noahlyk <noahlykins@gmail.com>
 pkgname=tmux-leap
-pkgver=1.9.4
+pkgver=1.9.5
 pkgrel=1
 pkgdesc="tmux leaper, fzf through a list of projects or directories, autosessionizing, history"
 arch=('x86_64' 'aarch64')
-url="https://github.com/fibsussy/tmux-leap"
+url="https://github.com/noahlyk/tmux-leap"
 license=('MIT')
 depends=('fzf' 'tmux')
 makedepends=()
@@ -19,8 +19,8 @@ elif [ "$_arch" = "aarch64" ]; then
 fi
 
 source=(
-    "https://github.com/fibsussy/tmux-leap/releases/download/v${pkgver}/tmux-leap-linux-${_arch}.tar.gz"
-    "LICENSE::https://raw.githubusercontent.com/fibsussy/tmux-leap/v${pkgver}/LICENSE"
+    "https://github.com/noahlyk/tmux-leap/releases/download/v${pkgver}/tmux-leap-linux-${_arch}.tar.gz"
+    "LICENSE::https://raw.githubusercontent.com/noahlyk/tmux-leap/v${pkgver}/LICENSE"
 )
 sha256sums=('SKIP' 'SKIP') 
 

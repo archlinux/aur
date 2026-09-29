@@ -20,7 +20,7 @@ post_install() {
     echo ""
     echo "==> Shell completions have been installed system-wide!"
     echo ""
-    echo "==> For more info: https://github.com/fibsussy/tmux-leap"
+    echo "==> For more info: https://github.com/noahlyk/tmux-leap"
     echo ""
 }
 
