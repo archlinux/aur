@@ -1,0 +1,10 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1459,7 +1459,6 @@
+ $(RUST_LIB): $(RUST_DEPS)
+ 	@echo "Building Rust codecs ($(strip $(RUST_FEATURES)))..."
+ 	cd $(RUST_SRC_DIR) && \
+-	RUSTFLAGS="$(if $(RUST_TARGET_CPU),-C target-cpu=$(RUST_TARGET_CPU) )-C linker=$(lastword $(CXX))" \
+ 	cargo rustc --locked --offline --features "$(strip $(RUST_FEATURES))" --crate-type=$(RUST_BUILD_TYPE) --release -- --print=native-static-libs
+ 	touch $@
+ endif
