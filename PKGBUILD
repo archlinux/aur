@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=weread-bin
 _pkgname=WeRead
-pkgver=1.1.0
+pkgver=1.1.1
 _electronversion=44
-pkgrel=2
+pkgrel=1
 pkgdesc="WeRead Desktop App (Unofficial) / 微信读书（网页版）桌面版客户端 (非官方)."
 arch=('x86_64')
 url="https://github.com/NeilYXIN/WeRead_Desktop"
@@ -21,9 +21,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/NeilYXIN/WeRead_Desktop/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b7e93854bcf1a717d7844fbc088351ffea379f9019e7a5997c5d601a7e0243ec'
+sha256sums=('2d3136bb1eff32ce943176cb0b6717a5cc086232cb65483f2bc56a386fea9be2'
             'ca358ebf205c75e1df2c7fb18dbf2a56a55543c606ef9cb4e1f2ac8b89c06656'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_app_dir() {
 	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }

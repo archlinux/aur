@@ -1,19 +1,19 @@
 pkgbase = weread-bin
 	pkgdesc = WeRead Desktop App (Unofficial) / 微信读书（网页版）桌面版客户端 (非官方).
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/NeilYXIN/WeRead_Desktop
 	arch = x86_64
 	license = MIT
 	depends = electron44
-	provides = weread=1.1.0
+	provides = weread=1.1.1
 	conflicts = weread
 	options = !emptydirs
-	source = weread-1.1.0.deb::https://github.com/NeilYXIN/WeRead_Desktop/releases/download/v1.1.0/WeRead-1.1.0-amd64.deb
-	source = LICENSE-1.1.0::https://raw.githubusercontent.com/NeilYXIN/WeRead_Desktop/v1.1.0/LICENSE
+	source = weread-1.1.1.deb::https://github.com/NeilYXIN/WeRead_Desktop/releases/download/v1.1.1/WeRead-1.1.1-amd64.deb
+	source = LICENSE-1.1.1::https://raw.githubusercontent.com/NeilYXIN/WeRead_Desktop/v1.1.1/LICENSE
 	source = weread.sh
-	sha256sums = b7e93854bcf1a717d7844fbc088351ffea379f9019e7a5997c5d601a7e0243ec
+	sha256sums = 2d3136bb1eff32ce943176cb0b6717a5cc086232cb65483f2bc56a386fea9be2
 	sha256sums = ca358ebf205c75e1df2c7fb18dbf2a56a55543c606ef9cb4e1f2ac8b89c06656
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
 pkgname = weread-bin
