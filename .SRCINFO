@@ -1,6 +1,6 @@
 pkgbase = notepadnext
 	pkgdesc = Cross-platform reimplementation of Notepad++
-	pkgver = 0.14
+	pkgver = 0.15
 	pkgrel = 1
 	url = https://github.com/dail8859/NotepadNext
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = notepadnext
 	depends = qt6-5compat
 	depends = hicolor-icon-theme
 	depends = qt6-base
-	source = notepadnext::git+https://github.com/dail8859/NotepadNext#tag=v0.14
-	sha256sums = 7ef52082b9c048716a304d2f8591154739fb5871b4c90f2327460d360bce1946
+	source = notepadnext::git+https://github.com/dail8859/NotepadNext#tag=v0.15
+	sha256sums = 59dc5461ca49cf110707649f75568c45834b1cfd094ffb7ac14cab8c2a923a42
 
 pkgname = notepadnext
