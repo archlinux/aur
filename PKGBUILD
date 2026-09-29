@@ -2,7 +2,7 @@
 # Co-Maintainer: 67mustard41
 
 pkgname=opera-gx
-pkgver=135.0.5973.153
+pkgver=136.0.6008.76
 pkgrel=1
 pkgdesc='Opera GX The Gaming Browser'
 arch=('x86_64')
@@ -64,7 +64,7 @@ optdepends=(
     'upower: battery save support'
 )
 
-_nwjs_ffmpeg_version=0.114.2
+_nwjs_ffmpeg_version=0.115.0
 
 _upstream_deb_pkg='opera-gx-stable'
 _debfile="${_upstream_deb_pkg}_${pkgver}_amd64.deb"
@@ -86,13 +86,13 @@ noextract=(
     "nwjs-ffmpeg-${_ffmpeg_zip}"
 )
 
-sha256sums=('a3374acfa5e2e543901304e3393b186d86cc32ad7c4d0724294056205592ea6d'
+sha256sums=('5fa5fc9c2b0adfa9b0cfac707728fcac8d7657ecdbbed1fe414f7d40576774d0'
             'baeb75b7d52f1f75ec46027b05f0df0f4a22d6c47ab5816562f6e183c3af4034'
             '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231'
             '3c48827275d36f2a38a9ac63ce81875211f11022d390d7ada302d26e475271ea'
             'd67656e82d68ab88841b3e16a24e60aabd9f242e42b7010f9613282df57d7003'
             'cb50dfd6f03cafffbb0565f4cf6d8f943b2709dcdb30acc3d0a52c9c99af3e32'
-            'a634289eb87e5150482f8eb8169785a279e0ea5b0775baa8cf2d987b760b7d63')
+            '589fc1fa3f9905fe336990a2c8e16a9107c1aabdb42031b69eaf812331e5fb4a')
 
 prepare() {
     sed \
