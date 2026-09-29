@@ -1,5 +1,5 @@
 pkgname=rsclip-bin
-pkgver=0.1.22
+pkgver=0.1.23
 pkgrel=1
 pkgdesc='Wayland clipboard manager with GTK UI and background daemon'
 arch=('x86_64')
@@ -22,7 +22,7 @@ conflicts=('rsclip')
 source=(
   "${pkgname}-${pkgver}.tar.zst::${url}/releases/download/v${pkgver}/rsclip-${pkgver}-x86_64.tar.zst"
 )
-sha256sums=('f4e7547a70283bef97c5932d19eff58ec5bc69f2c2839a497bcdb596b69f0e45')
+sha256sums=('565801f30dc0dff2734b147d32d3d3a39c9e30ff8db332474c08d2c104346018')
 
 package() {
   install -d "${pkgdir}"
