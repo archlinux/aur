@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-xh
 	pkgdesc = Xhosa language pack for Firefox Nightly
-	pkgver = 159.0a1.20260928.210305
+	pkgver = 159.0a1.20260929.095107
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-xh
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-xh-159.0a1.20260928.210305.xpi
-	source = firefox-nightly-i18n-xh-159.0a1.20260928.210305.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-159.0a1.xh.langpack.xpi
-	sha256sums = 4c8305bcde092ac5f645fbbdc6ca126330893c7d9504100ae496ba27d0431e20
+	noextract = firefox-nightly-i18n-xh-159.0a1.20260929.095107.xpi
+	source = firefox-nightly-i18n-xh-159.0a1.20260929.095107.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-159.0a1.xh.langpack.xpi
+	sha256sums = eebd18071dbefcf553291bc333fd2f90fe23f674e15295cfb08155b03a33bfaf
 
 pkgname = firefox-nightly-i18n-xh
