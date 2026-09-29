@@ -1,15 +1,15 @@
 pkgbase = decaf
-	pkgdesc = A Rofi-based sleep timer utility
-	pkgver = 1.0.5
+	pkgdesc = Suspend the system after a while: a scriptable sleep timer
+	pkgver = 2.0.0
 	pkgrel = 1
-	url = https://github.com/davi-s/decaf
+	url = https://github.com/Davi-S/decaf
 	arch = any
 	license = MIT
 	depends = bash
 	depends = systemd
-	depends = rofi
+	depends = glib2
 	depends = libnotify
-	source = decaf-1.0.5.tar.gz::https://github.com/davi-s/decaf/archive/refs/tags/v1.0.5.tar.gz
-	sha256sums = 26238ebae2ca99ac2129e1c9865dca787bed3f88c2e0bfc9f85caf6c2c36f1ee
+	source = decaf-2.0.0.tar.gz::https://github.com/Davi-S/decaf/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 68ace6a14c4366c156139c1ff0f772518946ebab1883a01a7032eef764c82982
 
 pkgname = decaf
