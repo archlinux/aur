@@ -42,5 +42,5 @@ package() {
   rm -r "${pkgdir}"/usr/share/cminpack
   rm -r "${pkgdir}"/usr/include/cminpack-1
   rm -r "${pkgdir}"/usr/share/cmake
-  rm -r "${pkgdir}"/usr/include/{FMI,FMI1,FMI2,JM}
+  rm -r "${pkgdir}"/usr/include/{FMI*,JM}
 }
