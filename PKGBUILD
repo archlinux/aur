@@ -2,7 +2,7 @@
 # Contributor: Vladislav Minakov <v@minakov.pro>
 
 pkgname=ketesa
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A Matrix administration panel using react-admin"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
 )
 url="https://github.com/etkecc/ketesa"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}.tar.gz")
-sha512sums=('34f1c5357fda109b341c6e7415e4ef31ecbb9bfb5469a222832c26f8ca8e0ad063c8b50ee4562f84e100ddf2c5f03c15ab052ffff2892bc1c50d979130b5e5a4')
+sha512sums=('da8dc04f77d198ec426ea3276881707d28ac7adbefe3e95c7aaaec3ee7092353b5880038d5ebd3f366c92f31ec28bcab74a33bd10ef53a9ab154b951b1abbcb7')
 
 
 package() {
