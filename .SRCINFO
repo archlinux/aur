@@ -1,6 +1,6 @@
 pkgbase = pipeasio
 	pkgdesc = PipeWire-native ASIO driver for Wine, with a Qt install and settings manager
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/M0n7y5/pipeasio
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = pipeasio
 	options = !strip
 	options = !debug
 	options = !lto
-	source = pipeasio-1.9.0.tar.gz::https://github.com/M0n7y5/pipeasio/archive/refs/tags/v1.9.0.tar.gz
-	b2sums = 50c20a94307e2eaf8cd5482a62456bd644d955ab2a7df37a31bf4f9b12390f61b8b9fceb99acc798a95f3e5057e51579da8571b86cbdea15e02b4d8ac5cce786
+	source = pipeasio-1.9.1.tar.gz::https://github.com/M0n7y5/pipeasio/archive/refs/tags/v1.9.1.tar.gz
+	b2sums = bf16e8733c39917f5353399f85d7b33ccce3bf71656ddf3df8a73fef93f539448e048e0dcfeea34a3540c1bc8772b5b62ffa26ddb3ae76212eada478f70bcca7
 
 pkgname = pipeasio
