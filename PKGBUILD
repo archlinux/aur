@@ -180,6 +180,12 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 #
 #   sudo ln -s /usr/share/fontconfig/conf.avail/80-nerd-fonts-apple-hinted.conf \
 #              /etc/fonts/conf.d/
+#
+# That is not enough for GTK4 (4.16+): with gtk-font-rendering=automatic, the
+# default, GTK4 hard-codes hintslight and cairo lets that override fontconfig.
+# On GNOME set `gsettings set org.gnome.desktop.interface font-rendering manual`
+# and font-hinting to medium, and put gtk-hint-font-metrics=false in
+# ~/.config/gtk-4.0/settings.ini. See README.md.
 # ────────────────────────────────────────────────────────────────────────────
 
 _validate_hint_mode() {
