@@ -1,16 +1,17 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_npmname=ollama
-_npmver=0.6.3
-
-pkgname=nodejs-$_npmname
+pkgname="nodejs-ollama"
 pkgdesc="Ollama JavaScript library"
-pkgver=$_npmver
+pkgver=0.6.3
 pkgrel=1
-arch=("x86_64")
+
+arch=("any")
+license=("MIT")
 url="https://github.com/ollama/ollama-js"
 _urlraw="https://raw.githubusercontent.com/ollama/ollama-js/v${pkgver}"
-license=("MIT")
+
+_npmname=${pkgname#nodejs-}
+_npmver=${pkgver}
 
 depends=("ollama" "nodejs")
 makedepends=("npm" "jq")
