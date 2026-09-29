@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=drc
-_pkgver=3.0-1
+_pkgver=4.0-0
 pkgname=r-${_pkgname,,}
-pkgver=3.0.1
-pkgrel=3
+pkgver=4.0.0
+pkgrel=1
 pkgdesc='Analysis of Dose-Response Curves'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,7 @@ depends=(
   r-scales
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3ec01182895e8ec9b13bcdfed6a812800ad02d732634e4213802ff1b33b21d31')
+sha256sums=('4fec25ca2d44dbb69259051a18c7323def632976e78998eb950f1e93c23a552b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
