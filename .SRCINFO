@@ -1,6 +1,6 @@
 pkgbase = rayburst-git
 	pkgdesc = Redefining the open-source download manager.
-	pkgver = 4.0.0.beta.4.r0.g5e46a5b
+	pkgver = 4.0.1.beta.1.r4.gf91d8c0
 	pkgrel = 1
 	url = https://rayburst.pages.dev/
 	arch = any
@@ -9,12 +9,11 @@ pkgbase = rayburst-git
 	makedepends = git
 	makedepends = rustup
 	makedepends = pnpm
-	makedepends = gendesk
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
 	depends = libayatana-appindicator
-	provides = rayburst=4.0.0.beta.4
+	provides = rayburst=4.0.1.beta.1
 	conflicts = rayburst
 	source = rayburst.git::git+https://github.com/AnInsomniacy/rayburst.git
 	sha256sums = SKIP
