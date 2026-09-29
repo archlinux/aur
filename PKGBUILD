@@ -2,9 +2,9 @@
 
 pkgname=old-launcher-git
 _name=old_launcher
-pkgver=r13.d909de7
+pkgver=r17.faba5db
 pkgrel=1
-pkgdesc='Addon manager for World of Warcraft 3.3.5a clients'
+pkgdesc='Launcher and addon manager for World of Warcraft 3.3.5a clients'
 arch=('x86_64' 'aarch64')
 url='https://gitlab.com/juxuanu/old_launcher'
 license=('GPL-3.0-or-later')
@@ -24,6 +24,7 @@ depends=(
 )
 makedepends=('cargo' 'git')
 optdepends=(
+  'wine: starting the game the default way, without another runner set up'
   'vulkan-icd-loader: hardware-accelerated drawing, instead of software rendering'
   'xdg-desktop-portal: file pickers, with a backend such as xdg-desktop-portal-gtk'
   'xdg-utils: opening web pages and folders'

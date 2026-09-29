@@ -1,6 +1,6 @@
 pkgbase = old-launcher-git
-	pkgdesc = Addon manager for World of Warcraft 3.3.5a clients
-	pkgver = r13.d909de7
+	pkgdesc = Launcher and addon manager for World of Warcraft 3.3.5a clients
+	pkgver = r17.faba5db
 	pkgrel = 1
 	url = https://gitlab.com/juxuanu/old_launcher
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = old-launcher-git
 	depends = libxkbcommon-x11
 	depends = libxrandr
 	depends = wayland
+	optdepends = wine: starting the game the default way, without another runner set up
 	optdepends = vulkan-icd-loader: hardware-accelerated drawing, instead of software rendering
 	optdepends = xdg-desktop-portal: file pickers, with a backend such as xdg-desktop-portal-gtk
 	optdepends = xdg-utils: opening web pages and folders
