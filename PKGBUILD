@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=tonepush
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Editor and tone library for Line 6 HX pedals and the StompStation PRO"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ replaces=('stompchain' 'stompchain-git')
 # this.
 options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crmne/tonepush/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b628fce8fa41d2c70b8be0be5d110257dc835afa48bd5a6f74cd4e7848453db3')
+sha256sums=('984309aea087ce12c32cf57d1351369f6943e25e27b576822c3768597d3b374d')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
