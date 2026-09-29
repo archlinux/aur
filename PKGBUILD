@@ -3,7 +3,7 @@
 
 pkgname=nspawn
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Docker-like management of systemd-nspawn machines: OCI images from a hub, shared layers, a bridge network, driven over D-Bus'
 arch=('x86_64' 'aarch64')
 url='https://github.com/nspawn/nspawn'
@@ -41,6 +41,7 @@ package() {
   ./target/release/nspawn completions fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/nspawn.fish"
   ./target/release/nspawn manpage | install -Dm644 /dev/stdin "${pkgdir}/usr/share/man/man1/nspawn.1"
   install -Dm644 packaging/systemd/nspawn.service "${pkgdir}/usr/lib/systemd/system/nspawn.service"
+  install -Dm644 packaging/systemd/journald@nspawn.conf "${pkgdir}/usr/lib/systemd/journald@nspawn.conf"
   install -Dm644 packaging/dbus/org.nspawn.service "${pkgdir}/usr/share/dbus-1/system-services/org.nspawn.service"
   install -Dm644 packaging/dbus/org.nspawn.conf "${pkgdir}/usr/share/dbus-1/system.d/org.nspawn.conf"
   install -Dm644 packaging/polkit/org.nspawn.policy "${pkgdir}/usr/share/polkit-1/actions/org.nspawn.policy"
