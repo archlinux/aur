@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=image-metahub-bin
 _pkgname=Image.MetaHub
-pkgver=0.19.3
+pkgver=0.20.0
 _electronversion=38
 pkgrel=1
 pkgdesc="Local-first AI image organizer and generative media library manager for ComfyUI, A1111, InvokeAI & more. Search huge output folders by prompt, model, LoRA, metadata or visual similarity."
@@ -18,8 +18,8 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8fe88cb917c540d6f8179d7391c5371b9e86b39dfbd89c06df625cc68a9ff9b9'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums=('10e8253e6996aaf076b02ef4ca8b851f41d30d74dcf6af441830eba489c8fab3'
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -51,14 +51,18 @@ prepare() {
     local _app_dir=$(_get_app_dir)
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${_app_dir}/${pkgname%-bin}.desktop"
     find "${_app_dir}/resources" -type d -exec chmod 755 {} +
-    rm -rf \
-        "${_app_dir}/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v3/"{darwin,win32} \
-        "${_app_dir}/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v3/linux/arm64"
+    case "${CARCH}" in
+        aarch64)    _archrem=x64       ;;
+        x86_64)     _archrem=arm       ;;
+    esac
+    find "${_app_dir}/resources/app.asar.unpacked" -type d \
+        \( -name "darwin*" -o -name "win32*" -o -name "*${_archrem}"* \) \
+        -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
