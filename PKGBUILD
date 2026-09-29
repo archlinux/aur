@@ -1,7 +1,7 @@
 # Maintainer: The_Seventh <gustavo.gianeli13@gmail.com>
 pkgname=arch-update-full
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Sentinel Protocol: Update automation (Pacman/AUR/Flatpak/Snap) and auditing."
 arch=('any')
 url="https://github.com/GustavoGianeli/arch-update-full"
@@ -38,7 +38,7 @@ source=(
 
 # Use 'updpkgsums' para preencher isso automaticamente // Use 'updpkgsums' to automatically fill this in.
 sha256sums=('e935222c65b8070f93c53843ead72a06aaf316bbf2ea983c57d69c79bc9365c9'
-            '3dacab75d137b09c2ce011e8294b259173c8f750b3654835aac4caf8a7648c8f'
+            'ecbcc92ab5735a8d466e8957e4fd13c3b27ec0dff215857ca6533ce1aeec3844'
             'ed65d6a29af497de6c52abe86b8141282cb2b3f11264cb76a57bbfdebb7c6dff'
             '5cfc6fd23427182f589c0406225147530cf25dac3b020ec10427590be7cba917'
             '04a5fa6b7ef4c65c6f61ec31d24d16f0147d9519bdc585b743c73d313f9c2afc'

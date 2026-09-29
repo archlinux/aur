@@ -45,7 +45,7 @@ NOTIFICAR_SENTINELA(){
     # 1. Rastreia pacotes críticos (kernel/driver de vídeo)
     if command -v checkupdates &>/dev/null; then
         if checkupdates 2>/dev/null | grep -E -i \
-            '^(linux.*|mesa.*|nvidia.*|nouveau.*|amd.*|radeon.*|intel.*|mali.*|panfrost.*|freedreno.*|rockchip.*|allwinner.*|broadcom.*|raspberrypi.*|rpi.*|xf86-video-.*|vulkan-.*|onevpl-.*|level-zero.*|systemd.*|grub.*|limine.*|refind.*|syslinux.*|efibootmgr.*|mkinitcpio.*|dracut.*|os-prober.*|shim.*)' \
+            '^(linux|linux-firmware|ucode|nvidia|nouveau|mesa|vulkan|amdgpu|radeon|amdvlk|rocm|intel|i915|xe|onevpl|wayland|xorg|wlroots|systemd|grub|limine|refind|syslinux|efibootmgr)' \
             &>/dev/null; then
             CRITICO_DETECTADO=1
         fi
