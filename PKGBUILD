@@ -3,7 +3,7 @@
 _pkgname='kde-linux'
 pkgname="libvirt-iso-${_pkgname}-bin"
 pkgver=202609200254
-pkgrel=1
+pkgrel=2
 pkgdesc='Official KDE Linux Testing installation ISO for libvirt'
 arch=('x86_64')
 url='https://linux.kde.org/'
@@ -65,11 +65,11 @@ _check_payload() {
 	[[ "$(stat -c '%a' -- "${image_path}")" == '644' ]] || return 1
 	[[ "$(stat -c '%a' -- "${license_path}")" == '644' ]] || return 1
 
-	manifest="$(find "${root}" \( -type f -o -type l \) -printf '%P\n' | sort)"
+	manifest="$(find "${root}" \( -type f -o -type l \) -printf '%P\n' | LC_ALL=C sort)"
 	[[ "${manifest}" == "$(printf '%s\n' \
 		"usr/share/licenses/${pkgname}/LICENSE" \
 		"var/lib/libvirt/images/${_iso}" \
-		"var/lib/libvirt/images/${_pkgname}-${CARCH}.iso")" ]] || return 1
+		"var/lib/libvirt/images/${_pkgname}-${CARCH}.iso" | LC_ALL=C sort)" ]] || return 1
 
 	if [[ "${check_owner}" == 'true' ]]; then
 		[[ "$(stat -c '%u:%g' -- "${image_path}")" == '0:0' ]] || return 1
