@@ -1,6 +1,6 @@
 pkgbase = bioma-shell
 	pkgdesc = A desktop shell for niri, built with Quickshell: living surfaces rather than a bar
-	pkgver = 1.0.0beta5
+	pkgver = 1.0.0beta6
 	pkgrel = 1
 	url = https://github.com/AkusenArcade/Bioma
 	install = bioma-shell.install
@@ -42,7 +42,7 @@ pkgbase = bioma-shell
 	optdepends = ttf-spectral: the expressive typeface
 	optdepends = ttf-orbitron: the technical typeface
 	options = !lto
-	source = bioma-shell-1.0.0beta5.tar.gz::https://github.com/AkusenArcade/Bioma/archive/refs/tags/v1.0.0-beta.5.tar.gz
-	sha256sums = 0cc96ceef5e20813dd6e2efc1eab77639ab09773afcbd307bfc6bf609dfe2f48
+	source = bioma-shell-1.0.0beta6.tar.gz::https://github.com/AkusenArcade/Bioma/archive/refs/tags/v1.0.0-beta.6.tar.gz
+	sha256sums = 0ce5d12b58dbf92ee521e7492e9cdac672f8b6e109c1240b9badd5ad86278489
 
 pkgname = bioma-shell
