@@ -1,0 +1,3 @@
+[perl-modern-perl]
+source = "cpan"
+cpan = "Modern-Perl"
