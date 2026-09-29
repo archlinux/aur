@@ -3,7 +3,7 @@
 pkgbase=python-pvextractor
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Position-velocity diagram extractor"
 arch=('any')
@@ -15,6 +15,7 @@ makedepends=('python-setuptools-scm'
              'python-sphinx-astropy'
              'python-astropy'
              'python-scipy')  # wheel required by new setuptools
+# conftest.py
 checkdepends=('python-pytest-astropy-header'
               'python-pytest-doctestplus'
               'python-pytest-xvfb'
@@ -22,44 +23,53 @@ checkdepends=('python-pytest-astropy-header'
 #             'python-pytest-xdist'
               'python-matplotlib'
               'python-spectral-cube'
-              'python-pyqt6')
+              'python-pyqt6'
+              'qt6-svg')
 #             'python-pyqt5') # scipy <- radio-beam
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix-doc-build-warning.patch')
-md5sums=('005cce9ff817ac777f7e3e751797130d'
+md5sums=('0a96f447eac659d429aacf4b299155bf'
          'ee80bc266d21f35c07a59361254517dd')
 
-prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    sed -i '/a-z/s|"^|r"^|' ${_pyname}/pvregions.py
-#   sed -i -e '/PyQt6/d' -e 's/QtAgg/Qt5Agg/g' ${_pyname}/tests/test_gui.py
-    sed -i -e "/version =/c version = '${pkgver}'" -e "/release =/c release = '${pkgver}'" docs/conf.py
-    patch -Np1 -i "${srcdir}/fix-doc-build-warning.patch"
-#   sed -i "/----/s/-/~/g" programmatic.rst
-#   sed -i "/ds9.rst/a\   plotting.rst" index.rst
+get_pyver() {
+    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
+
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    sed -i '/a-z/s|"^|r"^|' ${_pyname}/pvregions.py
+##   sed -i -e '/PyQt6/d' -e 's/QtAgg/Qt5Agg/g' ${_pyname}/tests/test_gui.py
+#    sed -i -e "/version =/c version = '${pkgver}'" -e "/release =/c release = '${pkgver}'" docs/conf.py
+#    patch -Np1 -i "${srcdir}/fix-doc-build-warning.patch"
+##   sed -i "/----/s/-/~/g" programmatic.rst
+##   sed -i "/ds9.rst/a\   plotting.rst" index.rst
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
+    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+        build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
     PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+    pytest --ignore=scripts/ds9_pvextract.py || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_python-pvextractor() {
-    depends=('python>=3.8'
+    depends=('python>=3.10'
              'python-matplotlib>=3.5'
              'python-scipy>=1.8'
+             'python-packaging>=19'
+             'python-setuptools>=62.3.3'
              'python-qtpy>=2.0'
-             'python-spectral-cube>=0.4')
+             'python-spectral-cube>=0.6.7')
     optdepends=('python-pvextractor-doc: Documentation for pvextractor')
     cd ${srcdir}/${_pyname}-${pkgver}
 
