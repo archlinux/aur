@@ -2,7 +2,7 @@
 
 pkgname=icinga-php-legacy
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Maintenance-only forks of abandoned upstream packages; for internal Icinga use only"
 license=('GPL-3.0-or-later')
 arch=('any')
@@ -20,7 +20,7 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	install -dm755 "${pkgdir}/usr/share/icinga-php/${pkgname}"
-	cp -r gipfl vendor composer.json composer.lock VERSION "${pkgdir}/usr/share/icinga-php/${pkgname}/"
+	install -dm755 "${pkgdir}/usr/share/icinga-php/legacy" # Match official Icinga Debian path
+	cp -r asset gipfl vendor composer.json composer.lock VERSION "${pkgdir}/usr/share/icinga-php/legacy/"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
