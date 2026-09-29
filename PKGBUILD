@@ -27,7 +27,7 @@
 # degraded-but-working state this package shipped with before #822).
 
 pkgname=rkd-dev-bin
-pkgver=0.3.0_beta.3
+pkgver=0.3.0_beta.4
 pkgrel=1
 pkgdesc="RKD desktop client (beta/development channel)"
 arch=(x86_64)
@@ -62,11 +62,11 @@ optdepends=('libayatana-appindicator: tray icon support')
 # uses the hyphenated form there even though the .deb's own control file
 # reports a tilde per Debian pre-release convention).
 # _tag: the Forgejo release tag the asset was uploaded under.
-_pkgver=0.3.0-beta.3
-_tag=v0.3.0-beta.3
+_pkgver=0.3.0-beta.4
+_tag=v0.3.0-beta.4
 
 source=("$pkgname-$pkgver.deb::https://git.rkd.nanoya.biz/rkd/releases/releases/download/${_tag}/RKD-electron-rkd_${_pkgver}_amd64.deb")
-sha256sums=('c95e827483973aba04dbb0d230b72f9d9daff27caecb50e7fea9e2b730ed8f04')
+sha256sums=('93165d1fd82efe4c9daa24f2922fb1d1923160eee592e58d0e76595a4238cc2c')
 noextract=("$pkgname-$pkgver.deb")
 # Tells whoever removes the package how to remove the rkd-activity user
 # service the app may have installed (#1145); root can't reach user units.
@@ -102,7 +102,7 @@ package() {
   rm -f "$pkgdir/usr/share/applications/rkd.desktop"
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/rkd-dev.desktop" <<EOF
 [Desktop Entry]
-Name=RKD (Dev)
+Name=RKD Dev
 Comment=RKD desktop client (beta/development channel)
 Exec=/opt/$pkgname/$_bin %U
 Terminal=false
