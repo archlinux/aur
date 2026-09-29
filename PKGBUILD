@@ -1,6 +1,6 @@
 # Maintainer: Sean Snell <ssnell@lakecs.net>
 pkgname=smc-bridge
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Bridges the M-Vave/SINCO SMC-Mixer control surface to jack_mixer over MIDI via PipeWire"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python' 'pyside6')
 optdepends=('python-pyalsa: live MIDI transport for --headless hardware control')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dhtseany/smc-bridge/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7cfa17dff482ba3db22dabf9fbc750480c0105943f937aa76ab0cd475faef7f9')
+sha256sums=('6269b5a8899aeb29237d89edbe4acf07cf453fcbe072d47ad653235396af2697')
 
 build() {
   cd "$pkgname-$pkgver"
