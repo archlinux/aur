@@ -9,8 +9,8 @@ pkgname=(
   "${pkgbase}-sysvinit"
 )
 epoch=1
-pkgver=20240125.01
-pkgrel=2
+pkgver=20260929.01
+pkgrel=1
 pkgdesc="Switches off wakeup triggers that prevent the GPD Win Max 2 (2023) laptops from sleeping reliably."
 arch=(
   'any'
@@ -30,7 +30,7 @@ source=(
 )
 
 sha256sums=(
-  '6eae6cae796f6c147dca509d2f31d00bb91fc7447291a17659e81e528b1a08f7'  # gpd-winmax2_2023-fix-sleep-wakeuptriggers.sh
+  'a6857f3554a42cb7a93891c118cbf42f8ce8ff405a21e1d4c2a61952c7197b60'  # gpd-winmax2_2023-fix-sleep-wakeuptriggers.sh
   '458107c1dd557543d0181ce0945bce5776761a1ccaf8da8bf4039c7a7cf95787'  # gpd-winmax2_2023-sleep-wakeuptriggers.conf
   'e599328cd52599596b83bd3fa60ef1abcb1fde3b8978894a071b2b4fea0f034e'  # initscript_openrc
   'de7fcc883e91a646d7be68b1c4d081d1c9c4ac628c109f3fa92064b1e8d3f361'  # initscript_systemd

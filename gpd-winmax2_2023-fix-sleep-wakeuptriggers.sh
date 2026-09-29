@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=20240125.01
+VERSION=20260929.01
 _conffile='/etc/gpd-winmax2_2023-sleep-wakeuptriggers.conf'
 
 # gpd-winmax2_2023-fix-sleep-wakeuptriggers -- Switches off wakeup triggers that prevent the GPD Win Max 2 (2023) laptops from sleeping reliably. For background, see https://gitlab.freedesktop.org/drm/amd/-/issues/3073#note_2237586.
@@ -56,12 +56,12 @@ _start() {
   _msg "> Switching off wakeup triggers"
   _check_and_load_conf_file && {
     for _dev in "${NOWAKEUPDEVS[@]}"; do
-      if [ -e "${_dev}/power/wakeup" ] && [ -w "${_dev}/power/wakeup" ]; then
+      if [ -f "${_dev}/power/wakeup" ] && [ -w "${_dev}/power/wakeup" ]; then
         _wakeupfile="${_dev}/power/wakeup"
-      elif [ -e "${_dev}/wakeup" ] && [ -w "${_dev}/wakeup" ]; then
+      elif [ -f "${_dev}/wakeup" ] && [ -w "${_dev}/wakeup" ]; then
         _wakeupfile="${_dev}/wakeup"
       else
-        _errmsg "\`-> WARNING: '${_dev}/' contains no 'power/wakeup' or 'wakeup' file with write permission!"
+        _errmsg "\`-> WARNING: '${_dev}/' contains no 'power/wakeup' or 'wakeup' file with write permission! (It could be a directory, though.)"
         continue
       fi
       _msg "\`-> ${_dev}"
@@ -81,12 +81,12 @@ _stop() {
   _msg "> Switching on wakeup triggers"
   _check_and_load_conf_file && {
     for _dev in "${NOWAKEUPDEVS[@]}"; do
-      if [ -e "${_dev}/power/wakeup" ] && [ -w "${_dev}/power/wakeup" ]; then
+      if [ -f "${_dev}/power/wakeup" ] && [ -w "${_dev}/power/wakeup" ]; then
         _wakeupfile="${_dev}/power/wakeup"
-      elif [ -e "${_dev}/wakeup" ] && [ -w "${_dev}/wakeup" ]; then
+      elif [ -f "${_dev}/wakeup" ] && [ -w "${_dev}/wakeup" ]; then
         _wakeupfile="${_dev}/wakeup"
       else
-        _errmsg "\`-> WARNING: '${_dev}/' contains no 'power/wakeup' or 'wakeup' file with write permission!"
+        _errmsg "\`-> WARNING: '${_dev}/' contains no 'power/wakeup' or 'wakeup' file with write permission! (It coule be a directory, though.)"
         continue
       fi
       _msg "\`-> ${_dev}"
