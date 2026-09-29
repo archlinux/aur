@@ -1,0 +1,18 @@
+pkgbase = python-askr
+	pkgdesc = Simple, validated input prompts for the terminal
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Prevolut/askr
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	makedepends = python-hatchling
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/a/askr/askr-0.2.0.tar.gz
+	sha256sums = 22e970475c4f0c99c828303a4ec44d22420301a34cd0c99de0042794e7857302
+
+pkgname = python-askr
