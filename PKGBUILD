@@ -11,7 +11,7 @@ depends=(
   'gtk3'
   'libsecret'
   'libnotify'
-  'libayatana-appindicator'
+  'libappindicator'
   'webkit2gtk-4.1'
   'mpv'
 )
