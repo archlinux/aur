@@ -1,6 +1,6 @@
 pkgbase = tidy-cleaner-bin
 	pkgdesc = Modern, ultra-fast, and safe system cleaner, manager, and hardware telemetry dashboard for Linux (precompiled binary)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Matvel007/Tidy-Cleaner
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = tidy-cleaner-bin
 	provides = tidy-cleaner
 	conflicts = tidy-cleaner
 	conflicts = tidy-cleaner-git
-	source_x86_64 = tidy-cleaner-bin-0.1.0.tar.gz::https://github.com/Matvel007/Tidy-Cleaner/releases/download/v0.1.0/tidy-cleaner-v0.1.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 650cbeb4dfad6fc4c6d318208a0d16e2bf8516e12692a85e48c115a5ff065371
+	source_x86_64 = tidy-cleaner-bin-0.1.1.tar.gz::https://github.com/Matvel007/Tidy-Cleaner/releases/download/v0.1.1/tidy-cleaner-v0.1.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 22a804b0ccdb5b837e2572cbb29be797250a627db0d8669f959153db62b71057
 
 pkgname = tidy-cleaner-bin
