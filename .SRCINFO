@@ -1,6 +1,6 @@
 pkgbase = infocertsign
 	pkgdesc = InfoCert Sign - software per firma digitale
-	pkgver = 3.1.2
+	pkgver = 3.1.5
 	pkgrel = 1
 	url = https://rinnovofirma.infocert.it
 	arch = x86_64
@@ -15,6 +15,6 @@ pkgbase = infocertsign
 	options = !strip
 	options = !debug
 	source = InfoCertSign-installer-linux.deb::https://rinnovofirma.infocert.it/infocertsign/download/linux/latest
-	sha256sums = 05fcca504f1c2da4fd47f4b2224486bc92f042554002db69529ff65310ae86ba
+	sha256sums = 4975b3e18ea3aef0da75df55f82d7267f599e0ae8f7d51c0b414de260e89520c
 
 pkgname = infocertsign
