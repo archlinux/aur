@@ -1,0 +1,20 @@
+pkgbase = imgo-bin
+	pkgdesc = IMGo (short for "image optimizer") is a private batch image compression and conversion tool. Process multiple images at once, adjust quality and dimensions, and convert between common formats without uploading your files.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://imgo.app/
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-unknown
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	depends = libappindicator
+	provides = imgo=1.0.0
+	conflicts = imgo
+	source_aarch64 = imgo-1.0.0-aarch64.rpm::https://github.com/meowtec/imgo/releases/download/v1.0.0/imgo-1.0.0-1.aarch64.rpm
+	sha256sums_aarch64 = 0b207a1e10685fb14776287da1b8c56a9da7f36d913241334571a48fc8717426
+	source_x86_64 = imgo-1.0.0-x86_64.rpm::https://github.com/meowtec/imgo/releases/download/v1.0.0/imgo-1.0.0-1.x86_64.rpm
+	sha256sums_x86_64 = 722217d8adfdeb4f242c02741c0f326757fd54a3658bc5c2986966f8f513aeb8
+
+pkgname = imgo-bin
