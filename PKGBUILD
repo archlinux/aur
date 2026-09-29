@@ -6,7 +6,7 @@ _pkgname=grafana-alloy
 _binaryname=alloy
 pkgdesc="OpenTelemetry Collector distribution with programmable pipelines."
 pkgver=1.20.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/grafana/alloy"
 license=('apache')
@@ -16,6 +16,7 @@ provides=("${_pkgname}")
 
 backup=(
     "etc/alloy/config.alloy"
+    "etc/alloy/config.yaml"
     "etc/default/alloy"
 )
 
@@ -47,12 +48,14 @@ package() {
      
      # config file
      install -D -m0644 "${srcdir}/etc/alloy/config.alloy" "${pkgdir}/etc/alloy/config.alloy"
+     install -D -m0644 "${srcdir}/etc/alloy/config.yaml" "${pkgdir}/etc/alloy/config.yaml"
      install -D -m0644 "${srcdir}/etc/default/alloy" "${pkgdir}/etc/default/alloy"
      
      # user and files to create, ownership and permission to set
      install -D -m0644 "${srcdir}/alloy-sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/alloy.conf"
      install -D -m0644 "${srcdir}/alloy-tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/alloy.conf"
 
-      # service files
+      # service files (unit's ExecStart runs the wrapper since 1.20)
+     install -D -m0755 "${srcdir}/usr/lib/alloy/alloy-wrapper" "${pkgdir}/usr/lib/alloy/alloy-wrapper"
      install -D -m0644 "${srcdir}/usr/lib/systemd/system/alloy.service" "${pkgdir}/usr/lib/systemd/system/alloy.service"
 }

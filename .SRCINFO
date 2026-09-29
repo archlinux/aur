@@ -1,7 +1,7 @@
 pkgbase = grafana-alloy-bin
 	pkgdesc = OpenTelemetry Collector distribution with programmable pipelines.
 	pkgver = 1.20.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/grafana/alloy
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,7 @@ pkgbase = grafana-alloy-bin
 	options = !strip
 	options = !debug
 	backup = etc/alloy/config.alloy
+	backup = etc/alloy/config.yaml
 	backup = etc/default/alloy
 	source_x86_64 = grafana-alloy-bin-1.20.1.amd64.deb::https://github.com/grafana/alloy/releases/download/v1.20.1/alloy-1.20.1-1.amd64.deb
 	source_x86_64 = alloy-sysusers.conf
