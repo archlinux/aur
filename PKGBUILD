@@ -1,7 +1,7 @@
 # Maintainer: Orion-zhen <https://github.com/Orion-zhen>
 
 pkgname=gguf-parser
-pkgver=0.26.3
+pkgver=0.26.4
 pkgrel=1
 pkgdesc='Review/check GGUF files and estimate memory usage and maximum tokens per second'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('299c5b209d1500a5c1c201815fd189f7e7933900765e860a3638c79b15557f19')
+sha256sums=('513411829e4f9eb9fb11cfc1273183b4e522b20398af43ab9d53102b97b13cbd')
 
 build() {
   cd "${srcdir}/gguf-parser-go-${pkgver}/cmd/gguf-parser"
