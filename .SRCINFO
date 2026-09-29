@@ -1,0 +1,15 @@
+pkgbase = yatl
+	pkgdesc = Yet Another Task List - a minimal, file-based task tracker
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/brianm/yatl
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = yatl-0.5.0.tar.gz::https://github.com/brianm/yatl/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 7d0e5df375e81143147550e644c1c1fd36256a83b0d03b253f6071103d3810ab
+
+pkgname = yatl
