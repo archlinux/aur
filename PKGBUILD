@@ -26,8 +26,8 @@ install=sing-box-for-linux-bin.install
 provides=("sing-box-for-linux")
 conflicts=("sing-box-for-linux")
 source=("LicenseRef-${pkgname}-${pkgver}-${pkgrel}-exception::https://raw.githubusercontent.com/SagerNet/sing-box/v${pkgver}/LICENSE")
-source_x86_64=("SFL-${pkgver}-x64.pkg.tar.zst::https://github.com/SagerNet/sing-box/releases/download/v${pkgver}/SFL-${pkgver}-x64.pkg.tar.zst")
-source_aarch64=("SFL-${pkgver}-aarch64.pkg.tar.zst::https://github.com/SagerNet/sing-box/releases/download/v${pkgver}/SFL-${pkgver}-aarch64.pkg.tar.zst")
+source_x86_64=("SFL-${pkgname}-${pkgver}-${pkgrel}-x64.pkg.tar.zst::https://github.com/SagerNet/sing-box/releases/download/v${pkgver}/SFL-${pkgver}-x64.pkg.tar.zst")
+source_aarch64=("SFL-${pkgname}-${pkgver}-${pkgrel}-aarch64.pkg.tar.zst::https://github.com/SagerNet/sing-box/releases/download/v${pkgver}/SFL-${pkgver}-aarch64.pkg.tar.zst")
 
 sha512sums=('35b76843c30240d073dbffade3cc76f569e01b273974d2a7110fcb41fca76b22c0be04da0aac33157083f188ebf69177e1f5a158f08327c4d235996877b53ab4')
 sha512sums_x86_64=('894aff1fe3b47b047200f60373f1eaf4464ea14f7b6707a906b041f3e75134ed7a24c59437cb0dba2e5b5e0ab4c63bcd186285159e489e73ef3417d3246f11bd')
