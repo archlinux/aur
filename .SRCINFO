@@ -1,6 +1,6 @@
 pkgbase = dedrunk-bin
 	pkgdesc = Kalibr IMU calibration from MCAP recordings.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://codeberg.org/stelzo/dedrunk
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = dedrunk-bin
 	options = !lto
 	options = !strip
 	options = !debug
-	source_x86_64 = dedrunk-0.1.0-bin.tar.gz::https://codeberg.org/stelzo/dedrunk/releases/download/v0.1.0/dedrunk-0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = dedrunk-0.1.1-bin.tar.gz::https://codeberg.org/stelzo/dedrunk/releases/download/v0.1.1/dedrunk-0.1.1-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = dedrunk-0.1.0-bin.tar.gz::https://codeberg.org/stelzo/dedrunk/releases/download/v0.1.0/dedrunk-0.1.0-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = dedrunk-0.1.1-bin.tar.gz::https://codeberg.org/stelzo/dedrunk/releases/download/v0.1.1/dedrunk-0.1.1-aarch64-unknown-linux-gnu.tar.gz
 	sha256sums_aarch64 = SKIP
 
 pkgname = dedrunk-bin

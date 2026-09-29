@@ -1,6 +1,6 @@
-# Maintainer: Christopher Sieh (stelzo) <stelzo@steado.de>
+# Maintainer: stelzo <stelzo@steado.de>
 pkgname=dedrunk-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Kalibr IMU calibration from MCAP recordings."
 arch=('x86_64' 'aarch64')
