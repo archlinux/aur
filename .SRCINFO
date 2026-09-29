@@ -1,18 +1,18 @@
 pkgbase = sofie-chef-bin
-	pkgdesc = Disrupting the industry & stirring pots.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.6.0
+	pkgdesc = A Part of the Sofie TV Studio Automation System.
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/Sofie-Automation/sofie-chef
 	arch = x86_64
 	license = MIT
-	depends = electron40
-	provides = sofie-chef=0.6.0
+	depends = electron44
+	provides = sofie-chef=0.7.0
 	conflicts = sofie-chef
-	source = sofie-chef-0.6.0-x86_64.AppImage::https://github.com/Sofie-Automation/sofie-chef/releases/download/v0.6.0/SofieChef-0.6.0-Linux-Executable.AppImage
-	source = LICENSE-0.6.0::https://raw.githubusercontent.com/nrkno/sofie-chef/v0.6.0/LICENSE
+	source = sofie-chef-0.7.0-x86_64.AppImage::https://github.com/Sofie-Automation/sofie-chef/releases/download/v0.7.0/SofieChef.0.7.0.Linux.Executable.AppImage
+	source = LICENSE-0.7.0::https://raw.githubusercontent.com/nrkno/sofie-chef/v0.7.0/LICENSE
 	source = sofie-chef.sh
-	sha256sums = fcca82f2fc76a599b6261d0d92d3ee099d3259ed4846f43e52f064fb60f1a53c
+	sha256sums = 6617f58bc4e97528c2d43bb6bef3c8e7bbdc9d0fbf0b52b3b1ed7882393a1941
 	sha256sums = ac26e60681c9ba6ec5eddf9b1afa3442d8ada9d77fe42b4515c42a2a15392c44
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
 pkgname = sofie-chef-bin
