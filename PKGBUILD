@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=webgal-terre-bin
 _appname=WebGAL_Terre
-pkgver=4.6.2
+pkgver=4.6.5
 _electronversion=29
 pkgrel=1
-pkgdesc="Galgame Editing. Redefined(Prebuilt version) / 视觉小说编辑，再进化"
+pkgdesc="Galgame Editing. Redefined / 视觉小说编辑，再进化"
 arch=(
     'aarch64'
     'x86_64'
@@ -37,8 +37,8 @@ source=(
 )
 sha256sums=('1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5'
             'd51d809af628cc8292bd430a4847adb4adefa9d4b0aee00a55a84ff9630e167c')
-sha256sums_aarch64=('23983afb4497e4369b9b4c9d52ce0e7f77fb4640db99d7ef9c05436a0e79e9d2')
-sha256sums_x86_64=('4bf60391e0083ba3a46d11f0ab489cb432781e3736510998ebfd7ca3bcea7190')
+sha256sums_aarch64=('0f19da4b73957424c2c9af65a880ac1010e21b73cc6b50178ae537774c491d34')
+sha256sums_x86_64=('ca7c7abee53d602668902fe864ed006c775ea283bd8ff0c984e8ce708ad595ca')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -73,7 +73,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -a "${srcdir}/release/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    cp -a "${srcdir}/release/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${pkgdir}/usr/lib/${pkgname%-bin}/assets/templates/WebGAL_Android_Template/app/src/main/ic_launcher-playstore.png" \
         "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
