@@ -3,8 +3,8 @@
 
 pkgname='python-ledger-bitcoin'
 _name='ledger_bitcoin'
-pkgver='0.4.0'
-pkgrel=3
+pkgver='0.4.1'
+pkgrel=1
 pkgdesc="Client for Ledger Nano Bitcoin application"
 url="https://github.com/LedgerHQ/app-bitcoin-new"
 depends=('python' 'python-ledgercomm' 'python-typing_extensions')
@@ -14,7 +14,7 @@ arch=('any')
 source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
 )
-b2sums=('066c1df0c19a007cef8837a61e66366ab6cc10ad0aff79cc0eab5a38fe4ee9414189d9424ec6a58e138e26c1a220e4673e27cb657fa06922fa738428ff74bdfc')
+sha256sums=('3cb4297ed7e557ef98349cdcbd667ef7368c047d6818c7cdcbca7af98b8006b6')
 
 build() {
     cd "$_name-$pkgver"
