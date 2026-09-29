@@ -1,6 +1,6 @@
 pkgbase = old-launcher-git
 	pkgdesc = Launcher and addon manager for World of Warcraft 3.3.5a clients
-	pkgver = r17.faba5db
+	pkgver = r25.a98842d
 	pkgrel = 1
 	url = https://gitlab.com/juxuanu/old_launcher
 	arch = x86_64

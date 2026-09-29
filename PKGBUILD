@@ -2,7 +2,7 @@
 
 pkgname=old-launcher-git
 _name=old_launcher
-pkgver=r17.faba5db
+pkgver=r25.a98842d
 pkgrel=1
 pkgdesc='Launcher and addon manager for World of Warcraft 3.3.5a clients'
 arch=('x86_64' 'aarch64')
@@ -52,6 +52,8 @@ build() {
   cd "$_name"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  # The catalog the launcher refreshes from: the one its project page publishes.
+  export OLD_LAUNCHER_INDEX_URL=https://old-launcher-0d3217.gitlab.io/wotlk.json
   cargo build --frozen --release --package "$_name" --bin "$_name"
 }
 
