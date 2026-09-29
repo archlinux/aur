@@ -2,7 +2,7 @@
 
 pkgname=gz-common6
 pkgver=6.4.0
-pkgrel=2
+pkgrel=3
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Gazebo Common, a component of Gazebo, provides a set of libraries that cover many different use cases."
@@ -12,12 +12,12 @@ license=('Apache-2.0')
 depends=(
   'assimp'
   'ffmpeg'
+  'freeimage'
   'gdal'
   'glibc'  # libdl
   'gts'
   'gz-math=8'
   'gz-utils=3'
-  'stb'
   'tinyxml2'
   'util-linux-libs' # uuid
   )
