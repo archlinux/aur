@@ -1,0 +1,20 @@
+pkgbase = skyrc-wifi
+	pkgdesc = Low-level library for skyrc wifi module.
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://github.com/bokic/skyrc-wifi
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	depends = glibc
+	depends = json-c
+	options = !debug
+	source = skyrc-wifi-4.2.0.tar.gz::https://github.com/bokic/skyrc-wifi/archive/refs/tags/4.2.0.tar.gz
+	sha512sums = 9b16e54e8eab1fe099ea32b0c0d63dbd4995ae53cf417c7d0bb3a657d66fa18ec1e95c0b1857f338db902dce083af28f74688a4202fae7b7d9e8090f75e38057
+
+pkgname = skyrc-wifi
