@@ -1,6 +1,6 @@
 pkgbase = wireview-linux-bin
 	pkgdesc = Unofficial Linux GUI for the Thermal Grizzly WireView Pro II (prebuilt binary)
-	pkgver = 1.2.0.0
+	pkgver = 1.2.5.0
 	pkgrel = 1
 	url = https://github.com/emaspa/wireview-linux
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = wireview-linux-bin
 	provides = wireview-linux
 	conflicts = wireview-linux
 	options = !strip
-	source = wireview-linux-bin-1.2.0.0.tar.gz::https://github.com/emaspa/wireview-linux/releases/download/v1.2.0.0/wireview-linux-1.2.0.0-linux-x64.tar.gz
+	source = wireview-linux-bin-1.2.5.0.tar.gz::https://github.com/emaspa/wireview-linux/releases/download/v1.2.5.0/wireview-linux-1.2.5.0-linux-x64.tar.gz
 	source = wireview-linux.desktop
 	source = wireview-linux.png
-	sha256sums = 2a9c6c67cad5989747ed80c566c62d743c5fbc75289e0ad6c144656c007aac11
+	sha256sums = 038a339c5649251d37f2fb23ec8af4ddc7563b5c2d8fae313f08b495d67e2f70
 	sha256sums = a08180f8c00f0d8b4b8a6dc5cbf1644c5e25afb985e5bf3b7972ab33831e15e3
 	sha256sums = 5bdcde4399af5bd57824af8dcacdd05c6421eddbb18993210ddab805ef1aaff3
 
