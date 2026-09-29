@@ -20,11 +20,9 @@ depends=(
     'python-pillow'
 )
 makedepends=(
-    'npm'
     'pnpm'
     'nvm'
     'gendesk'
-    'curl'
     'git'
     'jq'
 )
