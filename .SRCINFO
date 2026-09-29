@@ -1,6 +1,6 @@
 pkgbase = sinestesia
 	pkgdesc = Audio visualizer for Linux with effects and system theming (Rust + GTK4)
-	pkgver = 0.6.0
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/AkusenArcade/Sinestesia
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = sinestesia
 	depends = libepoxy
 	depends = hicolor-icon-theme
 	options = !lto
-	source = sinestesia-0.6.0.tar.gz::https://github.com/AkusenArcade/Sinestesia/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = e164cbc995913ddfe7402216a62fb579dd3b0b5b0a3a95f5da21110ab27d4d98
+	source = sinestesia-0.6.2.tar.gz::https://github.com/AkusenArcade/Sinestesia/archive/refs/tags/v0.6.2.tar.gz
+	sha256sums = 62d1e772741c28a17914afb6a08166bb49d8a3b37227b205697deb792b923c43
 
 pkgname = sinestesia
