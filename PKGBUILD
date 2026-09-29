@@ -3,7 +3,8 @@
 _name=tree-sitter-zig
 pkgname=python-tree-sitter-zig
 pkgver=1.1.2
-pkgrel=9
+pkgrel=10
+_commit=b670c8df85a1568f498aa5c8cae42f51a90473c0
 pkgdesc="Zig grammar for tree-sitter"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tree-sitter-grammars/tree-sitter-zig"
@@ -15,16 +16,16 @@ makedepends=(
     'python-wheel'
     'python-setuptools'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-zig/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('612d67059faa90ec7691e5d786d70d8f7c2c8b15b83de901b9b801122ad4cf25')
+source=("${pkgname}-${pkgver}-${_commit}.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-zig/archive/${_commit}.tar.gz")
+sha256sums=('c7af5b1a992fcaffdf50a11a9974fbf8f09d20c4d9ef42245ac90c152dd3a85a')
 
 build() {
-    cd "${_name}-${pkgver}"
+    cd "${_name}-${_commit}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${_name}-${pkgver}"
+    cd "${_name}-${_commit}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
