@@ -1,6 +1,6 @@
 # Maintainer: Alia_Atreides <mmurphy four zero nine six at gmail dot com>
 pkgname=gen1recomp
-pkgver=0.2.55
+pkgver=0.3.30
 pkgrel=1
 pkgdesc="Native LÖVE2D recreation of Pokémon Red/Blue/Yellow (BYO ROM)"
 arch=('x86_64')
@@ -14,9 +14,9 @@ source=(
         "gen1recomp.png"
         "gen1recomp.desktop")
 sha256sums=('SKIP'
-'c6be61327aca02c8a3b060a3f678371a6910c685656b15a5b1e8cbf4ffd00bd1'
-'8aa282af6887771aec3a69c8003f0e987376bcdaa6c963217575ee4f16d0bba5'
-'cd0e5751200361fdde3d6c0aee845d48e9b1cea06a150fe14ac3588bc2c2cd52')
+            'c6be61327aca02c8a3b060a3f678371a6910c685656b15a5b1e8cbf4ffd00bd1'
+            '8aa282af6887771aec3a69c8003f0e987376bcdaa6c963217575ee4f16d0bba5'
+            'cd0e5751200361fdde3d6c0aee845d48e9b1cea06a150fe14ac3588bc2c2cd52')
 
 pkgver() {
     cd $srcdir/gen1recomp
