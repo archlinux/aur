@@ -1,0 +1,5 @@
+src/
+pkg/
+anymeal/
+*.pkg.tar.*
+*.log
