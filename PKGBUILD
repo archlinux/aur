@@ -2,7 +2,7 @@
 
 pkgname=stably-orca
 pkgver=1.4.216
-pkgrel=2
+pkgrel=3
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/stablyai/orca'
@@ -62,7 +62,7 @@ _electronmajor=43
 # update _commit together with pkgver and the source checksum.
 _commit=20d7a7d185cd66e993dcdfd60e9e604fe26e9c40
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz"
+  "$pkgname-$pkgver-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "pnpm-$_pnpmver.tgz::https://registry.npmjs.org/pnpm/-/pnpm-$_pnpmver.tgz"
   'stably-orca.sh'
   'orca-ide.sh'

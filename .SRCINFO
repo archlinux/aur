@@ -1,7 +1,7 @@
 pkgbase = stably-orca
 	pkgdesc = Stably AI Orca agentic coding IDE and headless runtime (built from source)
 	pkgver = 1.4.216
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/stablyai/orca
 	install = stably-orca.install
 	arch = x86_64
@@ -53,7 +53,7 @@ pkgbase = stably-orca
 	noextract = pnpm-exe-linux-arm64-12.0.0.tgz
 	options = !strip
 	options = !debug
-	source = stably-orca-1.4.216.tar.gz::https://github.com/stablyai/orca/archive/20d7a7d185cd66e993dcdfd60e9e604fe26e9c40.tar.gz
+	source = stably-orca-1.4.216-20d7a7d185cd66e993dcdfd60e9e604fe26e9c40.tar.gz::https://github.com/stablyai/orca/archive/20d7a7d185cd66e993dcdfd60e9e604fe26e9c40.tar.gz
 	source = pnpm-12.0.0.tgz::https://registry.npmjs.org/pnpm/-/pnpm-12.0.0.tgz
 	source = stably-orca.sh
 	source = orca-ide.sh
