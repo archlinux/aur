@@ -9,6 +9,10 @@ pkg/
 
 # Build outputs
 bin/
+/doubletake
+/doubletake-ctl
+/doubletake-[0-9]*
+/doubletake-ctl-[0-9]*
 
 # Editor/IDE
 .vscode/
