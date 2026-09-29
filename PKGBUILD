@@ -2,10 +2,10 @@
 _appname=iptvnator
 pkgname="${_appname}-electron-bin"
 _pkgname=IPTVnator
-pkgver=0.23.0
+pkgver=0.24.0
 _electronversion=43
 pkgrel=1
-pkgdesc="IPTVnator Electron 0.16 with DRM & H.265 playback support. This build version also adds Shaka player and Artplayer components.(Prebuilt version.Use system-wide electron)"
+pkgdesc="Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more."
 arch=(
     'aarch64'
     'armv7h'
@@ -59,12 +59,21 @@ prepare() {
         s/Video/AudioVideo/g
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_appname}.desktop"
+    local _app_dir="$(_get_app_dir)"
+    find "${_app_dir}/resources" -type d -exec chmod 755 {} +
+	case "${CARCH}" in
+		aarch64)	_archrem=x64	;;
+		x86_64)		_archrem=arm	;;
+	esac
+	find "${_app_dir}/resources/app.asar.unpacked" -type d \
+		\( -name "darwin*" -o -name "win32*" -o -name "*${_archrem}"* \) \
+		-exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	local _app_dir="$(_get_app_dir)"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
