@@ -3,7 +3,7 @@ pkgname=deadlock-modmanager
 pkgdesc='A mod manager for the Valve game Deadlock'
 _pkgver=1.1.0
 pkgver=${_pkgver}
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url='https://github.com/deadlock-mod-manager/deadlock-mod-manager'
 license=('GPL-3.0-only')
@@ -17,6 +17,11 @@ sha256sums=('d37f382cc3708ed6cd2de12e43fc92f0f00eb96bcbd711659e773118c10a31b1')
 
 prepare() {
     cd "${srcdir}/deadlock-mod-manager-${_pkgver}/apps/desktop"
+
+    # v1.1.0 pins valveprotos to deadlock-api/valveprotos-rs, which was merged
+    # into the deadlock-api monorepo (same rev). Drop once _pkgver moves past 1.1.0.
+    sed -i 's#deadlock-api/valveprotos-rs#deadlock-api/deadlock-api#' src-tauri/Cargo.toml Cargo.lock
+
     pnpm install
 
     cd src-tauri
