@@ -3,7 +3,7 @@
 # Contributor: florianbw <florian.bw gmail.com>
 
 pkgname=cytoscape
-pkgver=3.10.4
+pkgver=3.10.5
 pkgrel=1
 pkgdesc="Network Data Integration, Analysis, and Visualization in a Box"
 arch=('any')
@@ -19,7 +19,7 @@ source=("https://github.com/cytoscape/cytoscape/releases/download/${pkgver}/cyto
         "0002-fix-karaf-instances-dir.patch"
 )
 
-sha256sums=('807094f7b01f073a38afe17e15ce651ddfa442d8ff36ca02362a4086fe4eeec1'
+sha256sums=('8395623dc2e16f2190075488259470b2788a3bbf88de27a260ad343b8e1ea39b'
             'f4476545086f845e1cec5861169270da9f82a6ad4944972010827a567af0c7d0'
             '135faa3f0beb8ecc1b704cf376408e8bd5f62f32ba50a84002c14321d0bb0b68'
             'daf81142f560db93aeeea96ca185a2662dd0ec9ee220aee167bf826fc44f3dc3'
