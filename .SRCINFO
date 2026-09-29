@@ -1,7 +1,7 @@
 pkgbase = rusthound-ce
 	pkgdesc = BloodHound CE collector written in Rust
 	pkgver = 2.5.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/g0h4n/rusthound-ce
 	arch = x86_64
 	arch = aarch64
