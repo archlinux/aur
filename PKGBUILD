@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=ownfoil
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='Switch library manager, with a self-hosted Tinfoil Shop'
 arch=('any')
@@ -30,7 +30,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         'ownfoil.sysusers'
         'ownfoil.tmpfiles'
 )
-sha256sums=('d6aa58a0bdaad3b85a1283fd36ff48ed7b7b5cb2c2c2818bcc09205df5d7f988'
+sha256sums=('bdcde1c90991b9c16c425c8c835e45c91548cbf886cfb98c68d876c792dcbdf0'
             '6125cf80726fc954208f5daf6dfce3836f94ed019d307454185ca7414021f11f'
             'aee7a6c72d655e29365fe266165ffb714666507a9536871500ced59e0f5d992f'
             'abe899a8eecb080f3b938c2441e09838a539f6bfc00e8207ade74bb18c1a5a12')
