@@ -3,3 +3,6 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
+!LICENSE
+!ipfs-desktop.desktop
+!ipfs-desktop-startup.sh
