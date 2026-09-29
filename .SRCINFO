@@ -1,7 +1,7 @@
 pkgbase = python-blackjax
 	pkgdesc = Bayesian Inference library designed for ease of use, speed and modularity.
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blackjax-devs/blackjax
 	arch = any
 	groups = jax

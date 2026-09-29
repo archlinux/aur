@@ -3,7 +3,7 @@
 pkgname=python-blackjax
 _pkgname=${pkgname#python-}
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Bayesian Inference library designed for ease of use, speed and modularity.'
 arch=('any')
 url='https://github.com/blackjax-devs/blackjax'
