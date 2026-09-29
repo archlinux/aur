@@ -1,50 +1,55 @@
-# Maintainer: René Wagner <rwagner at rw-net dot de>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: René Wagner <rwagner at rw-net dot de>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
-pkgname='perl-text-simpletable'
-pkgver='2.07'
-pkgrel='1'
-pkgdesc="Simple eyecandy ASCII tables"
+_author=MRAMBERG
+_dist=Text-SimpleTable
+pkgname=perl-${_dist@L}
+pkgver=2.07
+pkgrel=2
+pkgdesc='Simple eyecandy ASCII tables'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-2.0')
+depends=(
+    'perl-extutils-makemaker'
+    'perl-test-simple'
+    'perl>=5.8.1'
+)
+optdepends=(
+    'perl-text-visualwidth'
+    'perl-text-visualwidth-pp'
+    'perl-unicode-linebreak'
+)
 options=('!emptydirs')
-depends=('perl')
-makedepends=()
-url='http://search.cpan.org/dist/Text-SimpleTable'
-source=('http://search.cpan.org/CPAN/authors/id/M/MR/MRAMBERG/Text-SimpleTable-2.07.tar.gz')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
 sha256sums=('256d3f38764e96333158b14ab18257b92f3155c60d658cafb80389f72f4619ed')
-_distdir="Text-SimpleTable-2.07"
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
