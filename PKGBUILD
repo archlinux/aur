@@ -3,7 +3,8 @@
 _name=tree-sitter-powershell
 pkgname=python-tree-sitter-powershell
 pkgver=0.26.5
-pkgrel=3
+pkgrel=4
+_commit=d398441825243b00e317e87e1829b9d6a3e54ce0
 pkgdesc="Powershell grammar for tree-sitter"
 arch=('x86_64' 'aarch64')
 url="https://github.com/airbus-cert/tree-sitter-powershell"
@@ -15,16 +16,16 @@ makedepends=(
     'python-wheel'
     'python-setuptools'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/airbus-cert/tree-sitter-powershell/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a949ac2bccd74b94b6199702c8b119cb353785e8a8828150a763b202ae8d4534')
+source=("${pkgname}-${pkgver}-${_commit}.tar.gz::https://github.com/airbus-cert/tree-sitter-powershell/archive/${_commit}.tar.gz")
+sha256sums=('a74fe59e93f76796b2593babeaaf352ed5598933ae22df9cbf8c6828c9d5f9cd')
 
 build() {
-    cd "${_name}-${pkgver}"
+    cd "${_name}-${_commit}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${_name}-${pkgver}"
+    cd "${_name}-${_commit}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
