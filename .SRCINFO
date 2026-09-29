@@ -1,6 +1,6 @@
 pkgbase = jj-release
 	pkgdesc = Semantic releases and changelog generation for jj-vcs repositories
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/saylesss88/jj-release
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = jj-release
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = jj-release-0.8.0.tar.gz::https://static.crates.io/crates/jj-release/jj-release-0.8.0.crate
-	b2sums = 6b0e74bf3a6f4a3c91d8222f28c8c9ac2a8bfd1361cbcc6c2307283a75440e161e6ba2af81fc584a0e0f7559a0fc0f41c35edaca01bd5443a21244189c1ba345
+	source = jj-release-0.9.0.tar.gz::https://static.crates.io/crates/jj-release/jj-release-0.9.0.crate
+	b2sums = a1e9176e46e2f0684c660830e92e2db2c4a85e711276be5ad24c1a3b4817a6b1c7be409575c06caa0afdc6c21668c02868681020d40deb93514bc299406ef661
 
 pkgname = jj-release

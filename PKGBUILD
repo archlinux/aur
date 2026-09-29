@@ -1,6 +1,6 @@
 # Maintainer: Your Name <saylesss87@proton.me at domain dot tld>
 pkgname=jj-release
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Semantic releases and changelog generation for jj-vcs repositories'
 url='https://github.com/saylesss88/jj-release'
@@ -10,7 +10,7 @@ depends=('gcc-libs' 'glibc')
 arch=('x86_64')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('6b0e74bf3a6f4a3c91d8222f28c8c9ac2a8bfd1361cbcc6c2307283a75440e161e6ba2af81fc584a0e0f7559a0fc0f41c35edaca01bd5443a21244189c1ba345')
+b2sums=('a1e9176e46e2f0684c660830e92e2db2c4a85e711276be5ad24c1a3b4817a6b1c7be409575c06caa0afdc6c21668c02868681020d40deb93514bc299406ef661')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
