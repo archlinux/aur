@@ -1,0 +1,30 @@
+pkgbase = jpegli-tools-git
+	pkgdesc = Improved JPEG encoder and decoder command-line tools (cjpegli and djpegli)
+	pkgver = 0.12.0.r2989.g031a007
+	pkgrel = 1
+	url = https://github.com/google/jpegli
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = asciidoc
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = giflib
+	depends = glibc
+	depends = highway
+	depends = lcms2
+	depends = libgcc
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libstdc++
+	depends = zlib
+	provides = jpegli-tools=0.12.0.r2989.g031a007
+	conflicts = jpegli-tools
+	conflicts = jpegli-git
+	conflicts = libjxl<0.12.0
+	source = jpegli::git+https://github.com/google/jpegli.git
+	source = libjpeg-turbo::git+https://github.com/libjpeg-turbo/libjpeg-turbo.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = jpegli-tools-git
