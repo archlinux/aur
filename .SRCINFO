@@ -1,6 +1,6 @@
 pkgbase = python-laya
 	pkgdesc = Fast, non-autoregressive System 1 decision engine with calibrated probabilities
-	pkgver = 0.3.11
+	pkgver = 0.3.21
 	pkgrel = 1
 	url = https://github.com/NandhaKishorM/laya
 	arch = any
@@ -22,11 +22,16 @@ pkgbase = python-laya
 	optdepends = python-fastapi: HTTP layer for the `laya-serve` server
 	optdepends = uvicorn: ASGI server that `laya-serve` starts
 	optdepends = python-mcp>=2.2.0: MCP stdio server behind `laya-mcp-server`
-	optdepends = python-langchain-core: LangChain / LangGraph runnables in `laya.integrations`
+	optdepends = python-pydantic: typed-model helpers in `laya.structured`
+	optdepends = python-langchain-core: LangChain runnables in `laya.integrations`
+	optdepends = python-langgraph: LangGraph runnables in `laya.integrations`
+	optdepends = python-llama-index-core: LlamaIndex router and selector integrations in `laya.integrations`
+	optdepends = python-crewai: CrewAI delegation router in `laya.integrations`
 	optdepends = python-onnx: ONNX export for the ONNX Runtime engine
 	optdepends = python-onnxruntime-cpu: ONNX Runtime engine in `laya.onnx_agent` (the -cuda/-rocm variants work too)
+	optdepends = python-onnxscript: scripting backend that `torch.onnx.export` needs for the ONNX engine
 	optdepends = python-tilelang: TileLang GPU fast path in `laya.fast`
-	source = laya-0.3.11.tar.gz::https://github.com/NandhaKishorM/laya/archive/refs/tags/v0.3.11.tar.gz
-	b2sums = cc51a0f06be7cf599aad707c1b6a6df33944e57346e3349e9ad6d083eb1b1dc76f43db9b07931ea1bd3198522ef6e6dfcd51aa313ba8b4edf53afb8bb2689701
+	source = laya-0.3.21.tar.gz::https://github.com/NandhaKishorM/laya/archive/refs/tags/v0.3.21.tar.gz
+	b2sums = 01bf194d40b83807ec56f15db01be541a32f2a907dd5c5aad76022eadfb030cdaa2e457101dce08cf3fe12bfbab9cb827a5ba867878f6e5a701340a1809cec3b
 
 pkgname = python-laya
