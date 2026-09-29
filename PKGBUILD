@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=pipeasio
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 # Upstream tags use semver prerelease hyphens (v1.0.0-rc1); pkgver maps '-' to '_'.
 _pkgtag="v${pkgver//_/-}"
@@ -36,7 +36,7 @@ makedepends=(
 # !lto: winebuild reads symbols from the .o files; LTO bytecode breaks it.
 options=('!strip' '!debug' '!lto')
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${_pkgtag}.tar.gz")
-b2sums=('bf16e8733c39917f5353399f85d7b33ccce3bf71656ddf3df8a73fef93f539448e048e0dcfeea34a3540c1bc8772b5b62ffa26ddb3ae76212eada478f70bcca7')
+b2sums=('a5e2deb3d001fdaa586ee74c1800386c859426142303618ab886370ef0c13e27ed9ce5c11a7732d93c35b10a6e2ec49eebf4c43b5d8394b1cf7a8258b200e481')
 
 build() {
   local cmake_options=(
