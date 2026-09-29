@@ -1,7 +1,7 @@
 # Maintainers: thadah
 pkgname="synergy3-beta-bin"
-pkgver="3.7.0"
-pkgrel="2"
+pkgver="3.8.0"
+pkgrel="1"
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
 license=('custom:Proprietary')
@@ -16,7 +16,7 @@ options=("!strip")
 # Anonymous download permalink provided by Symless
 _permalink="https://email.mg.symless.com/c/eJxMjj1PwzAUAH-Ns1HZ7zn-GDw0gggJECBRqXSzXqw2JbEj2xTCr0d0Yry75QYHPgjTBCe0EdAqbXRzcgSDIkNGWC-EFzRwoFaRJm81tzo0owMOiisB3CJyvbHEEbHVEAhRKmSSz8dNWecplLKhNDeTO9W6FIZbBj2D_l-7Ugz5uDLo_TIy6If0Fafkhz9BFEph2Nf0ESLDW3l4PEO8ed6_bA_nRcLr2hHa9odqd6fu3_P-8-nte_fQiXbXZHcJMWWDRgKT3Gdf8xivQxcHvwEAAP__hk5M-A"
 
-_pkgfile="synergy-${pkgver}-beta-linux-noble-x86_64.pkg.tar.zst"
+_pkgfile="synergy-${pkgver}-beta-linux-resolute-x86_64.pkg.tar.zst"
 
 prepare() {
   curl -fsSL -c "${srcdir}/cookies.txt" -o /dev/null "$_permalink"
