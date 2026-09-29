@@ -4,7 +4,7 @@ _pkgname='endeavouros'
 _release_name='Titan-Nova'
 pkgname="libvirt-iso-${_pkgname}-bin"
 pkgver=2026.08.15
-pkgrel=2
+pkgrel=3
 pkgdesc='Official EndeavourOS installation ISO for libvirt'
 arch=('x86_64')
 url='https://endeavouros.com/'
@@ -54,11 +54,11 @@ _check_payload() {
 	[[ "$(stat -c '%a' -- "${license_path}")" == '644' ]] || return 1
 	[[ -z "$(find "${root}" -name '*.sig' -print -quit)" ]] || return 1
 
-	manifest="$(find "${root}" \( -type f -o -type l \) -printf '%P\n' | sort)"
+	manifest="$(find "${root}" \( -type f -o -type l \) -printf '%P\n' | LC_ALL=C sort)"
 	[[ "${manifest}" == "$(printf '%s\n' \
 		"usr/share/licenses/${pkgname}/LICENSE" \
 		"var/lib/libvirt/images/${_iso}" \
-		"var/lib/libvirt/images/${_pkgname}-${CARCH}.iso")" ]] || return 1
+		"var/lib/libvirt/images/${_pkgname}-${CARCH}.iso" | LC_ALL=C sort)" ]] || return 1
 
 	if [[ "${check_owner}" == 'true' ]]; then
 		[[ "$(stat -c '%u:%g' -- "${image_path}")" == '0:0' ]] || return 1
