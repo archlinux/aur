@@ -1,15 +1,19 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 6.5.2 ➙ 6.5.6
-              : 2026-09-28 ➙ 2026-09-28
+ Tags         : 6.5.3 ➙ 6.5.7
+              : 2026-09-28 ➙ 2026-09-29
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-09-29   : 6.5.7
+              - release 6.5.7
+              - doc typos
 
  2026-09-28   : 6.5.6
               - **6.5.6** Tue Sep 29 12:36:01 AM UTC 2026
                 * Small documentation update
 
- 2026-09-28   : 6.5.5, origin/master
+ 2026-09-28   : 6.5.5
               - **6.5.5** Mon Sep 28 11:04:28 PM UTC 2026
             
                 * Reaadthedocs manual now includes man-pages:
@@ -26,11 +30,3 @@
               - **6.5.3** Mon Sep 28 09:41:04 PM UTC 2026
             
                 * Add readthedocs to repo
-
- 2026-09-28   : 6.5.2
-              - **6.5.2** Mon Sep 28 08:54:16 PM UTC 2026
-            
-                * Documentation Improvements (no functional or code changes)
-            
-                  * Simplify Readme
-                  * Add new manual in PDF and HTML formats to /usr/share/sd-boot/docs
