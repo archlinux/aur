@@ -1,7 +1,7 @@
 # Maintainer: nardholio <nardholio@gmail.com>
 
 pkgname=ruby-sdl2
-pkgver=0.3.6.r8.ge92eee2
+pkgver=0.3.6.r16.g3ef0a71
 pkgrel=1
 pkgdesc="Ruby wrapper for SDL 2.x"
 arch=('any')
@@ -9,8 +9,8 @@ url="https://github.com/ohai/ruby-sdl2"
 license=('LGPL')
 depends=('ruby' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf')
 makedepends=('git' 'ruby-rake')
-source=("git+${url}.git#commit=e92eee29a50ed972f30a1788f71b9368186152cc")
-sha256sums=('1989786780f3f426b2b9a0f4cc028c5a884fd50052a6dd3df4031fa79cdfcaed')
+source=("git+${url}.git#commit=3ef0a714eb75b43a86674b25b8739d1e5626b669")
+sha256sums=('2cf9cce287fdaa237265fe8afdce9684fbd677286cac33683f9a3bd346e53137')
 
 pkgver() {
   cd "$srcdir/${pkgname}"
