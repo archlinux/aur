@@ -4,7 +4,7 @@
 
 # Based on official PKGBUILD from Arch Linux with an annoying bug reverted
 pkgname=telegram-desktop-kdefix
-pkgver=7.2.5
+pkgver=7.2.8
 _td_commit=bc9c263e2bfee06aaab41e82db51a103376030bc
 pkgrel=1
 pkgdesc='Telegram Desktop client with KDE unread counter bug reverted'
@@ -32,6 +32,7 @@ depends=(
   'libpipewire'
   'libsrtp'
   'libstdc++'
+  'libvpx'
   'libxcb'
   'libxcomposite'
   'libxdamage'
@@ -45,13 +46,15 @@ depends=(
   'openal'
   'openh264'
   'openssl'
+  'opus'
   'pipewire'
-  'protobuf'
   'qt6-base'
+  'qt6-declarative'
   'qt6-imageformats'
   'qt6-svg'
   'qt6-wayland'
   'rnnoise'
+  'tlottie'
   'xxhash'
   'zlib'
 )
@@ -84,7 +87,7 @@ source=(
   "git+https://github.com/tdlib/td.git#commit=${_td_commit}"
   0001-kde-theme-injection-fix.patch
 )
-sha512sums=('75e876a550eb0815db7448ef19e955b1161391710a46ed17fa71d1258eee6c1a1db520ceb48c623f44f9b76ed579cfb8f7ff9701cd0d700168cfd329267e4e7e'
+sha512sums=('87197b2704fb4a39657af726f9bbbdf1d4a9c8884a3301d682c02728ee5e3067722633e314808045eab8ef8a009b243556087661b5ccec1442d2334cba319fdc'
             '12d3b77dbb2a7b7deaef0e173626b9d16acfbdde5b1df4bd58a70a7541a5d8032f25ecbc14604b0e47aa3d6d76704c56409d432717412c6046efebd0ab6180f1'
             '6544086fd4946384509c053edd447a59e9ae405af65f9a7fa632ae5734099ef57b7211b7dbebf7a0c38665e05dd7c4d2414fa5d2cb5c6ee718cc5e824f5f509a')
 
@@ -110,7 +113,7 @@ build() {
     -DCMAKE_VERBOSE_MAKEFILE=ON \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -Dtde2e_DIR="$PWD/td/install/lib/cmake/tde2e" \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DTDESKTOP_API_ID=611335 \
     -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
   cmake --build build
