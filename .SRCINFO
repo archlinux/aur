@@ -1,19 +1,19 @@
 pkgbase = mawejs-bin
 	pkgdesc = A writer's editor written with ElectronJS, React and NodeJS. It is aimed for plantsers, writers who start by writing and make structuring in later phases.
-	pkgver = 0.28.0
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = https://github.com/mkoskim/mawejs
 	arch = x86_64
 	license = MIT
 	makedepends = asar
 	depends = electron41
-	provides = mawejs=0.28.0
+	provides = mawejs=0.29.0
 	conflicts = mawejs
-	source = mawejs-0.28.0-x86_64.AppImage::https://github.com/mkoskim/mawejs/releases/download/v0.28.0/mawejs-0.28.0.AppImage
-	source = LICENSE-0.28.0::https://raw.githubusercontent.com/mkoskim/mawejs/v0.28.0/LICENSE
+	source = mawejs-0.29.0-x86_64.AppImage::https://github.com/mkoskim/mawejs/releases/download/v0.29.0/mawejs-0.29.0.AppImage
+	source = LICENSE-0.29.0::https://raw.githubusercontent.com/mkoskim/mawejs/v0.29.0/LICENSE
 	source = mawejs.sh
-	sha256sums = 35061e8564e77c549526815f6322e619b0f9b7227715d888a45959b8227fb28d
+	sha256sums = aad71fc5d75fc4599e07cca21e9cc98439053aec5453224a16b95ab944719264
 	sha256sums = c06aed1315c117a4f121a7b45831e3df87c51948e2aff6e105dbb94a2fcb619d
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
 pkgname = mawejs-bin
