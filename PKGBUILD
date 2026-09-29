@@ -1,16 +1,22 @@
 # Maintainer: X-LeeHe <a2956962139@outlook.com>
 
 pkgname=tgt-client-git
-pkgver=1.0.0
+pkgver=1.0.0.r623.gc9f2acc
 pkgrel=1
 pkgdesc="A simple TUI for Telegram"
 arch=('x86_64')
 url="https://github.com/FedericoBruzzone/tgt"
 license=('MIT' 'Apache-2.0')
-depends=('gcc-libs' 'tdlib-td' 'libc++' 'libc++abi' 'libunwind')
+depends=('libc++' 'libc++abi' 'alsa-lib' 'opus')
 makedepends=('rust' 'cargo' 'git')
+options=('!lto')
 source=("git+https://github.com/FedericoBruzzone/tgt.git")
 sha256sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/tgt"
+    git describe --long --tags --exclude='*-rc*' | sed 's/^v//;s/-/.r/;s/-/./'
+}
 
 prepare() {
     cd "$srcdir/tgt"
