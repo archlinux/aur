@@ -1,6 +1,6 @@
 pkgbase = stremio-linux-shell
 	pkgdesc = A native Linux client for Stremio
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Stremio/stremio-linux-shell
@@ -20,9 +20,9 @@ pkgbase = stremio-linux-shell
 	optdepends = stremio-web: use locally self-hosted web client instead of the default web.stremio.com
 	provides = stremio
 	conflicts = stremio
-	source = stremio-linux-shell-1.2.0.tar.gz::https://github.com/Stremio/stremio-linux-shell/archive/refs/tags/v1.2.0.tar.gz
+	source = stremio-linux-shell-1.2.1.tar.gz::https://github.com/Stremio/stremio-linux-shell/archive/refs/tags/v1.2.1.tar.gz
 	source = stremio.sh
-	sha256sums = aff0e1486aabccb25d4165792b3ce6dcb741bc4b50af4601f66ac3d41fb70670
+	sha256sums = 308d089b6712fc7e9d75b5792bc6091aabffd86befdf1083d3283b652476a72e
 	sha256sums = 2c92d0aa1d3d7297585e71ce49f92573682d9335190072df3d69d62777633434
 
 pkgname = stremio-linux-shell
