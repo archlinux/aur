@@ -1,12 +1,13 @@
 pkgbase = icinga-php-legacy
 	pkgdesc = Maintenance-only forks of abandoned upstream packages; for internal Icinga use only
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Icinga/icinga-php-legacy
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = composer
 	depends = icingaweb2
+	conflicts = icingaweb2-module-incubator
 	source = icinga-php-legacy-1.1.0.tar.gz::https://github.com/Icinga/icinga-php-legacy/archive/v1.1.0.tar.gz
 	sha256sums = c69e956a24dfa6c7cdee5f6ea275cda993b8c69ac6c1ae0aa866c95ff19edf03
 

@@ -2,12 +2,13 @@
 
 pkgname=icinga-php-legacy
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Maintenance-only forks of abandoned upstream packages; for internal Icinga use only"
 license=('GPL-3.0-or-later')
 arch=('any')
 depends=('icingaweb2')
 makedepends=('composer')
+conflicts=('icingaweb2-module-incubator')
 url="https://github.com/Icinga/icinga-php-legacy"
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/Icinga/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('c69e956a24dfa6c7cdee5f6ea275cda993b8c69ac6c1ae0aa866c95ff19edf03')
