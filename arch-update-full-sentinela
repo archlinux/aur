@@ -2,8 +2,6 @@
 
 SHELL=${SHELL:-/bin/bash}
 
- 
-
 #=========================================================================================
 PINK_NEON='\033[1;35m'
 YELLOW_NEON='\033[1;33m'
@@ -28,7 +26,85 @@ LOG_COUNT=$(find "$LOG_SENTINEL_DIR" -maxdepth 1 -name "check_*.log" | wc -l)
     fi
 }
 #=========================================================================================
-# MÓDULO SENTINELA: NOTIFICAÇÕES VISUAIS // SENTINEL VISUAL NOTIFICATIONS --------------------------
+
+VERIFICAR_IDIOMA() {
+    
+    local sys_locale="${LC_ALL:-${LANG:-$LC_MESSAGES}}"
+    
+   
+    local sys_lang="${sys_locale%%.*}"
+
+    
+    IDIOMA_SISTEMA=""
+
+    echo -e "${CYAN_NEON}[LANG CHECK] Detectando idioma do sistema operacional...${NC}"
+
+    case "$sys_lang" in
+        pt*|PT*)
+            IDIOMA_SISTEMA="PT_BR"
+            if [[ "$sys_lang" == "pt_BR" ]]; then
+                echo -e "${GREEN_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Padrão definido: PT-BR (Português Brasil)${NC}"
+            else
+                echo -e "${YELLOW_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Mapeado para: PT-BR (Português Brasil)${NC}"
+            fi
+            ;;
+
+        es*|ES*)
+            IDIOMA_SISTEMA="ES_ES"
+            if [[ "$sys_lang" == "es_ES" ]]; then
+                echo -e "${GREEN_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Padrão definido: ES-ES (Español España)${NC}"
+            else
+                echo -e "${YELLOW_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Mapeado para: ES-ES (Español España)${NC}"
+            fi
+            ;;
+
+        en*|EN*)
+            IDIOMA_SISTEMA="EN_US"
+            if [[ "$sys_lang" == "en_US" ]]; then
+                echo -e "${GREEN_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Padrão definido: EN-US (English United States)${NC}"
+            else
+                # Mapeia qualquer variação de inglês (en_CA, en_GB, en_AU, etc.) para EN-US
+                echo -e "${YELLOW_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Mapeado para: EN-US (English United States)${NC}"
+            fi
+            ;;
+
+        *)
+            IDIOMA_SISTEMA="EN_US"
+            if [[ -n "$sys_lang" ]]; then
+                # Idioma não suportado diretamente (ex: ja_JP, fr_FR) caindo no Fallback EN-US
+                echo -e "${YELLOW_NEON}[LANG] Idioma não suportado: '$sys_lang' ===> Aplicando Fallback: EN-US (English United States)${NC}"
+            else
+                echo -e "${NEON_BLUE}[LANG] Nenhum locale definido no ambiente ===> Aplicando Padrão Global: EN-US${NC}"
+            fi
+            ;;
+    esac
+    echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
+    echo ""
+
+}
+
+VERIFICAR_IDIOMA
+
+msg() {
+    local pt_msg="$1"  # 1º argumento: Português (PT-BR)
+    local en_msg="$2"  # 2º argumento: Inglês (EN-US)
+    local es_msg="$3"  # 3º argumento: Espanhol (ES-ES)
+
+    case "$IDIOMA_SISTEMA" in
+        "PT_BR") echo -e "$pt_msg" ;;
+        "EN_US") echo -e "$en_msg" ;;
+        "ES_ES") echo -e "$es_msg" ;;
+        *)       echo -e "$en_msg" ;; # Fallback padrão para Inglês
+    esac
+}
+
+export -f msg
+
+msg "Status: Modo Sentinela Ativo. Apenas checagem de atualizações." \
+    "Status: Sentinel Mode Active. Check only for updates." \
+    "Estado: Modo Centinela Activo. Solo comprobación de actualizaciones."
+
+# MÓDULO SENTINELA: NOTIFICAÇÕES VISUAIS // SENTINEL VISUAL NOTIFICATIONS ------------------------
 
 NOTIFICAR_SENTINELA(){
     local TOTAL_UPDATES="$1"

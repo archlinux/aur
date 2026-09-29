@@ -235,7 +235,7 @@ CABECALHO_MENU() {
         echo -e "                                  ${GRAD_6} ██║      ▀█████╔╝ ███████╗ ███████╗ ${NC}"
         echo -e "                                  ${GRAD_6} ╚═╝       ╚════╝  ╚══════╝ ╚══════╝ ${NC}"
     echo ""
-    echo -e "  ${PINK_NEON}──────────────────────────────── ${RED_NEON}-->VERSION 4.1-1 <--${PINK_NEON} ─────────────────────────────────${NC}"
+    echo -e "  ${PINK_NEON}──────────────────────────────── ${RED_NEON}-->VERSION 4.1 <--${PINK_NEON} ─────────────────────────────────${NC}"
     echo -e "  ${PINK_NEON}───────────────────────>> UPDATING • AUTOMATING • SECURING <<───────────────────────${NC}"
     echo ""
     echo -e "  ${NEON_BLUE}─────────────>>[ MODULES: ROLLING_SYNC | AUR_INJECTION | INTEGRITY_AUDIT ]<<─────────────${NC}"
