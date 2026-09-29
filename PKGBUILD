@@ -2,24 +2,25 @@
 
 pkgname=axiom
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
+_commit=459045027ded54fbb8ced82ce8a95b69b8f49265
 pkgdesc="Powerful log analytics from the comfort of your command-line"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url="https://github.com/axiomhq/cli"
 license=('MIT')
 depends=('glibc')
 makedepends=('go>=1.27.1')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/axiomhq/cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e8085167b291305816e3f675c493825bbf39a9fe1d426800f9817bafb0899192')
+source=("$pkgname-$pkgver-${_commit}.tar.gz::https://github.com/axiomhq/cli/archive/${_commit}.tar.gz")
+sha256sums=('4284f926537d8dcc547dc44073f9155f8082b96cfe57eb2781ea375fa04fa44a')
 
 prepare() {
-  cd "cli-$pkgver"
+  cd "cli-${_commit}"
   export GOPATH="$srcdir/gopath"
   go mod download -modcacherw
 }
 
 build() {
-  cd "cli-$pkgver"
+  cd "cli-${_commit}"
   export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -40,7 +41,7 @@ build() {
 }
 
 check() {
-  cd "cli-$pkgver"
+  cd "cli-${_commit}"
   export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -51,7 +52,7 @@ check() {
 }
 
 package() {
-  cd "cli-$pkgver"
+  cd "cli-${_commit}"
   
   # 바이너리 및 라이선스 설치
   install -Dm755 build/axiom "$pkgdir/usr/bin/axiom"
