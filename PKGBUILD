@@ -2,7 +2,7 @@
 pkgname=dbgate-git
 _pkgname=DbGate
 _debname="org.${pkgname%-git}.${_pkgname}"
-pkgver=7.3.1.beta.3.r0.g9c28f6a
+pkgver=7.3.1.r6.g0a0132a
 _electronversion=38
 _nodeversion=24
 pkgrel=1
@@ -35,9 +35,15 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+_get_project_dir() {
+	local d
+	while IFS= read -r d; do
+		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
+	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+}
 pkgver() {
-    cd "${srcdir}/${pkgname//-/.}"
+    cd "$(_get_project_dir)"
     set -o pipefail
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
@@ -104,13 +110,13 @@ _set_build_env() {
 	fi
 }
 _get_electron_version() {
-    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
+    _elec_ver=$(find "$(_get_project_dir)" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
         -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
     [[ -z "${_elec_ver}" ]] && return 1
     echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 prepare() {
-    cd "${srcdir}/${pkgname//-/.}"
+    cd "$(_get_project_dir)"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -138,19 +144,19 @@ prepare() {
     yarn install
 }
 build() {
-    cd "${srcdir}/${pkgname//-/.}"
+    cd "$(_get_project_dir)"
     _ensure_local_nvm
     _set_build_env
     export NODE_ENV=production
     yarn fillPackagedPlugins
     yarn plugins:copydist
-    cd "${srcdir}/${pkgname//-/.}/packages/api"
+    cd "$(_get_project_dir)/packages/api"
     yarn run build
-    cd "${srcdir}/${pkgname//-/.}/packages/web"
+    cd "$(_get_project_dir)/packages/web"
     yarn run build
-    cd "${srcdir}/${pkgname//-/.}/app"
+    cd "$(_get_project_dir)/app"
     yarn electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}"
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     case "${CARCH}" in
         aarch64)    _arch_rem="x64"     ;;
         x86_64)     _arch_rem="arm64"   ;;
@@ -162,13 +168,15 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-	local _app_dir=$(_get_app_dir)
+	local _app_dir="$(_get_app_dir)"
 	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
+    rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
+    local _src="$(_get_project_dir)"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${pkgname//-/.}/app/icons/${_icons}.png" \
+        install -Dm644 "${_src}/app/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
     done
-    install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${_src}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${_src}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
