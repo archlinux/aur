@@ -1,9 +1,9 @@
 # Maintainer: Rasmus Moorats <xx+aur@nns.ee>
 # Maintainer: w568w <w568w at outlook dot com>
 _java=17
-_java_minor=+7.1
+_java_minor=+1.1
 pkgname="jdk${_java}-graalvm-ee-bin"
-pkgver=17.0.20
+pkgver=17.0.20.1.1
 pkgrel=1
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${_java} version"
 arch=('x86_64'
@@ -11,7 +11,15 @@ arch=('x86_64'
 url='https://www.graalvm.org/'
 license=('LicenseRef-OTN')
 depends=('java-runtime-common'
-	'java-environment-common')
+	'java-environment-common'
+	'freetype2'
+	'libx11'
+	'libxext'
+	'libxi'
+	'libxrender'
+	'libxtst'
+	'alsa-lib'
+	'python')
 makedepends=()
 provides=("java-runtime=${_java}"
 	"java-environment=${_java}"
@@ -19,8 +27,8 @@ provides=("java-runtime=${_java}"
 options=('staticlibs'
 	'!debug')
 install="$pkgname.install"
-sha256sums_x86_64=('00fc8f0cd7b58a3aaf0ca54fc3d311b0ef33229c3d9f5f6954f78828c7b12647')
-sha256sums_aarch64=('cce4340efe5d904fa861379ca26d73a8f7836778d916b4f2c78ac0f8406c2d58')
+sha256sums_x86_64=('24fe1deba281f671a96a6fbcbaa63ed61754b28a8f06de637ecd21093d69f65e')
+sha256sums_aarch64=('3291553f1e59abbeca8731ff51a0e59449ad20e4818e64ca4b929c01452f33e8')
 source_x86_64=("https://archive.org/download/oracle-graalvm-jdk-${_java}/graalvm-jdk-${pkgver}_linux-x64_bin.tar.gz")
 source_aarch64=("https://archive.org/download/oracle-graalvm-jdk-${_java}/graalvm-jdk-${pkgver}_linux-aarch64_bin.tar.gz")
 package() {
