@@ -9,7 +9,7 @@
 # 感谢 Peternal 对 SVG图标 的授权
 pkgname=bilibili-bin
 _pkgver=1.19.0
-_subver=1
+_subver=3
 pkgver="${_pkgver}_${_subver}"
 _electronversion=43
 epoch=5
@@ -36,9 +36,9 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('c40e052cfa6249ae2fda3b7e63ded33b55b7eefd10580065ae096c74ca99f3c4')
-sha256sums_x86_64=('fa722959af26040c8b2af7df45d1b1ec9d49a1c04b55736c14674c980183c33c')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+sha256sums_aarch64=('963b7f0af5a22573ad01b86e6082aaa35c6e1157b54f11e78389a53436912a31')
+sha256sums_x86_64=('23c3856f723a9708348a7acc119f3da3f1706f8042a2f83aeeb455ea75b4e15f')
 _get_app_dir() {
 	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }
@@ -65,7 +65,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(_get_app_dir)
+	local _app_dir="$(_get_app_dir)"
 	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
