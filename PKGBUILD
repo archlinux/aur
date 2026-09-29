@@ -4,7 +4,7 @@
 
 pkgname=mindwtr
 _name="${pkgname^}"
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="To-do app built on the Getting Things Done (GTD) method"
 arch=('x86_64')
@@ -25,7 +25,7 @@ depends=('alsa-lib'
          'webkit2gtk-4.1')
 makedepends=('bun' 'cargo' 'clang' 'cmake' 'node-gyp')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('bce388283a79edc75f10baad7b69d97ea9340b8c962bccae52693266342cd2f7')
+sha256sums=('e6e3e538466ff8c9bbaca5e310ebde1586269db058dd619a47cefd30b500f421')
 
 build() {
     cd "${_name}-${pkgver}"
