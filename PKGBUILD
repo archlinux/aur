@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=5.5.25.r2.g67c82ef
+pkgver=5.5.35.r4.g5c8ac89
 _electronversion=42
 _nodeversion=24
 pkgrel=1
@@ -25,8 +25,6 @@ makedepends=(
     'nvm'
     'gendesk'
     'python-setuptools'
-    'curl'
-    'yarn'
     'jq'
 )
 source=(
@@ -34,9 +32,15 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+_get_project_dir() {
+	local d
+	while IFS= read -r d; do
+		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
+	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+}
 pkgver() {
-    cd "${srcdir}/${pkgname//-/.}"
+    cd "$(_get_project_dir)"
     set -o pipefail
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
@@ -64,16 +68,18 @@ _set_build_env() {
 	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
 	export COREPACK_HOME="${HOME}/.corepack"
 	export npm_config_audit=false
+	export npm_config_registry="${NPM_CONFIG_REGISTRY:-${npm_config_registry:-https://registry.npmjs.org}}"
 	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}"
 }
 _get_electron_version() {
-    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
-        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
-    [[ -z "${_elec_ver}" ]] && return 1
-    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
+		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
+		| grep -v '^$' | sed 's/^[^0-9]*//' | head -1)
+	[[ -z "${_elec_ver}" ]] && return 1
+	echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 prepare() {
-    cd "${srcdir}/${pkgname//-/.}"
+    cd "$(_get_project_dir)"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -90,12 +96,13 @@ prepare() {
     _ensure_local_nvm
     _set_build_env    
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
+    rm -rf package-lock.json
     export NODE_ENV=development
     npm install --legacy-peer-deps
     npm add -D node-gyp --legacy-peer-deps
 }
 build() {
-    cd "${srcdir}/${pkgname//-/.}"
+    cd "$(_get_project_dir)"
     _set_build_env
     _ensure_local_nvm
     export NODE_ENV=production
@@ -104,36 +111,26 @@ build() {
     npm run prepare-file
     npx node build/bin/prepare-electron-build.js
     WORKFLOW_NAME=linux-pkgbuild npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config build/electron-builder.json"
-    local _app_dir=$(_get_app_dir)
-    rm -rf \
-        "${_app_dir}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"{android-*,darwin-*,win32-*} \
-        "${_app_dir}/resources/app.asar.unpacked/node_modules/font-list/libs/"{darwin,win32} \
-        "${_app_dir}/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/"{darwin-*,win32-*} \
-        "${_app_dir}/resources/default_app.asar"
+    local _app_dir="$(_get_app_dir)"
+    find "${_app_dir}/resources" -type d -exec chmod 755 {} +
     case "${CARCH}" in
-        aarch64)
-            rm -rf \
-                "${_app_dir}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"{linux-arm,linux-x64} \
-                "${_app_dir}/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/linux-x64"
-            ;;
-        armv7h)
-            rm -rf \
-                "${_app_dir}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"{linux-arm64,linux-x64}
-            ;;
-        x86_64)
-            rm -rf \
-                "${_app_dir}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"linux-arm* \
-                "${_app_dir}/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/linux-arm64"
-            ;;
+        aarch64)    _archrem=x64        ;;
+        armv7h)     _archrem=64         ;;
+        x86_64)     _archrem=arm        ;;
     esac
+    find "${_app_dir}/resources/app.asar.unpacked" -type d \
+        \( -name "darwin*" -o -name "win32*" -o -name "*${_archrem}"* \) \
+        -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/node_modules/@${pkgname%-git}/${pkgname%-git}-resource/build-res/appx/StoreLogo.png" \
+    rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
+    local _src="$(_get_project_dir)"
+    install -Dm644 "${_src}/node_modules/@${pkgname%-git}/${pkgname%-git}-resource/build-res/appx/StoreLogo.png" \
         "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${_src}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${_src}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
