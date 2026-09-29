@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ralsina/$pkgname/archiv
         "litehtml-$_litehtml_rev.tar.gz::https://github.com/ralsina/litehtml/archive/$_litehtml_rev.tar.gz"
         "libharu-$_libharu_ver.tar.gz::https://github.com/libharu/libharu/archive/refs/tags/v$_libharu_ver.tar.gz")
 optdepends=("timg: image support")
-sha256sums=('c98f82e8a4e294ab2b6e315bb8450828a5fe853471e1e80bed1965ea22f79d93'
+sha256sums=('7001c3d63d8f613092467251d97ddbb3d3a3c5c7f60bb1012f1076489cdc84ae'
             '1a673ac5e2062aae2b303b181ee4526ff239c4cad011dc998aff7ac9e6fce649'
             'ec8f327520d1d354ce58b5d2af75b64f380cddc522437c169463b39760921348')
 

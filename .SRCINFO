@@ -15,7 +15,7 @@ pkgbase = markterm
 	source = markterm-0.14.0.tar.gz::https://github.com/ralsina/markterm/archive/refs/tags/v0.14.0.tar.gz
 	source = litehtml-587663441c85e0d9229f464894441631b34fc5de.tar.gz::https://github.com/ralsina/litehtml/archive/587663441c85e0d9229f464894441631b34fc5de.tar.gz
 	source = libharu-2.4.6.tar.gz::https://github.com/libharu/libharu/archive/refs/tags/v2.4.6.tar.gz
-	sha256sums = c98f82e8a4e294ab2b6e315bb8450828a5fe853471e1e80bed1965ea22f79d93
+	sha256sums = 7001c3d63d8f613092467251d97ddbb3d3a3c5c7f60bb1012f1076489cdc84ae
 	sha256sums = 1a673ac5e2062aae2b303b181ee4526ff239c4cad011dc998aff7ac9e6fce649
 	sha256sums = ec8f327520d1d354ce58b5d2af75b64f380cddc522437c169463b39760921348
 
