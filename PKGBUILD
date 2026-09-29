@@ -1,6 +1,7 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: René Wagner <rwagner at rw-net dot de>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Contributor: Christian Sturm <reezer@reezer.org>
 
 _author=SYP
 _dist=Net-Curl
