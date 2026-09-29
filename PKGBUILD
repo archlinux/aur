@@ -2,7 +2,7 @@
 
 pkgname=gz-rendering9
 pkgver=9.5.0
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="C++ library designed to provide an abstraction for different rendering engines."
@@ -10,12 +10,11 @@ arch=('any')
 url="https://github.com/gazebosim/${_pkgbase}"
 license=('Apache-2.0')
 depends=(
-  'freeimage'
   'gz-common=6'
   'gz-math=8'
   'gz-plugin=3'
   'gz-utils=3'
-  'ogre-next2'
+  'ogre-next'
   )
 makedepends=(
   'cmake'
@@ -24,10 +23,7 @@ makedepends=(
   'gz-cmake=4'
   'vulkan-headers'
   )
-optdepends=(
-  'optix: Nvidia OptiX rendering engine plugin'
-  'ogre-1.9: Ogre 1.x rendering enging plugin'
-  )
+optdepends=()
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
 sha256sums=('5b52dd3990ed45f3e731845fb1c14e7825b910017a61776de29a1e0fa24f5d5c')
