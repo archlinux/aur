@@ -1,14 +1,18 @@
 pkgbase = linux-stub
 	pkgdesc = Linux, with initramfs dependency made optional and CONFIG_DEV_BLK_NVME=y.
-	pkgver = 6.19.5.arch1
+	pkgver = 7.2.7.arch1
 	pkgrel = 1
 	url = https://github.com/archlinux/linux
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = bc
+	makedepends = binutils
 	makedepends = cpio
 	makedepends = gettext
+	makedepends = glibc
 	makedepends = libelf
+	makedepends = libgcc
+	makedepends = openssl
 	makedepends = pahole
 	makedepends = perl
 	makedepends = python
@@ -16,27 +20,30 @@ pkgbase = linux-stub
 	makedepends = rust-bindgen
 	makedepends = rust-src
 	makedepends = tar
+	makedepends = xxhash
 	makedepends = xz
+	makedepends = zlib
+	makedepends = zstd
 	options = !debug
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.19.5.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.19.5.tar.sign
-	source = https://github.com/archlinux/linux/releases/download/v6.19.5-arch1/linux-v6.19.5-arch1.patch.zst
-	source = https://github.com/archlinux/linux/releases/download/v6.19.5-arch1/linux-v6.19.5-arch1.patch.zst.sig
+	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.7.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.7.tar.sign
+	source = https://github.com/archlinux/linux/releases/download/v7.2.7-arch1/linux-v7.2.7-arch1.patch.zst
+	source = https://github.com/archlinux/linux/releases/download/v7.2.7-arch1/linux-v7.2.7-arch1.patch.zst.sig
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 83BC8889351B5DEBBB68416EB8AC08600F108CDF
-	sha256sums = 95ae05c8c709e353c0e8506c072efc5598d85b8b7b564a1ebac7ee8345042ffa
+	sha256sums = 4ac34c47db2540ffb2713943f8d891ff1702e0ba6934525a493b7d1cad43145a
 	sha256sums = SKIP
-	sha256sums = bc9001e6d0d79053f589514dc79d94a6738df8d40b0652965dd92e38904a5a5b
+	sha256sums = 22db40cf8a49b46518223ff78cc5b83377474948a4667ee40cacd3f1d571c609
 	sha256sums = SKIP
-	b2sums = 85caa51c9cbee64462ff8030da0f6e3f098c0114eeb1c60d3ec327a5d9f9bd98d77969b94ea2a7d73e8d95934d441be8118b39c141fc7008c7d2677572afbf89
+	b2sums = 0fa304e65b0d96d6082e3040db9c974ebdbcfd54a2bc22a8841db63291787f01bf63862d882ecf77cb810f51e91db4e44ac6e27616f93f945531b868b9a1a00d
 	b2sums = SKIP
-	b2sums = 126ce0e045a4b2d55c4a55b9ec82ebbf7f7f99c73c0c68b5708a14990d709320dc1e55912264f8f1d0447c64d8b3d0bb0d6f0826673a6c3e02ddbc3e8b7bccb7
+	b2sums = 29c08d638cf058e63f3b40d4ccba5dc0d04a51c3f2ad6073d84dd34920f550c2ca7a9dfe11f92c632eb732d0ab76e061770c3659501ac5a40fbff4bd7e052655
 	b2sums = SKIP
-	source_x86_64 = config.x86_64::https://gitlab.archlinux.org/api/v4/projects/42594/repository/files/config.x86_64/raw/?ref=6.19.5.arch1-1
-	sha256sums_x86_64 = e0bbff94250f0148fe9ec9b3485cd0e8ac2e860a5b001473b33ea29896e94ddc
-	b2sums_x86_64 = 42b5f6ab156e0ac2b8799c7294c1b0987f42d5043d951560474af73d2f19f5203b8d247b2119732e63dc18c844aef279a57d77dd1ae2a0f2e485851c6dd9e2d4
+	source_x86_64 = config.x86_64::https://gitlab.archlinux.org/api/v4/projects/42594/repository/files/config.x86_64/raw/?ref=7.2.7.arch1-1
+	sha256sums_x86_64 = 03b341190eeeda2fa80eb3fd4eb2f23605c612bb3b3b8502308b22bde3bb7152
+	b2sums_x86_64 = b70a9b80bec8aa71ec09e65aaf7f8949258de172b69405e5fade253795593f2dffd4189025609dd79d24ae8db06d078ee2b80090f120da1626515e8b1f9e70d5
 
 pkgname = linux-stub
 	pkgdesc = kernel and modules for the Linux kernel, with initramfs dependency made optional and CONFIG_DEV_BLK_NVME=y.
@@ -56,5 +63,12 @@ pkgname = linux-stub
 
 pkgname = linux-stub-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel, with initramfs dependency made optional and CONFIG_DEV_BLK_NVME=y.
+	depends = binutils
+	depends = glibc
+	depends = libelf
+	depends = lbgcc
 	depends = pahole
+	depends = xxhash
+	depends = zlib
+	depends = zstd
 	provides = LINUX-HEADERS
