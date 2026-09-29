@@ -1,0 +1,3 @@
+[perl-text-simpletable]
+source = "cpan"
+cpan = "Text-SimpleTable"
