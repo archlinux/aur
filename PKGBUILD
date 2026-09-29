@@ -3,7 +3,7 @@
 pkgname=happy-photon-bin
 pkgver=0.2.8
 pkgrel=1
-pkgdesc="Happy Photon is a RAW photos editor, with speed in mind."
+pkgdesc="Happy Photon is a RAW photo editor designed with speed in mind."
 arch=('x86_64')
 url="https://github.com/seasalim/happy-photon"
 license=('GPL-3.0-or-later')
