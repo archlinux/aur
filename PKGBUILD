@@ -72,6 +72,12 @@ sha256sums=('9883fdd4a49d4fb66bd8177ba6625ef9a64aa45899767dde3d36aa425756b11e'
 #   sudo ln -s /usr/share/fontconfig/conf.avail/80-ttf-inter-hinted.conf \
 #              /etc/fonts/conf.d/
 #
+# That is not enough for GTK4 (4.16+): with gtk-font-rendering=automatic, the
+# default, GTK4 hard-codes hintslight and cairo lets that override fontconfig.
+# On GNOME set `gsettings set org.gnome.desktop.interface font-rendering manual`
+# and font-hinting to medium, and put gtk-hint-font-metrics=false in
+# ~/.config/gtk-4.0/settings.ini. See README.md.
+#
 # ── Build-time options ───────────────────────────────────────────────────────
 #
 # Run from a terminal, prepare() asks for INTER_VARIANT, WANT_INTER/

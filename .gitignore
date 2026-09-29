@@ -1,6 +1,7 @@
 *
 !.gitignore
 !PKGBUILD
+!README.md
 !.SRCINFO
 !otf2ttf.py
 !set_gasp.py
