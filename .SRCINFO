@@ -1,6 +1,6 @@
 pkgbase = r-hsaur3
 	pkgdesc = A Handbook of Statistical Analyses Using R (3rd Edition)
-	pkgver = 1.0.15
+	pkgver = 1.0.16
 	pkgrel = 1
 	url = https://cran.r-project.org/package=HSAUR3
 	arch = any
@@ -33,8 +33,8 @@ pkgbase = r-hsaur3
 	optdepends = r-th.data
 	optdepends = r-vcd
 	optdepends = r-wordcloud
-	source = https://cran.r-project.org/src/contrib/HSAUR3_1.0-15.tar.gz
-	md5sums = ad511d4510711a4c8519f386d72e3c05
-	b2sums = 442fa3d9a349a2dabea4a8553cd9ae43fbce48c1453c246d86a4a2f8739d73b1301ff615a101652e89c0164dc7d998ab56aa5204b76422e68934901ba5d65b44
+	source = https://cran.r-project.org/src/contrib/HSAUR3_1.0-16.tar.gz
+	md5sums = 2e375437565bc13c0c96df3f5a016783
+	b2sums = 5769eceee2cbb8d87a6b71b4918defba236d7bafb3fd1dfc153dd7c4ff708e4a28d75fc117822aed7669fa4a86d9982a86fa8f26120e986a5127d05e80d2b1f3
 
 pkgname = r-hsaur3
