@@ -1,6 +1,6 @@
 pkgbase = freesmlauncher-bin
 	pkgdesc = Minecraft launcher with offline accounts support (binary release)
-	pkgver = 2.2.2
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://freesmlauncher.org/
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = freesmlauncher-bin
 	depends = zlib
 	provides = freesmlauncher
 	conflicts = freesmlauncher
-	noextract = freesmlauncher-bin-2.2.2-x86_64.AppImage
-	noextract = freesmlauncher-bin-2.2.2-aarch64.AppImage
+	noextract = freesmlauncher-bin-2.3.1-x86_64.AppImage
+	noextract = freesmlauncher-bin-2.3.1-aarch64.AppImage
 	options = !strip
-	source_x86_64 = freesmlauncher-bin-2.2.2-x86_64.AppImage::https://github.com/FreesmTeam/FreesmLauncher/releases/download/2.2.2/FreesmLauncher-Linux-x86_64.AppImage
-	sha256sums_x86_64 = c4e9e7513e606057903e4eaba901148f8e07c0f0c4c4d7bc4c3feafe47170514
-	source_aarch64 = freesmlauncher-bin-2.2.2-aarch64.AppImage::https://github.com/FreesmTeam/FreesmLauncher/releases/download/2.2.2/FreesmLauncher-Linux-aarch64.AppImage
-	sha256sums_aarch64 = 8e6be23a945ab5e7a099f6661671d1067e933c0fc5a16a28fadb3453da171381
+	source_x86_64 = freesmlauncher-bin-2.3.1-x86_64.AppImage::https://github.com/FreesmTeam/FreesmLauncher/releases/download/2.3.1/FreesmLauncher-Linux-x86_64.AppImage
+	sha256sums_x86_64 = 318f9ab762b9c7a5f1d7a0743b37da07b5e1aac0060274d26f107b26ed9a162c
+	source_aarch64 = freesmlauncher-bin-2.3.1-aarch64.AppImage::https://github.com/FreesmTeam/FreesmLauncher/releases/download/2.3.1/FreesmLauncher-Linux-aarch64.AppImage
+	sha256sums_aarch64 = 116c67727b42e27421b9295e9d35518559bb21021db0b11f7e730cba87745b14
 
 pkgname = freesmlauncher-bin

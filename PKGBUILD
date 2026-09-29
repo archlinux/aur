@@ -1,6 +1,7 @@
-# Maintainer: MiguVT <contacto@miguvt.com>
+# Maintainer: so5iso4ka <so5iso4ka@icloud.com>
+# Contributor: MiguVT <contacto@miguvt.com>
 pkgname=freesmlauncher-bin
-pkgver=2.2.2
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Minecraft launcher with offline accounts support (binary release)"
 arch=(x86_64 aarch64)
@@ -17,8 +18,8 @@ conflicts=(freesmlauncher)
 options=(!strip)
 source_x86_64=("$pkgname-$pkgver-x86_64.AppImage::https://github.com/FreesmTeam/FreesmLauncher/releases/download/$pkgver/FreesmLauncher-Linux-x86_64.AppImage")
 source_aarch64=("$pkgname-$pkgver-aarch64.AppImage::https://github.com/FreesmTeam/FreesmLauncher/releases/download/$pkgver/FreesmLauncher-Linux-aarch64.AppImage")
-sha256sums_x86_64=('c4e9e7513e606057903e4eaba901148f8e07c0f0c4c4d7bc4c3feafe47170514')
-sha256sums_aarch64=('8e6be23a945ab5e7a099f6661671d1067e933c0fc5a16a28fadb3453da171381')
+sha256sums_x86_64=('318f9ab762b9c7a5f1d7a0743b37da07b5e1aac0060274d26f107b26ed9a162c')
+sha256sums_aarch64=('116c67727b42e27421b9295e9d35518559bb21021db0b11f7e730cba87745b14')
 noextract=("$pkgname-$pkgver-x86_64.AppImage" "$pkgname-$pkgver-aarch64.AppImage")
 
 prepare() {
@@ -62,8 +63,8 @@ EOF
     "$pkgdir/usr/share/metainfo/org.freesmlauncher.FreesmLauncher.metainfo.xml"
 
   # Install mime type file with renamed package
-  # install -Dm644 share/mime/packages/modrinth-mrpack-mime.xml \
-  # "$pkgdir/usr/share/mime/packages/$pkgname.xml"
+  install -Dm644 share/mime/packages/org.freesmlauncher.FreesmLauncher.xml \
+  "$pkgdir/usr/share/mime/packages/org.freesmlauncher.FreesmLauncher.xml"
 }
 
 # vim:set ts=2 sw=2 et:
