@@ -15,7 +15,6 @@ _architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare() {
   cd "${srcdir}/scip-${pkgver}"
-  # curl -L https://github.com/scipopt/scip/pull/223.patch | patch -p1
 }
 
 build() {
