@@ -1,7 +1,7 @@
 pkgbase = python-tree-sitter-lua
 	pkgdesc = Lua grammar for tree-sitter
 	pkgver = 0.5.0
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/tree-sitter-grammars/tree-sitter-lua
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = python-tree-sitter-lua
 	makedepends = python-setuptools
 	depends = python
 	depends = python-tree-sitter
-	source = python-tree-sitter-lua-0.5.0.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-lua/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = cf01b93f4b61b96a6d27942cf28eeda4cbce7d503c3bef773a8930b3d778a2d9
+	source = python-tree-sitter-lua-0.5.0-10fe0054734eec83049514ea2e718b2a56acd0c9.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-lua/archive/10fe0054734eec83049514ea2e718b2a56acd0c9.tar.gz
+	sha256sums = 82c3ca5808de02addd9c7fb5275d89260c6557019aa6e40ca52c0595bf1d33cd
 
 pkgname = python-tree-sitter-lua
