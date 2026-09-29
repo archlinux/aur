@@ -1,0 +1,6 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!LICENSE
+!sing-box-for-linux-bin.install
