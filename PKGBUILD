@@ -4,7 +4,7 @@ _pkgname='archlinux'
 _variant='cloudimg'
 pkgname="libvirt-image-${_pkgname}-bin"
 pkgver=20260915.594445
-pkgrel=2
+pkgrel=3
 pkgdesc='Official Arch Linux cloud-init QCOW2 template for libvirt'
 arch=('x86_64')
 url='https://gitlab.archlinux.org/archlinux/arch-boxes'
@@ -56,11 +56,11 @@ _check_payload() {
 	[[ "$(stat -c '%a' -- "${license_path}")" == '644' ]] || return 1
 	[[ -z "$(find "${root}" -name '*.sig' -print -quit)" ]] || return 1
 
-	manifest="$(find "${root}" \( -type f -o -type l \) -printf '%P\n' | sort)"
+	manifest="$(find "${root}" \( -type f -o -type l \) -printf '%P\n' | LC_ALL=C sort)"
 	[[ "${manifest}" == "$(printf '%s\n' \
 		"usr/share/licenses/${pkgname}/LICENSE" \
 		"var/lib/libvirt/images/${_template}" \
-		"var/lib/libvirt/images/${_template_link}")" ]] || return 1
+		"var/lib/libvirt/images/${_template_link}" | LC_ALL=C sort)" ]] || return 1
 
 	if [[ "${check_owner}" == 'true' ]]; then
 		[[ "$(stat -c '%u:%g' -- "${image_path}")" == '0:0' ]] || return 1
