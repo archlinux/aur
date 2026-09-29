@@ -1,7 +1,8 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=chainsaw
 pkgver=0.2.15
-pkgrel=1
+pkgrel=2
+_commit=e166f7755b0d6098476c5c6677082203c877bfef
 pkgdesc='Declarative Kubernetes end-to-end testing framework'
 arch=('x86_64' 'aarch64')
 url='https://github.com/kyverno/chainsaw'
@@ -9,18 +10,18 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 conflicts=('chainsaw-bin')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kyverno/chainsaw/archive/v$pkgver.tar.gz")
-sha256sums=('04f3fc7dd8e958e4fc7d73383bc22b05827240dd2fe7a8e32ee99d8c0332da2a')
+source=("$pkgname-$pkgver-${_commit}.tar.gz::https://github.com/kyverno/chainsaw/archive/${_commit}.tar.gz")
+sha256sums=('11a94984ed6c4feb414e31305b3e226cd761a0dcc72aad7385fd547ead10fad9')
 options=(!lto)
 
 prepare() {
-    cd chainsaw-$pkgver
+    cd chainsaw-${_commit}
     export GOFLAGS="-mod=readonly -modcacherw"
     go mod download -x
 }
 
 build() {
-    cd chainsaw-$pkgver
+    cd chainsaw-${_commit}
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
@@ -40,12 +41,12 @@ build() {
 }
 
 check() {
-    cd chainsaw-$pkgver
+    cd chainsaw-${_commit}
     ./chainsaw version
 }
 
 package() {
-    cd chainsaw-$pkgver
+    cd chainsaw-${_commit}
     install -Dm755 chainsaw "$pkgdir/usr/bin/chainsaw"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
