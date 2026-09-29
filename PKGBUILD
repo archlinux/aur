@@ -1,6 +1,6 @@
 # Maintainer: unstable-code <assa0620@gmail.com>
 pkgname=wshowlyrics-git
-pkgver=r564.59ca9c4
+pkgver=r566.6dc947c
 pkgrel=1
 pkgdesc="Wayland-based synchronized lyrics overlay with MPRIS integration"
 arch=('x86_64' 'aarch64')
