@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-papilo
+	pkgdesc = Parallel Presolve for Integer and Linear Optimization (mingw-w64)
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://www.scipopt.org/
+	arch = any
+	license = LGPL-3.0-only
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-blas
+	depends = mingw-w64-boost
+	depends = mingw-w64-gmp
+	depends = mingw-w64-onetbb
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = https://github.com/scipopt/papilo/archive/refs/tags/v3.0.2.tar.gz
+	sha256sums = 3ab6e4a41667aa1edc87697dfcc0dc7d517d047d4366abafd8858d22e02d4f2f
+
+pkgname = mingw-w64-papilo
