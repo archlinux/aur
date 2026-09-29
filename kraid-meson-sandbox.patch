@@ -1,0 +1,32 @@
+diff --git a/src/compiler/rust/meson.build b/src/compiler/rust/meson.build
+index 0070ab3f453..07c3315475e 100644
+--- a/src/compiler/rust/meson.build
++++ b/src/compiler/rust/meson.build
+@@ -119,10 +119,8 @@ _libcompiler_bindings = static_library(
+   'compiler_bindings',
+   ['bindings.h', _compiler_bindings_rs[1]],
+   gnu_symbol_visibility : 'hidden',
+-  include_directories : [
+-    fs.relative_to(meson.project_build_root(), meson.current_source_dir()),
+-  ],
+   c_args : [
++    '-I' + meson.project_build_root(),
+     pre_args,
+     cc.get_supported_arguments('-Wno-missing-prototypes'),
+   ],
+diff --git a/src/panfrost/compiler/kraid/meson.build b/src/panfrost/compiler/kraid/meson.build
+index 220e5290b45..800947e1a5e 100644
+--- a/src/panfrost/compiler/kraid/meson.build
++++ b/src/panfrost/compiler/kraid/meson.build
+@@ -60,10 +60,8 @@ _libkraid_binding_wrappers = static_library(
+   'kraid_binding_wrappers',
+   ['bindings.h', _kraid_bindings_rs[1]],
+   gnu_symbol_visibility : 'hidden',
+-  include_directories : [
+-    fs.relative_to(meson.project_build_root(), meson.current_source_dir()),
+-  ],
+   c_args : [
++    '-I' + meson.project_build_root(),
+     pre_args,
+     cc.get_supported_arguments('-Wno-missing-prototypes'),
+   ],

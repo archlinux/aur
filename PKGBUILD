@@ -1,7 +1,7 @@
 # Maintainer: grimish@protonmail.com 
 pkgname=mesa-kraid-git
-pkgver=26.3.0_devel.r230400.g61f259049cf
-pkgrel=2
+pkgver=26.3.0_devel.r230526.gd16ba52c381
+pkgrel=1
 pkgdesc="Mesa (git main): Panfrost OpenGL + PanVK Vulkan with the KRAID shader compiler, for Arm Mali Valhall (RK3588 / Mali-G610)"
 arch=('aarch64')
 url="https://gitlab.freedesktop.org/mesa/mesa"
@@ -22,10 +22,12 @@ backup=('etc/profile.d/mesa-kraid.sh')
 options=('!lto')
 source=("mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main"
         'mesa-kraid.sh'
-        '60-mesa-kraid.conf')
+        '60-mesa-kraid.conf'
+        'kraid-meson-sandbox.patch')
 sha256sums=('SKIP'
             'bc1d1878130a64d1c8006fec6455418256c1cf259ec9cc09209868d3b4f4e97f'
-            'c009ee43740dacad9fd350f6595a5b6cc941e2f138e989d541c3b0831c4bdd52')
+            'c009ee43740dacad9fd350f6595a5b6cc941e2f138e989d541c3b0831c4bdd52'
+            '34ec69be39064e8d7acc94f6529bf4042ab1059aab9ef0495233527d390b06d5')
 
 pkgver() {
   cd "$srcdir/mesa"
@@ -38,6 +40,8 @@ prepare() {
     echo "this Mesa revision has no -Dpanfrost-rust option (KRAID not present)" >&2
     return 1
   }
+  git -C "$srcdir/mesa" apply --check "$srcdir/kraid-meson-sandbox.patch" &&
+  git -C "$srcdir/mesa" apply "$srcdir/kraid-meson-sandbox.patch"
 }
 
 build() {
