@@ -2,7 +2,7 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=grubforge
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="A terminal UI for managing and customizing the GRUB bootloader — safely, intuitively, and beautifully"
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('python' 'python-textual' 'python-rich' 'polkit')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('2680d4a8175b405314764ae3b3c4a11a968aca6ed7061c5c8461471248c354de'
+sha256sums=('3507a66088b1f6cf758a07c00100ba1a7b90d8a9d5d4c0d99ab5b58d12fd865d'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   gpg --keyserver keys.openpgp.org --recv-keys 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
@@ -64,6 +64,11 @@ refuses(['definitely-not-a-verb'],   'an unknown verb')
 refuses([],                          'no verb at all')
 print('grubforge helper refusal checks OK')
 "
+
+    # v1.1.3: where boot entries come from (#28) — 25 checks, no root needed,
+    # including the helper's read-entries pass-through and a save run through
+    # sh exactly as grub-mkconfig runs it.
+    PYTHONDONTWRITEBYTECODE=1 python tests/test_boot_entry_sources.py
 }
 
 package() {
