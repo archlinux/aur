@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clawx
 _pkgname=ClawX
-pkgver=0.5.8
+pkgver=0.6.0
 _electronversion=40
 _nodeversion=24
 pkgrel=1
@@ -30,14 +30,14 @@ makedepends=(
 )
 options=(
     '!strip'
-    'emptydirs'
+    '!emptydirs'
 )
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('ea6dd175ecfba8a8b8a8717af3b28857228c33f37625901982a778dd0d9243d7'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums=('5acc58519fdc90fd24734ad31d623e60a39d04365a3ab3af26449f93c7dd84f3'
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -48,54 +48,56 @@ _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
 	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	_ev="$(electron${_electronversion} -v)"
-	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
-	export HOME="${srcdir}/.electron-gyp"
-	mkdir -p "${HOME}"
-	export XDG_CACHE_HOME="${srcdir}/.cache"
-	export XDG_CONFIG_HOME="${srcdir}/.config"
-	export XDG_DATA_HOME="${srcdir}/.local/share"
-	export XDG_STATE_HOME="${srcdir}/.local/state"
-	export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-	export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-	export PNPM_GLOBAL_DIR="${srcdir}/.pnpm/global"
-	export PNPM_GLOBAL_BIN_DIR="${srcdir}/.pnpm/bin"
-	export PNPM_STATE_DIR="${srcdir}/.pnpm/state"
-	export PNPM_MINIMUM_RELEASE_AGE=0
-	export PNPM_NODE_LINKER=hoisted
-	export PNPM_FETCH_RETRIES=3
-	export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-	export PNPM_UPDATE_NOTIFIER=false
-	export PNPM_NO_COLOR=true
-	export PNPM_NO_PROGRESS=true
-	export pnpm_config_platform=linux
-	export pnpm_config_arch="${CARCH}"
-	export NODE_OPTIONS="--max-old-space-size=4096"
-	export npm_config_node_options="--max-old-space-size=4096"
-	mkdir -p "${PNPM_CACHE_DIR}" "${PNPM_STORE_DIR}" "${PNPM_GLOBAL_DIR}" "${PNPM_GLOBAL_BIN_DIR}" "${PNPM_STATE_DIR}"
-	local _pnpmver="${_pnpmversion}"
-	if [[ -z "${_pnpmver}" ]]; then
-		_pnpmver="$(node -p "const pm=require('./package.json').packageManager; pm && pm.startsWith('pnpm@') ? pm.split('@')[1] : ''" 2>/dev/null)"
+	export ELECTRON_BUILDER_OFFLINE=true
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+	export HOME="${srcdir}/.home"
+	export XDG_CACHE_HOME="${HOME}/.cache"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_DATA_HOME="${HOME}/.local/share"
+	export XDG_STATE_HOME="${HOME}/.local/state"
+	export PNPM_HOME="${HOME}/.pnpm/bin"
+	export pnpm_config_cache_dir="${HOME}/.pnpm_cache"
+	export pnpm_config_store_dir="${HOME}/.pnpm_store"
+	export pnpm_config_global_dir="${HOME}/.pnpm/global"
+	export pnpm_config_state_dir="${HOME}/.pnpm/state"
+	export pnpm_config_node_linker=hoisted
+	export pnpm_config_minimum_release_age=0
+	export pnpm_config_update_notifier=false
+	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
+	export COREPACK_HOME="${HOME}/.corepack"
+	mkdir -p "${HOME}" "${PNPM_HOME}" "${pnpm_config_cache_dir}" "${pnpm_config_store_dir}" "${pnpm_config_global_dir}" "${pnpm_config_state_dir}" "${COREPACK_HOME}"
+	export PATH="${PNPM_HOME}:${PATH}"
+	local _pnpmver=""
+	local _pkgjson="$(_get_project_dir)/package.json"
+	if [ -f "${_pkgjson}" ]; then
+		_pnpmver="$(grep -o '"packageManager"[^,]*' "${_pkgjson}" 2>/dev/null | grep -oE 'pnpm@[^"+]+' | head -n1 | sed 's/^pnpm@//')"
+		if [ -z "${_pnpmver}" ]; then
+			_pnpmver="$(grep -oE '"pnpm"[[:space:]]*:[[:space:]]*"[^"]+"' "${_pkgjson}" 2>/dev/null | grep -oE '[0-9][0-9.]*' | head -n1)"
+		fi
 	fi
-	if [[ -n "${_pnpmver}" ]]; then
-		export COREPACK_HOME="${srcdir}/.corepack"
-		install -dm755 "${srcdir}/.bin"
-		corepack enable --install-directory "${srcdir}/.bin"
-		export PATH="${srcdir}/.bin:${PATH}"
-		corepack prepare "pnpm@${_pnpmver}" --activate
+	if [ -n "${_pnpmver}" ]; then
+		npm install -g "pnpm@${_pnpmver}" --prefix "${HOME}/.pnpm" \
+			--registry "${COREPACK_NPM_REGISTRY}"
 	fi
 }
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
+_get_project_dir() {
+	local d
+	while IFS= read -r d; do
+		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
+	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+}
 _get_electron_version() {
-    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
-        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
-    [[ -z "${_elec_ver}" ]] && return 1
-    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
+		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
+		| grep -v '^$' | sed 's/^[^0-9]*//' | head -1)
+	[[ -z "${_elec_ver}" ]] && return 1
+	echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "$(_get_project_dir)"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -113,40 +115,41 @@ prepare() {
     _set_build_env
     find electron -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    pnpm install
+    export NODE_ENV=development
+    pnpm install
 }
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "$(_get_project_dir)"
     _ensure_local_nvm
     _set_build_env
-    NODE_ENV=production     pnpm exec node scripts/generate-ext-bridge.mjs
-    NODE_ENV=production     pnpm run build:vite
-    NODE_ENV=production     pnpm exec zx scripts/bundle-openclaw.mjs
-    NODE_ENV=production     pnpm exec zx scripts/bundle-openclaw-plugins.mjs
-    NODE_ENV=production     pnpm exec zx scripts/bundle-preinstalled-skills.mjs
-    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} -c.electronVersion=${SYSTEM_ELECTRON_VERSION} --config electron-builder.yml"
-    local _arch_rem
-    local _app_dir=$(_get_app_dir)
+    export NODE_ENV=production
+    pnpm exec node scripts/generate-ext-bridge.mjs
+    pnpm run build:vite
+    pnpm exec zx scripts/bundle-openclaw.mjs
+    pnpm exec zx scripts/bundle-openclaw-plugins.mjs
+    pnpm exec zx scripts/bundle-preinstalled-skills.mjs
+    pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} -c.electronVersion=${SYSTEM_ELECTRON_VERSION} --config electron-builder.yml"
+    local _app_dir="$(_get_app_dir)"
     case "${CARCH}" in
-        aarch64) _arch_rem="*x64*" ;;
-        x86_64)  _arch_rem="*arm64*" ;;
-    esac
-    find "${_app_dir}/resources" -type d \( \
-        -name "*darwin*" -o \
-        -name "*win32*" -o \
-        -name "${_arch_rem}" \
-    \) -exec rm -rf {} +
+		aarch64)	_archrem=x64	;;
+		x86_64)		_archrem=arm	;;
+	esac
+	find "${_app_dir}/resources" -type d \
+		\( -name "darwin*" -o -name "win32*" -o -name "*${_archrem}"* \) \
+		-exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-    local _app_dir=$(_get_app_dir)
-    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/" 
+    local _app_dir="$(_get_app_dir)"
+    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
+    rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
+    local _src="$(_get_project_dir)"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/resources/icons/${_icons}.png" \
+        install -Dm644 "${_src}/resources/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${_src}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${_src}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

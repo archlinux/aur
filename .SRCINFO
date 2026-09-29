@@ -1,6 +1,6 @@
 pkgbase = clawx
 	pkgdesc = A desktop app that provides a graphical interface for OpenClaw AI agents. It turns CLI-based AI orchestration into a desktop experience without using the terminal.
-	pkgver = 0.5.8
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://clawx.com.cn/
 	arch = any
@@ -20,10 +20,10 @@ pkgbase = clawx
 	depends = python-pillow
 	conflicts = clawx
 	options = !strip
-	options = emptydirs
-	source = clawx-0.5.8::git+https://github.com/ValueCell-ai/ClawX.git#tag=v0.5.8
+	options = !emptydirs
+	source = clawx-0.6.0::git+https://github.com/ValueCell-ai/ClawX.git#tag=v0.6.0
 	source = clawx.sh
-	sha256sums = ea6dd175ecfba8a8b8a8717af3b28857228c33f37625901982a778dd0d9243d7
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = 5acc58519fdc90fd24734ad31d623e60a39d04365a3ab3af26449f93c7dd84f3
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
 pkgname = clawx
