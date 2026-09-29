@@ -24,7 +24,7 @@ optdepends=(
 )
 conflicts=('alien_package_converter')
 provides=('alien_package_converter')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/isaacangello/alien/archive/refs/tags/v${pkgver}-pacman1.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/isaacangello/alien/releases/download/v${pkgver}-pacman1/alien-${pkgver}.tar.gz")
 sha256sums=('ed234fcb447d26aa1c9a4174a685c06a0bfc8c2f46ec45d9bffcc01e70060665')
 
 build() {

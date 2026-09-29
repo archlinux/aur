@@ -13,7 +13,7 @@ pkgbase = alien
 	optdepends = zstd: for .pkg.tar.zst compression
 	provides = alien_package_converter
 	conflicts = alien_package_converter
-	source = alien-8.95.9.tar.gz::https://github.com/isaacangello/alien/archive/refs/tags/v8.95.9-pacman1.tar.gz
+	source = alien-8.95.9.tar.gz::https://github.com/isaacangello/alien/releases/download/v8.95.9-pacman1/alien-8.95.9.tar.gz
 	sha256sums = ed234fcb447d26aa1c9a4174a685c06a0bfc8c2f46ec45d9bffcc01e70060665
 
 pkgname = alien
