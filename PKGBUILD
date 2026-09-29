@@ -3,10 +3,10 @@
 
 _name=delphes-madgraph
 pkgname=${_name}-git
-pkgver=3.5.1pre12.r13.g98f15ad
-pkgrel=2
+pkgver=3.5.2pre02.r5.g66ba1f4
+pkgrel=1
 pkgdesc="A framework for fast simulation of a generic collider experiment (compiled by make instead of CMake for MadGraph. Can be coexisted with delphes)"
-url="http://cp3.irmp.ucl.ac.be/projects/delphes"
+url="https://delphes.github.io"
 conflicts=("$_name")
 provides=('delphes' "$_name")
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('GPL-3.0')
 install=delphes-madgraph-note.install
 depends=("root"
          "cern-vdt")
-makedepends=('make')
+makedepends=('make' 'git')
 optdepends=('madgraph: this package provides Delphes interface for MadGraph')
 source=("${pkgname}::git+https://github.com/delphes/delphes.git" 
         "delphes-madgraph-note.install")
