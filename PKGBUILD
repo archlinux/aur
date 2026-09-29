@@ -1,50 +1,72 @@
-# Maintainer : René Wagner <rwagner at rw-net dot de>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: René Wagner <rwagner at rw-net dot de>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
 
-pkgname='perl-net-curl'
-pkgver='0.58'
-pkgrel='1'
-pkgdesc="Perl interface for libcurl"
-arch=('i686' 'x86_64')
-license=('PerlArtistic' 'GPL')
+_author=SYP
+_dist=Net-Curl
+pkgname=perl-${_dist@L}
+pkgver=0.58
+pkgrel=2
+pkgdesc='Perl interface for libcurl'
+arch=('x86_64')
+url=https://metacpan.org/dist/$_dist
+license=('MIT')
+depends=(
+    'curl>=7.15.5'
+    'perl-carp'
+    'perl-exporter'
+    'perl>=5.8.1'
+)
+makedepends=('perl-extutils-makemaker')
+optdepends=(
+    'perl-extutils-pkgconfig'
+    'perl-xsloader'
+)
 options=('!emptydirs')
-depends=('curl>=7.37.0' 'perl')
-makedepends=('gcc')
-url='http://search.mcpan.org/dist/Net-Curl'
-source=("http://search.mcpan.org/CPAN/authors/id/S/SY/SYP/Net-Curl-${pkgver}.tar.gz")
-_distdir="Net-Curl-${pkgver}"
+source=(
+    "https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz"
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+    # https://github.com/sparky/perl-Net-Curl/issues/90
+    # https://github.com/sparky/perl-Net-Curl/pull/87
+    'https://patch-diff.githubusercontent.com/raw/sparky/perl-Net-Curl/pull/87.patch?full_index=1'
+)
+sha256sums=(
+    '37c1585cc70e21579c7c733e306e97a46adc093a3777af6d8ba37d73986d7f5a'
+    'e95318d2de7a7d4d5a911f464d95cfbc6b0a5115646375eb61794ca9c461a9d1'
+)
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+prepare()
+{
+    cd "$_dist-$pkgver"
+    patch -Np1 -i '../87.patch?full_index=1'
+}
+
+build()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
-sha256sums=('37c1585cc70e21579c7c733e306e97a46adc093a3777af6d8ba37d73986d7f5a')
