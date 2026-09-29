@@ -4,20 +4,19 @@
 # Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
 
 pkgname=tvheadend-git
-pkgver=4.3.r2758.g27295c5
-pkgrel=2
+pkgver=4.3.r2824.g897aa80
+pkgrel=1
 pkgdesc='TV streaming server and DVR'
-#arch=(x86_64)
+# arch=(x86_64)
 arch=(aarch64 arm armv6h armv7h i686 x86_64)
 url=https://tvheadend.org
 license=(GPL-3.0-or-later)
 depends=(
   avahi ffmpeg libiconv libdvbcsa libfdk-aac libogg libtheora libvorbis libvpx
   openssl opus pcre2 pngquant uriparser x264 x265)
-makedepends=(git python cmake wget) # cmake wget: for static builds
+makedepends=(cmake git npm python wget) # cmake wget: for static builds
 optdepends=(
   'libhdhomerun: HDHomeRun support'
-  # 'npm: for Vue Web UI'
   'xmltv: alternative source of programme listings')
 options=(!buildflags !strip emptydirs)
 provides=("${pkgname%-git}")
@@ -70,7 +69,7 @@ pkgver() {
 build() {
   cd $pkgname
 
-  #export CFLAGS+=' -w -Wno-error'
+  # export CFLAGS+=' -w -Wno-error'
   export CFLAGS+=' -Wno-error=discarded-qualifiers -Wno-error=format-truncation -Wno-error=unused-but-set-variable'
 
   # local libav_option
