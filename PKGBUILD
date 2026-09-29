@@ -1,33 +1,54 @@
-# Maintainer: René Wagner
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: René Wagner
 # Contributor: Christian Sturm <reezer@reezer.org>
-pkgname=perl-modern-perl
+
+_author=CHROMATIC
+_dist=Modern-Perl
+pkgname=perl-${_dist@L}
 pkgver=1.20250607
-pkgrel=1
-pkgdesc="enable all of the features of Modern Perl with one command"
-arch=(any)
-url="https://metacpan.org/release/Modern-Perl"
-license=('GPL-1.0-only' 'Artistic-1.0')
-depends=('perl>=5.10.0')
-makedepends=('make')
-options=(!emptydirs)
-source=("https://cpan.metacpan.org/authors/id/C/CH/CHROMATIC/Modern-Perl-$pkgver.tar.gz")
-
-build() {
-  cd "$srcdir/Modern-Perl-$pkgver"
-
-  # for packages with Build.PL, do this instead:
-  perl Makefile.PL installdirs=vendor destdir="$pkgdir/"
-  make
-}
-
-package() {
-  cd "$srcdir/Modern-Perl-$pkgver"
-  
-  make install
-
-  # remove perllocal.pod and .packlist
-  find "$pkgdir" -name perllocal.pod -delete
-  find "$pkgdir" -name .packlist -delete
-}
-# vim:set ts=2 sw=2 et:
+pkgrel=2
+pkgdesc='enable all of the features of Modern Perl with one import'
+arch=('any')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-io'
+    'perl>=5.10.0'
+)
+makedepends=('perl-extutils-makemaker')
+checkdepends=(
+    'perl-pathtools'
+    'perl-test-simple'
+)
+options=('!emptydirs')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
 sha256sums=('38ed7eb7b91aeed153887483e49a9a807a2e8962ab227cc6fdb5ea4dc41df128')
+
+build()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
+}
+
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
+}
+
+package()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}
