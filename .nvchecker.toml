@@ -1,0 +1,8 @@
+[bettbox-compatible-pre]
+source = 'github'
+github = 'appshubcc/Bettbox'
+use_max_release = true
+include_prereleases = true
+include_regex = '^v\d+\.\d+\.\d+-pre\d+$'
+from_pattern = '^v(\d+\.\d+\.\d+)-pre(\d+)$'
+to_pattern = '\1pre\2'
