@@ -1,6 +1,6 @@
 # Maintainer: dhor <dhor@toxic.net.pl>
 
-pkgname=CalibRaw
+pkgname=calibraw
 pkgver=1.1.1
 pkgrel=1
 pkgdesc="CalibRaw is a fast, non-destructive, GPU-accelerated RAW photo editor"
