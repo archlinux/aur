@@ -1,16 +1,20 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 6.5.1 ➙ 6.5.5
-              : 2026-09-19 ➙ 2026-09-28
+ Tags         : 6.5.2 ➙ 6.5.6
+              : 2026-09-28 ➙ 2026-09-28
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-28   : 6.5.5
+ 2026-09-28   : 6.5.6
+              - **6.5.6** Tue Sep 29 12:36:01 AM UTC 2026
+                * Small documentation update
+
+ 2026-09-28   : 6.5.5, origin/master
               - **6.5.5** Mon Sep 28 11:04:28 PM UTC 2026
             
                 * Reaadthedocs manual now includes man-pages:
 
- 2026-09-28   : 6.5.4, origin/master
+ 2026-09-28   : 6.5.4
               - **6.5.4**
             
                 * Manual is now live on https://sd-boot.readthedocs.io/
@@ -30,18 +34,3 @@
             
                   * Simplify Readme
                   * Add new manual in PDF and HTML formats to /usr/share/sd-boot/docs
-
- 2026-09-19   : 6.5.1
-              - **6.5.1**
-            
-                * Improve documentation for "inspect" (no functional change)
-                  * Update ran pages and usage outputs.
-                  * sd-boot-kernel-udate
-                  * sd-boot-efi-tool-update
-            
-                * sd-boot-efi-tool-update terminal message:
-                  * show operation and package version (same as sd-boot-kernel-udate)
-            
-                * Typo in check-permissions output.
-            
-                * Recent changes now in separate file.
