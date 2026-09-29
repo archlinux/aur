@@ -1,8 +1,8 @@
 # Maintainer: Johannes Schriewer <hallo@dunkelstern.de
 pkgname=veilamp
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
-pkgdesc='Veilamp is a Winamp-inspired player with veilid peer to peer sharing between friends'
+pkgdesc="Veilamp is a Winamp-inspired player with veilid peer to peer sharing between friends"
 arch=('x86_64')
 url="https://veilamp.com/"
 license=('MIT')
