@@ -3,7 +3,8 @@
 _pkgname=linear-cli
 pkgname=linear-cli-finesssee
 pkgver=0.3.28
-pkgrel=1
+pkgrel=2
+_commit=ddcf35f0967d1d23a4507f7720cc671cefd6dacb
 pkgdesc="A powerful CLI for Linear.app built with Rust (by nesszer)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/nesszer/linear-cli"
@@ -11,31 +12,32 @@ license=('MIT')
 depends=('dbus' 'gcc-libs' 'glibc')
 conflicts=('linear-cli-finesssee-bin')
 makedepends=('cargo')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nesszer/linear-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ef3795901da1583456a7361d65cd9b0cecaca62ad4da57c026d370388f68a460')
+checkdepends=('git')
+source=("${pkgname}-${pkgver}-${_commit}.tar.gz::https://github.com/nesszer/linear-cli/archive/${_commit}.tar.gz")
+sha256sums=('81eb62d658a629747e79b0d0d76adec337ad86e3d9675fcf16156bd0a0b77f0a')
 options=('!lto')
 
 prepare() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${_pkgname}-${_commit}"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${_pkgname}-${_commit}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
 check() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${_pkgname}-${_commit}"
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --all-features
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${_pkgname}-${_commit}"
   
   # Install binary
   install -Dm755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
