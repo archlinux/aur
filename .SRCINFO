@@ -1,6 +1,6 @@
 pkgbase = relaybar-bin
 	pkgdesc = GTK manager for SSH local port forwards
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/skorotkiewicz/RelayBar
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = relaybar-bin
 	provides = relaybar
 	conflicts = relaybar
 	options = !debug
-	source = relaybar-v0.1.3-x86_64-unknown-linux-gnu.tar.gz::https://github.com/skorotkiewicz/RelayBar/releases/download/v0.1.3/relaybar-v0.1.3-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 3f6fe2e5236e8a544601fce590582fc7c77f4f8a0170d5cd3689d02940ab55cb
+	source = relaybar-v0.1.4-x86_64-unknown-linux-gnu.tar.gz::https://github.com/skorotkiewicz/RelayBar/releases/download/v0.1.4/relaybar-v0.1.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = d7c6dba82460b4db7fb635de7a5c3cc128cb2c7fa42e7df0f1451633ee8d3f9c
 
 pkgname = relaybar-bin
