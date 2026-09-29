@@ -1,6 +1,6 @@
 pkgbase = eslauncher2
 	pkgdesc = The next generation Endless Sky Launcher
-	pkgver = 0.9.11
+	pkgver = 0.9.12
 	pkgrel = 1
 	url = https://github.com/EndlessSkyCommunity/ESLauncher2
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = eslauncher2
 	depends = rust
 	depends = fuse2
 	options = !lto
-	source = https://github.com/EndlessSkyCommunity/ESLauncher2/archive/refs/tags/v0.9.11.tar.gz
-	sha512sums = 392c1ea0aa40e4ba0b1d9ff155af29ac52c9582fc6ff4caf183455948565c6af13d07aa34c12e874d914c3c93779d77bb07f9238608e9baecede23302822cb36
+	source = https://github.com/EndlessSkyCommunity/ESLauncher2/archive/refs/tags/v0.9.12.tar.gz
+	sha512sums = da4f6b55221c35dfd8ed6b4eac41b3ba68904d013ffa4ee3b3f015079c6ab17e34251a470678f97bd6d7a752872ecb404b12e94a3f67dfb468ca9088d81babbe
 
 pkgname = eslauncher2
