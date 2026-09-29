@@ -1,14 +1,13 @@
 pkgbase = libtar-twrp-git
 	pkgdesc = C library for manipulating POSIX tar files (Patched with TWRP Backup Format Support)
-	pkgver = r53.7f86978
+	pkgver = r58.1333a38
 	pkgrel = 1
 	url = https://github.com/simon816/libtar-twrp
 	install = libtar-twrp.install
 	arch = x86_64
 	arch = aarch64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
-	makedepends = libselinux
 	makedepends = autoconf
 	depends = zlib
 	depends = glibc

@@ -1,15 +1,15 @@
 # Maintainer: w568w <w568w at outlook dot com>
 pkgname=libtar-twrp-git
 _pkgname="libtar-twrp"
-pkgver=r53.7f86978
+pkgver=r58.1333a38
 pkgrel=1
 pkgdesc="C library for manipulating POSIX tar files (Patched with TWRP Backup Format Support)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/simon816/libtar-twrp"
-license=('BSD')
+license=('BSD-3-Clause')
 options=('libtool')
 depends=('zlib' 'glibc' 'libselinux')
-makedepends=('git' 'libselinux' 'autoconf')
+makedepends=('git' 'autoconf')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install=libtar-twrp.install
@@ -38,4 +38,5 @@ build() {
 package() {
         cd "$srcdir/${_pkgname}"
         make DESTDIR="${pkgdir}" install
+        install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
