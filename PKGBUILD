@@ -22,7 +22,7 @@
 
 pkgbase=ttf-ms-win11-auto-local
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
-pkgver=10.0.26200.8457
+pkgver=10.0.26200.9445
 pkgrel=1
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
@@ -60,6 +60,7 @@ lucon.ttf                                                   # Lucida Console
 marlett.ttf                                                 # Marlett
 micross.ttf                                                 # Microsoft Sans Serif
 pala.ttf       palab.ttf      palai.ttf      palabi.ttf     # Palatino Linotype
+SansSerifCollection.ttf                                     # Sans Serif Collection
 segmdl2.ttf                                                 # Segoe MDL2 Assets
 SegoeIcons.ttf                                              # Segoe Fluent Icons
 segoepr.ttf    segoeprb.ttf                                 # Segoe Print
@@ -131,6 +132,7 @@ _ttf_ms_win11_zh_cn=( # Chinese (Simplified)
 #########################################################################################
 simsun.ttc                                                  # NSimSun
 simsunb.ttf                                                 # SimSun-ExtB
+SimsunExtG.ttf                                              # SimSun-ExtG
 msyh.ttc       msyhbd.ttc                                   # Microsoft YaHei
 msyhl.ttc                                                   # Microsoft YaHei Light
 )
@@ -158,10 +160,10 @@ sha256sums=('6b5d4b32236a921bacdefe19852ec0699ca2eacd72d4e57f50a2de06ede21c8e')
 
 # sha256sums for the copied font files
 _font_sha256sums=(
-    '5f9f2d8104ad5e69e1be8107224063dc8c36f9e24680b2f9be324244c0b424a1'  # arial.ttf
-    '3680a1bbffab914f36b27d5fd97b193de5bccfab882c41b41b5f8f99457b4820'  # arialbd.ttf
-    'c30c71d614e143c0d4e42aaf04d9a1f50f90b365a2654eb3f2c6598e5655af08'  # ariali.ttf
-    '77a0b63c5f73eb85923f10359e68b8fc768487ae88ad902a1ea21276954e205b'  # arialbi.ttf
+    'b3658eadae55e682b5f69eb64c439c1ecc8f196c0bb8d4756d145d13bc86476a'  # arial.ttf
+    'e8f4e3baf6cc35fed6fcce3a540e8b39e8f6cda1d22a28f2ec8f526fef7a43f5'  # arialbd.ttf
+    '86b32db9a06f9694e2a3760c42e5117bcdc5cc1255bb5186ca8ce0305e22f288'  # ariali.ttf
+    '267a411525980d648f10a7222a6ff1ebe4d4feeefbf9b3100cae2b5cfab5594a'  # arialbi.ttf
     '10df702864b1f89cb29ba0d6b97c04228338d16807e13e8d8c74b91aba5e5f23'  # ariblk.ttf
     'eaad201da94cb323401fdb8cc760650803ddf8fd704cb9fa56317e6c69bc6fd6'  # bahnschrift.ttf
     '57e93ff143572bcc092c1f56202d43ddc07bb119aa104c6d7af163470fb551f6'  # calibri.ttf
@@ -219,8 +221,9 @@ _font_sha256sums=(
     '8e14668bbae03f78ed668dbe3261218881960dcd9fb80ad6c1d1dfb4226a57c3'  # palab.ttf
     '99f0af2d1941707fecda23da38bafbed5144a73a3720d773c05b9d4c445920ed'  # palai.ttf
     'd0e722b91ffd5391cc2e7d6e976f274d5aee9fe0b8d0fedfffe093763e695cde'  # palabi.ttf
+    'eb78c210d380fce7d3822b3a5ccfa808f1eb0390de6237f5460970679f393ce0'  # SansSerifCollection.ttf
     'a2efc8b8e51fbd031a7142a1ade8866fa904c0c349511abc579ee53f8a926f31'  # segmdl2.ttf
-    '9252396fd902fd1a95775ec81f52c5818ee24f8a1297127bfbcca2787c1b03e4'  # SegoeIcons.ttf
+    'af496bd8ed18e8b45ea9c914bb3319204ab4fac450e0f4d3aab62bac6c02e5e9'  # SegoeIcons.ttf
     '91046862e08fbade0bdd648e81c4efbe6a963947f8b6e32b64a28fe39073c468'  # segoepr.ttf
     '3cced0162ddb9e5f1e63ee1b36fd6e581c090318dce1a0af01b77f5ea9952c80'  # segoeprb.ttf
     'b24aa49a4bcb99a0ffc60cad77f00941e4b121153d8b0a519c03719d9be6004e'  # segoesc.ttf
@@ -235,7 +238,7 @@ _font_sha256sums=(
     '4dc2db1870047663878da07fa5f8217e518ef875c8ad33287fcbad6aba5a7e73'  # seguisli.ttf
     'be191c94a0c7172870c3c87a136bd5aa67cdca7bc091de89242fb64ecb0f8fae'  # seguibl.ttf
     '51d300301197dfb0621a8d8b275274d408dd15a7edda4cc4a8f7666504d582cd'  # seguibli.ttf
-    'f07cbd7886f4a1a5255a1bdf4ca5ea29db3be3357414003a92bec5d1c3165578'  # seguiemj.ttf
+    '451df9bb5546055af625ff86aa72695df43e8e170b4c6c1316fe44e9c7a22f7c'  # seguiemj.ttf
     'a162ceeaf701b55d11c542daf1c39c52bfaf686496505bff2eb75ca24814c136'  # seguihis.ttf
     '2d9b22d71f72de2823fee5d9c8bc1b0fc32b2577c4c27b9ec6abdbb8df0e1731'  # seguisb.ttf
     '454295546b78810c95ffd7fc9d57890ed15a03b7cfd0d7e3485786400152b740'  # seguisbi.ttf
@@ -247,10 +250,10 @@ _font_sha256sums=(
     'bbf1192965e5266fbf23370416337d2861fc1e8bd349def93f2994ba67382fc3'  # symbol.ttf
     '9af03d4ad44a3b413d92f7de48b94aa7cc8a1471a75d498406eae837f62ee1d1'  # tahoma.ttf
     'b16ed1a15e0cabea8d41d9f8899c253cd61ac466af5e3980d02bd0cf311c2267'  # tahomabd.ttf
-    'fbb57cdb0079137adc0e478913ca134dfee02aa2ef443738ec5e839bf97a1f7f'  # times.ttf
-    'e94ff9111656f17bd81e9f822f1e234edcd370bcbacfdebf998b8938f525ac77'  # timesbd.ttf
-    'c2c134968be4259aaa78845d3aca5e91c4a0bd10d98e4d2e48ac3c12f3c63b89'  # timesi.ttf
-    '8d2c8d8d25d9fc529d08558c42effa771617914a455603881e212a26e2f2ddcd'  # timesbi.ttf
+    '931c5de5c70401d9324d5014c123802b4fb753000360ceb2f56c589403cd58c5'  # times.ttf
+    '54fbe2c70af7c85a97bed0573227e3ccc4b2486012e3ca2a40c6bc77065846f5'  # timesbd.ttf
+    'e7f7a88b65188328aea58670f955022e23c712f55679524729da1e4e03c49d88'  # timesi.ttf
+    '3a29d114cb5229e8dbda5bef6c69be4a210a13b7277de4d66e9fc86963226f6c'  # timesbi.ttf
     'fe3e8bdd64c1c9f3b9cf5189d06510c80d72cec28e03d04bffc560f77eec58d1'  # trebuc.ttf
     'dfcc306777a594d2815368547dd897e2ac82aff8073e55d9e682569939e49b81'  # trebucbd.ttf
     '9c9dc0cd0fd6b1a06e8f406d04bb15a88aaf20328d3e166c12d6bc7994b781d2'  # trebucit.ttf
@@ -278,15 +281,16 @@ _font_sha256sums=(
     'f5151d081f6afea4c26464e0cd5e695f57a99209cfeea2f483c3108684660eb6'  # taile.ttf
     '1878842d8dbdf8489794af0bace95a956db270dfa506ddcaabf94fa827b769ac'  # taileb.ttf
     '80aef1c25135b945e9de7d09e6445c386405eb2e0ea7032d4cd00a2fe3eef0ae'  # msyi.ttf
-    '707585b9acfc1507d9bd943bb5435f75768274b1a12b1f71de76ad78be4d7e7b'  # monbaiti.ttf
-    '433a8e78745aa843b2cddff0e386c3a9fc34150cb8281e3d68df68e0beb52224'  # mmrtext.ttf
-    'f98b40961e5f8182e3dd9e62cf23cdc7c7b96cf6b0cb4ec05b73c6ab9aaf178a'  # mmrtextb.ttf
+    'bf15e713f2ae14f85201ad31752054b0d88adb64634d9a1f5a7bc032f981ff89'  # monbaiti.ttf
+    'f9b362b1e0e09880cdf71852e3cc6dd6f7babb3fb6c12019f39af2135c6233cc'  # mmrtext.ttf
+    'a96d49aa45e2800f49734578e5f5c1eaeb142e60a1fe1a4cc4d885170be5dcfe'  # mmrtextb.ttf
     'ad02cdfc06e144ac45f318e8e5a64cbe04c7479d4beb91d25f5a319a466b1767'  # Nirmala.ttc
     'ca9a670f12d0e47c20441012a22f78ab17c1b126818e0e887ef7db6ecf5e76b4'  # LeelawUI.ttf
     '15f58cff987dce2ca1e7740ca6001b8e4e2589ea80898fdedca26d2726979f7e'  # LeelaUIb.ttf
     'f7a9d979c27baad75ebcd41ea45113919576c2e56af9ffd483dd9d0ef9272a25'  # LeelUIsl.ttf
     '1526ac24375f51f6eb73bc2d3f8072dbe4a80a3a65217677c9d9a84f67dab2ab'  # simsun.ttc
     '2a476ca00b5fbbbc12a4c5335634722b11a495ed87429284325701f1e36b596a'  # simsunb.ttf
+    '9cadcd0ab3d549446b51001d9896773d87ad012d93d842532f321eca514bffd8'  # SimsunExtG.ttf
     'd79c55e68b1131eea0cc1c47be4f572d964f28c682e143db2ad09c1e4cb07a3f'  # msyh.ttc
     '4508821b3dffe01f0ef5e5326a3e60df705a44633858811f67b6982dce3f6ee6'  # msyhbd.ttc
     '7e9bdf90bb5d3fe1b5975fc8ae31944b8fa674122261f92c28d4ec0b9c482fa1'  # msyhl.ttc
