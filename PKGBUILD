@@ -1,7 +1,7 @@
 # Maintainer: Mahfuz Shaikh <mah3uz at gmail dot com>
 
 pkgname=darwan
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Themes for the SDDM login screen and the Quickshell lockscreen, with a CLI, TUI and GUI'
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=(
   'quickshell'
   'ttf-jetbrains-mono-nerd'
 )
-makedepends=('cargo' 'cmake' 'librsvg' 'lld')
+makedepends=('cargo' 'cmake' 'librsvg' 'lld' 'qt6-shadertools')
 optdepends=(
   'sddm: use the themes on the login screen'
   'libfaketime: darwan preview --at'
@@ -31,7 +31,7 @@ optdepends=(
 # makepkg's -flto turns cxx-qt's C++ into GCC LTO objects that the Rust link can't resolve.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8d55e60e36eaf908df22ae95cdd9b7a48361279165c9d2ce87fabca5f49fa12f')
+sha256sums=('c6021532f07c386832719cd5d3b2f4a8ac4e25ad8823438391d628a390672d72')
 
 prepare() {
   cd "$pkgname-$pkgver"
