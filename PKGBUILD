@@ -1,6 +1,6 @@
 # Maintainer: alex3236 <me@alex3236.moe>
 pkgname=genoffice-bin
-pkgver=0.10.1467
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Free, open-source AI office suite: docs, sheets, slides, PDF and markdown editors"
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
   'libappindicator: tray icon support'
 )
 source=("https://github.com/genspark-ai/genoffice/releases/download/v${pkgver}/genoffice_${pkgver}_amd64.deb")
-sha256sums=('7be8a82b0dd3c29cf04b612d10ee1fe5ba0cf503bc6c5e4ae1dfed2e273e563f')
+sha256sums=('a59241bd30dcee12314990f7d438ec2bc4a5e93c5c1c242b203361529dc44c29')
 
 package() {
   cd "$srcdir"
