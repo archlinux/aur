@@ -3,7 +3,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-mm
-pkgver=0.8.6
+pkgver=0.8.7 # renovate: datasource=github-tags depName=savonet/ocaml-mm
 pkgrel=1
 pkgdesc="OCaml multimedia library"
 arch=('i686' 'x86_64')
@@ -29,4 +29,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('85cc60ea657e49a3e5dcac5a7f826114f42829253f14462d35875205a831884c')
+sha256sums=('c18dd52c2152d7bccc00c961d54c9d043e9e9ab93ae0fe81fa8c9aea6b425053')
