@@ -1,0 +1,23 @@
+pkgbase = spendo-bin
+	pkgdesc = Local-first personal finance manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lewisflames/spendo
+	install = spendo-bin.install
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = webkit2gtk-4.1
+	provides = spendo
+	conflicts = spendo
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/lewisflames/spendo/releases/download/v0.1.0/Spendo_0.1.0_amd64.deb
+	sha256sums_x86_64 = 180ae1d16f070a3831cf938311f62710080d1138e6dcbae5d43ea3f5342d1eb5
+
+pkgname = spendo-bin
