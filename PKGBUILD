@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kiwix-js-electron-bin
 _pkgname=Kiwix-JS-Electron
-pkgver=3.8.8
+pkgver=3.9.2
 _electronversion=43
 pkgrel=1
-pkgdesc="Kiwix JS Offline Browser implemented as a Progressive Web App (PWA), and packaged as Electron, NWJS and UWP apps for Windows and Linux.(Prebuild version.Use system-wide electron)"
+pkgdesc="Kiwix JS Offline Browser implemented as a Progressive Web App (PWA), and packaged as Electron, NWJS and UWP apps."
 arch=(
     'aarch64'
     'i686'
@@ -23,10 +23,10 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-E-arm64.AppImage")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-E-i386.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-E.AppImage")
-sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('59e5485a28cb28443b2e500973d29c9290ffb97b590feed377306f526260d630')
-sha256sums_i686=('2205046d3343d7301372a734fa0c1f899de7168925d2ed8c024238153424d171')
-sha256sums_x86_64=('132676dcf8b851784f65bffe00eaea6f180132c1a579ea5b9fd1483522f9aefe')
+sha256sums=('bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+sha256sums_aarch64=('165c74f2029e4b75b7b66c35a1becda5741bf26b538eecc8b82d6eb286cad75c')
+sha256sums_i686=('0b3e6a5449c1d5a3dd99e49c840282701bba3580aed23fdd83f21259dcb63946')
+sha256sums_x86_64=('d717fc3b2da828c292bb3605b99530a5cdedb5b37fff8c9dc15db7bbefe40b31')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -55,16 +55,22 @@ prepare() {
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _check_electron_version
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${_app_dir}/${pkgname%-bin}.desktop"
     find "${_app_dir}/resources" -type d -exec chmod 755 {} +
-    find "${_app_dir}/resources" -type d -name "android-*" -exec rm -rf {} +
+    case "${CARCH}" in
+        aarch64)    _archrem="x64"      ;;
+        x86_64)     _archrem="arm64"    ;;
+    esac
+    find "${_app_dir}/resources" -type d \
+        \( -name "android-*" -o -name "*${_archrem}*" -o -name "darwin*" -o -name "win32*" \) \
+        -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	local _app_dir="$(_get_app_dir)"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
