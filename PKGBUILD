@@ -21,7 +21,7 @@ sha256sums=('b706169643d7acdef5ec9ec78527c2415e1388cb449a89578feba3217507d710' '
 prepare() {
     mkdir -p "$srcdir/matedit"
 
-    tar -xf "$srcdir/MatEdit-linux-x64-gcc.tar.gz" \
+    tar -xf "$srcdir/MatEdit-linux-x64-gcc-${pkgver}-${pkgrel}.tar.gz" \
         -C "$srcdir/matedit"
 
     if [[ ! -f "$srcdir/matedit/MaterialEditor" ]]; then
