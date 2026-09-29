@@ -1,0 +1,21 @@
+pkgbase = xdg-desktop-portal-generic
+	pkgdesc = Generic XDG desktop portal backend for Wayland compositors (InputCapture, RemoteDesktop, ScreenCast, Clipboard)
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/lamco-admin/xdg-desktop-portal-generic
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = clang
+	makedepends = pkgconf
+	depends = xdg-desktop-portal
+	depends = pipewire
+	depends = libxkbcommon
+	depends = wayland
+	source = xdg-desktop-portal-generic-0.9.0.tar.gz::https://github.com/lamco-admin/xdg-desktop-portal-generic/archive/refs/tags/v0.9.0.tar.gz
+	source = 0001-fix-input-capture-for-deskflow-on-wayland.patch
+	sha256sums = a0764233f051bac8ce5ef7fb1824d2a32c46a356537bff89b06f5ed93c1c5341
+	sha256sums = b7eca6f2cffc82dd6b584a006d9ebc71e048853ddcc8e363cace2f0f5473a02f
+
+pkgname = xdg-desktop-portal-generic

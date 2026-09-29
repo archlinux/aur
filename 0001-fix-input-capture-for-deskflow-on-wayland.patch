@@ -1,0 +1,1328 @@
+From 92cc3ffe97c2ce760fa2ef929a5e9ab0c49fa1cb Mon Sep 17 00:00:00 2001
+From: Raj Vengalil <avranju@nerdworks.dev>
+Date: Mon, 21 Sep 2026 14:02:50 +0530
+Subject: [PATCH] fix input capture for Deskflow on Wayland
+
+---
+ data/xdg-desktop-portal-generic.service |   1 -
+ src/dbus/input_capture.rs               |  87 +++++-
+ src/lib.rs                              |  64 +++++
+ src/services/input/eis_backend.rs       | 219 ++++++++++++++-
+ src/services/input/eis_bridge.rs        |  13 +
+ src/services/input/mod.rs               |  16 ++
+ src/wayland/dispatch.rs                 |  76 ++++--
+ src/wayland/input_capture.rs            | 343 ++++++++++++++++++++++--
+ src/wayland/mod.rs                      |  15 +-
+ 9 files changed, 762 insertions(+), 72 deletions(-)
+
+diff --git a/data/xdg-desktop-portal-generic.service b/data/xdg-desktop-portal-generic.service
+index f8ea23c..e4e4867 100644
+--- a/data/xdg-desktop-portal-generic.service
++++ b/data/xdg-desktop-portal-generic.service
+@@ -1,7 +1,6 @@
+ [Unit]
+ Description=Generic XDG Desktop Portal Backend for Wayland Compositors
+ PartOf=graphical-session.target
+-After=xdg-desktop-portal.service
+ 
+ [Service]
+ Type=dbus
+diff --git a/src/dbus/input_capture.rs b/src/dbus/input_capture.rs
+index 384d7ca..c97f53c 100644
+--- a/src/dbus/input_capture.rs
++++ b/src/dbus/input_capture.rs
+@@ -246,6 +246,25 @@ impl InputCaptureInterface {
+         Some((x1, y1, x2, y2))
+     }
+ 
++    /// Extract a `(f64, f64)` tuple from an options-style value.
++    fn get_option_f64_tuple2(
++        options: &HashMap<String, OwnedValue>,
++        key: &str,
++    ) -> Option<(f64, f64)> {
++        let v = options.get(key)?;
++        let value: &Value<'_> = v.downcast_ref().ok()?;
++        let Value::Structure(s) = value else {
++            return None;
++        };
++        let fields = s.fields();
++        if fields.len() != 2 {
++            return None;
++        }
++        let x = f64::try_from(&fields[0]).ok()?;
++        let y = f64::try_from(&fields[1]).ok()?;
++        Some((x, y))
++    }
++
+     /// Validate that a session exists, belongs to the caller, and was
+     /// created via `InputCapture` (not `RemoteDesktop`/`ScreenCast`).
+     fn validate_input_capture_session(
+@@ -801,6 +820,22 @@ impl InputCaptureInterface {
+ 
+         let cursor_position = self.current_cursor_position(&session_handle.to_string());
+ 
++        // `end_input_capture_activation()` prevents the later Wayland
++        // `Unlocked` notification from ending this activation a second time,
++        // so terminate the matching EIS transaction here.  Otherwise the
++        // receiver remains in its emulating state and the next barrier hit
++        // sends a second `start_emulating`, which libei correctly rejects.
++        if activation_id.is_some() {
++            let mut backend = self.input_backend.lock().await;
++            if let Err(e) = backend.stop_input_capture(session_handle.as_str()) {
++                tracing::warn!(
++                    session_id = %session_handle,
++                    error = %e,
++                    "Failed to stop EIS input capture while disabling"
++                );
++            }
++        }
++
+         if let Some(tx) = &self.input_capture_tx {
+             let _ = tx.send(InputCaptureCommand::DestroySession {
+                 session_id: session_handle.to_string(),
+@@ -842,9 +877,7 @@ impl InputCaptureInterface {
+         app_id: &str,
+         options: HashMap<String, OwnedValue>,
+         #[zbus(header)] header: zbus::message::Header<'_>,
+-        #[zbus(signal_emitter)] emitter: SignalEmitter<'_>,
+     ) -> zbus::fdo::Result<()> {
+-        let _ = &options;
+         let sender = header
+             .sender()
+             .ok_or_else(|| zbus::fdo::Error::Failed("Missing sender".to_string()))?
+@@ -859,24 +892,42 @@ impl InputCaptureInterface {
+         let activation_id = session.end_input_capture_activation();
+         drop(manager);
+ 
+-        let cursor_position = self.current_cursor_position(&session_handle.to_string());
++        // A client supplies cursor_position when it is returning from the
++        // remote desktop and wants the local pointer placed explicitly. In
++        // that case the compositor lock must really be released. Without a
++        // position, keep the low-level edge lock armed so another outward
++        // sample can re-trigger the logical barrier immediately.
++        let preserve_barrier_lock =
++            Self::get_option_f64_tuple2(&options, "cursor_position").is_none();
++
++        // Release ends the current portal activation synchronously.  The
++        // resulting Wayland `Unlocked` event is deliberately ignored by the
++        // activation bridge (the session no longer has an activation id), so
++        // the corresponding EIS `stop_emulating` must be sent here before a
++        // newly armed barrier can trigger another `start_emulating`.
++        if activation_id.is_some() {
++            let mut backend = self.input_backend.lock().await;
++            if let Err(e) = backend.stop_input_capture(session_handle.as_str()) {
++                tracing::warn!(
++                    session_id = %session_handle,
++                    error = %e,
++                    "Failed to stop EIS input capture while releasing"
++                );
++            }
++        }
+ 
+         if let Some(tx) = &self.input_capture_tx {
+             let _ = tx.send(InputCaptureCommand::ReleaseActiveLock {
+                 session_id: session_handle.to_string(),
++                preserve_barrier_lock,
+             });
+         }
+ 
+-        if let Some(activation_id) = activation_id {
+-            let _ = Self::deactivated(
+-                &emitter,
+-                session_handle.to_owned(),
+-                deactivated_options(activation_id, cursor_position),
+-            )
+-            .await;
+-        }
+-
+-        tracing::debug!(session_id = %session_handle, "InputCapture.Release");
++        tracing::debug!(
++            session_id = %session_handle,
++            preserve_barrier_lock,
++            "InputCapture.Release"
++        );
+         Ok(())
+     }
+ 
+@@ -1210,6 +1261,16 @@ mod tests {
+         assert_eq!(parsed, None);
+     }
+ 
++    #[test]
++    fn test_get_option_f64_tuple2_roundtrip() {
++        let mut options = HashMap::new();
++        let value: OwnedValue = Value::from((12.5f64, 42.25f64)).try_into().unwrap();
++        options.insert("cursor_position".to_string(), value);
++
++        let parsed = InputCaptureInterface::get_option_f64_tuple2(&options, "cursor_position");
++        assert_eq!(parsed, Some((12.5, 42.25)));
++    }
++
+     #[test]
+     fn test_build_zones_results() {
+         let zones = vec![InputCaptureZone {
+diff --git a/src/lib.rs b/src/lib.rs
+index 3985c47..e9ef67e 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -344,17 +344,29 @@ impl PortalBackend {
+             let session_manager = Arc::clone(&self.session_manager);
+             let input_backend = Arc::clone(&self.input_backend);
+             let dbus_conn = connection.clone();
++            let input_capture_tx = self.input_capture_tx.clone();
+             tokio::spawn(async move {
+                 Self::input_capture_activation_bridge(
+                     dbus_conn,
+                     session_manager,
+                     input_backend,
++                    input_capture_tx,
+                     activation_rx,
+                 )
+                 .await;
+             });
+         }
+ 
++        // EIS is socket-driven, unlike the Wayland event loop.  In
++        // particular, an InputCapture client performs its EIS handshake only
++        // after `ConnectToEIS` returns its fd.  Keep draining those sockets so
++        // that the receiver context reaches ActiveReceiver before a barrier
++        // tries to forward input to it.
++        let input_backend = Arc::clone(&self.input_backend);
++        tokio::spawn(async move {
++            Self::input_event_pump(input_backend).await;
++        });
++
+         // Spawn periodic session cleanup task
+         let session_manager = Arc::clone(&self.session_manager);
+         tokio::spawn(async move {
+@@ -704,6 +716,7 @@ impl PortalBackend {
+         connection: zbus::Connection,
+         session_manager: Arc<Mutex<SessionManager>>,
+         input_backend: Arc<Mutex<Box<dyn InputBackend>>>,
++        input_capture_tx: Option<mpsc::Sender<wayland::InputCaptureCommand>>,
+         mut activation_rx: tokio::sync::mpsc::UnboundedReceiver<
+             wayland::InputCaptureActivationEvent,
+         >,
+@@ -715,6 +728,7 @@ impl PortalBackend {
+                 &connection,
+                 &session_manager,
+                 &input_backend,
++                input_capture_tx.as_ref(),
+                 event,
+             )
+             .await;
+@@ -729,6 +743,7 @@ impl PortalBackend {
+         connection: &zbus::Connection,
+         session_manager: &Arc<Mutex<SessionManager>>,
+         input_backend: &Arc<Mutex<Box<dyn InputBackend>>>,
++        input_capture_tx: Option<&mpsc::Sender<wayland::InputCaptureCommand>>,
+         event: wayland::InputCaptureActivationEvent,
+     ) {
+         use wayland::InputCaptureActivationEvent;
+@@ -743,6 +758,7 @@ impl PortalBackend {
+                     connection,
+                     session_manager,
+                     input_backend,
++                    input_capture_tx,
+                     session_id,
+                     barrier_id,
+                     cursor_position,
+@@ -760,6 +776,21 @@ impl PortalBackend {
+                     backend.forward_captured_pointer_motion(&session_id, dx, dy, time_usec);
+                 Self::log_forward_error(&session_id, "pointer motion", result);
+             }
++            InputCaptureActivationEvent::Button {
++                session_id,
++                button,
++                pressed,
++                time_usec,
++            } => {
++                let mut backend = input_backend.lock().await;
++                let result = backend.forward_captured_pointer_button(
++                    &session_id,
++                    button,
++                    pressed,
++                    time_usec,
++                );
++                Self::log_forward_error(&session_id, "pointer button", result);
++            }
+             InputCaptureActivationEvent::Key {
+                 session_id,
+                 keycode,
+@@ -836,6 +867,7 @@ impl PortalBackend {
+         connection: &zbus::Connection,
+         session_manager: &Arc<Mutex<SessionManager>>,
+         input_backend: &Arc<Mutex<Box<dyn InputBackend>>>,
++        input_capture_tx: Option<&mpsc::Sender<wayland::InputCaptureCommand>>,
+         session_id: String,
+         barrier_id: u32,
+         cursor_position: Option<(f64, f64)>,
+@@ -875,6 +907,16 @@ impl PortalBackend {
+             if let Some(session) = manager.get_session_mut(&handle) {
+                 let _ = session.end_input_capture_activation();
+             }
++            // The Wayland thread has already received the pointer-lock event.
++            // Roll it back too: leaving an unready EIS receiver holding the
++            // lock makes the local desktop appear frozen until the client is
++            // killed.
++            if let Some(tx) = input_capture_tx {
++                let _ = tx.send(wayland::InputCaptureCommand::ReleaseActiveLock {
++                    session_id: session_id.clone(),
++                    preserve_barrier_lock: false,
++                });
++            }
+             return;
+         }
+ 
+@@ -902,6 +944,28 @@ impl PortalBackend {
+         );
+     }
+ 
++    /// Drain EIS sockets often enough to complete client handshakes and to
++    /// process lifecycle acknowledgements such as `ei_device.ready()`.
++    ///
++    /// The individual sockets are non-blocking, so this is cheap while no
++    /// Deskflow session is connected.  A short interval also keeps the
++    /// `ConnectToEIS` → barrier-enable sequence responsive without tying EIS
++    /// processing to unrelated D-Bus or Wayland traffic.
++    async fn input_event_pump(input_backend: Arc<Mutex<Box<dyn InputBackend>>>) {
++        use tokio::time::{Duration, MissedTickBehavior};
++
++        let mut interval = tokio::time::interval(Duration::from_millis(5));
++        interval.set_missed_tick_behavior(MissedTickBehavior::Skip);
++
++        loop {
++            interval.tick().await;
++            let mut backend = input_backend.lock().await;
++            if let Err(e) = backend.process_events() {
++                tracing::warn!(error = %e, "Failed to process input backend events");
++            }
++        }
++    }
++
+     /// Handle a `Deactivated` event: end the session's activation (if one
+     /// is still open -- `None` means `Disable()`/`Release()` already ended
+     /// it synchronously, so this skips emitting a duplicate signal), tell
+diff --git a/src/services/input/eis_backend.rs b/src/services/input/eis_backend.rs
+index 0e1a912..cd7ced3 100644
+--- a/src/services/input/eis_backend.rs
++++ b/src/services/input/eis_backend.rs
+@@ -38,7 +38,7 @@ use reis::{
+ 
+ use crate::{
+     error::{PortalError, Result},
+-    types::{DeviceTypes, PointerRegion},
++    types::{DeviceTypes, InputCaptureZone, PointerRegion},
+ };
+ 
+ /// Per-session EIS state.
+@@ -60,12 +60,15 @@ pub struct EisSession {
+     /// forward the cached compositor keymap into a receiver-context
+     /// keyboard device.
+     shared_wayland_state: Option<Arc<std::sync::Mutex<crate::wayland::SharedWaylandState>>>,
+-    /// Regions to advertise on a `PointerAbsolute`-capable device, one per known
+-    /// output, read once at session-creation time
+-    /// (`WlrInputBackend::pointer_regions`, which never returns empty: a single
+-    /// fallback region covers the no-outputs-known-yet case, since it is a libei
++    /// Regions to advertise on a sender-context `PointerAbsolute` device, one per
++    /// known output, read once at session-creation time. Receiver contexts replace
++    /// these with regions derived from the InputCapture portal's logical zones at
++    /// handshake time, so `GetZones` and EIS expose the same coordinate space.
++    ///
++    /// `WlrInputBackend::pointer_regions` never returns empty: a single fallback
++    /// region covers the no-outputs-known-yet case, since it is a libei
+     /// implementation bug to advertise the absolute-pointer capability on a
+-    /// virtual device without advertising at least one region).
++    /// virtual device without advertising at least one region.
+     pointer_regions: Vec<PointerRegion>,
+     /// Leftover, not-yet-a-full-click fraction of `ei_scroll.scroll_discrete`'s
+     /// wire value (which the libei protocol defines as "fractions or multiples
+@@ -123,6 +126,16 @@ impl EisSession {
+             PortalError::EisCreationFailed(format!("Failed to create socket pair: {e}"))
+         })?;
+ 
++        // `process()` is driven by the portal's periodic input-event pump.
++        // It must never block that async task while no client data is ready;
++        // without non-blocking mode the first idle EIS session would prevent
++        // every other session from progressing through its handshake.
++        server_socket.set_nonblocking(true).map_err(|e| {
++            PortalError::EisCreationFailed(format!(
++                "Failed to set EIS server socket non-blocking: {e}"
++            ))
++        })?;
++
+         let eis_context = eis::Context::new(server_socket).map_err(|e| {
+             PortalError::EisCreationFailed(format!("Failed to create EIS context: {e}"))
+         })?;
+@@ -256,6 +269,35 @@ impl EisSession {
+         Ok(vec![])
+     }
+ 
++    /// Select the coordinate regions appropriate for the negotiated EIS
++    /// direction. InputCapture receivers share the portal's logical zones;
++    /// RemoteDesktop senders retain their ScreenCast stream regions.
++    fn pointer_regions_for_context(&self, is_receiver: bool) -> Vec<PointerRegion> {
++        if !is_receiver {
++            return self.pointer_regions.clone();
++        }
++
++        let Some(shared_wayland_state) = &self.shared_wayland_state else {
++            return self.pointer_regions.clone();
++        };
++        let Ok(shared_wayland_state) = shared_wayland_state.lock() else {
++            tracing::warn!(
++                "Could not read InputCapture zones for EIS receiver; using fallback regions"
++            );
++            return self.pointer_regions.clone();
++        };
++        let regions = input_capture_pointer_regions(&shared_wayland_state.zones);
++        if regions.is_empty() {
++            return self.pointer_regions.clone();
++        }
++
++        tracing::debug!(
++            regions = ?regions,
++            "Using InputCapture logical zones for receiver EIS regions"
++        );
++        regions
++    }
++
+     /// Transition from handshake to active phase.
+     ///
+     /// Creates the request converter, adds a seat with the requested capabilities,
+@@ -291,13 +333,21 @@ impl EisSession {
+         // keymap degrades gracefully (the client just gets raw keycodes
+         // with no defined interpretation), it never fails the handshake.
+         let shared_wayland_state = self.shared_wayland_state.clone();
++        // InputCapture's GetZones and an EIS receiver must use the same logical
++        // coordinate space. The wlr regions passed to `new` describe ScreenCast
++        // streams instead; with no streams they are the 1920x1080 fallback, which
++        // made HiDPI InputCapture clients such as Deskflow calculate the wrong
++        // screen edge. Snapshot the current portal zones at handshake completion.
++        // Sender contexts retain the stream-derived regions and mapping IDs needed
++        // by RemoteDesktop.
++        let pointer_regions = self.pointer_regions_for_context(is_receiver);
++
+         // It is a libei implementation bug to advertise the absolute-pointer
+         // capability on a virtual device without advertising at least one region
+-        // (`self.pointer_regions` is never empty, see `WlrInputBackend::pointer_regions`).
++        // (`pointer_regions` is never empty, see `WlrInputBackend::pointer_regions`).
+         // Regions (and their optional `region_mapping_id`, which must precede the
+         // `region` event it tags) must be sent before `ei_device.done`, so like the
+         // keyboard keymap below, this has to happen in this construction closure.
+-        let pointer_regions = self.pointer_regions.clone();
+         let device = seat.add_device(
+             Some("portal-device"),
+             eis::device::DeviceType::Virtual,
+@@ -510,6 +560,36 @@ impl EisSession {
+         Ok(())
+     }
+ 
++    /// Send one pointer-button press/release to the client.
++    pub fn send_pointer_button(
++        &mut self,
++        button_code: u32,
++        pressed: bool,
++        time_usec: u64,
++    ) -> Result<()> {
++        let SessionPhase::ActiveReceiver { device, .. } = &self.phase else {
++            return Err(PortalError::InvalidState {
++                expected: "receiver-context EIS session, active".to_string(),
++                actual: "session not in an active receiver phase".to_string(),
++            });
++        };
++        let Some(button) = device.interface::<eis::Button>() else {
++            return Err(PortalError::InvalidState {
++                expected: "device with button capability bound".to_string(),
++                actual: "device has no ei_button interface".to_string(),
++            });
++        };
++        let state = if pressed {
++            eis::button::ButtonState::Press
++        } else {
++            eis::button::ButtonState::Released
++        };
++        button.button(button_code, state);
++        device.frame(time_usec);
++        let _ = self.context.flush();
++        Ok(())
++    }
++
+     /// Send one key press/release to the client.
+     ///
+     /// # Errors
+@@ -628,6 +708,37 @@ impl EisSession {
+     }
+ }
+ 
++/// Convert the zones exposed by `InputCapture.GetZones` into EIS absolute-pointer
++/// regions in that same logical coordinate space.
++///
++/// Portal zones may use negative compositor-global positions when an output is to
++/// the left of or above the primary output. EIS offsets are unsigned, so shift the
++/// whole layout to its own top-left origin while preserving every zone's relative
++/// placement. InputCapture has no associated ScreenCast stream, hence no mapping
++/// ID. Its geometry is already logical, so its physical scale is informationally
++/// neutral here rather than being applied to the dimensions a second time.
++fn input_capture_pointer_regions(zones: &[InputCaptureZone]) -> Vec<PointerRegion> {
++    let Some((origin_x, origin_y)) = zones
++        .iter()
++        .map(|zone| (zone.x, zone.y))
++        .reduce(|(min_x, min_y), (x, y)| (min_x.min(x), min_y.min(y)))
++    else {
++        return Vec::new();
++    };
++
++    zones
++        .iter()
++        .map(|zone| PointerRegion {
++            mapping_id: None,
++            offset_x: u32::try_from(i64::from(zone.x) - i64::from(origin_x)).unwrap_or(u32::MAX),
++            offset_y: u32::try_from(i64::from(zone.y) - i64::from(origin_y)).unwrap_or(u32::MAX),
++            width: zone.width,
++            height: zone.height,
++            scale: 1.0,
++        })
++        .collect()
++}
++
+ /// `ei_text.utf8`'s wire cap: 255 bytes including the NUL terminator, so
+ /// 254 usable bytes per request.
+ const EI_TEXT_MAX_BYTES: usize = 254;
+@@ -762,6 +873,97 @@ mod tests {
+         assert!(!session.is_receiver());
+     }
+ 
++    #[test]
++    fn test_input_capture_regions_use_get_zones_logical_geometry() {
++        let regions = input_capture_pointer_regions(&[InputCaptureZone {
++            width: 2560,
++            height: 1080,
++            x: 0,
++            y: 0,
++        }]);
++
++        assert_eq!(
++            regions,
++            vec![PointerRegion {
++                mapping_id: None,
++                offset_x: 0,
++                offset_y: 0,
++                width: 2560,
++                height: 1080,
++                scale: 1.0,
++            }]
++        );
++    }
++
++    #[test]
++    fn test_input_capture_regions_preserve_layout_with_negative_coordinates() {
++        let regions = input_capture_pointer_regions(&[
++            InputCaptureZone {
++                width: 1280,
++                height: 1024,
++                x: -1280,
++                y: 56,
++            },
++            InputCaptureZone {
++                width: 2560,
++                height: 1440,
++                x: 0,
++                y: 0,
++            },
++        ]);
++
++        assert_eq!(regions.len(), 2);
++        assert_eq!((regions[0].offset_x, regions[0].offset_y), (0, 56));
++        assert_eq!((regions[0].width, regions[0].height), (1280, 1024));
++        assert_eq!((regions[1].offset_x, regions[1].offset_y), (1280, 0));
++        assert_eq!((regions[1].width, regions[1].height), (2560, 1440));
++    }
++
++    #[test]
++    fn test_input_capture_regions_empty_when_get_zones_is_empty() {
++        assert!(input_capture_pointer_regions(&[]).is_empty());
++    }
++
++    #[test]
++    fn test_receiver_selects_input_capture_regions_but_sender_keeps_stream_regions() {
++        let stream_regions = vec![PointerRegion {
++            mapping_id: Some("output:DP-1".to_string()),
++            offset_x: 0,
++            offset_y: 0,
++            width: 1920,
++            height: 1080,
++            scale: 1.0,
++        }];
++        let shared_state = Arc::new(std::sync::Mutex::new(crate::wayland::SharedWaylandState {
++            zones: vec![InputCaptureZone {
++                width: 2560,
++                height: 1080,
++                x: 0,
++                y: 0,
++            }],
++            ..Default::default()
++        }));
++        let (session, _fd) = EisSession::new(
++            DeviceTypes::all(),
++            Some(shared_state),
++            stream_regions.clone(),
++        )
++        .unwrap();
++
++        assert_eq!(session.pointer_regions_for_context(false), stream_regions);
++        assert_eq!(
++            session.pointer_regions_for_context(true),
++            vec![PointerRegion {
++                mapping_id: None,
++                offset_x: 0,
++                offset_y: 0,
++                width: 2560,
++                height: 1080,
++                scale: 1.0,
++            }]
++        );
++    }
++
+     #[test]
+     fn test_accumulate_scroll_discrete_single_click_is_immediate() {
+         let (mut session, _fd) = EisSession::new(DeviceTypes::all(), None, Vec::new()).unwrap();
+@@ -814,6 +1016,7 @@ mod tests {
+         assert!(session.start_emulating().is_err());
+         assert!(session.stop_emulating().is_err());
+         assert!(session.send_pointer_motion(1.0, 2.0, 0).is_err());
++        assert!(session.send_pointer_button(0x110, true, 0).is_err());
+         assert!(session.send_key(30, true, 0).is_err());
+         assert!(session.send_modifiers(0, 0, 0, 0).is_err());
+         assert!(session.send_text_utf8("hello").is_err());
+diff --git a/src/services/input/eis_bridge.rs b/src/services/input/eis_bridge.rs
+index 822591e..e370071 100644
+--- a/src/services/input/eis_bridge.rs
++++ b/src/services/input/eis_bridge.rs
+@@ -722,6 +722,19 @@ impl InputBackend for EisBridgeBackend {
+             .send_pointer_motion(dx, dy, time_usec)
+     }
+ 
++    fn forward_captured_pointer_button(
++        &mut self,
++        session_id: &str,
++        button: u32,
++        pressed: bool,
++        time_usec: u64,
++    ) -> Result<()> {
++        self.sessions
++            .get_mut(session_id)
++            .ok_or_else(|| PortalError::SessionNotFound(session_id.to_string()))?
++            .send_pointer_button(button, pressed, time_usec)
++    }
++
+     fn stop_input_capture(&mut self, session_id: &str) -> Result<()> {
+         self.sessions
+             .get_mut(session_id)
+diff --git a/src/services/input/mod.rs b/src/services/input/mod.rs
+index 1b08160..a541ef4 100644
+--- a/src/services/input/mod.rs
++++ b/src/services/input/mod.rs
+@@ -231,6 +231,22 @@ pub trait InputBackend: Send + Sync {
+         })
+     }
+ 
++    /// Forward one pointer-button press/release to the EIS client for
++    /// `session_id` while capture is active.
++    fn forward_captured_pointer_button(
++        &mut self,
++        session_id: &str,
++        button: u32,
++        pressed: bool,
++        time_usec: u64,
++    ) -> Result<()> {
++        let _ = (session_id, button, pressed, time_usec);
++        Err(PortalError::InvalidState {
++            expected: "EIS backend with an active receiver-context session".to_string(),
++            actual: "this backend has no InputCapture activation support".to_string(),
++        })
++    }
++
+     /// Notify the connected EIS client for `session_id` that captured
+     /// input has stopped (`InputCapture.Deactivated`). Same default-error
+     /// rationale as [`Self::start_input_capture`].
+diff --git a/src/wayland/dispatch.rs b/src/wayland/dispatch.rs
+index e46d7a3..aeea447 100644
+--- a/src/wayland/dispatch.rs
++++ b/src/wayland/dispatch.rs
+@@ -154,6 +154,27 @@ impl OutputInfo {
+             source_type: crate::types::SourceType::Monitor,
+         }
+     }
++
++    /// Geometry exported through the InputCapture portal.
++    ///
++    /// `wl_output.mode` dimensions describe buffer pixels, while pointer
++    /// barriers, layer-shell placement, and `wl_pointer` coordinates use the
++    /// compositor's logical coordinate space.  Advertising the former makes
++    /// an application calculate barriers and Release cursor positions beyond
++    /// the actual Wayland surface on HiDPI outputs (e.g. 5120x2160 instead of
++    /// 2560x1080 at scale 2).
++    fn input_capture_zone(&self) -> InputCaptureZone {
++        let scale = u32::try_from(self.scale.max(1)).unwrap_or(1);
++        InputCaptureZone {
++            width: (self.width / scale).max(1),
++            height: (self.height / scale).max(1),
++            // wl_output.geometry positions are already in the compositor's
++            // global layout coordinate space; only mode dimensions are
++            // buffer-scaled.
++            x: self.x,
++            y: self.y,
++        }
++    }
+ }
+ 
+ /// Shared Wayland state holding all bound globals and protocol objects.
+@@ -231,12 +252,7 @@ impl WaylandState {
+             .filter_map(|(_, info)| {
+                 let info = info.lock().ok()?;
+                 if info.done && info.width > 0 && info.height > 0 {
+-                    Some(InputCaptureZone {
+-                        width: info.width,
+-                        height: info.height,
+-                        x: info.x,
+-                        y: info.y,
+-                    })
++                    Some(info.input_capture_zone())
+                 } else {
+                     None
+                 }
+@@ -257,15 +273,7 @@ impl WaylandState {
+             .filter_map(|(_, info)| {
+                 let info = info.lock().ok()?;
+                 if info.done && info.width > 0 && info.height > 0 {
+-                    Some((
+-                        info.global_name,
+-                        InputCaptureZone {
+-                            width: info.width,
+-                            height: info.height,
+-                            x: info.x,
+-                            y: info.y,
+-                        },
+-                    ))
++                    Some((info.global_name, info.input_capture_zone()))
+                 } else {
+                     None
+                 }
+@@ -392,6 +400,18 @@ impl Dispatch<WlPointer, ()> for WaylandState {
+             Event::Leave { surface, .. } => {
+                 state.input_capture.on_pointer_leave(&surface);
+             }
++            Event::Button {
++                time,
++                button,
++                state: wayland_client::WEnum::Value(button_state),
++                ..
++            } => {
++                use wayland_client::protocol::wl_pointer::ButtonState;
++                let pressed = button_state != ButtonState::Released;
++                state
++                    .input_capture
++                    .on_pointer_button(button, pressed, u64::from(time) * 1000);
++            }
+             _ => {}
+         }
+     }
+@@ -1358,15 +1378,29 @@ mod tests {
+             done: true,
+             ..Default::default()
+         };
+-        let zone = crate::types::InputCaptureZone {
+-            width: info.width,
+-            height: info.height,
+-            x: info.x,
+-            y: info.y,
+-        };
++        let zone = info.input_capture_zone();
+         assert_eq!(zone.width, 2560);
+         assert_eq!(zone.height, 1440);
+         assert_eq!(zone.x, 1920);
+         assert_eq!(zone.y, 0);
+     }
++
++    #[test]
++    fn test_input_capture_zone_uses_logical_output_size() {
++        let info = OutputInfo {
++            width: 5120,
++            height: 2160,
++            x: 0,
++            y: 0,
++            scale: 2,
++            done: true,
++            ..Default::default()
++        };
++
++        let zone = info.input_capture_zone();
++        assert_eq!(zone.width, 2560);
++        assert_eq!(zone.height, 1080);
++        assert_eq!(zone.x, 0);
++        assert_eq!(zone.y, 0);
++    }
+ }
+diff --git a/src/wayland/input_capture.rs b/src/wayland/input_capture.rs
+index 69776c6..535304a 100644
+--- a/src/wayland/input_capture.rs
++++ b/src/wayland/input_capture.rs
+@@ -3,8 +3,8 @@
+ //! Creates invisible `wlr-layer-shell-v1` surfaces positioned at each
+ //! accepted [`PointerBarrier`], drives the `configure -> ack_configure ->
+ //! attach buffer -> commit` mapping lifecycle so the surfaces genuinely map
+-//! on a live compositor, and tears them down on `Disable`/`Release`/session
+-//! close (Phase 2a). Locks the pointer on entry
++//! on a live compositor, and tears them down on `Disable`/session close
++//! (Phase 2a). Locks the pointer on entry
+ //! (`zwp_pointer_constraints_v1`), reads relative motion once locked
+ //! (`zwp_relative_pointer_v1`), and reports activation/motion/deactivation
+ //! to the async D-Bus/EIS bridge task over [`InputCaptureActivationEvent`]
+@@ -82,6 +82,17 @@ pub enum InputCaptureActivationEvent {
+         /// Event timestamp in microseconds.
+         time_usec: u64,
+     },
++    /// A pointer button was pressed or released while capture is active.
++    Button {
++        /// Session handle (as a string).
++        session_id: String,
++        /// Linux evdev button code (`BTN_LEFT`, `BTN_RIGHT`, ...).
++        button: u32,
++        /// `true` if pressed, `false` if released.
++        pressed: bool,
++        /// Event timestamp in microseconds.
++        time_usec: u64,
++    },
+     /// A key was pressed or released while a lock is active.
+     Key {
+         /// Session handle (as a string).
+@@ -152,6 +163,54 @@ pub struct CachedKeymap {
+ /// events at all.
+ const BARRIER_STRIP_THICKNESS_PX: u32 = 2;
+ 
++/// Output edge on which a pointer barrier lies.
++#[derive(Debug, Clone, Copy, PartialEq, Eq)]
++enum BarrierSide {
++    Left,
++    Right,
++    Top,
++    Bottom,
++}
++
++impl BarrierSide {
++    /// Whether a relative-motion sample is trying to cross this edge.
++    fn is_outward(self, dx: f64, dy: f64) -> bool {
++        match self {
++            Self::Left => dx < 0.0,
++            Self::Right => dx > 0.0,
++            Self::Top => dy < 0.0,
++            Self::Bottom => dy > 0.0,
++        }
++    }
++
++    /// Put the reported activation point on the last in-zone pixel adjacent
++    /// to the logical barrier. Deskflow uses this coordinate to calculate
++    /// the destination entry point, so reporting the out-of-zone coordinate
++    /// on right/bottom edges introduces an avoidable offset.
++    fn project_to_zone_edge(self, coordinate: i32, position: &mut (f64, f64)) {
++        match self {
++            Self::Left => position.0 = f64::from(coordinate),
++            Self::Right => position.0 = f64::from(coordinate.saturating_sub(1)),
++            Self::Top => position.1 = f64::from(coordinate),
++            Self::Bottom => position.1 = f64::from(coordinate.saturating_sub(1)),
++        }
++    }
++}
++
++/// Translate compositor-global coordinates into the top-left-normalized
++/// coordinate space advertised by the receiver EIS regions.
++fn normalize_cursor_position(
++    position: Option<(f64, f64)>,
++    coordinate_origin: (i32, i32),
++) -> Option<(f64, f64)> {
++    position.map(|(x, y)| {
++        (
++            x - f64::from(coordinate_origin.0),
++            y - f64::from(coordinate_origin.1),
++        )
++    })
++}
++
+ /// A barrier's computed layer-shell surface placement.
+ ///
+ /// Output of the pure [`barrier_to_layer_geometry`] function, kept separate
+@@ -308,6 +367,15 @@ pub struct BarrierSurface {
+     /// Live relative-pointer object, present only once the lock has
+     /// actually activated (`Locked`).
+     pub relative_pointer: Option<ZwpRelativePointerV1>,
++    /// Whether the compositor lock currently represents an active portal
++    /// capture. `Release` without a cursor position leaves the low-level
++    /// lock alive with this false so the next outward sample can re-arm the
++    /// logical barrier without waiting for a new `wl_pointer.Enter`.
++    pub capture_active: bool,
++    /// Output edge represented by this barrier.
++    barrier_side: BarrierSide,
++    /// Global x (vertical edge) or y (horizontal edge) of the barrier.
++    barrier_coordinate: i32,
+     /// Whether entering this barrier should also grab exclusive keyboard
+     /// focus (the session negotiated `KEYBOARD` capability).
+     pub grab_keyboard: bool,
+@@ -318,6 +386,11 @@ pub struct BarrierSurface {
+     /// `wl_pointer.Enter`'s surface-local coordinates plus `origin`, then
+     /// accumulated by each relative-motion sample while locked.
+     pub last_cursor_position: Option<(f64, f64)>,
++    /// Top-left of the compositor's InputCapture zone layout. Receiver EIS
++    /// regions are normalized by this amount because their offsets are
++    /// unsigned; D-Bus activation positions must use the same coordinate
++    /// space or clients calculate the wrong destination entry position.
++    coordinate_origin: (i32, i32),
+     /// Live `zwp_text_input_v3` object, present only while this surface
+     /// holds real keyboard focus and `text_input_manager` is bound (see
+     /// [`InputCaptureBarrierState::on_keyboard_enter`]).
+@@ -431,6 +504,11 @@ impl InputCaptureBarrierState {
+             );
+             return;
+         };
++        let coordinate_origin = zones
++            .iter()
++            .map(|(_, zone)| (zone.x, zone.y))
++            .reduce(|(min_x, min_y), (x, y)| (min_x.min(x), min_y.min(y)))
++            .unwrap_or((0, 0));
+ 
+         for barrier in barriers {
+             let Some(geometry) = barrier_to_layer_geometry(barrier, zones) else {
+@@ -490,9 +568,33 @@ impl InputCaptureBarrierState {
+                     shm_buffer: None,
+                     locked_pointer: None,
+                     relative_pointer: None,
++                    capture_active: false,
++                    barrier_side: if barrier.x1 == barrier.x2 {
++                        if geometry
++                            .anchor
++                            .contains(zwlr_layer_surface_v1::Anchor::Right)
++                        {
++                            BarrierSide::Right
++                        } else {
++                            BarrierSide::Left
++                        }
++                    } else if geometry
++                        .anchor
++                        .contains(zwlr_layer_surface_v1::Anchor::Bottom)
++                    {
++                        BarrierSide::Bottom
++                    } else {
++                        BarrierSide::Top
++                    },
++                    barrier_coordinate: if barrier.x1 == barrier.x2 {
++                        barrier.x1
++                    } else {
++                        barrier.y1
++                    },
+                     grab_keyboard,
+                     origin: geometry.origin,
+                     last_cursor_position: None,
++                    coordinate_origin,
+                     text_input: None,
+                     text_commit_buffer: TextCommitBuffer::default(),
+                 },
+@@ -602,12 +704,29 @@ impl InputCaptureBarrierState {
+     /// mapped so they can re-trigger later. Distinct from `destroy_session`
+     /// (`Disable`/close), which tears the surfaces down entirely --
+     /// `Release` per spec ends only the current activation.
+-    pub fn release_active_locks(&mut self, session_id: &str) {
++    pub fn release_active_locks(&mut self, session_id: &str, preserve_barrier_lock: bool) {
++        let mut clear_keyboard_focus = false;
+         for surface in self.surfaces.values_mut() {
+             if surface.session_id == session_id {
+-                destroy_lock_objects_mut(surface);
++                if preserve_barrier_lock
++                    && surface.capture_active
++                    && surface.relative_pointer.is_some()
++                {
++                    suspend_capture_mut(surface);
++                    tracing::debug!(
++                        session_id = %session_id,
++                        barrier_id = surface.barrier_id,
++                        "InputCapture barrier re-armed in place"
++                    );
++                } else {
++                    clear_keyboard_focus |= surface.capture_active;
++                    destroy_lock_objects_mut(surface);
++                }
+             }
+         }
++        if clear_keyboard_focus {
++            self.keyboard_focus = None;
++        }
+     }
+ 
+     /// Find the barrier a `wl_pointer` `Enter`/`Leave` event landed on, by
+@@ -672,6 +791,16 @@ impl InputCaptureBarrierState {
+             (session_id.clone(), barrier_id),
+         );
+         barrier_surface.locked_pointer = Some(locked);
++        if barrier_surface.grab_keyboard {
++            // Request focus as soon as the edge is entered. Deskflow releases
++            // its first activation within a few milliseconds; waiting for the
++            // Locked round-trip can make the Exclusive -> None -> Exclusive
++            // commits collapse into no observable keyboard-focus transition.
++            barrier_surface.layer_surface.set_keyboard_interactivity(
++                zwlr_layer_surface_v1::KeyboardInteractivity::Exclusive,
++            );
++            barrier_surface.wl_surface.commit();
++        }
+         tracing::debug!(session_id = %session_id, barrier_id, "Pointer lock requested");
+     }
+ 
+@@ -689,6 +818,12 @@ impl InputCaptureBarrierState {
+             if let Some(locked) = barrier_surface.locked_pointer.take() {
+                 locked.destroy();
+             }
++            if barrier_surface.grab_keyboard {
++                barrier_surface
++                    .layer_surface
++                    .set_keyboard_interactivity(zwlr_layer_surface_v1::KeyboardInteractivity::None);
++                barrier_surface.wl_surface.commit();
++            }
+         }
+     }
+ 
+@@ -717,6 +852,7 @@ impl InputCaptureBarrierState {
+         let relative_pointer =
+             relative_pointer_manager.get_relative_pointer(pointer, qh, key.clone());
+         barrier_surface.relative_pointer = Some(relative_pointer);
++        barrier_surface.capture_active = true;
+ 
+         if barrier_surface.grab_keyboard {
+             barrier_surface.layer_surface.set_keyboard_interactivity(
+@@ -724,7 +860,15 @@ impl InputCaptureBarrierState {
+             );
+             barrier_surface.wl_surface.commit();
+         }
+-        let cursor_position = barrier_surface.last_cursor_position;
++        if let Some(position) = &mut barrier_surface.last_cursor_position {
++            barrier_surface
++                .barrier_side
++                .project_to_zone_edge(barrier_surface.barrier_coordinate, position);
++        }
++        let cursor_position = normalize_cursor_position(
++            barrier_surface.last_cursor_position,
++            barrier_surface.coordinate_origin,
++        );
+ 
+         tracing::info!(session_id = %session_id, barrier_id, "InputCapture barrier activated");
+         self.send_activation_event(InputCaptureActivationEvent::Activated {
+@@ -739,21 +883,28 @@ impl InputCaptureBarrierState {
+     /// objects and report `Deactivated`.
+     pub fn on_unlocked(&mut self, session_id: &str, barrier_id: u32) {
+         let mut cursor_position = None;
++        let mut was_active = false;
+         if let Some(barrier_surface) = self.surfaces.get_mut(&(session_id.to_string(), barrier_id))
+         {
+-            cursor_position = barrier_surface.last_cursor_position;
++            cursor_position = normalize_cursor_position(
++                barrier_surface.last_cursor_position,
++                barrier_surface.coordinate_origin,
++            );
++            was_active = barrier_surface.capture_active;
+             destroy_lock_objects_mut(barrier_surface);
+         }
+         if self.keyboard_focus.as_ref() == Some(&(session_id.to_string(), barrier_id)) {
+             self.keyboard_focus = None;
+         }
+ 
+-        tracing::info!(session_id = %session_id, barrier_id, "InputCapture barrier deactivated");
+-        self.send_activation_event(InputCaptureActivationEvent::Deactivated {
+-            session_id: session_id.to_string(),
+-            barrier_id,
+-            cursor_position,
+-        });
++        if was_active {
++            tracing::info!(session_id = %session_id, barrier_id, "InputCapture barrier deactivated");
++            self.send_activation_event(InputCaptureActivationEvent::Deactivated {
++                session_id: session_id.to_string(),
++                barrier_id,
++                cursor_position,
++            });
++        }
+     }
+ 
+     /// Handle `zwp_relative_pointer_v1.RelativeMotion`: accumulate onto the
+@@ -766,17 +917,95 @@ impl InputCaptureBarrierState {
+         dy: f64,
+         time_usec: u64,
+     ) {
+-        if let Some(barrier_surface) = self.surfaces.get_mut(&(session_id.to_string(), barrier_id))
+-        {
++        let key = (session_id.to_string(), barrier_id);
++        let mut reactivate_at = None;
++        let mut forward_motion = false;
++        let mut release_lock = false;
++
++        if let Some(barrier_surface) = self.surfaces.get_mut(&key) {
++            if barrier_surface.relative_pointer.is_none() {
++                return;
++            }
++
+             if let Some((x, y)) = &mut barrier_surface.last_cursor_position {
+                 *x += dx;
+                 *y += dy;
+             }
++
++            if barrier_surface.capture_active {
++                forward_motion = true;
++            } else if barrier_surface.barrier_side.is_outward(dx, dy) {
++                barrier_surface.capture_active = true;
++                if let Some(position) = &mut barrier_surface.last_cursor_position {
++                    barrier_surface
++                        .barrier_side
++                        .project_to_zone_edge(barrier_surface.barrier_coordinate, position);
++                }
++                if barrier_surface.grab_keyboard {
++                    barrier_surface.layer_surface.set_keyboard_interactivity(
++                        zwlr_layer_surface_v1::KeyboardInteractivity::Exclusive,
++                    );
++                    barrier_surface.wl_surface.commit();
++                }
++                reactivate_at = normalize_cursor_position(
++                    barrier_surface.last_cursor_position,
++                    barrier_surface.coordinate_origin,
++                );
++                forward_motion = true;
++            } else {
++                // Release consumed the portal activation. If the user is no
++                // longer pushing through this edge (inward or parallel
++                // motion), give the compositor its pointer back immediately.
++                destroy_lock_objects_mut(barrier_surface);
++                release_lock = true;
++            }
++        } else {
++            return;
+         }
+-        self.send_activation_event(InputCaptureActivationEvent::Motion {
+-            session_id: session_id.to_string(),
+-            dx,
+-            dy,
++
++        if release_lock {
++            if self.keyboard_focus.as_ref() == Some(&key) {
++                self.keyboard_focus = None;
++            }
++            return;
++        }
++
++        if let Some(cursor_position) = reactivate_at {
++            tracing::info!(
++                session_id = %session_id,
++                barrier_id,
++                "InputCapture barrier reactivated by outward motion"
++            );
++            self.send_activation_event(InputCaptureActivationEvent::Activated {
++                session_id: session_id.to_string(),
++                barrier_id,
++                cursor_position: Some(cursor_position),
++            });
++        }
++        if forward_motion {
++            self.send_activation_event(InputCaptureActivationEvent::Motion {
++                session_id: session_id.to_string(),
++                dx,
++                dy,
++                time_usec,
++            });
++        }
++    }
++
++    /// Handle a `wl_pointer.Button` event while one of the barrier surfaces
++    /// owns the locked pointer focus.
++    pub fn on_pointer_button(&self, button: u32, pressed: bool, time_usec: u64) {
++        let Some(surface) = self
++            .surfaces
++            .values()
++            .find(|surface| surface.capture_active && surface.relative_pointer.is_some())
++        else {
++            return;
++        };
++        self.send_activation_event(InputCaptureActivationEvent::Button {
++            session_id: surface.session_id.clone(),
++            button,
++            pressed,
+             time_usec,
+         });
+     }
+@@ -849,6 +1078,10 @@ impl InputCaptureBarrierState {
+         let Some(barrier_surface) = self.surfaces.get_mut(&key) else {
+             return;
+         };
++        if !barrier_surface.capture_active {
++            barrier_surface.text_commit_buffer.clear();
++            return;
++        }
+         let Some(text) = barrier_surface.text_commit_buffer.on_done() else {
+             return;
+         };
+@@ -860,11 +1093,11 @@ impl InputCaptureBarrierState {
+ 
+     /// Handle `wl_keyboard.Key` while a barrier surface holds focus.
+     pub fn on_keyboard_key(&self, keycode: u32, pressed: bool, time_usec: u64) {
+-        let Some((session_id, _)) = &self.keyboard_focus else {
++        let Some(surface) = self.active_keyboard_surface() else {
+             return;
+         };
+         self.send_activation_event(InputCaptureActivationEvent::Key {
+-            session_id: session_id.clone(),
++            session_id: surface.session_id.clone(),
+             keycode,
+             pressed,
+             time_usec,
+@@ -873,11 +1106,11 @@ impl InputCaptureBarrierState {
+ 
+     /// Handle `wl_keyboard.Modifiers` while a barrier surface holds focus.
+     pub fn on_keyboard_modifiers(&self, depressed: u32, latched: u32, locked: u32, group: u32) {
+-        let Some((session_id, _)) = &self.keyboard_focus else {
++        let Some(surface) = self.active_keyboard_surface() else {
+             return;
+         };
+         self.send_activation_event(InputCaptureActivationEvent::Modifiers {
+-            session_id: session_id.clone(),
++            session_id: surface.session_id.clone(),
+             depressed,
+             latched,
+             locked,
+@@ -885,6 +1118,22 @@ impl InputCaptureBarrierState {
+         });
+     }
+ 
++    /// Resolve the active keyboard-capture surface. Prefer the surface from
++    /// the last real `wl_keyboard.Enter`, but fall back to the single active
++    /// barrier: a rapid release/re-arm can be coalesced by the compositor and
++    /// therefore produce no second Enter even though key events continue.
++    fn active_keyboard_surface(&self) -> Option<&BarrierSurface> {
++        self.keyboard_focus
++            .as_ref()
++            .and_then(|key| self.surfaces.get(key))
++            .filter(|surface| surface.capture_active && surface.grab_keyboard)
++            .or_else(|| {
++                self.surfaces
++                    .values()
++                    .find(|surface| surface.capture_active && surface.grab_keyboard)
++            })
++    }
++
+     /// Send an activation-lifecycle event to the async bridge task, if one
+     /// is configured. `UnboundedSender::send` is non-blocking and safe to
+     /// call from this `!Send`, synchronous Wayland-thread dispatch context
+@@ -901,16 +1150,20 @@ impl InputCaptureBarrierState {
+ /// Wayland protocol object hygiene only -- callers handle any
+ /// D-Bus-visible deactivation separately.
+ fn destroy_lock_objects_mut(surface: &mut BarrierSurface) {
+-    let was_active = surface.relative_pointer.is_some();
++    suspend_capture_mut(surface);
++    destroy_text_input_mut(surface);
+     if let Some(relative_pointer) = surface.relative_pointer.take() {
+         relative_pointer.destroy();
+     }
+     if let Some(locked) = surface.locked_pointer.take() {
+         locked.destroy();
+     }
+-    // Release() tears the lock down without waiting for a real Unlocked
+-    // event -- this is the only place that reliably reverts a grabbed
+-    // keyboard focus in that path, so it must not be skipped.
++}
++
++/// End the portal-visible capture while retaining any low-level pointer
++/// constraint. This is the re-armed state used for a position-less Release.
++fn suspend_capture_mut(surface: &mut BarrierSurface) {
++    let was_active = std::mem::replace(&mut surface.capture_active, false);
+     if was_active && surface.grab_keyboard {
+         surface
+             .layer_surface
+@@ -983,6 +1236,44 @@ mod tests {
+         assert_eq!(buf.on_done(), None);
+     }
+ 
++    #[test]
++    fn test_barrier_side_outward_motion() {
++        assert!(BarrierSide::Left.is_outward(-1.0, 0.0));
++        assert!(BarrierSide::Right.is_outward(1.0, 0.0));
++        assert!(BarrierSide::Top.is_outward(0.0, -1.0));
++        assert!(BarrierSide::Bottom.is_outward(0.0, 1.0));
++
++        assert!(!BarrierSide::Left.is_outward(1.0, 0.0));
++        assert!(!BarrierSide::Right.is_outward(-1.0, 0.0));
++        assert!(!BarrierSide::Top.is_outward(0.0, 1.0));
++        assert!(!BarrierSide::Bottom.is_outward(0.0, -1.0));
++        assert!(!BarrierSide::Right.is_outward(0.0, 4.0));
++    }
++
++    #[test]
++    fn test_barrier_side_projects_activation_position() {
++        let mut vertical = (2557.5, 400.0);
++        BarrierSide::Right.project_to_zone_edge(2560, &mut vertical);
++        assert_eq!(vertical, (2559.0, 400.0));
++
++        let mut horizontal = (800.0, 1078.5);
++        BarrierSide::Bottom.project_to_zone_edge(1080, &mut horizontal);
++        assert_eq!(horizontal, (800.0, 1079.0));
++    }
++
++    #[test]
++    fn test_cursor_position_uses_receiver_eis_origin() {
++        assert_eq!(
++            normalize_cursor_position(Some((3839.0, 700.0)), (1280, 0)),
++            Some((2559.0, 700.0))
++        );
++        assert_eq!(
++            normalize_cursor_position(Some((-1.0, 100.0)), (-2560, -200)),
++            Some((2559.0, 300.0))
++        );
++        assert_eq!(normalize_cursor_position(None, (1280, 0)), None);
++    }
++
+     fn zone(x: i32, y: i32, width: u32, height: u32) -> InputCaptureZone {
+         InputCaptureZone {
+             width,
+diff --git a/src/wayland/mod.rs b/src/wayland/mod.rs
+index 3e773f0..30c5e71 100644
+--- a/src/wayland/mod.rs
++++ b/src/wayland/mod.rs
+@@ -179,6 +179,10 @@ pub enum InputCaptureCommand {
+     ReleaseActiveLock {
+         /// Session handle.
+         session_id: String,
++        /// Keep the compositor-level pointer lock armed after ending the
++        /// portal activation. The next outward motion re-triggers the
++        /// barrier immediately; any other motion releases the lock.
++        preserve_barrier_lock: bool,
+     },
+ }
+ 
+@@ -747,7 +751,7 @@ impl WaylandConnection {
+                 .input_capture
+                 .surfaces
+                 .values()
+-                .find(|s| s.relative_pointer.is_some())
++                .find(|s| s.relative_pointer.is_some() && s.capture_active)
+                 .and_then(|s| {
+                     s.last_cursor_position
+                         .map(|(x, y)| (s.session_id.clone(), x, y))
+@@ -1073,8 +1077,13 @@ impl WaylandConnection {
+                 InputCaptureCommand::DestroySession { session_id } => {
+                     self.state.input_capture.destroy_session(&session_id);
+                 }
+-                InputCaptureCommand::ReleaseActiveLock { session_id } => {
+-                    self.state.input_capture.release_active_locks(&session_id);
++                InputCaptureCommand::ReleaseActiveLock {
++                    session_id,
++                    preserve_barrier_lock,
++                } => {
++                    self.state
++                        .input_capture
++                        .release_active_locks(&session_id, preserve_barrier_lock);
+                 }
+             }
+         }
+-- 
+2.55.0
+
