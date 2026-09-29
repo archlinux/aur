@@ -1,6 +1,6 @@
 pkgbase = sharkfin-keyboard-bin
 	pkgdesc = Configurator for Attack Shark and other ROYUAN keyboards
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/dniminenn/sharkfin
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = sharkfin-keyboard-bin
 	conflicts = sharkfin-keyboard
 	conflicts = sharkfin
 	options = !debug
-	source_x86_64 = https://github.com/dniminenn/sharkfin/releases/download/v0.9.2/sharkfin_0.9.2_amd64.deb
-	b2sums_x86_64 = 00a36a23f899e4afdb3901b5b9c21bc45cc8a196244846fb2a31239eaa9a9dae11ca886a0129273150a00c1e90c2afd93f330ba9887ce4d78253dc0dcb7e9699
+	source_x86_64 = https://github.com/dniminenn/sharkfin/releases/download/v0.9.3/sharkfin_0.9.3_amd64.deb
+	b2sums_x86_64 = d07d80a3258f0e319a51c672d808c9e2cfd8ec5c5ee16cbf6795cc77a63595d38d5ccc906164c619414a473efb245cf4f36e47b85adbd4a51564e945c4a12c4f
 
 pkgname = sharkfin-keyboard-bin
