@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=electronmail
-pkgver=5.3.9
+pkgver=5.3.10
 pkgrel=1
 _nodeversion=24
 _electronversion=44
@@ -26,7 +26,7 @@ optdepends=('org.freedesktop.secrets: password storage backend')
 source=("git+https://github.com/vladimiry/ElectronMail.git#tag=v$pkgver"
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('c677451da4c7867f7c8a52275d93d3cdd30e2df7252ef5615bccc8b99ae3603c'
+sha256sums=('0a419c342102cd230af7c57d8c2d92ebc4ed206fb3c8c02b8c17e66b1d427769'
             'c95c69f1d0db27180236ff063d9563da8750ecce81883adfb217b73ac3bb974e'
             'e7e9dd6e065118ae5d9624c7c81328086719fab198d30a92b08979c29757a3b2')
 
