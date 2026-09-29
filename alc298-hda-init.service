@@ -7,6 +7,8 @@ Wants=sound.target
 Type=oneshot
 ExecStart=/usr/share/alc298-hda-init/alc298-hda-init.sh
 RemainAfterExit=yes
+Restart=on-failure
+RestartSec=2
 
 [Install]
 WantedBy=multi-user.target

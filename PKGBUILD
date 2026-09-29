@@ -1,6 +1,6 @@
 # Maintainer: yorukai <https://github.com/yorukai>
 pkgname=alc298-hda-init
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Initialize the Realtek ALC298 codec using hda-verb"
 arch=('x86_64')

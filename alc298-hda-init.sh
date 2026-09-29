@@ -7,8 +7,6 @@ exec 2> >(systemd-cat -t alc298-hda-init -p err)
 trap 'echo "FAILED at line $LINENO: $BASH_COMMAND"' ERR
 
 readonly codec="ALC298"
-readonly wait_timeout_seconds=30
-readonly retry_interval_seconds=1
 
 echo "Starting codec initialization"
 
@@ -38,51 +36,18 @@ find_codec_card() {
     printf '%s\n' "$card"
 }
 
-wait_for_codec_card() {
-    local card=""
-    local start_time=$SECONDS
-    local elapsed=0
-
-    until card=$(find_codec_card); do
-        elapsed=$((SECONDS - start_time))
-        if (( elapsed >= wait_timeout_seconds )); then
-            echo "Timed out waiting for $codec codec file after ${wait_timeout_seconds}s" >&2
-            return 1
-        fi
-
-        echo "Waiting for $codec codec file (${elapsed}/${wait_timeout_seconds}s)"
-        sleep "$retry_interval_seconds"
-    done
-
-    printf '%s\n' "$card"
-}
-
-wait_for_hwdev() {
-    local hwdev=$1
-    local start_time=$SECONDS
-    local elapsed=0
-
-    until [[ -e $hwdev ]]; do
-        elapsed=$((SECONDS - start_time))
-        if (( elapsed >= wait_timeout_seconds )); then
-            echo "Timed out waiting for ALSA hardware device $hwdev after ${wait_timeout_seconds}s" >&2
-            return 1
-        fi
-
-        echo "Waiting for ALSA hardware device $hwdev (${elapsed}/${wait_timeout_seconds}s)"
-        sleep "$retry_interval_seconds"
-    done
-}
-
-card=$(wait_for_codec_card)
+card=$(find_codec_card || true)
 
 [[ -n ${card:-} ]] || {
-    echo "$codec not found" >&2
+    echo "$codec codec file not available yet" >&2
     exit 1
 }
 
 hwdev="/dev/snd/hwC${card}D0"
-wait_for_hwdev "$hwdev"
+[[ -e $hwdev ]] || {
+    echo "ALSA hardware device $hwdev not available yet" >&2
+    exit 1
+}
 
 echo "Setting up ALC298 codec on card $hwdev"
 
