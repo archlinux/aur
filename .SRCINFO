@@ -4,11 +4,16 @@ pkgbase = zano-appimage
 	pkgrel = 1
 	url = https://zano.org/
 	arch = x86_64
-	depends = fuse2
+	depends = nss
+	depends = nspr
 	provides = zano
 	conflicts = zano
 	options = !strip
 	source = https://build.zano.org/builds/zano-linux-x64-gui-release-v2.2.3.600[98bbd72].AppImage
+	source = Zano.desktop
+	source = zano.sh
 	sha256sums = aaaec9a168704203f7aa41c604d8bdcd8de1f385cf4d20c3ffafb285a4dca6b1
+	sha256sums = e785a9f027e154168678354c7d8a04e302214e49fc24e20ab1c1fe0941d75cc0
+	sha256sums = 539ee35ef567352e435e88875fe6df5ad0197184021edaaf8989f018fa9a88cc
 
 pkgname = zano-appimage
