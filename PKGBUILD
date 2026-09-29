@@ -3,14 +3,14 @@
 # Contributor: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname=processing-bin
 _pkgname=Processing
-pkgver=4.5.6
-_subver=1434
-pkgrel=2
+pkgver=4.5.7
+_subver=1435
+pkgrel=1
 arch=(
     'aarch64'
     'x86_64'
 )
-pkgdesc="Programming environment for creating images, animations and interactions."
+pkgdesc="A flexible software sketchbook and a programming language designed for learning how to code."
 url="https://processing.org/"
 _ghurl="https://github.com/processing/processing4"
 license=("GPL-2.0-only")
@@ -29,8 +29,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/${pkgname%-bin}-${_subver}-${pkgver}/${pkgname%-bin}-${pkgver}-linux-aarch64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/${pkgname%-bin}-${_subver}-${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.deb")
-sha256sums_aarch64=('59eb0f7b3c31c0b4c0e27093e5a8e1161a7845c546d636def309968705dfb9d6')
-sha256sums_x86_64=('76991c08ad5f5e4312566f397cb6196482e932bcfefe08f7a909fb9e57864d4c')
+sha256sums_aarch64=('74326f20d143f1fe9ff04742e24d1cc6a26ad1ac445b6555859d21287e797cae')
+sha256sums_x86_64=('761a74c266b27aabc44a640ba1102ced49d476c8eea31a1eee4bf0ceb802bf83')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i -e "
@@ -44,7 +44,7 @@ prepare() {
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{usr/lib/"${pkgname%-bin}",usr/bin}
-    cp -a "${srcdir}/opt/${pkgname%-bin}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -a "${srcdir}/opt/${pkgname%-bin}/." "${pkgdir}/usr/lib/${pkgname%-bin}"
     ln -sf "/usr/lib/${pkgname%-bin}/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
