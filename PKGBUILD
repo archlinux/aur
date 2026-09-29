@@ -1,6 +1,6 @@
 # Maintainer: stelzo <stelzo@steado.de>
 pkgname=minot-bin
-pkgver=0.11.3
+pkgver=0.12.0
 pkgrel=6
 pkgdesc="A versatile toolset for debugging and verifying stateful robot perception software."
 arch=('x86_64' 'aarch64')
@@ -10,13 +10,13 @@ depends=('libgcc' 'glibc')
 makedepends=()
 options=('!lto' '!strip' '!debug')
 source_x86_64=(
-  "$pkgname-$pkgver-bin.deb::https://uos-robotics.codeberg.page/ppa/ubuntu/pool/main/noble/minot_$pkgver-1_amd64.deb"
-  "$pkgname-$pkgver-dev.deb::https://uos-robotics.codeberg.page/ppa/ubuntu/pool/main/noble/librat-dev_$pkgver-1_amd64.deb"
+  "$pkgname-$pkgver-bin.deb::https://ppa.steado.tech/ubuntu/pool/main/noble/minot_$pkgver-1_amd64.deb"
+  "$pkgname-$pkgver-dev.deb::https://ppa.steado.tech/ubuntu/pool/main/noble/librat-dev_$pkgver-1_amd64.deb"
 )
 sha256sums_x86_64=('SKIP' 'SKIP')
 source_aarch64=(
-  "$pkgname-$pkgver-bin.deb::https://uos-robotics.codeberg.page/ppa/ubuntu/pool/main/noble/minot_$pkgver-1_arm64.deb"
-  "$pkgname-$pkgver-dev.deb::https://uos-robotics.codeberg.page/ppa/ubuntu/pool/main/noble/librat-dev_$pkgver-1_arm64.deb"
+  "$pkgname-$pkgver-bin.deb::https://ppa.steado.tech/ubuntu/pool/main/noble/minot_$pkgver-1_arm64.deb"
+  "$pkgname-$pkgver-dev.deb::https://ppa.steado.tech/ubuntu/pool/main/noble/librat-dev_$pkgver-1_arm64.deb"
 )
 sha256sums_aarch64=('SKIP' 'SKIP')
 noextract=("$pkgname-$pkgver-bin.deb" "$pkgname-$pkgver-dev.deb")
