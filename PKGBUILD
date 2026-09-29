@@ -1,10 +1,12 @@
 _target=arm-linux-gnueabi
 pkgname=$_target-gcc
-_pkgver=16.2.0
-pkgver=$_pkgver
+pkgver=16.2.0
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM GNU EABI little-endian target'
-arch=(aarch64 x86_64)
+arch=(
+  aarch64
+  x86_64
+)
 url='http://gcc.gnu.org/'
 license=(
   'GPL-3.0-or-later WITH GCC-exception-3.1'
@@ -13,7 +15,7 @@ license=(
 depends=($_target-binutils libisl libmpc zlib zstd)
 makedepends=(gmp mpfr)
 options=(!emptydirs !strip)
-source=(https://gcc.gnu.org/pub/gcc/releases/gcc-$_pkgver/gcc-$_pkgver.tar.xz{,.sig})
+source=(https://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz{,.sig})
 b2sums=('ab3ffe16e042da767f3f1eac170da518d6d7de3b0f92e068f79e3bf25fdc0bdf56eea0cd586bd4b9b6e9baebadd110c2ebd77b75c99c45853814f4bea5a98ef0'
         'SKIP')
 validpgpkeys=(D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
