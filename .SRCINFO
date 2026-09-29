@@ -1,6 +1,6 @@
 pkgbase = tesseract-matrix
 	pkgdesc = Cross-platform Matrix chat client
-	pkgver = 0.8.25
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/surakin/tesseract
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = tesseract-matrix
 	depends = emoji-font
 	depends = libsecret
 	options = !lto
-	source = tesseract-matrix-0.8.25.tar.gz::https://github.com/surakin/tesseract/archive/refs/tags/v0.8.25.tar.gz
-	sha256sums = 07d2f2c9b4982172157023f05f9d033159e12974798c2062fa900da11853ea50
+	source = tesseract-matrix-0.9.0.tar.gz::https://github.com/surakin/tesseract/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = 179d6610ce4b91d78718706bf18eccea68c66d2bec822322965b710f3cb64bb7
 
 pkgname = tesseract-matrix
