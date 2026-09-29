@@ -1,6 +1,6 @@
 pkgbase = full-upgrade
 	pkgdesc = Orquestrador Bash modular para atualizar, manter e auditar máquinas Arch Linux
-	pkgver = 3.48.3
+	pkgver = 3.48.4
 	pkgrel = 1
 	url = https://github.com/bernardopg/full-upgrade
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = full-upgrade
 	optdepends = btrfs-progs: snapshots e doctor de saúde btrfs
 	optdepends = snapper: snapshots pré-upgrade em btrfs
 	optdepends = smartmontools: doctor SMART de discos
-	source = full-upgrade-3.48.3.tar.gz::https://github.com/bernardopg/full-upgrade/archive/refs/tags/v3.48.3.tar.gz
-	sha256sums = e59ccb897c2fe6faca87808803aa9b39a347c9f7cda11bebda3103fb49878a9c
+	source = full-upgrade-3.48.4.tar.gz::https://github.com/bernardopg/full-upgrade/archive/refs/tags/v3.48.4.tar.gz
+	sha256sums = 14c360de278cd879b320758b7e6b2090ba8da8f03b5d0572ac93e993db0a879d
 
 pkgname = full-upgrade
