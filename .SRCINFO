@@ -1,0 +1,25 @@
+pkgbase = netkeep-bin
+	pkgdesc = Linux desktop network flow authorization (daemon, CLI, GPUI tray) — prebuilt
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mohamadkhani/netkeep
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk-update-icon-cache
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	depends = libxcb
+	depends = sqlite
+	depends = xdotool
+	optdepends = vulkan-mesa-layers: GPU stack for GPUI on some setups
+	optdepends = systemd-resolved: disable stub listener if using NETKEEP_DNS_FORWARDER on port 53
+	provides = netkeep
+	conflicts = netkeep
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/mohamadkhani/netkeep/releases/download/v0.1.0/netkeep-0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	b2sums_x86_64 = 99ab422c896c08d3eccd6e7f52938f8c0628e1789af95394d6f9721d259d272bb04401cf077743195c0f2df8ad9cf4f2458f0c2345ed7115c383ab28a306a3ab
+
+pkgname = netkeep-bin
