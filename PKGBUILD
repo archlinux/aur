@@ -7,7 +7,7 @@
 
 pkgname=freeciv-sdl2
 _pkgname=freeciv
-pkgver=3.2.4
+pkgver=3.2.6
 pkgrel=2
 pkgdesc="A multiuser clone of the famous Microprose game of Civilization - SDL2 Client"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ conflicts=('freeciv' 'freeciv-git')
 options=('!libtool')
 
 source=("git+https://github.com/freeciv/freeciv.git#tag=R${pkgver//./_}")
-sha256sums=('df64b2e6aa4d6eafbcefa694ca0a7f81b6dd1d7a10a8cf82322be8f1fdd7a420')
+sha256sums=('968426df94f5885cd805d1ac6e5c7c1a338fb9d7d4f1983c6cc72a409786f042')
 
 build() {
   cd "$srcdir"/$_pkgname
