@@ -1,24 +1,17 @@
-hipfire - AUR Package README
+hipfire-git - AUR Package README
 
 This package installs the hipfire inference framework.
+The `hipfire` command is a wrapper that sets HIPFIRE_DAEMON_BIN and
+HIPFIRE_TUI_BIN to the packaged binaries in /usr/lib/hipfire/, then runs
+the real CLI. Export either variable yourself to override.
 
-Configuration:
---------------
-Upon the first execution, hipfire creates a directory at:
-    ~/.hipfire
+State is stored per user in ~/.hipfire (models, config.toml, registry cache)
+and ~/.hipfire_kernels (compiled GPU kernels).
 
-This directory is required for the operation of the framework. It will 
-automatically populate the following items:
-
-1. ~/.hipfire/config.json: 
-   Auto-detected hardware architecture (e.g., {"gpu_arch": "gfx1201"}).
-   This ensures optimal kernel execution for your specific AMD GPU.
-
-2. ~/.hipfire/models/: 
-   The storage location for your downloaded inference models.
-
-Performance Note:
------------------
-If ~/.hipfire/models resides on a Btrfs filesystem, the installation script 
-automatically attempts to disable Copy-on-Write (CoW) for this directory 
-to prevent significant performance degradation during large model reads.
+Notes:
+- `hipfire setup` and `hipfire update` are source-checkout installers. They
+  are not needed for this package, and running them can place a second
+  daemon in ~/.hipfire/bin, which takes priority over the packaged one.
+- `hipfire serve` listens on 0.0.0.0:11435 by default.
+- On Btrfs, consider `chattr +C ~/.hipfire/models` on an empty directory
+  before downloading models, to avoid Copy-on-Write overhead.
