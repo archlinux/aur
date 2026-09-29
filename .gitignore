@@ -1,0 +1,5 @@
+# makepkg build output
+pkg/
+src/
+*.pkg.tar.*
+*.tar.gz

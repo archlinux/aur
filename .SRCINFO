@@ -1,0 +1,16 @@
+pkgbase = espboot
+	pkgdesc = fastboot-style command line front end for esptool
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/user14923929/espboot
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = esptool
+	depends = systemd-libs
+	source = espboot-0.1.0.tar.gz::https://github.com/user14923929/espboot/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = ee88520fb4431d7619ab1660dfa5848213bb61d6875347183f803e37aa6db318
+
+pkgname = espboot
