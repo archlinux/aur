@@ -2,6 +2,7 @@
 # Echo-only: this package does not edit ~/.zshrc or any other rc file.
 
 post_install() {
+	echo "Run festival setup as your regular user to create your first camp."
 	echo "festival-bin is not the Edinburgh TTS package named festival."
 	echo "This package does not edit ~/.zshrc. Add the helper yourself:"
 	echo "  source /usr/share/festival/shell/festival.zsh"
