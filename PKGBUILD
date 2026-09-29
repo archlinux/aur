@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.9
-pkgver=1.0.0beta9
+_tag=v1.0.0-beta.10
+pkgver=1.0.0beta10
 pkgrel=1
 pkgdesc="A desktop shell for niri, built with Quickshell: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
@@ -54,7 +54,7 @@ optdepends=(
 options=('!lto')
 install=bioma-shell.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('29146a3b3d826840616d2a1dae06de46a799b6b1edf4e9e89c6975dc9cbe5271')
+sha256sums=('717c87ca43cff10bcd5354f8fe8b2bf77f36b351ef816e4337649b8ca3219ac0')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
