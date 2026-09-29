@@ -58,7 +58,8 @@ setup_user() {
 
   cfg_dir="$real_home/.config/chillpill-shell"
   cache_dir="$real_home/.cache/chillpill-shell"
-  mkdir -p "$cfg_dir" "$cache_dir"
+  custom_module_dir="$cfg_dir/modules"
+  mkdir -p "$cfg_dir" "$cache_dir" "$custom_module_dir"
 
   cfg="$cfg_dir/config.jsonc"
   cava="$cache_dir/cava.conf"
@@ -80,7 +81,13 @@ setup_user() {
       || warn "Could not seed cava.conf for $user."
   fi
 
-  chown -R "$user:$user" "$cfg_dir" "$cache_dir"
+  # copy the sample script (for custom module) in the config directory
+  if [[ ! -f "$custom_module_dir/cpu-temp.sh" ]]; then
+    install -Dm755 /usr/share/chillpill-shell/scripts/cpu-temp.sh "$custom_module_dir/cpu-temp.sh" 2>/dev/null \
+      || warn "Could not seed the custom module sample script for $user."
+  fi
+
+  chown -R "$user:$user" "$cfg_dir" "$cache_dir" "$custom_module_dir"
 }
 
 setup_users() {
