@@ -1,0 +1,25 @@
+pkgbase = meteo-gtk4
+	pkgdesc = Forecast application using OpenWeatherMap API built with Vala and Gtk
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/bitseater/meteo
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = gettext
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = dconf
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = json-glib
+	depends = libadwaita
+	depends = libgee
+	depends = libsoup3
+	depends = webkitgtk-6.0
+	source = https://gitlab.com/bitseater/meteo/-/archive/1.0.0/meteo-1.0.0.tar.gz
+	sha256sums = 8fa8424bd2027f49d055732ac186757c17cb7444d6ebc80b0a6a5f7e076a85ad
+
+pkgname = meteo-gtk4
