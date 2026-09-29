@@ -1,33 +1,42 @@
-# Maintainer: Daniel Bodky <dbodky@gmail.com>
+# Maintainer: Martin Rys <https://rys.rs/contact>
+# Contributor: Daniel Bodky <dbodky@gmail.com>
 # Contributor: Malte Rabenseifner <mail@malte-rabenseifner.de>
 
 pkgname=icingaweb2-module-director-git
-_pkgname=icingaweb2-module-director
-pkgver=v1.8.1.r67.087ce05
+pkgver=1.12.0.r2.g4554f5be
 pkgrel=1
 pkgdesc="Manage Icinga 2 configuration from Icinga Web 2"
-license=('GPL')
+license=('GPL-3.0-or-later')
 arch=('any')
-depends=('icingaweb2' 'icingaweb2-module-ipl' 'icingaweb2-module-incubator' 'icingaweb2-module-reactbundle')
+depends=(
+	'icingaweb2'
+	'icinga-php-legacy'
+)
 provides=('icingaweb2-module-director')
 conflicts=('icingaweb2-module-director')
 url="https://www.icinga.org"
-source=("git+https://github.com/Icinga/icingaweb2-module-director.git")
-sha256sums=('SKIP')
+install="icingaweb2-module-director.install"
+source=(
+	"git+https://github.com/Icinga/icingaweb2-module-director.git"
+	"${pkgname%-git}.sysusers"
+)
+sha256sums=('SKIP'
+            '311043f4f4da68e5fcf8ad8593475d8287fe2f681e52940b33d41bc681d74cec')
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "${pkgname%-git}"
+	git describe --long --tags | sed -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g' -e 's/^v//'
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+	cd "${srcdir}/${pkgname%-git}"
 
-  mkdir -p "$pkgdir/etc/icingaweb2/modules/director"
-  mkdir -p "$pkgdir/usr/share/icingaweb2/modules/director"
+	install -dm770 "${pkgdir}/etc/icingaweb2/modules/director"
+	chmod 2770 "${pkgdir}/etc/icingaweb2"
+	mkdir -p "${pkgdir}/usr/share/webapps/icingaweb2/modules/director"
 
-  cp -r application contrib doc library public schema test \
-    configuration.php module.info register-hooks.php run-missingdeps.php \
-    run-php5.3.php run.php \
-    "$pkgdir/usr/share/icingaweb2/modules/director"
+	cp -r * "${pkgdir}/usr/share/webapps/icingaweb2/modules/director"
+
+	install -Dm644 "${srcdir}/${pkgname%-git}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname%-git}.conf"
+	install -Dm644 "contrib/systemd/icinga-director.service" "${pkgdir}/usr/lib/systemd/system/icinga-director.service"
 }
