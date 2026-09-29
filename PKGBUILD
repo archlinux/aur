@@ -46,7 +46,7 @@ package() {
     # 源码是 tarbomb 结构（直接解压在 srcdir），因此复制当前目录下所有可见文件
     # 使用 -d (preserve links) -r (recursive)
     msg2 "Copying files to /opt/rocm..."
-    cp -dr --no-preserve=ownership * "${pkgdir}/opt/rocm/"
+    cp -dr --no-preserve=ownership "${srcdir}/." "${pkgdir}/opt/rocm/"
     # 2.1 修复 amdgcn 目录结构
     local _amdgcn_dir="${pkgdir}/opt/rocm/lib/llvm/amdgcn"
     if [ -d "${_amdgcn_dir}" ]; then
