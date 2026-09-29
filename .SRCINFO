@@ -1,19 +1,23 @@
 pkgbase = kanbanflow-app-bin
-	pkgdesc = A standalone application for Kanbanflow.com(Prebuilt version.Use system-wide electron)
-	pkgver = 1.0.0_beta.4
-	pkgrel = 9
+	pkgdesc = A standalone application for Kanbanflow.com.
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/metawave/kanbanflow-app
+	arch = aarch64
 	arch = x86_64
 	license = MIT
-	makedepends = fuse2
-	depends = electron13
-	provides = kanbanflow-app=1.0.0_beta.4
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	depends = libayatana-indicator
+	depends = libappindicator
+	provides = kanbanflow-app=2.0.0
 	conflicts = kanbanflow-app
-	source = kanbanflow-app-1.0.0_beta.4.AppImage::https://github.com/metawave/kanbanflow-app/releases/download/v1.0.0-beta.4/KanbanFlow-App-1.0.0-beta.4.AppImage
-	source = LICENSE-1.0.0_beta.4.md::https://raw.githubusercontent.com/metawave/kanbanflow-app/v1.0.0-beta.4/LICENSE.md
-	source = kanbanflow-app.sh
-	sha256sums = a8146d290fdf4d9e4e62b4fa57fab35bf6db21aa43876bc685a0bdca4bd4ebba
+	source = LICENSE-2.0.0.md::https://raw.githubusercontent.com/metawave/kanbanflow-app/v2.0.0/LICENSE.md
 	sha256sums = 4dcd2e7fe6343b8c84f2996f9713c67ee8e917c8e3606ce9ec221279ac5bfc26
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source_aarch64 = kanbanflow-app-2.0.0-aarch64.deb::https://github.com/metawave/kanbanflow-app/releases/download/v2.0.0/KanbanFlow.App_2.0.0_arm64.deb
+	sha256sums_aarch64 = a0c1e846183e1a5c87c082003bcc56fd6a02b4a387154a3da4c72e7efd695c9d
+	source_x86_64 = kanbanflow-app-2.0.0-x86_64.deb::https://github.com/metawave/kanbanflow-app/releases/download/v2.0.0/KanbanFlow.App_2.0.0_amd64.deb
+	sha256sums_x86_64 = f7e2a6c89aeaf25853462a429dafc09faef394b6f141942aac435af01a34e789
 
 pkgname = kanbanflow-app-bin
