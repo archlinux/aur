@@ -1,6 +1,6 @@
 pkgbase = omarchy-flux
 	pkgdesc = Connect an Omarchy computer to your phone with Flux for Android
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/bjarneo/flux
 	install = omarchy-flux.install
@@ -26,7 +26,7 @@ pkgbase = omarchy-flux
 	optdepends = mpv: the phone screen mirror
 	optdepends = wtype: the phone keyboard
 	optdepends = gpu-screen-recorder: the remote desktop on the phone
-	source = omarchy-flux-0.5.0.tar.gz::https://github.com/bjarneo/flux/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = 33effdd0a3a009d357d53db66a69bee1eaadc65daa14e69d4cc8615abd42608d
+	source = omarchy-flux-0.6.0.tar.gz::https://github.com/bjarneo/flux/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 4abb6ad1a8bc2b304b04f471a6d385a632eaaa665cf76c5474adb44091a72e2f
 
 pkgname = omarchy-flux
