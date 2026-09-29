@@ -1,0 +1,5 @@
+[icinga-php-legacy]
+source = "github"
+github = "Icinga/icinga-php-legacy"
+use_max_tag = true
+prefix = "v"
