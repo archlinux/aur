@@ -1,14 +1,16 @@
 # Maintainer: VanillaGreen <brad@vanillagreen.com>
 pkgname=vsys-git
-pkgver=0.9.0.r48.gf5acc38
+pkgver=0.9.0.r49.g2b270b0
 pkgrel=1
 pkgdesc="Terminal dashboard for Linux machines that run AI agents (tracks main)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/vanillagreencom/vsys"
 license=('MIT')
+depends=('python' 'systemd-libs')
 provides=('vsys')
 conflicts=('vsys')
 makedepends=('git' 'bun')
+options=('!strip' '!debug')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
@@ -28,6 +30,7 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}"
 	install -Dm755 vsys "${pkgdir}/usr/bin/vsys"
+	packaging/stage-runtime-files.sh "${pkgdir}/usr"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
