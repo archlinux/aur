@@ -3,7 +3,8 @@
 _name=tree-sitter-elixir
 pkgname=python-tree-sitter-elixir
 pkgver=0.3.5
-pkgrel=9
+pkgrel=10
+_commit=e2d9e6e0e76b0c436fa48a0b8c32a031d0cbdf49
 pkgdesc="Elixir grammar for tree-sitter"
 arch=('x86_64' 'aarch64')
 url="https://github.com/elixir-lang/tree-sitter-elixir"
@@ -15,16 +16,16 @@ makedepends=(
     'python-wheel'
     'python-setuptools'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/elixir-lang/tree-sitter-elixir/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7d8bf37949e2bea75a19d38491d7680ed1c9f0f5a41a5235832d718ec174c7c4')
+source=("${pkgname}-${pkgver}-${_commit}.tar.gz::https://github.com/elixir-lang/tree-sitter-elixir/archive/${_commit}.tar.gz")
+sha256sums=('52dff618dfaea912e4b5757035ad723a18cc361cdcb92349d63fa94517f118c5')
 
 build() {
-    cd "${_name}-${pkgver}"
+    cd "${_name}-${_commit}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${_name}-${pkgver}"
+    cd "${_name}-${_commit}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm644 NOTICE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
