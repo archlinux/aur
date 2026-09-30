@@ -1,7 +1,5 @@
 # Maintainer: MapleProjects <eportillo898v2@gmail.com>
 # Contributor: aubree.wtf <https://aubree.wtf/>
-# Contributor: Narezany
-
 pkgname=macoblox-git
 _name=MacOBlox
 pkgver=r100.fddaca2
