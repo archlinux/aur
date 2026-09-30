@@ -1,0 +1,18 @@
+pkgbase = action-webcamd
+	pkgdesc = Native Linux webcam service for compatible GoPro cameras
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/iktrnch/action-webcamd
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	makedepends = pkgconf
+	depends = ffmpeg
+	depends = systemd-libs
+	optdepends = v4l2loopback-dkms: provides the virtual V4L2 camera device
+	options = !debug
+	source = action-webcamd-0.1.0.tar.gz::https://github.com/iktrnch/action-webcamd/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = ec1b4e6a07548871b75b97a6376937e1d1b9cfe069098b7599f62b791674e2bd
+
+pkgname = action-webcamd
