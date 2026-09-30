@@ -7,6 +7,6 @@ Comment[zh_CN]=EvoMap 自进化蜂群智能体（Beta）
 Exec=evox tui
 Terminal=true
 Icon=evox
-Categories=Development;Utility;
+Categories=Development;
 Keywords=ai;agent;llm;coding;swarm;
 StartupNotify=false
