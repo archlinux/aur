@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Kill all the slop. Raise clean PR."
 
-pkgver=1.85.2
+pkgver=1.85.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,8 +31,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
 sha256sums=('ad19c6c9f58e5b4a9e5e05c8afb678f50252816d226057eded19fd584b50f975'
             '945016bd37e1ba7211622ef60ee1d23ab727896ba7710edd21e8fbe983863969')
-sha256sums_x86_64=('fa65fa8a966fbd044a6efd0dc072fe12ca354e6d17bc6505fd159beded8f9809')
-sha256sums_aarch64=('fa65fa8a966fbd044a6efd0dc072fe12ca354e6d17bc6505fd159beded8f9809')
+sha256sums_x86_64=('cdc0c23407a8f2880762a4502dc4bfc91d93ac49e885d2b556df6cd91beaeba1')
+sha256sums_aarch64=('cdc0c23407a8f2880762a4502dc4bfc91d93ac49e885d2b556df6cd91beaeba1')
 
 
 build() {
