@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Reshape for tabular data — pivot, unpivot, split, merge, explode, transpose a CSV/DSV without changing, filtering, or aggregating a value."
 
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.xz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('d658551920213d92aabac873edb2a769b7d3ceed79003ed30012ea9a70d59436')
-sha256sums_aarch64=('3e06352f6340b3b0e314330c6480d3ce3804ede8f2d3748046453e9bc5937f44')
+sha256sums_x86_64=('2fca7f5820fd060ad4798ac7049df2d90965e155e1d51f33cfa7613e34aedc7e')
+sha256sums_aarch64=('30cd9910accc840a156e784c0221e89cb61e1e153e48ccadc8e519dde589eac5')
 
 
 case ${CARCH} in

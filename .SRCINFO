@@ -1,6 +1,6 @@
 pkgbase = xshape-bin
 	pkgdesc = Reshape for tabular data — pivot, unpivot, split, merge, explode, transpose a CSV/DSV without changing, filtering, or aggregating a value.
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/excelano/xshape
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = xshape-bin
 	provides = xshape
 	conflicts = xshape
 	options = !strip
-	source_x86_64 = xshape-x86_64-0.5.3.txz::https://github.com/excelano/xshape/releases/download/v0.5.3/xshape-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = d658551920213d92aabac873edb2a769b7d3ceed79003ed30012ea9a70d59436
-	source_aarch64 = xshape-aarch64-0.5.3.txz::https://github.com/excelano/xshape/releases/download/v0.5.3/xshape-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 3e06352f6340b3b0e314330c6480d3ce3804ede8f2d3748046453e9bc5937f44
+	source_x86_64 = xshape-x86_64-0.5.4.txz::https://github.com/excelano/xshape/releases/download/v0.5.4/xshape-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 2fca7f5820fd060ad4798ac7049df2d90965e155e1d51f33cfa7613e34aedc7e
+	source_aarch64 = xshape-aarch64-0.5.4.txz::https://github.com/excelano/xshape/releases/download/v0.5.4/xshape-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 30cd9910accc840a156e784c0221e89cb61e1e153e48ccadc8e519dde589eac5
 
 pkgname = xshape-bin
