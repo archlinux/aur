@@ -1,0 +1,18 @@
+pkgbase = sshz
+	pkgdesc = TUI-based SSH connection manager written in Zig with real-time host status monitoring and tag-based organization
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/midasdf/sshz
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = zig>=0.16.0
+	depends = glibc
+	depends = openssh
+	noextract = zigzag-0.1.5.tar.gz
+	source = sshz-1.1.0.tar.gz::https://github.com/midasdf/sshz/archive/refs/tags/v1.1.0.tar.gz
+	source = zigzag-0.1.5.tar.gz::https://github.com/meszmate/zigzag/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = aefd575b2336c7611267a97620dd6ed43eccd8e3b41618d143ae71e5a869065b
+	sha256sums = 631810bf71695937a0d96de0b4af36efe3641a698d295bc51652176661dfae95
+
+pkgname = sshz
