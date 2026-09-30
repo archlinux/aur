@@ -2,7 +2,7 @@
 # Co-Maintainer: rafaeloledo <rafaeloliveiraledo@gmail.com>
 
 pkgname=grok-bot-bin
-pkgver=0.61.0
+pkgver=0.63.0
 pkgrel=1
 pkgdesc='Grok Bot desktop agent'
 arch=('x86_64')
@@ -21,6 +21,9 @@ depends=(
     hicolor-icon-theme
     alsa-lib
     libappindicator
+    libxkbcommon
+    libdrm
+    mesa
 )
 makedepends=('python')
 optdepends=('apparmor: load the shipped userns profile')
@@ -28,7 +31,7 @@ provides=('sand' 'grok-bot')
 conflicts=('sand' 'grok-bot' 'grokbot-linux-port' 'grokbot-linux-port-bin')
 replaces=('grok-bot')
 options=('!strip' '!debug')
-_commit=47a9d1df3a7d37aaa53d206ab2d1f9159a336223
+_commit=76ea13a663a8e41e1664246c174c22291f9a9301
 source=(
     "grok-bot_${pkgver}_amd64.deb::https://downloads.cursor.com/grokbot/stable/${_commit}/linux/x64/grok-bot_${pkgver}_amd64.deb"
     grok-bot.sh
@@ -36,7 +39,7 @@ source=(
     extract-asar.py
 )
 sha256sums=(
-    '3616c006748993a02674afc8a50513073d716b3bfa554943450dacf8e82576ef'
+    '68d89c4118633cffd45c1960e274bd15e7763c3378b11b7c7a433e2441bbca9a'
     '9b3cccfada1dbe44ce794177181515aaf328603484327ef72a914234544bfbf8'
     '9ea1f1939677ec7364bc024ec4b87f8873ef41e6b1b5cec407d0a022ca3678f6'
     '86e6a9d2ce60f974c002a0187fdca7f111744ff4a1187dc70ba415fe6c715942'
