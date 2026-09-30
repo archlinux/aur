@@ -1,6 +1,6 @@
 # Maintainer: cjber <cjberragan at gmail dot com>
 pkgname=kiln-agents-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Vim-style overview of every Claude, Codex and Pi session on the machine"
 arch=('x86_64' 'aarch64')
@@ -12,11 +12,11 @@ provides=('kiln' 'kiln-agents')
 conflicts=('kiln' 'kiln-agents')
 options=('!strip')
 source=("kiln-${pkgver}.tar.gz::https://github.com/cjber/kiln/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('545d19d4a23e7c3efdfbb20f35a7c712832a5c4e53b55496fa336305d27fc272')
+sha256sums=('28d54375d0bd2952237b9df9ab0740f2803da5936c224c60822d18593cb46e76')
 source_x86_64=("kiln-linux-x64-${pkgver}::https://github.com/cjber/kiln/releases/download/v${pkgver}/kiln-linux-x64")
-sha256sums_x86_64=('75f9de37092e118f1d7068fd0814d10b3066336436240315ac44802f85d989ac')
+sha256sums_x86_64=('fee47452d6bfffe4e46d47e04ecf98f249eeec7499f460150abe7fffd1b1ee81')
 source_aarch64=("kiln-linux-arm64-${pkgver}::https://github.com/cjber/kiln/releases/download/v${pkgver}/kiln-linux-arm64")
-sha256sums_aarch64=('e70c31c0c2d9446a686a8bec5761b9212bbd40decd62b9c988da2f2421aca98c')
+sha256sums_aarch64=('af1ea4873859ac84000914171deab3457cda0daa61fed0978685600fa4f2db8b')
 
 package() {
   local binary=kiln-linux-x64
