@@ -9,7 +9,7 @@
 
 _pkgname=cordial
 pkgname=cordial-git
-pkgver=0.17.0.r0.g5412f88
+pkgver=0.21.1.r7.g95c049c
 pkgrel=1
 pkgdesc="Roblox's official Android build, run natively on Linux -- Cordial ships no Roblox code and fetches a signature-verified one"
 arch=('x86_64')
