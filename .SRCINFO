@@ -31,7 +31,7 @@ pkgbase = proton-drive-for-linux-git
 	conflicts = proton-drive-for-linux
 	conflicts = proton-drive-for-linux-bin
 	options = !lto
-	source = proton-drive-for-linux-git::git+https://proton-drive.narl.io.git
+	source = proton-drive-for-linux-git::git+https://github.com/narrrl/proton-drive-linux.git
 	sha256sums = SKIP
 
 pkgname = proton-drive-for-linux-git

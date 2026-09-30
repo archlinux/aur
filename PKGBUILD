@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="Unofficial Proton Drive client: FUSE files-on-demand mount, CLI, GTK4 app, tray (git)"
 arch=('x86_64')
 url="https://proton-drive.narl.io"
+_repo="https://github.com/narrrl/proton-drive-linux"
 license=('MIT')
 depends=('fuse3' 'gtk4' 'libadwaita' 'webkitgtk-6.0' 'dbus' 'gcc-libs' 'glibc'
          'hicolor-icon-theme')
@@ -22,7 +23,7 @@ provides=("${pkgname%-git}=$pkgver" "proton-drive-linux=$pkgver" 'pdfs')
 conflicts=('proton-drive-linux' 'proton-drive-for-linux' 'proton-drive-for-linux-bin')
 # LTO has broken GTK/Rust links for this workspace; the release profile keeps it off.
 options=('!lto')
-source=("$pkgname::git+$url.git")
+source=("$pkgname::git+$_repo.git")
 sha256sums=('SKIP')
 
 pkgver() {
