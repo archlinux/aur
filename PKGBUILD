@@ -2,7 +2,7 @@
 # Contributor: Douglas Chimento <dchimento@gmail.com>
 
 _npmname=balanceofsatoshis
-_npmver=23.1.11
+_npmver=24.0.1
 pkgname="balance-of-satoshis"
 pkgver=${_npmver}
 pkgrel=1
@@ -15,7 +15,7 @@ makedepends=("npm")
 optdepends=('lnd')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz")
 noextract=("$_npmname-$_npmver.tgz")
-sha256sums=('e266ccfe4bf48f14908d2272bf0931de1d8f3158e9be27e3de6a8ca8007a8f6f')
+sha256sums=('bc16011cc69bda1a78e4b149a5a225cfb78ba9a7b58841280449a6abb67c7a26')
 options=('!strip')
 
 package() {
