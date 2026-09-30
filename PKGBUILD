@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="A modern and lightweight file manager for Windows and Linux"
 
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
-sha256sums=('555f06a8e82283ac2d624c6136af31ad26630bd9cb7be003ee9abe66dcf8c295'
+sha256sums=('5485d9e9ff26e4bb950df0a3c646b8f444dc35260b7f6ae5ed2ed9b8cc61468b'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('329cd76213f97031a64e89c49d7d382db611f7e725def8db818ce01a70774d3c')
+sha256sums_x86_64=('7edd0c90ce03cf532af9bad7d920876a0b008884ae608b85d2fdaeee50217e49')
 
 
 package() {
