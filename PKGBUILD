@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=Macarron
-_pkgver=1.12.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -15,15 +15,12 @@ depends=(
   r-delayedarray
   r-dynamictreecut
   r-ff
-  r-httr
   r-logging
   r-maaslin2
   r-plyr
   r-psych
-  r-rjsonio
   r-summarizedexperiment
   r-wgcna
-  r-xml2
 )
 checkdepends=(
   r-testthat
@@ -37,8 +34,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('548600285b724e2743c2c82c268ae946')
-b2sums=('44496172fa2bc0a4712a6552c0085f3340bd24404215d556842dff858f8d88271cb9c18fa2f9900517069140667301a4fa37296db3f94078e70ac89c04e9f0b6')
+md5sums=('8927a7449dd3e145cc8fd687af76b989')
+b2sums=('8123c14718fc454ca69e7a418eb696a004bd2787b0b8ca98d9299edd59b471e2963631f8b955c3b4ff81684174093ce328f6c28220bbdac7f690437e75b9254b')
 
 build() {
   mkdir build
