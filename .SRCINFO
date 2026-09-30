@@ -1,7 +1,7 @@
 pkgbase = cutwire-drift-bin
 	pkgdesc = Beginner-friendly open-source video editor built with Qt 6, QML and FFmpeg (prebuilt binary)
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CutWire-Studios/Drift
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -25,7 +25,7 @@ pkgbase = cutwire-drift-bin
 	provides = drift
 	options = !strip
 	options = !debug
-	source = cutwire-drift-bin-0.7.0-1-x86_64.pkg.tar.zst::https://github.com/CutWire-Studios/Drift/releases/download/v0.7.0/drift-0.7.0-1-x86_64.pkg.tar.zst
+	source = cutwire-drift-bin-0.7.0-2-x86_64.pkg.tar.zst::https://github.com/CutWire-Studios/Drift/releases/download/v0.7.0/drift-0.7.0-2-x86_64.pkg.tar.zst
 	sha256sums = dc7f3c15db9008f29a96a9d69ba966ee1b07fb9abdba43658331c3e91ec18954
 
 pkgname = cutwire-drift-bin

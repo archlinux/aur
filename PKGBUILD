@@ -1,7 +1,7 @@
 # Maintainer: Maple <maple@localhost>
 pkgname=cutwire-drift-bin
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Beginner-friendly open-source video editor built with Qt 6, QML and FFmpeg (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/CutWire-Studios/Drift"
