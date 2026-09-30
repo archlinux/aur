@@ -1,0 +1,23 @@
+pkgbase = maple-video-downloader-bin
+	pkgdesc = Multi-platform video and audio downloader with embedded session and cookie capture (prebuilt binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/MapleProjects/maple-video-downloader
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = yt-dlp
+	depends = ffmpeg
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	provides = maple-video-downloader
+	conflicts = maple-video-downloader
+	options = !strip
+	options = !debug
+	source = maple-video-downloader-bin-1.0.0-x86_64.tar.gz::https://github.com/MapleProjects/maple-video-downloader/releases/download/v1.0.0/maple-video-downloader-1.0.0-x86_64.tar.gz
+	source = LICENSE::https://github.com/MapleProjects/maple-video-downloader/raw/v1.0.0/LICENSE
+	sha256sums = 1bbfc079e10c815fa313994e1d86e9ef02862b5dd5f779a2d58e98cb25cd6e4c
+	sha256sums = 1b25291234b39dbb75194d96229894bfa403a9e3d61b0aa91989319c66b9259f
+
+pkgname = maple-video-downloader-bin
