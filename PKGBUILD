@@ -1,0 +1,61 @@
+# Maintainer: nomisge <nomisge @ live . de>
+pkgname=asciidoc-revealjs-builder
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='Asciidoc to Reveal.js Builder CLI'
+arch=('x86_64')
+url='https://codeberg.org/nomisge/asciidoc-revealjs-builder'
+license=('GPL-3.0-or-later')
+depends=('nodejs')
+makedepends=('npm' 'jq')
+source=("${pkgname}-${pkgver}.zip::${url}/archive/v${pkgver}.zip")
+sha256sums=('3712d771b1c884e3854c5626fe9c33b0a1f02edaf09d84662264af1e11cb9626')
+
+build() {
+  cd "${srcdir}/${pkgname}"
+
+  npm install --omit=dev --package-lock=false --cache "${srcdir}/npm-cache"
+}
+
+package() {
+  cd "${srcdir}/${pkgname}"
+
+  local appdir="${pkgdir}/usr/lib/${pkgname}"
+  install -d "${appdir}"
+
+  # Copy the project files and installed runtime dependencies.
+  find . -mindepth 1 -maxdepth 1 \
+    -exec cp -a {} "${appdir}/" \;
+
+  # Remove _where entries from package.json files.
+  find "${pkgdir}" -name package.json -print0 |
+    xargs -r -0 sed -i '/_where/d'
+
+  # Remove underscored properties from the application's package.json.
+  local tmppackage
+  local pkgjson="${appdir}/package.json"
+  tmppackage="$(mktemp)"
+  jq '.|=with_entries(select(.key|test("_.+")|not))' \
+    "${pkgjson}" > "${tmppackage}"
+  mv "${tmppackage}" "${pkgjson}"
+  chmod 644 "${pkgjson}"
+
+  # Remove man metadata from package.json files.
+  find "${pkgdir}" -type f -name package.json | while read -r pkgjson; do
+    local tmppackage
+    tmppackage="$(mktemp)"
+    jq 'del(.man)' "${pkgjson}" > "${tmppackage}"
+    mv "${tmppackage}" "${pkgjson}"
+    chmod 644 "${pkgjson}"
+  done
+
+  # Install a CLI launcher
+  install -d "${pkgdir}/usr/bin"
+  cat > "${pkgdir}/usr/bin/${pkgname}" <<'EOF'
+#!/bin/sh
+exec node /usr/lib/asciidoc-revealjs-builder/asciidoc-revealjs-builder.js "$@"
+EOF
+  chmod 755 "${pkgdir}/usr/bin/${pkgname}"
+
+}
+

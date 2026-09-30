@@ -1,0 +1,14 @@
+pkgbase = asciidoc-revealjs-builder
+	pkgdesc = Asciidoc to Reveal.js Builder CLI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/nomisge/asciidoc-revealjs-builder
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	source = asciidoc-revealjs-builder-1.0.0.zip::https://codeberg.org/nomisge/asciidoc-revealjs-builder/archive/v1.0.0.zip
+	sha256sums = 3712d771b1c884e3854c5626fe9c33b0a1f02edaf09d84662264af1e11cb9626
+
+pkgname = asciidoc-revealjs-builder
