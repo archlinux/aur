@@ -1,0 +1,17 @@
+post_install() {
+    cat <<'HINT'
+
+Three steps to finish:
+
+  systemctl --user enable --now botropolisd
+  botropolis install-hooks
+  echo 'source /usr/share/botropolis/botropolis.bash' >> ~/.bashrc
+
+Then `botropolis` opens the city, and `botropolis doctor` says what is missing.
+
+HINT
+}
+
+post_upgrade() {
+    post_install
+}
