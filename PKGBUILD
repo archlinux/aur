@@ -1,7 +1,7 @@
 # Maintainer: nomisge <nomisge @ live . de>
 pkgname=asciidoc-revealjs-builder
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Asciidoc to Reveal.js Builder CLI'
 arch=('x86_64')
 url='https://codeberg.org/nomisge/asciidoc-revealjs-builder'
@@ -25,6 +25,12 @@ package() {
 
   # Copy the project files and installed runtime dependencies.
   find . -mindepth 1 -maxdepth 1 \
+    ! -name '.gitignore' \
+    ! -name '.prettierignore' \
+    ! -name '.prettierrc' \
+    ! -name 'eslint.config.mjs' \
+    ! -name 'shims.d.ts' \
+    ! -name 'tsconfig.json' \
     -exec cp -a {} "${appdir}/" \;
 
   # Remove _where entries from package.json files.
