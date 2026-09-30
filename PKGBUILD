@@ -17,7 +17,7 @@ conflicts=('lektra' 'lektra-git')
 source=(
     "lektra-${pkgver}-x86_64.tar.gz::https://codeberg.org/lektra/lektra/releases/download/v${pkgver}/lektra-${pkgver}-x86_64.tar.gz"
 )
-sha256sums=('229605b7520a02640609003e31e4fc86f147c885e175e29f2ec15aa6e111eab2')
+sha256sums=('4d5d6dd5f28cb2db576591e2efe4e6e155fb590741d8cd72106a0c53db69ade1')
 
 package() {
     install -Dm755 "${srcdir}/usr/bin/lektra"                              "${pkgdir}/usr/bin/lektra"
