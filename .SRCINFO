@@ -1,0 +1,24 @@
+pkgbase = python-click-to-mcp
+	pkgdesc = Auto-wrap any Click or Typer CLI as an MCP server (stdio, HTTP+SSE, Streamable HTTP)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/Coding-Dev-Tools/click-to-mcp
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-starlette
+	checkdepends = python-sse-starlette
+	checkdepends = uvicorn
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	optdepends = python-starlette: HTTP+SSE and Streamable HTTP transports
+	optdepends = python-sse-starlette: HTTP+SSE and Streamable HTTP transports
+	optdepends = uvicorn: HTTP+SSE and Streamable HTTP transports
+	source = python-click-to-mcp-0.5.0.tar.gz::https://github.com/Coding-Dev-Tools/click-to-mcp/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 14dfa3fc743cfd40451d91b87bbc0a5c354dca352e9454c409efb44f5a693c28
+
+pkgname = python-click-to-mcp
