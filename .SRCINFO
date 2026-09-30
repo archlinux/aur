@@ -1,0 +1,45 @@
+pkgbase = clouddrive-mediaserver-plugin-bin
+	pkgdesc = CloudDrive2 companion plugin for Emby and Jellyfin — path-mapping discovery and cloud-aware library updates
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/cloud-fs/clouddrive-mediaserver-plugin
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = clouddrive
+	makedepends = libarchive
+	makedepends = emby-server
+	makedepends = jellyfin-server
+	optdepends = clouddrive: Unlocking the Unlimited Possibilities of Cloud Storage
+	noextract = CloudDrive.MediaServer-Emby-1.0.4.zip
+	noextract = CloudDrive.MediaServer-Jellyfin-1.0.4.zip
+	options = !strip
+	options = !debug
+	options = !lto
+	options = emptydirs
+	source = LICENSE-GPL-3.0::https://github.com/cloud-fs/clouddrive-mediaserver-plugin/raw/refs/heads/main/LICENSE
+	source = CloudDrive.MediaServer-Emby-1.0.4.zip::https://github.com/cloud-fs/clouddrive-mediaserver-plugin/releases/download/v1.0.4/CloudDrive.MediaServer-Emby-1.0.4.zip
+	source = CloudDrive.MediaServer-Jellyfin-1.0.4.zip::https://github.com/cloud-fs/clouddrive-mediaserver-plugin/releases/download/v1.0.4/CloudDrive.MediaServer-Jellyfin-1.0.4.zip
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = 10bd3615b98ca280f6d73e2ae856716b53764d93e68c766630ed879807062a76
+	sha256sums = 81def2ac80803216f16ae8d07eb471cafee85a9fa4b01cb0199c25eb551fd134
+
+pkgname = clouddrive-mediaserver-plugin-bin
+	depends = clouddrive
+	depends = clouddrive-mediaserver-plugin-emby-bin
+	depends = clouddrive-mediaserver-plugin-jellyfin-bin
+	provides = clouddrive-mediaserver-plugin
+	conflicts = clouddrive-mediaserver-plugin
+
+pkgname = clouddrive-mediaserver-plugin-emby-bin
+	pkgdesc = CloudDrive2 companion plugin for Jellyfin — path-mapping discovery and cloud-aware library updates
+	depends = clouddrive
+	depends = emby-server
+	provides = clouddrive-mediaserver-plugin-emby
+	conflicts = clouddrive-mediaserver-plugin-emby
+
+pkgname = clouddrive-mediaserver-plugin-jellyfin-bin
+	pkgdesc = CloudDrive2 companion plugin for Emby — path-mapping discovery and cloud-aware library updates
+	depends = clouddrive
+	depends = jellyfin-server
+	provides = clouddrive-mediaserver-plugin-jellyfin
+	conflicts = clouddrive-mediaserver-plugin-jellyfin
