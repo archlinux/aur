@@ -1,0 +1,21 @@
+pkgbase = brmgen-gtk
+	pkgdesc = GTK interface for brmgen - Generate editable brModelo models from YAML/JSON
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/kristyancarvalho/brmgen
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = brmgen
+	depends = python
+	depends = python-gobject
+	depends = libadwaita
+	source = brmgen-gtk-0.5.1.tar.gz::https://github.com/kristyancarvalho/brmgen/releases/download/v0.5.1/brmgen-gtk-0.5.1.tar.gz
+	source = LICENSE-0.5.1::https://github.com/kristyancarvalho/brmgen/raw/v0.5.1/LICENSE
+	sha256sums = 87af2d879ae007f30dc2d9c1d9dae771682484e72392caffbf5b6d2a3c89cacd
+	sha256sums = fb6b85af7158d2f3b5784a3ee0113bbdc94371c681518acb7bb66cf806a1f472
+
+pkgname = brmgen-gtk
