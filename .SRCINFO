@@ -1,0 +1,27 @@
+pkgbase = kiln-agents-bin
+	pkgdesc = Vim-style overview of every Claude, Codex and Pi session on the machine
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/cjber/kiln
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = tmux
+	depends = fzf
+	optdepends = zoxide: rank the directories offered for new sessions
+	optdepends = kitty: jump to agents running in other kitty windows
+	optdepends = claude-code: Claude sessions
+	optdepends = openai-codex: Codex sessions
+	provides = kiln
+	provides = kiln-agents
+	conflicts = kiln
+	conflicts = kiln-agents
+	options = !strip
+	source = kiln-0.1.1.tar.gz::https://github.com/cjber/kiln/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 29b1b7408908fa4aab697846717ebc102b1027e2c408842d278870a418be61e2
+	source_x86_64 = kiln-linux-x64-0.1.1::https://github.com/cjber/kiln/releases/download/v0.1.1/kiln-linux-x64
+	sha256sums_x86_64 = 70087871aef5ba7c409e203625c2e3a65517d2f6bc2d94b3c85519efe0d1e79f
+	source_aarch64 = kiln-linux-arm64-0.1.1::https://github.com/cjber/kiln/releases/download/v0.1.1/kiln-linux-arm64
+	sha256sums_aarch64 = 47c0fe9e7197051edacaa95aabf902a0ab8fb5921a3435a0fba0617d1f46aaa8
+
+pkgname = kiln-agents-bin
