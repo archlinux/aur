@@ -19,7 +19,7 @@ depends=('openssl' 'hicolor-icon-theme' 'gtk4-layer-shell'
     # gtk4
     'glib2' 'cairo' 'dconf' 'gtk4'
 )
-makedepends=('cargo' 'git' 'sed' 'gettext')
+makedepends=('cargo' 'git' 'gettext')
 optdepends=(
     'breeze-icons: better tray-icon icons'
     'xdg-desktop-portal: file dialog to import LRC'

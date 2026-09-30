@@ -8,7 +8,6 @@ pkgbase = waylyrics-layer-shell-git
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	makedepends = sed
 	makedepends = gettext
 	depends = openssl
 	depends = hicolor-icon-theme
