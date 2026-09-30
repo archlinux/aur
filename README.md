@@ -23,11 +23,13 @@ all at scale 1.0: the built-in 2240×1400 14" panel (~190 dpi), an ASUS MB16AMT
 | gsettings `org.gnome.desktop.interface` | `font-hinting 'medium'` | FreeType runs TrueType bytecode only at medium/full |
 | gsettings `org.gnome.desktop.interface` | `font-antialiasing 'grayscale'` | GTK4 cannot do subpixel AA; keeps every toolkit consistent |
 | `~/.config/gtk-4.0/settings.ini` | `gtk-hint-font-metrics=false` | Integer advances give uneven letter gaps; there is no gsettings key for this |
-| fontconfig (global or the shipped snippet) | `hinting=true`, `hintstyle=hintmedium`, `autohint=false`, `rgba=none` | For fontconfig clients (Chrome/Electron, GTK3 fallbacks, etc.) |
-| `/etc/fonts/conf.d/` | symlink `80-nerd-fonts-apple-hinted.conf` | Enables bytecode hinting for these families only, even if the global default is slight |
+| fontconfig (global or the shipped snippet) | `hinting=true`, `hintstyle=hintmedium`, `autohint=false`, `rgba=none` | For fontconfig clients (Firefox, GTK3 fallbacks, etc.) |
+| `/etc/fonts/conf.d/` | symlink `80-nerd-fonts-apple-hinted.conf` | Enables bytecode hinting for these families only, even if the global default is slight. Chromium/Electron are excluded (§10) |
+| fontconfig, if hintmedium is global | `prgname` rule → `hintslight` for chrome, chromium, brave, helium, electron, code, … | At scale 1 Chromium rounds every glyph advance at hintmedium; no flag fixes it (§10) |
 | environment | **no** `FREETYPE_PROPERTIES` stem-darkening tweak | It does not affect TrueType bytecode hinting at all |
 | Firefox `user.js` / about:config | `gfx.text.subpixel-position.force-enabled = true` | At hintmedium Firefox rounds glyph advances and turns off subpixel positioning (§9) |
 | build | default `HINT_PRESET=balanced`, not `natural` | `natural` glues i/j dots and diaereses at 10–12 px (§8) |
+| build | default `TRACKING=true` | Adds STAT so HarfBuzz applies Apple's `trak` size-specific tracking (§11) |
 
 Apply it:
 
@@ -233,12 +235,103 @@ With the pref on, `ShouldRoundXOffset()` returns false. Firefox then uses
 outlines are still hinted by the font's bytecode (vertical snapping). This is the
 same combination as GTK4 manual mode with `gtk-hint-font-metrics=false`.
 Web content follows fontconfig's `sans-serif`, the browser UI the GTK font, so
-both Inter and SF Pro Text are affected. Chrome keeps subpixel positioning at
-hintmedium, so it needs nothing.
+both Inter and SF Pro Text are affected. Chrome has the same problem at
+hintmedium but no pref to fix it; see §10.
 
 Verified 2026-09-29 on Firefox Nightly: with the pref on, the uneven gaps are gone.
 
----
+### 10. Chromium and Electron: keep them on hintslight
+
+Earlier notes said Chrome "keeps subpixel positioning at hintmedium". That is
+true for glyph *positions* but not for *advances*. Measured 2026-09-30 with
+headless Chrome, SF Pro Text, 54 characters, JS `getBoundingClientRect()` per
+glyph:
+
+| fontconfig hintstyle | fractional advances | 16 px Bold line |
+|---|---|---|
+| hintnone / hintslight | 49/54 | 468.8 px |
+| **hintmedium** | **0/54** | 475.0 px (+1.3 %, uneven gaps) |
+
+Why, from source:
+
+- `ui/gfx/font_render_params_linux.cc`: `subpixel_positioning = device_scale_factor > 1`.
+  The renderer's `use_subpixel_positioning` comes from the same call
+  (`renderer_preferences_util.cc`).
+- `blink/.../web_font_render_style.cc`: `setSubpixel(true)` unless hintfull, but
+  `setLinearMetrics(use_subpixel_positioning == 1)`, so linear metrics are off at scale 1.
+- `SkFontHost_FreeType.cpp`: linear metrics are forced only for kNone/kSlight.
+  At kNormal (hintmedium) the advance is the hinted, whole-pixel `advance.x`.
+
+No command-line switch changes this. Only `--disable-font-subpixel-positioning`
+exists, and `--force-device-scale-factor` > 1 also sets `hinting = NONE`.
+The fix is a fontconfig `prgname` rule. prgname is the executable's basename
+(`/opt/google/chrome/chrome` → `chrome`). The shipped snippet leaves those
+programs out of its hintmedium edit:
+
+```xml
+<test qual="all" name="prgname" compare="not_eq"><string>chrome</string></test>
+```
+
+`qual="all"` makes the test pass when prgname is unset. If hintmedium is your
+*global* default, also add a per-app `hintslight` rule after it:
+
+```xml
+<match target="font">
+  <test name="prgname" compare="eq"><string>chrome</string></test>
+  <edit name="hintstyle" mode="assign"><const>hintslight</const></edit>
+</match>
+```
+
+Verified: with the rule, Chrome and Chromium report 49/54 fractional advances again.
+
+### 11. Tracking: Apple's `trak` table needs STAT
+
+SF Pro Text/Display/Rounded and New York ship an AAT `trak` table: Apple's
+size-specific letter-spacing, e.g. SF Pro Text +12/2048 em at 11pt, 0 at 12pt,
+−47 at 17pt. SF Mono has none. HarfBuzz applies `trak` only when the font also
+has a STAT table (`hb-ot-shape.cc`: `apply_trak = has_tracking && STAT->has_data()`),
+and Apple's static fonts have no STAT. `add_stat.py` (build option `TRACKING`,
+default on) adds a minimal one: a wght and an ital axis describing what the
+font already is. fontconfig's family/style/weight are unchanged.
+
+pango, SF Pro Text Regular, "Hamburgefonstiv Αλφάβητο ελληνικά":
+
+| pt | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 17 | 20 |
+|---|---|---|---|---|---|---|---|---|---|
+| width change | +4.3 % | +0.9 % | +0.8 % | 0 | −1.0 % | −2.7 % | −1.4 % | −4.0 % | −5.9 % |
+
+pango passes HarfBuzz the size in points. Chrome passes CSS px as points,
+like Safari, so 16 px web text gets the 16pt track (−3.9 % measured). STAT and
+`trak` survive otf2ttf and ttfautohint. font-patcher (FontForge) drops both, so
+`NERD_PATCH=true` builds get no tracking.
+
+### 12. Other variants measured and rejected (2026-09-30)
+
+FreeType simulation, 4 weights (Regular…Bold) × 8 sizes (12–20 px), glyphs
+placed at quarter-pixel x like GSK. "glued" = dot/diaeresis with no row under
+25 % coverage between it and the body (`i j ï ä ö ü ϊ ϋ ë ΐ ΰ`). "height" =
+flat and round letters disagree on x-height (Latin, Greek), cap height or
+baseline.
+
+| mode | glued | height mismatches | ink vs outline |
+|---|---|---|---|
+| none | 65 | 27 | 1.000 |
+| slight (autohinter) | 47 | 0 | 1.015 |
+| **medium (package bytecode)** | **2** | **0** | 1.003 |
+| full + `autohint=true` | 33 | 0 | 1.025 |
+| slight + `autofitter:no-stem-darkening=0` | 72 | 0 | 1.075 |
+
+- **slight fails at 9 pt Bold.** All 11 diacritics merge into the letter.
+  The real GTK4 render shows the same. medium keeps a clean gap.
+  At 11 pt the two are almost identical.
+- **`manual` + slight is pixel-identical to `automatic`.** Diff 0.000 on a real
+  GSK render, so `font-rendering manual` does nothing unless `font-hinting` is
+  medium/full.
+- **Stem darkening** only runs in the autohinter's light mode. It darkens by
+  about 7 % and glues more dots ("illicit" → "IIIIcIt" at Bold 9 pt).
+- **`GDK_DEBUG=linear`** (linear blending, which FreeType asks for with stem
+  darkening) makes dark-on-light text much lighter: GSK ink 13.1 with darkening,
+  11.8 without, vs 17.9 by default. Rejected either way.
 
 ## Verifying on your own system
 
@@ -277,6 +370,11 @@ Verified 2026-09-29 on Firefox Nightly: with the pref on, the uneven gaps are go
 - Offscreen cairo tests without GTK are misleading for metrics-off modes. The
   baseline lands on fractional pixels and blurs horizontal edges, while GSK
   rounds it.
+- **fontconfig 2.18 still loads `$XDG_CONFIG_HOME/fontconfig/` when
+  `FONTCONFIG_FILE` is set.** An "isolated" test config is silently overridden by
+  your own `fonts.conf`. Set `XDG_CONFIG_HOME` to an empty directory as well.
+  `FC_DEBUG=4` also prints "Add Rule" lines for files that are only *scanned*
+  (e.g. every `conf.avail` entry), so the trace alone does not show which rules are active.
 - Comparing RGBA screenshots with `ImageChops.difference(...).getbbox()` only
   looks at the alpha channel. Composite onto white and compare the grey values.
 
