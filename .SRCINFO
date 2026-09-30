@@ -1,12 +1,12 @@
 pkgbase = equicord-installer-bin
 	pkgdesc = Equilotl is the CLI Installer for Equicord
-	pkgver = 2.2.6
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/Equicord/Equilotl
 	install = equicord-installer-bin.install
 	arch = x86_64
 	license = GPL3
-	source = Equilotl::https://github.com/Equicord/Equilotl/releases/download/v2.2.6/EquilotlCli-linux
-	sha256sums = 5179bff47736c9d0e2df8367798d7c743d221c403f6c9262f8571f34d3383ed1
+	source = Equilotl::https://github.com/Equicord/Equilotl/releases/download/v2.3.0/EquilotlCli-linux
+	sha256sums = 1ee134c7295bbbb2ef7058d157509508832e17a543ac1bf753ca63b16d4a8bbd
 
 pkgname = equicord-installer-bin
