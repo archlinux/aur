@@ -1,0 +1,134 @@
+diff -u a/src/Rcompression.h b/src/Rcompression.h
+--- a/src/Rcompression.h
++++ b/src/Rcompression.h
+@@ -6,8 +6,8 @@
+ 
+ #define R_PROBLEM_BUFSIZE	4096
+ #define PROBLEM			{char R_problem_buf[R_PROBLEM_BUFSIZE];(snprintf)(R_problem_buf, R_PROBLEM_BUFSIZE,
+-#define ERROR			),Rf_error(R_problem_buf);}
+-#define WARNING(x)		),Rf_warning(R_problem_buf);}
++#define ERROR			),Rf_error("%s", R_problem_buf);}
++#define WARNING(x)		),Rf_warning("%s", R_problem_buf);}
+ #define WARN			WARNING(NULL)
+ 
+ #endif
+diff -u a/src/Runtgz.c b/src/Runtgz.c
+--- a/src/Runtgz.c
++++ b/src/Runtgz.c
+@@ -53,7 +53,7 @@
+ SEXP
+ R_tarInfo(SEXP r_filename,  SEXP r_fun, SEXP r_data)
+ {
+-   gzFile *f = NULL;
++   gzFile f = NULL;
+    const char *filename;
+    char *argv[] = {"R"};
+    TarCallbackFun callback = R_tarInfo_callback;
+@@ -199,10 +199,10 @@
+    Rboolean doRcallback = (TYPEOF(r_fun) == CLOSXP);
+    void *data;
+ 
+-   gzFile *f = NULL;
++   gzFile f = NULL;
+ 
+    int numFiles = LENGTH(r_filenames), i;
+-   const char **argv;
++   char **argv;
+    int argc = numFiles + 1;
+ 
+    if(TYPEOF(r_filename) == STRSXP) {
+@@ -240,7 +240,7 @@
+    argv = (char **) S_alloc(numFiles + 1, sizeof(char *));
+    argv[0] = "R";
+    for(i = 1; i < numFiles + 1; i++)
+-       argv[i] = CHAR(STRING_ELT(r_filenames, i-1));
++       argv[i] = (char *) CHAR(STRING_ELT(r_filenames, i-1));
+ 
+ 
+    if(TYPEOF(r_filename) == STRSXP)
+diff -u a/src/crypt.h b/src/crypt.h
+--- a/src/crypt.h
++++ b/src/crypt.h
+@@ -32,7 +32,7 @@
+ /***********************************************************************
+  * Return the next byte in the pseudo-random sequence
+  */
+-static int decrypt_byte(unsigned long* pkeys, const unsigned long* pcrc_32_tab)
++static int decrypt_byte(unsigned long* pkeys, const z_crc_t* pcrc_32_tab)
+ {
+     unsigned temp;  /* POTENTIAL BUG:  temp*(temp^1) may overflow in an
+                      * unpredictable manner on 16-bit systems; not a problem
+@@ -45,7 +45,7 @@
+ /***********************************************************************
+  * Update the encryption keys with the next byte of plain text
+  */
+-static int update_keys(unsigned long* pkeys,const unsigned long* pcrc_32_tab,int c)
++static int update_keys(unsigned long* pkeys,const z_crc_t* pcrc_32_tab,int c)
+ {
+     (*(pkeys+0)) = CRC32((*(pkeys+0)), c);
+     (*(pkeys+1)) += (*(pkeys+0)) & 0xff;
+@@ -62,7 +62,7 @@
+  * Initialize the encryption keys and the random header according to
+  * the given password.
+  */
+-static void init_keys(const char* passwd,unsigned long* pkeys,const unsigned long* pcrc_32_tab)
++static void init_keys(const char* passwd,unsigned long* pkeys,const z_crc_t* pcrc_32_tab)
+ {
+     *(pkeys+0) = 305419896L;
+     *(pkeys+1) = 591751049L;
+@@ -92,7 +92,7 @@
+     unsigned char *buf;         /* where to write header */
+     int bufSize;
+     unsigned long* pkeys;
+-    const unsigned long* pcrc_32_tab;
++    const z_crc_t* pcrc_32_tab;
+     unsigned long crcForCrypting;
+ {
+     int n;                       /* index in random header */
+diff -u a/src/ioapi.h b/src/ioapi.h
+--- a/src/ioapi.h
++++ b/src/ioapi.h
+@@ -83,7 +83,9 @@
+ #endif
+ 
+ /* a type choosen by DEFINE */
+-#ifdef HAVE_64BIT_INT_CUSTOM
++#if defined(ZPOS64_T)
++/* ZPOS64_T is already a macro (uint64_t) from above; a typedef would clash */
++#elif defined(HAVE_64BIT_INT_CUSTOM)
+ typedef  64BIT_INT_CUSTOM_TYPE ZPOS64_T;
+ #else
+ #ifdef HAS_STDINT_H
+diff -u a/src/untgz.c b/src/untgz.c
+--- a/src/untgz.c
++++ b/src/untgz.c
+@@ -329,7 +329,7 @@
+ const char *
+ gzerror_proxy(void *stream, int *errnum, DataSource *src)
+ {
+-    return(gzerror((gzFile *) stream, errnum));
++    return(gzerror((gzFile) stream, errnum));
+ }
+ 
+ 
+@@ -389,7 +389,7 @@
+       ctr++;
+       len = src->read(src->data, &buffer, BLOCKSIZE, src);
+       if (len < 0)
+-	  error(src->throwError(src->data, &err, src));
++	  error("%s", src->throwError(src->data, &err, src));
+       /*
+        * Always expect complete blocks to process
+        * the tar information.
+@@ -481,9 +481,9 @@
+                   action = TGZ_INVALID;
+                   break;
+                 }
+-              len = src->read(src->data, fname, BLOCKSIZE, src);
++              len = src->read(src->data, (union tar_buffer *) fname, BLOCKSIZE, src);
+               if (len < 0)
+-		  error(src->throwError(src->data, &err, src));
++		  error("%s", src->throwError(src->data, &err, src));
+               if (fname[BLOCKSIZE-1] != 0 || (int)strlen(fname) > remaining)
+                 {
+                   action = TGZ_INVALID;

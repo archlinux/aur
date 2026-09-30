@@ -1,0 +1,18 @@
+pkgbase = r-rcompression
+	pkgdesc = R interface to zlib and bzip2 for in-memory (de)compression and zip archive creation (omegahat, not on CRAN)
+	pkgver = 0.96.0
+	pkgrel = 1
+	url = https://github.com/omegahat/Rcompression
+	arch = x86_64
+	arch = aarch64
+	license = Zlib
+	makedepends = gcc
+	depends = r
+	depends = zlib
+	depends = bzip2
+	source = Rcompression-57f26da8331bbc0b4f04b98c500adcc2c5b8809b.tar.gz::https://github.com/omegahat/Rcompression/archive/57f26da8331bbc0b4f04b98c500adcc2c5b8809b.tar.gz
+	source = rcompression-modern-gcc.patch
+	sha256sums = ccdab37a4a58b8cfb45bb0dd89a85889b45f2fe8c80dbc8cbb1a59ac81a1cf10
+	sha256sums = b60ce35fdae96ddff2ae0bde2d4677b15d8f580921a60795ac966b497e3d51a7
+
+pkgname = r-rcompression
