@@ -1,18 +1,16 @@
 pkgbase = openmtp-git
-	pkgdesc = Advanced Android File Transfer Application.(Use system-wide electron)
+	pkgdesc = Advanced Android File Transfer Application.
 	pkgver = 3.3.0.r1.g1c38907
 	pkgrel = 1
 	url = https://openmtp.ganeshrvel.com/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	makedepends = npm
 	makedepends = git
 	makedepends = nvm
+	makedepends = npm
 	makedepends = gendesk
-	makedepends = gcc
-	makedepends = cmake
-	makedepends = curl
+	makedepends = jq
 	makedepends = yarn
 	depends = electron18
 	provides = openmtp=3.3.0
@@ -20,6 +18,6 @@ pkgbase = openmtp-git
 	source = openmtp.git::git+https://github.com/ganeshrvel/openmtp.git
 	source = openmtp.sh
 	sha256sums = SKIP
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
 pkgname = openmtp-git
