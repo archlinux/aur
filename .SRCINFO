@@ -1,6 +1,6 @@
 pkgbase = omarchy-screenshot
 	pkgdesc = Qt 6 screenshot and annotation tool for Omarchy and Hyprland
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/manateelazycat/omarchy-screenshot
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = omarchy-screenshot
 	depends = hyprland
 	optdepends = tesseract: OCR text recognition
 	optdepends = tesseract-data-chi_sim: Chinese OCR
-	source = omarchy-screenshot-0.1.4.tar.gz::https://github.com/manateelazycat/omarchy-screenshot/archive/v0.1.4.tar.gz
-	sha256sums = 2ced329cd8d8297a669f0d3f8a96f6bc23e5626b5b3c8e76cdc83d43c3fb86ae
+	source = omarchy-screenshot-0.1.5.tar.gz::https://github.com/manateelazycat/omarchy-screenshot/archive/v0.1.5.tar.gz
+	sha256sums = 45752a9d37f806410632bc6a4079f1950e22357e40ee8ad3a18119c73a1faf29
 
 pkgname = omarchy-screenshot
