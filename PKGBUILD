@@ -7,7 +7,7 @@
 
 _pkgname=libceed
 pkgname=${_pkgname}-git
-pkgver=0.12.0.r1477.g27b2749
+pkgver=0.12.0.r1514.g82a1d33
 pkgrel=1
 pkgdesc="Code for Efficient Extensible Discretizations"
 arch=('x86_64')
@@ -17,6 +17,7 @@ depends=(
   "libgomp"
   "libgcc"
   "glibc"
+  "libstdc++"
 )
 makedepends=(
   "git"
@@ -25,6 +26,8 @@ makedepends=(
   "python-installer"
   "python-setuptools"
   "python-wheel"
+  "python-cffi"
+  "pkgconfig"
 )
 optdepends=(
   "python: If using the Python API"
@@ -32,6 +35,7 @@ optdepends=(
   "python-numpy: If using the Python API"
   "python-pytest: If running the Python tests"
   "python-setuptools: If running the Python tests"
+  "libxsmm: Alternative vectorized backend"
 )
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
@@ -50,6 +54,9 @@ prepare() {
   cd ${_pkgname}
   # don't compile CEED twice for python-ceed
   sed -i '/always-make/d' setup.py
+
+  # Ensure that we are looking for the shared lib of libxsmm
+  sed -i 's/libxsmm.pc/libxsmm-shared.pc/' Makefile
 }
 
 build() {
@@ -57,6 +64,8 @@ build() {
     # NOTE: Export build options to environment variables
     # otherwise python will build with a different set of variables
     export OPENMP=1
+    # Optional libxsmm backend
+    export XSMM_DIR=/usr
     # Add -fPIC
     local CFLAGS="${CFLAGS} -fPIC"
     local CXXFLAGS="${CXXFLAGS} -fPIC"
