@@ -2,11 +2,11 @@
 
 pkgname=alacritree-bin
 _pkgname=alacritree
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
-pkgdesc="Alacritty fork with worktree-aware sidebars (prebuilt binary)"
+pkgdesc="Native terminal that turns Git worktrees into workspaces, built on Alacritty (prebuilt binary)"
 arch=('x86_64' 'aarch64')
-url="https://github.com/mathix420/alacritree"
+url="https://github.com/alacritree/alacritree"
 license=('Apache-2.0')
 depends=(
   'fontconfig'
@@ -40,8 +40,8 @@ source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgve
 # in by .github/workflows/aur-bin-publish.yml before the manifest is shipped
 # to AUR.
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
-sha256sums_x86_64=('33f855207c36e9dc61c211a09f3ac9df8d614954c778ce77d1dc8dd675dd2c65')
-sha256sums_aarch64=('f028cd86fcbc2e43ea66d05331a2a02bbeec78cab85e7dd4c6d763c7345b0e50')
+sha256sums_x86_64=('21c310af6348eb17fd52ff796605d57d6f3334ef4627d7249c5f2aa36e1e9834')
+sha256sums_aarch64=('a16ec598fe3d9f50eb594a7fed91d7f6052b5996e5521cd3b3bdaca4a74805db')
 
 package() {
   # dist tarballs unpack into a root dir named after the archive.
