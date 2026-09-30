@@ -1,7 +1,7 @@
 # Maintainer: badcast <lmecomposer@gmail.com> or <support@imister.kz>
 # Skin author: gr-e
 
-pkgver=3.13.1
+pkgver=4.0.1
 pkgname=aimp-skin-soot
 pkgrel=1
 url="https://www.aimp.ru"
@@ -10,8 +10,8 @@ arch=('x86_64')
 provides=('aimp-skin')
 license=('custom')
 depends=('aimp')
-source=("${url}/files/windows/skins/s/Soot.zip")
-sha256sums=('0271f5f68eff550933ae29c0708ebb85f7d2e3ea53cf2d50aa8b47654e72e54d')
+source=("${url}/files/desktop/skins/s/Soot.zip")
+sha256sums=('675bead4376bf1cbc5a35d09c14100a7128295d25b82594016c5f6041f0d71ea')
 
 package(){
    DEST="${pkgdir}/opt/aimp/Skins"
