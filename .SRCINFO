@@ -1,0 +1,14 @@
+pkgbase = passmcp-agentgateway-extmcp
+	pkgdesc = agentgateway ExtMcp processor that gates MCP backends on offline-verified passmcp attestations
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/sebastienrousseau/passmcp-reporting/tree/main/integrations/agentgateway-extmcp
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = passmcp-reporting-0.0.4.tar.gz::https://github.com/sebastienrousseau/passmcp-reporting/archive/refs/tags/v0.0.4.tar.gz
+	sha256sums = 34b1ff2024d4f11d5ed43e4d2092930cbc7ddd4a1abfe5a99ccc47c389cdf81c
+
+pkgname = passmcp-agentgateway-extmcp
