@@ -1,0 +1,15 @@
+diff '--color=auto' --unified --recursive --text --color vrc-get-gui-v1.1.8/vrc-get-gui/components/providers.tsx vrc-get-gui-v1.1.8-patched/vrc-get-gui/components/providers.tsx
+--- vrc-get-gui-v1.1.8/vrc-get-gui/components/providers.tsx	2026-07-12 04:35:28.000000000 +0900
++++ vrc-get-gui-v1.1.8-patched/vrc-get-gui/components/providers.tsx	2026-07-12 12:58:38.554719469 +0900
+@@ -100,11 +100,6 @@
+ 				if (import.meta.env.DEV) return;
+ 				const checkVersion = await commands.utilCheckForUpdate();
+ 				if (cancel) return;
+-				if (checkVersion) {
+-					await openSingleDialog(CheckForUpdateMessage, {
+-						response: checkVersion,
+-					});
+-				}
+ 			} catch (e) {
+ 				toastThrownError(e);
+ 				console.error(e);
