@@ -1,6 +1,6 @@
 pkgbase = wubi-dict-editor
 	pkgdesc = Five Pen Watch Assistant for Rime.五笔码表助手 for Rime.
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/KyleBing/wubi-dict-editor
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = wubi-dict-editor
 	optdepends = fcitx5-rime: Rime input method framework for Fcitx5
 	conflicts = wubi-dict-editor
 	options = !emptydirs
-	source = wubi-dict-editor-1.4.2::git+https://github.com/KyleBing/wubi-dict-editor#tag=v1.4.2
+	source = wubi-dict-editor-1.4.3::git+https://github.com/KyleBing/wubi-dict-editor#tag=v1.4.3
 	source = wubi-dict-editor.sh
-	sha256sums = e2ae86c9e8e05bd6eec33ecd426999636da36f1ec5c211cd360f0cd4cf375750
+	sha256sums = b25c01fa9c1fa71ce1a52efcefdb33511c573f431365c5c02991ecf850587856
 	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
 pkgname = wubi-dict-editor
