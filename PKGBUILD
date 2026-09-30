@@ -11,6 +11,9 @@
 #
 #     gpg --auto-key-locate nodefault,wkd --locate-keys torbrowser@torproject.org
 #
+# Tor Browser rotates its signing subkeys: if makepkg reports an unknown
+# public key, re-run the command above to refresh the keyring.
+#
 # If you want to update tor-browser from AUR without AUR helpers you can run in a terminal:
 #
 #     tor-browser -u
