@@ -1,7 +1,7 @@
 # Maintainer: buj <buj351@outlook.com>
 pkgname=voidsprite-bin
-_pkgver=2026.08
-pkgver="$_pkgver"+alpha
+_pkgver=2026.09
+pkgver="$_pkgver"+beta
 pkgrel=1
 pkgdesc='Free pixelart editor made in SDL3 C++'
 url='https://github.com/counter185/voidsprite'
@@ -19,7 +19,7 @@ done
 arch=('x86_64')
 conflicts=('voidsprite')
 provides=("voidsprite=$(echo $_pkgver | tr '.' $'\n' | tac | paste -s -d '.')")
-sha256sums=('b21c84c48da7285875f287c333d748e3fad1741308f2b025cedd9de9495bf355'  # voidsprite
+sha256sums=('e584623597ca9979acf06e40e6251cdacbe0df33d1948cfb8a33809c2e8ba283'  # voidsprite
             '08dda56f5cad7861a9508d35238c5ece6d2287d5c89796683b23131a967fb527'  # voidsprite.desktop
             '8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643'  # license
             '23ff809ac82b1eec7d7da1168204ef8bb087b130a4dfac17c2163faba27d6c5c'  # metainfo.xml
