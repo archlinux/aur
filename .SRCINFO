@@ -1,6 +1,6 @@
 pkgbase = yeet-bin
 	pkgdesc = yeet daemon and associated tools
-	pkgver = 0.23.1
+	pkgver = 0.23.2
 	pkgrel = 1
 	url = https://yeet.cx/
 	install = yeet.install
@@ -9,13 +9,13 @@ pkgbase = yeet-bin
 	license = BSD3
 	options = !debug
 	validpgpkeys = F537B2E78670F4F6C75D0E997FE0E3E7218228E6
-	source_x86_64 = https://pkgs.yeet.cx/archlinux/os/x86_64/stable/yeet-0.23.1-1-x86_64.pkg.tar.zst
-	source_x86_64 = https://pkgs.yeet.cx/archlinux/os/x86_64/stable/yeet-0.23.1-1-x86_64.pkg.tar.zst.sig
-	sha256sums_x86_64 = 352394227cfeaabe54c7ebf86f876d407c700233f0ace540d03bc88f90e6bcab
+	source_x86_64 = https://pkgs.yeet.cx/archlinux/os/x86_64/stable/yeet-0.23.2-1-x86_64.pkg.tar.zst
+	source_x86_64 = https://pkgs.yeet.cx/archlinux/os/x86_64/stable/yeet-0.23.2-1-x86_64.pkg.tar.zst.sig
+	sha256sums_x86_64 = 3fab3ca1ae199486ef7c60ccef16cc1c66a68cce2bbd8962cab0b1c11327c5d7
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://pkgs.yeet.cx/archlinux/os/aarch64/stable/yeet-0.23.1-1-aarch64.pkg.tar.zst
-	source_aarch64 = https://pkgs.yeet.cx/archlinux/os/aarch64/stable/yeet-0.23.1-1-aarch64.pkg.tar.zst.sig
-	sha256sums_aarch64 = 74a527f2aa51ae8b8336dcdef1e35195270053359269558742450ea6fc7f3f77
+	source_aarch64 = https://pkgs.yeet.cx/archlinux/os/aarch64/stable/yeet-0.23.2-1-aarch64.pkg.tar.zst
+	source_aarch64 = https://pkgs.yeet.cx/archlinux/os/aarch64/stable/yeet-0.23.2-1-aarch64.pkg.tar.zst.sig
+	sha256sums_aarch64 = bafa3182cbe3c02468366ed1a249eee8c57a7e839e310416e38917168291b079
 	sha256sums_aarch64 = SKIP
 
 pkgname = yeet-bin
