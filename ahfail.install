@@ -1,0 +1,29 @@
+_ahfail_msg() {
+    cat <<'MSG'
+==> ahfail is its own screen locker and uses its own PAM service (/etc/pam.d/ahfail).
+    Nothing in your other PAM files has been changed.
+
+    Check your setup:      ahfail doctor
+    See the effect safely: ahfail test
+    Lock the screen:       ahfail
+
+    Lock automatically:
+      Wayland: swayidle -w timeout 300 'ahfail' before-sleep 'ahfail'
+      X11:     xss-lock -- ahfail
+
+    The old PAM hook (auth optional .../libahfail_pam.so in e.g. /etc/pam.d/i3lock)
+    is no longer needed with `ahfail`. Remove that line yourself if you added it.
+MSG
+}
+
+post_install() {
+    _ahfail_msg
+}
+
+post_upgrade() {
+    # Only when coming from before 0.10.0, when ahfail became its own locker;
+    # repeating the message on every update would just teach people to skip it.
+    if (( $(vercmp "$2" 0.10.0) < 0 )); then
+        _ahfail_msg
+    fi
+}
