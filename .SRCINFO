@@ -1,6 +1,6 @@
 pkgbase = prevu
 	pkgdesc = Local-first preview social link cards instantly before deployment
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/dhanushk-offl/prevu
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = prevu
 	depends = hicolor-icon-theme
 	depends = libsoup
 	options = !strip
-	source_x86_64 = https://github.com/dhanushk-offl/prevu/releases/download/v0.1.5/PREVU_0.1.5_amd64.deb
-	sha256sums_x86_64 = a96fcf8a74867f250f3e287f83d4bf37c8e1bc946e635211bc131f7e38b0ac47
+	source_x86_64 = https://github.com/dhanushk-offl/prevu/releases/download/v0.1.6/PREVU_0.1.6_amd64.deb
+	sha256sums_x86_64 = 53dcdc5e934006ad830640bd4cd750b017e05891f2aebefb77546d245289b2fd
 
 pkgname = prevu

@@ -1,5 +1,5 @@
 pkgname=prevu
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Local-first preview social link cards instantly before deployment"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!strip')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/PREVU_${pkgver}_amd64.deb")
 
-sha256sums_x86_64=('a96fcf8a74867f250f3e287f83d4bf37c8e1bc946e635211bc131f7e38b0ac47')
+sha256sums_x86_64=('53dcdc5e934006ad830640bd4cd750b017e05891f2aebefb77546d245289b2fd')
 
 package() {
   bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
