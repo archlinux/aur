@@ -1,0 +1,18 @@
+pkgbase = python-code-health-analyzer
+	pkgdesc = Dependency-free Python static analyzer for code health, complexity and import cycles
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Johnkothapalli/python-code-health-analyzer
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python>=3.11
+	source = python-code-health-analyzer-0.1.0.tar.gz::https://github.com/Johnkothapalli/python-code-health-analyzer/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = f17b1106bc47aa03ea93e4dda00acd2f66d5f228a9e9e31917a8ba0c51f36f1c
+
+pkgname = python-code-health-analyzer
