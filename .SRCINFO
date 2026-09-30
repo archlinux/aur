@@ -1,6 +1,6 @@
 pkgbase = yara-x-bin
 	pkgdesc = A pure Rust implementation of YARA
-	pkgver = 1.20.0
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = https://github.com/VirusTotal/yara-x
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = yara-x-bin
 	license = BSD-3-Clause
 	provides = yr
 	conflicts = yara-x
-	source = LICENSE-1.20.0::https://raw.githubusercontent.com/VirusTotal/yara-x/v1.20.0/LICENSE
-	source = README-1.20.0.md::https://raw.githubusercontent.com/VirusTotal/yara-x/v1.20.0/README.md
+	source = LICENSE-1.21.0::https://raw.githubusercontent.com/VirusTotal/yara-x/v1.21.0/LICENSE
+	source = README-1.21.0.md::https://raw.githubusercontent.com/VirusTotal/yara-x/v1.21.0/README.md
 	sha256sums = fdf05444c9178e662fa28810d94a1fa6ec32d7be798241c98094213317265880
 	sha256sums = fe5c6f9fde50171d930617d0d21daec6ce089dd9b02853662f5a41dd614ee109
-	source_x86_64 = yara-x-x86_64-1.20.0.tgz::https://github.com/VirusTotal/yara-x/releases/download/v1.20.0/yara-x-v1.20.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = cabb8df46492fff59c51261302c71ed9cb2cef393d3f0ca560801a34a8e24cbe
-	source_aarch64 = yara-x-aarch64-1.20.0.tgz::https://github.com/VirusTotal/yara-x/releases/download/v1.20.0/yara-x-v1.20.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = c1d6f63a6fe55c17b5ddbfcb89d34599b737226a683ee492b12d92d1d541f304
+	source_x86_64 = yara-x-x86_64-1.21.0.tgz::https://github.com/VirusTotal/yara-x/releases/download/v1.21.0/yara-x-v1.21.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 01585181e8979e36ac10ab123fcf8921cf8ba879bf942916413e091e18d64852
+	source_aarch64 = yara-x-aarch64-1.21.0.tgz::https://github.com/VirusTotal/yara-x/releases/download/v1.21.0/yara-x-v1.21.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 8d56947d82c7959a65fd4a7327d339d326649f6208c01c9f7fe7fd249e61c66a
 
 pkgname = yara-x-bin
