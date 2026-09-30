@@ -1,7 +1,7 @@
 # Maintainer: Ilyas Turki <turki.ilyass@gmail.com>
 pkgbase=universe-bin
 pkgname=(universe-bin universe-desktop-bin)
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='Gamepad-first game launcher: a Rust core, a PySide6 UI, games inside gamescope (prebuilt release)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "metadata-$pkgver.json::$url/raw/v$pkgver/extension/metadata.json"
   "extension-$pkgver.js::$url/raw/v$pkgver/extension/extension.js"
 )
-sha256sums=('3292b16b22c1e3b9bcc1533b569f83b31b60f3179189324d5ac6cce75df5c0b9'
+sha256sums=('1b1fda1812b322eadc8ce752247e3db925d557bafcce672c9d0712ebf383649c'
             '0cb757833aaea7e1944b1e1801c99f7cae37e65ebd93776f3a54996d34de8162'
             '4da584841b0ced9e6739bee12916f1b439cf740760a3b366840291fae56b4a3e')
 _id=io.github.ilyasturki.UniverseDesktop
