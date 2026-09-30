@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=thinkrail-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Vibe code with pi in a lightweight, real IDE - The Vibe You Need'
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ provides=('thinkrail')
 conflicts=('thinkrail')
 source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/JetBrains/thinkrail/releases/download/v${pkgver}/thinkrail-linux-x64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://github.com/JetBrains/thinkrail/releases/download/v${pkgver}/thinkrail-linux-arm64")
-sha256sums_x86_64=('45ea4261c22ef43878d87be6ba18c05d8fc91b5a6bf3cc63bffd22d6141a8873')
-sha256sums_aarch64=('5102397ae413db8cee69207d170db53a2465fa0e958a4f2b4e9c174a4174ea2e')
+sha256sums_x86_64=('cef50ec77652c015952fea40a34a61094297ee57844ad248592e74ae1a7012a7')
+sha256sums_aarch64=('ed0c08449d5b56d3d21e59c3ace3b4d086198a78811be1b2a8b0f01b369829ab')
 
 package() {
   local source_file
