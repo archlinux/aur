@@ -3,8 +3,10 @@
 #
 # AUR: build dal tag firmato della release, verificato da makepkg
 # contro validpgpkeys (source qui sotto). Prima installazione:
-#   gpg --recv-keys EBEE3E80EFA38B42B147F1B99D7AA4F1971FEAA9
-# e confrontare l'impronta con quella nel README.
+#   gpg --keyserver hkps://keys.openpgp.org --recv-keys EBEE3E80EFA38B42B147F1B99D7AA4F1971FEAA9
+# (oppure hkps://keyserver.ubuntu.com, o gpg --import del file
+# arch/klamav-py-release-key.asc del repository del progetto) e
+# confrontare l'impronta con quella nel README.
 # Test locale senza macchina Arch:  arch/test-local.sh   (docker)
 # Build locale su una macchina Arch: arch/test-local.sh --tarball
 #   (stampa i comandi; serve il tarball perché un source git clona
@@ -12,7 +14,7 @@
 #   modifiche non ancora rilasciate)
 
 pkgname=klamav-py
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="Frontend Python minimale per ClamAV via clamd, erede spirituale di KlamAV 0.22"
 arch=('any')

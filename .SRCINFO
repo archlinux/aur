@@ -1,6 +1,6 @@
 pkgbase = klamav-py
 	pkgdesc = Frontend Python minimale per ClamAV via clamd, erede spirituale di KlamAV 0.22
-	pkgver = 0.1.12
+	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://github.com/gradia64/KlamAV-Py
 	install = klamav-py.install
@@ -17,7 +17,7 @@ pkgbase = klamav-py
 	optdepends = polkit: aggiornamento database virus da GUI (pkexec systemctl restart del servizio freshclam)
 	optdepends = kio: integrazione menu contestuale Dolphin (kbuildsycoca)
 	optdepends = libnotify: notifica desktop se la scansione programmata trova infezioni o fallisce
-	source = klamav-py::git+https://github.com/gradia64/KlamAV-Py.git#tag=v0.1.12?signed
+	source = klamav-py::git+https://github.com/gradia64/KlamAV-Py.git#tag=v0.1.13?signed
 	validpgpkeys = EBEE3E80EFA38B42B147F1B99D7AA4F1971FEAA9
 	sha256sums = SKIP
 
