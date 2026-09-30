@@ -1,6 +1,6 @@
 pkgbase = pen-dev-appimage
 	pkgdesc = Pen: AI-powered design canvas (formerly Pencil) (appimage)
-	pkgver = 1.2.14
+	pkgver = 1.2.15
 	pkgrel = 1
 	url = https://www.pen.dev
 	arch = x86_64
@@ -12,15 +12,15 @@ pkgbase = pen-dev-appimage
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = zlib
-	provides = pen-dev=1.2.14
-	provides = pencil-dev=1.2.14
+	provides = pen-dev=1.2.15
+	provides = pencil-dev=1.2.15
 	conflicts = pen-dev
 	conflicts = pen-dev-bin
 	conflicts = pencil-dev
 	conflicts = pencil-dev-bin
 	conflicts = pencil-dev-appimage
-	noextract = Pen-1.2.14-linux-x86_64.AppImage
-	noextract = Pen-1.2.14-linux-arm64.AppImage
+	noextract = Pen-1.2.15-linux-x86_64.AppImage
+	noextract = Pen-1.2.15-linux-arm64.AppImage
 	options = !strip
 	options = !debug
 	source = pen-dev.desktop
@@ -31,9 +31,9 @@ pkgbase = pen-dev-appimage
 	sha256sums = 5898e0189970c8995fc14978ad9b91483d787d2842a01369e29da928b49cc75a
 	sha256sums = 42b82acedd61dfb095f44aaadbc58b703fabaa1c25d60b6e133231a0c70c8c53
 	sha256sums = c488ed6256fd9663637e95d5e5e8632b523d22e5f873145c76ccf016d409081d
-	source_x86_64 = https://github.com/highagency/pen-desktop-releases/releases/download/v1.2.14/Pen-1.2.14-linux-x86_64.AppImage
-	sha256sums_x86_64 = 512ee5eea9797aacee452f9569b54d875c6c3a49f397700d906b9a82f633411b
-	source_aarch64 = https://github.com/highagency/pen-desktop-releases/releases/download/v1.2.14/Pen-1.2.14-linux-arm64.AppImage
-	sha256sums_aarch64 = 3a19cbf95cf9ce123047d08128df19f32b82eb2cde6f7faeb54bc670f528ad85
+	source_x86_64 = https://github.com/highagency/pen-desktop-releases/releases/download/v1.2.15/Pen-1.2.15-linux-x86_64.AppImage
+	sha256sums_x86_64 = 27289f7a55ab834531afe19b7bf6cc4dc222c1f0e6ac49f72a851147ef0f3ea9
+	source_aarch64 = https://github.com/highagency/pen-desktop-releases/releases/download/v1.2.15/Pen-1.2.15-linux-arm64.AppImage
+	sha256sums_aarch64 = 32fe37483aef1e9b757ae38c533b08f0b2d0d803a7a903bb84dc54a33389d666
 
 pkgname = pen-dev-appimage
