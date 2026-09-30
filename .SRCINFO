@@ -1,12 +1,13 @@
 pkgbase = moon-bin
 	pkgdesc = Task runner and repo management tool for the web ecosystem
 	pkgver = 2.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moonrepo/moon
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
 	provides = moon
 	conflicts = moon
 	source_x86_64 = moon-2.5.6-x86_64.tar.xz::https://github.com/moonrepo/moon/releases/download/v2.5.6/moon_cli-x86_64-unknown-linux-gnu.tar.xz
