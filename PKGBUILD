@@ -1,12 +1,13 @@
 # Maintainer: Romain Chardiny <romain.chardiny@gmail.com>
 pkgname=floc-git
-pkgver=0.2.2.r42.175eee6
+pkgver=0.2.2.r67.ec50e96
 pkgrel=1
 pkgdesc="Flo Compiler"
 arch=("any")
 url="https://github.com/romch007/floc"
 license=('MIT')
 depends=("llvm-libs" "gcc-libs")
+optdepends=('gcc: linking object files into executables')
 provides=('floc')
 makedepends=('git' 'rust' 'llvm' 'clang')
 source=('git+https://github.com/romch007/floc.git')
