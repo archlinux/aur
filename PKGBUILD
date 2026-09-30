@@ -10,11 +10,18 @@ url="https://github.com/aubree-lat/MacOBlox"
 license=('MIT')
 # clang and lld build the shim on first launch, against Darling's own sysroot.
 depends=('darling' 'clang' 'lld' 'unzip' 'pipewire-audio' 'python' 'python-gobject' 'gtk4' 'libadwaita' 'webkitgtk-6.0')
-makedepends=('git')
+makedepends=('git' 'patch')
 provides=('macoblox')
 conflicts=('macoblox')
-source=("git+$url.git")
-sha256sums=('SKIP')
+source=("git+$url.git"
+        "shift_lock_reticle.patch")
+sha256sums=('SKIP'
+            '8d060650ac40f9a49a1a8449a8116a9dfbbcca924433669a7a7392abd9a79ca8')
+
+prepare() {
+  cd "$_name"
+  patch -Np1 -i "$srcdir/shift_lock_reticle.patch"
+}
 
 pkgver() {
   cd "$_name"

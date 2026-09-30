@@ -6,6 +6,7 @@ pkgbase = macoblox-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = patch
 	depends = darling
 	depends = clang
 	depends = lld
@@ -19,6 +20,8 @@ pkgbase = macoblox-git
 	provides = macoblox
 	conflicts = macoblox
 	source = git+https://github.com/aubree-lat/MacOBlox.git
+	source = shift_lock_reticle.patch
 	sha256sums = SKIP
+	sha256sums = 8d060650ac40f9a49a1a8449a8116a9dfbbcca924433669a7a7392abd9a79ca8
 
 pkgname = macoblox-git
