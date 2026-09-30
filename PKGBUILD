@@ -3,7 +3,7 @@
 
 pkgname=wimboot-bin
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="iPXE kernel to boot wim images from network for both UEFI and BIOS system"
 arch=(any)
 url="https://github.com/ipxe/wimboot"
@@ -16,8 +16,8 @@ install=wimboot.install
 source=(
   "wimboot-${pkgver}::https://github.com/ipxe/wimboot/releases/download/v${pkgver}/wimboot"
   "wimboot.i386-${pkgver}::https://github.com/ipxe/wimboot/releases/download/v${pkgver}/wimboot.i386")
-sha256sums=('abe92880c0208b608cdc0f94e903b8b727d554b70d700606ad0484971713f870'
-            '21e11e4e2c505f8f6744417f56ec0f21bfd4d988c60c208cf07d3255f7a63c93')
+sha256sums=('5f067ccdc4d084d5bf77b6c853bd0f8402dfc2b4cd1b103d358993ae97fae8e3'
+            'b770ad4fa6111d688c062478de3849806b9c3e94a6b770453ef56c94fec254d9')
 
 package() {
 	cd "$srcdir"
