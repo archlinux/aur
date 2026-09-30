@@ -3,7 +3,7 @@ Type=Application
 Name=Cline
 GenericName=AI Coding Agent
 Comment=Cline coding agent as a native desktop app
-Exec=cline-desktop %U
+Exec=env WEBKIT_DISABLE_DMABUF_RENDERER=1 cline-desktop %U
 Icon=cline-desktop
 Terminal=false
 Categories=Development;IDE;

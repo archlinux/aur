@@ -8,7 +8,7 @@
 
 pkgname=cline-desktop
 pkgver=0.0.32
-pkgrel=3
+pkgrel=4
 pkgdesc="Cline coding agent as a native desktop app (unofficial Linux build)"
 arch=('x86_64' 'aarch64')
 url="https://cline.bot/desktop"
@@ -49,7 +49,7 @@ source=(
 )
 sha256sums=(
   '19199a217201750acb7d22dca6d6a43ae37616500bfa468d6201c6a2afac89cf'
-  'fe4591dabfdbe6a62389ed7c7ccc7041ab9f83d21a1cde0bd806d06fabc0ae33'
+  '307529a42da15c37969fe995736e6b40bcfd46818efb2d44fb7f8919dd2771e7'
 )
 
 _srcdir="cline-desktop-v$pkgver"
