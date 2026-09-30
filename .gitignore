@@ -1,0 +1,17 @@
+# Build logs and patch scratch files.
+*.log
+*.log.*
+*.orig
+*.rej
+
+# Downloaded sources and makepkg archives.
+*.pkg.tar.*
+*.src.tar.*
+*.tar.gz
+*.tar.xz
+*.tgz
+
+# makepkg working directories and local caches.
+fvm-cache/
+pkg/
+src/

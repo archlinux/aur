@@ -1,0 +1,130 @@
+--- a/src/ipc.rs
++++ b/src/ipc.rs
+@@ -861,12 +861,7 @@
+                         None
+                     };
+                 } else if name == "hide_cm" {
+-                    value = if crate::hbbs_http::sync::is_pro() || crate::common::is_custom_client()
+-                    {
+-                        Some(hbb_common::password_security::hide_cm().to_string())
+-                    } else {
+-                        None
+-                    };
++                    value = Some(hbb_common::password_security::hide_cm().to_string());
+                 } else if name == "voice-call-input" {
+                     value = crate::audio_service::get_voice_call_input_device();
+                 } else if name == "unlock-pin" {
+--- a/flutter/lib/models/server_model.dart
++++ b/flutter/lib/models/server_model.dart
+@@ -84,12 +84,10 @@
+ 
+   setVerificationMethod(String method) async {
+     await bind.mainSetOption(key: kOptionVerificationMethod, value: method);
+-    /*
+     if (method != kUsePermanentPassword) {
+       await bind.mainSetOption(
+           key: 'allow-hide-cm', value: bool2option('allow-hide-cm', false));
+     }
+-    */
+   }
+ 
+   String get temporaryPasswordLength {
+@@ -106,12 +104,10 @@
+ 
+   setApproveMode(String mode) async {
+     await bind.mainSetOption(key: kOptionApproveMode, value: mode);
+-    /*
+     if (mode != 'password') {
+       await bind.mainSetOption(
+           key: 'allow-hide-cm', value: bool2option('allow-hide-cm', false));
+     }
+-    */
+   }
+ 
+   bool get allowNumericOneTimePassword => _allowNumericOneTimePassword;
+@@ -133,19 +129,6 @@
+   ServerModel(this.parent) {
+     _emptyIdShow = translate("Generating ...");
+     _serverId = IDTextEditingController(text: _emptyIdShow);
+-
+-    /*
+-    // initital _hideCm at startup
+-    final verificationMethod =
+-        bind.mainGetOptionSync(key: kOptionVerificationMethod);
+-    final approveMode = bind.mainGetOptionSync(key: kOptionApproveMode);
+-    _hideCm = option2bool(
+-        'allow-hide-cm', bind.mainGetOptionSync(key: 'allow-hide-cm'));
+-    if (!(approveMode == 'password' &&
+-        verificationMethod == kUsePermanentPassword)) {
+-      _hideCm = false;
+-    }
+-    */
+ 
+     timerCallback() async {
+       final connectionStatus =
+@@ -237,14 +220,8 @@
+     final approveMode = await bind.mainGetOption(key: kOptionApproveMode);
+     final numericOneTimePassword =
+         await mainGetBoolOption(kOptionAllowNumericOneTimePassword);
+-    /*
+-    var hideCm = option2bool(
+-        'allow-hide-cm', await bind.mainGetOption(key: 'allow-hide-cm'));
+-    if (!(approveMode == 'password' &&
+-        verificationMethod == kUsePermanentPassword)) {
+-      hideCm = false;
+-    }
+-    */
++    final shouldHideCm =
++        isDesktop && await bind.cmGetConfig(name: 'hide_cm') == 'true';
+     if (_approveMode != approveMode) {
+       _approveMode = approveMode;
+       update = true;
+@@ -279,19 +256,17 @@
+       _allowNumericOneTimePassword = numericOneTimePassword;
+       update = true;
+     }
+-    /*
+-    if (_hideCm != hideCm) {
+-      _hideCm = hideCm;
++    if (hideCm != shouldHideCm) {
++      hideCm = shouldHideCm;
+       if (desktopType == DesktopType.cm) {
+         if (hideCm) {
+           await hideCmWindow();
+-        } else {
++        } else if (_clients.isNotEmpty) {
+           await showCmWindow();
+         }
+       }
+       update = true;
+     }
+-    */
+     if (update) {
+       notifyListeners();
+     }
+--- a/flutter/lib/desktop/pages/desktop_setting_page.dart
++++ b/flutter/lib/desktop/pages/desktop_setting_page.dart
+@@ -1282,8 +1282,9 @@
+             if (usePassword && !isChangePermanentPasswordDisabled())
+               _SubButton('Set permanent password', setPasswordDialog,
+                   permEnabled && !locked),
+-            // if (usePassword)
+-            //   hide_cm(!locked).marginOnly(left: _kContentHSubMargin - 6),
++            if (usePassword)
++              hide_cm(!locked && !isOptionFixed('allow-hide-cm'))
++                  .marginOnly(left: _kContentHSubMargin - 6),
+             if (usePassword) radios[2],
+           ]);
+         })));
+@@ -1470,8 +1471,9 @@
+           return Tooltip(
+               message: enableHideCm ? "" : translate('hide_cm_tip'),
+               child: GestureDetector(
+-                onTap:
+-                    enableHideCm ? () => onHideCmChanged(!model.hideCm) : null,
++                onTap: enabled && enableHideCm
++                    ? () => onHideCmChanged(!model.hideCm)
++                    : null,
+                 child: Row(
+                   children: [
+                     Checkbox(
