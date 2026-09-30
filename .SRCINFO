@@ -1,6 +1,6 @@
 pkgbase = mobile-mcp
 	pkgdesc = Model Context Protocol (MCP) server for automating native iOS and Android apps and devices
-	pkgver = 1.0.4
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/mobile-next/mobile-mcp
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = mobile-mcp
 	depends = nodejs
 	optdepends = android-tools: adb-based control of Android devices and emulators
 	optdepends = go-ios: iOS device control
-	noextract = mobile-mcp-1.0.4.tgz
+	noextract = mobile-mcp-1.0.6.tgz
 	options = !strip
 	options = !emptydirs
-	source = https://registry.npmjs.org/@mobilenext/mobile-mcp/-/mobile-mcp-1.0.4.tgz
-	sha256sums = 680332d164c43fe621e32ec67524a76ac080d0a7af55cdf7eb704d15bf782419
+	source = https://registry.npmjs.org/@mobilenext/mobile-mcp/-/mobile-mcp-1.0.6.tgz
+	sha256sums = 6d72b89363d7e1648490a5c8b58e89ebedeadf473989bc1ed4b513ed7c099ca1
 
 pkgname = mobile-mcp
