@@ -1,0 +1,37 @@
+From c519c144e7fb49c8e79b307871efe65eb4aa32cb Mon Sep 17 00:00:00 2001
+From: Hyunchul Lee <hyc.lee@gmail.com>
+Date: Tue, 29 Sep 2026 08:31:53 +0900
+Subject: [PATCH] ntfs: only require compressed size on first extent
+
+The attribute validator required the compressed_size field for
+every sparse or compressed extent. Continuation extents omit that field,
+so their valid mapping_pairs_offset of 64 was rejected and compressed
+reads failed.
+
+Signed-off-by: Hyunchul Lee <hyc.lee@gmail.com>
+---
+ attrib.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/attrib.c b/attrib.c
+index 607628179966..7a7b840888c3 100644
+--- a/attrib.c
++++ b/attrib.c
+@@ -714,8 +714,12 @@ static bool ntfs_non_resident_attr_value_is_valid(const struct attr_record *a)
+ 	min_len = offsetof(struct attr_record, data.non_resident.initialized_size) +
+ 		  sizeof(a->data.non_resident.initialized_size);
+ 
+-	/* Sparse and compressed attributes have the extra compressed_size field */
+-	if (a->flags & (ATTR_IS_SPARSE | ATTR_COMPRESSION_MASK))
++	/*
++	 * Only the first extent of sparse and compressed attributes has the
++	 * extra compressed_size field.
++	 */
++	if ((a->flags & (ATTR_IS_SPARSE | ATTR_COMPRESSION_MASK)) &&
++	    !a->data.non_resident.lowest_vcn)
+ 		min_len += sizeof(a->data.non_resident.compressed_size);
+ 
+ 	if (attr_len < min_len)
+-- 
+2.43.0
+

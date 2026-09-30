@@ -1,5 +1,6 @@
 # shellcheck shell=bash
 # AUR Maintainer: Shadichy <shadichy@blisslabs.org>
+# AUR Maintainer: silvertuanzi <126318157+silvertuanzi@users.noreply.github.com>
 
 pkgbase=ntfsplus-dkms-git
 pkgname=("$pkgbase" "ntfsplus-udev")
@@ -22,6 +23,7 @@ source=(
   'dkms.conf'
   '00-ntfsplus.conf'
   '90-udev-prefer-ntfsplus.rules'
+  '0001-ntfs-only-require-compressed-size-on-first-extent.patch'
 )
 sha256sums=(
   SKIP
@@ -29,11 +31,16 @@ sha256sums=(
   b724b4dccde208e043330bdcf885a7da960772af1af5f34825112575e118619a
   75133e4f350ee1cdc8bc96b3fea51ab720d7a5dd9c1f5392b386489de3babf70
   25f98d3070e1486d75351c38f5c2e30b4459e9e27cd5fdd45bba09eee94a684a
+  259df6e81530d4d801ae10e32f6c19971eeccb0ffa19570aa232ee5dbe78a174
 )
 
 pkgver() {
   cd "$srcdir/$pkgbase"
   git log --format='%cd+%h' -n1 --date=format:'%Y.%m.%d'
+}
+
+prepare() {
+  git -C "$srcdir/$pkgbase" apply "$srcdir/0001-ntfs-only-require-compressed-size-on-first-extent.patch"
 }
 
 package_ntfsplus-dkms-git() {
