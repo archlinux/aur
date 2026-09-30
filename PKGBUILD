@@ -1,7 +1,7 @@
 # Maintainer: crueter <crueter at crueter dot x y z>
 # Contributor: DEX
 pkgname=vulkan-terakan-git
-pkgver=26.0.0.r208349.g38146e0a9a8
+pkgver=26.0.0.r225468.g88a703a2548
 pkgrel=1
 pkgdesc="Standalone Vulkan library for Triangl3's Terakan"
 arch=('x86_64' 'aarch64')
@@ -18,19 +18,12 @@ makedepends=(
   'git' 'python-ply' 'glslang' 'libclc' 'spirv-tools' 'vulkan-headers'
   'spirv-llvm-translator' 'python-setuptools' 'python-yaml')
 provides=('vulkan-driver')
-source=("mesa::git+https://gitlab.freedesktop.org/Triang3l/mesa.git#branch=Terakan"
-    "0001-fix-c23.patch")
-sha256sums=('SKIP'
-            '73cfb3dedafe937996b171c55082d6317cf62e4371f6c1146c2d2a902cf7060b')
+source=("mesa::git+https://gitlab.freedesktop.org/Triang3l/mesa.git#branch=Terakan")
+sha256sums=('SKIP')
 
 pkgver() {
   cd mesa
   echo "26.0.0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd mesa
-    patch -Np1 -i ../0001-fix-c23.patch
 }
 
 build() {

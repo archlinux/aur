@@ -1,6 +1,6 @@
 pkgbase = vulkan-terakan-git
 	pkgdesc = Standalone Vulkan library for Triangl3's Terakan
-	pkgver = 26.0.0.r208349.g38146e0a9a8
+	pkgver = 26.0.0.r225468.g88a703a2548
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/Triang3l/mesa.git
 	arch = x86_64
@@ -43,8 +43,6 @@ pkgbase = vulkan-terakan-git
 	depends = zlib
 	provides = vulkan-driver
 	source = mesa::git+https://gitlab.freedesktop.org/Triang3l/mesa.git#branch=Terakan
-	source = 0001-fix-c23.patch
 	sha256sums = SKIP
-	sha256sums = 73cfb3dedafe937996b171c55082d6317cf62e4371f6c1146c2d2a902cf7060b
 
 pkgname = vulkan-terakan-git
