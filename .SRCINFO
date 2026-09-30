@@ -1,6 +1,6 @@
 pkgbase = clip-cli-nightly-bin
 	pkgdesc = System clipboard bridge for the terminal — nightly build (pipe content in, paste content out)
-	pkgver = 3.0.0+nightly+20260820+5+ga3e4a000
+	pkgver = 3.0.1+nightly+20260930+0+g10afbd59
 	pkgrel = 1
 	url = https://github.com/someoneonsmile/clip
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = clip-cli-nightly-bin
 	conflicts = clip
 	conflicts = clip-bin
 	conflicts = clip-cli-bin
-	source_x86_64 = https://github.com/someoneonsmile/clip/releases/download/nightly/clip-x86_64-linux-gnu
+	source_x86_64 = clip-3.0.1+nightly+20260930+0+g10afbd59-x86_64-linux-gnu::https://github.com/someoneonsmile/clip/releases/download/nightly/clip-x86_64-linux-gnu
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/someoneonsmile/clip/releases/download/nightly/clip-aarch64-linux-gnu
+	source_aarch64 = clip-3.0.1+nightly+20260930+0+g10afbd59-aarch64-linux-gnu::https://github.com/someoneonsmile/clip/releases/download/nightly/clip-aarch64-linux-gnu
 	sha256sums_aarch64 = SKIP
 
 pkgname = clip-cli-nightly-bin
