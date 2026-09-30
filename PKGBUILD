@@ -1,6 +1,6 @@
 # Maintainer: ItsZariep <itszariep@disroot.org>
 pkgname=nbtui-git
-pkgver=r4.b013e36
+pkgver=r9.a889fb0
 pkgrel=1
 pkgdesc="Ncurses Bluetooth TUI manager"
 arch=('any')
@@ -17,11 +17,11 @@ pkgver() {
 }
 
 build() {
-	cd "${pkgname}/src"
+	cd "${pkgname}"
 	make
 }
 
 package() {
-	cd "${pkgname}/src"
+	cd "${pkgname}"
 	make install DESTDIR="${pkgdir}" PREFIX=/usr
 }

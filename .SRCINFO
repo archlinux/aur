@@ -1,6 +1,6 @@
 pkgbase = nbtui-git
 	pkgdesc = Ncurses Bluetooth TUI manager
-	pkgver = r4.b013e36
+	pkgver = r9.a889fb0
 	pkgrel = 1
 	url = https://codeberg.org/ItsZariep/nbtui
 	arch = any
