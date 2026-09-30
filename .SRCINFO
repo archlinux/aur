@@ -1,7 +1,7 @@
 pkgbase = omachat
 	pkgdesc = Native voice, text and screen chat for Omarchy and Linux (client, daemon, CLI and self-hostable server)
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sleepy-Studio/OmaChat
 	install = omachat.install
 	arch = x86_64

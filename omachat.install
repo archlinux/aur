@@ -3,8 +3,25 @@ post_install() {
     echo "  Run as your normal user: omachat-omarchy-plugin install"
 }
 
+# Best-effort restart of any already-running per-user omachatd, for every
+# logged-in user with UID >= 1000. Without this, an upgrade replaces the
+# binary on disk but a running daemon keeps the old one mapped in memory
+# (visible as "/usr/bin/omachatd (deleted)" in /proc/<pid>/exe) until
+# something restarts it — so it silently misses new daemon IPC methods
+# the just-upgraded client expects. try-restart is a no-op for any user
+# who isn't running the daemon, and failures here never fail the upgrade.
+_restart_user_daemons() {
+    command -v loginctl >/dev/null || return 0
+    while read -r _ uid user _; do
+        [[ $uid -ge 1000 ]] || continue
+        XDG_RUNTIME_DIR="/run/user/${uid}" runuser -u "${user}" -- \
+            systemctl --user try-restart omachat.service >/dev/null 2>&1 || true
+    done < <(loginctl list-sessions --no-legend 2>/dev/null)
+}
+
 post_upgrade() {
     post_install
+    _restart_user_daemons
 }
 
 pre_remove() {
