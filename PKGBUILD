@@ -7,7 +7,7 @@
 _pkgorg=codeberg.org/mipi
 _pkgname=gnome-backup
 pkgname=${_pkgname}-git
-pkgver=0.2.0.r0.g8e6106d
+pkgver=0.2.1.r0.g3964caf
 pkgrel=1
 pkgdesc="Backup and restore GNOME settings and shell extensions"
 arch=(
