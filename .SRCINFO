@@ -1,0 +1,16 @@
+pkgbase = dexpaprika-cli
+	pkgdesc = Command-line client for the DexPaprika DEX and on-chain data API, with streaming support
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/coinpaprika/dexpaprika-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = dexpaprika-cli-0.8.0.tar.gz::https://github.com/coinpaprika/dexpaprika-cli/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 0323c41a80488cae12d00d7c38bf2b1e911f18317d2f03ded8f8aeec2e7f48d4
+
+pkgname = dexpaprika-cli
