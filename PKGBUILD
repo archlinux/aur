@@ -4,7 +4,7 @@ _pkgname=MusicFreeDesktop
 pkgver=0.0.8
 _electronversion=25
 _nodeversion=20
-pkgrel=3
+pkgrel=4
 pkgdesc="Plug-in, customized, ad-free music player.插件化、定制化、无广告的免费音乐播放器"
 arch=('any')
 url="https://musicfree.catcat.work/"
@@ -21,10 +21,13 @@ makedepends=(
     'gendesk'
     'bun'
     'nvm'
-    'curl'
     'git'
     'jq'
     'zip'
+    'python-build'
+    'python-installer'
+    'python-wheel'
+    'python-setuptools'
 )
 options=(
     '!emptydirs'
@@ -34,21 +37,28 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('318d579c06590bb3a607dbb898378d7afebee43f2d3729aff5108fc409f12807'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_project_dir() {
+	local d
+	while IFS= read -r d; do
+		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
+	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+}
 _get_app_dir() {
 	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }
 _get_electron_version() {
-    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
-        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
-    [[ -z "${_elec_ver}" ]] && return 1
-    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
+		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
+		| grep -v '^$' | sed 's/^[^0-9]*//' | head -1)
+	[[ -z "${_elec_ver}" ]] && return 1
+	echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -64,6 +74,7 @@ _set_build_env() {
 	export BUN_INSTALL_GLOBAL_DIR="${HOME}/.bun/global"
 	export BUN_INSTALL_BIN="${HOME}/.bun/bin"
 	export BUN_CONFIG_SKIP_SAVE_LOCKFILE=1
+	export BUN_CONFIG_SKIP_LOAD_LOCKFILE=1
 	export BUN_DISABLE_DOTENV=1
 	export DO_NOT_TRACK=1
 	export BUN_JOBS="$(nproc)"
@@ -73,8 +84,8 @@ _use_local_electron_for_forge() {
 	local _v="${SYSTEM_ELECTRON_VERSION}"
 	local _zd="${srcdir}/electron-zips"
 	case "${CARCH}" in
-		aarch64)	_arch=arm64	;;
-		x86_64)	_arch=x64	;;
+		aarch64)    _arch=arm64	;;
+		x86_64)     _arch=x64	;;
 	esac
 	local _zf="${_zd}/electron-v${_v}-linux-${_arch}.zip"
 	install -Dm755 -d "${_zd}"
@@ -84,7 +95,7 @@ _use_local_electron_for_forge() {
 	done
 }
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "$(_get_project_dir)"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -101,21 +112,34 @@ prepare() {
     _ensure_local_nvm
     _set_build_env
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    bun install
+    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp \
+        && mv package.json.tmp package.json
+    rm -rf package-lock.json
+    export NODE_ENV=development
+    bun install
+    _use_local_electron_for_forge
 }
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "$(_get_project_dir)"
     _ensure_local_nvm
     _set_build_env
-    NODE_ENV=production     bun run package
-    _use_local_electron_for_forge
+    export NODE_ENV=production
+    bun run package
+    local _src="$(_get_project_dir)"
+    case "${CARCH}" in
+		aarch64)	_archrem=x64	;;
+		x86_64)		_archrem=arm	;;
+	esac
+	find "${_app_dir}/resources/app.asar.unpacked" -type d \
+		\( -name "darwin*" -o -name "*android*" -o -name "win32*" -o -name "*${_archrem}"* \) \
+		-exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-	local _app_dir=$(_get_app_dir)
+	local _app_dir="$(_get_app_dir)"
 	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/res/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    local _src="$(_get_project_dir)"
+    install -Dm644 "${_src}/res/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${_src}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
