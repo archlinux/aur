@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop-daily-bin
 	pkgdesc = An integrated development environment (IDE) for R (binary version from RStudio official repository)
-	pkgver = 2026.10.0.daily.190
+	pkgver = 2026.10.0.daily.201
 	pkgrel = 2
 	url = http://www.rstudio.org/
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = rstudio-desktop-daily-bin
 	depends = postgresql-libs
 	optdepends = pandoc: markdown support
 	optdepends = x11-ssh-askpass: password dialog for ssh
-	provides = rstudio-desktop-daily=2026.10.0.daily.190
+	provides = rstudio-desktop-daily=2026.10.0.daily.201
 	conflicts = rstudio-desktop
 	conflicts = rstudio-desktop-git
 	conflicts = rstudio-desktop-bin
 	conflicts = rstudio-desktop-preview-bin
 	options = !strip
-	source_x86_64 = https://s3.amazonaws.com/rstudio-ide-build/electron/jammy/amd64/rstudio-2026.10.0-daily-190-amd64.deb
-	sha256sums_x86_64 = 2fe6325b32709ab1752d8a3731e979ce38ea951f47c17a1af96502f5a411d73d
+	source_x86_64 = https://s3.amazonaws.com/rstudio-ide-build/electron/jammy/amd64/rstudio-2026.10.0-daily-201-amd64.deb
+	sha256sums_x86_64 = b19f2148ccda2c47000e39d8a8df862ab4557962aba55f2e72ba991bde299e41
 
 pkgname = rstudio-desktop-daily-bin
