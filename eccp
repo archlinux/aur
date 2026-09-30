@@ -1,0 +1,20 @@
+#!/bin/sh
+# eccp: the EDG C++ front end with its C-generating back end, installed
+# under /usr/lib/edgcpp. This script only says where the pieces are;
+# edg_eccp_config there decides everything else, the header search
+# included. Every setting can be overridden from the environment.
+
+EDG_BASE=${EDG_BASE-/usr/lib/edgcpp}
+
+CPFE=${CPFE-$EDG_BASE/bin/cpfe}
+CPFE_CP=${CPFE_CP-$EDG_BASE/bin/cpfe-cp}
+ECCP=${ECCP-$EDG_BASE/bin/eccp.sh}
+ECCP_LIBDIR=${ECCP_LIBDIR-$EDG_BASE/lib}
+EDG_MUNCH_PATH=${EDG_MUNCH_PATH-$EDG_BASE/bin/edg_munch}
+EDG_DECODE_PATH=${EDG_DECODE_PATH-$EDG_BASE/bin/edg_decode}
+EDG_PRELINK_PATH=${EDG_PRELINK_PATH-$EDG_BASE/bin/edg_prelink}
+
+export EDG_BASE CPFE CPFE_CP ECCP ECCP_LIBDIR EDG_MUNCH_PATH \
+       EDG_DECODE_PATH EDG_PRELINK_PATH
+
+exec "$ECCP" "$@"
