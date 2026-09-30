@@ -9,6 +9,7 @@ url="https://github.com/Tapawingo/TrenchKit"
 license=('MIT')
 depends=('qt6-base' 'openssl')
 makedepends=('git' 'cmake' 'ninja' 'qt6-base' 'qt6-tools')
+options=('!lto')
 source=("git+$url.git")
 md5sums=('SKIP')
 

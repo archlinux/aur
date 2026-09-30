@@ -12,6 +12,7 @@ pkgbase = trenchkit-git
 	makedepends = qt6-tools
 	depends = qt6-base
 	depends = openssl
+	options = !lto
 	source = git+https://github.com/Tapawingo/TrenchKit.git
 	md5sums = SKIP
 
