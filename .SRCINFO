@@ -1,6 +1,6 @@
 pkgbase = topf
 	pkgdesc = Talos orchestrator by PostFinance
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/postfinance/topf
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = topf
 	makedepends = go
 	provides = topf
 	conflicts = topf
-	source = topf-0.6.0.tar.gz::https://github.com/postfinance/topf/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = b3e62f9e2265632c838250f45973788dc60a11a7dd6daa2f01a43e0a37edab3a
+	source = topf-0.6.1.tar.gz::https://github.com/postfinance/topf/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = 42493b4fef94fdd6fd6062ae2b1c78a19404ad4a5f7f48e6d6c1d40d26d03695
 
 pkgname = topf
