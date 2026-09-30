@@ -20,7 +20,7 @@ source=(
 
 # IMPORTANTE: Calcula los checksums reales con 'sha256sum archivo'
 # Si te da pereza ahora, usa 'SKIP' para probar, pero AUR te pedirá los reales al subir.
-sha256sums=('706a81e038c98c60a0c7cc076020ab667d00bdabbb63b96275dba05798a10dcb'
+sha256sums=('688778919ce76156fa19a190b20a2ffb75373e0dccb376d44efa75e67bc43d64'
             '93a3103e8c27ca2f913efa775a44422f714f4e9cb514e162c49d454736bb3bf6')
 
 package() {
@@ -36,7 +36,7 @@ package() {
     cat > "${pkgdir}/usr/share/applications/${_pkgname}.desktop" <<EOF
 [Desktop Entry]
 Type=Application
-Version=1.0
+Version=1.3.1
 Name=CloudMount Wizard
 Comment=Gestor gráfico de nubes para Rclone
 Exec=${_pkgname}

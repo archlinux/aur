@@ -1,0 +1,26 @@
+pkgbase = cloudmount-wizard-bin
+	pkgdesc = Asistente para montar unidades de nube (Mega, Drive, etc) en Linux (Binario)
+	pkgver = 1.3.1
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/AnabasaSoft/CloudMount-Wizard
+	arch = x86_64
+	license = MIT
+	depends = rclone
+	depends = fuse3
+	depends = libglvnd
+	depends = libx11
+	depends = libxcursor
+	depends = libxrandr
+	depends = libxinerama
+	depends = libxi
+	depends = libxkbcommon
+	depends = wayland
+	provides = cloudmount-wizard
+	conflicts = cloudmount-wizard
+	source = https://github.com/AnabasaSoft/CloudMount-Wizard/releases/download/v1.3.1/cloudmount-linux-amd64.tar.gz
+	source = cloudmount.png::https://raw.githubusercontent.com/AnabasaSoft/CloudMount-Wizard/main/icon.png
+	sha256sums = 688778919ce76156fa19a190b20a2ffb75373e0dccb376d44efa75e67bc43d64
+	sha256sums = 93a3103e8c27ca2f913efa775a44422f714f4e9cb514e162c49d454736bb3bf6
+
+pkgname = cloudmount-wizard-bin
