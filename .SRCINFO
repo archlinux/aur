@@ -1,6 +1,6 @@
 pkgbase = tree-sitter-haskell
 	pkgdesc = Haskell grammar for tree-sitter
-	pkgver = 0.24.0
+	pkgver = 0.24.1
 	pkgrel = 1
 	url = https://github.com/tree-sitter/tree-sitter-haskell
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = tree-sitter-haskell
 	depends = glibc
 	provides = libtree-sitter-haskell.so
 	options = staticlibs
-	source = tree-sitter-haskell-0.24.0-src.tar.gz::https://github.com/tree-sitter/tree-sitter-haskell/archive/refs/tags/v0.24.0.tar.gz
-	sha256sums = 951d6f9c7c9d07becacf3dd1eb1dfd46aa08aff71f096bbb8a34f535a5380ca2
+	source = tree-sitter-haskell-0.24.1-src.tar.gz::https://github.com/tree-sitter/tree-sitter-haskell/archive/refs/tags/v0.24.1.tar.gz
+	sha256sums = d0d6807bd9dc3098e230e947e07974f1aa7defadfccc95f5dad67bcf4fdf2f90
 
 pkgname = tree-sitter-haskell

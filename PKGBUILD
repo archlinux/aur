@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tree-sitter-haskell
-pkgver=0.24.0
+pkgver=0.24.1
 pkgrel=1
 pkgdesc="Haskell grammar for tree-sitter"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('nodejs' 'tree-sitter-cli')
 provides=('libtree-sitter-haskell.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/tree-sitter/tree-sitter-haskell/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('951d6f9c7c9d07becacf3dd1eb1dfd46aa08aff71f096bbb8a34f535a5380ca2')
+sha256sums=('d0d6807bd9dc3098e230e947e07974f1aa7defadfccc95f5dad67bcf4fdf2f90')
 
 
 build() {
