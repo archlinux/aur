@@ -1,11 +1,12 @@
 # Maintainer: Wenyin Root <wenyin.community@outlook.com>
 pkgname=zedg
 pkgver=1.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Zed editor with globalization support (pre-built binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/WenYin-Community/zed-globalization"
 license=('AGPL-3.0-or-later' 'Apache-2.0' 'GPL-3.0-or-later')
+depends=('alsa-lib' 'gcc-libs' 'glib2' 'libx11' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11')
 provides=('zedg')
 conflicts=('zedg')
 options=('!debug')
