@@ -1,6 +1,6 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-fcitx5-config-git
-pkgver=r1.0.0 
+pkgver=r3.540fda9
 pkgrel=1
 pkgdesc="Fcitx5 and Rime configurations for Shorin"
 arch=('any')
