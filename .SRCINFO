@@ -1,0 +1,17 @@
+pkgbase = python-pyxirr
+	pkgdesc = Rust-powered collection of financial functions (XIRR, XNPV, IRR, etc.)
+	pkgver = 0.10.8
+	pkgrel = 1
+	url = https://github.com/Anexen/pyxirr
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin
+	makedepends = rust
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pyxirr/pyxirr-0.10.8.tar.gz
+	sha256sums = a5620dd76015444f26f805c4983a41664898fbf2a74956a28589b171ed96d2f5
+
+pkgname = python-pyxirr
