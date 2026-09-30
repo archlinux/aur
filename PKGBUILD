@@ -3,7 +3,7 @@
 
 _pkgname=edalize
 pkgname=python-$_pkgname
-pkgver=0.6.1
+pkgver=0.6.8
 pkgrel=1
 pkgdesc='An abstraction library for interfacing EDA tools'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   'python-vunit: VUnit backend support'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('32f101b189b1eab6ae481847d427cef33b707627477a533e4f2af3744b298d9f8b0524e82b00d3fe57114237d955d4eea9a4878ad6e96f128ee7e3389e0d7495')
+sha512sums=('2c1c54ee157ebc17f512d9f7d72fd3c73a2f9d9b8406187223db95b9ab80f0baa357a4c60169e29419459b8b0acb83d3166cc6cb4b9754d32b159de1202c59c2')
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
 
