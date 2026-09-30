@@ -22,8 +22,8 @@ makedepends=('unzip')
 conflicts=('zz')
 source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://github.com/zaidejjo/zz/releases/download/v$pkgver/zz-$pkgver-linux-x86_64.zip")
 source_aarch64=("$pkgname-$pkgver-aarch64.zip::https://github.com/zaidejjo/zz/releases/download/v$pkgver/zz-$pkgver-linux-aarch64.zip")
-sha256sums_x86_64=('e96ed93d25d2dbd38044164b5d3808e560f11307ce11ec15c53bce6b9b3849f2')
-sha256sums_aarch64=('eb8150e5e43507b5bc9ec6357a53c50ef5ca98fbec109d6b19760bd7c2401559')
+sha256sums_x86_64=('ed9868ecbcc2325d63d751e3109cf204d73b51cd83ddfeb1a14e6fa852e82623')
+sha256sums_aarch64=('ddb186d39b10c2e8fe0f56bb40946818bd6fe59ce8a57c26c5c1ef9b49635c84')
 
 check() {
   # Prebuilt binaries: smoke-test only (full suite ran in CI pre-release).
