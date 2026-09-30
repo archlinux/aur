@@ -1,6 +1,6 @@
 pkgbase = botropolis
 	pkgdesc = Every Claude Code session on this machine, drawn as a city
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/auroq/botropolis
 	install = botropolis.install
@@ -18,7 +18,7 @@ pkgbase = botropolis
 	depends = hicolor-icon-theme
 	optdepends = claude-code: the sessions botropolis draws and manages
 	optdepends = waybar: a status bar for `botropolis bar --watch`
-	source = botropolis-0.1.0.tar.gz::https://github.com/auroq/botropolis/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = db64934a49e2cd7dbb4465af064c2a732d71156d4d72afbc4d0257147ea1d270
+	source = botropolis-0.1.1.tar.gz::https://github.com/auroq/botropolis/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 327500ef882c4047c9544978f2b1bcb4bb95c88194f4d10654a862d91e4c0a4a
 
 pkgname = botropolis
