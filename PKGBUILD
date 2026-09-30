@@ -3,7 +3,7 @@
 # Part of : CV4PVE Suite - https://www.corsinvest.it/cv4pve
 
 pkgname=cv4pve-node-protect
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Backup Proxmox VE node configuration files via SSH"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -18,9 +18,9 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.zip::https://github.com/Corsinvest/c
 source_aarch64=("${pkgname}-${pkgver}-aarch64.zip::https://github.com/Corsinvest/cv4pve-node-protect/releases/download/v${pkgver}/cv4pve-node-protect-linux-arm64.zip")
 source_armv7h=("${pkgname}-${pkgver}-armv7h.zip::https://github.com/Corsinvest/cv4pve-node-protect/releases/download/v${pkgver}/cv4pve-node-protect-linux-arm.zip")
 
-sha256sums_x86_64=('3921d539c5d88d3642166a627e04d20238de96aefc2d9492c454cf7ea11e9c7d')
-sha256sums_aarch64=('fefe690cb490c6e76e34e12ba241c9b9e6f40a17b63b0310bee4f9d51ce4b49c')
-sha256sums_armv7h=('d5bd60b1d129765d50d404ae522952612636bb2e561e95db67daf36e28d2f72f')
+sha256sums_x86_64=('151b0a45233f3eb767331aa19c8ae31f6a6e94a40f94f33eed099f497261b326')
+sha256sums_aarch64=('962d984091cd312acfecb57ab2c31609b9168e666187bc7c056b4c98a6d9316d')
+sha256sums_armv7h=('d862c145176a4e2c629b4e8ae275dabf87c73defe8832408ff56105d9c90f239')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
