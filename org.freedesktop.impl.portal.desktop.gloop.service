@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=org.freedesktop.impl.portal.desktop.gloop
+Exec=/usr/bin/gloop --portal

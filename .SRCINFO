@@ -1,0 +1,42 @@
+pkgbase = gloop-bin
+	pkgdesc = Fast and light file manager for Wayland
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/obselate/gloop
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	license = Zlib
+	license = LicenseRef-HarfBuzz
+	license = LicenseRef-Public-Domain
+	license = LicenseRef-Wayland-protocols
+	depends = glibc>=2.39
+	depends = wayland
+	depends = libxkbcommon
+	depends = vulkan-icd-loader
+	depends = vulkan-driver
+	depends = xdg-utils
+	depends = shared-mime-info
+	optdepends = xdg-desktop-portal>=1.18: use Gloop for portal file choosers
+	provides = gloop=0.6.0
+	conflicts = gloop
+	options = !strip
+	options = !debug
+	source = gloop-0.6.0-linux-x64.tar.gz::https://github.com/obselate/gloop/releases/download/v0.6.0/gloop-linux-x64.tar.gz
+	source = gloop-0.6.0.png::https://raw.githubusercontent.com/obselate/gloop/v0.6.0/assets/gloop.png
+	source = gloop-0.6.0.metainfo.xml::https://raw.githubusercontent.com/obselate/gloop/v0.6.0/assets/io.github.obselate.gloop.metainfo.xml
+	source = gloop-0.6.0.LICENSE::https://raw.githubusercontent.com/obselate/gloop/v0.6.0/LICENSE
+	source = gloop-0.6.0.ThirdPartyNotices.txt::https://raw.githubusercontent.com/obselate/gloop/v0.6.0/src/Resources/ThirdPartyNotices.txt
+	source = io.github.obselate.gloop.desktop
+	source = org.freedesktop.impl.portal.desktop.gloop.service
+	source = gloop.portal
+	sha256sums = e4299fbf24e052c3eaf5d70fdabec2edee7c96c2e2913407d9294aae7320e6ad
+	sha256sums = 8f743b0cda834e7936dbc235354d461e15921c92632edb31b09adc0c368435e9
+	sha256sums = cb572dc68bba6372b19cfa04a1810e6f89e5fb36b24fc1e22eaa601a6638f032
+	sha256sums = ebbfd210cb048be0d4f2b5af60cf409b59e880517b75fa5c7913598828ca2683
+	sha256sums = 63ced741c827dd8fb3f11a53550cac0f4cd04daa1f4f8f182252b8ddf7eed0ff
+	sha256sums = 10d41a03b0e51ffc439ff43817679f9040aad84caa096e8fc62cd5b12bc0b2eb
+	sha256sums = 16b036ee7897168e90c85d2b2f0b66ef043121b6d5d0d01dca70db500047b8c4
+	sha256sums = a2eebb7523439c238995cbc8b5fff19e89b245cdce846dbf667788912af41843
+
+pkgname = gloop-bin

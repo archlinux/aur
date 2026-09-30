@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Gloop
+GenericName=File Manager
+Comment=Browse, preview, and manage files and folders
+Keywords=files;folders;directory;browser;preview;Wayland;
+Exec=/usr/bin/gloop %f
+TryExec=/usr/bin/gloop
+Icon=io.github.obselate.gloop
+StartupWMClass=io.github.obselate.gloop
+Terminal=false
+Categories=System;FileTools;FileManager;
+MimeType=inode/directory;
