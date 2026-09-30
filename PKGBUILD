@@ -1,6 +1,6 @@
 # Maintainer: Kristyan Carvalho <kristyancarvalho@hotmail.com>
 pkgname=brmgen
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Generate editable brModelo conceptual and logical models from YAML or JSON'
 arch=('any')
@@ -12,7 +12,7 @@ source=(
   "LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  'dd26f963d4435c6349d3f9a3b4e0773af5c563b6e50db670220a0a90ea8bfa84'
+  'f9cdc4fa66c44a44c95c0a0251d85afef66917629c5c3da19e8f4cbd854a1872'
   'fb6b85af7158d2f3b5784a3ee0113bbdc94371c681518acb7bb66cf806a1f472'
 )
 
