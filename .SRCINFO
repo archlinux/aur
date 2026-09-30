@@ -1,0 +1,25 @@
+pkgbase = python-nless
+	pkgdesc = TUI pager with enhanced support for tabular data and real-time streaming
+	pkgver = 1.17.0
+	pkgrel = 1
+	url = https://github.com/mpryor/nothing-less
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python>=3.13
+	depends = python-textual
+	depends = python-pyperclip
+	depends = python-packaging
+	depends = tzdata
+	optdepends = xclip: clipboard support on X11
+	optdepends = xsel: clipboard support on X11
+	optdepends = wl-clipboard: clipboard support on Wayland
+	source = python-nless-1.17.0.tar.gz::https://github.com/mpryor/nothing-less/archive/refs/tags/1.17.0.tar.gz
+	sha256sums = d031eba926f6901fa8a359998e441b6e4e0dbe28d6cc5dea162a956569517d73
+
+pkgname = python-nless
