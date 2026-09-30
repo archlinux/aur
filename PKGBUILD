@@ -1,3 +1,4 @@
+# Maintainer: crueter <crueter at crueter dot x y z>
 # Maintainer: Lenny McLennington <lennymclennington@protonmail.com>
 # Contributor: Kaydax <contact+aur@kaydax.xyz>
 # Contributor: Yellow <yellow@example.com>
@@ -7,8 +8,8 @@
 # Contributor: dada513 <dada513@protonmail.com>
 
 pkgname=polymc-qt5
-pkgver=7.1
-pkgrel=2
+pkgver=8.0
+pkgrel=1
 pkgdesc="Minecraft launcher with the ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://github.com/PolyMC/PolyMC"
@@ -23,7 +24,7 @@ optdepends=('glfw: to use system GLFW libraries'
             'xorg-xrandr: for older minecraft versions'
 )
 source=("https://github.com/PolyMC/PolyMC/releases/download/$pkgver/PolyMC-$pkgver.tar.gz")
-sha256sums=('516e94c3bddc5e32563e39ad3d6d188403a91a1455b9889017516f876e930c4a')
+sha256sums=('6bda5dcfa88680fe540a1a33efe06479448a005902950e4707a97771c357bcfb')
 
 build() {
 
