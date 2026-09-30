@@ -1,0 +1,25 @@
+pkgbase = python-lakshmi
+	pkgdesc = Investing library and command-line interface (lak) inspired by the Bogleheads philosophy
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://github.com/sarvjeets/lakshmi
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-click
+	depends = python-curl_cffi
+	depends = python-ibonds
+	depends = python-numpy
+	depends = python-pyxirr
+	depends = python-yaml
+	depends = python-requests
+	depends = python-tabulate
+	depends = python-yfinance
+	source = https://files.pythonhosted.org/packages/source/l/lakshmi/lakshmi-3.0.3.tar.gz
+	sha256sums = 7340dbedd59dbc14e665d2579cca4a85dbf6c6c630c51b4182c37f392862bbea
+
+pkgname = python-lakshmi
