@@ -4,7 +4,7 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r2280.f09d2aaf
+pkgver=r2281.99771b01
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64' 'i686' 'pentium4' 'powerpc64le' 'powerpc64' 'powerpc' 'riscv64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -50,7 +50,6 @@ build() {
 		export LDFLAGS="${save_ldflags} ${generation_flags}"
 		./bin/package make -j${cores}
 		# Run the regression tests to profile ksh
-		local -i status=0
 		./arch/*/bin/ksh ./bin/shtests -u
 		# Second build after obtaining profiling data
 		export CCFLAGS="${save_ccflags} ${use_flags}"
