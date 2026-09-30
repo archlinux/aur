@@ -1,5 +1,5 @@
 pkgname=dsd-neo-git
-pkgver=2.10.0.r22.g38540dd
+pkgver=2.10.0.r23.g990b62a
 pkgrel=1
 pkgdesc="Digital Speech Decoder - A modern, modular, and performance enhanced C/C++ decoder for digital voice. DMR, P25, NXDN, YSF, and more."
 arch=('x86_64' 'aarch64')
