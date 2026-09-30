@@ -2,19 +2,41 @@
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 pkgname=fusesoc
-pkgver=2.4.5
+pkgver=2.4.7
 pkgrel=1
 pkgdesc='Package manager and build abstraction tool for FPGA/ASIC development'
 arch=('any')
 url='https://github.com/olofk/fusesoc'
 license=('BSD-2-Clause')
-depends=('python' 'python-edalize' 'python-pyparsing' 'python-yaml' 'python-simplesat' 'python-fastjsonschema' 'python-argcomplete')
-makedepends=('python-setuptools-scm' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-pytest' 'git')
-optdepends=('python-nanoid: needed by filter spdxgen'
-            'iverilog: run simulation/testbenchs'
-            'svn: opencores provider')
+depends=(
+  'python'
+  'python-edalize'
+  'python-pyparsing'
+  'python-yaml'
+  'python-simplesat'
+  'python-fastjsonschema'
+  'python-argcomplete'
+  'python-pydantic'
+  'python-okonomiyaki'
+  'python-pydantic-core'
+  'python-typing_extensions'
+)
+makedepends=(
+  'python-setuptools-scm'
+  'python-setuptools'
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  'python-pytest'
+  'git'
+)
+optdepends=(
+  'python-nanoid: needed by filter spdxgen'
+  'iverilog: run simulation/testbenchs'
+  'svn: opencores provider'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('db7467ee870b94b7acd5f6a91a0f0ab58b1928b0e80360c7dba3814a305dc6f06c9559cc8dcbd036fcbc0023a1791c35c5b321e0e6977ba00a42b1a6db737e0a')
+sha512sums=('e7a5542d20eccfc5dddaf5da434bac709abbfec74e67147aafb79bf067b4da770b9931e252d87a3c009d8699334e2d6ef0aff4637424236b618f9c212e3cad39')
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
 
