@@ -1,0 +1,14 @@
+pkgbase = python-termdiff-git
+	pkgdesc = Pretty terminal diff viewer with side-by-side and unified modes
+	pkgver = r1.e2f92ba
+	pkgrel = 1
+	url = https://github.com/milishiajay/termdiff
+	arch = any
+	license = custom:none-declared
+	depends = python
+	provides = python-termdiff
+	conflicts = python-termdiff
+	source = termdiff::git+https://github.com/milishiajay/termdiff.git#branch=master
+	sha256sums = SKIP
+
+pkgname = python-termdiff-git
