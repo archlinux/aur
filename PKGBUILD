@@ -1,59 +1,50 @@
 # Maintainer: Mikele <mikele@gmail.com>
-# Contributor: Mikele <mikele@gmail.com>
-
 pkgname=appmeup-bin
-pkgver=1.2.8
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="Create and edit Chromium web apps from .desktop files"
+pkgdesc="Create and edit Chromium web apps from .desktop files (Go/Qt 6)"
 arch=('x86_64')
-url="https://github.com/mikelexp/appmeup"
+url="https://github.com/mikelexp/appmeup-go"
 license=('GPL3')
+provides=('appmeup')
 conflicts=('appmeup')
 replaces=('appmeup')
-depends=(
-  'python'
-  'pyside6'
-  'python-pyxdg'
-  'glibc'
-  'libxcb'
-  'libxkbcommon-x11'
-  'xcb-util-cursor'
-  'xcb-util-image'
-  'xcb-util-keysyms'
-  'xcb-util-renderutil'
-  'xcb-util-wm'
-)
+depends=('gcc-libs' 'glibc' 'qt6-base')
+makedepends=('go' 'pkgconf')
 optdepends=(
   'google-chrome: Google Chrome browser'
   'chromium: Chromium browser'
   'brave-bin: Brave browser'
   'vivaldi: Vivaldi browser'
 )
-source=("${url}/releases/download/v${pkgver}/appmeup-${pkgver}-archlinux-x86_64.tar.gz")
-sha256sums=('a81bd8a6857b985eb119db6d508c998d027db1a8e1a82ff2ef4aeaad65ead5fc')
+source=("appmeup-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('4dfaa4449d738a2842dae26ea69e88d8ff94d92f1e970becae0c33fa8fa61751')
+
+_go_source() {
+  if [[ -d "${srcdir}/appmeup-${pkgver}/AppMeUpGo" ]]; then
+    printf '%s\n' "${srcdir}/appmeup-${pkgver}/AppMeUpGo"
+  elif [[ -d "${srcdir}/appmeup-go-${pkgver}" ]]; then
+    printf '%s\n' "${srcdir}/appmeup-go-${pkgver}"
+  else
+    printf '%s\n' "${srcdir}/appmeup-${pkgver}"
+  fi
+}
+
+prepare() {
+  cd "$(_go_source)"
+  go mod download
+}
+
+build() {
+  cd "$(_go_source)"
+  go build -mod=readonly -trimpath -ldflags='-s -w' -o appmeup .
+}
 
 package() {
-  cd "${srcdir}"
-
-  install -Dm755 appmeup "${pkgdir}/usr/lib/appmeup/appmeup.bin"
-  install -d "${pkgdir}/usr/lib/appmeup/src"
-  cp -r src/. "${pkgdir}/usr/lib/appmeup/src/"
-  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/appmeup" <<'EOF'
-#!/bin/sh
-exec /usr/lib/appmeup/appmeup.bin "$@"
-EOF
+  cd "$(_go_source)"
+  install -Dm755 appmeup "${pkgdir}/usr/bin/appmeup"
+  install -Dm644 icon.png "${pkgdir}/usr/share/appmeup/icon.png"
   install -Dm644 icon.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/mikelexp.appmeup.png"
-  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/mikelexp.appmeup.desktop" <<'EOF'
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=AppMeUp!
-Comment=Create and edit Chromium web apps from .desktop files
-Exec=/usr/bin/appmeup
-Icon=mikelexp.appmeup
-Categories=Network;WebBrowser;Utility;
-Terminal=false
-StartupNotify=true
-EOF
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 appmeup.desktop "${pkgdir}/usr/share/applications/mikelexp.appmeup.desktop"
 }
