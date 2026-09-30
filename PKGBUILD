@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wubi-dict-editor
 _zhname='五笔码表助手'
-pkgver=1.4.1
+pkgver=1.4.2
 _electronversion=28
 _nodeversion=20
 pkgrel=1
@@ -19,7 +19,6 @@ makedepends=(
     'nvm'
     'gendesk'
     'libicns'
-    'curl'
     'git'
     'jq'
     'zip'
@@ -35,7 +34,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('207d842cedd27781bd61e551380651e356b0fd2a67fed8b48ad3dd2b55cb54f4'
+sha256sums=('e2ae86c9e8e05bd6eec33ecd426999636da36f1ec5c211cd360f0cd4cf375750'
             'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -43,14 +42,21 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_project_dir() {
+	local d
+	while IFS= read -r d; do
+		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
+	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+}
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _get_electron_version() {
-    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
-        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
-    [[ -z "${_elec_ver}" ]] && return 1
-    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
+		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
+		| grep -v '^$' | sed 's/^[^0-9]*//' | head -1)
+	[[ -z "${_elec_ver}" ]] && return 1
+	echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -109,7 +115,7 @@ _use_local_electron_for_forge() {
 	local _zd="${srcdir}/electron-zips"
 	case "${CARCH}" in
 		aarch64)	_arch=arm64	;;
-		x86_64)	_arch=x64	;;
+		x86_64)		_arch=x64	;;
 	esac
 	local _zf="${_zd}/electron-v${_v}-linux-${_arch}.zip"
 	install -Dm755 -d "${_zd}"
@@ -119,7 +125,7 @@ _use_local_electron_for_forge() {
 	done
 }
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "$(_get_project_dir)"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -140,12 +146,13 @@ prepare() {
     icns2png  -d 32 -x assets/img/appIcon/appIcon.icns -o assets/img/appIcon/
     cp assets/img/appIcon/appIcon_16x16x32.png assets/img/appIcon/appicon.png
     sed -i "s/appIcon\/appicon\ico/img\/appIcon\/appicon\.png/g" main.js
+    rm -rf package-lock.json yarn.lock
     export NODE_ENV=development
     yarn install
     _use_local_electron_for_forge
 }
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "$(_get_project_dir)"
     _ensure_local_nvm
     _set_build_env
     export NODE_ENV=production
@@ -156,11 +163,12 @@ package() {
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -exec dirname {} + | head -n 1)
     cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
+    local _src="$(_get_project_dir)"
     _icon_sizes=(16x16 32x32 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/img/appIcon/appIcon_${_icons}x32.png" \
+        install -Dm644 "${_src}/assets/img/appIcon/appIcon_${_icons}x32.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/app/${pkgname}.png"
     done
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${_src}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${_src}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
