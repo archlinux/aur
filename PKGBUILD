@@ -1,6 +1,6 @@
 # Maintainer: Andres Perez <aur@andresperezl.com>
 pkgname=dusklight-bin
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 _desktop_id=dev.twilitrealm.dusk
 pkgdesc='PC port of a classic adventure game'
@@ -53,8 +53,8 @@ sha256sums=('6671ee17ed017db6e2175bdd68e82b724427b98696547a1e3ce2599672e689c6'
             '48f9aba6b3309650cc23df507834601f13aef657212cda957f3d6458db7e5487'
             '223800f8c29c7d4dad7af0c1f947dec3120120507bdea0c0d6d08366840f5aef'
             '49afadfd709bbfd2ecb5c9036d880a972561e5839d1ae2c51e67a9ad2dc5e7fb')
-sha256sums_x86_64=('deeb730e8612a55e2da9cd7641f9a9e2dee23d4ba41a88dbd06e94bb36159a43')
-sha256sums_aarch64=('af9e818658ef1bb73390a4503bd5bb16224cb358c0d910fcbafe72529d5854ee')
+sha256sums_x86_64=('87ec251963c984ad2b3ac075281431d2221db2297dc19f2ab5daad92e969fc06')
+sha256sums_aarch64=('7f7d72054847277afccdddb93f7cca4e3b730768da64e30a4cdd6774c23bdbf9')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" \
