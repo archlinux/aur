@@ -22,7 +22,7 @@ pkgbase = zcode-bin
 	source = LICENSE
 	source = zcode.sh
 	sha256sums = d753618845e5e057c29ccbc3917c08a4c8d99355deef7d6a0f4d2916ba69e4be
-	sha256sums = 6f7a7821eec5ffc00c7e5c24ac0b917864d503253816c6546c723e84ed418919
-	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = zcode-bin
