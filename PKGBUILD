@@ -1,6 +1,6 @@
 # Maintainer: Shaun Lastra <shaun@lastra.us>
 pkgname=rump
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Icecast streaming client with GTK4 UI, DJ mic mixing, and auto-ducking'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gtk4' 'libadwaita' 'libvorbis' 'libogg' 'opus' 'pipewire' 'playerctl')
 makedepends=('rust' 'cargo' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/slastra/rump/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('a46b809f1c031de1a58ea7af43a627e950ae986dcf8de13eed02e1561e20253d')
 
 build() {
     cd "$pkgname-$pkgver"
