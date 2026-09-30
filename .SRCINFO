@@ -1,0 +1,24 @@
+pkgbase = python-envault
+	pkgdesc = Env variable syncing, diffing and secret rotation CLI with secret-store integrations
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Coding-Dev-Tools/envault
+	arch = any
+	license = MIT
+	checkdepends = python-responses
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-typer
+	depends = python-rich
+	depends = python-dotenv
+	depends = python-yaml
+	depends = python-cryptography
+	depends = python-pydantic
+	source = python-envault-0.1.0.tar.gz::https://github.com/Coding-Dev-Tools/envault/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = db97b76ae9a63e3fdeb0745f94cf5297aadb6c18be2feb24b1bc2aa4d3af48c9
+
+pkgname = python-envault
