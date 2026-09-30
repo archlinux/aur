@@ -1,6 +1,6 @@
 pkgbase = zimbr
 	pkgdesc = Native Wayland iMessage client using a self-hosted macOS relay
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/hspak/zimbr
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = zimbr
 	optdepends = notification-daemon: desktop notifications
 	optdepends = ttf-font: text rendering
 	options = !debug
-	source = zimbr-0.2.0.tar.gz::https://github.com/hspak/zimbr/archive/0.2.0.tar.gz
-	sha256sums = 0d4cf4dbdd3656e7346e9a48df6b372ebbd812c2e9fa4a14431c01ad1c601a26
+	source = zimbr-0.3.0.tar.gz::https://github.com/hspak/zimbr/archive/0.3.0.tar.gz
+	sha256sums = 03cf090eb9bb8ab6c405849fdd2c4f6c5f09656b1da2330f8791751f397933dd
 
 pkgname = zimbr
