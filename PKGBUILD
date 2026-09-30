@@ -1,28 +1,21 @@
 # Maintainer: Davi Alves Sampaio <davialvessampaio00@gmail.com>
+#
+# This is the TEMPLATE for the AUR package. Do not bump pkgver/pkgrel or
+# checksums here by hand: scripts/publish-aur.sh sets them when publishing.
+# Edit this file only to change packaging (dependencies, install steps, ...).
+
 pkgname=simple-battery-notify
-pkgver=1.0.5
-pkgrel=5
-pkgdesc="A customizable, D-Bus driven battery notification daemon and CLI"
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="Customizable battery notifications from UPower: a small daemon and CLI"
 arch=('any')
 url="https://github.com/Davi-S/simple-battery-notify"
-license=('GPL3')
-depends=('python' 'python-gobject' 'python-pydbus' 'libnotify' 'upower')
-
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Davi-S/simple-battery-notify/archive/refs/tags/${pkgver}.tar.gz")
-
-# Remember to run updpkgsums or makepkg -g to replace this SKIP!
-sha256sums=('f31559d3b918e8e513ae5368b81cc7f916bf612b2a192077024d4d9b08ad2ae9')
+license=('GPL-3.0-or-later')
+depends=('bash' 'systemd' 'glib2' 'libnotify' 'upower')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('1fbb7f389b6931bf27e787da6046f97f4b86ea87a965812155985a9ecff5c184')
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-
-    # Install the main Python executable
-    install -Dm755 "battery-notify" "$pkgdir/usr/bin/battery-notify"
-
-    # Install the default configuration
-    install -Dm644 "battery-notify.json" "$pkgdir/etc/battery-notify.json"
-
-    # Install the systemd user service
-    install -Dm644 "battery-notify.service" "$pkgdir/usr/lib/systemd/user/battery-notify.service"
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir" PREFIX=/usr install
 }
-
