@@ -3,7 +3,7 @@
 _pkgbase=visage
 pkgname="$_pkgbase-git"
 pkgver=0.4.0.r12.g0066bcd
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux face authentication via PAM with persistent daemon, IR camera support, ONNX inference'
 arch=('x86_64')
 url='https://sovren.software/#/visage'
@@ -14,8 +14,10 @@ provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 install='setup.install'
 options=(!lto)
-source=("$_pkgbase::git+https://github.com/sovren-software/visage.git")
-sha256sums=('SKIP')
+source=("$_pkgbase::git+https://github.com/sovren-software/visage.git"
+        "org.freedesktop.Visage1.service")
+sha256sums=('SKIP'
+            '57e9be3dda9f7ec5c591daff9fa595f3447453aa074cbc275cc99b58bca604d3')
 
 pkgver() {
 	cd "$_pkgbase"
@@ -45,6 +47,8 @@ package() {
 	install -Dm644 packaging/systemd/visaged.service "$pkgdir/usr/lib/systemd/system/visaged.service"
 	install -Dm644 packaging/systemd/visage-resume.service "$pkgdir/usr/lib/systemd/system/visage-resume.service"
 	install -Dm644 packaging/dbus/org.freedesktop.Visage1.conf "$pkgdir/usr/share/dbus-1/system.d/org.freedesktop.Visage1.conf"
+	# D-Bus activation, workaround for https://github.com/sovren-software/visage/issues/123
+	install -Dm644 "$srcdir/org.freedesktop.Visage1.service" "$pkgdir/usr/share/dbus-1/system-services/org.freedesktop.Visage1.service"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgbase/README.md"
 	install -Dm644 contrib/pam/README.md "$pkgdir/usr/share/doc/$_pkgbase/pam/README.md"

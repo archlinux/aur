@@ -1,0 +1,9 @@
+# D-Bus activation for visaged, shipped by the AUR package as a workaround for
+# https://github.com/sovren-software/visage/issues/123
+# Without it, PAM calls made while visage-resume.service restarts visaged fail
+# with ServiceUnknown instead of waiting for the daemon to claim the name.
+[D-BUS Service]
+Name=org.freedesktop.Visage1
+Exec=/bin/false
+User=root
+SystemdService=visaged.service
