@@ -4,7 +4,7 @@
 pkgname=opentubex
 _pkgname=OpenTubeX
 _ghurl="https://github.com/OpenTubeX/OpenTubeX"
-pkgver=0.35.1
+pkgver=0.35.2
 _pkgver="$pkgver-beta"
 pkgrel=1
 pkgdesc='A highly customizable, privacy-focused desktop YouTube client'
@@ -18,7 +18,7 @@ makedepends=('git' 'npm' 'pnpm')
 source=("$pkgname-$pkgver.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}-beta.tar.gz"
         opentubex.desktop
         opentubex.sh)
-sha256sums=('4249f68659d4a9d845281df884336f233d8d7599a1653ca04ca4caba62106e26'
+sha256sums=('7855f5acb90e481971b8e961bea93e455d07360b529363f5995d939dc18b46f7'
             '63154cb6dd377c8d70714bb858405f95d88a849815d86bf7cf1b6b344cc54b5d'
             'ed9c3c54f5604389cac2e53df7f917ce6952a870abc409464e5b8ba590ca3d07')
 
