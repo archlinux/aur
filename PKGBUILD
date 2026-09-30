@@ -10,11 +10,11 @@
 
 pkgname=nono-ai-bin
 _pkgname=nono
-pkgver=0.78.0
+pkgver=0.79.0
 pkgrel=1
 pkgdesc='Secure, kernel-enforced sandbox for AI agents, MCP servers and LLM workloads using Landlock (pre-built binary)'
 arch=('x86_64' 'aarch64')
-url='https://github.com/always-further/nono'
+url='https://github.com/nolabs-ai/nono'
 license=('Apache-2.0')
 # dbus is intentionally not a hard dependency: the release binary does not
 # link libdbus (pure-Rust zbus keyring backend, verified in release.yml).
@@ -29,15 +29,15 @@ provides=('nono-ai')
 conflicts=("${_pkgname}" 'nono-ai' 'nono-ai-git')
 options=('!strip' '!debug')
 source=(
-  "LICENSE-${pkgver}::https://raw.githubusercontent.com/always-further/nono/v${pkgver}/LICENSE"
-  "README-${pkgver}.md::https://raw.githubusercontent.com/always-further/nono/v${pkgver}/README.md"
+  "LICENSE-${pkgver}::https://raw.githubusercontent.com/nolabs-ai/nono/v${pkgver}/LICENSE"
+  "README-${pkgver}.md::https://raw.githubusercontent.com/nolabs-ai/nono/v${pkgver}/README.md"
 )
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/always-further/nono/releases/download/v${pkgver}/nono-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/always-further/nono/releases/download/v${pkgver}/nono-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/nolabs-ai/nono/releases/download/v${pkgver}/nono-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/nolabs-ai/nono/releases/download/v${pkgver}/nono-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('7310e9389f298b89bb2f90ac4b6081ed5b6a1c4a7b8547df5d52966a57cb0929'
-            'e7b370b5a75d878d5b1121ad398ec009ff36cd491f713dec9fd19740dac7705c')
-sha256sums_x86_64=('af5e837973d547aaf6d3cdfbd12e3952224d1bb77b7292962ea19180399c38db')
-sha256sums_aarch64=('7308b4109940f16ec0d024eb4bbcface1cfe2ea1e8333dd147ab4f0be7706071')
+            'faa2519229c8527b6000da51c1786a077cdbe5aac426c12465ce860cdf2075fd')
+sha256sums_x86_64=('36dfeeb6e8c6a30c43f80ba239e2460af43047c008153af527fdd893c1f02392')
+sha256sums_aarch64=('c4a4f4b9ae318574d30d352127a34dcc919c4d6682ee8fbd30bb8d2bd2e0e85d')
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
