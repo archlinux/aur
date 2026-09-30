@@ -1,5 +1,5 @@
 pkgname=mcpelauncher-ui-bin
-pkgver=1.7.6.28199233421.1~bookworm
+pkgver=1.8.4.35236987803.1~bookworm
 pkgrel=1
 pkgdesc="Minecraft Bedrock Launcher for Linux"
 arch=('x86_64')

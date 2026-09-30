@@ -1,6 +1,6 @@
 pkgbase = mcpelauncher-ui-bin
 	pkgdesc = Minecraft Bedrock Launcher for Linux
-	pkgver = 1.7.6.28199233421.1~bookworm
+	pkgver = 1.8.4.35236987803.1~bookworm
 	pkgrel = 1
 	url = https://minecraft-linux.github.io
 	arch = x86_64
@@ -24,8 +24,8 @@ pkgbase = mcpelauncher-ui-bin
 	provides = mcpelauncher-ui
 	conflicts = mcpelauncher-ui
 	conflicts = mcpelauncher-ui-git
-	noextract = mcpelauncher-ui-manifest_1.7.6.28199233421.1~bookworm_amd64.deb
-	source = https://minecraft-linux.github.io/pkg/deb/pool/bookworm/main/m/mcpelauncher-ui-manifest/mcpelauncher-ui-manifest_1.7.6.28199233421.1~bookworm_amd64.deb
+	noextract = mcpelauncher-ui-manifest_1.8.4.35236987803.1~bookworm_amd64.deb
+	source = https://minecraft-linux.github.io/pkg/deb/pool/bookworm/main/m/mcpelauncher-ui-manifest/mcpelauncher-ui-manifest_1.8.4.35236987803.1~bookworm_amd64.deb
 	b2sums = SKIP
 
 pkgname = mcpelauncher-ui-bin
