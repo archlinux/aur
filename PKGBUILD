@@ -1,6 +1,6 @@
 # Maintainer: ZAvrikDinozavrik <zaz965@stm32f0.ru>
 pkgname=envmerge-git
-pkgver=r1.0000000
+pkgver=r3.910a786
 pkgrel=1
 pkgdesc="Merge new keys from .env.example into your .env (TUI + silent mode)"
 arch=('x86_64' 'aarch64')
