@@ -1,6 +1,6 @@
 # Maintainer: TheMrAhmad <https://github.com/AtomicError>
 pkgname=whisper-desktop-bin
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="High-performance native desktop studio for local speech-to-text, subtitle translation, and video hardsubbing"
 arch=('x86_64' 'aarch64')
@@ -27,10 +27,10 @@ source=("LICENSE-v${pkgver}::https://raw.githubusercontent.com/AtomicError/whisp
 sha256sums=('37f60e97a2677fe8cc2ad83fd4576decb90675c0fe189598450677bf5820e53a')
 
 source_x86_64=("https://github.com/AtomicError/whisper-desktop/releases/download/v${pkgver}/WhisperDesktop_${pkgver}_amd64.deb")
-sha256sums_x86_64=('f87485d5a352621721abc48d9cde6cf61d468905886e1cef594db673cb71b6ff')
+sha256sums_x86_64=('cdbe4018e47a61443cfcdd6800722191fa7e17aba479d4d17d0788e36ffe70d0')
 
 source_aarch64=("https://github.com/AtomicError/whisper-desktop/releases/download/v${pkgver}/WhisperDesktop_${pkgver}_arm64.deb")
-sha256sums_aarch64=('721303d72752428fbaca23fd4b24629b37c9fa58873d4deb987ebc6dddc610fe')
+sha256sums_aarch64=('4d5aa981d41c0879184b385580cdfb55f2abebcd6690b3e5016441bf728c1c3f')
 
 package() {
   cd "$srcdir"
