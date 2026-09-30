@@ -1,6 +1,6 @@
 pkgbase = masume-bin
 	pkgdesc = A database client for the terminal
-	pkgver = 0.0.12
+	pkgver = 0.0.13
 	pkgrel = 1
 	url = https://github.com/turanmahmudov/masume
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = masume-bin
 	provides = masume
 	conflicts = masume
 	options = !strip
-	source_x86_64 = masume-x86_64-0.0.12.tgz::https://github.com/turanmahmudov/masume/releases/download/v0.0.12/masume_0.0.12_linux_amd64.tar.gz
-	sha256sums_x86_64 = 56c14231e52bfbde905f8259280681faa5279d2e2c39ecc8583b777f9ef612ae
-	source_aarch64 = masume-aarch64-0.0.12.tgz::https://github.com/turanmahmudov/masume/releases/download/v0.0.12/masume_0.0.12_linux_amd64.tar.gz
-	sha256sums_aarch64 = 56c14231e52bfbde905f8259280681faa5279d2e2c39ecc8583b777f9ef612ae
+	source_x86_64 = masume-x86_64-0.0.13.tgz::https://github.com/turanmahmudov/masume/releases/download/v0.0.13/masume_0.0.13_linux_amd64.tar.gz
+	sha256sums_x86_64 = ce06e4ceaa1860794b5f6e443f252d90f3ab89dbb53b957d4b7d7bbdf5054ea4
+	source_aarch64 = masume-aarch64-0.0.13.tgz::https://github.com/turanmahmudov/masume/releases/download/v0.0.13/masume_0.0.13_linux_amd64.tar.gz
+	sha256sums_aarch64 = ce06e4ceaa1860794b5f6e443f252d90f3ab89dbb53b957d4b7d7bbdf5054ea4
 
 pkgname = masume-bin
