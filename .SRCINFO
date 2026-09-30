@@ -1,0 +1,23 @@
+pkgbase = recoil16ctl-git
+	pkgdesc = Control tool for the PCSpecialist Recoil 16 AMD (TUXEDO Stellaris 16 Gen7): charge modes, battery health, lightbar, power profiles, Fn/Super lock, screen rotation, NVIDIA GPU power and offload, battery draw
+	pkgver = 1.4.0.r1.g5a401b1
+	pkgrel = 1
+	url = https://github.com/amad3v/recoil16ctl
+	install = recoil16ctl.install
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	optdepends = recoil16-dkms: the drivers recoil16ctl controls
+	optdepends = libkscreen: kscreen-doctor for recoil16ctl screen and the panel line of power (KDE Plasma)
+	optdepends = mesa-utils: eglinfo for recoil16ctl gpu test
+	optdepends = vulkan-tools: vulkaninfo for recoil16ctl gpu test
+	provides = recoil16ctl
+	conflicts = recoil16ctl
+	options = !debug
+	source = recoil16ctl::git+https://github.com/amad3v/recoil16ctl.git
+	sha256sums = SKIP
+
+pkgname = recoil16ctl-git
