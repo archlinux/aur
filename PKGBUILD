@@ -1,7 +1,7 @@
 # Maintainer: Coraline Shuryn <coraline.shuryn@gmail.com>
 
 pkgname=spirula-studio
-pkgver=2026.9.24
+pkgver=2026.9.30
 pkgrel=1
 pkgdesc="End-to-end 3D Gaussian Splatting pipeline (Vulkan backend)"
 arch=('x86_64' 'aarch64')
@@ -47,7 +47,7 @@ source_aarch64=(
 noextract=(
   "slang-${_slangver}-linux-${CARCH}.tar.gz"
 )
-sha256sums=('b93b6ad6a8d41c9d941a5fd75cca6ee41eecb960300d5b3deacc75e002d1b957'
+sha256sums=('bde898b932547a4205a1790f525572c8e7176d36bcfe78c9972ea26064a510e3'
             'fecb33d33930e12ff53a34064e9d3a06c8f7c3e04408f14cd36c80e3faac863b'
             'cf015b623bca66d6a55711bbf428b155d1cdd6c0656ef7c7d587ddf29f474de7'
             '35f9d27d404bc5896eac4ceada87c7e2e0d6e3948cf8ebe41ff0a23a2111ac59'
@@ -70,7 +70,9 @@ prepare() {
 }
 
 build() {
-  cmake -B build -S "${srcdir}/${pkgname}-${pkgver}" -G Ninja \
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  cmake -B build -S . -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSS_BACKEND=vulkan \
@@ -86,7 +88,7 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Main executable
-  install -Dm755 "${srcdir}/build/spirula" "${pkgdir}/usr/bin/spirula"
+  install -Dm755 build/spirula "${pkgdir}/usr/bin/spirula"
 
   # Compatibility / subcommand symlinks
   ln -s spirula "${pkgdir}/usr/bin/spirula-studio"
