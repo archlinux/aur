@@ -1,6 +1,24 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
+
+# The one PKGBUILD for this package; everything Arch builds from it:
+#
+# - AUR: release.sh copies it, with mx-samba-config.install, into aur/ and
+#   fills in pkgver and the tag tarball's real checksum there.
+# - OBS: the _service extracts arch/* from main and download_files fetches the
+#   source= tarball below, since the build VMs have no network. makepkg on OBS
+#   does check sums, which is why the SKIP here stays: the tarball's checksum
+#   only exists once the tag has been pushed.
+# - Local: "./build.sh --arch" builds the working tree from a git archive
+#   tarball named after source= below, so makepkg uses it instead of fetching.
+#
+# Keep pkgver in step with debian/changelog; release.sh refuses to tag a
+# version this file isn't at, because OBS fetches the tarball named here.
+#
+# Keep source= on one line with ${pkgver} in double quotes: OBS parses this
+# file itself and only expands plain variables.
+
 pkgname=mx-samba-config
-pkgver=26.03
+pkgver=26.09
 pkgrel=1
 pkgdesc="Samba configuration GUI tool"
 arch=('x86_64' 'i686')
@@ -9,8 +27,8 @@ license=('GPL3')
 depends=('samba' 'qt6-base' 'polkit' 'xdg-utils')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 install=mx-samba-config.install
-source=("https://github.com/MX-Linux/mx-samba-config/archive/refs/tags/26.03.tar.gz")
-sha256sums=('121afbfca026dd81bd22e522a934f18ada231e44787212577c215df012b1b4c6')
+source=("https://github.com/MX-Linux/mx-samba-config/archive/refs/tags/26.09.tar.gz")
+sha256sums=('61b5d2ea36d85dec9d7c34bb50eb344f3e84c44a64516c1c50179ec0dede320a')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -32,8 +50,10 @@ package() {
 
     install -Dm755 build/mx-samba-config "${pkgdir}/usr/bin/mx-samba-config"
 
-    install -dm755 "${pkgdir}/usr/share/mx-samba-config/locale"
-    install -Dm644 build/*.qm "${pkgdir}/usr/share/mx-samba-config/locale/" 2>/dev/null || true
+    # "install -D" with several sources needs -t, and then creates the
+    # destination directory itself. No error suppression either: a glob that
+    # matches nothing must fail the build rather than ship no translations.
+    install -Dm644 -t "${pkgdir}/usr/share/mx-samba-config/locale/" build/*.qm
 
     install -Dm644 mx-samba-config.desktop "${pkgdir}/usr/share/applications/mx-samba-config.desktop"
 
@@ -51,8 +71,11 @@ package() {
 
     install -dm755 "${pkgdir}/usr/share/doc/mx-samba-config"
 
-    install -dm755 "${pkgdir}/usr/share/man/man1"
-    install -Dm644 help/*.1 "${pkgdir}/usr/share/man/man1/" 2>/dev/null || true
+    # help/ postdates the 26.03 tag, so its tarball has no man page. Guard on
+    # the file existing rather than suppressing install's errors.
+    if compgen -G "help/*.1" >/dev/null; then
+        install -Dm644 -t "${pkgdir}/usr/share/man/man1/" help/*.1
+    fi
     if [ -d docs ]; then
         cp -r docs/* "${pkgdir}/usr/share/doc/mx-samba-config/" 2>/dev/null || true
     fi
