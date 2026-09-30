@@ -2,7 +2,7 @@
 
 pkgname=screenie-bin
 _pkgname=screenie
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Beautiful screenshots & screen recording for Wayland'
 arch=('x86_64' 'aarch64')
@@ -36,8 +36,8 @@ conflicts=("$_pkgname")
 options=('!strip' '!debug')
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('95ba6db468c21e43f5581e40bfa5ca0e6555d60b2630a3cd9965b50e52e2d3b9')
-sha256sums_aarch64=('1f8e8467f04793f3917c56d87a58de5b1b3157fc462a93ac4345b34bf2b85bc7')
+sha256sums_x86_64=('f21c7c5cf391f9957da30d1c1d85d7c9ef9b6e870afe81b6ac208ada5e6c1e06')
+sha256sums_aarch64=('ae4b2cfff5669b03738331f8c14d40b7a484c366ccdfa7c82e7e5739707e2a8b')
 
 package() {
   cd "$_pkgname-$pkgver-$CARCH-unknown-linux-gnu"

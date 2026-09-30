@@ -1,10 +1,18 @@
 #!/usr/bin/env bash
 # Point the PKGBUILD at a screenie release (default: the latest) and regenerate .SRCINFO.
-#   ./update.sh [vX.Y.Z]
+#   ./update.sh [vX.Y.Z] [--commit]
 set -euo pipefail
 cd "$(dirname "$0")"
 
-release=$(gh release view ${1:+"$1"} --repo johnpyp/screenie --json tagName,assets)
+tag= commit=
+for arg; do
+  case $arg in
+    --commit) commit=1 ;;
+    *) tag=$arg ;;
+  esac
+done
+
+release=$(gh release view ${tag:+"$tag"} --repo johnpyp/screenie --json tagName,assets)
 pkgver=$(jq -r '.tagName | ltrimstr("v")' <<<"$release")
 [[ $pkgver == *-* ]] && { echo "v$pkgver is a pre-release" >&2; exit 1; }
 
@@ -19,5 +27,11 @@ for arch in x86_64 aarch64; do
 done
 makepkg --printsrcinfo >.SRCINFO
 
-git --no-pager diff --stat
-echo "screenie-bin $pkgver-$(sed -n 's/^pkgrel=//p' PKGBUILD)"
+git --no-pager diff --stat HEAD -- PKGBUILD .SRCINFO
+version="$pkgver-$(sed -n 's/^pkgrel=//p' PKGBUILD)"
+if [[ $commit ]] && ! git diff --quiet HEAD -- PKGBUILD .SRCINFO; then
+  git commit -q -m "screenie-bin $version" -- PKGBUILD .SRCINFO
+  echo "committed screenie-bin $version"
+else
+  echo "screenie-bin $version"
+fi
