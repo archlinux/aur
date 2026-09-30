@@ -1,0 +1,27 @@
+From 60f4db43f2616ac3c7e3e573bca4f2a351f66dbc Mon Sep 17 00:00:00 2001
+From: Jonathan Neidel <jneidel@jneidel.com>
+Date: Fri, 20 Feb 2026 14:11:53 +0100
+Subject: [PATCH] Allow _ and : as tag separators
+
+---
+ filetags/__init__.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/filetags/__init__.py b/filetags/__init__.py
+index ceec5b9..93f7a30 100755
+--- a/filetags/__init__.py
++++ b/filetags/__init__.py
+@@ -336,7 +336,9 @@ class SimpleCompleter(object):
+         self.options = sorted(options)
+ 
+         # removing '-' as a delimiter character in order to be able to use '-tagname' for removing:
+-        readline.set_completer_delims(readline.get_completer_delims().replace('-', ''))
++        readline.set_completer_delims(
++            readline.get_completer_delims().replace('-', '').replace('_', '').replace(':', '')
++        )
+ 
+         return
+ 
+-- 
+2.55.0
+
