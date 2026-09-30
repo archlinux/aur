@@ -1,5 +1,5 @@
 pkgbase = jorvik-git
-	pkgdesc = Self-hosted Matrix client built to feel like Discord (git)
+	pkgdesc = Chat and voice for Matrix (git)
 	pkgver = 1.0.14.r2.g8104426
 	pkgrel = 1
 	url = https://github.com/jorvikapp/jorvik

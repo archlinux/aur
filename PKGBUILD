@@ -4,7 +4,7 @@ pkgname=jorvik-git
 _pkgname=jorvik
 pkgver=1.0.14.r2.g8104426
 pkgrel=1
-pkgdesc="Self-hosted Matrix client built to feel like Discord (git)"
+pkgdesc="Chat and voice for Matrix (git)"
 arch=('x86_64')
 url="https://github.com/jorvikapp/jorvik"
 license=('AGPL-3.0-only')
@@ -73,7 +73,7 @@ LAUNCH
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" <<'DESKTOP'
 [Desktop Entry]
 Name=Jorvik
-Comment=Jorvik Desktop Client
+Comment=Chat and voice for Matrix
 Exec=jorvik %U
 Icon=jorvik
 Terminal=false
