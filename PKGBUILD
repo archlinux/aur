@@ -26,7 +26,7 @@
 pkgname=deepseek-harness-desktop
 _tag=dsh-v0.2.0-rc.2
 pkgver=0.2.0rc.2
-pkgrel=1
+pkgrel=2
 pkgdesc='DeepSeek Harness desktop application (Electron shell and bundled dsh runtime)'
 arch=('x86_64')
 url='https://github.com/deepseek-ai/deepseek-harness'
@@ -72,6 +72,11 @@ prepare() {
 
 build() {
   cd "$pkgname"
+
+  # Build with the toolchain the makedepends declare. A different Node earlier in PATH,
+  # such as a bundled runtime, carries no Node-API headers and the native addon build
+  # needs them; the same lookup also fixes which pnpm bootstraps the workspace.
+  export PATH="/usr/bin:$PATH"
 
   # The repository pins its own pnpm through packageManager; the system package bootstraps it.
   pnpm install --frozen-lockfile
