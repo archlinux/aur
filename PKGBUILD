@@ -4,7 +4,7 @@
 
 pkgname=session-desktop-appimage
 _pkgname=session-desktop
-pkgver=1.18.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc="Private messaging from your desktop (AppImage version)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("${_bin}::$url/releases/download/v$pkgver/${_bin}"
 		"https://raw.githubusercontent.com/session-foundation/session-desktop/refs/heads/dev/LICENSE"
         'session-desktop.desktop'
         'session-desktop.png')
-sha512sums=('28e8d71f2451cf90084126eff5e3ba60da5a5236ac6c3e943214b60d04befce698701d40cedb1980b76860c54aece52990cec5a347da39436add09fc0291a637'
+sha512sums=('fffb27f10ee7330c769b36dfa5998a0b7b4fa5802b84b80a57730b60bc2670b4c971a6d0fffc1ad08c83c2834f8cf67f24b519f8f7fd9c685339cf1532c6b9ba'
             'ea093221d733c540ae68e959d1f99a7983f1467641c04ec829ae4d458577bd5f92b5b624e6114cd3dc25bd97705a9678aa909a004cbafc5847224917793a04ea'
             '96e2a021ebf7a5904cbd47aabf8d03f450a3ee2831d7ecfad5f1518b4214609acc9fd51ad8ca189875c19a99f28f7fd71e5028999c58e404210f2401f4e6babd'
             '209d1483601018e2191719117a59da3112570b2e1ae176337a918d4ab2c4032dfddf14d42e4a3b2153888167e694542bbc1f42297589d035ab29f2578877425d')
