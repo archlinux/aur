@@ -1,4 +1,4 @@
-# Maintainer: Asger Geel Weirsoe <asger@weircon.dk>
+# Maintainer: Asger Geel Weirsoe <asger at weircon dot dk>
 #
 # DISCLAIMER
 #
@@ -20,7 +20,7 @@
 #    will be replaced.
 pkgname=ahfail
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Screen locker that says 'ah ah ah, you didn't say the magic word' on a wrong password"
 arch=('x86_64')
 url="https://gitea.weircon.dk/agw/gtk-ahfail"
