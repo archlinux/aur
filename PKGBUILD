@@ -1,9 +1,9 @@
 # Maintainer: OpenLyst <https://openlyst.ink>
-# Version and download URL from Openlyst API: https://openlyst.ink/docs/api
+# Deprecated - use kilt-bin instead. Kept so existing installs still build.
 pkgname=klit-bin
-pkgver=10.2.0
-pkgrel=1
-pkgdesc="E926 API client"
+pkgver=11.0.0
+pkgrel=2
+pkgdesc="Deprecated - install kilt-bin instead"
 arch=('x86_64')
 url="https://openlyst.ink"
 license=('GPL3')
@@ -12,7 +12,8 @@ optdepends=()
 provides=('kilt')
 conflicts=('kilt')
 options=('!strip')
-source=("klit-bin-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-152/kilt-10.2.0-2026-07-24-linux-x64.zip")
+install=klit-bin.install
+source=("klit-bin-${pkgver}.zip::https://gitlab.com/Openlyst/klit/-/releases/v11.0.0/downloads/kilt-linux-x64-11.0.0-2026-08-27.zip")
 sha256sums=('SKIP')
 
 package() {
@@ -26,7 +27,7 @@ package() {
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/kilt.desktop" <<EOF
 [Desktop Entry]
 Name=Kilt
-Comment=E926 API client
+Comment=E926 API client (unstable build from GitHub)
 Exec=/opt/kilt/kilt
 Icon=kilt
 Type=Application

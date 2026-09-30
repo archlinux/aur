@@ -1,0 +1,10 @@
+post_install() {
+    echo "============================================================"
+    echo " klit-bin is deprecated and no longer updated."
+    echo " Switch to kilt-bin:  yay -S kilt-bin"
+    echo "============================================================"
+}
+
+post_upgrade() {
+    post_install
+}

@@ -1,15 +1,16 @@
 pkgbase = klit-bin
-	pkgdesc = E926 API client
-	pkgver = 10.2.0
-	pkgrel = 1
+	pkgdesc = Deprecated - install kilt-bin instead
+	pkgver = 11.0.0
+	pkgrel = 2
 	url = https://openlyst.ink
+	install = klit-bin.install
 	arch = x86_64
 	license = GPL3
 	depends = gtk3
 	provides = kilt
 	conflicts = kilt
 	options = !strip
-	source = klit-bin-10.2.0.zip::https://github.com/openlyst/builds/releases/download/build-152/kilt-10.2.0-2026-07-24-linux-x64.zip
+	source = klit-bin-11.0.0.zip::https://gitlab.com/Openlyst/klit/-/releases/v11.0.0/downloads/kilt-linux-x64-11.0.0-2026-08-27.zip
 	sha256sums = SKIP
 
 pkgname = klit-bin
