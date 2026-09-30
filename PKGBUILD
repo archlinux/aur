@@ -1,10 +1,10 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname=cargo-fframes
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 epoch=
-pkgdesc="Write some Rust. Get video. Enjoy 🥤🍿"
+pkgdesc="Programmatic video rendering framework that is actually fast"
 arch=("any")
 url="https://github.com/dmtrKovalenko/fframes"
 license=('MIT')
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("fframes-${pkgver}.tar.gz::https://github.com/dmtrKovalenko/fframes/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('2feca136b0a43c6dcf54e857cbb4abc143db49bcbe7d653e6d981c350d559768')
+sha256sums=('a326b54416a70b0eafc33ece5edfa183eac7650eaac8b04f7c47ba862b925f79')
 validpgpkeys=()
 
 _basedir="fframes-$pkgver"
