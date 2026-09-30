@@ -2,6 +2,7 @@
 Type=Application
 Name=Legio Launcher
 Exec=legio-launcher
+StartupWMClass=legio
 Icon=legio-launcher
 Categories=Game;
 Terminal=false
