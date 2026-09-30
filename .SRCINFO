@@ -1,0 +1,21 @@
+pkgbase = python-deadcode
+	pkgdesc = Detect and auto-remove unused exports, dead routes and orphaned CSS in TS/React/Next.js projects
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Coding-Dev-Tools/deadcode
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	depends = python-rich
+	depends = python-pathspec
+	depends = python-yaml
+	source = python-deadcode-0.1.1.tar.gz::https://github.com/Coding-Dev-Tools/deadcode/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 52cc212289b607760dbac702508e5a583d0d4ff2f5705f9f08e0d949264d068d
+
+pkgname = python-deadcode
