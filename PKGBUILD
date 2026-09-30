@@ -10,7 +10,7 @@ url="https://github.com/aubree-lat/MacOBlox"
 license=('MIT')
 # clang and lld build the shim on first launch, against Darling's own sysroot.
 depends=('darling' 'clang' 'lld' 'unzip' 'pipewire-audio' 'python' 'python-gobject' 'gtk4' 'libadwaita' 'webkitgtk-6.0')
-makedepends=('git' 'patch')
+makedepends=('git')
 provides=('macoblox')
 conflicts=('macoblox')
 source=("git+$url.git"

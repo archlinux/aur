@@ -6,7 +6,6 @@ pkgbase = macoblox-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = patch
 	depends = darling
 	depends = clang
 	depends = lld
