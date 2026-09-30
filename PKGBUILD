@@ -2,14 +2,14 @@
 # scripts/prepare-aur.py sets the release source fields for AUR builds.
 
 pkgname=omarchy-flux
-pkgver='0.7.1'
+pkgver='0.8.0'
 pkgrel=1
 pkgdesc='Connect an Omarchy computer to your phone with Flux for Android'
 arch=('x86_64' 'aarch64')
 url='https://github.com/bjarneo/flux'
 # The repository has no license yet.
 license=('LicenseRef-unknown')
-depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-wayland' 'ttf-font-nerd' 'wl-clipboard' 'pipewire' 'avahi' 'xdg-utils')
+depends=('qt6-base>=6.6' 'qt6-declarative>=6.6' 'qt6-svg' 'qt6-wayland' 'ttf-font-nerd' 'wl-clipboard' 'pipewire' 'avahi' 'xdg-utils')
 optdepends=(
 	'quickshell: the flux plugin for omarchy-shell'
 	'ffmpeg: the phone as webcam'
@@ -21,9 +21,9 @@ optdepends=(
 makedepends=('go>=1.27.1' 'cmake' 'ninja' 'git')
 install=omarchy-flux.install
 
-_source_url='https://github.com/bjarneo/flux/archive/refs/tags/v0.7.1.tar.gz'
-_source_sha256='e210b7d17d7089cb75fb230529860c6b4b439f01667f3cea65e9a0828ae10b53'
-_source_dir='flux-0.7.1'
+_source_url='https://github.com/bjarneo/flux/archive/refs/tags/v0.8.0.tar.gz'
+_source_sha256='0f96b2cc1bc83bb1f84ea14b15a4d86e3a15e541d8e0fd2a29c3769b177bb609'
+_source_dir='flux-0.8.0'
 
 if [[ -n $_source_url ]]; then
 	source=("${pkgname}-${pkgver}.tar.gz::${_source_url}")
@@ -55,9 +55,11 @@ build() {
 	make build VERSION="$pkgver"
 }
 
+# Only the tests. CI also runs go vet, gofmt, and the race detector, which
+# can fail with a newer Go than the Go of CI.
 check() {
 	_src
-	make test vet
+	go test ./cmd/... ./internal/...
 }
 
 package() {
