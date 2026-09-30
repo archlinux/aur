@@ -1,0 +1,10 @@
+post_install() {
+    echo "============================================================"
+    echo " doudou-bin-unstable is deprecated and no longer updated."
+    echo " Switch to doudou-unstable:  yay -S doudou-unstable"
+    echo "============================================================"
+}
+
+post_upgrade() {
+    post_install
+}

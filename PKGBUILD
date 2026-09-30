@@ -1,9 +1,9 @@
 # Maintainer: OpenLyst <https://openlyst.ink>
-# Unstable build from GitHub releases: https://github.com/openlyst/builds/releases
+# Deprecated - use doudou-unstable instead. Kept so existing installs still build.
 pkgname=doudou-bin-unstable
-pkgver=21.0.0
-pkgrel=1
-pkgdesc="Music player for self-hosted services (unstable build from GitHub)"
+pkgver=23.0.0
+pkgrel=2
+pkgdesc="Deprecated - install doudou-unstable instead"
 arch=('x86_64')
 url="https://openlyst.ink"
 license=('GPL3')
@@ -12,7 +12,8 @@ optdepends=()
 provides=('doudou')
 conflicts=('doudou')
 options=('!strip')
-source=("doudou-bin-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-154/doudou-21.0.0-2026-07-31-linux-x64.zip")
+install=doudou-bin-unstable.install
+source=("doudou-bin-unstable-${pkgver}.zip::https://gitlab.com/Openlyst/doudou/-/releases/nightly/downloads/doudou-linux-x64-23.0.0-2026-09-29.zip")
 sha256sums=('SKIP')
 
 package() {
@@ -26,7 +27,7 @@ package() {
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/doudou.desktop" <<EOF
 [Desktop Entry]
 Name=Doudou
-Comment=Music player for self-hosted services (unstable build from G
+Comment=The final music player (unstable build from GitHub)
 Exec=/opt/doudou/doudou
 Icon=doudou
 Type=Application
