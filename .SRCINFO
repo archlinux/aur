@@ -1,20 +1,22 @@
 pkgbase = emudeck-bin
-	pkgdesc = A collection of scripts that allows you to autoconfigure your Steam Deck, creates your roms directory structure and downloads all of the needed Emulators.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.5.0
+	pkgdesc = A collection of scripts that allows you to autoconfigure your Steam Deck, it creates your roms directory structure and downloads all of the needed Emulators for you along with the best configurations for each of them.
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/EmuDeck/emudeck-electron
+	arch = aarch64
 	arch = x86_64
 	license = MIT
 	makedepends = asar
-	makedepends = fuse2
-	depends = electron22
-	provides = emudeck=2.5.0
+	depends = electron41
+	provides = emudeck=2.7.1
 	conflicts = emudeck
-	source = emudeck-2.5.0.AppImage::https://github.com/EmuDeck/emudeck-electron/releases/download/v2.5.0/EmuDeck-2.5.0.AppImage
-	source = LICENSE-2.5.0::https://raw.githubusercontent.com/EmuDeck/emudeck-electron/v2.5.0/LICENSE
+	source = LICENSE-2.7.1::https://raw.githubusercontent.com/EmuDeck/emudeck-electron/v2.7.1/LICENSE
 	source = emudeck.sh
-	sha256sums = 7b4b898567c2abcc7ebe791500b34ab2aadc8c2a23d1754d23d314215b4fcc66
 	sha256sums = 5e98c15fe806a18f79422d2cd0c4587129f4e03081b5ab4c030627d6f6840d68
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
+	source_aarch64 = emudeck-2.7.1-aarch64.AppImage::https://github.com/EmuDeck/emudeck-electron/releases/download/v2.7.1/EmuDeck-2.7.1-arm64.AppImage
+	sha256sums_aarch64 = 7fd4390b577c792eb8714f84ca712bcbe615f98d64bfafae920010f6761be493
+	source_x86_64 = emudeck-2.7.1-x86_64.AppImage::https://github.com/EmuDeck/emudeck-electron/releases/download/v2.7.1/EmuDeck-2.7.1-x86_64.AppImage
+	sha256sums_x86_64 = 97ed9aee397052d99f0e5a580303a6ffe86b7f49d20c1a057b020b6e6270c98d
 
 pkgname = emudeck-bin
