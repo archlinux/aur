@@ -1,8 +1,9 @@
 pkgbase = omachat
 	pkgdesc = Native voice, text and screen chat for Omarchy and Linux (client, daemon, CLI and self-hostable server)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Sleepy-Studio/OmaChat
+	install = omachat.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -14,6 +15,7 @@ pkgbase = omachat
 	depends = qt6-declarative
 	depends = qt6-svg
 	depends = qt6-wayland
+	depends = qt6-multimedia
 	depends = qtkeychain-qt6
 	depends = protobuf
 	depends = abseil-cpp
@@ -27,8 +29,9 @@ pkgbase = omachat
 	depends = hicolor-icon-theme
 	optdepends = gnome-keyring: store session tokens in the Secret Service keyring
 	optdepends = kwallet: alternative Secret Service keyring
+	optdepends = mpv: open video attachments in MPV
 	optdepends = xdg-desktop-portal: screen sharing, with a backend such as xdg-desktop-portal-hyprland
-	source = git+https://github.com/Sleepy-Studio/OmaChat.git#tag=v0.2.0
+	source = git+https://github.com/Sleepy-Studio/OmaChat.git#tag=v0.2.1
 	sha256sums = SKIP
 
 pkgname = omachat

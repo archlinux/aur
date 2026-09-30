@@ -1,0 +1,13 @@
+post_install() {
+    echo "omachat: optional Omarchy bar widget available."
+    echo "  Run as your normal user: omachat-omarchy-plugin install"
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo "omachat: if you installed the Omarchy bar widget, remove it first with:"
+    echo "  omachat-omarchy-plugin uninstall"
+}
