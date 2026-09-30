@@ -1,6 +1,6 @@
 pkgbase = zcode
 	pkgdesc = ZCode desktop app repackaged from official Linux release
-	pkgver = 3.14.3
+	pkgver = 3.14.4
 	pkgrel = 2
 	url = https://zcode.z.ai/en
 	install = zcode.install
@@ -20,16 +20,16 @@ pkgbase = zcode
 	depends = util-linux-libs
 	depends = xdg-utils
 	optdepends = libappindicator-gtk3: system tray indicator support
-	provides = zcode-desktop-bin=3.14.3
-	noextract = ZCode-3.14.3-linux-x64.deb
-	noextract = ZCode-3.14.3-linux-arm64.deb
+	provides = zcode-desktop-bin=3.14.4
+	noextract = ZCode-3.14.4-linux-x64.deb
+	noextract = ZCode-3.14.4-linux-arm64.deb
 	options = !strip
 	options = !lto
 	source = zcode.desktop
 	sha256sums = 510fb413274334e05901d65b28df618b1fb7216d690c136ab55173f9bf1a75e6
-	source_x86_64 = ZCode-3.14.3-linux-x64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.14.3/linux-x64/ZCode-3.14.3-linux-x64.deb
-	sha256sums_x86_64 = 8512fb78889686c7ecdc91a609a86e6b408255a10db0c9afba0d3e377b0b5b4f
-	source_aarch64 = ZCode-3.14.3-linux-arm64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.14.3/linux-arm64/ZCode-3.14.3-linux-arm64.deb
-	sha256sums_aarch64 = 18263ced23563fd4c9afcaa6971da9541126d53c81f91f0bb28c938bd9efd477
+	source_x86_64 = ZCode-3.14.4-linux-x64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.14.4/linux-x64/ZCode-3.14.4-linux-x64.deb
+	sha256sums_x86_64 = d753618845e5e057c29ccbc3917c08a4c8d99355deef7d6a0f4d2916ba69e4be
+	source_aarch64 = ZCode-3.14.4-linux-arm64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.14.4/linux-arm64/ZCode-3.14.4-linux-arm64.deb
+	sha256sums_aarch64 = 6874d0b12f9522840746d81f39a001648be68eed3aa80c1348a4e360c44ef718
 
 pkgname = zcode
