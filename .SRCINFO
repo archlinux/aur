@@ -1,0 +1,14 @@
+pkgbase = passmcp
+	pkgdesc = Diagnose Model Context Protocol servers end to end: nine phases, every finding tied to the request that produced it
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/sebastienrousseau/passmcp
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go
+	depends = glibc
+	source = passmcp-0.0.4.tar.gz::https://github.com/sebastienrousseau/passmcp/archive/refs/tags/v0.0.4.tar.gz
+	sha256sums = c4aa70cfc7887237285e824d0cdb4941b33a4b4c1f519e6e0710c667ef9e322c
+
+pkgname = passmcp
