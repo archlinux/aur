@@ -1,6 +1,6 @@
 pkgbase = lazyftp-bin
 	pkgdesc = A simple, keyboard-driven TUI FTP, FTPS and SFTP client
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/MawCeron/lazyftp
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = lazyftp-bin
 	provides = lazyftp
 	conflicts = lazyftp
 	options = !strip
-	source_x86_64 = lazyftp-x86_64-0.3.1.tgz::https://github.com/MawCeron/lazyftp/releases/download/v0.3.1/lazyftp_0.3.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = baf0e6e7a07c6b071ce64293a73f1425f800ee365bb01cf49771f6fc482f69cc
-	source_aarch64 = lazyftp-aarch64-0.3.1.tgz::https://github.com/MawCeron/lazyftp/releases/download/v0.3.1/lazyftp_0.3.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 2c2ff6be64ba6d3a6ebc5def936f3b4369569400f8e875bd904e9d0909f49667
+	source_x86_64 = lazyftp-x86_64-0.4.0.tgz::https://github.com/MawCeron/lazyftp/releases/download/v0.4.0/lazyftp_0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 461a30edf9c030c862e430b6b499ac9b80b5a212d1c457208c142a0a376596cb
+	source_aarch64 = lazyftp-aarch64-0.4.0.tgz::https://github.com/MawCeron/lazyftp/releases/download/v0.4.0/lazyftp_0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = fe73902b838a03d22c1a0a65d29a33e4e432a75ad9ffd03247490674568f3b0a
 
 pkgname = lazyftp-bin
