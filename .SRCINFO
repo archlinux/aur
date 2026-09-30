@@ -1,0 +1,14 @@
+pkgbase = pcopy
+	pkgdesc = Temporary file host, nopaste and clipboard across machines; usable from Web UI, CLI or plain curl
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/binwiederhier/pcopy
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go>=1.16
+	options = !lto
+	source = pcopy-0.6.1.tar.gz::https://github.com/binwiederhier/pcopy/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = 4ca54b3a8322a11ff0c3d54c719a671d71001034596503089010c760c485fd78
+
+pkgname = pcopy
