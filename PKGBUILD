@@ -14,7 +14,7 @@ pkgname=('systemd-liberated-git'
          'systemd-liberated-tests-git'
          'systemd-liberated-ukify-git')
 pkgdesc='systemd fork with surveillance enablement removed (git version)'
-pkgver=262.r90699
+pkgver=263.r91989
 pkgrel=1
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
@@ -153,8 +153,8 @@ build() {
     -Dntp-servers="${_timeservers[*]}"
     -Ddns-servers="${_nameservers[*]}"
     -Drpmmacrosdir=no
-    -Dsysvinit-path=
-    -Dsysvrcnd-path=
+    # -Dsysvinit-path=   # REMOVED: option dropped in systemd v260
+    # -Dsysvrcnd-path=   # REMOVED: option dropped in systemd v260
 
     -Dsbat-distro='arch'
     -Dsbat-distro-summary='Arch Linux AUR'
@@ -162,6 +162,10 @@ build() {
     -Dsbat-distro-version="${pkgver}"
     -Dsbat-distro-url="https://aur.archlinux.org/pkgbase/systemd-liberated-git"
   )
+
+  # Ensure a clean build directory. This avoids Meson version mismatches
+  # and stale configuration when rebuilding locally.
+  rm -rf build
 
   arch-meson "${pkgbase}" build "${_meson_options[@]}"
 
