@@ -2,7 +2,7 @@
 
 pkgname=ai-usagebar-bin
 _pkgname=ai-usagebar
-pkgver=1.28.0
+pkgver=1.29.0
 pkgrel=1
 pkgdesc="Omarchy/Waybar widgets + TUI for AI plan usage (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -26,12 +26,21 @@ conflicts=("$_pkgname" "$_pkgname-debug")
 # no-op and the auto-generated -debug split would be empty AND would
 # collide with the source variant's `ai-usagebar-debug` package.
 options=('!strip' '!debug')
+validpgpkeys=('AE42EF5D73DD92E248815C95B65CCCAF64A99438') # AkitaOnRails <boss@akitaonrails.com>
 
 # Per-arch sources — pacman picks the matching one for the host arch.
-source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz")
-source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64.tar.gz")
-sha256sums_x86_64=('01ec2780aaa88c768387f13c0d2d311171d27f867bcd2e66ad8fadb42a767551')
-sha256sums_aarch64=('1b795cee0edd36fd9aa99dbba8dbc1e63259b45d8f40e60716215c2e33918846')
+# The detached .sig accompanies each tarball so makepkg verifies source
+# signatures against validpgpkeys (#282).
+source_x86_64=(
+    "$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz"
+    "$_pkgname-$pkgver-x86_64.tar.gz.sig::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz.sig"
+)
+source_aarch64=(
+    "$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64.tar.gz"
+    "$_pkgname-$pkgver-aarch64.tar.gz.sig::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64.tar.gz.sig"
+)
+sha256sums_x86_64=('f47552928536b71b026c06db1d9a62f93a59d074fd9722f8d71a8dfb760bb14a' 'SKIP')
+sha256sums_aarch64=('df9233114fc8de432b5e4840ed89a6ef2b38723e4ebe29ddf72d8d9405292be0' 'SKIP')
 
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/"                "ai-usagebar"
