@@ -3,7 +3,7 @@
 # Local source builds use ../PKGBUILD (openquotacycle-git), not this file.
 
 pkgname=openquotacycle-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Linux desktop app for planning AI coding quotas around the 5-hour window"
 arch=('x86_64')
@@ -14,8 +14,8 @@ conflicts=('openquotacycle' 'quotracker' 'quotracker-bin' 'quotracker-git')
 replaces=('quotracker' 'quotracker-bin' 'quotracker-git')
 depends=('webkit2gtk-4.1' 'gtk3')
 options=('!strip' '!debug')
-source=("https://github.com/oioi555/openquotacycle/releases/download/v0.2.0/OpenQuotaCycle_0.2.0_amd64.deb")
-sha256sums=('e2eea016710e496e6d1a0f59d94d4453f912e61adb8f9385028682d9b7419cf7')
+source=("https://github.com/oioi555/openquotacycle/releases/download/v0.3.0/OpenQuotaCycle_0.3.0_amd64.deb")
+sha256sums=('e92b262db27e8da34e0b0b9c8e4545d26c8e42a4bb86be8e603a7acd39c19312')
 noextract=("${source[0]##*/}")
 
 package() {
