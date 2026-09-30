@@ -1,0 +1,17 @@
+pkgbase = zcc
+	pkgdesc = Blazing-fast code counter (tokei clone) written in ZZ
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zaidejjo/zcc
+	arch = x86_64
+	license = MIT
+	makedepends = clang
+	makedepends = unzip
+	depends = glibc
+	depends = sqlite
+	source = zcc-0.1.0-src.tar.gz::https://github.com/zaidejjo/zcc/releases/download/v0.1.0/zcc-0.1.0-src.tar.gz
+	source = zz-0.1.4-x86_64.zip::https://github.com/zaidejjo/zz/releases/download/v0.1.4/zz-0.1.4-linux-x86_64.zip
+	sha256sums = b61716a7515ad79268efd52c15c3771b75b77df810e1b831e308dca172ffa0c2
+	sha256sums = ed9868ecbcc2325d63d751e3109cf204d73b51cd83ddfeb1a14e6fa852e82623
+
+pkgname = zcc
