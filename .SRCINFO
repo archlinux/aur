@@ -1,6 +1,6 @@
 pkgbase = ztrash
 	pkgdesc = A polished, FreeDesktop-compliant trash manager with fzf integration, live watcher, and pattern restore
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/AceMinerOjal/ztrash
 	install = ztrash.install
@@ -9,9 +9,8 @@ pkgbase = ztrash
 	makedepends = scdoc
 	depends = zsh
 	depends = coreutils
-	optdepends = python: URL encoding/decoding fallback
-	optdepends = fzf: fuzzy-find integration
-	source = ztrash-1.0.0.tar.gz::https://github.com/AceMinerOjal/ztrash/archive/v1.0.0.tar.gz
-	sha256sums = ecd175fc1f528ce2445c3fd8c28d8451a67348058f32155bfa8a85b256c8d90a
+	optdepends = fzf: fuzzy-find integration with --fzf
+	source = ztrash-1.1.0.tar.gz::https://github.com/AceMinerOjal/ztrash/archive/v1.1.0.tar.gz
+	sha256sums = fa3045330c20ba8cb8199cbdaacd98e865b2d0ad36805ecaf9c9d0624cbdaa9f
 
 pkgname = ztrash
