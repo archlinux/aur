@@ -1,19 +1,28 @@
 # Maintainer: Egor Tensin <egor@tensin.name>
+
+# Basic Python packaging instructions are from
+# https://manual.archlinux.page/package-guidelines/python/
+
 pkgname=tag-release
+_name="git-$pkgname"
+_name="${_name//-/_}"
 pkgver=0.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Automate creation of semantic versioning tags'
 arch=(any)
 url="https://github.com/egor-tensin/$pkgname"
 license=(MIT)
-makedepends=(make)
+makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 depends=(python)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 md5sums=(SKIP)
 
-package() {
-    cd -- "$srcdir"
-    install -D -m 0644 -t "$pkgdir/usr/share/doc/$pkgname" ../README.Arch
+build() {
+    cd -- "$_name-$pkgver"
+    python -m build --wheel --no-isolation
+}
 
-    make -C "$pkgname-$pkgver" install "DESTDIR=$pkgdir"
+package() {
+    cd -- "$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
