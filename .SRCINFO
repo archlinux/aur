@@ -1,0 +1,18 @@
+pkgbase = airwallex-cli
+	pkgdesc = CLI for the Airwallex platform (proprietary beta)
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/airwallex/airwallex-cli
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-Airwallex-CLI-EULA
+	depends = glibc
+	optdepends = bash-completion: shell completions (provided by upstream)
+	provides = airwallex
+	conflicts = airwallex
+	source = airwallex-linux-checksums.txt::https://github.com/airwallex/airwallex-cli/releases/download/v0.4.1/airwallex-linux-checksums.txt
+	source = LICENSE::https://raw.githubusercontent.com/airwallex/airwallex-cli/master/README.md
+	sha256sums = ec95d740f44368511db0cc4cdeaf945f38ff0e52f3227c5f31c9f7602a098b2d
+	sha256sums = SKIP
+
+pkgname = airwallex-cli
