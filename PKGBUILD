@@ -2,8 +2,8 @@
 pkgbase=d-lan
 pkgname=(d-lan-core
     d-lan-gui)
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.3.2
+pkgrel=1
 license=GPL-3.0-or-later
 arch=('x86_64')
 url="https://www.d-lan.net/"
@@ -18,8 +18,8 @@ makedepends=(
     qt6-svg
 )
 options=(strip)
-source=("git+https://github.com/Ummon/D-LAN.git#commit=c488743bbb05a45285348fc4368bff63362eda42")
-sha256sums=('0d0b3d0855c67a8ea9f214256bc494a4fb7bbb61492d7c3f399a2b98af9bfb28')
+source=("git+https://github.com/Ummon/D-LAN.git#commit=59c75735ca481ae2316c11067e07421b312e505a")
+sha256sums=('ae1604205e989e030c807a87fc10cd0e6e6d1da223f013b6068dd4496697bef6')
 _appdir=${pkgbase^^}/application
 prepare() {
     cd "$_appdir"
@@ -35,6 +35,7 @@ package_d-lan-core() {
         'd-lan-gui: Graphical user interface'
     )
     depends=(libstdc++
+        openssl
         abseil-cpp
         protobuf
         libblake3
@@ -46,6 +47,7 @@ package_d-lan-core() {
 package_d-lan-gui() {
     pkgdesc="A free LAN file sharing software (GUI)"
     depends=(d-lan-core
+        openssl
         libgcc
         abseil-cpp
         libstdc++
