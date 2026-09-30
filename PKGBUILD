@@ -49,13 +49,17 @@ package() {
 
     install -Dm644 resources/desktop/dbflux.desktop \
         "${pkgdir}/usr/share/applications/dbflux.desktop"
-    sed -i 's|@EXEC_PATH@|/usr/bin/dbflux|g' \
+    sed -i -e 's|@EXEC_PATH@|/usr/bin/dbflux|g' \
+        -e 's|@APP_NAME@|DBFlux|g' \
+        -e 's|@APP_ID@|dbflux|g' \
         "${pkgdir}/usr/share/applications/dbflux.desktop"
 
     install -Dm644 resources/branding/stable/mark.svg \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/dbflux.svg"
 
     install -Dm644 resources/mime/dbflux-sql.xml \
+        "${pkgdir}/usr/share/mime/packages/dbflux-sql.xml"
+    sed -i 's|@APP_ID@|dbflux|g' \
         "${pkgdir}/usr/share/mime/packages/dbflux-sql.xml"
 
     install -Dm644 LICENSE-MIT \
