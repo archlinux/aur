@@ -14,6 +14,7 @@ optdepends=(
     'gnome-screenshot: screenshot fallback for background sessions'
     'hyprland: window targeting on Hyprland'
     'i3-wm: window targeting on i3'
+    'niri: window targeting on niri'
     'sway: window targeting on Sway'
     'wmctrl: window management on generic X11/EWMH'
     'wtype: text input on wlroots compositors'
