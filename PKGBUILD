@@ -1,7 +1,7 @@
 # Maintainer: Hamza Abdelmoumene <250554870+hamza-abdelmoumene@users.noreply.github.com>
 pkgname=vespera-git
 _pkgname=vespera
-pkgver=0.2.1.r0.gcb76cd0
+pkgver=0.2.1.r1.g27be273
 pkgrel=1
 pkgdesc="Standalone music player companion: MPRIS control, synced lyrics, visualizer and equalizer (git)"
 arch=('x86_64' 'aarch64')
