@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="🔌 What's really using your ports? htop-style TUI, one keypress to kill it"
 
-pkgver=0.0.7
+pkgver=0.1.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ provides=("${_appname}")
 options=('!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('4baa7c157ea656357f54ee30b7c035698d6e5b84dd05627d179f83b1985916e2')
+sha256sums=('bca5a8f6f592b9e7feffdadaa551e7b7d81ee57609a178e0e089b4260edda5f7')
 
 
 prepare() {
