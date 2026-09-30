@@ -3,7 +3,7 @@
 # Part of : CV4PVE Suite - https://www.corsinvest.it/cv4pve
 
 pkgname=cv4pve-metrics-exporter
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Metrics exporter for Proxmox VE"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -18,9 +18,9 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.zip::https://github.com/Corsinvest/c
 source_aarch64=("${pkgname}-${pkgver}-aarch64.zip::https://github.com/Corsinvest/cv4pve-metrics-exporter/releases/download/v${pkgver}/cv4pve-metrics-exporter-linux-arm64.zip")
 source_armv7h=("${pkgname}-${pkgver}-armv7h.zip::https://github.com/Corsinvest/cv4pve-metrics-exporter/releases/download/v${pkgver}/cv4pve-metrics-exporter-linux-arm.zip")
 
-sha256sums_x86_64=('3bb836c602228178bbccb71d0cb16b7f63ee974eb4a7c33da0249e46288f983d')
-sha256sums_aarch64=('0206a0c591c38cc549a1562f92bbc074e4ee0c76f24eba049d40d4d4d2da7cbf')
-sha256sums_armv7h=('dc80281114f3573d7c80f826a7f20a98652117eaa7a0e97038fa61aa71214361')
+sha256sums_x86_64=('7c3097dd4c00f9c1a8100c17ef284da3c4931a9938fe6857f3ba8bb7868b0ca6')
+sha256sums_aarch64=('7a36ca965f2204b606abd1c9f94490d11a14538a976e72ccb7f951cb8fb2f856')
+sha256sums_armv7h=('e40aaa61e5b32f665bb7ca1fe3a6d0e1ba4072046a33352c403b99f850eb0355')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
