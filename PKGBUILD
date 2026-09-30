@@ -6,7 +6,7 @@ _appname=${_gitname%-go}
 pkgname=${_appname}-bin
 pkgdesc="A simple terminal-based Docker performance monitor that displays real-time container statistics in a beautiful table format"
 
-pkgver=0.1.24
+pkgver=0.1.25
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,10 +28,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('70db10b6643d9be32e9d46d2fcb2383db00c5de8810f8354af38d638cd7e09c5'
+sha256sums=('74bd6a2125099e483c4f70a69ce72afcbf8c3b1416dbbd08b25d57b8455e265c'
             'cf24e4cc5e482fe153f66c4b6582cbca7142668b001009973d6d77eac23e68ad')
-sha256sums_x86_64=('85fb86e023fc6f13f7fa03ebc06eae5e681b0f73e0ad0362462472d7fb1920be')
-sha256sums_aarch64=('f1db74ae6ca873f4f59d9a8c380064997de3f1ef422bbe85c052612e827d5edb')
+sha256sums_x86_64=('1ea11d551160efa3de70ec48b5cb922097eea6c532d437f0754efb204e25479a')
+sha256sums_aarch64=('70a8e4a99c341f9998776e965f7e6c4191d7220499a237b5b6269dd5220e140a')
 
 
 package() {
