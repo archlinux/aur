@@ -12,7 +12,7 @@ options=(!strip)
 provides=('arcticons-icon-theme')
 conflicts=('arcticons-icon-theme')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('03d7ddd59a694290a37fc68a08ea6b77813d424865bb3ece4ee926781400f93206ac2e09fdf443dbf7737ace78518bff01140d9e6e86ba3c84fca3c35239803e')
+sha512sums=('698ade62c1017f285ba82c68c39a1491dc40f1ffdbdbc73b4a88e498815fa00557143a6ae5cfa12f147ef368224e767a908412b6049b2005b05983c3d980fc8e')
 
 package() {
 	cd "$srcdir/arcticons-linux"
