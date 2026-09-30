@@ -4,12 +4,12 @@
 # 官方源码自 2026-09 已正式合入 Linux 支持（PR #90）：
 # 1. 源码直接使用官方仓库（qingjian-team/qingjian），全树构建。
 # 2. Rust Server 官方二进制名为 qingjian-linux-server（打包提供 qingjian-server 软链接兼容）。
-# 3. 数据包使用官方 release 发布的版本化 tag（data-v2），sha256 与官方 data.lock 一致。
+# 3. 数据包使用官方 release 发布的版本化 tag（data-v3），sha256 与官方 data.lock 一致。
 # 4. 资源文件安装至 /usr/share/qingjian/resources/，匹配官方 paths.rs 自动发现机制。
 
 pkgname=fcitx5-qingjian-git
 _pkgname=fcitx5-qingjian
-pkgver=0.1.1.r211.gc72d772
+pkgver=0.1.5.beta.1.r2.gc08ae57
 pkgrel=1
 pkgdesc="青简输入法 Linux/Fcitx5 官方支持版（Rust Server + Fcitx5 插件 + 离线数据模型）"
 arch=('x86_64')
@@ -23,13 +23,13 @@ install="${_pkgname}.install"
 
 source=(
   "qingjian::git+https://github.com/qingjian-team/qingjian.git"
-  "qingjian-data-v2.tar.gz::https://github.com/qingjian-team/qingjian/releases/download/data-v2/qingjian-data.tar.gz"
-  "model-v2.qjm::https://github.com/qingjian-team/qingjian/releases/download/data-v2/model.qjm"
+  "qingjian-data.tar.gz::https://github.com/qingjian-team/qingjian/releases/download/data-v3/qingjian-data.tar.gz"
+  "model.qjm::https://github.com/qingjian-team/qingjian/releases/download/data-v2/model.qjm"
   "qingjian-server.service"
 )
-noextract=("qingjian-data-v2.tar.gz")
+noextract=("qingjian-data.tar.gz")
 sha256sums=('SKIP'
-            '4d59fdb3f82809736beebe23b42cec283ffd87f6a8f0243b95291c460f1f0caa'
+            '42ad08fb2fe9f497c0ab191c120f05386f6adcc9d713c3283200aaed690e62f3'
             'eed5bd0bda0c7bd8b43d1acb2dc4678d4bbe295bd47b2b0d4eeace0af9daff4d'
             '819c81dfaa4308ea9c3a84b16bcee5672ebc4d1c737a676cc42367ea929e4bd6')
 
@@ -72,19 +72,17 @@ package() {
   # 3. 安装资源（词库、整句模型、辅助资源）
   # 官方 paths.rs 优先定位 /usr/share/qingjian/resources/
   local resdir="${pkgdir}/usr/share/qingjian/resources"
-  install -d "${resdir}/data/generated"
-  install -d "${resdir}/data/model"
-  install -d "${resdir}/assets"
+  install -dm755 "${resdir}"
 
   # 解包词库并清理 macOS 隐藏元数据
-  bsdtar -xzf "${srcdir}/qingjian-data-v2.tar.gz" -C "${resdir}/data/generated"
+  bsdtar -xzf "${srcdir}/qingjian-data.tar.gz" -C "${resdir}"
   find "${resdir}/data/generated" -name '._*' -delete
 
   # 安装整句模型文件
-  install -Dm644 "${srcdir}/model-v2.qjm" "${resdir}/data/model/model.qjm"
+  install -Dm644 "${srcdir}/model.qjm" "${resdir}/data/model/model.qjm"
 
   # 复制辅助资源（表情、等级词典等）
-  cp -r assets/* "${resdir}/assets/"
+  cp -r assets "${resdir}"
 
   # 建立兼容软链接，使 /usr/share/qingjian/data 指向 resources/data
   ln -sf resources/data "${pkgdir}/usr/share/qingjian/data"
