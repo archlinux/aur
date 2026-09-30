@@ -1,3 +1,4 @@
+# shellcheck disable=SC2034,SC2154,SC2164
 # Maintainer: Energetix/Dark Nebula <https://github.com/Jobanny-Friki>
 
 pkgname=zplit
