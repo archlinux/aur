@@ -1,0 +1,16 @@
+pkgbase = dnafile-git
+	pkgdesc = Read raw DNA exports (23andMe, AncestryDNA, MyHeritage, FamilyTreeDNA, LivingDNA), detect the array and check rsID coverage. Fully offline
+	pkgver = r6.366b8b8
+	pkgrel = 1
+	url = https://github.com/AndreySoloviev/dnafile
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = dnafile
+	conflicts = dnafile
+	source = dnafile::git+https://github.com/AndreySoloviev/dnafile.git#branch=main
+	sha256sums = SKIP
+
+pkgname = dnafile-git
