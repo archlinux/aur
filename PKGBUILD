@@ -1,7 +1,7 @@
 # Maintainer: Clayton Kehoe <clayton.j.kehoe at boeing dot com>
 # Contributor : wiz64 <wiz64 dot com>
 pkgname=config-file-validator
-pkgver=2.3.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A tool to validate the syntax and schema of configuration files"
 arch=('x86_64')
@@ -25,13 +25,13 @@ build() {
   GOARCH=amd64 \
   go build \
   -ldflags="-w -s -extldflags '-static' \
-  -X github.com/Boeing/config-file-validator.version=$pkgver" \
+  -X github.com/Boeing/config-file-validator/v3.version=$pkgver" \
   -tags netgo \
-  -o validator \
-  cmd/validator/validator.go
+  -o cfv \
+  cmd/cfv/cfv.go
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  install -Dm755 validator "$pkgdir/usr/bin/validator"
+  install -Dm755 cfv "$pkgdir/usr/bin/cfv"
 }
