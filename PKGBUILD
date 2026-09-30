@@ -4,17 +4,29 @@
 pkgname='ethq'
 pkgver='0.7.0'
 _gitver='0_7_0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Ethernet NIC Queue stats viewer'
 arch=('x86_64' 'aarch64')
-url="https://github.com/isc-projects/${pkgname}"
+_uri="github.com/isc-projects/${pkgname}"
+url="https://${_uri}"
 license=('MPL')
 depends=('ncurses')
-source=("${url}/archive/refs/tags/v${_gitver}.tar.gz")
-md5sums=('3fcfb62bf5c9ae2afac451574bb811ce')
+source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/tar.gz/refs/tags/v${_gitver}")
+sha256sums=('6e40d98d32abbe0915a7a8996edcdbae61a54bb1f34f2f8a5c9c8d3d2962ec23')
+
+prepare() {
+  # Remove hardcoded flags
+  sed --in-place \
+    --expression '/= -s/d' \
+    --expression '/= -O3/d' \
+  "${pkgname}-${_gitver}/Makefile"
+}
 
 build() {
   cd "${pkgname}-${_gitver}"
+  CFLAGS="${CFLAGS} ${DEBUG_CFLAGS}" \
+  CXXLAGS="${CXXFLAGS} ${DEBUG_CXXFLAGS}" \
+  LDFLAGS="${LDFLAGS}" \
   make
 }
 
