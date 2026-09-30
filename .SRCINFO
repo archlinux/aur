@@ -1,6 +1,6 @@
 pkgbase = vespera
 	pkgdesc = Standalone music player companion: MPRIS control, synced lyrics, visualizer and equalizer
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/hamza-abdelmoumene/vespera
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = vespera
 	depends = qt6-declarative
 	optdepends = cava: audio visualizer
 	optdepends = easyeffects: 10-band equalizer
-	source = vespera-0.1.0.tar.gz::https://github.com/hamza-abdelmoumene/vespera/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 36b1cc5705b292bd0a1f8e4f2b561268118cf75828b1e451910506a3642a9974
+	source = vespera-0.2.0.tar.gz::https://github.com/hamza-abdelmoumene/vespera/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = ab22236f546cf8ff9f26ac3004142c4682e8d2e3928c97d86894d689e337d7f8
 
 pkgname = vespera
