@@ -1,15 +1,15 @@
 # Maintainer: Denis Bolba <https://github.com/Codder13>
 pkgname=ai-flow-cli
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
-pkgdesc="Ultra-fast streaming AI CLI & agent for Unix terminals"
+pkgdesc="Fast terminal AI for Unix pipelines: wraps pi, omp, claude, codex, copilot & opencode"
 arch=('any')
 url="https://github.com/Codder13/ai-flow-cli"
 license=('MIT')
 depends=('python' 'python-rich' 'python-pylatexenc')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Codder13/ai-flow-cli/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4292cd8f5e36141a7347e33431491c633725ad5b2549dd8ce65aadb3d57bc62c')
+sha256sums=('882f40df5cd1ea3f689b05180dc9e4765c3e8d83285ca0b67d9d6955c683e43d')
 
 build() {
     cd "$pkgname-$pkgver"
