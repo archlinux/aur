@@ -4,17 +4,17 @@
 
 _gemname=jekyll-redirect-from
 pkgname=ruby-${_gemname}
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Seamlessly specify multiple redirections URLs for your pages and posts"
 arch=('any')
 url="https://github.com/jekyll/jekyll-redirect-from"
 license=('MIT')
-depends=('ruby' 'ruby-jekyll')
+depends=('ruby' 'jekyll')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
-sha512sums=('abe5affbdf16d1ac9f03e7c9642349143a73cefaab5e96c4272104b8cfae05d6eb1a5cd3cee8b7781a16f46d5613f80a1b148afb66dd2ddb40d5038aa66d9924')
+sha512sums=('35db55fe0546f80022577fe3cd485c81bb3c9c1398a610675a115895ac949c148c9797fb6918deff17f9c642af3ed8aecc7ed69148d7784cf472bc438626bb2e')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
