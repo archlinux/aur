@@ -2,7 +2,7 @@
 
 pkgname=umbriel-git
 pkgver=0.1.0.r0.0
-pkgrel=7
+pkgrel=8
 pkgdesc='A Wayland compositor designed for daily use, with scrolling, dwindle, and master layouts, per-output workspaces, window rules, blur, shadows, and fluid animations'
 arch=('x86_64' 'aarch64')
 url='https://github.com/noctalia-dev/umbriel'
@@ -16,6 +16,7 @@ depends=(
   'libdrm'
   'libglvnd'
   'libinput'
+  'libxcb'
   'libxkbcommon'
   'mesa'
   'pango'
@@ -23,6 +24,8 @@ depends=(
   'systemd-libs'
   'tomlplusplus'
   'wayland'
+  'xcb-util-wm'
+  'xorg-xwayland'
   'xdg-desktop-portal-umbriel-git'
   'wlroots0.20>=0.20.1'
 )
@@ -33,9 +36,6 @@ makedepends=(
   'nlohmann-json'
   'pkgconf'
   'wayland-protocols'
-)
-optdepends=(
-  'xwayland-satellite: X11 application support'
 )
 provides=('umbriel')
 conflicts=('umbriel')
