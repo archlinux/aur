@@ -1,0 +1,6 @@
+[iwe-bin]
+source = "github"
+github = "iwe-org/iwe"
+use_max_release = true
+include_regex = "iwe-v.*"
+prefix = "iwe-v"

@@ -1,6 +1,6 @@
 pkgbase = iwe-bin
-	pkgdesc = Text editor extension for markdown notes taking
-	pkgver = 0.0.55
+	pkgdesc = Markdown knowledge graph – CLI, LSP and MCP servers for notes
+	pkgver = 0.24.2
 	pkgrel = 1
 	url = https://github.com/iwe-org/iwe
 	arch = x86_64
@@ -8,11 +8,18 @@ pkgbase = iwe-bin
 	license = Apache-2.0
 	depends = gcc-libs
 	depends = glibc
-	provides = iwe
-	provides = iwes
+	provides = iwe=0.24.2
+	provides = iwes=0.24.2
+	provides = iwec=0.24.2
 	conflicts = iwe
 	conflicts = iwes
-	source = https://github.com/iwe-org/iwe/releases/download/iwe-v0.0.55/iwe-v0.0.55-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 1101ef33217dd9337ba4f19d3502a2b8a7145618fd316dc85b5a9b009af357f2
+	conflicts = iwec
+	options = !debug
+	source = LICENSE-APACHE::https://raw.githubusercontent.com/iwe-org/iwe/iwe-v0.24.2/LICENSE-APACHE
+	sha256sums = cbf05ab61c79f63823ae7ce980ed10d70408a754f2a02982f615f09b3d5e3ebd
+	source_x86_64 = https://github.com/iwe-org/iwe/releases/download/iwe-v0.24.2/iwe-v0.24.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 8da08809b3801c56f065f6274c40ba5ba8e692e1c83b06230f4f5f9a39243e31
+	source_aarch64 = https://github.com/iwe-org/iwe/releases/download/iwe-v0.24.2/iwe-v0.24.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 267f69375ed2f351ece252e48a430c5869017dd2e9f078d6949db1c71d207290
 
 pkgname = iwe-bin
