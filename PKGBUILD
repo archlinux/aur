@@ -6,8 +6,8 @@
 pkgname=tag-release
 _name="git-$pkgname"
 _name="${_name//-/_}"
-pkgver=0.4.9
-pkgrel=2
+pkgver=0.4.10
+pkgrel=1
 pkgdesc='Automate creation of semantic versioning tags'
 arch=(any)
 url="https://github.com/egor-tensin/$pkgname"

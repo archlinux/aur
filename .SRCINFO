@@ -1,7 +1,7 @@
 pkgbase = tag-release
 	pkgdesc = Automate creation of semantic versioning tags
-	pkgver = 0.4.9
-	pkgrel = 2
+	pkgver = 0.4.10
+	pkgrel = 1
 	url = https://github.com/egor-tensin/tag-release
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = tag-release
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/g/git_tag_release/git_tag_release-0.4.9.tar.gz
+	source = https://files.pythonhosted.org/packages/source/g/git_tag_release/git_tag_release-0.4.10.tar.gz
 	md5sums = SKIP
 
 pkgname = tag-release
