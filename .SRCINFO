@@ -1,0 +1,14 @@
+pkgbase = bafi
+	pkgdesc = Universal JSON, BSON, YAML, CSV, XML translator to ANY format using templates
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/mmalcek/bafi
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.23
+	options = !lto
+	source = bafi-1.3.0.tar.gz::https://github.com/mmalcek/bafi/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = a708573c4709da81a18da4090abe40c9bd2939b1590ca7380c3dea0cc848abec
+
+pkgname = bafi
