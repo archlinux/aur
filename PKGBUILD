@@ -8,7 +8,7 @@
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=7.2.9
+pkgver=7.2.10
 pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
@@ -79,7 +79,7 @@ source=(
   "$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git"
 )
 sha256sums=(
-  '0e9694a264c25e74f88330c4976a7a2f0319bfd5550082a43a96a929e8bd8158'
+  '23d757bbb93322828f25640843ef3342e26cf711aeae43c4ed71ab2f74a9a379'
   'SKIP'
 )
 
@@ -99,6 +99,9 @@ prepare() {
 
   # fix cmake patching for non-git sources
   sed -E -e 's& AND EXISTS \$\{_dir\}/\.git&&' -i CMakeLists.txt
+
+  # drop broken patch
+  rm patches/cmake_ffmpeg_heif.patch || :
 }
 
 build() {
