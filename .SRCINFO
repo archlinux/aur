@@ -1,0 +1,20 @@
+pkgbase = zsv-bin
+	pkgdesc = Tabular data swiss-army knife CLI + world's fastest (simd) CSV parser
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://github.com/liquidaty/zsv
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = ncurses
+	provides = zsv
+	conflicts = zsv
+	options = !strip
+	source = README-1.4.3.md::https://raw.githubusercontent.com/liquidaty/zsv/v1.4.3/README.md
+	source = LICENSE-1.4.3::https://raw.githubusercontent.com/liquidaty/zsv/v1.4.3/LICENSE
+	sha256sums = 3e37c0b59d6537ae885e724bc8f1ccabd9dd3340b095d6f8afd7abea3f601c58
+	sha256sums = 2c9351020e16d46296f775e38f7ac172d5846ad9e9016272ffa0ce866920d8c2
+	source_x86_64 = zsv-x86_64-1.4.3.tgz::https://github.com/liquidaty/zsv/releases/download/v1.4.3/zsv-1.4.3-amd64-linux-gcc.tar.gz
+	sha256sums_x86_64 = 88df66c3b39b42e96bbc63c632b2d158e7fd274d188544686a7e40667eb06174
+
+pkgname = zsv-bin

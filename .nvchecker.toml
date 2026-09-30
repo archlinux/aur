@@ -1,0 +1,5 @@
+[zsv-bin]
+source = "github"
+github = "liquidaty/zsv"
+use_latest_release = true
+prefix = "v"
