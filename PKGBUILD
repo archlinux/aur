@@ -1,7 +1,7 @@
 # Maintainer: Hamza Abdelmoumene <250554870+hamza-abdelmoumene@users.noreply.github.com>
 pkgname=vespera-git
 _pkgname=vespera
-pkgver=0.1.0
+pkgver=0.2.0.r0.g3d95dcd
 pkgrel=1
 pkgdesc="Standalone music player companion: MPRIS control, synced lyrics, visualizer and equalizer (git)"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
-        || printf "0.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        || printf "0.2.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = vespera-git
 	pkgdesc = Standalone music player companion: MPRIS control, synced lyrics, visualizer and equalizer (git)
-	pkgver = 0.1.0.r4.g740c2da
+	pkgver = 0.2.0.r0.g3d95dcd
 	pkgrel = 1
 	url = https://github.com/hamza-abdelmoumene/vespera
 	arch = x86_64
