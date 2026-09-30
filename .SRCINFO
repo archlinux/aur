@@ -1,0 +1,13 @@
+pkgbase = neurafly
+	pkgdesc = Real audio in, real neurons firing, real time. Terminal audio visualizer driven by a FlyWire connectome.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/emiliano-go/neurafly
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = alsa-lib
+	source = neurafly-0.2.0.tar.gz::https://github.com/emiliano-go/neurafly/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = neurafly
