@@ -7,7 +7,7 @@ pkgname=(
     clouddrive-mediaserver-plugin-jellyfin-bin
 )
 pkgver=1.0.5
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="CloudDrive2 companion plugin for Emby and Jellyfin — path-mapping discovery and cloud-aware library updates"
 arch=('x86_64')
@@ -58,7 +58,7 @@ package_clouddrive-mediaserver-plugin-emby-bin() {
 
     cd ${srcdir}
     _install_path="usr/lib/emby-server/plugins/"
-    install -dm777 ${pkgdir}/${_install_path}
+    install -dm755 ${pkgdir}/${_install_path}
 
     bsdtar -xf "CloudDrive.MediaServer-Emby-${pkgver}.zip" -C ${pkgdir}/${_install_path}
     # chown -R emby:emby ${pkgdir}/${_install_path}
@@ -77,7 +77,7 @@ package_clouddrive-mediaserver-plugin-jellyfin-bin() {
 
     cd ${srcdir}
     _install_path="var/lib/jellyfin/plugins/CloudDrive_${pkgver}/"
-    install -dm777 ${pkgdir}/${_install_path}
+    install -dm755 ${pkgdir}/${_install_path}
 
     bsdtar -xf "CloudDrive.MediaServer-Jellyfin-${pkgver}.zip" -C ${pkgdir}/${_install_path}
     chown -R jellyfin:jellyfin ${pkgdir}/${_install_path}

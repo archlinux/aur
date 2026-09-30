@@ -1,7 +1,7 @@
 pkgbase = clouddrive-mediaserver-plugin-bin
 	pkgdesc = CloudDrive2 companion plugin for Emby and Jellyfin — path-mapping discovery and cloud-aware library updates
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/cloud-fs/clouddrive-mediaserver-plugin
 	arch = x86_64
 	license = GPL-3.0-or-later
