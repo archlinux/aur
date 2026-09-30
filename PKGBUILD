@@ -25,31 +25,21 @@ provides=("${_appname}")
 conflicts=("${_appname}")
 depends=('glibc' 'libgcc' 'bash')
 
-options=(!strip)
+options=('!strip')
 
+source=("USAGE-${pkgver}.md::${_ghurlraw}/docs/USAGE.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
+sha256sums=('67fe90e041bac79fcbd73e7a05ba9824053dee2115fcba315680de66635b9b41')
 sha256sums_x86_64=('92778e8eb03d5f1b1aabc18aa31a194b9a8825d62128ada0722e9a8ab71a7776')
 
 
-case ${CARCH} in
-  ${arch[0]})
-    _CARCH=${_barch[0]}
-    ;;
-esac
-
 package() {
-	cd "${srcdir}/${_gitname}-${_gitversion}-${_CARCH}/" || exit
+	cd "${srcdir}/" || exit
 
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
-	install -Dm644 "bpf/limiter.bpf.o" "${pkgdir}/usr/lib/${_appname}/limiter.bpf.o"
-	install -Dm644 "bpf/observer.bpf.o" "${pkgdir}/usr/lib/${_appname}/observer.bpf.o"
-
-	install -Dm755 "scripts/"*.sh -t "${pkgdir}/usr/share/${_appname}/scripts/"
-
-	install -Dm644 "man/${_appname}.1.gz" "${pkgdir}/usr/share/man/man1/${_appname}.1.gz"
-
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "USAGE-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/USAGE.md"
 
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
