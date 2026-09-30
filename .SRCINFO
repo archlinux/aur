@@ -1,0 +1,21 @@
+pkgbase = relvi
+	pkgdesc = A focused launcher for Wayland
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/so1ve/relvi
+	arch = x86_64
+	license = MIT
+	license = Unicode-3.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = libadwaita
+	depends = pango
+	source = relvi-0.1.1.tar.gz::https://github.com/so1ve/relvi/archive/refs/tags/relvi-v0.1.1.tar.gz
+	sha256sums = cb05b347cc2b1ecd3beac3c2bda58eccb150f26f0d9b33edf01a2eaf6de61003
+
+pkgname = relvi
