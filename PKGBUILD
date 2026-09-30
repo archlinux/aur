@@ -7,7 +7,7 @@ pkgname=xfb
 # every machine that installed it. Raise it only if the version ever has to go
 # backwards again.
 epoch=1
-pkgver=4.01
+pkgver=4.02
 pkgrel=1
 pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
 arch=('x86_64' 'aarch64')
@@ -177,18 +177,16 @@ package() {
     echo "The shared folders are under: /usr/share/xfb"
     echo "You may want to install yt-dlp for downloading media"
     echo ""
-    echo "New in v4.01:"
-    echo "  - Record what goes on air, or the source coming into the desk,"
-    echo "    as MP3, Ogg or Opus, with keys to start and stop it"
-    echo "  - Control XFB over the network once you switch it on: its own"
-    echo "    port and its own keys, nothing shared with the phone sync"
-    echo "  - A control page comes with it, so a phone or a laptop drives the"
-    echo "    station without anybody writing a line of code"
-    echo "  - XFB installs as a flatpak or runs as a single AppImage file,"
-    echo "    and the flatpak repository offers every release after this one"
-    echo "  - The flatpak starts on a Wayland desk, which the first one did"
-    echo "    not: it asked for X11 after the sandbox had taken it away"
-    echo "  - Portuguese and French for the remote control and its page"
+    echo "New in v4.02:"
+    echo "  - MIDI learn: tie the faders, buttons and jog wheels of a MIDI"
+    echo "    controller to the station's transport, the decks and the pads"
+    echo "  - A tempo fader on each DJ deck, with nudge buttons and Sync to"
+    echo "    match one deck's BPM to the other's"
+    echo "  - Crossfades no longer open a gap where the outgoing track ends:"
+    echo "    the join lands on the sample auto-mix measured"
+    echo "  - Options > Mixing can mix every transition inside XFB's own"
+    echo "    audio engine (on by default on Windows)"
+    echo "  - Portuguese and French for all of the above"
     echo ""
     echo "Can you share some ETH? 0x9700225FcD115230C9166BD68CEdc23e329D3CdF"
     echo "Thank you for installing XFB! Made with love & linux!"
