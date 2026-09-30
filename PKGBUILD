@@ -15,8 +15,10 @@ depends=(
     'harfbuzz' 'icu' 'expat' 'libpng' 'fontconfig' 'freetype2'
 )
 # El upstream publica un paquete de pacman completo en releases; solo se reempaqueta.
-# El nombre del artefacto lleva el pkgrel ("-1"), por eso se compone abajo.
-source=("$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst::https://github.com/CutWire-Studios/Drift/releases/download/v$pkgver/drift-$pkgver-$pkgrel-$arch.pkg.tar.zst")
+# El pkgrel del artefacto upstream es siempre "-1" y no sigue al pkgrel de este paquete,
+# por eso se usa una variable aparte: cambiar pkgrel aqui no debe romper la URL.
+_upstream_pkgrel=1
+source=("$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst::https://github.com/CutWire-Studios/Drift/releases/download/v$pkgver/drift-$pkgver-$_upstream_pkgrel-$arch.pkg.tar.zst")
 sha256sums=('dc7f3c15db9008f29a96a9d69ba966ee1b07fb9abdba43658331c3e91ec18954')
 
 package() {
