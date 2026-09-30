@@ -1,6 +1,6 @@
 # Maintainer: stickpro <stickpro@stickpro.dev>
 pkgname=kyp
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Local-first terminal password manager with TOTP support"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ provides=('kyp')
 conflicts=('kyp-bin' 'kyp-git')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/stickpro/kyp/archive/v${pkgver}.tar.gz")
-sha256sums=('384f6d8c673cde6078894dc6f192c08f13efd41aed2a128e0c3162b5a95c5430')
+sha256sums=('7eaa21276756d78909a8c0e2a9323727d29bd6b746b6ed7e8f81b83a2ba44485')
 
 build() {
     cd "kyp-${pkgver}"
