@@ -1,7 +1,7 @@
 # Maintainer: William Varmus <0@willvar.tw>
 
 pkgname=ossfs2-bin
-pkgver=2.0.9
+pkgver=2.0.10
 pkgrel=1
 pkgdesc='High-performance FUSE client to mount Alibaba Cloud OSS buckets'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('fuse3')
 makedepends=('patchelf')
 provides=('ossfs2')
 source=("ossfs2_${pkgver}_linux_x86_64.rpm::https://gosspublic.alicdn.com/ossfs/ossfs2_${pkgver}_linux_x86_64.rpm")
-sha256sums=('c859e01d6d6a39cb14bf875a4cdfe9b69b376ba144c5fc57315415fdba7e431d')
+sha256sums=('efaa427b7fe19d6cb7018d81ece5b8aec39ca0d321c78ca02a69d04cdf1cf0f9')
 
 prepare() {
   cd "${srcdir}"
