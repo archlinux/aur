@@ -3,7 +3,7 @@
 
 pkgname=btop-intel-git
 pkgver=1.4.7.r1
-pkgrel=1
+pkgrel=2
 pkgdesc='A monitor of system resources, bpytop ported to C++, with Intel xe GPU support'
 arch=(x86_64)
 url='https://github.com/aristocratos/btop'
@@ -27,10 +27,10 @@ source=(btop::git+https://github.com/aristocratos/btop.git
         0004-xe-encdec.patch)
 sha256sums=('SKIP'
             'SKIP'
-            'f206650c7c0a827ae2ac0ffb605d4d3eb4a69662907b3d5d134677d21dafafa1'
-            '39666d93381df14e4201f33cad08a27098a96836139043c68d63a9c740ae7497'
-            '476e10905703e691f1ee6d05e2f9f4482afe5b31ece70e1c7c24fc22bb2039cc'
-            '81baf11b1398910beef445c3e68b61ad3397df0ab5729c24b587877aa5255d9a')
+            'c8592157103f8c28344775d31f9fa34f49c83cdf80bb3d5a98d256ae2427b374'
+            'ea9d42d29016f4a0704d462642703ef493788da840e36480c2f295c33abc3557'
+            'c77bc18d45ed4fe4deb1a71a3ccbf578a4dc42391582ce4e498e5fcbecb6feaf'
+            'bc3d592d5c4917631aee069f99e1d7d92d0fcd7b04fc2e7654e25bcaf1bb3a71')
 
 _archvar() {
 	sed -n "s/^$1=//p" "$srcdir/arch-btop/PKGBUILD"

@@ -1,7 +1,7 @@
 diff -ruN -x obj -x bin btop-1.4.7.p1/src/linux/btop_xe.cpp btop-1.4.7.p2/src/linux/btop_xe.cpp
---- btop-1.4.7.p1/src/linux/btop_xe.cpp	2026-09-09 16:39:20.839842906 -0500
-+++ btop-1.4.7.p2/src/linux/btop_xe.cpp	2026-09-09 16:39:20.840017776 -0500
-@@ -70,6 +70,7 @@
+--- btop-1.4.7.p1/src/linux/btop_xe.cpp	2026-09-30 10:18:16.747089265 -0500
++++ btop-1.4.7.p2/src/linux/btop_xe.cpp	2026-09-30 10:18:16.747353604 -0500
+@@ -75,6 +75,7 @@
  			vector<int> fds;
  			vector<Engine> engines;
  			vector<uint64_t> buf;
@@ -9,7 +9,7 @@ diff -ruN -x obj -x bin btop-1.4.7.p1/src/linux/btop_xe.cpp btop-1.4.7.p2/src/li
  			uint64_t prev_energy = 0, prev_time = 0, prev_ts = 0;
  			bool have_pwr_cap = false, read_warned = false;
  		};
-@@ -133,9 +134,12 @@
+@@ -142,9 +143,12 @@
  			struct drm_xe_device_query q;
  			std::memset(&q, 0, sizeof(q));
  			q.query = id;
@@ -25,7 +25,7 @@ diff -ruN -x obj -x bin btop-1.4.7.p1/src/linux/btop_xe.cpp btop-1.4.7.p2/src/li
  			q.data = (uintptr_t)out.data();
  			return ioctl(fd, DRM_IOCTL_XE_DEVICE_QUERY, &q) == 0;
  		}
-@@ -241,6 +245,24 @@
+@@ -253,6 +257,24 @@
  			gpu.gpu_percent.at("gpu-pwr-totals").push_back(clamp((long long)round((double)gpu.pwr_usage * 100.0 / (double)gpu.pwr_max_usage), 0ll, 100ll));
  		}
  
@@ -48,9 +48,9 @@ diff -ruN -x obj -x bin btop-1.4.7.p1/src/linux/btop_xe.cpp btop-1.4.7.p2/src/li
 +		}
 +
  		static string find_first(const fs::path& dir, const string& prefix) {
- 			vector<string> names;
+ 			string first;
  			std::error_code ec;
-@@ -378,6 +400,12 @@
+@@ -388,6 +410,12 @@
  						gpu_pwr_total_max += gpu.pwr_max_usage;
  						card.have_pwr_cap = true;
  					}
@@ -63,7 +63,7 @@ diff -ruN -x obj -x bin btop-1.4.7.p1/src/linux/btop_xe.cpp btop-1.4.7.p2/src/li
  				}
  
  				double max_util = 0;
-@@ -395,6 +423,17 @@
+@@ -405,6 +433,17 @@
  
  				if (gpu.supported_functions.pwr_usage)
  					sample_power(card, gpu);

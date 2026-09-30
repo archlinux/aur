@@ -1,7 +1,7 @@
 diff -ruN -x obj -x bin btop-1.4.7.p3/src/linux/btop_xe.cpp btop-1.4.7/src/linux/btop_xe.cpp
---- btop-1.4.7.p3/src/linux/btop_xe.cpp	2026-09-09 16:39:20.840123425 -0500
-+++ btop-1.4.7/src/linux/btop_xe.cpp	2026-09-09 16:39:20.840238673 -0500
-@@ -415,6 +415,15 @@
+--- btop-1.4.7.p3/src/linux/btop_xe.cpp	2026-09-30 10:18:16.751599481 -0500
++++ btop-1.4.7/src/linux/btop_xe.cpp	2026-09-30 10:18:16.751705601 -0500
+@@ -426,6 +426,15 @@
  						.decoder_utilization = false
  					};
  
@@ -17,7 +17,7 @@ diff -ruN -x obj -x bin btop-1.4.7.p3/src/linux/btop_xe.cpp btop-1.4.7/src/linux
  					gpu.pwr_max_usage = 10'000;
  					uint64_t cap = 0;
  					if (not card.hwmon.empty() and read_ull(card.hwmon / "power1_cap", cap) and cap > 0) {
-@@ -440,6 +449,16 @@
+@@ -451,6 +460,16 @@
  				}
  				gpu.gpu_percent.at("gpu-totals").push_back((long long)round(max_util));
  

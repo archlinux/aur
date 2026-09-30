@@ -1,6 +1,6 @@
 diff -ruN -x obj -x bin btop-1.4.7.orig/CMakeLists.txt btop-1.4.7.p1/CMakeLists.txt
 --- btop-1.4.7.orig/CMakeLists.txt	2026-05-01 11:05:43.000000000 -0500
-+++ btop-1.4.7.p1/CMakeLists.txt	2026-09-09 16:19:14.141645704 -0500
++++ btop-1.4.7.p1/CMakeLists.txt	2026-09-30 10:05:40.860287200 -0500
 @@ -75,7 +75,7 @@
  elseif(CMAKE_SYSTEM_NAME STREQUAL "NetBSD")
    target_sources(libbtop PRIVATE src/netbsd/btop_collect.cpp)
@@ -12,12 +12,12 @@ diff -ruN -x obj -x bin btop-1.4.7.orig/CMakeLists.txt btop-1.4.7.p1/CMakeLists.
    endif()
 diff -ruN -x obj -x bin btop-1.4.7.orig/src/btop.cpp btop-1.4.7.p1/src/btop.cpp
 --- btop-1.4.7.orig/src/btop.cpp	2026-05-01 11:05:43.000000000 -0500
-+++ btop-1.4.7.p1/src/btop.cpp	2026-09-09 16:19:14.141094805 -0500
++++ btop-1.4.7.p1/src/btop.cpp	2026-09-30 10:18:16.752383801 -0500
 @@ -231,6 +231,9 @@
  #ifdef GPU_SUPPORT
  	Gpu::Nvml::shutdown();
  	Gpu::Rsmi::shutdown();
-+	#if defined(__linux__)
++	#ifdef __linux__
 +	Gpu::Xe::shutdown();
 +	#endif
  	#ifdef __APPLE__
@@ -25,12 +25,12 @@ diff -ruN -x obj -x bin btop-1.4.7.orig/src/btop.cpp btop-1.4.7.p1/src/btop.cpp
  	#endif
 diff -ruN -x obj -x bin btop-1.4.7.orig/src/btop_shared.hpp btop-1.4.7.p1/src/btop_shared.hpp
 --- btop-1.4.7.orig/src/btop_shared.hpp	2026-05-01 11:05:43.000000000 -0500
-+++ btop-1.4.7.p1/src/btop_shared.hpp	2026-09-09 16:19:14.140966903 -0500
++++ btop-1.4.7.p1/src/btop_shared.hpp	2026-09-30 10:18:16.751792285 -0500
 @@ -183,6 +183,14 @@
  	namespace Rsmi {
  		extern bool shutdown();
  	}
-+	#if defined(__linux__)
++	#ifdef __linux__
 +	namespace Xe {
 +		extern uint32_t device_count;
 +		bool init();
@@ -43,7 +43,7 @@ diff -ruN -x obj -x bin btop-1.4.7.orig/src/btop_shared.hpp btop-1.4.7.p1/src/bt
  		extern bool shutdown();
 diff -ruN -x obj -x bin btop-1.4.7.orig/src/linux/btop_collect.cpp btop-1.4.7.p1/src/linux/btop_collect.cpp
 --- btop-1.4.7.orig/src/linux/btop_collect.cpp	2026-05-01 11:05:43.000000000 -0500
-+++ btop-1.4.7.p1/src/linux/btop_collect.cpp	2026-09-09 16:19:14.141363211 -0500
++++ btop-1.4.7.p1/src/linux/btop_collect.cpp	2026-09-30 10:05:40.861103629 -0500
 @@ -379,6 +379,7 @@
  
  		if (shown_gpus.contains("intel")) {
@@ -62,8 +62,8 @@ diff -ruN -x obj -x bin btop-1.4.7.orig/src/linux/btop_collect.cpp btop-1.4.7.p1
  		long long avg = 0;
 diff -ruN -x obj -x bin btop-1.4.7.orig/src/linux/btop_xe.cpp btop-1.4.7.p1/src/linux/btop_xe.cpp
 --- btop-1.4.7.orig/src/linux/btop_xe.cpp	1969-12-31 18:00:00.000000000 -0600
-+++ btop-1.4.7.p1/src/linux/btop_xe.cpp	2026-09-09 16:39:20.839842906 -0500
-@@ -0,0 +1,408 @@
++++ btop-1.4.7.p1/src/linux/btop_xe.cpp	2026-09-30 10:18:16.747089265 -0500
+@@ -0,0 +1,418 @@
 +/* Copyright 2021 Aristocratos (jakob@qvantnet.com)
 +
 +   Licensed under the Apache License, Version 2.0 (the "License");
@@ -87,8 +87,12 @@ diff -ruN -x obj -x bin btop-1.4.7.orig/src/linux/btop_xe.cpp btop-1.4.7.p1/src/
 +#ifdef GPU_SUPPORT
 +
 +#include <algorithm>
++#include <cerrno>
 +#include <charconv>
++#include <chrono>
 +#include <cmath>
++#include <cstdint>
++#include <cstdlib>
 +#include <cstring>
 +#include <filesystem>
 +#include <fstream>
@@ -132,7 +136,8 @@ diff -ruN -x obj -x bin btop-1.4.7.orig/src/linux/btop_xe.cpp btop-1.4.7.p1/src/
 +			string bdf;
 +			fs::path sysdev, hwmon;
 +			int drm_fd = -1, group_fd = -1, freq_fd = -1, energy_fd = -1, power_fd = -1, temp_fd = -1;
-+			uint32_t pmu_type = 0, nr_counters = 0;
++			uint32_t pmu_type = 0;
++			int nr_counters = 0;
 +			vector<int> fds;
 +			vector<Engine> engines;
 +			vector<uint64_t> buf;
@@ -151,6 +156,11 @@ diff -ruN -x obj -x bin btop-1.4.7.orig/src/linux/btop_xe.cpp btop-1.4.7.p1/src/
 +			return not file.fail();
 +		}
 +
++		//? Monotonic, unlike Tools::time_micros()
++		static uint64_t now_micros() {
++			return std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
++		}
++
 +		static int open_sysfs(const fs::path& path) {
 +			return open(path.c_str(), O_RDONLY | O_CLOEXEC);
 +		}
@@ -163,15 +173,14 @@ diff -ruN -x obj -x bin btop-1.4.7.orig/src/linux/btop_xe.cpp btop-1.4.7.p1/src/
 +			return std::from_chars(buf, buf + len, out).ec == std::errc();
 +		}
 +
-+		//? Parse "config:LO-HI" from a PMU format file
++		//? Parse the low bit of "config:LO-HI" from a PMU format file
 +		static bool parse_format(const fs::path& path, unsigned& shift) {
 +			const string s = readfile(path);
-+			const auto pos = s.find(':');
-+			if (pos == string::npos) return false;
++			if (not s.starts_with("config:")) return false;
 +			try {
-+				shift = std::stoul(s.substr(pos + 1));
++				shift = std::stoul(s.substr(7));
 +			} catch (...) { return false; }
-+			return true;
++			return shift < 64;
 +		}
 +
 +		//? Parse "event=0x.." from a PMU event file
@@ -185,14 +194,14 @@ diff -ruN -x obj -x bin btop-1.4.7.orig/src/linux/btop_xe.cpp btop-1.4.7.p1/src/
 +			return true;
 +		}
 +
-+		static int perf_open(uint32_t type, uint64_t config, int group, bool leader) {
++		static int perf_open(uint32_t type, uint64_t config, int cpu, int group, bool leader) {
 +			struct perf_event_attr attr;
 +			std::memset(&attr, 0, sizeof(attr));
 +			attr.type = type;
 +			attr.size = sizeof(attr);
 +			attr.config = config;
 +			attr.read_format = PERF_FORMAT_TOTAL_TIME_ENABLED | (leader ? PERF_FORMAT_GROUP : 0);
-+			return (int)syscall(SYS_perf_event_open, &attr, -1, 0, group, 0);
++			return (int)syscall(SYS_perf_event_open, &attr, -1, cpu, group, PERF_FLAG_FD_CLOEXEC);
 +		}
 +
 +		static bool xe_query(int fd, uint32_t id, vector<uint8_t>& out) {
@@ -220,6 +229,8 @@ diff -ruN -x obj -x bin btop-1.4.7.orig/src/linux/btop_xe.cpp btop-1.4.7.p1/src/
 +				Logger::debug("Xe: {} has no engine activity events", card.bdf);
 +				return;
 +			}
++			uint64_t cpu = 0;
++			read_ull(pmu_dir / "cpumask", cpu);
 +
 +			vector<uint8_t> raw;
 +			if (not xe_query(card.drm_fd, DRM_XE_DEVICE_QUERY_ENGINES, raw) or raw.size() < sizeof(struct drm_xe_query_engines)) {
@@ -239,12 +250,12 @@ diff -ruN -x obj -x bin btop-1.4.7.orig/src/linux/btop_xe.cpp btop-1.4.7.p1/src/
 +			};
 +
 +			for (auto& e : card.engines) {
-+				int fd = perf_open(card.pmu_type, cfg(ev_active, e), card.group_fd, card.group_fd < 0);
++				int fd = perf_open(card.pmu_type, cfg(ev_active, e), (int)cpu, card.group_fd, card.group_fd < 0);
 +				if (fd < 0) {
 +					Logger::debug("Xe: {}: engine {}:{} gt{} busy counter: {}", card.bdf, e.cls, e.inst, e.gt, std::strerror(errno));
 +					continue;
 +				}
-+				int fd2 = perf_open(card.pmu_type, cfg(ev_total, e), card.group_fd < 0 ? fd : card.group_fd, false);
++				int fd2 = perf_open(card.pmu_type, cfg(ev_total, e), (int)cpu, card.group_fd < 0 ? fd : card.group_fd, false);
 +				if (fd2 < 0) {
 +					close(fd);
 +					continue;
@@ -267,11 +278,12 @@ diff -ruN -x obj -x bin btop-1.4.7.orig/src/linux/btop_xe.cpp btop-1.4.7.p1/src/
 +			if (card.group_fd < 0) return;
 +			const ssize_t want = card.buf.size() * sizeof(uint64_t);
 +			const ssize_t len = read(card.group_fd, card.buf.data(), want);
-+			if (len != want or card.buf[0] != card.nr_counters) {
++			if (len != want or card.buf[0] != (uint64_t)card.nr_counters) {
 +				if (not card.read_warned) {
 +					Logger::warning("Xe: {}: perf group read failed", card.bdf);
 +					card.read_warned = true;
 +				}
++				for (auto& e : card.engines) e.busy = 0;
 +				return;
 +			}
 +			if (card.buf[1] - card.prev_ts < 100'000'000) return;
@@ -291,7 +303,7 @@ diff -ruN -x obj -x bin btop-1.4.7.orig/src/linux/btop_xe.cpp btop-1.4.7.p1/src/
 +		static void sample_power(Card& card, gpu_info& gpu) {
 +			uint64_t v = 0;
 +			if (card.energy_fd >= 0) {
-+				const uint64_t now = time_micros();
++				const uint64_t now = now_micros();
 +				if (now - card.prev_time >= 500'000 and read_fd(card.energy_fd, v)) {
 +					if (card.prev_time > 0 and v >= card.prev_energy)
 +						gpu.pwr_usage = (long long)((v - card.prev_energy) * 1000 / (now - card.prev_time));
@@ -308,14 +320,13 @@ diff -ruN -x obj -x bin btop-1.4.7.orig/src/linux/btop_xe.cpp btop-1.4.7.p1/src/
 +		}
 +
 +		static string find_first(const fs::path& dir, const string& prefix) {
-+			vector<string> names;
++			string first;
 +			std::error_code ec;
-+			for (const auto& entry : fs::directory_iterator(dir, ec))
-+				if (entry.path().filename().string().starts_with(prefix))
-+					names.push_back(entry.path().filename().string());
-+			if (names.empty()) return "";
-+			std::sort(names.begin(), names.end());
-+			return names.front();
++			for (const auto& entry : fs::directory_iterator(dir, ec)) {
++				const string name = entry.path().filename().string();
++				if (name.starts_with(prefix) and (first.empty() or name < first)) first = name;
++			}
++			return first;
 +		}
 +
 +		bool init() {
@@ -373,10 +384,9 @@ diff -ruN -x obj -x bin btop-1.4.7.orig/src/linux/btop_xe.cpp btop-1.4.7.p1/src/
 +				}
 +
 +				setup_pmu(card, pmu_dir);
-+				sample_pmu(card);
 +				if (card.energy_fd >= 0) {
 +					read_fd(card.energy_fd, card.prev_energy);
-+					card.prev_time = time_micros();
++					card.prev_time = now_micros();
 +				}
 +
 +				Logger::debug("Xe: {} ({}) {} engines, {} counters", card.bdf, label, card.engines.size(), card.nr_counters);
