@@ -1,0 +1,20 @@
+pkgbase = omnigraph
+	pkgdesc = Graph database CLI built on the Lance columnar format
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/ModernRelay/omnigraph
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = protobuf
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	options = !lto
+	source = omnigraph-0.11.0.tar.gz::https://github.com/ModernRelay/omnigraph/archive/refs/tags/v0.11.0.tar.gz
+	sha256sums = bf1995aa2303096b04d8406cf5e318eb2b14d1aab79fa115f5feb7e9fa8fb248
+
+pkgname = omnigraph
