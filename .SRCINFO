@@ -1,6 +1,6 @@
 pkgbase = kiln-agents
 	pkgdesc = Vim-style overview of every Claude, Codex and Pi session on the machine
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/cjber/kiln
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = kiln-agents
 	conflicts = kiln
 	conflicts = kiln-agents-bin
 	options = !strip
-	source = kiln-agents-0.3.1.tar.gz::https://github.com/cjber/kiln/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = d5387e6357ea7319a2a2b135c68873451871e467ae7bce396f5f039888ac3fe1
+	source = kiln-agents-0.4.0.tar.gz::https://github.com/cjber/kiln/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 9bbff252c24b034008bfd05b4a25c5b7f17d0a56435ca2cf3aa74c6c9fdb9bbf
 
 pkgname = kiln-agents
