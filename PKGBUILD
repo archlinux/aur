@@ -1,7 +1,7 @@
 # Maintainer: OpenLyst <https://openlyst.ink>
 # Download URL from the app's GitLab release: https://gitlab.com/Openlyst
 pkgname=finar-bin
-pkgver=4.1.1
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="The corrected Jellyfin client"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=()
 provides=('finar')
 conflicts=('finar')
 options=('!strip')
-source=("finar-bin-${pkgver}.zip::https://gitlab.com/Openlyst/finar/-/releases/nightly/downloads/finar-linux-x64-4.1.1-2026-09-29.zip")
+source=("finar-bin-${pkgver}.zip::https://gitlab.com/Openlyst/finar/-/releases/v4.2.0/downloads/finar-linux-x64-4.2.0-2026-09-30.zip")
 sha256sums=('SKIP')
 
 package() {
