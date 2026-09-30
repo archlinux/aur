@@ -31,10 +31,10 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('339c409afbbe768680eb4176e0f751f624f85887917f076841768c9ad25e2283'
+sha256sums=('SKIP'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
             '144551f99c19e89223da901011e9d237904bd895900676b9b69d317bcb4181b8'
-            '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
+            'fcadea06f057b073452ef94d4fa3358151968396c5b19b9b3e820c6246688c14')
 pkgver() {
     cd "${srcdir}/usr/share/${pkgname%-bin}/resources/app"
     grep '"version":' featureFlags.json | awk -F'"version": "' '{print $2}' | awk -F',' '{print $1}' | tr -d '"'
@@ -62,7 +62,7 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/@ELECTRON@/electron${_electronversion}/g" "${srcdir}/${pkgname%-bin}.js"
     sed -i "s/\/usr\/share\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}"*.desktop
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     find "${_app_dir}/resources/app" \( -name "*win32*" -o -name "*darwin*" -o -name "*arm*" \) -exec rm -rf {} +
     rm -rf \
         "${_app_dir}/resources/app/node_modules/windows-foreground-love" \
@@ -71,8 +71,8 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    local _app_dir=$(_get_app_dir)
-    cp -a "${_app_dir}/resources/app/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    local _app_dir="$(_get_app_dir)"
+    cp -a "${_app_dir}/resources/app/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}"* -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml" -t "${pkgdir}/usr/share/appdata"
