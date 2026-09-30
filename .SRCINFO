@@ -1,0 +1,16 @@
+pkgbase = rootly-cli-git
+	pkgdesc = Manage Rootly incidents, alerts, services, teams and on-call schedules from the terminal
+	pkgver = r115.91c3fd6
+	pkgrel = 1
+	url = https://github.com/rootlyhq/rootly-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = rootly-cli
+	conflicts = rootly-cli
+	source = rootly-cli::git+https://github.com/rootlyhq/rootly-cli.git#branch=master
+	sha256sums = SKIP
+
+pkgname = rootly-cli-git
