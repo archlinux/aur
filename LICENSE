@@ -1,0 +1,43 @@
+Zero-Clause BSD (0BSD)
+
+Copyright (c) 2026 taxin-404
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+--------------------------------------------------------------------------------
+Provenance
+
+The 0BSD above covers this repository as an AUR submission: the Maintainer
+line, the $CARCH source token, the written rationale for version-pinning the
+asset instead of resolving "latest", the release-bump changes this
+repository's git history records, and this document.
+
+It does not cover the base wording of PKGBUILD and cordial-bin.install,
+which comes from the Cordial project's packaging/aur/cordial-bin/ directory
+at https://github.com/luohoa97/cordial -- Copyright 2026 the Cordial
+contributors, GNU General Public License v3.0, as their NOTICE states. That
+text was imported with the maintainer line rewritten; the rest is only what
+this repository's history shows to be its own work. The inherited text stays
+GPL-3.0 as its authors licensed it, and nothing here speaks for them.
+
+Where this file and upstream's own copy of the packaging have since
+diverged -- upstream rewrote its pinning paragraph and added a line about
+Roblox material -- the wording here is this repository's, and upstream's is
+upstream's. Neither replaces the other.
+
+Stating the boundary beats letting a reader infer it. The AUR submission
+guidelines ask that a submission be licensed 0BSD and treat anything else as
+a bar to promotion into the official repositories. On inherited text that
+question can only be settled by whoever holds the copyright: a maintainer
+cannot relicense another project's work by putting a license file beside it.
+Upstream could settle it by licensing packaging/aur/ under 0BSD in its own
+tree.
