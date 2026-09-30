@@ -1,11 +1,11 @@
 # Maintainer: mcpp-community <speak-agent@users.noreply.github.com>
 #
 # mcpp-bin — prebuilt release binaries from GitHub, the same artifacts the
-# upstream `install.sh` one-liner downloads. See scripts/aur/README.md for
-# how this is published to the AUR and how to bump it (scripts/aur/update.sh).
+# upstream `install.sh` one-liner downloads. See tools/aur/README.md for
+# how this is published to the AUR and how to bump it (tools/aur/update.sh).
 
 pkgname=mcpp-bin
-pkgver=2026.9.29.5
+pkgver=2026.9.30.1
 pkgrel=1
 pkgdesc="Modern C++ build & package management tool (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -28,8 +28,8 @@ source_aarch64=("mcpp-${pkgver}-linux-aarch64.tar.gz::${_relbase}/mcpp-${pkgver}
 source=("mcpp.sh")
 
 sha256sums=('SKIP')
-sha256sums_x86_64=('355e90efc17c65e8a05d4cef53f0da521b8321b80658342ea891ceb0e0dc5076')
-sha256sums_aarch64=('8eee1444788600e2000a6d6696e34a21f257cb645c01e4e4aca0dd024dfb9738')
+sha256sums_x86_64=('2bd1753dc960c03928295bf2abf06bf37ab50488072a1ecd10bb6cfc0571e83d')
+sha256sums_aarch64=('af94d1b94b24f8b7dcd9733f21def6a3fe28b74502dbb1d618765c56b49eb31a')
 
 package() {
     local _src="${srcdir}/mcpp-${pkgver}-linux-${CARCH}"
