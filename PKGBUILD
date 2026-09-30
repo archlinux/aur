@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=stremio-server-go-bin
-pkgver=0.17.0 # renovate: datasource=github-releases depName=M0Rf30/stremio-server-go
+pkgver=0.18.0 # renovate: datasource=github-releases depName=M0Rf30/stremio-server-go
 pkgrel=1
 pkgdesc="IPv6-capable, pure-Go drop-in for Stremio's streaming server with HLS transcoding and DLNA casting"
 arch=('x86_64' 'aarch64' 'armv7h')
