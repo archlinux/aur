@@ -1,6 +1,6 @@
 pkgbase = codon-bin
 	pkgdesc = High-performance, zero-overhead, extensible Python compiler using LLVM
-	pkgver = 0.20.2
+	pkgver = 0.20.3
 	pkgrel = 1
 	url = https://github.com/exaloop/codon
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = codon-bin
 	depends = sh
 	provides = codon
 	conflicts = codon
-	noextract = codon-0.20.2.tar.gz
+	noextract = codon-0.20.3.tar.gz
 	source = codon.sh
-	source = codon-0.20.2.tar.gz::https://github.com/exaloop/codon/releases/download/v0.20.2/codon-linux-x86_64.tar.gz
-	source = https://raw.githubusercontent.com/exaloop/codon/v0.20.2/LICENSE
-	source = README-0.20.2.md::https://raw.githubusercontent.com/exaloop/codon/v0.20.2/README.md
+	source = codon-0.20.3.tar.gz::https://github.com/exaloop/codon/releases/download/v0.20.3/codon-linux-x86_64.tar.gz
+	source = https://raw.githubusercontent.com/exaloop/codon/v0.20.3/LICENSE
+	source = README-0.20.3.md::https://raw.githubusercontent.com/exaloop/codon/v0.20.3/README.md
 	b2sums = 751dc54eea16f18c88976bd30436c24dce3d2d03aa0e6c2ef323a4393738ef01c79739fc2c5073bdacd7f5282aa0c7b38af575209de9458085c10abcda571a81
-	b2sums = d072f9a2d0cd85243379de6a7a379924ea64c2be02ee619cc0e6cafc8554f0de8f563dc3a0e3a6182b28acbebfb766dfcc6ee2011a90934d6327121a1d78db8a
+	b2sums = d28de545400ee18575e5ee21ea9888cc19564d210383e9bad6456411f47a33ab4e49dfcd34b594aaacd3d49df687af05274c0f96a7fc75dc45837434187feef6
 	b2sums = 43452dd4216bba835bff542c02fcd0a80b77fef97a6f1042adcbbbcf312bb856b0707c35b2f1af356e0b4262e501a159f06bf1f947f182d0023cdd4aefbd8a85
 	b2sums = c9a8ac98fdeebacd0584bd89cb449b43400296c11c1c8a7dea2ebdd469000451e11d8daf42b9bbbe322eb016bd7e5d338b94f0e72594e6fccd0aaf329a14edc6
 
