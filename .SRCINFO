@@ -1,6 +1,6 @@
 pkgbase = doudou-bin
-	pkgdesc = Music player for self-hosted services
-	pkgver = 20.0.0
+	pkgdesc = The final music player
+	pkgver = 22.0.0
 	pkgrel = 1
 	url = https://openlyst.ink
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = doudou-bin
 	provides = doudou
 	conflicts = doudou
 	options = !strip
-	source = doudou-bin-20.0.0.zip::https://github.com/openlyst/builds/releases/download/build-120/doudou-20.0.0-2026-06-19-linux-x64.zip
+	source = doudou-bin-22.0.0.zip::https://gitlab.com/Openlyst/doudou/-/releases/v22.0.0/downloads/doudou-linux-x64-22.0.0-2026-09-16.zip
 	sha256sums = SKIP
 
 pkgname = doudou-bin

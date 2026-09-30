@@ -1,9 +1,9 @@
 # Maintainer: OpenLyst <https://openlyst.ink>
-# Version and download URL from Openlyst API: https://openlyst.ink/docs/api
+# Download URL from the app's GitLab release: https://gitlab.com/Openlyst
 pkgname=doudou-bin
-pkgver=20.0.0
+pkgver=22.0.0
 pkgrel=1
-pkgdesc="Music player for self-hosted services"
+pkgdesc="The final music player"
 arch=('x86_64')
 url="https://openlyst.ink"
 license=('GPL3')
@@ -12,7 +12,7 @@ optdepends=()
 provides=('doudou')
 conflicts=('doudou')
 options=('!strip')
-source=("doudou-bin-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-120/doudou-20.0.0-2026-06-19-linux-x64.zip")
+source=("doudou-bin-${pkgver}.zip::https://gitlab.com/Openlyst/doudou/-/releases/v22.0.0/downloads/doudou-linux-x64-22.0.0-2026-09-16.zip")
 sha256sums=('SKIP')
 
 package() {
@@ -26,7 +26,7 @@ package() {
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/doudou.desktop" <<EOF
 [Desktop Entry]
 Name=Doudou
-Comment=Music player for self-hosted services
+Comment=The final music player
 Exec=/opt/doudou/doudou
 Icon=doudou
 Type=Application
