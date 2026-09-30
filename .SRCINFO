@@ -1,6 +1,6 @@
 pkgbase = kiln-agents
 	pkgdesc = Vim-style overview of every Claude, Codex and Pi session on the machine
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/cjber/kiln
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = kiln-agents
 	depends = bun
 	depends = tmux
 	depends = fzf
+	optdepends = libnotify: desktop notifications when agent turns finish
 	optdepends = zoxide: rank the directories offered for new sessions
 	optdepends = kitty: jump to agents running in other kitty windows
 	optdepends = claude-code: Claude sessions
@@ -17,7 +18,7 @@ pkgbase = kiln-agents
 	conflicts = kiln
 	conflicts = kiln-agents-bin
 	options = !strip
-	source = kiln-agents-0.3.0.tar.gz::https://github.com/cjber/kiln/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 28d54375d0bd2952237b9df9ab0740f2803da5936c224c60822d18593cb46e76
+	source = kiln-agents-0.3.1.tar.gz::https://github.com/cjber/kiln/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = d5387e6357ea7319a2a2b135c68873451871e467ae7bce396f5f039888ac3fe1
 
 pkgname = kiln-agents
