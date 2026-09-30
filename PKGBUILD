@@ -6,14 +6,14 @@
 
 pkgname=decaf
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Suspend the system after a while: a scriptable sleep timer"
 arch=('any')
 url="https://github.com/Davi-S/decaf"
 license=('MIT')
 depends=('bash' 'systemd' 'glib2' 'libnotify')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('68ace6a14c4366c156139c1ff0f772518946ebab1883a01a7032eef764c82982')
+sha256sums=('6fdd757796b0d781258982e7b1baf2c9bee8be75435821843807b9ac55759993')
 
 package() {
     cd "$pkgname-$pkgver"
