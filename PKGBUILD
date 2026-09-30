@@ -1,13 +1,14 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Mike Pento <mjpento@gmail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Karol Babioch <karol@babioch.de>
 
 pkgname=aaxtomp3
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Convert Audible's .aax filetype to MP3, FLAC, M4A, or OPUS"
 arch=('any')
 url='https://github.com/KrumpetPirate/AAXtoMP3'
-license=('custom:WTFPL')
+license=('WTFPL')
 depends=('bash' 'ffmpeg' 'lame')
 optdepends=(
 	'jq: only if --use-audible-cli-data is set or converting an .aaxc file'
