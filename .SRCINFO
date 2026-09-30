@@ -1,0 +1,13 @@
+pkgbase = python-sphinx-selective-exclude
+	pkgdesc = Sphinx eager ".. only::" directive and other selective rendition extensions
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/pfalcon/sphinx_selective_exclude
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/s/sphinx_selective_exclude/sphinx_selective_exclude-1.0.3.tar.gz
+	md5sums = c17ba9ff85e5062a9e985b98b64b1b09
+
+pkgname = python-sphinx-selective-exclude
+	depends = python
