@@ -1,0 +1,20 @@
+# superscience-blue-gtk-theme.install (SuperScience Blue, packaging)
+# Created: 2026-09-28 04:55 | Last change: 2026-09-28 05:15 — libadwaita styling is now
+# automatic at login; messages updated.
+
+post_install()
+{
+    echo "SuperScience Blue: choose it in your desktop's appearance settings,"
+    echo "then log out and back in. libadwaita apps (e.g. Pamac) will match."
+}
+
+post_upgrade()
+{
+    return 0
+}
+
+post_remove()
+{
+    echo "SuperScience Blue removed. Each user's ~/.config/gtk-4.0/gtk.css link"
+    echo "(if any) now points at nothing and can be deleted; it does no harm."
+}
