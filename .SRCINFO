@@ -1,6 +1,6 @@
 pkgbase = kiln-agents-bin
 	pkgdesc = Vim-style overview of every Claude, Codex and Pi session on the machine
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/cjber/kiln
 	arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = kiln-agents-bin
 	conflicts = kiln
 	conflicts = kiln-agents
 	options = !strip
-	source = kiln-0.3.1.tar.gz::https://github.com/cjber/kiln/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = d5387e6357ea7319a2a2b135c68873451871e467ae7bce396f5f039888ac3fe1
-	source_x86_64 = kiln-linux-x64-0.3.1::https://github.com/cjber/kiln/releases/download/v0.3.1/kiln-linux-x64
-	sha256sums_x86_64 = 8fc9bafdead18c73ac26aed139d01c36f0a317e0a2cffe20b23d298db3c7df31
-	source_aarch64 = kiln-linux-arm64-0.3.1::https://github.com/cjber/kiln/releases/download/v0.3.1/kiln-linux-arm64
-	sha256sums_aarch64 = 7d570af54bf2038ccb2db64bf15e1c17f07ad059d99e2e5ccfccec8580d606f8
+	source = kiln-0.4.0.tar.gz::https://github.com/cjber/kiln/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 9bbff252c24b034008bfd05b4a25c5b7f17d0a56435ca2cf3aa74c6c9fdb9bbf
+	source_x86_64 = kiln-linux-x64-0.4.0::https://github.com/cjber/kiln/releases/download/v0.4.0/kiln-linux-x64
+	sha256sums_x86_64 = 4eb7b1fe737f07f2db754ad1d14dc1a6c6333107c27e1500fb05b3321dcc1df7
+	source_aarch64 = kiln-linux-arm64-0.4.0::https://github.com/cjber/kiln/releases/download/v0.4.0/kiln-linux-arm64
+	sha256sums_aarch64 = 5c7b0dbdf6cd4d90efa163f544595b6ca0627ad04e5abfb03e316c12a415274a
 
 pkgname = kiln-agents-bin
