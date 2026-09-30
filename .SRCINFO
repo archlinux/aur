@@ -1,6 +1,6 @@
 pkgbase = python-elgato-streamdeck
 	pkgdesc = Library to control Elgato Stream Deck devices
-	pkgver = 0.9.8
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/abcminiuser/python-elgato-streamdeck
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-elgato-streamdeck
 	makedepends = python-wheel
 	depends = python
 	depends = python-pillow
-	source = python-elgato-streamdeck-0.9.8.tar.gz::https://github.com/abcminiuser/python-elgato-streamdeck/archive/refs/tags/0.9.8.tar.gz
-	sha256sums = cfb87341d6d940d9aa9c04728eb6c73f409f9f96e8f14c8fa90cfa40fedf6c0c
+	source = python-elgato-streamdeck-0.10.0.tar.gz::https://github.com/abcminiuser/python-elgato-streamdeck/archive/refs/tags/0.10.0.tar.gz
+	sha256sums = 8e16bd7d35931f8e231e6d850035b240233be8f785edebea0bd5bf1ad03130ba
 
 pkgname = python-elgato-streamdeck
