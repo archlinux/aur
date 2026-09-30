@@ -1,6 +1,6 @@
 pkgbase = envmerge-git
 	pkgdesc = Merge new keys from .env.example into your .env (TUI + silent mode)
-	pkgver = r3.910a786
+	pkgver = r7.bfc5930
 	pkgrel = 1
 	url = https://git.alexavr.ru/ZAvrikDinozavrik/envmerge
 	arch = x86_64
