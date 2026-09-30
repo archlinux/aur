@@ -1,6 +1,6 @@
 pkgbase = ai-browser-git
 	pkgdesc = Client app for ChatGPT, Gemini, Claude, Phind, Perplexity, Genspark and Google AI Studio with Monaco Editor integration.
-	pkgver = 1.7.0.r0.gb9a08cc
+	pkgver = 1.7.0.r4.g8ae4c8a
 	pkgrel = 1
 	url = https://jun-murakami.web.app/apps/ai-browser
 	arch = any
@@ -9,14 +9,13 @@ pkgbase = ai-browser-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = curl
 	makedepends = jq
-	depends = electron42
+	depends = electron44
 	provides = ai-browser=1.7.0
 	conflicts = ai-browser
 	source = ai-browser.git::git+https://github.com/Jun-Murakami/AI-Browser.git
 	source = ai-browser.sh
 	sha256sums = SKIP
-	sha256sums = 5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
 pkgname = ai-browser-git

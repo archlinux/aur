@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ai-browser-git
 _pkgname=AI-Browser
-pkgver=1.7.0.r0.gb9a08cc
-_electronversion=42
+pkgver=1.7.0.r4.g8ae4c8a
+_electronversion=44
 _nodeversion=24
 pkgrel=1
 pkgdesc='Client app for ChatGPT, Gemini, Claude, Phind, Perplexity, Genspark and Google AI Studio with Monaco Editor integration.'
@@ -20,7 +20,6 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
-    'curl'
     'jq'
 )
 source=(
@@ -28,9 +27,15 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+_get_project_dir() {
+	local d
+	while IFS= read -r d; do
+		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
+	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+}
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}.git"
+    cd "$(_get_project_dir)"
     set -o pipefail
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
@@ -45,10 +50,11 @@ _get_app_dir() {
 	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }
 _get_electron_version() {
-    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
-        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
-    [[ -z "${_elec_ver}" ]] && return 1
-    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
+		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
+		| grep -v '^$' | sed 's/^[^0-9]*//' | head -1)
+	[[ -z "${_elec_ver}" ]] && return 1
+	echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -71,7 +77,7 @@ _set_build_env() {
 	mkdir -p "${HOME}" "${BUN_INSTALL_CACHE_DIR}" "${BUN_INSTALL_GLOBAL_DIR}" "${BUN_INSTALL_BIN}"
 }
 prepare() {
-    cd "${srcdir}/${pkgname%-git}.git"
+    cd "$(_get_project_dir)"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -135,29 +141,30 @@ PYEOF
     bun install
 }
 build() {
-    cd "${srcdir}/${pkgname%-git}.git"
+    cd "$(_get_project_dir)"
     _ensure_local_nvm
     _set_build_env
     export NODE_ENV=production
     export NODE_OPTIONS="--max-old-space-size=4096"
     bun run build
     bunx electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}" --config electron-builder.yml
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     rm -rf "${_app_dir}/resources/default_app.asar"
     case "${CARCH}" in
-        aarch64)    _arch_rem="x64"     ;;
-        x86_64)     _arch_rem="arm64"   ;;
-    esac
-    find "${_app_dir}/resources/app.asar.unpacked/node_modules" \
-        \( -name "*darwin*" -o -name "*win32*" -o -name "*${_arch_rem}*" \) \
-        -exec rm -rf {} +
+		aarch64)	_archrem=x64	;;
+		x86_64)		_archrem=arm	;;
+	esac
+	find "${_app_dir}/resources/app.asar.unpacked" -type d \
+		\( -name "darwin*" -o -name "win32*" -o -name "*${_archrem}"* \) \
+		-exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-	local _app_dir=$(_get_app_dir)
+	local _app_dir="$(_get_app_dir)"
 	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    local _src="$(_get_project_dir)"
+    install -Dm644 "${_src}/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "${_src}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${_src}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
