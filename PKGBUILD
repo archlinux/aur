@@ -3,7 +3,7 @@
 _pkgname=KeepKey-Vault
 _upkgname=keepkey-vault
 pkgname=keepkey-vault-appimage
-pkgver=1.4.10
+pkgver=1.5.8
 pkgrel=1
 pkgdesc="Desktop companion app for the KeepKey hardware wallet."
 arch=('x86_64')
@@ -15,7 +15,7 @@ noextract=("$_pkgname-$pkgver.AppImage")
 options=('!strip')
 
 source=("https://github.com/keepkey/$_upkgname/releases/download/v$pkgver/$_pkgname-$arch.AppImage")
-sha256sums=('48c9fd23e49ccff69bbff7b345775308f3ab7000f5e01bf40f6aaf37900934bb')
+sha256sums=('f64747d2b029910c9e7e32c6b11e98e788314a09267ac2656c32a19bed2165fb')
 
 prepare() {
     cd "${srcdir}"
