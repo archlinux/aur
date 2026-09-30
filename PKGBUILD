@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgbase=protonmail-bridge-free
 pkgname=(protonmail-bridge-free protonmail-bridge-free-core)
-pkgver=3.27.0
+pkgver=3.27.1
 pkgrel=1
 pkgdesc="Integrate ProtonMail account with any program that supports IMAP and SMTP"
 arch=(x86_64)
@@ -20,7 +20,7 @@ source=("$pkgbase::git+$url#tag=v$pkgver"
 	"5.patch::https://github.com/mnixry/proton-bridge/commit/e1f61f262548c50b2ca9bd88f9c2e54160bf5bc3.patch"
 )
 noextract=()
-sha256sums=('aebe2a33e65c5854aa54c21ae4b764a36d443eda266e745fa27ba18f7fc3fad4'
+sha256sums=('072fa1bca16cb3efc0cf3c6ef107242b7439276ecfa99d8e3890042b85b26aac'
             '5d273f1245fec8549a3daa3fe76e22bb6c23957cf5bcb51c24f878e19c7a5692'
             '87c01adf8bfc3d3f4ee346d0bc83997a8b8e83104a7d5e53b91de58e3b13b3d7'
             '869bcdb550e2899de1fffec8288fffea8c5ce1949322982d6c22f744814aed9c'
@@ -116,7 +116,7 @@ package_protonmail-bridge-free() {
 
 package_protonmail-bridge-free-core() {
 	pkgdesc="$pkgdesc (core executable and daemon)"
-	depends=(glib2 glibc libfido2 libsecret)
+	depends=(glib2 glibc libfido2 libsecret sqlite)
 	optdepends=(
 	'gnome-keyring: gnome-keyring support'
 	'org.freedesktop.secrets: Applications that support Freedesktop secrets api'
