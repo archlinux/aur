@@ -5,14 +5,14 @@
 _pkgname=proto
 pkgname="${_pkgname}-bin"
 pkgver=0.62.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Pluggable multi-language version manager'
 license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 url='https://github.com/moonrepo/proto'
 arch=('x86_64' 'aarch64')
-depends=('gcc-libs' 'git' 'unzip' 'gzip' 'xz')
+depends=('glibc' 'libgcc' 'git' 'unzip' 'gzip' 'xz')
 optdepends=('rustup: support for Rust toolchains')
 source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}.tar.xz::${url}/releases/download/v${pkgver}/proto_cli-${arch[0]}-unknown-linux-gnu.tar.xz")
 source_aarch64=("${_pkgname}-${pkgver}-${arch[1]}.tar.xz::${url}/releases/download/v${pkgver}/proto_cli-${arch[1]}-unknown-linux-gnu.tar.xz")
