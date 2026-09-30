@@ -4,7 +4,7 @@
 
 pkgname=moon
 pkgver=2.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Task runner and repo management tool for the web ecosystem'
 license=('MIT')
 url="https://github.com/moonrepo/moon"
