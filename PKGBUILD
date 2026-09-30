@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 depends=(
   'fuse3' 'openssl' 'boost-libs' 'jemalloc' 'xxhash' 'fmt'
   'lz4' 'xz' 'zstd' 'brotli' 'libarchive' 'flac'
-  'gcc-libs' 'glibc'
+  'glibc' 'libgcc' 'libstdc++'
 )
 makedepends=(
   'cmake'
