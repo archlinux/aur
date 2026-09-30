@@ -1,5 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
+pkgauthor=karimz1
 pkgname="dupster"
 pkgver=0.0.8
 pkgrel=1
@@ -8,7 +9,7 @@ pkgdesc="Fast duplicate file finder with interactive TUI"
 license=('Apache-2.0')
 arch=('any')
 
-url='https://github.com/karimz1/dupster'
+url="https://github.com/${pkgauthor}/${pkgname}"
 
 provides=("${pkgname}")
 conflicts=("python-${pkgname}")
