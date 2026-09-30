@@ -1,6 +1,6 @@
 pkgbase = python-pymodbustcp
 	pkgdesc = A simple Modbus/TCP library for Python
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/sourceperl/pyModbusTCP
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-pymodbustcp
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	source = python-pymodbustcp-0.3.0.tar.gz::https://github.com/sourceperl/pyModbusTCP/archive/v0.3.0.tar.gz
-	md5sums = 693339cb87cb49c5a75cbd841d112e3f
+	source = python-pymodbustcp-0.3.1.tar.gz::https://github.com/sourceperl/pyModbusTCP/archive/v0.3.1.tar.gz
+	md5sums = 79302d437cea634a7ea991e38a39254b
 
 pkgname = python-pymodbustcp
