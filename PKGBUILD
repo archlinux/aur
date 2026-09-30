@@ -1,6 +1,6 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=tributary
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A high-performance, Rhythmbox-style media manager with unified local and remote backends"
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=(
   'pkg-config'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('50cab05ed6b21d4c0fdd587119655382bdf4d52f551eb15d0a83fefdd4037899')
+sha256sums=('a98e957b88d99e6eaa4f0eb381ce323525a5523595b172da600ab4c3e38b850a')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -37,18 +37,18 @@ package() {
   install -Dm755 "target/release/tributary" "$pkgdir/usr/bin/tributary"
 
   # Desktop entry
-  install -Dm644 "data/io.github.tributary.Tributary.desktop" \
-    "$pkgdir/usr/share/applications/io.github.tributary.Tributary.desktop"
+  install -Dm644 "data/io.github.jm2.tributary.desktop" \
+    "$pkgdir/usr/share/applications/io.github.jm2.tributary.desktop"
 
   # AppStream metainfo
-  install -Dm644 "data/io.github.tributary.Tributary.metainfo.xml" \
-    "$pkgdir/usr/share/metainfo/io.github.tributary.Tributary.metainfo.xml"
+  install -Dm644 "data/io.github.jm2.tributary.metainfo.xml" \
+    "$pkgdir/usr/share/metainfo/io.github.jm2.tributary.metainfo.xml"
 
   # Icons
   for size in 16 24 32 48 64 128 256 512; do
     install -Dm644 \
-      "data/icons/hicolor/${size}x${size}/apps/io.github.tributary.Tributary.png" \
-      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/io.github.tributary.Tributary.png"
+      "data/icons/hicolor/${size}x${size}/apps/io.github.jm2.tributary.png" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/io.github.jm2.tributary.png"
   done
 
   # License
