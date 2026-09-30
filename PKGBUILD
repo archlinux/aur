@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=karbonized-bin
-pkgver=2.0.0
+pkgver=2.1.0
 _electronversion=29
 pkgrel=1
 pkgdesc="a visual editor for creating images of code snippets, mockups and social graphics. Arrange blocks — code, text, images, devices, shapes, QR codes and your own HTML components — on a canvas and export the result in seconds."
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('028548ab2a391243cacd75e9961ca11081b7c7bab6a717da74dd9f60ac8fb548'
+sha256sums=('4d00f1196f549e6fc0c96a3f977674948cd4d2452092bde8739203716da91834'
             'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
