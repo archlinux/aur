@@ -1,9 +1,10 @@
 # Maintainer: Mikele <mikele@gmail.com>
 pkgname=appmeup-bin
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Create and edit Chromium web apps from .desktop files (Go/Qt 6)"
 arch=('x86_64')
+options=('!strip')
 url="https://github.com/mikelexp/appmeup-go"
 license=('GPL3')
 provides=('appmeup')

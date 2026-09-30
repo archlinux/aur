@@ -1,7 +1,7 @@
 pkgbase = appmeup-bin
 	pkgdesc = Create and edit Chromium web apps from .desktop files (Go/Qt 6)
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mikelexp/appmeup-go
 	arch = x86_64
 	license = GPL3
@@ -18,6 +18,7 @@ pkgbase = appmeup-bin
 	provides = appmeup
 	conflicts = appmeup
 	replaces = appmeup
+	options = !strip
 	source = appmeup-2.0.0.tar.gz::https://github.com/mikelexp/appmeup-go/archive/refs/tags/v2.0.0.tar.gz
 	sha256sums = 4dfaa4449d738a2842dae26ea69e88d8ff94d92f1e970becae0c33fa8fa61751
 
