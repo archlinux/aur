@@ -1,0 +1,17 @@
+pkgbase = python-jlkit
+	pkgdesc = JSONL-native command-line toolkit: head, tail, select, filter, stats, schema, validate
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/arden-instance/jlkit
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python>=3.12
+	source = python-jlkit-0.1.1.tar.gz::https://github.com/arden-instance/jlkit/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = b0b2cff1618fe028c7ef1732d30d615a24eea8f6cfd20d1e6b8c962ecc1977d7
+
+pkgname = python-jlkit
