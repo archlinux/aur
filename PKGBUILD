@@ -1,7 +1,7 @@
 # Maintainer: Maple <maple@localhost>
 pkgname=cutwire-drift-bin
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Beginner-friendly open-source video editor built with Qt 6, QML and FFmpeg (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/CutWire-Studios/Drift"
@@ -17,12 +17,15 @@ depends=(
 # El upstream publica un paquete de pacman completo en releases; solo se reempaqueta.
 # El pkgrel del artefacto upstream es siempre "-1" y no sigue al pkgrel de este paquete,
 # por eso se usa una variable aparte: cambiar pkgrel aqui no debe romper la URL.
+# El alias NO puede llamarse igual al paquete resultante ($pkgname-$pkgver-$pkgrel-$arch):
+# makepkg lo veria como "ya construido", saltaria package() y pacman instalaria el archivo
+# fuente, que trae pkgname=drift en su .PKGINFO y choca con este paquete.
 _upstream_pkgrel=1
-source=("$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst::https://github.com/CutWire-Studios/Drift/releases/download/v$pkgver/drift-$pkgver-$_upstream_pkgrel-$arch.pkg.tar.zst")
+source=("drift-upstream-$pkgver-$_upstream_pkgrel-$arch.pkg.tar.zst::https://github.com/CutWire-Studios/Drift/releases/download/v$pkgver/drift-$pkgver-$_upstream_pkgrel-$arch.pkg.tar.zst")
 sha256sums=('dc7f3c15db9008f29a96a9d69ba966ee1b07fb9abdba43658331c3e91ec18954')
 
 package() {
-    bsdtar -xf "$srcdir/$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst" \
+    bsdtar -xf "$srcdir/drift-upstream-$pkgver-$_upstream_pkgrel-$arch.pkg.tar.zst" \
         --exclude '.PKGINFO' --exclude '.MTREE' --exclude '.BUILDINFO' \
         -C "$pkgdir"
 
