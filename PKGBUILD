@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=imgo-bin
 _pkgname=IMGo
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='IMGo (short for "image optimizer") is a private batch image compression and conversion tool. Process multiple images at once, adjust quality and dimensions, and convert between common formats without uploading your files.'
 arch=(
@@ -21,8 +21,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm")
-sha256sums_aarch64=('0b207a1e10685fb14776287da1b8c56a9da7f36d913241334571a48fc8717426')
-sha256sums_x86_64=('722217d8adfdeb4f242c02741c0f326757fd54a3658bc5c2986966f8f513aeb8')
+sha256sums_aarch64=('4a306a8ffd337697b8ff0a194b7e5671c1d6311fa65e389f336ecae5f27cc136')
+sha256sums_x86_64=('af1af262f7dec327527a3c56bf3fde7f410d8e89c9c4589fedf035739312c265')
 prepare() {
     sed -i "s/Name=${pkgname%-bin}/Name=${_pkgname}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
