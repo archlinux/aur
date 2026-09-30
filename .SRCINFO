@@ -1,0 +1,16 @@
+pkgbase = dock-mango
+	pkgdesc = GTK3-based dock for mangowm
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/cebem1nt/dock-mango
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = gobject-introspection
+	depends = gtk3
+	depends = gtk-layer-shell
+	optdepends = nwg-drawer: default application launcher
+	source = dock-mango-1.0.0.tar.gz::https://github.com/cebem1nt/dock-mango/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = dock-mango
