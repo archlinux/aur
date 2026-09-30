@@ -1,7 +1,7 @@
 # Maintainer: xifan <xifan2333@gmail.com>
 pkgname=ftty-bin
 _pkgname=ftty
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Ultra-lightweight minimalist Wayland terminal emulator with native Kitty graphics protocol"
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('wayland' 'libxkbcommon' 'fontconfig' 'freetype2' 'libglvnd')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 options=(!strip)
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/xifan2333/ftty/releases/download/v0.4.1/ftty-0.4.1-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('9b011de2f645ec2d67b6ee48f9586e2b1939207b9989545da5d95fe3ee83a24a')
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/xifan2333/ftty/releases/download/v0.4.2/ftty-0.4.2-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('487e15ea147d4ee8f9fd9405324a2003a6589646537159a85210dca1828383b9')
 
 package() {
 	cd "${srcdir}/ftty-${pkgver}-x86_64-unknown-linux-gnu"
