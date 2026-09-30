@@ -1,6 +1,6 @@
 pkgbase = cloudflare-cf
 	pkgdesc = Agentic command-line interface for the entire Cloudflare API
-	pkgver = 1.0.0_beta.6
+	pkgver = 1.0.0_beta.7
 	pkgrel = 1
 	url = https://github.com/cloudflare/cf
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = cloudflare-cf
 	optdepends = xdg-utils: open the browser for OAuth login
 	conflicts = cloudfoundry-cli
 	conflicts = cloudfoundry6-cli
-	noextract = cf-1.0.0-beta.6.tgz
+	noextract = cf-1.0.0-beta.7.tgz
 	options = !strip
 	options = !debug
-	source = cf-1.0.0-beta.6.tgz::https://registry.npmjs.org/cf/-/cf-1.0.0-beta.6.tgz
-	sha256sums = ed5c2712f76ae0d0249636287fe71bdfa836d433484bd144ca83127be700d107
+	source = cf-1.0.0-beta.7.tgz::https://registry.npmjs.org/cf/-/cf-1.0.0-beta.7.tgz
+	sha256sums = 79c96df59e9872a59a4412e267c77c84c1568fc064f952fd193b7865e65b5638
 
 pkgname = cloudflare-cf
