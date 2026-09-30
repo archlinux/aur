@@ -1,13 +1,13 @@
 # Maintainer: AnabasaSoft <anabasasoft@gmail.com>
 pkgname=cloudmount-wizard-bin
 _pkgname=cloudmount-wizard
-pkgver=1.3.3
+pkgver=1.4.0
 pkgrel=1
 epoch=1
 pkgdesc="Asistente para montar unidades de nube (Mega, Drive, etc) en Linux (Binario)"
 arch=('x86_64')
 url="https://github.com/AnabasaSoft/CloudMount-Wizard"
-license=('MIT')
+license=('GPL-3.0-or-later')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('rclone' 'fuse3' 'libglvnd' 'libx11' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libxkbcommon' 'wayland')
@@ -20,7 +20,7 @@ source=(
 
 # IMPORTANTE: Calcula los checksums reales con 'sha256sum archivo'
 # Si te da pereza ahora, usa 'SKIP' para probar, pero AUR te pedirá los reales al subir.
-sha256sums=('b33a595bada3b9806c63e9ccc3535fe10dbe647e4cde6f0d314195e5bfee843b'
+sha256sums=('b91d840bd25f50e37900695bea3c91a1f64e56ff2e82e922806efc05df8a4a99'
             '93a3103e8c27ca2f913efa775a44422f714f4e9cb514e162c49d454736bb3bf6')
 
 package() {
@@ -36,7 +36,7 @@ package() {
     cat > "${pkgdir}/usr/share/applications/${_pkgname}.desktop" <<EOF
 [Desktop Entry]
 Type=Application
-Version=1.3.3
+Version=1.4.0
 Name=CloudMount Wizard
 Comment=Gestor gráfico de nubes para Rclone
 Exec=${_pkgname}
