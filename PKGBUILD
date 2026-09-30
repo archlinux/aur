@@ -2,13 +2,18 @@
 
 pkgname=pluto-bin
 pkgver=5.24.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Pluto is a utility to help users find deprecated Kubernetes apiVersions in their code repositories and their helm releases.'
-arch=(x86_64)
+arch=(x86_64 armv7h aarch64)
 url='https://github.com/FairwindsOps/pluto'
 license=(Apache)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/FairwindsOps/pluto/releases/download/v$pkgver/pluto_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('1e5077ce1016fb0bb8ce0103c12b7ca8666eb3959d787ecfc95d9b8acd507147')
+
+source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://github.com/FairwindsOps/pluto/releases/download/v$pkgver/pluto_${pkgver}_linux_amd64.tar.gz")
+source_armv7h=("$pkgname-$pkgver-armv7h.tar.gz::https://github.com/FairwindsOps/pluto/releases/download/v$pkgver/pluto_${pkgver}_linux_armv7.tar.gz")
+source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://github.com/FairwindsOps/pluto/releases/download/v$pkgver/pluto_${pkgver}_linux_arm64.tar.gz")
+sha256sums_x86_64=('1e5077ce1016fb0bb8ce0103c12b7ca8666eb3959d787ecfc95d9b8acd507147')
+sha256sums_armv7h=('7ccadc0409a68ed2ce39d09b444951ed53e5736d41827066bddfe8acae89a2d1')
+sha256sums_aarch64=('46afed19dec949bd9f7c1da0422ce9d1bdb22c15ae8441552374642ac72f0882')
 
 package() {
   install -d -m 0755 \
