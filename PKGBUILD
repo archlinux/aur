@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.118.19
+pkgver=0.118.23
 _electronversion=44
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker."
@@ -30,8 +30,8 @@ source=(
 )
 sha256sums=('ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc'
             'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
-sha256sums_aarch64=('1338972ae59357be8c07f85ec126f1379fa4f775cef3c6d853894bed300b8546')
-sha256sums_x86_64=('2a5abfb8e2ce40a1409df35ccee6500a4f12f86630a49db85b2e4fc1170ec89b')
+sha256sums_aarch64=('02d1297acc3a41e1fff52c8673e69d650fc46e06dbda623527d5f27b1cc4d253')
+sha256sums_x86_64=('208d760d9d7f99cc6590732b677d3b4206145d5a911d00ea036a044abe72a3c7')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
