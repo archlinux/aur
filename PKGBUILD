@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A simple, keyboard-driven TUI FTP, FTPS and SFTP client"
 
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('461a30edf9c030c862e430b6b499ac9b80b5a212d1c457208c142a0a376596cb')
-sha256sums_aarch64=('fe73902b838a03d22c1a0a65d29a33e4e432a75ad9ffd03247490674568f3b0a')
+sha256sums_x86_64=('3e08286a3f5f50d517f98d231755e701a8def4f4625fcdd500b07a77a53a84d6')
+sha256sums_aarch64=('230345eaabe27e60993acc0ae788215fdf229e7989935ac1d2c9d56bf5d42935')
 
 
 package() {
