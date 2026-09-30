@@ -8,8 +8,7 @@
 # install` (and pulling ~950 node packages) on the user's machine and
 # guarantees the same artifact that ships in our GitHub release.
 
-pkgname=lotion-bin
-_pkgname=lotion
+pkgname=lotion
 pkgver=1.6.0
 pkgrel=1
 pkgdesc="Unofficial Notion.so desktop client for Linux (prebuilt)"

@@ -1,4 +1,4 @@
-pkgbase = lotion-bin
+pkgbase = lotion
 	pkgdesc = Unofficial Notion.so desktop client for Linux (prebuilt)
 	pkgver = 1.6.0
 	pkgrel = 1
@@ -16,9 +16,9 @@ pkgbase = lotion-bin
 	depends = xdg-utils
 	provides = lotion
 	conflicts = lotion
-	source_x86_64 = lotion-bin-1.6.0-x86_64.deb::https://github.com/puneetsl/lotion/releases/download/v1.6.0/lotion_1.6.0_amd64.deb
+	source_x86_64 = lotion-1.6.0-x86_64.deb::https://github.com/puneetsl/lotion/releases/download/v1.6.0/_1.6.0_amd64.deb
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = lotion-bin-1.6.0-aarch64.deb::https://github.com/puneetsl/lotion/releases/download/v1.6.0/lotion_1.6.0_arm64.deb
+	source_aarch64 = lotion-1.6.0-aarch64.deb::https://github.com/puneetsl/lotion/releases/download/v1.6.0/_1.6.0_arm64.deb
 	sha256sums_aarch64 = SKIP
 
-pkgname = lotion-bin
+pkgname = lotion
