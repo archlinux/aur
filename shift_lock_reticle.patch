@@ -1,5 +1,5 @@
 diff --git a/libMacOBloxShims.m b/libMacOBloxShims.m
-index 4a44098..f2d6cee 100644
+index 4a44098..3d8c82e 100644
 --- a/libMacOBloxShims.m
 +++ b/libMacOBloxShims.m
 @@ -2537,8 +2537,95 @@ static void trace_gl_frame_state(long count) {
@@ -104,7 +104,7 @@ index 4a44098..f2d6cee 100644
  extern int CGWarpMouseCursorPosition(MacOBloxPoint position);
 -#define MACOBLOX_LOCK_RADIUS 100.0
 -static volatile int macoblox_pointer_grabbed;
-+#define MACOBLOX_LOCK_RADIUS 30.0
++#define MACOBLOX_LOCK_RADIUS 120.0
  static volatile int macoblox_drop_warp_motion;
  static int macoblox_warp_wait_events; // motion events seen since the warp
  static MacOBloxPoint macoblox_expected_warp_delta;
@@ -247,10 +247,12 @@ index 4a44098..f2d6cee 100644
              macoblox_raw_last_x = macoblox_raw_anchor_x;
              macoblox_raw_last_y = macoblox_raw_anchor_y;
          }
-@@ -3018,55 +3169,32 @@ static int macoblox_CGAssociateMouseAndMouseCursorPosition(unsigned int connecte
+@@ -3016,57 +3167,42 @@ static int macoblox_CGAssociateMouseAndMouseCursorPosition(unsigned int connecte
+         macoblox_frozen_screen_location = orig_event_mouse_location
+             ? orig_event_mouse_location(event_class, screen_selector)
              : ((MacOBloxPoint (*)(id, SEL))objc_msgSend)(event_class, screen_selector);
-         if (window)
-             macoblox_frozen_window_location = macoblox_real_window_mouse_location(window);
+-        if (window)
+-            macoblox_frozen_window_location = macoblox_real_window_mouse_location(window);
 -    }
 -    if (grab) {
 -        // The pointer stays where the button was pressed. Recentering starts
@@ -262,6 +264,7 @@ index 4a44098..f2d6cee 100644
 -        macoblox_lock_anchor = macoblox_frozen_window_location;
 -        macoblox_lock_anchor_pending = 0;
          if (window) {
++            MacOBloxPoint initial_loc = macoblox_real_window_mouse_location(window);
              MacOBloxPoint center = macoblox_window_center(window);
 -            double margin = MACOBLOX_LOCK_RADIUS + 20;
 -            double width = center.x * 2, height = center.y * 2;
@@ -269,27 +272,33 @@ index 4a44098..f2d6cee 100644
 -            if (width > margin * 2) {
 -                if (anchor.x < margin) anchor.x = margin;
 -                if (anchor.x > width - margin) anchor.x = width - margin;
--            } else {
++            if (macoblox_right_mouse_down) {
++                macoblox_frozen_window_location = initial_loc;
+             } else {
 -                anchor.x = center.x;
-+            if (!macoblox_right_mouse_down) {
 +                macoblox_frozen_window_location = center;
              }
 -            if (height > margin * 2) {
 -                if (anchor.y < margin) anchor.y = margin;
 -                if (anchor.y > height - margin) anchor.y = height - margin;
--            } else {
++            macoblox_lock_anchor = center;
++            macoblox_lock_anchor_pending = 0;
++
++            double dx = center.x - initial_loc.x;
++            double dy = center.y - initial_loc.y;
++            if (dx * dx + dy * dy > 4.0) {
++                macoblox_warp_to_window_center(window);
++                macoblox_drop_warp_motion = 1;
++                macoblox_expected_warp_delta.x = dx;
++                macoblox_expected_warp_delta.y = dy;
++                macoblox_warp_wait_events = 0;
+             } else {
 -                anchor.y = center.y;
--            }
++                macoblox_drop_warp_motion = 0;
+             }
 -            macoblox_lock_anchor_pending = anchor.x != macoblox_lock_anchor.x ||
 -                                           anchor.y != macoblox_lock_anchor.y;
 -            macoblox_lock_anchor = anchor;
-+            macoblox_lock_anchor = center;
-+            macoblox_lock_anchor_pending = 1;
-+            macoblox_warp_to_window_center(window);
-+            macoblox_drop_warp_motion = 1;
-+            macoblox_expected_warp_delta.x = center.x - macoblox_frozen_window_location.x;
-+            macoblox_expected_warp_delta.y = center.y - macoblox_frozen_window_location.y;
-+            macoblox_warp_wait_events = 0;
          }
 +    }
 +    if (grab) {
@@ -318,7 +327,7 @@ index 4a44098..f2d6cee 100644
          macoblox_set_x_cursor_hidden(0);
      }
      return 0;
-@@ -3125,30 +3253,40 @@ static int macoblox_filter_locked_motion(id event) {
+@@ -3125,29 +3261,41 @@ static int macoblox_filter_locked_motion(id event) {
  }
  
  static int macoblox_filter_locked_motion_inner(id event, double dx, double dy) {
@@ -336,8 +345,9 @@ index 4a44098..f2d6cee 100644
          double ex = macoblox_expected_warp_delta.x, ey = macoblox_expected_warp_delta.y;
 -        if ((dx - ex) * (dx - ex) + (dy - ey) * (dy - ey) <
 -            0.25 * (ex * ex + ey * ey) + 4.0) {
-+        if (dist_sq <= 4.0 ||
-+            ((dx - ex) * (dx - ex) + (dy - ey) * (dy - ey) < 0.25 * (ex * ex + ey * ey) + 4.0)) {
++        double diff_x = dx - ex;
++        double diff_y = dy - ey;
++        if (diff_x * diff_x + diff_y * diff_y < 0.25 * (ex * ex + ey * ey) + 16.0) {
              macoblox_drop_warp_motion = 0;
              return 1;
          }
@@ -346,10 +356,11 @@ index 4a44098..f2d6cee 100644
 -        // forever stopped the recentring for the rest of the lock, until
 -        // the pointer reached the screen edge and the camera stopped turning.
 -        if (++macoblox_warp_wait_events > 8)
-+        if (++macoblox_warp_wait_events > 1)
++        if (++macoblox_warp_wait_events > 2)
              macoblox_drop_warp_motion = 0;
      }
--    if (!macoblox_drop_warp_motion) {
++
+     if (!macoblox_drop_warp_motion) {
 -        MacOBloxPoint location = macoblox_real_event_location(event);
 -        double ox = location.x - macoblox_lock_anchor.x, oy = location.y - macoblox_lock_anchor.y;
 -        if (macoblox_lock_anchor_pending) {
@@ -358,25 +369,22 @@ index 4a44098..f2d6cee 100644
 -        } else if (ox > MACOBLOX_LOCK_RADIUS || ox < -MACOBLOX_LOCK_RADIUS ||
 -                   oy > MACOBLOX_LOCK_RADIUS || oy < -MACOBLOX_LOCK_RADIUS) {
 -            macoblox_warp_pointer_by(-ox, -oy);
--        }
++        double width = center.x * 2.0;
++        double height = center.y * 2.0;
++        double margin = 60.0;
++        int near_edge = (location.x < margin || location.x > width - margin ||
++                         location.y < margin || location.y > height - margin);
 +
-+    double width = center.x * 2.0;
-+    double height = center.y * 2.0;
-+    double margin = 80.0;
-+    int near_edge = (location.x < margin || location.x > width - margin ||
-+                     location.y < margin || location.y > height - margin);
-+
-+    if (macoblox_lock_anchor_pending || near_edge || dist_sq > (MACOBLOX_LOCK_RADIUS * MACOBLOX_LOCK_RADIUS)) {
-+        macoblox_lock_anchor_pending = 0;
-+        macoblox_expected_warp_delta.x = -ox;
-+        macoblox_expected_warp_delta.y = -oy;
-+        macoblox_warp_to_window_center(window);
-+        macoblox_drop_warp_motion = 1;
-+        macoblox_warp_wait_events = 0;
++        if (near_edge || dist_sq > (MACOBLOX_LOCK_RADIUS * MACOBLOX_LOCK_RADIUS)) {
++            macoblox_expected_warp_delta.x = -ox;
++            macoblox_expected_warp_delta.y = -oy;
++            macoblox_warp_to_window_center(window);
++            macoblox_drop_warp_motion = 1;
++            macoblox_warp_wait_events = 0;
+         }
      }
      return 0;
- }
-@@ -3638,6 +3776,8 @@ static void hooked_app_send_event(id self, SEL cmd, id event) {
+@@ -3638,6 +3786,8 @@ static void hooked_app_send_event(id self, SEL cmd, id event) {
          unsigned long type = ((unsigned long (*)(id, SEL))objc_msgSend)(
              event, sel_registerName("type"));
          macoblox_track_key_event(event, type);
