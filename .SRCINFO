@@ -1,7 +1,7 @@
 pkgbase = legio-launcher-bin
 	pkgdesc = Legio desktop game launcher
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fraa2a/Legio
 	arch = x86_64
 	license = custom
@@ -9,7 +9,7 @@ pkgbase = legio-launcher-bin
 	provides = legio-launcher
 	conflicts = legio-launcher
 	options = !strip
-	source = Legio.AppImage::https://github.com/fraa2a/Legio/releases/download/v0.1.2/Legio.Launcher_0.1.2_amd64.AppImage
+	source = Legio-0.1.2.AppImage::https://github.com/fraa2a/Legio/releases/download/v0.1.2/Legio.Launcher_0.1.2_amd64.AppImage
 	source = icon.png
 	source = legio-launcher
 	source = legio-launcher.desktop
