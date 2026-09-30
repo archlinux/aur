@@ -1,6 +1,6 @@
 pkgbase = filetags-git
 	pkgdesc = Management of simple tags within file names
-	pkgver = 2025.11.16.1.r241.778a2de
+	pkgver = 2026.06.06.1.r296.308c763
 	pkgrel = 1
 	url = https://github.com/novoid/filetags
 	arch = any
@@ -14,6 +14,8 @@ pkgbase = filetags-git
 	provides = filetags
 	conflicts = filetags
 	source = git+https://github.com/novoid/filetags.git
+	source = 0001-Allow-_:-separators.patch
 	sha512sums = SKIP
+	sha512sums = 39884fe0fc4ed33835417d57d9f4be6b24612c8ace7697288ce0d670852d30d2385f6af86a55715be73da574a44936e5ea37f3c25e070eae3f559ff4c81d2ae7
 
 pkgname = filetags-git
