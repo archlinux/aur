@@ -6,14 +6,14 @@
 
 pkgname=expresso
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Keep the system awake for a while: a scriptable systemd-inhibit lock"
 arch=('any')
 url="https://github.com/Davi-S/expresso"
 license=('MIT')
 depends=('bash' 'systemd' 'glib2' 'libnotify')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('519f168f3c9ff13ef6aae733e93af3c812fc02760bc2124b2dfc9082e051747a')
+sha256sums=('262ce6bcb012ac5bcc17af2f49947b449c251fef10e0ae299308ce410ee28a47')
 
 package() {
     cd "$pkgname-$pkgver"
