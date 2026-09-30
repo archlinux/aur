@@ -2,43 +2,22 @@
 
 pkgname=recoil16-dkms
 _srcname=recoil16
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
-pkgdesc="Drivers and recoil16ctl for the PCSpecialist Recoil 16 AMD (TUXEDO Stellaris 16 Gen7): keyboard backlight, lightbar, power profiles, charge modes, battery health, Copilot key, NVIDIA GPU power and offload, battery draw"
+pkgdesc="Drivers for the PCSpecialist Recoil 16 AMD (TUXEDO Stellaris 16 Gen7): keyboard backlight, lightbar, power profiles, charge modes, battery health, Copilot key"
+# x86_64: the DKMS sources build against the x86-only ACPI/WMI platform drivers (uniwill-laptop)
 arch=('x86_64')
 url="https://github.com/amad3v/recoil16"
 license=('GPL-2.0-only' 'GPL-2.0-or-later')
-depends=('dkms' 'glibc' 'libgcc')
-makedepends=('cargo')
+depends=('dkms')
 optdepends=('linux-headers: build the modules for the linux kernel'
-  'libkscreen: kscreen-doctor for recoil16ctl screen and the panel line of power (KDE Plasma)'
-  'mesa-utils: eglinfo for recoil16ctl gpu test'
-  'vulkan-tools: vulkaninfo for recoil16ctl gpu test')
+  'recoil16ctl: the control tool (charge modes, lightbar, status and checks)')
 conflicts=('recoil16-dkms-git')
 install=recoil16.install
-# recoil16ctl is built stripped (Cargo.toml profile), so a -debug package would be empty
+# no binaries in this package
 options=('!debug')
 source=("$_srcname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('26d0fb5fc2963e1596d9c137ef73eb4953bac7396ec6032065abb96dbe4ceaa7')
-
-prepare() {
-  cd "$_srcname-$pkgver/recoil16ctl" || return
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc --print host-tuple)"
-}
-
-build() {
-  cd "$_srcname-$pkgver/recoil16ctl" || return
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
-}
-
-check() {
-  cd "$_srcname-$pkgver/recoil16ctl" || return
-  export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen
-}
+sha256sums=('baeec25271e3dc576b42ce4d7d91f299f9115b3c4a3a40d60d077c1a5a3d1c3c')
 
 package() {
   cd "$_srcname-$pkgver" || return
@@ -50,19 +29,6 @@ package() {
   rm -rf "$src/uniwill-laptop-pcs/patches"
   sed "s/^PACKAGE_VERSION=.*/PACKAGE_VERSION=\"$pkgver\"/" dkms.conf >"$src/dkms.conf"
 
-  local ctl=recoil16ctl/target/release/recoil16ctl
-  install -Dm755 "$ctl" "$pkgdir/usr/bin/recoil16ctl"
-  install -d "$pkgdir/usr/share/bash-completion/completions" \
-    "$pkgdir/usr/share/zsh/site-functions" \
-    "$pkgdir/usr/share/fish/vendor_completions.d"
-  "$ctl" completions bash >"$pkgdir/usr/share/bash-completion/completions/recoil16ctl"
-  "$ctl" completions zsh >"$pkgdir/usr/share/zsh/site-functions/_recoil16ctl"
-  "$ctl" completions fish >"$pkgdir/usr/share/fish/vendor_completions.d/recoil16ctl.fish"
-  "$ctl" man "$pkgdir/usr/share/man/man1"
   install -Dm644 man/recoil16.7 -t "$pkgdir/usr/share/man/man7/"
-
-  # KDE: default global shortcut Sc -> recoil16ctl screen rotate
-  install -Dm644 data/kglobalaccel/recoil16.desktop -t "$pkgdir/usr/share/kglobalaccel/"
-
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
