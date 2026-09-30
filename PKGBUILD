@@ -20,7 +20,7 @@ makedepends=('cargo')
 _tag=v${pkgver}
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-b2sums=('bdaec77b1f81d2316036bd543440c98cffdad410f842cbc19ee12247dbb077b3ad61053445b5fc8d0bf6ba3e07a530e29af138cf35f83ee9e99a66346d697782')
+b2sums=('18df30972813fc96f4789cffc3c3df728f99f37b5b1d0af2623a98301f42399b4d2c86712737e8724bb8a2fe5e70ba0ee07354f23c095b9912c2fb079ded1dd8')
 
 prepare() {
 	cd "${pkgname}"
