@@ -1,6 +1,6 @@
 # Maintainer: Kemel Zaidan <kemelzaidan at gmail dot com>
 pkgname=mdns-scanner
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Scan a network and create a list of IPs and associated hostnames,
  including mDNS hostnames and other aliases."
@@ -10,7 +10,7 @@ url="https://github.com/CramBL/mdns-scanner"
 makedepends=('rust' 'clang' 'openssl' 'lld' 'llvm' 'pkgconf')
 depends=('glibc' 'gcc-libs')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ac9246ed14337dfe4b960106f7f5b32f878a49bdef535276150654d67fda9c7a')
+sha256sums=('09bc30c592f077010418359e6e04b2837e1fb776f694eff196d2dd4e7e7f0dfc')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
