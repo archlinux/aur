@@ -1,7 +1,7 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 pkgname="rusthound-ce"
 pkgver=2.5.20
-pkgrel=1
+pkgrel=2
 pkgdesc="BloodHound CE collector written in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/g0h4n/$pkgname"
@@ -13,7 +13,6 @@ depends=(
 )
 makedepends=(
   'rust'
-  'clang'
   'git'
 )
 source=("git+$url#tag=v$pkgver")
