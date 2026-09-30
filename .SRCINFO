@@ -1,5 +1,5 @@
 pkgbase = jorvik-bin
-	pkgdesc = Self-hosted Matrix client built to feel like Discord
+	pkgdesc = Chat and voice for Matrix
 	pkgver = 1.0.14
 	pkgrel = 1
 	url = https://github.com/jorvikapp/jorvik
