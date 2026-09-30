@@ -11,7 +11,7 @@ makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emiliano-go/neurafly/archive/refs/tags/v$pkgver.tar.gz")
 # ponytail: tag tarball hash not known until the tag exists; pin it when the AUR
 # package is first pushed and bump on every release.
-sha256sums=('SKIP')
+sha256sums=('05666549e6f9563c7845d6d2143702665f03a165e1b4dc3217adac19f1302e3f')
 
 build() {
   cd "$pkgname-$pkgver"
