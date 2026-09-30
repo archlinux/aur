@@ -1,7 +1,7 @@
 # Maintainer: Marcos <your-email@example.com>
 
 pkgname=trenchkit-git
-pkgver=r150.0a2de44
+pkgver=r277.a10c8cb
 pkgrel=1
 pkgdesc="A collection of tools for trench operations (Tapawingo/TrenchKit)"
 arch=('x86_64')
