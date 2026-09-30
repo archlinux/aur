@@ -1,7 +1,7 @@
 # Maintainer: Bryson Kelly <brysonak@protonmail (dot) com>
 pkgname=bufusb-cli
 _binname=bufusb
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 _srcdir="bufusb-$pkgver"
 pkgdesc="A fast, safe bootable USB image flasher"
@@ -14,7 +14,7 @@ optdepends=('ntfs-3g: NTFS fallback for ISOs with files over the FAT32 4 GiB lim
 replaces=('buf-cli')
 conflicts=('buf-cli')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/brysonak/bufusb/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('656f6fb84bafe24b0584fb393dd3e8980d498e961b7ebfbf343cd768b4dafa5f')
+sha256sums=('25a60c46735b4c4a853b91cf77dd0559305b8f4a61a59244a602700ebb58df11')
 
 prepare() {
     cd "$_srcdir"
