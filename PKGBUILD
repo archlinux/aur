@@ -6,7 +6,7 @@ pkgname=(
     clouddrive-mediaserver-plugin-emby-bin
     clouddrive-mediaserver-plugin-jellyfin-bin
 )
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 epoch=
 pkgdesc="CloudDrive2 companion plugin for Emby and Jellyfin — path-mapping discovery and cloud-aware library updates"
@@ -17,7 +17,7 @@ depends=()
 makedepends=(
     clouddrive
     libarchive
-    emby-server
+    # emby-server
     jellyfin-server
 )
 optdepends=('clouddrive: Unlocking the Unlimited Possibilities of Cloud Storage')
@@ -30,8 +30,8 @@ source=(
     "CloudDrive.MediaServer-Jellyfin-${pkgver}.zip::${url}/releases/download/v${pkgver}/CloudDrive.MediaServer-Jellyfin-${pkgver}.zip"
 )
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '10bd3615b98ca280f6d73e2ae856716b53764d93e68c766630ed879807062a76'
-            '81def2ac80803216f16ae8d07eb471cafee85a9fa4b01cb0199c25eb551fd134')
+            '8613e2046f08d215bf3847f66d4ba5858bd165abf70bf249b6d51f602b2e348c'
+            '4873884e7c50798de87daae831fae62270b331de3d96d700db657f6ddc7ff343')
 noextract=(
     CloudDrive.MediaServer-Emby-${pkgver}.zip
     CloudDrive.MediaServer-Jellyfin-${pkgver}.zip
