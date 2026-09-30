@@ -58,7 +58,7 @@ case "${agent_dir}" in
   '~/'*) agent_dir="${HOME}/${agent_dir#~/}" ;;
 esac
 
-stamp_file="${agent_dir}/.evox-bin-stamp"
+stamp_file="${agent_dir}/.evox-stamp"
 
 if [ "$(cat "${stamp_file}" 2>/dev/null)" != "${packaged_version}" ]; then
   mkdir -p "${agent_dir}/extensions"
