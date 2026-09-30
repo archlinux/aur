@@ -24,10 +24,10 @@ source_x86_64=("${pkgname%%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/downlo
 source_aarch64=("${pkgname%%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/stremio-server_Linux_arm64.tar.gz")
 source_armv7h=("${pkgname%%-bin}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/stremio-server_Linux_armv7.tar.gz")
 sha256sums=('04d37f62270f1ac9925d1717e84fab424048216871b81fd072d447211b46f683'
-            '00f324787c8ab340d33255ffdb9d143c026467655a01d54a965293739e2396d0')
-sha256sums_x86_64=('882c009a01c99a7d340ec0b4361ceca9ccd090bdde34137f37f64e6601a3b42d')
-sha256sums_aarch64=('3f7bb120f74d3cbdcd6bbcd80b0e6a691ab4261292d6214ea490daac9ea9634a')
-sha256sums_armv7h=('4c1ef1dab38dad649704ec54e37b6b7daffb1b8f48da6a6957ca71aab342e67d')
+  '00f324787c8ab340d33255ffdb9d143c026467655a01d54a965293739e2396d0')
+sha256sums_x86_64=('377431c436eeaf5215e721b0f1eb8f3790ef6fa317510e9444790083bc10be11')
+sha256sums_aarch64=('e35c640bc2c30319dc2dbeaf9b3075ff9c50ad33e7022a58ade4aa3d50fedd09')
+sha256sums_armv7h=('c12afdd868761f3ef63bc0035bb971f36e2da651ab6273cf5cac10ef25f33ffa')
 
 package() {
   # Install binary
