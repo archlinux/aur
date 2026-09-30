@@ -1,5 +1,5 @@
 pkgbase = yesplaymusic-git
-	pkgdesc = A third party music application for Netease Music.(Use system-wide electron).高颜值的第三方网易云播放器.
+	pkgdesc = A third party music application for Netease Music.高颜值的第三方网易云播放器.
 	pkgver = 0.4.10.r9.gdf075cc
 	pkgrel = 1
 	url = https://music.qier222.com/
@@ -8,11 +8,11 @@ pkgbase = yesplaymusic-git
 	makedepends = npm
 	makedepends = nvm
 	makedepends = git
-	makedepends = curl
+	makedepends = jq
 	makedepends = yarn
 	makedepends = gendesk
 	makedepends = jq
-	depends = electron13
+	depends = electron13-bin
 	provides = yesplaymusic=0.4.10
 	conflicts = yesplaymusic
 	conflicts = my-yesplaymusic
@@ -24,6 +24,6 @@ pkgbase = yesplaymusic-git
 	source = yesplaymusic.git::git+https://github.com/qier222/YesPlayMusic.git
 	source = yesplaymusic.sh
 	sha256sums = SKIP
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
 pkgname = yesplaymusic-git
