@@ -2,7 +2,7 @@
 
 pkgauthor="rathinadev"
 pkgname="keeplog"
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Terminal session logger with full-text search"
 
@@ -23,7 +23,7 @@ depends=('bash' 'python' 'python-argcomplete' 'python-pyperclip' 'python-rich' '
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e9f314f46500d654cdd48e025690c65ceb94ad3b476f83b5c6e15838b93bcda1')
+sha256sums=('9f867c3ba5eb4755fdcc9608497f38ec4ec7325985abdee27d4dadc6cc95aed6')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/" || exit
