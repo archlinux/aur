@@ -5,7 +5,7 @@
 # CI (.github/workflows/aur-release.yml) on every release; the values below
 # are only a checked-in reference snapshot.
 pkgname=runner-run
-pkgver=0.27.0
+pkgver=0.27.1
 pkgrel=1
 pkgdesc='Universal project task runner'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 checkdepends=('just')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kjanat/runner/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7407702ac401c74afc9ef8a93c105156c5605a5c873267e34c6b91078c2e2ff2')
+sha256sums=('82fb54ca78920a1bff9c5644846a4938e22a8b2ebaed53234cb45cc4120a5ced')
 
 prepare() {
 	cd "runner-$pkgver"
