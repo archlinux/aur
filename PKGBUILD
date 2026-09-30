@@ -7,7 +7,7 @@ pkgbase=${_pkgbase}-bin
 pkgname=(${_pkgname[0]}-bin ${_pkgname[1]}-bin)
 _pkgdesc="Lossless MP3 volume adjustment"
 
-pkgver=3.9.0
+pkgver=3.9.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -38,7 +38,7 @@ source_x86_64=("${_pkgname[0]}-x86_64-${pkgver}.tgz::${url}/releases/download/${
 source_aarch64=("${_pkgname[0]}-aarch64-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname[0]}-${_pkgvername}-${_barch[1]}.tar.gz"
 				"${_pkgname[1]}-aarch64-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname[1]}-${_pkgvername}-${_barch[1]}.tar.gz")
 sha256sums=('8e557208f0bd83f91b38dcc81ccf914c4c84060ab6dbc5072dbf369791ffc135'
-            '21745ac30a7049d1974603f20ad8243cf9c45becb5548cf3fbc6e2af7cc5e675'
+            '9ad9cb775377a111741408b1f94c00e61343a29d48da02459ec1d4326afd256e'
             'f609491c9807ab2a3e1c551c48223a314bf6b1da47bb25d89335c0a997882f4b'
             'c0f553ccb5e4d9f922d5651a99f757c4c6e4469226312ddd9146c5f151a2bf35'
             'd5663da72a2e7fadff722207147cd9103868a5b9de7da7483648b74b7971c174'
@@ -47,10 +47,10 @@ sha256sums=('8e557208f0bd83f91b38dcc81ccf914c4c84060ab6dbc5072dbf369791ffc135'
             'd44f58c2eb6c2fc3ce21e45e357ffb49c22006f2279a95c74ef078d2227a3dea'
             '9837d092603c7c1749fad2857287d179ece88b1fdf1b25f36220dccbf92bb083'
             '502ed5dc6994e95e2d00f1714a3f90c4a0f14f2b18448a35eb7ff746850dcaed')
-sha256sums_x86_64=('b8282824a866a4b421d2129f09d70140970f40467e293467126751a2e3e4544b'
-                   'f23f31c267fdab85e9a58a9dd7113f6d908894316fc5b3a6203f9278528729f7')
-sha256sums_aarch64=('04b037fa36260ed8932dbbcc687822f4c402648b7e8b486146eaa49e9102f640'
-                    'a06a80a537a57259a656f755c4fcd25b380bfda2240931589fe38852c1d84810')
+sha256sums_x86_64=('d5f608e30ac3ecf12f97a50e0e4642896479caf498bd73dab94f2282d06f9b31'
+                   'c539f907de5319d38267e1aafbc00303445ade36b6d362d5475cd729ff8637ad')
+sha256sums_aarch64=('789a851cc3cf97af36cea902709ee0c5bc38126d7208333993803fce974e7789'
+                    'e51548412278e540930f535f12d71c4c1a788b0a062900706135cf4eff1a9d07')
 
 
 package_mp3rgain-bin() {
