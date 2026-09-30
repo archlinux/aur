@@ -2,7 +2,7 @@
 
 pkgname=neru-bin
 _pkgname=neru
-pkgver=1.55.0
+pkgver=1.56.0
 pkgrel=1
 pkgdesc="tool to navigate your entire screen without touching the mouse"
 provides=("${_pkgname}")
@@ -13,7 +13,7 @@ license=("MIT")
 _filename="${_pkgname}-linux-amd64.zip"
 _archive="${_pkgname}-${pkgver}.zip"
 source=("${_archive}::https://github.com/y3owk1n/${_pkgname}/releases/download/v${pkgver}/${_filename}" "${_pkgname}_license::https://raw.githubusercontent.com/y3owk1n/${_pkgname}/main/LICENSE")
-sha256sums=('ee5449cb498329815ed86e82efdbf9f56cf01a6198d2ee62d96a0370e84e0f70'
+sha256sums=('bb42ceebb60bfdd3c43eb4bd45460d43f7af565edaab9c3575c51049b22078d6'
             'SKIP')
 
 # disable -debug package
