@@ -1,0 +1,23 @@
+pkgbase = openconnect-ms-auth
+	pkgdesc = Fetch an openconnect webvpn cookie from an MFA enabled Microsoft account
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/noahvogt/openconnect-ms-auth
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-selenium
+	depends = python-pyotp
+	depends = geckodriver
+	depends = firefox
+	optdepends = openconnect: to connect with the fetched cookie
+	optdepends = networkmanager-openconnect: to hand the cookie to NetworkManager
+	source = openconnect-ms-auth-0.4.0.tar.gz::https://github.com/noahvogt/openconnect-ms-auth/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = openconnect-ms-auth
