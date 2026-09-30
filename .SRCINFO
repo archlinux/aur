@@ -1,0 +1,22 @@
+pkgbase = locus-system-monitor
+	pkgdesc = Watch resources and end processes
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sachesi/locus
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = blueprint-compiler
+	makedepends = just
+	makedepends = gettext
+	depends = gtk4>=1:4.22
+	depends = libadwaita>=1:1.8
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = glibc
+	source = locus-0.1.0.tar.gz::https://github.com/sachesi/locus/archive/v0.1.0/locus-0.1.0.tar.gz
+	sha256sums = 57de79464065be0f4e206cc139d7add376ba2296da99fab531bb67dff767c322
+
+pkgname = locus-system-monitor
