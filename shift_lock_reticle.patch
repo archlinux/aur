@@ -1,0 +1,144 @@
+--- a/libMacOBloxShims.m
++++ b/libMacOBloxShims.m
+@@ -2537,8 +2537,95 @@
+     write_str("\n");
+ }
+ 
++static volatile int macoblox_pointer_grabbed;
++static volatile int macoblox_right_mouse_down;
++static void macoblox_draw_shift_lock_reticle(void) {
++    static void (*get_integerv)(unsigned int, int*) = 0;
++    static void (*get_booleanv)(unsigned int, unsigned char*) = 0;
++    static void (*get_floatv)(unsigned int, float*) = 0;
++    static void (*scissor)(int, int, int, int) = 0;
++    static void (*enable)(unsigned int) = 0;
++    static void (*disable)(unsigned int) = 0;
++    static void (*color_mask)(unsigned char, unsigned char, unsigned char, unsigned char) = 0;
++    static void (*clear_color)(float, float, float, float) = 0;
++    static void (*clear)(unsigned int) = 0;
++    static int initialized = 0;
++    if (!initialized) {
++        get_integerv = (void (*)(unsigned int, int*))dlsym(RTLD_NEXT, "glGetIntegerv");
++        get_booleanv = (void (*)(unsigned int, unsigned char*))dlsym(RTLD_NEXT, "glGetBooleanv");
++        get_floatv = (void (*)(unsigned int, float*))dlsym(RTLD_NEXT, "glGetFloatv");
++        scissor = (void (*)(int, int, int, int))dlsym(RTLD_NEXT, "glScissor");
++        enable = (void (*)(unsigned int))dlsym(RTLD_NEXT, "glEnable");
++        disable = (void (*)(unsigned int))dlsym(RTLD_NEXT, "glDisable");
++        color_mask = (void (*)(unsigned char, unsigned char, unsigned char, unsigned char))dlsym(RTLD_NEXT, "glColorMask");
++        clear_color = (void (*)(float, float, float, float))dlsym(RTLD_NEXT, "glClearColor");
++        clear = (void (*)(unsigned int))dlsym(RTLD_NEXT, "glClear");
++        initialized = 1;
++    }
++    if (!get_integerv || !get_booleanv || !get_floatv || !scissor || !enable || !disable || !color_mask || !clear_color || !clear)
++        return;
++
++    int viewport[4] = {0, 0, 0, 0};
++    get_integerv(0x0BA2U /* GL_VIEWPORT */, viewport);
++    if (viewport[2] <= 0 || viewport[3] <= 0)
++        return;
++
++    int cx = viewport[0] + viewport[2] / 2;
++    int cy = viewport[1] + viewport[3] / 2;
++
++    int old_scissor[4] = {0, 0, 0, 0};
++    get_integerv(0x0C10U /* GL_SCISSOR_BOX */, old_scissor);
++    unsigned char old_scissor_test = 0;
++    get_booleanv(0x0C11U /* GL_SCISSOR_TEST */, &old_scissor_test);
++    float old_clear_color[4] = {0.0f, 0.0f, 0.0f, 0.0f};
++    get_floatv(0x0C22U /* GL_COLOR_CLEAR_VALUE */, old_clear_color);
++    unsigned char old_color_mask[4] = {1, 1, 1, 1};
++    get_booleanv(0x0C23U /* GL_COLOR_WRITEMASK */, old_color_mask);
++
++    enable(0x0C11U /* GL_SCISSOR_TEST */);
++    color_mask(1, 1, 1, 1);
++
++    static const signed char dark_spans[][4] = {
++        {-1, -8, 3, 1}, {-4, -7, 9, 1}, {-5, -6, 11, 1}, {-6, -5, 13, 1},
++        {-7, -4, 15, 1}, {-7, -3, 7, 1}, {1, -3, 7, 1}, {-7, -2, 15, 1},
++        {-8, -1, 17, 1}, {-8, 0, 5, 1}, {-2, 0, 5, 1}, {4, 0, 5, 1},
++        {-8, 1, 17, 1}, {-7, 2, 15, 1}, {-7, 3, 7, 1}, {1, 3, 7, 1},
++        {-7, 4, 15, 1}, {-6, 5, 13, 1}, {-5, 6, 11, 1}, {-4, 7, 9, 1},
++        {-1, 8, 3, 1}
++    };
++    static const signed char white_spans[][4] = {
++        {0, -7, 1, 1}, {-3, -6, 7, 1}, {-4, -5, 9, 1}, {-5, -4, 4, 1},
++        {2, -4, 4, 1}, {-6, -3, 3, 1}, {4, -3, 3, 1}, {-6, -2, 3, 1},
++        {4, -2, 3, 1}, {-6, -1, 2, 1}, {-1, -1, 3, 1}, {5, -1, 2, 1},
++        {-7, 0, 3, 1}, {-1, 0, 3, 1}, {5, 0, 3, 1}, {-6, 1, 2, 1},
++        {-1, 1, 3, 1}, {5, 1, 2, 1}, {-6, 2, 3, 1}, {4, 2, 3, 1},
++        {-6, 3, 3, 1}, {4, 3, 3, 1}, {-5, 4, 4, 1}, {2, 4, 4, 1},
++        {-4, 5, 9, 1}, {-3, 6, 7, 1}, {0, 7, 1, 1}
++    };
++
++    clear_color(0.0f, 0.0f, 0.0f, 1.0f);
++    for (unsigned long i = 0; i < sizeof(dark_spans) / sizeof(dark_spans[0]); i++) {
++        scissor(cx + dark_spans[i][0], cy + dark_spans[i][1], dark_spans[i][2], dark_spans[i][3]);
++        clear(0x00004000U /* GL_COLOR_BUFFER_BIT */);
++    }
++
++    clear_color(1.0f, 1.0f, 1.0f, 1.0f);
++    for (unsigned long i = 0; i < sizeof(white_spans) / sizeof(white_spans[0]); i++) {
++        scissor(cx + white_spans[i][0], cy + white_spans[i][1], white_spans[i][2], white_spans[i][3]);
++        clear(0x00004000U /* GL_COLOR_BUFFER_BIT */);
++    }
++
++    clear_color(old_clear_color[0], old_clear_color[1], old_clear_color[2], old_clear_color[3]);
++    color_mask(old_color_mask[0], old_color_mask[1], old_color_mask[2], old_color_mask[3]);
++    scissor(old_scissor[0], old_scissor[1], old_scissor[2], old_scissor[3]);
++    if (!old_scissor_test)
++        disable(0x0C11U /* GL_SCISSOR_TEST */);
++}
++
+ static void hooked_gl_context_flush(id self, SEL cmd) {
+     long count = __sync_add_and_fetch(&macoblox_gl_flush_count, 1);
++    if (macoblox_pointer_grabbed && !macoblox_right_mouse_down)
++        macoblox_draw_shift_lock_reticle();
+     static volatile int test_clear = -1;
+     if (macoblox_env_cached("MACOBLOX_GL_TEST_CLEAR", &test_clear)) {
+         void (*disable)(unsigned int) =
+@@ -2623,7 +2710,6 @@
+ extern int CGAssociateMouseAndMouseCursorPosition(unsigned int connected);
+ extern int CGWarpMouseCursorPosition(MacOBloxPoint position);
+ #define MACOBLOX_LOCK_RADIUS 100.0
+-static volatile int macoblox_pointer_grabbed;
+ static volatile int macoblox_drop_warp_motion;
+ static int macoblox_warp_wait_events; // motion events seen since the warp
+ static MacOBloxPoint macoblox_expected_warp_delta;
+@@ -2943,6 +3029,7 @@
+         if (button >= 1 && button <= 3) {
+             if (type == 4) macoblox_raw_buttons |= 1u << button;
+             else macoblox_raw_buttons &= ~(1u << button);
++            if (button == 3) macoblox_right_mouse_down = (type == 4);
+         }
+         return 0;
+     }
+@@ -3018,6 +3105,12 @@
+             : ((MacOBloxPoint (*)(id, SEL))objc_msgSend)(event_class, screen_selector);
+         if (window)
+             macoblox_frozen_window_location = macoblox_real_window_mouse_location(window);
++        if (window && !macoblox_right_mouse_down) {
++            MacOBloxPoint center = macoblox_window_center(window);
++            macoblox_frozen_window_location = center;
++            macoblox_lock_anchor = center;
++            macoblox_lock_anchor_pending = 1;
++        }
+     }
+     if (grab) {
+         // The pointer stays where the button was pressed. Recentering starts
+@@ -3067,6 +3160,7 @@
+                                      macoblox_frozen_window_location.y - location.y);
+         }
+         macoblox_drop_warp_motion = 0;
++        macoblox_right_mouse_down = 0;
+         macoblox_set_x_cursor_hidden(0);
+     }
+     return 0;
+@@ -3638,6 +3732,8 @@
+         unsigned long type = ((unsigned long (*)(id, SEL))objc_msgSend)(
+             event, sel_registerName("type"));
+         macoblox_track_key_event(event, type);
++        if (type == 3) macoblox_right_mouse_down = 1;
++        else if (type == 4) macoblox_right_mouse_down = 0;
+         if ((type == 10 || type == 11) && macoblox_trace_keys_enabled()) {
+             write_str(type == 10 ? "[MacOBlox Keys] game keyDown code=" : "[MacOBlox Keys] game keyUp   code=");
+             print_num(((unsigned short (*)(id, SEL))objc_msgSend)(event, sel_registerName("keyCode")));

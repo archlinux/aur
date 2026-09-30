@@ -2,7 +2,7 @@
 # Contributor: aubree.wtf <https://aubree.wtf/>
 pkgname=macoblox-git
 _name=MacOBlox
-pkgver=r100.fddaca2
+pkgver=r101.1d75c33
 pkgrel=1
 pkgdesc="Run the macOS Roblox client on Linux through Darling"
 arch=('x86_64')
@@ -10,11 +10,18 @@ url="https://github.com/aubree-lat/MacOBlox"
 license=('MIT')
 # clang and lld build the shim on first launch, against Darling's own sysroot.
 depends=('darling' 'clang' 'lld' 'unzip' 'pipewire-audio' 'python' 'python-gobject' 'gtk4' 'libadwaita' 'webkitgtk-6.0')
-makedepends=('git')
+makedepends=('git' 'patch')
 provides=('macoblox')
 conflicts=('macoblox')
-source=("git+$url.git")
-sha256sums=('SKIP')
+source=("git+$url.git"
+        "shift_lock_reticle.patch")
+sha256sums=('SKIP'
+            'c5c30db03e35e0d2c108f6ff71eff40669c9f0271de932f30999c672de114b9d')
+
+prepare() {
+  cd "$_name"
+  patch -Np1 -i "$srcdir/shift_lock_reticle.patch"
+}
 
 pkgver() {
   cd "$_name"
