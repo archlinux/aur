@@ -4,7 +4,7 @@
 # After bumping pkgver, refresh the checksum with:  updpkgsums
 # and regenerate .SRCINFO with:                     makepkg --printsrcinfo > .SRCINFO
 pkgname=lyrics-tool
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Cross-platform terminal lyrics visualizer and LRC/WLRC toolkit"
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bab3a4d441011c76305b2b6c1f34554758b4d977a6ef738858f217c34cc095e7')
+sha256sums=('56a105ad012837fafc54cb67a9c3ec626d39cc734aa2bfe41204e8c59c88dfeb')
 
 build() {
   cd "$pkgname-$pkgver"
