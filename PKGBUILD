@@ -6,14 +6,14 @@
 
 pkgname=simple-battery-notify
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Customizable battery notifications from UPower: a small daemon and CLI"
 arch=('any')
 url="https://github.com/Davi-S/simple-battery-notify"
 license=('GPL-3.0-or-later')
 depends=('bash' 'systemd' 'glib2' 'libnotify' 'upower')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e7ea429628a20ee9d29b193b6eebeec7bdab36df9da9a6259fa0e477440fcd94')
+sha256sums=('476753b2ba8e1c3597b11da46c91d78bdbea2882ffdf877ad5719e6acec1e34c')
 
 package() {
     cd "$pkgname-$pkgver"
