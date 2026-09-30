@@ -25,9 +25,9 @@
 : ${_build_limit_cores:=auto} # number of cores for parallelism; or auto, limited by RAM
 
 ## update
-_icver="140.16.0-1"
-_commit="8726dec784c7e50e95c823e37e6648cd7c45dbe3"
-_ffsum="15d2d359b8571ecd0898faa6e05aa902b0de7cb34aadfc4d94adf6c8428f84df"
+_icver="140.17.0-1"
+_commit="d7ffa7cbb29e7047b491ebbf5e50549548d480cb"
+_ffsum="4d6ed3b18b2069c55bab12d8ba95da6013ac0b036d8a031df8b9f39a25d05c33"
 
 ## package
 _pkgname="icecat"
@@ -157,9 +157,6 @@ source=(
 
   # fix for ffmpeg 9
   0006-Add-FFmpeg-63-support.patch.xz
-
-  # fix for rust 1.98
-  0007-fix-rust-1.98-targets.patch
 )
 sha256sums=(
   'SKIP'
@@ -176,7 +173,6 @@ sha256sums=(
   '8f9b7458760b37766a73d4d2c0e93dc810e59d3844495b9d52b3b61dde59c05d'
   '43cf4f00643c1144f6debeec6a7cabde63de4089cca5d3bb3501beadd2c837bc'
   'e7d30072641dfea9c3bff025db7e3a2c60201e630c5253bda1f2b54a0b5501ae'
-  '8e93bc3f7745bd4a6bcf952120b60a260ea867f0c8319ea8f6df18ed1281bc1f'
 )
 
 _make_icecat() (
