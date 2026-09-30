@@ -1,0 +1,14 @@
+pkgbase = python-certlint-git
+	pkgdesc = Check SSL/TLS certificates for expiry and chain issues
+	pkgver = r1.bf5c09b
+	pkgrel = 1
+	url = https://github.com/milishiajay/certlint
+	arch = any
+	license = custom:none-declared
+	depends = python
+	provides = python-certlint
+	conflicts = python-certlint
+	source = certlint::git+https://github.com/milishiajay/certlint.git#branch=master
+	sha256sums = SKIP
+
+pkgname = python-certlint-git
