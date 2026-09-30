@@ -1,6 +1,6 @@
 # Maintainer: ToRvaLDz <torvalds@github.com>
 pkgname=monique
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc='MONitor Integrated QUick Editor — graphical monitor configurator for Hyprland, Sway and Niri'
 arch=('any')
@@ -28,7 +28,7 @@ makedepends=(
     'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ToRvaLDz/monique/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d1151077f937f49bed174a1e1535e120b9f166841bd82a1f8cd9c3e3648fadb4')
+sha256sums=('70e8ccc29d12d37253c46a6d4bb2c31b05b1535dccaaa1b37dbc72354a33a111')
 
 build() {
     cd "$pkgname-$pkgver"

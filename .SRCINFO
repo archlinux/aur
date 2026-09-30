@@ -1,6 +1,6 @@
 pkgbase = monique
 	pkgdesc = MONitor Integrated QUick Editor — graphical monitor configurator for Hyprland, Sway and Niri
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/ToRvaLDz/monique
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = monique
 	optdepends = sddm: login screen layout sync via Xsetup
 	optdepends = polkit: passwordless SDDM Xsetup writes
 	optdepends = python-pyudev: hardware hotplug detection for Niri
-	source = monique-0.8.2.tar.gz::https://github.com/ToRvaLDz/monique/archive/refs/tags/v0.8.2.tar.gz
-	sha256sums = d1151077f937f49bed174a1e1535e120b9f166841bd82a1f8cd9c3e3648fadb4
+	source = monique-0.8.3.tar.gz::https://github.com/ToRvaLDz/monique/archive/refs/tags/v0.8.3.tar.gz
+	sha256sums = 70e8ccc29d12d37253c46a6d4bb2c31b05b1535dccaaa1b37dbc72354a33a111
 
 pkgname = monique
