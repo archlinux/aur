@@ -1,6 +1,6 @@
 pkgname=twintaillauncher-bin
 _pkgname="${pkgname%-bin}"
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc='Your anime games, one launcher'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=("twintaillauncher")
 conflicts=("twintaillauncher-git" "twintaillauncher")
 source_x86_64=("${_pkgname}-${pkgver}-amd64.deb::${url}/releases/download/ttl-v${pkgver}/twintaillauncher_${pkgver}_amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-arm64.deb::${url}/releases/download/ttl-v${pkgver}/twintaillauncher_${pkgver}_arm64.deb")
-sha256sums_x86_64=('5f535b724ee88ed7069a5abf528dea8ea4775b4c05e841e67770823bf96958c2')
-sha256sums_aarch64=('e15eafbe37f8c1120bbd27d792411a02ab87c0e2f60996ed6a22c22013ab8e51')
+sha256sums_x86_64=('04716ca6c935cca71d0cd509d98bd976443f700525486925fe0245d2e885adb8')
+sha256sums_aarch64=('ad39335ce2bc024b7c0e816f464f054341b461c45ae2d0cd376b527e7d03fad8')
 
 build() {
     bsdtar -x -f data.tar.gz
