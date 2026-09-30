@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wubi-dict-editor-bin
 _zhname='五笔码表助手'
-pkgver=1.4.2
+pkgver=1.4.3
 _electronversion=28
 pkgrel=1
 pkgdesc="Five Pen Watch Assistant for Rime.五笔码表助手 for Rime."
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a017d067dd6d243c691939ef6ffb36a17ca9c515f5d2ffc7b5ae2170757f3876'
+sha256sums=('24ed74708ae062fc7c5d2cf0c8954b033db3132944400549f7c866d964adbff8'
             'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
