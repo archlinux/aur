@@ -1,7 +1,7 @@
-# Maintainer: Asger Geel Weirsoe <asger@weircon.dk>
+# Maintainer: Asger Geel Weirsoe <asger at weircon dot dk>
 pkgname=pi3-smart-workspace
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Switch i3 workspaces based on which output your mouse cursor is on"
 arch=('any')
 url="https://gitea.weircon.dk/agw/pi3-smart-workspace"
