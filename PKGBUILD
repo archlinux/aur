@@ -4,12 +4,12 @@
 
 pkgname=proto
 pkgver=0.62.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Pluggable multi-language version manager'
 arch=('x86_64' 'aarch64')
 url='https://github.com/moonrepo/proto'
 license=('MIT')
-depends=('gcc-libs' 'git' 'unzip' 'gzip' 'xz')
+depends=('glibc' 'libgcc' 'git' 'unzip' 'gzip' 'xz')
 optdepends=('rustup: support for Rust toolchains')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
