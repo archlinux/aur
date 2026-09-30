@@ -6,7 +6,7 @@ _nfver=3.5.1
 # (e.g. 22.0.5.4+nf3.5.1). The literal here is only a placeholder for the first
 # run and for tooling that parses the PKGBUILD without executing it.
 pkgver=22.0.5.4+nf3.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Apple fonts (SF Pro, SF Compact, SF Mono, SF Arabic, NY), optionally Nerd Fonts patched and/or autohinted (ttfautohint / CFF), with fixed weight classes"
 arch=(any)
 url="https://developer.apple.com/fonts/"
@@ -29,6 +29,7 @@ source=(
   "dedup_blues.py"
   "font_meta.py"
   "fix_weights.py"
+  "add_stat.py"
 )
 # Apple re-spins the DMGs without versioning, so those legitimately stay SKIP —
 # the real identity check is pkgver(), which reads the version out of the font
@@ -37,6 +38,7 @@ source=(
 # (no network fetch), so they are covered by makepkg's local-file hashing —
 # fill these in with `updpkgsums`.
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -88,6 +90,14 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 #                            every New York optical size with Bold = Semibold = 600
 #                            and Black = Heavy = 800, so fc-match "New York Small:bold"
 #                            picks Black. See fix_weights.py.
+#
+#  TRACKING  true/false      Enable Apple's size-specific tracking (default: true).
+#                            SF Pro / New York carry an AAT `trak` table, which
+#                            HarfBuzz applies only if the font also has STAT;
+#                            add_stat.py adds a minimal one. Result in pango:
+#                            9pt +4.3%, 11pt +0.8%, 13pt -1%, 17pt -4% width.
+#                            No effect with NERD_PATCH=true: font-patcher
+#                            (FontForge) drops both trak and STAT.
 #
 #  ── ttfautohint tuning ──
 #  HINT_PRESET  name         Named bundle of ttfautohint flags (default: balanced)
@@ -174,9 +184,11 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 # ignores these hints. The package therefore ships (but does not enable)
 # /usr/share/fontconfig/conf.avail/80-nerd-fonts-apple-hinted.conf, which turns
 # on bytecode hinting for the installed families only. It uses hintmedium, not
-# hintfull: cairo/pango render the two identically, but Chrome turns off
-# subpixel positioning (whole-pixel advances, uneven gaps) only at hintfull.
-# Enable it with:
+# hintfull: cairo/pango render the two identically, but Blink turns off
+# subpixel positioning at hintfull. Chromium and Electron apps are excluded by
+# prgname: at device scale 1 Skia uses linear advances only for hintslight/none,
+# so at hintmedium every glyph advance is rounded to a whole pixel (measured:
+# 0 of 54 fractional advances; README.md §10). Enable it with:
 #
 #   sudo ln -s /usr/share/fontconfig/conf.avail/80-nerd-fonts-apple-hinted.conf \
 #              /etc/fonts/conf.d/
@@ -470,6 +482,17 @@ _resolve_options() {
     echo "Error: FIX_WEIGHTS='$FIX_WEIGHTS' must be true or false."; exit 1
   fi
 
+  # ── Size-specific tracking ─────────────────────────────────────────────────
+  if [[ "$_interactive" == true && -z "${TRACKING:-}" ]]; then
+    echo ""
+    _ask_yn "Enable Apple's size-specific tracking (adds a STAT table)" y
+    [[ "$_yn" =~ ^[yY]$ ]] && TRACKING=true || TRACKING=false
+  fi
+  TRACKING="${TRACKING:-true}"
+  if [[ "$TRACKING" != true && "$TRACKING" != false ]]; then
+    echo "Error: TRACKING='$TRACKING' must be true or false."; exit 1
+  fi
+
   # gasp default + validation (used by both engines, but only meaningful for TTF)
   GASP_MODE="${GASP_MODE:-keep}"
   case "$GASP_MODE" in
@@ -545,6 +568,7 @@ _resolve_options() {
   printf "  NERD_PATCH:    %s\n" "$NERD_PATCH"
   printf "  WANT_VARIABLE: %s\n" "$WANT_VARIABLE"
   printf "  FIX_WEIGHTS:   %s\n" "$FIX_WEIGHTS"
+  printf "  TRACKING:      %s\n" "$TRACKING"
   if [[ "$HINTING" == true ]]; then
     printf "  HINTING:       true  (engine=%s)\n" "$HINT_ENGINE"
     if [[ "$HINT_ENGINE" == ttfautohint ]]; then
@@ -573,6 +597,7 @@ _resolve_options() {
     echo "NERD_PATCH=$NERD_PATCH"
     echo "WANT_VARIABLE=$WANT_VARIABLE"
     echo "FIX_WEIGHTS=$FIX_WEIGHTS"
+    echo "TRACKING=$TRACKING"
     echo "HINTING=$HINTING"
     echo "HINT_ENGINE=$HINT_ENGINE"
     echo "HINT_PRESET=${HINT_PRESET:-}"
@@ -611,7 +636,7 @@ _load_options() {
   [[ -f "$srcdir/.build_opts" ]] || { echo "Error: missing .build_opts; run prepare() first."; exit 1; }
   while IFS='=' read -r _k _v; do
     case "$_k" in
-      NERD_PATCH|WANT_VARIABLE|FIX_WEIGHTS|HINTING|HINT_ENGINE|HINT_PRESET|HINT_MODE| \
+      NERD_PATCH|WANT_VARIABLE|FIX_WEIGHTS|TRACKING|HINTING|HINT_ENGINE|HINT_PRESET|HINT_MODE| \
       HINT_RANGE_MIN|HINT_RANGE_MAX|HINT_LIMIT|HINT_XHEIGHT|HINT_WINCOMPAT| \
       HINT_TTFA_TABLE|HINT_XSNAP_EXC|HINT_FAMILY_SUFFIX|GASP_MODE| \
       WANT_SF_PRO|WANT_SF_COMPACT|WANT_SF_MONO|WANT_SF_ARABIC|WANT_NY| \
@@ -753,6 +778,13 @@ build() {
   if [[ "$FIX_WEIGHTS" == true ]]; then
     echo "==> Normalising usWeightClass..."
     python "$srcdir/fix_weights.py" "$srcdir/selected/"*
+  fi
+
+  # STAT goes in after the weight fix (it records usWeightClass). fontTools
+  # (otf2ttf) and ttfautohint keep both STAT and trak; font-patcher drops both.
+  if [[ "$TRACKING" == true ]]; then
+    echo "==> Adding STAT so HarfBuzz applies the fonts' trak tracking..."
+    python "$srcdir/add_stat.py" "$srcdir/selected/"*
   fi
 
   # ══════════════════════════════════════════════════════════════════════════
@@ -988,21 +1020,32 @@ package() {
   if [[ "$HINTING" == true && "$HINT_ENGINE" == ttfautohint ]] && \
      compgen -G "$pkgdir/usr/share/fonts/apple/*.ttf" >/dev/null; then
     local _fam _conf="$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf"
+    local _chromium_prgnames=(chrome chromium brave helium electron code slack signal-desktop vesktop)
     install -d "${_conf%/*}"
     {
       echo '<?xml version="1.0" encoding="UTF-8"?>'
       echo '<!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">'
       echo "<!-- Installed by $pkgname. Use the ttfautohint bytecode hints in these"
       echo "     fonts rather than FreeType's light autohinter. hintmedium, not"
-      echo "     hintfull: same rendering in cairo/pango, but Chrome keeps subpixel"
-      echo "     positioning at hintmedium. -->"
+      echo "     hintfull: same rendering in cairo/pango, and Blink keeps subpixel"
+      echo "     positioning at hintmedium but drops it at hintfull."
+      echo "     Chromium and Electron apps are excluded: at device scale 1 they use"
+      echo "     linear advances only for hintslight/none, so hintmedium would round"
+      echo "     every glyph advance to a whole pixel (uneven letter gaps). -->"
       echo '<fontconfig>'
-      # One <match> per family: several <test>s in one <match> are ANDed.
+      # One <match> per family: several <test>s in one <match> are ANDed, so
+      # the prgname tests exclude every listed app. qual="all" makes a test
+      # pass when prgname is unset. prgname is the executable's basename.
+      local _prg _prgtests=""
+      for _prg in "${_chromium_prgnames[@]}"; do
+        _prgtests+="    <test qual=\"all\" name=\"prgname\" compare=\"not_eq\"><string>$_prg</string></test>"$'\n'
+      done
       while IFS= read -r _fam; do
         _fam="${_fam//&/&amp;}"; _fam="${_fam//</&lt;}"
         cat <<EOF
   <match target="font">
     <test name="family" compare="eq"><string>$_fam</string></test>
+${_prgtests%$'\n'}
     <edit name="hinting" mode="assign"><bool>true</bool></edit>
     <edit name="autohint" mode="assign"><bool>false</bool></edit>
     <edit name="hintstyle" mode="assign"><const>hintmedium</const></edit>
