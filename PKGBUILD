@@ -1,9 +1,9 @@
 # Maintainer: OpenLyst <https://openlyst.ink>
-# Unstable build from GitHub releases: https://github.com/openlyst/builds/releases
+# Deprecated - use kilt-unstable instead. Kept so existing installs still build.
 pkgname=klit-bin-unstable
-pkgver=10.2.0
-pkgrel=1
-pkgdesc="E926 API client (unstable build from GitHub)"
+pkgver=12.0.0
+pkgrel=2
+pkgdesc="Deprecated - install kilt-unstable instead"
 arch=('x86_64')
 url="https://openlyst.ink"
 license=('GPL3')
@@ -12,7 +12,8 @@ optdepends=()
 provides=('kilt')
 conflicts=('kilt')
 options=('!strip')
-source=("klit-bin-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-152/kilt-10.2.0-2026-07-24-linux-x64.zip")
+install=klit-bin-unstable.install
+source=("klit-bin-unstable-${pkgver}.zip::https://gitlab.com/Openlyst/klit/-/releases/nightly/downloads/kilt-linux-x64-12.0.0-2026-09-29.zip")
 sha256sums=('SKIP')
 
 package() {
