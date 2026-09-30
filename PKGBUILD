@@ -1,5 +1,4 @@
 # Maintainer: enihcam <enihcam@archlinux>
-# Contributor: MiniMax AI <dev@minimaxi.com>
 
 # Upstream ships no LICENSE file; the "Important Notice" in the README is the
 # sole license grant. It explicitly disallows redistribution, modification, and
