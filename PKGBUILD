@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kiwix-js-electron-bin
 _pkgname=Kiwix-JS-Electron
-pkgver=3.9.2
+pkgver=3.9.3
 _electronversion=43
 pkgrel=1
 pkgdesc="Kiwix JS Offline Browser implemented as a Progressive Web App (PWA), and packaged as Electron, NWJS and UWP apps."
@@ -24,9 +24,9 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_i686=("${pkgname%-bin}-${pkgver}-i686.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-E-i386.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-E.AppImage")
 sha256sums=('bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
-sha256sums_aarch64=('165c74f2029e4b75b7b66c35a1becda5741bf26b538eecc8b82d6eb286cad75c')
-sha256sums_i686=('0b3e6a5449c1d5a3dd99e49c840282701bba3580aed23fdd83f21259dcb63946')
-sha256sums_x86_64=('d717fc3b2da828c292bb3605b99530a5cdedb5b37fff8c9dc15db7bbefe40b31')
+sha256sums_aarch64=('8af1ebee91da23a720cf3c0e196562e92fe811f47f73f54a8d78b9ff25329de4')
+sha256sums_i686=('a8235512dc894e0ee664e1860badfcb3a3cd24c008d4764ba3a1996719370b35')
+sha256sums_x86_64=('0c91d1aa83dec3383ba343d14b57e5cabc3405b69947f7aea97aa5316cb7291d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }

@@ -1,6 +1,6 @@
 pkgbase = kiwix-js-electron-bin
 	pkgdesc = Kiwix JS Offline Browser implemented as a Progressive Web App (PWA), and packaged as Electron, NWJS and UWP apps.
-	pkgver = 3.9.2
+	pkgver = 3.9.3
 	pkgrel = 1
 	url = https://pwa.kiwix.org/
 	arch = aarch64
@@ -9,15 +9,15 @@ pkgbase = kiwix-js-electron-bin
 	license = GPL-3.0-only
 	depends = electron43
 	depends = nodejs
-	provides = kiwix-js-electron=3.9.2
+	provides = kiwix-js-electron=3.9.3
 	conflicts = kiwix-js-electron
 	source = kiwix-js-electron.sh
 	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
-	source_aarch64 = kiwix-js-electron-3.9.2-aarch64.AppImage::https://github.com/kiwix/kiwix-js-pwa/releases/download/v3.9.2/Kiwix-JS-Electron-3.9.2-E-arm64.AppImage
-	sha256sums_aarch64 = 165c74f2029e4b75b7b66c35a1becda5741bf26b538eecc8b82d6eb286cad75c
-	source_i686 = kiwix-js-electron-3.9.2-i686.AppImage::https://github.com/kiwix/kiwix-js-pwa/releases/download/v3.9.2/Kiwix-JS-Electron-3.9.2-E-i386.AppImage
-	sha256sums_i686 = 0b3e6a5449c1d5a3dd99e49c840282701bba3580aed23fdd83f21259dcb63946
-	source_x86_64 = kiwix-js-electron-3.9.2-x86_64.AppImage::https://github.com/kiwix/kiwix-js-pwa/releases/download/v3.9.2/Kiwix-JS-Electron-3.9.2-E.AppImage
-	sha256sums_x86_64 = d717fc3b2da828c292bb3605b99530a5cdedb5b37fff8c9dc15db7bbefe40b31
+	source_aarch64 = kiwix-js-electron-3.9.3-aarch64.AppImage::https://github.com/kiwix/kiwix-js-pwa/releases/download/v3.9.3/Kiwix-JS-Electron-3.9.3-E-arm64.AppImage
+	sha256sums_aarch64 = 8af1ebee91da23a720cf3c0e196562e92fe811f47f73f54a8d78b9ff25329de4
+	source_i686 = kiwix-js-electron-3.9.3-i686.AppImage::https://github.com/kiwix/kiwix-js-pwa/releases/download/v3.9.3/Kiwix-JS-Electron-3.9.3-E-i386.AppImage
+	sha256sums_i686 = a8235512dc894e0ee664e1860badfcb3a3cd24c008d4764ba3a1996719370b35
+	source_x86_64 = kiwix-js-electron-3.9.3-x86_64.AppImage::https://github.com/kiwix/kiwix-js-pwa/releases/download/v3.9.3/Kiwix-JS-Electron-3.9.3-E.AppImage
+	sha256sums_x86_64 = 0c91d1aa83dec3383ba343d14b57e5cabc3405b69947f7aea97aa5316cb7291d
 
 pkgname = kiwix-js-electron-bin
