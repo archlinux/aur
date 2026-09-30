@@ -22,9 +22,12 @@ makedepends=(
     'bun'
     'nvm'
     'git'
-    'curl'
     'jq'
     'zip'
+    'python-build'
+    'python-installer'
+    'python-wheel'
+    'python-setuptools'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
@@ -34,9 +37,15 @@ options=(
     '!emptydirs'
 )
 sha256sums=('SKIP'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+_get_project_dir() {
+	local d
+	while IFS= read -r d; do
+		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
+	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+}
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}.git"
+    cd "$(_get_project_dir)"
     set -o pipefail
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
@@ -51,10 +60,11 @@ _get_app_dir() {
 	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }
 _get_electron_version() {
-    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
-        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
-    [[ -z "${_elec_ver}" ]] && return 1
-    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
+		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
+		| grep -v '^$' | sed 's/^[^0-9]*//' | head -1)
+	[[ -z "${_elec_ver}" ]] && return 1
+	echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -70,6 +80,7 @@ _set_build_env() {
 	export BUN_INSTALL_GLOBAL_DIR="${HOME}/.bun/global"
 	export BUN_INSTALL_BIN="${HOME}/.bun/bin"
 	export BUN_CONFIG_SKIP_SAVE_LOCKFILE=1
+	export BUN_CONFIG_SKIP_LOAD_LOCKFILE=1
 	export BUN_DISABLE_DOTENV=1
 	export DO_NOT_TRACK=1
 	export BUN_JOBS="$(nproc)"
@@ -80,7 +91,7 @@ _use_local_electron_for_forge() {
 	local _zd="${srcdir}/electron-zips"
 	case "${CARCH}" in
 		aarch64)	_arch=arm64	;;
-		x86_64)	_arch=x64	;;
+		x86_64)		_arch=x64	;;
 	esac
 	local _zf="${_zd}/electron-v${_v}-linux-${_arch}.zip"
 	install -Dm755 -d "${_zd}"
@@ -90,7 +101,7 @@ _use_local_electron_for_forge() {
 	done
 }
 prepare() {
-    cd "${srcdir}/${pkgname%-git}.git"
+    cd "$(_get_project_dir)"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -107,29 +118,32 @@ prepare() {
     _ensure_local_nvm
     _set_build_env
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    bun install
+    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
+    export NODE_ENV=development
+    bun install
     _use_local_electron_for_forge
 }
 build() {
-    cd "${srcdir}/${pkgname%-git}.git"
+    cd "$(_get_project_dir)"
     _ensure_local_nvm
     _set_build_env
-    NODE_ENV=production     bun run package
-    local _app_dir=$(_get_app_dir)
+    export NODE_ENV=production
+    bun run package
+    local _src="$(_get_project_dir)"
     case "${CARCH}" in
-        aarch64)    _archrem="x64"  ;;
-        x86_64)     _archrem="arm64" ;;
+        aarch64)    _archrem=x64    ;;
+        x86_64)     _archrem=arm    ;;
     esac
-    find "${_app_dir}/resources/app/node_modules" \
-        \( -name "*darwin*" -o -name "*win32*" -o -name "*${_archrem}*" \) -type d \
+    find "${_app_dir}/resources/app.asar.unpacked" -type d \
+        \( -name "darwin*" -o -name "*android*" -o -name "win32*" -o -name "*${_archrem}"* \) \
         -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-	local _app_dir=$(_get_app_dir)
+	local _app_dir="$(_get_app_dir)"
 	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/res/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    local _src="$(_get_project_dir)"
+    install -Dm644 "${_src}/res/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "${_src}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
 }
