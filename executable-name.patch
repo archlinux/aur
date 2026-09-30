@@ -1,0 +1,22 @@
+--- a/packaging/animage.desktop
++++ b/packaging/animage.desktop
+@@ -3,7 +3,7 @@
+ Name=Animage
+ GenericName=Animation editor
+ Comment=A 2D animation program for hand-drawn work
+-Exec=animage %f
++Exec=animage-bin %f
+ Icon=animage
+ Terminal=false
+ Categories=Graphics;2DGraphics;RasterGraphics;
+--- a/src/app/CMakeLists.txt
++++ b/src/app/CMakeLists.txt
+@@ -134,6 +134,7 @@
+ add_executable(animage animage/main.cpp)
+ target_link_libraries(animage PRIVATE animage_ui)
+ set_target_properties(animage PROPERTIES
++  OUTPUT_NAME "animage-bin"
+   # A console window on Windows, for the same reason as the latency harness:
+   # a prototype that crashes should be able to say so.
+   WIN32_EXECUTABLE OFF
+

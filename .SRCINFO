@@ -1,0 +1,23 @@
+pkgbase = animage-git
+	pkgdesc = A free and opensource animation software
+	pkgver = r0.ge06c2a0
+	pkgrel = 1
+	url = https://github.com/S-poony/Animage
+	arch = any
+	license = GPL-3.0
+	makedepends = cmake
+	makedepends = make
+	makedepends = svgo
+	makedepends = oxipng
+	makedepends = pkgconf
+	makedepends = git
+	depends = qt6-base
+	depends = libglvnd
+	depends = glibc
+	provides = animage
+	source = git+https://github.com/S-poony/Animage.git
+	source = executable-name.patch
+	sha256sums = SKIP
+	sha256sums = b53b18e8a1b7aad2ba910169ab68e47c721ca4450162aa941e270435137af313
+
+pkgname = animage-git
