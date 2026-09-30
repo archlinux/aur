@@ -1,6 +1,6 @@
 pkgbase = dbar-bin
 	pkgdesc = A small, event-driven Wayland status bar for Sway, SwayFX, niri and Hyprland (prebuilt)
-	pkgver = 0.9.4
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/dborovcanin/dbar
 	arch = x86_64
@@ -15,14 +15,14 @@ pkgbase = dbar-bin
 	optdepends = sway: one of the compositors dbar reads workspaces and window titles from
 	optdepends = niri: one of the compositors dbar reads workspaces and window titles from
 	optdepends = hyprland: one of the compositors dbar reads workspaces and window titles from
-	provides = dbar=0.9.4
+	provides = dbar=0.9.5
 	conflicts = dbar
 	conflicts = dbar-git
 	options = !strip
 	options = !debug
-	source = dbar-0.9.4-linux-x86_64::https://github.com/dborovcanin/dbar/releases/download/v0.9.4/dbar-linux-x86_64
-	source = dbar-0.9.4.tar.gz::https://github.com/dborovcanin/dbar/archive/refs/tags/v0.9.4.tar.gz
-	sha256sums = 857a1e74d01a5ba85ae1e7abca595b5ce359f521d049f06de656bebcb81afbda
-	sha256sums = 917dbe084c75b2417f00ea2851f16d7fa1fd5abc4fd0fecf1460280b12076b05
+	source = dbar-0.9.5-linux-x86_64::https://github.com/dborovcanin/dbar/releases/download/v0.9.5/dbar-linux-x86_64
+	source = dbar-0.9.5.tar.gz::https://github.com/dborovcanin/dbar/archive/refs/tags/v0.9.5.tar.gz
+	sha256sums = b087342045ae2e33d750d06c3a8cd5b0df67a113e08907ad0630472b1e352c6c
+	sha256sums = ff49231e165f9f5cff642c196f5433449e541be0cdf6065d56890937feb1230a
 
 pkgname = dbar-bin

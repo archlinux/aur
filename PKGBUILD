@@ -9,7 +9,7 @@
 
 pkgname=dbar-bin
 _pkgname=dbar
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="A small, event-driven Wayland status bar for Sway, SwayFX, niri and Hyprland (prebuilt)"
 # The Release workflow publishes one binary, and it is x86-64.
@@ -39,8 +39,8 @@ conflicts=('dbar' 'dbar-git')
 # the release asset is the binary on its own.
 source=("$_pkgname-$pkgver-linux-x86_64::$url/releases/download/v$pkgver/dbar-linux-x86_64"
   "$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('857a1e74d01a5ba85ae1e7abca595b5ce359f521d049f06de656bebcb81afbda'
-            '917dbe084c75b2417f00ea2851f16d7fa1fd5abc4fd0fecf1460280b12076b05')
+sha256sums=('b087342045ae2e33d750d06c3a8cd5b0df67a113e08907ad0630472b1e352c6c'
+            'ff49231e165f9f5cff642c196f5433449e541be0cdf6065d56890937feb1230a')
 
 package() {
   install -Dm755 "$srcdir/$_pkgname-$pkgver-linux-x86_64" "$pkgdir/usr/bin/$_pkgname"
