@@ -3,7 +3,7 @@
 
 pkgname=yacd-meta
 _pkgname=Yacd-meta
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Yet Another Clash Dashboard (MetaCubeX fork of yacd)"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('bun')
 optdepends=('mihomo: Another Clash Kernel by MetaCubeX')
 provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('8bea4a22c8b81e0c7cc17daa173d68e6fb6ec3df9fb980878c33629cb166724d2c17f14174f8bd3fde2b09bfe304094982cb86c99afe0769becf18cd9c528165')
+b2sums=('ff8adcde7c06e287abb9490eee6e7d392efd617666f57d82a3d5151a3fceef9554c97ba74b3e5b13afe2268c395fdb27b9bc8588b3fe434fcb3c21cd5e7cd1c9')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
