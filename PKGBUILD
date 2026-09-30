@@ -1,6 +1,6 @@
 # Maintainer: CastSound Team <ci@castsound.app>
 pkgname=castsound-bin
-pkgver=1.0.21
+pkgver=1.0.22
 pkgrel=1
 pkgdesc="Stream audio between computer and phone"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ source=('.managed_by_aur')
 sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 source_x86_64=("CastSound-${pkgver}-linux-x86_64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v${pkgver}/CastSound-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("CastSound-${pkgver}-linux-aarch64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v${pkgver}/CastSound-${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('7d3214fcef7b5a3f245dfed9b51d793f44b34bca6dd3c0d6b25f95663fbcf6e0')
-sha256sums_aarch64=('29e9cd63d0c6309e3ab4f7a94435c3fa4b6af4600001bfb8546c7ea319acf7ce')
+sha256sums_x86_64=('e3d11db1aa9c120ce8da0401b811db9befed6f28ea458a2c41498a3d3139b83e')
+sha256sums_aarch64=('a039de66b6bedba73aa544491f1811d19683104ee07fe7aaab837c1a14982f53')
 
 package() {
   cd "${srcdir}"
