@@ -1,7 +1,7 @@
 pkgbase = netbird-networkmanager-plugin
 	pkgdesc = NetworkManager VPN plugin for NetBird
 	pkgver = 0.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/netbirdio/network-manager-vpn-plugin
 	arch = i686
 	arch = pentium4

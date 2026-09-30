@@ -1,9 +1,8 @@
 # Maintainer: SpidFightFR <spidfight@swisscows.email>
 
 pkgname=netbird-networkmanager-plugin
-_reponame="network-manager-vpn-plugin"
 pkgver=0.1.12
-pkgrel=1
+pkgrel=2
 pkgdesc='NetworkManager VPN plugin for NetBird'
 url='https://github.com/netbirdio/network-manager-vpn-plugin'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -31,6 +30,8 @@ optdepends=(
 )
 source=("network-manager-vpn-plugin-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('4da8c4ab06f3ff41e4b4ca3107808ae51e5dce07587cd74997e75f8c8b62780c')
+
+_reponame="network-manager-vpn-plugin"
 
 prepare() {
     cd "${srcdir}/${_reponame}-${pkgver}"
@@ -64,7 +65,7 @@ build() {
 check() {
     cd "${srcdir}/${_reponame}-${pkgver}"
     export GOPATH="${srcdir}/gopath"
-    # drop or narrow this if some tests turn out to need a D-Bus session
+    # Tests should work - but lack of a D-Bus session might be an issue
     go test ./...
 }
 
