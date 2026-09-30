@@ -25,6 +25,7 @@ optdepends=(
 	'python-paddlepaddle: Supported runtime'
 	'python-pytorch: Supported runtime'
 )
+checkdepends=('python-onnxruntime-cpu')
 makedepends=('python-build' 'python-installer>=1.0.1' 'python-setuptools')
 url='https://github.com/RapidAI/RapidOCR'
 source=("https://github.com/RapidAI/RapidOCR/archive/v${pkgver}.tar.gz"

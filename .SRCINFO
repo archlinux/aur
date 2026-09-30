@@ -5,6 +5,7 @@ pkgbase = python-rapidocr
 	url = https://github.com/RapidAI/RapidOCR
 	arch = any
 	license = Apache-2.0
+	checkdepends = python-onnxruntime-cpu
 	makedepends = python-build
 	makedepends = python-installer>=1.0.1
 	makedepends = python-setuptools
