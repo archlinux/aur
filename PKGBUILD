@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='barman'
-pkgver='3.20.0'
+pkgver='3.20.1'
 pkgrel='1'
 pkgdesc="Backup and recovery manager for PostgreSQL"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=('python-boto3' 'python-botocore')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/EnterpriseDB/${pkgname}/tar.gz/refs/tags/release/${pkgver}"
 	"${pkgname}.crond"
 	"${pkgname}.logrotate")
-sha256sums=('212778c6282810216e4fdd25bcda79040dc52e42299f79008b57dac9a3c35ab2'
+sha256sums=('568418ccc5a1b6fdbddb1f916afa3590c78b836c966ab76b1afcf44d247a58e1'
             '43e90f39b167b682aa98e753c1803cf6244ba6c1eeb5738270fcb47837c25147'
             '723ba6c8ddce9284d48243787e6d24c40db98933f28bf6a79ce53a2c15bb261c')
 
