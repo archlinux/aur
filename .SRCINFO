@@ -1,0 +1,25 @@
+pkgbase = python-deploydiff-git
+	pkgdesc = Preview infrastructure changes (Terraform, CloudFormation, Pulumi) with cost impact and rollback commands
+	pkgver = r134.acb3fc1
+	pkgrel = 1
+	url = https://github.com/Coding-Dev-Tools/deploydiff
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-click
+	depends = python-rich
+	depends = python-yaml
+	depends = python-jinja
+	depends = python-tomli
+	provides = python-deploydiff
+	conflicts = python-deploydiff
+	source = deploydiff::git+https://github.com/Coding-Dev-Tools/deploydiff.git#branch=main
+	sha256sums = SKIP
+
+pkgname = python-deploydiff-git
