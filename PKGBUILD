@@ -1,7 +1,7 @@
 # Maintainer: Mikele <mikele@gmail.com>
 pkgname=appmeup-bin
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Create and edit Chromium web apps from .desktop files (Go/Qt 6)"
 arch=('x86_64')
 url="https://github.com/mikelexp/appmeup-go"
@@ -10,7 +10,7 @@ provides=('appmeup')
 conflicts=('appmeup')
 replaces=('appmeup')
 depends=('gcc-libs' 'glibc' 'qt6-base')
-makedepends=('go' 'pkgconf')
+makedepends=('go' 'pkgconf' 'upx')
 optdepends=(
   'google-chrome: Google Chrome browser'
   'chromium: Chromium browser'
@@ -38,6 +38,7 @@ prepare() {
 build() {
   cd "$(_go_source)"
   go build -mod=readonly -trimpath -ldflags='-s -w' -o appmeup .
+  upx --best --lzma appmeup
 }
 
 package() {
