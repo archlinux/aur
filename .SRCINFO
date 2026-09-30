@@ -1,0 +1,18 @@
+pkgbase = secret-stripper
+	pkgdesc = Detect and strip secrets (API keys, tokens, credentials) from text, files and clipboard, with optional OCR of screenshots
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/kalix127/secret-stripper
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	optdepends = tesseract: OCR of screenshots
+	optdepends = tesseract-data-eng: English language data for OCR
+	options = !lto
+	source = secret-stripper-1.5.0.tar.gz::https://github.com/kalix127/secret-stripper/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = 1229e78775e4b4a2a5ccf75727ef8e55e894b94cac4224f6ca59d2f4b5089f0d
+
+pkgname = secret-stripper
