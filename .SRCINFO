@@ -8,8 +8,8 @@ pkgbase = moon
 	license = MIT
 	makedepends = cargo
 	makedepends = protobuf
-	depends = gcc-libs
-	depends = xz
+	depends = glibc
+	depends = libgcc
 	source = moon-2.5.6.tar.gz::https://github.com/moonrepo/moon/archive/v2.5.6.tar.gz
 	sha256sums = 40468c58e99071ddeb3a1c059dc5640d7afc911e55d1eca89f7846e2315cf33f
 
