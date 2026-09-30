@@ -1,17 +1,18 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=precrec
-_pkgver=0.14.5
+_pkgver=0.24.0
 pkgname=r-${_pkgname,,}
-pkgver=0.14.5
-pkgrel=1
+pkgver=0.24.0
+pkgrel=2
 pkgdesc='Calculate Accurate Precision-Recall and ROC (Receiver Operator Characteristics) Curves'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
-  r-assertthat
+  r-checkmate
+  r-cli
   r-data.table
   r-ggplot2
   r-gridextra
@@ -23,11 +24,11 @@ optdepends=(
   r-knitr
   r-patchwork
   r-rmarkdown
+  r-spelling
   r-testthat
-  r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4139dfa0e68ac14bcbc9b76c493f9bdbfc02fdbf6df204e438fef0b5aafb23d8')
+sha256sums=('f5a9e4118cc4b81433e5509ba39efda56121b251f1354b0b70c21e1d88b02074')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
