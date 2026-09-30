@@ -70,7 +70,9 @@ package() {
     cd "${_pkgname}"
 
     install -vDm644 metainfo/"${_appname}.desktop" -t "${pkgdir}/usr/share/applications/"
-    sed -i 's|^Exec=|Exec=env LD_PRELOAD=/usr/lib/libgtk4-layer-shell.so |' "${pkgdir}/usr/share/applications/${_appname}.desktop"
+    # Since waylyrics 0.4.6.r3.g9806e9b7 (upstream commit 75fc74af),
+    # gtk4-layer-shell is linked through DT_NEEDED and no longer needs LD_PRELOAD.
+    # sed -i 's|^Exec=|Exec=env LD_PRELOAD=/usr/lib/libgtk4-layer-shell.so |' "${pkgdir}/usr/share/applications/${_appname}.desktop"
 
     install -vDm755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
     install -vDm644 metainfo/"${_appname}.gschema.xml" -t "${pkgdir}/usr/share/glib-2.0/schemas/"
