@@ -1,6 +1,6 @@
 pkgbase = topf-bin
 	pkgdesc = Talos orchestrator by PostFinance
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/postfinance/topf
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = topf-bin
 	provides = topf
 	conflicts = topf
 	options = !strip
-	source = topf_linux_amd64.tar.gz::https://github.com/postfinance/topf/releases/download/v0.6.0/topf_linux_amd64.tar.gz
-	sha256sums = 458df4b25f4181a31ed361c0592194f7eb9e6e7b13e7096f8745453afdeaadfb
+	source = topf_linux_amd64.tar.gz::https://github.com/postfinance/topf/releases/download/v0.6.1/topf_linux_amd64.tar.gz
+	sha256sums = 6f399e527cb8588b02d7d28eae9a61c49680f4cd5e82d98be7a5c5001c80d341
 
 pkgname = topf-bin
