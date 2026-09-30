@@ -1,6 +1,6 @@
 # Maintainer: InstaZDLL <github.105mh@8shield.net>
 pkgname=waveflow-bin
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Spotify for your local files - bit-perfect Hi-Res music player'
 arch=('x86_64')
@@ -49,7 +49,7 @@ provides=('waveflow')
 conflicts=('waveflow')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.deb::https://github.com/InstaZDLL/WaveFlow/releases/download/v${pkgver}/WaveFlow_${pkgver}_linux-x86_64.deb")
-sha256sums=('1651d7358b9985b1d51ce7ae6dc3cd144793a7cdacba50eb8c5e1caae040773b')
+sha256sums=('dbfb3ea628f295285c261cd246fd942f30efac23a1957b3c52c89e2e7eb85ad5')
 
 prepare() {
   # Crack open the .deb so package() can move its data tarball into $pkgdir.
