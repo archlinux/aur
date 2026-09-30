@@ -1,11 +1,11 @@
 # Maintainer: Viktor Danov <orangeleaf12@gmail.com>
 # SPDX-License-Identifier: 0BSD
 pkgname=uah-bin
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Terminal coding agent that works like Codex, built on unreal-agent'
 arch=('x86_64' 'aarch64')
-url='https://github.com/viktordanov/uagent-harness'
+url='https://github.com/viktordanov/uah'
 license=('Apache-2.0')
 depends=('bubblewrap')
 optdepends=('wl-clipboard: paste images on Wayland'
@@ -17,8 +17,8 @@ options=('!strip' '!debug')
 _archive="uah-${pkgver}-${CARCH}-unknown-linux-gnu"
 source_x86_64=("${url}/releases/download/v${pkgver}/uah-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/uah-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('bcd79ab784a1275a406acdaabe78abb6dd0438913f6c07ae545068534c972e23')
-sha256sums_aarch64=('8befa01c8adc0cf35747ac010bfd910c7166620a8101635038fc6032eb95e37b')
+sha256sums_x86_64=('123d27bd1cef7bae4cbb4627c96bb3793483522d24130ca80ec73e500d7f9667')
+sha256sums_aarch64=('86a234550e42fae2d9a21e8665f88a4ead9f0ca854b05c7d219b7faacfe49ccd')
 
 build() {
   cd "${_archive}"
