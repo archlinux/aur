@@ -1,6 +1,6 @@
 pkgbase = diec-offline-git
 	pkgdesc = Consulta el DIEC2 sense connexió, amb cerca de text complet al terminal
-	pkgver = 1.0.0
+	pkgver = r18.g2d3550f
 	pkgrel = 1
 	url = https://gitlab.com/juxuanu/diec-offline
 	install = diec-offline-git.install

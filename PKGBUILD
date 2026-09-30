@@ -1,7 +1,7 @@
 # Maintainer: Ícar N. S. <aur@icarns.xyz>
 
 pkgname=diec-offline-git
-pkgver=1.0.0
+pkgver=r18.g2d3550f
 pkgrel=1
 pkgdesc="Consulta el DIEC2 sense connexió, amb cerca de text complet al terminal"
 arch=('any')
