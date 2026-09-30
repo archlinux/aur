@@ -1,22 +1,18 @@
 # Maintainer: byteowlz <dev@byteowlz.com>
 pkgname=mmry
-pkgver=0.13.4
+pkgver=0.14.0
 pkgrel=1
-pkgdesc="A lean, local-first memory management system for humans and AI agents"
+pkgdesc="An append-only workspace memory ledger"
 arch=('x86_64' 'aarch64')
 url="https://github.com/byteowlz/mmry"
 license=('MIT')
-conflicts=('mmry-cuda')
 depends=('gcc-libs')
-source_x86_64=("mmry-0.13.4-x86_64.tar.gz::https://github.com/byteowlz/mmry/releases/download/v0.13.4/mmry-v0.13.4-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('f594337751447c8324a184fe6f38013385f0bcf2a2e23601e08b67fe9b249112')
-source_aarch64=("mmry-0.13.4-aarch64.tar.gz::https://github.com/byteowlz/mmry/releases/download/v0.13.4/mmry-v0.13.4-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_aarch64=('cdbdd4f1de92c39565497c712932c1988b3945b7586e7b4a230c791cf02acc5e')
+source_x86_64=("mmry-0.14.0-x86_64.tar.gz::https://github.com/byteowlz/mmry/releases/download/v0.14.0/mmry-v0.14.0-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('d34abf3eb899dabf2e3c5f5babe0c68d58eab0b2f5a6ed78f84e53f838c3d1d9')
+source_aarch64=("mmry-0.14.0-aarch64.tar.gz::https://github.com/byteowlz/mmry/releases/download/v0.14.0/mmry-v0.14.0-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_aarch64=('17dfdee9bd6462380fcb13e274dfda74476e6267780b194f1108054e89fabae6')
 
 package() {
     cd "$srcdir"
     install -Dm755 */bin/mmry "$pkgdir/usr/bin/mmry"
-    install -Dm755 */bin/mmry-mcp "$pkgdir/usr/bin/mmry-mcp"
-    install -Dm755 */bin/mmry-service "$pkgdir/usr/bin/mmry-service"
-    install -Dm755 */bin/mmry-tui "$pkgdir/usr/bin/mmry-tui"
 }
