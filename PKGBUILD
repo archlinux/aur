@@ -6,7 +6,7 @@
 
 pkgname=forskscope
 # Keep pkgver in sync with [workspace.package] version in Cargo.toml on each release.
-pkgver=0.170.1
+pkgver=0.173.0
 pkgrel=1
 pkgdesc="Local-first cross-platform diff and merge tool"
 arch=('x86_64')
@@ -19,13 +19,18 @@ license=('Apache-2.0')
 depends=('webkit2gtk-4.1' 'gtk3' 'xdotool')
 makedepends=('cargo' 'pkg-config' 'openssl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/forskscope/forskscope/archive/refs/tags/$pkgver.tar.gz")
-# SKIP is a real gap, not an oversight: F43 switched this from a local file
-# (no network, nothing to distrust) to a network fetch, and no real release
-# tag exists yet to hash against - any value written now would be wrong the
-# moment a real tag is cut. Before or at each release, run `updpkgsums` (or
-# `sha256sum` the actual tag tarball) against the real, tagged $pkgver and
-# commit the resulting hash here; do not leave SKIP once a real tag exists.
-sha256sums=('cf6eed6be86d7a7e7b5796c0e8a9f8541f2b733e3bfb8be9ab27db96ee180f62')
+# SKIP here is permanent, not a gap to close before the next release
+# (RFC-081): pkgver above names an unreleased version for nearly this
+# file's entire life, since cargo xtask version-sync ties it to the
+# workspace version and the workspace bumps immediately after each tag.
+# There is essentially never a tagged tarball in the tree to hash. The
+# real hash is computed at publish time by .github/workflows/aur-publish.yml,
+# straight from the released tag's archive, and written only into the
+# copy of this file that workflow pushes to the AUR - never committed
+# here. This file is a template; do not copy it and run `makepkg -si`
+# expecting a verified download (see docs/src/users/installation.md's
+# Arch section for the supported path).
+sha256sums=('b64aa5530703b1ee844d58acc871cb2ba2ac6cec3436f5db41eaa8505b7bad16')
 
 build() {
     cd "$pkgname-$pkgver"
