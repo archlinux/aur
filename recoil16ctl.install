@@ -1,0 +1,13 @@
+post_install() {
+	echo "==> recoil16ctl: check the laptop with: recoil16ctl check"
+	echo "==>     the Sc key (screen rotate) works after the next login. Docs: man recoil16ctl"
+}
+
+post_remove() {
+	rm -f /etc/udev/rules.d/90-recoil16-charge-mode.rules \
+	      /etc/udev/rules.d/90-recoil16-charge-limit.rules \
+	      /etc/udev/rules.d/90-recoil16-charge-profile.rules \
+	      /etc/udev/rules.d/90-uniwill-charge-profile.rules
+	udevadm control --reload
+	echo "==> recoil16ctl: removed its charge-mode boot rule; the EC returns to Standard at the next boot"
+}
