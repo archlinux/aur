@@ -39,7 +39,7 @@ source=(
 )
 sha256sums=('b5366b11db3ffe18d7a5661fd9d803e5f9a482bde3f80df7389efb418daf92ae'
             '2191d05c6ee7c145480916b745bd020484adb61653be943c43cff10bc22927a1'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -62,10 +62,9 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    rm -rf "${_app_dir}/resources/app.asar"
     find "${srcdir}/app.asar.unpacked/electron" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
     ln -sf "/usr/bin/uv" "${_app_dir}/resources/mcp_runtime/uv/uv"
@@ -74,7 +73,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(_get_app_dir)
+	local _app_dir="$(_get_app_dir)"
 	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
