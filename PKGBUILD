@@ -1,4 +1,9 @@
-# Maintainer: QymIsTech <basson30@gmail.com>
+# Maintainer: QymIsTech
+#
+# NO ADDRESS HERE ON PURPOSE. The `# Maintainer` line is a comment of the Arch packaging guidelines, read
+# by people; the AUR does not parse it. Notifications - comments, orphan requests - go to the address of
+# the ACCOUNT that publishes the package, and the package page shows that account as the maintainer. So
+# an address in this file buys nothing and puts a person's mailbox into a public tree.
 #
 # QymCAD packaged from the published AppImage: the file is unpacked and its contents are laid out the way
 # Arch expects them, rather than the AppImage being installed as a lump.
@@ -11,8 +16,8 @@ pkgname=qymcad-bin
 # THE VERSION IS WRITTEN TWICE ON PURPOSE. `pkgver` may not contain a hyphen (pacman reads a hyphen as the
 # boundary before pkgrel), while the release is named with one. `_relver` is the name the file really has
 # on the release page; a guard keeps the two from drifting.
-pkgver=0.1.0.dev.20260910
-_relver=0.1.0-dev.20260910
+pkgver=0.1.0.dev.20261001
+_relver=0.1.0-dev.20261001
 pkgrel=1
 pkgdesc="Parametric associative B-rep CAD/CAM"
 arch=('x86_64')
@@ -28,7 +33,7 @@ conflicts=('qymcad')
 options=('!strip' '!debug')
 source=("qymcad-${_relver}-${CARCH}.AppImage::${url}/releases/download/v${_relver}/qymcad-${_relver}-${CARCH}.AppImage")
 noextract=("qymcad-${_relver}-${CARCH}.AppImage")
-sha256sums=('80c9f1e721f42dd87a7daea1ed88554da673e27c42b487bd35cb06221deb679e')
+sha256sums=('63709f7ab9d38ea3bc082babf6c93de53c714a9ee2c6894e9349132e0a62c2d3')
 
 prepare() {
     cd "$srcdir"
