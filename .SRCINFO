@@ -1,0 +1,14 @@
+pkgbase = planor
+	pkgdesc = The Cloud Aviator: TUI client for cloud services (AWS, Vultr, Heroku, Render.com, Fleek, ...)
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/mrusme/planor
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go>=1.18
+	options = !lto
+	source = planor-0.5.1.tar.gz::https://github.com/mrusme/planor/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = 504a4d5e3f5562e5950ccc8bec334f774778c0642298945082157f1a623f0a8c
+
+pkgname = planor
