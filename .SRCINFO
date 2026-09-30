@@ -1,0 +1,17 @@
+pkgbase = vibeworld-bin
+	pkgdesc = Persistent cyberpunk multiplayer world in your terminal (prebuilt upstream client)
+	pkgver = 0.17.9
+	pkgrel = 1
+	url = https://github.com/SorBalda/vibeworld
+	arch = x86_64
+	license = custom:PolyForm-Perimeter-1.0.0
+	depends = glibc
+	provides = vibeworld
+	conflicts = vibeworld
+	options = !strip
+	source = vibeworld-0.17.9.tar.gz::https://github.com/SorBalda/vibeworld/archive/refs/tags/v0.17.9.tar.gz
+	sha256sums = 6992a17ce724f1d1b703c5b829a465070e00f2f2810a3adfe5e726e482f13cf8
+	source_x86_64 = vibeworld-0.17.9-linux-amd64::https://github.com/SorBalda/vibeworld/releases/download/v0.17.9/vibeworld-linux-amd64
+	sha256sums_x86_64 = 9ed740d3fb527d438cdc1e3e3bfcaa6fdbc22895651712725cacd63fd3552dfc
+
+pkgname = vibeworld-bin
