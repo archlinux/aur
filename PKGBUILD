@@ -2,7 +2,7 @@
 # Contributor: Kartik Mohta <kartikmohta@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=gtsam
-pkgver=4.2
+pkgver=4.3.0
 pkgrel=1
 epoch=1
 pkgdesc="A library of C++ classes that implement smoothing and mapping (SAM) in\
@@ -12,36 +12,35 @@ url="https://gtsam.org/"
 arch=('x86_64' 'i686')
 provides=("gtsam=${pkgver}")
 license=('BSD-3-Clause')
-depends=('boost-libs' 'eigen')
-makedepends=('boost' 'cmake')
-optdepends=('intel-tbb: Use Intel TBB to accelerate computations (add this to the depends section of the PKGBUILD and rebuild the package)')
+depends=('eigen')
+makedepends=('cmake')
 source=("https://github.com/borglab/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('9ff8846d0a83a245c284cb5760ec2d74535ef9b5885183ccfefd7ff122eba60e')
+sha256sums=('4539afcd47d336864deb8399e0a9a5c283a638f605892c942ec46f3541fd4fb0')
+b2sums=('2ae96caa40c961f8785fdfb1f513a1d9f05d87c4e9c85060e2b3e9b50c92c0ec3c45edebc762557c34597755645b48937311a10507f1f4abbd020d2e04052fd8')
 
 build() {
   cmake -B build -S "${pkgname}-${pkgver}" \
-    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -Wno-dev \
     -DGTSAM_BUILD_DOCS=OFF \
     -DGTSAM_BUILD_EXAMPLES_ALWAYS=OFF \
-    -DGTSAM_BUILD_TESTS=OFF \
+    -DGTSAM_BUILD_TESTS=ON \
     -DGTSAM_BUILD_WITH_CCACHE=OFF \
     -DGTSAM_BUILD_WITH_MARCH_NATIVE=OFF \
     -DGTSAM_INSTALL_CPPUNITLITE=OFF \
     -DGTSAM_INSTALL_GEOGRAPHICLIB=OFF \
+    -DGTSAM_USE_BOOST_FEATURES=OFF \
     -DGTSAM_USE_SYSTEM_EIGEN=ON \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
-  cmake --build build
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -Wno-dev
+  cmake --build build --target all all.tests
+}
+
+check() {
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# check() {
-#   ctest --test-dir build --output-on-failure
-# }
-
-# vim:set ts=2 sw=2 et:
