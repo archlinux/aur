@@ -2,7 +2,7 @@ pkgbase = proton-drive-for-linux-git
 	pkgdesc = Unofficial Proton Drive client: FUSE files-on-demand mount, CLI, GTK4 app, tray (git)
 	pkgver = 2.6.1.r0.g6f100db
 	pkgrel = 1
-	url = https://github.com/narrrl/proton-drive-linux
+	url = https://proton-drive.narl.io
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
@@ -31,7 +31,7 @@ pkgbase = proton-drive-for-linux-git
 	conflicts = proton-drive-for-linux
 	conflicts = proton-drive-for-linux-bin
 	options = !lto
-	source = proton-drive-for-linux-git::git+https://github.com/narrrl/proton-drive-linux.git
+	source = proton-drive-for-linux-git::git+https://proton-drive.narl.io.git
 	sha256sums = SKIP
 
 pkgname = proton-drive-for-linux-git

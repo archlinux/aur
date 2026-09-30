@@ -5,7 +5,7 @@ pkgver=2.6.1.r0.g6f100db
 pkgrel=1
 pkgdesc="Unofficial Proton Drive client: FUSE files-on-demand mount, CLI, GTK4 app, tray (git)"
 arch=('x86_64')
-url="https://github.com/narrrl/proton-drive-linux"
+url="https://proton-drive.narl.io"
 license=('MIT')
 depends=('fuse3' 'gtk4' 'libadwaita' 'webkitgtk-6.0' 'dbus' 'gcc-libs' 'glibc'
          'hicolor-icon-theme')
