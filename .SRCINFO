@@ -1,6 +1,6 @@
 pkgbase = portop-bin
 	pkgdesc = 🔌 What's really using your ports? htop-style TUI, one keypress to kill it
-	pkgver = 0.0.7
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/padovanl/portop
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = portop-bin
 	provides = portop
 	conflicts = portop
 	options = !strip
-	source_x86_64 = portop-x86_64-0.0.7.tgz::https://github.com/padovanl/portop/releases/download/v0.0.7/portop_0.0.7_linux_amd64.tar.gz
-	sha256sums_x86_64 = 8e8ba474a0f45938134cbd6148e5061aaf1532f4079e0fca0961bd55cc2fb435
-	source_aarch64 = portop-aarch64-0.0.7.tgz::https://github.com/padovanl/portop/releases/download/v0.0.7/portop_0.0.7_linux_arm64.tar.gz
-	sha256sums_aarch64 = d0f249b904dcc1491fa8476cd51c94545abae9ce741da3bead78c414c13a91ff
+	source_x86_64 = portop-x86_64-0.1.0.tgz::https://github.com/padovanl/portop/releases/download/v0.1.0/portop_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = f7121d8bb7fd3f23bd60bf99ae4afc85b01e53cbca4c490d792877b41b930ba7
+	source_aarch64 = portop-aarch64-0.1.0.tgz::https://github.com/padovanl/portop/releases/download/v0.1.0/portop_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9e87203ed9069cf5815d220d0da72a1471d0587842d6679441f7398fa009c360
 
 pkgname = portop-bin
