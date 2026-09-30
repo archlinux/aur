@@ -23,7 +23,6 @@ pkgbase = cutwire-drift-bin
 	depends = fontconfig
 	depends = freetype2
 	provides = drift
-	conflicts = drift
 	options = !strip
 	options = !debug
 	source = cutwire-drift-bin-0.7.0-1-x86_64.pkg.tar.zst::https://github.com/CutWire-Studios/Drift/releases/download/v0.7.0/drift-0.7.0-1-x86_64.pkg.tar.zst

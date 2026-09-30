@@ -7,7 +7,6 @@ arch=('x86_64')
 url="https://github.com/CutWire-Studios/Drift"
 license=('GPL-3.0-or-later')
 provides=('drift')
-conflicts=('drift')
 options=('!strip' '!debug')
 depends=(
     'qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-multimedia' 'qt6-multimedia-ffmpeg'
