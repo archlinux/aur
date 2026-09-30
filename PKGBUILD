@@ -1,9 +1,9 @@
 # Maintainer: Mujtaba1i
-# One-time hotfix pushed by .github/workflows/aur-hotfix.yml.
+# pkgver is rewritten from the git tag by .github/workflows/release.yml.
 
 pkgname=archtoys
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="System-wide color picker for Linux, inspired by PowerToys"
 arch=('x86_64')
 url="https://github.com/Mujtaba1i/Archtoys"
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'glibc' 'fontconfig' 'libx11' 'libxcb' 'libxcursor' 'libxi'
          'libxkbcommon' 'libxkbcommon-x11' 'libglvnd' 'wayland' 'hicolor-icon-theme')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Mujtaba1i/Archtoys/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2323348a5b845c17eb13aee2fa5dd69fddf37824bb5e835a0f5ae5f6fce4ef3e')
+sha256sums=('3cb68a7af8015b8bb7dd574988aa69dd7ef2aeb12cfded7f95838045de82cc9e')
 
 prepare() {
   cd "Archtoys-${pkgver}"
