@@ -1,0 +1,17 @@
+pkgbase = passmcp-server-bin
+	pkgdesc = An MCP server exposing passmcp's diagnostics as read-only tools: evaluate an MCP server, or verify an attestation, from inside the agent
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/sebastienrousseau/passmcp-server
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = passmcp
+	provides = passmcp-server
+	conflicts = passmcp-server
+	source_x86_64 = passmcp-server-0.0.4-x86_64.tar.gz::https://github.com/sebastienrousseau/passmcp-server/releases/download/v0.0.4/passmcp-server_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = f8f710f629f686e2ad3fbd865fbb06f3dff06e6872aa3f8ffcd5feaebc7be4e3
+	source_aarch64 = passmcp-server-0.0.4-aarch64.tar.gz::https://github.com/sebastienrousseau/passmcp-server/releases/download/v0.0.4/passmcp-server_Linux_arm64.tar.gz
+	sha256sums_aarch64 = ef6109b0a49967d183f1a320eff383a35c264f8f974c2fc5c52c8c7108fdb6b2
+
+pkgname = passmcp-server-bin
