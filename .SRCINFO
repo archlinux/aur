@@ -1,5 +1,5 @@
 pkgbase = finar-unstable
-	pkgdesc = Jellyfin frontend client (unstable build from GitHub)
+	pkgdesc = The corrected Jellyfin client (unstable build from GitHub)
 	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://openlyst.ink
@@ -9,7 +9,7 @@ pkgbase = finar-unstable
 	provides = finar
 	conflicts = finar
 	options = !strip
-	source = finar-unstable-4.1.1.zip::https://github.com/openlyst/builds/releases/download/build-94/finar-4.1.1-2026-05-07-linux-x64.zip
+	source = finar-unstable-4.1.1.zip::https://gitlab.com/Openlyst/finar/-/releases/nightly/downloads/finar-linux-x64-4.1.1-2026-09-29.zip
 	sha256sums = SKIP
 
 pkgname = finar-unstable
