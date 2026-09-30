@@ -1,0 +1,21 @@
+pkgbase = python-termscope-git
+	pkgdesc = Live oscilloscope for serial data, in your terminal
+	pkgver = r27.b531d54
+	pkgrel = 1
+	url = https://github.com/CAOShurong/termscope
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = git
+	depends = python
+	optdepends = python-pyserial: read from real serial ports (the "serial" extra)
+	provides = python-termscope=0.6.0
+	conflicts = python-termscope
+	source = termscope::git+https://github.com/CAOShurong/termscope.git#branch=main
+	sha256sums = SKIP
+
+pkgname = python-termscope-git
