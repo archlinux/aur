@@ -1,14 +1,14 @@
 # Maintainer: Hristo Voyvodov <hristo.voyvodov@hotmail.com>
 
 pkgname=pluto-bin
-pkgver=5.24.3
+pkgver=5.24.4
 pkgrel=1
 pkgdesc='Pluto is a utility to help users find deprecated Kubernetes apiVersions in their code repositories and their helm releases.'
 arch=(x86_64)
 url='https://github.com/FairwindsOps/pluto'
 license=(Apache)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FairwindsOps/pluto/releases/download/v$pkgver/pluto_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('f03bcf0ef81ddd2f2a73e7f6f3542f0e0e14ad3213cbdab725dd55dd1c8766ea')
+sha256sums=('1e5077ce1016fb0bb8ce0103c12b7ca8666eb3959d787ecfc95d9b8acd507147')
 
 package() {
   install -d -m 0755 \
