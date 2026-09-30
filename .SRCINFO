@@ -1,11 +1,19 @@
 pkgbase = zz-lang
-	pkgdesc = Temporary placeholder for zz-lang
-	pkgver = 0.0.1
+	pkgdesc = ZZ programming language toolchain — prebuilt binary (zz run main.zz, plus zz-lsp)
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/zaidejjo/zz
 	arch = x86_64
-	license = MIT
-	source = https://github.com/zaidejjo/zz
-	sha256sums = SKIP
+	arch = aarch64
+	license = Apache
+	makedepends = unzip
+	depends = gcc-libs
+	depends = curl
+	depends = sqlite
+	conflicts = zz
+	source_x86_64 = zz-lang-0.1.4-x86_64.zip::https://github.com/zaidejjo/zz/releases/download/v0.1.4/zz-0.1.4-linux-x86_64.zip
+	sha256sums_x86_64 = e96ed93d25d2dbd38044164b5d3808e560f11307ce11ec15c53bce6b9b3849f2
+	source_aarch64 = zz-lang-0.1.4-aarch64.zip::https://github.com/zaidejjo/zz/releases/download/v0.1.4/zz-0.1.4-linux-aarch64.zip
+	sha256sums_aarch64 = eb8150e5e43507b5bc9ec6357a53c50ef5ca98fbec109d6b19760bd7c2401559
 
 pkgname = zz-lang
