@@ -17,9 +17,9 @@ depends=(
   pango
   cjson
   libxcb
+  scenefx
   xorg-xwayland
   'libwlroots-0.20.so'
-  'scenefx0.5'
 )
 
 makedepends=(
