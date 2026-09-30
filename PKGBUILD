@@ -2,8 +2,8 @@
 # Contributor: Andrew Rabert <ar@nullsum.net>
 
 pkgname=jellyfin-desktop-git
-pkgver=v2.0.0.r170.g4e1010b
-pkgrel=1
+pkgver=v2.0.0.r172.g2cb4a44
+pkgrel=2
 epoch=1
 license=('GPL-2.0-only')
 pkgdesc="Jellyfin Desktop Client"
