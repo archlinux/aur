@@ -2,7 +2,7 @@
 # pkgver is rewritten from the git tag by .github/workflows/release.yml.
 
 pkgname=archtoys
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="System-wide color picker for Linux, inspired by PowerToys"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'glibc' 'fontconfig' 'libx11' 'libxcb' 'libxcursor' 'libxi'
          'libxkbcommon' 'libxkbcommon-x11' 'libglvnd' 'wayland' 'hicolor-icon-theme')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Mujtaba1i/Archtoys/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1a63c57aea832e29d97ed64f125b2bc2b2c8d649292d362a78e08746499bee7a')
+sha256sums=('0c2e1456a09dcffe8b8d01fd487371ae20cd565e2377e3127271f8ebde5703fd')
 
 prepare() {
   cd "Archtoys-${pkgver}"
