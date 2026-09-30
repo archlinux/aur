@@ -7,7 +7,7 @@ pkgname=(
   espanso-wayland
 )
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
 url="https://github.com/espanso/espanso"
@@ -104,7 +104,7 @@ package_espanso-x11() {
   install -vDm644 -t "$pkgdir/usr/lib/systemd/user" espanso.service
   install -vDm644 -t "$pkgdir/usr/share/applications" espanso.desktop
   install -vDm644 -t "$pkgdir/usr/share/doc/espanso" ./*.md
-  install -vDm644 espanso/src/res/linux/icon.png \
+  install -vDm644 espanso/src/res/linux/espanso.png \
     "$pkgdir/usr/share/pixmaps/espanso.png"
 }
 
@@ -130,6 +130,6 @@ package_espanso-wayland() {
   install -vDm644 -t "$pkgdir/usr/lib/systemd/user" espanso.service
   install -vDm644 -t "$pkgdir/usr/share/applications" espanso.desktop
   install -vDm644 -t "$pkgdir/usr/share/doc/espanso" ./*.md
-  install -vDm644 espanso/src/res/linux/icon.png \
+  install -vDm644 espanso/src/res/linux/espanso.png \
     "$pkgdir/usr/share/pixmaps/espanso.png"
 }
