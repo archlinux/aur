@@ -3,7 +3,7 @@
 _pkgauthor=Dark-Alex-17
 _pkgname=managarr
 pkgname=${_pkgname}-bin
-pkgver=0.7.3
+pkgver=0.8.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="A TUI and CLI for managing *arr servers"
@@ -26,13 +26,13 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
 sha256sums=('fe07b0be3b1da93a987db6ac910f0f01b2c64c46e74e13307737f7741ec26e5c'
-            '427cff8fcc0767f92f344b05a33bc348fe3eb3364469e686457555396b3b5209'
-            'fbbc72643ab6836a8e5ebd188b961cb4a35f7acec350630c3ab6b08383ecbf4a'
+            'c4493cb17df836cdf14570a589fc0317db18e46908fa3ed0721baf503ccbc390'
+            '7973aeb5cebdced1d53bdbf30f147257278b6ac5105b51c392332d2cf44f3f7b'
             '1567b9c69adab84f053e70eb684b55fa0bc2ad0e1fdd55ab49a71928961ecfe8'
-            '3382bae9fd1dddcf04809df91a542f895625494207e9820e2616c5a885f9fbdf'
+            '8f65d095106dff69c3a5f2675fe8de3fe96c71cf1dc6063b9545b90194d1a00b'
             '0a587d5756acbc0e9e3377492cae59f21208107470e9dd55baa11db267e6f83f')
-sha256sums_x86_64=('27c2a5ab4b69c59c544629568e058387eeee31ed4b0048f058abbcde3ce1bcfd')
-sha256sums_aarch64=('ac1bb6b8b3b6efc9c3e93b5832837b6b5d75c2c1084ede362a023536300b839d')
+sha256sums_x86_64=('c07c5d7e2fa8bbd810a8816c1d5020a5a2ee0b75a54ec9f83e9f29f8baa1b72e')
+sha256sums_aarch64=('d4f722d61d9ab99b8d2beb18d0bc1cae7301bb620bdf598b0e491c3a1a86ccdf')
 
 
 package() {
