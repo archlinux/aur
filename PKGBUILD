@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vic-diary-bin
 _pkgname='维克日记'
-pkgver=2.1.0
+pkgver=2.2.0
 _electronversion=22
 pkgrel=1
-pkgdesc="Support markdown syntax input, WYSIWYG cross-platform diary software(Prebuilt version)"
+pkgdesc="Support markdown syntax input, WYSIWYG cross-platform diary software."
 arch=(
-    'aarch64'
+#    'aarch64'
     'x86_64'
 )
 url="https://vic-diary.netlify.app/"
@@ -22,14 +22,14 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/vo-soft/vic-diary-releases/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.aarch64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
+#source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.aarch64.rpm")
+#source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_gturl}/releases/download/latest/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('9c2cde6ad2685c66d9fb8d476cff8646f499028c866b8c61c436a69f72e21ee1'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('604d6250daf3da6793872494da1fc8afa2d526a98c2fbec515f1f3bdc8d6d117')
-sha256sums_x86_64=('5993430cfd6843e3bedda703a6d0e974291e108c1056978a446660db1085165b')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+sha256sums_x86_64=('5b2c067111cdd6568c1df45a1e9d3ad343fe8ab8dbf284d66cca7b317fcdf3cf')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -48,6 +48,7 @@ prepare() {
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
     " "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
     _check_electron_version
     sed -i -e "
         s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g
@@ -57,8 +58,8 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	local _app_dir="$(_get_app_dir)"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
