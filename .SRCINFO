@@ -1,0 +1,26 @@
+pkgbase = python-wayback-archive
+	pkgdesc = Download and archive complete websites from the Wayback Machine for offline viewing
+	pkgver = 1.4.6
+	pkgrel = 1
+	url = https://github.com/GeiserX/Wayback-Archive
+	arch = any
+	license = GPL-3.0-only
+	checkdepends = python-pytest
+	checkdepends = python-pillow
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-beautifulsoup4
+	depends = python-lxml
+	depends = python-dotenv
+	optdepends = python-pillow: image optimisation
+	optdepends = python-minify-html: HTML minification (AUR)
+	optdepends = python-rjsmin: JavaScript minification
+	optdepends = python-cssmin: CSS minification
+	source = python-wayback-archive-1.4.6.tar.gz::https://github.com/GeiserX/Wayback-Archive/archive/refs/tags/v1.4.6.tar.gz
+	sha256sums = 4fcd1bb3bff8430d7bd7c3b88a33f63e12dabf9e72d6338463a12d386142def9
+
+pkgname = python-wayback-archive
