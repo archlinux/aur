@@ -1,0 +1,1 @@
+# dog-samurai sddm theme
