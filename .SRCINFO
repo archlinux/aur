@@ -1,6 +1,6 @@
 pkgbase = gnome-backup
 	pkgdesc = Backup and restore GNOME settings and shell extensions
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://codeberg.org/mipi/gnome-backup/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = gnome-backup
 	depends = dconf
 	options = !debug
 	options = !lto
-	source = https://codeberg.org/mipi/gnome-backup/archive/0.2.0.tar.gz
-	sha256sums = d5bc5c271ad1efc7b20c667eaeb4aaa68f87c1b9d0e2bd82d0ccdc2cccfbf1bf
+	source = https://codeberg.org/mipi/gnome-backup/archive/0.2.1.tar.gz
+	sha256sums = a66839def3bb165e15bce624bccc573ece2afde36778d6707993bfed5451a4c0
 
 pkgname = gnome-backup

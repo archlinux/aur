@@ -6,7 +6,7 @@
 
 _pkgorg=codeberg.org/mipi
 pkgname=gnome-backup
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Backup and restore GNOME settings and shell extensions"
 arch=(
@@ -15,7 +15,7 @@ arch=(
 url="https://${_pkgorg}/${pkgname}/"
 license=(GPL-3.0-or-later)
 source=("https://${_pkgorg}/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('d5bc5c271ad1efc7b20c667eaeb4aaa68f87c1b9d0e2bd82d0ccdc2cccfbf1bf')
+sha256sums=('a66839def3bb165e15bce624bccc573ece2afde36778d6707993bfed5451a4c0')
 depends=(
   dconf
 )
