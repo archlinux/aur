@@ -1,6 +1,6 @@
 pkgbase = libretro-melondsds-git
 	pkgdesc = Nintendo DS core
-	pkgver = 1.3.1.r0.gbc4e4b6
+	pkgver = 1.4.0.r0.gf394adb
 	pkgrel = 1
 	url = https://github.com/JesseTG/melonds-ds
 	arch = aarch64
@@ -18,7 +18,7 @@ pkgbase = libretro-melondsds-git
 	makedepends = libstdc++
 	depends = glibc
 	depends = libretro-core-info>=1.17
-	provides = libretro-melondsds=1.3.1.r0.gbc4e4b6
+	provides = libretro-melondsds=1.4.0.r0.gf394adb
 	conflicts = libretro-melondsds
 	source = libretro-melondsds::git+https://github.com/JesseTG/melonds-ds.git
 	source = date::git+https://github.com/HowardHinnant/date.git
@@ -26,8 +26,8 @@ pkgbase = libretro-melondsds-git
 	source = fmt::git+https://github.com/fmtlib/fmt.git
 	source = glm::git+https://github.com/g-truc/glm.git
 	source = jessetg-libslirp::git+https://github.com/JesseTG/libslirp-mirror.git
+	source = jessetg-melonds::git+https://github.com/JesseTG/melonDS.git
 	source = libretro-common::git+https://github.com/libretro/libretro-common.git
-	source = melonds::git+https://github.com/melonDS-emu/melonDS.git
 	source = pntr::git+https://github.com/RobLoach/pntr.git
 	source = span-lite::git+https://github.com/martinmoene/span-lite.git
 	source = yamc::git+https://github.com/yohhoy/yamc.git

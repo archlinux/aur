@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-melondsds
 pkgname=$_pkgname-git
-pkgver=1.3.1.r0.gbc4e4b6
+pkgver=1.4.0.r0.gf394adb
 pkgrel=1
 pkgdesc="Nintendo DS core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -19,8 +19,8 @@ source=(
 	"fmt::git+https://github.com/fmtlib/fmt.git"
 	"glm::git+https://github.com/g-truc/glm.git"
 	"jessetg-libslirp::git+https://github.com/JesseTG/libslirp-mirror.git"
+	"jessetg-melonds::git+https://github.com/JesseTG/melonDS.git"
 	"libretro-common::git+https://github.com/libretro/libretro-common.git"
-	"melonds::git+https://github.com/melonDS-emu/melonDS.git"
 	"pntr::git+https://github.com/RobLoach/pntr.git"
 	"span-lite::git+https://github.com/martinmoene/span-lite.git"
 	"yamc::git+https://github.com/yohhoy/yamc.git"
@@ -47,7 +47,8 @@ build() {
 		-D GLM_REPOSITORY_URL="$srcdir"/glm
 		-D LIBRETRO_COMMON_REPOSITORY_URL="$srcdir"/libretro-common
 		-D LIBSLIRP_REPOSITORY_URL="$srcdir"/jessetg-libslirp
-		-D MELONDS_REPOSITORY_URL="$srcdir"/melonds
+		-D MELONDS_REPOSITORY_TAG=16f127dbb587a73371827ce79689c5d237c4b59b # jtg/fix-uninitialized-opengl
+		-D MELONDS_REPOSITORY_URL="$srcdir"/jessetg-melonds
 		-D PNTR_REPOSITORY_URL="$srcdir"/pntr
 		-D SPAN_LITE_REPOSITORY_URL="$srcdir"/span-lite
 		-D YAMC_REPOSITORY_URL="$srcdir"/yamc
