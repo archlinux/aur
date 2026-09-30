@@ -1,7 +1,7 @@
 # Maintainer: Ahsan Haris Ahmed <ahsanharisahmed@gmail.com>
 pkgname=cha-craft
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cozy barista simulation built with C++17 and raylib"
 arch=('x86_64')
 url="https://github.com/harisahmed05/cha_craft"
@@ -10,7 +10,7 @@ depends=('raylib' 'glibc')
 makedepends=('cmake' 'gcc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/harisahmed05/cha_craft/archive/refs/tags/v$pkgver.tar.gz"
         "cha-craft.desktop")
-sha256sums=('eff75b7761b23e4d2ae27e872639dbf124067dd018f33fdb0f0dd48e9f06cc4c'
+sha256sums=('2d549d03e404156ce5f4601fa6ba1b340225ee50cb7343df7758c9a14e46ca42'
             '2d867aef51f1978a718b9b4daf3dbe6628c2f1a4b2edb2499adadcca6ffafd58')
 
 build() {
