@@ -1,0 +1,21 @@
+pkgbase = tessoa
+	pkgdesc = GPU-accelerated file manager with split panes, saved layouts, colored tags and multiple views
+	pkgver = 0.27.0
+	pkgrel = 1
+	url = https://tessoa.cn/
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = vulkan-icd-loader
+	depends = vulkan-driver
+	depends = libx11
+	depends = libxcb
+	depends = libxcursor
+	depends = libxi
+	depends = libxkbcommon
+	depends = wayland
+	depends = hicolor-icon-theme
+	options = !strip
+	source = tessoa-0.27.0.tar.gz::https://download.tessoa.com/tessoa/latest/tessoa.tar.gz
+	sha256sums = d8ad9a55d8d8f3ec74fc8768ac7a0c06dd3e9d34724eb66091f6608ca4463518
+
+pkgname = tessoa
