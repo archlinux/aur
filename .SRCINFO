@@ -1,6 +1,6 @@
 pkgbase = jorvik-git
 	pkgdesc = Self-hosted Matrix client built to feel like Discord (git)
-	pkgver = 1.0.13.r2.g543388c
+	pkgver = 1.0.14.r2.g8104426
 	pkgrel = 1
 	url = https://github.com/jorvikapp/jorvik
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = jorvik-git
 	makedepends = pnpm
 	makedepends = ttf-dejavu
 	depends = electron44
-	provides = jorvik=1.0.13
+	provides = jorvik=1.0.14
 	conflicts = jorvik
 	options = !strip
 	source = jorvik::git+https://github.com/jorvikapp/jorvik.git
