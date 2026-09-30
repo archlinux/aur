@@ -1,7 +1,7 @@
 # Maintainer: Uyanide <pywang0608@foxmail.com>
 
 pkgname=voicefox
-pkgver=0.3.19
+pkgver=0.3.20
 pkgrel=1
 epoch=1
 _tag="v${pkgver}"
@@ -27,7 +27,7 @@ optdepends=(
 source=(
 	"${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${_tag}.tar.gz"
 )
-sha512sums=('f5378177e9a5a73dfd989bb6f19757f6f5591fb9a759305a399dca4ffce3a9eadf5aff00749dd3539bdb85dd444a8c3587ba99f034a4af4b607e25525eab652c')
+sha512sums=('60497a7d32a9a2cba4694d05c77e0799f50e15248cb188f60c3eef4af2f817384ba8eb0ec4cf76787fad5bf22102e1b976822c0872f079d644707a6588573bdb')
 
 prepare() {
 	cd "${_srcdir}"
