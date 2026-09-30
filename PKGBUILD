@@ -2,7 +2,7 @@
 # Contributor: Andrew Rabert <ar@nullsum.net>
 
 pkgname=jellyfin-desktop-git
-pkgver=v2.0.0.r172.g2cb4a44
+pkgver=2.0.0.r172.g2cb4a44
 pkgrel=2
 epoch=1
 license=('GPL-2.0-only')
@@ -29,7 +29,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 |
+    sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
