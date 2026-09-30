@@ -2,7 +2,7 @@
 
 pkgname=cargo-fframes
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Programmatic video rendering framework that is actually fast"
 arch=("any")
