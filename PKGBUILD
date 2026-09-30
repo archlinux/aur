@@ -1,4 +1,5 @@
-# Maintainer: Kaydax <contact+aur@kaydax.xyz>
+# Maintainer: crueter <crueter at crueter dot x y z>
+# Contributor: Kaydax <contact+aur@kaydax.xyz>
 # Contributor: Yellow <yellow@example.com>
 # Contributor: Lenny McLennington <lennymclennington@protonmail.com>
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
@@ -8,8 +9,8 @@
 # Contributor: dada513 <dada513@protonmail.com>
 
 pkgname=polymc
-pkgver=7.1
-pkgrel=3
+pkgver=8.0
+pkgrel=1
 pkgdesc="Minecraft launcher with the ability to manage multiple instances"
 arch=('x86_64')
 url="https://github.com/PolyMC/PolyMC"
@@ -23,7 +24,7 @@ optdepends=('glfw: to use system GLFW libraries'
             'xorg-xrandr: for older minecraft versions'
 )
 source=("https://github.com/PolyMC/PolyMC/releases/download/$pkgver/PolyMC-$pkgver.tar.gz")
-sha256sums=('516e94c3bddc5e32563e39ad3d6d188403a91a1455b9889017516f876e930c4a')
+sha256sums=('6bda5dcfa88680fe540a1a33efe06479448a005902950e4707a97771c357bcfb')
 
 build() {
   cmake -B build -S PolyMC-$pkgver \
