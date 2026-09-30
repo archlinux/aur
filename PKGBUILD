@@ -3,7 +3,7 @@
 # Contributor: fdiblen <fdiblen at gmail dot com>
 
 pkgname=casacore
-pkgver=3.8.1
+pkgver=3.8.2
 pkgrel=1
 pkgdesc="Suite of C++ libraries for radio astronomy data processing"
 arch=(x86_64)
@@ -30,7 +30,7 @@ provides=(
   libcasa_scimath.so=6-64
   libcasa_tables.so=6-64)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('41d4463432033995d0e85632faa07c2fedc820a810f593d2aad5144706a41482296200730fc0b99d5ad962b7ffbfb55c0b67a123d0f49f0e8f774cfbd8d9c9f4')
+sha512sums=('987b78a1556c434b23c0c3d4ddd7b48816cb5a0076879836d4c8f5552940dfe6169636463db78e0a6c72c2290c1f1b4cfd49626a0240f7e4f177ac3e8e0fadd7')
 
 build() {
   export CXXFLAGS="${CFLAGS}"
