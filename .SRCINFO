@@ -8,7 +8,6 @@ pkgbase = podman-desktop-git
 	makedepends = npm
 	makedepends = nvm
 	makedepends = git
-	makedepends = curl
 	makedepends = pnpm
 	makedepends = jq
 	depends = electron42
