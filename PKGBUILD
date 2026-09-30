@@ -1,5 +1,5 @@
 pkgname=paxman
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="A modern and fast package manager for Arch-based systems"
 arch=('x86_64')
@@ -27,4 +27,4 @@ package() {
     "${srcdir}/pax" --completions fish |
         install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/pax.fish"
 }
-sha256sums=('b165d5d8aca9d1a550aecc321ce118f354b8b76ec12f595087df20ccdf5806b0')
+sha256sums=('c6e6f655bdc77437a240423382ef1315bb8a7bd2fc61c5c6647ca22daec9c2c6')
