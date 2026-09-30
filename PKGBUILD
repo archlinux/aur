@@ -1,6 +1,6 @@
 # Maintainer: SavageCore <talk@savagecore.uk>
 pkgname=ronmodmanager-bin
-pkgver=0.0.18
+pkgver=0.0.19
 pkgrel=1
 pkgdesc='Ready or Not mod manager'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source_x86_64=(
     "uk.savagecore.ronmodmanager.desktop::https://github.com/SavageCore/RoNModManager/raw/v${pkgver}/packaging/aur/uk.savagecore.ronmodmanager.desktop"
 )
 sha256sums_x86_64=(
-    '563200d10ed22484ee762c002ed33d25186205e6640e4ff021f50e6755376cc6'
+    '0365d529f34c88157ef48e9d58aacbe2011f0c44db7cc5e3b5c1dc0dd6d4dee7'
     '15b67632b3bcbed97c4b7d7bfaf9545971ad6bf10992dd49bbd73d517bd02734'
     'ee1930dd28bedf9410b3ceb4e0963bf7c3b42e2413dfc741406c9cfc6fd85fef'
 )
