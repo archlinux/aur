@@ -1,6 +1,6 @@
 # Maintainer: slatkin@woims.net
 pkgname=mbv
-pkgver=0.21.5
+pkgver=0.21.6
 pkgrel=1
 pkgdesc="Terminal client for Emby media server"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/slatkin/mbv"
 license=('MIT')
 depends=('mpv' 'openssl' 'pipewire')
 source=("${pkgname}-${pkgver}-linux-x86_64.tar.gz::https://github.com/slatkin/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('0fb10ad8a1a99e321e0235fbfb275ca999ac391206fb5326a275806cb08432d7')
+sha256sums=('7106c4259ce0f7be95bee0614b06a6e935224faec14aa54e42c94502dd86beb8')
 
 package() {
     cd "${pkgname}-${pkgver}"
