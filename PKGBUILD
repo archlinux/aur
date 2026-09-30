@@ -1,30 +1,43 @@
-# Maintainer: Nicolas Bizzozzéro <nicolas.bizzozzero@protonmail.com>
-pkgname="python-river"
-pkgver=0.9.0
-pkgrel=2
+# Maintainer: a821 at mail de
+# Contributor: Nicolas Bizzozzéro <nicolas.bizzozzero@protonmail.com>
+
+pkgname=python-river
+pkgver=0.26.1
+pkgrel=1
 pkgdesc="Online machine learning in Python"
 arch=("x86_64")
 url="https://riverml.xyz"
-license=('custom:BSD 3-clause')
-provides=("python-river")
-conflicts=("python-river")
-depends=("python" "python-numpy" "python-scipy" "python-pandas")
-makedepends=("python-setuptools" "cython")
-source=("https://github.com/online-ml/river/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=("SKIP")
-
+license=('BSD-3-Clause')
+depends=(
+  python
+  python-narwhals
+  python-numpy
+  python-scikit-learn
+  python-scipy
+)
+makedepends=(
+  python-build
+  python-installer
+  python-maturin
+  python-wheel
+)
+optdepends=(
+  graphviz
+  python-pandas
+  python-sqlalchemy
+)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/online-ml/river/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('b5a6e618a9eb436307ed801eb75c82699ad542a7c18c050477364e21b48633c2')
 
 build() {
-  cd "${srcdir}/river-${pkgver}" 
-  python setup.py build
+  cd "river-$pkgver"
+  python -m build --wheel --no-isolation
 }
-
 
 package() {
-  cd "${srcdir}/river-${pkgver}"
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
-  
-  install -m755 -d "${pkgdir}/usr/share/licenses/python-river-git"
-  install -m644 LICENSE "${pkgdir}/usr/share/licenses/python-river-git/" 
+  cd "river-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
+# vim: set ts=2 sw=2 et:
