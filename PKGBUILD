@@ -1,27 +1,56 @@
 # Maintainer: buj <buj351@outlook.com>
 pkgname=voidsprite
-_pkgver=18.03.2025
-pkgver=$(echo $_pkgver | tr '.' $'\n' | tac | paste -s -d '.')+alpha
-pkgrel=3
-pkgdesc='Free pixelart editor made in SDL2 C++'
+_pkgver=2026.09
+pkgver="$_pkgver"+beta
+pkgrel=1
+pkgdesc='Free pixelart editor made in SDL3 C++'
 url='https://github.com/counter185/voidsprite'
-source=("voidsprite::git+https://github.com/counter185/voidsprite.git#tag=alpha${_pkgver}")
+source=("voidsprite::git+https://github.com/counter185/voidsprite.git#tag=beta-${_pkgver}")
 arch=('i686' 'x86_64')
 sha256sums=(SKIP)
-depends=(sdl2 sdl2_image sdl2_ttf libpng pugixml xdg-utils libjxl brotli)
-makedepends=(git meson gcc ninja python)
+depends=(pugixml xdg-utils libjxl)
+makedepends=(git gcc ninja python mold
+             # SDL3 deps
+             alsa-lib cmake hidapi ibus jack libdecor libthai fribidi libgl libpulse libusb libx11
+             libxcursor libxext libxfixes libxi libxinerama libxkbcommon libxrandr libxrender libxss
+             libxtst mesa ninja pipewire sndio vulkan-driver vulkan-headers wayland wayland-protocols
+             nasm)
 license=(GPL-2.0-only)
 
 build() {
-    arch-meson voidsprite build
-    meson compile -C build
-}
-
-check() {
-    meson test -C build --print-errorlogs
+    cd "$srcdir/voidsprite"
+    git submodule update --init --recursive
+    if [ ! -d build ]; then mkdir build; fi
+    cmake -DVOIDSPRITE_ASSETS_PATH=/usr/share/voidsprite -G Ninja -B build \
+        -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=mold" -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=mold"  .
+    (cd build && ninja)
 }
 
 package() {
-    meson install -C build --destdir "$pkgdir"
+    mkdir -p "$pkgdir/usr/share/voidsprite" "$pkgdir"/usr/{bin,share/{applications,licenses/voidsprite,metainfo,mime/packages,thumbnailers}}
+    install -m755 "$srcdir/voidsprite/build/cmake/voidsprite" "$pkgdir/usr/bin/voidsprite"
+    for x in appfont-MPLUSRounded1c-Medium.ttf appfontcyr-ZenKakuGothicNew-Medium.ttf; do
+        install -m644 "$srcdir/voidsprite/build/cmake/$x" "$pkgdir/usr/share/voidsprite/$x"
+    done
+    cp -r "$srcdir/voidsprite/build/cmake/assets" "$pkgdir/usr/share/voidsprite/assets"
+    cat "$srcdir"/voidsprite/freesprite/linux/com.github.counter185.voidsprite.desktop | \
+        sed 's/Exec=voidsprite/Exec=\/usr\/bin\/voidsprite/g' > "$pkgdir/usr/share/applications/voidsprite.desktop"
+    install -m644 "$srcdir/voidsprite/LICENSE" "$pkgdir/usr/share/licenses/voidsprite/LICENSE"
+    install -m644 "$srcdir"/voidsprite/freesprite/linux/com.github.counter185.voidsprite.desktop \
+        "$pkgdir"/usr/share/metainfo/com.github.counter185.voidsprite.metainfo.xml
+    install -m644 "$srcdir"/voidsprite/freesprite/linux/voidsn.xml "$pkgdir"/usr/share/mime/packages/voidsn.xml
+
+    for size in 16x16 32x32 64x64 128x128 256x256 512x512; do
+        mkdir -p "$pkgdir"/usr/share/icons/hicolor/"$size"/apps/
+        install -m644 "$srcdir"/voidsprite/freesprite/linux/icons/"$size".png \
+            "$pkgdir"/usr/share/icons/hicolor/"$size"/apps/com.github.counter185.voidsprite.png
+    done
+
+    for x in $(ls "$srcdir/voidsprite/OPEN_SOURCE_LICENSES"); do
+        install -m644 "$srcdir/voidsprite/OPEN_SOURCE_LICENSES/$x" "$pkgdir/usr/share/licenses/voidsprite/$(echo "$x" | sed 's/License/LICENSE/g')"
+    done
+
+    install -m644 "$srcdir"/voidsprite/freesprite/linux/voidsprite.thumbnailer "$pkgdir"/usr/share/thumbnailers/voidsprite.thumbnailer
+    install -m644 "$srcdir"/voidsprite/freesprite/linux/voidsprite_thumbnailer "$pkgdir"/usr/share/voidsprite/thumbnailer
 }
 
