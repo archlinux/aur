@@ -1,12 +1,15 @@
+# Maintainer: Mike Pento <mjpento@gmail.com>
 # Contributor: grimi
 
 pkgname=undms
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Decompress Amiga DMS disk images to ADF"
 arch=('i686' 'x86_64')
 url="https://aminet.net/package/misc/unix/undms-1.3.c"
-license=('freedist')
+license=('GPL-3.0-or-later')
+options+=(!debug)
+depends=('glibc')
 makedepends=('p7zip')
 source=("https://aminet.net/misc/unix/${pkgname}-${pkgver}.c.Z")
 sha256sums=('d5c5396d1003f4d4125b4fe4833043e207b7315e87db3be92c2188ffbe27e8ac')
