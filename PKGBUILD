@@ -4,7 +4,7 @@
 # - 捆绑 198 个库(含 webkit2gtk/GTK3),运行时依赖 fuse2
 # 打包采用 AUR 主流 AppImage 方式:本体装 /opt + /usr/bin wrapper(同 obsidian-appimage)
 pkgname=steamcommunity302
-pkgver=15.0.6
+pkgver=15.0.7
 pkgrel=1
 #epoch=
 pkgdesc="羽翼城制作的Steam、Github等反代加速工具,使用s302命令启动"
@@ -32,8 +32,8 @@ source_aarch64=(
   "steamcommunity302-${pkgver}.AppImage::https://www.dogfight360.com/Usbeam/V15/Steamcommunity_302_${pkgver}_Linux_WebKit_arm64.AppImage"
 )
 md5sums=('4908d587f6a5e529412ca208c8203074')
-md5sums_x86_64=('1ef764a3ee65a54b764a2e7dd6193b69')
-md5sums_aarch64=('1ef764a3ee65a54b764a2e7dd6193b69')
+md5sums_x86_64=('8ec45d297e51d2d40dfa43a09d5113fc')
+md5sums_aarch64=('8ec45d297e51d2d40dfa43a09d5113fc')
 options=(!strip)
 install=steamcommunity302.install
 
