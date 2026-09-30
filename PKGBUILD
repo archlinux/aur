@@ -16,7 +16,7 @@ conflicts=('macoblox')
 source=("git+$url.git"
         "shift_lock_reticle.patch")
 sha256sums=('SKIP'
-            '8d060650ac40f9a49a1a8449a8116a9dfbbcca924433669a7a7392abd9a79ca8')
+            '2d14dfa3c66b556e6d88d1ba2c44a0885699900d12c55301362364775dae1c8e')
 
 prepare() {
   cd "$_name"
