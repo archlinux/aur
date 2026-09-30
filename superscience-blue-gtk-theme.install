@@ -1,16 +1,24 @@
 # superscience-blue-gtk-theme.install (SuperScience Blue, packaging)
-# Created: 2026-09-28 04:55 | Last change: 2026-09-28 05:15 — libadwaita styling is now
-# automatic at login; messages updated.
+# Created: 2026-09-28 04:55 | Last change: 2026-09-29 19:36 — messages name both
+# themes (SuperScience Blue and SuperScience Blue-Dark); upgrades from before 1.1.0
+# announce the dark theme. Previous entry: libadwaita styling automatic at login.
 
 post_install()
 {
-    echo "SuperScience Blue: choose it in your desktop's appearance settings,"
-    echo "then log out and back in. libadwaita apps (e.g. Pamac) will match."
+    echo "SuperScience Blue installs two themes: SuperScience Blue and SuperScience Blue-Dark."
+    echo "Choose one in your desktop's appearance settings (Xfce: Settings > Appearance;"
+    echo "window borders: Settings > Window Manager), then log out and back in."
+    echo "libadwaita apps (e.g. Pamac) will match."
+    echo "More: https://github.com/muncrief/superscience-blue"
 }
 
 post_upgrade()
 {
-    return 0
+    if [ "$(vercmp "$2" 1.1.0)" -lt 0 ]
+    then
+        echo "New in SuperScience Blue 1.1: a dark theme, SuperScience Blue-Dark."
+        echo "Choose it in your desktop's appearance settings (Xfce: Settings > Appearance)."
+    fi
 }
 
 post_remove()

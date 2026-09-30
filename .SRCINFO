@@ -1,7 +1,7 @@
 pkgbase = superscience-blue-gtk-theme
 	pkgdesc = A clean blue theme for GTK2, GTK3, GTK4/libadwaita and Xfwm4, with a dark variant
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/muncrief/superscience-blue
 	install = superscience-blue-gtk-theme.install
 	arch = any

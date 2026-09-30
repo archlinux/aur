@@ -1,5 +1,5 @@
 # PKGBUILD (SuperScience Blue, packaging/aur)
-# Created: 2026-09-28 05:45 | Last change: 2026-09-29 19:08 — maintainer address linux-dev@lightyeardesigns.com (LightYear Designs).
+# Created: 2026-09-28 05:45 | Last change: 2026-09-29 19:37 — 1.1.1-2: install messages name both themes.
 # The AUR package: installs the theme from a GitHub release. packaging/local/PKGBUILD
 # installs the same files from the working tree, for testing before a release.
 #
@@ -7,7 +7,7 @@
 
 pkgname=superscience-blue-gtk-theme
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A clean blue theme for GTK2, GTK3, GTK4/libadwaita and Xfwm4, with a dark variant"
 arch=('any')
 url="https://github.com/muncrief/superscience-blue"
