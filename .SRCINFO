@@ -1,11 +1,17 @@
 pkgbase = granted-bin
-	pkgdesc = Granted is a command line interface (CLI) tool which simplifies access to cloud roles and allows multiple cloud accounts to be opened in your web browser simultaneously.
-	pkgver = 0.38.0
+	pkgdesc = CLI tool that simplifies access to cloud roles in your web browser
+	pkgver = 0.39.0
 	pkgrel = 1
-	url = https://granted.dev/
+	url = https://github.com/fwdcloudsec/granted
 	arch = x86_64
+	arch = i686
+	arch = aarch64
 	license = MIT
-	source = https://releases.commonfate.io/granted/v0.38.0/granted_0.38.0_linux_x86_64.tar.gz
-	sha256sums = 2547cc521f1c932b32d0132b8fd82f43d1880f53a457b17b58b2f27711ed20bc
+	source_x86_64 = granted-bin-0.39.0-x86_64.tar.gz::https://github.com/fwdcloudsec/granted/releases/download/v0.39.0/granted_0.39.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 89ef34c1e0624c6e583bae4f2a57ddc6e93597aea73612256ae4722057168405
+	source_i686 = granted-bin-0.39.0-i686.tar.gz::https://github.com/fwdcloudsec/granted/releases/download/v0.39.0/granted_0.39.0_linux_i386.tar.gz
+	sha256sums_i686 = 045ba115da2ca7744b5e34c7cecf7f74541e9c72327bef1e76605b927950f151
+	source_aarch64 = granted-bin-0.39.0-aarch64.tar.gz::https://github.com/fwdcloudsec/granted/releases/download/v0.39.0/granted_0.39.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9c58bc4cb4c808dfb01d391f37eb3e5e27ebd2cecdff9644a95b781e9215a57e
 
 pkgname = granted-bin
