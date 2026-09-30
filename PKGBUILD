@@ -1,13 +1,13 @@
 # Maintainer: Drake Strickland <drake.o.strickland at gmail dot com>
 
 pkgname=dk64recompiled-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A static recompilation of Donkey Kong 64"
 arch=("x86_64" "aarch64")
 _reponame=Donkey-Kong-64-Recompiled
 url="https://github.com/Rainchus/${_reponame}"
-_raw_url="https://raw.githubusercontent.com/Rainchus/${_reponame}/refs/tags/${pkgver}"
+_raw_url="https://raw.githubusercontent.com/Rainchus/${_reponame}/refs/tags/v${pkgver}"
 license=('GPL-3.0-only')
 depends=(
     "sdl2"
@@ -18,11 +18,11 @@ depends=(
     "libsm"
     )
 
-source_x86_64=(https://github.com/Rainchus/Donkey-Kong-64-Recompiled/releases/download/${pkgver}/DK64Recompiled-Linux-X64-Release-${pkgver//./-}.zip)
-sha256sums_x86_64=('7a723280d92768bbeb1c384f5fbe9f27cd08fdad8b90df85a9402a151d31e4df')
+source_x86_64=(https://github.com/Rainchus/Donkey-Kong-64-Recompiled/releases/download/v${pkgver}/DK64Recompiled-Linux-X64-Release-${pkgver//./-}.zip)
+sha256sums_x86_64=('352380418f2376640825fe65b0ba085e12e7b792205cfa435a6caa0202e54b5c')
 
-source_aarch64=(https://github.com/Rainchus/Donkey-Kong-64-Recompiled/releases/download/${pkgver}/DK64Recompiled-Linux-ARM64-Release-${pkgver//./-}.zip)
-sha256sums_aarch64=('ac121f933ed881aaaf9d70be36cbb538df93ed9abf20c5d23484fb4dd5ae7c20')
+source_aarch64=(https://github.com/Rainchus/Donkey-Kong-64-Recompiled/releases/download/v${pkgver}/DK64Recompiled-Linux-ARM64-Release-${pkgver//./-}.zip)
+sha256sums_aarch64=('bb887245c61ee08f98c2e724ec2b3877000a02554bd501a122bd91409c888ba4')
 
 source=(
     "${_raw_url}/icons/app.png"
