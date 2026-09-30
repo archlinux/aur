@@ -1,0 +1,16 @@
+pkgbase = bindboss-git
+	pkgdesc = Pack any directory into a self-extracting executable with dependency checking
+	pkgver = r10.434ddc5
+	pkgrel = 1
+	url = https://github.com/grug-group420/Bindboss
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = bindboss
+	conflicts = bindboss
+	source = bindboss::git+https://github.com/grug-group420/Bindboss.git#branch=main
+	sha256sums = SKIP
+
+pkgname = bindboss-git
