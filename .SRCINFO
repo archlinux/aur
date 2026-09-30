@@ -1,0 +1,22 @@
+pkgbase = python-castlocal-git
+	pkgdesc = Cast any local video to Chromecast, with a CLI (cast) and a retro TUI (cast-tui)
+	pkgver = r4.fa5aead
+	pkgrel = 1
+	url = https://github.com/YuriKovalov22/cast-control
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-pychromecast
+	depends = python-textual
+	depends = python-zeroconf
+	depends = ffmpeg
+	provides = python-castlocal
+	conflicts = python-castlocal
+	source = git+https://github.com/YuriKovalov22/cast-control.git
+	sha256sums = SKIP
+
+pkgname = python-castlocal-git
