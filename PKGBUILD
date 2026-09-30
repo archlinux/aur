@@ -1,6 +1,6 @@
 # Maintainer: arqueon <arqueonautis@gmail.com>
 pkgname=dms-shell-plugin-dankmail
-pkgver=0.3.6
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="Dankmail Unread companion for DankMaterialShell (unread counts and mail triage)"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('dankmail' 'dms-shell')
 install=dms-shell-plugin-dankmail.install
 source=("dankmail-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('17bd98572f45e73731153a1aa42f67c8f2a0bd25f618491ac336074292dcb821')
+sha256sums=('eaf476b792445b77b81b58d4b910629a7d9d4701a337de968773eabfd511e60c')
 
 package() {
   cd "dankmail-$pkgver"
