@@ -1,8 +1,8 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgbase=wireview-hwmon
-pkgname=('wireview-hwmon' 'wireview-hwmon-dkms' 'wireview-hwmon-firmware')
+pkgname=('wireview-hwmon' 'wireview-hwmon-dkms')
 # Must match the top-level VERSION file ("make check-version").
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="WireView Pro II hwmon daemon, CLI and DKMS kernel module"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('gcc')
 options=('!debug')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgbase.sysusers")
-sha256sums=('9321373a0e21478539eccc7e139380dd7b5818df12f85eac2ad5c76703703da3'
+sha256sums=('cfd97daa4642faf02c2c2b799a6f1caf1eaf0766b63844fd8e88d4536b480f80'
             'dec7ef8e8cc0bcfb7a692a0484b9df3fbd8909f89ee63658f1c3f77ab20d7660')
 
 build() {
@@ -25,15 +25,18 @@ build() {
 package_wireview-hwmon() {
   pkgdesc="WireView Pro II hwmon daemon and CLI (userspace)"
   depends=('glibc')
+  # 1.7.0 shipped the firmware image in a package of its own
+  replaces=('wireview-hwmon-firmware')
+  conflicts=('wireview-hwmon-firmware')
   optdepends=('wireview-hwmon-dkms: kernel module exposing sensors via /sys/class/hwmon'
-              'dfu-util: device firmware updates via "wireviewctl flash"'
-              'wireview-hwmon-firmware: bundled firmware image for "wireviewctl flash"')
+              'dfu-util: device firmware updates via "wireviewctl flash"')
   backup=('etc/wireview/config')
   cd "$pkgbase-$pkgver"
   install -Dm755 wireviewd "$pkgdir/usr/bin/wireviewd"
   install -Dm755 wireviewctl "$pkgdir/usr/bin/wireviewctl"
   install -Dm644 debian/wireviewd.service "$pkgdir/usr/lib/systemd/system/wireviewd.service"
   install -Dm644 99-wireview-hwmon.rules "$pkgdir/usr/lib/udev/rules.d/99-wireview-hwmon.rules"
+  install -Dm644 firmware/TG-WV-PRO2-FW.hex "$pkgdir/usr/share/wireview/TG-WV-PRO2-FW.hex"
   # Reference daemon config; private because it may hold the HMAC secret.
   install -dm700 "$pkgdir/etc/wireview"
   install -m600 wireview-config.sample "$pkgdir/etc/wireview/config"
@@ -64,15 +67,4 @@ package_wireview-hwmon-dkms() {
   install -d "$pkgdir/usr/lib/modules-load.d"
   printf 'wireview_hwmon\n' > "$pkgdir/usr/lib/modules-load.d/wireview-hwmon.conf"
   chmod 644 "$pkgdir/usr/lib/modules-load.d/wireview-hwmon.conf"
-}
-
-package_wireview-hwmon-firmware() {
-  pkgdesc="WireView Pro II device firmware image for wireviewctl flash (proprietary)"
-  arch=('any')
-  # Thermal Grizzly's image, redistributed unmodified; it has no license
-  # text, so the README stating its origin stands in for one.
-  license=('LicenseRef-Proprietary')
-  cd "$pkgbase-$pkgver"
-  install -Dm644 firmware/TG-WV-PRO2-FW.hex "$pkgdir/usr/share/wireview/TG-WV-PRO2-FW.hex"
-  install -Dm644 firmware/README.md "$pkgdir/usr/share/licenses/$pkgname/README.md"
 }
