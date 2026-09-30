@@ -7,18 +7,22 @@
 _gitname="linux"
 _pkgname="$_gitname-vfio"
 pkgbase="$_pkgname"
-pkgver=7.2.6
+pkgver=7.2.7
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
-license=('GPL-2.0-or-later')
-arch=('x86_64')
+arch=(
+  x86_64
+)
+license=(GPL-2.0-or-later)
 
 makedepends=(
   bc
+  binutils
   cpio
   gettext
   libelf
+  openssl
   pahole
   perl
   python
@@ -26,7 +30,10 @@ makedepends=(
   rust-bindgen
   rust-src
   tar
+  xxhash
   xz
+  zlib
+  zstd
 
   # htmldocs
   graphviz
@@ -36,7 +43,10 @@ makedepends=(
   texlive-latexextra
 )
 
-options=('!debug' '!strip')
+options=(
+  !debug
+  !strip
+)
 
 _get_tags() {
   [ -n "$_srctag" ] && return
@@ -68,11 +78,11 @@ _srcname=linux-$pkgver
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar".{xz,sign}
   "$_dl_url_arch_github/releases/download/$_srctag/linux-$_srctag.patch.zst"{,.sig}
-  "config-$pkgver"::"$_dl_url_arch_gitlab/-/raw/$_pkgver_tag/config.x86_64"
+  "config-$pkgver.x86_64"::"$_dl_url_arch_gitlab/-/raw/$_pkgver_tag/config.x86_64"
   1001-6.14.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
 )
 sha256sums=(
-  '039aef84f2b0994aeda3f4fcfc3d02ec9d7a9bbb9020ea264c43f446c860f606' # cksum
+  '4ac34c47db2540ffb2713943f8d891ff1702e0ba6934525a493b7d1cad43145a' # cksum
   'SKIP'
   'SKIP'
   'SKIP'
@@ -95,7 +105,7 @@ _prepare_extra() {
 }
 
 prepare() {
-  cp "config-$pkgver" "config.$CARCH"
+  cp "config-$pkgver.$CARCH" "config.$CARCH"
 
   cd $_srcname
 
@@ -127,13 +137,17 @@ prepare() {
 
 build() {
   cd $_srcname
+
+  #make htmldocs SPHINXOPTS=-QT &
+  #local pid_docs=$!
+
   make all
   make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
-  #make htmldocs SPHINXOPTS=-QT
+  #wait $pid_docs
 }
 
 _package() {
-  pkgdesc="The $pkgdesc kernel and modules (ACS override and i915 VGA arbiter patches)"
+  pkgdesc="The $pkgdesc kernel and modules (ACS override patch)"
   depends=(
     coreutils
     initramfs
@@ -172,8 +186,18 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel (ACS override and i915 VGA arbiter patches)"
-  depends=(pahole)
+  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel (ACS override patch)"
+  depends=(
+    binutils
+    glibc
+    libelf
+    libgcc
+    openssl
+    pahole
+    xxhash
+    zlib
+    zstd
+  )
   provides=(LINUX-HEADERS)
 
   cd $_srcname
@@ -226,8 +250,8 @@ _package-headers() {
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-  echo "Installing Rust files..."
   if [[ $(scripts/config -s CONFIG_RUST) = y ]]; then
+    echo "Installing Rust files..."
     install -Dt "$builddir/rust" -m644 rust/*.rmeta
     install -Dt "$builddir/rust" rust/*.so
   fi
@@ -281,7 +305,7 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Documentation for the $pkgdesc kernel (ACS override and i915 VGA arbiter patches)"
+  pkgdesc="Documentation for the $pkgdesc kernel (ACS override patch)"
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(< version)/build"
@@ -292,7 +316,10 @@ _package-docs() {
     dst="${src#Documentation/}"
     dst="$builddir/Documentation/${dst#output/}"
     install -Dm644 "$src" "$dst"
-  done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
+  done < <(
+    find Documentation \( -name '.*' -o -name __pycache__ \) -prune \
+      -o \! -type d -print0
+  )
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
