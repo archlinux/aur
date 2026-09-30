@@ -1,7 +1,7 @@
 pkgbase = dbflux
 	pkgdesc = A fast, keyboard-first database client
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dbflux.dev
 	arch = x86_64
 	arch = aarch64

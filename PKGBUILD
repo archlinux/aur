@@ -2,7 +2,7 @@
 
 pkgname=dbflux
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, keyboard-first database client"
 arch=('x86_64' 'aarch64')
 # Upstream repository: https://github.com/0xErwin1/dbflux
