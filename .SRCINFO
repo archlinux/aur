@@ -1,6 +1,6 @@
 pkgbase = kyp-bin
 	pkgdesc = Local-first terminal password manager with TOTP support (binary release)
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/stickpro/kyp
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = kyp-bin
 	conflicts = kyp-git
 	provides = kyp
 	arch = aarch64
-	source_aarch64 = kyp-bin_0.2.3_aarch64.tar.gz::https://github.com/stickpro/kyp/releases/download/v0.2.3/kyp_0.2.3_linux_arm64.tar.gz
-	sha256sums_aarch64 = 1024615a9eca4efbb839ddf6f218173bfc5d7e1a8a43a66834b7652d9f9b021d
+	source_aarch64 = kyp-bin_0.2.4_aarch64.tar.gz::https://github.com/stickpro/kyp/releases/download/v0.2.4/kyp_0.2.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0bd604992d2fa3259e467ba4a13f556e598b1e228154df61075be18b3e5594f6
 	arch = x86_64
-	source_x86_64 = kyp-bin_0.2.3_x86_64.tar.gz::https://github.com/stickpro/kyp/releases/download/v0.2.3/kyp_0.2.3_linux_amd64.tar.gz
-	sha256sums_x86_64 = 7b4ab799cf42624beefdb7598c53684c08dab3d1e2a4b8f6dd8cd421ca6a0432
+	source_x86_64 = kyp-bin_0.2.4_x86_64.tar.gz::https://github.com/stickpro/kyp/releases/download/v0.2.4/kyp_0.2.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 80b87474a93cc1ea2841999d93a7d3c41b765d6a28120e197bfcc085833616c7
 	
 pkgname = kyp-bin
