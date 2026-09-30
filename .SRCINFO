@@ -1,5 +1,5 @@
 pkgbase = vnstat-client-git
-	pkgdesc = GUI Client for vnStat Network Monitor for Linux or GNU/Linux.(Use system-wide electron)
+	pkgdesc = GUI Client for vnStat Network Monitor for Linux or GNU/Linux.
 	pkgver = 5.0.0.beta.r7.g484b1d2
 	pkgrel = 1
 	url = https://hulxv.github.io/vnstat-client/
@@ -11,7 +11,7 @@ pkgbase = vnstat-client-git
 	makedepends = yarn
 	makedepends = git
 	makedepends = nvm
-	makedepends = curl
+	makedepends = jq
 	depends = electron19
 	depends = vnstat>=2.8
 	provides = vnstat-client=5.0.0.beta
@@ -21,6 +21,6 @@ pkgbase = vnstat-client-git
 	source = vnstat-client.sh
 	sha256sums = SKIP
 	sha256sums = 85b4730f2d706583b4e0f8bf214277e7032b2918de7a06a3e5f4258836d1f52c
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
 pkgname = vnstat-client-git
