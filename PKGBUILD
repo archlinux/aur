@@ -2,7 +2,7 @@
 # Rendered by scripts/aurgen in davison/md-notes, from the version and the
 # SHA256SUMS of a GitHub Release. Edit the renderer, not this file.
 pkgname=md-notes-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Turns folders of markdown files into a notes application in the browser'
 arch=('x86_64' 'aarch64')
@@ -22,11 +22,11 @@ source=("md-notes-$pkgver-LICENSE::https://raw.githubusercontent.com/davison/md-
         "md-notes-$pkgver-mdn.1::https://raw.githubusercontent.com/davison/md-notes/v$pkgver/contrib/mdn.1")
 sha256sums=('77c8ed0935bc59cf1ec2619e1884eccea49ebef7dcf3d53ae94f685fdcdf9747'
             '113a4bd6576843bbf834de8a7abadbd46ad8260b9d95767919b92851defb225c'
-            'a163ac6bbb76a5e75fce2524c613bd55a30ff5c12efc01a178ddb524753b864d')
+            'e639647617bc7b96a929cd75554f5dc79ec77ce67a70b3c1b7ff1ecabcb885ac')
 source_x86_64=("md-notes-$pkgver-mdn::https://github.com/davison/md-notes/releases/download/v$pkgver/mdn-v$pkgver-linux-amd64")
-sha256sums_x86_64=('36883f70b78ef63e9ccde2826767c1cbb50095829f5eb038586c015d6b5d8c9c')
+sha256sums_x86_64=('8ef4194f5624c18e3917cbc6fcc6d05aa196976e3cabf229f0868e28f63dd8b1')
 source_aarch64=("md-notes-$pkgver-mdn::https://github.com/davison/md-notes/releases/download/v$pkgver/mdn-v$pkgver-linux-arm64")
-sha256sums_aarch64=('cace7aaf08e73bf96648caf5c6b758fa9258b1a247f96b33e21a5eb2a7401da5')
+sha256sums_aarch64=('03ac2ef0f9c21deadc0e9b664526dc6494a7aa19596186041e6e61ba6092b3b6')
 
 package() {
 	install -Dm755 "$srcdir/md-notes-$pkgver-mdn" "$pkgdir/usr/bin/mdn"
