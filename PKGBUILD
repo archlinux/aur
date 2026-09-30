@@ -2,7 +2,7 @@
 # Contributor: Sean Blackburn <birdicode@gmail.com>
 
 pkgname=openconnect-ms-auth
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Fetch an openconnect webvpn cookie from an MFA enabled Microsoft account"
 arch=('any')
