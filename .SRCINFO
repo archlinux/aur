@@ -1,7 +1,7 @@
 pkgbase = r-performance
 	pkgdesc = Assessment of Regression Models Performance
-	pkgver = 0.17.0
-	pkgrel = 1
+	pkgver = 0.18.2
+	pkgrel = 2
 	url = https://cran.r-project.org/package=performance
 	arch = any
 	license = GPL-3.0-only
@@ -54,6 +54,7 @@ pkgbase = r-performance
 	optdepends = r-dbscan
 	optdepends = r-dharma
 	optdepends = r-discovr
+	optdepends = r-effectsize
 	optdepends = r-estimatr
 	optdepends = r-fixest
 	optdepends = r-flextable
@@ -104,8 +105,8 @@ pkgbase = r-performance
 	optdepends = r-tweedie
 	optdepends = r-vgam
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/performance_0.17.0.tar.gz
-	md5sums = 526328df52b653897b07b77a51e83f2f
-	b2sums = 1e2743002959e773f7b17e8efd0fc3b7e7e95aa0f55dc8c58614b1c1ae7b753b6d2a6ec1792c6f1005e5e42c56de4bed31b1c58bc718439ed42a929d8915bfe8
+	source = https://cran.r-project.org/src/contrib/performance_0.18.2.tar.gz
+	md5sums = 0a04532d0f14f1b7481a9e538cc544fd
+	b2sums = 936fc88ee8628e87e4dd7e39979e0a3621c6b08045010616b805f67edd329f4f39135f166b7ce92b19a20c1e13c6f76c4add6b723bc28caab9a0fdbca2c0e861
 
 pkgname = r-performance
