@@ -13,7 +13,6 @@ pkgbase = wheelwizard
 	depends = libgcc
 	depends = libstdc++
 	depends = libx11
-	depends = libxml2-legacy
 	depends = ttf-font
 	optdepends = dolphin-emu: native Dolphin support
 	optdepends = flatpak: Flatpak Dolphin support
