@@ -20,11 +20,11 @@
 : ${_install_path:=usr/lib}
 : ${_wmclass:=floorp}
 
-: ${_runtime_commit:=04556dbea6f1c761b36dfe7f973b8c538aebacfd} # daily-1094
+: ${_runtime_commit:=1553b7b550dfe555684628d175e0c1701a785d0b} # daily-1124
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.18.0
+pkgver=12.19.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -122,7 +122,7 @@ source=(
   "$_pkgname.desktop"
 )
 sha256sums=(
-  '4d39b6782c67ce689c074601b8fc179352c2f5513ee1d428b0249a484452cd1f'
+  'e9e9e5ff58bf8912cd6e0cf6e05dd50f14b430df9ca7023cf6aa6d5fac22e994' # cksum
   'SKIP'
   'SKIP'
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
@@ -181,7 +181,6 @@ ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-rust-simd
-ac_add_options --enable-wasm-simd
 ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
