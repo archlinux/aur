@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A terminal file explorer with full Git and GitHub integration, AI chat, and reactive panels that stay in sync as you navigate"
 
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('5212fea038b874798b9d0e9279c8150d12be160ebd3eeb0d0d2ee8ecc74f3b89')
-sha256sums_aarch64=('ce44cb38d755c42f4145df6f86cf5c35566b25cbbf18affbe115fe073e8e1800')
+sha256sums_x86_64=('6df9108951a89f355ae2eee69a3668a752a46c5c0cbf5da2d3414b7d802ffc02')
+sha256sums_aarch64=('68a4e5335a5a03bd3fdb2e5f20af7f6c3f30069444531de9f58cecc700c1f958')
 
 
 prepare() {
