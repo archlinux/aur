@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ledgera
-pkgver=1.0.7
+pkgver=1.8.0
 pkgrel=1
 url="https://github.com/thesmokinator/$pkgname"
 pkgdesc='Just another user interface for managing hledger journal transactions'
@@ -29,7 +29,7 @@ options=(!lto)
 _tag=${pkgver/rc/-rc.}
 _archive="$pkgname-$_tag"
 source=("$url/archive/refs/tags/v$_tag/$_archive.tar.gz")
-sha256sums=('14f38433cabfe4ae770aad16098fb3e942505dcd18600bf09af957fd6edeeda4')
+sha256sums=('034ded261709e538d76263fc59206f90d133355b0cafbf3e5774db783120f5fc')
 
 _srcenv() {
 	cd "$_archive"
