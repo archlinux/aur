@@ -1,0 +1,18 @@
+pkgbase = nethawk
+	pkgdesc = Terminal UI network traffic monitor and packet analyzer built on libpcap
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Flowtriq/nethawk
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.26.4
+	makedepends = gcc
+	makedepends = libpcap
+	depends = glibc
+	depends = libpcap
+	options = !lto
+	source = nethawk-0.1.0.tar.gz::https://github.com/Flowtriq/nethawk/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 389b0ab74978d0506b01197b7010c47881971864e48eff3eb5798cb89a5edc6a
+
+pkgname = nethawk
