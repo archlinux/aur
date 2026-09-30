@@ -10,7 +10,7 @@ arch=('any')
 provides=('aimp-skin')
 license=('custom')
 depends=('aimp')
-source=("${url}/files/windows/skins/m/M5.zip")
+source=("${url}/files/desktop/skins/m/M5.zip")
 sha256sums=('cb915821175a0cdfdb6537e6fb336d2f8d85e606a00d8ed336b4ebd9904ebb27')
 
 package(){
