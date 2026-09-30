@@ -1,9 +1,9 @@
 # Maintainer: Peter Mattern <pmattern at arcor dot de>
 
 _pkgname=cups-local
-pkgname=$_pkgname-git
-pkgver=r51.90c8047
-pkgrel=2
+pkgname="${_pkgname}"-git
+pkgver=r52.1abdcef
+pkgrel=1
 pkgdesc="CUPS Local Services"
 arch=('x86_64' 'aarch64')
 url="https://github.com/OpenPrinting/$_pkgname"
@@ -40,4 +40,5 @@ package() {
   cd $_pkgname
   make BUILDROOT="${pkgdir}" install
   install -Dm644 "${srcdir}"/$_pkgname/NOTICE "${pkgdir}"/usr/share/licenses/$pkgname/LLVM-exception
+  rm -Rf "${pkgdir}"/usr/share/man/man5
 }

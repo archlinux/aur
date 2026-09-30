@@ -1,7 +1,7 @@
 pkgbase = cups-local-git
 	pkgdesc = CUPS Local Services
-	pkgver = r51.90c8047
-	pkgrel = 2
+	pkgver = r52.1abdcef
+	pkgrel = 1
 	url = https://github.com/OpenPrinting/cups-local
 	arch = x86_64
 	arch = aarch64
