@@ -1,0 +1,16 @@
+pkgbase = python-sqliteproof
+	pkgdesc = Recover what survived a corrupt SQLite database: intact tables, lost rows, safe exports
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/OrbitalKeyAi/sqliteproof
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = python-sqliteproof-0.1.0.tar.gz::https://github.com/OrbitalKeyAi/sqliteproof/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 5c55198dd1ef2d4dee1dd5b1f143fdd7cc93cb537250668fec3664f7c22cd35e
+
+pkgname = python-sqliteproof
