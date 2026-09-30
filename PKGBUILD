@@ -1,7 +1,7 @@
 # Maintainer: Kurobac <rkurobac at gmail dot com>
 
 pkgname=edgemap
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="DualSense UHID proxy — remap, combo, macro, profile auto-switching"
 arch=('x86_64')
@@ -9,11 +9,12 @@ url="https://github.com/Kurobac/edgemap"
 license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'systemd-libs')
-optdepends=('libnotify: desktop notifications on profile switch'
+optdepends=('opus: experimental Bluetooth speaker audio'
+    'libnotify: desktop notifications on profile switch'
     'python-pyqt6: GUI config editor (edgemap-gui)'
-    'hicolor-icon-theme: desktop icon theme support')
+    'pipewire-audio: Bluetooth HD haptics and experimental speaker audio (pw-cat)')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Kurobac/edgemap/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('46ac04e9fa91060821c9ce31dbf6a0c4ce99d9e17785633681442aa1a5ca34ae')
+sha256sums=('2d79f0074408b59eb707f4459e5f508da3554664d8033ebb4c2d0331e34f926d')
 install=edgemap.install
 
 prepare() {
