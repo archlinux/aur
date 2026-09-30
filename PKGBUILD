@@ -75,7 +75,7 @@ package() {
   install -dm755 "${resdir}"
 
   # 解包词库并清理 macOS 隐藏元数据
-  bsdtar -xzf "${srcdir}/qingjian-data.tar.gz" -C "${resdir}"
+  bsdtar --no-xattrs --no-mac-metadata -xzf "${srcdir}/qingjian-data.tar.gz" -C "${resdir}"
   find "${resdir}/data/generated" -name '._*' -delete
 
   # 安装整句模型文件
