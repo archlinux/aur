@@ -1,9 +1,9 @@
 # Maintainer: OpenLyst <https://openlyst.ink>
-# Version and download URL from Openlyst API: https://openlyst.ink/docs/api
+# Download URL from the app's GitLab release: https://gitlab.com/Openlyst
 pkgname=finar-bin
 pkgver=4.1.1
 pkgrel=1
-pkgdesc="Jellyfin frontend client"
+pkgdesc="The corrected Jellyfin client"
 arch=('x86_64')
 url="https://openlyst.ink"
 license=('GPL3')
@@ -12,7 +12,7 @@ optdepends=()
 provides=('finar')
 conflicts=('finar')
 options=('!strip')
-source=("finar-bin-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-94/finar-4.1.1-2026-05-07-linux-x64.zip")
+source=("finar-bin-${pkgver}.zip::https://gitlab.com/Openlyst/finar/-/releases/nightly/downloads/finar-linux-x64-4.1.1-2026-09-29.zip")
 sha256sums=('SKIP')
 
 package() {
@@ -26,7 +26,7 @@ package() {
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/finar.desktop" <<EOF
 [Desktop Entry]
 Name=Finar
-Comment=Jellyfin frontend client
+Comment=The corrected Jellyfin client
 Exec=/opt/finar/finar
 Icon=finar
 Type=Application
