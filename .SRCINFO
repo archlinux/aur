@@ -1,7 +1,7 @@
 pkgbase = kyp-gui
 	pkgdesc = Keep Your Passwords — local-first GUI password manager with TOTP support
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stickpro/kyp
 	arch = x86_64
 	license = MIT
