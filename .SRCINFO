@@ -1,0 +1,15 @@
+pkgbase = python-gitpulse-git
+	pkgdesc = Zero-dependency git productivity CLI: see who is shipping, how much and how fast
+	pkgver = r2.6c74245
+	pkgrel = 1
+	url = https://github.com/milishiajay/gitpulse
+	arch = any
+	license = MIT
+	depends = python
+	depends = git
+	provides = python-gitpulse
+	conflicts = python-gitpulse
+	source = gitpulse::git+https://github.com/milishiajay/gitpulse.git#branch=master
+	sha256sums = SKIP
+
+pkgname = python-gitpulse-git
