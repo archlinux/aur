@@ -1,6 +1,6 @@
 pkgbase = cw-chat
 	pkgdesc = CW (Morse code) chat over PipeWire: send typed text and decode received CW in a GTK window
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/dhtseany/cw-chat
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = cw-chat
 	depends = pango
 	optdepends = pipewire: the PipeWire audio server the TX and RX nodes connect to
 	optdepends = qpwgraph: routing the TX and RX nodes by hand
-	source = cw-chat-0.1.0.tar.gz::https://github.com/dhtseany/cw-chat/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = b7028049ad2193a7f468b04ad669afc674a02eba51c6daff648a8a7310230d76
+	source = cw-chat-0.1.1.tar.gz::https://github.com/dhtseany/cw-chat/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = fd63dc8f0cc5c1c069246e7cd9e1233b4cc61dd074cffb9e48ae099efca155e8
 
 pkgname = cw-chat

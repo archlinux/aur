@@ -1,6 +1,6 @@
 # Maintainer: Sean Snell <ssnell@lakecs.net>
 pkgname=cw-chat
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="CW (Morse code) chat over PipeWire: send typed text and decode received CW in a GTK window"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ optdepends=('pipewire: the PipeWire audio server the TX and RX nodes connect to'
             'qpwgraph: routing the TX and RX nodes by hand')
 makedepends=('cargo' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dhtseany/cw-chat/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b7028049ad2193a7f468b04ad669afc674a02eba51c6daff648a8a7310230d76')
+sha256sums=('fd63dc8f0cc5c1c069246e7cd9e1233b4cc61dd074cffb9e48ae099efca155e8')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -37,6 +37,12 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm755 target/release/cw-chat "$pkgdir/usr/bin/cw-chat"
   install -Dm644 net.cwchat.CwChat.desktop "$pkgdir/usr/share/applications/net.cwchat.CwChat.desktop"
+  local size
+  for size in 16 24 32 48 64 128 256 512; do
+    install -Dm644 "assets/icons/net.cwchat.CwChat-$size.png" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/net.cwchat.CwChat.png"
+  done
+  install -Dm644 assets/icons/net.cwchat.CwChat.png "$pkgdir/usr/share/pixmaps/net.cwchat.CwChat.png"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
