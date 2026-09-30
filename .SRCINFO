@@ -1,0 +1,30 @@
+pkgbase = caret
+	pkgdesc = GPU-rendered terminal for GTK 4 and libadwaita
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/sachesi/caret
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = blueprint-compiler
+	makedepends = just
+	makedepends = gettext
+	depends = gtk4>=1:4.22
+	depends = libadwaita>=1:1.9
+	depends = glib2
+	depends = cairo
+	depends = pango
+	depends = graphene
+	depends = libglvnd
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = glibc
+	optdepends = xdg-terminal-exec: open Caret from launchers that ask for a terminal
+	conflicts = caret-git
+	conflicts = tangent
+	replaces = tangent
+	source = caret-0.2.0.tar.gz::https://github.com/sachesi/caret/archive/v0.2.0/caret-0.2.0.tar.gz
+	sha256sums = 9e073d39d970b21e915cefe57544cf563d297b6495380510a442c21c118f405b
+
+pkgname = caret
