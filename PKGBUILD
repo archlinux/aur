@@ -1,7 +1,7 @@
 # Maintainer: CxOrg <clx.org@cloud-org.uk>
 pkgname=qt6curve-git
 pkgver=1.9.0.rc1.r0.g0000000
-pkgrel=3
+pkgrel=4
 pkgdesc="Qt6 widget style with extensive configurability (Qt6 version only, separate from qtcurve)"
 arch=('x86_64')
 url="https://github.com/ixnewton/qtcurve/tree/Qt6Curve_version"
