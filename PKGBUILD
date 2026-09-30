@@ -3,7 +3,7 @@
 _pkgbase=visage
 pkgname="$_pkgbase-bin"
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux face authentication via PAM with persistent daemon, IR camera support, ONNX inference'
 arch=('x86_64')
 url='https://sovren.software/#/visage'
@@ -14,10 +14,12 @@ conflicts=("$_pkgbase")
 install='setup.install'
 _raw="https://raw.githubusercontent.com/sovren-software/$_pkgbase/v$pkgver"
 source=("visage-has-session-$pkgver::$_raw/contrib/pam/visage-has-session"
-        "pam-README-$pkgver.md::$_raw/contrib/pam/README.md")
+        "pam-README-$pkgver.md::$_raw/contrib/pam/README.md"
+        "org.freedesktop.Visage1.service")
 source_x86_64=("$_pkgbase-$pkgver.deb::https://github.com/sovren-software/$_pkgbase/releases/download/v$pkgver/${_pkgbase}_$pkgver-1_amd64.deb")
 sha256sums=('a393b963e544df241f77fbfa31a1166460467ad7d489493b646d171247ef1284'
-            '08b05fa763a75069a901fbb4e3546579b7e23634569c09306a3f9427a1567b06')
+            '08b05fa763a75069a901fbb4e3546579b7e23634569c09306a3f9427a1567b06'
+            '57e9be3dda9f7ec5c591daff9fa595f3447453aa074cbc275cc99b58bca604d3')
 sha256sums_x86_64=('565b57f1bc0cc87031b7cdbed3e68c41c1223fb422485474a0939dbebb351139')
 
 prepare() {
@@ -32,6 +34,8 @@ package() {
 	sed -i -e 's|/usr/local/libexec/visage-has-session|/usr/lib/visage/visage-has-session|g' \
 		-e 's|^sudo install .*|# The visage package already installs this helper.|' \
 		"$pkgdir/usr/share/doc/$_pkgbase/pam/README.md"
+	# D-Bus activation, workaround for https://github.com/sovren-software/visage/issues/123
+	install -Dm644 "$srcdir/org.freedesktop.Visage1.service" "$pkgdir/usr/share/dbus-1/system-services/org.freedesktop.Visage1.service"
 	install -dm700 "$pkgdir/var/lib/visage/models"
 	rm -rf "$pkgdir/usr/share/pam-configs"
 }
