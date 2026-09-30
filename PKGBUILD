@@ -3,7 +3,7 @@
 
 _pkgname=loop
 pkgname=${_pkgname}-bin
-pkgver=0.34.0_beta
+pkgver=0.35.0_beta
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="Lightning Loop is a non-custodial service offered by Lightning Labs that makes it easy to move bitcoin into and out of the Lightning Network."
@@ -20,9 +20,9 @@ manifest-v${_pkgver}.txt.sig::"${url}/releases/download/v${_pkgver}/manifest-v${
 "${url}/releases/download/v${_pkgver}/manifest-v${_pkgver}.txt"
 )
 
-sha256sums=('96edaea39be09c01e79a8ae827e1f1444867c49e5df873dfe5d3868dce6beda3'
+sha256sums=('6791fea1aae1d3e18aa1e41766223c735b800b86c43dee2d13e593853630f8cb'
             'SKIP'
-            '407f440a5f5e5c3c35ee1f7db120b3d4a128429b1ab079b0764ca1ace927cbe3')
+            '500b393c19c2ddb1d7ca29b5805638e5a4f5ab98494807655b4c06b350f7749c')
 
 validpgpkeys=(
     'DE23E73BFA8A0AD5587D2FCDE80D2F3F311FD87E'
