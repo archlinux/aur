@@ -1,0 +1,10 @@
+post_install() {
+    echo "============================================================"
+    echo " finar-bin-unstable is deprecated and no longer updated."
+    echo " Switch to finar-unstable:  yay -S finar-unstable"
+    echo "============================================================"
+}
+
+post_upgrade() {
+    post_install
+}

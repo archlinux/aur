@@ -1,15 +1,16 @@
 pkgbase = finar-bin-unstable
-	pkgdesc = Jellyfin frontend client (unstable build from GitHub)
+	pkgdesc = Deprecated - install finar-unstable instead
 	pkgver = 4.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openlyst.ink
+	install = finar-bin-unstable.install
 	arch = x86_64
 	license = GPL3
 	depends = gtk3
 	provides = finar
 	conflicts = finar
 	options = !strip
-	source = finar-bin-unstable-4.1.1.zip::https://github.com/openlyst/builds/releases/download/build-94/finar-4.1.1-2026-05-07-linux-x64.zip
+	source = finar-bin-unstable-4.1.1.zip::https://gitlab.com/Openlyst/finar/-/releases/nightly/downloads/finar-linux-x64-4.1.1-2026-09-29.zip
 	sha256sums = SKIP
 
 pkgname = finar-bin-unstable

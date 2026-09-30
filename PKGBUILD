@@ -1,9 +1,9 @@
 # Maintainer: OpenLyst <https://openlyst.ink>
-# Unstable build from GitHub releases: https://github.com/openlyst/builds/releases
+# Deprecated - use finar-unstable instead. Kept so existing installs still build.
 pkgname=finar-bin-unstable
 pkgver=4.1.1
-pkgrel=1
-pkgdesc="Jellyfin frontend client (unstable build from GitHub)"
+pkgrel=2
+pkgdesc="Deprecated - install finar-unstable instead"
 arch=('x86_64')
 url="https://openlyst.ink"
 license=('GPL3')
@@ -12,7 +12,8 @@ optdepends=()
 provides=('finar')
 conflicts=('finar')
 options=('!strip')
-source=("finar-bin-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-94/finar-4.1.1-2026-05-07-linux-x64.zip")
+install=finar-bin-unstable.install
+source=("finar-bin-unstable-${pkgver}.zip::https://gitlab.com/Openlyst/finar/-/releases/nightly/downloads/finar-linux-x64-4.1.1-2026-09-29.zip")
 sha256sums=('SKIP')
 
 package() {
@@ -26,7 +27,7 @@ package() {
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/finar.desktop" <<EOF
 [Desktop Entry]
 Name=Finar
-Comment=Jellyfin frontend client (unstable build from GitHub)
+Comment=The corrected Jellyfin client (unstable build from GitHub)
 Exec=/opt/finar/finar
 Icon=finar
 Type=Application
