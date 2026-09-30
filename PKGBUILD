@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="11.0.1.0"
+pkgver="11.1.0.0"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -19,7 +19,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-sha256sums=('4fe3b1ad8c4817f401dd42a4d31822c4b1a2672d1528b4c7522cb729d9eaefc2')
+sha256sums=('c761e0843c345b1edeff421d10b66489de670f864e326ba9adee2798ba81868e')
 
 prepare()
 {
@@ -113,7 +113,7 @@ package()
  install -Dm644 "$srcdir/FID_Resource" "$pkgdir${_installdir}/$pkgname/${_programname}/Resources.dat"
  install -Dm644 "$srcdir/FID_Stamps_DynamicDate" "$pkgdir${_installdir}/$pkgname/${_programname}/Stamps/ENU/DynamicDate.pdf"
  install -Dm644 "$srcdir/FID_Stamps_Templates" "$pkgdir${_installdir}/$pkgname/${_programname}/Stamps/Templates.dat"
- install -Dm644 "$srcdir/FID_ImageProcessDLL" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/11.0/OCV/x64/ImageProcess.dll"
+ install -Dm644 "$srcdir/FID_ImageProcessDLL" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/11.1/OCV/x64/ImageProcess.dll"
  install -Dm644 "$srcdir/FID_TRUSTLIST" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/CertManager/TrustList.dat"
  install -Dm644 "$srcdir/FID_SD_OXT_cs" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/dict-cs.oxt"
  install -Dm644 "$srcdir/FID_SD_OXT_de" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/dict-de.oxt"
@@ -124,7 +124,7 @@ package()
  install -Dm644 "$srcdir/FID_SD_OXT_uk" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/dict-uk.oxt"
  install -Dm644 "$srcdir/FID_SD_GPLv2" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/GPLv2.txt"
  install -Dm644 "$srcdir/FID_SD_GPLv3" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/GPLv3.txt"
- install -Dm644 "$srcdir/FID_ICU71_DAT" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/ICU/icudt74l.dat"
+ install -Dm644 "$srcdir/FID_ICU_icudt78l_dat" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/ICU/icudt78l.dat"
  install -Dm644 "$srcdir/FID_RMS_af_ZA" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.af-ZA.xcl"
  install -Dm644 "$srcdir/FID_RMS_ar_SA" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.ar-SA.xcl"
  install -Dm644 "$srcdir/FID_RMS_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.az-Latn-AZ.xcl"
@@ -926,14 +926,6 @@ package()
  install -Dm644 "$srcdir/FID_U3D_vi_VN" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.vi-VN.xcl"
  install -Dm644 "$srcdir/FID_U3D_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_U3D_zh_TW" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.zh-TW.xcl"
- install -Dm644 "$srcdir/FID_MSVCRT_X64_concrt140_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/concrt140.dll"
- install -Dm644 "$srcdir/FID_MSVCRT_X64_msvcp140_1_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/msvcp140_1.dll"
- install -Dm644 "$srcdir/FID_MSVCRT_X64_msvcp140_2_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/msvcp140_2.dll"
- install -Dm644 "$srcdir/FID_MSVCRT_X64_msvcp140_codecvt_ids_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/msvcp140_codecvt_ids.dll"
- install -Dm644 "$srcdir/FID_MSVCRT_X64_msvcp140_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/msvcp140.dll"
- install -Dm644 "$srcdir/FID_MSVCRT_X64_vcruntime140_1_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/vcruntime140_1.dll"
- install -Dm644 "$srcdir/FID_MSVCRT_X64_vcruntime140_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/vcruntime140.dll"
- install -Dm644 "$srcdir/FID_MSVCRT_X64_vcruntime140_threads_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/vcruntime140_threads.dll"
  install -Dm644 "$srcdir/FID_REDACT_PAT_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_redactpatterns}/cs_CZ.json"
  install -Dm644 "$srcdir/FID_REDACT_PAT_en_CA" "$pkgdir${_installdir}/$pkgname/${_redactpatterns}/en_CA.json"
  install -Dm644 "$srcdir/FID_REDACT_PAT_en_GB" "$pkgdir${_installdir}/$pkgname/${_redactpatterns}/en_GB.json"
