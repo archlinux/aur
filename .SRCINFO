@@ -1,0 +1,27 @@
+pkgbase = educamadrid-nextcloud
+	pkgdesc = Unofficial GUI to add the EducaMadrid Nextcloud account to the Nextcloud desktop client on KDE Plasma
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/13Stokes31/educamadrid-nextcloud
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = dbus
+	depends = nextcloud-client
+	depends = kwallet
+	depends = xdg-utils
+	depends = gcc-libs
+	depends = glibc
+	depends = libglvnd
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libxrender
+	depends = wayland
+	options = !lto
+	source = educamadrid-nextcloud-0.3.0.tar.gz::https://github.com/13Stokes31/educamadrid-nextcloud/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 6a5f8b2b84511a9a43cf4bd48a22a4a88550f68c70b1ef46a0619474c2db9281
+
+pkgname = educamadrid-nextcloud
