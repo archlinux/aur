@@ -1,6 +1,6 @@
 pkgbase = bioma-shell
 	pkgdesc = A desktop shell for niri, built with Quickshell: living surfaces rather than a bar
-	pkgver = 1.0.0beta13
+	pkgver = 1.0.0beta14
 	pkgrel = 1
 	url = https://github.com/AkusenArcade/Bioma
 	install = bioma-shell.install
@@ -39,6 +39,7 @@ pkgbase = bioma-shell
 	optdepends = upower: the battery, on a laptop
 	optdepends = pciutils: the graphics card in the System cell
 	optdepends = libnotify: timer and alarm notifications
+	optdepends = zenity: the folder picker for the wallpaper library
 	optdepends = hyprlock: the fallback lock screen
 	optdepends = swaylock: the fallback lock screen, if hyprlock is not installed
 	optdepends = greetd: the Bioma greeter
@@ -46,7 +47,7 @@ pkgbase = bioma-shell
 	optdepends = ttf-spectral: the expressive typeface
 	optdepends = ttf-orbitron: the technical typeface
 	options = !lto
-	source = bioma-shell-1.0.0beta13.tar.gz::https://github.com/AkusenArcade/Bioma/archive/refs/tags/v1.0.0-beta.13.tar.gz
-	sha256sums = cae3e1ea2a824c60b36cc20684f833b851fef4a09326be59bf110cab40f87bc8
+	source = bioma-shell-1.0.0beta14.tar.gz::https://github.com/AkusenArcade/Bioma/archive/refs/tags/v1.0.0-beta.14.tar.gz
+	sha256sums = c9054ef9d460cc0149d1e47e05283bafb18a9d656ac66100483ee7c58c2aa7b8
 
 pkgname = bioma-shell

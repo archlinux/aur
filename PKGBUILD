@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.13
-pkgver=1.0.0beta13
+_tag=v1.0.0-beta.14
+pkgver=1.0.0beta14
 pkgrel=1
 pkgdesc="A desktop shell for niri, built with Quickshell: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
@@ -42,6 +42,7 @@ optdepends=(
     'upower: the battery, on a laptop'
     'pciutils: the graphics card in the System cell'
     'libnotify: timer and alarm notifications'
+    'zenity: the folder picker for the wallpaper library'
     'hyprlock: the fallback lock screen'
     'swaylock: the fallback lock screen, if hyprlock is not installed'
     'greetd: the Bioma greeter'
@@ -54,7 +55,7 @@ optdepends=(
 options=('!lto')
 install=bioma-shell.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('cae3e1ea2a824c60b36cc20684f833b851fef4a09326be59bf110cab40f87bc8')
+sha256sums=('c9054ef9d460cc0149d1e47e05283bafb18a9d656ac66100483ee7c58c2aa7b8')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
