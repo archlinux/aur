@@ -2,7 +2,7 @@
 pkgbase=fcitx5-lotus-git
 pkgname=('fcitx5-lotus-git' 'fcitx5-lotus-openrc-git' 'fcitx5-lotus-runit-git')
 epoch=1
-pkgver=3.5.2.r884.g80688dd
+pkgver=3.6.0.r1120.g91d1b9c
 pkgrel=1
 pkgdesc="Vietnamese input method for fcitx5"
 arch=('x86_64')
@@ -11,9 +11,8 @@ license=('GPL-3.0-or-later')
 makedepends=('cmake' 'go' 'extra-cmake-modules' 'gcc' 'git' 'python' 'librsvg')
 source=(
     'git+https://github.com/LotusInputMethod/fcitx5-lotus.git#branch=dev'
-    'git+https://github.com/LotusInputMethod/bamboo-core.git'
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/fcitx5-lotus"
@@ -24,13 +23,6 @@ pkgver() {
     local hash=$(git rev-parse --short HEAD)
     
     echo "${version}.r${count}.g${hash}"
-}
-
-prepare() {
-    cd "$srcdir/fcitx5-lotus"
-    git submodule init
-    git config submodule.bamboo/bamboo-core.url "$srcdir"/bamboo-core
-    git -c protocol.file.allow=always submodule update
 }
 
 build() {
