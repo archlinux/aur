@@ -10,8 +10,6 @@ arch=('x86_64' 'aarch64')
 url='https://evomap.ai/zh/evox/beta'
 license=('LicenseRef-Proprietary')
 depends=('glibc')
-provides=("evox-bin=${pkgver}")
-conflicts=('evox-bin')
 options=('!strip')
 source_x86_64=("${_pkgname}-linux-v${_upstream_ver}-x86_64-unknown-linux-gnu.tar.gz::https://res.evomap.ai/downloads/evox-linux/releases/1.1.0-beta.21/evox-linux-v1.1.0-beta.21-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_pkgname}-linux-v${_upstream_ver}-aarch64-unknown-linux-gnu.tar.gz::https://res.evomap.ai/downloads/evox-linux/releases/1.1.0-beta.21/evox-linux-v1.1.0-beta.21-aarch64-unknown-linux-gnu.tar.gz")
