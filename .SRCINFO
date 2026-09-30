@@ -1,0 +1,18 @@
+pkgbase = evox-bin
+	pkgdesc = EvoMap EvoX self-evolving swarm coding agent, beta channel (prebuilt binary)
+	pkgver = 1.1.0.beta.21
+	pkgrel = 1
+	url = https://evomap.ai/zh/evox/beta
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-Proprietary
+	depends = glibc
+	provides = evox
+	conflicts = evox
+	options = !strip
+	source_x86_64 = evox-linux-v1.1.0-beta.21-x86_64-unknown-linux-gnu.tar.gz::https://res.evomap.ai/downloads/evox-linux/releases/1.1.0-beta.21/evox-linux-v1.1.0-beta.21-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 56c8c51d098e0f91bbd05bc36b3d5cb58e334ef98660531d2ec3e997a38ade24
+	source_aarch64 = evox-linux-v1.1.0-beta.21-aarch64-unknown-linux-gnu.tar.gz::https://res.evomap.ai/downloads/evox-linux/releases/1.1.0-beta.21/evox-linux-v1.1.0-beta.21-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 8ae200eb0621cfedd9dcd2fa471e527b09e2a3a7f93dfd7cb83a5b7f2ad4cd74
+
+pkgname = evox-bin
