@@ -6,7 +6,7 @@
 
 pkgname=notepadnext
 pkgver=0.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform reimplementation of Notepad++"
 arch=('x86_64')
 url="https://github.com/dail8859/NotepadNext"
@@ -18,6 +18,8 @@ sha256sums=('59dc5461ca49cf110707649f75568c45834b1cfd094ffb7ac14cab8c2a923a42')
 
 build() {
   cd "$srcdir/$pkgname"
+
+  export QMAKE=qmake6
 
   cmake -B build -S . \
     -DCMAKE_BUILD_TYPE=None \
