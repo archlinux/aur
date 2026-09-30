@@ -1,42 +1,43 @@
 # Maintainer: OpenLyst <https://openlyst.ink>
-# Unstable build from GitHub releases: https://github.com/openlyst/builds/releases
+# Deprecated - use kilt-unstable instead. Kept so existing installs still build.
 pkgname=klit-unstable
-pkgver=9.0.1
-pkgrel=1
-pkgdesc="E926 API client (unstable build from GitHub)"
+pkgver=12.0.0
+pkgrel=2
+pkgdesc="Deprecated - install kilt-unstable instead"
 arch=('x86_64')
 url="https://openlyst.ink"
 license=('GPL3')
 depends=('gtk3')
 optdepends=()
-provides=('klit')
-conflicts=('klit')
+provides=('kilt')
+conflicts=('kilt')
 options=('!strip')
-source=("klit-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-90/klit-9.0.1-2026-04-12-linux-x64.zip")
+install=klit-unstable.install
+source=("klit-unstable-${pkgver}.zip::https://gitlab.com/Openlyst/klit/-/releases/nightly/downloads/kilt-linux-x64-12.0.0-2026-09-29.zip")
 sha256sums=('SKIP')
 
 package() {
     cd "${srcdir}/bundle"
 
-    install -d "${pkgdir}/opt/klit"
-    install -Dm755 "klit" "${pkgdir}/opt/klit/klit"
-    install -d "${pkgdir}/opt/klit/lib"
-    install -Dm644 lib/*.so "${pkgdir}/opt/klit/lib/"
-    cp -r data "${pkgdir}/opt/klit/"
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/klit.desktop" <<EOF
+    install -d "${pkgdir}/opt/kilt"
+    install -Dm755 "kilt" "${pkgdir}/opt/kilt/kilt"
+    install -d "${pkgdir}/opt/kilt/lib"
+    install -Dm644 lib/*.so "${pkgdir}/opt/kilt/lib/"
+    cp -r data "${pkgdir}/opt/kilt/"
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/kilt.desktop" <<EOF
 [Desktop Entry]
-Name=Klit
+Name=Kilt
 Comment=E926 API client (unstable build from GitHub)
-Exec=/opt/klit/klit
-Icon=klit
+Exec=/opt/kilt/kilt
+Icon=kilt
 Type=Application
 Categories=Network;Graphics;
 Keywords=e621;booru;privacy;;
 EOF
     if [ -f "data/flutter_assets/assets/icons/icon.png" ]; then
-        install -Dm644 "data/flutter_assets/assets/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/klit.png"
+        install -Dm644 "data/flutter_assets/assets/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/kilt.png"
     fi
     install -d "${pkgdir}/usr/bin"
-    ln -s /opt/klit/klit "${pkgdir}/usr/bin/klit"
+    ln -s /opt/kilt/kilt "${pkgdir}/usr/bin/kilt"
 }
 

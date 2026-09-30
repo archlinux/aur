@@ -1,15 +1,16 @@
 pkgbase = klit-unstable
-	pkgdesc = E926 API client (unstable build from GitHub)
-	pkgver = 9.0.1
-	pkgrel = 1
+	pkgdesc = Deprecated - install kilt-unstable instead
+	pkgver = 12.0.0
+	pkgrel = 2
 	url = https://openlyst.ink
+	install = klit-unstable.install
 	arch = x86_64
 	license = GPL3
 	depends = gtk3
-	provides = klit
-	conflicts = klit
+	provides = kilt
+	conflicts = kilt
 	options = !strip
-	source = klit-unstable-9.0.1.zip::https://github.com/openlyst/builds/releases/download/build-90/klit-9.0.1-2026-04-12-linux-x64.zip
+	source = klit-unstable-12.0.0.zip::https://gitlab.com/Openlyst/klit/-/releases/nightly/downloads/kilt-linux-x64-12.0.0-2026-09-29.zip
 	sha256sums = SKIP
 
 pkgname = klit-unstable

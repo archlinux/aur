@@ -1,0 +1,10 @@
+post_install() {
+    echo "============================================================"
+    echo " klit-unstable is deprecated and no longer updated."
+    echo " Switch to kilt-unstable:  yay -S kilt-unstable"
+    echo "============================================================"
+}
+
+post_upgrade() {
+    post_install
+}
