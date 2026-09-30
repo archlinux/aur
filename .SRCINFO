@@ -1,6 +1,6 @@
 pkgbase = vimls
 	pkgdesc = Vim script language server written in go.
-	pkgver = 0.1.6
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/neoclide/vimls-go
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = vimls
 	license = MIT
 	makedepends = go
 	conflicts = vimls
-	source = vimls-0.1.6.tar.gz::https://github.com/neoclide/vimls-go/archive/refs/tags/v0.1.6.tar.gz
-	sha256sums = 99bee36af8e2c5da877f4af906b7c740368ba83562147956cbf6bee7aa76ef7e
+	source = vimls-0.2.0.tar.gz::https://github.com/neoclide/vimls-go/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = e72fea5d4eaec82c4da15915a3924a20f8a6fb4a9e5e3bdd409cc158e43bf8c9
 
 pkgname = vimls
