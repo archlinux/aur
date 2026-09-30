@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=spotifast-bin
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ options=('!debug' '!strip')
 _repo="https://github.com/crmne/spotifast"
 source_x86_64=("${_repo}/releases/download/v${pkgver}/spotifast-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_repo}/releases/download/v${pkgver}/spotifast-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('2ce093ec16088d31fe1905321ec9217f1c0d05d9d2619e368e45df2949d09a5b')
-sha256sums_aarch64=('6d041b04814ce93eca1845382204ad86c2736a202cde0f86a5cfcf725ba528da')
+sha256sums_x86_64=('1accb34ae20930475a7f2f9b66add02ce2017a85bd92f1153c9135669a16ba55')
+sha256sums_aarch64=('6c8e2aaead12a05f679c55de7230e227d6b8a27a9e6c2c71b74fff3ee01bdab9')
 
 package() {
   local target
