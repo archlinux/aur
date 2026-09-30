@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Maaslin2
-_pkgver=1.22.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -44,8 +44,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7f5c262861a87a22260455344dee7f44')
-b2sums=('68439a99d5822842efbed371da839cddea9e0163361e85dd7f4039011e4c27f98de7cef78d423525a435e664797e9f89333cb49aba58b70925979dd5b89711a9')
+md5sums=('9dd5b4e319e380176cba12082b554996')
+b2sums=('4592ddf700afd38b99f7fa31dca271b302be85cebe52bea84a5ee704f2a2fe71d68636a0eb64fe4e86730e12be5a9c311bbc5401631e7b687d50d2dda2b0140d')
 
 build() {
   mkdir build
