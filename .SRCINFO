@@ -3,9 +3,8 @@ pkgbase = ocaml-gstreamer
 	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/savonet/ocaml-gstreamer
-	arch = i686
 	arch = x86_64
-	license = LGPL2.1
+	license = LGPL-2.1-or-later
 	makedepends = ocaml-findlib
 	makedepends = dune
 	depends = ocaml
@@ -16,4 +15,3 @@ pkgbase = ocaml-gstreamer
 	sha256sums = e13f105d6fcd3843223ee09b501f40fc1ad2e63175a1382793f4c1db9fb51b21
 
 pkgname = ocaml-gstreamer
-

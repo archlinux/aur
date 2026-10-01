@@ -2,12 +2,12 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-gstreamer
-pkgver=0.3.1
+pkgver=0.3.1 # renovate: datasource=github-tags depName=savonet/ocaml-gstreamer
 pkgrel=1
 pkgdesc="OCaml bindings for the GStreamer multimedia framework"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/savonet/ocaml-gstreamer"
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=('ocaml' 'gstreamer' 'gst-plugins-base')
 options=('!strip')
 makedepends=('ocaml-findlib' 'dune')
