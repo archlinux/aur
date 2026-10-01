@@ -4,7 +4,7 @@
 pkgname='aimp-skin-waingro'
 pkgdesc='AIMP skin: Waingro 1.0 (by Kondakov Andrey)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f88f2350f84a4ba5f89d1d9ba9946709966fb510aafa13629a5e774395df84b6')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Waingro"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-waingro-424.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
