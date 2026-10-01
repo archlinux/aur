@@ -3,9 +3,8 @@ pkgbase = cupp-v3
 	pkgver = 3.0
 	pkgrel = 1
 	url = http://www.remote-exploit.org/?page_id=418
-	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = python2
 	source = http://www.remote-exploit.org/content/cupp-3.0.tar.gz
 	source = cupp-bin
