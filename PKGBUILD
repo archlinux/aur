@@ -1,4 +1,4 @@
-# Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
+# Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 
 pkgname=keifu-bin
 pkgver=0.6.0
