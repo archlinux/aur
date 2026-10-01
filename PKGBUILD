@@ -4,7 +4,7 @@
 pkgname='aimp-skin-blackblue-style'
 pkgdesc='AIMP skin: BlackBlue Style 1.0 (by Nikitko_Cent)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('1a973ddb8d8bd2d01e223a4ffac2593227123730c56d1c5c7faee998f1a3199f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/BlackBlue Style"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-blackblue-style-423.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
