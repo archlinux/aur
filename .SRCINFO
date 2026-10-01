@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-a-graph
+	pkgdesc = AIMP skin: A-Graph 1.0 (by D.D.Konstantinov)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-a-graph-345.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-a-graph-345.archive::https://aimp.ru/?do=catalog.download&id=345
+	sha256sums = 0f396437ca2b29b8e216535031fafc3ce4d167e6e895a4e5be0c4846e53e202a
+
+pkgname = aimp-skin-a-graph
