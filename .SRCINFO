@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-reloop-rp-7000-gld-4k
+	pkgdesc = AIMP skin: Reloop RP-7000 GLD 4K 1.0 (by Black_AVP)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-reloop-rp-7000-gld-4k-1355.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-reloop-rp-7000-gld-4k-1355.archive::https://aimp.ru/?do=catalog.download&id=1355
+	sha256sums = cc46728a0ad6e64545ac7a48c70aef7f99062c74e3d233a06bbb108490ea1f82
+
+pkgname = aimp-skin-reloop-rp-7000-gld-4k
