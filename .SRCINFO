@@ -1,6 +1,6 @@
 pkgbase = shorin-niri-git
 	pkgdesc = Shorin Niri Desktop Environment
-	pkgver = r229.b742d64
+	pkgver = r231.84d6649
 	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/shorin-niri
 	arch = any
@@ -90,7 +90,7 @@ pkgbase = shorin-niri-git
 	optdepends = btop: Resource monitor
 	optdepends = gdu: Disk usage
 	optdepends = shorin-contrib-git: Shorin tools
-	optdepends = linuxqq-clipsync-git: Clipboard sync
+	optdepends = linuxqq-wayland-fix-git: QQ Wayland fixes (screen share, clipboard)
 	optdepends = ddcutil-service: DDC util
 	optdepends = python-pywalfox: Firefox theming
 	optdepends = waypaper: Wallpaper setter
