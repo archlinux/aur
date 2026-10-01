@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-terminal
+	pkgdesc = AIMP skin: Terminal 1.0 (by nazar-shum)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-terminal-419.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-terminal-419.archive::https://aimp.ru/?do=catalog.download&id=419
+	sha256sums = bf08e262a40f413683bfcfa3d0a1eacf77aa6ebfb3704cab5c1fbb0b61a4a46d
+
+pkgname = aimp-skin-terminal
