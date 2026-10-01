@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-google-play-music
+	pkgdesc = AIMP skin: Google Play Music 1.0 (by gbox)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-google-play-music-576.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-google-play-music-576.archive::https://aimp.ru/?do=catalog.download&id=576
+	sha256sums = 87409883e44b43f72468d1355bf718b09ff91ef189db8ebca7e210d3a3dea35e
+
+pkgname = aimp-skin-google-play-music
