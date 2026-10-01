@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-t-white
+	pkgdesc = AIMP skin: T-White 1.1 (by NikolavRj)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-t-white-190.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-t-white-190.archive::https://aimp.ru/?do=catalog.download&id=190
+	sha256sums = f7a6c8ca300ff6c4a4827e9ca40b449bef2ecbc975d5678c8002d3a286bffc3f
+
+pkgname = aimp-skin-t-white
