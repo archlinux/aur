@@ -1,6 +1,6 @@
 pkgbase = opencie-pkcs11
 	pkgdesc = Native PKCS#11 library for the Italian Electronic Identity Card (CIE)
-	pkgver = 1.1.4
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/M0Rf30/opencie-pkcs11
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = opencie-pkcs11
 	depends = libjpeg-turbo
 	depends = libtiff
 	depends = zlib
-	source = opencie-pkcs11-1.1.4.tar.gz::https://github.com/M0Rf30/opencie-pkcs11/archive/refs/tags/1.1.4.tar.gz
+	source = opencie-pkcs11-1.2.1.tar.gz::https://github.com/M0Rf30/opencie-pkcs11/archive/refs/tags/1.2.1.tar.gz
 	source = podofo-1.1.2.tar.gz::https://github.com/podofo/podofo/archive/refs/tags/1.1.2.tar.gz
-	sha256sums = 2db2182600c0dbbc305c18d02725e72aea319e5199f277bfeda245db65ea59c9
+	sha256sums = ed77df6e1f3e52780dbb56e3bb61058eb7fa16e46860b3efb87151cdbf4d6453
 	sha256sums = d6ffe6fc173ac6d6e5b00f5cb9db01990cab1bdf7cc03bdeffce3013bc9ec63a
 
 pkgname = opencie-pkcs11
