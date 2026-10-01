@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-quiny
+	pkgdesc = AIMP skin: Quiny 1.1 (by Aleksandr009)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-quiny-450.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-quiny-450.archive::https://aimp.ru/?do=catalog.download&id=450
+	sha256sums = e4a14edb7ec4bb7af955d205e598e13958c24173e17974a7e5b1be699ab1b0c0
+
+pkgname = aimp-skin-quiny
