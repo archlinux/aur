@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-aimp-steam
+	pkgdesc = AIMP skin: AiMP Steam 1.0 (by l4ko)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-aimp-steam-483.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-aimp-steam-483.archive::https://aimp.ru/?do=catalog.download&id=483
+	sha256sums = 32b3676a9a899f1da76803fd861696dcdff86938de86a71cda6b57018105b770
+
+pkgname = aimp-skin-aimp-steam
