@@ -4,7 +4,7 @@
 pkgname='aimp-skin-s-lime'
 pkgdesc='AIMP skin: s-Lime 1.0 (by KrolliK)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('66b0b75246774c517b999c38dd21fc0cc822f5f0e360eaf6a38de2b421982832')
 
 package() {
-  local dest="$pkgdir$_skinsdir/s-Lime"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-s-lime-505.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
