@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-smoke-and-flame
+	pkgdesc = AIMP skin: Smoke and Flame 2.0 (by Тень)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-smoke-and-flame-974.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-smoke-and-flame-974.archive::https://aimp.ru/?do=catalog.download&id=974
+	sha256sums = c35f8cb7b39368904654b824eab27b7da6d7382298dc80d2b9dcb77b2f31c959
+
+pkgname = aimp-skin-smoke-and-flame
