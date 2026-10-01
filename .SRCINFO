@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-koyna
+	pkgdesc = AIMP skin: Koyna 4.1 (by samix)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-koyna-838.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-koyna-838.archive::https://aimp.ru/?do=catalog.download&id=838
+	sha256sums = fdc07ce5f04be168fdd653097d1aad4c5cb748d5b5d3b26958b5380f74abb370
+
+pkgname = aimp-skin-koyna
