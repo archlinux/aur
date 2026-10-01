@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-aimp-win7-blue
 	pkgdesc = AIMP skin: Aimp Win7 (Blue) 2.2 (by Raider01)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

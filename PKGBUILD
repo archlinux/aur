@@ -4,7 +4,7 @@
 pkgname='aimp-skin-aimp-win7-blue'
 pkgdesc='AIMP skin: Aimp Win7 (Blue) 2.2 (by Raider01)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('384dbca16914e0a573c0c86aef6b9accb56ce3cfaffc4bcf3a07e72c834d43d4')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Aimp Win7 (Blue)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-aimp-win7-blue-156.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
