@@ -4,7 +4,7 @@
 pkgname='aimp-skin-replete'
 pkgdesc='AIMP skin: Replete 2.11 (by alexxei_ill)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('8829b7e25e983adf21cc8125065edccb6ca64e57831fa9194aafa80a40edf9bd')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Replete"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-replete-467.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
