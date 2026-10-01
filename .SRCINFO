@@ -3,9 +3,8 @@ pkgbase = ocaml-frei0r
 	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/savonet/ocaml-frei0r
-	arch = i686
 	arch = x86_64
-	license = LGPL2.1
+	license = LGPL-2.1-or-later
 	makedepends = dune
 	makedepends = ocaml-findlib
 	depends = ocaml
@@ -15,4 +14,3 @@ pkgbase = ocaml-frei0r
 	sha256sums = f6c22e7c9426cfadd1f20f9ee7970b1b5b7546588a872f89f8d8296f7e7bcb08
 
 pkgname = ocaml-frei0r
-
