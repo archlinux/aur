@@ -2,7 +2,7 @@
 
 pkgname=proton-drive-for-linux-bin
 pkgver=2.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Proton Drive client: FUSE files-on-demand mount, CLI, GTK4 app, tray (binaries)"
 arch=('x86_64')
 url="https://proton-drive.narl.io"
@@ -25,12 +25,14 @@ options=('!strip' '!debug')
 _tag="v$pkgver"
 _raw="https://raw.githubusercontent.com/narrrl/proton-drive-linux/$_tag"
 # The release tarball holds the four binaries only, so the desktop integration
-# files come straight from the tagged tree.
+# files come straight from the tagged tree. Every one carries $pkgver in its
+# name: makepkg reuses a cached file of the same name, so an unversioned name
+# keeps the old copy after upstream changes it and fails the checksum.
 source=("proton-drive-linux-$pkgver-x86_64.tar.gz::$_repo/releases/download/$_tag/proton-drive-linux-$pkgver-x86_64.tar.gz"
-        "io.narl.proton-drive-linux.desktop::$_raw/packaging/io.narl.proton-drive-linux.desktop"
-        "io.narl.proton-drive-linux-tray.desktop::$_raw/packaging/io.narl.proton-drive-linux-tray.desktop"
-        "io.narl.proton-drive-linux.svg::$_raw/packaging/io.narl.proton-drive-linux.svg"
-        "proton-drive.service::$_raw/packaging/proton-drive.service"
+        "io.narl.proton-drive-linux-$pkgver.desktop::$_raw/packaging/io.narl.proton-drive-linux.desktop"
+        "io.narl.proton-drive-linux-tray-$pkgver.desktop::$_raw/packaging/io.narl.proton-drive-linux-tray.desktop"
+        "io.narl.proton-drive-linux-$pkgver.svg::$_raw/packaging/io.narl.proton-drive-linux.svg"
+        "proton-drive-$pkgver.service::$_raw/packaging/proton-drive.service"
         "LICENSE-$pkgver::$_raw/LICENSE")
 sha256sums=('c0af4ff57dc6f587b1b8431f3180b00d45211389f3dc675569af45f64e89cb36'
             'd190d6771fff0b975271fb62fd3fb0fa8bbf17d7278c10853c18557855b0c123'
@@ -45,15 +47,15 @@ package() {
   install -Dm755 "$srcdir/pdfs-app"    "$pkgdir/usr/bin/pdfs-app"
   install -Dm755 "$srcdir/pdfs-prompt" "$pkgdir/usr/bin/pdfs-prompt"
 
-  install -Dm644 "$srcdir/io.narl.proton-drive-linux.desktop" \
+  install -Dm644 "$srcdir/io.narl.proton-drive-linux-$pkgver.desktop" \
     "$pkgdir/usr/share/applications/io.narl.proton-drive-linux.desktop"
-  install -Dm644 "$srcdir/io.narl.proton-drive-linux-tray.desktop" \
+  install -Dm644 "$srcdir/io.narl.proton-drive-linux-tray-$pkgver.desktop" \
     "$pkgdir/etc/xdg/autostart/io.narl.proton-drive-linux-tray.desktop"
-  install -Dm644 "$srcdir/io.narl.proton-drive-linux.svg" \
+  install -Dm644 "$srcdir/io.narl.proton-drive-linux-$pkgver.svg" \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.narl.proton-drive-linux.svg"
 
   # systemd user unit for the auto-mount daemon; enabled per user, not by pacman.
-  install -Dm644 "$srcdir/proton-drive.service" \
+  install -Dm644 "$srcdir/proton-drive-$pkgver.service" \
     "$pkgdir/usr/lib/systemd/user/proton-drive.service"
 
   # Translations ship precompiled in the release tarball.
