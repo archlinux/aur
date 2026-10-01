@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-gravity-new-year
+	pkgdesc = AIMP skin: Gravity - New Year 1.0 (by Raider01)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-gravity-new-year-498.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-gravity-new-year-498.archive::https://aimp.ru/?do=catalog.download&id=498
+	sha256sums = 08f0385db67f46dee477e5ec9ddd9355cc9cb994dfb1a487c88f37d147b15f05
+
+pkgname = aimp-skin-gravity-new-year
