@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-hm-pure-blue
 	pkgdesc = AIMP skin: hm_pure_blue 1.0 (by flon)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
