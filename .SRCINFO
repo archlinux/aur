@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-euphoria-lux-shine
+	pkgdesc = AIMP skin: Euphoria Lux Shine 2.3 (by Aleksandr009)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-euphoria-lux-shine-922.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-euphoria-lux-shine-922.archive::https://aimp.ru/?do=catalog.download&id=922
+	sha256sums = 95882e3b28104f3fc0c6028520e487d80630c45848e2ee04d93dc1e1ea116334
+
+pkgname = aimp-skin-euphoria-lux-shine
