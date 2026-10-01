@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-lame
-pkgver=0.3.7
+pkgver=0.3.7 # renovate: datasource=github-tags depName=savonet/ocaml-lame
 pkgrel=1
 pkgdesc="OCaml bindings to the LAME mp3 encoder"
 arch=('x86_64')
