@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-dual-c828
+	pkgdesc = AIMP skin: Dual C828 1.01 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-dual-c828-1375.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-dual-c828-1375.archive::https://aimp.ru/?do=catalog.download&id=1375
+	sha256sums = 9d7518be59f7518271791ccff95a1e133aee5d13eedbba20387d5ab6193dc4ab
+
+pkgname = aimp-skin-dual-c828
