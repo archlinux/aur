@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-zeon-212
+	pkgdesc = AIMP skin: Zeon 1.0 (by -=Lee=-)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-zeon-212-212.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-zeon-212-212.archive::https://aimp.ru/?do=catalog.download&id=212
+	sha256sums = c2336703eae9b693c3acd84d4910eea9d876313e27c32a30bed91ada7bdd5304
+
+pkgname = aimp-skin-zeon-212
