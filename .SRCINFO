@@ -1,11 +1,18 @@
 pkgbase = upm
-	pkgdesc = Universal package manager: Python, Node.js, Ruby, Emacs Lisp.
-	pkgver = 1.0
+	pkgdesc = A fast, tiny package manager for the npm registry, written in TypeScript.
+	pkgver = 1.3.0
 	pkgrel = 1
+	url = https://github.com/unjs/upm
 	arch = any
 	license = MIT
-	source = https://github.com/replit/upm/releases/download/v1.0/upm_1.0_linux_amd64.tar.gz
-	md5sums = b5447e9387ac5d9c0d7c78106941cbef
+	makedepends = git
+	makedepends = nodejs>=22.3
+	depends = nodejs>=22.3
+	provides = upm-bin
+	provides = upm-git
+	conflicts = upm-bin
+	conflicts = upm-git
+	source = git+https://github.com/unjs/upm.git#tag=v1.3.0
+	b2sums = e16db61a781db379d0bc5ab23ddc4f920b54ec86b405ed246719f70726c71d41ea46ef6c13cbfb35eac302a0df91e7b8e4671e58670024f6cc1d634dce00445f
 
 pkgname = upm
-
