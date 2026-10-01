@@ -4,7 +4,7 @@
 pkgname='aimp-skin-groovem-light'
 pkgdesc='AIMP skin: GrooveM (Light) 1.0 (by amdpastrana)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('78fb2443cf35b9a022a7782506da64ca5a3edbf3c5e74cbc94a36d806a1f6a8a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/GrooveM (Light)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-groovem-light-853.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
