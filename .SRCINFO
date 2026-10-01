@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-fantasy
+	pkgdesc = AIMP skin: Fantasy 1.3 (by Black_AVP)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-fantasy-558.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-fantasy-558.archive::https://aimp.ru/?do=catalog.download&id=558
+	sha256sums = 44636a56cc2c388ae70f5fd863eb9b9dd840097ed82130b8222d055b5363bbc6
+
+pkgname = aimp-skin-fantasy
