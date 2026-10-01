@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-oda-102-stereo
 	pkgdesc = AIMP skin: Ода-102-стерео 1.05 (by McClaud)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

@@ -4,7 +4,7 @@
 pkgname='aimp-skin-oda-102-stereo'
 pkgdesc='AIMP skin: Ода-102-стерео 1.05 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('4fb8b4ee85e4e17d9855c24b989c4d1ba7d855f9a0b29ef42cef089c816ee263')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Ода-102-стерео"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-oda-102-stereo-1330.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
