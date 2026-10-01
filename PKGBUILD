@@ -1,7 +1,7 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=13.6.1
+_pkgver=13.7.0
 _branding=dr460nized
 
 __pkgname=$_pkgname
@@ -16,54 +16,54 @@ url="https://gitlab.com/garuda-linux/firedragon/firedragon13"
 arch=(x86_64 aarch64)
 license=(MPL-2.0)
 depends=(alsa-lib
-  at-spi2-core
-  bash
-  cairo
-  dbus
-  ffmpeg
-  fontconfig
-  freetype2
-  gdk-pixbuf2
-  glib2
-  glibc
-  gtk3
-  hicolor-icon-theme
-  libgcc
-  libpulse
-  libstdc++
-  libx11
-  libxcb
-  libxcomposite
-  libxdamage
-  libxext
-  libxfixes
-  libxrandr
-  libxss
-  libxt
-  mime-types
-  nspr
-  nss
-  pango
-  ttf-font)
+         at-spi2-core
+         bash
+         cairo
+         dbus
+         ffmpeg
+         fontconfig
+         freetype2
+         gdk-pixbuf2
+         glib2
+         glibc
+         gtk3
+         hicolor-icon-theme
+         libgcc
+         libpulse
+         libstdc++
+         libx11
+         libxcb
+         libxcomposite
+         libxdamage
+         libxext
+         libxfixes
+         libxrandr
+         libxss
+         libxt
+         mime-types
+         nspr
+         nss
+         pango
+         ttf-font)
 makedepends=(git)
 optdepends=('hunspell-en_US: Spell checking, American English'
-  'libnotify: Notification integration'
-  'networkmanager: Location detection via available WiFi networks'
-  'speech-dispatcher: Text-to-Speech'
-  'xdg-desktop-portal: Screensharing with Wayland')
+            'libnotify: Notification integration'
+            'networkmanager: Location detection via available WiFi networks'
+            'speech-dispatcher: Text-to-Speech'
+            'xdg-desktop-portal: Screensharing with Wayland')
 provides=($_pkgname)
 conflicts=($_pkgname)
 replaces=($__pkgname-next-bin)
 options=(!emptydirs)
 install=$_pkgname.install
 noextract=($__pkgname-v$_pkgver.linux-x64.tar.xz
-  $__pkgname-v$_pkgver.linux-arm64.tar.xz)
+           $__pkgname-v$_pkgver.linux-arm64.tar.xz)
 source=($_pkgname::git+$url.git#tag=v$_pkgver)
 source_x86_64=($__pkgname-v$_pkgver.linux-x64.tar.xz::$url/-/releases/v$_pkgver/downloads/$__pkgname.linux-x64.tar.xz)
 source_aarch64=($__pkgname-v$_pkgver.linux-arm64.tar.xz::$url/-/releases/v$_pkgver/downloads/$__pkgname.linux-arm64.tar.xz)
-sha256sums=('f210d5405305dd5bfd72e53d6d03aaa53a4d3764cd76dfbe990ecba49cc78e73')
-sha256sums_x86_64=('1b165e3d291af4e2c179f3ae06db1387f9c4af5543931c94d8d086d4f6e6bb46')
-sha256sums_aarch64=('ef8c7a000aecd7feff542f82af0c682c2c0ce7b8e9e26220808dcbe63f87fcc8')
+sha256sums=('ec3b61b9e1f318a12e42e2adba8bfd4408cbe146ad0fc69df7e9d0b8428909eb')
+sha256sums_x86_64=('5bdf419e0b754b76dcfb908771b7f5dc780a74711c4c2c72f8bc32a470c6b145')
+sha256sums_aarch64=('17a3ceb7bc773d7587e3b5cfcb5e6206f22d3a546451179158315a3374cb1a10')
 
 package() {
   mkdir -p "$pkgdir/usr/lib"
@@ -75,7 +75,7 @@ package() {
 
   local appdir="$pkgdir/usr/lib/$_pkgname"
 
-  install -Dvm644 /dev/stdin "$appdir/browser/defaults/preferences/vendor.js" << END
+  install -Dvm644 /dev/stdin "$appdir/browser/defaults/preferences/vendor.js" <<END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
@@ -92,7 +92,7 @@ pref("extensions.autoDisableScopes", 11);
 pref("browser.gnome-search-provider.enabled", true);
 END
 
-  install -Dvm644 /dev/stdin "$appdir/distribution/distribution.ini" << END
+  install -Dvm644 /dev/stdin "$appdir/distribution/distribution.ini" <<END
 [Global]
 id=${pkgname}
 version=${pkgver}-${pkgrel}
@@ -115,7 +115,7 @@ END
   install -Dvm644 $_pkgname/assets/$_rdns.metainfo.xml -t "$pkgdir/usr/share/metainfo"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
+  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
 #!/bin/sh
 exec /usr/lib/$_pkgname/$_pkgname "\$@"
 END
@@ -130,7 +130,7 @@ END
   fi
 
   # Register GNOME search provider
-  install -Dvm644 /dev/stdin "$pkgdir/usr/share/gnome-shell/search-providers/$_pkgname.search-provider.ini" << END
+  install -Dvm644 /dev/stdin "$pkgdir/usr/share/gnome-shell/search-providers/$_pkgname.search-provider.ini" <<END
 [Shell Search Provider]
 DesktopId=$_pkgname.desktop
 BusName=org.mozilla.${_pkgname//-/_}.SearchProvider
