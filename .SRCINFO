@@ -1,6 +1,6 @@
 pkgbase = ocaml-camomile
 	pkgdesc = Comprehensive Unicode library for OCaml
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/ocaml-community/Camomile
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ocaml-camomile
 	makedepends = ocaml-findlib
 	depends = ocaml-camlp-streams
 	depends = ocaml-stdlib-random
-	source = ocaml-camomile-2.0.0.tar.gz::https://github.com/ocaml-community/Camomile/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = 6bb421d0bb81594acb5dd902101a0609022d576fe373d956724fa60120bfd03d
+	source = ocaml-camomile-2.1.0.tar.gz::https://github.com/ocaml-community/Camomile/archive/refs/tags/v2.1.0.tar.gz
+	sha256sums = 368fbfd4d3bc140078fdc46c68f75b6d1a4cc421f58447b401af45a7d41f4e58
 
 pkgname = ocaml-camomile

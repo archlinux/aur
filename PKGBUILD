@@ -4,7 +4,7 @@
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=ocaml-camomile
-pkgver=2.0.0 # renovate: datasource=github-tags depName=ocaml-community/Camomile
+pkgver=2.1.0 # renovate: datasource=github-tags depName=ocaml-community/Camomile
 pkgrel=1
 pkgdesc="Comprehensive Unicode library for OCaml"
 arch=('x86_64')
@@ -30,4 +30,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('6bb421d0bb81594acb5dd902101a0609022d576fe373d956724fa60120bfd03d')
+sha256sums=('368fbfd4d3bc140078fdc46c68f75b6d1a4cc421f58447b401af45a7d41f4e58')
