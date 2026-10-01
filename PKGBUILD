@@ -4,7 +4,7 @@
 pkgname='aimp-skin-onkyo-ta-2066-and-onkyo-m-504'
 pkgdesc='AIMP skin: Onkyo TA-2066 & Onkyo M-504 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a6d062699a2f28b2383c224d6b1fa2ef5382f4031528da5f28d1e40aafa4b663')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Onkyo TA-2066 & Onkyo M-504"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-onkyo-ta-2066-and-onkyo-m-504-812.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
