@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-laguna
+	pkgdesc = AIMP skin: Laguna 1.0 (by sagitt.67)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-laguna-777.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-laguna-777.archive::https://aimp.ru/?do=catalog.download&id=777
+	sha256sums = aba66a19750629c2d9089aede57923f10125437582406b915f326deb50a11af2
+
+pkgname = aimp-skin-laguna
