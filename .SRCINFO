@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-t-black-nrj-exelord
 	pkgdesc = AIMP skin: T-Black NRJ ExeLord 1.0.1 (by ExeLord)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

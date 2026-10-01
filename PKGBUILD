@@ -4,7 +4,7 @@
 pkgname='aimp-skin-t-black-nrj-exelord'
 pkgdesc='AIMP skin: T-Black NRJ ExeLord 1.0.1 (by ExeLord)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('57cc747710fab6e709387242e0732af9bc5ea22c25712263d2f2e4985d90bbe9')
 
 package() {
-  local dest="$pkgdir$_skinsdir/T-Black NRJ ExeLord"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-t-black-nrj-exelord-313.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
