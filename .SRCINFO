@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-plate
+	pkgdesc = AIMP skin: Plate 2 (by Zhenya)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-plate-426.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-plate-426.archive::https://aimp.ru/?do=catalog.download&id=426
+	sha256sums = 7b6ab81a8e83975aab756c68c45a6f2e9e1651a5f7da6dbaa7f2c704166918e1
+
+pkgname = aimp-skin-plate
