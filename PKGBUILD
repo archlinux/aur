@@ -1,6 +1,6 @@
 # Maintainer: mahirsn <mahirsuna72@gmail.com>
 pkgname=mmsimpulse-git
-pkgver=r123.b37b715
+pkgver=r125.d28db2b
 pkgrel=1
 pkgdesc="A Wayland session of KWin plus the illogical-impulse shell — no desktop environment"
 arch=('any')
@@ -33,6 +33,8 @@ optdepends=(
   'playerctl: media keys and player control'
   'tesseract: text recognition on a snipped region'
   'wf-recorder: screen recording'
+  'gpu-screen-recorder: instant replay in the overlay, saved with Alt+F10'
+  'mangohud: the FPS limiter in the overlay'
   'bc: arithmetic in the theming scripts'
   'breeze: the default cursor theme, which KWin warns about when absent'
   'illogical-impulse-basic: the widget set this shell is built on'
