@@ -3,7 +3,7 @@
 pkgname=bettbox-pre-bin
 _pkgname=Bettbox
 pkgver=1.19.4pre1
-pkgrel=2
+pkgrel=1
 _pkgver="${pkgver/pre/-pre}"
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash."
 arch=('x86_64' 'aarch64')
