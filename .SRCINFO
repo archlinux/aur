@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-euphoria-vertisal-tabs
+	pkgdesc = AIMP skin: Euphoria Vertiсal Tabs 3.2 (by Я Гриша!)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-euphoria-vertisal-tabs-461.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-euphoria-vertisal-tabs-461.archive::https://aimp.ru/?do=catalog.download&id=461
+	sha256sums = 519dbc1e05bb3fbf1ff4657d96695a0faa40bb00579f3e120a83c0b03a1cd41f
+
+pkgname = aimp-skin-euphoria-vertisal-tabs
