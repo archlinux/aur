@@ -2,7 +2,7 @@
 
 _npmname=eslint-plugin-security
 pkgname=nodejs-$_npmname
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="ESLint rules for Node Security"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('jq' 'npm')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('42e049a3c262178022d9071d8adae9f9d9adf93426e20c82ac5d3bff5ba5a277')
+sha256sums=('c9598d0e164dc23e8f785830b9bc137b0947ddf0f82c24451b70b36b4a1aa951')
 
 latestver() {
     curl -fsSL "https://registry.npmjs.org/${_npmname}/latest" | jq -r '.version'

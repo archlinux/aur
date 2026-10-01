@@ -1,6 +1,6 @@
 pkgbase = nodejs-eslint-plugin-security
 	pkgdesc = ESLint rules for Node Security
-	pkgver = 4.1.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/eslint-community/eslint-plugin-security
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = nodejs-eslint-plugin-security
 	makedepends = npm
 	depends = nodejs
 	depends = eslint
-	noextract = nodejs-eslint-plugin-security-4.1.0.tgz
+	noextract = nodejs-eslint-plugin-security-4.2.0.tgz
 	options = !debug
-	source = nodejs-eslint-plugin-security-4.1.0.tgz::https://registry.npmjs.org/eslint-plugin-security/-/eslint-plugin-security-4.1.0.tgz
-	sha256sums = 42e049a3c262178022d9071d8adae9f9d9adf93426e20c82ac5d3bff5ba5a277
+	source = nodejs-eslint-plugin-security-4.2.0.tgz::https://registry.npmjs.org/eslint-plugin-security/-/eslint-plugin-security-4.2.0.tgz
+	sha256sums = c9598d0e164dc23e8f785830b9bc137b0947ddf0f82c24451b70b36b4a1aa951
 
 pkgname = nodejs-eslint-plugin-security
