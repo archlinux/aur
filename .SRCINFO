@@ -12,4 +12,3 @@ pkgbase = perl-net-ldapapi
 	sha256sums = a38f05c0446b596ce698259fd34371da6ceb3936276c0a87167fc6f2f544c13e
 
 pkgname = perl-net-ldapapi
-

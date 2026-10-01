@@ -2,7 +2,7 @@
 
 pkgname=perl-net-ldapapi
 _realname=Net-LDAPapi
-pkgver=3.0.7
+pkgver=3.0.7 # renovate: datasource=cpan depName=Net::LDAPapi
 pkgrel=1
 pkgdesc="Find matches to a pattern in a series of files and related functions"
 arch=(any)
