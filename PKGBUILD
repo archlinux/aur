@@ -4,7 +4,7 @@
 pkgname='aimp-skin-dreaminess'
 pkgdesc='AIMP skin: Dreaminess 1.0 (by Zigar)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d721f367aaf99cd8ee3ef0ef842ce3a0f88df219a3225923590c39c381687c59')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Dreaminess"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-dreaminess-887.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
