@@ -4,7 +4,7 @@
 pkgname='aimp-skin-akai-gx-635d'
 pkgdesc='AIMP skin: Akai GX-635D 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('6f78bc3369cb656936412ba4b5657a74643745f7cd6a44040b8f73642bf4590b')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Akai GX-635D"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-akai-gx-635d-399.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
