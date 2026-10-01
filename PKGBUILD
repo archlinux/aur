@@ -4,7 +4,7 @@
 pkgname='aimp-skin-mac-os-x-style'
 pkgdesc='AIMP skin: Mac OS X Style 1.0 (by sagitt.67)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('515218a3a4c5d2eaf004cdda7fadeaa14b8931334d01697935b785e305313682')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Mac OS X Style"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-mac-os-x-style-531.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
