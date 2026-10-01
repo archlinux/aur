@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-nvidia
+	pkgdesc = AIMP skin: NVIDIA 1.0 (by sagitt.67)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-nvidia-425.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-nvidia-425.archive::https://aimp.ru/?do=catalog.download&id=425
+	sha256sums = 08c390119e296cd8f072e77c88d95e771bdc6eac419fa4fbd1600f1b9e184d82
+
+pkgname = aimp-skin-nvidia
