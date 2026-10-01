@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-fraus
+	pkgdesc = AIMP skin: Fraus 1.1.8 (by Zigar)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-fraus-864.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-fraus-864.archive::https://aimp.ru/?do=catalog.download&id=864
+	sha256sums = e7c7fc5243a144d48a063ddc3060a3b187f1afe745e720db806c96cd455b2b77
+
+pkgname = aimp-skin-fraus
