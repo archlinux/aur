@@ -1,6 +1,6 @@
 pkgbase = bioma-shell
 	pkgdesc = A desktop shell for niri, built with Quickshell: living surfaces rather than a bar
-	pkgver = 1.0.0beta14
+	pkgver = 1.0.0beta15
 	pkgrel = 1
 	url = https://github.com/AkusenArcade/Bioma
 	install = bioma-shell.install
@@ -33,6 +33,7 @@ pkgbase = bioma-shell
 	optdepends = networkmanager: Wi-Fi, wired, VPN profiles and proxy triggers
 	optdepends = bluez-utils: Bluetooth
 	optdepends = cups: printers in the connectivity cell
+	optdepends = business-network-wizard: company network setup (NTLM proxy, VPN, 802.1X, shares), opened from the connectivity cell
 	optdepends = avahi: network printers found and added driverless
 	optdepends = ddcutil: the brightness of external monitors
 	optdepends = pipewire: audio and the alarm sound
@@ -47,7 +48,7 @@ pkgbase = bioma-shell
 	optdepends = ttf-spectral: the expressive typeface
 	optdepends = ttf-orbitron: the technical typeface
 	options = !lto
-	source = bioma-shell-1.0.0beta14.tar.gz::https://github.com/AkusenArcade/Bioma/archive/refs/tags/v1.0.0-beta.14.tar.gz
-	sha256sums = c9054ef9d460cc0149d1e47e05283bafb18a9d656ac66100483ee7c58c2aa7b8
+	source = bioma-shell-1.0.0beta15.tar.gz::https://github.com/AkusenArcade/Bioma/archive/refs/tags/v1.0.0-beta.15.tar.gz
+	sha256sums = 1f6c59f59e6ab9ffeddc10ac7553a6d65aa9d95acb01a3184129eb4b5bc1539d
 
 pkgname = bioma-shell

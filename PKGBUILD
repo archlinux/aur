@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.14
-pkgver=1.0.0beta14
+_tag=v1.0.0-beta.15
+pkgver=1.0.0beta15
 pkgrel=1
 pkgdesc="A desktop shell for niri, built with Quickshell: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
@@ -36,6 +36,7 @@ optdepends=(
     'networkmanager: Wi-Fi, wired, VPN profiles and proxy triggers'
     'bluez-utils: Bluetooth'
     'cups: printers in the connectivity cell'
+    'business-network-wizard: company network setup (NTLM proxy, VPN, 802.1X, shares), opened from the connectivity cell'
     'avahi: network printers found and added driverless'
     'ddcutil: the brightness of external monitors'
     'pipewire: audio and the alarm sound'
@@ -55,7 +56,7 @@ optdepends=(
 options=('!lto')
 install=bioma-shell.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('c9054ef9d460cc0149d1e47e05283bafb18a9d656ac66100483ee7c58c2aa7b8')
+sha256sums=('1f6c59f59e6ab9ffeddc10ac7553a6d65aa9d95acb01a3184129eb4b5bc1539d')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
