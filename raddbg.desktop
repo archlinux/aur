@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=RAD Debugger
+Comment=RAD Debugger
+Exec=/usr/bin/raddbg
+Icon=/usr/share/raddbg/logo.png
+Terminal=false
+Type=Application
+Categories=Development
+StartupNotify=false
