@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-red-mmc
+	pkgdesc = AIMP skin: Red MMC 1.0 (by NikolavRj)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-red-mmc-509.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-red-mmc-509.archive::https://aimp.ru/?do=catalog.download&id=509
+	sha256sums = aa2e41a1e6ce89b1285a1d4c54b093a7a6906038ebee9dc97e52f38c9fd8f439
+
+pkgname = aimp-skin-red-mmc
