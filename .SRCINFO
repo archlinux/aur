@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-euphoriaghost
+	pkgdesc = AIMP skin: EuphoriaGhost 1.11 (by Nitehost)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-euphoriaghost-176.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-euphoriaghost-176.archive::https://aimp.ru/?do=catalog.download&id=176
+	sha256sums = bf910a29249ad26a9db52c0729dd3ceb7187e8b4e76ba2f69a9d17c98455d504
+
+pkgname = aimp-skin-euphoriaghost
