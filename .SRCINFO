@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-classic-glass
+	pkgdesc = AIMP skin: Classic Glass 1.5 (by SeReG@)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-classic-glass-243.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-classic-glass-243.archive::https://aimp.ru/?do=catalog.download&id=243
+	sha256sums = 6885a4b9ed9fa27591235b32d4097867c227f2f638efb49398a8169afbb8bc9c
+
+pkgname = aimp-skin-classic-glass
