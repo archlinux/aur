@@ -4,7 +4,7 @@
 pkgname='aimp-skin-electro'
 pkgdesc='AIMP skin: Electro 1.1 (by electro)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f592502f017d6f980c4bb8024bd0b9906c81be2cfaa25e9a4f053c1a3df2610d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Electro"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-electro-609.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
