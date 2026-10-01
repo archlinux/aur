@@ -4,7 +4,7 @@
 pkgname='aimp-skin-mediatower'
 pkgdesc='AIMP skin: MediaTower 3.6.4 (by Soolo)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('e0260196333f120ffb355552eb9b53c5dbf3f2360d7a8b09cefe87fe72aa9788')
 
 package() {
-  local dest="$pkgdir$_skinsdir/MediaTower"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-mediatower-651.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
