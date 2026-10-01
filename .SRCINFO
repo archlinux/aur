@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-yupiter-203
+	pkgdesc = AIMP skin: Юпитер 203 1.33 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-yupiter-203-1206.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-yupiter-203-1206.archive::https://aimp.ru/?do=catalog.download&id=1206
+	sha256sums = 6ee6da27f72e795c7de8c5c4846d5b56522d4de66999bce63cac8b30d7d9a43e
+
+pkgname = aimp-skin-yupiter-203
