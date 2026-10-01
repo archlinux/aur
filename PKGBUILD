@@ -4,7 +4,7 @@
 pkgname='aimp-skin-red-sensor-137'
 pkgdesc='AIMP skin: Red Sensor 1.1 (by -=Lee=-)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('0e80a06c0b1a69d37a892423cef6fa3f41fb2810d54ca1c20b1cdd1e506d18b2')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Red Sensor (137)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-red-sensor-137-137.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
