@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-vilma-104
+	pkgdesc = AIMP skin: Vilma 104 1.37 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-vilma-104-884.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-vilma-104-884.archive::https://aimp.ru/?do=catalog.download&id=884
+	sha256sums = b9fc5f32836c7daa77a6dca4c1ae85c6e3b74c0ac5bd786c4833fc5f88223032
+
+pkgname = aimp-skin-vilma-104
