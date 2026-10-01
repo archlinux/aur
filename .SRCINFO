@@ -1,0 +1,17 @@
+pkgbase = droprun
+	pkgdesc = Linux sandboxing that doesn't get in your way
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/wrr/drop
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go>=1.25
+	depends = passt
+	optdepends = gvisor: gVisor sandbox runtime (runsc)
+	conflicts = drop
+	conflicts = droprun-git
+	source = droprun-0.3.0.tar.gz::https://github.com/wrr/drop/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 1b55e422b7fc959134efc9c2568bd9252d9bb500ad309874c13ec6cee33bc399
+
+pkgname = droprun
