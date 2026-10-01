@@ -4,7 +4,7 @@
 pkgname='aimp-skin-dark-wood-visual-edition'
 pkgdesc='AIMP skin: Dark Wood (Visual Edition) 1.3 (by shox)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('ed0095f168dc22926794f9be843cf7c351cfe645e897a1cb03ae02476e193bc2')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Dark Wood (Visual Edition)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-dark-wood-visual-edition-306.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
