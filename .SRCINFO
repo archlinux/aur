@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-wzp-fusionhd
+	pkgdesc = AIMP skin: WZP FusionHD 3.0 (by memo-se)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-wzp-fusionhd-456.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-wzp-fusionhd-456.archive::https://aimp.ru/?do=catalog.download&id=456
+	sha256sums = aa6fe66a72095f182b333c31d87f8de6ea7991867502fd439b0baed656bf729a
+
+pkgname = aimp-skin-wzp-fusionhd
