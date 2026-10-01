@@ -4,7 +4,7 @@
 pkgname='aimp-skin-ecoute-2'
 pkgdesc='AIMP skin: Ecoute 2 1.0 (by Mery Dev)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('3fdf13e4bcc0e4db7e04f5b6a67b2641f8c184f1e37d7927f89f0b0691869893')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Ecoute 2"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-ecoute-2-951.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
