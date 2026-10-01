@@ -1,0 +1,21 @@
+pkgbase = kadr
+	pkgdesc = Kadrowanie zbiorcze — ten sam kadr dla wielu obrazów naraz (GTK4/libadwaita)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/look997/kadr
+	arch = x86_64
+	license = MIT
+	depends = gdk-pixbuf2
+	depends = gtk4
+	depends = libadwaita
+	depends = python-cairo
+	depends = python-gobject
+	optdepends = libheif: HEIF/AVIF
+	optdepends = librsvg: SVG
+	optdepends = libtiff: TIFF
+	optdepends = libwebp: WebP
+	optdepends = nemo: pokazywanie zapisanych plików z zaznaczeniem (org.freedesktop.FileManager1 ShowItems)
+	source = kadr-1.0.0.tar.gz::https://github.com/look997/kadr/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 01fd5458a1d8a9409d80a52205faa311655ae47e94c03aedaf24b175d09d6cc1
+
+pkgname = kadr
