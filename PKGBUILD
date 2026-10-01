@@ -1,8 +1,8 @@
 # Maintainer: Johannes Schriewer <hallo@dunkelstern.de
 pkgname=veilamp
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
-pkgdesc="Veilamp is a Winamp-inspired player with veilid peer to peer sharing between friends"
+pkgdesc="Winamp-inspired player with veilid peer to peer sharing between friends"
 arch=('x86_64')
 url="https://veilamp.com/"
 license=('MIT')
@@ -13,7 +13,7 @@ source=(
   "https://gitlab.com/wrewtopia-labs-group/Veilamp/-/archive/v$pkgver/Veilamp-v$pkgver.tar.bz2"
   "veilamp.desktop"
 )
-sha512sums=('c89dd5046683192ea990799f91d5939a4e86ae397c79c775297dd279407caf6f25280f5a65238241ba287d77ba458029ebbec49ba51314be7b5cab6e784b9b96'
+sha512sums=('42ea5d090c06d347f17d66f57a8cbe93a4dedadb3e5928778c58f293d55b53ebbfbb9d31ddbf01f9418a556e7637d6bd1c4b22d850eae7ab688e0e3f01f5c756'
             'f2d18f72244b7d838f2d4d3233e972380f14146a9e11aff1655c380b1ccb6839a1c76d692816d4772e447b51058f141d6e4b80454266f0d68c6a55bc6afe4660')
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = veilamp
-	pkgdesc = Veilamp is a Winamp-inspired player with veilid peer to peer sharing between friends
-	pkgver = 0.3.2
+	pkgdesc = Winamp-inspired player with veilid peer to peer sharing between friends
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://veilamp.com/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = veilamp
 	depends = alsa-lib
 	depends = webkit2gtk-4.1
 	options = !lto
-	source = https://gitlab.com/wrewtopia-labs-group/Veilamp/-/archive/v0.3.2/Veilamp-v0.3.2.tar.bz2
+	source = https://gitlab.com/wrewtopia-labs-group/Veilamp/-/archive/v0.3.3/Veilamp-v0.3.3.tar.bz2
 	source = veilamp.desktop
-	sha512sums = c89dd5046683192ea990799f91d5939a4e86ae397c79c775297dd279407caf6f25280f5a65238241ba287d77ba458029ebbec49ba51314be7b5cab6e784b9b96
+	sha512sums = 42ea5d090c06d347f17d66f57a8cbe93a4dedadb3e5928778c58f293d55b53ebbfbb9d31ddbf01f9418a556e7637d6bd1c4b22d850eae7ab688e0e3f01f5c756
 	sha512sums = f2d18f72244b7d838f2d4d3233e972380f14146a9e11aff1655c380b1ccb6839a1c76d692816d4772e447b51058f141d6e4b80454266f0d68c6a55bc6afe4660
 
 pkgname = veilamp
