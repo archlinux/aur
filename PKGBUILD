@@ -4,7 +4,7 @@
 pkgname='aimp-skin-mareala-4'
 pkgdesc='AIMP skin: Mareala 4 1.0 (by amdpastrana)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('57a6cfb98150e0151abfcf759c3d48ec4e85c28211e7b8f53ac7eafef8658b9e')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Mareala 4"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-mareala-4-1231.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
