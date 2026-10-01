@@ -4,7 +4,7 @@
 pkgname='aimp-skin-gothic-theatre'
 pkgdesc='AIMP skin: Gothic Theatre 1.0 (by Freyr (aka Kristall_k8))'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('89e42b9c12ba94fa3bb5e076f59b8bcf819b56296b829c230d0e57e6918d3ac4')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Gothic Theatre"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-gothic-theatre-5.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
