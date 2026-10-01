@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-g-o-a-t
+	pkgdesc = AIMP skin: G.O.A.T. 1.0 (by Aleksandr009)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-g-o-a-t-835.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-g-o-a-t-835.archive::https://aimp.ru/?do=catalog.download&id=835
+	sha256sums = ce314d02734ec302f6b0cf40ce5cf9e64079e5e004abfe02a764c01eaea49bf4
+
+pkgname = aimp-skin-g-o-a-t
