@@ -1,6 +1,6 @@
 pkgbase = nomadnet
 	pkgdesc = Off-grid, resilient mesh communication with strong encryption
-	pkgver = 1.4.2
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://reticulum.network/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = nomadnet
 	makedepends = python-setuptools
 	depends = python-lxmf
 	depends = python-urwid
-	source = nomadnet-1.4.2::https://files.pythonhosted.org/packages/source/n/nomadnet/nomadnet-1.4.2.tar.gz
-	sha256sums = 7777ee7b2af30a907ae9ce026621fa032204159abbe55bbf4c0f504d6df19d91
+	source = nomadnet-1.4.4::https://files.pythonhosted.org/packages/source/n/nomadnet/nomadnet-1.4.4.tar.gz
+	sha256sums = 7fd433b890755b3187bc440d502f6fd50ec9b59bbf655283dff44d4274cf1b35
 
 pkgname = nomadnet
