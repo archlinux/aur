@@ -4,7 +4,7 @@
 pkgname='aimp-skin-dark-lagoon'
 pkgdesc='AIMP skin: Dark Lagoon 2.3 (by Krieger)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c60eccb10cd1b44e9bb017f306209fb4773490f89c6528fe7723d5c99a821894')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Dark Lagoon"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-dark-lagoon-109.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
