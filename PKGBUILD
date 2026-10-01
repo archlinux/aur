@@ -4,7 +4,7 @@
 pkgname='aimp-skin-mi-sk-blue'
 pkgdesc='AIMP skin: MI-SK Blue 1.0 (by Zigar)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('404c98768029709db1b7f309481ba89165fe537eb7c89145aeb865cdab1d3ea7')
 
 package() {
-  local dest="$pkgdir$_skinsdir/MI-SK Blue"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-mi-sk-blue-460.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
