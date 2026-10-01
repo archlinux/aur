@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-prolux-revolution
+	pkgdesc = AIMP skin: Prolux Revolution 1.0 (by Aleksandr009)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-prolux-revolution-449.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-prolux-revolution-449.archive::https://aimp.ru/?do=catalog.download&id=449
+	sha256sums = c65f07932c3dfe730dfffdcb8b801fc88208c44e8b9c8663bc72c5adf6b38876
+
+pkgname = aimp-skin-prolux-revolution
