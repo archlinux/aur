@@ -5,9 +5,9 @@ pkgname=ocaml-ao
 pkgver=0.2.4 # renovate: datasource=github-tags depName=savonet/ocaml-ao
 pkgrel=1
 pkgdesc="OCaml libao bindings"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/savonet/ocaml-ao"
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=('ocaml' 'libao')
 makedepends=('ocaml-findlib' 'dune')
 options=('!strip')
