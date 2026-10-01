@@ -4,7 +4,7 @@
 pkgname='aimp-skin-yupiter-giove-203-1-stereo'
 pkgdesc='AIMP skin: ЮПИТЕР (Giove) 203-1 стерео 3.0 (by Пупс)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('ab1c593a8b2e51d0ea31cc661180fe249745be0e6efd5c19f59e25d0f1f59b12')
 
 package() {
-  local dest="$pkgdir$_skinsdir/ЮПИТЕР (Giove) 203-1 стерео"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-yupiter-giove-203-1-stereo-759.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
