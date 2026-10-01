@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-aimp-modern
 	pkgdesc = AIMP skin: AIMP Modern 3.63 (by memo-se)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

@@ -4,7 +4,7 @@
 pkgname='aimp-skin-aimp-modern'
 pkgdesc='AIMP skin: AIMP Modern 3.63 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('bbb636aeff51cd704ad1ba52055acb59139246ae14e9ee70ffce51e35f4b6b29')
 
 package() {
-  local dest="$pkgdir$_skinsdir/AIMP Modern"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-aimp-modern-604.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
