@@ -1,0 +1,17 @@
+pkgbase = better-nsticky
+	pkgdesc = Sticky and staged window management for the niri Wayland compositor (drop-in nsticky)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/fram446742/better-nsticky
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cargo
+	depends = glibc
+	optdepends = vicinae: recommended selector for `nsticky stage restore`
+	provides = nsticky
+	conflicts = nsticky
+	options = !lto
+	source = better-nsticky-0.5.0.tar.gz::https://github.com/fram446742/better-nsticky/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 0eec1defd9ba2d4c82ea6195e7fddcf9bb8b7f70a3038e878cd2c7f6959b3693
+
+pkgname = better-nsticky
