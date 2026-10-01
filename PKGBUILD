@@ -4,7 +4,7 @@
 pkgname='aimp-skin-morion'
 pkgdesc='AIMP skin: Morion 1.33 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('1652dbaad66dc6501f274226c8d5ce23d01fefb631a16336fdcbf8f158326a26')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Morion"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-morion-889.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
