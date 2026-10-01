@@ -4,7 +4,7 @@
 pkgname='aimp-skin-vkontakte'
 pkgdesc='AIMP skin: Vkontakte 4.0.11 (by Soolo)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('2c59f8d630adbd54310c3c85bbb7268843acc606aba9e29c40c85c835d0f330d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Vkontakte"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-vkontakte-161.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
