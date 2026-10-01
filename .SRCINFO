@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-abp-black
+	pkgdesc = AIMP skin: ABP Black 1.3 (by ZeoN7)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-abp-black-241.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-abp-black-241.archive::https://aimp.ru/?do=catalog.download&id=241
+	sha256sums = f160cfe02fee2e409063e815c5de4aee28e3fda10b9e331ddd76d72f91d78c3c
+
+pkgname = aimp-skin-abp-black
