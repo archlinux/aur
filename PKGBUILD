@@ -4,7 +4,7 @@
 pkgname='aimp-skin-anime-gold'
 pkgdesc='AIMP skin: Anime Gold 1.0 (by AztekLORD)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('168cbedca3a95f9320fb3382d65e3658f614a09502faec8f6adf3283057e15f4')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Anime Gold"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-anime-gold-471.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-anime-gold
 	pkgdesc = AIMP skin: Anime Gold 1.0 (by AztekLORD)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
