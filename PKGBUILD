@@ -2,7 +2,7 @@
 pkgname=opencie-pkcs11
 pkgver=1.1.4 # renovate: datasource=github-tags depName=M0Rf30/opencie-pkcs11
 pkgrel=1
-_podofover=1.1.1 # renovate: datasource=github-tags depName=podofo/podofo
+_podofover=1.1.2 # renovate: datasource=github-tags depName=podofo/podofo
 pkgdesc="Native PKCS#11 library for the Italian Electronic Identity Card (CIE)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/M0Rf30/opencie-pkcs11"
@@ -16,7 +16,7 @@ makedepends=('meson' 'ninja' 'cmake' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/M0Rf30/opencie-pkcs11/archive/refs/tags/$pkgver.tar.gz"
   "podofo-$_podofover.tar.gz::https://github.com/podofo/podofo/archive/refs/tags/$_podofover.tar.gz")
 sha256sums=('2db2182600c0dbbc305c18d02725e72aea319e5199f277bfeda245db65ea59c9'
-            '16943528b37798d8663ffedc97190803e525d0a1dcb021fdbf9d35242831890a')
+            'd6ffe6fc173ac6d6e5b00f5cb9db01990cab1bdf7cc03bdeffce3013bc9ec63a')
 
 prepare() {
   # arch-meson runs with --wrap-mode=nodownload, so pre-seed the PoDoFo meson
