@@ -1,6 +1,6 @@
 pkgbase = frameit
 	pkgdesc = Temporary selection rectangle overlay for Wayland and Hyprland screen shares
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/eggfriedrice24/frameit
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = frameit
 	depends = glibc
 	depends = libgcc
 	optdepends = hyprland: register the trigger with frameit bind
-	source = frameit-0.1.0.tar.gz::https://github.com/eggfriedrice24/frameit/archive/refs/tags/v0.1.0.tar.gz
-	b2sums = 5effc94c8c1f41f3552a936005090ec45f570e625c9a03d781d621ada2b43a5993ff5a9899d584c842579946561d30fa481c437263647bb5934fb73612fde2ab
+	source = frameit-0.2.0.tar.gz::https://github.com/eggfriedrice24/frameit/archive/refs/tags/v0.2.0.tar.gz
+	b2sums = 48cbedc1a772318d55fb816878f1d801300d26ce74c1f3350cde72993c1a0891ed33099384f725d752c7bb006ad5fa0fd6074689d1b90fd9a49e1c6e3c82b40c
 
 pkgname = frameit

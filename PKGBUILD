@@ -1,7 +1,7 @@
 # Maintainer: eggfriedrice <eggfriedricew.g.o@gmail.com>
 
 pkgname=frameit
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Temporary selection rectangle overlay for Wayland and Hyprland screen shares'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc' 'libgcc')
 makedepends=('cargo')
 optdepends=('hyprland: register the trigger with frameit bind')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('5effc94c8c1f41f3552a936005090ec45f570e625c9a03d781d621ada2b43a5993ff5a9899d584c842579946561d30fa481c437263647bb5934fb73612fde2ab')
+b2sums=('48cbedc1a772318d55fb816878f1d801300d26ce74c1f3350cde72993c1a0891ed33099384f725d752c7bb006ad5fa0fd6074689d1b90fd9a49e1c6e3c82b40c')
 
 # Keep debug info in the binary so makepkg can split it into the -debug package.
 export CARGO_PROFILE_RELEASE_DEBUG=2 CARGO_PROFILE_RELEASE_STRIP=false
