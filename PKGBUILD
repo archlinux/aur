@@ -4,7 +4,7 @@
 pkgname='aimp-skin-mock-up'
 pkgdesc='AIMP skin: Mock Up 1.0 (by Your Creations)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c30a95a1ea3b64b07784e6db6a789f0881ce588c94210c38e87df570ee0a70e0')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Mock Up"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-mock-up-514.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
