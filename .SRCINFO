@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-chromotherapy
+	pkgdesc = AIMP skin: Chromotherapy 1.0 (by Henrique Oliveira)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-chromotherapy-626.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-chromotherapy-626.archive::https://aimp.ru/?do=catalog.download&id=626
+	sha256sums = 6ede13a3bcff22d61aab4a6f9d0e8fe2679521ce61cf21135be2b882aa116b69
+
+pkgname = aimp-skin-chromotherapy
