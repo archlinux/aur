@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-dervy
+	pkgdesc = AIMP skin: Dervy 1.0 (by -=Lee=-)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-dervy-206.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-dervy-206.archive::https://aimp.ru/?do=catalog.download&id=206
+	sha256sums = f85b7819f554e72601e2cb34ade4c65e75650f72848f95fc270a2526cbb4556a
+
+pkgname = aimp-skin-dervy
