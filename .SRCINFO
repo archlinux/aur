@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-aero-style
+	pkgdesc = AIMP skin: Aero Style 1.0 (by vid50)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-aero-style-548.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-aero-style-548.archive::https://aimp.ru/?do=catalog.download&id=548
+	sha256sums = f6e4790f3ad31e8e4db0e2f7c54217d73b39d97b5f7f7b8466d1ca77dfb3fde3
+
+pkgname = aimp-skin-aero-style
