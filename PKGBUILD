@@ -4,7 +4,7 @@
 pkgname='aimp-skin-reloop-rp-7000-gld-4k'
 pkgdesc='AIMP skin: Reloop RP-7000 GLD 4K 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('cc46728a0ad6e64545ac7a48c70aef7f99062c74e3d233a06bbb108490ea1f82')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Reloop RP-7000 GLD 4K"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-reloop-rp-7000-gld-4k-1355.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
