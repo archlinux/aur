@@ -1,0 +1,27 @@
+pkgbase = deepseek-harness-desktop-bin
+	pkgdesc = Desktop shell for the DeepSeek Harness agent runtime
+	pkgver = 0.2.0rc.2
+	pkgrel = 1
+	url = https://github.com/deepseek-ai/deepseek-harness
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libxtst
+	depends = libnotify
+	depends = libsecret
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	optdepends = libayatana-appindicator: system tray icon support
+	provides = deepseek-harness-desktop
+	conflicts = deepseek-harness-desktop
+	noextract = deepseek-harness-0.2.0-rc.2-linux-amd64.deb
+	options = !strip
+	options = !debug
+	source = deepseek-harness-0.2.0-rc.2-linux-amd64.deb::https://github.com/ZacharyZhang-NY/deepseek-harness/releases/download/desktop-v0.2.0-rc.2/deepseek-harness-0.2.0-rc.2-linux-amd64.deb
+	sha256sums = defc5e533be640159c9d83b8059f1b6ed23178cd6253f6d5755d714f5099d4fa
+
+pkgname = deepseek-harness-desktop-bin
