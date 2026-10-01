@@ -4,7 +4,7 @@
 pkgname='aimp-skin-romantik-304'
 pkgdesc='AIMP skin: Romantik 304 1.83 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('cfb0cd1f50408d33005e5fcb77e26651e1d75612f23a69c8c71cf068070b90fe')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Romantik 304"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-romantik-304-618.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
