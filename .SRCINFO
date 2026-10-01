@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-cloud
+	pkgdesc = AIMP skin: Cloud 1.4 (by Kadae)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-cloud-538.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-cloud-538.archive::https://aimp.ru/?do=catalog.download&id=538
+	sha256sums = 4d690fb50049526ebd3003d378752ad5ae9036d90d7e38fee0c5a7e27b980a68
+
+pkgname = aimp-skin-cloud
