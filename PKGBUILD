@@ -4,7 +4,7 @@
 pkgname='aimp-skin-plate-all-in-one'
 pkgdesc='AIMP skin: Plate All-In-One 1.0 (by Zhenya)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('37fc1faccd87a6b2f7b587af809e0d6f2150a31c40b0a3c601254bebe5926468')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Plate All-In-One"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-plate-all-in-one-532.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
