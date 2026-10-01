@@ -4,7 +4,7 @@
 pkgname='aimp-skin-cute'
 pkgdesc='AIMP skin: Cute 1.2 (by Wispik)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('2d06eabcc11307b64b7c92a40ebc54b6bd6cf74648c7ad177219761f0ce91589')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Cute"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-cute-290.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
