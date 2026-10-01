@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-millenium-151
 	pkgdesc = AIMP skin: Millenium 1.0 (by Prince)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
