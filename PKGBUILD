@@ -26,6 +26,8 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
+    # TODO: jpm doesn't respect CFLAGS or LDFLAGS
+    # This means it ignores the settings in /etc/makepkg.conf
     jpm build
 }
 
