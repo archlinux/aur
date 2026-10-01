@@ -1,0 +1,26 @@
+pkgbase = libtde-git
+	pkgdesc = What TDE applications share: configuration, theme, window frame and dialogs (latest commit)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zskamljic/libtde
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = lua
+	depends = qt6-base
+	depends = qt6-svg
+	optdepends = librsvg: drawing icons that Qt draws with black patches
+	optdepends = adwaita-icon-theme: fallback for icons missing from the icon theme
+	provides = libtde
+	provides = libtde.so
+	conflicts = libtde
+	source = libtde::git+https://github.com/zskamljic/libtde.git
+	sha256sums = SKIP
+
+pkgname = libtde-git
