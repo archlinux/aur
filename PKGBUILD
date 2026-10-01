@@ -4,7 +4,7 @@
 pkgname='aimp-skin-glass-aimp'
 pkgdesc='AIMP skin: Glass AIMP 1.19 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('215f964a647b276ddef9d60b6f3eecb29e40f44869dfadff894a33100c88ad93')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Glass AIMP"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-glass-aimp-454.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
