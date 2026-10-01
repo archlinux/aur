@@ -4,7 +4,7 @@
 pkgname='aimp-skin-glossy-plastic'
 pkgdesc='AIMP skin: Glossy Plastic 1.0 (by sagitt.67)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d91d445a73d316b82f4bc409db3673264f115781315bc7e0d30fceef01e5d483')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Glossy Plastic"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-glossy-plastic-523.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
