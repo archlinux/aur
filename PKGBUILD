@@ -4,7 +4,7 @@
 pkgname='aimp-skin-g-o-a-t'
 pkgdesc='AIMP skin: G.O.A.T. 1.0 (by Aleksandr009)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('ce314d02734ec302f6b0cf40ce5cf9e64079e5e004abfe02a764c01eaea49bf4')
 
 package() {
-  local dest="$pkgdir$_skinsdir/G.O.A.T"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-g-o-a-t-835.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
