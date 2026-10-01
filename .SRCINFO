@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-4x-all-in-one
+	pkgdesc = AIMP skin: 4X All-in-One 1.0 (by Henrique Oliveira)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-4x-all-in-one-682.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-4x-all-in-one-682.archive::https://aimp.ru/?do=catalog.download&id=682
+	sha256sums = d39470dd49dca520a258dac463c10cfd6f2a3a4239916e9c509a560f391602c6
+
+pkgname = aimp-skin-4x-all-in-one
