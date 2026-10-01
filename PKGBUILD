@@ -12,29 +12,36 @@
 _py="python"
 pkgname="blivet-gui"
 pkgver=2.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='GUI tool for storage configuration'
-arch=(
-  'x86_64'
-  'pentium4'
-  'i686'
-  'arm')
+arch=('any')
 license=('GPL-2.0-or-later')
 url="https://github.com/storaged-project/${pkgname}"
 depends=(
+  'libblockdev-btrfs'
+  'libblockdev-crypto'
+  'libblockdev-dm'
+  'libblockdev-fs'
+  'libblockdev-loop'
+  'libblockdev-lvm'
+  'libblockdev-mdraid'
+  'libblockdev-mpath'
+  'libblockdev-nvme'
+  'libblockdev-part'
+  'libblockdev-swap'
   "${_py}"
   "${_py}-blivet"
   "${_py}-cairo"
+  "${_py}-dasbus"
+  "${_py}-libblockdev"
   "${_py}-gobject"
   "${_py}-pid"
   'adwaita-icon-theme')
 makedepends=(
-  'git'
-  'make'
   'gettext'
   "${_py}-setuptools")
 source=(
-  "${url}/archive/refs/tags/${pkgver}.tar.gz")
+  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('5fba88e535012357b10f8a62bb5dd3379a981f0e9ad1c9292ae226f6d4ff0112')
 
 build() {
