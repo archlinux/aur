@@ -11,7 +11,6 @@ pkgbase = seclists-git
 	depends = perl
 	provides = seclists=2026.1.r300.g7b0b0b855
 	conflicts = seclists
-	options = !debug
 	source = git+https://github.com/danielmiessler/seclists
 	b2sums = SKIP
 

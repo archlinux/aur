@@ -9,7 +9,6 @@ url="https://github.com/danielmiessler/$_name"
 license=('MIT')
 provides=("$_name=$pkgver")
 conflicts=("$_name")
-options=(!debug)
 depends=(
   'bash'
   'python'
