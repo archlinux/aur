@@ -4,7 +4,7 @@
 pkgname='aimp-skin-classic'
 pkgdesc='AIMP skin: Classic 1.5 (by SeReG@)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('2e187a98ae432b17745c5eeb15df01908aeda7a338bf1c63ce507810ef3f89ac')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Classic"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-classic-242.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
