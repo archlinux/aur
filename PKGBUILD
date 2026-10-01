@@ -4,7 +4,7 @@
 pkgname='aimp-skin-tascam-32'
 pkgdesc='AIMP skin: Tascam 32 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a7e9bfdcb864c8dc56f65c1b28cf5709aef31864fefe7ab219f08d90fa66e574')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Tascam 32"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-tascam-32-616.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
