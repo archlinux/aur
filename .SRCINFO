@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-mareala2
+	pkgdesc = AIMP skin: Mareala2 1.0 (by amdpastrana)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-mareala2-993.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-mareala2-993.archive::https://aimp.ru/?do=catalog.download&id=993
+	sha256sums = f2d5fbaa593a3334d09d261da6a0d0311c69906b86b0da93faf9ecd2c22b56ed
+
+pkgname = aimp-skin-mareala2
