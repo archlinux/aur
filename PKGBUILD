@@ -2,7 +2,7 @@
 pkgname=openchamber
 _npmname=@openchamber/web
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop and web interface for OpenCode AI agent"
 arch=('x86_64')
 url="https://github.com/btriapitsyn/openchamber"
