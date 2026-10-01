@@ -1,6 +1,6 @@
 pkgbase = colmsg
 	pkgdesc = A CLI tool for 櫻坂46メッセージ, 日向坂46メッセージ, 乃木坂46メッセージ, 齋藤飛鳥メッセージ, 白石麻衣メッセージ, and yodel app.
-	pkgver = 4.0.0
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/proshunsuke/colmsg
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = colmsg
 	depends = gcc-libs
 	depends = openssl
 	options = !lto
-	source = git+https://github.com/proshunsuke/colmsg#commit=5e6cdf453104f1fc88a013cb9204b0f2adf307b0
+	source = git+https://github.com/proshunsuke/colmsg#commit=09d15b69e5aa2dd7abc6e78ad658096fc25254ae
 	sha256sums = SKIP
 
 pkgname = colmsg
