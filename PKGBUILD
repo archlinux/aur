@@ -4,7 +4,7 @@
 pkgname='aimp-skin-red-extasy'
 pkgdesc='AIMP skin: Red Extasy 1.3 (by shox)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('6bd01e3de9e2ba923242f4f7ee3ffb81ebeaaa4e6b143476569dd710ab61c05d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Red Extasy"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-red-extasy-253.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
