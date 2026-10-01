@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-dark
+	pkgdesc = AIMP skin: Dark 1.7 (by svist0plas)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-dark-1067.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-dark-1067.archive::https://aimp.ru/?do=catalog.download&id=1067
+	sha256sums = 9c61928e82262731b5b384d9b90f793d6aaaf5cc6cc4831b2a14f75841830999
+
+pkgname = aimp-skin-dark
