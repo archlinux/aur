@@ -4,7 +4,7 @@
 pkgname='aimp-skin-gravity'
 pkgdesc='AIMP skin: Gravity 2.1 (by Raider01)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('36c7f7fc536e0e334a16bcffd9e2cb9876cb06d9e4d48758b9bd28489d03c409')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Gravity"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-gravity-217.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
