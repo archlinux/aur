@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-glossy-plastic
+	pkgdesc = AIMP skin: Glossy Plastic 1.0 (by sagitt.67)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-glossy-plastic-523.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-glossy-plastic-523.archive::https://aimp.ru/?do=catalog.download&id=523
+	sha256sums = d91d445a73d316b82f4bc409db3673264f115781315bc7e0d30fceef01e5d483
+
+pkgname = aimp-skin-glossy-plastic
