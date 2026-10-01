@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-vkontakte
+	pkgdesc = AIMP skin: Vkontakte 4.0.11 (by Soolo)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-vkontakte-161.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-vkontakte-161.archive::https://aimp.ru/?do=catalog.download&id=161
+	sha256sums = 2c59f8d630adbd54310c3c85bbb7268843acc606aba9e29c40c85c835d0f330d
+
+pkgname = aimp-skin-vkontakte
