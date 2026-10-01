@@ -1,6 +1,6 @@
 # Maintainer: VanillaGreen <brad@vanillagreen.com>
 pkgname=vsys-git
-pkgver=0.9.0.r51.g5e9d133
+pkgver=0.9.0.r56.gba2872c
 pkgrel=1
 pkgdesc="Terminal dashboard for Linux machines that run AI agents (tracks main)"
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/${pkgname}"
 	bun install --frozen-lockfile
-	bun build src/main.ts --compile --outfile vsys
+	bun run compile
 }
 
 package() {
