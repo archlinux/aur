@@ -4,7 +4,7 @@
 pkgname='aimp-skin-pirate'
 pkgdesc='AIMP skin: Pirate 1.0 (by McZloy)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('38965e3a391859046bbf3cfd025ee57d8077b98ff03d6e562ddca897254fc4f4')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Pirate"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-pirate-444.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
