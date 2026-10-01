@@ -1,0 +1,25 @@
+# Arch build artifacts and tarballs
+*.pkg.tar
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+*.tar.gz
+*.tar.xz
+*.tar.bz2
+*.tar.zst
+*.zip
+
+# Source directories & build directories
+src/
+pkg/
+
+# Submodule/download directories
+*.gitsubmodule
+
+# Log and metadata files generated during build
+*.log
+*.log.*
+*.diff
+
+# Signature/Keyring files created during testing
+*.sig

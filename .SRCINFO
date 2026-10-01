@@ -1,15 +1,15 @@
 pkgbase = ttf-osifont
 	pkgdesc = Free TrueType font for CAD projects
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/hikikomori82/osifont
 	arch = any
 	license = GPL-3.0-with-font-exception
-	source = https://github.com/hikikomori82/osifont/raw/c54cd3ede4fc3257ef5a6904c215f82e24372735/osifont.ttf
-	source = https://github.com/hikikomori82/osifont/raw/c54cd3ede4fc3257ef5a6904c215f82e24372735/osifont-italic.ttf
-	source = https://github.com/hikikomori82/osifont/raw/c54cd3ede4fc3257ef5a6904c215f82e24372735/README.md
-	sha256sums = c25475f0596cac572adde4a52bcff276a7d7e53fd9a47e8bada9023d68b3e6e2
+	source = ttf-osifont-osifont-2e9aa86a8a09b044e08c00f5a4a2505dc3ca9f6e.ttf::https://github.com/hikikomori82/osifont/raw/2e9aa86a8a09b044e08c00f5a4a2505dc3ca9f6e/osifont.ttf
+	source = ttf-osifont-osifont-italic-2e9aa86a8a09b044e08c00f5a4a2505dc3ca9f6e.ttf::https://github.com/hikikomori82/osifont/raw/2e9aa86a8a09b044e08c00f5a4a2505dc3ca9f6e/osifont-italic.ttf
+	source = ttf-osifont-README-2e9aa86a8a09b044e08c00f5a4a2505dc3ca9f6e.md::https://github.com/hikikomori82/osifont/raw/2e9aa86a8a09b044e08c00f5a4a2505dc3ca9f6e/README.md
+	sha256sums = 31e457a464b27ad0e3137bf957f0f4044ed9a3678df91eea2aea55c97c677208
 	sha256sums = b42f97241fd3b84c2c1a74e5c9efd1582c6a2bac8d6198dad8b2d862cdf72f67
-	sha256sums = SKIP
+	sha256sums = 7ba462231fd835682f2594db1207ef2eed8dc4b0f25a160dfe8350313de526c2
 
 pkgname = ttf-osifont
