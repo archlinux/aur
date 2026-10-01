@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-aimp-bento
+	pkgdesc = AIMP skin: AIMP Bento 2.1 (by memo-se)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-aimp-bento-603.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-aimp-bento-603.archive::https://aimp.ru/?do=catalog.download&id=603
+	sha256sums = 107a13f9c15778e726613619be6832a4cd94cb0f9d3badad8e9e1398a9d39555
+
+pkgname = aimp-skin-aimp-bento
