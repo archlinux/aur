@@ -4,7 +4,7 @@
 pkgname='aimp-skin-red-bias'
 pkgdesc='AIMP skin: Red Bias 2 (by Zimmi)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('18e0b80d63ea4f5acaee60c15de539807ef6062f467ded944cd80f8badc3aa76')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Red Bias"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-red-bias-1324.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
