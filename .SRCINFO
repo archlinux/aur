@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-bliss-dark-smod
 	pkgdesc = AIMP skin: Bliss Dark SMod 4.0.19 (by Soolo)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

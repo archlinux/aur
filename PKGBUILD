@@ -4,7 +4,7 @@
 pkgname='aimp-skin-bliss-dark-smod'
 pkgdesc='AIMP skin: Bliss Dark SMod 4.0.19 (by Soolo)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('4f7b0f8307a5afc2b6525cf059c2bdcbb180267d09758c22a5376d1f54d7e5e2')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Bliss Dark SMod"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-bliss-dark-smod-735.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
