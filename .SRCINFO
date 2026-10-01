@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-terran
+	pkgdesc = AIMP skin: Terran 1.04 (by Argelius)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-terran-1091.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-terran-1091.archive::https://aimp.ru/?do=catalog.download&id=1091
+	sha256sums = a751518c791b050a53ebee8d10d273bcc7772a1ba943683ef6ab6d376f834d9e
+
+pkgname = aimp-skin-terran
