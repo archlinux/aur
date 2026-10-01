@@ -4,7 +4,7 @@
 pkgname='aimp-skin-vkmini'
 pkgdesc='AIMP skin: Vkmini 3.5.3 (by Soolo)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('225c999cf03b581a8232ad6f401fdc49fd4c4bf52783c00e0ba089dc413068c1')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Vkmini"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-vkmini-360.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
