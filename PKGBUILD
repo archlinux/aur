@@ -4,7 +4,7 @@
 pkgname='aimp-skin-aimp-bento'
 pkgdesc='AIMP skin: AIMP Bento 2.1 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('107a13f9c15778e726613619be6832a4cd94cb0f9d3badad8e9e1398a9d39555')
 
 package() {
-  local dest="$pkgdir$_skinsdir/AIMP Bento"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-aimp-bento-603.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
