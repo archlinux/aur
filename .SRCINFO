@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-trusko-skin
+	pkgdesc = AIMP skin: TRUSKO Skin 1.0 (by t_RUS_ko)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-trusko-skin-491.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-trusko-skin-491.archive::https://aimp.ru/?do=catalog.download&id=491
+	sha256sums = 5f7335f280cbccdcc719d512429c947197d5d32dde36681f389d43263ad38c25
+
+pkgname = aimp-skin-trusko-skin
