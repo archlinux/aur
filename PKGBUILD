@@ -4,7 +4,7 @@
 pkgname='aimp-skin-comfort'
 pkgdesc='AIMP skin: Comfort 1.0 (by Freyr (aka Kristall_k8))'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d637e3e43c1e9d613ff7269e1c7d7ec0eadcc3618bb93e44e5c86de599b3ad2c')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Comfort"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-comfort-4.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
