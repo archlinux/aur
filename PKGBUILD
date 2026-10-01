@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Yet another (unofficial) cross-platform MEGA downloader/uploader/streaming suite"
 arch=('any')
 url="https://github.com/tonikelope/megabasterd"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('java-runtime')
 source=("${url}/releases/download/v${pkgver}/${_name}_${pkgver}.jar"
   "${pkgname%%-bin}.sh"
