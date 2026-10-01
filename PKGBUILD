@@ -4,7 +4,7 @@
 pkgname='aimp-skin-perfect-horiz-tabs-layout'
 pkgdesc='AIMP skin: Perfect! (Horiz. tabs layout) 1.0 (by Hayo Tee (aka HX722))'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('9f926950d3dbeda62bd323205d259fb89a4242eb2646850d7182b2b32a1218e6')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Perfect! (Horiz. tabs layout)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-perfect-horiz-tabs-layout-350.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
