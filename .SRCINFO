@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-olimp-mpk-005s-1
+	pkgdesc = AIMP skin: Олимп МПК-005С-1 1.2 (by Пупс)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-olimp-mpk-005s-1-897.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-olimp-mpk-005s-1-897.archive::https://aimp.ru/?do=catalog.download&id=897
+	sha256sums = f4d7301fc7bc17fc2adb946cf1def79fa3e1719a721c483b61691fc3b2da0b65
+
+pkgname = aimp-skin-olimp-mpk-005s-1
