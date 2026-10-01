@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-laplaing
+	pkgdesc = AIMP skin: Laplaing 1.0 (by Demcha)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-laplaing-346.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-laplaing-346.archive::https://aimp.ru/?do=catalog.download&id=346
+	sha256sums = c118e6210ab75a99e3ef9e4abd868971f3b63616a9945717084a774184c1a0b2
+
+pkgname = aimp-skin-laplaing
