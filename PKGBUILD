@@ -5,9 +5,9 @@ pkgname=ocaml-pulseaudio
 pkgver=0.1.5 # renovate: datasource=github-tags depName=savonet/ocaml-pulseaudio
 pkgrel=1
 pkgdesc="OCaml bindings for pulseaudio"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/savonet/ocaml-pulseaudio"
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=('ocaml' 'libpulse')
 makedepends=('ocaml-findlib' 'dune')
 options=('!strip')
