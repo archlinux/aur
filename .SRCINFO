@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-amazonite
+	pkgdesc = AIMP skin: Amazonite 1.0 (by Zhenya)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-amazonite-341.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-amazonite-341.archive::https://aimp.ru/?do=catalog.download&id=341
+	sha256sums = 45f60b6f366b38cc144af66e6eb3729ccad87696c2f669448b230ec5675596a5
+
+pkgname = aimp-skin-amazonite
