@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-p-l-a-y-e-r
+	pkgdesc = AIMP skin: p.l.a.y.e.r. 1.0 (by redkhmear)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-p-l-a-y-e-r-476.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-p-l-a-y-e-r-476.archive::https://aimp.ru/?do=catalog.download&id=476
+	sha256sums = f3e5d30c5236ee08eadd67a2170e34939b6a1b81763cb5421163dc46485f47e9
+
+pkgname = aimp-skin-p-l-a-y-e-r
