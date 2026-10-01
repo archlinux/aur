@@ -4,7 +4,7 @@
 pkgname='aimp-skin-prolux-revolution'
 pkgdesc='AIMP skin: Prolux Revolution 1.0 (by Aleksandr009)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c65f07932c3dfe730dfffdcb8b801fc88208c44e8b9c8663bc72c5adf6b38876')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Prolux Revolution"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-prolux-revolution-449.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
