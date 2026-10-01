@@ -4,7 +4,7 @@
 pkgname='aimp-skin-soots'
 pkgdesc='AIMP skin: Soots 4.0.1 (by gr-e)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('675bead4376bf1cbc5a35d09c14100a7128295d25b82594016c5f6041f0d71ea')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Soots"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-soots-923.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
