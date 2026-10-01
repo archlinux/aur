@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-red-glamur
+	pkgdesc = AIMP skin: Red glamur 1.0 (by FALSE)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-red-glamur-133.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-red-glamur-133.archive::https://aimp.ru/?do=catalog.download&id=133
+	sha256sums = 6ca4cfc8e0bc4a71c61ee6a301b62adf9abb0d61a94c536c2664a5990ce9662c
+
+pkgname = aimp-skin-red-glamur
