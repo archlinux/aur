@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-gt
+	pkgdesc = AIMP skin: GT 1.005 (by samix)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-gt-892.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-gt-892.archive::https://aimp.ru/?do=catalog.download&id=892
+	sha256sums = d92ed57c1cf6b5888c950e853a1d1b8e1aaa5dd51a504f09e53759f83fca6daa
+
+pkgname = aimp-skin-gt
