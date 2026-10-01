@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-astra-110
 	pkgdesc = AIMP skin: Astra 110 2.02 (by igor6507)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

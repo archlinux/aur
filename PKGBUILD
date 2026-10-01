@@ -4,7 +4,7 @@
 pkgname='aimp-skin-astra-110'
 pkgdesc='AIMP skin: Astra 110 2.02 (by igor6507)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('45e4afb57154945c3c97b17fdfe116cce9c00a3ee299b492d2848a1683a445ad')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Astra 110"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-astra-110-895.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
