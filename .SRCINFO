@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-redly
+	pkgdesc = AIMP skin: Redly 1.3.1 (by Aleksandr009)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-redly-868.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-redly-868.archive::https://aimp.ru/?do=catalog.download&id=868
+	sha256sums = 102222a6aed0077d6cc7e513d53215f9abf9b025d0781671db1500bd23c625b1
+
+pkgname = aimp-skin-redly
