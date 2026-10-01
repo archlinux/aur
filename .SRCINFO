@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-sony-tc-mr2
+	pkgdesc = AIMP skin: Sony TC-MR2 1.0 (by Black_AVP)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-sony-tc-mr2-758.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-sony-tc-mr2-758.archive::https://aimp.ru/?do=catalog.download&id=758
+	sha256sums = 54be4810986637c521692fb309594f76b1c3bf80d89a8af143707506a3fc6297
+
+pkgname = aimp-skin-sony-tc-mr2
