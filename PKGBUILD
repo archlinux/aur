@@ -2,12 +2,12 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-faad
-pkgver=0.5.1
+pkgver=0.5.1 # renovate: datasource=github-tags depName=savonet/ocaml-faad
 pkgrel=1
 pkgdesc="OCaml bindings for the libfaad AAC decoder library"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/savonet/ocaml-faad"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('ocaml' 'faad2')
 makedepends=('ocaml-findlib' 'dune')
 options=('!strip')
@@ -28,6 +28,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('f62a7c4a48177ab6fab199502a335ceeea88f53e503d679c18fcc1b5343f20fd'
-'skip')
-
+sha256sums=('f62a7c4a48177ab6fab199502a335ceeea88f53e503d679c18fcc1b5343f20fd')
