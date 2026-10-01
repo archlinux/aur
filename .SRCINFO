@@ -1,6 +1,6 @@
 pkgbase = app-finder
 	pkgdesc = Find AUR apps that were tested on a phone-sized screen, and install them, for Quickshell
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/SimonSchubert/app-finder
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = app-finder
 	depends = polkit
 	optdepends = yay: install and remove apps from the AUR
 	optdepends = xdg-utils: open an app's AUR page
-	source = https://github.com/SimonSchubert/app-finder/releases/download/v1.0.3/app-finder-1.0.3.tar.gz
-	sha256sums = 53ac0e0c7b2c99ea7cc7f09ffeb91b798e118a87ed92728e3b5dc9d43711c4bd
+	source = https://github.com/SimonSchubert/app-finder/releases/download/v1.0.4/app-finder-1.0.4.tar.gz
+	sha256sums = 9bc476da66fba29ba8fff94af25075fc630d340682472a3dcd3443d02bcb7357
 
 pkgname = app-finder

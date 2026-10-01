@@ -4,7 +4,7 @@
 # /usr/bin/app-finder as its own Quickshell process, and the helper that
 # fetches the list and runs the installs in /usr/lib/app-finder.
 pkgname=app-finder
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Find AUR apps that were tested on a phone-sized screen, and install them, for Quickshell'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('yay: install and remove apps from the AUR'
 # A release asset that packaging/release.sh builds from the tag, not GitHub's
 # generated archive of the repository.
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('53ac0e0c7b2c99ea7cc7f09ffeb91b798e118a87ed92728e3b5dc9d43711c4bd')
+sha256sums=('9bc476da66fba29ba8fff94af25075fc630d340682472a3dcd3443d02bcb7357')
 
 package() {
   cd "$pkgname-$pkgver"
