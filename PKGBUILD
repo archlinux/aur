@@ -4,7 +4,7 @@
 pkgname='aimp-skin-windows-8-media-player'
 pkgdesc='AIMP skin: Windows 8 Media Player 1.0 (by ZeoN7)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('e42cde5fdad58537ca2251dc80854d4e968e25aba2237d9aee31924faee2a5d6')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Windows 8 Media Player"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-windows-8-media-player-334.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
