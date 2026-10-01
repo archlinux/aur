@@ -1,7 +1,7 @@
 pkgbase = pam-selinux
 	pkgdesc = SELinux aware PAM (Pluggable Authentication Modules) library
-	pkgver = 1.7.2
-	pkgrel = 2
+	pkgver = 1.7.3
+	pkgrel = 1
 	url = http://linux-pam.org
 	arch = x86_64
 	arch = aarch64
@@ -29,8 +29,8 @@ pkgbase = pam-selinux
 	provides = libpam.so
 	provides = libpamc.so
 	provides = libpam_misc.so
-	provides = pam=1.7.2-2
-	provides = selinux-pam=1.7.2-2
+	provides = pam=1.7.3-1
+	provides = selinux-pam=1.7.3-1
 	conflicts = pam
 	conflicts = selinux-pam
 	options = !emptydirs
@@ -44,12 +44,12 @@ pkgbase = pam-selinux
 	backup = etc/security/pam_env.conf
 	backup = etc/security/time.conf
 	backup = etc/environment
-	source = pam::git+https://github.com/linux-pam/linux-pam?signed#tag=v1.7.2
+	source = pam::git+https://github.com/linux-pam/linux-pam?signed#tag=v1.7.3
 	source = pam.tmpfiles
 	validpgpkeys = 8C6BFD92EE0F42EDF91A6A736D1A7F052E5924BB
 	validpgpkeys = 296D6F29A020808E8717A8842DB5BD89A340AEB7
 	validpgpkeys = 7BECFE3AF7B280BB52FF77F104BA4521C996DDE1
-	b2sums = 7fac16161ee8abab8639f5661badcf29536f0df71fec085075b657f91264fa7e616ae74c60e77fd8503d767517847dda877f583f20ca354e2ba45a381d89c998
+	b2sums = a533679b3362f9ebb67a7652454af9402ee845e1bd6f99064b870b38f9dc7a6ec62a73d65af2086e863448742714b6eb6a91d0ad2209e77325fd127635230648
 	b2sums = 36582c80020008c3810b311a2e126d2fb4ffc94e565ea4c0c0ab567fdb92943e269781ffa548550742feb685847c26c340906c7454dcc31df4e1e47d511d8d6f
 
 pkgname = pam-selinux

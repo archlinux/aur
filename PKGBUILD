@@ -9,8 +9,8 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=pam-selinux
-pkgver=1.7.2
-pkgrel=2
+pkgver=1.7.3
+pkgrel=1
 pkgdesc="SELinux aware PAM (Pluggable Authentication Modules) library"
 arch=('x86_64' 'aarch64')
 license=('GPL-2.0-only')
@@ -58,7 +58,7 @@ validpgpkeys=(
         '296D6F29A020808E8717A8842DB5BD89A340AEB7' # Dimitry V. Levin <ldv@altlinux.org>
         '7BECFE3AF7B280BB52FF77F104BA4521C996DDE1' # Dmitry V. Levin <ldv@strace.io
 )
-b2sums=('7fac16161ee8abab8639f5661badcf29536f0df71fec085075b657f91264fa7e616ae74c60e77fd8503d767517847dda877f583f20ca354e2ba45a381d89c998'
+b2sums=('a533679b3362f9ebb67a7652454af9402ee845e1bd6f99064b870b38f9dc7a6ec62a73d65af2086e863448742714b6eb6a91d0ad2209e77325fd127635230648'
         '36582c80020008c3810b311a2e126d2fb4ffc94e565ea4c0c0ab567fdb92943e269781ffa548550742feb685847c26c340906c7454dcc31df4e1e47d511d8d6f')
 options=('!emptydirs')
 
