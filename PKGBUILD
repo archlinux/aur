@@ -3,22 +3,26 @@
 
 pkgname=aview
 pkgver=1.3.0_rc1
-pkgrel=3
+pkgrel=4
 pkgdesc="a high quality ascii-art image browser"
-arch=('i686' 'x86_64')
-url="http://aa-project.sourceforge.net/aview/"
-license=('GPL')
-depends=('aalib')
-source=('http://downloads.sourceforge.net/sourceforge/aa-project/aview-1.3.0rc1.tar.gz')
-md5sums=('093f298e7787591e229b59d039c72f4d')
+arch=('x86_64')
+url="https://aa-project.sourceforge.net/aview/"
+license=('GPL-2.0-only')
+depends=('aalib' 'bash' 'glibc')
+optdepends=('netpbm: image format conversion for asciiview'
+            'imagemagick: image format conversion for asciiview')
+source=("https://downloads.sourceforge.net/sourceforge/aa-project/aview-${pkgver/_/}.tar.gz")
+sha256sums=('42d61c4194e8b9b69a881fdde698c83cb27d7eda59e08b300e73aaa34474ec99')
 
 build() {
-  cd $srcdir/$pkgname-1.3.0
+  cd "$srcdir/$pkgname-1.3.0"
+  # the bundled autoconf 2.13 configure script and sources use pre-C99 constructs
+  export CFLAGS+=" -std=gnu89"
   ./configure --prefix=/usr --mandir=/usr/share/man
-  make 
+  make
 }
 
 package() {
-  cd $srcdir/$pkgname-1.3.0
-  make prefix=$pkgdir/usr mandir=$pkgdir/usr/share/man install
+  cd "$srcdir/$pkgname-1.3.0"
+  make prefix="$pkgdir/usr" mandir="$pkgdir/usr/share/man" install
 }
