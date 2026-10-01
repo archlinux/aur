@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-bloom
+	pkgdesc = AIMP skin: Bloom 1.0 (by Arindel)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-bloom-401.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-bloom-401.archive::https://aimp.ru/?do=catalog.download&id=401
+	sha256sums = 22ad80b9959d9c41374d4cbbd3d508a94a41cb642a255bdd869a07e2a3c2375c
+
+pkgname = aimp-skin-bloom
