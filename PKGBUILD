@@ -4,7 +4,7 @@
 pkgname='aimp-skin-technics-rs-1700-4k'
 pkgdesc='AIMP skin: Technics RS-1700 4K 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('8c0b830c1d15e9e141b0d56b16a802351662a699ba14e6398f69b42c8db01952')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Technics RS-1700 4K"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-technics-rs-1700-4k-1348.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

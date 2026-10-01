@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-technics-rs-1700-4k
 	pkgdesc = AIMP skin: Technics RS-1700 4K 1.0 (by Black_AVP)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
