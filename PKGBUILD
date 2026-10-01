@@ -3,8 +3,8 @@
 pkgname=astrbot-git
 _pkgname=astrbot
 _srcname=AstrBot
-pkgver=4.27.2.r26.ga9bb8a64c
-pkgrel=3
+pkgver=4.29.0.beta.1.r6.g9d4f52346
+pkgrel=1
 
 pkgver() {
     # shellcheck disable=SC2154 # makepkg provides srcdir.

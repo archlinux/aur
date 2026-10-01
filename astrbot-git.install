@@ -29,7 +29,7 @@ _ensure_environment() {
 
 _has_instances() {
     [ -d /etc/astrbot ] || return 1
-    find /etc/astrbot -maxdepth 1 -name '*.conf' -type f -print -quit | grep -q .
+    find /etc/astrbot -maxdepth 1 -name '*.conf' ! -name 'tmpl.conf' -type f -print -quit | grep -q .
 }
 
 _sync_instances_best_effort() {
