@@ -9,11 +9,14 @@ options=('!lto')
 pkgdesc='A static site generator for audio producers'
 pkgname=faircamp
 pkgrel=1
-pkgver=2.0.0
-sha256sums=('b0601a411fe041baae4da86bab4242fc964df6229ff2335955f1d5df46f2deff')
+pkgver=2.0.1
+sha256sums=('c3518bb1a54609475ba7452f2e4b0fe82199818700083a0cd69d8997f59a4585')
 url='https://faircamp.org'
 
-source=("faircamp-${pkgver}.tar.gz::https://codeberg.org/simonrepp/faircamp/archive/${pkgver}.tar.gz")
+source=(
+  faircamp.desktop
+  "faircamp-${pkgver}.tar.gz::https://codeberg.org/simonrepp/faircamp/archive/${pkgver}.tar.gz"
+)
 
 build() {
     export RUSTUP_TOOLCHAIN=stable
@@ -23,6 +26,9 @@ build() {
 }
 
 package() {
+    mkdir -p "$pkgdir/usr/share/applications"
+    install -Dm644 "$srcdir/faircamp.desktop" "$pkgdir/usr/share/applications/faircamp.desktop"
+
     mkdir -p "$pkgdir/usr/bin"
     install -Dm755 "$srcdir/faircamp/target/release/faircamp" "$pkgdir/usr/bin/faircamp"
 }

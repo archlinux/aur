@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=AudioVideo;Audio;
+Comment=A static site generator for audio publishers
+Exec=faircamp
+Icon=faircamp
+Name=Faircamp
+StartupWMClass=faircamp
+Terminal=false
+Type=Application
