@@ -4,7 +4,7 @@
 pkgname='aimp-skin-neon-light'
 pkgdesc='AIMP skin: Neon Light 2.1 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('01a6d9d6242e677492a34199c72622f35556a4aca165bf103dd8c7c3cb6927b4')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Neon Light"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-neon-light-590.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
