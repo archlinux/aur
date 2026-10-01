@@ -4,7 +4,7 @@
 pkgname='aimp-skin-siveria'
 pkgdesc='AIMP skin: Siveria 1.2 (by San4o)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f5dd71b60207583bb09a0eb72dd84e435d8850e3e55866fe2649ff9806b279fa')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Siveria"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-siveria-93.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
