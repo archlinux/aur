@@ -4,7 +4,7 @@
 pkgname='aimp-skin-matto'
 pkgdesc='AIMP skin: Matto 1.4 (by Helen "Tayola" Schwieger)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('0d9adeac6a212ca1707545e11caa9b4c55c5f0cb8fa606b43397247b2d95f05f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Matto"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-matto-860.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
