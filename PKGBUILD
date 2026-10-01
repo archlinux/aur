@@ -4,7 +4,7 @@
 pkgname='aimp-skin-protoss'
 pkgdesc='AIMP skin: Protoss 1.5 (by Argelius)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c30f1075bf2df03325b8bdb55a0abf64a58d3e712ea514b695856feee1194234')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Protoss"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-protoss-767.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
