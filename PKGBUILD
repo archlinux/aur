@@ -5,7 +5,7 @@
 pkgname=rclone-beta-bin
 _srcname=rclone
 pkgrel=1
-pkgver=1.76.0_beta.10432.666d67f0e
+pkgver=1.76.0_beta.10447.0b8e9c4cc
 _upver=${pkgver//_/-}
 pkgdesc="Sync files to and from Google Drive, S3, Swift, Cloudfiles, Dropbox and Google Cloud Storage. (Beta version)"
 provides=('rclone')
@@ -26,11 +26,11 @@ source_armv6h=("rclone-v${_upver}-linux-arm.zip::https://beta.rclone.org/v${_upv
 source_armv7h=("rclone-v${_upver}-linux-arm-v7.zip::https://beta.rclone.org/v${_upver}/rclone-v${_upver}-linux-arm-v7.zip")
 source_aarch64=("rclone-v${_upver}-linux-arm64.zip::https://beta.rclone.org/v${_upver}/rclone-v${_upver}-linux-arm64.zip")
 
-b2sums_i686=('96900c318d023eb14071662f24a0219ebe48085f170492fd4b99832fdb2f6c7473eeb08774ecfb43952880c83616179fb5b3a083c6d55383a3e935e7d2e39f8b')
-b2sums_x86_64=('32e89df5a03fb2c62dfcc6303bdccf5fe3a7eb440b6577a86484c3c26ddf3b91579b021447d3e5cdf476df42faa86503f675cbfe8576db7f42c10ba921cb6795')
-b2sums_armv6h=('2666bf9331d98f1998cfb86d93be4b2d94a166ab4e446f3e5174bb5efe154b01fb43e30a1f2e1d2a8a27f179ab647ce7e7e6ada06649757ea22e9f3ccec0fac8')
-b2sums_armv7h=('ff0208e9aed6b472a9fe46344de83a4eabd4f403ab4195ace445d4435436e52761784586147325b4087cebd4a5756adfa436e284112760c4f773d833a08cd8fb')
-b2sums_aarch64=('25f8ba21e80e8497364b81ac5a388612d044f562dd83e6afdf4ec79c64278782d0aee6a1c50167bbd4cea6c60cf2ba261e7d3a61e0679a1637c38a58d1965530')
+b2sums_i686=('10883a3adcd57cc2edac2d3a89a62674ee59c731f86009c514bc18bb784c8f840182325c5f788b1d5c677da28ba2e8882ef58ad539ec5ae8a8c586c862bd7c6b')
+b2sums_x86_64=('2d792debdef10ae6d7d1e4862a9402749b80eda02df0c3f0162ef38ffaa003d9025eafd1debe7a6c01631d1e82ba2d7b3d055e622c67e62cf7d467ecc3a2b6ce')
+b2sums_armv6h=('bb14dc187b0651f7202be3b05489f82a4f63af65b1bb7606114d6b89774c62026728d8a7d312e2c3a443970f47af5da0843452f341156d551799b65216161dd2')
+b2sums_armv7h=('69505e961f134a6cc18aa18ca36b04a22ae15b4603498fc36d6246e5fdc5fb2b64f42f8ff163775ab715069ad833aaf0b4ec1bf3e5756eb6512b14d096d0274d')
+b2sums_aarch64=('8269b38f4f972a83b2947720476eab614845821914405560eedd966931bd2841888164ab7e8ec9dc7bbba0797bb028958f4ff221b31b8b988b9e83a179979309')
 
 latestver() {
     local size ver
