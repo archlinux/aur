@@ -1,6 +1,6 @@
 pkgbase = ubl-tools
 	pkgdesc = Read UBL e-invoices (Peppol BIS 3.0, OIOUBL) offline, in the terminal or as a printable page
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://gitea.weircon.dk/agw/ubl-tools
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ubl-tools
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = ubl-tools-0.2.0.tar.gz::https://gitea.weircon.dk/agw/ubl-tools/archive/v0.2.0.tar.gz
-	sha256sums = a6f4742db202661262f1bae66737417989c98b00ab5b4e7e4c64254f5e99f763
+	source = ubl-tools-0.3.0.tar.gz::https://gitea.weircon.dk/agw/ubl-tools/archive/v0.3.0.tar.gz
+	sha256sums = 0ed5baba3e5e30fb934412d4da49e03a77d464127c67d3639990ac96568592f1
 
 pkgname = ubl-tools

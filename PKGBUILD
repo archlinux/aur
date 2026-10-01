@@ -6,7 +6,7 @@
 #   build recipe:  https://gitea.weircon.dk/agw/ubl-tools
 
 pkgname=ubl-tools
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Read UBL e-invoices (Peppol BIS 3.0, OIOUBL) offline, in the terminal or as a printable page"
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('MIT OR Apache-2.0')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a6f4742db202661262f1bae66737417989c98b00ab5b4e7e4c64254f5e99f763')
+sha256sums=('0ed5baba3e5e30fb934412d4da49e03a77d464127c67d3639990ac96568592f1')
 
 prepare() {
     cd "$srcdir/$pkgname"
