@@ -1,4 +1,5 @@
-src
-pkg
-*.log
-jcef
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
