@@ -4,7 +4,7 @@
 pkgname='aimp-skin-cd-box'
 pkgdesc='AIMP skin: CD-BOX 1.0 (by Neon)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d4b238821c110ee3e2e200d564a23e9a234799ed42e05dbfc0371b2fd0eca4c9')
 
 package() {
-  local dest="$pkgdir$_skinsdir/CD-BOX"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-cd-box-913.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
