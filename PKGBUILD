@@ -4,7 +4,7 @@
 pkgname='aimp-skin-analogue'
 pkgdesc='AIMP skin: Analogue 1.0 (by Henrique Oliveira)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('459aea42254b392b333576f34e5513dd50ecc34fc41f28bb70f54dbd19d41a8b')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Analogue"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-analogue-1216.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
