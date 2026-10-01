@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-mirillis-splash-x
+	pkgdesc = AIMP skin: Mirillis Splash x 3.5 (by memo-se)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-mirillis-splash-x-1078.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-mirillis-splash-x-1078.archive::https://aimp.ru/?do=catalog.download&id=1078
+	sha256sums = ce8c452aa4eaf2bc57f3230ce6b3b0a22ce99e53a08c63c0ae466a5f293e6a0b
+
+pkgname = aimp-skin-mirillis-splash-x
