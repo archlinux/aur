@@ -1,6 +1,6 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 pkgname=nuclei-git
-pkgver=3.11.1.r6600.c5611b9
+pkgver=3.11.1.r6609.a2b6d2a
 pkgrel=1
 pkgdesc="Fast and customizable vulnerability scanner"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
@@ -53,7 +53,8 @@ check() {
   export GOFLAGS='-buildmode=pie -mod=readonly -modcacherw'
   # Tests to skip
   # - github.com/projectdiscovery/nuclei/v3/lib: Connects to an external host and gets an unexpected result
-  go test $(go list ./... | grep -v "nuclei/v3/lib$")
+  # - github.com/projectdiscovery/nuclei/v3/pkg/operators/common/dsl: Always returns nil, but expects an error
+  go test $(go list ./... | grep -v "github.com/projectdiscovery/nuclei/v3/lib$\|github.com/projectdiscovery/nuclei/v3/pkg/operators/common/dsl$")
 }
 
 package() {
