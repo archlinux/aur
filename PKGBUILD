@@ -4,7 +4,7 @@
 pkgname='aimp-skin-zen'
 pkgdesc='AIMP skin: ZEN 1.11 (by SanekK)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('1c43f4be3f2e8e6fd94ce764b1c2fbdc09ff9708a2e75c50592cf228b3a08cd2')
 
 package() {
-  local dest="$pkgdir$_skinsdir/ZEN"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-zen-123.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-zen
 	pkgdesc = AIMP skin: ZEN 1.11 (by SanekK)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
