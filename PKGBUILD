@@ -4,7 +4,7 @@
 pkgname='aimp-skin-qqplayer-blue'
 pkgdesc='AIMP skin: QQPlayer blue 1.0 (by Nim Swen)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f31e4840ae37afe55a573d0b4c66fd52d9ba3bf977d183d7194cbb6c7c53b242')
 
 package() {
-  local dest="$pkgdir$_skinsdir/QQPlayer blue"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-qqplayer-blue-430.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
