@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-alice-clean
+	pkgdesc = AIMP skin: Alice (Clean) 1.1 (by Zhenya)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-alice-clean-309.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-alice-clean-309.archive::https://aimp.ru/?do=catalog.download&id=309
+	sha256sums = 57b39e9fa2087f5a95f5c4450c9a20abe457b970bd1a4a84753daaf7aaf536bd
+
+pkgname = aimp-skin-alice-clean
