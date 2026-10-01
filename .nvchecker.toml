@@ -1,0 +1,3 @@
+[python-asysocks]
+source = "pypi"
+pypi = "asysocks"
