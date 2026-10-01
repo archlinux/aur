@@ -4,7 +4,7 @@
 pkgname='aimp-skin-hameleon'
 pkgdesc='AIMP skin: Hameleon 1.0 (by GR-X)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('120a8cc5f66ecc5badc9a8cdfd21c009412a8c122eb8acd0d2cc5a3f6347e6f2')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Hameleon"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-hameleon-184.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
