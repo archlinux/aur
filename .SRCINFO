@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-mi-sk
+	pkgdesc = AIMP skin: MI-SK 1.0 (by Zigar)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-mi-sk-458.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-mi-sk-458.archive::https://aimp.ru/?do=catalog.download&id=458
+	sha256sums = b3d8bcaed6f619fd9abff3b5c5c347e5c2e052201dbd90333fac2c49391743b1
+
+pkgname = aimp-skin-mi-sk
