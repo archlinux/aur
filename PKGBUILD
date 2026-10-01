@@ -4,7 +4,7 @@
 pkgname='aimp-skin-teac-cd-rw890'
 pkgdesc='AIMP skin: Teac CD-RW890 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('ced838915d6b5b8c677bd70d8ac3961d3ad8b18d59be18d6ac469c485f7c5388')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Teac CD-RW890"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-teac-cd-rw890-598.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
