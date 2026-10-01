@@ -4,7 +4,7 @@
 pkgname='aimp-skin-fl-skino-12'
 pkgdesc='AIMP skin: FL Skino 12 1.7.8 (by Magis)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('4900bfc632439962c55cc156bdff0b09d73c037acc715072cd8a089d4cedf6d5')
 
 package() {
-  local dest="$pkgdir$_skinsdir/FL Skino 12"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-fl-skino-12-855.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
