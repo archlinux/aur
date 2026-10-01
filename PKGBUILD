@@ -4,7 +4,7 @@
 pkgname='aimp-skin-ds'
 pkgdesc='AIMP skin: DS 1.1 (by ZeoN7)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('5f7f0e25cfecaf8c9b04ff488a2b3d2e021766ac52f7c10e69b69e7a2296a422')
 
 package() {
-  local dest="$pkgdir$_skinsdir/DS"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-ds-385.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
