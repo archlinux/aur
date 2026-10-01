@@ -18,6 +18,7 @@ pkgbase = faircamp-git
 	options = !lto
 	source = faircamp.desktop
 	source = faircamp-git::git+https://codeberg.org/simonrepp/faircamp.git
-	md5sums = SKIP
+	sha256sums = 0986ca68182526ce56ea1474823cd5f057ff41720bf95cd43d724147a30a4bc6
+	sha256sums = SKIP
 
 pkgname = faircamp-git

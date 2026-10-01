@@ -5,18 +5,23 @@ conflicts=('faircamp' 'faircamp-bin' 'faircamp-cli')
 depends=('ffmpeg' 'opus')
 license=('AGPL3')
 makedepends=('cargo' 'cmake' 'git')
-md5sums=('SKIP')
 options=('!lto')
 pkgdesc='A static site generator for audio producers'
 pkgname=faircamp-git
 pkgrel=1
 pkgver=r529.369d9c6
 provides=('faircamp')
+url='https://faircamp.org'
+
+sha256sums=(
+    '0986ca68182526ce56ea1474823cd5f057ff41720bf95cd43d724147a30a4bc6'
+    'SKIP'
+)
+
 source=(
   faircamp.desktop
   'faircamp-git::git+https://codeberg.org/simonrepp/faircamp.git'
 )
-url='https://faircamp.org'
 
 build() {
     export RUSTUP_TOOLCHAIN=stable
