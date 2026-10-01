@@ -1,4 +1,4 @@
-# Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
+# Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=babyshark-bin
 pkgver=0.3.0
 pkgrel=1
