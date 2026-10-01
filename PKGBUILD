@@ -9,12 +9,12 @@ license=('PerlArtistic2')
 options=('!emptydirs')
 depends=('perl')
 url="http://search.cpan.org/dist/IP-Country/"
-source=("http://search.cpan.org/CPAN/authors/id/N/NW/NWETTERS/IP-Country-$pkgver.tar.gz"
-  "http://mailfud.org/ip-country-fast/ip.gif"
-  "http://mailfud.org/ip-country-fast/cc.gif")
+source=("https://search.cpan.org/CPAN/authors/id/N/NW/NWETTERS/IP-Country-$pkgver.tar.gz"
+  "https://mailfud.org/ip-country-fast/ip.gif"
+  "https://mailfud.org/ip-country-fast/cc.gif")
 sha256sums=('88db833a5ab22ed06cb53d6f205725e3b5371b254596053738885e91fa105f75'
-            '98ad6772ff178c33756887b92af81d00157f358e1aab79bc261cd2c20c4b4417'
-            'df254ef278d81076c4aeb7e67be0eba2ee2e9c24950d903c1dcc1127e3ce86da')
+  '98ad6772ff178c33756887b92af81d00157f358e1aab79bc261cd2c20c4b4417'
+  'df254ef278d81076c4aeb7e67be0eba2ee2e9c24950d903c1dcc1127e3ce86da')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
