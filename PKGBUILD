@@ -4,7 +4,7 @@
 pkgname='aimp-skin-kangean'
 pkgdesc='AIMP skin: Kangean 4.3 (by amdpastrana)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('01eb6278a1baa8e7ed2a36746a33c93f2490d9d046436276b7dca2c409bbd917')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Kangean"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-kangean-680.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
