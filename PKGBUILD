@@ -4,7 +4,7 @@
 pkgname='aimp-skin-tascam-cd-rw2000'
 pkgdesc='AIMP skin: Tascam CD-RW2000 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('6f68e02d857388d0df8915c4691352fc154e29e534a48616e417fb1b676834c8')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Tascam CD-RW2000"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-tascam-cd-rw2000-610.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
