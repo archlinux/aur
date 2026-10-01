@@ -3,14 +3,19 @@
 pkgname=antigravitaattori
 arch=('i686' 'x86_64')
 pkgver=0.0.3
-pkgrel=6
+pkgrel=7
 pkgdesc="a multiplayer flying saucer racing game"
-license=('GPL-2')
+license=('GPL-2.0-only')
 url="https://github.com/callaa/antigravitaattori"
-depends=('libpng' 'sdl' 'mesa' 'freealut')
+depends=('libpng' 'sdl12-compat' 'libgl' 'glu' 'openal' 'freealut')
 source=("https://github.com/callaa/antigravitaattori/archive/master.zip" "antigrav.desktop")
 md5sums=('33f83adefa1b2912e655042cd320c20f'
          '2fe08f941d366e2cc0a993ea0d0445eb')
+
+prepare() {
+cd $srcdir/antigravitaattori-master
+sed -i 's/printf(help_msg);/printf("%s", help_msg);/' src/main.cpp
+}
 
 build() {
 cd $srcdir/antigravitaattori-master
