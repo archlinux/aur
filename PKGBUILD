@@ -4,7 +4,7 @@
 pkgname='aimp-skin-grace'
 pkgdesc='AIMP skin: Grace 1.0 (by SBro)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d2e4181533d0a13bd1690ff64688e8e129f84c252b5332e476df7f455ce56644')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Grace"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-grace-407.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
