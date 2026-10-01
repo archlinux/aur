@@ -1,11 +1,11 @@
 # Maintainer: robertfoster
 pkgname=abyss-engine-git
-pkgver=r254.bf1feb3
+pkgver=r72.885eea0
 pkgrel=1
 pkgdesc="A game engine designed to run games similar to 2000's style ARPGs such as Diablo II"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/AbyssEngine/AbyssEngine"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('argh' 'cppzmq' 'ffmpeg' 'lua' 'lua-lpeg' 'sdl2_ttf' 'spdlog' 'sol2')
 makedepends=('cmake' 'git' 'gtest' 'luarocks')
 provides=("${pkgname%-git}" "opendiablo2-git")
