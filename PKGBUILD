@@ -5,16 +5,16 @@ pkgver=0.5.3
 pkgrel=1
 pkgdesc="A library containing the a reference implementation of the net-color specs"
 url="http://oyranos.org/"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('xorg-server')
-source=("http://prdownloads.sourceforge.net/oyranos/libXcm-$pkgver.tar.bz2")
+source=("https://prdownloads.sourceforge.net/oyranos/libXcm-$pkgver.tar.bz2")
 license=('MIT')
 
 package() {
-  cd $srcdir/libXcm-$pkgver
+  cd "$srcdir/libXcm-$pkgver"
   ./configure --prefix=/usr
   make
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
 }
 
 sha256sums=('04bda6aa4e8b1ef61815ebfc7760277856a5fd3b347948e0d99cf0ec78b03050')
