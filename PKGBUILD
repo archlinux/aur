@@ -4,7 +4,7 @@
 pkgname='aimp-skin-red-house'
 pkgdesc='AIMP skin: Red House 1.0 (by NoHealer)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('6ef20f84ef358c091a87c0ec32ba8d273a0555088bfaa19165d3abbd3644d8a6')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Red House"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-red-house-771.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
