@@ -11,7 +11,7 @@
 #   /usr/bin/zz-lsp  -> language server
 
 pkgname=zz-lang
-pkgver=0.1.4
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='ZZ programming language toolchain — prebuilt binary (zz run main.zz, plus zz-lsp)'
 arch=('x86_64' 'aarch64')
@@ -20,10 +20,10 @@ license=('Apache')
 depends=('gcc-libs' 'curl' 'sqlite')
 makedepends=('unzip')
 conflicts=('zz')
-source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://github.com/zaidejjo/zz/releases/download/v$pkgver/zz-$pkgver-linux-x86_64.zip")
-source_aarch64=("$pkgname-$pkgver-aarch64.zip::https://github.com/zaidejjo/zz/releases/download/v$pkgver/zz-$pkgver-linux-aarch64.zip")
-sha256sums_x86_64=('ed9868ecbcc2325d63d751e3109cf204d73b51cd83ddfeb1a14e6fa852e82623')
-sha256sums_aarch64=('ddb186d39b10c2e8fe0f56bb40946818bd6fe59ce8a57c26c5c1ef9b49635c84')
+source_x86_64=("$pkgname-$pkgver-$CARCH.zip::https://github.com/zaidejjo/zz/releases/download/v$pkgver/zz-$pkgver-linux-x86_64.zip")
+source_aarch64=("$pkgname-$pkgver-$CARCH.zip::https://github.com/zaidejjo/zz/releases/download/v$pkgver/zz-$pkgver-linux-aarch64.zip")
+sha256sums_x86_64=('039822528b4d83451dbc766f5d7224fa7d5867d592928f3f9d2e45b00d8005c4')
+sha256sums_aarch64=('ef73563840f72df8a3bf6a755c61f81da2ec1b3e45c2a5184994511c1f994be4')
 
 check() {
   # Prebuilt binaries: smoke-test only (full suite ran in CI pre-release).
