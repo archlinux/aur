@@ -4,7 +4,7 @@
 pkgname='aimp-skin-wmp-12-basit-glass'
 pkgdesc='AIMP skin: WMP 12 Basit Glass 3.5.11 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('77891f895fc2b1627f99a1c3ce87e8ac318d3f3c06d4242b0a0b120356bd1787')
 
 package() {
-  local dest="$pkgdir$_skinsdir/WMP 12 Basit Glass"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-wmp-12-basit-glass-605.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
