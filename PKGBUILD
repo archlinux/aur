@@ -2,7 +2,7 @@
 
 pkgname=seraphirc-bin
 _pkgname=seraphirc
-pkgver=6.0.1
+pkgver=6.0.3
 pkgrel=1
 pkgdesc="Modern desktop IRC client built with Go and Wails (prebuilt binary)"
 arch=('x86_64')
@@ -14,32 +14,26 @@ depends=(
   'gst-libav'
   'gst-plugins-base'
   'gst-plugins-good'
-  'gtk3'
+  'gtk4'
   'hicolor-icon-theme'
   'libsecret'
-  'webkit2gtk-4.1'
+  'webkitgtk-6.0'
 )
 provides=('seraphirc')
 conflicts=('seraphirc')
 options=('!strip')
 source=("seraphirc_${pkgver}_amd64.deb::https://github.com/seraphirc/seraphirc-download/releases/download/v${pkgver}/seraphirc_${pkgver}_amd64.deb")
-sha256sums=('6288201c1ef2c8b2fcabbf17d33b1dacd826dcee4bfdd7742dead2ea570073d1')
+sha256sums=('c544add9248e275f982419c21a315bc21f62de8b34bcda668f5f433926f9011e')
 
 package() {
-  local deb="${srcdir}/seraphirc_${pkgver}_amd64.deb"
-  local unpack="${srcdir}/deb-unpack"
-
-  mkdir -p "${unpack}"
-  bsdtar -xf "${deb}" -C "${unpack}"
-
   local data_archive
-  data_archive="$(find "${unpack}" -maxdepth 1 -type f -name 'data.tar.*' -print -quit)"
+  data_archive="$(find "${srcdir}" -maxdepth 1 -type f -name 'data.tar.*' -print -quit)"
   if [[ -z "${data_archive}" ]]; then
     error "Could not find data.tar.* in upstream Debian package"
     return 1
   fi
 
-  bsdtar -xf "${data_archive}" -C "${pkgdir}"
+  bsdtar --no-same-owner -xf "${data_archive}" -C "${pkgdir}"
 
   install -Dm644 "${pkgdir}/usr/share/doc/seraphirc/LICENSE"     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
