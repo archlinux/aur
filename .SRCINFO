@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-flight
+	pkgdesc = AIMP skin: Flight 1.0 (by phoenix-i)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-flight-506.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-flight-506.archive::https://aimp.ru/?do=catalog.download&id=506
+	sha256sums = 4094e944997b2aefa0b6401dd8dc33e0147257cdce277c84bc1df46cbe37f9aa
+
+pkgname = aimp-skin-flight
