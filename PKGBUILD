@@ -4,7 +4,7 @@
 pkgname='aimp-skin-greyvee'
 pkgdesc='AIMP skin: Greyvee 1.0 (by D'\''Alt Vila)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('aef3d9bd1372bee41e0d126b58a4fa95b41457dc179fef8942e06929804033b2')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Greyvee"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-greyvee-213.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
