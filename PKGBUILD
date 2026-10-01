@@ -4,7 +4,7 @@
 pkgname='aimp-skin-crysis-2-nanosuite'
 pkgdesc='AIMP skin: Crysis 2 Nanosuite 2.0 (by sagitt.67)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('dd839560660ec501d6dfca7d28f5484326e93381f6bf84ee36a35a9e1855a64a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Crysis 2 Nanosuite"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-crysis-2-nanosuite-801.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
