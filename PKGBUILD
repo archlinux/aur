@@ -3,7 +3,7 @@ pkgname=ttf-inter-hinted
 _interver=4.1
 _nfver=3.5.1
 pkgver="${_interver}"
-pkgrel=2
+pkgrel=3
 pkgdesc='Inter, a typeface designed for UI legibility, re-hinted with ttfautohint for FreeType (optionally Nerd Fonts patched)'
 arch=('any')
 url='https://rsms.me/inter/'
@@ -70,9 +70,11 @@ sha256sums=('9883fdd4a49d4fb66bd8177ba6625ef9a64aa45899767dde3d36aa425756b11e'
 # ignores these hints. The package therefore ships (but does not enable)
 # /usr/share/fontconfig/conf.avail/80-ttf-inter-hinted.conf, which turns on
 # bytecode hinting for the installed families only. It uses hintmedium, not
-# hintfull: cairo/pango render the two identically, but Chrome turns off
-# subpixel positioning (whole-pixel advances, uneven gaps) only at hintfull.
-# Enable it with:
+# hintfull: cairo/pango render the two identically, but Blink turns off
+# subpixel positioning at hintfull. Chromium and Electron apps are excluded by
+# prgname: at device scale 1 Skia uses linear advances only for hintslight/none,
+# so at hintmedium every glyph advance is rounded to a whole pixel (uneven
+# gaps; nerd-fonts-apple-hinted README.md §10). Enable it with:
 #
 #   sudo ln -s /usr/share/fontconfig/conf.avail/80-ttf-inter-hinted.conf \
 #              /etc/fonts/conf.d/
@@ -513,21 +515,32 @@ package() {
   # Fonts names and family suffixes are covered.
   if [[ "$HINTING" == true && "$HINT_ENGINE" == ttfautohint ]]; then
     local _fam _conf="$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf"
+    local _chromium_prgnames=(chrome chromium brave helium electron code slack signal-desktop vesktop)
+    local _prg _prgtests=""
+    for _prg in "${_chromium_prgnames[@]}"; do
+      _prgtests+="    <test qual=\"all\" name=\"prgname\" compare=\"not_eq\"><string>$_prg</string></test>"$'\n'
+    done
     install -d "${_conf%/*}"
     {
       echo '<?xml version="1.0" encoding="UTF-8"?>'
       echo '<!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">'
       echo "<!-- Installed by $pkgname. Use the ttfautohint bytecode hints in these"
       echo "     fonts rather than FreeType's light autohinter. hintmedium, not"
-      echo "     hintfull: same rendering in cairo/pango, but Chrome keeps subpixel"
-      echo "     positioning at hintmedium. -->"
+      echo "     hintfull: same rendering in cairo/pango, and Blink keeps subpixel"
+      echo "     positioning at hintmedium but drops it at hintfull."
+      echo "     Chromium and Electron apps are excluded: at device scale 1 they use"
+      echo "     linear advances only for hintslight/none, so hintmedium would round"
+      echo "     every glyph advance to a whole pixel (uneven letter gaps). -->"
       echo '<fontconfig>'
-      # One <match> per family: several <test>s in one <match> are ANDed.
+      # One <match> per family: several <test>s in one <match> are ANDed, so
+      # the prgname tests exclude every listed app. qual="all" makes a test
+      # pass when prgname is unset. prgname is the executable's basename.
       while IFS= read -r _fam; do
         _fam="${_fam//&/&amp;}"; _fam="${_fam//</&lt;}"
         cat <<EOF
   <match target="font">
     <test name="family" compare="eq"><string>$_fam</string></test>
+${_prgtests%$'\n'}
     <edit name="hinting" mode="assign"><bool>true</bool></edit>
     <edit name="autohint" mode="assign"><bool>false</bool></edit>
     <edit name="hintstyle" mode="assign"><const>hintmedium</const></edit>

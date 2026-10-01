@@ -64,7 +64,8 @@ stay clear (see below).
 
 | Where | Setting | Why |
 |---|---|---|
-| `/etc/fonts/conf.d/` | symlink `80-ttf-inter-hinted.conf` | hintmedium + autohint off for Inter / Inter Display only |
+| `/etc/fonts/conf.d/` | symlink `80-ttf-inter-hinted.conf` | hintmedium + autohint off for Inter / Inter Display only. Chromium/Electron are excluded |
+| fontconfig, if hintmedium is global | `prgname` rule → `hintslight` for chrome, chromium, brave, helium, electron, code, … | At scale 1 Chromium rounds every glyph advance at hintmedium; see the sibling README §10 |
 | gsettings `org.gnome.desktop.interface` | `font-rendering 'manual'`, `font-hinting 'medium'`, `font-antialiasing 'grayscale'` | In `automatic` GTK4 forces hintslight and ignores the snippet |
 | `~/.config/gtk-4.0/settings.ini` | `gtk-hint-font-metrics=false` | Metric hinting makes Inter lighter and changes line height |
 | Firefox `user.js` / about:config | `gfx.text.subpixel-position.force-enabled = true` | At hintmedium Firefox rounds advances to whole pixels (uneven gaps); see the sibling README §9 |
@@ -80,9 +81,25 @@ gsettings set org.gnome.desktop.interface font-antialiasing grayscale
 ```
 
 The snippet on its own is **not enough** for GTK4/libadwaita apps. Fontconfig
-clients such as Chrome/Electron follow it, but GTK4 in automatic mode sets
+clients such as Firefox follow it, but GTK4 in automatic mode sets
 `CAIRO_HINT_STYLE_SLIGHT` explicitly, and cairo gives that priority over
 fontconfig's hintstyle.
+
+The snippet skips Chromium and Electron apps by `prgname` (chrome, chromium,
+brave, helium, electron, code, slack, signal-desktop, vesktop). At device
+scale 1 Chromium uses linear advances only at hintslight/none, so at
+hintmedium every glyph advance becomes a whole pixel. The snippet loads at
+priority 80, after `~/.config/fontconfig/fonts.conf` (50), so without this
+exclusion it would undo a per-app `hintslight` rule there. Before pkgrel 3 it
+did: Chrome rendered Inter, the usual `sans-serif`, at hintmedium while
+SF Pro Text got hintslight. Check with a renamed copy of `fc-match`, since
+prgname is the executable's basename:
+
+```sh
+cp /usr/bin/fc-match /tmp/chrome
+/tmp/chrome 'Inter:pixelsize=16' --format='%{family[0]} hintstyle=%{hintstyle}\n'
+# expected: Inter hintstyle=1
+```
 
 ---
 

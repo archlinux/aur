@@ -1,7 +1,7 @@
 pkgbase = ttf-inter-hinted
 	pkgdesc = Inter, a typeface designed for UI legibility, re-hinted with ttfautohint for FreeType (optionally Nerd Fonts patched)
 	pkgver = 4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://rsms.me/inter/
 	arch = any
 	license = OFL-1.1
