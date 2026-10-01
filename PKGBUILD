@@ -4,7 +4,7 @@
 pkgname='aimp-skin-nextgen-7'
 pkgdesc='AIMP skin: NextGen 7 1.0 (by holyshit'\''man)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('6369d05be51020474efd3cfdec4698ae2ddb88753faefbdd0f12199cd10a6fbb')
 
 package() {
-  local dest="$pkgdir$_skinsdir/NextGen 7"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-nextgen-7-524.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-nextgen-7
 	pkgdesc = AIMP skin: NextGen 7 1.0 (by holyshit'man)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
