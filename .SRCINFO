@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-blackblue-style
+	pkgdesc = AIMP skin: BlackBlue Style 1.0 (by Nikitko_Cent)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-blackblue-style-423.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-blackblue-style-423.archive::https://aimp.ru/?do=catalog.download&id=423
+	sha256sums = 1a973ddb8d8bd2d01e223a4ffac2593227123730c56d1c5c7faee998f1a3199f
+
+pkgname = aimp-skin-blackblue-style
