@@ -4,7 +4,7 @@
 pkgname='aimp-skin-socuelyricskin'
 pkgdesc='AIMP skin: SocueLyricSkin 1.6 (by socue)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('1740487a19e5a4f4be615d2d225b2d2f4774c51eb25ea5591fbce886dca127a1')
 
 package() {
-  local dest="$pkgdir$_skinsdir/SocueLyricSkin"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-socuelyricskin-1233.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
