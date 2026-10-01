@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-retrix2
+	pkgdesc = AIMP skin: Retrix2 3.0 (by Starkad)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-retrix2-683.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-retrix2-683.archive::https://aimp.ru/?do=catalog.download&id=683
+	sha256sums = 876509c27d907d6b7ce5c74ccf74af18fb7f2450c77dc42228be323a925ee500
+
+pkgname = aimp-skin-retrix2
