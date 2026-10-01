@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-romantik-guitar-skin
+	pkgdesc = AIMP skin: RomaNtik Guitar Skin 1.1 (by RomaNtik)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-romantik-guitar-skin-816.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-romantik-guitar-skin-816.archive::https://aimp.ru/?do=catalog.download&id=816
+	sha256sums = b03135dae05cd00e5ac1218c4a7dab7c70096af7ae9e475db6fb58cc9c66e91d
+
+pkgname = aimp-skin-romantik-guitar-skin
