@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-greyvee
+	pkgdesc = AIMP skin: Greyvee 1.0 (by D'Alt Vila)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-greyvee-213.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-greyvee-213.archive::https://aimp.ru/?do=catalog.download&id=213
+	sha256sums = aef3d9bd1372bee41e0d126b58a4fa95b41457dc179fef8942e06929804033b2
+
+pkgname = aimp-skin-greyvee
