@@ -4,7 +4,7 @@
 pkgname='aimp-skin-akai-gx-r60-and-akai-am-u11'
 pkgdesc='AIMP skin: Akai GX-R60 & Akai AM-U11 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('69b6c78f9c8e0f4429c500715117c6fad3a20f9d1a0c27aa53b3acb3dd5118b9')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Akai GX-R60 & Akai AM-U11"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-akai-gx-r60-and-akai-am-u11-893.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
