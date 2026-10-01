@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-zen
+	pkgdesc = AIMP skin: ZEN 1.11 (by SanekK)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-zen-123.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-zen-123.archive::https://aimp.ru/?do=catalog.download&id=123
+	sha256sums = 1c43f4be3f2e8e6fd94ce764b1c2fbdc09ff9708a2e75c50592cf228b3a08cd2
+
+pkgname = aimp-skin-zen
