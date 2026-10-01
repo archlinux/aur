@@ -4,7 +4,7 @@
 pkgname='aimp-skin-radial-aio'
 pkgdesc='AIMP skin: Radial AIO 1.0 (by NikolavRj)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('b061ef17303f6f539d35aa8f55d2cfbf076e87368b379b3d372dd6421fcd3afd')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Radial AIO"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-radial-aio-554.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
