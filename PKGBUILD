@@ -15,7 +15,7 @@
 # and not the version; a build in a network-isolated chroot will still fail.
 
 pkgname=xpcog
-pkgver=1.20.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Audio player for the formats other players do not open"
 arch=('x86_64')
@@ -35,7 +35,7 @@ license=('GPL-3.0-or-later')
 # substituted, vcpkg builds them static, and they end up inside the executable
 # rather than beside it.
 depends=(
-  'wxwidgets-gtk3' 'gtk3' 'glib2' 'gcc-libs'
+  'gtk4' 'libadwaita' 'libsecret' 'glib2' 'gcc-libs'
   'ffmpeg' 'taglib' 'sqlite' 'libopenmpt' 'libgme' 'libarchive'
   'curl' 'opusfile' 'wavpack' 'libsoxr' 'rubberband' 'libmpcdec'
   'libsidplayfp' 'hicolor-icon-theme'
@@ -44,8 +44,10 @@ depends=(
 # and never linked. Here for the determinism reason above rather than to save the
 # download: XPCogSystemDeps decides per library whether the system has one good
 # enough, so on a machine without them vcpkg quietly builds its own instead.
+# blueprint-compiler turns the GTK frontend's interface files into GtkBuilder
+# XML at build time; nothing reads it at run time.
 makedepends=('cmake' 'ninja' 'git' 'pkgconf' 'zip' 'unzip' 'curl' 'tar'
-             'nlohmann-json' 'cpp-httplib')
+             'nlohmann-json' 'cpp-httplib' 'blueprint-compiler')
 
 # The vcpkg commit is pinned to the manifest's builtin-baseline, and prepare()
 # checks that it still is. Left unpinned this would resolve ports from whatever
@@ -60,7 +62,7 @@ source=(
 # The release tarball is checksummed; the vcpkg tree is not, because a git
 # source is pinned by its commit and makepkg wants SKIP for one.
 sha256sums=(
-  'ebb81ec1381ccae566e9089bafe34f5b1321f8028df5c4acf625beb8db8d02c9'
+  '800dd41d2599311e4a544d71ee39910d95fe6831f5aee083b59327aed57f6ccb'
   'SKIP'
 )
 
