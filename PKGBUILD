@@ -4,7 +4,7 @@
 pkgname='aimp-skin-rubin'
 pkgdesc='AIMP skin: Rubin 1.2 (by Demcha)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('806898dffa80091dcbd84159bbc7be82f7cd2783f4d3888ecac60a4cd1e9af36')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Rubin"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-rubin-411.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
