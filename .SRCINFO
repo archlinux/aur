@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-vega
+	pkgdesc = AIMP skin: Vega 1.01 (by Prince)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-vega-348.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-vega-348.archive::https://aimp.ru/?do=catalog.download&id=348
+	sha256sums = a9056635945fdaea46c79b682acb4c0d52f9b2c8adfc41bdbfe1c3c7d2eca117
+
+pkgname = aimp-skin-vega
