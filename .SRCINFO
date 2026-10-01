@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-zave
+	pkgdesc = AIMP skin: Zave 1.0 (by ScrollUnLock)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-zave-562.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-zave-562.archive::https://aimp.ru/?do=catalog.download&id=562
+	sha256sums = 2fd09787395a9bc2660c5bdc71eeada25da3ffddf7cb21813700a6d0cd8f34d6
+
+pkgname = aimp-skin-zave
