@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-kiss-fm
+	pkgdesc = AIMP skin: KISS FM 1.0 (by -=Lee=-)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-kiss-fm-199.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-kiss-fm-199.archive::https://aimp.ru/?do=catalog.download&id=199
+	sha256sums = 270aad8b812b96442383e29ff904324466e1c789c3635e3fdb9d6fa98a4810a4
+
+pkgname = aimp-skin-kiss-fm
