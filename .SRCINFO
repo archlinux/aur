@@ -1,13 +1,17 @@
 pkgbase = nutest-git
 	pkgdesc = A Nushell test framework
 	pkgver = v1.2.0.r0.gc46af12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vyadh/nutest
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = nushell>=0.114.0
+	provides = nutest
+	conflicts = nutest
 	source = nutest-git::git+https://github.com/vyadh/nutest.git
+	source = autoload.nu
 	sha256sums = SKIP
+	sha256sums = 423b57d54f01695cecd92b28d3814467a7bbe495375b59227cc5e356d11c2ecf
 
 pkgname = nutest-git
