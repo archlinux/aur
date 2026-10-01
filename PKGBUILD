@@ -1,7 +1,7 @@
 # Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 
 pkgname=check_ssl_cert
-pkgver=2.103.1
+pkgver=2.103.3
 pkgrel=1
 pkgdesc='A Nagios plugin for checking X.509 certificates'
 arch=('x86_64' 'i686' 'pentium4' 'armv6h' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url='https://github.com/matteocorti/check_ssl_cert/'
 license=('GPL3')
 depends=('monitoring-plugins' 'curl' 'expect' 'perl-timedate' 'inetutils' 'nmap' 'bind' 'bc')
 source=("https://github.com/matteocorti/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('16a00b0c4a72724c46f4fad4c045dbfb')
+md5sums=('0e1fabb443a67090fda66ee95bd3577d')
 
 package() {
 	cd "$srcdir"/$pkgname-$pkgver
