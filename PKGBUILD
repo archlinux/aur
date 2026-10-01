@@ -1,7 +1,7 @@
 # Source: https://launcher.hytale.com/version/release/launcher.json
 # Maintainer: SCDevel <root@scdevel.net>
 
-_version=2026.09.28-87cfbb7
+_version=2026.09.30-326a0c2
 
 pkgname=hytale-launcher-bin
 pkgver=${_version%-*}
@@ -27,7 +27,7 @@ source=("hytale-launcher-${_version}.zip::https://launcher.hytale.com/builds/rel
         "com.hypixel.HytaleNodeEditorOnly.desktop"
         "LICENSE")
 
-_sha256_linux_amd64='32aa0787d2cf37464cb7100f7a2c6c1e0a996e70e3f87d6ee16cb8a2466f5539'
+_sha256_linux_amd64='20346b6ac3ae970c09ec85a8ed8c9a9fe0d0e38dbcbfb158a9398fb4e2b2d148'
 
 sha256sums=("$_sha256_linux_amd64"
             '0835afe0aec4f086c72518512bf64bfa55679242f3214ca6542fb0fcadd150b9'
