@@ -4,7 +4,7 @@
 pkgname='aimp-skin-mei-music'
 pkgdesc='AIMP skin: Mei Music 1.0 (by Huixin)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('bb4dbc16d1e19831af9ee3cf6787a0ad0dd0746066a8923c4b5c584ccbb0b2f0')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Mei Music"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-mei-music-909.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
