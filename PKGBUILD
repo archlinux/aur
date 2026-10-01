@@ -4,7 +4,7 @@
 pkgname='aimp-skin-mmd3'
 pkgdesc='AIMP skin: MMD3 5.77 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('4a4e43434686c1784b7e2fcd275dd80acc4f57ee18588765dcc6cc6e0c4742ac')
 
 package() {
-  local dest="$pkgdir$_skinsdir/MMD3"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-mmd3-701.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
