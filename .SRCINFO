@@ -3,7 +3,6 @@ pkgbase = assaultcube-reloaded
 	pkgver = 2.18.3
 	pkgrel = 1
 	url = http://acr.victorz.ca
-	arch = i686
 	arch = x86_64
 	license = Zlib
 	depends = curl

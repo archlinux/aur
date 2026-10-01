@@ -4,7 +4,7 @@ pkgname=assaultcube-reloaded
 pkgver=2.18.3 # renovate: datasource=github-tags depName=actf/acr
 pkgrel=1
 pkgdesc='AssaultCube Reloaded'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://acr.victorz.ca'
 license=('Zlib')
 depends=('curl' 'libgl' 'libvorbis' 'libx11' 'openal' 'sdl12-compat' 'sdl_image' 'zlib')
