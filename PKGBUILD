@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=magpie-bin
-pkgver=0.1.460
+pkgver=0.1.550
 pkgrel=1
 pkgdesc="One place to pick every AI coding agent's model: Codex, Claude Code, Gemini CLI and more"
 arch=('x86_64' 'aarch64')
@@ -13,26 +13,22 @@ provides=('magpie')
 conflicts=('magpie')
 options=('!strip' '!debug')
 
-# The desktop build (magpie) needs GTK 3 + WebKitGTK 4.1; magpie-cli is the
-# static terminal build of the same tool.
+# The desktop build of magpie (needs GTK 3 + WebKitGTK 4.1); the static
+# terminal build ships as the separate magpie-cli-bin package.
 source=(
     "magpie-${pkgver}-LICENSE::https://raw.githubusercontent.com/yetone/magpie/v${pkgver}/LICENSE"
     "magpie-icon-${pkgver}.png::https://usemagpie.ai/img/icon-256.png"
 )
 source_x86_64=(
     "magpie-${pkgver}-amd64::https://github.com/yetone/magpie-releases/releases/download/v${pkgver}/magpie-linux-amd64"
-    "magpie-cli-${pkgver}-amd64::https://github.com/yetone/magpie-releases/releases/download/v${pkgver}/magpie-cli-linux-amd64"
 )
 source_aarch64=(
     "magpie-${pkgver}-arm64::https://github.com/yetone/magpie-releases/releases/download/v${pkgver}/magpie-linux-arm64"
-    "magpie-cli-${pkgver}-arm64::https://github.com/yetone/magpie-releases/releases/download/v${pkgver}/magpie-cli-linux-arm64"
 )
 sha256sums=('79d2c8444715d4bc453ec4f8a0aaf2051a4c1ee5ac08f5bd2e5848aef87c7572'
             '57437c6596e05a8fcfc42d4288c030aa00ed86b69fe35d464d69d7026150c704')
-sha256sums_x86_64=('b8734ab7f58cc91cd4fd2c94cd266f06b6948b37bf1048d4a1feb6e38e4991bc'
-                   'b138acb6dba985547ec42aa0adedd9d39eb7c903552f6898955cd84a5439e176')
-sha256sums_aarch64=('0274b611ad216de38640c2982a926145bbde559d66f64ae1cc824919379015a0'
-                    '8ec46b175a364bdbb723984559ffd8e7196ecd5bd43c27e6a9e3ee11aaffc08d')
+sha256sums_x86_64=('4f88d2d88c48b097bfbadcf5675a00f72140e010ccd5e70f569ad0c6b3554ef6')
+sha256sums_aarch64=('3cada4f6188a6d8689a45857f9e67b23834fe1ff9dbac22b22bb1a43858fac46')
 
 package() {
     local _suffix
@@ -42,7 +38,6 @@ package() {
     esac
 
     install -Dm755 "${srcdir}/magpie-${pkgver}-${_suffix}" "${pkgdir}/usr/bin/magpie"
-    install -Dm755 "${srcdir}/magpie-cli-${pkgver}-${_suffix}" "${pkgdir}/usr/bin/magpie-cli"
 
     install -Dm644 "${srcdir}/magpie-icon-${pkgver}.png" \
         "${pkgdir}/usr/share/icons/hicolor/256x256/apps/magpie.png"
