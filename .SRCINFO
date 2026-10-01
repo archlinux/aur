@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-alfa-evolution
+	pkgdesc = AIMP skin: ALFA Evolution 1.0 (by AngelAG)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-alfa-evolution-455.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-alfa-evolution-455.archive::https://aimp.ru/?do=catalog.download&id=455
+	sha256sums = 132b4d339d1f7e5c418b4bfe63085d8934c853398197797e8b2960c25cc1b827
+
+pkgname = aimp-skin-alfa-evolution
