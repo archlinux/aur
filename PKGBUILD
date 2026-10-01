@@ -4,7 +4,7 @@
 pkgname='aimp-skin-jb'
 pkgdesc='AIMP skin: JB 1.1 (by ZeoN7)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('e7c2fcc92bd54d7f960fe45fb274e393ca5f2f8974986346acd609bfdf14396b')
 
 package() {
-  local dest="$pkgdir$_skinsdir/JB"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-jb-383.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
