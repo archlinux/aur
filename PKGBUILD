@@ -4,7 +4,7 @@
 pkgname='aimp-skin-black-minimal'
 pkgdesc='AIMP skin: Black Minimal 1.1 (by BerzerK)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('68ffdc57117376fd6c09cb8974ac9677804a23ecda5bb743e0042092fa15708e')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Black Minimal"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-black-minimal-228.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
