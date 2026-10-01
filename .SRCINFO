@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-perfect-horiz-tabs-layout
+	pkgdesc = AIMP skin: Perfect! (Horiz. tabs layout) 1.0 (by Hayo Tee (aka HX722))
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-perfect-horiz-tabs-layout-350.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-perfect-horiz-tabs-layout-350.archive::https://aimp.ru/?do=catalog.download&id=350
+	sha256sums = 9f926950d3dbeda62bd323205d259fb89a4242eb2646850d7182b2b32a1218e6
+
+pkgname = aimp-skin-perfect-horiz-tabs-layout
