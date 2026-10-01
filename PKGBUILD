@@ -1,7 +1,7 @@
-# Maintainer: Herbert Knapp <herbert.knapp@edu.uni-graz.at>
+# Maintainer: HMK
 pkgname=gsocket-git
 pkgver=1.4.43.r3.g232e2b6
-pkgrel=1
+pkgrel=2
 pkgdesc='Allows two users behind NAT/Firewall to establish a TCP connection with each other.'
 url='https://github.com/hackerschoice/gsocket'
 arch=('any')
@@ -19,8 +19,8 @@ pkgver() {
 
 package() {
   cd "${srcdir}/${pkgname}/"
-  ./bootstrap
-  ./configure --prefix="${pkgdir}"/usr --sysconfdir="${pkgdir}"/etc
+  for PR_NUM in 127 126 125 108; do curl -L https://github.com/hackerschoice/gsocket/pull/$PR_NUM.diff | git apply || true; done
+  ./bootstrap && ./configure --prefix="${pkgdir}"/usr --sysconfdir="${pkgdir}"/etc
   make install
   install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/gsocket/
   install -Dm 644 README.md -t "${pkgdir}"/usr/share/licenses/gsocket/
