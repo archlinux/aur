@@ -4,7 +4,7 @@
 pkgname='aimp-skin-yacobymac-light'
 pkgdesc='AIMP skin: YacobyMac light 1.0 (by Marat_S)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('7b2f5bce05d352e4fbce1ea1c02a9ab92c32e53867d3b90751b5cb29ed7455d9')
 
 package() {
-  local dest="$pkgdir$_skinsdir/YacobyMac light"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-yacobymac-light-428.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
