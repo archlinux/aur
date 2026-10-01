@@ -1,0 +1,87 @@
+# Part of the EDG Compiler Project, under the Apache License v2.0 with LLVM
+# Exceptions.
+# See https://edgcpp.org/LICENSE.txt for license information.
+# SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+
+################################################################################
+#
+# Configuration file for the EDG eccp script, edgcpp-git package.
+#
+# eccp.sh sources this file from $EDG_BASE on every run.  It is upstream's
+# bases/docker/dev-env/gcc/edg_eccp_config, adapted to the resident gcc and
+# glibc: the header search lists and the gcc version are read from the gcc
+# on this machine when eccp runs, not taken from the environment.
+#
+################################################################################
+EDG_DEFAULT_DEFINES="-D__CHAR_BIT__=8"
+EDG_DEFAULT_CPP_DEFINES="-D_POSIX_SOURCE"
+
+# Use GCC.
+EDG_C_TO_OBJ_COMPILER=gcc
+
+# The resident gcc's header search list for language $1 (c or c++),
+# colon-separated, in gcc's own order.
+edg_gcc_includes() {
+  "$EDG_C_TO_OBJ_COMPILER" -x "$1" -v -E /dev/null 2>&1 >/dev/null |
+    sed -e '1,/^#include <\.\.\.> search starts here:/d' \
+        -e '/^End of search list\./,$d' \
+        -e 's/^ *//' |
+    paste -sd: -
+}
+
+# The resident gcc's version in --gnu_version form: 16.2.1 is 160201.
+EDG_GCC_VER_SCRAPE=${EDG_GCC_VER_SCRAPE-$(
+  "$EDG_C_TO_OBJ_COMPILER" -dumpfullversion |
+    awk -F. '{ printf "%d%02d%02d", $1, $2, $3 }')}
+
+EDG_USE_SYSTEM_HEADERS=${EDG_USE_SYSTEM_HEADERS-0}
+if [ $EDG_USE_SYSTEM_HEADERS -eq 0 ] ; then
+  # EDG's own headers, then the resident gcc's C search list: gcc's
+  # freestanding headers and glibc.
+  edg_cincl=$(edg_gcc_includes c)
+  EDG_INCLDIR=${EDG_INCLDIR-"$EDG_BASE/include:$edg_cincl"}
+  EDG_CINCLDIR=${EDG_CINCLDIR-"$EDG_BASE/include_c99:$edg_cincl"}
+  # The C++ runtime is EDG's libC.a, which eccp.sh links last.
+  EDG_C_TO_OBJ_LIBRARIES="$EDG_C_TO_OBJ_LIBRARIES -lpthread"
+else
+  # g++ emulation: the resident g++'s search lists, libstdc++ first.
+  EDG_INCLDIR=${EDG_INCLDIR-${EDG_GCC_INCL_SCRAPE-$(edg_gcc_includes c++)}}
+  EDG_CINCLDIR=${EDG_CINCLDIR-${EDG_GCC_CINCL_SCRAPE-$(edg_gcc_includes c)}}
+  # Inject --gnu_version to the resident gcc's version.
+  EDG_CPFE_DEFAULT_OPTIONS="--gnu_version=$EDG_GCC_VER_SCRAPE $EDG_CPFE_DEFAULT_OPTIONS"
+  EDG_C_TO_OBJ_LIBRARIES="$EDG_C_TO_OBJ_LIBRARIES -lstdc++ -lgcc_s -lpthread"
+fi
+
+# Get rid of the annoying "nm: stubs.o: no symbols" errors:
+EDG_PRELINK_DEFAULT_OPTIONS='-c "nm -og 2>/dev/null" '$EDG_PRELINK_DEFAULT_OPTIONS
+
+default_opts=$(printf '%s' \
+  "$EDG_C_TO_OBJ_DEFAULT_OPTIONS " \
+  '-w -Dva_copy=__va_copy -falign-functions=4 -fdiagnostics-plain-output'
+)
+
+if [ $EDG_GCC_VER_SCRAPE -ge 140000 ] ; then
+  #
+  # As of GCC 14 the following flags are required to prevent spurious
+  # errors when compiling the generated C code.
+  #
+  # See https://gcc.gnu.org/gcc-14/porting_to.html for more information.
+  #
+  warnings_to_disable=$(printf '%s' \
+    '-Wno-error=implicit-function-declaration ' \
+    '-Wno-error=incompatible-pointer-types ' \
+    '-Wno-error=int-conversion ' \
+    '-Wno-error=return-mismatch '
+  )
+  default_opts="$default_opts $warnings_to_disable"
+fi
+
+EDG_C_TO_OBJ_DEFAULT_OPTIONS=$default_opts
+EDG_C_TO_OBJ_DEFAULT_OPTIONS_linux_x86_64="$default_opts -m64 -march=x86-64"
+
+EDG_C_TO_OBJ_C99_OPTIONS="-std=gnu9x"
+
+EDG_SUPPRESS_PATCH_MUNCH=1
+EDG_STD_LIBS=${EDG_STD_LIBS-""}
+COLLECT_NO_DEMANGLE=1
+export COLLECT_NO_DEMANGLE

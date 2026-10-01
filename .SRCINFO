@@ -1,6 +1,6 @@
 pkgbase = edgcpp-git
 	pkgdesc = The EDG C/C++ front end with its C-generating back end (eccp), prelinker and runtime
-	pkgver = r62396.90b6647
+	pkgver = r62398.158320e
 	pkgrel = 1
 	url = https://edgcpp.org
 	arch = x86_64
@@ -20,7 +20,9 @@ pkgbase = edgcpp-git
 	options = !lto
 	source = edgcpp::git+https://github.com/edgcpp/compiler.git
 	source = eccp
+	source = edg_eccp_config
 	sha256sums = SKIP
 	sha256sums = 81831901bda74b2bf54b94519f4953e773a385989404050dc1c3f9cf2169cf1c
+	sha256sums = 6aa27d5470ea36693f1c7e6f7479d79ac17b6e7c96c0544567b0136deb8e6206
 
 pkgname = edgcpp-git
