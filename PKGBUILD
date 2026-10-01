@@ -4,7 +4,7 @@
 pkgname='aimp-skin-sunrise'
 pkgdesc='AIMP skin: Sunrise 1.0 (by NikolavRj)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('096d55b6580cb9354190ddc1f81f49c5e83d4ce2c9b468c34b446f228ad3dedf')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Sunrise"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-sunrise-308.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
