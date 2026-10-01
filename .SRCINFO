@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-dark-wood-spectrum-edition
+	pkgdesc = AIMP skin: Dark Wood (Spectrum Edition 1.3 (by shox)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-dark-wood-spectrum-edition-305.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-dark-wood-spectrum-edition-305.archive::https://aimp.ru/?do=catalog.download&id=305
+	sha256sums = 65a74254d9e44b3ecc1c7cfb4d93b57d68268363523c37aa1a22d32004c69f11
+
+pkgname = aimp-skin-dark-wood-spectrum-edition
