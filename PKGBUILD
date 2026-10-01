@@ -4,7 +4,7 @@
 pkgname='aimp-skin-orbita-107s'
 pkgdesc='AIMP skin: ОРБИТА-107С 4.0 (by Пупс)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('24b7cd0ecafb696ec038f6605af7feae0d6d1e32a94693f93513fb90e83ef202')
 
 package() {
-  local dest="$pkgdir$_skinsdir/ОРБИТА-107С"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-orbita-107s-836.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
