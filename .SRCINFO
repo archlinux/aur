@@ -1,0 +1,21 @@
+pkgbase = cv4pve-botgram
+	pkgdesc = Telegram bot for Proxmox VE: manage and monitor your cluster via Telegram
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Corsinvest/cv4pve-botgram
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPLv3
+	provides = cv4pve-botgram
+	conflicts = cv4pve-botgram
+	options = !strip
+	options = !debug
+	source_x86_64 = cv4pve-botgram-2.0.0-x86_64.zip::https://github.com/Corsinvest/cv4pve-botgram/releases/download/v2.0.0/cv4pve-botgram-linux-x64.zip
+	sha256sums_x86_64 = 6881f94c76c4ab62460ca9e006217c687c544e19411213e64bc3c3c0264df622
+	source_aarch64 = cv4pve-botgram-2.0.0-aarch64.zip::https://github.com/Corsinvest/cv4pve-botgram/releases/download/v2.0.0/cv4pve-botgram-linux-arm64.zip
+	sha256sums_aarch64 = 43932038847a4b3ccd76ceb481bd00c1f598826c0dc54c1aa148d2cce06163f2
+	source_armv7h = cv4pve-botgram-2.0.0-armv7h.zip::https://github.com/Corsinvest/cv4pve-botgram/releases/download/v2.0.0/cv4pve-botgram-linux-arm.zip
+	sha256sums_armv7h = e6f48dc977e72c183d96d885d864c3eef567f4aa5a8d8ddc40255173b60d71b6
+
+pkgname = cv4pve-botgram
