@@ -4,7 +4,7 @@
 pkgname='aimp-skin-a700'
 pkgdesc='AIMP skin: A700 1.0 (by Artego)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c5a8b8edf73613d684398b8f6157e8846ecd6a39bfea52daffdefb7819a7c38e')
 
 package() {
-  local dest="$pkgdir$_skinsdir/A700"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-a700-138.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
