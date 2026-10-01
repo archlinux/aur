@@ -4,7 +4,7 @@
 pkgname='aimp-skin-bbm-black-box-music'
 pkgdesc='AIMP skin: BBM (Black Box Music) 1.0 (by Incarnia)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('7646b4f53e3b403d24d8c674f19535af76dfb5ee0ac222b7790ba57a498af2e2')
 
 package() {
-  local dest="$pkgdir$_skinsdir/BBM (Black Box Music)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-bbm-black-box-music-382.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
