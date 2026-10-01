@@ -4,7 +4,7 @@
 pkgname='aimp-skin-eternity-112'
 pkgdesc='AIMP skin: Eternity 2.6 (by Krieger)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('17a2f96af05a73de298cceadd19a56a026107bbe813de90fca1b465649424098')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Eternity (112)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-eternity-112-112.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
