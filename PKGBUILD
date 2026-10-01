@@ -4,7 +4,7 @@
 pkgname='aimp-skin-aqua-minerale'
 pkgdesc='AIMP skin: Aqua Minerale 1.2 (by Freyr (aka Kristall_k8))'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('232c7586ffe5124a92382606340023fcc7996bf422036f9018f4505673f513b5')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Aqua Minerale"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-aqua-minerale-90.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
