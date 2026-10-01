@@ -3,7 +3,6 @@ pkgbase = ocaml-mm
 	pkgver = 0.8.7
 	pkgrel = 1
 	url = https://github.com/savonet/ocaml-mm
-	arch = i686
 	arch = x86_64
 	license = custom:LGPL2.1 with linking exception
 	makedepends = dune

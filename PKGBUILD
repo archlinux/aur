@@ -6,7 +6,7 @@ pkgname=ocaml-mm
 pkgver=0.8.7 # renovate: datasource=github-tags depName=savonet/ocaml-mm
 pkgrel=1
 pkgdesc="OCaml multimedia library"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/savonet/ocaml-mm"
 license=('custom:LGPL2.1 with linking exception')
 depends=('ocaml' 'ocaml-alsa' 'ocaml-ao' 'ocaml-pulseaudio' 'ocaml-gstreamer' 'ocaml-mad' 'ocaml-ogg' 'ocaml-ocamlsdl' 'ocaml-theora' 'ffmpeg')
