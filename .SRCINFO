@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-sprout-light
 	pkgdesc = AIMP skin: Sprout Light 1.2 (by Dead)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

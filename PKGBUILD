@@ -4,7 +4,7 @@
 pkgname='aimp-skin-sprout-light'
 pkgdesc='AIMP skin: Sprout Light 1.2 (by Dead)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('cf5ffb41c8579f98338bc8334527008f70e5007a4d67c906f50c2632f3db85e5')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Sprout Light"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-sprout-light-517.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
