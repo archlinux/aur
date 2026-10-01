@@ -4,7 +4,7 @@
 pkgname='aimp-skin-aimp-potplayer'
 pkgdesc='AIMP skin: AIMP PotPlayer 3.0 (by BehemothXxx)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('91d0cb94b8a4105b0c95eec122be7764c0d7be66e58856011c73fdd8a274b70e')
 
 package() {
-  local dest="$pkgdir$_skinsdir/AIMP PotPlayer"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-aimp-potplayer-607.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
