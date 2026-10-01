@@ -4,7 +4,7 @@
 pkgname='aimp-skin-a-graph'
 pkgdesc='AIMP skin: A-Graph 1.0 (by D.D.Konstantinov)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('0f396437ca2b29b8e216535031fafc3ce4d167e6e895a4e5be0c4846e53e202a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/A-Graph"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-a-graph-345.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
