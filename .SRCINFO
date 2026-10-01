@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-lotex
+	pkgdesc = AIMP skin: Lotex 1.0 (by amdpastrana)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-lotex-714.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-lotex-714.archive::https://aimp.ru/?do=catalog.download&id=714
+	sha256sums = 8834b9fb34ec15d9b0733982f4c704ca0fb62b1ad7c2afb84492e9a6e1197da1
+
+pkgname = aimp-skin-lotex
