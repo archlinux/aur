@@ -4,7 +4,7 @@
 pkgname='aimp-skin-acryl'
 pkgdesc='AIMP skin: Acryl 1.0 (by Freyr (aka Kristall_k8))'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('1005263a95173b69d3edc66cb913fddbfba6b1f774af98a7920720a723f03a37')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Acryl"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-acryl-142.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
