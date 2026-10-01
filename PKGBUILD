@@ -4,7 +4,7 @@
 pkgname='aimp-skin-vertikal'
 pkgdesc='AIMP skin: Вертикаль 1.0 (by Marat_S)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('5bc3f167416c8e8724b9f4902116786b7b8ca24294f8c9231366d86debaa0ea1')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Вертикаль"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-vertikal-924.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
