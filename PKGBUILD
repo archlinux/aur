@@ -4,7 +4,7 @@
 pkgname='aimp-skin-zeon'
 pkgdesc='AIMP skin: Zeon 2 (by -=Lee=-)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a6ae77360e321864c22e7d96f04c684b68ac090283fb558d62855e0aa14c9ec6')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Zeon"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-zeon-318.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
