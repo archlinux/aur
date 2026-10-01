@@ -4,7 +4,7 @@
 pkgname='aimp-skin-220v'
 pkgdesc='AIMP skin: 220V 1.0 (by Xpand)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('86a7e68b6f04441aa24b253af79afbb6f859c7a79d1a91b785dfebb35196ad5a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/220V"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-220v-191.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
