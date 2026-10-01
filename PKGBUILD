@@ -1,6 +1,6 @@
 # Maintainer: Kostiantyn Kushnir <chpock@gmail.com>
 pkgname=openusage-cli
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc="Local daemon and CLI for AI provider usage/quota via OpenUsage plugins"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=('opencode: AI assistant integration')
 provides=("$pkgname=$pkgver")
 conflicts=('openusage-cli-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chpock/openusage-cli/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4594132b00425b0d4ece16b7eeca5aed0a35a8fdcbdaa1f9cf5975b0f6671d7a')
+sha256sums=('5ad3b62a4d1c0fcb15a03fc7f16f1bc70990f968b904e2a905bf3a1261c97a7e')
 
 build() {
     cd "$pkgname-$pkgver"
