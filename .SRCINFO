@@ -1,6 +1,6 @@
 pkgbase = kanban4ai-bin
 	pkgdesc = Native kanban board CLI and TUI driven by AI coding agents (prebuilt binary)
-	pkgver = 0.6.15
+	pkgver = 0.6.16
 	pkgrel = 1
 	url = https://github.com/sougstron/kanban4ai
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = kanban4ai-bin
 	optdepends = libnotify: desktop notifications through notify-send
 	optdepends = wl-clipboard: paste images under Wayland
 	optdepends = xclip: paste images under X11
-	provides = kanban4ai=0.6.15
+	provides = kanban4ai=0.6.16
 	conflicts = kanban4ai
 	options = !strip
-	source_x86_64 = kanban4ai-bin-0.6.15-x86_64.tar.gz::https://github.com/sougstron/kanban4ai/releases/download/v0.6.15/kanban4ai-v0.6.15-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 119d49b11d6fc94bef1ecfbbf33c937e541962eb803b99ea993ef71c31b32782
-	source_aarch64 = kanban4ai-bin-0.6.15-aarch64.tar.gz::https://github.com/sougstron/kanban4ai/releases/download/v0.6.15/kanban4ai-v0.6.15-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 7c48c7c9f73a2e1a6755bad4e37e473c541039e806a4b97281c412342eb270b2
+	source_x86_64 = kanban4ai-bin-0.6.16-x86_64.tar.gz::https://github.com/sougstron/kanban4ai/releases/download/v0.6.16/kanban4ai-v0.6.16-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 91b242a76efa536854f2c187f36df5bf97256aa2424c2d2498efda62645c8a8e
+	source_aarch64 = kanban4ai-bin-0.6.16-aarch64.tar.gz::https://github.com/sougstron/kanban4ai/releases/download/v0.6.16/kanban4ai-v0.6.16-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = c9094e2b0135a18a28db2a63b49f4bc2fcf48200473b77841d508a84a5eea163
 
 pkgname = kanban4ai-bin
