@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-akai-gx-635d
+	pkgdesc = AIMP skin: Akai GX-635D 1.0 (by Black_AVP)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-akai-gx-635d-399.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-akai-gx-635d-399.archive::https://aimp.ru/?do=catalog.download&id=399
+	sha256sums = 6f78bc3369cb656936412ba4b5657a74643745f7cd6a44040b8f73642bf4590b
+
+pkgname = aimp-skin-akai-gx-635d
