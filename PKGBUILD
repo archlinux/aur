@@ -2,17 +2,16 @@
 
 pkgname=ttl
 pkgver=0.23.0
-pkgrel=1
-pkgdesc="Fast, modern traceroute with real-time TUI, per-hop stats, ASN/geo lookup, and ECMP detection."
+pkgrel=2
+pkgdesc='Fast, modern traceroute with real-time TUI, per-hop stats, ASN/geo and ECMP'
 url="https://github.com/lance0/ttl"
 license=('MIT' 'Apache-2.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lance0/ttl/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('e3e2f88707f0ce22a329a91f2f2a2e2f33a5468470fe076c15357328156300a5')
 arch=('x86_64')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=('cargo')
 options=(!lto)
-provides=('ttl')
 conflicts=('ttl-bin')
 install=ttl.install
 
