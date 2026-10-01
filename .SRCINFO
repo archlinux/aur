@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-flat-dark
+	pkgdesc = AIMP skin: FLAT|DARK 2.1.2 (by w7rus)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-flat-dark-869.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-flat-dark-869.archive::https://aimp.ru/?do=catalog.download&id=869
+	sha256sums = b0da45a3cc3f833a230352f359e189bb002a29f9040394b7176eaba23b050aff
+
+pkgname = aimp-skin-flat-dark
