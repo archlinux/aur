@@ -1,6 +1,6 @@
 pkgname=graphify-bin
 pkgver=0.9.73
-pkgrel=2
+pkgrel=3
 pkgdesc="AI coding assistant skill - turn any folder into a queryable knowledge graph"
 arch=(x86_64 aarch64)
 url="https://graphify.net"
