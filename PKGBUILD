@@ -4,7 +4,7 @@
 pkgname='aimp-skin-dervy'
 pkgdesc='AIMP skin: Dervy 1.0 (by -=Lee=-)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f85b7819f554e72601e2cb34ade4c65e75650f72848f95fc270a2526cbb4556a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Dervy"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-dervy-206.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
