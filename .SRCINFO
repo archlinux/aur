@@ -1,0 +1,26 @@
+pkgbase = neferafk-git
+	pkgdesc = Idle daemon for Wayland: fade, session lock, screens off and suspend (git version)
+	pkgver = 0.2.0.r0.g271e247
+	pkgrel = 1
+	url = https://github.com/bnema/neferafk
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go>=2:1.27
+	makedepends = git
+	depends = glibc
+	depends = pam
+	depends = libxkbcommon
+	depends = vulkan-icd-loader
+	depends = vulkan-driver
+	depends = systemd
+	depends = ttf-dejavu
+	optdepends = pass: PIN source for auth.mode = pin
+	provides = neferafk
+	conflicts = neferafk
+	conflicts = neferafk-bin
+	backup = etc/pam.d/neferafk
+	source = git+https://github.com/bnema/neferafk.git
+	sha256sums = SKIP
+
+pkgname = neferafk-git
