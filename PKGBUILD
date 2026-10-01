@@ -58,6 +58,10 @@ pkgver() {
 }
 
 build() {
+    # In case one uses march=native and have AVX2 support,
+    # it segfaults when trying to align with 256 bits
+    export CXXFLAGS="${CXXFLAGS} -mprefer-vector-width=128"
+
     local cmake_options=(
         -W no-author
         -D CMAKE_BUILD_TYPE=None
@@ -96,51 +100,6 @@ check() {
         "test_delayvar.sim"
         "test_delayhb.sim"
         "test_delayhbac.sim"
-        # TODO: The following tests segfault
-        "test_sweeppar.sim"
-        "test_acxf.sim"
-        "test_acsp.sim"
-        "test_behavop.sim"
-        "test_behavsym.sim"
-        "test_behavnoise.sim"
-        "test_opsolve.sim"
-        "test_opsolvewrite.sim"
-        "test_acstb.sim"
-        "test_tranic.sim"
-        "test_trannoise1.sim"
-        "test_trannoise2.sim"
-        "test_trannoise3.sim"
-        "test_trannoise4.sim"
-        "test_noise.sim"
-        "test_hb3.sim"
-        "test_hb5.sim"
-        "test_pac1.sim"
-        "test_pss1.sim"
-        "test_pss3.sim"
-        "test_pssosc1.sim"
-        "test_pssosc2.sim"
-        "test_pssosc3.sim"
-        "test_pssosc4.sim"
-        "test_pssosc5.sim"
-        "test_visrc.sim"
-        "test_viwfm.sim"
-        "test_vipwl.sim"
-        "test_inductor.sim"
-        "test_mutual.sim"
-        "test_behavesym.sim"
-        "test_hbnoise1.sim"
-        "test_hbnoise2.sim"
-        "test_hbnoise3.sim"
-        "test_pnoise1.sim"
-        "test_pnoise2.sim"
-        "test_pnoise3.sim"
-        "test_spectre_include.sim"
-        "test_spectre_subckt.sim"
-        "test_spice_rc.sim"
-        "test_spice_diode.sim"
-        "test_spice_subckt.sim"
-        "test_spice_mos.sim"
-        "test_spice_bsource.sim"
     )
 
     # Check PDK_ROOT is set and PDK equals "ihp-sg13g2"
