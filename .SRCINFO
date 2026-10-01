@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-220v
+	pkgdesc = AIMP skin: 220V 1.0 (by Xpand)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-220v-191.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-220v-191.archive::https://aimp.ru/?do=catalog.download&id=191
+	sha256sums = 86a7e68b6f04441aa24b253af79afbb6f859c7a79d1a91b785dfebb35196ad5a
+
+pkgname = aimp-skin-220v
