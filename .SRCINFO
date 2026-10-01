@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-teh
+	pkgdesc = AIMP skin: TEH 1.0 (by samix)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-teh-840.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-teh-840.archive::https://aimp.ru/?do=catalog.download&id=840
+	sha256sums = a8055243a5cdeedccf5554ba07870ea40eeaf8a473c84cd3b267b03f50152f0d
+
+pkgname = aimp-skin-teh
