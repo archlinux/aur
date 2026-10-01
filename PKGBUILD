@@ -4,7 +4,7 @@
 pkgname='aimp-skin-nota-203-1-stereo'
 pkgdesc='AIMP skin: НОТА 203-1 стерео 3.0 (by Пупс)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a8ace4379782ab3656dc9de8fdfef98009f8ed559c80a456e79053d78578bee9')
 
 package() {
-  local dest="$pkgdir$_skinsdir/НОТА 203-1 стерео"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-nota-203-1-stereo-729.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
