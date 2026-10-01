@@ -9,6 +9,7 @@ pkgbase = orchard-git
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = rust
+	makedepends = clang
 	depends = electron
 	provides = orchard
 	conflicts = orchard
