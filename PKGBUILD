@@ -1,7 +1,7 @@
 # Maintainer: Herbert Knapp
 pkgname=winamp2
 pkgver=2.95
-pkgrel=5
+pkgrel=6
 pkgdesc='Winamp 2.95 audio player with Milkdrop 1.04, FLAC 1.1.2, APE 3.99, MPC 0.99f plugins'
 arch=('any')
 url="http://www.nullsoft.com"
@@ -15,7 +15,7 @@ prepare() {
   _tmp=$(mktemp -d)
   cd ${_tmp}
   7z x "$srcdir/Winamp/winamp.exe"
-  convert .rsrc/ICON/18.ico -thumbnail 32x32 -alpha on -background none -flatten "$srcdir/Winamp/winamp.ico.18.png"
+  magick .rsrc/ICON/18.ico -thumbnail 32x32 -alpha on -background none -flatten "$srcdir/Winamp/winamp.ico.18.png"
   rm -r ${_tmp}
 }
 
