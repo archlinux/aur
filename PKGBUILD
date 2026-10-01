@@ -1,17 +1,21 @@
 # Maintainer: HorneroOS contributors <https://github.com/HorneroOS/greeter>
 pkgname=hornero-greeter
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='HorneroOS SDDM greeter theme (Argentina footage, offline)'
 arch=('any')
 url='https://github.com/HorneroOS/greeter'
 license=('GPL-3.0-only')
-depends=('sddm' 'qt5-multimedia' 'gst-plugins-good')
+# Qt6 runtime: the theme imports QtQuick, QtQuick.Effects and QtMultimedia
+# (see Main.qml / components/*.qml); sddm provides SddmComponents.
+# gst-plugins-good decodes the offline H.264 footage via the QtMultimedia
+# GStreamer backend.
+depends=('sddm' 'qt6-multimedia' 'qt6-declarative' 'gst-plugins-good')
 optdepends=('hornero-greeter-media-base: Argentina video pack')
 # Named "$pkgname" so the checkout lands at "${srcdir}/$pkgname";
 # package() below only ever reads from there, so AUR chroot builds
 # behave exactly like local packaging/ builds.
-source=("$pkgname::git+https://github.com/HorneroOS/greeter.git")
+source=("$pkgname::git+https://github.com/HorneroOS/greeter.git#tag=v1.0.1")
 sha256sums=('SKIP')
 
 package() {
