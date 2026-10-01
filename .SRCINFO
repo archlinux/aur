@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-nexus-dark
+	pkgdesc = AIMP skin: Nexus Dark 1.0 (by umbrella-cakey)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-nexus-dark-1224.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-nexus-dark-1224.archive::https://aimp.ru/?do=catalog.download&id=1224
+	sha256sums = 2a04b55a2d119582c59c3c1d56ee46dda3b9b85a924a903e8418b3b09d5d8fc3
+
+pkgname = aimp-skin-nexus-dark
