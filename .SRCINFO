@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-ostrayx
 	pkgdesc = AIMP skin: Ostrayx 1.0 (by Demcha)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

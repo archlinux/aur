@@ -4,7 +4,7 @@
 pkgname='aimp-skin-ostrayx'
 pkgdesc='AIMP skin: Ostrayx 1.0 (by Demcha)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('ac1221e4f78f714feee3b099717cbd183c05366b3a98a271df94e74eccebad44')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Ostrayx"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-ostrayx-327.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
