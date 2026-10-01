@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-sunrise
+	pkgdesc = AIMP skin: Sunrise 1.0 (by NikolavRj)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-sunrise-308.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-sunrise-308.archive::https://aimp.ru/?do=catalog.download&id=308
+	sha256sums = 096d55b6580cb9354190ddc1f81f49c5e83d4ce2c9b468c34b446f228ad3dedf
+
+pkgname = aimp-skin-sunrise
