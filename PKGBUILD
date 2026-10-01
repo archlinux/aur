@@ -5,10 +5,10 @@ pkgver=2.2.0
 pkgrel=1
 pkgdesc="A Perl replacement for MAKE"
 arch=('any')
-url="http://www.gnu.org/software/cons/"
-license=('GPL2')
+url="https://www.gnu.org/software/cons/"
+license=('GPL-2.0-or-later')
 depends=('perl' 'perl-digest-md5')
-source=("http://www.gnu.org/software/cons/stable/$pkgname-$pkgver.tgz")
+source=("https://www.gnu.org/software/cons/stable/$pkgname-$pkgver.tgz")
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
