@@ -4,7 +4,7 @@
 pkgname='aimp-skin-magmatic-2'
 pkgdesc='AIMP skin: Magmatic 2 1.5 (by Zigar)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a8024561209621a8550db8935af968ec20c1c51601b48c1e93f950ab2e04fccf')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Magmatic 2"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-magmatic-2-188.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
