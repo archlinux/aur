@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=perl-ip-country
-pkgver=2.28
+pkgver=2.28 # renovate: datasource=cpan depName=IP::Country
 pkgrel=3
 pkgdesc="lookup of country codes by IP address"
 arch=('any')
