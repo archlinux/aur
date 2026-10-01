@@ -1,0 +1,8 @@
+post_install() {
+  cat <<'MSG'
+AgentsRoom is installed. Launch it with `agentsroom` or from your app menu.
+
+This package does not self-update: upgrade it with your AUR helper
+(e.g. `yay -Syu agentsroom-bin`) rather than from inside the app.
+MSG
+}
