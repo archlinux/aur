@@ -1,7 +1,7 @@
 # Packager: robertfoster
 
 pkgname=perl-x500-dn
-pkgver=0.29
+pkgver=0.29 # renovate: datasource=cpan depName=X500::DN
 pkgrel=3
 pkgdesc='Handle X.500 DNs (Distinguished Names), parse and format them'
 arch=(any)
