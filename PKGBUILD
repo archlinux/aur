@@ -4,7 +4,7 @@
 pkgname='aimp-skin-wimo'
 pkgdesc='AIMP skin: WiMo 1.1 (by ZeoN7)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('4f0211168b751378b39febf03e11f56b22d52f3caee487d91c0316ba855934c5')
 
 package() {
-  local dest="$pkgdir$_skinsdir/WiMo"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-wimo-608.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
