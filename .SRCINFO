@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-groovem-light
+	pkgdesc = AIMP skin: GrooveM (Light) 1.0 (by amdpastrana)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-groovem-light-853.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-groovem-light-853.archive::https://aimp.ru/?do=catalog.download&id=853
+	sha256sums = 78fb2443cf35b9a022a7782506da64ca5a3edbf3c5e74cbc94a36d806a1f6a8a
+
+pkgname = aimp-skin-groovem-light
