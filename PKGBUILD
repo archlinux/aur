@@ -4,7 +4,7 @@
 pkgname='aimp-skin-cyberlink-powerplayer'
 pkgdesc='AIMP skin: CyberLink PowerPlayer 2.00 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('dc07807579208c99cc7cf09fcceb528b1c2391a9fe5d6f3d34da1af16c27f9df')
 
 package() {
-  local dest="$pkgdir$_skinsdir/CyberLink PowerPlayer"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-cyberlink-powerplayer-594.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
