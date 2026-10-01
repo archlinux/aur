@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-fui
+	pkgdesc = AIMP skin: FUi 2.1.2 (by Vitalik221)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-fui-896.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-fui-896.archive::https://aimp.ru/?do=catalog.download&id=896
+	sha256sums = 5380394ee16288896314a409963fee6a28014eb28c5a03df958b9db7b5a7fe52
+
+pkgname = aimp-skin-fui
