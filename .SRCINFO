@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-alfa-project
+	pkgdesc = AIMP skin: ALFA Project 1.0 (by AngelAG)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-alfa-project-82.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-alfa-project-82.archive::https://aimp.ru/?do=catalog.download&id=82
+	sha256sums = 76dd8a5bd428db8e80d3f364e5ef870e61f2b24e0e84963a128c925f0a104754
+
+pkgname = aimp-skin-alfa-project
