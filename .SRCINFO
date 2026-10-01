@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-capsule
+	pkgdesc = AIMP skin: Capsule 1.0 (by AngelAG)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-capsule-146.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-capsule-146.archive::https://aimp.ru/?do=catalog.download&id=146
+	sha256sums = 1e3a56d8d3cf55ffeb50d1cf207060d617666c07d7fe973cba5160e08b62d707
+
+pkgname = aimp-skin-capsule
