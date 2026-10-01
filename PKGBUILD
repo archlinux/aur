@@ -4,7 +4,7 @@
 pkgname='aimp-skin-akai-gx-f90'
 pkgdesc='AIMP skin: Akai GX-F90 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('28617aed61ca02444986d94d41c0d8cff88577baa40a666903479a3b26ea93e1')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Akai GX-F90"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-akai-gx-f90-400.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
