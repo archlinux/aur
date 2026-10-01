@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-windows-7
+	pkgdesc = AIMP skin: Windows 7 1.0 (by Tenek)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-windows-7-414.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-windows-7-414.archive::https://aimp.ru/?do=catalog.download&id=414
+	sha256sums = 98b4b9c91f3edc9b7871d0806c7b9333f59273412972fbeccc76e725e1402330
+
+pkgname = aimp-skin-windows-7
