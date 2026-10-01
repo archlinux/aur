@@ -4,7 +4,7 @@
 pkgname='aimp-skin-derbolt'
 pkgdesc='AIMP skin: DerBolt 1.0 (by Grin)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d7a3b049bd33376ee0d9d4833bdf06b81e3a4b813dda1f2960ca9cc275243fc4')
 
 package() {
-  local dest="$pkgdir$_skinsdir/DerBolt"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-derbolt-468.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
