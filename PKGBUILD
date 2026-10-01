@@ -3,13 +3,13 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="A tool to inject custom boot messages into the console"
 arch=('x86_64' 'aarch64')
-url="https://github.com/b6d5b38e0d7ae6bd0d951815cd92df43/injectd"
+url="https://codeberg.org/b6d5b38e0d7ae6bd0d951815cd92df43/injectd"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cmake' 'git')
 provides=("injectd")
 conflicts=("injectd")
-source=("git+https://github.com/b6d5b38e0d7ae6bd0d951815cd92df43/injectd.git")
+source=("git+https://codeberg.org/b6d5b38e0d7ae6bd0d951815cd92df43/injectd.git")
 md5sums=('SKIP')
 
 pkgver() {

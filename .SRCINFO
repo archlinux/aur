@@ -2,7 +2,7 @@ pkgbase = injectd-git
 	pkgdesc = A tool to inject custom boot messages into the console
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/b6d5b38e0d7ae6bd0d951815cd92df43/injectd
+	url = https://codeberg.org/b6d5b38e0d7ae6bd0d951815cd92df43/injectd
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = injectd-git
 	depends = gcc-libs
 	provides = injectd
 	conflicts = injectd
-	source = git+https://github.com/b6d5b38e0d7ae6bd0d951815cd92df43/injectd.git
+	source = git+https://codeberg.org/b6d5b38e0d7ae6bd0d951815cd92df43/injectd.git
 	md5sums = SKIP
 
 pkgname = injectd-git
