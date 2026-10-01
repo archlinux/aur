@@ -4,7 +4,7 @@
 pkgname='aimp-skin-hameleon-aio'
 pkgdesc='AIMP skin: Hameleon AIO 1.0 (by NITROGEN)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('07f49ef6aa7fa9c91c765c71087152a680f74aa0622c0c13ebe80be8fb7649ad')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Hameleon AIO"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-hameleon-aio-422.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
