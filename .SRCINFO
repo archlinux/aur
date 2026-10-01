@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-alchemy
+	pkgdesc = AIMP skin: Alchemy 1.6 (by Henrique Oliveira)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-alchemy-766.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-alchemy-766.archive::https://aimp.ru/?do=catalog.download&id=766
+	sha256sums = 1b425f13525bcfd4d1af77f843e668b0401c1cd7c3eafcc4b27deea0a4617927
+
+pkgname = aimp-skin-alchemy
