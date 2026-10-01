@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-collector-s-terminal
+	pkgdesc = AIMP skin: Collector's Terminal 1.0 (by Hive17)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-collector-s-terminal-772.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-collector-s-terminal-772.archive::https://aimp.ru/?do=catalog.download&id=772
+	sha256sums = be32a9f375c80b97ef5372781a6607094baa3a2d450abaa00a12294c468ba444
+
+pkgname = aimp-skin-collector-s-terminal
