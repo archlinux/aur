@@ -4,7 +4,7 @@
 pkgname='aimp-skin-black-reflection-style'
 pkgdesc='AIMP skin: Black Reflection Style 1.04 (by KEIII)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a03e472b3198c43cd1a5ed08fa080e25e23a5e804d05bb766a122c4538f09fe6')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Black Reflection Style"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-black-reflection-style-103.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
