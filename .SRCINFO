@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-groover
+	pkgdesc = AIMP skin: Groover 3.2 (by laziem)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-groover-1221.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-groover-1221.archive::https://aimp.ru/?do=catalog.download&id=1221
+	sha256sums = 1d8b1e4e91bb59a662c610ff528afc628efe2798494f45ec9c4f962e9f0e6012
+
+pkgname = aimp-skin-groover
