@@ -4,7 +4,7 @@
 pkgname='aimp-skin-aimp-cc'
 pkgdesc='AIMP skin: AIMP-CC 1.86 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('2a752ae01ffab267506144e1d6a55cd41ae403f5aaa4185e5d2847f5bceee555')
 
 package() {
-  local dest="$pkgdir$_skinsdir/AIMP-CC"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-aimp-cc-646.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
