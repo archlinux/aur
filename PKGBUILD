@@ -2,13 +2,12 @@
 pkgname=kmcp
 pkgver=0.4.0
 pkgrel=1
-pkgdesc='CLI tool and Kubernetes controller for building, testing and deploying MCP servers'
+pkgdesc='CLI and Kubernetes controller to build, test and deploy MCP servers'
 arch=('x86_64' 'aarch64')
 url='https://github.com/kagent-dev/kmcp'
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
-provides=('kmcp')
 conflicts=('kmcp-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('9dd6657d42fde6d671ce666e0f6d8849d3e48a292d2c77b8177390b95b653b29')
