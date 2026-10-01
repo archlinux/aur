@@ -1,10 +1,10 @@
 # Maintainer: robertfoster
 
 pkgname=peerflix-server-git
-pkgver=247.f4d7aff
+pkgver=317.b91ed60
 pkgrel=1
 pkgdesc="Streaming torrent client for node.js with web ui"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/asapach/peerflix-server"
 license=('MIT')
 depends=('nodejs')
@@ -13,6 +13,7 @@ source=("peerflix-server::git+https://github.com/asapach/peerflix-server.git"
   "peerflix-server.sh"
   "peerflix-server.service")
 conflicts=('peerflix-server')
+provides=('peerflix-server')
 options=('!strip')
 
 build() {
@@ -25,8 +26,8 @@ build() {
 package() {
   cd peerflix-server
 
-  mkdir -p $pkgdir/opt/peerflix-server
-  cp -r dist server node_modules LICENSE $pkgdir/opt/peerflix-server/
+  mkdir -p "$pkgdir/opt/peerflix-server"
+  cp -r dist server node_modules LICENSE "$pkgdir/opt/peerflix-server/"
 
   # Clean up
   npm prune --production
@@ -50,5 +51,5 @@ pkgver() {
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 sha256sums=('SKIP'
-            '7a8842bd27a40b84d7f3ce76f873fd49105fa51739dc0a805f1afc69b5ba4258'
-            'b756e991d0176ce9e021541556890450fdbd83a94a37bda1ba3d1ed9c3f39f9a')
+  '7a8842bd27a40b84d7f3ce76f873fd49105fa51739dc0a805f1afc69b5ba4258'
+  'b756e991d0176ce9e021541556890450fdbd83a94a37bda1ba3d1ed9c3f39f9a')
