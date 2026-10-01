@@ -4,7 +4,7 @@
 pkgname='aimp-skin-ippleplay'
 pkgdesc='AIMP skin: IpplePlay 4.0.26 (by Soolo)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('ca371ae5b83dac49feae6e70e5ba55a2962b6dc79a3ab62131bfa7a147f8f2b9')
 
 package() {
-  local dest="$pkgdir$_skinsdir/IpplePlay"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-ippleplay-384.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
