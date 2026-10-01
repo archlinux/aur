@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-lumin
+	pkgdesc = AIMP skin: Lumin 1.0 (by D2NP)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-lumin-1035.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-lumin-1035.archive::https://aimp.ru/?do=catalog.download&id=1035
+	sha256sums = b5b0bd3d30d81dbd6486561674bb2e155a3825416dc1b452c0e078d213cfcb11
+
+pkgname = aimp-skin-lumin
