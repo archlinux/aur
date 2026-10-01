@@ -1,6 +1,6 @@
 pkgbase = python-proto-plus
 	pkgdesc = A wrapper around protocol buffers
-	pkgver = 1.28.4
+	pkgver = 1.29.0
 	pkgrel = 1
 	url = https://github.com/googleapis/google-cloud-python
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-proto-plus
 	makedepends = python-wheel
 	depends = python
 	depends = python-protobuf
-	source = python-proto-plus-1.28.4.tar.gz::https://github.com/googleapis/google-cloud-python/archive/refs/tags/proto-plus-v1.28.4.tar.gz
-	sha256sums = 1fa1be70ffccc0173ba335f75856265592716302333d5d45c384e87fa32e15a7
+	source = python-proto-plus-1.29.0.tar.gz::https://github.com/googleapis/google-cloud-python/archive/refs/tags/proto-plus-v1.29.0.tar.gz
+	sha256sums = 73f382594ec58a1f48ae9fe41c50f3c92f58013ccf3faa893661b8f28f904b51
 
 pkgname = python-proto-plus
