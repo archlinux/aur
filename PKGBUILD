@@ -4,7 +4,7 @@
 pkgname='aimp-skin-teh'
 pkgdesc='AIMP skin: TEH 1.0 (by samix)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a8055243a5cdeedccf5554ba07870ea40eeaf8a473c84cd3b267b03f50152f0d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/TEH"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-teh-840.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
