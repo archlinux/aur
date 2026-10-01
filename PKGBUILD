@@ -4,7 +4,7 @@
 pkgname='aimp-skin-sirius-rem-228s'
 pkgdesc='AIMP skin: Сириус РЭМ-228С 1.04 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('27cb99417eda09c95dccf48901f56f3a3072d451f418c78233004d23440d7cff')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Сириус РЭМ-228С"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-sirius-rem-228s-1278.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
