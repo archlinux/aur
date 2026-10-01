@@ -1,16 +1,15 @@
-# Maintainer: Hanus Valenta <hans@hanusvalenta.com>
 pkgname=grimatrix-git
 pkgver=r4.591a755
 pkgrel=1
 pkgdesc="Warhammer CLI App screen waster inspired by cmatrix"
 arch=('x86_64')
-url="https://git.hanusvalenta.com/hans/grimatrix"
+url="https://codeberg.org/b6d5b38e0d7ae6bd0d951815cd92df43/grimatrix"
 license=('EUPL1.2')
 depends=('ncurses')
 makedepends=('git' 'cmake' 'gcc')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://git.hanusvalenta.com/hans/grimatrix.git")
+source=("git+https://codeberg.org/b6d5b38e0d7ae6bd0d951815cd92df43/grimatrix.git")
 md5sums=('SKIP')
 
 pkgver() {
