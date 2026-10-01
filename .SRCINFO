@@ -4,7 +4,6 @@ pkgbase = easyeffects-git
 	pkgrel = 1
 	url = https://github.com/wwmm/easyeffects
 	arch = aarch64
-	arch = i686
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = appstream

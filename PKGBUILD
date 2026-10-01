@@ -4,10 +4,10 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=easyeffects-git
-pkgver=8.2.9.r64.g9b89da035
+pkgver=8.3.0.r0.g2bd138377
 pkgrel=1
 pkgdesc='Audio Effects for PipeWire applications'
-arch=(aarch64 i686 x86_64)
+arch=(aarch64 x86_64)
 url='https://github.com/wwmm/easyeffects'
 license=('GPL-3.0-only')
 depends=(
