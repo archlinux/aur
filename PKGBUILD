@@ -4,7 +4,7 @@
 pkgname='aimp-skin-urania'
 pkgdesc='AIMP skin: Urania 1.1 (by Zigar)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('092d66e51378d2a84561caa5c1dfa8f0eb541e3fffca208e51f78ea2a70848a5')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Urania"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-urania-762.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
