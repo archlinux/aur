@@ -4,7 +4,7 @@
 pkgname='aimp-skin-fantasy'
 pkgdesc='AIMP skin: Fantasy 1.3 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('44636a56cc2c388ae70f5fd863eb9b9dd840097ed82130b8222d055b5363bbc6')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Fantasy"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-fantasy-558.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
