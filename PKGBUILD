@@ -1,14 +1,16 @@
 # Maintainer: robertfoster
 
 pkgname=xash3d-git
-pkgver=r5300.2465782a
+pkgver=r6857.1414fc281
 pkgrel=1
 pkgdesc="A custom Gold Source engine rewritten from scratch"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://xash.su/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('fontconfig' 'freetype2' 'libpulse' 'sdl2-compat')
 makedepends=('git')
+provides=("${pkgname%%-git}")
+conflicts=("${pkgname%%-git}")
 backup=('etc/conf.d/xash3d')
 source=("${pkgname%%-git}::git+https://github.com/FWGS/xash3d-fwgs"
   ${pkgname%%-git}.sh
