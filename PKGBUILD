@@ -1,7 +1,7 @@
 # Maintainer: Andy Stewart <lazycat.manatee@gmail.com>
 
 pkgname=rime-ice-installer
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='TUI installer for Fcitx5, Rime Ice and Wanxiang on Arch Linux'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom:unknown')
 depends=('curl' 'dbus' 'dialog' 'git' 'glib2' 'sudo' 'unzip')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('10a658a8aa9c69be693f1c881f3bbe188c965a33e420c9373dce62ec977059ae')
+sha256sums=('17db15c2035141081005353207b6c34e1e890c45d81f258cd7d73bceef619d3d')
 
 _setup_go_env() {
   export GOPATH="$srcdir"
