@@ -4,7 +4,7 @@
 pkgname='aimp-skin-windows-media-player-9'
 pkgdesc='AIMP skin: Windows Media Player 9 1.0 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('e56f36f50ade9584126a94b0f5635b21ac7770584c66d82d9c79c556d0a21864')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Windows Media Player 9"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-windows-media-player-9-1073.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
