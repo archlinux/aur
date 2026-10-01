@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-protoss
+	pkgdesc = AIMP skin: Protoss 1.5 (by Argelius)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-protoss-767.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-protoss-767.archive::https://aimp.ru/?do=catalog.download&id=767
+	sha256sums = c30f1075bf2df03325b8bdb55a0abf64a58d3e712ea514b695856feee1194234
+
+pkgname = aimp-skin-protoss
