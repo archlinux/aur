@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-grace
+	pkgdesc = AIMP skin: Grace 1.0 (by SBro)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-grace-407.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-grace-407.archive::https://aimp.ru/?do=catalog.download&id=407
+	sha256sums = d2e4181533d0a13bd1690ff64688e8e129f84c252b5332e476df7f455ce56644
+
+pkgname = aimp-skin-grace
