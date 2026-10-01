@@ -1,6 +1,6 @@
 pkgbase = ahfail
 	pkgdesc = Screen locker that says 'ah ah ah, you didn't say the magic word' on a wrong password
-	pkgver = 0.10.1
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://gitea.weircon.dk/agw/gtk-ahfail
 	install = ahfail.install
@@ -32,7 +32,7 @@ pkgbase = ahfail
 	optdepends = gtklock: legacy gtklock module (/usr/lib/gtklock/ahfail-module.so)
 	options = !lto
 	backup = etc/pam.d/ahfail
-	source = ahfail-0.10.1.tar.gz::https://gitea.weircon.dk/agw/gtk-ahfail/archive/v0.10.1.tar.gz
-	sha256sums = e0fef892392836516750b9776bf9b6c25124f727e16228a279c35e8fb06b13bc
+	source = ahfail-0.10.2.tar.gz::https://gitea.weircon.dk/agw/gtk-ahfail/archive/v0.10.2.tar.gz
+	sha256sums = 7a437e3c813c0302ef9864d0ad6acbb7746aad4178e66f5a772c08d7808f07d2
 
 pkgname = ahfail

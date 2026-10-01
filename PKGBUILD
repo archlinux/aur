@@ -19,7 +19,7 @@
 #    object can reach the maintainer at the address above and the assets
 #    will be replaced.
 pkgname=ahfail
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Screen locker that says 'ah ah ah, you didn't say the magic word' on a wrong password"
 arch=('x86_64')
@@ -39,7 +39,7 @@ backup=('etc/pam.d/ahfail')
 install=ahfail.install
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e0fef892392836516750b9776bf9b6c25124f727e16228a279c35e8fb06b13bc')
+sha256sums=('7a437e3c813c0302ef9864d0ad6acbb7746aad4178e66f5a772c08d7808f07d2')
 
 prepare() {
     cd "$srcdir/gtk-ahfail"
