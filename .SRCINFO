@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-regrey
+	pkgdesc = AIMP skin: Regrey 1.0 (by -=Lee=-)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-regrey-202.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-regrey-202.archive::https://aimp.ru/?do=catalog.download&id=202
+	sha256sums = 6714fab76944832d6ce4d126aca71c910645c9cb67abba2c6b77d96ac4bce886
+
+pkgname = aimp-skin-regrey
