@@ -2,6 +2,7 @@
 !.SRCINFO
 !.gitignore
 !PKGBUILD
+!*.install
 !brave-beta-bin.sh
 !brave-browser.desktop
 !logo.png
