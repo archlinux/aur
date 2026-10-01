@@ -4,7 +4,7 @@
 pkgname='aimp-skin-violet-calm'
 pkgdesc='AIMP skin: Violet Calm 1.0 (by AV-S)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('521035e9e09d8414376b3dffb4768ad6f134d742f101e34e2a4cfa9a9f7881d3')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Violet Calm"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-violet-calm-473.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
