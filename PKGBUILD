@@ -1,23 +1,25 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=claude-squad
 pkgver=1.0.20
-pkgrel=1
-pkgdesc='Manage multiple AI terminal agents like Claude Code, Aider, Codex, OpenCode and Amp'
+pkgrel=2
+pkgdesc='Manage multiple AI terminal agents like Claude Code, Aider, Codex and Amp'
 arch=('x86_64' 'aarch64')
 url='https://github.com/smtg-ai/claude-squad'
 license=('AGPL-3.0-or-later')
-depends=('tmux' 'git')
+depends=('glibc' 'tmux' 'git')
 makedepends=('go')
-provides=('claude-squad')
 conflicts=('claude-squad-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('1926816df3b9c9bd0455761beeb6b55fdd5f15e4b5dc47d0eb4f5315e4cb28a7')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    export CGO_ENABLED=0
-    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-    go build -ldflags="-w -s" -o claude-squad .
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    go build -o claude-squad .
 }
 
 package() {
