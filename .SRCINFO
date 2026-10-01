@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-sento-dark-elegance
+	pkgdesc = AIMP skin: Sento Dark Elegance 1.1 (by Zigar)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-sento-dark-elegance-684.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-sento-dark-elegance-684.archive::https://aimp.ru/?do=catalog.download&id=684
+	sha256sums = b85f5aef6951c93222eb65055712a942ed14c82958e859403c8096932ae992af
+
+pkgname = aimp-skin-sento-dark-elegance
