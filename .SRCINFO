@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-bloom-full-moon
+	pkgdesc = AIMP skin: Bloom - Full Moon 1.0 (by Arindel)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-bloom-full-moon-403.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-bloom-full-moon-403.archive::https://aimp.ru/?do=catalog.download&id=403
+	sha256sums = 6db64fd9976fdfb4b68ed195100765c00d7a98a49536e03c645e8075a08b81c5
+
+pkgname = aimp-skin-bloom-full-moon
