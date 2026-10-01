@@ -3,7 +3,7 @@
 
 pkgname=python-forgekit
 _srcname=forgekit
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Shared Textual TUI shell library for the Forge Suite — menu bar, sections, floating dialogs, Catppuccin theme"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('python' 'python-textual' 'python-rich')
 source=("${_srcname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_srcname}-${pkgver}.tar.gz"
         "${_srcname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${_srcname}-${pkgver}.tar.gz.asc")
-sha256sums=('f8d1a448d3efc1027fd6adc6c1e3fcf151782ed94c57f6a1110496775c23d318'
+sha256sums=('5ff7c5c6b3a6759dfdc7d5a1e3ce5e567b382329b23d46c3343531eb9ccc93b0'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   gpg --keyserver keys.openpgp.org --recv-keys 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
