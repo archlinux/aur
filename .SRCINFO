@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-alice
 	pkgdesc = AIMP skin: Alice 1.1 (by Zhenya)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
