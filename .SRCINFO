@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-unity-2016
 	pkgdesc = AIMP skin: Unity 2016 1.3 (by Aleksandr009)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

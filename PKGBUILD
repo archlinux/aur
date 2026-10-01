@@ -4,7 +4,7 @@
 pkgname='aimp-skin-unity-2016'
 pkgdesc='AIMP skin: Unity 2016 1.3 (by Aleksandr009)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('b18cc8979fc31c2df255ee51623bf170347deac5d2909bb9abbc751674bbf7d7')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Unity 2016"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-unity-2016-790.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
