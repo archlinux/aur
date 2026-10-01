@@ -1,7 +1,7 @@
 # Contributor: robertfoster
 
 pkgname=capanalysis
-pkgver=1.2.3
+pkgver=1.2.3 # renovate: datasource=github-tags depName=xplico/CapAnalysis
 pkgrel=1
 arch=(x86_64)
 pkgdesc="PCAP files from another point of view"
