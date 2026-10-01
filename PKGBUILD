@@ -4,7 +4,7 @@
 pkgname='aimp-skin-redaw'
 pkgdesc='AIMP skin: Redaw 1.3.1 (by Aleksandr009)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('027e021bfecb4436f70a3ef6b33de603d6c7b467da80050d58c1fbdaadc1dc8b')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Redaw"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-redaw-845.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
