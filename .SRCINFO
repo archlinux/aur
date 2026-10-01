@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-a4-negative
+	pkgdesc = AIMP skin: A4 Negative 0.9.4 (by ELECTRON!CK)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-a4-negative-839.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-a4-negative-839.archive::https://aimp.ru/?do=catalog.download&id=839
+	sha256sums = 8637701e2e6c5294761e0d28f5d6e79abc206803b190d9d54deaf25bbc99c2ed
+
+pkgname = aimp-skin-a4-negative
