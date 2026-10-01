@@ -2,7 +2,7 @@
 
 _name=openinference-semantic-conventions
 pkgname=python-$_name
-pkgver=0.1.39
+pkgver=0.1.40
 pkgrel=1
 pkgdesc="OpenInference Semantic Conventions."
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('python-hatchling'
              'python-wheel')
 checkdepends=('python-pytest')
 source=("$_repo/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-sha256sums=('228f5602bdffb683e8f93ebf5cdb5519f9d18cd2661c780d61613048cf5f7ad5')
+sha256sums=('0ab837674450775189d40b80675b228d82859df9e93b380170c7186d0e33efda')
 
 build() {
   cd "$srcdir"/${_name%%-*}-$pkgname-v$pkgver/${pkgname/-//}
