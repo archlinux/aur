@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-quark
+	pkgdesc = AIMP skin: quark 1.4 (by samix)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-quark-810.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-quark-810.archive::https://aimp.ru/?do=catalog.download&id=810
+	sha256sums = b44fb2fd36db42e3d1cc6ff121e6ab52d12cc022da3592c8de8aefd05d83893a
+
+pkgname = aimp-skin-quark
