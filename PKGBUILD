@@ -4,7 +4,7 @@
 pkgname='aimp-skin-nguvu-vert-tabs-layout'
 pkgdesc='AIMP skin: NGuvu (Vert.Tabs Layout) 2.2 (by ScrollUnLock)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('0811b60b5978ca214269625694b76a4ccfcfd5e413833955e39aa0610de129ee')
 
 package() {
-  local dest="$pkgdir$_skinsdir/NGuvu (Vert.Tabs Layout)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-nguvu-vert-tabs-layout-352.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
