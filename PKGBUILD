@@ -4,7 +4,7 @@
 pkgname='aimp-skin-teac-v-3rx'
 pkgdesc='AIMP skin: Teac V-3RX 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('0aabc22a3ebc8f412b6ae5781476a3a7a0774a14161141ccb6018fdf9a65660f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Teac V-3RX"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-teac-v-3rx-798.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
