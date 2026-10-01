@@ -4,7 +4,7 @@
 pkgname='aimp-skin-pulsar'
 pkgdesc='AIMP skin: Pulsar 3.2 (by samix)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('8856ad116f558b7851ae014357835355894fc87e51d9353cbd4d059de8ccb7e6')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Pulsar"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-pulsar-871.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
