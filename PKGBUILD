@@ -2,18 +2,49 @@
 
 _name=google-genai
 pkgname=python-$_name
-pkgver=2.25.0
+pkgver=2.26.0
 pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
 url='https://github.com/googleapis/python-genai'
 license=('Apache-2.0')
-depends=('python' 'python-anyio' 'python-google-auth' 'python-httpx' 'python-pydantic' 'python-requests' 'python-tenacity' 'python-websockets' 'python-typing_extensions' 'python-distro' 'python-sniffio')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-certifi' 'python-pillow' 'python-pyopenssl' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-xdist' 'python-mcp' 'python-aiohttp' 'python-sentencepiece' 'python-protobuf')
-optdepends=('python-aiohttp: aiohttp' 'python-sentencepiece: local-tokenizer' 'python-protobuf: local-tokenizer' 'python-pyopenssl: pyopenssl')
+depends=('python'
+         'python-anyio'
+         'python-google-auth'
+         'python-httpx'
+         'python-pydantic'
+         'python-requests'
+         'python-tenacity'
+         'python-websockets'
+         'python-typing_extensions'
+         'python-distro'
+         'python-sniffio')
+makedepends=('python-setuptools'
+             'python-build'
+             'python-installer'
+             'python-wheel')
+checkdepends=('python-certifi'
+              'python-pillow'
+              'python-pyopenssl'
+              'python-pytest'
+              'python-pytest-asyncio'
+              'python-pytest-xdist'
+              'python-mcp'
+              'python-sentencepiece'
+              'python-protobuf'
+              'python-aiohttp')
+optdepends=('python-aiohttp: aiohttp'
+
+            'python-sentencepiece: local-tokenizer'
+            'python-protobuf: local-tokenizer'
+            'python-pillow: local-tokenizer'
+            'python-pytorch: local-tokenizer'
+            'python-torchvision: local-tokenizer'
+            'python-transformers: local-tokenizer'
+
+            'python-pyopenssl: pyopenssl')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a0f9d520b4fa7dbdd017ae50fe9c04cfe41e1a7eeeb3c1ea2f77bebf2759f8a3')
+sha256sums=('90450669cbbe8930bbb4330a6e3d8aef063eea0f28533193011f85503eb98f64')
 
 prepare(){
   cd "$srcdir"/${pkgname//google-/}-$pkgver
