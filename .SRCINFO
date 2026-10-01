@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-classic
+	pkgdesc = AIMP skin: Classic 1.5 (by SeReG@)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-classic-242.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-classic-242.archive::https://aimp.ru/?do=catalog.download&id=242
+	sha256sums = 2e187a98ae432b17745c5eeb15df01908aeda7a338bf1c63ce507810ef3f89ac
+
+pkgname = aimp-skin-classic
