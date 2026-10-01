@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-j-r-thunder-storm
 	pkgdesc = AIMP skin: J.R Thunder Storm 3.13 (by memo-se)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

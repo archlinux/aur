@@ -4,7 +4,7 @@
 pkgname='aimp-skin-j-r-thunder-storm'
 pkgdesc='AIMP skin: J.R Thunder Storm 3.13 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('8faa1ebdf8df070ef7b1eacaf6b22a98affaa401478358e0eb62f4a7708cc32e')
 
 package() {
-  local dest="$pkgdir$_skinsdir/J.R Thunder Storm"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-j-r-thunder-storm-1111.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
