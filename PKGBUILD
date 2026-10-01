@@ -4,7 +4,7 @@
 pkgname='aimp-skin-ics'
 pkgdesc='AIMP skin: ICS 1.0 (by ZeoN7)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('478c482979b0607f836b9d3855a825aacb66f5b0ac39dd73b4a202f2bf4b1a44')
 
 package() {
-  local dest="$pkgdir$_skinsdir/ICS"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-ics-371.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
