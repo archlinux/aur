@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-glass-elegant
+	pkgdesc = AIMP skin: Glass Elegant 1.0 (by Xpand)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-glass-elegant-220.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-glass-elegant-220.archive::https://aimp.ru/?do=catalog.download&id=220
+	sha256sums = 137a1e0847cb0c47d050f786bf9920cd123e9d77a7e36825106ece0bc2c893f0
+
+pkgname = aimp-skin-glass-elegant
