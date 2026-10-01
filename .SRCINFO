@@ -3,12 +3,11 @@ pkgbase = autoindex
 	pkgver = 2.2.4
 	pkgrel = 1
 	url = http://autoindex.sourceforge.net/
-	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = php
 	depends = php-apache
-	source = http://prdownloads.sourceforge.net/autoindex/AutoIndex-2.2.4.tar.gz
+	source = https://prdownloads.sourceforge.net/autoindex/AutoIndex-2.2.4.tar.gz
 	sha256sums = 3b54ae9b56c33d9724aaa8bb0fe4677e2e9e37cf036d01da7bb5fb70a035e1ec
 
 pkgname = autoindex
