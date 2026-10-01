@@ -4,7 +4,7 @@
 pkgname='aimp-skin-binary'
 pkgdesc='AIMP skin: Binary 1.5 (by T.R.S.)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('7ac3daf635e27a8acd4748f55960cd9834b50cb6fa220a1a07bd59136048ba48')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Binary"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-binary-102.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
