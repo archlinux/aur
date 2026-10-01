@@ -1,4 +1,4 @@
-# Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
+# Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=pgschema-bin
 pkgver=1.13.1
 pkgrel=1
