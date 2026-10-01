@@ -1,5 +1,5 @@
 pkgbase = claude-squad-bin
-	pkgdesc = Manage multiple AI terminal agents like Claude Code, Aider, Codex, OpenCode and Amp
+	pkgdesc = Manage multiple AI terminal agents like Claude Code, Aider, Codex and Amp
 	pkgver = 1.0.20
 	pkgrel = 1
 	url = https://github.com/smtg-ai/claude-squad
