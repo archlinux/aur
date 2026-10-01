@@ -1,23 +1,25 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=schemahero
 pkgver=0.26.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Declarative database schema management as code (CNCF)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/schemahero/schemahero'
 license=('Apache-2.0')
+depends=('glibc')
 makedepends=('go')
-provides=('schemahero')
 conflicts=('schemahero-bin')
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('e6d3f8cf4b6be8dd8a0d4ea90df13ad831f2902bc61a62959c0b7efdde639486')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    export CGO_ENABLED=0
-    go build -buildmode=pie -trimpath -mod=readonly \
-        -ldflags="-w -s -X github.com/schemahero/schemahero/pkg/version.version=v${pkgver}" \
-        -o schemahero ./cmd/kubectl-schemahero
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    go build -ldflags="-X github.com/schemahero/schemahero/pkg/version.version=v${pkgver}" -o schemahero ./cmd/kubectl-schemahero
 }
 
 package() {
