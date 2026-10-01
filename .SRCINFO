@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-k-2
+	pkgdesc = AIMP skin: K-2 1.15 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-k-2-1326.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-k-2-1326.archive::https://aimp.ru/?do=catalog.download&id=1326
+	sha256sums = 8882112c36cc1eb004baf18452c4cb6db516167435cc41057dd7582f2d23bce6
+
+pkgname = aimp-skin-k-2
