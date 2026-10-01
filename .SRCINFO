@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-eres-blue
+	pkgdesc = AIMP skin: Eres Blue 2 (by ReZaK)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-eres-blue-200.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-eres-blue-200.archive::https://aimp.ru/?do=catalog.download&id=200
+	sha256sums = fdf5057757cd50b832665ae64a71432f1725ca875972a7da969b0fcdf6fa1549
+
+pkgname = aimp-skin-eres-blue
