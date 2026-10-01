@@ -4,7 +4,7 @@
 pkgname='aimp-skin-qmp-5'
 pkgdesc='AIMP skin: QMP 5 1.0 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('47913967df76975491d5fb5899353f0e186c6383776e02f25f6237e99604a83b')
 
 package() {
-  local dest="$pkgdir$_skinsdir/QMP 5"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-qmp-5-446.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
