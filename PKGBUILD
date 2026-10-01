@@ -5,7 +5,7 @@ _gitname=atmosphera
 pkgname=atmosphera-git
 _release_ver=0.6.0.r0
 pkgver=0.6.0.r0.g0000000
-pkgrel=10
+pkgrel=11
 install=atmosphera-git.install
 pkgdesc="Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell (git version)"
 arch=('any')
@@ -67,6 +67,16 @@ package() {
   echo "$pkgver" > "$pkgdir/etc/xdg/quickshell/atmosphera/VERSION"
   # Exclude dev tooling and temp files from the installed tree
   rm -rf "$pkgdir/etc/xdg/quickshell/atmosphera/dev"
+
+  # Bundled per-process lock screen (the shell spawns it as
+  # `qs -c atmosphera-lockscreen`): sibling config whose symlinks into the
+  # main tree let the shared lock UIs render with fresh per-process
+  # singletons.
+  install -dm755 "$pkgdir/etc/xdg/quickshell/atmosphera-lockscreen"
+  install -Dm644 Quickshell/atmosphera-lockscreen/shell.qml "$pkgdir/etc/xdg/quickshell/atmosphera-lockscreen/shell.qml"
+  for d in Assets Bindings Commons Configs Helpers Modules Services Widgets builtin; do
+    ln -sfn "../atmosphera/$d" "$pkgdir/etc/xdg/quickshell/atmosphera-lockscreen/$d"
+  done
   rm -rf "$pkgdir/etc/xdg/quickshell/atmosphera/tmp"
 
   # Install dispatcher to PATH (handlers resolved via SELF_DIR auto-detect)
