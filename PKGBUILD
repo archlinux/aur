@@ -4,7 +4,7 @@
 pkgname='aimp-skin-urania-dark-mod'
 pkgdesc='AIMP skin: Urania Dark Mod 1.0 (by nayamabite)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('af188d6efd0de448511802495792ab5f8ca46b86f1d5e8a46b1b2c904bc1e7bc')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Urania Dark Mod"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-urania-dark-mod-898.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
