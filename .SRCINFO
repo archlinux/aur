@@ -1,0 +1,19 @@
+pkgbase = radiodyplom-bridge-bin
+	pkgdesc = Bridge between amateur radio logging software and radiodyplom.pl
+	pkgver = 0.1.32
+	pkgrel = 2
+	url = https://github.com/sq8bwm/radiodyplom-bridge
+	arch = x86_64
+	license = unknown
+	depends = glibc
+	depends = gtk3
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	options = !strip
+	source_x86_64 = radiodyplom-bridge-bin-0.1.32.AppImage::https://github.com/sq8bwm/radiodyplom-bridge/releases/download/v0.1.32/radiodyplom-bridge-0.1.32-x86_64.AppImage
+	source_x86_64 = radiodyplom-bridge.png
+	sha256sums_x86_64 = 8241ea9cce7a6a6264820d7f60a1b004e2ecf73769cd3c137cbf2bea329c28f7
+	sha256sums_x86_64 = 199d7c76c68846c3daa9a13de8b6c638c914db6559acb8bd1ac9516b5cbf75a8
+
+pkgname = radiodyplom-bridge-bin
