@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-mmd3-black-version
+	pkgdesc = AIMP skin: MMD3 Black Version 2.0 (by SergiyAmator)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-mmd3-black-version-660.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-mmd3-black-version-660.archive::https://aimp.ru/?do=catalog.download&id=660
+	sha256sums = 8f6bc92c8431896d2d7e8582d41b5f7ffa569d5a50eb5340df51d35a77e0da4b
+
+pkgname = aimp-skin-mmd3-black-version
