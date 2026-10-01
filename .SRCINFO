@@ -1,6 +1,6 @@
 pkgbase = python-forgekit
 	pkgdesc = Shared Textual TUI shell library for the Forge Suite — menu bar, sections, floating dialogs, Catppuccin theme
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/jetomev/forgekit
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = python-forgekit
 	depends = python
 	depends = python-textual
 	depends = python-rich
-	source = forgekit-0.3.0.tar.gz::https://github.com/jetomev/forgekit/releases/download/v0.3.0/forgekit-0.3.0.tar.gz
-	source = forgekit-0.3.0.tar.gz.asc::https://github.com/jetomev/forgekit/releases/download/v0.3.0/forgekit-0.3.0.tar.gz.asc
+	source = forgekit-0.4.0.tar.gz::https://github.com/jetomev/forgekit/releases/download/v0.4.0/forgekit-0.4.0.tar.gz
+	source = forgekit-0.4.0.tar.gz.asc::https://github.com/jetomev/forgekit/releases/download/v0.4.0/forgekit-0.4.0.tar.gz.asc
 	validpgpkeys = 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
-	sha256sums = a52e9ba203198f707db6c34d3a68c29a5e662f32b2379b4e19278a2f7ae1a4a2
+	sha256sums = f8d1a448d3efc1027fd6adc6c1e3fcf151782ed94c57f6a1110496775c23d318
 	sha256sums = SKIP
 
 pkgname = python-forgekit

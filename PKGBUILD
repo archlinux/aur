@@ -3,7 +3,7 @@
 
 pkgname=python-forgekit
 _srcname=forgekit
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Shared Textual TUI shell library for the Forge Suite — menu bar, sections, floating dialogs, Catppuccin theme"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('python' 'python-textual' 'python-rich')
 source=("${_srcname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_srcname}-${pkgver}.tar.gz"
         "${_srcname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${_srcname}-${pkgver}.tar.gz.asc")
-sha256sums=('a52e9ba203198f707db6c34d3a68c29a5e662f32b2379b4e19278a2f7ae1a4a2'
+sha256sums=('f8d1a448d3efc1027fd6adc6c1e3fcf151782ed94c57f6a1110496775c23d318'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   gpg --keyserver keys.openpgp.org --recv-keys 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
@@ -26,7 +26,8 @@ check() {
     PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python -c "
 import asyncio
 from forgekit import (ForgeApp, ForgeModal, ConfirmDialog, ForgePanelScreen,
-                      MenuBar, FORGE_CSS, COLORS, GPL3_NOTICE, __version__)
+                      MenuBar, FORGE_CSS, COLORS, GPL3_NOTICE, __version__,
+                      ROLES, glyph, console_mode)
 assert __version__ == '${pkgver}', __version__
 
 class _Smoke(ForgeApp):
@@ -38,11 +39,14 @@ class _Smoke(ForgeApp):
         yield Static('ok', id='sec-one')
 
 async def _run():
-    app = _Smoke()
-    async with app.run_test() as pilot:
-        await pilot.pause()
+    # both modes: a terminal window and a plain text console (0.4.0)
+    for console in (False, True):
+        app = _Smoke(console=console)
+        async with app.run_test() as pilot:
+            await pilot.pause()
+            assert app.forge_console is console
 asyncio.run(_run())
-print('forgekit headless mount OK')
+print('forgekit headless mount OK (window and console mode)')
 "
 }
 
