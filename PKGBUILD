@@ -4,7 +4,7 @@
 pkgname='aimp-skin-mega-light'
 pkgdesc='AIMP skin: Mega Light 1.1 (by ZeoN7)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('e25c28653075a1353749936f42f53e46e2a6d97281648abdb8f159a9214489b6')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Mega Light"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-mega-light-394.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
