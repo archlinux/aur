@@ -1,7 +1,7 @@
 # Maintainer: Aria Vesta <dev@ariavesta.com>
 pkgname=botropolis
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Every Claude Code session on this machine, drawn as a city"
 arch=('x86_64' 'aarch64')
 url="https://github.com/auroq/botropolis"
@@ -19,6 +19,11 @@ depends=('glibc' 'libgl' 'libx11' 'libxcursor' 'libxi' 'libxinerama' 'libxrandr'
 makedepends=('go')
 optdepends=('claude-code: the sessions botropolis draws and manages'
             'waybar: a status bar for `botropolis bar --watch`')
+# botropolis-bin installs the same three binaries from the release tarball. It
+# declares conflicts=('botropolis'), and this is the other half of that pair, so
+# the exclusion is stated from whichever package you are looking at.
+conflicts=('botropolis-bin')
+
 # The debug package is 14 MB of DWARF with nothing to pair it against: debugedit
 # cannot read Go's DWARF 5 line tables ("Unsupported .debug_line directory 0 path
 # DW_FORM_0x8"), so makepkg collects no sources and /usr/src/debug comes out
