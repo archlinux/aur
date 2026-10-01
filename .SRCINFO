@@ -1,12 +1,11 @@
 pkgbase = pgschema-bin
 	pkgdesc = Declarative schema migration CLI for Postgres (Terraform-style)
 	pkgver = 1.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pgplex/pgschema
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	depends = glibc
 	provides = pgschema
 	conflicts = pgschema
 	source_x86_64 = pgschema-bin-1.13.1-x86_64::https://github.com/pgplex/pgschema/releases/download/v1.13.1/pgschema-1.13.1-linux-amd64

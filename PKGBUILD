@@ -1,12 +1,11 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=pgschema-bin
 pkgver=1.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Declarative schema migration CLI for Postgres (Terraform-style)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/pgplex/pgschema'
 license=('Apache-2.0')
-depends=('glibc')
 provides=('pgschema')
 conflicts=('pgschema')
 source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/pgschema-${pkgver}-linux-amd64")
