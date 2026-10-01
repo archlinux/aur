@@ -4,7 +4,7 @@
 pkgname='aimp-skin-asc-as6002s'
 pkgdesc='AIMP skin: ASC AS6002S 1.27 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('4b19bdad3cf19da99dd480016e40c3f07a132d98430b5ea61ba0dd31e3c888be')
 
 package() {
-  local dest="$pkgdir$_skinsdir/ASC AS6002S"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-asc-as6002s-1354.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-asc-as6002s
 	pkgdesc = AIMP skin: ASC AS6002S 1.27 (by McClaud)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
