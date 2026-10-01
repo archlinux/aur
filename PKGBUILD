@@ -4,7 +4,7 @@
 pkgname='aimp-skin-karo-block'
 pkgdesc='AIMP skin: Karo Block 3 (by becon)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('1450e70a37cff8f35555ea957c542c7953a681a2809438c62f598142aa480923')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Karo Block"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-karo-block-254.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
