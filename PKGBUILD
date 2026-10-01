@@ -4,7 +4,7 @@
 pkgname='aimp-skin-metro-touch'
 pkgdesc='AIMP skin: Metro Touch 1.0 (by jaredi)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('8970e55f0f0a43ec1eb8df39c2a197ae42e90a26aef149601787ec98e07743fb')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Metro Touch"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-metro-touch-391.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

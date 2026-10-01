@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-metro-touch
 	pkgdesc = AIMP skin: Metro Touch 1.0 (by jaredi)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
