@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-gentator
+	pkgdesc = AIMP skin: Gentator 1.0 (by sagitt.67)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-gentator-291.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-gentator-291.archive::https://aimp.ru/?do=catalog.download&id=291
+	sha256sums = 32700b1f39805847af58ed0f074a9fa61669c29dead94c940c7c6d7c309f07bc
+
+pkgname = aimp-skin-gentator
