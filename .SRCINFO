@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-euphoria-reborn-flat
 	pkgdesc = AIMP skin: Euphoria Reborn Flat 1.0 (by DesweR)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

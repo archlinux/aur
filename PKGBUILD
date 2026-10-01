@@ -4,7 +4,7 @@
 pkgname='aimp-skin-euphoria-reborn-flat'
 pkgdesc='AIMP skin: Euphoria Reborn Flat 1.0 (by DesweR)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('0e14bc82797dec78df3dca845093d793760b088bc605bdfd5f2e0ed86de6a9c4')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Euphoria Reborn Flat"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-euphoria-reborn-flat-586.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
