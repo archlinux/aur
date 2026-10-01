@@ -6,9 +6,9 @@ pkgname=ocaml-ffmpeg
 pkgver=1.4.0 # renovate: datasource=github-tags depName=savonet/ocaml-ffmpeg
 pkgrel=1
 pkgdesc="OCaml bindings to the FFmpeg library"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/savonet/ocaml-ffmpeg"
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=('ocaml' 'ffmpeg')
 makedepends=('dune' 'ocaml-findlib')
 options=('!strip')
