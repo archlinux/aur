@@ -4,7 +4,7 @@
 pkgname='aimp-skin-technicss'
 pkgdesc='AIMP skin: Technicss 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('52b80fb43837a8a373ab15fd3150f5699f6ca2c3bdb6b529c759de15a3d7556f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Technicss"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-technicss-544.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
