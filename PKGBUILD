@@ -4,7 +4,7 @@
 pkgname='aimp-skin-aorn'
 pkgdesc='AIMP skin: Aorn 1.0 (by -=Lee=-)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('7b1014cff98505d36091fbc5919e0ddbe7b0c3c6fb6e151cb9cc2ffb8d662955')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Aorn"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-aorn-194.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
