@@ -1,5 +1,5 @@
 pkgname=unikey-wayland-bin
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Unikey Wayland Input Method for Vietnamese (Prebuilt)"
 arch=('x86_64' 'aarch64')
