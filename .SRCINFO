@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-50dayss
+	pkgdesc = AIMP skin: 50daysS 2.11 (by -=Vovan=-)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-50dayss-89.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-50dayss-89.archive::https://aimp.ru/?do=catalog.download&id=89
+	sha256sums = 908342572a2f4b6159796295e46f66eeb33e95f00e9c8230fca4524792f13421
+
+pkgname = aimp-skin-50dayss
