@@ -4,7 +4,7 @@
 pkgname='aimp-skin-laplaing'
 pkgdesc='AIMP skin: Laplaing 1.0 (by Demcha)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c118e6210ab75a99e3ef9e4abd868971f3b63616a9945717084a774184c1a0b2')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Laplaing"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-laplaing-346.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
