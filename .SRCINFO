@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-snow-pie
+	pkgdesc = AIMP skin: Snow Pie 1.02 (by Arindel)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-snow-pie-579.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-snow-pie-579.archive::https://aimp.ru/?do=catalog.download&id=579
+	sha256sums = f8675de1fd121ed255f192fd2be226ad87ff191e8b5ddfc2f8a4ba98bff94a39
+
+pkgname = aimp-skin-snow-pie
