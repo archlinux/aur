@@ -2,7 +2,7 @@
 
 pkgname=pi-coding-agent-bin
 _pkgname=pi-coding-agent
-pkgver=0.99.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Coding agent CLI with read, bash, edit, write tools and session management (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -27,8 +27,8 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/${_
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/${_tag}/pi-linux-arm64.tar.gz")
 
 sha256sums=('0457f5bcec3b3b211605dfb5d1a49042fd638f3686a410fe099c24a25af13c48')
-sha256sums_x86_64=('f998cc1232733eab240526d74acdce429d650b9e01f5804636d7aa96eb629846')
-sha256sums_aarch64=('61fc3cd9a854cabb8554e353ff324701c952d2fdd0b1a96aa16ac44cf5357360')
+sha256sums_x86_64=('8fd5543a52a889d60ad57ccbf6c969e73c75c5240aae18ac40b506947a63dc38')
+sha256sums_aarch64=('b60b3fda830a43c1dc3f5edb5fc7b681f22a0a930b48cdac13b97570c6045819')
 
 package() {
     install -d "${pkgdir}/opt"
