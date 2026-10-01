@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-cassette-3d
+	pkgdesc = AIMP skin: Cassette-3D 1.0 (by Black_AVP)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-cassette-3d-1110.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-cassette-3d-1110.archive::https://aimp.ru/?do=catalog.download&id=1110
+	sha256sums = d387abb593dfc25f4f6400bc64abf672c6b017caf7be2cc9fa9a45f77781fd63
+
+pkgname = aimp-skin-cassette-3d
