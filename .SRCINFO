@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-red-house
+	pkgdesc = AIMP skin: Red House 1.0 (by NoHealer)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-red-house-771.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-red-house-771.archive::https://aimp.ru/?do=catalog.download&id=771
+	sha256sums = 6ef20f84ef358c091a87c0ec32ba8d273a0555088bfaa19165d3abbd3644d8a6
+
+pkgname = aimp-skin-red-house
