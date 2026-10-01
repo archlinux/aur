@@ -4,7 +4,7 @@
 pkgname='aimp-skin-greex'
 pkgdesc='AIMP skin: GREEX 2.0 (by HyperOne)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('b468bad825694a110a7105d8e9a5992a550d2fc8aa4b48a143682fa7e9b6fd2e')
 
 package() {
-  local dest="$pkgdir$_skinsdir/GREEX"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-greex-519.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
