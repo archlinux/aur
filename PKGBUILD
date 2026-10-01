@@ -4,7 +4,7 @@
 pkgname='aimp-skin-will-to-live'
 pkgdesc='AIMP skin: Will To Live 1.0 (by Sakhnov)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('48bdc93287569938f779bb59d4f3bfcf65453d53b4c8bf7eb84f780653989d1e')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Will To Live"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-will-to-live-751.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
