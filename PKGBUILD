@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=onetagger
-pkgver=1.7.0
+pkgver=1.7.0 # renovate: datasource=github-tags depName=Marekkon5/onetagger
 pkgrel=2
 pkgdesc="Cross-platform music tagger with Beatport, Discogs, Musicbrainz, Spotify, Traxsource and many other services support."
 arch=('aarch64' 'x86_64')
