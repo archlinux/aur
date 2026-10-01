@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=proton-pass-cli
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='A command-line interface for Proton Pass'
 arch=(aarch64 x86_64)
@@ -10,7 +10,7 @@ license=(GPL-3.0-or-later)
 depends=(glibc libgcc sqlcipher)
 makedepends=(cargo git)
 source=($pkgname::git+https://github.com/protonpass/pass-cli.git#tag=$pkgver)
-b2sums=('eaf519ff797077b1a7a7b3904fda7cc8c99db06416a86c09037e4f7220102382947401b402c41af1962af3c828a77ccae141a411531009ef266629afd8fa53d1')
+b2sums=('d4a7efb19cdd11820999e80f8f36eb478539c2442b06c0f27718bf54ace3213a9f491308f7c5cbf203f915a2811a6e6e1c9aa134337b1655c4b104e68d203939')
 
 prepare() {
     cd $pkgname
@@ -20,7 +20,7 @@ prepare() {
     sed -i '19i #![recursion_limit = "256"]' pass-cli/src/main.rs pass/src/lib.rs
 
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target host-tuple
+    cargo fetch --target host-tuple
 }
 
 build() {
