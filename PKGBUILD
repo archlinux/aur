@@ -4,7 +4,7 @@
 pkgname='aimp-skin-gromfrom'
 pkgdesc='AIMP skin: gromfrom 1.0 (by Banned)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('ace77c5d7b22101322c140fd454b2b9fc0bb0c27247d4d14586d31398277c43e')
 
 package() {
-  local dest="$pkgdir$_skinsdir/gromfrom"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-gromfrom-552.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
