@@ -2,17 +2,27 @@
 
 _name=google-cloud-speech
 pkgname=python-$_name
-pkgver=2.40.0
+pkgver=2.41.0
 pkgrel=1
 pkgdesc='Google Cloud Speech API client library.'
 arch=('any')
 url='https://github.com/googleapis/google-cloud-python/tree/main/packages/google-cloud-speech'
 license=('Apache-2.0')
-depends=('python' 'python-google-api-core' 'python-grpcio' 'python-grpcio-status' 'python-google-auth' 'python-cryptography' 'python-proto-plus' 'python-protobuf')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-asyncio')
+depends=('python'
+         'python-google-api-core'
+         'python-grpcio'
+         'python-grpcio-status'
+         'python-google-auth'
+         'python-proto-plus'
+         'python-protobuf')
+makedepends=('python-setuptools'
+             'python-build'
+             'python-installer'
+             'python-wheel')
+checkdepends=('python-pytest'
+              'python-pytest-asyncio')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('e89e688e4ce0b926754038bf992d0d0f065c5f1c3503bb20e6c46d08b63658fc')
+sha256sums=('f1abf0c3260fbf3a4c3df9ede8a8013bb42bdd583cbbfeeba752c7a4f781d261')
 
 build() {
   cd "$srcdir"/${_name//-/_}-$pkgver
@@ -23,7 +33,6 @@ check() {
   local pytest_options=(
     -vv
     --disable-warnings
-    # Need Google Project ID
     --deselect "tests/system/smoke_test.py"
   )
   cd "$srcdir"/${_name//-/_}-$pkgver
