@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-easiness-2
+	pkgdesc = AIMP skin: Easiness 2 1.0 (by VladShip)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-easiness-2-872.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-easiness-2-872.archive::https://aimp.ru/?do=catalog.download&id=872
+	sha256sums = b0fc93259ca3da93861c4bcad48eae91d3eaaddef747082806d729e276516ae5
+
+pkgname = aimp-skin-easiness-2
