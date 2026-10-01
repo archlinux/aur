@@ -6,3 +6,4 @@
 *.pkg.tar*
 src/
 pkg/
+*.LICENSE

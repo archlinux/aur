@@ -1,22 +1,27 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=lockenv
 pkgver=0.1.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple, password-based encrypted vault for .env and infrastructure secrets'
 arch=('x86_64' 'aarch64')
 url='https://github.com/illarion/lockenv'
 license=('MIT')
+depends=('glibc')
 makedepends=('go')
-provides=('lockenv')
 conflicts=('lockenv-bin')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('9d14eff0b5f2310e95a145e069aafa50e530a24f9beb7eb40dc8e5d4694d3ab5')
+source=("${pkgname}-${pkgver}.LICENSE::${url}/raw/master/LICENSE"
+        "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('e962dd9a243a633210cf44d96cce779d73637121ca8a684548d18221b7eff093'
+            '9d14eff0b5f2310e95a145e069aafa50e530a24f9beb7eb40dc8e5d4694d3ab5')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    export CGO_ENABLED=0
-    go build -buildmode=pie -trimpath -mod=readonly \
-        -ldflags="-w -s" -o "${pkgname}" .
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    go build -o "${pkgname}" .
 }
 
 package() {
@@ -30,5 +35,5 @@ package() {
     install -Dm644 _lockenv "$pkgdir/usr/share/zsh/site-functions/_lockenv"
     install -Dm644 lockenv.fish "$pkgdir/usr/share/fish/vendor_completions.d/lockenv.fish"
 
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}.LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
