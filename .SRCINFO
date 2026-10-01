@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-pure-black
+	pkgdesc = AIMP skin: Pure Black 1.1 (by Alekz)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-pure-black-416.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-pure-black-416.archive::https://aimp.ru/?do=catalog.download&id=416
+	sha256sums = d74c84311f6865863febf4e461147768c4eb3d486c54fbb601103f2b0a34fa5f
+
+pkgname = aimp-skin-pure-black
