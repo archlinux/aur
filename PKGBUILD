@@ -3,7 +3,7 @@
 
 pkgname=asciisec
 pkgver=0.7.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Ascii Sector: SDL roguelike with a 'Wing Commander: Privateer' theme"
 arch=('i686' 'x86_64')
 url="http://www.asciisector.net"
@@ -14,8 +14,8 @@ source=("asciisec.desktop" "asciisec.png")
 md5sums=('d14120b34114c0f8414e8e8fa4594d72'
          '9c994608913a1e62fb27276b0109f7bf')
 
-[ "$CARCH" = "i686"   ] && source+=("$pkgname$pkgver-linux.tar.gz::https://s3.amazonaws.com/asciisector/asciisec0.7.2-linux32.tar.gz")
-[ "$CARCH" = "x86_64" ] && source+=("$pkgname$pkgver-linux64.tar.gz::https://s3.amazonaws.com/asciisector/asciisec0.7.2-linux64.tar.gz")
+[ "$CARCH" = "i686"   ] && source+=("$pkgname$pkgver-linux.tar.gz::https://d1.xp.myabandonware.com/t/c01cf78f-79b9-4da6-86ad-cd6014efda57/Ascii-Sector_Linux_EN_Version-072-32-bits.gz")
+[ "$CARCH" = "x86_64" ] && source+=("$pkgname$pkgver-linux64.tar.gz::https://d1.xp.myabandonware.com/t/70d5680b-bd54-4be5-970e-8b25fe183882/Ascii-Sector_Linux_EN_Version-072-64-bits.gz")
 [ "$CARCH" = "i686"   ] && md5sums+=('0bdd38f2b389897f40ac641a6da425e0')
 [ "$CARCH" = "x86_64" ] && md5sums+=('da26c4f40bdb3738defe8aa7808b4a15')
 

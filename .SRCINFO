@@ -1,7 +1,7 @@
 pkgbase = asciisec
 	pkgdesc = Ascii Sector: SDL roguelike with a 'Wing Commander: Privateer' theme
 	pkgver = 0.7.2
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.asciisector.net
 	install = asciisec.install
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = asciisec
 	depends = sdl2_image
 	source = asciisec.desktop
 	source = asciisec.png
-	source = asciisec0.7.2-linux64.tar.gz::https://s3.amazonaws.com/asciisector/asciisec0.7.2-linux64.tar.gz
+	source = asciisec0.7.2-linux64.tar.gz::https://d1.xp.myabandonware.com/t/70d5680b-bd54-4be5-970e-8b25fe183882/Ascii-Sector_Linux_EN_Version-072-64-bits.gz
 	md5sums = d14120b34114c0f8414e8e8fa4594d72
 	md5sums = 9c994608913a1e62fb27276b0109f7bf
 	md5sums = da26c4f40bdb3738defe8aa7808b4a15
