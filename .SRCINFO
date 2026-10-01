@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-audi
+	pkgdesc = AIMP skin: Audi 1.0 (by Black_AVP)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-audi-559.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-audi-559.archive::https://aimp.ru/?do=catalog.download&id=559
+	sha256sums = 9d08727b1c04d511085f95f0a2c64754973724cd080dc5220dc88ec58b1b881a
+
+pkgname = aimp-skin-audi
