@@ -9,6 +9,6 @@ pkgbase = arcticons-icon-theme
 	conflicts = arcticons-icon-theme
 	options = !strip
 	source = https://codeberg.org/Arcticons/Arcticons-Linux/archive/15.3.2.0.tar.gz
-	sha512sums = 03d7ddd59a694290a37fc68a08ea6b77813d424865bb3ece4ee926781400f93206ac2e09fdf443dbf7737ace78518bff01140d9e6e86ba3c84fca3c35239803e
+	sha512sums = b8f7e66f0270acad142e5cd05d4a6b146166314bd238f33ef463db5fd27fac981153c0c81886ed2eac82e95f69ee93251fd2b6a359dc99dd583ba6629643fb21
 
 pkgname = arcticons-icon-theme
