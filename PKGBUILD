@@ -14,8 +14,8 @@
 # shown after install/upgrade.
 
 pkgname=omachat
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="Native voice, text and screen chat for Omarchy and Linux (client, daemon, CLI and self-hostable server)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Sleepy-Studio/OmaChat"
