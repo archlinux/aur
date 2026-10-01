@@ -4,7 +4,7 @@
 pkgname='aimp-skin-deep-dark-skin'
 pkgdesc='AIMP skin: Deep Dark Skin 2.5 (by Chivo)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('689b39ecb6b661efa47e1b0bd559c212be54153b53e1972c7f919f9cc730e4e2')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Deep Dark Skin"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-deep-dark-skin-1193.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
