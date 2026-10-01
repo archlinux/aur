@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-elektronika-mp-204-stereo
 	pkgdesc = AIMP skin: Электроника МП-204 стерео 1.5 (by Пупс)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
