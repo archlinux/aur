@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-black-and-neon
 	pkgdesc = AIMP skin: Black & Neon 1.1 (by sagitt.67)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

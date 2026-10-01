@@ -4,7 +4,7 @@
 pkgname='aimp-skin-black-and-neon'
 pkgdesc='AIMP skin: Black & Neon 1.1 (by sagitt.67)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('1d724159d7c05a4d15ee783b6ed6fe38f4d73d6b02a1d3189db8866f81cd6ca9')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Black & Neon"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-black-and-neon-481.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
