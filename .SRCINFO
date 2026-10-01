@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-gromfrom
+	pkgdesc = AIMP skin: gromfrom 1.0 (by Banned)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-gromfrom-552.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-gromfrom-552.archive::https://aimp.ru/?do=catalog.download&id=552
+	sha256sums = ace77c5d7b22101322c140fd454b2b9fc0bb0c27247d4d14586d31398277c43e
+
+pkgname = aimp-skin-gromfrom
