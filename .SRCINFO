@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-aliens
+	pkgdesc = AIMP skin: Aliens 2.1 (by Alexey Chistov)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-aliens-299.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-aliens-299.archive::https://aimp.ru/?do=catalog.download&id=299
+	sha256sums = d25b261e0fcd29b5df4626e5b7e7075b40c02f76150706a09ad0af5c9f4e862d
+
+pkgname = aimp-skin-aliens
