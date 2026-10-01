@@ -4,7 +4,7 @@
 pkgname='aimp-skin-dual-c828'
 pkgdesc='AIMP skin: Dual C828 1.01 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('9d7518be59f7518271791ccff95a1e133aee5d13eedbba20387d5ab6193dc4ab')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Dual C828"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-dual-c828-1375.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
