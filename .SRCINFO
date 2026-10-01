@@ -3,17 +3,17 @@ pkgbase = ocaml-fdkaac-git
 	pkgver = r80.cc4245a
 	pkgrel = 2
 	url = https://github.com/savonet/ocaml-fdkaac
-	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = dune
 	makedepends = git
 	depends = ocaml
 	depends = libfdk-aac
+	provides = ocaml-fdkaac
+	conflicts = ocaml-fdkaac
 	options = !strip
 	options = !makeflags
 	source = ocaml-fdkaac-git::git+https://github.com/savonet/ocaml-fdkaac.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ocaml-fdkaac-git
-
