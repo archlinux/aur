@@ -4,7 +4,7 @@
 pkgname='aimp-skin-nagra-snst'
 pkgdesc='AIMP skin: Nagra SNST 1.51 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('88398dd6e38206487a0d8800a6d25cd76832ac861043d7f095e790db1e0475bd')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Nagra SNST"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-nagra-snst-894.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
