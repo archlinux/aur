@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=flict-git
-pkgver=1.1.2.r0.gbca99b7
+pkgver=1.3.0.r7.gc65aedd
 pkgrel=1
 pkgdesc="Open source software license compatibility tool"
 arch=('any')
@@ -9,7 +9,7 @@ makedepends=(python-{build,installer,wheel} python-setuptools)
 url="https://github.com/vinland-technology/flict"
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-license=('GPL3')
+license=('GPL-3.0-or-later')
 source=("${pkgname%%-git}::git+${url}")
 
 build() {
