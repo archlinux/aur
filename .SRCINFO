@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-cool
+	pkgdesc = AIMP skin: Cool 2 (by ART)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-cool-248.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-cool-248.archive::https://aimp.ru/?do=catalog.download&id=248
+	sha256sums = f69897af8a7fd4c946ace11099d12746c5e5fe843da1f105882d2d6bb20736f6
+
+pkgname = aimp-skin-cool
