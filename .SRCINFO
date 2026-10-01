@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-b-and-w-lineage-2
+	pkgdesc = AIMP skin: B&W Lineage 2 1.0 (by San4o)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-b-and-w-lineage-2-144.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-b-and-w-lineage-2-144.archive::https://aimp.ru/?do=catalog.download&id=144
+	sha256sums = e5e42dcbb1e05a7baba79658ddb5ae561532b9e5170390892a20de575e7635ce
+
+pkgname = aimp-skin-b-and-w-lineage-2
