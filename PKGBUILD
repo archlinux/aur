@@ -4,7 +4,7 @@
 pkgname='aimp-skin-tristania'
 pkgdesc='AIMP skin: Tristania 1.5 (by Tarik)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('86af4422437e19bfcbf62199f5f666d0caa1a100b9ca67e89f4e12c18fd6e5a6')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Tristania"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-tristania-282.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
