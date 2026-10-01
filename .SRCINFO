@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-black-sea-wave
+	pkgdesc = AIMP skin: Black sea wave 1.0 (by Marat_S)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-black-sea-wave-555.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-black-sea-wave-555.archive::https://aimp.ru/?do=catalog.download&id=555
+	sha256sums = f6527b5af9bf61792df77c20e3175a5d4edac4e7e462a195050d52fe587c8d2c
+
+pkgname = aimp-skin-black-sea-wave
