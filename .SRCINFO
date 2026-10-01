@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-aimpshield
+	pkgdesc = AIMP skin: AIMPshield 1.003 (by samix)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-aimpshield-814.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-aimpshield-814.archive::https://aimp.ru/?do=catalog.download&id=814
+	sha256sums = b6ef75ed55067029128aaa9960df1bd0bdd4f1c0493c2c3e4158a198699dfaa8
+
+pkgname = aimp-skin-aimpshield
