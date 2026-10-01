@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-vesna-306
+	pkgdesc = AIMP skin: ВЕСНА-306 1.71 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-vesna-306-581.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-vesna-306-581.archive::https://aimp.ru/?do=catalog.download&id=581
+	sha256sums = cf66e05e94139aa59feaca482dbd9cf3a41bca32d1388bba20c75b642731710c
+
+pkgname = aimp-skin-vesna-306
