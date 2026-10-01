@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-brown-life
+	pkgdesc = AIMP skin: Brown Life 1.0 (by Nitehost)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-brown-life-172.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-brown-life-172.archive::https://aimp.ru/?do=catalog.download&id=172
+	sha256sums = 6e12187d4a11fc02c29dec61f93e313bb2872e33b3642f9a10083ec251785bf8
+
+pkgname = aimp-skin-brown-life
