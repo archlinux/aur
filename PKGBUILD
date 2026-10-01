@@ -4,7 +4,7 @@
 pkgname='aimp-skin-qodux'
 pkgdesc='AIMP skin: Qodux 3.1 (by Starkad)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('aa45c9895b3a549682e89da96612976178dc0400b71b7c78085a465509543451')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Qodux"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-qodux-694.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
