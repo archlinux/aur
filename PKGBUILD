@@ -4,7 +4,7 @@
 pkgname='aimp-skin-cloudy-dreams'
 pkgdesc='AIMP skin: Cloudy Dreams 1.1 (by NoHealer)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('067628dbc3eb247604581319805fc5d9ea27bbaef30618ac80e66ae42ace262a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Cloudy Dreams"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-cloudy-dreams-761.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
