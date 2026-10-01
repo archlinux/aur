@@ -4,7 +4,7 @@
 pkgname='aimp-skin-gentator'
 pkgdesc='AIMP skin: Gentator 1.0 (by sagitt.67)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('32700b1f39805847af58ed0f074a9fa61669c29dead94c940c7c6d7c309f07bc')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Gentator"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-gentator-291.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
