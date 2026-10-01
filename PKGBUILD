@@ -4,7 +4,7 @@
 pkgname='aimp-skin-nguvu-horz-tabs-layout'
 pkgdesc='AIMP skin: NGuvu (Horz.Tabs Layout) 2.2 (by ScrollUnLock)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('745886d67f6faf0eee829536607ace3c4187e93c6ed590cf11695da066137aa0')
 
 package() {
-  local dest="$pkgdir$_skinsdir/NGuvu (Horz.Tabs Layout)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-nguvu-horz-tabs-layout-353.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
