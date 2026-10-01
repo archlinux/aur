@@ -4,7 +4,7 @@
 pkgname='aimp-skin-zero'
 pkgdesc='AIMP skin: Zero 1.0 (by MaxAx)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d37fadc2ab9b8475f20ceaff39358301e38ab40f05109e5cb173a700e9191ace')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Zero"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-zero-704.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
