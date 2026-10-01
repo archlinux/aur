@@ -4,7 +4,7 @@
 pkgname='aimp-skin-skumfuk'
 pkgdesc='AIMP skin: Skumfuk 1.4 (by Arthur «d1sapp3ar» Habirov)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('adb38237b9471163514c5044f314c77e961ffc470220361a1b3c11f48ff8df22')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Skumfuk"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-skumfuk-508.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
