@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-sidebar-euphoria-lux-remix
+	pkgdesc = AIMP skin: Sidebar (Euphoria Lux Remix) 1. (by AngelAG)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-sidebar-euphoria-lux-remix-116.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-sidebar-euphoria-lux-remix-116.archive::https://aimp.ru/?do=catalog.download&id=116
+	sha256sums = b7bd5699dc9d8f4cbd13597e6c8d63cab76cb6778f252e61f68f91012ab28c7a
+
+pkgname = aimp-skin-sidebar-euphoria-lux-remix
