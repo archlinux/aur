@@ -4,7 +4,7 @@
 pkgname='aimp-skin-lineage-v-3'
 pkgdesc='AIMP skin: Lineage v.3 1.0 (by San4o)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('20d1e73fa1c21476b04630bd997e921059e077d7d6ad708bdaadc47db79d7b27')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Lineage v.3"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-lineage-v-3-230.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
