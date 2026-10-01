@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-windows-media-player-12-sb
+	pkgdesc = AIMP skin: Windows Media Player 12 SB 1.0 (by memo-se)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-windows-media-player-12-sb-1077.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-windows-media-player-12-sb-1077.archive::https://aimp.ru/?do=catalog.download&id=1077
+	sha256sums = 43c398a452a20c1b8b03fb066b951fbc401f6eea5b0a1eff214b52465ba34e59
+
+pkgname = aimp-skin-windows-media-player-12-sb
