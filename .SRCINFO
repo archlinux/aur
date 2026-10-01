@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-kriterya
+	pkgdesc = AIMP skin: Kriterya 3.03 (by samix)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-kriterya-843.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-kriterya-843.archive::https://aimp.ru/?do=catalog.download&id=843
+	sha256sums = 9b6d894c50effcc70628111473ed59632e57f6540615fcfb071d7fde24003f1d
+
+pkgname = aimp-skin-kriterya
