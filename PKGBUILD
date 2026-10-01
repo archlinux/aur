@@ -4,7 +4,7 @@
 pkgname='aimp-skin-azenis-2'
 pkgdesc='AIMP skin: Azenis 2 1.0 (by Evgen)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('87dc95bb5e820c4924fa8b563094f776671b979f8fb03db926b303d1724ae9bf')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Azenis 2"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-azenis-2-321.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
