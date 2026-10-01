@@ -4,7 +4,7 @@
 pkgname='aimp-skin-victor-kd-d55'
 pkgdesc='AIMP skin: Victor KD-D55 1.90 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('174564dee6eb38ad14eb05bc1250d7ff38370fd71cc3e2c776c79c958bc825b4')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Victor KD-D55"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-victor-kd-d55-667.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

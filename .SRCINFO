@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-victor-kd-d55
 	pkgdesc = AIMP skin: Victor KD-D55 1.90 (by McClaud)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
