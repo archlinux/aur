@@ -4,7 +4,7 @@
 pkgname='aimp-skin-bliss-compact-dark'
 pkgdesc='AIMP skin: Bliss Compact Dark 2.24 (by Vincent Koelo)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('66d697a28ef0661c248e6147dbfdf94c4a2fec887d30afe10dd1e592718da750')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Bliss Compact Dark"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-bliss-compact-dark-902.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
