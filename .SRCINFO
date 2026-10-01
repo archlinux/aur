@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-granatum
+	pkgdesc = AIMP skin: Granatum 1.0 (by sagitt.67)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-granatum-781.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-granatum-781.archive::https://aimp.ru/?do=catalog.download&id=781
+	sha256sums = 5d132237b9b09a3bcefd8d1fb7b54b29a929f1964fec243d9cae93f687a20aa6
+
+pkgname = aimp-skin-granatum
