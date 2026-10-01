@@ -2,12 +2,12 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-mad
-pkgver=0.5.3
+pkgver=0.5.3 # renovate: datasource=github-tags depName=savonet/ocaml-mad
 pkgrel=1
 pkgdesc="OCaml bindings to the MAD mp3 decoder"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/savonet/ocaml-mad"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('ocaml' 'libmad')
 makedepends=('ocaml-findlib' 'dune')
 options=('!strip')
