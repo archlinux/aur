@@ -4,7 +4,7 @@
 pkgname='aimp-skin-lumin'
 pkgdesc='AIMP skin: Lumin 1.0 (by D2NP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('b5b0bd3d30d81dbd6486561674bb2e155a3825416dc1b452c0e078d213cfcb11')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Lumin"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-lumin-1035.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
