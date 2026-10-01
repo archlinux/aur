@@ -4,7 +4,7 @@
 pkgname='aimp-skin-red-glamur'
 pkgdesc='AIMP skin: Red glamur 1.0 (by FALSE)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('6ca4cfc8e0bc4a71c61ee6a301b62adf9abb0d61a94c536c2664a5990ce9662c')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Red glamur"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-red-glamur-133.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
