@@ -1,7 +1,7 @@
 # Maintainer: Techcable <techcable at techcable dot net>
 
 pkgname=bookmark-cd
-pkgver=1.0.25
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Bookmark directories and move to them"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=('bash: shell integration'
 # and it is immutable (not subject to `git-archive` changes)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 
-sha256sums=('a4d41a6017c62a6eabb15a3a9f7b02abb6f6c07021b1b5573a81d3384c197e87')
+sha256sums=('2fc8a3ebbb75c72ed35a9549b032ad7c15dafab117e596a8ffc0f00544c990ca')
 
 prepare() {
     cd "$pkgname-$pkgver"
