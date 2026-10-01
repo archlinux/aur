@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Universal project launcher with portable runtimes. Run projects without installing Node, Python, or other toolchains globally."
 
-pkgver=0.5.3
+pkgver=0.6.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,9 +27,9 @@ options=(!strip)
 
 source=("README-${pkgver}.md::${_ghurlraw}/README.md" "LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
-sha256sums=('f4ab5cd81d15a9bf3b7f2d4cc258e7df1d19705f3664207b24c094f42cc3c8bb'
+sha256sums=('1cee29f4e889ff3aa889fc722e13f242a8d5a6f49f8765d78db3bb65adca8e01'
             'fbd9c09c7b576e977fa12ea54df5861ae6ae9b130487f1e1664550f743257f31')
-sha256sums_x86_64=('7b26b931e8881b327ba9f2e8d2e7d9952fc9f673265ebca28ff71e43096a355f')
+sha256sums_x86_64=('7250e21eb302d05e7c23a8d2cd31ebf71bedcf4cd359241dfa2e3a04991395f9')
 
 
 package() {
