@@ -4,7 +4,7 @@
 pkgname='aimp-skin-darkm13'
 pkgdesc='AIMP skin: DarkM13 1.2 (by Maxis)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('445a3f6b198ae83cd003266c7f3c57939b45829513d2a2966eea046fb0340a9e')
 
 package() {
-  local dest="$pkgdir$_skinsdir/DarkM13"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-darkm13-813.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

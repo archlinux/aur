@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-darkm13
 	pkgdesc = AIMP skin: DarkM13 1.2 (by Maxis)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
