@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-iaimp
+	pkgdesc = AIMP skin: iAIMP 2.52 (by Hajuskin)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-iaimp-131.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-iaimp-131.archive::https://aimp.ru/?do=catalog.download&id=131
+	sha256sums = a1b1431f4583d6d78e4d8197aef24f7eb07b5afd1cf2d952b2944ad34e4dcd05
+
+pkgname = aimp-skin-iaimp
