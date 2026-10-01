@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-dark-blocks
+	pkgdesc = AIMP skin: Dark Blocks 1.2.3 (by ZeoN7)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-dark-blocks-333.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-dark-blocks-333.archive::https://aimp.ru/?do=catalog.download&id=333
+	sha256sums = 23385ec06349111ca1f948a435e937594fa651cee7832938ac7204026e029c7b
+
+pkgname = aimp-skin-dark-blocks
