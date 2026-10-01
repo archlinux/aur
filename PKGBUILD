@@ -1,5 +1,5 @@
 pkgname=mock-core-configs
-pkgver=45.1
+pkgver=45.2
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -7,16 +7,27 @@ pkgdesc="Mock core config files basic chroots"
 url="https://github.com/rpm-software-management/mock"
 arch=('any')
 license=('GPL-2.0-or-later')
-depends=('distribution-gpg-keys>=1.121')
+depends=('distribution-gpg-keys>=1.122')
+checkdepends=('python-pytest')
 backup=('etc/mock/default.cfg')
 source=("$url/archive/$_pkgtag.tar.gz")
-sha256sums=('a40833fef39d28ebf59e98e9b9f21daccbf81d073619baac31d4d8b2709aa580')
+sha256sums=('fa459b8ad1ee8971a04d8ed48728bb33a3ef7c717393e2417e201c734bd1f715')
 
 # Uncomment to not package configs for EOLed versions of distributions
 #_without_eol=1
 
 prepare() {
 	mv "mock-$_pkgtag" "$pkgname-$pkgver"
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+
+	pushd "$pkgname" >/dev/null
+
+	PYTHONPATH=. python -m pytest tests
+
+	popd >/dev/null
 }
 
 package() {
