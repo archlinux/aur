@@ -6,7 +6,7 @@ pkgrel=5
 pkgdesc="Return to Castle Wolfenstein Single Player pk3s files (shared use)"
 arch=('any')
 url="https://github.com/iortcw/iortcw"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 install='iortcw-data.install'
 source=("https://github.com/iortcw/iortcw/releases/download/${pkgver}/patch-data-141.zip"
   "https://github.com/M0Rf30/rtcw-assets/raw/master/sp_pak2.pk3"
