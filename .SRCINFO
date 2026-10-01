@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-eternity-112
+	pkgdesc = AIMP skin: Eternity 2.6 (by Krieger)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-eternity-112-112.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-eternity-112-112.archive::https://aimp.ru/?do=catalog.download&id=112
+	sha256sums = 17a2f96af05a73de298cceadd19a56a026107bbe813de90fca1b465649424098
+
+pkgname = aimp-skin-eternity-112
