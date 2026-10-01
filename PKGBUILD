@@ -4,7 +4,7 @@
 pkgname='aimp-skin-pioneer-t-7050r-4k'
 pkgdesc='AIMP skin: Pioneer T-7050R 4K 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f5351cf548d8c362ac9d3f7af3a6e2ca9a54f8cff9d27103d299bb0163cd8982')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Pioneer T-7050R 4K"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-pioneer-t-7050r-4k-1350.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
