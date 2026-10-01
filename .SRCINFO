@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-wzp-onyxhd
+	pkgdesc = AIMP skin: WZP OnyxHD 3.0 (by memo-se)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-wzp-onyxhd-437.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-wzp-onyxhd-437.archive::https://aimp.ru/?do=catalog.download&id=437
+	sha256sums = 4ad09eacd5e143b9202c44bf6e57a720ad789a95f5c9389f9b120e3d0ab4dae7
+
+pkgname = aimp-skin-wzp-onyxhd
