@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-mayak-120-231
+	pkgdesc = AIMP skin: Mayak-120 (231) 2.21 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-mayak-120-231-543.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-mayak-120-231-543.archive::https://aimp.ru/?do=catalog.download&id=543
+	sha256sums = 891502a64f71d95122576ae189b4082bbbfc408998c11c5ef478e7645895df3f
+
+pkgname = aimp-skin-mayak-120-231
