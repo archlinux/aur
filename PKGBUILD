@@ -1,7 +1,7 @@
 # Maintainer: robertfoster; keshavnrj
 
 pkgname=orion-desktop
-pkgver=4.1.0 # renovate: datasource=custom.snapcraft depName=orion-desktop
+pkgver=4.2.1 # renovate: datasource=custom.snapcraft depName=orion-desktop
 pkgrel=1
 pkgdesc="A powerful, lightweight, fast BitTorrent client, with beautiful user experience and fastest video and audio streaming capabilities"
 arch=('x86_64')

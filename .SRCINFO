@@ -1,6 +1,6 @@
 pkgbase = orion-desktop
 	pkgdesc = A powerful, lightweight, fast BitTorrent client, with beautiful user experience and fastest video and audio streaming capabilities
-	pkgver = 4.1.0
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://snapcraft.io/orion-desktop
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = orion-desktop
 	depends = qt6-webview
 	depends = mpv
 	options = !strip
-	source = orion-desktop-4.1.0.squashfs::snap://api.snapcraft.io/v2/snaps/info/orion-desktop
+	source = orion-desktop-4.2.1.squashfs::snap://api.snapcraft.io/v2/snaps/info/orion-desktop
 	source = snap-dlagent.sh
 	source = orion-desktop.desktop
 	source = orion-desktop.sh
