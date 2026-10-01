@@ -4,7 +4,7 @@
 pkgname='aimp-skin-lw'
 pkgdesc='AIMP skin: LW 2.1 (by Aleksandr009)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('788711aad7eb0afe10c192db1ffeff73a131ca0bcb0b1b57f4d4705c80eec04a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/LW"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-lw-795.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
