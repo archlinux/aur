@@ -3,12 +3,12 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-cry
-pkgver=1.0.3
+pkgver=1.0.3 # renovate: datasource=github-tags depName=savonet/ocaml-cry
 pkgrel=1
 pkgdesc="OCaml native module for icecast/shoutcast source protocol(s)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/savonet/ocaml-cry"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('ocaml' 'ocaml-ssl')
 makedepends=('ocaml-findlib' 'dune')
 options=(!libtool !strip zipman !makeflags staticlibs)
