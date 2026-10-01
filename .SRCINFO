@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-metalik-glass-light
 	pkgdesc = AIMP skin: Metalik Glass (Light) 1.04 (by Banned)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
