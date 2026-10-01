@@ -1,12 +1,12 @@
 # Maintainer: robertfoster
 
 pkgname=friture-git
-pkgver=0.49.r12.g2972d2b
+pkgver=0.54.r79.g0c6a787
 pkgrel=1
 pkgdesc="An application to visualize and analyze live audio data in real-time."
-arch=(i686 x86_64)
+arch=(x86_64)
 url="https://friture.org/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('python-appdirs' 'python-docutils' 'python-multipledispatch' 'python-numpy' 'python-pa-ringbuffer' 'python-pyqt5' 'python-pyrr' 'python-rtmixer' 'python-sounddevice')
 optdepends=('jack: for JACK I/O support')
 makedepends=('cython0' 'git' 'python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
