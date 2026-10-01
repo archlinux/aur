@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-hysteria
+	pkgdesc = AIMP skin: Hysteria 1.0 (by Virys90)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-hysteria-224.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-hysteria-224.archive::https://aimp.ru/?do=catalog.download&id=224
+	sha256sums = 44e302887f8c58a5c115698cf0b963c44db8f0dc8d1aa1779151b1f893271aeb
+
+pkgname = aimp-skin-hysteria
