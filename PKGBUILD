@@ -4,7 +4,7 @@
 pkgname='aimp-skin-my-spider'
 pkgdesc='AIMP skin: My Spider 1.1 (by Freyr (aka Kristall_k8))'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('e46e17d17e57f19680215be866a0a9c48c0287252d792888b4d3c5c800324080')
 
 package() {
-  local dest="$pkgdir$_skinsdir/My Spider"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-my-spider-115.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
