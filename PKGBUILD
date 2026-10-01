@@ -4,7 +4,7 @@
 pkgname='aimp-skin-windows-media-player-11-beta'
 pkgdesc='AIMP skin: Windows Media Player 11 Beta 2 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('e0b01f58c4999564b321ee92ebdde6743dd0fe3d2ea80bf098108e05f713da96')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Windows Media Player 11 Beta"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-windows-media-player-11-beta-1068.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
