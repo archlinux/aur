@@ -9,8 +9,7 @@ pkgbase = opentofu-git
 	makedepends = go
 	provides = opentofu
 	conflicts = opentofu
-	conflicts = opentofu-git
-	conflicts = opentofu-bin-stable
+	conflicts = opentofu-bin
 	source = git+https://github.com/opentofu/opentofu.git
 	sha256sums = SKIP
 
