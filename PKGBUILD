@@ -1,31 +1,36 @@
 # Maintainer: robertfoster
 
 pkgname=ocaml-ffmpeg-git
-pkgver=0.4.1.r120.3b1b6c7
+pkgver=r777.ceb0081
 pkgrel=1
 pkgdesc="OCaml bindings to the FFmpeg library"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/savonet/ocaml-ffmpeg"
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 depends=('ocaml' 'ffmpeg')
-makedepends=('dune' 'git')
+makedepends=('ocaml-findlib')
 options=('!strip' '!makeflags')
-source=("$pkgname::git+${url}")
+source=("$pkgname::git+https://github.com/savonet/ocaml-ffmpeg")
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd "${srcdir}/${pkgname}"
-  dune build
+  ./bootstrap
+  ./configure
+  make
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
-  dune install --prefix "${pkgdir}/usr" \
-    --libdir "${pkgdir}$(ocamlfind printconf destdir)"
-}
 
-md5sums=('SKIP')
+  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
+  mkdir -p "${OCAMLFIND_DESTDIR}/stublibs"
+  make install
+}
+sha256sums=('SKIP')
