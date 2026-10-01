@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-wzp-albahd
+	pkgdesc = AIMP skin: WZP AlbaHD 3.0 (by memo-se)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-wzp-albahd-433.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-wzp-albahd-433.archive::https://aimp.ru/?do=catalog.download&id=433
+	sha256sums = 3ffba97f19f9f5a3e3eaa5d91413639020bc15412f7e03142dc66a3612a8f244
+
+pkgname = aimp-skin-wzp-albahd
