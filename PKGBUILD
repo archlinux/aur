@@ -8,7 +8,7 @@
 # Contributor: Fredrick Brennan <copypaste@kittens.ph>
 
 pkgname=mastodon
-pkgver=4.7.2
+pkgver=4.7.3
 pkgrel=4
 pkgdesc='Your self-hosted, globally interconnected microblogging community'
 arch=(x86_64)
@@ -49,7 +49,7 @@ source=(
         devise_pam.patch
 )
 
-sha256sums=('658bb926521fdf5278afa9df76e4224dc2effa3732f60ac36e3b46c2ef4b34e8'
+sha256sums=('b9fca0d53c9005c2e84f23f55b2e32b045909afeb1931ae6de350a63497b85b2'
             'e9928ced31f6490476100f02f2e158e41a076988dd7f3dff8f21d245bc2bb0ff'
             '1b67693f7de5802a34985b9ac969497fc6e6042dcae0b8abf6595b9fe15ee80e'
             '3fdd54dd1f374b7206c8beaebafdf890e74d30385f0c93f9cd99e1e4be92f8fa'
