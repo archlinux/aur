@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-messa
+	pkgdesc = AIMP skin: Messa 2.4 (by Chivo)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-messa-1205.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-messa-1205.archive::https://aimp.ru/?do=catalog.download&id=1205
+	sha256sums = a2d2b85dafc1a90924d7f3f48ba868056a5cc7804c29c4f0a14843396c3e00bc
+
+pkgname = aimp-skin-messa
