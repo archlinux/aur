@@ -4,7 +4,7 @@
 pkgname='aimp-skin-style-x'
 pkgdesc='AIMP skin: Style X 1.0 (by amdpastrana)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('7e7a95e07d4b9964f503c25796e4fb2661cfcfcf6d1f1ad3cb9cba61ca08742b')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Style X"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-style-x-789.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
