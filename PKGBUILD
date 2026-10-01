@@ -1,12 +1,12 @@
 # Maintainer: robertfoster
 
 pkgname=xash3d-hlsdk
-pkgver=r639.8f5c36dc
+pkgver=r1081.6c168fc7
 pkgrel=1
 pkgdesc="Half-Life SDK from original Xash3D engine"
 arch=('x86_64')
 url="http://xash.su/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('cmake' 'git')
 source=("${pkgname}::git+https://github.com/FWGS/hlsdk-portable")
 
