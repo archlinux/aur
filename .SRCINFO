@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-mp3-remix-player
 	pkgdesc = AIMP skin: MP3 Remix Player 2.5 (by memo-se)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

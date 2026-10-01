@@ -4,7 +4,7 @@
 pkgname='aimp-skin-mp3-remix-player'
 pkgdesc='AIMP skin: MP3 Remix Player 2.5 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('86b305a5428499362c98bce8f30689ce8a2f1f14ebf7aa3761a14bacdbaecf09')
 
 package() {
-  local dest="$pkgdir$_skinsdir/MP3 Remix Player"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-mp3-remix-player-619.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
