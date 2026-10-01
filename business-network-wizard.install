@@ -1,0 +1,8 @@
+post_install() {
+  echo "==> Apri «Rete aziendale» dal launcher (oppure: bnw) e premi «Configura…»"
+  echo "    con il profilo aziendale .bnw. Da terminale: bnw setup FILE.bnw"
+}
+
+post_upgrade() {
+  echo "==> Business Network Wizard aggiornato: «bnw status» per controllare."
+}
