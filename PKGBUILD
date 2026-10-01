@@ -14,7 +14,7 @@
 
 _pkgname="waterfox"
 pkgname="$_pkgname"
-pkgver=6.7.3
+pkgver=6.7.5
 pkgrel=1
 pkgdesc="A customizable, privacy‑focused web browser"
 url="https://github.com/BrowserWorks/waterfox"
@@ -113,8 +113,8 @@ source=(
   "$_pkgname.desktop"
 )
 sha256sums=(
-  '54c852524b5239baf1b23557bb5fc24eb88337fb5ff76c6d9923bdd44a5ea51b'
-  '47125916f8e41c21ea0348c1981c008b3133c45034986a6c2e6c99539ddf65e9'
+  '3e62f37a8e815dac44e9efab670dc5fb3af14bd97e7d506156428bce6b21bef9'
+  'caae86304349e47d4a5b68be98e0dac983ff116b732504fef501faed5f97a0c6'
   '9345cdf0e1a537d8ff23b5db0eadaaec5868f7588de86a260da27f5015c2d286'
 )
 
