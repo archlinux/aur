@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-pipboy-f3
 	pkgdesc = AIMP skin: PipBoy F3 1.0 (by Russell)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

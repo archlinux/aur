@@ -4,7 +4,7 @@
 pkgname='aimp-skin-pipboy-f3'
 pkgdesc='AIMP skin: PipBoy F3 1.0 (by Russell)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('edfcc817a8a3756049c85ea7b0bf4028e224047a0c54f0ba957f7d240fcfe6e0')
 
 package() {
-  local dest="$pkgdir$_skinsdir/PipBoy F3"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-pipboy-f3-725.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
