@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-tascam-fireone
+	pkgdesc = AIMP skin: Tascam Fireone 1.1 (by Remoder)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-tascam-fireone-1104.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-tascam-fireone-1104.archive::https://aimp.ru/?do=catalog.download&id=1104
+	sha256sums = b3eb979286eb1befb446ab57eb21cc98b4edd9583c1a121ffb80e71d60cd9846
+
+pkgname = aimp-skin-tascam-fireone
