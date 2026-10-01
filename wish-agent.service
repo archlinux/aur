@@ -1,0 +1,14 @@
+[Unit]
+Description=Wish agent server
+Documentation=https://github.com/WindustH/wish-core/blob/master/docs/deployment.md
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/wish-agent
+EnvironmentFile=-%h/.config/wish-agent/wish.env
+WorkingDirectory=%h
+Restart=on-failure
+TimeoutStopSec=60
+
+[Install]
+WantedBy=default.target
