@@ -4,11 +4,11 @@
 # Contributor: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgname=rpi-eeprom-git
-pkgver=r603.72cedfe
+pkgver=r882.a72213d
 pkgrel=1
 pkgdesc='Raspberry Pi4 boot EEPROM updater, latest git version'
 arch=('any')
-url='http://github.com/raspberrypi/rpi-eeprom'
+url='https://github.com/raspberrypi/rpi-eeprom'
 license=('custom')
 depends=(
   'python'
@@ -23,7 +23,7 @@ backup=('etc/default/rpi-eeprom-update')
 source=("git+https://github.com/raspberrypi/rpi-eeprom.git"
   'rpi-eeprom-update.patch')
 sha256sums=('SKIP'
-            'd716ef30c4a486019a4778579305a84c0f31593d5840850aefa9742dc6f9760f')
+  'd716ef30c4a486019a4778579305a84c0f31593d5840850aefa9742dc6f9760f')
 options=(!strip)
 
 pkgver() {
