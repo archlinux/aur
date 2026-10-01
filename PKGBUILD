@@ -4,7 +4,7 @@
 pkgname='aimp-skin-dark-blocks'
 pkgdesc='AIMP skin: Dark Blocks 1.2.3 (by ZeoN7)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('23385ec06349111ca1f948a435e937594fa651cee7832938ac7204026e029c7b')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Dark Blocks"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-dark-blocks-333.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
