@@ -2,12 +2,13 @@
 
 pkgname=keifu-bin
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI tool to visualize Git commit graphs with branch genealogy."
 url="https://github.com/trasta298/keifu"
 license=('MIT')
 arch=('x86_64' 'aarch64')
-depends=('git')
+depends=('glibc' 'libgcc' 'git')
+depends_x86_64=('zlib')
 provides=('keifu')
 conflicts=('keifu')
 source=("LICENSE-v$pkgver::https://raw.githubusercontent.com/trasta298/keifu/v${pkgver}/LICENSE"
