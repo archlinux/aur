@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-red-sensor
+	pkgdesc = AIMP skin: Red Sensor 2 (by -=Lee=-)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-red-sensor-209.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-red-sensor-209.archive::https://aimp.ru/?do=catalog.download&id=209
+	sha256sums = b8004864f5a4ff87aecb55dfb18df5ccf09ca31c7a78c88031a2a900a17edd98
+
+pkgname = aimp-skin-red-sensor
