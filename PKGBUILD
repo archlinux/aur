@@ -4,7 +4,7 @@
 pkgname='aimp-skin-unfavourable'
 pkgdesc='AIMP skin: Unfavourable 1.96 (by quefcyze)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('4701b1af9892e65619c1da31616538cd367824b833b60f0f7aa4aeb8fbaf50dd')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Unfavourable"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-unfavourable-881.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

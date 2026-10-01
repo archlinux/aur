@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-unfavourable
 	pkgdesc = AIMP skin: Unfavourable 1.96 (by quefcyze)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
