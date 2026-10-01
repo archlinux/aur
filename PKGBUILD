@@ -4,7 +4,7 @@
 pkgname='aimp-skin-glass-elegant'
 pkgdesc='AIMP skin: Glass Elegant 1.0 (by Xpand)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('137a1e0847cb0c47d050f786bf9920cd123e9d77a7e36825106ece0bc2c893f0')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Glass Elegant"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-glass-elegant-220.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
