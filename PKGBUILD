@@ -4,7 +4,7 @@
 pkgname='aimp-skin-gilly-matt-and-glossy'
 pkgdesc='AIMP skin: Gilly Matt&Glossy 1.0 (by Zigar)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('58cf97faa4bea7ca817ca0344138a55f37e40c20e96d2c2ed6ed119c01ebd7aa')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Gilly Matt&Glossy"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-gilly-matt-and-glossy-591.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
