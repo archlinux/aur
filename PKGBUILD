@@ -3,12 +3,12 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-fdkaac
-pkgver=0.3.3
+pkgver=0.3.3 # renovate: datasource=github-tags depName=savonet/ocaml-fdkaac
 pkgrel=1
 pkgdesc="OCaml bingind for the fdk-aac library"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/savonet/ocaml-fdkaac"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('ocaml' 'libfdk-aac')
 makedepends=('ocaml-findlib' 'dune')
 options=('!strip')
