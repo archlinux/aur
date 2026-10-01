@@ -4,7 +4,7 @@
 pkgname='aimp-skin-aimpify'
 pkgdesc='AIMP skin: AIMPify 1.2 (by XJ-090)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('36e0997f215f4c3410926a72e4f795cd82892e7988e847a1f335d6b4323477d6')
 
 package() {
-  local dest="$pkgdir$_skinsdir/AIMPify"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-aimpify-1285.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
