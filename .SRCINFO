@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-technophilia
+	pkgdesc = AIMP skin: Technophilia 1.0 (by Victor Sanz)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-technophilia-557.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-technophilia-557.archive::https://aimp.ru/?do=catalog.download&id=557
+	sha256sums = 78e5ecc228774aa885990884f0592878bdb8701f76a8a436dec8220f67f4bbfa
+
+pkgname = aimp-skin-technophilia
