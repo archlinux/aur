@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-cute
+	pkgdesc = AIMP skin: Cute 1.2 (by Wispik)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-cute-290.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-cute-290.archive::https://aimp.ru/?do=catalog.download&id=290
+	sha256sums = 2d06eabcc11307b64b7c92a40ebc54b6bd6cf74648c7ad177219761f0ce91589
+
+pkgname = aimp-skin-cute
