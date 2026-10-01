@@ -3,11 +3,12 @@ pkgbase = aliwe-git
 	pkgver = 55.851c379
 	pkgrel = 1
 	url = https://github.com/M0Rf30/aliwe
-	arch = i686
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
 	depends = openssl
+	provides = aliwe
+	conflicts = aliwe
 	source = aliwe-git::git+https://github.com/M0Rf30/aliwe.git
 	sha256sums = SKIP
 
