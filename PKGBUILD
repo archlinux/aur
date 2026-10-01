@@ -4,7 +4,7 @@
 pkgname='aimp-skin-x-metal'
 pkgdesc='AIMP skin: X-Metal 2.9 (by VladShip)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('51a99fc1a55366423cc9cb9b86f7f6d2e6070b753b686c377da1d9a169de0367')
 
 package() {
-  local dest="$pkgdir$_skinsdir/X-Metal"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-x-metal-357.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
