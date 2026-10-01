@@ -4,7 +4,7 @@
 pkgname='aimp-skin-desktop-player'
 pkgdesc='AIMP skin: Desktop Player 1.0 (by NikolavRj)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a29f4d8d6503d9160e8dafe905031e395db984091d5931c5590e2180a49f17fe')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Desktop Player"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-desktop-player-479.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
