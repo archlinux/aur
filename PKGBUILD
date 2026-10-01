@@ -3,13 +3,13 @@
 
 pkgbase=devilutionx-git
 pkgname=("${pkgbase}" "devilutionx-assets-git")
-pkgver=1.4.0.r1542.fa0147cfa
+pkgver=1.5.1.r1463.452eeccc7
 pkgrel=1
 pkgdesc="Diablo devolved for linux (git version)"
-arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'x86_64')
 url="https://github.com/diasurgical/devilutionX"
-license=('custom:unlicense')
-depends=('bzip2' 'fmt' 'libpng' 'libsodium' 'sdl2' 'sdl2_image' 'simpleini' 'zlib')
+license=('Unlicense')
+depends=('bzip2' 'fmt' 'libpng' 'libsodium' 'sdl2-compat' 'sdl2_image' 'simpleini' 'zlib')
 makedepends=('cmake' 'devilutionx-graphics-tools-git' 'flac' 'gettext' 'git' 'lame' 'smpq')
 conflicts=("${pkgbase%-git}")
 provides=("${pkgbase%-git}")
@@ -51,7 +51,7 @@ package_devilutionx-assets-git() {
   provides=("${pkgname%-git}" "devilutionx-fonts" "devilutionx-voices")
 
   cd "${srcdir}/${pkgname%-git}"
-  
+
   ./build.sh
 
   install -Dm644 fonts.mpq \
