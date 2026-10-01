@@ -4,7 +4,7 @@
 pkgname='aimp-skin-euphoriaghost-aio'
 pkgdesc='AIMP skin: EuphoriaGhost AiO 1.11 (by Nitehost)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d14f3bdbe542c7f42478a7ffee88f49ed264abd1f49d6b8696066df5d30f6e20')
 
 package() {
-  local dest="$pkgdir$_skinsdir/EuphoriaGhost AiO"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-euphoriaghost-aio-175.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
