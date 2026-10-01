@@ -4,9 +4,9 @@ pkgname=libsmacker
 pkgver=1.2.0r43
 pkgrel=3
 pkgdesc="A C library for decoding .smk Smacker Video files"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://libsmacker.sourceforge.net"
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=('glibc')
 source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver%.*}/${pkgname}-${pkgver}.tar.gz"
   "${pkgname}.pc"
