@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-anime-gold-vi
+	pkgdesc = AIMP skin: Anime Gold VI 1.0 (by AztekLORD)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-anime-gold-vi-441.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-anime-gold-vi-441.archive::https://aimp.ru/?do=catalog.download&id=441
+	sha256sums = 61a02bdecf72a4be07cf0129a8fc8382f75730ab048e2b03390e26da5d4c097c
+
+pkgname = aimp-skin-anime-gold-vi
