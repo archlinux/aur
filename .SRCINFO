@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-grayfield
+	pkgdesc = AIMP skin: Grayfield 1.0 (by Arthur «d1sapp3ar» Habirov)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-grayfield-413.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-grayfield-413.archive::https://aimp.ru/?do=catalog.download&id=413
+	sha256sums = a7b2227cf0c81587fd16eb3d0368dac910be5b1387b35dd6e6f6364df05bb31e
+
+pkgname = aimp-skin-grayfield
