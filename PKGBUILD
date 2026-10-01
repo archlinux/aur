@@ -13,7 +13,7 @@ depends=(
   libarchive
   libgcc
   libstdc++
-  lua
+  libtde
   qt6-base
   qt6-svg
 )
@@ -28,6 +28,8 @@ optdepends=(
   'gvfs-smb: Windows shares (gvfs itself covers SFTP, FTP and WebDAV)'
   'papers: PDF and comic book thumbnails'
   'ffmpegthumbnailer: video thumbnails'
+  'bubblewrap: running thumbnailers in a sandbox'
+  'librsvg: drawing icons that Qt draws with black patches'
   'qt6-imageformats: thumbnails for WebP, TIFF and other image formats'
   'adwaita-icon-theme: fallback for icons missing from the icon theme'
 )
