@@ -4,7 +4,7 @@
 pkgname='aimp-skin-aiwa-ad-m700'
 pkgdesc='AIMP skin: Aiwa AD-M700 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('67693f6f45f9f38e8d1aef982eda0f23cbe401bef598d9c9743ead42351932b9')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Aiwa AD-M700"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-aiwa-ad-m700-539.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
