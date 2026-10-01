@@ -4,7 +4,7 @@
 pkgname='aimp-skin-new-minimal-gray'
 pkgdesc='AIMP skin: New Minimal Gray 1.0 (by NikolavRj)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('80ca90e3d95f554f7d2fe1f7e68050f50fed18b4b3bd16d717147400d5807578')
 
 package() {
-  local dest="$pkgdir$_skinsdir/New Minimal Gray"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-new-minimal-gray-375.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
