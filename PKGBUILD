@@ -11,7 +11,7 @@
 _py='python'
 _pkg="blivet"
 pkgname="python-${_pkg}"
-pkgver=3.14.1
+pkgver=3.14.2
 _tag="${_pkg}-${pkgver}"
 pkgrel=1
 _pkgdesc=('A DBus service and python module'
@@ -54,7 +54,7 @@ url='https://fedoraproject.org/wiki/Blivet'
 _url="https://github.com/storaged-project/${_pkg}"
 source=(
   "${pkgname}-${pkgver}.tar.gz::${_url}/archive/${_pkg}-${pkgver}.tar.gz")
-sha512sums=('b9e00ba98e8e999c8cadc9397def5b94a16e2264848baa404605c3c2dc7cc6e99fb362b9ccd0617c2470bf56f149776546e4c34b81219e34aade316f0514e3f8')
+sha512sums=('f33cbee435d00d4f60b1ede07ae86f1456642ff910b9e64588c1ac8e0a2f7eae8764236b6c1b7e40455cbd2f79a5ed6f9ba2cd6cffc08bc1afe7e3de8084905a')
 
 # shellcheck disable=SC2154
 package() {
