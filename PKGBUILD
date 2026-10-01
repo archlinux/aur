@@ -4,7 +4,7 @@
 pkgname='aimp-skin-xenomorph'
 pkgdesc='AIMP skin: XenoMorph 1.0 (by Imperator3)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d7c3b706e60a4d802e021c2e6478c44985d48f03c6f34ea7cd052a6b270b4a6e')
 
 package() {
-  local dest="$pkgdir$_skinsdir/XenoMorph"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-xenomorph-13.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
