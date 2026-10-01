@@ -6,7 +6,7 @@
 # Contributor: Dobroslaw Kijowski
 
 pkgname=mitmproxy-git
-pkgver=12.2.2.r7.gab470e539
+pkgver=12.2.3.r89.gd9a72da7b
 pkgrel=1
 pkgdesc='SSL-capable man-in-the-middle HTTP proxy'
 arch=('any')
@@ -27,7 +27,7 @@ depends=(
   'python-hyperframe'
   'python-kaitaistruct'
   'python-ldap3'
-  'python-mitmproxy-rs-git'
+  'python-mitmproxy-rs'
   'python-msgpack'
   'python-publicsuffix2'
   'python-pyopenssl'
