@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-kubeba
+	pkgdesc = AIMP skin: Kubeba 1.1 (by GreenEyesMan)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-kubeba-916.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-kubeba-916.archive::https://aimp.ru/?do=catalog.download&id=916
+	sha256sums = e84d5bd8cfee2c10c7a0e8b2f6d154c29ef457c38b0af52a75e661d2743700cb
+
+pkgname = aimp-skin-kubeba
