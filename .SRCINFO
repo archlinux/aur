@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-color-mini
+	pkgdesc = AIMP skin: Color Mini 1.2 (by Prince)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-color-mini-106.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-color-mini-106.archive::https://aimp.ru/?do=catalog.download&id=106
+	sha256sums = b5d3e926f218d065932df28864f190be9eb905b89abf0219167137346d4d5ed5
+
+pkgname = aimp-skin-color-mini
