@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-green-meadow
 	pkgdesc = AIMP skin: Green meadow 1.0.5 (by VladShip)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

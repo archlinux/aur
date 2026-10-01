@@ -4,7 +4,7 @@
 pkgname='aimp-skin-green-meadow'
 pkgdesc='AIMP skin: Green meadow 1.0.5 (by VladShip)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('247def3e8e54a646780a22a1ab8ace38afce090752b4f05304701da3346342de')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Green meadow"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-green-meadow-891.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
