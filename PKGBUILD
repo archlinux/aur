@@ -3,7 +3,7 @@ pkgname=(ifcopenshell bonsaiviewer)
 _pkgver=0.9.0
 pkgver=${_pkgver//-/_}
 _vername=bonsai
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
 arch=('x86_64')
 url="https://ifcopenshell.org/"
@@ -56,6 +56,7 @@ source=(
   "004-zstd-shared-target.patch"
   "007-fix-pyradiance-chmod.patch"
   "008-bonsaiviewer-ribbon-toolbar.patch"
+  "009-bonsaiviewer-spatial-column-width.patch"
 )
 sha256sums=('7371c99a983e2f22fc716ffce34ec962ab68987fe66a158c0e2d3581554922d6'
             'SKIP'
@@ -65,7 +66,8 @@ sha256sums=('7371c99a983e2f22fc716ffce34ec962ab68987fe66a158c0e2d3581554922d6'
             'eed549dd22dabb63812948b8dd797361ccf37ab25ccf284e03f16ed2b500a268'
             '8b7d6a8364071d49674f029d371c23e2f9ba8366d467df384b7d98c665209b41'
             '32f28c4f31877a871ea1ce182e78e1e84e05030db2ab609b10dd9de48d34f7c7'
-            '3ae76ceca299f1d6f30eb87a636d92bc851cca1bf3a770baa6c074fa032a5a92')
+            '3ae76ceca299f1d6f30eb87a636d92bc851cca1bf3a770baa6c074fa032a5a92'
+            '21501e2ceec0a04968e488a1922b6cc681953c4668ea9dcb8b80313b2e792038')
 noextract=("wgpu-linux-x86_64-release.zip")
 options=("!lto")
 

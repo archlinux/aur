@@ -1,7 +1,7 @@
 pkgbase = ifcopenshell
 	pkgdesc = Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon.
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ifcopenshell.org/
 	arch = x86_64
 	license = LGPL-3.0-or-later
@@ -48,6 +48,7 @@ pkgbase = ifcopenshell
 	source = 004-zstd-shared-target.patch
 	source = 007-fix-pyradiance-chmod.patch
 	source = 008-bonsaiviewer-ribbon-toolbar.patch
+	source = 009-bonsaiviewer-spatial-column-width.patch
 	sha256sums = 7371c99a983e2f22fc716ffce34ec962ab68987fe66a158c0e2d3581554922d6
 	sha256sums = SKIP
 	sha256sums = c774454e31757796cf02078cc04d4f27b6180d718e1edab4148340879a6b64c5
@@ -57,6 +58,7 @@ pkgbase = ifcopenshell
 	sha256sums = 8b7d6a8364071d49674f029d371c23e2f9ba8366d467df384b7d98c665209b41
 	sha256sums = 32f28c4f31877a871ea1ce182e78e1e84e05030db2ab609b10dd9de48d34f7c7
 	sha256sums = 3ae76ceca299f1d6f30eb87a636d92bc851cca1bf3a770baa6c074fa032a5a92
+	sha256sums = 21501e2ceec0a04968e488a1922b6cc681953c4668ea9dcb8b80313b2e792038
 
 pkgname = ifcopenshell
 	pkgdesc = Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon.
