@@ -4,7 +4,7 @@
 pkgname='aimp-skin-oxyfoxy-s-aimp-skin'
 pkgdesc='AIMP skin: Oxyfoxy'\''s AIMP skin 1.2 (by Oxyfoxy)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('0291b67662653e5d150a1be09280da28e3634f53a3c7729f77772ee2fc5225a1')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Oxyfoxy's AIMP skin"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-oxyfoxy-s-aimp-skin-249.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
