@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-derbolt
+	pkgdesc = AIMP skin: DerBolt 1.0 (by Grin)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-derbolt-468.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-derbolt-468.archive::https://aimp.ru/?do=catalog.download&id=468
+	sha256sums = d7a3b049bd33376ee0d9d4833bdf06b81e3a4b813dda1f2960ca9cc275243fc4
+
+pkgname = aimp-skin-derbolt
