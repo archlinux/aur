@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Orchard
+GenericName=Music Client
+Comment=Power-user desktop client for YouTube Music
+Exec=/usr/bin/orchard %U
+Icon=dev.sfg.orchard
+Terminal=false
+Categories=AudioVideo;Audio;Music;Player;
+Keywords=music;youtube;player;equalizer;crossfade;
+StartupWMClass=dev.sfg.orchard
