@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-big-bento
+	pkgdesc = AIMP skin: Big Bento 1.0 (by Pro.Grammer)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-big-bento-1.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-big-bento-1.archive::https://aimp.ru/?do=catalog.download&id=1
+	sha256sums = 0e8ad3cfaf0f7c8427586bef658d65e384d6c2c28d41cc170f400a3b29fc477c
+
+pkgname = aimp-skin-big-bento
