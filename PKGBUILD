@@ -1,12 +1,12 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=blogr-bin
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Write, edit and publish your blog without leaving the terminal'
 arch=('x86_64')
 url='https://github.com/bahdotsh/blogr'
 license=('MIT')
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'libgcc')
 provides=('blogr')
 conflicts=('blogr')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/blogr-linux-x86_64.tar.gz")
