@@ -4,7 +4,7 @@
 pkgname='aimp-skin-realplayer-sp-plus-series'
 pkgdesc='AIMP skin: RealPlayer SP Plus Series 2.7 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('8956a6d117ebada1a15bdc5b78d140fbfa47a876d0add72fa387a032c41c6880')
 
 package() {
-  local dest="$pkgdir$_skinsdir/RealPlayer SP Plus Series"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-realplayer-sp-plus-series-1102.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
