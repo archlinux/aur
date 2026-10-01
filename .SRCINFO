@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-xcrystall
+	pkgdesc = AIMP skin: XCrystall 1.0 (by San4o)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-xcrystall-130.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-xcrystall-130.archive::https://aimp.ru/?do=catalog.download&id=130
+	sha256sums = dc45bc3f701513bd3dd1580ce56ccc1741307df32bee313179c1e4b73ebfab49
+
+pkgname = aimp-skin-xcrystall
