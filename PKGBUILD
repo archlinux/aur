@@ -4,7 +4,7 @@ pkgname=ndpi
 pkgver=6.0 # renovate: datasource=github-tags depName=ntop/nDPI
 pkgrel=1
 pkgdesc="Open and Extensible Deep Packet Inspection Library"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.ntop.org/products/ndpi/"
 license=('LGPL-3.0-or-later')
 conflicts=('ndpi-svn')
