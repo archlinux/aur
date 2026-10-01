@@ -1,7 +1,7 @@
 # Maintainer: rafaeloledo <rafaeloliveiraledo@gmail.com>
 
 pkgname=auto-subs-bin
-pkgver=3.10.1
+pkgver=3.11.0
 pkgrel=1
 pkgdesc="On-device subtitle generation for DaVinci Resolve, Premiere, and After Effects"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
   'davinci-resolve: Fusion script integration'
 )
 source=("https://github.com/tmoroney/auto-subs/releases/download/v${pkgver}/AutoSubs-linux-x86_64.deb")
-sha256sums=('77c3cd34646b4800319e60d532abbf0c0159644f6e3c398c61e84531763ab3fe')
+sha256sums=('372135c9169f36af23f67588f841d447a35d1f354c5fdc915ba818d9a867d9f4')
 
 package() {
   cd "$srcdir"
