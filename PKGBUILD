@@ -4,7 +4,7 @@
 pkgname='aimp-skin-wooden-light'
 pkgdesc='AIMP skin: Wooden Light 1.0 (by FreeZeek)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('7b487a89c61049fe93661e282b482295e18b6464566c69eddc115f8c77deb224')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Wooden Light"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-wooden-light-272.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
