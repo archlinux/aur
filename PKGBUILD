@@ -4,7 +4,7 @@
 pkgname='aimp-skin-t-black-nrj-mod-sereg'
 pkgdesc='AIMP skin: T-Black NRJ MOD SeReG@ 1.0 (by SeReG@)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('ec4449061ff41c7390392b11eeee6002aa86448305ea17365c9a3d160f485b9f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/T-Black NRJ MOD SeReG@"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-t-black-nrj-mod-sereg-314.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
