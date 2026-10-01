@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-prestige
+	pkgdesc = AIMP skin: Prestige 1.0 (by Hawk)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-prestige-366.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-prestige-366.archive::https://aimp.ru/?do=catalog.download&id=366
+	sha256sums = 886512f79427f1d9a8f3c535a3939171da75b46b7b3583e0e5270a5dd422bf25
+
+pkgname = aimp-skin-prestige
