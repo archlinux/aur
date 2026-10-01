@@ -4,7 +4,7 @@
 pkgname='aimp-skin-euphoria-lux-compact'
 pkgdesc='AIMP skin: Euphoria Lux Compact 3.1.1 (by Чувак)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('956a5b435f656ee2655413df719ddda1e335d73fb25fe4059b6ac12832ffdff7')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Euphoria Lux Compact"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-euphoria-lux-compact-716.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
