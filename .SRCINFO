@@ -1,0 +1,18 @@
+pkgbase = dan
+	pkgdesc = Fast, modern, and intuitive terminal editor with a rope-based buffer
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/dfallman/dan
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	provides = dan
+	options = !lto
+	options = !strip
+	source = dan-0.4.0.tgz::https://github.com/dfallman/dan/archive/0.4.0.tar.gz
+	sha256sums = f028d5d3151f652ac6f0438af51ebe25a0509fff7f956cc0b6b8454d17db3ab1
+
+pkgname = dan
