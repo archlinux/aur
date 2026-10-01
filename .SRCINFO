@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-lotex-white
+	pkgdesc = AIMP skin: Lotex White 1.0 (by amdpastrana)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-lotex-white-722.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-lotex-white-722.archive::https://aimp.ru/?do=catalog.download&id=722
+	sha256sums = c424ffaaff97ef6cb584bebfa6af0033fb56e465a75e35f39ed54f2c75ca9b70
+
+pkgname = aimp-skin-lotex-white
