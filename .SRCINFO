@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-gom-audio-skin
+	pkgdesc = AIMP skin: GOM Audio Skin 1.41 (by FKF5482)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-gom-audio-skin-1158.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-gom-audio-skin-1158.archive::https://aimp.ru/?do=catalog.download&id=1158
+	sha256sums = 64cb5262093caebfed79367290d970565f06a28f5472711365664542a22091c4
+
+pkgname = aimp-skin-gom-audio-skin
