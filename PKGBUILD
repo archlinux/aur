@@ -3,7 +3,7 @@
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 
 pkgname=mock
-pkgver=6.8
+pkgver=6.9
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -32,7 +32,7 @@ backup=('etc/mock/logging.ini'
 source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('117006ef574ee7c9b5235fc8fa5c3cf2f5a8b4d2f6931222b9d2ad048fe865d5'
+sha256sums=('3c034916a721bb06b923399c856d5111fbf3d791804934dd6d909e3d292e4d88'
             'f6cba3f7e7f35c3d811f548af9ff2044764b6b65eb9bd74f035904c0c8463651'
             'a32ef4b3a19490280d3e8fcdebe9dd3348636a97e214850ce6cfc6bffa56a5d3')
 
