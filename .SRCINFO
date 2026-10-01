@@ -3,9 +3,8 @@ pkgbase = ocaml-lo
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/savonet/ocaml-lo
-	arch = i686
 	arch = x86_64
-	license = custom:LGPL2.1 with linking exception
+	license = LicenseRef-LGPL2.1-with-linking-exception
 	makedepends = dune
 	makedepends = ocaml-findlib
 	depends = ocaml
@@ -15,4 +14,3 @@ pkgbase = ocaml-lo
 	sha256sums = c8e11170e0f44ba096be0f19e7e78827f2fbb9cdb030fa0fdb88bc24bb9e1051
 
 pkgname = ocaml-lo
-

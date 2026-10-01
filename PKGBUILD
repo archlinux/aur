@@ -2,12 +2,12 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-lo
-pkgver=0.2.0
+pkgver=0.2.0 # renovate: datasource=github-tags depName=savonet/ocaml-lo
 pkgrel=1
 pkgdesc="OCaml bindings for LO library"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/savonet/ocaml-lo"
-license=('custom:LGPL2.1 with linking exception')
+license=('LicenseRef-LGPL2.1-with-linking-exception')
 depends=('ocaml' 'liblo')
 makedepends=('dune' 'ocaml-findlib')
 options=('!strip')
