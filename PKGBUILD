@@ -4,7 +4,7 @@
 pkgname='aimp-skin-becha-205-1'
 pkgdesc='AIMP skin: BECHA-205-1 1.26 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('6e1bfb621c7c050a4c1c6b70ef24ee966f4f1cdcffaffb53d6c72a68fa5a3353')
 
 package() {
-  local dest="$pkgdir$_skinsdir/BECHA-205-1"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-becha-205-1-1179.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
