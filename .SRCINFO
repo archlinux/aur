@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-kantaris
+	pkgdesc = AIMP skin: Kantaris 2.67 (by memo-se)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-kantaris-530.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-kantaris-530.archive::https://aimp.ru/?do=catalog.download&id=530
+	sha256sums = f224f43e5d5b57194ef9300a4532b15b6c6455543915bac5e75af2908542795b
+
+pkgname = aimp-skin-kantaris
