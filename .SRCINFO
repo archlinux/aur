@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-aurora
+	pkgdesc = AIMP skin: Aurora 1.0 (by NikolavRj)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-aurora-325.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-aurora-325.archive::https://aimp.ru/?do=catalog.download&id=325
+	sha256sums = ed09983dc7544aa76a84ca5acf77ccdb4f2f1bf941ad51aa073d1f920fae794f
+
+pkgname = aimp-skin-aurora
