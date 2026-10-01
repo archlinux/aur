@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-ayonplayer
+	pkgdesc = AIMP skin: AyonPlayer 1.0.5 (by Virys90)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-ayonplayer-164.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-ayonplayer-164.archive::https://aimp.ru/?do=catalog.download&id=164
+	sha256sums = f9300dc07f33cce7964bdfe0379c6a7d4cab5f5ca39fbda3207ece31a6fa6d62
+
+pkgname = aimp-skin-ayonplayer
