@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-marantz-5030
+	pkgdesc = AIMP skin: Marantz 5030 1.61 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-marantz-5030-563.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-marantz-5030-563.archive::https://aimp.ru/?do=catalog.download&id=563
+	sha256sums = ba2020ad57bcb14619a8fede2cb76500e0e8e188873444693fdca5b165fc2cd4
+
+pkgname = aimp-skin-marantz-5030
