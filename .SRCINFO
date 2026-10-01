@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-vilma-m-212c
+	pkgdesc = AIMP skin: Vilma M-212C 1.33 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-vilma-m-212c-1189.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-vilma-m-212c-1189.archive::https://aimp.ru/?do=catalog.download&id=1189
+	sha256sums = 54b284c2e1787dccbc3c4fe3a74bd1ade9372a39f3f00615a641ef91298e75ac
+
+pkgname = aimp-skin-vilma-m-212c
