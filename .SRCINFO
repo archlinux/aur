@@ -1,6 +1,6 @@
 pkgbase = mmsimpulse-git
 	pkgdesc = A Wayland session of KWin plus the illogical-impulse shell — no desktop environment
-	pkgver = r125.d28db2b
+	pkgver = r126.5e54f9e
 	pkgrel = 1
 	url = https://github.com/mahirsn/mmsimpulse
 	arch = any
@@ -22,6 +22,7 @@ pkgbase = mmsimpulse-git
 	depends = wl-clip-persist
 	depends = libnotify
 	depends = spectacle
+	depends = qt6-websockets
 	optdepends = powerdevil: idle timeouts, DPMS, suspend and brightness
 	optdepends = upower: battery status
 	optdepends = kdeplasma-addons: task switcher layouts, without which Alt+Tab draws nothing

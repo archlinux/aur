@@ -1,6 +1,6 @@
 # Maintainer: mahirsn <mahirsuna72@gmail.com>
 pkgname=mmsimpulse-git
-pkgver=r125.d28db2b
+pkgver=r126.5e54f9e
 pkgrel=1
 pkgdesc="A Wayland session of KWin plus the illogical-impulse shell — no desktop environment"
 arch=('any')
@@ -15,9 +15,12 @@ license=('GPL-3.0-or-later')
 # crops nothing, copies nothing and reports nothing, which looks like a broken
 # feature rather than a missing package. spectacle is there because stock KWin
 # only lets callers with a declared desktop entry use its screenshot service.
+# qt6-websockets is a QML module the overlay loads: without it the whole
+# overlay fails to load, not just the OBS widget that talks to OBS through it.
 depends=('kwin' 'kglobalacceld' 'quickshell' 'xdg-desktop-portal-kde'
          'python' 'python-dbus' 'python-gobject' 'rsync' 'git' 'jq' 'systemd'
-         'imagemagick' 'wl-clipboard' 'wl-clip-persist' 'libnotify' 'spectacle')
+         'imagemagick' 'wl-clipboard' 'wl-clip-persist' 'libnotify' 'spectacle'
+         'qt6-websockets')
 optdepends=(
   'powerdevil: idle timeouts, DPMS, suspend and brightness'
   'upower: battery status'
