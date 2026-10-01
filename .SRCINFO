@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-hm-fullhd
+	pkgdesc = AIMP skin: hm_fullHD 1.0 (by flon)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-hm-fullhd-386.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-hm-fullhd-386.archive::https://aimp.ru/?do=catalog.download&id=386
+	sha256sums = 71905628eb569b2a147c79249df2e57a9f7f5030aa690c9ee540110915b1cfab
+
+pkgname = aimp-skin-hm-fullhd
