@@ -2,7 +2,7 @@
 _pkgname=vacask
 pkgname="${_pkgname}-git"
 pkgver=0.3.4.r98.g5abdba1
-pkgrel=1
+pkgrel=2
 pkgdesc="Verilog-A Circuit Analysis Kernel is an analog circuit simulator"
 arch=(
     'x86_64'
