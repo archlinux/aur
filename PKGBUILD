@@ -4,7 +4,7 @@
 pkgname='aimp-skin-xcrystall'
 pkgdesc='AIMP skin: XCrystall 1.0 (by San4o)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('dc45bc3f701513bd3dd1580ce56ccc1741307df32bee313179c1e4b73ebfab49')
 
 package() {
-  local dest="$pkgdir$_skinsdir/XCrystall"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-xcrystall-130.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
