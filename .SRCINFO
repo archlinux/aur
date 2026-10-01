@@ -1,0 +1,15 @@
+pkgbase = godoist
+	pkgdesc = Todoist TUI and CLI for the terminal
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/biomassa/godoist
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	provides = godoist
+	options = !strip
+	source = godoist-0.5.0.tgz::https://github.com/biomassa/godoist/archive/v0.5.0.tar.gz
+	sha256sums = dc8c4d11f85d1d7c1b792c7ba829fb00bc83517092171b577dab6e7463fc7719
+
+pkgname = godoist
