@@ -10,8 +10,8 @@ zip -r $PAKFILE ./ -x "*.svn*"
 mv $PAKFILE ../
 
 echo "Creating bin.pk3"
-	cd ../../build/release-linux*
-	cd coopmain/
-        zip -r bin.pk3 *.so
-        mv bin.pk3 ../../../media/
+cd ../../build/release-linux*
+cd coopmain/
+zip -r bin.pk3 *.so
+mv bin.pk3 ../../../media/
 
