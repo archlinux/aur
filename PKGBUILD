@@ -4,7 +4,7 @@
 pkgname='aimp-skin-lotex-white'
 pkgdesc='AIMP skin: Lotex White 1.0 (by amdpastrana)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c424ffaaff97ef6cb584bebfa6af0033fb56e465a75e35f39ed54f2c75ca9b70')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Lotex White"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-lotex-white-722.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
