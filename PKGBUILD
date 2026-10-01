@@ -1,7 +1,7 @@
 # Maintainer: Eduardo Parra Mazuecos <eduparra90@gmail.com>
 pkgname=vega-cli-bin
 _pkgname=vega
-pkgver=1.3.4
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Amazon Vega CLI (KeplerVersionManager) — installs and manages the Vega SDK in \$HOME/vega"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
 provides=('vega' 'kepler' 'vvman')
 conflicts=('vega' 'kepler' 'vvman')
 options=(!strip !debug)
-_sha256="2fa7c110b21e71254dba2b5b8da6e5c2fcc8637bc20ccbc14f6175fa2c6f7285"
+_sha256=2789ad833bff8395c796d203d805309ea2d27cf26a3d6c1141a5dc6a403aba8a
 source=("vega-${pkgver}-linux-x86_64.tar.gz::https://kepler-static-artifacts.kepler.labcollab.net/${_sha256:0:2}/${_sha256}")
 sha256sums=("${_sha256}")
 install="${pkgname}.install"
