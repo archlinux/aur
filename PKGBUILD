@@ -4,7 +4,7 @@
 pkgname='aimp-skin-yellow'
 pkgdesc='AIMP skin: Yellow 1.0 (by k.egor)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('ad7e9ca5f33fb614464b7c3cb8e020a80931837cd82ebe458544b92dc5b36e74')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Yellow"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-yellow-16.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
