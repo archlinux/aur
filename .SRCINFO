@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-liada
+	pkgdesc = AIMP skin: Liada 1.3 (by Aleksandr009)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-liada-737.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-liada-737.archive::https://aimp.ru/?do=catalog.download&id=737
+	sha256sums = 5c5c0722e12ca43ec07bf9aa72949d74bccab7b493e001993ac0d1a6457e0896
+
+pkgname = aimp-skin-liada
