@@ -4,7 +4,7 @@
 pkgname='aimp-skin-saturn'
 pkgdesc='AIMP skin: Saturn 1.0 (by creative5)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('606bac68357d426a8575152fffea721902b45398d623e1c10c87af0f7c289404')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Saturn"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-saturn-336.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
