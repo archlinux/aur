@@ -4,7 +4,7 @@
 pkgname='aimp-skin-pure'
 pkgdesc='AIMP skin: Pure 3.02 (by Mery Dev)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('ea0e4fb182be5152dc0e258860f256bb883ce707a35f9ae4b5d693b310918e8e')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Pure"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-pure-160.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
