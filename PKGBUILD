@@ -4,7 +4,7 @@
 pkgname='aimp-skin-ace-of-hz'
 pkgdesc='AIMP skin: Ace of Hz 1.1 (by electro)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('815de0119e1f17b0047ad66c95a6394c746e164386db4ef0308073941b895f2b')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Ace of Hz"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-ace-of-hz-676.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
