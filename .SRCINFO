@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-windows-media-player-11-beta
+	pkgdesc = AIMP skin: Windows Media Player 11 Beta 2 (by memo-se)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-windows-media-player-11-beta-1068.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-windows-media-player-11-beta-1068.archive::https://aimp.ru/?do=catalog.download&id=1068
+	sha256sums = e0b01f58c4999564b321ee92ebdde6743dd0fe3d2ea80bf098108e05f713da96
+
+pkgname = aimp-skin-windows-media-player-11-beta
