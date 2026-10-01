@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-groovem2
+	pkgdesc = AIMP skin: GrooveM2 1.0 (by amdpastrana)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-groovem2-875.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-groovem2-875.archive::https://aimp.ru/?do=catalog.download&id=875
+	sha256sums = 3e75767b6d2c13e826e69a0ba55b295f030df829e4f371f57ac641ce6010d895
+
+pkgname = aimp-skin-groovem2
