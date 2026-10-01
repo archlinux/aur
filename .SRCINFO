@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-mnxa
+	pkgdesc = AIMP skin: MNXA 1.03 (by samix)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-mnxa-808.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-mnxa-808.archive::https://aimp.ru/?do=catalog.download&id=808
+	sha256sums = 707314bc3f2ba73a0670002eef7f9a010df2b85daa1b3299e3b096652748bca1
+
+pkgname = aimp-skin-mnxa
