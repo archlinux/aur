@@ -1,11 +1,7 @@
 # Maintainer: gnoooo
 
 pkgname=typst-ide
-<<<<<<< Updated upstream
-pkgver=1.6.9
-=======
 pkgver=1.6.13
->>>>>>> Stashed changes
 pkgrel=1
 pkgdesc="A modern IDE for Typst"
 arch=('x86_64')
