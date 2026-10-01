@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-eve-in-red
+	pkgdesc = AIMP skin: Eve in Red 1.2 (by smokerrr86)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-eve-in-red-340.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-eve-in-red-340.archive::https://aimp.ru/?do=catalog.download&id=340
+	sha256sums = e91d3e3e16e3e5cb95101de852fa3a499c2667db44ad7bb93db3bfc076a179ae
+
+pkgname = aimp-skin-eve-in-red
