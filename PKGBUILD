@@ -1,7 +1,7 @@
 # Maintainer: Liviu Nicoara <lnicoara at thinkoid dot org>
 
 pkgname=edgcpp-git
-pkgver=r62398.158320e
+pkgver=r62399.ca5890b
 pkgrel=1
 pkgdesc="The EDG C/C++ front end with its C-generating back end (eccp), prelinker and runtime"
 arch=('x86_64')
@@ -60,6 +60,34 @@ build() {
     cmake --preset linux-gcc-release -DEDG_CPP_RT_LIBS= \
           -DCMAKE_BUILD_TYPE=None -DEDG_PREFERRED_LINKER=bfd
     cmake --build build/gcc-release
+    _strict_facts >> "$srcdir/base/lib/predefined_macros.txt"
+}
+
+# Target facts for strict mode (-A), which excludes GNU emulation and so
+# every gnu/gcc/gpp entry: the macros the resident gcc predefines that its
+# freestanding headers (float.h, limits.h, stddef.h, ...) read, less those
+# eccp already defines in strict mode, less __STDC_* (the front end's own,
+# per dialect). Values are gcc's C spellings, valid C++ too.
+_strict_facts() {
+    local inc t
+    inc=$(gcc -print-file-name=include)
+    t=$(mktemp -d)
+    gcc -dM -E -x c /dev/null | sort > "$t/gcc"
+    awk '{ print $2 }' "$t/gcc" | sort -u > "$t/gcc-names"
+    grep -ohE '\b__[A-Za-z0-9_]+__\b' "$inc"/{float,limits,syslimits}.h \
+        "$inc"/{stddef,stdarg,iso646,stdbool,stdint}.h |
+        sort -u > "$t/hdr-names"
+    echo 'int x;' > "$t/e.cpp"
+    env -u EDG_USE_SYSTEM_HEADERS \
+        build/gcc-release/bin/eccp -A --list_macros -E "$t/e.cpp" 2>&1 |
+        awk '/#define/ { print $2 }' | sort -u > "$t/have"
+    echo
+    echo "# strict: target facts the resident gcc's freestanding headers read"
+    comm -12 "$t/gcc-names" "$t/hdr-names" | comm -23 - "$t/have" |
+        grep -v '^__STDC_' |
+        while read -r n; do grep "^#define $n " "$t/gcc"; done |
+        sed 's/^#define /strict no /'
+    rm -rf "$t"
 }
 
 check() {
@@ -69,6 +97,7 @@ check() {
     export EDG_BASE="$srcdir/base"
     unset EDG_USE_SYSTEM_HEADERS
     cat > "$srcdir/smoke.cpp" <<'SMOKE'
+#include <float.h>
 #include <stdio.h>
 #include <typeinfo>
 struct B { virtual ~B () { } virtual int f () const = 0; };
@@ -84,7 +113,7 @@ int main ()
         throw twice (b.f ());
     }
     catch (int n) {
-        return printf ("%d\n", n) < 0 || 42 != n;
+        return printf ("%d %d\n", n, DBL_DIG) < 0 || 42 != n;
     }
 }
 SMOKE
