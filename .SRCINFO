@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-crysis-2-nanosuite
+	pkgdesc = AIMP skin: Crysis 2 Nanosuite 2.0 (by sagitt.67)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-crysis-2-nanosuite-801.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-crysis-2-nanosuite-801.archive::https://aimp.ru/?do=catalog.download&id=801
+	sha256sums = dd839560660ec501d6dfca7d28f5484326e93381f6bf84ee36a35a9e1855a64a
+
+pkgname = aimp-skin-crysis-2-nanosuite
