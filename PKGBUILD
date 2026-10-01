@@ -4,7 +4,7 @@
 pkgname='aimp-skin-akai-gx-77-black'
 pkgdesc='AIMP skin: Akai GX-77 Black 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('8fbdb3e77ac7b00b1a1c877a7c432c00e6a9f309be322793f22a38283f6eb583')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Akai GX-77 Black"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-akai-gx-77-black-488.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
