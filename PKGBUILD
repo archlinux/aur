@@ -2,7 +2,7 @@
 # Maintainer: Saurabh Johri <saurabhxj@gmail.com>
 
 pkgname='sshush-bin'
-pkgver=0.10.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Interactive TUI for SSH keys, the agent, and ~/.ssh/config'
 url='https://github.com/s-johri/sshush'
@@ -12,10 +12,10 @@ provides=('sshush')
 conflicts=('sshush')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/s-johri/sshush/releases/download/v${pkgver}/sshush_linux_arm64.tar.gz")
-sha256sums_aarch64=('ebdeaaa46a6bc03b0525706510a79fdb4947c19515a9348d63edc8328ae26063')
+sha256sums_aarch64=('2c1e9c0f2e4c328efdaf9f1e94432a97b3e2f36d5271315a9cfb69b42d89644d')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/s-johri/sshush/releases/download/v${pkgver}/sshush_linux_amd64.tar.gz")
-sha256sums_x86_64=('a3764520848504a031e1dca4ef903513039270345e39780e35eb393cbec38547')
+sha256sums_x86_64=('f319ab91381067d07c2cd40b3ccd93dbb67419807c706433e9b71aeee754f00b')
 
 package() {
   install -Dm755 "./sshush" "${pkgdir}/usr/bin/sshush"
