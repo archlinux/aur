@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-mac-os-style-mod
 	pkgdesc = AIMP skin: Mac OS Style Mod 1.0 (by sagitt.67)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
