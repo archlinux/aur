@@ -4,7 +4,7 @@
 pkgname='aimp-skin-wooden-metal'
 pkgdesc='AIMP skin: Wooden Metal 1.0 (by FreeZeek)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('9707c5e9d16368a0365f455ef5af8c29e7fdf54029e8ffcf64c5e0a2485b07b2')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Wooden Metal"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-wooden-metal-273.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
