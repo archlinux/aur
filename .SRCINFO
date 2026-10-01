@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-step
+	pkgdesc = AIMP skin: Step 1.0 (by -=Lee=-)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-step-625.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-step-625.archive::https://aimp.ru/?do=catalog.download&id=625
+	sha256sums = f856b38ef3b0350ebc3a0e1b672d742e9ee67c91ba2438b1c1dad45fa9303ac3
+
+pkgname = aimp-skin-step
