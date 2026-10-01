@@ -4,7 +4,7 @@
 pkgname='aimp-skin-romantik-201'
 pkgdesc='AIMP skin: Romantik-201 1.02 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('902db62159003e6b7ba66299c207c99ec921cfaa64aee5ec28f943d962550dbb')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Romantik-201"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-romantik-201-1296.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
