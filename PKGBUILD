@@ -4,7 +4,7 @@
 pkgname='aimp-skin-cyberwave'
 pkgdesc='AIMP skin: Cyberwave 1.0 (by umbrella-cakey)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('418e3dd95aee25d096b1fdfbd1e3e998248cb26901c38a8149c7e6deae6e36cc')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Cyberwave"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-cyberwave-1228.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
