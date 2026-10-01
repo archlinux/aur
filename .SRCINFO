@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-black-stilismo-v
+	pkgdesc = AIMP skin: Black Stilismo V 1.0 (by San4o)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-black-stilismo-v-2.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-black-stilismo-v-2.archive::https://aimp.ru/?do=catalog.download&id=2
+	sha256sums = 9fcd0aa8e08f063709d79025a423549ff69de2ae7d1c4c48fe04a1d4e4e60a66
+
+pkgname = aimp-skin-black-stilismo-v
