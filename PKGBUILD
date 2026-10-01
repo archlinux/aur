@@ -4,7 +4,7 @@
 pkgname='aimp-skin-vega-mp-120'
 pkgdesc='AIMP skin: Vega MP-120 1.61 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('7a7e6dd83c1b23926b48cf10b02960a01e43e873cd77cdd2891228e485b4483b')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Vega MP-120"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-vega-mp-120-573.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
