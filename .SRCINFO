@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-trident-4
+	pkgdesc = AIMP skin: Trident 4 1.0 (by drunkentigerijk)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-trident-4-634.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-trident-4-634.archive::https://aimp.ru/?do=catalog.download&id=634
+	sha256sums = 0fada828bdc1ec121bd282aefaff16209971b9d662e8d27dfc637e722cf62a48
+
+pkgname = aimp-skin-trident-4
