@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-style-x
+	pkgdesc = AIMP skin: Style X 1.0 (by amdpastrana)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-style-x-789.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-style-x-789.archive::https://aimp.ru/?do=catalog.download&id=789
+	sha256sums = 7e7a95e07d4b9964f503c25796e4fb2661cfcfcf6d1f1ad3cb9cba61ca08742b
+
+pkgname = aimp-skin-style-x
