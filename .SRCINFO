@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-replete
+	pkgdesc = AIMP skin: Replete 2.11 (by alexxei_ill)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-replete-467.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-replete-467.archive::https://aimp.ru/?do=catalog.download&id=467
+	sha256sums = 8829b7e25e983adf21cc8125065edccb6ca64e57831fa9194aafa80a40edf9bd
+
+pkgname = aimp-skin-replete
