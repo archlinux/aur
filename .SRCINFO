@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-splash
+	pkgdesc = AIMP skin: Splash 2 (by Мишуа)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-splash-373.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-splash-373.archive::https://aimp.ru/?do=catalog.download&id=373
+	sha256sums = 399476270f7e90774b81b6b0198722fdf4e974adb94ce0c26c48e7c649bd41df
+
+pkgname = aimp-skin-splash
