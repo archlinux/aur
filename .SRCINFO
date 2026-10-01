@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-kmplayer-pure-remix
+	pkgdesc = AIMP skin: KMPlayer Pure Remix 6.03 (by ProGroup)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-kmplayer-pure-remix-147.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-kmplayer-pure-remix-147.archive::https://aimp.ru/?do=catalog.download&id=147
+	sha256sums = 724dcfe94849e98eff88b4bba9a5a0cd5907cc7af7e564a22a47cf3e6666f6f2
+
+pkgname = aimp-skin-kmplayer-pure-remix
