@@ -4,7 +4,7 @@
 pkgname='aimp-skin-cln-white'
 pkgdesc='AIMP skin: CLN White 1.0 (by Alekz)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('5b2ecab50ac4a37c9ef343d9ea1440556bf503fb6a0e9819ad82e6d998f174a4')
 
 package() {
-  local dest="$pkgdir$_skinsdir/CLN White"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-cln-white-330.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
