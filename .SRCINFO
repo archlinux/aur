@@ -1,6 +1,6 @@
 pkgbase = lfff
 	pkgdesc = Free, open-source firmware flasher for Android A/B devices — CLI + GUI
-	pkgver = 2.9.0
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://github.com/mrFrok/LibreFastbootFirmwareFlasher
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = lfff
 	provides = lfff-gui
 	conflicts = lfff-bin
 	conflicts = lfff-gui-bin
-	source = lfff-2.9.0.tar.gz::https://github.com/mrFrok/LibreFastbootFirmwareFlasher/archive/refs/tags/v2.9.0.tar.gz
+	source = lfff-2.9.1.tar.gz::https://github.com/mrFrok/LibreFastbootFirmwareFlasher/archive/refs/tags/v2.9.1.tar.gz
 	source = lfff-gui.desktop::https://raw.githubusercontent.com/mrFrok/LibreFastbootFirmwareFlasher/main/lfff-gui.desktop
 	source = lfff-gui.svg::https://raw.githubusercontent.com/mrFrok/LibreFastbootFirmwareFlasher/main/lfff-gui.svg
-	sha256sums = 49e21ab32173b32d8756b20292ab6ad12910a98bab884530dd47c2a780620eb4
+	sha256sums = 6557ac024b1d3e68c4f26c5d4c490363cf902a60c3a2481b63511b874073e097
 	sha256sums = SKIP
 	sha256sums = SKIP
 
