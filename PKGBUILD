@@ -5,15 +5,15 @@ pkgver=0.29
 pkgrel=3
 pkgdesc='Handle X.500 DNs (Distinguished Names), parse and format them'
 arch=(any)
-license=(PerlArtistic GPL)
+license=('PerlArtistic' 'GPL-2.0-or-later')
 options=(!emptydirs)
 depends=(perl perl-parse-recdescent)
-url=http://search.cpan.org/~rjoop/X500-DN-0.29/
-source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJOOP/X500-DN-$pkgver.tar.gz")
+url=https://search.cpan.org/~rjoop/X500-DN-0.29/
+source=("https://search.cpan.org/CPAN/authors/id/R/RJ/RJOOP/X500-DN-$pkgver.tar.gz")
 
 build() (
-  cd ${srcdir}
-  cd X500-DN-$pkgver
+  cd "${srcdir}"
+  cd "X500-DN-$pkgver"
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   unset PERL5LIB PERL_MM_OPT
   /usr/bin/perl Makefile.PL
@@ -21,16 +21,16 @@ build() (
 )
 
 check() (
-  cd ${srcdir}
-  cd X500-DN-$pkgver
+  cd "${srcdir}"
+  cd "X500-DN-$pkgver"
   export PERL_MM_USE_DEFAULT=1
   unset PERL5LIB
   make test
 )
 
 package() (
-  cd ${srcdir}
-  cd X500-DN-$pkgver
+  cd "${srcdir}"
+  cd "X500-DN-$pkgver"
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 )
 
