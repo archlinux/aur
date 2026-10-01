@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-black-ii
+	pkgdesc = AIMP skin: Black II 1.0 (by Nitehost)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-black-ii-171.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-black-ii-171.archive::https://aimp.ru/?do=catalog.download&id=171
+	sha256sums = 494cb34bb3f6646090354a1003819701dd33280894e4919b3f06bcd16eda0484
+
+pkgname = aimp-skin-black-ii
