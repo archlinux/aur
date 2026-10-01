@@ -68,7 +68,6 @@ execute_script() {
 
     if [ "$interactive" = "true" ]; then
         echo ""
-        echo -e "${DIM}-------------------------------------------------------${NC}"
         read -rp "Press [Enter] to return to menu..."
     fi
 
@@ -78,7 +77,7 @@ execute_script() {
 menu_optimization() {
     while true; do
         show_banner
-        echo -e "${YELLOW}${BOLD}=== System Optimization ===${NC}"
+        echo -e "${YELLOW}${BOLD}System Optimization${NC}"
         echo -e "  ${GREEN}1)${NC} Full Supertune ${DIM}(Network, VM & CPU low-latency tuning)${NC} ${RED}[root]${NC}"
         echo -e "  ${GREEN}2)${NC} TCP & BBR Tune ${DIM}(Network buffer & congestion tuning)${NC} ${RED}[root]${NC}"
         echo -e "  ${GREEN}3)${NC} Install SCX Schedulers & Loader ${DIM}(sched_ext)${NC} ${RED}[root]${NC}"
@@ -86,9 +85,10 @@ menu_optimization() {
         echo -e "  ${GREEN}5)${NC} Setup 2MB Hugepages ${DIM}(JVM/Minecraft optimization)${NC} ${RED}[root]${NC}"
         echo -e "  ${GREEN}6)${NC} Install Psycachy Kernel ${DIM}(Debian/Ubuntu only)${NC} ${RED}[root]${NC}"
         echo -e "  ${GREEN}7)${NC} Undo Supertune ${DIM}(revert tuning to system defaults)${NC} ${RED}[root]${NC}"
+        echo -e "  ${GREEN}8)${NC} ZRAM & Memory Optimizer ${DIM}(ZSTD compressed swap & MGLRU)${NC} ${RED}[root]${NC}"
         echo -e "  ${BLUE}0)${NC} Back to Main Menu"
         echo ""
-        read -rp "Select an option [0-7]: " opt_choice
+        read -rp "Select an option [0-8]: " opt_choice
 
         case $opt_choice in
             1) execute_script "$OPT_DIR/supertune.sh" true true ;;
@@ -98,6 +98,7 @@ menu_optimization() {
             5) execute_script "$OPT_DIR/setup-hugepages.sh" true true ;;
             6) execute_script "$OPT_DIR/install_psycachy.sh" true true ;;
             7) execute_script "$OPT_DIR/undosupertune.sh" true true ;;
+            8) execute_script "$OPT_DIR/ramtune.sh" true true ;;
             0|q|Q) break ;;
             *) echo -e "${RED}Invalid option!${NC}"; sleep 1 ;;
         esac
@@ -107,7 +108,7 @@ menu_optimization() {
 menu_security() {
     while true; do
         show_banner
-        echo -e "${MAGENTA}${BOLD}=== Security & Auditing ===${NC}"
+        echo -e "${MAGENTA}${BOLD}Security & Auditing${NC}"
         echo -e "  ${GREEN}1)${NC} Run Full Security Audit ${DIM}(Comprehensive audit of all vectors)${NC} ${RED}[root]${NC}"
         echo -e "  ${GREEN}2)${NC} Audit Malware & Cryptominers ${DIM}(Memory, temp dirs & Docker)${NC} ${RED}[root]${NC}"
         echo -e "  ${GREEN}3)${NC} Audit Network Listeners ${DIM}(Open ports, promiscuous interfaces)${NC} ${RED}[root]${NC}"
@@ -132,7 +133,7 @@ menu_security() {
 menu_ptero() {
     while true; do
         show_banner
-        echo -e "${CYAN}${BOLD}=== Pterodactyl Tools ===${NC}"
+        echo -e "${CYAN}${BOLD}Pterodactyl Tools${NC}"
         echo -e "  ${GREEN}1)${NC} Prep System & Install Wings ${DIM}(Base deps & sysctl tune)${NC} ${RED}[root]${NC}"
         echo -e "  ${GREEN}2)${NC} Wings Diagnostic & Debugger ${DIM}(Inspect logs & error detection)${NC} ${RED}[root]${NC}"
         echo -e "  ${BLUE}0)${NC} Back to Main Menu"
@@ -197,8 +198,9 @@ show_help() {
     echo "  ./toolkit.sh help                Show this help screen"
     echo ""
     echo -e "${BOLD}Optimization actions:${NC}"
-    echo "  supertune    - Full low-latency system tuning (Network, VM, CPU)"
+    echo "  supertune    - Full low-latency system tuning (Network, VM, CPU, ZRAM)"
     echo "  tcptune      - TCP & BBR network buffer tuning only"
+    echo "  ramtune      - Setup ZRAM with ZSTD compression & MGLRU memory tuning"
     echo "  scx          - Install SCX schedulers & loader"
     echo "  p2dq         - Run SCX P2DQ scheduler in screen session"
     echo "  hugepages    - Pre-allocate 2MB huge pages"
@@ -237,6 +239,7 @@ else
             case "$ACTION" in
                 supertune) execute_script "$OPT_DIR/supertune.sh" true false "$@" ;;
                 tcptune) execute_script "$OPT_DIR/tcptune.sh" true false "$@" ;;
+                ramtune|zram) execute_script "$OPT_DIR/ramtune.sh" true false "$@" ;;
                 scx) execute_script "$OPT_DIR/installscx.sh" true false "$@" ;;
                 p2dq) execute_script "$OPT_DIR/run_p2dq.sh" true false "$@" ;;
                 hugepages) execute_script "$OPT_DIR/setup-hugepages.sh" true false "$@" ;;
@@ -244,7 +247,7 @@ else
                 undo) execute_script "$OPT_DIR/undosupertune.sh" true false "$@" ;;
                 *)
                     echo -e "${RED}[✗] Unknown optimization action: '$ACTION'${NC}"
-                    echo "Available actions: supertune, tcptune, scx, p2dq, hugepages, psycachy, undo"
+                    echo "Available actions: supertune, tcptune, ramtune, scx, p2dq, hugepages, psycachy, undo"
                     exit 1
                     ;;
             esac

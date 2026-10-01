@@ -1,5 +1,5 @@
 pkgname=kotsasmin-toolkit-git
-pkgver=r20.e3185c8
+pkgver=r21.9ba15a1
 pkgrel=1
 pkgdesc="A collection of system optimization, security, and media scripts"
 arch=('any')
