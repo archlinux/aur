@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-gom-audio
+	pkgdesc = AIMP skin: GOM Audio 7.10 (by BehemothXxx)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-gom-audio-615.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-gom-audio-615.archive::https://aimp.ru/?do=catalog.download&id=615
+	sha256sums = 726eefd7712b01fa40d4b69b6ad85d4c6d8079475dd2216f945810465827a391
+
+pkgname = aimp-skin-gom-audio
