@@ -1,7 +1,7 @@
 # Maintainer: SLIGHTLKE <SLIGHTLKE@outlook.com>
 pkgname=steam-appimage
 pkgver=1.0.0.87.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Steam package based on AppImage"
 arch=('x86_64')
 url="https://github.com/ivan-hc/Steam-appimage"
@@ -10,12 +10,12 @@ optdepends=('xdg-utils')
 options=(!strip)
 
 source=(
-  "Steam-1.0.0.87-3-anylinux-x86_64.AppImage::https://github.com/ivan-hc/Steam-appimage/releases/download/1.0.0.87-3%402026-09-01_1788260048/Steam-1.0.0.87-3-anylinux-x86_64.AppImage"
+  "Steam-1.0.0.87-3-anylinux-x86_64.AppImage::https://github.com/ivan-hc/Steam-appimage/releases/download/1.0.0.87-3%402026-10-01_1790856625/Steam-1.0.0.87-3-anylinux-x86_64.AppImage"
   "LICENSE::https://www.gnu.org/licenses/gpl-3.0.txt"
 )
 
 sha256sums=(
-  'aa71a5585dac87cd4a97195bc3bcf0435852588dc1297a6742530ef7e090fb39'
+  'a870636083ca6edc988ebe34869a187d9a746fce6d5fa4249868b640fc0c1695'
   'SKIP'
 )
 
