@@ -4,7 +4,7 @@
 pkgname='aimp-skin-sony-tc-mr2'
 pkgdesc='AIMP skin: Sony TC-MR2 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('54be4810986637c521692fb309594f76b1c3bf80d89a8af143707506a3fc6297')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Sony TC-MR2"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-sony-tc-mr2-758.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
