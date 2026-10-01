@@ -4,7 +4,7 @@
 pkgname='aimp-skin-contrast'
 pkgdesc='AIMP skin: Contrast 1.0 (by Trifon)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f09bbe70cb0a7ca1787520ceffc6d03cd54fd82c4a5b66c93bc0a03cecd3b117')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Contrast"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-contrast-216.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
