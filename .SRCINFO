@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-lite-style
+	pkgdesc = AIMP skin: Lite Style 1.0 (by RESIN)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-lite-style-132.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-lite-style-132.archive::https://aimp.ru/?do=catalog.download&id=132
+	sha256sums = aa8d12098a56be449a4ce7a1aabd3f77ab020b8d96957ffa784cccda7b6415c3
+
+pkgname = aimp-skin-lite-style
