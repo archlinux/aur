@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-desktop-player
+	pkgdesc = AIMP skin: Desktop Player 1.0 (by NikolavRj)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-desktop-player-479.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-desktop-player-479.archive::https://aimp.ru/?do=catalog.download&id=479
+	sha256sums = a29f4d8d6503d9160e8dafe905031e395db984091d5931c5590e2180a49f17fe
+
+pkgname = aimp-skin-desktop-player
