@@ -4,7 +4,7 @@
 pkgname='aimp-skin-denon-dr-f2-4k'
 pkgdesc='AIMP skin: Denon DR-F2 4K 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('8e06cafdc5303c3e5aa3936344274c8242f419c7043dcb35b7d1c172167f08a3')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Denon DR-F2 4K"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-denon-dr-f2-4k-1343.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
