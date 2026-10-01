@@ -4,7 +4,7 @@
 pkgname='aimp-skin-equinox'
 pkgdesc='AIMP skin: Equinox 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('801ea08d45d3907e97a0b35fe0f449fd4c25dfbb805fa77ddd55c1f5068828f8')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Equinox"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-equinox-1160.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
