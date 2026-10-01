@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-akai-gx-77-grey
+	pkgdesc = AIMP skin: Akai GX-77 Grey 1.0 (by Black_AVP)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-akai-gx-77-grey-489.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-akai-gx-77-grey-489.archive::https://aimp.ru/?do=catalog.download&id=489
+	sha256sums = ed0f6c20286d469ae6038749fa82850720c230f3efadb87d95b2608090c4a1df
+
+pkgname = aimp-skin-akai-gx-77-grey
