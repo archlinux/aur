@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-olimp-003
+	pkgdesc = AIMP skin: Олимп-003 1.0 (by Пупс)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-olimp-003-1202.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-olimp-003-1202.archive::https://aimp.ru/?do=catalog.download&id=1202
+	sha256sums = c31f6d8241a67d480581629fdb055167128877b49e07e488d8f0819c0393c0b0
+
+pkgname = aimp-skin-olimp-003
