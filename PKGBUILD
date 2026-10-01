@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=python-rlp
-pkgver=4.0.1
+pkgver=4.0.1 # renovate: datasource=pypi depName=rlp
 pkgrel=1
 pkgdesc="A package for encoding and decoding data in and from Recursive Length Prefix notation"
 url='https://pypi.org/project/rlp/'
