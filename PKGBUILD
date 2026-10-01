@@ -4,7 +4,7 @@
 pkgname='aimp-skin-strong'
 pkgdesc='AIMP skin: Strong 1.3 (by KEIII)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('87b76a798225d80f52ce566cfeea4a8c32f577320dede79ae929d7032ccf86f9')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Strong"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-strong-121.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
