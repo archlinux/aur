@@ -4,7 +4,7 @@
 pkgname='aimp-skin-nakamichi-bx-black'
 pkgdesc='AIMP skin: Nakamichi BX Black 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('69ebd4ec915a1249542fad11dc0cffc567ca1b218fd09e18cfd2ee9525f5d5af')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Nakamichi BX Black"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-nakamichi-bx-black-747.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
