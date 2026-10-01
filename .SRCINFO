@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-saturn-202s-2-light
+	pkgdesc = AIMP skin: САТУРН 202С-2 (Light) 3.0 (by Пупс)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-saturn-202s-2-light-827.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-saturn-202s-2-light-827.archive::https://aimp.ru/?do=catalog.download&id=827
+	sha256sums = af64142c74e98390aa97f37e3449df7900328585c45b76e5536ec106f0da6d7d
+
+pkgname = aimp-skin-saturn-202s-2-light
