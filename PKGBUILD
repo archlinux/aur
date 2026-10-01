@@ -4,7 +4,7 @@
 pkgname='aimp-skin-terminal'
 pkgdesc='AIMP skin: Terminal 1.0 (by nazar-shum)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('bf08e262a40f413683bfcfa3d0a1eacf77aa6ebfb3704cab5c1fbb0b61a4a46d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Terminal"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-terminal-419.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
