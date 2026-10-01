@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-revoluted
+	pkgdesc = AIMP skin: Revoluted 1.0 (by Henrique Oliveira)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-revoluted-688.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-revoluted-688.archive::https://aimp.ru/?do=catalog.download&id=688
+	sha256sums = c9671049ca12874b388b390269f41569ee12caa2d2340d92cfa538ce63c8fa99
+
+pkgname = aimp-skin-revoluted
