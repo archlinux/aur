@@ -3,7 +3,6 @@ pkgbase = gr-lida-git
 	pkgver = 513.e8b9a39
 	pkgrel = 1
 	url = http://www.gr-lida.org/
-	arch = i686
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = git

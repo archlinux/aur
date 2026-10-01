@@ -4,7 +4,7 @@ pkgname=gr-lida-git
 pkgver=513.e8b9a39
 pkgrel=1
 pkgdesc="Frontend for DosBox, ScummVM and VDMSound"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.gr-lida.org/"
 license=('GPL-2.0-only')
 depends=(
@@ -31,7 +31,7 @@ build() {
 
 package() {
   cd "${pkgname%%-git}"
-  make INSTALL_ROOT=${pkgdir} install
+  make INSTALL_ROOT="${pkgdir}" install
 }
 
 pkgver() {
