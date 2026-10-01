@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-xiialive
+	pkgdesc = AIMP skin: XiiaLive 1.1 (by Sergio7786)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-xiialive-292.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-xiialive-292.archive::https://aimp.ru/?do=catalog.download&id=292
+	sha256sums = a76db5560317c6fc874efb08a12be590337730443aed4f58088a5d88dcccbec1
+
+pkgname = aimp-skin-xiialive
