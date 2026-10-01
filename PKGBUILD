@@ -3,20 +3,23 @@
 
 pkgname=openspace-git
 _pkgname=OpenSpace
-pkgver=v0.20.0.1040.g37e7e4f945
+_vcpkg_commit='04a9d8e5212d01ee1dd9478eadd9caade4f8b0d4'
+pkgver=v0.20.0.1076.g7494b2659a
 pkgrel=1
 pkgdesc="OpenSpace is an open source, non-commercial, and freely available interactive data visualization software designed to visualize the entire known universe and portray our ongoing efforts to investigate the cosmos"
 arch=('x86_64')
 url="https://github.com/OpenSpace/OpenSpace"
 license=('MIT')
-makedepends=('cmake' 'git' 'sed' 'glm' 'websocketpp')
+makedepends=('cmake' 'git' 'sed' 'glm' 'websocketpp' 'vcpkg' 'autoconf' 'autoconf-archive' 'automake' 'libtool')
 depends=('gdal' 'mpv' 'vulkan-headers' 'libxinerama' 'libxi' 'qt6-base' 'nss' 'at-spi2-core' 'libxcomposite' 'libxdamage' 'python-pandas')
 conflicts=('openspace')
 source=("git+https://github.com/OpenSpace/OpenSpace.git#branch=master"
+	"vcpkg-${_vcpkg_commit}.tar.gz::https://github.com/microsoft/vcpkg/archive/${_vcpkg_commit}.tar.gz"
 	"open-space"
 	"update-cfg.patch"
 	"globebrowsingmodule.patch")
 sha256sums=('SKIP'
+			'SKIP' # vcpkg archive pinned to _vcpkg_commit
 			48f9ad3ab1ffc9ef6172cdba1b7bf1d0c36127723d3e73bb7beb273f1d0a54af
 		    776d986d6592fbedddaaa79385d3e42b39e1bd1ae9480404559410bcc930c963
 		    608d02fe1828d5bdc9f5cf20b02d1294b216212ccf0402b4922eacdade1e1088
@@ -30,30 +33,46 @@ pkgver() {
 }
 
 prepare() {
-	cd "${srcdir}/OpenSpace"
-		git submodule update --init --recursive
-		# patch main configuration file to enable local user execution.
-		patch < "${srcdir}/update-cfg.patch"
-		# patch globebrowsingmodule.cpp to be able to compile against latest GDAL versions
-		patch -Np1 -i "${srcdir}/globebrowsingmodule.patch"
+	cd "${srcdir}/${_pkgname}"
 
+	# Upstream no longer uses git submodules.
+
+	# Patch main configuration file to enable local user execution.
+	patch < "${srcdir}/update-cfg.patch"
+
+	# Patch globebrowsingmodule.cpp to compile against current GDAL versions.
+	patch -Np1 -i "${srcdir}/globebrowsingmodule.patch"
+
+	# The vcpkg snapshot is only used for its build scripts.  Resolve the
+	# curated ports through Microsoft's Git registry instead of requiring
+	# the snapshot itself to be a Git checkout.
+
+	sed -i \
+    '/"kind": "builtin"/c\      "kind": "git",\n      "repository": "https://github.com/microsoft/vcpkg",' \
+    vcpkg.json
+
+	# Arch's vcpkg package provides /usr/bin/vcpkg, while OpenSpace's
+	# CMake integration expects the executable at $VCPKG_ROOT/vcpkg.
+	ln -sf /usr/bin/vcpkg "${srcdir}/vcpkg-${_vcpkg_commit}/vcpkg"
 }
 
-
 build() {
-	mkdir -p "${srcdir}/${_pkgname}/build"
-	cd "${srcdir}/${_pkgname}/build"
+	local _build_dir="${srcdir}/${_pkgname}/build"
 
+	export VCPKG_ROOT="${srcdir}/vcpkg-${_vcpkg_commit}"
+	export VCPKG_DISABLE_METRICS=1
 
 	cmake \
-	-DCMAKE_BUILD_TYPE:STRING="Release" \
-	-DCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/g++ \
-	-DCMAKE_C_COMPILER:FILEPATH=/usr/bin/gcc \
-	-DASSIMP_BUILD_MINIZIP=1 "${srcdir}/OpenSpace"
-	
-	export MAKEFLAGS="-j$(nproc)"
+		-S "${srcdir}/${_pkgname}" \
+		-B "${_build_dir}" \
+		-DCMAKE_BUILD_TYPE:STRING=Release \
+		-DCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/g++ \
+		-DCMAKE_C_COMPILER:FILEPATH=/usr/bin/gcc \
+		-DCMAKE_TOOLCHAIN_FILE:FILEPATH="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" \
+		-DVCPKG_TARGET_TRIPLET:STRING=x64-linux \
+		-DASSIMP_BUILD_MINIZIP=1
 
-	make
+	cmake --build "${_build_dir}" --parallel
 }
 
 package() {
