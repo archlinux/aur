@@ -4,7 +4,7 @@
 pkgname='aimp-skin-micro-aimp'
 pkgdesc='AIMP skin: Micro AIMP 1.0 (by ProGroup)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('70e6e8eaadb25ae4ec5912b65812051284f33cb28941c67686722dc22f147747')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Micro AIMP"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-micro-aimp-127.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
