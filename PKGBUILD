@@ -4,7 +4,7 @@
 pkgname='aimp-skin-grayfield'
 pkgdesc='AIMP skin: Grayfield 1.0 (by Arthur «d1sapp3ar» Habirov)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a7b2227cf0c81587fd16eb3d0368dac910be5b1387b35dd6e6f6364df05bb31e')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Grayfield"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-grayfield-413.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
