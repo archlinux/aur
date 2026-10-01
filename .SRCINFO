@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-mayak-232-233
+	pkgdesc = AIMP skin: Mayak-232 (233) 2.33 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-mayak-232-233-595.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-mayak-232-233-595.archive::https://aimp.ru/?do=catalog.download&id=595
+	sha256sums = ecc605a62f768418ae57003493f5f4d5b2e4db10eec3afa3bffeb27734dc0172
+
+pkgname = aimp-skin-mayak-232-233
