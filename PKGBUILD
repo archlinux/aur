@@ -4,7 +4,7 @@
 pkgname='aimp-skin-w8-dark'
 pkgdesc='AIMP skin: W8 Dark 3.0 (by VladShip)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('94f7e204bcf3058f2236f0915a0fa3d320d82a16acb2d2c4c0996cbe9a5465b5')
 
 package() {
-  local dest="$pkgdir$_skinsdir/W8 Dark"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-w8-dark-602.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
