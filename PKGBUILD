@@ -4,7 +4,7 @@
 pkgname='aimp-skin-black-hoop'
 pkgdesc='AIMP skin: Black Hoop 1.1 (by San4o)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('e519cbf5b96a637a251093bce0efc12ab5e9cca643d3d78c0703f6b4397f0d3c')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Black Hoop"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-black-hoop-129.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
