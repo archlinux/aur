@@ -4,7 +4,7 @@
 pkgname='aimp-skin-prestige'
 pkgdesc='AIMP skin: Prestige 1.0 (by Hawk)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('886512f79427f1d9a8f3c535a3939171da75b46b7b3583e0e5270a5dd422bf25')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Prestige"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-prestige-366.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
