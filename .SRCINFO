@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-super-black
+	pkgdesc = AIMP skin: Super Black 1.0 (by d4f_MAC)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-super-black-785.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-super-black-785.archive::https://aimp.ru/?do=catalog.download&id=785
+	sha256sums = 6b3de5168701985375734cadad12e7f2c46c9581ed6806aeb38bdcdaf8caef2e
+
+pkgname = aimp-skin-super-black
