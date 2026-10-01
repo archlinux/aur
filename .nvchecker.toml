@@ -1,0 +1,5 @@
+[malgel-bin]
+source = "github"
+github = "rcawston/Malgel"
+use_latest_release = true
+prefix = "v"
