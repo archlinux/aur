@@ -4,7 +4,7 @@
 pkgname='aimp-skin-androevolution'
 pkgdesc='AIMP skin: AndroEvolution 0.94 (by TeDj)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('30e0a85914d884b901d3a84ba23faddc1847688b27f1044be9c255d08911a4b1')
 
 package() {
-  local dest="$pkgdir$_skinsdir/AndroEvolution"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-androevolution-1016.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
