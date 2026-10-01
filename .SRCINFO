@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-wmp-12-basit-glass
+	pkgdesc = AIMP skin: WMP 12 Basit Glass 3.5.11 (by memo-se)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-wmp-12-basit-glass-605.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-wmp-12-basit-glass-605.archive::https://aimp.ru/?do=catalog.download&id=605
+	sha256sums = 77891f895fc2b1627f99a1c3ce87e8ac318d3f3c06d4242b0a0b120356bd1787
+
+pkgname = aimp-skin-wmp-12-basit-glass
