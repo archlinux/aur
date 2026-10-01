@@ -4,7 +4,7 @@
 pkgname='aimp-skin-elfa-201'
 pkgdesc='AIMP skin: Elfa 201 1.42 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('88a54365d33f82025d28d2c4f1bbfc61dc02add18b90ff5dddcde3344354cf25')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Elfa 201"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-elfa-201-1203.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
