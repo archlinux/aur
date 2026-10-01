@@ -4,7 +4,7 @@
 pkgname='aimp-skin-euphoria-remix'
 pkgdesc='AIMP skin: Euphoria Remix 2 (by GR-X)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c58b605866de41659ce83c5120c0f26655583d6c5c7efccf9ccaa98dba64f9d6')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Euphoria Remix"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-euphoria-remix-180.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
