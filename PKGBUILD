@@ -4,7 +4,7 @@
 pkgname='aimp-skin-liada'
 pkgdesc='AIMP skin: Liada 1.3 (by Aleksandr009)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('5c5c0722e12ca43ec07bf9aa72949d74bccab7b493e001993ac0d1a6457e0896')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Liada"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-liada-737.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
