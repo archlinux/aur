@@ -4,7 +4,7 @@
 pkgname='aimp-skin-aimpshield'
 pkgdesc='AIMP skin: AIMPshield 1.003 (by samix)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('b6ef75ed55067029128aaa9960df1bd0bdd4f1c0493c2c3e4158a198699dfaa8')
 
 package() {
-  local dest="$pkgdir$_skinsdir/AIMPshield"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-aimpshield-814.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
