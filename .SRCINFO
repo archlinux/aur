@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-yacobymac
+	pkgdesc = AIMP skin: YacobyMac 1.0 (by Marat_S)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-yacobymac-429.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-yacobymac-429.archive::https://aimp.ru/?do=catalog.download&id=429
+	sha256sums = 1c43a5a12d1177e4567785fe028775bb5b5920c113a09eb481e457f00b80bb2e
+
+pkgname = aimp-skin-yacobymac
