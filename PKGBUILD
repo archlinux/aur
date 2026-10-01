@@ -4,7 +4,7 @@
 pkgname='aimp-skin-vilma-104'
 pkgdesc='AIMP skin: Vilma 104 1.37 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('b9fc5f32836c7daa77a6dca4c1ae85c6e3b74c0ac5bd786c4833fc5f88223032')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Vilma 104"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-vilma-104-884.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

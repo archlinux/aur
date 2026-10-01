@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-vilma-104
 	pkgdesc = AIMP skin: Vilma 104 1.37 (by McClaud)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
