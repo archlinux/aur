@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-electro
+	pkgdesc = AIMP skin: Electro 1.1 (by electro)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-electro-609.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-electro-609.archive::https://aimp.ru/?do=catalog.download&id=609
+	sha256sums = f592502f017d6f980c4bb8024bd0b9906c81be2cfaa25e9a4f053c1a3df2610d
+
+pkgname = aimp-skin-electro
