@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-yellow
+	pkgdesc = AIMP skin: Yellow 1.0 (by k.egor)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-yellow-16.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-yellow-16.archive::https://aimp.ru/?do=catalog.download&id=16
+	sha256sums = ad7e9ca5f33fb614464b7c3cb8e020a80931837cd82ebe458544b92dc5b36e74
+
+pkgname = aimp-skin-yellow
