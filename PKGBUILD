@@ -4,7 +4,7 @@
 pkgname='aimp-skin-trident-4'
 pkgdesc='AIMP skin: Trident 4 1.0 (by drunkentigerijk)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('0fada828bdc1ec121bd282aefaff16209971b9d662e8d27dfc637e722cf62a48')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Trident 4"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-trident-4-634.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
