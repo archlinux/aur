@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-analogue
+	pkgdesc = AIMP skin: Analogue 1.0 (by Henrique Oliveira)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-analogue-1216.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-analogue-1216.archive::https://aimp.ru/?do=catalog.download&id=1216
+	sha256sums = 459aea42254b392b333576f34e5513dd50ecc34fc41f28bb70f54dbd19d41a8b
+
+pkgname = aimp-skin-analogue
