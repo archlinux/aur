@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-black-glass-83
 	pkgdesc = AIMP skin: Black Glass 3 (by San4o)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

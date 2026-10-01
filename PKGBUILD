@@ -4,7 +4,7 @@
 pkgname='aimp-skin-black-glass-83'
 pkgdesc='AIMP skin: Black Glass 3 (by San4o)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('73a98fbf17d3b8b2a1d46542b51fce2f8f7ee40fa730c2a0e6a1a47f51343f39')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Black Glass (83)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-black-glass-83-83.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
