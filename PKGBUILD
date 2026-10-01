@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=rpx-bin
-pkgver=2.0.1 # renovate: datasource=github-tags depName=scalerail-solutions/rpx
+pkgver=2.1.0 # renovate: datasource=github-tags depName=scalerail-solutions/rpx
 pkgrel=1
 pkgdesc="A performant package manager for R"
 arch=('x86_64' 'aarch64')
@@ -22,5 +22,5 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha256sums_x86_64=('ecb03d268a6ddbbf7f1ae4261072422c8beafd790b865fcf85441d9b7cbd49d1')
-sha256sums_aarch64=('ecb03d268a6ddbbf7f1ae4261072422c8beafd790b865fcf85441d9b7cbd49d1')
+sha256sums_x86_64=('b1c4b639d6f3cf862cd9b7f65024890c19e9df65200ed00726791d454458b9f4')
+sha256sums_aarch64=('b1c4b639d6f3cf862cd9b7f65024890c19e9df65200ed00726791d454458b9f4')
