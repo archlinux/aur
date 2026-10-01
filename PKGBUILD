@@ -4,7 +4,7 @@
 pkgname='aimp-skin-yupiter-203'
 pkgdesc='AIMP skin: Юпитер 203 1.33 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('6ee6da27f72e795c7de8c5c4846d5b56522d4de66999bce63cac8b30d7d9a43e')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Юпитер 203"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-yupiter-203-1206.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
