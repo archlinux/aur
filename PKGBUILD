@@ -4,7 +4,7 @@
 pkgname='aimp-skin-gom-audio'
 pkgdesc='AIMP skin: GOM Audio 7.10 (by BehemothXxx)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('726eefd7712b01fa40d4b69b6ad85d4c6d8079475dd2216f945810465827a391')
 
 package() {
-  local dest="$pkgdir$_skinsdir/GOM Audio"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-gom-audio-615.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
