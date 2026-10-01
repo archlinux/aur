@@ -17,6 +17,7 @@ pkgbase = faircamp
 	options = !lto
 	source = faircamp.desktop
 	source = faircamp-2.0.1.tar.gz::https://codeberg.org/simonrepp/faircamp/archive/2.0.1.tar.gz
+	sha256sums = 0986ca68182526ce56ea1474823cd5f057ff41720bf95cd43d724147a30a4bc6
 	sha256sums = c3518bb1a54609475ba7452f2e4b0fe82199818700083a0cd69d8997f59a4585
 
 pkgname = faircamp
