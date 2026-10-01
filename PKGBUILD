@@ -4,7 +4,7 @@
 pkgname='aimp-skin-arc'
 pkgdesc='AIMP skin: Arc 1.3 (by Aleksandr009)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('e296fae274f115c5dfb1c41a0631face87a3f8a07bc7f8d206090f7cc55778fc')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Arc"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-arc-826.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
