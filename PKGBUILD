@@ -4,7 +4,7 @@
 pkgname='aimp-skin-violet'
 pkgdesc='AIMP skin: ViOLET 2.2 (by ELECTRON!CK)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('eabdfbc46094592585c444695491090fb79c5103705da05f5f38d6a2178e0e40')
 
 package() {
-  local dest="$pkgdir$_skinsdir/ViOLET"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-violet-208.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
