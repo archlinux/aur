@@ -4,7 +4,7 @@
 pkgname='aimp-skin-koyna-b'
 pkgdesc='AIMP skin: Koyna B 2.3 (by samix)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('8f6200bfd5d4712feca981500c6a4f92066997a0718695e41463c7df50e57864')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Koyna B"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-koyna-b-850.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
