@@ -4,7 +4,7 @@
 pkgname='aimp-skin-radial-mini'
 pkgdesc='AIMP skin: Radial Mini 1.0 (by NikolavRj)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f556a12a68c2c58166550a0e7ca879371a1c94b1eb2dcd37554a1cd90e9b8152')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Radial Mini"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-radial-mini-493.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
