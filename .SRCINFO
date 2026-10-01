@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-byg
+	pkgdesc = AIMP skin: BYG 1.5 (by Mery Dev)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-byg-158.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-byg-158.archive::https://aimp.ru/?do=catalog.download&id=158
+	sha256sums = 42bdc36c3b12297e40905d3d52ce37414693ba614b24c08414b9c42d8383582e
+
+pkgname = aimp-skin-byg
