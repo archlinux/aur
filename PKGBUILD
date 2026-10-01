@@ -1,4 +1,4 @@
-# Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
+# Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=dealve-tui-bin
 pkgver=1.0.2
 pkgrel=1
