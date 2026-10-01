@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-dark-tone
+	pkgdesc = AIMP skin: Dark tone 1.0 (by phoenix-i)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-dark-tone-527.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-dark-tone-527.archive::https://aimp.ru/?do=catalog.download&id=527
+	sha256sums = dced547473842a0297901a11e37f8c6d43cb621424271cc231d38d4ed663feb6
+
+pkgname = aimp-skin-dark-tone
