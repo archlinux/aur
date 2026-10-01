@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-amp
 	pkgdesc = AIMP skin: AMP 3.2 (by IDimm)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

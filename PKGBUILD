@@ -4,7 +4,7 @@
 pkgname='aimp-skin-amp'
 pkgdesc='AIMP skin: AMP 3.2 (by IDimm)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('eda0f7af98c2c66ebbeb42b73803780c9df44b5e1c2a009a6921693874abab6c')
 
 package() {
-  local dest="$pkgdir$_skinsdir/AMP"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-amp-1204.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
