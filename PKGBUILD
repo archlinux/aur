@@ -6,7 +6,7 @@
 # pkgver is what left the previous checked-in PKGBUILD stranded at 0.4.0.
 
 pkgname=sdme
-pkgver=0.19.1
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='The systemd machine editor'
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ install=sdme.install
 # ring_core_*). Cargo already applies its own LTO per the release profile.
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fiorix/sdme/archive/v$pkgver.tar.gz")
-sha256sums=('791c90db4e90a233f84864474bb116ae88a624df947b13f8d4c51df24dc1d1af')
+sha256sums=('857fc3dfc248e69051dc3f9ee59389e2ad1d61c13a043a5b46cd49d4f8eb9c4c')
 
 prepare() {
     cd "$pkgname-$pkgver"
