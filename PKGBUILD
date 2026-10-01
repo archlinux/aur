@@ -1,13 +1,14 @@
 # Maintainer: robertfoster
 
 pkgname=dnschain-git
-pkgver=344.67c567e
+pkgver=348.def0e61
 pkgrel=1
 pkgdesc="A blockchain-based DNS + HTTP server that fixes HTTPS security, and more!"
 arch=(any)
 url="https://github.com/okTurtles/dnschain"
 license=('MPL')
 depends=('coffee-script' 'git' 'nodejs' 'namecoin-core')
+provides=('dnschain')
 conflicts=('dnschain')
 replaces=('dnschain')
 optdepends=('bitshares: bdns support' 'go-ethereum: ethereum support')
@@ -15,35 +16,35 @@ source=("dnschain::git+https://github.com/okTurtles/dnschain.git"
   dnschain.service)
 
 build() {
-  cd $srcdir/dnschain
+  cd "$srcdir/dnschain"
   export PYTHON=/usr/bin/python2
   npm install
 }
 
 package() {
-  cd $srcdir/
+  cd "$srcdir/"
 
   # Path for dnschain
   _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p $_npmdir
-  cp -r dnschain $_npmdir
+  mkdir -p "$_npmdir"
+  cp -r dnschain "$_npmdir"
 
   # Copy systemd service
-  mkdir -p $pkgdir/usr/lib/systemd/system
-  cp dnschain.service $pkgdir/usr/lib/systemd/system
+  mkdir -p "$pkgdir/usr/lib/systemd/system"
+  cp dnschain.service "$pkgdir/usr/lib/systemd/system"
 
   # Cleaning
-  rm -r $_npmdir/dnschain/.git*
+  rm -r "$_npmdir"/dnschain/.git*
 
   # Main executable
-  mkdir $pkgdir/usr/bin
-  ln -sr $_npmdir/dnschain/bin/dnschain $pkgdir/usr/bin/dnschain
+  mkdir "$pkgdir/usr/bin"
+  ln -sr "$_npmdir/dnschain/bin/dnschain" "$pkgdir/usr/bin/dnschain"
 }
 
 pkgver() {
-  cd $srcdir/dnschain
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  cd "$srcdir/dnschain"
+  echo "$(git rev-list --count master).$(git rev-parse --short master)"
 }
 
 sha256sums=('SKIP'
-            'ea4d075c3d965232865a873c94c0001ba5e29e37af84c6c40366eb6256f279d7')
+  'ea4d075c3d965232865a873c94c0001ba5e29e37af84c6c40366eb6256f279d7')

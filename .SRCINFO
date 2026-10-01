@@ -11,6 +11,7 @@ pkgbase = dnschain-git
 	depends = namecoin-core
 	optdepends = bitshares: bdns support
 	optdepends = go-ethereum: ethereum support
+	provides = dnschain
 	conflicts = dnschain
 	replaces = dnschain
 	source = dnschain::git+https://github.com/okTurtles/dnschain.git
