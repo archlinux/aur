@@ -4,7 +4,7 @@
 pkgname='aimp-skin-aqualtic'
 pkgdesc='AIMP skin: Aqualtic 1.0 (by Nitehost)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('4eb38e92932778086917199b7c81eb8a60c068ca92fdba8a98456815e1357cd8')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Aqualtic"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-aqualtic-169.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
