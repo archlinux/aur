@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-aimp-modern
+	pkgdesc = AIMP skin: AIMP Modern 3.63 (by memo-se)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-aimp-modern-604.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-aimp-modern-604.archive::https://aimp.ru/?do=catalog.download&id=604
+	sha256sums = bbb636aeff51cd704ad1ba52055acb59139246ae14e9ee70ffce51e35f4b6b29
+
+pkgname = aimp-skin-aimp-modern
