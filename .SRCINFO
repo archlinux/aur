@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-cucumber
 	pkgdesc = AIMP skin: Cucumber 3.0 (by Krieger)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

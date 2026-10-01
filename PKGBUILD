@@ -4,7 +4,7 @@
 pkgname='aimp-skin-cucumber'
 pkgdesc='AIMP skin: Cucumber 3.0 (by Krieger)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('217e797fab22dff8b4e49905af3ed7cc4515c3078b0414ad2a303e85f6ed3294')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Cucumber"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-cucumber-108.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
