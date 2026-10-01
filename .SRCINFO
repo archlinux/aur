@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-violet-calm
+	pkgdesc = AIMP skin: Violet Calm 1.0 (by AV-S)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-violet-calm-473.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-violet-calm-473.archive::https://aimp.ru/?do=catalog.download&id=473
+	sha256sums = 521035e9e09d8414376b3dffb4768ad6f134d742f101e34e2a4cfa9a9f7881d3
+
+pkgname = aimp-skin-violet-calm
