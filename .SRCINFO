@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-arctur
+	pkgdesc = AIMP skin: Arctur 5.0 (by samix)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-arctur-829.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-arctur-829.archive::https://aimp.ru/?do=catalog.download&id=829
+	sha256sums = c48493c3f8585ae5beb8d6b5d574eb01ca1125a00bf1e1bff709bd7fc005334d
+
+pkgname = aimp-skin-arctur
