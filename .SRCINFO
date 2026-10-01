@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-drawn-on-paper
+	pkgdesc = AIMP skin: Drawn on paper 1.0 (by le_ad)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-drawn-on-paper-421.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-drawn-on-paper-421.archive::https://aimp.ru/?do=catalog.download&id=421
+	sha256sums = 3788704718e0397277b6e5ee9fe2257d194018b54a5e77650bc62e688de759e9
+
+pkgname = aimp-skin-drawn-on-paper
