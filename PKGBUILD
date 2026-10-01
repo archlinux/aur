@@ -4,7 +4,7 @@
 pkgname='aimp-skin-new-wave'
 pkgdesc='AIMP skin: New Wave 1.0 (by cuzmich)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c1363786187ade00d3f8a669e2e19d9387c519a62e6d115ecb3fe2b4780b9467')
 
 package() {
-  local dest="$pkgdir$_skinsdir/New Wave"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-new-wave-232.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
