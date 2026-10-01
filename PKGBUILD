@@ -1,7 +1,7 @@
 # Maintainer: chwair <74615216+chwair@users.noreply.github.com>
 _pkgname=magnolia
 pkgname=magnolia-bin
-pkgver=2.4.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Torrent streaming client for PCs"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
   "${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Magnolia_${pkgver}_amd64.deb"
   "LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE-MIT"
 )
-sha256sums=('42f6616e6533e2c9925a3d9aa372f7e2328af60fe21297f7332cb98eee977b5c'
+sha256sums=('cd8710733ecbb687b61b21b72c8080acac227fc6af76386272004ddc7f042b11'
             'e0d124d15a52e371bc20830765d7d874fde8e88abc5c2dd4debd71117f4b7ed7')
 noextract=("${pkgname}-${pkgver}.deb")
 
