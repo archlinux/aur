@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-lux-and-nox
+	pkgdesc = AIMP skin: Lux & Nox 1.11 (by Hades)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-lux-and-nox-1199.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-lux-and-nox-1199.archive::https://aimp.ru/?do=catalog.download&id=1199
+	sha256sums = bcf3cda198a3662dfc4ef948d88f5edd433d893f45efdde34840ab43db43499c
+
+pkgname = aimp-skin-lux-and-nox
