@@ -1,6 +1,6 @@
 # maintainer: luka null <lukadevnull@vivaldi.net>
 pkgname=pg_clickhouse
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='PostgreSQL extension to query ClickHouse databases from PostgreSQL'
 arch=('x86_64')
