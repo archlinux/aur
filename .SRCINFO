@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-invi-pro
+	pkgdesc = AIMP skin: INVI Pro 1.5 (by Imperator3)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-invi-pro-135.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-invi-pro-135.archive::https://aimp.ru/?do=catalog.download&id=135
+	sha256sums = b1f2fe5a449c46bd887574b65ab2ae8c0e09750b2c2f4c6d1120ee659b4ed4f5
+
+pkgname = aimp-skin-invi-pro
