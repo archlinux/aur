@@ -4,7 +4,7 @@
 pkgname='aimp-skin-tinki'
 pkgdesc='AIMP skin: Tinki 1.0 (by varlesh)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('cea6d8086f5205ba07aa2a3dded7814ca91e7e0f539f5e1082a50fd880f51fbd')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Tinki"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-tinki-465.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
