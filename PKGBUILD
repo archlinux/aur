@@ -4,7 +4,7 @@
 pkgname='aimp-skin-plastic'
 pkgdesc='AIMP skin: Plastic 1.0 (by NikolavRj)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('371fb5015b909dd5b975a8e7adaf5dcf47295088e727967417cbe0412498486a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Plastic"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-plastic-510.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
