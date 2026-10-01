@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-oren
+	pkgdesc = AIMP skin: OREN 1.0 (by creative5)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-oren-529.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-oren-529.archive::https://aimp.ru/?do=catalog.download&id=529
+	sha256sums = 53ef3584709c40e10424df1b75f063f68a53eb0fab8de94f904392ef22caaf95
+
+pkgname = aimp-skin-oren
