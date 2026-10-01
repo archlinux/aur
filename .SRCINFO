@@ -1,13 +1,15 @@
 pkgbase = python-term-background
 	pkgdesc = Python module to align a simple (not nested) list in columns.
-	pkgver = 1.0.2
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/rocky/shell-term-background
 	arch = any
 	license = GPLv2
 	checkdepends = python-pytest
+	makedepends = python-build
 	makedepends = python-setuptools
-	source = python-term-background-1.0.2.tar.gz::https://github.com/rocky/shell-term-background/archive/refs/tags/1.0.2.tar.gz
-	sha256sums = 729ccb45be09afdf395c86a3f565424c3480ba743e37a255d6e06419ce61b846
+	makedepends = python-installer
+	source = python-term-background-1.0.5.tar.gz::https://github.com/rocky/shell-term-background/releases/download/1.0.5/term_background-1.0.5.tar.gz
+	sha256sums = 50e428dfbf6a33e5076cd7898a42a77fc4c5b60e804b50c59e89ead7a22299bd
 
 pkgname = python-term-background
