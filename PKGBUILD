@@ -4,7 +4,7 @@
 pkgname='aimp-skin-gom-player-series'
 pkgdesc='AIMP skin: GOM Player Series 2.00 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('dc63a775856a9f578791b98137b6a2fad341d3800440d951459fdb133f9b300c')
 
 package() {
-  local dest="$pkgdir$_skinsdir/GOM Player Series"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-gom-player-series-794.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
