@@ -4,7 +4,7 @@
 pkgname='aimp-skin-unsquareable'
 pkgdesc='AIMP skin: Unsquareable 0.4.9 (by quefcyze)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('56f763bac81aef185df02a3977a63e3e687886249c02e28605ed532c65a3a203')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Unsquareable"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-unsquareable-915.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
