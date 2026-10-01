@@ -6,7 +6,7 @@ pkgname=stormlib
 pkgver=9.40 # renovate: datasource=github-tags depName=ladislav-zezula/StormLib
 pkgrel=1
 pkgdesc="A C/C++ API to read and write MPQ files with support for merged archives, patch MPQs and more."
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="http://www.zezula.net/en/mpq/stormlib.html"
 license=("MIT")
 depends=("bzip2" "libtomcrypt" "libtommath" "zlib")

@@ -3,7 +3,6 @@ pkgbase = stormlib
 	pkgver = 9.40
 	pkgrel = 1
 	url = http://www.zezula.net/en/mpq/stormlib.html
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
