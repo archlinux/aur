@@ -7,5 +7,5 @@ Exec=typst-ide
 Icon=typst-ide
 Categories=Development;IDE;TextEditor;
 Terminal=false
-StartupWMClass=Typst IDE
+StartupWMClass=typst-ide
 MimeType=text/typst;
