@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-sambakati
+	pkgdesc = AIMP skin: Sambakati 1.0 (by amdpastrana)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-sambakati-689.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-sambakati-689.archive::https://aimp.ru/?do=catalog.download&id=689
+	sha256sums = bc793cc468e610d6593991a9115389838064251a37ec7545bff4dd4eee5d2365
+
+pkgname = aimp-skin-sambakati
