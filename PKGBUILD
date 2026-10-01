@@ -26,8 +26,10 @@ optdepends=(
   # oryginalne okna menedżera plików do przycisków „Pokaż w folderze”
   'nemo: pokazywanie zapisanych plików z zaznaczeniem (org.freedesktop.FileManager1 ShowItems)'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('01fd5458a1d8a9409d80a52205faa311655ae47e94c03aedaf24b175d09d6cc1')
+# Źródłem jest release asset v$pkgver, a NIE snapshot repo z taga — snapshot ciągnie
+# screenshoty i demo.gif (1,2 MB) tylko po to, żeby zainstalować 56 kB.
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/kadr-$pkgver.tar.gz")
+sha256sums=('f774e5f08941266955e360a8f78404a46f7983ecc480cc224c5d021dd7389e68')
 
 package() {
   cd "$pkgname-$pkgver"

@@ -15,7 +15,7 @@ pkgbase = kadr
 	optdepends = libtiff: TIFF
 	optdepends = libwebp: WebP
 	optdepends = nemo: pokazywanie zapisanych plików z zaznaczeniem (org.freedesktop.FileManager1 ShowItems)
-	source = kadr-1.0.0.tar.gz::https://github.com/look997/kadr/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 01fd5458a1d8a9409d80a52205faa311655ae47e94c03aedaf24b175d09d6cc1
+	source = kadr-1.0.0.tar.gz::https://github.com/look997/kadr/releases/download/v1.0.0/kadr-1.0.0.tar.gz
+	sha256sums = f774e5f08941266955e360a8f78404a46f7983ecc480cc224c5d021dd7389e68
 
 pkgname = kadr
