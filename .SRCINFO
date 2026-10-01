@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-morion
+	pkgdesc = AIMP skin: Morion 1.33 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-morion-889.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-morion-889.archive::https://aimp.ru/?do=catalog.download&id=889
+	sha256sums = 1652dbaad66dc6501f274226c8d5ce23d01fefb631a16336fdcbf8f158326a26
+
+pkgname = aimp-skin-morion
