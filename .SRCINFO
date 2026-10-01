@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-elfa-201
+	pkgdesc = AIMP skin: Elfa 201 1.42 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-elfa-201-1203.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-elfa-201-1203.archive::https://aimp.ru/?do=catalog.download&id=1203
+	sha256sums = 88a54365d33f82025d28d2c4f1bbfc61dc02add18b90ff5dddcde3344354cf25
+
+pkgname = aimp-skin-elfa-201
