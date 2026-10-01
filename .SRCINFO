@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-stalker-3
+	pkgdesc = AIMP skin: STALKER_3 1.0 (by Virys90)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-stalker-3-166.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-stalker-3-166.archive::https://aimp.ru/?do=catalog.download&id=166
+	sha256sums = 03bd02289608fd422fd75ead7668dde7bcca3dc83fbf71c5d328a2b97c7af248
+
+pkgname = aimp-skin-stalker-3
