@@ -4,7 +4,7 @@
 pkgname='aimp-skin-alfa-project'
 pkgdesc='AIMP skin: ALFA Project 1.0 (by AngelAG)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('76dd8a5bd428db8e80d3f364e5ef870e61f2b24e0e84963a128c925f0a104754')
 
 package() {
-  local dest="$pkgdir$_skinsdir/ALFA Project"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-alfa-project-82.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
