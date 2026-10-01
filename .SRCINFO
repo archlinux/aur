@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-violet
+	pkgdesc = AIMP skin: ViOLET 2.2 (by ELECTRON!CK)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-violet-208.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-violet-208.archive::https://aimp.ru/?do=catalog.download&id=208
+	sha256sums = eabdfbc46094592585c444695491090fb79c5103705da05f5f38d6a2178e0e40
+
+pkgname = aimp-skin-violet
