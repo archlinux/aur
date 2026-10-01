@@ -4,7 +4,7 @@
 pkgname='aimp-skin-lux-and-nox'
 pkgdesc='AIMP skin: Lux & Nox 1.11 (by Hades)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('bcf3cda198a3662dfc4ef948d88f5edd433d893f45efdde34840ab43db43499c')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Lux & Nox"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-lux-and-nox-1199.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
