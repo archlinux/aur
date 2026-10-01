@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-telefunken-magnetophon-77
+	pkgdesc = AIMP skin: Telefunken Magnetophon 77 1.73 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-telefunken-magnetophon-77-837.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-telefunken-magnetophon-77-837.archive::https://aimp.ru/?do=catalog.download&id=837
+	sha256sums = c9593c9a039415ee7da2b6489040ef10014a9bc8c6ba56cc50b4da147113d292
+
+pkgname = aimp-skin-telefunken-magnetophon-77
