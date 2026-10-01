@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-new-wave-long-full
 	pkgdesc = AIMP skin: New Wave (long_full) 1.0 (by SerogaPP)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
