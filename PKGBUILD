@@ -4,7 +4,7 @@
 pkgname='aimp-skin-ayonplayerblack'
 pkgdesc='AIMP skin: AyonPlayerBlack 1.0.5 (by Hayo Tee (aka HX722))'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('ab0c09b2e860f0a310147ffb37b6d7dd17dd345778a6d3fc61e908cd142dce6f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/AyonPlayerBlack"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-ayonplayerblack-356.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
