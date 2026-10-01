@@ -4,7 +4,7 @@
 pkgname='aimp-skin-m5n'
 pkgdesc='AIMP skin: M5n 1.2.9 (by amdpastrana)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('cb915821175a0cdfdb6537e6fb336d2f8d85e606a00d8ed336b4ebd9904ebb27')
 
 package() {
-  local dest="$pkgdir$_skinsdir/M5n"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-m5n-1246.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
