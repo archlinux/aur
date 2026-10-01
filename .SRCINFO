@@ -4,9 +4,8 @@ pkgbase = perp
 	pkgrel = 2
 	url = http://b0llix.net/perp/
 	install = perp.install
-	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	source = http://b0llix.net/perp/distfiles/perp-2.07.tar.gz
 	sha256sums = 1222fe31c16014d8b2a78416f93ba9f8c31eddbc381adc9021fa5d9764475815
 
