@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-bordercontrol-red
+	pkgdesc = AIMP skin: BorderControl Red 1.0 (by FreeZeek)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-bordercontrol-red-134.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-bordercontrol-red-134.archive::https://aimp.ru/?do=catalog.download&id=134
+	sha256sums = d10e84502606d290577d0dcadaac917d591ec8a2e6297d5a04452a82c01b78df
+
+pkgname = aimp-skin-bordercontrol-red
