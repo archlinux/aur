@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-equinox
+	pkgdesc = AIMP skin: Equinox 1.0 (by Black_AVP)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-equinox-1160.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-equinox-1160.archive::https://aimp.ru/?do=catalog.download&id=1160
+	sha256sums = 801ea08d45d3907e97a0b35fe0f449fd4c25dfbb805fa77ddd55c1f5068828f8
+
+pkgname = aimp-skin-equinox
