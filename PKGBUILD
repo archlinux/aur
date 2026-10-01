@@ -15,7 +15,7 @@
 #   cirrocast --version && man -w cirrocast && pacman -Ql cirrocast | grep -c completions   # 3
 
 pkgname=cirrocast
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Terminal weather client with pluggable backends and wttr.in-style output"
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'jq' 'rust')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/YangtseSu/cirrocast/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('05cde6d44bec6a60966a7e7c4fe8c6fe6e27aaa715ca6ba15e33646541fe0c5a')
+sha256sums=('9d6e3fd50093921beeba13d6a607154f505c54a1a739bc1e7a7c34c17a2a5993')
 
 # Rust's target triple for both supported architectures is exactly `<arch>-unknown-linux-gnu`, and
 # `$CARCH` already holds the architecture, so nothing has to be mapped by hand. There is no
