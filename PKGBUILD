@@ -4,7 +4,7 @@
 pkgname='aimp-skin-mmd3-rainbow-version'
 pkgdesc='AIMP skin: MMD3 Rainbow Version 2 (by SergiyAmator)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('3f3205ae4d130b525fe7b261dfb9ce59345052dc5f910285093060571223b279')
 
 package() {
-  local dest="$pkgdir$_skinsdir/MMD3 Rainbow Version"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-mmd3-rainbow-version-666.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
