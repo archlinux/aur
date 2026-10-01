@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-fl-skino-12
+	pkgdesc = AIMP skin: FL Skino 12 1.7.8 (by Magis)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-fl-skino-12-855.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-fl-skino-12-855.archive::https://aimp.ru/?do=catalog.download&id=855
+	sha256sums = 4900bfc632439962c55cc156bdff0b09d73c037acc715072cd8a089d4cedf6d5
+
+pkgname = aimp-skin-fl-skino-12
