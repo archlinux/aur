@@ -4,7 +4,7 @@
 pkgname='aimp-skin-infinite'
 pkgdesc='AIMP skin: Infinite 1.2 (by MaxAx)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('148c6f4ea8aa07dee333858656f77189d1b34e77b082c19f257abbac21e682c8')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Infinite"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-infinite-728.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
