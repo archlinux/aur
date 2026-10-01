@@ -1,7 +1,7 @@
 # Maintainer: tijko <tijko1@proton.me>
 
 pkgname=netlink
-pkgver=0.0.9
+pkgver=0.0.15
 pkgrel=1
 pkgdesc='asynchronous implementation of the Linux netlink protocol'
 arch=('x86_64')
