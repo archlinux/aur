@@ -1,5 +1,5 @@
 pkgname='linuxtoys-bin'
-pkgver='7.4.3'
+pkgver='7.4.4'
 pkgrel=1
 arch=('x86_64')
 depends=(bash git curl wget zenity appstream archlinux-appstream-data python python-gobject python-requests gtk3 vte3 sudo util-linux webp-pixbuf-loader)
@@ -7,7 +7,7 @@ makedepends=(rust cargo maturin python pkgconf patchelf gtk3)
 conflicts=(linuxtoys)
 provides=("linuxtoys=$pkgver")
 source=("https://github.com/psygreg/linuxtoys/releases/download/${pkgver}/linuxtoys-${pkgver}.tar.xz")
-sha256sums=('686234513e9924e7a57acc868ac59f62c34b036f2f2c1d0493fb2343eb40aa12')
+sha256sums=('bc5fd6c033d24fb764891d4f8d38f46ff194347174c870110aef31698f089585')
 options=(!lto)
 
 build() {
