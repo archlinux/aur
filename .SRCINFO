@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-vega-mp-120
+	pkgdesc = AIMP skin: Vega MP-120 1.61 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-vega-mp-120-573.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-vega-mp-120-573.archive::https://aimp.ru/?do=catalog.download&id=573
+	sha256sums = 7a7e6dd83c1b23926b48cf10b02960a01e43e873cd77cdd2891228e485b4483b
+
+pkgname = aimp-skin-vega-mp-120
