@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-skumfuk2
+	pkgdesc = AIMP skin: SKUMFUK2 1.0 (by Arthur «d1sapp3ar» Habirov)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-skumfuk2-553.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-skumfuk2-553.archive::https://aimp.ru/?do=catalog.download&id=553
+	sha256sums = 8819df9cad88e62bd6eb4466712375741131fedfc04ab9a0a03a57131260c8df
+
+pkgname = aimp-skin-skumfuk2
