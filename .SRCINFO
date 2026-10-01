@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-euphoria-reborn-flat
+	pkgdesc = AIMP skin: Euphoria Reborn Flat 1.0 (by DesweR)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-euphoria-reborn-flat-586.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-euphoria-reborn-flat-586.archive::https://aimp.ru/?do=catalog.download&id=586
+	sha256sums = 0e14bc82797dec78df3dca845093d793760b088bc605bdfd5f2e0ed86de6a9c4
+
+pkgname = aimp-skin-euphoria-reborn-flat
