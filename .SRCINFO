@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-synthetic-rmx
+	pkgdesc = AIMP skin: Synthetic RMX 1.0 (by AngelAG)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-synthetic-rmx-474.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-synthetic-rmx-474.archive::https://aimp.ru/?do=catalog.download&id=474
+	sha256sums = d4788109f7d887e63c47a11aa6776d41ea2f191eaeae67e7928cade411ed6799
+
+pkgname = aimp-skin-synthetic-rmx
