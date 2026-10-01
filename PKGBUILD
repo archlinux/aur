@@ -4,7 +4,7 @@
 pkgname='aimp-skin-ryze'
 pkgdesc='AIMP skin: Ryze 1.0.3 (by ScrollUnLock)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('25f69ead8946a1144e7095f0089ef14be623f82140bb17da7ebf246a2b92b449')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Ryze"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-ryze-406.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
