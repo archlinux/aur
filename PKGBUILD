@@ -4,7 +4,7 @@
 pkgname='aimp-skin-izh-rm-207s'
 pkgdesc='AIMP skin: ИЖ РМ-207С 1.14 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a8df46c204bd3573c3313fb8977d087ac62177236094d06cefd5aa376c411c5c')
 
 package() {
-  local dest="$pkgdir$_skinsdir/ИЖ РМ-207С"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-izh-rm-207s-1183.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
