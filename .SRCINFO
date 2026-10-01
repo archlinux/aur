@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-simpler
+	pkgdesc = AIMP skin: Simpler 1.0 (by Hammett)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-simpler-12.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-simpler-12.archive::https://aimp.ru/?do=catalog.download&id=12
+	sha256sums = 4a0d9462a5680695cc201bbedfa6b5e3e838a9a31406af9c10498c1a5ae71d99
+
+pkgname = aimp-skin-simpler
