@@ -4,7 +4,7 @@
 pkgname='aimp-skin-bliss-aio'
 pkgdesc='AIMP skin: Bliss AIO 2.5 (by Andreas Maker)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('73e4a2f81cc8f0f720ea1b997269dfe0b1f45e193c9524e3bc476f6f31e8b6dd')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Bliss AIO"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-bliss-aio-1108.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
