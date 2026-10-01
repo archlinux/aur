@@ -3,17 +3,15 @@
 
 pkgname=acc
 pkgver=1.60
-pkgrel=2
+pkgrel=3
 pkgdesc='ACS script compiler for use with ZDoom and/or Hexen'
 arch=('i686' 'x86_64')
 url='https://github.com/rheit/acc'
 license=('custom:EULA')
 depends=('glibc')
 makedepends=('cmake')
-source=("https://github.com/ZDoom/acc/archive/refs/tags/${pkgver}.tar.gz"
-        'http://www.doomworld.com/eternity/activision_eula.txt')
-sha256sums=('39add3cb28491086f286896f56f2bcab23dc463d1bf387f90f462c11a167c0ab'
-            'd1dd96235e883c638e202715039946fac58f2979e1f11cb2bbe2a24eefb5fe9a')
+source=("https://github.com/ZDoom/acc/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('39add3cb28491086f286896f56f2bcab23dc463d1bf387f90f462c11a167c0ab')
 
 prepare() {
     cd acc-${pkgver}
@@ -40,7 +38,4 @@ package() {
     install -m644 zdefs.acs "$pkgdir"/usr/share/acc/
     install -m644 zspecial.acs "$pkgdir"/usr/share/acc/
     install -m644 zwvars.acs "$pkgdir"/usr/share/acc/
-
-    install -m644 "$srcdir"/activision_eula.txt \
-                  "$pkgdir"/usr/share/licenses/$pkgname/
 }
