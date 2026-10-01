@@ -4,7 +4,7 @@
 pkgname='aimp-skin-web-light'
 pkgdesc='AIMP skin: Web Light 1.0.1 (by orishaka)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('af414405b85a35f1f7d276e9c3e0c2e66bb03a799a9a1f245b6061d520795479')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Web Light"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-web-light-323.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
