@@ -4,7 +4,7 @@
 pkgname='aimp-skin-kibtech-2-5-white'
 pkgdesc='AIMP skin: KibTech 2.5 White 1.0 (by kibermanick)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('4310d37b48f804ac2c75685175c673994849c1fd5f6ece1a9145983ab46ad6c4')
 
 package() {
-  local dest="$pkgdir$_skinsdir/KibTech 2.5 White"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-kibtech-2-5-white-635.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
