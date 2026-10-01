@@ -1,0 +1,40 @@
+pkgbase = eitri-git
+	pkgdesc = Your Neovim, with a readable Claude Code panel beside it (built from source)
+	pkgver = 0.2.0.0.gd0d362e
+	pkgrel = 1
+	url = https://github.com/HunterGrey-cyber/eitri
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	license = LGPL-3.0-only
+	license = MPL-2.0
+	license = LicenseRef-Anthropic-Claude-Agent-SDK
+	makedepends = git
+	makedepends = cargo
+	makedepends = clang
+	makedepends = pkgconf
+	makedepends = protobuf
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = curl
+	depends = gtk4
+	depends = webkitgtk-6.0
+	depends = glibc
+	depends = gcc-libs
+	optdepends = neovim: the editor (any nvim >= 0.10 on PATH)
+	optdepends = claude-code: the Claude Code CLI the panel drives
+	optdepends = noto-fonts: the ⏵⏵ mode glyph
+	provides = eitri
+	conflicts = eitri
+	options = !strip
+	options = !lto
+	source = eitri-git::git+https://github.com/HunterGrey-cyber/eitri.git
+	source = neovide::git+https://github.com/HunterGrey-cyber/neovide.git#branch=neovibe-integration
+	source = verdandi::git+https://github.com/HunterGrey-cyber/verdandi.git
+	source = node-v22.23.2-linux-x64.tar.xz::https://nodejs.org/dist/v22.23.2/node-v22.23.2-linux-x64.tar.xz
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = d60acfe00a2932254bb0ad20e01b0d74397a0875595de719654b214f4b03f307
+
+pkgname = eitri-git
