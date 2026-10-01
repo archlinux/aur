@@ -1,14 +1,13 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=parqeye
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Peek inside Parquet files right from your terminal'
 arch=('x86_64' 'aarch64')
 url='https://github.com/kaushiksrini/parqeye'
 license=('MIT')
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=('cargo')
-provides=('parqeye')
 conflicts=('parqeye-bin')
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
