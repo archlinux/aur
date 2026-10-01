@@ -4,7 +4,7 @@
 pkgname='aimp-skin-gravity-new-year'
 pkgdesc='AIMP skin: Gravity - New Year 1.0 (by Raider01)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('08f0385db67f46dee477e5ec9ddd9355cc9cb994dfb1a487c88f37d147b15f05')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Gravity - New Year"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-gravity-new-year-498.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
