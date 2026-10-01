@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-dark-night
 	pkgdesc = AIMP skin: Dark night 1.01 (by superziaba)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

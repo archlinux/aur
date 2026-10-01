@@ -4,7 +4,7 @@
 pkgname='aimp-skin-dark-night'
 pkgdesc='AIMP skin: Dark night 1.01 (by superziaba)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('2e9800b16c36c7cfa4ae6e78e8ebb35e860abda39f5dcc58faf4674305f0d457')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Dark night"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-dark-night-126.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
