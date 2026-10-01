@@ -4,7 +4,7 @@
 pkgname='aimp-skin-zoom'
 pkgdesc='AIMP skin: Zoom 1.0 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d507eb17a303d62c77d019aa3e2f0933c1376c3d6527e79b3a45e24fb14e1324')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Zoom"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-zoom-225.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
