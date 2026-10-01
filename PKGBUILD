@@ -1,7 +1,7 @@
 # Maintainer: devcxl <64475363+devcxl@users.noreply.github.com>
 
 pkgname=fcitx5-voice-input
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Fcitx5 voice input addon with OpenAI-compatible and Volcengine Doubao ASR"
 arch=('x86_64')
@@ -21,8 +21,8 @@ optdepends=(
     'pipewire: PipeWire direct capture fallback backend'
 )
 makedepends=('cmake' 'pkg-config' 'gettext' 'pipewire')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/devcxl/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ab5969c3072da66c74ac773e8fb4f7a85f339ffdc82538cc63be90e1fc80a852')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/devcxl/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('92c77d6a1db877d5f35cfae90db4b56a470923237ea85285e84400a7679ad363')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
