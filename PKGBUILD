@@ -4,7 +4,7 @@
 pkgname='aimp-skin-winclassic'
 pkgdesc='AIMP skin: WinClassic 1.3 (by Iv_)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('87f56738d39265f61c2fe82ba8b942e0ac95dd25a1928082d87be27d0320ba53')
 
 package() {
-  local dest="$pkgdir$_skinsdir/WinClassic"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-winclassic-149.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
