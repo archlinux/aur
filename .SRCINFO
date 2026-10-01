@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-yauza-207
+	pkgdesc = AIMP skin: Yauza 207 1.86 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-yauza-207-901.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-yauza-207-901.archive::https://aimp.ru/?do=catalog.download&id=901
+	sha256sums = a0d9c1ac2ef49b76166e7b5e8e4c877cbba8acd1de5f61d3944368e71d4009a7
+
+pkgname = aimp-skin-yauza-207
