@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-8-bit
 	pkgdesc = AIMP skin: 8-bit 2.1 (by samix)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
