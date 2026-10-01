@@ -1,0 +1,16 @@
+pkgbase = jstart
+	pkgdesc = Lightweight launcher for jar/war and native (tar.gz) Java artifacts
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/beangle/jstart
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = ldc
+	makedepends = dub
+	makedepends = git
+	depends = curl
+	optdepends = jre-openjdk: run jar/war targets (native tar.gz targets need no JVM)
+	source = git+https://github.com/beangle/jstart.git#tag=v0.0.1
+	sha256sums = SKIP
+
+pkgname = jstart
