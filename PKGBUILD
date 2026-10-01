@@ -4,7 +4,7 @@
 pkgname='aimp-skin-element'
 pkgdesc='AIMP skin: Element 3 (by Henrique Oliveira)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c5fb6393c7cf5b1ece79aaf5806cc579e8251dee3f6a74539bda24f6e8da3b71')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Element"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-element-377.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
