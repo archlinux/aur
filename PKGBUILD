@@ -4,7 +4,7 @@
 pkgname='aimp-skin-telefunken-magnetophon-77'
 pkgdesc='AIMP skin: Telefunken Magnetophon 77 1.73 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c9593c9a039415ee7da2b6489040ef10014a9bc8c6ba56cc50b4da147113d292')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Telefunken Magnetophon 77"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-telefunken-magnetophon-77-837.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
