@@ -4,7 +4,7 @@
 pkgname='aimp-skin-xdj-ii'
 pkgdesc='AIMP skin: XDJ II 1.0 (by Hayo Tee (aka HX722))'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c540dfc0c47c0092b00be4a86bf0f6f60c0bb845e76658c3e6f9ad3724e1155a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/XDJ II"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-xdj-ii-439.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
