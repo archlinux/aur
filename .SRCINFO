@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-cd-box
+	pkgdesc = AIMP skin: CD-BOX 1.0 (by Neon)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-cd-box-913.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-cd-box-913.archive::https://aimp.ru/?do=catalog.download&id=913
+	sha256sums = d4b238821c110ee3e2e200d564a23e9a234799ed42e05dbfc0371b2fd0eca4c9
+
+pkgname = aimp-skin-cd-box
