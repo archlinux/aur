@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-eternal
+	pkgdesc = AIMP skin: Eternal 1.0 (by Virys90)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-eternal-223.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-eternal-223.archive::https://aimp.ru/?do=catalog.download&id=223
+	sha256sums = 303ac2833ab9b4a79f05fa8ec8a2eb95aa38007948bbdb9c03b2f3b33b9a9551
+
+pkgname = aimp-skin-eternal
