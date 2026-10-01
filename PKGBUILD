@@ -4,7 +4,7 @@
 pkgname='aimp-skin-quiny'
 pkgdesc='AIMP skin: Quiny 1.1 (by Aleksandr009)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('e4a14edb7ec4bb7af955d205e598e13958c24173e17974a7e5b1be699ab1b0c0')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Quiny"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-quiny-450.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
