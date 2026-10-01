@@ -6,7 +6,7 @@
 pkgname='python-qh3-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=2.0.3.r0.gbeb0837
+pkgver=2.0.4.r0.g8a80f8f
 pkgrel=1
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (development version)'
 arch=('aarch64' 'x86_64')
