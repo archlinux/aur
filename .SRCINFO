@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-aurorae
+	pkgdesc = AIMP skin: Aurorae 1.6 (by FEI)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-aurorae-351.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-aurorae-351.archive::https://aimp.ru/?do=catalog.download&id=351
+	sha256sums = 17957d581ae95c1a2fc8d91bd7714e5ba696349b77b945560e964ca164f5c785
+
+pkgname = aimp-skin-aurorae
