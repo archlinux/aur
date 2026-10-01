@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-nguvu-aio
+	pkgdesc = AIMP skin: NGuvu AIO 2.01 (by ScrollUnLock)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-nguvu-aio-355.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-nguvu-aio-355.archive::https://aimp.ru/?do=catalog.download&id=355
+	sha256sums = 5d3874a9a5ba3d86210e7185f0998a11513571cf911c24781313fdb8fd87b3a0
+
+pkgname = aimp-skin-nguvu-aio
