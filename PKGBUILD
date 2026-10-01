@@ -4,7 +4,7 @@
 pkgname='aimp-skin-eres-blue'
 pkgdesc='AIMP skin: Eres Blue 2 (by ReZaK)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('fdf5057757cd50b832665ae64a71432f1725ca875972a7da969b0fcdf6fa1549')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Eres Blue"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-eres-blue-200.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
