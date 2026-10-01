@@ -4,7 +4,7 @@
 pkgname='aimp-skin-teac-v-8bl-4k'
 pkgdesc='AIMP skin: Teac V-8BL 4K 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('0b6b02c49e469d829c4fd0eff14df000efa765e077be0eb7b91fea7c7cca5a4f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Teac V-8BL 4K"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-teac-v-8bl-4k-1352.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
