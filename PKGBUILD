@@ -4,7 +4,7 @@
 pkgname='aimp-skin-koyna-rn'
 pkgdesc='AIMP skin: Koyna RN 3.33 (by samix)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('7d22e7c0cc6b6fd92f9c3c693a49b38765bc26d202beabb71399d7d306040046')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Koyna RN"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-koyna-rn-1040.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
