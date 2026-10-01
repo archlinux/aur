@@ -4,7 +4,7 @@
 pkgname='aimp-skin-sony-es-style-black'
 pkgdesc='AIMP skin: Sony ES-Style Black 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('699c70ea6dc0ebd33466bfef9b1257305617a5ec85e84d1e8c0b68cfb5a64b91')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Sony ES-Style Black"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-sony-es-style-black-395.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
