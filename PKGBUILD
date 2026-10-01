@@ -8,7 +8,7 @@ pkgdesc="Dependency-Check is a Software Composition Analysis (SCA) tool that att
 arch=('any')
 depends=('java-runtime')
 url="https://github.com/dependency-check/DependencyCheck"
-license=('Apache')
+license=('Apache-2.0')
 source=("${url}/releases/download/v${pkgver}/${pkgname%%-cli}-${pkgver}-release.zip")
 install=${pkgname}.install
 
@@ -18,7 +18,7 @@ package() {
 
   cp -r "${srcdir}/${pkgname%%-cli}/"* \
     "${pkgdir}/opt/${pkgname%%-cli}"
-  chmod +x ${pkgdir}/opt/${pkgname%%-cli}/bin/dependency-check.sh
+  chmod +x "${pkgdir}/opt/${pkgname%%-cli}/bin/dependency-check.sh"
   ln -s /opt/${pkgname%%-cli}/bin/dependency-check.sh \
     "${pkgdir}"/usr/bin/dependency-check
 }
