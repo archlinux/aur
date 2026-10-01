@@ -4,7 +4,7 @@
 pkgname='aimp-skin-skif-310-1s'
 pkgdesc='AIMP skin: Скиф 310-1с 1.1 (by Пупс)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('dd6020e3ca280fb92075984f9f29a8d36ccba82e4e20e45e15c79200371d88c1')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Скиф 310-1с"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-skif-310-1s-710.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
