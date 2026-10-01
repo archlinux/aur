@@ -3,9 +3,9 @@
 _pkgname=firedragon
 __pkgname=$_pkgname
 _rdns=org.garudalinux.$__pkgname
-_pkgver=13.6.1
+_pkgver=13.7.0
 _branding=dr460nized
-_gentoo=firefox-156-patches-02.tar.xz
+_gentoo=firefox-157-patches-01.tar.xz
 _gentoo_exclude=(0015-bgo-940031-wasm-support-firefox-155.patch)
 
 pkgname=$__pkgname
@@ -84,8 +84,8 @@ install=$_pkgname.install
 noextract=($_gentoo)
 source=($_pkgname-v$_pkgver.source.tar.xz::$url/-/releases/v$_pkgver/downloads/$_pkgname.source.tar.xz
   https://dev.gentoo.org/~juippis/mozilla/patchsets/$_gentoo)
-sha256sums=('c70cf0085affef7e64919d31021b9a7dc457a951bc3b59b999653016b376916c'
-  'd6ed0e9ebec82a2021a6dc3581c74d5d655119f7a307382d4ea5d04ff80328f4')
+sha256sums=('beaf2b553844988970554f8c840662ebae5499824fb57c1b9c9783e652a1a371'
+  'e615f4512a4faf9b8cd96ff5484875176a3c636083966659f65260cc64737060')
 
 prepare() {
   mkdir -p mozbuild
@@ -94,6 +94,13 @@ prepare() {
   for patch in $(tar -tf "$srcdir/$_gentoo" --wildcards '*.patch' $(printf -- '--exclude=%s' "${_gentoo_exclude[@]}")); do
     tar -Oxf "$srcdir/$_gentoo" "$patch" | patch -Nsp1
   done
+
+  sed \
+    -e 's/0f2f824025f41ef946ef880c4a1558241eec47a39e4f2f0a776a5c200e99f841/e8fc29cdc934a795fe6afc87f221c6a5b01ec14f12563b4e612a588338b985d1/' \
+    -e 's/19563df9fac942eeb0d4fd240300815f3d8bf8cd6451fd625eff0768b6c448d8/3f8495eddbcfe17db3d5f11738ad990f536cb2eae314551d9c1ababe7bc8fbd5/' \
+    -e 's/2a229e98f65ac2c7ae5e9e866a5f945b0488fd7a61b2a8a1c6cf28b6827b7667/19e920817230f44f9a81558915596cbd93f9166025224002fc5654758e1df2b1/' \
+    -e 's/7b15213f4ca1c0241fddd0483397a68ceeafe33029d3056ac83b58d56833649b/5c1d506a889fe866baa6b65438def12cdb531443b12f53ee923ce41a9a95aacc/' \
+    -i third_party/rust/bindgen/.cargo-checksum.json
 
   echo ". \"\$topsrcdir/browser/$_pkgname/mozconfig/edition/$_pkgname-$_branding.mozconfig\"" > ../mozconfig
   export FIREDRAGON_EDITION=$_branding
