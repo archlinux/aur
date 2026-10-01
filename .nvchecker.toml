@@ -1,0 +1,3 @@
+[python-aiowinreg]
+source = "pypi"
+pypi = "aiowinreg"
