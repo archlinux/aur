@@ -1,7 +1,7 @@
 # Maintainer: SLIGHTLKE <SLIGHTLKE@outlook.com>
 pkgname=obs-studio-appimage
-pkgver=32.2.2
-pkgrel=2.6
+pkgver=32.2.2.2.6
+pkgrel=1
 pkgdesc="OBS-Studio package based on AppImage"
 arch=('x86_64')
 url="https://github.com/ivan-hc/OBS-Studio-appimage"
@@ -10,7 +10,7 @@ optdepends=('xdg-utils')
 options=(!strip)
 
 source=(
-  "OBS-Studio_32.2.2-2.6-archimage5.0-full-x86_64.AppImage ::https://github.com/ivan-hc/OBS-Studio-appimage/releases/download/continuous/OBS-Studio_32.2.2-2.6-archimage5.0-full-x86_64.AppImage"
+  "OBS-Studio_32.2.2-2.6-archimage5.0-full-x86_64.AppImage::https://github.com/ivan-hc/OBS-Studio-appimage/releases/download/continuous/OBS-Studio_32.2.2-2.6-archimage5.0-full-x86_64.AppImage"
   "LICENSE::https://www.gnu.org/licenses/gpl-3.0.txt"
 )
 
