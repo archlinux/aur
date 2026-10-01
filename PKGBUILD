@@ -4,7 +4,7 @@
 pkgname='aimp-skin-cpro-insomnis'
 pkgdesc='AIMP skin: cPro Insomnis 1.1 (by HuLk)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f09c68317d29a275c5f3e3667148a11577f302ffe0d2a130defa1cdba66b87a3')
 
 package() {
-  local dest="$pkgdir$_skinsdir/cPro Insomnis"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-cpro-insomnis-107.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
