@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-sony-media-tower-reborn
 	pkgdesc = AIMP skin: Sony Media Tower Reborn 1.31 (by IK94)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

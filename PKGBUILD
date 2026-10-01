@@ -4,7 +4,7 @@
 pkgname='aimp-skin-sony-media-tower-reborn'
 pkgdesc='AIMP skin: Sony Media Tower Reborn 1.31 (by IK94)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a03fed3efe039f0b92d2c3777cfc262afa5da8a6055562eb7efbd361251a1d32')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Sony Media Tower Reborn"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-sony-media-tower-reborn-905.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
