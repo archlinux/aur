@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-black-glass-294
+	pkgdesc = AIMP skin: Black Glass 3.1 (by San4o)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-black-glass-294-294.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-black-glass-294-294.archive::https://aimp.ru/?do=catalog.download&id=294
+	sha256sums = 9b5a7208200ff6afbfa6a776b33ca00bc21fb09d0a4c9a4b8b213ec307310ae2
+
+pkgname = aimp-skin-black-glass-294
