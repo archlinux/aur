@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-aqua
+	pkgdesc = AIMP skin: AQUA 1.1 (by ELECTRON!CK)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-aqua-196.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-aqua-196.archive::https://aimp.ru/?do=catalog.download&id=196
+	sha256sums = 0fc4088667761d1e17a5bf5e93ab08515eec44e24858aa68d30a7de91cd1e174
+
+pkgname = aimp-skin-aqua
