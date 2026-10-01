@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-light-out
+	pkgdesc = AIMP skin: Light Out 1.0.4 (by Aggro)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-light-out-494.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-light-out-494.archive::https://aimp.ru/?do=catalog.download&id=494
+	sha256sums = 2ce2fff5dea44cdf64a8e804e8a80ffa4e50a7549f790e371a88af564bc382f0
+
+pkgname = aimp-skin-light-out
