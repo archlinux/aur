@@ -5,14 +5,33 @@
 # Contributor: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm
-pkgver=1.103.0
+pkgver=1.103.2
 pkgrel=1
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=('any')
 url='https://github.com/BerriAI/litellm'
 license=('MIT')
-makedepends=('python-maturin' 'python-build' 'python-installer' 'python-wheel')
-depends=('python' 'python-fastuuid' 'python-httpx' 'python-openai' 'python-dotenv' 'python-tiktoken' 'python-importlib-metadata' 'python-tokenizers' 'python-click' 'python-jinja' 'python-aiohttp' 'python-pydantic' 'python-pydantic-settings' 'python-jsonschema' 'python-boto3' 'glibc' 'libgcc')
+makedepends=('python-maturin'
+             'python-build'
+             'python-installer'
+             'python-wheel')
+depends=('python'
+         'python-fastuuid'
+         'python-httpx'
+         'python-openai'
+         'python-dotenv'
+         'python-tiktoken'
+         'python-importlib-metadata'
+         'python-tokenizers'
+         'python-click'
+         'python-jinja'
+         'python-aiohttp'
+         'python-pydantic'
+         'python-pydantic-settings'
+         'python-jsonschema'
+         'python-boto3'
+         'glibc'
+         'libgcc')
 optdepends=('gunicorn: proxy'
             'uvicorn: proxy'
             'python-granian: proxy'
@@ -114,7 +133,7 @@ optdepends=('gunicorn: proxy'
 provides=("python-${pkgname}")
 options=(!lto !strip)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4b0155e6147529b489f8ff62eacac52504be61c20ce3cc2e44b971e55b4b711f')
+sha256sums=('fa4f6f158bb6e9da41958fe57dd292ac851f23ecceb75b50e70177255e291d3b')
 
 prepare() {
   cd "${srcdir}"/${pkgname}-${pkgver}/
