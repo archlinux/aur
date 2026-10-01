@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-rubin
+	pkgdesc = AIMP skin: Rubin 1.2 (by Demcha)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-rubin-411.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-rubin-411.archive::https://aimp.ru/?do=catalog.download&id=411
+	sha256sums = 806898dffa80091dcbd84159bbc7be82f7cd2783f4d3888ecac60a4cd1e9af36
+
+pkgname = aimp-skin-rubin
