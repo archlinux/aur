@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-wimo
+	pkgdesc = AIMP skin: WiMo 1.1 (by ZeoN7)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-wimo-608.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-wimo-608.archive::https://aimp.ru/?do=catalog.download&id=608
+	sha256sums = 4f0211168b751378b39febf03e11f56b22d52f3caee487d91c0316ba855934c5
+
+pkgname = aimp-skin-wimo
