@@ -4,7 +4,7 @@
 pkgname='aimp-skin-flat-dark'
 pkgdesc='AIMP skin: FLAT|DARK 2.1.2 (by w7rus)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('b0da45a3cc3f833a230352f359e189bb002a29f9040394b7176eaba23b050aff')
 
 package() {
-  local dest="$pkgdir$_skinsdir/FLAT_DARK"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-flat-dark-869.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
