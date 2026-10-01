@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-nude
+	pkgdesc = AIMP skin: Nude 1.0 (by San4o)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-nude-92.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-nude-92.archive::https://aimp.ru/?do=catalog.download&id=92
+	sha256sums = 8e0cbb3a07f25ae096fb7fb3c67882360eedf38985a613b7839678844a989ad2
+
+pkgname = aimp-skin-nude
