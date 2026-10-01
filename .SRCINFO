@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-asc-as6002s
+	pkgdesc = AIMP skin: ASC AS6002S 1.27 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-asc-as6002s-1354.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-asc-as6002s-1354.archive::https://aimp.ru/?do=catalog.download&id=1354
+	sha256sums = 4b19bdad3cf19da99dd480016e40c3f07a132d98430b5ea61ba0dd31e3c888be
+
+pkgname = aimp-skin-asc-as6002s
