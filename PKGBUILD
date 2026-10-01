@@ -4,7 +4,7 @@
 pkgname='aimp-skin-sento-dark-elegance'
 pkgdesc='AIMP skin: Sento Dark Elegance 1.1 (by Zigar)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('b85f5aef6951c93222eb65055712a942ed14c82958e859403c8096932ae992af')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Sento Dark Elegance"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-sento-dark-elegance-684.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
