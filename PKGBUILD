@@ -4,7 +4,7 @@
 pkgname='aimp-skin-groover'
 pkgdesc='AIMP skin: Groover 3.2 (by laziem)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('1d8b1e4e91bb59a662c610ff528afc628efe2798494f45ec9c4f962e9f0e6012')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Groover"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-groover-1221.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
