@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-lx-tix
+	pkgdesc = AIMP skin: LX-tix 4.2 (by Starkad)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-lx-tix-749.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-lx-tix-749.archive::https://aimp.ru/?do=catalog.download&id=749
+	sha256sums = 7e3d46cc1b0c699d3788bf4a2cb19e0fcb12761e4441f64f81c56808a167cfdd
+
+pkgname = aimp-skin-lx-tix
