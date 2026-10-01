@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-byg
 	pkgdesc = AIMP skin: BYG 1.5 (by Mery Dev)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

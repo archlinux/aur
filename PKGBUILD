@@ -4,7 +4,7 @@
 pkgname='aimp-skin-byg'
 pkgdesc='AIMP skin: BYG 1.5 (by Mery Dev)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('42bdc36c3b12297e40905d3d52ce37414693ba614b24c08414b9c42d8383582e')
 
 package() {
-  local dest="$pkgdir$_skinsdir/BYG"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-byg-158.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
