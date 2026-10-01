@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-ace-of-hz
+	pkgdesc = AIMP skin: Ace of Hz 1.1 (by electro)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-ace-of-hz-676.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-ace-of-hz-676.archive::https://aimp.ru/?do=catalog.download&id=676
+	sha256sums = 815de0119e1f17b0047ad66c95a6394c746e164386db4ef0308073941b895f2b
+
+pkgname = aimp-skin-ace-of-hz
