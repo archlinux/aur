@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-nota-203-1-stereo
+	pkgdesc = AIMP skin: НОТА 203-1 стерео 3.0 (by Пупс)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-nota-203-1-stereo-729.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-nota-203-1-stereo-729.archive::https://aimp.ru/?do=catalog.download&id=729
+	sha256sums = a8ace4379782ab3656dc9de8fdfef98009f8ed559c80a456e79053d78578bee9
+
+pkgname = aimp-skin-nota-203-1-stereo
