@@ -1,0 +1,24 @@
+pkgbase = hamconnect-bin
+	pkgdesc = HamConnect is an application that connects your local logger with hamaward.cloud
+	pkgver = 25.12.0
+	pkgrel = 7
+	url = https://hamaward.cloud/
+	arch = x86_64
+	license = unknown
+	depends = brotli
+	depends = bzip2
+	depends = freetype2
+	depends = glibc
+	depends = harfbuzz
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libglvnd
+	depends = libstdc++
+	depends = libx11
+	depends = libxcb
+	depends = zlib
+	options = !strip
+	source_x86_64 = HamConnect-25.12.0-linux.AppImage::https://hamaward.cloud/static/HC/HamConnect-25.12.0-linux.AppImage
+	sha256sums_x86_64 = 293f0fd67cc6c3cfc6dffa9d80201d237d9a5eef8b6e0052574c98dab7fae44a
+
+pkgname = hamconnect-bin
