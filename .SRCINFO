@@ -1,7 +1,7 @@
 pkgbase = libxdf
 	pkgdesc = A C++ library for loading XDF files
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xdf-modules/libxdf
 	arch = x86_64
 	license = GPL

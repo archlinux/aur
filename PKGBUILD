@@ -1,7 +1,7 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=libxdf
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ library for loading XDF files"
 arch=('x86_64')
 url="https://github.com/xdf-modules/libxdf"
@@ -13,15 +13,23 @@ sha256sums=('e1b1b3461bbc26f6ff062167eb371fa3f150ac0ce32a9b8495a3ef6e6b99115c')
 
 build() {
   cd "$srcdir/libxdf-$pkgver"
-  cmake -B build -DCMAKE_BUILD_TYPE=Release
+  cmake -B build \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=OFF \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DXDF_NO_SYSTEM_PUGIXML=ON
   cmake --build build
-  cmake -B build_shared -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON
+
+  cmake -B build_shared \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=ON \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DXDF_NO_SYSTEM_PUGIXML=ON
   cmake --build build_shared
 }
 
 package() {
   cd "$srcdir/libxdf-$pkgver"
-  install -Dm644 xdf.h "$pkgdir/usr/include/xdf.h"
-  install -Dm644 build/libxdf.a "$pkgdir/usr/lib/libxdf.a"
-  install -Dm755 build_shared/libxdf.so "$pkgdir/usr/lib/libxdf.so"
+  DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build_shared
 }
