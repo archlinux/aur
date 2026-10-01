@@ -1,12 +1,12 @@
 # Maintainer: robertfoster
 
 pkgname=jacklistener-git
-pkgver=r51.2e73f72
+pkgver=r52.4a03870
 pkgrel=1
 pkgdesc="Jack Listener Daemon (jack-sensing)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/gentoo-root/jacklistener"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('dbus' 'udev')
 optdepends=("jackeventcmd-git: Run custom commands when headphones are (un)plugged"
   "jacknotifier-git: Headphones Jack Notification Daemon"
