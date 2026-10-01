@@ -4,7 +4,7 @@
 pkgname='aimp-skin-kenwood-kx-4520'
 pkgdesc='AIMP skin: Kenwood KX-4520 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('e3e19d56530437b5fa12db1fc0c28440b14ddfe737044fdeef8ff7086e8c1b5b')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Kenwood KX-4520"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-kenwood-kx-4520-512.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
