@@ -4,7 +4,7 @@
 pkgname='aimp-skin-kibtech-skin-aio'
 pkgdesc='AIMP skin: Kibtech skin AIO 1.0 (by kibermanick)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('7ba91a2230e02fe2d00c70ab85bb6328767a291c0094db2c0a0ed2949a3dcae3')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Kibtech skin AIO"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-kibtech-skin-aio-535.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
