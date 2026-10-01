@@ -4,7 +4,7 @@
 pkgname='aimp-skin-technics-audio-system'
 pkgdesc='AIMP skin: Technics Audio System 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('472ec4d2dab4e9eaf5bfe97a38c4ced40b2b44cae0631f2b85b2f663c5ff4f52')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Technics Audio System"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-technics-audio-system-1047.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
