@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-reflex
+	pkgdesc = AIMP skin: Reflex 2.4 (by Sergio7786)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-reflex-536.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-reflex-536.archive::https://aimp.ru/?do=catalog.download&id=536
+	sha256sums = 69d34ab7a350432d2fa1c768928ef4b93ff3536b33098f8358a04c0b893cca0d
+
+pkgname = aimp-skin-reflex
