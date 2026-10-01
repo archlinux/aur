@@ -4,7 +4,7 @@
 pkgname='aimp-skin-enslate'
 pkgdesc='AIMP skin: Enslate 1.0 (by Nitehost)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('aab6f8368769dfe8b04934d6056ec4777b58f12b90e8c31ae86ec716bef7bc95')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Enslate"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-enslate-174.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
