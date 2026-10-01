@@ -4,7 +4,7 @@
 pkgname='aimp-skin-eclipse'
 pkgdesc='AIMP skin: Eclipse 2.4 (by Arindel)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('7c0c2a7687f4d5b15a6a4a09965c09020327c27246ddbdb76a1d8b9f63c00053')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Eclipse"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-eclipse-393.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
