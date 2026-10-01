@@ -6,7 +6,6 @@ pkgbase = lib32-vgui
 	arch = x86_64
 	license = CUSTOM
 	source = lib32-vgui::git+https://github.com/FWGS/vgui-dev
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = lib32-vgui
-
