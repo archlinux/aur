@@ -1,0 +1,22 @@
+pkgbase = phone-mirror
+	pkgdesc = Mirror an Android phone or use its camera as a webcam, over Wi-Fi or USB (Qt front-end for scrcpy)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Dragonir44/phone-mirror
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = pyside6
+	depends = scrcpy
+	depends = android-tools
+	optdepends = v4l2loopback-dkms: phone camera as a webcam (not needed if your kernel ships v4l2loopback, e.g. CachyOS)
+	optdepends = qt6-tools: keep the mirror window on top under KDE Plasma Wayland (qdbus6)
+	optdepends = libnotify: desktop notifications (notify-send)
+	source = https://files.pythonhosted.org/packages/source/p/phone_mirror/phone_mirror-0.1.0.tar.gz
+	sha256sums = 1b51b883998645b92000fbee28f8b270a20f0254b08c7fe130fa8e1352b59bfb
+
+pkgname = phone-mirror
