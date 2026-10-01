@@ -4,7 +4,7 @@
 pkgname='aimp-skin-eske'
 pkgdesc='AIMP skin: Eske 1.5 (by Mery Dev)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('646b924aaacbd323babb600053fc4aaf3d256337d61e36cd6232999e442e539b')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Eske"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-eske-159.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
