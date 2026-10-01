@@ -4,7 +4,7 @@
 pkgname='aimp-skin-untitled'
 pkgdesc='AIMP skin: Untitled 1.0 (by RaDMaN)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('98d389d5f5fff2f107a8f96f33844b7d1167ffaca77e29a189262a53a5dcff08')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Untitled"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-untitled-432.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
