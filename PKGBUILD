@@ -2,7 +2,7 @@
 # Contributor: ajs124 < aur AT ajs124 DOT de >
 
 pkgname=trosh
-pkgver=1.2
+pkgver=1.2 # renovate: datasource=github-tags depName=M0Rf30/trosh
 pkgrel=2
 pkgdesc="Trosh: The Movie: The Game"
 arch=('any')
