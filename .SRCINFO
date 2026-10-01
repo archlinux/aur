@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-collector-s-terminal
 	pkgdesc = AIMP skin: Collector's Terminal 1.0 (by Hive17)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
