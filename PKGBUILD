@@ -4,7 +4,7 @@
 pkgname='aimp-skin-jd-vifaru'
 pkgdesc='AIMP skin: JD Vifaru 1.0 (by GreenEyesMan)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d66b962e6103a4915a24babb66c4e651a74aff56cce338a151fc589ac3dd00b2')
 
 package() {
-  local dest="$pkgdir$_skinsdir/JD Vifaru"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-jd-vifaru-452.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
