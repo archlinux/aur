@@ -1,6 +1,6 @@
 pkgbase = 3x-ui-xray-core
 	pkgdesc = Xray, Penetrates Everything. Also the best v2ray-core (for *x-ui)
-	pkgver = 26.9.9
+	pkgver = 26.9.30
 	pkgrel = 1
 	url = https://github.com/XTLS/Xray-core
 	install = 3x-ui-xray-core.install
@@ -14,8 +14,8 @@ pkgbase = 3x-ui-xray-core
 	provides = x-ui-xray-core
 	conflicts = x-ui-xray-core
 	options = !debug
-	source = https://github.com/XTLS/Xray-core/archive/v26.9.9/3x-ui-xray-core-26.9.9.tar.gz
-	sha256sums = efb871a981690688191433a76beef7afdab6750d53cc1775cf8e9e995730ef22
-	b2sums = 8f5ea85ecbede2c1d6320cf23e8da2d71b44950ef9279f8419cc7527e56c886b1622a41837a66d9c338cc124a5d7ec8174a287d5881ffe170cc6784d4b1c8b1f
+	source = https://github.com/XTLS/Xray-core/archive/v26.9.30/3x-ui-xray-core-26.9.30.tar.gz
+	sha256sums = 85162fa61eb6d1adc9199afff7b41299e69dedd094907e9c56ef665c236b3ef0
+	b2sums = 79442febaf31b409812bca75a8e3f4aff3464c6509332753e73944cf68c54a67c1cdd1c66382f0dd714c1e95ebef5a16734e57cd6d155b04db9ca0ae1625f5fc
 
 pkgname = 3x-ui-xray-core
