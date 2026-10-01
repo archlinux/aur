@@ -3,14 +3,14 @@
 pkgname=bettbox-compatible-pre
 _pkgname=Bettbox
 pkgver=1.19.4pre1
-pkgrel=1
+pkgrel=2
 _pkgver="${pkgver/pre/-pre}"
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash. (Build with GOAMD64=v1)"
 arch=('x86_64')
 options=('!lto')
 url="https://github.com/appshubcc/${_pkgname}"
 license=('GPL-3.0-or-later')
-conflicts=('bettbox' 'bettbox-pre' 'bettbox-compatible' 'bettbox-compatible-bin' 'bettbox-compatible-pre-bin' 'bettbox-bin')
+conflicts=('bettbox' 'bettbox-compatible' 'bettbox-compatible-bin' 'bettbox-bin' 'bettbox-pre' 'bettbox-compatible-pre-bin' 'bettbox-pre-bin')
 provides=("${pkgname%-compatible-pre}=${pkgver}")
 depends=(
 	'gtk3'
