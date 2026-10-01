@@ -4,7 +4,7 @@
 pkgname='aimp-skin-teac-audio-system'
 pkgdesc='AIMP skin: Teac Audio System 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('7e9a06221bd3f2b43f59efbf1d09b3210610555897b50e7f56945f1eb3f3cba3')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Teac Audio System"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-teac-audio-system-606.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
