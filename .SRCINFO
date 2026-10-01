@@ -3,9 +3,8 @@ pkgbase = newsoul-git
 	pkgver = 142.119b876
 	pkgrel = 1
 	url = https://github.com/KenjiTakahashi/newsoul
-	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python2
 	makedepends = premake
 	depends = json-c
@@ -15,8 +14,8 @@ pkgbase = newsoul-git
 	depends = sqlite
 	optdepends = python2-crypto: some python utils
 	provides = newsoul
+	conflicts = newsoul
 	source = newsoul::git+https://github.com/KenjiTakahashi/newsoul.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = newsoul-git
-
