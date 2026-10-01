@@ -4,7 +4,7 @@
 pkgname='aimp-skin-darlue'
 pkgdesc='AIMP skin: Darlue 1.0 (by McZloy)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('fc70f6bb053864b91393b1eb3062f6e67b9f32bc9728b4a053dd01335e47d2f7')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Darlue"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-darlue-445.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
