@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-unminable
 	pkgdesc = AIMP skin: Unminable 1.2 (by quefcyze)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

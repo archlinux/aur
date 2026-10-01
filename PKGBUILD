@@ -4,7 +4,7 @@
 pkgname='aimp-skin-unminable'
 pkgdesc='AIMP skin: Unminable 1.2 (by quefcyze)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c196a12754e2b4d291736ba5ca9e732fd0b6573114f415d831a44ae729365d6f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Unminable"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-unminable-882.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
