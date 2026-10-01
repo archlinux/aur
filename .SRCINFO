@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-metro-color
+	pkgdesc = AIMP skin: Metro Color 1.9 (by danyBatinF1)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-metro-color-844.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-metro-color-844.archive::https://aimp.ru/?do=catalog.download&id=844
+	sha256sums = 74a73011979a5ba5766376fd079ce8558c614873eb3ae4b92dd9f513a7df90f2
+
+pkgname = aimp-skin-metro-color
