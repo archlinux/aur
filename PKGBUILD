@@ -6,7 +6,9 @@ pkgrel=1
 pkgdesc='A Mopidy extension for playing music from Audio CD.'
 arch=('any')
 url="https://github.com/antosart/mopidy-cd"
-license=('APACHE')
+license=('Apache-2.0')
+provides=("${pkgname%%-git}")
+conflicts=("${pkgname%%-git}")
 depends=('mopidy>=3' 'python-musicbrainzngs')
 makedepends=('python-setuptools' 'python-pip')
 source=("${pkgname%%-git}::git+${url}"
@@ -25,4 +27,4 @@ package() {
 }
 
 sha256sums=('SKIP'
-            '040de00da0991afaedd6c6bc7eb938e9ae66d9700865402428a2d073df74face')
+  '040de00da0991afaedd6c6bc7eb938e9ae66d9700865402428a2d073df74face')
