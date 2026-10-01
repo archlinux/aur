@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-radiance-2
 	pkgdesc = AIMP skin: Radiance 2 1.0 (by ZeoN7)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

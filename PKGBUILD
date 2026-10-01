@@ -4,7 +4,7 @@
 pkgname='aimp-skin-radiance-2'
 pkgdesc='AIMP skin: Radiance 2 1.0 (by ZeoN7)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('3e4059e46f46dca8e77ae65c8c2a175b0cea8fe2d7c743c6710ee6823f28a290')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Radiance 2"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-radiance-2-478.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
