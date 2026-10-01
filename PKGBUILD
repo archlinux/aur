@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=apache-mime4j
-pkgver=0.8.12 # renovate: datasource=maven depName=org.apache.james:apache-mime4j-core
+pkgver=0.8.15 # renovate: datasource=maven depName=org.apache.james:apache-mime4j-core
 pkgrel=1
 pkgdesc="Apache JAMES Mime4j"
 arch=('x86_64')
@@ -15,4 +15,4 @@ package() {
     -t "${pkgdir}/usr/share/java/${pkgname}"
 }
 
-sha256sums=('f907a117b3237d92077b97a98da0fc232661eb38376ce23f73a09d7fae1953f5')
+sha256sums=('96919d5180985a92350943be0854307abc0349ad8276eff5cdf05331794035c1')
