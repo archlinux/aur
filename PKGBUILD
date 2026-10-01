@@ -4,7 +4,7 @@
 pkgname='aimp-skin-black-box'
 pkgdesc='AIMP skin: Black Box 3.1 (by kibermanick)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('1040a7ebb7cea690b84a19152c83d0982448739220a44d288bbd711aefd7787a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Black Box"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-black-box-537.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
