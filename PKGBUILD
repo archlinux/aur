@@ -4,7 +4,7 @@
 pkgname='aimp-skin-kantaris-teyp'
 pkgdesc='AIMP skin: Kantaris-Teyp 1.9.7.5 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('ee042a4ed8f1404284a89833df449a407295abd7ec0cb812889cf795b736a84c')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Kantaris-Teyp"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-kantaris-teyp-1268.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
