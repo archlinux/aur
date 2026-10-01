@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-das-skin
+	pkgdesc = AIMP skin: Das Skin 1.5 (by Hayo Tee (aka HX722))
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-das-skin-197.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-das-skin-197.archive::https://aimp.ru/?do=catalog.download&id=197
+	sha256sums = 3d7870b59b0690c7f8884a030adfb478a88f7f571a238eeb47b3703f4b02e564
+
+pkgname = aimp-skin-das-skin
