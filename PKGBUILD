@@ -4,7 +4,7 @@
 pkgname='aimp-skin-brown-life'
 pkgdesc='AIMP skin: Brown Life 1.0 (by Nitehost)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('6e12187d4a11fc02c29dec61f93e313bb2872e33b3642f9a10083ec251785bf8')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Brown Life"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-brown-life-172.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
