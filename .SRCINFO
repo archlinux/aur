@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-azenis-2
+	pkgdesc = AIMP skin: Azenis 2 1.0 (by Evgen)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-azenis-2-321.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-azenis-2-321.archive::https://aimp.ru/?do=catalog.download&id=321
+	sha256sums = 87dc95bb5e820c4924fa8b563094f776671b979f8fb03db926b303d1724ae9bf
+
+pkgname = aimp-skin-azenis-2
