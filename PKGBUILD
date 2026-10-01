@@ -4,7 +4,7 @@
 pkgname='aimp-skin-comfortable-new'
 pkgdesc='AIMP skin: Comfortable New 1.8 (by Kolbasko)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('085f86c4df5adefd5ec0eaf946a39e74d3ea0cd13b069788ba14cc9b09cbd8ae')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Comfortable New"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-comfortable-new-198.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
