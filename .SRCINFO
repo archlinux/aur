@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-minimal-gray
+	pkgdesc = AIMP skin: Minimal Gray 1.0 (by NikolavRj)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-minimal-gray-251.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-minimal-gray-251.archive::https://aimp.ru/?do=catalog.download&id=251
+	sha256sums = 2eac4364e7837e4a5c64206573563eb890ac47ad3a26554324cf97826893e908
+
+pkgname = aimp-skin-minimal-gray
