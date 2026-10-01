@@ -4,7 +4,7 @@
 pkgname='aimp-skin-night-light'
 pkgdesc='AIMP skin: Night-Light 1.0 (by Braindefender)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('2d50d5c9273d673cca716eea1e9c1e9970c61911bddfd7f742521b3d2ffa080a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Night-Light"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-night-light-565.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
