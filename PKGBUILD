@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=reposync-zextras
-pkgver=0.9.1
+pkgver=0.9.1 # renovate: datasource=github-tags depName=Zextras/reposync
 pkgrel=1
 pkgdesc="Mirrors Debian and RedHat repositories to an AWS S3 bucket (with Cloudfront support) or a local directory"
 arch=('x86_64')
