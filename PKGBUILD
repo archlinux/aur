@@ -4,7 +4,7 @@
 pkgname='aimp-skin-red-mmc'
 pkgdesc='AIMP skin: Red MMC 1.0 (by NikolavRj)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('aa2e41a1e6ce89b1285a1d4c54b093a7a6906038ebee9dc97e52f38c9fd8f439')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Red MMC"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-red-mmc-509.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
