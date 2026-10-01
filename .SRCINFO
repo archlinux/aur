@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-yacobymac-light
+	pkgdesc = AIMP skin: YacobyMac light 1.0 (by Marat_S)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-yacobymac-light-428.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-yacobymac-light-428.archive::https://aimp.ru/?do=catalog.download&id=428
+	sha256sums = 7b2f5bce05d352e4fbce1ea1c02a9ab92c32e53867d3b90751b5cb29ed7455d9
+
+pkgname = aimp-skin-yacobymac-light
