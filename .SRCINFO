@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-hm-sapphire-and-hm-pure-display
+	pkgdesc = AIMP skin: hm_Sapphire & hm_Pure_Display 1.0 (by flon)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-hm-sapphire-and-hm-pure-display-381.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-hm-sapphire-and-hm-pure-display-381.archive::https://aimp.ru/?do=catalog.download&id=381
+	sha256sums = 1d4e9cc5117b536cdc8120661f752b7f15b9ce8ccc3995729fef474d32dfaf34
+
+pkgname = aimp-skin-hm-sapphire-and-hm-pure-display
