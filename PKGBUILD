@@ -4,7 +4,7 @@
 pkgname='aimp-skin-easiness'
 pkgdesc='AIMP skin: Easiness 1.0 (by VladShip)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a2b7e1db158455db4ae58e3292e82500ac958fdad78d380c3dc4a3cd36d78527')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Easiness"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-easiness-464.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
