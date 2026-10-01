@@ -3,7 +3,6 @@ pkgbase = peerflix-server
 	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/asapach/peerflix-server
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = npm
