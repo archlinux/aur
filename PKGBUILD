@@ -4,7 +4,7 @@
 pkgname='aimp-skin-wzp-onyxhd'
 pkgdesc='AIMP skin: WZP OnyxHD 3.0 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('4ad09eacd5e143b9202c44bf6e57a720ad789a95f5c9389f9b120e3d0ab4dae7')
 
 package() {
-  local dest="$pkgdir$_skinsdir/WZP OnyxHD"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-wzp-onyxhd-437.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
