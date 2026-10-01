@@ -2,12 +2,12 @@
 # Contributor: FabioLolix
 
 pkgname=gst-plugins-rs-git
-pkgver=r5021.3d0616aa7
+pkgver=r5174.a18e4843b
 pkgrel=1
 pkgdesc="GStreamer plugins written in Rust"
 arch=("x86_64")
 url="https://gstreamer.freedesktop.org/"
-license=('LGPL' 'MIT' 'Apache' 'MPL')
+license=('LGPL-2.1-or-later' 'MIT' 'Apache-2.0' 'MPL-2.0')
 depends=('dav1d' 'gst-devtools-libs' 'gstreamer' 'gtk4' 'libsodium' 'libwebp' 'pango' 'rice-proto')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -16,7 +16,7 @@ options=(!lto)
 source=("${pkgname%-git}::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git")
 
 pkgver() {
-  cd ${pkgname%-git}
+  cd "${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
