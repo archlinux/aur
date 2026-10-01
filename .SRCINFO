@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-wmp-series
+	pkgdesc = AIMP skin: WMP Series 1.0 (by memo-se)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-wmp-series-436.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-wmp-series-436.archive::https://aimp.ru/?do=catalog.download&id=436
+	sha256sums = 153cb4b56577106f0cabd84755b4e09bc2c45bc46417157858deb1c8479ef030
+
+pkgname = aimp-skin-wmp-series
