@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-grundig-cf-7500
+	pkgdesc = AIMP skin: Grundig CF 7500 1.0 (by Black_AVP)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-grundig-cf-7500-908.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-grundig-cf-7500-908.archive::https://aimp.ru/?do=catalog.download&id=908
+	sha256sums = 90c2416df5855e10b7b4626bc13942caba35a1489dcedff08d5ad5548b0c0a97
+
+pkgname = aimp-skin-grundig-cf-7500
