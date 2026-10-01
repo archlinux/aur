@@ -4,7 +4,7 @@
 pkgname='aimp-skin-xion-default-skin'
 pkgdesc='AIMP skin: Xion Default Skin 1.0 (by Hayo Tee (aka HX722))'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('6ffd6ad1d795a4c43a292646c1c4c2b9f1d5d0512e5881dad75e9d12bcdc302b')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Xion Default Skin"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-xion-default-skin-365.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
