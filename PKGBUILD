@@ -4,7 +4,7 @@
 pkgname='aimp-skin-bloom-full-moon'
 pkgdesc='AIMP skin: Bloom - Full Moon 1.0 (by Arindel)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('6db64fd9976fdfb4b68ed195100765c00d7a98a49536e03c645e8075a08b81c5')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Bloom - Full Moon"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-bloom-full-moon-403.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
