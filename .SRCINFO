@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-bif
+	pkgdesc = AIMP skin: Bif 1.0 (by San4o)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-bif-101.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-bif-101.archive::https://aimp.ru/?do=catalog.download&id=101
+	sha256sums = 7f54b4227d7df81fa5505179053cb526fcf5342fc9a8d985ab14c53703546d99
+
+pkgname = aimp-skin-bif
