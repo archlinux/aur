@@ -1,22 +1,22 @@
 # Maintainer: cjber <cjberragan at gmail dot com>
 pkgname=kiln-agents-bin
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
-pkgdesc="ACP conversations for Claude, Codex and Pi with a paired phone client"
+pkgdesc="Native Claude and Codex session launcher with a paired phone client"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cjber/kiln"
 license=('MIT')
 depends=('tmux' 'fzf' 'util-linux')
-optdepends=('libnotify: desktop notifications for input requests and completed turns' 'zoxide: rank the directories offered for new sessions' 'nodejs: run the npm ACP adapters' 'npm: install the Claude, Codex and Pi ACP adapters' 'openai-codex: read-only Codex Cloud discovery')
+optdepends=('libnotify: desktop notifications for input requests and completed turns' 'zoxide: rank the directories offered for new sessions' 'nodejs: run the Pi ACP adapter' 'npm: install the Pi ACP adapter' 'openai-codex: native Codex sessions and cloud discovery')
 provides=('kiln' 'kiln-agents')
 conflicts=('kiln' 'kiln-agents')
 options=('!strip')
 source=("kiln-${pkgver}.tar.gz::https://github.com/cjber/kiln/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3f1a56921593e07a6dc3c510e364bd03260a55168999a55aadc6f0d28c06c27b')
+sha256sums=('aa34ca7e4b1f1575e58ef2f53c54ba1fb36f899492e6accfa4a6492b7c566768')
 source_x86_64=("kiln-linux-x64-${pkgver}::https://github.com/cjber/kiln/releases/download/v${pkgver}/kiln-linux-x64")
-sha256sums_x86_64=('80ebf1787926f70aa7c984fbca617c55a66ccdb59daa5b69b5c31be599ef804b')
+sha256sums_x86_64=('fac0325c9d795799be870e7d1fd5f5608353319dd06a199a3e8307934d9960b3')
 source_aarch64=("kiln-linux-arm64-${pkgver}::https://github.com/cjber/kiln/releases/download/v${pkgver}/kiln-linux-arm64")
-sha256sums_aarch64=('bd55e69f2c3da0325168f5853bd4c9ddf4ed327754f9d4627179d597eb75308a')
+sha256sums_aarch64=('abc99f39c0f53465f4b20151eabbabe1dd66360e7a08eaec62b02a3cdc9ded64')
 
 package() {
   local binary=kiln-linux-x64
