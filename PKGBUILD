@@ -4,7 +4,7 @@
 pkgname='aimp-skin-splash-lite'
 pkgdesc='AIMP skin: Splash Lite 1.0 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a4873dd5620560f5ea07d8046fe6ddac1d543559c24cc20dc98cf1e85f0572d6')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Splash Lite"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-splash-lite-431.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
