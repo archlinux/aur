@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-euphoria-lux-ny
+	pkgdesc = AIMP skin: Euphoria Lux NY 2.3 (by Aleksandr009)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-euphoria-lux-ny-941.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-euphoria-lux-ny-941.archive::https://aimp.ru/?do=catalog.download&id=941
+	sha256sums = e30454d534ef75d258640e259413f146869928070aef878c997397967d9e2adc
+
+pkgname = aimp-skin-euphoria-lux-ny
