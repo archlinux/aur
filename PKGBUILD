@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A cross-platform, customizable ML solutions for live and streaming media"
 arch=('x86_64')
 url="https://github.com/google/mediapipe"
-license=("Apache")
+license=('Apache-2.0')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 depends=('absl-py'
@@ -22,7 +22,7 @@ depends=('absl-py'
   'python-wheel'
 )
 makedepends=('python-installer' 'python-wheel')
-source=("https://files.pythonhosted.org/packages/e3/98/00cd8b2dcb563f2298655633e6611a791b2c1a7df1dae064b2b96084f1bf/${_name//-/_}-$pkgver-py3-none-manylinux_2_28_x86_64.whl")
+source=("https://files.pythonhosted.org/packages/py3/${_name::1}/${_name}/${_name//-/_}-$pkgver-py3-none-manylinux_2_28_x86_64.whl")
 
 package() {
   python -m installer --destdir="$pkgdir" *.whl

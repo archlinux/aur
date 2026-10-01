@@ -4,7 +4,7 @@ pkgbase = python-mediapipe-bin
 	pkgrel = 1
 	url = https://github.com/google/mediapipe
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = absl-py
@@ -20,7 +20,7 @@ pkgbase = python-mediapipe-bin
 	depends = python-wheel
 	provides = python-mediapipe
 	conflicts = python-mediapipe
-	source = https://files.pythonhosted.org/packages/e3/98/00cd8b2dcb563f2298655633e6611a791b2c1a7df1dae064b2b96084f1bf/mediapipe-0.10.32-py3-none-manylinux_2_28_x86_64.whl
+	source = https://files.pythonhosted.org/packages/py3/m/mediapipe/mediapipe-0.10.32-py3-none-manylinux_2_28_x86_64.whl
 	sha256sums = 4b0941fbbbce41862f13cb1850c4878c13dbc62cd5e81e74880051b7a20ce3b6
 
 pkgname = python-mediapipe-bin
