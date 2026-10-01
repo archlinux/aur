@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-invi-pro-round
 	pkgdesc = AIMP skin: INVI Pro (Round) 1.5 (by Imperator3)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
