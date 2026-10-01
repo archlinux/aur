@@ -4,7 +4,7 @@
 pkgname='aimp-skin-denon-classic-style'
 pkgdesc='AIMP skin: Denon Classic Style 5.1 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a946f481fe7a462a91e3fce9ea1e99941d42981a67a09b1cf9d178c0144c5b4a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Denon Classic Style"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-denon-classic-style-417.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
