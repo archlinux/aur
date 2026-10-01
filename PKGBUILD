@@ -2,7 +2,7 @@
 
 _pkgname=moonstone
 pkgname=moonstone-bin
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="Modern, deterministic Lua project environments and package manager written in Zig"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ source=("LICENSE-$pkgver::https://raw.githubusercontent.com/moonstone-sh/$_pkgna
 source_x86_64=("https://github.com/moonstone-sh/$_pkgname/releases/download/v$pkgver/moon-v$pkgver-x86_64-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/moonstone-sh/$_pkgname/releases/download/v$pkgver/moon-v$pkgver-aarch64-linux-gnu.tar.gz")
 sha256sums=('34e0c3e08e21097a322600567c2bd824cd316a2ce34338131ec9a4af20846aac')
-sha256sums_x86_64=('ac12f778e47b781cffb69ad977580a3d37d0f9c8250cec533819ca277ec969eb')
-sha256sums_aarch64=('eeb2087a5574577ce774bad5e2b42f429eda7447ce499ad7826950eea81d95f0')
+sha256sums_x86_64=('d8aee8c8c7eba906260424e621e833c28f46b561e68be25cd329a4b346f9ee87')
+sha256sums_aarch64=('1956d1246e8cc176df3c410b7d1ca17bfe30c4824946c457592c95d611f0992c')
 
 prepare() {
   cd "$srcdir"
