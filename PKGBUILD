@@ -4,7 +4,7 @@
 pkgname='aimp-skin-premiere'
 pkgdesc='AIMP skin: Premiere 1.1 (by Prince)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('353883bf16a02f8b7e512527f46d5b3ff7b1dda12f3e60ff89c6e67fbbef59e3')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Premiere"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-premiere-239.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
