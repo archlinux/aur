@@ -1,7 +1,7 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=go-automate-git
-pkgver=0.1.0.r413.g84356e7
+pkgver=0.1.0.r423.gef2bad2
 pkgrel=1
 pkgdesc="CLI utility to trigger Home Assistant automations via keyboard shortcuts (git version)"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,6 @@ license=('Apache-2.0')
 keywords=('home-assistant' 'automation' 'cli' 'keyboard-shortcuts')
 install=arch-package.install
 makedepends=('git' 'go')
-depends=('libnotify')
 provides=('go-automate')
 conflicts=('go-automate')
 options=('!strip')
