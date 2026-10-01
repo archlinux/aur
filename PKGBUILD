@@ -2,52 +2,44 @@
 # old maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=tastytrade
-pkgver='2.59.0'
-pkgrel='1'
+pkgver=0.59.0
+pkgrel=2
+epoch=1
 pkgdesc="One of the fastest, most reliable, and most secure trading platforms in the world."
 arch=('x86_64')
 url='https://tastytrade.com/'
 license=('custom:commercial')
+depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'glib2' 'glibc' 'gtk3' 'libcups' 'libgcc'
+	'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr'
+	'mesa' 'nspr' 'nss' 'pango' 'systemd-libs')
+optdepends=('libappindicator-gtk3: tray icon'
+	'libnotify: desktop notifications'
+	'libsecret: store credentials in the system keyring'
+	'xdg-utils: open links in the default browser')
 conflicts=('tastytrade-bin')
-source=(https://download.tastytrade.com/desktop-2.0/tastytrade-linux-amd64-latest.deb)
-sha256sums=('7efa5502f209a029509c98198c84043fc83dde69f8b9ead266b1fff2eda30b78')
+options=('!strip')
+source=("${pkgname}-${pkgver}.deb::https://download.tastytrade.com/desktop-2.0/tastytrade-linux-amd64-${pkgver}.deb")
+sha512sums=('8e8cf4e8b96af5dc79adf927d0377b2b4c054738380501bf1ce8bdac7c772b5cf066aaaa8a089c9c9b8dc1041f8842c648fa957249aaaf19f87dee5195ac7fd0')
 
-build() {
-	tar axf data.tar.zst
+prepare() {
+	bsdtar -xf data.tar.xz
 
-	# Remove additional bundled Java "runtime"
-	#rm -rf opt/tastytrade/lib/runtime
-	#sed -i 's|app.runtime=$ROOTDIR/lib/runtime|app.runtime=/usr/lib/jvm/default-runtime|' opt/tastytrade/lib/app/tastytrade.cfg
-
-	DF="opt/tastytrade/lib/tastytrade-tastytrade.desktop"
-
-	# Set correct information for the application .desktop launcher
-	sed -i 's|Name=tastytrade|Name=TastyTrade|' $DF
-	sed -i 's|Comment=tastytrade|Comment=Trading Platform|' $DF
-	sed -i 's|Exec=.*|Exec=/usr/bin/tastytrade|' $DF
-	sed -i 's|Icon=.*|Icon=tastytrade|' $DF
-	sed -i 's|Categories=tastytrade|Categories=Network|' $DF
-
-	# Add the correct startup window manager class
-	# This *should* fix gnome from creating more than one dock entry for the program
-	echo 'StartupWMClass=tasty.javafx.launcher.LauncherFxApp' >>$DF
-	sed -i '/^[[:space:]]*$/d' $DF
+	DF="usr/share/applications/tastytrade.desktop"
+	sed -i 's|^Name=tastytrade 2.0|Name=TastyTrade|' "$DF"
+	sed -i 's|^Exec="/opt/tastytrade 2.0/tastytrade"|Exec=/usr/bin/tastytrade|' "$DF"
 }
 
 package() {
+	install -d "${pkgdir}/usr/lib/${pkgname}"
+	cp -a "${srcdir}/opt/tastytrade 2.0/." "${pkgdir}/usr/lib/${pkgname}/"
+
 	install -d "${pkgdir}/usr/bin"
-	ln -sf "/usr/lib/${pkgname}/bin/tastytrade" "${pkgdir}/usr/bin/${pkgname}"
+	ln -s "/usr/lib/${pkgname}/tastytrade" "${pkgdir}/usr/bin/${pkgname}"
 
-	install -d "${pkgdir}/usr/lib/${pkgname}/lib/app"
-	cp -r "${srcdir}/opt/tastytrade/lib/app/" "${pkgdir}/usr/lib/${pkgname}/lib/"
-	cp -r "${srcdir}/opt/tastytrade/lib/runtime/" "${pkgdir}/usr/lib/${pkgname}/lib/"
-	install -Dm 644 "${srcdir}/opt/tastytrade/lib/libapplauncher.so" "${pkgdir}/usr/lib/${pkgname}/lib/libapplauncher.so"
+	install -Dm 644 "${srcdir}/usr/share/applications/tastytrade.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm 644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/tastytrade.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
 
-	install -Dm 755 "${srcdir}/opt/tastytrade/bin/tastytrade" "${pkgdir}/usr/lib/${pkgname}/bin/tastytrade"
-
-	install -Dm 644 "${srcdir}/opt/tastytrade/lib/tastytrade-tastytrade.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	install -Dm 644 "${srcdir}/opt/tastytrade/share/doc/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm 644 "${srcdir}/opt/tastytrade/lib/tastytrade.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-
-	echo "changelog: https://support.tastytrade.com/support/s/solutions/articles/43000435186"
+	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+	ln -s "/usr/lib/${pkgname}/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/"
+	ln -s "/usr/lib/${pkgname}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
