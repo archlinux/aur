@@ -17,8 +17,8 @@ pkgname=herta-bin
 _appname=${pkgname%-bin}
 _electronversion=43
 _appdir="/usr/lib/${pkgname}"
-pkgver=0.1.6
-pkgrel=2
+pkgver=0.1.7
+pkgrel=1
 pkgdesc="The self that uses the agent - desktop companion (AppImage payload, system Electron)"
 arch=('x86_64')
 url="https://github.com/PersonaCLI/Herta"
@@ -44,7 +44,7 @@ source=(
     "${_appname}.sh"
     "herta.desktop"
 )
-sha256sums=('58488abb85e8a53583779c77edfc06c80ee5dbfc7f742d47a5c6ca7cc40554e1'
+sha256sums=('c4db68e94490ba1ea6f8734dbd477877d6bb4439d80b80d3d680e08ed2f6a86a'
             'SKIP'
             'SKIP')
 
