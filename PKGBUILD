@@ -4,7 +4,7 @@
 pkgname='aimp-skin-black-stilismo-v'
 pkgdesc='AIMP skin: Black Stilismo V 1.0 (by San4o)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('9fcd0aa8e08f063709d79025a423549ff69de2ae7d1c4c48fe04a1d4e4e60a66')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Black Stilismo V"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-black-stilismo-v-2.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
