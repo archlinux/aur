@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-qmp-5-aio
+	pkgdesc = AIMP skin: QMP 5 AIO 1.0 (by memo-se)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-qmp-5-aio-447.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-qmp-5-aio-447.archive::https://aimp.ru/?do=catalog.download&id=447
+	sha256sums = 692ea57604058a54bc413bca3b24197df3d747a2df6c1e6c5e62312532da65fe
+
+pkgname = aimp-skin-qmp-5-aio
