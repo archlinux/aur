@@ -4,7 +4,7 @@
 pkgname='aimp-skin-touch-simplistic'
 pkgdesc='AIMP skin: Touch Simplistic 1.2 (by Alexandrr)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('834faa48053764b04a4780700164368b5ab1c2fc8bab9a1ffe53f16e4dff6d3a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Touch Simplistic"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-touch-simplistic-686.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
