@@ -1,7 +1,7 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname="paseo-desktop-bin-edge"
-pkgver=0.11.0_beta.1
-_deb_sha='7e77a771e90481fe6b0cda3cdd034ad89d514472aff8e3d1585fa7dec8f5dae0'
+pkgver=0.11.0_beta.2
+_deb_sha='87f7a1cb01fc941cd7aa8653b45a85bfcd75192e4c30aa351724ec9049f26cfe'
 pkgrel=2
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents. (edge - latest upstream release, beta or stable)"
 arch=("x86_64")
