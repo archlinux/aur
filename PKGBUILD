@@ -27,7 +27,7 @@ source_x86_64=("CodexBarCLI-v${pkgver}-linux-x86_64.tar.gz::https://github.com/s
 source_aarch64=("CodexBarCLI-v${pkgver}-linux-aarch64.tar.gz::https://github.com/steipete/CodexBar/releases/download/v${pkgver}/CodexBarCLI-v${pkgver}-linux-aarch64.tar.gz")
 source=("LICENSE::https://raw.githubusercontent.com/steipete/CodexBar/v${pkgver}/LICENSE")
 sha256sums_x86_64=('7112a2bfa35b917bfa1092b45f323f8af8f8973df3b59ff115053295aee53759')
-sha256sums_aarch64=('d5635c9e5b7524ecd4aa91d0de30a3c18f3c9d1fcaa3920187a6d6c7f3b8bbc0')
+sha256sums_aarch64=('12ec6cda5d848a4956eb24fa5be819ac1f1e5172c38c3375b015c302daf5a618')
 sha256sums=('14293556b79940745123d0160c71d27ed0e9fe9b8a848093f3ed78f4853caafe')
 
 package() {
