@@ -26,10 +26,10 @@
 # update check. The same recipe builds the source package `ahfail`.
 #
 #   build recipe:  https://gitea.weircon.dk/agw/gtk-ahfail
-#   download:      https://asger.weirsoe.dk/tarballz/ahfail-0.10.0-07098f4b7fba-x86_64.tar.zst
+#   download:      https://asger.weirsoe.dk/tarballz/ahfail-0.10.1-88d34cf1c07d-x86_64.tar.zst
 
 pkgname=ahfail-bin
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Screen locker that says 'ah ah ah, you didn't say the magic word' on a wrong password (prebuilt binary)"
 arch=('x86_64')
@@ -49,8 +49,8 @@ conflicts=('ahfail')
 backup=('etc/pam.d/ahfail')
 install=ahfail.install
 options=('!strip' '!debug')
-source=("https://asger.weirsoe.dk/tarballz/ahfail-0.10.0-07098f4b7fba-x86_64.tar.zst")
-sha256sums=('07098f4b7fbab9755e73734e88efc175fc75fbb684492cc8ea09cbd4cfaf0dbb')
+source=("https://asger.weirsoe.dk/tarballz/ahfail-0.10.1-88d34cf1c07d-x86_64.tar.zst")
+sha256sums=('88d34cf1c07dcf9b7b536efaaf72c7bd0c2c4e8b7a81a7236fdfd11ff53c46ec')
 
 package() {
     # The tarball is a staged `meson install` tree: usr/ and etc/ at its root.

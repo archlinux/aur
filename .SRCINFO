@@ -1,6 +1,6 @@
 pkgbase = ahfail-bin
 	pkgdesc = Screen locker that says 'ah ah ah, you didn't say the magic word' on a wrong password (prebuilt binary)
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://gitea.weircon.dk/agw/gtk-ahfail
 	install = ahfail.install
@@ -27,12 +27,12 @@ pkgbase = ahfail-bin
 	optdepends = swayidle: lock automatically on Wayland
 	optdepends = xss-lock: lock automatically on X11
 	optdepends = gtklock: legacy gtklock module (/usr/lib/gtklock/ahfail-module.so)
-	provides = ahfail=0.10.0
+	provides = ahfail=0.10.1
 	conflicts = ahfail
 	options = !strip
 	options = !debug
 	backup = etc/pam.d/ahfail
-	source = https://asger.weirsoe.dk/tarballz/ahfail-0.10.0-07098f4b7fba-x86_64.tar.zst
-	sha256sums = 07098f4b7fbab9755e73734e88efc175fc75fbb684492cc8ea09cbd4cfaf0dbb
+	source = https://asger.weirsoe.dk/tarballz/ahfail-0.10.1-88d34cf1c07d-x86_64.tar.zst
+	sha256sums = 88d34cf1c07dcf9b7b536efaaf72c7bd0c2c4e8b7a81a7236fdfd11ff53c46ec
 
 pkgname = ahfail-bin
