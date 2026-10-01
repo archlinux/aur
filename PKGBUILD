@@ -4,7 +4,7 @@
 pkgname='aimp-skin-euphoria-lux-181'
 pkgdesc='AIMP skin: Euphoria Lux 1.0 (by GR-X)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('bbbd6ce87dbded1cf97c61b016d7da1f0ce2957a7566f0042d21124209462548')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Euphoria Lux (181)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-euphoria-lux-181-181.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
