@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-gilly-aio
+	pkgdesc = AIMP skin: Gilly AIO 1.0 (by Zigar)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-gilly-aio-585.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-gilly-aio-585.archive::https://aimp.ru/?do=catalog.download&id=585
+	sha256sums = d0b9c997bf6b820f6d492821e1e82534aac2bf5f5dbcf5d89af71ddc8d8c91e6
+
+pkgname = aimp-skin-gilly-aio
