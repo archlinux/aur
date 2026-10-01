@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-black-ice
+	pkgdesc = AIMP skin: Black Ice 1.02 (by alex-snk)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-black-ice-124.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-black-ice-124.archive::https://aimp.ru/?do=catalog.download&id=124
+	sha256sums = 93483331e3d80b586def51e8cfbcaf0377a5ad0f399cd8db50548416dcd99a87
+
+pkgname = aimp-skin-black-ice
