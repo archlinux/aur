@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-purity
+	pkgdesc = AIMP skin: Purity 1.0 (by ZeoN7)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-purity-322.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-purity-322.archive::https://aimp.ru/?do=catalog.download&id=322
+	sha256sums = 149ae70afa9eca1e98b15217b01302abda6fafb72e6b2c9da8fb55b7af4e5287
+
+pkgname = aimp-skin-purity
