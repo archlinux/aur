@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-kantaris-teyp
+	pkgdesc = AIMP skin: Kantaris-Teyp 1.9.7.5 (by memo-se)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-kantaris-teyp-1268.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-kantaris-teyp-1268.archive::https://aimp.ru/?do=catalog.download&id=1268
+	sha256sums = ee042a4ed8f1404284a89833df449a407295abd7ec0cb812889cf795b736a84c
+
+pkgname = aimp-skin-kantaris-teyp
