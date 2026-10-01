@@ -4,7 +4,7 @@
 pkgname='aimp-skin-imac'
 pkgdesc='AIMP skin: iMac 1.0 (by John Éshan)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f91e691259a7aea84dd73bb6a8f0ff5f434a1d253f58ef914d0cbfea01696b63')
 
 package() {
-  local dest="$pkgdir$_skinsdir/iMac"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-imac-397.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

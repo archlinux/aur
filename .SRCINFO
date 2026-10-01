@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-imac
 	pkgdesc = AIMP skin: iMac 1.0 (by John Éshan)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
