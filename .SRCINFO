@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-defix-hi-end
+	pkgdesc = AIMP skin: DEFIX Hi-End 1.0 (by Tankevich Denis)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-defix-hi-end-1226.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-defix-hi-end-1226.archive::https://aimp.ru/?do=catalog.download&id=1226
+	sha256sums = 72e22a640bb2a88e035ad06bb9f2f43f4ab0f288b522f3d2031a803b35c5f0cc
+
+pkgname = aimp-skin-defix-hi-end
