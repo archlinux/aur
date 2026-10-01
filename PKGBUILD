@@ -4,7 +4,7 @@
 pkgname='aimp-skin-wzp-albahd'
 pkgdesc='AIMP skin: WZP AlbaHD 3.0 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('3ffba97f19f9f5a3e3eaa5d91413639020bc15412f7e03142dc66a3612a8f244')
 
 package() {
-  local dest="$pkgdir$_skinsdir/WZP AlbaHD"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-wzp-albahd-433.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
