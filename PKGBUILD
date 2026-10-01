@@ -4,7 +4,7 @@
 pkgname='aimp-skin-win98-s'
 pkgdesc='AIMP skin: Win98'\''s 1.0 (by ILYA)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('192669d2e4c0030d6f131bc9db9411ef9cea66f6b90482098fda2985c521cd6e')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Win98's"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-win98-s-122.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

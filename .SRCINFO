@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-win98-s
 	pkgdesc = AIMP skin: Win98's 1.0 (by ILYA)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
