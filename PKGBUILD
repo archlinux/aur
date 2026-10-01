@@ -4,7 +4,7 @@
 pkgname='aimp-skin-metro-evolution'
 pkgdesc='AIMP skin: Metro Evolution 1.0 (by bro)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('1ab9c6127c88ce0178ef4f04622aeeccd6660fb0c6233ed7e3b3e98b633f69a5')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Metro Evolution"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-metro-evolution-392.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
