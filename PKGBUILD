@@ -4,7 +4,7 @@
 pkgname='aimp-skin-vesna-306'
 pkgdesc='AIMP skin: ВЕСНА-306 1.71 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('cf66e05e94139aa59feaca482dbd9cf3a41bca32d1388bba20c75b642731710c')
 
 package() {
-  local dest="$pkgdir$_skinsdir/ВЕСНА-306"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-vesna-306-581.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
