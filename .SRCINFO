@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-p-l-a-y-e-r
 	pkgdesc = AIMP skin: p.l.a.y.e.r. 1.0 (by redkhmear)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

@@ -4,7 +4,7 @@
 pkgname='aimp-skin-p-l-a-y-e-r'
 pkgdesc='AIMP skin: p.l.a.y.e.r. 1.0 (by redkhmear)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f3e5d30c5236ee08eadd67a2170e34939b6a1b81763cb5421163dc46485f47e9')
 
 package() {
-  local dest="$pkgdir$_skinsdir/p.l.a.y.e.r"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-p-l-a-y-e-r-476.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
