@@ -4,7 +4,7 @@
 pkgname='aimp-skin-nrg'
 pkgdesc='AIMP skin: NRG 1.3 (by Sergio7786)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a61a7475f09197e47b2d70cbab97869f420be00ae11ade03a132be936a1399b4')
 
 package() {
-  local dest="$pkgdir$_skinsdir/NRG"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-nrg-256.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
