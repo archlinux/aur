@@ -4,7 +4,7 @@
 pkgname='aimp-skin-flo-4k'
 pkgdesc='AIMP skin: -Flo- 4K 2.13 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('e06b4996de70c072b2e180a71a28dc33d8ea12f66fbcc307cd8d6a5acff0d474')
 
 package() {
-  local dest="$pkgdir$_skinsdir/-Flo- 4K"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-flo-4k-1166.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
