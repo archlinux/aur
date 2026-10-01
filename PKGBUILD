@@ -4,7 +4,7 @@
 pkgname='aimp-skin-nguvu-aio-vert-tabs'
 pkgdesc='AIMP skin: NGuvu AIO (Vert.Tabs) 2.01 (by ScrollUnLock)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('3c01663f0b0bd20dc2c2fc85e59094d9907de3f0206ced90f7370c976bbf659d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/NGuvu AIO (Vert.Tabs)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-nguvu-aio-vert-tabs-354.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
