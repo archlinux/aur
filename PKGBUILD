@@ -4,7 +4,7 @@
 pkgname='aimp-skin-eve-in-red'
 pkgdesc='AIMP skin: Eve in Red 1.2 (by smokerrr86)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('e91d3e3e16e3e5cb95101de852fa3a499c2667db44ad7bb93db3bfc076a179ae')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Eve in Red"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-eve-in-red-340.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
