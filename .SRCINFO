@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-nesu-mulih
+	pkgdesc = AIMP skin: Nesu Mulih 2.69 (by Putra05)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-nesu-mulih-372.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-nesu-mulih-372.archive::https://aimp.ru/?do=catalog.download&id=372
+	sha256sums = da4b6395f2598f40823041c29a0a42bba1b3146cf9bd0605cfa268c7758df129
+
+pkgname = aimp-skin-nesu-mulih
