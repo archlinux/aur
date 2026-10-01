@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 _name=mediapipe
-pkgname=python-mediapipe-bin # renovate: datasource=github-tags depName=google-ai-edge/mediapipe
-pkgver=0.10.32
+pkgname=python-mediapipe-bin
+pkgver=0.10.32 # renovate: datasource=github-tags depName=google-ai-edge/mediapipe
 pkgrel=1
 pkgdesc="A cross-platform, customizable ML solutions for live and streaming media"
 arch=('x86_64')
