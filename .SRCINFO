@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-black-onix-two
+	pkgdesc = AIMP skin: Black Onix Two 1.0 (by Braindefender)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-black-onix-two-706.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-black-onix-two-706.archive::https://aimp.ru/?do=catalog.download&id=706
+	sha256sums = 6a977244d0a8a38297cc9e188467405a13dd0cda2fa3e86807c3a529dc9dc432
+
+pkgname = aimp-skin-black-onix-two
