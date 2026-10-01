@@ -9,8 +9,8 @@ pkgname=('asf-plugin-steamtokendumper'
          'asf-plugin-periodicgc'
          'asf-plugin-signinwithsteam'
          'asf')
-pkgver="6.3.9.6"
-pkgrel=2
+pkgver="6.3.10.3"
+pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
 license=('Apache-2.0')
@@ -23,17 +23,13 @@ source=("asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=${pkgve
         "ASF.json"
         "NLog.config")
 validpgpkeys=('1268A81616AFDC20C55779ED6B138B4C64555AEA')
-sha256sums=('5c5ab7abe524dcafe48d1ef5124fa3b0df293fad2e3af07f247f5c0a58412f12'
+sha256sums=('e25a5a2a5f1f70989c5870f200c2bd1ac5f8e16e6f97ed256a55a2f41b47c731'
             '1728ccf7d02974b779ec794df400fec57b9a98869d319bea7f98d6c1ce4a9d3e'
             'ec82f54a9b362e2305a775eb1473522636ab724f18d846828410c39344801db4'
             'c300c5ce63c0237d7558b5b303159b8e2a8e5323f581cc8435dd2a6f1ead5332'
             '3f84136fda8fb2def850f2aca1fd4535f85488273dd8b0737e60fd6febb41b00')
 
 prepare() {
-    cd asf
-    # Disable telemetry, debugging and logo for all setups by default
-    # https://github.com/JustArchiNET/ArchiSteamFarm/commit/e704c6890c631ca7b3a53f58f7f704e586639e2a
-    git cherry-pick --no-commit e704c6890c631ca7b3a53f58f7f704e586639e2a
     cd ${srcdir}/asf/ArchiSteamFarm/overlay/variant-base/linux
     patch --forward --input="${srcdir}/service.patch"
 }

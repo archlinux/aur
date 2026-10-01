@@ -1,3 +1,12 @@
+2026-09-26 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.3.10.3-1:
+    Added initial support for QR code login prompt (@brendan-jarvis #3618 #2918).
+    Added support for steam install format in various appID-parsing paths (@Nuklon #3623).
+    Small addlicense text improvements (@mooons #3621).
+    Improved resilence against database corruptions (@JustArchi #3619).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2026-09-13 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.3.9.6-2:
     Disable telemetry, debugging and logo for all setup by default
