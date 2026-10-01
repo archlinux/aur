@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=magpie-bin
-pkgver=0.1.550
+pkgver=0.1.559
 pkgrel=1
 pkgdesc="One place to pick every AI coding agent's model: Codex, Claude Code, Gemini CLI and more"
 arch=('x86_64' 'aarch64')
@@ -27,8 +27,8 @@ source_aarch64=(
 )
 sha256sums=('79d2c8444715d4bc453ec4f8a0aaf2051a4c1ee5ac08f5bd2e5848aef87c7572'
             '57437c6596e05a8fcfc42d4288c030aa00ed86b69fe35d464d69d7026150c704')
-sha256sums_x86_64=('4f88d2d88c48b097bfbadcf5675a00f72140e010ccd5e70f569ad0c6b3554ef6')
-sha256sums_aarch64=('3cada4f6188a6d8689a45857f9e67b23834fe1ff9dbac22b22bb1a43858fac46')
+sha256sums_x86_64=('05f8767ff1811b457293b80e6adba39008b053a20b331a6b363d912c676b90e5')
+sha256sums_aarch64=('01a997295402684f2b087c605d7b558f35b1706c100bab23f34c874a6e13283e')
 
 package() {
     local _suffix
