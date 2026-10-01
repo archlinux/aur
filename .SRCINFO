@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-skin-metall
+	pkgdesc = AIMP skin: Skin Metall 1.0 (by Demcha)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-skin-metall-496.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-skin-metall-496.archive::https://aimp.ru/?do=catalog.download&id=496
+	sha256sums = 676acc255fce1c911669624b25d9037695f28732d17875b59a935d56073373fe
+
+pkgname = aimp-skin-skin-metall
