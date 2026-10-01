@@ -4,7 +4,7 @@
 pkgname='aimp-skin-aurora'
 pkgdesc='AIMP skin: Aurora 1.0 (by NikolavRj)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('ed09983dc7544aa76a84ca5acf77ccdb4f2f1bf941ad51aa073d1f920fae794f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Aurora"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-aurora-325.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
