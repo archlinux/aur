@@ -1,0 +1,5 @@
+[spritz-bin]
+source = "github"
+github = "dfallman/spritz"
+use_latest_release = true
+prefix = "v"

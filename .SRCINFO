@@ -1,0 +1,19 @@
+pkgbase = spritz-bin
+	pkgdesc = A multiplatform, nano DLNA media server for the terminal
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/dfallman/spritz
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = spritz
+	conflicts = spritz
+	options = !strip
+	source_x86_64 = spritz-x86_64-0.2.0.txz::https://github.com/dfallman/spritz/releases/download/v0.2.0/spritz-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 48261875d49772d86b11bbc8adbdd95434cfb7a8612eb8fbf27a343cf23b45f4
+	source_aarch64 = spritz-aarch64-0.2.0.txz::https://github.com/dfallman/spritz/releases/download/v0.2.0/spritz-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 29ff8f0ce4619b70d82a1abcaf0c9d6cc77d0c332ddd7299d3e1849aaca28860
+
+pkgname = spritz-bin
