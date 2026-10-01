@@ -4,7 +4,7 @@
 pkgname='aimp-skin-glass-and-pixels'
 pkgdesc='AIMP skin: Glass & Pixels 1.0.2 (by Xpand)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c69e33ef8fa0a621d29cb11360743d0dbb230a751932a38391eda25909190447')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Glass & Pixels"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-glass-and-pixels-226.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
