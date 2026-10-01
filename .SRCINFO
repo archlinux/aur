@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-touch50px
+	pkgdesc = AIMP skin: Touch50px 1.0 (by ZeoN7)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-touch50px-379.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-touch50px-379.archive::https://aimp.ru/?do=catalog.download&id=379
+	sha256sums = 36fa9632f041619a64ef88a556bb9aabed96a8389903b679721d6249a9791f1a
+
+pkgname = aimp-skin-touch50px
