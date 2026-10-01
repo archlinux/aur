@@ -4,7 +4,7 @@
 pkgname='aimp-skin-arcadelt-aio'
 pkgdesc='AIMP skin: Arcadelt AIO 1.3 (by Hayo Tee (aka HX722))'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('6e9cfd0b43c43f8b4e75b37e0ba59bd371307270baf4316deac8599ddebb85b6')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Arcadelt AIO"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-arcadelt-aio-369.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
