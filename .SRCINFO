@@ -1,6 +1,6 @@
 pkgbase = eobcanka
 	pkgdesc = eObcanka software for Czech Citizen Portal
-	pkgver = 3.5.1
+	pkgver = 3.5.2
 	pkgrel = 1
 	url = https://info.identita.gov.cz
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = eobcanka
 	optdepends = ccid: Smart Card Interface Devices driver
 	optdepends = opensc: Tools and libraries for smart cards
 	options = !strip
-	source = eobcanka-3.5.1.deb::https://info.identita.gov.cz/Download/eObcanka.deb
-	sha1sums = 8466ffce0bfee09f885e9cd1db93eb0755f4c82a
+	source = eobcanka-3.5.2.deb::https://info.identita.gov.cz/Download/eObcanka.deb
+	sha1sums = bc2ddaed8958e6f0813101144695c36be4d6256d
 
 pkgname = eobcanka
