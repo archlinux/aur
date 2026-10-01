@@ -4,7 +4,7 @@
 pkgname='aimp-skin-kvadro-light'
 pkgdesc='AIMP skin: Kvadro Light 1.3 (by AAOOOMM)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('fbe25543ecccf360c4018d362dd3134eb3b227dcfc72b8821a288c941bc7b214')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Kvadro Light"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-kvadro-light-574.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
