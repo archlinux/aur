@@ -4,7 +4,7 @@
 pkgname='aimp-skin-antares'
 pkgdesc='AIMP skin: Antares 1.7 (by Remoder)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('633235b9553f6380b4a358e245073778a4dbcfdfadbf07aa078517e0470023e8')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Antares"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-antares-925.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
