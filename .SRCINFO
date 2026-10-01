@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-sprout-black
+	pkgdesc = AIMP skin: Sprout Black 1.2 (by Dead)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-sprout-black-518.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-sprout-black-518.archive::https://aimp.ru/?do=catalog.download&id=518
+	sha256sums = 2b2a01f6571afcff9162af7d7588069a7123f03cc6c15d027d6113c10db9b0b2
+
+pkgname = aimp-skin-sprout-black
