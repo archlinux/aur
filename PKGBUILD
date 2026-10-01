@@ -4,7 +4,7 @@
 pkgname='aimp-skin-aimp-steam'
 pkgdesc='AIMP skin: AiMP Steam 1.0 (by l4ko)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('32b3676a9a899f1da76803fd861696dcdff86938de86a71cda6b57018105b770')
 
 package() {
-  local dest="$pkgdir$_skinsdir/AiMP Steam"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-aimp-steam-483.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
