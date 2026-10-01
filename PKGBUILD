@@ -4,9 +4,9 @@ pkgname=termistor-git
 pkgver=50.bc0843f
 pkgrel=1
 pkgdesc="A drop-down terminal for Wayland"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/giucam/termistor"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('wayland' 'libxkbcommon')
 makedepends=('git')
 provides=("${pkgname%%-git}")
@@ -19,9 +19,9 @@ build() {
   make
 }
 
-package(){
+package() {
   cd "${srcdir}/${pkgname%%-git}"
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
 }
 
 pkgver() {
@@ -29,4 +29,4 @@ pkgver() {
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
-md5sums=('SKIP')
+sha256sums=('SKIP')

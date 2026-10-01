@@ -3,15 +3,14 @@ pkgbase = termistor-git
 	pkgver = 50.bc0843f
 	pkgrel = 1
 	url = https://github.com/giucam/termistor
-	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = wayland
 	depends = libxkbcommon
 	provides = termistor
 	conflicts = termistor
 	source = termistor::git+https://github.com/giucam/termistor
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = termistor-git
