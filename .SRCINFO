@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-iamp
+	pkgdesc = AIMP skin: iAmp 1.0 (by bescheidener)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-iamp-214.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-iamp-214.archive::https://aimp.ru/?do=catalog.download&id=214
+	sha256sums = 47a99d11fd88a8ef16d8058c9ab7fe1adf2b243527ff1c908736fe2cf681cc4e
+
+pkgname = aimp-skin-iamp
