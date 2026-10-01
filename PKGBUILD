@@ -4,7 +4,7 @@
 pkgname='aimp-skin-pure-black'
 pkgdesc='AIMP skin: Pure Black 1.1 (by Alekz)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d74c84311f6865863febf4e461147768c4eb3d486c54fbb601103f2b0a34fa5f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Pure Black"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-pure-black-416.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
