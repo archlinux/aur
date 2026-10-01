@@ -4,7 +4,7 @@
 pkgname='aimp-skin-mizizi-twiga'
 pkgdesc='AIMP skin: Mizizi Twiga 3.0 (by GreenEyesMan)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('ee598dc38a37aaa7a1b0e74b2e269862a7e66eece59d46744d6147280864d44a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Mizizi Twiga"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-mizizi-twiga-571.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
