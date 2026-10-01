@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-acryl
+	pkgdesc = AIMP skin: Acryl 1.0 (by Freyr (aka Kristall_k8))
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-acryl-142.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-acryl-142.archive::https://aimp.ru/?do=catalog.download&id=142
+	sha256sums = 1005263a95173b69d3edc66cb913fddbfba6b1f774af98a7920720a723f03a37
+
+pkgname = aimp-skin-acryl
