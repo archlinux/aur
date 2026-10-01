@@ -4,7 +4,7 @@
 pkgname='aimp-skin-pioneer-rt-909'
 pkgdesc='AIMP skin: Pioneer RT-909 2.65 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c56013ec69d209a74a46ee1d2e71e6178541e029f393cb64c89f1719094d5fa4')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Pioneer RT-909"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-pioneer-rt-909-1027.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
