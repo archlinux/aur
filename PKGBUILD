@@ -4,7 +4,7 @@
 pkgname='aimp-skin-dual-c-846-and-dual-cv-1460'
 pkgdesc='AIMP skin: Dual C 846 & Dual CV 1460 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('1995f5036ce2842484c4d1306fb9eb47dece25a098cb45369d5dcbceca4debc4')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Dual C 846 & Dual CV 1460"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-dual-c-846-and-dual-cv-1460-764.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
