@@ -2,12 +2,12 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-dssi
-pkgver=0.1.5
+pkgver=0.1.5 # renovate: datasource=github-tags depName=savonet/ocaml-dssi
 pkgrel=1
 pkgdesc="OCaml bindings for dssi plugins"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/savonet/ocaml-dssi"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('ocaml' 'ocaml-ladspa')
 makedepends=('ocaml-findlib' 'dune' 'dssi' 'ladspa')
 options=('!strip')
