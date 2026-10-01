@@ -4,7 +4,7 @@
 pkgname='aimp-skin-p-05-12'
 pkgdesc='AIMP skin: P-05-12 1.0 (by Banned)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d9e73939830c4c912a80136cb5700d8d8dcdd722588cc31aa4771f17769fafdc')
 
 package() {
-  local dest="$pkgdir$_skinsdir/P-05-12"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-p-05-12-443.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
