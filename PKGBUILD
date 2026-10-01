@@ -4,7 +4,7 @@
 pkgname='aimp-skin-itunes-simple-version'
 pkgdesc='AIMP skin: iTunes [Simple Version] 1.0 (by Banned)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('8d9fcf2d73451d4ea1eff4a037df3f23fd03e4925b8fcfcab810c567c7123b1f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/iTunes [Simple Version]"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-itunes-simple-version-434.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

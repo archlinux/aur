@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-itunes-simple-version
 	pkgdesc = AIMP skin: iTunes [Simple Version] 1.0 (by Banned)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
