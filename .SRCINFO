@@ -3,9 +3,8 @@ pkgbase = ndpi-git
 	pkgver = r3017.0f8a9948
 	pkgrel = 1
 	url = http://www.ntop.org/products/ndpi/
-	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	provides = ndpi
 	conflicts = ndpi
@@ -13,4 +12,3 @@ pkgbase = ndpi-git
 	sha256sums = SKIP
 
 pkgname = ndpi-git
-
