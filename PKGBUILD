@@ -4,7 +4,7 @@
 pkgname='aimp-skin-verter'
 pkgdesc='AIMP skin: Verter 2.1 (by samix)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('6e7177f4cc9481c101c2699ae4a0a61d05b9c56051e03c5edcd0c438b3662108')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Verter"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-verter-859.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
