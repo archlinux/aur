@@ -4,7 +4,7 @@
 pkgname='aimp-skin-ora-mulih'
 pkgdesc='AIMP skin: Ora Mulih 2.5 (by Putra05)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('e75bea7d473c565ef8a0d6fae5c9eb63651bea88b6be0dda086310c9d2033b08')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Ora Mulih"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-ora-mulih-614.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
