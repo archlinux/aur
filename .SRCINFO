@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-alice
+	pkgdesc = AIMP skin: Alice 1.1 (by Zhenya)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-alice-310.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-alice-310.archive::https://aimp.ru/?do=catalog.download&id=310
+	sha256sums = e270287bbc6c7794b894d3b511b23a2697bb79440f1972d2eee112b897f23373
+
+pkgname = aimp-skin-alice
