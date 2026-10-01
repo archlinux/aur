@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-waingro
+	pkgdesc = AIMP skin: Waingro 1.0 (by Kondakov Andrey)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-waingro-424.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-waingro-424.archive::https://aimp.ru/?do=catalog.download&id=424
+	sha256sums = f88f2350f84a4ba5f89d1d9ba9946709966fb510aafa13629a5e774395df84b6
+
+pkgname = aimp-skin-waingro
