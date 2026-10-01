@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-gothic-theatre
+	pkgdesc = AIMP skin: Gothic Theatre 1.0 (by Freyr (aka Kristall_k8))
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-gothic-theatre-5.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-gothic-theatre-5.archive::https://aimp.ru/?do=catalog.download&id=5
+	sha256sums = 89e42b9c12ba94fa3bb5e076f59b8bcf819b56296b829c230d0e57e6918d3ac4
+
+pkgname = aimp-skin-gothic-theatre
