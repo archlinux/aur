@@ -4,7 +4,7 @@
 pkgname='aimp-skin-euphoria-vertisal-tabs'
 pkgdesc='AIMP skin: Euphoria Vertiсal Tabs 3.2 (by Я Гриша!)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('519dbc1e05bb3fbf1ff4657d96695a0faa40bb00579f3e120a83c0b03a1cd41f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Euphoria Vertiсal Tabs"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-euphoria-vertisal-tabs-461.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
