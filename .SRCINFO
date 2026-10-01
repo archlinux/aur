@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-black-minimal
+	pkgdesc = AIMP skin: Black Minimal 1.1 (by BerzerK)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-black-minimal-228.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-black-minimal-228.archive::https://aimp.ru/?do=catalog.download&id=228
+	sha256sums = 68ffdc57117376fd6c09cb8974ac9677804a23ecda5bb743e0042092fa15708e
+
+pkgname = aimp-skin-black-minimal
