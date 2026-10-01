@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-lost-planet
+	pkgdesc = AIMP skin: Lost Planet 1.0 (by ludo)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-lost-planet-809.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-lost-planet-809.archive::https://aimp.ru/?do=catalog.download&id=809
+	sha256sums = 9c5d0473c714a5be49fd06deed7602aea692c71e0b0288c77dc15410e1b95ca4
+
+pkgname = aimp-skin-lost-planet
