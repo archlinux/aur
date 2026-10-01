@@ -4,7 +4,7 @@
 pkgname='aimp-skin-aimp-red-lights'
 pkgdesc='AIMP skin: AIMP Red Lights 1.6 (by Tarik)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('9d05ae10da2628bda73ee05884953a8af700fd765c7c36e376aa8846ac48a28e')
 
 package() {
-  local dest="$pkgdir$_skinsdir/AIMP Red Lights"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-aimp-red-lights-100.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

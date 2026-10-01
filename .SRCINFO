@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-aimp-red-lights
 	pkgdesc = AIMP skin: AIMP Red Lights 1.6 (by Tarik)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
