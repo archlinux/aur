@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-enslate
+	pkgdesc = AIMP skin: Enslate 1.0 (by Nitehost)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-enslate-174.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-enslate-174.archive::https://aimp.ru/?do=catalog.download&id=174
+	sha256sums = aab6f8368769dfe8b04934d6056ec4777b58f12b90e8c31ae86ec716bef7bc95
+
+pkgname = aimp-skin-enslate
