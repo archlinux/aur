@@ -4,7 +4,7 @@
 pkgname='aimp-skin-aimware-beta'
 pkgdesc='AIMP skin: AIMWARE BETA 1.4 (by w7rus)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('b96a9acff2cf407350b3a870a8851f3f7504ef9966ab49d40d6af2fbfff76911')
 
 package() {
-  local dest="$pkgdir$_skinsdir/AIMWARE BETA"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-aimware-beta-806.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
