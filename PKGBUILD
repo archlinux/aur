@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 _name=mediapipe
 pkgname=python-mediapipe-bin
-pkgver=0.10.35 # renovate: datasource=pypi depName=mediapipe
+pkgver=1.0.1 # renovate: datasource=pypi depName=mediapipe
 pkgrel=1
 pkgdesc="A cross-platform, customizable ML solutions for live and streaming media"
 arch=('x86_64')
@@ -28,4 +28,4 @@ package() {
   python -m installer --destdir="$pkgdir" *.whl
 }
 
-sha256sums=('db9a579df48cffe9570cd3e93f6a5d2dd089a1103b846c60c5b5de8a21c38db0')
+sha256sums=('121522251afc3c135e4b7b0c341dd5e050ad1ec87631127484f3c389ae385044')
