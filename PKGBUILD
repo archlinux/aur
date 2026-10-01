@@ -4,7 +4,7 @@
 pkgname='aimp-skin-millenium-tc-classic'
 pkgdesc='AIMP skin: Millenium (TC Classic) 1.0 (by Prince)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f3acac98ee9c690179d8fb666fa890ff6abe86efd8543d456ae74667f9e3274d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Millenium (TC Classic)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-millenium-tc-classic-152.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
