@@ -4,7 +4,7 @@
 pkgname='aimp-skin-antimatter'
 pkgdesc='AIMP skin: Antimatter 1.1 (by Grin)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d44b2b4516669b97841c5d74b7e332cbf55b6922c4d6280a70a7aea5b9aa548a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Antimatter"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-antimatter-150.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
