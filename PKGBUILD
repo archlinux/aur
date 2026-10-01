@@ -4,7 +4,7 @@
 pkgname='aimp-skin-4x'
 pkgdesc='AIMP skin: 4X 1.0 (by Henrique Oliveira)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('320570753159384597bc6a537edeeef5b1db8504217789a2b1b5afb7d1f29bbb')
 
 package() {
-  local dest="$pkgdir$_skinsdir/4X"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-4x-673.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
