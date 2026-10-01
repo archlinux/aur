@@ -4,7 +4,7 @@
 pkgname='aimp-skin-metro-3-0-8'
 pkgdesc='AIMP skin: Metro 3/0.8 1.0 (by D_DeYneko)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('42cf2a9c19653ff3458c259f94b6ab127237becf5203f7a09e8299838429e9c3')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Metro 3_0.8"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-metro-3-0-8-376.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
