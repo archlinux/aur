@@ -3,7 +3,6 @@ pkgbase = aptly
 	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://www.aptly.info
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go

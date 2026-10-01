@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A Swiss Army knife for Debian repository management."
 url="https://www.aptly.info"
 license=('MIT')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 makedepends=('go')
 source=("https://github.com/aptly-dev/aptly/archive/refs/tags/v${pkgver}.tar.gz")
 
