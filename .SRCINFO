@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-aorn
+	pkgdesc = AIMP skin: Aorn 1.0 (by -=Lee=-)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-aorn-194.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-aorn-194.archive::https://aimp.ru/?do=catalog.download&id=194
+	sha256sums = 7b1014cff98505d36091fbc5919e0ddbe7b0c3c6fb6e151cb9cc2ffb8d662955
+
+pkgname = aimp-skin-aorn
