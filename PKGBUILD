@@ -4,7 +4,7 @@
 pkgname='aimp-skin-mayak-203-205'
 pkgdesc='AIMP skin: Mayak-203 (205) 3.27 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('ac4ff603b7d00fd278407ebfde540a630c46736269eb9d4887db62bf6614b67f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Mayak-203 (205)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-mayak-203-205-644.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
