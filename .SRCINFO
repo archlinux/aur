@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-micro-aimp
+	pkgdesc = AIMP skin: Micro AIMP 1.0 (by ProGroup)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-micro-aimp-127.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-micro-aimp-127.archive::https://aimp.ru/?do=catalog.download&id=127
+	sha256sums = 70e6e8eaadb25ae4ec5912b65812051284f33cb28941c67686722dc22f147747
+
+pkgname = aimp-skin-micro-aimp
