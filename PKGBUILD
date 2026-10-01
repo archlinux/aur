@@ -4,7 +4,7 @@
 pkgname='aimp-skin-s7reflex'
 pkgdesc='AIMP skin: S7Reflex 1.9 (by Sergio7786)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('74a1cad0772c7c55751085505f3687f39769edefa02b573b1b8e35d1ce303941')
 
 package() {
-  local dest="$pkgdir$_skinsdir/S7Reflex"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-s7reflex-210.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
