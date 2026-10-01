@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-sao
+	pkgdesc = AIMP skin: SAO 1.0 (by AlexF)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-sao-542.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-sao-542.archive::https://aimp.ru/?do=catalog.download&id=542
+	sha256sums = d3bf2cfcc38d2539308a23ca50531c305c15622b705092796876930ca01d9bb0
+
+pkgname = aimp-skin-sao
