@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=apache-mime4j
-pkgver=0.8.12
+pkgver=0.8.12 # renovate: datasource=maven depName=org.apache.james:apache-mime4j-core
 pkgrel=1
 pkgdesc="Apache JAMES Mime4j"
 arch=('x86_64')
