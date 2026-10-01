@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-w8-vanilla
+	pkgdesc = AIMP skin: W8 Vanilla 1.2 (by Zigar)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-w8-vanilla-703.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-w8-vanilla-703.archive::https://aimp.ru/?do=catalog.download&id=703
+	sha256sums = 9ff74f6f62cec3bb4dcc77831044a428b8c11bb5e093e92fe2f94f3ceb9580db
+
+pkgname = aimp-skin-w8-vanilla
