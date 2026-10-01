@@ -4,7 +4,7 @@
 pkgname='aimp-skin-l-90'
 pkgdesc='AIMP skin: L 90 2 (by -=Lee=-)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('82d041a184406bb8745deac624a07aaca4c30c7a57f40218ab7833459b5f0329')
 
 package() {
-  local dest="$pkgdir$_skinsdir/L 90"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-l-90-204.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
