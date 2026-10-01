@@ -4,7 +4,7 @@
 pkgname='aimp-skin-bordercontrol-red'
 pkgdesc='AIMP skin: BorderControl Red 1.0 (by FreeZeek)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d10e84502606d290577d0dcadaac917d591ec8a2e6297d5a04452a82c01b78df')
 
 package() {
-  local dest="$pkgdir$_skinsdir/BorderControl Red"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-bordercontrol-red-134.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
