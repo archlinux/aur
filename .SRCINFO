@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-tech
+	pkgdesc = AIMP skin: Tech 1.0 (by AngelAG)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-tech-219.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-tech-219.archive::https://aimp.ru/?do=catalog.download&id=219
+	sha256sums = 6b73824bedc045359025616394df886d5ebc58e5f936b77dad651e16304e4f1f
+
+pkgname = aimp-skin-tech
