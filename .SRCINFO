@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-new-vk
 	pkgdesc = AIMP skin: New.VK 1.61 (by danyBatinF1)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

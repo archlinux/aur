@@ -4,7 +4,7 @@
 pkgname='aimp-skin-new-vk'
 pkgdesc='AIMP skin: New.VK 1.61 (by danyBatinF1)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('ffe2059e1408bad02831b734e8764e2ac04a53461d67847954c90d6b6b755a65')
 
 package() {
-  local dest="$pkgdir$_skinsdir/New.VK"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-new-vk-824.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
