@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-skif-310-1s
+	pkgdesc = AIMP skin: Скиф 310-1с 1.1 (by Пупс)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-skif-310-1s-710.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-skif-310-1s-710.archive::https://aimp.ru/?do=catalog.download&id=710
+	sha256sums = dd6020e3ca280fb92075984f9f29a8d36ccba82e4e20e45e15c79200371d88c1
+
+pkgname = aimp-skin-skif-310-1s
