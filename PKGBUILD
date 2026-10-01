@@ -4,7 +4,7 @@
 pkgname='aimp-skin-cyber'
 pkgdesc='AIMP skin: CYBER 1.1.4 (by rodent19)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('34e6d0dfe52d8fe19100cccb06de847a5b32395551cbf668cf81ed886174608d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/CYBER"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-cyber-178.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
