@@ -2,7 +2,7 @@
 
 pkgname=infonotary-client-software
 pkgver=3.0.29
-pkgrel=1
+pkgrel=2
 pkgdesc="InfoNotary client software - InfoNotary e-Doc Signer and InfoNotary Smart Card Manager."
 arch=('x86_64')
 url="http://www.infonotary.com/"
