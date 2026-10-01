@@ -1,6 +1,6 @@
 # Maintainer: Sanjaya Danushka <dsanjaya712@gmail.com>
 pkgname=neoarch
-pkgver=3.3.3
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="NeoArch Package Manager for Arch Linux (stable release, use 'neoarch-git' for latest dev builds)"
 arch=('any')
@@ -29,8 +29,9 @@ package() {
   chmod +x "$pkgdir/opt/neoarch/Neoarch/scripts/install_desktop_entry.sh"
   # Fix entry point reference from aurora_home.py to -m neoarch
   sed -i 's|aurora_home.py|-m neoarch|' "$pkgdir/opt/neoarch/Neoarch/bin/neoarch.sh"
-  # CLI on PATH (both the long and short name)
+  # GUI on PATH as `neoarch`, CLI as `neoarch-cli` and the short `neo`
   install -d "$pkgdir/usr/bin"
+  ln -s /opt/neoarch/Neoarch/bin/neoarch.sh "$pkgdir/usr/bin/neoarch"
   ln -s /opt/neoarch/Neoarch/bin/neoarch-cli "$pkgdir/usr/bin/neoarch-cli"
   ln -s /opt/neoarch/Neoarch/bin/neoarch-cli "$pkgdir/usr/bin/neo"
   # Install desktop file
