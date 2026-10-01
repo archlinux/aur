@@ -4,7 +4,7 @@
 pkgname='aimp-skin-phantom-dj-1000'
 pkgdesc='AIMP skin: Phantom DJ 1000 1.4.4 (by Hayo Tee (aka HX722))'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('8e95412083fb0f3646017c613b331a53b2311ad83dfe0149c092270aed59a2a0')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Phantom DJ 1000"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-phantom-dj-1000-367.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
