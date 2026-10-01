@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-cyberlink-powerplayer
+	pkgdesc = AIMP skin: CyberLink PowerPlayer 2.00 (by memo-se)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-cyberlink-powerplayer-594.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-cyberlink-powerplayer-594.archive::https://aimp.ru/?do=catalog.download&id=594
+	sha256sums = dc07807579208c99cc7cf09fcceb528b1c2391a9fe5d6f3d34da1af16c27f9df
+
+pkgname = aimp-skin-cyberlink-powerplayer
