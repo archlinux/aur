@@ -4,7 +4,7 @@
 pkgname='aimp-skin-sports-orange'
 pkgdesc='AIMP skin: Sports Orange 1.02 (by FreeZeek)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('29b269b9dc9e9e9236557538c30466adb05be5a3fa8161f01c17e04e0eb86dc8')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Sports Orange"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-sports-orange-120.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
