@@ -4,7 +4,7 @@
 pkgname='aimp-skin-splash'
 pkgdesc='AIMP skin: Splash 2 (by Мишуа)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('399476270f7e90774b81b6b0198722fdf4e974adb94ce0c26c48e7c649bd41df')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Splash"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-splash-373.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
