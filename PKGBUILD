@@ -4,7 +4,7 @@
 pkgname='aimp-skin-mere'
 pkgdesc='AIMP skin: Mere 1.3 (by ScrollUnLock)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('332390cf77ebbf4f4ed64c3586c0573b6c8859b789372604a8793dfeefe4b9b2')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Mere"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-mere-362.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
