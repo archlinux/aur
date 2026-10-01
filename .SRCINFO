@@ -18,6 +18,6 @@ pkgbase = moandrop
 	depends = libxkbcommon
 	depends = wayland
 	source = moandrop-0.2.0.tar.gz::https://github.com/Anastylosis/MoanDrop/archive/v0.2.0.tar.gz
-	sha256sums = 925592df2fa90d88814ae2c62680d69abb097796d2558ef0e9060be0c606d9d7
+	sha256sums = 3cceb30942802dcf8a403386c3fa5e0b993bff1a7b1ed407bd4c07c90e620abe
 
 pkgname = moandrop

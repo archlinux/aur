@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 depends=('glibc' 'libgl' 'libx11' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libxxf86vm' 'libxkbcommon' 'wayland')
 makedepends=('go>=1.25')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('925592df2fa90d88814ae2c62680d69abb097796d2558ef0e9060be0c606d9d7')
+sha256sums=('3cceb30942802dcf8a403386c3fa5e0b993bff1a7b1ed407bd4c07c90e620abe')
 
 build() {
     cd "MoanDrop-${pkgver}"
