@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-slim
 	pkgdesc = AIMP skin: Slim 1.0 (by Dead)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

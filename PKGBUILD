@@ -4,7 +4,7 @@
 pkgname='aimp-skin-slim'
 pkgdesc='AIMP skin: Slim 1.0 (by Dead)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f7e21b0083af33bb4ea5f5a0c86d91ed019b8b5e08d5f1d639c5d25922252ccd')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Slim"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-slim-482.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
