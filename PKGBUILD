@@ -4,7 +4,7 @@
 pkgname='aimp-skin-denon-dr-f8'
 pkgdesc='AIMP skin: Denon DR-F8 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('991e42de237306babfbaf2ceccf511ccc6c370310edf5d32d6ee27da6787460d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Denon DR-F8"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-denon-dr-f8-556.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
