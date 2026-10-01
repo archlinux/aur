@@ -1,0 +1,6 @@
+# makepkg output and downloaded sources never belong in the AUR repository.
+*.pkg.tar*
+*.tar.gz
+/src/
+/pkg/
+*.log
