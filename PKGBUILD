@@ -6,9 +6,9 @@ pkgname=friture
 pkgver=0.54 # renovate: datasource=github-tags depName=tlecomte/friture
 pkgrel=1
 pkgdesc="An application to visualize and analyze live audio data in real-time."
-arch=(i686 x86_64)
+arch=(x86_64)
 url="https://friture.org/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('python-appdirs' 'python-docutils' 'python-multipledispatch' 'python-numpy'
   'python-pa-ringbuffer' 'python-pyqt5' 'python-pyrr' 'python-rtmixer'
   'python-sounddevice')
