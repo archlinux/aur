@@ -4,7 +4,7 @@
 pkgname='aimp-skin-marantz-5030'
 pkgdesc='AIMP skin: Marantz 5030 1.61 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('ba2020ad57bcb14619a8fede2cb76500e0e8e188873444693fdca5b165fc2cd4')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Marantz 5030"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-marantz-5030-563.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
