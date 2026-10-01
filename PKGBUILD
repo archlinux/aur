@@ -2,65 +2,74 @@
 
 pkgname=pylucene
 pkgver=10.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for Apache Lucene"
 arch=('x86_64')
 url="https://lucene.apache.org/pylucene/"
 license=('Apache')
-depends=('jdk21-openjdk' 'gradle' 'python' 'gcc' 'make' 'ant' 'python-setuptools')
-makedepends=('git')
+depends=('jdk21-openjdk' 'python')
+makedepends=('gradle' 'gcc' 'make' 'python-setuptools' 'icu' 'patchelf')
 source=(
     "https://downloads.apache.org/lucene/pylucene/pylucene-$pkgver-src.tar.gz"
 )
-sha256sums=('SKIP') # Replace with the actual checksum
-
-prepare() {
-    JAVA_BIN=$(which java)
-    JAVA_HOME=$(dirname $(dirname $(readlink -f $JAVA_BIN)))
-    export JCC_JDK=$JAVA_HOME
-    export JCC_INCLUDES="$JAVA_HOME/include:$JAVA_HOME/include/linux"
-    export JCC_LFLAGS="-L$JAVA_HOME/lib/server:-ljvm"
-
-    PYTHON_BIN=$(which python3)
-    PREFIX_PYTHON=$(dirname $(dirname $(readlink -f $PYTHON_BIN)))
-    export PYTHON=${PREFIX_PYTHON}/bin/python3
-    export JCC="${PYTHON} -m jcc"
-    export NUM_FILES=16
-
-    export LD_LIBRARY_PATH="$JAVA_HOME/lib/server:$LD_LIBRARY_PATH"
-}
+sha256sums=('100c3d61d6799ac16b7b8c1826cddf07fb1715141ebdb0d7b8119cdd96b24574')
 
 build() {
-    cd "$srcdir/pylucene-$pkgver/jcc"
-
-    python setup.py build
-    python setup.py install --user
-
     cd "$srcdir/pylucene-$pkgver"
 
-    sed -i 's/--builtin-vmarg/--vmarg/g' Makefile
-    make
+    # Always build against JDK 21 (PyLucene 10 requires Java >= 21)
+    export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+    export PATH="$JAVA_HOME/bin:$PATH"
+    export JCC_JDK="$JAVA_HOME"
+    export JCC_INCLUDES="$JAVA_HOME/include:$JAVA_HOME/include/linux"
+    # colon-separated: jcc splits these on os.pathsep
+    # rpath lets the modules find libjvm.so without LD_LIBRARY_PATH tweaks
+    export JCC_LFLAGS="-L$JAVA_HOME/lib/server:-Wl,-rpath,$JAVA_HOME/lib/server:-ljvm"
+    export LD_LIBRARY_PATH="$JAVA_HOME/lib/server${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+
+    export PYTHON=python3
+    export NUM_FILES=16
+    # build the ICU normalization resource (lucene/resources/utr30.dat)
+    export ICUSBIN=/usr/bin
+
+    # Build JCC (shared mode) and keep it importable through PYTHONPATH only
+    ( cd jcc
+      python setup.py build )
+    _jcc_lib="$PWD/jcc/build/lib.linux-x86_64-cpython-$(python -c 'import sys; print(f"{sys.version_info.major}{sys.version_info.minor}")')"
+    export PYTHONPATH="$_jcc_lib${PYTHONPATH:+:$PYTHONPATH}"
+    # --shared: through-layer python exception propagation (needs libjcc3.so)
+    export JCC="$PYTHON -m jcc --shared"
+
+    # default target: sources, lucene (gradlew collectRuntimeJars), jars,
+    # resources, compile (jcc wrapper generation + C++ build)
+    # -j1: 'jars' depends on files produced by the phony 'lucene' target,
+    # parallel make can evaluate 'jars' before gradle has produced them
+    make -j1
 }
 
 package() {
     cd "$srcdir/pylucene-$pkgver"
 
-    # Create necessary directories
-    python_sitelib=$(python -c "import site; print(site.getsitepackages()[0])")
-    install -dm755 "$pkgdir${python_sitelib}/pylucene"
+    _pyimpl=$(python -c 'import sys; print(f"cpython-{sys.version_info.major}{sys.version_info.minor}")')
+    _sitelib=$(python -c "import site; print(site.getsitepackages()[0])")
+    _jvm_rpath="/usr/lib/jvm/java-21-openjdk/lib/server"
 
-    # Install Python modules
-    cp -r build/lib.linux-x86_64-cpython-312/* "$pkgdir${python_sitelib}/"
+    # jcc's --build only runs 'build_ext': the module sources and jars are
+    # staged in build/lucene (the package_dir), while the compiled extension
+    # lands in build/lib.linux-x86_64-<impl>/lucene/. The embedded classpath
+    # is module-relative, so the jars must ship next to __init__.py.
+    install -dm755 "$pkgdir/$_sitelib/lucene"
+    cp -a build/lucene/. "$pkgdir/$_sitelib/lucene/"
+    cp -a build/lib.linux-x86_64-$_pyimpl/lucene/_lucene*.so "$pkgdir/$_sitelib/lucene/"
 
-    # Install Java libraries
-    install -dm755 "$pkgdir${python_sitelib}/pylucene/lucene-java-${pkgver}"
-    cp -r lucene-java-${pkgver}/* "$pkgdir${python_sitelib}/pylucene/lucene-java-${pkgver}/"
+    # shared mode: ship JCC and libjcc3.so next to the lucene module so that
+    # 'import jcc' works and Python exceptions propagate through Java layers
+    cp -a "jcc/build/lib.linux-x86_64-$_pyimpl/jcc" "$pkgdir/$_sitelib/"
+    cp -a "jcc/build/lib.linux-x86_64-$_pyimpl/libjcc3.so" "$pkgdir/$_sitelib/"
+    rm -rf "$pkgdir/$_sitelib/jcc/python.class" "$pkgdir/$_sitelib/jcc/__pycache__"
 
-    # Install JAR files
-    find lucene-java-${pkgver} -name "*.jar" -exec install -Dm644 {} "$pkgdir${python_sitelib}/pylucene/{}" \;
-}
-
-post_install() {
-    # Add Java library path to LD_LIBRARY_PATH
-    echo 'export LD_LIBRARY_PATH=${JAVA_HOME}lib/server:$LD_LIBRARY_PATH' >>/etc/profile.d/jdk.sh
+    # fix rpaths: libjcc3.so lives one level above the module dirs
+    patchelf --set-rpath "$_jvm_rpath:\$ORIGIN/.." "$pkgdir/$_sitelib/lucene/_lucene"*.so
+    patchelf --set-rpath "$_jvm_rpath:\$ORIGIN/.." "$pkgdir/$_sitelib/jcc/_jcc3"*.so
+    patchelf --set-rpath "$_jvm_rpath" "$pkgdir/$_sitelib/libjcc3.so"
 }
