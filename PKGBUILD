@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=coova-chilli-arch
-pkgver=1.9
+pkgver=1.9 # renovate: datasource=github-tags depName=coova/coova-chilli
 pkgrel=1
 pkgdesc='An open-source software access controller'
 arch=('x86_64')
