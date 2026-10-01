@@ -4,7 +4,7 @@
 pkgname='aimp-skin-placebo'
 pkgdesc='AIMP skin: Placebo 1.0 (by phoenix-i)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d6ff74366e4bd166e33c221cbc56c245e2cf3c2586722c421f10c8be92c3b0f0')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Placebo"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-placebo-516.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
