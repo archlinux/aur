@@ -4,9 +4,8 @@ pkgbase = pump.io
 	pkgrel = 2
 	url = http://pump.io
 	install = pump.io.install
-	arch = i686
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	depends = nodejs
 	depends = graphicsmagick
 	optdepends = mongodb
@@ -24,4 +23,3 @@ pkgbase = pump.io
 	sha256sums = 8e0c47c0639899bbbb97d8a1ff2b8834a99ab3235b551224aa3237dd48f220d4
 
 pkgname = pump.io
-
