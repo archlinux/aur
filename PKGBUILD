@@ -1,4 +1,4 @@
-# Maintainer: BBJ <bbj@bbj.dev>
+# Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=kimi-cli-bin
 pkgver=1.52.0
 pkgrel=1
