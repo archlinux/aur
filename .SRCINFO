@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-qmp-5-aio
 	pkgdesc = AIMP skin: QMP 5 AIO 1.0 (by memo-se)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
