@@ -4,7 +4,7 @@
 pkgname='aimp-skin-7themes'
 pkgdesc='AIMP skin: 7Themes 1.0 (by Тень)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('6f8487e93e648b9dec02e5aa6c6d09a8ba70ba2fe7c0666042b5277493c10b57')
 
 package() {
-  local dest="$pkgdir$_skinsdir/7Themes"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-7themes-1038.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

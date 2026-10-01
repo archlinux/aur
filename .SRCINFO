@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-7themes
 	pkgdesc = AIMP skin: 7Themes 1.0 (by Тень)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
