@@ -12,7 +12,10 @@ pkgname=faircamp-git
 pkgrel=1
 pkgver=r529.369d9c6
 provides=('faircamp')
-source=('faircamp-git::git+https://codeberg.org/simonrepp/faircamp.git')
+source=(
+  faircamp.desktop
+  'faircamp-git::git+https://codeberg.org/simonrepp/faircamp.git'
+)
 url='https://faircamp.org'
 
 build() {
@@ -23,6 +26,9 @@ build() {
 }
 
 package() {
+    mkdir -p "$pkgdir/usr/share/applications"
+    install -Dm644 "$srcdir/faircamp.desktop" "$pkgdir/usr/share/applications/faircamp.desktop"
+
     mkdir -p "$pkgdir/usr/bin"
     install -Dm755 "$srcdir/$pkgname/target/release/faircamp" "$pkgdir/usr/bin/faircamp"
 }

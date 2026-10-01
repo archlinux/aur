@@ -16,6 +16,7 @@ pkgbase = faircamp-git
 	conflicts = faircamp-bin
 	conflicts = faircamp-cli
 	options = !lto
+	source = faircamp.desktop
 	source = faircamp-git::git+https://codeberg.org/simonrepp/faircamp.git
 	md5sums = SKIP
 
