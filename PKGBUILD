@@ -4,7 +4,7 @@
 pkgname='aimp-skin-olimp-006'
 pkgdesc='AIMP skin: Olimp 006 1.1 (by Пупс)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f46a2e55826f32c25d7a0fd3c47e5721d07e37e926f151776906c69d6bccc42d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Olimp 006"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-olimp-006-995.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
