@@ -1,12 +1,17 @@
 # Maintainer: HorneroOS contributors <https://github.com/HorneroOS/shell>
 
 pkgname=hornero-shell
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Hornero OS desktop shell, built with Quickshell, QML and Qt for Wayland"
 arch=('x86_64')
 url="https://github.com/HorneroOS/shell"
 license=('GPL-3.0-or-later')
+# Official [extra]/quickshell (>= 0.3.1): the shell only uses long-stable
+# Quickshell QML modules (core, Hyprland, Io, Bluetooth,
+# Services.Mpris/Notifications/UPower, Wayland, Widgets) and links no
+# Quickshell C++ API, so no git-HEAD feature is required. Revisit only if
+# the shell adopts an API newer than the packaged release.
 depends=(
   'aubio'
   'libcava'
@@ -14,7 +19,7 @@ depends=(
   'pipewire'
   'qt6-base'
   'qt6-declarative'
-  'quickshell-git'
+  'quickshell>=0.3.1'
 )
 makedepends=(
   'cmake'
@@ -34,7 +39,7 @@ optdepends=(
   'swappy: screenshot annotation'
   'wl-clipboard: clipboard integration via wl-copy'
 )
-source=("$pkgname::git+https://github.com/HorneroOS/shell.git")
+source=("$pkgname::git+https://github.com/HorneroOS/shell.git#tag=v1.1.0")
 sha256sums=('SKIP')
 
 build() {
