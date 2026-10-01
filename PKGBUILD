@@ -4,7 +4,7 @@
 pkgname='aimp-skin-trusko-skin'
 pkgdesc='AIMP skin: TRUSKO Skin 1.0 (by t_RUS_ko)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('5f7335f280cbccdcc719d512429c947197d5d32dde36681f389d43263ad38c25')
 
 package() {
-  local dest="$pkgdir$_skinsdir/TRUSKO Skin"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-trusko-skin-491.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
