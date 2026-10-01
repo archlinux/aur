@@ -1,22 +1,10 @@
 pkgbase = linuxqq-wayland-clipboard-fix-git
-	pkgdesc = 修复 Linux QQ 以 Wayland 运行时的剪贴板（QQ 内双向桥接 X11 与 Wayland 剪贴板，接替 linuxqq-clipsync）
-	pkgver = r1.ffec072
+	pkgdesc = 【已合并到 linuxqq-wayland-fix-git】过渡包，更新后可卸载
+	pkgver = r2
 	pkgrel = 1
-	url = https://github.com/SHORiN-KiWATA/linuxqq-wayland-clipboard-fix
-	arch = x86_64
-	arch = aarch64
+	url = https://github.com/SHORiN-KiWATA/linuxqq-wayland-fix
+	arch = any
 	license = MIT
-	makedepends = git
-	makedepends = pkgconf
-	depends = glibc
-	depends = libx11
-	depends = wayland
-	depends = linuxqq
-	provides = linuxqq-wayland-clipboard-fix
-	conflicts = linuxqq-wayland-clipboard-fix
-	conflicts = linuxqq-clipsync-git
-	options = !debug
-	source = linuxqq-wayland-clipboard-fix::git+https://github.com/SHORiN-KiWATA/linuxqq-wayland-clipboard-fix.git
-	sha256sums = SKIP
+	depends = linuxqq-wayland-fix-git
 
 pkgname = linuxqq-wayland-clipboard-fix-git

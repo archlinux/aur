@@ -1,31 +1,14 @@
 # Maintainer: Shorin <shorin@example.com>
-_pkgname=linuxqq-wayland-clipboard-fix
+# 过渡包：本项目已合并到 linuxqq-wayland-fix-git，更新后可以卸载本包。
 pkgname=linuxqq-wayland-clipboard-fix-git
-pkgver=r1.ffec072
+pkgver=r2
 pkgrel=1
-pkgdesc="修复 Linux QQ 以 Wayland 运行时的剪贴板（QQ 内双向桥接 X11 与 Wayland 剪贴板，接替 linuxqq-clipsync）"
-arch=('x86_64' 'aarch64')
-url="https://github.com/SHORiN-KiWATA/linuxqq-wayland-clipboard-fix"
+pkgdesc="【已合并到 linuxqq-wayland-fix-git】过渡包，更新后可卸载"
+arch=('any')
+url="https://github.com/SHORiN-KiWATA/linuxqq-wayland-fix"
 license=('MIT')
-depends=('glibc' 'libx11' 'wayland' 'linuxqq')
-makedepends=('git' 'pkgconf')
-provides=('linuxqq-wayland-clipboard-fix')
-conflicts=('linuxqq-wayland-clipboard-fix' 'linuxqq-clipsync-git')
-options=('!debug')
-source=("$_pkgname::git+${url}.git")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd "$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-build() {
-    cd "$_pkgname"
-    make VERSION="$pkgver"
-}
+depends=('linuxqq-wayland-fix-git')
 
 package() {
-    cd "$_pkgname"
-    make install DESTDIR="$pkgdir" PREFIX=/usr VERSION="$pkgver"
+    :
 }
