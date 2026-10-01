@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-romantik-304
+	pkgdesc = AIMP skin: Romantik 304 1.83 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-romantik-304-618.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-romantik-304-618.archive::https://aimp.ru/?do=catalog.download&id=618
+	sha256sums = cfb0cd1f50408d33005e5fcb77e26651e1d75612f23a69c8c71cf068070b90fe
+
+pkgname = aimp-skin-romantik-304
