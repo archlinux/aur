@@ -1,0 +1,19 @@
+pkgbase = dan-bin
+	pkgdesc = Fast, modern, and intuitive terminal editor with a rope-based buffer
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/dfallman/dan
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	depends = glibc
+	depends = libgcc
+	provides = dan
+	conflicts = dan
+	options = !strip
+	source_x86_64 = dan-x86_64-0.4.0.tgz::https://github.com/dfallman/dan/releases/download/0.4.0/dan-0.4.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 76e2ffda4b7207df46718acb0c83666d6b411776bd647907c7c976a37975826d
+	source_aarch64 = dan-aarch64-0.4.0.tgz::https://github.com/dfallman/dan/releases/download/0.4.0/dan-0.4.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4351f3253b3109e4f31f0be2aed96faaa0a16a2c9f985c06d3b293a2b6b6e248
+
+pkgname = dan-bin

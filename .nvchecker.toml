@@ -1,0 +1,5 @@
+[dan-bin]
+source = "github"
+github = "dfallman/dan"
+use_latest_release = true
+prefix = ""
