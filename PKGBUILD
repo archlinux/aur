@@ -1,6 +1,6 @@
 # Maintainer: Sean Snell <ssnell@lakecs.net>
 pkgname=cw-chat
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="CW (Morse code) chat over PipeWire: send typed text and decode received CW in a GTK window"
 arch=('x86_64' 'aarch64')
@@ -8,10 +8,11 @@ url="https://github.com/dhtseany/cw-chat"
 license=('GPL-3.0-or-later')
 depends=('glib2' 'glibc' 'graphene' 'gtk4' 'libadwaita' 'libgcc' 'libpipewire' 'pango')
 optdepends=('pipewire: the PipeWire audio server the TX and RX nodes connect to'
-            'qpwgraph: routing the TX and RX nodes by hand')
+            'qpwgraph: routing the TX and RX nodes by hand'
+            'smc-bridge-hrdctl: keying the radio through Ham Radio Deluxe (--ptt hrdctl)')
 makedepends=('cargo' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dhtseany/cw-chat/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fd63dc8f0cc5c1c069246e7cd9e1233b4cc61dd074cffb9e48ae099efca155e8')
+sha256sums=('c90392df0cdea25d4727ac472bda5124aec22bf6eec6a866df5b55a1c45465a6')
 
 prepare() {
   cd "$pkgname-$pkgver"
