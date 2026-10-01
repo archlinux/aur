@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-akai-gx-77-4k
+	pkgdesc = AIMP skin: Akai GX-77 4K 1.0 (by Black_AVP)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-akai-gx-77-4k-1338.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-akai-gx-77-4k-1338.archive::https://aimp.ru/?do=catalog.download&id=1338
+	sha256sums = 716b19a1342902f7b1c8579fee6a80bec5abdd815b6ee4028d0dd77605ee99d9
+
+pkgname = aimp-skin-akai-gx-77-4k
