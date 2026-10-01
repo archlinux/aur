@@ -1,7 +1,7 @@
 # Maintainer: Fell <fell@fellr.net>
 
 pkgname=plasticscm-client-core
-pkgver=11.0.16.10303
+pkgver=11.0.16.10371
 pkgrel=1
 pkgdesc="Unity Version Control (formerly Plastic SCM) originally developed by Códice Software (Command line utilities)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('e2fsprogs' 'gcc-libs' 'glibc' 'icu' 'keyutils' 'krb5' 'lttng-ust' 'zli
 groups=('plasticscm-complete' 'plasticscm-client-complete')
 options=('!strip') # stripping seems to break the cm binary
 source=("https://plastic-releases.s3.eu-west-2.amazonaws.com/releases/${pkgver}/plasticscm/linux/PlasticSCM-${pkgver}-linux-client-core.tar.gz")
-b2sums=('6a4353b7d83a6afbe6d8875c26e0863916083e79b4dbd391f162c4541103dc355db0f586e24daeed04114fe6c7629b4846d83a99983e80c5499543c1b330ee30')
+b2sums=('7f42ee79a41fbd3718851016c4ab4dcaec4f0ee65a6c9c0609995e1e47b13c1b81313d9ca1a1cc8905994a826f3a7a4da2642e802b54f69784320287894b3004')
 
 package() {
     local -r plasticdir="/opt/plasticscm5"
