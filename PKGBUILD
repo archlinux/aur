@@ -4,7 +4,7 @@
 pkgname='aimp-skin-nexus'
 pkgdesc='AIMP skin: Nexus 1.0 (by umbrella-cakey)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a887acda4dee73dc27f374c280e3fd6221bf4873d83ab4fb08308cec32dc9ebd')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Nexus"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-nexus-1223.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
