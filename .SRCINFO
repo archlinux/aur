@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-black-mini
+	pkgdesc = AIMP skin: Black Mini 1.1 (by SeReG@)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-black-mini-311.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-black-mini-311.archive::https://aimp.ru/?do=catalog.download&id=311
+	sha256sums = c47ea5bed22874cdf3ccade5092663c1bd747c5f2153de6875da68094632e0fe
+
+pkgname = aimp-skin-black-mini
