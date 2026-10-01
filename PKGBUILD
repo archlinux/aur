@@ -4,7 +4,7 @@
 pkgname='aimp-skin-b-and-w-lineage'
 pkgdesc='AIMP skin: B&W Lineage 1.1 (by San4o)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('70e5537a85747b20dab04231725cf31e995dd93fc5469f20c025d4d1362c0e76')
 
 package() {
-  local dest="$pkgdir$_skinsdir/B&W Lineage"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-b-and-w-lineage-140.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
