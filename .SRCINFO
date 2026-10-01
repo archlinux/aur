@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-deep-dark-skin
+	pkgdesc = AIMP skin: Deep Dark Skin 2.5 (by Chivo)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-deep-dark-skin-1193.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-deep-dark-skin-1193.archive::https://aimp.ru/?do=catalog.download&id=1193
+	sha256sums = 689b39ecb6b661efa47e1b0bd559c212be54153b53e1972c7f919f9cc730e4e2
+
+pkgname = aimp-skin-deep-dark-skin
