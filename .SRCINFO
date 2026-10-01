@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-airex
+	pkgdesc = AIMP skin: AiREX 1.0 (by John Éshan)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-airex-193.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-airex-193.archive::https://aimp.ru/?do=catalog.download&id=193
+	sha256sums = f3789d5230a94ceead8b2068f384c2d40486e112555c8b070706beb8c5396e69
+
+pkgname = aimp-skin-airex
