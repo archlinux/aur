@@ -4,7 +4,7 @@
 pkgname='aimp-skin-4carpc'
 pkgdesc='AIMP skin: 4CarPC 1.1 (by dundel)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('0573675d6e8b25e79ecc788656ccfc0ff2d168ce2c72835a0b520bc9e68317cf')
 
 package() {
-  local dest="$pkgdir$_skinsdir/4CarPC"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-4carpc-462.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
