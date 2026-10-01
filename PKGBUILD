@@ -4,7 +4,7 @@
 pkgname='aimp-skin-tech'
 pkgdesc='AIMP skin: Tech 1.0 (by AngelAG)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('6b73824bedc045359025616394df886d5ebc58e5f936b77dad651e16304e4f1f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Tech"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-tech-219.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
