@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-submarine
+	pkgdesc = AIMP skin: Submarine 2.15 (by danyBatinF1)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-submarine-823.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-submarine-823.archive::https://aimp.ru/?do=catalog.download&id=823
+	sha256sums = d8c0f1a4392aa2f744972b05f1d7014d9b5b346b2cbf2d500e8649e2bb43c622
+
+pkgname = aimp-skin-submarine
