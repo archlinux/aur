@@ -4,7 +4,7 @@
 pkgname='aimp-skin-millenium'
 pkgdesc='AIMP skin: Millenium 1.0 (by Prince)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('55b4b46c2a208dccca0ef8bffa558e624e4df6635168e5c224ca062c013b64d2')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Millenium"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-millenium-154.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
