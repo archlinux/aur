@@ -4,7 +4,7 @@
 pkgname='aimp-skin-3-5'
 pkgdesc='AIMP skin: 3.5" 1.0 (by AlexF)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('fa1da575800aad0b675684325e310c0d151938291bbd5f7ef2e3da1106ff1bf3')
 
 package() {
-  local dest="$pkgdir$_skinsdir/3.5_"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-3-5-802.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

@@ -1,11 +1,11 @@
 pkgbase = aimp-skin-3-5
 	pkgdesc = AIMP skin: 3.5" 1.0 (by AlexF)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
-	groups = AIMP_Skins
 	license = custom
+	groups = AIMP_Skins
 	makedepends = libarchive
 	depends = aimp
 	noextract = aimp-skin-3-5-802.archive
