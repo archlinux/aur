@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-hm-pure-blue
+	pkgdesc = AIMP skin: hm_pure_blue 1.0 (by flon)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-hm-pure-blue-773.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-hm-pure-blue-773.archive::https://aimp.ru/?do=catalog.download&id=773
+	sha256sums = d117aea7927ac3efe85a56af7d8b1414b9b92a9641031aad9bc3b804483cd3e6
+
+pkgname = aimp-skin-hm-pure-blue
