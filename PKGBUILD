@@ -4,7 +4,7 @@
 pkgname='aimp-skin-kmplayer-pure-remix'
 pkgdesc='AIMP skin: KMPlayer Pure Remix 6.03 (by ProGroup)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('724dcfe94849e98eff88b4bba9a5a0cd5907cc7af7e564a22a47cf3e6666f6f2')
 
 package() {
-  local dest="$pkgdir$_skinsdir/KMPlayer Pure Remix"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-kmplayer-pure-remix-147.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
