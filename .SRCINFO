@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-olimp-mpk-005s-1
 	pkgdesc = AIMP skin: Олимп МПК-005С-1 1.2 (by Пупс)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
