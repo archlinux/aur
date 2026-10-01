@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-ryze
+	pkgdesc = AIMP skin: Ryze 1.0.3 (by ScrollUnLock)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-ryze-406.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-ryze-406.archive::https://aimp.ru/?do=catalog.download&id=406
+	sha256sums = 25f69ead8946a1144e7095f0089ef14be623f82140bb17da7ebf246a2b92b449
+
+pkgname = aimp-skin-ryze
