@@ -4,7 +4,7 @@
 pkgname='aimp-skin-ayonplayer'
 pkgdesc='AIMP skin: AyonPlayer 1.0.5 (by Virys90)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f9300dc07f33cce7964bdfe0379c6a7d4cab5f5ca39fbda3207ece31a6fa6d62')
 
 package() {
-  local dest="$pkgdir$_skinsdir/AyonPlayer"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-ayonplayer-164.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
