@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-k-2
 	pkgdesc = AIMP skin: K-2 1.15 (by McClaud)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

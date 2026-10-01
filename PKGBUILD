@@ -4,7 +4,7 @@
 pkgname='aimp-skin-k-2'
 pkgdesc='AIMP skin: K-2 1.15 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('8882112c36cc1eb004baf18452c4cb6db516167435cc41057dd7582f2d23bce6')
 
 package() {
-  local dest="$pkgdir$_skinsdir/K-2"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-k-2-1326.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
