@@ -4,7 +4,7 @@
 pkgname='aimp-skin-telos'
 pkgdesc='AIMP skin: Telos 1.0 (by HyperOne)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('1a91a6dab0bdfde95976a44821025816872755d115ebc9ad555352ed07468c84')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Telos"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-telos-953.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
