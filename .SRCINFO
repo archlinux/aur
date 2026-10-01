@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-ayonplayerblack
+	pkgdesc = AIMP skin: AyonPlayerBlack 1.0.5 (by Hayo Tee (aka HX722))
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-ayonplayerblack-356.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-ayonplayerblack-356.archive::https://aimp.ru/?do=catalog.download&id=356
+	sha256sums = ab0c09b2e860f0a310147ffb37b6d7dd17dd345778a6d3fc61e908cd142dce6f
+
+pkgname = aimp-skin-ayonplayerblack
