@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-splash-ex
+	pkgdesc = AIMP skin: Splash Ex 1.1 (by memo-se)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-splash-ex-526.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-splash-ex-526.archive::https://aimp.ru/?do=catalog.download&id=526
+	sha256sums = 776d5296cdd74d2444f4ea0c52dec0ad4c0477c9f0e20060103a1a26d95099cf
+
+pkgname = aimp-skin-splash-ex
