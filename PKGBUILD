@@ -1,15 +1,14 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=babyshark
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Flows-first PCAP TUI with case files and gorgeous UX'
 arch=('x86_64' 'aarch64')
 url='https://github.com/vignesh07/babyshark'
 license=('MIT')
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=('cargo')
 optdepends=('wireshark-cli: live packet capture via tshark')
-provides=('babyshark')
 conflicts=('babyshark-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('9bc6377713396b239c06cc2d697e3aa8d05dc587bf4b0d05fdb0694804cfe734')
