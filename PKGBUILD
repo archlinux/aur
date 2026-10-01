@@ -1,12 +1,12 @@
 # Maintainer: robertfoster
 
 pkgname=partclone-git
-pkgver=1468.ee77626
+pkgver=1673.cf3a6a3
 pkgrel=1
 pkgdesc="Utilities to save and restore used blocks on a partition"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://partclone.org"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('ntfs-3g' 'nilfs-utils')
 makedepends=('git')
 provides=("${pkgname%-git}")
@@ -34,12 +34,12 @@ build() {
 }
 
 package() {
-  cd ${pkgname%-git}
+  cd "${pkgname%-git}"
   make PREFIX=/usr DESTDIR="$pkgdir" install
 }
 
 pkgver() {
-  cd ${pkgname%-git}
+  cd "${pkgname%-git}"
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
