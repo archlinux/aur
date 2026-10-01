@@ -4,7 +4,7 @@
 pkgname='aimp-skin-50dayss-88'
 pkgdesc='AIMP skin: 50daysS 1.12 (by -=Vovan=-)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('78c4cd12415ad51242e053d8893dd172ed7413787a72d1a6316feb2b7b12fc6f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/50daysS (88)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-50dayss-88-88.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

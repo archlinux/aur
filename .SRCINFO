@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-50dayss-88
 	pkgdesc = AIMP skin: 50daysS 1.12 (by -=Vovan=-)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
