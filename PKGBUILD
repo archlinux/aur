@@ -4,7 +4,7 @@
 pkgname='aimp-skin-slider'
 pkgdesc='AIMP skin: SLIDER 1.0 (by IDimm)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('71dee6fe804d7c18f53970ba525e993f640fc8d841c766d9a844bf5e68966f7d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/SLIDER"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-slider-886.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
