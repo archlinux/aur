@@ -4,7 +4,7 @@
 pkgname='aimp-skin-vega'
 pkgdesc='AIMP skin: Vega 1.01 (by Prince)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a9056635945fdaea46c79b682acb4c0d52f9b2c8adfc41bdbfe1c3c7d2eca117')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Vega"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-vega-348.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
