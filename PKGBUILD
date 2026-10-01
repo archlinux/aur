@@ -4,14 +4,15 @@ pkgname=gyp-git
 pkgver=2174.1615ec32
 pkgrel=1
 pkgdesc="GYP can Generate Your Projects."
-url="http://code.google.com/p/gyp/"
-arch=('i686' 'x86_64')
+url="https://code.google.com/p/gyp/"
+arch=('x86_64')
 makedepends=('git')
 depends=('python' 'python-setuptools')
 license=('custom')
 source=("gyp::git+https://chromium.googlesource.com/external/gyp")
-conflicts=('gyp-svn')
+conflicts=('gyp-svn' "${pkgname%-git}")
 replaces=('gyp-svn')
+provides=("${pkgname%-git}")
 
 pkgver() {
   cd gyp
