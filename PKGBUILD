@@ -4,7 +4,7 @@
 pkgname='aimp-skin-pioneer-rt-707'
 pkgdesc='AIMP skin: Pioneer RT-707 2.89 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f07139776b4e67f44724fd8b9f0dc65961f8c0689cd8dfad38d0e1434d7885e7')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Pioneer RT-707"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-pioneer-rt-707-380.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
