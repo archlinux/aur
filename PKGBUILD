@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=reposync-zextras
-pkgver=0.9.1 # renovate: datasource=github-tags depName=Zextras/reposync
+pkgver=0.13.2 # renovate: datasource=github-tags depName=Zextras/reposync
 pkgrel=1
 pkgdesc="Mirrors Debian and RedHat repositories to an AWS S3 bucket (with Cloudfront support) or a local directory"
 arch=('x86_64')
@@ -24,4 +24,4 @@ package() {
     "${pkgdir}/usr/bin/reposync"
 }
 
-sha256sums=('661efd17e88a655f71f4c0e83256b73e9f0f894b56fc6966c6139f9c3bd85648')
+sha256sums=('3f769b892dc25b9338a2651e21856d09dba9688a7d83d8cb142e45d9492b5c24')
