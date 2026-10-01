@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-sophie
+	pkgdesc = AIMP skin: Sophie 1.2 (by Hayo Tee (aka HX722))
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-sophie-364.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-sophie-364.archive::https://aimp.ru/?do=catalog.download&id=364
+	sha256sums = fcbaa6770b29b89f0a0a5bdc0822eb3d60117a987b383b2198b4e2b8ae92416d
+
+pkgname = aimp-skin-sophie
