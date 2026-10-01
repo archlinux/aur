@@ -6,7 +6,7 @@
 
 pkgname='qt6-wasm'
 
-_qtver=6.11.1
+_qtver=6.11.2
 _emsdkver=4.0.7
 _emsdk=4.0.7
 
@@ -28,6 +28,7 @@ makedepends=(cmake ninja
              qt6-remoteobjects=${_qtver}
              qt6-scxml=${_qtver}
              qt6-canvaspainter=${_qtver}
+             qt6-lottie=${_qtver}
 )
 groups=('qt-wasm' 'qt6-wasm')
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/single/${_qt}.tar.xz"
@@ -35,10 +36,9 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/sing
         'qtwasm_env.sh'
 )
 
-sha256sums=('252acef8c5ae68074d91cadba2ee4a83465051bbb970dd26e8f0daa0f3904e03'
+sha256sums=('6dcfbca271d76a6502741a2c0dc6fc98ef7dd0b7b4cfd0abcebb285a86a26f33'
             'b7262c64f4b5f0692f3bab063cafb09682495f98355677a3f1373d0520457bad'
-            '9dba88f1628175272c2509a7d823155ae35021a45532240c19941fa681ebb865'
-)
+            '9dba88f1628175272c2509a7d823155ae35021a45532240c19941fa681ebb865')
 
 options=('!strip' 'staticlibs' '!buildflags' '!makeflags')
 
