@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-zix
+	pkgdesc = AIMP skin: ZiX 3.6 (by Raider01)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-zix-233.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-zix-233.archive::https://aimp.ru/?do=catalog.download&id=233
+	sha256sums = 045b039fd03c5264ce7a74e9484c4c90251e3f68861703cfaad1ac84491ab3b1
+
+pkgname = aimp-skin-zix
