@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-itunes-simple-version
+	pkgdesc = AIMP skin: iTunes [Simple Version] 1.0 (by Banned)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-itunes-simple-version-434.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-itunes-simple-version-434.archive::https://aimp.ru/?do=catalog.download&id=434
+	sha256sums = 8d9fcf2d73451d4ea1eff4a037df3f23fd03e4925b8fcfcab810c567c7123b1f
+
+pkgname = aimp-skin-itunes-simple-version
