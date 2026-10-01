@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=rc-git
-pkgver=1.7.4.r663.2bab312
+pkgver=1.7.4.r665.418fa95
 pkgrel=1
 pkgdesc='Independent re-implementation for Unix of the Plan 9 shell (from circa 1992).'
 arch=('i686' 'x86_64')
@@ -26,15 +26,14 @@ build() {
 	CFLAGS="$CFLAGS -std=gnu11" make EDIT=readline RC_ADDON=1 RC_DEVELOP=1
 }
 
-#check() {
-#	cd "$srcdir/$pkgname"
-#	make check
-#}
+check() {
+	cd "$srcdir/$pkgname"
+	make check
+}
 
 package() {
 	cd "$srcdir/$pkgname"
 	make PREFIX="$pkgdir/usr" install
-#	install -D -m644 history.1 $pkgdir/usr/share/man/man1/rc-history.1
 	install -D -m644 EXAMPLES $pkgdir/usr/share/doc/${pkgname%-*}/EXAMPLES
 	install -D -m644 COPYING $pkgdir/usr/share/licenses/${pkgname%-*}/COPYING
 }
