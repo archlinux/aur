@@ -2,7 +2,7 @@
 # Packaging repository: https://github.com/JasonLandbridge/Arch-Linux-AUR-Packages-Updater/tree/main/reaparr-bin
 
 pkgname=reaparr-bin
-pkgver=0.39.0 # renovate: datasource=github-releases depName=Reaparr/Reaparr versioning=semver-coerced extractVersion=^v?(?<version>[0-9]+\.[0-9]+\.[0-9]+)$
+pkgver=0.40.0 # renovate: datasource=github-releases depName=Reaparr/Reaparr versioning=semver-coerced extractVersion=^v?(?<version>[0-9]+\.[0-9]+\.[0-9]+)$
 pkgrel=1
 pkgdesc="Desktop app for browsing and downloading media from Plex"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   "Reaparr-${pkgver}-${_channel}.AppImage::https://github.com/Reaparr/Reaparr/releases/download/v${pkgver}/Reaparr-linux-x64-${_channel}.AppImage"
   "LICENSE-${pkgver}::https://raw.githubusercontent.com/Reaparr/Reaparr/v${pkgver}/LICENSE"
 )
-sha256sums=('ee64073411a7d26ce2a8c3127a67a8d30ff662573fff5096cabb53c67f2c4613'
+sha256sums=('96db2ef26f16b4476d9aa4e373310e3fa49c9e8552eac041993908c66f92d05f'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 prepare() {
