@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-kass
+	pkgdesc = AIMP skin: Kass 1.0 (by Your Creations)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-kass-513.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-kass-513.archive::https://aimp.ru/?do=catalog.download&id=513
+	sha256sums = a63102f915299d5f95d6556fe7cf18d31a7e2290a48715b4d573a8fd7905523c
+
+pkgname = aimp-skin-kass
