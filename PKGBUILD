@@ -4,7 +4,7 @@
 pkgname='aimp-skin-revoluted'
 pkgdesc='AIMP skin: Revoluted 1.0 (by Henrique Oliveira)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c9671049ca12874b388b390269f41569ee12caa2d2340d92cfa538ce63c8fa99')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Revoluted"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-revoluted-688.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
