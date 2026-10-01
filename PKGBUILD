@@ -4,7 +4,7 @@
 pkgname='aimp-skin-half-life2'
 pkgdesc='AIMP skin: Half-Life2 5.0 (by ludo)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('1bb0a944d0fae5e1211328951a4feab0165f4ef49bd4dd254ca48139cd402e48')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Half-Life2"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-half-life2-804.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
