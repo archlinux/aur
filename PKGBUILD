@@ -4,7 +4,7 @@
 pkgname='aimp-skin-pandemic'
 pkgdesc='AIMP skin: Pandemic 1.92 (by Krieger)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('438029d824c26f04ae7acc40f5a5d45f9dffd205bea2a001b98f439351b28542')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Pandemic"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-pandemic-720.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
