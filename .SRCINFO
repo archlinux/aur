@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-olimp-006
+	pkgdesc = AIMP skin: Olimp 006 1.1 (by Пупс)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-olimp-006-995.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-olimp-006-995.archive::https://aimp.ru/?do=catalog.download&id=995
+	sha256sums = f46a2e55826f32c25d7a0fd3c47e5721d07e37e926f151776906c69d6bccc42d
+
+pkgname = aimp-skin-olimp-006
