@@ -1,6 +1,6 @@
 pkgbase = hotaru
 	pkgdesc = RGB lighting and AIO cooler control for Linux
-	pkgver = 0.1.20
+	pkgver = 0.1.21
 	pkgrel = 1
 	url = https://github.com/ushineko/hotaru
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = hotaru
 	makedepends = wayland
 	depends = glibc
 	depends = openrgb
-	source = hotaru-0.1.20.tar.gz::https://github.com/ushineko/hotaru/archive/refs/tags/v0.1.20.tar.gz
-	sha256sums = 915c37f5c30635c7245f47816af5daad50b021411cf63fb48a6ddf3a50cc3871
+	source = hotaru-0.1.21.tar.gz::https://github.com/ushineko/hotaru/archive/refs/tags/v0.1.21.tar.gz
+	sha256sums = 4c7ecc2d0ebb14804cb83a75bed90e7dd381f7b8481cbd037680cc5a3a93ceda
 
 pkgname = hotaru
 	optdepends = nvidia-utils: GPU temperature on the dashboard
