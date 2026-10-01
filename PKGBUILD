@@ -4,7 +4,7 @@
 pkgname='aimp-skin-wzp-fusionhd'
 pkgdesc='AIMP skin: WZP FusionHD 3.0 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('aa6fe66a72095f182b333c31d87f8de6ea7991867502fd439b0baed656bf729a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/WZP FusionHD"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-wzp-fusionhd-456.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
