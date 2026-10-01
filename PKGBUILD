@@ -4,7 +4,7 @@
 pkgname='aimp-skin-beats-by-dr-dre'
 pkgdesc='AIMP skin: beats by dr. dre 1.1 (by ZeoN7)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('fef29b8c25562bd02bcb54cc42d8f25d8a897e6cd298c8c2063463586e345756')
 
 package() {
-  local dest="$pkgdir$_skinsdir/beats by dr. dre"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-beats-by-dr-dre-324.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
