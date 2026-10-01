@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-plastic
+	pkgdesc = AIMP skin: Plastic 1.0 (by NikolavRj)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-plastic-510.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-plastic-510.archive::https://aimp.ru/?do=catalog.download&id=510
+	sha256sums = 371fb5015b909dd5b975a8e7adaf5dcf47295088e727967417cbe0412498486a
+
+pkgname = aimp-skin-plastic
