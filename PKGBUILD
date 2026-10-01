@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=python-rlp
-pkgver=4.0.1 # renovate: datasource=pypi depName=rlp
+pkgver=5.0.0 # renovate: datasource=pypi depName=rlp
 pkgrel=1
 pkgdesc="A package for encoding and decoding data in and from Recursive Length Prefix notation"
 url='https://pypi.org/project/rlp/'
@@ -21,4 +21,4 @@ package() {
   python3 -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-sha256sums=('bcefb11013dfadf8902642337923bd0c786dc8a27cb4c21da6e154e52869ecb1')
+sha256sums=('ae8ac791160c160e270f9c7df76e68f4d42bb86a13726d807b9357c312d0bac4')
