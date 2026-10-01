@@ -4,7 +4,7 @@
 pkgname='aimp-skin-retrix2'
 pkgdesc='AIMP skin: Retrix2 3.0 (by Starkad)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('876509c27d907d6b7ce5c74ccf74af18fb7f2450c77dc42228be323a925ee500')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Retrix2"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-retrix2-683.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
