@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-cucumber
+	pkgdesc = AIMP skin: Cucumber 3.0 (by Krieger)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-cucumber-108.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-cucumber-108.archive::https://aimp.ru/?do=catalog.download&id=108
+	sha256sums = 217e797fab22dff8b4e49905af3ed7cc4515c3078b0414ad2a303e85f6ed3294
+
+pkgname = aimp-skin-cucumber
