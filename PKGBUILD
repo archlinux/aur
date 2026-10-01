@@ -4,7 +4,7 @@
 pkgname='aimp-skin-shine'
 pkgdesc='AIMP skin: Shine 1.3 (by massman)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('7888c190c1dd185b8cc453a7487c257044b72208e103cad9dd0086f63b16e37f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Shine"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-shine-582.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
