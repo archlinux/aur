@@ -2,7 +2,7 @@
 
 pkgbase=django-rq
 pkgname=('python-django-rq')
-pkgver=4.1
+pkgver=4.2
 pkgrel=1
 pkgdesc="A simple app that provides django integration for RQ (Redis Queue)"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python' 'python-django' 'python-rq' 'python-build' 'python-install
 depends=('python' 'python-django' 'python-rq' 'python-hatchling' 'python-redis')
 optdepends=('python-prometheus_client')
 source=("django-rq-${pkgver}.tar.gz::https://github.com/ui/django-rq/archive/v${pkgver}.tar.gz")
-sha512sums=('fbb640ac2d28a74642979cdab4af1e6dc9ff6f839b68c453e17938a690f41c947f930ee384a92f028b96d5b9d1941537424eb9464c34ca443d8da78136e09437')
+sha512sums=('c82ccd04d180b0a2ff5581c194fa5262cc2b479fdba2a8cddc9b4ef82e2722757518dda3541df1ce12594200a989bb4052f7bc6b412d4d754b67e52c5810db68')
 
 build() {
 	cd "${srcdir}/${pkgbase}-${pkgver}"
