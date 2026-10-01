@@ -4,7 +4,7 @@
 pkgname='aimp-skin-pure-white'
 pkgdesc='AIMP skin: Pure White 1.2 (by Alekz)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('3d0b52d31c91930b104dea2b7201b32c36c1ab38e358f7f0dbc01bb800e6c817')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Pure White"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-pure-white-312.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
