@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-black-and-white
+	pkgdesc = AIMP skin: Black & White 1.2 (by danyBatinF1)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-black-and-white-831.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-black-and-white-831.archive::https://aimp.ru/?do=catalog.download&id=831
+	sha256sums = 42defbf2153484a52064fc05755c4d149901113ad7882577b1918a47718c137a
+
+pkgname = aimp-skin-black-and-white
