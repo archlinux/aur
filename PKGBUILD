@@ -4,7 +4,7 @@
 pkgname='aimp-skin-iaimp'
 pkgdesc='AIMP skin: iAIMP 2.52 (by Hajuskin)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a1b1431f4583d6d78e4d8197aef24f7eb07b5afd1cf2d952b2944ad34e4dcd05')
 
 package() {
-  local dest="$pkgdir$_skinsdir/iAIMP"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-iaimp-131.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
