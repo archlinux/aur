@@ -1,0 +1,25 @@
+pkgbase = whatsit-jetm
+	pkgdesc = Lightweight (KDE) native Qt6 WhatsApp Web client, pinned to a release tag instead of tracking master
+	pkgver = 5.0.3
+	pkgrel = 1
+	url = https://github.com/devlinman/whatsit
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	depends = qt6-base
+	depends = qt6-webengine
+	depends = kconfig
+	depends = knotifications
+	depends = kstatusnotifieritem
+	depends = kwidgetsaddons
+	depends = kiconthemes
+	provides = whatsit=5.0.3
+	conflicts = whatsit
+	conflicts = whatsit-git
+	replaces = whatsit-git
+	source = whatsit-jetm-5.0.3.tar.gz::https://github.com/devlinman/whatsit/archive/refs/tags/v5.0.3.tar.gz
+	sha256sums = b84664c745c5d2fdbb3f8ea241e90d9569ce75689000d1e01e0496b2542b63f7
+
+pkgname = whatsit-jetm
