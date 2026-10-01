@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-jango
+	pkgdesc = AIMP skin: Jango 1.0 (by SBro)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-jango-435.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-jango-435.archive::https://aimp.ru/?do=catalog.download&id=435
+	sha256sums = 2d42a36323af5e3a1f53d97bba26cee2777cf2de1f517690489c2bc2e0f0ac53
+
+pkgname = aimp-skin-jango
