@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-s7reflex
+	pkgdesc = AIMP skin: S7Reflex 1.9 (by Sergio7786)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-s7reflex-210.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-s7reflex-210.archive::https://aimp.ru/?do=catalog.download&id=210
+	sha256sums = 74a1cad0772c7c55751085505f3687f39769edefa02b573b1b8e35d1ce303941
+
+pkgname = aimp-skin-s7reflex
