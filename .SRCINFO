@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-phantom-dj-1000
+	pkgdesc = AIMP skin: Phantom DJ 1000 1.4.4 (by Hayo Tee (aka HX722))
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-phantom-dj-1000-367.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-phantom-dj-1000-367.archive::https://aimp.ru/?do=catalog.download&id=367
+	sha256sums = 8e95412083fb0f3646017c613b331a53b2311ad83dfe0149c092270aed59a2a0
+
+pkgname = aimp-skin-phantom-dj-1000
