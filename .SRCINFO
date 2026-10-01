@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-carbonium
+	pkgdesc = AIMP skin: Carbonium 1.0 (by Nitehost)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-carbonium-173.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-carbonium-173.archive::https://aimp.ru/?do=catalog.download&id=173
+	sha256sums = 234ede7bab2f3f24dabcbe15a94d926dcfdcf37c69fd857df10570352e06ec24
+
+pkgname = aimp-skin-carbonium
