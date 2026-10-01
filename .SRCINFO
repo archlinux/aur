@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-mi-sk-gray
+	pkgdesc = AIMP skin: MI-SK Gray 1.0 (by Zigar)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-mi-sk-gray-459.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-mi-sk-gray-459.archive::https://aimp.ru/?do=catalog.download&id=459
+	sha256sums = 6af15f01b35bbfe1598ee94203550fcdf6d69d00e2e88888c1e81a25bbd04c84
+
+pkgname = aimp-skin-mi-sk-gray
