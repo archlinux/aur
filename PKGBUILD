@@ -4,7 +4,7 @@
 pkgname='aimp-skin-nott'
 pkgdesc='AIMP skin: Nott 1.1 (by Zigar)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('bbcd3cc69386d73994a1c76051c238dbb86e7641c28c27c7ae2c923ce86c0d05')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Nott"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-nott-649.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
