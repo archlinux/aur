@@ -1,6 +1,6 @@
 pkgbase = critique
 	pkgdesc = A beautiful terminal UI for reviewing git diffs with syntax highlighting
-	pkgver = 0.2.1
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/remorses/critique
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = critique
 	depends = git
 	options = !strip
 	options = !debug
-	source = critique::git+https://github.com/remorses/critique.git#tag=critique@0.2.1
-	sha256sums = 7dcf7bd95b2a26a3d38d9590b23a641d3352cce329c0ba0c8e93f802de6a78ec
+	source = critique::git+https://github.com/remorses/critique.git#tag=critique@0.3.1
+	sha256sums = e6d279f75f19848b6ca2f16acf84f34ac27d5e7f2b5f3c69fc4a92334d813832
 
 pkgname = critique
