@@ -4,7 +4,7 @@
 pkgname='aimp-skin-ex-black'
 pkgdesc='AIMP skin: eX-Black 1.54 (by Braindefender)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('78326b3886b0543f853145f187f15c5300960bf3d600e5e607920fe2cfadba25')
 
 package() {
-  local dest="$pkgdir$_skinsdir/eX-Black"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-ex-black-713.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
