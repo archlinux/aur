@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-color-dragon-mini
+	pkgdesc = AIMP skin: Color Dragon Mini 1.8 (by Prince)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-color-dragon-mini-105.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-color-dragon-mini-105.archive::https://aimp.ru/?do=catalog.download&id=105
+	sha256sums = 8d7345c0ee66be3f6d11570a6e9aca93ae522c6ae148587009a9d39dc7628914
+
+pkgname = aimp-skin-color-dragon-mini
