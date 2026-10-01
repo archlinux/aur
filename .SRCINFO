@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-glass-aimp
+	pkgdesc = AIMP skin: Glass AIMP 1.19 (by memo-se)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-glass-aimp-454.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-glass-aimp-454.archive::https://aimp.ru/?do=catalog.download&id=454
+	sha256sums = 215f964a647b276ddef9d60b6f3eecb29e40f44869dfadff894a33100c88ad93
+
+pkgname = aimp-skin-glass-aimp
