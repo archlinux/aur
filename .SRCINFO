@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-red-bias
+	pkgdesc = AIMP skin: Red Bias 2 (by Zimmi)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-red-bias-1324.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-red-bias-1324.archive::https://aimp.ru/?do=catalog.download&id=1324
+	sha256sums = 18e0b80d63ea4f5acaee60c15de539807ef6062f467ded944cd80f8badc3aa76
+
+pkgname = aimp-skin-red-bias
