@@ -1,4 +1,4 @@
-# Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
+# Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 # Contributor: Tim Visee <tim@visee.me>
 # Contributor: Ariel AxionL <i at axionl dot me>
 
