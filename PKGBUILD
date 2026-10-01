@@ -1,12 +1,12 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=bridle-bin
 pkgver=0.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Unified configuration manager for AI coding assistants'
 arch=('x86_64' 'aarch64')
 url='https://github.com/neiii/bridle'
 license=('MIT')
-depends=('gcc-libs' 'xz')
+depends=('glibc' 'libgcc' 'xz')
 provides=('bridle')
 conflicts=('bridle')
 source_x86_64=("${pkgname}-x86_64-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/bridle-x86_64-unknown-linux-gnu.tar.xz")

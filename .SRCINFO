@@ -1,12 +1,13 @@
 pkgbase = bridle-bin
 	pkgdesc = Unified configuration manager for AI coding assistants
 	pkgver = 0.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/neiii/bridle
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
 	depends = xz
 	provides = bridle
 	conflicts = bridle
