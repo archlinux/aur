@@ -4,7 +4,7 @@
 pkgname='aimp-skin-sidebar-euphoria-lux-remix'
 pkgdesc='AIMP skin: Sidebar (Euphoria Lux Remix) 1. (by AngelAG)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('b7bd5699dc9d8f4cbd13597e6c8d63cab76cb6778f252e61f68f91012ab28c7a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Sidebar (Euphoria Lux Remix)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-sidebar-euphoria-lux-remix-116.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
