@@ -1,0 +1,43 @@
+# pacman 脚本片段。
+#
+# 1) chrome-sandbox 权限。Chromium 在 Linux 上有两条沙箱路径:setuid 的 chrome-sandbox
+#    (root:root 4755),或非特权 user namespace(不需要 setuid)。优先后者,只有内核做不到时
+#    才回落到 setuid —— 无条件装一个 setuid root 二进制是更大的攻击面。
+# 2) AppArmor profile 加载。Arch 默认不启用 AppArmor,profile 文件在未启用时是惰性的;
+#    没装 apparmor 则整段跳过。
+
+_fix_chrome_sandbox() {
+  local sandbox=/opt/dsh-desktop-linux-bin/chrome-sandbox
+  [[ -f "$sandbox" ]] || return 0
+  if [[ -L /proc/self/ns/user ]] && unshare --user true 2>/dev/null; then
+    chmod 0755 "$sandbox" || true
+  else
+    chmod 4755 "$sandbox" || true
+  fi
+}
+
+_load_apparmor_profile() {
+  local profile=/etc/apparmor.d/deepseek-harness
+  [[ -f "$profile" ]] || return 0
+  command -v apparmor_parser >/dev/null 2>&1 || return 0
+  # profile 里声明的是 abi <abi/4.0>,旧版 AppArmor 解析不了;此时应用不用 profile 也能跑,静默跳过。
+  apparmor_parser --replace --write-cache --skip-read-cache "$profile" 2>/dev/null || true
+}
+
+post_install() {
+  _fix_chrome_sandbox
+  _load_apparmor_profile
+}
+
+post_upgrade() {
+  _fix_chrome_sandbox
+  _load_apparmor_profile
+}
+
+pre_remove() {
+  local profile=/etc/apparmor.d/deepseek-harness
+  # 文件本身由 pacman 删除,但内核里的 profile 要在文件还在时先卸掉。
+  if [[ -f "$profile" ]] && command -v apparmor_parser >/dev/null 2>&1; then
+    apparmor_parser --remove "$profile" 2>/dev/null || true
+  fi
+}
