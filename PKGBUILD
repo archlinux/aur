@@ -1,12 +1,12 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=rtk-bin
 pkgver=0.50.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI proxy that reduces LLM token consumption by 60-90% on common dev commands'
 arch=('x86_64' 'aarch64')
+depends_aarch64=('glibc' 'libgcc')
 url='https://github.com/rtk-ai/rtk'
 license=('MIT')
-depends=('gcc-libs')
 provides=('rtk')
 conflicts=('rtk')
 source=("${pkgname}-${pkgver}.LICENSE::${url}/raw/v${pkgver}/LICENSE")
