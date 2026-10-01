@@ -4,7 +4,7 @@
 pkgname='aimp-skin-idol-light'
 pkgdesc='AIMP skin: Idol Light 1.0 (by ZeoN7)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('e854d3d6031ab1998b6d6a550ac6f1d16c5d8b6d63b5092cbb0794b3f59ea735')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Idol Light"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-idol-light-597.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
