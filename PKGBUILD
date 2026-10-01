@@ -4,7 +4,7 @@
 pkgname='aimp-skin-izot'
 pkgdesc='AIMP skin: IZOT 1.31 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('5b8bd62dcc4b6158f3bed48ccbd77b5536bd55d3234322950d61009605762b06')
 
 package() {
-  local dest="$pkgdir$_skinsdir/IZOT"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-izot-1273.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

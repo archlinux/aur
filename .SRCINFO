@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-izot
 	pkgdesc = AIMP skin: IZOT 1.31 (by McClaud)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
