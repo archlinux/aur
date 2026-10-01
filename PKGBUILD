@@ -4,7 +4,7 @@
 pkgname='aimp-skin-urbanstyle'
 pkgdesc='AIMP skin: UrbanStyle 4.0.5 (by eugeneknaub)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('b5995b2864b0a17c5bf6d96d89f53294623d43d013d8261b5625aea6e3d11f42')
 
 package() {
-  local dest="$pkgdir$_skinsdir/UrbanStyle"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-urbanstyle-269.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
