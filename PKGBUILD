@@ -4,7 +4,7 @@
 pkgname='aimp-skin-prable'
 pkgdesc='AIMP skin: Prable 1.0 (by Aleksandr009)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c31ebb6e1b77fb4b478ebc2073c048910293ad186448f2ab9519642cf01e454e')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Prable"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-prable-442.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
