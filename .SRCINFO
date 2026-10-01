@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-gravity
+	pkgdesc = AIMP skin: Gravity 2.1 (by Raider01)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-gravity-217.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-gravity-217.archive::https://aimp.ru/?do=catalog.download&id=217
+	sha256sums = 36c7f7fc536e0e334a16bcffd9e2cb9876cb06d9e4d48758b9bd28489d03c409
+
+pkgname = aimp-skin-gravity
