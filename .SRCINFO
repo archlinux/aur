@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-black-hoop
+	pkgdesc = AIMP skin: Black Hoop 1.1 (by San4o)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-black-hoop-129.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-black-hoop-129.archive::https://aimp.ru/?do=catalog.download&id=129
+	sha256sums = e519cbf5b96a637a251093bce0efc12ab5e9cca643d3d78c0703f6b4397f0d3c
+
+pkgname = aimp-skin-black-hoop
