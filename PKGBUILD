@@ -4,7 +4,7 @@
 pkgname='aimp-skin-tres'
 pkgdesc='AIMP skin: TrES 1.1 (by Redmagus)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('ceca0a6bebb75c112082dc31078b2f8dca357115384181eb1264697718288fd4')
 
 package() {
-  local dest="$pkgdir$_skinsdir/TrES"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-tres-293.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
