@@ -4,7 +4,7 @@
 pkgname='aimp-skin-albedo'
 pkgdesc='AIMP skin: Albedo 1.0 (by -=Lee=-)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('0c99d293e4ea8b660e14f8945f6904353838c161d17d1e7479d5b91fc2d47cb2')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Albedo"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-albedo-620.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
