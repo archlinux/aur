@@ -1,6 +1,6 @@
 pkgbase = bruno
 	pkgdesc = Opensource API Client for Exploring and Testing APIs
-	pkgver = 4.2.0
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://www.usebruno.com/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = bruno
 	makedepends = python
 	depends = electron37
 	depends = alsa-lib
-	source = bruno-4.2.0.tar.gz::https://github.com/usebruno/bruno/archive/v4.2.0.tar.gz
+	source = bruno-4.2.1.tar.gz::https://github.com/usebruno/bruno/archive/v4.2.1.tar.gz
 	source = com.usebruno.app.Bruno.desktop
-	sha256sums = 5dbe29ed42380ff15db429aed0dd0d70662368b48d290f863194d10022bf2b8c
+	sha256sums = f3e3f310f5d28baa95d55e4629595356df7500db66346d44406181070805bec3
 	sha256sums = e7267d33e2168f46942f57082a3c1c9afc46760038486c9cc9e9ff96d90fa841
 
 pkgname = bruno
