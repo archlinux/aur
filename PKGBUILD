@@ -4,7 +4,7 @@
 pkgname='aimp-skin-degro-around'
 pkgdesc='AIMP skin: Degro Around 1.0 (by San4o)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('fd80d3efa6010ac1eb8ff7986680ca0b8eb2698d11758b50661ac134ce327ed2')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Degro Around"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-degro-around-227.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
