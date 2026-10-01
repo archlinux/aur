@@ -4,7 +4,7 @@
 pkgname='aimp-skin-dark-wmp12-aero'
 pkgdesc='AIMP skin: Dark WMP12 Aero 1.2 (by B1ood)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c10adf4e87a82b69133e6bc6ecf7aa2061ed4c5cefdc5cb3a7db7efecb3088a5')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Dark WMP12 Aero"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-dark-wmp12-aero-244.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
