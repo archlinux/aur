@@ -4,7 +4,7 @@
 pkgname='aimp-skin-eternal'
 pkgdesc='AIMP skin: Eternal 1.0 (by Virys90)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('303ac2833ab9b4a79f05fa8ec8a2eb95aa38007948bbdb9c03b2f3b33b9a9551')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Eternal"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-eternal-223.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
