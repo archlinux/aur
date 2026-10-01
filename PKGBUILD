@@ -5,9 +5,9 @@ pkgname="hyperledger-${_pkgname}"
 pkgver=3.1.5 # renovate: datasource=github-tags depName=hyperledger/fabric
 pkgrel=1
 pkgdesc="A platform for distributed ledger solutions, underpinned by a modular architecture delivering high degrees of confidentiality, resiliency, flexibility and scalability"
-arch=(armv6h armv7h arm aarch64 i686 x86_64)
+arch=(armv6h armv7h arm aarch64 x86_64)
 url="https://github.com/hyperledger/fabric"
-license=('APACHE')
+license=('Apache-2.0')
 groups=('hyperledger')
 depends=('go')
 makedepends=('git' 'docker')
@@ -60,7 +60,7 @@ package() {
 }
 
 sha256sums=('318c1fde6aa6726b225e0a154732f8915bafe673e723e91e20e70d2cf690a630'
-            'bfdfb0f96bea3f6c2cafb17224fd5b21ec664352ef347841803e2448ca05426f'
-            'de85c5359019e44d5086d880cbcf6ab0b84e9bb456ed3e7302997f7e715eb908'
-            '9b29b63afd556563de227841060a2c7653d289cc70458992ef54d0339a53de94'
-            '729e4eba887b6b81d2d0bf40cb14db7163ada201657eef776017263d4a31dfdb')
+  'bfdfb0f96bea3f6c2cafb17224fd5b21ec664352ef347841803e2448ca05426f'
+  'de85c5359019e44d5086d880cbcf6ab0b84e9bb456ed3e7302997f7e715eb908'
+  '9b29b63afd556563de227841060a2c7653d289cc70458992ef54d0339a53de94'
+  '729e4eba887b6b81d2d0bf40cb14db7163ada201657eef776017263d4a31dfdb')
