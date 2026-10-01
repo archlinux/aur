@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-eve-in-blue
 	pkgdesc = AIMP skin: Eve in Blue 1.2 (by smokerrr86)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

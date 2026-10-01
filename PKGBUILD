@@ -4,7 +4,7 @@
 pkgname='aimp-skin-eve-in-blue'
 pkgdesc='AIMP skin: Eve in Blue 1.2 (by smokerrr86)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('28768ddd0a234ee4247ad7446b3a6d57897f40685f9ba475fd3e057883cddd37')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Eve in Blue"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-eve-in-blue-339.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
