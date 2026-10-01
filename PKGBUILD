@@ -4,7 +4,7 @@
 pkgname='aimp-skin-aimp-gt'
 pkgdesc='AIMP skin: AIMP GT 1.0 (by -=Lee=-)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('1eefc4d764b003990925883608e2a46ac23be6287eed303699773c5b58dc6737')
 
 package() {
-  local dest="$pkgdir$_skinsdir/AIMP GT"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-aimp-gt-192.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
