@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-silver-grey
+	pkgdesc = AIMP skin: Silver grey 1.0 (by Marat_S)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-silver-grey-547.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-silver-grey-547.archive::https://aimp.ru/?do=catalog.download&id=547
+	sha256sums = d7aecd3398541bbca65246c628245bd7ceced0007416fb0948b8fbda02ea8a2a
+
+pkgname = aimp-skin-silver-grey
