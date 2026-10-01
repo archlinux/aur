@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-unfavourable
+	pkgdesc = AIMP skin: Unfavourable 1.96 (by quefcyze)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-unfavourable-881.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-unfavourable-881.archive::https://aimp.ru/?do=catalog.download&id=881
+	sha256sums = 4701b1af9892e65619c1da31616538cd367824b833b60f0f7aa4aeb8fbaf50dd
+
+pkgname = aimp-skin-unfavourable
