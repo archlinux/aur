@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-cloudy-dreams
+	pkgdesc = AIMP skin: Cloudy Dreams 1.1 (by NoHealer)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-cloudy-dreams-761.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-cloudy-dreams-761.archive::https://aimp.ru/?do=catalog.download&id=761
+	sha256sums = 067628dbc3eb247604581319805fc5d9ea27bbaef30618ac80e66ae42ace262a
+
+pkgname = aimp-skin-cloudy-dreams
