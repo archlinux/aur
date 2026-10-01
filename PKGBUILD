@@ -4,7 +4,7 @@
 pkgname='aimp-skin-carbonium'
 pkgdesc='AIMP skin: Carbonium 1.0 (by Nitehost)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('234ede7bab2f3f24dabcbe15a94d926dcfdcf37c69fd857df10570352e06ec24')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Carbonium"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-carbonium-173.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
