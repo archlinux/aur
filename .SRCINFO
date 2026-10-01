@@ -4,15 +4,14 @@ pkgbase = hoteldruid
 	pkgrel = 1
 	url = http://www.hoteldruid.com/it/index.html
 	install = hoteldruid.install
-	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = php
 	depends = mysql
 	optdepends = apache: A high performance Unix-based HTTP server
 	optdepends = nginx: Lightweight HTTP server and IMAP/POP3 proxy server
 	conflicts = php-residence
-	source = http://www.digitaldruid.net/download/hoteldruid_3.0.6.tar.gz
+	source = https://www.digitaldruid.net/download/hoteldruid_3.0.6.tar.gz
 	sha256sums = db2a58a08f3e87f66e0ed9e7f71bb92863ceaeab963e0c77e222c222e1b25d2e
 
 pkgname = hoteldruid
