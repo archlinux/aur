@@ -4,7 +4,7 @@
 pkgname='aimp-skin-mayak-m-240-c-1'
 pkgdesc='AIMP skin: Mayak M-240 C-1 1.61 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('14fbca4a021be8b5990897cc574d777b65bd3f42348f9171d383a6e602197fb0')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Mayak M-240 C-1"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-mayak-m-240-c-1-611.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
