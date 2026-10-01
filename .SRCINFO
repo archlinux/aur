@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-smoke-and-flame
 	pkgdesc = AIMP skin: Smoke and Flame 2.0 (by Тень)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

@@ -4,7 +4,7 @@
 pkgname='aimp-skin-smoke-and-flame'
 pkgdesc='AIMP skin: Smoke and Flame 2.0 (by Тень)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c35f8cb7b39368904654b824eab27b7da6d7382298dc80d2b9dcb77b2f31c959')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Smoke and Flame"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-smoke-and-flame-974.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
