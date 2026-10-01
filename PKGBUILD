@@ -2,7 +2,7 @@
 
 pkgname=unciv-bin
 _pkgname=Unciv
-_pkgver=4.21.10-patch2
+_pkgver=4.22.5
 pkgver=${_pkgver//-/_}
 pkgrel=0
 pkgdesc="Open-source remake of Civilization V"
@@ -14,15 +14,15 @@ conflicts=('unciv')
 arch=('any')
 source=(
   "$_pkgname-$_pkgver.jar::https://github.com/yairm210/$_pkgname/releases/download/$_pkgver/Unciv.jar"
-  "$_pkgname-$_pkgver.png::https://raw.githubusercontent.com/yairm210/$_pkgname/$_pkgver/extraImages/Icons/Unciv%20icon%20v5.png"
+  "$_pkgname-$_pkgver.png::https://raw.githubusercontent.com/yairm210/$_pkgname/$_pkgver/extraImages/Icons/Unciv%20icon%20v6.png"
   "$_pkgname-$_pkgver.zip::https://github.com/yairm210/$_pkgname/releases/download/$_pkgver/linuxFilesForJar.zip"
 )
 noextract=(
 	"$_pkgname-$_pkgver.jar"
 )
-md5sums=('f4a4802effd041548e1073dfe544c45c'
-         'c3f79bbc7e80620b3cdc4f90f21f4d68'
-         '176821274572d274ac6b2b14a943b73f')
+md5sums=('b6a3704b20a3cb0d5ff9f48c6c6118fc'
+         '4e40a32a88810cc334abd0a5485e9846'
+         'a1052a12970fcda1c1a352953c10b56f')
 
 package() {
   install -Dm755 Unciv.sh "$pkgdir/usr/bin/$_pkgname"
