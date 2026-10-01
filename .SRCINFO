@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-clear-gray
+	pkgdesc = AIMP skin: Clear_gray 1.0 (by Marat_S)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-clear-gray-921.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-clear-gray-921.archive::https://aimp.ru/?do=catalog.download&id=921
+	sha256sums = b689523d2dfea858799c8d672ab77faa9c9b16a2706ee263ea56d812e2864bad
+
+pkgname = aimp-skin-clear-gray
