@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-antares
+	pkgdesc = AIMP skin: Antares 1.7 (by Remoder)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-antares-925.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-antares-925.archive::https://aimp.ru/?do=catalog.download&id=925
+	sha256sums = 633235b9553f6380b4a358e245073778a4dbcfdfadbf07aa078517e0470023e8
+
+pkgname = aimp-skin-antares
