@@ -1,6 +1,6 @@
 pkgbase = magnetowid-bin
 	pkgdesc = Downloads movies and series from video-on-demand sites for Sonarr and Radarr.
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/combor/magnetowid
 	license = BSD-3-Clause
@@ -11,10 +11,10 @@ pkgbase = magnetowid-bin
 	backup = etc/magnetowid/magnetowid.env
 	install = magnetowid.install
 	arch = aarch64
-	source_aarch64 = magnetowid-bin_0.3.1_aarch64.tar.gz::https://github.com/combor/magnetowid/releases/download/v0.3.1/magnetowid_0.3.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 6e1b03009d81db1ef1c277b8bb76c084187639d1aa6684e42425e34cb2e4d04e
+	source_aarch64 = magnetowid-bin_0.4.0_aarch64.tar.gz::https://github.com/combor/magnetowid/releases/download/v0.4.0/magnetowid_0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8d7d8652d2feb99e6a8294fe7160c3d80ef2b9f19c3f57eb69d9f71ec7b78d1d
 	arch = x86_64
-	source_x86_64 = magnetowid-bin_0.3.1_x86_64.tar.gz::https://github.com/combor/magnetowid/releases/download/v0.3.1/magnetowid_0.3.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = d8f5e7be3d5d94f457f83cc1dadc7739e2e6c7019e730217a17ebb7a227c591b
+	source_x86_64 = magnetowid-bin_0.4.0_x86_64.tar.gz::https://github.com/combor/magnetowid/releases/download/v0.4.0/magnetowid_0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d7593f7f546c2b90481d2b41f86f03418b825513c6ebdcac2b9ff2c5a359eaeb
 	
 pkgname = magnetowid-bin
