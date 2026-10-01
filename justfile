@@ -1,6 +1,6 @@
 publish tagname:
   sed -i 's/pkgver=.*/pkgver="{{tagname}}"/' PKGBUILD
-  sed -i 's/\nsha256sums=.*//' PKGBUILD
+  sed -i '/^sha256sums=.*/d' PKGBUILD
   makepkg -g >> PKGBUILD
   makepkg --printsrcinfo > .SRCINFO
   git add .
