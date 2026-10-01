@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-8-bit
+	pkgdesc = AIMP skin: 8-bit 2.1 (by samix)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-8-bit-817.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-8-bit-817.archive::https://aimp.ru/?do=catalog.download&id=817
+	sha256sums = 6d4d9b4879fb95dafcc9cc250ae7040441ec8ef5d8c1ca688511ef3bb88cddd4
+
+pkgname = aimp-skin-8-bit
