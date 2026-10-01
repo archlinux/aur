@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-mock-up
+	pkgdesc = AIMP skin: Mock Up 1.0 (by Your Creations)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-mock-up-514.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-mock-up-514.archive::https://aimp.ru/?do=catalog.download&id=514
+	sha256sums = c30a95a1ea3b64b07784e6db6a789f0881ce588c94210c38e87df570ee0a70e0
+
+pkgname = aimp-skin-mock-up
