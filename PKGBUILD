@@ -1,7 +1,7 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-comp-git
-pkgver=1.0.16.r18.gaac1e19
+pkgver=1.9.0.r19.g895ce91
 pkgrel=1
 pkgdesc="Compositor for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -22,6 +22,7 @@ depends=(
 makedepends=(
   'cargo'
   'git'
+  'just'
   'mold'
 )
 provides=("${pkgname%-git}")
@@ -38,6 +39,9 @@ prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target host-tuple
+
+  # Use thin LTO
+  sed 's/lto = "fat"/lto = "thin"/' -i Cargo.toml
 }
 
 build() {
@@ -48,10 +52,10 @@ build() {
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  nice make ARGS+=" --frozen --release"
+  nice just build-release --frozen
 }
 
 package() {
   cd "${pkgname%-git}"
-  make DESTDIR="$pkgdir" install
+  just rootdir="$pkgdir" install
 }
