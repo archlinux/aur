@@ -4,7 +4,7 @@
 pkgname='aimp-skin-aimware-dark'
 pkgdesc='AIMP skin: AIMWARE DARK 1.4 (by w7rus)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('625552c38671e4c10b8322a195d5665ac1657a6ea577cba66183b732fa557a53')
 
 package() {
-  local dest="$pkgdir$_skinsdir/AIMWARE DARK"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-aimware-dark-846.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
