@@ -4,7 +4,7 @@
 pkgname='aimp-skin-gilly'
 pkgdesc='AIMP skin: Gilly 1.3 (by Zigar)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d1bf847838fe354320fb79b5e084bb20694ac9d5f7180981c4d4268d68c6bd13')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Gilly"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-gilly-580.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
