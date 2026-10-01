@@ -1,6 +1,6 @@
 pkgbase = xr-hardware
 	pkgdesc = Udev rules for accessing XR (VR and AR) hardware devices
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/monado/utilities/xr-hardware/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = xr-hardware
 	provides = osvr-udev
 	provides = psvr-udev
 	provides = vive-udev
-	source = https://gitlab.freedesktop.org/monado/utilities/xr-hardware/-/archive/1.1.1/xr-hardware-1.1.1.tar.bz2
-	sha256sums = a177f8e608b71a0cd645b35fc103bfa84878fbcc155d7b36d9ddfa3d4f0a5b23
+	source = https://gitlab.freedesktop.org/monado/utilities/xr-hardware/-/archive/1.1.2/xr-hardware-1.1.2.tar.bz2
+	sha256sums = a34ac31bf73c1c3265f0c94f1b9b4854450dcefd51f6ca662f1b52286e4900bb
 
 pkgname = xr-hardware
