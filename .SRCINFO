@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-black-mini
 	pkgdesc = AIMP skin: Black Mini 1.1 (by SeReG@)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
