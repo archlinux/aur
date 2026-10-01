@@ -4,7 +4,7 @@
 pkgname='aimp-skin-pioneer-ct-939-4k'
 pkgdesc='AIMP skin: Pioneer CT-939 4K 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('21394126af9fae224be041feb324af00d26bce4ac8fba18891272834dbba34f9')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Pioneer CT-939 4K"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-pioneer-ct-939-4k-1340.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
