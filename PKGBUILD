@@ -4,7 +4,7 @@
 pkgname='aimp-skin-sharp-gf-777'
 pkgdesc='AIMP skin: Sharp GF-777 1.13 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('3cc82fd8ddf9a2750edb69d53fd8fcff2c7b4b4c26eedcf59bda0fad95fc5532')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Sharp GF-777"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-sharp-gf-777-1261.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
