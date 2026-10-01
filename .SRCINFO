@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-kibtech-2-5-white
+	pkgdesc = AIMP skin: KibTech 2.5 White 1.0 (by kibermanick)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-kibtech-2-5-white-635.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-kibtech-2-5-white-635.archive::https://aimp.ru/?do=catalog.download&id=635
+	sha256sums = 4310d37b48f804ac2c75685175c673994849c1fd5f6ece1a9145983ab46ad6c4
+
+pkgname = aimp-skin-kibtech-2-5-white
