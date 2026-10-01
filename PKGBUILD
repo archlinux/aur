@@ -3,7 +3,7 @@
 # Jednoplikowa aplikacja GTK4/libadwaita: jeden kadr dla wielu obrazów.
 # Bez etapów budowania — instalujemy pliki wprost z tagu v$pkgver.
 pkgname=kadr
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Kadrowanie zbiorcze — ten sam kadr dla wielu obrazów naraz (GTK4/libadwaita)'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
 # Źródłem jest release asset v$pkgver, a NIE snapshot repo z taga — snapshot ciągnie
 # screenshoty i demo.gif (1,2 MB) tylko po to, żeby zainstalować 56 kB.
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/kadr-$pkgver.tar.gz")
-sha256sums=('f774e5f08941266955e360a8f78404a46f7983ecc480cc224c5d021dd7389e68')
+sha256sums=('629fe00cdcf72812b29498c647aea760f17cebc468637f5512d7d22ae5ec93e6')
 
 package() {
   cd "$pkgname-$pkgver"

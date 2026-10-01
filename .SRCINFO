@@ -1,6 +1,6 @@
 pkgbase = kadr
 	pkgdesc = Kadrowanie zbiorcze — ten sam kadr dla wielu obrazów naraz (GTK4/libadwaita)
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/look997/kadr
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = kadr
 	optdepends = libtiff: TIFF
 	optdepends = libwebp: WebP
 	optdepends = nemo: pokazywanie zapisanych plików z zaznaczeniem (org.freedesktop.FileManager1 ShowItems)
-	source = kadr-1.0.0.tar.gz::https://github.com/look997/kadr/releases/download/v1.0.0/kadr-1.0.0.tar.gz
-	sha256sums = f774e5f08941266955e360a8f78404a46f7983ecc480cc224c5d021dd7389e68
+	source = kadr-1.1.0.tar.gz::https://github.com/look997/kadr/releases/download/v1.1.0/kadr-1.1.0.tar.gz
+	sha256sums = 629fe00cdcf72812b29498c647aea760f17cebc468637f5512d7d22ae5ec93e6
 
 pkgname = kadr
