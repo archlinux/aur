@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-perfect-vertical-tabs-layout
+	pkgdesc = AIMP skin: Perfect! (Vertical tabs layout) 1.0 (by Hayo Tee (aka HX722))
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-perfect-vertical-tabs-layout-349.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-perfect-vertical-tabs-layout-349.archive::https://aimp.ru/?do=catalog.download&id=349
+	sha256sums = c311a2d3b435dc40d763918ca9ac77edf1cb5c4db7310c5389e98434cdcf29de
+
+pkgname = aimp-skin-perfect-vertical-tabs-layout
