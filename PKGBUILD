@@ -4,7 +4,7 @@
 pkgname='aimp-skin-pimeer'
 pkgdesc='AIMP skin: Pimeer 1.0 (by PL)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c1b89ec6aac99d2c7501a1c5dbb20116e35f1d9d91bf935be026895d858adf26')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Pimeer"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-pimeer-128.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
