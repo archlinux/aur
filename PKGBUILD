@@ -4,7 +4,7 @@
 pkgname='aimp-skin-skin-metall'
 pkgdesc='AIMP skin: Skin Metall 1.0 (by Demcha)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('676acc255fce1c911669624b25d9037695f28732d17875b59a935d56073373fe')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Skin Metall"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-skin-metall-496.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
