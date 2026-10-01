@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-wooden-metal
+	pkgdesc = AIMP skin: Wooden Metal 1.0 (by FreeZeek)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-wooden-metal-273.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-wooden-metal-273.archive::https://aimp.ru/?do=catalog.download&id=273
+	sha256sums = 9707c5e9d16368a0365f455ef5af8c29e7fdf54029e8ffcf64c5e0a2485b07b2
+
+pkgname = aimp-skin-wooden-metal
