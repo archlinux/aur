@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-helios
+	pkgdesc = AIMP skin: Helios 1.1 (by Zigar)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-helios-335.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-helios-335.archive::https://aimp.ru/?do=catalog.download&id=335
+	sha256sums = bcc028827b9236be61dec8562a294a7271f9e4bc0f7fb9318cda48d0a65ceffa
+
+pkgname = aimp-skin-helios
