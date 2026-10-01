@@ -49,7 +49,5 @@ package() {
 	install -Dm644 packaging/asstd.service "$pkgdir/usr/lib/systemd/user/asstd.service"
 	install -Dm644 packaging/dev.jaeho.Asst.Daemon.service "$pkgdir/usr/share/dbus-1/services/dev.jaeho.Asst.Daemon.service"
 	install -Dm644 packaging/dev.jaeho.Asst.service "$pkgdir/usr/share/dbus-1/services/dev.jaeho.Asst.service"
-	install -Dm644 nvim/plugin/asst.lua "$pkgdir/usr/share/asst/nvim/plugin/asst.lua"
-	install -Dm644 nvim/lua/asst.lua "$pkgdir/usr/share/asst/nvim/lua/asst.lua"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
