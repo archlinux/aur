@@ -2,7 +2,7 @@
 pkgname=k3k-bin
 pkgver=1.2.0
 pkgrel=2
-pkgdesc='Kubernetes in Kubernetes - CLI tool for creating and managing K3s clusters within Kubernetes'
+pkgdesc='Kubernetes in Kubernetes: CLI to create and manage K3s clusters in Kubernetes'
 arch=('x86_64' 'aarch64')
 url='https://github.com/rancher/k3k'
 license=('Apache-2.0')

@@ -1,5 +1,5 @@
 pkgbase = k3k-bin
-	pkgdesc = Kubernetes in Kubernetes - CLI tool for creating and managing K3s clusters within Kubernetes
+	pkgdesc = Kubernetes in Kubernetes: CLI to create and manage K3s clusters in Kubernetes
 	pkgver = 1.2.0
 	pkgrel = 2
 	url = https://github.com/rancher/k3k
