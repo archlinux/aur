@@ -2,7 +2,7 @@
 
 pkgname=openhuman-core-bin
 _upstream_name=openhuman-core
-pkgver=0.64.7
+pkgver=0.64.10
 pkgrel=1
 pkgdesc='Core binary for OpenHuman'
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=("${_upstream_name}")
 options=('!strip' '!debug')
 source_x86_64=("${_upstream_name}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_upstream_name}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_upstream_name}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_upstream_name}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('b14c07cdccb6bf23432d59d4110270094c70e2f2aa6240eb599a30937019474c')
-sha256sums_aarch64=('0f3e41077e66c11ec44d39c356a1fa65d45e94227f4849ef3fe5d037c778e57a')
+sha256sums_x86_64=('84dba6f33305bada121df8c59b7531e57918b4be623b4dfb6de7232a2b950665')
+sha256sums_aarch64=('445be5fd3d60d642635165412d6ea1dd445c75fa23feedb81e35200f4c8b338f')
 
 package() {
   install -Dm755 "${srcdir}/${_upstream_name}" "${pkgdir}/usr/bin/${_upstream_name}"
