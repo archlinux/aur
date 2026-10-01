@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-s-lime
+	pkgdesc = AIMP skin: s-Lime 1.0 (by KrolliK)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-s-lime-505.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-s-lime-505.archive::https://aimp.ru/?do=catalog.download&id=505
+	sha256sums = 66b0b75246774c517b999c38dd21fc0cc822f5f0e360eaf6a38de2b421982832
+
+pkgname = aimp-skin-s-lime
