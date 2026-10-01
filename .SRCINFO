@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-luminescence-440
+	pkgdesc = AIMP skin: Luminescence 1.0 (by ELECTRON!CK)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-luminescence-440-440.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-luminescence-440-440.archive::https://aimp.ru/?do=catalog.download&id=440
+	sha256sums = fcd3e261d1fa10a3625a42063136e567daa9af13e2f66a5df6f6421df5a9d66c
+
+pkgname = aimp-skin-luminescence-440
