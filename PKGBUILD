@@ -5,13 +5,12 @@ pkgrel=1
 pkgdesc="Mirrors Debian and RedHat repositories to an AWS S3 bucket (with Cloudfront support) or a local directory"
 arch=('x86_64')
 url="https://github.com/Zextras/reposync"
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 depends=()
 makedepends=('cargo')
 source=(
   "${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
-
 
 build() {
   cd "reposync-${pkgver}"
