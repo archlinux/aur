@@ -4,7 +4,7 @@
 pkgname='aimp-skin-t-d-a-sound-system'
 pkgdesc='AIMP skin: T.D.A. Sound System 2.0 (by TurboDISCO Adept)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('cc153509a02584f127906338d99ff04d6d9140620bcaa5b1c313a02ab917acd6')
 
 package() {
-  local dest="$pkgdir$_skinsdir/T.D.A. Sound System"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-t-d-a-sound-system-1096.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
