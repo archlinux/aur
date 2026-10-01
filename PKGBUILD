@@ -4,7 +4,7 @@
 pkgname='aimp-skin-iphone-theme'
 pkgdesc='AIMP skin: iPhone theme 1.0 (by RadioRec)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('85dafedcbd60ee8306da49cd23180d78bf27a379e6de5f3dda7a65b8c0cac0fd')
 
 package() {
-  local dest="$pkgdir$_skinsdir/iPhone theme"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-iphone-theme-8.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
