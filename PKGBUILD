@@ -4,7 +4,7 @@
 pkgname='aimp-skin-teac-v-770-4k'
 pkgdesc='AIMP skin: Teac V-770 4K 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('04274596c664fbfcac3904f5d1424c85faa208801b85aa382f5e20f17b76bb3b')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Teac V-770 4K"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-teac-v-770-4k-1353.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
