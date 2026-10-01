@@ -2,6 +2,9 @@ post_install() {
     if command -v apparmor_parser >/dev/null 2>&1; then
         apparmor_parser -r /etc/apparmor.d/sdme-default 2>/dev/null || true
     fi
+    if [ -x /usr/bin/sdme ]; then
+        /usr/bin/sdme repair-units || echo 'warning: sdme could not refresh legacy systemd drop-ins' >&2
+    fi
 }
 
 post_upgrade() {
