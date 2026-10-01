@@ -1,6 +1,6 @@
 # Maintainer: JOLIMAITRE Matthieu <matthieu@imagevo.fr>
 pkgname="deno-stable-bin"
-pkgver=2.6.4
+pkgver=2.9.7
 pkgrel=1
 pkgdesc="A modern JavaScript and TypeScript runtime. Latest artefact from github."
 url="https://deno.land"
