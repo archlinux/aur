@@ -4,7 +4,7 @@
 pkgname='aimp-skin-eset-nod32'
 pkgdesc='AIMP skin: ESET NOD32 1.0 (by sagitt.67)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('53438ad0bf407fb2a28dd3f5439a9251940981120df245e71f7a6f886040b749')
 
 package() {
-  local dest="$pkgdir$_skinsdir/ESET NOD32"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-eset-nod32-521.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
