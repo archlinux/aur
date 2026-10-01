@@ -3,7 +3,7 @@
 pkgname=bettbox-compatible-pre-bin
 _pkgname=Bettbox
 pkgver=1.19.4pre1
-pkgrel=1
+pkgrel=2
 _pkgver="${pkgver/pre/-pre}"
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash. (Build with GOAMD64=v1)"
 arch=('x86_64')
@@ -27,10 +27,11 @@ sha256sums_x86_64=('62cc81b9cebbfe175c99e2471a9264dbc77d8e885527aaed7b836b0ecd35
 
 prepare() {
     bsdtar -xf "${srcdir}/data."*
+    # Upstream already ships Categories=Network; (line 8), so only the missing
+    # StartupWMClass is inserted, right before StartupNotify=true (line 10).
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-compatible-pre-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-compatible-pre-bin}/g
-        5i\Categories=Network;
         10i\StartupWMClass=com.appshub.bettbox
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
