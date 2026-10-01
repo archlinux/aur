@@ -4,7 +4,7 @@
 pkgname='aimp-skin-windows-explorer-aero-style'
 pkgdesc='AIMP skin: Windows Explorer Aero Style 1.0 (by Hayo Tee (aka HX722))'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f919e405c139bbf5d690732145fe0f6e6345fc871571fd8e0402eda5f8b04801')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Windows Explorer Aero Style"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-windows-explorer-aero-style-499.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
