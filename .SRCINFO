@@ -3,7 +3,6 @@ pkgbase = vpointer-desktop
 	pkgver = 1.0.2
 	pkgrel = 1
 	url = http://www.eurograficasrl.it/stefano/vpointer.html
-	arch = i686
 	arch = x86_64
 	license = custom
 	depends = java-runtime-headless
