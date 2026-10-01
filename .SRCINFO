@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-polymeric-sunrise
+	pkgdesc = AIMP skin: Polymeric Sunrise 1.0 (by Nordschamane)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-polymeric-sunrise-412.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-polymeric-sunrise-412.archive::https://aimp.ru/?do=catalog.download&id=412
+	sha256sums = 14c15cd7df17ddb1fd0922cb93e6e2ec24d2c8f1631bfee9b06739d92f47059a
+
+pkgname = aimp-skin-polymeric-sunrise
