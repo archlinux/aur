@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-soyuz-110
+	pkgdesc = AIMP skin: Союз-110 1.1 (by Пупс)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-soyuz-110-1299.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-soyuz-110-1299.archive::https://aimp.ru/?do=catalog.download&id=1299
+	sha256sums = 03d19053fc7c66c97f64cbe941043115c45f0862da59b049f9feb503c5df1de6
+
+pkgname = aimp-skin-soyuz-110
