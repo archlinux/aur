@@ -5,7 +5,7 @@
 pkgname=flea-bin
 _pkgname=flea
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, keyboard-first file manager for Omarchy (prebuilt binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/thisisgm/flea'
@@ -25,10 +25,11 @@ conflicts=("$_pkgname" "$_pkgname-git")
 # The release profile already stripped the binary, so there is nothing to strip and no debug package.
 options=('!strip' '!debug')
 # SKIP here keeps a version bump to one line; the release workflow pins both before the AUR ever sees them.
-source_x86_64=("$_pkgname-v$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-x86_64.tar.gz")
-source_aarch64=("$_pkgname-v$pkgver-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('99891fd138e8cf0d77fbaa7c94a7c14887662ce3bdd6c21ef29224a87058634a')
-sha256sums_aarch64=('5def60cb1b66432cf08e4e018d1117f9e17a40899d7d57f82b9ed171203c9336')
+# The local names carry pkgrel, so a rebuilt release is downloaded again, never read from a stale yay cache.
+source_x86_64=("$_pkgname-v$pkgver-$pkgrel-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-x86_64.tar.gz")
+source_aarch64=("$_pkgname-v$pkgver-$pkgrel-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-aarch64.tar.gz")
+sha256sums_x86_64=('671fdfa1bf2095900bb084da67b27b036a09d3f6c3368904174e0a6fd787c6a4')
+sha256sums_aarch64=('99c01621c6fb7d6a32195ed942de7d05f3ffb3e8e8427933d42a42b780065231')
 
 # The source PKGBUILD's package() with the binary read from the tarball's root; the release workflow diffs the two.
 package() {

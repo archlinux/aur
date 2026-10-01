@@ -1,7 +1,7 @@
 pkgbase = flea-bin
 	pkgdesc = Fast, keyboard-first file manager for Omarchy (prebuilt binary)
 	pkgver = 0.3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thisisgm/flea
 	arch = x86_64
 	arch = aarch64
@@ -46,9 +46,9 @@ pkgbase = flea-bin
 	conflicts = flea-git
 	options = !strip
 	options = !debug
-	source_x86_64 = flea-v0.3.7-linux-x86_64.tar.gz::https://github.com/thisisgm/flea/releases/download/v0.3.7/flea-v0.3.7-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 99891fd138e8cf0d77fbaa7c94a7c14887662ce3bdd6c21ef29224a87058634a
-	source_aarch64 = flea-v0.3.7-linux-aarch64.tar.gz::https://github.com/thisisgm/flea/releases/download/v0.3.7/flea-v0.3.7-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 5def60cb1b66432cf08e4e018d1117f9e17a40899d7d57f82b9ed171203c9336
+	source_x86_64 = flea-v0.3.7-2-linux-x86_64.tar.gz::https://github.com/thisisgm/flea/releases/download/v0.3.7/flea-v0.3.7-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 671fdfa1bf2095900bb084da67b27b036a09d3f6c3368904174e0a6fd787c6a4
+	source_aarch64 = flea-v0.3.7-2-linux-aarch64.tar.gz::https://github.com/thisisgm/flea/releases/download/v0.3.7/flea-v0.3.7-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 99c01621c6fb7d6a32195ed942de7d05f3ffb3e8e8427933d42a42b780065231
 
 pkgname = flea-bin
