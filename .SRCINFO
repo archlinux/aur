@@ -1,0 +1,23 @@
+pkgbase = rmd-cli-bin
+	pkgdesc = One-shot Linux reminders that survive reboot and show up as desktop notifications
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/PaulBunch/rmd
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = rmd
+	conflicts = rmd-cli
+	options = !strip
+	source = README-0.4.0.md::https://raw.githubusercontent.com/PaulBunch/rmd/v0.4.0/README.md
+	source = TIME-0.4.0.md::https://raw.githubusercontent.com/PaulBunch/rmd/v0.4.0/docs/TIME.md
+	source = VISION-0.4.0.md::https://raw.githubusercontent.com/PaulBunch/rmd/v0.4.0/docs/VISION.md
+	sha256sums = 8c4e845fc61eb8f8e77f66c9ac0d54d9e572418c2e82c9cf16f6a342c40c254b
+	sha256sums = f60486c431db4b8eac6fb01dfbf3243c413d5b1ef93400b68512f0af76af4366
+	sha256sums = 75b9900c35b2ded25f243290e1ebea9bb144005a30c49d3ea1fd63d432982d58
+	source_x86_64 = rmd-x86_64-0.4.0.tgz::https://github.com/PaulBunch/rmd/releases/download/v0.4.0/rmd-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 5dc957de4890f18b4645419de6a8e511d7c82b16f714452d51d6cda99dac8ab6
+	source_aarch64 = rmd-aarch64-0.4.0.tgz::https://github.com/PaulBunch/rmd/releases/download/v0.4.0/rmd-linux-aarch64.tar.gz
+	sha256sums_aarch64 = f120ff98be6dcb18cac1d5e22633dd6c91440a80b75044b3cad79c297ae6c1c1
+
+pkgname = rmd-cli-bin

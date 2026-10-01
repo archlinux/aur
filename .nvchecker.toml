@@ -1,0 +1,5 @@
+[rmd-cli-bin]
+source = "github"
+github = "PaulBunch/rmd"
+use_latest_release = true
+prefix = "v"
