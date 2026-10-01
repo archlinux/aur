@@ -4,7 +4,7 @@
 pkgname='aimp-skin-raven'
 pkgdesc='AIMP skin: Raven 1.0 (by Zigar)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('dc7a7c72ad5ed709940db2748425b82832f5d2456df8b34844ae3eaaf27b6c4b')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Raven"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-raven-551.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
