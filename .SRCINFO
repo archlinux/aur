@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-mega-dark
+	pkgdesc = AIMP skin: Mega Dark 1.0 (by ZeoN7)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-mega-dark-410.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-mega-dark-410.archive::https://aimp.ru/?do=catalog.download&id=410
+	sha256sums = c160f8dc410287a104a318691d60563b46fe39b04685405fa79ad96403905598
+
+pkgname = aimp-skin-mega-dark
