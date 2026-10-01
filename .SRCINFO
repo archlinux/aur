@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-softline
+	pkgdesc = AIMP skin: SoftLine 1.0 (by Kolbasko)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-softline-118.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-softline-118.archive::https://aimp.ru/?do=catalog.download&id=118
+	sha256sums = 8a8d83cf7a6c0dfe330aa0254e179129eb5791d322500cdbea1bb400997d88bd
+
+pkgname = aimp-skin-softline
