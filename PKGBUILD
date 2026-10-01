@@ -1,6 +1,6 @@
 # Maintainer: Herbert Knapp
 pkgname=openarena-omega-engine-bin
-pkgver=3.3.3
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="An unofficial fork of the Quake3e engine for OpenArena"
 arch=('x86_64')
@@ -9,13 +9,13 @@ license=('GPL-2.0-or-later')
 depends=('openarena')
 optdepends=('vulkan-driver: Run vulkan renderer')
 makedepends=('unzip')
-source=("https://github.com/Bishop-333/OmegA-engine/releases/download/v${pkgver}/omega-engine-linux-x86_64.zip"
+source=("https://github.com/Bishop-333/OmegA-engine/releases/download/v${pkgver}/omega-engine-linux-x86_64.tar.gz"
     'openarena-omega'
     'openarena-omega.desktop'
     'openarena-omega-vulkan.desktop'
     'openarena-omega.png'
 )
-sha256sums=('66661f563f2c65d46ce1a04fe300ab5eb86a8c6dc53ee8dc1ff8cc8992f6a17c'
+sha256sums=('53f300323df607530693b3d1f08d5887f13842ce4bd6f361b079bc060c289b1a'
     'fdbc32d33962b508728e0c52147a90dae340270efa57c421c9811d89a92b3e31'
     'a6aa64945ca74e073e48926a201e6c0ee21f7ccdf689e2a08abe981e62a11016'
     '857b5c18e37a3bbf866feb3a69c8b0461d5b50643205fd1620412c59751ed9d0'
