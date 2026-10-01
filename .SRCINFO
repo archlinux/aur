@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-nexus
+	pkgdesc = AIMP skin: Nexus 1.0 (by umbrella-cakey)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-nexus-1223.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-nexus-1223.archive::https://aimp.ru/?do=catalog.download&id=1223
+	sha256sums = a887acda4dee73dc27f374c280e3fd6221bf4873d83ab4fb08308cec32dc9ebd
+
+pkgname = aimp-skin-nexus
