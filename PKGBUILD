@@ -2,7 +2,7 @@
 
 _gemname=dry-cli
 pkgname=ruby-${_gemname}
-pkgver=1.0.0
+pkgver=1.0.0 # renovate: datasource=rubygems depName=dry-cli
 pkgrel=1
 pkgdesc='Common framework to build command line interfaces with Ruby'
 arch=(any)
