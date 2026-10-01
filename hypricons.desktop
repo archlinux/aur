@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=HyprIcons
+Comment=Desktop icons for Hyprland (Wayland)
+Exec=/usr/bin/hypricons
+Icon=hypricons
+Type=Application
+StartupWMClass=HyprIcons
+Keywords=hypricons;desktop;icons;hyprland;wayland;

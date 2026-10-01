@@ -1,0 +1,27 @@
+post_install() {
+    show_hint
+}
+
+post_upgrade() {
+    show_hint
+}
+
+show_hint() {
+    cat <<'EOF'
+==> HyprIcons is now available as /usr/bin/hypricons.
+
+    It is a regular Wayland client, not a Hyprland plugin. Start it once
+    per session from ~/.config/hypr/hyprland.lua (or one of its submodules):
+
+        hl.on("hyprland.start", function()
+          hl.exec_cmd("hypricons")
+        end)
+
+    Then reload the compositor:
+
+        hyprctl reload
+
+    Register it only once - two instances draw duplicate, overlapping icons.
+    Settings live in ~/.config/hypricons/config.json; run `hypricons --help`.
+EOF
+}

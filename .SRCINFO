@@ -1,0 +1,24 @@
+pkgbase = hypricons-bin
+	pkgdesc = Desktop icons for Hyprland (Wayland), drawn as a gtk4-layer-shell surface per monitor (pre-built binary)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Anabilsarker/HyprIcons
+	install = hypricons-bin.install
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = gtk4
+	depends = gtk4-layer-shell
+	provides = hypricons
+	conflicts = hypricons
+	conflicts = hypricons-git
+	noextract = hypricons-1.0.1-1-x86_64.pkg.tar.zst
+	options = !strip
+	options = !debug
+	source = hypricons-1.0.1-1-x86_64.pkg.tar.zst::https://github.com/Anabilsarker/HyprIcons/releases/download/v1.0.1/hypricons-1.0.1-1-x86_64.pkg.tar.zst
+	source = LICENSE::https://raw.githubusercontent.com/Anabilsarker/HyprIcons/v1.0.1/LICENSE
+	source = hypricons.desktop
+	sha256sums = a82112be9eb6cce9f48f4aedb92aa63b608ad0b8ed1f0ee5fed49ef04d781bd9
+	sha256sums = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
+	sha256sums = 9546437805a371e5c7402429b769c0e3a53262157b1cb96c70988ed419903f7e
+
+pkgname = hypricons-bin
