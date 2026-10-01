@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-mg
+	pkgdesc = AIMP skin: MG 1.1 (by Aleksandr009)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-mg-796.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-mg-796.archive::https://aimp.ru/?do=catalog.download&id=796
+	sha256sums = fba3fcdaec5d5ac3e073176dfdc9f9135dfb5ffd686b786f2a2994ef8e93836b
+
+pkgname = aimp-skin-mg
