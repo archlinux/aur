@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-evil-eyes
+	pkgdesc = AIMP skin: Evil Eyes 1.2 (by Barbiturat)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-evil-eyes-113.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-evil-eyes-113.archive::https://aimp.ru/?do=catalog.download&id=113
+	sha256sums = 1a8360cc054380abf98aa99c2454c10a4165c479701d48b352b3bf47b2f37b33
+
+pkgname = aimp-skin-evil-eyes
