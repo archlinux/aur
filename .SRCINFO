@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-bezimeni1
+	pkgdesc = AIMP skin: BezImeni1 1.04 (by Banned)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-bezimeni1-528.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-bezimeni1-528.archive::https://aimp.ru/?do=catalog.download&id=528
+	sha256sums = f5d0f3b93d5ff2650777fc651942d50d93001bea6204dedfbf2376f3d0f1ce5a
+
+pkgname = aimp-skin-bezimeni1
