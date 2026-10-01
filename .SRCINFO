@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-mei-music-mod
 	pkgdesc = AIMP skin: Mei Music Mod 1.0 (by 17hapi)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
