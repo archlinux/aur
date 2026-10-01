@@ -4,7 +4,7 @@
 pkgname='aimp-skin-prolux-gray'
 pkgdesc='AIMP skin: Prolux Gray 1.0 (by Aleksandr009)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('67761177753c49f3a59efa424142c953e3c2c04e1db71c2290fba675e14c9e7a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Prolux Gray"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-prolux-gray-515.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
