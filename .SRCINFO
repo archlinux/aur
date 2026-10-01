@@ -4,7 +4,6 @@ pkgbase = dhewm3
 	pkgrel = 3
 	url = https://github.com/dhewm/dhewm3
 	install = dhewm3.install
-	arch = i686
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cmake

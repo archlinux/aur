@@ -5,7 +5,7 @@ pkgname=dhewm3
 pkgver=1.5.5 # renovate: datasource=github-tags depName=dhewm/dhewm3
 pkgrel=3
 pkgdesc="Doom 3 engine with native 64-bit support, SDL, and OpenAL"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/dhewm/dhewm3"
 license=('GPL-3.0-or-later')
 depends=('curl' 'libbacktrace' 'openal' 'sdl3')
