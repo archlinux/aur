@@ -1,12 +1,12 @@
 # Maintainer: robertfoster
 
 pkgname=resonance-git
-pkgver=r59.147cb39
+pkgver=r83.9782609
 pkgrel=1
 pkgdesc='An intuitive music player application written in Rust & Python, with a clean user interface built using GTK4'
-arch=(x86_64 i686 arm armv6h armv7h aarch64)
+arch=(x86_64 arm armv6h armv7h aarch64)
 url='https://github.com/nate-xyz/resonance'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
   gst-plugins-bad
   gst-plugins-base
