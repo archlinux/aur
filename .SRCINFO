@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-socuelyricskin
+	pkgdesc = AIMP skin: SocueLyricSkin 1.6 (by socue)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-socuelyricskin-1233.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-socuelyricskin-1233.archive::https://aimp.ru/?do=catalog.download&id=1233
+	sha256sums = 1740487a19e5a4f4be615d2d225b2d2f4774c51eb25ea5591fbce886dca127a1
+
+pkgname = aimp-skin-socuelyricskin
