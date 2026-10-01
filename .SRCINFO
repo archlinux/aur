@@ -1,7 +1,7 @@
 pkgbase = granola
 	pkgdesc = AI notepad for back-to-back meetings, repackaged from the official macOS build
 	pkgver = 7.595.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.granola.ai
 	arch = x86_64
 	license = LicenseRef-proprietary
@@ -17,14 +17,14 @@ pkgbase = granola
 	depends = xdg-utils
 	conflicts = granola-wine
 	noextract = granola-7.595.3.dmg
-	noextract = node-v44.4.5-headers.tar.gz
+	noextract = node-v44.5.1-headers.tar.gz
 	source = granola-7.595.3.dmg::https://dr2v7l5emb758.cloudfront.net/7.595.3/Granola-7.595.3-mac-universal.dmg
 	source = https://registry.npmjs.org/better-sqlite3-multiple-ciphers/-/better-sqlite3-multiple-ciphers-12.9.0.tgz
-	source = https://electronjs.org/headers/v44.4.5/node-v44.4.5-headers.tar.gz
+	source = https://electronjs.org/headers/v44.5.1/node-v44.5.1-headers.tar.gz
 	source = granola.desktop
 	sha256sums = b7d95f0961f7e49507453dce773275de900e03490ff618a3601783d723315cd5
 	sha256sums = ad8ceb2cfe687e0c106547fdd281f0d20b40688200d04f40bb163afd1f102609
-	sha256sums = 3f050434f3d15188caf71606e4cd3f7dd86547f66a72e947a2d05b39828851f6
+	sha256sums = ba56f6db1f43baeda19c82d3f72beeb00e20c8ba87e787a763db60f44d212977
 	sha256sums = 22b5217b929a1d184f1f73d5f55fbef6756d5fbcef207da64f188231d38c9c20
 
 pkgname = granola
