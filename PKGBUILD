@@ -5,11 +5,11 @@ pkgname=nwipe
 pkgver=0.42 # renovate: datasource=github-tags depName=martijnvanbrummelen/nwipe
 pkgrel=1
 pkgdesc="A fork of the dwipe command that will securely erase disks using a variety of recognised methods"
-arch=('i686' 'x86_64' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/martijnvanbrummelen/nwipe"
 depends=('hdparm' 'libconfig' 'ncurses' 'parted')
 optdepends=('coreutils' 'dmidecode' 'smartmontools')
-license=('GPL2')
+license=('GPL-2.0-or-later')
 source=("${url}/archive/v${pkgver}.tar.gz")
 
 build() {
