@@ -4,7 +4,7 @@
 pkgname='aimp-skin-sadi'
 pkgdesc='AIMP skin: SaDI 1.0 (by Kondakov Andrey)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('de72f4bc9bbd9af7f79d86639b8f379cc0d3ab3944143e651974c87d66ca29f3')
 
 package() {
-  local dest="$pkgdir$_skinsdir/SaDI"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-sadi-347.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
