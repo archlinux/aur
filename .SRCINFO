@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-plate-all-in-one
+	pkgdesc = AIMP skin: Plate All-In-One 1.0 (by Zhenya)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-plate-all-in-one-532.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-plate-all-in-one-532.archive::https://aimp.ru/?do=catalog.download&id=532
+	sha256sums = 37fc1faccd87a6b2f7b587af809e0d6f2150a31c40b0a3c601254bebe5926468
+
+pkgname = aimp-skin-plate-all-in-one
