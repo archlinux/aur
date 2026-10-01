@@ -1,6 +1,6 @@
 # Maintainer: loteran <https://github.com/loteran>
 pkgname=arctis-sound-manager
-pkgver=1.4.32
+pkgver=1.4.33
 pkgrel=1
 pkgdesc="Linux GUI for SteelSeries Arctis headsets — all GG/Sonar features: mixer, EQ, ANC, mic processing, surround"
 arch=('any')
@@ -75,7 +75,7 @@ optdepends=(
 makedepends=('python-installer' 'uv')
 install=arctis-sound-manager.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('872fa1c6b7332440827df7c96ae137e98c71dfb3119429d560ac461bb1045736')
+sha256sums=('df34c7b19c9be03baf5fb21c4c45f594e72d6d37022200ba37a6068c25db95d0')
 
 build() {
     cd "Arctis-Sound-Manager-$pkgver"
@@ -102,6 +102,8 @@ package() {
     # module and inserts src/ onto sys.path itself when run from the repo.
     python3 scripts/generate_udev_rules.py \
         | install -Dm644 /dev/stdin "$pkgdir/usr/lib/udev/rules.d/91-steelseries-arctis.rules"
+    python3 scripts/generate_udev_rules.py --uaccess \
+        | install -Dm644 /dev/stdin "$pkgdir/usr/lib/udev/rules.d/70-steelseries-arctis-uaccess.rules"
 
     # Desktop entry
     install -Dm644 src/arctis_sound_manager/desktop/ArctisManager.desktop \
@@ -110,6 +112,21 @@ package() {
     # Icon
     install -Dm644 src/arctis_sound_manager/gui/images/steelseries_logo.svg \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/arctis-manager.svg"
+
+    # Plasma 6 widget (headset status over D-Bus)
+    install -Dm644 src/arctis_sound_manager/desktop/plasmoid/metadata.json \
+        "$pkgdir/usr/share/plasma/plasmoids/com.github.loteran.arctis-sound-manager/metadata.json"
+    python scripts/generate_plasmoid_i18n.py
+    for f in main.qml plasma5.qml tr.js strings.js; do
+        install -Dm644 "src/arctis_sound_manager/desktop/plasmoid/contents/ui/$f" \
+            "$pkgdir/usr/share/plasma/plasmoids/com.github.loteran.arctis-sound-manager/contents/ui/$f"
+    done
+
+    # GNOME Shell extension (ChatMix OSD over fullscreen games on GNOME Wayland)
+    for f in metadata.json extension.js; do
+        install -Dm644 "src/arctis_sound_manager/desktop/gnome-shell/asm-chatmix-osd@loteran.github.com/$f" \
+            "$pkgdir/usr/share/gnome-shell/extensions/asm-chatmix-osd@loteran.github.com/$f"
+    done
 
     # Systemd user services (single source of truth in systemd/, not heredocs)
     install -Dm644 systemd/arctis-manager.service \
