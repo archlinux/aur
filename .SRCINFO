@@ -11,4 +11,3 @@ pkgbase = python-pa-ringbuffer
 	sha256sums = 58d54698bf1b13490595671342225dd7cd264e820a7695abf4789ebdedd4d1c0
 
 pkgname = python-pa-ringbuffer
-
