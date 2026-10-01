@@ -2,7 +2,7 @@
 
 pkgname=python-lightning
 _name=${pkgname#python-}
-pkgver=2.5.2
+pkgver=2.6.6
 pkgrel=1
 pkgdesc="The Deep Learning framework to train, deploy, and ship AI products Lightning fast."
 arch=('any')
@@ -26,7 +26,7 @@ makedepends=(
   python-wheel
 )
 source=("https://github.com/Lightning-AI/pytorch-lightning/releases/download/${pkgver}/${_name}-${pkgver}.tar.gz")
-sha512sums=('c4fd87c8f8a8ee59f25b256da7f8715bf9dc356c23ae92b3bda457f3d9c3e7f9ee6af49c18143961fdbe20fbe6839d43abc838d427d5665be5af9a4894819a05')
+sha512sums=('939f4c4888de88b97094292b7b5a522fbaacd5b92a08502980b108b011b3effacea072cf960058acac17639e1a38c297fd211a1d52951d2e681c346658472de0')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
