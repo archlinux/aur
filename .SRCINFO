@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-w8-vanilla-two
+	pkgdesc = AIMP skin: W8 Vanilla Two 1.2.2 (by Zigar)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-w8-vanilla-two-805.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-w8-vanilla-two-805.archive::https://aimp.ru/?do=catalog.download&id=805
+	sha256sums = 1cf73f4167b3af72d65f6e0b46218dd10d60d3f439b8839e795ba0830884a732
+
+pkgname = aimp-skin-w8-vanilla-two
