@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-mayak-203-205
+	pkgdesc = AIMP skin: Mayak-203 (205) 3.27 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-mayak-203-205-644.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-mayak-203-205-644.archive::https://aimp.ru/?do=catalog.download&id=644
+	sha256sums = ac4ff603b7d00fd278407ebfde540a630c46736269eb9d4887db62bf6614b67f
+
+pkgname = aimp-skin-mayak-203-205
