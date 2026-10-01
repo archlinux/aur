@@ -1,6 +1,6 @@
 pkgbase = mesh-llm-vulkan
 	pkgdesc = Mesh LLM lets you pool spare GPU capacity across machines and expose the result as one OpenAI-compatible API.
-	pkgver = 0.76.1
+	pkgver = 0.77.0
 	pkgrel = 1
 	url = https://github.com/Mesh-LLM/mesh-llm
 	arch = x86_64
@@ -13,13 +13,15 @@ pkgbase = mesh-llm-vulkan
 	makedepends = vulkan-headers
 	makedepends = shaderc
 	makedepends = spirv-headers
+	makedepends = sccache
 	depends = vulkan-tools
 	provides = mesh-llm
 	provides = mesh-llm-vulkan
 	conflicts = mesh-llm-cuda
 	conflicts = mesh-llm-rocm
+	options = !debug
 	options = !lto
-	source = mesh-llm-vulkan-0.76.1.tar.gz::https://github.com/Mesh-LLM/mesh-llm/archive/refs/tags/v0.76.1.tar.gz
-	sha256sums = b1dd84e6ea0c0de245e90f38b8b68a2bdd9b41822f9f8604d3846ac83b40406f
+	source = mesh-llm-vulkan-0.77.0.tar.gz::https://github.com/Mesh-LLM/mesh-llm/archive/refs/tags/v0.77.0.tar.gz
+	sha256sums = b1fddc76910312b575910afe7433a64147cd677259706ebe27d8eaa87056b1cd
 
 pkgname = mesh-llm-vulkan
