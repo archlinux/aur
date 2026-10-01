@@ -1,7 +1,7 @@
 # Maintainer: Zan Skamljic <zan.skamljic@gmail.com>
 
 pkgname=tde-ariadne
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A Nautilus-style file manager built with Qt 6'
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ depends=(
   libarchive
   libgcc
   libstdc++
-  lua
+  libtde
   qt6-base
   qt6-svg
 )
@@ -26,12 +26,14 @@ optdepends=(
   'gvfs-smb: Windows shares (gvfs itself covers SFTP, FTP and WebDAV)'
   'papers: PDF and comic book thumbnails'
   'ffmpegthumbnailer: video thumbnails'
+  'bubblewrap: running thumbnailers in a sandbox'
+  'librsvg: drawing icons that Qt draws with black patches'
   'qt6-imageformats: thumbnails for WebP, TIFF and other image formats'
   'adwaita-icon-theme: fallback for icons missing from the icon theme'
 )
 install=ariadne.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c802bc2af5906b7f7cdec7ded38a512d5217f5132940809e8844f33762fd1044')
+sha256sums=('452a7dd95cec8ba3038c72a3292b5c7f839d29e0e11a306b38d533a9883c261d')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" -G Ninja \
