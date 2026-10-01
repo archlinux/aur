@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-eternity
+	pkgdesc = AIMP skin: Eternity 1.0 (by AngelAG)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-eternity-307.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-eternity-307.archive::https://aimp.ru/?do=catalog.download&id=307
+	sha256sums = 1dc0cd239544ec2e12c59d4eef6e06f6517304d23c095d1ecc5fc7a9bc6df774
+
+pkgname = aimp-skin-eternity
