@@ -4,7 +4,7 @@
 pkgname='aimp-skin-black-ice'
 pkgdesc='AIMP skin: Black Ice 1.02 (by alex-snk)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('93483331e3d80b586def51e8cfbcaf0377a5ad0f399cd8db50548416dcd99a87')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Black Ice"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-black-ice-124.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
