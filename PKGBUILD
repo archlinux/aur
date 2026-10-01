@@ -4,7 +4,7 @@
 pkgname='aimp-skin-sony-tc-r6-4k'
 pkgdesc='AIMP skin: Sony TC-R6 4K 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('5237a327c11707d21d3220590622d1e434d57daccde747935bed420ca498fbc2')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Sony TC-R6 4K"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-sony-tc-r6-4k-1361.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
