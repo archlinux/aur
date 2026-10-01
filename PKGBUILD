@@ -4,7 +4,7 @@
 pkgname='aimp-skin-splash-ex'
 pkgdesc='AIMP skin: Splash Ex 1.1 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('776d5296cdd74d2444f4ea0c52dec0ad4c0477c9f0e20060103a1a26d95099cf')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Splash Ex"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-splash-ex-526.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
