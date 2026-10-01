@@ -4,7 +4,7 @@
 pkgname='aimp-skin-senta22'
 pkgdesc='AIMP skin: Senta22 1.4 (by Acronis)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('b858e3c82312c471e391a6fe7ec5c45a0e718ed9997fdafc2310f16b66781dcf')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Senta22"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-senta22-363.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
