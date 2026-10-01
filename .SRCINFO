@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-idol-dark
+	pkgdesc = AIMP skin: Idol Dark 1.0 (by ZeoN7)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-idol-dark-599.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-idol-dark-599.archive::https://aimp.ru/?do=catalog.download&id=599
+	sha256sums = e85577e024129bb8ef422db9df847b2a6c9bb433c217b49cd675cfc9edd00518
+
+pkgname = aimp-skin-idol-dark
