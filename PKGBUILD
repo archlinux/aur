@@ -1,12 +1,12 @@
 # Maintainer: robertfoster
 
 pkgname=partclone-utils
-pkgver=0.4.3
+pkgver=0.4.3 # renovate: datasource=git-tags depName=https://git.code.sf.net/p/partclone-utils/git
 pkgrel=1
 pkgdesc="Utility for use with partclone generated images."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://sourceforge.net/projects/partclone-utils"
-license=(GPL)
+license=('GPL-2.0-or-later')
 source=("${url}/files/$pkgname-$pkgver.tar.gz")
 
 build() {

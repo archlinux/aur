@@ -3,11 +3,9 @@ pkgbase = partclone-utils
 	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://sourceforge.net/projects/partclone-utils
-	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	source = https://sourceforge.net/projects/partclone-utils/files/partclone-utils-0.4.3.tar.gz
 	sha256sums = 1dc98b4f8f26cfd16674edf54e2e2e393efcb4b1269787b3616ca9e5f96d9030
 
 pkgname = partclone-utils
-
