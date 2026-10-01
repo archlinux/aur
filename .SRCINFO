@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-radiance-z
+	pkgdesc = AIMP skin: Radiance Z 1.0 (by ZeoN7)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-radiance-z-492.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-radiance-z-492.archive::https://aimp.ru/?do=catalog.download&id=492
+	sha256sums = 5351995a6680cbd26418707cda0febdb791337322556954e4cae9e095fa03074
+
+pkgname = aimp-skin-radiance-z
