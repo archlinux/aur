@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-mnxa
 	pkgdesc = AIMP skin: MNXA 1.03 (by samix)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

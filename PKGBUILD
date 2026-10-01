@@ -4,7 +4,7 @@
 pkgname='aimp-skin-mnxa'
 pkgdesc='AIMP skin: MNXA 1.03 (by samix)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('707314bc3f2ba73a0670002eef7f9a010df2b85daa1b3299e3b096652748bca1')
 
 package() {
-  local dest="$pkgdir$_skinsdir/MNXA"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-mnxa-808.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
