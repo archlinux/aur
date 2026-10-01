@@ -4,7 +4,7 @@
 pkgname='aimp-skin-afterglow'
 pkgdesc='AIMP skin: Afterglow 1.0 (by Denisan)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a937aa9180285ee63ba634f12fe61633da8f22f935d15e6bb6fddf6a6699c44a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Afterglow"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-afterglow-266.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
