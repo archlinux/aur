@@ -4,7 +4,7 @@
 pkgname='aimp-skin-technicss-sl-1200'
 pkgdesc='AIMP skin: Technicss SL-1200 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('667158048e4a1792b965930e30761ebdce0cf7ccebf0bd7dc38d87999b27a474')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Technicss SL-1200"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-technicss-sl-1200-398.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
