@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-siren
 	pkgdesc = AIMP skin: Siren 1.0 (by MaxAx)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

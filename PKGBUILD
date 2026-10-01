@@ -4,7 +4,7 @@
 pkgname='aimp-skin-siren'
 pkgdesc='AIMP skin: Siren 1.0 (by MaxAx)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('97850e26f6678800871d425d306230fd6e845a952fecef09c8d42b41c84e15c5')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Siren"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-siren-712.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
