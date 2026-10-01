@@ -1,10 +1,10 @@
 # Maintainer: robertfoster
 
 pkgname=yap-git
-pkgver=1.21.r0.0458838
+pkgver=v2.6.3.r3.5117614
 pkgrel=1
 pkgdesc="Package software with ease"
-arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'x86_64')
 url="https://github.com/M0Rf30/yap"
 license=('GPL-3.0-only')
 provides=("${pkgname%-git}")
