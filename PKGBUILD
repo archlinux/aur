@@ -4,7 +4,7 @@
 pkgname='aimp-skin-saturn-202s-2-light'
 pkgdesc='AIMP skin: САТУРН 202С-2 (Light) 3.0 (by Пупс)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('af64142c74e98390aa97f37e3449df7900328585c45b76e5536ec106f0da6d7d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/САТУРН 202С-2 (Light)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-saturn-202s-2-light-827.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
