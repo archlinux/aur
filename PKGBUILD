@@ -4,7 +4,7 @@
 pkgname='aimp-skin-pioneer-ct-a9d-4k'
 pkgdesc='AIMP skin: Pioneer CT-A9D 4K 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('79b9192b656433064a8d43cf019eb072e226387158ee86521d2252ef91b71f86')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Pioneer CT-A9D 4K"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-pioneer-ct-a9d-4k-1342.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
