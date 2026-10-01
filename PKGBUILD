@@ -4,7 +4,7 @@
 pkgname='aimp-skin-luminescence-440'
 pkgdesc='AIMP skin: Luminescence 1.0 (by ELECTRON!CK)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('fcd3e261d1fa10a3625a42063136e567daa9af13e2f66a5df6f6421df5a9d66c')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Luminescence (440)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-luminescence-440-440.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
