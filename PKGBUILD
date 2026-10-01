@@ -12,7 +12,7 @@ conflicts=('open-pencil')
 source=("${pkgname}-${pkgver}.deb::https://github.com/open-pencil/open-pencil/releases/download/v${pkgver}/OpenPencil_${pkgver}_amd64.deb"
         "LICENSE::https://raw.githubusercontent.com/open-pencil/open-pencil/v${pkgver}/LICENSE")
 sha256sums=('20fead42815b6d2a7854b688913becbba5e1ce2a7efb2c6e0a0e2340014571f8'
-            '144ecf9417a43cca1cc2096acbac8b00beff9210191504709d586bf7552dcfa2')
+            '38ac54d3b48ccb6b3c0044b37bec1d75c21c3dc38b34a5a8c52a3cea34ba514b')
 options=('!strip')
 
 package() {
