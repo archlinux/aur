@@ -4,7 +4,7 @@
 pkgname='aimp-skin-synthetic-rmx'
 pkgdesc='AIMP skin: Synthetic RMX 1.0 (by AngelAG)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d4788109f7d887e63c47a11aa6776d41ea2f191eaeae67e7928cade411ed6799')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Synthetic RMX"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-synthetic-rmx-474.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
