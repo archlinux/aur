@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-windows-media-player-12-beta-x
 	pkgdesc = AIMP skin: Windows Media Player 12 Beta X 1.0 (by memo-se)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
