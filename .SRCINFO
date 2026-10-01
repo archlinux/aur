@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-darlue
+	pkgdesc = AIMP skin: Darlue 1.0 (by McZloy)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-darlue-445.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-darlue-445.archive::https://aimp.ru/?do=catalog.download&id=445
+	sha256sums = fc70f6bb053864b91393b1eb3062f6e67b9f32bc9728b4a053dd01335e47d2f7
+
+pkgname = aimp-skin-darlue
