@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-tinki
+	pkgdesc = AIMP skin: Tinki 1.0 (by varlesh)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-tinki-465.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-tinki-465.archive::https://aimp.ru/?do=catalog.download&id=465
+	sha256sums = cea6d8086f5205ba07aa2a3dded7814ca91e7e0f539f5e1082a50fd880f51fbd
+
+pkgname = aimp-skin-tinki
