@@ -1,6 +1,6 @@
 pkgbase = chroncal
 	pkgdesc = Terminal-first calendar, todo, and journal manager
-	pkgver = 0.12.2
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/DouglasdeMoura/chroncal
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = chroncal
 	conflicts = chroncal
 	provides = chroncal
 	
-	source = chroncal_0.12.2.tar.gz::https://github.com/DouglasdeMoura/chroncal/releases/download/v0.12.2/chroncal-0.12.2.tar.gz
-	sha256sums = 4a0bb4f1f1019066eaddd7991117c37a73d5921adeaa8f56f9189a0ad5bdbb92
+	source = chroncal_0.13.0.tar.gz::https://github.com/DouglasdeMoura/chroncal/releases/download/v0.13.0/chroncal-0.13.0.tar.gz
+	sha256sums = 51d010c953d07a9e3801fddcd104d6ffdfcf34aea147b47f7fdfba2040bf64b7
 	
 pkgname = chroncal
