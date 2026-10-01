@@ -4,7 +4,7 @@
 pkgname='aimp-skin-sony-tc-fx7'
 pkgdesc='AIMP skin: Sony TC-FX7 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('4a7685e6e924a20755c863712f0ab6b229465a241c42a6ab7fd856a0a933ad51')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Sony TC-FX7"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-sony-tc-fx7-561.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
