@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-office-2016
+	pkgdesc = AIMP skin: Office 2016 1.0 (by laziem)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-office-2016-1052.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-office-2016-1052.archive::https://aimp.ru/?do=catalog.download&id=1052
+	sha256sums = f5116fa2320180673d9b92f0f950bfbcc3ea268202f4f219b7312c67f1769569
+
+pkgname = aimp-skin-office-2016
