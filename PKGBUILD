@@ -4,7 +4,7 @@
 pkgname='aimp-skin-dual-c-846-4k'
 pkgdesc='AIMP skin: Dual C 846 4K 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d594ec6e76c51ee68bc55d811789d7b33eee11329e7df49f4eb3d9361d1248f1')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Dual C 846 4K"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-dual-c-846-4k-1358.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
