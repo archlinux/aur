@@ -1,0 +1,15 @@
+pkgbase = obs-studio-appimage
+	pkgdesc = OBS-Studio package based on AppImage
+	pkgver = 32.2.2
+	pkgrel = 2.6
+	url = https://github.com/ivan-hc/OBS-Studio-appimage
+	arch = x86_64
+	license = GPL-3.0-or-later
+	optdepends = xdg-utils
+	options = !strip
+	source = OBS-Studio_32.2.2-2.6-archimage5.0-full-x86_64.AppImage ::https://github.com/ivan-hc/OBS-Studio-appimage/releases/download/continuous/OBS-Studio_32.2.2-2.6-archimage5.0-full-x86_64.AppImage
+	source = LICENSE::https://www.gnu.org/licenses/gpl-3.0.txt
+	sha256sums = 0fb1b43ccbb94cacbe453fe85a20147e4d95654d3095197100b039c019ed6430
+	sha256sums = SKIP
+
+pkgname = obs-studio-appimage
