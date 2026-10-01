@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-amazonite-with-run-string
 	pkgdesc = AIMP skin: Amazonite (with run string) 1.0 (by Zhenya)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
