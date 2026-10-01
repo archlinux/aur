@@ -4,7 +4,7 @@
 pkgname='aimp-skin-office-2016'
 pkgdesc='AIMP skin: Office 2016 1.0 (by laziem)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f5116fa2320180673d9b92f0f950bfbcc3ea268202f4f219b7312c67f1769569')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Office 2016"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-office-2016-1052.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
