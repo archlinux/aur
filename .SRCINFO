@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-singularity
+	pkgdesc = AIMP skin: Singularity 1.0 (by umbrella-cakey)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-singularity-1222.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-singularity-1222.archive::https://aimp.ru/?do=catalog.download&id=1222
+	sha256sums = c10d11a5622a95a9cdc7c251abc0fd47bd6fb3e50451cc8dbf099752c25a4a3c
+
+pkgname = aimp-skin-singularity
