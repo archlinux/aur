@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-mmd3-678
+	pkgdesc = AIMP skin: MMD3 2.5 (by memo-se)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-mmd3-678-678.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-mmd3-678-678.archive::https://aimp.ru/?do=catalog.download&id=678
+	sha256sums = 9ca1f21c5474c82a8413e83bc6e979f6a67c233f39d0c1deee558087335d44c3
+
+pkgname = aimp-skin-mmd3-678
