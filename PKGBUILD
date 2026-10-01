@@ -4,7 +4,7 @@
 pkgname='aimp-skin-nvidia'
 pkgdesc='AIMP skin: NVIDIA 1.0 (by sagitt.67)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('08c390119e296cd8f072e77c88d95e771bdc6eac419fa4fbd1600f1b9e184d82')
 
 package() {
-  local dest="$pkgdir$_skinsdir/NVIDIA"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-nvidia-425.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
