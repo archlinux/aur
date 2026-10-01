@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-army
+	pkgdesc = AIMP skin: ARMY 1.0 (by sagitt.67)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-army-300.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-army-300.archive::https://aimp.ru/?do=catalog.download&id=300
+	sha256sums = 811e5e07f27f478740a433a8a1845511b5bfb39223f5b6c9ff9c614e2f3a5eb4
+
+pkgname = aimp-skin-army
