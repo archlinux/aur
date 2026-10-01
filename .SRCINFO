@@ -1,0 +1,11 @@
+pkgbase = ttf-instrument-sans
+	pkgdesc = Instrument Sans, a variable sans-serif designed for the Instrument brand, and open-sourced for you on google fonts.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Instrument/instrument-sans
+	arch = any
+	license = OFL-1.1
+	source = ttf-instrument-sans-7fa22308a3d0c94ee2b3cd537a1196b65db34a3e.tar.gz::https://github.com/Instrument/instrument-sans/archive/7fa22308a3d0c94ee2b3cd537a1196b65db34a3e.tar.gz
+	sha256sums = 91cd1a95a15ca4fcac656b816b95d41edcae1c60c43aded5f8b0fbd3f5fa0286
+
+pkgname = ttf-instrument-sans
