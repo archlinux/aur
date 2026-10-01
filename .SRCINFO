@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-silica
 	pkgdesc = AIMP skin: Silica 1.1 (by Phyksar)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

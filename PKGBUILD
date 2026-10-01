@@ -4,7 +4,7 @@
 pkgname='aimp-skin-silica'
 pkgdesc='AIMP skin: Silica 1.1 (by Phyksar)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('03eecf1ca6fa3e9ab534be4b3363bd67e999fdf118584d3a552ec9defe3c6834')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Silica"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-silica-490.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
