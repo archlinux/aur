@@ -4,7 +4,7 @@
 pkgname='aimp-skin-abp-white'
 pkgdesc='AIMP skin: ABP White 1.2 (by ZeoN7)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('171a3a1ebe2254a9cbf1108c0435b4f6f10e5be18477748f6abda4b12f63d9d4')
 
 package() {
-  local dest="$pkgdir$_skinsdir/ABP White"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-abp-white-240.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
