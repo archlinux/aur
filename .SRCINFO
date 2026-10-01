@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-classicstyle
+	pkgdesc = AIMP skin: ClassicStyle 3.5.16 (by Soolo)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-classicstyle-157.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-classicstyle-157.archive::https://aimp.ru/?do=catalog.download&id=157
+	sha256sums = 1b12ac7c983df3240e6215f3434b678f04c0605359e631b7a32f6eb010462759
+
+pkgname = aimp-skin-classicstyle
