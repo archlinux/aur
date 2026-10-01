@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-zelon
+	pkgdesc = AIMP skin: Zelon 1.0 (by -=Lee=-)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-zelon-568.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-zelon-568.archive::https://aimp.ru/?do=catalog.download&id=568
+	sha256sums = 4db14ee55906ff655b03106fff44d2d5c73f0e0e311a53c7f44902f6581b5405
+
+pkgname = aimp-skin-zelon
