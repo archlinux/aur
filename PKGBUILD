@@ -1,10 +1,10 @@
 pkgname=radiodyplom-bridge-bin
 pkgver=0.1.33
-pkgrel=2
+pkgrel=3
 pkgdesc='Bridge between amateur radio logging software and radiodyplom.pl'
 arch=('x86_64')
 url='https://github.com/sq8bwm/radiodyplom-bridge'
-license=('unknown')
+license=('GPL-3.0-or-later')
 depends=('glibc' 'gtk3' 'libxss' 'libxtst' 'nss')
 options=('!strip')
 source_x86_64=(
