@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-revox-b-77-mkiii-4k
+	pkgdesc = AIMP skin: ReVox B 77 MKIII 4K 1.0 (by Black_AVP)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-revox-b-77-mkiii-4k-1349.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-revox-b-77-mkiii-4k-1349.archive::https://aimp.ru/?do=catalog.download&id=1349
+	sha256sums = a0abf9546a687fb99c4150ec9df379795fec6522be92b9979109e2c28cfc7455
+
+pkgname = aimp-skin-revox-b-77-mkiii-4k
