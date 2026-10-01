@@ -4,7 +4,7 @@
 pkgname='aimp-skin-onkyo-ta-2250-and-onkyo-m-5030'
 pkgdesc='AIMP skin: Onkyo TA-2250 & Onkyo M-5030 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c58be0fac6a6806a108006760372ff4059e4022fac9108b0cbce43200bd431d1')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Onkyo TA-2250 & Onkyo M-5030"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-onkyo-ta-2250-and-onkyo-m-5030-822.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
