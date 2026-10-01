@@ -1,6 +1,6 @@
 pkgbase = sloth-clash-bin
 	pkgdesc = Clash Meta (Mihomo) desktop client (binary release)
-	pkgver = 0.9.3
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://github.com/Nemu-x/SlothClash
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = sloth-clash-bin
 	provides = sloth-clash
 	conflicts = sloth-clash
 	options = !strip
-	source = sloth-clash.desktop-v0.9.3::https://raw.githubusercontent.com/Nemu-x/SlothClash/v0.9.3/apps/sloth-clash-desktop/build/linux/sloth-clash.desktop
-	source = sloth-clash-icon-v0.9.3.png::https://raw.githubusercontent.com/Nemu-x/SlothClash/v0.9.3/docs/readmelogo.png
+	source = sloth-clash.desktop-v0.9.4::https://raw.githubusercontent.com/Nemu-x/SlothClash/v0.9.4/apps/sloth-clash-desktop/build/linux/sloth-clash.desktop
+	source = sloth-clash-icon-v0.9.4.png::https://raw.githubusercontent.com/Nemu-x/SlothClash/v0.9.4/docs/readmelogo.png
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = sloth-clash-v0.9.3-x86_64.tar.gz::https://github.com/Nemu-x/SlothClash/releases/download/v0.9.3/sloth-clash-linux-amd64.tar.gz
-	sha256sums_x86_64 = 1453996a3b3188a0fa3d593e47dfcabd7a341385ff59620dfeb63a530ec9f339
-	source_aarch64 = sloth-clash-v0.9.3-aarch64.tar.gz::https://github.com/Nemu-x/SlothClash/releases/download/v0.9.3/sloth-clash-linux-arm64.tar.gz
-	sha256sums_aarch64 = b268207b064c25f3375a9e77a5a44d8ecbb2867c6b8b441d330cbe5bdddfc008
+	source_x86_64 = sloth-clash-v0.9.4-x86_64.tar.gz::https://github.com/Nemu-x/SlothClash/releases/download/v0.9.4/sloth-clash-linux-amd64.tar.gz
+	sha256sums_x86_64 = 455b84f13c1bff440dd774de00b5de2cfeb68429eebe5364357be953de58497e
+	source_aarch64 = sloth-clash-v0.9.4-aarch64.tar.gz::https://github.com/Nemu-x/SlothClash/releases/download/v0.9.4/sloth-clash-linux-arm64.tar.gz
+	sha256sums_aarch64 = 2b122215e86708690fddaa52102cee86f9c8418aae1017f13647b12bfb4d6362
 
 pkgname = sloth-clash-bin
