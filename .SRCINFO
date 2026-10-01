@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-yandeks-muzyka
+	pkgdesc = AIMP skin: Яндекс.Музыка 4.0.5 (by Soolo)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-yandeks-muzyka-648.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-yandeks-muzyka-648.archive::https://aimp.ru/?do=catalog.download&id=648
+	sha256sums = a96590aaf1c1d2889b94b263a9e61822f90ecca048059fcd58aedc042f706b5f
+
+pkgname = aimp-skin-yandeks-muzyka
