@@ -4,7 +4,7 @@
 pkgname='aimp-skin-sony-tc-rx80-and-sony-ta-n77es'
 pkgdesc='AIMP skin: Sony TC-RX80 & Sony TA-N77ES 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('233f25d0ad029f2ccef2d7662686c70250d1c83e6385842f8bce6aabbda92e4f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Sony TC-RX80 & Sony TA-N77ES"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-sony-tc-rx80-and-sony-ta-n77es-830.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

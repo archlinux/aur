@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-sony-tc-rx80-and-sony-ta-n77es
 	pkgdesc = AIMP skin: Sony TC-RX80 & Sony TA-N77ES 1.0 (by Black_AVP)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
