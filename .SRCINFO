@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-xenomorph
+	pkgdesc = AIMP skin: XenoMorph 1.0 (by Imperator3)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-xenomorph-13.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-xenomorph-13.archive::https://aimp.ru/?do=catalog.download&id=13
+	sha256sums = d7c3b706e60a4d802e021c2e6478c44985d48f03c6f34ea7cd052a6b270b4a6e
+
+pkgname = aimp-skin-xenomorph
