@@ -4,7 +4,7 @@
 pkgname='aimp-skin-kometa-225'
 pkgdesc='AIMP skin: KOMETA 225 1.07 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d3ff049fd198fca362eeb1603fdfc9d5427c023ddccce37af6f4c8af6f3548bc')
 
 package() {
-  local dest="$pkgdir$_skinsdir/KOMETA 225"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-kometa-225-1284.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
