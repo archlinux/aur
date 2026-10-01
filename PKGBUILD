@@ -4,7 +4,7 @@
 pkgname='aimp-skin-platitude'
 pkgdesc='AIMP skin: Platitude 1.0 (by kestiq)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('5773a303fd8e08fc28e6fa309a440be52a8040c996e3b86d0f8b22bcfcc714d0')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Platitude"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-platitude-409.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
