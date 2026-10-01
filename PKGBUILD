@@ -4,7 +4,7 @@
 pkgname='aimp-skin-reflex'
 pkgdesc='AIMP skin: Reflex 2.4 (by Sergio7786)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('69d34ab7a350432d2fa1c768928ef4b93ff3536b33098f8358a04c0b893cca0d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Reflex"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-reflex-536.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
