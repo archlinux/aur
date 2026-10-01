@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-mess
+	pkgdesc = AIMP skin: MESS 1.1 (by ZeoN7)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-mess-329.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-mess-329.archive::https://aimp.ru/?do=catalog.download&id=329
+	sha256sums = 5e29bc12de9419d61f3fba7bd869b9f4632a9d3bb89091279a52a09c9c0e164b
+
+pkgname = aimp-skin-mess
