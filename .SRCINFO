@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-qodux
+	pkgdesc = AIMP skin: Qodux 3.1 (by Starkad)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-qodux-694.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-qodux-694.archive::https://aimp.ru/?do=catalog.download&id=694
+	sha256sums = aa45c9895b3a549682e89da96612976178dc0400b71b7c78085a465509543451
+
+pkgname = aimp-skin-qodux
