@@ -1,6 +1,6 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=paseo-desktop-git
-pkgver=0.11.0.beta.1.r3.ge10f6d2e2
+pkgver=0.11.0.beta.2.r1.gb5b43edd6
 pkgrel=2
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents. (git - built from main)"
 arch=('x86_64')
