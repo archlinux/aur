@@ -2,14 +2,15 @@
 
 pkgname=websocketd-git
 _gitpkg=websocketd
-pkgver=147.fbda5f2
+pkgver=.
 pkgrel=1
 pkgdesc="Like inetd, but for WebSockets. Turn any application that uses STDIO/STDOUT into a WebSocket server."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/joewalnes/websocketd"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('glibc')
 conflicts=('websocketd')
+provides=('websocketd')
 makedepends=('git' 'mercurial')
 source=('websocketd::git+https://github.com/joewalnes/websocketd.git')
 
@@ -18,7 +19,7 @@ build() {
   make
 }
 
-package(){
+package() {
   cd ${_gitpkg}
   install -Dm755 "${_gitpkg}" "${pkgdir}/usr/bin/${_gitpkg}"
 }
@@ -28,4 +29,4 @@ pkgver() {
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
-md5sums=('SKIP')
+sha256sums=('SKIP')
