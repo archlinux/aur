@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-new-vk
+	pkgdesc = AIMP skin: New.VK 1.61 (by danyBatinF1)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-new-vk-824.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-new-vk-824.archive::https://aimp.ru/?do=catalog.download&id=824
+	sha256sums = ffe2059e1408bad02831b734e8764e2ac04a53461d67847954c90d6b6b755a65
+
+pkgname = aimp-skin-new-vk
