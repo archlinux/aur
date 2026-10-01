@@ -18,7 +18,7 @@ provides=('portageq')
 install=aura-emerge.install
 backup=('etc/portage/world')
 source=("$pkgname::git+https://github.com/Undercat037/aura-emerge.git#tag=v$pkgver")
-sha256sums=('603b9cf787cc24ce51253815025cfd8702cd1861f576a05e70af7f5e763e9b36')
+sha256sums=('9d8b04a4b4fe9969611e077f1084712dcbc35be6971d52c62bf5fe6f8507077a')
 
 build() {
   cd "aura-emerge"
