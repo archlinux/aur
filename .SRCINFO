@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-nagra-snst
+	pkgdesc = AIMP skin: Nagra SNST 1.51 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-nagra-snst-894.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-nagra-snst-894.archive::https://aimp.ru/?do=catalog.download&id=894
+	sha256sums = 88398dd6e38206487a0d8800a6d25cd76832ac861043d7f095e790db1e0475bd
+
+pkgname = aimp-skin-nagra-snst
