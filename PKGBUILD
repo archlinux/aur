@@ -1,7 +1,7 @@
 # Maintainer: Hüseyn Teymurzade <https://github.com/Huseynteymurzade28>
 
 pkgname=pomtex
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="On-demand LaTeX: a portable TeX kernel that installs CTAN packages only when a document needs them"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gc' 'pcre2' 'openssl' 'zlib' 'xz')
 makedepends=('crystal')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e7a00346b3a19070bb97cb492e94ba6ba06db116c988f5c81f77135b6feae95b')
+sha256sums=('639d94ffb89d0ad2e45cdab75b77cbce0a83f0cecec5733238d0451260a2038d')
 
 build() {
   cd "$pkgname-$pkgver"
