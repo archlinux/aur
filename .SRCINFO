@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-pioneer-ct-f1000
 	pkgdesc = AIMP skin: Pioneer CT-F1000 1.53 (by McClaud)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
