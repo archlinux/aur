@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-orbita-107s
+	pkgdesc = AIMP skin: ОРБИТА-107С 4.0 (by Пупс)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-orbita-107s-836.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-orbita-107s-836.archive::https://aimp.ru/?do=catalog.download&id=836
+	sha256sums = 24b7cd0ecafb696ec038f6605af7feae0d6d1e32a94693f93513fb90e83ef202
+
+pkgname = aimp-skin-orbita-107s
