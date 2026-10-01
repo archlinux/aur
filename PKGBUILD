@@ -4,7 +4,7 @@
 pkgname='aimp-skin-bloom'
 pkgdesc='AIMP skin: Bloom 1.0 (by Arindel)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('22ad80b9959d9c41374d4cbbd3d508a94a41cb642a255bdd869a07e2a3c2375c')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Bloom"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-bloom-401.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
