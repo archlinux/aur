@@ -57,3 +57,44 @@ maintenance: pkgver
 		echo '-----------------------------------------------------------------'; \
 		exit 1; \
 	fi
+
+.PHONY: ci/deps
+ci/deps:
+	@echo '============================================ CI: dependencies ==='
+	pacman -Syu --noconfirm git openssh
+
+# makepkg for no reason hard-forbids running as root. Kill me now.
+.PHONY: ci/user
+ci/user:
+	@echo '============================================ CI: builder user ==='
+	useradd -m -s /bin/bash builder
+	passwd -d builder
+	echo 'builder ALL=(ALL) ALL' >> /etc/sudoers
+	chown -R builder:builder -- "$$GITHUB_WORKSPACE"
+
+.PHONY: ci/ssh
+ci/ssh:
+	@echo '=========================================== CI: configure SSH ==='
+	mkdir -p /home/builder/.ssh/
+	echo 'StrictHostKeyChecking no' > /home/builder/.ssh/config
+	echo "$$SSH_KEY" > /home/builder/.ssh/id_ed25519
+	chown -R builder:builder /home/builder/.ssh
+	chmod 0600 /home/builder/.ssh/id_ed25519
+
+# See https://github.com/actions/checkout#push-a-commit-using-the-built-in-token
+.PHONY: ci/git
+ci/git:
+	@echo '=========================================== CI: configure git ==='
+	runuser -u builder -- git -C "$$GITHUB_WORKSPACE" config user.name "github-actions[bot]"
+	runuser -u builder -- git -C "$$GITHUB_WORKSPACE" config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+.PHONY: ci/setup
+ci/setup: ci/deps
+ci/setup: ci/user
+ci/setup: ci/ssh
+ci/setup: ci/git
+
+.PHONY: ci
+ci: ci/setup
+ci:
+	runuser -u builder -- $(MAKE) -C "$$GITHUB_WORKSPACE" maintenance
