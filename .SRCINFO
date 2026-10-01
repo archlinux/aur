@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-sports-orange
+	pkgdesc = AIMP skin: Sports Orange 1.02 (by FreeZeek)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-sports-orange-120.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-sports-orange-120.archive::https://aimp.ru/?do=catalog.download&id=120
+	sha256sums = 29b269b9dc9e9e9236557538c30466adb05be5a3fa8161f01c17e04e0eb86dc8
+
+pkgname = aimp-skin-sports-orange
