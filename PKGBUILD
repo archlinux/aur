@@ -4,10 +4,10 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ssl
-pkgver=0.7.0
+pkgver=0.7.0 # renovate: datasource=github-tags depName=savonet/ocaml-ssl
 pkgrel=1
 pkgdesc="OCaml SSL Library"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/savonet/ocaml-ssl"
 license=('custom')
 depends=('ocaml' 'openssl')

@@ -3,7 +3,6 @@ pkgbase = ocaml-ssl
 	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/savonet/ocaml-ssl
-	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = bubblewrap
