@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-4carpc
+	pkgdesc = AIMP skin: 4CarPC 1.1 (by dundel)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-4carpc-462.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-4carpc-462.archive::https://aimp.ru/?do=catalog.download&id=462
+	sha256sums = 0573675d6e8b25e79ecc788656ccfc0ff2d168ce2c72835a0b520bc9e68317cf
+
+pkgname = aimp-skin-4carpc
