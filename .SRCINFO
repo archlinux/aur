@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-koyna-sm
+	pkgdesc = AIMP skin: Koyna SM 1.0 (by samix)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-koyna-sm-904.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-koyna-sm-904.archive::https://aimp.ru/?do=catalog.download&id=904
+	sha256sums = 40286fe628d0586b97a25f2e09ec520f0476af915f47bf922de16d7dfa86415f
+
+pkgname = aimp-skin-koyna-sm
