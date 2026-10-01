@@ -3,16 +3,16 @@ pkgbase = ocaml-lame-git
 	pkgver = r85.5ed5784
 	pkgrel = 1
 	url = https://github.com/savonet/ocaml-lame
-	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = dune
 	depends = ocaml
 	depends = lame
+	provides = ocaml-lame
+	conflicts = ocaml-lame
 	options = !strip
 	options = !makeflags
 	source = ocaml-lame-git::git+https://github.com/savonet/ocaml-lame
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ocaml-lame-git
-
