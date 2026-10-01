@@ -8,7 +8,6 @@ pkgbase = pgschema
 	license = Apache-2.0
 	makedepends = go
 	depends = glibc
-	provides = pgschema
 	conflicts = pgschema-bin
 	source = pgschema-1.13.1.tar.gz::https://github.com/pgplex/pgschema/archive/v1.13.1.tar.gz
 	sha256sums = b1b94cee2fb258565d25dfd06abfddbaabcb49dc9c32ce9207434ad4185149b3

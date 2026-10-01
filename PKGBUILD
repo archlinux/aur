@@ -8,7 +8,6 @@ url='https://github.com/pgplex/pgschema'
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
-provides=('pgschema')
 conflicts=('pgschema-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('b1b94cee2fb258565d25dfd06abfddbaabcb49dc9c32ce9207434ad4185149b3')
