@@ -4,7 +4,7 @@
 pkgname='aimp-skin-experience-visual'
 pkgdesc='AIMP skin: Experience (+Visual) 1.82 (by Tarik)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('7bb4f5adcd8a67125603ab16470d7e01c86b2a4d51105516bd085627a9ab41c3')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Experience (+Visual)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-experience-visual-186.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
