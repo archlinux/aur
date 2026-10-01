@@ -4,7 +4,7 @@
 pkgname='aimp-skin-abp-black'
 pkgdesc='AIMP skin: ABP Black 1.3 (by ZeoN7)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f160cfe02fee2e409063e815c5de4aee28e3fda10b9e331ddd76d72f91d78c3c')
 
 package() {
-  local dest="$pkgdir$_skinsdir/ABP Black"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-abp-black-241.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

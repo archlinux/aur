@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-abp-black
 	pkgdesc = AIMP skin: ABP Black 1.3 (by ZeoN7)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
