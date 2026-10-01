@@ -4,7 +4,7 @@
 pkgname='aimp-skin-nefarious'
 pkgdesc='AIMP skin: Nefarious 1.0 (by nofx1994)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('eb8f09f04969228848f831f7ca6421fb9d39beeb2571f6908a9f78c5ffc1371d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Nefarious"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-nefarious-520.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
