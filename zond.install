@@ -1,0 +1,24 @@
+# Grants zond the capabilities SYN scanning and ARP discovery need, so they run
+# without sudo, as the Debian and Fedora packages do. pacman drops file
+# capabilities whenever it replaces the binary, so an upgrade grants them again.
+
+_grant() {
+  local binary=/usr/bin/zond capabilities=cap_net_raw,cap_net_admin+eip bounding
+  # A kernel whose bounding set lacks CAP_NET_ADMIN refuses to start a binary
+  # that asks for it, so ask for raw sockets alone there.
+  bounding=$(awk '/^CapBnd:/ { print $2 }' /proc/self/status 2>/dev/null)
+  if [ -n "$bounding" ] && [ "$(( 0x$bounding >> 12 & 1 ))" -eq 0 ]; then
+    capabilities=cap_net_raw+eip
+  fi
+  if ! setcap "$capabilities" "$binary"; then
+    echo "zond: could not grant capabilities to $binary; scans need 'sudo zond'." >&2
+  fi
+}
+
+post_install() {
+  _grant
+}
+
+post_upgrade() {
+  _grant
+}
