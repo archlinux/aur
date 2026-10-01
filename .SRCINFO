@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-quiant
+	pkgdesc = AIMP skin: Quiant 1.0 (by NikolavRj)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-quiant-550.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-quiant-550.archive::https://aimp.ru/?do=catalog.download&id=550
+	sha256sums = 9226987edf8b9eb0048ed081bcfc7cf8d2c14e4ab8407f7e1b1425b75b81a40e
+
+pkgname = aimp-skin-quiant
