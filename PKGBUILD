@@ -2,7 +2,7 @@
 
 pkgname=schale-pick-bin
 _pkgname=schale-pick
-pkgver=0.1.1
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Your terminal, your Memorial Lobby. Pick a student from the full Kivotos roster and make them your fastfetch portrait."
 arch=('x86_64' 'aarch64')
