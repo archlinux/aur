@@ -3,7 +3,7 @@
 # Contributor: Andrew Stubbs <andrew.stubbs at gmail dot com>
 
 pkgname=mimic1
-pkgver=1.3.0.1
+pkgver=1.3.0.1 # renovate: datasource=github-tags depName=MycroftAI/mimic1
 pkgrel=1
 pkgdesc="Text-to-speech voice synthesis from the Mycroft project."
 arch=(x86_64)
