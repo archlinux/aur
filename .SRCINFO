@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-denon-classic-style
+	pkgdesc = AIMP skin: Denon Classic Style 5.1 (by Black_AVP)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-denon-classic-style-417.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-denon-classic-style-417.archive::https://aimp.ru/?do=catalog.download&id=417
+	sha256sums = a946f481fe7a462a91e3fce9ea1e99941d42981a67a09b1cf9d178c0144c5b4a
+
+pkgname = aimp-skin-denon-classic-style
