@@ -4,7 +4,7 @@
 pkgname='aimp-skin-karo-block-kletka'
 pkgdesc='AIMP skin: Karo Block (Kletka) 3 (by becon)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('9abc8ac3b3b8c54a6c8ebe8f69156918ea19803dcc8d8348399963a6dfb48a3d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Karo Block (Kletka)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-karo-block-kletka-255.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
