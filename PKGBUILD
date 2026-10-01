@@ -1,18 +1,18 @@
 # Maintainer: robertfoster
 
 pkgname=iio-sensor-proxy-git
-pkgver=3.3.r28.e4f0e05
+pkgver=3.9.r0.0085ddf
 pkgrel=1
 pkgdesc="IIO accelerometer sensor to input device proxy"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://gitlab.freedesktop.org/hadess/iio-sensor-proxy"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 provides=('iio-sensor-proxy')
 conflicts=('iio-sensor-proxy')
 depends=('libgudev' 'gtk3' 'polkit' 'systemd')
 makedepends=('git' 'meson')
 source=("git+${url}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%%-git}"
@@ -26,7 +26,7 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname%%-git}/build
+  cd "${pkgname%%-git}/build"
 
   arch-meson .. \
     -Dsystemdsystemunitdir=/usr/lib/systemd/system \
@@ -37,7 +37,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname%%-git}/build
+  cd "${pkgname%%-git}/build"
 
   DESTDIR="${pkgdir}" ninja install
 }
