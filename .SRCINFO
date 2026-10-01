@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-minimal-colorize
+	pkgdesc = AIMP skin: Minimal Colorize 1.2 (by ruSS)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-minimal-colorize-503.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-minimal-colorize-503.archive::https://aimp.ru/?do=catalog.download&id=503
+	sha256sums = a75058c37731c2d20c81de5ed982bdf387f34065a3e654b550b29415783e160a
+
+pkgname = aimp-skin-minimal-colorize
