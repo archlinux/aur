@@ -8,7 +8,7 @@ pkgbase = python-flask-themes2
 	makedepends = python-setuptools
 	depends = python-flask
 	depends = python-simplejson
-	source = https://files.pythonhosted.org/packages/a9/51/5cbc31456eb182d507476331c66ddf866eea412baa2ea527991bd008c2eb/Flask-Themes2-1.0.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/F/Flask-Themes2/Flask-Themes2-1.0.1.tar.gz
 	sha256sums = 82c3204105e38437d04619bb1f4901cbc8cac5def9598f8f84747a464fcf50fb
 
 pkgname = python-flask-themes2
