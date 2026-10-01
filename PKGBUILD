@@ -4,7 +4,7 @@
 pkgname='aimp-skin-frost'
 pkgdesc='AIMP skin: Frost 1.1 (by Houdini)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('610bfda651269c8d88ddd621cd2e8a6bde23b1a897aa2fb77f5e8c071796b5be')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Frost"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-frost-502.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
