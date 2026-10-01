@@ -1,0 +1,5 @@
+[gitst-bin]
+source = "github"
+github = "dfallman/gitst"
+use_latest_release = true
+prefix = ""

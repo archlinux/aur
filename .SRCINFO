@@ -1,0 +1,20 @@
+pkgbase = gitst-bin
+	pkgdesc = Real-time, glanceable interactive git status for the terminal
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/dfallman/gitst
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = git
+	provides = gitst
+	conflicts = gitst
+	options = !strip
+	source_x86_64 = gitst-x86_64-0.1.6.tgz::https://github.com/dfallman/gitst/releases/download/0.1.6/gitst-0.1.6-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 83777edff260d09444a1bb192c4977760adc892f1b9fc8f36c47e9b8899c13b8
+	source_aarch64 = gitst-aarch64-0.1.6.tgz::https://github.com/dfallman/gitst/releases/download/0.1.6/gitst-0.1.6-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 404fdd5daec70ca4bf50bc117f3f41c2b22ada3b4dc98034975bd9b75f7b252c
+
+pkgname = gitst-bin
