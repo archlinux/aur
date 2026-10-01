@@ -1,0 +1,9 @@
+post_install() {
+  echo "To make Ariadne your file manager, run 'ariadne --make-default' as your user,"
+  echo "or choose 'Make Default File Manager…' in its menu."
+}
+
+post_upgrade() {
+  echo "An Ariadne running in the background switches to the new version by itself"
+  echo "once none of its windows are open."
+}
