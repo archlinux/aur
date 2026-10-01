@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-nova
+	pkgdesc = AIMP skin: Nova 1.0 (by Demcha)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-nova-475.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-nova-475.archive::https://aimp.ru/?do=catalog.download&id=475
+	sha256sums = 0a7e46cc3664d47ba4afe3bbd31214e5b2881f8f287873ad683b18822ca0d88d
+
+pkgname = aimp-skin-nova
