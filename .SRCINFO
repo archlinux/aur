@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-lp
+	pkgdesc = AIMP skin: LP 1.0 (by Loran)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-lp-368.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-lp-368.archive::https://aimp.ru/?do=catalog.download&id=368
+	sha256sums = 6a9ed890594905834a9793cbe00db07dd1b85091962ab0bd48fcc8b4f8ade09d
+
+pkgname = aimp-skin-lp
