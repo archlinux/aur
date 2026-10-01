@@ -4,7 +4,7 @@
 pkgname='aimp-skin-technique'
 pkgdesc='AIMP skin: Technique 1.3 (by bescheidener)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c061e2bbca00c840250f7a1e4aa1cff694494bc2083d914a47e6102c3a34e07f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Technique"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-technique-270.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
