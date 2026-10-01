@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-matto
+	pkgdesc = AIMP skin: Matto 1.4 (by Helen "Tayola" Schwieger)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-matto-860.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-matto-860.archive::https://aimp.ru/?do=catalog.download&id=860
+	sha256sums = 0d9adeac6a212ca1707545e11caa9b4c55c5f0cb8fa606b43397247b2d95f05f
+
+pkgname = aimp-skin-matto
