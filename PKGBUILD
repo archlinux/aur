@@ -1,9 +1,9 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=agent-browser-bin
-pkgver=0.38.1
-pkgrel=2
-_commit=aff6125c023b810ea3f2e5deec5379e9a4270bdc
+pkgver=0.38.2
+pkgrel=1
+_commit=39a74c70d7759d5a6de7a22c04570bb626bbd081
 pkgdesc="Fast browser automation CLI for AI agents (native binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/vercel-labs/agent-browser"
@@ -24,9 +24,9 @@ source=("agent-browser-${pkgver}-${_commit}.tar.gz::https://github.com/vercel-la
 source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/vercel-labs/agent-browser/releases/download/v${pkgver}/agent-browser-linux-x64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://github.com/vercel-labs/agent-browser/releases/download/v${pkgver}/agent-browser-linux-arm64")
 
-sha256sums=('ec9d69100e64727e0341951595253218753de29093885e807c8ef0725ddf21f2')
-sha256sums_x86_64=('5100149a1903211c889de4e545bf36d90803740cea4f99aa22651649f9205ea1')
-sha256sums_aarch64=('937b315ee0761e8a62f7950ddcfef9b3d3d8e8d5eb9c9d2bf9e23e5725664511')
+sha256sums=('f95f730316f2849fd62f41b2153f06fc6b78c76636270f98495c7e773ef77274')
+sha256sums_x86_64=('a54b765192db774666f0513fa8b545a298753b6f29e73bcdf4a1e78f18e7c0e1')
+sha256sums_aarch64=('690c02d952de8497bba4f8cc58b59acbf27dc27b346755869b518f4b411c7f40')
 
 package() {
     cd "agent-browser-${_commit}"
