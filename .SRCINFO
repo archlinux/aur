@@ -3,15 +3,15 @@ pkgbase = qviaggiatreno-git
 	pkgver = 14.f46278b
 	pkgrel = 1
 	url = http://www.solotreni.net
-	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	depends = qt5-base
 	depends = qt5-webkit
+	provides = qviaggiatreno
 	conflicts = qviaggiatreno-svn
+	conflicts = qviaggiatreno
 	replaces = qviaggiatreno-svn
 	source = qviaggiatreno::git+https://github.com/M0Rf30/qviaggiatreno
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = qviaggiatreno-git
-
