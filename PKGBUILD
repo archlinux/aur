@@ -6,7 +6,7 @@
 
 pkgname=ranger-git
 pkgver=1.9.3.994.g46e957af
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple, vim-like file manager"
 arch=('any')
 url="https://ranger.github.io/"
@@ -27,7 +27,8 @@ optdepends=('atool: for previews of archives'
             'sudo: to use the "run as root"-feature'
             'transmission-cli: for viewing bittorrent information'
             'ueberzugpp: for image previews (X11/Wayland)'
-            'w3m: for previews of images and html pages')
+            'w3m: for previews of images and html pages'
+            'xclip: for copying file paths to the X11 clipboard')
 provides=('ranger')
 conflicts=('ranger')
 source=("${pkgname}::git+https://github.com/ranger/ranger.git")

@@ -1,7 +1,7 @@
 pkgbase = ranger-git
 	pkgdesc = A simple, vim-like file manager
 	pkgver = 1.9.3.994.g46e957af
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ranger.github.io/
 	arch = any
 	license = GPL-3.0-or-later
@@ -23,6 +23,7 @@ pkgbase = ranger-git
 	optdepends = transmission-cli: for viewing bittorrent information
 	optdepends = ueberzugpp: for image previews (X11/Wayland)
 	optdepends = w3m: for previews of images and html pages
+	optdepends = xclip: for copying file paths to the X11 clipboard
 	provides = ranger
 	conflicts = ranger
 	source = ranger-git::git+https://github.com/ranger/ranger.git
