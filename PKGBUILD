@@ -4,7 +4,7 @@
 pkgname='aimp-skin-sprout-black'
 pkgdesc='AIMP skin: Sprout Black 1.2 (by Dead)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('2b2a01f6571afcff9162af7d7588069a7123f03cc6c15d027d6113c10db9b0b2')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Sprout Black"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-sprout-black-518.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
