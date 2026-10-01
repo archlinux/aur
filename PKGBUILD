@@ -1,6 +1,6 @@
 # Maintainer: Aria Vesta <dev@ariavesta.com>
 pkgname=botropolis
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Every Claude Code session on this machine, drawn as a city"
 arch=('x86_64' 'aarch64')
@@ -19,9 +19,14 @@ depends=('glibc' 'libgl' 'libx11' 'libxcursor' 'libxi' 'libxinerama' 'libxrandr'
 makedepends=('go')
 optdepends=('claude-code: the sessions botropolis draws and manages'
             'waybar: a status bar for `botropolis bar --watch`')
+# The debug package is 14 MB of DWARF with nothing to pair it against: debugedit
+# cannot read Go's DWARF 5 line tables ("Unsupported .debug_line directory 0 path
+# DW_FORM_0x8"), so makepkg collects no sources and /usr/src/debug comes out
+# empty. Stripping itself is fine and is left on.
+options=('!debug')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('327500ef882c4047c9544978f2b1bcb4bb95c88194f4d10654a862d91e4c0a4a')
+sha256sums=('937592759ed09a29f25f067c40805411c31bf1fbd19d544733ec677c409a65b4')
 
 build() {
     cd "${pkgname}-${pkgver}"
