@@ -1,21 +1,21 @@
-# Maintainer: Herbert Knapp <herbert.knapp@edu.uni-graz.at>
+# Maintainer: HMK
 pkgname=gtk-gnutella-git
-pkgver=1.2.3.r8.g0cbba2f8b
-pkgrel=3
-pkgdesc='Efficient Gnutella 2 client (latest git version)'
-arch=('i686' 'x86_64')
-url='http://gtk-gnutella.sourceforge.net/'
-license=('GPL-2.0-or-later')
-depends=('gtk2' 'desktop-file-utils')
+pkgver=1.3.1.r2.g3ce50bf0d
+pkgrel=1
+pkgdesc="Efficient Gnutella 2 client (latest git version)"
+arch=("i686" "x86_64")
+url="http://gtk-gnutella.sourceforge.net/"
+license=("GPL-2.0-or-later")
+depends=("gtk2" "desktop-file-utils")
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-replaces=()
+replaces=("gtk-gnutella")
 backup=()
-options=('!lto')
+options=("strip")
 install="${pkgname}.install"
 source=("${pkgname}.install" "${pkgname}::git+https://github.com/gtk-gnutella/gtk-gnutella.git#branch=devel")
-md5sums=('0b6211b511da48346cecdc1d2f963c76' 'SKIP')
+md5sums=("0b6211b511da48346cecdc1d2f963c76" "SKIP")
 
 pkgver() {
   cd ${pkgname}
@@ -24,10 +24,12 @@ pkgver() {
 
 build() {
   cd ${pkgname}
+  export CFLAGS="${CFLAGS} -std=gnu17"
   ./build.sh --cc=gcc --prefix=/usr
 }
 
 package() {
   cd ${pkgname}
   make install INSTALL_PREFIX="${pkgdir}/"
+  strip -s ${pkgdir}/usr/bin/gtk-gnutella
 }
