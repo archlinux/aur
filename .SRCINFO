@@ -4,11 +4,10 @@ pkgbase = python-pyelliptic
 	pkgrel = 2
 	url = https://github.com/radfish/pyelliptic
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python-setuptools
 	depends = openssl
 	source = https://github.com/radfish/pyelliptic/archive/2.0.1.tar.gz
 	sha256sums = 840ad6f5e79c633e1de79fb08be78bf76fe07a7f260905eea31efb5ddf00180d
 
 pkgname = python-pyelliptic
-
