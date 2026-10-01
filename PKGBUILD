@@ -7,7 +7,7 @@
 #   sha256sums 里的 PLACEHOLDER 必须在发布前替换，否则 makepkg 会校验失败 ✗（这是故意的 ✗ 防误发）
 pkgname=hov-qt
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Aggregated YouTube/Bilibili/NetEase/QQ Music client (Qt6 desktop)"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/HougeLangley/HyperOnlineVideo"
@@ -21,7 +21,7 @@ sha256sums=('b3b4d5650955382220a149c4d2e51a9ad7eca8f48373763ec38c9c9785ef245c')
 
 build() {
   cd "$srcdir/HyperOnlineVideo-$pkgver/desktop"
-  local optflags=()
+  local optflags=(-DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=lld)
   if [ "${HOV_OPTIMIZED:-0}" = "1" ]; then
     optflags+=(-DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DHOV_LTO=ON)
     prof="${HOV_PROFDATA:-/tmp/hovpgo/hov.profdata}"

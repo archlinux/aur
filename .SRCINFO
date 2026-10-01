@@ -1,7 +1,7 @@
 pkgbase = hov-qt
 	pkgdesc = Aggregated YouTube/Bilibili/NetEase/QQ Music client (Qt6 desktop)
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HougeLangley/HyperOnlineVideo
 	arch = x86_64
 	arch = aarch64
