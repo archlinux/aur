@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-light-out
 	pkgdesc = AIMP skin: Light Out 1.0.4 (by Aggro)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

@@ -4,7 +4,7 @@
 pkgname='aimp-skin-light-out'
 pkgdesc='AIMP skin: Light Out 1.0.4 (by Aggro)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('2ce2fff5dea44cdf64a8e804e8a80ffa4e50a7549f790e371a88af564bc382f0')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Light Out"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-light-out-494.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
