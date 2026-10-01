@@ -4,7 +4,7 @@
 pkgname='aimp-skin-bw-minimal'
 pkgdesc='AIMP skin: BW Minimal 1.0 (by shox)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('74c50d338e06245a6ddac26edfe28ed23f84772c09a5ae6fdb732a9707807957')
 
 package() {
-  local dest="$pkgdir$_skinsdir/BW Minimal"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-bw-minimal-3.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
