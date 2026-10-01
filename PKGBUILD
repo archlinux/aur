@@ -4,7 +4,7 @@
 pkgname='aimp-skin-revox-b-710'
 pkgdesc='AIMP skin: Revox B-710 1.51 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('5378ad1549857375483a8ce6500e65dd748d1c1bd32b93752e17d9dcf352c427')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Revox B-710"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-revox-b-710-575.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
