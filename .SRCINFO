@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-new-wave
+	pkgdesc = AIMP skin: New Wave 1.0 (by cuzmich)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-new-wave-232.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-new-wave-232.archive::https://aimp.ru/?do=catalog.download&id=232
+	sha256sums = c1363786187ade00d3f8a669e2e19d9387c519a62e6d115ecb3fe2b4780b9467
+
+pkgname = aimp-skin-new-wave
