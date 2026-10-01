@@ -12,6 +12,7 @@ pkgbase = pnpm-shell-completion
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	depends = glibc
 	depends = libgcc
 	source = pnpm-shell-completion-0.5.5.tar.gz::https://github.com/g-plane/pnpm-shell-completion/archive/refs/tags/v0.5.5.tar.gz
 	b2sums = b6a8006927862682a4758df67b635d84871a2dce65fb3a59dc7bcd33aebf22c052d9e5c79364851e274272609e36208135b6c4a36a5b0a02cddb8e8228431830

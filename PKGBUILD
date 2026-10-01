@@ -11,7 +11,7 @@ url='https://github.com/g-plane/pnpm-shell-completion'
 arch=(aarch64 armv7h i486 i686 pentium4 riscv64 x86_64)
 license=('MIT')
 makedepends=('cargo')
-depends=('libgcc')
+depends=('glibc' 'libgcc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 b2sums=('b6a8006927862682a4758df67b635d84871a2dce65fb3a59dc7bcd33aebf22c052d9e5c79364851e274272609e36208135b6c4a36a5b0a02cddb8e8228431830')
 
