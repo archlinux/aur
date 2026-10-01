@@ -4,7 +4,7 @@
 pkgname='aimp-skin-aero-style'
 pkgdesc='AIMP skin: Aero Style 1.0 (by vid50)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f6e4790f3ad31e8e4db0e2f7c54217d73b39d97b5f7f7b8466d1ca77dfb3fde3')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Aero Style"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-aero-style-548.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

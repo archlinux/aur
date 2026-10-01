@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-aero-style
 	pkgdesc = AIMP skin: Aero Style 1.0 (by vid50)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
