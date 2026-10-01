@@ -6,7 +6,7 @@ arch=('x86_64')
 url='https://github.com/any-listen/any-listen-desktop'
 license=('custom:AGPL-3.0-based')
 
-_electron=electron43
+_electron=electron
 _srcdir="${pkgname}-${pkgver}"
 
 depends=(
