@@ -2,7 +2,7 @@
 # Maintainer: combor <163394+combor@users.noreply.github.com>
 
 pkgname='magnetowid-bin'
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Downloads movies and series from video-on-demand sites for Sonarr and Radarr.'
 url='https://github.com/combor/magnetowid'
@@ -11,19 +11,22 @@ license=('BSD-3-Clause')
 provides=('magnetowid')
 conflicts=('magnetowid')
 depends=('ca-certificates' 'ffmpeg')
+optdepends=('docker: VPN exits for region-locked sites')
 backup=('etc/magnetowid/magnetowid.env')
 install=magnetowid.install
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/combor/magnetowid/releases/download/v${pkgver}/magnetowid_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('8d7d8652d2feb99e6a8294fe7160c3d80ef2b9f19c3f57eb69d9f71ec7b78d1d')
+sha256sums_aarch64=('9e76fa4b7813fa1f2a6375e117b39ee1992233ae9c5257700ed7b775c9312457')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/combor/magnetowid/releases/download/v${pkgver}/magnetowid_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('d7593f7f546c2b90481d2b41f86f03418b825513c6ebdcac2b9ff2c5a359eaeb')
+sha256sums_x86_64=('8f8c1d41c9de4237ed1eaac36c7a8cd49979539e3849bd43037fe19bca720d7f')
 
 package() {
   install -Dm755 "./magnetowid" "${pkgdir}/usr/bin/magnetowid"
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/magnetowid-bin/LICENSE"
   install -Dm644 "./systemd/magnetowid.service" "${pkgdir}/usr/lib/systemd/system/magnetowid.service"
+  install -Dm644 "./systemd/magnetowid-vpn@.service" "${pkgdir}/usr/lib/systemd/system/magnetowid-vpn@.service"
   install -Dm644 "./systemd/magnetowid.sysusers" "${pkgdir}/usr/lib/sysusers.d/magnetowid.conf"
+  install -Dm644 "./systemd/vpn.env.example" "${pkgdir}/usr/share/magnetowid/vpn.env.example"
   install -Dm600 "./systemd/magnetowid.env" "${pkgdir}/etc/magnetowid/magnetowid.env"
 }
