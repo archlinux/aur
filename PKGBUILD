@@ -4,7 +4,7 @@
 pkgname='aimp-skin-flight'
 pkgdesc='AIMP skin: Flight 1.0 (by phoenix-i)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('4094e944997b2aefa0b6401dd8dc33e0147257cdce277c84bc1df46cbe37f9aa')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Flight"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-flight-506.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
