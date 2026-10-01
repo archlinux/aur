@@ -4,7 +4,7 @@
 pkgname='aimp-skin-newwave-puzzle'
 pkgdesc='AIMP skin: NewWave Puzzle 1.0 (by sergej.kachan.ss)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('0c0033a9b205e6858dffc38b2277bbc86922b969d762b5f1d9bea6f82eb47fb1')
 
 package() {
-  local dest="$pkgdir$_skinsdir/NewWave Puzzle"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-newwave-puzzle-541.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
