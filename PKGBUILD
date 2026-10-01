@@ -15,8 +15,8 @@ source_x86_64=("squawk::https://github.com/sbdchd/squawk/releases/download/v${pk
 source_aarch64=("squawk::https://github.com/sbdchd/squawk/releases/download/v${pkgver}/squawk-linux-musl-arm64")
 sha256sums=('23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3'
             'a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2')
-sha256sums_x86_64=('703d7e6137f6b73b385cdd5796c0dcbad5e48a09c414a24fd99f5df0ea5b796d')
-sha256sums_aarch64=('703d7e6137f6b73b385cdd5796c0dcbad5e48a09c414a24fd99f5df0ea5b796d')
+sha256sums_x86_64=('e403ec140fbd15d653763ed0e271a76ae512ad6f523f1b3168f134fdfe92c1dd')
+sha256sums_aarch64=('59e83fedf6993db755e1574285620268b799b51232204aff6cb99413ab53e9f2')
 
 package() {
     install -Dm755 "${srcdir}/squawk" "${pkgdir}/usr/bin/squawk"
