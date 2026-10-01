@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-beats-by-dr-dre
+	pkgdesc = AIMP skin: beats by dr. dre 1.1 (by ZeoN7)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-beats-by-dr-dre-324.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-beats-by-dr-dre-324.archive::https://aimp.ru/?do=catalog.download&id=324
+	sha256sums = fef29b8c25562bd02bcb54cc42d8f25d8a897e6cd298c8c2063463586e345756
+
+pkgname = aimp-skin-beats-by-dr-dre
