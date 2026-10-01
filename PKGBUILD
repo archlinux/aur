@@ -4,7 +4,7 @@
 pkgname='aimp-skin-obscuro'
 pkgdesc='AIMP skin: Obscuro 1.7 (by kestiq)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('4c78bfeb45656298ad5e167c8e9d20f3baba0f078f1e1bb92165b7fbaca95880')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Obscuro"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-obscuro-569.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
