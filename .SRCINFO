@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-legenda-404
+	pkgdesc = AIMP skin: Legenda-404 1.72 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-legenda-404-589.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-legenda-404-589.archive::https://aimp.ru/?do=catalog.download&id=589
+	sha256sums = 4fdc3caf891c8cf9c289047ae56e0c424e694bbdcaae7146810fc50681156de5
+
+pkgname = aimp-skin-legenda-404
