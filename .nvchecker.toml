@@ -1,0 +1,5 @@
+[calibraw-bin]
+source = "github"
+github = "Duecki1/CalibRaw"
+use_latest_release = true
+prefix = "v"
