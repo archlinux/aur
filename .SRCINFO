@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-element
+	pkgdesc = AIMP skin: Element 3 (by Henrique Oliveira)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-element-377.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-element-377.archive::https://aimp.ru/?do=catalog.download&id=377
+	sha256sums = c5fb6393c7cf5b1ece79aaf5806cc579e8251dee3f6a74539bda24f6e8da3b71
+
+pkgname = aimp-skin-element
