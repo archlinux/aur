@@ -4,7 +4,7 @@
 pkgname='aimp-skin-invi-pro'
 pkgdesc='AIMP skin: INVI Pro 1.5 (by Imperator3)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('b1f2fe5a449c46bd887574b65ab2ae8c0e09750b2c2f4c6d1120ee659b4ed4f5')
 
 package() {
-  local dest="$pkgdir$_skinsdir/INVI Pro"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-invi-pro-135.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
