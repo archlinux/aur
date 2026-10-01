@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-dot
+	pkgdesc = AIMP skin: DOT 1.0 (by ZeoN7)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-dot-370.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-dot-370.archive::https://aimp.ru/?do=catalog.download&id=370
+	sha256sums = 1257411d05616a9428aa26a556c188751883448ead9ce0bbd17e892b6e7e867a
+
+pkgname = aimp-skin-dot
