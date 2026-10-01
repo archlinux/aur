@@ -4,7 +4,7 @@
 pkgname='aimp-skin-mirillis-splash-x'
 pkgdesc='AIMP skin: Mirillis Splash x 3.5 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('ce8c452aa4eaf2bc57f3230ce6b3b0a22ce99e53a08c63c0ae466a5f293e6a0b')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Mirillis Splash x"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-mirillis-splash-x-1078.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
