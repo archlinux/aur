@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-greex
+	pkgdesc = AIMP skin: GREEX 2.0 (by HyperOne)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-greex-519.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-greex-519.archive::https://aimp.ru/?do=catalog.download&id=519
+	sha256sums = b468bad825694a110a7105d8e9a5992a550d2fc8aa4b48a143682fa7e9b6fd2e
+
+pkgname = aimp-skin-greex
