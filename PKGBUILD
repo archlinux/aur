@@ -4,7 +4,7 @@
 pkgname='aimp-skin-metro-x'
 pkgdesc='AIMP skin: Metro X 1.0 (by Your Creations)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('e71bd6f95bf0b1c3733f4abc64bba29e225be396704e287d569db01c0034a180')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Metro X"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-metro-x-501.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
