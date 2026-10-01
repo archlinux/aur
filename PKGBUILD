@@ -4,7 +4,7 @@
 pkgname='aimp-skin-lite-style'
 pkgdesc='AIMP skin: Lite Style 1.0 (by RESIN)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('aa8d12098a56be449a4ce7a1aabd3f77ab020b8d96957ffa784cccda7b6415c3')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Lite Style"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-lite-style-132.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
