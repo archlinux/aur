@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-fortuna
+	pkgdesc = AIMP skin: Fortuna 1.1 (by NikolavRj)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-fortuna-267.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-fortuna-267.archive::https://aimp.ru/?do=catalog.download&id=267
+	sha256sums = 5ebc46c12ecbe010fa1bd56c8b4abc4553d6979b7d6db1537e778ca1c9ab833c
+
+pkgname = aimp-skin-fortuna
