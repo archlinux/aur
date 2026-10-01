@@ -4,7 +4,7 @@
 pkgname='aimp-skin-dual-cc-8065-4k'
 pkgdesc='AIMP skin: Dual CC 8065 4K 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('5d32cd13353135bc8a306bdb3367120ed0d6cf667072f9d1e5b781602569219e')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Dual CC 8065 4K"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-dual-cc-8065-4k-1344.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
