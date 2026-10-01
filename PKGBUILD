@@ -2,7 +2,7 @@
 
 pkgname=perl-file-grep
 _realname=File-Grep
-pkgver=0.02
+pkgver=0.02 # renovate: datasource=cpan depName=File::Grep
 pkgrel=1
 pkgdesc="Find matches to a pattern in a series of files and related functions"
 arch=(any)
