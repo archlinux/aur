@@ -1,6 +1,6 @@
 # Maintainer: Alex Oleshkevich <alex.oleshkevich@gmail.com>
 pkgname=sqlalchemy-lsp
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Language server for SQLAlchemy and Alembic: diagnostics, completion, hover, navigation"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ conflicts=('sqlalchemy-lsp')
 
 source_x86_64=("${pkgname}-linux-x86_64::${url}/releases/download/v${pkgver}/sqlalchemy-lsp-linux-x86_64")
 source_aarch64=("${pkgname}-linux-aarch64::${url}/releases/download/v${pkgver}/sqlalchemy-lsp-linux-aarch64")
-sha256sums_x86_64=('04ca823510f3e0d217ef67773a57253e0b2c5e2139cdb54266d6ddd1c43f649c')
-sha256sums_aarch64=('27f33ebd3b6bb46d85dece6579318385cf746167a5afff1cdfeb1861c68a5643')
+sha256sums_x86_64=('cec51464cac19108819e8857903cdc5a41f476d3f7f23fa6f33a287991eda87b')
+sha256sums_aarch64=('e492dcaac61ca36d7eb4bfc711f03ec08dfd35bd6fcde1143d8abaea71808ae7')
 
 package() {
     case "$CARCH" in

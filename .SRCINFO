@@ -1,6 +1,6 @@
 pkgbase = sqlalchemy-lsp
 	pkgdesc = Language server for SQLAlchemy and Alembic: diagnostics, completion, hover, navigation
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/alex-oleshkevich/sqlalchemy-lsp
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = sqlalchemy-lsp
 	license = MIT
 	provides = sqlalchemy-lsp
 	conflicts = sqlalchemy-lsp
-	source_x86_64 = sqlalchemy-lsp-linux-x86_64::https://github.com/alex-oleshkevich/sqlalchemy-lsp/releases/download/v0.2.3/sqlalchemy-lsp-linux-x86_64
-	sha256sums_x86_64 = 04ca823510f3e0d217ef67773a57253e0b2c5e2139cdb54266d6ddd1c43f649c
-	source_aarch64 = sqlalchemy-lsp-linux-aarch64::https://github.com/alex-oleshkevich/sqlalchemy-lsp/releases/download/v0.2.3/sqlalchemy-lsp-linux-aarch64
-	sha256sums_aarch64 = 27f33ebd3b6bb46d85dece6579318385cf746167a5afff1cdfeb1861c68a5643
+	source_x86_64 = sqlalchemy-lsp-linux-x86_64::https://github.com/alex-oleshkevich/sqlalchemy-lsp/releases/download/v0.2.4/sqlalchemy-lsp-linux-x86_64
+	sha256sums_x86_64 = cec51464cac19108819e8857903cdc5a41f476d3f7f23fa6f33a287991eda87b
+	source_aarch64 = sqlalchemy-lsp-linux-aarch64::https://github.com/alex-oleshkevich/sqlalchemy-lsp/releases/download/v0.2.4/sqlalchemy-lsp-linux-aarch64
+	sha256sums_aarch64 = e492dcaac61ca36d7eb4bfc711f03ec08dfd35bd6fcde1143d8abaea71808ae7
 
 pkgname = sqlalchemy-lsp
