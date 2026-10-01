@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-nrg
+	pkgdesc = AIMP skin: NRG 1.3 (by Sergio7786)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-nrg-256.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-nrg-256.archive::https://aimp.ru/?do=catalog.download&id=256
+	sha256sums = a61a7475f09197e47b2d70cbab97869f420be00ae11ade03a132be936a1399b4
+
+pkgname = aimp-skin-nrg
