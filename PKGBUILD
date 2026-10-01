@@ -3,8 +3,8 @@
 # Contributor: Justin Kromlinger <hashworks@archlinux.org>
 # Contributor: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
-pkgver=2.17.0
-pkgrel=2
+pkgver=2.18.0
+pkgrel=1
 pkgdesc='Sophisticated Markdown rendering for the terminal'
 arch=('i686' 'x86_64')
 url="https://github.com/BIRSAx2/mdcat"
@@ -17,7 +17,7 @@ checkdepends=('less')
 optdepends=('less: for mdless'
             'fzf: for mdpick')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('91e17168d1059f5524e50442e6623c3e645994c9b09c46867119f142e3f3c465')
+sha256sums=('a0db6cfb5623396d78420778a077360d3c53fc0252cab28f76af657ddcf0c232')
 
 prepare() {
   cd "${pkgname}-${pkgname}-${pkgver}"
