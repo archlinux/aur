@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-orbita-002-c
 	pkgdesc = AIMP skin: Orbita-002 C 2.73 (by McClaud)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

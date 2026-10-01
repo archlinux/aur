@@ -4,7 +4,7 @@
 pkgname='aimp-skin-orbita-002-c'
 pkgdesc='AIMP skin: Orbita-002 C 2.73 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('dbad0b5f4ac76c36857545666c0edb21931a915fea2dc99a9c4ce110130fb6f4')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Orbita-002 C"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-orbita-002-c-630.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
