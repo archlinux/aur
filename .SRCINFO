@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-silica
+	pkgdesc = AIMP skin: Silica 1.1 (by Phyksar)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-silica-490.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-silica-490.archive::https://aimp.ru/?do=catalog.download&id=490
+	sha256sums = 03eecf1ca6fa3e9ab534be4b3363bd67e999fdf118584d3a552ec9defe3c6834
+
+pkgname = aimp-skin-silica
