@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-abp-white
+	pkgdesc = AIMP skin: ABP White 1.2 (by ZeoN7)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-abp-white-240.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-abp-white-240.archive::https://aimp.ru/?do=catalog.download&id=240
+	sha256sums = 171a3a1ebe2254a9cbf1108c0435b4f6f10e5be18477748f6abda4b12f63d9d4
+
+pkgname = aimp-skin-abp-white
