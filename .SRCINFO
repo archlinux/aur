@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-olimp-702
+	pkgdesc = AIMP skin: ОЛИМП 702 1.0 (by Пупс)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-olimp-702-903.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-olimp-702-903.archive::https://aimp.ru/?do=catalog.download&id=903
+	sha256sums = de789f6d03c0e570e4d825db1c7d6af1d07e3d3a95e8bb7a77f0f2c419195d44
+
+pkgname = aimp-skin-olimp-702
