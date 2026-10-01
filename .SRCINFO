@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-big-city-night
+	pkgdesc = AIMP skin: Big City Night 1.0 (by Pro.Grammer)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-big-city-night-495.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-big-city-night-495.archive::https://aimp.ru/?do=catalog.download&id=495
+	sha256sums = f5bc03c3713bbae21dfca662d39e5a82e9331afad791e78c9d9a2899df579691
+
+pkgname = aimp-skin-big-city-night
