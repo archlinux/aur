@@ -4,7 +4,7 @@
 pkgname='aimp-skin-gilly-aio-m-and-g-dark'
 pkgdesc='AIMP skin: Gilly AIO M&G Dark 1.0 (by Zigar)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('1a80defcd71749ba7a0bc11dd814bee0bf63e2bcd8f48ecef3f24090c4402d50')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Gilly AIO M&G Dark"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-gilly-aio-m-and-g-dark-711.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

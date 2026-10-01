@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-gilly-aio-m-and-g-dark
 	pkgdesc = AIMP skin: Gilly AIO M&G Dark 1.0 (by Zigar)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
