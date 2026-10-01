@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-volet
 	pkgdesc = AIMP skin: VOLET 1.07 (by IDimm)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

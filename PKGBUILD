@@ -4,7 +4,7 @@
 pkgname='aimp-skin-volet'
 pkgdesc='AIMP skin: VOLET 1.07 (by IDimm)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('7a20763a27f53f0cda014a1d1913e0b235df04e35d2d4ea56ec32d9230532eae')
 
 package() {
-  local dest="$pkgdir$_skinsdir/VOLET"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-volet-942.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
