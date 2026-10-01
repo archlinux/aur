@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-windows-media-player-8
+	pkgdesc = AIMP skin: Windows Media Player 8 1.0 (by memo-se)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-windows-media-player-8-1071.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-windows-media-player-8-1071.archive::https://aimp.ru/?do=catalog.download&id=1071
+	sha256sums = 9dbcb0475c03534046efbddd73a6630bfffecfabe1fbd47c9d3ce476deef0e27
+
+pkgname = aimp-skin-windows-media-player-8
