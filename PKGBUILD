@@ -4,7 +4,7 @@
 pkgname='aimp-skin-jango'
 pkgdesc='AIMP skin: Jango 1.0 (by SBro)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('2d42a36323af5e3a1f53d97bba26cee2777cf2de1f517690489c2bc2e0f0ac53')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Jango"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-jango-435.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
