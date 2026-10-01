@@ -1,13 +1,13 @@
 pkgbase = python-lxmf
 	pkgdesc = Lightweight Extensible Message Format for Reticulum
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://reticulum.network/
 	arch = any
 	license = custom:reticulum
 	makedepends = python-setuptools
 	depends = python-rns
-	source = python-lxmf-1.1.1::https://files.pythonhosted.org/packages/source/l/lxmf/lxmf-1.1.1.tar.gz
-	sha256sums = f2f7ea17d793fcc32cab826e81e8e9824404d025d1fc71b143be3242d45e6a5e
+	source = python-lxmf-1.2.0::https://files.pythonhosted.org/packages/source/l/lxmf/lxmf-1.2.0.tar.gz
+	sha256sums = f14243283b90ad06356071d90394357640924201f9c992dcdfecbc23614fb309
 
 pkgname = python-lxmf
