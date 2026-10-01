@@ -2,12 +2,12 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-samplerate
-pkgver=0.1.6
+pkgver=0.1.6 # renovate: datasource=github-tags depName=savonet/ocaml-samplerate
 pkgrel=2
 pkgdesc="OCaml bindings for libsamplerate"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/savonet/ocaml-samplerate"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('ocaml' 'libsamplerate')
 makedepends=('ocaml-findlib' 'dune')
 options=('!strip')
