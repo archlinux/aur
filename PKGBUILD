@@ -4,7 +4,7 @@
 pkgname='aimp-skin-imac-dark-mod'
 pkgdesc='AIMP skin: iMac Dark Mod 1.0 (by Liberty)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('65cc6479132f3474cd295e8ca62b57a40c946271adeb8d42dfff4999bc740a0a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/iMac Dark Mod"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-imac-dark-mod-457.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
