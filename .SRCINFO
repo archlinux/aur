@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-sedoo
+	pkgdesc = AIMP skin: Sedoo 1.0 (by marcino-mk)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-sedoo-485.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-sedoo-485.archive::https://aimp.ru/?do=catalog.download&id=485
+	sha256sums = 8f709677ce73d594b544c74bd8dbc366ec5eff6b951355765ab86416c6a52d20
+
+pkgname = aimp-skin-sedoo
