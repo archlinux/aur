@@ -4,7 +4,7 @@
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=ocaml-camomile
-pkgver=2.0.0
+pkgver=2.0.0 # renovate: datasource=github-tags depName=ocaml-community/Camomile
 pkgrel=1
 pkgdesc="Comprehensive Unicode library for OCaml"
 arch=('x86_64')
