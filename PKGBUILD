@@ -1,6 +1,6 @@
 # Maintainer: Pauls Nartišs <paulsnar@paulsnar.lv>
 pkgname=victorialogs-bin
-pkgver=1.52.0
+pkgver=1.53.0
 pkgrel=1
 pkgdesc="Scalable logging solution designed to be fast and highly efficient"
 arch=('x86_64' 'aarch64')
@@ -17,14 +17,10 @@ source_aarch64=(
     "https://github.com/VictoriaMetrics/VictoriaLogs/releases/download/v${pkgver}/vlutils-linux-arm64-v${pkgver}.tar.gz"
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
-sha256sums_x86_64=(
-    'd14f585144b8d6813f15e11f0041f487e15e10e5f5e5a31be0311367e93d3494'
-    'caa315764df0d11a77ba61d4ee96b783ddb98455b167da8326940dda62914bc9'
-)
-sha256sums_aarch64=(
-    '91338c3e5e3d743a862c0a8665bf80862f639dbd4de6f6ff19ada7df5e9acf45'
-    '82c776d2cd58410aff63c95a36f398b7d50c2e178566bcaa56996dfdfccff794'
-)
+sha256sums_x86_64=('55feba89713cafa952673f91b8b38e7701bb0290989263da671b47a0de16edd3'
+                   'e72ac62b9e497e415a0b530a95c730a74d5175e5347553775c89997ee2935cf1')
+sha256sums_aarch64=('301b7ef12ff9fac7f70b155191affe07ac6212755514174461d775548699ef96'
+                    'fd7c6bf56afa3aedc1a4bbb4ba047bc944467faa59715847b9bc252a0ccfecf0')
 
 package(){
   install -Dm755 "${srcdir}/victoria-logs-prod" "${pkgdir}/usr/bin/victorialogs"
