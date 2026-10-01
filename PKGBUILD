@@ -4,7 +4,7 @@
 pkgname='aimp-skin-tascam-fireone'
 pkgdesc='AIMP skin: Tascam Fireone 1.1 (by Remoder)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('b3eb979286eb1befb446ab57eb21cc98b4edd9583c1a121ffb80e71d60cd9846')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Tascam Fireone"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-tascam-fireone-1104.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
