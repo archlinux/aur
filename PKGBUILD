@@ -4,7 +4,7 @@
 pkgname='aimp-skin-gilly-aio'
 pkgdesc='AIMP skin: Gilly AIO 1.0 (by Zigar)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d0b9c997bf6b820f6d492821e1e82534aac2bf5f5dbcf5d89af71ddc8d8c91e6')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Gilly AIO"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-gilly-aio-585.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
