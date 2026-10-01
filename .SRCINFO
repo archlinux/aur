@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-t-d-a-sound-system
+	pkgdesc = AIMP skin: T.D.A. Sound System 2.0 (by TurboDISCO Adept)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-t-d-a-sound-system-1096.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-t-d-a-sound-system-1096.archive::https://aimp.ru/?do=catalog.download&id=1096
+	sha256sums = cc153509a02584f127906338d99ff04d6d9140620bcaa5b1c313a02ab917acd6
+
+pkgname = aimp-skin-t-d-a-sound-system
