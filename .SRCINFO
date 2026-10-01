@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-qqplayer-blue
+	pkgdesc = AIMP skin: QQPlayer blue 1.0 (by Nim Swen)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-qqplayer-blue-430.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-qqplayer-blue-430.archive::https://aimp.ru/?do=catalog.download&id=430
+	sha256sums = f31e4840ae37afe55a573d0b4c66fd52d9ba3bf977d183d7194cbb6c7c53b242
+
+pkgname = aimp-skin-qqplayer-blue
