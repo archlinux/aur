@@ -1,6 +1,6 @@
 # Maintainer: y0sif <https://github.com/y0sif>
 pkgname=whisrs-bin
-pkgver=0.1.27
+pkgver=0.1.28
 pkgrel=1
 pkgdesc='Linux-first voice-to-text dictation tool, written in Rust (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=("whisrs=$pkgver")
 conflicts=('whisrs' 'whisrs-git')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/whisrs-linux-x86_64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/whisrs-linux-aarch64.tar.gz")
-sha256sums_x86_64=('b6a08cb9babff70b32f6908d043029dda24ccda2eba989b83c687d86b28b263a')
-sha256sums_aarch64=('73e30b730e0214870673d27defc28ec3b30becc16398eed77d6a17d238bc8d0b')
+sha256sums_x86_64=('5bedb3206a0ebbb0ea5797cac12c8437b64313927c913b0fc4a357fed76090b4')
+sha256sums_aarch64=('c8350d7b1652baad547041a860809776bca040ff02487667b2f82670a0bd1ead')
 
 package() {
   install -Dm755 whisrs "$pkgdir/usr/bin/whisrs"
