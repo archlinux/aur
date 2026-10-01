@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-imac
+	pkgdesc = AIMP skin: iMac 1.0 (by John Éshan)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-imac-397.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-imac-397.archive::https://aimp.ru/?do=catalog.download&id=397
+	sha256sums = f91e691259a7aea84dd73bb6a8f0ff5f434a1d253f58ef914d0cbfea01696b63
+
+pkgname = aimp-skin-imac
