@@ -4,7 +4,7 @@
 pkgname='aimp-skin-army'
 pkgdesc='AIMP skin: ARMY 1.0 (by sagitt.67)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('811e5e07f27f478740a433a8a1845511b5bfb39223f5b6c9ff9c614e2f3a5eb4')
 
 package() {
-  local dest="$pkgdir$_skinsdir/ARMY"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-army-300.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
