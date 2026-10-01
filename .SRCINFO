@@ -1,0 +1,25 @@
+pkgbase = nefercap-bin
+	pkgdesc = Screenshots and silent screen recording for Wayland, from one shortcut
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/bnema/nefercap
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = wayland
+	depends = libxkbcommon
+	depends = vulkan-icd-loader
+	depends = vulkan-driver
+	optdepends = ffmpeg: screen recording (libx264)
+	optdepends = wl-clipboard: copy screenshots to the clipboard
+	optdepends = neferwl: hidden-workspace capture, HUD exclusion and capture indicator
+	provides = nefercap
+	conflicts = nefercap
+	conflicts = nefercap-git
+	source_aarch64 = nefercap-bin_0.2.1_aarch64.tar.gz::https://github.com/bnema/nefercap/releases/download/v0.2.1/nefercap_0.2.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9100471a2ed05cf005833143307636ae2efc9b40c688a860d4115e96b3f6e2fb
+	source_x86_64 = nefercap-bin_0.2.1_x86_64.tar.gz::https://github.com/bnema/nefercap/releases/download/v0.2.1/nefercap_0.2.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = e15a21da47feccdbb519f283ed4170f60ade0b2a1828c7bf993d6b8dc13ba6f5
+
+pkgname = nefercap-bin
