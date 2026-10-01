@@ -4,7 +4,7 @@
 pkgname='aimp-skin-w8-vanilla'
 pkgdesc='AIMP skin: W8 Vanilla 1.2 (by Zigar)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('9ff74f6f62cec3bb4dcc77831044a428b8c11bb5e093e92fe2f94f3ceb9580db')
 
 package() {
-  local dest="$pkgdir$_skinsdir/W8 Vanilla"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-w8-vanilla-703.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
