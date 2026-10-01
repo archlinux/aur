@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-pandemic-aio
+	pkgdesc = AIMP skin: Pandemic AIO 1.71 (by Tarik)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-pandemic-aio-560.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-pandemic-aio-560.archive::https://aimp.ru/?do=catalog.download&id=560
+	sha256sums = b2b6f4d040f0d9d53d457e79a744e7756445badc295c920b051ed71d3d8d1cb7
+
+pkgname = aimp-skin-pandemic-aio
