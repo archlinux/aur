@@ -1,12 +1,12 @@
 # Maintainer: robertfoster
 
 pkgname=gnome-multi-writer-git
-pkgver=3.35.90.r332.6a6d4d9
+pkgver=3.35.90.r346.0708181
 pkgrel=1
 pkgdesc="Write an ISO file to multiple USB devices at once"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://wiki.gnome.org/Apps/MultiWriter"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('gtk3' 'libcanberra' 'libgusb' 'udisks2')
 makedepends=('appstream-glib' 'docbook-sgml' 'docbook-utils' 'git' 'intltool' 'meson' 'perl-sgmls')
 optdepends=('gnome-icon-theme-extras: show device icons')
