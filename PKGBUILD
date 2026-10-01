@@ -4,7 +4,7 @@
 pkgname='aimp-skin-bezimeni1'
 pkgdesc='AIMP skin: BezImeni1 1.04 (by Banned)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f5d0f3b93d5ff2650777fc651942d50d93001bea6204dedfbf2376f3d0f1ce5a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/BezImeni1"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-bezimeni1-528.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
