@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-bliss-aio
+	pkgdesc = AIMP skin: Bliss AIO 2.5 (by Andreas Maker)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-bliss-aio-1108.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-bliss-aio-1108.archive::https://aimp.ru/?do=catalog.download&id=1108
+	sha256sums = 73e4a2f81cc8f0f720ea1b997269dfe0b1f45e193c9524e3bc476f6f31e8b6dd
+
+pkgname = aimp-skin-bliss-aio
