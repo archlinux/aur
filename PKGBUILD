@@ -4,7 +4,7 @@
 pkgname='aimp-skin-obsidian-aio'
 pkgdesc='AIMP skin: Obsidian AIO 1.3 (by Zigar)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('921d6b16a70cad4f10a1d30766cb87827ba2236f180fcc7b7b9d7d3c9d4018e6')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Obsidian AIO"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-obsidian-aio-566.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
