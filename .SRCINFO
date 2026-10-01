@@ -1,21 +1,33 @@
 pkgbase = python-sunpy-sphinx-theme
 	pkgdesc = The sphinx theme for the SunPy website and documentation
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/sunpy/sunpy-sphinx-theme
 	arch = any
 	license = BSD-2-Clause
-	checkdepends = python-nose
-	checkdepends = python-pydata-sphinx-theme
+	checkdepends = python-pytest
 	makedepends = python-setuptools-scm
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/s/sunpy_sphinx_theme/sunpy_sphinx_theme-2.3.0.tar.gz
-	source = Makefile
-	md5sums = c6d377b14495f1c2b04f30455873ba53
-	md5sums = a6aa4bc42b138d75f938065a0994c3e1
+	makedepends = python-sphinx-automodapi
+	makedepends = python-sphinx-copybutton
+	makedepends = python-sphinx-gallery
+	makedepends = python-sphinx-togglebutton
+	makedepends = python-sphinx_design
+	makedepends = python-sphinxext-opengraph
+	makedepends = python-pydata-sphinx-theme
+	makedepends = python-matplotlib
+	makedepends = python-sunpy
+	makedepends = graphviz
+	source = https://github.com/sunpy/sunpy-sphinx-theme/archive/refs/tags/v2.4.0.tar.gz
+	source = SOURCES.txt
+	md5sums = a495a6fae12ffea1f822aa99c37d8172
+	md5sums = 60e1ea9cff651fce81ecd726d4b42380
 
 pkgname = python-sunpy-sphinx-theme
 	depends = python-sphinx>=7.3.0
 	depends = python-pydata-sphinx-theme
 	depends = python-sphinxext-opengraph>=0.13
+
+pkgname = python-sunpy-sphinx-theme-doc
+	pkgdesc = Documentation for sunpy-sphinx-theme
