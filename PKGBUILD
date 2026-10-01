@@ -4,7 +4,7 @@
 pkgname='aimp-skin-nesu-mulih'
 pkgdesc='AIMP skin: Nesu Mulih 2.69 (by Putra05)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('da4b6395f2598f40823041c29a0a42bba1b3146cf9bd0605cfa268c7758df129')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Nesu Mulih"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-nesu-mulih-372.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
