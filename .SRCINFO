@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-androevolution
+	pkgdesc = AIMP skin: AndroEvolution 0.94 (by TeDj)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-androevolution-1016.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-androevolution-1016.archive::https://aimp.ru/?do=catalog.download&id=1016
+	sha256sums = 30e0a85914d884b901d3a84ba23faddc1847688b27f1044be9c255d08911a4b1
+
+pkgname = aimp-skin-androevolution
