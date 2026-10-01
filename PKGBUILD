@@ -4,7 +4,7 @@
 pkgname='aimp-skin-wmp-series'
 pkgdesc='AIMP skin: WMP Series 1.0 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('153cb4b56577106f0cabd84755b4e09bc2c45bc46417157858deb1c8479ef030')
 
 package() {
-  local dest="$pkgdir$_skinsdir/WMP Series"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-wmp-series-436.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
