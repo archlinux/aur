@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-itunes-10
+	pkgdesc = AIMP skin: iTunes 10 1.0 (by Alekz)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-itunes-10-420.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-itunes-10-420.archive::https://aimp.ru/?do=catalog.download&id=420
+	sha256sums = 99780cabfb22167d2c328b2638ab768b8cbe5183603cda6d735ac3655f681692
+
+pkgname = aimp-skin-itunes-10
