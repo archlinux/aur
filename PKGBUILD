@@ -4,7 +4,7 @@
 pkgname='aimp-skin-dekor-blue'
 pkgdesc='AIMP skin: Dekor Blue 1.0 (by varlesh)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('64119d1dba73a03ca77f6cc032dff37eac553900c0f05329b9ae0e35b9dbd0d7')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Dekor Blue"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-dekor-blue-497.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
