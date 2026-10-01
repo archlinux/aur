@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-black-and-neon
+	pkgdesc = AIMP skin: Black & Neon 1.1 (by sagitt.67)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-black-and-neon-481.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-black-and-neon-481.archive::https://aimp.ru/?do=catalog.download&id=481
+	sha256sums = 1d724159d7c05a4d15ee783b6ed6fe38f4d73d6b02a1d3189db8866f81cd6ca9
+
+pkgname = aimp-skin-black-and-neon
