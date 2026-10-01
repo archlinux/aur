@@ -4,7 +4,7 @@
 pkgname='aimp-skin-moocie'
 pkgdesc='AIMP skin: Moocie 1.6.2 (by kestiq)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f21d41f7d4169f9f82f323a4d25e11c1f3a95b3ef444d1f59dd769f1100ba87d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Moocie"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-moocie-624.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
