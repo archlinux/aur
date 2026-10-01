@@ -4,7 +4,7 @@
 pkgname='aimp-skin-a4'
 pkgdesc='AIMP skin: A4 3.2 (by ELECTRON!CK)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c3a2e65609ff6757809d6842130f7ea403acf7ae02a64e749e37e8b304870904')
 
 package() {
-  local dest="$pkgdir$_skinsdir/A4"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-a4-832.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

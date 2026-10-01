@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-a4
 	pkgdesc = AIMP skin: A4 3.2 (by ELECTRON!CK)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
