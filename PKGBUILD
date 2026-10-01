@@ -4,7 +4,7 @@
 pkgname='aimp-skin-step'
 pkgdesc='AIMP skin: Step 1.0 (by -=Lee=-)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f856b38ef3b0350ebc3a0e1b672d742e9ee67c91ba2438b1c1dad45fa9303ac3')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Step"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-step-625.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
