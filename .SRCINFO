@@ -1,6 +1,6 @@
 pkgbase = deskflow-git
 	pkgdesc = Deskflow lets you share one mouse and keyboard between multiple computers
-	pkgver = 1.26.0.338.g0bc325a
+	pkgver = 1.27.0.0.g081f647
 	pkgrel = 1
 	url = https://deskflow.org/
 	arch = i686
