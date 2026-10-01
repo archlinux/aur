@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=xplico
-pkgver=1.2.2
+pkgver=1.2.2 # renovate: datasource=github-tags depName=xplico/xplico extractVersion=^v\.(?<version>.+)$
 pkgrel=3
 arch=('x86_64')
 pkgdesc="Internet Traffic Decoder. Network Forensic Analysis Tool (NFAT)"
