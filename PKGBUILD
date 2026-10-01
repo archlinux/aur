@@ -4,7 +4,7 @@
 pkgname='aimp-skin-acubens'
 pkgdesc='AIMP skin: Acubens 1.7 (by Remoder)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('0dd5e86110bde925c8b71f52531fabb1af7d4f6a8782c276ed00e6b0e6a63e5d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Acubens"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-acubens-1198.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
