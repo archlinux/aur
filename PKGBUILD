@@ -1,8 +1,8 @@
 # Maintainer: chadsr <git at ross dot ch>
 
 pkgname=forgecode
-pkgver=2.13.21 # renovate: datasource=github-releases depName=antinomyhq/forgecode
-pkgrel=2
+pkgver=2.14.0 # renovate: datasource=github-releases depName=antinomyhq/forgecode
+pkgrel=1
 pkgdesc="An AI-powered code assistant CLI tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/antinomyhq/forgecode"
@@ -21,7 +21,7 @@ makedepends=(
 	'clang'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('3a1c4a36e640f03202401e155d7195c4a566d45e0ac1a4c7db83f0c807c39b941ad0520f78a12cb21c91c1b4661a137e5ba4a81d5a7d3f39b1f21f6467136beb')
+b2sums=('36e046e26235372d55fd90c1ab1154a65c592fa196907d446841c3b1b2df5a75339f72e869339dbc8f7273aee5137b71c71913d2809e147b421a1fb5307fcce2')
 options=(!lto)
 
 prepare() {
