@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-xdj-ii
+	pkgdesc = AIMP skin: XDJ II 1.0 (by Hayo Tee (aka HX722))
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-xdj-ii-439.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-xdj-ii-439.archive::https://aimp.ru/?do=catalog.download&id=439
+	sha256sums = c540dfc0c47c0092b00be4a86bf0f6f60c0bb845e76658c3e6f9ad3724e1155a
+
+pkgname = aimp-skin-xdj-ii
