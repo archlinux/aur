@@ -4,7 +4,7 @@
 pkgname='aimp-skin-sophie'
 pkgdesc='AIMP skin: Sophie 1.2 (by Hayo Tee (aka HX722))'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('fcbaa6770b29b89f0a0a5bdc0822eb3d60117a987b383b2198b4e2b8ae92416d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Sophie"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-sophie-364.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
