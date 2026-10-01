@@ -3,7 +3,7 @@
 
 pkgname=rtl-sdr-git
 pkgrel=1
-pkgver=2.0.1.4.gaf33886
+pkgver=2.0.3.0.g797f814
 pkgdesc='Driver for Realtek RTL2832U, allowing general purpose software defined radio (SDR)'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://osmocom.org/projects/rtl-sdr/wiki'
