@@ -4,7 +4,7 @@
 pkgname='aimp-skin-black-sea-wave'
 pkgdesc='AIMP skin: Black sea wave 1.0 (by Marat_S)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f6527b5af9bf61792df77c20e3175a5d4edac4e7e462a195050d52fe587c8d2c')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Black sea wave"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-black-sea-wave-555.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
