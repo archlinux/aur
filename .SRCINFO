@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-genter
+	pkgdesc = AIMP skin: Genter 1.7 (by Nitehost)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-genter-177.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-genter-177.archive::https://aimp.ru/?do=catalog.download&id=177
+	sha256sums = 21d3901e2188f177da8f1cd4116fcdfd6b0fa6b16abd111361b11c4c8bfd08f5
+
+pkgname = aimp-skin-genter
