@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-degro-around
+	pkgdesc = AIMP skin: Degro Around 1.0 (by San4o)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-degro-around-227.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-degro-around-227.archive::https://aimp.ru/?do=catalog.download&id=227
+	sha256sums = fd80d3efa6010ac1eb8ff7986680ca0b8eb2698d11758b50661ac134ce327ed2
+
+pkgname = aimp-skin-degro-around
