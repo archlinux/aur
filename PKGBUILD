@@ -4,7 +4,7 @@
 pkgname='aimp-skin-color-mini'
 pkgdesc='AIMP skin: Color Mini 1.2 (by Prince)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('b5d3e926f218d065932df28864f190be9eb905b89abf0219167137346d4d5ed5')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Color Mini"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-color-mini-106.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
