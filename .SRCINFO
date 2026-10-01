@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-half-life2
+	pkgdesc = AIMP skin: Half-Life2 5.0 (by ludo)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-half-life2-804.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-half-life2-804.archive::https://aimp.ru/?do=catalog.download&id=804
+	sha256sums = 1bb0a944d0fae5e1211328951a4feab0165f4ef49bd4dd254ca48139cd402e48
+
+pkgname = aimp-skin-half-life2
