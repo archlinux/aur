@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-zero
+	pkgdesc = AIMP skin: Zero 1.0 (by MaxAx)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-zero-704.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-zero-704.archive::https://aimp.ru/?do=catalog.download&id=704
+	sha256sums = d37fadc2ab9b8475f20ceaff39358301e38ab40f05109e5cb173a700e9191ace
+
+pkgname = aimp-skin-zero
