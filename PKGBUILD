@@ -4,7 +4,7 @@
 pkgname='aimp-skin-minimal-colorize'
 pkgdesc='AIMP skin: Minimal Colorize 1.2 (by ruSS)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a75058c37731c2d20c81de5ed982bdf387f34065a3e654b550b29415783e160a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Minimal Colorize"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-minimal-colorize-503.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
