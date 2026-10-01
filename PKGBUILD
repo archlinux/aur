@@ -4,7 +4,7 @@
 pkgname='aimp-skin-andro'
 pkgdesc='AIMP skin: Andro 1.56 (by TeDj)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('59451d6c9fe73af47f41f9db15ffa6dfaa02cceb261a6c4c41963aa3df8aa38d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Andro"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-andro-545.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
