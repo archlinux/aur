@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-vinyl
+	pkgdesc = AIMP skin: Vinyl 1.0 (by BoB Post)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-vinyl-973.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-vinyl-973.archive::https://aimp.ru/?do=catalog.download&id=973
+	sha256sums = 6cf8ddc13afb5ae5a3742018be016e63f601d67cc62ad0c5c393d9cf9414a070
+
+pkgname = aimp-skin-vinyl
