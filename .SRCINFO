@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-pipboy-fnv
+	pkgdesc = AIMP skin: PipBoy FNV 1.01 (by Russell)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-pipboy-fnv-719.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-pipboy-fnv-719.archive::https://aimp.ru/?do=catalog.download&id=719
+	sha256sums = e54913f8b3957dd119f96ef336288036857bd6cd9525fc81a6fb61fd2dc9063b
+
+pkgname = aimp-skin-pipboy-fnv
