@@ -1,11 +1,11 @@
-# Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
-pkgname=ifcopenshell
-_pkgver=0.9.0-alpha2609021508
+# Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
+pkgname=(ifcopenshell bonsaiviewer)
+_pkgver=0.9.0
 pkgver=${_pkgver//-/_}
 _vername=bonsai
-pkgrel=2
+pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://ifcopenshell.org/"
 license=('LGPL-3.0-or-later' 'GPL-3.0-or-later')
 depends=(
@@ -25,27 +25,6 @@ depends=(
   'python-platformdirs'
 
 )
-optdepends=(
-  'python-xsdata: bonsaï'
-  'python-shapely: bonsaï'
-  'python-svgwrite: bonsaï'
-  'python-isodate: bonsaï'
-  'python-pystache: bonsaï'
-  'python-socketio: bonsaï'
-  'python-natsort: bonsaï'
-  'python-openpyxl: bonsaï'
-  'python-odfpy: bonsaï'
-  'python-xmlschema: bonsaï, bcf support'
-  'python-deepdiff: ifcdiff'
-  'python-tzfpy: bonsaï'
-  'python-orderly-set: bonsaï'
-  'python-gitpython: bonsaï'
-  'python-networkx: bonsaï'
-  'python-pyradiance: bonsaï'
-  'python-aiohttp: bonsaï'
-
-)
-
 makedepends=(
   'blender'
   'boost'
@@ -55,31 +34,39 @@ makedepends=(
   'git'
   'ninja'
   'nlohmann-json'
+  'patchelf'
   'python-babel'
   'python-build'
   'python-installer'
   'python-wheel'
+  'qt6-base'
+  'qt6-svg'
   'swig'
   'sz'
+  'zstd'
 )
-_patch_url_prefix="https://github.com/sukanka/IfcOpenShell/commit"
-source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_vername}-${_pkgver}.tar.gz"
+source=(
+  "https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_vername}-${_pkgver}.tar.gz"
   "git+https://github.com/svgpp/svgpp.git"
   "bpypolyskel-1.1.3.tar.gz::https://github.com/prochitecture/bpypolyskel/archive/refs/tags/v1.1.3.tar.gz"
+  "wgpu-linux-x86_64-release.zip::https://github.com/gfx-rs/wgpu-native/releases/download/v29.0.0.0/wgpu-linux-x86_64-release.zip"
 
-  001-Skip-installing-Python-source-modules.patch::${_patch_url_prefix}/1903ed7d.patch
-  002-Drop-Boost.System-from-exported-config.patch::${_patch_url_prefix}/51f6e60.patch
-  003-Use-SPDX-license-expressions.patch::${_patch_url_prefix}/a093c3486.patch
+  "001-Skip-installing-Python-source-modules.patch"
+  "003-Use-SPDX-license-expressions.patch"
+  "004-zstd-shared-target.patch"
   "007-fix-pyradiance-chmod.patch"
-
+  "008-bonsaiviewer-ribbon-toolbar.patch"
 )
-sha256sums=('26102b5869ce9cb285d770add1bb439aeeadaec2fea1ca293bc7242114bfbdad'
+sha256sums=('7371c99a983e2f22fc716ffce34ec962ab68987fe66a158c0e2d3581554922d6'
             'SKIP'
             'c774454e31757796cf02078cc04d4f27b6180d718e1edab4148340879a6b64c5'
-            '3a586a19b121066f11c8129e8c2f95e439270c13ffc94d7c0c37f9ecf1259507'
-            'b2c33392da40e5af1167ce68781617c2905d719b603e3b86e343fb37d0ca8080'
-            'c7ae9b4fc2c2edbba4d47b83f437fb75cb94d8f6857f7504d98ab8d9790f23a8'
-            '32f28c4f31877a871ea1ce182e78e1e84e05030db2ab609b10dd9de48d34f7c7')
+            'cf614af80f23c6364a13f6569e7ae4ca7367ebf6062e3d3d6e80e205264636b4'
+            'cf7c9e904e3a9c9e2d50589c658e05719ca9938c333d81b6646ca10416f2f9ce'
+            'eed549dd22dabb63812948b8dd797361ccf37ab25ccf284e03f16ed2b500a268'
+            '8b7d6a8364071d49674f029d371c23e2f9ba8366d467df384b7d98c665209b41'
+            '32f28c4f31877a871ea1ce182e78e1e84e05030db2ab609b10dd9de48d34f7c7'
+            '3ae76ceca299f1d6f30eb87a636d92bc851cca1bf3a770baa6c074fa032a5a92')
+noextract=("wgpu-linux-x86_64-release.zip")
 options=("!lto")
 
 _iosdir="IfcOpenShell-${_vername}-${_pkgver}"
@@ -95,6 +82,8 @@ _apply_patch() {
 prepare() {
   mv bpypolyskel-1.1.3 bpypolyskel
   cp -ar svgpp/* ${_iosdir}/src/svgfill/3rdparty/svgpp
+  install -d "$srcdir/wgpu-native"
+  bsdtar -xf "$srcdir/wgpu-linux-x86_64-release.zip" -C "$srcdir/wgpu-native"
   (
     _apply_patch
   )
@@ -140,21 +129,52 @@ build() {
     -DSWIG_EXECUTABLE="/usr/bin/swig"
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_C_FLAGS="${CFLAGS} -ffile-prefix-map=$srcdir=."
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -ffile-prefix-map=$srcdir=."
+    -DCMAKE_SKIP_BUILD_RPATH=ON
     -DBUILD_SHARED_LIBS=ON
     -DGLTF_SUPPORT=ON
     -DCOLLADA_SUPPORT=OFF
+    -DBUILD_BONSAIVIEWER=ON
+    -DFETCHCONTENT_SOURCE_DIR_WGPU_NATIVE="$srcdir/wgpu-native"
+    -DIFCOPENSHELL_DEPLOY_QT_RUNTIME=OFF
   )
   cmake "${CMAKE_ARGS[@]}"
 
   ninja -C build -j 12
 }
 
-package() {
+package_ifcopenshell() {
+  pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
+  optdepends=(
+    'python-xsdata: bonsaï'
+    'python-shapely: bonsaï'
+    'python-svgwrite: bonsaï'
+    'python-isodate: bonsaï'
+    'python-pystache: bonsaï'
+    'python-socketio: bonsaï'
+    'python-natsort: bonsaï'
+    'python-openpyxl: bonsaï'
+    'python-odfpy: bonsaï'
+    'python-xmlschema: bonsaï, bcf support'
+    'python-deepdiff: ifcdiff'
+    'python-tzfpy: bonsaï'
+    'python-orderly-set: bonsaï'
+    'python-gitpython: bonsaï'
+    'python-networkx: bonsaï'
+    'python-pyradiance: bonsaï'
+    'python-aiohttp: bonsaï'
+  )
   _blender_ver=$(blender --version | grep -Po 'Blender \K[0-9].[0-9]+')
   _python_ver=$(python --version | grep -Po 'Python \K[0-9].[0-9]+')
   cd "${srcdir}/build"
   DESTDIR="$pkgdir" ninja install
   echo "Installed main libs done"
+
+  # Bonsai Viewer ships in the bonsaiviewer package
+  rm -f "$pkgdir/usr/bin/BonsaiViewer" \
+        "$pkgdir/usr/bin/IfcViewerMinimal" \
+        "$pkgdir/usr/lib/libwgpu_native.so"
 
   # Install license file
   cd "${srcdir}/${_iosdir}"
@@ -188,4 +208,56 @@ package() {
   # bpypolyskel blender extension
   cp -rf ${srcdir}/bpypolyskel ${pkgdir}/usr/lib/python${_python_ver}/site-packages
   ln -s /usr/lib/python${_python_ver}/site-packages/bpypolyskel "${pkgdir}/usr/share/blender/${_blender_ver}/extensions/system/bpypolyskel"
+}
+
+package_bonsaiviewer() {
+  pkgdesc="Native Qt6 and WebGPU IFC model viewer (part of IfcOpenShell)"
+  depends=('ifcopenshell' 'qt6-base' 'qt6-svg' 'zstd')
+  license=('GPL-3.0-or-later')
+
+  install -Dm755 "${srcdir}/build/bonsaiviewer/BonsaiViewer" \
+    "$pkgdir/usr/bin/BonsaiViewer"
+  install -Dm644 "${srcdir}/wgpu-native/lib/libwgpu_native.so" \
+    "$pkgdir/usr/lib/libwgpu_native.so"
+  install -Dm644 "${srcdir}/${_iosdir}/COPYING" \
+    "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
+
+  # Launcher working around the missing Wayland surface in the wgpu backend
+  # (upstream stub, src/ifcviewer/ViewportWindow.cpp) by falling back to the
+  # implemented X11/XWayland path. Drop this once upstream supports Wayland.
+  install -d "$pkgdir/usr/bin"
+  cat > "$pkgdir/usr/bin/bonsaiviewer" <<'EOF'
+#!/bin/sh
+# The wgpu backend does not implement a Wayland surface yet (upstream stub:
+# "Wayland wgpu surface creation not yet wired"). Under a Wayland session,
+# use the implemented X11/XWayland path when it is available.
+if [ -z "${QT_QPA_PLATFORM:-}" ] && [ -n "${WAYLAND_DISPLAY:-}" ] && [ -n "${DISPLAY:-}" ]; then
+    export QT_QPA_PLATFORM=xcb
+fi
+exec /usr/bin/BonsaiViewer "$@"
+EOF
+  chmod 755 "$pkgdir/usr/bin/bonsaiviewer"
+
+  # Menu entry + icon. Exec uses the wrapper above so Wayland sessions take the
+  # implemented X11/XWayland path. No %F/MimeType: the binary does not accept a
+  # file argument yet.
+  install -Dm644 "${srcdir}/${_iosdir}/src/bonsaiviewer/docs/_static/bonsaiviewer.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/bonsaiviewer.svg"
+
+  install -d "$pkgdir/usr/share/applications"
+  cat > "$pkgdir/usr/share/applications/bonsaiviewer.desktop" <<'EOF'
+[Desktop Entry]
+Type=Application
+Name=Bonsai Viewer
+GenericName=IFC Model Viewer
+Comment=View IFC models
+Exec=bonsaiviewer
+Icon=bonsaiviewer
+Terminal=false
+Categories=Graphics;3DGraphics;Engineering;
+Keywords=IFC;BIM;viewer;IfcOpenShell;Bonsai;
+StartupNotify=true
+StartupWMClass=BonsaiViewer
+EOF
+  chmod 644 "$pkgdir/usr/share/applications/bonsaiviewer.desktop"
 }
