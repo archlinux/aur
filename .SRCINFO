@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-pioneer-t-d7-4k
 	pkgdesc = AIMP skin: Pioneer T-D7 4K 1.0 (by Black_AVP)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

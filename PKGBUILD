@@ -4,7 +4,7 @@
 pkgname='aimp-skin-pioneer-t-d7-4k'
 pkgdesc='AIMP skin: Pioneer T-D7 4K 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('59b4a30995aebddb7b77d014774b8b3fa6a2dd505414e75874d0b1431a3afcbd')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Pioneer T-D7 4K"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-pioneer-t-d7-4k-1339.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
