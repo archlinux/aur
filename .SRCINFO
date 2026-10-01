@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-my-spider
+	pkgdesc = AIMP skin: My Spider 1.1 (by Freyr (aka Kristall_k8))
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-my-spider-115.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-my-spider-115.archive::https://aimp.ru/?do=catalog.download&id=115
+	sha256sums = e46e17d17e57f19680215be866a0a9c48c0287252d792888b4d3c5c800324080
+
+pkgname = aimp-skin-my-spider
