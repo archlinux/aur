@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-cln-white
+	pkgdesc = AIMP skin: CLN White 1.0 (by Alekz)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-cln-white-330.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-cln-white-330.archive::https://aimp.ru/?do=catalog.download&id=330
+	sha256sums = 5b2ecab50ac4a37c9ef343d9ea1440556bf503fb6a0e9819ad82e6d998f174a4
+
+pkgname = aimp-skin-cln-white
