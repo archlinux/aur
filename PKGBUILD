@@ -7,9 +7,9 @@ pkgname=("${pkgbase}" "${pkgbase}-fonts" "${pkgbase}-voices")
 pkgver=1.5.5 # renovate: datasource=github-tags depName=diasurgical/devilutionX
 pkgrel=1
 pkgdesc="Diablo devolved for linux"
-arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'x86_64')
 url="https://github.com/diasurgical/devilutionX"
-license=('custom:unlicense')
+license=('Unlicense')
 depends=('bzip2' 'fmt' 'libpng' 'libsodium' 'sdl2-compat' 'sdl2_image' 'simpleini' 'zlib')
 makedepends=('cmake' 'devilutionx-graphics-tools-git' 'flac' 'gettext' 'git' 'lame' 'ninja' 'smpq')
 options=('strip')
@@ -60,6 +60,6 @@ package_devilutionx-fonts() {
 }
 
 sha256sums=('dfe7894dd4dfa5fd2375d708aaa6837eef3986ccac248345a7988059a507de6a'
-            '551ecee2d95b4e7807737a7794a6bacf0b4a03a91634816277b91db35ce1e259'
-            '715763a7e35347fd42041b35d961189c932d9d320ee29b6929106e550b0e42de'
-            '48bfb5baeed370b565a61db5eab90214700121311a3c40e50d2671d5bac8778b')
+  '551ecee2d95b4e7807737a7794a6bacf0b4a03a91634816277b91db35ce1e259'
+  '715763a7e35347fd42041b35d961189c932d9d320ee29b6929106e550b0e42de'
+  '48bfb5baeed370b565a61db5eab90214700121311a3c40e50d2671d5bac8778b')
