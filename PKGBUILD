@@ -4,7 +4,7 @@
 pkgname='aimp-skin-lp'
 pkgdesc='AIMP skin: LP 1.0 (by Loran)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('6a9ed890594905834a9793cbe00db07dd1b85091962ab0bd48fcc8b4f8ade09d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/LP"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-lp-368.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
