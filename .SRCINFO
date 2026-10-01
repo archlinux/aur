@@ -1,0 +1,15 @@
+pkgbase = dict-freedict-por-eng-bin
+	pkgdesc = Portuguese -> English dictionary for dictd et al. from FreeDict.org
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://freedict.org/
+	install = dict-freedict-por-eng-bin.install
+	arch = any
+	license = GPL-2.0-or-later
+	optdepends = dictd: dict client and server
+	provides = dict-freedict-por-eng=0.2
+	conflicts = dict-freedict-por-eng
+	source = https://download.freedict.org/dictionaries/por-eng/0.2/freedict-por-eng-0.2.dictd.tar.xz
+	sha512sums = 4e7acc90ee3143069d8f92ded78bae23950d9b36d5a581e6cc08101c11b91cf997cc639ef44ee32f573a4050a5f5b8a3c2163e82be7c444acab49f854aa4d380
+
+pkgname = dict-freedict-por-eng-bin
