@@ -4,7 +4,7 @@
 pkgname='aimp-skin-fui'
 pkgdesc='AIMP skin: FUi 2.1.2 (by Vitalik221)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('5380394ee16288896314a409963fee6a28014eb28c5a03df958b9db7b5a7fe52')
 
 package() {
-  local dest="$pkgdir$_skinsdir/FUi"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-fui-896.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
