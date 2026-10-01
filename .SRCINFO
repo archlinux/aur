@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-vinyl
 	pkgdesc = AIMP skin: Vinyl 1.0 (by BoB Post)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

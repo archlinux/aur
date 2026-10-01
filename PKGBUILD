@@ -4,7 +4,7 @@
 pkgname='aimp-skin-vinyl'
 pkgdesc='AIMP skin: Vinyl 1.0 (by BoB Post)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('6cf8ddc13afb5ae5a3742018be016e63f601d67cc62ad0c5c393d9cf9414a070')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Vinyl"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-vinyl-973.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
