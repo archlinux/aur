@@ -4,7 +4,7 @@
 pkgname='aimp-skin-kriterya-bg'
 pkgdesc='AIMP skin: Kriterya bg 3.0 (by samix)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('5311e4e76f063fd97cd0726d980d3bbc817ee3f7d0bdeb104cc0ab7b9f4346cd')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Kriterya bg"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-kriterya-bg-847.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
