@@ -2,12 +2,12 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-bjack
-pkgver=0.1.6
+pkgver=0.1.6 # renovate: datasource=github-tags depName=savonet/ocaml-bjack
 pkgrel=1
 pkgdesc="OCaml blocking JACK API"
 url="https://github.com/savonet/ocaml-bjack"
-arch=('i686' 'x86_64')
-license=('LGPL2.1')
+arch=('x86_64')
+license=('LGPL-2.1-or-later')
 depends=('ocaml' 'jack')
 makedepends=('ocaml-findlib' 'dune')
 options=('!strip')

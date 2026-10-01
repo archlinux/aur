@@ -3,9 +3,8 @@ pkgbase = ocaml-bjack
 	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/savonet/ocaml-bjack
-	arch = i686
 	arch = x86_64
-	license = LGPL2.1
+	license = LGPL-2.1-or-later
 	makedepends = ocaml-findlib
 	makedepends = dune
 	depends = ocaml
@@ -15,4 +14,3 @@ pkgbase = ocaml-bjack
 	sha256sums = 92302504ee2124e82e6ace3e4f07c8b9f16db384ae70b4c1245f9e2b6a7301ed
 
 pkgname = ocaml-bjack
-
