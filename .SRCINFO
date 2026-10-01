@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-essence
+	pkgdesc = AIMP skin: Essence 1.0 (by San4o)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-essence-111.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-essence-111.archive::https://aimp.ru/?do=catalog.download&id=111
+	sha256sums = 6090155c4b0c16a090eafe69e95a680533754ef25a6285f0fe990a3cc6826b0e
+
+pkgname = aimp-skin-essence
