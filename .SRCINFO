@@ -1,6 +1,6 @@
 pkgbase = leyen
 	pkgdesc = Keep a library of Windows games and run them with Proton through umu-launcher
-	pkgver = 0.10.2
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/sachesi/leyen
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = leyen
 	depends = tar
 	optdepends = winetricks: use the installed winetricks instead of downloading it
 	optdepends = mangohud: MangoHud switch
-	source = leyen-0.10.2.tar.gz::https://github.com/sachesi/leyen/archive/v0.10.2/leyen-0.10.2.tar.gz
-	sha256sums = 3707121faed6c906bc01a6c771987af36defab76d08839ae2f4328e23af7bc9b
+	source = leyen-0.10.3.tar.gz::https://github.com/sachesi/leyen/archive/v0.10.3/leyen-0.10.3.tar.gz
+	sha256sums = 40738bbc4979b1586f8739714f334db740804ad51e6851860b35834aebdb12f3
 
 pkgname = leyen
