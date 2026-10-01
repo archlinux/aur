@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-newwave-puzzle
+	pkgdesc = AIMP skin: NewWave Puzzle 1.0 (by sergej.kachan.ss)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-newwave-puzzle-541.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-newwave-puzzle-541.archive::https://aimp.ru/?do=catalog.download&id=541
+	sha256sums = 0c0033a9b205e6858dffc38b2277bbc86922b969d762b5f1d9bea6f82eb47fb1
+
+pkgname = aimp-skin-newwave-puzzle
