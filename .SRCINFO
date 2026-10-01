@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-futura
+	pkgdesc = AIMP skin: Futura 1.0 (by phoenix-i)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-futura-418.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-futura-418.archive::https://aimp.ru/?do=catalog.download&id=418
+	sha256sums = 3f1951565c6a5e55d11e25fbcd4c02ad2c9160ca19b3f2a2a4460c7fa13fc79a
+
+pkgname = aimp-skin-futura
