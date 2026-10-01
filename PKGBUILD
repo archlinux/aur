@@ -1,11 +1,11 @@
 # Maintainer: look997 <look997@gmail.com>
 #
-# Jednoplikowa aplikacja GTK4/libadwaita: jeden kadr dla wielu obrazów.
-# Bez etapów budowania — instalujemy pliki wprost z tagu v$pkgver.
+# Single-file GTK4/libadwaita application: one crop for multiple images.
+# No build step — install files directly from the v$pkgver tag.
 pkgname=kadr
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
-pkgdesc='Kadrowanie zbiorcze — ten sam kadr dla wielu obrazów naraz (GTK4/libadwaita)'
+pkgdesc='Batch crop multiple images with the same crop area (GTK4/libadwaita)'
 arch=('x86_64')
 url='https://github.com/look997/kadr'
 license=('MIT')
@@ -16,20 +16,19 @@ depends=(
   python-cairo
   python-gobject
 )
-# Moduły gdk-pixbuf decydują o tym, które formaty da się otworzyć i zapisać.
-# Bez nich działa PNG/JPEG (i wszystko, co jest w cache'u), reszta nie.
+# Gdk-pixbuf modules determine which image formats can be opened and saved.
+# Without them, PNG/JPEG (and cached formats) are supported.
 optdepends=(
   'libheif: HEIF/AVIF'
   'librsvg: SVG'
   'libtiff: TIFF'
   'libwebp: WebP'
-  # oryginalne okna menedżera plików do przycisków „Pokaż w folderze”
-  'nemo: pokazywanie zapisanych plików z zaznaczeniem (org.freedesktop.FileManager1 ShowItems)'
+  'nemo: show saved files selected in the file manager (org.freedesktop.FileManager1 ShowItems)'
 )
-# Źródłem jest release asset v$pkgver, a NIE snapshot repo z taga — snapshot ciągnie
-# screenshoty i demo.gif (1,2 MB) tylko po to, żeby zainstalować 56 kB.
+# Use the v$pkgver release asset rather than the full tag snapshot, which includes
+# screenshots and demo.gif (1.2 MB) to install a 56 kB application.
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/kadr-$pkgver.tar.gz")
-sha256sums=('629fe00cdcf72812b29498c647aea760f17cebc468637f5512d7d22ae5ec93e6')
+sha256sums=('8f55ca12847cf97fdebbf4263ea589e1a982b3a63f437427bab8dbf7d481eb82')
 
 package() {
   cd "$pkgname-$pkgver"
@@ -37,4 +36,6 @@ package() {
   install -Dm644 local.Kadr.desktop "$pkgdir/usr/share/applications/local.Kadr.desktop"
   install -Dm644 local.Kadr.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/local.Kadr.svg"
+  install -Dm644 locale/en/LC_MESSAGES/kadr.mo \
+    "$pkgdir/usr/share/locale/en/LC_MESSAGES/kadr.mo"
 }
