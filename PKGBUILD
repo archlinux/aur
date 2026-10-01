@@ -4,7 +4,7 @@
 pkgname='aimp-skin-touch50px'
 pkgdesc='AIMP skin: Touch50px 1.0 (by ZeoN7)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('36fa9632f041619a64ef88a556bb9aabed96a8389903b679721d6249a9791f1a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Touch50px"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-touch50px-379.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
