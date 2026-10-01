@@ -1,0 +1,22 @@
+pkgbase = linuxqq-wayland-native-screenshare-fix-git
+	pkgdesc = 修复 Linux QQ 在 Wayland 下的屏幕共享（启用 QQ 自带的 portal + PipeWire 采集路径）
+	pkgver = r3.0534d0a
+	pkgrel = 1
+	url = https://github.com/SHORiN-KiWATA/linuxqq-wayland-screenshare-fix
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = libpulse
+	makedepends = libpipewire
+	makedepends = pkgconf
+	depends = glibc
+	depends = glib2
+	optdepends = linuxqq: QQ 本体
+	optdepends = xdg-desktop-portal: 屏幕录制（需要合成器对应的后端）
+	provides = linuxqq-wayland-native-screenshare-fix
+	conflicts = linuxqq-wayland-native-screenshare-fix
+	source = linuxqq-wayland-screenshare-fix::git+https://github.com/SHORiN-KiWATA/linuxqq-wayland-screenshare-fix.git
+	sha256sums = SKIP
+
+pkgname = linuxqq-wayland-native-screenshare-fix-git
