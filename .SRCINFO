@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-dark-wood-visual-edition
+	pkgdesc = AIMP skin: Dark Wood (Visual Edition) 1.3 (by shox)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-dark-wood-visual-edition-306.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-dark-wood-visual-edition-306.archive::https://aimp.ru/?do=catalog.download&id=306
+	sha256sums = ed0095f168dc22926794f9be843cf7c351cfe645e897a1cb03ae02476e193bc2
+
+pkgname = aimp-skin-dark-wood-visual-edition
