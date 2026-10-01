@@ -4,7 +4,7 @@
 pkgname='aimp-skin-quark'
 pkgdesc='AIMP skin: quark 1.4 (by samix)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('b44fb2fd36db42e3d1cc6ff121e6ab52d12cc022da3592c8de8aefd05d83893a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/quark"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-quark-810.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
