@@ -4,7 +4,7 @@
 pkgname='aimp-skin-aimp-se7en-english-version'
 pkgdesc='AIMP skin: AIMP Se7en (English version) 1.0 (by Nitehost)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('8a0629b9145bdd48eea55a6ad900e3352060696170336a45b5f0f3bb8c9e4dc7')
 
 package() {
-  local dest="$pkgdir$_skinsdir/AIMP Se7en (English version)"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-aimp-se7en-english-version-168.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-aimp-se7en-english-version
 	pkgdesc = AIMP skin: AIMP Se7en (English version) 1.0 (by Nitehost)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
