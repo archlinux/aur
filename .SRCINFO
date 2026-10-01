@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-jd-vifaru
+	pkgdesc = AIMP skin: JD Vifaru 1.0 (by GreenEyesMan)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-jd-vifaru-452.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-jd-vifaru-452.archive::https://aimp.ru/?do=catalog.download&id=452
+	sha256sums = d66b962e6103a4915a24babb66c4e651a74aff56cce338a151fc589ac3dd00b2
+
+pkgname = aimp-skin-jd-vifaru
