@@ -4,7 +4,7 @@
 pkgname='aimp-skin-mmd3-black-version'
 pkgdesc='AIMP skin: MMD3 Black Version 2.0 (by SergiyAmator)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('8f6bc92c8431896d2d7e8582d41b5f7ffa569d5a50eb5340df51d35a77e0da4b')
 
 package() {
-  local dest="$pkgdir$_skinsdir/MMD3 Black Version"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-mmd3-black-version-660.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
