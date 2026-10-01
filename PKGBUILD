@@ -1,7 +1,7 @@
 # Maintainer: Russi <ixaxaar@mailbox.org> <aur@ixaxaar.in>
 
 pkgname=perftest
-pkgver=24.10.0.0.66
+pkgver=26.07.8
 pkgrel=1
 pkgdesc="OpenFabrics Alliance InfiniBand verbs performance testing and benchmarking tools"
 arch=('x86_64')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --tags | sed 's/^v//;s/-/./'
+  git describe --tags | sed 's/^v//;s/-/./g'
 }
 
 prepare() {
