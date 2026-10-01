@@ -4,7 +4,7 @@
 pkgname='aimp-skin-blackboxmod'
 pkgdesc='AIMP skin: BlackBoxMod 2 (by BehemothXxx)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('84b1510d74bb58249f92c01b4eef00969979ecbb7894fbfb1c012f651e4514a0')
 
 package() {
-  local dest="$pkgdir$_skinsdir/BlackBoxMod"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-blackboxmod-632.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
