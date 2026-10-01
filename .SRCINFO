@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-ds
+	pkgdesc = AIMP skin: DS 1.1 (by ZeoN7)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-ds-385.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-ds-385.archive::https://aimp.ru/?do=catalog.download&id=385
+	sha256sums = 5f7f0e25cfecaf8c9b04ff488a2b3d2e021766ac52f7c10e69b69e7a2296a422
+
+pkgname = aimp-skin-ds
