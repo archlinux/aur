@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-idol-light
+	pkgdesc = AIMP skin: Idol Light 1.0 (by ZeoN7)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-idol-light-597.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-idol-light-597.archive::https://aimp.ru/?do=catalog.download&id=597
+	sha256sums = e854d3d6031ab1998b6d6a550ac6f1d16c5d8b6d63b5092cbb0794b3f59ea735
+
+pkgname = aimp-skin-idol-light
