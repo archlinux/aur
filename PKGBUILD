@@ -4,7 +4,7 @@
 pkgname='aimp-skin-t-white'
 pkgdesc='AIMP skin: T-White 1.1 (by NikolavRj)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f7a6c8ca300ff6c4a4827e9ca40b449bef2ecbc975d5678c8002d3a286bffc3f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/T-White"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-t-white-190.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
