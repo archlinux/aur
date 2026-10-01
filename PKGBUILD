@@ -4,7 +4,7 @@
 pkgname='aimp-skin-black-onix'
 pkgdesc='AIMP skin: BLACK ONIX 1.0 (by Braindefender)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('e32a11421792e53569196f1e97691c51c81f151913c95d2b81de607acdfe749f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/BLACK ONIX"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-black-onix-588.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
