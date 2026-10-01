@@ -1,6 +1,6 @@
 pkgbase = schale-pick-bin
 	pkgdesc = Your terminal, your Memorial Lobby. Pick a student from the full Kivotos roster and make them your fastfetch portrait.
-	pkgver = 0.1.1
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/dungdinhmanh/schale-pick
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = schale-pick-bin
 	depends = imagemagick
 	provides = schale-pick
 	conflicts = schale-pick
-	source = LICENSE-0.1.1::https://github.com/dungdinhmanh/schale-pick/raw/v0.1.1/LICENSE
+	source = LICENSE-0.1.0::https://github.com/dungdinhmanh/schale-pick/raw/v0.1.0/LICENSE
 	sha256sums = 8695ed1dcccb2b4d357aab6472a21d9a972ace797ea630fba7f619871655ab4b
-	source_x86_64 = schale-pick-0.1.1-x86_64::https://github.com/dungdinhmanh/schale-pick/releases/download/v0.1.1/schale-pick-linux-amd64
+	source_x86_64 = schale-pick-0.1.0-x86_64::https://github.com/dungdinhmanh/schale-pick/releases/download/v0.1.0/schale-pick-linux-amd64
 	sha256sums_x86_64 = f20536baa805202728fde69f9f9e7ae2355cf93c1d57cae57b019e450caf28e7
-	source_aarch64 = schale-pick-0.1.1-aarch64::https://github.com/dungdinhmanh/schale-pick/releases/download/v0.1.1/schale-pick-linux-arm64
+	source_aarch64 = schale-pick-0.1.0-aarch64::https://github.com/dungdinhmanh/schale-pick/releases/download/v0.1.0/schale-pick-linux-arm64
 	sha256sums_aarch64 = cbdad14818c5d05df832c9e39ef125aea9fa88dbc127d3241132ad56be7cdf1c
 
 pkgname = schale-pick-bin
