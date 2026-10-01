@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-plate
 	pkgdesc = AIMP skin: Plate 2 (by Zhenya)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

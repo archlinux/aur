@@ -4,7 +4,7 @@
 pkgname='aimp-skin-plate'
 pkgdesc='AIMP skin: Plate 2 (by Zhenya)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('7b6ab81a8e83975aab756c68c45a6f2e9e1651a5f7da6dbaa7f2c704166918e1')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Plate"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-plate-426.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
