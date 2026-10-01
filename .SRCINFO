@@ -1,13 +1,13 @@
 pkgbase = pnpm-rust
 	pkgdesc = Fast, disk space efficient package manager (Rust version, built from source)
-	pkgver = 12.7.0
+	pkgver = 12.8.1
 	pkgrel = 1
 	url = https://github.com/pnpm/pnpm
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
-	source = pnpm-rust-12.7.0.tar.gz::https://github.com/pnpm/pnpm/archive/refs/tags/v12.7.0.tar.gz
-	sha256sums = 67be9d5f3b3ae6ad39cb6f61ebd34d7dad57fd21c4290f67c9bf83b2a153019d
+	source = pnpm-rust-12.8.1.tar.gz::https://github.com/pnpm/pnpm/archive/refs/tags/v12.8.1.tar.gz
+	sha256sums = d4dabd7621113ed796d5c5acc972d6c48eea722fe83bac16ac3d9043b3dae1ae
 
 pkgname = pnpm-rust
