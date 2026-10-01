@@ -4,7 +4,7 @@
 pkgname='aimp-skin-nordmende'
 pkgdesc='AIMP skin: NordMende 1.07 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('cda4b8ec478248a054d3d6655a4bed88cfbb149db363bc02904026a52764da72')
 
 package() {
-  local dest="$pkgdir$_skinsdir/NordMende"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-nordmende-1260.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
