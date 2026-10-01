@@ -1,7 +1,7 @@
 # Maintainer: gaou-piou <i.am.piou@gmail.com>
 pkgname=ttf-misans-latin-hinted
 pkgver=4.007
-pkgrel=3
+pkgrel=4
 pkgdesc="MiSans Latin (Latin, Greek, Cyrillic) by Xiaomi, autohinted with ttfautohint and with fontconfig-friendly weight classes"
 arch=(any)
 url="https://hyperos.mi.com/font/en/download/"
@@ -66,15 +66,21 @@ sha256sums=('d24091ccd409a4152ffcc12cd659c16df9cdcdb4c702d8ae355b321e711f0004'
 #   * v40 ignores horizontal hints, so the outlines' advances never change.
 #     But at hintfull Chrome turns off subpixel positioning and rounds every
 #     advance to a whole pixel (text widths up to ±2% off, uneven gaps in
-#     bold). At hintmedium it keeps subpixel positioning while still running
-#     the bytecode, and cairo/pango render hintmedium and hintfull
-#     pixel-identically, so hintmedium is the setting to use.
+#     bold). cairo/pango render hintmedium and hintfull pixel-identically,
+#     so hintmedium is the setting to use.
+#   * Chromium keeps subpixel glyph *positions* at hintmedium, but not exact
+#     *advances*: at device scale 1 Skia uses linear advances only for
+#     hintslight/none, so at hintmedium every advance is rounded to a whole
+#     pixel too (measured on SF Pro Text: 0 of 54 fractional advances vs 49;
+#     nerd-fonts-apple-hinted README.md §10). The snippet therefore leaves
+#     Chromium and Electron apps out by prgname.
 #
 # FreeType only runs TrueType bytecode at hintstyle hintmedium/hintfull. With
 # the common hintslight setting it uses its own light autohinter instead and
 # ignores these hints. The package therefore ships (but does not enable)
 # /usr/share/fontconfig/conf.avail/80-misans-latin-hinted.conf, which turns on
-# bytecode hinting (hintmedium) for this family only. Enable it with:
+# bytecode hinting (hintmedium) for this family only, except in Chromium and
+# Electron apps (see above). Enable it with:
 #
 #   sudo ln -s /usr/share/fontconfig/conf.avail/80-misans-latin-hinted.conf \
 #              /etc/fonts/conf.d/
@@ -380,17 +386,28 @@ package() {
 
   # Opt-in rendering tweak (see the header): full bytecode hinting for this
   # family only. Shipped in conf.avail and deliberately not enabled.
+  # Several <test>s in one <match> are ANDed, so the prgname tests exclude
+  # every listed app. qual="all" makes a test pass when prgname is unset.
+  # prgname is the executable's basename.
+  local _prg _prgtests=""
+  for _prg in chrome chromium brave helium electron code slack signal-desktop vesktop; do
+    _prgtests+="    <test qual=\"all\" name=\"prgname\" compare=\"not_eq\"><string>$_prg</string></test>"$'\n'
+  done
   install -Dm644 /dev/stdin \
     "$pkgdir/usr/share/fontconfig/conf.avail/80-misans-latin-hinted.conf" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
 <!-- Installed by $pkgname. Use the ttfautohint bytecode hints in these
-     fonts rather than FreeType's light autohinter. -->
+     fonts rather than FreeType's light autohinter.
+     Chromium and Electron apps are excluded: at device scale 1 they use
+     linear advances only for hintslight/none, so hintmedium would round
+     every glyph advance to a whole pixel (uneven letter gaps). -->
 <fontconfig>
   <match target="font">
     <test name="family" compare="eq">
       <string>${_family}${HINT_FAMILY_SUFFIX:-}</string>
     </test>
+${_prgtests%$'\n'}
     <edit name="hinting" mode="assign"><bool>true</bool></edit>
     <edit name="autohint" mode="assign"><bool>false</bool></edit>
     <edit name="hintstyle" mode="assign"><const>hintmedium</const></edit>
