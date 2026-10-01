@@ -14,12 +14,12 @@ makedepends=(python-build python-installer python-wheel)
 source=("https://github.com/hickford/MechanicalSoup/archive/v${pkgver}.tar.gz")
 
 check() {
-  cd $srcdir/MechanicalSoup-$pkgver
+  cd "$srcdir/MechanicalSoup-$pkgver"
   python3 -m build --wheel --no-isolation
 }
 
 package() {
-  cd $srcdir/MechanicalSoup-$pkgver
+  cd "$srcdir/MechanicalSoup-$pkgver"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
