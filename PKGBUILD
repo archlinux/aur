@@ -1,7 +1,7 @@
 # Maintainer: Hua <majicdh@gmail.com>
 
 pkgname=server-box-bin
-pkgver=1.0.1617
+pkgver=1.0.1719
 pkgrel=1
 pkgdesc="ServerBox - A flutter app that helps you connect to your server."
 arch=('x86_64')
@@ -13,10 +13,10 @@ provides=('server-box')
 options=(!strip)
 
 # 通过 GitHub API 动态获取的实际文件名，由 auto-update workflow 自动维护
-_appimage_filename="ServerBox_v1.0.1617_amd64.AppImage"
+_appimage_filename="ServerBox_v1.0.1719_amd64.AppImage"
 
 source=("${_appimage_filename}::${url}/releases/download/v${pkgver}/${_appimage_filename}")
-sha256sums=('54a73a456ac3274aae34e73666c950bd49e99a8421ffe4b9386e9e6c2103e61a')
+sha256sums=('9581aac01993805dc413cf90a2ad9eeba373aacb6ad8c2e60af3ac4449111df4')
 
 prepare() {
     chmod +x "$srcdir/$_appimage_filename"
