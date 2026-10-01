@@ -4,7 +4,7 @@
 pkgname='aimp-skin-zix'
 pkgdesc='AIMP skin: ZiX 3.6 (by Raider01)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('045b039fd03c5264ce7a74e9484c4c90251e3f68861703cfaad1ac84491ab3b1')
 
 package() {
-  local dest="$pkgdir$_skinsdir/ZiX"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-zix-233.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
