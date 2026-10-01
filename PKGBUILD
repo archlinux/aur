@@ -10,16 +10,16 @@
 pkgname=xnviewmp
 pkgver=1.12.1
 srcrel=1 # Incremented when there is a new release for the same version number
-pkgrel=1
+pkgrel=2
 pkgdesc="An efficient multimedia viewer, browser and converter."
 url="https://www.xnview.com/en/xnviewmp/"
 
 arch=('x86_64')
 license=('custom')
-# Require qt5-multimedia to pull all its dependencies. We do not actually need
-# to depend on qt5-*, but qt5-multimedia (and indirectly qt5-base) have
+# Require qt6-multimedia to pull all its dependencies. We do not actually need
+# to depend on qt6-*, but qt6-multimedia (and indirectly qt6-base) have
 # various dependencies that we need even when using the packaged libraries.
-depends=('qt5-multimedia')
+depends=('qt6-multimedia')
 optdepends=('glib2: support for moving files to trash')
 
 source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::https://download.xnview.com/old_versions/XnView_MP/XnView_MP-${pkgver}-linux-x64.tgz"
