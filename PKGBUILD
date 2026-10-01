@@ -4,7 +4,7 @@
 pkgname='aimp-skin-xz'
 pkgdesc='AIMP skin: Xz 1.2 (by varlesh)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('56ffee4d784ed07b31aa3f2b19e4cf025108703685876b4f2e5a9d33b837e79d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Xz"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-xz-522.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
