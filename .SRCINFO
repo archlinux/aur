@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-teac-x-2000r-4k
+	pkgdesc = AIMP skin: Teac X-2000R 4K 1.0 (by Black_AVP)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-teac-x-2000r-4k-1347.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-teac-x-2000r-4k-1347.archive::https://aimp.ru/?do=catalog.download&id=1347
+	sha256sums = e4c1489d76e21773d675169c86fe1c3df51088593c26a6fc21f78fb23b5bfb9e
+
+pkgname = aimp-skin-teac-x-2000r-4k
