@@ -4,7 +4,7 @@
 pkgname='aimp-skin-jvc-kd-65'
 pkgdesc='AIMP skin: JVC KD-65 1.61 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('f3fa905cd1a2b969832ab1d46b69e3147da70febf1592d0601b5594c8e345bb0')
 
 package() {
-  local dest="$pkgdir$_skinsdir/JVC KD-65"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-jvc-kd-65-564.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
