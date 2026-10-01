@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-aimware-dark
+	pkgdesc = AIMP skin: AIMWARE DARK 1.4 (by w7rus)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-aimware-dark-846.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-aimware-dark-846.archive::https://aimp.ru/?do=catalog.download&id=846
+	sha256sums = 625552c38671e4c10b8322a195d5665ac1657a6ea577cba66183b732fa557a53
+
+pkgname = aimp-skin-aimware-dark
