@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-w10
+	pkgdesc = AIMP skin: W10 1.0 (by Ellunare)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-w10-900.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-w10-900.archive::https://aimp.ru/?do=catalog.download&id=900
+	sha256sums = 6f70e7ba8a56d72004f8e71f597c0bba3196a75eb63384073752c74326e6279a
+
+pkgname = aimp-skin-w10
