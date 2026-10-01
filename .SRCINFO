@@ -1,6 +1,6 @@
 pkgbase = kftray-appimage
 	pkgdesc = kubectl port forward manager, with support for UDP and proxy connections through k8s clusters
-	pkgver = 0.29.0
+	pkgver = 0.29.2
 	pkgrel = 1
 	url = https://github.com/aslafy-z/aur-packages
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = kftray-appimage
 	provides = kftray
 	conflicts = kftray
 	options = !strip
-	source_x86_64 = kftray.AppImage::https://github.com/hcavarsan/kftray/releases/download/v0.29.0/kftray_0.29.0_amd64.AppImage
-	sha256sums_x86_64 = fb390139f911d84762ca657869f07f8d258273b3e7a86c1e111b89f4fccea965
-	source_aarch64 = kftray.AppImage::https://github.com/hcavarsan/kftray/releases/download/v0.29.0/kftray_0.29.0_aarch64.AppImage
-	sha256sums_aarch64 = 4919f340767c970e6ef19b90ff05970dc56f8a7dd5a3e94ecd5f4bf1bdbc1167
+	source_x86_64 = kftray.AppImage::https://github.com/hcavarsan/kftray/releases/download/v0.29.2/kftray_0.29.2_amd64.AppImage
+	sha256sums_x86_64 = 1b34565aa2f4b3a905f568ab7d75f58647bf8a7e633562c3f84ca2f2184f6669
+	source_aarch64 = kftray.AppImage::https://github.com/hcavarsan/kftray/releases/download/v0.29.2/kftray_0.29.2_aarch64.AppImage
+	sha256sums_aarch64 = fa7fcb133cf42ef236992cf8fad6167bdaeb34554ecaf26fa166772df8582ca6
 
 pkgname = kftray-appimage
