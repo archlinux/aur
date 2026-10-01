@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-lineage-v-3
+	pkgdesc = AIMP skin: Lineage v.3 1.0 (by San4o)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-lineage-v-3-230.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-lineage-v-3-230.archive::https://aimp.ru/?do=catalog.download&id=230
+	sha256sums = 20d1e73fa1c21476b04630bd997e921059e077d7d6ad708bdaadc47db79d7b27
+
+pkgname = aimp-skin-lineage-v-3
