@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=rmpd-bin
-pkgver=0.11.1 # renovate: datasource=github-releases depName=M0Rf30/rmpd
+pkgver=0.11.2 # renovate: datasource=github-releases depName=M0Rf30/rmpd
 pkgrel=1
 pkgdesc="A flexible, powerful, server-side application for playing music"
 arch=('x86_64' 'aarch64')
