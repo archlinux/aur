@@ -4,7 +4,7 @@
 pkgname='aimp-skin-clear-gray'
 pkgdesc='AIMP skin: Clear_gray 1.0 (by Marat_S)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('b689523d2dfea858799c8d672ab77faa9c9b16a2706ee263ea56d812e2864bad')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Clear_gray"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-clear-gray-921.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
