@@ -1,0 +1,20 @@
+diff --git a/src-tauri/src/updater.rs b/src-tauri/src/updater.rs
+index 7aa1264..a91ab11 100644
+--- a/src-tauri/src/updater.rs
++++ b/src-tauri/src/updater.rs
+@@ -66,6 +66,15 @@ pub async fn check_app_update(
+ 
+ #[tauri::command]
+ pub async fn install_app_update(app: AppHandle) -> UpdateCommandResult<bool> {
++    // Outside an AppImage the binary is owned by the system package manager,
++    // so the in-app updater must not overwrite /usr/bin/jm-boom.
++    if cfg!(target_os = "linux") && std::env::var_os("APPIMAGE").is_none() {
++        return Err(ApiErrorDto::new(
++            ApiErrorKind::Client,
++            "当前版本由系统包管理器安装，请使用 pacman 或 AUR 助手更新",
++        ));
++    }
++
+     let updater = build_updater(&app).map_err(ApiErrorDto::from)?;
+ 
+     let Some(update) = updater.check().await.map_err(|error| {

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=JM Boom
+Comment=Cross-platform third-party JM comic client
+Comment[zh_CN]=跨平台禁漫天堂第三方客户端
+Exec=jm-boom
+Icon=jm-boom
+Terminal=false
+Categories=Graphics;Viewer;
+StartupWMClass=jm-boom
