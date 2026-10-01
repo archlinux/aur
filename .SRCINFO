@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-nguvu-aio-vert-tabs
+	pkgdesc = AIMP skin: NGuvu AIO (Vert.Tabs) 2.01 (by ScrollUnLock)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-nguvu-aio-vert-tabs-354.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-nguvu-aio-vert-tabs-354.archive::https://aimp.ru/?do=catalog.download&id=354
+	sha256sums = 3c01663f0b0bd20dc2c2fc85e59094d9907de3f0206ced90f7370c976bbf659d
+
+pkgname = aimp-skin-nguvu-aio-vert-tabs
