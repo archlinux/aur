@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-lost-minimal
+	pkgdesc = AIMP skin: Lost Minimal 1.1 (by Hadin)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-lost-minimal-268.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-lost-minimal-268.archive::https://aimp.ru/?do=catalog.download&id=268
+	sha256sums = 559202c17f6f089d99306d0f546252143e55b38a6a84e5ffba70ed822b2aa5a0
+
+pkgname = aimp-skin-lost-minimal
