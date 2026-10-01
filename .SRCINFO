@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-aimware
+	pkgdesc = AIMP skin: AIMWARE 1.4 (by w7rus)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-aimware-803.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-aimware-803.archive::https://aimp.ru/?do=catalog.download&id=803
+	sha256sums = 2d0e36c0a37e4b9aa52ca1001e77369d7d21ee511036e159f474c53711f9266e
+
+pkgname = aimp-skin-aimware
