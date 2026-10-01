@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-andro
+	pkgdesc = AIMP skin: Andro 1.56 (by TeDj)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-andro-545.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-andro-545.archive::https://aimp.ru/?do=catalog.download&id=545
+	sha256sums = 59451d6c9fe73af47f41f9db15ffa6dfaa02cceb261a6c4c41963aa3df8aa38d
+
+pkgname = aimp-skin-andro
