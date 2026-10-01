@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-placebo
+	pkgdesc = AIMP skin: Placebo 1.0 (by phoenix-i)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-placebo-516.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-placebo-516.archive::https://aimp.ru/?do=catalog.download&id=516
+	sha256sums = d6ff74366e4bd166e33c221cbc56c245e2cf3c2586722c421f10c8be92c3b0f0
+
+pkgname = aimp-skin-placebo
