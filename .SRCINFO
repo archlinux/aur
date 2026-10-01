@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-experience
+	pkgdesc = AIMP skin: Experience 1.82 (by Tarik)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-experience-185.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-experience-185.archive::https://aimp.ru/?do=catalog.download&id=185
+	sha256sums = f088983009ba4a6918c7e5ae650de62aa4d9684bdf494b0b910bcbebb6c198a3
+
+pkgname = aimp-skin-experience
