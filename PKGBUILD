@@ -4,7 +4,7 @@
 pkgname='aimp-skin-bloom-daylight'
 pkgdesc='AIMP skin: Bloom - Daylight 1.0 (by Arindel)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('7201481ae9143b74d909d5863a227f4eeb8782edb93bf377b198055ba95fb05c')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Bloom - Daylight"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-bloom-daylight-402.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
