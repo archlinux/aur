@@ -5,10 +5,10 @@ pkgver=1.3.1
 pkgrel=1
 pkgdesc="Colour management projects to share ICC related implementation details"
 url="http://www.freedesktop.org/wiki/OpenIcc"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('xorg-server')
-source=("http://downloads.sourceforge.net/project/openicc/OpenICC-Profiles/icc-profiles-${pkgname}-${pkgver}.tar.bz2")
-license=('GPL')
+source=("https://downloads.sourceforge.net/project/openicc/OpenICC-Profiles/icc-profiles-${pkgname}-${pkgver}.tar.bz2")
+license=('GPL-2.0-or-later')
 
 build() {
   cd "${srcdir}/icc-profiles-${pkgname}-${pkgver}"
