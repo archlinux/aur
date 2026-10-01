@@ -4,7 +4,7 @@
 pkgname='aimp-skin-dark-wood-spectrum-edition'
 pkgdesc='AIMP skin: Dark Wood (Spectrum Edition 1.3 (by shox)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('65a74254d9e44b3ecc1c7cfb4d93b57d68268363523c37aa1a22d32004c69f11')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Dark Wood (Spectrum Edition"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-dark-wood-spectrum-edition-305.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
