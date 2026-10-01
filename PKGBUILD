@@ -3,14 +3,13 @@
 
 pkgname=opentofu-bin
 pkgver=1.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenTofu lets you declaratively manage your cloud infrastructure."
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://opentofu.org/"
 license=('MPL2')
 provides=('opentofu')
 conflicts=('opentofu' 'opentofu-git')
-replaces=('opentofu-bin-stable')
 depends=()
 source_x86_64=("https://github.com/opentofu/opentofu/releases/download/v${pkgver//_/-}/tofu_${pkgver//_/-}_linux_amd64.zip")
 source_i686=("https://github.com/opentofu/opentofu/releases/download/v${pkgver//_/-}/tofu_${pkgver//_/-}_linux_386.zip")
@@ -22,5 +21,5 @@ sha256sums_aarch64=('b9614df40575cc3fc10a8a25025b7245d961da279f715ea3efff4ddae8e
 sha256sums_armv7h=('996a3e97fe68c03d883a242af4c1cb86be12dd795580c551489b776df9e4642f')
 
 package() {
-    install -o root -g root -m 755 -D tofu $pkgdir/usr/bin/tofu
+  install -o root -g root -m 755 -D tofu $pkgdir/usr/bin/tofu
 }
