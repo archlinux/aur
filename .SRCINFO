@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-7themes
+	pkgdesc = AIMP skin: 7Themes 1.0 (by Тень)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-7themes-1038.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-7themes-1038.archive::https://aimp.ru/?do=catalog.download&id=1038
+	sha256sums = 6f8487e93e648b9dec02e5aa6c6d09a8ba70ba2fe7c0666042b5277493c10b57
+
+pkgname = aimp-skin-7themes
