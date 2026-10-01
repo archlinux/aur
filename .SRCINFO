@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-ganster
+	pkgdesc = AIMP skin: Ganster 1.1 (by Zigar)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-ganster-359.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-ganster-359.archive::https://aimp.ru/?do=catalog.download&id=359
+	sha256sums = 8475a016a56812450027923671687ce6622d0b2f6257422f955da69077587191
+
+pkgname = aimp-skin-ganster
