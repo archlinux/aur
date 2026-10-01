@@ -1,0 +1,25 @@
+pkgbase = linuxqq-wayland-fix-git
+	pkgdesc = 修复 Linux QQ 在 Wayland 下的屏幕共享、共享电脑声音和剪贴板问题
+	pkgver = r8.c5b84d9
+	pkgrel = 1
+	url = https://github.com/SHORiN-KiWATA/linuxqq-wayland-fix
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = libpulse
+	makedepends = libpipewire
+	makedepends = pkgconf
+	depends = glibc
+	depends = glib2
+	depends = libx11
+	depends = wayland
+	depends = linuxqq
+	provides = linuxqq-wayland-fix
+	conflicts = linuxqq-wayland-fix
+	conflicts = linuxqq-clipsync
+	options = !debug
+	source = linuxqq-wayland-fix::git+https://github.com/SHORiN-KiWATA/linuxqq-wayland-fix.git
+	sha256sums = SKIP
+
+pkgname = linuxqq-wayland-fix-git
