@@ -4,7 +4,7 @@
 pkgname='aimp-skin-chroma'
 pkgdesc='AIMP skin: Chroma 1.2 (by Andreas Maker)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('6d09a5deef4f79fe1aeb28126f2aca2f6def26af7e66b10c8d20e87fbb32c836')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Chroma"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-chroma-1161.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
