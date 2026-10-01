@@ -1,32 +1,31 @@
-# Maintainer: ValHue <vhuelamo at gmail dot com>
+# Maintainer: colibrisec <noreply@colibrisec.dev>
 #
-# Contributor: ValHue <vhuelamo at gmail dot com>
-#
-pkgname="ojo"
-pkgver="0.2.0.r228"
-pkgrel="2"
-pkgdesc="A fast and good-looking image viewer, nice as a preliminary stage in a \
-         photography workflow"
-url="http://launchpad.net/~ojo/+archive/ubuntu/daily"
-arch=('i686' 'x86_64')
-license=('GPL3')
-depends=('hicolor-icon-theme' 'python' 'pyexiv2')
-makedepends=('desktop-file-utils' 'python-distutils-extra')
-optdepends=()
-conflicts=('ojo-bzr')
+# This file is a template: CI (.github/workflows/release.yml, job
+# aur-render) fills in the pkgver and sha256sums placeholders below with
+# the release version and a real checksum before every push to
+# aur.archlinux.org/ojo.git. Don't hand-edit pkgver/sha256sums here --
+# edit the placeholders and let CI fill them in.
+pkgname=ojo
+pkgver=0.2.2
+pkgrel=1
+pkgdesc="Security scanner for dependencies, secrets, misconfiguration, and code"
+arch=('x86_64' 'aarch64')
+url="https://github.com/colibrisec/ojo"
+license=('GPL-2.0-only')
+makedepends=('go')
 provides=('ojo')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/+files/ojo_0.2-0~228~201903042116~ubuntu19.04.1.tar.gz")
-sha256sums=('7e2f0d87ffbc9ec2d3714590f6d77e5169889f2a48ee8df353a095d7ae6b9fcf')
+conflicts=('ojo-bin')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/colibrisec/ojo/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('913beb9b3aed4fb04129295c73b9793760ccc36df4dd8bb7a2bc45c6919c46fa')
 
 build() {
-    cd "${pkgname}-0.2"
-    python2 setup.py build
+  cd "$pkgname-$pkgver"
+  export CGO_ENABLED=0
+  go build -trimpath -ldflags "-s -w -X github.com/colibrisec/ojo/internal/cli.Version=v$pkgver" -o ojo .
 }
 
 package() {
-    cd "${pkgname}-0.2"
-    python2 setup.py install --root="${pkgdir}"
-    rm -rf "${pkgdir}/usr/share/doc"
+  cd "$pkgname-$pkgver"
+  install -Dm755 ojo "$pkgdir/usr/bin/ojo"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim: set ts=4 sw=4 et syn=sh ft=sh:

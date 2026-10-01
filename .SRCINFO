@@ -1,20 +1,15 @@
 pkgbase = ojo
-	pkgdesc = A fast and good-looking image viewer, nice as a preliminary stage in a photography workflow
-	pkgver = 0.2.0.r228
-	pkgrel = 2
-	url = http://launchpad.net/~ojo/+archive/ubuntu/daily
-	arch = i686
+	pkgdesc = Security scanner for dependencies, secrets, misconfiguration, and code
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/colibrisec/ojo
 	arch = x86_64
-	license = GPL3
-	makedepends = desktop-file-utils
-	makedepends = python-distutils-extra
-	depends = hicolor-icon-theme
-	depends = python
-	depends = pyexiv2
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = go
 	provides = ojo
-	conflicts = ojo-bzr
-	source = ojo-0.2.0.r228.tar.gz::http://launchpad.net/~ojo/+archive/ubuntu/daily/+files/ojo_0.2-0~228~201903042116~ubuntu19.04.1.tar.gz
-	sha256sums = 7e2f0d87ffbc9ec2d3714590f6d77e5169889f2a48ee8df353a095d7ae6b9fcf
+	conflicts = ojo-bin
+	source = ojo-0.2.2.tar.gz::https://github.com/colibrisec/ojo/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = 913beb9b3aed4fb04129295c73b9793760ccc36df4dd8bb7a2bc45c6919c46fa
 
 pkgname = ojo
-
