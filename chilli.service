@@ -4,11 +4,12 @@ After=network.target
 
 [Service]
 Type=forking
-User=root
+PIDFile=/run/chilli.pid
 ExecStartPre=/usr/bin/modprobe tun
-ExecStartPre=/usr/bin/echo 1 > /proc/sys/net/ipv4/ip_forward
+ExecStartPre=/usr/bin/sysctl -w net.ipv4.ip_forward=1
 ExecStart=/usr/bin/chilli
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
-
