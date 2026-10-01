@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-tango-v-3
+	pkgdesc = AIMP skin: Tango V 3 1.0 (by vicing)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-tango-v-3-470.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-tango-v-3-470.archive::https://aimp.ru/?do=catalog.download&id=470
+	sha256sums = bcc043a67c0c6c3e58f63ef8f5d3a11fe33e1447f36ab1637fe781ce26de37bf
+
+pkgname = aimp-skin-tango-v-3
