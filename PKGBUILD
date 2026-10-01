@@ -4,7 +4,7 @@
 pkgname='aimp-skin-defix-hi-end'
 pkgdesc='AIMP skin: DEFIX Hi-End 1.0 (by Tankevich Denis)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('72e22a640bb2a88e035ad06bb9f2f43f4ab0f288b522f3d2031a803b35c5f0cc')
 
 package() {
-  local dest="$pkgdir$_skinsdir/DEFIX Hi-End"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-defix-hi-end-1226.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
