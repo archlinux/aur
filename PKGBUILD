@@ -4,7 +4,7 @@
 pkgname='aimp-skin-singularity'
 pkgdesc='AIMP skin: Singularity 1.0 (by umbrella-cakey)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c10d11a5622a95a9cdc7c251abc0fd47bd6fb3e50451cc8dbf099752c25a4a3c')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Singularity"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-singularity-1222.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
