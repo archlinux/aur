@@ -4,7 +4,7 @@
 pkgname='aimp-skin-old-systems'
 pkgdesc='AIMP skin: Old Systems 1.0 (by Imperator3)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c1c9c22ed1c16373ac3a82be56512e5ea2d385150366be6b6e99ce9599208423')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Old Systems"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-old-systems-10.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
