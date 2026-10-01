@@ -4,7 +4,7 @@
 pkgname='aimp-skin-xiialive'
 pkgdesc='AIMP skin: XiiaLive 1.1 (by Sergio7786)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a76db5560317c6fc874efb08a12be590337730443aed4f58088a5d88dcccbec1')
 
 package() {
-  local dest="$pkgdir$_skinsdir/XiiaLive"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-xiialive-292.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
