@@ -4,7 +4,7 @@
 pkgname='aimp-skin-modern-night'
 pkgdesc='AIMP skin: Modern Night 1.0 (by Pro.Grammer)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('249b0369953947acb46cce005cdbd3dbf18130e52c164877e93c33eec4a4f4fa')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Modern Night"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-modern-night-9.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
