@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-a-simple-series
+	pkgdesc = AIMP skin: A simple series 1.5 (by SeReG@)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-a-simple-series-222.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-a-simple-series-222.archive::https://aimp.ru/?do=catalog.download&id=222
+	sha256sums = 1dce05815a4892ec97d919113dd7f5d372bc444976c2780a1103fbdc8d544432
+
+pkgname = aimp-skin-a-simple-series
