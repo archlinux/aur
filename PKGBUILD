@@ -4,7 +4,7 @@
 pkgname='aimp-skin-big-bento'
 pkgdesc='AIMP skin: Big Bento 1.0 (by Pro.Grammer)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('0e8ad3cfaf0f7c8427586bef658d65e384d6c2c28d41cc170f400a3b29fc477c')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Big Bento"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-big-bento-1.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
