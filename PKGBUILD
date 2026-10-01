@@ -4,7 +4,7 @@
 pkgname='aimp-skin-sedoo'
 pkgdesc='AIMP skin: Sedoo 1.0 (by marcino-mk)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('8f709677ce73d594b544c74bd8dbc366ec5eff6b951355765ab86416c6a52d20')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Sedoo"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-sedoo-485.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
