@@ -2,12 +2,12 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ladspa
-pkgver=0.2.2
+pkgver=0.2.2 # renovate: datasource=github-tags depName=savonet/ocaml-ladspa
 pkgrel=1
 pkgdesc="OCaml bindings for LADSPA plugins"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/savonet/ocaml-ladspa"
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=('ocaml')
 makedepends=('dune' 'ladspa' 'ocaml-findlib')
 options=('!strip')
@@ -15,15 +15,15 @@ source=("${url}/archive/v${pkgver}.tar.gz")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  
+
   dune build
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  
+
   DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "lib/ocaml"
-  
+
   install -dm755 "${pkgdir}/usr/share/"
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
