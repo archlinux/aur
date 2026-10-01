@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-rostov-102
+	pkgdesc = AIMP skin: Ростов-102 1.58 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-rostov-102-1088.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-rostov-102-1088.archive::https://aimp.ru/?do=catalog.download&id=1088
+	sha256sums = 020d0556eb16e6fdaeebddfebc2bca0a5ee126536f9d725798c7e5238d39235a
+
+pkgname = aimp-skin-rostov-102
