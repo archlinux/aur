@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-cmd
+	pkgdesc = AIMP skin: CMD 1.2 (by MPman)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-cmd-484.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-cmd-484.archive::https://aimp.ru/?do=catalog.download&id=484
+	sha256sums = ae4037194d6993462620625453a3600d39a65cc2c02b1f1695239233e47617c5
+
+pkgname = aimp-skin-cmd
