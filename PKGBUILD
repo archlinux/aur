@@ -2,16 +2,25 @@
 _pkgname=cliphist-tui
 _oldpkgname=shorinclip
 pkgname=cliphist-tui-git
-pkgver=r49.g745410d
-pkgrel=3
+pkgver=r53.g7feb84e
+pkgrel=1
 pkgdesc="A wayland clipboard TUI based on fzf and cliphist. Use chafa for image preview."
 arch=('x86_64')
 url="https://github.com/SHORiN-KiWATA/cliphist-tui"
 license=('MIT')
 
 depends=(
-    'fzf' 'cliphist' 'wl-clipboard' 'ffmpegthumbnailer' 'chafa' 'bash'
-    'curl' 'file' 'glib2' 'xdg-utils' 'libnotify'  
+    'fzf' 'cliphist' 'wl-clipboard' 'ffmpegthumbnailer' 'chafa'
+    'curl' 'file' 'xdg-utils' 'libnotify'  
+)
+
+optdepends=(
+    'ffmpeg: video/audio info and audio cover preview'
+    'poppler: PDF preview'
+    'bat: syntax highlighted text file preview'
+    'eza: directory preview with icons'
+    'jq: JSON pretty printing'
+    'mpv: open videos with mpv'
 )
 
 makedepends=('git' 'cargo')   
