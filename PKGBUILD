@@ -4,7 +4,7 @@
 pkgname='aimp-skin-hitachi-da-1000'
 pkgdesc='AIMP skin: Hitachi DA-1000 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('93d2de6fdae76220f4b8c7b7c5cdc6f1d82ae179410cfa16be5b36a81a50b4f6')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Hitachi DA-1000"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-hitachi-da-1000-631.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
