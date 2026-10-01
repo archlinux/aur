@@ -4,7 +4,7 @@
 pkgname='aimp-skin-das-skin'
 pkgdesc='AIMP skin: Das Skin 1.5 (by Hayo Tee (aka HX722))'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('3d7870b59b0690c7f8884a030adfb478a88f7f571a238eeb47b3703f4b02e564')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Das Skin"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-das-skin-197.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
