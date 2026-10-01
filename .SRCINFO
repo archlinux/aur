@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-yupiter-giove-203-1-stereo
+	pkgdesc = AIMP skin: ЮПИТЕР (Giove) 203-1 стерео 3.0 (by Пупс)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-yupiter-giove-203-1-stereo-759.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-yupiter-giove-203-1-stereo-759.archive::https://aimp.ru/?do=catalog.download&id=759
+	sha256sums = ab1c593a8b2e51d0ea31cc661180fe249745be0e6efd5c19f59e25d0f1f59b12
+
+pkgname = aimp-skin-yupiter-giove-203-1-stereo
