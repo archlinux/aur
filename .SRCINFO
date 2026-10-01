@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-modern-night
+	pkgdesc = AIMP skin: Modern Night 1.0 (by Pro.Grammer)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-modern-night-9.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-modern-night-9.archive::https://aimp.ru/?do=catalog.download&id=9
+	sha256sums = 249b0369953947acb46cce005cdbd3dbf18130e52c164877e93c33eec4a4f4fa
+
+pkgname = aimp-skin-modern-night
