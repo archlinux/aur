@@ -4,7 +4,7 @@
 pkgname='aimp-skin-hm-blue-steal'
 pkgdesc='AIMP skin: hm_blue_Steal 1.0 (by flon)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('9c9ae0895a0598dc697b0b678b593d898148813628580883e9c24782ce5f3d0f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/hm_blue_Steal"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-hm-blue-steal-378.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
