@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-vilma-m-212c
 	pkgdesc = AIMP skin: Vilma M-212C 1.33 (by McClaud)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

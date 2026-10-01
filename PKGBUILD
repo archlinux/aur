@@ -4,7 +4,7 @@
 pkgname='aimp-skin-vilma-m-212c'
 pkgdesc='AIMP skin: Vilma M-212C 1.33 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('54b284c2e1787dccbc3c4fe3a74bd1ade9372a39f3f00615a641ef91298e75ac')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Vilma M-212C"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-vilma-m-212c-1189.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
