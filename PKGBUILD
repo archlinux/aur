@@ -4,7 +4,7 @@
 pkgname='aimp-skin-tiesto'
 pkgdesc='AIMP skin: Tiesto 1.1 (by -=Lee=-)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('5f635a82856a5638170b27e8c11115a98318743dc4c9c8a07a739a3025fede51')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Tiesto"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-tiesto-316.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
