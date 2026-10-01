@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-jvc-kd-65
+	pkgdesc = AIMP skin: JVC KD-65 1.61 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-jvc-kd-65-564.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-jvc-kd-65-564.archive::https://aimp.ru/?do=catalog.download&id=564
+	sha256sums = f3fa905cd1a2b969832ab1d46b69e3147da70febf1592d0601b5594c8e345bb0
+
+pkgname = aimp-skin-jvc-kd-65
