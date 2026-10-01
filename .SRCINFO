@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-windows-8-colors
 	pkgdesc = AIMP skin: Windows 8 Colors 3.8.1 (by memo-se)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

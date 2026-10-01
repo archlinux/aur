@@ -4,7 +4,7 @@
 pkgname='aimp-skin-windows-8-colors'
 pkgdesc='AIMP skin: Windows 8 Colors 3.8.1 (by memo-se)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('cb7a98f77d511f81036b618edaa0c705502d41c3bcfcddbf421773c221509ce7')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Windows 8 Colors"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-windows-8-colors-613.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
