@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-pioneer-rt-909
+	pkgdesc = AIMP skin: Pioneer RT-909 2.65 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-pioneer-rt-909-1027.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-pioneer-rt-909-1027.archive::https://aimp.ru/?do=catalog.download&id=1027
+	sha256sums = c56013ec69d209a74a46ee1d2e71e6178541e029f393cb64c89f1719094d5fa4
+
+pkgname = aimp-skin-pioneer-rt-909
