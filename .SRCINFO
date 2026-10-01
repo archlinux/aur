@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-fui-dark
+	pkgdesc = AIMP skin: FUi Dark 2.1.2 (by Vitalik221)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-fui-dark-937.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-fui-dark-937.archive::https://aimp.ru/?do=catalog.download&id=937
+	sha256sums = 21504e06641736b980fe3debd176bca5a77e2fda94ae81b08f262c3b75c754f0
+
+pkgname = aimp-skin-fui-dark
