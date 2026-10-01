@@ -2,7 +2,7 @@
 # Contributor: Thiago Almeida <echo "dGhpYWdvYWxtZWlkYXNhQGdtYWlsLmNvbQo=" | base64 -d>
 
 pkgname=qrcp-bin
-pkgver=0.11.6
+pkgver=0.11.7
 pkgrel=1
 provides=('qrcp')
 conflicts=('qrcp' 'qrcp-git')
@@ -17,10 +17,10 @@ source_armv7h=("$pkgname-$pkgver-armv7h.tar.gz::$url/releases/download/v${pkgver
 source_i686=("$pkgname-$pkgver-i686.tar.gz::$url/releases/download/v${pkgver}/qrcp_${pkgver}_linux_386.tar.gz")
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v${pkgver}/qrcp_${pkgver}_linux_amd64.tar.gz")
 
-sha256sums_x86_64=('1bcd1e23460cb2c98eeb1a9df6e4f4f7cb1e889acdb53094a7c6805808790d13')
-sha256sums_i686=('ce6c111cc3632e13e044046a56a5dc0874ddf51c2fd996607902d768c135b3f9')
-sha256sums_armv7h=('46e760833165d211131ec04a6bbd754c9e558904dae32aedb99eb124518e8990')
-sha256sums_aarch64=('970e34ac2ae17d39f4ceab0b35801becbd3727265463490f83638e4e2896e1fd')
+sha256sums_x86_64=('84220cc93e6e33ba63658b46619c9946c65a86d62ba063d4eac5be34753e786e')
+sha256sums_i686=('a2bfec42b4bac5befc7760ab77357d86a6ce9b54e47148270357cf8bc049451e')
+sha256sums_armv7h=('ea8049525df777561885b048be8f87cd1613413dd1535885ff84ae69c01b62d2')
+sha256sums_aarch64=('ee318873074e4a2935f5cf9b3e289f65083cc8894af19d51805b07a73b9c790f')
 
 latestver() {
     gh api repos/claudiodangelis/qrcp/releases/latest --jq '.tag_name' | sed 's/^v//'
