@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-frost
+	pkgdesc = AIMP skin: Frost 1.1 (by Houdini)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-frost-502.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-frost-502.archive::https://aimp.ru/?do=catalog.download&id=502
+	sha256sums = 610bfda651269c8d88ddd621cd2e8a6bde23b1a897aa2fb77f5e8c071796b5be
+
+pkgname = aimp-skin-frost
