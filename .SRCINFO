@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-touch-simplistic
+	pkgdesc = AIMP skin: Touch Simplistic 1.2 (by Alexandrr)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-touch-simplistic-686.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-touch-simplistic-686.archive::https://aimp.ru/?do=catalog.download&id=686
+	sha256sums = 834faa48053764b04a4780700164368b5ab1c2fc8bab9a1ffe53f16e4dff6d3a
+
+pkgname = aimp-skin-touch-simplistic
