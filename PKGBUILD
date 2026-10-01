@@ -4,7 +4,7 @@
 pkgname='aimp-skin-prolux-mini'
 pkgdesc='AIMP skin: Prolux Mini 1.0 (by Aleksandr009)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('78078b8791ea3c22af789b77bbb18ac31a584e0ea5de770f5c19c0b62b63e99d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Prolux Mini"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-prolux-mini-800.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
