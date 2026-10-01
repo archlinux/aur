@@ -205,8 +205,9 @@ at 10–12 px (≈ 7.5–9 pt at 96 dpi: captions, small labels, panel text).
 **Keep the default `balanced` preset.** `sharp` helps a little at 14–16 px but
 is worse at 10–11 px.
 
-For Inter the ranking is different: its `sharp` default closes 0 of 224 at
-10–13 px. See `ttf-inter-hinted/PKGBUILD`.
+For Inter the ranking is different: no stem mode glues a dot (0 of 392 at
+10–16 px), so it defaults to `natural`, the least distorted. See
+`ttf-inter-hinted/README.md`.
 
 ### 9. Firefox: uneven letter spacing at hintmedium
 
