@@ -4,7 +4,7 @@
 pkgname='aimp-skin-aliens'
 pkgdesc='AIMP skin: Aliens 2.1 (by Alexey Chistov)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d25b261e0fcd29b5df4626e5b7e7075b40c02f76150706a09ad0af5c9f4e862d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Aliens"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-aliens-299.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
