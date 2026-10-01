@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-metro
+	pkgdesc = AIMP skin: Metro 1.6 (by jaredi)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-metro-408.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-metro-408.archive::https://aimp.ru/?do=catalog.download&id=408
+	sha256sums = 5ad9b46a44bec0c4f879b1b8eff857409161dce66d2ebadd3a9251f15e069676
+
+pkgname = aimp-skin-metro
