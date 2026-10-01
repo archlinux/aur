@@ -4,7 +4,7 @@
 pkgname='aimp-skin-yauza-207'
 pkgdesc='AIMP skin: Yauza 207 1.86 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a0d9c1ac2ef49b76166e7b5e8e4c877cbba8acd1de5f61d3944368e71d4009a7')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Yauza 207"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-yauza-207-901.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
