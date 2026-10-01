@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-a700
+	pkgdesc = AIMP skin: A700 1.0 (by Artego)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-a700-138.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-a700-138.archive::https://aimp.ru/?do=catalog.download&id=138
+	sha256sums = c5a8b8edf73613d684398b8f6157e8846ecd6a39bfea52daffdefb7819a7c38e
+
+pkgname = aimp-skin-a700
