@@ -4,7 +4,7 @@
 pkgname='aimp-skin-soyuz-110'
 pkgdesc='AIMP skin: Союз-110 1.1 (by Пупс)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('03d19053fc7c66c97f64cbe941043115c45f0862da59b049f9feb503c5df1de6')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Союз-110"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-soyuz-110-1299.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
