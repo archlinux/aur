@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-mi-sk-black-and-white
+	pkgdesc = AIMP skin: MI-SK (Black&White) 1.0 (by Zigar)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-mi-sk-black-and-white-405.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-mi-sk-black-and-white-405.archive::https://aimp.ru/?do=catalog.download&id=405
+	sha256sums = 88073e0951650f69f79f041d13dd02119e5c8a591c129dd7d60029ed6d092d2a
+
+pkgname = aimp-skin-mi-sk-black-and-white
