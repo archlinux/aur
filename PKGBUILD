@@ -4,7 +4,7 @@
 pkgname='aimp-skin-classic-glass'
 pkgdesc='AIMP skin: Classic Glass 1.5 (by SeReG@)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('6885a4b9ed9fa27591235b32d4097867c227f2f638efb49398a8169afbb8bc9c')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Classic Glass"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-classic-glass-243.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
