@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-black-box
+	pkgdesc = AIMP skin: Black Box 3.1 (by kibermanick)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-black-box-537.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-black-box-537.archive::https://aimp.ru/?do=catalog.download&id=537
+	sha256sums = 1040a7ebb7cea690b84a19152c83d0982448739220a44d288bbd711aefd7787a
+
+pkgname = aimp-skin-black-box
