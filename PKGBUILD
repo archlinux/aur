@@ -11,7 +11,7 @@
 #
 
 pkgname=retroarch-git
-pkgver=1.22.2.r3538.ce5544fdb0
+pkgver=1.22.2.r7303.347baf9fb9
 pkgrel=1
 pkgdesc='Reference frontend for the libretro API (Git-latest)'
 arch=('i686' 'x86_64')
@@ -86,13 +86,10 @@ build() {
 
   ./configure \
     --prefix=/usr \
-    --enable-builtinmbedtls \
     --disable-cg \
     --disable-jack \
     --disable-oss \
-    --enable-dbus \
-    --enable-builtinsmbclient \
-    --disable-smbclient
+    --enable-dbus
 
   make
   make -C libretro-common/audio/dsp_filters
