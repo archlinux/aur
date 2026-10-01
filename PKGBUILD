@@ -1,24 +1,25 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=k3k
 pkgver=1.2.0
-pkgrel=1
-pkgdesc='Kubernetes in Kubernetes - CLI tool for creating and managing K3s clusters within Kubernetes'
+pkgrel=2
+pkgdesc='Kubernetes in Kubernetes: CLI to create and manage K3s clusters in Kubernetes'
 arch=('x86_64' 'aarch64')
 url='https://github.com/rancher/k3k'
 license=('Apache-2.0')
+depends=('glibc')
 makedepends=('go')
-provides=('k3k')
 conflicts=('k3k-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rancher/k3k/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('bfdf378ac10096c77ff5a5ccf23585b1767cf6b1ebe0f187191247a74f4b8d3a')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    export CGO_ENABLED=0
-    export GOFLAGS='-trimpath -mod=readonly -modcacherw'
-    go build \
-        -ldflags="-w -s -X github.com/rancher/k3k/pkg/buildinfo.Version=v${pkgver}" \
-        -o k3kcli ./cli
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    go build -ldflags="-X github.com/rancher/k3k/pkg/buildinfo.Version=v${pkgver}" -o k3kcli ./cli
 }
 
 package() {
