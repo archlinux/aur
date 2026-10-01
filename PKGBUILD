@@ -4,7 +4,7 @@
 pkgname='aimp-skin-pandemic-all-in-one-simple'
 pkgdesc='AIMP skin: Pandemic All-In-One Simple 1.71 (by Tarik)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('b104d86863accc37122653794157d109ae4198a584dcedeb9e4306ae1f39f77f')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Pandemic All-In-One Simple"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-pandemic-all-in-one-simple-187.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
