@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-pure-metallic
 	pkgdesc = AIMP skin: Pure Metallic 1.1 (by Alekz)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

@@ -4,7 +4,7 @@
 pkgname='aimp-skin-pure-metallic'
 pkgdesc='AIMP skin: Pure Metallic 1.1 (by Alekz)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('30ddc3e1898ab7cc9b0f2640c9114c76cf588622a289a297e482ceb859e6d9c7')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Pure Metallic"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-pure-metallic-415.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
