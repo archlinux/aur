@@ -4,7 +4,7 @@
 pkgname='aimp-skin-terran'
 pkgdesc='AIMP skin: Terran 1.04 (by Argelius)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a751518c791b050a53ebee8d10d273bcc7772a1ba943683ef6ab6d376f834d9e')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Terran"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-terran-1091.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
