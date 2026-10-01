@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-black-reflection-style
+	pkgdesc = AIMP skin: Black Reflection Style 1.04 (by KEIII)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-black-reflection-style-103.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-black-reflection-style-103.archive::https://aimp.ru/?do=catalog.download&id=103
+	sha256sums = a03e472b3198c43cd1a5ed08fa080e25e23a5e804d05bb766a122c4538f09fe6
+
+pkgname = aimp-skin-black-reflection-style
