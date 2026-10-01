@@ -4,7 +4,7 @@
 pkgname='aimp-skin-color-dragon-mini'
 pkgdesc='AIMP skin: Color Dragon Mini 1.8 (by Prince)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('8d7345c0ee66be3f6d11570a6e9aca93ae522c6ae148587009a9d39dc7628914')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Color Dragon Mini"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-color-dragon-mini-105.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
