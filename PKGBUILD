@@ -4,7 +4,7 @@
 pkgname='aimp-skin-oren'
 pkgdesc='AIMP skin: OREN 1.0 (by creative5)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('53ef3584709c40e10424df1b75f063f68a53eb0fab8de94f904392ef22caaf95')
 
 package() {
-  local dest="$pkgdir$_skinsdir/OREN"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-oren-529.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
