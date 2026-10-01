@@ -1,0 +1,26 @@
+pkgbase = neferafk-bin
+	pkgdesc = Idle daemon for Wayland: fade, session lock, screens off and suspend
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/bnema/neferafk
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = pam
+	depends = libxkbcommon
+	depends = vulkan-icd-loader
+	depends = vulkan-driver
+	depends = systemd
+	depends = ttf-dejavu
+	optdepends = pass: PIN source for auth.mode = pin
+	provides = neferafk
+	conflicts = neferafk
+	conflicts = neferafk-git
+	backup = etc/pam.d/neferafk
+	source_aarch64 = neferafk-bin_0.2.0_aarch64.tar.gz::https://github.com/bnema/neferafk/releases/download/v0.2.0/neferafk_0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = fd7c19f5646bf72f0ad392414611aaec5c9f3cabf455def69e9af8dc739f55f4
+	source_x86_64 = neferafk-bin_0.2.0_x86_64.tar.gz::https://github.com/bnema/neferafk/releases/download/v0.2.0/neferafk_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 083a8b091cdb9fc51fc8d184e91838f931af88a24bd907abf16cb6467c61a989
+
+pkgname = neferafk-bin
