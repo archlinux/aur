@@ -4,7 +4,7 @@
 pkgname='aimp-skin-fortuna'
 pkgdesc='AIMP skin: Fortuna 1.1 (by NikolavRj)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('5ebc46c12ecbe010fa1bd56c8b4abc4553d6979b7d6db1537e778ca1c9ab833c')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Fortuna"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-fortuna-267.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
