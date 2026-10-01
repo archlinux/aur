@@ -1,8 +1,8 @@
 # Maintainer: Cody Marsengill <cod.e.codes.dev@gmail.com>
 pkgname=marchat-bin
-pkgver=1.3.7
+pkgver=1.3.8
 pkgrel=1
-_pkgtag=v1.3.7
+_pkgtag=v1.3.8
 pkgdesc='Terminal chat with WebSockets (official release binaries)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Cod-e-Codes/marchat'
@@ -11,8 +11,8 @@ options=('!strip')
 depends=('glibc')
 source_x86_64=("marchat-${_pkgtag}-linux-amd64.zip::https://github.com/Cod-e-Codes/marchat/releases/download/${_pkgtag}/marchat-${_pkgtag}-linux-amd64.zip")
 source_aarch64=("marchat-${_pkgtag}-linux-arm64.zip::https://github.com/Cod-e-Codes/marchat/releases/download/${_pkgtag}/marchat-${_pkgtag}-linux-arm64.zip")
-sha256sums_x86_64=('2fed25891ed37904b9917875e1a2405ef0f617e79573421d0300a089566f5faa')
-sha256sums_aarch64=('702b1efce4ceaa9a7936b5c996a84ffbec7c8e3f75e8f53bdae12db84ccf495f')
+sha256sums_x86_64=('47c6f14b650880115ea090a25a36fd1b746ff227b85d1f2f834fc459638f60b1')
+sha256sums_aarch64=('58cceeb97bf609c8a3b08c54032fb9d09baf87e3ad872a99b0e472c0502af7f7')
 
 package() {
   if [[ $CARCH == x86_64 ]]; then
