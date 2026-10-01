@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-revox-b-710
+	pkgdesc = AIMP skin: Revox B-710 1.51 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-revox-b-710-575.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-revox-b-710-575.archive::https://aimp.ru/?do=catalog.download&id=575
+	sha256sums = 5378ad1549857375483a8ce6500e65dd748d1c1bd32b93752e17d9dcf352c427
+
+pkgname = aimp-skin-revox-b-710
