@@ -4,7 +4,7 @@
 pkgname='aimp-skin-chromotherapy'
 pkgdesc='AIMP skin: Chromotherapy 1.0 (by Henrique Oliveira)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('6ede13a3bcff22d61aab4a6f9d0e8fe2679521ce61cf21135be2b882aa116b69')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Chromotherapy"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-chromotherapy-626.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
