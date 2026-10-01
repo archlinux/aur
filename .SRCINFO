@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-eve-in-blue
+	pkgdesc = AIMP skin: Eve in Blue 1.2 (by smokerrr86)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-eve-in-blue-339.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-eve-in-blue-339.archive::https://aimp.ru/?do=catalog.download&id=339
+	sha256sums = 28768ddd0a234ee4247ad7446b3a6d57897f40685f9ba475fd3e057883cddd37
+
+pkgname = aimp-skin-eve-in-blue
