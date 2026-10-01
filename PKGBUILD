@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=python-html5lib-git
-pkgver=1.1.r9.gf7cab6f
+pkgver=1.1.r29.gfd4f032
 pkgrel=1
 pkgdesc="A Python HTML parser/tokenizer based on the WHATWG HTML5 spec"
 arch=('any')
@@ -16,19 +16,18 @@ checkdepends=('python-six' 'python-pytest' 'python-lxml' 'python-mock')
 source=("${pkgname}::git+https://github.com/html5lib/html5lib-python.git"
   LICENSE
 )
-
 package() {
-  cd ${srcdir}/${pkgname}
+  cd "${srcdir}/${pkgname}"
 
-  python3 setup.py install --root=${pkgdir}
+  python3 setup.py install --root="${pkgdir}"
   install -Dm755 "${srcdir}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 pkgver() {
-  cd ${srcdir}/${pkgname}
+  cd "${srcdir}/${pkgname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 sha256sums=('SKIP'
-            '89807acf2309bd285f033404ee78581602f3cd9b819a16ac2f0e5f60ff4a473e')
+  '89807acf2309bd285f033404ee78581602f3cd9b819a16ac2f0e5f60ff4a473e')
