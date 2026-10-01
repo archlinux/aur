@@ -4,7 +4,7 @@
 pkgname='aimp-skin-sports-blue'
 pkgdesc='AIMP skin: Sports Blue 1.02 (by FreeZeek)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('fe9479c0e6f552b9d5b1430c79641a00774518fe6f880e2d219b78fa9dbe5f31')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Sports Blue"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-sports-blue-119.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
