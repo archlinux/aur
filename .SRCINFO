@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-prolux-gray
+	pkgdesc = AIMP skin: Prolux Gray 1.0 (by Aleksandr009)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-prolux-gray-515.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-prolux-gray-515.archive::https://aimp.ru/?do=catalog.download&id=515
+	sha256sums = 67761177753c49f3a59efa424142c953e3c2c04e1db71c2290fba675e14c9e7a
+
+pkgname = aimp-skin-prolux-gray
