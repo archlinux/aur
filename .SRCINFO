@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-dark-lagoon
+	pkgdesc = AIMP skin: Dark Lagoon 2.3 (by Krieger)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-dark-lagoon-109.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-dark-lagoon-109.archive::https://aimp.ru/?do=catalog.download&id=109
+	sha256sums = c60eccb10cd1b44e9bb017f306209fb4773490f89c6528fe7723d5c99a821894
+
+pkgname = aimp-skin-dark-lagoon
