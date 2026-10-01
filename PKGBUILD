@@ -4,7 +4,7 @@
 pkgname='aimp-skin-gray-cover-aio'
 pkgdesc='AIMP skin: Gray Cover AIO 3.0 (by BehemothXxx)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c75502122e940a5f7e2968c4f41a5f0834d97b55b15e7ea79bbbf9768ec808a3')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Gray Cover AIO"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-gray-cover-aio-570.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

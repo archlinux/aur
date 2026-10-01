@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-gray-cover-aio
 	pkgdesc = AIMP skin: Gray Cover AIO 3.0 (by BehemothXxx)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
