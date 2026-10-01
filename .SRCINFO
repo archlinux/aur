@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-radial-aio
+	pkgdesc = AIMP skin: Radial AIO 1.0 (by NikolavRj)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-radial-aio-554.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-radial-aio-554.archive::https://aimp.ru/?do=catalog.download&id=554
+	sha256sums = b061ef17303f6f539d35aa8f55d2cfbf076e87368b379b3d372dd6421fcd3afd
+
+pkgname = aimp-skin-radial-aio
