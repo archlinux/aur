@@ -4,7 +4,7 @@
 pkgname='aimp-skin-metro-color'
 pkgdesc='AIMP skin: Metro Color 1.9 (by danyBatinF1)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('74a73011979a5ba5766376fd079ce8558c614873eb3ae4b92dd9f513a7df90f2')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Metro Color"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-metro-color-844.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
