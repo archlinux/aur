@@ -19,11 +19,11 @@ source=(
 )
 
 package() {
-  mkdir -p $pkgdir/usr/share/java/$pkgname
-  cp $srcdir/*.jar $pkgdir/usr/share/java/$pkgname/Mars.jar
-  install -Dm755 $srcdir/$pkgname.sh "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 $srcdir/$pkgname.svg "$pkgdir"/usr/share/pixmaps/$pkgname.svg
-  install -Dm644 $srcdir/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+  mkdir -p "$pkgdir/usr/share/java/$pkgname"
+  cp "$srcdir"/*.jar "$pkgdir/usr/share/java/$pkgname/Mars.jar"
+  install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "$srcdir/$pkgname.svg" "$pkgdir/usr/share/pixmaps/$pkgname.svg"
+  install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
 
 sha256sums=('ac340b676ba2b62246b9df77e62f81ad4447bcfd329ab539716bcd09950b7096'
