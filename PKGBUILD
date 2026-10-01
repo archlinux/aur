@@ -4,7 +4,7 @@
 pkgname='aimp-skin-lotex'
 pkgdesc='AIMP skin: Lotex 1.0 (by amdpastrana)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('8834b9fb34ec15d9b0733982f4c704ca0fb62b1ad7c2afb84492e9a6e1197da1')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Lotex"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-lotex-714.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
