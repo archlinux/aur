@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-senta22
+	pkgdesc = AIMP skin: Senta22 1.4 (by Acronis)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-senta22-363.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-senta22-363.archive::https://aimp.ru/?do=catalog.download&id=363
+	sha256sums = b858e3c82312c471e391a6fe7ec5c45a0e718ed9997fdafc2310f16b66781dcf
+
+pkgname = aimp-skin-senta22
