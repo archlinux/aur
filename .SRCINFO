@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-metro-3-0-8
+	pkgdesc = AIMP skin: Metro 3/0.8 1.0 (by D_DeYneko)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-metro-3-0-8-376.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-metro-3-0-8-376.archive::https://aimp.ru/?do=catalog.download&id=376
+	sha256sums = 42cf2a9c19653ff3458c259f94b6ab127237becf5203f7a09e8299838429e9c3
+
+pkgname = aimp-skin-metro-3-0-8
