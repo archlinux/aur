@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-gom-player
+	pkgdesc = AIMP skin: GOM Player 1.0 (by Imperator3)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-gom-player-114.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-gom-player-114.archive::https://aimp.ru/?do=catalog.download&id=114
+	sha256sums = ad7a7123a4baa74bd76317a6e52798d8a88fbd0002a7a52471a099400a01c3fe
+
+pkgname = aimp-skin-gom-player
