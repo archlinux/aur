@@ -4,7 +4,7 @@
 pkgname='aimp-skin-stalker-3'
 pkgdesc='AIMP skin: STALKER_3 1.0 (by Virys90)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('03bd02289608fd422fd75ead7668dde7bcca3dc83fbf71c5d328a2b97c7af248')
 
 package() {
-  local dest="$pkgdir$_skinsdir/STALKER_3"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-stalker-3-166.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
