@@ -1,6 +1,6 @@
 pkgbase = video-downloader-longyinstudio
 	pkgdesc = Download videos from websites like YouTube and many others (based on yt-dlp)
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/LongYinStudio/video-downloader
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = video-downloader-longyinstudio
 	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = webkit2gtk-4.1
-	source = https://github.com/LongYinStudio/video-downloader/releases/download/v0.5.0/video-downloader_0.5.0_amd64.deb
+	source = https://github.com/LongYinStudio/video-downloader/releases/download/v0.5.1/video-downloader_0.5.1_amd64.deb
 	source = logo.svg
 	source = video-downloader.desktop
-	sha256sums = SKIP
+	sha256sums = f5c179f1154faff3fd6cd4bfdf2b9af5185eb5a3c302239f5c78ab4c258acc0f
 	sha256sums = d8dc762580ddebd7ea62583eaa24fb6f094b419740ca2a6fdaaf9ae8ec722cd1
 	sha256sums = 6ef15947eadedf7c5f7cdd19d5f299117fa2a1616eef3e3795e0dba70fb1f512
 
