@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-light-wmp12-aero
 	pkgdesc = AIMP skin: Light WMP12 Aero 1.2 (by B1ood)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
