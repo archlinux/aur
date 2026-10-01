@@ -4,7 +4,7 @@
 pkgname='aimp-skin-x-black'
 pkgdesc='AIMP skin: x_Black 1.0 (by ruSS)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('a6994f8a362fc8607e77a1cb86afe5acad4861487f566c3040a45856ef858192')
 
 package() {
-  local dest="$pkgdir$_skinsdir/x_Black"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-x-black-189.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
