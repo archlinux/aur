@@ -1,7 +1,7 @@
 pkgbase = linuxqq-clipsync-git
-	pkgdesc = 【已合并到 linuxqq-wayland-fix-git】过渡包，更新后可卸载
+	pkgdesc = 【已过时，请改用 linuxqq-wayland-fix-git】修复Linuxqq以Wayland运行时的剪贴板异常。
 	pkgver = r38
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SHORiN-KiWATA/linuxqq-wayland-fix
 	arch = any
 	license = MIT
