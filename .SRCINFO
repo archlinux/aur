@@ -1,0 +1,11 @@
+pkgbase = ttf-instrument-serif
+	pkgdesc = Instrument Serif, a condensed display serif typeface by Instrument
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Instrument/instrument-serif
+	arch = any
+	license = OFL-1.1
+	source = ttf-instrument-serif-65c0ef225f386a3c7e87570a4aa9cc0262c2fd81.tar.gz::https://github.com/Instrument/instrument-serif/archive/65c0ef225f386a3c7e87570a4aa9cc0262c2fd81.tar.gz
+	sha256sums = 2b487180fe5a0146008919b2e5d17f08c1f1bc38ded5ace45fcb9834cde6c051
+
+pkgname = ttf-instrument-serif
