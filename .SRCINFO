@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-play-music-aio
+	pkgdesc = AIMP skin: Play Music AIO 2.1 (by Andreas Maker)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-play-music-aio-1106.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-play-music-aio-1106.archive::https://aimp.ru/?do=catalog.download&id=1106
+	sha256sums = 73e47382cd760f153d55ffacdc61501490a71e74cd5714d53baa5dcecdc8e92f
+
+pkgname = aimp-skin-play-music-aio
