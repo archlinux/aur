@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-prolux-mini
+	pkgdesc = AIMP skin: Prolux Mini 1.0 (by Aleksandr009)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-prolux-mini-800.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-prolux-mini-800.archive::https://aimp.ru/?do=catalog.download&id=800
+	sha256sums = 78078b8791ea3c22af789b77bbb18ac31a584e0ea5de770f5c19c0b62b63e99d
+
+pkgname = aimp-skin-prolux-mini
