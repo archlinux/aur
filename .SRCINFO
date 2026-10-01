@@ -1,7 +1,7 @@
 pkgbase = forgit
 	pkgdesc = Utility tool powered by fzf for using git interactively
-	pkgver = 26.09.1
-	pkgrel = 2
+	pkgver = 26.10.0
+	pkgrel = 1
 	url = https://github.com/wfxr/forgit
 	install = forgit.install
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = forgit
 	optdepends = tree: directory tree view for gclean
 	provides = forgit
 	conflicts = forgit-git
-	source = forgit-26.09.1.tar.gz::https://github.com/wfxr/forgit/archive/26.09.1.tar.gz
-	sha256sums = 48dcefa8c7ba83a4de197c733a1077966345e1c62acf1ccfbede4b1f504b2da4
+	source = forgit-26.10.0.tar.gz::https://github.com/wfxr/forgit/archive/26.10.0.tar.gz
+	sha256sums = c24a8691cd28c02b77afa181141818e30090a043a2f4badd96d3a087a86e21a2
 
 pkgname = forgit
