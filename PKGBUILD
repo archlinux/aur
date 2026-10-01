@@ -4,7 +4,7 @@
 pkgname='aimp-skin-xelis'
 pkgdesc='AIMP skin: Xelis 1.1 (by -=Lee=-)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('9188aea84aac9a88b3b6ee543ff19f7e7a910124a2875269a789d42290c3fcd2')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Xelis"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-xelis-218.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
