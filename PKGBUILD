@@ -3,7 +3,7 @@
 
 # The root PKGBUILD of github.com/thisisgm/flea, built from the release's source tarball; its closure's reasons live there.
 pkgname=flea
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc='Fast, keyboard-first file manager for Omarchy'
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ optdepends=('libarchive: archive listing and extraction'
 options=('!debug')
 # SKIP here keeps a version bump to one line; the release workflow pins it from SHASUMS256.txt before the AUR sees it.
 source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('a5f5653616cbc397de8bad7e369f65f8670a032f813598e34b0e227783104827')
+sha256sums=('22e73d13c11708c6de247ecc562f1a9ac8122974a8b8e2e7758b3e3a90fd0fe0')
 
 build() {
   export CARGO_TARGET_DIR="$srcdir/target"
