@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-a-simple-series
 	pkgdesc = AIMP skin: A simple series 1.5 (by SeReG@)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

@@ -4,7 +4,7 @@
 pkgname='aimp-skin-a-simple-series'
 pkgdesc='AIMP skin: A simple series 1.5 (by SeReG@)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('1dce05815a4892ec97d919113dd7f5d372bc444976c2780a1103fbdc8d544432')
 
 package() {
-  local dest="$pkgdir$_skinsdir/A simple series"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-a-simple-series-222.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
