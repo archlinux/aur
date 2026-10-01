@@ -4,7 +4,7 @@
 pkgname='aimp-skin-kiss-fm'
 pkgdesc='AIMP skin: KISS FM 1.0 (by -=Lee=-)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('270aad8b812b96442383e29ff904324466e1c789c3635e3fdb9d6fa98a4810a4')
 
 package() {
-  local dest="$pkgdir$_skinsdir/KISS FM"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-kiss-fm-199.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
