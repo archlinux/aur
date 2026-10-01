@@ -4,7 +4,7 @@
 pkgname='aimp-skin-dark'
 pkgdesc='AIMP skin: Dark 1.7 (by svist0plas)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('9c61928e82262731b5b384d9b90f793d6aaaf5cc6cc4831b2a14f75841830999')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Dark"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-dark-1067.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
