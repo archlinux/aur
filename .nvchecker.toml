@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: Arch Linux contributors
 # SPDX-License-Identifier: 0BSD
 
-[vmaware]
+[upm-git]
 source = "git"
 git = "https://github.com/unjs/upm.git"
 prefix = "v"

@@ -4,7 +4,7 @@
 
 _pkgname=upm
 pkgname=upm-git
-pkgver=1.3.1.r41.g024235b
+pkgver=1.4.0.r0.g2c98bb4
 pkgrel=1
 pkgdesc='A fast, tiny package manager for the npm registry, written in TypeScript.'
 url='https://github.com/unjs/upm'
