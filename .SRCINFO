@@ -1,12 +1,13 @@
 pkgbase = agent-of-empires-bin
 	pkgdesc = Terminal session manager for AI coding agents (Claude Code, Codex, OpenCode)
 	pkgver = 1.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/agent-of-empires/agent-of-empires
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
 	depends = zlib
 	depends = tmux
 	provides = agent-of-empires
