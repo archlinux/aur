@@ -50,6 +50,16 @@ package() {
   rm -rf "$pkgdir/etc/xdg/quickshell/atmosphera/dev"
   rm -rf "$pkgdir/etc/xdg/quickshell/atmosphera/tmp"
 
+  # Bundled per-process lock screen (the shell spawns it as
+  # `qs -c atmosphera-lockscreen`): sibling config whose symlinks into the
+  # main tree let the shared lock UIs render with fresh per-process
+  # singletons.
+  install -dm755 "$pkgdir/etc/xdg/quickshell/atmosphera-lockscreen"
+  install -Dm644 Quickshell/atmosphera-lockscreen/shell.qml "$pkgdir/etc/xdg/quickshell/atmosphera-lockscreen/shell.qml"
+  for d in Assets Bindings Commons Configs Helpers Modules Services Widgets builtin; do
+    ln -sfn "../atmosphera/$d" "$pkgdir/etc/xdg/quickshell/atmosphera-lockscreen/$d"
+  done
+
   # Bake the packaged version for the shell's version detection
   echo "$pkgver" > "$pkgdir/etc/xdg/quickshell/atmosphera/VERSION"
 
