@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A quick & dirty script to emulate Raspberry PI family devices on your laptop"
 arch=(any)
 url="https://github.com/M0Rf30/simonpi"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
   'coreutils'
   'dnsmasq'
