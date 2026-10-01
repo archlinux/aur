@@ -4,7 +4,7 @@
 pkgname='aimp-skin-rostov-102'
 pkgdesc='AIMP skin: Ростов-102 1.58 (by McClaud)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('020d0556eb16e6fdaeebddfebc2bca0a5ee126536f9d725798c7e5238d39235a')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Ростов-102"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-rostov-102-1088.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }

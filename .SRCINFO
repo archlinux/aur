@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-rostov-102
 	pkgdesc = AIMP skin: Ростов-102 1.58 (by McClaud)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
