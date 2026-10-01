@@ -4,7 +4,7 @@
 pkgname='aimp-skin-pipboy-fnv'
 pkgdesc='AIMP skin: PipBoy FNV 1.01 (by Russell)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('e54913f8b3957dd119f96ef336288036857bd6cd9525fc81a6fb61fd2dc9063b')
 
 package() {
-  local dest="$pkgdir$_skinsdir/PipBoy FNV"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-pipboy-fnv-719.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
