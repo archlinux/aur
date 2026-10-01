@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-flo-4k
+	pkgdesc = AIMP skin: -Flo- 4K 2.13 (by McClaud)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-flo-4k-1166.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-flo-4k-1166.archive::https://aimp.ru/?do=catalog.download&id=1166
+	sha256sums = e06b4996de70c072b2e180a71a28dc33d8ea12f66fbcc307cd8d6a5acff0d474
+
+pkgname = aimp-skin-flo-4k
