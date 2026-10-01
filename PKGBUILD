@@ -4,7 +4,7 @@
 pkgname='aimp-skin-alchemy'
 pkgdesc='AIMP skin: Alchemy 1.6 (by Henrique Oliveira)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('1b425f13525bcfd4d1af77f843e668b0401c1cd7c3eafcc4b27deea0a4617927')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Alchemy"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-alchemy-766.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
