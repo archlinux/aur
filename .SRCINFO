@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-drawn-on-paper
 	pkgdesc = AIMP skin: Drawn on paper 1.0 (by le_ad)
 	pkgver = 20261001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom

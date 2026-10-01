@@ -4,7 +4,7 @@
 pkgname='aimp-skin-drawn-on-paper'
 pkgdesc='AIMP skin: Drawn on paper 1.0 (by le_ad)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('3788704718e0397277b6e5ee9fe2257d194018b54a5e77650bc62e688de759e9')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Drawn on paper"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-drawn-on-paper-421.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
