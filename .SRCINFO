@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-4x
+	pkgdesc = AIMP skin: 4X 1.0 (by Henrique Oliveira)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-4x-673.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-4x-673.archive::https://aimp.ru/?do=catalog.download&id=673
+	sha256sums = 320570753159384597bc6a537edeeef5b1db8504217789a2b1b5afb7d1f29bbb
+
+pkgname = aimp-skin-4x
