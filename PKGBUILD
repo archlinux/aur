@@ -4,7 +4,7 @@
 pkgname='aimp-skin-astra-205'
 pkgdesc='AIMP skin: Astra-205 1.0 (by Black_AVP)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('e9146d2c6b811dff5c411f79ec73a00a0e499996cf56979f26caf9accc6258b9')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Astra-205"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-astra-205-907.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
