@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-black-lineage
+	pkgdesc = AIMP skin: Black Lineage 1.1 (by San4o)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-black-lineage-141.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-black-lineage-141.archive::https://aimp.ru/?do=catalog.download&id=141
+	sha256sums = c825f3f8ff54616d0897c2d76f57f238fd7ebc10dbe46cf7aa64950f731ba7fc
+
+pkgname = aimp-skin-black-lineage
