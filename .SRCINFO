@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-mac-os-x-style
+	pkgdesc = AIMP skin: Mac OS X Style 1.0 (by sagitt.67)
+	pkgver = 20261001
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-mac-os-x-style-531.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-mac-os-x-style-531.archive::https://aimp.ru/?do=catalog.download&id=531
+	sha256sums = 515218a3a4c5d2eaf004cdda7fadeaa14b8931334d01697935b785e305313682
+
+pkgname = aimp-skin-mac-os-x-style
