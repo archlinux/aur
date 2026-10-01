@@ -1,11 +1,12 @@
 # Maintainer: SLIGHTLKE <SLIGHTLKE@outlook.com>
 pkgname=obs-studio-appimage
 pkgver=32.2.2.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="OBS-Studio package based on AppImage"
 arch=('x86_64')
 url="https://github.com/ivan-hc/OBS-Studio-appimage"
 license=('GPL-3.0-or-later')
+depends=('fuse3')
 optdepends=('xdg-utils')
 options=(!strip)
 
