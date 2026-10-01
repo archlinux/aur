@@ -4,7 +4,7 @@
 pkgname='aimp-skin-euphoria-aio'
 pkgdesc='AIMP skin: Euphoria AIO 3.01 (by GR-X)'
 pkgver=20261001
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -19,9 +19,11 @@ noextract=("${source[@]%%::*}")
 sha256sums=('c9b0a5661dd10c65da93e78c1d5bbd5ba432026db51737c06be623398eae6e3d')
 
 package() {
-  local dest="$pkgdir$_skinsdir/Euphoria AIO"
+  local dest="$pkgdir$_skinsdir"
   install -dm755 "$dest"
   bsdtar -xf "$srcdir/aimp-skin-euphoria-aio-163.archive" -C "$dest"
+  find "$dest" -mindepth 2 -type f -exec mv -t "$dest" {} +
+  find "$dest" -mindepth 1 -type d -empty -delete
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 }
