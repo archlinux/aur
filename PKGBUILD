@@ -4,7 +4,7 @@
 # The root PKGBUILD of github.com/thisisgm/flea, built from the release's source tarball; its closure's reasons live there.
 pkgname=flea
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, keyboard-first file manager for Omarchy'
 arch=('x86_64' 'aarch64')
 url='https://github.com/thisisgm/flea'
@@ -23,8 +23,9 @@ optdepends=('libarchive: archive listing and extraction'
             'zoxide: frecent folders in the folder jump of the path bar')
 options=('!debug')
 # SKIP here keeps a version bump to one line; the release workflow pins it from SHASUMS256.txt before the AUR sees it.
-source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('22e73d13c11708c6de247ecc562f1a9ac8122974a8b8e2e7758b3e3a90fd0fe0')
+# The local name carries pkgrel, so a rebuilt release is downloaded again, never read from a stale yay cache.
+source=("$pkgname-v$pkgver-$pkgrel.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
+sha256sums=('1f17c57377c59b6e8bf211633c73ef5ca9222b79b3331cf7226cb705dc83d71c')
 
 build() {
   export CARGO_TARGET_DIR="$srcdir/target"
