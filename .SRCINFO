@@ -1,6 +1,6 @@
 pkgbase = aspia-client-bin
 	pkgdesc = Remote desktop control and file transfer tool (client, official binary)
-	pkgver = 3.0.21
+	pkgver = 3.0.22
 	pkgrel = 1
 	url = https://aspia.org/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = aspia-client-bin
 	conflicts = aspia-client
 	options = !debug
 	options = !strip
-	source_x86_64 = https://github.com/dchapyshev/aspia/releases/download/v3.0.21/aspia-client-3.0.21-x86_64.deb
-	sha256sums_x86_64 = 381454bb983481042794b29913bd6512aaa567506590ebff1f3c5aa3abcc4f7c
+	source_x86_64 = https://github.com/dchapyshev/aspia/releases/download/v3.0.22/aspia-client-3.0.22-x86_64.deb
+	sha256sums_x86_64 = 5ec35a745d49a55f69785387909f67d0751904b946aa6106a7ba4df6b16d34ee
 
 pkgname = aspia-client-bin
