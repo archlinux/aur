@@ -1,6 +1,6 @@
 pkgbase = single-file-cli-bin
 	pkgdesc = CLI tool for saving a faithful copy of a complete web page in a single HTML file
-	pkgver = 2.16.0
+	pkgver = 2.16.1
 	pkgrel = 1
 	url = https://github.com/gildas-lormeau/single-file-cli
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = single-file-cli-bin
 	provides = single-file
 	conflicts = single-file-cli
 	options = !strip
-	source = README-2.16.0.md::https://raw.githubusercontent.com/gildas-lormeau/single-file-cli/v2.16.0/README.MD
-	source = LICENSE-2.16.0::https://raw.githubusercontent.com/gildas-lormeau/single-file-cli/v2.16.0/LICENSE
+	source = README-2.16.1.md::https://raw.githubusercontent.com/gildas-lormeau/single-file-cli/v2.16.1/README.MD
+	source = LICENSE-2.16.1::https://raw.githubusercontent.com/gildas-lormeau/single-file-cli/v2.16.1/LICENSE
 	sha256sums = 421daaa2da2b4daffdbde35fe0a7e793d114a24ab37fbaa423cf452184df5109
 	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
-	source_x86_64 = single-file-x86_64-2.16.0::https://github.com/gildas-lormeau/single-file-cli/releases/download/v2.16.0/single-file-x86_64-linux
-	sha256sums_x86_64 = c91c51daa9444042c4033e3952a630ac1fb1e7670c07c2c117ff1d15d34d7a8b
-	source_aarch64 = single-file-aarch64-2.16.0::https://github.com/gildas-lormeau/single-file-cli/releases/download/v2.16.0/single-file-aarch64-linux
-	sha256sums_aarch64 = 1856149f6b6659210fe5929b7d70c874ca4ba5ea51779933b716b36d9a06ae24
+	source_x86_64 = single-file-x86_64-2.16.1::https://github.com/gildas-lormeau/single-file-cli/releases/download/v2.16.1/single-file-x86_64-linux
+	sha256sums_x86_64 = 201e126e2fea5b635e8e89902e6bb4379283854f30cd8ff0ee2e28301d16bbc8
+	source_aarch64 = single-file-aarch64-2.16.1::https://github.com/gildas-lormeau/single-file-cli/releases/download/v2.16.1/single-file-aarch64-linux
+	sha256sums_aarch64 = 2290801ac5d145162532bdb9e5a81a39cc98b1d701bc76e33eb198ccbf7ad7c9
 
 pkgname = single-file-cli-bin
