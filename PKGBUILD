@@ -5,10 +5,10 @@ pkgname=compsize-git
 pkgver=r123.a57aa34
 pkgrel=1
 pkgdesc="Btrfs: find compression type/ratio on a file or set of files"
-arch=('any')
+arch=('x86_64' 'i686')
 url="https://github.com/justinbrewer/compsize"
 license=('GPL2')
-makedepends=('gcc' 'git')
+makedepends=('btrfs-progs' 'git')
 source=('git+https://github.com/justinbrewer/compsize#branch=btrfs-progs-fixes')
 conflicts=('compsize')
 provides=('compsize')
