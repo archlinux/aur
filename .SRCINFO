@@ -1,0 +1,19 @@
+pkgbase = swayview-bin
+	pkgdesc = Live workspace overview for sway (prebuilt binary)
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/agejevasv/swayview
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libxkbcommon
+	depends = sway
+	provides = swayview=0.1.8
+	conflicts = swayview
+	options = !strip
+	options = !debug
+	source = https://github.com/agejevasv/swayview/releases/download/v0.1.8/swayview-v0.1.8-x86_64-linux.tar.gz
+	sha256sums = 2ac7f042793849f770251fc24acedb7b27834354fbe38c501c96768a46ff9a88
+
+pkgname = swayview-bin
