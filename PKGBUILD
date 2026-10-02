@@ -4,13 +4,13 @@
 
 pkgname=rpiusbboot-git
 _pkgname=usbboot
-pkgver=r419.fac8ff7
+pkgver=r513.12fa1cd
 pkgrel=1
 pkgdesc="Raspberry Pi USB boot"
 arch=("i686" "x86_64")
 url="https://github.com/raspberrypi/usbboot"
 license=("Apache-2.0")
-depends=("libusb")
+depends=("glibc" "libusb")
 conflict=()
 source=("git+https://github.com/raspberrypi/usbboot.git")
 md5sums=('SKIP')
@@ -30,8 +30,8 @@ package() {
   cd "${srcdir}/${_pkgname}"
   #make DESTDIR="${pkgdir}/" install
   install -D rpiboot ${pkgdir}/usr/bin/rpiusbboot
-  #install -d ${pkgdir}/usr/lib/udev/rules.d/
-  #install -D -m 644 debian/70-rpiboot.rules ${pkgdir}/usr/lib/udev/rules.d/
+  #install -d ${pkgdir}/etc/udev/rules.d/
+  #install -D -m 644 debian/70-rpiboot.rules ${pkgdir}/etc/udev/rules.d/
 }
 
 #
