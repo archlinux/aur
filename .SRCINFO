@@ -1,0 +1,21 @@
+pkgbase = snippit-bin
+	pkgdesc = Desktop clip-trimming tool with live multi-track audio mixing and lossless export (prebuilt binary)
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/mikilimj/Snippit
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = ffmpeg
+	depends = rclone
+	depends = gst-plugins-good
+	depends = gst-libav
+	depends = hicolor-icon-theme
+	provides = snippit
+	conflicts = snippit
+	source = https://github.com/mikilimj/Snippit/releases/download/v1.2.2/Snippit_1.2.2_amd64.deb
+	sha256sums = c1ebc40351524e0000749c463d3e3c547c7b17c2deecf0f1daa370a1cd43996b
+
+pkgname = snippit-bin
