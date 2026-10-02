@@ -1,0 +1,17 @@
+pkgbase = moove
+	pkgdesc = Manipulate file names and locations using a text editor
+	pkgver = 0.4.7
+	pkgrel = 1
+	url = https://github.com/urin/moove
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = moove-0.4.7.tar.gz::https://github.com/urin/moove/archive/refs/tags/v0.4.7.tar.gz
+	sha256sums = 3b26b091671ddf96632e0d0cf895ab87f246442b06c9652d6c7de4b6102e47b3
+
+pkgname = moove
