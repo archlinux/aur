@@ -4,54 +4,41 @@
 # Contributor: bartus <arch-user-repository]a[bartus.33mail.com
 
 pkgname=djv
-pkgver=3.4.2
-pkgrel=2
+pkgver=3.7.1
+pkgrel=1
 pkgdesc="Professional media review software for VFX, animation, and film production"
 arch=("x86_64")
 url="https://grizzlypeak3d.github.io/DJV/"
 license=('BSD-3-Clause')
 groups=()
-depends=('ffmpeg' 'freetype2' 'glm' 'libjpeg-turbo' 'libpng' 'libtiff' 'opencolorio' 'openexr>=3.0.0' 'python' 'rtaudio' 'zlib' 'tl-render')
+depends=('python' 'zlib' 'tl-render')
 makedepends=('cmake')
 replaces=()
 backup=()
 options=()
-source=("${pkgname}-${pkgver}.tgz::https://github.com/grizzlypeak3d/${pkgname^^}/archive/$pkgver.tar.gz"
-	"djv.desktop"
-	"djv.sh"
-	"FindZLIBNG.cmake")
+source=("${pkgname}-${pkgver}.tgz::https://github.com/grizzlypeak3d/${pkgname^^}/archive/$pkgver.tar.gz" "0001-Don-t-unconditionally-include-libraw-in-package.patch" "0002-Honor-destdir-when-installing-navigation-doc.patch")
 noextract=()
-sha256sums=('6e6c7b2065d6cc6c0582485909477aefdadb96775de33fc59699e627c4ab8a2b'
-            'ca440bc9c1713e9edb17ed5adc0456441e69af25f803c834427f23a6991e2eca'
-            'e2bb0b7ebccd1e645d9a62f0c6dadafb94705766c787a2ea38b91b1da4e95cf7'
-            '2dd0e684b08cbbf8412129331eb33c61a2df7996bb3cbb6c89842dd27349f1f9')
+sha256sums=('ad9d15ef9359e0367d81343ba3518877ad4d42c11aa0789991e0eabcee69aa42'
+            'dffb16494d5e8b84d322502e516f965d57905d2b51f5cf87ac91b7e299233e09'
+            '218fd3f8e4f5f7b969a34f19681f8ca373d4e51d8fb78182002d3636adc24458')
 
-prepare() {
-	mv FindZLIBNG.cmake ${pkgname^^}-${pkgver}/cmake/Modules/FindZLIBNG.cmake #Fix a bug where it looks for ZLIBNG not ZLIB-NG
-}
 
 build() {
 
+  patch -p1 -d "${srcdir}/${pkgname^^}-${pkgver}" < "${srcdir}/0001-Don-t-unconditionally-include-libraw-in-package.patch"
+  patch -p1 -d "${srcdir}/${pkgname^^}-${pkgver}" < "${srcdir}/0002-Honor-destdir-when-installing-navigation-doc.patch"
 	cmake -S "${pkgname^^}-${pkgver}" -B ${pkgname^^}-Release \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_PREFIX="" \
-		-DCMAKE_INSTALL_RPATH=""
+		-DCMAKE_INSTALL_PREFIX="/usr" \
+		-DCMAKE_INSTALL_RPATH="" \
+    -DDJV_TLRENDER_PACKAGE=ON
 
 	cmake --build ${pkgname^^}-Release --parallel
 }
 
 package() {
-	DESTDIR=${pkgdir}/opt/${pkgname}/ make -C ${srcdir}/${pkgname^^}-Release/bin/djv/ install
-	cp -r "$srcdir/${pkgname^^}-${pkgver}/docs" "$pkgdir/opt/${pkgname}/"
-	cp -r "$srcdir/${pkgname^^}-${pkgver}/etc" "$pkgdir/opt/${pkgname}/"
+  DESTDIR="${pkgdir}" cmake --install ${pkgname^^}-Release
 	install -D -m644 "${srcdir}/${pkgname^^}-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
-	install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -D -m644 "${srcdir}/${pkgname^^}-${pkgver}/etc/Linux/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -D -m644 "${srcdir}/${pkgname^^}-${pkgver}/etc/Icons/DJV_Icon.svg" "${pkgdir}/usr/share/pixmaps/djv.svg"
-	
-	install -d -m755 "${pkgdir}/usr/bin/"
-	for file in "${pkgdir}/opt/${pkgname}"/bin/*; do
-		ln -s "/opt/${pkgname}/bin/${file##*/}" "${pkgdir}/usr/bin/${file##*/}"
-	done
-	
-	install -D -m655 "${srcdir}/djv.sh" "${pkgdir}/usr/bin/djv"
 }

@@ -1,0 +1,41 @@
+From 71dd476c90c9d5211a9d96e7f65d7b41b956b575 Mon Sep 17 00:00:00 2001
+From: oweissbarth <mail@oweissbarth.de>
+Date: Sat, 3 Oct 2026 00:04:29 +0200
+Subject: [PATCH] Don't unconditionally include libraw in package
+
+---
+ cmake/Modules/Package.cmake | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/cmake/Modules/Package.cmake b/cmake/Modules/Package.cmake
+index d59877079..f7d26d971 100644
+--- a/cmake/Modules/Package.cmake
++++ b/cmake/Modules/Package.cmake
+@@ -274,14 +274,16 @@ else()
+         list(APPEND INSTALL_LIBS ${FFMPEG_LIBS})
+     endif()
+ 
+-    # LibRaw arrives through OpenImageIO rather than being asked for here,
+-    # and whether the super build made it is not something this build is
+-    # told: TLRENDER_LIBRAW is a super build option and does not exist in
+-    # this scope, so testing it here was always false and the libraries were
+-    # never packaged at all. What the prefix holds is the answer, and it
+-    # does not go stale when LibRaw changes its version.
+-    file(GLOB LIBRAW_LIBS "${CMAKE_INSTALL_PREFIX}/lib/libraw*.so*")
+-    list(APPEND INSTALL_LIBS ${LIBRAW_LIBS})
++    if(NOT DJV_TLRENDER_PACKAGE)
++      # LibRaw arrives through OpenImageIO rather than being asked for here,
++      # and whether the super build made it is not something this build is
++      # told: TLRENDER_LIBRAW is a super build option and does not exist in
++      # this scope, so testing it here was always false and the libraries were
++      # never packaged at all. What the prefix holds is the answer, and it
++      # does not go stale when LibRaw changes its version.
++      file(GLOB LIBRAW_LIBS "${CMAKE_INSTALL_PREFIX}/lib/libraw*.so*")
++      list(APPEND INSTALL_LIBS ${LIBRAW_LIBS})
++    endif()
+ 
+     if(TLRENDER_USD)
+         file(GLOB MATERIALX_LIBS
+-- 
+2.56.0
+

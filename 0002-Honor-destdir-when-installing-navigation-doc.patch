@@ -1,0 +1,25 @@
+From db24587fe9ea5bb43abb6e8ee29a25e9544932da Mon Sep 17 00:00:00 2001
+From: oweissbarth <mail@oweissbarth.de>
+Date: Sat, 3 Oct 2026 00:19:55 +0200
+Subject: [PATCH 2/2] Honor destdir when installing navigation doc
+
+---
+ docs/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/docs/CMakeLists.txt b/docs/CMakeLists.txt
+index e7a0c8128..db450d5ba 100644
+--- a/docs/CMakeLists.txt
++++ b/docs/CMakeLists.txt
+@@ -51,7 +51,7 @@ install(
+ # that link, since the page it points at is made by a build.
+ install(
+     CODE "
+-        set(NAV_DIR \"\${CMAKE_INSTALL_PREFIX}/${DEST}\")
++    set(NAV_DIR \"\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/${DEST}\")
+         set(NAV_LIST \"${CMAKE_CURRENT_SOURCE_DIR}/nav.txt\")
+         set(NAV_EXTRA \"${CMAKE_CURRENT_SOURCE_DIR}/nav-install.txt\")"
+     COMPONENT docs)
+-- 
+2.56.0
+
