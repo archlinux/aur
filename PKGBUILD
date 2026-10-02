@@ -1,6 +1,6 @@
 # Maintainer: Woro <woro@tanieddosy.pl>
 pkgname=lomi-bin
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc='A workspace for terminal-driven development'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('lomi')
 options=('!strip' '!debug')
 source_x86_64=("Lomi_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/Lomi_${pkgver}_amd64.deb")
 # The publication workflow replaces SKIP with the released DEB's SHA-256.
-sha256sums_x86_64=('d48675c026851b46c3d9a358880876e6ff6bcc80a462c9816f03ba3e0539706e')
+sha256sums_x86_64=('2723e20dd9d0809b069fcacaf3fb1c0851faa07ef2433e0e8bd15437001d4f5e')
 
 package() {
   tar -xf data.tar.gz -C "${pkgdir}/"
