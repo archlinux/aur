@@ -1,8 +1,8 @@
 # Maintainer: Rolv Apneseth <rolv.apneseth@gmail.com>
 
 pkgname=spaceshot
-pkgver=0.7.0
-pkgrel=3
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="A batteries-included screenshot tool for wlroots-compatible Wayland compositors"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Mabi19/spaceshot"
@@ -28,7 +28,7 @@ makedepends=(
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('b399d1f64403dfb5bd1dc084a63471c1e19c7c5c14b868e0122bf44d9e788cf8200b0fe0b2e7d1a10f61c301a6d25b94d89bdfe841b0fa0a9fa60d780f7f3018')
+sha512sums=('59b69b6b51edf30578a9bb9514c0d6627cce5a5cf7eea2ef79d5f2b20a8921f18522696ebbb64edb8b36d13552976e62a4d412d19690391ab9741989b7fd0def')
 
 build() {
     export CFLAGS="$CFLAGS -fvisibility=hidden"

@@ -1,7 +1,7 @@
 pkgbase = spaceshot
 	pkgdesc = A batteries-included screenshot tool for wlroots-compatible Wayland compositors
-	pkgver = 0.7.0
-	pkgrel = 3
+	pkgver = 0.8.0
+	pkgrel = 1
 	url = https://github.com/Mabi19/spaceshot
 	arch = x86_64
 	arch = aarch64
@@ -22,7 +22,7 @@ pkgbase = spaceshot
 	depends = dbus
 	provides = spaceshot
 	conflicts = spaceshot
-	source = spaceshot-0.7.0.tar.gz::https://github.com/Mabi19/spaceshot/archive/v0.7.0.tar.gz
-	sha512sums = b399d1f64403dfb5bd1dc084a63471c1e19c7c5c14b868e0122bf44d9e788cf8200b0fe0b2e7d1a10f61c301a6d25b94d89bdfe841b0fa0a9fa60d780f7f3018
+	source = spaceshot-0.8.0.tar.gz::https://github.com/Mabi19/spaceshot/archive/v0.8.0.tar.gz
+	sha512sums = 59b69b6b51edf30578a9bb9514c0d6627cce5a5cf7eea2ef79d5f2b20a8921f18522696ebbb64edb8b36d13552976e62a4d412d19690391ab9741989b7fd0def
 
 pkgname = spaceshot
