@@ -1,6 +1,6 @@
 pkgbase = discord-canary
 	pkgdesc = All-in-one voice and text chat for gamers - alpha build
-	pkgver = 1.0.2076
+	pkgver = 1.0.2077
 	pkgrel = 1
 	url = https://discord.com
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = discord-canary
 	optdepends = xdg-utils: For opening URLs and files
 	options = !debug
 	options = !strip
-	source = https://dl-canary.discordapp.net/apps/linux/1.0.2076/discord-canary-1.0.2076.tar.gz
-	source = LICENSE-1.0.2076.html::https://discordapp.com/terms
-	source = OSS-LICENSES-1.0.2076.html::https://discordapp.com/licenses
-	sha512sums = 42cdf885c49cf6f0a323aef698f99a5b6c3ab5c71a130ca138f94d56467a812d3484e0c40cada3f2e6c992874d6d06b8dc4025167e16cadc131930b1b28d3a0a
+	source = https://dl-canary.discordapp.net/apps/linux/1.0.2077/discord-canary-1.0.2077.tar.gz
+	source = LICENSE-1.0.2077.html::https://discordapp.com/terms
+	source = OSS-LICENSES-1.0.2077.html::https://discordapp.com/licenses
+	sha512sums = 66625eaedba2e82d358db387c5f56f02a2abc8913cd722c8952f6886cab0626c48a8b6805109cbe2e751314e84176df07562b0394fdb96299485f60202ef7233
 	sha512sums = SKIP
 	sha512sums = SKIP
 
