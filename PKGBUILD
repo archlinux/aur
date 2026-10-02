@@ -1,7 +1,7 @@
 # Maintainer: Alexander Jacocks <alexander@redhat.com>
 # Contributor: Lili1228 <aur at lili dot lgbt>
 pkgname=es40
-pkgver=0.76
+pkgver=0.88
 pkgrel=1
 pkgdesc='AlphaServer ES40 emulator'
 arch=('x86_64' 'aarch64') # aarch64 not tested but there's a macOS version
@@ -13,7 +13,7 @@ makedepends=('cmake>=3.24' 'git' 'libxt')
 provides=('es40')
 conflicts=('es40')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ES40-Emu/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('378ff036cf53fc0eff8f05c098da86a16e2bca7b354babaa1d97b0f101fa7f34a0e995409e11c71b766c05c22a754c6a1df5dc2d99e7d9c37e1725a1aaeb9e7c')
+sha512sums=('2f12bd27f203b82ca59dacdedcc594c4d87f2571b21913a708cd49564871c09087200e111c665a70d2e64e1f176f14da0ae5ab8cf22356464c21de14b64e252c')
 
 build() {
 	cmake -Bbuild -S${pkgname}-${pkgver} -DES40_DISABLE_LSS_LSM=on -DES40_DISABLE_IDB=on
