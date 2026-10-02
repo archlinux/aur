@@ -1,7 +1,7 @@
 # Maintainer: HorneroOS contributors <https://github.com/HorneroOS/greeter>
 pkgname=hornero-greeter
-pkgver=1.0.1
-pkgrel=1
+pkgver=1.0.2
+pkgrel=3
 pkgdesc='HorneroOS SDDM greeter theme (Argentina footage, offline)'
 arch=('any')
 url='https://github.com/HorneroOS/greeter'
@@ -15,7 +15,7 @@ optdepends=('hornero-greeter-media-base: Argentina video pack')
 # Named "$pkgname" so the checkout lands at "${srcdir}/$pkgname";
 # package() below only ever reads from there, so AUR chroot builds
 # behave exactly like local packaging/ builds.
-source=("$pkgname::git+https://github.com/HorneroOS/greeter.git#tag=v1.0.1")
+source=("$pkgname::git+https://github.com/HorneroOS/greeter.git#tag=v1.0.2")
 sha256sums=('SKIP')
 
 package() {
