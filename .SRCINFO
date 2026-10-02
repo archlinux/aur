@@ -1,6 +1,6 @@
 pkgbase = llavon-ime-fcitx5-git
 	pkgdesc = Fcitx5 frontend and local inference service for Llavon IME
-	pkgver = 0.9.5.r1.gb61de99
+	pkgver = 0.9.6.r0.gf59ebc5
 	pkgrel = 1
 	url = https://github.com/llavon-ime/ime-unix
 	arch = x86_64
