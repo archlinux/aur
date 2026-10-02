@@ -1,6 +1,6 @@
 pkgbase = ptui
-	pkgdesc = Picture TUI
-	pkgver = 2.6.1
+	pkgdesc = Picture TUI - terminal image viewer with a file browser and live previews
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/narbs/ptui
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ptui
 	depends = jp2a
 	provides = ptui
 	conflicts = ptui
-	source = https://github.com/narbs/ptui/releases/download/v2.6.1/ptui-2.6.1-x86_64.tar.gz
-	sha256sums = 0e1f3e9cbcf5c3fbcfe09dd186b254dc2c517b46acb487c62f832aed0206da5e
+	source = https://github.com/narbs/ptui/releases/download/v2.7.0/ptui-2.7.0-x86_64.tar.gz
+	sha256sums = fa81d449d22552be7d8b4271e39266cc899a2e58c72fdd669166f26fe96bebec
 
 pkgname = ptui-bin
