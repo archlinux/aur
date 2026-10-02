@@ -1,6 +1,6 @@
 pkgbase = lomi-bin
 	pkgdesc = A workspace for terminal-driven development
-	pkgver = 0.5.3
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://github.com/lomi-dev/lomi
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = lomi-bin
 	conflicts = lomi
 	options = !strip
 	options = !debug
-	source_x86_64 = Lomi_0.5.3_amd64.deb::https://github.com/lomi-dev/lomi/releases/download/v0.5.3/Lomi_0.5.3_amd64.deb
-	sha256sums_x86_64 = 401b249b0fdfc1f3bc10e175928c9b8cee43de558af47dfbfd943433d7a85759
+	source_x86_64 = Lomi_0.5.5_amd64.deb::https://github.com/lomi-dev/lomi/releases/download/v0.5.5/Lomi_0.5.5_amd64.deb
+	sha256sums_x86_64 = d48675c026851b46c3d9a358880876e6ff6bcc80a462c9816f03ba3e0539706e
 
 pkgname = lomi-bin
