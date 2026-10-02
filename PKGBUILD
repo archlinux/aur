@@ -4,7 +4,7 @@
 # fills in the version and checksum placeholders and pushes the result (with a
 # regenerated .SRCINFO) to the AUR on every release.
 pkgname=iptv-checker-gui
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="GUI for validating IPTV playlists and inspecting stream health"
 arch=('x86_64' 'aarch64')
@@ -17,6 +17,8 @@ license=('MIT')
 # no H.264/AAC decoding for the streams this app exists to play.
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'ffmpeg' 'hicolor-icon-theme'
          'gst-plugins-good' 'gst-plugins-bad' 'gst-libav')
+optdepends=('noto-fonts: Arabic and Persian interface text'
+            'noto-fonts-cjk: Simplified Chinese interface text')
 # The unrelated freearhey CLI package also installs /usr/bin/iptv-checker.
 conflicts=('iptv-checker')
 options=('!strip' '!debug')
@@ -24,8 +26,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/kristofferR/IPTVCh
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/kristofferR/IPTVChecker/releases/download/v${pkgver}/IPTV.Checker_${pkgver}_lin_x64.deb")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::https://github.com/kristofferR/IPTVChecker/releases/download/v${pkgver}/IPTV.Checker_${pkgver}_lin_arm.deb")
 sha256sums=('508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1')
-sha256sums_x86_64=('fa836f55995a0391a12589fdb6b1aef53beb6f14046aec4874a4c38358b6ae7e')
-sha256sums_aarch64=('18b632ef5852a91b857d8192c495b68a5dc260707c00038b62772b28e4f21794')
+sha256sums_x86_64=('4742203f91942df3ac3612769b69aee073a608eb4444d1d21f9a567e2a010b92')
+sha256sums_aarch64=('96a92b6c9d6df47a61e4abd0817dab754ce2d71506d1c7b8240c866105f1dba1')
 
 package() {
     # makepkg already extracted the .deb into srcdir; unpack its payload.
