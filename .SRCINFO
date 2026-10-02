@@ -1,0 +1,18 @@
+pkgbase = python-cli-co-pilot-git
+	pkgdesc = CLI tool that uses GPT4 to turn natural language commands into Bash/ZShell/PowerShell equivalents
+	pkgver = r146.f5aebe0
+	pkgrel = 1
+	url = https://github.com/AntonOsika/CLI-Co-Pilot
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-openai
+	depends = python-psutil
+	depends = bash
+	provides = python-cli-co-pilot
+	conflicts = python-cli-co-pilot
+	source = git+https://github.com/AntonOsika/CLI-Co-Pilot.git
+	sha256sums = SKIP
+
+pkgname = python-cli-co-pilot-git
