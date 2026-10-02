@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
-pkgver=1.5.0.r0.g21a9692
+pkgver=1.9.0.r4.g9e7a41b
 pkgrel=1
 pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,6 @@ depends=(
   'acpid'
   'adw-gtk-theme'
   'cosmic-sound-theme-git'
-  'geoclue'
   'libinput'
   'libpipewire'
   'libpulse'
@@ -23,6 +22,7 @@ makedepends=(
   'cargo'
   'clang'
   'git'
+  'just'
   'libxkbcommon'
   'mold'
 )
@@ -56,16 +56,15 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  export GEOCLUE_AGENT="/usr/lib/geoclue-2.0/demos/agent"
 
   # use mold instead of lld to speed up build
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  nice make ARGS+=" --frozen --release" geoclue_agent='/usr/lib/geoclue-2.0/demos/agent'
+  just build-release --frozen
 }
 
 package() {
   cd "${pkgname%-git}"
-  make DESTDIR="$pkgdir" install
+  just rootdir="$pkgdir" install
 }
