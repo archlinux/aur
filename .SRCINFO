@@ -1,0 +1,22 @@
+pkgbase = katana-desktop
+	pkgdesc = Unofficial desktop client for Nonograms Katana user puzzles
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ArkadyBuryakov/katana-desktop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = glib2
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = libsoup3
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = katana-desktop-1.0.0.tar.gz::https://github.com/ArkadyBuryakov/katana-desktop/archive/v1.0.0.tar.gz
+	sha256sums = 634a03bdaf056aed42760fab0a2d5eef7229ae7b263e7a30188f4ff2456c61e3
+
+pkgname = katana-desktop
