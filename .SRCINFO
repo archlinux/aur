@@ -1,0 +1,24 @@
+pkgbase = tincan-git
+	pkgdesc = Serverless peer-to-peer voice and text chat for your terminal
+	pkgver = 0.3.3.r0.g8d47968
+	pkgrel = 1
+	url = https://github.com/bilalyazicioglu/tincan-cli
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = alsa-lib
+	depends = glibc
+	depends = libgcc
+	depends = libopusenc
+	source = tincan::git+https://github.com/bilalyazicioglu/tincan-cli.git
+	sha256sums = SKIP
+
+pkgname = tincan-git
+	depends = alsa-lib
+	depends = glibc
+	depends = libgcc
+	depends = libopusenc
+	depends = libasound.so
+	depends = libgcc_s.so
+	depends = libopus.so
