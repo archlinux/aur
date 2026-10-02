@@ -2,7 +2,7 @@
 
 pkgname=voix
 _pkgname=Voix
-pkgver=4.13.1
+pkgver=4.13.2
 pkgrel=1
 pkgdesc="A secure privilege escalation tool replacing sudo/doas, using PAM for authentication"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ conflicts=('sudo' 'doas')
 backup=('etc/pam.d/voix' 'etc/voix.conf')
 install=voix.install
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e7df7e95dfd9cf343d248f3c412b2d0d347e188a0e06335b603e19499494394f')
+sha256sums=('b38cca2a0a85c03d3b5d45274767988c0e2e4f9a8786f7b7b94864e74fa61b8b')
 
 build() {
     cd "$_pkgname-$pkgver"
