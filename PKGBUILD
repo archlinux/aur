@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=buildcache-git
-pkgver=0.28.4.r2.g735eebb
-pkgrel=2
+pkgver=0.33.1.r7.gd064f06
+pkgrel=1
 pkgdesc="An advanced compiler accelerator"
 arch=('i686' 'x86_64')
 url="https://github.com/mbitsnbites/buildcache"
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake')
 optdepends=('lua')
 provides=("buildcache=$pkgver")
 conflicts=('buildcache')
-source=("git+https://github.com/mbitsnbites/buildcache.git")
+source=("git+https://gitlab.com/bits-n-bites/buildcache.git")
 sha256sums=('SKIP')
 
 

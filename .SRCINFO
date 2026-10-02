@@ -1,7 +1,7 @@
 pkgbase = buildcache-git
 	pkgdesc = An advanced compiler accelerator
-	pkgver = 0.28.4.r2.g735eebb
-	pkgrel = 2
+	pkgver = 0.33.1.r7.gd064f06
+	pkgrel = 1
 	url = https://github.com/mbitsnbites/buildcache
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = buildcache-git
 	depends = libstdc++
 	depends = openssl
 	optdepends = lua
-	provides = buildcache=0.28.4.r2.g735eebb
+	provides = buildcache=0.33.1.r7.gd064f06
 	conflicts = buildcache
-	source = git+https://github.com/mbitsnbites/buildcache.git
+	source = git+https://gitlab.com/bits-n-bites/buildcache.git
 	sha256sums = SKIP
 
 pkgname = buildcache-git
