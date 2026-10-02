@@ -1,8 +1,8 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=apkeep-bin
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='CLI tool from EFF for downloading APK files from various sources'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url='https://github.com/EFForg/apkeep'
@@ -14,10 +14,10 @@ options=('!debug')
 
 source=("LICENSE-${pkgver}::${url}/raw/${pkgver}/LICENSE")
 sha256sums=('335c6d84628245ca74629ebc030948ad640e5411a559f926aed421a4d0d829e3')
-sha256sums_x86_64=('a23579a3ba366d25a6d69848189b983d65662f4ecf4b9e11e16510811659de4e')
-sha256sums_aarch64=('5410acebd1b69427adcf98ccfdda6fa4dd3201e0540e5e2c01037b68e0a84049')
-sha256sums_armv7h=('c561060b6e0bdf0b080c8d0c58253281dd2a080001e6564e70ee45e8be5da8eb')
-sha256sums_i686=('194351b2ad857332a34cfded760955b5a339e875a50dc2fe5b5786b33e9d7d2c')
+sha256sums_x86_64=('badd7ad9fa7d2f32abe01eaf33b7ff086361a95bbc000a33bf44b630d4bf2140')
+sha256sums_aarch64=('1a2e959842bbca4bc8db455b8132cc6f37534d70f2384409096268d8fc442ae8')
+sha256sums_armv7h=('570e28e399bed789e95831938b795eada4a28a7d5b8c2ecae343ac7f1a73381e')
+sha256sums_i686=('bb83499cf0bc9dfe7a8dbbed28930cbd6714e2de1070c4711ee8d604bb92934c')
 
 source_x86_64=("apkeep-${pkgver}-x86_64::${url}/releases/download/${pkgver}/apkeep-x86_64-unknown-linux-gnu")
 
