@@ -30,8 +30,8 @@ makedepends=(
     'git'
     'ninja'
 )
-provides=('solvespace' 'neosolve')
-conflicts=('solvespace' 'neosolve')
+provides=('neosolve')
+conflicts=('neosolve')
 source=("neosolve::git+https://github.com/dodox1/neosolve.git#branch=${_branch}")
 sha256sums=('SKIP')
 
