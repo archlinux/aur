@@ -1,0 +1,16 @@
+pkgbase = python-spotui
+	pkgdesc = TUI Spotify client written in Python
+	pkgver = 0.1.20
+	pkgrel = 1
+	url = https://github.com/ceuk/spotui
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-spotipy
+	source = python-spotui-0.1.20.tar.gz::https://github.com/ceuk/spotui/archive/refs/tags/v0.1.20.tar.gz
+	sha256sums = 8a545a950259ddfd2fd9601de5d37bcc9a50e8a2c8c102cd1f4bf562105c7e5a
+
+pkgname = python-spotui
