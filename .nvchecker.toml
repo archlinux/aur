@@ -1,7 +1,5 @@
 [ziggy-bin]
-# source = "github"
-# github = "kristoff-it/ziggy"
-# use_latest_release = true
-source = "git"
-git = "https://github.com/kristoff-it/ziggy.git"
+source = "github"
+github = "kristoff-it/ziggy"
+use_latest_release = true
 prefix = "v"
