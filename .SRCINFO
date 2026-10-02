@@ -1,6 +1,6 @@
 pkgbase = nginx-ui
 	pkgdesc = Yet another WebUI for Nginx
-	pkgver = 2.8.1
+	pkgver = 2.8.2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/0xJacky/nginx-ui
@@ -16,8 +16,8 @@ pkgbase = nginx-ui
 	makedepends = bun
 	makedepends = go
 	backup = etc/nginx-ui/config.ini
-	source = nginx-ui-2.8.1.tar.gz::https://github.com/0xJacky/nginx-ui/archive/refs/tags/v2.8.1.tar.gz
-	sha256sums = 49c353f75da31ed218834a7ba165e1a9dfa5953c1383c9d2897a45b89dc31b84
+	source = nginx-ui-2.8.2.tar.gz::https://github.com/0xJacky/nginx-ui/archive/refs/tags/v2.8.2.tar.gz
+	sha256sums = 005853326c961cbf72a514d24c8c3f86f80d535166822575a89fb6bf139b87ee
 
 pkgname = nginx-ui
 	depends = nginx
