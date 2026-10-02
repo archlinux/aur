@@ -4,7 +4,7 @@ _gitauthor=oxyzenQ
 _gitname=zelynic
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="Easy userspace bandwidth manager for Linux"
+pkgdesc="Per-app network rate limiter and traffic monitor for Linux. Pure eBPF. Boring and silent but killer."
 
 pkgver=11.0.0
 pkgrel=1
