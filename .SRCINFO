@@ -1,0 +1,15 @@
+pkgbase = tdash
+	pkgdesc = A terminal dashboard with stats from Google Analytics, GitHub, Travis CI, and Jenkins
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://github.com/jessfraz/tdash
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.11
+	depends = glibc
+	options = !lto
+	source = tdash-0.5.5.tar.gz::https://github.com/jessfraz/tdash/archive/refs/tags/v0.5.5.tar.gz
+	sha256sums = 342c869888255cb7000d17667435b9f950a7be87c8840515ec3d594d2cb44e09
+
+pkgname = tdash
