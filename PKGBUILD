@@ -20,6 +20,8 @@ license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${pkgname%-bin}")
 
+depends=('git')
+
 source=("CONFIG_EXAMPLE-${pkgver}.toml::${_urlraw}/${_pkgname}.toml.example"
 		"README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")

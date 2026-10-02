@@ -6,6 +6,7 @@ pkgbase = treehouse-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	depends = git
 	provides = treehouse
 	conflicts = treehouse
 	source = CONFIG_EXAMPLE-3.1.1.toml::https://raw.githubusercontent.com/kunchenguid/treehouse/v3.1.1/treehouse.toml.example
