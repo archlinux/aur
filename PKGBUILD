@@ -96,6 +96,10 @@ source=(
 
   # fix cgal version 6.2
   "009-fix-cgal-6.2-add-Point_d_4d_Less-comparator.patch::${_patch_url_prefix}/9d956f18b78b87373445fb5628d21acc2329de9f.patch"
+
+  # Support swig 4.5
+  # Modified from "${_patch_url_prefix}/3bb8b0cb9a30f7d9cc5287c2aec3620724dfd9b8.patch"
+  "010-fix-swig-4.5.patch"
 )
 
 sha256sums=(
@@ -113,6 +117,7 @@ sha256sums=(
   '9313a1e7010f6549e1c347ce013f9d0c96c1193473e508fe3d03f37b281214f5'
   '1f1ff8591a8e20e7361acf0ed4b69ca049870728e5e451e8dbe012448ff6288a'
   'f92072640da729f4772d9c55aca1a82e282d824bf9b0f077cf5d5e9898b98e76'
+  'f9ed5834d63c2300cefc19642a6780a15d16fe14f29aec5a43093e6e64149b74'
 
 )
 

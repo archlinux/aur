@@ -1,0 +1,56 @@
+From 3bb8b0cb9a30f7d9cc5287c2aec3620724dfd9b8 Mon Sep 17 00:00:00 2001
+From: Bruno Postle <bruno@postle.net>
+Date: Fri, 28 Aug 2026 19:35:23 +0100
+Subject: [PATCH] Support swig 4.5 (#9324)
+
+Current swig has removed support for python2 macros, breaking the build.
+See: https://github.com/swig/swig/blob/5872e9b4176cf59ce4e31b010c29a4cebf32960f/CHANGES#L391
+---
+ src/ifcwrap/utils/type_conversion.i | 6 +++---
+ src/ifcwrap/utils/typemaps_out.i    | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/ifcwrap/utils/type_conversion.i b/src/ifcwrap/utils/type_conversion.i
+index 1fc5df9010ee..41cded53a746 100644
+--- a/src/ifcwrap/utils/type_conversion.i
++++ b/src/ifcwrap/utils/type_conversion.i
+@@ -64,7 +64,7 @@
+ 
+ 	template <>
+ 	int cast_pyobject(PyObject* element) {
+-		return static_cast<int>(PyInt_AsLong(element));
++		return static_cast<int>(PyLong_AsLong(element));
+ 	}
+ 
+ 	template <>
+@@ -158,8 +158,8 @@
+ 		}
+ 	}
+
+-	PyObject* pythonize(const int& t)                   { return PyInt_FromLong(t);                                                                  }
++	PyObject* pythonize(const int& t)                   { return PyLong_FromLong(t);                                                                  }
+-	PyObject* pythonize(const unsigned int& t)          { return PyInt_FromLong(t);                                                                  }
++	PyObject* pythonize(const unsigned int& t)          { return PyLong_FromLong(t);                                                                  }
+ 	PyObject* pythonize(const bool& t)                  { return PyBool_FromLong(t);                                                                 }
+ 	PyObject* pythonize(const boost::logic::tribool& t) { return boost::logic::indeterminate(t) ? PyUnicode_FromString("UNKNOWN") : PyBool_FromLong((bool)t) ;}
+ 	PyObject* pythonize(const double& t)                { return PyFloat_FromDouble(t);                                                              }
+diff --git a/src/ifcwrap/utils/typemaps_out.i b/src/ifcwrap/utils/typemaps_out.i
+index 3e41e6f08a37..735dc22136ef 100644
+--- a/src/ifcwrap/utils/typemaps_out.i
++++ b/src/ifcwrap/utils/typemaps_out.i
+@@ -19,5 +19,5 @@
+ %typemap(out) IfcUtil::ArgumentType {
+-	$result = SWIG_Python_str_FromChar(IfcUtil::ArgumentTypeToString($1));
++	$result = PyUnicode_FromString(IfcUtil::ArgumentTypeToString($1));
+ }
+ 
+ %typemap(out) IfcParse::declaration* {
+@@ -38,7 +38,7 @@
+ 
+ %typemap(out) IfcParse::simple_type::data_type {
+ 	static const char* const data_type_strings[] = {"binary", "boolean", "integer", "logical", "number", "real", "string"};
+-	$result = SWIG_Python_str_FromChar(data_type_strings[(int)$1]);
++	$result = PyUnicode_FromString(data_type_strings[(int)$1]);
+ }
+ 
+ %typemap(out) attribute_value {
