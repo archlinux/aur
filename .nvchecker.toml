@@ -1,0 +1,5 @@
+[tshare-bin]
+source = "github"
+github = "trikko/tshare"
+use_latest_release = true
+prefix = "v"
