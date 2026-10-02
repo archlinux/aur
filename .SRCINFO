@@ -1,0 +1,16 @@
+pkgbase = bocker
+	pkgdesc = Docker implemented in around 100 lines of bash
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/p8952/bocker
+	arch = any
+	license = GPL-3.0-only
+	depends = bash
+	depends = btrfs-progs
+	depends = util-linux
+	depends = iproute2
+	depends = coreutils
+	source = bocker-0.1.tar.gz::https://github.com/p8952/bocker/archive/refs/tags/v0.1.tar.gz
+	sha256sums = a043aaa136a688b69e41ea43a8742cba577a153a7afb48c631386cc3621ff3a0
+
+pkgname = bocker
