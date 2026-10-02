@@ -6,7 +6,7 @@
 # electron-builder produces in CI.
 pkgname=decibell-bin
 _pkgname=decibell
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="Decentralized text, voice chat, and streaming app"
 arch=('x86_64')
