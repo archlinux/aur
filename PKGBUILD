@@ -1,6 +1,6 @@
 # Maintainer: litescript <peter@litescript.net>
 pkgname=omnote-git
-pkgver=1.3.1.r0.g2f0cee3
+pkgver=1.4.0.r0.g93821d7
 pkgrel=1
 pkgdesc="Minimalist plain-text notepad for Linux (GTK4 + libadwaita)"
 arch=('any')
