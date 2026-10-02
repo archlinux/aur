@@ -2,12 +2,12 @@
 
 _pkgbase=tkginstaller
 pkgname=${_pkgbase}-git
-pkgver=0.60.3.r398.gfc304cc
+pkgver=0.60.3.r399.gbd00883
 pkgrel=1
-_commit=fc304cc7f27d3ea5962da57073afe1561e210dd8
+_commit=bd008833dd4453070bbc193a996c65bc47ebd681
 provides=("${_pkgbase}=${pkgver}")
 conflicts=("${_pkgbase}")
-pkgdesc="bash wrapper to build & install Frogging-Family stuff with ease"
+pkgdesc="Build & install Frogging-Family stuff with ease"
 arch=('any')
 url="https://github.com/damachine/${_pkgbase}"
 license=('MIT')
