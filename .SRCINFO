@@ -1,6 +1,6 @@
 pkgbase = openviking-cli
 	pkgdesc = Rust CLI client for OpenViking
-	pkgver = 0.4.20
+	pkgver = 0.4.23
 	pkgrel = 1
 	url = https://github.com/volcengine/OpenViking
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = openviking-cli
 	depends = libgcc
 	depends = xz
 	conflicts = ov
-	source = openviking-cli-0.4.20.tar.gz::https://github.com/volcengine/OpenViking/archive/refs/tags/cli@0.4.20.tar.gz
-	sha256sums = 91f342011e760521570c4dd0dcbca5c420861d9afa2f79ee88e3bc4f29e6cd93
+	source = openviking-cli-0.4.23.tar.gz::https://github.com/volcengine/OpenViking/archive/refs/tags/cli@0.4.23.tar.gz
+	sha256sums = e710dbf736d981bfd8dcae7d39fa9d9ed97431616bfd0639bc8c6f045be294f1
 
 pkgname = openviking-cli
