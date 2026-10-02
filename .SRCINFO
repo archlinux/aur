@@ -1,6 +1,6 @@
 pkgbase = figma-agent-linux
-	pkgdesc = A lightweight local service that makes your locally installed fonts available on Figma.
-	pkgver = 0.4.3
+	pkgdesc = Use locally installed fonts in Figma’s web app on Linux.
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/neetly/figma-agent-linux
 	install = figma-agent.install
@@ -10,7 +10,7 @@ pkgbase = figma-agent-linux
 	makedepends = git
 	makedepends = rust
 	optdepends = fontconfig
-	source = figma-agent-linux::git+https://github.com/neetly/figma-agent-linux.git#tag=0.4.3
+	source = figma-agent-linux::git+https://github.com/neetly/figma-agent-linux.git#tag=0.4.4
 	cksums = SKIP
 
 pkgname = figma-agent-linux

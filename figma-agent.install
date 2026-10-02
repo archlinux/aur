@@ -1,8 +1,32 @@
 post_install() {
-  echo "Please run this command to start the service:"
-  echo "$ systemctl --user enable --now figma-agent.socket"
+  cat <<'EOF'
+Figma Agent lets Figma's web app use your locally installed fonts.
+
+Run this as your regular desktop user (without sudo) to start the socket
+now and enable it for future logins:
+  systemctl --user enable --now figma-agent.socket
+The service starts on demand when Figma connects; it may be inactive until then.
+
+In a Figma design file, open the Figma menu > Preferences > Permissions and
+helpers. Under "Apps on device", follow "Show me how to connect", then click
+"Connect". Allow access to apps on your device if your browser asks.
+
+Check status and logs with:
+  systemctl --user status figma-agent.socket figma-agent.service
+  journalctl --user -u figma-agent.service
+Setup, configuration, and troubleshooting:
+  https://github.com/neetly/figma-agent-linux#readme
+EOF
 }
 
 post_upgrade() {
-  post_install
+  cat <<'EOF'
+To use the updated Figma Agent if it is already running, run this as your
+regular desktop user (without sudo):
+  systemctl --user try-restart figma-agent.service
+If the service is inactive, the next socket connection will use the new version.
+
+Setup, configuration, and troubleshooting:
+  https://github.com/neetly/figma-agent-linux#readme
+EOF
 }

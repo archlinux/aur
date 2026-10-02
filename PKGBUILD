@@ -1,9 +1,9 @@
 # Maintainer: Hikari Hayashi <rev.hikari@gmail.com>
 
 pkgname=figma-agent-linux
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
-pkgdesc="A lightweight local service that makes your locally installed fonts available on Figma."
+pkgdesc="Use locally installed fonts in Figma’s web app on Linux."
 url="https://github.com/neetly/figma-agent-linux"
 license=(MIT)
 arch=(x86_64 aarch64)
