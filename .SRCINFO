@@ -1,6 +1,6 @@
 pkgbase = linux-lqxcjk
 	pkgdesc = Linux Liquorix (with cjktty patch)
-	pkgver = 7.2.8.lqx1
+	pkgver = 7.2.8.lqx2
 	pkgrel = 1
 	url = https://liquorix.net/
 	arch = x86_64
@@ -23,14 +23,14 @@ pkgbase = linux-lqxcjk
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.tar.sign
-	source = https://github.com/damentz/liquorix-package/archive/7.2-13.tar.gz
+	source = https://github.com/damentz/liquorix-package/archive/7.2-14.tar.gz
 	source = 0001-cjktty.patch::https://gh.jasonzeng.dev/https://github.com/bigshans/cjktty-patches/raw/master/v7.x/cjktty-7.2.patch
 	source = 0002-cjktty-32.patch::https://gh.jasonzeng.dev/https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = 47e63679363261a864d271277340a6f2d45f544e1a056be4159df081f4f6537d0efa865c4af26611ab33a3079ee65db88ec2f6bc0e5fff43e0c043cde0cd91e1
 	sha512sums = SKIP
-	sha512sums = b261c094764d78c1d1d57c886fb33897d5acebccbadc06a9bf73572a5da7fa772329d08c0dbed070543f52493d46972856eea9a32113682a4be4695b75896979
+	sha512sums = bcfb5852159290599c456279dccaaf0181bf62e6c5fe0eeab739b29b2fe379f320ca32f58d3a8fd12ca0846cb86017f06ad78618d587d9f1cea3beabda325ae1
 	sha512sums = 770b55f7a84455f2c1b61837c2e4fcda77808f0b5a9614f8621991d6f7884c67225a268fa88dd8ce9908e55a2c8f20e605f64c05b5074854a39ec130e7e8d59d
 	sha512sums = c4a443b901030097623d191731a56c87cff2ba3422385d6d7b624387ffa4f659abde07c8360f07e099cd678f8c9b542d7199e3a05febc4c7deaba9e950012cb5
 
