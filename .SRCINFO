@@ -1,0 +1,11 @@
+pkgbase = subprocessh-git
+	pkgdesc = A simple one header solution to launching processes and interacting with them for C/C++.
+	pkgver = r91.8a4715c
+	pkgrel = 1
+	url = https://github.com/sheredom/subprocess.h
+	arch = x86_64
+	license = UNLICENSE
+	source = subprocessh-git::git+https://github.com/sheredom/subprocess.h.git
+	sha256sums = SKIP
+
+pkgname = subprocessh-git
