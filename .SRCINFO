@@ -1,0 +1,18 @@
+pkgbase = fzf-git.sh-git
+	pkgdesc = bash and zsh key bindings for Git objects, powered by fzf
+	pkgver = r100.110c0a1
+	pkgrel = 1
+	url = https://github.com/junegunn/fzf-git.sh
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fzf
+	depends = git
+	optdepends = bat: file previews
+	optdepends = tmux: tmux key bindings
+	provides = fzf-git.sh
+	conflicts = fzf-git.sh
+	source = git+https://github.com/junegunn/fzf-git.sh.git
+	sha256sums = SKIP
+
+pkgname = fzf-git.sh-git
