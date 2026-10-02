@@ -3,7 +3,7 @@
 # Contributor: Felix Schindler <ftschindler at aur dot archlinux>
 
 pkgname=webmin
-pkgver=2.651
+pkgver=2.670
 pkgrel=1
 pkgdesc="A web-based administration interface for Unix systems"
 arch=(any)
@@ -46,6 +46,7 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' \
 'etc/webmin/firewalld/config' \
 'etc/webmin/fsdump/config' \
 'etc/webmin/grub2/config' \
+'etc/webmin/hardware-info/config' \
 'etc/webmin/heartbeat/config' \
 'etc/webmin/htaccess-htpasswd/config' \
 'etc/webmin/idmapd/config' \
@@ -198,7 +199,7 @@ package() {
 }
 
 
-sha256sums=('bf4f1090ede46f415303718f56e5aa93b403e4a6c74807a579bd830b409dacab'
+sha256sums=('617af07a890bea18a83dca5c9d7168de1ad4d5f3076d8a1df3475f123748dc21'
             '3c27a52679607c73cdaa00c0735bea04cf66cf92ca4af6a7ac906eaed537b910'
             'cb860a79ea652f7c4f3c5ac2093bcfad5d29e2f246f10ef408e7909adc143174'
             '4e8268aa038434aa520d93c84ea2c6c54cc76fe279e9496debf4acad93cedc31'
