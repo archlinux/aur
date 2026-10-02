@@ -1,0 +1,20 @@
+pkgbase = rhun-bin
+	pkgdesc = Small and fast code editor written in assembly (prebuilt binaries)
+	pkgver = 0.16.2
+	pkgrel = 1
+	url = https://github.com/vshvedov/rhun
+	arch = x86_64
+	license = MIT
+	license = OFL-1.1
+	optdepends = git: integrated Git features
+	optdepends = xdg-utils: open links and reveal files
+	optdepends = curl: update checks and local AI model downloads
+	provides = rhun
+	conflicts = rhun
+	options = !strip
+	source = LICENSE-Iosevka-0.16.2.md::https://raw.githubusercontent.com/vshvedov/rhun/v0.16.2/assets/fonts/LICENSE-Iosevka.md
+	sha256sums = 4ba53c7c1cb39279aae5f8d7d22054c485c71169920e5a36ed098b115e2e3c5d
+	source_x86_64 = rhun-0.16.2-linux-x86_64.tar.gz::https://github.com/vshvedov/rhun/releases/download/v0.16.2/rhun-0.16.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 62ba2538d3c1afe878bf7b1ec8d9a0a582f5a9f86439ef4d50312b6d1415b06a
+
+pkgname = rhun-bin
