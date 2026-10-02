@@ -2,13 +2,17 @@
 #
 pkgname=just-the-browser
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Remove AI features, telemetry data reporting, sponsored content, product integrations, and other annoyances from web browsers.'
 license=('MIT')
 arch=('any')
 url='https://justthebrowser.com/'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/corbindavenport/just-the-browser/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('1b7a28262603ded872371461887c9fae9fb0665e0f0247a8f79012ebe801a71c')
+optdepends=('firefox: Firefox support'
+            'chromium: Chromium support'
+            'google-chrome: Google Chrome support'
+            'brave-browser: Brave support')
 
 package() {
   cd "$pkgname-$pkgver"
