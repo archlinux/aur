@@ -1,0 +1,17 @@
+pkgbase = catdir
+	pkgdesc = CLI utility that traverses directories and concatenates the contents of all files within a folder and its subfolders, like cat but for entire directory trees
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/emilastanov/catdir
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-click
+	source = catdir-0.1.2.tar.gz::https://github.com/emilastanov/catdir/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = ba7cde415cb1c4f392f02378cb2fd404e10693d22c67e1bf7aa123db1e2f8fed
+
+pkgname = catdir
