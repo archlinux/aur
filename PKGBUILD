@@ -1,6 +1,6 @@
 # Maintainer: eDEX-OS <edex-de@github.com>
 pkgname=edex-de
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="eDEX-DE — sci-fi desktop shell for Hyprland (Rust + wgpu), with greetd greeter"
 arch=('x86_64')
@@ -32,6 +32,7 @@ depends=(
     'brightnessctl'
     'ttf-jetbrains-mono-nerd'
     'kitty'
+    'ranger'
     'wl-clipboard'
     'cliphist'
     'grim'
@@ -54,7 +55,7 @@ optdepends=(
 install=edex-de.install
 backup=('etc/edex-greeter/greeter.toml')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/eDEX-OS/eDEX-DE/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a1fd664afb5124f7c16a6efce03d3ba591578f70eed1ea1ff4c561b6c8ca11f6')
+sha256sums=('2c7728a5e782c2895732524321e7e612d803587d907342c1b7bd5c0abe28c6b2')
 
 build() {
     cd "eDEX-DE-${pkgver}"
