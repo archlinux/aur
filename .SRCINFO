@@ -1,0 +1,19 @@
+pkgbase = katana-tui-bin
+	pkgdesc = Unofficial terminal client for Nonograms Katana user puzzles (prebuilt binary)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/ArkadyBuryakov/katana-desktop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = katana-tui
+	conflicts = katana-tui
+	options = !strip
+	source_x86_64 = katana-tui-1.1.0-x86_64.tar.gz::https://github.com/ArkadyBuryakov/katana-desktop/releases/download/v1.1.0/katana-tui-1.1.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 730cbdcd3e8d2126da27a84e45213a907056458801c28948135522b95781c5c2
+	source_aarch64 = katana-tui-1.1.0-aarch64.tar.gz::https://github.com/ArkadyBuryakov/katana-desktop/releases/download/v1.1.0/katana-tui-1.1.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 0f52e642bad139c4b2f0e0fe0c53299ad825669d156c41558cb5987f83434197
+
+pkgname = katana-tui-bin
