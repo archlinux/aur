@@ -2,7 +2,7 @@
 
 pkgname=kx-aspe-git
 pkgver=r24.492df7e
-pkgrel=3
+pkgrel=4
 pkgdesc="Keyoxide profile generator CLI using ASPE"
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/keyoxide/kx-aspe-cli"
@@ -25,7 +25,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/kx-aspe-cli"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
