@@ -1,6 +1,6 @@
 pkgbase = nog
 	pkgdesc = A tier-aware package manager for Arch Linux — pacman with a safety net, written in Rust
-	pkgver = 1.5.7
+	pkgver = 1.5.8
 	pkgrel = 1
 	url = https://github.com/jetomev/nog
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = nog
 	optdepends = paru: AUR helper integration (alternative)
 	backup = etc/nog/nog.conf
 	backup = etc/nog/tier-pins.toml
-	source = nog-1.5.7.tar.gz::https://github.com/jetomev/nog/releases/download/v1.5.7/nog-1.5.7.tar.gz
-	source = nog-1.5.7.tar.gz.asc::https://github.com/jetomev/nog/releases/download/v1.5.7/nog-1.5.7.tar.gz.asc
+	source = nog-1.5.8.tar.gz::https://github.com/jetomev/nog/releases/download/v1.5.8/nog-1.5.8.tar.gz
+	source = nog-1.5.8.tar.gz.asc::https://github.com/jetomev/nog/releases/download/v1.5.8/nog-1.5.8.tar.gz.asc
 	validpgpkeys = 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
-	sha256sums = cee313cc96614736133286c4679a4bd00eb23a69b3e77a85e7e81666962deaaf
+	sha256sums = a5d29ce8f962f2d3e3d2037af00942d0b2ab7a036cd423b11be1f7e9fdea3872
 	sha256sums = SKIP
 
 pkgname = nog
