@@ -1,7 +1,7 @@
 # Maintainer: yuna0x0 <yuna@yuna0x0.com>
 pkgname=obsidian2web
 pkgver=1.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="lun-4's obsidian publish knockoff that generates (largely static) websites"
 arch=('x86_64')
 url="https://github.com/lun-4/obsidian2web"
@@ -10,9 +10,16 @@ makedepends=('zig0.12')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lun-4/obsidian2web/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('2990e2552a12bf2ec95221b94d04a3eb8432abd2d262cb8adf37471faed65e86')
 
+prepare() {
+    cd "$pkgname-$pkgver"
+    # Fetch zig dependencies up front so build() runs offline
+    zig0.12 build --fetch --global-cache-dir "$srcdir/zig-global-cache"
+}
+
 build() {
     cd "$pkgname-$pkgver"
-    zig0.12 build -Dtarget=x86_64-linux-musl -Dcpu=baseline -Doptimize=ReleaseSafe
+    zig0.12 build --summary all --global-cache-dir "$srcdir/zig-global-cache" \
+        -Dtarget="$CARCH-linux-musl" -Dcpu=baseline -Doptimize=ReleaseSafe
 }
 
 package() {

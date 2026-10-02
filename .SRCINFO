@@ -1,7 +1,7 @@
 pkgbase = obsidian2web
 	pkgdesc = lun-4's obsidian publish knockoff that generates (largely static) websites
 	pkgver = 1.4.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/lun-4/obsidian2web
 	arch = x86_64
 	license = MIT
