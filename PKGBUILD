@@ -1,21 +1,21 @@
 # Maintainer: Raimo Geisel <raimog92@protonmail.com>
 pkgname=podfetch
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A lightweight CLI podcast downloader for RSS feeds and podcast discovery"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Pommersche92/podfetch"
 license=('GPL-2.0')
-depends=() 
+depends=()
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Pommersche92/podfetch/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('296b523c0ceec8d351f2d3292f760a36ed18374b9516b68d5379e36783a8bdfd')
+sha256sums=('0c77ff07489808e51939af156886761d49236b6ace6c581e90f41406c9a0af21')
 
 prepare() {
   cd "$pkgname-$pkgver"
   cargo fetch --locked
 }
-
+ 
 build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
