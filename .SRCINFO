@@ -1,0 +1,34 @@
+pkgbase = neferwl-bin
+	pkgdesc = Minimal Wayland compositor with column tiling, for the TTY
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/bnema/neferwl
+	install = neferwl.install
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = libinput
+	depends = libxkbcommon
+	depends = seatd
+	depends = systemd-libs
+	depends = vulkan-icd-loader
+	depends = vulkan-driver
+	depends = wayland
+	depends = dbus
+	depends = libcap
+	optdepends = xwayland-satellite>=0.7: X11 apps
+	optdepends = foot: default terminal
+	optdepends = fuzzel: launcher
+	optdepends = xdg-desktop-portal-gtk: file pickers and settings for apps
+	optdepends = xdg-desktop-portal-wlr: screen sharing and screenshots through the portal
+	optdepends = nefercap: screenshots and screen recording
+	provides = neferwl
+	conflicts = neferwl
+	conflicts = neferwl-git
+	source_aarch64 = neferwl-bin_0.2.0_aarch64.tar.gz::https://github.com/bnema/neferwl/releases/download/v0.2.0/neferwl_0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3f0249dd3bb510bbf287c509486ee9938dedf75c2f300f2546ad0de4889b1cf2
+	source_x86_64 = neferwl-bin_0.2.0_x86_64.tar.gz::https://github.com/bnema/neferwl/releases/download/v0.2.0/neferwl_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = f28ba76f9cce6a034a2c3f95a478ecfb697d402e271c9838b9c1a3471bd754a4
+
+pkgname = neferwl-bin
