@@ -1,6 +1,6 @@
 pkgbase = aura-emerge
 	pkgdesc = A standalone Gentoo-style emerge for Arch Linux - installs from official repos, the AUR, and ABS, scans PKGBUILDs for supply-chain red flags before building, and runs untrusted build steps inside a bwrap sandbox.
-	pkgver = 2.13.0
+	pkgver = 2.13.1
 	pkgrel = 1
 	url = https://undercat037.github.io/aura-emerge/
 	install = aura-emerge.install
@@ -18,7 +18,7 @@ pkgbase = aura-emerge
 	conflicts = portage-git
 	conflicts = aura-emerge-git
 	backup = etc/portage/world
-	source = aura-emerge::git+https://github.com/Undercat037/aura-emerge.git#tag=v2.13.0
-	sha256sums = 9d8b04a4b4fe9969611e077f1084712dcbc35be6971d52c62bf5fe6f8507077a
+	source = aura-emerge::git+https://github.com/Undercat037/aura-emerge.git#tag=v2.13.1
+	sha256sums = 515ea4391c7abbdecb2d24d8f2d22e1ab208724c3b75e9af6354194ac1e88d83
 
 pkgname = aura-emerge
