@@ -1,0 +1,12 @@
+# makepkg build directories
+/pkg/
+/src/
+
+# built packages
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+
+# downloaded sources
+*.zip
+/LICENSE.mitsuzo

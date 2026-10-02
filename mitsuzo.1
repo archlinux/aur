@@ -1,0 +1,186 @@
+.\" Manual page for the Mitsuzo command-line client.
+.TH MITSUZO 1 "2026-10-02" "mitsuzo 0.12.10" "User Commands"
+.SH NAME
+mitsuzo \- client for the Mitsuzo encrypted paste service
+.SH SYNOPSIS
+.B mitsuzo
+[\fIOPTIONS\fR]
+\fICOMMAND\fR
+[\fIARGS\fR]...
+.SH DESCRIPTION
+.B mitsuzo
+is the command-line client for Mitsuzo, a self-hostable service for sending
+secrets and short-lived files. Encryption and decryption happen on the local
+machine; only ciphertext and the metadata needed to deliver it are sent to the
+server.
+.PP
+Running
+.B mitsuzo
+without a command prints usage. Pass
+.B \-\-help
+to any command for its options.
+.SH GLOBAL OPTIONS
+.TP
+.BR \-b ", " \-\-base\-url " " \fIURL\fR
+Base URL of the Mitsuzo server. Overrides the
+.B base_url
+value from the configuration file. Defaults to
+.BR http://localhost:3030 .
+.TP
+.BR \-h ", " \-\-help
+Print help.
+.TP
+.BR \-V ", " \-\-version
+Print version information.
+.SH COMMANDS
+.SS create
+.B mitsuzo create
+[\fB\-f\fR \fIFILE\fR] [\fB\-c\fR \fIN\fR] [\fB\-t\fR \fISECONDS\fR]
+[\fB\-b\fR] [\fB\-T\fR \fIKID\fR]
+.PP
+Encrypt and upload a new paste and print its share identifier and link. The
+secret is read from standard input unless
+.B \-\-file
+is given.
+.TP
+.BR \-f ", " \-\-file " " \fIFILE\fR
+Read the secret from
+.I FILE
+instead of standard input.
+.TP
+.BR \-c ", " \-\-try\-count " " \fIN\fR
+Maximum number of read attempts. Default:
+.BR 5 .
+.TP
+.BR \-t ", " \-\-ttl " " \fISECONDS\fR
+Time to live in seconds. Default:
+.BR 43200
+(12 hours).
+.TP
+.BR \-b ", " \-\-burn\-after\-read
+Burn the paste after the first successful read.
+.TP
+.BR \-T ", " \-\-to " " \fIKID\fR
+Encrypt for an existing account key identifier (a
+.B 0x
+prefix or a full hash) instead of a password. Only the matching account can
+decrypt the paste.
+.SS get
+.B mitsuzo get
+[\fB\-o\fR \fIFILE\fR]
+\fIID\fR
+.PP
+Download and decrypt the paste identified by
+.IR ID .
+The decrypted content is written to standard output unless
+.B \-\-output
+is given.
+.TP
+.BR \-o ", " \-\-output " " \fIFILE\fR
+Write the decrypted content to
+.I FILE
+.
+.SS passwd
+.B mitsuzo passwd
+\fIID\fR
+.PP
+Change the password that protects the paste identified by
+.IR ID .
+The current and new passwords are read interactively.
+.SS account
+.B mitsuzo account
+\fIACTION\fR
+.PP
+Manage the optional zero-knowledge account used for recipient-mode
+encryption.
+.SS "account register"
+.B mitsuzo account register
+\fB\-n\fR \fINAME\fR
+.PP
+Generate a new account, show a 24-word seed phrase once for backup, store the
+locked key in
+.IR ~/.config/mitsuzo/account.enc ,
+and register the public key with the server.
+.TP
+.BR \-n ", " \-\-name " " \fINAME\fR
+Account display name.
+.SS "account login"
+.B mitsuzo account login
+.PP
+Unlock the local account and print its profile.
+.SS "account import"
+.B mitsuzo account import
+\fB\-n\fR \fINAME\fR
+[\fIPHRASE\fR]
+.PP
+Recover a local account from an existing seed phrase. If
+.I PHRASE
+is omitted, it is read interactively from standard input.
+.TP
+.BR \-n ", " \-\-name " " \fINAME\fR
+Account display name.
+.SH CONFIGURATION
+The server URL may be stored in a YAML configuration file:
+.PP
+.nf
+.RS
+base_url: https://mitsuzo.example.com
+.RE
+.fi
+.PP
+The following files are read in order until one is found:
+.IP "1." 4
+\fI$XDG_RUNTIME_DIR/mitsuzo/config.yml\fR
+.IP "2." 4
+\fI~/.config/mitsuzo/config.yml\fR
+.IP "3." 4
+\fI/etc/mitsuzo/config.yml\fR
+.SH FILES
+.TP
+.I ~/.config/mitsuzo/config.yml
+User configuration.
+.TP
+.I ~/.config/mitsuzo/account.enc
+Locally stored, locked account key.
+.TP
+.I /etc/mitsuzo/config.yml
+System-wide configuration.
+.SH EXAMPLES
+Encrypt a string from standard input:
+.PP
+.nf
+.RS
+echo "secret message" | mitsuzo create
+.RE
+.fi
+.PP
+Upload a file with a one-hour lifetime:
+.PP
+.nf
+.RS
+mitsuzo create \-\-file document.pdf \-\-ttl 3600
+.RE
+.fi
+.PP
+Retrieve a paste and save it to a file:
+.PP
+.nf
+.RS
+mitsuzo get 123456 \-\-output decrypted.pdf
+.RE
+.fi
+.PP
+Create an account, then encrypt a paste for it:
+.PP
+.nf
+.RS
+mitsuzo account register \-\-name alice
+mitsuzo create \-\-to 0xabc123
+.RE
+.fi
+.SH SEE ALSO
+Project home page: https://github.com/metantesan/mitsuzo
+.br
+Documentation: https://mitsuzo.metantesan.com/docs
+.SH LICENSE
+Mitsuzo is distributed under the BSD 3-Clause license.
