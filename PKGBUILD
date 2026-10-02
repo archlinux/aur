@@ -3,16 +3,16 @@
 
 pkgname=python-forgekit
 _srcname=forgekit
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="Shared Textual TUI shell library for the Forge Suite — menu bar, sections, floating dialogs, Catppuccin theme"
+pkgdesc="Shared Textual TUI shell library for the Forge Suite — menu bar, dialogs, settings forms and save flows, Catppuccin theme"
 arch=('any')
 url="https://github.com/jetomev/forgekit"
 license=('GPL3')
 depends=('python' 'python-textual' 'python-rich')
 source=("${_srcname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_srcname}-${pkgver}.tar.gz"
         "${_srcname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${_srcname}-${pkgver}.tar.gz.asc")
-sha256sums=('5ff7c5c6b3a6759dfdc7d5a1e3ce5e567b382329b23d46c3343531eb9ccc93b0'
+sha256sums=('ee48e5f8e84838b6331d02e9ddff6160cef137af5958818e79e31f8586aeb414'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
@@ -27,7 +27,8 @@ check() {
 import asyncio
 from forgekit import (ForgeApp, ForgeModal, ConfirmDialog, ForgePanelScreen,
                       MenuBar, FORGE_CSS, COLORS, GPL3_NOTICE, __version__,
-                      ROLES, glyph, console_mode)
+                      ROLES, glyph, console_mode,
+                      SettingRow, ReviewDialog, ProgressDialog, ManualScreen)  # 0.5.0
 assert __version__ == '${pkgver}', __version__
 
 class _Smoke(ForgeApp):
