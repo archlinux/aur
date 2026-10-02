@@ -4,9 +4,9 @@
 # The bootstrap checksum is replaced before publication; an unverified source
 # must never reach the AUR.
 pkgname=sway-session
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
-_commit=59397c35b60b3d001521f9e00c95e048459ffb57
+_commit=cc5736a41a00e1386e4ec8a1ab30eb8c277fa071
 pkgdesc="Persistent work sessions for Sway"
 arch=('x86_64' 'aarch64')
 url="https://github.com/marang/sway-session"
@@ -15,7 +15,7 @@ depends=('sway')
 makedepends=('go>=1.26.5')
 options=('!debug')
 source=("sway-session-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3682551e5640aae8d606b2cb981333c93d4dd9fd7477c39de6be660f8acad776')
+sha256sums=('4d5d5b9cd03ce0aa286d8608068063b42f0e022e967c3bc1c6a7e1f5ddd1a165')
 
 _go_build_flags=(-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw)
 _go_ldflags=(-s -w -buildid= -X "main.version=$pkgver" -X "main.commit=$_commit" -X "main.modified=false" -X "github.com/marang/sway-session/internal/buildmetadata.Stamp=sway-session-build-v1|$pkgver|$_commit|false|end-sway-session-build-v1")
