@@ -1,7 +1,7 @@
 # Maintainer: empyrealm
 pkgname=intel-vtune-bin
-pkgver=2026.0.0.329
-pkgrel=2
+pkgver=2026.4.0.23
+pkgrel=1
 pkgdesc='Intel VTune Profiler — GPU/CPU performance analysis tool with Intel iGPU and Vulkan support'
 arch=('x86_64')
 url='https://www.intel.com/content/www/us/en/developer/tools/oneapi/vtune-profiler.html'
@@ -20,8 +20,8 @@ conflicts=('intel-vtune-profiler-standalone' 'intel-oneapi-vtune')
 options=('!strip')
 
 _installer="intel-vtune-${pkgver}_offline.sh"
-_pkgver_short="2026.0.0+325"
-source=("https://registrationcenter-download.intel.com/akdlm/IRC_NAS/a00e5b88-bdcc-4dc4-aa00-142fc59aba25/${_installer}")
+_pkgver_short="2026.4.0+20"
+source=("https://registrationcenter-download.intel.com/akdlm/IRC_NAS/0c5e7c15-5b93-47e5-bcfb-dd4d90398877/${_installer}")
 sha256sums=('SKIP')
 
 prepare() {
@@ -38,7 +38,7 @@ package() {
 	mkdir -p "${_payload}"
 	bsdtar --no-same-owner -xf "${_cup}" -C "${_payload}"
 
-	local _vtunedir="${_payload}/_installdir/vtune/2026.0"
+	local _vtunedir="${_payload}/_installdir/vtune/2026.4"
 
 	install -dm755 "${pkgdir}/opt/${pkgname}"
 	cp -a "${_vtunedir}/." "${pkgdir}/opt/${pkgname}/"

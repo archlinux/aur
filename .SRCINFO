@@ -1,7 +1,7 @@
 pkgbase = intel-vtune-bin
 	pkgdesc = Intel VTune Profiler — GPU/CPU performance analysis tool with Intel iGPU and Vulkan support
-	pkgver = 2026.0.0.329
-	pkgrel = 2
+	pkgver = 2026.4.0.23
+	pkgrel = 1
 	url = https://www.intel.com/content/www/us/en/developer/tools/oneapi/vtune-profiler.html
 	arch = x86_64
 	license = LicenseRef-Intel-EULA
@@ -31,7 +31,7 @@ pkgbase = intel-vtune-bin
 	conflicts = intel-vtune-profiler-standalone
 	conflicts = intel-oneapi-vtune
 	options = !strip
-	source = https://registrationcenter-download.intel.com/akdlm/IRC_NAS/a00e5b88-bdcc-4dc4-aa00-142fc59aba25/intel-vtune-2026.0.0.329_offline.sh
+	source = https://registrationcenter-download.intel.com/akdlm/IRC_NAS/0c5e7c15-5b93-47e5-bcfb-dd4d90398877/intel-vtune-2026.4.0.23_offline.sh
 	sha256sums = SKIP
 
 pkgname = intel-vtune-bin
