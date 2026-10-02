@@ -1,0 +1,15 @@
+pkgbase = python-td-cli
+	pkgdesc = A command line todo manager where you can organize and manage your todos across multiple projects
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/darrikonn/td-cli
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	source = python-td-cli-1.3.0.tar.gz::https://github.com/darrikonn/td-cli/archive/refs/tags/v.1.3.0.tar.gz
+	sha256sums = 1d55ec0671e81706fc7170a86cb74f4b13a96c22fdaf9c5fd31dbcfaef20f10b
+
+pkgname = python-td-cli
