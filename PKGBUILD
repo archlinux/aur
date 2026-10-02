@@ -4,7 +4,7 @@ _dotnet_ver=10.0
 _reponame=SyncClipboard
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-server"
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Cross-Platform Cipboard Syncing Solution (Server)"
 arch=("x86_64" "aarch64")
@@ -17,7 +17,7 @@ source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.g
         "${_pkgname}.service"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles")
-sha256sums=('e46a6c6d6aa50963b621931c9810ba78bbcb47984fe2d882ead1b01323da3c3e'
+sha256sums=('69b8db10ee0d46de1524d99818b11c8fe3740b3c3e753c8b6bb7e06911c56203'
             '9c199944b31282e093bcb530f3c81b624970bae515f08fb1b5614b6ab8c973e9'
             'c926ecd545f945ac27cf4b2e54004f0d6847d58f012b9dda5b4e8416523e991c'
             'bf6ce00dbedafc8b2874818138c37d8371cb165721c5b88293c64f216cee1c66')
