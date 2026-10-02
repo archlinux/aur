@@ -5,7 +5,7 @@
 
 pkgname=swift-bin
 pkgver=6.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary builds of the Swift programming language"
 arch=('x86_64' 'aarch64')
 url="https://www.swift.org/"
@@ -22,8 +22,9 @@ sha256sums_x86_64=('50863678e3bafd91fcbc94c0bb76610bab37c1ee01e335fc7d8616904e03
 sha256sums_aarch64=('641931cd5fdd4d17e47b75b959ba21d67d0f5749cb7d14c854971b49e23bfbd2')
 
 package() {
+  _swift_root="/usr/lib/swift/usr"
   find_elf_only() {
-    find "${pkgdir}/usr/lib/swift" \
+    find "${pkgdir}${_swift_root}" \
       -executable -type f \
       '(' -path '*/bin/*' -o -name '*.so*' ')' \
       -not '(' -name '*.py' -o -name 'hwasan_symbolize' ')' \
@@ -34,13 +35,13 @@ package() {
   if [[ $CARCH == "aarch64" ]]; then
     _archsuffix="-aarch64"
   fi
-  mkdir -p "${pkgdir}/usr/lib/swift"
-  cp -Ppr "${srcdir}/swift-$pkgver-RELEASE-ubi10${_archsuffix}"/usr/* "${pkgdir}/usr/lib/swift"
+  mkdir -p "${pkgdir}${_swift_root}"
+  cp -Ppr "${srcdir}/swift-$pkgver-RELEASE-ubi10${_archsuffix}"/usr/* "${pkgdir}${_swift_root}"
 
   # Symlink the desired binaries to /usr/bin
   mkdir -p "${pkgdir}/usr/bin"
   for bin in sourcekit-lsp swift swiftc; do
-    ln -s "/usr/lib/swift/bin/$bin" "${pkgdir}/usr/bin/$bin"
+    ln -s "${_swift_root}/bin/$bin" "${pkgdir}/usr/bin/$bin"
   done
 
   # Patch the binaries to use the changed ncurses names
@@ -51,5 +52,5 @@ package() {
   find_elf_only -exec "${patchelf[@]}" {} \;
 
   install -dm755 "${pkgdir}/etc/ld.so.conf.d"
-  echo '/usr/lib/swift/lib/swift/linux' >> "${pkgdir}/etc/ld.so.conf.d/swift.conf"
+  echo '${_swift_root}/lib/swift/linux' >> "${pkgdir}/etc/ld.so.conf.d/swift.conf"
 }
