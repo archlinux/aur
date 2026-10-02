@@ -1,8 +1,8 @@
 # Maintainer: voidlesity <me@voidlesity.dev>
 
 pkgname=logseq-desktop-nightly-bin
-pkgver=20261001
-_appver=2.0.1-alpha
+pkgver=20261002
+_appver=2.0.2-alpha
 pkgrel=1
 pkgdesc="Nightly build of Logseq, a privacy-first, open-source knowledge management platform"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ noextract=("$pkgname-$pkgver.zip")
 
 sha256sums=('1d2ca6e23e6cdff83e58fbe9e1ef27da2091556f3cbab8aed86dd1aa158d6f05'
             'e3801c054138a9cc5eb555c0cea985620716ddf621421369213da82b9fff557a')
-sha256sums_x86_64=('83816de760e97b94cef44183dc6a5b17d1bb30da0837385145ad25392e2f1eee')
-sha256sums_aarch64=('83816de760e97b94cef44183dc6a5b17d1bb30da0837385145ad25392e2f1eee')
+sha256sums_x86_64=('1fa843410f2d292480ddbdf6fb78466fb835358165a27fa1d68d0149465d0e1b')
+sha256sums_aarch64=('1fa843410f2d292480ddbdf6fb78466fb835358165a27fa1d68d0149465d0e1b')
 
 package() {
   # App files (the zip has no top-level folder, so extract it straight in).
