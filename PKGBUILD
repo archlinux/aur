@@ -1,7 +1,7 @@
 # Maintainer: CxOrg <clx.org@cloud-org.uk>
 pkgname=kde-window-moves-git
 _pkgname=${pkgname%-git}
-pkgver=r136.0e392d4
+pkgver=r137.5a164aa
 pkgrel=1
 pkgdesc="Keyboard-driven window move, resize and zoom shortcuts for KDE Plasma on Wayland"
 arch=('any')
@@ -26,7 +26,8 @@ pkgver() {
 
 package() {
   cd "$_pkgname"
-  install -Dm755 usr/local/bin/window-moves.sh "$pkgdir/usr/bin/window-moves.sh"
+  install -Dm755 usr/local/bin/window-moves.sh -t "$pkgdir/usr/bin/"
+  install -Dm755 usr/local/bin/kde-window-moves-setup.sh -t "$pkgdir/usr/bin/"
   install -Dm644 usr/share/applications/kde-window-moves.desktop -t "$pkgdir/usr/share/applications/"
   install -Dm644 Hotkeys/WindowMovesKeys.kksrc -t "$pkgdir/usr/share/$_pkgname/"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"

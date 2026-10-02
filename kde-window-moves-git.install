@@ -1,23 +1,11 @@
 post_install() {
   cat <<'EOF'
-==> kde-window-moves post-install steps (per user, from a KDE session):
-
-    1. Start the ydotool daemon:
-         systemctl --user enable --now ydotool
-
-    2. If /dev/uinput is not writable, add yourself to the input group
-       and re-login:
-         sudo usermod -aG input $USER
-
-    3. Flat pointer profile for the ydotoold virtual device (1:1 moves):
-         kwriteconfig6 --file kcminputrc --group "Libinput" --group "2333" \
-           --group "6666" --group "ydotoold virtual device" \
-           --key PointerAccelerationProfile 2
-         qdbus org.kde.KWin /KWin reconfigure
-
-    4. Assign the shortcuts in System Settings > Shortcuts >
-       "KDE Window Moves". The exported key set is at
-       /usr/share/kde-window-moves/WindowMovesKeys.kksrc
+==> kde-window-moves: run once per user from a KDE session to enable
+    ydotoold, set the flat pointer profile and register the global
+    shortcuts:
+      kde-window-moves-setup.sh
+    (Shortcuts then appear in System Settings > Shortcuts >
+     "KDE Window Moves".)
 EOF
 }
 
