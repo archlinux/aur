@@ -1,0 +1,16 @@
+post_install() {
+  cat <<'EOF'
+==> nstream installed. Create your config (holds the Real-Debrid token):
+      mkdir -p ~/.config/nstream
+      cp /usr/share/nstream/config.example.json ~/.config/nstream/config.json
+      chmod 600 ~/.config/nstream/config.json
+    Then set your Real-Debrid token in "torrentio_base"
+    (get it at https://real-debrid.com/apitoken).
+    Run:  nstream "<title>"   or launch 'nstream' from your app launcher.
+    Optional: 'pipx install catt' to cast to a Chromecast with --cast.
+EOF
+}
+
+post_upgrade() {
+  :
+}
