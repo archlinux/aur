@@ -1,0 +1,19 @@
+pkgbase = squeeze-bin
+	pkgdesc = Extract rich information from any text (raw, JSON, HTML, YAML, etc.)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/aymericbeaumet/squeeze
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = squeeze
+	conflicts = squeeze
+	options = !strip
+	source_x86_64 = squeeze-x86_64-0.3.0.tgz::https://github.com/aymericbeaumet/squeeze/releases/download/v0.3.0/squeeze-v0.3.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 3948dd071ab58277b3be982ae273fd28c85300c3c0d11ef046f44e87298da6a7
+	source_aarch64 = squeeze-aarch64-0.3.0.tgz::https://github.com/aymericbeaumet/squeeze/releases/download/v0.3.0/squeeze-v0.3.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = b58435f7ca90a7492065082e3f91fe1d4b3e555cc58715bf7c3dce552ff82161
+
+pkgname = squeeze-bin

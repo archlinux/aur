@@ -1,0 +1,5 @@
+[squeeze-bin]
+source = "github"
+github = "aymericbeaumet/squeeze"
+use_latest_release = true
+prefix = "v"
