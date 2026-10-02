@@ -1,7 +1,7 @@
 # Maintainer: yuna0x0 <yuna@yuna0x0.com>
 
 pkgname=docker-credential-atcr-git
-pkgver=0.1.4.r46.g5aa13ab
+pkgver=0.1.4.r194.g3232ecb
 pkgrel=1
 pkgdesc="Docker credential helper for ATCR (AT Container Registry)"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,6 @@ depends=('glibc')
 makedepends=('git' 'go')
 provides=("docker-credential-atcr=$pkgver-$pkgrel")
 conflicts=('docker-credential-atcr')
-options=('!debug')
 source=("$pkgname::git+https://tangled.org/did:plc:pddp4xt5lgnv2qsegbzzs4xg/at-container-registry.git")
 sha256sums=('SKIP')
 
@@ -29,6 +28,9 @@ prepare() {
     rm -f go.work go.work.sum
     go work init . ./cmd/credential-helper/atcr
 
+    export GOPATH="${srcdir}"
+    go mod download -modcacherw
+
     mkdir -p build
 }
 
@@ -40,11 +42,10 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOPATH="${srcdir}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
 
-    # -ldflags here replaces the one from GOFLAGS, so repeat -linkmode=external.
     go build -o build/docker-credential-atcr \
-        -ldflags "-linkmode=external \
+        -ldflags "-compressdwarf=false -linkmode=external \
                   -X main.version=$pkgver \
                   -X main.commit=$(git rev-parse HEAD) \
                   -X main.date=$(date -u -d "@$SOURCE_DATE_EPOCH" +%Y-%m-%d)" \
@@ -55,7 +56,7 @@ check() {
     cd "$pkgname"
 
     export GOPATH="${srcdir}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
 
     go test ./pkg/credhelper/... ./cmd/credential-helper/atcr/...
 }
