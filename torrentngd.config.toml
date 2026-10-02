@@ -1,0 +1,45 @@
+# Safe bare-metal package default. Keep the API on loopback until an operator
+# supplies a real token and deliberately changes api_bind.
+[daemon]
+api_bind = "127.0.0.1:8080"
+session_dir = "/var/lib/torrentngd"
+log_level = "info"
+shutdown_timeout_secs = 10
+
+[network]
+listen_port = 44444
+max_peers = 200
+upload_rate_limit = 0
+download_rate_limit = 0
+
+[storage]
+download_dir = "/data"
+
+[tracker]
+http_timeout_secs = 30
+udp_timeout_secs = 15
+min_interval_secs = 0
+
+[dht]
+enabled = true
+port = 0
+bootstrap_nodes = [
+  "dht.transmissionbt.com:6881",
+  "router.bittorrent.com:6881",
+  "router.utorrent.com:6881",
+]
+
+[db]
+path = "/var/lib/torrentngd/state.db"
+wal_checkpoint_pages = 1000
+
+[auth]
+# Loopback-only package default. Add a protected token file before changing
+# [daemon].api_bind to a non-loopback address.
+api_tokens = []
+
+[logging]
+format = "json"
+profile = "basic"
+filter = ""
+event_retention = 10000

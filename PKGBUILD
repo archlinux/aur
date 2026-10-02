@@ -14,8 +14,9 @@ source=(
   "torrentngd.service"
   "torrentngd.sysusers"
   "torrentngd.tmpfiles"
+  "torrentngd.config.toml"
 )
-sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")
+sha256sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP")
 
 pkgver() {
   cd torrentng
@@ -38,7 +39,7 @@ check() {
 package() {
   cd torrentng
   install -Dm755 target/release/torrentngd "$pkgdir/usr/bin/torrentngd"
-  install -Dm644 deploy/native/config.toml "$pkgdir/etc/torrentngd/config.toml"
+  install -Dm644 "$srcdir/torrentngd.config.toml" "$pkgdir/etc/torrentngd/config.toml"
   mkdir -p "$pkgdir/usr/share/torrentng/webui"
   cp -a webui/dist/. "$pkgdir/usr/share/torrentng/webui/"
   install -Dm644 "$srcdir/torrentngd.service" "$pkgdir/usr/lib/systemd/system/torrentngd.service"
