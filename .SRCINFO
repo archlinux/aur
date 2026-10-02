@@ -1,0 +1,16 @@
+pkgbase = r-rtmb
+	pkgdesc = R bindings for TMB
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=RTMB
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = r-rcppeigen
+	depends = r
+	depends = r-rcpp
+	depends = r-tmb
+	source = https://cran.r-project.org/src/contrib/RTMB_2.0.tar.gz
+	md5sums = 2fc174f6d64319b83ce0d12090160c10
+	b2sums = 01bc85e8b46a66db2e1ccdd1d7536499817babe1a087f5541badf8d83adb1426ce6f55e9d22fc9b5a0f268410f37e4a58d48ca1a64ede9cad43e3817849a30a0
+
+pkgname = r-rtmb
