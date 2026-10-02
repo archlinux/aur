@@ -1,5 +1,5 @@
 pkgname=mediaharbor
-pkgver=2.2.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="MediaHarbor is all-in-one music streaming and downloading application built with Tauri and React."
 arch=('x86_64' 'aarch64')
@@ -11,18 +11,28 @@ depends=(
   'gtk3'
   'libappindicator-gtk3'
   'glib2'
+  'alsa-lib'
+  'libpipewire'
+  'ffmpeg'
+  'yt-dlp'
+  'python'
+)
+
+optdepends=(
+  'python-pipx: install gamdl/votify (pipx install gamdl; pipx install "votify[librespot]")'
 )
 
 makedepends=(
   'rust'
   'nodejs'
   'npm'
+  'clang'
 )
 
 options=('!lto')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MediaHarbor/mediaharbor/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9a3695647b4409c0cee8b2ac6171e7de6df758a724f8aeae1fc7519c2b6945aa')
+sha256sums=('6fc6c95dcf3ac2eefa8f298cc2ec4c71353115d7e31c22c866fa3c08d1df22f7')
 
 prepare() {
   cd "$srcdir/mediaharbor-${pkgver}"
@@ -42,8 +52,9 @@ package() {
   install -Dm755 target/release/mediaharbor \
     "${pkgdir}/usr/bin/mediaharbor"
 
+  # Capitalised like the Tauri bundles: PipeWire resolves the app id as a desktop-entry id.
   install -Dm644 /dev/stdin \
-    "${pkgdir}/usr/share/applications/mediaharbor.desktop" << 'EOF'
+    "${pkgdir}/usr/share/applications/MediaHarbor.desktop" << 'EOF'
 [Desktop Entry]
 Name=MediaHarbor
 Exec=mediaharbor
