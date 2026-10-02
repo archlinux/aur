@@ -2,8 +2,8 @@
 
 _pkgname='archlinux'
 pkgname="libvirt-iso-${_pkgname}-bin"
-pkgver=2026.09.01
-pkgrel=3
+pkgver=2026.10.01
+pkgrel=1
 pkgdesc='Official Arch Linux installation ISO for libvirt'
 arch=('x86_64')
 url='https://archlinux.org/download/'
@@ -13,13 +13,13 @@ checkdepends=(
 	'squashfs-tools'
 )
 source=(
-	"${_pkgname}-${pkgver}-${CARCH}.iso::https://archive.archlinux.org/iso/${pkgver}/${_pkgname}-${pkgver}-${CARCH}.iso"
-	"${_pkgname}-${pkgver}-${CARCH}.iso.sig::https://archive.archlinux.org/iso/${pkgver}/${_pkgname}-${pkgver}-${CARCH}.iso.sig"
+	"${_pkgname}-${pkgver}-${CARCH}.iso::https://geo.mirror.pkgbuild.com/iso/${pkgver}/${_pkgname}-${pkgver}-${CARCH}.iso"
+	"${_pkgname}-${pkgver}-${CARCH}.iso.sig::https://geo.mirror.pkgbuild.com/iso/${pkgver}/${_pkgname}-${pkgver}-${CARCH}.iso.sig"
 	'DISTRIBUTION-LICENSE'
 )
 noextract=("${_pkgname}-${pkgver}-${CARCH}.iso")
 sha256sums=(
-	'be8458032f8105e60ee2a3067f950b6e3c007ee51b38dac50e8b48e765561c91'
+	'684ded26c63240ff4a41e8c25ee84ea6da233f557364821f13d12c2b0a9059a5'
 	'SKIP'
 	'cb5f1ca3b96864dcbf26ef4792510c79eabd25a8988fd57e24fef4c02b278d4c'
 )
