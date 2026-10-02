@@ -1,22 +1,22 @@
 # Maintainer: Oliver Weissbarth <mail@oweissbarth.de>
 # Maintainer: SFN
 pkgname=tl-render
-pkgver=0.18.0
+pkgver=0.24.1
 pkgrel=1
 pkgdesc="tlRender is an open source library for building playback and review applications for visual effects, film, and animation."
 arch=("x86_64")
 url="https://github.com/grizzlypeak3d/tlRender"
 license=('BSD-3-Clause')
 groups=()
-depends=('feather-tk' 'minizip-ng' 'opentimelineio' 'opencolorio' 'openimageio' 'openexr' 'ffmpeg' 'libpng' 'libtiff' 'libjpeg-turbo' 'sdl2')
+depends=('feather-tk' 'minizip-ng' 'opentimelineio' 'opencolorio' 'openimageio' 'openexr' 'ffmpeg' 'libpng' 'libtiff' 'libjpeg-turbo' 'sdl2' 'subprocessh-git' 'fmt')
 makedepends=('cmake' 'make')
 replaces=()
 backup=()
 options=()
-source=("tlRender-${pkgver}.tar.gz::https://github.com/grizzlypeak3d/tlRender/archive/refs/tags/${pkgver}.tar.gz" "zlibng-config.cmake")
+source=("tlRender-${pkgver}.tar.gz::https://github.com/grizzlypeak3d/tlRender/archive/refs/tags/${pkgver}.tar.gz" "0001-Export-ffmpeg-targets-correctly.patch")
 noextract=()
-sha256sums=('2ec7b088e3b89a856db2f4045619b44ecf85ae8998afa71a8188d91415467a98'
-            '72d993ec6dceff21552f22c25aff2bc8ceea4cb7315029e0ab6bf7878af9ec21')
+sha256sums=('b82811fcc9d3de0be5c0e7433fc075c129c7b53072a3f39ff0c2ac4d6ecaf3dd'
+            '3d0fca023f893555f19d21367055541e2024371a950a12480dda0894c3b6a7e1')
 
 CFLAGS+=" -ffat-lto-objects" # lto problems with static libs
 CXXFLAGS+=" -ffat-lto-objects" # lto problems with static libs
@@ -25,13 +25,9 @@ build() {
 	cd "$srcdir/tlRender-${pkgver}"
   rm -fr build
 
-  # Link against dynamic sdl2
-  sed 's|SDL2::SDL2-static|SDL2::SDL2|g' -i lib/tlRender/Core/CMakeLists.txt
-
-  # Link against dynamic libjpeg-turbo
-  sed 's|libjpeg-turbo::turbojpeg-static|libjpeg-turbo::turbojpeg|g' -i lib/tlRender/IO/CMakeLists.txt
-
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DTLRENDER_PROGRAMS=Off -DTLRENDER_EXAMPLES=Off -DTLRENDER_TESTS=Off -DCMAKE_PREFIX_PATH="$srcdir;$CMAKE_PREFIX_PATH" -B build .
+  patch -p1 < "$srcdir/0001-Export-ffmpeg-targets-correctly.patch"
+  
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DTLRENDER_PROGRAMS=Off -DTLRENDER_EXAMPLES=Off -DTLRENDER_TESTS=Off -DTLRENDER_FTK_PACKAGE=On -B build .
   cmake --build build --parallel
 }
 

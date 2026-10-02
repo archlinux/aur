@@ -1,0 +1,35 @@
+From 3155dfd2a4eb006b1d358bdc4d73ede61bbb65dc Mon Sep 17 00:00:00 2001
+From: oweissbarth <mail@oweissbarth.de>
+Date: Fri, 2 Oct 2026 21:31:44 +0200
+Subject: [PATCH] Export ffmpeg targets correctly
+
+---
+ tlRenderConfig.cmake.in | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/tlRenderConfig.cmake.in b/tlRenderConfig.cmake.in
+index 3d8ddb6e..2c0949e1 100644
+--- a/tlRenderConfig.cmake.in
++++ b/tlRenderConfig.cmake.in
+@@ -158,6 +158,18 @@ if(@TLRENDER_FFMPEG@)
+         add_library(FFmpeg::swscale ALIAS PkgConfig::swscale)
+         add_library(FFmpeg::avutil ALIAS PkgConfig::avutil)
+     endif()
++    # The installed target exports retain the concrete PkgConfig targets
++    # used when tlRender was built. Supply those names when FFmpeg came
++    # from bundled libraries instead.
++    foreach(_tlRender_FFMPEG_LIB FFmpeg swresample swscale avutil)
++        if(
++            TARGET FFmpeg::${_tlRender_FFMPEG_LIB} AND
++            NOT TARGET PkgConfig::${_tlRender_FFMPEG_LIB})
++            add_library(
++                PkgConfig::${_tlRender_FFMPEG_LIB}
++                ALIAS FFmpeg::${_tlRender_FFMPEG_LIB})
++        endif()
++    endforeach()
+     if(FFmpeg_FOUND)
+         add_definitions(-DTLRENDER_FFMPEG)
+         if(@TLRENDER_FFMPEG_PLUGIN@)
+-- 
+2.55.0
+
