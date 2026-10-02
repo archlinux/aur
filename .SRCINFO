@@ -1,7 +1,7 @@
 pkgbase = libvirt-iso-kde-linux-bin
-	pkgdesc = Official KDE Linux Testing installation ISO for libvirt
+	pkgdesc = Official KDE Linux Testing installation ISO for libvirt (weekly updated!)
 	pkgver = 202610010254
-	pkgrel = 1
+	pkgrel = 2
 	url = https://linux.kde.org/
 	arch = x86_64
 	license = LicenseRef-Various

@@ -3,8 +3,8 @@
 _pkgname='kde-linux'
 pkgname="libvirt-iso-${_pkgname}-bin"
 pkgver=202610010254
-pkgrel=1
-pkgdesc='Official KDE Linux Testing installation ISO for libvirt'
+pkgrel=2
+pkgdesc='Official KDE Linux Testing installation ISO for libvirt (weekly updated!)'
 arch=('x86_64')
 url='https://linux.kde.org/'
 license=('LicenseRef-Various')
