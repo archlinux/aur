@@ -1,12 +1,12 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _gitauthor=ivankovic
-_gitname=codediff
+_gitname=omnidiff
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="Fast, robust, accurate, syntax-aware code diffing"
+pkgdesc="Fast, robust, accurate diffing"
 
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('2c3c3552c8d98e0f5d8900d793678539d4a9faa77e05871bddc861528bc74791')
-sha256sums_aarch64=('30680c5cbb845ec9581cd82dd11b57b18be02f218cb56d8f86c944f973940552')
+sha256sums_x86_64=('33d7d369319529bb7802f08e921bc01287bd5a34bf39d6609808778c9561fbf4')
+sha256sums_aarch64=('47e7121cdd727504ceab0241c96f0d877ec4b81e4c97f7a6b41a1be4e10b0573')
 
 
 build() {

@@ -1,5 +1,5 @@
-[codediff-bin]
+[omnidiff-bin]
 source = "github"
-github = "ivankovic/codediff"
+github = "ivankovic/omnidiff"
 use_latest_release = true
 prefix = "v"
