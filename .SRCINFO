@@ -1,6 +1,6 @@
 pkgbase = xberg-bin
 	pkgdesc = Command-line interface for Xberg document intelligence (OCR and text extraction)
-	pkgver = 1.3.0
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/xberg-io/xberg
 	arch = x86_64
@@ -8,15 +8,15 @@ pkgbase = xberg-bin
 	license = MIT
 	depends = libgcc
 	depends = libstdc++
-	provides = xberg=1.3.0
+	provides = xberg=1.3.2
 	conflicts = xberg
 	conflicts = kreuzberg
 	conflicts = kreuzberg-bin
 	replaces = kreuzberg-bin
 	options = !debug
-	source_x86_64 = xberg-cli-1.3.0-x86_64.tar.gz::https://github.com/xberg-io/xberg/releases/download/v1.3.0/xberg-cli-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = xberg-cli-1.3.2-x86_64.tar.gz::https://github.com/xberg-io/xberg/releases/download/v1.3.2/xberg-cli-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums_x86_64 = f9a2399a993c46ab111b2fd84d00f7d7c664089b29730e58812db45407d46277
-	source_aarch64 = xberg-cli-1.3.0-aarch64.tar.gz::https://github.com/xberg-io/xberg/releases/download/v1.3.0/xberg-cli-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = xberg-cli-1.3.2-aarch64.tar.gz::https://github.com/xberg-io/xberg/releases/download/v1.3.2/xberg-cli-aarch64-unknown-linux-gnu.tar.gz
 	sha256sums_aarch64 = 4a49cded834521800c5e342d4941402fff94f63ff9dc500a5365e79310a90776
 
 pkgname = xberg-bin

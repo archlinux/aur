@@ -2,7 +2,7 @@
 
 _pkgname=xberg
 pkgname=xberg-bin
-pkgver=1.3.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Command-line interface for Xberg document intelligence (OCR and text extraction)"
 arch=('x86_64' 'aarch64')
