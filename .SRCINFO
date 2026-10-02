@@ -14,6 +14,7 @@ pkgbase = aur-scanner
 	provides = aur-scan
 	conflicts = aur-scanner-git
 	conflicts = ks-aur-scanner
+	conflicts = aur-scanner-rc
 	options = !debug
 	source = git+https://github.com/KiefStudioMA/ks-aur-scanner.git#tag=v2.1.1?signed
 	validpgpkeys = 25631EAE3F43999050B7D7021132BF893C33FB51
