@@ -3,27 +3,27 @@
 pkgname=plasma6-applets-codexbar
 _pkgname=codexbar-plasmoid
 _plasmoid=com.github.psimaker.codexbar
-pkgver=0.3.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="AI coding provider usage in your KDE Plasma 6 panel, a Plasma port of CodexBar"
 arch=('any')
 url="https://github.com/psimaker/codexbar-plasmoid"
 license=('MIT')
-depends=('libplasma' 'plasma5support' 'ksvg' 'kcmutils' 'kirigami' 'qt6-declarative'
-         'codexbar-cli')
+depends=('libplasma' 'plasma-workspace' 'plasma5support' 'ksvg' 'kcmutils' 'kirigami'
+         'qt6-declarative' 'codexbar-cli>=0.43.0')
 install="$pkgname.install"
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1f37a91641ae5075c0a8993d51e7d37e073070c170e7ebdf5250ea84b64bd657')
+sha256sums=('00f76767cf7999bfaf144380e13c58ebe5aa7a80c5ab3fdf1d26127477b20dcc')
 
 package() {
   cd "$_pkgname-$pkgver"
 
+  # Same layout as `kpackagetool6 --install`: metadata.json + contents/
   local _dest="$pkgdir/usr/share/plasma/plasmoids/$_plasmoid"
-  install -dm755 "$_dest"
-  cp -a contents "$_dest/"
   install -Dm644 metadata.json "$_dest/metadata.json"
-  find "$_dest/contents" -type d -exec chmod 755 {} +
-  find "$_dest/contents" -type f -exec chmod 644 {} +
+  cp -r --no-preserve=ownership contents "$_dest/"
+  # Normalize modes (GitHub tarballs are group-writable), keeping +x on scripts
+  chmod -R u=rwX,go=rX "$_dest/contents"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
