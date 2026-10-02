@@ -2,7 +2,7 @@
 #
 # THIS IS A TEMPLATE. It is not a valid PKGBUILD as it stands, and that is the point.
 #
-# `0.20.13` and `5ddfc7bd6a9b470bfea83655b3efe497c0ca4e4d1002d0d3d6ef22ccaca5bcbc` are filled in by `scripts/render_packaging.py` at publish
+# `0.20.16` and `906d883597b18e1e8ae8218c58fdfc1f8cf2329948c910a01f5aaa885bf90958` are filled in by `scripts/render_packaging.py` at publish
 # time, from the tag being released and the sha256 of the tarball that was actually
 # downloaded. `just aur-publish <version>` renders it, generates .SRCINFO from the result
 # with a real `makepkg --printsrcinfo`, and pushes both to the AUR.
@@ -15,7 +15,7 @@
 #
 # makepkg rejects `@` in pkgver, so this template cannot be built or published by accident.
 pkgname=retch
-pkgver=0.20.13
+pkgver=0.20.16
 pkgrel=1
 pkgdesc="A fast, feature-rich system information fetcher written in Rust"
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5ddfc7bd6a9b470bfea83655b3efe497c0ca4e4d1002d0d3d6ef22ccaca5bcbc')
+sha256sums=('906d883597b18e1e8ae8218c58fdfc1f8cf2329948c910a01f5aaa885bf90958')
 
 prepare() {
   cd "$pkgname-$pkgver"
