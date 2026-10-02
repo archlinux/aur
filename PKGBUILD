@@ -1,6 +1,6 @@
 # Maintainer: fireflylabs
 pkgname=abstract-editor
-pkgver=0.2.0
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Minimal local-first markdown notes editor, GPU-rendered with GPUI"
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ provides=('abstract')
 conflicts=('abstract-editor-bin')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fireflylabss/abstract/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('92df2b493664b58def9cce433365e6bcbdd1ae96dd6ab36cfac7c1c5b1fa517f')
+sha256sums=('03f994e436d4683e1ad69f7642361a6edc1edcb60a0f877c2ccb7515f6e5e8d9')
 
 prepare() {
 	cd "abstract-$pkgver"
