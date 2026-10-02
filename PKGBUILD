@@ -3,13 +3,13 @@
 _pkgauthor=dd86k
 _pkgname=ddhx
 pkgname=${_pkgname}-bin
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Console hexadecimal file viewer"
 
 arch=('x86_64')
-_barch=('linux-x86_64-musl-static')
+_barch=('x86_64-linux-musl-static')
 
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
@@ -20,8 +20,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[0]}.tar.gz")
 sha256sums=('6c1491e43ffaa71c230ffc0adfe9cf31b3c9b38bf41dfd02143f8901b976af2a'
-            'eadbce6dc7e0c05cf40515cbf0072307752c430321f512fd03bae6ee170b71a8')
-sha256sums_x86_64=('b05a585b6e2e76d74c478d70c227653c8ce886be58d85c69eb46a85158f6c401')
+            '7e30553c5579c6dce445e8e536322c60284deee311a40703f2b07d832a84c2fd')
+sha256sums_x86_64=('91aebd74f7441dd55a1e0c425eed716dff2ab0ed91db51f06dac2ef0ddc8e2d8')
 
 
 package() {
