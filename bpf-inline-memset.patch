@@ -1,0 +1,11 @@
+--- a/pkg/ebpf/c/common/filtering.h
++++ b/pkg/ebpf/c/common/filtering.h
+@@ -372,7 +372,7 @@
+         if (key == NULL)
+             return 0;
+ 
+-        __builtin_memset(key->str, 0, sizeof(key->str));
++        __builtin_memset_inline(key->str, 0, sizeof(key->str));
+ 
+         u32 len = load_str_from_buf(&p->event->args_buf, key->str, index, FILTER_TYPE_EXACT);
+         if (!len)

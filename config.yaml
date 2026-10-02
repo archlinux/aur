@@ -1,0 +1,14 @@
+# Tracee v0.24.1 reads policies from --policy, not this config file.
+# tracee.service passes --policy /etc/tracee/policies.
+signatures-dir:
+  - /usr/lib/tracee/signatures
+  - /usr/local/lib/tracee/signatures
+install-path: /var/lib/tracee
+containers:
+  enrich: false
+output:
+  json:
+    files:
+      - stdout
+log:
+  level: info

@@ -1,0 +1,36 @@
+pkgbase = tracee
+	pkgdesc = Linux runtime security and forensics using eBPF
+	pkgver = 0.24.1
+	pkgrel = 1
+	url = https://github.com/aquasecurity/tracee
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go>=1.24
+	makedepends = clang>=23
+	makedepends = llvm>=23
+	makedepends = pkgconf
+	depends = glibc
+	depends = libelf
+	depends = zlib
+	depends = zstd
+	optdepends = systemd: run the supplied service
+	optdepends = man-db: display embedded manual pages
+	conflicts = tracee-bin
+	noextract = tracee-0.24.1.tar.gz
+	noextract = libbpf-1.5.1.tar.gz
+	options = !strip
+	options = !debug
+	options = !lto
+	backup = etc/tracee/config.yaml
+	source = tracee-0.24.1.tar.gz::https://github.com/aquasecurity/tracee/archive/refs/tags/v0.24.1.tar.gz
+	source = libbpf-1.5.1.tar.gz::https://github.com/libbpf/libbpf/archive/refs/tags/v1.5.1.tar.gz
+	source = tracee.service
+	source = config.yaml
+	source = bpf-inline-memset.patch
+	sha256sums = 5e5a5e504807fd6c83a2dba75e53c81f71b02150b54fd8f07bbebbcd4ac4f57f
+	sha256sums = e5ff89750e48ab5ecdfc02a759aa0dacd1e7980e98e16bdb4bfa8ff0b3b4b98f
+	sha256sums = 30bc2038f3e11b2892c3f5d7e9ef3d6309f1d0f0e32ee34ff08553ff588e1f0f
+	sha256sums = 1711201c9f87766fdf71fd227d142c60d70047738cbdd75dd8bf9981f7895b8d
+	sha256sums = 661867c21ab083910462ac778d0b2587d23d68ef24568d3f4cea9db357b253d1
+
+pkgname = tracee

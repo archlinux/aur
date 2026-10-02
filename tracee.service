@@ -1,0 +1,26 @@
+[Unit]
+Description=Tracee Linux runtime security monitor
+Documentation=https://aquasecurity.github.io/tracee/
+After=local-fs.target
+ConditionPathExists=/sys/kernel/btf/vmlinux
+ConditionPathExistsGlob=/etc/tracee/policies/*.yaml
+
+[Service]
+Type=exec
+User=root
+# Keep administrator-managed plugins outside pacman's file ownership.
+ExecStartPre=/usr/bin/install -d -m0755 /usr/local/lib/tracee/signatures
+ExecStart=/usr/bin/tracee --config /etc/tracee/config.yaml --policy /etc/tracee/policies
+StateDirectory=tracee
+StateDirectoryMode=0700
+WorkingDirectory=/var/lib/tracee
+UMask=0077
+Restart=on-failure
+RestartSec=5s
+StandardOutput=journal
+StandardError=journal
+# Keep the host mount namespace, home directories, /tmp and devices visible.
+# Filesystem sandboxing here would alter the view of the host being monitored.
+
+[Install]
+WantedBy=multi-user.target
