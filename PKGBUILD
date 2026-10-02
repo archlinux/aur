@@ -1,22 +1,24 @@
 # Maintainer: Kief Studio <packages@kief.studio>
 #
 # RELEASE CANDIDATE channel. This builds the GPG-signed pre-release tag
-# (v2.2.0-rc.1) so testers can opt into the next release before it is promoted
+# (v2.2.0-rc.2) so testers can opt into the next release before it is promoted
 # to stable. It installs the same binaries as `aur-scanner` and therefore
 # conflicts with it -- do NOT run both. For production systems prefer the
 # stable `aur-scanner` / `ks-aur-scanner` packages.
 #
-# 2.2.0-rc.1 focus: change detection, name impersonation, ownership signals and
-# static binary analysis. Large surface change (118 -> 133 codes); wants soak.
+# 2.2.0 focus: change detection, name impersonation, ownership signals and
+# static binary analysis. Large surface change (118 -> 138 codes); wants soak.
+# rc.2 adds the external-review fixes, the FUNC-001 comment-bypass fix, and
+# the 2.1.1 security fixes merged forward.
 # Previously: 2.1.0-rc.2 correctness + Atomic Arch depth. Config auto-load
 # from XDG and /etc (threat-intel actually works without -c), false-positive
 # hygiene, ALPM .hook scanning, wave-3/4/5 Atomic Arch rules. Review the
 # CHANGELOG before enabling threat intel or driving the tool from scripts/CI.
 pkgname=aur-scanner-rc
-# AUR pkgver may not contain a hyphen, so the semver pre-release '2.1.0-rc.2'
-# becomes '2.2.0rc1' here; the upstream git tag keeps the canonical form.
-pkgver=2.2.0rc1
-_tag=v2.2.0-rc.1
+# AUR pkgver may not contain a hyphen, so the semver pre-release '2.2.0-rc.2'
+# becomes '2.2.0rc2' here; the upstream git tag keeps the canonical form.
+pkgver=2.2.0rc2
+_tag=v2.2.0-rc.2
 pkgrel=1
 pkgdesc="Security scanner for Arch Linux AUR packages (release candidate) - detect malicious PKGBUILDs before installation"
 arch=('x86_64' 'aarch64')
