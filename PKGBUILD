@@ -4,13 +4,13 @@
 # pkgver and source checksum are replaced by prepare-aur.sh before publication
 
 pkgname=system-bridge
-pkgver=5.9.3
+pkgver=5.9.4
 epoch=2
 pkgrel=1
 pkgdesc="A bridge for your systems"
 makedepends=('git' 'mise')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.9.3.tar.gz")
-sha256sums=('6e80fdc683f88a48fd478011ea94eccd7b718907cd877ca0de4cb48100295e00')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.9.4.tar.gz")
+sha256sums=('e96812a9df39167d8c0c42f3ba535c23c36c9f9a696bb0f8aad25370462fe2d5')
 conflicts=('system-bridge-git' 'system-bridge-git-debug')
 
 arch=('x86_64')
