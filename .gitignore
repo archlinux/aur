@@ -1,6 +1,6 @@
-pkg
-src
-*.pkg*
-*.tar.gz
-LICENSE
-*.log
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!nushell-plugin-hcl.install
