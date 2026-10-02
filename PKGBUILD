@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 # Contributor: David Wu <xdavidwuph@gmail.com>
 pkgname=intel-ipsec-mb
-pkgver=2.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Intel(R) Multi-Buffer Crypto for IPsec Library"
 url=https://github.com/intel/intel-ipsec-mb
@@ -13,7 +13,7 @@ makedepends=(
     nasm
 )
 source=($pkgname-$pkgver.tar.gz::https://github.com/intel/intel-ipsec-mb/archive/v$pkgver.tar.gz)
-b2sums=('c806a50ed5c8aa52cca6207035f2ce7c77780a631192236f3d1b838de11363e352e1ae7e5029e40f140144278860dcb5aaf0782f82c9ff5277228332d555b38c')
+b2sums=('51150b87f7874e50a2ad3716e127f2f657ed2b98181b48ae821fb4911c22a543d13b7b31caf9208bef1158d6ac2a75fe7a222d05b9e877e583e4855963fb1f92')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" -DCMAKE_INSTALL_PREFIX=/usr
