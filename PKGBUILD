@@ -1,13 +1,17 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.18
-pkgver=1.0.0beta18
+_tag=v1.0.0-beta.19
+pkgver=1.0.0beta19
 pkgrel=1
 pkgdesc="A desktop shell for niri, built with Quickshell: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
 url="https://github.com/AkusenArcade/Bioma"
 license=('GPL-3.0-or-later')
+# Everything Bioma draws or runs is a dependency, so the package is the whole
+# shell and nothing is left to fetch by hand. Only two things stay optional:
+# dictation, half a gigabyte of model for one button, and the company network
+# wizard, which serves one kind of machine.
 depends=(
     'niri'
     'quickshell'
@@ -20,44 +24,62 @@ depends=(
     'gcc-libs'
     'glibc'
     'util-linux'
-    # Dictation (PRD §9.6): installing Bioma installs all of it.
-    'whisper-cpp'
-    'ggml-vulkan'
-    'whisper.cpp-model-large-v3-turbo-q5_0'
-    'python-evdev'
+    'fontconfig'
+    # The two voices (Typography): expressive and technical.
+    'ttf-spectral'
+    'ttf-orbitron'
+    # Theme: palettes from the wallpaper, the wallpaper folder picker.
+    'matugen'
+    'zenity'
+    # Capture: screenshots, text recognition (capture.ocr_language is eng),
+    # screen recording.
+    'grim'
+    'tesseract'
+    'tesseract-data-eng'
+    'wl-screenrec'
+    # Audio: pw-play for the alarm, pw-record for the microphone.
+    'pipewire'
+    'pipewire-audio'
+    # Connectivity: networks, Bluetooth, printers.
+    'networkmanager'
+    'bluez'
+    'bluez-utils'
+    'cups'
+    'avahi'
+    # System and vitals: backlight, external monitors, battery, power profile
+    # (tuned-ppd provides it too), the graphics card.
+    'brightnessctl'
+    'ddcutil'
+    'upower'
+    'power-profiles-daemon'
+    'pciutils'
+    # Timer and alarm notifications.
+    'libnotify'
+    # niri's portal configuration sends notifications to the gtk backend, and
+    # the avatar's file picker goes through the portal.
+    'xdg-desktop-portal'
+    'xdg-desktop-portal-gtk'
+    # Session: the lock screen's fallback (assets/hyprlock), the greeter, and
+    # greetd's plain greeter, which asks for the password while there is no
+    # copy of Bioma's to run (scripts/greeter-session).
+    'hyprlock'
+    'greetd'
+    'greetd-agreety'
 )
-makedepends=('cargo' 'clang' 'pipewire')
+makedepends=('cargo' 'clang')
 optdepends=(
-    'matugen: palettes computed from the wallpaper'
-    'grim: screenshots'
-    'tesseract: text recognition from a region'
-    'wl-screenrec: screen recording (VAAPI)'
-    'wf-recorder: screen recording, fallback'
-    'networkmanager: Wi-Fi, wired, VPN profiles and proxy triggers'
-    'bluez-utils: Bluetooth'
-    'cups: printers in the connectivity cell'
+    'whisper-cpp: dictation, the engine'
+    'ggml-vulkan: dictation on the GPU; without it, the CPU'
+    'whisper.cpp-model-large-v3-turbo-q5_0: dictation, the model (AUR)'
+    'python-evdev: dictation, pasting into the window'
     'business-network-wizard: company network setup (NTLM proxy, VPN, 802.1X, shares), opened from the connectivity cell'
-    'avahi: network printers found and added driverless'
-    'ddcutil: the brightness of external monitors'
-    'pipewire: audio and the alarm sound'
-    'upower: the battery, on a laptop'
-    'power-profiles-daemon: the power profile in the System cell'
-    'pciutils: the graphics card in the System cell'
-    'libnotify: timer and alarm notifications'
-    'zenity: the folder picker for the wallpaper library'
-    'hyprlock: the fallback lock screen'
-    'swaylock: the fallback lock screen, if hyprlock is not installed'
-    'greetd: the Bioma greeter'
-    'xdg-desktop-portal: the desktop file picker for the avatar'
-    'ttf-spectral: the expressive typeface'
-    'ttf-orbitron: the technical typeface'
 )
 # libspa builds a small C shim that makepkg's LTO turns into bitcode, which
 # Rust's linker cannot resolve (undefined spa_format_parse_libspa_rs).
 options=('!lto')
 install=bioma-shell.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('475d7cbe36c264d4d784a68882d154eb5dd87641d4f0f2bc31615878e8ad6c8e')
+sha256sums=('952b3980e24e2da24e27c446ce0cf3d2c39d77a263d0c17d3153df24caaf4b04')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
