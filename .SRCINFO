@@ -1,10 +1,11 @@
 pkgbase = feathernotes-git
 	pkgdesc = Lightweight Qt hierarchical notes-manager for Linux.
 	pkgver = 1.2.0.r5.gb7dcf80
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tsujan/feathernotes
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = cmake
@@ -16,7 +17,7 @@ pkgbase = feathernotes-git
 	optdepends = qt6-translations: localized keyboard shortcuts
 	provides = feathernotes
 	conflicts = feathernotes
-	source = feathernotes::git+https://github.com/tsujan/feathernotes.git
+	source = git+https://github.com/tsujan/feathernotes.git
 	sha256sums = SKIP
 
 pkgname = feathernotes-git
