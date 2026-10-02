@@ -1,0 +1,5 @@
+[aggr-bin]
+source = "github"
+github = "aymericbeaumet/aggr"
+use_latest_release = true
+prefix = "v"
