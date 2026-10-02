@@ -2,13 +2,13 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=nog
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="A tier-aware package manager for Arch Linux — pacman with a safety net, written in Rust"
 arch=('x86_64')
 url="https://github.com/jetomev/nog"
 license=('GPL-3.0-or-later')
-depends=('pacman' 'pacman-contrib')
+depends=('pacman' 'pacman-contrib' 'fakeroot')
 makedepends=('rust' 'cargo')
 optdepends=(
     'yay: AUR helper integration (preferred if installed)'
@@ -24,7 +24,7 @@ backup=('etc/nog/nog.conf' 'etc/nog/tier-pins.toml')
 # signed GitHub release tarball for the tag being packaged.
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('90b96d9ce99e71728b4cee44591d8c10e300069b808cc1c391f1c0e16b88bd63'
+sha256sums=('cee313cc96614736133286c4679a4bd00eb23a69b3e77a85e7e81666962deaaf'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   gpg --keyserver keys.openpgp.org --recv-keys 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
