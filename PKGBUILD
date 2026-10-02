@@ -34,7 +34,7 @@ options=(
   '!debug'
 )
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/oneclient-${pkgver}.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('7fae887ff0034388f8998cef040bb3b8ce65180f6fe69c1b165fb75c432f8a51')
 
 _srcdir="OneLauncher-oneclient-${pkgver}"
 
