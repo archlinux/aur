@@ -1,7 +1,7 @@
 pkgbase = proton-wineland-bin
 	pkgdesc = An unofficial fork of proton-cachyos with further improvements and wayland enhancements
 	pkgver = 11.0.20260930
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/nanomatters/proton-cachyos
 	install = proton-wineland-bin.install

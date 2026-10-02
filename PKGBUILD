@@ -4,7 +4,7 @@
 pkgname=proton-wineland-bin
 _srctag=11.0-20260930
 pkgver=${_srctag//-/.}
-pkgrel=1
+pkgrel=2
 epoch=1
 
 _package_name="proton-wineland-${_srctag}-x86_64"
@@ -83,7 +83,7 @@ build() {
     cd "${_package_name}"
     sed -r \
       -e "s|##INSTALL_PATH##|.|" \
-      -e "s|##DISPLAY_NAME##|proton-wineland-${_srctag}|" \
+      -e "s|##DISPLAY_NAME##|proton-wineland-bin-${_srctag}|" \
       -e "s|##INTERNAL_TOOL_NAME##|${pkgname}|" \
       "${srcdir}/compatibilitytool.vdf.template" > compatibilitytool.vdf
 }
