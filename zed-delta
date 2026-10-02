@@ -1,0 +1,3 @@
+#!/bin/sh
+export DELTA_UPDATE_EXPLANATION='Delta is managed by pacman; update zed-delta-bin to install a newer release.'
+exec /usr/lib/zed-delta/bin/delta "$@"

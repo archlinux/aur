@@ -1,0 +1,39 @@
+pkgbase = delta-bin
+	pkgdesc = AI coding assistant by Zed Industries (binary release)
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = https://delta.dev
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-Zed-Early-Access
+	makedepends = desktop-file-utils
+	depends = bash
+	depends = ca-certificates
+	depends = fontconfig
+	depends = git
+	depends = glibc>=2.39
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = vulkan-icd-loader
+	depends = wayland
+	depends = xdg-utils
+	optdepends = openssh: SSH Git remotes
+	optdepends = vulkan-driver: Vulkan graphics driver for the desktop application
+	provides = zed-delta=0.18.0
+	conflicts = zed-delta
+	conflicts = delta-bin
+	options = !strip
+	options = !debug
+	source = LICENSE
+	source = zed-delta
+	sha256sums = 2178e301327b73c4e2584778af904515de418328abce2d76ef98892ab9b7b4a2
+	sha256sums = c7acfcfb28b1bc8c1c6a80137272eb32772c65b57ed073a833f4a41f69215a70
+	source_x86_64 = delta-0.18.0-x86_64.tar.gz::https://github.com/zed-industries/delta-nix/releases/download/v0.18.0/delta-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 0b34dd2fa36b3b25a6bb66caa3df5db00f6fea274717c4950327709a278d7d54
+	source_aarch64 = delta-0.18.0-aarch64.tar.gz::https://github.com/zed-industries/delta-nix/releases/download/v0.18.0/delta-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 1d82ffba540fb362573ccfd5d4036581f9f396b11d7754169ea00077280cf1ff
+
+pkgname = delta-bin
