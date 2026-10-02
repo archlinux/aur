@@ -1,7 +1,7 @@
 # maintainer: luka null <lukadevnull@vivaldi.net>
 # old maintainer: Alexey Kh <aur@devass.club>
 pkgname=pg_textsearch
-pkgver=1.4.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Modern ranked full-text search for PostgreSQL (BM25)'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('PostgreSQL')
 depends=('postgresql')
 makedepends=('make' 'gcc' 'clang' 'llvm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cab02b4e8af11f98b428d17cca9c5235ab55e12d79c20fa8fbb950708c4a1e92')
+sha256sums=('2e7fb76ed96176afc6d16cc5d095ced2cb233ff27fbeaa8c7bfffc82e02f7498')
 
 build() {
   cd "$pkgname-$pkgver"
