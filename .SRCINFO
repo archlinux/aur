@@ -1,6 +1,6 @@
 pkgbase = python-openinference-instrumentation-litellm
 	pkgdesc = OpenInference liteLLM Instrumentation.
-	pkgver = 0.1.47
+	pkgver = 0.1.48
 	pkgrel = 1
 	url = https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-litellm
 	arch = any
@@ -25,10 +25,10 @@ pkgbase = python-openinference-instrumentation-litellm
 	depends = python-openinference-semantic-conventions
 	depends = python-wrapt
 	depends = python-setuptools
-	source = https://github.com/Arize-ai/openinference/archive/refs/tags/python-openinference-instrumentation-litellm-v0.1.47.tar.gz
+	source = https://github.com/Arize-ai/openinference/archive/refs/tags/python-openinference-instrumentation-litellm-v0.1.48.tar.gz
 	source = fix-duplicated-thinking-text.patch
 	source = litellm-1.101-streaming-cost.patch
-	sha256sums = 1970dca67433f4c571e5b4f9e69ecdf03304ad60d583bcdbad2071a64dd6448b
+	sha256sums = 79364401b848d531a98aceebab6a52c9840e56b0a69321a9cbc162b015c7a683
 	sha256sums = 40007b9e2e2557deae751e058df6d0a289aea0721eca29e64f97318beb635474
 	sha256sums = 870faeb49e5a54bf88e1001ec7d77922fcc019369bc4cc14f1efd84a192d5613
 
