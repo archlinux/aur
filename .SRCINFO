@@ -1,6 +1,6 @@
 pkgbase = terra
 	pkgdesc = Low-level system programming language
-	pkgver = 1.2.0
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://terralang.org/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = terra
 	makedepends = python
 	options = !lto
 	options = !buildflags
-	source = terra-1.2.0.tar.gz::https://github.com/terralang/terra/archive/refs/tags/release-1.2.0.tar.gz
-	source = terra-llvm-18.1.8.tar.xz::https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/llvm-project-18.1.8.src.tar.xz
-	b2sums = a2921f7ab0bf85181cdb2a8a2c8eaa50bcf93853eeb0c485e9cfeb5fd456afa99950c4a338b67f4b56531c62f8ebafd75f6cc859b887b4a02bf55aa3943c6f29
-	b2sums = a950492f1dbfb874dff63b1ffef86468169ba2f211a9733ec2d4cf30040f7f277ef00f048bb44dee9f97d7d762f0f241f19e5a2a7b0b49217d3821ddfc8c354f
+	source = terra-1.2.2.tar.gz::https://github.com/terralang/terra/archive/refs/tags/release-1.2.2.tar.gz
+	source = terra-llvm-22.1.8.tar.xz::https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.8/llvm-project-22.1.8.src.tar.xz
+	b2sums = 2cd6c103da0986b5536c6be74a6fe2fdc3cc4026d6e539887fe9d5c4acf33f424a0a1e2b30a93a66b0c651cdfe9d5f1853ef2ac6d72a50fb3e0d8680f8756a6e
+	b2sums = 092204f62e0f0364a041c737eb2c25fd073cb5689663d6ccd5a9e4e1743d6d80822360d59b64bff7b4d7872a68a79e899bf2f75f384e55c7d313a79243576f03
 
 pkgname = terra
