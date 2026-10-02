@@ -2,7 +2,7 @@
 
 pkgname=figma-linux-next-bin
 pkgver=0.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Figma desktop app for Linux with bundled Electron — prebuilt binary"
 arch=('x86_64')
 url="https://github.com/arximus88/figma-linux-next"

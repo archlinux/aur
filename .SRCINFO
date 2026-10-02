@@ -1,7 +1,7 @@
 pkgbase = figma-linux-next-bin
 	pkgdesc = Unofficial Figma desktop app for Linux with bundled Electron — prebuilt binary
 	pkgver = 0.20.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arximus88/figma-linux-next
 	arch = x86_64
 	license = GPL-2.0-only
