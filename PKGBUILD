@@ -4,17 +4,20 @@
 # those beside the executable it was started as — a wrapper on PATH, the
 # desktop entry and the icon sizes. The binary imports only libc and libm.
 pkgname=sashfold-bin
-pkgver=0.1.0
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A web browser engine written from scratch, down to its own TLS client and Wayland window"
 arch=('x86_64')
 url="https://sashfold.com"
 license=('BSD-2-Clause')
 depends=('glibc')
+optdepends=('vulkan-icd-loader: video decoded on the GPU (Vulkan Video)'
+            'libva: video decoded on the GPU (VA-API)'
+            'pipewire-pulse: sound (or pulseaudio)')
 provides=('sashfold')
 conflicts=('sashfold')
 source=("sashfold-${pkgver}-linux-x64.tar.gz::https://github.com/codingncaffeine/Sashfold/releases/download/v${pkgver}/sashfold-${pkgver}-linux-x64.tar.gz")
-sha256sums=('721377bf00b663713ec5424c11636d037edb72067ef0b43b76f3546d09eda802')
+sha256sums=('1370c220ee1e9434f5ed37563d50567bc01da792004f63b9ace238a578f956b9')
 
 package() {
     local staged="${srcdir}/sashfold-${pkgver}-linux-x64"
