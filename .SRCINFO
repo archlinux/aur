@@ -1,6 +1,6 @@
 pkgbase = live-paper-bin
 	pkgdesc = A Wayland video wallpaper engine (prebuilt binary)
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/sinder38/live-paper-rs
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = live-paper-bin
 	depends = libglvnd
 	provides = live-paper
 	conflicts = live-paper
-	source = live-paper-0.3.0-linux-x86_64.tar.gz::https://github.com/sinder38/live-paper-rs/releases/download/v0.3.0/live-paper-linux-x86_64.tar.gz
-	source = LICENSE-0.3.0::https://github.com/sinder38/live-paper-rs/raw/v0.3.0/LICENSE
-	source = config.example-0.3.0.toml::https://github.com/sinder38/live-paper-rs/raw/v0.3.0/config.example.toml
-	sha256sums = 51c729a37b56f2c41f94f18cae491cdbf594297fbbfad38299430c4f88e9d6be
+	source = live-paper-0.4.0-linux-x86_64.tar.gz::https://github.com/sinder38/live-paper-rs/releases/download/v0.4.0/live-paper-linux-x86_64.tar.gz
+	source = LICENSE-0.4.0::https://github.com/sinder38/live-paper-rs/raw/v0.4.0/LICENSE
+	source = config.example-0.4.0.toml::https://github.com/sinder38/live-paper-rs/raw/v0.4.0/config.example.toml
+	sha256sums = db1687a83077a0b0df0f431fea466e10d81665a0760286852c0fdc1add784f96
 	sha256sums = 1c602b2b246b5b2decd611a21c3e20456f442b1b585b60222e10836aed53c0d9
-	sha256sums = dc476dc61411b74ad06678a73f6001a229df8211de5485009c64c92c2f2c37d7
+	sha256sums = 6a7d64d698e6cf5d2319a80e9aed825ff45340dda44a1699d8976159ec5131af
 
 pkgname = live-paper-bin
