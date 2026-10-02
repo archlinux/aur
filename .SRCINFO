@@ -1,7 +1,7 @@
 pkgbase = xerahs-git
 	pkgdesc = Cross-platform screen capture and file sharing tool (ShareX port) built with Avalonia UI
 	pkgver = r4924.9712850d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ShareX/XerahS
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -18,6 +18,8 @@ pkgbase = xerahs-git
 	optdepends = slurp: Wayland region selection for screenshots
 	provides = xerahs
 	conflicts = xerahs
+	options = !debug
+	options = !strip
 	source = xerahs::git+https://github.com/ShareX/XerahS.git
 	source = xerahs-editor::git+https://github.com/KovaForge/ShareX.ImageEditor.git
 	source = xerahs-omacut::git+https://github.com/KovaForge/omacut.git

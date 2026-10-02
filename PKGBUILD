@@ -1,7 +1,7 @@
 # Maintainer: unicxrn
 pkgname=xerahs-git
 pkgver=r4924.9712850d
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform screen capture and file sharing tool (ShareX port) built with Avalonia UI"
 arch=('x86_64')
 url="https://github.com/ShareX/XerahS"
@@ -25,6 +25,7 @@ optdepends=(
 )
 provides=('xerahs')
 conflicts=('xerahs')
+options=('!debug' '!strip')
 source=(
     "xerahs::git+https://github.com/ShareX/XerahS.git"
     "xerahs-editor::git+https://github.com/KovaForge/ShareX.ImageEditor.git"
