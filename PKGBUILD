@@ -1,7 +1,7 @@
 # Maintainer: Christoph Brandau <c.brandau91@googlemail.com>
 
 pkgname=gitty-desktop
-pkgver=2026.9.13
+pkgver=2026.10.1
 pkgrel=1
 pkgdesc="A lightweight, modern Git client built with Tauri"
 arch=('x86_64')
@@ -11,9 +11,9 @@ depends=('webkit2gtk-4.1' 'gtk3' 'git' 'git-lfs' 'hicolor-icon-theme' 'libappind
 makedepends=('rust' 'nodejs' 'npm')
 options=('!lto' '!debug')
 
-_tag=2026.9.13
+_tag=2026.10.1
 source=("gitty-desktop-${pkgver}.tar.gz::${url}/archive/${_tag}.tar.gz")
-sha256sums=('bacd9a3754c40a365ebde9c20a6c83c8fc96caa457d6135467f5cc8e37bee6fa')
+sha256sums=('b0902bbe458b17592d6847d58938421f03bae46c031d6fb43a79d68fba6048f8')
 
 prepare() {
   cd "$srcdir/gitty"
@@ -58,10 +58,11 @@ package() {
 	Type=Application
 	Name=Gitty
 	Comment=$pkgdesc
-	Exec=gitty-desktop
+	Exec=gitty-desktop %u
 	Icon=gitty-desktop
 	Terminal=false
 	Categories=Development;RevisionControl;
+	MimeType=x-scheme-handler/gitty;
 	StartupWMClass=gitty
 	EOF
 
