@@ -1,0 +1,22 @@
+pkgbase = hypergrep
+	pkgdesc = Recursively search directories for a regex pattern using Intel Hyperscan
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/p-ranav/hypergrep
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = argparse
+	makedepends = concurrentqueue
+	depends = hyperscan
+	depends = libgit2
+	depends = fmt
+	depends = gcc-libs
+	source = hypergrep-0.1.1.tar.gz::https://github.com/p-ranav/hypergrep/archive/refs/tags/v0.1.1.tar.gz
+	source = hypergrep-arch.patch
+	sha256sums = c7348ae2c21fd2a711d73e404f0e5c972430b0acfcde36495e668314c86f015e
+	sha256sums = 7a4b9f46d4e1b43a23edf253fe6f4beb40c2b72a6aa6c660f00c89efeef8945a
+
+pkgname = hypergrep

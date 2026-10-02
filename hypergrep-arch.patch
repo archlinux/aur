@@ -1,0 +1,72 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,16 +5,15 @@
+         LANGUAGES CXX)
+ 
+ set(CMAKE_CXX_STANDARD 17)
+-set(CMAKE_BUILD_TYPE Release)
+-add_compile_options(-march=native -O3 -Wall -Wpedantic)
++add_compile_options(-Wall -Wpedantic)
+ 
+ # ———————————————————————————
+ # find 3rd party dependencies
+ # ———————————————————————————
+ 
+-find_package(unofficial-concurrentqueue CONFIG REQUIRED)
+ find_package(fmt CONFIG REQUIRED)
+-find_package(unofficial-git2 CONFIG REQUIRED)
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(LIBGIT2 REQUIRED IMPORTED_TARGET libgit2)
+ find_package(argparse CONFIG REQUIRED)
+ 
+ find_path(HYPERSCAN_INCLUDE_DIR hs/hs.h)
+@@ -43,8 +42,7 @@
+ target_include_directories(hg PRIVATE include)
+ target_link_libraries(hg PRIVATE
+   argparse::argparse
+-  unofficial::concurrentqueue::concurrentqueue
+-  unofficial::git2::libgit2package
++  PkgConfig::LIBGIT2
+   fmt::fmt
+   ${HYPERSCAN_LIBRARY}
+   )
+--- a/include/hypergrep/directory_search.hpp
++++ b/include/hypergrep/directory_search.hpp
+@@ -2,7 +2,7 @@
+ #include <argparse/argparse.hpp>
+ #include <atomic>
+ #include <chrono>
+-#include <concurrentqueue/concurrentqueue.h>
++#include <concurrentqueue/moodycamel/concurrentqueue.h>
+ #include <dirent.h>
+ #include <fcntl.h>
+ #include <filesystem>
+--- a/include/hypergrep/file_search.hpp
++++ b/include/hypergrep/file_search.hpp
+@@ -2,7 +2,7 @@
+ #include <argparse/argparse.hpp>
+ #include <atomic>
+ #include <chrono>
+-#include <concurrentqueue/concurrentqueue.h>
++#include <concurrentqueue/moodycamel/concurrentqueue.h>
+ #include <fcntl.h>
+ #include <filesystem>
+ #include <fmt/color.h>
+--- a/include/hypergrep/git_index_search.hpp
++++ b/include/hypergrep/git_index_search.hpp
+@@ -2,7 +2,7 @@
+ #include <argparse/argparse.hpp>
+ #include <atomic>
+ #include <chrono>
+-#include <concurrentqueue/concurrentqueue.h>
++#include <concurrentqueue/moodycamel/concurrentqueue.h>
+ #include <fcntl.h>
+ #include <filesystem>
+ #include <fmt/color.h>
+--- a/src/search_options.cpp
++++ b/src/search_options.cpp
+@@ -1,3 +1,4 @@
++#include <fmt/format.h>
+ #include <fstream>
+ #include <hypergrep/compiler.hpp>
+ #include <hypergrep/search_options.hpp>
