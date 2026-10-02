@@ -1,0 +1,16 @@
+pkgbase = nostui
+	pkgdesc = TUI client for Nostr
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/akiomik/nostui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = nostui-0.1.1.tar.gz::https://github.com/akiomik/nostui/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 4bf7c4de3ec01a75943e6de1c6c4048de56368d504eb4ad63785def4da54a1ee
+
+pkgname = nostui
