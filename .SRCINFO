@@ -1,0 +1,26 @@
+pkgbase = gecko-git
+	pkgdesc = Modern cross-platform Fallout 2 map editor
+	pkgver = 1.0.0.r486.g39092141b
+	pkgrel = 1
+	url = https://github.com/JanSimek/gecko
+	arch = any
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = make
+	makedepends = svgo
+	makedepends = oxipng
+	makedepends = pkgconf
+	makedepends = git
+	makedepends = vulkan-headers
+	makedepends = catch2
+	depends = qt6-base
+	depends = qt6-svg
+	depends = sfml
+	depends = fmt
+	depends = zlib
+	depends = libglvnd
+	provides = gecko
+	source = git+https://github.com/JanSimek/gecko.git
+	sha256sums = SKIP
+
+pkgname = gecko-git
