@@ -1,0 +1,64 @@
+pkgbase = vgs-git
+	pkgdesc = Desktop shell for Hyprland, built on Quickshell (development version)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/vanillagreencom/vgs
+	arch = any
+	license = MIT AND OFL-1.1 AND ISC AND Apache-2.0
+	makedepends = git
+	depends = quickshell>=0.3.1
+	depends = hyprland>=0.56
+	depends = bash
+	depends = coreutils
+	depends = util-linux
+	depends = nodejs>=18
+	depends = python
+	depends = libxkbcommon
+	depends = xkeyboard-config
+	depends = git
+	depends = gum
+	depends = xdg-terminal-exec
+	optdepends = wtype: Jarvis text and key input
+	optdepends = wlrctl: Jarvis pointer input without an input service
+	optdepends = ydotool: Jarvis pointer fallback with an already running input service
+	optdepends = agent-browser-bin: private Jarvis browser driver
+	optdepends = chromium: browser for Jarvis setup
+	optdepends = pipewire: Jarvis half-duplex audio capture, playback and discovery
+	optdepends = fd: launcher file and folder search
+	optdepends = fzf: launcher file search matching and the package pickers in floating TUIs
+	optdepends = bluez-utils: bluetoothctl, the Bluetooth pairing agent that answers pairing prompts
+	optdepends = file: launcher open-with list for a found file
+	optdepends = grim: launcher Screenshot
+	optdepends = slurp: launcher Screenshot region selection
+	optdepends = wl-clipboard: launcher Screenshot and Copy path, and the Jarvis clipboard tools
+	optdepends = libnotify: notify-send, to post notifications to the VGS notification server and from Jarvis
+	optdepends = playerctl: Jarvis media play, pause and next
+	optdepends = wireplumber: wpctl, for Jarvis speaker volume and mute
+	optdepends = xdg-utils: launcher Files
+	optdepends = pacman-contrib: checkupdates, for the package update check
+	optdepends = snapper: a snapshot before the update pipeline changes packages
+	optdepends = timeshift: a snapshot before the update pipeline changes packages, without snapper
+	optdepends = less: the last update log in the Updates flyout
+	optdepends = sudo: package installs and the browser policy writer in floating TUIs
+	optdepends = imagemagick: square Slack profile photos and custom emoji in notifications
+	optdepends = curl: Slack profile photos, custom emoji and Web API calls in notifications
+	optdepends = libsecret: secret-tool, for Slack tokens and Jarvis provider keys in the keyring
+	optdepends = bubblewrap: kernel confinement for Jarvis shell commands
+	optdepends = uv: installs the locked Jarvis local voice runtime
+	optdepends = glib2: gio, opens files and web links for Jarvis
+	optdepends = nvidia-utils: verifies a selected Jarvis CUDA local voice tier
+	optdepends = vsys: the agent dashboard and warden the Agent Warden plugin reads
+	optdepends = mise: Dev Tools installs, updates and removes developer tools
+	optdepends = cronie: crontab, which schedules automations where no systemd user manager answers
+	optdepends = systemd: before-suspend locking and Jarvis key presence without reading secrets
+	optdepends = iproute2: ss, for Jarvis local model-server discovery without inference
+	optdepends = tmux: several Jarvis coding tasks at once
+	optdepends = dbus: dbus-monitor, so the lock screen hears logind announce a suspend
+	provides = vgs=0.1.0
+	conflicts = vgs
+	conflicts = vgs-shell
+	conflicts = vgs-shell-git
+	source = vgs::git+https://github.com/vanillagreencom/vgs.git
+	sha256sums = SKIP
+
+pkgname = vgs-git
