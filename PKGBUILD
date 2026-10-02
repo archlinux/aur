@@ -1,7 +1,7 @@
 # Maintainer: fuero <fuerob@gmail.com>
 pkgname=sofka
 # renovate: datasource=github-releases depName=nklmilojevic/sofka
-pkgver=0.29.6
+pkgver=0.29.7
 pkgrel=1
 pkgdesc='Kubernetes TUI, reimagined in Rust'
 url='https://github.com/nklmilojevic/sofka'
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate"
 )
-sha256sums=('a48082f02a7ad4b4697b82b352e26131c64f44edb7c31b1b3d4cb798da3ad3e1')
+sha256sums=('4c79ed2c185ca2ae7650a1ae4d94aaf387c54bc739600a240557c929a022340d')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
