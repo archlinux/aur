@@ -1,0 +1,21 @@
+pkgbase = kde-window-moves-git
+	pkgdesc = Keyboard-driven window move, resize and zoom shortcuts for KDE Plasma on Wayland
+	pkgver = r136.0e392d4
+	pkgrel = 1
+	url = https://github.com/ixnewton/kde-window-moves
+	install = kde-window-moves-git.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = kdotool
+	depends = ydotool
+	depends = libkscreen
+	depends = bash
+	optdepends = kconfig: kwriteconfig6 for shortcut import and pointer profile
+	optdepends = glib2: gdbus for live KGlobalAccel registration
+	provides = kde-window-moves
+	conflicts = kde-window-moves
+	source = kde-window-moves::git+https://github.com/ixnewton/kde-window-moves.git
+	sha256sums = SKIP
+
+pkgname = kde-window-moves-git

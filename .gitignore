@@ -1,0 +1,7 @@
+# AUR package files only; ignore build artifacts
+*
+!.SRCINFO
+!.gitignore
+!PKGBUILD
+!*.install
+!*.patch
