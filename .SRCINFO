@@ -1,0 +1,16 @@
+pkgbase = rusty-rain
+	pkgdesc = A cross platform matrix rain made with Rust
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/cowboy8625/rusty-rain
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = rusty-rain-0.5.0.tar.gz::https://github.com/cowboy8625/rusty-rain/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 704e430b5dd3e95cdbdca90956e8df79de8fa337c1e70c7f54028bd780da76e5
+
+pkgname = rusty-rain
