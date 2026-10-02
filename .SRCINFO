@@ -1,20 +1,20 @@
 pkgbase = rtk-bin
 	pkgdesc = CLI proxy that reduces LLM token consumption by 60-90% on common dev commands
-	pkgver = 0.50.0
-	pkgrel = 2
+	pkgver = 0.51.0
+	pkgrel = 1
 	url = https://github.com/rtk-ai/rtk
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	provides = rtk
 	conflicts = rtk
-	source = rtk-bin-0.50.0.LICENSE::https://github.com/rtk-ai/rtk/raw/v0.50.0/LICENSE
+	source = rtk-bin-0.51.0.LICENSE::https://github.com/rtk-ai/rtk/raw/v0.51.0/LICENSE
 	sha256sums = 4044ade9c21d8b084d3d16a03375cf3b7e166b946a327bb37a3fbbdb53287cfd
-	source_x86_64 = rtk-bin-x86_64-0.50.0.tar.gz::https://github.com/rtk-ai/rtk/releases/download/v0.50.0/rtk-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = bc2b8902b0d9c796c82ef45f16ae2307e17757afeca5ee156235a3dc7bda5f89
-	source_aarch64 = rtk-bin-aarch64-0.50.0.tar.gz::https://github.com/rtk-ai/rtk/releases/download/v0.50.0/rtk-aarch64-unknown-linux-gnu.tar.gz
+	source_x86_64 = rtk-bin-x86_64-0.51.0.tar.gz::https://github.com/rtk-ai/rtk/releases/download/v0.51.0/rtk-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 5028d3b19a8f0990d30fec9fbb07e32782bc5698e618fb1861aad8a9ccba4eb5
+	source_aarch64 = rtk-bin-aarch64-0.51.0.tar.gz::https://github.com/rtk-ai/rtk/releases/download/v0.51.0/rtk-aarch64-unknown-linux-gnu.tar.gz
 	depends_aarch64 = glibc
 	depends_aarch64 = libgcc
-	sha256sums_aarch64 = d1cc49dfa2cd443fc32625444b59fe616b6c80478cca210985118347174dd758
+	sha256sums_aarch64 = 8d6d1aad9e69b42481eda7039507d1f7ee93698f87713cecd873d287c1931632
 
 pkgname = rtk-bin
