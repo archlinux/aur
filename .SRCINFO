@@ -1,0 +1,14 @@
+pkgbase = r-orthopolynom
+	pkgdesc = Collection of functions for orthogonal and orthonormal polynomials
+	pkgver = 1.0.6.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=orthopolynom
+	arch = any
+	license = GPL-2.0-or-later
+	depends = r
+	depends = r-polynom
+	source = https://cran.r-project.org/src/contrib/orthopolynom_1.0-6.1.tar.gz
+	md5sums = 043f7ec6fccafc90b2133c7f7f84c048
+	b2sums = 20dfefac18f68a50d3e15887abe65e258b94604c9f2a20bb551a27bc393dca5962f8802df154ef31d90ed0d56bb713a71a40f1fcbd25f30f095331bcba2bbc12
+
+pkgname = r-orthopolynom
