@@ -1,6 +1,6 @@
 pkgbase = ptui
 	pkgdesc = Picture TUI
-	pkgver = 2.6.0
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://github.com/narbs/ptui
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ptui
 	depends = jp2a
 	provides = ptui
 	conflicts = ptui
-	source = https://github.com/narbs/ptui/releases/download/v2.6.0/ptui-2.6.0-x86_64.tar.gz
-	sha256sums = efa1ad0796f6607572d87ec4b02d2e5124823ae7c143d118e3119ad84b107ff6
+	source = https://github.com/narbs/ptui/releases/download/v2.6.1/ptui-2.6.1-x86_64.tar.gz
+	sha256sums = 0e1f3e9cbcf5c3fbcfe09dd186b254dc2c517b46acb487c62f832aed0206da5e
 
 pkgname = ptui-bin
