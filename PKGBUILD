@@ -4,7 +4,7 @@
 # (binary + LICENSE + .desktop + icons), i.e. releases after v0.2.2.
 
 pkgname=archtoys-bin
-pkgver=0.2.7
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="System-wide color picker for Linux, inspired by PowerToys (precompiled binary)"
 arch=('x86_64')
@@ -16,13 +16,14 @@ provides=("archtoys=${pkgver}")
 conflicts=('archtoys')
 options=('!debug')
 source=("archtoys-linux-x86_64-v${pkgver}.tar.gz::https://github.com/Mujtaba1i/Archtoys/releases/download/v${pkgver}/archtoys-linux-x86_64.tar.gz")
-sha256sums=('55d670a451d96a0fc2851da5ca7ba6213abd07d4c4eb47d7e29f6df53823b066')
+sha256sums=('f206e6158820115c4b7642287fb19b5bd7ec0d259e3c72dcdc72fba281d3a879')
 
 package() {
   cd "${srcdir}"
 
   install -Dm755 archtoys "${pkgdir}/usr/bin/archtoys"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 colornames-LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/colornames-LICENSE.txt"
   install -Dm644 archtoys.desktop "${pkgdir}/usr/share/applications/archtoys.desktop"
 
   for size in 16 22 24 32 48 64 128 256 512; do
