@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="matlab-mpm-input"
-pkgver=R2026a+R2017b
+pkgver=R2026b+R2017b
 _latest="${pkgver%%+*}"
 _oldest="${pkgver#*+}"
 pkgrel=1
@@ -9,7 +9,7 @@ pkgdesc="MATLAB Package Manager (input files)"
 arch=(
   'any'
 )
-url="https://www.mathworks.com/products/mpm.html"
+url="https://www.mathworks.com/products/mpm.html" # https://www.mathworks.com/mpm_input_files
 license=(
   'custom:MATHWORKS CLOUD REFERENCE ARCHITECTURE LICENSE'
 )
@@ -44,7 +44,7 @@ done
 pkgver() {
   cd "${srcdir}"
   local releases
-  releases=($(bsdtar -tf "${source[0]##*/}" | grep -oP 'r[0-9]{4}[ab]' | sort -u))
+  releases=($(bsdtar -tf "${source[0]##*/}" | grep -oiP 'r[0-9]{4}[ab]' | sort -u))
 
   printf '%s+%s' "${releases[-1]/r/R}" "${releases[0]/r/R}"
 }
@@ -52,9 +52,13 @@ pkgver() {
 package() {
   cd "${srcdir}"
   for _release in "${_releases[@]}"; do
-    install -vDm644 "mpm-input-${_release,,}.txt" \
+    _input="mpm-input-${_release,,}.txt"
+    [[ -f "${_input}" ]] || _input="mpm-input-${_release}.txt"
+
+    install -vDm644 "${_input}" \
       "${pkgdir}/usr/share/matlab-mpm/input/${_release}.txt"
   done
 
-  ln -vsf "${_latest}.txt" "${pkgdir}/usr/share/matlab-mpm/input/latest.txt"
+  ln -vsf "${_latest}.txt" \
+    "${pkgdir}/usr/share/matlab-mpm/input/latest.txt"
 }
