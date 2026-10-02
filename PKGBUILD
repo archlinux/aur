@@ -9,7 +9,7 @@ license=('GPL-2.0-or-later')
 depends=('opencie-pkcs11' 'gtk3' 'pcsclite')
 makedepends=('fvm' 'clang' 'cmake' 'ninja' 'pkgconf' 'git' 'patchelf')
 # Flutter SDK version to build with (matches upstream CI); fetched via fvm.
-_flutter=3.47.5 # renovate: datasource=github-tags depName=flutter/flutter
+_flutter=3.47.6 # renovate: datasource=github-tags depName=flutter/flutter
 source=("$pkgname-$pkgver.tar.gz::https://github.com/M0Rf30/opencie/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('44ef1b32cc8e20c35836fa93e9de45df759f00be1a7a2cc50e19d38fc6378e41')
 
