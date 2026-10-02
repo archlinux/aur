@@ -1,0 +1,11 @@
+pkgbase = cwtail
+pkgname = cwtail
+	pkgdesc = CloudWatch Logs TUI — browse, explore, and live-tail log groups
+	pkgver = 2026.10.2
+	pkgrel = 1
+	url = https://github.com/Elesoft-Dev/CloudwatchTail
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = https://github.com/Elesoft-Dev/CloudwatchTail/releases/download/2026.10.2/cwtail
+	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
