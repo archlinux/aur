@@ -2,11 +2,11 @@
 
 pkgname=voicefox-git
 _pkgname="${pkgname%-git}"
-pkgver=0.3.11.r0.g3f64a5d
+pkgver=0.5.0.r0.gf788474
 pkgrel=1
 epoch=1
-pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
-arch=("x86_64")
+pkgdesc="Rust + ratatui + libmpv 驱动的键盘优先终端音乐播放器：多音源、歌词、本地音乐、下载、收藏与歌单。"
+arch=("x86_64" "aarch64")
 url="https://github.com/emoeem/voicefox"
 license=("MIT")
 options=(!lto !debug) # ring's cc-compiled asm breaks with makepkg's -flto
@@ -46,7 +46,7 @@ prepare() {
 	cd "${_pkgname}"
 
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked --target "$(rustc --print host-tuple)"
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
