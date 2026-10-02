@@ -1,10 +1,10 @@
 # Maintainer: kewl fft <kewl@alto.eu.org>
 
 pkgname=cursor-appimage
-pkgver=3.22.7
+pkgver=3.23.12
 pkgrel=1
-_ver=3.22
-_commit="37076c6c3f9e253c0fa2305197e45befd13a2268"
+_ver=3.23
+_commit="2d29876d567da1607532b23bbf2cd5ddbca496fe"
 pkgdesc="Cursor AI code editor (AppImage, extracted)"
 arch=('x86_64')
 url="https://www.cursor.com"
@@ -22,7 +22,7 @@ source=(
   "Cursor-${pkgver}.AppImage::https://downloads.cursor.com/production/${_commit}/linux/x64/Cursor-${pkgver}-x86_64.AppImage"
 )
 
-sha512sums=('6fd981c8cd4cfc7357db4ea8477283ee5fa500152b1a32f977efc6ca6b9d5c5c09fae0fc71aed27ede58a247e4f2880520d9cf300b731cc6280b5d6baa452c29')
+sha512sums=('a2e266bb3d3875aa4ee8ddcd19d617a57f5d362606b498da629b7abdad928fa798e7365d6cb441aee0cd544fd3e1ab6948bda5ce128a0350e31cbc2c9e14d12b')
 
 prepare() {
   cd "${srcdir}"
@@ -33,6 +33,7 @@ prepare() {
 package() {
   install -d "${pkgdir}/opt/cursor"
   cp -a squashfs-root/* "${pkgdir}/opt/cursor/"
+  chmod -R 755 "${pkgdir}/opt/cursor/"
 
   # --- FIX APPIMAGE ---
   # Replace broken AppRun with working launcher
