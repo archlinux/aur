@@ -1,0 +1,19 @@
+pkgbase = pg_rum-git
+	pkgdesc = RUM access method for PostgreSQL - inverted index with additional information in posting lists (git version)
+	pkgver = 1.3.15.r24.gc0e3bf3
+	pkgrel = 1
+	url = https://github.com/postgrespro/rum
+	arch = x86_64
+	license = custom:PostgreSQL
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = llvm
+	makedepends = clang
+	depends = postgresql
+	provides = pg_rum=1.3.15
+	conflicts = pg_rum
+	source = pg_rum-git::git+https://github.com/postgrespro/rum
+	sha256sums = SKIP
+
+pkgname = pg_rum-git
