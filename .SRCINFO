@@ -1,20 +1,20 @@
 pkgbase = linux-galaxyaudio-bin
 	pkgdesc = Linux kernel for Samsung Galaxy Book 4 with MAX98390 sound support (Binary Release)
-	pkgver = 7.2.7
+	pkgver = 7.2.8
 	pkgrel = 1
 	url = https://github.com/antpln/linux-galaxyaudio
 	arch = x86_64
 	license = GPL2
 	makedepends = tar
 	makedepends = zstd
-	noextract = linux-galaxyaudio-7.2.7-1-x86_64.pkg.tar.zst
-	noextract = linux-galaxyaudio-headers-7.2.7-1-x86_64.pkg.tar.zst
+	noextract = linux-galaxyaudio-7.2.8-1-x86_64.pkg.tar.zst
+	noextract = linux-galaxyaudio-headers-7.2.8-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = linux-galaxyaudio-7.2.7-1-x86_64.pkg.tar.zst::https://github.com/antpln/linux-galaxyaudio/releases/download/v7.2.7/linux-galaxyaudio-7.2.7-1-x86_64.pkg.tar.zst
-	source = linux-galaxyaudio-headers-7.2.7-1-x86_64.pkg.tar.zst::https://github.com/antpln/linux-galaxyaudio/releases/download/v7.2.7/linux-galaxyaudio-headers-7.2.7-1-x86_64.pkg.tar.zst
+	source = linux-galaxyaudio-7.2.8-1-x86_64.pkg.tar.zst::https://github.com/antpln/linux-galaxyaudio/releases/download/v7.2.8/linux-galaxyaudio-7.2.8-1-x86_64.pkg.tar.zst
+	source = linux-galaxyaudio-headers-7.2.8-1-x86_64.pkg.tar.zst::https://github.com/antpln/linux-galaxyaudio/releases/download/v7.2.8/linux-galaxyaudio-headers-7.2.8-1-x86_64.pkg.tar.zst
 	source = linux-galaxyaudio.preset
-	sha256sums = f19e4045fb584ce1300cf559f80619af528526dd8baf64dc15079d85c44219d7
-	sha256sums = fd26dd3b7de35856f52121d4df904a6e3cee71d1c59da9cf1e15615fd5162d2b
+	sha256sums = 55da55e7cb43e71a52eb54af9d6e6e8e003f2b6a5b78fa129c45c9e910046e61
+	sha256sums = 692d499845cbedeb11c5d74b492bba21e7265446f5c17dc8d47e802d266f5d4c
 	sha256sums = ed5f628f80039519b190f5ee5d529d167b6521a041ab20701f0c86a76a4ae963
 
 pkgname = linux-galaxyaudio-bin
@@ -24,14 +24,14 @@ pkgname = linux-galaxyaudio-bin
 	depends = kmod
 	depends = initramfs
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux=7.2.7
-	provides = linux-galaxyaudio=7.2.7
+	provides = linux=7.2.8
+	provides = linux-galaxyaudio=7.2.8
 	conflicts = linux-galaxyaudio
 
 pkgname = linux-galaxyaudio-headers-bin
 	pkgdesc = Headers and scripts for building modules for the linux-galaxyaudio kernel (Binary)
 	depends = pahole
-	provides = linux-headers=7.2.7
-	provides = linux-galaxyaudio-headers=7.2.7
+	provides = linux-headers=7.2.8
+	provides = linux-galaxyaudio-headers=7.2.8
 	conflicts = linux-headers
 	conflicts = linux-galaxyaudio-headers
