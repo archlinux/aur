@@ -1,0 +1,16 @@
+pkgbase = lmt
+	pkgdesc = Run applications with resource limits (CPU, memory, cores) enforced using cgroupsv2 on Linux
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Rohansjamadagni/lmt
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-unknown
+	makedepends = go>=1.20
+	depends = glibc
+	depends = systemd
+	options = !lto
+	source = lmt-0.0.1.tar.gz::https://github.com/Rohansjamadagni/lmt/archive/refs/tags/v0.0.1.tar.gz
+	sha256sums = 88432a16264209c6f561a90072bbc600fb1d90f44431d44c95a5d23431daec60
+
+pkgname = lmt
