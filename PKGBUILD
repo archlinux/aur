@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="A terminal database workbench for PostgreSQL and MySQL"
 
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('74e3241f384fc8b89db2e712c2e18ea6be43cb48c83ad717808085dd1179dc11')
-sha256sums_aarch64=('8a1b058775cce26652241a47f06b5e07ceb7fee87c21e81c21154a31c2ed29f9')
+sha256sums_x86_64=('ca68bae8b127ef45e4fb2f285235c68a99eb7e8ca3d17e3d549e13ac5020b4a2')
+sha256sums_aarch64=('1e777f0ad5f91ced7b1e668a9f5e081c86037af6afa06b5f8d79419f0179f50e')
 
 
 case ${CARCH} in
