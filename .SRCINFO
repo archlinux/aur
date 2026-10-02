@@ -1,6 +1,6 @@
 pkgbase = uniwill-laptop-dkms-git
 	pkgdesc = Uniwill laptop platform driver (DKMS, master branch)
-	pkgver = r37.03e7d36
+	pkgver = r27.5a24248
 	pkgrel = 1
 	url = https://github.com/Wer-Wolf/uniwill-laptop
 	arch = x86_64
