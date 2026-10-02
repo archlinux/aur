@@ -1,0 +1,24 @@
+pkgbase = memcastle-bin
+	pkgdesc = Local-first, always-on memory server for AI coding agents over MCP/HTTP (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/noirbizarre/memcastle
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = memcastle=0.1.0
+	conflicts = memcastle
+	options = !strip
+	options = !debug
+	source = LICENSE-0.1.0::https://github.com/noirbizarre/memcastle/raw/0.1.0/LICENSE
+	source = memcastle-0.1.0.service::https://github.com/noirbizarre/memcastle/raw/0.1.0/packaging/systemd/memcastle.service
+	sha256sums = 579ef5ffa922ce743ad6dd7ec4538389c7f66a2b945b7d6284e5b3ec04da156e
+	sha256sums = 8084d6127e526aad94907922f893f5215cfc4fd1dd113d11af6a8b3ee1a34ed1
+	source_x86_64 = memcastle-0.1.0-x86_64::https://github.com/noirbizarre/memcastle/releases/download/0.1.0/memcastle_0.1.0_linux-amd64
+	sha256sums_x86_64 = bdb09878861d28c9b3eef7781fd7d699c74ee699f54f091e42d3720c5d3a0533
+	source_aarch64 = memcastle-0.1.0-aarch64::https://github.com/noirbizarre/memcastle/releases/download/0.1.0/memcastle_0.1.0_linux-arm64
+	sha256sums_aarch64 = 9e9fc12d12a638daddbbfbabfec494adccb201e5c8eaeb06e1c4bd560f3ebb88
+
+pkgname = memcastle-bin
