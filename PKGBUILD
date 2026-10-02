@@ -1,6 +1,6 @@
 # Maintainer: unicxrn
 pkgname=xerahs-git
-pkgver=r3700.4d0d746b
+pkgver=r4924.9712850d
 pkgrel=1
 pkgdesc="Cross-platform screen capture and file sharing tool (ShareX port) built with Avalonia UI"
 arch=('x86_64')
@@ -11,13 +11,10 @@ depends=(
     'libx11'
     'libxrandr'
     'dbus'
-    'webkit2gtk-4.1'
 )
 makedepends=(
     'dotnet-sdk-10.0'
     'git'
-    'nodejs'
-    'npm'
 )
 optdepends=(
     'wl-clipboard: Wayland clipboard support'
@@ -30,8 +27,8 @@ provides=('xerahs')
 conflicts=('xerahs')
 source=(
     "xerahs::git+https://github.com/ShareX/XerahS.git"
-    "xerahs-editor::git+https://github.com/ShareX/ShareX.ImageEditor.git#branch=develop"
-    "xerahs-videoeditor::git+https://github.com/ShareX/ShareX.VideoEditor.git#branch=main"
+    "xerahs-editor::git+https://github.com/KovaForge/ShareX.ImageEditor.git"
+    "xerahs-omacut::git+https://github.com/KovaForge/omacut.git"
     "xerahs.desktop"
     "xerahs.sh"
 )
@@ -49,34 +46,33 @@ pkgver() {
 }
 
 prepare() {
-    # ShareX.ImageEditor and ShareX.VideoEditor are submodules inside the XerahS tree;
-    # git clone creates empty directories for them, so remove them first then symlink our clones
-    rm -rf "$srcdir/xerahs/ShareX.ImageEditor"
-    ln -sfn "$srcdir/xerahs-editor" "$srcdir/xerahs/ShareX.ImageEditor"
+    cd "$srcdir/xerahs"
 
-    rm -rf "$srcdir/xerahs/ShareX.VideoEditor"
-    ln -sfn "$srcdir/xerahs-videoeditor" "$srcdir/xerahs/ShareX.VideoEditor"
+    # Check out ShareX.ImageEditor and Omacut at the commits XerahS pins, using our
+    # local clones as the submodule remotes. Tracking branch tips instead breaks the
+    # build whenever a submodule API changes ahead of XerahS. (native/omasnap is not
+    # referenced by any project, so it is left uninitialised.)
+    git submodule init ShareX.ImageEditor Omacut
+    git config submodule.ShareX.ImageEditor.url "$srcdir/xerahs-editor"
+    git config submodule.Omacut.url "$srcdir/xerahs-omacut"
+    git -c protocol.file.allow=always submodule update --checkout ShareX.ImageEditor Omacut
 
-    # XerahS.UI.csproj references ImageEditor with GlobalPropertiesToRemove="OS", which
+    # XerahS.Core.csproj references ImageEditor with GlobalPropertiesToRemove="OS", which
     # strips the MSBuild OS property during restore. NuGet then writes assets to the
     # non-OS-specific obj/project.assets.json, but the build's runtime OS detection reads
     # from obj/os-Unix/project.assets.json, a consistent mismatch on Linux. Removing
     # GlobalPropertiesToRemove="OS" from the ImageEditor reference lets both restore and
     # build use obj/os-Unix/project.assets.json consistently.
     sed -i 's| GlobalPropertiesToRemove="OS"||g' \
-        "$srcdir/xerahs/src/desktop/app/XerahS.UI/XerahS.UI.csproj"
+        src/desktop/core/XerahS.Core/XerahS.Core.csproj \
+        src/desktop/app/XerahS.UI/XerahS.UI.csproj
 
     # Clean stale NuGet intermediate outputs so the restore runs fresh
-    rm -rf "$srcdir/xerahs-editor/src/ShareX.ImageEditor/obj" \
-           "$srcdir/xerahs-editor/src/ShareX.ImageEditor/bin"
+    rm -rf ShareX.ImageEditor/src/ShareX.ImageEditor/obj \
+           ShareX.ImageEditor/src/ShareX.ImageEditor/bin
 }
 
 build() {
-    # Build VideoEditor frontend (required by XerahS.App.csproj)
-    cd "$srcdir/xerahs-videoeditor/frontend"
-    npm ci
-    npm run build
-
     cd "$srcdir/xerahs"
 
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
