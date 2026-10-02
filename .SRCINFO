@@ -1,6 +1,6 @@
 pkgbase = octave-datatypes
 	pkgdesc = Extra data types for GNU Octave
-	pkgver = 1.2.5
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://gnu-octave.github.io/packages/datatypes/
 	install = octave-datatypes.install
@@ -8,8 +8,8 @@ pkgbase = octave-datatypes
 	groups = octave-forge
 	license = GPL-3.0-or-later
 	depends = octave>=11.1.0
-	noextract = datatypes-1.2.5.tar.gz
-	source = https://github.com/pr0m1th3as/datatypes/releases/download/release-1.2.5/datatypes-1.2.5.tar.gz
-	sha256sums = 632d3acd525ad4f6a971dc2daa32db4d30d4408bcff23f0bc4298f94658b51d7
+	noextract = datatypes-1.5.0.tar.gz
+	source = https://github.com/pr0m1th3as/datatypes/releases/download/release-1.5.0/datatypes-1.5.0.tar.gz
+	sha256sums = 5d4eb5efe22a1388d7f0a4337539fd4d8a79f33d40fb37a23c4da0bd7d3de32b
 
 pkgname = octave-datatypes
