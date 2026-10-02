@@ -1,9 +1,9 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname=go-hass-agent
-pkgver=14.16.0
+pkgver=14.17.0
 pkgrel=1
-_commit=754f00c
+_commit=d74ad62
 pkgdesc="A Home Assistant, native app for desktop/laptop devices."
 arch=('x86_64')
 url="https://github.com/joshuar/go-hass-agent"
@@ -19,7 +19,7 @@ optdepends=('fwupd: firmware security probe'
             'xdg-desktop-portal: running apps list and desktop settings')
 source=("go-hass-agent::git+${url}.git#commit=${_commit}?signed")
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')
-b2sums=('61f40262973deadfb1632979cdae4717a8d70c22b0947b2f35d05b98c5f52dc43ff5b7f91be049ea0d09ca20b0c717cb8f010303b0c95baabcc3b3f1289c89a4')
+b2sums=('1c7cbb7d109dc74ae435c00fea0d36ed1c28c58c4a6511854b479c5d40c35c5ada8b8f240a6be80b201dbeb1595fe14336cc72f54592ad0e5ec1130a3c1ca15f')
 
 build() {
   cd "${pkgname}"
