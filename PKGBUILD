@@ -15,7 +15,7 @@
 # and not the version; a build in a network-isolated chroot will still fail.
 
 pkgname=xpcog
-pkgver=2.0.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Audio player for the formats other players do not open"
 arch=('x86_64')
@@ -62,7 +62,7 @@ source=(
 # The release tarball is checksummed; the vcpkg tree is not, because a git
 # source is pinned by its commit and makepkg wants SKIP for one.
 sha256sums=(
-  '83da3b654546cb5f17c6a7f69b65dbadf7dfffb8978e8ed946a9a3ba841cd9be'
+  'a1131b672d75275edeb30b0735f4941c590d86ebeb74171d964405d0cda29e07'
   'SKIP'
 )
 
@@ -85,7 +85,7 @@ prepare() {
 build() {
   # The Last.fm credentials come through the environment, and nothing here has
   # to forward them: makepkg runs build() with the environment it was invoked
-  # with, and app/CMakeLists.txt reads XPCOG_LASTFM_API_KEY and
+  # with, and uicore/CMakeLists.txt reads XPCOG_LASTFM_API_KEY and
   # XPCOG_LASTFM_API_SECRET from there when the cache variables are unset. So
   #
   #     XPCOG_LASTFM_API_KEY=... XPCOG_LASTFM_API_SECRET=... makepkg -si
