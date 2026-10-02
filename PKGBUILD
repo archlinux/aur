@@ -1,11 +1,21 @@
 # Maintainer: yuna0x0 <yuna@yuna0x0.com>
 pkgname=cirno-catch-frog
 pkgver=1.0.3
-pkgrel=11
+pkgrel=12
 pkgdesc="Touhou fan game made with Godot. Let's help Cirno catch frogs!"
 arch=('x86_64')
 url="https://yuna0x0.itch.io/cirno-catch-frog"
 license=('custom')
+depends=('glibc' 'libx11' 'libxcursor' 'libxext' 'libxi' 'libxinerama' 'libxrandr' 'libxrender' 'vulkan-icd-loader')
+optdepends=(
+	'libpulse: audio output via PulseAudio/PipeWire'
+	'alsa-lib: audio output via ALSA'
+	'libxkbcommon: keyboard layout support'
+	'fontconfig: system font fallback'
+	'systemd-libs: gamepad hotplug support'
+	'dbus: screensaver inhibition'
+	'libspeechd: text-to-speech'
+)
 makedepends=('gendesk')
 options=(!strip)
 source=(
