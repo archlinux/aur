@@ -1,5 +1,5 @@
 pkgname=hoshi-bin
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Hoshi desktop app"
 arch=('x86_64')
@@ -9,6 +9,7 @@ license=('AGPL')
 depends=(
   'gtk3'
   'webkit2gtk-4.1'
+  'libmpv.so'
 )
 
 source=(
@@ -16,7 +17,7 @@ source=(
 )
 
 sha256sums=(
-  '0531380db108b8fde4741fdc266cfeaeb7a3583803e7a3c9d5d38f1b1771fde8'
+  '8ade9357b711c92cb068b87767a5fe483c8bcc3c4a95929361b53271dc910bcd'
 )
 
 package() {
