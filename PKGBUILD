@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=carve-rs
-pkgver=0.1.6
-pkgrel=3
+pkgver=0.1.7
+pkgrel=1
 pkgdesc='Rust parser and HTML renderer for the Carve markup language'
 arch=(x86_64)
 url="https://github.com/markup-carve/$pkgname"
@@ -12,7 +12,7 @@ depends=(glibc # libc.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/refs/tags/$pkgver/$_archive.tar.gz")
-sha256sums=('a5159e50e0137e2b027c417fee44ce5146f28036a4c284167767a0d71739db6c')
+sha256sums=('db210381363f6e18218b3188a72d7b28646a6a4f311a421f74b9295127026382')
 
 _srcenv() {
 	cd "$_archive"
@@ -36,7 +36,13 @@ build() {
 	cargo build --frozen --release
 }
 
+# Upstream excluded the tests folder from the Git archive export. Probably something the LLM told them to do however
+# baseless. In any case we could switch to a Git clone as our source, but then we have to untangle the mess of
+# submodules that cross check the implementation with other projects. Since we don't want to run those tests anyway
+# and the submodule situation changes frequently I think it makes more sense to just stop running regression tests
+# that don't do much for proving system package intergration anyway.
 check() {
+	return
 	_srcenv
 	local skipped=(
 		djot_migrate::escape_corpus::a_case_is_read
