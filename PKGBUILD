@@ -1,7 +1,7 @@
 # Maintainer: wincak <wincak@seznam.cz>
 pkgname=threshy
 pkgver=0.3
-pkgrel=0
+pkgrel=1
 pkgdesc="ThinkPad battery threshold configuration using TLP and D-Bus"
 arch=('x86_64')
 url="https://gitlab.com/wincak/threshy"
@@ -20,7 +20,7 @@ prepare() {
 build() {
 	cd "$pkgname"
 
-        cmake -DCMAKE_INSTALL_PREFIX="/usr" CMakeLists.txt
+        cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX="/usr" CMakeLists.txt
         make
 }
 
