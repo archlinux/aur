@@ -1,6 +1,6 @@
 pkgbase = gp-tray
 	pkgdesc = GlobalProtect VPN system-tray indicator for gpclient with multi-portal switching, desktop alerts and a systemd user service
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Its-Alex/gp-tray
 	arch = any
@@ -14,10 +14,10 @@ pkgbase = gp-tray
 	depends = globalprotect-openconnect
 	depends = hicolor-icon-theme
 	depends = iproute2
-	depends = procps-ng
+	depends = systemd
 	depends = xdg-utils
 	optdepends = gnome-shell-extension-appindicator: tray icon on vanilla GNOME Shell
-	source = gp-tray-1.0.1.tar.gz::https://github.com/Its-Alex/gp-tray/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 0cd953e55f0566b7f639341f2af32f69e302d2e4a294f08441db10b82cddde22
+	source = gp-tray-1.1.0.tar.gz::https://github.com/Its-Alex/gp-tray/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 97321207aa138097c0ee80995ed7dbaee4abc2307a7783f6556bdc32861fab43
 
 pkgname = gp-tray
