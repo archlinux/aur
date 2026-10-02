@@ -2,14 +2,13 @@
 
 pkgname=docker-credential-atcr
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Docker credential helper for ATCR (AT Container Registry)"
 arch=('x86_64' 'aarch64')
 url="https://atcr.io"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
-options=('!debug')
 _repo="https://tangled.org/did:plc:pddp4xt5lgnv2qsegbzzs4xg/at-container-registry"
 source=("$pkgname::git+$_repo.git#tag=v$pkgver")
 sha256sums=('b6a2d7ce72c9826c810bc81ddb83c6704c15baa246b502a9b8ff0f0212c1aa61')
@@ -20,6 +19,9 @@ prepare() {
     # Workspace mode would merge in the unrelated scanner and deploy modules;
     # the credential helper is part of the root module.
     rm -f go.work go.work.sum
+
+    export GOPATH="${srcdir}"
+    go mod download -modcacherw
 
     mkdir -p build
 }
@@ -32,11 +34,10 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOPATH="${srcdir}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
 
-    # -ldflags here replaces the one from GOFLAGS, so repeat -linkmode=external.
     go build -o build/docker-credential-atcr \
-        -ldflags "-linkmode=external \
+        -ldflags "-compressdwarf=false -linkmode=external \
                   -X main.version=$pkgver \
                   -X main.commit=$(git rev-parse HEAD) \
                   -X main.date=$(date -u -d "@$SOURCE_DATE_EPOCH" +%Y-%m-%d)" \
@@ -47,7 +48,7 @@ check() {
     cd "$pkgname"
 
     export GOPATH="${srcdir}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
 
     go test ./cmd/credential-helper/...
 }
