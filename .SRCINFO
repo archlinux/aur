@@ -1,0 +1,21 @@
+pkgbase = sshtron-git
+	pkgdesc = Multiplayer lightcycle game that runs through SSH
+	pkgver = r120.39632dd
+	pkgrel = 1
+	url = https://github.com/zachlatta/sshtron
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.20
+	makedepends = git
+	depends = glibc
+	depends = openssh
+	provides = sshtron
+	conflicts = sshtron
+	options = !lto
+	source = git+https://github.com/zachlatta/sshtron.git
+	source = sshtron.service
+	sha256sums = SKIP
+	sha256sums = 0a989de90c09e34306b27404a3ab0466e970dfd6195dc53e2aebaa0613e02554
+
+pkgname = sshtron-git

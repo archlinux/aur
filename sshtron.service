@@ -1,0 +1,17 @@
+[Unit]
+Description=SSHTron multiplayer snake game server
+After=network.target
+
+[Service]
+# sshtron reads its host key (id_rsa) from the working directory
+DynamicUser=yes
+StateDirectory=sshtron
+WorkingDirectory=/var/lib/sshtron
+ExecStartPre=/bin/sh -c '[ -f id_rsa ] || ssh-keygen -q -t rsa -N "" -f id_rsa'
+ExecStart=/usr/bin/sshtron
+Environment=SSH_PORT=2022
+Environment=PORT=3000
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
