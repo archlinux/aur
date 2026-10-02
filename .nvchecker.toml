@@ -1,0 +1,5 @@
+[fyora-bin]
+source = "github"
+github = "wenbang24/fyora"
+use_latest_release = true
+prefix = "v"
