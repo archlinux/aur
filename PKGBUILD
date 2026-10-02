@@ -3,7 +3,7 @@
 pkgname=plasma6-applets-codexbar
 _pkgname=codexbar-plasmoid
 _plasmoid=com.github.psimaker.codexbar
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="AI coding provider usage in your KDE Plasma 6 panel, a Plasma port of CodexBar"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('libplasma' 'plasma-workspace' 'plasma5support' 'ksvg' 'kcmutils' 'kiri
          'qt6-declarative' 'codexbar-cli>=0.43.0')
 install="$pkgname.install"
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('00f76767cf7999bfaf144380e13c58ebe5aa7a80c5ab3fdf1d26127477b20dcc')
+sha256sums=('7b34373bf013a34903eca3c0f601669303b82a3d6ddf2d880445e1e3d62e879a')
 
 package() {
   cd "$_pkgname-$pkgver"
