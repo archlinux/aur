@@ -2,7 +2,7 @@
 _pkgbase=uniwill-laptop
 _branch=master
 pkgname=uniwill-laptop-dkms-git
-pkgver=r37.03e7d36
+pkgver=r27.5a24248
 pkgrel=1
 pkgdesc="Uniwill laptop platform driver (DKMS, ${_branch} branch)"
 arch=('x86_64')
