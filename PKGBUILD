@@ -2,7 +2,7 @@
 
 pkgname=python-google-cloud-testutils
 _pkg=google_cloud_testutils
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Collection of testing tools used in Python client libraries for Google APIs"
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('python-google-auth' 'python-click' 'python-packaging')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('2f218a116b2740b015001cc8b4167887f06b02c48a3d10b47b28a5caf5a3fbdc')
+sha256sums=('5888da360bbad1cd5ede2ba285db4d579931d09f7389b2bcc9917995dddb2806')
 
 build() {
 	cd "$_pkg-$pkgver"
