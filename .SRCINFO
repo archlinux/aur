@@ -1,6 +1,6 @@
 pkgbase = neferafk-bin
 	pkgdesc = Idle daemon for Wayland: fade, session lock, screens off and suspend
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/bnema/neferafk
 	arch = aarch64
@@ -18,9 +18,9 @@ pkgbase = neferafk-bin
 	conflicts = neferafk
 	conflicts = neferafk-git
 	backup = etc/pam.d/neferafk
-	source_aarch64 = neferafk-bin_0.3.0_aarch64.tar.gz::https://github.com/bnema/neferafk/releases/download/v0.3.0/neferafk_0.3.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = eff3850505febb4cde7b6a33c8db36ad8820ed924a968f1128b169aa970db36c
-	source_x86_64 = neferafk-bin_0.3.0_x86_64.tar.gz::https://github.com/bnema/neferafk/releases/download/v0.3.0/neferafk_0.3.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = a9b28f0877766d5d03db33d5ddd52b981d4938cedfa5631ac62b6846d0593801
+	source_aarch64 = neferafk-bin_0.3.1_aarch64.tar.gz::https://github.com/bnema/neferafk/releases/download/v0.3.1/neferafk_0.3.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = d33303256cc76b9a82fddc64e4c2193eabc83d40c00a22cd0cd03c59e93dc7da
+	source_x86_64 = neferafk-bin_0.3.1_x86_64.tar.gz::https://github.com/bnema/neferafk/releases/download/v0.3.1/neferafk_0.3.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 407cb531c4fe2fadfbb968e4c6e9824c36b05154f487e358f60b5c67dd974299
 
 pkgname = neferafk-bin

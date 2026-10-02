@@ -2,7 +2,7 @@
 # Maintainer: bnema <b at bnema dot dev>
 
 pkgname='neferafk-bin'
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Idle daemon for Wayland: fade, session lock, screens off and suspend'
 url='https://github.com/bnema/neferafk'
@@ -15,10 +15,10 @@ optdepends=('pass: PIN source for auth.mode = pin')
 backup=('etc/pam.d/neferafk')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bnema/neferafk/releases/download/v${pkgver}/neferafk_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('eff3850505febb4cde7b6a33c8db36ad8820ed924a968f1128b169aa970db36c')
+sha256sums_aarch64=('d33303256cc76b9a82fddc64e4c2193eabc83d40c00a22cd0cd03c59e93dc7da')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bnema/neferafk/releases/download/v${pkgver}/neferafk_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('a9b28f0877766d5d03db33d5ddd52b981d4938cedfa5631ac62b6846d0593801')
+sha256sums_x86_64=('407cb531c4fe2fadfbb968e4c6e9824c36b05154f487e358f60b5c67dd974299')
 
 package() {
   install -Dm755 ./neferafk "${pkgdir}/usr/bin/neferafk"
