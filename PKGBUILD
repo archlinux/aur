@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Haskell-based shell scripting language"
 
-pkgver=2026.05.29
+pkgver=2026.10.02
 pkgrel=1
 _gitversion=${pkgver//\./-}
 
@@ -33,8 +33,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
 sha256sums=('48113def1f44d3cd5067b4965fbb7ee677bb7b096cc45047179fb1fa23fd773c'
             '317fa73085a455f60eb9c8d7f558545dd0377c6e9d4e9e362a6ed1d72d242f99')
-sha256sums_x86_64=('5ccc78e62200eb5aea8b9da9161334c61848d0d3e7de2f270929920cfbf357c9')
-sha256sums_aarch64=('1be012a84c76f8b29e079b6c821530de10999c120c373fe9c931f2df19d3f06a')
+sha256sums_x86_64=('bb560d453ea11260df49e09faeddbe144559da36a22f9a43c354e312fbf4c8e8')
+sha256sums_aarch64=('7ac293b8fa53728f3aea2edcd31183296dce6238efd761897950931d0f7d150b')
 
 
 prepare() {
