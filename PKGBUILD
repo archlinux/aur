@@ -1,12 +1,13 @@
 # Maintainer: Markus Hoffmann
 
 pkgname=tone3000-bin
-pkgver=0.0.9
-pkgrel=2
+pkgver=0.0.11
+pkgrel=1
 pkgdesc='Standalone and audio plug-ins for playing Neural Amp Modeler captures and impulse responses'
 arch=('x86_64')
 url='https://github.com/tone-3000/tone3000-plugin'
 license=('MIT')
+options=('!debug')
 depends=('alsa-lib' 'curl' 'fontconfig' 'freetype2' 'gtk3' 'libx11' 'webkit2gtk-4.1')
 optdepends=('jack2: JACK audio backend for the standalone application')
 provides=('tone3000-clap' 'tone3000-lv2' 'tone3000-vst3')
@@ -15,7 +16,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/tone-3000/tone3000-plugin/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  '3e23fb63965f310834090c1cae0357ea0b279cfc14d6980e3beb0b7b5a54b546'
+  'd16dfcf8a007749f6722d82a9cdd8535e1134902eae773f92c339c813efd9185'
   '88d4908d7343898f682e47e70f4288728006ed650dbf79e8940c709d55b76326'
 )
 

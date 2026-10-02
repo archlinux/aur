@@ -1,0 +1,10 @@
+# Ignore everything by default
+*
+
+# Keep directories traversable so root-level exceptions can be matched
+!*/
+
+# Files to keep in the repository
+!PKGBUILD
+!.SRCINFO
+!.gitignore
