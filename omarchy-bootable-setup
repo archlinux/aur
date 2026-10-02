@@ -1,0 +1,38 @@
+#!/bin/bash
+# Install, update, or remove the Bootable Omarchy plugin for the current user.
+# Omarchy only discovers shell plugins under ~/.config/omarchy/plugins.
+set -euo pipefail
+
+id='io.github.debpalash.bootable'
+source_dir='/usr/share/omarchy-bootable/plugin'
+target="$HOME/.config/omarchy/plugins/$id"
+
+usage() {
+  cat <<USAGE
+Usage: omarchy-bootable-setup [install|remove]
+
+  install   Copy the packaged plugin into $target and enable it (default)
+  remove    Remove the per-user plugin copy
+USAGE
+}
+
+case "${1:-install}" in
+install)
+  omarchy-plugin-validate "$source_dir"
+  mkdir -p "$target"
+  cp -a --no-preserve=ownership "$source_dir/." "$target/"
+  chmod -R u+rwX "$target"
+  omarchy plugin enable "$id"
+  echo "Bootable plugin installed in $target"
+  ;;
+remove)
+  omarchy plugin remove "$id" --yes
+  ;;
+-h | --help)
+  usage
+  ;;
+*)
+  usage >&2
+  exit 2
+  ;;
+esac

@@ -1,0 +1,22 @@
+pkgbase = omarchy-bootable-git
+	pkgdesc = Bootable boot media writer client for the Omarchy bar
+	pkgver = r23.3fdd881
+	pkgrel = 1
+	url = https://github.com/debpalash/omarchy-bootable
+	install = omarchy-bootable.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bootable>=0.1.4
+	depends = bash
+	optdepends = bootable-gui: launch the desktop interface from the panel
+	provides = omarchy-bootable
+	conflicts = omarchy-bootable
+	source = omarchy-bootable::git+https://github.com/debpalash/omarchy-bootable.git
+	source = omarchy-bootable-setup
+	source = omarchy-bootable.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = omarchy-bootable-git

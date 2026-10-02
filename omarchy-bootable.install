@@ -1,0 +1,11 @@
+post_install() {
+  echo ":: Run 'omarchy-bootable-setup' as your user to add the Bootable plugin to the Omarchy bar."
+}
+
+post_upgrade() {
+  echo ":: Run 'omarchy-bootable-setup' as your user to refresh the plugin in ~/.config/omarchy/plugins."
+}
+
+pre_remove() {
+  echo ":: Run 'omarchy-bootable-setup remove' as your user to remove the plugin from ~/.config/omarchy/plugins."
+}
