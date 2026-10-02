@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet-cagebreak
-pkgver=1.1.9
+pkgver=1.1.10
 pkgrel=1
 pkgdesc="Graphical console greeter for greetd with ASCII art and themes (Cagebreak compositor)"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('go>=1.25')
 provides=('sysc-greet')
 conflicts=('sysc-greet' 'sysc-greet-hyprland' 'sysc-greet-sway')
 source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5401b24c44b0c1164fa5b2f30c86f2777b6c9aa5887e377b37188b091d890898')
+sha256sums=('41941a80a2cdd0099eeef80549931a8de35b13bc69afcd8175b5fd4a08bfbdb8')
 # NOTE: config.toml intentionally NOT in backup - must be replaced when switching compositor variants
 backup=('etc/greetd/cagebreak-greeter-config' 'etc/polkit-1/rules.d/85-greeter.rules')
 install=sysc-greet-cagebreak.install
