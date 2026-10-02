@@ -1,6 +1,6 @@
 pkgbase = ferry-app-bin
 	pkgdesc = Pair with your devices and share files and the clipboard over the local network
-	pkgver = 1.13.0
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://github.com/simophin/ferryapp
 	arch = x86_64
@@ -25,11 +25,11 @@ pkgbase = ferry-app-bin
 	conflicts = ferry
 	options = !strip
 	options = !debug
-	source = LICENSE-1.13.0::https://raw.githubusercontent.com/simophin/ferryapp/v1.13.0/LICENSE
+	source = LICENSE-1.14.0::https://raw.githubusercontent.com/simophin/ferryapp/v1.14.0/LICENSE
 	sha256sums = fa6cf94caa0ccb536b5313e9a851e53aba503d3ccfe4dd124b8e927cbd5d3eeb
-	source_x86_64 = https://github.com/simophin/ferryapp/releases/download/v1.13.0/ferry_1.13.0_amd64.deb
-	sha256sums_x86_64 = 15ec671efe7d86a0c8f11f6fd321e5616b6865bd7d6daf0cba3d0d2f6e7747be
-	source_aarch64 = https://github.com/simophin/ferryapp/releases/download/v1.13.0/ferry_1.13.0_arm64.deb
-	sha256sums_aarch64 = 7d2aca54294bd3184555cf28ad7cfa7f838a2ed9957dbb611f1f41117e09d648
+	source_x86_64 = https://github.com/simophin/ferryapp/releases/download/v1.14.0/ferry_1.14.0_amd64.deb
+	sha256sums_x86_64 = 5247ba78b2688e0a001b263ac22e98eaf6b0928acbe2ac7c02e6488e47c39e13
+	source_aarch64 = https://github.com/simophin/ferryapp/releases/download/v1.14.0/ferry_1.14.0_arm64.deb
+	sha256sums_aarch64 = e4384d6e13afe39e4a371080c6863b021257a668c370fa9554cbee81d7e915c1
 
 pkgname = ferry-app-bin
