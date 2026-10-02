@@ -1,7 +1,7 @@
 # Maintainer: nathawat <nathawat[at]noreply[dot]codeberg[dot]org>
 
 pkgname=noirpass
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Minimal on-demand GPG-backed freedesktop Secret Service"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ provides=('org.freedesktop.secrets')
 _tag=v${pkgver}
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-b2sums=('afa2b3cd7479845020e478ea870b678f65dbfd5bb16729fab85a9450f74d626dc294fe15cebd1852b234004d3528c9825393d8cb0a56c2c8cfd48c972c8524a9')
+b2sums=('6bbad0874fdbeff8b90eb978a5c006637dc105c7df70f86e0810fad202596427e303155903f0024b2d3e9d2f314a8197490e677e02c541db06fe7a251fcb0895')
 
 prepare() {
 	cd "${pkgname}"
