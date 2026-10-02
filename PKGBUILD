@@ -3,7 +3,7 @@
 pkgname=tincan-git
 _pkgname=${pkgname%-git}-cli
 pkgver=0.3.3.r0.g8d47968
-pkgrel=1
+pkgrel=2
 pkgdesc='Serverless peer-to-peer voice and text chat for your terminal'
 arch=(x86_64)
 url="https://github.com/bilalyazicioglu/$_pkgname"
@@ -14,6 +14,8 @@ depends=(alsa-lib
          libopusenc)
 makedepends=(cargo
              git)
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 source=("${pkgname%-git}::git+$url.git")
 sha256sums=('SKIP')
 
