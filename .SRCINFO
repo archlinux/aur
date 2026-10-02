@@ -1,0 +1,15 @@
+pkgbase = python-pdiary
+	pkgdesc = A simple terminal diary journal application written in Python with encryption support
+	pkgver = 1.65
+	pkgrel = 1
+	url = https://github.com/manipuladordedados/pdiary
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	source = python-pdiary-1.65.tar.gz::https://github.com/manipuladordedados/pdiary/archive/refs/tags/1.65.tar.gz
+	sha256sums = c28b6bf5e1f5ece56a3a00f7cf018d6385fe7c496f015944bea1b45c2eb3b195
+
+pkgname = python-pdiary
