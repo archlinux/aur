@@ -9,7 +9,7 @@
 # ~GB) and compiles it — this downloads at build time and takes a while. The
 # extension itself ships separately via AMO.
 pkgname=castbridge
-pkgver=0.3.2
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Native Chromecast backend for the Cast browser extension (openscreen Cast Streaming)"
 arch=('x86_64')
