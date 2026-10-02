@@ -1,9 +1,9 @@
 pkgname=1password-beta
 
-_tarver=8.12.38-25.BETA
+_tarver=8.12.40-27.BETA
 _tar="1password-${_tarver}.x64.tar.gz"
 pkgver=${_tarver//-/_}
-pkgrel=25
+pkgrel=27
 conflicts=('1password' '1password-beta-bin')
 pkgdesc="Password manager and secure wallet"
 arch=('x86_64')
@@ -12,8 +12,8 @@ license=('LicenseRef-1Password-Proprietary')
 options=(!strip)
 install="1password.install"
 source=(https://downloads.1password.com/linux/tar/beta/${CARCH}/${_tar}{,.sig})
-sha256sums=('c6d302a2c7404a7ded34a3c4f1c401a43eafeed8b147d128dcb416284c2c2b71'
-            'cc0f00054749c32d77fba31a12a8dece812e409f4b9d81850d2f9b50fab55dca'
+sha256sums=('1327d102255b5c347e6c5e19b1a6581986446e06848015b93b5d7b10b9bc3f52'
+            '2a19fba2b81ade500d9707a20829930d4fca972254fdc653ffa27cee57638098'
 )
 validpgpkeys=('3FEF9748469ADBE15DA7CA80AC2D62742012EA22')
 
@@ -55,6 +55,7 @@ EOF" > ./com.1password.1Password.policy
     rm "${pkgdir}"/opt/1Password/com.1password.1Password.policy "${pkgdir}"/opt/1Password/com.1password.1Password.policy.tpl "${pkgdir}"/opt/1Password/install_biometrics_policy.sh
     rm -r "${pkgdir}"/opt/1Password/resources/icons/
     rm "${pkgdir}"/opt/1Password/resources/com.onepassword.OnePassword.desktop "${pkgdir}"/opt/1Password/resources/custom_allowed_browsers
+
     # Symlink /usr/bin executable to opt
     install -dm0755 "${pkgdir}"/usr/bin
     ln -s /opt/1Password/1password "${pkgdir}"/usr/bin/1password
