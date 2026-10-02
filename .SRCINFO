@@ -1,6 +1,6 @@
 pkgbase = dosbox-x
 	pkgdesc = x86 emulator with builtin DOS, with patches with more features
-	pkgver = 2026.08.31
+	pkgver = 2026.10.01
 	pkgrel = 1
 	url = http://dosbox-x.com
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = dosbox-x
 	depends = libpcap
 	optdepends = openglide-git: Third-party 3dfx Glide API support
 	conflicts = dosbox-x-git
-	source = https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v2026.08.31.tar.gz
-	sha256sums = 992ea538ea858f9fb196b39de2276ce3048c731965e144e6288202abed109782
+	source = https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v2026.10.01.tar.gz
+	sha256sums = df023a6c0e4a139dcbd60befff5947e0db2cc68e4e79db463670f581a4044ed4
 
 pkgname = dosbox-x
