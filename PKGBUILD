@@ -1,7 +1,7 @@
 # Maintainer: fireflylabs
 _pkgname=abstract
 pkgname=abstract-editor-bin
-pkgver=0.2.0
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Minimal local-first markdown notes editor, GPU-rendered with GPUI"
 arch=('x86_64' 'aarch64')
@@ -33,8 +33,8 @@ source_aarch64=("$_pkgname-$pkgver-linux-aarch64.tar.gz::https://github.com/fire
 sha256sums=('d004cd85b8ee160a0e87d99f041e4f8b77c75326b010ffcfbae61d080e68b94d'
 	'39f026297aabb23e4fbf9add9a151f4a0548c1185c674caca1614a9efeaf72c5'
 	'cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a')
-sha256sums_x86_64=('f2aeed43cd49e05240a900d8eaea95a2e527646531935aec069b31fc9a44c64c')
-sha256sums_aarch64=('7064c512de7e03bac0d7186d7886a04e4a988a65339b89429a7679733aeb2917')
+sha256sums_x86_64=('ff6b111a3b93c128fe9bf0a550ca73dd520029030dac591591059345b37688d1')
+sha256sums_aarch64=('ec5b73013fa5ac7c288bb7c7a6c618ddffd4871d750ef378634f42aee1e7ce08')
 
 package() {
 	# The release tarball unpacks abstract/, README.md and LICENSE at $srcdir root.
