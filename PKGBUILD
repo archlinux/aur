@@ -2,8 +2,8 @@
 
 pkgname=bettbox-compatible-pre-bin
 _pkgname=Bettbox
-pkgver=1.19.4pre1
-pkgrel=3
+pkgver=1.19.4
+pkgrel=1
 _pkgver="${pkgver/pre/-pre}"
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash. (Build with GOAMD64=v1)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source_x86_64=(
     "${pkgname%-pre-bin}-${pkgver}-${arch}.deb::${url}/releases/download/v${_pkgver}/${_pkgname}-${_pkgver%-pre*}-linux-amd64-compatible.deb"
 )
 sha256sums=('03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2')
-sha256sums_x86_64=('62cc81b9cebbfe175c99e2471a9264dbc77d8e885527aaed7b836b0ecd350267')
+sha256sums_x86_64=('280b8d16d6d79e1b8ce7339969362ad60f38a37b63e1e5a1b4d0ca5b82fe8e07')
 
 prepare() {
     bsdtar -xf "${srcdir}/data."*
