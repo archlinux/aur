@@ -1,6 +1,6 @@
 pkgbase = cursor-cli
 	pkgdesc = CLI tool for Cursor, the AI-first coding agent
-	pkgver = 2026.09.28.1.64d2043
+	pkgver = 2026.10.01.1.e373342
 	pkgrel = 1
 	epoch = 1
 	url = https://cursor.com/cli
@@ -16,9 +16,9 @@ pkgbase = cursor-cli
 	source = auto-update-block.patch
 	b2sums = d241ee9895bdb1c17514438fde8528222a8f2326568bd7a033d7a1b11432ce6b4575ff1a50625764bfe6bc6f8a9dc060f7439c3be7e95f8fd02912cdd37a011d
 	b2sums = 1928e04c713e13911ea607f84c3e4a2fed1f76af9795503811078f43d2b53c753e28b2233e553fc17e766831800fb0dbc272aad2a80b387f95ba6071d7d4116a
-	source_x86_64 = cursor-cli-2026.09.28-64d2043-x86_64.tar.gz::https://downloads.cursor.com/lab/2026.09.28-64d2043/linux/x64/agent-cli-package.tar.gz
-	b2sums_x86_64 = 67f8eb836c9268ff75e877c6548893c089d6f41e4a725be380c8d7067fd6245eb2c7302d81a783be8023af5a32434d7e70bfd6856ed71dfb325332bbd341a425
-	source_aarch64 = cursor-cli-2026.09.28-64d2043-aarch64.tar.gz::https://downloads.cursor.com/lab/2026.09.28-64d2043/linux/arm64/agent-cli-package.tar.gz
-	b2sums_aarch64 = ad51e9ade8b6c06baef9b1ef941b08a2eb80d25263fe96437b11a2250dbe380249b5ff68d70ba0115c86a6dcb8d90417ed36ee3c3d142eabc65997bb00dd1e18
+	source_x86_64 = cursor-cli-2026.10.01-e373342-x86_64.tar.gz::https://downloads.cursor.com/lab/2026.10.01-e373342/linux/x64/agent-cli-package.tar.gz
+	b2sums_x86_64 = d03c9968dc65309de7879104dd67e0b1a55f218af5c89a3a9a810d597a525b8f4fa4aa8f6cea3cd9329d0fcb14075c6fc181a5c96ed0addba5756b464a4d878b
+	source_aarch64 = cursor-cli-2026.10.01-e373342-aarch64.tar.gz::https://downloads.cursor.com/lab/2026.10.01-e373342/linux/arm64/agent-cli-package.tar.gz
+	b2sums_aarch64 = 5018a6242c2de61bac40a369039ebc8f62e9783c4ac5956a9b10ad76956474c03abf957150df8d7bd2abb798e9d22f2d96ae1735765d086e522748c0ca0c2f5b
 
 pkgname = cursor-cli
