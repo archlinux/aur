@@ -2,8 +2,8 @@
 
 _pkgname='kde-linux'
 pkgname="libvirt-iso-${_pkgname}-bin"
-pkgver=202610010254
-pkgrel=2
+pkgver=202610020254
+pkgrel=1
 pkgdesc='Official KDE Linux Testing installation ISO for libvirt (weekly updated!)'
 arch=('x86_64')
 url='https://linux.kde.org/'
@@ -33,7 +33,7 @@ source=(
 )
 noextract=("${_iso}")
 sha256sums=(
-	'2a228bde3f903f1de5e7e10582021a6306ad3b075dce048f6ecc2245e12686b6'
+	'c7f6b0a872ff2efd75541e3cf99cc287b50c59f926237fa04efa34532c1bddc5'
 	'9280ddacc03cb58f09b31483a06dba9216a0cfde2fe53091ff571504c4095160'
 #	'SKIP'
 #	'SKIP'
