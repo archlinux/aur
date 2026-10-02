@@ -1,7 +1,7 @@
 # Maintainer: reakjra <reakjra@proton.me>
 pkgname=omikuji-bin
 _pkgname=omikuji
-pkgver=0.20.2
+pkgver=0.20.3
 pkgrel=1
 pkgdesc='Qt/QML based wine apps launcher for Linux'
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=("$_pkgname")
 options=('!strip')
 _tarball="omikuji-${pkgver}-x86_64.tar.zst"
 source=("${url}/releases/download/v${pkgver}/${_tarball}")
-sha256sums=('947052169362cbd16a483788714a364c2710ab2b20996158586b852a20673c45')
+sha256sums=('4a86476b1d6c1bc21b7612f4f575e6db1ea9b92cc12f37a0927acc3b3bf85baf')
 
 package() {
     cp -a "$srcdir/usr" "$pkgdir/"
