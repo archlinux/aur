@@ -1,0 +1,14 @@
+pkgbase = r-tsitter
+	pkgdesc = Tree-Sitter parsing tools
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=tsitter
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-cli
+	source = https://cran.r-project.org/src/contrib/tsitter_0.2.0.tar.gz
+	md5sums = ca1f2435caceb112ef0734284fe38437
+	b2sums = a0b85cf5a26653bc409d00c8c4cc9fe318581964f9fb87a7f1a6d2f6724e33b1568b8ac508757ed2cbe8909e22a07dbef406aa002c40c89d62c848f72e70b47f
+
+pkgname = r-tsitter
