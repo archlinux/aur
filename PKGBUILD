@@ -21,8 +21,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('ecd6d6e4ae4e2dc0c8e0ec79e8d8352d2a84b149ee13dd53b72c995b8bb0526e')
-sha256sums_aarch64=('e47e338f4c752673fd4727468002f82d8f575f9d671cd4d78245a446756fd6ed')
+sha256sums_x86_64=('6dbcb74aa61b0d598f2ee9fe6b23faf2e82de3a5e16b1c4ca6db9d8a337cafe8')
+sha256sums_aarch64=('c17098a6c1bc429d6a353cbbd85db630dc506992db6b1f01940fd85c612705e6')
 
 package() {
     cd "${srcdir}/" || exit
