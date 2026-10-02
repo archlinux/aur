@@ -2,7 +2,7 @@
 
 _basename=fyi
 pkgname=${_basename}-bin
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="A dead-simple CLI status message printer for use in BASH scripts, etc"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('tar')
 depends=('glibc' 'gcc-libs')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_basename}_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums_x86_64=('54ded2e96f21d36d99ecaf6d89740a35c99b80124aa9135da666abab219e6d72')
+sha256sums_x86_64=('8db250a5f996c98e5e570f22f6caa706e5bc7fec155e0b3d1a0f43840135525e')
 
 package() {
     cd "${pkgdir}"
