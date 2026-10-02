@@ -1,12 +1,12 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=bitcoin-cash-node
-pkgver=29.1.0
+pkgver=29.2.0
 pkgrel=1
 pkgdesc="Bitcoin Cash Node with bitcoind, bitcoin-tx, bitcoin-seeder and bitcoin-cli"
 arch=('i686' 'x86_64')
 url="https://bitcoincashnode.org"
-depends=('boost-libs' 'libevent' 'openssl' 'zeromq' 'miniupnpc' 'libnatpmp')
+depends=('boost-libs' 'libevent' 'openssl' 'zeromq' 'miniupnpc' 'libnatpmp' 'libatomic')
 makedepends=('cmake' 'ninja' 'boost' 'help2man')
 license=('MIT')
 source=(https://github.com/bitcoin-cash-node/bitcoin-cash-node/archive/v$pkgver.tar.gz
@@ -15,7 +15,7 @@ source=(https://github.com/bitcoin-cash-node/bitcoin-cash-node/archive/v$pkgver.
         bitcoin.service
         bitcoin-reindex.service
         bitcoin.install)
-sha256sums=('22a69ace8f4cb8e2df30e92882969771255247eeb39f3189e4e1acfd5fd3d382'
+sha256sums=('641c1f4e66f85ddbcabcb487bdc9269c9ec3e269f83714b17d21b34712633114'
             'c30e5c7e0e97b001fdeac5f4510d5ebc0e0499ec086325e845db609a24f2e22f'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             'f2fd9d8331238727333cf2412ba3759cb194a65b2060eff36808b24c06382104'
