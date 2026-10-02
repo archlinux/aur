@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.15
-pkgver=1.0.0beta15
+_tag=v1.0.0-beta.16
+pkgver=1.0.0beta16
 pkgrel=1
 pkgdesc="A desktop shell for niri, built with Quickshell: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
@@ -41,6 +41,7 @@ optdepends=(
     'ddcutil: the brightness of external monitors'
     'pipewire: audio and the alarm sound'
     'upower: the battery, on a laptop'
+    'power-profiles-daemon: the power profile in the System cell'
     'pciutils: the graphics card in the System cell'
     'libnotify: timer and alarm notifications'
     'zenity: the folder picker for the wallpaper library'
@@ -56,7 +57,7 @@ optdepends=(
 options=('!lto')
 install=bioma-shell.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('1f6c59f59e6ab9ffeddc10ac7553a6d65aa9d95acb01a3184129eb4b5bc1539d')
+sha256sums=('be2b394af4dbf0ae6c632572906c0e7773ef900b1ff5a48df10e58dbb6c530b3')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
