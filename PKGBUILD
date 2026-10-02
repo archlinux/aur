@@ -8,13 +8,15 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)"
 arch=('any')
 url="https://github.com/HorneroOS/config"
 license=('MIT')
-depends=('bash' 'git' 'python')
+# python-materialyoucolor: lib/dots/generate-m3-colors.py (theme switching via
+# `horneroctl scheme regenerate`); without it every theme set rolls back.
+depends=('bash' 'git' 'python' 'python-materialyoucolor')
 makedepends=('librsvg')
 optdepends=(
   'hyprland: compositor defaults under /etc/xdg/hypr'
@@ -35,7 +37,7 @@ optdepends=(
 # Named "config" (not "$pkgname") so the checkout lands at
 # "${srcdir}/config", matching _hornero_repo_root() below and keeping
 # AUR chroot builds identical to local packaging/ builds.
-source=("config::git+https://github.com/HorneroOS/config.git#tag=v0.2.0")
+source=("config::git+https://github.com/HorneroOS/config.git#tag=v0.2.1")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
@@ -101,6 +103,17 @@ package() {
   for entry in "$stage"/.config/*; do
     [[ -e "$entry" ]] || continue
     base="$(basename "$entry")"
+    if [[ "$base" == systemd ]]; then
+      # systemd owns /etc/xdg/systemd/user as a symlink to /etc/systemd/user.
+      # Putting a directory at that XDG path makes pacman refuse the package.
+      # User-unit masks are system-wide defaults, so install only those files
+      # at systemd's real user-unit configuration path.
+      if [[ -d "$entry/user" ]]; then
+        mkdir -p "$pkgdir/etc/systemd/user"
+        cp -a "$entry/user/." "$pkgdir/etc/systemd/user/"
+      fi
+      continue
+    fi
     if [[ -d "$entry" ]]; then
       mkdir -p "$pkgdir/etc/xdg/$base"
       cp -a "$entry/." "$pkgdir/etc/xdg/$base/"
@@ -174,9 +187,9 @@ package() {
 
   # Permissions mirror scripts/materialize.sh: dirs 755, files 644,
   # with executables restored for CLI adapters and hypr helpers.
-  find "$pkgdir/etc/xdg" "$pkgdir/usr/share/hornero" "$pkgdir/usr/share/themes" \
+  find "$pkgdir/etc/xdg" "$pkgdir/etc/systemd/user" "$pkgdir/usr/share/hornero" "$pkgdir/usr/share/themes" \
     -type d -exec chmod 755 {} +
-  find "$pkgdir/etc/xdg" "$pkgdir/usr/share/hornero" "$pkgdir/usr/share/themes" \
+  find "$pkgdir/etc/xdg" "$pkgdir/etc/systemd/user" "$pkgdir/usr/share/hornero" "$pkgdir/usr/share/themes" \
     -type f -exec chmod 644 {} +
   chmod 755 "$pkgdir"/usr/share/hornero/bin/dots-*
   chmod 755 "$pkgdir"/etc/xdg/hypr/scripts/*.sh
