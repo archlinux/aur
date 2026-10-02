@@ -1,0 +1,11 @@
+*
+!.gitignore
+!PKGBUILD
+!README.md
+!FEATURES.md
+!.SRCINFO
+!make_statics.py
+!set_gasp.py
+!79-roboto-flex-families.conf
+!81-roboto-flex-italic.conf
+!measure.py
