@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgn
 sha256sums=('3507a66088b1f6cf758a07c00100ba1a7b90d8a9d5d4c0d99ab5b58d12fd865d'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
-#   gpg --keyserver keys.openpgp.org --recv-keys 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
+#   curl -s https://github.com/jetomev.gpg | gpg --import
 validpgpkeys=('32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E')
 
 check() {
