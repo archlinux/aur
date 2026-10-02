@@ -1,7 +1,7 @@
 # Maintainer: Ateles
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=upmd-git
-pkgver=r85.g3ba05c7
+pkgver=0.2.7.r6.g3ba05c7
 pkgrel=1
 pkgdesc="Markdown-based task and workflow runner"
 arch=("x86_64")
@@ -16,8 +16,8 @@ sha256sums=("SKIP")
 options=(!lto)
 
 pkgver() {
-    cd "$srcdir/$pkgname" || exit 1
-    printf 'r%s.g%s\n' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$pkgname"
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

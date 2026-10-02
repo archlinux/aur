@@ -1,6 +1,6 @@
 pkgbase = upmd-git
 	pkgdesc = Markdown-based task and workflow runner
-	pkgver = r85.g3ba05c7
+	pkgver = 0.2.7.r6.g3ba05c7
 	pkgrel = 1
 	url = https://github.com/rezigned/upmd
 	arch = x86_64
