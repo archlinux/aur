@@ -1,6 +1,6 @@
 pkgbase = fuse-archive
 	pkgdesc = FUSE file system for archives and compressed files (ZIP, RAR, 7Z, ISO, TGZ, XZ...)
-	pkgver = 1.16
+	pkgver = 1.24
 	pkgrel = 1
 	url = https://github.com/google/fuse-archive
 	arch = x86_64
@@ -10,8 +10,9 @@ pkgbase = fuse-archive
 	depends = fuse3
 	depends = glibc
 	depends = libarchive
-	depends = gcc-libs
-	source = fuse-archive-1.16.tar.gz::https://github.com/google/fuse-archive/archive/refs/tags/v1.16.tar.gz
-	sha256sums = e03929f280de7eded6de8817f1aa61f55ae07551bd8c6f30c4112a9b6d154f02
+	depends = libgcc
+	depends = libstdc++
+	source = fuse-archive-1.24.tar.gz::https://github.com/google/fuse-archive/archive/refs/tags/v1.24.tar.gz
+	sha256sums = 2c4bd35b43391a7e736faf44e0e7a7090eab61c16fcf69f63997a454a8700a2b
 
 pkgname = fuse-archive
