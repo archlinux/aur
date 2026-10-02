@@ -2,8 +2,8 @@
 
 pkgname=libbz2-rs-sys-git
 pkgver=0.2.5.r1.g1028131
-pkgrel=1
-pkgdesc="An implementation of bzip2 in pure rust available as a C dynamic library"
+pkgrel=2
+pkgdesc="An implementation of bzip2 in pure Rust available as a C dynamic library"
 arch=('i686' 'x86_64')
 url="https://github.com/trifectatechfoundation/libbzip2-rs"
 license=('bzip2-1.0.6')
