@@ -1,0 +1,21 @@
+pkgbase = r-mpoly
+	pkgdesc = Symbolic computation and more with multivariate polynomials
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mpoly
+	arch = any
+	license = GPL-2.0-only
+	depends = r
+	depends = r-ggplot2
+	depends = r-orthopolynom
+	depends = r-partitions
+	depends = r-plyr
+	depends = r-polynom
+	depends = r-stringi
+	depends = r-stringr
+	depends = r-tidyr
+	source = https://cran.r-project.org/src/contrib/mpoly_1.1.2.tar.gz
+	md5sums = 014212ffd04a0b8c637a0b3d23ceeed5
+	b2sums = c61b9e16762843f3c8ed8000c3c3565ca551667fecdb31e04152feb0c306860fe5287372006cd5fed8df5723dc03872f8ca848f632a3dc6bf0a788535a33c924
+
+pkgname = r-mpoly
