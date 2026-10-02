@@ -2,18 +2,20 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=grubforge
-pkgver=1.1.3
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="A terminal UI for managing and customizing the GRUB bootloader — safely, intuitively, and beautifully"
+pkgdesc="The GRUB boot menu without editing files by hand: plain-word settings, a review before every save, a backup first"
 arch=('any')
 url="https://github.com/jetomev/grubforge"
 license=('GPL3')
 # polkit (v1.1.0): grubForge runs as your user and asks polkit for permission
 # when a change needs root, instead of requiring the whole app to run as root.
-depends=('python' 'python-textual' 'python-rich' 'polkit')
+# v2.0.0: built on forgekit, the Forge Suite's shared base (python-forgekit
+# must be on the AUR first — dependency order)
+depends=('python' 'python-textual' 'python-rich' 'python-forgekit>=0.5.0' 'polkit')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('3507a66088b1f6cf758a07c00100ba1a7b90d8a9d5d4c0d99ab5b58d12fd865d'
+sha256sums=('44464d4115a0d251051a86a15548a8f13dcf7f785c7d84f49363b99142b4bea2'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
@@ -69,6 +71,11 @@ print('grubforge helper refusal checks OK')
     # including the helper's read-entries pass-through and a save run through
     # sh exactly as grub-mkconfig runs it.
     PYTHONDONTWRITEBYTECODE=1 python tests/test_boot_entry_sources.py
+
+    # v2.0.0: every screen's flows headless — settings, boot menu, themes,
+    # backups, distributions, and that nothing is cut off at 100 columns.
+    PYTHONDONTWRITEBYTECODE=1 python -m unittest \
+        tests.test_v2_settings tests.test_v2_bootmenu tests.test_v2_themes_backups
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = grubforge
-	pkgdesc = A terminal UI for managing and customizing the GRUB bootloader — safely, intuitively, and beautifully
-	pkgver = 1.1.3
+	pkgdesc = The GRUB boot menu without editing files by hand: plain-word settings, a review before every save, a backup first
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/jetomev/grubforge
 	arch = any
@@ -8,11 +8,12 @@ pkgbase = grubforge
 	depends = python
 	depends = python-textual
 	depends = python-rich
+	depends = python-forgekit>=0.5.0
 	depends = polkit
-	source = grubforge-1.1.3.tar.gz::https://github.com/jetomev/grubforge/releases/download/v1.1.3/grubforge-1.1.3.tar.gz
-	source = grubforge-1.1.3.tar.gz.asc::https://github.com/jetomev/grubforge/releases/download/v1.1.3/grubforge-1.1.3.tar.gz.asc
+	source = grubforge-2.0.0.tar.gz::https://github.com/jetomev/grubforge/releases/download/v2.0.0/grubforge-2.0.0.tar.gz
+	source = grubforge-2.0.0.tar.gz.asc::https://github.com/jetomev/grubforge/releases/download/v2.0.0/grubforge-2.0.0.tar.gz.asc
 	validpgpkeys = 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
-	sha256sums = 3507a66088b1f6cf758a07c00100ba1a7b90d8a9d5d4c0d99ab5b58d12fd865d
+	sha256sums = 44464d4115a0d251051a86a15548a8f13dcf7f785c7d84f49363b99142b4bea2
 	sha256sums = SKIP
 
 pkgname = grubforge
