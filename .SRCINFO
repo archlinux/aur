@@ -1,0 +1,18 @@
+pkgbase = bollywood-git
+	pkgdesc = Runs terminal screencasts in multiple panes, resulting in a Hollywood-style real-time hacking terminal
+	pkgver = r9.31e1677
+	pkgrel = 1
+	url = https://github.com/abloch/bollywood
+	arch = any
+	license = LicenseRef-unknown
+	makedepends = git
+	depends = bash
+	depends = curl
+	depends = zellij
+	depends = asciinema
+	provides = bollywood
+	conflicts = bollywood
+	source = git+https://github.com/abloch/bollywood.git
+	sha256sums = SKIP
+
+pkgname = bollywood-git
