@@ -1,8 +1,8 @@
 pkgbase = fuse-archive
 	pkgdesc = FUSE file system for archives and compressed files (ZIP, RAR, 7Z, ISO, TGZ, XZ...)
-	pkgver = 1.24
+	pkgver = 1.26
 	pkgrel = 1
-	url = https://github.com/google/fuse-archive
+	url = https://github.com/fdegros/mount-archive
 	arch = x86_64
 	license = Apache-2.0
 	checkdepends = python
@@ -12,7 +12,8 @@ pkgbase = fuse-archive
 	depends = libarchive
 	depends = libgcc
 	depends = libstdc++
-	source = fuse-archive-1.24.tar.gz::https://github.com/google/fuse-archive/archive/refs/tags/v1.24.tar.gz
-	sha256sums = 2c4bd35b43391a7e736faf44e0e7a7090eab61c16fcf69f63997a454a8700a2b
+	depends = libatomic
+	source = fuse-archive-1.26.tar.gz::https://github.com/fdegros/mount-archive/archive/refs/tags/v1.26.tar.gz
+	sha256sums = 8e0b318ee8adfcd0f1e33ab54e67727b7d20886be5ab6b20d6aea23e656f2a92
 
 pkgname = fuse-archive

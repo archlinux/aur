@@ -3,40 +3,38 @@
 # Contributor: Cody Schafer <dev at codyps.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=fuse-archive
-pkgver=1.24
+_reponame=mount-archive
+pkgver=1.26
 pkgrel=1
 pkgdesc="FUSE file system for archives and compressed files (ZIP, RAR, 7Z, ISO, TGZ, XZ...)"
 arch=(x86_64)
-url="https://github.com/google/fuse-archive"
+url="https://github.com/fdegros/$_reponame"
 license=('Apache-2.0')
 depends=(
   fuse3
   glibc
   libarchive
   libgcc
-  libstdc++)
+  libstdc++
+  libatomic)
 makedepends=(boost)
 checkdepends=(python)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2c4bd35b43391a7e736faf44e0e7a7090eab61c16fcf69f63997a454a8700a2b')
+sha256sums=('8e0b318ee8adfcd0f1e33ab54e67727b7d20886be5ab6b20d6aea23e656f2a92')
 
 build() {
-  cd "$pkgname-$pkgver" || exit
+  cd "$_reponame-$pkgver" || exit
   make
 }
 
 check() {
-  cd "$pkgname-$pkgver" || exit
-  # This seems to work now, but causes package to take more than 26x
-  # longer to build on my machine
-  #make check
-  # Only takes about 2.5x longer, a better compromise
+  cd "$_reponame-$pkgver" || exit
   make check-fast
 }
 
 package() {
-  cd "$pkgname-$pkgver" || exit
-  make DESTDIR="$pkgdir" install
+  cd "$_reponame-$pkgver" || exit
+  make DESTDIR="$pkgdir" PREFIX=/usr install
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }

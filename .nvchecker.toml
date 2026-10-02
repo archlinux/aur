@@ -1,4 +1,4 @@
 [fuse-archive]
 source="git"
-git="https://github.com/google/fuse-archive.git"
+git="https://github.com/fdegros/mount-archive.git"
 prefix="v"
