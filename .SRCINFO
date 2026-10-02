@@ -1,0 +1,14 @@
+pkgbase = treehouse
+	pkgdesc = Manage worktrees without managing worktrees
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/kunchenguid/treehouse
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	provides = treehouse
+	source = treehouse-3.1.1.tgz::https://github.com/kunchenguid/treehouse/archive/v3.1.1.tar.gz
+	sha256sums = 5c05e2dfa67a4c185ceabe5fab189c6df70d224a1f6b40488de54a52702bccf5
+
+pkgname = treehouse
