@@ -1,7 +1,7 @@
 pkgbase = line-seed-tw-font
-	pkgdesc = LINE Seed TW font
+	pkgdesc = LINE Seed TW, a sans-serif font family for Traditional Chinese
 	pkgver = 1.400
-	pkgrel = 1
+	pkgrel = 2
 	url = https://seed.line.me
 	arch = any
 	license = OFL-1.1-RFN
@@ -10,7 +10,7 @@ pkgbase = line-seed-tw-font
 	b2sums = 5024bbbe873797da2c9ece192782e1fffcfe9ed73b2e27039eb7cb3b6f9cf59584673bef2eec8782f91aedf6d7e2718c6d2a32cf69b351747996b4ecf4bac1db
 
 pkgname = otf-line-seed-tw
-	pkgdesc = LINE Seed TW font (OTF)
+	pkgdesc = LINE Seed TW, a sans-serif font family for Traditional Chinese (OTF)
 
 pkgname = ttf-line-seed-tw
-	pkgdesc = LINE Seed TW font (TTF)
+	pkgdesc = LINE Seed TW, a sans-serif font family for Traditional Chinese (TTF)
