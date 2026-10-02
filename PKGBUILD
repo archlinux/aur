@@ -3,7 +3,7 @@
 _basename=bashman
 _prefix=cargo
 pkgname=${_basename}-bin
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Cargo plugin that helps you generate BASH completions and/or MAN pages for your Rust apps using metadata from your projects' Cargo.toml manifests"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('tar')
 depends=('glibc' 'gcc-libs')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_prefix}-${_basename}_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums_x86_64=('4515d1d079d315f8163ffe6974aac590e6af1ce70eddd002fc21378f11d28bae')
+sha256sums_x86_64=('090f61c46f515644a786f5f253d2520a905493a5052b106250b9e4a2751a9d27')
 
 package() {
     cd "${pkgdir}"
