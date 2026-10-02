@@ -2,7 +2,7 @@
 # The release workflow sets pkgver and publishes this file to the AUR on every
 # release tag, so the AUR version never falls behind the latest tag.
 pkgname=neferafk-git
-pkgver=0.3.2.r0.ga514042
+pkgver=0.4.0.r0.gc0db34c
 pkgrel=1
 pkgdesc='Idle daemon for Wayland: fade, session lock, screens off and suspend (git version)'
 arch=('x86_64' 'aarch64')
