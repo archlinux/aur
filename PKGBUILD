@@ -2,7 +2,7 @@
 pkgname=sysc-greet-hyprland
 pkgver=1.1.10
 pkgrel=1
-pkgdesc="Graphical console greeter for greetd with ASCII art and themes (Hyprland compositor)"
+pkgdesc="DEPRECATED, use sysc-greet-cagebreak. Graphical console greeter for greetd (Hyprland compositor)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-greet"
 license=('GPL-3.0-only')
