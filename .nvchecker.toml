@@ -1,0 +1,5 @@
+[snav-bin]
+source = "github"
+github = "m7b-io/snav"
+use_latest_release = true
+prefix = "v"

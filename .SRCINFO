@@ -1,0 +1,18 @@
+pkgbase = snav-bin
+	pkgdesc = Fast terminal code navigator with fuzzy search, syntax-highlighted preview and editor integration, powered by ripgrep
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://github.com/m7b-io/snav
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = ripgrep
+	provides = snav
+	conflicts = snav
+	options = !strip
+	source_x86_64 = snav-x86_64-0.7.4.tgz::https://github.com/m7b-io/snav/releases/download/v0.7.4/snav_0.7.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1d98ee4c153752367f1bbb0e2b24dbaf25e19e5b598453239c26384ff5ae97d4
+	source_aarch64 = snav-aarch64-0.7.4.tgz::https://github.com/m7b-io/snav/releases/download/v0.7.4/snav_0.7.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 198b0e1a56a67e9522872e51fcf076185e370dba7c010a598576740bf77b6b16
+
+pkgname = snav-bin
