@@ -8,7 +8,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)"
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
 # Named "config" (not "$pkgname") so the checkout lands at
 # "${srcdir}/config", matching _hornero_repo_root() below and keeping
 # AUR chroot builds identical to local packaging/ builds.
-source=("config::git+https://github.com/HorneroOS/config.git#tag=v0.2.1")
+source=("config::git+https://github.com/HorneroOS/config.git#tag=v0.2.2")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
@@ -121,6 +121,11 @@ package() {
       install -Dm644 "$entry" "$pkgdir/etc/xdg/$base"
     fi
   done
+
+  # Thunar ships /etc/xdg/Thunar/uca.xml itself. Packaging the staged user
+  # custom actions there causes a pacman ownership conflict on Arch. The
+  # same curated file remains in materialize.sh for per-user dotfile installs.
+  rm -f "$pkgdir/etc/xdg/Thunar/uca.xml"
 
   # GTK 2 skeleton (per-user ~/.gtkrc-2.0 upstream, system default here).
   install -Dm644 "$stage/.gtkrc-2.0" "$pkgdir/etc/xdg/gtkrc-2.0"
