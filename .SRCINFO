@@ -14,7 +14,7 @@ pkgbase = tde-ariadne-git
 	depends = libarchive
 	depends = libgcc
 	depends = libstdc++
-	depends = libtde
+	depends = libtde>=0.2.0
 	depends = qt6-base
 	depends = qt6-svg
 	optdepends = udisks2: mounting and ejecting drives, unlocking encrypted ones

@@ -13,7 +13,7 @@ depends=(
   libarchive
   libgcc
   libstdc++
-  libtde
+  'libtde>=0.2.0'
   qt6-base
   qt6-svg
 )
