@@ -1,0 +1,14 @@
+pkgbase = cidr
+	pkgdesc = CLI tool for working with IPv4 and IPv6 CIDR ranges
+	pkgver = 2.3.0.r10.g95f3629
+	pkgrel = 1
+	url = https://github.com/bschaatsbergen/cidr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = git+https://github.com/bschaatsbergen/cidr.git
+	sha256sums = SKIP
+
+pkgname = cidr
