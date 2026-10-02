@@ -1,16 +1,16 @@
 pkgbase = matedit-bin
 	pkgdesc = Material editor for PrimeXT
 	pkgver = 20261002
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/hgruntt/MatEdit
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = libglvnd
 	provides = matedit
 	conflicts = matedit
-	source = MatEdit-linux-x64-gcc-20261002-4.tar.gz::https://github.com/hgruntt/MatEdit/releases/download/nightly/MatEdit-linux-x64-gcc-20261002-4.tar.gz
+	source = MatEdit-linux-x64-gcc-20261002-5.tar.gz::https://github.com/hgruntt/MatEdit/releases/download/nightly/MatEdit-linux-x64-gcc-20261002-5.tar.gz
 	source = icon.png::https://raw.githubusercontent.com/hgruntt/MatEdit/main/icon.png
-	sha256sums = b112c515536ae4a5e695a42326e0e1f66f0a896e74c9d7a22d1200246d4147be
+	sha256sums = 8944de6de962dba09e713b46aa9174b582f231c7b11f8aa55660b24882d12f36
 	sha256sums = SKIP
 
 pkgname = matedit-bin
