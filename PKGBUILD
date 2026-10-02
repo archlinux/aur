@@ -2,7 +2,7 @@
 
 pkgauthor="ACoci86"
 pkgname="terrahour"
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="World clock, world map and 24-hour meeting planner for the terminal"
 
@@ -23,7 +23,7 @@ depends=('python')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('33e46f5be01f41c807f9b81c9d0f565022620d39a84c588f737cf70a97ea9294')
+sha256sums=('30f69a886dcb823d7740225f3e192087a1629c5b96fa335e59a89fdd5fed7d09')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/" || exit
