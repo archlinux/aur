@@ -22,7 +22,7 @@ index cf52630..ba6a88f 100644
    desktop-file-utils
    lib32-glib2
  )
-+_frida_glib_commit=129e8d998936cdd47be41d25d3ffd1294c26a920
++_frida_glib_commit=e0cc7c6f0d88f47e4dee4607df085d08c89b8a6a
 +_frida_gvdb_commit=0854af0fdb6d527a8d1999835ac2c5059976c210
  source=(
 -  "git+https://gitlab.gnome.org/GNOME/glib.git?signed#tag=$pkgver"
@@ -44,7 +44,7 @@ index cf52630..ba6a88f 100644
 -  53EF3DC3B63E2899271BD26322E8091EEA11BBB7 # Emmanuele Bassi <ebassi@gnome.org>
 -  923B7025EE03C1C59F42684CF0942E894B2EAFA0 # Philip Withnall <pwithnall@gnome.org>
 +b2sums=(
-+  '212eba0904d56ebd8b6500687aeed89caaa90a5f7730bafaca2ad75a50a8b21fa24b93b34833f7d6bb03622a2646c201bea07837acbd8e557f0d947b807ade20'
++  '77eff89fb2e8a63a55e73a2a406f14605a6982a5bc802b54e9a7ded7a13b869f174b9de5c725e791afc4f8e806ee7740a4b5c445f77602192f6cb20fe25fe946'
 +  '6f0dc922a7df8bcbf98600a152b17e8e20ff6a3d0531fbe41475a58159cde99a4045e733f9d3548e4b3302fb23019ef4975dd48b040a4e97edf6429235d2cfe2'
  )
 
