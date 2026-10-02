@@ -1,0 +1,17 @@
+pkgbase = chat.sh-git
+	pkgdesc = Pipeable LLM wrapper with code execution (OpenRouter)
+	pkgver = r17.1309f40
+	pkgrel = 1
+	url = https://github.com/basherbots/chat.sh
+	arch = any
+	license = CC0-1.0
+	makedepends = git
+	depends = bash
+	depends = curl
+	depends = jq
+	provides = chat.sh
+	conflicts = chat.sh
+	source = git+https://github.com/basherbots/chat.sh.git
+	sha256sums = SKIP
+
+pkgname = chat.sh-git
