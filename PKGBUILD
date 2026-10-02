@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='openvpn-auth-oauth2'
-pkgver='2.2.0'
+pkgver='2.2.1'
 pkgrel='1'
 pkgdesc='A Plugin/management interface client for OpenVPN server to handle an OIDC based single sign-on (SSO) auth flows'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('go' 'git')
 depends=('openvpn>=2.6.2')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/${pkgname}/tar.gz/refs/tags/v${pkgver}")
-sha256sums=('9da34494c90fedcf257de922d9fa334a1d5d26bbf3fb65ac54005103b4bace82')
+sha256sums=('07f87d4753c19e0bb5d31eddbeb3185c890233bf70ac02cfc60ec655e912e31e')
 backup=("etc/conf.d/${pkgname}"
 	"etc/${pkgname}/config.yaml")
 
@@ -27,19 +27,17 @@ prepare() {
   eval "$(go env | grep -e "GOHOSTOS" -e "GOHOSTARCH")"
   ln -snf "${srcdir}/${pkgname}-${pkgver}" "${GOPATH}/src/${_uri}/${pkgname}"
 
-  sed -i \
-    -e 's|/etc/sysconfig|/etc/conf.d|g' \
-    -e 's|CapabilityBoundingSet=|CapabilityBoundingSet=CAP_NET_BIND_SERVICE|g' \
-    -e 's|AmbientCapabilities=|AmbientCapabilities=CAP_NET_BIND_SERVICE|g' \
-    -e '/PrivateUsers=true/d' \
+  sed --in-place \
+    --expression 's|/etc/sysconfig|/etc/conf.d|g' \
+    --expression 's|CapabilityBoundingSet=|CapabilityBoundingSet=CAP_NET_BIND_SERVICE|g' \
+    --expression 's|AmbientCapabilities=|AmbientCapabilities=CAP_NET_BIND_SERVICE|g' \
+    --expression '/PrivateUsers=true/d' \
 "${pkgname}-${pkgver}/packaging/usr/lib/systemd/system/${pkgname}.service"
 
 }
 
 build() {
   cd "${GOPATH}/src/${_uri}/${pkgname}"
-  GOOS="${GOHOSTOS}" GOARCH="${GOHOSTARCH}" BUILDTAGS="no_otel"
-
   for e in "cmd" "lib"
     do
 
@@ -52,7 +50,8 @@ build() {
           outname="${pkgname}"
       fi
 
-      go build \
+      GOOS="${GOHOSTOS}" GOARCH="${GOHOSTARCH}" \
+      BUILDTAGS="no_otel" go build \
         -buildmode="${mode}" \
         -trimpath \
         -mod="readonly" \
