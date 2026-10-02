@@ -1,8 +1,58 @@
 post_install() {
-    echo ">>> Voix (pre-built) has ascended to your system."
-    echo ">>> The runes of ordination are found at /etc/voix.conf"
-    echo ">>> The Ritual of Proof (PAM) is handled at /etc/pam.d/voix"
-    echo ">>> sudo and doas symlinks are provided at /usr/bin/"
+    cat <<'EOF'
+>>> Voix (pre-built) has ascended to your system.
+>>> The runes of ordination are found at /etc/voix.conf
+>>> The Ritual of Proof (PAM) is handled at /etc/pam.d/voix
+>>> sudo and doas symlinks are provided at /usr/bin/
+
+>>> DESTRUCTIVE RITES REQUIRE A DIRECT ROOT LOGIN
+>>> Disk and partition rites are always refused - even with a permit rule,
+>>> even for members of wheel, and even with `sudo -n`:
+>>>     cfdisk  fdisk  sfdisk  parted  wipe  wipefs  shred  mkswap
+>>>     mkfs.*  dd writing to a raw block device  rm -rf /
+>>>
+>>> To perform them, log in as root directly: TTY login, `su -`, or
+>>> `sudo -u root -i`. Inside that shell Voix is no longer in the request
+>>> path, so the tools behave as ordinary commands.
+>>>
+>>>   $ sudo -u root -i lsblk      # runs lsblk as root, then exits
+>>>   $ sudo -u root -i            # bare: opens a standalone root shell
+>>>   [root@host ~]# cfdisk /dev/sda   # not a Voix request - it just runs
+>>>
+>>> Naming a command keeps the request brokered by Voix, so the gate
+>>> still applies to it:
+>>>
+>>>   $ sudo -u root -i cfdisk /dev/sda    # BLOCKED
+>>>   voix: command blocked: catastrophic command forbidden.
+>>>
+>>> NOTE: the bare form needs the target's login shell to be ABSENT from
+>>> the blocklist below. Root's shell is /bin/bash, and the shipped sample
+>>> blocklists it - so on a default install `sudo -u root -i` is refused.
+>>> Remove that entry to enable the standalone shell.
+>>>
+>>> Day-to-day service administration belongs in the `acl` block below.
+>>> Adjust it to grant a service account the rites it needs. Example -
+>>> wheel may manage searxng and postgres:
+>>>     acl:
+>>>       group:
+>>>         wheel:
+>>>           - action: permit
+>>>             options: [trust, keepenv]
+>>>           - action: permit
+>>>             options: [trust]
+>>>             target: searxng
+>>>           - action: permit
+>>>             options: [trust]
+>>>             target: postgres
+>>>       user:
+>>>         root:
+>>>           - action: permit
+>>>             options: [trust, keepenv]
+>>>
+>>> Rules with no `target:` only match uid 0 (root). Validate any change
+>>> before relying on it:
+>>>     sudo -c
+EOF
 }
 
 post_upgrade() {
