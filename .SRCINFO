@@ -1,0 +1,18 @@
+pkgbase = bash-radio-player-git
+	pkgdesc = Terminal radio player using mpv and fzf
+	pkgver = r6.be94379
+	pkgrel = 1
+	url = https://github.com/gokayburuc/bash_radio_player
+	arch = any
+	license = LicenseRef-unknown
+	makedepends = git
+	depends = bash
+	depends = mpv
+	depends = fzf
+	depends = gawk
+	provides = bash-radio-player
+	conflicts = bash-radio-player
+	source = git+https://github.com/gokayburuc/bash_radio_player.git
+	sha256sums = SKIP
+
+pkgname = bash-radio-player-git
