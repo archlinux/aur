@@ -1,15 +1,15 @@
 pkgbase = compsize-git
 	pkgdesc = Btrfs: find compression type/ratio on a file or set of files
-	pkgver = v1.2.r0.g7b91a8be5d0b
+	pkgver = r123.a57aa34
 	pkgrel = 1
-	url = https://github.com/kilobyte/compsize
+	url = https://github.com/justinbrewer/compsize
 	arch = any
 	license = GPL2
 	makedepends = gcc
 	makedepends = git
+	provides = compsize
 	conflicts = compsize
-	source = compsize-git::git://github.com/kilobyte/compsize.git#branch=master
-	md5sums = SKIP
+	source = git+https://github.com/justinbrewer/compsize#branch=btrfs-progs-fixes
+	b2sums = SKIP
 
 pkgname = compsize-git
-
