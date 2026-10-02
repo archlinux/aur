@@ -5,7 +5,7 @@
 
 pkgname=claude-desktop-extra
 pkgver=2.9939.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Claude Desktop (official Linux build) with extra features: Computer Use, custom themes, multi-profile, Quick Entry - for distros upstream does not ship"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickjaja/claude-desktop-extra"
@@ -33,14 +33,14 @@ depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2'
 # (NOT qemu-base — it has no emulator binary and is x86_64-only). /dev/kvm
 # access still needs the user in the `kvm` group.
 optdepends=('nodejs: System Node.js for MCP extensions that require specific versions (Electron bundles Node.js as fallback)'
-            'sqlite: Project detection (detectedProjects) — without it, periodic ENOENT errors spam logs/main.log'
-            'claude-code: optional pinned Claude Code CLI. NOT required — the app auto-downloads a checksum-verified CLI matching its required version. To force a system binary set CLAUDE_CODE_LOCAL_BINARY=/path/to/claude (npm i -g @anthropic-ai/claude-code)'
-            'virtiofsd: Cowork agent workspace VM — shares $HOME into the guest'
+            'sqlite: Project detection (detectedProjects) - without it, periodic ENOENT errors spam logs/main.log'
+            'claude-code: optional pinned Claude Code CLI. NOT required - the app auto-downloads a checksum-verified CLI matching its required version. To force a system binary set CLAUDE_CODE_LOCAL_BINARY=/path/to/claude (npm i -g @anthropic-ai/claude-code)'
+            'virtiofsd: Cowork agent workspace VM - shares $HOME into the guest'
             'imagemagick: Computer Use screenshot crop via convert - ONLY for the residual KDE-without-kwin-bridge spectacle tier (bundled bridges cover X11/wlroots/GNOME/KDE 6.6+)'
             'ydotool: Computer Use input on exotic Wayland compositors ONLY (non-wlroots, non-GNOME, non-KDE; requires ydotoold daemon, v1.0+) - wlroots/GNOME/KDE use the bundled bridges'
-            'socat: Faster Quick Entry toggle via socket (~2ms vs ~25ms python3 — not required)'
-            'bluez: Hardware Buddy (Nibblet BLE pet) — the daemon Web Bluetooth talks to; without it the in-app device scan finds nothing'
-            'gnome-keyring: credential storage backend for libsecret (KDE users: kwallet works too — upstream Recommends gnome-keyring | kwalletd)'
+            'socat: Faster Quick Entry toggle via socket (~2ms vs ~25ms python3 - not required)'
+            'bluez: Hardware Buddy (Nibblet BLE pet) - the daemon Web Bluetooth talks to; without it the in-app device scan finds nothing'
+            'gnome-keyring: credential storage backend for libsecret (KDE users: kwallet works too - upstream Recommends gnome-keyring | kwalletd)'
             'xdg-desktop-portal-gtk: portal backend for DEs without their own (GNOME/KDE ship xdg-desktop-portal-gnome/-kde) - file dialogs, screen sharing'
             'gjs: GNOME Shell search provider (Claude sessions in the Activities search; GNOME Shell already pulls it in)'
             'desktop-file-utils: refreshes the desktop entry cache (update-desktop-database) on install')
@@ -57,9 +57,9 @@ install="$pkgname.install"
 # claude-desktop/ (Electron runtime + resources/app.asar already patched + our CU
 # bridges under resources/), plus launcher/, icons/, and copyright. No separate
 # Electron zip source.
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.9939.4-2/claude-desktop-2.9939.4-linux.tar.gz")
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.9939.4-3/claude-desktop-2.9939.4-linux.tar.gz")
 sha256sums_x86_64=('569787fb034a17b4659bc87f2479e90a8a6f3d75146ed3d3a3087b96a119d1d8')
-source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.9939.4-2/claude-desktop-2.9939.4-linux-aarch64.tar.gz")
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.9939.4-3/claude-desktop-2.9939.4-linux-aarch64.tar.gz")
 sha256sums_aarch64=('296db738882aaf5fed9aac9fb176301a6322378ee568ef93adfc2b8a5a4f1418')
 options=('!strip' '!emptydirs')
 
