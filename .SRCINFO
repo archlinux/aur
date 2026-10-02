@@ -1,0 +1,27 @@
+pkgbase = sysc-greet-mango
+	pkgdesc = Graphical console greeter for greetd with ASCII art and themes (Mango compositor)
+	pkgver = 1.1.11
+	pkgrel = 1
+	url = https://github.com/Nomadcxx/sysc-greet
+	install = sysc-greet-mango.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go>=1.25
+	depends = greetd
+	depends = kitty
+	depends = mangowm
+	depends = gslapper
+	optdepends = swww: Legacy wallpaper support (fallback)
+	provides = sysc-greet
+	conflicts = sysc-greet
+	conflicts = sysc-greet-cagebreak
+	conflicts = sysc-greet-hyprland
+	conflicts = sysc-greet-sway
+	backup = etc/greetd/mango-greeter-config.conf
+	backup = etc/greetd/mango-greeter-session.sh
+	backup = etc/polkit-1/rules.d/85-greeter.rules
+	source = sysc-greet-1.1.11.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/refs/tags/v1.1.11.tar.gz
+	sha256sums = 2b2199f9cb18d093876150b2ac7505f408ede2e577f7fccb0767dabb631d6884
+
+pkgname = sysc-greet-mango
