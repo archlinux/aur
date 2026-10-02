@@ -1,7 +1,7 @@
 # Maintainer: Gary S Martin (K6AE) <gsm--3782cielo+chirp[at]martin-fam[dot]net>
 
 pkgname=chirp-next-bin
-pkgver=20260925
+pkgver=20261002
 pkgrel=1
 epoch=1
 pkgdesc="GUI tool for programming ham radios (AppImage binary)"
@@ -27,7 +27,7 @@ source=(
     'chirp.png'
 )
 
-sha256sums=('495d55489bf7295f5b9692f8aeaafbe0188a6e4c0bb410d3ffb723432446a547'
+sha256sums=('d6eac874888f27697c7d2d9a6434a1066f951ca1ff18b285654aa479ca217907'
             'b70bd2d91d0277d3820010ee9d2dfe7f7b6e6d92c640cc3b51a6ec2e18be6aae'
             'aecc40abb16119e386c922ec48ee7d8bc6949ccb207ac03a7d0f620f0b9120ac')
 
