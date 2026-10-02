@@ -86,9 +86,10 @@ menu_optimization() {
         echo -e "  ${GREEN}6)${NC} Install Psycachy Kernel ${DIM}(Debian/Ubuntu only)${NC} ${RED}[root]${NC}"
         echo -e "  ${GREEN}7)${NC} Undo Supertune ${DIM}(revert tuning to system defaults)${NC} ${RED}[root]${NC}"
         echo -e "  ${GREEN}8)${NC} ZRAM & Memory Optimizer ${DIM}(ZSTD compressed swap & MGLRU)${NC} ${RED}[root]${NC}"
+        echo -e "  ${GREEN}9)${NC} AMD Gaming & Low-Latency ${DIM}(Ryzen & Radeon desktop clock/C-state locks)${NC} ${RED}[root]${NC}"
         echo -e "  ${BLUE}0)${NC} Back to Main Menu"
         echo ""
-        read -rp "Select an option [0-8]: " opt_choice
+        read -rp "Select an option [0-9]: " opt_choice
 
         case $opt_choice in
             1) execute_script "$OPT_DIR/supertune.sh" true true ;;
@@ -99,6 +100,7 @@ menu_optimization() {
             6) execute_script "$OPT_DIR/install_psycachy.sh" true true ;;
             7) execute_script "$OPT_DIR/undosupertune.sh" true true ;;
             8) execute_script "$OPT_DIR/ramtune.sh" true true ;;
+            9) execute_script "$OPT_DIR/amd_gaming_tune.sh" true true ;;
             0|q|Q) break ;;
             *) echo -e "${RED}Invalid option!${NC}"; sleep 1 ;;
         esac
@@ -245,9 +247,10 @@ else
                 hugepages) execute_script "$OPT_DIR/setup-hugepages.sh" true false "$@" ;;
                 psycachy) execute_script "$OPT_DIR/install_psycachy.sh" true false "$@" ;;
                 undo) execute_script "$OPT_DIR/undosupertune.sh" true false "$@" ;;
+                amd|amdtune) execute_script "$OPT_DIR/amd_gaming_tune.sh" true false "$@" ;;
                 *)
                     echo -e "${RED}[✗] Unknown optimization action: '$ACTION'${NC}"
-                    echo "Available actions: supertune, tcptune, ramtune, scx, p2dq, hugepages, psycachy, undo"
+                    echo "Available actions: supertune, tcptune, ramtune, amd, scx, p2dq, hugepages, psycachy, undo"
                     exit 1
                     ;;
             esac
