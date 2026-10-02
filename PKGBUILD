@@ -1,27 +1,38 @@
 # Maintainer: unicxrn
 pkgname=xerahs-git
 pkgver=r4924.9712850d
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform screen capture and file sharing tool (ShareX port) built with Avalonia UI"
 arch=('x86_64')
 url="https://github.com/ShareX/XerahS"
 license=('GPL-3.0-or-later')
+# qt6-base, layer-shell-qt, libdeflate and wl-clipboard are needed by the bundled OmaSnap
+# capture engine, used on Hyprland/Omarchy sessions and ignored elsewhere.
 depends=(
     'dotnet-runtime-10.0'
     'libx11'
     'libxrandr'
     'dbus'
+    'qt6-base'
+    'layer-shell-qt'
+    'libdeflate'
+    'wl-clipboard'
 )
 makedepends=(
     'dotnet-sdk-10.0'
     'git'
+    'cmake'
+    'ninja'
+    'pkgconf'
+    'wayland-protocols'
 )
 optdepends=(
-    'wl-clipboard: Wayland clipboard support'
     'xclip: X11 clipboard support'
     'xdotool: X11 window management'
     'grim: Wayland screenshot utility'
     'slurp: Wayland region selection for screenshots'
+    'tesseract: OCR in the OmaSnap editor'
+    'tesseract-data-eng: English OCR data for the OmaSnap editor'
 )
 provides=('xerahs')
 conflicts=('xerahs')
@@ -30,10 +41,12 @@ source=(
     "xerahs::git+https://github.com/ShareX/XerahS.git"
     "xerahs-editor::git+https://github.com/KovaForge/ShareX.ImageEditor.git"
     "xerahs-omacut::git+https://github.com/KovaForge/omacut.git"
+    "xerahs-omasnap::git+https://github.com/KovaForge/omasnap.git"
     "xerahs.desktop"
     "xerahs.sh"
 )
 sha256sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -49,14 +62,14 @@ pkgver() {
 prepare() {
     cd "$srcdir/xerahs"
 
-    # Check out ShareX.ImageEditor and Omacut at the commits XerahS pins, using our
-    # local clones as the submodule remotes. Tracking branch tips instead breaks the
-    # build whenever a submodule API changes ahead of XerahS. (native/omasnap is not
-    # referenced by any project, so it is left uninitialised.)
-    git submodule init ShareX.ImageEditor Omacut
+    # Check out ShareX.ImageEditor, Omacut and OmaSnap at the commits XerahS pins, using
+    # our local clones as the submodule remotes. Tracking branch tips instead breaks the
+    # build whenever a submodule API changes ahead of XerahS.
+    git submodule init ShareX.ImageEditor Omacut native/omasnap
     git config submodule.ShareX.ImageEditor.url "$srcdir/xerahs-editor"
     git config submodule.Omacut.url "$srcdir/xerahs-omacut"
-    git -c protocol.file.allow=always submodule update --checkout ShareX.ImageEditor Omacut
+    git config submodule.native/omasnap.url "$srcdir/xerahs-omasnap"
+    git -c protocol.file.allow=always submodule update --checkout ShareX.ImageEditor Omacut native/omasnap
 
     # XerahS.Core.csproj references ImageEditor with GlobalPropertiesToRemove="OS", which
     # strips the MSBuild OS property during restore. NuGet then writes assets to the
@@ -112,6 +125,10 @@ build() {
         -p:DebugSymbols=false \
         --no-restore \
         -o "$srcdir/publish"
+
+    # OmaSnap: XerahS's capture engine on Hyprland/Omarchy. Staged into publish/omasnap/;
+    # OMASNAP_REQUIRED=1 turns upstream's soft "skip" into a build failure.
+    OMASNAP_REQUIRED=1 ./build/linux/build-omasnap.sh "$srcdir/publish"
 }
 
 package() {
@@ -122,8 +139,13 @@ package() {
     # Make main executable... executable
     chmod +x "$pkgdir/usr/lib/xerahs/XerahS"
 
-    # Install wrapper script
+    chmod 755 "$pkgdir/usr/lib/xerahs/omasnap/omasnap"
+    install -d "$pkgdir/usr/share/licenses/$pkgname/omasnap"
+    cp -a "$pkgdir/usr/lib/xerahs/omasnap/licenses/." "$pkgdir/usr/share/licenses/$pkgname/omasnap/"
+
+    # Install wrapper script and the omaxerahs CLI
     install -Dm755 "$srcdir/xerahs.sh" "$pkgdir/usr/bin/xerahs"
+    ln -s ../lib/xerahs/omaxerahs "$pkgdir/usr/bin/omaxerahs"
 
     # Install desktop file
     install -Dm644 "$srcdir/xerahs.desktop" "$pkgdir/usr/share/applications/xerahs.desktop"
