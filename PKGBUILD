@@ -12,7 +12,7 @@
 
 _pkgname=webcord
 pkgname="${_pkgname}-vencord-git"
-pkgver=4.9.2.r0.gc39e12a+1.8.8.r25.g4ec01d0
+pkgver=4.14.0.r1072.fb7dc49+1.8.8.r25.g4ec01d0
 pkgrel=1
 pkgdesc="A Discord and Fosscord client made with the Electron (master branch with Vencord)."
 arch=("any")
@@ -28,19 +28,33 @@ optdepends=(
   'pipewire: WebRTC screen sharing under Wayland'
   'org.freedesktop.secrets: Encryption using stored key in the secret service'
 )
-makedepends=('npm' 'git' 'imagemagick' 'typescript' 'asar' 'p7zip' 'pnpm')
+makedepends=('npm' 'git' 'imagemagick' 'typescript' 'asar' 'semver' 'p7zip' 'pnpm')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
-  "${_pkgname}::git+https://github.com/${_author}/${_repo}.git"
+  "${_pkgname}::git+https://github.com/${_author}/${_repo}.git?signed"
   "${_pkgname}.desktop"
   "vencord.patch"
   "vencord::git+https://github.com/vendicated/vencord.git"
 )
-md5sums=('SKIP'
-         '6046178af59a8c93835051e698eacf1e'
-         '1c88839cf47854437da0a85019061063'
-         'SKIP')
+
+sha512sums=(
+  'SKIP'
+  '41e7f90bb7315a79787ab3052aa1019fc426ba2214dbba6e0094e9cf7955b52261c3c1604ad37bf996a04c9f2a3bb5e7012bc4e6ceabbe0c075ab4e8aa239777'
+  '472d5d6cd0a21e535c53d0c924e981b0761fd86f28ed87597d4ddae7ddb51ea5735fb4d7e302ccfe19f993b4946e2397bf0c04c5be8607faa5180fd4d2c4b96f'
+  'SKIP'
+)
+b2sums=(
+  'SKIP'
+  '55000b5727e8c65082429e5718e0cdcd0a928a9f8fa8f5325a7de5e574d3bea0a4d916ad94d4d650660bb0392311af00cc2f3b82ccd5f9902c5e275c717fc0cc'
+  'df53c5dab6fa606960c1256b8eed55e6e819fbbdc1e823f434db09284769e843505d5792e80e7518aa88e4fb52c08abb4aee9edd4ac0a96137c9413b14368a69'
+  'SKIP'
+)
+
+validpgpkeys=(
+  # SpacingBat3 (General-purpose key)
+  '4A39F0DDDE3266998D1FB70CCBDE7E9FAC1B7B71'
+)
 
 ### CONFIGURABLE VARIABLES ###
 
@@ -162,13 +176,13 @@ package() {
 
   install -dm755 "${pkgdir}/usr/share/doc"
   cp -R "${_pkgname}/docs/" "${pkgdir}/usr/share/doc/${_pkgname}/"
-  chmod 0644 "${pkgdir}/usr/share/doc/${_pkgname}/"
+  chmod 0644 "${pkgdir}/usr/share/doc/${_pkgname}/"{/,*/}*.md
   _changelog md > "${pkgdir}/usr/share/doc/${_pkgname}/Changelog.md"
 
   # Get supported electron version and add it to the dependencies.
   #  (`-n "$pkgdir"` check also prevents adding it to .SRCINFO)
   #[[ -n "$pkgdir" ]] && depends+=("electron$(_getelectron)")
-  # commented the line above because _getelectron had some error and this does literally nothing afaik, since electron22 still doesn't work
+  # ^ commented out since the function seems to return full major.minor.patch version
 
   # Add changelog file to the package if present
   if [[ -f "${_pkgbuilddir}/${_pkgname}.changelog" ]]; then
@@ -276,12 +290,36 @@ _compile() {
   _postcompile
 }
 
-# A function that returns the currently supported Electron major release.
-_getelectron(){
-  local OLDPWD=$PWD;
-  cd "${srcdir:?}/${_pkgname}";
-  echo $(($(npm pkg get devDependencies.electron | sed 's~"\([^"]*\)"~\1~g;s~.* <\([0-9]*\).*~\1~')-1));
-  cd "$OLDPWD";
+# A function that finds latest supported Electron version satisfying
+# semver requirements. It is a hack, as it depends on `pacman` database,
+# but it is more reasonable than relying on incomplete `sed` expression
+# that mimics SemVer parsing without actually caring about entirely
+# supporting every possible SemVer expression.
+_getelectron_raw() (
+    cd "${srcdir:?}/${_pkgname}"
+    # start from latest available in repos
+    vercheck="$(LC_ALL=C pacman -Si electron | grep Depends | sed 's/.*electron//')"
+    while pkginfo="$(LC_ALL=C pacman -Si electron"$vercheck" 2>/dev/null)"; do
+        fullver="$(echo "$pkginfo" | grep Version | sed 's/.*:\s*//;s/-.*$//')"
+        validrange="$(npm pkg get devDependencies.electron)"
+        if ! semver -r "$validrange" "$fullver"; then
+            vercheck="$(($vercheck-1))"
+            continue
+        fi
+        return 0;
+    done
+    echo "ERROR: No supported Electron found in Arch releases!" >&2
+    exit 1;
+)
+
+# Like _getelectron_raw, but cached and overwritable via
+# _WEBCORD_ELECTRON_MAJOR.
+_getelectron() {
+    if [ -z "$_WEBCORD_ELECTRON_MAJOR" ] &&
+            ! _WEBCORD_ELECTRON_MAJOR="$(_getelectron_raw)"; then
+        exit 1
+    fi
+    echo "$_WEBCORD_ELECTRON_MAJOR"
 }
 
 # A function to convert the base icon into another sizes.
@@ -304,7 +342,7 @@ _genico(){
       _outln="${_outdir}/${_repo}.${_ext}"
       mkdir -p "$(dirname "$_out")"
       if [[ "${_ext}" == "png" ]]; then
-        convert "$_file" -size "${_size}x${_size}" "$_out" &
+        magick "$_file" -size "${_size}x${_size}" "$_out" &
         ln -sr "${_out}" "${_outln}" &
       else
         echo -e "\nERROR: Unknown image type! (${_ext})"
@@ -350,7 +388,9 @@ _postcompile() {
 # system-wide Electron binary.
 _script() {
   mkdir -p "$(dirname "$1")"
-  #echo -ne "#!/bin/bash\nelectron$(_getelectron) /usr/share/${_pkgname}/app.asar \"\$@\"\nexit \$?">"$1"
+  #local _ver;
+  #_ver="$(_getelectron)"
+  #echo -ne "#!/bin/bash\nelectron${_ver} /usr/share/${_pkgname}/app.asar \"\$@\"\nexit \$?">"$1"
   echo -ne "#!/bin/bash
     CONFIG=\${XDG_CONFIG_HOME:-~/.config}
     FLAGS=\"\$CONFIG/webcord-flags.conf\"
