@@ -4,7 +4,7 @@
 
 pkgname=v2rayn
 _name=v2rayN
-pkgver=7.24.9
+pkgver=7.25.4
 pkgrel=1
 pkgdesc="A GUI client for Windows, Linux and macOS, support Xray and sing-box and others"
 arch=('aarch64' 'x86_64')
@@ -15,43 +15,13 @@ makedepends=('dotnet-sdk=10.0' 'gendesk' 'git')
 install="${pkgname}.install"
 source=("git+${url}#tag=${pkgver}"
         "git+https://github.com/2dust/GlobalHotKeys.git"
-        "https://github.com/MetaCubeX/meta-rules-dat/releases/latest/download/geoip.metadb"
-        "https://github.com/Loyalsoldier/geoip/releases/latest/download/Country.mmdb"
-        "https://github.com/Loyalsoldier/geoip/releases/latest/download/geoip-only-cn-private.dat"
-        "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat"
-        "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
-        "https://github.com/2dust/sing-box-rules/raw/rule-set-geoip/geoip-cn.srs"
-        "https://github.com/2dust/sing-box-rules/raw/rule-set-geoip/geoip-facebook.srs"
-        "https://github.com/2dust/sing-box-rules/raw/rule-set-geoip/geoip-fastly.srs"
-        "https://github.com/2dust/sing-box-rules/raw/rule-set-geoip/geoip-google.srs"
-        "https://github.com/2dust/sing-box-rules/raw/rule-set-geoip/geoip-netflix.srs"
-        "https://github.com/2dust/sing-box-rules/raw/rule-set-geoip/geoip-private.srs"
-        "https://github.com/2dust/sing-box-rules/raw/rule-set-geoip/geoip-telegram.srs"
-        "https://github.com/2dust/sing-box-rules/raw/rule-set-geoip/geoip-twitter.srs"
-        "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-category-ads-all.srs"
-        "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-cn.srs"
-        "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-geolocation-cn.srs"
-        "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-gfw.srs"
-        "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-google.srs"
-        "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-greatfire.srs"
-        "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-private.srs"
+        "git+https://github.com/Loyalsoldier/geoip.git#branch=release"
+        "git+https://github.com/Loyalsoldier/v2ray-rules-dat.git#branch=release"
+        "git+https://github.com/MetaCubeX/meta-rules-dat.git#branch=release"
+        "sing-box-rules-geoip::git+https://github.com/2dust/sing-box-rules.git#branch=rule-set-geoip"
+        "sing-box-rules-geosite::git+https://github.com/2dust/sing-box-rules.git#branch=rule-set-geosite"
         "${pkgname}.sh")
-sha256sums=('0851987b370c4c139649b270af6998c1b4f2bc87fb3bfa9f44aa65010ec810a3'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
+sha256sums=('66b6c6919c39f215017a13b97719a7eda2133b30ba9a294414034e65fa76ab7e'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -95,11 +65,20 @@ package() {
     install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 v2rayN.Desktop/v2rayN.png -t "${pkgdir}/usr/share/pixmaps"
 
-    # Create symlink
     install -d "${pkgdir}/usr/lib/${_name}/bin/xray"
     ln -s /usr/bin/xray -t "${pkgdir}/usr/lib/${_name}/bin/xray"
 
-    # Install geofiles
-    install -Dm644 "${srcdir}/"*.{dat,metadb,mmdb} -t "${pkgdir}/usr/lib/${_name}/bin"
-    install -Dm644 "${srcdir}/"*.srs -t "${pkgdir}/usr/lib/${_name}/bin/srss"
+    for file in geoip geosite; do
+        install -Dm644 "${srcdir}/v2ray-rules-dat/${file}.dat" -t "${pkgdir}/usr/lib/${_name}/bin"
+    done
+    install -Dm644 "${srcdir}/meta-rules-dat/geoip.metadb" -t "${pkgdir}/usr/lib/${_name}/bin"
+    for file in Country.mmdb geoip-only-cn-private.dat; do
+        install -Dm644 "${srcdir}/geoip/${file}" -t "${pkgdir}/usr/lib/${_name}/bin"
+    done
+    for file in cn facebook fastly google netflix private telegram twitter; do
+        install -Dm644 "${srcdir}/sing-box-rules-geoip/geoip-${file}.srs" -t "${pkgdir}/usr/lib/${_name}/bin/srss"
+    done
+    for file in category-ads-all cn geolocation-cn gfw google greatfire private; do
+        install -Dm644 "${srcdir}/sing-box-rules-geosite/geosite-${file}.srs" -t "${pkgdir}/usr/lib/${_name}/bin/srss"
+    done
 }
