@@ -1,7 +1,7 @@
 # Maintainer: empyrealm
 
 pkgname=ibm-bob-bin
-pkgver=1.126.0.bob2.1.0
+pkgver=1.126.0.bob2.2.1
 pkgrel=1
 pkgdesc='IBM Bob IDE repackaged from IBM upstream Linux binaries'
 arch=('x86_64')
@@ -45,7 +45,7 @@ _decode_ver() {
 _decode_ver
 _upstream_ver="${_vs}+bob${_bob}"
 _rpm="IBM-Bob-linux-x64-${_upstream_ver}.rpm"
-_rpm_sha256='b328e31682b9028686fa08a063ae8e79b0b22b186a6020b5360ea981f1c08764'
+_rpm_sha256='30c2428e3fe917110a05c3b15cb904ac36edc43eea4b0a0124ed5fa16b2254c9'
 
 # pkgver() queries the IBM Bob download page for the latest upstream version
 # string and emits it in AUR-legal dot-only form.  makepkg --nobuild (or any
