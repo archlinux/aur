@@ -2,12 +2,12 @@
 
 pkgname=pds-gatekeeper-git
 pkgver=r30.c1acd83
-pkgrel=1
+pkgrel=2
 pkgdesc="Microservice to bring 2FA to self hosted AT Protocol PDSes"
 arch=('x86_64' 'aarch64')
 url="https://tangled.org/did:plc:rnpkyqnmsw4ipey6eotbdnnf/pds-gatekeeper"
 license=('MIT')
-depends=('gcc-libs' 'glibc' 'openssl' 'atproto-pds')
+depends=('glibc' 'libgcc' 'openssl' 'atproto-pds')
 makedepends=('cargo' 'git')
 options=('!lto') # LTO causes build failures for sqlx
 provides=("${pkgname%-git}=$pkgver-$pkgrel")
@@ -34,13 +34,14 @@ prepare() {
   cd "$srcdir/pds-gatekeeper"
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
   cd "$srcdir/pds-gatekeeper"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export CARGO_PROFILE_RELEASE_STRIP=false # let makepkg handle stripping and debug info
   cargo build --frozen --release --all-features
 }
 
