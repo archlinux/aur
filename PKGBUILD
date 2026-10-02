@@ -3,7 +3,7 @@
 
 _projectname='mdx'
 pkgname="ocaml-$_projectname"
-pkgver='2.6.0'
+pkgver='2.7.0'
 pkgrel='1'
 pkgdesc='Executable code blocks inside markdown files for OCaml'
 arch=('x86_64' 'aarch64')
@@ -32,7 +32,7 @@ checkdepends=(
 )
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('12018cf84269c1ffe8389da0528cdac6b9512f4988d6319b3c7bbf4c20635c8d10bd357b5334cc567e95adf2d60ef6aaf9095bf467058d5dbe2dac82acf91a96')
+b2sums=('8328abb601f8af26fd59b0ae4cebc9d645dfc4ef1df577abdd05c173dae45a635c5d5974e1cd3eccd06c9cb346bf33fd7aeb935b7087a159a5c065f3c543bf59')
 
 _sourcedirectory="$_projectname-$pkgver"
 
