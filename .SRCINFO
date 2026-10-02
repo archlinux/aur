@@ -1,19 +1,22 @@
 pkgbase = appimg-bin
 	pkgdesc = Install, update and remove AppImages as proper desktop applications (prebuilt binary)
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/MrGilfy/appimg
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	optdepends = fuse2: needed by most AppImages at runtime
 	optdepends = appimageupdatetool: delta updates via zsync
 	optdepends = desktop-file-utils: desktop database updates
 	optdepends = gtk-update-icon-cache: icon cache updates
-	provides = appimg=0.2.2
+	provides = appimg=0.3.0
 	conflicts = appimg
 	options = !debug
 	options = !strip
-	source = appimg-bin-0.2.2.tar.gz::https://github.com/MrGilfy/appimg/releases/download/v0.2.2/appimg-0.2.2-x86_64-linux-musl.tar.gz
-	sha256sums = f797644a9f15667cbbeb8937290212f5884927150b252d3516226cdbbf8b1e00
+	source_x86_64 = appimg-bin-0.3.0-x86_64.tar.gz::https://github.com/MrGilfy/appimg/releases/download/v0.3.0/appimg-0.3.0-x86_64-linux-musl.tar.gz
+	sha256sums_x86_64 = 804dd1170eadebeb6b380a05325034a1ff1e035de8a2160cebbcf80318c42293
+	source_aarch64 = appimg-bin-0.3.0-aarch64.tar.gz::https://github.com/MrGilfy/appimg/releases/download/v0.3.0/appimg-0.3.0-aarch64-linux-musl.tar.gz
+	sha256sums_aarch64 = c0982408fd1c67eb3d128d3741bde2a04749d72aa4a3cf974946d80f5b7e3803
 
 pkgname = appimg-bin
