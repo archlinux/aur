@@ -1,4 +1,4 @@
-pkgname=nuvio-desktop-bin
+pkgname=nuviodesktop-bin
 _tag=0.1.26-alpha
 pkgver=0.1.26.alpha
 pkgrel=1
@@ -10,9 +10,9 @@ depends=('alsa-lib' 'fontconfig' 'freetype2' 'glib-networking' 'gst-libav'
          'gst-plugins-good' 'libx11' 'libxcomposite' 'libxext' 'libxi'
          'libxrender' 'libxtst' 'mpv' 'webkit2gtk-4.1' 'xdg-utils' 'zlib')
 provides=('nuvio')
-conflicts=('nuvio')
+conflicts=('nuvio' 'nuvio-desktop' 'nuvio-desktop-bin' 'nuvio-linux-bin')
 options=('!strip')
-source=("nuvio-${_tag}.deb::${url}/releases/download/${_tag}/Nuvio-Linux-x86_64-${_tag}.deb")
+source=("nuviodesktop-${_tag}.deb::${url}/releases/download/${_tag}/Nuvio-Linux-x86_64-${_tag}.deb")
 sha256sums=('f7b24df4ef344e4a5971e632647610a8d7448114e29dc381b946b3fafea86c3e')
 
 package() {
