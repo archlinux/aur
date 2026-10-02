@@ -3,7 +3,7 @@
 
 pkgname=comfy-desktop
 _name=Comfy-Desktop
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="The desktop app for ComfyUI"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ depends=('bash' "${_electron}" 'glibc' 'hicolor-icon-theme' 'libgcc' 'libstdc++'
 makedepends=('gendesk' 'pnpm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('4abbb310ffde9ce6b1b4601df9290ea4aa0eef76be445a77919841db3c3a075b'
+sha256sums=('00c5aebb73ddd99875bfab1d92f9905728569778c375dc6560f913168b732c7f'
             '392aa4a63d71a463dcf7345271eac74fb3ca867d57ae99bc47a3a90117805fdd')
 
 prepare() {
@@ -31,7 +31,7 @@ build() {
     cd "${_name}-${pkgver}"
     pnpm install --frozen-lockfile
     pnpm run build
-    pnpm electron-builder --linux dir \
+    pnpm exec electron-builder --linux dir \
         --config.electronDist="/usr/lib/${_electron}" \
         --config.electronVersion="$(cat /usr/lib/${_electron}/version)"
 }

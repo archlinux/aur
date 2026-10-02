@@ -1,6 +1,6 @@
 pkgbase = comfy-desktop
 	pkgdesc = The desktop app for ComfyUI
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/Comfy-Org/Comfy-Desktop
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = comfy-desktop
 	depends = libstdc++
 	depends = python
 	depends = python-pygit2
-	source = comfy-desktop-1.1.4.tar.gz::https://github.com/Comfy-Org/Comfy-Desktop/archive/v1.1.4.tar.gz
+	source = comfy-desktop-1.1.5.tar.gz::https://github.com/Comfy-Org/Comfy-Desktop/archive/v1.1.5.tar.gz
 	source = comfy-desktop.sh
-	sha256sums = 4abbb310ffde9ce6b1b4601df9290ea4aa0eef76be445a77919841db3c3a075b
+	sha256sums = 00c5aebb73ddd99875bfab1d92f9905728569778c375dc6560f913168b732c7f
 	sha256sums = 392aa4a63d71a463dcf7345271eac74fb3ca867d57ae99bc47a3a90117805fdd
 
 pkgname = comfy-desktop
