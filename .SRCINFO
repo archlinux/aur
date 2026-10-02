@@ -1,6 +1,6 @@
 pkgbase = aros-tools-bin
 	pkgdesc = Reproducible host-side build and development tools for AROS
-	pkgver = 0.3.18
+	pkgver = 0.3.19
 	pkgrel = 1
 	url = https://github.com/metaneutrons/aros-tools
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = aros-tools-bin
 	provides = aros-tools
 	conflicts = aros-tools
 	options = !strip
-	source_x86_64 = https://github.com/metaneutrons/aros-tools/releases/download/v0.3.18/aros-tools-v0.3.18-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 45988f08f4e0a446500aee316954522ab1886ce61a13d0a0c9b69bc6a9f84119
-	source_aarch64 = https://github.com/metaneutrons/aros-tools/releases/download/v0.3.18/aros-tools-v0.3.18-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = bd5e1cf3a7659c839dbb455b7af4b91e6cb856ddf745837d14a906cb347799dc
+	source_x86_64 = https://github.com/metaneutrons/aros-tools/releases/download/v0.3.19/aros-tools-v0.3.19-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 96b0219d6cf29460fee07fd415978f52bc91d2d8ac3f484195cb63f7e11d984a
+	source_aarch64 = https://github.com/metaneutrons/aros-tools/releases/download/v0.3.19/aros-tools-v0.3.19-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = d3cdfb860c4bb381a2bb1540959f9d895ab2101cdda64dd21450c8878c72bef3
 
 pkgname = aros-tools-bin
