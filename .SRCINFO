@@ -1,0 +1,24 @@
+pkgbase = terminal-doom
+	pkgdesc = Play DOOM in modern terminals
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cryptocode/terminal-doom
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	license = MIT
+	makedepends = zig>=0.16.0
+	depends = glibc
+	noextract = libvaxis-4e5a065.tar.gz
+	noextract = zigimg-d695acd.tar.gz
+	noextract = uucode-2826a37.tar.gz
+	source = terminal-doom-zig-v0.16.tar.gz::https://github.com/cryptocode/terminal-doom/archive/refs/tags/zig-v0.16.tar.gz
+	source = libvaxis-4e5a065.tar.gz::https://github.com/rockorager/libvaxis/archive/4e5a065940825f147fa5ce0df54d1ef0d50ecee7.tar.gz
+	source = zigimg-d695acd.tar.gz::https://github.com/zigimg/zigimg/archive/d695acd97c02e57bb151e8f659d1280f5cd6ca70.tar.gz
+	source = uucode-2826a37.tar.gz::https://github.com/jacobsandlund/uucode/archive/2826a37a4562284fdacd8fa029d49509cc9bffcd.tar.gz
+	sha256sums = 43362e219ce914cefe63a43212f64fe7a14a03fd5784dc76540f0c280cab5ff7
+	sha256sums = 234320f142a39890cddceecebaec0f0aaa474e9f9c6ff2c9f581540c3a91e5e8
+	sha256sums = 487794b6f28a8380d17a4960d3c53ef2f466d3075b92e8ebf3f84ec6b568545d
+	sha256sums = 7e76fc7fab1e7ac728c52b35bbb3e5b8c639841abfc7fe1a4bcb13050594bc9e
+
+pkgname = terminal-doom
