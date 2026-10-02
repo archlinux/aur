@@ -9,7 +9,7 @@
 name=SabyDesktop
 pkgname=sabydesktop
 url="https://saby.ru/"
-pkgver=26.4200.583
+pkgver=26.4218.70
 pkgrel=1
 pkgdesc="SabyDesktop- приложения от Сбис, включая сбис-плагин, предоставляет доступ к дополнительным инструментам и сервисам saby, например использованию электронной подписи"
 arch=('x86_64')
@@ -18,7 +18,7 @@ license=('Custom')
 # Версии вспомогательных продуктов - могут отличаться от pkgver самого
 # SabyDesktop. Обновляются вместе с pkgver в check-update.sh.
 _ver_nmh="26.4200.157"
-_ver_center="26.4200.190"
+_ver_center="26.4218.26"
 
 # Локальные имена файлов включают версию - иначе при обновлении версии
 # новый .deb рискует не перезаписать (или не отличаться от) старого кэша
@@ -30,9 +30,9 @@ _center_deb="sabycenter-${_ver_center}.deb"
 source=("${_saby_deb}::https://update.saby.ru/SabyDesktop/${pkgver}/linux/deb_repo/saby.deb"
         "${_nmh_deb}::https://update.saby.ru/NmhTransport/${_ver_nmh}/linux/deb_repo/nmh-transport.deb"
         "${_center_deb}::https://update.saby.ru/SabyCenter/${_ver_center}/linux/deb_repo/sabycenter.deb")
-sha256sums=('c5144d103af9cd5afeac99ac0dfc376f862bc384452507f45a9a8003b7a8e2df'
+sha256sums=('92cd095086d765206a9e534907df403095cc55de3679807989d9e04d31a0fb81'
             '8c3395b391551d1b29a3b0ac6ca0e3c4718b77f562c4a6c48c326799378dd5c2'
-            '0a2f7cf4dae85b67c34570e797073ea63f57de5e9606ca3831fc9ad1118c1691')
+            '1196900b579bcc7009666421db5c6d8fec7f96916c377509b9ff4985c6d1362c')
 
 depends=(
   'glibc'
