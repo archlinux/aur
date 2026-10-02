@@ -1,7 +1,7 @@
 # Maintainer: Oliver Weissbarth <mail@oweissbarth.de>
 # Maintainer: SFN
 pkgname=feather-tk
-pkgver=0.9.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="A lightweight toolkit for building cross-platform applications"
 arch=("x86_64")
@@ -15,7 +15,7 @@ backup=()
 options=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/grizzlypeak3d/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 noextract=()
-sha256sums=('bb995bba15a2bbb179e103ca67e4d9e92c25c5c912dec04f21916fabdc57c87f')
+sha256sums=('8b2076272d2d8501bd6831bfcf92ba0b042ae062676e8937ea15eec6eb9194f5')
 
 CFLAGS+=" -ffat-lto-objects" #lto problems with static libs
 CXXFLAGS+=" -ffat-lto-objects" #lto problems with static libs
@@ -24,6 +24,9 @@ build() {
   cd "$srcdir/${pkgname}-${pkgver}"
   # Link against shared SDL2 library instead of static one
   sed 's|SDL2::SDL2-static|SDL2::SDL2|' -i lib/ftk/GL/CMakeLists.txt
+  sed 's|Window.h)|Window.h|' -i lib/ftk/UI/CMakeLists.txt
+  sed 's|set(PRIVATE_HEADERS||' -i lib/ftk/UI/CMakeLists.txt
+
   rm -fr build
   cmake -DCMAKE_INSTALL_PREFIX=/usr -Dftk_TESTS=OFF -Dftk_EXAMPLES=OFF -DCMAKE_BUILD_TYPE=Release -B build .
   cmake --build build --parallel
