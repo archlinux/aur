@@ -1,0 +1,23 @@
+pkgbase = shournal
+	pkgdesc = Log shell-commands and used files, snapshot executed scripts; fully automatic
+	pkgver = 3.3
+	pkgrel = 1
+	url = https://github.com/tycho-kirchner/shournal
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = gcc
+	depends = qt5-base
+	depends = util-linux-libs
+	depends = libcap
+	depends = gcc-libs
+	depends = glibc
+	optdepends = util-linux: uuidd daemon for safe uuid generation (systemctl enable --now uuidd)
+	options = !lto
+	source = shournal-3.3.tar.gz::https://github.com/tycho-kirchner/shournal/archive/refs/tags/v3.3.tar.gz
+	source = shournal.sysusers
+	sha256sums = 6f74079c680c9c1a9a2b98543b0273a264896796a6fe195e9088f5f1845da4a2
+	sha256sums = f6cfce4e1ba17e7bb42dfc394cbeaf6bb79df7df45d7e06ab3743a2df4509365
+
+pkgname = shournal
