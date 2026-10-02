@@ -1,6 +1,6 @@
 pkgbase = gryt-chat-bin
 	pkgdesc = Gryt Chat — real-time voice chat desktop client
-	pkgver = 1.13.4
+	pkgver = 1.13.5
 	pkgrel = 1
 	url = https://gryt.chat
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = gryt-chat-bin
 	conflicts = gryt-chat
 	options = !strip
 	options = !debug
-	source = https://github.com/Gryt-chat/gryt/releases/download/v1.13.4/Gryt-Chat-1.13.4-linux-amd64.deb
-	sha256sums = 4aa9f83aaa2bf3b1461fb2ab446ca80126ab17da8bfa3d5398b26cd354b3a7ff
+	source = https://github.com/Gryt-chat/gryt/releases/download/v1.13.5/Gryt-Chat-1.13.5-linux-amd64.deb
+	sha256sums = 9075ec436c5b409bec022fc5932dcd8e45a71624959fcbb914cbb9ac7dc31ae3
 
 pkgname = gryt-chat-bin
