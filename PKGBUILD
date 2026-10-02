@@ -1,7 +1,7 @@
 # Maintainer: Sohrab Behdani <behdanisohrab@gmail.com>
 pkgname=zedsecure-bin
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ZedSecure VPN client"
 arch=('x86_64')
 url="https://github.com/CluvexStudio/ZedSecure"
@@ -39,15 +39,16 @@ package() {
     ar x "${pkgname}-${pkgver}-amd64.deb"
     tar --use-compress-program=unzstd -xf data.tar.zst
 
-    install -dm755 "${pkgdir}/opt/${pkgname}"
-    cp -a opt/zedsecure/* "${pkgdir}/opt/${pkgname}/"
+    install -dm755 "${pkgdir}/opt"
+    cp -a opt/zedsecure "${pkgdir}/opt/"
 
     install -dm755 "${pkgdir}/usr/bin"
-    ln -sf "/opt/${pkgname}/bin/ZedSecure" "${pkgdir}/usr/bin/${pkgname}"
+    ln -sf "/opt/zedsecure/bin/ZedSecure" "${pkgdir}/usr/bin/${pkgname}"
+    ln -sf "/opt/zedsecure/bin/ZedSecure" "${pkgdir}/usr/bin/zedsecure"
 
-    install -Dm644 "opt/${pkgname}/lib/${pkgname}-ZedSecure.desktop" \
+    install -Dm644 opt/zedsecure/lib/zedsecure-ZedSecure.desktop \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-    install -Dm644 "opt/${pkgname}/lib/ZedSecure.png" \
+    install -Dm644 opt/zedsecure/lib/ZedSecure.png \
         "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
 }
