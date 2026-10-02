@@ -1,0 +1,20 @@
+pkgbase = python-yark
+	pkgdesc = YouTube archiving made simple
+	pkgver = 1.2.9
+	pkgrel = 1
+	url = https://github.com/Owez/yark
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-colorama
+	depends = python-flask
+	depends = python-progress
+	depends = python-requests
+	depends = yt-dlp
+	source = python-yark-1.2.9.tar.gz::https://github.com/Owez/yark/archive/refs/tags/v1.2.9.tar.gz
+	sha256sums = 4c9c5b77472c28a70bb3478088a3c3feeaf72b0b099ff4860c64a7b99ec1e163
+
+pkgname = python-yark
