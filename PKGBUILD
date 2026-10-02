@@ -3,7 +3,7 @@
 
 pkgname="python-textual-textarea"
 _pkgname="${pkgname/python-/}"
-pkgver=0.18.4
+pkgver=0.18.5
 pkgrel=1
 pkgdesc="A text area (multi-line input) with syntax highlighting for Textual"
 
@@ -17,7 +17,7 @@ depends=("python" "python-rich" "python-textual" "python-pyperclip" "python-tree
 options=("!strip")
 
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname/-/_}-${pkgver}.tar.gz")
-b2sums=('af7fe8af769d95c998e7aecc02417d5ab0104855d2a71012f4331e3567efe93fb36ae9748fd91fc92d6d4e6d3df8689f86e14b7294eed251216f451fd795f013')
+b2sums=('7428bcacce78e993c5c1768db80e426f6986c1fe0a3de544682e6805dadaa648a6a480a0597a3d12db31f66fb2b325d7427fbdbf9f138e3f218b9924e7fe17ee')
 
 build(){
     cd "${_pkgname/-/_}-${pkgver}"
