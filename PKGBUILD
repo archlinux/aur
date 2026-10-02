@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=typr
-pkgver=0.5.12 # renovate: datasource=github-tags depName=we-data-ch/typr
+pkgver=0.6.1 # renovate: datasource=github-tags depName=we-data-ch/typr
 pkgrel=1
 pkgdesc="A modern type system for R"
 url=https://github.com/we-data-ch/typr
@@ -33,4 +33,4 @@ package() {
   install -Dm644 "${srcdir}/typr-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('be7a2f7efd11bf95cf003667139dab2c1a4b322df803c1a06abb65d138c3907d5f3a5d19b4dc37fa74efdccead5a02d11692cbc78ea83806e00f1d6eb8bf5342')
+sha512sums=('30c14f46df6e135023a52f04650b1a74762cabc738e881077b4c7dcce5d88ba227d47c4f3a1bd8be544f6a124828f2ef16cee2ed08e79af36c592e787ad7a494')
