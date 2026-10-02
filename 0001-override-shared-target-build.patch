@@ -1,0 +1,33 @@
+diff --git a/Engine/Source/Programs/UnrealBuildTool/Configuration/TargetRules.cs b/Engine/Source/Programs/UnrealBuildTool/Configuration/TargetRules.cs
+old mode 100644
+new mode 100755
+index 3c9179b63..ac3bb16b8
+--- a/Engine/Source/Programs/UnrealBuildTool/Configuration/TargetRules.cs
++++ b/Engine/Source/Programs/UnrealBuildTool/Configuration/TargetRules.cs
+@@ -2689,7 +2689,7 @@ namespace UnrealBuildTool
+ 				}
+ 				if (Type == TargetType.Program && ProjectFile != null && File!.IsUnderDirectory(ProjectFile.Directory))
+ 				{
+-					return TargetBuildEnvironment.Unique;
++					return Unreal.IsEngineInstalled() ? TargetBuildEnvironment.Shared : TargetBuildEnvironment.Unique;
+ 				}
+ 				else if (Unreal.IsEngineInstalled() || LinkType != TargetLinkType.Monolithic)
+ 				{
+@@ -2700,7 +2700,7 @@ namespace UnrealBuildTool
+ 					return TargetBuildEnvironment.Unique;
+ 				}
+ 			}
+-			set => BuildEnvironmentOverride = value;
++			set => BuildEnvironmentOverride = (value == TargetBuildEnvironment.Unique && Unreal.IsEngineInstalled()) ? TargetBuildEnvironment.Shared : value;
+ 		}
+ 
+ 		/// <summary>
+@@ -3017,7 +3017,7 @@ namespace UnrealBuildTool
+ 			// RequiresUniqueEnvironment is expensive so early out when generating project files
+ 			if (IntermediateEnvironment == UnrealIntermediateEnvironment.GenerateProjectFiles)
+ 			{
+-				BuildEnvironment = TargetBuildEnvironment.Unique;
++				BuildEnvironment = Unreal.IsEngineInstalled() ? TargetBuildEnvironment.Shared : TargetBuildEnvironment.Unique;
+ 				return;
+ 			}
+ 
