@@ -8,7 +8,7 @@
 
 _pack=netcdf
 pkgname=octave-$_pack
-pkgver=1.0.20
+pkgver=1.0.21
 pkgrel=1
 pkgdesc="A MATLAB compatible NetCDF interface for Octave"
 arch=(any)
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("https://github.com/gnu-octave/octave-$_pack/releases/download/v$pkgver/$_archive")
 noextract=("$_archive")
-b2sums=('f7638496995e22432860a131ca4caefdaa601fbbea6603a31896e61abd00d1305825b1841538865a8bed13f0f8fcf496520b9ad47239882b03946bd7da00418e')
+b2sums=('674c164f5dd2069ab4f10e532a69d351a08cc12e3469815cb44b65bb22dcd7ca7c7b06040ac85909c2590295f165eece01566d112f09d6615a128dfc954c0458')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
