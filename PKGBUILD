@@ -1,10 +1,11 @@
 #!/bin/sh
+# Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 # PKGBUILD for AUR -git (development) package
 # This is used for the AUR system-bridge-git package
 # pkgver is replaced by prepare-aur.sh before publication
 
 pkgname=system-bridge-git
-pkgver=5.9.5.r6237.g9ff0226
+pkgver=5.9.5.r6239.g7924eb9
 pkgrel=1
 pkgdesc="A bridge for your systems (git version)"
 makedepends=('git' 'mise')
@@ -15,7 +16,6 @@ conflicts=('system-bridge' 'system-bridge-debug')
 arch=('x86_64')
 url="https://github.com/timmo001/system-bridge"
 license=('Apache-2.0')
-keywords=('system-bridge' 'automation' 'home-assistant' 'api' 'websocket')
 depends=('libx11' 'libxtst' 'libxkbcommon' 'libxkbcommon-x11')
 optdepends=('pciutils: GPU model identification via lspci'
             'zenity: tray and desktop confirmation prompts'
