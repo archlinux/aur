@@ -1,6 +1,6 @@
 pkgbase = linux-danmu-hime
 	pkgdesc = bilibili 直播弹幕浮层（wlr-layer-shell）+ GTK4 设置界面（预编译）
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/linux-danmu-hime
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = linux-danmu-hime
 	optdepends = noto-fonts-emoji: 彩色 emoji
 	provides = danmu-hime
 	options = !debug
-	source = danmu-hime-0.1.1-x86_64.tar.gz::https://github.com/SHORiN-KiWATA/linux-danmu-hime/releases/download/v0.1.1/danmu-hime-0.1.1-x86_64.tar.gz
-	sha256sums = 06456d65e2075d57e90fe0be1132c9fcd6bf85e8a7af561a7ed710a4f7d4ab27
+	source = danmu-hime-0.1.2-x86_64.tar.gz::https://github.com/SHORiN-KiWATA/linux-danmu-hime/releases/download/v0.1.2/danmu-hime-0.1.2-x86_64.tar.gz
+	sha256sums = c196b6dc038bdda0c15d9a707ad1b8ae2fee28ac3672fce67cd9ef5c8ffbc964
 
 pkgname = linux-danmu-hime
