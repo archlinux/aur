@@ -1,6 +1,6 @@
 # Maintainer: Limehawk <128890849+limehawk@users.noreply.github.com>
 pkgname=omarchy-vpn
-pkgver=0.4.8
+pkgver=0.4.9
 pkgrel=1
 pkgdesc="WireGuard VPN manager TUI for Omarchy"
 arch=('x86_64')
@@ -35,6 +35,11 @@ package() {
     install -dm750 "$pkgdir/etc/sudoers.d"
     install -Dm440 /dev/stdin "$pkgdir/etc/sudoers.d/$pkgname" << 'EOF'
 %wheel ALL=(root) NOPASSWD: /usr/lib/omarchy-vpn/helper
+# The TUI and bar widget poll these read-only calls every few seconds; don't
+# let sudo log each one. Changes and refusals are still logged, by sudo and
+# by the helper's own audit (journalctl -t omarchy-vpn).
+Cmnd_Alias OMARCHY_VPN_READ = /usr/lib/omarchy-vpn/helper list, /usr/lib/omarchy-vpn/helper interfaces, /usr/lib/omarchy-vpn/helper show *, /usr/lib/omarchy-vpn/helper cat *
+Defaults!OMARCHY_VPN_READ !log_allowed, !pam_session
 EOF
 
     # License

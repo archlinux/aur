@@ -1,6 +1,6 @@
 pkgbase = omarchy-vpn
 	pkgdesc = WireGuard VPN manager TUI for Omarchy
-	pkgver = 0.4.8
+	pkgver = 0.4.9
 	pkgrel = 1
 	url = https://github.com/limehawk/omarchy-vpn
 	install = omarchy-vpn.install
@@ -13,7 +13,7 @@ pkgbase = omarchy-vpn
 	optdepends = netbird: NetBird mesh VPN row
 	optdepends = cloudflare-warp-bin: Cloudflare WARP row
 	options = !debug
-	source = omarchy-vpn::git+https://github.com/limehawk/omarchy-vpn.git#tag=v0.4.8
+	source = omarchy-vpn::git+https://github.com/limehawk/omarchy-vpn.git#tag=v0.4.9
 	sha256sums = SKIP
 
 pkgname = omarchy-vpn
