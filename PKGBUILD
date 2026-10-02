@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=opencie
-pkgver=0.4.5 # renovate: datasource=github-tags depName=M0Rf30/opencie extractVersion=^v(?<version>.+)$
+pkgver=0.4.6 # renovate: datasource=github-tags depName=M0Rf30/opencie extractVersion=^v(?<version>.+)$
 pkgrel=1
 pkgdesc="Digital signatures and verification with the Italian Electronic Identity Card (CIE)"
 arch=('x86_64' 'aarch64')
