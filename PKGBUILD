@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gopher64-git
-pkgver=1.1.24.r10.g5f8e3b97
+pkgver=1.1.36.r26.g77d9defc
 pkgrel=1
 pkgdesc='A Nintendo64 emulator (git version)'
 arch=('x86_64')
@@ -13,8 +13,7 @@ depends=(
     'hicolor-icon-theme'
     'libgcc'
     'libstdc++'
-    'vulkan-icd-loader'
-    'wayland')
+    'vulkan-icd-loader')
 makedepends=(
     'alsa-lib'
     'cargo'
@@ -56,7 +55,7 @@ makedepends=(
 provides=('gopher64')
 conflicts=('gopher64')
 source=('git+https://github.com/gopher64/gopher64.git'
-        'git+https://github.com/Themaister/parallel-rdp-standalone.git'
+        'parallel-rdp-standalone-gopher64'::'git+https://github.com/gopher64/parallel-rdp-standalone.git'
         'git+https://github.com/RetroAchievements/rcheevos.git'
         'gopher64.desktop')
 sha256sums=('SKIP'
@@ -66,7 +65,7 @@ sha256sums=('SKIP'
 
 prepare() {
     git -C gopher64 submodule init
-    git -C gopher64 config --local submodule.parallel-rdp/parallel-rdp-standalone.url "${srcdir}/parallel-rdp-standalone"
+    git -C gopher64 config --local submodule.parallel-rdp/parallel-rdp-standalone.url "${srcdir}/parallel-rdp-standalone-gopher64"
     git -C gopher64 config --local submodule.src/compat/sse2neon.update none
     git -C gopher64 config --local submodule.retroachievements/rcheevos.url "${srcdir}/rcheevos"
     git -C gopher64 -c protocol.file.allow='always' submodule update
