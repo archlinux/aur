@@ -2,12 +2,12 @@
 
 pkgname=kx-aspe-git
 pkgver=r24.492df7e
-pkgrel=2
+pkgrel=3
 pkgdesc="Keyoxide profile generator CLI using ASPE"
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/keyoxide/kx-aspe-cli"
 license=('Apache-2.0')
-depends=('gcc-libs' 'glibc' 'openssl')
+depends=('glibc' 'libgcc' 'openssl')
 makedepends=('cargo' 'git')
 provides=("${pkgname%-git}=$pkgver-$pkgrel")
 conflicts=("${pkgname%-git}")
@@ -32,6 +32,7 @@ build() {
   cd "$srcdir/kx-aspe-cli"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export CARGO_PROFILE_RELEASE_STRIP=false # let makepkg handle stripping and debug info
   cargo build --frozen --release --all-features
 }
 
