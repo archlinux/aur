@@ -1,0 +1,29 @@
+From: Alexis Belmonte <alexbelm48@gmail.com>
+Subject: [PATCH] Disable Lumen surface cache feedback on Linux
+
+Recent Linux GPU drivers (notably the NVIDIA open kernel module 610.x on Blackwell)
+fault with VK_ERROR_DEVICE_LOST while submitting the Lumen surface cache feedback
+GPU readback. The failure is reported later at the next fence wait because the
+error is sticky. Disabling the feedback readback on Linux avoids the device loss;
+it only affects Lumen surface-cache resolution adaptation, not core rendering.
+
+Scoped to LinuxEngine.ini so Windows/Mac cross-compiled targets are unaffected.
+---
+ Engine/Config/Linux/LinuxEngine.ini | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/Engine/Config/Linux/LinuxEngine.ini b/Engine/Config/Linux/LinuxEngine.ini
+--- a/Engine/Config/Linux/LinuxEngine.ini
++++ b/Engine/Config/Linux/LinuxEngine.ini
+@@ -8,6 +8,11 @@
+ ;Perplatform to PerQualityLevel conversion mapping for platform groups
+ QualityLevelMapping="high"
+ r.Shadow.DetectVertexShaderLayerAtRuntime=1
++; Recent Linux drivers (NVIDIA open kernel 610.x / Blackwell) fault with
++; VK_ERROR_DEVICE_LOST while submitting the Lumen surface cache feedback GPU
++; readback; disable the feedback readback on Linux to avoid the device loss.
++r.LumenScene.SurfaceCache.Feedback=0
++r.Lumen.Reflections.SurfaceCacheFeedback=0
+
+ [TextureStreaming]
+ ; PoolSizeVRAMPercentage is how much percentage of GPU Dedicated VRAM should be used as a TexturePool cache for streaming textures (0 - unlimited streaming)
