@@ -7,11 +7,11 @@ pkgbase = include-what-you-use
 	arch = x86_64
 	license = LicenseRef-LLVM-Release-License
 	makedepends = cmake
-	makedepends = llvm>=22.1
-	makedepends = llvm<23.0
+	makedepends = llvm>=23.1
+	makedepends = llvm<24.0
 	makedepends = ninja
-	depends = clang>=22.1
-	depends = clang<23.0
+	depends = clang>=23.1
+	depends = clang<24.0
 	depends = python3
 	depends = gcc-libs
 	depends = glibc

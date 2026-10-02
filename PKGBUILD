@@ -4,7 +4,7 @@
 pkgname=include-what-you-use
 pkgver=0.26
 pkgrel=1
-_clang_major=22
+_clang_major=23
 _clang_minor=1
 _clang_ver="${_clang_major}.${_clang_minor}"
 pkgdesc="A tool for use with clang to analyze #includes in C and C++ source files"

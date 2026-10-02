@@ -1,7 +1,0 @@
-.*
-!.SRCINFO
-!.gitignore
-include-what-you-use*.tar.gz
-include-what-you-use*.pkg.*
-pkg/
-src/
