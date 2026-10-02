@@ -1,0 +1,27 @@
+pkgbase = venera-prime-bin
+	pkgdesc = A comic reader that support reading local and network comics. (Prime)
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = https://github.com/venera-app/venera-prime
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = at-spi2-core
+	depends = cairo
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = gdk-pixbuf2
+	depends = gtk3
+	depends = harfbuzz
+	depends = libepoxy
+	depends = libsoup3
+	depends = pango
+	depends = webkit2gtk-4.1
+	conflicts = venera
+	conflicts = venera-bin
+	options = !debug
+	source = https://github.com/venera-app/venera-prime/releases/download/v2.4.2/venera_2.4.2_amd64.deb
+	sha256sums = ea9a86ce252611918732882b02959f556d184cb408adca6ce1280bd294cdb641
+
+pkgname = venera-prime-bin
