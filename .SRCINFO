@@ -1,0 +1,17 @@
+pkgbase = qi-bin
+	pkgdesc = Local-first query engine CLI for AI agents and humans (BM25 + vector search)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/itsmostafa/qi
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = qi
+	conflicts = qi
+	options = !debug
+	source_x86_64 = qi-linux-amd64.tar.gz::https://github.com/itsmostafa/qi/releases/download/v0.2.1/qi-linux-amd64.tar.gz
+	sha256sums_x86_64 = 1db2d892bdb25244b7e2a4bcf79044939185d4319b189973a3ec7f16fdae4396
+	source_aarch64 = qi-linux-arm64.tar.gz::https://github.com/itsmostafa/qi/releases/download/v0.2.1/qi-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9103f2a1f87cf8d7ebdba946b218a2f13faea0a03a68f570ea2b14bd2b0490f2
+
+pkgname = qi-bin
