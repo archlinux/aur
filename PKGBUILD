@@ -1,6 +1,6 @@
 # Maintainer: kekmacska
 pkgname=svt-av1-tritium-git
-pkgver=4.1.0.r69.g0f9d3f000
+pkgver=4.2.0.r5349.g2f666940c
 pkgrel=1
 pkgdesc="SVT-AV1-Tritium is a fork of SVT-AV1-HDR with PSYEX + Essential features"
 arch=('x86_64')
@@ -26,8 +26,18 @@ source=(
 sha256sums=('SKIP' '376182aad9bdae7e0f1df2f6248078626646cb9e4d30626a3571662502c32de7')
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./'
+    cd "$srcdir/$pkgname"
+
+    local version commits commit
+
+    version=$(sed -n \
+        's/.*project(svt-av1 VERSION \([0-9.]*\).*/\1/p' \
+        CMakeLists.txt | head -1)
+
+    commits=$(git rev-list --count HEAD)
+    commit=$(git rev-parse --short=9 HEAD)
+
+    printf '%s.r%s.g%s\n' "$version" "$commits" "$commit"
 }
 
 prepare() {
