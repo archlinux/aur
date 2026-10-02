@@ -1,0 +1,17 @@
+pkgbase = tshare
+	pkgdesc = The fastest way to share your files on the web, for free
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = https://github.com/trikko/tshare
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = ldc
+	makedepends = dub
+	depends = curl
+	depends = zlib
+	depends = gcc-libs
+	source = tshare-1.1.8.tar.gz::https://github.com/trikko/tshare/archive/refs/tags/v1.1.8.tar.gz
+	sha256sums = c585824179322634be0bb48128ca1eebb8c449c2a27650c24c4a6f6af34cf65c
+
+pkgname = tshare
