@@ -1,6 +1,6 @@
 pkgbase = coreutils-selinux
 	pkgdesc = The basic file, shell and text manipulation utilities of the GNU operating system with SELinux support
-	pkgver = 9.11
+	pkgver = 9.12
 	pkgrel = 2
 	url = https://www.gnu.org/software/coreutils/
 	arch = x86_64
@@ -19,19 +19,21 @@ pkgbase = coreutils-selinux
 	depends = libcap
 	depends = libselinux
 	depends = openssl
-	provides = coreutils=9.11-2
-	provides = selinux-coreutils=9.11-2
+	provides = coreutils=9.12-2
+	provides = selinux-coreutils=9.12-2
 	conflicts = coreutils
 	conflicts = selinux-coreutils
 	options = !lto
-	source = git+https://git.savannah.gnu.org/git/coreutils.git?signed#tag=v9.11
+	source = git+https://git.savannah.gnu.org/git/coreutils.git?signed#tag=v9.12
 	source = git+https://git.savannah.gnu.org/git/gnulib.git
-	source = https://ftp.gnu.org/gnu/coreutils/coreutils-9.11.tar.gz
-	source = https://ftp.gnu.org/gnu/coreutils/coreutils-9.11.tar.gz.sig
+	source = https://ftp.gnu.org/gnu/coreutils/coreutils-9.12.tar.gz
+	source = https://ftp.gnu.org/gnu/coreutils/coreutils-9.12.tar.gz.sig
+	source = 0001-env-printenv-only-quote-when-outputting-to-terminals.patch
 	validpgpkeys = 6C37DC12121A5006BC1DB804DF6FD971306037D9
-	b2sums = 24d9727afb79279eccab35496452462d881d3ef6031739e44aeee53c2379a04e42a7c8dad8ae03e0cdc9befbfea44d6b4884829f7bb638a441e22bf31a5e5d2e
+	b2sums = b893b993f6ee1f71939e1b54c3bde44eb0ad6d777e466125090488b082637539cbb07d1f9298cccfe4e510755945a7610b9a4ad2ea83061c5a53dd09c853ee7a
 	b2sums = SKIP
-	b2sums = 6c3e1763df577c9bebb91fcf7ee3ce56dcb2aa3cb911bebbf2ec3493cad1a0cbeffb2ab7caeb0351fba92e8b631ae4dfee7a32d9542d8e25c4dcdd2fec8cbcf3
+	b2sums = c125cc479e4eec0178e49a1dffa975fb5d7753a5f04d3bb695d0e8043c05d76fb07c9595db20e9df5c359fdbbb326acb976d5bec7bd1771da22840156bb66369
 	b2sums = SKIP
+	b2sums = 97619b6af8bdb4e18d1a895f52e72af8e2fd2dc0afda8f724a70c9b68cdc31470398101012cc4452ab5142defe55956fd9bc8f87d71ea11ff87cb2147e122d10
 
 pkgname = coreutils-selinux

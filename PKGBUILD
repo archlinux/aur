@@ -11,7 +11,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=coreutils-selinux
-pkgver=9.11
+pkgver=9.12
 pkgrel=2
 pkgdesc='The basic file, shell and text manipulation utilities of the GNU operating system with SELinux support'
 arch=('x86_64' 'aarch64')
@@ -43,15 +43,18 @@ source=(
   git+https://git.savannah.gnu.org/git/coreutils.git?signed#tag=v${pkgver}
   git+https://git.savannah.gnu.org/git/gnulib.git
   https://ftp.gnu.org/gnu/${pkgname/-selinux}/${pkgname/-selinux}-${pkgver}.tar.gz{,.sig}
+  # https://lists.gnu.org/archive/html/coreutils/2026-09/msg00064.html
+  0001-env-printenv-only-quote-when-outputting-to-terminals.patch
 )
 validpgpkeys=(
  6C37DC12121A5006BC1DB804DF6FD971306037D9 # Pádraig Brady
 )
 options=(!lto)
-b2sums=('24d9727afb79279eccab35496452462d881d3ef6031739e44aeee53c2379a04e42a7c8dad8ae03e0cdc9befbfea44d6b4884829f7bb638a441e22bf31a5e5d2e'
+b2sums=('b893b993f6ee1f71939e1b54c3bde44eb0ad6d777e466125090488b082637539cbb07d1f9298cccfe4e510755945a7610b9a4ad2ea83061c5a53dd09c853ee7a'
         'SKIP'
-        '6c3e1763df577c9bebb91fcf7ee3ce56dcb2aa3cb911bebbf2ec3493cad1a0cbeffb2ab7caeb0351fba92e8b631ae4dfee7a32d9542d8e25c4dcdd2fec8cbcf3'
-        'SKIP')
+        'c125cc479e4eec0178e49a1dffa975fb5d7753a5f04d3bb695d0e8043c05d76fb07c9595db20e9df5c359fdbbb326acb976d5bec7bd1771da22840156bb66369'
+        'SKIP'
+        '97619b6af8bdb4e18d1a895f52e72af8e2fd2dc0afda8f724a70c9b68cdc31470398101012cc4452ab5142defe55956fd9bc8f87d71ea11ff87cb2147e122d10')
 
 prepare() {
   cd "${pkgname/-selinux}"
@@ -89,6 +92,8 @@ prepare() {
   # linux-api-headers 7.2-1 introduced a new errno, EFTYPE, which makes a test fail:
   # strerrorname_np(EFTYPE) returns NULL whereas it is expected to return "EFTYPE".
   # As this is transient, disable the test
+  # https://debbugs.gnu.org/cgi/bugreport.cgi?bug=81875
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/coreutils/-/commit/19945e38852ab1483f13d18c8b4afdad0b774549
   sed -i gnulib-tests/gnulib.mk \
     -e '/^TESTS += test-strerrorname_np/d' \
     -e '/^check_PROGRAMS += test-strerrorname_np/d' \
