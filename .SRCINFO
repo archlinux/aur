@@ -1,0 +1,32 @@
+pkgbase = r-tidyplots
+	pkgdesc = Tidy plots for scientific papers
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=tidyplots
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-cli
+	depends = r-dplyr
+	depends = r-forcats
+	depends = r-ggbeeswarm
+	depends = r-ggplot2
+	depends = r-ggpubr
+	depends = r-ggrastr
+	depends = r-ggrepel
+	depends = r-glue
+	depends = r-gtable
+	depends = r-hmisc
+	depends = r-htmltools
+	depends = r-lifecycle
+	depends = r-purrr
+	depends = r-rlang
+	depends = r-scales
+	depends = r-stringr
+	depends = r-tidyr
+	depends = r-tidyselect
+	source = https://cran.r-project.org/src/contrib/tidyplots_0.4.0.tar.gz
+	md5sums = 41d353ac62899760fe6bf8138f7b0c3e
+	b2sums = a127b6a7a704418868be9158cfeb5eb3f7665d5e623aa1e4e5f9f36491fde74314889dd1757fe307fa5e1fe3963ec837d591cb8ecf2aad1e143c31959c65c37d
+
+pkgname = r-tidyplots
