@@ -1,6 +1,6 @@
 pkgbase = lomi
 	pkgdesc = A workspace for terminal-driven development
-	pkgver = 0.5.3
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://github.com/lomi-dev/lomi
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = lomi
 	optdepends = git: source control and repository history
 	provides = lomi
 	conflicts = lomi-bin
-	source = lomi-0.5.3.tar.gz::https://github.com/lomi-dev/lomi/archive/refs/tags/v0.5.3.tar.gz
-	sha256sums = 6b25074d12d8fbaeef0fcff244179a2062d6ddcb0f176e0a66b139c77f345ab2
+	source = lomi-0.5.5.tar.gz::https://github.com/lomi-dev/lomi/archive/refs/tags/v0.5.5.tar.gz
+	sha256sums = 0698d96ec1f9ddc0eb32620c247cadf9d98689d9ebb3d5bb266ed3f8f20104ff
 
 pkgname = lomi

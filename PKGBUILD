@@ -1,6 +1,6 @@
 # Maintainer: Woro <woro@tanieddosy.pl>
 pkgname=lomi
-pkgver=0.5.3
+pkgver=0.5.5
 pkgrel=1
 pkgdesc='A workspace for terminal-driven development'
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('lomi')
 conflicts=('lomi-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 # The publication workflow replaces SKIP with the released source's SHA-256.
-sha256sums=('6b25074d12d8fbaeef0fcff244179a2062d6ddcb0f176e0a66b139c77f345ab2')
+sha256sums=('0698d96ec1f9ddc0eb32620c247cadf9d98689d9ebb3d5bb266ed3f8f20104ff')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
