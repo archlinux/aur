@@ -9,7 +9,7 @@
 # branch, and pkgver() below derives the version from git, so no checksums or
 # `updpkgsums` step is needed.
 pkgname=deadband-git
-pkgver=r62.c78beb8
+pkgver=r133.0225a1e
 pkgrel=1
 pkgdesc="Configure game controller lighting, sticks, triggers and buttons on Linux"
 arch=('any')
@@ -69,6 +69,12 @@ EOF
   # udev rules (vendor-scoped uaccess; no replug needed after trigger) — the
   # controller's, and the Logitech mouse's for the G502 X pages
   install -Dm644 70-gamesir.rules "$pkgdir/usr/lib/udev/rules.d/70-gamesir.rules"
+  # also beside the app: the in-app fix banner and --doctor both reference the
+  # rule by its path next to deadband.py, and without this that path does not
+  # exist on a packaged install (the banner's own command failed to stat it)
+  install -Dm644 70-gamesir.rules "$share/70-gamesir.rules"
+  install -Dm644 packaging/udev/70-deadband-g502x.rules \
+    "$share/packaging/udev/70-deadband-g502x.rules"
   install -Dm644 packaging/udev/70-deadband-g502x.rules \
     "$pkgdir/usr/lib/udev/rules.d/70-deadband-g502x.rules"
 
