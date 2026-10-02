@@ -1,0 +1,17 @@
+pkgbase = zig-bypassdpi-git
+	pkgdesc = Cross-platform userspace DPI-bypass SOCKS5/HTTP proxy written in Zig
+	pkgver = r2.4fad7f6
+	pkgrel = 1
+	url = https://github.com/debpalash/zig-bypassdpi
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = zig>=0.16
+	provides = zig-bypassdpi
+	conflicts = zig-bypassdpi
+	options = !debug
+	source = zig-bypassdpi::git+https://github.com/debpalash/zig-bypassdpi.git
+	sha256sums = SKIP
+
+pkgname = zig-bypassdpi-git
