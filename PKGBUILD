@@ -10,8 +10,8 @@ provides=('open-sstv')
 conflicts=('open-sstv')
 optdepends=('hamlib: rigctld-based radio control')
 options=('!strip')
-source_x86_64=("https://github.com/bucknova/Open-SSTV/releases/download/v$pkgver/open-sstv-linux-x86_64.zip")
-source_aarch64=("https://github.com/bucknova/Open-SSTV/releases/download/v$pkgver/open-sstv-linux-arm64.zip")
+source_x86_64=("$pkgname-$pkgver-linux-x86_64.zip::https://github.com/bucknova/Open-SSTV/releases/download/v$pkgver/open-sstv-linux-x86_64.zip")
+source_aarch64=("$pkgname-$pkgver-linux-arm64.zip::https://github.com/bucknova/Open-SSTV/releases/download/v$pkgver/open-sstv-linux-arm64.zip")
 package() {
     install -dm755 "$pkgdir/opt/open-sstv"
     cp -r open-sstv/* "$pkgdir/opt/open-sstv/"
