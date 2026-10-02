@@ -1,15 +1,33 @@
 pkgbase = godots-git
 	pkgdesc = A hub for managing your Godot versions and projects.
 	pkgver = 1.4.2.stable.r0.g8e4eb2b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MakovWait/godots
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = godot
 	makedepends = godot-export-templates-linux
+	depends = glibc
+	depends = libglvnd
+	depends = libx11
+	depends = libxcursor
+	depends = libxext
+	depends = libxi
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxrender
 	depends = unzip
-	provides = godots=1.4.2.stable.r0.g8e4eb2b-2
+	optdepends = wayland: native Wayland support
+	optdepends = libdecor: window decorations on Wayland
+	optdepends = libxkbcommon: keyboard layout support
+	optdepends = libpulse: audio output via PulseAudio/PipeWire
+	optdepends = alsa-lib: audio output via ALSA
+	optdepends = fontconfig: system font fallback
+	optdepends = systemd-libs: gamepad hotplug support
+	optdepends = dbus: screensaver inhibition and desktop portals
+	optdepends = libspeechd: text-to-speech
+	provides = godots=1.4.2.stable.r0.g8e4eb2b-3
 	conflicts = godots
 	options = !strip
 	options = !debug
