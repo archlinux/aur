@@ -1,6 +1,6 @@
 pkgbase = shorin-pac-git
 	pkgdesc = Simple fzf-based TUI to install/remove pacman, AUR and Flatpak packages on Arch, with AI-assisted AUR review and leftover cleanup
-	pkgver = r42.9983767
+	pkgver = r43.c078fa2
 	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/shorin-pac
 	install = shorin-pac.install
@@ -14,7 +14,7 @@ pkgbase = shorin-pac-git
 	depends = pacman
 	optdepends = paru: preferred AUR helper
 	optdepends = yay: fallback AUR helper (pac can install it for you)
-	optdepends = flatpak: list and remove Flatpak apps in pacr
+	optdepends = flatpak: list, install and remove Flatpak apps in pac / pacr
 	optdepends = trash-cli: send leftovers to the trash instead of deleting
 	optdepends = claude-code: AI backend via the claude CLI subscription
 	optdepends = opencode: AI backend via the opencode CLI

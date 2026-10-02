@@ -2,7 +2,7 @@
 
 pkgname=shorin-pac-git
 _pkgname=shorin-pac
-pkgver=r42.9983767
+pkgver=r43.c078fa2
 pkgrel=1
 pkgdesc="Simple fzf-based TUI to install/remove pacman, AUR and Flatpak packages on Arch, with AI-assisted AUR review and leftover cleanup"
 arch=('any')
@@ -14,7 +14,7 @@ install="${_pkgname}.install"
 optdepends=(
     'paru: preferred AUR helper'
     'yay: fallback AUR helper (pac can install it for you)'
-    'flatpak: list and remove Flatpak apps in pacr'
+    'flatpak: list, install and remove Flatpak apps in pac / pacr'
     'trash-cli: send leftovers to the trash instead of deleting'
     'claude-code: AI backend via the claude CLI subscription'
     'opencode: AI backend via the opencode CLI'
@@ -53,7 +53,7 @@ package() {
 complete -c pac -f
 complete -c pac -n '__fish_use_subcommand' -a 'config' -d 'Configure AI provider and model'
 complete -c pac -l check -s c -d 'Review AUR packages only'
-complete -c pac -l refresh -s y -d 'Force refresh AUR list'
+complete -c pac -l refresh -s y -d 'Force refresh AUR cache and Flatpak app list'
 complete -c pac -l ai -r -d 'AI provider[:model] for this run'
 complete -c pac -l no-ai -d 'Disable AI for this run (install without review)'
 FISH
