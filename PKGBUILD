@@ -1,5 +1,5 @@
 pkgname=fluxer-bin-domainchoose
-pkgver=2026.928.213903
+pkgver=2026.1001.230522
 pkgrel=1
 pkgdesc="Fluxer Desktop Application (gives you the ability to change the domain)"
 arch=('x86_64' 'aarch64')
@@ -15,10 +15,10 @@ sha256sums=('981daa8015b823fef254bb8e79fe6b28f77dda02cdc374796443bd64f5041de1'
             '5be539e013dcd041e6ce8797bb62b5b35c94dfabda7af1b7c5e2510a1c254975')
 
 source_x86_64=("fluxer-${pkgver}-x64.tar.gz::https://api.fluxer.app/dl/desktop/stable/linux/x64/${pkgver}/tar_gz")
-sha256sums_x86_64=('5bacf9900aa546420351935d0ac236c13049338a6f63a0ddca26e07db1b945e4')
+sha256sums_x86_64=('b5204b0e565bb9ce738a34395e851a62207935f969aa87034b77ddccd2d806c7')
 
 source_aarch64=("fluxer-${pkgver}-arm64.tar.gz::https://api.fluxer.app/dl/desktop/stable/linux/arm64/${pkgver}/tar_gz")
-sha256sums_aarch64=('bb703bc577c6c8ef79210bdd71c0fa15526f5981e2515daa39b480ee3aee7a5c')
+sha256sums_aarch64=('137ed6bdd96acb95629127242e2b69911cd734bcfcf5056ab5e6a6c6eb490420')
 
 package() {
   local _dir
