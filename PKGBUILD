@@ -2,8 +2,8 @@
 
 pkgname=libz-rs-sys
 pkgver=0.6.8
-pkgrel=1
-pkgdesc="A zlib implementation in rust available as a C dynamic library"
+pkgrel=2
+pkgdesc="A zlib implementation in Rust available as a C dynamic library"
 arch=('i686' 'x86_64')
 url="https://trifectatech.org/projects/zlib-rs/"
 license=('Zlib')
