@@ -1,0 +1,16 @@
+pkgbase = gpterm
+	pkgdesc = Yet another command-line ChatGPT frontend written in Rust
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/MakisChristou/gpterm
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = gpterm-0.1.2.tar.gz::https://github.com/MakisChristou/gpterm/archive/refs/tags/0.1.2.tar.gz
+	sha256sums = ab992767c69ba7532979693ebcc12076d1d1648b715e53569d1adba07919a3a4
+
+pkgname = gpterm
