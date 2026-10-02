@@ -3,7 +3,7 @@
 
 pkgname=jj-bond-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="jujutsu TUI"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=("${_pkgname}")
 depends=('jujutsu')
 source_x86_64=("${pkgname}-x86_64-${pkgver}.zip::$url/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-musl.zip")
 source_aarch64=("${pkgname}-aarch64-${pkgver}.zip::$url/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-musl.zip")
-sha256sums_x86_64=('12243ba369181c55f0d08b8c9846a3cbdd3251f774f8a4d1cb6ca2ef8bd6c439')
-sha256sums_aarch64=('d52275aacdcb778523c959d94c609357779068b4ee691edf9bd4648e80f780b3')
+sha256sums_x86_64=('848922afb7362eed510553d611585cbe1c4a6fd33cdd939204aea87f17dfc7bd')
+sha256sums_aarch64=('595c246bc6a7f01bfbe4efeb2fde69cd1260a22976719dc681f13f7f98130198')
 options=(!strip !lto !debug)
 
 package() {
