@@ -3,10 +3,9 @@
 # Contributors: Marcin Skory, Arkham, Christoph Zeiler, Jacek Poplawski, carstene1ns
 
 pkgname=alephone
-_pkgdateXXX=20260930
-_pkgdate=20250930 #Asset Name Issue #583
-pkgver=1.11.1_$_pkgdateXXX
-pkgrel=3
+_pkgdate=20260930
+pkgver=1.11.1_$_pkgdate
+pkgrel=4
 pkgdesc='A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software'
 arch=('i686' 'x86_64')
 url="https://alephone.lhowon.org/"
@@ -31,8 +30,8 @@ makedepends=(
   'curl' 'miniupnpc' 'zziplib'
   'libvpx' 'libmatroska' 'libebml' 'libvorbis' 'libyuv'
   'icoutils')
-source=("https://github.com/Aleph-One-Marathon/alephone/releases/download/release-$_pkgdateXXX/AlephOne-$_pkgdate.tar.bz2")
-sha256sums=('e68d55ac592ccf0634ad840345dabeae41aab498cc98fba26df564db7233656d')
+source=("https://github.com/Aleph-One-Marathon/alephone/releases/download/release-$_pkgdate/AlephOne-$_pkgdate.tar.bz2")
+sha256sums=('23114c3f4b42a9be75f039c33e688fcbbba1a5f4321e835484a1a6743722ac73')
 
 prepare() {
   cd AlephOne-$_pkgdate
