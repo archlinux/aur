@@ -1,6 +1,6 @@
 # Maintainer: wincak <wincak@seznam.cz>
 pkgname=threshy
-pkgver=0.2
+pkgver=0.3
 pkgrel=0
 pkgdesc="ThinkPad battery threshold configuration using TLP and D-Bus"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('tlp>=1.0' 'dbus>=1.12' 'qt5-base>=5.9')
 makedepends=('cmake>=3.10')
 install=
-source=("git+https://gitlab.com/wincak/threshy.git#tag=v0.2")
+source=("git+https://gitlab.com/wincak/threshy.git#tag=v0.3")
 md5sums=('SKIP')
 
 prepare() {
