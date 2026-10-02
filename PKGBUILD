@@ -3,7 +3,7 @@ pkgname=ifcopenshell-stable
 _pkgver=0.8.5
 pkgver=${_pkgver//-/}
 _vername=bonsai
-pkgrel=3
+pkgrel=4
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
 arch=('x86_64' 'i686')
 url="https://ifcopenshell.org/"
@@ -133,6 +133,7 @@ _apply_patch() {
 }
 
 prepare() {
+  rm -fr bpypolyskel
   mv bpypolyskel-1.1.3 bpypolyskel
   cp -ar svgpp/* svgfill/3rdparty/svgpp
   cp -ar svgfill/* ${_iosdir}/src/svgfill
