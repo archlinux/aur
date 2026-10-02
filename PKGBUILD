@@ -1,6 +1,6 @@
 # Maintainer: Andrey Trishin <zatrit at gmail dot com>
 _pkgbase=uniwill-laptop
-_branch=infinitybook_gen10
+_branch=master
 pkgname=uniwill-laptop-dkms-git
 pkgver=r37.03e7d36
 pkgrel=1
