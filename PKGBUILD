@@ -2,7 +2,7 @@
 # The release workflow sets pkgver and publishes this file to the AUR on every
 # release tag, so the AUR version never falls behind the latest tag.
 pkgname=nefercap-git
-pkgver=0.2.1.r0.g7e79979
+pkgver=0.3.0.r0.gea9abc7
 pkgrel=1
 pkgdesc='Screenshots and silent screen recording for Wayland, from one shortcut (git version)'
 arch=('x86_64' 'aarch64')
