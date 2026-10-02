@@ -1,0 +1,9 @@
+# Optional-dependency hint printed right after installation.
+#
+# tabook ships no speech engine of its own: piper is a ~100 MB neural engine,
+# so it lives in optdepends rather than depends. espeak-ng stays available as
+# the zero-install system fallback (see docs/TTS.md §4).
+post_install() {
+  echo "  TTS (optional): install piper-tts from AUR - yay -S piper-tts"
+  echo "  Then run :tts config in tabook to pick a voice"
+}

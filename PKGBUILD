@@ -2,17 +2,22 @@
 # vim: ft=sh:
 
 pkgname=tabook
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Terminal-based e-book reader for FB2 and EPUB formats'
 arch=('x86_64' 'aarch64')
 url='https://github.com/zsh-ncursed/tabook'
 license=('MIT')
 depends=('nodejs>=18')
+# Install scriptlet. Since pacman 7 / makepkg 7 a `post_install()` *function* in
+# this file is silently ignored — scriptlets must live in a separate file named
+# by $install. The hint advertises the optional piper-tts engine.
+install=tabook.install
 optdepends=(
   'ueberzugpp: display images in terminals without kitty-protocol support (alacritty, xterm, tmux)'
   'zenity: graphical file picker for the `o` open-file dialog'
   'kdialog: graphical file picker (KDE alternative to zenity)'
+  'piper-tts: local neural TTS engine for :tts command (AUR: yay -S piper-tts)'
 )
 # Prebuilt per-arch release tarballs (single-file JS bundle + Rust native
 # module, which also owns the SQLite DB via rusqlite), produced by
@@ -21,8 +26,8 @@ optdepends=(
 # release workflow before publishing to AUR.
 source_x86_64=("tabook-${pkgver}-linux-x64.tar.zst::https://github.com/zsh-ncursed/tabook/releases/download/v${pkgver}/tabook-${pkgver}-linux-x64.tar.zst")
 source_aarch64=("tabook-${pkgver}-linux-arm64.tar.zst::https://github.com/zsh-ncursed/tabook/releases/download/v${pkgver}/tabook-${pkgver}-linux-arm64.tar.zst")
-sha256sums_x86_64=('1dd4c5c25cf3a5e0432f7cf4e482299e6d4272c794c3a39a414f1a98554867ee')
-sha256sums_aarch64=('52fa822ef486c27e7e7430ef6265859f37cd324f64872fd66c8c946fc00cfcd1')
+sha256sums_x86_64=('2b3231ae5027f3104757b252eb29a427acaf2cfcf32d1b2a4f1ca233125f5c98')
+sha256sums_aarch64=('055fec1d6864a2a5091e3def8ee007dd49e00288bf54d70dd6108239ae0bc5b0')
 
 package() {
   # The tarball carries tabook.bundle.mjs, node_modules/ (@tabook/native Rust
