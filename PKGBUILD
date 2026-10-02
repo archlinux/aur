@@ -3,7 +3,7 @@
 # Single-file GTK4/libadwaita application: one crop for multiple images.
 # No build step — install files directly from the v$pkgver tag.
 pkgname=kadr
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='Batch crop multiple images with the same crop area (GTK4/libadwaita)'
 arch=('x86_64')
@@ -28,16 +28,24 @@ optdepends=(
 # Use the v$pkgver release asset rather than the full tag snapshot, which includes
 # screenshots and demo.gif (1.2 MB) to install a 56 kB application.
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/kadr-$pkgver.tar.gz")
-sha256sums=('1ed29128a2ea1e92ac66e7daff8603aefda9908c423a827b85c925549cc2fae4')
+sha256sums=('df223aa783ca52deca030ada72b158b42c9f86c1e5817044e9396480485bb1b2')
 
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 kadr "$pkgdir/usr/bin/kadr"
-  install -Dm644 org.kadr.kadr.desktop "$pkgdir/usr/share/applications/org.kadr.kadr.desktop"
-  install -Dm644 org.kadr.kadr.svg \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.kadr.kadr.svg"
-  install -Dm644 org.kadr.kadr.metainfo.xml \
-    "$pkgdir/usr/share/metainfo/org.kadr.kadr.metainfo.xml"
+  if [[ -f io.github.look997.kadr.desktop ]]; then
+    install -Dm644 io.github.look997.kadr.desktop "$pkgdir/usr/share/applications/io.github.look997.kadr.desktop"
+    install -Dm644 io.github.look997.kadr.svg \
+      "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.look997.kadr.svg"
+    install -Dm644 io.github.look997.kadr.metainfo.xml \
+      "$pkgdir/usr/share/metainfo/io.github.look997.kadr.metainfo.xml"
+  else
+    install -Dm644 org.kadr.kadr.desktop "$pkgdir/usr/share/applications/org.kadr.kadr.desktop"
+    install -Dm644 org.kadr.kadr.svg \
+      "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.kadr.kadr.svg"
+    install -Dm644 org.kadr.kadr.metainfo.xml \
+      "$pkgdir/usr/share/metainfo/org.kadr.kadr.metainfo.xml"
+  fi
   install -Dm644 locale/en/LC_MESSAGES/kadr.mo \
     "$pkgdir/usr/share/locale/en/LC_MESSAGES/kadr.mo"
 }

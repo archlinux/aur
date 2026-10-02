@@ -1,6 +1,6 @@
 pkgbase = kadr
 	pkgdesc = Batch crop multiple images with the same crop area (GTK4/libadwaita)
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/look997/kadr
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = kadr
 	optdepends = libtiff: TIFF
 	optdepends = libwebp: WebP
 	optdepends = nemo: show saved files selected in the file manager (org.freedesktop.FileManager1 ShowItems)
-	source = kadr-1.2.1.tar.gz::https://github.com/look997/kadr/releases/download/v1.2.1/kadr-1.2.1.tar.gz
-	sha256sums = 1ed29128a2ea1e92ac66e7daff8603aefda9908c423a827b85c925549cc2fae4
+	source = kadr-1.2.2.tar.gz::https://github.com/look997/kadr/releases/download/v1.2.2/kadr-1.2.2.tar.gz
+	sha256sums = df223aa783ca52deca030ada72b158b42c9f86c1e5817044e9396480485bb1b2
 
 pkgname = kadr
