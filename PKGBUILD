@@ -1,7 +1,7 @@
 # Maintainer: gradia <gradia@disroot.org>
 
 pkgname=olladesk
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Client desktop per Ollama in stile ChatGPT (PySide6/Qt)"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
 )
 # tarball e firma pubblicati nella release GitHub da .github/workflows/release.yml
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('e775b2a9f9bab3af1523d2dfa6f925f777a50cde958db5adea6100db6410306d'
+sha256sums=('837f5e7cb132d17e08db639bb6ab3abb1cd3343711795083b946545b2ae9f558'
             'SKIP')
 validpgpkeys=('5B166C1B4AD7428C74A07D5BA3370987A0576694')  # chiave di release: packaging/olladesk-release-key.asc
 

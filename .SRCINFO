@@ -1,6 +1,6 @@
 pkgbase = olladesk
 	pkgdesc = Client desktop per Ollama in stile ChatGPT (PySide6/Qt)
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/gradia64/OllaDesk
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = olladesk
 	optdepends = python-pypdf: testo dei PDF allegati
 	optdepends = python-keyring: chiave API della ricerca web nel portachiavi (KWallet)
 	optdepends = qt6-svg: icona SVG della finestra
-	source = https://github.com/gradia64/OllaDesk/releases/download/v0.2.3/olladesk-0.2.3.tar.gz
-	source = https://github.com/gradia64/OllaDesk/releases/download/v0.2.3/olladesk-0.2.3.tar.gz.sig
+	source = https://github.com/gradia64/OllaDesk/releases/download/v0.2.4/olladesk-0.2.4.tar.gz
+	source = https://github.com/gradia64/OllaDesk/releases/download/v0.2.4/olladesk-0.2.4.tar.gz.sig
 	validpgpkeys = 5B166C1B4AD7428C74A07D5BA3370987A0576694
-	sha256sums = e775b2a9f9bab3af1523d2dfa6f925f777a50cde958db5adea6100db6410306d
+	sha256sums = 837f5e7cb132d17e08db639bb6ab3abb1cd3343711795083b946545b2ae9f558
 	sha256sums = SKIP
 
 pkgname = olladesk
