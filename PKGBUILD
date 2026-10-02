@@ -4,7 +4,7 @@ pkgname="mbtiles"
 pkgdesc="Examine, copy, validate vector tile sets"
 url="https://maplibre.org/martin/mbtiles.html"
 
-pkgver=0.20.1
+pkgver=0.20.2
 pkgrel=1
 
 _pkgbase=martin
@@ -31,7 +31,7 @@ source=(
     "${pkgname}-${pkgver}-LICENSE-MIT::https://github.com/${_git_organisation}/${_pkgbase}/raw/refs/tags/${_tag}/LICENSE-MIT"
 )
 b2sums=(
-    "4203afd7b6e4f2b9a1f245e2dcb2005cf93addf486f407c931ead1a9e615042ffa7d0a7c364ad84f04ca4f62c3da541df626d9e9282e419e79e0c1da1d4f83d7"
+    "200fa866c618578014e5a4c7caa5a14d24e802e2b6661ae6ded68b7d3b2a8e3798a046c5b36cc06f6f747f9bbe7d1b64f86691e5ea8b103aed3a387f18f95a51"
     "cb5ba44d3653218aa76bc8b1d7c1d26b3a72dd35da7490d430a5dda727e9750015c28206d8d7e7c29701dd0c3d24198ff159f2566aff72f9f6edb1f493c0a968"
     "fc19c34e958648930a8d8cc56542ffd8eabdea36954d61e9e2f8c6b7f48bef66a61233c5097a5b4f40b79321bfb16b8ef445de0460af115413f7fd3dea825bc9"
 )
