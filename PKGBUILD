@@ -11,7 +11,7 @@ pkgname=uniclipboard-git
 _pkgname=uniclipboard
 # pkgver 是 AUR web 上展示用的 snapshot；makepkg 实际编译时调用下方 pkgver() 重算。
 # CI 在 push 前会用 git describe 的当前值 sed 替换，保持 web 视图不过期。
-pkgver=1.0.0.alpha.16.r2.g9445f56
+pkgver=1.1.0.alpha.2.r1.g3c62f09
 pkgrel=1
 pkgdesc="Real-time clipboard sync across macOS, Windows and Linux — local-first, peer-to-peer, and end-to-end encrypted"
 arch=('x86_64' 'aarch64')
@@ -80,10 +80,10 @@ package() {
 
   # Hicolor 图标，从 Tauri 的 size-named 源文件重命名到标准 apps/ 路径。
   # 128@2x 当成 256x256（@2x 是 macOS Retina 概念，Linux 用尺寸而非 DPI 区分）。
-  install -Dm644 "src-tauri/icons/32x32.png"       "$pkgdir/usr/share/icons/hicolor/32x32/apps/$_pkgname.png"
-  install -Dm644 "src-tauri/icons/64x64.png"       "$pkgdir/usr/share/icons/hicolor/64x64/apps/$_pkgname.png"
-  install -Dm644 "src-tauri/icons/128x128.png"     "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
-  install -Dm644 "src-tauri/icons/128x128@2x.png"  "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
+  install -Dm644 "apps/gui/src-tauri/icons/32x32.png"       "$pkgdir/usr/share/icons/hicolor/32x32/apps/$_pkgname.png"
+  install -Dm644 "apps/gui/src-tauri/icons/64x64.png"       "$pkgdir/usr/share/icons/hicolor/64x64/apps/$_pkgname.png"
+  install -Dm644 "apps/gui/src-tauri/icons/128x128.png"     "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
+  install -Dm644 "apps/gui/src-tauri/icons/128x128@2x.png"  "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
