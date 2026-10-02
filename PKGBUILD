@@ -1,13 +1,13 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=repo-notes-git
-pkgver=20260929.2.r17.gd113982
+pkgver=20260929.2.r18.g5c92dac
 pkgrel=1
 pkgdesc="Standalone CLI and MCP server for repo-scoped Markdown notes (git version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/timmo001/notes"
 license=('Apache-2.0')
-makedepends=('bun')
+makedepends=('git' 'bun')
 depends=('glibc' 'git')
 provides=('repo-notes')
 conflicts=('repo-notes' 'repo-notes-bin')
