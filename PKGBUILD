@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-rs-bin
 pkgdesc="Terminal calendar app written in Rust"
 
-pkgver=0.1.46
+pkgver=0.1.47
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('23d0501e99fbacccf4934e92d97f84692efad91f7d6b47f595fad382d2d178c7')
-sha256sums_x86_64=('4848082f6dcf52293186982d748b5f827767a9e801765dec1a7d13dbaaab39ae')
-sha256sums_aarch64=('81194105d32bee2a33f17465343f6db2460244f8a989902a569917a3c5208ebb')
+sha256sums=('383a5cea3df2a16e838b3c2b8d7bfedfc735ab26023458f94ba0d3e57d2dfa36')
+sha256sums_x86_64=('9240895b69acfb2096020b47021c9f44d9b74580338054116f457383653ad50e')
+sha256sums_aarch64=('be75d6911e369c952743887ef461517b6b9beab7b261fceda76f0f0edaf492cc')
 
 
 package() {
