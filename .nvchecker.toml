@@ -1,0 +1,5 @@
+[zorite-bin]
+source = "github"
+github = "packetThrower/zorite"
+use_latest_release = true
+prefix = "v"

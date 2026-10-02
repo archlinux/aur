@@ -5,6 +5,7 @@ path = [
     "PKGBUILD",
     ".SRCINFO",
     ".gitignore",
+    ".nvchecker.toml",
     "LICENSE",
 ]
 SPDX-FileCopyrightText = "Arch Linux Contributors"
