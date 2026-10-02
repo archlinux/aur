@@ -1,6 +1,6 @@
 pkgbase = teahouse-bin
 	pkgdesc = LAN-only instant messaging and file transfer tool (茶话间)
-	pkgver = 0.60.2
+	pkgver = 0.61.0
 	pkgrel = 1
 	url = https://github.com/skyjt/teahouse
 	arch = x86_64
@@ -35,15 +35,15 @@ pkgbase = teahouse-bin
 	depends = util-linux-libs
 	depends = xdg-utils
 	optdepends = libappindicator-gtk3: system tray integration
-	provides = teahouse=0.60.2
+	provides = teahouse=0.61.0
 	conflicts = teahouse
-	noextract = Teahouse-0.60.2-linux-amd64.deb
-	noextract = Teahouse-0.60.2-linux-arm64.deb
+	noextract = Teahouse-0.61.0-linux-amd64.deb
+	noextract = Teahouse-0.61.0-linux-arm64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/skyjt/teahouse/releases/download/v0.60.2/Teahouse-0.60.2-linux-amd64.deb
-	sha256sums_x86_64 = 7ca19eabf53225f3e15dd518a0d005686243de7b001dc136b96b110175047241
-	source_aarch64 = https://github.com/skyjt/teahouse/releases/download/v0.60.2/Teahouse-0.60.2-linux-arm64.deb
-	sha256sums_aarch64 = 612f31d46bd9f08a9e4a0332a9fc716fa2a44ce8fae590228d4a42052cbe8602
+	source_x86_64 = https://github.com/skyjt/teahouse/releases/download/v0.61.0/Teahouse-0.61.0-linux-amd64.deb
+	sha256sums_x86_64 = f32bd8164ea5f8101942cd7a3b2d2f9b594009a3bef62eb60d1fed95ade4f0a3
+	source_aarch64 = https://github.com/skyjt/teahouse/releases/download/v0.61.0/Teahouse-0.61.0-linux-arm64.deb
+	sha256sums_aarch64 = cd0a007a7305b8cbc239d307d61ec41d91d896b2e1060ee2ca4f27ebf2aea7b6
 
 pkgname = teahouse-bin
