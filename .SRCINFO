@@ -1,6 +1,6 @@
 pkgbase = spokenly
 	pkgdesc = Fast voice dictation for your desktop
-	pkgver = 0.4.0
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://spokenly.app/
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = spokenly
 	provides = spokenly
 	conflicts = spokenly
 	options = !strip
-	source = Spokenly_0.4.0_amd64.deb::https://cdn.spokenly.app/releases/linux/Spokenly_0.4.0_amd64.deb
+	source = Spokenly_1.0.3_amd64.deb::https://cdn.spokenly.app/releases/linux/Spokenly_1.0.3_amd64.deb
 	source = LICENSE
-	sha256sums = b30d7540c82d3d2e356a277757867debc945c10b85d5e19d2e9604bfe34ea65b
+	sha256sums = 271f03e57dc9831089f780acae0cecec2c63672ec0ef4877c173556055428a94
 	sha256sums = 36281e6dc02d369943554f1681ee1aae9d86429fc7a6e5b44b53f6c620b5dffe
 
 pkgname = spokenly
