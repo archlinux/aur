@@ -1,0 +1,15 @@
+pkgbase = sha256-animation-git
+	pkgdesc = Animation of the SHA-256 hash function in your terminal
+	pkgver = r13.871e976
+	pkgrel = 1
+	url = https://github.com/in3rsha/sha256-animation
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = ruby
+	provides = sha256-animation
+	conflicts = sha256-animation
+	source = git+https://github.com/in3rsha/sha256-animation.git
+	sha256sums = SKIP
+
+pkgname = sha256-animation-git
