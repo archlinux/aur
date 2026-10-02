@@ -18,7 +18,7 @@ provides=(jaq jq)
 source=("git+${url}.git" build.rs
 "git+https://github.com/purpleprotocol/mimalloc_rust")
 b2sums=('SKIP'
-        'a25f7b5f6cf994cf6527a7411fda1faefd0956070f4db32610c8fc2b1c9381daba8565f7aacee7b5bb7e4173710a56af5b8f4b03ab9f07d96d8e1a7f7f5cdfb1'
+        'd0256b59336fc4bd50d594577f6f816d5ba472e2de633d81a3c52853fdf9fed7b5f08f5c8dbb9ba5a4cb7b8786bb4d1a39a6a3f7eb2227a87a755876dbbc7b0e'
         'SKIP')
 
 prepare() {
@@ -33,8 +33,8 @@ END
 
 build() {
   cd jaq
-  test $RUSTC_BOOTSTRAP = 1 && test -e /usr/lib/rustlib/src/rust/library/Cargo.toml && _cargoflags="-Zbuild-std=std,panic_abort"
-  RUSTFLAGS+=" -Cpanic=abort"
+  test $RUSTC_BOOTSTRAP = 1 && test -e /usr/lib/rustlib/src/rust/library/Cargo.toml && _cargoflags='-Zbuild-std=std,panic_abort --config=profile.release.panic=\"immediate-abort\" -Zpanic-immediate-abort'
+  RUSTFLAGS+=" -C force-unwind-tables=no"
   cargo build --release $_cargoflags
   make -C docs jaq.1
 }
