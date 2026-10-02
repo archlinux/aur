@@ -1,13 +1,13 @@
 # Maintainer: yuna0x0 <yuna@yuna0x0.com>
 
 pkgname=pds-gatekeeper-git
-pkgver=r28.eef639e
+pkgver=r30.c1acd83
 pkgrel=1
 pkgdesc="Microservice to bring 2FA to self hosted AT Protocol PDSes"
 arch=('x86_64' 'aarch64')
 url="https://tangled.org/did:plc:rnpkyqnmsw4ipey6eotbdnnf/pds-gatekeeper"
 license=('MIT')
-depends=('gcc-libs' 'glibc' 'atproto-pds')
+depends=('gcc-libs' 'glibc' 'openssl' 'atproto-pds')
 makedepends=('cargo' 'git')
 options=('!lto') # LTO causes build failures for sqlx
 provides=("${pkgname%-git}=$pkgver-$pkgrel")
@@ -20,7 +20,7 @@ source=("git+https://tangled.org/did:plc:rnpkyqnmsw4ipey6eotbdnnf/pds-gatekeeper
 b2sums=('SKIP'
         'bc74db9db2f67fe1f2be78d39d1a6ff3cb3839036945648ec0fc3d85a015d1650086d053830199f1bd4df8257a466142771a213becf11eaadf1bd0424098ccb9'
         'b115bacdf53f3e21976d61972347316f671742efee9b88e121690579998c0b3ec5db313640f61dca735618151f0e3db6c2f62fa1291430dd6d88d3f6d8b204dc'
-        'cf188c11ab976a7a54f77eab17cac6206ac95779429e227a44358249b33375e6e0e7f07bdbeb1f2579ce7f1120cc5158eb0e0dae8a82ed3167706dc86e4cea17')
+        '6c7760031da52d3e77b8a451a6f021e306ca4ad37e8263357dd884b3b492f1cb793ddace92adbba6b741c4f7b0238495e0d4b34552a48c9df92adfd68c373c9d')
 
 pkgver() {
   cd "$srcdir/pds-gatekeeper"
@@ -58,8 +58,6 @@ package() {
   install -Dm0644 "$srcdir/pds-gatekeeper.service" "$pkgdir/usr/lib/systemd/system/pds-gatekeeper.service"
   install -Dm0644 "$srcdir/pds-gatekeeper.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/pds-gatekeeper.conf"
   install -Dm0644 "$srcdir/pds-gatekeeper.env" "$pkgdir/etc/pds-gatekeeper.env"
-
-  install -Dm0644 email_templates/* -t "$pkgdir/usr/share/pds-gatekeeper/email_templates"
 
   install -Dm0644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
