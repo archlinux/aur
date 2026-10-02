@@ -27,10 +27,8 @@ source=(
   "$_pkgname-$pkgver.deb::https://github.com/fathah/hermes-desktop/releases/download/v$pkgver/hermes-desktop_${pkgver}_amd64.deb"
   "LICENSE::https://raw.githubusercontent.com/fathah/hermes-desktop/main/LICENSE"
 )
-sha256sums=(
-  '47f3cdef9b1903d7882f6e7162a75f736a05033815f740eb85d0f29a2a0f3d2d'
-  '85d12b0f8894e7095f904a9a89fcfaea1b0d037cbfb4a12aba81daa87bcdbcd4'
-)
+sha256sums=('47f3cdef9b1903d7882f6e7162a75f736a05033815f740eb85d0f29a2a0f3d2d'
+            '85d12b0f8894e7095f904a9a89fcfaea1b0d037cbfb4a12aba81daa87bcdbcd4')
 noextract=("$_pkgname-$pkgver.deb")
 
 package() {
