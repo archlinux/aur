@@ -1,0 +1,23 @@
+post_upgrade() {
+  cat <<'EOF'
+
+NOTE: Aleph One has been patched to follow the XDG Base Directory
+Specification.
+
+Existing installations using ~/.alephone should migrate that directory
+to the new location:
+
+    ~/.local/share/alephone
+
+or, when XDG_DATA_HOME is set:
+
+    $XDG_DATA_HOME/alephone
+
+You can migrate it with:
+
+    mv ~/.alephone "${XDG_DATA_HOME:-$HOME/.local/share}/alephone"
+
+The patched version no longer uses ~/.alephone.
+
+EOF
+}
