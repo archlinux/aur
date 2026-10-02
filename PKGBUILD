@@ -1,7 +1,7 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=pragtical
-pkgver=3.13.0
+pkgver=3.13.1
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('meson>=0.63' 'git')
 source=(
   "https://github.com/pragtical/pragtical/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('640bc8766ba196bb19e0e0a881fc53781d8863a92238271cce13438b56349447')
+sha256sums=('962b4f14d2f26d0cb18d2de7a02010fe3db4d9e6a7f322071375eb3c746acfad')
 
 build() {
   cd "pragtical-$pkgver"
