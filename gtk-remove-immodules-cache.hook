@@ -4,6 +4,6 @@ Operation = Remove
 Target = gtk3-classic
 
 [Action]
-Description = Removing cache for GTK3 input method modules...
+Description = Removing GTK 3 input method module cache...
 When = PreTransaction
 Exec = /usr/bin/rm --force /usr/lib/gtk-3.0/3.0.0/immodules.cache
