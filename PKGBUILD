@@ -4,13 +4,13 @@
 # playback, tagging, conversion and ReplayGain. It no longer speaks MPD --
 # see trackknife.install.
 pkgname=trackknife-git
-pkgver=r659.g6c6ab37e
+pkgver=r706.g9c3faa82
 pkgrel=1
 pkgdesc='Music player and audio workstation on the Melody engine (built from HEAD)'
 arch=(x86_64 aarch64)
 url='https://github.com/carnager/melody-next'
 license=(GPL-3.0-only)
-depends=(melodyd-git qt6-base qt6-declarative
+depends=(melodyd-git qt6-base
          curl ffmpeg libebur128 libopenmpt libpipewire libutf8proc openssl sqlite taglib)
 makedepends=(cmake git ninja nlohmann-json)
 optdepends=('chromaprint: AcoustID fingerprinting in the MusicBrainz Identify dialog'
@@ -29,13 +29,11 @@ pkgver() {
 
 build() {
   cd melody-next
-  # Only the windows -- the widgets one and the Qt Quick preview beside it:
-  # the engine comes from melodyd-git. Warnings-as-errors stays off so
-  # packaging never fails on warnings a future compiler invents.
+  # Only the window: the engine comes from melodyd-git. Warnings-as-errors
+  # stays off so packaging never fails on warnings a future compiler invents.
   cmake --preset release -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_TESTING=OFF -DTRACKKNIFE_BUILD_BENCHMARKS=OFF -DTRACKKNIFE_WARNINGS_AS_ERRORS=OFF \
-    -DTRACKKNIFE_BUILD_QUICK=ON
-  cmake --build build/release --target trackknife trackknife-quick trackknife_titleformat_cli
+    -DBUILD_TESTING=OFF -DTRACKKNIFE_BUILD_BENCHMARKS=OFF -DTRACKKNIFE_WARNINGS_AS_ERRORS=OFF
+  cmake --build build/release --target trackknife trackknife_titleformat_cli
 }
 
 package() {

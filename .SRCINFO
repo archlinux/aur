@@ -1,6 +1,6 @@
 pkgbase = trackknife-git
 	pkgdesc = Music player and audio workstation on the Melody engine (built from HEAD)
-	pkgver = r659.g6c6ab37e
+	pkgver = r706.g9c3faa82
 	pkgrel = 1
 	url = https://github.com/carnager/melody-next
 	install = trackknife.install
@@ -13,7 +13,6 @@ pkgbase = trackknife-git
 	makedepends = nlohmann-json
 	depends = melodyd-git
 	depends = qt6-base
-	depends = qt6-declarative
 	depends = curl
 	depends = ffmpeg
 	depends = libebur128
