@@ -1,7 +1,7 @@
 pkgbase = line-seed-tw-font
 	pkgdesc = LINE Seed TW font
-	pkgver = 1.30
-	pkgrel = 2
+	pkgver = 1.400
+	pkgrel = 1
 	url = https://seed.line.me
 	arch = any
 	license = OFL-1.1-RFN

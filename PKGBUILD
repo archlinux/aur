@@ -3,8 +3,8 @@
 _fname=line-seed-tw
 pkgbase="${_fname}-font"
 pkgname=("otf-${_fname}" "ttf-${_fname}")
-pkgver=1.30
-pkgrel=2
+pkgver=1.400
+pkgrel=1
 pkgdesc='LINE Seed TW font'
 arch=(any)
 url='https://seed.line.me'
