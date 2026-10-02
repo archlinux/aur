@@ -18,6 +18,7 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 license=('MIT')
 
 makedepends=('go')
+depends=('git')
 
 provides=("${_pkgname}")
 
