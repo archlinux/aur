@@ -17,7 +17,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'git' 'clang')
 provides=('aur-scanner' 'aur-scan')
-conflicts=('aur-scanner' 'ks-aur-scanner')
+conflicts=('aur-scanner' 'ks-aur-scanner' 'aur-scanner-rc')
 options=('!debug')
 # Import the signing key first:  gpg --recv-keys 25631EAE3F43999050B7D7021132BF893C33FB51
 source=("git+https://github.com/KiefStudioMA/ks-aur-scanner.git")
