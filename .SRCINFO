@@ -1,0 +1,12 @@
+pkgbase = poc-greeter
+	pkgdesc = Prints a greeting - poc-app demo binary, versioned independently by multicz
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/goabonga/poc-app
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = poc-app-0.1.0.tar.gz::https://github.com/goabonga/poc-app/archive/refs/tags/greeter-v0.1.0.tar.gz
+	sha256sums = b7211b64140a7cc4848f5a3861e7d36a44681af3e4dc282627dd14955f1cc89b
+
+pkgname = poc-greeter
