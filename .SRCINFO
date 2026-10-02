@@ -1,7 +1,7 @@
 pkgbase = cssc
 	pkgdesc = A clone of the Unix SCCS tool suite.
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://savannah.gnu.org/projects/cssc
 	arch = i686
 	arch = x86_64
