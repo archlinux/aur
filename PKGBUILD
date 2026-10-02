@@ -1,14 +1,14 @@
 # Maintainer: Captain Cave
 _pkgname=corona
 pkgname=solar2d-git
-pkgver=3730.r0.770a60cd
+pkgver=3732.r1.f58c5bba
 pkgrel=1
 install=solar2d-git.install
 pkgdesc="Solar2D (formerly Corona SDK) cross-platform game engine"
 arch=('x86_64')
 url="https://github.com/coronalabs/corona"
 license=('MIT')
-depends=('glu' 'zlib' 'openal' 'freetype2' 'libpng' 'libjpeg' 'openssl-1.1' 'curl' 'sdl2' 'java-runtime')
+depends=('glu' 'zlib' 'openal' 'freetype2' 'libpng' 'libjpeg.so' 'libjpeg-turbo' 'curl' 'sdl2' 'java-runtime')
 makedepends=('git' 'cmake')
 provides=('Solar2D')
 conflicts=('Solar2D')
