@@ -1,0 +1,16 @@
+pkgbase = vault-crypt-git
+	pkgdesc = Minimalist GPG-powered vault encryption for KeePassXC: no cloud, no traces, just your keys
+	pkgver = r5.ed3af56
+	pkgrel = 1
+	url = https://github.com/DeadSwitch404/vault-crypt
+	arch = any
+	license = LicenseRef-unknown
+	makedepends = git
+	depends = bash
+	depends = gnupg
+	provides = vault-crypt
+	conflicts = vault-crypt
+	source = git+https://github.com/DeadSwitch404/vault-crypt.git
+	sha256sums = SKIP
+
+pkgname = vault-crypt-git
