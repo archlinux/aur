@@ -1,10 +1,10 @@
 # Maintainer: Voylin <voylinslife@gmail.com>
 
 _gitname="GoZen"
-_godot_version="4.7.1-stable"
+_godot_version="4.7.2-stable"
 
 pkgname=gozen
-pkgver=0.12
+pkgver=0.15
 pkgrel=1 # Increment this if you change the PKGBUILD but not pkgver.
 pkgdesc="A minimalistic video editor"
 arch=('x86_64')
@@ -31,14 +31,14 @@ optdepends=(
     'x265: for H.265/HEVC encoding support via FFmpeg'
 )
 source=(
-	# NOTE: Change -alpha once going into beta
-	"git+https://github.com/VoylinsGamedevJourney/GoZen.git#tag=v${pkgver}-alpha"
+	# NOTE: Change -beta once going into full release
+	"git+https://github.com/VoylinsGamedevJourney/GoZen.git#tag=v${pkgver}-beta"
     "godot-editor-${_godot_version}.zip::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_linux.x86_64.zip"
     "godot-templates-${_godot_version}.tpz::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_export_templates.tpz"
 )
-sha256sums=('421037f2c362961fca2b12c49596eb2a3c4660a7757c1bb482b1b8c13ef4ea97'
-            'c7ff14fd28472c8d4f193043de30278dcf7e5241a1dcf7566b02e27addaa33ba'
-            '86409db6200b6f8fd3230989c2d2002851f3dd18acf11d7bdbafddf5a0dd0f72')
+sha256sums=('SKIP'
+            'cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4'
+            'f298490b8d44d934be425a5a65a51bf15f422428b229a06a6e11d9ffea248011')
 
 prepare() {
 	cd "${srcdir}/${_gitname}"
@@ -113,7 +113,6 @@ package() {
 	ln -s "/opt/${pkgname}/GoZen.x86_64" "${pkgdir}/usr/bin/${pkgname}"
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 MANUAL.md "${pkgdir}/usr/share/doc/${pkgname}/MANUAL.md"
 	install -Dm644 "assets/linux/gozen.desktop" "${pkgdir}/usr/share/applications/gozen.desktop"
 	install -Dm644 "assets/linux/gozen.xml" "${pkgdir}/usr/share/mime/packages/gozen.xml"
 	install -Dm644 "assets/linux/gozen.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/gozen.png"
