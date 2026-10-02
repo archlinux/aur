@@ -8,7 +8,7 @@
 #      /usr/share/typora/resources/window.html,并用 pacman hook 在 typora
 #      升级覆盖 window.html 后重新注入(该文件属 typora 包,不能由本包拥有)。
 pkgname=typora-community-plugin
-pkgver=2.10.33
+pkgver=2.10.35
 pkgrel=1
 pkgdesc="Typora 社区插件系统:插件市场、命令面板、多标签工作区"
 url="https://github.com/typora-community-plugin/typora-community-plugin"
@@ -23,7 +23,7 @@ source=(
   'typora-community-plugin.sh'
   'typora-community-plugin.hook'
 )
-sha256sums=('bd4ebf612c900ce3d73e74fcc9db47d1492a880c4e8814e2c7f9970704342bfd'
+sha256sums=('e7e9ae1ae22df75fb9c492ae017caba6aa831ffdb4cc1ed088f98e81484bdf9f'
             '731f5be0037576f31f566458da9817c261db3e8b8c5fc4703841005d5ac53823'
             '09f62600fdc6c5866bad72d4c2a03ca219accef954fe4887051c318494793dea'
             '4a4cefac90a4fdf9ce3987ddd7819c00c28b5a99812a1997ff086bea5121d680')
