@@ -1,0 +1,32 @@
+pkgbase = bootable
+	pkgdesc = Safety-first boot media writer with matching desktop and terminal interfaces
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/debpalash/bootable
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = fontconfig
+	makedepends = libxkbcommon-x11
+	options = !lto
+	source = bootable-0.1.4.tar.gz::https://github.com/debpalash/bootable/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 46ef04a8318224a78f1f1f63088422f572c1bb7f8fc8d871cc771169408200b2
+
+pkgname = bootable-tui
+	pkgdesc = Bootable terminal interface, CLI API, and privileged write helper
+	depends = gcc-libs
+	depends = glibc
+	depends = polkit
+	provides = bootable=0.1.4
+
+pkgname = bootable-gui
+	pkgdesc = Bootable desktop interface
+	depends = bootable-tui=0.1.4
+	depends = fontconfig
+	depends = libxkbcommon-x11
+	depends = wayland
+	depends = vulkan-icd-loader
+	depends = gcc-libs
+	depends = glibc
+	optdepends = vulkan-driver: GPU rendering backend for the desktop interface
