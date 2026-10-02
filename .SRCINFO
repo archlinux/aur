@@ -1,0 +1,18 @@
+pkgbase = rsign2-git
+	pkgdesc = A command-line tool to sign files and verify signatures in pure Rust
+	pkgver = 0.6.7.r0.ga9fe332
+	pkgrel = 1
+	url = https://github.com/jedisct1/rsign2
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	provides = rsign2=0.6.7.r0.ga9fe332
+	conflicts = rsign2
+	source = git+https://github.com/jedisct1/rsign2.git
+	sha256sums = SKIP
+
+pkgname = rsign2-git
