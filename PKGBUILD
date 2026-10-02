@@ -1,6 +1,6 @@
 # Maintainer: Frederik Leonhardt <frederik at leonhardt dot co dot nz>
 pkgname=lsetwatch
-pkgver=1.21
+pkgver=1.30
 pkgrel=1
 pkgdesc="LEGO collection management software"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=("$pkgname-$pkgver.zip::https://lebostein.de/lsetwatch/builds/Lsetwatch_$
         "$pkgname.sh"
         "$pkgname.desktop"
 )
-sha256sums=('4aa63aa47808c806043a339b393d10a953fd02c292ab0c64c0d6a9ab206375c9'
+sha256sums=('636277989165f4db557b54b62fb9c0b95b41b249e1e0879259d942a56d88b4c1'
             'dd8ab5252c38b28cb8c8f75cc6a053c049d0c0604ddab9fb740c3cd2739c91bc'
             '930b1b12b6039c309aa3e3258f0b62ae8e496c67d5f7e054cce8a5d798c07131')
 
