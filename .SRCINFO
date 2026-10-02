@@ -1,0 +1,17 @@
+pkgbase = python-osh-git
+	pkgdesc = Ollama Shell Helper: English to Unix-like shell commands translation using local LLMs with Ollama
+	pkgver = r7.4a11fae
+	pkgrel = 1
+	url = https://github.com/charyan/osh
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-requests
+	optdepends = ollama: local model server that osh talks to
+	provides = python-osh
+	conflicts = python-osh
+	source = git+https://github.com/charyan/osh.git
+	sha256sums = SKIP
+
+pkgname = python-osh-git
