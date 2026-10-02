@@ -1,0 +1,25 @@
+pkgbase = banchoxterm
+	pkgdesc = Multi-protocol terminal emulator and remote session manager
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/Gargadon/banchoxterm
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	makedepends = desktop-file-utils
+	depends = qt6-base
+	depends = qt6-serialport
+	source = banchoxterm-1.2.1.tar.gz::https://github.com/Gargadon/banchoxterm/archive/refs/tags/v1.2.1.tar.gz
+	source = qtermwidget::git+https://github.com/Gargadon/qtermwidget.git
+	source = libssh2::git+https://github.com/libssh2/libssh2.git
+	source = libsodium::git+https://github.com/jedisct1/libsodium.git
+	source = libvncserver::git+https://github.com/LibVNC/libvncserver.git
+	sha256sums = 53bf398a0ab63fdf8ee1e0d59638440e32c7d4ae33108ab9c9a778b9a69c0b0f
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = banchoxterm
