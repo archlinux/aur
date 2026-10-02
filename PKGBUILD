@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=r-air
-pkgver=0.11.0 # renovate: datasource=github-tags depName=posit-dev/air
+pkgver=0.12.0 # renovate: datasource=github-tags depName=posit-dev/air
 pkgrel=1
 pkgdesc="An R language server and formatter"
 url="https://github.com/posit-dev/air"
@@ -33,4 +33,4 @@ package() {
   install -Dm644 "${srcdir}/air-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('0b2fd91b68999aaae46be26f8799ebab906663b9c869f83eb6ba553560f5693a06c173d69d582548931f938cc65b6947581360057feceb141b8c99b7f5e63189')
+sha512sums=('7cf8e44b7379d430fed43780693b9f123fe16566df8c23b542082f38b0b889a8f69f85c1ff11a1cc5bbd999e6981f6d0abbd2385f8fda94be1e276634aa30e98')
