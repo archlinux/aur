@@ -1,0 +1,22 @@
+pkgbase = hnterm
+	pkgdesc = Hacker News in the terminal
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/ggerganov/hnterm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	depends = curl
+	depends = ncurses
+	depends = gcc-libs
+	source = hnterm::git+https://github.com/ggerganov/hnterm.git#tag=v0.4
+	source = imtui::git+https://github.com/ggerganov/imtui.git#commit=203b2320c02949e40aab442f86a1487b34c89470
+	source = imgui::git+https://github.com/ggerganov/imgui.git#commit=4e0ce6f1df52fa40b105c96820eec60b4fb2a658
+	sha256sums = 3d9a1e122d6c66ed7f1e32e0d0190341d587237fc2d4849d9f1cd44155fc7344
+	sha256sums = 6b26f485936afb9463533747b98329e1c23f9d2050239dea44fb87ef1b0b56d5
+	sha256sums = adf12b252f4b1d9402c751f2dbf0285b5811c5dd4e130288eca1a8007901d0da
+
+pkgname = hnterm
