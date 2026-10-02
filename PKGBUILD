@@ -8,19 +8,27 @@ pkgrel=1
 pkgdesc="Contributors extension for Sphinx"
 arch=('any')
 url="https://sphinx-contributors.readthedocs.io"
-license=('BSD')
+license=('MIT')
 makedepends=('python-flit-core'
              'python-build'
              'python-installer'
              'python-sphinx-furo')
 checkdepends=('python-pytest')  #python-sphinx
 #checkdepends=('python-pytest-xdist')
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('0109235cab6cca3d0af0140b01ffd16f')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+        'pyproject.toml')
+md5sums=('0109235cab6cca3d0af0140b01ffd16f'
+         '01cd9eb083579746698051a86a17f804')
+
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    cp ${srcdir}/pyproject.toml .
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation #--skip-dependency-check
 
     msg "Building Docs"
 #   mkdir -p dist/lib

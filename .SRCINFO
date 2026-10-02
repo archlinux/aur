@@ -4,14 +4,16 @@ pkgbase = python-sphinx_contributors
 	pkgrel = 1
 	url = https://sphinx-contributors.readthedocs.io
 	arch = any
-	license = BSD
+	license = MIT
 	checkdepends = python-pytest
 	makedepends = python-flit-core
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-sphinx-furo
 	source = https://files.pythonhosted.org/packages/source/s/sphinx_contributors/sphinx_contributors-0.3.0.tar.gz
+	source = pyproject.toml
 	md5sums = 0109235cab6cca3d0af0140b01ffd16f
+	md5sums = 01cd9eb083579746698051a86a17f804
 
 pkgname = python-sphinx_contributors
 	depends = python>=3.10

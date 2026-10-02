@@ -1,0 +1,48 @@
+# Rewritten by GPT 5.6 Terra
+[build-system]
+requires = ["flit_core>=4,<5"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "sphinx-contributors"
+dynamic = ["version"]
+description = "A Sphinx extension for displaying contributors"
+readme = "README.rst"
+requires-python = ">=3.10"
+
+authors = [
+  { name = "David Garcia", email = "hi@davidgarcia.dev" },
+]
+
+dependencies = [
+  "sphinx>=7",
+  "requests",
+]
+
+classifiers = [
+  "Framework :: Sphinx :: Extension",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+]
+
+[project.urls]
+Homepage = "https://github.com/dgarcia360/sphinx-contributors"
+
+[project.optional-dependencies]
+test = [
+  "pre-commit",
+  "pytest",
+]
+doc = [
+  "furo",
+]
+
+[tool.flit.module]
+name = "sphinx_contributors"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
