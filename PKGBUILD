@@ -25,7 +25,7 @@ conflicts=('oneclient')
 options=('!strip')
 _debfile="${_appname}_${pkgver}_linux_x86_64.deb"
 source=("${_debfile}::${url}/releases/download/oneclient-${pkgver}/${_debfile}")
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums=('42a9a02c8acb3e1d9d6c2f3ef520ac8ae64893c4ca3588a7ace76c0bb3848077')
 
 package() {
   cd "$pkgdir"
