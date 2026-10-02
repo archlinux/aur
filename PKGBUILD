@@ -1,5 +1,5 @@
 pkgname=seerrng-bin
-pkgver=3.45.3
+pkgver=3.46.0
 pkgrel=2
 pkgdesc='Standalone media request and discovery service with optional external service integrations'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("https://github.com/snapetech/seerrng/releases/download/v${pkgver}/seerr
         'seerrng.env'
         'seerrng.sysusers'
         'seerrng.tmpfiles')
-sha256sums=('fedfb3f3733012c234713f84e770817a7fc98a8d2d9a981d508159e704181466' '5f85a0dbe7d1e8b07da64ec70ff2aed89c86447b6a2af53535c94073e07ccbe0' 'dd48963dad7fd1a059bb0a036ff416404c673d5932f31188a4760306293bcede' '2d838557b8d3976095299731450c4fd665d29b2dc5f27d13bcba7d5ea4c3569f' 'be404a3b331f0fe01e1755c7cd54ed70ce9cd2758d037f8391aaedfef11d2319')
+sha256sums=('e54e7467d531c7d65cd77b0f6b921a40d9a55f22cb46ecc56edbfd2843e85898' '5f85a0dbe7d1e8b07da64ec70ff2aed89c86447b6a2af53535c94073e07ccbe0' 'dd48963dad7fd1a059bb0a036ff416404c673d5932f31188a4760306293bcede' '2d838557b8d3976095299731450c4fd665d29b2dc5f27d13bcba7d5ea4c3569f' 'be404a3b331f0fe01e1755c7cd54ed70ce9cd2758d037f8391aaedfef11d2319')
 
 package() {
   install -dm755 "${pkgdir}/usr/lib/seerrng" "${pkgdir}/usr/bin" "${pkgdir}/etc/seerrng" \
