@@ -1,0 +1,22 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Categories=Development;
+Comment[en_US]=Create next-generation video games
+Comment=Create next-generation video games
+Exec=/usr/bin/unreal-engine-5.6 %F
+GenericName[en_US]=
+GenericName=
+Icon=ue5_6editor
+MimeType=
+Name[en_US]=Unreal Engine 5.6 Editor
+Name=Unreal Engine 5.6 Editor
+Path=/opt/unreal-engine-src-5.6/Engine/Binaries/Linux/
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
