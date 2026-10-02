@@ -1,10 +1,10 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
-# Maintainer: feighur
-# Maintainer: robertfoster
+# Contributor: feighur
+# Contributor: robertfoster
 # Contributor: Maurizio Porrato <maurizio.porrato@gmail.com>
 
 pkgname=janus-gateway
-pkgver=1.4.2 # renovate: datasource=github-tags depName=meetecho/janus-gateway
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='An open source, general purpose, WebRTC server'
 arch=(x86_64 i686 aarch64)

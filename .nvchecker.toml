@@ -1,0 +1,5 @@
+[janus-gateway]
+source = "github"
+github = "meetecho/janus-gateway"
+prefix = "v"
+use_max_tag = true
