@@ -16,7 +16,7 @@ makedepends=('go')
 source=("poc-app-$pkgver.tar.gz::https://github.com/goabonga/poc-app/archive/refs/tags/pinger-v$pkgver.tar.gz")
 # Recomputed by .github/workflows/publish.yml on every version bump via
 # `updpkgsums` once the corresponding poc-app tag actually exists.
-sha256sums=('fa9d0d2e6b9f89f6acc39098ee684747a45bb2641119c6423785dabf4912b4f3')
+sha256sums=('2529a0d3f5cc94202f512a00f7659219879ba9d503cd2d2828e43c2fd2759620')
 
 build() {
   # Not a fixed "poc-app-pinger-v$pkgver" name: while poc-app stays
