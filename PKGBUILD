@@ -3,7 +3,7 @@
 
 pkgname='vk-workspace-bin'
 pkgbasename='vkworkspace'
-pkgver=26.3.0.132272
+pkgver=26.3.11.139192
 pkgrel=1
 pkgdesc='VK WorkSpace app for team collaboration'
 arch=("x86_64")
@@ -14,7 +14,7 @@ replaces=('vkteams-bin' 'vkteams')
 install=$pkgname.install
 source=("$pkgbasename-$pkgver.tar.xz::https://hb.bizmrg.com/vkteams-www/linux/x64/$pkgver/$pkgbasename.tar.xz"
         "$pkgbasename.sh")
-sha256sums=('7a399ea8d124c800ead64434e28ed18c0d911154e30b19cbfb1dba39953b9f8a'
+sha256sums=('821ea702a3127ba67a240619abd69caa7ecbc513431cc7fb5cc0e38455b06b7b'
             '1682a949a32b87b322c5490ec0ca380421a8a4c45d13948bac097986e02905bb')
 options=('!strip')
 optdepends=('hunspell: spell checker'
