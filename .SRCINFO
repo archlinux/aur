@@ -1,13 +1,13 @@
 pkgbase = podfetch
 	pkgdesc = A lightweight CLI podcast downloader for RSS feeds and podcast discovery
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Pommersche92/podfetch
 	arch = x86_64
 	arch = aarch64
 	license = GPL-2.0
 	makedepends = cargo
-	source = podfetch-0.2.0.tar.gz::https://github.com/Pommersche92/podfetch/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 0c77ff07489808e51939af156886761d49236b6ace6c581e90f41406c9a0af21
+	source = podfetch-0.2.1.tar.gz::https://github.com/Pommersche92/podfetch/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 744726d0b7c158db41950a7bff33f31a18e33527a27f8cef40f8ba1e98f9552d
 
 pkgname = podfetch
