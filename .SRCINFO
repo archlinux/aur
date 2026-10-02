@@ -1,6 +1,6 @@
 pkgbase = sui-mainnet-bin
 	pkgdesc = Sui, a next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model powered by the Move programming language
-	pkgver = 1.68.1
+	pkgver = 1.80.1
 	pkgrel = 1
 	url = https://github.com/MystenLabs/sui
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = sui-mainnet-bin
 	license = Apache-2.0
 	provides = sui
 	conflicts = sui
-	source_x86_64 = https://github.com/MystenLabs/sui/releases/download/mainnet-v1.68.1/sui-mainnet-v1.68.1-ubuntu-x86_64.tgz
-	sha256sums_x86_64 = d2e4f3431ca3da13ebacfa91f69828c765352d1af608fb1cfa602d17625dbe7b
-	source_aarch64 = https://github.com/MystenLabs/sui/releases/download/mainnet-v1.68.1/sui-mainnet-v1.68.1-ubuntu-aarch64.tgz
-	sha256sums_aarch64 = 96d649dcc7e0af3245cb8d151ac3e4bceb81c10dd51c66f61beb1cee4295ba48
+	source_x86_64 = https://github.com/MystenLabs/sui/releases/download/mainnet-v1.80.1/sui-mainnet-v1.80.1-ubuntu-x86_64.tgz
+	sha256sums_x86_64 = 97f9aed10e0c2fe3204ce4639ac992e1449b17c14f22f30e9f903ead54ac7336
+	source_aarch64 = https://github.com/MystenLabs/sui/releases/download/mainnet-v1.80.1/sui-mainnet-v1.80.1-ubuntu-aarch64.tgz
+	sha256sums_aarch64 = d257b82dbc7f84f84fa95f1aaae413b72813ffe728ccb5c1012e714929262f20
 
 pkgname = sui-mainnet-bin
