@@ -1,0 +1,17 @@
+pkgbase = secret-share
+	pkgdesc = Share messages (secrets and passwords) securely with a CLI
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/scosman/secret_share
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.23
+	depends = glibc
+	provides = python-secret-share
+	conflicts = python-secret-share
+	options = !lto
+	source = secret-share-0.6.0.tar.gz::https://github.com/scosman/secret_share/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = c43ca13f4ed2501ca9720cd1ca371e196f32d07a536b3d1aac09105a1d86c302
+
+pkgname = secret-share
