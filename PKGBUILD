@@ -1,7 +1,7 @@
 # Maintainer: Zan Skamljic <zan.skamljic@gmail.com>
 
 pkgname=libtde
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='What TDE applications share: configuration, theme, window frame and dialogs'
 arch=(x86_64 aarch64)
@@ -25,7 +25,7 @@ optdepends=(
 )
 provides=('libtde.so')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e85d99ab40abab12a1917075be090bcaf70ea8204192e9541c7bed6622a063f1')
+sha256sums=('e4cd5448537fb2e05a17dbed65f5d8e76a3c3f4307c4d116de2a639b799f18a5')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" -G Ninja \
