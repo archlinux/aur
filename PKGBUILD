@@ -4,7 +4,7 @@
 # release version, pkgrel, source location, and checksum into the AUR metadata.
 
 pkgname=chan
-pkgver=0.100.0
+pkgver=0.101.0
 pkgrel=1
 pkgdesc='Headless terminal multiplexer and workspace manager'
 # Native CI builds both architectures; aarch64 is observed-only for v0.73.0.
@@ -21,8 +21,8 @@ conflicts=('chan-desktop')
 # Cargo owns thin LTO. makepkg's additional -flto=auto reaches native C/C++
 # dependencies and can leave rustc unable to resolve their symbols at link time.
 options=(!lto)
-source=('chan-0.100.0.tar.gz::https://github.com/fiorix/chan/archive/v0.100.0.tar.gz')
-sha256sums=('ebefa25c01b15c7fd5ded7a074a0b4f9275caa03a1b09f5ff100905166e3787e')
+source=('chan-0.101.0.tar.gz::https://github.com/fiorix/chan/archive/v0.101.0.tar.gz')
+sha256sums=('4fb25e4a7d3efc2814239ec75f0689c7230d7bd71309ddb6838fcfecdac8272a')
 
 # RUSTUP_TOOLCHAIN keeps the tree's rust-toolchain.toml pin from making a
 # rustup-provided cargo download a second toolchain mid-build, per Arch's Rust
@@ -41,6 +41,9 @@ build() {
     export CHAN_PACKAGED=aur
     make web WEB_SKIP_INSTALL=1
     cargo build --frozen --release -p chan
+    # Integration tests can relink target/release with dev-dependency features.
+    # Preserve the release build outside cargo's target directory for packaging.
+    install -Dm755 target/release/chan package-bin/chan
 }
 
 check() {
@@ -53,7 +56,7 @@ check() {
 
 package() {
     cd "chan-$pkgver"
-    install -Dm755 target/release/chan "$pkgdir/usr/bin/chan"
+    install -Dm755 package-bin/chan "$pkgdir/usr/bin/chan"
     ln -s chan "$pkgdir/usr/bin/cs"
     install -Dm644 packaging/distros/shared/chan-devserver.service \
         "$pkgdir/usr/lib/systemd/user/chan-devserver.service"
