@@ -1,15 +1,26 @@
 pkgbase = lucidglyph
 	pkgdesc = Carefully tuned adjustments designed to improve font rendering on Linux systems packaged for Arch Linux.
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maximilionus/lucidglyph
 	arch = any
-	license = GPL-3.0
+	license = GPL-3.0-only
+	source = lucidglyph-0.16.0.zip::https://github.com/maximilionus/lucidglyph/archive/refs/tags/v0.16.0.zip
+	source = 59-curated-defaults.conf
+	validpgpkeys = 265281061734E45F2BF0489803E9CD3D5C5D378E
+	sha512sums = 41fac46c8025e4373dda6499107cdc01c53672973726e7858e394e80c344a1f3c5e79145570ddd95f9c9fec360ede99c647e00bf8f8edefc3dbaf7890f7e2f8f
+	sha512sums = 61710d5e1ad93d8853ec05e3c8c912fd631bf1b424f32da0cb846bda021b069716d95aa14d59da2c206e57a61316c8ef00e9a4f589771c2f8e6b4a0c89fc8776
+
+pkgname = lucidglyph
 	depends = fontconfig
 	depends = pam
 	depends = freetype2
-	source = lucidglyph-0.16.0.zip::https://github.com/maximilionus/lucidglyph/archive/refs/tags/v0.16.0.zip
-	validpgpkeys = 265281061734E45F2BF0489803E9CD3D5C5D378E
-	sha512sums = 41fac46c8025e4373dda6499107cdc01c53672973726e7858e394e80c344a1f3c5e79145570ddd95f9c9fec360ede99c647e00bf8f8edefc3dbaf7890f7e2f8f
+	optdepends = fontconfig-curated-defaults: Curated defaults for generic font families
 
-pkgname = lucidglyph
+pkgname = fontconfig-curated-defaults
+	pkgdesc = Curated Fontconfig defaults for generic font families, independent of lucidglyph
+	url = https://aur.archlinux.org/pkgbase/lucidglyph
+	install = fontconfig-curated-defaults.install
+	depends = fontconfig
+	depends = ttf-cascadia-code
+	depends = ttf-roboto
