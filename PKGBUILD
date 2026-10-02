@@ -3,7 +3,7 @@
 # Single-file GTK4/libadwaita application: one crop for multiple images.
 # No build step — install files directly from the v$pkgver tag.
 pkgname=kadr
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Batch crop multiple images with the same crop area (GTK4/libadwaita)'
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
 # Use the v$pkgver release asset rather than the full tag snapshot, which includes
 # screenshots and demo.gif (1.2 MB) to install a 56 kB application.
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/kadr-$pkgver.tar.gz")
-sha256sums=('df223aa783ca52deca030ada72b158b42c9f86c1e5817044e9396480485bb1b2')
+sha256sums=('60e90ecb659a1fe372c7c13b65f3de78632b734e1bfcffe4a6a5c7a4e058b9fb')
 
 package() {
   cd "$pkgname-$pkgver"
