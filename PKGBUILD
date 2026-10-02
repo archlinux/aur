@@ -1,14 +1,14 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=context-git
-pkgver=0.2.0.r309.ge31cda2
+pkgver=0.2.0.r311.g11adf86
 pkgrel=2
 pkgdesc="Standalone CLI and MCP server for deterministic repository context (git version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/timmo001/context"
 license=('Apache-2.0')
 makedepends=('git' 'bun')
-depends=('glibc')
+depends=('glibc' 'git')
 provides=('context')
 conflicts=('context' 'context-bin')
 options=('!strip')
