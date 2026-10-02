@@ -1,13 +1,13 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=tone3000-plugin
-pkgver=0.0.9
-pkgrel=3
+pkgver=0.0.11
+pkgrel=1
 pkgdesc="TONE3000 — NAM & IR loader plugin (VST3/CLAP/LV2/Standalone) (Built from source)"
 arch=('x86_64')
 url="https://github.com/tone-3000/tone3000-plugin"
 license=('MIT')
-depends=('webkit2gtk-4.1' 'gtk3' 'alsa-lib' 'freetype2' 'curl' 'hicolor-icon-theme' 'glibc' 'gcc-libs')
-makedepends=('cmake' 'ninja' 'nodejs' 'npm' 'git' 'pkgconf' 'unzip' 'jack')
+depends=('gtk3' 'alsa-lib' 'freetype2' 'curl' 'hicolor-icon-theme' 'glibc' 'gcc-libs')
+makedepends=('cmake' 'ninja' 'git' 'pkgconf' 'unzip' 'jack')
 optdepends=('jack: JACK audio backend for standalone')
 # provides not needed for canonical package
 conflicts=('tone3000-plugin-bin')
@@ -17,24 +17,14 @@ sha256sums=('SKIP')
 prepare() {
 	cd "tone3000-plugin"
 	git submodule update --init --recursive
-	# CMake configure first to fetch JUCE via CPM (UI depends on libs/juce)
-	cmake -B build -S . -G Ninja \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_TOOLCHAIN_FILE=cmake/linux-toolchain.cmake \
-		-DBUILD_AAX=OFF
-	# Now build the UI (needs JUCE present).
-	# TONE3000 publishable key (OAuth client_id). Not a secret per their API docs:
-	# https://www.tone3000.com/api — safe to embed in client-side code.
-	# Same key the upstream ships in their pre-built binaries.
-	cd ui
-	npm ci
-	VITE_T3K_PUBLISHABLE_KEY='t3k_pub__B8V_QGmV50ov2YWJzjqOxQE0q1-wURs' npm run build
-	cd ..
 }
 
 build() {
 	cd "tone3000-plugin"
-	# Reconfigure after UI build (UI generates files CMake needs)
+	# TONE3000 publishable key (OAuth client_id). Not a secret per their API docs:
+	# https://www.tone3000.com/api — safe to embed in client-side code.
+	# Same key upstream ships in their pre-built binaries.
+	export T3K_PUBLISHABLE_KEY='t3k_pub__B8V_QGmV50ov2YWJzjqOxQE0q1-wURs'
 	cmake -B build -S . -G Ninja \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_TOOLCHAIN_FILE=cmake/linux-toolchain.cmake \
