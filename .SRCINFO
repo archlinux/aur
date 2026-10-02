@@ -1,0 +1,18 @@
+pkgbase = python-github-dlr
+	pkgdesc = Download individual files and folders from GitHub recursively
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/rocktimsaikia/github-dlr
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-aiohttp
+	depends = python-alive-progress
+	depends = python-emoji
+	source = python-github-dlr-0.1.3.tar.gz::https://github.com/rocktimsaikia/github-dlr/archive/refs/tags/0.1.3.tar.gz
+	sha256sums = 730443300cb643548bace642fa5a665ffbb46c335228088b811fe5b26883ca7b
+
+pkgname = python-github-dlr
