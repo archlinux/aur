@@ -1,0 +1,25 @@
+post_install() {
+    cat <<'MSG'
+==> broadcast-linux: run setup as your normal user:
+      broadcast-linux setup        # downloads NVIDIA files and prompts for their licence
+    RTX 20/30/40: use 'broadcast-linux setup --allow-unverified' (checksum not pinned).
+==> For the camera, prepare v4l2loopback before starting the service.
+    If your kernel lacks the module, install v4l2loopback-dkms and matching kernel headers.
+      sudo modprobe v4l2loopback
+      sudo usermod -aG video "$USER"    # then log in again
+==> Start the service as your normal user:
+      systemctl --user enable --now broadcast-linux
+    In your app, select 'NVIDIA Broadcast Mic' and 'Broadcast Camera'.
+    Defaults: mic noise removal on; camera effects off.
+==> To configure effects, copy the example without replacing an existing config:
+      mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/broadcast-linux"
+      cp -n /usr/share/doc/broadcast-linux/config.toml "${XDG_CONFIG_HOME:-$HOME/.config}/broadcast-linux/config.toml"
+    Edit it, then run 'systemctl --user reload broadcast-linux'.
+    Guide: /usr/share/doc/broadcast-linux/README.md
+    Logs: journalctl --user -u broadcast-linux -b
+MSG
+}
+
+post_upgrade() {
+    echo "==> broadcast-linux: run 'systemctl --user restart broadcast-linux' to use the new version"
+}
