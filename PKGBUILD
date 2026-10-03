@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync"
-pkgver=1.32.0
+pkgver=1.32.1
 pkgrel=1
 pkgdesc="Integrates Limine boot entries with Snapper snapshots."
 arch=('x86_64' 'aarch64')
@@ -25,10 +25,10 @@ optdepends=(
 	'b3sum: Fast Blake3 hash function to prevent duplication.'
 	'xxhash: Fast hashing utility for deduplication with shorter hashes.'
 )
-makedepends=('git' 'gradle')
+makedepends=('git' 'gradle' 'gettext')
 backup=(etc/limine-snapper-sync.conf)
 conflicts=('limine-snapper-cli' 'limine-snapper-sync-git')
-sha256sums=('6bcc1d3ace58030204260a9a4d40d500c4822416be1b1c6edd153d1df0796b3d')
+sha256sums=('c2a8a9618fc481e036fbfeb2016b2991c593abbcea871c13adc1af5d23eb2337')
 sha256sums_x86_64=('3f4a89de8eaa96f2ed677f09957c7e872cd8467aad3537f8b5394c1b8c4b942e')
 sha256sums_aarch64=('22286f7ecd21b9aedb3226b9bf797469e1bd3eefc491e12ef3dd49b452d230b7')
 
