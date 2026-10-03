@@ -1,12 +1,13 @@
 # Maintainer: lingdianshiren <ldsrwu@foxmail.com>
 pkgname=securelink
 pkgver=3.8.13
-pkgrel=1
+pkgrel=3
 pkgdesc="SecureLink client for Wangsu SDP / Zero Trust secure access (Ubuntu GUI version)"
 arch=('x86_64')
 url="https://www.wangsu.com/app/securelink"
-license=('custom')
-depends=('libnotify' 'libxtst' 'nss' 'dmidecode' 'mesa' 'libappindicator-gtk3')
+license=('LicenseRef-Wangsu-Unknown')
+depends=('alsa-lib' 'libnotify' 'libxtst' 'nss' 'dmidecode' 'mesa')
+optdepends=('libappindicator-gtk3: system tray indicator')
 options=('!strip')
 install=securelink.install
 source=("https://download-sdwan.wangsu.com/public/securelink/pkg/formal/COMMON/ubuntuX64/SecureLink-ubuntu-x64-${pkgver}-66.deb")

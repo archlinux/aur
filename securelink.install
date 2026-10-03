@@ -1,37 +1,62 @@
-post_install() {
-    # Upstream's installer expects to find the package path in /tmp/sl_package_name
-    # (the Debian preinst writes it from the dpkg command line). Reconstruct a
-    # plausible value from the metadata recorded at package-build time.
+_securelink_register() {
+    local _deb_name _tmpdir _package_file _client
+
     _deb_name=$(awk -F= '/^DEB_NAME=/ {print $2}' /opt/SecureLink/.pkgmeta 2>/dev/null)
     : "${_deb_name:=SecureLink-ubuntu-x64.deb}"
-    printf '%s\n' "/tmp/${_deb_name}" > /tmp/sl_package_name
+    _client=/opt/SecureLink/resources/app.asar.unpacked/assets/app-ext/securelink_linux64/bin/SecureLink_Client
 
-    # Register the SecureLink client daemon (upstream postinst step).
-    # Output is redirected to a log file because the parser expects a dpkg-style
-    # command line and logs harmless but confusing warnings on Arch.
-    /opt/SecureLink/resources/app.asar.unpacked/assets/app-ext/securelink_linux64/bin/SecureLink_Client -install >/tmp/securelink-install.log 2>&1 || true
-    rm -f /tmp/sl_package_name
+    # SecureLink_Client requires this fixed path. Create an owner-only source
+    # file, then atomically expose it as a hard link without replacing any
+    # pre-existing /tmp entry.
+    _tmpdir=$(umask 077; mktemp -d /tmp/securelink.XXXXXXXX) || {
+        printf '%s\n' 'warning: SecureLink registration skipped: cannot create a secure temporary directory.' >&2
+        return 0
+    }
+    _package_file="${_tmpdir}/sl_package_name"
+    printf '%s\n' "/tmp/${_deb_name}" > "${_package_file}"
 
-    # Reload systemd so the shipped service unit is visible
-    systemctl daemon-reload
+    if ! ln "${_package_file}" /tmp/sl_package_name; then
+        printf '%s\n' 'warning: SecureLink registration skipped: /tmp/sl_package_name already exists.' >&2
+        rm -rf -- "${_tmpdir}"
+        return 0
+    fi
 
-    # Print directly to the controlling terminal so the message is always
-    # visible regardless of how pacman captures install-script output.
-    if [ -w /dev/tty ]; then
-        cat >/dev/tty <<'EOF'
+    if ! "${_client}" -install >"${_tmpdir}/install.log" 2>&1; then
+        printf '%s\n' 'warning: SecureLink_Client -install failed:' >&2
+        cat "${_tmpdir}/install.log" >&2
+    fi
+
+    # Do not remove a path that the client might have replaced.
+    if [ /tmp/sl_package_name -ef "${_package_file}" ]; then
+        rm -f -- /tmp/sl_package_name
+    fi
+    rm -rf -- "${_tmpdir}"
+}
+
+post_install() {
+    # Upstream's installer requires a package name at /tmp/sl_package_name.
+    _securelink_register
+
+    # Make the shipped service visible, enabled, and running before the GUI
+    # starts so SecureLink_Client does not fail initialization with error 3313.
+    if ! systemctl daemon-reload; then
+        printf '%s\n' 'error: SecureLink installation failed to reload systemd units.' >&2
+        return 1
+    fi
+    if ! systemctl enable --now securelink.service; then
+        printf '%s\n' 'error: SecureLink installation failed to enable and start securelink.service.' >&2
+        return 1
+    fi
+
+    if [ -t 1 ]; then
+        cat <<'EOF'
 
 ============================================================
- SecureLink has been installed.
+ SecureLink has been installed and its daemon is running.
 
- To start the SecureLink daemon, run:
+ The GUI can be launched from the desktop entry or by running:
 
-     systemctl enable --now securelink.service
-
- The GUI can then be launched from the desktop entry or by
- running: securelink
-
- If SecureLink_Client -install produced warnings, see:
-     /tmp/securelink-install.log
+     securelink
 ============================================================
 
 EOF
@@ -39,11 +64,7 @@ EOF
 }
 
 post_upgrade() {
-    _deb_name=$(awk -F= '/^DEB_NAME=/ {print $2}' /opt/SecureLink/.pkgmeta 2>/dev/null)
-    : "${_deb_name:=SecureLink-ubuntu-x64.deb}"
-    printf '%s\n' "/tmp/${_deb_name}" > /tmp/sl_package_name
-    /opt/SecureLink/resources/app.asar.unpacked/assets/app-ext/securelink_linux64/bin/SecureLink_Client -install >/tmp/securelink-install.log 2>&1 || true
-    rm -f /tmp/sl_package_name
+    _securelink_register
     systemctl daemon-reload
 }
 
