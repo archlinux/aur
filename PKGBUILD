@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/rullerzhou-afk/clawd-on-desk"
 license=('LicenseRef-clawd-on-desk-artwork')
 depends=('crab-on-desk')
-makedepends=('git' 'rustup' 'cmake' 'clang' 'electron')
+makedepends=('git' 'cargo' 'cmake' 'clang' 'electron')
 source=("clawd-on-desk::git+${url}.git#commit=${_commit}"
         "crab-on-desk::git+https://github.com/Supernovatux/crab-on-desk.git")
 sha256sums=('SKIP'
@@ -16,14 +16,13 @@ sha256sums=('SKIP'
 
 prepare() {
 	cd crab-on-desk
-	export RUSTUP_TOOLCHAIN=nightly
-	rustup toolchain install nightly --profile minimal
+	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
 	cd crab-on-desk
-	export RUSTUP_TOOLCHAIN=nightly
+	export RUSTUP_TOOLCHAIN=stable
 	make CLAWD_ON_DESK="${srcdir}/clawd-on-desk" CARGO_FLAGS=--frozen themes
 }
 
