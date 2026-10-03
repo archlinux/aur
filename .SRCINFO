@@ -1,0 +1,14 @@
+pkgbase = rimor
+	pkgdesc = Terminal workbench for PostgreSQL, SQL Server and SQLite
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://rimor.dev
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = rimor-0.1.0.tar.gz::https://github.com/alchemy/rimor/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 4492ca8e76944e5d4d6be9fa31ac8af88040bb4e9cbf9e0bddfe437beca071bd
+
+pkgname = rimor
