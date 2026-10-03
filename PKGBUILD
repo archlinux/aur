@@ -1,7 +1,7 @@
 # Maintainer: Sentria <admin@sentrialabs.com>
 pkgname=maryanne-bin
-pkgver=3.8.0
-pkgrel=1
+pkgver=3.10.0
+pkgrel=2
 pkgdesc='Maryanne: EPUB & PDF reader with natural voice read-aloud'
 arch=('x86_64')
 url='https://maryanne.app'
@@ -15,9 +15,9 @@ source=(
   "maryanne.png::https://github.com/${release_repo}/releases/download/v${pkgver}/maryanne.png"
 )
 sha256sums=(
-  '2d9d8395e4b39ad98aeec7cab12edc1f16ca3557de2a548006c3766aad988ab1'
+  'f95b3469ef4e50d99994aeff867e2b87cb10963794f08148e8ddad55a6bd39a2'
   '85a5b6670cbb8296ff3bac16441e0a8aae978985f4dc37def5e2c69cf307fa8b'
-  '17439bcc681655645b8b14b007e97d68387c79c7a2ad7b7c7182a351e5d5fc82'
+  '8da5125a1eefa4f6b4cb2bff1c33e24c0fc93623e000fd5aa99c85f596a0f6da'
 )
 
 package() {
