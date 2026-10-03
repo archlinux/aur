@@ -1,6 +1,7 @@
 # Maintainer: kekmacska
+
 pkgname=svt-av1-tritium-git
-pkgver=4.2.0.r5349.g2f666940c
+pkgver=4.2.0.r5350.g6c9c8981f
 pkgrel=1
 pkgdesc="SVT-AV1-Tritium is a fork of SVT-AV1-HDR with PSYEX + Essential features"
 arch=('x86_64')
