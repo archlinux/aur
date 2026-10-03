@@ -1,6 +1,6 @@
 pkgbase = pnpm-git
 	pkgdesc = Fast, disk space efficient package manager
-	pkgver = 0.1.0.r13.162.g743d1c7ff2
+	pkgver = v12.9.0.1.gbf5cdd3390
 	pkgrel = 1
 	url = https://github.com/pnpm/pnpm
 	arch = x86_64
