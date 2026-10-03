@@ -26,8 +26,8 @@ depends=(
 options=('!strip')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}-stable/${_pkgname}-${pkgver}-stable-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}-stable/${_pkgname}-${pkgver}-stable-1.x86_64.rpm")
-sha256sums_aarch64=('2cdd5f9a38acc19b156b18daaf679c1452d2f26e42835802fd3c4f4a2cc34b1e')
-sha256sums_x86_64=('e406ea783350a92ce2810fabc9b0d226fd6c3082491778bae02b7851a6e3f87c')
+sha256sums_aarch64=('02e5356e465120b406c06c9a983475a510db352d9ba14bfee4ca1776a44c52db')
+sha256sums_x86_64=('54f43f1e2691c0501ffc4f040b05c97ce59cf6bf261336c2c089d9d3673d55be')
 
 prepare() {
     local desktop="${srcdir}/usr/share/applications/${_pkgname}.desktop"

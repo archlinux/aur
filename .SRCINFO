@@ -15,8 +15,8 @@ pkgbase = quadrant-bin
 	conflicts = quadrant
 	options = !strip
 	source_aarch64 = quadrant-26.10.1-aarch64.rpm::https://github.com/QuadrantMC/quadrant/releases/download/v26.10.1-stable/Quadrant-26.10.1-stable-1.aarch64.rpm
-	sha256sums_aarch64 = 2cdd5f9a38acc19b156b18daaf679c1452d2f26e42835802fd3c4f4a2cc34b1e
+	sha256sums_aarch64 = 02e5356e465120b406c06c9a983475a510db352d9ba14bfee4ca1776a44c52db
 	source_x86_64 = quadrant-26.10.1-x86_64.rpm::https://github.com/QuadrantMC/quadrant/releases/download/v26.10.1-stable/Quadrant-26.10.1-stable-1.x86_64.rpm
-	sha256sums_x86_64 = e406ea783350a92ce2810fabc9b0d226fd6c3082491778bae02b7851a6e3f87c
+	sha256sums_x86_64 = 54f43f1e2691c0501ffc4f040b05c97ce59cf6bf261336c2c089d9d3673d55be
 
 pkgname = quadrant-bin
