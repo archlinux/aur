@@ -1,0 +1,12 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Classes\captureage]
+@="URL:CaptureAge"
+"URL Protocol"=""
+
+[HKEY_CURRENT_USER\Software\Classes\captureage\shell\open\command]
+@="\"Z:\\opt\\captureage\\CaptureAge.exe\" \"%1\""
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\App Paths\CaptureAge.exe]
+@="Z:\\opt\\captureage\\CaptureAge.exe"
+"Path"="Z:\\opt\\captureage"

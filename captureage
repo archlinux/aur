@@ -1,0 +1,35 @@
+#!/usr/bin/bash
+set -euo pipefail
+
+case "${1:-}" in
+  -h|--help)
+    cat <<'EOF'
+Usage: captureage [ARGUMENTS...]
+       captureage --register
+
+Run CaptureAge using AoE II: DE's Steam Proton environment (App ID 813780).
+Install and launch the game through Steam at least once before using this command.
+
+--register  Register CaptureAge in the game's Windows user registry so the
+            in-game "Spectate with CA" button can find the packaged executable.
+
+Protontricks supports STEAM_DIR, PROTON_VERSION and STEAM_COMPAT_DATA_PATH
+for custom Steam installations, Proton versions and prefixes.
+EOF
+    exit 0
+    ;;
+  --register)
+    if (( $# != 1 )); then
+      printf '%s\n' 'Usage: captureage --register' >&2
+      exit 2
+    fi
+    exec protontricks -c \
+      'wine reg import "Z:\\usr\\share\\captureage\\captureage.reg"' 813780
+    ;;
+  --)
+    shift
+    ;;
+esac
+
+cd /opt/captureage
+exec protontricks-launch --appid 813780 /opt/captureage/CaptureAge.exe "$@"

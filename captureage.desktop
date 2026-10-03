@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=CaptureAge
+Comment=Spectate Age of Empires II: Definitive Edition using Proton
+Exec=captureage %u
+TryExec=captureage
+Icon=applications-games
+Terminal=false
+Categories=Game;StrategyGame;
+MimeType=x-scheme-handler/captureage;
+Keywords=Age of Empires;AoE2;CA:DE;Replay;Spectator;
