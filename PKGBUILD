@@ -1,6 +1,6 @@
 # Maintainer: Cody Schafer <dev@codyps.com>
 
-pkgrel=2
+pkgrel=3
 _bpn=diod
 pkgname=$_bpn-git
 pkgdesc="A multi-threaded, user space file server that speeks 9P2000.L"
@@ -14,12 +14,8 @@ md5sums=('SKIP')
 conflicts=("$_bpn")
 provides=("$_bpn")
 
-# If munge is disabled (via configure script), it can be omitted entirely
-# LUA can be disable in configure, but config files are lua. Unclear what fallback is.
-# libwrap can be disabled, if desired
-makedepends=('git')
-depends=('lua' 'libwrap' 'libcap' 'bash')
-optdepends=('munge')
+makedepends=('git' 'autoconf-archive')
+depends=('lua54' 'libcap' 'bash' 'munge' 'ncurses')
 
 # from https://wiki.archlinux.org/index.php/VCS_package_guidelines
 pkgver=1.0.24.r89.g3da6e52
@@ -38,8 +34,10 @@ prepare() {
 
 build () {
 	cd "$srcdir/$_bpn"
-	./configure --prefix=/usr --with-ncurses --sysconfdir=/etc --sbindir=/usr/bin
-	make
+	LUA=lua5.4 LUA_INCLUDE="$(pkg-config --cflags lua54)" \
+	  LUA_LIB="$(pkg-config --libs lua54)" ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin
+	# Upstream developer warnings must not fail distribution builds.
+	make AM_CFLAGS=-Wall
 }
 
 package () {
