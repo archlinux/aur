@@ -1,6 +1,6 @@
 pkgbase = websitino-bin
 	pkgdesc = A lightweight static file server for local development
-	pkgver = 0.2.12
+	pkgver = 0.2.13
 	pkgrel = 1
 	url = https://github.com/trikko/websitino
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = websitino-bin
 	conflicts = websitino
 	options = !strip
 	options = !debug
-	source = websitino-0.2.12::https://trikko.github.io/websitino/linux/websitino
-	sha256sums = b4ab4ce7145819d9a7ab8111e3d0364367d869ac7d0abfc522785e446746bd22
+	source = websitino-0.2.13::https://trikko.github.io/websitino/linux/websitino
+	sha256sums = ad864d1fad23b166bfabfaa1161bb6b154bcfc4328de8e880641846d0acc1cad
 
 pkgname = websitino-bin
