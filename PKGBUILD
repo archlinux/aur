@@ -2,9 +2,9 @@
 
 pkgname=fatcat
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc=" FAT filesystems explore, extract, repair, and forensic tool"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'x86_64_v3' 'pentium4')
 url="https://github.com/Gregwar/fatcat"
 license=('BSD')
 makedepends=('cmake')
