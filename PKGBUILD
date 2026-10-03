@@ -2,7 +2,7 @@
 pkgname=searxng-rama
 _pkgname=searxng
 pkgver=r9809.19ffbcd
-pkgrel=2
+pkgrel=3
 pkgdesc="SearXNG with a modern theme, secure defaults and systemd service"
 arch=('any')
 url="https://github.com/Nomadcxx/searxng-RAMA"
