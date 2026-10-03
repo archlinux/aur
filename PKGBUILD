@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-git
 pkgver=r142.ccf9e8d
-pkgrel=1
+pkgrel=2
 pkgdesc="Shorin DMS Niri desktop environment (Core Configs & Installer)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"
@@ -11,7 +11,7 @@ conflicts=('shorin-dms-niri-meta' 'shorin-dms-niri-dotfiles-git')
 
 # 核心底线依赖：桌面环境能够成功启动的必需品
 depends=(
-    'bash' 'dms-shell-niri' 'xdg-desktop-portal-gnome' 'xwayland-satellite'
+    'bash' 'dms-shell' 'niri' 'xdg-desktop-portal-gnome' 'xwayland-satellite'
     'libnotify' 'power-profiles-daemon' 'wl-clipboard' 'cliphist' 'cava'
     'dgop' 'dsearch-bin' 'qt5-multimedia' 'cups-pk-helper' 'kimageformats' 
 )
