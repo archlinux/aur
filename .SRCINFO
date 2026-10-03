@@ -1,6 +1,6 @@
 pkgbase = inno
 	pkgdesc = A lightweight, event-driven Wayland notification agent
-	pkgver = 0.5.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/SykikXO/inno
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = inno
 	depends = dbus
 	depends = glibc
 	depends = pipewire-pulse
-	source = inno-0.5.0.tar.gz::https://github.com/SykikXO/inno/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = sha256:62a2c1b0035d9bc969e1505ac2145c24de6f48c634ae6ec86f6cacbd119bfdb5
+	source = inno-0.7.0.tar.gz::https://github.com/SykikXO/inno/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = sha256:8a35c9f141ab2bde958eed4497baeff6bcc9c5457b7aa4b3b461a4962c6693e6
 
 pkgname = inno

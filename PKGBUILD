@@ -1,6 +1,6 @@
 # Maintainer: Sykik <xo.sykik@gmail.com>
 pkgname=inno
-pkgver=0.5.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A lightweight, event-driven Wayland notification agent"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('wayland' 'cairo' 'dbus' 'glibc' 'pipewire-pulse')
 makedepends=('rust>=1.85' 'cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('sha256:62a2c1b0035d9bc969e1505ac2145c24de6f48c634ae6ec86f6cacbd119bfdb5')
+sha256sums=('sha256:8a35c9f141ab2bde958eed4497baeff6bcc9c5457b7aa4b3b461a4962c6693e6')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -37,4 +37,64 @@ package() {
       [ -f "$f" ] && install -Dm644 "$f" "${pkgdir}/etc/xdg/inno/${f}"
     done
   done
+}
+
+# Copy the shipped defaults into the user's own config directory.
+#
+# This is the opposite of the usual Arch rule, which is to never touch
+# ~/.config on install because it holds local edits. inno overrides it on
+# purpose: the config and the assets it points at ship together, so a user whose
+# config directory holds a config copied months ago is running against frame
+# directories and sounds that may have been renamed or removed since. A config
+# referencing an animation that is not there renders as a plain text card and
+# says nothing about why.
+#
+# The two package-owned trees are replaced rather than merged, so a renamed or
+# deleted frame cannot survive as a stale leftover. Anything the user added
+# outside those two trees is untouched.
+install_user_config() {
+  local dest=${XDG_CONFIG_HOME:-$HOME/.config}/inno
+  mkdir -p "$dest"
+  install -Dm644 /etc/xdg/inno/inno.toml "$dest/inno.toml"
+  rm -rf "$dest/events" "$dest/assets"
+  cp -a /etc/xdg/inno/events "$dest/events"
+  mkdir -p "$dest/assets"
+  cp -a /etc/xdg/inno/assets/animations "$dest/assets/animations"
+  cp -a /etc/xdg/inno/assets/sounds "$dest/assets/sounds"
+  echo "$dest"
+}
+
+announce() {
+  local dest=$1
+  msg "=============================================================="
+  msg "  inno is installed, and your config is ready to edit:"
+  msg ""
+  msg "      $dest/inno.toml"
+  msg ""
+  msg "  READ THE DOCS AND MAKE IT YOURS:"
+  msg "      https://github.com/SykikXO/inno#readme"
+  msg ""
+  msg "  The defaults are a starting point, not a recommendation. The"
+  msg "  things worth changing first:"
+  msg "      position      where it appears, and the margins"
+  msg "      format        the text template, including {percent}%"
+  msg "      scale         size on a hidpi output"
+  msg "      sound = false to silence it entirely"
+  msg "      signals       which battery levels notify, and what they say"
+  msg ""
+  msg "  Edit the file, then apply it without restarting:"
+  msg "      busctl --user call org.inno.Control /org/inno/Control \\"
+  msg "          org.inno.Control Reload"
+  msg ""
+  msg "  Check a config before applying it:"
+  msg "      inno --check-config"
+  msg "=============================================================="
+}
+
+post_install() {
+  announce "$(install_user_config)"
+}
+
+post_upgrade() {
+  announce "$(install_user_config)"
 }
