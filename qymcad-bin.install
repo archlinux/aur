@@ -1,0 +1,7 @@
+# WHAT AN UPGRADE MUST MEND ITSELF. The first release of this package left every directory under /opt/qymcad as
+# 0700 - `--appimage-extract` writes them so - and pacman does not change the modes of a directory that is already
+# on disk: upgrading only warns "directory permissions differ". So a person who installed it and upgrades would
+# keep a program only root can open. The modes are set here, after the files are in place.
+post_upgrade() {
+    chmod -R u=rwX,go=rX /opt/qymcad
+}

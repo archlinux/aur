@@ -18,7 +18,7 @@ pkgname=qymcad-bin
 # on the release page; a guard keeps the two from drifting.
 pkgver=0.1.0.dev.20261001
 _relver=0.1.0-dev.20261001
-pkgrel=1
+pkgrel=2
 pkgdesc="Parametric associative B-rep CAD/CAM"
 arch=('x86_64')
 url="https://github.com/QymIs-Tech/QymCAD"
@@ -31,6 +31,8 @@ optdepends=('vulkan-icd-loader: hardware acceleration through Vulkan')
 provides=('qymcad')
 conflicts=('qymcad')
 options=('!strip' '!debug')
+# THE UPGRADE MENDS WHAT THE FIRST RELEASE LEFT: see the file itself.
+install=qymcad-bin.install
 source=("qymcad-${_relver}-${CARCH}.AppImage::${url}/releases/download/v${_relver}/qymcad-${_relver}-${CARCH}.AppImage")
 noextract=("qymcad-${_relver}-${CARCH}.AppImage")
 sha256sums=('63709f7ab9d38ea3bc082babf6c93de53c714a9ee2c6894e9349132e0a62c2d3')
@@ -48,6 +50,11 @@ package() {
     # among the system's own libraries.
     install -d "$pkgdir/opt/qymcad"
     cp -a usr "$pkgdir/opt/qymcad/"
+    # THE MODES ARE SET HERE, NOT TAKEN FROM THE UNPACKING. Inside the AppImage every directory is 755 (as
+    # `unsquashfs -lls` shows), but `--appimage-extract` writes the directories it makes as 0700; `cp -a` keeps
+    # that, and pacman installs as root: a program nobody but root could open - "permission denied" on
+    # `qymcad` and on `cd /opt/qymcad/usr`. Directories and executables become 755, everything else 644.
+    chmod -R u=rwX,go=rX "$pkgdir/opt/qymcad"
 
     # THE LINK GOES STRAIGHT TO THE BINARY. Measured on the built package: its RUNPATH is `$ORIGIN/../lib`,
     # so it finds its own libraries relative to where it really lies, whatever path was used to reach it.
