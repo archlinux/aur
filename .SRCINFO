@@ -1,6 +1,6 @@
 pkgbase = linuxqq-wayland-fix
 	pkgdesc = 修复 Linux QQ 在 Wayland 下的屏幕共享、共享电脑声音、剪贴板和截图问题
-	pkgver = 0.2.13
+	pkgver = 0.2.14
 	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/linuxqq-wayland-fix
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = linuxqq-wayland-fix
 	conflicts = linuxqq-wayland-fix-git
 	conflicts = linuxqq-clipsync
 	options = !debug
-	source = linuxqq-wayland-fix-0.2.13.tar.gz::https://github.com/SHORiN-KiWATA/linuxqq-wayland-fix/archive/refs/tags/v0.2.13.tar.gz
-	sha256sums = ebc6f55168f35d11c35000c285057f19b45030f6432c19a650ca1bc20f2c36b7
+	source = linuxqq-wayland-fix-0.2.14.tar.gz::https://github.com/SHORiN-KiWATA/linuxqq-wayland-fix/archive/refs/tags/v0.2.14.tar.gz
+	sha256sums = e12727528e96ab46330c1c4f2ac928a2873f60a4a961944a19ae93ddb0f7077c
 
 pkgname = linuxqq-wayland-fix
