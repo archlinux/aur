@@ -1,4 +1,4 @@
-From ac8f15b598e126391a6fd84ec3389ea375215e4b Mon Sep 17 00:00:00 2001
+From 8973c1d27cef349b3ef9894bacbd43c6df73bb62 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 9 Jun 2024 23:28:03 +0200
 Subject: [PATCH 13/24] Workaround `Unknown CMake command
@@ -14,7 +14,7 @@ Change-Id: Id63c90a1f564688849c5bd7193195faa1eb38a0a
  1 file changed, 5 insertions(+)
 
 diff --git a/src/corelib/Qt6WasmMacros.cmake b/src/corelib/Qt6WasmMacros.cmake
-index 9df3170d840..bbf9d11615b 100644
+index 3b2589c57eb..502e9ecfc08 100644
 --- a/src/corelib/Qt6WasmMacros.cmake
 +++ b/src/corelib/Qt6WasmMacros.cmake
 @@ -1,6 +1,11 @@
@@ -30,5 +30,5 @@ index 9df3170d840..bbf9d11615b 100644
  function(_qt_internal_wasm_add_target_helpers target)
  
 -- 
-2.55.0
+2.56.0
 

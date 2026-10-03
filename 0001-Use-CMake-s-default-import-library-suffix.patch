@@ -1,4 +1,4 @@
-From e63b4b8b0738f792198ac3cca72ccfc5c870380a Mon Sep 17 00:00:00 2001
+From 1378b3700777ac46b519da9e4ae7294696ce0d78 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 22:08:10 +0100
 Subject: [PATCH 01/24] Use CMake's default import library suffix
@@ -13,10 +13,10 @@ Change-Id: I3dbedaec74683e5bfd008f7f2fd1e046dfb921b2
  5 files changed, 21 insertions(+), 6 deletions(-)
 
 diff --git a/cmake/QtPriHelpers.cmake b/cmake/QtPriHelpers.cmake
-index 11a0a8561e1..4cce21f1a4c 100644
+index fc54b64b5e0..9e4d4de861a 100644
 --- a/cmake/QtPriHelpers.cmake
 +++ b/cmake/QtPriHelpers.cmake
-@@ -551,9 +551,13 @@ QT.${config_module_name}_private.disabled_features = ${disabled_private_features
+@@ -553,9 +553,13 @@ QT.${config_module_name}_private.disabled_features = ${disabled_private_features
          qt_path_join(private_pri_file_path "${target_path}" "${private_pri_file_name}")
          list(APPEND pri_files "${private_pri_file_path}")
  
@@ -31,7 +31,7 @@ index 11a0a8561e1..4cce21f1a4c 100644
              ${CMAKE_EXTRA_SHARED_LIBRARY_SUFFIXES}
              ${CMAKE_STATIC_LIBRARY_SUFFIX})
          if(MSVC)
-@@ -1030,9 +1034,13 @@ CONFIG += ${private_config_joined}
+@@ -1042,9 +1046,13 @@ CONFIG += ${private_config_joined}
          list(APPEND inputs "${preliminary_pri_root}/${cfg}/${pri_data_cmake_file}")
      endforeach()
  
@@ -47,12 +47,12 @@ index 11a0a8561e1..4cce21f1a4c 100644
          ${CMAKE_STATIC_LIBRARY_SUFFIX})
      if(MSVC)
 diff --git a/cmake/QtPrlHelpers.cmake b/cmake/QtPrlHelpers.cmake
-index a6a5efa52f7..555084eeda7 100644
+index 4889896efa3..411ba13c0f0 100644
 --- a/cmake/QtPrlHelpers.cmake
 +++ b/cmake/QtPrlHelpers.cmake
-@@ -131,11 +131,17 @@ ${prl_step1_content_libs}
-          CONTENT
-          "FINAL_PRL_FILE_PATH = ${final_prl_file_path}")
+@@ -107,11 +107,17 @@ ${prl_step1_content_libs}
+         OUTPUT "${prl_step1_path}"
+         CONTENT "${prl_step1_content}")
  
 -    set(library_prefixes ${CMAKE_SHARED_LIBRARY_PREFIX} ${CMAKE_STATIC_LIBRARY_PREFIX})
 +    set(library_prefixes
@@ -67,8 +67,8 @@ index a6a5efa52f7..555084eeda7 100644
 +    list(REMOVE_DUPLICATES library_prefixes)
 +    list(REMOVE_DUPLICATES library_suffixes)
  
-     if(QT_GENERATOR_IS_MULTI_CONFIG)
-         set(configs ${CMAKE_CONFIGURATION_TYPES})
+     set(qt_lib_dirs "${QT_BUILD_DIR}/${INSTALL_LIBDIR}")
+     if(QT_WILL_INSTALL)
 diff --git a/mkspecs/common/g++-win32.conf b/mkspecs/common/g++-win32.conf
 index 67ad1e3b8c1..b98c7121f6f 100644
 --- a/mkspecs/common/g++-win32.conf
@@ -98,7 +98,7 @@ index 24ed125f12b..73ebe453d3d 100644
          CMAKE_WINMAIN_FILE_LOCATION_DEBUG = qtmain$${QT_LIBINFIX}$${debug_suffix}.lib
          CMAKE_WINMAIN_FILE_LOCATION_RELEASE = qtmain$${QT_LIBINFIX}.lib
 diff --git a/src/corelib/Qt6CoreMacros.cmake b/src/corelib/Qt6CoreMacros.cmake
-index 3ca6ebff786..3bf4802e8fb 100644
+index 66ae5e3569c..23988c7bca0 100644
 --- a/src/corelib/Qt6CoreMacros.cmake
 +++ b/src/corelib/Qt6CoreMacros.cmake
 @@ -660,7 +660,6 @@ function(_qt_internal_apply_win_prefix_and_suffix target)
@@ -110,5 +110,5 @@ index 3ca6ebff786..3bf4802e8fb 100644
              get_target_property(target_type ${target} TYPE)
              if(target_type STREQUAL "STATIC_LIBRARY")
 -- 
-2.55.0
+2.56.0
 
