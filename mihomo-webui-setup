@@ -51,10 +51,18 @@ show_help() {
 默认文件：${XDG_CONFIG_HOME:-~/.config}/mihomo-webui-config/policy.yaml
 用户文件只包含 proxy-groups、rule-providers、rules；本机其他设置不变。
 
-安全修改 main 订阅（隐藏输入 URL，默认保留现有订阅格式）：
+安全修改 main 订阅（兼容原命令，会独占切换到 main）：
   mihomo-webui-setup subscription
   mihomo-webui-setup subscription --converter direct  # 迁移旧转换设置
   mihomo-webui-setup subscription --dry-run
+
+管理多个订阅档案（一次只使用一个）：
+  mihomo-webui-setup subscription manage
+  mihomo-webui-setup subscription list
+  mihomo-webui-setup subscription add ID
+  mihomo-webui-setup subscription use ID
+  mihomo-webui-setup subscription edit ID
+  mihomo-webui-setup subscription remove ID
 
 从本地原生 YAML 模板同步 ACL4SSR 规则与策略组（规则数据由 Mihomo 自动更新）：
   mihomo-webui-setup rules            # 确认后同步
@@ -123,7 +131,7 @@ main() {
   [[ -x "$SUBSCRIPTION_COMMAND" ]] || die "找不到 $SUBSCRIPTION_COMMAND"
 
   if [[ $command == subscription ]]; then
-    log "安全修改 main 订阅"
+    log "管理订阅档案"
     "$SUBSCRIPTION_COMMAND" subscription "$@"
     return 0
   fi

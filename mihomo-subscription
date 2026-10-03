@@ -19,6 +19,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -77,9 +78,24 @@ def load_yaml(path: Path) -> Any:
         raise SubscriptionError(f"YAML 解析失败：{path}: {exc}") from exc
 
 
+class MihomoDumper(yaml.SafeDumper):
+    """Keep numeric-looking strings strings in both PyYAML and Go YAML."""
+
+
+def represent_mihomo_string(dumper: yaml.SafeDumper, value: str) -> Any:
+    # Go YAML accepts numbers (e.g. 083456 and 1e10) that PyYAML considers
+    # strings. Leaving these unquoted can corrupt short-id, passwords, etc.
+    style = '"' if re.match(r"^[+-]?(?:[0-9]|\.[0-9])", value) else None
+    return dumper.represent_scalar("tag:yaml.org,2002:str", value, style=style)
+
+
+MihomoDumper.add_representer(str, represent_mihomo_string)
+
+
 def dump_yaml(data: Any) -> bytes:
-    return yaml.safe_dump(
+    return yaml.dump(
         data,
+        Dumper=MihomoDumper,
         allow_unicode=True,
         sort_keys=False,
         default_flow_style=False,
@@ -262,6 +278,26 @@ def set_env_file_value(path: Path, key: str, value: str) -> None:
     atomic_write(path, ("\n".join(new_lines) + "\n").encode("utf-8"), 0o600)
 
 
+def remove_env_file_value(path: Path, key: str) -> None:
+    if not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", key):
+        raise SubscriptionError(f"变量名无效：{key}")
+    if not path.exists():
+        return
+
+    lines = path.read_text(encoding="utf-8").splitlines()
+    pattern = re.compile(rf"^\s*(?:export\s+)?{re.escape(key)}=")
+    new_lines = [
+        line
+        for line in lines
+        if line.lstrip().startswith("#") or not pattern.match(line)
+    ]
+    atomic_write(
+        path,
+        (("\n".join(new_lines) + "\n") if new_lines else "").encode("utf-8"),
+        0o600,
+    )
+
+
 def enable_source_in_control_file(
     path: Path,
     *,
@@ -355,16 +391,14 @@ def fetch_url(
     timeout: int,
     max_bytes: int,
 ) -> bytes:
-    request_headers = {
-        "User-Agent": "mihomo",
-        "Accept": "*/*",
-        "Accept-Encoding": "identity",
-    }
-    request_headers.update(headers)
-
-    request = urllib.request.Request(url, headers=request_headers, method="GET")
-
     try:
+        request_headers = {
+            "User-Agent": "mihomo",
+            "Accept": "*/*",
+            "Accept-Encoding": "identity",
+        }
+        request_headers.update(headers)
+        request = urllib.request.Request(url, headers=request_headers, method="GET")
         with urllib.request.urlopen(request, timeout=timeout) as response:
             status = getattr(response, "status", 200)
             if not 200 <= status < 300:
@@ -372,8 +406,15 @@ def fetch_url(
             return read_limited(response, max_bytes)
     except SubscriptionError:
         raise
+    except urllib.error.HTTPError as exc:
+        raise SubscriptionError(f"HTTP 状态异常：{exc.code}") from exc
+    except urllib.error.URLError as exc:
+        detail = str(exc.reason).replace(url, "<订阅 URL>")
+        raise SubscriptionError(f"下载失败：URLError: {detail}") from exc
     except Exception as exc:
-        raise SubscriptionError(f"下载失败：{type(exc).__name__}: {exc}") from exc
+        # Some URL parser errors include the complete URL (and therefore the
+        # subscription token). Keep only the exception class in that case.
+        raise SubscriptionError(f"下载失败：{type(exc).__name__}") from exc
 
 
 def decode_text(data: bytes) -> str:
@@ -542,7 +583,9 @@ def normalize_source(
     return proxies
 
 
-def validate_control_file(control: Any) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+def validate_control_inventory(
+    control: Any,
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     if not isinstance(control, dict):
         raise SubscriptionError("控制文件顶层必须是映射")
 
@@ -574,8 +617,16 @@ def validate_control_file(control: Any) -> tuple[dict[str, Any], list[dict[str, 
 
         seen_ids.add(source_id)
 
-        if bool(source.get("enabled", True)):
-            validated_sources.append(source)
+        validated_sources.append(source)
+
+    return settings, validated_sources
+
+
+def validate_control_file(control: Any) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    settings, sources = validate_control_inventory(control)
+    validated_sources = [
+        source for source in sources if bool(source.get("enabled", True))
+    ]
 
     if not validated_sources:
         raise SubscriptionError("没有已启用的订阅来源")
@@ -659,8 +710,6 @@ def validate_with_mihomo(
         raise SubscriptionError("provider_file 必须是相对于 home_dir 的路径")
 
     provider_absolute = ensure_inside(home_dir, home_dir / provider_relative)
-    candidate_relative = provider_relative.parent / f".{provider_relative.name}.candidate"
-    candidate_absolute = ensure_inside(home_dir, home_dir / candidate_relative)
     test_config = ensure_inside(home_dir, home_dir / ".subscription-test.yaml")
 
     if config_document is None:
@@ -681,10 +730,23 @@ def validate_with_mihomo(
     if provider_config.get("type") != "file":
         raise SubscriptionError(f"proxy-providers.{provider_name}.type 必须是 file")
 
+    try:
+        provider_document = yaml.safe_load(provider_bytes)
+    except yaml.YAMLError as exc:
+        raise SubscriptionError("候选 provider 不是有效 YAML") from exc
+    if not isinstance(provider_document, dict) or not isinstance(
+        provider_document.get("proxies"), list
+    ):
+        raise SubscriptionError("候选 provider 缺少 proxies 列表")
+
     test_document = copy.deepcopy(main_config)
-    test_document["proxy-providers"][provider_name]["path"] = (
-        "./" + candidate_relative.as_posix()
-    )
+    # `mihomo -t` does not load file provider contents. Inline the candidate
+    # only in the disposable test config so the core validates every node,
+    # with the same provider filters/overrides and group references.
+    test_provider = test_document["proxy-providers"][provider_name]
+    test_provider["type"] = "inline"
+    test_provider.pop("path", None)
+    test_provider["payload"] = provider_document["proxies"]
 
     validation_environment = os.environ.copy()
     safe_paths: list[str] = []
@@ -706,10 +768,8 @@ def validate_with_mihomo(
     if unique_safe_paths:
         validation_environment["SAFE_PATHS"] = os.pathsep.join(unique_safe_paths)
 
-    atomic_write(candidate_absolute, provider_bytes, 0o600)
-    atomic_write(test_config, dump_yaml(test_document), 0o600)
-
     try:
+        atomic_write(test_config, dump_yaml(test_document), 0o600)
         completed = subprocess.run(
             [str(binary), "-t", "-d", str(home_dir), "-f", str(test_config)],
             stdout=subprocess.PIPE,
@@ -726,7 +786,6 @@ def validate_with_mihomo(
     except subprocess.TimeoutExpired as exc:
         raise SubscriptionError("Mihomo 配置校验超时") from exc
     finally:
-        candidate_absolute.unlink(missing_ok=True)
         test_config.unlink(missing_ok=True)
 
     ensure_inside(home_dir, provider_absolute)
@@ -1294,126 +1353,101 @@ def command_update(args: argparse.Namespace) -> int:
         lock_handle.close()
 
 
-def command_subscription(args: argparse.Namespace) -> int:
-    """Replace the main subscription only after its provider validates successfully."""
-    lock_handle = acquire_lock()
+def profile_env_name(profile_id: str) -> str:
+    if not SOURCE_ID_RE.fullmatch(profile_id):
+        raise SubscriptionError("订阅 ID 只能包含字母、数字、点、下划线和连字符")
+    normalized = re.sub(r"[^A-Za-z0-9_]", "_", profile_id).upper()
+    return f"MIHOMO_SUB_{normalized}"
 
+
+def find_profile(sources: list[dict[str, Any]], profile_id: str) -> dict[str, Any]:
+    for source in sources:
+        if source.get("id") == profile_id:
+            return source
+    raise SubscriptionError(f"订阅档案不存在：{profile_id}")
+
+
+def select_profile(control: dict[str, Any], profile_id: str) -> dict[str, Any]:
+    selected = copy.deepcopy(control)
+    found = False
+    for source in selected["sources"]:
+        enabled = source.get("id") == profile_id
+        source["enabled"] = enabled
+        found = found or enabled
+    if not found:
+        raise SubscriptionError(f"订阅档案不存在：{profile_id}")
+    return selected
+
+
+def build_profile_candidate(
+    settings: dict[str, Any],
+    sources: list[dict[str, Any]],
+    secrets_file: Path,
+    overrides: dict[str, str] | None = None,
+) -> tuple[bytes, dict[str, bytes]]:
+    original_environment = os.environ.copy()
     try:
-        if args.secrets_file is None:
-            raise SubscriptionError("subscription 命令必须使用订阅密钥文件")
-
-        control = load_yaml(args.control_file)
-        if not isinstance(control, dict) or not isinstance(
-            control.get("sources"), list
-        ):
-            raise SubscriptionError("订阅控制文件格式无效，无法修改来源")
-
-        current_source = next(
-            (
-                source
-                for source in control["sources"]
-                if isinstance(source, dict) and source.get("id") == "main"
-            ),
-            None,
+        load_env_file(secrets_file, override=True)
+        if overrides:
+            os.environ.update(overrides)
+        provider_bytes, cache_candidates, _ = build_candidate(
+            settings,
+            sources,
+            strict=True,
         )
-        if current_source is None:
-            raise SubscriptionError("订阅控制文件中没有来源：main")
+        return provider_bytes, cache_candidates
+    finally:
+        os.environ.clear()
+        os.environ.update(original_environment)
 
-        current_converter = current_source.get("converter") or {}
-        if not isinstance(current_converter, dict):
-            raise SubscriptionError("main 来源的 converter 必须是映射")
-        current_converter_type = str(current_converter.get("type", "direct"))
-        if current_converter_type not in ("direct", "subconverter"):
-            raise SubscriptionError(
-                f"main 来源使用了不支持的 converter.type：{current_converter_type}"
-            )
 
-        converter_type = args.converter or current_converter_type
-        if converter_type != "direct":
-            raise SubscriptionError(
-                "本版本只支持 Clash/Mihomo YAML；请使用 subscription --converter direct "
-                "输入 YAML 订阅，校验成功后才迁移旧转换设置"
-            )
-        subscription_url = args.subscription_url
-        if subscription_url is None:
-            if not sys.stdin.isatty():
-                raise SubscriptionError(
-                    "非交互环境必须使用 --subscription-url 提供新订阅 URL"
-                )
-            log(f"main 来源格式：{current_converter_type}；本次将使用 {converter_type}")
-            subscription_url = getpass.getpass(
-                "新订阅 URL（输入不会回显，留空取消）："
-            )
+def restore_snapshot(path: Path, original: bytes | None, mode: int = 0o600) -> None:
+    if original is None:
+        path.unlink(missing_ok=True)
+    else:
+        atomic_write(path, original, mode)
 
-        subscription_url = subscription_url.strip()
-        if not subscription_url:
-            log("已取消，未修改任何文件")
-            return 0
-        if "\n" in subscription_url or "\r" in subscription_url:
-            raise SubscriptionError("订阅 URL 不能包含换行")
 
-        url_env = "MIHOMO_SUB_MAIN"
-        candidate_control = configure_source_document(
-            control,
-            source_id="main",
-            url_env=url_env,
-            converter_type=converter_type,
-        )
-        settings, sources = validate_control_file(candidate_control)
-
-        # 先从原密钥文件载入其他来源，再仅在当前进程中覆盖 main URL。
-        # 候选下载和 Mihomo 校验成功前，不触碰任何正式文件。
-        load_env_file(args.secrets_file)
-        previous_environment_url = os.environ.get(url_env)
-        os.environ[url_env] = subscription_url
-        try:
-            provider_bytes, cache_candidates, _ = build_candidate(
-                settings,
-                sources,
-                strict=True,
-            )
-            validate_with_mihomo(settings, provider_bytes)
-        finally:
-            if previous_environment_url is None:
-                os.environ.pop(url_env, None)
-            else:
-                os.environ[url_env] = previous_environment_url
-
-        if args.dry_run:
-            log(
-                "新订阅下载与配置校验成功；dry-run 模式未修改 URL、控制文件或 provider"
-            )
-            return 0
-
-        home_dir = Path(str(settings.get("home_dir", "/etc/mihomo")))
-        provider_relative = Path(
-            str(settings.get("provider_file", "providers/subscriptions.yaml"))
-        )
-        provider_file = ensure_inside(home_dir, home_dir / provider_relative)
-        state_dir = Path(
-            str(settings.get("state_dir", "/var/lib/mihomo-subscription"))
-        )
-        cache_dir = Path(str(settings.get("cache_dir", state_dir / "cache")))
-
-        original_secrets = (
+def commit_profile_candidate(
+    args: argparse.Namespace,
+    *,
+    settings: dict[str, Any],
+    candidate_control: dict[str, Any],
+    provider_bytes: bytes,
+    cache_candidates: dict[str, bytes],
+    secret_value: tuple[str, str] | None,
+    runtime_changed: bool,
+) -> Path:
+    home_dir = Path(str(settings.get("home_dir", "/etc/mihomo")))
+    provider_relative = Path(
+        str(settings.get("provider_file", "providers/subscriptions.yaml"))
+    )
+    provider_file = ensure_inside(home_dir, home_dir / provider_relative)
+    state_dir = Path(str(settings.get("state_dir", "/var/lib/mihomo-subscription")))
+    cache_dir = Path(str(settings.get("cache_dir", state_dir / "cache")))
+    cache_files = {
+        source_id: cache_dir / f"{source_id}.yaml" for source_id in cache_candidates
+    }
+    originals = {
+        args.control_file: args.control_file.read_bytes(),
+        args.secrets_file: (
             args.secrets_file.read_bytes() if args.secrets_file.exists() else None
-        )
-        original_control = args.control_file.read_bytes()
-        original_provider = (
+        ),
+    }
+    if runtime_changed:
+        originals[provider_file] = (
             provider_file.read_bytes() if provider_file.exists() else None
         )
-        original_caches = {
-            source_id: (
-                (cache_dir / f"{source_id}.yaml").read_bytes()
-                if (cache_dir / f"{source_id}.yaml").exists()
-                else None
-            )
-            for source_id in cache_candidates
-        }
+    for cache_file in cache_files.values():
+        originals[cache_file] = cache_file.read_bytes() if cache_file.exists() else None
 
-        try:
-            set_env_file_value(args.secrets_file, url_env, subscription_url)
-            atomic_write(args.control_file, dump_yaml(candidate_control), 0o600)
+    runtime_touched = False
+    try:
+        if secret_value is not None:
+            set_env_file_value(args.secrets_file, *secret_value)
+        atomic_write(args.control_file, dump_yaml(candidate_control), 0o600)
+        if runtime_changed:
+            runtime_touched = True
             install_provider(
                 settings,
                 provider_bytes,
@@ -1421,59 +1455,373 @@ def command_subscription(args: argparse.Namespace) -> int:
                 dry_run=False,
             )
             reload_mihomo(settings, no_reload=args.no_reload)
-        except Exception as exc:
-            log(f"订阅替换失败（{exc}），正在回滚……")
-            rollback_problems: list[str] = []
+        else:
+            cache_dir.mkdir(parents=True, exist_ok=True)
+            for source_id, cache_bytes in cache_candidates.items():
+                atomic_write(cache_files[source_id], cache_bytes, 0o600)
+    except Exception as exc:
+        log(f"订阅档案操作失败（{exc}），正在回滚……")
+        rollback_problems: list[str] = []
+        for path, original in originals.items():
+            try:
+                restore_snapshot(path, original)
+            except Exception as rollback_exc:
+                rollback_problems.append(f"恢复 {path} 失败：{rollback_exc}")
 
-            for path, original, mode in (
-                (args.secrets_file, original_secrets, 0o600),
-                (args.control_file, original_control, 0o600),
-                (provider_file, original_provider, 0o600),
-            ):
-                try:
-                    if original is None:
-                        path.unlink(missing_ok=True)
-                    else:
-                        atomic_write(path, original, mode)
-                except Exception as rollback_exc:
-                    rollback_problems.append(f"恢复 {path} 失败：{rollback_exc}")
+        if runtime_changed and originals.get(provider_file) is not None:
+            try:
+                apply_service_group(
+                    provider_file,
+                    str(settings.get("provider_group", "mihomo")),
+                    0o640,
+                )
+            except Exception as rollback_exc:
+                rollback_problems.append(f"恢复 {provider_file} 的权限失败：{rollback_exc}")
 
-            if original_provider is not None and provider_file.exists():
-                try:
-                    apply_service_group(
-                        provider_file,
-                        str(settings.get("provider_group", "mihomo")),
-                        0o640,
-                    )
-                except Exception as rollback_exc:
-                    rollback_problems.append(
-                        f"恢复 {provider_file} 的权限失败：{rollback_exc}"
-                    )
+        if runtime_touched and not args.no_reload:
+            try:
+                reload_mihomo(settings, no_reload=False)
+            except Exception as rollback_exc:
+                rollback_problems.append(f"重新加载已恢复 provider 失败：{rollback_exc}")
 
-            for source_id, original in original_caches.items():
-                cache_file = cache_dir / f"{source_id}.yaml"
-                try:
-                    if original is None:
-                        cache_file.unlink(missing_ok=True)
-                    else:
-                        atomic_write(cache_file, original, 0o600)
-                except Exception as rollback_exc:
-                    rollback_problems.append(f"恢复 {cache_file} 失败：{rollback_exc}")
-
-            if rollback_problems:
-                raise SubscriptionError(
-                    "订阅替换失败且回滚不完整：" + "；".join(rollback_problems)
-                ) from exc
+        if rollback_problems:
             raise SubscriptionError(
-                "订阅替换失败，已恢复原 URL、控制文件、provider 与缓存；"
-                f"如 Mihomo 已停止请手工重启。原因：{exc}"
+                "订阅档案操作失败且回滚不完整：" + "；".join(rollback_problems)
             ) from exc
+        raise SubscriptionError(
+            f"订阅档案操作失败，已恢复原配置、provider 与缓存。原因：{exc}"
+        ) from exc
 
-        log(f"main 订阅已更新；转换类型：{converter_type}")
+    return provider_file
+
+
+def read_new_subscription_url(args: argparse.Namespace, profile_id: str) -> str | None:
+    value = args.subscription_url
+    if value is None:
+        if not sys.stdin.isatty():
+            raise SubscriptionError("非交互环境必须使用 --subscription-url 提供新订阅 URL")
+        value = getpass.getpass(
+            f"订阅 {profile_id} 的新 URL（输入不会回显，留空取消）："
+        )
+    value = value.strip()
+    if not value:
+        log("已取消，未修改任何文件")
+        return None
+    if "\n" in value or "\r" in value:
+        raise SubscriptionError("订阅 URL 不能包含换行")
+    return value
+
+
+def command_subscription_replace(
+    args: argparse.Namespace,
+    *,
+    profile_id: str,
+    create: bool,
+    activate: bool,
+) -> int:
+    lock_handle = acquire_lock()
+    try:
+        if args.secrets_file is None:
+            raise SubscriptionError("subscription 命令必须使用订阅密钥文件")
+        control = load_yaml(args.control_file)
+        settings, sources = validate_control_inventory(control)
+        profile_env_name(profile_id)
+        existing = next((item for item in sources if item["id"] == profile_id), None)
+        if create and existing is not None:
+            raise SubscriptionError(f"订阅档案已存在：{profile_id}；请使用 edit")
+        if not create and existing is None:
+            raise SubscriptionError(f"订阅档案不存在：{profile_id}")
+
+        url_env = profile_env_name(profile_id)
+        if existing is not None:
+            current_env = existing.get("url_env")
+            if isinstance(current_env, str) and current_env:
+                url_env = current_env
+            converter = existing.get("converter") or {"type": "direct"}
+            if not isinstance(converter, dict):
+                raise SubscriptionError(f"订阅 {profile_id} 的 converter 必须是映射")
+            current_converter = str(converter.get("type", "direct"))
+            converter_type = args.converter or current_converter
+        else:
+            converter_type = args.converter or "direct"
+            used_envs = {
+                str(item.get("url_env"))
+                for item in sources
+                if isinstance(item.get("url_env"), str)
+            }
+            if url_env in used_envs or read_env_file_value(args.secrets_file, url_env) is not None:
+                raise SubscriptionError(
+                    f"订阅 ID {profile_id} 生成的密钥变量与现有档案冲突：{url_env}"
+                )
+        if converter_type != "direct":
+            raise SubscriptionError(
+                f"订阅 {profile_id} 仍使用旧转换配置；请加 --converter direct 迁移"
+            )
+
+        subscription_url = read_new_subscription_url(args, profile_id)
+        if subscription_url is None:
+            return 0
+
+        candidate_control = copy.deepcopy(control)
+        if create:
+            candidate_control["sources"].append(
+                {
+                    "id": profile_id,
+                    "enabled": False,
+                    "url_env": url_env,
+                    "prefix": f"[{profile_id}] ",
+                    "user_agent": "mihomo",
+                    "headers": {},
+                    "converter": {"type": "direct"},
+                }
+            )
+        else:
+            target = find_profile(candidate_control["sources"], profile_id)
+            target["url_env"] = url_env
+            target.pop("url", None)
+            target["converter"] = {"type": "direct"}
+
+        if activate:
+            candidate_control = select_profile(candidate_control, profile_id)
+        _, candidate_sources = validate_control_inventory(candidate_control)
+        target = find_profile(candidate_sources, profile_id)
+        runtime_changed = activate or bool(existing and existing.get("enabled", True))
+        if runtime_changed:
+            settings, download_sources = validate_control_file(candidate_control)
+        else:
+            download_sources = [target]
+
+        provider_bytes, cache_candidates = build_profile_candidate(
+            settings,
+            download_sources,
+            args.secrets_file,
+            {url_env: subscription_url},
+        )
+        validate_with_mihomo(settings, provider_bytes)
+
+        if args.dry_run:
+            log(
+                f"订阅 {profile_id} 下载与配置校验成功；dry-run 未修改任何文件"
+            )
+            return 0
+
+        provider_file = commit_profile_candidate(
+            args,
+            settings=settings,
+            candidate_control=candidate_control,
+            provider_bytes=provider_bytes,
+            cache_candidates=cache_candidates,
+            secret_value=(url_env, subscription_url),
+            runtime_changed=runtime_changed,
+        )
+        if create:
+            log(f"已添加并切换到订阅：{profile_id}")
+        elif activate:
+            log(f"已更新并切换到订阅：{profile_id}")
+        elif runtime_changed:
+            log(f"活动订阅已更新：{profile_id}")
+        else:
+            log(f"非活动订阅已更新：{profile_id}（运行节点未改变）")
+        if runtime_changed:
+            log(f"provider 文件：{provider_file}")
+        return 0
+    finally:
+        lock_handle.close()
+
+
+def command_subscription_use(args: argparse.Namespace) -> int:
+    lock_handle = acquire_lock()
+    try:
+        if args.secrets_file is None:
+            raise SubscriptionError("subscription 命令必须使用订阅密钥文件")
+        control = load_yaml(args.control_file)
+        settings, sources = validate_control_inventory(control)
+        find_profile(sources, args.profile_id)
+        candidate_control = select_profile(control, args.profile_id)
+        settings, active_sources = validate_control_file(candidate_control)
+        provider_bytes, cache_candidates = build_profile_candidate(
+            settings,
+            active_sources,
+            args.secrets_file,
+        )
+        validate_with_mihomo(settings, provider_bytes)
+        if args.dry_run:
+            log(f"订阅 {args.profile_id} 切换校验成功；dry-run 未修改任何文件")
+            return 0
+        provider_file = commit_profile_candidate(
+            args,
+            settings=settings,
+            candidate_control=candidate_control,
+            provider_bytes=provider_bytes,
+            cache_candidates=cache_candidates,
+            secret_value=None,
+            runtime_changed=True,
+        )
+        log(f"已切换到订阅：{args.profile_id}")
         log(f"provider 文件：{provider_file}")
         return 0
     finally:
         lock_handle.close()
+
+
+def profile_cache_count(settings: dict[str, Any], profile_id: str) -> str:
+    state_dir = Path(str(settings.get("state_dir", "/var/lib/mihomo-subscription")))
+    cache_dir = Path(str(settings.get("cache_dir", state_dir / "cache")))
+    cache_file = cache_dir / f"{profile_id}.yaml"
+    if not cache_file.exists():
+        return "-"
+    try:
+        document = load_yaml(cache_file)
+        payload = document.get("payload") if isinstance(document, dict) else None
+        return str(len(payload)) if isinstance(payload, list) else "invalid"
+    except SubscriptionError:
+        return "invalid"
+
+
+def print_subscription_profiles(control: dict[str, Any]) -> None:
+    settings, sources = validate_control_inventory(control)
+    enabled_count = sum(bool(source.get("enabled", True)) for source in sources)
+    print("ID\t状态\t缓存节点")
+    for source in sources:
+        if bool(source.get("enabled", True)):
+            status = "当前" if enabled_count == 1 else "已启用(聚合)"
+        else:
+            status = "未启用"
+        print(f"{source['id']}\t{status}\t{profile_cache_count(settings, source['id'])}")
+
+
+def command_subscription_list(args: argparse.Namespace) -> int:
+    lock_handle = acquire_lock()
+    try:
+        print_subscription_profiles(load_yaml(args.control_file))
+        return 0
+    finally:
+        lock_handle.close()
+
+
+def command_subscription_remove(args: argparse.Namespace) -> int:
+    if args.profile_id == "main":
+        raise SubscriptionError("main 是兼容保留档案，不能删除；可以编辑或停用")
+    if not args.yes:
+        if not sys.stdin.isatty():
+            raise SubscriptionError("非交互环境删除订阅必须使用 --yes")
+        if not ask_yes_no(f"确认删除订阅档案 {args.profile_id}？", default=False):
+            log("已取消，未修改任何文件")
+            return 0
+
+    lock_handle = acquire_lock()
+    try:
+        if args.secrets_file is None:
+            raise SubscriptionError("subscription 命令必须使用订阅密钥文件")
+        control = load_yaml(args.control_file)
+        settings, sources = validate_control_inventory(control)
+        target = find_profile(sources, args.profile_id)
+        if bool(target.get("enabled", True)):
+            raise SubscriptionError("不能删除当前或已启用订阅；请先切换到其他档案")
+
+        candidate_control = copy.deepcopy(control)
+        candidate_control["sources"] = [
+            source
+            for source in candidate_control["sources"]
+            if source.get("id") != args.profile_id
+        ]
+        validate_control_inventory(candidate_control)
+        url_env = target.get("url_env")
+        remaining_envs = {
+            source.get("url_env") for source in candidate_control["sources"]
+        }
+        state_dir = Path(str(settings.get("state_dir", "/var/lib/mihomo-subscription")))
+        cache_dir = Path(str(settings.get("cache_dir", state_dir / "cache")))
+        cache_file = cache_dir / f"{args.profile_id}.yaml"
+        originals = {
+            args.control_file: args.control_file.read_bytes(),
+            args.secrets_file: (
+                args.secrets_file.read_bytes() if args.secrets_file.exists() else None
+            ),
+            cache_file: cache_file.read_bytes() if cache_file.exists() else None,
+        }
+        try:
+            atomic_write(args.control_file, dump_yaml(candidate_control), 0o600)
+            if isinstance(url_env, str) and url_env not in remaining_envs:
+                remove_env_file_value(args.secrets_file, url_env)
+            cache_file.unlink(missing_ok=True)
+        except Exception as exc:
+            rollback_problems: list[str] = []
+            for path, original in originals.items():
+                try:
+                    restore_snapshot(path, original)
+                except Exception as rollback_exc:
+                    rollback_problems.append(f"恢复 {path} 失败：{rollback_exc}")
+            if rollback_problems:
+                raise SubscriptionError(
+                    "删除订阅失败且回滚不完整：" + "；".join(rollback_problems)
+                ) from exc
+            raise SubscriptionError(f"删除订阅失败，已恢复原文件：{exc}") from exc
+        log(f"已删除订阅档案：{args.profile_id}")
+        return 0
+    finally:
+        lock_handle.close()
+
+
+def command_subscription_manage(args: argparse.Namespace) -> int:
+    if not sys.stdin.isatty():
+        raise SubscriptionError("订阅管理菜单需要交互终端；脚本请使用具体子命令")
+    print_subscription_profiles(load_yaml(args.control_file))
+    print("\n[a] 添加  [u] 切换  [e] 编辑  [r] 删除  [q] 退出")
+    choice = input("请选择操作：").strip().lower()
+    actions = {"a": "add", "u": "use", "e": "edit", "r": "remove"}
+    if choice in ("", "q"):
+        log("已退出，未修改任何文件")
+        return 0
+    action = actions.get(choice)
+    if action is None:
+        raise SubscriptionError(f"未知菜单选项：{choice}")
+    profile_id = input("订阅 ID：").strip()
+    profile_env_name(profile_id)
+    nested = argparse.Namespace(**vars(args))
+    nested.subscription_action = action
+    nested.profile_id = profile_id
+    nested.subscription_url = None
+    nested.converter = "direct"
+    nested.dry_run = False
+    nested.no_reload = False
+    nested.yes = False
+    return command_subscription(nested)
+
+
+def command_subscription(args: argparse.Namespace) -> int:
+    """Manage saved subscription profiles while keeping the legacy main editor."""
+    action = getattr(args, "subscription_action", None)
+    if action is None:
+        return command_subscription_replace(
+            args,
+            profile_id="main",
+            create=False,
+            activate=True,
+        )
+    if action == "manage":
+        return command_subscription_manage(args)
+    if action == "list":
+        return command_subscription_list(args)
+    if action == "add":
+        return command_subscription_replace(
+            args,
+            profile_id=args.profile_id,
+            create=True,
+            activate=True,
+        )
+    if action == "edit":
+        return command_subscription_replace(
+            args,
+            profile_id=args.profile_id,
+            create=False,
+            activate=False,
+        )
+    if action == "use":
+        return command_subscription_use(args)
+    if action == "remove":
+        return command_subscription_remove(args)
+    raise SubscriptionError(f"未知订阅管理操作：{action}")
 
 
 # reset 时从现有主配置保留的服务器参数白名单。
@@ -1939,6 +2287,69 @@ def build_parser() -> argparse.ArgumentParser:
         "--no-reload",
         action="store_true",
         help="替换成功后不重载 Mihomo",
+    )
+    subscription_actions = subscription_parser.add_subparsers(
+        dest="subscription_action",
+        metavar="{manage,list,add,use,edit,remove}",
+    )
+    subscription_actions.add_parser("manage", help="打开订阅档案交互管理菜单")
+    subscription_actions.add_parser("list", help="列出订阅档案，不显示 URL")
+
+    for action, help_text in (
+        ("add", "添加订阅并在校验成功后立即切换"),
+        ("edit", "修改指定订阅；非活动档案不改变运行节点"),
+    ):
+        action_parser = subscription_actions.add_parser(action, help=help_text)
+        action_parser.add_argument("profile_id", metavar="ID")
+        action_parser.add_argument(
+            "--subscription-url",
+            default=argparse.SUPPRESS,
+            help="新订阅 URL；省略时隐藏式输入，命令行传入可能被 shell 历史记录",
+        )
+        action_parser.add_argument(
+            "--converter",
+            choices=("direct",),
+            default=argparse.SUPPRESS,
+            help="将旧来源迁移到 direct；仅支持 Clash/Mihomo YAML",
+        )
+        action_parser.add_argument(
+            "--dry-run",
+            action="store_true",
+            default=argparse.SUPPRESS,
+            help="只下载和校验，不修改任何文件",
+        )
+        action_parser.add_argument(
+            "--no-reload",
+            action="store_true",
+            default=argparse.SUPPRESS,
+            help="成功后不重载 Mihomo",
+        )
+
+    use_parser = subscription_actions.add_parser(
+        "use", help="严格刷新并切换到指定订阅"
+    )
+    use_parser.add_argument("profile_id", metavar="ID")
+    use_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        default=argparse.SUPPRESS,
+        help="只下载和校验，不修改任何文件",
+    )
+    use_parser.add_argument(
+        "--no-reload",
+        action="store_true",
+        default=argparse.SUPPRESS,
+        help="成功后不重载 Mihomo",
+    )
+
+    remove_parser = subscription_actions.add_parser(
+        "remove", help="删除非活动订阅档案（main 除外）"
+    )
+    remove_parser.add_argument("profile_id", metavar="ID")
+    remove_parser.add_argument(
+        "--yes",
+        action="store_true",
+        help="跳过删除确认，用于自动化",
     )
     subscription_parser.set_defaults(func=command_subscription)
 

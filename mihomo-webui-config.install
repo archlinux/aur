@@ -24,6 +24,8 @@ mihomo-webui-config 已升级。
 可运行 mihomo-webui-setup 补齐服务配置并验证订阅。
 本版本会自动用常见客户端标识协商 Clash/Mihomo YAML，但不转换 URI/Base64，
 也不依赖 Subconverter。
+可用 mihomo-webui-setup subscription manage 管理多个订阅档案；切换前会严格
+下载并校验，失败时继续使用当前订阅。
 已有节点可运行 mihomo-webui-setup rules 应用原生 ACL4SSR、AI 与第二手动出口。
 旧转换来源请用 mihomo-webui-setup subscription --converter direct 迁移。
 普通用户定制：policy-init 创建用户策略，编辑后用 check / diff / apply。
