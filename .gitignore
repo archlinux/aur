@@ -7,6 +7,8 @@
 !.SRCINFO
 !.nvchecker.toml
 !LICENSE
+!keys/
+!keys/pgp/*
 !mullvad-vpn.install
 !mullvad-vpn-daemon.install
 !mullvad-vpn.sh
