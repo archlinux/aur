@@ -1,0 +1,4 @@
+[python-wolframalpha]
+source = "git"
+git = "https://github.com/jaraco/wolframalpha.git"
+prefix = "v"
