@@ -5,13 +5,17 @@ pkgname=(
   'soundtouch-pipewire'
   'soundtouch-pipewire-control'
 )
-pkgver=0.1.0
-pkgrel=64
+pkgver=0.1.1
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/Mr-Tao/soundtouch-pipewire'
 license=('MIT AND Unicode-3.0 AND LicenseRef-STPW-SoundTouch-Supplement-1')
 _pipewire_ver=1.6.8
-_pipewire_pkgver=1:1.6.8
+# The patched source version is independent of the supported stock runtime.
+_pipewire_min_ver=1.6.8
+_pipewire_max_ver=1.7
+_pipewire_min_pkgver=1:${_pipewire_min_ver}
+_pipewire_max_pkgver=1:${_pipewire_max_ver}
 _release_state='READY'
 
 _daemon_depends=(
@@ -20,24 +24,29 @@ _daemon_depends=(
   'glibc'
   'json-glib'
   'libgcc'
-  "libpipewire=${_pipewire_pkgver}"
+  "libpipewire>=${_pipewire_min_pkgver}"
+  "libpipewire<${_pipewire_max_pkgver}"
   'libsoup3'
   'libxml2'
   'openssl'
   'opus'
-  "pipewire=${_pipewire_pkgver}"
-  "pipewire-audio=${_pipewire_pkgver}"
+  "pipewire>=${_pipewire_min_pkgver}"
+  "pipewire<${_pipewire_max_pkgver}"
+  "pipewire-audio>=${_pipewire_min_pkgver}"
+  "pipewire-audio<${_pipewire_max_pkgver}"
   'systemd'
   'wireplumber>=0.5.15'
 )
 makedepends=(
   'avahi'
+  'clang'
   'gettext'
   'glib2'
   'glib2-devel'
   'gtk4'
   'json-glib'
-  "libpipewire=${_pipewire_pkgver}"
+  "libpipewire>=${_pipewire_min_pkgver}"
+  "libpipewire<${_pipewire_max_pkgver}"
   'libsoup3'
   'libxml2'
   'meson'
@@ -45,16 +54,21 @@ makedepends=(
   'openssl'
   'opus'
   'patchelf'
-  "pipewire=${_pipewire_pkgver}"
-  "pipewire-audio=${_pipewire_pkgver}"
+  "pipewire>=${_pipewire_min_pkgver}"
+  "pipewire<${_pipewire_max_pkgver}"
+  "pipewire-audio>=${_pipewire_min_pkgver}"
+  "pipewire-audio<${_pipewire_max_pkgver}"
   'pkgconf'
   'rust'
+  'libwireplumber>=0.5.15'
 )
 checkdepends=(
   'appstream'
   'desktop-file-utils'
   'libpulse'
-  "pipewire-pulse=${_pipewire_pkgver}"
+  'lua'
+  "pipewire-pulse>=${_pipewire_min_pkgver}"
+  "pipewire-pulse<${_pipewire_max_pkgver}"
   'wireplumber>=0.5.15'
 )
 provides=()
@@ -78,7 +92,7 @@ source=(
   'soundtouch-pipewire.service'
   'soundtouch-pipewire.conf.example'
 )
-sha256sums=('e83114cce8cf3289b20697b57282440f9cac24e09a460c034eee8765aa884289'
+sha256sums=('8b2086f7feaeb6a3e58b686cc0b516f70986764ef2e8bf757cab27217c3d4357'
             '8181172a1d95131f6af8bbc0b98f90b2a33349b042b84c3ce57dd5d11348cc58'
             '4dd5fbf8ae0853866a9c88c8c86ae96b53347c998c9aa564bd92051cc3227120'
             '484fad982e6e8ae850cf69d19868739933d2662c51fd213b8552f2698d932c18'
@@ -119,10 +133,12 @@ _assert_pipewire_abi() {
     printf 'error: cannot determine the installed libpipewire version\n' >&2
     return 1
   }
-  if [[ ${installed_version} != "${_pipewire_ver}" ]]; then
-    printf 'error: private PipeWire module source is %s, but installed libpipewire is %s\n' \
-      "${_pipewire_ver}" "${installed_version}" >&2
-    printf 'error: rebuild and revalidate the private modules for the new PipeWire version\n' >&2
+  if ! pkg-config --atleast-version="${_pipewire_min_ver}" libpipewire-0.3 ||
+     pkg-config --atleast-version="${_pipewire_max_ver}" libpipewire-0.3; then
+    printf 'error: libpipewire %s is outside the supported range >=%s, <%s (private source %s)\n' \
+      "${installed_version}" "${_pipewire_min_ver}" "${_pipewire_max_ver}" \
+      "${_pipewire_ver}" >&2
+    printf 'error: revalidate the private modules before extending the runtime range\n' >&2
     return 1
   fi
 }
@@ -230,6 +246,8 @@ check() {
 
   desktop-file-validate \
     build-companion/control/io.github.Mr_Tao.SoundTouchPipeWire.Control.desktop
+  desktop-file-validate \
+    build-companion/control/io.github.Mr_Tao.SoundTouchPipeWire.Control-autostart.desktop
   appstreamcli validate --no-net \
     build-companion/control/io.github.Mr_Tao.SoundTouchPipeWire.Control.metainfo.xml
 }
@@ -240,7 +258,7 @@ package_soundtouch-pipewire() {
   install='soundtouch-pipewire.install'
   depends=("${_daemon_depends[@]}")
   optdepends=(
-    'soundtouch-pipewire-control: frozen v1 GTK controller (not used by service-v2)'
+    'soundtouch-pipewire-control: v2 GTK status and hardware-volume client'
   )
 
   _assert_release_gate
@@ -279,7 +297,7 @@ package_soundtouch-pipewire() {
 }
 
 package_soundtouch-pipewire-control() {
-  pkgdesc='Frozen v1 GTK controller for SoundTouch receiver and zone operations'
+  pkgdesc='GTK status and hardware-volume client for SoundTouch PipeWire outputs'
   license=('MIT AND Unicode-3.0 AND LicenseRef-STPW-SoundTouch-Supplement-1')
   depends=(
     "soundtouch-pipewire=${pkgver}-${pkgrel}"
@@ -288,11 +306,7 @@ package_soundtouch-pipewire-control() {
     'gtk4'
     'hicolor-icon-theme'
     'libgcc'
-  )
-  optdepends=(
-    'pwvucontrol: native PipeWire mixer'
-    'pavucontrol: graphical PulseAudio-compatible mixer'
-    'wiremix: terminal PipeWire mixer (requires a supported terminal emulator)'
+    'libwireplumber>=0.5.15'
   )
 
   _assert_release_gate
