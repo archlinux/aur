@@ -1,7 +1,7 @@
 # Maintainer: Cetronix <trm.seven@gmail.com>
 pkgname=ascon-kompas3d-v25-home
 pkgver=25.0.1.2738
-pkgrel=2
+pkgrel=3
 pkgdesc="CAD software for mechanical engineering (Home Edition)"
 url="https://kompas.ru/"
 arch=("x86_64")
@@ -27,6 +27,8 @@ depends=(
 makedepends=("libarchive")
 
 _repo="https://repo.ascon.ru/stable/alt/p11/x86_64/RPMS.main"
+# Репозиторий Домашних и Учебных версий
+_repo_personal="https://repo.ascon.ru/personal/alt/p11/x86_64/RPMS.main"
 
 source=(
 	# Общие компоненты v25
@@ -47,7 +49,7 @@ source=(
 	"${_repo}/ascon-kompas3d-v25-${pkgver}-0.x86_64.rpm"
 	"${_repo}/ascon-kompas-plugins-v25-${pkgver}-0.x86_64.rpm"
 	"${_repo}/ascon-kompas-sdf3dapp-v25-${pkgver}-0.x86_64.rpm"
-	"${_repo}/ascon-kompas-tutorials-3dprint-v25-${pkgver}-0.x86_64.rpm"
+        "${_repo_personal}/ascon-kompas-tutorials-3dprint-v25-${pkgver}-0.x86_64.rpm"
 	
 	# Компоненты со специфичными версиями
 	"${_repo}/ascon-polynom-library-24.0-24.0.0.26061516-0.x86_64.rpm"
@@ -58,7 +60,7 @@ source=(
 	"${_repo}/ascon-kompas-kactivation-v25-4.3.9.134-alt1.x86_64.rpm"
 	
 	# Home-специфичные компоненты
-	"${_repo}/ascon-kompas-home-v25-${pkgver}-0.x86_64.rpm"
+	"${_repo_personal}/ascon-kompas-home-v25-${pkgver}-0.x86_64.rpm"
 
 	# Скрипт установки
 	"ascon-kompas3d-v25-home.install"
