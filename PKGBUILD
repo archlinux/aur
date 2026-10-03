@@ -1,17 +1,17 @@
 # Maintainer: Captain Cave
 _pkgname=corona
 pkgname=solar2d-git
-pkgver=3732.r1.f58c5bba
+pkgver=3733.r0.c324d463
 pkgrel=1
 install=solar2d-git.install
 pkgdesc="Solar2D (formerly Corona SDK) cross-platform game engine"
 arch=('x86_64')
 url="https://github.com/coronalabs/corona"
 license=('MIT')
-depends=('glu' 'zlib' 'openal' 'freetype2' 'libpng' 'libjpeg.so' 'libjpeg-turbo' 'curl' 'sdl2' 'java-runtime')
+depends=('lua' 'libgcc' 'bash' 'libglvnd' 'glibc' 'openssl' 'libstdc++' 'zlib' 'openal' 'freetype2' 'libpng' 'libjpeg.so' 'libjpeg-turbo' 'curl' 'sdl2' 'java-runtime' 'hicolor-icon-theme')
 makedepends=('git' 'cmake')
-provides=('Solar2D')
-conflicts=('Solar2D')
+provides=('solar2d')
+conflicts=('solar2d')
 source=("git+https://github.com/coronalabs/corona.git#branch=master"
         "Solar2D.desktop")
 sha256sums=('SKIP'
@@ -53,6 +53,14 @@ build() {
 package() {
   # Use DESTDIR to redirect installation to the package directory
   DESTDIR="$pkgdir" cmake --install build
-  ln -s /usr/bin/Solar2D/Solar2D "${pkgdir}/usr/bin/solar2d"
+
+  install -d "${pkgdir}/usr/lib"
+  mv "${pkgdir}/usr/bin/Solar2D" "${pkgdir}/usr/lib/solar2d"
+
+  install -d "${pkgdir}/usr/bin"
+  ln -s /usr/lib/solar2d/Solar2D "${pkgdir}/usr/bin/solar2d"
+
   install -Dm644 "${srcdir}/Solar2D.desktop" "${pkgdir}/usr/share/applications/Solar2D.desktop"
+  install -Dm644 "${pkgdir}/usr/lib/solar2d/Resources/solar2d.png" "${pkgdir}/usr/share/icons/hicolor/60x60/apps/solar2d.png"
+  install -Dm644 "${srcdir}/corona/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
