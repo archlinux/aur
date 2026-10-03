@@ -5,11 +5,11 @@ pkgname='amdcovc'
 pkgver='0.4.1.2'
 pkgrel='1'
 pkgdesc='Control AMD Overdrive settings with or without X'
-arch=('x86_64')
+arch=('x86_64' 'x86_64_v3')
 url="https://github.com/matszpk/${pkgname}"
 depends=('ocl-icd' 'pciutils')
 makedepends=('opencl-headers')
-license=('GPL')
+license=('GPL-2.0-only')
 source=("${url}/archive/${pkgver}.tar.gz")
 sha256sums=('0eade87f70a51c4e059aa664ac98c9bd0f418e9954754665df4bc3e56e8f623f')
 
