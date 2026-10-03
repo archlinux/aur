@@ -1,10 +1,10 @@
 pkgbase = nsncd-codyps-git
 	pkgdesc = nscd-compatible daemon without caching. (fork with fixes & socket activation)
 	pkgver = v1.4.2.codyps.1.r5.gb01247c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/codyps/nsncd
 	arch = x86_64
-	license = MIT
+	license = Apache-2.0
 	makedepends = git
 	makedepends = cargo
 	depends = glibc
