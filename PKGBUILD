@@ -18,7 +18,7 @@ makedepends=('git')
 provides=('librtmp.so.0')
 options=('!makeflags')
 _commit='c28f1bab7822de97353849e7787b59e50bbb1428'
-source=("git+https://git.ffmpeg.org/rtmpdump#commit=${_commit}")
+source=("git+git://git.ffmpeg.org/rtmpdump#commit=${_commit}")
 sha256sums=('SKIP')
 
 prepare() {
