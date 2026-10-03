@@ -1,7 +1,7 @@
 # Maintainer: xifan <xifan2333@gmail.com>
 pkgname=wayhud-bin
 _pkgname=wayhud
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Universal modern suckless Wayland on-screen HUD (GTK CSS styled)"
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('wayland' 'cairo' 'pango' 'libxkbcommon')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 options=(!strip)
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/xifan2333/wayhud/releases/download/v0.1.0/wayhud-0.1.0-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('b63776b16bba7b0bb5d34368037946fd6abbed025af99d5daf515438ac86c0e0')
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/xifan2333/wayhud/releases/download/v0.1.1/wayhud-0.1.1-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('008f67554043d1fdc23393cd3aceb31beb0917d40095a597ea84d4528d10a1da')
 
 package() {
 	cd "${srcdir}/wayhud-${pkgver}-x86_64-unknown-linux-gnu"
