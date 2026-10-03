@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2148,SC2154,SC2164
 
 pkgname=marimo
-pkgver=0.25.0
+pkgver=0.25.1
 pkgrel=1
 pkgdesc="A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps"
 arch=(any)
@@ -80,7 +80,7 @@ optdepends=(
 
 # PyPI source release
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-$pkgver.tar.gz")
-b2sums=('8efeae1bfe9be30f9694333a6e2db7d0a98b296bf07a72af8fdca25dc509dbf2a24442bbdb27b4a59964d978032fe7a73b425ffec0f9b955c7ac9e24da0df187')
+b2sums=('d603e2ce5a2cf342179d0028ea959a00e3a45310c618b340cbdfc149f939cac13f2c11d12afde78a8db22b60f02e1abbd0c1f76f94d9b6c98c7a5cbe69c52b1a')
 
 build() {
     cd $pkgname-$pkgver
@@ -98,4 +98,16 @@ build() {
 package() {
     cd $pkgname-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
+
+    # Shell completions
+
+    install -dm0755 "${pkgdir}/usr/share/bash-completion/completions/"
+    install -dm0755 "${pkgdir}/usr/share/zsh/site-functions/"
+    install -dm0755 "${pkgdir}/usr/share/fish/vendor_completions.d/"
+
+    PYTHONPATH+="${srcdir}/marimo:"
+
+    PYTHONPATH=${PYTHONPATH} _MARIMO_COMPLETE=bash_source "$pkgdir"/usr/bin/marimo > "${pkgdir}/usr/share/bash-completion/completions/marimo"
+    PYTHONPATH=${PYTHONPATH} _MARIMO_COMPLETE=zsh_source "$pkgdir"/usr/bin/marimo > "${pkgdir}/usr/share/zsh/site-functions/_marimo"
+    PYTHONPATH=${PYTHONPATH} _MARIMO_COMPLETE=fish_source "$pkgdir"/usr/bin/marimo > "${pkgdir}/usr/share/fish/vendor_completions.d/marimo.fish"
 }
