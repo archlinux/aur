@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=moonbit
-pkgver=1.5.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A system cleaner for Linux, with a TUI and a CLI"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=(
 )
 makedepends=('go>=1.24')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('553af172304da104dcba50ba31ae550e118abf1cbaae91c014d7ba3e7caf5df7')
+sha256sums=('d62802e31a7e8e3a06fc23959c6e5a536de8f27cc225b257d3a270215f295990')
 install=${pkgname}.install
 
 build() {
