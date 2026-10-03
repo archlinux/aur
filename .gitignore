@@ -1,0 +1,13 @@
+# makepkg artifacts
+*.pkg.tar.*
+*.deb
+src/
+pkg/
+LICENSE-*
+*.tar.gz
+*.tar.xz
+*.zip
+
+# Test / temporary artifacts
+/tmp_verify/
+__pycache__/
