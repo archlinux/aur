@@ -1,13 +1,14 @@
 # Maintainer: Cody Schafer <dev at codyps.com>
 pkgname=ioztat
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="storage load analysis tool for OpenZFS"
 arch=(any)
 url="https://github.com/jimsalterjrs/ioztat"
-license=('BSD')
+license=('BSD-2-Clause')
 groups=()
-depends=()
+depends=('python')
+optdepends=('zfs-utils: provides the OpenZFS facilities monitored by ioztat')
 makedepends=()
 replaces=()
 backup=()
@@ -23,4 +24,5 @@ package() {
 	install -m755 ioztat "$pkgdir/usr/bin"
 	mkdir -p "$pkgdir/usr/share/man/man8"
 	install -m644 ioztat.8 "$pkgdir/usr/share/man/man8"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
