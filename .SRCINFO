@@ -1,6 +1,6 @@
 pkgbase = deadlywp-bin
 	pkgdesc = Live wallpapers: videos, GIFs, pictures, web pages, Lively and Wallpaper Engine wallpapers
-	pkgver = 0.0.9
+	pkgver = 0.0.10
 	pkgrel = 1
 	url = https://github.com/nickheyer/deadlywallpaper
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = deadlywp-bin
 	optdepends = plasma-workspace: KDE Plasma wallpaper plugin
 	provides = deadlywp
 	conflicts = deadlywp
-	source = deadlywp-0.0.9-x86_64-linux.tar.gz::https://github.com/nickheyer/deadlywallpaper/releases/download/v0.0.9/deadlywp-0.0.9-x86_64-linux.tar.gz
-	sha256sums = d47eb92dae94d1543361112ca3b53cee2218b68b938608236a1f1fb7569e64b4
+	source = deadlywp-0.0.10-x86_64-linux.tar.gz::https://github.com/nickheyer/deadlywallpaper/releases/download/v0.0.10/deadlywp-0.0.10-x86_64-linux.tar.gz
+	sha256sums = 40533824ffa62fc5e3c50674ed143e8e65d220b1a5bb87a7dc7b4d880408fb5a
 
 pkgname = deadlywp-bin
