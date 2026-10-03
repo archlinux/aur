@@ -1,0 +1,15 @@
+pkgbase = ttf-libron
+	pkgdesc = Serif typeface tuned for digital reading and e-readers (Readerly fork)
+	pkgver = 0.25
+	pkgrel = 1
+	url = https://github.com/nicoverbruggen/libron
+	arch = any
+	license = OFL-1.1
+	source = ttf-libron-0.25.zip::https://github.com/nicoverbruggen/libron/releases/download/v0.25/Libron.zip
+	source = LICENSE-0.25::https://raw.githubusercontent.com/nicoverbruggen/libron/v0.25/LICENSE
+	source = COPYRIGHT-0.25::https://raw.githubusercontent.com/nicoverbruggen/libron/v0.25/COPYRIGHT
+	sha256sums = a732102b75e6016ae52d39ec22e182bc89365612c906b5898bcd1f8e02b91a57
+	sha256sums = cb452a7a6e43d36823b393e6fa2cb1b60fccb4533bb30dc96d7262df5dbb477e
+	sha256sums = f266cfea9e68f3a159788da9ecda72e3fa14d76816c0fca30442496b6253e12e
+
+pkgname = ttf-libron
