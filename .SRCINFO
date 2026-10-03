@@ -24,6 +24,7 @@ pkgbase = nomachine-personal-edition
 	conflicts = nxserver
 	conflicts = nxnode
 	conflicts = nxclient
+	conflicts = nomachine
 	options = !strip
 	source_x86_64 = https://download.nomachine.com/download/10.1/Linux/nomachine-personal-edition_10.1.7_1_x86_64.tar.gz
 	sha512sums_x86_64 = dbc7728a24991a3e63b55c867bd7f669b311f97216d5f4c99fe8e37714bba64db35f784e18a93849cef3b076c777059cee2a6076130504e6f757306480dfb7f3
