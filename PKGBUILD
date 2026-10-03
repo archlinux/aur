@@ -3,15 +3,24 @@
 
 pkgname=telegram-drive-appimage
 pkgver=3.9.8
-pkgrel=1
-pkgdesc="Turn your Telegram account into an unlimited, secure cloud storage drive (AppImage)"
+pkgrel=2
+pkgdesc="Turn your Telegram account into an unlimited, secure cloud storage drive (from AppImage)"
 arch=('x86_64')
 url="https://github.com/caamer20/Telegram-Drive"
 license=('LicenseRef-Upstream-Unspecified')
-depends=('hicolor-icon-theme')
+depends=(
+    'cairo'
+    'dbus'
+    'gdk-pixbuf2'
+    'glib2'
+    'gtk3'
+    'hicolor-icon-theme'
+    'libayatana-appindicator'
+    'libsoup3'
+    'webkit2gtk-4.1'
+)
 makedepends=('squashfs-tools')
 optdepends=(
-    'fuse2: run the AppImage without extracting it (squashfs mounting)'
     'ffmpeg: HLS media transcoding'
     'gnome-keyring: persistent credential storage'
 )
@@ -28,16 +37,31 @@ prepare() {
 }
 
 package() {
-    # Сам AppImage ставится как исполняемый файл: его рантайм подтягивает
-    # вшитые библиотеки (libwebkit и т.д.) при запуске
-    install -Dm755 "${srcdir}/real-appimage" "${pkgdir}/usr/bin/telegram-drive"
-
     cd "${srcdir}/squashfs-root"
+
+    # Ставим сам бинарник из AppImage, а не AppImage-рантайм.
+    # Внутри AppImage вшиты свои GTK/WebKit: на части систем (в т.ч. без
+    # аппаратного GL) WebKit не инициализируется ("Could not create default
+    # EGL display") и окно остаётся пустым тёмным прямоугольником.
+    # Бинарник же линкуется динамически и отлично работает с системными
+    # библиотеками — так же, как и upstream .deb/.rpm-пакеты.
+    install -Dm755 "usr/bin/app" "${pkgdir}/usr/lib/telegram-drive/app"
+
     local icon
     while IFS= read -r -d '' icon; do
         install -Dm644 "${icon}" \
             "${pkgdir}/${icon/apps\/app.png/apps\/com.cameronamer.telegramdrive.png}"
     done < <(find usr/share/icons/hicolor -type f -path '*/apps/app.png' -print0)
+
+    install -dm755 "${pkgdir}/usr/bin"
+    cat > "${pkgdir}/usr/bin/telegram-drive" << 'EOF'
+#!/bin/sh
+# Pacman владеет установкой: приложение может проверять обновления,
+# но не должно менять файлы в /usr через self-updater Tauri.
+export TELEGRAM_DRIVE_PACKAGE_MANAGER=pacman
+exec /usr/lib/telegram-drive/app "$@"
+EOF
+    chmod 755 "${pkgdir}/usr/bin/telegram-drive"
 
     install -dm755 "${pkgdir}/usr/share/applications"
     cat > "${pkgdir}/usr/share/applications/com.cameronamer.telegramdrive.desktop" << 'EOF'
