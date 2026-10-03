@@ -1,0 +1,31 @@
+pkgbase = flummox-bin
+	pkgdesc = Compress installed games and keep playing them
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/bybrooklyn/flummox
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	depends = glibc>=2.39
+	depends = gcc-libs
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = wayland
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxrandr
+	depends = fontconfig
+	optdepends = fuse3: Maximum Space mounts
+	optdepends = zenity: native folder picker
+	optdepends = kdialog: KDE folder picker
+	provides = flummox
+	conflicts = flummox
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/bybrooklyn/flummox/releases/download/v0.0.1/flummox-0.0.1-linux-x86_64.tar.xz
+	sha256sums_x86_64 = 4c3ea54d4f2e4b2061f88b29b3d5b90a22293f95a06f1d6a303db828dfa6625c
+	source_aarch64 = https://github.com/bybrooklyn/flummox/releases/download/v0.0.1/flummox-0.0.1-linux-aarch64.tar.xz
+	sha256sums_aarch64 = d75038b56223d91cb7193a30dfcfb8f17d9e93425a83618873ce0a5f765c8b36
+
+pkgname = flummox-bin
