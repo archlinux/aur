@@ -1,0 +1,18 @@
+pkgbase = slate-bin
+	pkgdesc = Minimal, keyboard-first terminal note-taking scratchpad (prebuilt binary)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/dborovcanin/slate
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = libgcc
+	conflicts = slate
+	conflicts = slate-git
+	options = !debug
+	source = slate-0.3.0-linux-x86_64::https://github.com/dborovcanin/slate/releases/download/v0.3.0/slate-linux-x86_64
+	source = slate-0.3.0.tar.gz::https://github.com/dborovcanin/slate/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 480375acefb279183146d65f2cf3c6fb03311618ee9636b6c0bed72cdaa37f7a
+	sha256sums = ba7ce5b1caa0513dcd9d1025b2efc922bb670a3bf4f17c7b4c17643275e9b5fe
+
+pkgname = slate-bin
