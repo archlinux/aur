@@ -1,6 +1,6 @@
 pkgbase = rio-nik
 	pkgdesc = A hardware-accelerated GPU terminal emulator powered by WebGPU (nikicat's fork with fixes)
-	pkgver = 0.4.6.nb.7
+	pkgver = 0.5.28.nb.2
 	pkgrel = 1
 	url = https://github.com/nikicat/rio
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = rio-nik
 	provides = rio
 	conflicts = rio
 	options = !lto
-	source = rio-nik-0.4.6.nb.7.tar.gz::https://github.com/nikicat/rio/archive/refs/tags/v0.4.6-nb.7.tar.gz
-	sha512sums = fde93a37ff0a54758951412d8c18b2dfa4290d8cf5d56fadb8c712a6f4c197825e69dab5faafe9bfcefa4c06a889b230dee82f635b0e11137bd377faf3d307dc
+	source = rio-nik-0.5.28.nb.2.tar.gz::https://github.com/nikicat/rio/archive/refs/tags/v0.5.28-nb.2.tar.gz
+	sha512sums = a31ad5ead6faecece37954995570d419616662dafef11f4cfb599f0f2558788f9e337c06eca7390808736e28d46f3aba7ce3859de76b5a325cb3190c482ffcad
 
 pkgname = rio-nik
