@@ -1,0 +1,22 @@
+pkgbase = f4-bin
+	pkgdesc = Dual-pane Far Manager / far2l-style file manager with TUI and GUI
+	pkgver = 0.3.0beta
+	pkgrel = 1
+	url = https://github.com/unxed/f4
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	license = MIT
+	depends = glibc
+	depends = hicolor-icon-theme
+	provides = f4
+	conflicts = f4
+	options = !strip
+	source = LICENSE-0.3.0beta::https://raw.githubusercontent.com/unxed/f4/v0.3.0-beta/LICENSE
+	sha256sums = 979fd5dae809c05ba4e625f005ac0de850ece6742db698fb5b97172ef2e75d18
+	source_x86_64 = f4-0.3.0beta-amd64.tar.gz::https://github.com/unxed/f4/releases/download/v0.3.0-beta/f4-linux-amd64.tar.gz
+	sha256sums_x86_64 = babf2091601a1281fc46af3e1afa917fbbb8ce9e6b75227df31df69fe0de66dd
+	source_aarch64 = f4-0.3.0beta-arm64.tar.gz::https://github.com/unxed/f4/releases/download/v0.3.0-beta/f4-linux-arm64.tar.gz
+	sha256sums_aarch64 = 22f43ab6e154109dadb35a1f33062a9f193357efebcab00e132b08c6622194bc
+
+pkgname = f4-bin
