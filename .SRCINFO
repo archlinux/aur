@@ -1,7 +1,7 @@
 pkgbase = 1panel-v2-bin
 	pkgdesc = 1Panel v2, a modern open source linux panel (official binary)
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/1Panel-dev/1Panel
 	install = 1panel-v2-bin.install
 	arch = x86_64
@@ -16,12 +16,8 @@ pkgbase = 1panel-v2-bin
 	conflicts = 1panel-git
 	conflicts = 1panel-dev-bin
 	source_x86_64 = 1panel-v2.3.2-linux-amd64.tar.gz::https://resource.fit2cloud.com/1panel/package/v2/stable/v2.3.2/release/1panel-v2.3.2-linux-amd64.tar.gz
-	source_x86_64 = 1panel-LICENSE::https://raw.githubusercontent.com/1Panel-dev/installer/v2/LICENSE
 	sha256sums_x86_64 = f1265a4fadeaab3d7066dd71e3c6904ac54bb687baab1b205a23c369abb61cac
-	sha256sums_x86_64 = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 	source_aarch64 = 1panel-v2.3.2-linux-arm64.tar.gz::https://resource.fit2cloud.com/1panel/package/v2/stable/v2.3.2/release/1panel-v2.3.2-linux-arm64.tar.gz
-	source_aarch64 = 1panel-LICENSE::https://raw.githubusercontent.com/1Panel-dev/installer/v2/LICENSE
 	sha256sums_aarch64 = e147b2ad27053eaef25db41779368a28d31ca2aa79221b37ce5ed62b9e5fa054
-	sha256sums_aarch64 = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = 1panel-v2-bin

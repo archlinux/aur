@@ -10,7 +10,7 @@
 pkgname=1panel-v2-bin
 _upver=v2.3.2
 pkgver=${_upver#v}
-pkgrel=1
+pkgrel=2
 pkgdesc="1Panel v2, a modern open source linux panel (official binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/1Panel-dev/1Panel"
@@ -24,16 +24,12 @@ conflicts=('1panel-bin' '1panel' '1panel-git' '1panel-dev-bin')
 install=1panel-v2-bin.install
 source_x86_64=(
   "1panel-${_upver}-linux-amd64.tar.gz::https://resource.fit2cloud.com/1panel/package/v2/stable/${_upver}/release/1panel-${_upver}-linux-amd64.tar.gz"
-  "1panel-LICENSE::https://raw.githubusercontent.com/1Panel-dev/installer/v2/LICENSE"
 )
 source_aarch64=(
   "1panel-${_upver}-linux-arm64.tar.gz::https://resource.fit2cloud.com/1panel/package/v2/stable/${_upver}/release/1panel-${_upver}-linux-arm64.tar.gz"
-  "1panel-LICENSE::https://raw.githubusercontent.com/1Panel-dev/installer/v2/LICENSE"
 )
-sha256sums_x86_64=('f1265a4fadeaab3d7066dd71e3c6904ac54bb687baab1b205a23c369abb61cac'
-                   '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_aarch64=('e147b2ad27053eaef25db41779368a28d31ca2aa79221b37ce5ed62b9e5fa054'
-                    '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
+sha256sums_x86_64=('f1265a4fadeaab3d7066dd71e3c6904ac54bb687baab1b205a23c369abb61cac')
+sha256sums_aarch64=('e147b2ad27053eaef25db41779368a28d31ca2aa79221b37ce5ed62b9e5fa054')
 
 # 上游包目录/文件名的架构标识:amd64 / arm64
 case "$CARCH" in
@@ -71,5 +67,4 @@ package() {
   install -Dm644 1panel-core.service "$pkgdir/usr/lib/systemd/system/1panel-core.service"
   install -Dm644 1panel-agent.service "$pkgdir/usr/lib/systemd/system/1panel-agent.service"
 
-  install -Dm644 "$srcdir/1panel-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
