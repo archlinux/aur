@@ -6,7 +6,7 @@
 # nothing extra to compile on the user's machine.
 
 pkgname=poc-pinger
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Reports TCP connect latency - poc-app demo binary, versioned independently by multicz'
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('go')
 source=("poc-app-$pkgver.tar.gz::https://github.com/goabonga/poc-app/archive/refs/tags/pinger-v$pkgver.tar.gz")
 # Recomputed by .github/workflows/publish.yml on every version bump via
 # `updpkgsums` once the corresponding poc-app tag actually exists.
-sha256sums=('2529a0d3f5cc94202f512a00f7659219879ba9d503cd2d2828e43c2fd2759620')
+sha256sums=('d8f8d37bda1ad81ccf95504142ff60de3517edf7271e277c12ef289d9624629b')
 
 build() {
   # Not a fixed "poc-app-pinger-v$pkgver" name: while poc-app stays
