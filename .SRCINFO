@@ -1,6 +1,6 @@
 pkgbase = python-forgekit
 	pkgdesc = Shared Textual TUI shell library for the Forge Suite — menu bar, dialogs, settings forms and save flows, Catppuccin theme
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/jetomev/forgekit
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = python-forgekit
 	depends = python
 	depends = python-textual
 	depends = python-rich
-	source = forgekit-0.5.0.tar.gz::https://github.com/jetomev/forgekit/releases/download/v0.5.0/forgekit-0.5.0.tar.gz
-	source = forgekit-0.5.0.tar.gz.asc::https://github.com/jetomev/forgekit/releases/download/v0.5.0/forgekit-0.5.0.tar.gz.asc
+	source = forgekit-0.5.1.tar.gz::https://github.com/jetomev/forgekit/releases/download/v0.5.1/forgekit-0.5.1.tar.gz
+	source = forgekit-0.5.1.tar.gz.asc::https://github.com/jetomev/forgekit/releases/download/v0.5.1/forgekit-0.5.1.tar.gz.asc
 	validpgpkeys = 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
-	sha256sums = ee48e5f8e84838b6331d02e9ddff6160cef137af5958818e79e31f8586aeb414
+	sha256sums = c41c920ec9b7f56cb1af35b0be3ad001695d30d789c20f03ef352ef7d363c024
 	sha256sums = SKIP
 
 pkgname = python-forgekit
