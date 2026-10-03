@@ -4,7 +4,7 @@
 
 pkgname=tenzen-studio-bin
 _pkgname=tenzen
-pkgver=0.1.30
+pkgver=0.1.31
 pkgrel=1
 pkgdesc="Record and edit product demos: cut pauses, add zooms and captions (upstream Flatpak bundle)"
 arch=('x86_64')
@@ -16,10 +16,10 @@ makedepends=('ostree' 'asar')
 provides=('tenzen-studio')
 conflicts=('tenzen-studio')
 options=('!strip' '!debug')
-_bundle="Tenzen-${pkgver}-linux-x64.flatpak"
+_bundle="Capture-Studio-${pkgver}-linux-x64.flatpak"
 source=("${_bundle}::https://downloads.tenzen.studio/desktop/stable/linux/${pkgver}/${_bundle}")
 noextract=("${_bundle}")
-sha256sums=('b7900c23314c01a88b7f539e84f68cd7a0f3f8f67f5ac647d39741f3c063bead')
+sha256sums=('7da913c08bd574869c3c2cc7e465c42c3d937194a349b384fb8b6314f21d0483')
 
 prepare() {
   # A Flatpak bundle is an OSTree static delta carrying a single commit:
@@ -60,7 +60,7 @@ package() {
   # so what goes in is the reference to the terms it is used under, next to
   # the notices for everything bundled with it, which the app dir does carry.
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" <<'EOF'
-Tenzen Studio is proprietary software, distributed by Tenzen Studio.
+Capture Studio is proprietary software, distributed by Tenzen Studio.
 
 It is not covered by a free-software licence: use is governed by the terms
 of service the vendor publishes, and redistribution of the build this
