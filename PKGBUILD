@@ -1,6 +1,6 @@
 # Maintainer: Igor Kalicinski <igorkalicinski@gmail.com>
 pkgname=twig-bin
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Lightweight Git GUI with native Wayland support — lighter than the rest"
 arch=('x86_64')
