@@ -2,7 +2,7 @@
 
 pkgname=whichllm
 _pkgname=whichllm
-pkgver=0.5.15
+pkgver=0.5.19
 pkgrel=1
 pkgdesc="Auto-detect your hardware and rank local LLMs by what actually fits and performs best"
 arch=('any')
@@ -15,9 +15,7 @@ depends=(
     'python-httpx'
     'python-psutil'
     'python-dbgpu'
-)
-optdepends=(
-    'python-nvidia-ml-py: NVIDIA GPU detection (pulls in nvidia-utils ~900MB)'
+    'python-nvidia-ml-py'
 )
 makedepends=(
     'python-build'
@@ -27,7 +25,7 @@ makedepends=(
 )
 conflicts=("${_pkgname}-git")
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('84748a9720e4e2f4c82dc258d0e52eae39109c4377e9cbdec16b62fcefaf92a3')
+sha256sums=('00208b8815a18a7a605f633c75f5d2a804c477e668322016d99e73bed94a9eb6')
 
 build() {
     cd "${_pkgname}-${pkgver}"
