@@ -1,0 +1,17 @@
+pkgbase = mpx-bin
+	pkgdesc = Transparent terminal multiplexer
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/capocasa/mpx
+	arch = x86_64
+	arch = aarch64
+	license = Unlincense
+	provides = mpx
+	conflicts = mpx
+	options = !strip
+	source_x86_64 = mpx-x86_64-0.1.1.tgz::https://github.com/capocasa/mpx/releases/download/0.1.1/mpx-linux-amd64.tar.gz
+	sha256sums_x86_64 = ddb8915313734292bf4eada5d1ed51d32fb6c4d78d9c6e73a1ce013a8d1d8fab
+	source_aarch64 = mpx-aarch64-0.1.1.tgz::https://github.com/capocasa/mpx/releases/download/0.1.1/mpx-linux-arm64.tar.gz
+	sha256sums_aarch64 = 1af214d4059b16f5b10f62296fd92ecb3950e71fe14094d10446b2a368943298
+
+pkgname = mpx-bin

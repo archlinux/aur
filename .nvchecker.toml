@@ -1,0 +1,5 @@
+[mpx-bin]
+source = "github"
+github = "capocasa/mpx"
+use_latest_release = true
+prefix = ""
