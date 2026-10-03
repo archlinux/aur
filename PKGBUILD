@@ -9,7 +9,7 @@
 # Contributor: dada513 <dada513@protonmail.com>
 
 pkgname=polymc
-pkgver=8.0
+pkgver=8.1
 pkgrel=1
 pkgdesc="Minecraft launcher with the ability to manage multiple instances"
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=('glfw: to use system GLFW libraries'
             'xorg-xrandr: for older minecraft versions'
 )
 source=("https://github.com/PolyMC/PolyMC/releases/download/$pkgver/PolyMC-$pkgver.tar.gz")
-sha256sums=('6bda5dcfa88680fe540a1a33efe06479448a005902950e4707a97771c357bcfb')
+sha256sums=('217a80e1bc3412239b3a45e4fc45f3308388dd75d7a4aafdd0a75c12590ac7d3')
 
 build() {
   cmake -B build -S PolyMC-$pkgver \
