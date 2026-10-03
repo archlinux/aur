@@ -1,11 +1,9 @@
 #shellcheck shell=bash
 # AUR Maintainer: Shadichy <shadichy@blisslabs.org>
 
-pkgbase=ntfsprogs-plus
-pkgname=${pkgbase}
-_repo=ntfsprogs-plus/$pkgname
+pkgname=ntfsprogs-plus
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='NTFS filesystem utilities.'
 arch=('x86_64')
 
@@ -15,9 +13,9 @@ makedepends=('libgcrypt')
 conflicts=('ntfsprogs' 'ntfs-3g' "${pkgname}-git")
 provides=('ntfsprogs' 'ntfs-3g' "$pkgname")
 
-url="https://github.com/${_repo}"
+url="https://github.com/ntfsprogs-plus/ntfsprogs-plus"
 license=('GPL-2.0-or-later' 'LGPL-2.0-or-later')
-source=("${pkgname}.tar.gz::https://api.github.com/repos/ntfsprogs-plus/ntfsprogs-plus/tarball/refs/tags/1.0.0")
+source=("${pkgname}.tar.gz::https://api.github.com/repos/ntfsprogs-plus/ntfsprogs-plus/tarball/refs/tags/${pkgver}")
 sha256sums=('28f24aa673a81bf84d339cd0842dc7afd571bfa5345b6554fe3760ed6a71e343')
 
 prepare() {
