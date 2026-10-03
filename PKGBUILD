@@ -1,6 +1,6 @@
 # AUR: linux-danmu-hime（预编译版，直接拉 GitHub release，本地不需要编 Rust）
 pkgname=linux-danmu-hime
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="bilibili 直播弹幕浮层（wlr-layer-shell）+ GTK4 设置界面（预编译）"
 # 只提供 x86_64 的 release 资产；aarch64 得从源码编（见仓库 README）
@@ -13,7 +13,7 @@ provides=('danmu-hime')
 # 预编译包：不生成 -debug，也不必再管 makepkg.conf 里的 LTO 开关
 options=('!debug')
 source=("danmu-hime-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/danmu-hime-$pkgver-x86_64.tar.gz")
-sha256sums=('5220bd71bfa7ff054e234b28b775731c51170dd6ac13e4649cb5da8daeb00912')
+sha256sums=('81876d0412739e968c6edbc490a373acc532ef645f87ee7243d09c228dc048af')
 
 package() {
   # 资产里就是完整的文件树（usr/bin、usr/lib/linux-danmu-hime、桌面项、图标、systemd 单元、LICENSE）
