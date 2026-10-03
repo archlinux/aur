@@ -1,7 +1,7 @@
 # Maintainer: xhdndmm <xhdndmm@gmail.com>
 
 pkgname=123pan
-pkgver=4.0.5
+pkgver=4.0.7
 pkgrel=1
 
 pkgdesc="第三方123云盘客户端"

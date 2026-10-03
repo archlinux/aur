@@ -1,6 +1,6 @@
 pkgbase = 123pan
 	pkgdesc = 第三方123云盘客户端
-	pkgver = 4.0.5
+	pkgver = 4.0.7
 	pkgrel = 1
 	url = https://github.com/123panNextGen/123pan
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = 123pan
 	depends = python
 	options = !strip
 	options = !debug
-	source = 123pan-4.0.5::git+https://github.com/123panNextGen/123pan.git#tag=v4.0.5
+	source = 123pan-4.0.7::git+https://github.com/123panNextGen/123pan.git#tag=v4.0.7
 	source = 123pan.png::https://raw.githubusercontent.com/123panNextGen/logo/refs/heads/main/img/logo-v2.png
 	sha256sums = SKIP
 	sha256sums = edc9c43937c0fa612be160a83265756dea36566c3f227165ccb7010b0a84ccff
