@@ -11,15 +11,7 @@ import termios
 import struct
 import select
 
-local_video_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "badapple.mp4")
-system_video_path = "/usr/share/badapple-hd/badapple.mp4"
-
-if os.path.exists(local_video_path):
-    VIDEO_PATH = local_video_path
-elif os.path.exists(system_video_path):
-    VIDEO_PATH = system_video_path
-else:
-    VIDEO_PATH = local_video_path
+VIDEO_PATH = "/usr/share/badapple-hd/badapple.mp4"
 
 FPS = 30.0
 FRAME_TIME = 1.0 / FPS
