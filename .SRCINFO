@@ -1,5 +1,5 @@
 pkgbase = xsane-git
-	pkgver = 0.999.r324.g88b80bb
+	pkgver = 0.999.r326.g24a6b79
 	pkgrel = 1
 	url = https://gitlab.com/sane-project/frontend/xsane
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgname = xsane-git
 	depends = lcms2
 	depends = sane
 	depends = zlib
-	depends = libjpeg
+	depends = libjpeg-turbo
 	optdepends = xsane-gimp: for gimp plugin support
 	provides = xsane
 	conflicts = xsane
