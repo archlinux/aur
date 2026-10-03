@@ -5,7 +5,7 @@
 
 _android_arch=x86-64
 pkgname=android-$_android_arch-qt6-location
-_qtver=6.11.2
+_qtver=6.12.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -21,7 +21,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtlocation-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('4d50a7ece01fbd76f6ec17c650236cb56ea60f987c52fc391dac72f13f65c23a')
+sha256sums=('218696d57c9eb95e8756e9fda62a8eabf94badc507db5f6e8ab9a640c4b0f50d')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
@@ -37,6 +37,7 @@ build() {
     -DANDROID_SDK_ROOT=${ANDROID_HOME} \
     -DANDROID_NDK_ROOT=${ANDROID_NDK_HOME} \
     -DANDROID_STL="c++_shared" \
+    -DQT_ALLOW_DOWNLOAD=ON \
     -DFEATURE_pkg_config=ON \
     -DFEATURE_geoservices_mapbox=OFF \
     -DFEATURE_geoservices_mapboxgl=OFF \
