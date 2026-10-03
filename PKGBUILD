@@ -1,6 +1,6 @@
 # Maintainer: Roberto Alsina <ralsina@kde.org>
 pkgname=nicolino
-pkgver=0.26.2
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="A fast, modular static site generator written in Crystal"
 arch=("x86_64" "aarch64")
@@ -13,7 +13,7 @@ makedepends=("shards" "git")
 # the Crystal linker) cannot read, failing with undefined lexbor symbols.
 options=(!lto)
 source=("$pkgname-$pkgver::git+https://github.com/ralsina/nicolino.git#tag=v$pkgver")
-sha256sums=('6167a73ab20192be708bb0628dbbb7ed814c2831d234da0e8aa4d00cd93a4a41')
+sha256sums=('cfc59b503ad0c6a29d7dbc34a43abda6896e5016c0e8a9e4db691c7d8e364ec2')
 
 prepare() {
   cd "$pkgname-$pkgver"
