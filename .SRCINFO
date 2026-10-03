@@ -1,6 +1,6 @@
 pkgbase = lucid-spell-bin
 	pkgdesc = LLM-powered desktop translator. (Binary)
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/l1ngus/lucid-spell
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = lucid-spell-bin
 	provides = lucid-spell
 	conflicts = lucid-spell
 	options = !debug
-	source = https://github.com/l1ngus/lucid-spell/releases/download/v1.1.0/lucid-spell_1.1.0_amd64.deb
-	sha256sums = fc17f823cdc4f74c5ba8b53aa49cf567fee8a48d650b131a8793f612ecb245d8
+	source = https://github.com/l1ngus/lucid-spell/releases/download/v1.2.0/lucid-spell_1.2.0_amd64.deb
+	sha256sums = e9a9582cbb8af72ef915a6f653174bd8287cdff9319596319ddab932b2bf94f6
 
 pkgname = lucid-spell-bin
