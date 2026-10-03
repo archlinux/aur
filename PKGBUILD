@@ -1,7 +1,7 @@
 # Maintainer: Sykik <xo.sykik@gmail.com>
 pkgname=inno
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight, event-driven Wayland notification agent"
 arch=('x86_64')
 url="https://github.com/SykikXO/inno"
@@ -16,16 +16,24 @@ depends=('wayland' 'cairo' 'dbus' 'glibc' 'pipewire-pulse')
 # spelled too precisely. Requiring the names is enough: cargo itself refuses an
 # edition its rustc cannot handle, and says so.
 makedepends=('rust' 'cargo')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('sha256:8a35c9f141ab2bde958eed4497baeff6bcc9c5457b7aa4b3b461a4962c6693e6')
+# A VCS source pinned to the tag, not the release tarball.
+#
+# GitHub generates archive tarballs on the fly and the bytes are not
+# reproducible: the same tag can hash differently depending on which edge serves
+# it. Pinning a sha256 on one therefore fails the build on AUR's servers while
+# looking correct everywhere else, which is exactly what happened here. git
+# already verifies the commit hash, so the tag is the integrity check, and the
+# build becomes reproducible.
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
+b2sums=('SKIP')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   cargo build --release
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   install -Dm755 target/release/inno "${pkgdir}/usr/bin/inno"
   install -Dm644 inno.toml "${pkgdir}/etc/xdg/inno/inno.toml"
   for f in events/*.toml; do
@@ -59,7 +67,18 @@ package() {
 # deleted frame cannot survive as a stale leftover. Anything the user added
 # outside those two trees is untouched.
 install_user_config() {
-  local dest=${XDG_CONFIG_HOME:-$HOME/.config}/inno
+  # post_install runs as root, and sudo strips XDG_CONFIG_HOME. HOME usually
+  # survives, but not on every sudoers setup, and writing the config to
+  # /root/.config would look like it worked while leaving the user with nothing.
+  local base=${XDG_CONFIG_HOME:-}
+  if [ -z "$base" ]; then
+    if [ -n "${SUDO_USER:-}" ]; then
+      base=$(getent passwd "$SUDO_USER" | cut -d: -f6)/.config
+    else
+      base=$HOME/.config
+    fi
+  fi
+  local dest=$base/inno
   mkdir -p "$dest"
   install -Dm644 /etc/xdg/inno/inno.toml "$dest/inno.toml"
   rm -rf "$dest/events" "$dest/assets"
