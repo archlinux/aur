@@ -6,7 +6,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}-bin
 pkgdesc="PMG protects developers from getting hacked by malicious open source packages"
 
-pkgver=0.29.1
+pkgver=0.30.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,8 +23,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('5028f22d84b72e4c991aad8fd0c1a297db0e5006beb08f39b825bbeeec767f97')
-sha256sums_aarch64=('a62161777dbe34410c65d8495ed0b11b94a9e8545fb5b202f000db26b7e44bbb')
+sha256sums_x86_64=('b97570b8504fed7b526f45a4f5f0cd75bcc1b05197ad1f79fa2fce61d6b54ed3')
+sha256sums_aarch64=('957bce71f95db742401f7a9c58c7eb045b1969c497555e0fb965fbc77d85ec1f')
 
 
 case ${CARCH} in
