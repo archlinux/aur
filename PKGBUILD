@@ -14,23 +14,21 @@ sha512sums=('85634bff33236ffcb0aea03a6fa4b3529b6d1faa03f8e030f3c5401fc453bb5e196
 
 
 build() {
-  mkdir -p "$pkgname-$pkgver/build"
-  cd "$pkgname-$pkgver/build"
+  cd "$pkgname-$pkgver"
 
-  cmake .. \
+  cmake -B build -S . \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_POLICY_VERSION_MINIMUM='3.5' \
-    -DCMAKE_CXX_FLAGS='-O0'
+    -DCMAKE_POLICY_VERSION_MINIMUM='3.5'
 
-  make
+  cmake --build build
 }
 
 package() {
-  cd "$pkgname-$pkgver/build"
-  make DESTDIR="${pkgdir}" install
+  cd "$pkgname-$pkgver"
+  DESTDIR="${pkgdir}" cmake --build build -- install
 }
 
 check () {
-  cd "$pkgname-$pkgver/build"
-  make test
+  cd "$pkgname-$pkgver"
+  cmake --build build -- test
 }
