@@ -1,4 +1,4 @@
-From c1f7ed459fea1b1e30b8f2e424e026d633ce080c Mon Sep 17 00:00:00 2001
+From e5f5064b6c3e812579a8766df87fd6f80f849cda Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 1 Dec 2025 11:23:41 +0100
 Subject: [PATCH 19/24] Fix inclusion of OpenGL header after Qt 6 header
@@ -14,7 +14,7 @@ Change-Id: I3769326571c83f9f60a9fdd87298ca9af62be7ba
  1 file changed, 8 insertions(+), 11 deletions(-)
 
 diff --git a/src/gui/opengl/qopengl.h b/src/gui/opengl/qopengl.h
-index e9a11080ce6..a97f73c3c3c 100644
+index 182f6f44279..eeefe3673d1 100644
 --- a/src/gui/opengl/qopengl.h
 +++ b/src/gui/opengl/qopengl.h
 @@ -11,15 +11,21 @@
@@ -58,5 +58,5 @@ index e9a11080ce6..a97f73c3c3c 100644
  
  #endif // QOPENGL_H
 -- 
-2.55.0
+2.56.0
 

@@ -1,4 +1,4 @@
-From 485e85836a2f4a9db46e88c113adae3fffa5bf92 Mon Sep 17 00:00:00 2001
+From 15005a9b4c77fb21f746f1bd4acd1d1c9b9a651a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 1 Dec 2025 11:28:49 +0100
 Subject: [PATCH 21/24] Undefine mingw stat
@@ -11,7 +11,7 @@ Change-Id: I2c21a2b4bb46f582a5e694761c94c168e2ca98f7
  1 file changed, 4 insertions(+)
 
 diff --git a/src/corelib/io/qfileinfo.h b/src/corelib/io/qfileinfo.h
-index 01e69f62c4d..0bce9fb0abe 100644
+index eee40b69bd0..23fbed13f7a 100644
 --- a/src/corelib/io/qfileinfo.h
 +++ b/src/corelib/io/qfileinfo.h
 @@ -13,6 +13,10 @@
@@ -26,5 +26,5 @@ index 01e69f62c4d..0bce9fb0abe 100644
  
  
 -- 
-2.55.0
+2.56.0
 
