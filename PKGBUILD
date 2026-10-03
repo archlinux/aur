@@ -1,6 +1,6 @@
 # Maintainer: Ivan Kanis
 pkgname=tclreadline
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="GNU readline for interactive tcl shells"
 url="https://github.com/flightaware/tclreadline"
@@ -14,7 +14,7 @@ replaces=()
 backup=()
 #install=''
 source=("https://github.com/flightaware/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d14b1568b6db8cd51659e3cc476a1f45da2020434ebb90b4b0defbc424f05907')
+sha256sums=('4d1f3b210062f4daf6dec084db37630bfd2cc923efe97d4e04aa4dea9758114d')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
