@@ -3,13 +3,13 @@ _ipn=pcap
 _bpn=haskell-${_ipn}
 pkgname=${_bpn}
 pkgver=0.4.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A system-independent interface for user-level packet capture"
 arch=(x86_64)
 url="https://github.com/bos/pcap"
 license=('custom:BSD3')
 groups=()
-depends=(ghc haskell-network)
+depends=(ghc haskell-network libpcap)
 makedepends=(git)
 provides=(${_bpn})
 conflicts=(${_bpn})
@@ -17,11 +17,13 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("http://hackage.haskell.org/packages/archive/${_ipn}/${pkgver}/${_ipn}-${pkgver}.tar.gz")
+source=("https://hackage.haskell.org/packages/archive/${_ipn}/${pkgver}/${_ipn}-${pkgver}.tar.gz")
 md5sums=('492b7ecc53d0ac3599845ab8ac553997')
 
 build() {
   cd "$srcdir/${_ipn}-${pkgver}"
+  # GHC selects gold, which does not support RELR packing.
+  LDFLAGS="${LDFLAGS//-Wl,-z,pack-relative-relocs/}"
   runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
     --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
     --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
