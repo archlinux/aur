@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=spotifast-git
-pkgver=0.11.2
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
@@ -14,9 +14,8 @@ depends=('dbus' 'alsa-lib' 'libpulse' 'libglvnd' 'libxkbcommon' 'wayland' 'libx1
 makedepends=('git' 'cargo' 'cmake' 'clang')
 optdepends=('libxkbcommon-x11: keyboard handling in X11 sessions'
             'pipewire-pulse: PipeWire as the PulseAudio server')
-provides=("spotifast=$pkgver" "fastpotify=$pkgver" "fastpotify-git=$pkgver")
-conflicts=('fastpotify' 'fastpotify-bin' 'fastpotify-git' 'spotifast' 'spotifast-bin')
-replaces=('fastpotify-git')
+provides=("spotifast=$pkgver")
+conflicts=('spotifast' 'spotifast-bin')
 # !lto because ring compiles its own C and Arch's default CFLAGS put LTO
 # objects in the archive, which lld then cannot resolve: the link fails on
 # undefined ring_core_* symbols. The stable package is prebuilt and never
@@ -63,7 +62,6 @@ package() {
   cd "${srcdir}/${pkgname}"
 
   install -Dm755 "target/release/spotifast" "${pkgdir}/usr/bin/spotifast"
-  ln -s spotifast "${pkgdir}/usr/bin/fastpotify"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "packaging/applications/spotifast.desktop" \
