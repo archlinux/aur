@@ -1,7 +1,7 @@
 # Maintainer: Sykik <xo.sykik@gmail.com>
 pkgname=inno
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight, event-driven Wayland notification agent"
 arch=('x86_64')
 url="https://github.com/SykikXO/inno"
@@ -9,7 +9,13 @@ license=('MIT')
 # pipewire-pulse supplies paplay and the sound server itself; without it
 # every sound path is dead on a bare system.
 depends=('wayland' 'cairo' 'dbus' 'glibc' 'pipewire-pulse')
-makedepends=('rust>=1.85' 'cargo')
+# No version constraint on purpose. rustup provides `rust` and `cargo`
+# unversioned, so `rust>=1.85` cannot be satisfied by it and pacman reaches for
+# Arch's rust package, which conflicts with the installed rustup and prompts to
+# remove it. That is a confusing way to learn that a build dependency was
+# spelled too precisely. Requiring the names is enough: cargo itself refuses an
+# edition its rustc cannot handle, and says so.
+makedepends=('rust' 'cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('sha256:8a35c9f141ab2bde958eed4497baeff6bcc9c5457b7aa4b3b461a4962c6693e6')
 

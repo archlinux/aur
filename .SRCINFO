@@ -1,11 +1,11 @@
 pkgbase = inno
 	pkgdesc = A lightweight, event-driven Wayland notification agent
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SykikXO/inno
 	arch = x86_64
 	license = MIT
-	makedepends = rust>=1.85
+	makedepends = rust
 	makedepends = cargo
 	depends = wayland
 	depends = cairo
