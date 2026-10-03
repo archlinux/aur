@@ -5,7 +5,7 @@
 
 _android_arch=armv7a-eabi
 pkgname=android-$_android_arch-qt6-shadertools
-_qtver=6.11.2
+_qtver=6.12.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -22,7 +22,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtshadertools-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('805046b8b7757665586890b375940047e874ae3ab00adb6d3f2b38fc6b200b1c')
+sha256sums=('c7d84f436e1aaef39fdcadebf2bd71bdf24dc69497e13f2e0198873cbbfea2ab')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
@@ -38,6 +38,7 @@ build() {
     -DANDROID_SDK_ROOT=${ANDROID_HOME} \
     -DANDROID_NDK_ROOT=${ANDROID_NDK_HOME} \
     -DANDROID_STL="c++_shared" \
+    -DQT_ALLOW_DOWNLOAD=ON \
     -DFEATURE_pkg_config=ON
   cmake --build build-$_android_arch
 }
