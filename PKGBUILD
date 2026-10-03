@@ -1,22 +1,22 @@
 #!/bin/sh
+# Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 # PKGBUILD for release package (builds from tagged source)
 # This is used for the AUR system-bridge package
 # pkgver and source checksum are replaced by prepare-aur.sh before publication
 
 pkgname=system-bridge
-pkgver=5.9.4
+pkgver=5.9.5
 epoch=2
 pkgrel=1
 pkgdesc="A bridge for your systems"
 makedepends=('git' 'mise')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.9.4.tar.gz")
-sha256sums=('e96812a9df39167d8c0c42f3ba535c23c36c9f9a696bb0f8aad25370462fe2d5')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.9.5.tar.gz")
+sha256sums=('b9ead44c51b78752df0982d7150d3cb9eebfe1c1f46a3008ce7a642a1e39fd20')
 conflicts=('system-bridge-git' 'system-bridge-git-debug')
 
 arch=('x86_64')
 url="https://github.com/timmo001/system-bridge"
 license=('Apache-2.0')
-keywords=('system-bridge' 'automation' 'home-assistant' 'api' 'websocket')
 depends=('libx11' 'libxtst' 'libxkbcommon' 'libxkbcommon-x11')
 optdepends=('pciutils: GPU model identification via lspci'
             'zenity: tray and desktop confirmation prompts'
