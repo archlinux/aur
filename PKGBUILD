@@ -2,7 +2,7 @@
 
 pkgname=captureage-bin
 pkgver=1.26.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Advanced spectating for Age of Empires II: Definitive Edition (Windows binary via Proton)'
 arch=('x86_64')
 url='https://captureage.com/cade'
@@ -34,7 +34,7 @@ sha256sums=('5b3b4765f4d9df06dd5cb614f0467a0212efd8b47f5dc60919fd8716745e3510'
             'bcf898c2e3f7949ac72ca04706b3941db4532167ff3bd27363baa8e675c99c8e'
             '3c17f11425e8e62166a9a278622173f5f2479c2f7ef9f732a4b9d4acbd22814e'
             '35599267d69f141d105a99e22a11d9cd65a0ea263a97fefe092366987071c25f'
-            '60eb2f21442d95f4156688bdc2c2b206b17fd47b0833b040b042b40af7729231')
+            '6bf88121520a9930c0f6e63c83dae1adaa7399167057eff034d11b1c6b37c53d')
 
 prepare() {
   mkdir -p "$srcdir/captureage-app"

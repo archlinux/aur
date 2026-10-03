@@ -1,5 +1,7 @@
 # CaptureAge for Arch Linux
 
+[![Automation health](https://github.com/Firstp1ck/captureage-bin/actions/workflows/health.yml/badge.svg)](https://github.com/Firstp1ck/captureage-bin/blob/automation-health/health.json)
+
 Unofficial AUR packaging of CaptureAge:DE 1.26.0.
 Upstream ships an x86-64 Windows application. This package extracts
 the official offline payload to `/opt/captureage` and launches it with
@@ -172,6 +174,41 @@ GitHub schedules run on the default branch, can be delayed, and may be
 disabled after 60 days without repository activity in public repositories.
 Keep Actions enabled and check failed-run notifications. Branch protection
 must allow the workflow's `GITHUB_TOKEN` to push updates to `main`.
+
+### Automation health monitoring
+
+The **Automation health** workflow runs daily at 04:47 UTC and after completed
+update/publishing runs. It records the last successful upstream version check,
+the last successful publishing run, workflow state and links to the relevant
+runs in [`health.json`](https://github.com/Firstp1ck/captureage-bin/blob/automation-health/health.json)
+on the separate `automation-health` branch. The badge above links to that status.
+Successful package builds triggered by pushes do not count as upstream checks.
+
+An upstream check older than 48 hours, a failed update/publishing run, a disabled
+update workflow, or a run queued/running for more than two hours produces an
+alert. The monitor opens or updates one **CaptureAge automation needs attention**
+issue, reopens it on another incident, and closes it once health recovers.
+The health workflow also fails when unhealthy, making its badge and ordinary
+GitHub failed-run notifications reflect the problem. Watch repository issues
+or configure GitHub notifications to receive alerts through your preferred channel.
+
+Each health evaluation commits its timestamp to `automation-health`, keeping
+repository activity separate from package releases. These commits do not trigger
+the package workflow. On initial setup, run **Update and publish CaptureAge**
+manually to establish the first upstream check; a new repository has a 48-hour
+initialization grace period.
+
+The watchdog uses GitHub Actions too: it cannot execute if all Actions are
+disabled or GitHub is unavailable. For an independent scheduler, the same
+read-only check is available locally or on another host with Python and `gh`:
+
+```sh
+python3 tools/health.py --repo Firstp1ck/captureage-bin
+```
+
+It prints JSON and exits with status `1` for unhealthy automation, without
+creating issues or commits. An API/connection error also returns a nonzero
+exit status. The default 48-hour threshold can be changed with `--stale-hours`.
 
 ### Local maintenance
 
