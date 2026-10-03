@@ -1,0 +1,44 @@
+From 714de45cd463ddfc945759129eb22d2c82b045d5 Mon Sep 17 00:00:00 2001
+From: Assam Boudjelthia <assam.boudjelthia@qt.io>
+Date: Thu, 3 Sep 2026 15:51:49 +0300
+Subject: [PATCH 23/24] Android: infer fullscreen from system bars behavior
+ instead of insets
+
+Restoring the system UI on resume decided fullscreen from
+the current status bar visibility. That state is transiently
+hidden during app transitions on some devices, latching the
+app into immersive mode it never requested. Read the system
+bars behavior instead, a record of the last requested mode.
+Android 11 has no behavior getter and keeps the insets check.
+
+Pick-to: 6.12 6.11
+Fixes: QTBUG-146830
+Change-Id: Ibefc150a12deffa270c5c0a0f9b23ceb7a01160b
+---
+ .../qtproject/qt/android/QtWindowInsetsController.java | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/src/android/jar/src/org/qtproject/qt/android/QtWindowInsetsController.java b/src/android/jar/src/org/qtproject/qt/android/QtWindowInsetsController.java
+index a3d0a0df8e5..39c194e4289 100644
+--- a/src/android/jar/src/org/qtproject/qt/android/QtWindowInsetsController.java
++++ b/src/android/jar/src/org/qtproject/qt/android/QtWindowInsetsController.java
+@@ -198,8 +198,14 @@ class QtWindowInsetsController
+             return false;
+ 
+         final View decor = window.getDecorView();
+-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+-            WindowInsets insets = activity.getWindow().getDecorView().getRootWindowInsets();
++        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
++            WindowInsetsController controller = window.getInsetsController();
++            if (controller != null) {
++                final int behavior = controller.getSystemBarsBehavior();
++                return behavior == WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE;
++            }
++        } else if (Build.VERSION.SDK_INT == Build.VERSION_CODES.R) {
++            WindowInsets insets = decor.getRootWindowInsets();
+             if (insets != null)
+                 return !insets.isVisible(WindowInsets.Type.statusBars());
+         } else {
+-- 
+2.56.0
+

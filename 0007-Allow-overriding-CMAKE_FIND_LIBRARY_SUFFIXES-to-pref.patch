@@ -1,4 +1,4 @@
-From 673f1912eb48eb9ee923ee71096d43b586d9e1ee Mon Sep 17 00:00:00 2001
+From e77be13d21bddf223f18ad34210e0ea9fb28c919 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 8 Nov 2020 00:34:09 +0100
 Subject: [PATCH 07/24] Allow overriding CMAKE_FIND_LIBRARY_SUFFIXES to prefer
@@ -25,5 +25,5 @@ index 3ae0292309a..affdbc15c96 100644
  
  # This depends on qt_internal_read_repo_dependencies existing.
 -- 
-2.55.0
+2.56.0
 
