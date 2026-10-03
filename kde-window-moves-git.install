@@ -4,8 +4,7 @@ post_install() {
     ydotoold, set the flat pointer profile and register the global
     shortcuts:
       kde-window-moves-setup.sh
-    (Shortcuts then appear in System Settings > Shortcuts >
-     "KDE Window Moves".)
+    (Shortcuts then appear in System Settings > Shortcuts >"KDE Window Moves".)
 EOF
 }
 

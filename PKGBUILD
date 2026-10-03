@@ -1,7 +1,7 @@
 # Maintainer: CxOrg <clx.org@cloud-org.uk>
 pkgname=kde-window-moves-git
 _pkgname=${pkgname%-git}
-pkgver=r137.5a164aa
+pkgver=r138.1b8859b
 pkgrel=1
 pkgdesc="Keyboard-driven window move, resize and zoom shortcuts for KDE Plasma on Wayland"
 arch=('any')
