@@ -1,7 +1,7 @@
 pkgbase = xdpi-git
 	pkgdesc = X11 DPI information retrieval
 	pkgver = 0.0.0.r48.924fcc5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Oblomov/xdpi
 	arch = x86_64
 	license = MPL
@@ -15,4 +15,3 @@ pkgbase = xdpi-git
 	md5sums = SKIP
 
 pkgname = xdpi-git
-

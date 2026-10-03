@@ -1,7 +1,7 @@
 # Maintainer: Cody Schafer <aur at codyps.com>
 pkgname=xdpi-git
 pkgver=0.0.0.r48.924fcc5
-pkgrel=1
+pkgrel=2
 pkgdesc="X11 DPI information retrieval"
 arch=(x86_64)
 url="https://github.com/Oblomov/xdpi"
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	make
+	make CFLAGS="$CFLAGS -std=c99" CPPFLAGS="$CPPFLAGS -DWITH_XCB=1"
 }
 
 package() {
