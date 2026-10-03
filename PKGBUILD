@@ -6,7 +6,7 @@
 
 pkgname=fortune-mod-off
 pkgver=3.26.1 # renovate: datasource=github-tags depName=shlomif/fortune-mod
-pkgrel=1
+pkgrel=2
 pkgdesc='The Fortune Cookie Program from BSD games, with the offensive quotes added back in'
 arch=(x86_64)
 url='https://www.shlomifish.org/open-source/projects/fortune-mod/'

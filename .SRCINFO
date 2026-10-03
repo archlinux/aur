@@ -1,7 +1,7 @@
 pkgbase = fortune-mod-off
 	pkgdesc = The Fortune Cookie Program from BSD games, with the offensive quotes added back in
 	pkgver = 3.26.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.shlomifish.org/open-source/projects/fortune-mod/
 	arch = x86_64
 	license = BSD-4-Clause-UC
