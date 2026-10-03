@@ -17,7 +17,7 @@ sha256sums_x86_64=('008f67554043d1fdc23393cd3aceb31beb0917d40095a597ea84d4528d10
 package() {
 	cd "${srcdir}/wayhud-${pkgver}-x86_64-unknown-linux-gnu"
 
-	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm4755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 	install -Dm644 man/wayhud.1 "${pkgdir}/usr/share/man/man1/wayhud.1"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
