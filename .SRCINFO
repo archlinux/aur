@@ -1,7 +1,7 @@
 pkgbase = pahole-git
 	pkgdesc = Various DWARF utils
 	pkgver = 1.13.r6.g568dae4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://git.kernel.org/?p=devel/pahole/pahole.git;a=summary
 	arch = i686
 	arch = x86_64
@@ -11,14 +11,13 @@ pkgbase = pahole-git
 	makedepends = ninja
 	depends = elfutils
 	depends = python
+	depends = libbpf
+	depends = zlib
 	provides = dwarves
 	provides = pahole
 	conflicts = dwarves
 	conflicts = pahole
-	source = pahole-git::git+https://kernel.googlesource.com/pub/scm/devel/pahole/pahole.git
-	source = git+https://github.com/libbpf/libbpf
-	md5sums = SKIP
-	md5sums = SKIP
+	source = pahole-git::git+https://git.kernel.org/pub/scm/devel/pahole/pahole.git
+	sha256sums = SKIP
 
 pkgname = pahole-git
-

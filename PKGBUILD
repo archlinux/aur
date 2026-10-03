@@ -3,28 +3,16 @@
 pkgname=pahole-git
 pkgdesc="Various DWARF utils"
 pkgver=1.13.r6.g568dae4
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://git.kernel.org/?p=devel/pahole/pahole.git;a=summary"
 license=('GPL2')
-depends=('elfutils' 'python')
+depends=('elfutils' 'python' 'libbpf' 'zlib')
 makedepends=('git' 'cmake' 'ninja')
 provides=('dwarves' 'pahole')
 conflicts=('dwarves' 'pahole')
-source=(
-  $pkgname::'git+https://kernel.googlesource.com/pub/scm/devel/pahole/pahole.git'
-  'git+https://github.com/libbpf/libbpf'
-)
-md5sums=('SKIP' 'SKIP')
-
-prepare() {
-  cd "$srcdir"
-  mkdir -p build
-  cd "$srcdir/$pkgname"
-  git submodule init
-  git config submodule.libbpf.url "$srcdir/libbpf"
-  git submodule update
-}
+source=("$pkgname::git+https://git.kernel.org/pub/scm/devel/pahole/pahole.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -32,20 +20,17 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/build"
-
-  cmake -G Ninja \
-   -D CMAKE_BUILD_TYPE=Plain \
+  cmake -S "$srcdir/$pkgname" -B "$srcdir/build" -G Ninja \
+   -D LIBBPF_EMBEDDED=OFF \
+   -D CMAKE_BUILD_TYPE=None \
    -D CMAKE_INSTALL_PREFIX=/usr \
-   -D LIB_INSTALL_DIR=/usr/lib \
-   ../"$pkgname"
+   -D LIB_INSTALL_DIR=/usr/lib
 
-  ninja -v
+  cmake --build "$srcdir/build"
 }
 
 package() {
-  cd "$srcdir/build"
-  DESTDIR=${pkgdir}/ ninja install
+  DESTDIR="$pkgdir" cmake --install "$srcdir/build"
 }
 
 # vim:set ts=2 sw=2 et:
