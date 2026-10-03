@@ -1,20 +1,135 @@
+_legacy_root=/var/lib/typora-community-plugin/legacy
+_window_html=/usr/share/typora/resources/window.html
+_marker='<script src="typora://app/userData/plugins/loader.js" type="module"></script>'
+
+_copy_unmanaged_data() {
+    local root="$1"
+    local stage="$2"
+    local entry name staged=0
+
+    shopt -s dotglob nullglob
+    for entry in "$root"/*; do
+        name="${entry##*/}"
+        case "$name" in
+            loader.js|loader.json)
+                continue
+                ;;
+        esac
+        if [[ -d "$entry" && ! -L "$entry" &&
+            -f "$entry/core.js" && -f "$entry/core.css" ]]; then
+            continue
+        fi
+        cp -a "$entry" "$stage/"
+        staged=1
+    done
+    shopt -u dotglob nullglob
+
+    (( staged > 0 ))
+}
+
+_stage_legacy_plugins() {
+    local path root user uid gid home candidate cuid cgid chome stage
+    declare -A seen=()
+
+    install -d -m755 "$_legacy_root"
+
+    while IFS= read -r path; do
+        case "$path" in
+            */Typora/plugins|*/Typora/plugins/*)
+                root="${path%%/Typora/plugins*}/Typora/plugins"
+                ;;
+            *)
+                continue
+                ;;
+        esac
+
+        [[ -d "$root" && -z "${seen[$root]+x}" ]] || continue
+        seen["$root"]=1
+        user=
+        uid=
+        gid=
+        home=
+
+        while IFS=: read -r candidate _ cuid cgid _ _ chome _; do
+            [[ -n "$chome" ]] || continue
+            case "$root/" in
+                "$chome/"*)
+                    user="$candidate"
+                    uid="$cuid"
+                    gid="$cgid"
+                    home="$chome"
+                    break
+                    ;;
+            esac
+        done < <(getent passwd)
+
+        [[ -n "$user" && "$root/" == "$home/"* ]] || continue
+        stage="$_legacy_root/$user"
+        install -d -m700 -o "$uid" -g "$gid" "$stage"
+        if _copy_unmanaged_data "$root" "$stage"; then
+            chown -R "$uid:$gid" "$stage"
+            printf '==> 已备份 %s 的旧版 Typora 用户数据\n' "$user"
+        else
+            rmdir "$stage" 2>/dev/null || true
+        fi
+    done < <(pacman -Ql typora-community-plugin 2>/dev/null | awk '{print $2}')
+}
+
+_has_legacy_data() {
+    [[ -d "$_legacy_root" ]] &&
+        find "$_legacy_root" -mindepth 1 -maxdepth 1 -type d \
+            -print -quit | grep -q .
+}
+
+_print_legacy_instructions() {
+    local stage user home target
+    shopt -s nullglob
+    for stage in "$_legacy_root"/*; do
+        [[ -d "$stage" ]] || continue
+        user="${stage##*/}"
+        home="$(getent passwd "$user" | cut -d: -f6)"
+        [[ -n "$home" ]] || continue
+        target="$home/.config/Typora/plugins"
+        printf '    用户 %s 的旧版用户数据备份:\n' "$user"
+        printf '      %s\n' "$stage"
+        printf '    请关闭 Typora,以用户 %s 执行:\n' "$user"
+        printf '      cp -a --no-preserve=ownership %q/. %q/ && rm -rf %q\n' \
+            "$stage" "$target" "$stage"
+    done
+    shopt -u nullglob
+}
+
+pre_upgrade() {
+    _stage_legacy_plugins
+}
+
 post_install() {
-    # 插件市场要在该目录写入插件,属主需为使用 Typora 的用户(pacman 解包为 root)
-    /usr/bin/typora-community-plugin own
+    /usr/bin/typora-community-plugin sync --all
     /usr/bin/typora-community-plugin patch
 
-    echo "==> typora-community-plugin 已安装"
+    echo "==> typora-community-plugin 已安装,插件已自动应用"
+    echo "    用户命令:typora-community-plugin --help"
     echo "    重启 Typora 后生效:F1 打开命令面板,Ctrl+. 打开设置"
-    echo "    插件与设置存放在 ~/.config/Typora/plugins"
 }
 
 post_upgrade() {
-    post_install
+    /usr/bin/typora-community-plugin sync --all
+    /usr/bin/typora-community-plugin patch
+
+    echo "==> typora-community-plugin 已升级,插件已自动应用"
+    if _has_legacy_data; then
+        echo "    检测到旧版用户数据,请按下面的命令手动复制并清理备份:"
+        _print_legacy_instructions
+    fi
 }
 
 post_remove() {
-    /usr/bin/typora-community-plugin unpatch
+    if [[ -f "$_window_html" ]] &&
+        grep -qF "$_marker" "$_window_html"; then
+        sed -i "s|${_marker}||" "$_window_html"
+        echo "typora-community-plugin: 已从 $_window_html 移除 loader 脚本"
+    fi
 
-    echo "==> typora-community-plugin 已卸载,window.html 已还原"
-    echo "    用户数据(已装插件/设置)保留在 ~/.config/Typora/plugins,如需清理请手动删除"
+    echo "==> typora-community-plugin 已卸载"
+    echo "    用户插件、配置和迁移备份未删除"
 }

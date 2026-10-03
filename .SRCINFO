@@ -1,7 +1,7 @@
 pkgbase = typora-community-plugin
 	pkgdesc = Typora 社区插件系统:插件市场、命令面板、多标签工作区
 	pkgver = 2.10.35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/typora-community-plugin/typora-community-plugin
 	install = typora-community-plugin.install
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = typora-community-plugin
 	source = typora-community-plugin.hook
 	sha256sums = e7e9ae1ae22df75fb9c492ae017caba6aa831ffdb4cc1ed088f98e81484bdf9f
 	sha256sums = 731f5be0037576f31f566458da9817c261db3e8b8c5fc4703841005d5ac53823
-	sha256sums = 09f62600fdc6c5866bad72d4c2a03ca219accef954fe4887051c318494793dea
+	sha256sums = ccafa03d4982da3ca3eaebea538bd64d472383dd743b962c71bac0d02e038a62
 	sha256sums = 4a4cefac90a4fdf9ce3987ddd7819c00c28b5a99812a1997ff086bea5121d680
 
 pkgname = typora-community-plugin
