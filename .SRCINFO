@@ -1,11 +1,11 @@
 pkgbase = lyra
 	pkgdesc = A simple to use, composable, command line parser for C++ 11 and beyond
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	arch = any
 	license = BSL-1.0
 	makedepends = cmake
-	source = https://github.com/bfgroup/lyra/archive/refs/tags/1.7.0.tar.gz
+	source = https://github.com/bfgroup/lyra/archive/refs/tags/1.8.0.tar.gz
 	b2sums = e3da338e0855e1f0fb6e8f88c2f1357a7bb00017018428f9c112b42217d4ee8350df211515d75e2836315c1fe36cc1e7f6f10035d170afec1f1c3994a7de73cf
 
 pkgname = lyra

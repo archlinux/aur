@@ -1,13 +1,13 @@
 # Maintainer: Louise <louise dot aur at mailbox dot org>
 
 pkgname=lyra
-pkgver=1.7.0
+pkgver=1.8.0
 pkgdesc="A simple to use, composable, command line parser for C++ 11 and beyond"
 pkgrel=1
 arch=('any')
 license=('BSL-1.0')
 source=("https://github.com/bfgroup/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('e3da338e0855e1f0fb6e8f88c2f1357a7bb00017018428f9c112b42217d4ee8350df211515d75e2836315c1fe36cc1e7f6f10035d170afec1f1c3994a7de73cf')
+b2sums=('5bc1dbb4aa460fbf4c70aaf6688593233ac7763e2852f4bef333d2fdfe4a4faa17c7be0217b40900c69659cb8a7ee6c2506a0c06a62aaad3c470eb157e8821e4')
 makedepends=('cmake')
 
 build() {
