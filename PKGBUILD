@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Liberty <jon9097 at gmail dot com>
 
 pkgname=obs-branch-output-bin
-pkgver=1.0.9
+pkgver=1.0.13
 pkgrel=1
 pkgdesc="OBS Studio plugin: Branch Output filter"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('obs-studio>=30.1.0')
 conflicts=('obs-branch-output')
 
 source=("https://github.com/OPENSPHERE-Inc/branch-output/releases/download/${pkgver}/osi-branch-output-${pkgver}-x86_64-linux-gnu.deb")
-sha512sums=('7198b59fa907105d9b895803f8b03b5a675b3fbfa3998731054da8e05735498476571b8ee6636e676e0ca385f32edbec49211a47422fc7c346f94bf57c5e6299')
+sha512sums=('f2a36c35dccd3c92eab49471130a60b14683820a9cd3e4637a3560b96861191e89fc64122e1fc3ccc44c0e1a071ed8c04d97342f7ba6e4a0d91069642c8aeacc')
 
 prepare() {
   cd "${srcdir}"
