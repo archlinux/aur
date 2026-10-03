@@ -2,7 +2,7 @@
 pkgname=sofka
 # renovate: datasource=github-releases depName=nklmilojevic/sofka
 pkgver=0.29.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Kubernetes TUI, reimagined in Rust'
 url='https://github.com/nklmilojevic/sofka'
 license=('Apache-2.0' 'MIT')
@@ -25,7 +25,7 @@ build() {
     export CARGO_TARGET_DIR=target
     cd "${pkgname}-${pkgver}"
     export CC=clang
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release
 }
 
 check() {
@@ -33,7 +33,7 @@ check() {
     cd "${pkgname}-${pkgver}"
     export CC=clang
     # completion_scripts_work_without_local_configuration fails for now
-    RUST_BACKTRACE=1 LANG=C LC_ALL=C cargo test --frozen --all-features || true
+    RUST_BACKTRACE=1 LANG=C LC_ALL=C cargo test --frozen
 }
 
 package() {
