@@ -1,0 +1,19 @@
+pkgbase = wayhud-bin
+	pkgdesc = Universal modern suckless Wayland on-screen HUD (GTK CSS styled)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/xifan2333/wayhud
+	arch = x86_64
+	license = MIT
+	depends = wayland
+	depends = cairo
+	depends = pango
+	depends = libxkbcommon
+	provides = wayhud
+	conflicts = wayhud
+	conflicts = wayhud-git
+	options = !strip
+	source_x86_64 = wayhud-0.1.0-x86_64.tar.gz::https://github.com/xifan2333/wayhud/releases/download/v0.1.0/wayhud-0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b63776b16bba7b0bb5d34368037946fd6abbed025af99d5daf515438ac86c0e0
+
+pkgname = wayhud-bin
