@@ -1,0 +1,14 @@
+pkgbase = brother-hl-b2180dw
+	pkgdesc = Brother HL-B2180DW CUPS driver
+	pkgver = 4.1.0
+	pkgrel = 2
+	url = http://www.brother.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = cups
+	source = https://download.brother.com/welcome/dlf105940/hlb2180dwpdrv-4.1.0-2.i386.rpm
+	sha512sums = 80165b5d1d35ec4b92f5afc63dd2e030746546e0759dd3ae08a92e2c4fe0a992e7f52aacb03110fc5f8b8088c8be7974b3ec60abc4b0ed32fc5478c1f4c51a63
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-hl-b2180dw
