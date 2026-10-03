@@ -1,30 +1,33 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=concessio
-pkgver=0.3.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Understand File Permissions"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/ronniedroid/concessio"
 license=('GPL-3.0-or-later')
 depends=(
-  'gjs'
   'gtk4'
   'libadwaita'
+  'libgee'
 )
 makedepends=(
   'blueprint-compiler'
   'meson'
+  'vala'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a1497b406f8c864568b998a425aafb08ed506cd6508ed935225acadf272ac4dc')
+sha256sums=('484295fea983c1541b52c494bd8540a3a6f1fbb6e9d93be0cfcfd67674768c54')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
   meson compile -C build
 }
 
+check() {
+  meson test -C build --no-rebuild --print-errorlogs
+}
+
 package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
-
-  ln -s "/usr/bin/io.github.ronniedroid.$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
