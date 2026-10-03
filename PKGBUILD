@@ -1,11 +1,11 @@
 pkgname=fenriz-git
 pkgver=0.1.18
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, stable tiling Wayland compositor"
 arch=('x86_64')
 url="https://github.com/zackb/fenriz"
 license=('MIT')
-depends=('wlroots0.20' 'scenefx0.5' 'wayland' 'libxkbcommon' 'pixman' 'libinput' 'libxcb' 'xcb-util-wm')
+depends=('wlroots0.20' 'scenefx' 'wayland' 'libxkbcommon' 'pixman' 'libinput' 'libxcb' 'xcb-util-wm')
 makedepends=('cmake' 'ninja' 'git' 'wayland-protocols')
 optdepends=('xorg-xwayland: X11 application support'
             'fenriz-desktop: wallpaper, launcher, lock screen, notifications and OSDs'
