@@ -7,12 +7,12 @@
 epoch=1
 pkgname=dsview
 pkgver=1.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Client software that supports the DreamSourceLab logic analyzer"
 arch=('i686' 'x86_64')
 url="http://www.dreamsourcelab.com/"
 license=('GPL3')
-depends=('hicolor-icon-theme' 'qt5-base' 'fftw' 'python' 'libusb')
+depends=('hicolor-icon-theme' 'qt5-base' 'qt5-svg' 'fftw' 'python' 'libusb')
 makedepends=('cmake' 'ninja' 'boost')
 
 source=(

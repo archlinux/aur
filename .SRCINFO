@@ -1,7 +1,7 @@
 pkgbase = dsview
 	pkgdesc = Client software that supports the DreamSourceLab logic analyzer
 	pkgver = 1.3.2
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = http://www.dreamsourcelab.com/
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = dsview
 	makedepends = boost
 	depends = hicolor-icon-theme
 	depends = qt5-base
+	depends = qt5-svg
 	depends = fftw
 	depends = python
 	depends = libusb
