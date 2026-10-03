@@ -1,6 +1,6 @@
 # Maintainer: whysooraj <whysooraj.official@gmail.com>
 pkgname=tide-island
-pkgver=1.0.40
+pkgver=1.0.41
 pkgrel=1
 _srcdir=Tide-island-$pkgver
 _builddir=build-$pkgver
@@ -11,6 +11,7 @@ license=('GPL-3.0-only')
 depends=(
     'qt6-base'
     'qt6-declarative'
+    'qt6-websockets'
     'qt6-5compat'
     'qt6-wayland'
     'qt6-connectivity'
@@ -29,9 +30,12 @@ depends=(
     'cliphist'
     'wl-clipboard'
 )
-makedepends=('cmake')
+makedepends=('cmake' 'python')
 options=('!debug' '!strip')
 optdepends=(
+    'spotify: for Spotify Liked Songs integration'
+    'spicetify-cli: for Spotify favorites without a developer API application'
+    'python: for tide-island-spotify-setup'
     'hyprland: for Hyprland compositor integration'
     'niri: for niri compositor integration'
     'hyprsunset: for Night Light on Hyprland'
@@ -52,7 +56,7 @@ optdepends=(
 conflicts=('tide-island-git')
 install='tide-island.install'
 source=("$pkgname-$pkgver.tar.xz::https://github.com/enhaoswen/Tide-island/releases/download/$pkgver/tide-island-source.tar.xz")
-sha256sums=('186b0227cbe25b514d9604f19d5a2247de43dd56afe4bc66b3c72d14de3f46b7')
+sha256sums=('4061efc122e1aedb9a23e2cb7e31b4ba4e9176cf897be726d5db33e94f335c41')
 
 build() {
   cmake -S "$_srcdir" -B "$_builddir" \
