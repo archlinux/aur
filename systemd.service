@@ -1,0 +1,60 @@
+[Unit]
+Description=RustFS Object Storage Server
+Documentation=https://rustfs.com/docs/
+After=network-online.target
+Wants=network-online.target
+# If you're using a database, you'll need to add the corresponding dependencies
+# After=postgresql.service
+# Requires=postgresql.service
+
+[Service]
+Type=notify
+NotifyAccess=main
+User=rustfs
+Group=rustfs
+
+# working directory
+WorkingDirectory=/opt/rustfs
+
+# Environment-driven startup.
+# rustfs reads address, volumes, console, credentials, and other runtime settings
+# from RUSTFS_* variables. See `../config/rustfs.env` for an example template.
+EnvironmentFile=/etc/default/rustfs
+ExecStart=/usr/bin/rustfs server
+
+# service log configuration
+LogsDirectory=rustfs
+StandardOutput=journal
+StandardError=journal
+
+# resource constraints
+LimitNOFILE=1048576
+LimitNPROC=32768
+TasksMax=infinity
+
+# restart the policy
+Restart=always
+RestartSec=10s
+
+# graceful exit configuration
+# Type=notify waits for READY=1, so startup timeout must cover RustFS initialization
+# plus runtime readiness checks on slower disks or cold starts.
+TimeoutStartSec=120s
+TimeoutStopSec=45s
+
+# security settings
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+ReadWritePaths=/data/rustfs /var/log/rustfs
+
+[Install]
+WantedBy=multi-user.target

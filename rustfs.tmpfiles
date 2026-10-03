@@ -1,2 +1,0 @@
-d /data/rustfs0 0750 root root -
-d /var/log/rustfs 0755 root root -
