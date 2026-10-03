@@ -1,12 +1,11 @@
-pkgbase = arch-summit-strudel-2025
-	pkgdesc = Install a strudel wallpaper from the Arch Linux Summit 2025
-	pkgver = 2025
+pkgbase = arch-summit-strudel-2026
+	pkgdesc = Install a strudel wallpaper from the Arch Linux Summit 2026
+	pkgver = 2026
 	pkgrel = 1
-	url = https://pitastrudl.me/arch-summit-strudel-2025.jpg
+	url = https://pitastrudl.me/arch-summit-strudel-2026.jpg
 	arch = any
 	license = MIT
-	noextract = arch-summit-strudel-2025-2025
-	source = https://pitastrudl.me/arch-summit-strudel-2025.jpg
-	sha256sums = 981ac930b68583acdee79ce5d9192a067a7feff8cd130d1c0cdc7d031a3fbca6
+	source = https://pitastrudl.me/arch-summit-strudel-2026.jpg
+	sha256sums = 10d9c9c1a9bb87f0de7cb47937f83492347dc5a05735f51afa09fd90b63826d9
 
-pkgname = arch-summit-strudel-2025
+pkgname = arch-summit-strudel-2026
