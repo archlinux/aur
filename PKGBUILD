@@ -2,7 +2,7 @@
 
 pkgname=aspia-host-bin
 _pkgname=${pkgname%-bin}
-pkgver=3.0.22
+pkgver=3.0.23
 pkgrel=1
 pkgdesc="Remote desktop control and file transfer tool (host, official binary)"
 url="https://aspia.org/"
@@ -25,7 +25,7 @@ options=(!debug !strip)
 source=(aspia-terminal.pam)
 source_x86_64=("https://github.com/dchapyshev/aspia/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${arch}.deb")
 sha256sums=('8e0aced1c552483f1df1fe8dd7de1c18435c0c397741a9f6f60d36ec5aae1466')
-sha256sums_x86_64=('71c1456cd3cd2b5d663bd2ca8b07f289ab1f24e9074573265a71d4a5bf4edaef')
+sha256sums_x86_64=('75a029784fc53d6f61ea5ca0c79cff82efa075f80bb45af7a17762045a134031')
 
 package() {
   cd "${srcdir}"
