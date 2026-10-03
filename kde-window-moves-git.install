@@ -1,3 +1,33 @@
+pre_remove() {
+  # Unregister the shortcuts while the files and session are still available,
+  # so the uninstall leaves no orphaned bindings.
+  uid=""
+  home=""
+  if [ -n "$SUDO_USER" ]; then
+    uid=$(id -u "$SUDO_USER" 2>/dev/null) || uid=""
+    home=$(getent passwd "$SUDO_USER" 2>/dev/null | cut -d: -f6)
+  fi
+  if [ -n "$uid" ] && [ -n "$home" ] && [ -S "/run/user/$uid/bus" ]; then
+    runuser -u "$SUDO_USER" -- env \
+        XDG_RUNTIME_DIR="/run/user/$uid" \
+        DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
+        HOME="$home" \
+        /usr/bin/kde-window-moves-setup.sh --remove \
+      || echo "NOTE: could not clean the shortcuts - run 'kde-window-moves-setup.sh --remove' from your session."
+  else
+    echo "==> To remove the shortcuts, run from your session:"
+    echo "      kde-window-moves-setup.sh --remove"
+  fi
+}
+
+post_remove() {
+  cat <<'EOF'
+==> Note: the ydotoold user service stays enabled. If ydotool is no longer
+    needed, disable it with:
+      systemctl --user disable --now ydotool
+EOF
+}
+
 post_install() {
   # Best effort: run the per-user setup automatically when the package is
   # installed from a running user session (e.g. 'yay -S' elevates with sudo,
