@@ -1,8 +1,8 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname=cargo-fframes
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 epoch=
 pkgdesc="Programmatic video rendering framework that is actually fast"
 arch=("any")
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("fframes-${pkgver}.tar.gz::https://github.com/dmtrKovalenko/fframes/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('a326b54416a70b0eafc33ece5edfa183eac7650eaac8b04f7c47ba862b925f79')
+sha256sums=('0b6d77819a5832b984ffb19e7e3f79706ef730576c287e4ee8a50dddebebefad')
 validpgpkeys=()
 
 _basedir="fframes-$pkgver"

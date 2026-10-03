@@ -1,7 +1,7 @@
 pkgbase = cargo-fframes
 	pkgdesc = Programmatic video rendering framework that is actually fast
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/dmtrKovalenko/fframes
 	arch = any
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = cargo-fframes
 	depends = x265
 	depends = opus
 	depends = clang
-	source = fframes-1.1.0.tar.gz::https://github.com/dmtrKovalenko/fframes/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = a326b54416a70b0eafc33ece5edfa183eac7650eaac8b04f7c47ba862b925f79
+	source = fframes-1.2.0.tar.gz::https://github.com/dmtrKovalenko/fframes/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 0b6d77819a5832b984ffb19e7e3f79706ef730576c287e4ee8a50dddebebefad
 
 pkgname = cargo-fframes
