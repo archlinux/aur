@@ -1,7 +1,7 @@
 # Maintainer: Vladimir <racerkafa@gmail.com>
 
 pkgname=finkeeper24-bin
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="FinKeeper24 - менеджер личных финансов (Personal Finance Manager)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('finkeeper24')
 options=('!strip')
 source=("finkeeper24-${pkgver}.deb::https://finkeeper24.ru/downloads/linux/finkeeper24_${pkgver}_amd64.deb"
         "LICENSE-Apache-2.0::https://www.apache.org/licenses/LICENSE-2.0.txt")
-sha256sums=('d54a274050756ae9c392296421e64bb068471ad39e04c04b043c289c0674caf3'
+sha256sums=('8bcf27bd2ca117f795b5b8ae0c396e63419648bd5d320ed9604920f46713818d'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
 
 package() {
