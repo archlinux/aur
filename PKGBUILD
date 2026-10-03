@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=proton-meet
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc='Secure, end-to-end encrypted video conferencing'
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(git jq nodejs-lts-jod yarn)
 source=(ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git#tag=proton-meet-desktop@$pkgver
         proton-meet.desktop
         proton-meet.sh)
-b2sums=('67e0fa112c18d99a44c525233611b7cedf5fce20c039a7f163fd7f81b805f17828d7dde3724b4254b716876c9902b43cc24611592ee5664ec9fa8c5c72497ba4'
+b2sums=('5dffb0b142f92c355044f499e4c3945144278abff767e503a8e004b2f3b6c8a3f57f5c8b20e5ad862138f6affae92842c01fccf1a80e575c796cbe2cf960dea6'
         'efdcc089844bf0287c61e7d5f8c6aa9f5721a6000751b887a586f3a5b5caf36686500b09c10dc3039e6914be804c155edf67a0be17640602221d96a25e1a197c'
         'cc16def864fd2e9134c194b473db94b0588871af895803fe4151ab7b715f66bbbb695a0964c03577da12b72397230626dabf186885cd206de412c8eac3a47e4a')
 
