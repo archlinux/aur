@@ -1,6 +1,6 @@
 pkgbase = android-x86-qt6-declarative
 	pkgdesc = Classes for QML and JavaScript languages (android)
-	pkgver = 6.11.2
+	pkgver = 6.12.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -24,9 +24,11 @@ pkgbase = android-x86-qt6-declarative
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.11/6.11.2/submodules/qtdeclarative-everywhere-src-6.11.2.tar.xz
+	source = https://download.qt.io/official_releases/qt/6.12/6.12.0/submodules/qtdeclarative-everywhere-src-6.12.0.tar.xz
 	source = 0001-Exclude-qmltime-when-cross-compiling.patch
-	sha256sums = 215b7b70517e380123eabc6b92243f3c47b6f016a91d126057dbe53551c6b430
-	sha256sums = c5b0ddd332cfcde9d8ee325429166b4191d65f78b8cd78874681747766af906d
+	source = 0002-QML-engine-Correctly-compare-composites-when-multipl.patch
+	sha256sums = 311f3a2603e1973bb59baef9dfa740a376de713157d4782ee043681e889c9260
+	sha256sums = f0ab6729cb9ffe3a9aa5eb85bc916ef3f12e7a4497ad6e17a369c7a115f5ef47
+	sha256sums = feb2e7d94795cc50eab19c80407fdd45f200abe22fb1934fa52f34eaa1caa741
 
 pkgname = android-x86-qt6-declarative
