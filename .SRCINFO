@@ -1,6 +1,6 @@
 pkgbase = jorvik-bin
 	pkgdesc = Chat and voice for Matrix
-	pkgver = 1.0.16
+	pkgver = 1.0.17
 	pkgrel = 1
 	url = https://github.com/jorvikapp/jorvik
 	install = jorvik-bin.install
@@ -16,12 +16,12 @@ pkgbase = jorvik-bin
 	depends = util-linux-libs
 	depends = xdg-utils
 	optdepends = libappindicator-gtk3: tray icon on desktops using AppIndicator
-	provides = jorvik=1.0.16
+	provides = jorvik=1.0.17
 	conflicts = jorvik
-	noextract = jorvik-1.0.16.deb
+	noextract = jorvik-1.0.17.deb
 	options = !strip
 	options = !debug
-	source = jorvik-1.0.16.deb::https://github.com/jorvikapp/jorvik/releases/download/v1.0.16/Jorvik-1.0.16.deb
-	sha256sums = eb838c27379594c11b60f89bbea7cc0a06f2963779d2129fb79de84ba082acde
+	source = jorvik-1.0.17.deb::https://github.com/jorvikapp/jorvik/releases/download/v1.0.17/Jorvik-1.0.17.deb
+	sha256sums = efdaba549835ee34d6d167288e5877de6efc0946307fd8de128baeb0703b304b
 
 pkgname = jorvik-bin
