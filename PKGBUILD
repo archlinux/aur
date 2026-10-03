@@ -1,4 +1,5 @@
-# Maintainer: Dmitry Valter <dvalter@protonmail.com>
+# Maintainer: Dmitry Valter <`echo ZC12YWx0ZXJAcHJvdG9ubWFpbC5jb20K | base64 -d`>
+# Contributor: Jörg Bornemann <`echo am9lcmcuYm9ybmVtYW5uQHF0LmlvCg== | base64 -d`>
 
 pkgname=argagg
 pkgver=0.4.7
@@ -14,9 +15,7 @@ sha512sums=('85634bff33236ffcb0aea03a6fa4b3529b6d1faa03f8e030f3c5401fc453bb5e196
 
 
 build() {
-  cd "$pkgname-$pkgver"
-
-  cmake -B build -S . \
+  cmake -B build -S "$pkgname-$pkgver" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_POLICY_VERSION_MINIMUM='3.5'
 
@@ -24,11 +23,9 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
   DESTDIR="${pkgdir}" cmake --build build -- install
 }
 
 check () {
-  cd "$pkgname-$pkgver"
-  cmake --build build -- test
+  ctest --test-dir build
 }
