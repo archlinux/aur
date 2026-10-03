@@ -1,0 +1,28 @@
+pkgbase = schist-bin
+	pkgdesc = Layered image editor with PSD and Affinity support (upstream binary)
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/Infrawrench/schist
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = fontconfig
+	depends = freetype2
+	depends = hicolor-icon-theme
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = vulkan-driver
+	depends = vulkan-icd-loader
+	depends = wayland
+	optdepends = libheif>=1.23.4: HEIC import
+	provides = schist=0.15.0
+	conflicts = schist
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/Infrawrench/schist/releases/download/v0.15.0/schist-0.15.0-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = ef4501ecc8109e21d1813fdfc8d618090a9be5bb238545527614a1ff60d983c1
+	source_aarch64 = https://github.com/Infrawrench/schist/releases/download/v0.15.0/schist-0.15.0-1-aarch64.pkg.tar.zst
+	sha256sums_aarch64 = 11e12bd6bc0ee6fb6d27004809750c62a180d64c5eb274a2aac685fdabdeeff1
+
+pkgname = schist-bin
