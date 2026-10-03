@@ -4,11 +4,12 @@
 pkgname='perf-tools-git'
 pkgdesc='Performance analysis tools based on Linux perf_events (aka perf) and ftrace'
 pkgver=r200.98d42a2
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/brendangregg/perf-tools'
 depends=('perf')
 makedepends=('git')
+provides=('perf-tools')
 conflicts=('perf-tools')
 license=('GPL')
 source=("${pkgname}::git+${url}")
