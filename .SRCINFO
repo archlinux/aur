@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-httpserver
 	pkgdesc = Qt HTTP Server (mingw-w64)
-	pkgver = 6.11.2
+	pkgver = 6.12.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = mingw-w64-qt6-httpserver
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.11/6.11.2/submodules/qthttpserver-everywhere-src-6.11.2.tar.xz
-	sha256sums = f0f5763b2ba58f20f5cffdfbedb97e62e32b5c639df6d9a6378905028be7bd8e
+	source = https://download.qt.io/official_releases/qt/6.12/6.12.0/submodules/qthttpserver-everywhere-src-6.12.0.tar.xz
+	sha256sums = ede040264551d0930ea5f6c1a4c18a7a3dea59d635e71cd2e81f02567d7814a4
 
 pkgname = mingw-w64-qt6-httpserver
