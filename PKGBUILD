@@ -1,6 +1,6 @@
 # Maintainer: dmcslt <dmcslt@gmail.com>
 pkgname=satelite-proxy-bin
-pkgver=1.0.45
+pkgver=1.0.46
 pkgrel=1
 pkgdesc="Lightweight sing-box / Xray / mihomo desktop client with clash subscription import, rule-based routing, system proxy and TUN"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('satelite-proxy')
 source=("satelite-proxy-${pkgver}.AppImage::https://github.com/zn0wii/satelite-proxy/releases/download/v${pkgver}/Satelite_${pkgver}_amd64.AppImage"
         "LICENSE")
 noextract=("satelite-proxy-${pkgver}.AppImage")
-sha256sums=('1fd3043c81a8df7953ed702d55e0a775edca5bd3e7a98f75d68609b7b12d247a'
+sha256sums=('0e45ede11bd0eb85d28fa0efdd8373b17107a7a66749773f19a20e219201e468'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
 
 prepare() {
