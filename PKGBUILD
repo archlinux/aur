@@ -2,9 +2,9 @@
 
 pkgname=gosecretsdump
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Go Prog to dump windows passwords from ntds.dit and SAM/system files"
-arch=('x86_64' 'i686' 'pentium4')
+arch=('x86_64' 'x86_64_v3' 'pentium4')
 url="https://github.com/C-Sto/gosecretsdump"
 license=('GPL3')
 makedepends=('go')
