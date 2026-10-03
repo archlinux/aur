@@ -1,8 +1,8 @@
 pkgbase = tailor
 	pkgdesc = Create bootable drives
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
-	url = https://altlinux.space/qualimock/Tailor
+	url = https://altlinux.space/alt-gnome/Tailor/
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = blueprint-compiler
@@ -15,7 +15,7 @@ pkgbase = tailor
 	depends = libosinfo
 	depends = libsoup3
 	depends = udisks2
-	source = git+https://altlinux.space/qualimock/Tailor.git#tag=v1.1.2
-	sha256sums = 685efecd3a13c42d7b1e616542dfaae4579fc4603f6f4c6f6c7cd4dd2b3c214a
+	source = git+https://altlinux.space/alt-gnome/Tailor.git#tag=v1.2.0
+	sha256sums = 731b959bfb59e8275903bf16cc12759c700d6a81736d4572d5af374cf6985cef
 
 pkgname = tailor
