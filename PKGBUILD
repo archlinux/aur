@@ -7,7 +7,7 @@
 # Contributor: Andrea Cattaneo <andrea.cattaneo.dev@gmail.com>
 
 pkgname=genymotion
-pkgver=3.10.0
+pkgver=3.11.0
 pkgrel=1
 pkgdesc="Complete set of tools that provides a virtual environment for Android."
 arch=('x86_64')
@@ -21,7 +21,7 @@ options=('!strip')
 source=("genymotion.desktop"
         "https://dl.genymotion.com/releases/genymotion-${pkgver}/${pkgname}-${pkgver}-linux_x64.run")
 sha256sums=('cfe3db36490d38a0331a64f50e85c432994e4543f48d2719e7feaee9f442f6e1'
-            'cb9924009a51b7d10e6009a0a2cd3e5fa5c53e0776cf65c4b42abbeaf015b7c7')
+            '8cd727af40b437a50674df6a66a4671599c986ea3f16de63fc21bbb394ca052f')
 
 package(){
   install -d "${pkgdir}/opt/${pkgname}"
