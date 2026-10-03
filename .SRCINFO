@@ -1,0 +1,14 @@
+pkgbase = darkly-gtk-git
+	pkgdesc = Darkly GTK theme
+	pkgver = r13.36d24ba
+	pkgrel = 1
+	url = https://github.com/wrymt/darkly-gtk
+	arch = any
+	license = LGPL2.1
+	makedepends = git
+	makedepends = sassc
+	conflicts = darkly-gtk
+	source = darkly-gtk-git::git+https://github.com/wrymt/darkly-gtk.git
+	sha256sums = SKIP
+
+pkgname = darkly-gtk-git
