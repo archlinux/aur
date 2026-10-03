@@ -1,0 +1,5 @@
+[edentext-bin]
+source = "github"
+github = "stffnb/edentext"
+use_latest_release = true
+prefix = "v"
