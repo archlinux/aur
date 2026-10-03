@@ -1,4 +1,4 @@
-From 6a95d54646a3099f34bfffdcde7fabb7bf622cb1 Mon Sep 17 00:00:00 2001
+From 9703c70fb22d067cb78af3a9448eb196c6b8c8cb Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:59:33 +0100
 Subject: [PATCH 04/24] Fix transitive dependencies (of static libraries)
@@ -132,5 +132,5 @@ index 9c0bc6df18c..c71ecb068f8 100644
          Qt::CorePrivate
          Qt::SqlPrivate
 -- 
-2.55.0
+2.56.0
 
