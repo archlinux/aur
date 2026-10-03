@@ -1,8 +1,8 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=yadaw-bin
 _pkgname=yadaw
-pkgver=0.11.3
-_tag=v0.11.3
+pkgver=0.11.4
+_tag=v0.11.4
 pkgrel=1
 pkgdesc='Yet Another mini-DAW - a lightweight sfx tool in pure Rust (binary)'
 arch=('x86_64' 'aarch64')
@@ -16,19 +16,19 @@ optdepends=(
 provides=(yadaw clap-host lv2-host)
 conflicts=(yadaw)
 options=(!strip)
-source_x86_64=("yadaw-0.11.3-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/yadaw/releases/download/${_tag}/yadaw-0.11.3-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("yadaw-0.11.3-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/yadaw/releases/download/${_tag}/yadaw-0.11.3-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('cab6298539ee6591adbef439cf5f6e146cd8c160a355e253bd89dd15f9dfbde5')
-sha256sums_aarch64=('505d9bbfdc405e4363389505b49cd41d45e93407e25c809f9932b67dd9bb2fc3')
+source_x86_64=("yadaw-0.11.4-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/yadaw/releases/download/${_tag}/yadaw-0.11.4-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("yadaw-0.11.4-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/yadaw/releases/download/${_tag}/yadaw-0.11.4-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('9de87e41f25bb47cccf5a17c71a01b001d3fb9fe860bde9c150e2385234b3a4b')
+sha256sums_aarch64=('ab106b3125a94d3a7047ec54a814bcbfd71cf7ec84f666cc5d3e26e53958b5ba')
 source+=("icon.png::https://raw.githubusercontent.com/mlm-games/yadaw/master/fastlane/metadata/android/en-US/images/icon.png")
 sha256sums+=('SKIP')
 
 package() {
   local dir
   if [[ "$CARCH" == "x86_64" ]]; then
-    dir="${srcdir}/yadaw-0.11.3-x86_64-unknown-linux-gnu"
+    dir="${srcdir}/yadaw-0.11.4-x86_64-unknown-linux-gnu"
   else
-    dir="${srcdir}/yadaw-0.11.3-aarch64-unknown-linux-gnu"
+    dir="${srcdir}/yadaw-0.11.4-aarch64-unknown-linux-gnu"
   fi
   install -Dm755 "${dir}/yadaw" "${pkgdir}/usr/bin/yadaw"
 
