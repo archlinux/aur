@@ -1,6 +1,6 @@
 # Maintainer: Patrick Gelvin <patrick@gelvin.dev>
 pkgname="rcalc"
-pkgver=v2.1.3
+pkgver=v2.1.4
 pkgrel=1
 pkgdesc="A lightweight RPN calculator"
 arch=("x86_64")
@@ -8,10 +8,10 @@ url="https://git.sr.ht/~jamis/rcalc"
 license=('MIT')
 depends=('glfw>=3.0.0' 'freetype2>=2.0.0' "libxcb" "dbus")
 makedepends=("python>=3.11.0" "scons>=4.5.0" "pkg-config" "git")
-_tag=1a3cf7b75fcac062ad341c1f8114c2b8c3a5cac3 # git rev-parse "tag-name"
+_tag=5f5e7479b0c5e905c2dfcb628778c6e526577a46 # git rev-parse "tag-name"
 source=(git+https://git.sr.ht/~jamis/rcalc#tag=$_tag
         git+https://github.com/dacap/clip#tag=v1.15)
-sha512sums=('deb41b71c50c219ec00f6be43bdb8d1192d1e2a379237b5742daa365ecf9b1a1b59dbc7e66e1a7fa1aae48cfbca1f5f6503416e6c71f6e031909aff791e81552'
+sha512sums=('30884bd539c7cd12e1f3869153074c607d1caf483b79103c00a08b884e25adc62a4410c2e1d8f23b5059833894f0b28afdb7bfaeec9d3ec90b20d702effdfb42'
             'edde4395628ec896246f5ed4fd64ce443b31e85935928f3ef6b3562065586a6171f3897462a9af2a919e34518510d950f3d8ac47113023d1550aa42c5f1ff409')
 
 pkgver() {
