@@ -2,16 +2,20 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=alacrittyforge
-pkgver=0.2.0
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="A terminal UI for managing and customizing the Alacritty terminal emulator — safely, intuitively, and beautifully"
+pkgdesc="Alacritty's settings without editing the file by hand: plain-word settings, a review before every save, your notes kept"
 arch=('any')
 url="https://github.com/jetomev/alacrittyforge"
 license=('GPL3')
-depends=('python' 'python-textual' 'python-rich' 'python-tomli-w' 'python-forgekit>=0.3.0')
+# v1.0.0: tomlkit edits alacritty.toml as a document, so comments and layout
+# stay (tomli_w rewrote the whole file); forgekit 0.5.1 for decimal and wide
+# number fields; fontconfig's fc-list lists the fonts
+depends=('python' 'python-textual' 'python-rich' 'python-tomlkit' 'python-forgekit>=0.5.1' 'fontconfig')
+optdepends=('alacritty: the terminal these settings are for (alacrittyForge reads its version)')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('46760c7dc0ebfafa6e8c23b1649fdb8a51619d4e93ed9079c8f158292fca37ab'
+sha256sums=('b0339cb790b9c468c0bdd5986f20782fe115dfce135114bcf34a6a84d8eef328'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
@@ -23,8 +27,8 @@ check() {
     # harness. Catches Textual API breaks AND mount-time failures (CSS
     # parse errors, bad widget ids, on_mount crashes) at build time. We
     # never ship a package that imports but won't launch. (With no
-    # ~/.config/alacritty/alacritty.toml in the build env the app still
-    # mounts cleanly — config_manager handles the missing-file case.)
+    # ~/.config/alacritty/alacritty.toml it still mounts; the smoke uses a
+    # temporary one so a build never touches the builder's own settings.)
     #
     # PYTHONDONTWRITEBYTECODE=1 prevents .pyc cache files from landing in
     # the source tree during the smoke; without it, package()'s
@@ -32,16 +36,25 @@ check() {
     # install with user-runtime .pyc files at the same paths (the
     # grubForge v1.0.2 install-conflict class — don't repeat it).
     PYTHONDONTWRITEBYTECODE=1 python -c "
-import sys, asyncio
+import sys, asyncio, tempfile
+from pathlib import Path
 sys.path.insert(0, '.')
-from alacrittyforge.app import AlacrittyForge
+from alacrittyforge.app import AlacrittyForgeApp
+from alacrittyforge.session import Session
 async def _smoke():
-    app = AlacrittyForge()
+    d = Path(tempfile.mkdtemp())
+    app = AlacrittyForgeApp(session=Session.load(d / 'alacritty.toml', backup_dir=d / 'bk', themes_dir=d / 't'))
     async with app.run_test() as pilot:
         await pilot.pause()
 asyncio.run(_smoke())
 print('alacrittyforge headless mount OK')
 "
+
+    # v1.0.0: every screen's flows headless, safe saving, themes, shortcuts,
+    # each Alacritty version's setting names, the manual — 80 tests, no
+    # Alacritty and no display needed.
+    PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_saving tests.test_session \
+        tests.test_themes tests.test_bindings tests.test_versions tests.test_manual tests.test_screens
 }
 
 package() {
