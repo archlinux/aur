@@ -1,0 +1,21 @@
+pkgbase = inner-pitch-bin
+	pkgdesc = A pitch shifter plugin (LV2, CLAP, VST3), free edition
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://www.auburnsounds.com/products/Inner-Pitch
+	arch = x86_64
+	groups = pro-audio
+	groups = lv2-plugins
+	groups = vst3-plugins
+	groups = clap-plugins
+	license = LicenseRef-proprietary
+	depends = libgcc
+	depends = libx11
+	provides = inner-pitch
+	conflicts = inner-pitch
+	options = !strip
+	options = !debug
+	source = Inner-Pitch-FREE-2.1.zip::https://www.auburnsounds.com/downloads/Inner-Pitch-FREE-2.1.zip
+	sha256sums = eedbb307954ec38f87575d1e1807259645107d830779c3727aa9129465691fec
+
+pkgname = inner-pitch-bin
