@@ -5,7 +5,7 @@
 # Contributor: Dale Blount <archlinux@dale.us>
 
 pkgname=fortune-mod-off
-pkgver=3.24.0 # renovate: datasource=github-tags depName=shlomif/fortune-mod
+pkgver=3.26.0 # renovate: datasource=github-tags depName=shlomif/fortune-mod
 pkgrel=1
 pkgdesc='The Fortune Cookie Program from BSD games, with the offensive quotes added back in'
 arch=('x86_64')
@@ -17,9 +17,9 @@ provides=('fortune-mod')
 conflicts=('fortune-mod')
 source=("https://github.com/shlomif/fortune-mod/releases/download/${pkgname/-off/}-$pkgver/${pkgname/-off/}-$pkgver.tar.xz"
         'not-a-game.patch')
-sha512sums=('6d320932931835b2ca1eef39f046073154cf0ef36aad4173c8e23af1a4fdcd327f06a436653b195ddecfe06a32607057464b18f2c80894849b38714774adbf14'
+sha512sums=('6a83378e24bce81c7357714ad79fd04237733bde0ce04061058ccfc24c8468c9ace62181c10213761b05a77b17f8b58d4a61e2a6aa63425d6048b4d8e91e7941'
             'c4ef10c6d7bdb15ceec020d27e11c489ff56ed573b7efc0cf7465026514f153f789444cd7e2996d0fd9bb0f923c4eeeaf0eaa46a0bfacbc36712917e4f5d6c04')
-b2sums=('378a2cee3317510d1b826a801d60b4c1aee69777a26861990435b888813d01ba46d4125d2cb588046e88009ddff0b38fc9d8b56672b6a016384b700e629cbade'
+b2sums=('25a63679bf771e1d89b1aa5df428a6f2ec107d2d4bca29b0eefdc6048a4b0765e5b1d976909d74c1e665bcf48578a3e9bee6957db2ccbc947cb72e1cb46f8aca'
         '5283fde623cd0d304f073d59ff648d671323d8638876c629e8e8f175de00c3d9a1f807f0a9dfce3d9c9a56299dc1824062b013a4ce0541ee5fcea97c53f6ecec')
 
 prepare() {
