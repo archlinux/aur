@@ -1,4 +1,4 @@
-# Maintainer: xscriptor <preciado.oscar.osorio@gmail.com>
+# Maintainer: xscriptor <x@xscriptor.com>
 pkgname=xwww-bin
 pkgver=0.13.1
 pkgrel=1
