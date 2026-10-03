@@ -1,6 +1,6 @@
 # Maintainer: Daniel Garcia <dgarcia@kabr.org>
 pkgname=kittenspaceagency-bin
-pkgver=2026.9.22.5482
+pkgver=2026.10.7.5541
 buildnum="${pkgver##*.}"
 pkgrel=1
 pkgdesc="Kitten Space Agency - EXPERIMENTAL"
@@ -11,7 +11,7 @@ depends=('glibc' 'gcc-libs' 'dotnet-runtime-10.0')
 options=(!strip)
 source=("ksa_linux_v${pkgver}.tar.gz::$url/builds/${buildnum}/ksa_linux_v${pkgver}.tar.gz"
         "kittenspaceagency.png")
-sha256sums=('ebdca2d817cc219d1f14a6dbe76c362218e2fb2bd8eae37b69351888f5f2ff74'
+sha256sums=('dea990d3724a1a3f0676b4f4e259809a36dc7c6f8a44742fb61cab1e828f3155'
             '4e10dedc70614419a5a2354642556d15fe331565d0d94a4fa41ab04dd8b24486')
 
 package() {
