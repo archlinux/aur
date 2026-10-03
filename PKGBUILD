@@ -3,7 +3,7 @@
 # 同じタグの Release から同版で出す (#1106)。sha256sums は release.yml が実値で埋める
 pkgbase=misskey-notedeck-bin
 pkgname=('misskey-notedeck-bin' 'notecli-bin')
-pkgver=1.76.1
+pkgver=1.77.0
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/notedeck-dev/notedeck'
@@ -13,8 +13,8 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/notedeck-dev/notedeck/r
         "notedeck.desktop"
         "notedeck-icon-128.png::https://raw.githubusercontent.com/notedeck-dev/notedeck/v${pkgver}/src-tauri/icons/128x128.png"
         "notedeck-icon-32.png::https://raw.githubusercontent.com/notedeck-dev/notedeck/v${pkgver}/src-tauri/icons/32x32.png")
-sha256sums=('37102e1bce18c7ec8624aac13f1bef6f217400c39516e45f2656aaedce87abf7'
-            'f1cb4bbebe5e1d4ef6ba4e5b98810300041836eb94e6e68a8c0e1f785a821879'
+sha256sums=('bacf0851a75d44b82f3a7b827367a50687e498692be5967d68ab2d60d97efb51'
+            '8a75e47690c27ed4426806fdead2f7a168579f3c74c2919d810a0eb650bbd8ee'
             '402b528d0bc1d1747ad0aba623994ab4b3efa24ad3877c80bb9c8e31d2775ba5'
             '20ccfc14895ab30ee165475cb8a5121711114fcab0226a2516db8dd6d0a7e017'
             '4b4d94d68706298000bed6f1dff338a06bb13de2ab6587cf2db65bb992bb5693')
