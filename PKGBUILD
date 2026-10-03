@@ -1,4 +1,4 @@
-# Maintainer: Leonid LEdnev <leonidledn at gmail dot com>
+# Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 # Contributor: GI_Jack <GI_Jack@hackermail.com>
 pkgname=python-lsassy
 pkgver=3.1.16
