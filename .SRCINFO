@@ -1,6 +1,6 @@
 pkgbase = hornero-config
 	pkgdesc = HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/HorneroOS/config
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = hornero-config
 	optdepends = papirus-icon-theme: Papirus-Dark factory icons
 	optdepends = orchis-theme: Orchis factory GTK themes
 	optdepends = ttf-material-symbols-variable: Material Symbols shell icon font
-	source = config::git+https://github.com/HorneroOS/config.git#tag=v0.2.2
+	source = config::git+https://github.com/HorneroOS/config.git#tag=v0.2.3
 	sha256sums = SKIP
 
 pkgname = hornero-config

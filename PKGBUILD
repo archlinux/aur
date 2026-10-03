@@ -8,7 +8,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)"
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
 # Named "config" (not "$pkgname") so the checkout lands at
 # "${srcdir}/config", matching _hornero_repo_root() below and keeping
 # AUR chroot builds identical to local packaging/ builds.
-source=("config::git+https://github.com/HorneroOS/config.git#tag=v0.2.2")
+source=("config::git+https://github.com/HorneroOS/config.git#tag=v0.2.3")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
@@ -148,6 +148,17 @@ package() {
   cp -a "$stage/.local/bin"/dots-* "$pkgdir/usr/share/hornero/bin/"
   mkdir -p "$pkgdir/usr/share/hornero/themes"
   cp -a "$stage/.local/share/hornero/themes/." "$pkgdir/usr/share/hornero/themes/"
+  # Layout presets are authored by HorneroOS/shell and copied into this
+  # package from the pinned source recorded in shell/shell-presets.source.
+  # Ship them as a read-only system catalogue so horneroctl and the Shell work
+  # on a clean package-only install without personal dotfiles.
+  local presets_dir="$stage/.local/share/hornero/shell-presets"
+  if [[ ! -d "$presets_dir" || -z $(find "$presets_dir" -maxdepth 1 -type f -name '*.json' -print -quit) ]]; then
+    echo "error: staged Hornero shell preset catalogue is missing or empty" >&2
+    return 1
+  fi
+  install -dm755 "$pkgdir/usr/share/hornero/shell-presets"
+  install -m644 "$presets_dir"/*.json "$pkgdir/usr/share/hornero/shell-presets/"
 
   # Brand identity (vector sources only, never binaries). This block owns
   # /usr/share/hornero/brand exclusively. Coordination: config-gtk work owns
