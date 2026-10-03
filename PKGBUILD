@@ -5,7 +5,7 @@
 _gitname='sigrok-cli'
 pkgname="${_gitname}-git"
 pkgver=0.6.0.r58.gb5c8f3a
-pkgrel=1
+pkgrel=2
 pkgdesc="Client software that supports various hardware logic analyzers, CLI client (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="http://www.sigrok.org/wiki/Sigrok-cli"
@@ -14,7 +14,7 @@ depends=('libsigrok-git' 'libsigrokdecode-git')
 makedepends=('git')
 conflicts=("${_gitname}")
 provides=("${_gitname}")
-source=("git://sigrok.org/${_gitname}")
+source=("git+https://github.com/sigrokproject/${_gitname}.git")
 sha512sums=('SKIP')
 
 pkgver() {
