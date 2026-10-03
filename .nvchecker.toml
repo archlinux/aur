@@ -1,5 +1,0 @@
-[slackdump-bin]
-source = "github"
-github = "rusq/slackdump"
-use_latest_release = true
-prefix = "v"
