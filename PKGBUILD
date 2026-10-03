@@ -2,7 +2,7 @@
 
 pkgname=appimg-bin
 _pkgname=appimg
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Install, update and remove AppImages as proper desktop applications (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -12,13 +12,12 @@ options=('!debug' '!strip')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 optdepends=('fuse2: needed by most AppImages at runtime'
-            'appimageupdatetool: delta updates via zsync'
             'desktop-file-utils: desktop database updates'
             'gtk-update-icon-cache: icon cache updates')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/appimg-$pkgver-x86_64-linux-musl.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/appimg-$pkgver-aarch64-linux-musl.tar.gz")
-sha256sums_x86_64=('804dd1170eadebeb6b380a05325034a1ff1e035de8a2160cebbcf80318c42293')
-sha256sums_aarch64=('c0982408fd1c67eb3d128d3741bde2a04749d72aa4a3cf974946d80f5b7e3803')
+sha256sums_x86_64=('3adb94187b73cf7ab4f4ab9c1ce2fdbf73bc576eb3cb57743ec15afc7f36a80b')
+sha256sums_aarch64=('967634b9bc5f263f517b1c0d4d9a568cc5596c8bd93569fc1db3508ac5e67359')
 
 package() {
 	cd "appimg-$pkgver-$CARCH-linux-musl"
