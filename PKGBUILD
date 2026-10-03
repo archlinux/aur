@@ -1,8 +1,8 @@
 # Maintainer: Shira Nguyen <sn3446409@gmail.com>
 
 pkgname=xenia-edge-bin
-pkgver=20261002085324.43d7967
-_srcver=43d7967
+pkgver=20261003143909.0788c56
+_srcver=0788c56
 pkgrel=1
 pkgdesc="Fork of the Xenia emulator based on Xenia Canary, with aims for quicker iterations and improvements on Vulkan and Linux support."
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip)
 provides=('xenia' 'xenia-edge')
 source=("xenia-edge-${pkgver}.AppImage::https://github.com/has207/xenia-edge/releases/download/${_srcver}/xenia_edge_linux.AppImage"
         "xenia-edge-license::https://raw.githubusercontent.com/has207/xenia-edge/${_srcver}/LICENSE")
-sha256sums=('f6e126452fb528403f2b9c73f00bd72d4d0dbb92773413f5c09424b406e782ba'
+sha256sums=('bdb35f41b5acefcf9666b8c5accb85152e3c566b1f91ab308b4a78f85a02309f'
             'SKIP')
 
 prepare() {
