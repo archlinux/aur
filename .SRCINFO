@@ -1,16 +1,16 @@
 pkgbase = statemate-bin
 	pkgdesc = Declarative system configuration management
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/subbeh/statemate
 	license = MIT
 	conflicts = statemate
 	provides = statemate
 	arch = aarch64
-	source_aarch64 = https://github.com/subbeh/statemate/releases/download/v0.3.1/statemate_0.3.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 51aebcd4468276d1ff1d76bd901f3d8d8fe74bc9e8722d08c59dee81b253135e
+	source_aarch64 = statemate-bin_0.4.0_aarch64.tar.gz::https://github.com/subbeh/statemate/releases/download/v0.4.0/statemate_0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5021969809ca63d5a61e73f69bbfb1fab53111e5a5066750ebba85b30832465a
 	arch = x86_64
-	source_x86_64 = https://github.com/subbeh/statemate/releases/download/v0.3.1/statemate_0.3.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 33805dfe757bd65fed3e4c439de24799d8bb149e0a914214f23fbb41e7eef177
+	source_x86_64 = statemate-bin_0.4.0_x86_64.tar.gz::https://github.com/subbeh/statemate/releases/download/v0.4.0/statemate_0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = b7b9c5d5aa38fd0f44a870ed350dcd1fd7249aeb858d8dc8531bd4e4e1dd9272
 	
 pkgname = statemate-bin
