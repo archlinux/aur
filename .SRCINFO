@@ -1,7 +1,7 @@
 pkgbase = nlink-ng
 	pkgdesc = Native Qt 6 linking program for TI-Nspire calculators (CX-II included)
-	pkgver = 0.9.0
-	pkgrel = 1
+	pkgver = 0.2.0
+	pkgrel = 2
 	url = https://github.com/RyanHakurei/nlink-ng
 	install = nlink-ng.install
 	arch = x86_64

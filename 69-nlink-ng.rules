@@ -2,3 +2,11 @@
 SUBSYSTEM=="usb", ATTR{idVendor}=="0451", ATTR{idProduct}=="e012", ENV{ID_PDA}="1", TAG+="uaccess"
 # TI-Nspire CX II
 SUBSYSTEM=="usb", ATTR{idVendor}=="0451", ATTR{idProduct}=="e022", ENV{ID_PDA}="1", TAG+="uaccess"
+# SilverLink (TI-82 / TI-83 / TI-83 Plus link port)
+SUBSYSTEM=="usb", ATTR{idVendor}=="0451", ATTR{idProduct}=="e001", ENV{ID_PDA}="1", TAG+="uaccess"
+# TI-84 Plus
+SUBSYSTEM=="usb", ATTR{idVendor}=="0451", ATTR{idProduct}=="e003", ENV{ID_PDA}="1", TAG+="uaccess"
+# TI-84 Plus Silver Edition, C Silver Edition, and CE family (shared PID)
+SUBSYSTEM=="usb", ATTR{idVendor}=="0451", ATTR{idProduct}=="e008", ENV{ID_PDA}="1", TAG+="uaccess"
+# TI-84 Evo
+SUBSYSTEM=="usb", ATTR{idVendor}=="0451", ATTR{idProduct}=="e018", ENV{ID_PDA}="1", TAG+="uaccess"
