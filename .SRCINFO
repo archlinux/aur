@@ -1,8 +1,9 @@
 pkgbase = gp-tray
 	pkgdesc = GlobalProtect VPN system-tray indicator for gpclient with multi-portal switching, desktop alerts and a systemd user service
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Its-Alex/gp-tray
+	install = gp-tray.install
 	arch = any
 	license = MIT
 	depends = python

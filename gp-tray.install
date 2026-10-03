@@ -1,0 +1,14 @@
+pre_remove() {
+    # Tear the VPN down and close running trays so removal leaves nothing
+    # running. Upgrades don't run this hook, only true removal.
+    systemctl stop 'gp-tray-tunnel@*.service' 2>/dev/null || true
+    pkill -f '/usr/bin/gp-tray$' 2>/dev/null || true
+}
+
+post_remove() {
+    cat <<'EOF'
+==> pacman never touches per-user data. To finish cleaning up, each user may run:
+      systemctl --user disable gp-tray.service     # drop the enable symlink
+      rm -rf ~/.config/gp-tray ~/.cache/gp-tray    # portals, logs, state
+EOF
+}

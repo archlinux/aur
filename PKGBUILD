@@ -1,11 +1,12 @@
 # Maintainer: Its-Alex <me@itsalex.fr>
 pkgname=gp-tray
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GlobalProtect VPN system-tray indicator for gpclient with multi-portal switching, desktop alerts and a systemd user service"
 arch=('any')
 url="https://github.com/Its-Alex/gp-tray"
 license=('MIT')
+install=gp-tray.install
 depends=('python' 'python-gobject' 'gtk3' 'libayatana-appindicator' 'libnotify'
          'polkit' 'globalprotect-openconnect' 'hicolor-icon-theme'
          'iproute2' 'systemd' 'xdg-utils')
