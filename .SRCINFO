@@ -1,7 +1,7 @@
 pkgbase = theft-git
 	pkgdesc = property-based testing for C
 	pkgver = 0.4.4.r0.ge2e46b4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/silentbicycle/theft
 	arch = i686
 	arch = x86_64
@@ -12,12 +12,8 @@ pkgbase = theft-git
 	source = theft-git::git+https://github.com/silentbicycle/theft.git
 	source = file://0001-make-set-permisions.patch
 	source = file://0001-rework-Makefile-to-allow-overriding-CFLAGS-when-pack.patch
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
+	sha256sums = SKIP
+	sha256sums = f9396d19b0b07a8becd9c8bcfdd0765d5da893e65e945f51e5d7a5c9d96fa831
+	sha256sums = 2896151725ccd5d66397d4d91398a9b1f2144861ce0a97409b16363f90ee24cc
 
 pkgname = theft-git
-

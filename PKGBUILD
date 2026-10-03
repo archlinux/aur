@@ -3,7 +3,7 @@
 _pkgbase=theft
 pkgname=theft-git
 pkgver=0.4.4.r0.ge2e46b4
-pkgrel=1
+pkgrel=2
 pkgdesc="property-based testing for C"
 arch=('i686' 'x86_64')
 url="https://github.com/silentbicycle/theft"
@@ -18,8 +18,9 @@ source=(
   "file://0001-make-set-permisions.patch"
   "file://0001-rework-Makefile-to-allow-overriding-CFLAGS-when-pack.patch"
 )
-md5sums=('SKIP' 'SKIP' 'SKIP')
-sha1sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'f9396d19b0b07a8becd9c8bcfdd0765d5da893e65e945f51e5d7a5c9d96fa831'
+            '2896151725ccd5d66397d4d91398a9b1f2144861ce0a97409b16363f90ee24cc')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -39,7 +40,7 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname}"
-  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  make PREFIX=/usr PKGCONFIG_DST=/usr/lib/pkgconfig DESTDIR="${pkgdir}" install
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
   install -D -m644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   mkdir -p "$pkgdir/usr/share/doc/$_pkgbase"
