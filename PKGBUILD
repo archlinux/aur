@@ -6,7 +6,7 @@ _appname=StemKit
 pkgname=${_gitname}-bin
 pkgdesc="Split any YouTube song into stems"
 
-pkgver=0.1.23
+pkgver=0.1.24
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,9 +28,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.deb")
-sha256sums=('8239a587c6cedcc8af09487e8ab20fe5a23f37fc4b7daace941c7919e3271aab'
+sha256sums=('4825bbac5240e22129e769e6a83c146830d593cec4a2e04e386ac8694105cc92'
             'acd462c0d190620860abbd07aa158091d2b8db7083b9fb193c4e243faf9a05de')
-sha256sums_x86_64=('a85b7fd49f43e0a9c7649779af211ad937aa5b2f3d31a7d6c4b7e9974162abbb')
+sha256sums_x86_64=('7446d4a7eeaef5eb67e808ffd95f67f2e049a63ae8e1062ae1b7c6bc68ceb556')
 
 
 package() {

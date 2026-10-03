@@ -1,6 +1,6 @@
 pkgbase = stemkit-bin
 	pkgdesc = Split any YouTube song into stems
-	pkgver = 0.1.23
+	pkgver = 0.1.24
 	pkgrel = 1
 	url = https://github.com/danielravina/stemkit
 	arch = x86_64
@@ -38,11 +38,11 @@ pkgbase = stemkit-bin
 	depends = hicolor-icon-theme
 	conflicts = stemkit
 	options = !strip
-	source = README-0.1.23.md::https://raw.githubusercontent.com/danielravina/stemkit/v0.1.23/README.md
-	source = LICENSE-0.1.23::https://raw.githubusercontent.com/danielravina/stemkit/v0.1.23/LICENSE
-	sha256sums = 8239a587c6cedcc8af09487e8ab20fe5a23f37fc4b7daace941c7919e3271aab
+	source = README-0.1.24.md::https://raw.githubusercontent.com/danielravina/stemkit/v0.1.24/README.md
+	source = LICENSE-0.1.24::https://raw.githubusercontent.com/danielravina/stemkit/v0.1.24/LICENSE
+	sha256sums = 4825bbac5240e22129e769e6a83c146830d593cec4a2e04e386ac8694105cc92
 	sha256sums = acd462c0d190620860abbd07aa158091d2b8db7083b9fb193c4e243faf9a05de
-	source_x86_64 = StemKit-x86_64-0.1.23.deb::https://github.com/danielravina/stemkit/releases/download/v0.1.23/StemKit-0.1.23-linux-amd64.deb
-	sha256sums_x86_64 = a85b7fd49f43e0a9c7649779af211ad937aa5b2f3d31a7d6c4b7e9974162abbb
+	source_x86_64 = StemKit-x86_64-0.1.24.deb::https://github.com/danielravina/stemkit/releases/download/v0.1.24/StemKit-0.1.24-linux-amd64.deb
+	sha256sums_x86_64 = 7446d4a7eeaef5eb67e808ffd95f67f2e049a63ae8e1062ae1b7c6bc68ceb556
 
 pkgname = stemkit-bin
