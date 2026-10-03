@@ -1,7 +1,7 @@
 # Maintainer: WaiJade <waijade@outlook.com>
 
 pkgname=astrobox-creator-console
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="AstroBox CreatorConsole - all-in-one creator console for the AstroBox ecosystem"
 arch=('x86_64')
@@ -39,7 +39,7 @@ makedepends=('curl')
 prepare() {
     local _base="AstralSightStudios/AstroBoxCreatorConsole/releases/download/v${pkgver}/AstroBoxCreatorConsole-${pkgver}-x86_64.pkg.tar.zst"
     local _file="AstroBoxCreatorConsole-${pkgver}-x86_64.pkg.tar.zst"
-    local _expected="32bba98eb4ad3e7d8e748f4db837e236d3b2d62c745273af2b8a722dfb5073e6"
+    local _expected="728f3d702c1a6fb5bce33d9cc23adc8f7cb102f22756bfc173904ec42599f5a4"
     local _mirrors=(
         "https://github.com/${_base}|GitHub"
         "https://ghfast.top/https://github.com/${_base}|ghfast"
