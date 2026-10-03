@@ -1,6 +1,6 @@
 # Maintainer: @aardbol
 pkgname=codenomad-tauri-bin
-pkgver=0.20.0
+pkgver=0.20.1
 pkgrel=1
 pkgdesc='The AI Coding Cockpit for OpenCode (Tauri-based)'
 arch=('x86_64')
@@ -22,7 +22,7 @@ options=('!debug' '!strip')
 
 source_x86_64=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/CodeNomad-Tauri-linux-x64-${pkgver}.deb")
 
-sha256sums_x86_64=('aeb27c742703dbf5fffa2fffe23a95231748e0e4c288bd2bf018a8b0dd9794b1')
+sha256sums_x86_64=('7608664dc45766cf3ce81a8a753722963ce6e466d5e87dc17114c5b81adac13a')
 
 package() {
   # Extract the data payload from the deb (ar archive containing data.tar.gz).

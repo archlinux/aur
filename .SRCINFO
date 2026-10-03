@@ -1,6 +1,6 @@
 pkgbase = codenomad-tauri-bin
 	pkgdesc = The AI Coding Cockpit for OpenCode (Tauri-based)
-	pkgver = 0.20.0
+	pkgver = 0.20.1
 	pkgrel = 1
 	url = https://github.com/NeuralNomadsAI/CodeNomad
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = codenomad-tauri-bin
 	conflicts = codenomad-bin
 	options = !debug
 	options = !strip
-	source_x86_64 = codenomad-tauri-bin-0.20.0.deb::https://github.com/NeuralNomadsAI/CodeNomad/releases/download/v0.20.0/CodeNomad-Tauri-linux-x64-0.20.0.deb
-	sha256sums_x86_64 = aeb27c742703dbf5fffa2fffe23a95231748e0e4c288bd2bf018a8b0dd9794b1
+	source_x86_64 = codenomad-tauri-bin-0.20.1.deb::https://github.com/NeuralNomadsAI/CodeNomad/releases/download/v0.20.1/CodeNomad-Tauri-linux-x64-0.20.1.deb
+	sha256sums_x86_64 = 7608664dc45766cf3ce81a8a753722963ce6e466d5e87dc17114c5b81adac13a
 
 pkgname = codenomad-tauri-bin
