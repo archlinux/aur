@@ -1,6 +1,6 @@
 pkgbase = gravitype
 	pkgdesc = A terminal typing game where the words fall from the sky
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/kanakOS01/gravitype
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = gravitype
 	depends = python-rich
 	provides = gravitype
 	conflicts = python-gravitype
-	source = https://files.pythonhosted.org/packages/source/g/gravitype/gravitype-1.1.0.tar.gz
-	sha256sums = 54be663e9d4eec09f770695b5b579b49af725944bc7804b03027744a57384ea1
+	source = https://files.pythonhosted.org/packages/source/g/gravitype/gravitype-1.2.0.tar.gz
+	sha256sums = 3ad5af422a1d7a8b1e07c51e609f291abb64143af93d8d1d65f1123e221db5a9
 
 pkgname = gravitype
