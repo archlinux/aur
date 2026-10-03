@@ -1,9 +1,20 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 6.5.3 ➙ 6.5.7
-              : 2026-09-28 ➙ 2026-09-29
+ Tags         : 6.5.4 ➙ 6.5.8
+              : 2026-09-28 ➙ 2026-10-03
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-10-03   : 6.5.8
+              - release 6.5.8
+                * Expand the kernel signing documentation.
+            
+                  * Expand secure boot section
+                  * Add section on systemd validation of the kernel (sysetmd-tpm2-setup)
+                  * Add section on the (benign) systemd TPM2 warning: **Failed to start Early TPM SRK Setup**
+ 2026-09-29   ⋯
+              - minor doc tweaks
+              - more doc updates
 
  2026-09-29   : 6.5.7
               - release 6.5.7
@@ -25,8 +36,3 @@
               - typo
               - update .readthedocs
               - add theme requirement for readthedocs
-
- 2026-09-28   : 6.5.3
-              - **6.5.3** Mon Sep 28 09:41:04 PM UTC 2026
-            
-                * Add readthedocs to repo
