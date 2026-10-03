@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/ZerBea/$_bpn"
 
 pkgver=4.2.1.r1.g74f5eb4
-pkgrel=1
+pkgrel=2
 
 source=("git+$url")
 md5sums=('SKIP')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 conflicts=("$_bpn")
 provides=("$_bpn=$pkgver")
 
-makedepends=('make' 'gcc')
+makedepends=('git')
 
 depends=('curl' 'libpcap' 'zlib' 'openssl')
 
