@@ -3,9 +3,9 @@
 pkgname=slock-bgimage
 _pkgname=slock
 pkgver=1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple screen locker for X(patched to allow background images)"
-arch=('x86_64' 'i686' 'pentium4')
+arch=('x86_64' 'x86_64_v3' 'pentium4')
 url="https://github.com/NetworkJack2/slock-bgimage"
 license=('MIT')
 depends=('libxext' 'libxrandr')
