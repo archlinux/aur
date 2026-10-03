@@ -1,16 +1,19 @@
 pkgbase = crc-bin
 	pkgdesc = Red Hat CodeReady Containers is a tool that manages a local OpenShift 4.x cluster optimized for testing and development purposes
-	pkgver = 2.63.0
+	pkgver = 2.64.0
 	pkgrel = 1
 	url = https://github.com/code-ready/crc
 	arch = x86_64
+	arch = aarch64
 	license = APACHE
 	depends = firewalld
 	depends = libvirt
 	depends = networkmanager
 	depends = qemu-base
 	provides = crc
-	source_x86_64 = crc-v2.63.0-linux-amd64.tar.xz::https://developers.redhat.com/content-gateway/file/pub/openshift-v4/clients/crc/2.63.0/crc-linux-amd64.tar.xz
-	b2sums_x86_64 = 835fd610e551f51b23e4f68e3895e0f5aa4f6dbed3f42ced9f3b733b8c220f265b8fa89404b55542bb863ed6f5f49c042a3d5bfc94a952b91d2f9fd17d809bf0
+	source_x86_64 = crc-v2.64.0-linux-amd64.tar.xz::https://developers.redhat.com/content-gateway/rest/mirror/pub/cgw/crc/2.64.0/crc-linux-amd64.tar.xz
+	b2sums_x86_64 = d73775a57816b89f829bbffc6ff6371827627b2536227cb16b5924a7eb9c04df31bd85720acd0f3982e84ff2885e1ceb0396e94e12755a3a5e811da8ff9f564d
+	source_aarch64 = crc-v2.64.0-linux-arm64.tar.xz::https://developers.redhat.com/content-gateway/rest/mirror/pub/cgw/crc/2.64.0/crc-linux-arm64.tar.xz
+	b2sums_aarch64 = 2f10490cbd79b36a6bd57ae4848430d48517713e2786af95daa242bd8d1a7c8cd64c1f8a7ed4453a8557a4bb509c451b795675e96fb4be975d8ab9fa8c212808
 
 pkgname = crc-bin
