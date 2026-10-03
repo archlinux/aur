@@ -62,7 +62,7 @@ prepare() {
 build() {
   local cmake_options=(
     -B build
-    -S "${pkgname/-off/}/fortune-mod"
+    -S "$pkgname/fortune-mod"
     -W no-dev
     -D CMAKE_BUILD_TYPE=None
     -D CMAKE_INSTALL_PREFIX=/usr
@@ -81,5 +81,5 @@ package() {
   rm -vf "$pkgdir/usr/share/fortune/"*.u8
 
   # license
-  install -vDm644 -t "$pkgdir/usr/share/licenses/${pkgname/-off/}" "${pkgname/-off/}/fortune-mod/COPYING.txt"
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$pkgname/fortune-mod/COPYING.txt"
 }
