@@ -3,7 +3,7 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=dynamips
-pkgver=0.2.23
+pkgver=0.2.25
 pkgrel=1
 pkgdesc='Cisco router emulator.'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ groups=('gns3')
 depends=('libpcap' 'elfutils')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GNS3/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('b68af39cd66f10555d860437f55e63887aefdb5a949bacacf3a308cc0c4eaaab3bb9a496c5ac32fd19d3920bada807bff2af8eb66b01d8d735419fec5d134746')
+sha512sums=('17ba4bceb1afde7881ff55fa1efcb3cae4288906e862d174130c0b7660d619461b72d9bb1db1e7cd63b3a2f210bda9da8e53b9e74d77c3faa19be70a1b125e60')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
