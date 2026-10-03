@@ -1,6 +1,6 @@
 pkgbase = nspawn
 	pkgdesc = Docker-like management of systemd-nspawn machines: OCI images from a hub, shared layers, a bridge network, driven over D-Bus
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/nspawn/nspawn
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = nspawn
 	optdepends = mkosi: build images with nspawn build
 	optdepends = iptables-nft: keep the bridge reachable next to the forwarding rules of docker or ufw
 	options = !lto
-	source = nspawn-1.9.0.tar.gz::https://github.com/nspawn/nspawn/archive/refs/tags/1.9.0.tar.gz
-	sha256sums = 113b41dcd19e52eef6a9086f3d0139110cf9b70fd51c4966b3c5685ba1074711
+	source = nspawn-1.9.1.tar.gz::https://github.com/nspawn/nspawn/archive/refs/tags/1.9.1.tar.gz
+	sha256sums = a82e97d72738031d0d72403cecb12bae0a116eb7c260a8712d0238ee1c81391e
 
 pkgname = nspawn
