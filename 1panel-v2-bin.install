@@ -99,7 +99,7 @@ _1panel_get_local_ip() {
     local ip gateway hex_gateway candidates
 
     # 默认网关(小端十六进制,如 0105A8C0 -> 192.168.5.1)
-    read _ _ hex_gateway _ < <(awk '$2=="00000000" && $8=="00000000" {print $1, $2, $3, $4, $5; exit}' /proc/1/net/route 2>/dev/null)
+    read -r _ _ hex_gateway _ < <(awk '$2=="00000000" && $8=="00000000" {print $1, $2, $3, $4, $5; exit}' /proc/1/net/route 2>/dev/null)
     if [[ -n "$hex_gateway" && "${#hex_gateway}" -eq 8 ]]; then
         gateway=$(printf '%d.%d.%d.%d' \
             $((0x${hex_gateway:6:2} & 0xff)) \
