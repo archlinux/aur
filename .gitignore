@@ -7,4 +7,6 @@
 !.SRCINFO
 !.nvchecker.toml
 !LICENSE
+!keys/
+!keys/pgp/*
 !papirus-folders.hook
