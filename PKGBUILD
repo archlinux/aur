@@ -1,6 +1,6 @@
 # Maintainer: inventory69 <inventory69@users.noreply.github.com>
 pkgname=simple-notes-desktop-bin
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="Cross-platform note-taking app with WebDAV sync, built with Tauri"
 arch=('x86_64')
@@ -22,7 +22,7 @@ options=('!strip')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Simple.Notes.Desktop_${pkgver}_amd64.deb"
         "LICENSE")
 # Eine Zeile lassen: die Skripte ersetzen per sed nur den ersten Eintrag (die .deb).
-sha256sums=('7e5858ca1f9cc16580ed05c9c7342d8a980037e323b21fb8ad9a7cf08767af7a' '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
+sha256sums=('2573a8bde2bfd2ff5ee605e3b7a9ef13bea1a13f78212e7f7f604cef048a5260' '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
 
 package() {
   # Extract data from deb package
