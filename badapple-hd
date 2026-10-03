@@ -12,7 +12,7 @@ import struct
 import select
 
 local_video_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "badapple.mp4")
-system_video_path = "/usr/share/badapple-py/badapple.mp4"
+system_video_path = "/usr/share/badapple-hd/badapple.mp4"
 
 if os.path.exists(local_video_path):
     VIDEO_PATH = local_video_path
