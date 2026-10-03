@@ -1,6 +1,6 @@
 pkgname=badapple-hd
 pkgver=1.0.0
-pkgrel=4
+pkgrel=1
 pkgdesc="Play badapple in your terminal in the highest quality possible!"
 arch=('any')
 url="https://github.com/Raj-1727/badapple-hd"
@@ -24,6 +24,9 @@ sha256sums=(
 )
 
 package() {
-    install -Dm755 "$srcdir/badapple-hd" "$pkgdir/usr/bin/badapple-hd"
-    install -Dm644 "$srcdir/badapple.mp4" "$pkgdir/usr/share/badapple-hd/badapple.mp4"
+    install -Dm755 "$srcdir/badapple-hd" \
+        "$pkgdir/usr/bin/badapple-hd"
+
+    install -Dm644 "$srcdir/badapple.mp4" \
+        "$pkgdir/usr/share/badapple-hd/badapple-hd/badapple.mp4"
 }

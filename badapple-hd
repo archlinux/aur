@@ -11,8 +11,7 @@ import termios
 import struct
 import select
 
-VIDEO_PATH = "/usr/share/badapple-hd/badapple.mp4"
-
+VIDEO_PATH = "/usr/share/badapple-py/badapple.mp4"
 FPS = 30.0
 FRAME_TIME = 1.0 / FPS
 
@@ -105,16 +104,12 @@ target_width, target_height = 0, 0
 pixel_w, pixel_h = 0, 0
 ffmpeg_proc = None
 
-def start_ffmpeg(w, h, start_sec=0):
-    cmd = ["ffmpeg"]
-    if start_sec > 0:
-        cmd.extend(["-ss", str(start_sec)])
-    cmd.extend([
-        "-threads", "2", "-i", VIDEO_PATH,
+def start_ffmpeg(w, h):
+    return subprocess.Popen([
+        "ffmpeg", "-threads", "2", "-i", VIDEO_PATH,
         "-vf", f"scale={w}:{h}:flags=neighbor",
         "-f", "image2pipe", "-pix_fmt", "gray", "-vcodec", "rawvideo", "-"
-    ])
-    return subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+    ], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
 
 start_time = time.time()
 pause_started = None
@@ -137,7 +132,6 @@ try:
         max_w = term_cols
         max_h = max(5, term_lines - 1)
 
-        # Restore aspect ratio conditional sizing to leave side/top gaps
         needed_w = int(max_h * video_aspect / char_ratio)
         if needed_w <= max_w:
             t_w, t_h = needed_w, max_h
@@ -151,18 +145,9 @@ try:
         if (t_w, t_h) != (target_width, target_height) or ffmpeg_proc is None:
             target_width, target_height = t_w, t_h
             pixel_w, pixel_h = p_w, p_h
-            
-            current_pause_duration = (time.time() - pause_started) if (paused and pause_started) else 0
-            elapsed = (time.time() - start_time) - current_pause_duration
-            elapsed = max(0, elapsed)
-            
             if ffmpeg_proc:
                 ffmpeg_proc.terminate()
-            
-            ffmpeg_proc = start_ffmpeg(pixel_w, pixel_h, elapsed)
-            
-            start_time = time.time() - elapsed
-            frame_count = int(elapsed / FRAME_TIME)
+            ffmpeg_proc = start_ffmpeg(pixel_w, pixel_h)
 
         frame_size = pixel_w * pixel_h
         raw_frame = ffmpeg_proc.stdout.read(frame_size)
