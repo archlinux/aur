@@ -18,6 +18,7 @@ pkgbase = trackknife-git
 	depends = libebur128
 	depends = libopenmpt
 	depends = libpipewire
+	depends = libupnp
 	depends = libutf8proc
 	depends = openssl
 	depends = sqlite
