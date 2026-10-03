@@ -1,7 +1,7 @@
 pkgbase = mako-render
 	pkgdesc = Next-generation, Vulkan-powered graphics layer for Linux gaming
 	pkgver = 4.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://eugeniosegala.github.io/MAKO
 	arch = x86_64
 	license = GPL-3.0-or-later

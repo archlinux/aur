@@ -5,7 +5,7 @@ pkgname=(
 )
 pkgbase=mako-render
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 _vkmako_ver=0.3.2.10-10
 pkgdesc="Next-generation, Vulkan-powered graphics layer for Linux gaming"
 arch=('x86_64')
@@ -54,10 +54,8 @@ build() {
     -D MAKO_BUILD_UI='ON'
     -D MAKO_BUILD_CLI='ON'
     -D MAKO_INSTALL_XDG_FILES='ON'
+    -D MAKO_REQUIRE_NATIVE_PACKAGE_HEADERS='ON'
     -D BUILD_TESTING='ON'
-
-    ## TODO
-    # -D MAKO_REQUIRE_NATIVE_PACKAGE_HEADERS='ON' ## Requires Vulkan headers >=1.4.362
   )
   cmake "${cmake_options[@]}"
   cmake --build build
@@ -77,10 +75,8 @@ build() {
     -D MAKO_BUILD_UI='OFF'
     -D MAKO_BUILD_CLI='OFF'
     -D MAKO_INSTALL_XDG_FILES='OFF'
+    -D MAKO_REQUIRE_NATIVE_PACKAGE_HEADERS='ON'
     -D BUILD_TESTING='OFF'
-
-    ## TODO
-    # -D MAKO_REQUIRE_NATIVE_PACKAGE_HEADERS='ON'  ## Requires Vulkan headers >=1.4.362
   )
   cmake "${cmake_options[@]}"
   cmake --build build_x86
