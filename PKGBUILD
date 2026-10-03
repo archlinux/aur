@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cedilla
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="A markdown text editor for the COSMIC™ desktop"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ checkdepends=(
   'desktop-file-utils'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('47d13bcd245b3b71876997d81adad649f9bd028ab402922a95b3e4e0637edbd9')
+sha256sums=('24b676cfc2206162a4c88dc5d972c58fa0b8391e741f496fa44b29988999cb38')
 
 prepare() {
   cd "$pkgname-$pkgver"
