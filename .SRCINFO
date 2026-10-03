@@ -1,0 +1,32 @@
+pkgbase = agents-anywhere-cli
+	pkgdesc = Local runtime connector for Agents Anywhere
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/anywhere-labs/Agents-Anywhere
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python>=3.12
+	depends = python-asyncer
+	depends = python-claude-agent-sdk
+	depends = python-httpx
+	depends = python-jsonschema>=4.26.0
+	depends = python-loguru
+	depends = python-pexpect>=4.9.0
+	depends = python-psutil>=7.2.2
+	depends = python-ptyprocess
+	depends = python-pydantic>=2.0.0
+	depends = python-pyte>=0.8.2
+	depends = python-python-socks>=2.8.1
+	depends = python-socksio
+	depends = python-websockets>=16.0
+	depends = openai-codex>=0.144.4
+	source = Agents-Anywhere::git+https://github.com/anywhere-labs/Agents-Anywhere.git#tag=v2.0.3
+	source = openai_codex-0.160.0-py3-none-any.whl::https://files.pythonhosted.org/packages/09/a6/3e848b805f31a9a736ee1e54f92c2457de2c4e9d0553404975f2bac2dd33/openai_codex-0.160.0-py3-none-any.whl
+	sha256sums = SKIP
+	sha256sums = 61d2d855ca2ebedfd51280fbeb60ff31fc47ccbd55ebce186505e3f3da096921
+
+pkgname = agents-anywhere-cli
