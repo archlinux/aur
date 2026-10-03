@@ -15,7 +15,7 @@ pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="http://openocd.org"
 license=('GPL')
-depends=('libftdi-compat' 'libusb-compat' 'hidapi' 'libudev.so' 'capstone' 'libjaylink' 'jimtcl')
+depends=('libftdi-compat' 'libusb-compat' 'hidapi' 'libudev.so' 'capstone' 'libjaylink' 'jimtcl' 'libgpiod')
 makedepends=('git' 'automake>=1.11' 'autoconf' 'libtool' 'tcl')
 options=(!strip)
 provides=('openocd')
@@ -27,31 +27,30 @@ source=(
 sha256sums=('SKIP')
 
 # Specify desired features and device support here. A list can be
-# obtained by running ./configure in the source directory.
+# obtained by running ./configure --help in the source directory.
+# Other supported drivers are enabled automatically when dependencies are available.
 _features=(
-    aice
+    am335xgpio
     amtjtagaccel
     armjtagew
     at91rm9200
     bcm2835gpio
     buspirate
-    capstone
     cklink
     cmsis-dap
     dummy
     ep93xx
     ftdi
     gw16012
-    ioutil
+    imx-gpio
     jlink
-    jtag_vpi
-    legacy-ft2232_libftdi
-    oocd_trace
+    jtag-vpi
+    linuxgpiod
     opendous
-    openjtag_ftdi
+    openjtag
     osbdm
     parport
-    presto_libftdi
+    presto
     remote-bitbang
     rlink
     stlink
@@ -59,18 +58,15 @@ _features=(
     ti-icdi
     ulink
     usb-blaster-2
-    usb_blaster_libftdi
+    usb-blaster
     usbprog
     vsllink
-    xlnx_pcie_xvc
-    #parport-giveio
-    #zy1000
-    #zy1000-master
+    xlnx-xvc
     )
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git describe --tags --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --tags --long --match 'v[0-9]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -84,7 +80,8 @@ build() {
   ./bootstrap
   ./configure --prefix=/usr \
     --disable-werror \
-    ${_features[@]/#/--enable-}
+    --with-capstone \
+    "${_features[@]/#/--enable-}"
 
   make
 }

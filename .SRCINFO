@@ -20,6 +20,7 @@ pkgbase = openocd-git
 	depends = capstone
 	depends = libjaylink
 	depends = jimtcl
+	depends = libgpiod
 	provides = openocd
 	conflicts = openocd
 	options = !strip
