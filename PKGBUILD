@@ -10,8 +10,8 @@
 PKGEXT='.pkg.tar'
 _pkgname=android-studio
 pkgname="${_pkgname}-beta"
-pkgver=2026.1.4.8
-_subver='quail4-patch1'
+pkgver=2026.2.1.8
+_subver='rabbit1'
 pkgrel=1
 pkgdesc='The Official Android IDE (Beta branch)'
 arch=('i686' 'x86_64')
@@ -50,7 +50,7 @@ source=(
   "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/${pkgver}/${_pkgname}-${_subver}-linux.tar.gz"
   "${pkgname}.desktop"
 )
-sha256sums=('25c97ca6c6b505f2a20bff962dfd28718327f61e25b09a9bc915f1dae7b1e534'
+sha256sums=('f8775c67cf899d9133712a2d7ee3ef7231e07fb16dbe0544c47e5f5babd5931b'
             'c4a15624eb258acbe119567b044f4a54be4ebb41f05e6f6cb4d941d130dc714f')
 
 if [ "${CARCH}" = "i686" ]; then

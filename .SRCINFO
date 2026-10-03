@@ -1,6 +1,6 @@
 pkgbase = android-studio-beta
 	pkgdesc = The Official Android IDE (Beta branch)
-	pkgver = 2026.1.4.8
+	pkgver = 2026.2.1.8
 	pkgrel = 1
 	url = https://developer.android.com/studio/preview
 	arch = i686
@@ -30,11 +30,11 @@ pkgbase = android-studio-beta
 	optdepends = kdialog: KDE/Qt-based GUI dialogs
 	optdepends = libnotify: desktop notifications via notify-send
 	optdepends = xorg-xmessage: lightweight fallback X11 dialogs
-	provides = android-studio=2026.1.4.8
+	provides = android-studio=2026.2.1.8
 	options = !strip
-	source = https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2026.1.4.8/android-studio-quail4-patch1-linux.tar.gz
+	source = https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2026.2.1.8/android-studio-rabbit1-linux.tar.gz
 	source = android-studio-beta.desktop
-	sha256sums = 25c97ca6c6b505f2a20bff962dfd28718327f61e25b09a9bc915f1dae7b1e534
+	sha256sums = f8775c67cf899d9133712a2d7ee3ef7231e07fb16dbe0544c47e5f5babd5931b
 	sha256sums = c4a15624eb258acbe119567b044f4a54be4ebb41f05e6f6cb4d941d130dc714f
 
 pkgname = android-studio-beta
