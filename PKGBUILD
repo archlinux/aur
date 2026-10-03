@@ -1,32 +1,38 @@
 # Maintainer: gradia <gradia@disroot.org>
 
 pkgname=olladesk
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Client desktop per Ollama in stile ChatGPT (PySide6/Qt)"
 arch=('any')
 url="https://github.com/gradia64/OllaDesk"
 license=('GPL-3.0-or-later')
 depends=('python' 'pyside6' 'hicolor-icon-theme')
+makedepends=('git')
 optdepends=(
   'ollama: server LLM locale'
   'python-pypdf: testo dei PDF allegati'
   'python-keyring: chiave API della ricerca web nel portachiavi (KWallet)'
   'qt6-svg: icona SVG della finestra'
 )
-# tarball e firma pubblicati nella release GitHub da .github/workflows/release.yml
-source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('837f5e7cb132d17e08db639bb6ab3abb1cd3343711795083b946545b2ae9f558'
-            'SKIP')
-validpgpkeys=('5B166C1B4AD7428C74A07D5BA3370987A0576694')  # chiave di release: packaging/olladesk-release-key.asc
+# Sorgente git dal tag firmato dal maintainer: con «?signed» makepkg verifica
+# la firma del tag annotato e la accetta solo da una chiave in validpgpkeys.
+# Il prefisso «$pkgname::» fissa la cartella del clone in $srcdir/olladesk.
+source=("$pkgname::git+$url.git#tag=v$pkgver?signed")
+# SKIP per scelta: l'integrità del sorgente la garantisce la firma del tag
+# (?signed + validpgpkeys), non un hash.
+sha256sums=('SKIP')
+# Impronta della primaria: makepkg accetta anche le firme delle sue
+# sottochiavi, quindi una rotazione delle sottochiavi non cambia questa riga.
+validpgpkeys=('5B166C1B4AD7428C74A07D5BA3370987A0576694')  # gradia (OllaDesk release signing)
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   QT_QPA_PLATFORM=offscreen python tests/unit_test.py
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   install -d "$pkgdir/usr/share/olladesk"
   cp -r olladesk "$pkgdir/usr/share/olladesk/"
