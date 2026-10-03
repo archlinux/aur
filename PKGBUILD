@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gopher64-git
-pkgver=1.1.36.r26.g77d9defc
+pkgver=1.1.38.r0.g256d5cf3
 pkgrel=1
 pkgdesc='A Nintendo64 emulator (git version)'
 arch=('x86_64')
@@ -83,7 +83,6 @@ build() {
     export AR='llvm-ar'
     export RANLIB='llvm-ranlib'
     export CFLAGS+=' -ffat-lto-objects'
-    export CMAKE_POLICY_VERSION_MINIMUM='3.5'
     export RUSTFLAGS+=' -Clink-arg=-fuse-ld=lld'
     export RUSTUP_TOOLCHAIN='stable'
     export CARGO_TARGET_DIR='target'
@@ -96,7 +95,6 @@ check() {
     export AR='llvm-ar'
     export RANLIB='llvm-ranlib'
     export CFLAGS+=' -ffat-lto-objects'
-    export CMAKE_POLICY_VERSION_MINIMUM='3.5'
     export RUSTFLAGS+=' -Clink-arg=-fuse-ld=lld'
     export RUSTUP_TOOLCHAIN='stable'
     export CARGO_TARGET_DIR='target'

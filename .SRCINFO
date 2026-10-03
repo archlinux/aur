@@ -1,6 +1,6 @@
 pkgbase = gopher64-git
 	pkgdesc = A Nintendo64 emulator (git version)
-	pkgver = 1.1.36.r26.g77d9defc
+	pkgver = 1.1.38.r0.g256d5cf3
 	pkgrel = 1
 	url = https://github.com/gopher64/gopher64/
 	arch = x86_64
