@@ -1,7 +1,7 @@
 # Maintainer: crimist <aur at crim dot ist>
 
 pkgname=beszel-agent-bin
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Beszel monitoring agent"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'mips64' 'riscv64')
@@ -12,7 +12,8 @@ optdepends=(
   'intel-gpu-tools: Intel i915 driver GPU metrics via intel_gpu_top'
   'smartmontools: SMART metrics via smartctl'
   'nvtop: Generic and Intel xe driver GPU metrics via nvtop'
-  'zfs-utils: ZFS pool and dataset metrics')
+  'zfs-utils: ZFS pool and dataset metrics'
+  'pacman-contrib: Pending package update counts via checkupdates')
 provides=('beszel-agent')
 conflicts=('beszel-agent')
 backup=('etc/beszel-agent.conf')
@@ -24,12 +25,12 @@ source+=(
 sha256sums=('5224235a819c4463ac7d7c468972fbb5ce73a0aaa6737a297ba8ef9395befbfd'
             '36386e355041676f72e55052ed02be90b1c307bfb5be9497b3e32d44e2982fac'
             'fe5029ca8180e202e814de8061c3282db5482da326ebe3775312773789fec0f2')
-sha256sums_x86_64=('f6833b2e7c27cbcbb941fbd2c54b2dfd8f9c24444caf06629bd70ce7c214b969')
-sha256sums_aarch64=('dbb292d7309ca00cfd7f3d8f86480991f7c959e65af6506754a55d3e345452ab')
-sha256sums_armv7h=('35f6ddd6294ea675d42edefdcaf0db8a7bcd71d5448b2f9bd02ac18c76d4a126')
-sha256sums_armv6h=('35f6ddd6294ea675d42edefdcaf0db8a7bcd71d5448b2f9bd02ac18c76d4a126')
-sha256sums_mips64=('c18a639c2dff44f562abce8ba9e83e9c638b0ce916c11164710b043b57f189e2')
-sha256sums_riscv64=('cfc9aadbd0fdc4734d9aae3720d01b49e436dae185b3d2c8bb559fb4589c9cb8')
+sha256sums_x86_64=('43265e3d241cd496c756936150c31de24eb307193ce347aca65ad41cfab7b1be')
+sha256sums_aarch64=('82804205a370a790679e836c3c3d658bc804205517e1c3f676dba9fad064ade5')
+sha256sums_armv7h=('57a04fff8f15b451dc483d6b2c02dd72019dd55a25c060c28a91b1f8a7df3940')
+sha256sums_armv6h=('57a04fff8f15b451dc483d6b2c02dd72019dd55a25c060c28a91b1f8a7df3940')
+sha256sums_mips64=('277076a9d024500cdee3475ef59b9750f7e67381fa7cb24893b4b17e50d5618e')
+sha256sums_riscv64=('64d65bd73a409058d12b465e684415389958ccb23d36d91b01f1476f324e8c34')
 
 source_x86_64=("beszel-agent_linux_amd64_glibc-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/beszel-agent_linux_amd64_glibc.tar.gz")
 source_aarch64=("beszel-agent_linux_arm64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/beszel-agent_linux_arm64.tar.gz")

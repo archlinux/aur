@@ -9,6 +9,7 @@ ExecSearchPath=/opt/rocm/bin:/usr/local/sbin:/usr/local/bin:/usr/bin
 ExecStart=/opt/beszel-agent/beszel-agent
 User=beszel
 Group=beszel
+SupplementaryGroups=systemd-journal
 Restart=on-failure
 RestartSec=5
 StateDirectory=beszel-agent
