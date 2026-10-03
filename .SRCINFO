@@ -1,6 +1,6 @@
 pkgbase = spice-gstreamer
 	pkgdesc = SPICE server with GStreamer support
-	pkgver = 0.15.2
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://www.spice-space.org
 	arch = x86_64
@@ -22,10 +22,10 @@ pkgbase = spice-gstreamer
 	provides = libspice-server.so
 	provides = spice
 	conflicts = spice
-	source = https://www.spice-space.org/download/releases/spice-server/spice-0.15.2.tar.bz2
-	source = https://www.spice-space.org/download/releases/spice-server/spice-0.15.2.tar.bz2.sig
+	source = https://www.spice-space.org/download/releases/spice-server/spice-0.16.0.tar.bz2
+	source = https://www.spice-space.org/download/releases/spice-server/spice-0.16.0.tar.bz2.sig
 	validpgpkeys = 206D3B352F566F3B0E6572E997D9123DE37A484F
-	sha256sums = 6d9eb6117f03917471c4bc10004abecff48a79fb85eb85a1c45f023377015b81
+	sha256sums = 0a6ec9528f05371261bbb2d46ff35e7b5c45ff89bb975a99af95a5f20ff4717d
 	sha256sums = SKIP
 
 pkgname = spice-gstreamer
