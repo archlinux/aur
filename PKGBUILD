@@ -1,7 +1,7 @@
 # Maintainer: iamzhz <iamzhz at foxmail dot com>
 _pkgname=dev-sidecar
 pkgname="${_pkgname}-appimage"
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="开发者边车，github打不开，github加速，git clone加速，git release下载加速，stackoverflow加速"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -16,9 +16,9 @@ source_x86_64=("DevSidecar-${pkgver}-x86_64.AppImage::https://github.com/docmirr
 source_aarch64=("DevSidecar-${pkgver}-aarch64.AppImage::https://github.com/docmirror/dev-sidecar/releases/download/v${pkgver}/DevSidecar-${pkgver}-linux-arm64.AppImage")
 source_armv7h=("DevSidecar-${pkgver}-armv7h.AppImage::https://github.com/docmirror/dev-sidecar/releases/download/v${pkgver}/DevSidecar-${pkgver}-linux-armv7l.AppImage")
 
-sha256sums_x86_64=('c4a38b47d689cc42805ebf7e4a4ec15fbc45b5467e8a217b2428ba15c57d5b4d')
-sha256sums_aarch64=('4c1e3f4d5b19c2f3bcb88bf1ce4955cfbe2a6c9431e3088b070b628a91c2e153')
-sha256sums_armv7h=('8c6f605ed4d401ddad32cbdf7f629258666694b326aa7cf4d9d299c0324dec86')
+sha256sums_x86_64=('052f3d644bde12d9535a60321b1dd67b7cbfc5c3fa8e8342beabd8f59166967f')
+sha256sums_aarch64=('b4704b5ccb7f1379ae296942a09c88534ca5562d5d1e0a81c30fd3cefc91875d')
+sha256sums_armv7h=('b7a4bf47a008503e7572f016ee8dfbe196b192e9d856bf02cdad67f0e26eb2b0')
 
 _appimage="DevSidecar-${pkgver}-${CARCH}.AppImage"
 noextract=("${_appimage}")
