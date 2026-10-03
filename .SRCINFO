@@ -1,8 +1,8 @@
 pkgbase = python-google-cloud-bigquery
 	pkgdesc = Google BigQuery API client library
-	pkgver = 3.45.2
+	pkgver = 3.46.1
 	pkgrel = 1
-	url = https://github.com/googleapis/google-cloud-python/tree/google-cloud-bigquery-v3.45.2/packages/google-cloud-bigquery
+	url = https://github.com/googleapis/google-cloud-python/tree/google-cloud-bigquery-v3.46.1/packages/google-cloud-bigquery
 	arch = any
 	license = Apache-2.0
 	makedepends = ipython
@@ -29,7 +29,7 @@ pkgbase = python-google-cloud-bigquery
 	optdepends = python-pandas: pandas support
 	optdepends = python-snappy: fastparquet support
 	optdepends = python-tqdm: tqdm support
-	source = python-google-cloud-bigquery-3.45.2.tar.gz::https://github.com/googleapis/google-cloud-python/archive/google-cloud-bigquery-v3.45.2.tar.gz
-	b2sums = ecc84b73fb761fe01f65b7ad2ffb76544de09acfe0fa445163b0e116189aa07dcef2b5f9385c86150f2bf884e05e3ffd1ea761ce1e15ebf269a8f0420fd00993
+	source = python-google-cloud-bigquery-3.46.1.tar.gz::https://github.com/googleapis/google-cloud-python/archive/google-cloud-bigquery-v3.46.1.tar.gz
+	b2sums = a7f637cc3a0162d0799ea3717304dfaff28424cf8c4e06687f9e2a2b991b9d23f89a436b19fdb3d1c1d4ece84f1ac76995f51aa6c5f6a7e1d64a7cf89087bf68
 
 pkgname = python-google-cloud-bigquery
