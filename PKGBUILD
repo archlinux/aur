@@ -10,7 +10,7 @@
 # line is what publishes an AUR revision that helpers surface to users, while
 # pkgver() below still stamps each build with what it actually produced.
 pkgname=codex-desktop-git
-pkgver=26.917.62051.r2135.ge1231898 # renovate: datasource=deb depName=codex-desktop packageName=chatgpt registryUrl=https://persistent.oaistatic.com/codex-app-prod/linux/deb?suite=stable&components=main&binaryArch=amd64
+pkgver=26.930.41038.r2163.gfcd9db92 # renovate: datasource=deb depName=codex-desktop packageName=chatgpt registryUrl=https://persistent.oaistatic.com/codex-app-prod/linux/deb?suite=stable&components=main&binaryArch=amd64
 pkgrel=1
 pkgdesc="Unofficial ChatGPT desktop repackaged from OpenAI's official Linux build (ilysenko/codex-desktop-linux)"
 arch=('x86_64')
@@ -71,6 +71,10 @@ makedepends=(
     'dpkg'
     'gnupg'
     'nodejs'
+    # install.sh repacks app.asar to apply its enabled feature descriptors.
+    # Left alone it would npx-download @electron/asar at build time; prepare()
+    # points CODEX_ASAR_BIN at the packaged CLI instead.
+    'asar'
     # The transactional candidate promotion in install.sh runs
     # scripts/lib/candidate-promotion.py, and pkgver() reads build-info.json.
     'python'
@@ -107,6 +111,7 @@ prepare() {
     # install.sh fetches OpenAI's official Linux deb from their signed APT
     # repository, verifies it, and stages the patched app tree here.
     export CODEX_INSTALL_DIR="$srcdir/codex-app"
+    export CODEX_ASAR_BIN=/usr/bin/asar
 
     ./install.sh
 }
