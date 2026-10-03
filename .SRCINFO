@@ -1,6 +1,6 @@
 pkgbase = wgtunnel-bin
 	pkgdesc = An advanced, open-source client for WireGuard and AmneziaWG.
-	pkgver = 2.2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://wgtunnel.com
 	install = wgtunnel-bin.install
@@ -11,12 +11,12 @@ pkgbase = wgtunnel-bin
 	depends = freetype2
 	depends = fontconfig
 	optdepends = systemd: enables automatic daemon startup and management
-	provides = wgtunnel=2.2.2
+	provides = wgtunnel=2.3.0
 	conflicts = wgtunnel
 	conflicts = wgtunnel-git
 	options = !strip
 	options = !emptydirs
-	source = wgtunnel-2.2.2-linux-x64.pacman::https://github.com/wgtunnel/desktop/releases/download/v2.2.2/wgtunnel-2.2.2-linux-x64.pacman
-	sha256sums = d7b168dedbeec88de8ccc6ac213412de6ae4e8a4d16bbcaece1727b540cb3551
+	source = wgtunnel-2.3.0-linux-x64.pacman::https://github.com/wgtunnel/desktop/releases/download/v2.3.0/wgtunnel-2.3.0-linux-x64.pacman
+	sha256sums = 869ceec26b35b780294a6b36ef399f173af1fbe5620abacdaeebc94b0159562a
 
 pkgname = wgtunnel-bin
