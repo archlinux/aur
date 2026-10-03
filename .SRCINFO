@@ -1,7 +1,7 @@
 pkgbase = xmr-stak
-	pkgdesc = Unified All-in-one Monero miner (no cuda)
+	pkgdesc = Cryptocurrency miner for legacy CryptoNight algorithms (no CUDA)
 	pkgver = 2.10.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fireice-uk/xmr-stak
 	arch = x86_64
 	license = GPL3
@@ -20,4 +20,3 @@ pkgbase = xmr-stak
 	sha256sums = e0cbee0dab1c730e5deff31eddef84a635b4c9f33ba2368a446e62acc084649a
 
 pkgname = xmr-stak
-

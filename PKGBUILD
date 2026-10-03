@@ -1,7 +1,7 @@
 pkgname=xmr-stak
 pkgver=2.10.8
-pkgrel=2
-pkgdesc="Unified All-in-one Monero miner (no cuda)"
+pkgrel=3
+pkgdesc="Cryptocurrency miner for legacy CryptoNight algorithms (no CUDA)"
 arch=('x86_64')
 url="https://github.com/fireice-uk/xmr-stak"
 license=('GPL3')
@@ -16,12 +16,15 @@ sha256sums=('bbbf85dc35a8b0b8ae5926640e36ef0b68a8a81804d45f11718c19bf53a41109'
 
 prepare() {
     cd "$srcdir/xmr-stak-$pkgver"
-    patch -Np1 -i $srcdir/no-donate.patch
+    patch -Np1 -i "$srcdir/no-donate.patch"
+    # FILE is no longer provided transitively by standard library headers.
+    sed -i '/include <mutex>/i #include <cstdio>' xmrstak/misc/console.hpp
 }
 
 build() {
     cd "$srcdir/xmr-stak-$pkgver"
     cmake . \
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 	-DCUDA_ENABLE=OFF \
 	-DMICROHTTPD_ENABLE=OFF \
 	-DCMAKE_BUILD_TYPE=Plain
@@ -35,7 +38,7 @@ package() {
     install -D -m644 "bin/libxmrstak_opencl_backend.so" -t "$pkgdir/usr/lib"
 
     install -m755 -d ${pkgdir}/usr/lib/systemd/system
-    install -m644  $startdir/xmr-stak.service ${pkgdir}/usr/lib/systemd/system
+    install -m644  "$srcdir/xmr-stak.service" ${pkgdir}/usr/lib/systemd/system
 
     install -m755 -d ${pkgdir}/etc/xmr-stak
 }
