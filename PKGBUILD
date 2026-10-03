@@ -10,7 +10,7 @@
 
 pkgname=caddy-ratelimit
 _pkgname=caddy
-pkgver=2.11.6
+pkgver=2.11.7
 pkgrel=1
 pkgdesc='Fast web server with automatic HTTPS with ratelimit support'
 arch=(x86_64)
@@ -40,7 +40,7 @@ source=(
   use-data-dir-for-autosave.patch
   "$_pkgname-disable-executable-altering-commands.patch::https://src.fedoraproject.org/rpms/caddy/raw/rawhide/f/0001-Disable-commands-that-can-alter-the-binary.patch"
 )
-sha512sums=('a6d56ee2dc7a5ee7cf7dc895834f146f38d25761c0827d0ea70688f6987ccf008fa9cea4655ea8c21b481c168a6381f92ae37de3e366bb7f74ab92725a186735'
+sha512sums=('404e85345f80ee55812cbe35f3eb8f732d366b1651a604ee7be91dc2ea74e2b6b75c77698781dd4daf0696557afac2731dafa1934e75f45cdb1c86275f293132'
             '7ef4174308aef67b19e57dbc812f49689e5f5f47c6cd7bd436e808b666d24d0ba8acfc9691b1ee7cc58cc165d83b06d2b11d975c0cade1d63ea38b08b67551a7'
             'e6cdf5f81af01d0a6290ef9503d0bd90244684a6305e5638f079c234b2bc6454688daea3ea9d1b6a6f00eeba0375e9c4372e64c5cb49b5d1206384d2a7201273'
             '6c9d5dce22f1f0f4e222d4adeccd93c486b3be2ac221a7f8a58933b22ce91fe3da8ad38e6db7212846e4ab6336ebc058df16215a43636b965dfed469b3aaa2f6'
