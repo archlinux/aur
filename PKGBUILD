@@ -6,7 +6,7 @@
 
 _pkgname="shadps4"
 pkgname="$_pkgname"
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 url="https://github.com/shadps4-emu/shadPS4"
@@ -18,7 +18,6 @@ depends=(
   'libavformat.so'   # ffmpeg
   'libavutil.so'     # ffmpeg
   'libcrypto.so'     # openssl
-  'libfmt.so'        # fmt
   'libfreetype.so'   # freetype2
   'libminiupnpc.so'  # miniupnpc
   'libpng16.so'      # libpng
@@ -59,14 +58,13 @@ options=('!lto')
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git#tag=v.$pkgver")
-sha256sums=('50ab7062e84d2fd8d1ad3bf3f749786881c037cca3a4d290fb29a1b3eb42b4b8')
+sha256sums=('a69e39388482a4186190723c08dfd200722a7f22620fbbec4ae3a65d96422ed4')
 
 prepare() {
   cd "$_pkgsrc"
   git rm -r externals/date
   git rm -r externals/ext-boost
   git rm -r externals/ffmpeg-core
-  git rm -r externals/fmt
   git rm -r externals/freetype
   git rm -r externals/glslang
   git rm -r externals/half
@@ -87,9 +85,6 @@ prepare() {
   git rm -r externals/zlib-ng
   git rm -r externals/zstd
   git submodule update --init --recursive --depth 1
-
-  # revert pull/4322; selects wrong gpu device
-  git revert -n -m1 a762f70df3fc23185540f88724b261b065e5d979
 
   # allow any version
   sed -E -e '/find_package/s&(glslang) \S+ (CONFIG)&\1 \2&' -i CMakeLists.txt
