@@ -1,8 +1,8 @@
 # Maintainer: Gabriel Chamon <gchamon@tuta.io>
 pkgname=archie-cli-nightly
 pkgver=0.4.0a
-pkgrel=240
-_commit=9f4269e638974599553132f7c849a8bf7b898351
+pkgrel=241
+_commit=226b99574ba1bccf606ab81d98f5e6c93e91f55b
 pkgdesc="Archlinux system operation and maintenance CLI/applet, nightly build"
 arch=(any)
 url="https://gitlab.com/gabriel.chamon/archie"
