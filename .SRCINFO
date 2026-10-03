@@ -1,6 +1,6 @@
 pkgbase = qrious-bin
 	pkgdesc = Generate QR codes for WiFi, contacts, URLs, emails, and more
-	pkgver = 2026.10.0
+	pkgver = 2026.10.1
 	pkgrel = 1
 	url = https://github.com/Samwell9854/qrious
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = qrious-bin
 	optdepends = xclip: copy the QR image on X11
 	provides = qrious
 	conflicts = qrious
-	source_x86_64 = qrious-2026.10.0-linux-x86_64.tar.gz::https://github.com/Samwell9854/qrious/releases/download/v2026.10.0/qrious-2026.10.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 0f8abfaf0e3497db5ae67bb9e3246ce82b08a9885e18509294eccb595b79b594
+	source_x86_64 = qrious-2026.10.1-linux-x86_64.tar.gz::https://github.com/Samwell9854/qrious/releases/download/v2026.10.1/qrious-2026.10.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 447f6af4a67ce58c2ac447c5186c7f7c1234fa51bce31db5c7873e45d450a2b4
 
 pkgname = qrious-bin

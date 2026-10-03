@@ -1,0 +1,5 @@
+# Only the package recipe belongs in the AUR repo; everything makepkg produces stays local.
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

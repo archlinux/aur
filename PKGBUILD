@@ -5,10 +5,10 @@
 
 pkgname=qrious-bin
 # The release name as tagged upstream, e.g. 2026.10.0 or 2026.10.0-preview.1.
-_version=2026.10.0
+_version=2026.10.1
 # The same name without its hyphen, which pkgver may not contain. Glued rather than
 # replaced with "_" so a prerelease sorts below its release in vercmp.
-pkgver=2026.10.0
+pkgver=2026.10.1
 pkgrel=1
 pkgdesc="Generate QR codes for WiFi, contacts, URLs, emails, and more"
 arch=('x86_64')
@@ -39,7 +39,7 @@ conflicts=('qrious')
 # Per-architecture arrays, so another architecture is a second pair beside these.
 _dist="qrious-${_version}-linux"
 source_x86_64=("${_dist}-x86_64.tar.gz::${url}/releases/download/v${_version}/${_dist}-x86_64.tar.gz")
-sha256sums_x86_64=('0f8abfaf0e3497db5ae67bb9e3246ce82b08a9885e18509294eccb595b79b594')
+sha256sums_x86_64=('447f6af4a67ce58c2ac447c5186c7f7c1234fa51bce31db5c7873e45d450a2b4')
 
 package() {
   cd "${_dist}-${CARCH}"
