@@ -1,5 +1,5 @@
 pkgname=pnpm-git
-pkgver=0.1.0.r13.162.g743d1c7ff2
+pkgver=v12.9.0.1.gbf5cdd3390
 pkgver() {
   cd pnpm
   git describe --long --tags | sed -e "s/pnpr@//" -e 's/alpha./r/' -e 's/\-/\./g'
@@ -29,8 +29,9 @@ build() {
 package() {
   cd pnpm
   install -Dm755 target/release/pnpm -t "$pkgdir/usr/bin"
-  for _a in pn pnpx pnx
-    do install -Dm755 pnpm/npm/pnpm/$_a -t "$pkgdir/usr/bin"
-  done
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  cd "$pkgdir/usr/bin"
+  ln pnpm pn
+  install -Dm755 <(echo -e '#!/bin/sh\n/usr/bin/pnpm dlx' '"$@"') pnpx
+  ln pnpx pnx
 }
