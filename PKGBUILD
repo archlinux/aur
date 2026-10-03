@@ -4,7 +4,7 @@ _gitauthor=heymaikol
 _gitname=network-doctor
 _appname=(netdoc{,-sim})
 pkgname=${_gitname}-bin
-pkgdesc="Terminal UI that diagnoses network connectivity and explains where the connection breaks"
+pkgdesc="A network troubleshooting TUI that turns interface, DNS, TCP, TLS, HTTP, proxy, and path-MTU checks into one plain-English diagnosis"
 
 pkgver=1.19.1
 pkgrel=1
