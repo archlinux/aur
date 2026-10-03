@@ -1,7 +1,7 @@
 # Maintainer: WaiJade <waijade@outlook.com>
 
 pkgname=astrobox-ng
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="AstroBox is a leading tool for managing and extending wearable devices"
 arch=('x86_64')
@@ -37,40 +37,69 @@ depends=(
 makedepends=('curl')
 
 prepare() {
-    local _base="AstralSightStudios/AstroBox-NG/releases/download/v${pkgver}/AstroBox-${pkgver}-1_x86_64.pkg.tar.zst"
-    local _file="AstroBox-${pkgver}-1_x86_64.pkg.tar.zst"
-    local _expected="b3eb25a410db4daba91d4dd62256a42a17d8c89d9e3c614336209174af1becad"
+    local _base="AstralSightStudios/AstroBox-NG/releases/download/v${pkgver}/AstroBox-${pkgver}-${pkgrel}_x86_64.pkg.tar.zst"
+    local _file="AstroBox-${pkgver}-${pkgrel}_x86_64.pkg.tar.zst"
+    local _expected="c0238e7967e521d56462233fa804b3b4da058a829be192b4d0397db755402c53"
     local _mirrors=(
         "https://github.com/${_base}|GitHub"
         "https://ghfast.top/https://github.com/${_base}|ghfast"
+        "https://ghproxy.com/https://github.com/${_base}|ghproxy"
         "https://gh-proxy.com/https://github.com/${_base}|ghproxy2"
         "https://ghproxy.net/https://github.com/${_base}|ghproxy3"
         "https://ghgo.xyz/https://github.com/${_base}|ghgo"
         "https://gh.ddlc.top/https://github.com/${_base}|ghddl"
     )
 
-    echo "==> Downloading $_file..."
-    local _ok=0
-    for _entry in "${_mirrors[@]}"; do
+    echo "==> Testing download mirrors..."
+    local _best_url="" _best_time="999" _best_name=""
+    local _tmpdir
+    _tmpdir=$(mktemp -d)
+
+    for i in "${!_mirrors[@]}"; do
+        local _entry="${_mirrors[$i]}"
         local _url="${_entry%%|*}"
         local _name="${_entry##*|}"
-        msg "Trying $_name..."
-        curl -L --fail --max-time 600 --progress-bar -o "$srcdir/$_file" "$_url" 2>/dev/null || true
-        local _real
-        _real=$(sha256sum "$srcdir/$_file" 2>/dev/null | awk '{print $1}') || true
-        if [ -n "$_real" ] && [ "$_real" = "$_expected" ]; then
-            msg "Checksum OK via $_name"
-            _ok=1
-            break
-        fi
-        warning "Checksum mismatch via $_name: got ${_real:-download failed}, trying next mirror..."
-        rm -f "$srcdir/$_file"
+        (
+            local _result
+            _result=$(curl -sI --max-time 5 -o /dev/null -w "%{time_total} %{http_code}" "$_url" 2>/dev/null) || true
+            echo "${_result} ${_name} ${_url}" > "$_tmpdir/$i"
+        ) &
     done
+    wait
 
-    if [ "$_ok" -ne 1 ]; then
-        error "All mirrors failed or checksum mismatch"
+    for i in "${!_mirrors[@]}"; do
+        local _time _code _name _url
+        read _time _code _name _url < "$_tmpdir/$i" 2>/dev/null || continue
+        if [[ "$_code" =~ ^(200|301|302) ]]; then
+            printf "    %-12s % 6ss (%s)\n" "$_name" "$_time" "$_code"
+            if awk "BEGIN{exit !($_time < $_best_time)}" 2>/dev/null; then
+                _best_time="$_time"
+                _best_url="$_url"
+                _best_name="$_name"
+            fi
+        else
+            printf "    %-12s failed (%s)\n" "$_name" "$_code"
+        fi
+    done
+    rm -rf "$_tmpdir"
+
+    if [ -z "$_best_url" ]; then
+        error "All mirrors failed"
         return 1
     fi
+
+    msg "Best mirror: $_best_name (${_best_time}s)"
+    msg "Downloading $_file..."
+    curl -L --progress-bar -o "$srcdir/$_file" "$_best_url"
+
+    msg "Verifying checksum..."
+    local _real
+    _real=$(sha256sum "$srcdir/$_file" | awk '{print $1}')
+    if [ "$_real" != "$_expected" ]; then
+        error "Checksum mismatch: got $_real"
+        return 1
+    fi
+    msg "Checksum OK"
 
     msg "Extracting..."
     bsdtar -xf "$srcdir/$_file" -C "$srcdir"
