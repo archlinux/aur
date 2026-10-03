@@ -1,0 +1,8 @@
+# Track only the package sources; makepkg's downloads, src/, pkg/ and
+# built packages stay out.
+*
+!.gitignore
+!.SRCINFO
+!LICENSE
+!PKGBUILD
+!*.patch

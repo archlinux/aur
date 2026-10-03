@@ -1,0 +1,135 @@
+From: Ingmar Steen <iksteen@gmail.com>
+Subject: [PATCH] Isolate a /opt GStreamer from the distribution's
+
+The kahawai GStreamer carries patches/gstreamer/0004, which resizes a
+public codecparsers struct, so nothing built against the distribution's
+GStreamer may be loaded into it, and nothing meant for the distribution's
+GStreamer may reach it. Packaging-only: the container is the only
+GStreamer in its image and keeps the stock variables.
+
+- GST_PLUGIN_PATH, GST_PLUGIN_SYSTEM_PATH, GST_REGISTRY and
+  GST_PLUGIN_SCANNER (and their _1_0 forms) are ignored. KAHAWAI_GST_*
+  replace them, for deliberate overrides only.
+- The per-user plugin directory (~/.local/share/gstreamer-1.0/plugins)
+  is no longer scanned.
+- The default registry moves from $XDG_CACHE_HOME/gstreamer-1.0/ to
+  $XDG_CACHE_HOME/kahawai-gstreamer/.
+---
+diff --git a/subprojects/gstreamer/gst/gstpluginloader.c b/subprojects/gstreamer/gst/gstpluginloader.c
+index 3324d76..05a3ae9 100644
+--- a/subprojects/gstreamer/gst/gstpluginloader.c
++++ b/subprojects/gstreamer/gst/gstpluginloader.c
+@@ -466,13 +466,13 @@ gst_plugin_loader_spawn (GstPluginLoader * loader)
+     return TRUE;
+ 
+   /* Find the gst-plugin-scanner */
+-  env = g_getenv ("GST_PLUGIN_SCANNER_1_0");
+-  if (env == NULL)
+-    env = g_getenv ("GST_PLUGIN_SCANNER");
++  /* Kahawai: not GST_PLUGIN_SCANNER. Another GStreamer's scanner would
++   * load these plugins against its own libgstreamer. */
++  env = g_getenv ("KAHAWAI_GST_PLUGIN_SCANNER");
+ 
+   if (env != NULL && *env != '\0') {
+     /* use the env-var if it is set */
+-    GST_LOG ("Trying GST_PLUGIN_SCANNER env var: %s", env);
++    GST_LOG ("Trying KAHAWAI_GST_PLUGIN_SCANNER env var: %s", env);
+     helper_bin = g_strdup (env);
+     res = gst_plugin_loader_try_helper (loader, helper_bin);
+     g_free (helper_bin);
+diff --git a/subprojects/gstreamer/gst/gstregistry.c b/subprojects/gstreamer/gst/gstregistry.c
+index 10fd700..66b1742 100644
+--- a/subprojects/gstreamer/gst/gstregistry.c
++++ b/subprojects/gstreamer/gst/gstregistry.c
+@@ -1831,44 +1831,40 @@ scan_and_update_registry (GstRegistry * default_registry,
+   }
+   /* keep plugin_paths around in case a re-scan is forced later on */
+ 
+-  /* GST_PLUGIN_PATH specifies a list of directories to scan for
+-   * additional plugins.  These take precedence over the system plugins */
+-  plugin_path = g_getenv ("GST_PLUGIN_PATH_1_0");
+-  if (plugin_path == NULL)
+-    plugin_path = g_getenv ("GST_PLUGIN_PATH");
++  /* KAHAWAI_GST_PLUGIN_PATH specifies a list of directories to scan for
++   * additional plugins.  These take precedence over the system plugins.
++   *
++   * Kahawai: not GST_PLUGIN_PATH. This GStreamer is ABI-incompatible with
++   * the distribution's (patch 0004 resizes a public codecparsers struct),
++   * so a path exported for any other GStreamer program must not reach it. */
++  plugin_path = g_getenv ("KAHAWAI_GST_PLUGIN_PATH");
+   if (plugin_path) {
+     char **list;
+     int i;
+ 
+-    GST_DEBUG ("GST_PLUGIN_PATH set to %s", plugin_path);
++    GST_DEBUG ("KAHAWAI_GST_PLUGIN_PATH set to %s", plugin_path);
+     list = g_strsplit (plugin_path, G_SEARCHPATH_SEPARATOR_S, 0);
+     for (i = 0; list[i]; i++) {
+       changed |= gst_registry_scan_path_internal (&context, list[i]);
+     }
+     g_strfreev (list);
+   } else {
+-    GST_DEBUG ("GST_PLUGIN_PATH not set");
++    GST_DEBUG ("KAHAWAI_GST_PLUGIN_PATH not set");
+   }
+ 
+-  /* GST_PLUGIN_SYSTEM_PATH specifies a list of plugins that are always
+-   * loaded by default.  If not set, this defaults to the system-installed
+-   * path, and the plugins installed in the user's home directory */
+-  plugin_path = g_getenv ("GST_PLUGIN_SYSTEM_PATH_1_0");
+-  if (plugin_path == NULL)
+-    plugin_path = g_getenv ("GST_PLUGIN_SYSTEM_PATH");
++  /* KAHAWAI_GST_PLUGIN_SYSTEM_PATH specifies a list of plugins that are
++   * always loaded by default.  If not set, this defaults to the plugin
++   * directory installed beside this libgstreamer, and nothing else.
++   *
++   * Kahawai: not GST_PLUGIN_SYSTEM_PATH, for the reason above, and no
++   * per-user plugin directory either. ~/.local/share/gstreamer-1.0/plugins
++   * belongs to the distribution's GStreamer; whatever is in it was built
++   * against that ABI. */
++  plugin_path = g_getenv ("KAHAWAI_GST_PLUGIN_SYSTEM_PATH");
+   if (plugin_path == NULL) {
+-    char *home_plugins, *relocated_libgstreamer, *system_plugindir;
+-
+-    GST_DEBUG ("GST_PLUGIN_SYSTEM_PATH not set");
+-
+-    /* plugins in the user's home directory take precedence over
+-     * system-installed ones */
+-    home_plugins = g_build_filename (g_get_user_data_dir (),
+-        "gstreamer-" GST_API_VERSION, "plugins", NULL);
++    char *relocated_libgstreamer, *system_plugindir;
+ 
+-    GST_DEBUG ("scanning home plugins %s", home_plugins);
+-    changed |= gst_registry_scan_path_internal (&context, home_plugins);
+-    g_free (home_plugins);
++    GST_DEBUG ("KAHAWAI_GST_PLUGIN_SYSTEM_PATH not set");
+ 
+     /* add the main (installed) library path */
+ 
+@@ -1891,7 +1887,7 @@ scan_and_update_registry (GstRegistry * default_registry,
+     gchar **list;
+     gint i;
+ 
+-    GST_DEBUG ("GST_PLUGIN_SYSTEM_PATH set to %s", plugin_path);
++    GST_DEBUG ("KAHAWAI_GST_PLUGIN_SYSTEM_PATH set to %s", plugin_path);
+     list = g_strsplit (plugin_path, G_SEARCHPATH_SEPARATOR_S, 0);
+     for (i = 0; list[i]; i++) {
+       changed |= gst_registry_scan_path_internal (&context, list[i]);
+@@ -1938,12 +1934,13 @@ ensure_current_registry (GError ** error)
+ 
+   default_registry = gst_registry_get ();
+ 
+-  registry_file = g_strdup (g_getenv ("GST_REGISTRY_1_0"));
+-  if (registry_file == NULL)
+-    registry_file = g_strdup (g_getenv ("GST_REGISTRY"));
++  /* Kahawai: a registry of its own. The default file is shared by every
++   * GStreamer installation of this API version, and two of them alternately
++   * rescanning and rewriting it is at best churn. */
++  registry_file = g_strdup (g_getenv ("KAHAWAI_GST_REGISTRY"));
+   if (registry_file == NULL) {
+     registry_file = g_build_filename (g_get_user_cache_dir (),
+-        "gstreamer-" GST_API_VERSION, GST_REGISTRY_FILE_NAME, NULL);
++        "kahawai-gstreamer", GST_REGISTRY_FILE_NAME, NULL);
+   }
+ 
+   if (!_gst_disable_registry_cache) {
