@@ -50,8 +50,8 @@ package() {
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 	ln -sf "/usr/bin/${_appname}" "${pkgdir}/usr/bin/${_alias}"
 
-	# install -Dm644 "git/docs/${_appname}.1" "${pkgdir}/usr/share/man/man1/${_appname}.1"
-	# ln -sf "/usr/share/man/man1/${_appname}.1.gz" "${pkgdir}/usr/share/man/man1/${_alias}.1"
+	install -Dm644 "git/docs/${_appname}.1" "${pkgdir}/usr/share/man/man1/${_appname}.1"
+	ln -sf "/usr/share/man/man1/${_appname}.1.gz" "${pkgdir}/usr/share/man/man1/${_alias}.1"
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
