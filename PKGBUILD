@@ -2,7 +2,7 @@
 
 pkgname=bushuray-git
 pkgdesc="Xray TUI client (builds bushuray, bushuray-core and v2parser)"
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/Keivan-sf/Bushuray-tui"
