@@ -1,6 +1,6 @@
 pkgbase = searxng-rama
 	pkgdesc = SearXNG with a modern theme, secure defaults and systemd service
-	pkgver = r9625.ef8f647
+	pkgver = r9809.19ffbcd
 	pkgrel = 1
 	url = https://github.com/Nomadcxx/searxng-RAMA
 	install = searxng-rama.install
