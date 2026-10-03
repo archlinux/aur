@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=spotifast-bin
-pkgver=0.11.2
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
@@ -13,15 +13,14 @@ install="${pkgname}.install"
 depends=('dbus' 'alsa-lib' 'libpulse' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
 optdepends=('libxkbcommon-x11: keyboard handling in X11 sessions'
             'pipewire-pulse: PipeWire as the PulseAudio server')
-provides=("spotifast=$pkgver" "fastpotify=$pkgver" "fastpotify-bin=$pkgver")
-conflicts=('fastpotify' 'fastpotify-bin' 'fastpotify-git' 'spotifast' 'spotifast-git')
-replaces=('fastpotify-bin')
+provides=("spotifast=$pkgver")
+conflicts=('spotifast' 'spotifast-git')
 options=('!debug' '!strip')
 _repo="https://github.com/crmne/spotifast"
 source_x86_64=("${_repo}/releases/download/v${pkgver}/spotifast-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_repo}/releases/download/v${pkgver}/spotifast-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('276d891575bd547ec2fd11662c65a4ff5187ad63950c8cb426dbf13cfcd4f26d')
-sha256sums_aarch64=('5f8fb5a8737d5ecadf2f4afa2e85e63d96ec385b1089d175c1b59d0a9f2d5e8d')
+sha256sums_x86_64=('823011b1d0270141a75562cf4f05287fa985187ba85e298fd819c6d2f3aeb4fb')
+sha256sums_aarch64=('b8c2ff661bbd2c5d3ebf72832671d3db8af52ae0e5e7a1636f9fdeb51636e0b6')
 
 package() {
   local target
@@ -30,23 +29,14 @@ package() {
     aarch64) target="aarch64-unknown-linux-gnu" ;;
   esac
   local dir="${srcdir}/spotifast-v${pkgver}-${target}"
-  [[ -d "$dir" ]] || dir="${srcdir}/fastpotify-v${pkgver}-${target}"
 
-  local binary=spotifast
-  [[ -f "${dir}/$binary" ]] || binary=fastpotify
-  install -Dm755 "${dir}/$binary" "${pkgdir}/usr/bin/spotifast"
-  ln -s spotifast "${pkgdir}/usr/bin/fastpotify"
+  install -Dm755 "${dir}/spotifast" "${pkgdir}/usr/bin/spotifast"
   install -Dm644 "${dir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${dir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  # Historical releases retain their matching launcher/window identity.
-  local desktop=spotifast
-  if [[ ! -f "${dir}/packaging/applications/spotifast.desktop" ]]; then
-    desktop=fastpotify
-  fi
-  install -Dm644 "${dir}/packaging/applications/${desktop}.desktop" \
-    "${pkgdir}/usr/share/applications/${desktop}.desktop"
-  install -Dm644 "${dir}/packaging/icons/${desktop}.svg" \
-    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${desktop}.svg"
+  install -Dm644 "${dir}/packaging/applications/spotifast.desktop" \
+    "${pkgdir}/usr/share/applications/spotifast.desktop"
+  install -Dm644 "${dir}/packaging/icons/spotifast.svg" \
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/spotifast.svg"
   # Older release fixtures predate the optional integration.
   if [[ -d "${dir}/contrib/omarchy" ]]; then
     install -Dm644 "${dir}/contrib/omarchy/spotifast.json.tpl" "${pkgdir}/usr/share/spotifast/omarchy/spotifast.json.tpl"
