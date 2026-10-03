@@ -2,7 +2,7 @@
 
 pkgname=python-mcp-types
 _name=${pkgname#python-}
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Model Context Protocol wire types"
 provides=(${pkgname})
@@ -31,7 +31,7 @@ optdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('6e44fea977b42bebba6bb25027ba11d0de8253ced22869e2b1517862f2cc80b4')
+sha256sums=('7cd84a224fdc6b05dd846c3b86fcc75011870c3358a2c844483adc60416ba9c2')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
