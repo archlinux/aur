@@ -5,7 +5,7 @@
 
 _android_arch=x86-64
 pkgname=android-$_android_arch-qt6-declarative
-_qtver=6.11.2
+_qtver=6.12.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -25,9 +25,11 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtdeclarative-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-Exclude-qmltime-when-cross-compiling.patch')
-sha256sums=('215b7b70517e380123eabc6b92243f3c47b6f016a91d126057dbe53551c6b430'
-            'c5b0ddd332cfcde9d8ee325429166b4191d65f78b8cd78874681747766af906d')
+        '0001-Exclude-qmltime-when-cross-compiling.patch'
+        '0002-QML-engine-Correctly-compare-composites-when-multipl.patch')
+sha256sums=('311f3a2603e1973bb59baef9dfa740a376de713157d4782ee043681e889c9260'
+            'f0ab6729cb9ffe3a9aa5eb85bc916ef3f12e7a4497ad6e17a369c7a115f5ef47'
+            'feb2e7d94795cc50eab19c80407fdd45f200abe22fb1934fa52f34eaa1caa741')
 
 prepare () {
   cd $_pkgfqn
@@ -53,6 +55,7 @@ build() {
     -DANDROID_SDK_ROOT=${ANDROID_HOME} \
     -DANDROID_NDK_ROOT=${ANDROID_NDK_HOME} \
     -DANDROID_STL="c++_shared" \
+    -DQT_ALLOW_DOWNLOAD=ON \
     -DFEATURE_pkg_config=ON \
     -DFEATURE_quickcontrols2_quick_designer=OFF \
     -DFEATURE_quickcontrols2_fusion=OFF \

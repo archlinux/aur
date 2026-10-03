@@ -1,0 +1,353 @@
+From 8ecc1799b47992ab4d66c2d49f3a81f72f4bee0b Mon Sep 17 00:00:00 2001
+From: Fabian Kosmale <fabian.kosmale@qt.io>
+Date: Mon, 31 Aug 2026 16:54:58 +0200
+Subject: [PATCH 2/2] QML engine: Correctly compare composites when multiple
+ engines are used
+
+Since 6.11, we allow multiple types to be active for the same URL.
+While we converted multiple places to handle this, we missed adjusting
+the property validator. There, we just picked the last inserted property
+cache, which can lead to validation failures.
+
+Fix this by adding a fallback path which checks all potential matches
+when the initial lookup would yield an error.
+
+The same kind of check is also needed in qmlobject_can_qml_cast.
+
+Amends 9cc23ca91c404f24fff3c36e8c9425ae674f341d.
+
+Fixes: QTBUG-149607
+Pick-to: 6.11
+Change-Id: Ibd0df2325807e75b23056ebc0bacdfe877b002f3
+Reviewed-by: Ulf Hermann <ulf.hermann@qt.io>
+(cherry picked from commit 94a76ed58629932f6d689c48ecf8d3132188923b)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ src/qml/qml/qqmlglobal.cpp                    | 16 +++----
+ src/qml/qml/qqmlmetatype.cpp                  | 14 ++++++
+ src/qml/qml/qqmlmetatype_p.h                  |  5 ++
+ src/qml/qml/qqmlmetatypedata.cpp              | 12 +++++
+ src/qml/qml/qqmlmetatypedata_p.h              |  5 ++
+ src/qml/qml/qqmlpropertyvalidator.cpp         | 28 +++++++++--
+ .../data/canQmlCastMultiEngine/Foo.qml        |  3 ++
+ .../data/canQmlCastMultiEngine/Main.qml       |  9 ++++
+ .../Consumer1.qml                             |  5 ++
+ .../Consumer2.qml                             |  5 ++
+ .../data/propertyValidatorMultiEngine/Foo.qml |  3 ++
+ .../qml/qqmllanguage/tst_qqmllanguage.cpp     | 47 +++++++++++++++++++
+ 12 files changed, 139 insertions(+), 13 deletions(-)
+ create mode 100644 tests/auto/qml/qqmllanguage/data/canQmlCastMultiEngine/Foo.qml
+ create mode 100644 tests/auto/qml/qqmllanguage/data/canQmlCastMultiEngine/Main.qml
+ create mode 100644 tests/auto/qml/qqmllanguage/data/propertyValidatorMultiEngine/Consumer1.qml
+ create mode 100644 tests/auto/qml/qqmllanguage/data/propertyValidatorMultiEngine/Consumer2.qml
+ create mode 100644 tests/auto/qml/qqmllanguage/data/propertyValidatorMultiEngine/Foo.qml
+
+diff --git a/src/qml/qml/qqmlglobal.cpp b/src/qml/qml/qqmlglobal.cpp
+index 3e11b86129..e4d94e4d8e 100644
+--- a/src/qml/qml/qqmlglobal.cpp
++++ b/src/qml/qml/qqmlglobal.cpp
+@@ -1112,9 +1112,9 @@ bool qmlobject_can_qml_cast(QObject *object, const QQmlType &type)
+ 
+     // A non-composite type will always have a metaobject.
+     const QMetaObject *typeMetaObject = type.metaObject();
+-    const QQmlPropertyCache::ConstPtr typePropertyCache = typeMetaObject
+-            ? QQmlPropertyCache::ConstPtr()
+-            : QQmlMetaType::findPropertyCacheInCompositeTypes(type.typeId());
++    QVarLengthArray<QQmlPropertyCache::ConstPtr, 4> allPropertyCacheCandidates =
++            typeMetaObject ? QVarLengthArray<QQmlPropertyCache::ConstPtr, 4>{}
++                           : QQmlMetaType::rawCompositePropertyCachesForType(type.typeId());
+ 
+     if (const QQmlData *ddata = ddata_for_cast(object)) {
+         for (const QQmlPropertyCache *propertyCache = ddata->propertyCache.data(); propertyCache;
+@@ -1134,17 +1134,17 @@ bool qmlobject_can_qml_cast(QObject *object, const QQmlType &type)
+                 // property caches to be unrelated but the types still convertible.
+                 // Multiple property caches can hold the same metaobject, for example for
+                 // versions of non-composite types.
+-                if (propertyCache == typePropertyCache.data())
++                if (allPropertyCacheCandidates.contains(propertyCache))
+                     return true;
+             }
+         }
+     }
+ 
+-    // If nothing else works, we have to create the metaobjects.
++    // If nothing else works, we have to create the metaobjects (if we can).
++    if (!typeMetaObject && !allPropertyCacheCandidates.isEmpty())
++        typeMetaObject = allPropertyCacheCandidates.first()->createMetaObject();
+ 
+-    return object->metaObject()->inherits(typeMetaObject
+-            ? typeMetaObject
+-            : (typePropertyCache ? typePropertyCache->createMetaObject() : nullptr));
++    return object->metaObject()->inherits(typeMetaObject);
+ }
+ 
+ QT_END_NAMESPACE
+diff --git a/src/qml/qml/qqmlmetatype.cpp b/src/qml/qml/qqmlmetatype.cpp
+index 1fd091cba7..869d2f13e0 100644
+--- a/src/qml/qml/qqmlmetatype.cpp
++++ b/src/qml/qml/qqmlmetatype.cpp
+@@ -1558,6 +1558,20 @@ QQmlPropertyCache::ConstPtr QQmlMetaType::rawPropertyCacheForType(QMetaType meta
+             : QQmlPropertyCache::ConstPtr();
+ }
+ 
++/*!
++ * \internal
++ *
++ * Returns all candidate property caches for a composite
++ * metatype instead of only the last inserted one.
++ * compare rawPropertyCacheForType (which handles however also non-composites)
++ */
++QVarLengthArray<QQmlPropertyCache::ConstPtr, 4>
++QQmlMetaType::rawCompositePropertyCachesForType(QMetaType metaType)
++{
++    const QQmlMetaTypeDataPtr data;
++    return data->findPropertyCachesInCompositeTypes(metaType);
++}
++
+ /*!
+  * \internal
+  *
+diff --git a/src/qml/qml/qqmlmetatype_p.h b/src/qml/qml/qqmlmetatype_p.h
+index 19599112b1..15c2f6308f 100644
+--- a/src/qml/qml/qqmlmetatype_p.h
++++ b/src/qml/qml/qqmlmetatype_p.h
+@@ -24,6 +24,7 @@
+ 
+ #include <QtCore/qset.h>
+ #include <QtCore/qtyperevision.h>
++#include <QtCore/qvarlengtharray.h>
+ 
+ QT_BEGIN_NAMESPACE
+ 
+@@ -173,6 +174,10 @@ public:
+     static QQmlPropertyCache::ConstPtr rawPropertyCacheForType(
+             QMetaType metaType, QTypeRevision version);
+ 
++    // All property caches for a composite metatype, which may map to more than one of them.
++    static QVarLengthArray<QQmlPropertyCache::ConstPtr, 4> rawCompositePropertyCachesForType(
++            QMetaType metaType);
++
+     static bool canConvert(QObject *o, QMetaType metaType);
+     static bool canConvert(const QQmlPropertyCache::ConstPtr &from, QMetaType metaType);
+ 
+diff --git a/src/qml/qml/qqmlmetatypedata.cpp b/src/qml/qml/qqmlmetatypedata.cpp
+index 94eb3e8d43..6b95b14f65 100644
+--- a/src/qml/qml/qqmlmetatypedata.cpp
++++ b/src/qml/qml/qqmlmetatypedata.cpp
+@@ -252,6 +252,18 @@ QQmlPropertyCache::ConstPtr QQmlMetaTypeData::findPropertyCacheInCompositeTypes(
+             : propertyCacheForPotentialInlineComponentType(t, iter);
+ }
+ 
++QVarLengthArray<QQmlPropertyCache::ConstPtr, 4>
++QQmlMetaTypeData::findPropertyCachesInCompositeTypes(QMetaType t) const
++{
++    QVarLengthArray<QQmlPropertyCache::ConstPtr, 4> result;
++    const auto [begin, end] = compositeTypes.equal_range(t.iface());
++    for (auto iter = begin; iter != end; ++iter) {
++        if (auto cache = propertyCacheForPotentialInlineComponentType(t, iter))
++            result.append(std::move(cache));
++    }
++    return result;
++}
++
+ void QQmlMetaTypeData::clearCompositeTypes()
+ {
+     // Unregister all remaining composite types.
+diff --git a/src/qml/qml/qqmlmetatypedata_p.h b/src/qml/qml/qqmlmetatypedata_p.h
+index 2028153385..4f5115b0ea 100644
+--- a/src/qml/qml/qqmlmetatypedata_p.h
++++ b/src/qml/qml/qqmlmetatypedata_p.h
+@@ -23,6 +23,7 @@
+ #include <private/qqmlvaluetype_p.h>
+ 
+ #include <QtCore/qset.h>
++#include <QtCore/qvarlengtharray.h>
+ #include <QtCore/qvector.h>
+ 
+ QT_BEGIN_NAMESPACE
+@@ -127,6 +128,10 @@ struct QQmlMetaTypeData
+     QQmlPropertyCache::ConstPtr propertyCache(const QQmlType &type, QTypeRevision version);
+     QQmlPropertyCache::ConstPtr findPropertyCacheInCompositeTypes(QMetaType t) const;
+ 
++    // Same, but returns all matches rather than only the last inserted one.
++    QVarLengthArray<QQmlPropertyCache::ConstPtr, 4> findPropertyCachesInCompositeTypes(
++            QMetaType t) const;
++
+     static QQmlPropertyCache::ConstPtr propertyCacheForPotentialInlineComponentType(
+             QMetaType t, const QQmlMetaTypeData::CompositeTypes::const_iterator &iter);
+ 
+diff --git a/src/qml/qml/qqmlpropertyvalidator.cpp b/src/qml/qml/qqmlpropertyvalidator.cpp
+index ba97142568..971ed6b2c4 100644
+--- a/src/qml/qml/qqmlpropertyvalidator.cpp
++++ b/src/qml/qml/qqmlpropertyvalidator.cpp
+@@ -2,6 +2,7 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ // Qt-Security score:significant
+ 
++#include "qqmlmetatype_p.h"
+ #include "qqmlpropertyvalidator_p.h"
+ 
+ #include <private/qqmlcustomparser_p.h>
+@@ -796,17 +797,34 @@ QQmlError QQmlPropertyValidator::validateObjectBinding(const QQmlPropertyData *p
+             // Will be true if the assigned type inherits propertyMetaObject
+             // Determine isAssignable value
+             bool isAssignable = false;
+-            QQmlPropertyCache::ConstPtr c = propertyCaches.at(binding->value.objectIndex);
++            QQmlPropertyCache::ConstPtr source = propertyCaches.at(binding->value.objectIndex);
+ 
+             if (const int wrapper = compilationUnit->implicitComponentForObject(
+                         binding->value.objectIndex); wrapper != -1) {
+                 // If the child is wrapped in an implicit component, use the wrapper.
+-                c = propertyCaches.at(wrapper);
++                source = propertyCaches.at(wrapper);
+             }
+ 
+-            while (c && !isAssignable) {
+-                isAssignable |= c == propertyMetaObject;
+-                c = c->parent();
++            const auto inheritsFrom = [&](const QQmlPropertyCache::ConstPtr &target) {
++                for (QQmlPropertyCache::ConstPtr c = source; c; c = c->parent()) {
++                    if (c == target)
++                        return true;
++                }
++                return false;
++            };
++
++            isAssignable = inheritsFrom(propertyMetaObject);
++
++            if (!isAssignable && propertyMetaObject->isComposite()) {
++                // a single metatype can map to multiple property caches when there are
++                // multiple engines; rawPropertyCacheForType only returns one of them.
++                const auto candidates = QQmlMetaType::rawCompositePropertyCachesForType(propType);
++                for (const auto &candidate : candidates) {
++                    if (inheritsFrom(candidate)) {
++                        isAssignable = true;
++                        break;
++                    }
++                }
+             }
+ 
+             if (!isAssignable) {
+diff --git a/tests/auto/qml/qqmllanguage/data/canQmlCastMultiEngine/Foo.qml b/tests/auto/qml/qqmllanguage/data/canQmlCastMultiEngine/Foo.qml
+new file mode 100644
+index 0000000000..8fc36a40da
+--- /dev/null
++++ b/tests/auto/qml/qqmllanguage/data/canQmlCastMultiEngine/Foo.qml
+@@ -0,0 +1,3 @@
++import QtQml
++
++QtObject {}
+diff --git a/tests/auto/qml/qqmllanguage/data/canQmlCastMultiEngine/Main.qml b/tests/auto/qml/qqmllanguage/data/canQmlCastMultiEngine/Main.qml
+new file mode 100644
+index 0000000000..147015167f
+--- /dev/null
++++ b/tests/auto/qml/qqmllanguage/data/canQmlCastMultiEngine/Main.qml
+@@ -0,0 +1,9 @@
++import QtQml
++
++QtObject {
++    property Foo theFoo: Foo {}
++
++    function check(foo: Foo) : bool {
++        return foo !== null;
++    }
++}
+diff --git a/tests/auto/qml/qqmllanguage/data/propertyValidatorMultiEngine/Consumer1.qml b/tests/auto/qml/qqmllanguage/data/propertyValidatorMultiEngine/Consumer1.qml
+new file mode 100644
+index 0000000000..80de08e9aa
+--- /dev/null
++++ b/tests/auto/qml/qqmllanguage/data/propertyValidatorMultiEngine/Consumer1.qml
+@@ -0,0 +1,5 @@
++import QtQml
++
++QtObject {
++    property Foo f: Foo {}
++}
+diff --git a/tests/auto/qml/qqmllanguage/data/propertyValidatorMultiEngine/Consumer2.qml b/tests/auto/qml/qqmllanguage/data/propertyValidatorMultiEngine/Consumer2.qml
+new file mode 100644
+index 0000000000..80de08e9aa
+--- /dev/null
++++ b/tests/auto/qml/qqmllanguage/data/propertyValidatorMultiEngine/Consumer2.qml
+@@ -0,0 +1,5 @@
++import QtQml
++
++QtObject {
++    property Foo f: Foo {}
++}
+diff --git a/tests/auto/qml/qqmllanguage/data/propertyValidatorMultiEngine/Foo.qml b/tests/auto/qml/qqmllanguage/data/propertyValidatorMultiEngine/Foo.qml
+new file mode 100644
+index 0000000000..8fc36a40da
+--- /dev/null
++++ b/tests/auto/qml/qqmllanguage/data/propertyValidatorMultiEngine/Foo.qml
+@@ -0,0 +1,3 @@
++import QtQml
++
++QtObject {}
+diff --git a/tests/auto/qml/qqmllanguage/tst_qqmllanguage.cpp b/tests/auto/qml/qqmllanguage/tst_qqmllanguage.cpp
+index dfcc35e33d..23afdbdde6 100644
+--- a/tests/auto/qml/qqmllanguage/tst_qqmllanguage.cpp
++++ b/tests/auto/qml/qqmllanguage/tst_qqmllanguage.cpp
+@@ -298,6 +298,8 @@ private slots:
+     void instanceof();
+     void instanceofMultiEngine();
+     void instanceofMultiEngineInlineComponent();
++    void propertyValidatorMultiEngine();
++    void canQmlCastMultiEngine();
+ 
+     void concurrentLoadQmlDir();
+ 
+@@ -6014,6 +6016,51 @@ void tst_qqmllanguage::instanceofMultiEngineInlineComponent()
+     QVERIFY(result2.toBool());
+ }
+ 
++// verify that the property validator does not get confused when
++// multiple engines end up registering the same type, leading to
++// multiple entries in compositeTypes
++void tst_qqmllanguage::propertyValidatorMultiEngine()
++{
++    QQmlEngine engine1;
++    QQmlComponent c1(&engine1, testFileUrl("propertyValidatorMultiEngine/Consumer1.qml"));
++    QVERIFY2(c1.isReady(), qPrintable(c1.errorString()));
++
++    QQmlEngine engine2;
++    QQmlComponent c2(&engine2, testFileUrl("propertyValidatorMultiEngine/Consumer1.qml"));
++    QVERIFY2(c2.isReady(), qPrintable(c2.errorString()));
++
++    QQmlComponent c3(&engine1, testFileUrl("propertyValidatorMultiEngine/Consumer2.qml"));
++    QVERIFY2(c3.isReady(), qPrintable(c3.errorString()));
++}
++
++// Verify that qmlobject_can_qml_cast() still recognizes a composite type when
++// multiple engines have loaded the same QML file
++void tst_qqmllanguage::canQmlCastMultiEngine()
++{
++    const QUrl url = testFileUrl("canQmlCastMultiEngine/Main.qml");
++
++    QQmlEngine engine1;
++    QQmlComponent c1(&engine1, url);
++    QVERIFY2(c1.isReady(), qPrintable(c1.errorString()));
++    QScopedPointer<QObject> obj1(c1.create());
++    QVERIFY(obj1);
++
++    // A second engine loads the same file and registers another compilation unit
++    // (and thus another property cache) for Foo.
++    QQmlEngine engine2;
++    QQmlComponent c2(&engine2, url);
++    QVERIFY2(c2.isReady(), qPrintable(c2.errorString()));
++    QScopedPointer<QObject> obj2(c2.create());
++    QVERIFY(obj2);
++
++    // Call the typed function on engine1's object with engine1's Foo instance.
++    QQmlExpression expr(engine1.contextForObject(obj1.data()), obj1.data(),
++                        QStringLiteral("check(theFoo)"));
++    const QVariant result = expr.evaluate();
++    QVERIFY2(!expr.hasError(), qPrintable(expr.error().description()));
++    QVERIFY(result.toBool());
++}
++
+ void tst_qqmllanguage::concurrentLoadQmlDir()
+ {
+     ThreadedTestHTTPServer server(dataDirectory());
+-- 
+2.55.0
+
