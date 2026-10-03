@@ -849,7 +849,7 @@ UPDATE_SNAPS() {
 #VERIFICAÇÃO DE NECESSIDADE DE REINICIALIZAÇÃO // REBOOT CHECK -----------------------------------------------------------------------------<<<
 
 CHECK_REBOOT_NEEDED() {
-   local CRITICAL_PACKAGES="linux|linux-firmware|ucode|nvidia|nouveau|mesa|vulkan|amdgpu|radeon|amdvlk|rocm|intel|i915|xe|onevpl|wayland|xorg|wlroots|systemd|grub|limine|refind|syslinux|efibootmgr"
+   local CRITICAL_PACKAGES="linux|linux-lts|linux-zen|linux-firmware|amd-ucode|intel-ucode|nvidia|nvidia-open|nvidia-dkms|nvidia-open-dkms|nvidia-utils|mesa|vulkan-radeon|vulkan-intel|vulkan-nouveau|amdvlk|intel-media-driver|libva-mesa-driver|grub|limine|refind|syslinux|efibootmgr"
     
     local BOOT_TIME
     BOOT_TIME=$(uptime -s)
@@ -871,7 +871,7 @@ CHECK_REBOOT_NEEDED() {
             REBOOT_REASON+="$PKG_NAME "
             REBOOT_REQUIRED=true
         fi
-    done < <(grep "$(date "+%Y-%m-%d")" /var/log/pacman.log | grep -E "upgraded.*($CRITICAL_PACKAGES)")
+    done < <(grep "$(date "+%Y-%m-%d")" /var/log/pacman.log | grep -E "upgraded.*($CRITICAL_PACKAGES)([[:space:]]|$)")
 
     if [ "$REBOOT_REQUIRED" = true ]; then
         echo -e "${RED_NEON}╔══════════════════════════════════════════════════════════════╗${NC}"
