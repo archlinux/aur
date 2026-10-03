@@ -4,7 +4,7 @@
 
 pkgname='launcherx-bin'
 _pkgname='LauncherX-bin'
-pkgver='3.603.3167.0'
+pkgver='3.603.3241.0'
 pkgrel=1
 pkgdesc='LauncherX 是下一代 Minecraft 启动器'
 arch=('x86_64')
@@ -14,12 +14,12 @@ conflicts=("launcherx-git")
 options=(!strip)
 
 source=(
-    "${pkgname}-${pkgver}.zip::https://api.corona.studio/Build/get/8dfbb381-2f42-4e88-bf2a-0db4100494ae/net10.0-linux.linux-x64.zip"
+    "${pkgname}-${pkgver}.zip::https://api.corona.studio/Build/get/68817072-c920-4868-96b2-3267c2db89cd/net10.0-linux.linux-x64.zip"
     "LauncherX.desktop"
     "LauncherX.png"
 )
 sha256sums=(
-    '0240375a2280b63e399d418f30ddfb2e5f780dfcf981cce1808a1a73e548a5de'
+    'b394d85003b897ed9e417933203be178020bebba6de0af374573dfa072066329'
     '69ce33eded87b912eba61f23ebab5ce7a84554a8af7e29778662343a5019a449'
     '12603307fe2c60cbbab83fc761e465b2900c0593022340f1973b5adf59f88360'
 )
