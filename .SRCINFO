@@ -1,0 +1,24 @@
+pkgbase = python-measured
+	pkgdesc = A library for measurements and quantities
+	pkgver = 0.12.2
+	pkgrel = 1
+	url = https://github.com/chrisguidry/measured
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	depends = python>=3.10
+	depends = python-rich
+	depends = python-regex
+	depends = python-pydantic
+	depends = python-pydantic-core
+	depends = python-typer
+	depends = python-typing_extensions
+	depends = python-hypothesis
+	source = https://files.pythonhosted.org/packages/source/m/measured/measured-0.12.2.tar.gz
+	sha256sums = 1ab53b7f884c38f31eb22ff90c3dc7f11d333c745a4ba4be9947f1e520a1b2c8
+
+pkgname = python-measured

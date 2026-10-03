@@ -1,0 +1,3 @@
+[python-measured]
+source = "pypi"
+pypi = "measured"
