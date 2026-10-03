@@ -118,7 +118,8 @@ This is one source repository for both destinations:
 
 - GitHub `main` contains packaging, maintenance scripts, tests and workflows.
 - AUR `master` contains only `PKGBUILD`, `.SRCINFO`, the launcher, desktop
-  entry, game-path helper, registry file, license and this README. Its Git history is preserved.
+  entry, icon, game-path helper, registry file, license and this README.
+  Its Git history is preserved.
 
 [Update and publish CaptureAge](https://github.com/Firstp1ck/captureage-bin/blob/main/.github/workflows/update.yml) runs daily at
 03:17 UTC and can also be started from GitHub's Actions tab. On a new upstream

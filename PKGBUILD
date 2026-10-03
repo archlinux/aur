@@ -2,7 +2,7 @@
 
 pkgname=captureage-bin
 pkgver=1.26.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Advanced spectating for Age of Empires II: Definitive Edition (Windows binary via Proton)'
 arch=('x86_64')
 url='https://captureage.com/cade'
@@ -21,20 +21,20 @@ source=(
   'captureage'
   'configure_game.py'
   'captureage.desktop'
+  'captureage.png'
   'captureage.reg'
   'LICENSE'
   'README.md'
 )
 noextract=("$_archive")
-sha256sums=(
-  '5b3b4765f4d9df06dd5cb614f0467a0212efd8b47f5dc60919fd8716745e3510'
-  'ae494feccf07742fca18f174e4bf32c07b44ced812e0f408bf2d139583b22acb'
-  '001b62f8af99bb64c11002b011842cdbd46beddf56019730a7c3f3ce479d7c9a'
-  '0fbfb4694cd1d20f1bcd37581a59b425b6dcf5ef58d23e1bbc6cea4f6d67d93a'
-  '3c17f11425e8e62166a9a278622173f5f2479c2f7ef9f732a4b9d4acbd22814e'
-  '35599267d69f141d105a99e22a11d9cd65a0ea263a97fefe092366987071c25f'
-  'b681635c16dd9884a44a3252b86fef0603a2dfe607113d7c9e27c37cee56dc18'
-)
+sha256sums=('5b3b4765f4d9df06dd5cb614f0467a0212efd8b47f5dc60919fd8716745e3510'
+            'ae494feccf07742fca18f174e4bf32c07b44ced812e0f408bf2d139583b22acb'
+            '001b62f8af99bb64c11002b011842cdbd46beddf56019730a7c3f3ce479d7c9a'
+            '6ecc0cf6936dca8552492114051bfe173df3bcf86b98d111ed1eda8c474b2f91'
+            'bcf898c2e3f7949ac72ca04706b3941db4532167ff3bd27363baa8e675c99c8e'
+            '3c17f11425e8e62166a9a278622173f5f2479c2f7ef9f732a4b9d4acbd22814e'
+            '35599267d69f141d105a99e22a11d9cd65a0ea263a97fefe092366987071c25f'
+            '60eb2f21442d95f4156688bdc2c2b206b17fd47b0833b040b042b40af7729231')
 
 prepare() {
   mkdir -p "$srcdir/captureage-app"
@@ -52,6 +52,8 @@ package() {
     "$pkgdir/usr/share/captureage/configure_game.py"
   install -Dm644 "$srcdir/captureage.desktop" \
     "$pkgdir/usr/share/applications/captureage.desktop"
+  install -Dm644 "$srcdir/captureage.png" \
+    "$pkgdir/usr/share/pixmaps/captureage.png"
   install -Dm644 "$srcdir/captureage.reg" \
     "$pkgdir/usr/share/captureage/captureage.reg"
   install -Dm644 "$srcdir/LICENSE" \
