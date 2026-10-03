@@ -1,7 +1,7 @@
 # Maintainer: ycna07 <aozakitouko at foxmail dot com>
 pkgname=reinamanager
 _pkgname=ReinaManager
-pkgver=0.29.2
+pkgver=0.31.1
 pkgrel=1
 pkgdesc="A lightweight galgame/visual-novel manager,Under development..."
 arch=('x86_64' 'aarch64')
