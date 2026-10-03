@@ -1,7 +1,7 @@
 # Maintainer: huochenghai <huochenghai@gmail.com>
 _basepkgname="syncclipboard"
 pkgname=${_basepkgname}-desktop-bin
-pkgver="3.3.0"
+pkgver="3.3.1"
 pkgrel=1
 pkgdesc="跨平台剪贴板同步、历史记录管理工具 / Cross-platform cipboard syncing, history management tool"
 arch=("x86_64")
@@ -14,7 +14,7 @@ license=("MIT")
 
 source=("${pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/SyncClipboard_linux_x64.AppImage"
     'LICENSE::https://raw.githubusercontent.com/Jeric-X/SyncClipboard/master/LICENSE')
-sha256sums=('ca4f1fce99716e724028ce361e059771d30c60cb9aed723d25b452ac3b785851'
+sha256sums=('7c746cfd1c703d322b7a23e884d9d4621eb006b54a72b83d1d403edc8d6ba835'
             'dfa38ed49c5407a5d8685c935703eb0bf8233db9f8c40700fd9059aff2a7e22f')
 
 package() {
