@@ -2,7 +2,7 @@
 
 _pkgname=openmp
 pkgname=mingw-w64-${_pkgname}
-pkgver=22.1.8
+pkgver=23.1.2
 pkgrel=1
 pkgdesc='LLVM OpenMP Runtime Library (mingw-w64)'
 url='https://openmp.llvm.org/'
@@ -13,14 +13,14 @@ arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/llvm-project-$pkgver.src.tar.xz"{,.sig})
-sha256sums=('922f1817a0df7b1489272d18134ee0087a8b068828f87ac63b9861b1a9965888'
+sha256sums=('c98bbef08a2b4c2613cd50e9aa9ae7b69b1fe6c16b2c40373bc0ab6116fdf78a'
             'SKIP')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
               'D574BD5D1D0E98895E3BF90044F2485E45D59042'  # Tobias Hieta <tobias@hieta.se>
               '71046D1E9C6656BDD61171873E83BABF4A4F9E85'  # Cullen Rhodes <cullen.rhodes@arm.com>
               'FFB3368980F3E6BB5737145A316C56D064CACBA5') # Douglas Yung <douglas.yung@sony.com>
 
-_srcdir="llvm-project-${pkgver}.src/${_pkgname}"
+_srcdir="llvm-project-${pkgver}.src/runtimes"
 _architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
 	-DLIBOMP_INSTALL_ALIASES=OFF
@@ -42,8 +42,9 @@ build() {
 
 		./${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" \
 			-DBUILD_TESTING=OFF \
+			-DLLVM_ENABLE_RUNTIMES=openmp \
 			-DCMAKE_ASM_MASM_FLAGS="$_winflag"
-		sed -i "s|/safeseh |-safeseh |;s|/coff |-coff |;s|/c |-c -10 |;s|/Fo |-Fo |" "build-${_arch}/runtime/src/CMakeFiles/omp.dir/build.make"
+		sed -i "s|/safeseh |-safeseh |;s|/coff |-coff |;s|/c |-c -10 |;s|/Fo |-Fo |" "build-${_arch}/${_pkgname}/runtime/src/CMakeFiles/omp.dir/build.make"
 		cmake --build "build-${_arch}"
 	done
 }
