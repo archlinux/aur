@@ -1,0 +1,25 @@
+From efe8aff0412e08fc7dbfdc864a02acc963b071d8 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Fri, 2 Oct 2026 20:59:46 +0200
+Subject: [PATCH 3/3] Fix including unknwn.h when building on Linux
+
+---
+ src/activeqt/control/iaxserverbase_p.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/activeqt/control/iaxserverbase_p.h b/src/activeqt/control/iaxserverbase_p.h
+index 827b3fb6..150f5d41 100644
+--- a/src/activeqt/control/iaxserverbase_p.h
++++ b/src/activeqt/control/iaxserverbase_p.h
+@@ -17,7 +17,7 @@
+ // We mean it.
+ //
+ 
+-#include <Unknwn.h>
++#include <unknwn.h>
+ 
+ #include <QtCore/qtconfigmacros.h>
+ 
+-- 
+2.56.0
+
