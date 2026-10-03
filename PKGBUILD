@@ -3,7 +3,7 @@
 _pkgauthor=casey
 _pkgname=filepack
 pkgname=${_pkgname}-bin
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc='Command-line file hashing and verification utility written in Rust'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -19,10 +19,10 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-${arch[0]}-unknown-linux-musl.tar.gz")
 source_aarch64=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-${arch[1]}-unknown-linux-musl.tar.gz")
 sha256sums=('a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499'
-            '78c2bfca01c6ea097643ec3221c06a3b5c95d7acbee98de0002a5e3c612d6a7a'
-            '8b7805865aee4262648a50a77b3d90365e5c79d54e6f66776701de7310b4b6c2')
-sha256sums_x86_64=('fef804d6b473097dbd3b01803c5072b8d4ebacfd7ef35f4576df945525d0b734')
-sha256sums_aarch64=('a82bf6b112b8bd5e1c3c0e4b3143a4f036e8eb201fcf2dc001c12a2f961ad7e7')
+            '44abbcf546622b231e54a0d31567a87ffb5e410c69c856e0f5dad9e2852190ad'
+            '4cb2159ad542fffe9173f9e4e20eecf5f9ec9818901904d8f61c83b28ed5e4fc')
+sha256sums_x86_64=('b60580a313e142c1691548b8041854235286334dce6f5a363b8136873fcccf1a')
+sha256sums_aarch64=('530a4d0a129d796eed4c08fba9f8dc43371b4153eea0e66d3895901c9ef8b362')
 
 package() {
   cd "${srcdir}/" || exit
