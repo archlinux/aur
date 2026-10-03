@@ -1,7 +1,7 @@
 pkgbase = nlink-ng
-	pkgdesc = Native Qt 6 linking program for TI-Nspire calculators (CX-II included)
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgdesc = Native Qt 6 linker for TI-Nspire, TI-83/84, CE, and Evo
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/RyanHakurei/nlink-ng
 	install = nlink-ng.install
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = nlink-ng
 	makedepends = git
 	depends = qt6-base
 	depends = libusb
+	depends = zlib
 	depends = hicolor-icon-theme
 	optdepends = qt6-wayland: Wayland support
 	provides = n-link
@@ -20,9 +21,9 @@ pkgbase = nlink-ng
 	conflicts = n-link.bin
 	replaces = n-link
 	options = !lto
-	source = git+https://github.com/RyanHakurei/nlink-ng.git#tag=v0.2.0
+	source = git+https://github.com/RyanHakurei/nlink-ng.git#tag=v1.0.0
 	source = 69-nlink-ng.rules
 	sha256sums = SKIP
-	sha256sums = 10007d13980e1d6a3e92c4e843a908ea58531155bce0583c826940bf64423bec
+	sha256sums = 22ed826caf643970f3e2580e77d1e24796f68c0e7412c385dc9e55ef793fb5a5
 
 pkgname = nlink-ng
