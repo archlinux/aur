@@ -1,0 +1,26 @@
+pkgbase = insensical-bin
+	pkgdesc = A terminal multiplexer with a window of its own, for supervising many terminals and coding agents (prebuilt)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://insensical.com
+	arch = x86_64
+	license = MIT
+	depends = fontconfig
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = vulkan-icd-loader
+	optdepends = ttf-jetbrains-mono-nerd: the default font; any Nerd Font serves
+	optdepends = ghostty-terminfo: programs in panes are given every feature of the terminal
+	provides = insensical
+	conflicts = insensical
+	options = !strip
+	options = !debug
+	source = https://github.com/mah3uz/insensical-release/releases/download/v0.1.0/insensical-0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = ec2ea09bc94794bd4999a42b7f981426922d126bb64cc3903cd2b8cae6b6e8b0
+
+pkgname = insensical-bin
