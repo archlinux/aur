@@ -1,11 +1,11 @@
 # Maintainer: inventory69 <inventory69@users.noreply.github.com>
 pkgname=simple-notes-desktop-bin
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Cross-platform note-taking app with WebDAV sync, built with Tauri"
 arch=('x86_64')
 url="https://github.com/inventory69/simple-notes-desktop"
-license=('MIT')
+license=('AGPL-3.0-only')
 depends=(
   'webkit2gtk-4.1'
   'gtk3'
@@ -18,8 +18,11 @@ optdepends=(
 provides=('simple-notes-desktop')
 conflicts=('simple-notes-desktop' 'simple-notes-desktop-git')
 options=('!strip')
-source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Simple.Notes.Desktop_${pkgver}_amd64.deb")
-sha256sums=('5bc8de062bc088db2b2279ba723941148bb6aec1d27e2d53d8b7bc3d4bcbe029')
+# LICENSE liegt im AUR-Repo (upload-aur.sh kopiert es aus dem Repo-Root), die .deb enthält keins.
+source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Simple.Notes.Desktop_${pkgver}_amd64.deb"
+        "LICENSE")
+# Eine Zeile lassen: die Skripte ersetzen per sed nur den ersten Eintrag (die .deb).
+sha256sums=('7e5858ca1f9cc16580ed05c9c7342d8a980037e323b21fb8ad9a7cf08767af7a' '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
 
 package() {
   # Extract data from deb package
@@ -40,5 +43,5 @@ package() {
   fi
 
   # Install license
-  install -Dm644 /dev/null "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
