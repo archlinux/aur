@@ -1,6 +1,6 @@
 # Maintainer: Itz-Agasta <rupamgolui69@gmail.com>
 pkgname=metrocity
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Terminal screensaver with animated pixel-art scenes that activate on idle"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('36b5195a251f96da8ff4a2d01f5678ce144b46c876dbd05dcfa5f05cb0cfe552')
+sha256sums=('be73caeef541e7fcab1fddc9b72154312dc9489a05dd0035edfe08afcd4eeded')
 
 prepare() {
   cd "$pkgname-$pkgver"
