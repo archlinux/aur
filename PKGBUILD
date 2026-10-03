@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Real-time, glanceable interactive git status for the terminal"
 
-pkgver=0.1.6
+pkgver=0.1.8
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('83777edff260d09444a1bb192c4977760adc892f1b9fc8f36c47e9b8899c13b8')
-sha256sums_aarch64=('404fdd5daec70ca4bf50bc117f3f41c2b22ada3b4dc98034975bd9b75f7b252c')
+sha256sums_x86_64=('6c3eb5eab939aad775b5d237b1a1658f1c90be9aa1d99468494e85d66c685fb3')
+sha256sums_aarch64=('c6ab4ec2f17d87c4f82b2ac357ab82ee94e03514d3756c881568653e2021fcd6')
 
 
 case ${CARCH} in
