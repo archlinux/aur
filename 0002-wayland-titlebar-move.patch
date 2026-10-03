@@ -1,0 +1,29 @@
+Use Qt 5.15 compositor-assisted movement for custom title bars on Wayland.
+Keep the existing hit testing and manual movement fallback.
+
+--- a/DSView/pv/toolbars/titlebar.cpp
++++ b/DSView/pv/toolbars/titlebar.cpp
+@@ -31,6 +31,7 @@
+ #include <assert.h>
+ #include <QTimer>
+ #include <QGuiApplication>
++#include <QWindow>
+ 
+ #include "../config/appconfig.h"
+ #include "../appcontrol.h"
+@@ -225,6 +226,15 @@
+         bool bClick = (x >= 6 && y >= 5 && x <= width() - 6);  //top window need resize hit check
+  
+         if (!bTopWidow || bClick ){
++            // Wayland requires the compositor to move top-level windows.
++            if (QGuiApplication::platformName().startsWith("wayland")) {
++                QWindow *handle = window()->windowHandle();
++                if (handle && handle->startSystemMove()) {
++                    event->accept();
++                    return;
++                }
++            }
++
+             _is_draging = true;             
+ 
+             _clickPos = event->globalPos(); 
