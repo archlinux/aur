@@ -16,7 +16,11 @@ CaptureAge is proprietary: read the [terms](https://captureage.com/terms).
 Core features are free; some require a subscription.
 
 Install **captureage-bin** from the [AUR](https://aur.archlinux.org/packages/captureage-bin)
-with your preferred AUR helper.
+with an AUR helper such as `yay`:
+
+```sh
+yay -S captureage-bin
+```
 
 ## First launch
 
@@ -26,7 +30,13 @@ with your preferred AUR helper.
    application menu or run `captureage`.
 
 The launcher fixes missing or invalid game-path settings and backs up existing
-settings before changing them. Update CaptureAge through the AUR package.
+settings before changing them.
+
+To enable **Spectate with CA** in the game, close the game and run
+`captureage --register`. This optional step changes your game's settings.
+
+Update CaptureAge through your AUR helper; the built-in Windows updater cannot
+update this installation.
 
 ## More information
 
