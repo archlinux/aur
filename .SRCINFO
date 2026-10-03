@@ -1,0 +1,17 @@
+pkgbase = f4
+	pkgdesc = Dual-pane Far Manager / far2l-style file manager with TUI and GUI
+	pkgver = 0.3.0beta
+	pkgrel = 1
+	url = https://github.com/unxed/f4
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	license = MIT
+	makedepends = go
+	depends = glibc
+	depends = hicolor-icon-theme
+	options = !lto
+	source = f4-0.3.0beta.tar.gz::https://github.com/unxed/f4/archive/v0.3.0-beta.tar.gz
+	sha256sums = ca7b2c711cc3d4dc14e63a0b08b0098e58e0c40b75441e44f828a8ec7ae1b4be
+
+pkgname = f4
