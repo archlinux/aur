@@ -1,7 +1,7 @@
 pkgbase = transcribe-cpp-vulkan
 	pkgdesc = C/C++ speech-to-text inference library and CLI based on ggml (Vulkan)
-	pkgver = 0.2.4
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/handy-computer/transcribe.cpp
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = transcribe-cpp-vulkan
 	optdepends = ffmpeg: convert audio to 16 kHz mono WAV
 	optdepends = sox: convert audio to 16 kHz mono WAV
 	conflicts = transcribe.cpp
-	source = https://github.com/handy-computer/transcribe.cpp/archive/refs/tags/v0.2.4.tar.gz
-	sha256sums = 3c51b9f3c75b1288cb46a4eac64d060afcbb83d00bfe5444cf905a6a0be1e037
+	source = https://github.com/handy-computer/transcribe.cpp/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = e0834aaaec7df841e7c26db749bead05b1d551626e2802ce0cd9091449de26cc
 
 pkgname = transcribe-cpp-vulkan
