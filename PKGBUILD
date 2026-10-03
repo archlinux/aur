@@ -5,9 +5,9 @@ pkgdesc="A formatted input library, think {fmt} but in the other direction. 'sca
 url="https://github.com/eliaskosunen/scnlib"
 arch=('any')
 license=('Apache-2.0')
-makedepends=('mingw-w64-cmake' 'mingw-w64-fast_float')
+makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
-depends=('mingw-w64-crt')
+depends=('mingw-w64-crt' 'mingw-w64-fast_float')
 source=("https://github.com/eliaskosunen/scnlib/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('ece17b26840894cc57a7127138fe4540929adcb297524dec02c490c233ff46a7')
 
