@@ -5,14 +5,14 @@
 _bpn=paho-mqtt-c
 pkgname=${_bpn}-git
 pkgver=1.3.13.r11.g6b1e202
-pkgrel=1
+pkgrel=2
 pkgdesc="Eclipse Paho C Client Library for the MQTT Protocol"
-arch=(any)
+arch=('i686' 'x86_64' 'aarch64')
 url="https://www.eclipse.org/paho/clients/c/"
 license=('custom:EPL2' 'custom:EDL')
 groups=()
 depends=('openssl')
-makedepends=(git doxygen)
+makedepends=(git cmake doxygen)
 provides=(${_bpn})
 conflicts=(${_bpn})
 replaces=()
@@ -40,7 +40,7 @@ build() {
 }
 
 package() {
-  cmake --build build --target install -- DESTDIR="$pkgdir/"
+  DESTDIR="$pkgdir" cmake --install build
 
   cd $_bpn
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
