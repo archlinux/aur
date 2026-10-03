@@ -28,8 +28,8 @@ makedepends=(
   libzip
   ninja
   python
-  sdl2
-  sdl2_ttf
+  sdl3
+  sdl3_ttf
   snappy
   zlib
 )
