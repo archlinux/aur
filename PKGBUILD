@@ -1,6 +1,6 @@
 pkgname=halley-git
 _pkgname=halley
-pkgver=r616.2a9e55c
+pkgver=r1452.47a8e9b
 pkgrel=1
 pkgdesc="Spatial Wayland compositor built around infinite workspace navigation"
 arch=('x86_64')
@@ -37,7 +37,7 @@ optdepends=(
 )
 provides=('halley')
 conflicts=('halley')
-source=("git+https://github.com/saltnpepper97/halley.git#branch=dev")
+source=("git+https://github.com/saltnpepper97/halley.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
