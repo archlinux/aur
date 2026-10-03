@@ -11,7 +11,6 @@ pkgbase = yadal-git
 	makedepends = gcc
 	makedepends = base-devel
 	makedepends = pkg-config
-	makedepends = ffmpeg
 	source = yadal::git+https://codeberg.org/tomkoid/yadal
 	sha256sums = SKIP
 

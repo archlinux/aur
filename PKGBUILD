@@ -1,11 +1,11 @@
 # Maintainer: Tomkoid <tomkoid@tomkoid.cz>
 pkgname="yadal-git"
-pkgver=0.3.0.r7.g9a7a7be
+pkgver=0.3.0.r108.g5c021d5
 pkgrel=1
 pkgdesc="Yet another TIDAL track, playlist, album CLI downloader"
 url="https://codeberg.org/tomkoid/yadal"
 arch=("any")
-makedepends=("cargo" "cmake" "git" "gcc" "base-devel" "pkg-config" "ffmpeg")
+makedepends=("cargo" "cmake" "git" "gcc" "base-devel" "pkg-config")
 license=("GPL3")
 source=("yadal::git+https://codeberg.org/tomkoid/yadal")
 sha256sums=("SKIP")
