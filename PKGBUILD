@@ -1,7 +1,7 @@
 # Maintainer: ghollisjr <ghollisjr@gmail.com>
 
 pkgname=quickkey
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Hotkey menu of commands whose output goes to the clipboard'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   'wl-clipboard: clipboard support under Wayland'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9d922defb097e0e9db0920f8cd28fa86ff28cbd9707ea5d79f46e9c3c30b0ac9')
+sha256sums=('6028b8d8ab975e292f80309fa64f58bd1403b464341475a43a485837117b6188')
 
 check() {
   cd "$pkgname-$pkgver"
@@ -38,6 +38,8 @@ package() {
   # to ~/.config/quickkey/config to make it yours
   install -Dm644 quickkey.conf "$pkgdir/usr/share/$pkgname/quickkey.conf"
 
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  # glob, not a fixed name: the README was README.md up to v1.0.0 and is
+  # README.org after it, and this PKGBUILD has to build either tarball
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.*
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
