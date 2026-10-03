@@ -1,59 +1,58 @@
-# Maintainer: GI_Jack <GI_Jack@hackermail.com>
-
-pkgname=python-aardwolf
-_pkgname=aardwolf
-pkgver=0.2.11
+# Maintainer: Leonid LEdnev <leonidledn at gmail dit com>
+# Contributor: GI_Jack <GI_Jack@hackermail.com>
+_name=aardwolf
+pkgname="python-$_name"
+pkgver=0.2.14
 pkgrel=1
 pkgdesc="Asynchronous RDP/VNC client in Python (headless)"
-url="https://github.com/skelsec/aardwolf"
-arch=('any')
+url="https://github.com/skelsec/$_name"
+arch=('x86_64')
 license=('MIT')
-depends=( 'python>=3.7' 'python-unicrypto>=0.0.10' 'python-asyauth>=0.0.13'
-	  'python-asysocks' 'python-tqdm' 'python-colorama' 'python-asn1crypto'
-	  'python-asn1tools' 'python-bitstruct' 'python-pyperclip>=1.8.2'
-	  'python-arc4>=0.3.0' 'python-pillow>=9.0.0' )
-optdepends=('python-pyqt5')
-makedepends=( 'cython' 'python-build' 'python-installer' 'python-wheel'
-	      'python-setuptools>=62.4' 'python-setuptools-rust>=1.5.2' 'rust')
-#source=("https://github.com/skelsec/aardwolf/archive/refs/tags/${pkgver}.tar.gz")
-source=("https://files.pythonhosted.org/packages/98/bf/ca13fae2516b0ce274d7359b0439911086fd8a46afc87e6b7a5814cb6d2e/aardwolf-${pkgver}.tar.gz")
-sha256sums=('46dc892703f133961b782fd2971124803cba7409ea5dad5b4ebb7653b16dcdf3')
+depends=(
+  'python>=3.11'
+  'python-unicrypto>=0.0.11'
+  'python-asyauth>=0.0.16'
+	'python-asysocks>=0.2.9'
+  'python-tqdm'
+  'python-colorama'
+  'python-asn1crypto'
+	'python-asn1tools'
+  'python-pyperclip>=1.8.2'
+	'python-arc4>=0.3.0'
+  'python-pillow>=9.0.0'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+	'python-setuptools>=62.4'
+  'python-setuptools-rust>=1.5.2'
+  'rust'
+  'git'
+)
+source=("git+$url#tag=$pkgver")
+b2sums=('7322f50aeaf084677c40f2e54bfa87e23c2c0206428d42377d91f1b3c03a92ed2bbd984d27d336b7039de4c4b115567bc45a4894aac1f3c90657ad201cc93db9')
+options=(!lto)
+
+prepare() {
+  cd "$_name/$_name/utils/rlers"
+  git clean -dfx
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_HOME="$srcdir/cargo"
+  cargo fetch --locked --target host-tuple
+}
 
 build() {
-  cd "${_pkgname}-${pkgver}"
-  export CARGO_HOME="${srcdir}/cargo"
-  python -m build --wheel --no-isolation
+  cd "$_name"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_HOME="$srcdir/cargo"
+  python -m build -wnx
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  export CARGO_HOME="${srcdir}/cargo"
-  python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
-
-  _docfiles=(
-    README.md
-  )
-  _docdirs=()
-  _manfiles=()
-  _infofiles=()
-  _licensefiles=(
-    LICENSE
-  )
-  for _docfile in "${_docfiles[@]}"; do
-    install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_docfile}")"
-  done
-  for _docdir in "${_docdirs[@]}"; do
-    cp -rv "${_docdir}" "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_docdir}")"
-  done
-  for _manfile in "${_manfiles[@]}"; do
-    _section="$(basename "${_manfile}" .gz | sed -E -e 's|^.*\.([^.]*)$|\1|')"
-    install -D -v -m644 "docs/build/man/${_manfile}" "${pkgdir}/usr/share/man/man${_section}/$(basename "${_manfile}")"
-  done
-  for _infofile in "${_infofiles[@]}"; do
-    install -D -v -m644 "${_infofile}" "${pkgdir}/usr/share/info/$(basename "${_infofile}")"
-  done
-  for _licensefile in "${_licensefiles[@]}"; do
-    install -D -v -m644 "${_licensefile}" "${pkgdir}/usr/share/licenses/${pkgname}/$(basename "${_licensefile}")"
-    ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/$(basename "${_licensefile}")" "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_licensefile}")"
-  done
+  cd "$_name"
+  python -m installer -d "$pkgdir" dist/*.whl
+  install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
+
+# vim: ts=2 sw=2 et:
