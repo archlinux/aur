@@ -1,6 +1,6 @@
 # Maintainer: Dylan Forbes <dylandforbes@gmail.com>
 pkgname='rcm-fast'
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="rcm, but faster"
 arch=('any')
@@ -9,8 +9,8 @@ license=('BSD')
 provides=('rcm')
 conflicts=('rcm' 'rcm-fast-git')
 checkdepends=('cram')
-source=("https://github.com/fictionic/rcm-fast/releases/download/v2.1.0/rcm-fast-2.1.0.tar.gz")
-sha256sums=('b637c760d7ceb9bb8426b27fcd739075fbb8e105960611d7dc249ad48f270ae0')
+source=("https://github.com/fictionic/rcm-fast/releases/download/v2.2.0/rcm-fast-2.2.0.tar.gz")
+sha256sums=('dc53380ac55acc09564f0a14262735721f843891944d410a374bcc75cdcd05ae')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
