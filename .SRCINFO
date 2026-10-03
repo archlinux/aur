@@ -1,6 +1,6 @@
 pkgbase = faac-git
 	pkgdesc = An MPEG-4 and MPEG-2 AAC encoder
-	pkgver = faac.1.50.r6.g167b5eb
+	pkgver = 2.2.r2.g01df1d8
 	pkgrel = 1
 	url = https://sourceforge.net/projects/faac/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = faac-git
 	makedepends = git
 	makedepends = meson
 	depends = glibc
-	provides = faac=faac.1.50.r6.g167b5eb
+	provides = faac=2.2.r2.g01df1d8
 	provides = libfaac.so
 	conflicts = faac
 	source = git+https://github.com/knik0/faac.git

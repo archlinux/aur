@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=faac-git
-pkgver=faac.1.50.r6.g167b5eb
+pkgver=2.2.r2.g01df1d8
 pkgrel=1
 pkgdesc="An MPEG-4 and MPEG-2 AAC encoder"
 arch=('i686' 'x86_64')
@@ -18,7 +18,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "faac"
 
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/[-_]/./g'
+  _tag=$(git tag -l --sort -v:refname | grep -E '^faac-[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^faac-//'
 }
 
 build() {
