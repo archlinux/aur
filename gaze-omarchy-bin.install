@@ -1,0 +1,68 @@
+function post_install() {
+#!/bin/sh
+# SPDX-FileCopyrightText: 2026 Gundu Labs
+# SPDX-License-Identifier: GPL-3.0-or-later
+set -e
+cat <<'EOF'
+
+Gaze Omarchy integration installed. From your unlocked desktop, without sudo:
+
+    gaze-omarchy enable
+    gaze add-face default
+    gaze auth
+    gaze-omarchy doctor
+
+After package or Omarchy updates, run gaze-omarchy doctor. Reload the plugin
+with gaze-omarchy enable while unlocked. Before removing this package, run
+gaze-omarchy disable to restore the stock lock.
+
+Docs: https://gaze.gundulabs.com/guide/omarchy
+EOF
+
+}
+
+function post_upgrade() {
+#!/bin/sh
+# SPDX-FileCopyrightText: 2026 Gundu Labs
+# SPDX-License-Identifier: GPL-3.0-or-later
+set -e
+cat <<'EOF'
+
+Gaze Omarchy integration installed. From your unlocked desktop, without sudo:
+
+    gaze-omarchy enable
+    gaze add-face default
+    gaze auth
+    gaze-omarchy doctor
+
+After package or Omarchy updates, run gaze-omarchy doctor. Reload the plugin
+with gaze-omarchy enable while unlocked. Before removing this package, run
+gaze-omarchy disable to restore the stock lock.
+
+Docs: https://gaze.gundulabs.com/guide/omarchy
+EOF
+
+}
+
+function pre_remove() {
+#!/bin/sh
+# SPDX-FileCopyrightText: 2026 Gundu Labs
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Package managers must not remove a user's configured locker underneath them.
+set -e
+case "${1:-}" in
+1 | 2 | upgrade | failed-upgrade | abort-upgrade | abort-install) exit 0 ;;
+esac
+gaze_omarchy_blocked=0
+for gaze_omarchy_home in /home/* /root; do
+    gaze_omarchy_link="$gaze_omarchy_home/.config/omarchy/plugins/com.gundulabs.gaze.lock"
+    if [ -L "$gaze_omarchy_link" ] &&
+        [ "$(readlink "$gaze_omarchy_link")" = /usr/share/gaze/omarchy ]; then
+        printf 'Run gaze-omarchy disable from the unlocked desktop for %s before removing this package.\n' "$gaze_omarchy_home" >&2
+        gaze_omarchy_blocked=1
+    fi
+done
+[ "$gaze_omarchy_blocked" -eq 0 ]
+
+}
+

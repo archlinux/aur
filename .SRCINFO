@@ -1,0 +1,17 @@
+pkgbase = gaze-omarchy-bin
+	pkgdesc = Omarchy Quickshell lock screen integration for Gaze
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://gaze.gundulabs.com
+	install = gaze-omarchy-bin.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gaze
+	depends = jq
+	provides = gaze-omarchy=0.3.6-1
+	conflicts = gaze-omarchy
+	backup = etc/pam.d/gaze-omarchy-face
+	source = gaze-omarchy-0.3.6-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-omarchy-0.3.6-1-x86_64.pkg.tar.zst
+	sha256sums = 0530f625680c7cfc357f04d160b3e5f090d14e6b0a69266a86937bdeb8b96257
+
+pkgname = gaze-omarchy-bin
