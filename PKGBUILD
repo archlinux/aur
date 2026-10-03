@@ -15,7 +15,7 @@ url='https://rtmpdump.mplayerhq.hu/'
 license=('GPL2' 'LGPL2.1')
 depends=('glibc' 'gnutls' 'zlib')
 makedepends=('git')
-provides=('librtmp.so')
+provides=('librtmp.so.0')
 options=('!makeflags')
 _commit='c28f1bab7822de97353849e7787b59e50bbb1428'
 source=("git+https://git.ffmpeg.org/rtmpdump#commit=${_commit}")

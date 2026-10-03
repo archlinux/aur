@@ -10,7 +10,7 @@ pkgbase = librtmp0
 	depends = glibc
 	depends = gnutls
 	depends = zlib
-	provides = librtmp.so
+	provides = librtmp.so.0
 	options = !makeflags
 	source = git+https://git.ffmpeg.org/rtmpdump#commit=c28f1bab7822de97353849e7787b59e50bbb1428
 	sha256sums = SKIP
