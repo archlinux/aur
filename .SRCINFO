@@ -1,12 +1,12 @@
 pkgbase = grype-bin
 	pkgdesc = A vulnerability scanner for container images and filesystems.
-	pkgver = 0.119.0
+	pkgver = 0.120.0
 	pkgrel = 1
 	url = https://github.com/anchore/grype
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = grype-db-bin
-	source = https://github.com/anchore/grype/releases/download/v0.119.0/grype_0.119.0_linux_amd64.tar.gz
-	sha256sums = 3fa2dc4b924621ab65404cf08d0b8438d896d80ab949c9d5a4ca283c36004c9b
+	source = https://github.com/anchore/grype/releases/download/v0.120.0/grype_0.120.0_linux_amd64.tar.gz
+	sha256sums = a5a1218dce63acdac152a6b3b5bb366e7267e36f4069848cf455543b3fa5700e
 
 pkgname = grype-bin
