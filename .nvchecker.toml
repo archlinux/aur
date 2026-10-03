@@ -1,0 +1,5 @@
+[orzma-bin]
+source = "github"
+github = "not-elm/orzma"
+use_latest_release = true
+prefix = "v"
