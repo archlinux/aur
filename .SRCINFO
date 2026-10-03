@@ -1,6 +1,6 @@
 pkgbase = termide
 	pkgdesc = All-in-one terminal workspace: editor, file manager, terminal, git and coding agent
-	pkgver = 0.37.0
+	pkgver = 0.38.0
 	pkgrel = 1
 	url = https://github.com/termide/termide
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = termide
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = termide-0.37.0.tar.gz::https://github.com/termide/termide/archive/0.37.0.tar.gz
-	sha256sums = d9ac8e8ceacddbd07cad6d07db8d0d220689d68439348f50f4eaa97511a58e24
+	source = termide-0.38.0.tar.gz::https://github.com/termide/termide/archive/0.38.0.tar.gz
+	sha256sums = f9c03fc68c3df1232a60fc0dbeef125f1e01ef2146effca78be6ffee0209c096
 
 pkgname = termide
