@@ -5,7 +5,7 @@ pkgdesc="Solving Constraint Integer Programs (mingw-w64)"
 arch=('any')
 url='https://www.scipopt.org/'
 license=(Apache-2.0)
-depends=('mingw-w64-gmp' 'mingw-w64-mpfr' 'mingw-w64-onetbb' 'mingw-w64-papilo' 'mingw-w64-readline' 'mingw-w64-soplex' 'mingw-w64-zlib' 'mingw-coin-or-ipopt')
+depends=('mingw-w64-bliss' 'mingw-w64-gmp' 'mingw-w64-mpfr' 'mingw-w64-onetbb' 'mingw-w64-papilo' 'mingw-w64-readline' 'mingw-w64-soplex' 'mingw-w64-zlib' 'mingw-w64-coin-or-ipopt')
 makedepends=('mingw-w64-cmake' 'mingw-w64-boost')
 options=('staticlibs' '!strip' '!buildflags')
 source=("https://github.com/scipopt/scip/archive/refs/tags/v${pkgver}.tar.gz")
@@ -20,7 +20,7 @@ prepare() {
 build() {
   cd "${srcdir}/scip-${pkgver}"
   for _arch in ${_architectures}; do
-    ${_arch}-cmake -DCMAKE_BUILD_TYPE=Release -DZIMPL=OFF -DBUILD_TESTING=OFF -B build-${_arch} .
+    ${_arch}-cmake -DCMAKE_BUILD_TYPE=Release -DZIMPL=OFF -DSYM=bliss -DBUILD_TESTING=OFF -B build-${_arch} .
     cmake --build build-${_arch}
   done
 }
