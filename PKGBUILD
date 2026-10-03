@@ -15,8 +15,8 @@
 # sources from distant mirrors. See _HZ_ticks, _tickrate and _tcp_bbr3 below for
 # the reasoning on each.
 #
-# It also carries an XFS fix that is posted upstream but not yet merged; see the
-# patch list. pkgrel stays pinned to the distro package's - see the note there.
+# It also runs the BORE scheduler; see _cpusched. pkgrel normally stays pinned to
+# the distro package's - see the note there.
 
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null or choose proper variable to enable them
@@ -33,7 +33,14 @@
 # 'eevdf' - select 'EEVDF Scheduler'
 # 'rt' - select EEVDF, but includes a series of realtime patches
 # 'rt-bore' - select Burst-Oriented Response Enhancer, but includes a series of realtime patches
-: "${_cpusched:=cachyos}"
+# Build machine: bore rather than upstream's cachyos (plain EEVDF). The 32
+# threads sit saturated by a build for hours while the desktop stays in use, and
+# BORE's burst penalty keeps interactive tasks ahead of the compile jobs. It was
+# held back while the XFS crash was being chased, to keep the source stock; that
+# investigation is finished. It adds one fetched patch (sched/0001-bore-cachy.patch).
+# scripts/check-cachyos-drift.sh tracks its name but cannot tell whether it still
+# applies to a new tag; that shows up as a failed prepare().
+: "${_cpusched:=bore}"
 
 ### Tweak kernel options prior to a build via nconfig
 : "${_makenconfig:=no}"
@@ -52,7 +59,7 @@
 : "${_localmodcfg:=no}"
 
 # Path to the list of used modules
-: "${_localmodcfg_path:="$HOME/.config/modprobed.db"}"
+: "${_localmodcfg_path:="$XDG_DATA_HOME/modprobed-db/modprobed.db"}"
 
 # Use the current kernel's .config file
 # Enabling this option will use the .config of the RUNNING kernel rather than
@@ -234,11 +241,11 @@ fi
 
 pkgbase="linux-$_pkgsuffix"
 _major=7.2
-_minor=7
+_minor=9
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-_tagrel=1
+_tagrel=2
 # Pinned to match the distro package's pkgrel (linux-cachyos 7.1.5-1) rather
 # than tracking upstream's PKGBUILD pkgrel. This fork exists to be compared
 # against the stock kernel, so the version string should differ ONLY by the
@@ -253,7 +260,13 @@ _tagrel=1
 # graphical login that will not start while root on a TTY still works. A normal
 # version bump is safe because the running kernel keeps its own directory; this
 # does not. Install only when the reboot follows immediately.
-pkgrel=1
+#
+# pkgrel=2 while the distro package is at 1: a deliberate bump, made so this
+# rebuild (upstream sync of the optional nvidia/zfs pins) installs as a new
+# version and leaves the running kernel's module tree alone. `uname -r` reads
+# 7.2.8-2-cachyos-jetm until the next upstream tag resets it via
+# update-version.sh.
+pkgrel=2
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 # Kept short: the split packages append their own suffixes to this string
 # ("... kernel and modules", "Non-stripped vmlinux file for the ..."), so a long
@@ -288,72 +301,20 @@ makedepends=(
 )
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=610.43.03
+_nv_ver=615.71.09
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
     "https://github.com/CachyOS/linux/releases/download/${_srcname}/${_srcname}.tar.gz"{,.asc}
     "config"
-    # XFS deferred-op diagnostics + the args->total fix, v3 (2026-08-10).
-    # Carried at the revision posted to linux-xfs; patches 5 and 6 have
-    # Reviewed-by: Darrick J. Wong. Filenames keep the vN prefix so the packaged
-    # revision is answerable from ls - it matters when bisecting a filesystem
-    # bug against a series that is still in review.
+    # No out-of-tree XFS patches any more: the crash investigation is finished
+    # and the v3 diagnostics series (v3-0002, -0003, -0004, -0006) is dropped.
+    # Its fix, args->total in xfs_parent.c, landed upstream between 7.2.6 and
+    # 7.2.7. The carried patches can be read back from this file's git history.
     #
-    # Patch 5 is the actual fix and it is evidence-backed, not inferred. A
-    # boot-mapped persistent ftrace instance captured the failing allocation in
-    # the crashing task 5.3 ms before the shutdown:
-    #
-    #   531.418881 xfs_alloc_vextent_loopfailed  minlen=1 maxlen=1
-    #   531.435265 xfs_alloc_size_nominleft      minlen=1 maxlen=0 total=0xffffffff
-    #   531.435266 xfs_alloc_vextent_badargs     minlen=1 maxlen=0
-    #   531.440550 xfs_force_shutdown            xfs_defer.c:721
-    #
-    # total=0xffffffff is the uninitialised args->total underflowing in
-    # xfs_da_grow_inode_int(). In xfs_alloc_space_available() the guard
-    # "available < (int)max(args->total, alloc_len)" then evaluates against
-    # (int)0xFFFFFFFF == -1, so it cannot fail; maxlen is clamped to available
-    # (0); and both ASSERTs guarding that clamp are no-ops because
-    # CONFIG_XFS_DEBUG is unset. xfs_alloc_vextent_check_args() then rejects
-    # minlen(1) > maxlen(0) with a bare -ENOSPC, which xfs_defer_finish_noroll()
-    # treats as fatal.
-    #
-    # With a correct total the guard demands available >= total, so maxlen can
-    # never be clamped to 0 - the failing state is unreachable. Patch 5 is
-    # therefore necessary AND sufficient for this crash.
-    #
-    # Patches 1-4 are diagnostics and one unrelated real bug (uninitialised
-    # error on the item-less barrier path); none of them fixes this crash.
-    #
-    # Patch 6 asserts in xfs_da_grow_inode_int() that the remaining reservation
-    # still covers each fork growth, so this underflow class trips loudly in a
-    # debug build instead of wrapping silently. It is a guard, not a second fix:
-    # CONFIG_XFS_DEBUG is unset here, so it compiles out and changes nothing on
-    # this machine. It is carried to keep the packaged series identical to the
-    # posted one.
-    "v3-0001-xfs-initialise-error-in-xfs_defer_finish_one.patch"
-    "v3-0002-xfs-give-the-deferred-barrier-op-type-a-name.patch"
-    "v3-0003-xfs-report-the-error-that-made-deferred-work-shut.patch"
-    "v3-0004-xfs-correct-the-parent-pointer-space-reservation-.patch"
-    "v3-0005-xfs-initialise-args-total-for-parent-pointer-upda.patch"
-    "v3-0006-xfs-assert-the-reservation-covers-each-da-fork-gr.patch"
-    # Apart from those six, no out-of-tree patches: otherwise STOCK SOURCE +
+    # Apart from the BORE patch added by _cpusched below, the source is STOCK +
     # DWARF debuginfo, so a crash on it differs from the distro kernel only by
-    # the debug build and the patches listed above.
-    #
-    # REMOVED 2026-07-28:
-    # 0001-xfs-fix-nofs-context-corruption-in-xfs_btree_split_worker.patch
-    # (Yun Zhou, linux-xfs 2026-07-20). The patch is CORRECT - both a local
-    # source review and an independent cold review confirmed the cross-thread
-    # tp->t_pflags clobber is real and the fix is sound - but it does NOT fix the
-    # crash this machine has. The failure reproduced on the patched kernel on
-    # 2026-07-28 (build task 3393/4296, root XFS shut down, journald spewing EIO,
-    # no panic and therefore no vmcore). That matches the review's verdict: the
-    # patch addresses a latent deadlock risk, while the observed failure is
-    # in-memory corruption whose userspace half (RSVD-bit PTEs, zeroed code
-    # pages on unrelated processes) it cannot explain. Carrying it added a
-    # variable without buying a fix. Kept for reference in
-    # ~/cpu-rma-evidence/2026-07-26-xfs-nofs/.
+    # the debug build and the scheduler.
 )
 validpgpkeys=(
   E18447AC260021D31F3FF6C4C8A2A4774B8B63C4  # Eric Naim <dnaim@cachyos.org>
@@ -380,14 +341,14 @@ fi
 # ZFS support
 if [ "$_build_zfs" = "yes" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=c681af76c5a6a15caada25eb13090e41218c7831")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=71a9f9578616a90c3c14bb59629fb4d31bfd68d1")
 fi
 
 
 if [ "$_build_nvidia_open" = "yes" ]; then
     source+=("https://download.nvidia.com/XFree86/${_nv_open_pkg%"-$_nv_ver"}/${_nv_open_pkg}.tar.xz"
              "${_patchsource}/misc/nvidia/0002-fix-dsc-correct-RC-parameter-tables-to-match-VESA-DS.patch"
-             "${_patchsource}/misc/nvidia/0004-fix-dp-add-Bigscreen-Beyond-VR-headset-to-WAR-databa.patch")
+             "${_patchsource}/misc/nvidia/0003-fix-dp-add-Bigscreen-Beyond-VR-headset-to-WAR-databa.patch")
 fi
 
 # Use generated AutoFDO Profile
@@ -974,13 +935,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('19720409be3c7a5f2ccfa447c9eddb4fafd248d196e042283e5d0c265591bfa36bfe8ab7ccc549d987537d66fb2d6222ce6ae0921a12910c6c0cde2303f32baf'
+b2sums=('8a545c8da5cc1e0d803db9f761ee159733c963b40c594ba74f3723eab68abfd7e7a4ac92139a064cff65b0a0c742bf6989c5d05cd98f057a2ad9efd154c7df25'
         'SKIP'
-        '96e851734027e90d23c0705d80ceffb502a76d046a92b168fc5dd71e99200e95e1aa6bd22dfdf8d6bc51d03ba7157bcb6622797ec6e9ff709d3c8e2d5b329613'
-        '6ed7fa19aab0bba299d6b698b48768c15a9a786ff3da300d616288b0235e712f188ff5348013d2f0aaccc328b6e39cb7f570f9e1bfe11ef982fb3924e8c32b5a'
-        'b8e91621dcf7630a915d30b26fdcc6140f22702050f2d0568d043ab5b9172aa043f12d0f0c523716c71a7dd5932928a87b26f6205f5363e94a90e81f99c38145'
-        '81f724a1438c4509862e608119643cdba7bdd5065f7ce8c2818d16bb526710b8fe3c70ed8b3a84bc2d4a7ba35b59a5c840656114e13eeffb9276a5f2e0035aff'
-        '70109579c223fdc6700fe8854291f33d59d2557ebe96817fd0c0a417de75e3529bd5867bc10fa300bc81092cf0a264a1fd10a2b9cf2d29e7352976d8a3affc6b'
-        '9efad38775f139ec951a35c441c1bcd2ea3eac2b32011d170aaa4f566249e31e1e29643e95ee3ae2b53d98fed708594a8fcf4206b25823380b19daf6438f5b9b'
-        '9f0f692c2d18b487afabc23d290341bfec042ea0849d8aac94c164c41dc45f6ede459b276de1efd0e62408978d1e2f0cf4e0bd107665ba53ac38327cfc544e5c'
-        'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e')
+        '475ed83f3a10cfeb9624a65b8deae00f171bfbc04b92a4aa80c546264393b6374acaa001ab19e24c1bf0adc891ac7a32af1b03476ae4d976ce16de34eb51235d'
+        'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e'
+        '03b6d236610ae00db9395819aa7578860f45ce10839fbdcee80fb8e9e9c8810896d20680c63e43c416ae23b371efd737bc0a14831e1f7d8111578c1f65bda68f')
