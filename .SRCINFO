@@ -1,6 +1,6 @@
 pkgbase = termide-bin
 	pkgdesc = All-in-one terminal workspace: editor, file manager, terminal, git and coding agent (binary release)
-	pkgver = 0.37.0
+	pkgver = 0.38.0
 	pkgrel = 1
 	url = https://github.com/termide/termide
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = termide-bin
 	depends = gcc-libs
 	provides = termide
 	conflicts = termide
-	source_x86_64 = termide-bin-0.37.0-x86_64.tar.gz::https://github.com/termide/termide/releases/download/0.37.0/termide-0.37.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 99c0976bc65f95b9100247e56bc1d84fc481489e51f060ebd16c0fb709268e91
-	source_aarch64 = termide-bin-0.37.0-aarch64.tar.gz::https://github.com/termide/termide/releases/download/0.37.0/termide-0.37.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = a77dfbc47576e7567b940a41d228acfa0b52701306ae311db4f19204f71250a7
+	source_x86_64 = termide-bin-0.38.0-x86_64.tar.gz::https://github.com/termide/termide/releases/download/0.38.0/termide-0.38.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = fbd992c5e221f2c40577c0f990d78fa93cbad51fbd9497407570702e7b5a6551
+	source_aarch64 = termide-bin-0.38.0-aarch64.tar.gz::https://github.com/termide/termide/releases/download/0.38.0/termide-0.38.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 683bdef8589bbe9b4b3cc8b4a4ab53c423c5d9e11cec625bd2a5b16c430c6580
 
 pkgname = termide-bin
