@@ -1,6 +1,6 @@
 pkgbase = newsflash-git
 	pkgdesc = The spiritual successor to FeedReader
-	pkgver = 2694.b432feb1
+	pkgver = 2943.6a1dcda2
 	pkgrel = 1
 	url = https://gitlab.com/news-flash/news_flash_gtk
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = newsflash-git
 	depends = graphene
 	depends = gstreamer
 	depends = gtk4
+	depends = gtksourceview5
 	depends = hicolor-icon-theme
 	depends = libadwaita
 	depends = libclapper

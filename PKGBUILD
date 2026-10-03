@@ -2,7 +2,7 @@
 
 pkgname=newsflash-git
 _pkgname=news_flash_gtk
-pkgver=2694.b432feb1
+pkgver=2943.6a1dcda2
 pkgrel=1
 pkgdesc="The spiritual successor to FeedReader"
 arch=('x86_64')
@@ -15,6 +15,7 @@ depends=(
   graphene
   gstreamer
   gtk4
+  gtksourceview5
   hicolor-icon-theme
   libadwaita
   libclapper
