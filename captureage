@@ -15,6 +15,7 @@ Install and launch the game through Steam at least once before using this comman
 
 Protontricks supports STEAM_DIR, PROTON_VERSION and STEAM_COMPAT_DATA_PATH
 for custom Steam installations, Proton versions and prefixes.
+The launcher automatically repairs a missing or invalid CaptureAge game path.
 EOF
     exit 0
     ;;
@@ -30,6 +31,11 @@ EOF
     shift
     ;;
 esac
+
+# Let Protontricks resolve the same game library and prefix used for launch.
+# This check only edits user settings and does not need Wine or Steam Runtime.
+protontricks --no-runtime --no-background-wineserver -c \
+  'python3 /usr/share/captureage/configure_game.py' 813780
 
 cd /opt/captureage
 exec protontricks-launch --appid 813780 /opt/captureage/CaptureAge.exe "$@"

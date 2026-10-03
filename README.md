@@ -5,7 +5,7 @@ Upstream ships an x86-64 Windows application. This package extracts
 the official offline payload to `/opt/captureage` and launches it with
 Protontricks in Age of Empires II: Definitive Edition's Steam prefix
 (App ID `813780`). Linux compatibility depends on your Proton version;
-the packaged launcher has not been tested in a live game session.
+startup has been verified, but replay playback has not been tested in a live game session.
 
 ## Build and install
 
@@ -29,11 +29,21 @@ files; they do not run Windows binaries or modify a Wine/Proton prefix.
    in the game's Compatibility settings, and launch the game at least once.
 2. Keep Steam open. Start the game, then launch **CaptureAge** from the
    application menu or run `captureage` in a terminal.
-3. If CaptureAge cannot find the game assets, select the actual `AoE2DE`
-   installation directory in its settings. Wine's `Z:` drive exposes Linux
-   paths, for example
-   `Z:\home\YOUR_USER\.local\share\Steam\steamapps\common\AoE2DE`.
-   Use the actual library path if the game is on another drive.
+3. Before each launch, the launcher uses Protontricks to locate the game's
+   Steam library and selected Proton prefix, including libraries on other
+   drives and custom `STEAM_DIR` or `STEAM_COMPAT_DATA_PATH` settings.
+   If CaptureAge's saved game directory is missing or invalid, it sets
+   `lastUsedGameDirectory` to the actual installation through the prefix's
+   Wine drive mappings. This also prepares the setting on first launch.
+   A valid existing game directory is preserved. Existing settings are backed
+   up beside `persistedState_prod.json` as `persistedState_prod.json.backup-*`
+   before a repair, and all other settings are retained.
+
+The check runs as the launching user, rather than during package build or
+installation. If the game files, drive mapping or prefix are unavailable,
+or the settings JSON is malformed, it reports an error and stops the launch
+without replacing the existing settings. Mount the Steam library and launch
+the game through Steam at least once before trying again.
 
 To enable the in-game **Spectate with CA** button, close the game and run:
 
@@ -108,7 +118,7 @@ This is one source repository for both destinations:
 
 - GitHub `main` contains packaging, maintenance scripts, tests and workflows.
 - AUR `master` contains only `PKGBUILD`, `.SRCINFO`, the launcher, desktop
-  entry, registry file, license and this README. Its Git history is preserved.
+  entry, game-path helper, registry file, license and this README. Its Git history is preserved.
 
 [Update and publish CaptureAge](https://github.com/Firstp1ck/captureage-bin/blob/main/.github/workflows/update.yml) runs daily at
 03:17 UTC and can also be started from GitHub's Actions tab. On a new upstream
