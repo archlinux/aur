@@ -1,6 +1,6 @@
 pkgbase = rox-player
 	pkgdesc = Fast, composable music player written in rust (foobar2000 for the current year)
-	pkgver = 1.29.2
+	pkgver = 1.29.4
 	pkgrel = 1
 	url = https://github.com/zealsprince/rox
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = rox-player
 	provides = rox
 	conflicts = rox-player-git
 	options = !lto
-	source = rox-player-1.29.2.tar.gz::https://github.com/zealsprince/rox/archive/refs/tags/v1.29.2.tar.gz
-	sha256sums = 4411f525c32f7e4e32c2a56ac23003fe238845282a784f1eed6351683a210a81
+	source = rox-player-1.29.4.tar.gz::https://github.com/zealsprince/rox/archive/refs/tags/v1.29.4.tar.gz
+	sha256sums = 514d3e490fc1be57b0340f0ec325a9f67ef6bdeaa571ad5977fb0a5e567210f2
 
 pkgname = rox-player
