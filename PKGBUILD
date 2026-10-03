@@ -1,7 +1,7 @@
 # Maintainer: Sohrab Behdani <behdanisohrab@gmail.com>
 pkgname=zedsecure-bin
-pkgver=3.1.2
-pkgrel=2
+pkgver=3.1.3
+pkgrel=1
 pkgdesc="ZedSecure VPN client"
 arch=('x86_64')
 url="https://github.com/CluvexStudio/ZedSecure"
@@ -29,8 +29,8 @@ depends=(
     'xdg-utils'
 )
 makedepends=('zstd')
-source=("${pkgname}-${pkgver}-amd64.deb::https://github.com/CluvexStudio/ZedSecure/releases/download/desktop-v${pkgver}/ZedSecure-${pkgver}-amd64.deb")
-sha256sums=('76b9d2525d5a53bc923705c9f3e320d9d5f88d3cd82f0dc69f356bc623b4fcf4')
+source=("${pkgname}-${pkgver}-amd64.deb::https://github.com/CluvexStudio/ZedSecure/releases/download/v${pkgver}/ZedSecure-${pkgver}-amd64.deb")
+sha256sums=('1a90eb73a77f476ef257707acbe4d825a97162aa4c8f1f46dc68bf5f4e90fd2e')
 noextract=("${pkgname}-${pkgver}-amd64.deb")
 
 package() {
