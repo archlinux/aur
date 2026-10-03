@@ -1,0 +1,21 @@
+pkgbase = xwww-bin
+	pkgdesc = Efficient animated wallpaper daemon for Wayland, controlled at runtime (prebuilt binaries)
+	pkgver = 0.13.1
+	pkgrel = 1
+	url = https://github.com/x-ports/xwww
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = lz4
+	provides = xwww
+	conflicts = xwww
+	conflicts = xwww-git
+	options = !strip
+	options = !debug
+	source_x86_64 = xwww-v0.13.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/x-ports/xwww/releases/download/v0.13.1/xwww-v0.13.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = eae64ca1406b05f93651242e864709ea49a91c60d86e4f8762de285f07b44264
+	source_aarch64 = xwww-v0.13.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/x-ports/xwww/releases/download/v0.13.1/xwww-v0.13.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e394676286df620fabc6c7a2399305497e68a39fd210da95cb1e4f2530bdfd7c
+
+pkgname = xwww-bin
