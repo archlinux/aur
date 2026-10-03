@@ -1,0 +1,26 @@
+pkgbase = xwww-git
+	pkgdesc = Efficient animated wallpaper daemon for Wayland, controlled at runtime (git)
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/x-ports/xwww
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	makedepends = pkgconf
+	makedepends = clang
+	makedepends = wayland
+	makedepends = wayland-protocols
+	makedepends = scdoc
+	depends = glibc
+	depends = lz4
+	depends = ffmpeg
+	provides = xwww
+	conflicts = xwww
+	conflicts = xwww-bin
+	source = git+https://github.com/x-ports/xwww.git
+	sha256sums = SKIP
+
+pkgname = xwww-git
