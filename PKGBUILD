@@ -1,6 +1,6 @@
 # Maintainer: @kjlsai <zhangjian@sipeed.com>
 pkgname=picoclaw
-pkgver=0.2.9
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Ultra-Efficient AI Assistant in Go"
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64' 'loong64')
@@ -9,12 +9,12 @@ license=('MIT')
 options=('!debug')
 install=picoclaw.install
 depends=('glibc' 'ca-certificates' 'libolm')
-makedepends=('go>=1.25' 'nodejs' 'pnpm')
+makedepends=('go>=1.25.11' 'nodejs' 'pnpm')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/sipeed/picoclaw/archive/refs/tags/v${pkgver}.tar.gz"
     'picoclaw.service'
 )
-sha256sums=('e0e1dd419c836255c2db30739c3ed1cd340275d34a896bbcb6f8627aec6dcca0'
+sha256sums=('df66f2f9a6fecf6f1396311b4a7881afc34d5f4209e2bebd6d91fb2b142d78d0'
             '4a982c31b007b6c787b14d05f60b01aaf242d5dd73fa3e273df895c9115f0ec8')
 
 build() {
@@ -37,7 +37,7 @@ build() {
     popd >/dev/null
 
     go build -buildvcs=false -trimpath -tags stdjson -ldflags "$ldflags" -o picoclaw ./cmd/picoclaw
-    go build -buildvcs=false -trimpath -tags stdjson -ldflags "-s -w" -o picoclaw-launcher ./web/backend
+    go build -buildvcs=false -trimpath -tags stdjson -ldflags "$ldflags" -o picoclaw-launcher ./web/backend
 }
 
 package() {
