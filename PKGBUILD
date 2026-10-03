@@ -22,9 +22,9 @@ pkgname=paseo-desktop-git-bin
 # consistent build: pkgver must derive the _asset that is actually on the
 # release, and _commit/_bin_sha must be that same build. Do not hand-edit
 # one of the three in isolation.
-pkgver=0.11.0.beta.3.r13.g5293ddac3
+pkgver=0.11.0.beta.3.r20.g5c1be59b6
 pkgrel=2
-_commit='5293ddac3f17f35ea090b292447ec0498edafafe'
+_commit='5c1be59b68cf48545c93326cbf6137e1289961ca'
 # Drop the .rN.gSHA git-describe suffix, then turn the prerelease separator
 # dot into a dash (0.9.0.beta.2 -> 0.9.0-beta.2). Only that one dot is
 # touched, so a version without a suffix or without a prerelease is left
@@ -35,10 +35,10 @@ if ! printf '%s' "$_asset_ver" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.]
 	error "paseo-desktop-git-bin: cannot derive a release version from pkgver='$pkgver' (got '$_asset_ver'); refusing to guess an asset name"
 fi
 _asset="Paseo-${_asset_ver}-x64.tar.gz"
-_bin_sha='a45c129fe402ae61247d84df3b89870f94ace58f90b8b48d730cbfd176d002bf'
+_bin_sha='599498fe540b28e4a0c638aed616e6b366c349b5807e4d6ad29f0a31bc6b044a'
 _icon_sha='585d202ff6a6e41bcd5c7464a1c4889b78977cea000f7b88ba1f67f3d9fff0bd'
 _pkgdesc_base='One interface for all your Claude Code, Codex and OpenCode agents.'
-pkgdesc='One interface for all your Claude Code, Codex and OpenCode agents. (built from main 2026-10-03 @5293dda)'
+pkgdesc='One interface for all your Claude Code, Codex and OpenCode agents. (built from main 2026-10-03 @5c1be59)'
 arch=('x86_64')
 url="https://paseo.sh"
 license=("Apache-2.0")
