@@ -1,7 +1,7 @@
 # Maintainer: psychosomat <hello@ddark.dev>
 
 pkgname=openscreen
-pkgver=1.13.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Create stunning demos for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio."
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     "openscreen-${pkgver}.pacman::https://github.com/getopenscreen/openscreen/releases/download/v${pkgver}/Openscreen-Linux-${pkgver}.pacman"
     "openscreen-LICENSE::https://github.com/getopenscreen/openscreen/raw/v${pkgver}/LICENSE"
 )
-sha256sums=('f2356d9e5c4c0a56ef44b5f6d4bb6a0489feb7fe0d80cfa60e7c2d4c4e743625' '0b7901acee37b04fc948fa01ac25a9d283f78900a43f0f9062a7759cb6bbaa5b')
+sha256sums=('61842d12c1ee19913cebe41b8002f58a6c8ae9e8b1ad54e6f7b43dbd230aa9db' '0b7901acee37b04fc948fa01ac25a9d283f78900a43f0f9062a7759cb6bbaa5b')
 
 package() {
     local extractdir="$srcdir/pacman-extract"
