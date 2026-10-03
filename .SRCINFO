@@ -1,21 +1,32 @@
 pkgbase = fortune-mod-off
 	pkgdesc = The Fortune Cookie Program from BSD games, with the offensive quotes added back in
-	pkgver = 3.26.0
+	pkgver = 3.26.1
 	pkgrel = 1
 	url = https://www.shlomifish.org/open-source/projects/fortune-mod/
 	arch = x86_64
 	license = BSD-4-Clause-UC
+	makedepends = git
 	makedepends = cmake
 	makedepends = rinutils
+	makedepends = perl-path-tiny
+	makedepends = perl-app-docmake
+	makedepends = libxslt
+	makedepends = docbook-xsl
 	depends = glibc
 	depends = recode
 	provides = fortune-mod
 	conflicts = fortune-mod
-	source = https://github.com/shlomif/fortune-mod/releases/download/fortune-mod-3.26.0/fortune-mod-3.26.0.tar.xz
+	source = fortune-mod-off::git+https://github.com/shlomif/fortune-mod#tag=fortune-mod-3.26.1
+	source = github.com-shlomif-rinutils::git+https://github.com/shlomif/rinutils
+	source = https://github.com/shlomif/shlomif-cmake-modules/raw/2fa3e9be1a1df74ad0e10f0264bfa60e1e3a755c/shlomif-cmake-modules/Shlomif_Common.cmake
 	source = not-a-game.patch
-	sha512sums = 6a83378e24bce81c7357714ad79fd04237733bde0ce04061058ccfc24c8468c9ace62181c10213761b05a77b17f8b58d4a61e2a6aa63425d6048b4d8e91e7941
+	sha512sums = 8babf459f3156c9488e5f08d2b826b434c6dd94ca9e85e96abd267a3e8443cdc947ef03f563fc1e9fde9ca1594c8363de6a71a786239a11f471c671aa5691630
+	sha512sums = SKIP
+	sha512sums = 2a0f753842c3e3956de18884045b462c671c759f7c3df07a89b7b2a92c11e786f71e6f0d0bd45df5066169997a6485fe2f8854dafaee94aad0ca2c9876e06985
 	sha512sums = c4ef10c6d7bdb15ceec020d27e11c489ff56ed573b7efc0cf7465026514f153f789444cd7e2996d0fd9bb0f923c4eeeaf0eaa46a0bfacbc36712917e4f5d6c04
-	b2sums = 25a63679bf771e1d89b1aa5df428a6f2ec107d2d4bca29b0eefdc6048a4b0765e5b1d976909d74c1e665bcf48578a3e9bee6957db2ccbc947cb72e1cb46f8aca
+	b2sums = ecdae64ee03967d159118b2de092b457cbc45908be9a095b3dbc41fe54fcbc08a593278386047a7f60806e3268a2713c43f75792395f8aa3f32e09a0a59fa4ec
+	b2sums = SKIP
+	b2sums = f70d16701e4da7db31c67b1e5fc78159528c381f7675d91906cc18ff9a390ec66dbbbe3382b54d617afd6681a05a459750221b416f8dcb586ab6270926743e2f
 	b2sums = 5283fde623cd0d304f073d59ff648d671323d8638876c629e8e8f175de00c3d9a1f807f0a9dfce3d9c9a56299dc1824062b013a4ce0541ee5fcea97c53f6ecec
 
 pkgname = fortune-mod-off
