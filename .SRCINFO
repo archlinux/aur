@@ -1,7 +1,7 @@
 pkgbase = badapple-hd
 	pkgdesc = Play badapple in your terminal in the highest quality possible!
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Raj-1727/badapple-hd
 	arch = any
 	license = MIT

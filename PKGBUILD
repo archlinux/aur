@@ -1,6 +1,6 @@
 pkgname=badapple-hd
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Play badapple in your terminal in the highest quality possible!"
 arch=('any')
 url="https://github.com/Raj-1727/badapple-hd"
