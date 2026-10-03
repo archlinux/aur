@@ -34,9 +34,6 @@ pkgver() {
 prepare() {
   # Fix missing FULL RELRO on mold-wrapper.so
   sed -i '/command.arg("-ldl")/ s/arg.*/args(["-ldl", "-Wl,-z,relro,-z,now"]);/' "$_reponame"/build.rs
-
-  # Enable ThinLTO for release binary.
-  #sed -i '/\[profile.release\]/ a\lto = "thin"'  "$_reponame"/Cargo.toml
 }
 
 build() {
