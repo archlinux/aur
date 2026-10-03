@@ -1,6 +1,6 @@
 pkgbase = zapfast
 	pkgdesc = Fast native WhatsApp client built with Rust and egui
-	pkgver = 0.18.2
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://zapfast.rocks
 	install = zapfast.install
@@ -34,7 +34,7 @@ pkgbase = zapfast
 	replaces = fastsapp
 	options = !debug
 	options = !lto
-	source = zapfast-0.18.2.tar.gz::https://github.com/crmne/zapfast/archive/refs/tags/v0.18.2.tar.gz
-	sha256sums = 85e784d988dfa085f1e38959607d64d77d017376e5f561649d6e589a931d91e2
+	source = zapfast-0.19.0.tar.gz::https://github.com/crmne/zapfast/archive/refs/tags/v0.19.0.tar.gz
+	sha256sums = e15fab081c47f1823b3e252b56e64a08d154d7fcc8d4b1f42713d113902bb4c6
 
 pkgname = zapfast
