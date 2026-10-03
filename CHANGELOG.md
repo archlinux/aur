@@ -11,6 +11,17 @@ If this project saves you or your company time, consider [sponsoring](https://gi
 
 - A mount wizard
 
+## [2.23.0] - 2026-10-02
+
+### Added
+- Mount Unit Creation Wizard
+
+### Changed
+- Ukrainian translation
+
+### Fixed
+- Various Creation Wizard Issues
+
 ## [2.22.1] - 2026-09-14
 
 ### Changed
@@ -32,7 +43,8 @@ If this project saves you or your company time, consider [sponsoring](https://gi
 - Option to toggle display unit's active state between text or icon
 
 ### Changed
-- [Issue 70](https://github.com/plrigaux/sysd-manager/issues/70) Change sort order of columns "Unit File State" and "Load State"
+- [Issue 70](https://github.com/plrigaux/sysd-manager/issues/70) Change sort order of columns "Unit File State" and
+"Load State"
 - Set default bus selection to "System & User session Bus"
 
 ### Fixed
@@ -55,13 +67,15 @@ If this project saves you or your company time, consider [sponsoring](https://gi
 - Improve boot list fetch by a factor 10
 
 ### Fixed
-- [Issue 78](https://github.com/plrigaux/sysd-manager/issues/78) Now display journal events when new events arrives and when originally there were no displayed events
+- [Issue 78](https://github.com/plrigaux/sysd-manager/issues/78) Now display journal events when new events
+arrives and when originally there were no displayed events
 - Fixed some toast messages
 
 ## [2.20.11] - 2026-08-22
 
 ### Fixed
-- [Issue 76](https://github.com/plrigaux/sysd-manager/issues/76) Use the checkbox's label for the Follow option and improve UX
+- [Issue 76](https://github.com/plrigaux/sysd-manager/issues/76) Use the checkbox's label for the Follow option and
+improve UX
 
 ## [2.20.9] - 2026-08-04
 
@@ -490,7 +504,7 @@ when switching Color Scheme Mode (Light and Dark)
 
 ### Fixed
 
-- UI consistency https://github.com/plrigaux/sysd-manager/issues/28
+- UI consistency [Issue 28](https://github.com/plrigaux/sysd-manager/issues/28)
 - Show no unit file when unit isn't selected
 
 ## [2.9.0] - 2025-11-18
@@ -535,27 +549,27 @@ when switching Color Scheme Mode (Light and Dark)
 
 ### Fixed
 
-- Missing Icon in "More..." Button Issue https://github.com/plrigaux/sysd-manager/issues/27
+- Missing Icon in "More..." Button Issue [Issue 27](https://github.com/plrigaux/sysd-manager/issues/27)
 
-## [2.6.4] - 2025-11-5
-
-### Fixed
-
-- Unit journal events displayed twice. Issue https://github.com/plrigaux/sysd-manager/issues/26
-
-## [2.6.3] - 2025-11-4
+## [2.6.4] - 2025-11-05
 
 ### Fixed
 
-- System unit takes precedence on User Session units. Issue https://github.com/plrigaux/sysd-manager/issues/25
+- Unit journal events displayed twice. Issue [Issue 26](https://github.com/plrigaux/sysd-manager/issues/26)
 
-## [2.6.2] - 2025-11-4
+## [2.6.3] - 2025-11-04
+
+### Fixed
+
+- System unit takes precedence on User Session units. Issue [Issue 25](https://github.com/plrigaux/sysd-manager/issues/25)
+
+## [2.6.2] - 2025-11-04
 
 ### Fixed
 
 - UX, extra controls side panel now scrolls
 
-## [2.6.1] - 2025-11-3
+## [2.6.1] - 2025-11-03
 
 ### Added
 
@@ -630,7 +644,7 @@ when switching Color Scheme Mode (Light and Dark)
 
 ### Added
 
-- Journal ANSI color codes parsing and rendering https://github.com/plrigaux/sysd-manager/issues/23
+- Journal ANSI color codes parsing and rendering [Issue 23](https://github.com/plrigaux/sysd-manager/issues/23)
 - Save full browser column context in a user config file
 
 ## [2.0.0] - 2025-10-07
@@ -654,7 +668,7 @@ when switching Color Scheme Mode (Light and Dark)
 
 ### Fixed
 
-- Saving file (without privilege elevation) doesn't overwrite completely the old file. https://github.com/plrigaux/sysd-manager/issues/21
+- Saving file (without privilege elevation) doesn't overwrite completely the old file. [Issue 21](https://github.com/plrigaux/sysd-manager/issues/21)
 
 ## [1.32.2] - 2025-09-11
 
@@ -1121,7 +1135,7 @@ This release worked on unit information
 - Fix Unit info: CGroup now displays all processes
 - Fix Unit dependencies hyperlinks
 
-## [1.8] - 2025-01-08
+## [1.8.0] - 2025-01-08
 
 - New information page "Dependencies" to be able to view and navigate unit's
   dependencies
@@ -1129,7 +1143,7 @@ This release worked on unit information
 - Lazy load journal event
 - Lazy load unit configuration file
 
-## [1.7] - 2025-01-03
+## [1.7.0] - 2025-01-03
 
 ### Added
 
@@ -1137,7 +1151,7 @@ This release worked on unit information
   argument
   (see --help)
 
-## [1.6] - 2024-12-30
+## [1.6.0] - 2024-12-30
 
 - Improve User Experience for the Save file button
 - Reduce needed Flatpak file permissions
@@ -1152,7 +1166,7 @@ This release worked on unit information
 - Unit info now displays Invocation
 - Unit info now displays some gray shade
 
-## [1.4] - 2024-12-19
+## [1.4.0] - 2024-12-19
 
 - Add invocation Id on unit info file
 - Add a filter base on "boot id" for journal events
@@ -1226,22 +1240,21 @@ This release worked on unit information
 
 ## [0.1.7] - 2024-10-03
 
-Update the unit information panel
+- Update the unit information panel
 
 ## [0.1.6] - 2024-08-02
 
-Add a proto preference panel
-
-Release attempt on Flathub
+- Add a proto preference panel
+- Release attempt on Flathub
 
 ## [0.1.3] - 2024-07-15
 
-Make the sub windows modal. i.e. not separated form the main window
+- Make the sub windows modal. i.e. not separated form the main window
 
 ## [0.1.2] - 2024-07-07
 
-Allow filtering on unit type
+- Allow filtering on unit type
 
 ## [0.0.2] - 2024-06-21
 
-First release of Rust Flatpak App
+- First release of Rust Flatpak App

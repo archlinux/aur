@@ -2,7 +2,7 @@
 # Maintainer: Pierre-Luc Rigaux 
 # Contributor: Pierre-Luc Rigaux 
 pkgname=sysd-manager
-pkgver=2.22.2
+pkgver=2.23.0
 pkgrel=1
 pkgdesc="A systemd GUI to manage service, timer, socket and other units."
 arch=("x86_64" "aarch64")
@@ -11,10 +11,10 @@ license=("GPL-3.0-or-later")
 depends=("glib2" "gtk4" "libadwaita" "systemd-libs" "gtksourceview5" "gettext")
 makedepends=("glib2" "cargo" "git")
 changelog=CHANGELOG.md
-_commit=393387aff56993a4a5af0b97e6daab97f6b29d98
+_commit=46fbeb898d96424e61072e4d1f724b7466118783
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plrigaux/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 _pkgsrcdir=$pkgname-$pkgver
-sha256sums=('ad4d6401cee0a9bca1ced2a574e8c4ddc6fa06b2d27f716b1af129b6d8bc5b54')
+sha256sums=('adca7bea16709786dbb3006c1ef58e7ef7653b660a7784e42a7fb583fdd5adae')
 install=$pkgname.install
 
 prepare() {
@@ -50,6 +50,7 @@ package() {
 	install -vDm644 "./data/schemas/io.github.plrigaux.sysd-manager.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas"
 	install -vDm644 "./target/loc/io.github.plrigaux.sysd-manager.desktop" -t "$pkgdir/usr/share/applications"
 	install -vDm644 "./target/loc/io.github.plrigaux.sysd-manager.metainfo.xml" -t "$pkgdir/usr/share/metainfo"
+	install -vDm644 "./data/metainfo/io.github.plrigaux.sysd-manager.releases.xml" -t "$pkgdir/usr/share/metainfo/releases"
 	
 	cp -vr "./target/locale" "$pkgdir/usr/share/" 
 
