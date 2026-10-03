@@ -1,7 +1,7 @@
 # Maintainer: HorneroOS contributors <https://github.com/HorneroOS/greeter>
 pkgname=hornero-greeter
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.0.3
+pkgrel=5
 pkgdesc='HorneroOS SDDM greeter theme (Argentina footage, offline)'
 arch=('any')
 url='https://github.com/HorneroOS/greeter'
@@ -10,12 +10,12 @@ license=('GPL-3.0-only')
 # (see Main.qml / components/*.qml); sddm provides SddmComponents.
 # gst-plugins-good decodes the offline H.264 footage via the QtMultimedia
 # GStreamer backend.
-depends=('sddm' 'qt6-multimedia' 'qt6-declarative' 'gst-plugins-good')
+depends=('sddm' 'qt6-multimedia' 'qt6-declarative' 'gst-plugins-good' 'ttf-rubik-vf')
 optdepends=('hornero-greeter-media-base: Argentina video pack')
 # Named "$pkgname" so the checkout lands at "${srcdir}/$pkgname";
 # package() below only ever reads from there, so AUR chroot builds
 # behave exactly like local packaging/ builds.
-source=("$pkgname::git+https://github.com/HorneroOS/greeter.git#tag=v1.0.2")
+source=("$pkgname::git+https://github.com/HorneroOS/greeter.git#tag=v1.0.3")
 sha256sums=('SKIP')
 
 package() {
@@ -23,7 +23,10 @@ package() {
   install -d "$dest"
   # Theme payload: QML, configs, static fallback (all required).
   install -Dm644 "$src/Main.qml" "${dest}Main.qml"
-  for f in theme.conf theme.conf.user metadata.desktop background.jpg; do
+  # theme.conf.user is an optional administrator override. Shipping a
+  # sample as an active override masks theme.conf defaults on a fresh
+  # install (including the default typeface and login affordance).
+  for f in theme.conf metadata.desktop background.jpg; do
     install -Dm644 "$src/$f" "${dest}$f"
   done
   cp -a "$src/components" "$dest"
