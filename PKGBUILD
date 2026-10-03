@@ -1,7 +1,7 @@
 # Maintainer: xifan <xifan2333@gmail.com>
 pkgname=xrwm-bin
 _pkgname=xrwm
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="A River 0.4 Wayland window manager inspired by river-classic with composable shell CLI configuration"
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('river' 'wayland' 'libxkbcommon')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!strip)
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/xifan2333/xrwm/releases/download/v0.1.11/xrwm-0.1.11-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('2f68329103f57bbcacd5d6a1a9b81b373833d9fc79a9dbffead5c0c1e24fc969')
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/xifan2333/xrwm/releases/download/v0.1.12/xrwm-0.1.12-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('c450e4aa18f544a68d6ee21f9a22d56239509bb7a25f7db6e47dadb0f26401a5')
 
 package() {
 	cd "${srcdir}/xrwm-${pkgver}-x86_64-unknown-linux-gnu"
