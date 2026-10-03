@@ -1,9 +1,9 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=handy
-pkgver=0.9.7
+pkgver=0.9.8
 # git rev-parse "v$pkgver"
-_tag=05e0aedd2906f0d82722735f930465950c476b90
+_tag=14f6f0d31cb22a4268acfbddba3052820fd0a06e
 pkgrel=1
 pkgdesc="Open source and extensible speech-to-text application that works completely offline"
 arch=(x86_64 aarch64)
@@ -52,7 +52,7 @@ source=(
   "$pkgname-$pkgver::git+$url.git#tag=$_tag"
 )
 conflicts=("$pkgname-bin")
-sha256sums=('13d2ebc2a5898af26c284668e77ae588f5fc6074e40c57b1b7eb7c9e3db05071')
+sha256sums=('925ad68fbe8eab941fa8f9a4157bac2692bd19af8d69077cb49ed5d705b385b9')
 
 build() {
   cd "$pkgname-$pkgver"
