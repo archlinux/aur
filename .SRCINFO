@@ -1,6 +1,6 @@
 pkgbase = qo-bin
 	pkgdesc = Interactive minimalist TUI to query JSON, CSV, and TSV using SQL
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/kiki-ki/go-qo
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = qo-bin
 	license = MIT
 	provides = qo
 	conflicts = go-qo
-	source_x86_64 = go-qo-x86_64-0.5.0.tgz::https://github.com/kiki-ki/go-qo/releases/download/v0.5.0/qo_0.5.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 164cbe6c35c3c7ceae7f51584aafdf9b4b1f886dfa52b853e343f6dac9f872f9
-	source_aarch64 = go-qo-aarch64-0.5.0.tgz::https://github.com/kiki-ki/go-qo/releases/download/v0.5.0/qo_0.5.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = a37acd04290c9bb9836b9bc20af3aee8b41fb17901a8b10a922236ea6e3aa2b0
+	source_x86_64 = go-qo-x86_64-0.5.1.tgz::https://github.com/kiki-ki/go-qo/releases/download/v0.5.1/qo_0.5.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9de7754d87a62340bcd2ca25f772205819b0a4387ba64fd5af7cea00f98d8c6e
+	source_aarch64 = go-qo-aarch64-0.5.1.tgz::https://github.com/kiki-ki/go-qo/releases/download/v0.5.1/qo_0.5.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 66a501dba9e08d61060e487d85fab8fbedd71b14dd18d0601483960e13f95286
 
 pkgname = qo-bin
