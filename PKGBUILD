@@ -2,7 +2,7 @@
 
 pkgname=plink2-bin
 _pkgname=plink2
-pkgver=2.0a7.10
+pkgver=2.0a7.11
 pkgrel=1
 pkgdesc="Whole-genome association analysis toolset for large-scale variant data"
 arch=('x86_64')
@@ -12,9 +12,9 @@ provides=("plink2=$pkgver")
 conflicts=('plink2')
 options=('!strip' '!debug')
 source=(
-  "https://s3.amazonaws.com/plink2-assets/alpha7/plink2_linux_x86_64_20260929.zip"
+  "https://s3.amazonaws.com/plink2-assets/alpha7/plink2_linux_x86_64_20261001.zip"
 )
-sha256sums=('671e8d707060ff141ad577a31fc71ef43b96f4dde1ce6e042ebaf27f39c02cc3')
+sha256sums=('c0e64345633dccfd4cfb886dbff720e39e848cf490a51370a659894823a5b2e0')
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
