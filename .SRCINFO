@@ -1,0 +1,19 @@
+pkgbase = crab-on-desk-themes
+	pkgdesc = Clawd, Calico and Cloudling themes for crab-on-desk, rendered locally from clawd-on-desk
+	pkgver = 20261003
+	pkgrel = 1
+	url = https://github.com/rullerzhou-afk/clawd-on-desk
+	arch = any
+	license = LicenseRef-clawd-on-desk-artwork
+	makedepends = git
+	makedepends = rustup
+	makedepends = cmake
+	makedepends = clang
+	makedepends = electron
+	depends = crab-on-desk
+	source = clawd-on-desk::git+https://github.com/rullerzhou-afk/clawd-on-desk.git#commit=782edefc7ebff70d462f326f1354451d1b86ffa3
+	source = crab-on-desk::git+https://github.com/Supernovatux/crab-on-desk.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = crab-on-desk-themes
