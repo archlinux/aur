@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=jadart
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Decompiler for Flutter and Dart AOT snapshots. Recovers the class tree, method bodies, strings and const tables from a stripped libapp.so"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-capstone')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/IR0NBYTE/Jadart/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cb83c063178413d2536b16d0a842454f6d7abc58ba5224dfc276e7502dee5c32')
+sha256sums=('9c90528508f119758918b95e750c88f0c2e3a63000d2214c56e8e3a1f4e28300')
 
 latestver() {
     curl -fsSL "https://api.github.com/repos/IR0NBYTE/Jadart/releases/latest" |
