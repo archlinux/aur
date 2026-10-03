@@ -639,6 +639,13 @@ def load_cached_payload(cache_file: Path, source_id: str) -> list[dict[str, Any]
 
     if not isinstance(cached, dict) or not isinstance(cached.get("payload"), list):
         raise SubscriptionError(f"来源 {source_id} 的缓存格式无效：{cache_file}")
+    if not cached["payload"] or any(
+        not isinstance(node, dict)
+        or not isinstance(node.get("name"), str) or not node["name"].strip()
+        or not isinstance(node.get("type"), str) or not node["type"].strip()
+        for node in cached["payload"]
+    ):
+        raise SubscriptionError(f"来源 {source_id} 的缓存节点无效：{cache_file}")
 
     return cached["payload"]
 
@@ -1368,14 +1375,20 @@ def find_profile(sources: list[dict[str, Any]], profile_id: str) -> dict[str, An
 
 
 def select_profile(control: dict[str, Any], profile_id: str) -> dict[str, Any]:
+    return select_profiles(control, [profile_id])
+
+
+def select_profiles(control: dict[str, Any], profile_ids: list[str]) -> dict[str, Any]:
+    if not profile_ids:
+        raise SubscriptionError("至少选择一个订阅")
+    if len(set(profile_ids)) != len(profile_ids):
+        raise SubscriptionError("不能重复选择同一个订阅")
+    _, sources = validate_control_inventory(control)
+    for profile_id in profile_ids:
+        find_profile(sources, profile_id)
     selected = copy.deepcopy(control)
-    found = False
     for source in selected["sources"]:
-        enabled = source.get("id") == profile_id
-        source["enabled"] = enabled
-        found = found or enabled
-    if not found:
-        raise SubscriptionError(f"订阅档案不存在：{profile_id}")
+        source["enabled"] = source["id"] in profile_ids
     return selected
 
 
@@ -1384,6 +1397,8 @@ def build_profile_candidate(
     sources: list[dict[str, Any]],
     secrets_file: Path,
     overrides: dict[str, str] | None = None,
+    *,
+    strict: bool = True,
 ) -> tuple[bytes, dict[str, bytes]]:
     original_environment = os.environ.copy()
     try:
@@ -1393,7 +1408,7 @@ def build_profile_candidate(
         provider_bytes, cache_candidates, _ = build_candidate(
             settings,
             sources,
-            strict=True,
+            strict=strict,
         )
         return provider_bytes, cache_candidates
     finally:
@@ -1615,7 +1630,7 @@ def command_subscription_replace(
             runtime_changed=runtime_changed,
         )
         if create:
-            log(f"已添加并切换到订阅：{profile_id}")
+            log(f"订阅 {profile_id} 已保存，尚未启用；请通过 subscription select 或 manage 选择启用")
         elif activate:
             log(f"已更新并切换到订阅：{profile_id}")
         elif runtime_changed:
@@ -1635,18 +1650,23 @@ def command_subscription_use(args: argparse.Namespace) -> int:
         if args.secrets_file is None:
             raise SubscriptionError("subscription 命令必须使用订阅密钥文件")
         control = load_yaml(args.control_file)
-        settings, sources = validate_control_inventory(control)
-        find_profile(sources, args.profile_id)
-        candidate_control = select_profile(control, args.profile_id)
+        combining = args.subscription_action == "select"
+        profile_ids = args.profile_ids if combining else [args.profile_id]
+        candidate_control = select_profiles(control, profile_ids)
         settings, active_sources = validate_control_file(candidate_control)
+        options = {"strict": False} if combining else {}
         provider_bytes, cache_candidates = build_profile_candidate(
             settings,
             active_sources,
             args.secrets_file,
+            **options,
         )
         validate_with_mihomo(settings, provider_bytes)
+        selected_label = "、".join(source["id"] for source in active_sources)
+        node_count = len(yaml.safe_load(provider_bytes)["proxies"])
+        log(f"目标订阅：{selected_label}；合计 {node_count} 个节点，核心校验通过")
         if args.dry_run:
-            log(f"订阅 {args.profile_id} 切换校验成功；dry-run 未修改任何文件")
+            log("dry-run 未修改任何文件")
             return 0
         provider_file = commit_profile_candidate(
             args,
@@ -1657,7 +1677,7 @@ def command_subscription_use(args: argparse.Namespace) -> int:
             secret_value=None,
             runtime_changed=True,
         )
-        log(f"已切换到订阅：{args.profile_id}")
+        log(f"已启用订阅：{selected_label}")
         log(f"provider 文件：{provider_file}")
         return 0
     finally:
@@ -1678,16 +1698,17 @@ def profile_cache_count(settings: dict[str, Any], profile_id: str) -> str:
         return "invalid"
 
 
-def print_subscription_profiles(control: dict[str, Any]) -> None:
+def print_subscription_profiles(control: dict[str, Any], *, numbered: bool = False) -> None:
     settings, sources = validate_control_inventory(control)
     enabled_count = sum(bool(source.get("enabled", True)) for source in sources)
-    print("ID\t状态\t缓存节点")
-    for source in sources:
+    print(("编号\t" if numbered else "") + "ID\t状态\t缓存节点")
+    for index, source in enumerate(sources, start=1):
         if bool(source.get("enabled", True)):
             status = "当前" if enabled_count == 1 else "已启用(聚合)"
         else:
             status = "未启用"
-        print(f"{source['id']}\t{status}\t{profile_cache_count(settings, source['id'])}")
+        prefix = f"{index}\t" if numbered else ""
+        print(f"{prefix}{source['id']}\t{status}\t{profile_cache_count(settings, source['id'])}")
 
 
 def command_subscription_list(args: argparse.Namespace) -> int:
@@ -1766,21 +1787,40 @@ def command_subscription_remove(args: argparse.Namespace) -> int:
 def command_subscription_manage(args: argparse.Namespace) -> int:
     if not sys.stdin.isatty():
         raise SubscriptionError("订阅管理菜单需要交互终端；脚本请使用具体子命令")
-    print_subscription_profiles(load_yaml(args.control_file))
-    print("\n[a] 添加  [u] 切换  [e] 编辑  [r] 删除  [q] 退出")
+    control = load_yaml(args.control_file)
+    print_subscription_profiles(control, numbered=True)
+    print("\n[a] 添加（仅保存）  [s] 选择启用组合  [u] 单订阅切换  [e] 编辑  [r] 删除  [q] 退出")
     choice = input("请选择操作：").strip().lower()
-    actions = {"a": "add", "u": "use", "e": "edit", "r": "remove"}
+    actions = {"a": "add", "s": "select", "u": "use", "e": "edit", "r": "remove"}
     if choice in ("", "q"):
         log("已退出，未修改任何文件")
         return 0
     action = actions.get(choice)
     if action is None:
         raise SubscriptionError(f"未知菜单选项：{choice}")
-    profile_id = input("订阅 ID：").strip()
-    profile_env_name(profile_id)
     nested = argparse.Namespace(**vars(args))
     nested.subscription_action = action
-    nested.profile_id = profile_id
+    if action == "select":
+        selection = input("要启用的订阅编号（空格分隔；留空或 q 取消）：").strip()
+        if not selection or selection.lower() == "q":
+            log("已取消，未修改任何文件")
+            return 0
+        _, sources = validate_control_inventory(control)
+        tokens = selection.split()
+        if any(not re.fullmatch(r"[0-9]+", token) for token in tokens):
+            raise SubscriptionError("订阅编号必须是列表中的数字")
+        indexes = [int(token) for token in tokens]
+        if any(index < 1 or index > len(sources) for index in indexes):
+            raise SubscriptionError("订阅编号不在列表中")
+        nested.profile_ids = [sources[index - 1]["id"] for index in indexes]
+        selected = select_profiles(control, nested.profile_ids)
+        label = "、".join(s["id"] for s in selected["sources"] if s["enabled"])
+        if not ask_yes_no(f"启用组合 {label}，停用其余订阅？", default=False):
+            log("已取消，未修改任何文件")
+            return 0
+    else:
+        nested.profile_id = input("订阅 ID：").strip()
+        profile_env_name(nested.profile_id)
     nested.subscription_url = None
     nested.converter = "direct"
     nested.dry_run = False
@@ -1808,7 +1848,7 @@ def command_subscription(args: argparse.Namespace) -> int:
             args,
             profile_id=args.profile_id,
             create=True,
-            activate=True,
+            activate=False,
         )
     if action == "edit":
         return command_subscription_replace(
@@ -1817,7 +1857,7 @@ def command_subscription(args: argparse.Namespace) -> int:
             create=False,
             activate=False,
         )
-    if action == "use":
+    if action in ("use", "select"):
         return command_subscription_use(args)
     if action == "remove":
         return command_subscription_remove(args)
@@ -2290,13 +2330,13 @@ def build_parser() -> argparse.ArgumentParser:
     )
     subscription_actions = subscription_parser.add_subparsers(
         dest="subscription_action",
-        metavar="{manage,list,add,use,edit,remove}",
+        metavar="{manage,list,add,use,select,edit,remove}",
     )
     subscription_actions.add_parser("manage", help="打开订阅档案交互管理菜单")
     subscription_actions.add_parser("list", help="列出订阅档案，不显示 URL")
 
     for action, help_text in (
-        ("add", "添加订阅并在校验成功后立即切换"),
+        ("add", "下载、校验并保存订阅，不自动启用"),
         ("edit", "修改指定订阅；非活动档案不改变运行节点"),
     ):
         action_parser = subscription_actions.add_parser(action, help=help_text)
@@ -2325,22 +2365,23 @@ def build_parser() -> argparse.ArgumentParser:
             help="成功后不重载 Mihomo",
         )
 
-    use_parser = subscription_actions.add_parser(
-        "use", help="严格刷新并切换到指定订阅"
-    )
-    use_parser.add_argument("profile_id", metavar="ID")
-    use_parser.add_argument(
-        "--dry-run",
-        action="store_true",
-        default=argparse.SUPPRESS,
-        help="只下载和校验，不修改任何文件",
-    )
-    use_parser.add_argument(
-        "--no-reload",
-        action="store_true",
-        default=argparse.SUPPRESS,
-        help="成功后不重载 Mihomo",
-    )
+    for action, help_text in (
+        ("use", "严格刷新并切换到单个订阅"),
+        ("select", "选择启用组合，获取失败时使用缓存；停用其余订阅"),
+    ):
+        action_parser = subscription_actions.add_parser(action, help=help_text)
+        if action == "select":
+            action_parser.add_argument("profile_ids", metavar="ID", nargs="+")
+        else:
+            action_parser.add_argument("profile_id", metavar="ID")
+        action_parser.add_argument(
+            "--dry-run", action="store_true", default=argparse.SUPPRESS,
+            help="只下载和校验，不修改任何文件",
+        )
+        action_parser.add_argument(
+            "--no-reload", action="store_true", default=argparse.SUPPRESS,
+            help="成功后不重载 Mihomo",
+        )
 
     remove_parser = subscription_actions.add_parser(
         "remove", help="删除非活动订阅档案（main 除外）"

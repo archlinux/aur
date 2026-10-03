@@ -13,8 +13,8 @@ settings:
   max_download_bytes: 8388608
 
 sources:
-  # 可保存多个档案；add/use 会把目标设为 true、其余设为 false。
-  # 普通 update 仍会处理所有 enabled 来源，以兼容旧的聚合配置。
+  # add 仅保存；select ID [ID ...] 启用所选组合，其余设为 false。
+  # use ID 仍独占启用单个档案；普通 update 和定时更新处理所有 enabled 来源。
   - id: main
     enabled: false
     url_env: MIHOMO_SUB_MAIN

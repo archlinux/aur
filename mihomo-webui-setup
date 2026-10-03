@@ -56,10 +56,11 @@ show_help() {
   mihomo-webui-setup subscription --converter direct  # 迁移旧转换设置
   mihomo-webui-setup subscription --dry-run
 
-管理多个订阅档案（一次只使用一个）：
+管理多个订阅档案（可组合启用）：
   mihomo-webui-setup subscription manage
   mihomo-webui-setup subscription list
-  mihomo-webui-setup subscription add ID
+  mihomo-webui-setup subscription add ID  # 校验并保存，不自动启用
+  mihomo-webui-setup subscription select ID [ID ...]  # 启用所选组合，停用其余
   mihomo-webui-setup subscription use ID
   mihomo-webui-setup subscription edit ID
   mihomo-webui-setup subscription remove ID
