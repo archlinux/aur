@@ -1,6 +1,6 @@
 # Maintainer: Dustin Pilgrim
 # Author: Dustin Pilgrim
-# License: MIT
+# License: GPL-3.0-only
 
 pkgname=stasis-git
 pkgver=1.3.0.r0.gb43675d
@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="A modern Wayland idle manager designed for simplicity and effectiveness (git version)"
 arch=('x86_64')
 url="https://github.com/saltnpepper97/stasis"
-license=('MIT')
+license=('GPL-3.0-only')
 
 depends=('systemd' 'dbus' 'libinput' 'wayland')
 makedepends=('git' 'cargo' 'rust')
