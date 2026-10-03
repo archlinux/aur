@@ -1,32 +1,39 @@
 # Maintainer: Cody Schafer <aur at codyps com>
 # Maintainer: dequis <dx@dxzone.com.ar>
 # Previous maintainer: Joel Teichroeb <joel@teichroeb.net>
+# Contributor: SandaruKasa <sandarukasa plus aur at ya dot ru>
 
 pkgname=rr-multilib
-pkgver=5.6.0
+pkgver=5.9.0
 pkgrel=1
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64)
 url='http://rr-project.org/'
 license=('custom')
-depends=('gdb' 'capnproto' 'lib32-gcc-libs')
-makedepends=('git' 'cmake' 'gdb' 'ninja')
+depends=('gdb' 'capnproto' 'gcc-libs' 'glibc' 'perf' 'zlib' 'lib32-gcc-libs')
+optdepends=(
+  'python: for rr-collect-symbols.py'
+  'bash: for signal-rr-recording.sh'
+)
+makedepends=('git' 'cmake' 'ninja' 'patch' 'pkg-config')
 options=(!strip)
 conflicts=(rr)
-provides=(rr)
+provides=("rr=$pkgver")
 
 source=(
 	rr-$pkgver.tar.gz::https://github.com/rr-debugger/rr/archive/${pkgver}.tar.gz
+    6251648873b9e1ed23536beebbaa5d6fead3d5be.diff
 )
-sha1sums=('9a047cbd1c47ef1585293ba090c5cd2d56519fa6')
+sha1sums=('3875953ac5cfff02c029b2c10a4d8addd39d20e1'
+          '9c34d1723ae235093b0d3bdde6ffcd66382f05c3')
 
 prepare() {
-	cd rr-$pkgver
-	mkdir -p build
+    cd "${srcdir}/rr-${pkgver}"
+
+    patch -Np1 -i "${srcdir}/6251648873b9e1ed23536beebbaa5d6fead3d5be.diff"
 }
 
 build() {
-	cd rr-$pkgver/build
 	cmake \
 		-GNinja \
 		-DCMAKE_BUILD_TYPE=plain \
@@ -34,18 +41,20 @@ build() {
 		-DBUILD_TESTS=OFF \
 		-DWILL_RUN_TESTS=OFF \
 		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DCMAKE_CXX_STANDARD=14 \
-		..
+		-DCMAKE_CXX_STANDARD=17 \
+		-Wno-dev \
+		-B build \
+		-S "rr-$pkgver"
 
-	cmake --build .	 -- -v
+	cmake --build build
 }
 
 package() {
-	cd rr-$pkgver/build
-	DESTDIR="${pkgdir}" cmake --build . -- -v install
+	DESTDIR="${pkgdir}" cmake --build build -- -v install
 	if check_option 'debug' n; then
 		find "${pkgdir}/usr/bin" -type f -executable -exec strip $STRIP_BINARIES {} + || :
 	fi
-	cd ..
-	install -D LICENSE "${pkgdir}/usr/share/licenses/rr/LICENSE"
+	install -D "rr-$pkgver"/LICENSE "${pkgdir}/usr/share/licenses/rr/LICENSE"
+	install -D "rr-$pkgver"/scripts/zen_workaround.service "${pkgdir}/usr/lib/systemd/system/zen_workaround.service"
+	install -D "rr-$pkgver"/scripts/zen_workaround.py "${pkgdir}/usr/share/zen_workaround/zen_workaround.py"
 }
