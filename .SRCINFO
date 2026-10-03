@@ -1,6 +1,6 @@
 pkgbase = python-guidata
 	pkgdesc = guidata: Automatic GUI generation for easy dataset editing and display with Python
-	pkgver = 3.14.2
+	pkgver = 3.15.1
 	pkgrel = 1
 	url = https://github.com/PlotPyStack/guidata
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-guidata
 	depends = python-numpy
 	depends = python-qtpy
 	depends = python-requests
-	depends = python-tomli
+	depends = python-dateutil
 	depends = python-pandas
 	depends = python-beautifulsoup4
 	depends = python-pillow
@@ -22,7 +22,7 @@ pkgbase = python-guidata
 	optdepends = spyder: GUI-based test launcher, dict/array editor
 	optdepends = python-sphinx: for building documentation
 	optdepends = python-pytest: for running tests
-	source = guidata-3.14.2.tar.gz::https://github.com/PlotPyStack/guidata/archive/refs/tags/v3.14.2.tar.gz
-	sha256sums = e69388c9831c164f71e918cde0193a7e37cbbfa9b896a72b7b5d75020381c51d
+	source = guidata-3.15.1.tar.gz::https://github.com/PlotPyStack/guidata/archive/refs/tags/v3.15.1.tar.gz
+	sha256sums = 44a831db44d02f376fbfcdcc933263cccdf02e26fd7d9bb818e13d31f99831f6
 
 pkgname = python-guidata
