@@ -1,6 +1,6 @@
 pkgbase = evolution-sieve-filters
 	pkgdesc = Evolution plugin to manage server-side Sieve filters
-	pkgver = 0.4.7
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/cyr-ius/evolution-sieve-filters
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = evolution-sieve-filters
 	depends = gsasl
 	depends = libsecret
 	depends = krb5
-	source = https://github.com/cyr-ius/evolution-sieve-filters/releases/download/v0.4.7/evolution-sieve-filters-0.4.7.tar.gz
-	sha256sums = ae816291cabc63182cce48eee607df81151251b2f13faa757c9c77723fabe5fa
+	source = https://github.com/cyr-ius/evolution-sieve-filters/releases/download/v0.6.3/evolution-sieve-filters-0.6.3.tar.gz
+	sha256sums = 3853071e3b4595aa05bdd79eac28f71df10840be2826b7abba760be655d397f5
 
 pkgname = evolution-sieve-filters

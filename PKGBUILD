@@ -1,6 +1,6 @@
 # Maintainer: killermoehre <killermoehre@gmx.net>
 pkgname=evolution-sieve-filters
-pkgver=0.4.7
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Evolution plugin to manage server-side Sieve filters"
 arch=("i686" "x86_64")
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=("evolution" "evolution-data-server" "glib2" "gtk3" "gsasl" "libsecret" "krb5")
 makedepends=("meson")
 source=("https://github.com/cyr-ius/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=("ae816291cabc63182cce48eee607df81151251b2f13faa757c9c77723fabe5fa")
+sha256sums=("3853071e3b4595aa05bdd79eac28f71df10840be2826b7abba760be655d397f5")
 
 prepare() {
     meson subprojects download --sourcedir="$pkgname-$pkgver"
