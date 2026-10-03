@@ -2,19 +2,27 @@
 
 _libname=pybind11-rdp
 pkgname="python-${_libname}"
-pkgver=0.1.5
-pkgrel=2
+pkgver=0.1.6
+pkgrel=1
 pkgdesc='C++ implementation of the Ramer-Douglas-Peucker algorithm (binding to python via pybind11)'
 _rootdir="${_libname}-${pkgver}"
 arch=('x86_64')
 url='https://github.com/cubao/pybind11-rdp'
 license=('BSD')
 depends=('python-numpy')
-makedepends=('git' 'cmake' 'python-build' 'python-installer' 'python-wheel' 'python-scikit-build-core')
+makedepends=(
+  'git'
+  'cmake'
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  'pybind11'
+  'python-scikit-build-core'
+)
 provides=('python-pybind11-rdp')
 conflicts=('python-pybind11-rdp')
 source=("${_rootdir}::git+https://github.com/cubao/pybind11-rdp.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('51ab2acdf2ac699745bdd402a423cbeb9c8d3e1ae7c4ddc3761017a49afb7d26')
 
 prepare() {
     cd "${_rootdir}"
