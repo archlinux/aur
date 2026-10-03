@@ -51,7 +51,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/llvm-project-${pkgver}.src/
+  cd "$srcdir"/llvm-project-${pkgver}.src/llvm
   for _arch in ${_architectures}; do
     DESTDIR="${pkgdir}" cmake --build build-${_arch} --target install
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
