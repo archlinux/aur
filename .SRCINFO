@@ -1,6 +1,6 @@
 pkgbase = ftty-bin
 	pkgdesc = Ultra-lightweight minimalist Wayland terminal emulator with native Kitty graphics protocol
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/xifan2333/ftty
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ftty-bin
 	conflicts = ftty
 	conflicts = ftty-git
 	options = !strip
-	source_x86_64 = ftty-0.4.3-x86_64.tar.gz::https://github.com/xifan2333/ftty/releases/download/v0.4.3/ftty-0.4.3-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 710c47f03a4ca9d0f1261378524e39b18b58167ccf69dcba68f68e3532696c25
+	source_x86_64 = ftty-0.4.4-x86_64.tar.gz::https://github.com/xifan2333/ftty/releases/download/v0.4.4/ftty-0.4.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f336735dfae742aa3de72883aeb19622771eddd543fb1cbf68108aef9a2353d3
 
 pkgname = ftty-bin
