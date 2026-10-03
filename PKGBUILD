@@ -1,6 +1,6 @@
 # Maintainer: ねらひかだ <hkshirorom@yahoo.co.jp>
 pkgname=letsnote-wheelpad-bin
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Panasonic Let’s Note WheelPad circular touchpad scrolling daemon'
 arch=('x86_64')
@@ -47,7 +47,7 @@ source=(
 )
 noextract=("${_deb_file}")
 sha256sums=(
-  'a49a07e8c50d36a59f32942b598c486240a2e2e437b476fd31a24def6f665bbb'
+  '8ff25e3950e355ca725a947fd37a57ad33636ec228fe791e0407a5953effde5c'
   '963692d01e1df2294eb7ec011eafe3b86f062bc22284a5a21101a642806e73e5'
   '62c7dfe96fc45903fd47c1d3a6cf61b37a7afc3fa32d472bfea7ed355d24e29a'
   '5e9c53d73c2ab62bf3ab4c090534874a66cb333852d4222b1a95d7a961cf9540'
