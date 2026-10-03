@@ -9,7 +9,8 @@ url="https://github.com/Supernovatux/${_pkgname}"
 license=('AGPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'wayland' 'libglvnd' 'libxkbcommon')
 makedepends=('git' 'cargo' 'cmake' 'clang')
-optdepends=('crab-on-desk-themes: Themes from rullerzhou-afk/clawd-on-desk forted for this proj'
+options=('!lto')
+optdepends=('crab-on-desk-themes: Themes from rullerzhou-afk/clawd-on-desk ported for this proj'
             'hyprland: cursor tracking (roam, dizzy, eye tracking), permission prompt placement and focusing the terminal from it'
             'kwin: cursor tracking (roam, dizzy, eye tracking) and permission prompt placement on KDE Plasma'
             'xdg-desktop-portal: system accent colour and light/dark scheme in the settings and permission windows'

@@ -14,13 +14,14 @@ pkgbase = crab-on-desk-git
 	depends = wayland
 	depends = libglvnd
 	depends = libxkbcommon
-	optdepends = crab-on-desk-themes: Themes from rullerzhou-afk/clawd-on-desk forted for this proj
+	optdepends = crab-on-desk-themes: Themes from rullerzhou-afk/clawd-on-desk ported for this proj
 	optdepends = hyprland: cursor tracking (roam, dizzy, eye tracking), permission prompt placement and focusing the terminal from it
 	optdepends = kwin: cursor tracking (roam, dizzy, eye tracking) and permission prompt placement on KDE Plasma
 	optdepends = xdg-desktop-portal: system accent colour and light/dark scheme in the settings and permission windows
 	optdepends = claude-code: the agent whose hooks drive the pet
 	provides = crab-on-desk
 	conflicts = crab-on-desk
+	options = !lto
 	source = git+https://github.com/Supernovatux/crab-on-desk.git
 	sha256sums = SKIP
 
