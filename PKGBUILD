@@ -2,7 +2,7 @@
 # Contributor: Juan Francisco Miranda <aurarchlinux.sleek355 at passfwd dot com>
 
 pkgname=drawio-desktop-bin
-pkgver=31.5.3
+pkgver=31.7.0
 pkgrel=1
 pkgdesc="Diagram drawing application built on web technology"
 arch=('x86_64' 'aarch64')
@@ -25,8 +25,8 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/jgraph/drawi
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::https://github.com/jgraph/drawio-desktop/releases/download/v${pkgver}/drawio-arm64-${pkgver}.deb")
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('b2fd41f02567929c5fae4becbdc16bf118b1ef508a827a29ad9a883924263999')
-sha256sums_aarch64=('4d2daea4c10c348699b6d7f539c7d244aac236888cc423ecf5a7baa7acf8cd7e')
+sha256sums_x86_64=('eb9695e208fcc5ccfbfc496aa8ab2f52a273297d83715de2177b231c172c13de')
+sha256sums_aarch64=('ad7acb0546768a6a7b6563c96d9beb0cd4cef3165e830e56a8cbc2ca0faf25de')
 
 prepare() {
     # extract deb archive
