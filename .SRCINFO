@@ -1,0 +1,17 @@
+pkgbase = hammer2
+	pkgdesc = HAMMER2 filesystem kernel module (DragonFly BSD port), Linux 7.x only
+	pkgver = r12.3fea709
+	pkgrel = 1
+	url = https://github.com/bradla/hammer2_cluster_linux7
+	install = hammer2.install
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = linux-headers
+	depends = linux>=7
+	depends = linux<8
+	optdepends = hammer2-utils: newfs_hammer2, fsck_hammer2 and the hammer2 admin/cluster tool
+	source = hammer2::git+https://github.com/bradla/hammer2_cluster_linux7.git
+	sha256sums = SKIP
+
+pkgname = hammer2
