@@ -3,29 +3,29 @@
 
 pkgname=apricots
 pkgver=0.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple 2D flying/bombing game similar to basic side scrollers"
-url="https://github.com/moggers87/apricots"
+url="https://codeberg.org/moggers87/apricots"
 arch=(x86_64)
 license=(GPL-2.0-only)
 depends=("sdl2" "alure" "hicolor-icon-theme")
 #makedepends=("gcc-libs")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/moggers87/apricots/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6119cb776a247468df0956bd5d528e27fd6ebb0fb0955439c45cb0a2f317406b')
+source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/moggers87/apricots/archive/v${pkgver}.tar.gz")
+sha256sums=('1f34dd42d3c7162bda864cd8c4da0472dee11d2763b4a584e79b4e3a4c2486ad')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}
   ./bootstrap
   ./configure --prefix=/usr --sysconfdir=/etc
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}
   make
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}
   make install prefix="${pkgdir}/usr"
 
   install -Dm644 contrib/apricots.desktop -t "${pkgdir}/usr/share/applications"
