@@ -13,6 +13,7 @@ bin/
 /doubletake-ctl
 /doubletake-[0-9]*
 /doubletake-ctl-[0-9]*
+/doubletake-test-receiver-[0-9]*
 
 # Editor/IDE
 .vscode/
