@@ -5,7 +5,7 @@ _pkgname=envdiff
 pkgname=${_pkgname}-bin
 pkgdesc="CLI tool to snapshot and diff environments - helping find the differences that matter"
 
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,8 +24,8 @@ conflicts=("${_pkgname}")
 #         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('2a6b8b74271dc52245f6d1d6a78071946218d5fd8fc72341457aa2bd1f6f71ec')
-sha256sums_aarch64=('333b5ae774f45aee102815c244e97d72cbabd8ace218b49cf10d20e12e830f36')
+sha256sums_x86_64=('70a7b23e39c5e8d29e817bbee5c7d80e85b8f0666e635839f61ce5acedf0b9cd')
+sha256sums_aarch64=('00ef3bc913d4917f29a3f03c21877f86b9c26d467e7723c76bbd67abe4ab8060')
 
 
 package() {

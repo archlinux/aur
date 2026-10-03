@@ -1,6 +1,6 @@
 pkgbase = envdiff-bin
 	pkgdesc = CLI tool to snapshot and diff environments - helping find the differences that matter
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/GBerghoff/envdiff
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = envdiff-bin
 	license = MIT
 	provides = envdiff
 	conflicts = envdiff
-	source_x86_64 = envdiff-x86_64-0.2.0.tgz::https://github.com/GBerghoff/envdiff/releases/download/v0.2.0/envdiff_0.2.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2a6b8b74271dc52245f6d1d6a78071946218d5fd8fc72341457aa2bd1f6f71ec
-	source_aarch64 = envdiff-aarch64-0.2.0.tgz::https://github.com/GBerghoff/envdiff/releases/download/v0.2.0/envdiff_0.2.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 333b5ae774f45aee102815c244e97d72cbabd8ace218b49cf10d20e12e830f36
+	source_x86_64 = envdiff-x86_64-0.2.1.tgz::https://github.com/GBerghoff/envdiff/releases/download/v0.2.1/envdiff_0.2.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 70a7b23e39c5e8d29e817bbee5c7d80e85b8f0666e635839f61ce5acedf0b9cd
+	source_aarch64 = envdiff-aarch64-0.2.1.tgz::https://github.com/GBerghoff/envdiff/releases/download/v0.2.1/envdiff_0.2.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 00ef3bc913d4917f29a3f03c21877f86b9c26d467e7723c76bbd67abe4ab8060
 
 pkgname = envdiff-bin
