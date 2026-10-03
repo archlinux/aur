@@ -1,6 +1,6 @@
 # Maintainer: Tomkoid <tomkoid@tomkoid.cz>
 pkgname="yadal-git"
-pkgver=0.3.0.r108.g5c021d5
+pkgver=0.4.0.r0.gbe939f4
 pkgrel=1
 pkgdesc="Yet another TIDAL track, playlist, album CLI downloader"
 url="https://codeberg.org/tomkoid/yadal"
