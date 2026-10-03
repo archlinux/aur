@@ -1,7 +1,7 @@
 pkgbase = deepseek-harness-desktop
 	pkgdesc = DeepSeek Harness desktop application (Electron shell and bundled dsh runtime)
 	pkgver = 0.2.0rc.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/deepseek-ai/deepseek-harness
 	arch = x86_64
 	license = MIT

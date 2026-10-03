@@ -26,7 +26,7 @@
 pkgname=deepseek-harness-desktop
 _tag=dsh-v0.2.0-rc.2
 pkgver=0.2.0rc.2
-pkgrel=2
+pkgrel=3
 pkgdesc='DeepSeek Harness desktop application (Electron shell and bundled dsh runtime)'
 arch=('x86_64')
 url='https://github.com/deepseek-ai/deepseek-harness'
@@ -77,6 +77,11 @@ build() {
   # such as a bundled runtime, carries no Node-API headers and the native addon build
   # needs them; the same lookup also fixes which pnpm bootstraps the workspace.
   export PATH="/usr/bin:$PATH"
+
+  # A compile cache (NODE_COMPILE_CACHE) belongs to the user's environment, not to a build:
+  # upstream CI enables one, and this build runs hundreds of concurrent Node children that
+  # would share a single cache directory.
+  export NODE_DISABLE_COMPILE_CACHE=1
 
   # The repository pins its own pnpm through packageManager; the system package bootstraps it.
   pnpm install --frozen-lockfile
