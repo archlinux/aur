@@ -1,8 +1,8 @@
 pkgname=libelectron
 pkgver=2026.6
-pkgrel=3
+pkgrel=4
 libsplashver=1.2.2
-libadblockver=1.6.2
+libadblockver=1.6.3
 libuseragent=1.2
 arch=("x86_64" "aarch64")
 url="https://gitlab.com/linuxbombay/libelectron"
@@ -12,7 +12,7 @@ pkgdesc="A meta package for electron and electron dependencies."
 makedepends=('unzip')
 sha256sums=('38ac457e9b6245cc34c7502e41030c45bee13cfdf059bcaa5b432d2f28c5843a'
             '2617eb7a1523fb285931611bc48eceb593713d1730ca8864066e776c5674cf1c'
-            'a59ae9bc64f2d8e3d9d3392655d9bcfa1cc35fc0419aa911511aae611d59fd43'
+            'e8cb905216c3ac9ba1c74b34ecc5b9eecee04739275bfec1d34d0f56e7e0bdf1'
             '9fc283a91a8048c78866677c8b099e06a91346b3d2973b85b3aafb5fc72f8a48')
 source=(
 "$url/libelectron/-/archive/$pkgver/libelectron-$pkgver.tar.bz2"
