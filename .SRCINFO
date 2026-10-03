@@ -1,6 +1,6 @@
 pkgbase = python-sounddevice
 	pkgdesc = Record and play back sound
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://python-sounddevice.rtfd.io/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-sounddevice
 	depends = portaudio
 	depends = python-cffi
 	optdepends = python-numpy: to play back and record NumPy arrays
-	source = https://files.pythonhosted.org/packages/source/s/sounddevice/sounddevice-0.5.5.tar.gz
-	b2sums = 25da7f11bb20f115c828bfb4de00c7ced40224126b5da3a08027c0459d40e1300a4747305c25dab480f73db87c9ad6f0982d0af6adf8c3cc4d5de2e0e9ffaaff
+	source = https://files.pythonhosted.org/packages/source/s/sounddevice/sounddevice-0.5.6.tar.gz
+	b2sums = 0a1becc9729e41cc7acd268ba35ef857390f04348e9e48fa3f14f547f9926b7c4731e1063ed33cc054518ed3e7d83099e663efb7b76cf475046e53fcdd0858cb
 
 pkgname = python-sounddevice
