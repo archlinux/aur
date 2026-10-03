@@ -1,28 +1,26 @@
 # Maintainer: lingdianshiren <ldsrwu@foxmail.com>
 # 上游从 tar.gz(脚本启动器)换为 linuxdeploy AppImage(Wails v3 GUI):
+# - GUI 继续使用原始 AppImage；headless 后端从同一上游映像中解出并安装
 # - 提权内置(pkexec/polkit/sudo transient daemon),无需旧版 launcher hack
-# - 捆绑 198 个库(含 webkit2gtk/GTK3),运行时依赖 fuse2
-# 打包采用 AUR 主流 AppImage 方式:本体装 /opt + /usr/bin wrapper(同 obsidian-appimage)
+# - GUI 运行时依赖 fuse2；headless 使用已打包的 CLI/Caddy/规则库
 pkgname=steamcommunity302
 pkgver=15.0.7
-pkgrel=1
+pkgrel=7
 #epoch=
 pkgdesc="羽翼城制作的Steam、Github等反代加速工具,使用s302命令启动"
 url="https://www.dogfight360.com/blog/18682/"
 arch=('x86_64' 'aarch64')
 license=('CC-BY-NC-4.0')
-# nss 提供 certutil(证书导入),libnetfilter_queue 用于 DNS 重定向——
-# 均为功能依赖,AppImage 捆绑库仅覆盖 GUI 层
-depends=('fuse2' 'nss' 'libnetfilter_queue')
+# nss 提供 certutil，libnetfilter_queue 用于 DNS 重定向；python 是 s302
+# 管理命令解析 JSON/INI 的直接依赖。headless 初始化可使用 pkexec 或 sudo。
+depends=('fuse2' 'nss' 'libnetfilter_queue' 'polkit' 'python')
 optdepends=(
   # Netfilter/DNS 重定向后端(程序提示至少安装一种)
   'iptables: Netfilter backend for DNS redirection'
   'nftables: Netfilter backend for DNS redirection'
   'firewalld: Netfilter backend for DNS redirection'
   'ufw: Netfilter backend for DNS redirection'
-  # 新版内置提权(transient daemon),任选其一
-  'polkit: pkexec graphical privilege elevation'
-  'sudo: CLI privilege elevation'
+  'sudo: CLI privilege elevation for management commands'
 )
 source=('s302')
 source_x86_64=(
@@ -31,13 +29,24 @@ source_x86_64=(
 source_aarch64=(
   "steamcommunity302-${pkgver}.AppImage::https://www.dogfight360.com/Usbeam/V15/Steamcommunity_302_${pkgver}_Linux_WebKit_arm64.AppImage"
 )
-md5sums=('4908d587f6a5e529412ca208c8203074')
+md5sums=('289cd91c23f3d855215542adac05af8a')
 md5sums_x86_64=('8ec45d297e51d2d40dfa43a09d5113fc')
-md5sums_aarch64=('8ec45d297e51d2d40dfa43a09d5113fc')
+md5sums_aarch64=('a787a054be973f1880512f4f0af09444')
 options=(!strip)
 install=steamcommunity302.install
 
 _install_dir="/opt/steamcommunity302"
+prepare() {
+  local _appimage="${srcdir}/steamcommunity302-${pkgver}.AppImage"
+
+  rm -rf "${srcdir}/squashfs-root"
+  chmod 755 "${_appimage}"
+  (
+    cd "${srcdir}"
+    "${_appimage}" --appimage-extract
+  )
+}
+
 
 package() {
   # 本包只装 AppImage 本体与控制命令;菜单项/图标**完全采用程序自己生成的文件**
@@ -48,6 +57,28 @@ package() {
   # 旧版本(≤15.0.5-2)装到系统目录的 desktop/图标由 steamcommunity302.install 清理。
   install -Dm755 "${srcdir}/steamcommunity302-${pkgver}.AppImage" \
     "${pkgdir}${_install_dir}/steamcommunity302.AppImage"
+
+  # The upstream GUI initializes this CLI through pkexec. Package its complete
+  # trusted payload so `s302 init` also works without a graphics session or a
+  # runtime FUSE mount.
+  local _headless_dir="${pkgdir}/usr/lib/${pkgname}"
+  install -Dm755 "${srcdir}/squashfs-root/usr/bin/steamcommunity_302.cli" \
+    "${_headless_dir}/steamcommunity_302.cli"
+  install -Dm755 "${srcdir}/squashfs-root/usr/bin/steamcommunity_302.caddy" \
+    "${_headless_dir}/steamcommunity_302.caddy"
+  install -Dm755 "${srcdir}/squashfs-root/usr/bin/s302-service-installer" \
+    "${_headless_dir}/s302-service-installer"
+  install -Dm755 "${srcdir}/squashfs-root/usr/bin/iframe_api" \
+    "${_headless_dir}/iframe_api"
+  install -Dm644 "${srcdir}/squashfs-root/usr/bin/iframe_api.js" \
+    "${_headless_dir}/iframe_api.js"
+  install -Dm644 "${srcdir}/squashfs-root/usr/bin/S302_rules.ini" \
+    "${_headless_dir}/S302_rules.ini"
+  install -Dm644 "${srcdir}/squashfs-root/usr/bin/s302-service-manifest.json" \
+    "${_headless_dir}/s302-service-manifest.json"
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -s "/usr/lib/${pkgname}/steamcommunity_302.cli" \
+    "${pkgdir}/usr/bin/steamcommunity302-cli"
 
   # s302 控制命令:无参/ui 开 GUI(exec AppImage),管理命令走 systemd+config
   install -Dm755 "${srcdir}/s302" "${pkgdir}/usr/bin/s302"

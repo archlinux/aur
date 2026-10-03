@@ -1,15 +1,18 @@
 #!/bin/bash
 # s302 - Steamcommunity 302 控制命令
 # 无参数 / ui      : 打开图形界面(AppImage,需图形会话)
+# init             : 无图形界面时，为调用用户初始化 daemon 与配置
 # start/stop/...   : 管理后端 daemon(systemd s302-*.service)+ 配置
 # rule/dns 参考 ufw 风格:list/info/allow/deny/status
-# daemon 与引擎由 systemd 服务托管(AppImage 首次运行 GUI 时自动安装,
-# 或按 wiki 手动创建);数据目录 /var/lib/Steamcommunity_302/
+# GUI 由 AppImage 提供；headless 后端由包安装至 /usr/lib/steamcommunity302/
 set -euo pipefail
 
 APPIMAGE="/opt/steamcommunity302/steamcommunity302.AppImage"
 DATA_DIR="/var/lib/Steamcommunity_302"
 CFG="${DATA_DIR}/config.json"
+HEADLESS_DIR="/usr/lib/steamcommunity302"
+SERVICE_INSTALLER="${HEADLESS_DIR}/s302-service-installer"
+
 # 规则库(含全部规则的 section 与中文名;版本目录按 daemon 实际版本)
 # 注意:app/versions/ 可能不存在(首次安装、或 daemon 只落盘 rules/),
 # 此时 glob 无匹配 -> ls 返回 2,pipefail 让整条管道失败 -> set -e 直接终止脚本,
@@ -38,8 +41,45 @@ die() { echo "错误: $*" >&2; exit 1; }
 need_root() { [[ $EUID -eq 0 ]] || die "此操作需要 root;请用 root 执行或 sudo/pkexec: $0 $*"; }
 need_svc() {
     SVC="$(find_svc)"
-    [[ -n "$SVC" ]] || die "未找到 s302 systemd 服务。先运行一次 's302 ui' 完成初始化(自动安装服务+证书),或在图形界面配置后使用 CLI 管理。"
+    [[ -n "$SVC" ]] || die "未找到 s302 systemd 服务。运行 's302 init' 完成无图形界面初始化，或在图形界面启动 s302。"
 }
+_run_upstream_installer() {
+    local uid="$1"
+
+    if [[ -n "${PKEXEC_UID:-}" ]]; then
+        "$SERVICE_INSTALLER" install "$uid" var-lib
+    else
+        PKEXEC_UID="$uid" "$SERVICE_INSTALLER" install "$uid" var-lib
+    fi
+}
+
+_headless_init_root() {
+    local uid="$1" unit="s302-${1}.service" installer_failed=0
+
+    [[ $EUID -eq 0 ]] || die "headless 初始化器必须以 root 身份运行。"
+    [[ "$uid" =~ ^[0-9]+$ ]] || die "无效 UID: $uid"
+    if [[ -n "${PKEXEC_UID:-}" && "${PKEXEC_UID}" != "$uid" ]]; then
+        die "目标 UID 与 pkexec 调用用户不一致。"
+    fi
+
+    # Upstream's first install may create the unit but report failure because
+    # the fresh unit is not enabled yet. Enable it, then rerun the installer so
+    # it synchronizes the current versioned backend payload before restart.
+    if ! _run_upstream_installer "$uid"; then
+        installer_failed=1
+        printf '%s\n' '上游安装器首次运行未完成；正在启用新建服务后继续同步。' >&2
+    fi
+    systemctl daemon-reload
+    systemctl enable --now "$unit"
+    if (( installer_failed )); then
+        _run_upstream_installer "$uid"
+    fi
+    systemctl daemon-reload
+    systemctl restart "$unit"
+    systemctl is-active --quiet "$unit"
+    printf '%s\n' "初始化完成：${unit} 已启动。"
+}
+
 
 # 首次运行(数据目录尚未生成)时的初始化:先给反馈,再运行 AppImage 让它释放文件
 # (config.json、app/versions/<ver>/、rules/ 等),随后继续执行原命令。
@@ -49,11 +89,11 @@ init_first_run() {
     [[ -f "$CFG" ]] && return 0
     echo "数据目录尚未初始化:$DATA_DIR 为空(首次运行)。"
     if [[ $EUID -eq 0 ]]; then
-        echo "请以普通用户运行 's302 ui' 完成初始化;以 root 运行会生成 root 属主的数据文件。" >&2
+        echo "请以普通用户运行 's302 init' 完成初始化；不要以 root 运行。" >&2
         return 1
     fi
     if [[ -z "${WAYLAND_DISPLAY:-}${DISPLAY:-}" ]]; then
-        echo "当前无图形会话,无法启动图形界面;请在有图形会话时运行 's302 ui'。" >&2
+        echo "当前无图形会话；请运行 's302 init' 完成无图形界面初始化。" >&2
         return 1
     fi
     if [[ ! -x "$APPIMAGE" ]]; then
@@ -72,7 +112,7 @@ init_first_run() {
     return 1
 }
 
-need_cfg() { [[ -f "$CFG" ]] || { init_first_run || die "未初始化;请先运行 's302 ui'"; }; }
+need_cfg() { [[ -f "$CFG" ]] || { init_first_run || die "未初始化；请先运行 's302 init'"; }; }
 
 # --- 规则数据访问(经 python,处理 ini/json) ---
 # 输出: 全部规则 <名称>\t<中文名>\t<Group>  (来自规则库,不含基础设施)
@@ -116,6 +156,11 @@ usage() {
 
 界面:
   (无参数) / ui         打开图形界面(完整配置;首次使用请先运行)
+
+无图形界面:
+  init                  为当前用户安装并启动 daemon、生成初始配置
+  init --sudo           通过 sudo 为当前 SSH 用户初始化
+  init --user <用户名>  root 专用：为指定用户初始化
 
 服务管理(需 root):
   start|stop|restart    启动/停止/重启 daemon+引擎
@@ -165,13 +210,34 @@ case "$1" in
     ui)
         if [[ -z "${WAYLAND_DISPLAY:-}${DISPLAY:-}" ]]; then
             echo "当前无图形会话(headless)。管理请用: s302 start/stop/status/rules/dns/info"
-            echo "初始化配置: 需图形会话运行 s302 ui(如本机/远程 X11 转发)"
+            echo "初始化配置: s302 init --sudo（SSH）或 s302 init（有 polkit 认证代理）"
             exit 0
         fi
         # 首次运行先给反馈,再交给 AppImage 初始化(桌面图标启动时看不到终端,终端调用能看到)。
         # 放在 headless 判断之后:无图形会话时并不启动 GUI,不能先声称"正在启动"。
         [[ -f "$CFG" ]] || echo "首次运行:数据目录尚未初始化,正在启动图形界面完成初始化(会释放 app/versions/、rules/ 等文件)。"
         exec "$APPIMAGE"
+        ;;
+    init)
+        if [[ $EUID -eq 0 ]]; then
+            [[ $# -eq 3 && "$2" == --user ]] || die "root 初始化用法: s302 init --user <用户名>"
+            _target_uid="$(id -u "$3")" || die "未知用户: $3"
+            _headless_init_root "$_target_uid"
+        elif [[ "${2:-}" == --sudo ]]; then
+            [[ $# -eq 2 ]] || die "用法: s302 init --sudo"
+            command -v sudo >/dev/null 2>&1 || die "缺少 sudo；请安装 sudo 或使用 s302 init。"
+            exec sudo "$0" init --user "$(id -un)"
+        else
+            [[ $# -eq 1 ]] || die "用法: s302 init [--sudo]"
+            [[ -x "$SERVICE_INSTALLER" ]] || die "未找到 headless 安装器: $SERVICE_INSTALLER (请重装 steamcommunity302)。"
+            command -v pkexec >/dev/null 2>&1 || die "缺少 pkexec；请安装 polkit。"
+            exec pkexec --disable-internal-agent "$0" --headless-init-root "$UID"
+        fi
+        ;;
+
+    --headless-init-root)
+        [[ $# -eq 2 ]] || die "内部初始化参数错误。"
+        _headless_init_root "$2"
         ;;
 
     start|stop|restart|enable|disable)

@@ -20,8 +20,9 @@ _cleanup_legacy_desktop_files() {
 post_install() {
     _cleanup_legacy_desktop_files
     echo "==> steamcommunity302 已安装"
-    echo "    菜单项与图标由程序首次运行时自动创建于 ~/.local/share/{applications,icons}"
-    echo "    首次启动: s302(会完成初始化并写入菜单项)"
+    echo "    图形会话: s302（首次运行会创建菜单项和图标）"
+    echo "    SSH/headless: s302 init --sudo"
+    echo "    root SSH: s302 init --user <用户名>"
 }
 
 post_upgrade() {
@@ -44,6 +45,7 @@ post_upgrade() {
     fi
     _cleanup_legacy_desktop_files
     echo "==> steamcommunity302 已升级"
-    echo "    新版为 AppImage,数据目录: /var/lib/Steamcommunity_302/"
-    echo "    启动: s302"
+    echo "    图形会话: s302"
+    echo "    SSH/headless: s302 init --sudo"
+    echo "    root SSH: s302 init --user <用户名>"
 }
