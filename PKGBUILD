@@ -1,7 +1,7 @@
 # Maintainer: Shorin <shorin@example.com>
 _pkgname=linuxqq-wayland-fix
 pkgname=linuxqq-wayland-fix-git
-pkgver=r67.36750ac
+pkgver=r69.7557313
 pkgrel=1
 pkgdesc="修复 Linux QQ 在 Wayland 下的屏幕共享、共享电脑声音、剪贴板和截图问题"
 arch=('x86_64' 'aarch64')
