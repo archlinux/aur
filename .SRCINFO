@@ -1,0 +1,21 @@
+pkgbase = stoke-gtk
+	pkgdesc = Bootable USB writer in the spirit of Rufus: the GNOME window
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/dresden196/stoke
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = gettext
+	depends = stoke
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = polkit
+	provides = fubuki-gtk
+	conflicts = fubuki-gtk
+	replaces = fubuki-gtk
+	source = stoke-0.3.0.tar.gz::https://github.com/dresden196/stoke/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 7e48bd1730791197ee7705cd6853e2d87e84cece6fcd2e944b160417f5d778d8
+
+pkgname = stoke-gtk
