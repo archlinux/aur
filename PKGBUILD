@@ -1,6 +1,16 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
+
+# PKGBUILD for building on the Open Build Service.
+#
+# OBS build VMs have no network, so every source has to be present in the
+# package's OBS sources before the build starts. This consumes the Debian
+# native tarball that release builds commit to debs/ - it carries the complete
+# source tree - instead of fetching a GitHub tarball the way aur/PKGBUILD does.
+#
+# Keep pkgver in step with debian/changelog: it names the tarball.
+
 pkgname=mx-snapshot
-pkgver=26.09.3
+pkgver=26.10
 pkgrel=1
 pkgdesc="A tool for creating live ISO images from running systems"
 arch=('x86_64' 'i686')
@@ -21,11 +31,15 @@ provides=('mx-remaster-live-files=1.0.0')
 # /etc/mx-snapshot.conf and the exclude list are meant to be user-edited;
 # without this, pacman would overwrite local changes on every upgrade.
 backup=('etc/mx-snapshot.conf' 'etc/mx-snapshot-exclude.list')
-source=("https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.09.3.tar.gz")
-sha256sums=('2b9dbef93b152d8b40cc6d5ba028aaecd6a89844d34a08b1d6371992bc8cd878')
+source=("https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.10.tar.gz")
+sha256sums=('f9a7381685ca8ddbe4b51bada845eb8f866f5475d75ce2ff0b295773aae6175c')
+
+# dpkg-source packed this tarball from a directory called "src", so that - not
+# ${pkgname}-${pkgver} - is what it unpacks to.
+_srcdir="mx-snapshot-26.10"
 
 build() {
-    cd "${srcdir}"/mx-snapshot*-"${pkgver}"
+    cd "${srcdir}/${_srcdir}"
 
     rm -rf build
 
@@ -43,12 +57,15 @@ build() {
 }
 
 package() {
-    cd "${srcdir}"/mx-snapshot*-"${pkgver}"
+    cd "${srcdir}/${_srcdir}"
 
     install -Dm755 build/mx-snapshot "${pkgdir}/usr/bin/mx-snapshot"
 
-    install -dm755 "${pkgdir}/usr/share/mx-snapshot/locale"
-    install -Dm644 build/*.qm "${pkgdir}/usr/share/mx-snapshot/locale/" 2>/dev/null || true
+    # "install -D" with several sources needs -t, and then creates the
+    # destination directory itself, so the separate install -dm755 is gone. No
+    # error suppression either: the old "2>/dev/null || true" swallowed a glob
+    # that matched nothing, shipping the package with no translations at all.
+    install -Dm644 -t "${pkgdir}/usr/share/mx-snapshot/locale/" build/*.qm
 
     # Arch packaging is GUI-only (BUILD_CLI=OFF above); install scripts only
     # under /usr/share/mx-snapshot/, not /usr/share/iso-snapshot-cli/.
@@ -100,4 +117,8 @@ package() {
         gzip -c debian/changelog > "${pkgdir}/usr/share/doc/mx-snapshot/changelog.gz"
     fi
 
+    # namcap flags a declared license= with nothing under
+    # /usr/share/licenses. The file is in the source; it was simply never
+    # installed.
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
