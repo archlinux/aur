@@ -1,7 +1,7 @@
 pkgbase = inno
 	pkgdesc = A lightweight, event-driven Wayland notification agent
-	pkgver = 0.7.0
-	pkgrel = 3
+	pkgver = 0.7.1
+	pkgrel = 1
 	url = https://github.com/SykikXO/inno
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = inno
 	depends = dbus
 	depends = glibc
 	depends = pipewire-pulse
-	source = inno::git+https://github.com/SykikXO/inno.git#tag=v0.7.0
+	source = inno::git+https://github.com/SykikXO/inno.git#tag=v0.7.1
 	b2sums = SKIP
 
 pkgname = inno
