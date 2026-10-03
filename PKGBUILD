@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=rd2qmd
-pkgver=0.5.3 # renovate: datasource=github-tags depName=eitsupi/rd2qmd
+pkgver=0.6.0 # renovate: datasource=github-tags depName=eitsupi/rd2qmd
 pkgrel=1
 pkgdesc="A fast Rd-to-Quarto Markdown converter with intelligent link resolution."
 url="https://github.com/eitsupi/rd2qmd"
@@ -33,4 +33,4 @@ package() {
   install -Dm644 "${srcdir}/rd2qmd-${pkgver}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('b730361cba2b060c11e7081f0f59075e98793755d7446531560cd9092f217661766099b2c72ebe59baf79db83b2b7bf43cb5b5fd29010c1f797fe55e7248bf2e')
+sha512sums=('355693479b9b4a01e28892933e05b8531049031aa9c6f42a5e1c5a48592b66b5b14fd27794d3a35f7671781328bcc2c8e00cb3d79846029b4349e23fb0e44912')
