@@ -1,21 +1,21 @@
 # Maintainer: Umar Alfarouk <medrivia@gmail.com>
 pkgname=retuner
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A precision audio pitch shifting plugin for converting music between different tuning standards"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kushview/retuner"
 license=('GPL-3.0-or-later')
 groups=('pro-audio' 'vst3-plugins' 'lv2-plugins' 'clap-plugins')
 options=('!debug')
-depends=('gcc-libs' 'glibc' 'alsa-lib' 'curl'
-         'freetype2' 'fontconfig'
+depends=('alsa-lib' 'curl' 'fontconfig' 'freetype2' 'gtk3' 'hicolor-icon-theme'
+         'libgcc' 'libstdc++'
          'libx11' 'libxext' 'libxinerama' 'libxrandr' 'libxcursor'
          'libxcomposite' 'libxrender'
-         'mesa' 'gtk3')
+         'mesa')
 makedepends=('cmake' 'git' 'ninja')
 source=("git+https://github.com/kushview/retuner.git#tag=${pkgver}")
-sha256sums=('09114ddcc86d843dbffd972102d72fe0e4fb97fbbee27b380a286724b0f27fa1')
+sha256sums=('SKIP')
 
 prepare() {
   cd "$pkgname"
