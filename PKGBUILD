@@ -15,6 +15,8 @@ optdepends=(
   'xsel: X11 support'
   'xclip: X11 support'
   'xdotool: X11 support'
+  'dotool: GNOME/KDE support'
+  'wofi: GNOME support'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('5885da048e276b36d9d13b7b960fa995c7d0d1839715beeeda22ca276769af97')
