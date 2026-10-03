@@ -13,7 +13,8 @@ arch=(x86_64 aarch64)
 url='https://github.com/carnager/melody-next'
 license=(GPL-3.0-only)
 makedepends=(cmake git ninja nlohmann-json
-             curl ffmpeg libebur128 libopenmpt libpipewire libutf8proc openssl sqlite taglib)
+             curl ffmpeg libebur128 libopenmpt libpipewire libupnp libutf8proc openssl sqlite
+             taglib)
 source=("melody-next::git+https://github.com/carnager/melody-next.git")
 sha256sums=('SKIP')
 
@@ -25,10 +26,12 @@ pkgver() {
 build() {
   cd melody-next
   # No window here: that is trackknife-git. Warnings-as-errors stays off
-  # so packaging never fails on warnings a future compiler invents.
+  # so packaging never fails on warnings a future compiler invents. UPnP
+  # speakers as outputs (ADR-0235) asked for, not found by chance: without
+  # libupnp the build fails rather than leaving them out.
   cmake --preset release -DCMAKE_INSTALL_PREFIX=/usr \
     -DTRACKKNIFE_BUILD_UI=OFF -DBUILD_TESTING=OFF -DTRACKKNIFE_BUILD_BENCHMARKS=OFF \
-    -DTRACKKNIFE_WARNINGS_AS_ERRORS=OFF
+    -DTRACKKNIFE_WARNINGS_AS_ERRORS=OFF -DTRACKKNIFE_ENABLE_UPNP=ON
   cmake --build build/release --target trackknife_engine_daemon melody_agent
 }
 
@@ -44,7 +47,7 @@ package_melody-git() {
 
 package_melodyd-git() {
   pkgdesc='Melody music engine: library, playback and outputs, shared on the network'
-  depends=(curl ffmpeg libopenmpt libpipewire libutf8proc openssl sqlite taglib)
+  depends=(curl ffmpeg libopenmpt libpipewire libupnp libutf8proc openssl sqlite taglib)
   provides=(melodyd)
   conflicts=(melodyd)
   install=melody.install
@@ -54,7 +57,7 @@ package_melodyd-git() {
 
 package_melody-agent-git() {
   pkgdesc='Speakers for Melody engines: finds the engines on the network and plays for them'
-  depends=(curl ffmpeg libopenmpt libpipewire libutf8proc openssl sqlite taglib)
+  depends=(curl ffmpeg libopenmpt libpipewire libupnp libutf8proc openssl sqlite taglib)
   provides=(melody-agent)
   conflicts=(melody-agent)
   install=melody-agent.install
