@@ -1,7 +1,7 @@
 pkgbase = ggml-cuda-12.9
-	pkgdesc = ggml CUDA backend built against CUDA 12.9 for Tesla V100 (sm_70)
+	pkgdesc = ggml CUDA backend built against CUDA 12.9 for Maxwell/Pascal/Volta GPUs (sm_50–sm_70)
 	pkgver = 0.25.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggml-org/ggml
 	arch = x86_64
 	license = MIT

@@ -1,7 +1,7 @@
 pkgname=ggml-cuda-12.9
 pkgver=0.25.3
-pkgrel=1
-pkgdesc="ggml CUDA backend built against CUDA 12.9 for Tesla V100 (sm_70)"
+pkgrel=2
+pkgdesc="ggml CUDA backend built against CUDA 12.9 for Maxwell/Pascal/Volta GPUs (sm_50–sm_70)"
 arch=(x86_64)
 url="https://github.com/ggml-org/ggml"
 license=(MIT)
@@ -20,7 +20,7 @@ build() {
     -DGGML_BACKEND_DL=ON \
     -DGGML_NATIVE=OFF \
     -DGGML_CUDA=ON \
-    -DCMAKE_CUDA_ARCHITECTURES="70-real" \
+    -DCMAKE_CUDA_ARCHITECTURES="50-real;52-real;60-real;61-real;70-real" \
     -DCUDAToolkit_ROOT=/opt/cuda \
     -DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-14 \
     -DGGML_CUDA_NCCL=OFF \
