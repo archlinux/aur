@@ -1,10 +1,10 @@
 pkgbase = fubuki-ui
-	pkgdesc = Bootable USB writer in the spirit of Rufus: the KDE window (transitional, install fubuki-qt)
-	pkgver = 0.2.3
+	pkgdesc = Bootable USB writer, formerly Fubuki (transitional, install stoke-qt)
+	pkgver = 0.3.0
 	pkgrel = 1
-	url = https://github.com/dresden196/fubuki
+	url = https://github.com/dresden196/stoke
 	arch = any
 	license = GPL-3.0-or-later
-	depends = fubuki-qt
+	depends = stoke-qt
 
 pkgname = fubuki-ui
