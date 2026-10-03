@@ -12,7 +12,8 @@ ProtectHome=true
 ProtectSystem=strict
 NoNewPrivileges=true
 CapabilityBoundingSet=
-MemoryDenyWriteExecute=true
+# RandomX uses JIT-generated executable memory.
+MemoryDenyWriteExecute=false
 ProtectKernelModules=true
 ProtectKernelTunables=true
 ProtectControlGroups=true
