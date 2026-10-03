@@ -1,0 +1,62 @@
+--- a/src/sardana/cli/cli.py
++++ b/src/sardana/cli/cli.py
+@@ -24,8 +24,9 @@
+ ##
+ ##############################################################################
+ 
++from importlib.metadata import entry_points
++
+ import click
+-import pkg_resources
+ import taurus
+ 
+ import sardana
+@@ -53,7 +54,7 @@
+     taurus.setLogLevel(taurus.Warning)
+ 
+     # Add subcommands from the sardana_subcommands entry point
+-    for ep in pkg_resources.iter_entry_points("sardana.cli.subcommands"):
++    for ep in entry_points(group="sardana.cli.subcommands"):
+         try:
+             subcommand = ep.load()
+             sardana_cmd.add_command(subcommand)
+--- a/src/sardana/taurus/qt/qtgui/extra_sardana/showscanonline.py
++++ b/src/sardana/taurus/qt/qtgui/extra_sardana/showscanonline.py
+@@ -37,8 +37,9 @@
+     "ShowScanOnline",
+ ]
+ 
++from importlib.resources import files
++
+ import click
+-import pkg_resources
+ import taurus
+ from taurus.core.taurusbasetypes import TaurusDevState
+ from taurus.core.taurusexception import TaurusException
+@@ -104,7 +105,7 @@
+ 
+ 
+ def load_scan_info_form(widget):
+-    ui_name = pkg_resources.resource_filename(__package__ + ".ui", "ScanInfoForm.ui")
++    ui_name = str(files(__package__ + ".ui") / "ScanInfoForm.ui")
+     uic.loadUi(ui_name, baseinstance=widget)
+     return widget
+ 
+@@ -152,7 +153,7 @@
+ 
+ 
+ def load_scan_point_form(widget):
+-    ui_name = pkg_resources.resource_filename(__package__ + ".ui", "ScanPointForm.ui")
++    ui_name = str(files(__package__ + ".ui") / "ScanPointForm.ui")
+     uic.loadUi(ui_name, baseinstance=widget)
+     return widget
+ 
+@@ -261,7 +262,7 @@
+ 
+ 
+ def load_scan_window(widget):
+-    ui_name = pkg_resources.resource_filename(__package__ + ".ui", "ScanWindow.ui")
++    ui_name = str(files(__package__ + ".ui") / "ScanWindow.ui")
+     uic.loadUi(ui_name, baseinstance=widget)
+     return widget
+ 
