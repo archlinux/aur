@@ -1,4 +1,4 @@
-From 30cbca3f832e75fe559c003069f4be63f72878c0 Mon Sep 17 00:00:00 2001
+From 97a2284e055a05f836e12d0ec5e67bcc1731a10b Mon Sep 17 00:00:00 2001
 From: xiota <xiota>
 Date: Sun, 29 Oct 2023 03:53:13 -0700
 Subject: [PATCH 3/3] don't write version and modified tags
@@ -6,40 +6,88 @@ Subject: [PATCH 3/3] don't write version and modified tags
 Don't write version and modification tags to the opf.
 Results in a somewhat cleaner opf.
 ---
- src/ResourceObjects/OPFResource.cpp | 30 +++--------------------------
- 1 file changed, 3 insertions(+), 27 deletions(-)
+ src/ResourceObjects/OPFResource.cpp | 48 +++--------------------------
+ 1 file changed, 5 insertions(+), 43 deletions(-)
 
 diff --git a/src/ResourceObjects/OPFResource.cpp b/src/ResourceObjects/OPFResource.cpp
-index 7f7020b..5f79772 100644
+index 539d74c15..553bdc8ab 100644
 --- a/src/ResourceObjects/OPFResource.cpp
 +++ b/src/ResourceObjects/OPFResource.cpp
-@@ -464,18 +464,11 @@ void OPFResource::AddSigilVersionMeta()
-             QString name = me.m_atts[QString("name")];
-             if (name == SIGIL_VERSION_META_NAME) {
-                 me.m_atts["content"] = QString(SIGIL_VERSION);
--                p.m_metadata.replace(i, me);
--                UpdateText(p);
-+                p.m_metadata.removeAt(i);
-                 return;
+@@ -117,7 +117,6 @@ static const QString TEMPLATE3_TEXT =
+     "    <dc:identifier id=\"BookId\">urn:uuid:%1</dc:identifier>\n"
+     "    <dc:language>%2</dc:language>\n"
+     "    <dc:title>%3</dc:title>\n"
+-    "    <meta property=\"dcterms:modified\">%4</meta>\n"
+     "  </metadata>\n\n"
+     "  <manifest>\n"
+     "  </manifest>\n\n"
+@@ -488,46 +487,29 @@ void OPFResource::UpdateNCXLocationInManifest(const NCXResource *ncx)
+ 
+ void OPFResource::AddSigilVersionMeta()
+ {
+-    QString version = GetEpubVersion();
+     QWriteLocker locker(&GetLock());
+     QString source = CleanSource::ProcessXML(GetText(),"application/oebps-package+xml");
+     OPFParser p;
+     p.parse(source);
+     for (int i=0; i < p.m_metadata.count(); ++i) {
+         MetaEntry me = p.m_metadata.at(i);
+-        if (version.startsWith("3")) {
+             if ((me.m_name == "meta") && (me.m_atts.contains("property"))) {  
+                 QString property = me.m_atts[QString("property")];
+                 if ((property == "schema:softwareVersion") && me.m_content.startsWith("Sigil")) {
+-                    me.m_content = "Sigil-" + QString(SIGIL_VERSION);
+-                    p.m_metadata.replace(i, me);
++                    p.m_metadata.removeAt(i);
+                     UpdateText(p);
+                     return;
+                 }
              }
-         }
+-        } else {    
+             if ((me.m_name == "meta") && (me.m_atts.contains("name"))) {  
+                 QString name = me.m_atts[QString("name")];
+                 if (name == SIGIL_VERSION_META_NAME) {
+-                    me.m_atts["content"] = QString(SIGIL_VERSION);
+-                    p.m_metadata.replace(i, me);
++                    p.m_metadata.removeAt(i);
+                     UpdateText(p);
+                     return;
+                 }
+             }
+-        }
      }
 -    MetaEntry me;
 -    me.m_name = "meta";
--    me.m_atts[QString("name")] = QString("Sigil version");
--    me.m_atts[QString("content")] = QString(SIGIL_VERSION);
+-    if (version.startsWith("3")) {
+-        me.m_atts[QString("property")] = QString("schema:softwareVersion");
+-        me.m_content = "Sigil-" + QString(SIGIL_VERSION);
+-    } else {
+-        me.m_atts[QString("name")] = QString("Sigil version");
+-        me.m_atts[QString("content")] = QString(SIGIL_VERSION);
+-    }
 -    p.m_metadata.append(me);
 -    UpdateText(p);
  }
  
  
-@@ -1382,19 +1375,11 @@ QString OPFResource::AddModificationDateMeta()
+@@ -1694,9 +1676,6 @@ QString OPFResource::AddModificationDateMeta()
+     OPFParser p;
+     p.parse(source);
+ 
+-    QString epubversion = GetEpubVersion();
+-    if (epubversion.startsWith('3')) {
+-
+         // epub 3 set dcterms:modified date time in ISO 8601 format
+         // if an entry exists, update it
+         for (int i=0; i < p.m_metadata.count(); ++i) {
+@@ -1704,22 +1683,14 @@ QString OPFResource::AddModificationDateMeta()
+             if (me.m_name == QString("meta")) {
                  QString property = me.m_atts.value(QString("property"), QString(""));
                  if (property == QString("dcterms:modified")) {
-                     me.m_content = datetime;
+-                    me.m_content = datetime;
 -                    p.m_metadata.replace(i, me);
--                    UpdateText(p);
 +                    p.m_metadata.removeAt(i);
+                     UpdateText(p);
                      return datetime;
                  }
              }
@@ -52,15 +100,19 @@ index 7f7020b..5f79772 100644
 -        p.m_metadata.append(me);
 -        UpdateText(p);
          return datetime;
-     }   
+-    }   
++
      // epub 2 version 
-@@ -1411,21 +1396,12 @@ QString OPFResource::AddModificationDateMeta()
+     QString date;
+     QDate d = QDate::currentDate();
+@@ -1733,22 +1704,13 @@ QString OPFResource::AddModificationDateMeta()
+         if (me.m_name == QString("dc:date")) {
              QString etype = me.m_atts.value(QString("opf:event"), QString(""));
              if (etype == QString("modification")) {
-                 me.m_content = date;
+-                me.m_content = date;
 -                p.m_metadata.replace(i, me);
--                UpdateText(p);
 +                p.m_metadata.removeAt(i);
+                 UpdateText(p);
                  return datetime;
              }
              
@@ -78,5 +130,5 @@ index 7f7020b..5f79772 100644
  }
  
 -- 
-2.42.0
+2.56.0
 

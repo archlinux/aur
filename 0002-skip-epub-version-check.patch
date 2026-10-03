@@ -1,4 +1,4 @@
-From c2caad976c99f08c0aff1dfbc34c82cf7e7797d5 Mon Sep 17 00:00:00 2001
+From d6be4f29f759d30edcc4207e5490d571779771ba Mon Sep 17 00:00:00 2001
 From: xiota <xiota>
 Date: Sun, 29 Oct 2023 03:51:25 -0700
 Subject: [PATCH 2/3] skip epub version check
@@ -11,10 +11,10 @@ the opf.  Some data is lost and needs to be recreated
  1 file changed, 14 deletions(-)
 
 diff --git a/src/ResourceObjects/OPFResource.cpp b/src/ResourceObjects/OPFResource.cpp
-index 4b7668d..7f7020b 100644
+index 38800e3dc..539d74c15 100644
 --- a/src/ResourceObjects/OPFResource.cpp
 +++ b/src/ResourceObjects/OPFResource.cpp
-@@ -1493,20 +1493,6 @@ void OPFResource::UpdateText(const OPFParser &p)
+@@ -1854,20 +1854,6 @@ void OPFResource::UpdateText(const OPFParser &p)
  QString OPFResource::ValidatePackageVersion(const QString& source)
  {
      QString newsource = source;
@@ -36,5 +36,5 @@ index 4b7668d..7f7020b 100644
  }
  
 -- 
-2.42.0
+2.56.0
 
