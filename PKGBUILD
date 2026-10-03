@@ -18,6 +18,9 @@ package() {
 	cd "${srcdir}/xrwm-${pkgver}-x86_64-unknown-linux-gnu"
 
 	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm644 doc/xrwm.1 "${pkgdir}/usr/share/man/man1/xrwm.1"
+	install -Dm644 examples/xrwm.desktop "${pkgdir}/usr/share/wayland-sessions/xrwm.desktop"
+	install -Dm644 examples/init "${pkgdir}/usr/share/doc/${_pkgname}/examples/init"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
