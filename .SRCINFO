@@ -1,0 +1,19 @@
+pkgbase = sping-bin
+	pkgdesc = A modern, cross-platform ping with real-time diagnostics, network context, quality scoring, and multi-target monitoring
+	pkgver = 1.5.4
+	pkgrel = 1
+	url = https://github.com/LambdaBytes/sping
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = sping
+	conflicts = sping
+	options = !strip
+	source = LICENSE-1.5.4::https://raw.githubusercontent.com/LambdaBytes/sping/v1.5.4/LICENSE
+	sha256sums = af3bf88b64fb242d12fbc697f8e8313c97657b3461bff3ed7e7b99ed1d436727
+	source_x86_64 = sping-x86_64-1.5.4.deb::https://github.com/LambdaBytes/sping/releases/download/v1.5.4/sping_1.5.4-1_amd64.deb
+	sha256sums_x86_64 = f2755e1d010ddaf61bcf56b825e40601b094bfeda73769a647780aa1fd80353b
+	source_aarch64 = sping-aarch64-1.5.4.deb::https://github.com/LambdaBytes/sping/releases/download/v1.5.4/sping_1.5.4-1_arm64.deb
+	sha256sums_aarch64 = 6659c5c7b423f61170d678eb413490fe45d97b9c72553603fa821925adf9c9ed
+
+pkgname = sping-bin
