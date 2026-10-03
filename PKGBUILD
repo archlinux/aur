@@ -2,7 +2,7 @@
 pkgname=connected-desktop-bin
 _pkgname=connected-desktop
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="High-speed, offline, cross-platform ecosystem bridging devices (Binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/paterkleomenis/connected"
@@ -22,8 +22,8 @@ sha256sums=('baf3b2e0d55d9fcb23630a7a6c0eff68eb9b708f8f0ce8e698dcf8ea611666ad'
             '89448ca4aa33837cea05777f33c93253145bb583b4a1e2f010bef666429e1899'
             'fdc5b45803bf8f5d4435509da25399414072b3d95badd6b09b2e84c2f1f198d5'
             '6bbe4ace8a1818f89b96dfdda9f9d4b9a178bc047c3dc2511a3d93d51f86d7ae')
-sha256sums_x86_64=('a979764e33fcd3820dcefa62fddb71f8c63862f236447ceebf0d268877a52883')
-sha256sums_aarch64=('ddb5d1f07bbcfcdb5269ccf2d779eb595d87d54bd71ccea1d2cf9858aa5d96d5')
+sha256sums_x86_64=('c87c8770cd311b3bf32d08928d9e49ffa8f2161e98bb46a49c78ed18443672eb')
+sha256sums_aarch64=('999e68237557f5a9289ac8db2c98973ccc8759cfa584b778a23d6707ff0ba7ae')
 
 
 package() {
