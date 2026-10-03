@@ -2,11 +2,11 @@
 
 pkgname=stasis
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern Wayland idle manager designed for simplicity and effectiveness"
 arch=('x86_64')
 url="https://github.com/saltnpepper97/stasis"
-license=('MIT')
+license=('GPL-3.0-only')
 depends=('systemd' 'dbus' 'libinput' 'wayland')
 makedepends=('cargo' 'rust')
 optdepends=(
