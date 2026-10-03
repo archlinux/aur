@@ -1,4 +1,4 @@
-From 12a50bcb7f443c2517fe34ba3581529bee1ea655 Mon Sep 17 00:00:00 2001
+From b51dd3acea6f9baf575b3e67c48e8c39fa2bc112 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 23:11:18 +0100
 Subject: [PATCH 17/24] Workaround linker error about missing symbol
@@ -19,10 +19,10 @@ Change-Id: I1b96a6dc44c5f7d527dbed9db58b4f030f175721
  4 files changed, 20 insertions(+)
 
 diff --git a/src/corelib/CMakeLists.txt b/src/corelib/CMakeLists.txt
-index 8c9e61e2b23..9a2a2cd685a 100644
+index 7a1a3359b50..6e25372dd30 100644
 --- a/src/corelib/CMakeLists.txt
 +++ b/src/corelib/CMakeLists.txt
-@@ -957,6 +957,11 @@ qt_internal_extend_target(Core CONDITION WASM
+@@ -991,6 +991,11 @@ qt_internal_extend_target(Core CONDITION WASM
          text/qlocale_wasm.cpp
  )
  
@@ -51,11 +51,11 @@ index f471de5c2ab..be04e2d59c5 100644
  set_property(TARGET QNLMNIPlugin PROPERTY
      AUTOGEN_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/autogen")
 diff --git a/src/plugins/platforms/direct2d/CMakeLists.txt b/src/plugins/platforms/direct2d/CMakeLists.txt
-index fdcef566b10..d1c87a3a78b 100644
+index 7f625fc8faa..1075f3d3abb 100644
 --- a/src/plugins/platforms/direct2d/CMakeLists.txt
 +++ b/src/plugins/platforms/direct2d/CMakeLists.txt
-@@ -84,6 +84,11 @@ qt_internal_add_plugin(QWindowsDirect2DIntegrationPlugin
-         runtimeobject
+@@ -85,6 +85,11 @@ qt_internal_add_plugin(QWindowsDirect2DIntegrationPlugin
+         mscms
  )
  
 +# workaround undefined reference to `__sync_bool_compare_and_swap_16'
@@ -67,11 +67,11 @@ index fdcef566b10..d1c87a3a78b 100644
  set_source_files_properties("../windows/openglblacklists/default.json"
      PROPERTIES QT_RESOURCE_ALIAS "default.json"
 diff --git a/src/plugins/platforms/windows/CMakeLists.txt b/src/plugins/platforms/windows/CMakeLists.txt
-index 4cb2689e820..13af9ec5f6a 100644
+index 04b1920d5dc..9d505839ccf 100644
 --- a/src/plugins/platforms/windows/CMakeLists.txt
 +++ b/src/plugins/platforms/windows/CMakeLists.txt
-@@ -71,6 +71,11 @@ qt_internal_add_plugin(QWindowsIntegrationPlugin
-         runtimeobject
+@@ -72,6 +72,11 @@ qt_internal_add_plugin(QWindowsIntegrationPlugin
+         mscms
  )
  
 +# workaround undefined reference to `__sync_bool_compare_and_swap_16'
@@ -83,5 +83,5 @@ index 4cb2689e820..13af9ec5f6a 100644
  set_source_files_properties("openglblacklists/default.json"
      PROPERTIES QT_RESOURCE_ALIAS "default.json"
 -- 
-2.55.0
+2.56.0
 
