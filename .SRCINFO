@@ -1,6 +1,6 @@
 pkgbase = python-h5json
 	pkgdesc = Specification and tools for representing HDF5 in JSON
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://support.hdfgroup.org/documentation/hdf5-json/latest
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-h5json
 	makedepends = python-sphinx-book-theme
 	makedepends = python-myst-parser
 	makedepends = python-h5py
-	source = https://github.com/HDFGroup/hdf5-json/archive/refs/tags/v2.0.0.tar.gz
-	md5sums = ceb458150ade863a09acf843e474d2cd
+	source = https://github.com/HDFGroup/hdf5-json/archive/refs/tags/v2.0.1.tar.gz
+	md5sums = fe62bfe26ddd7c791046c9def58a7107
 
 pkgname = python-h5json
 	depends = python>=3.11

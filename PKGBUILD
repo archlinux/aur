@@ -2,9 +2,10 @@
 
 pkgbase=python-h5json
 _pname=${pkgbase#python-}
+#_pyname=${_pname}
 _pyname=hdf5-json
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Specification and tools for representing HDF5 in JSON"
 arch=('any')
@@ -21,7 +22,7 @@ checkdepends=('python-pytest'
               'python-pytz')   # numpy <- h5py
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/HDFGroup/hdf5-json/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('ceb458150ade863a09acf843e474d2cd')
+md5sums=('fe62bfe26ddd7c791046c9def58a7107')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
