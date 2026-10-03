@@ -1,8 +1,10 @@
 --- a/configure/CMakeLists.txt
 +++ b/configure/CMakeLists.txt
-@@ -237,5 +237,4 @@
+@@ -237,7 +237,6 @@
  if(NOT WIN32)
      if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
        if(CMAKE_BUILD_TYPE MATCHES "(Release|RelWithDebInfo|MinSizeRel)")
 -            add_definitions(-D_FORTIFY_SOURCE=2)
              add_compile_options(-fstack-protector-strong)
+       elseif(CMAKE_BUILD_TYPE STREQUAL "Debug")
+           add_compile_options(-Wall -Wextra -Wformat -Werror=format-security -pedantic -Og -g)

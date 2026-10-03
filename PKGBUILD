@@ -5,14 +5,14 @@
 
 pkgname=tango-cpp
 _pkgname=cppTango
-pkgver="10.3.3"
-pkgrel=2
+pkgver="10.3.4.1"
+pkgrel=1
 groups=("tango-controls")
 pkgdesc="TANGO distributed control system - shared library"
 arch=("x86_64" "armv7h")
 url="https://gitlab.com/tango-controls/${_pkgname}"
 license=("GPL-3.0-or-later")
-depends=("glibc" "gcc-libs" "tango-idl" "omniorb>=4.3.0" "zeromq" "cppzmq" "libjpeg-turbo" "opentelemetry-cpp" "grpc" "catch2")
+depends=("glibc" "gcc-libs" "tango-idl" "omniorb>=4.3.0" "zeromq" "cppzmq" "libjpeg-turbo" "opentelemetry-cpp" "grpc")
 makedepends=("cmake>=3.18")
 optdepends=("doxygen: for building docs" "graphviz: for building docs")
 conflicts=("tango")
@@ -22,11 +22,9 @@ source=(
   "subscribe-event-inline.patch"
 )
 
-sha256sums=(
-  "ce76c424ed39d24ee24561c17e0596ee4099f29ebfcff9027621d46868c1564a"
-  "f83a617bda31176a0331189b2480f5a7cee867c2b53ce47698fdf4ce72768cc4"
-  "80a2d6dbc8acdf03eebb33f9f8f304319e017b1b4e347d8b75f064a6cbcee6f7"
-)
+sha256sums=('cb8ad7fc83061a4efa4ea1caeb4803f3acd641044e85295b850404708806b1d3'
+            '428bd91581e6d7f8caa73cd399fe66b69f996d68fc71c7ef382e79270a153e88'
+            '80a2d6dbc8acdf03eebb33f9f8f304319e017b1b4e347d8b75f064a6cbcee6f7')
 
 prepare() {
   cd "${_pkgname}-with-submodules-${pkgver}"
