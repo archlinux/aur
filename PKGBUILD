@@ -57,7 +57,9 @@ _mkbase() {
     ln -s "$srcdir/edgcpp/include_c++" "$base/include"
     ln -s "$srcdir/edgcpp/include_c99" "$base/include_c99"
     mkdir -p "$base/lib"
-    (cd "$base/lib" && sh "$srcdir/edgcpp/util/make_predef_macro_table")
+    # The generator sorts; C collation keeps the table's order the same
+    # whatever the build session's locale.
+    (cd "$base/lib" && LC_ALL=C sh "$srcdir/edgcpp/util/make_predef_macro_table")
 }
 
 build() {
