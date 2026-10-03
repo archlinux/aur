@@ -1,0 +1,5 @@
+[network-doctor-bin]
+source = "github"
+github = "heymaikol/network-doctor"
+use_latest_release = true
+prefix = "v"
