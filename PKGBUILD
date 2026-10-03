@@ -1,6 +1,6 @@
 # Maintainer: Ateles
 pkgname=cidr
-pkgver=2.3.0.r10.g95f3629
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="CLI tool for working with IPv4 and IPv6 CIDR ranges"
 arch=('x86_64' 'aarch64')
@@ -9,13 +9,8 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 
-source=("git+https://github.com/bschaatsbergen/cidr.git")
+source=("git+https://github.com/bschaatsbergen/cidr.git#commit=v${pkgver}")
 sha256sums=('SKIP')
-
-pkgver() {
-    cd "$pkgname"
-    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 build() {
     cd "$srcdir/$pkgname"
