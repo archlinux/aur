@@ -27,7 +27,7 @@ package() {
 	cp -r dist/* ${destination}
 	cp COPYING.txt ${destination}
 	cp whatsnew.txt ${destination}
-	cp doc/* ${destination}
+	cp -r doc/* ${destination}
 
 	install -D -m644 "src/qt/icons/emu80.png" "${pkgdir}/usr/share/pixmaps/emu80-git.png"
 	install -d -m755 ${destination}
