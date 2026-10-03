@@ -1,24 +1,41 @@
-# Maintainer: GI_Jack <GI_Jack@hackermail.com>
-
+# Maintainer: Leonid LEdnev <leonidledn at gmail dot com>
+# Contributor: GI_Jack <GI_Jack@hackermail.com>
 pkgname=python-lsassy
-_pypiname=lsassy
-pkgver=3.1.12
+pkgver=3.1.16
 pkgrel=1
 pkgdesc="Python library to remotely extract credentials on a set of hosts"
-url="https://github.com/Hackndo/lsassy"
+url="https://github.com/login-securite/lsassy"
 arch=('any')
 license=('MIT')
-depends=('python' 'impacket' 'python-netaddr' 'python-pypykatz')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry')
-source=(${_pypiname}-${pkgver}.tar.gz::"https://github.com/Hackndo/lsassy/archive/v${pkgver}.tar.gz")
-sha256sums=('d0c23d92a3bc2834ea26fafdcea7bfe5161ee4f2aac922c2055a42be052a56b2')
+depends=(
+  'python>=3.10'
+  'impacket>=0.11.0'
+  'python-netaddr>=1.3.0'
+  'python-pypykatz>=0.6.3'
+  'python-rich>=13.7.1'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  'python-poetry-core>=2.0.0'
+  'git'
+)
+source=("git+$url#tag=v$pkgver")
+b2sums=('3436002b59e1c70adfbc353850e6a0045eba48380d97966649fd326bb65422905323ae5d81c65bedf7a1b38e8459f2b233d34c4ac6e4ebcc861cf6a62c4bfdaa')
+
+prepare() {
+  git -C lsassy clean -dfx
+}
 
 build() {
-    cd "${_pypiname}-${pkgver}"
-    python -m build --wheel --no-isolation
+  cd lsassy
+  python -m build -wnx
 }
 
 package() {
-    cd "${_pypiname}-${pkgver}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+  cd lsassy
+  python -m installer -d "$pkgdir" dist/*.whl
+  install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
+# vim: ts=2 sw=2 et:
