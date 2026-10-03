@@ -1,11 +1,11 @@
 pkgname=fenriz-bin
 pkgver=0.1.18
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, stable tiling Wayland compositor (Binary Release)"
 arch=('x86_64')
 url="https://github.com/zackb/fenriz"
 license=('MIT')
-depends=('wlroots0.20' 'scenefx0.5' 'wayland' 'libxkbcommon' 'pixman' 'libinput' 'libxcb' 'xcb-util-wm')
+depends=('wlroots0.20' 'scenefx' 'wayland' 'libxkbcommon' 'pixman' 'libinput' 'libxcb' 'xcb-util-wm')
 optdepends=('xorg-xwayland: X11 application support'
             'fenriz-desktop: wallpaper, launcher, lock screen, notifications and OSDs'
             'fenriz-bar: status bar')

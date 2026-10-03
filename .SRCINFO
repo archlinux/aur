@@ -1,12 +1,12 @@
 pkgbase = fenriz-bin
 	pkgdesc = A fast, stable tiling Wayland compositor (Binary Release)
 	pkgver = 0.1.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zackb/fenriz
 	arch = x86_64
 	license = MIT
 	depends = wlroots0.20
-	depends = scenefx0.5
+	depends = scenefx
 	depends = wayland
 	depends = libxkbcommon
 	depends = pixman
