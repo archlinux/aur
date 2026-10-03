@@ -4,7 +4,7 @@
 # Contributor: Mark Collins
 
 pkgname="handy-bin"
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="A free, open source, and extensible speech-to-text application that works completely offline"
 url="https://handy.computer/"
@@ -36,7 +36,7 @@ optdepends=(
 )
 source=("${pkgname}-${pkgver}.deb::https://github.com/cjpais/Handy/releases/download/v${pkgver}/Handy_${pkgver}_amd64.deb"
         "LICENSE_$pkgver::https://raw.githubusercontent.com/cjpais/Handy/refs/tags/v$pkgver/LICENSE")
-b2sums=('a38b4fc71f6fab202c7df18a700bc7fb4a5d38fa78a1d19f381e77381a007333fbcad3133e5bc53cd8ceb7f28dcf99b3c382f81927550ce9cd7808e75f100d3f'
+b2sums=('9fc90aa25f9db869791272688f36dd06bb20d4f4fbed3fe9572e40dcdb3673a160d730042916c64f6f9965489fdfa5a1533aadfc421c798f0f49b2c2b1e8258a'
         '48678eca5b87a0b59038c8b343d84073207bca4390ad40ac81f2f96dc553cc66453f0f6331749d4686aa7153875bdaf2e08b2adf2bef023ee6044518955a7950')
 
 package() {
