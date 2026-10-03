@@ -1,11 +1,10 @@
 # Maintainer: Brad Arrington <bradla8@yahoo.com>
 #
 # HAMMER2 filesystem kernel module -- a port of DragonFly BSD's HAMMER2 to the
-# Linux kernel -- packaged with DKMS so it rebuilds on every kernel update.
 # ---------------------------------------------------------------------------
 
 pkgname=hammer2
-pkgver=r12.3fea709
+pkgver=r13.3fea709
 pkgrel=1
 pkgdesc="HAMMER2 filesystem kernel module (DragonFly BSD port), Linux 7.x only"
 arch=('x86_64')

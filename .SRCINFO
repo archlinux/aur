@@ -1,6 +1,6 @@
 pkgbase = hammer2
 	pkgdesc = HAMMER2 filesystem kernel module (DragonFly BSD port), Linux 7.x only
-	pkgver = r12.3fea709
+	pkgver = r13.3fea709
 	pkgrel = 1
 	url = https://github.com/bradla/hammer2_cluster_linux7
 	install = hammer2.install
