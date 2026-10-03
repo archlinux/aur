@@ -1,7 +1,7 @@
 pkgbase = python-pymca5
 	pkgdesc = Mapping and X-Ray Fluorescence Analysis
 	pkgver = 5.9.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/silx-kit/pymca
 	arch = x86_64
 	license = MIT
@@ -18,7 +18,6 @@ pkgbase = python-pymca5
 	depends = python-pyqt5
 	depends = python-opengl
 	depends = python-qtconsole
-	depends = python-pyqt5-webengine
 	optdepends = python-silx: silx-based plot widgets and HDF5 helpers
 	source = pymca-5.9.7.tar.gz::https://github.com/silx-kit/pymca/archive/refs/tags/v5.9.7.tar.gz
 	sha256sums = e2f1c8c5e98113c72e73c5d923f77062d63904a03c4f9bf46620f3d4e7a630c8
