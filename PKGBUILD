@@ -1,4 +1,4 @@
-# Maintainer: xscriptor <preciado.oscar.osorio@gmail.com>
+# Maintainer: xscriptor <x@xscriptor.com>
 pkgname=xwww-git
 pkgver=r0.0000000
 pkgrel=1
