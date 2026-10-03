@@ -1,7 +1,7 @@
 # Maintainer: chabandou <chabandou@gmail.com>
 pkgname=poise-bin
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Real-time system audio denoiser and voice isolator with TUI (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/chabandou/Poise-Voice-Isolator"
