@@ -1,0 +1,12 @@
+diff --git a/sdk/include/opentelemetry/sdk/metrics/aggregation/aggregation_config.h b/sdk/include/opentelemetry/sdk/metrics/aggregation/aggregation_config.h
+index 8c80715846..9026a2f2ed 100644
+--- a/sdk/include/opentelemetry/sdk/metrics/aggregation/aggregation_config.h
++++ b/sdk/include/opentelemetry/sdk/metrics/aggregation/aggregation_config.h
+@@ -3,6 +3,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <vector>
+ 
+ #include "opentelemetry/sdk/metrics/instruments.h"

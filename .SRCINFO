@@ -1,7 +1,7 @@
 pkgbase = opentelemetry-cpp
 	pkgdesc = The C++ OpenTelemetry client.
-	pkgver = 1.28.0
-	pkgrel = 4
+	pkgver = 1.29.0
+	pkgrel = 1
 	url = https://github.com/open-telemetry/opentelemetry-cpp
 	arch = x86_64
 	arch = armv7h
@@ -16,9 +16,13 @@ pkgbase = opentelemetry-cpp
 	depends = protobuf
 	depends = curl
 	depends = prometheus-cpp
-	source = opentelemetry-cpp-1.28.0.tar.gz::https://github.com/open-telemetry/opentelemetry-cpp/archive/refs/tags/v1.28.0.tar.gz
+	source = opentelemetry-cpp-1.29.0.tar.gz::https://github.com/open-telemetry/opentelemetry-cpp/archive/refs/tags/v1.29.0.tar.gz
 	source = opentelemetry-proto-1.11.0.tar.gz::https://github.com/open-telemetry/opentelemetry-proto/archive/refs/tags/v1.11.0.tar.gz
-	sha256sums = 8c359919175d77c502515f5a783907d031cc6a172e44426dbe9bee3c1532201e
+	source = predicate-factory-cstdint.patch
+	source = aggregation-config-include.patch
+	sha256sums = 63effc2b0aaef32c9543bd95c8c227f1c80da8248392a6d97e8a2c3ffbcf7ea1
 	sha256sums = cefb4cf0dee432bdd0eb25af73ed4c996b16e80baea7f98285c413184c1b92ad
+	sha256sums = 2b435b73ee51ef66bc4dd3279687a59498972513b7578203667936aaf81ec6cb
+	sha256sums = 5cdaf40de86829e325d33862a78d6da8c0097507b2bde3c0ae80813ededb8b90
 
 pkgname = opentelemetry-cpp
