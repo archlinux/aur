@@ -1,6 +1,6 @@
 # Maintainer: Its-Alex <me@itsalex.fr>
 pkgname=gp-tray
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="GlobalProtect VPN system-tray indicator for gpclient with multi-portal switching, desktop alerts and a systemd user service"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-gobject' 'gtk3' 'libayatana-appindicator' 'libnotify'
          'iproute2' 'systemd' 'xdg-utils')
 optdepends=('gnome-shell-extension-appindicator: tray icon on vanilla GNOME Shell')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('07a96b7618abd4e6f33b19678a5a7698a44ac4ad69cf7485f3b3d0b587390cf1')
+sha256sums=('5efc4279c8e4b40d80df3d2b21535da8a5a8da2e583188be97bb956ad7ade48d')
 
 package() {
   cd "$pkgname-$pkgver"
