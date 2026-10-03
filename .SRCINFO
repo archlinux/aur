@@ -1,0 +1,27 @@
+pkgbase = eon-git
+	pkgdesc = A light, modern editor for your terminal that doesn't want to be vim
+	pkgver = r499.03b2da5
+	pkgrel = 1
+	url = https://github.com/tomas/eon
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = patch
+	depends = pcre
+	depends = luajit
+	depends = glibc
+	provides = eon
+	conflicts = eon
+	options = !lto
+	source = git+https://github.com/tomas/eon.git
+	source = mlbuf::git+https://github.com/adsr/mlbuf.git
+	source = termbox::git+https://github.com/tomas/termbox.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = eon-git
