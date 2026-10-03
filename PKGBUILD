@@ -1,7 +1,7 @@
 # Maintainer: Cody Schafer <dev@codyps.com>
 
 pkgname=grpcurl
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 pkgdesc="Like cURL, but for gRPC: Command-line tool for interacting with gRPC servers"
 arch=(x86_64)
@@ -11,13 +11,17 @@ depends=('glibc')
 makedepends=('go')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/fullstorydev/grpcurl/archive/v$pkgver.tar.gz"
+	go127-test-reader.patch
 )
-sha384sums=('ebbc7970d57de02ce109d8f7e5e3dd9be94259159495f5ae55eb0f101c13b8e002673c4e6c8bc1673a07b23ea292119c')
+sha384sums=('d236810751aabf080fd8afc8d4e6db1db05708e6353f4f050ba87e7d705ec853d2fdd74523172d19c18a3f7959b28115'
+            '389ec1611231d4d92d83fb45afae75ca705420ec75ea32b41c1fffa40c0741247b8aba730cd6c11633d79962a3666e7a')
 # really, `grpcurl-bin` should be conflicting with us instead of the oposite
 conflicts=('grpcurl-bin')
 
 prepare() {
 	cd "$pkgname-$pkgver"
+	# Go 1.27 rejects a nil reader even when the parser is unused.
+	patch -Np1 -i "$srcdir/go127-test-reader.patch"
 	mkdir -p build
 }
 

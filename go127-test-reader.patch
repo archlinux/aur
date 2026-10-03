@@ -1,0 +1,11 @@
+--- a/format_test.go
++++ b/format_test.go
+@@ -128,7 +128,7 @@
+ 
+ 				verbose := verbosityLevel > 0
+ 
+-				_, formatter, err := RequestParserAndFormatter(format, source, nil, FormatOptions{IncludeTextSeparator: !verbose})
++				_, formatter, err := RequestParserAndFormatter(format, source, strings.NewReader(""), FormatOptions{IncludeTextSeparator: !verbose})
+ 				if err != nil {
+ 					t.Errorf("Failed to create parser and formatter: %v", err)
+ 					continue
