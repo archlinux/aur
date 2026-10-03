@@ -9,7 +9,7 @@
 # pushes it. Do not hand-edit those three fields in the AUR checkout.
 
 pkgname=ivar
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Mount the repos a feature spans into one directory, on one branch, for one agent session"
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ conflicts=('ivar-bin')
 #   -debug split package to carry.
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ac050d112abe18927944d891a70875d2ecfc073efa84baba2a9f60ab336c0438')
+sha256sums=('657c67b3788a782ab9afad611d64cf10628f793c2b02f14411bee5c85e42756d')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -48,6 +48,8 @@ build() {
     # Arch Rust packaging guidelines ask for.
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    # Without it the binary would report a `-dev` version (see build.rs).
+    export IVAR_RELEASE=1
     cargo build --frozen --release
 }
 
@@ -55,6 +57,7 @@ check() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export IVAR_RELEASE=1
     # Test fixtures force their own identity, but ivar's own commit paths
     # deliberately do not — a commit landing in a user's repository carries
     # that user's authorship, not the tool's. So they inherit the machine's
