@@ -32,6 +32,6 @@ package() {
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   cd "$pkgdir/usr/bin"
   ln pnpm pn
-  install -Dm755 <(echo -e '#!/bin/sh\n/usr/bin/pnpm dlx' '"$@"') pnpx
+  install -Dm755 <(echo -e '#!/bin/sh\nexec/usr/bin/pnpm dlx' '"$@"') pnpx
   ln pnpx pnx
 }
