@@ -1,0 +1,21 @@
+pkgbase = zls0.16
+	pkgdesc = A language server for Zig
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://zigtools.org/zls
+	arch = aarch64
+	arch = armv7h
+	arch = loong64
+	arch = powerpc64le
+	arch = riscv64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = sh
+	depends = zig0.16
+	source = zls-versioned.sh
+	source = https://github.com/zigtools/zls/archive/refs/tags/0.16.0/zls-0.16.0.tar.gz
+	sha256sums = b9e70d344290a58c6e8199a22232fbd2a8789cf76ddf0574f0a4ea647299ea68
+	sha256sums = e7c5936f5b3a057ce851be0876e4e259b5c4d02f9aae038cd24a5d6b586b029f
+
+pkgname = zls0.16
