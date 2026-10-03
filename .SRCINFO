@@ -1,6 +1,6 @@
 pkgbase = nvidia-580xx-utils
 	pkgver = 580.178.04
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
@@ -31,6 +31,7 @@ pkgname = nvidia-580xx-utils
 	install = nvidia-580xx-utils.install
 	depends = libglvnd
 	depends = egl-wayland
+	depends = egl-wayland2
 	depends = egl-gbm
 	depends = egl-x11
 	optdepends = nvidia-580xx-settings: configuration tool
