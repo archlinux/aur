@@ -3,7 +3,7 @@
 
 _reponame=mold
 pkgname=${_reponame}-git
-pkgver=2.42.1.r513.ga9c709b8
+pkgver=2.42.1.r602.g9e320c40
 pkgrel=1
 pkgdesc='A Modern Linker in Rust'
 arch=('x86_64')
@@ -19,12 +19,12 @@ depends=(
 makedepends=(
   cargo
   git
-  mold
 )
 source=("git+${url}.git")
 b2sums=('SKIP')
 provides=("$_reponame=$pkgver")
 conflicts=("$_reponame")
+options=(!lto)
 
 pkgver() {
   cd "$_reponame"
@@ -43,7 +43,6 @@ build() {
   cd "$_reponame"
   # Options below are used by both build() and check()
   export ZSTD_SYS_USE_PKG_CONFIG=1
-  RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   cargo build --release --locked --package mold-cli
 }
