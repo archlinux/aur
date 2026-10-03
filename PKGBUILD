@@ -3,7 +3,7 @@
 _pkgbase=theft
 pkgname=${_pkgbase}
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="property-based testing for C"
 arch=('i686' 'x86_64')
 url="https://github.com/silentbicycle/theft"
@@ -36,7 +36,7 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
-  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  make PREFIX=/usr PKGCONFIG_DST=/usr/lib/pkgconfig DESTDIR="${pkgdir}" install
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
   install -D -m644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   mkdir -p "$pkgdir/usr/share/doc/$_pkgbase"

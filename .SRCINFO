@@ -1,7 +1,7 @@
 pkgbase = theft
 	pkgdesc = property-based testing for C
 	pkgver = 0.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/silentbicycle/theft
 	arch = i686
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = theft
 	sha1sums = 2cf316b13cd74e47857a0a6ad2574aab966d3de2
 
 pkgname = theft
-
