@@ -1,12 +1,20 @@
 pkgbase = notebook
 	pkgdesc = Markdown Desktop Wiki
-	pkgver = 0.8
-	pkgrel = 1
+	pkgver = 0.9
+	pkgrel = 0
 	url = https://codeberg.org/tuxnix/notebook
 	arch = any
-	license = GLPv2-only
+	license = GPL-2.0-only
 	makedepends = git
 	depends = pandoc
+	depends = python
+	optdepends = retext: Markdown-Editor for writing notebooks
+	optdepends = python-pyenchant: Spell checking for ReText
+	optdepends = aspell-en: English dictionary
+	optdepends = aspell-de: German dictionary
+	optdepends = python-pyqt6-webengine: Web engine for ReText
+	optdepends = python-flask: For serving sides from browser to editor
+	optdepends = nodejs: JavaScript-functions browser like search
 	source = git+https://codeberg.org/tuxnix/notebook
 	sha512sums = SKIP
 
