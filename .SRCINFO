@@ -7,7 +7,6 @@ pkgbase = geotagging
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
-	makedepends = ninja
 	makedepends = qt6-tools
 	depends = exiv2
 	depends = qt6-webengine

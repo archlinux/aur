@@ -9,12 +9,19 @@ arch=('x86_64')
 url='https://github.com/jmlich/geotagging'
 license=('GPL3')
 depends=('exiv2' 'qt6-webengine')
-makedepends=('cmake' 'git' 'ninja' 'qt6-tools')
+makedepends=('cmake' 'git' 'qt6-tools')
 source=("https://github.com/jmlich/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('73b09bb8803fc96d6c6e0e4630921d1885a8fd6fa5420f20023788bf4886d939')
 
 build() {
-  cmake -S $pkgname-$pkgver -B build -G Ninja -DCMAKE_INSTALL_PREFIX='/usr'
+  local cmake_options=(
+    -B build
+    -S $pkgname-$pkgver
+    -W no-author
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+  )
+  cmake "${cmake_options[@]}"
   cmake --build build
 }
 
