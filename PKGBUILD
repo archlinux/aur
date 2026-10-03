@@ -1,6 +1,6 @@
 # Maintainer: Wyrd Company <support@wyrd.company>
 pkgname='toha-bin'
-pkgver='0.1.0'
+pkgver='0.2.0'
 pkgrel=1
 pkgdesc='Generate projects and files from templates'
 arch=('x86_64' 'aarch64')
@@ -9,10 +9,10 @@ license=('Apache-2.0')
 provides=('toha')
 conflicts=('toha')
 options=('!strip')
-source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://repo.wyrd.foo/artifacts/toha/0.1.0/toha_0.1.0_linux_x86_64.tar.gz")
-source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://repo.wyrd.foo/artifacts/toha/0.1.0/toha_0.1.0_linux_aarch64.tar.gz")
-sha256sums_x86_64=('6ff38c2a7947e699e20932117da0e5f70062fa0465127f96b5690694eb66794f')
-sha256sums_aarch64=('bf92809313b2daa84a438422d70e793a884afeeaa60dab5c2c0135682f4e6382')
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://repo.wyrd.foo/artifacts/toha/0.2.0/toha_0.2.0_linux_x86_64.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://repo.wyrd.foo/artifacts/toha/0.2.0/toha_0.2.0_linux_aarch64.tar.gz")
+sha256sums_x86_64=('13b35e0dbf09bd2c8522a83dc334759b928a2d1a8a0ccd40d2d139da713a052f')
+sha256sums_aarch64=('815c30e5dca44df84ea734e1725bdd6e31fc23e8ba8d980d696a78931ebaaa52')
 
 package() {
   install -Dm755 "${srcdir}/toha" "${pkgdir}/usr/bin/toha"
