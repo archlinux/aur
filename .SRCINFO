@@ -1,0 +1,21 @@
+pkgbase = paseo-tray-git
+	pkgdesc = System tray controller for the Paseo daemon
+	pkgver = 0.1.0.r2.g82ec9fb
+	pkgrel = 1
+	url = https://github.com/ArcticLampyrid/paseo-tray
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = fontconfig
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libxkbcommon
+	optdepends = paseo: the CLI the tray controls (not needed if configured to use another path)
+	provides = paseo-tray
+	conflicts = paseo-tray
+	source = paseo-tray::git+https://github.com/ArcticLampyrid/paseo-tray.git
+	sha256sums = SKIP
+
+pkgname = paseo-tray-git
