@@ -1,0 +1,73 @@
+# Kahawai, all-in-one: hub, mediahost and transcoder in one process, run by
+# kahawai.service as the "kahawai" user. Edit it in place: pacman keeps your
+# copy on upgrade and puts a changed default beside it as kahawai.toml.pacnew.
+#
+# Every key has a default, but the directories must be named here: kahawai's
+# own defaults are not where the systemd units let it write. Naming them here
+# also makes a command run by hand (sudo -u kahawai kahawai hub init-admin)
+# agree with the service. Move one and give its unit a drop-in with
+# ReadWritePaths= for the new place.
+
+[gstreamer]
+# dtsdec decodes only the lossy core of DTS-HD yet outranks the full decoder,
+# so DTS-HD MA tracks would be catalogued and played as lossy 5.1.
+# `sudo kahawai --config /etc/kahawai/kahawai.toml doctor --fix` adds what this
+# machine's own hardware needs on top.
+demote_decoders = ["dtsdec"]
+
+[hub]
+data_dir = "/var/lib/kahawai/hub"
+# The web UI and client API listen on 127.0.0.1:8420. Keep it on loopback and
+# put a TLS reverse proxy in front before exposing it beyond this machine.
+# Satellites (other mediahosts and transcoders) connect to port 8421.
+
+[mediahost]
+name = "local"
+state_dir = "/var/lib/kahawai/mediahost"
+
+# Collections: one block per folder tree of media. Kahawai only ever reads
+# the roots, and the kahawai user needs read access to them, for example:
+#
+#   setfacl -R -m u:kahawai:rX -m d:u:kahawai:rX /srv/media
+#
+# media_type is one of movies, series, anime or music; it picks how files are
+# identified and where metadata comes from. A collection may span several
+# roots, and every collection needs a unique name.
+#
+# [[mediahost.collections]]
+# name = "movies"
+# media_type = "movies"
+# roots = ["/srv/media/movies"]
+#
+# [[mediahost.collections]]
+# name = "anime"
+# media_type = "anime"
+# roots = ["/srv/media/anime", "/mnt/archive/anime"]
+#
+# After adding one, `systemctl restart kahawai`, then in the web UI create a
+# library from it under Administration -> Libraries. Users see libraries,
+# not collections.
+
+[transcoder]
+state_dir = "/var/lib/kahawai/transcoder"
+
+# Running the roles separately instead (kahawai-hub.service,
+# kahawai-mediahost.service, kahawai-transcoder.service, in any combination on
+# this machine): each reads this same file, and only its own section. A
+# separate mediahost needs the hub's satellite address, even on this machine;
+# a transcoder defaults to localhost:8421. On another machine than the hub,
+# use the hub's name, and list that name on the hub for its certificate:
+#
+#   [hub]
+#   hostnames = ["kahawai.example.lan"]
+#
+#   [[mediahost.hubs]]
+#   id = "home"
+#   address = "kahawai.example.lan:8421"   # or "localhost:8421"
+#
+#   [transcoder]
+#   hub = "kahawai.example.lan:8421"
+#
+# A satellite prints an enrollment code on its first connection
+# (journalctl -u kahawai-mediahost); approve it in the hub's administration
+# page. kahawai.service conflicts with the separate units: it runs all three.

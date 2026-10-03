@@ -1,0 +1,2 @@
+# The config may hold API keys: readable by the service, not by everyone.
+z /etc/kahawai/kahawai.toml 0640 root kahawai -

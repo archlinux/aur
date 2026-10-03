@@ -1,0 +1,12 @@
+post_install() {
+  cat <<'MSG'
+==> Kahawai runs as the "kahawai" user and reads /etc/kahawai/kahawai.toml.
+    Add collections there and give that user read access to them, then:
+      systemctl enable --now kahawai.service    # all-in-one
+    or run roles separately: kahawai-hub, kahawai-mediahost and
+    kahawai-transcoder.service (see the end of the config).
+==> Create the first administrator once the hub runs: open
+    http://127.0.0.1:8422 on this machine, or
+      sudo -u kahawai kahawai --config /etc/kahawai/kahawai.toml hub init-admin
+MSG
+}

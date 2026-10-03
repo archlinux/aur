@@ -1,0 +1,12 @@
+# Track only the package sources; makepkg's downloads, src/, pkg/ and
+# built packages stay out.
+*
+!.gitignore
+!.SRCINFO
+!LICENSE
+!PKGBUILD
+!kahawai.install
+!kahawai.toml
+!kahawai.sysusers
+!kahawai.tmpfiles
+!*.service

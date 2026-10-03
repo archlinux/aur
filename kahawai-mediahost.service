@@ -1,0 +1,52 @@
+[Unit]
+Description=Kahawai mediahost
+Documentation=https://github.com/iksteen/kahawai
+Wants=network-online.target
+After=network-online.target kahawai-hub.service
+Conflicts=kahawai.service
+
+[Service]
+Type=exec
+User=kahawai
+Group=kahawai
+ExecStart=/usr/bin/kahawai --config /etc/kahawai/kahawai.toml mediahost
+Restart=on-failure
+RestartSec=5s
+
+# Where it may write. The directories match those /etc/kahawai/kahawai.toml
+# names; move one there and add ReadWritePaths= for it in a drop-in.
+StateDirectory=kahawai/mediahost
+CacheDirectory=kahawai
+RuntimeDirectory=kahawai-mediahost
+RuntimeDirectoryMode=0700
+Environment=XDG_CACHE_HOME=/var/cache/kahawai
+Environment=XDG_RUNTIME_DIR=/run/kahawai-mediahost
+# Headless OpenGL for HDR tone mapping.
+Environment=GST_GL_WINDOW=surfaceless
+# VA-API and V4L2 hardware codecs. NVIDIA's device nodes need no group.
+SupplementaryGroups=render video
+UMask=0027
+
+# Media roots are read, never written: everything but the directories above
+# is read-only, /home included. No PrivateDevices= (it would hide the GPU)
+# and no MemoryDenyWriteExecute= (GStreamer's ORC compiles SIMD code at run
+# time).
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=yes
+NoNewPrivileges=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+
+[Install]
+WantedBy=multi-user.target
