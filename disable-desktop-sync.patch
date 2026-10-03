@@ -1,10 +1,9 @@
-diff -ura package.orig/fluorine-manager package.new/fluorine-manager
---- package.orig/fluorine-manager	2026-09-05 03:24:58.000000000 +0200
-+++ package.new/fluorine-manager	2026-09-06 23:19:15.742000000 +0200
-@@ -26,124 +26,7 @@
- # This gives instances a stable symlink target that won't break if the user
- # moves or deletes the original tarball extraction directory.
- FLUORINE_DATA="${HOME}/.local/share/fluorine"
+--- fluorine-manager	2026-10-03 01:33:33.000000000 +0200
++++ fluorine-manager	2026-10-03 14:13:24.919000000 +0200
+@@ -32,139 +32,7 @@
+     *)  FLUORINE_DATA_HOME="${HOME}/.local/share" ;;
+ esac
+ FLUORINE_DATA="${FLUORINE_DATA_HOME}/fluorine"
 -BIN_DST="${FLUORINE_DATA}/bin"
 -
 -# Guard: if we ARE already running from the installed location, skip the sync.
@@ -76,11 +75,6 @@ diff -ura package.orig/fluorine-manager package.new/fluorine-manager
 -            exit 1
 -        fi
 -
--        # Do not retain stale bundled OpenSSL runtimes from older releases.
--        # TLS should resolve against the host so certificate handling can be
--        # updated by the OS instead of being pinned to our old package.
--        rm -f "${BIN_DST}"/lib/libssl.so* "${BIN_DST}"/lib/libcrypto.so* 2>/dev/null || true
--
 -        # Refresh the manifest at the destination so the next update has it.
 -        cp -af "${MANIFEST}" "${BIN_DST}/fluorine-manifest.txt"
 -        echo "${CURRENT_VER}" > "${MARKER}"
@@ -93,14 +87,34 @@ diff -ura package.orig/fluorine-manager package.new/fluorine-manager
 -    fi
 -fi
 -
+-# Overlay updates preserve files within lib/, including runtimes retired from
+-# the bundle. Remove these known legacy copies even when launching directly
+-# from the installed directory or when the bundle version has not changed.
+-# GBM must match the host's Mesa/DRI drivers; TLS uses the host OpenSSL runtime.
+-# Fontconfig must also match the host configuration it parses.
+-rm -f "${BIN_DST}"/lib/libgbm.so* \
+-      "${BIN_DST}"/lib/libssl.so* "${BIN_DST}"/lib/libcrypto.so* \
+-      "${BIN_DST}"/lib/libfontconfig.so* 2>/dev/null || true
+-# Retire partial NSS/NSPR bundles too, including copies from older installers.
+-rm -f "${BIN_DST}"/lib/lib{nss3,nssutil3,smime3,ssl3,nspr4,plc4,plds4,softokn3,freebl3,freeblpriv3,nssckbi,nssdbm3}.so* \
+-      2>/dev/null || true
+-# SteamEnv now preserves Proton's environment without an LD_PRELOAD interposer.
+-rm -f "${BIN_DST}/locale/x86_64/libfluorine_locale.so" \
+-      "${BIN_DST}/locale/i386/libfluorine_locale.so" 2>/dev/null || true
+-
 -# ── Install icon + desktop file for Wayland taskbar/decoration ──
 -ICON_SRC="${BIN_DST}/icons/com.fluorine.manager.png"
--ICON_DST="${HOME}/.local/share/icons/hicolor/256x256/apps/com.fluorine.manager.png"
+-ICON_DST="${FLUORINE_DATA_HOME}/icons/hicolor/256x256/apps/com.fluorine.manager.png"
 -DESKTOP_SRC="${BIN_DST}/icons/com.fluorine.manager.desktop"
--DESKTOP_DST="${HOME}/.local/share/applications/com.fluorine.manager.desktop"
--if [ -f "${ICON_SRC}" ] && [ ! -f "${ICON_DST}" ]; then
+-DESKTOP_DST="${FLUORINE_DATA_HOME}/applications/com.fluorine.manager.desktop"
+-if [ -f "${ICON_SRC}" ]; then
 -    mkdir -p "$(dirname "${ICON_DST}")"
--    cp -f "${ICON_SRC}" "${ICON_DST}"
+-    ICON_TMP="${ICON_DST}.tmp.$$"
+-    if cp -f "${ICON_SRC}" "${ICON_TMP}"; then
+-        mv -f "${ICON_TMP}" "${ICON_DST}"
+-    else
+-        rm -f "${ICON_TMP}"
+-    fi
 -fi
 -if [ -f "${DESKTOP_SRC}" ]; then
 -    mkdir -p "$(dirname "${DESKTOP_DST}")"
@@ -127,25 +141,3 @@ diff -ura package.orig/fluorine-manager package.new/fluorine-manager
  
  # Run from the synced location.
  RUN="${BIN_DST}"
-@@ -174,8 +57,8 @@
- # like xsi:nil and newer generic families. Use a minimal compatible config for
- # Fluorine itself; launched games/tools restore the user's original env.
- if [ -z "${FLUORINE_DISABLE_FONTCONFIG_FIX:-}" ]; then
--    mkdir -p "${RUN}/etc/fonts"
--    cat > "${RUN}/etc/fonts/fonts.conf" <<EOF
-+    mkdir -p "${FLUORINE_DATA}/bin/etc/fonts"
-+    cat > "${FLUORINE_DATA}/bin/etc/fonts/fonts.conf" <<EOF
- <?xml version="1.0"?>
- <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
- <fontconfig>
-@@ -207,8 +90,8 @@
-   </alias>
- </fontconfig>
- EOF
--    export FONTCONFIG_FILE="${RUN}/etc/fonts/fonts.conf"
--    export FONTCONFIG_PATH="${RUN}/etc/fonts"
-+    export FONTCONFIG_FILE="${FLUORINE_DATA}/bin/etc/fonts/fonts.conf"
-+    export FONTCONFIG_PATH="${FLUORINE_DATA}/bin/etc/fonts"
- else
-     unset FONTCONFIG_FILE FONTCONFIG_PATH
- fi

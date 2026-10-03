@@ -3,7 +3,7 @@
 
 pkgname=fluorine-manager-bin
 pkgdesc='A native Linux mod manager for Bethesda and other games, built on MO2'
-pkgver=0.3.4 # renovate: datasource=github-tags depName=SulfurNitride/Fluorine-Manager versioning=semver
+pkgver=0.4.0 # renovate: datasource=github-tags depName=SulfurNitride/Fluorine-Manager versioning=semver
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/SulfurNitride/Fluorine-Manager'
@@ -14,21 +14,20 @@ depends=('mesa' 'gcc-libs' 'hicolor-icon-theme')
 optdepends=('steam: allows the usage of Proton')
 options=(!strip)
 
-_releaseArchive="Fluorine-Manager.zip"
+_releaseArchive="fluorine-manager-${pkgver}.tar.gz"
 source=("${_releaseArchive}::https://github.com/SulfurNitride/Fluorine-Manager/releases/download/v${pkgver}/${_releaseArchive}"
         "LICENSE::https://raw.githubusercontent.com/SulfurNitride/Fluorine-Manager/refs/tags/v${pkgver}/LICENSE.txt"
         "disable-desktop-sync.patch")
-sha256sums=('5d5de073f10ebaa998db24694cb2fcd04ec40fa07f65651e8f712254306538b8'
+sha256sums=('ae048a1521b2e6b382b23c8b0b44ab3d8cc99cd4ccd028d5e21975f6b72ce5d1'
             '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903'
-            '4369d2dfe6d61cc2b907c6441fa120b58e84011246be18cb1c470458ea4209b9')
+            'f76a7e83ed721beccb23a36241f40485352045ac82632a594f319504a359bfec')
 noextract=("${_releaseArchive}")
 
 prepare() {
-  mkdir -p "${srcdir}/fluorine-manager"
-  bsdtar -xf "${_releaseArchive}" -C "${srcdir}/fluorine-manager"
+  bsdtar -xf "${_releaseArchive}" -C "${srcdir}"
 
   # remove the post-installation sync to the user home from the wrapper script
-  patch -d "${srcdir}/fluorine-manager" -tNp1 -i ../disable-desktop-sync.patch
+  patch -d "${srcdir}/fluorine-manager" -tNp0 -i ../disable-desktop-sync.patch
 }
 
 package() {
