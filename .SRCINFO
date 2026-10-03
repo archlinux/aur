@@ -15,6 +15,6 @@ pkgbase = animaple-bin
 	options = !strip
 	options = !debug
 	source = animaple-bin-2.0.0-x86_64.tar.gz::https://github.com/MapleProjects/AniMaple/releases/download/v2.0.0/animaple-v2.0.0-linux-x86_64.tar.gz
-	sha256sums = fa3f633b6066de3696a568ce886da91e1ecffc953345c3592e127404269cabc2
+	sha256sums = ba2cc66be150194bb6c8e64da132d46806180b3d458d55cfd2c252c00c8a9572
 
 pkgname = animaple-bin

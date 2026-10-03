@@ -14,7 +14,7 @@ source=(
     "$pkgname-$pkgver-$arch.tar.gz::$url/releases/download/v$pkgver/animaple-v$pkgver-linux-$arch.tar.gz"
 )
 sha256sums=(
-    'fa3f633b6066de3696a568ce886da91e1ecffc953345c3592e127404269cabc2'
+    'ba2cc66be150194bb6c8e64da132d46806180b3d458d55cfd2c252c00c8a9572'
 )
 
 package() {
