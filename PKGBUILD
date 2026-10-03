@@ -1,6 +1,6 @@
 # Maintainer: l1ngus
 pkgname=lucid-spell
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="LLM-powered desktop translator."
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=('rust' 'cargo' 'nodejs' 'npm' 'pkgconf' 'openssl')
 options=('!strip' '!debug' '!lto')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e76b30d7a8ba486757172c2200fab827dab06ef75c222244595e9b261f459c15')
+sha256sums=('30b9131e988bc4ac9a5fc4a1c3d3e29c6ef43f23f7b37e06887d541599dfb6c7')
 
 prepare() {
   cd "$pkgname-$pkgver"
