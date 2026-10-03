@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<svg width="116" height="116" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0">
+ <metadata id="metadata7">image/svg+xmlMupen64plus Program IconAugust 17, 2008Tillin9Copyright (C) Tillin9GPL (v2 or later)This icon is original work created by Tillin9 for Mupen64plus.
+
+This icon is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or  (at your option) any later version.
+
+You may also copy it under the Creative Common Attribution-ShareAlike 3.0 license, as found here:   http://creativecommons.org/licenses/by-sa/3.0/
+
+It is the author&#x27;s desire that SVG / vector format copies be GPLed and rasterizations licensed under Creative Commons. This is because there are no clear guidelines to applying the GPL to artwork, whereas vector data consitutes source.</metadata>
+ <defs id="defs5">
+  <linearGradient id="linearGradient3848">
+   <stop id="stop3850" offset="0" stop-color="#980000"/>
+   <stop id="stop3852" offset="1" stop-color="#ff0000"/>
+  </linearGradient>
+  <linearGradient id="linearGradient3840">
+   <stop id="stop3842" offset="0" stop-color="#980000"/>
+   <stop id="stop3844" offset="1" stop-color="#ff0000"/>
+  </linearGradient>
+  <linearGradient id="linearGradient3832">
+   <stop id="stop3834" offset="0" stop-color="#980000"/>
+   <stop id="stop3836" offset="1" stop-color="#ff0000"/>
+  </linearGradient>
+  <linearGradient id="linearGradient3824">
+   <stop id="stop3826" offset="0" stop-color="#980000"/>
+   <stop id="stop3828" offset="1" stop-color="#ff0000"/>
+  </linearGradient>
+  <linearGradient id="linearGradient3802">
+   <stop id="stop3804" offset="0" stop-color="#000000"/>
+   <stop id="stop3806" offset="1" stop-color="#ffffff"/>
+  </linearGradient>
+  <linearGradient id="linearGradient3786">
+   <stop id="stop3788" offset="0" stop-color="#000000"/>
+   <stop id="stop3790" offset="1" stop-color="#ffffff"/>
+  </linearGradient>
+  <linearGradient id="linearGradient2552" x1="0.5" x2="0.5" xlink:href="#linearGradient3786" y1="-0.15" y2="1"/>
+  <linearGradient id="linearGradient2555" x1="0.5" x2="0.5" xlink:href="#linearGradient3786" y1="-0.15" y2="1"/>
+  <linearGradient id="linearGradient2558" x1="0.74" x2="0" xlink:href="#linearGradient3832" y1="0.78" y2="0.57"/>
+  <linearGradient id="linearGradient2561" x1="0" x2="2" xlink:href="#linearGradient3824" y1="0.83" y2="0.5"/>
+  <linearGradient id="linearGradient2564" x1="0.35" x2="1.04" xlink:href="#linearGradient3840" y1="0.63" y2="0.98"/>
+  <linearGradient id="linearGradient2567" x1="0.24" x2="0.72" xlink:href="#linearGradient3802" y1="0.79" y2="0.13"/>
+  <linearGradient id="linearGradient2570" x1="0" x2="1.33" xlink:href="#linearGradient3848" y1="0.44" y2="0.94"/>
+  <linearGradient id="linearGradient2573" x1="0.76" x2="0.28" xlink:href="#linearGradient3802" y1="0.79" y2="0.13"/>
+  <linearGradient id="linearGradient2576" x1="0.5" x2="0.5" xlink:href="#linearGradient3786" y1="-0.15" y2="1"/>
+  <linearGradient id="linearGradient2579" x1="0.26" x2="1" xlink:href="#linearGradient3832" y1="0.78" y2="0.57"/>
+  <linearGradient id="linearGradient2582" x1="1" x2="-1" xlink:href="#linearGradient3824" y1="0.83" y2="0.5"/>
+  <linearGradient id="linearGradient2585" x1="0.65" x2="-0.04" xlink:href="#linearGradient3840" y1="0.63" y2="0.98"/>
+  <linearGradient id="linearGradient2588" x1="0.76" x2="0.28" xlink:href="#linearGradient3802" y1="0.79" y2="0.13"/>
+  <linearGradient id="linearGradient2591" x1="1" x2="-0.33" xlink:href="#linearGradient3848" y1="0.44" y2="0.94"/>
+  <linearGradient id="linearGradient2594" x1="0.24" x2="0.72" xlink:href="#linearGradient3802" y1="0.79" y2="0.13"/>
+  <linearGradient id="linearGradient2597" x1="0.5" x2="0.5" xlink:href="#linearGradient3786" y1="-0.15" y2="1"/>
+ </defs>
+ <g class="layer" display="inline" transform="translate(4,0)">
+  <title>Layer 1</title>
+  <path d="m54.01,0.73c-0.27,0.01 -0.54,0.08 -0.78,0.19l-13.32,6.5c-0.39,0.2 -0.71,0.51 -0.9,0.91l-8.94,17.44l-13.03,-6.35c-0.55,-0.27 -1.2,-0.27 -1.75,0l-13.31,6.5c-0.7,0.34 -1.13,1.04 -1.13,1.81l0,61c0,0.77 0.43,1.48 1.13,1.82l13.31,6.5c0.55,0.26 1.2,0.26 1.75,0l13.34,-6.5c0.7,-0.34 1.13,-1.05 1.13,-1.82l0,-9.9c0.43,0.1 0.88,0.05 1.28,-0.13l6,-2.87l0,31.4c-0.01,0.77 0.43,1.48 1.12,1.82l13.32,6.5c0.55,0.26 1.19,0.26 1.75,0l13.34,-6.5c0.69,-0.34 1.13,-1.05 1.13,-1.82l0,-31.4l6,2.87c0.38,0.19 0.82,0.24 1.25,0.16l0,9.87c-0.01,0.77 0.43,1.48 1.12,1.82l13.34,6.5c0.56,0.26 1.2,0.26 1.75,0l13.32,-6.5c0.69,-0.34 1.13,-1.05 1.12,-1.82l0,-61c0.01,-0.77 -0.43,-1.47 -1.12,-1.81l-13.32,-6.5c-0.55,-0.27 -1.19,-0.27 -1.75,0l-13,6.35l-8.93,-17.44c-0.2,-0.4 -0.52,-0.71 -0.91,-0.91l-13.34,-6.5c-0.31,-0.14 -0.64,-0.21 -0.97,-0.19l0,0z" fill="#000000" fill-rule="evenodd" id="path4621" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="4"/>
+  <path d="m54.1,15.73l-13.32,-6.5l13.32,-6.5l13.33,6.5l-13.33,6.5z" fill="url(#linearGradient2597)" fill-rule="evenodd" id="path3794" stroke="#ffffff" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="1.5"/>
+  <path d="m54.1,15.73l-13.32,-6.5l-12.3,24l13.32,6.5l12.3,-24z" fill="url(#linearGradient2594)" fill-rule="evenodd" id="path3810" stroke="#ffffff" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="1.5"/>
+  <path d="m54.1,39.73l0,-24l-12.3,24l-12.3,-12l10.25,20l14.35,-8l0,0" fill="url(#linearGradient2591)" fill-rule="evenodd" id="path3734" stroke="#ffffff" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="1.5"/>
+  <path d="m16.17,34.23l13.33,-6.5l12.3,24l-13.32,6.5l-12.31,-24z" fill="url(#linearGradient2588)" fill-rule="evenodd" id="path3720" stroke="#ffffff" stroke-linejoin="round" stroke-miterlimit="4"/>
+  <path d="m31.9,76.9l8.88,-4.26l0,-4.41l-8.88,8.67z" fill="url(#linearGradient2585)" fill-rule="evenodd" id="path3736" stroke="#ffffff" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="1.5"/>
+  <path d="m29.5,75.73l0,13l-13.33,6.5l0,-39" fill="url(#linearGradient2582)" fill-rule="evenodd" id="path3742" stroke="#ffffff" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="1.5"/>
+  <path d="m40.78,107.23l13.32,6.5l0,-61l-13.32,-6.5l-12.3,12l-12.31,-24l-13.32,-6.5l0,61l13.32,6.5l0,-39l8.9,17.34l6.83,3.34l8.88,-8.68l0,39z" fill="url(#linearGradient2579)" fill-rule="evenodd" id="path2384" opacity="0.96" stroke="#ffffff" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="1.5"/>
+  <path d="m16.17,34.23l-13.32,-6.5l13.32,-6.5l13.33,6.5l-13.33,6.5z" fill="url(#linearGradient2576)" fill-rule="evenodd" id="path3796" stroke="#ffffff" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="1.5"/>
+  <path d="m54.1,15.73l13.33,-6.5l12.3,24l-13.32,6.5l-12.31,-24z" fill="url(#linearGradient2573)" fill-rule="evenodd" id="path3889" stroke="#ffffff" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="1.5"/>
+  <path d="m54.1,39.73l0,-24l12.31,24l12.3,-12l-10.25,20l-14.36,-8l0,0" fill="url(#linearGradient2570)" fill-rule="evenodd" id="path3891" stroke="#ffffff" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="1.5"/>
+  <path d="m92.03,34.23l-13.32,-6.5l-12.3,24l13.32,6.5l12.3,-24z" fill="url(#linearGradient2567)" fill-rule="evenodd" id="path3893" stroke="#ffffff" stroke-linejoin="round" stroke-miterlimit="4"/>
+  <path d="m76.31,76.9l-8.88,-4.26l0,-4.41l8.88,8.67z" fill="url(#linearGradient2564)" fill-rule="evenodd" id="path3895" stroke="#ffffff" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="1.5"/>
+  <path d="m78.71,75.73l0,13l13.32,6.5l0,-39" fill="url(#linearGradient2561)" fill-rule="evenodd" id="path3897" stroke="#ffffff" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="1.5"/>
+  <path d="m67.43,107.23l-13.33,6.5l0,-61l13.33,-6.5l12.3,12l12.3,-24l13.33,-6.5l0,61l-13.33,6.5l0,-39l-8.89,17.34l-6.83,3.34l-8.88,-8.68l0,39z" fill="url(#linearGradient2558)" fill-rule="evenodd" id="path3899" stroke="#ffffff" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="1.5"/>
+  <path d="m92.03,34.23l13.33,-6.5l-13.33,-6.5l-13.32,6.5l13.32,6.5z" fill="url(#linearGradient2555)" fill-rule="evenodd" id="path3901" stroke="#ffffff" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="1.5"/>
+  <path d="m54.1,52.73l-13.32,-6.5l13.32,-6.5l13.33,6.5l-13.33,6.5z" fill="url(#linearGradient2552)" fill-rule="evenodd" id="path3714" stroke="#ffffff" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="1.5"/>
+ </g>
+</svg>

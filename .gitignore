@@ -4,11 +4,4 @@ pkg/
 
 # Archives
 *.zip
-*.tar.gz
-*.7z
-
-# Icon files
-*.ico
-
-# Packages
 *.pkg.tar.*
