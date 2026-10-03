@@ -2,7 +2,7 @@
 pkgname=kde-window-moves-git
 _pkgname=${pkgname%-git}
 pkgver=r139.b251df0
-pkgrel=1
+pkgrel=2
 pkgdesc="Keyboard-driven window move, resize and zoom shortcuts for KDE Plasma on Wayland"
 arch=('any')
 url="https://github.com/ixnewton/kde-window-moves"

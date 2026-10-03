@@ -1,11 +1,30 @@
 post_install() {
-  cat <<'EOF'
+  # Best effort: run the per-user setup automatically when the package is
+  # installed from a running user session (e.g. 'yay -S' elevates with sudo,
+  # which exposes SUDO_USER and the session bus at /run/user/$UID/bus).
+  uid=""
+  home=""
+  if [ -n "$SUDO_USER" ]; then
+    uid=$(id -u "$SUDO_USER" 2>/dev/null) || uid=""
+    home=$(getent passwd "$SUDO_USER" 2>/dev/null | cut -d: -f6)
+  fi
+  if [ -n "$uid" ] && [ -n "$home" ] && [ -S "/run/user/$uid/bus" ]; then
+    echo "==> Running the per-user setup for $SUDO_USER..."
+    runuser -u "$SUDO_USER" -- env \
+        XDG_RUNTIME_DIR="/run/user/$uid" \
+        DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
+        HOME="$home" \
+        /usr/bin/kde-window-moves-setup.sh \
+      || echo "NOTE: automatic setup failed - run 'kde-window-moves-setup.sh' from your session."
+  else
+    cat <<'EOF'
 ==> kde-window-moves: run once per user from a KDE session to enable
     ydotoold, set the flat pointer profile and register the global
     shortcuts:
       kde-window-moves-setup.sh
     (Shortcuts then appear in System Settings > Shortcuts >"KDE Window Moves".)
 EOF
+  fi
 }
 
 post_upgrade() {
