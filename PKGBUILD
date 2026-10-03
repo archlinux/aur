@@ -2,7 +2,7 @@
 # Contributor: codepunk <codepunk AT noreply DOT codeberg DOT org>
 
 pkgname=hltb
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="HowLongToBeat CLI tool"
 archive=how-long-to-beat-cli
@@ -13,6 +13,8 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('SKIP')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 
 prepare() {
     cd "${archive}"
