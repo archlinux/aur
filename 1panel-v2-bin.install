@@ -1,0 +1,152 @@
+post_install() {
+    local cred_file="/opt/1panel/.install-credentials"
+
+    # 已存在凭据备份说明是升级/已初始化,不再重新生成,避免覆盖数据库中持久化凭据
+    if [[ -f "$cred_file" ]]; then
+        # shellcheck source=/dev/null
+        source "$cred_file"
+        LOCAL_IP=$(_1panel_get_local_ip)
+        echo "==> 1Panel 已存在初始化数据,保留现有凭据"
+        echo "    访问地址: http://${LOCAL_IP}:${ORIGINAL_PORT}/${ORIGINAL_ENTRANCE}"
+        echo "    用户名: ${ORIGINAL_USERNAME}"
+        return 0
+    fi
+
+    # 按官方 install.sh 的 NON_INTERACTIVE 模式生成凭据:
+    # - 端口: RANDOM % 55535 + 10000 (10000-65535),并检查占用重试
+    # - 安全入口、用户名、密码: /dev/urandom 取 16 行后 md5sum 前 10 字符
+    local PANEL_PORT PANEL_ENTRANCE PANEL_USERNAME PANEL_PASSWORD
+    local port_retry_count=0
+
+    PANEL_ENTRANCE=$(cat /dev/urandom | head -n 16 | md5sum | head -c 10)
+    PANEL_USERNAME=$(cat /dev/urandom | head -n 16 | md5sum | head -c 10)
+    PANEL_PASSWORD=$(cat /dev/urandom | head -n 16 | md5sum | head -c 10)
+
+    while true; do
+        PANEL_PORT=$(shuf -i 10000-65535 -n 1)
+        if ! ss -tlun 2>/dev/null | grep -q ":${PANEL_PORT} "; then
+            break
+        fi
+        port_retry_count=$((port_retry_count + 1))
+        if [[ "$port_retry_count" -ge 10 ]]; then
+            echo "警告: 10 次未找到空闲端口,回退到 9999" >&2
+            PANEL_PORT=9999
+            break
+        fi
+    done
+
+    sed -i \
+        -e "s|^ORIGINAL_PORT=.*|ORIGINAL_PORT=${PANEL_PORT}|" \
+        -e "s|^ORIGINAL_ENTRANCE=.*|ORIGINAL_ENTRANCE=${PANEL_ENTRANCE}|" \
+        -e "s|^ORIGINAL_USERNAME=.*|ORIGINAL_USERNAME=${PANEL_USERNAME}|" \
+        -e "s|^ORIGINAL_PASSWORD=.*|ORIGINAL_PASSWORD=${PANEL_PASSWORD}|" \
+        /usr/bin/1pctl
+
+    # 持久化凭据供升级时恢复(1pctl 在升级时会被 pacman 覆盖)
+    printf 'ORIGINAL_PORT=%s\nORIGINAL_ENTRANCE=%s\nORIGINAL_USERNAME=%s\nORIGINAL_PASSWORD=%s\n' \
+        "$PANEL_PORT" "$PANEL_ENTRANCE" "$PANEL_USERNAME" "$PANEL_PASSWORD" > "$cred_file"
+    chmod 600 "$cred_file"
+
+    LOCAL_IP=$(_1panel_get_local_ip)
+
+    echo "==> 1Panel 已安装"
+    echo "    启动服务: systemctl start 1panel-core 1panel-agent"
+    echo "    开机自启: systemctl enable 1panel-core 1panel-agent"
+    echo "    首次访问: http://${LOCAL_IP}:${PANEL_PORT}/${PANEL_ENTRANCE}"
+    echo "    用户名: ${PANEL_USERNAME}"
+    echo "    密码: ${PANEL_PASSWORD}"
+    echo "    凭据备份: ${cred_file}"
+    echo "    控制命令: 1pctl --help"
+}
+
+post_upgrade() {
+    local cred_file="/opt/1panel/.install-credentials"
+    if [[ -f "$cred_file" ]]; then
+        # shellcheck source=/dev/null
+        source "$cred_file"
+        # 升级时 pacman 已用新版 1pctl 覆盖文件(含新 ORIGINAL_VERSION),
+        # 这里从备份恢复用户凭据,版本号保持新版不变
+        sed -i \
+            -e "s|^ORIGINAL_PORT=.*|ORIGINAL_PORT=${ORIGINAL_PORT}|" \
+            -e "s|^ORIGINAL_ENTRANCE=.*|ORIGINAL_ENTRANCE=${ORIGINAL_ENTRANCE}|" \
+            -e "s|^ORIGINAL_USERNAME=.*|ORIGINAL_USERNAME=${ORIGINAL_USERNAME}|" \
+            -e "s|^ORIGINAL_PASSWORD=.*|ORIGINAL_PASSWORD=${ORIGINAL_PASSWORD}|" \
+            /usr/bin/1pctl
+        LOCAL_IP=$(_1panel_get_local_ip)
+        echo "==> 1Panel 升级完成,已恢复现有凭据"
+        echo "    访问地址: http://${LOCAL_IP}:${ORIGINAL_PORT}/${ORIGINAL_ENTRANCE}"
+        echo "    用户名: ${ORIGINAL_USERNAME}"
+    else
+        post_install
+    fi
+}
+
+post_remove() {
+    echo "==> 1Panel 已卸载"
+    echo "    数据目录 /opt/1panel 与凭据备份未自动删除,如需清除请手动执行:"
+    echo "    rm -rf /opt/1panel"
+}
+
+# 获取本地 IPv4 地址(优先非回环、非 Docker/虚拟网桥)。
+# 策略:
+# 1) 从 /proc/1/net/route 读默认网关,在 /proc/1/net/fib_trie 的 LOCAL 地址中
+#    找与网关同网段(/24 /16 /8)的地址——可排除 docker0 等虚拟网桥
+# 2) 回退:ip addr(排除回环)
+# 3) 回退:默认路由 src
+# 4) 回退:第一个 IPv4
+# 5) 占位符
+_1panel_get_local_ip() {
+    local ip gateway hex_gateway candidates
+
+    # 默认网关(小端十六进制,如 0105A8C0 -> 192.168.5.1)
+    read _ _ hex_gateway _ < <(awk '$2=="00000000" && $8=="00000000" {print $1, $2, $3, $4, $5; exit}' /proc/1/net/route 2>/dev/null)
+    if [[ -n "$hex_gateway" && "${#hex_gateway}" -eq 8 ]]; then
+        gateway=$(printf '%d.%d.%d.%d' \
+            $((0x${hex_gateway:6:2} & 0xff)) \
+            $((0x${hex_gateway:4:2} & 0xff)) \
+            $((0x${hex_gateway:2:2} & 0xff)) \
+            $((0x${hex_gateway:0:2} & 0xff)))
+    fi
+
+    candidates=$(grep -B1 'host LOCAL' /proc/1/net/fib_trie 2>/dev/null \
+        | grep -E '\|-- [0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$' \
+        | sed 's/.*-- //' \
+        | grep -v '^127\.' \
+        | sort -u)
+
+    if [[ -n "$gateway" && -n "$candidates" ]]; then
+        for prefix in 24 16 8; do
+            local mask=$((0xffffffff << (32 - prefix) & 0xffffffff))
+            IFS=. read -r g1 g2 g3 g4 <<< "$gateway"
+            local gw_net=$(( ((g1<<24) + (g2<<16) + (g3<<8) + g4) & mask ))
+            while IFS= read -r ip; do
+                [[ -z "$ip" ]] && continue
+                IFS=. read -r i1 i2 i3 i4 <<< "$ip"
+                local ip_net=$(( ((i1<<24) + (i2<<16) + (i3<<8) + i4) & mask ))
+                if [[ "$gw_net" == "$ip_net" ]]; then
+                    echo "$ip"
+                    return
+                fi
+            done <<< "$candidates"
+        done
+    fi
+
+    [[ -n "$candidates" ]] && { echo "$candidates" | head -1; return; }
+
+    ip=$(ip -4 -o addr show 2>/dev/null \
+        | awk '!/^[0-9]+: lo/ {split($4,a,"/"); if (a[1] !~ /^127\./) {print a[1]; exit}}')
+    [[ -n "$ip" ]] && { echo "$ip"; return; }
+
+    ip=$(ip -4 route get 1.1.1.1 2>/dev/null \
+        | awk '{for(i=1;i<=NF;i++) if($i=="src") {print $(i+1); exit}}')
+    [[ -n "$ip" ]] && { echo "$ip"; return; }
+
+    ip=$(ip -4 addr show 2>/dev/null \
+        | grep -oE 'inet [0-9.]+' \
+        | awk '{print $2}' \
+        | head -1 \
+        | cut -d/ -f1)
+    [[ -n "$ip" ]] && { echo "$ip"; return; }
+
+    echo "<服务器IP>"
+}
