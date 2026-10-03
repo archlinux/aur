@@ -1,3 +1,4 @@
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Maintainer: LY <ly-niko@qq.com>
 
 _name=pydocket
@@ -20,6 +21,7 @@ depends=(
   'python-cronsim'
   'python-burner-redis'
   'python-opentelemetry-api'
+  'python-opentelemetry-sdk'
   'python-prometheus_client'
   'python-py-key-value-aio'
   'python-json-logger'
