@@ -1,9 +1,10 @@
 # Maintainer: Brad Arrington <bradla8@yahoo.com>
 
-pkgbase=linux-7.3-rc5
+pkgbase=linux-73rc5
+pkgname=(linux-73rc5 linux-73rc5-headers linux-73rc5-docs)
 pkgver=7.3rc5
 pkgrel=1
-pkgdesc='Linux'
+pkgdesc='Linux 7.3-rc5'
 url='https://github.com/archlinux/linux'
 arch=(
   x86_64

@@ -1,5 +1,5 @@
-pkgbase = linux-7.3-rc5
-	pkgdesc = Linux
+pkgbase = linux-73rc5
+	pkgdesc = Linux 7.3-rc5
 	pkgver = 7.3rc5
 	pkgrel = 1
 	url = https://github.com/archlinux/linux
@@ -41,12 +41,12 @@ pkgbase = linux-7.3-rc5
 	sha256sums_x86_64 = ec1cbe0947e642624cd7e5d22ba02084f8eb58d51cdadcbc35d6791f2e5cfbd6
 	b2sums_x86_64 = 8b749dbe8e1fd35e5fc95ec9f5a61d63c6c165df68504be7c1184051253012e9517651b72b8255c1c28c8028cc0ad50332fb189d056987a420aa93b8693393b4
 
-pkgname = linux-7.3-rc5
-	pkgdesc = The Linux kernel and modules
+pkgname = linux-73rc5
+	pkgdesc = The Linux 7.3-rc5 kernel and modules
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
-	optdepends = linux-7.3-rc5-headers: headers and scripts for building modules
+	optdepends = linux-73rc5-headers: headers and scripts for building modules
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = scx-scheds: to use sched-ext schedulers
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
@@ -57,8 +57,8 @@ pkgname = linux-7.3-rc5
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux-7.3-rc5-headers
-	pkgdesc = Headers and scripts for building modules for the Linux kernel
+pkgname = linux-73rc5-headers
+	pkgdesc = Headers and scripts for building modules for the Linux 7.3-rc5 kernel
 	depends = binutils
 	depends = glibc
 	depends = libelf
@@ -70,5 +70,5 @@ pkgname = linux-7.3-rc5-headers
 	depends = zstd
 	provides = LINUX-HEADERS
 
-pkgname = linux-7.3-rc5-docs
-	pkgdesc = Documentation for the Linux kernel
+pkgname = linux-73rc5-docs
+	pkgdesc = Documentation for the Linux 7.3-rc5 kernel
