@@ -1,7 +1,7 @@
 pkgbase = captureage-bin
 	pkgdesc = Advanced spectating for Age of Empires II: Definitive Edition (Windows binary via Proton)
 	pkgver = 1.26.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://captureage.com/cade
 	arch = x86_64
 	license = LicenseRef-CaptureAge
@@ -30,6 +30,6 @@ pkgbase = captureage-bin
 	sha256sums = bcf898c2e3f7949ac72ca04706b3941db4532167ff3bd27363baa8e675c99c8e
 	sha256sums = 3c17f11425e8e62166a9a278622173f5f2479c2f7ef9f732a4b9d4acbd22814e
 	sha256sums = 35599267d69f141d105a99e22a11d9cd65a0ea263a97fefe092366987071c25f
-	sha256sums = 6bf88121520a9930c0f6e63c83dae1adaa7399167057eff034d11b1c6b37c53d
+	sha256sums = 80aecfba16323edc148b7e27bd96db4b7a82e87563d1b992c29cd69f327f03e1
 
 pkgname = captureage-bin
