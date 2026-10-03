@@ -3,7 +3,7 @@
 
 pkgname=telegram-drive
 pkgver=3.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Turn your Telegram account into an unlimited, secure cloud storage drive"
 arch=('x86_64' 'aarch64')
 url="https://github.com/caamer20/Telegram-Drive"
@@ -46,16 +46,16 @@ build() {
     export CARGO_HOME="${srcdir}/cargo-home"
     export npm_config_cache="${srcdir}/npm-cache"
 
-    # Фронтенд (React/Vite) — tauri.conf.json ждёт готовые dist/
     npm ci --no-audit --no-fund \
         --fetch-retries=5 \
         --fetch-retry-mintimeout=10000 \
         --fetch-retry-maxtimeout=120000
-    npm run build
 
-    # Rust-часть (Tauri)
-    cd "${srcdir}/${_src}/app/src-tauri"
-    cargo build --release --locked
+    # Собирать нужно именно через Tauri CLI, а не cargo build напрямую:
+    # только он встраивает dist/ (собранный vite фронтенд) в бинарник.
+    # При cargo build окно открывается, но остаётся пустым серым прямоугольником.
+    # --no-bundle — AppImage/deb/rpm собирает сам апстрим, нам нужен только бинарник.
+    npm run tauri build -- --no-bundle
 }
 
 package() {
