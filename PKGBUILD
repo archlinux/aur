@@ -4,7 +4,7 @@
 
 pkgname=dataloader
 _pkgname=salesforce-dataloader
-pkgver=64.1.0
+pkgver=67.0.0
 pkgrel=1
 pkgdesc="An easy to use graphical tool that helps you to get your data into Salesforce objects"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
   "salesforce-dataloader.svg"
 )
 
-sha256sums=('46ac72905a861a8dad639cde59a171fca81991173796b05e398e0f433e108aa4'
+sha256sums=('SKIP'
             '1f65612f9bfd972b98d68c193b92e0f30a5e6615d637d13ddf3d7904c91bc0d3'
             '5dc55bb70c25c987bb3688d9c0cc05e68866f9af34ec57d2ecf9b59403bc7f88'
             'a3139c41db1a8202bd67893b2de25f149b383bea1604a275806348e2dd3a8e22')
