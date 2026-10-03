@@ -10,32 +10,21 @@
 _pkgbase=openocd
 pkgname=openocd-git
 pkgver=0.12.0.r59.g0b6f53e94
-pkgrel=1
+pkgrel=2
 pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (git version)"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="http://openocd.org"
 license=('GPL')
-depends=('libftdi-compat' 'libusb-compat' 'hidapi' 'libudev.so' 'capstone' 'libjaylink')
+depends=('libftdi-compat' 'libusb-compat' 'hidapi' 'libudev.so' 'capstone' 'libjaylink' 'jimtcl')
 makedepends=('git' 'automake>=1.11' 'autoconf' 'libtool' 'tcl')
 options=(!strip)
 provides=('openocd')
 conflicts=('openocd')
 
 source=(
-  "${pkgname}::git+https://repo.or.cz/openocd.git"
-  "git+https://github.com/msteveb/jimtcl.git"
-  "git+https://gitlab.zapb.de/libjaylink/libjaylink.git"
-  "git+https://git.savannah.nongnu.org/git/git2cl.git"
-
+  "${pkgname}::git+https://github.com/openocd-org/openocd.git"
 )
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
-sha1sums=('SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP')
+sha256sums=('SKIP')
 
 # Specify desired features and device support here. A list can be
 # obtained by running ./configure in the source directory.
@@ -47,6 +36,7 @@ _features=(
     bcm2835gpio
     buspirate
     capstone
+    cklink
     cmsis-dap
     dummy
     ep93xx
@@ -86,11 +76,6 @@ pkgver() {
 prepare() {
   cd "$srcdir/${pkgname}"
   sed -i 's|GROUP="plugdev", ||g' contrib/60-openocd.rules
-  git submodule init
-  git config submodule.jimtcl.url "$srcdir/jimtcl"
-  git config submodule."src/jtag/drivers/libjaylink".url "$srcdir/libjaylink"
-  git config submodule."tools/git2cl".url "$srcdir/git2cl"
-  git -c protocol.file.allow=always submodule update
 }
 
 build() {
