@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=word-sys-pdf-editor
-pkgver=1.9.2
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="A simple and user-friendly PDF Editor"
 url="https://github.com/word-sys/word-sys-pdf-editor"
@@ -17,9 +17,9 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/word-sys/${pkgname}/a
         "${pkgname}.desktop"
         "icon_path.patch"
         "license_path.patch")
-sha256sums=('46cde6508c61c6d09a582a9731a6a3912769b602d8b17a1c93c8f5589c996f4f'
+sha256sums=('753a482cc3ce7c5426de97122226b08cdb8d757685ee0edad4a2df45fead681b'
             '1d052114e538cb93da18668b2d4ac75c182619e72c9855ab3e849299540b76ad'
-            '3a78a40aacf794bcd9564a79c917b2cdf6887ef478bf0992c3920a582550818d'
+            '0a18891f2c648c1d93a9abb7dec73d9a0952842072dfb82b9245a23a2c86af58'
             '9f5f66c2ba5c32c186851e8a78b5a204cc19c23e032383a81263c1be3cb9f299')
 
 prepare() {

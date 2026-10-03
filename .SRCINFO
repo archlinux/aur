@@ -1,6 +1,6 @@
 pkgbase = word-sys-pdf-editor
 	pkgdesc = A simple and user-friendly PDF Editor
-	pkgver = 1.9.2
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://github.com/word-sys/word-sys-pdf-editor
 	arch = any
@@ -21,13 +21,13 @@ pkgbase = word-sys-pdf-editor
 	conflicts = fospx-pdf-editor
 	replaces = pardf
 	replaces = fospx-pdf-editor
-	source = word-sys-pdf-editor-1.9.2.tar.gz::https://github.com/word-sys/word-sys-pdf-editor/archive/v1.9.2.tar.gz
+	source = word-sys-pdf-editor-1.11.1.tar.gz::https://github.com/word-sys/word-sys-pdf-editor/archive/v1.11.1.tar.gz
 	source = word-sys-pdf-editor.desktop
 	source = icon_path.patch
 	source = license_path.patch
-	sha256sums = 46cde6508c61c6d09a582a9731a6a3912769b602d8b17a1c93c8f5589c996f4f
+	sha256sums = 753a482cc3ce7c5426de97122226b08cdb8d757685ee0edad4a2df45fead681b
 	sha256sums = 1d052114e538cb93da18668b2d4ac75c182619e72c9855ab3e849299540b76ad
-	sha256sums = 3a78a40aacf794bcd9564a79c917b2cdf6887ef478bf0992c3920a582550818d
+	sha256sums = 0a18891f2c648c1d93a9abb7dec73d9a0952842072dfb82b9245a23a2c86af58
 	sha256sums = 9f5f66c2ba5c32c186851e8a78b5a204cc19c23e032383a81263c1be3cb9f299
 
 pkgname = word-sys-pdf-editor
