@@ -1,9 +1,13 @@
 # Maintainer: fiatjaf <fiatjaf@gmail.com>
 
 package() {
-    mkdir -p "$pkgdir/usr/bin"
+    install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$pkgname-$pkgver"
     ln -s "$pkgname-$pkgver" "$pkgdir/usr/bin/$provides"
-    install -m755 "$pkgname-$pkgver" "$pkgdir/usr/bin"
+    chmod +x "$pkgname-$pkgver"
+    ./"$pkgname-$pkgver" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$provides"
+    ./"$pkgname-$pkgver" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$provides"
+    ./"$pkgname-$pkgver" completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$provides.fish"
+    ./"$pkgname-$pkgver" completion pwsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/powershell/Completions/$provides.ps1"
 }
 
 pkgname="nak-bin"
