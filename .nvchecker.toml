@@ -1,0 +1,4 @@
+[forskscope-bin]
+source = "github"
+github = "forskscope/forskscope"
+use_latest_release = true
