@@ -1,9 +1,10 @@
 pkgbase = edgcpp-git
 	pkgdesc = The EDG C/C++ front end with its C-generating back end (eccp), prelinker and runtime
-	pkgver = r62399.ca5890b
+	pkgver = r62401.0a7802c
 	pkgrel = 1
 	url = https://edgcpp.org
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0 WITH LLVM-exception
 	makedepends = git
 	makedepends = cmake
@@ -19,10 +20,12 @@ pkgbase = edgcpp-git
 	options = staticlibs
 	options = !lto
 	source = edgcpp::git+https://github.com/edgcpp/compiler.git
+	source = edgcpp-aarch64-host.patch
 	source = eccp
 	source = edg_eccp_config
 	sha256sums = SKIP
+	sha256sums = ceced79cd33724d912e50c358d03d0a67b66a0d6c3f93ce60af32476ca01b8b5
 	sha256sums = 81831901bda74b2bf54b94519f4953e773a385989404050dc1c3f9cf2169cf1c
-	sha256sums = 6aa27d5470ea36693f1c7e6f7479d79ac17b6e7c96c0544567b0136deb8e6206
+	sha256sums = 6fbf98c33f08bb5270aa9f04bec34c912c61f546285de11e74d11c954aaae939
 
 pkgname = edgcpp-git

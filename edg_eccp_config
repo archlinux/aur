@@ -5,12 +5,19 @@
 
 ################################################################################
 #
-# Configuration file for the EDG eccp script, edgcpp-git package.
+# Configuration file for the EDG eccp script: native Linux with GCC, on
+# x86_64 or AArch64, over the resident gcc and glibc.
 #
-# eccp.sh sources this file from $EDG_BASE on every run.  It is upstream's
-# bases/docker/dev-env/gcc/edg_eccp_config, adapted to the resident gcc and
-# glibc: the header search lists and the gcc version are read from the gcc
-# on this machine when eccp runs, not taken from the environment.
+# eccp.sh sources this file from $EDG_BASE on every run.  It is
+# bases/docker/dev-env/gcc/edg_eccp_config adapted to the resident gcc: the
+# header search lists and the gcc version are read from the gcc on this
+# machine when eccp runs, not taken from the environment, and the C++
+# runtime is EDG's libC.a unless g++ emulation asks for libstdc++.
+#
+# The predefined macro table, lib/predefined_macros.txt, is not part of
+# this base.  It describes one gcc, so it is generated on the machine the
+# base is installed on (util/make_predef_macro_table, run in lib/), and
+# regenerated when gcc changes.
 #
 ################################################################################
 EDG_DEFAULT_DEFINES="-D__CHAR_BIT__=8"
@@ -18,6 +25,17 @@ EDG_DEFAULT_CPP_DEFINES="-D_POSIX_SOURCE"
 
 # Use GCC.
 EDG_C_TO_OBJ_COMPILER=gcc
+
+# The predefined macro table is generated, not shipped (see above).  cpfe
+# stops without it, with a message that names no cause.
+edg_table=$EDG_BASE/lib/predefined_macros.txt
+if [ ! -r "$edg_table" ] ; then
+  echo "eccp: $edg_table is missing." >&2
+  echo "eccp: generate it from the resident gcc: mkdir -p $EDG_BASE/lib &&" \
+       "cd $EDG_BASE/lib && sh util/make_predef_macro_table" \
+       "(the script is in the EDG source tree)." >&2
+  exit 1
+fi
 
 # The resident gcc's header search list for language $1 (c or c++),
 # colon-separated, in gcc's own order.
@@ -29,26 +47,47 @@ edg_gcc_includes() {
     paste -sd: -
 }
 
-# The resident gcc's version in --gnu_version form: 16.2.1 is 160201.
+# The resident gcc's version: 16.2.1, and in --gnu_version form, 160201.
+edg_gcc_version=$("$EDG_C_TO_OBJ_COMPILER" -dumpfullversion)
 EDG_GCC_VER_SCRAPE=${EDG_GCC_VER_SCRAPE-$(
-  "$EDG_C_TO_OBJ_COMPILER" -dumpfullversion |
+  printf '%s' "$edg_gcc_version" |
     awk -F. '{ printf "%d%02d%02d", $1, $2, $3 }')}
 
+# The table records the gcc that made it.  After a gcc upgrade it is stale
+# until regenerated: g++ emulation then fails on the __GNUC__ entries, and
+# strict mode keeps the old target facts without a word.  Warn.
+edg_table_gcc=$(sed -n '/^# gcc version /{s/^# gcc version \([^ ]*\).*/\1/p;q;}' \
+                "$edg_table")
+if [ -n "$edg_table_gcc" ] && [ "$edg_table_gcc" != "$edg_gcc_version" ] ; then
+  echo "eccp: warning: $edg_table was made by gcc $edg_table_gcc;" \
+       "the resident gcc is $edg_gcc_version. Regenerate the table" \
+       "with util/make_predef_macro_table." >&2
+fi
+
+# Two switches.  EDG_USE_SYSTEM_HEADERS=1 is g++ emulation: g++'s search
+# lists and --gnu_version.  EDG_LINK_SYSTEM_CXX_RUNTIME=1 links libstdc++
+# and libgcc_s ahead of libC.a.  The second follows the first unless set on
+# its own, for programs that carry libstdc++'s headers already expanded
+# (preprocessed tests) and so need its library without its headers.
 EDG_USE_SYSTEM_HEADERS=${EDG_USE_SYSTEM_HEADERS-0}
+EDG_LINK_SYSTEM_CXX_RUNTIME=${EDG_LINK_SYSTEM_CXX_RUNTIME-$EDG_USE_SYSTEM_HEADERS}
 if [ $EDG_USE_SYSTEM_HEADERS -eq 0 ] ; then
   # EDG's own headers, then the resident gcc's C search list: gcc's
   # freestanding headers and glibc.
   edg_cincl=$(edg_gcc_includes c)
   EDG_INCLDIR=${EDG_INCLDIR-"$EDG_BASE/include:$edg_cincl"}
   EDG_CINCLDIR=${EDG_CINCLDIR-"$EDG_BASE/include_c99:$edg_cincl"}
-  # The C++ runtime is EDG's libC.a, which eccp.sh links last.
-  EDG_C_TO_OBJ_LIBRARIES="$EDG_C_TO_OBJ_LIBRARIES -lpthread"
 else
   # g++ emulation: the resident g++'s search lists, libstdc++ first.
   EDG_INCLDIR=${EDG_INCLDIR-${EDG_GCC_INCL_SCRAPE-$(edg_gcc_includes c++)}}
   EDG_CINCLDIR=${EDG_CINCLDIR-${EDG_GCC_CINCL_SCRAPE-$(edg_gcc_includes c)}}
   # Inject --gnu_version to the resident gcc's version.
   EDG_CPFE_DEFAULT_OPTIONS="--gnu_version=$EDG_GCC_VER_SCRAPE $EDG_CPFE_DEFAULT_OPTIONS"
+fi
+if [ $EDG_LINK_SYSTEM_CXX_RUNTIME -eq 0 ] ; then
+  # The C++ runtime is EDG's libC.a, which eccp.sh links last.
+  EDG_C_TO_OBJ_LIBRARIES="$EDG_C_TO_OBJ_LIBRARIES -lpthread"
+else
   EDG_C_TO_OBJ_LIBRARIES="$EDG_C_TO_OBJ_LIBRARIES -lstdc++ -lgcc_s -lpthread"
 fi
 
@@ -76,8 +115,27 @@ if [ $EDG_GCC_VER_SCRAPE -ge 140000 ] ; then
   default_opts="$default_opts $warnings_to_disable"
 fi
 
-EDG_C_TO_OBJ_DEFAULT_OPTIONS=$default_opts
-EDG_C_TO_OBJ_DEFAULT_OPTIONS_linux_x86_64="$default_opts -m64 -march=x86-64"
+# The target is the machine the resident gcc compiles for.  eccp reads
+# EDG_C_TO_OBJ_DEFAULT_OPTIONS_<target> whenever --target is given, the
+# default target's own name included, and warns when it is unset.
+case $("$EDG_C_TO_OBJ_COMPILER" -dumpmachine) in
+  x86_64-*)
+    EDG_C_TO_OBJ_DEFAULT_OPTIONS=$default_opts
+    EDG_C_TO_OBJ_DEFAULT_OPTIONS_linux_x86_64="$default_opts -m64 -march=x86-64"
+    ;;
+  aarch64-*)
+    # GCC on AArch64 has no __float128.  The front end keeps it, as a
+    # binary128 type distinct from long double, because the _Float128
+    # keyword that glibc's headers need in C++ comes with it; map the
+    # spelling in the generated C to GCC's _Float128.
+    default_opts="$default_opts -D__float128=_Float128"
+    EDG_C_TO_OBJ_DEFAULT_OPTIONS=$default_opts
+    EDG_C_TO_OBJ_DEFAULT_OPTIONS_linux_aarch64=$default_opts
+    ;;
+  *)
+    EDG_C_TO_OBJ_DEFAULT_OPTIONS=$default_opts
+    ;;
+esac
 
 EDG_C_TO_OBJ_C99_OPTIONS="-std=gnu9x"
 

@@ -1,10 +1,10 @@
 # Maintainer: Liviu Nicoara <lnicoara at thinkoid dot org>
 
 pkgname=edgcpp-git
-pkgver=r62399.ca5890b
+pkgver=r62403.f0e30b6
 pkgrel=1
 pkgdesc="The EDG C/C++ front end with its C-generating back end (eccp), prelinker and runtime"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://edgcpp.org"
 license=('Apache-2.0 WITH LLVM-exception')
 # gcc compiles the C that eccp generates and supplies the header search
@@ -17,16 +17,33 @@ conflicts=('edgcpp')
 # libC.a is the runtime eccp links into every program: keep it, and keep
 # it free of LTO bytecode.
 options=('staticlibs' '!lto')
+# edgcpp-aarch64-host.patch is the native AArch64 host configuration,
+# not yet upstream: branch linux-aarch64-host of github.com/thinkoid/edgcpp
+# at b7bfddf. It adds files and one branch to host-defaults.cmake; the
+# x86_64 build does not read any of it.
 source=("edgcpp::git+https://github.com/edgcpp/compiler.git"
+        "edgcpp-aarch64-host.patch"
         "eccp"
         "edg_eccp_config")
 sha256sums=('SKIP'
+            'ceced79cd33724d912e50c358d03d0a67b66a0d6c3f93ce60af32476ca01b8b5'
             '81831901bda74b2bf54b94519f4953e773a385989404050dc1c3f9cf2169cf1c'
-            '6aa27d5470ea36693f1c7e6f7479d79ac17b6e7c96c0544567b0136deb8e6206')
+            '6fbf98c33f08bb5270aa9f04bec34c912c61f546285de11e74d11c954aaae939')
+
+# The preset and its build directory, per architecture.
+case $CARCH in
+    x86_64)  _preset=linux-gcc-release;         _build=build/gcc-release ;;
+    aarch64) _preset=linux-aarch64-gcc-release; _build=build/aarch64-gcc-release ;;
+esac
 
 pkgver() {
     cd edgcpp
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+    cd edgcpp
+    git apply "$srcdir/edgcpp-aarch64-host.patch"
 }
 
 # The EDG_BASE the package builds with, tests with and installs: the
@@ -46,6 +63,12 @@ _mkbase() {
 build() {
     _mkbase
     cd edgcpp
+    # The config in the tree's native base, where the tree has one, is
+    # this recipe's file: one source, two copies.
+    if [ -e "bases/cmake-native/linux-$CARCH/gcc/edg_eccp_config" ]; then
+        cmp "$srcdir/edg_eccp_config" \
+            "bases/cmake-native/linux-$CARCH/gcc/edg_eccp_config"
+    fi
     # The runtime library is built by eccp itself, in g++ emulation, so
     # it reads $EDG_BASE; system-header mode adds --gnu_version for the
     # resident gcc.
@@ -54,12 +77,13 @@ build() {
     # -O3 and -flto; the macro configuration is the release one for any
     # type but Debug. Upstream links with mold, lld or gold when it finds
     # one, for link speed; the package links with the system linker.
-    # The default target is named linux_x86_64 and reads lib/; an empty
-    # EDG_CPP_RT_LIBS builds no per-target runtimes (the preset lists
-    # eight, each needing a lib_<target>/ the base does not have).
-    cmake --preset linux-gcc-release -DEDG_CPP_RT_LIBS= \
+    # The default target (linux_x86_64 or linux_aarch64) reads lib/; an
+    # empty EDG_CPP_RT_LIBS builds no per-target runtimes (the x86_64
+    # preset lists eight, each needing a lib_<target>/ the base does not
+    # have).
+    cmake --preset "$_preset" -DEDG_CPP_RT_LIBS= \
           -DCMAKE_BUILD_TYPE=None -DEDG_PREFERRED_LINKER=bfd
-    cmake --build build/gcc-release
+    cmake --build "$_build"
     _strict_facts >> "$srcdir/base/lib/predefined_macros.txt"
 }
 
@@ -79,7 +103,7 @@ _strict_facts() {
         sort -u > "$t/hdr-names"
     echo 'int x;' > "$t/e.cpp"
     env -u EDG_USE_SYSTEM_HEADERS \
-        build/gcc-release/bin/eccp -A --list_macros -E "$t/e.cpp" 2>&1 |
+        "$_build/bin/eccp" -A --list_macros -E "$t/e.cpp" 2>&1 |
         awk '/#define/ { print $2 }' | sort -u > "$t/have"
     echo
     echo "# strict: target facts the resident gcc's freestanding headers read"
@@ -117,7 +141,7 @@ int main ()
     }
 }
 SMOKE
-    build/gcc-release/bin/eccp -A -x "$srcdir/smoke.cpp" -o "$srcdir/smoke"
+    "$_build/bin/eccp" -A -x "$srcdir/smoke.cpp" -o "$srcdir/smoke"
     "$srcdir/smoke"
 }
 
@@ -126,11 +150,11 @@ package() {
     local base="$pkgdir/usr/lib/edgcpp"
     local b
     for b in cpfe cpfe-cp edg_munch edg_decode edg_prelink cdisp; do
-        install -Dm755 "build/gcc-release/bin/$b" "$base/bin/$b"
+        install -Dm755 "$_build/bin/$b" "$base/bin/$b"
     done
     install -Dm755 util/eccp.sh "$base/bin/eccp.sh"
     install -Dm644 "$srcdir/edg_eccp_config" "$base/edg_eccp_config"
-    install -Dm644 build/gcc-release/lib/libC.a "$base/lib/libC.a"
+    install -Dm644 "$_build/lib/libC.a" "$base/lib/libC.a"
     install -Dm644 "$srcdir/base/lib/predefined_macros.txt" \
             "$base/lib/predefined_macros.txt"
     cp -r --no-preserve=ownership include_c++ "$base/include"

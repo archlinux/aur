@@ -1,0 +1,518 @@
+From b7bfddf9073fd60d0ebd1e10c0411a83c29be375 Mon Sep 17 00:00:00 2001
+From: Liviu Nicoara <lnicoara@thinkoid.org>
+Date: Sat, 3 Oct 2026 17:45:40 -0400
+Subject: [PATCH] Add a native Linux AArch64 host configuration []
+
+The Linux configurations assume an x86_64 host: the gcc configuration
+asks for libquadmath, the shared Linux platform file says long double
+is the x87 format, and host-defaults.cmake has no AArch64 branch. On an
+AArch64 machine a native build fails on quadmath.h.
+
+This adds the configuration for a native AArch64 Linux host with GCC,
+without changes to the front end:
+
+- support/arch/aarch64: the AAPCS64 LP64 ABI as gcc on Linux uses it.
+  Plain char and wchar_t are unsigned, long double is IEEE binary128,
+  glibc's jmp_buf is 39 longs. Of the 32-bit ARM variants of the
+  Itanium C++ ABI that the front end selects for ARM64, gcc uses only
+  the pointer-to-member-function representation; array cookies, the
+  static guard, constructors and the key function follow the generic
+  ABI. Zero-width and unnamed bit-fields raise struct alignment. All
+  values measured against gcc 16.2.1 on an AArch64 Linux machine.
+  It sits beside arch/arm64, which is Apple's ABI.
+- support/platform/linux-aarch64 and support/compiler/gcc/linux-aarch64:
+  import the shared Linux and gcc files and override the x86 facts
+  (long double format, __float80, libquadmath; APPROXIMATE_QUADMATH as
+  the clang configuration does).
+- linux-aarch64-gcc and linux-aarch64-gcc-release macro configurations,
+  and the matching presets. The release preset builds the runtime
+  library under the default target's name, as the macOS presets do.
+- host-defaults.cmake: an aarch64 branch.
+- bases/cmake-native/linux-aarch64/gcc: an edg_eccp_config that reads
+  the header search lists and the gcc version from the resident gcc,
+  and passes -D__float128=_Float128 to the C compiler, since gcc on
+  AArch64 has no __float128 and the front end's _Float128 support
+  comes with it. The base ships no predefined macro table: the table
+  describes one gcc, so it is generated in lib/ on the machine the
+  base is used on, with util/make_predef_macro_table; the config stops
+  with that instruction when the table is missing.
+
+The existing support/target/linux_aarch64 is left as it is. Only the
+x86_64 platform imports it.
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+---
+ CMakePresets.json                             |  40 +++++
+ .../linux-aarch64/gcc/edg_eccp_config         | 145 ++++++++++++++++++
+ bases/cmake-native/linux-aarch64/gcc/include  |   1 +
+ .../linux-aarch64/gcc/lib_linux_aarch64       |   1 +
+ cmake/host-defaults.cmake                     |  11 +-
+ .../linux-aarch64-gcc-release/base.cmakedef   |  14 ++
+ .../linux-aarch64-gcc-release/cdisp.cmakedef  |   2 +
+ .../cpfe-cp.cmakedef                          |   2 +
+ .../linux-aarch64-gcc-release/cpfe.cmakedef   |  11 ++
+ .../cpprtlib.cmakedef                         |   2 +
+ .../linux-aarch64-gcc/base.cmakedef           |   7 +
+ .../linux-aarch64-gcc/cdisp.cmakedef          |   2 +
+ .../linux-aarch64-gcc/cpfe-cp.cmakedef        |   2 +
+ .../linux-aarch64-gcc/cpfe.cmakedef           |   4 +
+ .../linux-aarch64-gcc/cpprtlib.cmakedef       |   2 +
+ .../support/arch/aarch64/base.cmakedef        |  42 +++++
+ .../compiler/gcc/linux-aarch64/base.cmakedef  |  12 ++
+ .../platform/linux-aarch64/base.cmakedef      |  15 ++
+ 18 files changed, 312 insertions(+), 3 deletions(-)
+ create mode 100644 bases/cmake-native/linux-aarch64/gcc/edg_eccp_config
+ create mode 120000 bases/cmake-native/linux-aarch64/gcc/include
+ create mode 120000 bases/cmake-native/linux-aarch64/gcc/lib_linux_aarch64
+ create mode 100644 cmake/macro-conf/linux-aarch64-gcc-release/base.cmakedef
+ create mode 100644 cmake/macro-conf/linux-aarch64-gcc-release/cdisp.cmakedef
+ create mode 100644 cmake/macro-conf/linux-aarch64-gcc-release/cpfe-cp.cmakedef
+ create mode 100644 cmake/macro-conf/linux-aarch64-gcc-release/cpfe.cmakedef
+ create mode 100644 cmake/macro-conf/linux-aarch64-gcc-release/cpprtlib.cmakedef
+ create mode 100644 cmake/macro-conf/linux-aarch64-gcc/base.cmakedef
+ create mode 100644 cmake/macro-conf/linux-aarch64-gcc/cdisp.cmakedef
+ create mode 100644 cmake/macro-conf/linux-aarch64-gcc/cpfe-cp.cmakedef
+ create mode 100644 cmake/macro-conf/linux-aarch64-gcc/cpfe.cmakedef
+ create mode 100644 cmake/macro-conf/linux-aarch64-gcc/cpprtlib.cmakedef
+ create mode 100644 cmake/macro-conf/support/arch/aarch64/base.cmakedef
+ create mode 100644 cmake/macro-conf/support/compiler/gcc/linux-aarch64/base.cmakedef
+ create mode 100644 cmake/macro-conf/support/platform/linux-aarch64/base.cmakedef
+
+diff --git a/CMakePresets.json b/CMakePresets.json
+index 2b28c6578c..a1c2c0331e 100644
+--- a/CMakePresets.json
++++ b/CMakePresets.json
+@@ -281,6 +281,46 @@
+         "CXX": "g++"
+       }
+     },
++    {
++      "name": "linux-aarch64-common",
++      "hidden": true,
++      "description": "Linux AArch64 base config",
++      "generator": "Ninja",
++      "cacheVariables": {
++        "CMAKE_BUILD_TYPE": "DEBUG",
++        "EDG_CPP_RT_LIBS": "linux_aarch64"
++      }
++    },
++    {
++      "name": "linux-aarch64-gcc-debug",
++      "inherits": "linux-aarch64-common",
++      "displayName": "Linux AArch64 (GCC) Build Config - DEBUG",
++      "description": "Linux AArch64 build using GCC",
++      "binaryDir": "${sourceDir}/build/aarch64-gcc",
++      "cacheVariables": {
++        "EDG_MACRO_CONF": "linux-aarch64-gcc",
++        "CMAKE_BUILD_TYPE": "Debug"
++      },
++      "environment": {
++        "CC": "gcc",
++        "CXX": "g++"
++      }
++    },
++    {
++      "name": "linux-aarch64-gcc-release",
++      "inherits": "linux-aarch64-common",
++      "displayName": "Linux AArch64 (GCC) Build Config - RELEASE",
++      "description": "Linux AArch64 build using GCC",
++      "binaryDir": "${sourceDir}/build/aarch64-gcc-release",
++      "cacheVariables": {
++        "EDG_MACRO_CONF": "linux-aarch64-gcc-release",
++        "CMAKE_BUILD_TYPE": "Release"
++      },
++      "environment": {
++        "CC": "gcc",
++        "CXX": "g++"
++      }
++    },
+     {
+       "name": "windows-common",
+       "hidden": true,
+diff --git a/bases/cmake-native/linux-aarch64/gcc/edg_eccp_config b/bases/cmake-native/linux-aarch64/gcc/edg_eccp_config
+new file mode 100644
+index 0000000000..8d3abbd83f
+--- /dev/null
++++ b/bases/cmake-native/linux-aarch64/gcc/edg_eccp_config
+@@ -0,0 +1,145 @@
++# Part of the EDG Compiler Project, under the Apache License v2.0 with LLVM
++# Exceptions.
++# See https://edgcpp.org/LICENSE.txt for license information.
++# SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
++
++################################################################################
++#
++# Configuration file for the EDG eccp script: native Linux with GCC, on
++# x86_64 or AArch64, over the resident gcc and glibc.
++#
++# eccp.sh sources this file from $EDG_BASE on every run.  It is
++# bases/docker/dev-env/gcc/edg_eccp_config adapted to the resident gcc: the
++# header search lists and the gcc version are read from the gcc on this
++# machine when eccp runs, not taken from the environment, and the C++
++# runtime is EDG's libC.a unless g++ emulation asks for libstdc++.
++#
++# The predefined macro table, lib/predefined_macros.txt, is not part of
++# this base.  It describes one gcc, so it is generated on the machine the
++# base is installed on (util/make_predef_macro_table, run in lib/), and
++# regenerated when gcc changes.
++#
++################################################################################
++EDG_DEFAULT_DEFINES="-D__CHAR_BIT__=8"
++EDG_DEFAULT_CPP_DEFINES="-D_POSIX_SOURCE"
++
++# Use GCC.
++EDG_C_TO_OBJ_COMPILER=gcc
++
++# The predefined macro table is generated, not shipped (see above).  cpfe
++# stops without it, with a message that names no cause.
++edg_table=$EDG_BASE/lib/predefined_macros.txt
++if [ ! -r "$edg_table" ] ; then
++  echo "eccp: $edg_table is missing." >&2
++  echo "eccp: generate it from the resident gcc: mkdir -p $EDG_BASE/lib &&" \
++       "cd $EDG_BASE/lib && sh util/make_predef_macro_table" \
++       "(the script is in the EDG source tree)." >&2
++  exit 1
++fi
++
++# The resident gcc's header search list for language $1 (c or c++),
++# colon-separated, in gcc's own order.
++edg_gcc_includes() {
++  "$EDG_C_TO_OBJ_COMPILER" -x "$1" -v -E /dev/null 2>&1 >/dev/null |
++    sed -e '1,/^#include <\.\.\.> search starts here:/d' \
++        -e '/^End of search list\./,$d' \
++        -e 's/^ *//' |
++    paste -sd: -
++}
++
++# The resident gcc's version: 16.2.1, and in --gnu_version form, 160201.
++edg_gcc_version=$("$EDG_C_TO_OBJ_COMPILER" -dumpfullversion)
++EDG_GCC_VER_SCRAPE=${EDG_GCC_VER_SCRAPE-$(
++  printf '%s' "$edg_gcc_version" |
++    awk -F. '{ printf "%d%02d%02d", $1, $2, $3 }')}
++
++# The table records the gcc that made it.  After a gcc upgrade it is stale
++# until regenerated: g++ emulation then fails on the __GNUC__ entries, and
++# strict mode keeps the old target facts without a word.  Warn.
++edg_table_gcc=$(sed -n '/^# gcc version /{s/^# gcc version \([^ ]*\).*/\1/p;q;}' \
++                "$edg_table")
++if [ -n "$edg_table_gcc" ] && [ "$edg_table_gcc" != "$edg_gcc_version" ] ; then
++  echo "eccp: warning: $edg_table was made by gcc $edg_table_gcc;" \
++       "the resident gcc is $edg_gcc_version. Regenerate the table" \
++       "with util/make_predef_macro_table." >&2
++fi
++
++# Two switches.  EDG_USE_SYSTEM_HEADERS=1 is g++ emulation: g++'s search
++# lists and --gnu_version.  EDG_LINK_SYSTEM_CXX_RUNTIME=1 links libstdc++
++# and libgcc_s ahead of libC.a.  The second follows the first unless set on
++# its own, for programs that carry libstdc++'s headers already expanded
++# (preprocessed tests) and so need its library without its headers.
++EDG_USE_SYSTEM_HEADERS=${EDG_USE_SYSTEM_HEADERS-0}
++EDG_LINK_SYSTEM_CXX_RUNTIME=${EDG_LINK_SYSTEM_CXX_RUNTIME-$EDG_USE_SYSTEM_HEADERS}
++if [ $EDG_USE_SYSTEM_HEADERS -eq 0 ] ; then
++  # EDG's own headers, then the resident gcc's C search list: gcc's
++  # freestanding headers and glibc.
++  edg_cincl=$(edg_gcc_includes c)
++  EDG_INCLDIR=${EDG_INCLDIR-"$EDG_BASE/include:$edg_cincl"}
++  EDG_CINCLDIR=${EDG_CINCLDIR-"$EDG_BASE/include_c99:$edg_cincl"}
++else
++  # g++ emulation: the resident g++'s search lists, libstdc++ first.
++  EDG_INCLDIR=${EDG_INCLDIR-${EDG_GCC_INCL_SCRAPE-$(edg_gcc_includes c++)}}
++  EDG_CINCLDIR=${EDG_CINCLDIR-${EDG_GCC_CINCL_SCRAPE-$(edg_gcc_includes c)}}
++  # Inject --gnu_version to the resident gcc's version.
++  EDG_CPFE_DEFAULT_OPTIONS="--gnu_version=$EDG_GCC_VER_SCRAPE $EDG_CPFE_DEFAULT_OPTIONS"
++fi
++if [ $EDG_LINK_SYSTEM_CXX_RUNTIME -eq 0 ] ; then
++  # The C++ runtime is EDG's libC.a, which eccp.sh links last.
++  EDG_C_TO_OBJ_LIBRARIES="$EDG_C_TO_OBJ_LIBRARIES -lpthread"
++else
++  EDG_C_TO_OBJ_LIBRARIES="$EDG_C_TO_OBJ_LIBRARIES -lstdc++ -lgcc_s -lpthread"
++fi
++
++# Get rid of the annoying "nm: stubs.o: no symbols" errors:
++EDG_PRELINK_DEFAULT_OPTIONS='-c "nm -og 2>/dev/null" '$EDG_PRELINK_DEFAULT_OPTIONS
++
++default_opts=$(printf '%s' \
++  "$EDG_C_TO_OBJ_DEFAULT_OPTIONS " \
++  '-w -Dva_copy=__va_copy -falign-functions=4 -fdiagnostics-plain-output'
++)
++
++if [ $EDG_GCC_VER_SCRAPE -ge 140000 ] ; then
++  #
++  # As of GCC 14 the following flags are required to prevent spurious
++  # errors when compiling the generated C code.
++  #
++  # See https://gcc.gnu.org/gcc-14/porting_to.html for more information.
++  #
++  warnings_to_disable=$(printf '%s' \
++    '-Wno-error=implicit-function-declaration ' \
++    '-Wno-error=incompatible-pointer-types ' \
++    '-Wno-error=int-conversion ' \
++    '-Wno-error=return-mismatch '
++  )
++  default_opts="$default_opts $warnings_to_disable"
++fi
++
++# The target is the machine the resident gcc compiles for.  eccp reads
++# EDG_C_TO_OBJ_DEFAULT_OPTIONS_<target> whenever --target is given, the
++# default target's own name included, and warns when it is unset.
++case $("$EDG_C_TO_OBJ_COMPILER" -dumpmachine) in
++  x86_64-*)
++    EDG_C_TO_OBJ_DEFAULT_OPTIONS=$default_opts
++    EDG_C_TO_OBJ_DEFAULT_OPTIONS_linux_x86_64="$default_opts -m64 -march=x86-64"
++    ;;
++  aarch64-*)
++    # GCC on AArch64 has no __float128.  The front end keeps it, as a
++    # binary128 type distinct from long double, because the _Float128
++    # keyword that glibc's headers need in C++ comes with it; map the
++    # spelling in the generated C to GCC's _Float128.
++    default_opts="$default_opts -D__float128=_Float128"
++    EDG_C_TO_OBJ_DEFAULT_OPTIONS=$default_opts
++    EDG_C_TO_OBJ_DEFAULT_OPTIONS_linux_aarch64=$default_opts
++    ;;
++  *)
++    EDG_C_TO_OBJ_DEFAULT_OPTIONS=$default_opts
++    ;;
++esac
++
++EDG_C_TO_OBJ_C99_OPTIONS="-std=gnu9x"
++
++EDG_SUPPRESS_PATCH_MUNCH=1
++EDG_STD_LIBS=${EDG_STD_LIBS-""}
++COLLECT_NO_DEMANGLE=1
++export COLLECT_NO_DEMANGLE
+diff --git a/bases/cmake-native/linux-aarch64/gcc/include b/bases/cmake-native/linux-aarch64/gcc/include
+new file mode 120000
+index 0000000000..d984a90075
+--- /dev/null
++++ b/bases/cmake-native/linux-aarch64/gcc/include
+@@ -0,0 +1 @@
++../../../../include_c++/
+\ No newline at end of file
+diff --git a/bases/cmake-native/linux-aarch64/gcc/lib_linux_aarch64 b/bases/cmake-native/linux-aarch64/gcc/lib_linux_aarch64
+new file mode 120000
+index 0000000000..7951405f85
+--- /dev/null
++++ b/bases/cmake-native/linux-aarch64/gcc/lib_linux_aarch64
+@@ -0,0 +1 @@
++lib
+\ No newline at end of file
+diff --git a/cmake/host-defaults.cmake b/cmake/host-defaults.cmake
+index d74ac3c842..34f49d1b32 100644
+--- a/cmake/host-defaults.cmake
++++ b/cmake/host-defaults.cmake
+@@ -32,9 +32,14 @@ function(detect_host_defaults)
+       endif()
+     endif()
+   elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+-    # The Linux configurations all target an x86_64 (or, for 32-bit builds,
+-    # i686) host.
+-    if(processor MATCHES "^(x86_64|amd64)$")
++    # The Linux configurations target an x86_64 (or, for 32-bit builds,
++    # i686) or an AArch64 host.
++    if(processor MATCHES "^(aarch64|arm64)$")
++      if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
++        set(macro_conf "linux-aarch64-gcc")
++        set(base "cmake-native/linux-aarch64/gcc")
++      endif()
++    elseif(processor MATCHES "^(x86_64|amd64)$")
+       if($CACHE{32BIT_BUILD})
+         if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+           set(macro_conf "linux-i686-gcc")
+diff --git a/cmake/macro-conf/linux-aarch64-gcc-release/base.cmakedef b/cmake/macro-conf/linux-aarch64-gcc-release/base.cmakedef
+new file mode 100644
+index 0000000000..c544b8c803
+--- /dev/null
++++ b/cmake/macro-conf/linux-aarch64-gcc-release/base.cmakedef
+@@ -0,0 +1,14 @@
++# Import Linux Configuration
++import <support/platform/linux-aarch64/base>
++# Import GCC Configuration
++import <support/compiler/gcc/linux-aarch64/base>
++
++# Import Simple Release Configuration
++import <support/simple-conf/release/base>
++
++# Allow Microsoft extensions (off by default).
++import <support/feature/microsoft-extensions/on>
++DEFAULT_MICROSOFT_MODE=0
++
++# Allow C++/CLI and C++/CX to be enabled.
++import <support/feature/cppcli/on>
+diff --git a/cmake/macro-conf/linux-aarch64-gcc-release/cdisp.cmakedef b/cmake/macro-conf/linux-aarch64-gcc-release/cdisp.cmakedef
+new file mode 100644
+index 0000000000..0cafe7d2e5
+--- /dev/null
++++ b/cmake/macro-conf/linux-aarch64-gcc-release/cdisp.cmakedef
+@@ -0,0 +1,2 @@
++# Auto Generated Default File
++import <default/cdisp>
+diff --git a/cmake/macro-conf/linux-aarch64-gcc-release/cpfe-cp.cmakedef b/cmake/macro-conf/linux-aarch64-gcc-release/cpfe-cp.cmakedef
+new file mode 100644
+index 0000000000..9d063d30b4
+--- /dev/null
++++ b/cmake/macro-conf/linux-aarch64-gcc-release/cpfe-cp.cmakedef
+@@ -0,0 +1,2 @@
++# Auto Generated Default File
++import <default/cpfe-cp>
+diff --git a/cmake/macro-conf/linux-aarch64-gcc-release/cpfe.cmakedef b/cmake/macro-conf/linux-aarch64-gcc-release/cpfe.cmakedef
+new file mode 100644
+index 0000000000..d430bf984b
+--- /dev/null
++++ b/cmake/macro-conf/linux-aarch64-gcc-release/cpfe.cmakedef
+@@ -0,0 +1,11 @@
++import <default/cpfe>
++
++# Import Linux Configuration
++import <support/platform/linux/cpfe>
++
++# Import Release Configuration
++import <support/build-type/release/cpfe>
++
++# Include the --il_display option so it can be used on compiler explorer
++# builds.
++NEED_IL_DISPLAY=1
+diff --git a/cmake/macro-conf/linux-aarch64-gcc-release/cpprtlib.cmakedef b/cmake/macro-conf/linux-aarch64-gcc-release/cpprtlib.cmakedef
+new file mode 100644
+index 0000000000..4ffb7da9c5
+--- /dev/null
++++ b/cmake/macro-conf/linux-aarch64-gcc-release/cpprtlib.cmakedef
+@@ -0,0 +1,2 @@
++# Auto Generated Default File
++import <default/cpprtlib>
+diff --git a/cmake/macro-conf/linux-aarch64-gcc/base.cmakedef b/cmake/macro-conf/linux-aarch64-gcc/base.cmakedef
+new file mode 100644
+index 0000000000..f747fd1c68
+--- /dev/null
++++ b/cmake/macro-conf/linux-aarch64-gcc/base.cmakedef
+@@ -0,0 +1,7 @@
++# Import Linux Configuration
++import <support/platform/linux-aarch64/base>
++# Import GCC Configuration
++import <support/compiler/gcc/linux-aarch64/base>
++
++# Import Debug Configuration
++import <support/simple-conf/debug/base>
+diff --git a/cmake/macro-conf/linux-aarch64-gcc/cdisp.cmakedef b/cmake/macro-conf/linux-aarch64-gcc/cdisp.cmakedef
+new file mode 100644
+index 0000000000..0cafe7d2e5
+--- /dev/null
++++ b/cmake/macro-conf/linux-aarch64-gcc/cdisp.cmakedef
+@@ -0,0 +1,2 @@
++# Auto Generated Default File
++import <default/cdisp>
+diff --git a/cmake/macro-conf/linux-aarch64-gcc/cpfe-cp.cmakedef b/cmake/macro-conf/linux-aarch64-gcc/cpfe-cp.cmakedef
+new file mode 100644
+index 0000000000..9d063d30b4
+--- /dev/null
++++ b/cmake/macro-conf/linux-aarch64-gcc/cpfe-cp.cmakedef
+@@ -0,0 +1,2 @@
++# Auto Generated Default File
++import <default/cpfe-cp>
+diff --git a/cmake/macro-conf/linux-aarch64-gcc/cpfe.cmakedef b/cmake/macro-conf/linux-aarch64-gcc/cpfe.cmakedef
+new file mode 100644
+index 0000000000..1ad52f86b9
+--- /dev/null
++++ b/cmake/macro-conf/linux-aarch64-gcc/cpfe.cmakedef
+@@ -0,0 +1,4 @@
++import <default/cpfe>
++
++import <support/platform/linux/cpfe>
++import <support/build-type/debug/cpfe>
+diff --git a/cmake/macro-conf/linux-aarch64-gcc/cpprtlib.cmakedef b/cmake/macro-conf/linux-aarch64-gcc/cpprtlib.cmakedef
+new file mode 100644
+index 0000000000..4ffb7da9c5
+--- /dev/null
++++ b/cmake/macro-conf/linux-aarch64-gcc/cpprtlib.cmakedef
+@@ -0,0 +1,2 @@
++# Auto Generated Default File
++import <default/cpprtlib>
+diff --git a/cmake/macro-conf/support/arch/aarch64/base.cmakedef b/cmake/macro-conf/support/arch/aarch64/base.cmakedef
+new file mode 100644
+index 0000000000..4032b9d611
+--- /dev/null
++++ b/cmake/macro-conf/support/arch/aarch64/base.cmakedef
+@@ -0,0 +1,42 @@
++# AArch64 as Linux uses it: the AAPCS64 procedure call standard with the
++# LP64 data model.  Apple's arm64 ABI (arch/arm64) differs: there plain char
++# is signed and long double is double.
++TYPE_FOR_PREFIX_ENTRY_NUMBER=unsigned long long
++
++# Plain char is unsigned and wchar_t is unsigned int.
++TARG_HAS_SIGNED_CHARS=0
++TARG_WCHAR_T_INT_KIND=((an_integer_kind)ik_unsigned_int)
++
++TARG_SIZEOF_LONG=8
++TARG_ALIGNOF_LONG=8
++TARG_SIZEOF_POINTER=8
++TARG_ALIGNOF_POINTER=8
++TARG_SIZEOF_DOUBLE=8
++TARG_ALIGNOF_DOUBLE=8
++TARG_ALIGNOF_LONG_LONG=8
++TARG_SIZEOF_LONG_DOUBLE=16
++TARG_ALIGNOF_LONG_DOUBLE=16
++TARG_SIZE_T_INT_KIND=((an_integer_kind)ik_unsigned_long)
++TARG_PTRDIFF_T_INT_KIND=((an_integer_kind)ik_long)
++TARG_DUAL_ALIGNMENTS_FOR_BUILTIN_TYPES=0
++HOST_ALIGNMENT_REQUIRED=8
++TYPE_FOR_AN_FP_VALUE_PART=unsigned int
++
++# glibc's jmp_buf is 312 bytes on AArch64.
++TARG_JMP_BUF_NUM_ELEMENTS=39
++TARG_JMP_BUF_ELEMENT_INT_KIND=((an_integer_kind)ik_long)
++
++# The C++ ABI for AArch64 is the generic one except for pointers to member
++# functions, where the virtual bit moves to the adjustment as on 32-bit ARM.
++# The front end's defaults for ARM64 select every 32-bit ARM variant.
++TARG_IA64_ABI_USE_VARIANT_PTR_TO_MEMBER_FUNCTION_REPR=1
++TARG_IA64_ABI_USE_VARIANT_ARRAY_COOKIES=0
++TARG_IA64_ABI_USE_INT_STATIC_INIT_GUARD=0
++TARG_IA64_ABI_VARIANT_CTORS_AND_DTORS_RETURN_THIS=0
++TARG_IA64_ABI_VARIANT_KEY_FUNCTION=0
++TARG_IA64_ABI_USE_GUARD_ACQUIRE_RELEASE=1
++
++# Zero-width and unnamed bit-fields raise the alignment of the struct to that
++# of their declared type.
++TARG_ZERO_WIDTH_BIT_FIELD_AFFECTS_STRUCT_ALIGNMENT=1
++TARG_UNNAMED_BIT_FIELD_AFFECTS_STRUCT_ALIGNMENT=1
+diff --git a/cmake/macro-conf/support/compiler/gcc/linux-aarch64/base.cmakedef b/cmake/macro-conf/support/compiler/gcc/linux-aarch64/base.cmakedef
+new file mode 100644
+index 0000000000..4695b77d4f
+--- /dev/null
++++ b/cmake/macro-conf/support/compiler/gcc/linux-aarch64/base.cmakedef
+@@ -0,0 +1,12 @@
++# Import GCC Configuration
++import <support/compiler/gcc/linux/base>
++
++# GCC on AArch64 has no __float80, and builds libquadmath only on x86.
++FLOAT80_ENABLING_POSSIBLE=0
++USE_QUADMATH_LIBRARY=0
++# long double is binary128 on AArch64, so approximating __float128 with long
++# double loses nothing.
++APPROXIMATE_QUADMATH=1
++# FLOAT128_ENABLING_POSSIBLE stays on: it also enables the _Float128 keyword,
++# which glibc's headers need in C++.  GCC on AArch64 has no __float128, so
++# the C compiler behind eccp needs -D__float128=_Float128 (edg_eccp_config).
+diff --git a/cmake/macro-conf/support/platform/linux-aarch64/base.cmakedef b/cmake/macro-conf/support/platform/linux-aarch64/base.cmakedef
+new file mode 100644
+index 0000000000..14c8f714ff
+--- /dev/null
++++ b/cmake/macro-conf/support/platform/linux-aarch64/base.cmakedef
+@@ -0,0 +1,15 @@
++# Import Base Linux Platform Configuration
++import <support/platform/linux/base>
++# Import AArch64 Configuration
++import <support/arch/aarch64/base>
++
++# long double is IEEE binary128, not the x87 format the base Linux
++# configuration assumes.
++delete FP_LONG_DOUBLE_IS_80BIT_EXTENDED
++FP_LONG_DOUBLE_IS_BINARY128=1
++
++# Allow 128-bit extensions on 64-bit linux configurations
++INT128_EXTENSIONS_ALLOWED=1
++
++# Use linux_aarch64 as the legacy configuration name
++LEGACY_TARGET_CONFIGURATION_NAME="linux_aarch64"
+-- 
+2.55.0
+
