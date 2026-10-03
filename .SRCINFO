@@ -1,0 +1,18 @@
+pkgbase = audacious-discord-rpc
+	pkgdesc = Discord Rich Presence for Audacious
+	pkgver = 2.4
+	pkgrel = 1
+	url = https://github.com/onegen-dev/audacious-discord-rpc
+	arch = x86_64
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = audacious
+	depends = curl
+	depends = libstdc++
+	depends = glibc
+	provides = audacious-discord-rpc
+	source = audacious-discord-rpc::git+https://github.com/onegen-dev/audacious-discord-rpc.git#tag=v2.4
+	sha256sums = b18f62dc552a671b23b6d01db4917a5552b10c7ae0d2c71eb27849635f596156
+
+pkgname = audacious-discord-rpc
