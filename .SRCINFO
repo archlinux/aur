@@ -1,6 +1,6 @@
 pkgbase = hgen
 	pkgdesc = Documentation generator for D
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 0
 	url = https://gitlab.com/os-18/hgen/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = hgen
 	makedepends = ldc
 	depends = 
 	depends = libdparse-ldc2
-	source = hgen-0.6.2.tar.gz::https://gitlab.com/os-18/hgen//-/archive/v0.6.2/hgen-v0.6.2.tar.gz
-	sha256sums = 897bea890b915370b89513f8248770ab32c0c7ea0886e0729e5d1ad6b5374e35
+	source = hgen-0.7.0.tar.gz::https://gitlab.com/os-18/hgen//-/archive/v0.7.0/hgen-v0.7.0.tar.gz
+	sha256sums = e2be47106a879a1260b24ac4f738a911450c5d879c27117585970a41f709c94f
 
 pkgname = hgen
