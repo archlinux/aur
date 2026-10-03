@@ -1,7 +1,7 @@
 # Maintainer: Viktor Danov <orangeleaf12@gmail.com>
 # SPDX-License-Identifier: 0BSD
 pkgname=uah-bin
-pkgver=1.7.5
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Terminal coding agent that works like Codex, built on unreal-agent'
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ options=('!strip' '!debug')
 _archive="uah-${pkgver}-${CARCH}-unknown-linux-gnu"
 source_x86_64=("${url}/releases/download/v${pkgver}/uah-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/uah-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('658a75edb624f3f2a9318f0b2591936e049e82a73c0b19674ad5dc646369b7cd')
-sha256sums_aarch64=('2eca637749c2ddc79ff1836184c6cc3e0f2338c212a4094dec6dfc5a4089e8c1')
+sha256sums_x86_64=('9808fd9e5736990e27f610bc7ff00fbaff0abcbab4035197fbbc0be813fb9c3e')
+sha256sums_aarch64=('cd67c1ccb26444a9860bfae9959ac2bab2e29efdbe1f5cbb7f7b8a4667131c4c')
 
 build() {
   cd "${_archive}"
