@@ -4,8 +4,8 @@ _pkgauthor=sorashii
 _pkgname=riftbar
 
 pkgname=${_pkgname}-bin
-pkgver=0.2.6
-pkgrel=1
+pkgver=0.2.7
+pkgrel=0
 _pkgvername=v${pkgver}
 
 pkgdesc='Highly customizable GTK4 bar for Wayland written in Rust'
