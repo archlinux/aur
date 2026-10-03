@@ -1,9 +1,10 @@
-# Maintainer: Jan Cholasta <grubber at grubber cz>
+# Maintainer: Eggbertx <eggbertxdev at gmail>
+# Previous maintainer: Jan Cholasta <grubber at grubber cz>
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=glbsp
 pkgver=2.24
-pkgrel=5
+pkgrel=6
 pkgdesc="A node builder for OpenGL-based Doom ports"
 arch=('i686' 'x86_64')
 url="http://glbsp.sourceforge.net/"
@@ -16,7 +17,7 @@ build() {
   cd $pkgname-$pkgver-source
 
   make -f Makefile.unx glBSPX \
-       BASE_FLAGS="$CFLAGS -Isrc -DUNIX -DINLINE_G=inline"
+       BASE_FLAGS="$CFLAGS -Isrc -I/usr/include/cairo -DUNIX -DINLINE_G=inline"
 }
 
 package() {

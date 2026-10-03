@@ -3,5 +3,6 @@
 /*.tar.xz
 /*.zip
 /*.7z
+/*.zst
 /pkg/
 /src/

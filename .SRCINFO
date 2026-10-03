@@ -1,7 +1,7 @@
 pkgbase = glbsp
 	pkgdesc = A node builder for OpenGL-based Doom ports
 	pkgver = 2.24
-	pkgrel = 5
+	pkgrel = 6
 	url = http://glbsp.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -11,4 +11,3 @@ pkgbase = glbsp
 	sha256sums = e3b7c4bce21c2f9b77732a9b5920b6877e884b31dd1ed9273776538dba48a75c
 
 pkgname = glbsp
-
