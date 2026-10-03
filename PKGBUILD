@@ -9,6 +9,7 @@ url="https://github.com/rullerzhou-afk/clawd-on-desk"
 license=('LicenseRef-clawd-on-desk-artwork')
 depends=('crab-on-desk')
 makedepends=('git' 'cargo' 'cmake' 'clang' 'electron')
+options=('!lto')
 source=("clawd-on-desk::git+${url}.git#commit=${_commit}"
         "crab-on-desk::git+https://github.com/Supernovatux/crab-on-desk.git")
 sha256sums=('SKIP'
