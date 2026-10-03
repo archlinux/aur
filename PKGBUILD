@@ -2,8 +2,8 @@
 
 _name=tree-sitter-dm
 pkgname=python-tree-sitter-dm
-pkgver=0.25.4
-pkgrel=2
+pkgver=0.26.0
+pkgrel=1
 pkgdesc="DreamMaker grammar for tree-sitter"
 arch=('x86_64' 'aarch64')
 url="https://github.com/feudeytf/tree-sitter-dm"
@@ -16,7 +16,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('9588a8ccb9e6fd48f45a416e006e1452cd96c5ccf4ded54e7772cf1c2d8ea0bb')
+sha256sums=('88f185c9c32d3032ad1613674c71580bc8def7e38c9d2a7719dcf061c5c84ecb')
 
 build() {
     cd "${_name//-/_}-${pkgver}"
