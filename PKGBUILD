@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=chatwithwork-local-agent-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Chat with Work Local Agent: share folders with Chat with Work through four read-only tools"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ options=('!debug' '!strip')
 _repo="https://github.com/crmne/chatwithwork-local-agent"
 source_x86_64=("${_repo}/releases/download/v${pkgver}/cww-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("${_repo}/releases/download/v${pkgver}/cww-v${pkgver}-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('bd1aee9dc6c9a927ca6c8598ded4c8448c313c4c86ce45ca243a83935baaf1a8')
-sha256sums_aarch64=('4fb3258e3ffd86a91aff1f024cfc7d5d3592348fe5a2b15889a27f6d98991d0f')
+sha256sums_x86_64=('b226311a10f7368019011ae0d666d04e3f1abe5e94940b73d84c727da1fe07c1')
+sha256sums_aarch64=('cb9155d6bc6b6302fd8f4ff76954d128ab6ff024ac1ca6cd5be45b43d018ab64')
 
 package() {
   local target
