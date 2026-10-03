@@ -1,6 +1,6 @@
 pkgbase = edex-de
 	pkgdesc = eDEX-DE — sci-fi desktop shell for Hyprland (Rust + wgpu), with greetd greeter
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/eDEX-OS/eDEX-DE
 	install = edex-de.install
@@ -15,6 +15,7 @@ pkgbase = edex-de
 	depends = hyprland>=0.55
 	depends = cage
 	depends = greetd
+	depends = greetd-tuigreet
 	depends = libxkbcommon
 	depends = wayland
 	depends = vulkan-icd-loader
@@ -54,7 +55,7 @@ pkgbase = edex-de
 	optdepends = pavucontrol: advanced audio mixer
 	optdepends = nemo: file manager for SUPER+E
 	backup = etc/edex-greeter/greeter.toml
-	source = edex-de-3.3.0.tar.gz::https://github.com/eDEX-OS/eDEX-DE/archive/refs/tags/v3.3.0.tar.gz
-	sha256sums = 2c7728a5e782c2895732524321e7e612d803587d907342c1b7bd5c0abe28c6b2
+	source = edex-de-3.3.1.tar.gz::https://github.com/eDEX-OS/eDEX-DE/archive/refs/tags/v3.3.1.tar.gz
+	sha256sums = d624ec9d598ea0cc82ac268b9420ddbc5e05ecedfe82b1a791393e67271a0b05
 
 pkgname = edex-de

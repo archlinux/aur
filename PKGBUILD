@@ -1,6 +1,6 @@
 # Maintainer: eDEX-OS <edex-de@github.com>
 pkgname=edex-de
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="eDEX-DE — sci-fi desktop shell for Hyprland (Rust + wgpu), with greetd greeter"
 arch=('x86_64')
@@ -10,6 +10,7 @@ depends=(
     'hyprland>=0.55'
     'cage'
     'greetd'
+    'greetd-tuigreet'
     'libxkbcommon'
     'wayland'
     'vulkan-icd-loader'
@@ -55,7 +56,7 @@ optdepends=(
 install=edex-de.install
 backup=('etc/edex-greeter/greeter.toml')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/eDEX-OS/eDEX-DE/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2c7728a5e782c2895732524321e7e612d803587d907342c1b7bd5c0abe28c6b2')
+sha256sums=('d624ec9d598ea0cc82ac268b9420ddbc5e05ecedfe82b1a791393e67271a0b05')
 
 build() {
     cd "eDEX-DE-${pkgver}"
@@ -75,6 +76,7 @@ package() {
     install -Dm755 target/release/edex-de "$pkgdir/usr/bin/edex-de"
     install -Dm755 target/release/edex-greeter "$pkgdir/usr/bin/edex-greeter"
     install -Dm755 packaging/session/edex-session "$pkgdir/usr/bin/edex-session"
+    install -Dm755 packaging/greetd/edex-greeter-session "$pkgdir/usr/bin/edex-greeter-session"
     install -Dm644 packaging/session/edex-de.desktop "$pkgdir/usr/share/wayland-sessions/edex-de.desktop"
     install -Dm644 -t "$pkgdir/usr/share/applications" packaging/applications/*.desktop
     install -Dm644 packaging/session/edex-de-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/edex-de-portals.conf"
