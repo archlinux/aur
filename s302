@@ -27,14 +27,42 @@ resolve_rules_ini() {
 }
 resolve_rules_ini
 
-# --- 探测 systemd 服务名(按机器 UID 生成:s302-<uid>.service) ---
+# --- 探测 systemd 服务名(按初始化用户 UID 生成:s302-<uid>.service) ---
 find_svc() {
-    local svc
-    svc="$(systemctl list-unit-files 2>/dev/null | awk '/^s302-[0-9]+\.service/ {print $1; exit}')"
-    if [[ -z "$svc" && -e /etc/systemd/system/s302-*.service ]]; then
-        svc="$(basename /etc/systemd/system/s302-*.service)"
+    local uid unit
+    local -a units=()
+
+    # 普通调用、sudo 与 pkexec 均优先匹配发起初始化的用户，而不是任意第一个
+    # s302 unit；多用户机器上 root 无法推断目标用户时拒绝猜测。
+    for uid in "${PKEXEC_UID:-}" "${SUDO_UID:-}" "$UID"; do
+        [[ "$uid" =~ ^[0-9]+$ ]] || continue
+        unit="s302-${uid}.service"
+        if [[ -e "/etc/systemd/system/$unit" ]] ||
+            systemctl list-unit-files --no-legend "$unit" 2>/dev/null |
+                awk -v unit="$unit" '$1 == unit { found = 1 } END { exit !found }'; then
+            printf '%s\n' "$unit"
+            return 0
+        fi
+    done
+
+    [[ $EUID -eq 0 ]] || return 1
+    mapfile -t units < <(
+        systemctl list-unit-files --no-legend 2>/dev/null |
+            awk '/^s302-[0-9]+\.service/ { print $1 }'
+    )
+    if ((${#units[@]} == 0)); then
+        for unit in /etc/systemd/system/s302-[0-9]*.service; do
+            [[ -e "$unit" ]] && units+=("${unit##*/}")
+        done
     fi
-    echo "$svc"
+    if ((${#units[@]} == 1)); then
+        printf '%s\n' "${units[0]}"
+        return 0
+    fi
+    if ((${#units[@]} > 1)); then
+        printf '%s\n' "错误: 找到多个 s302 服务；请以目标用户运行 s302，或用 sudo 从该用户会话调用。" >&2
+    fi
+    return 1
 }
 
 die() { echo "错误: $*" >&2; exit 1; }
