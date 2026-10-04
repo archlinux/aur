@@ -1,13 +1,13 @@
 pkgbase = connectlnx-bin
 	pkgdesc = Cross-platform LAN file transfer app built with Kotlin Multiplatform
-	pkgver = 3.5.0
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = https://github.com/3DBarath/ConnectLnxKMP
 	arch = x86_64
 	license = MIT
 	provides = connectlnx
 	conflicts = connectlnx
-	source = connectlnx-3.5.0.deb::https://github.com/3DBarath/connectlnx-releases/releases/download/v3.5.0/connectlnx_3.5.0_amd64.deb
-	sha256sums = 20c1d9e67af9d5d7953e0055411b362ed2290709ce2bceeb43c6b46b1b3ed1a1
+	source = connectlnx-3.5.1.deb::https://github.com/3DBarath/connectlnx-releases/releases/download/v3.5.1/connectlnx_3.5.1_amd64.deb
+	sha256sums = bb395bdbd1c7f5332630633b564f791f34b9552a64df15a375ef46d63e5f000c
 
 pkgname = connectlnx-bin
