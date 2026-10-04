@@ -1,0 +1,24 @@
+post_install() {
+	systemctl --user daemon-reload
+	systemctl --user enable --now notebook.service
+	systemctl --user enable --now notebook-watcher.service
+	systemctl --user enable --now retext.service
+
+pre_upgrade() {
+	systemctl --user disable --now notebook.service
+	systemctl --user disable --now notebook-watcher.service
+	systemctl --user disable --now retext.service
+}
+
+post_upgrade() {
+	systemctl --user daemon-reload
+	systemctl --user enable --now notebook.service
+	systemctl --user enable --now notebook-watcher.service
+	systemctl --user enable --now retext.service
+}
+
+pre_remove() {
+	systemctl --user disable --now notebook.service
+	systemctl --user disable --now notebook-watcher.service
+	systemctl --user disable --now retext.service
+}
