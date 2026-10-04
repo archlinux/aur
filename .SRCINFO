@@ -1,7 +1,7 @@
 pkgbase = gust
 	pkgdesc = Command line weather app written in Go
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/josephburgess/gust
 	arch = x86_64
 	license = unknown
