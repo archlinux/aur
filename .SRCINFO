@@ -1,7 +1,7 @@
 pkgbase = android-studio-beta
 	pkgdesc = The Official Android IDE (Beta branch)
 	pkgver = 2026.2.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.android.com/studio/preview
 	arch = i686
 	arch = x86_64
@@ -41,5 +41,6 @@ pkgname = android-studio-beta
 	depends = alsa-lib
 	depends = fontconfig
 	depends = libgl
+	depends = libxkbcommon
 	depends = libxcrypt-compat
 	depends = libxrender

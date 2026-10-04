@@ -7,12 +7,12 @@
 # Pull requests are welcome here: https://github.com/yurikoles-aur/android-studio-beta
 # SHA-256 Checksums and binary links can be found here: https://developer.android.com/studio/archive
 
-PKGEXT='.pkg.tar'
+#PKGEXT='.pkg.tar'
 _pkgname=android-studio
 pkgname="${_pkgname}-beta"
 pkgver=2026.2.1.8
 _subver='rabbit1'
-pkgrel=1
+pkgrel=2
 pkgdesc='The Official Android IDE (Beta branch)'
 arch=('i686' 'x86_64')
 url='https://developer.android.com/studio/preview'
@@ -73,6 +73,7 @@ package() {
     alsa-lib
     fontconfig
     libgl
+    libxkbcommon
     libxcrypt-compat
     libxrender
   )
