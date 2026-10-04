@@ -4,7 +4,7 @@ pkgbase=python-aioftp
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.28.0
+pkgver=0.28.3
 pkgrel=1
 pkgdesc="ftp client/server for asyncio"
 arch=('any')
@@ -22,7 +22,7 @@ checkdepends=('python-pytest-asyncio'
               'python-trustme'
               'python-siosocks')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('311f66e9ff726055f73e74764fb62e097ab806da3177c13f1356c8e7eaf9a65d')
+sha256sums=('f054f3af285b4958621220f04ce755e58907140181e95efa859369091c92d040')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
