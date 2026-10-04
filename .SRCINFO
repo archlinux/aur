@@ -1,7 +1,7 @@
 pkgbase = rocm-gfx90a-bin
-	pkgdesc = ROCm Core SDK - CDNA1
+	pkgdesc = ROCm Core SDK - CDNA2
 	pkgver = 10.0.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = http://www.amd.com
 	arch = x86_64

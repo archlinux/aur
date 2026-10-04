@@ -3,9 +3,9 @@
 
 # Release notes https://rocm.docs.amd.com/en/latest/about/release-notes.html
 pkgname=rocm-gfx90a-bin
-pkgdesc="ROCm Core SDK - CDNA1"
+pkgdesc="ROCm Core SDK - CDNA2"
 pkgver=10.0.0
-pkgrel=1
+pkgrel=2
 epoch=0
 arch=('x86_64')
 url='http://www.amd.com'
