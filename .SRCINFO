@@ -1,7 +1,7 @@
 pkgbase = python-restbook-git
 	pkgdesc = Orchestrate complex API workflows using YAML playbooks
 	pkgver = r142.2a60861
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shalev007/restbook
 	arch = any
 	license = unknown
