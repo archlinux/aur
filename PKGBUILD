@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='openvpn-auth-oauth2'
-pkgver='2.2.1'
+pkgver='2.2.2'
 pkgrel='1'
 pkgdesc='A Plugin/management interface client for OpenVPN server to handle an OIDC based single sign-on (SSO) auth flows'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('go' 'git')
 depends=('openvpn>=2.6.2')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/${pkgname}/tar.gz/refs/tags/v${pkgver}")
-sha256sums=('07f87d4753c19e0bb5d31eddbeb3185c890233bf70ac02cfc60ec655e912e31e')
+sha256sums=('343cdcb1a52af94d3babbca32d19d646a6c9ad85e1df85a4f8d57ce2301502a5')
 backup=("etc/conf.d/${pkgname}"
 	"etc/${pkgname}/config.yaml")
 
@@ -32,12 +32,16 @@ prepare() {
     --expression 's|CapabilityBoundingSet=|CapabilityBoundingSet=CAP_NET_BIND_SERVICE|g' \
     --expression 's|AmbientCapabilities=|AmbientCapabilities=CAP_NET_BIND_SERVICE|g' \
     --expression '/PrivateUsers=true/d' \
-"${pkgname}-${pkgver}/packaging/usr/lib/systemd/system/${pkgname}.service"
-
+  "${pkgname}-${pkgver}/packaging/usr/lib/systemd/system/${pkgname}.service"
 }
 
 build() {
   cd "${GOPATH}/src/${_uri}/${pkgname}"
+  export CGO_CFLAGS="${CFLAGS} ${DEBUG_CFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS} ${DEBUG_CXXFLAGS}"
+
   for e in "cmd" "lib"
     do
 
@@ -56,7 +60,7 @@ build() {
         -trimpath \
         -mod="readonly" \
         -modcacherw \
-        -ldflags "-linkmode external -extldflags '${LDFLAGS}' \
+        -ldflags "-compressdwarf=false -linkmode external -extldflags '${LDFLAGS}' \
         -X ${_uri}/${pkgname}/internal/version.Version=${pkgver} \
         -X ${_uri}/${pkgname}/internal/version.Commit=$(git rev-parse HEAD) \
         -X ${_uri}/${pkgname}/internal/version.Date=$(date -u '+%Y%m%d-%H:%M:%S' --date=@${SOURCE_DATE_EPOCH})" \
