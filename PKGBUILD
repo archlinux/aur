@@ -3,7 +3,7 @@
 
 pkgname=octomind
 pkgver=0.36.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Session-based AI development assistant with conversational codebase interaction and multi-provider AI integration"
 arch=('x86_64')
 url="https://github.com/muvon/octomind"
@@ -24,6 +24,15 @@ build() {
 package() {
 	cd "$_srcdir"
 	install -Dm755 "target/release/octomind" "$pkgdir/usr/bin/octomind"
+	install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+	install -Dm644 CONTRIBUTING.md "$pkgdir/usr/share/doc/$pkgname/CONTRIBUTING.md"
+	install -d "$pkgdir/usr/share/doc/$pkgname/doc"
+	cp -r doc/. "$pkgdir/usr/share/doc/$pkgname/doc/"
+	install -d "$pkgdir/usr/share/$pkgname/config-templates"
+	cp -r config-templates/. "$pkgdir/usr/share/$pkgname/config-templates/"
+	install -Dm644 <("$pkgdir/usr/bin/octomind" complete bash) "$pkgdir/usr/share/bash-completion/completions/octomind"
+	install -Dm644 <("$pkgdir/usr/bin/octomind" complete zsh) "$pkgdir/usr/share/zsh/site-functions/_octomind"
+	install -Dm644 <("$pkgdir/usr/bin/octomind" complete fish) "$pkgdir/usr/share/fish/vendor_completions.d/octomind.fish"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	fi
