@@ -3,16 +3,19 @@
 
 pkgname=python-forgekit
 _srcname=forgekit
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Shared Textual TUI shell library for the Forge Suite — menu bar, dialogs, settings forms and save flows, Catppuccin theme"
 arch=('any')
 url="https://github.com/jetomev/forgekit"
 license=('GPL3')
-depends=('python' 'python-textual' 'python-rich')
+# 0.6.0: python-pyte draws a program's screen inside the app (RunWindow)
+depends=('python' 'python-textual' 'python-rich' 'python-pyte')
+optdepends=('python-gobject: the polkit password asked inside the app (grubForge)'
+            'polkit: the same')
 source=("${_srcname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_srcname}-${pkgver}.tar.gz"
         "${_srcname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${_srcname}-${pkgver}.tar.gz.asc")
-sha256sums=('e8fbf2e60c558d4fec26845676a9f03429da8c5fc2ce567690116897dae9fec3'
+sha256sums=('4272206cc8c9725a3074061e4931096986303070356d19553dc0ca31b2cd5a4e'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
@@ -28,7 +31,8 @@ import asyncio
 from forgekit import (ForgeApp, ForgeModal, ConfirmDialog, ForgePanelScreen,
                       MenuBar, FORGE_CSS, COLORS, GPL3_NOTICE, __version__,
                       ROLES, glyph, console_mode,
-                      SettingRow, ReviewDialog, ProgressDialog, ManualScreen)  # 0.5.0
+                      SettingRow, ReviewDialog, ProgressDialog, ManualScreen,  # 0.5.0
+                      TerminalPane, RunWindow, PasswordBridge, PasswordDialog, InAppPolkitAgent)  # 0.6.0
 assert __version__ == '${pkgver}', __version__
 
 class _Smoke(ForgeApp):
@@ -48,7 +52,10 @@ async def _run():
             assert app.forge_console is console
 asyncio.run(_run())
 print('forgekit headless mount OK (window and console mode)')
-"
+"""
+    # 0.6.0: a program's run and its password inside the app, in a real
+    # pseudo-terminal with stand-in tools (no sudo, no polkit needed)
+    PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_v06
 }
 
 package() {
