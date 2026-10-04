@@ -3,7 +3,7 @@
 
 pkgname=is-fast
 pkgver=0.17.7
-pkgrel=1
+pkgrel=2
 pkgdesc="TUI tool for quick, efficient internet searches directly from the terminal"
 arch=('x86_64')
 url="https://github.com/Magic-JD/is-fast"
@@ -24,6 +24,13 @@ build() {
 package() {
 	cd "$_srcdir"
 	install -Dm755 "target/release/is-fast" "$pkgdir/usr/bin/is-fast"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+	install -d "$pkgdir/usr/share/doc/$pkgname/demos"
+	install -Dm644 demos/*.gif demos/DEMOS.md "$pkgdir/usr/share/doc/$pkgname/demos/"
+	install -d "$pkgdir/usr/share/$pkgname/scripts"
+	install -Dm755 scripts/is-fast-projects.sh "$pkgdir/usr/share/$pkgname/scripts/is-fast-projects.sh"
+	install -Dm644 scripts/is-fast-projects.ps1 "$pkgdir/usr/share/$pkgname/scripts/is-fast-projects.ps1"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	fi
