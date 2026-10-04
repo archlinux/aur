@@ -1,7 +1,7 @@
 pkgbase = python-patchright-bin
 	pkgdesc = Undetected Python version of the Playwright testing and automation library
 	pkgver = 1.63.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kaliiiiiiiiii-Vinyzu/patchright-python
 	arch = x86_64
 	license = Apache-2.0
