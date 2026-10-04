@@ -1,0 +1,13 @@
+pkgbase = aspell-ml
+	pkgdesc = Malayalam dictionary for aspell
+	pkgver = 0.04_1
+	pkgrel = 1
+	url = https://gitlab.com/smc/spellcheck
+	arch = any
+	license = GPL-3.0-or-later
+	depends = aspell
+	source = https://download.savannah.nongnu.org/releases/smc/Spellchecker/aspell6-ml-0.04-1.tar.bz2
+	md5sums = bd6fadf1074f9c909d08b400d2ad5771
+	sha256sums = b9352bee5e111f676640c958d1abf99b7382e780b2059c54abbf9c08497ee1c3
+
+pkgname = aspell-ml
