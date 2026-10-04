@@ -1,7 +1,7 @@
 # Maintainer: Zack Fitch <zack@internetuniverse.org>
 pkgname=claude-cowork-linux
 pkgver=1.1.4010
-pkgrel=14
+pkgrel=15
 pkgdesc="Anthropic Claude Desktop with Cowork (local agent) support for Linux"
 arch=('x86_64')
 url="https://github.com/johnzfitch/claude-cowork-linux"
@@ -315,26 +315,90 @@ package() {
     install -m755 "${srcdir}/linux-app-extracted/cowork/cowork-plugin-shim.sh" \
         "${pkgdir}/usr/lib/claude-cowork/resources/cowork-plugin-shim.sh"
 
-    # Disclaimer stub: exists so the asar's path check passes.
-    # Exec calls are intercepted in-process by frame-fix-wrapper.
+    # Disclaimer: the asar refuses to spawn unless this path exists, and on
+    # "darwin" (which the wrapper spoofs) routes every spawn through it.
+    # Admission is decided in-process: frame-fix-wrapper intercepts each spawn
+    # of this path and hands its argv to the exec-capability registry, which
+    # maps the Claude CLI to a vetted binary and refuses anything not admitted.
+    # So this script only runs for a call the interception missed or REFUSED,
+    # and must not be a way around that refusal. Like the self-install stub
+    # (exit 127), it runs nothing but the Claude CLI -- chosen from a fixed
+    # list, never the path the caller passed. It used to `exec "$CMD" "$@"`,
+    # which ran whatever the registry had just blocked (#195).
     install -Dm755 /dev/stdin "${pkgdir}/usr/lib/claude-cowork/Helpers/disclaimer" <<'EOF'
 #!/bin/sh
-CMD="$1"
-shift
-case "$CMD" in
-  *claude.app/Contents/MacOS/claude|*claude.app/Contents/MacOS/Claude)
-    for c in \
-      "$HOME/.local/bin/claude" \
-      "$HOME/.local/share/mise/shims/claude" \
-      "$HOME/.asdf/shims/claude" \
-      "/usr/local/bin/claude" \
-      "/usr/bin/claude"; do
-      [ -x "$c" ] && exec "$c" "$@"
+# Fail-closed Linux stand-in for macOS's Helpers/disclaimer. See PKGBUILD.
+# argv shapes seen from the bundle:
+#   disclaimer [--flag...] -- <cmd> [args...]   (2.7032.0 passes --pgroup)
+#   disclaimer -- <cmd> [args...]
+#   disclaimer <cmd> [args...]                  (older)
+# Leading flags are consumed only when every one is flag-shaped AND a `--`
+# follows them; anything else is left as-is and refused below. "Flag-shaped"
+# is exactly the in-process registry's isWrapperFlag(): -name or --name, the
+# name a letter then letters/digits/_/-, optionally =value. Flags are
+# ignored: the CLI runs in this process, as it always has.
+
+case "${1-}" in
+  -*)
+    n=0
+    for a in "$@"; do
+      n=$((n + 1))
+      [ "$a" = "--" ] && { shift "$n"; break; }
+      case "$a" in
+        -*) ;;
+        *) break ;;
+      esac
+      name=${a#-}
+      name=${name#-}
+      name=${name%%=*}
+      case "$name" in
+        ''|[!A-Za-z]*|*[!A-Za-z0-9_-]*) break ;;
+      esac
     done
+    ;;
+esac
+
+CMD="${1-}"
+[ $# -gt 0 ] && shift
+
+# Helpers by absolute path, and home from the password database: the caller's
+# PATH and HOME are not trusted to choose what runs (the registry uses the
+# passwd homedir for the same reason). PATH itself is left alone, since the
+# CLI exec'd below needs the user's.
+home=$(/usr/bin/getent passwd "$(/usr/bin/id -u)" | /usr/bin/cut -d: -f6)
+if [ -z "$home" ]; then
+  printf 'disclaimer: cannot determine the home directory\n' >&2
+  exit 127
+fi
+
+# The exec bit is not enough: the bundle hands over macOS paths whose Mach-O
+# binaries are marked executable but cannot run here. Check the magic.
+runs_on_linux() {
+  [ -f "$1" ] && [ -x "$1" ] || return 1
+  case "$(/usr/bin/od -An -tx1 -N4 "$1" 2>/dev/null | /usr/bin/tr -d ' \n')" in
+    7f454c46|2321*) return 0 ;;
+  esac
+  return 1
+}
+
+case "$CMD" in
+  [Cc]laude|*/[Cc]laude) ;;
+  *)
+    printf 'disclaimer: refusing to run %s: not admitted by the exec-capability registry\n' "$CMD" >&2
     exit 127
     ;;
 esac
-exec "$CMD" "$@"
+
+for c in \
+  "$home/.local/bin/claude" \
+  "$home/.local/share/mise/shims/claude" \
+  "$home/.asdf/shims/claude" \
+  "/usr/local/bin/claude" \
+  "/usr/bin/claude"; do
+  runs_on_linux "$c" && exec "$c" "$@"
+done
+printf 'disclaimer: no Linux Claude Code CLI found in ~/.local/bin, mise/asdf shims, /usr/local/bin or /usr/bin\n' >&2
+exit 127
 EOF
 
     # Install launcher script
@@ -392,21 +456,19 @@ MimeType=x-scheme-handler/claude;
 StartupWMClass=Claude
 EOF
 
-    # Extract icon from DMG's Claude.app if available
-    local _claude_app
-    _claude_app=$(find "${srcdir}/dmg-extracted" -name "Claude.app" -type d 2>/dev/null | head -1)
-    if [[ -n "$_claude_app" ]]; then
-        local _icns="${_claude_app}/Contents/Resources/AppIcon.icns"
-        # Try to convert .icns to png (icns2png from libicns)
-        if [[ -f "$_icns" ]] && command -v icns2png &>/dev/null; then
-            icns2png -x -s 256 "$_icns" -o "${srcdir}/" 2>/dev/null || true
-            local _icon
-            _icon=$(ls -S "${srcdir}/"*.png 2>/dev/null | head -1)
-            if [[ -n "$_icon" ]]; then
-                install -Dm644 "$_icon" \
-                    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/claude-cowork.png"
-            fi
-        fi
+    # Icon for the Icon=claude-cowork the desktop entry names (#195: nothing
+    # was installed, so menus showed none). resources/electron.icns is the
+    # real Claude artwork despite its name; its ic07..ic10 members are PNGs
+    # (128..1024 px), pulled out with the same extractor install.sh and the
+    # Nix package use -- no icns2png or ImageMagick needed, python is already
+    # a makedepend. Non-fatal: a missing icon is cosmetic.
+    local _icns="${srcdir}/linux-app-extracted/resources/electron.icns"
+    if [[ -f "$_icns" ]]; then
+        python "${srcdir}/claude-cowork-linux/nix/extract-icns.py" \
+            "$_icns" "${pkgdir}/usr/share/icons/hicolor" claude-cowork \
+            || echo "WARNING: icon extraction failed; the menu entry will have no icon" >&2
+    else
+        echo "WARNING: ${_icns} not found; the menu entry will have no icon" >&2
     fi
 
     # Install license notice
