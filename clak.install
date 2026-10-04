@@ -31,6 +31,11 @@ post_upgrade() {
     gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
     if [ -n "${SUDO_USER:-}" ] && pgrep -u "$SUDO_USER" -x fcitx5 >/dev/null 2>&1; then
         echo -e "${c_cyan}::${c_reset} Đang nạp lại daemon Fcitx5 cho ${c_bold}$SUDO_USER${c_reset}..."
-        sudo -u "$SUDO_USER" DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u "$SUDO_USER")/bus" fcitx5 -r -d >/dev/null 2>&1 || true
+        user_uid=$(id -u "$SUDO_USER" 2>/dev/null || echo 1000)
+        user_bus="unix:path=/run/user/${user_uid}/bus"
+        fcitx_pid=$(pgrep -u "$SUDO_USER" -x fcitx5 | head -n 1)
+        wayland_disp=$(tr '\0' '\n' < "/proc/${fcitx_pid}/environ" 2>/dev/null | grep '^WAYLAND_DISPLAY=' | cut -d= -f2-)
+        disp=$(tr '\0' '\n' < "/proc/${fcitx_pid}/environ" 2>/dev/null | grep '^DISPLAY=' | cut -d= -f2-)
+        sudo -u "$SUDO_USER" env XDG_RUNTIME_DIR="/run/user/${user_uid}" WAYLAND_DISPLAY="$wayland_disp" DISPLAY="$disp" DBUS_SESSION_BUS_ADDRESS="$user_bus" fcitx5 -r -d >/dev/null 2>&1 || true
     fi
 }
