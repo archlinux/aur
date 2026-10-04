@@ -1,7 +1,7 @@
 # Maintainer: aydevix <vidskix [at] gmail [dot] com>
 
 pkgname=musetext-git
-pkgver=r1.g5ba0a92
+pkgver=v.261004
 pkgrel=1
 pkgdesc="Minimalist text animation tool that renders transparent WebM video with FFmpeg"
 arch=('x86_64')
@@ -14,14 +14,14 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/muse"
+	# Kernel style date versioning: v.YYMMDD taken from the date of the newest
+	# upstream commit, in UTC so that a rebuild always yields the same string.
 	if git rev-parse --git-dir >/dev/null 2>&1; then
-		printf 'r%s.g%s\n' \
-			"$(git rev-list --count HEAD)" \
-			"$(git rev-parse --short=7 HEAD)"
+		printf 'v.%s\n' "$(TZ=UTC git log -1 --date=format:%y%m%d --format=%cd)"
 		return
 	fi
 	# Not a git checkout, so fall back to the mtime of the newest source file.
-	printf 'r%s\n' "$(date -u -r "$(find . -maxdepth 1 -name '*.go' -printf '%T@\n' | sort -rn | head -n1 | cut -d. -f1)" +%Y%m%d)"
+	printf 'v.%s\n' "$(date -u -r "$(find . -maxdepth 1 -name '*.go' -printf '%T@\n' | sort -rn | head -n1 | cut -d. -f1)" +%y%m%d)"
 }
 
 build() {
