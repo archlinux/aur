@@ -1,0 +1,15 @@
+pkgbase = huion-switcher
+	pkgdesc = A PoC tool to switch Huion tablets into tablet mode
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/whot/huion-switcher
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = cargo
+	depends = rust
+	provides = huion-switcher=0.6.0
+	conflicts = huion-switcher
+	source = https://github.com/whot/huion-switcher/archive/refs/tags/0.6.0.tar.gz
+	sha256sums = a60b6fc8e0d2e9931d688346f5e421ea23f95210a20a2c472a4595c8f22f72bf
+
+pkgname = huion-switcher
