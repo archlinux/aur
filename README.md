@@ -1,39 +1,28 @@
-# whatsapp-nativefier (AUR)
+# WhatsApp desktop editions
 
-Arch Linux PKGBUILD that wraps [web.whatsapp.com](https://web.whatsapp.com/) into a desktop app via [nativefier](https://github.com/nativefier/nativefier) + Electron.
+WhatsApp Web as a Linux desktop app with a tray icon, close-to-tray behavior, a menu bar, spell checking, and save-as downloads. The standard package is just the desktop app. The remote-control edition adds authenticated local CLI/MCP access to list conversation summaries and send individually approved messages from the same logged-in window.
 
-- **AUR**: https://aur.archlinux.org/packages/whatsapp-nativefier
-- **Source mirror**: https://gitlab.com/Nowaker/aur-whatsapp-nativefier
+## Packages
 
-## History
+- `whatsapp-nativefier`: desktop integration only, with no automation service or WA-JS.
+- `whatsapp-nativefier-with-remote-control`: desktop app plus authenticated local CLI/MCP controls.
 
-Originally maintained on the AUR by Fredy García. After the package was removed from the AUR, this fork picked up maintenance. Damian Nowak is the current AUR maintainer; Fredy is listed as Contributor.
+Both are built by this PKGBUILD. They conflict deliberately and retain the same application name, install path and profile. Choose one; do not run clients sharing the same linked-device identity concurrently.
 
-## What's in the package
+Nativefier upstream is archived. This package pins Electron 44.4.1 and patches the legacy runtime for sandboxing, context isolation and restricted permissions. This is local maintenance, not a guarantee of future WhatsApp compatibility.
 
-- `nativefier` invocation pinned to a known-good Electron release so the WhatsApp Web UI keeps rendering. The latest WhatsApp Web CSS resolves chat text color to the same value as the chat background under older Chromium (<128), producing invisible ("ghost") text that only shows when selected. The build pins **Electron 32.3.3 / Chromium 128** to avoid that.
-- `nativefier` is invoked through Node 22 via `nvm` because the bundled `electron-packager 17.1.2` + `extract-zip 2.0.1` silently exit mid Electron-zip extraction when run on Node 24+. The build function sources `~/.nvm/nvm.sh` and switches to Node 22 if available.
-- WhatsApp app extras enabled out of the box: `--show-menu-bar` (so DevTools / View / Window menus are reachable), `--single-instance`, `--tray`, and `--file-download-options` with save-as dialog + download progress badge.
-- `whatsapp-nativefier-inject.js` runs in the renderer, retries service-worker / cache cleanup on the "unsupported browser" landing page, and enables the spell checker over IPC.
+## Build
 
-## Build dependencies
+Run `makepkg` to build both editions, then install the chosen package with `pacman -U`. Build requirements include Nativefier 52.0.0, ImageMagick, unzip and Node >=22; the legacy packager uses Node 22 through nvm when available.
 
-`imagemagick`, `nodejs-nativefier`, `unzip`, plus `nvm` with Node 22 available (`nvm install 22` if you do not have it).
+This AUR repository contains flat, readable build inputs. `prepare()` reconstructs the module directory and `build()` creates the two runtime variants. No generated control-source archive is committed.
 
-## Usage
+## Local controls
 
-```
-git clone https://aur.archlinux.org/whatsapp-nativefier.git
-cd whatsapp-nativefier
-makepkg -si
-```
+Launch `whatsapp-nativefier-with-remote-control`, then use `whatsapp-controls version` to read the current public website build. Close the app and relaunch with `WHATSAPP_CONTROLS_WEB_VERSION` set to that verified build. Version discovery works without a pin; listing and sending do not.
 
-Or via an AUR helper:
+Use `whatsapp-controls --help` for commands. The private Unix socket requires authentication. Sending requires an exact recipient/content approval on the terminal. Unknown submissions are never automatically retried. No incoming-message stream or unattended chatbot policy is provided.
 
-```
-yay -S whatsapp-nativefier
-```
+## Source and verification
 
-## Reporting issues
-
-File issues on the [GitLab mirror](https://gitlab.com/Nowaker/aur-whatsapp-nativefier/-/issues). The AUR page is best used for `out-of-date` flags and package-policy comments.
+Full source, development tests, verified live behavior and security limitations are documented at [the GitLab source mirror](https://gitlab.com/nowaker/aur-whatsapp-nativefier). The development `npm` commands apply to that full checkout, not this AUR-only build-input repository.
