@@ -1,0 +1,22 @@
+post_install() {
+    echo ":: Cài đặt Clak thành công"
+    echo ":: Hãy khởi động lại Fcitx5 và vào cấu hình (fcitx5-configtool) thêm Clak vào danh sách bộ gõ để sử dụng"
+    if [ -n "${SUDO_USER:-}" ] && command -v notify-send >/dev/null 2>&1; then
+        sudo -u "$SUDO_USER" DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u "$SUDO_USER")/bus" notify-send -i org.fcitx.Fcitx5.clak "Clak" "Cài đặt thành công! Hãy vào cấu hình Fcitx5 thêm Clak vào bộ gõ để sử dụng" 2>/dev/null || true
+    elif command -v notify-send >/dev/null 2>&1; then
+        notify-send -i org.fcitx.Fcitx5.clak "Clak" "Cài đặt thành công! Hãy vào cấu hình Fcitx5 thêm Clak vào bộ gõ để sử dụng" 2>/dev/null || true
+    fi
+}
+
+post_upgrade() {
+    echo ":: Đã update Clak lên phiên bản mới"
+    if [ -n "${SUDO_USER:-}" ] && command -v notify-send >/dev/null 2>&1; then
+        sudo -u "$SUDO_USER" DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u "$SUDO_USER")/bus" notify-send -i org.fcitx.Fcitx5.clak "Clak" "Đã cập nhật phiên bản mới thành công" 2>/dev/null || true
+    elif command -v notify-send >/dev/null 2>&1; then
+        notify-send -i org.fcitx.Fcitx5.clak "Clak" "Đã cập nhật phiên bản mới thành công" 2>/dev/null || true
+    fi
+    if pgrep -x fcitx5 >/dev/null 2>&1; then
+        echo ":: Đang nạp lại daemon Fcitx5..."
+        fcitx5 -r -d >/dev/null 2>&1 || true
+    fi
+}
