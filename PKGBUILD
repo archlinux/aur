@@ -2,7 +2,7 @@
 
 _name=jsonschema-rs
 pkgname=python-$_name
-pkgver=0.58.4
+pkgver=0.58.5
 pkgrel=1
 pkgdesc="A high-performance JSON Schema validator for Python."
 arch=('any')
@@ -23,7 +23,7 @@ checkdepends=('python-flask'
 options=(!strip lto)
 source=("$_name::git+$url.git#tag=python-v$pkgver"
         "git+https://github.com/json-schema-org/JSON-Schema-Test-Suite#commit=583d7c6")
-sha256sums=('c6ac4a4415b84a2818978addaacb195206d84b6212ad99945e76f0424571e12d'
+sha256sums=('de1ebef474e2b5458075489effce4607fb5ab784da16a2ea6bec104ebe1622db'
             '7ccebd0988e5f5553be0cf64a2cdad14299abc73c58ee8d536b9d56da440ce1a')
 
 prepare() {
@@ -35,6 +35,7 @@ prepare() {
 build() {
   cd "$srcdir"/$_name
   export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
+  export AWS_LC_SYS_NO_JITTER_ENTROPY=1
   python -m build --wheel --no-isolation crates/${_name//-rs/-py}
   python -m build --wheel --no-isolation crates/${_name//-rs/-testsuite-pyo3}
 }
