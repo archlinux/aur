@@ -1,6 +1,6 @@
 pkgbase = zelynic-bin
 	pkgdesc = Per-app network rate limiter and traffic monitor for Linux. Pure eBPF. Boring and silent but killer.
-	pkgver = 11.0.0
+	pkgver = 20.0.0
 	pkgrel = 1
 	url = https://github.com/oxyzenQ/zelynic
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = zelynic-bin
 	provides = zelynic
 	conflicts = zelynic
 	options = !strip
-	source = USAGE-11.0.0.md::https://raw.githubusercontent.com/oxyzenQ/zelynic/v11.0.0/docs/USAGE.md
-	sha256sums = 67fe90e041bac79fcbd73e7a05ba9824053dee2115fcba315680de66635b9b41
-	source_x86_64 = zelynic-x86_64-11.0.0.tgz::https://github.com/oxyzenQ/zelynic/releases/download/v11.0.0/zelynic-v11.0.0-linux-amd64-v3-gnu.tar.gz
-	sha256sums_x86_64 = 92778e8eb03d5f1b1aabc18aa31a194b9a8825d62128ada0722e9a8ab71a7776
+	source = USAGE-20.0.0.md::https://raw.githubusercontent.com/oxyzenQ/zelynic/v20.0.0/docs/USAGE.md
+	sha256sums = 9d0490c398a428940b173435a6baec32b483149a82373b0eb8aa31c76a60b0b2
+	source_x86_64 = zelynic-x86_64-20.0.0.tgz::https://github.com/oxyzenQ/zelynic/releases/download/v20.0.0/zelynic-v20.0.0-linux-amd64-v3-gnu.tar.gz
+	sha256sums_x86_64 = 744d14e501ff827fd9da1a5bb97724bed40dc73bb89afe12eed0a234b02713f3
 
 pkgname = zelynic-bin
