@@ -1,0 +1,21 @@
+pkgbase = mirai-server-git
+	pkgdesc = Headless host sharing KataGo with mirai clients over the network
+	pkgver = r380.71088fa
+	pkgrel = 1
+	url = https://github.com/zhaob1n/mirai
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = glibc
+	depends = libgcc
+	optdepends = katago: the engine it serves (katago-opencl, katago-cuda, ...)
+	provides = mirai-server
+	conflicts = mirai-server
+	options = !lto
+	source = mirai::git+https://github.com/zhaob1n/mirai.git
+	sha256sums = SKIP
+
+pkgname = mirai-server-git
