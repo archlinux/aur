@@ -3,7 +3,7 @@
 
 pkgname=rss-cli-git
 pkgver=r25.111d396
-pkgrel=1
+pkgrel=2
 pkgdesc="A UNIX-inspired CLI application for interacting with RSS feeds"
 arch=('x86_64')
 url="https://github.com/Clortox/rss-cli"
@@ -14,17 +14,23 @@ provides=('rss-cli')
 conflicts=('rss-cli')
 source=("rss-cli::git+https://github.com/Clortox/rss-cli.git")
 sha256sums=('SKIP')
-function pkgver() {
+
+pkgver() {
 	cd rss-cli
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-function build() {
+
+build() {
 	cd rss-cli
 	make
 }
-function package() {
+
+package() {
 	cd rss-cli
 	install -Dm755 bin/rss-cli "$pkgdir/usr/bin/rss-cli"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 src/rapidxml/license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.rapidxml"
+	install -Dm644 src/rapidxml/manual.html "$pkgdir/usr/share/doc/$pkgname/rapidxml-manual.html"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	fi
