@@ -3,7 +3,7 @@
 # Contributor: Sebastian Baberowski <sebastian@baberowski.com>
 
 pkgname=libindi-qsi
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 pkgdesc="3rd party drivers for INDI, support for QSI cameras"
 url="http://www.indilib.org/index.php?title=Main_Page"
@@ -12,7 +12,7 @@ arch=(i686 x86_64 aarch64)
 depends=(libindi=${pkgver} libqsi=${pkgver})
 makedepends=(cmake libqsi=${pkgver})
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=("bb1efc5a6a7a00ce34dd5f3817c877d5537050550be8f8654aaa3d3ec08cc5ef")
+sha256sums=("c4db74b0b8c87a906cf7f90393118002e7fcce419cd967943034eca22bbbb059")
 
 prepare() {
   mkdir -p build
