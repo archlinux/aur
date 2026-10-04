@@ -2,7 +2,7 @@
 # Contributor: 糯米狐 <nuomihu@archlinux>
 
 pkgname=upmix-core-bin
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Stereo to 5.1 upmixer with HTDemucs neural source separation (prebuilt)"
 arch=('x86_64')
@@ -35,7 +35,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/gensui-fuga/upmix-core/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  '7a68131dc8e310f38265865cce49c19a2dd7a320f9195720d328e6e72e3adc0f'
+  '78c449eff1ede6e497a4e02ff8a59deafbbf03a37fd47601050d17a72c4ef450'
   '55aadbacf89b539c4f086c608a0f21129a0ce0c09285447e2eb356d37017bf0d'
 )
 
