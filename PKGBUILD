@@ -3,7 +3,7 @@
 
 pkgname=nics
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Display information about Network Interface Cards (NICs) cross-platform"
 arch=('x86_64')
 url="https://github.com/jftuga/nics"
@@ -14,15 +14,18 @@ _tag="v1.7.0"
 _srcdir="nics-1.7.0"
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/jftuga/nics/tar.gz/refs/tags/$_tag")
 sha256sums=('97b06728111be79ce327185a5aa43f86e5a8b76118c622568df2d4cc8f60f882')
-function build() {
+
+build() {
 	cd "$_srcdir"
 	export CGO_ENABLED=0
 	export GOFLAGS="-trimpath -mod=readonly -modcacherw"
 	go build -o "$pkgname" .
 }
-function package() {
+
+package() {
 	cd "$_srcdir"
 	install -Dm755 "nics" "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	fi

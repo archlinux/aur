@@ -1,7 +1,7 @@
 pkgbase = nics
 	pkgdesc = Display information about Network Interface Cards (NICs) cross-platform
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jftuga/nics
 	arch = x86_64
 	license = MIT
