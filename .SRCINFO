@@ -1,6 +1,6 @@
 pkgbase = mirai-git
 	pkgdesc = GTK4/libadwaita Go board for analysis, review and play with KataGo
-	pkgver = r380.71088fa
+	pkgver = r390.37c474e
 	pkgrel = 1
 	url = https://github.com/zhaob1n/mirai
 	arch = x86_64

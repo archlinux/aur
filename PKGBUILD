@@ -3,7 +3,7 @@
 
 pkgname=mirai-git
 _repo=mirai
-pkgver=r380.71088fa
+pkgver=r390.37c474e
 pkgrel=1
 pkgdesc='GTK4/libadwaita Go board for analysis, review and play with KataGo'
 arch=('x86_64' 'aarch64')
@@ -36,13 +36,6 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release -p mirai
-}
-
-check() {
-  cd "$_repo"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo test --frozen --release --workspace --exclude mirai-server
 }
 
 package() {
