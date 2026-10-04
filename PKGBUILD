@@ -2,7 +2,7 @@
 # Maintainer: Energetix/Dark Nebula <https://github.com/Jobanny-Friki>
 
 pkgname=csope-git
-pkgver=r329.f2efe38
+pkgver=r330.7a51cba
 pkgrel=1
 pkgdesc="Fork of cscope (C source code browser), actively maintained"
 arch=('x86_64')
@@ -28,6 +28,19 @@ build() {
 package() {
 	cd csope
 	make PREFIX=/usr DESTDIR="$pkgdir" install
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -d "$pkgdir/usr/share/doc/$pkgname"
+	install -Dm644 documentation/BUGS.md "$pkgdir/usr/share/doc/$pkgname/BUGS.md"
+	install -Dm644 documentation/HISTORY.md "$pkgdir/usr/share/doc/$pkgname/HISTORY.md"
+	install -Dm644 documentation/TODO.md "$pkgdir/usr/share/doc/$pkgname/TODO.md"
+	install -Dm644 documentation/dev_man.md "$pkgdir/usr/share/doc/$pkgname/dev_man.md"
+	install -Dm644 documentation/MASTERSCOPE.pdf "$pkgdir/usr/share/doc/$pkgname/MASTERSCOPE.pdf"
+	install -Dm644 documentation/dwh-cscopeFormat.txt "$pkgdir/usr/share/doc/$pkgname/dwh-cscopeFormat.txt"
+	install -d "$pkgdir/usr/share/$pkgname/scripts"
+	install -Dm644 scripts/emacs.e "$pkgdir/usr/share/$pkgname/scripts/emacs.e"
+	install -Dm644 scripts/gmacs.ml "$pkgdir/usr/share/$pkgname/scripts/gmacs.ml"
+	cp -r scripts/pycscope "$pkgdir/usr/share/$pkgname/scripts/"
+	install -Dm644 scripts/pycscope/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.pycscope"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	fi

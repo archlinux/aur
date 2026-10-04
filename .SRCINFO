@@ -1,6 +1,6 @@
 pkgbase = csope-git
 	pkgdesc = Fork of cscope (C source code browser), actively maintained
-	pkgver = r329.f2efe38
+	pkgver = r330.7a51cba
 	pkgrel = 1
 	url = https://github.com/agvxov/csope
 	arch = x86_64
