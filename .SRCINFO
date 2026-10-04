@@ -1,7 +1,7 @@
 pkgbase = cmake-common
 	pkgdesc = Utilities to help develop C++/CMake projects
-	pkgver = 6.1.7
-	pkgrel = 2
+	pkgver = 6.1.8
+	pkgrel = 1
 	url = https://github.com/egor-tensin/cmake-common
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = cmake-common
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/cmake_common/cmake_common-6.1.7.tar.gz
+	source = https://files.pythonhosted.org/packages/source/c/cmake_common/cmake_common-6.1.8.tar.gz
 	md5sums = SKIP
 
 pkgname = cmake-common

@@ -5,8 +5,8 @@
 
 pkgname=cmake-common
 _name="${pkgname//-/_}"
-pkgver=6.1.7
-pkgrel=2
+pkgver=6.1.8
+pkgrel=1
 pkgdesc='Utilities to help develop C++/CMake projects'
 arch=(any)
 url="https://github.com/egor-tensin/$pkgname"
