@@ -1,21 +1,22 @@
 pkgbase = appimg-bin
 	pkgdesc = Install, update and remove AppImages as proper desktop applications (prebuilt binary)
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/MrGilfy/appimg
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	optdepends = fuse2: needed by most AppImages at runtime
+	optdepends = squashfs-tools: read AppImage metadata without running it
 	optdepends = desktop-file-utils: desktop database updates
 	optdepends = gtk-update-icon-cache: icon cache updates
-	provides = appimg=0.4.0
+	provides = appimg=0.4.1
 	conflicts = appimg
 	options = !debug
 	options = !strip
-	source_x86_64 = appimg-bin-0.4.0-x86_64.tar.gz::https://github.com/MrGilfy/appimg/releases/download/v0.4.0/appimg-0.4.0-x86_64-linux-musl.tar.gz
-	sha256sums_x86_64 = 3adb94187b73cf7ab4f4ab9c1ce2fdbf73bc576eb3cb57743ec15afc7f36a80b
-	source_aarch64 = appimg-bin-0.4.0-aarch64.tar.gz::https://github.com/MrGilfy/appimg/releases/download/v0.4.0/appimg-0.4.0-aarch64-linux-musl.tar.gz
-	sha256sums_aarch64 = 967634b9bc5f263f517b1c0d4d9a568cc5596c8bd93569fc1db3508ac5e67359
+	source_x86_64 = appimg-bin-0.4.1-x86_64.tar.gz::https://github.com/MrGilfy/appimg/releases/download/v0.4.1/appimg-0.4.1-x86_64-linux-musl.tar.gz
+	sha256sums_x86_64 = 23d355f689439cad0c7ad9dcedcc49883c8ce1b86f3a6528370c69b206641294
+	source_aarch64 = appimg-bin-0.4.1-aarch64.tar.gz::https://github.com/MrGilfy/appimg/releases/download/v0.4.1/appimg-0.4.1-aarch64-linux-musl.tar.gz
+	sha256sums_aarch64 = 95acc2591fea0ae6581f4051805778b7566c62c736b117db1eedbc1b780694a7
 
 pkgname = appimg-bin
