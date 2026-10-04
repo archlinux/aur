@@ -10,7 +10,7 @@
 # Keep pkgver in step with debian/changelog: it names the tarball.
 
 pkgname=mx-packageinstaller
-pkgver=36.03.1
+pkgver=26.10
 pkgrel=1
 pkgdesc="MX Package Installer - a tool for managing packages and Flatpaks"
 arch=("x86_64")

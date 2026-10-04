@@ -1,6 +1,6 @@
 pkgbase = mx-packageinstaller
 	pkgdesc = MX Package Installer - a tool for managing packages and Flatpaks
-	pkgver = 36.03.1
+	pkgver = 26.10
 	pkgrel = 1
 	url = https://github.com/MX-Linux/mx-packageinstaller
 	arch = x86_64
