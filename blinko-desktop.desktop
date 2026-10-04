@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Blinko
+Comment=AI-powered card note-taking
+Exec=blinko-desktop
+Icon=blinko-desktop
+Categories=Office;Utility;
+Terminal=false
+StartupWMClass=Blinko
