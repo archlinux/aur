@@ -1,0 +1,32 @@
+pkgbase = jasp-desktop-bin
+	pkgdesc = JASP Desktop - a fresh way to do statistics (prebuilt binary)
+	pkgver = 0.98.1
+	pkgrel = 1
+	url = https://jasp-stats.org/
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = qt6-positioning
+	depends = qt6-webchannel
+	depends = qt6-webengine
+	depends = qt6-5compat
+	depends = qt6-httpserver
+	depends = fontconfig
+	depends = freetype2
+	depends = libxkbcommon
+	depends = hicolor-icon-theme
+	provides = jasp-desktop=0.98.1
+	conflicts = jasp-desktop
+	options = !strip
+	options = !debug
+	options = !libtool
+	options = !staticlibs
+	options = !zipman
+	options = !purge
+	options = !emptydirs
+	source = https://asger.weirsoe.dk/tarballz/jasp-desktop-0.98.1-b36ed75bbd4f-x86_64.tar.zst
+	sha256sums = b36ed75bbd4ff5b91156362ac861fcf49df9cb30b0134009f4c8d2e187777dc8
+
+pkgname = jasp-desktop-bin
