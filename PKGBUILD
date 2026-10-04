@@ -18,8 +18,8 @@ provides=('vega' 'kepler' 'vvman')
 conflicts=('vega' 'kepler' 'vvman')
 options=(!strip !debug)
 _sha256=2789ad833bff8395c796d203d805309ea2d27cf26a3d6c1141a5dc6a403aba8a
-source=("vega-${pkgver}-linux-x86_64.tar.gz::https://kepler-static-artifacts.kepler.labcollab.net/${_sha256:0:2}/${_sha256}")
-sha256sums=("${_sha256}")
+source=("vega-1.4.2-linux-x86_64.tar.gz::https://kepler-static-artifacts.kepler.labcollab.net/27/2789ad833bff8395c796d203d805309ea2d27cf26a3d6c1141a5dc6a403aba8a")
+sha256sums=('2789ad833bff8395c796d203d805309ea2d27cf26a3d6c1141a5dc6a403aba8a')
 install="${pkgname}.install"
 
 package() {
