@@ -1,6 +1,6 @@
 pkgbase = proton-drive-fs
 	pkgdesc = FUSE virtual filesystem for Proton Drive on Linux.
-	pkgver = 0.27.2
+	pkgver = 0.27.3
 	pkgrel = 1
 	url = https://github.com/khaosdoctor/proton-drive-linux-fs
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = proton-drive-fs
 	conflicts = proton-drive-fs-bin
 	provides = proton-drive-fs
 	
-	source = proton-drive-fs_0.27.2.tar.gz::https://github.com/khaosdoctor/proton-drive-linux-fs/releases/download/v0.27.2/proton-drive-linux-fs-0.27.2.tar.gz
-	sha256sums = 02aafcb2bfb5822ab533d2d395b08620be1e43f5ea3f16114e9b59622e89017c
+	source = proton-drive-fs_0.27.3.tar.gz::https://github.com/khaosdoctor/proton-drive-linux-fs/releases/download/v0.27.3/proton-drive-linux-fs-0.27.3.tar.gz
+	sha256sums = 5f377cc06feaefdd1dde4cdee82fa395396dc25244903c4ccef3033ee36458f1
 	
 pkgname = proton-drive-fs
