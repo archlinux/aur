@@ -4,7 +4,7 @@ pkgname=doudou-bin-unstable
 pkgver=23.0.0
 pkgrel=2
 pkgdesc="Deprecated - install doudou-unstable instead"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://openlyst.ink"
 license=('GPL3')
 depends=('gtk3')
@@ -13,8 +13,10 @@ provides=('doudou')
 conflicts=('doudou')
 options=('!strip')
 install=doudou-bin-unstable.install
-source=("doudou-bin-unstable-${pkgver}.zip::https://gitlab.com/Openlyst/doudou/-/releases/nightly/downloads/doudou-linux-x64-23.0.0-2026-09-29.zip")
-sha256sums=('SKIP')
+source_x86_64=("doudou-bin-unstable-${pkgver}-x86_64.zip::https://gitlab.com/Openlyst/doudou/-/releases/nightly/downloads/doudou-linux-x64-23.0.0-2026-10-04.zip")
+source_aarch64=("doudou-bin-unstable-${pkgver}-aarch64.zip::https://gitlab.com/Openlyst/doudou/-/releases/nightly/downloads/doudou-linux-arm64-23.0.0-2026-10-04.zip")
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 
 package() {
     cd "${srcdir}/bundle"
