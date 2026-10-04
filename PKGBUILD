@@ -1,6 +1,6 @@
 # Maintainer: Nicholas Heyer <nick@heyer.app>
 pkgname=deadlywp-bin
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc="Live wallpapers: videos, GIFs, pictures, web pages, Lively and Wallpaper Engine wallpapers"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('libappindicator: tray icon'
 provides=('deadlywp')
 conflicts=('deadlywp')
 source=("deadlywp-${pkgver}-x86_64-linux.tar.gz::https://github.com/nickheyer/deadlywallpaper/releases/download/v${pkgver}/deadlywp-${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('6a97f534748c3cd517f2580cc1807ffcc9b4fafb5a0d4ca165611bb5ea8df48d')
+sha256sums=('dc8749f8ff3c6dcc7dc1172ae7478bfc4511f4deef03885ad1b5909494c12fc2')
 
 package() {
   install -Dm755 "${srcdir}/deadlywp" "${pkgdir}/usr/bin/deadlywp"
