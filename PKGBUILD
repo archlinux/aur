@@ -3,7 +3,7 @@
 # Upstream ships an AppImage only. This unpacks that AppImage so pacman owns
 # every file and the app cannot replace itself underneath the package.
 pkgname=thinkwatch-lite-bin
-pkgver=2026.10.1
+pkgver=2026.10.2
 pkgrel=1
 pkgdesc="A local gateway for Claude Code, Codex and other AI clients"
 arch=('x86_64')
@@ -12,14 +12,17 @@ license=('MIT')
 depends=('e2fsprogs' 'expat' 'fontconfig' 'freetype2' 'fribidi' 'harfbuzz'
          'hicolor-icon-theme' 'libdrm' 'libglvnd' 'libgpg-error' 'libx11'
          'libxcb' 'mesa' 'wayland' 'zlib')
-source=("ThinkWatch-Lite-$pkgver-x86_64.AppImage::https://github.com/ThinkWatchProject/ThinkWatch-Lite/releases/download/v$pkgver/ThinkWatch-Lite-$pkgver-x86_64.AppImage"
+# The asset name carries the version, and the aur-action updater rewrites this
+# line from the release: upstream renamed it once already.
+_asset="ThinkWatch-Lite-$pkgver-linux-x86_64.AppImage"
+source=("$_asset::https://github.com/ThinkWatchProject/ThinkWatch-Lite/releases/download/v$pkgver/$_asset"
         "LICENSE::https://raw.githubusercontent.com/ThinkWatchProject/ThinkWatch-Lite/v$pkgver/LICENSE")
-sha256sums=('0a95403d88efa76d5d3ee7aae15d9d4e801433ba96aca4c8e2d2c3a054fe91e4'
+sha256sums=('2119a66982688aaf66399a2be05d7ef0bd0badf910602b45e74e620ef66115ac'
             '7252131fc6a9010e307564a50152aeae79c6bde89665b3e4b3f2aca9591749dd')
 
 build() {
-  chmod +x "ThinkWatch-Lite-$pkgver-x86_64.AppImage"
-  ./"ThinkWatch-Lite-$pkgver-x86_64.AppImage" --appimage-extract > /dev/null
+  chmod +x "$_asset"
+  ./"$_asset" --appimage-extract > /dev/null
   cd squashfs-root
 
   # The AppImage carries the graphics stack of the distribution it was built
