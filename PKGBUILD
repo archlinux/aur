@@ -11,7 +11,7 @@ license=('WTFPL')
 conflicts=("${_basename}")
 provides=("${_basename}")
 makedepends=('tar')
-depends=('glibc' 'gcc-libs' 'libcdio')
+depends=('glibc' 'gcc-libs')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_basename}_${pkgver}-${pkgrel}_amd64.deb")
 sha256sums_x86_64=('d8c0ba72e944d6fece44d015d7d23ab0aec3295ff91c213b5921d5c990d7f581')
