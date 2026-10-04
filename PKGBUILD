@@ -8,7 +8,7 @@
 # build from source with: ./gradlew :composeApp:run
 
 pkgname=connectlnx-bin
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Cross-platform LAN file transfer app built with Kotlin Multiplatform"
 arch=('x86_64')
@@ -19,7 +19,7 @@ conflicts=('connectlnx')
 provides=('connectlnx')
 
 source=("connectlnx-${pkgver}.deb::https://github.com/3DBarath/connectlnx-releases/releases/download/v${pkgver}/connectlnx_${pkgver}_amd64.deb")
-sha256sums=('6f5b98c2a5bcf8eff9d9ba7f006f016d39cbf39ec8474303bb5b00675316b9d1')  # ← Replace with: sha256sum connectlnx_1.0.0_amd64.deb
+sha256sums=('20c1d9e67af9d5d7953e0055411b362ed2290709ce2bceeb43c6b46b1b3ed1a1')  # ← Replace with: sha256sum connectlnx_1.0.0_amd64.deb
 
 package() {
     cd "$srcdir"
@@ -41,15 +41,21 @@ package() {
     ln -sf /opt/connectlnx/bin/ConnectLnx "$pkgdir/usr/bin/connectlnx"
 
     # Desktop entry for app launcher (GNOME, KDE, etc.)
+    # NOTE: the Compose .deb already ships its own entry. Only install ours
+    # if none exists, to avoid duplicate launchers (double start at login).
     install -dm755 "$pkgdir/usr/share/applications"
+    if [ ! -f "$pkgdir/usr/share/applications/ConnectLnx.desktop" ] && [ ! -f "$pkgdir/usr/share/applications/connectlnx.desktop" ]; then
     cat > "$pkgdir/usr/share/applications/connectlnx.desktop" <<EOF
 [Desktop Entry]
 Name=ConnectLnx
 Comment=Cross-platform LAN file transfer
 Exec=/opt/connectlnx/bin/ConnectLnx
-Icon=/opt/connectlnx/lib/connectlnx.png
+Icon=connectlnx
 Terminal=false
 Type=Application
 Categories=Network;FileTransfer;Utility;
+StartupWMClass=ConnectLnx
+SingleMainWindow=true
 EOF
+    fi
 }
