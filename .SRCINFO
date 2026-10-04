@@ -1,6 +1,6 @@
 pkgbase = bioma-shell
 	pkgdesc = A desktop shell for niri, built with Quickshell: living surfaces rather than a bar
-	pkgver = 1.0.0beta21
+	pkgver = 1.0.0beta22
 	pkgrel = 1
 	url = https://github.com/AkusenArcade/Bioma
 	install = bioma-shell.install
@@ -27,6 +27,7 @@ pkgbase = bioma-shell
 	depends = zenity
 	depends = fd
 	depends = xdg-utils
+	depends = curl
 	depends = grim
 	depends = tesseract
 	depends = tesseract-data-eng
@@ -55,7 +56,7 @@ pkgbase = bioma-shell
 	optdepends = python-evdev: dictation, pasting into the window
 	optdepends = business-network-wizard: company network setup (NTLM proxy, VPN, 802.1X, shares), opened from the connectivity cell
 	options = !lto
-	source = bioma-shell-1.0.0beta21.tar.gz::https://github.com/AkusenArcade/Bioma/archive/refs/tags/v1.0.0-beta.21.tar.gz
-	sha256sums = 0e21f0ff3a6a9ae0ed9d3e10329cb9dd790cf2b0abb7aa9fa21048faf0f5a864
+	source = bioma-shell-1.0.0beta22.tar.gz::https://github.com/AkusenArcade/Bioma/archive/refs/tags/v1.0.0-beta.22.tar.gz
+	sha256sums = 037360c3741bc350b6e1a6065d7a705a0c7b89eeee69738a327efdb2b82959df
 
 pkgname = bioma-shell

@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.21
-pkgver=1.0.0beta21
+_tag=v1.0.0-beta.22
+pkgver=1.0.0beta22
 pkgrel=1
 pkgdesc="A desktop shell for niri, built with Quickshell: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
@@ -34,6 +34,8 @@ depends=(
     # Launcher: files found by name in the home, and opened.
     'fd'
     'xdg-utils'
+    # The weather organism: Open-Meteo, through the proxy when one is on.
+    'curl'
     # Capture: screenshots, text recognition (capture.ocr_language is eng),
     # screen recording.
     'grim'
@@ -82,7 +84,7 @@ optdepends=(
 options=('!lto')
 install=bioma-shell.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('0e21f0ff3a6a9ae0ed9d3e10329cb9dd790cf2b0abb7aa9fa21048faf0f5a864')
+sha256sums=('037360c3741bc350b6e1a6065d7a705a0c7b89eeee69738a327efdb2b82959df')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
@@ -110,7 +112,7 @@ package() {
     # What the shell, the lock screen and the greeter read at runtime. The
     # design documents and their media stay in the repository.
     cp -r --no-preserve=ownership \
-        assets cells components config core greeter lock services structure scripts \
+        assets cells components config core greeter lock organisms services structure scripts \
         "$share/"
     install -m644 shell.qml lock.qml greeter.qml "$share/"
 
