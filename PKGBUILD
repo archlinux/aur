@@ -15,7 +15,7 @@
 #   cirrocast --version && man -w cirrocast && pacman -Ql cirrocast | grep -c completions   # 3
 
 pkgname=cirrocast
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Terminal weather client with pluggable backends and wttr.in-style output"
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'jq' 'rust')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/YangtseSu/cirrocast/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e1ee2e3bf7b8ff064a2f25038c024e785ab348393c4c502bc6a69d2ff70afecf')
+sha256sums=('dad09fbe53b02a94e27e34b4bfe71064beccf697a754731fdb1773817051719a')
 
 # Rust's target triple for both supported architectures is exactly `<arch>-unknown-linux-gnu`, and
 # `$CARCH` already holds the architecture, so nothing has to be mapped by hand. There is no
@@ -44,7 +44,10 @@ check() {
   # The tag tarball's crate version must be the one this PKGBUILD claims: a stale PKGBUILD fails
   # here instead of shipping a package whose metadata lies.
   local built
-  built="$(cargo metadata --format-version 1 --no-deps | jq -r '.packages[0].version')"
+  # By name: the tarball's workspace has a second member (the dev-only `geo-table` builder) and
+  # `packages[0]` resolves to that one.
+  built="$(cargo metadata --format-version 1 --no-deps \
+    | jq -r '.packages[] | select(.name == "cirrocast") | .version')"
   if [[ "$built" != "$pkgver" ]]; then
     echo "cirrocast: PKGBUILD says $pkgver but the tarball builds $built" >&2
     exit 1
