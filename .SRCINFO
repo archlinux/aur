@@ -1,7 +1,7 @@
 pkgbase = xfce4-power-profiles-plugin
 	pkgdesc = XFCE4 panel plugin for managing power profiles (power-profiles-daemon, TLP, system76-power)
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/AurelienDuval6/xfce4-power-profiles-plugin
 	arch = x86_64
 	groups = xfce4-plugins
@@ -15,7 +15,7 @@ pkgbase = xfce4-power-profiles-plugin
 	optdepends = power-profiles-daemon: default power profile backend (systemd)
 	optdepends = tlp: lightweight power profile backend (TLP 1.9+ with D-Bus)
 	optdepends = system76-power: power profile backend for System76 hardware
-	source = xfce4-power-profiles-plugin-0.1.0.tar.gz::https://github.com/AurelienDuval6/xfce4-power-profiles-plugin/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = f8d3c66b81605ef71fc87de959a4409fd9103900ce1f73cc30c971b8a7794851
+	source = xfce4-power-profiles-plugin-0.2.0.tar.gz::https://github.com/AurelienDuval6/xfce4-power-profiles-plugin/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = ff65176d81ecea317741ef5bfa8477480862668fac80373b4869c60c18c4c135
 
 pkgname = xfce4-power-profiles-plugin
