@@ -3,7 +3,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts612
-pkgver=6.12.111
+pkgver=6.12.112
 pkgrel=1
 pkgdesc="LTS ${pkgver%.*} Linux"
 url='https://www.kernel.org'
@@ -42,14 +42,14 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-md5sums=('3292d69e6b6bdc9c5dba9d09409d6df5'
+md5sums=('ab0c1085b1963a012706135e871c07ec'
          'SKIP'
          '6e12aeef82de5db1f202eede9ace645e'
          '0ec6fa86283fd967c86e22c5f84616d2'
          '8dc9cab39152a3c147c353ae6c2680c4'
          '5942163730c4ccde467e29a9cd4b4002'
          '030378d63753e2d818f01e0c53fb8e17')
-sha256sums=('9e59dc67624188fa12a6601f9598499cd6662a9066be572b59f935e3d7849810'
+sha256sums=('164dc9d1f6c93c61a15e1f071c48379b467f2b17c469cce7223471968208ed03'
             'SKIP'
             '3cf389ced2b40e6457421cb27892bf126b73032fbf1de895ecc37b13d981a17c'
             '423b2c6fbc8d6df79997550bef1b1e4f6f402b668007d150013623a83a12b49e'
