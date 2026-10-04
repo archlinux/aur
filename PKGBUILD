@@ -2,7 +2,7 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=nog
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A tier-aware package manager for Arch Linux — pacman with a safety net, written in Rust"
 arch=('x86_64')
@@ -19,12 +19,15 @@ optdepends=(
 # `nog pin` to customize tier-pins.toml would get silently clobbered the next
 # time the AUR ships a new nog version with a different default.
 backup=('etc/nog/nog.conf' 'etc/nog/tier-pins.toml')
+# v1.8.0: no debug package — the release binary carries no debug symbols, and
+# makepkg's attempt printed "No debugging symbols" in every build (Javier, 4 Oct)
+options=('!debug')
 # SKIP is the submission-time placeholder. Before pushing to AUR, run
 # `updpkgsums` in the AUR clone to replace SKIP with the real sha256 of the
 # signed GitHub release tarball for the tag being packaged.
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('7c75f68746bf3ac50a2af87464ef821eabf632ee2ac1c3267bb3f2afc4e87aab'
+sha256sums=('71e4db82a61926dbee4ff05906863e293be95b2402c56e01c83073e7a08d7a5d'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
