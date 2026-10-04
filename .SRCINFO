@@ -1,6 +1,6 @@
 pkgbase = squeeze-bin
 	pkgdesc = Extract rich information from any text (raw, JSON, HTML, YAML, etc.)
-	pkgver = 0.3.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/aymericbeaumet/squeeze
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = squeeze-bin
 	provides = squeeze
 	conflicts = squeeze
 	options = !strip
-	source_x86_64 = squeeze-x86_64-0.3.0.tgz::https://github.com/aymericbeaumet/squeeze/releases/download/v0.3.0/squeeze-v0.3.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = 3948dd071ab58277b3be982ae273fd28c85300c3c0d11ef046f44e87298da6a7
-	source_aarch64 = squeeze-aarch64-0.3.0.tgz::https://github.com/aymericbeaumet/squeeze/releases/download/v0.3.0/squeeze-v0.3.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = b58435f7ca90a7492065082e3f91fe1d4b3e555cc58715bf7c3dce552ff82161
+	source_x86_64 = squeeze-x86_64-0.5.0.tgz::https://github.com/aymericbeaumet/squeeze/releases/download/v0.5.0/squeeze-v0.5.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = adbc2d110b842021fc48f3d35d8837398503009b78f5ac02b3566570dad9542c
+	source_aarch64 = squeeze-aarch64-0.5.0.tgz::https://github.com/aymericbeaumet/squeeze/releases/download/v0.5.0/squeeze-v0.5.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = a2e1de00915d4ca01393dfac45dab544896369f4877cc1efc12eccd95ae3bd30
 
 pkgname = squeeze-bin
