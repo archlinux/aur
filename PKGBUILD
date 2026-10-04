@@ -3,7 +3,7 @@
 pkgname=voicefox-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 epoch=1
 _tag="v${pkgver}"
 _srcdir="${_pkgname}-${pkgver}"
@@ -24,12 +24,12 @@ optdepends=(
 )
 provides=("voicefox=${epoch}:${pkgver}")
 conflicts=("voicefox" "voicefox-git")
-source=(
-	"${_pkgname}-${pkgver}.zip::${url}/releases/download/${_tag}/${_pkgname}-linux-${CARCH}.zip"
-	"${_pkgname}-${pkgver}-src.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz"
-)
-sha512sums=('f9618b59430d94014f5bcffe7fb7d32f19f1a9443818875dc2fb34b64a39e085ca3cc96211b16358e5ac2975afd9af96cff61d1306fa7542cbef3f9e63614d38'
-            '2f3aa8851d9db6d76419b8329722f7975377d47bc6e32a181929968dee22f381ee803debc4bb4fb46da41f951f3aa4555cc157bb1246cb1451b0d662f2a2ed23')
+source=("${_pkgname}-${pkgver}-src.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.zip::${url}/releases/download/${_tag}/${_pkgname}-linux-x86_64.zip")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.zip::${url}/releases/download/${_tag}/${_pkgname}-linux-aarch64.zip")
+sha512sums=('2f3aa8851d9db6d76419b8329722f7975377d47bc6e32a181929968dee22f381ee803debc4bb4fb46da41f951f3aa4555cc157bb1246cb1451b0d662f2a2ed23')
+sha512sums_x86_64=('f9618b59430d94014f5bcffe7fb7d32f19f1a9443818875dc2fb34b64a39e085ca3cc96211b16358e5ac2975afd9af96cff61d1306fa7542cbef3f9e63614d38')
+sha512sums_aarch64=('dae277de5757264a39b73a3869342685f2292abaff1b941ac410afce7a6b4e4047d8870f8cd9bf60f23acd6840ce417fa3d6b030c90f35aab75750f13bc092e0')
 
 check() {
 	"${srcdir}/${_pkgname}" --check-libmpv
