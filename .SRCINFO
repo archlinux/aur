@@ -1,6 +1,6 @@
 pkgbase = pypy3-charset-normalizer
 	pkgdesc = The Real First Universal Charset Detector
-	pkgver = 3.5.1
+	pkgver = 3.5.2
 	pkgrel = 1
 	url = https://github.com/jawah/charset_normalizer
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = pypy3-charset-normalizer
 	makedepends = pypy3-installer
 	makedepends = pypy3-setuptools-scm
 	depends = pypy3
-	source = charset_normalizer-3.5.1.tar.gz::https://github.com/jawah/charset_normalizer/archive/3.5.1.tar.gz
-	sha512sums = 4f3b5bd701c541af34522a507b11798efdcc631ae54508c2ba100258f170bcfc5582ee52b06f75b8977168351e37626269ead866fb3d222af0fe566ed0af8c2a
+	source = charset_normalizer-3.5.2.tar.gz::https://github.com/jawah/charset_normalizer/archive/3.5.2.tar.gz
+	sha512sums = cbcb39e42261bacc9e5a2554e361cd5481061090d6eda1ac355b9fcf95c1793e7cb771738704e9b947812466b67a75721c5a3586b7d8ec8604ea2d27c5b6bcbc
 
 pkgname = pypy3-charset-normalizer
