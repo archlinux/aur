@@ -19,7 +19,7 @@
 
 _pkgname=resolve
 pkgname=davinci-resolve-studio-aacfix
-pkgver=21.1
+pkgver=21.1.1
 pkgrel=1
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition with AAC audio decode restored (resolve-aacfix), requires license key or license dongle.'
 arch=('x86_64')
@@ -50,14 +50,16 @@ source=("file://DaVinci_Resolve_Studio_${pkgver}_Linux.zip"
         "davinci-control-panels-setup.sh"
         "resolve-aacfix-${_aacfix_ver}.tar.gz::https://github.com/josephg/resolve-aacfix/archive/refs/tags/v${_aacfix_ver}.tar.gz"
         "e9patch::git+https://github.com/GJDuck/e9patch.git#commit=${_e9patch_commit}"
-        "https://ffmpeg.org/releases/ffmpeg-${_ffmpeg_ver}.tar.xz"{,.asc})
+        "https://ffmpeg.org/releases/ffmpeg-${_ffmpeg_ver}.tar.xz"{,.asc}
+        "resolve-aacfix-gate1-register.patch")
 # The ffmpeg tarball sum below is a placeholder: run `updpkgsums` once.
-sha256sums=('7968105cb1cc855892eaea20033fc457a26a37e6492b5d7be0815c975cdc5350'
+sha256sums=('d4f87af1a28a283bba7d824684402b7447f922e5b8f68d56d131732ea12790a5'
             'f17236fd68cead727c647bc31404e402922cdd491df5526f4b62364cbef9d3b8'
             'd09e4d046d964c80ba58b51e8fc253f1102af229dd3bd28d83197736e505d981'
             '1384cf1df809ae4429cf42ce55cefc081766a6baa5c51537dd9ef083ccebbe13'
             '9b16b8731d78e596b4be0d720428ca42df642bb2d78342881ff7f5bc29fc9623'
-            'SKIP')
+            'SKIP'
+            'e10a8fa4c1500bed75890f559cc8962e928a7b0b450e4f880d97f73d53f4afc9')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # FFmpeg release signing key
 install="${pkgname}.install"
 # !lto: the trampoline and FFmpeg must be plain objects; !debug: nothing here
@@ -151,6 +153,10 @@ prepare() {
   # network.
   mkdir -p "resolve-aacfix-${_aacfix_ver}/vendor"
   ln -sfn "${srcdir}/e9patch" "resolve-aacfix-${_aacfix_ver}/vendor/e9patch"
+
+  # Temporary patcher fix for 21.1.1 until the PR is merged
+  patch -d "resolve-aacfix-${_aacfix_ver}" -Np1 \
+    -i "${srcdir}/resolve-aacfix-gate1-register.patch"
 
   # The AV3A ("Audio Vivid") demuxer backport dev-setup.sh would apply to a
   # git checkout, applied to the release tarball instead.  Without it the

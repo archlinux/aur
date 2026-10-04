@@ -1,0 +1,130 @@
+resolve-aacfix 0.1.1: locate gate1 whatever register holds the fourcc
+
+Resolve 21.1.1 keeps the QuickTime fourcc in r12d instead of r15d, so the
+gate1_dispatch signature (cmp r15d,'.mp3'; je) no longer matches and the
+patcher refuses the build.  Wildcard the ModRM byte, verify with capstone
+that the hit is `cmp r8d..r15d, '.mp3'`, and hand the register read off the
+binary to the trampoline instead of the hard-coded r15.  21.1 (r15d) still
+resolves to the same site.
+
+diff -ruN -x __pycache__ a/aacpatch/additive.py b/aacpatch/additive.py
+--- a/aacpatch/additive.py	2026-08-24 10:13:38.000000000 +0200
++++ b/aacpatch/additive.py	2026-10-04 16:16:33.836641366 +0200
+@@ -30,7 +30,7 @@
+ from capstone import Cs, CS_ARCH_X86, CS_MODE_64
+ 
+ from .elfmap import ElfMap
+-from .sites import SIGNATURES, MKV_SIGNATURES
++from .sites import SIGNATURES, MKV_SIGNATURES, cmp_imm_reg
+ 
+ HERE = os.path.dirname(os.path.abspath(__file__))
+ ROOT = os.path.dirname(HERE)
+@@ -94,9 +94,17 @@
+     g3b = _sig("gate3b_attach").locate(buf, em)
+     g3c = _sig("gate3c_sizegate").locate(buf, em)
+ 
++    # The register holding the fourcc at gate1 is the compiler's choice and
++    # changes between point releases (r15d up to 21.1, r12d in 21.1.1).
++    g1_reg = cmp_imm_reg(cs, g1, em, buf, 0x2e6d7033)
++    if g1_reg is None:
++        raise LookupError(f"gate1_dispatch: no `cmp r8d..r15d, '.mp3'` at "
++                          f"{va(g1):#x}")
++
+     return {
+         # gate1: match the '.mp3' cmp; AAC -> FFmpeg handler (the '.mp3' je target)
+         "g1_site":    va(g1),
++        "g1_reg":     g1_reg,
+         "g1_target":  target_of(g1 + 7, {"je"}),
+         # gate2: after the insert_range call; rbx = map; call target = insert_range
+         "after_call": va(g2 + 18),
+@@ -194,7 +202,7 @@
+ 
+     args = [
+         "-M", f"addr={a['g1_site']:#x}",
+-        "-P", R("r15", AAC_FOURCC,   a["g1_target"]),
++        "-P", R(a["g1_reg"], AAC_FOURCC, a["g1_target"]),
+         "-M", f"addr={a['a_site']:#x}",
+         "-P", R("rcx", AAC_CODEC_ID, a["fetch"]),
+         "-M", f"addr={a['b_site']:#x}",
+@@ -285,7 +293,7 @@
+ 
+     print("resolved addresses:")
+     for k, v in a.items():
+-        print(f"  {k:12} 0x{v:x}")
++        print(f"  {k:12} {v:#x}" if isinstance(v, int) else f"  {k:12} {v}")
+     print("\ne9tool:", " ".join(cmd[1:]))
+     tail = [l for l in res.stdout.splitlines()
+             if any(t in l for t in ("num_patched ", "error", "time_elapsed"))]
+diff -ruN -x __pycache__ a/aacpatch/sites.py b/aacpatch/sites.py
+--- a/aacpatch/sites.py	2026-08-24 10:13:38.000000000 +0200
++++ b/aacpatch/sites.py	2026-10-04 16:16:33.836592315 +0200
+@@ -17,6 +17,8 @@
+ Both are reported by `python -m aacpatch.locate`, which is the first thing to
+ run against an unfamiliar build.
+ """
++import re
++
+ from .signature import Signature
+ 
+ 
+@@ -39,6 +41,34 @@
+     return check
+ 
+ 
++def cmp_imm_reg(cs, off, elfmap, buf, imm):
++    """If the instruction at `off` is `cmp r8d..r15d, <imm>`, return the 64-bit
++    name of that register (what e9tool takes as a trampoline argument), else
++    None.  For sites where the compiler's register choice is not stable across
++    point releases, so the register is read off the binary, not assumed."""
++    va = elfmap.off_to_va(off)
++    insn = next(cs.disasm(buf[off:off + 15], va, count=1), None)
++    if not insn or insn.mnemonic != "cmp":
++        return None
++    ops = insn.op_str.replace(",", "").split()
++    if len(ops) != 2 or not re.fullmatch(r"r(?:[89]|1[0-5])d", ops[0]):
++        return None
++    try:
++        if int(ops[1], 0) != imm:
++            return None
++    except ValueError:
++        return None
++    return ops[0][:-1]
++
++
++def _v_cmp_reg_imm(imm):
++    """Return a verifier asserting the instruction at match start is
++    `cmp <r8d..r15d>, <imm>`, whichever register it is."""
++    def check(cs, off, elfmap, buf):
++        return cmp_imm_reg(cs, off, elfmap, buf, imm) is not None
++    return check
++
++
+ # Every signature anchors ONLY on bytes the patch never touches (opcodes, fourcc
+ # constants, codec IDs, stable neighbouring instructions) and wildcards exactly
+ # the bytes an edit mutates.  So a signature locates its site whether the binary
+@@ -48,16 +78,21 @@
+ 
+     # GATE 1 -- dispatch.  Anchor on the stable '.mp3' branch: both '.mp3' and
+     # 'flac' jump to the same IOAudioFFMPEGCodec handler that AAC must reach.
+-    #   cmp r15d,'.mp3' ; je <FFmpeg-handler>
+-    # The additive patcher trampolines this site ("if r15=='aac ' goto handler")
++    #   cmp r15d,'.mp3' ; je <FFmpeg-handler>      (21.0.x - 21.1)
++    #   cmp r12d,'.mp3' ; je <FFmpeg-handler>      (21.1.1)
++    # The additive patcher trampolines this site ("if reg=='aac ' goto handler")
+     # and reads the handler address from the je at +7.  (Anchoring only on the
+     # '.mp3' branch keeps this robust to point releases that reorder the nearby
+-    # spare/NONE branch, which the additive path never touches.)
++    # spare/NONE branch, which the additive path never touches.)  The ModRM
++    # byte -- i.e. which register holds the fourcc -- is wildcarded because it
++    # moves between point releases; the verifier pins it to `cmp r8d..r15d,
++    # '.mp3'` and additive.py reads the register back via cmp_imm_reg().
+     Signature(
+         name="gate1_dispatch",
+-        pattern="41 81 ff 33 70 6d 2e 0f 84 ?? ?? ?? ??",     # cmp '.mp3'; je
++        pattern="41 81 ?? 33 70 6d 2e 0f 84 ?? ?? ?? ??",     # cmp '.mp3'; je
+         where="exec",
+         kind="computed",
++        verify=_v_cmp_reg_imm(0x2e6d7033),
+         desc="route 'aac ' fourcc to IOAudioFFMPEGCodec (via the '.mp3' branch)",
+     ),
+ 
