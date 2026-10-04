@@ -1,6 +1,6 @@
 pkgbase = kalu-kde
 	pkgdesc = Upgrade notifier w/ AUR support, watched (AUR) packages, news; supports autohide in Wayland / KDE Plasma's panel
-	pkgver = 4.7.1
+	pkgver = 4.7.2
 	pkgrel = 1
 	url = https://github.com/Thulinma/kalu
 	install = kalu.install
@@ -17,11 +17,10 @@ pkgbase = kalu-kde
 	depends = pacman<8
 	depends = curl
 	depends = libnotify
-	depends = notification-daemon
 	depends = libdbusmenu-gtk3
 	provides = kalu
 	conflicts = kalu
-	source = https://github.com/Thulinma/kalu/archive/refs/tags/4.7.1.tar.gz
+	source = https://github.com/Thulinma/kalu/archive/refs/tags/4.7.2.tar.gz
 	sha256sums = ea3df170d6350fe4fd60c857d8f6d887550662e473fa2dd2d71f519495d2d898
 
 pkgname = kalu-kde
