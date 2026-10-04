@@ -1,18 +1,18 @@
-# Maintainer: caskstrength
+# Maintainer: javy
 
 pkgname=libundr
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="C library with multiple utilities"
 arch=('x86_64' 'aarch64')
-url="https://codeberg.org/caskstrength/libundr"
+url="https://codeberg.org/javy/libundr"
 license=('MIT')
 depends=('glibc' 'openssl' 'curl')
 makedepends=('git' 'gcc' 'make')
 provides=('undr')
 conflicts=('undr')
 source=("$pkgname::git+$url.git#tag=$pkgver")
-sha512sums=('c0676c908e990fab7f3b9f2227a745511b1274c1a2ba6c09b569f16f3beb0b8c1082000b7cc5e1b3c85b47f0db28efaa70d7a01fa19e2664d59f0d6cd89c19b1')
+sha512sums=('88b2bcb53ef8daa899c2e7ed8dd064fea8ad8312e0535ecfa211e3d8e4f298a00d77c888c233d3cbd36c417c265828ccf2017c80d6c21df08048cccdeb7c8184')
 
 build() {
   cd "${pkgname}"
