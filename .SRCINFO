@@ -1,7 +1,7 @@
 pkgbase = output-as-format
 	pkgdesc = Take stdin and format it as a GitHub/Slack/Jira-formatted code/quote block
 	pkgver = 0.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sshaw/output-as-format
 	arch = any
 	license = custom:none
