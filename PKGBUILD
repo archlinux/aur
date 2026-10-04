@@ -11,7 +11,7 @@ optdepends=(
     'xdg-utils: for opening URLs and files'
 )
 source=("${pkgname}-${pkgver}.jar::${url}/releases/download/v${pkgver}/Xenon-${pkgver}.jar")
-sha256sums=('78b2825d0caad0e313029e9c2b7a46d3ce3f104bedd123d5a8befee99fb0b8db')
+sha256sums=('a4533d134d32c4e72244187aa3e7561398ba8e3f25423bcd45a8d17eff4121bd')
 
 pkgver() {
     echo "${pkgver}"
