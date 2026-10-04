@@ -1,6 +1,6 @@
 pkgbase = paperflow-bin
 	pkgdesc = File organizer and Paperless-ngx ingestion tool
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/alcxyz/paperflow
 	license = MIT
@@ -8,10 +8,10 @@ pkgbase = paperflow-bin
 	conflicts = paperflow
 	provides = paperflow
 	arch = aarch64
-	source_aarch64 = paperflow-bin_0.4.2_aarch64.tar.gz::https://github.com/alcxyz/paperflow/releases/download/v0.4.2/paperflow_0.4.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 75cbab61e1288af97cf8979d16329ddc0073176c29e3b021c47ad540981943b3
+	source_aarch64 = paperflow-bin_0.5.0_aarch64.tar.gz::https://github.com/alcxyz/paperflow/releases/download/v0.5.0/paperflow_0.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9ba3027dd2e71d4974d8cea7ea3df1f1f74917b317788d24500481c5323f3cec
 	arch = x86_64
-	source_x86_64 = paperflow-bin_0.4.2_x86_64.tar.gz::https://github.com/alcxyz/paperflow/releases/download/v0.4.2/paperflow_0.4.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 8b88507d32e3356cea848e8049fd2bbcadee8fab79e9be4dd03d0b7aae5e4898
+	source_x86_64 = paperflow-bin_0.5.0_x86_64.tar.gz::https://github.com/alcxyz/paperflow/releases/download/v0.5.0/paperflow_0.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6da09914bce5f6c042c3713c304a56b93d21a8f94d018bfee779aa6b4ec481f9
 	
 pkgname = paperflow-bin
