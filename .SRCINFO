@@ -1,7 +1,7 @@
 pkgbase = python-zev
 	pkgdesc = Look up shell commands using natural language (LLM-powered)
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dtnewman/zev
 	arch = any
 	license = MIT
@@ -16,6 +16,9 @@ pkgbase = python-zev
 	depends = python-dotenv
 	depends = python-questionary
 	depends = python-rich
+	optdepends = xclip: portapapeles en X11
+	optdepends = xsel: portapapeles en X11 (alternativa)
+	optdepends = wl-clipboard: portapapeles en Wayland
 	source = zev-0.11.1.tar.gz::https://codeload.github.com/dtnewman/zev/tar.gz/refs/tags/v0.11.1
 	sha256sums = df65698442d5ed86e7a77914d046cc1b8ba3f202aa0499b39c7f9de81cea4cf5
 
