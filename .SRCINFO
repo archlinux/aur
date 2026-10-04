@@ -1,6 +1,6 @@
 pkgbase = zorite-bin
 	pkgdesc = A local-first outliner and daily-journal note app (Logseq-style).
-	pkgver = 0.11.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/packetThrower/zorite
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = zorite-bin
 	conflicts = zorite
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/packetThrower/zorite/releases/download/v0.11.0/zorite-0.11.0-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 2fce4cdc8ac1dda2d9442ea419ef82801255b5415b543ac8aac8e0653b8f14a5
-	source_aarch64 = https://github.com/packetThrower/zorite/releases/download/v0.11.0/zorite-0.11.0-1-aarch64.pkg.tar.zst
-	sha256sums_aarch64 = df650c75fa24896bcdee534d6e14817897bf8fce98637abefdab709050a3525b
+	source_x86_64 = https://github.com/packetThrower/zorite/releases/download/v0.12.1/zorite-0.12.1-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 710592ab0433fb94516409802ab003cc8675a002b5ecfc35df93ffb45a5976f6
+	source_aarch64 = https://github.com/packetThrower/zorite/releases/download/v0.12.1/zorite-0.12.1-1-aarch64.pkg.tar.zst
+	sha256sums_aarch64 = b4f011034415abea3b54af0f5c4b492dc0a0b82ae7dbd09f79f7ef79e9523643
 
 pkgname = zorite-bin
