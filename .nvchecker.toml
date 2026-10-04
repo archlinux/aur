@@ -2,3 +2,4 @@
 source = "github"
 github = "raviqqe/schemat"
 prefix = "v"
+use_latest_release = true
