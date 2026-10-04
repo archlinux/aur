@@ -10,7 +10,7 @@ pkgbase = python-opr
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	source = https://github.com/openscilab/opr/archive/v0.6.tar.gz
+	source = python-opr-0.6.tgz::https://github.com/openscilab/opr/archive/v0.6.tar.gz
 	sha256sums = c84d7f7493a09310830b73f6a46ce650702f6f8e794ae88720d40b1536cf219e
 
 pkgname = python-opr
