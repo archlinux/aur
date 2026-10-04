@@ -7,7 +7,7 @@ pkgname=(${_gitname}-bin ${_gitname}-desktop-bin)
 pkgbase=${pkgname[0]}
 _pkgdesc="Find processes using files, directories, and local ports"
 
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,10 +32,10 @@ source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/$
 			   "${_appname}-${arch[1]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}-desktop.${_barch[1]}.deb")
 sha256sums=('26f6890e412d9e0d5c56c7f76dd5877ac1a01d3b53997a5888d9edbc8fd09814'
             '79d2fcdb0c79c0bf33e1afd2151b0187115b190c78c806a6aaf99b507a73ab31')
-sha256sums_x86_64=('98f0e01487928cd2851d483e094c4de6d68c93ce944ffea9f21f59ac3faa2479'
-                   '1de91af5f51c30697cf9a04625f4a83b112684ca71c261a0f76476a427c4b62e')
-sha256sums_aarch64=('9d61b9196eec6450dda3df29bf2970461c4ab30578037d3f58627e354d750282'
-                    'a50f0f5520a77ae53575f43948f3222f47a2a6c74f66adf67df48d837f4e57e3')
+sha256sums_x86_64=('13c8882aece59052ed4372df3c10fe81be4035ea6599eb974d1f39a0533f1f63'
+                   'f73c8128dc7f3575f52a33e93e676ae78f0bc55673044fcc38c990c5c1cfdf8e')
+sha256sums_aarch64=('ac467409cad99fa3800b31015a0c90e6d1a318ebed8a6f038d124e30636fa193'
+                    '87d31f50ca8c81ca7272fc4e1c83d4125d14578a7c789a97f9386edbbf74a2f3')
 
 
 package_open-file-lock-handle-bin() {
