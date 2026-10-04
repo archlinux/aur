@@ -46,7 +46,7 @@ if [[ -z "$FFMPEG_OBS_SVT" ]]; then
 fi
 
 pkgname=ffmpeg-obs
-pkgver=9.0.1
+pkgver=9.0.2
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
@@ -69,7 +69,7 @@ _srtver=1.5
 _svtav1ver=4
 _vidstabver=1.1.1
 _vmafver=3
-_vulkanver=1.3.279
+_vulkanver=1.4.363
 _x264ver=0.164
 _x265ver=4.3
 depends=(
@@ -177,7 +177,7 @@ provides=(
   libswscale.so
 )
 conflicts=(ffmpeg)
-_tag=bf1b838f2ab88b4f8fd83443325c782ea0e0f7fa
+_tag=946fcce07b6dcd0331c8cc609192aeff5e1924f8
 _deps_tag=2024-09-12
 source=(
   "ffmpeg-src::git+https://code.ffmpeg.org/FFmpeg/FFmpeg.git#tag=${_tag}"
@@ -422,6 +422,8 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     zvbi
   )
   makedepends+=(patchutils)
+  source+=("080-ffmpeg-openapv1.1-fix.patch'::'https://code.ffmpeg.org/FFmpeg/FFmpeg/commit/c54710db21c1827dbc3e47658a562525af0fe528.patch")
+  sha256sums+=("6eda059a49ec07dc8d0c872c3c1fc71d8f92c5e76463380c62fe027111b3ae2e")
   _args+=(
     --disable-rpath
     --enable-chromaprint
@@ -508,6 +510,10 @@ prepare() {
   patch -Np1 -i "${srcdir}"/obs-deps/deps.ffmpeg/patches/FFmpeg/0002-libaomenc-presets.patch
 
   ### Package features changes
+
+  if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
+    patch -Np1 -i "${srcdir}/080-ffmpeg-openapv1.1-fix.patch"
+  fi
 
   ## SVT changes if enabled
   if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
