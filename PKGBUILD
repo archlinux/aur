@@ -30,8 +30,10 @@ optdepends=(
   'sac-core: SafeNet Authentication Client driver (AUR, proprietary)'
   'libgtop11dotnet: GTOP11 token driver (AUR, proprietary)'
 )
-source=("$pkgname-$pkgver.tar.gz::$_repo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4b5c9905383e2ff87ccbfa89a36a198726ef6571ff07815c1c2c419660ee7ce8')   # filled by the maintainer after tagging
+source=("$pkgname-$pkgver.tar.gz::$_repo/archive/refs/tags/v$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.asc::$_repo/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc")
+sha256sums=('4b5c9905383e2ff87ccbfa89a36a198726ef6571ff07815c1c2c419660ee7ce8' 'SKIP')   # tag archive; the .asc is checked by gpg
+validpgpkeys=('0AD355085DF79157D5CD05C3F871B76C837E1BC4')   # Kushagra Sharma (AUR Package Signing Key)
 install=$pkgname.install
 
 build() {
