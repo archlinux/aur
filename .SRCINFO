@@ -1,6 +1,6 @@
 pkgbase = appimg
 	pkgdesc = Install, update and remove AppImages as proper desktop applications
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/MrGilfy/appimg
 	arch = x86_64
@@ -10,10 +10,11 @@ pkgbase = appimg
 	depends = gcc-libs
 	depends = glibc
 	optdepends = fuse2: needed by most AppImages at runtime
+	optdepends = squashfs-tools: read AppImage metadata without running it
 	optdepends = desktop-file-utils: desktop database updates
 	optdepends = gtk-update-icon-cache: icon cache updates
 	options = !lto
-	source = appimg-0.4.0.tar.gz::https://github.com/MrGilfy/appimg/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = 418ed32626c3a47c8ac489951533f6f3f20e369db8d8115ce3bad9a31a1557ec
+	source = appimg-0.4.1.tar.gz::https://github.com/MrGilfy/appimg/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 3627710f053b576e360574101d7481a0ded150409f5309a432f515e0d7d82ca3
 
 pkgname = appimg
