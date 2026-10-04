@@ -1,6 +1,6 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=skillshare
-pkgver=0.24.2
+pkgver=0.24.3
 pkgrel=1
 pkgdesc='Sync skills across all AI CLI tools with one command'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go')
 conflicts=('skillshare-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('05e71573990e12fea5a01d47f00e253e28a2cc095c5234dfbc5e798bde10e33d')
+sha256sums=('e70ad51b51cc3b4cf2607e8559f08be59d606018c1519e2b49c602bc8348b78f')
 
 build() {
     cd "${pkgname}-${pkgver}"
