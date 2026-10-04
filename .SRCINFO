@@ -1,6 +1,6 @@
 pkgbase = python-optype
 	pkgdesc = Building blocks for precise & flexible type hints
-	pkgver = 0.18.0
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/jorenham/optype
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = python-optype
 	makedepends = python-uv-build
 	depends = python
 	optdepends = python-numpy: for Numpy Support
-	source = optype-0.18.0.tar.gz::https://github.com/jorenham/optype/archive/v0.18.0.tar.gz
-	sha512sums = 72865ceec903399c82e4924c28dcc758ecefc5cb131c8af007b287f54e77f7d1a59aa28cdf4c285a528f07f55defae91b7029e26a258302887dad9fe1b642742
+	source = optype-0.19.0.tar.gz::https://github.com/jorenham/optype/archive/v0.19.0.tar.gz
+	sha512sums = 7603cbf8b3a0ef1c7935a3a48a93fd38497f1cd5ae2c9713f82790e1df2a80ec3794d5f3b768df243f078933b319cb6da4ae3bfaea13f94ad13680a7c8208fd4
 
 pkgname = python-optype
