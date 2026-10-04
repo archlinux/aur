@@ -1,6 +1,6 @@
 # Maintainer: Mikkel Rask <mikkelrask@users.noreply.github.com>
 pkgname=mango-layout-tray-bin
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='A visual layout picker for MangoWM in your system tray (prebuilt binary)'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("mango-layout-tray=$pkgver")
 conflicts=('mango-layout-tray')
 options=('!debug')
 source_x86_64=("$pkgname-$pkgver-$CARCH.tar.gz::$url/releases/download/v$pkgver/mango-layout-tray-$pkgver-linux-$CARCH.tar.gz")
-sha256sums_x86_64=('f9a3c52e472495ace8be8ac87e5181d4cf9a4a5d799c8d9e3b158d7fd8840a92')
+sha256sums_x86_64=('2842c7a0674eae2378c7f46feb3d6af5af259bd0d6566d634c8bfacc4df692c8')
 
 package() {
     install -Dm755 "$srcdir/bin/mango-layout-tray" "$pkgdir/usr/bin/mango-layout-tray"
