@@ -1,11 +1,11 @@
 pkgname=orangplayer-bin
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Media player for your files, YouTube, YT Music, SoundCloud and Spotify, with lyrics, downloads and skins"
 arch=('x86_64')
 url="https://github.com/Orang-Studio/OrangPlayer"
 license=('GPL-3.0-or-later')
-depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'taglib' 'ffmpeg>=9' 'ffmpeg<10' 'yt-dlp' 'libplacebo' 'libass' 'luajit' 'lcms2'
+depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'taglib' 'ffmpeg>=2:9' 'ffmpeg<2:10' 'yt-dlp' 'libplacebo' 'libass' 'luajit' 'lcms2'
          'uchardet' 'zimg' 'libpulse' 'libpipewire' 'alsa-lib' 'sndio' 'libva' 'libvdpau' 'libdrm' 'libdisplay-info'
          'mesa' 'libglvnd' 'vulkan-icd-loader' 'wayland' 'libxkbcommon' 'libx11' 'libxext' 'libxfixes' 'libxpresent'
          'libxrandr' 'libxss' 'libxv' 'libjpeg-turbo' 'zlib' 'openssl' 'hicolor-icon-theme')

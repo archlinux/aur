@@ -1,7 +1,7 @@
 pkgbase = orangplayer-bin
 	pkgdesc = Media player for your files, YouTube, YT Music, SoundCloud and Spotify, with lyrics, downloads and skins
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Orang-Studio/OrangPlayer
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -9,8 +9,8 @@ pkgbase = orangplayer-bin
 	depends = qt6-declarative
 	depends = qt6-svg
 	depends = taglib
-	depends = ffmpeg>=9
-	depends = ffmpeg<10
+	depends = ffmpeg>=2:9
+	depends = ffmpeg<2:10
 	depends = yt-dlp
 	depends = libplacebo
 	depends = libass
