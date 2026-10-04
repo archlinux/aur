@@ -3,7 +3,7 @@
 
 pkgname='openwebrx-plus-git'
 _pkgname='openwebrx'
-pkgver=1.2.125.r1.g47218fd6
+pkgver=1.2.125.r16.gb977074d
 pkgrel=1
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
@@ -66,6 +66,7 @@ optdepends=(
     # fifi_sdr, no aur package yet
     'soapyplutosdr: interfacing with PlutoSDR devices'
     'soapyremote: allows the usage of remote SDR devices using the SoapySDRServer'
+    'soapyiqfile: replay IQ data from a file or FIFO pipe instead of an antenna'
     'soapyuhd: interfacing with UHD / USRP devices'
     # radioberry, no aur package yet
     'soapyfcdpp-git: interfacing with the Funcube Dongle Pro+'

@@ -1,6 +1,6 @@
 pkgbase = openwebrx-plus-git
 	pkgdesc = Open source, multi-user SDR receiver software with a web interface
-	pkgver = 1.2.125.r1.g47218fd6
+	pkgver = 1.2.125.r16.gb977074d
 	pkgrel = 1
 	url = https://luarvique.github.io/ppa/
 	install = openwebrx-plus.install
@@ -61,6 +61,7 @@ pkgbase = openwebrx-plus-git
 	optdepends = limesuite: interfacing with LimeSDR device series
 	optdepends = soapyplutosdr: interfacing with PlutoSDR devices
 	optdepends = soapyremote: allows the usage of remote SDR devices using the SoapySDRServer
+	optdepends = soapyiqfile: replay IQ data from a file or FIFO pipe instead of an antenna
 	optdepends = soapyuhd: interfacing with UHD / USRP devices
 	optdepends = soapyfcdpp-git: interfacing with the Funcube Dongle Pro+
 	optdepends = soapybladerf: interfacing with Blade RF devices
