@@ -1,7 +1,7 @@
 pkgbase = shunpo
 	pkgdesc = Minimalist, fast directory bookmarking and navigation for Bash
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/egurapha/Shunpo
 	arch = any
 	license = MIT

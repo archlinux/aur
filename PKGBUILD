@@ -3,7 +3,7 @@
 
 pkgname=shunpo
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalist, fast directory bookmarking and navigation for Bash"
 arch=('any')
 url="https://github.com/egurapha/Shunpo"
@@ -18,7 +18,14 @@ package() {
 	cd "$_srcdir"
 	install -d "$pkgdir/usr/share/$pkgname"
 	cp -r ./* "$pkgdir/usr/share/$pkgname/"
-	rm -f "$pkgdir/usr/share/$pkgname/install.sh"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 nix/NixREADME.md "$pkgdir/usr/share/doc/$pkgname/NixREADME.md"
+	cat >"$pkgdir/usr/share/doc/$pkgname/USAGE.txt" <<'EOF'
+Shunpo se instala en /usr/share/shunpo. Para activarlo, ejecuta desde ahí:
+bash /usr/share/shunpo/install.sh && source ~/.bashrc
+o bien consulta README.md. uninstall.sh revierte la instalación.
+EOF
+
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	fi
