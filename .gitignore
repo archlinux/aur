@@ -5,3 +5,5 @@
 !eccp
 !edg_eccp_config
 !edgcpp-aarch64-host.patch
+!suite.py
+!suite-*.txt

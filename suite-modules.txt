@@ -1,0 +1,39 @@
+# edgcpp-git test list: modules. One line per test that is not plain.
+#   <path> [target=A,B] [lib=X] [headers=X] [skip=A,B] [noskip=A,B] [A=STATUS]... [reference]
+#   STATUS: PASS COMP ICE LINK EXEC CRASH DIFF. The grammar is in suite.py.
+modules/eifc/header-unit/class-constructor/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/class-destructor/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/class-member-function-constexpr/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/class-member-function-inline/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/class-member-function-ns-multi-args/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/class-member-function-ns-no-args/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/class-member-function-s-multi-args/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/class-member-function-s-no-args/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/class-pod/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/enum-scopped/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/enum-unscopped/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/function-constexpr/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/function-inline/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/function-multi-args/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/function-no-args/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/fundamental-types/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/multi-feature/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/namespace-fundamental-types/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/template-alias/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/template-class-anon-member/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/template-class-typename/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/template-class/non-type/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/template-class/template-non-type/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/template-class/template-template/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/template-class/template-type/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/template-class/typename/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/template-function/non-type/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/template-function/template-non-type/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/template-function/template-template/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/template-function/template-type/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/template-function/typename/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/textual-tokens/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/true-false-tokens/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/using-directive-namespace/test.mft.cpp aarch64=COMP
+modules/eifc/header-unit/using-directive/test.mft.cpp aarch64=COMP
+modules/eifc/modules/import-function/test.mft.cpp aarch64=COMP

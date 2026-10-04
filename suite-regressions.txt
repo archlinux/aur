@@ -1,0 +1,4 @@
+# edgcpp-git test list: regressions. One line per test that is not plain.
+#   <path> [target=A,B] [lib=X] [headers=X] [skip=A,B] [noskip=A,B] [A=STATUS]... [reference]
+#   STATUS: PASS COMP ICE LINK EXEC CRASH DIFF. The grammar is in suite.py.
+regressions/modules/crash-processing-imported-explicit-specialization/test.mft.cpp aarch64=COMP

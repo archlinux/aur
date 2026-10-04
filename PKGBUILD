@@ -21,14 +21,36 @@ options=('staticlibs' '!lto')
 # not yet upstream: branch linux-aarch64-host of github.com/thinkoid/edgcpp
 # at b7bfddf. It adds files and one branch to host-defaults.cmake; the
 # x86_64 build does not read any of it.
+# suite.py and the suite-*.txt lists are the package's test stage over
+# upstream's suite (check(), opt-in): the lists say which tests a
+# target cannot run and what result is expected where it differs from
+# upstream's recordings.
 source=("edgcpp::git+https://github.com/edgcpp/compiler.git"
         "edgcpp-aarch64-host.patch"
         "eccp"
-        "edg_eccp_config")
+        "edg_eccp_config"
+        "suite.py"
+        "suite-changes.txt"
+        "suite-edg.txt"
+        "suite-imported-clang-c.txt"
+        "suite-imported-clang-cpp.txt"
+        "suite-imported-gnu-c.txt"
+        "suite-imported-gnu-cpp.txt"
+        "suite-modules.txt"
+        "suite-regressions.txt")
 sha256sums=('SKIP'
             'ceced79cd33724d912e50c358d03d0a67b66a0d6c3f93ce60af32476ca01b8b5'
             '81831901bda74b2bf54b94519f4953e773a385989404050dc1c3f9cf2169cf1c'
-            '6fbf98c33f08bb5270aa9f04bec34c912c61f546285de11e74d11c954aaae939')
+            '6fbf98c33f08bb5270aa9f04bec34c912c61f546285de11e74d11c954aaae939'
+            '7f25bb80837ef0e4bbda06e3c320804c76eaa8220a01e235d191d0f3897dc3a2'
+            '1b1c1ba080c6790d1154a1a9ec3e5896c14b7de9753a2a3a7ee31dc8b8da7d05'
+            '24077dbfadac38db3eaf9ef07de10384e67d9fbd5d798f796a0c0012845df2de'
+            'c22f883fc65729a6a281dcc93005529a92060a846dc3d0810fad34180a5e42e8'
+            '6530ac5ec33fc53b9106b07a658d07741852f2671685946980edd262ed916665'
+            '4e73d3d422c8dff5a2f5bb264ffbd857a870935c044527946d65114412499a53'
+            '87c5269a34be2d4fe1ac86f186328ef517afc97dc009df93eae67a560fa46042'
+            '61bdede776b7f21c2be104bea5b756708191343e77fa9b51b44abd6087ac3fe0'
+            '86a6d65699ca47b6f9d71b4401894e1e0ab329051c1dfe0bc51ea66a71ee90db')
 
 # The preset and its build directory, per architecture. _target is the
 # default target's own name (LEGACY_TARGET_CONFIGURATION_NAME in the
@@ -188,6 +210,16 @@ SMOKE
     fi
     grep -q 'no "linux_i686" --target configuration exists' \
         "$srcdir/smoke-fixture.err" || { cat "$srcdir/smoke-fixture.err"; return 1; }
+    # Upstream's whole suite, on request: EDGCPP_SUITE=1 makepkg. Some
+    # twenty minutes on twelve cores. suite.py skips the tests the lists
+    # say this target cannot run, runs edgy, and fails on any regression
+    # the lists do not expect; the passing tests whose output differs
+    # from upstream's x86 recordings are listed, not failed.
+    if [ -n "${EDGCPP_SUITE:-}" ]; then
+        python "$srcdir/suite.py" run --arch "$CARCH" --src "$srcdir/edgcpp" \
+            --build "$srcdir/edgcpp/$_build" --runs "$srcdir/runs" --diffs \
+            "$srcdir"/suite-*.txt
+    fi
 }
 
 package() {
