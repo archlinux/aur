@@ -1,8 +1,7 @@
 pkgbase = kalu
 	pkgdesc = Upgrade notifier w/ AUR support, watched (AUR) packages, news
-	pkgver = 4.7.1
-	pkgrel = 2
-	url = https://github.com/Thulinma/kalu
+	pkgver = 4.7.2
+	pkgrel = 1
 	install = kalu.install
 	arch = i686
 	arch = x86_64
@@ -17,12 +16,10 @@ pkgbase = kalu
 	depends = pacman<7.2
 	depends = curl
 	depends = libnotify
-	depends = notification-daemon
 	depends = libdbusmenu-gtk3
 	provides = kalu-kde
 	conflicts = kalu-kde
-	replaces = kalu-kde
-	source = https://github.com/Thulinma/kalu/archive/refs/tags/4.7.1.tar.gz
-	sha256sums = ea3df170d6350fe4fd60c857d8f6d887550662e473fa2dd2d71f519495d2d898
+	source = https://github.com/Thulinma/kalu/archive/refs/tags/4.7.2.tar.gz
+	sha256sums = c89515e332bc064b0a78bd00ca819ad6f7a72ae6ce2b7aa1c77cb59025469998
 
 pkgname = kalu
