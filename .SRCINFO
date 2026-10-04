@@ -1,7 +1,7 @@
 pkgbase = http-tanker
 	pkgdesc = Terminal app for API testing: create, manage and execute HTTP requests
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PierreKieffer/http-tanker
 	arch = x86_64
 	license = BSD
