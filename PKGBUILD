@@ -46,7 +46,7 @@ Exec=${pkgname} %u
 Icon=${pkgname}
 Terminal=false
 Categories=AudioVideo;Video;Player;
-StartupWMClass=OpenAnime
+StartupWMClass=openanime
 PrefersNonDefaultGPU=true
 EOF
 }
