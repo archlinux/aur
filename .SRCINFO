@@ -1,6 +1,6 @@
 pkgbase = pinit
 	pkgdesc = Pin portable apps to the launcher
-	pkgver = 2.2.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/ryonakano/pinit
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = pinit
 	depends = desktop-file-utils
 	options = !strip
 	options = !debug
-	source = pinit-2.2.1.tar.gz::https://github.com/ryonakano/pinit/archive/refs/tags/2.2.1.tar.gz
-	sha256sums = 73b67a4acc37a15b8e135eb6494e83d8ec0f34ef5a6685a5de5db59860eb775a
+	source = pinit-2.3.0.tar.gz::https://github.com/ryonakano/pinit/archive/refs/tags/2.3.0.tar.gz
+	sha256sums = d4515eb92bb55ae4101c37435d0a5da672a1542da2769d0806537b9a451ab598
 
 pkgname = pinit
