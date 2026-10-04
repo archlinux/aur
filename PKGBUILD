@@ -1,7 +1,7 @@
 # Maintainer:  Rubin Simons <me@rubin55.org>
 
 pkgname=computer-use-linux
-pkgver=0.7.10
+pkgver=0.7.11
 pkgrel=1
 pkgdesc="Control a real Linux desktop from any MCP host (AT-SPI, portals, multi-compositor window targeting)"
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ optdepends=(
 )
 conflicts=('computer-use-linux-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ea4089154b61c876adb15835f85cf45aa5fb0a6eafe552f4133dfbb0c8e9a340')
+sha256sums=('3554e606e3f05d544ac2e4c014bb7797ac6a4c0868433d3e191a27f37a0ee809')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
