@@ -1,0 +1,23 @@
+diff --git a/src/rwconf.c b/src/rwconf.c
+index c8a1578..dbcb8f9 100644
+--- a/src/rwconf.c
++++ b/src/rwconf.c
+@@ -78,12 +78,12 @@ struct pars mpars[MPARS_MAX + 1] = {
+   { "",			0,   "pname10" },
+   { "",			0,   "pname11" },
+   { "",			0,   "pname12" },
+-  { "sz -vv -b",	0,   "pprog1" },
+-  { "sb -vv",		0,   "pprog2" },
+-  { "sx -vv",		0,   "pprog3" },
+-  { "rz -vv -b -E",	0,   "pprog4" },
+-  { "rb -vv",		0,   "pprog5" },
+-  { "rx -vv",		0,   "pprog6" },
++  { "lrzsz-sz -vv -b",	0,   "pprog1" },
++  { "lrzsz-sb -vv",		0,   "pprog2" },
++  { "lrzsz-sx -vv",		0,   "pprog3" },
++  { "lrzsz-rz -vv -b -E",	0,   "pprog4" },
++  { "lrzsz-rb -vv",		0,   "pprog5" },
++  { "lrzsz-rx -vv",		0,   "pprog6" },
+   { "kermit -i -l %l -b %b -s", 0, "pprog7" },
+   { "kermit -i -l %l -b %b -r", 0, "pprog8" },
+   { "ascii-xfr -dsv",   0,   "pprog9" },

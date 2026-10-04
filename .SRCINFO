@@ -1,0 +1,27 @@
+pkgbase = minicom-hangfix
+	pkgdesc = A serial communication program (with fix for UI hang on zero-width characters when closing windows)
+	pkgver = 2.11.1
+	pkgrel = 1
+	url = https://salsa.debian.org/minicom-team/minicom
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = bash
+	depends = glibc
+	depends = ncurses
+	depends = libncursesw.so
+	optdepends = lrzsz: for xmodem, ymodem and zmodem file transfer protocols
+	provides = minicom=2.11.1
+	conflicts = minicom
+	backup = etc/minirc.dfl
+	source = minicom-2.11.1.tar.gz::https://salsa.debian.org/minicom-team/minicom/-/archive/2.11.1/minicom-2.11.1.tar.gz
+	source = 0001-minicom-2.9-lrzsz-rename.patch
+	source = 0002-dial-Fix-use-of-check_io_frontend.patch
+	source = 0003-window-Consider-that-wcwidth-can-return-1-on-invalid.patch
+	source = 0004-window-Always-advance-at-least-one-cell-when-redrawing.patch
+	sha256sums = b296b0e5795ca143fb1ffa78f46fd294daddfccd720faf9909a842d2f70c564e
+	sha256sums = 4b00e97cadeb51e2cacba7114d2572dbe671b00f0f6695df96aa0ea0dab68c15
+	sha256sums = 329d949e938aa519948ad66c0b680d3af0fbbed8fd392c7fe4dad254fafab804
+	sha256sums = 9210031ead31058cfa73c3b09687b8e05d933a9a3b70fe215ff9b38c1dce87f8
+	sha256sums = a1e85f2226751a999538491f6b5a375ec195693273943f6b2d596337521391c2
+
+pkgname = minicom-hangfix
