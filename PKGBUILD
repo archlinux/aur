@@ -3,7 +3,7 @@
 # Contributor: Daniel Eklöf <daniel at ekloef dot se>
 
 pkgname=foot-tabs
-pkgver=1.28.0.tabs1
+pkgver=1.28.0.tabs2
 pkgrel=1
 pkgdesc='Fast, lightweight and minimalistic Wayland terminal emulator (unofficial fork with tabs)'
 arch=(x86_64 aarch64)
@@ -38,7 +38,7 @@ conflicts=(foot)
 backup=(etc/xdg/foot/foot.ini)
 _tag=${pkgver/.tabs/-tabs}
 source=("$pkgname-$_tag.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('9588316e75acb3f45b71b98f899b256f488f76227775ecd51f6acfccc611c051')
+sha256sums=('2de3ee6c4214cac39f61da775268b031e9924ce7f16c42e6bcf4bcfa68cfe9b6')
 
 build() {
   arch-meson "$pkgname-$_tag" build \
