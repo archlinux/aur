@@ -1,22 +1,24 @@
-# Maintainer: Javier Orfo <javierorfo@protonmail.com>
+# Maintainer: javy
 
 pkgname=libepub
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="C library for creating EPUB files"
 arch=('x86_64' 'aarch64')
-url="https://codeberg.org/caskstrength/libepub"
+url="https://codeberg.org/javy/libepub"
 license=('MIT')
 depends=('util-linux-libs' 'undr')
 makedepends=('git' 'gcc' 'make')
 provides=('libepub')
 conflicts=('libepub')
 source=("$pkgname::git+$url.git#tag=$pkgver")
-sha512sums=('74795c3b7e9db8ba2f4401916d987f461f26ac7defb5f0991fbe4af4d6de3c3e9ed42736efb3c38ebd8ec533f8d8a1a06fb6bfc1c4bb6818fa5ec2924fadbf74')
+sha512sums=('47562e711fa2a4b702cb4945e205ba087c7ef66aacc54ac64df59ff5390c79d7d566c977672368fc6d65f01473d39caf86310a201fceb8b3b879c130231d9d2f')
 
 build() {
   cd "${pkgname}"
-  make CFLAGS="-Wall -Wextra -g -std=c23 -pedantic -Iinclude -fPIC -luuid -lundr" libepub.so
+  make CFLAGS="-Wall -Wextra -g -std=c23 -pedantic -Iinclude -fPIC" \
+       LD_FLAGS="-luuid -lundr" \
+       libepub.so
 }
 
 package() {

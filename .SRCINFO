@@ -1,8 +1,8 @@
 pkgbase = libepub
 	pkgdesc = C library for creating EPUB files
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
-	url = https://codeberg.org/caskstrength/libepub
+	url = https://codeberg.org/javy/libepub
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = libepub
 	depends = undr
 	provides = libepub
 	conflicts = libepub
-	source = libepub::git+https://codeberg.org/caskstrength/libepub.git#tag=0.1.0
-	sha512sums = 74795c3b7e9db8ba2f4401916d987f461f26ac7defb5f0991fbe4af4d6de3c3e9ed42736efb3c38ebd8ec533f8d8a1a06fb6bfc1c4bb6818fa5ec2924fadbf74
+	source = libepub::git+https://codeberg.org/javy/libepub.git#tag=0.1.1
+	sha512sums = 47562e711fa2a4b702cb4945e205ba087c7ef66aacc54ac64df59ff5390c79d7d566c977672368fc6d65f01473d39caf86310a201fceb8b3b879c130231d9d2f
 
 pkgname = libepub
