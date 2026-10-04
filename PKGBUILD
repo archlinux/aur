@@ -1,10 +1,9 @@
 # Maintainer: pingplug <aur at pingplug dot me>
 
 _pkgname=mayo
-_tag="v0.10.0"
 
 pkgname=mayo-git
-pkgver=0.10.0.r0.g55928cb
+pkgver=0.10.0.r86.gf947301e
 pkgrel=1
 pkgdesc="3D CAD viewer and converter based on Qt and OpenCascade (git version)"
 arch=('any')
@@ -19,7 +18,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git tag -f ${_tag} > /dev/null
+  git tag -f $(git describe --tags origin/master) $(git merge-base origin/master develop) > /dev/null
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
