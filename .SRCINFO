@@ -1,7 +1,7 @@
 pkgbase = hardv
 	pkgdesc = A CLI flashcard app for UNIX-compatible systems, conforming to the UNIX philosophy
 	pkgver = 5.0.0_alpha.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dongyx/hardv
 	arch = x86_64
 	license = MIT
