@@ -1,0 +1,17 @@
+pkgbase = moarchy-authenticator
+	pkgdesc = Two-factor sign-in codes (TOTP), one tap from the clipboard, for Quickshell
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SimonSchubert/moarchy-apps
+	arch = any
+	license = MIT
+	depends = quickshell
+	depends = ttf-jetbrains-mono-nerd
+	depends = hicolor-icon-theme
+	optdepends = grim: scan a QR code off the screen
+	optdepends = slurp: scan a QR code off the screen
+	optdepends = zbar: scan a QR code off the screen
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/authenticator-v0.1.0/moarchy-authenticator-0.1.0.tar.gz
+	sha256sums = 4bfdfd11776d4865619decb865c82e47d2599741c48f157eb8d26addd8470a49
+
+pkgname = moarchy-authenticator
