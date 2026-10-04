@@ -3,7 +3,7 @@
 
 pkgname=cho-git
 pkgver=r10.f9e1a04
-pkgrel=1
+pkgrel=2
 pkgdesc="The safe echo & quoting utility you always knew you needed"
 arch=('x86_64')
 url="https://github.com/jaggzh/cho"
@@ -14,17 +14,21 @@ provides=('cho')
 conflicts=('cho')
 source=("cho::git+https://github.com/jaggzh/cho.git")
 sha256sums=('SKIP')
-function pkgver() {
+
+pkgver() {
 	cd cho
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-function build() {
+
+build() {
 	cd cho
 	make
 }
-function package() {
+
+package() {
 	cd cho
 	install -Dm755 cho "$pkgdir/usr/bin/cho"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	fi
