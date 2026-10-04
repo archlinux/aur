@@ -2,7 +2,7 @@
 # Contributor: GI_Jack <GI_Jack@hackermail.com>
 _name=aardwolf
 pkgname="python-$_name"
-pkgver=0.2.14
+pkgver=0.2.16
 pkgrel=1
 pkgdesc="Asynchronous RDP/VNC client in Python (headless)"
 url="https://github.com/skelsec/$_name"
@@ -33,14 +33,13 @@ makedepends=(
   'git'
 )
 source=("git+$url#tag=$pkgver")
-b2sums=('7322f50aeaf084677c40f2e54bfa87e23c2c0206428d42377d91f1b3c03a92ed2bbd984d27d336b7039de4c4b115567bc45a4894aac1f3c90657ad201cc93db9')
-#options=(!lto)
+b2sums=('51d7ac2f131c43a25056d7d4b2204baaa981d7d14395eabf666f4abbaff84eb8e33c400a3c354e5d1962419d18b4a2a817cc3c27fc6a6e4ea21dee92569b8843')
 
 prepare() {
-  cd "$_name/$_name/utils/rlers"
+  cd "$_name"
   git clean -dfx
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target host-tuple
+  cargo fetch -C rust --locked --target host-tuple
 }
 
 build() {
