@@ -1,7 +1,7 @@
 pkgbase = sesdiff
 	pkgdesc = Generates a shortest edit script (Myers diff) and Levenshtein edit distance between strings
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/proycon/sesdiff
 	arch = x86_64
 	license = GPL-3.0-or-later

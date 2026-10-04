@@ -3,7 +3,7 @@
 
 pkgname=sesdiff
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Generates a shortest edit script (Myers diff) and Levenshtein edit distance between strings"
 arch=('x86_64')
 url="https://github.com/proycon/sesdiff"
@@ -24,6 +24,7 @@ build() {
 package() {
 	cd "$_srcdir"
 	install -Dm755 "target/release/sesdiff" "$pkgdir/usr/bin/sesdiff"
+	install -Dm644 python/README.md "$pkgdir/usr/share/doc/$pkgname/README.python-bindings.md"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	fi
