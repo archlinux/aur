@@ -1,6 +1,6 @@
 pkgbase = eitri-bin
 	pkgdesc = Your Neovim, with a readable Claude Code panel beside it (prebuilt binaries; builds its own sidecar on install)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/HunterGrey-cyber/eitri
 	arch = x86_64
@@ -18,14 +18,15 @@ pkgbase = eitri-bin
 	optdepends = neovim: the editor (any nvim >= 0.10 on PATH)
 	optdepends = claude-code: the Claude Code CLI the panel drives
 	optdepends = noto-fonts: the ⏵⏵ mode glyph
+	optdepends = neovide: eitri split
 	provides = eitri
 	conflicts = eitri
 	options = !strip
-	source = eitri-0.2.0-x86_64-linux.tar.gz::https://github.com/HunterGrey-cyber/eitri/releases/download/v0.2.0/eitri-0.2.0-x86_64-linux.tar.gz
-	source = verdandi-22400e8-source.tar.gz::https://github.com/HunterGrey-cyber/eitri/releases/download/v0.2.0/verdandi-22400e8-source.tar.gz
+	source = eitri-0.2.1-x86_64-linux.tar.gz::https://github.com/HunterGrey-cyber/eitri/releases/download/v0.2.1/eitri-0.2.1-x86_64-linux.tar.gz
+	source = verdandi-8e0f7e1-source.tar.gz::https://github.com/HunterGrey-cyber/eitri/releases/download/v0.2.1/verdandi-8e0f7e1-source.tar.gz
 	source = node-v22.23.2-linux-x64.tar.xz::https://nodejs.org/dist/v22.23.2/node-v22.23.2-linux-x64.tar.xz
-	sha256sums = e324f831e4faa02ce45ef9eceba64c8b401c3f5a2b6b06cff24ab21bcf0d59e5
-	sha256sums = 516c77b0729bc7dacc2b251e76878c6d753f52c224c4812a731007788b74f72c
+	sha256sums = f490bc7b3fb6fb98565306ef0568ae4fa2a4fd988dc3fa9ff5efb322f197cc08
+	sha256sums = b0571203c2bcb663bb39596df97e527975d8cc073962f780f7d35215430bcf25
 	sha256sums = d60acfe00a2932254bb0ad20e01b0d74397a0875595de719654b214f4b03f307
 
 pkgname = eitri-bin

@@ -9,7 +9,7 @@
 # a real release's RELEASE/SHA256SUMS. This checked-in copy will not build as-is.
 #
 # eitri-bin is deliberately never published to the AUR for a `-rc.N` prerelease version
-# (docs/workspace/2026-09-27-codex-v1dist-plan-verdicts.md #3, plan
+# (the private review notes #3, plan
 # docs/superpowers/plans/2026-09-27-v1-dist.md Task 14): mapping `-` -> `_` the way spec sec 3
 # says (`0.2.0-rc.1` -> `0.2.0_rc.1`) sorts ABOVE the eventual final release under pacman's own
 # version comparison --
@@ -23,14 +23,14 @@
 # only for packaging/aur/test-in-container.sh (a local, test-only source= override, never pushed).
 
 pkgname=eitri-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 # _realver: the release's own EITRI_VERSION, hyphenated (e.g. "0.2.0-rc.1"), as GitHub's release
 # tag and every asset filename actually spell it. pkgver above is that same string with '-' -> '_'
 # (spec docs/superpowers/specs/2026-09-27-v1-dist-design.md sec 3 -- makepkg's pkgver may not
 # contain a hyphen at all), so the two diverge for any prerelease and only _realver is right to use
 # in a download URL or an asset's on-disk name. bump-bin.sh sets both from the same RELEASE key.
-_realver=0.2.0
+_realver=0.2.1
 pkgdesc="Your Neovim, with a readable Claude Code panel beside it (prebuilt binaries; builds its own sidecar on install)"
 arch=('x86_64')
 url="https://github.com/HunterGrey-cyber/eitri"
@@ -51,6 +51,7 @@ optdepends=(
 	'neovim: the editor (any nvim >= 0.10 on PATH)'
 	'claude-code: the Claude Code CLI the panel drives'
 	'noto-fonts: the ⏵⏵ mode glyph'
+	'neovide: eitri split'
 )
 makedepends=('curl' 'tar')
 provides=('eitri')
@@ -59,7 +60,7 @@ conflicts=('eitri')
 # _verdandi_source: the exact release asset name (varies with the pinned Verdandi revision --
 # RELEASE's own VERDANDI_SOURCE key); bump-bin.sh rewrites only this line, so build()/package()
 # below never need to know it.
-_verdandi_source=verdandi-22400e8-source.tar.gz
+_verdandi_source=verdandi-8e0f7e1-source.tar.gz
 # _nodever: the Node the sidecar is built with -- RELEASE's own NODE_VERSION (packaging/pins.env's,
 # copied into RELEASE at build time). bump-bin.sh rewrites this line and the third sha256sums entry
 # together, from the same RELEASE, so the URL and its checksum never name two different Nodes.
@@ -74,8 +75,8 @@ source=(
 # NODE_SHA256_linux_x64, which bump-bin.sh writes along with _nodever above, so a Node bump in
 # packaging/pins.env reaches this PKGBUILD through the next release's RELEASE rather than through a
 # second, hand-edited copy of the pin.
-sha256sums=('e324f831e4faa02ce45ef9eceba64c8b401c3f5a2b6b06cff24ab21bcf0d59e5'
-            '516c77b0729bc7dacc2b251e76878c6d753f52c224c4812a731007788b74f72c'
+sha256sums=('f490bc7b3fb6fb98565306ef0568ae4fa2a4fd988dc3fa9ff5efb322f197cc08'
+            'b0571203c2bcb663bb39596df97e527975d8cc073962f780f7d35215430bcf25'
             'd60acfe00a2932254bb0ad20e01b0d74397a0875595de719654b214f4b03f307')
 
 # A binary-repository maintainer considering rebuilding this package: build() downloads and links
@@ -87,6 +88,9 @@ sha256sums=('e324f831e4faa02ce45ef9eceba64c8b401c3f5a2b6b06cff24ab21bcf0d59e5'
 
 build() {
 	cd "$srcdir"
+	# The only slow part here (npm's ~120 MB of the Agent SDK, then the TypeScript build and the single
+	# binary: about a minute at 25 Mbit/s, network-bound), so the only line added.
+	msg2 "Installing the Claude Agent SDK and building the sidecar (1-3 min)"
 	sh "eitri-${_realver}-x86_64-linux/lib/eitri/eitri-setup" \
 		--build-sidecar-into "$srcdir/sidecar" \
 		--node "$srcdir/node-${_nodever}-linux-x64.tar.xz" \
@@ -110,7 +114,27 @@ package() {
 	install -m0644 "$srcdir/sidecar/verdandi-claude-sidecar.rev" "$pkgdir/usr/lib/eitri/verdandi-claude-sidecar.rev"
 
 	install -Dm0755 "$top/bin/eitri" "$pkgdir/usr/bin/eitri"
-	install -Dm0644 "$top/share/applications/eitri.desktop" "$pkgdir/usr/share/applications/eitri.desktop"
+	# The desktop entry is named by the application id (it replaced eitri.desktop, which an upgrade drops
+	# by this package no longer listing it), and the icon is every file of the tarball's hicolor tree.
+	install -Dm0644 "$top/share/applications/cn.huntergrey.eitri.desktop" \
+		"$pkgdir/usr/share/applications/cn.huntergrey.eitri.desktop"
+	# The panel's own entry (`eitri panel`), and the nvim plugin that adds :EitriPanel, which the tarball
+	# lays out at share/eitri/eitri.nvim and the packages put at /usr/share/eitri/nvim/eitri.nvim.
+	install -Dm0644 "$top/share/applications/cn.huntergrey.eitri.Panel.desktop" \
+		"$pkgdir/usr/share/applications/cn.huntergrey.eitri.Panel.desktop"
+	local _icon _plugin _ext
+	while IFS= read -r _plugin; do
+		install -Dm0644 "$top/share/eitri/eitri.nvim/$_plugin" "$pkgdir/usr/share/eitri/nvim/eitri.nvim/$_plugin"
+	done < <(cd "$top/share/eitri/eitri.nvim" && find . -type f | sed 's#^\./##' | LC_ALL=C sort)
+	# The GNOME Shell extension a companion panel on GNOME uses: an explicit list of the four files the shell loads,
+	# never a find, so nothing else that ever lands beside them in the tarball is installed.
+	for _ext in metadata.json extension.js direction.js policy.js; do
+		install -Dm0644 "$top/share/gnome-shell/extensions/eitri@huntergrey.cn/$_ext" \
+			"$pkgdir/usr/share/gnome-shell/extensions/eitri@huntergrey.cn/$_ext"
+	done
+	while IFS= read -r _icon; do
+		install -Dm0644 "$top/share/icons/$_icon" "$pkgdir/usr/share/icons/$_icon"
+	done < <(cd "$top/share/icons" && find hicolor -type f | LC_ALL=C sort)
 
 	# D15: the tarball's own licences and SOURCE, plus the built SDK's LICENSE.md and Node's own
 	# licence, which eitri-setup --build-sidecar-into saves beside the sidecar when present.
