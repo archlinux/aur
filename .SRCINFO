@@ -1,9 +1,9 @@
 pkgbase = libretro-dosbox-pure-git
 	pkgdesc = MS-DOS core
-	pkgver = 1.0.preview5.r3.gf587236
+	pkgver = 1.0.preview6.r9.g73e03aa
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/schellingb/dosbox-pure
+	url = https://codeberg.org/schelling/dosbox-pure
 	arch = aarch64
 	arch = armv7h
 	arch = i486
@@ -17,9 +17,9 @@ pkgbase = libretro-dosbox-pure-git
 	makedepends = libstdc++
 	depends = glibc
 	depends = libretro-core-info
-	provides = libretro-dosbox-pure=1.0.preview5.r3.gf587236
+	provides = libretro-dosbox-pure=1.0.preview6.r9.g73e03aa
 	conflicts = libretro-dosbox-pure
-	source = dosbox-pure::git+https://github.com/schellingb/dosbox-pure.git
+	source = dosbox-pure::git+https://codeberg.org/schelling/dosbox-pure.git
 	b2sums = SKIP
 
 pkgname = libretro-dosbox-pure-git
