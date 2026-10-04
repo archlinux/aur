@@ -1,0 +1,33 @@
+pkgbase = foot-tabs
+	pkgdesc = Fast, lightweight and minimalistic Wayland terminal emulator (unofficial fork with tabs)
+	pkgver = 1.28.0.tabs1
+	pkgrel = 1
+	url = https://github.com/joshuarosato/foot-tabs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = meson
+	makedepends = python
+	makedepends = scdoc
+	makedepends = tllist
+	makedepends = wayland-protocols
+	depends = fcft
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	depends = libfcft.so
+	depends = libutf8proc
+	depends = libxkbcommon
+	depends = ncurses
+	depends = pixman
+	depends = wayland
+	optdepends = foot-terminfo: extra non-standard features over terminfo included in ncurses
+	optdepends = libnotify: desktop notifications
+	optdepends = libutempter: utmp logging
+	optdepends = xdg-utils: URI launching
+	provides = foot=1.28.0
+	conflicts = foot
+	backup = etc/xdg/foot/foot.ini
+	source = foot-tabs-1.28.0-tabs1.tar.gz::https://github.com/joshuarosato/foot-tabs/archive/refs/tags/1.28.0-tabs1.tar.gz
+	sha256sums = 9588316e75acb3f45b71b98f899b256f488f76227775ecd51f6acfccc611c051
+
+pkgname = foot-tabs
