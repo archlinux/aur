@@ -1,0 +1,15 @@
+pkgbase = musetext-git
+	pkgdesc = Minimalist text animation tool that renders transparent WebM video with FFmpeg
+	pkgver = r1.g5ba0a92
+	pkgrel = 1
+	url = https://github.com/aydevix/muse
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = go
+	makedepends = pkgconf
+	depends = gtk4
+	depends = ffmpeg
+	source = git+https://github.com/aydevix/muse
+	sha256sums = SKIP
+
+pkgname = musetext-git
