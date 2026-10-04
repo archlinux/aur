@@ -1,6 +1,6 @@
 # Maintainer: Felitendo
 # This PKGBUILD is updated automatically:
-# https://github.com/Felitendo/PKGBUILDS
+# https://git.felo.gg/Felitendo/PKGBUILDS
 
 pkgname=moondeckbuddy
 pkgver=1.10.0
