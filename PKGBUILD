@@ -1,8 +1,8 @@
-# Maintainer: Daniel Maslowski <info@orangecms.org>
+# Maintainer: Microwave_Chef <pabloreturnss@protonmail.com>
 
-_commit=d8f676ad9ab9979b92f070b96e44506c47db8971
+_commit=ddaa29b24d9c9d11afeafe7f8ebc56fd12e15c62
 pkgname=psptool
-pkgver=3.6
+pkgver=3.7
 pkgrel=1
 pkgdesc="Swiss Army knife for dealing with firmware of the AMD Secure Processor"
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=(
 provides=("$pkgname")
 conflicts=("${pkgname}-git")
 source=(https://github.com/PSPReverse/$pkgname/archive/$_commit.tar.gz)
-sha512sums=('56d9e33abb82bacda7dc57a86b23a17558ffae4979f1c09edf69909394cc265f8941e5dc2aa5821dbcc12aa355b6f483f367ff12bc5e863a3eb4034426d01d45')
+sha512sums=('9f01ea9e7f3c4b7ad4938e2eab0d9f17d2db9a36e2e34497c50d325b18aaa49b65dd8164e782f5f9a237ea7b505a220d0cf001cda5d105918df6d7c6db98a84d')
 
 package() {
   cd "PSPTool-$_commit"
