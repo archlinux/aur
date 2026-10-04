@@ -1,22 +1,27 @@
 pkgbase = python-ginga
 	pkgdesc = A viewer for astronomical data FITS (Flexible Image Transport System) files.
-	pkgver = 7.1.0
+	pkgver = 7.5.0
 	pkgrel = 1
 	url = https://ejeschke.github.io/ginga
 	arch = any
 	license = BSD-3-Clause
-	checkdepends = python-pytest
+	checkdepends = python-pytest-xvfb
+	checkdepends = xorg-server-xvfb
+	checkdepends = python-gobject
+	checkdepends = python-cairo
+	checkdepends = python-qtpy
+	checkdepends = qt6-svg
 	checkdepends = python-dask
 	checkdepends = python-photutils
 	checkdepends = python-puremagic
 	checkdepends = python-regions
 	checkdepends = python-astlib
-	makedepends = python-setuptools-scm>=10.0.5
-	makedepends = python-babel>=2.10
+	makedepends = python-setuptools-scm>=10.2.1
+	makedepends = python-babel>=2.18
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/g/ginga/ginga-7.1.0.tar.gz
-	md5sums = 82bb633e5899daf927f2f09b51785428
+	source = https://files.pythonhosted.org/packages/source/g/ginga/ginga-7.5.0.tar.gz
+	md5sums = 63e8052a3e7fa3dd1e6ee59ac889bbf0
 
 pkgname = python-ginga
 	depends = python-astropy>=7.2
@@ -32,10 +37,10 @@ pkgname = python-ginga
 	optdepends = python-opencv>=4.5.4.58: speeds up rotation, mosaicing and some transformations
 	optdepends = python-exifread>=2.3.2: recommended
 	optdepends = python-beautifulsoup4>=4.3.2
-	optdepends = python-astroquery>=0.3.5: required by Catalogs
+	optdepends = python-astroquery>=0.4.7: required by Catalogs
 	optdepends = python-dateutil: to display help for plugins
 	optdepends = python-photutils>=1.13
-	optdepends = python-pyvo>=1.5
+	optdepends = python-pyvo>=1.9.0
 	optdepends = python-fitsio: for opening FITS files
 	optdepends = python-astlib: for WCS resolution
 	optdepends = python-starlink-pyast: for WCS resolution

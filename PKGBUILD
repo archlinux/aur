@@ -3,18 +3,23 @@
 
 pkgname=python-ginga
 _pyname=${pkgname#python-}
-pkgver=7.1.0
+pkgver=7.5.0
 pkgrel=1
 pkgdesc="A viewer for astronomical data FITS (Flexible Image Transport System) files."
 arch=('any')
 url="https://ejeschke.github.io/ginga"
 license=('BSD-3-Clause')
-makedepends=('python-setuptools-scm>=10.0.5'
-             'python-babel>=2.10'
+makedepends=('python-setuptools-scm>=10.2.1'
+             'python-babel>=2.18'
              'python-build'
              'python-installer')  # wheel required by new setuptools
-checkdepends=('python-pytest'
+checkdepends=('python-pytest-xvfb'
 #             'python-pytest-xdist'
+              'xorg-server-xvfb'
+              'python-gobject'
+              'python-cairo'
+              'python-qtpy'
+              'qt6-svg'
               'python-dask'
               'python-photutils'
               'python-puremagic'
@@ -25,7 +30,7 @@ checkdepends=('python-pytest'
 #             zarr<3 needed
 #             'python-starlink-pyast'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('82bb633e5899daf927f2f09b51785428')
+md5sums=('63e8052a3e7fa3dd1e6ee59ac889bbf0')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -59,10 +64,10 @@ package() {
                 'python-opencv>=4.5.4.58: speeds up rotation, mosaicing and some transformations'
                 'python-exifread>=2.3.2: recommended'
                 'python-beautifulsoup4>=4.3.2'
-                'python-astroquery>=0.3.5: required by Catalogs'
+                'python-astroquery>=0.4.7: required by Catalogs'
                 'python-dateutil: to display help for plugins'
                 'python-photutils>=1.13'
-                'python-pyvo>=1.5'
+                'python-pyvo>=1.9.0'
                 'python-fitsio: for opening FITS files'
                 'python-astlib: for WCS resolution'
                 'python-starlink-pyast: for WCS resolution'
