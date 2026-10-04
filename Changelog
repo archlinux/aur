@@ -1,9 +1,21 @@
 -------------------------------------------------------
  Changelog    : wg-client
- Tags         : 8.0.0 ➙ 8.0.4
-              : 2026-09-02 ➙ 2026-09-10
+ Tags         : 8.0.1 ➙ 8.0.5
+              : 2026-09-02 ➙ 2026-10-04
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-10-04   : 8.0.5
+              - release 8.0.5
+                Sun Oct  4 06:14:30 AM EDT 2026
+                * Update Documentation
+                  * Now available on https://wg-client.readthedocs.io
+                * GUI
+                  * Migrate from PyQt6 to PySide6
+                  * Fix some GUI related warnings
+                    * Could not register app ID: Connection already associated with an application ID
+                    * Trying to disable 0xNNN but 0x0 is focused
+              - pre-release commit for readthedocs
 
  2026-09-10   : 8.0.4
               - **8.0.4**
@@ -28,22 +40,3 @@
               - meson tweak
               - remove unused from meson.build
               - add meson.options
-
- 2026-09-02   : 8.0.0
-                  - **8.0.0**
-            
-                    * Package / build management now uses meson/mesonpy
-                    * New resolv-manager:
-                      - wirtten in C.
-                      - Runs as a background daemon managing /etc/resolv.conf
-                      - replaces the python inotify based monitor
-                      - see man page wg-client-resolv-manager
-                    * You need to make a change.
-                      Please update PostUp / PostDown in wireguard config and
-                      use the helper scripts installed in /etc/wg-client:
-                      post-up.sh and post-down.sh.
-                      Create /etc/wg-client/wireguirs.resolv.conf with the DNS settings
-                      you want to use while VPN tunnel is up. Standard resolv.conf format
-                      (nameserver x.x.x.x)
- 2026-01-10   ⋯
-              - update Docs/Changelog

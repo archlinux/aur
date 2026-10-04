@@ -10,7 +10,7 @@ pkgname='wg-client'
 pkgdesc='Linux Wireguard client (command line and gui)'
 _gitname='wg-client'
 
-pkgver="8.0.4"
+pkgver="8.0.5"
 pkgrel=1
 url="https://github.com/gene-git/wg-client"
 
@@ -19,13 +19,14 @@ license=(GPL-2.0-or-later)
 
 install='wg-client.install'
 
-# To build docs uncommont sphinx/texlive
 depends=(
+    hicolor-icon-theme
     'python>=3.14'
+    py-cidr
     python-psutil
     python-dateutil
     python-pyconcurrent
-    py-cidr
+    pyside6
     libcap
     glibc
     bash
@@ -37,7 +38,6 @@ makedepends=(
     meson
     meson-python
     rsync
-    bash
 )
 # Used by package : mkpkg
 _mkpkg_depends=(
@@ -72,16 +72,11 @@ prepare() {
 build() {
     cd "${_gitname}"
 
-    echo 'Building'
     ./scripts/do-build
 }
 
 package() {
     cd "${_gitname}"
-    depends+=(
-        python-pyqt6
-        hicolor-icon-theme
-    )
     ./scripts/do-install ${pkgdir}
 
     install -Dm644 ../wg-client.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/wg-client.conf
