@@ -8,10 +8,10 @@
 # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=kahawai-gstreamer
 
 pkgname=kahawai
-_tag=0.0.21-rc.1
+_tag=0.0.21-rc.2
 # The stamped commit the release was built from, which `kahawai --version`
 # and a satellite's hello report. From the release notes.
-_commit=16a62c03f01ae48161e0bb49b75488e27008eb1a
+_commit=7b998b295f7ab081cf6b059d82e69dd5bb83a1c8
 pkgver=${_tag/-rc./rc}
 pkgrel=1
 # The GStreamer this release's patch set was built for. Exact: kahawai and
@@ -28,6 +28,11 @@ makedepends=(cargo clang cmake nodejs npm protobuf)
 optdepends=(
   'tesseract-data-eng: OCR of English bitmap subtitles (one tesseract-data-* per language)'
 )
+# makepkg's lto puts -flto=auto in CFLAGS, so the C that build scripts
+# compile (sqlx's bundled SQLite among it) becomes GCC IR that rustc's
+# links never resolve: sqlx-macros fails to load on undefined sqlite3_*.
+# Cargo's own LTO is the release profile's business, not this option's.
+options=(!lto)
 backup=(etc/kahawai/kahawai.toml)
 install=kahawai.install
 source=("https://github.com/iksteen/kahawai/releases/download/v$_tag/kahawai-$_tag-source.tar.gz"
@@ -38,7 +43,7 @@ source=("https://github.com/iksteen/kahawai/releases/download/v$_tag/kahawai-$_t
         kahawai-hub.service
         kahawai-mediahost.service
         kahawai-transcoder.service)
-sha256sums=('ccacf79d72de94d548ccafa4c885bed33294493a6e3233b2624c53c43c6bc201'
+sha256sums=('664f0aa523f673da1944773a49728be70ca5b95dcebe5f7364cffb3b002daf1c'
             'd865db520499a83a564a1dd7ff586db8944de0d4015056f69e224359c0b190db'
             'defd1b5741b7bc13ad1c66c368daf1e93075a8e940cd7810bc642aa0e385ff23'
             '73baebedb951be68563bf9ccfd8ec3c7203caf5080cead15069d8ebc6bbc76e6'
