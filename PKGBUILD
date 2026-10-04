@@ -4,7 +4,7 @@
 pkgname=python-securo-git
 _pkgname=securo-git
 pkgver=r7.5920acb
-pkgrel=1
+pkgrel=2
 pkgdesc="Encrypt and decrypt files/folders with symmetric encryption"
 arch=('any')
 url="https://github.com/iunary/securo"
@@ -29,6 +29,7 @@ build() {
 package() {
 	cd securo
 	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 	fi

@@ -1,7 +1,7 @@
 pkgbase = python-securo-git
 	pkgdesc = Encrypt and decrypt files/folders with symmetric encryption
 	pkgver = r7.5920acb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iunary/securo
 	arch = any
 	license = MIT
