@@ -3,7 +3,7 @@
 
 pkgname=pihpsdr-git
 _pkgname=pihpsdr
-pkgver=r2891.b34a018
+pkgver=r2913.dc862a5
 pkgrel=1
 pkgdesc='SDR software for HPSDR radios like Anan and Hermes Lite 2'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('GPL2')
 # we use the internal 'libspecbleach'
 # since pihpsdr requires the git version and I don't want
 # to maintain it in aur
-depends=('fftw' 'libpipewire' 'gtk3' 'soapysdr' 'alsa-lib' 'rnnoise' 'libwebsockets' 'zlib' 'opus' 'curl' 'sqlite')
+depends=('fftw' 'libpipewire' 'gtk3' 'soapysdr' 'alsa-lib' 'libwebsockets' 'zlib' 'opus' 'curl' 'sqlite')
 makedepends=('git')
 buildflags=()
 provides=("${_pkgname}")
