@@ -5,12 +5,15 @@ pkgbase = klit-bin-unstable
 	url = https://openlyst.ink
 	install = klit-bin-unstable.install
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	depends = gtk3
 	provides = kilt
 	conflicts = kilt
 	options = !strip
-	source = klit-bin-unstable-12.0.0.zip::https://gitlab.com/Openlyst/klit/-/releases/nightly/downloads/kilt-linux-x64-12.0.0-2026-10-04.zip
-	sha256sums = SKIP
+	source_x86_64 = klit-bin-unstable-12.0.0-x86_64.zip::https://gitlab.com/Openlyst/klit/-/releases/nightly/downloads/kilt-linux-x64-12.0.0-2026-10-04.zip
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = klit-bin-unstable-12.0.0-aarch64.zip::https://gitlab.com/Openlyst/klit/-/releases/nightly/downloads/kilt-linux-arm64-12.0.0-2026-10-04.zip
+	sha256sums_aarch64 = SKIP
 
 pkgname = klit-bin-unstable
