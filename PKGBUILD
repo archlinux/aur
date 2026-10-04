@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r84425.ab07c74cc57
+pkgver=r86614.40733220198
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -23,7 +23,6 @@ depends=(
   libedit
   libgl
   libjpeg-turbo
-  libjxl
   libtiff
   libtommath
   libwebp
@@ -66,6 +65,7 @@ prepare() {
   sed -e 's#wuffs/wuffs#wuffs#' -i ladybird/Meta/CMake/check_for_dependencies.cmake
   sed -e 's#wuffs/wuffs#wuffs#' -i ladybird/Libraries/LibGfx/ImageFormats/GIFLoader.cpp
   sed -e 's/mi_heap_get_default/mi_heap_main/' -i ladybird/AK/kmalloc.cpp
+  sed -e 's/\(lib[a-z]*\)-ladybird)/\1)/' -i ladybird/Meta/CMake/check_for_dependencies.cmake
   sed -e '79i add_cxx_compile_options(-Wno-restrict)' -i ladybird/Meta/CMake/compile_options.cmake
 }
 
@@ -74,7 +74,7 @@ build() {
 
   export PKG_CONFIG_PATH="$(realpath .)"
   unset CARGO_TARGET_DIR
-  export RUSTUP_TOOLCHAIN=stable
+  export RUSTUP_TOOLCHAIN="$(sed -n 's/^channel = "\(.*\)"/\1/p' ladybird/rust-toolchain.toml)"
 
   cmake \
     -B build \
