@@ -4,7 +4,7 @@ pkgname=finar-bin
 pkgver=4.2.0
 pkgrel=1
 pkgdesc="The corrected Jellyfin client"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://openlyst.ink"
 license=('GPL3')
 depends=('gtk3')
@@ -12,8 +12,10 @@ optdepends=()
 provides=('finar')
 conflicts=('finar')
 options=('!strip')
-source=("finar-bin-${pkgver}.zip::https://gitlab.com/Openlyst/finar/-/releases/v4.2.0/downloads/finar-linux-x64-4.2.0-2026-09-30.zip")
-sha256sums=('SKIP')
+source_x86_64=("finar-bin-${pkgver}-x86_64.zip::https://gitlab.com/Openlyst/finar/-/releases/v4.2.0/downloads/finar-linux-x64-4.2.0-2026-09-30.zip")
+source_aarch64=("finar-bin-${pkgver}-aarch64.zip::https://gitlab.com/Openlyst/finar/-/releases/v4.2.0/downloads/finar-linux-arm64-4.2.0-2026-09-30.zip")
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 
 package() {
     cd "${srcdir}/bundle"
