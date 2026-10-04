@@ -20,7 +20,7 @@ package() {
     cd "${srcdir}/bundle"
 
     install -d "${pkgdir}/opt/kilt"
-    install -Dm755 "kilt" "${pkgdir}/opt/kilt/kilt"
+    install -Dm755 "klit" "${pkgdir}/opt/kilt/kilt"
     install -d "${pkgdir}/opt/kilt/lib"
     install -Dm644 lib/*.so "${pkgdir}/opt/kilt/lib/"
     cp -r data "${pkgdir}/opt/kilt/"
@@ -34,8 +34,8 @@ Type=Application
 Categories=Network;Graphics;
 Keywords=e621;booru;privacy;;
 EOF
-    if [ -f "data/flutter_assets/assets/icons/icon.png" ]; then
-        install -Dm644 "data/flutter_assets/assets/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/kilt.png"
+    if [ -f "data/flutter_assets/assets/icon/app/icon.png" ]; then
+        install -Dm644 "data/flutter_assets/assets/icon/app/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/kilt.png"
     fi
     install -d "${pkgdir}/usr/bin"
     ln -s /opt/kilt/kilt "${pkgdir}/usr/bin/kilt"
