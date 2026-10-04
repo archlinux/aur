@@ -3,7 +3,7 @@
 
 pkgname=ccsum
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Convenient sha256sum/md5sum/sha1sum/sha512sum checksum tool with improved usability"
 arch=('x86_64')
 url="https://github.com/sevenc-nanashi/ccsum"
@@ -24,6 +24,12 @@ build() {
 package() {
 	cd "$_srcdir"
 	install -Dm755 "target/release/ccsum" "$pkgdir/usr/bin/ccsum"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 demo.png "$pkgdir/usr/share/doc/$pkgname/demo.png"
+	install -Dm644 demo.tape "$pkgdir/usr/share/doc/$pkgname/demo.tape"
+	install -d "$pkgdir/usr/share/$pkgname/demo/bar" "$pkgdir/usr/share/$pkgname/demo/foo"
+	install -Dm644 demo/bar/*.txt "$pkgdir/usr/share/$pkgname/demo/bar/"
+	install -Dm644 demo/foo/*.txt "$pkgdir/usr/share/$pkgname/demo/foo/"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	fi
