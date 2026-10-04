@@ -26,6 +26,7 @@ package() {
     install -Dm644 rsv.bash "$pkgdir/usr/share/bash-completion/completions/rsv"
     install -Dm644 rsv.fish "$pkgdir/usr/share/fish/vendor_completions.d/rsv.fish"
     install -Dm644 rsv.zsh  "$pkgdir/usr/share/zsh/site-functions/_rsv"
+    install -Dm644 rsv.nu   "$pkgdir/usr/share/nushell/vendor/autoload/rsv.nu"
     install -Dm644 rsv.1    "$pkgdir/usr/share/man/man1/rsv.1"
     install -Dm644 LICENSE  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
