@@ -1,6 +1,6 @@
 pkgbase = jdk-lts
 	pkgdesc = Oracle Java
-	pkgver = 25.0.4
+	pkgver = 25.0.4.1
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = jdk-lts
 	makedepends = python-html2text
 	makedepends = alsa-lib
 	noextract = jdk-25.0.4_doc-all.zip
-	source = https://download.oracle.com/java/25/archive/jdk-25.0.4_linux-x64_bin.tar.gz
-	source = https://download.oracle.com/otn_software/java/jdk/25.0.4+7/eda28b422d69454c901d71e19e354064/jdk-25.0.4_doc-all.zip
+	source = https://download.oracle.com/java/25/archive/jdk-25.0.4.1_linux-x64_bin.tar.gz
+	source = https://download.oracle.com/otn_software/java/jdk/25.0.4.1+7/eda28b422d69454c901d71e19e354064/jdk-25.0.4_doc-all.zip
 	source = jdk-25_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-25-final-spec/license.html
 	source = java.desktop
 	source = jconsole.desktop
@@ -17,7 +17,7 @@ pkgbase = jdk-lts
 	source = java_16.png
 	source = java_48.png
 	source = LICENSE
-	sha256sums = 0d3e87de2516557a170e2df4f6a4872b1749ea3174dd7c9e555cb5170e618301
+	sha256sums = dd7e7f51d23bcffe85f1a439577ce1c0190a33417b34afdb338f9b3897bdeaec
 	sha256sums = 74673f5f6116845322fe3f3d0929ce6f047a7d992b652da1af5492cb929e9b81
 	sha256sums = 238ad31acf952842a3161837b70ddc1debb4a9d52f8248bcd7732bed5685976a
 	sha256sums = fcfed2eb57f8c7948a84905827c2ec0b6ff0ff70b47a338b6329be2bf4905589
@@ -45,10 +45,10 @@ pkgname = jre-lts
 	provides = jre=25
 	provides = java-runtime=25
 	provides = java-runtime-jdk25
-	provides = jre25-jdk=25.0.4-1
+	provides = jre25-jdk=25.0.4.1-1
 	provides = java-runtime-headless=25
 	provides = java-runtime-headless-jdk=25
-	provides = jre25-jdk-headless=25.0.4-1
+	provides = jre25-jdk-headless=25.0.4.1-1
 	conflicts = jdk-lts
 	backup = etc/java-jdk-lts/jaxp.properties
 	backup = etc/java-jdk-lts/jaxp-strict.properties.template
@@ -87,15 +87,15 @@ pkgname = jdk-lts
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-environment=25
 	provides = java-environment-jdk=25
-	provides = jdk25-jdk=25.0.4-1
+	provides = jdk25-jdk=25.0.4.1-1
 	provides = jre=25
 	provides = jre-lts
 	provides = java-runtime=25
 	provides = java-runtime-jdk25
-	provides = jre25-jdk=25.0.4-1
+	provides = jre25-jdk=25.0.4.1-1
 	provides = java-runtime-headless=25
 	provides = java-runtime-headless-jdk=25
-	provides = jre25-jdk-headless=25.0.4-1
+	provides = jre25-jdk-headless=25.0.4.1-1
 	conflicts = jre-lts
 	backup = etc/java-jdk-lts/jaxp.properties
 	backup = etc/java-jdk-lts/jaxp-strict.properties.template

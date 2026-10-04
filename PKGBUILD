@@ -2,7 +2,7 @@
 
 pkgbase=jdk-lts
 pkgname=('jre-lts' 'jdk-lts' 'jdk-lts-doc')
-pkgver=25.0.4
+pkgver=25.0.4.1
 _build=7
 _hash=eda28b422d69454c901d71e19e354064
 _majver="${pkgver%%.*}"
@@ -16,7 +16,7 @@ makedepends=(
     # to satisfy pkgcheck:
     'alsa-lib')
 source=("https://download.oracle.com/java/${_majver}/archive/jdk-${pkgver}_linux-x64_bin.tar.gz"
-        "https://download.oracle.com/otn_software/java/jdk/${pkgver}+${_build}/${_hash}/jdk-${pkgver}_doc-all.zip"
+        "https://download.oracle.com/otn_software/java/jdk/${pkgver}+${_build}/${_hash}/jdk-${pkgver%.*}_doc-all.zip"
         "jdk-${_majver}_doc-license.html"::"https://download.oracle.com/otndocs/jcp/java_se-${_majver}-final-spec/license.html"
         'java.desktop'
         'jconsole.desktop'
@@ -24,8 +24,8 @@ source=("https://download.oracle.com/java/${_majver}/archive/jdk-${pkgver}_linux
         'java_16.png'
         'java_48.png'
         'LICENSE')
-noextract=("jdk-${pkgver}_doc-all.zip")
-sha256sums=('0d3e87de2516557a170e2df4f6a4872b1749ea3174dd7c9e555cb5170e618301'
+noextract=("jdk-${pkgver%.*}_doc-all.zip")
+sha256sums=('dd7e7f51d23bcffe85f1a439577ce1c0190a33417b34afdb338f9b3897bdeaec'
             '74673f5f6116845322fe3f3d0929ce6f047a7d992b652da1af5492cb929e9b81'
             '238ad31acf952842a3161837b70ddc1debb4a9d52f8248bcd7732bed5685976a'
             'fcfed2eb57f8c7948a84905827c2ec0b6ff0ff70b47a338b6329be2bf4905589'
@@ -74,7 +74,7 @@ _jre_backup=("etc/java-${pkgbase}/jaxp.properties"
 
 prepare() {
     mkdir -p "jdk-doc-${pkgver}"
-    bsdtar -x -f "jdk-${pkgver}_doc-all.zip" -C "jdk-doc-${pkgver}" --strip-components='1'
+    bsdtar -x -f "jdk-${pkgver%.*}_doc-all.zip" -C "jdk-doc-${pkgver}" --strip-components='1'
     html2text "jdk-${_majver}_doc-license.html" > LICENSE-doc
 }
 
