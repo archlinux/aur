@@ -1,7 +1,7 @@
 # Maintainer: Hashim-K <Hashim-K@users.noreply.github.com>
 
 pkgname=usagestat-bin
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Scriptable CLI for local agent usage data"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=("glibc")
 provides=("usagestat")
 conflicts=("usagestat")
 source_x86_64=("usagestat-${pkgver}-linux-x86_64.tar.gz::${url}/releases/download/v${pkgver}/usagestat-linux-x86_64.tar.gz")
-sha256sums_x86_64=("14639690fcba5ed5038628bb6cfd684076e0c494fe6087fd6e01ddbddd299942")
+sha256sums_x86_64=("0b7b2de373bca09f50465384e59f49faf8a84606e975341008fa0be7db8bef88")
 
 package() {
   install -Dm755 "${srcdir}/usagestat" "${pkgdir}/usr/bin/usagestat"
