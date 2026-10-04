@@ -1,0 +1,18 @@
+pkgbase = brother-mfc-l3720cdw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-L3720CDW
+	pkgver = 3.5.1_1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=mfcl3720cdw_us_as
+	arch = x86_64
+	license = LicenseRef-brother
+	depends = cups
+	depends = ghostscript
+	depends = perl
+	depends = glibc
+	depends = gcc-libs
+	depends = bash
+	optdepends = brscan4: scanner support
+	source = https://download.brother.com/welcome/dlf105759/mfcl3720cdwpdrv-3.5.1-1.i386.deb
+	sha256sums = 644eb1af997105c20309b2a3cd82f3509d2b1b95e7d772607ae3cebb60a7ee49
+
+pkgname = brother-mfc-l3720cdw
