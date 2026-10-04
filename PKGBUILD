@@ -2,7 +2,7 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=grubforge
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="The GRUB boot menu without editing files by hand: plain-word settings, a review before every save, a backup first"
 arch=('any')
@@ -12,10 +12,12 @@ license=('GPL3')
 # when a change needs root, instead of requiring the whole app to run as root.
 # v2.0.0: built on forgekit, the Forge Suite's shared base (python-forgekit
 # must be on the AUR first — dependency order)
-depends=('python' 'python-textual' 'python-rich' 'python-forgekit>=0.5.0' 'polkit')
+# v2.1.0: polkit's password asked in grubForge's own box (forgekit's
+# InAppPolkitAgent, through python-gobject), on a text console too
+depends=('python' 'python-textual' 'python-rich' 'python-forgekit>=0.6.0' 'polkit' 'python-gobject')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('44464d4115a0d251051a86a15548a8f13dcf7f785c7d84f49363b99142b4bea2'
+sha256sums=('74285d0747833060ab993fce98dd2fe6e40e5cf3d517b599c6614917558b0f30'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
