@@ -2,7 +2,7 @@
 
 pkgname=lobo-bin
 _pkgname=lobo
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='A web server written in wolf: nginx-compatible configuration, prefork workers (release archive)'
 # x86_64 ONLY, and that is a named refusal rather than an omission.
@@ -45,7 +45,7 @@ options=('!strip' '!debug')
 # The archive is built FROM THE PIN by lobo's own release workflow, not
 # from whatever wolf the runner had, so `lobo -v` inside it is honest.
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/lobo-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('6e21e151987b2ede4df8591020368f39ec29033713523c29d99582fa39f2a7a0')
+sha256sums_x86_64=('43882448a45d340d2b8559f5403c8eb6c016a4dc94bd72bede1535c798535062')
 
 package() {
     cd "lobo-$pkgver-x86_64-unknown-linux-gnu"
@@ -55,7 +55,7 @@ package() {
     # conf/ and html/ are a TEMPLATE, not a live prefix. lobo takes `-p`
     # the way nginx does and the stock config's paths (logs/, html/) are
     # relative to it, so a copy under /etc with an empty /var tree would
-    # be inventing a service layout 0.1.1 does not have -- and the config
+    # be inventing a service layout 0.1.2 does not have -- and the config
     # would resolve `root html;` against the wrong prefix. The template
     # ships read-only under /usr/share/lobo and lobo-bin.install shows how
     # to make a working copy from it.
