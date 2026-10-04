@@ -1,22 +1,22 @@
-# Maintainer: Javier Orfo <javierorfo@protonmail.com>
+# Maintainer: javy
 
 pkgname=jwtd
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="Minimal TUI for decoding JWT "
 arch=('x86_64')
-url="https://codeberg.org/caskstrength/jwtd"
+url="https://codeberg.org/javy/jwtd"
 license=('MIT')
 depends=('ncurses' 'openssl' 'libundr')
 makedepends=('git' 'gcc')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("$pkgname::git+$url.git#tag=$pkgver")
-sha512sums=('56f174ae79453ab228773cdf1846e8701a30956101435d8e1d28538508f3594afeab370c600b100cc51b542c6f07351d6014839c45e79f0e245c9c0c2ecfdc8c')
+sha512sums=('dd16fdd99981bfe3187b218db8fa3d1008c090a779e45c480b27f15545540cc6d2cbb5d963693bee19eeb38fa961913f420e7cfb1a5359311c66db696380e1f6')
 
 build() {
   cd "$pkgname"
-  gcc -Wall -Wextra -pedantic -std=c23 -o jwtd jwtd.c -lcurses -lcrypto -lundr
+  gcc -Wall -Wextra -pedantic -std=c23 -o jwtd jwtd.c -lcurses -lcrypto -lcurl -lundr
 }
 
 package() {
