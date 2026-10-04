@@ -1,6 +1,6 @@
 # Maintainer: kvunoff <kvunoff@proton.me>
 pkgname=whoisthat
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Modern terminal-based VPN client with Xray-core backend"
 arch=('x86_64')
@@ -10,8 +10,7 @@ depends=()
 makedepends=('rust' 'go')
 optdepends=('xray: system Xray-core binary (managed runtime used automatically if absent)'
             'tun2socks: for TUN mode VPN support'
-            'tun2socks-bin: for TUN mode VPN support (alternative)'
-            'hysteria: for hysteria2 / hy2:// profiles')
+            'tun2socks-bin: for TUN mode VPN support (alternative)')
 install=whoisthat.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kvunoff/whoisthat/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
