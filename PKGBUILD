@@ -4,9 +4,9 @@
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 _pkgname='fuc'
-pkgname="${_pkgname}-bin"
+pkgname="$_pkgname-bin"
 pkgdesc='Fast Unix Commands: Performance focused alternatives to cp(1) and rm(1) (pre-compiled)'
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 url='https://github.com/SUPERCILEX/fuc'
 changelog="$_pkgname.changelog"
@@ -39,13 +39,13 @@ package() {
 }
 
 sha256sums_aarch64=(
-  '3adb31b22daa3702378cf264a119461f462d6860c6c1599968d50ebd18177ac3'
-  '49f6aaddf00ac3e4ae2a7928d1d651ea708b0bedd577a94d08ece44414cf3a36'
+  '9cc92b35f8d96e60e01e58ce98d002ec43363eb56ad26e81599eb1124f0e478e'
+  '62059f80a71715d6c4197c0729f157a9c1bbe537a5bdfa830397c47b3ae1ed74'
   'SKIP'
 )
 sha256sums_x86_64=(
-  'e150a96f3135b48559c0944c8a17050861bd3b23c0d2b619b9f0f6ca91886165'
-  '7dc19b56caeab9611b578355bbc58c791d1830177651817dec339e0e926286ce'
+  '4964046e8b9cb29bb8b27d6ce647329924a58ad78b793f9dece23957b2aac4ea'
+  'e2c2c07e731d9422dfe3f14e17e010c6dd5f7a4ad54a9c9bcd141cb8a5ec4fb1'
   'SKIP'
 )
 
