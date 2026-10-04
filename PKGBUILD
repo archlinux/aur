@@ -2,13 +2,13 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-cachyos-native
-_srctag=11.0-20260703
+_srctag=11.0-20261005
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
-_monover=11.2.0
-_xaliaver=0.4.9
-pkgrel=3
+_monover=11.3.0
+_xaliaver=0.5.0
+pkgrel=1
 epoch=1
 
 source=(
@@ -224,6 +224,7 @@ prepare() {
         Vulkan-Headers
         dav1d
         dxvk
+        dxvk-igdext
         dxvk-nvapi
         extras/d7vk
         extras/discord-rpc-bridge
@@ -239,7 +240,6 @@ prepare() {
         gstreamer
         libsoup
         meson
-        nvidia-libs/dxvk-nvapi
         nvidia-libs/nvcuda
         nvidia-libs/nvcuda32
         nvidia-libs/nvenc
@@ -347,10 +347,10 @@ package() {
         $(find "${_monodir}" -iname "*x86_64.dll" -or -iname "*x86_64.exe")
 }
 
-b2sums=('6a2eb145f5d3ec468a61bcc3a31a04c166bc6e9b0d493a038f4aeb7f70b8e599ae5f2cf7230c515142594a4c7ec3e0fbbe11d2a14940a9ead1c626aea39e9f00'
+b2sums=('ab92aafe41177e4be81173681933c9bb8a756aabaed4c09532f0a8a957e76fc866ff190dd4dd648e079986094b713570aee44b00457f9fbe2442383fbc2ebcb3'
         '2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9'
         '62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0'
-        '74555b5f02cb8053ccfb272c30f88e00bb647291ebf57ebd1bce067275ea9184fc0a983d26f4014fa1d6fae53ada9258ddaf11938f0b821fab1bde58257399b1'
-        '5a492e5bd62a8116c2571348f01e1ea9dd70e2a185f0891a27be4091c8f182ce55e48f075fe46badf80e0f5b831a1d5993b2b6e1f130f4d6b00e3ef77254d00d'
+        '230b9094049fc8b0c5600c44ad9514541f4bb21a75a0fd32e5025aa4c267f3b1d0032929d215688ed8ebe6c1b3ade93e3643272305f6f81b734d376cdea257c2'
+        '3b1d5d974ae32849b8e74828b1a00475183bdb5a345e16699dbf88306787c95b3ab2f2ea6f53a19a074ac6e26f6f77c29edc2cbe24dce301522245112c5e1002'
         'f0a81d83e644ca074a6bf54fc74ae12f5bd047e29d87fab528fba20e4b8d013547ad4b26e912c2b3218a75114f5c76b64aa84fdbc3054d3a1d9bf96635c6212b'
         '964a3ba277821e570aec2127f0d1ae9898da6976c360deb6b196345a50bd3c2c55cb399527507006d8fddef868069032a30b083f23987d5050f185c74dd9de35')
