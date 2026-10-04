@@ -1,7 +1,7 @@
 # Maintainer: Juniper <trixelit.alias@gmail.com>
 
 pkgname=rox-player
-pkgver=1.30.0
+pkgver=1.30.1
 pkgrel=1
 pkgdesc="Fast, composable music player written in rust (foobar2000 for the current year)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ conflicts=('rox-player-git')
 # symbol comes back undefined at the final link.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2fd1d0fb69bbf68a5739ba7b1bb353cd0c99542c8cbe43f8dbb89be5cd9a96fa')
+sha256sums=('5d949869c1791215309e9896c044d271d0520f0031f74123f3fcb451f384daee')
 
 prepare() {
   cd "rox-$pkgver"
