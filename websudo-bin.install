@@ -1,12 +1,18 @@
 post_install() {
 	cat <<'EOF'
 websudo installs a user systemd service for the approval server.
-Run this as the desktop user that will use websudo:
+Run these commands from the normal login session of the desktop user that will use websudo:
 
-  websudo-systemd-setup
+  systemctl --user daemon-reload
+  systemctl --user enable --now websudo-approverd.service
 EOF
 }
 
 post_upgrade() {
-	post_install
+	cat <<'EOF'
+websudo was upgraded. From the desktop user's normal login session, reload the user unit and restart the daemon if it is currently running:
+
+  systemctl --user daemon-reload
+  systemctl --user try-restart websudo-approverd.service
+EOF
 }
