@@ -1,6 +1,6 @@
 # Maintainer: Andy Stewart <lazycat.manatee@gmail.com>
 pkgname=omarchy-screenshot
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Qt 6 screenshot and annotation tool for Omarchy and Hyprland"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only' 'MIT')
 depends=('qt6-base' 'qt6-declarative' 'qt6-wayland' 'layer-shell-qt' 'grim' 'wl-clipboard' 'hyprland' 'wayland')
 makedepends=('cmake' 'pkgconf' 'qt6-tools' 'python' 'wayland-protocols')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e065541c34223b5ed637c79dc1588efd2eb8f2e559f34389c1fa5ce154099b3c')
+sha256sums=('cbfadc48577b6ac5b44cfb299acf73a120e4b51dc2fedd91cbeadefdcbc5f9dd')
 
 build() {
     cmake -S "$pkgname-$pkgver" -B build \

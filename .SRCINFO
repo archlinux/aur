@@ -1,6 +1,6 @@
 pkgbase = omarchy-screenshot
 	pkgdesc = Qt 6 screenshot and annotation tool for Omarchy and Hyprland
-	pkgver = 0.1.10
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/manateelazycat/omarchy-screenshot
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = omarchy-screenshot
 	depends = wl-clipboard
 	depends = hyprland
 	depends = wayland
-	source = omarchy-screenshot-0.1.10.tar.gz::https://github.com/manateelazycat/omarchy-screenshot/archive/v0.1.10.tar.gz
-	sha256sums = e065541c34223b5ed637c79dc1588efd2eb8f2e559f34389c1fa5ce154099b3c
+	source = omarchy-screenshot-0.1.11.tar.gz::https://github.com/manateelazycat/omarchy-screenshot/archive/v0.1.11.tar.gz
+	sha256sums = cbfadc48577b6ac5b44cfb299acf73a120e4b51dc2fedd91cbeadefdcbc5f9dd
 
 pkgname = omarchy-screenshot
