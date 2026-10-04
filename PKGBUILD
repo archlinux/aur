@@ -3,7 +3,7 @@
 
 pkgname=tascli
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple, fast, local task and record manager in CLI"
 arch=('x86_64')
 url="https://github.com/Aperocky/tascli"
@@ -24,7 +24,12 @@ build() {
 package() {
 	cd "$_srcdir"
 	install -Dm755 "target/release/tascli" "$pkgdir/usr/bin/tascli"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+	install -Dm644 SKILL.md "$pkgdir/usr/share/doc/$pkgname/SKILL.md"
+	install -Dm644 AGENTS.md "$pkgdir/usr/share/doc/$pkgname/AGENTS.md"
+	install -d "$pkgdir/usr/share/$pkgname/bench" "$pkgdir/usr/share/$pkgname/demo"
+	install -Dm755 bench/*.sh bench/README.md "$pkgdir/usr/share/$pkgname/bench/"
+	install -Dm644 demo/* "$pkgdir/usr/share/$pkgname/demo/"
+	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
