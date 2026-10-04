@@ -3,7 +3,7 @@
 
 pkgname=vicut
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI text processor that uses Vim commands to transform text and extract fields"
 arch=('x86_64')
 url="https://github.com/km-clay/vicut"
@@ -24,9 +24,7 @@ build() {
 package() {
 	cd "$_srcdir"
 	install -Dm755 "target/release/vicut" "$pkgdir/usr/bin/vicut"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	if [ -f README.md ]; then
 		install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	fi
