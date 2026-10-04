@@ -4,12 +4,15 @@ pkgbase = doudou-unstable
 	pkgrel = 1
 	url = https://openlyst.ink
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	depends = gtk3
 	provides = doudou
 	conflicts = doudou
 	options = !strip
-	source = doudou-unstable-23.0.0.zip::https://gitlab.com/Openlyst/doudou/-/releases/nightly/downloads/doudou-linux-x64-23.0.0-2026-09-29.zip
-	sha256sums = SKIP
+	source_x86_64 = doudou-unstable-23.0.0-x86_64.zip::https://gitlab.com/Openlyst/doudou/-/releases/nightly/downloads/doudou-linux-x64-23.0.0-2026-10-04.zip
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = doudou-unstable-23.0.0-aarch64.zip::https://gitlab.com/Openlyst/doudou/-/releases/nightly/downloads/doudou-linux-arm64-23.0.0-2026-10-04.zip
+	sha256sums_aarch64 = SKIP
 
 pkgname = doudou-unstable
