@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: pika02
 
 pkgname=lingxi-ai-bin
 _pkgname=lingxi-ai
@@ -6,7 +6,7 @@ pkgver=1.4.7
 pkgrel=1
 pkgdesc="WPS Office AI Agent 插件（灵犀AI），支持多种大模型、MCP与本地化部署"
 arch=('x86_64')
-url="https://wps-ai.llteac.cn" # 若有确切官方repo可替换
+url="https://wps-ai.llteac.cn"
 license=('unknown')
 depends=('bash' 'rsync')
 optdepends=('wps-office: 国际版基础依赖'
@@ -17,20 +17,11 @@ sha256sums=('415e73b0b19ae02dfae646ac426e5164410b0dc072180aa4a1435ded679e07dd')
 install=${pkgname}.install
 
 package() {
-    # 创建目标目录
     install -d "${pkgdir}/opt/${_pkgname}"
-
-    # 进入解压后的源码目录
     cd "${srcdir}/${_pkgname}-${pkgver}" || exit
-
-    # 复制所有文件到 /opt/lingxi-ai
     cp -a * "${pkgdir}/opt/${_pkgname}/"
-
-    # 设置可执行权限
     chmod +x "${pkgdir}/opt/${_pkgname}/install.sh"
     chmod +x "${pkgdir}/opt/${_pkgname}/uninstall.sh"
     chmod +x "${pkgdir}/opt/${_pkgname}/plugin/runtime/node-linux-x64/bin/node"
-    
-    # 递归赋予 tools 目录下所有脚本可执行权限
     find "${pkgdir}/opt/${_pkgname}/plugin/tools/" -name "*.sh" -exec chmod +x {} \;
 }
