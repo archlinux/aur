@@ -1,40 +1,48 @@
 # Maintainer: Charles Pritchard <charlespritchard.work@gmail.com>
 pkgname=shiftpaper
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Parallax wallpaper daemon for Wayland with monocular depth estimation"
 arch=('x86_64')
-options=('!lto')
 url="https://github.com/CPritch/shiftpaper"
 license=('MIT')
 depends=('wayland' 'vulkan-icd-loader' 'onnxruntime')
-makedepends=('rust')
-optdepends=('cuda: GPU-accelerated depth inference')
+makedepends=('cargo')
+optdepends=('onnxruntime-cuda: bake wallpapers on an NVIDIA GPU')
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/CPritch/shiftpaper/archive/v$pkgver.tar.gz")
-sha256sums=('6289ed97d0c538c17ac714517b8e6027baefbb3c2b3d749618e5d39c108e163a')
+sha256sums=('75217057bc782e2ee25753fad0d6099a947093a5a9e807fcf7cd54b3d0422ce6')
 
 prepare() {
-        cd "$pkgname-$pkgver"
-        cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cd "$pkgname-$pkgver"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
-        cd "$pkgname-$pkgver"
-        env | sort > /tmp/makepkg_env.txt
-        export CARGO_TARGET_DIR=target
-        cargo build --release --locked \
-                --package shiftpaper-cli \
-                --no-default-features \
-                --features load-dynamic
-        cargo build --release --locked --package shiftpaper-daemon
+	cd "$pkgname-$pkgver"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	# load-dynamic uses the system onnxruntime instead of downloading one.
+	cargo build --frozen --release --package shiftpaper-cli \
+		--no-default-features --features load-dynamic
+	cargo build --frozen --release --package shiftpaper-daemon
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo test --frozen --release --package shiftpaper-config --package shiftpaper-daemon
+	cargo test --frozen --release --package shiftpaper-cli \
+		--no-default-features --features load-dynamic
 }
 
 package() {
-        cd "$pkgname-$pkgver"
-        install -Dm755 target/release/shiftpaper  "$pkgdir/usr/bin/shiftpaper"
-        install -Dm755 target/release/shiftpaperd "$pkgdir/usr/bin/shiftpaperd"
-        install -Dm644 shiftpaperd.service \
-                "$pkgdir/usr/lib/systemd/user/shiftpaperd.service"
-        install -Dm644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-        install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	cd "$pkgname-$pkgver"
+	install -Dm755 target/release/shiftpaper "$pkgdir/usr/bin/shiftpaper"
+	install -Dm755 target/release/shiftpaperd "$pkgdir/usr/bin/shiftpaperd"
+	install -Dm644 shiftpaperd.service "$pkgdir/usr/lib/systemd/user/shiftpaperd.service"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
