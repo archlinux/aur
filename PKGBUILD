@@ -3,20 +3,28 @@ pkgname=whatevr-git
 _pkgname=whatevr
 pkgver=0.1.0.r0.g0000000
 pkgrel=1
-pkgdesc="Native WhatsApp client for Linux (whatevrd daemon + whatkevr Qt/Kirigami frontend)"
+pkgdesc="Native WhatsApp client for Linux (whatevrd daemon + whattui terminal frontend)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/codelif/whatevr"
 license=('BSD-3-Clause')
-depends=('qt6-base' 'qt6-declarative' 'qt6-shadertools'
-         'kcoreaddons' 'kdbusaddons' 'ki18n' 'kirigami' 'prison' 'qqc2-desktop-style' 'kirigami-addons'
-         'rlottie' 'sqlite' 'glibc'
-         'desktop-file-utils' 'shared-mime-info' 'xdg-utils')
-makedepends=('git' 'go' 'gcc' 'just' 'cmake' 'ninja' 'extra-cmake-modules' 'vulkan-headers')
-provides=('whatevr' 'whatevrd' 'whatkevr')
+depends=('glibc' 'libjpeg-turbo')
+optdepends=('ffmpeg: video posters and voice note waveforms')
+makedepends=('git' 'go' 'gcc' 'just' 'python')
+provides=('whatevr' 'whatevrd' 'whattui')
 conflicts=('whatevr' 'whatevr-bin')
 install="$_pkgname.install"
-source=("$_pkgname::git+https://github.com/codelif/whatevr.git")
-sha256sums=('SKIP')
+source=("$_pkgname::git+https://github.com/codelif/whatevr.git"
+        "vaxis::git+https://git.sr.ht/~codelif/vaxis"
+        "whatsmeow::git+https://git.sr.ht/~codelif/whatsmeow")
+sha256sums=('SKIP' 'SKIP' 'SKIP')
+
+prepare() {
+	cd "$srcdir/$_pkgname"
+	git submodule init
+	git config submodule.whattui/vaxis.url "$srcdir/vaxis"
+	git config submodule.whatevrd/whatsmeow.url "$srcdir/whatsmeow"
+	git -c protocol.file.allow=always submodule update
+}
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
