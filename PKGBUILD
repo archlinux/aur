@@ -3,7 +3,7 @@
 
 pkgname=osu-cpp-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="osu! client written in C++23 and drawn with Skia (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/j4niwzis/osu-cpp"
@@ -34,7 +34,20 @@ sha256sums=('f81d4c6dd19b1259a792152cd9a45769c3a498417509a44b96f459e20ffe5703'
             '04611cfd4003a6203e76722b936fc01e5cc7691ea794ffb1aa6d24a3c1dfce96')
 
 package() {
-    install -Dm755 "osu_client-linux-x86_64" "${pkgdir}/usr/bin/osu-cpp"
+    install -Dm755 "osu_client-linux-x86_64" "${pkgdir}/usr/lib/osu-cpp/osu_client"
+
+    # В v0.1.0 desktop-GL (GLX) путь падает с SIGSEGV сразу после создания
+    # контекста (null vtable в рабочем потоке). GLES/EGL путь при этом
+    # работает нормально, поэтому по умолчанию форсируем его.
+    # Отключить форсирование: OSU_FORCE_GLES=0 osu-cpp
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/osu-cpp" << 'EOF'
+#!/bin/sh
+if [ "${OSU_FORCE_GLES:-1}" = 1 ]; then
+    export OSU_EGL=1
+    export OSU_GLES=1
+fi
+exec /usr/lib/osu-cpp/osu_client "$@"
+EOF
 
     install -Dm644 "osu-cpp.svg" \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/osu-cpp.svg"
