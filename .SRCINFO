@@ -1,0 +1,19 @@
+pkgbase = pigoune
+	pkgdesc = All your graphic assets, organized and within reach
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/Gor3pig/Pigoune
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = blueprint-compiler
+	makedepends = git
+	makedepends = meson
+	makedepends = rust
+	depends = libadwaita
+	depends = gtksourceview5
+	options = !lto
+	source = pigoune::git+https://github.com/Gor3pig/pigoune.git#tag=v1.3.0
+	b2sums = bd6dc824c08b67c0240eb5a3ed66d332689ef107b10d23dc8910d37a43adfe5be5394b6ac87ae9e7c5e688f1887c41a078a6dc4baed434d515f596ef0dfd49a3
+
+pkgname = pigoune
