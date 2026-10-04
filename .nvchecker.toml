@@ -1,0 +1,6 @@
+[nagram-desktop]
+source = "github"
+github = "NextAlone/Nagram-Qt"
+from_pattern = 'v(\d+\.\d+\.\d+)'
+to_pattern = '\1'
+use_latest_release = true
