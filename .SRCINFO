@@ -1,14 +1,14 @@
 pkgbase = gaze-kde-bin
 	pkgdesc = KDE Plasma lock screen and System Settings integration for Gaze
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://gaze.gundulabs.com
 	install = gaze-kde-bin.install
 	arch = x86_64
 	license = GPL-3.0-or-later
-	provides = gaze-kde=0.3.6-1
+	provides = gaze-kde=0.3.7-1
 	conflicts = gaze-kde
-	source = gaze-kde-0.3.6-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-kde-0.3.6-1-x86_64.pkg.tar.zst
-	sha256sums = 90f01e6f0cabdc7acfd37fdeaafb84d2b98146ff91e58c451fc8d2dc2633a17d
+	source = gaze-kde-0.3.7-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-kde-0.3.7-1-x86_64.pkg.tar.zst
+	sha256sums = 0a93f65c3dee0d30bc8f5e807ae321f5620aca8c562bed7a5a1aa4ae4f5cc2fa
 
 pkgname = gaze-kde-bin
