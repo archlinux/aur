@@ -1,0 +1,105 @@
+From 9fd939f8337c50ab2161debfca8a91707ff109c7 Mon Sep 17 00:00:00 2001
+From: PolyMeilex <marynczakbartlomiej@gmail.com>
+Date: Sun, 4 Oct 2026 15:07:51 +0200
+Subject: [PATCH] chore: ffmpeg 9 support
+
+---
+ ffmpeg-encoder/build.rs     | 15 +++++++++++++
+ ffmpeg-encoder/src/audio.rs | 45 ++++++++++++++++++++++++++++++++++---
+ 2 files changed, 57 insertions(+), 3 deletions(-)
+ create mode 100644 ffmpeg-encoder/build.rs
+
+diff --git a/ffmpeg-encoder/build.rs b/ffmpeg-encoder/build.rs
+new file mode 100644
+index 00000000..a67a9d64
+--- /dev/null
++++ b/ffmpeg-encoder/build.rs
+@@ -0,0 +1,15 @@
++fn main() {
++    for (name, value) in std::env::vars() {
++        // This is documented at: https://github.com/zmwangx/rust-ffmpeg-sys#feature-flags
++        let Some(version) = name.strip_prefix("DEP_FFMPEG_FFMPEG_") else {
++            continue;
++        };
++
++        let flag = format!("ffmpeg_{}", version.to_lowercase());
++        println!("cargo:rustc-check-cfg=cfg({flag})");
++
++        if value == "true" {
++            println!("cargo:rustc-cfg={flag}");
++        }
++    }
++}
+diff --git a/ffmpeg-encoder/src/audio.rs b/ffmpeg-encoder/src/audio.rs
+index a8c015ad..65e14eaf 100644
+--- a/ffmpeg-encoder/src/audio.rs
++++ b/ffmpeg-encoder/src/audio.rs
+@@ -18,6 +18,45 @@ pub struct AudioOutputStream {
+     samples_count: i64,
+ }
+ 
++#[cfg(ffmpeg_7_1)]
++unsafe fn supported_config<T>(
++    codec: *const ffmpeg::AVCodec,
++    config: ffmpeg::AVCodecConfig,
++) -> *const T {
++    let mut out: *const libc::c_void = ptr::null();
++    let ret = unsafe {
++        ffmpeg::avcodec_get_supported_config(
++            ptr::null(),
++            codec,
++            config,
++            0,
++            &mut out,
++            ptr::null_mut(),
++        )
++    };
++    if ret < 0 { ptr::null() } else { out.cast() }
++}
++
++/// Returns `AV_SAMPLE_FMT_NONE` terminated list, or null if unknown
++unsafe fn supported_sample_fmts(codec: *const ffmpeg::AVCodec) -> *const AVSampleFormat {
++    unsafe {
++        #[cfg(ffmpeg_7_1)]
++        return supported_config(codec, ffmpeg::AVCodecConfig::AV_CODEC_CONFIG_SAMPLE_FORMAT);
++        #[cfg(not(ffmpeg_7_1))]
++        return (*codec).sample_fmts;
++    }
++}
++
++/// Returns zero terminated list, or null if unknown
++unsafe fn supported_samplerates(codec: *const ffmpeg::AVCodec) -> *const libc::c_int {
++    unsafe {
++        #[cfg(ffmpeg_7_1)]
++        return supported_config(codec, ffmpeg::AVCodecConfig::AV_CODEC_CONFIG_SAMPLE_RATE);
++        #[cfg(not(ffmpeg_7_1))]
++        return (*codec).supported_samplerates;
++    }
++}
++
+ pub fn new_audio_streams(
+     format_context: &ff::FormatContext,
+     output_format: &ff::OutputFormat,
+@@ -45,19 +84,19 @@ pub fn new_audio_streams(
+     let codec_ctx_ptr = codec_ctx.as_ptr();
+ 
+     {
+-        let sample_fmts = unsafe { (*codec_ptr).sample_fmts };
++        let sample_fmts = unsafe { supported_sample_fmts(codec_ptr) };
+ 
+         unsafe {
+             (*codec_ctx_ptr).sample_fmt = if sample_fmts.is_null() {
+                 AVSampleFormat::AV_SAMPLE_FMT_FLTP
+             } else {
+-                *(*codec_ptr).sample_fmts
++                *sample_fmts
+             };
+ 
+             (*codec_ctx_ptr).bit_rate = 64000;
+             (*codec_ctx_ptr).sample_rate = 44100;
+ 
+-            let supported_samplerates = (*codec_ptr).supported_samplerates;
++            let supported_samplerates = supported_samplerates(codec_ptr);
+ 
+             if !supported_samplerates.is_null() {
+                 (*codec_ctx_ptr).sample_rate = *supported_samplerates.offset(0);
