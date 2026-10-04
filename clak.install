@@ -15,8 +15,10 @@ post_upgrade() {
     elif command -v notify-send >/dev/null 2>&1; then
         notify-send -i org.fcitx.Fcitx5.clak "Clak" "Đã cập nhật phiên bản mới thành công" 2>/dev/null || true
     fi
-    if pgrep -x fcitx5 >/dev/null 2>&1; then
-        echo ":: Đang nạp lại daemon Fcitx5..."
-        fcitx5 -r -d >/dev/null 2>&1 || true
+    touch -c /usr/share/icons/hicolor || true
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+    if [ -n "${SUDO_USER:-}" ] && pgrep -u "$SUDO_USER" -x fcitx5 >/dev/null 2>&1; then
+        echo ":: Đang nạp lại daemon Fcitx5 cho $SUDO_USER..."
+        sudo -u "$SUDO_USER" DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u "$SUDO_USER")/bus" fcitx5 -r -d >/dev/null 2>&1 || true
     fi
 }
