@@ -1,6 +1,6 @@
 pkgbase = universe-bin
 	pkgdesc = Gamepad-first game launcher: a Rust core, a PySide6 UI, games inside gamescope (prebuilt release)
-	pkgver = 0.0.9
+	pkgver = 0.0.10
 	pkgrel = 1
 	url = https://github.com/ilyasturki/universe
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = universe-bin
 	makedepends = python-installer
 	options = !debug
 	options = !strip
-	source = universe-bin-0.0.9.tar.gz::https://github.com/ilyasturki/universe/releases/download/v0.0.9/universe-x86_64-linux.tar.gz
-	source = metadata-0.0.9.json::https://github.com/ilyasturki/universe/raw/v0.0.9/extension/metadata.json
-	source = extension-0.0.9.js::https://github.com/ilyasturki/universe/raw/v0.0.9/extension/extension.js
-	sha256sums = 1b1fda1812b322eadc8ce752247e3db925d557bafcce672c9d0712ebf383649c
-	sha256sums = 0cb757833aaea7e1944b1e1801c99f7cae37e65ebd93776f3a54996d34de8162
-	sha256sums = 4da584841b0ced9e6739bee12916f1b439cf740760a3b366840291fae56b4a3e
+	source = universe-bin-0.0.10.tar.gz::https://github.com/ilyasturki/universe/releases/download/v0.0.10/universe-x86_64-linux.tar.gz
+	source = metadata-0.0.10.json::https://github.com/ilyasturki/universe/raw/v0.0.10/extension/metadata.json
+	source = extension-0.0.10.js::https://github.com/ilyasturki/universe/raw/v0.0.10/extension/extension.js
+	sha256sums = 63f2fc9f4877cbdfafdece571b3b4174cb95b4e646abc67210e55a3555bbd310
+	sha256sums = 9553a252999bd38451c6d7a3601eec64ea295c5f1761426106fc92d3add7fcb1
+	sha256sums = bd002bbb46df0ce972907934d2f96dbb57d132fce86743dde00c2ce0aec11808
 
 pkgname = universe-bin
 	depends = libgcc
@@ -38,16 +38,17 @@ pkgname = universe-bin
 	optdepends = umu-launcher: Proton launches; fetched on first use when missing
 	optdepends = heroic-gogdl: the GOG source; fetched on first use when missing
 	optdepends = legendary: the Epic Games source; fetched on first use when missing
+	optdepends = ludusavi: save backups; fetched on first use when missing
 	optdepends = butler: the itch.io source; fetched on first use when missing
 	optdepends = steam: the Steam source
 	optdepends = gpu-screen-recorder: the capture module's recordings
 	optdepends = ffmpeg: the capture module's thumbnails and cuts
 	optdepends = trash-cli: recordings deleted to the trash
-	optdepends = game-devices-udev: /dev/uinput for the controller's key macros
+	optdepends = game-devices-udev: udev rules that make pads readable by your session
 	optdepends = grim: screenshots on sway, hyprland and niri
 	optdepends = spectacle: screenshots on KDE Plasma
 	optdepends = universe-desktop-bin: the library in a GTK app for mouse and keyboard
-	provides = universe=0.0.9
+	provides = universe=0.0.10
 	conflicts = universe
 
 pkgname = universe-desktop-bin
@@ -59,8 +60,8 @@ pkgname = universe-desktop-bin
 	depends = gtk4>=1:4.22
 	depends = hicolor-icon-theme
 	depends = libadwaita>=1:1.9
-	depends = universe=0.0.9
+	depends = universe=0.0.10
 	optdepends = gst-libav: recordings played in the app (H.264, HEVC)
 	optdepends = gst-plugins-bad: recordings played in the app (AV1, VA-API)
-	provides = universe-desktop=0.0.9
+	provides = universe-desktop=0.0.10
 	conflicts = universe-desktop

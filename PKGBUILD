@@ -1,7 +1,7 @@
 # Maintainer: Ilyas Turki <turki.ilyass@gmail.com>
 pkgbase=universe-bin
 pkgname=(universe-bin universe-desktop-bin)
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc='Gamepad-first game launcher: a Rust core, a PySide6 UI, games inside gamescope (prebuilt release)'
 arch=('x86_64')
@@ -16,9 +16,9 @@ source=(
   "metadata-$pkgver.json::$url/raw/v$pkgver/extension/metadata.json"
   "extension-$pkgver.js::$url/raw/v$pkgver/extension/extension.js"
 )
-sha256sums=('1b1fda1812b322eadc8ce752247e3db925d557bafcce672c9d0712ebf383649c'
-            '0cb757833aaea7e1944b1e1801c99f7cae37e65ebd93776f3a54996d34de8162'
-            '4da584841b0ced9e6739bee12916f1b439cf740760a3b366840291fae56b4a3e')
+sha256sums=('63f2fc9f4877cbdfafdece571b3b4174cb95b4e646abc67210e55a3555bbd310'
+            '9553a252999bd38451c6d7a3601eec64ea295c5f1761426106fc92d3add7fcb1'
+            'bd002bbb46df0ce972907934d2f96dbb57d132fce86743dde00c2ce0aec11808')
 _id=io.github.ilyasturki.UniverseDesktop
 _desktop=(
   "applications/$_id.desktop"
@@ -56,12 +56,13 @@ package_universe-bin() {
     'umu-launcher: Proton launches; fetched on first use when missing'
     'heroic-gogdl: the GOG source; fetched on first use when missing'
     'legendary: the Epic Games source; fetched on first use when missing'
+    'ludusavi: save backups; fetched on first use when missing'
     'butler: the itch.io source; fetched on first use when missing'
     'steam: the Steam source'
     "gpu-screen-recorder: the capture module's recordings"
     "ffmpeg: the capture module's thumbnails and cuts"
     'trash-cli: recordings deleted to the trash'
-    "game-devices-udev: /dev/uinput for the controller's key macros"
+    'game-devices-udev: udev rules that make pads readable by your session'
     'grim: screenshots on sway, hyprland and niri'
     'spectacle: screenshots on KDE Plasma'
     'universe-desktop-bin: the library in a GTK app for mouse and keyboard'
@@ -83,6 +84,8 @@ package_universe-bin() {
   local ext="$pkgdir/usr/share/gnome-shell/extensions/universe@ilyasturki.github.io"
   install -Dm644 "$srcdir/metadata-$pkgver.json" "$ext/metadata.json"
   install -Dm644 "$srcdir/extension-$pkgver.js" "$ext/extension.js"
+  install -Dm644 lib/udev/rules.d/70-universe.rules -t "$pkgdir/usr/lib/udev/rules.d"
+  install -Dm644 lib/modules-load.d/universe.conf -t "$pkgdir/usr/lib/modules-load.d"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
