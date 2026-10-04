@@ -1,7 +1,7 @@
 # Contributor: Hy Goldsher <hyness-at-freshlegacycode-dot-org>
 # Maintainer: Hy Goldsher <hyness-at-freshlegacycode-dot-org>
 pkgname=davmail
-pkgver=6.8.1
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="a POP/IMAP/SMTP/Caldav/LDAP gateway for the exchange service"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -11,12 +11,12 @@ makedepends=('unzip')
 depends=('java-runtime')
 optdepends=('java-openjfx: Office 365 browser based authentication'
             'swt: Fix issues with the tray icon')
-_rev=4210
+_rev=4403
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-$_rev.zip
         $pkgname.desktop
         $pkgname@.system_service
         $pkgname@.user_service)
-md5sums=('ffa3d03fa274c0d9db326ab3b8866aff'
+md5sums=('b3a6c84c92f4e7c1b17d4554cf1a3c4b'
          '1df37a6120d88de8df3cb735977336ba'
          '8d373851babe1d8bb860228c8b4db702'
          '271e9e66dfdb496d242c9a6102937c65')
