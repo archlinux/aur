@@ -5,7 +5,7 @@
 # Contributor: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm
-pkgver=1.103.2
+pkgver=1.104.0
 pkgrel=1
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=('any')
@@ -17,12 +17,16 @@ makedepends=('python-maturin'
              'python-wheel')
 depends=('python'
          'python-fastuuid'
+         'python-filelock'
          'python-httpx'
          'python-openai'
          'python-dotenv'
-         'python-tiktoken'
+         'python-pyyaml'
+         'python-packaging'
          'python-importlib-metadata'
+         'python-tiktoken'
          'python-tokenizers'
+         'python-huggingface-hub'
          'python-click'
          'python-jinja'
          'python-aiohttp'
@@ -133,7 +137,7 @@ optdepends=('gunicorn: proxy'
 provides=("python-${pkgname}")
 options=(!lto !strip)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('fa4f6f158bb6e9da41958fe57dd292ac851f23ecceb75b50e70177255e291d3b')
+sha256sums=('df550ab471974edefd7cb0cc6b88b42db453f0de6b91db3cc570f5e1e8d8b173')
 
 prepare() {
   cd "${srcdir}"/${pkgname}-${pkgver}/
