@@ -1,7 +1,7 @@
 pkgbase = charfreq-git
 	pkgdesc = Count unicode character frequency from stdin
 	pkgver = r2.c7c67f3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/proycon/charfreq
 	arch = x86_64
 	license = GPL-3.0-or-later
