@@ -1,6 +1,6 @@
 # Maintainer: Dmitry Yarikov <dmitry@yarikov.com>
 pkgname=kvn-tui-bin
-pkgver=0.32.0
+pkgver=0.33.0
 pkgrel=1
 pkgdesc="Terminal VPN client for Arch Linux with vim navigation"
 arch=('x86_64')
@@ -16,11 +16,11 @@ optdepends=(
 )
 provides=('kvn-tui')
 conflicts=('kvn-tui')
-source=("https://github.com/yarikov/kvn/releases/download/v0.32.0/kvn-tui-0.32.0-x86_64-linux.tar.gz")
-sha256sums=('21c4f755032371f365ac1c41a66d2a5b2bb36a70fd56eef0de3cdb1aed1124ed')
+source=("https://github.com/yarikov/kvn/releases/download/v0.33.0/kvn-tui-0.33.0-x86_64-linux.tar.gz")
+sha256sums=('3dd20d643ddbd02a2ac65b382a19143fb54f25f1dea84fd67b5772e2e9d4aaf1')
 
 package() {
-    cd "kvn-tui-0.32.0-x86_64-linux"
+    cd "kvn-tui-0.33.0-x86_64-linux"
     install -Dm755 kvn-tui "$pkgdir/usr/bin/kvn-tui"
     ln -s kvn-tui "$pkgdir/usr/bin/kvn"
     install -dm755 "$pkgdir/usr/lib/kvn/migrations"
