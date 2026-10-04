@@ -1,7 +1,7 @@
 # Maintainer: Keith Vassallo <keith@vassallo.cloud>
 #
 # Template. `just aur` / `just aur-publish` render this into a real PKGBUILD,
-# substituting 0.3.0 and ad669c24da00793792ded82d13cfe16d7a397dfc0b6a8276da2835efdaf53175 from the published GitHub release.
+# substituting 0.3.1 and a03b5831a302fff95a7b3b77cd77bb4f699d1ca44773999fcd55ec7d6a5d44ec from the published GitHub release.
 # Edit this file, never the generated one.
 #
 # This repackages the official .deb rather than building from source, so the
@@ -12,7 +12,7 @@
 # this is arch=('any'), and why a Python upgrade cannot strand it the way an
 # installation into site-packages would.
 pkgname=digimem-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Two-way face sync between digiKam and Nextcloud Memories"
 arch=('any')
@@ -33,7 +33,7 @@ provides=("digimem=${pkgver}")
 conflicts=('digimem')
 options=('!strip' '!debug')
 source=("digimem_${pkgver}_all.deb::${url}/releases/download/v${pkgver}/digimem_${pkgver}_all.deb")
-sha256sums=('ad669c24da00793792ded82d13cfe16d7a397dfc0b6a8276da2835efdaf53175')
+sha256sums=('a03b5831a302fff95a7b3b77cd77bb4f699d1ca44773999fcd55ec7d6a5d44ec')
 
 package() {
     # Match data.tar.* by glob so a future nfpm switching gzip for xz or zst
