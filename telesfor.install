@@ -1,0 +1,4 @@
+post_install() {
+	echo "Outside Poland, set TELESFOR_TVP_PROXY in /etc/telesfor/telesfor.env. Start telesfor with:"
+	echo "  systemctl enable --now telesfor"
+}
