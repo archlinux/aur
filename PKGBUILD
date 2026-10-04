@@ -1,6 +1,6 @@
 pkgname=vigaphone-piano-tuner-midi-synth-bin
-pkgver=1.6.2
-pkgrel=4
+pkgver=2.0.0_beta
+pkgrel=1
 options=('!strip' '!debug')
 groups=('pro-audio' 'vst3-plugins')
 pkgdesc="ViGAPhone Synth Lab: New Physical-Modeling Synthesizer, Instrument Piano Tuner, MIDI-MPE application, VST3 plugin, Sound and Timbre Spectral Analyzer and more..."
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone"
 license=('custom')
 source=("https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R${pkgver}/ViGAPhoneR_linux_amd64.tar.gz")
-sha256sums=('b044ee0d281cf28d7a9237c6247bde4ddb6f4780acd697f9ac1e5ba9571abb6f')
+sha256sums=('3c8ba6075eb9197f2e55efdef236d4a5a2f283750619befbf40db370f97740cd')
 
 #provides=('vigaphone-bin')
 conflicts=('vigaphone-bin')
@@ -44,7 +44,7 @@ package() {
 
     # Icône package manager
 	install -pDm644 installOnLinuxUser/org.vigaworld.vigaphone.png "$pkgdir/usr/share/icons/hicolor/256x256/mimetypes/application-x-vigaphone-tsv.png"
-    install -pDm644 installOnLinuxUser/org.vigaworld.vigaphone.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.vigaworld.vigaphone.svg"
+    #install -pDm644 installOnLinuxUser/org.vigaworld.vigaphone.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.vigaworld.vigaphone.svg"
 
     # MIME type
     install -pDm644 installOnLinuxUser/x-vigaphone-tsv.xml "$pkgdir/usr/share/mime/packages/x-vigaphone-tsv.xml"
