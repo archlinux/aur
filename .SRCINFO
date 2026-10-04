@@ -1,0 +1,18 @@
+pkgbase = kinopoisk-tv
+	pkgdesc = Smart TV интерфейс Кинопоиска на Electron
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/itsflameee/kinopoisk-tv
+	arch = any
+	license = custom
+	depends = electron
+	source = kinopoisk-tv-0.1.0.tar.gz::https://github.com/itsflameee/kinopoisk-tv/archive/refs/tags/v0.1.0.tar.gz
+	source = kinopoisk-tv.sh
+	source = kinopoisk-tv.desktop
+	source = kinopoisk-tv.png
+	sha256sums = edf7a432c4789635e0fc910fcd16d770df7b11d4c40dd002561c1c3895142894
+	sha256sums = 18d665161251e82ff99299bef9c4b11693fc967401f8198f5ae7cc4f7932d59a
+	sha256sums = dd9b169b5e95ffb18ef43bf92ff50d20d5e6c26c843709ab5145f6a412bb7991
+	sha256sums = a75a44afe6aa3313ad2ba385ac8dae28277ed7b9b73547c4a705218060a2ca81
+
+pkgname = kinopoisk-tv

@@ -1,0 +1,19 @@
+[Desktop Entry]
+Categories=AudioVideo;Player;TV;
+Comment[ru_RU]=
+Comment=
+Exec=/usr/bin/kinopoisk-tv %U
+GenericName[ru_RU]=
+GenericName=
+Icon=kinopoisk-tv
+MimeType=
+Name[ru_RU]=Кинопоиск TV
+Name=Кинопоиск TV
+Path=
+StartupNotify=true
+StartupWMClass=Kinopoisk TV
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
