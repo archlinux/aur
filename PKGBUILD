@@ -1,6 +1,6 @@
 # Maintainer: thadah <thadahdenyse@protonmail.com>
 pkgname=sable-next-git
-pkgver=nightly.0.0.2.nightly.261003230818.f486b02b3d05
+pkgver=nightly.1.22.10.nightly.261004132138.27df61cfed90
 pkgrel=1
 pkgdesc="Sable rewrite in Rust and Svelte"
 url=" https://next.sable.moe"
