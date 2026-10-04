@@ -1,6 +1,6 @@
 pkgbase = python-astropy-sphinx-theme
 	pkgdesc = The sphinx theme for Astropy and affiliated packages.
-	pkgver = 3.2
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/astropy/astropy-sphinx-theme
 	arch = any
@@ -10,11 +10,11 @@ pkgbase = python-astropy-sphinx-theme
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-sphinx
-	source = https://files.pythonhosted.org/packages/source/a/astropy_sphinx_theme/astropy_sphinx_theme-3.2.tar.gz
-	sha256sums = 25b6290710089a2899c9c5325d89c544bb5397838ee1afafda54634607d636b5
+	source = https://files.pythonhosted.org/packages/source/a/astropy_sphinx_theme/astropy_sphinx_theme-3.3.1.tar.gz
+	sha256sums = 9894e7616f3e467f41550cec8d2be12559d902c8e3f0c0114a2c08f912c17f68
 
 pkgname = python-astropy-sphinx-theme
-	depends = python-sunpy-sphinx-theme>=2.1.1
+	depends = python-sunpy-sphinx-theme>=2.4.0
 
 pkgname = python-astropy-sphinx-theme-doc
 	pkgdesc = Documentation for astropy-sphinx-theme
