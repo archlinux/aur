@@ -1,6 +1,6 @@
 # Maintainer: Dominicentek <dominicentekgaming@gmail.com>
 pkgname=kirastudio-bin
-pkgver=1.1.1
+pkgver=1.1.2
 zipver=$(echo $pkgver | sed 's/\.//g')
 pkgrel=1
 pkgdesc="KiraStudio is a lightweight, cross-platform music studio built around clarity and automation."
@@ -16,7 +16,7 @@ sha256sums=(
   'SKIP'
   'e19f63f871bc03a1875cd8cc6fe3130642dccb37a82d2d791192b24e744a8137'
   'f735588984caeed04c40834de667ee156492cc355f764195415569c9344ce7ed'
-  '055d6b8b7e84b820e3e61ffdbc01a63b95afcf5e35079d0ad02b92f4feaff8ed'
+  'c4afbbbbff9b1218e1897011144fc857167c9d1fe8160c0e121514d5be885f09'
   'e8948576678d114f3997ea65f9caa25d530e767df46442a210fa555d72dc25fc'
   'a7183e81321c6f5634c808d0cf2d58cd3e05e630a7a9af64f4447385d988a21a'
 )
@@ -37,6 +37,8 @@ package() {
     unlink "$pkgdir/usr/share/kirastudio/kirastudio-launcher"
     unlink "$pkgdir/usr/share/kirastudio/kirastudio.desktop"
     unlink "$pkgdir/usr/share/kirastudio/kirastudio.png"
+    unlink "$pkgdir/usr/share/kirastudio/kirastudio.install"
+    unlink "$pkgdir/usr/share/kirastudio/kirastudio.xml"
     unlink "$pkgdir/usr/share/kirastudio/KiraStudio${zipver}-WinPortableExe.zip"
     chmod +x "$pkgdir/usr/bin/kirastudio"
 }
