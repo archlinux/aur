@@ -8,7 +8,7 @@
 # build from source with: ./gradlew :composeApp:run
 
 pkgname=connectlnx-bin
-pkgver=3.5.1
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Cross-platform LAN file transfer app built with Kotlin Multiplatform"
 arch=('x86_64')
@@ -19,7 +19,7 @@ conflicts=('connectlnx')
 provides=('connectlnx')
 
 source=("connectlnx-${pkgver}.deb::https://github.com/3DBarath/connectlnx-releases/releases/download/v${pkgver}/connectlnx_${pkgver}_amd64.deb")
-sha256sums=('bb395bdbd1c7f5332630633b564f791f34b9552a64df15a375ef46d63e5f000c')  # ← Replace with: sha256sum connectlnx_1.0.0_amd64.deb
+sha256sums=('0bcadca37555cecd3e07b3eb611194150364016f1da7c482eb29289f01020e4f')  # ← Replace with: sha256sum connectlnx_1.0.0_amd64.deb
 
 package() {
     cd "$srcdir"
