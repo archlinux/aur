@@ -1,31 +1,36 @@
 # Maintainer: Felitendo
 # This PKGBUILD is updated automatically:
-# https://github.com/Felitendo/PKGBUILDS
+# https://git.felo.gg/Felitendo/PKGBUILDS
 
 pkgname=untix
-pkgver=4.3.2
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="GTK4 + LibAdwaita client for WebUntis"
 arch=('any')
-url="https://codeberg.org/ostfriese4/untis"
+url="https://codeberg.org/ostfriese4/untix"
 license=('GPL-3.0-or-later')
+# 5.0.0 adds a QR code login: the camera comes through the portal (libportal)
+# as a PipeWire stream, is shown with gtk4paintablesink and decoded with
+# zxing-cpp's Python binding.
 depends=('gtk4' 'libadwaita' 'webkitgtk-6.0' 'libsecret' 'python'
          'python-gobject' 'python-cairo' 'python-requests' 'python-pyotp'
-         'glib2' 'hicolor-icon-theme')
+         'python-pillow' 'python-zxing-cpp' 'libportal' 'gstreamer'
+         'gst-plugins-base' 'gst-plugin-pipewire' 'gst-plugin-gtk4' 'glib2'
+         'hicolor-icon-theme')
 makedepends=('meson' 'ninja' 'glib2-devel' 'gettext')
 # called untis and timetable on the AUR before; same files
 conflicts=('untis' 'timetable')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('febd90cac783eb1953a3f094c3122b9e47a88e2ae7b8ed33fdc9279300b4505c')
+sha256sums=('05489062e69ecbca1da74a41c46adf7e83a4437897da86822d63fc05020d0c03')
 
 prepare() {
   # The About dialog reads the version from src/api.py, and upstream does not
   # always update it for a release (v4.3.2 still says 4.3.1).
-  sed -i "s/^version = \"[^\"]*\"/version = \"$pkgver\"/" untis/src/api.py
+  sed -i "s/^version = \"[^\"]*\"/version = \"$pkgver\"/" untix/src/api.py
 }
 
 build() {
-  meson setup build untis \
+  meson setup build untix \
     --prefix=/usr \
     --buildtype=release \
     --wrap-mode=nodownload
