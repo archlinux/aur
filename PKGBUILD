@@ -1,7 +1,7 @@
 # Maintainer: kay-ws <a3.works@gmail.com>
 pkgname=bcon
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="GPU-accelerated terminal emulator for Linux console (DRM/KMS)"
 arch=('x86_64')
 url="https://github.com/sanohiro/bcon"
@@ -45,7 +45,7 @@ optdepends=(
 
 source=("bcon-${pkgver}.tar.gz::https://github.com/sanohiro/bcon/archive/refs/tags/v${pkgver}.tar.gz"
         "bcon-default.toml")
-sha256sums=('8a09aefb2dcfd3ea6bda15dabd66ab3db21f49c5065ce66a1bf74415ac283a15'
+sha256sums=('da176f788fea939166e260460b386430ff39eca020f0a6bf43cb84c5e2e5213c'
             '34aaa8bc982699fb579a42c710ce68d2c1d0bf8e28daf2c8c78abe1f0bbd67f2')
 
 prepare() {
