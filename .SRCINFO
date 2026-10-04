@@ -1,6 +1,6 @@
 pkgbase = universe
 	pkgdesc = Gamepad-first game launcher: a Rust core, a PySide6 UI, games inside gamescope
-	pkgver = 0.0.9
+	pkgver = 0.0.10
 	pkgrel = 1
 	url = https://github.com/ilyasturki/universe
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = universe
 	makedepends = scdoc
 	options = !lto
 	options = !debug
-	source = universe-0.0.9.tar.gz::https://github.com/ilyasturki/universe/archive/v0.0.9.tar.gz
+	source = universe-0.0.10.tar.gz::https://github.com/ilyasturki/universe/archive/v0.0.10.tar.gz
 	source = GalaxyCommunication-comet-0.3.2.exe::https://github.com/imLinguin/comet/releases/download/v0.3.2/GalaxyCommunication-dummy.exe
-	sha256sums = 92f6ba16b976f3953d5ad97d96ad6014d4877801b440cdb0ad8eea532de6074a
+	sha256sums = 70cf64cf4ab8c11bd43238fec90fbef5bd60b169407ff3fd238ceeb50301690f
 	sha256sums = c7695267da363a861af99db95cafe68b732ae743e5830b4feea1bc7ee745f99d
 
 pkgname = universe
@@ -46,12 +46,13 @@ pkgname = universe
 	optdepends = umu-launcher: Proton launches; fetched on first use when missing
 	optdepends = heroic-gogdl: the GOG source; fetched on first use when missing
 	optdepends = legendary: the Epic Games source; fetched on first use when missing
+	optdepends = ludusavi: save backups; fetched on first use when missing
 	optdepends = butler: the itch.io source; fetched on first use when missing
 	optdepends = steam: the Steam source
 	optdepends = gpu-screen-recorder: the capture module's recordings
 	optdepends = ffmpeg: the capture module's thumbnails and cuts
 	optdepends = trash-cli: recordings deleted to the trash
-	optdepends = game-devices-udev: /dev/uinput for the controller's key macros
+	optdepends = game-devices-udev: udev rules that make pads readable by your session
 	optdepends = grim: screenshots on sway, hyprland and niri
 	optdepends = spectacle: screenshots on KDE Plasma
 	optdepends = universe-desktop: the library in a GTK app for mouse and keyboard
@@ -65,6 +66,6 @@ pkgname = universe-desktop
 	depends = gtk4>=1:4.22
 	depends = hicolor-icon-theme
 	depends = libadwaita>=1:1.9
-	depends = universe=0.0.9
+	depends = universe=0.0.10
 	optdepends = gst-libav: recordings played in the app (H.264, HEVC)
 	optdepends = gst-plugins-bad: recordings played in the app (AV1, VA-API)

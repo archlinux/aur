@@ -1,7 +1,7 @@
 # Maintainer: Ilyas Turki <turki.ilyass@gmail.com>
 pkgbase=universe
 pkgname=(universe universe-desktop)
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc='Gamepad-first game launcher: a Rust core, a PySide6 UI, games inside gamescope'
 arch=('x86_64')
@@ -20,14 +20,14 @@ makedepends=(
   'scdoc'
 )
 checkdepends=('tzdata')
-# makepkg's -flto C objects (ring's) are GCC bitcode that rust-lld cannot link; Cargo.toml strips, so a debug package would be empty
+# makepkg's -flto C objects (aws-lc's) are GCC bitcode that rust-lld cannot link; Cargo.toml strips, so a debug package would be empty
 options=('!lto' '!debug')
 # the stub is the flake's galaxyServiceStub
 source=(
   "$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   'GalaxyCommunication-comet-0.3.2.exe::https://github.com/imLinguin/comet/releases/download/v0.3.2/GalaxyCommunication-dummy.exe'
 )
-sha256sums=('92f6ba16b976f3953d5ad97d96ad6014d4877801b440cdb0ad8eea532de6074a'
+sha256sums=('70cf64cf4ab8c11bd43238fec90fbef5bd60b169407ff3fd238ceeb50301690f'
             'c7695267da363a861af99db95cafe68b732ae743e5830b4feea1bc7ee745f99d')
 
 prepare() {
@@ -81,12 +81,13 @@ package_universe() {
     'umu-launcher: Proton launches; fetched on first use when missing'
     'heroic-gogdl: the GOG source; fetched on first use when missing'
     'legendary: the Epic Games source; fetched on first use when missing'
+    'ludusavi: save backups; fetched on first use when missing'
     'butler: the itch.io source; fetched on first use when missing'
     'steam: the Steam source'
     "gpu-screen-recorder: the capture module's recordings"
     "ffmpeg: the capture module's thumbnails and cuts"
     'trash-cli: recordings deleted to the trash'
-    "game-devices-udev: /dev/uinput for the controller's key macros"
+    'game-devices-udev: udev rules that make pads readable by your session'
     'grim: screenshots on sway, hyprland and niri'
     'spectacle: screenshots on KDE Plasma'
     'universe-desktop: the library in a GTK app for mouse and keyboard'
@@ -105,6 +106,9 @@ package_universe() {
   install -Dm644 gen/universe.fish "$pkgdir/usr/share/fish/vendor_completions.d/universe.fish"
   install -Dm644 gen/universe.bash "$pkgdir/usr/share/bash-completion/completions/universe"
   install -Dm644 gen/_universe "$pkgdir/usr/share/zsh/site-functions/_universe"
+  install -Dm644 packaging/system/70-universe.rules -t "$pkgdir/usr/lib/udev/rules.d"
+  install -Dm644 packaging/system/universe.conf -t "$pkgdir/usr/lib/modules-load.d"
+  install -Dm644 packaging/system/universe.desktop -t "$pkgdir/usr/share/wayland-sessions"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 ui/universe-ui.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 ui/icons/hicolor/scalable/apps/universe-ui.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
