@@ -5,8 +5,8 @@ _name=${pkgname#python-}
 pkgdesc="Encode spatial data as topology in Python"
 url="https://mattijn.github.io/topojson/"
 
-pkgver=1.10
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 
 arch=("any")
 license=("BSD-3-Clause")
@@ -14,7 +14,6 @@ license=("BSD-3-Clause")
 depends=(
     "python"
     "python-numpy"
-    "python-packaging"
     "python-shapely"
 )
 makedepends=(
@@ -33,8 +32,19 @@ checkdepends=(
     "python-pytest"
     "python-simplification"
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mattijn/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=("594f420eafcdb2dc9632f362c39e75d3a126868858896db856d9aa7cfc056682ff56a4e54d808dd32dfa712e88c47315049de45ab71ab51cc55f8b9e3f59f287")
+source=(
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/mattijn/${_name}/archive/refs/tags/v${pkgver}.tar.gz"
+    "python-topojson-flit-4.patch"
+)
+b2sums=(
+    "400cb72652ac3a4e2c167f53eed7f6701b64797192042867966348c029e9575c295bed284d1ba663a91746648736d4365140e14e510896805ed090bf26170f96"
+    "b10395a1d9adfeb3011d728dcb0fd2b73efe56b060ae3eb0875a581adb078f4eedf3a65db438ab8fa95d9a80668d2c6be58f0327f694eaaf34689354d55f5ac6"
+)
+
+prepare() {
+    cd "${srcdir}"/${_name}-${pkgver}
+    patch --forward --strip=1 --input "${srcdir}/python-topojson-flit-4.patch"
+}
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
