@@ -1,6 +1,6 @@
 # Maintainer: wanger <310779211wym@gmail.com>
 pkgname=mineral
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="A multi-source TUI music player in Rust — ratatui frontend, pluggable channel backends, real streaming playback with lyrics & spectrum."
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('cargo')
 # release.yml 正式发版渲染时强制清空(新 tag 已含修复,残留 patch 会二次 apply 失败)。
 _patches=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz" "${_patches[@]}")
-sha256sums=('b53cd75441dc96424910b380ed57875d0cb2a4017e2461448a7bc48013f6d746')
+sha256sums=('7334a02b36b5790b33075497cdb63aedb4b78b17c7ba10a6b459c02bf428a190')
 
 prepare() {
     cd "Mineral-$pkgver"

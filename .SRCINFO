@@ -1,6 +1,6 @@
 pkgbase = mineral
 	pkgdesc = A multi-source TUI music player in Rust — ratatui frontend, pluggable channel backends, real streaming playback with lyrics & spectrum.
-	pkgver = 0.5.8
+	pkgver = 0.5.9
 	pkgrel = 1
 	url = https://github.com/10knamesmore/Mineral
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mineral
 	depends = gcc-libs
 	options = !lto
 	options = !debug
-	source = mineral-0.5.8.tar.gz::https://github.com/10knamesmore/Mineral/archive/refs/tags/v0.5.8.tar.gz
-	sha256sums = b53cd75441dc96424910b380ed57875d0cb2a4017e2461448a7bc48013f6d746
+	source = mineral-0.5.9.tar.gz::https://github.com/10knamesmore/Mineral/archive/refs/tags/v0.5.9.tar.gz
+	sha256sums = 7334a02b36b5790b33075497cdb63aedb4b78b17c7ba10a6b459c02bf428a190
 
 pkgname = mineral
