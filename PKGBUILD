@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="python-memor"
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Reproducible Structured Memory for LLMs"
 
@@ -16,8 +16,8 @@ depends=('python')
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('c48b37871201ab14de6a7c63efa9f0db2ab5ebd4d390a653f2d827f5d2219a6f')
+source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('5b2971947fb3a7687334af971a21ac3e08f83ed7dd31abbe2b5f468853a670ad')
 
 
 build() {
