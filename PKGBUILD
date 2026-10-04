@@ -1,7 +1,16 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 
+# PKGBUILD for building on the Open Build Service.
+#
+# OBS build VMs have no network, so every source has to be present in the
+# package's OBS sources before the build starts. This consumes the Debian
+# native tarball that release builds commit to debs/ - it carries the complete
+# source tree - instead of fetching a GitHub tarball the way aur/PKGBUILD does.
+#
+# Keep pkgver in step with debian/changelog: it names the tarball.
+
 pkgname=mx-snapshot
-pkgver=26.10
+pkgver=26.10.1
 pkgrel=1
 pkgdesc="A tool for creating live ISO images from running systems"
 arch=('x86_64' 'i686')
@@ -22,10 +31,12 @@ provides=('mx-remaster-live-files=1.0.0')
 # /etc/mx-snapshot.conf and the exclude list are meant to be user-edited;
 # without this, pacman would overwrite local changes on every upgrade.
 backup=('etc/mx-snapshot.conf' 'etc/mx-snapshot-exclude.list')
-source=("https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.10.tar.gz")
-sha256sums=('f9a7381685ca8ddbe4b51bada845eb8f866f5475d75ce2ff0b295773aae6175c')
+source=("https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.10.1.tar.gz")
+sha256sums=('9208ad00a71328161b7ef638b0694257541d7fab8b3a15591ac7583f0f1276f6')
 
-_srcdir="${pkgname}-${pkgver}"
+# dpkg-source packed this tarball from a directory called "src", so that - not
+# ${pkgname}-${pkgver} - is what it unpacks to.
+_srcdir="mx-snapshot-26.10.1"
 
 build() {
     cd "${srcdir}/${_srcdir}"
