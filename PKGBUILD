@@ -2,7 +2,7 @@
 # https://github.com/SimonSchubert/Braincup
 
 pkgname=braincup-bin
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc='Train your math skills, memory and focus'
 arch=('x86_64' 'aarch64')
@@ -19,11 +19,11 @@ options=('!strip')
 source_x86_64=("Braincup-${pkgver}-linux-x86_64.tar.gz::https://github.com/SimonSchubert/Braincup/releases/download/v${pkgver}/Braincup-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("Braincup-${pkgver}-linux-aarch64.tar.gz::https://github.com/SimonSchubert/Braincup/releases/download/v${pkgver}/Braincup-${pkgver}-linux-aarch64.tar.gz")
 
-sha256sums_x86_64=('f08f6972a605bf277a11ff1cafd704f6044b54e263e76423ec4310cf80ce4a20')
+sha256sums_x86_64=('a98e3312c9adda49f0a51a18ded84301b06187d4323b0316fcec41b6d69d3faa')
 # v3.6.0 predates the aarch64 tarball, so there is nothing to hash yet. The
 # release job fills both sums in; zeros fail the integrity check rather than
 # ship an unverified download if it ever does not.
-sha256sums_aarch64=('6d8e5c26ea955eb3ac2d7a22aa1a7c1773f985018ef6b33716021cd596aebddf')
+sha256sums_aarch64=('8a563af22aa335cda1effdadd1c32d73bd64b200c83d21907db4e621dae1a78e')
 
 package() {
     # Install application files
