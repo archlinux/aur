@@ -7,11 +7,11 @@ pkgrel=1
 
 pkgdesc="A fast wordle solver written in C99"
 arch=('x86_64')
-url="https://github.com/emile-ross/wordle"
+url="https://github.com/emile-ross/wordle-solver"
 license=('GPL-2.0-only')
 depends=()
 makedepends=('make' 'gcc' 'git')
-source=("git+https://github.com/emile-ross/wordle.git")
+source=("git+https://github.com/emile-ross/wordle-solver.git")
 sha256sums=('SKIP')
 provides=("wordle-solver=$pkgver")
 conflicts=('wordle-solver')
