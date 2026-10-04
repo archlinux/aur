@@ -1,7 +1,7 @@
 pkgbase = portfinder
 	pkgdesc = Identify and manage processes using network ports, with project awareness
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/doganarif/portfinder
 	arch = x86_64
 	license = MIT
