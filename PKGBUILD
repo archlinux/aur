@@ -3,7 +3,7 @@
 
 pkgname=salam-bin
 _pkgname=salam
-pkgver=0.4.7
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="General-purpose systems programming language with a built-in DSL (prebuilt binary)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -17,9 +17,9 @@ _url="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_url}/salam-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_url}/salam-${pkgver}-linux-aarch64.tar.gz")
 source_armv7h=("${pkgname}-${pkgver}-armv7h.tar.gz::${_url}/salam-${pkgver}-linux-armhf.tar.gz")
-sha256sums_x86_64=('39bc9e0d626f9074abb3b0ce9412c60977b0f6b74a5a4e5c95948a4178e0a02a')
-sha256sums_aarch64=('b313e01a561acd3a23b018f87e805311dca5b8f78152f24de16e9339f9faa16a')
-sha256sums_armv7h=('4b8833a0d2b91a36bebcbc3f2a8160dfbf2ea306324e6a37becf5b620a5844ea')
+sha256sums_x86_64=('55810d1dc85dde83b502ec96a97dd3d9ac94c4d4ad596be1517a368491b48d88')
+sha256sums_aarch64=('bc8cca81ce7fa351b6f7c3e1ad9b470cb22fc20b5ced3993542692dfc76b4605')
+sha256sums_armv7h=('eff14b228289baf75cee141bc187aef70ca415ef8e8c370b044fa715bc171045')
 
 _srcdir() {
     case "$CARCH" in
