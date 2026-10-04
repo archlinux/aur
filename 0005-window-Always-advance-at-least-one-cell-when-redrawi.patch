@@ -1,24 +1,29 @@
-From 6da59983f24b836200cabe7046ed0ad2302bd5f6 Mon Sep 17 00:00:00 2001
+From e5c34a2863c88a52a2b1420e69b59fef22bf02c0 Mon Sep 17 00:00:00 2001
 From: Hocking Lee <hockinglee@gmail.com>
 Date: Sun, 4 Oct 2026 22:56:36 +0800
-Subject: [PATCH] window: Always advance at least one cell when redrawing
+Subject: [PATCH 5/6] window: Always advance at least one cell when redrawing
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
 mc_wclose() and mc_wredraw() walk the saved screen map using the width
-returned by _write().  For a zero-width character stored in the map
-(e.g. a control character such as XON 0x11 received from the serial
-line as the last character of a line) _write() returns 0, so x and the
-map pointer never advance and minicom spins forever writing that
-character to the terminal.  The UI freezes, keyboard input (including
-Ctrl-A Q) is never read and SIGTERM does not help.
+returned by _write().  Since "Clamp cwidth of _write to 1" this is fine
+for characters where wcwidth() returns -1, but a character with
+wcwidth() == 0 that ends up in the map (e.g. U+200B ZERO WIDTH SPACE or
+a combining mark received from the serial line as the last character
+of a line) still makes _write() return 0.  x and the map pointer then
+never advance and minicom spins forever writing that character to the
+terminal: the UI freezes, keyboard input (including Ctrl-A Q) is never
+read and SIGTERM does not help.
 
-Reproducer: receive "x\x11\r\n", then press Ctrl-A S, select xmodem
+Reproducer: receive "x​\r\n", then press Ctrl-A S, select xmodem
 and leave the file selection window with ESC.
 ---
  src/window.c | 6 ++++++
  1 file changed, 6 insertions(+)
 
 diff --git a/src/window.c b/src/window.c
-index af2184f..fb0e92b 100644
+index 3510c27..386f92a 100644
 --- a/src/window.c
 +++ b/src/window.c
 @@ -625,12 +625,16 @@ void mc_wclose(WIN *win, int replace)

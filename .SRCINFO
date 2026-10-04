@@ -1,7 +1,7 @@
 pkgbase = minicom-hangfix
-	pkgdesc = A serial communication program (with fix for UI hang on zero-width characters when closing windows)
+	pkgdesc = A serial communication program (fixes UI hang on zero-width chars, shows port in terminal title)
 	pkgver = 2.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://salsa.debian.org/minicom-team/minicom
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -17,11 +17,15 @@ pkgbase = minicom-hangfix
 	source = 0001-minicom-2.9-lrzsz-rename.patch
 	source = 0002-dial-Fix-use-of-check_io_frontend.patch
 	source = 0003-window-Consider-that-wcwidth-can-return-1-on-invalid.patch
-	source = 0004-window-Always-advance-at-least-one-cell-when-redrawing.patch
+	source = 0004-window-Clamp-cwidth-of-_write-to-1.patch
+	source = 0005-window-Always-advance-at-least-one-cell-when-redrawi.patch
+	source = 0006-Show-the-port-in-the-terminal-window-title.patch
 	sha256sums = b296b0e5795ca143fb1ffa78f46fd294daddfccd720faf9909a842d2f70c564e
 	sha256sums = 4b00e97cadeb51e2cacba7114d2572dbe671b00f0f6695df96aa0ea0dab68c15
 	sha256sums = 329d949e938aa519948ad66c0b680d3af0fbbed8fd392c7fe4dad254fafab804
 	sha256sums = 9210031ead31058cfa73c3b09687b8e05d933a9a3b70fe215ff9b38c1dce87f8
-	sha256sums = a1e85f2226751a999538491f6b5a375ec195693273943f6b2d596337521391c2
+	sha256sums = 958f44b3377e76d1ec08b29c4d87a4cfdb274d2467a3bf3b0b706a8e98db0382
+	sha256sums = 35570693f8b6f046aba87701c55b0984fe3fc198eb1be22bdcd934f0c5cdce34
+	sha256sums = cbc77159409ba42d5bfcae3aaefad67d7a402b2fcd0ff2b7bf000838037c5584
 
 pkgname = minicom-hangfix
