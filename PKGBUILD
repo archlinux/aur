@@ -4,7 +4,7 @@
 pkgname=python-orchat
 _pkgname=orchat
 pkgver=1.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful CLI for chatting with AI models through OpenRouter"
 arch=('any')
 url="https://github.com/oop7/OrChat"
@@ -24,6 +24,8 @@ build() {
 package() {
 	cd "$_srcdir"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+	install -Dm644 branding/OrChat-Interface.png "$pkgdir/usr/share/doc/$_pkgname/OrChat-Interface.png"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 	fi

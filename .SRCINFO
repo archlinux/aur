@@ -1,7 +1,7 @@
 pkgbase = python-orchat
 	pkgdesc = A powerful CLI for chatting with AI models through OpenRouter
 	pkgver = 1.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oop7/OrChat
 	arch = any
 	license = MIT
