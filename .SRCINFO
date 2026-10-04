@@ -1,0 +1,17 @@
+pkgbase = plasma6-applets-wmp-toolbar-plasmoid-git
+	pkgdesc = MPRIS controller that looks like the WMP toolbar
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitgud.io/catpswin56/wmp-toolbar-plasmoid
+	arch = x86_64
+	license = none
+	makedepends = vulkan-headers
+	makedepends = gcc
+	makedepends = extra-cmake-modules
+	depends = libplasma
+	provides = plasma6-applets-wmp-toolbar-plasmoid-git=0.0.1
+	conflicts = plasma6-applets-wmp-toolbar-plasmoid-git
+	source = git+https://gitgud.io/catpswin56/wmp-toolbar-plasmoid.git
+	sha256sums = SKIP
+
+pkgname = plasma6-applets-wmp-toolbar-plasmoid-git
