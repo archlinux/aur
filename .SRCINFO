@@ -1,0 +1,14 @@
+pkgbase = metatar
+	pkgdesc = Create root filesystems without fakeroot
+	pkgver = 1.9.3
+	pkgrel = 1
+	url = https://github.com/xyproto/metatar
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = git+https://github.com/xyproto/metatar#tag=v1.9.3
+	b2sums = b3e6e1eaa88b1d15ad86721f4bdd9c23cb027d775eb4fa0fe0f1fbe34c4ac9230e64133a1e37a58cdf973d4cb343365962ae7c01d3b0504253109ba2748f00ab
+
+pkgname = metatar
