@@ -3,7 +3,7 @@
 
 pkgname=godyl
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Batch download, checksum-verify, and install static binaries from GitHub/GitLab releases"
 arch=('x86_64')
 url="https://github.com/idelchi/godyl"
@@ -24,4 +24,12 @@ build() {
 package() {
 	cd "$_srcdir"
 	install -Dm755 godyl "$pkgdir/usr/bin/godyl"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -d "$pkgdir/usr/share/doc/$pkgname/docs"
+	cp -r docs/. "$pkgdir/usr/share/doc/$pkgname/docs/"
+	install -d "$pkgdir/usr/share/$pkgname"
+	install -Dm644 defaults.yml "$pkgdir/usr/share/$pkgname/defaults.yml"
+	install -Dm644 godyl.yml "$pkgdir/usr/share/$pkgname/godyl.yml"
+	install -Dm644 tools.yml "$pkgdir/usr/share/$pkgname/tools.yml"
 }

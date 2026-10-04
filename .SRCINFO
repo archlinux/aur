@@ -1,7 +1,7 @@
 pkgbase = godyl
 	pkgdesc = Batch download, checksum-verify, and install static binaries from GitHub/GitLab releases
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/idelchi/godyl
 	arch = x86_64
 	license = MIT
