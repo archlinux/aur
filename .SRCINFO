@@ -4,12 +4,15 @@ pkgbase = kilt-unstable
 	pkgrel = 1
 	url = https://openlyst.ink
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	depends = gtk3
 	provides = kilt
 	conflicts = kilt
 	options = !strip
-	source = kilt-unstable-12.0.0.zip::https://gitlab.com/Openlyst/klit/-/releases/nightly/downloads/kilt-linux-x64-12.0.0-2026-10-04.zip
-	sha256sums = SKIP
+	source_x86_64 = kilt-unstable-12.0.0-x86_64.zip::https://gitlab.com/Openlyst/klit/-/releases/nightly/downloads/kilt-linux-x64-12.0.0-2026-10-04.zip
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = kilt-unstable-12.0.0-aarch64.zip::https://gitlab.com/Openlyst/klit/-/releases/nightly/downloads/kilt-linux-arm64-12.0.0-2026-10-04.zip
+	sha256sums_aarch64 = SKIP
 
 pkgname = kilt-unstable

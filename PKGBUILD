@@ -4,7 +4,7 @@ pkgname=kilt-unstable
 pkgver=12.0.0
 pkgrel=1
 pkgdesc="E926 API client (unstable build from GitHub)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://openlyst.ink"
 license=('GPL3')
 depends=('gtk3')
@@ -12,8 +12,10 @@ optdepends=()
 provides=('kilt')
 conflicts=('kilt')
 options=('!strip')
-source=("kilt-unstable-${pkgver}.zip::https://gitlab.com/Openlyst/klit/-/releases/nightly/downloads/kilt-linux-x64-12.0.0-2026-10-04.zip")
-sha256sums=('SKIP')
+source_x86_64=("kilt-unstable-${pkgver}-x86_64.zip::https://gitlab.com/Openlyst/klit/-/releases/nightly/downloads/kilt-linux-x64-12.0.0-2026-10-04.zip")
+source_aarch64=("kilt-unstable-${pkgver}-aarch64.zip::https://gitlab.com/Openlyst/klit/-/releases/nightly/downloads/kilt-linux-arm64-12.0.0-2026-10-04.zip")
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 
 package() {
     cd "${srcdir}/bundle"
