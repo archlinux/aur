@@ -1,7 +1,7 @@
 # Maintainer: gnolruf <112510094+gnolruf@users.noreply.github.com>
 
 pkgname=assistd
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A local-model agent daemon for Linux (LLM + voice + tools + WM integration)"
 arch=('x86_64')
@@ -42,7 +42,7 @@ makedepends=(
 backup=('etc/assistd/config.toml')
 install=assistd.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ff1113088e9fa893f6200099c3431048a5865c936d99399d7e52c0ba48c69e21')
+sha256sums=('62587b70811a258c1de3176d568ae22be49561b194ed2e38e57f90fdef0ccd59')
 
 prepare() {
   cd "$pkgname-$pkgver"
