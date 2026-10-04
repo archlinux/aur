@@ -1,7 +1,7 @@
 pkgbase = ptable-git
 	pkgdesc = A beautiful TUI periodic table for GNU/Linux terminals
 	pkgver = r57.6c3f178
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/velorek1/ptable
 	arch = x86_64
 	license = MIT
