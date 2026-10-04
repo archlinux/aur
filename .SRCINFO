@@ -1,7 +1,7 @@
 pkgbase = cellscape
 	pkgdesc = TUI simulator for eight classic cellular automata
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ashish0kumar/cellscape
 	arch = x86_64
 	license = MIT
