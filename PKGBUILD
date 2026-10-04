@@ -4,7 +4,7 @@
 pkgname=python-shallow-backup
 _pkgname=shallow-backup
 pkgver=6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Git-integrated backup tool for dotfiles, packages, and app configs"
 arch=('any')
 url="https://github.com/alichtman/shallow-backup"
@@ -24,6 +24,13 @@ build() {
 package() {
 	cd "$_srcdir"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+	install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$_pkgname/CHANGELOG.md"
+	install -Dm644 CONTRIBUTING.md "$pkgdir/usr/share/doc/$_pkgname/CONTRIBUTING.md"
+	install -Dm644 CONTRIBUTORS.md "$pkgdir/usr/share/doc/$_pkgname/CONTRIBUTORS.md"
+	install -d "$pkgdir/usr/share/doc/$_pkgname/docs"
+	install -Dm644 docs/*.md "$pkgdir/usr/share/doc/$_pkgname/docs/"
+	install -Dm644 img/shallow-backup-demo.gif "$pkgdir/usr/share/doc/$_pkgname/shallow-backup-demo.gif"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 	fi

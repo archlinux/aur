@@ -1,7 +1,7 @@
 pkgbase = python-shallow-backup
 	pkgdesc = Git-integrated backup tool for dotfiles, packages, and app configs
 	pkgver = 6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alichtman/shallow-backup
 	arch = any
 	license = MIT
