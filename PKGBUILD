@@ -3,7 +3,7 @@
 _pkgname=crosspoint-sync
 pkgname=${_pkgname}-git
 pkgver=r137.ec98b5b
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight KoSync Server for Syncing Crosspoint/CrossInk stats & progress"
 arch=("any")
 url="https://github.com/crosspoint-reader/crosspoint-sync"
@@ -37,6 +37,9 @@ prepare() {
 	cd "$srcdir/${_pkgname}"
 
 	npm ci
+
+	cd "app"
+	npm ci --ignore-scripts
 }
 
 build() {
@@ -46,6 +49,9 @@ build() {
 
 	npm run build
 	npm ci --omit=dev
+
+	cd "app"
+	npx vite build
 }
 
 package() {
@@ -55,6 +61,10 @@ package() {
 	install -vDm644 -t "${pkgdir}/usr/lib/${_pkgname}" package.json
 	find {dist,node_modules,migrations,assets,extension} -type f -print0 |
 		xargs -0 -I {} install -vDm644 {} "${pkgdir}/usr/lib/${_pkgname}/"{}
+
+	while IFS= read -r -d '' file; do
+		install -vDm644 "${file}" "${pkgdir}/usr/lib/${_pkgname}/web/${file#"app/dist"}"
+	done < <(find app/dist/ -type f -print0)
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/crosspoint-sync-git/LICENSE"
 

@@ -1,7 +1,7 @@
 pkgbase = crosspoint-sync-git
 	pkgdesc = Lightweight KoSync Server for Syncing Crosspoint/CrossInk stats & progress
 	pkgver = r137.ec98b5b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crosspoint-reader/crosspoint-sync
 	arch = any
 	license = MIT
