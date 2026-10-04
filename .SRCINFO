@@ -1,7 +1,7 @@
 pkgbase = hysp
-	pkgdesc = An independent, cross-platform package manager for CTF/hacking tools
+	pkgdesc = An independent, cross-platform package manager for CTF/hacking tools (archived upstream)
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pwnwriter/hysp
 	arch = x86_64
 	license = MIT

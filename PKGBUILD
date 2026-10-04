@@ -3,8 +3,8 @@
 
 pkgname=hysp
 pkgver=0.1.2
-pkgrel=1
-pkgdesc="An independent, cross-platform package manager for CTF/hacking tools"
+pkgrel=2
+pkgdesc="An independent, cross-platform package manager for CTF/hacking tools (archived upstream)"
 arch=('x86_64')
 url="https://github.com/pwnwriter/hysp"
 license=('MIT')
@@ -24,6 +24,7 @@ build() {
 package() {
 	cd "$_srcdir"
 	install -Dm755 "target/release/hysp" "$pkgdir/usr/bin/hysp"
+	install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	fi
