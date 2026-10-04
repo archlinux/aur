@@ -3,7 +3,7 @@
 
 pkgname=duplito
 pkgver=5.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Command-line tool to identify duplicate files on your system"
 arch=('x86_64')
 url="https://github.com/ftarlao/duplito"
@@ -14,14 +14,19 @@ _tag="v5.0.0-Red.Max.Donner.und.Blitzen"
 _srcdir="duplito-5.0.0-Red.Max.Donner.und.Blitzen"
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/ftarlao/duplito/tar.gz/refs/tags/$_tag")
 sha256sums=('706ced7404a769aae5259eb76d928c6f1add5e9ffe1c5de0cb8f0dadf9aae58e')
-function build() {
+
+build() {
 	cd "$_srcdir"
 	export CGO_ENABLED=0
 	go build -trimpath -o "$pkgname" .
 }
-function package() {
+
+package() {
 	cd "$_srcdir"
 	install -Dm755 "$pkgname" "$pkgdir/usr/bin/duplito"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -d "$pkgdir/usr/share/$pkgname/testfolder"
+	cp -r testfolder "$pkgdir/usr/share/$pkgname/"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	fi
