@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A blazing fast file name search tool"
 
-pkgver=0.2.18
+pkgver=0.2.19
 pkgrel=1
 _gitversion=v${pkgver}-beta
 
@@ -32,8 +32,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.rpm::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.rpm::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.rpm")
 sha256sums=('308dd01cb14580699426700e097caeb37df277dcc8d56efbfe88b5fc7b7bf367'
             'b47b5eeb5533dc7ebe52f56d65d161a624504ff8ee6653882c55b02a2affcea6')
-sha256sums_x86_64=('ce98919dba29261a62fa56b3fa9b11ef46a61b988c0159ad0620ee3254c62981')
-sha256sums_aarch64=('778cdd89a325a5943c6079505e458a666652c5fe7b31ddeeeea2e7b6ceb2cae2')
+sha256sums_x86_64=('f6ef4424ec5f02064a4c9fa45cd5c2b704be76fd07ebb577fa15ae085dd9fbe1')
+sha256sums_aarch64=('87c5d493837d8af6460dd140114bd73057cb1ea237493603df51d858443a1034')
 
 
 prepare() {
