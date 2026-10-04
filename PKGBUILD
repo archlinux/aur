@@ -1,6 +1,6 @@
 # Maintainer: Naqua Darazaki <n.darazaki@gmail.com>
 pkgname=clockode
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="TOTP client made with Iced"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ug
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 conflicts=()
-b2sums=('bf78e637c063efbed602359239651698a9bfa2c1b74d7359e7ec9a373570077dc4cd88b955ba25a50be6fb8d069209d199ed0bdb3bb4aaf459b2b31380ca9a2c')
+b2sums=('e4c404a58ef84a7b52e61b21292baa8d3176b0bdb76c1c0bd6833d07b432d5ae53471b29cd7cf0e527eee51e9c15af76028a271b97637ac29f319032685a427d')
 
 cargo_do() {
     RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target cargo "$@"

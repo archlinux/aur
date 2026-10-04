@@ -1,6 +1,6 @@
 pkgbase = clockode
 	pkgdesc = TOTP client made with Iced
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/mariinkys/clockode
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = clockode
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
 	depends = gst-plugins-ugly
-	source = clockode-0.3.0.tar.gz::https://github.com/mariinkys/clockode/archive/refs/tags/0.3.0.tar.gz
-	b2sums = bf78e637c063efbed602359239651698a9bfa2c1b74d7359e7ec9a373570077dc4cd88b955ba25a50be6fb8d069209d199ed0bdb3bb4aaf459b2b31380ca9a2c
+	source = clockode-0.3.1.tar.gz::https://github.com/mariinkys/clockode/archive/refs/tags/0.3.1.tar.gz
+	b2sums = e4c404a58ef84a7b52e61b21292baa8d3176b0bdb76c1c0bd6833d07b432d5ae53471b29cd7cf0e527eee51e9c15af76028a271b97637ac29f319032685a427d
 
 pkgname = clockode
