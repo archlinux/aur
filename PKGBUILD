@@ -3,7 +3,7 @@ pkgname=skywire-bin
 _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
-pkgver='1.3.98'
+pkgver='1.3.99'
 pkgrel='1'
 _rc=''
 #_rc='-pr1'
@@ -69,14 +69,14 @@ sha256sums=('40c80ccce9e89ae559050b943be1f09d905476c614a72d74fac2a58c821ac058'
             '483353f172cb12c8d726dce8e0cd284ff6bf6a69b2912274559bc199b1c7f3e3'
             '60cd97d7ff821f793de68f38aad4468fc83fcddf31449397227d16a746cc8a92'
             '2f1511abbd2b42f4bfebf2a872295de5992fe98d81163ac9ab7744d61608af5e')
-sha256sums_i686=('6297c0768f25cd398136fd874bc0c8ff06f41d69f9aff94f3f1fd30349d6b6a3')
-sha256sums_x86_64=('a18d3e05509b695e89f86e1fb243cbda7b132832828c9b318e2969e3bbdb0293')
-sha256sums_aarch64=('4f997ffbac07121ebb0cae6590f157b5d47c34b9a2b6866751a8ccd971584c4f')
-sha256sums_armv8=('4f997ffbac07121ebb0cae6590f157b5d47c34b9a2b6866751a8ccd971584c4f')
-sha256sums_armv7=('64a2a4ba98f79d1f799f662a4ea76266e4e7a5b2a255736dab1d8442ef710d68')
-sha256sums_armv7l=('64a2a4ba98f79d1f799f662a4ea76266e4e7a5b2a255736dab1d8442ef710d68')
-sha256sums_armv7h=('64a2a4ba98f79d1f799f662a4ea76266e4e7a5b2a255736dab1d8442ef710d68')
-sha256sums_arm=('d152ad07ffe75f43a72114f7bab2a0a0c42eab767b999f5e965f787a90d2b1a1')
+sha256sums_i686=('33b7ae718794a1134cd057ad59d869702cd06d3f20e80c8f5b78be69b2961935')
+sha256sums_x86_64=('92b902bbfe8e393ca6bd0f7078819fdf1ebd201638d40300f1a833ec1331654e')
+sha256sums_aarch64=('2640ad67e9984e5b2b394bfd4642f1d2d4614c57ed2b9ead0669a5ce73b38428')
+sha256sums_armv8=('2640ad67e9984e5b2b394bfd4642f1d2d4614c57ed2b9ead0669a5ce73b38428')
+sha256sums_armv7=('1d6357d08bfd4c6db21d1db4e90c972f73f030fa2e2bc94ede1c4d3237cd78c2')
+sha256sums_armv7l=('1d6357d08bfd4c6db21d1db4e90c972f73f030fa2e2bc94ede1c4d3237cd78c2')
+sha256sums_armv7h=('1d6357d08bfd4c6db21d1db4e90c972f73f030fa2e2bc94ede1c4d3237cd78c2')
+sha256sums_arm=('451cd1b647048a19d41019e84ddb9ecaf92888b098fd2a3009fe1579812f8ea5')
 _binarchive=("${_pkgname}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
 source_x86_64=("${_release_url}-amd64.tar.xz")
