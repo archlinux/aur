@@ -1,7 +1,7 @@
 pkgbase = ren-find
 	pkgdesc = Batch rename utility that takes find-formatted lines via stdin
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/robenkleene/ren-find
 	arch = x86_64
 	license = MIT
