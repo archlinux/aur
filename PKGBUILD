@@ -3,7 +3,7 @@
 
 pkgname=portfolio_rs
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Local-first portfolio management for humans and AI agents: CLI, TUI, library, and local HTTP API"
 arch=('x86_64')
 url="https://github.com/MarkusZoppelt/portfolio_rs"
@@ -24,6 +24,9 @@ build() {
 package() {
 	cd "$_srcdir"
 	install -Dm755 "target/release/portfolio_rs" "$pkgdir/usr/bin/portfolio_rs"
+	install -d "$pkgdir/usr/share/$pkgname/templates"
+	install -Dm644 example_data.json "$pkgdir/usr/share/$pkgname/example_data.json"
+	cp -r templates/. "$pkgdir/usr/share/$pkgname/templates/"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	fi
