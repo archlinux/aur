@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "${srcdir}/OpenAnime-Linux"
-    npm install
+    npm ci
     npm run dist -- --linux --dir
 }
 
