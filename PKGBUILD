@@ -1,7 +1,7 @@
 # Maintainer: Hong Shick Pak <hong@hspak.com>
 
 pkgname=flamez
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A live process-lifetime and CPU-activity flamegraph"
 arch=("x86_64")
@@ -13,31 +13,40 @@ depends=(
   "libglvnd"
   "libxkbcommon"
   "wayland"
+
+  "sdl3>=3.4.0"
+  "freetype2"
+  "libpng"
+  "vulkan-icd-loader"
 )
 makedepends=(
   "clang"
   "git"
   "libcap"
   "zig"
+
+  "pkgconf"
 )
 optdepends=("libdecor: client-side window decorations on Wayland")
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://github.com/hspak/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("f9170c26cd690847a775ce625b5b244c5016d95121a79b34b8da9ec28d417b05")
+sha256sums=("e18aad1d43342c539c0f3e97d3291b2406f48f44c56509fde0c51077f377d5a9")
 
 build() {
   cd "${pkgname}-${pkgver}"
-  zig build --release=safe -Dfps-counter=false -Dmsaa=false
+  zig build -Dversion="$pkgver" --release=safe -Dfps-counter=false
 }
 
 check() {
   cd "${pkgname}-${pkgver}"
-  zig build test -Dfps-counter=false -Dmsaa=false
+  zig build -Dversion="$pkgver" test -Dfps-counter=false
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
+  install -d "${pkgdir}/usr/share/flamez"
+  cp -R "zig-out/share/flamez/licenses" "${pkgdir}/usr/share/flamez/"
   install -D -m 0755 "zig-out/bin/flamez" "${pkgdir}/usr/bin/flamez"
   install -D -m 0644 \
     "zig-out/share/flamez/flamez.bpf.o" \
