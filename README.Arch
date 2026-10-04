@@ -1,9 +1,6 @@
 linux-status on AUR
 ===================
 
-There's a Vagrantfile to make maintenance easier.  To start, use `vagrant up`,
-then `vagrant ssh`.
-
 There're a bunch of useful one-liners in Makefile.
 
   * Edit PKGBUILD.
