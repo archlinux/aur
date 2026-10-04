@@ -1,7 +1,7 @@
 pkgbase = python-gtime
 	pkgdesc = Global time zone lookup, comparison, and management with fuzzy search
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/savitojs/gtime
 	arch = any
 	license = MIT

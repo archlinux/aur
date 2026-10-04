@@ -4,7 +4,7 @@
 pkgname=python-gtime
 _pkgname=gtime
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Global time zone lookup, comparison, and management with fuzzy search"
 arch=('any')
 url="https://github.com/savitojs/gtime"
@@ -24,6 +24,12 @@ build() {
 package() {
 	cd "$_srcdir"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+	install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$_pkgname/CHANGELOG.md"
+	install -Dm644 SECURITY.md "$pkgdir/usr/share/doc/$_pkgname/SECURITY.md"
+	install -Dm644 assets/demo.gif "$pkgdir/usr/share/doc/$_pkgname/demo.gif"
+	install -Dm644 assets/widget-screenshot.png "$pkgdir/usr/share/doc/$_pkgname/widget-screenshot.png"
+	install -Dm644 gtime/widget-azclock-sidebar.dconf "$pkgdir/usr/share/$_pkgname/widget-azclock-sidebar.dconf"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 	fi
