@@ -1,0 +1,17 @@
+pkgbase = bank-ccb
+	pkgdesc = 中国建设银行、中国银行可用控件
+	pkgver = 1.0.0.0
+	pkgrel = 1
+	url = https://ebank.ccb.com/cn/html1/grwyaqkjzy/grwyaqkjzy.html
+	arch = x86_64
+	arch = aarch64
+	arch = loongarch64
+	arch = mips64
+	license = custom
+	depends = glibc
+	optdepends = browser360-bin: 支持的浏览器
+	options = !strip
+	source = https://image4.ccb.com/cn/html1/office/ebank/dzb/subject/12/docs/security/CCBSecurityExtension.deb
+	sha256sums = 194e746a3673cc59b55fba055e63a1a525ded6069b16972a698370190009a2bd
+
+pkgname = bank-ccb
