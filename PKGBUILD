@@ -1,7 +1,7 @@
 # Maintainer: Emmie Maeda <emmie.maeda@gmail.com>
 
 pkgname="qotd-git"
-pkgver=0.12.0_3_gd9d4f66.d9d4f66
+pkgver=0.12.0_7_g8dbd43f.8dbd43f
 pkgrel=1
 pkgdesc="A simple RFC 865-compliant QOTD (quote of the day) daemon. (git version)"
 arch=('any')
