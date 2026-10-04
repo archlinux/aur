@@ -3,7 +3,7 @@
 
 pkgname="akizip-git"
 _appname="AkiZip"
-pkgver=0.4.0.r0.g377a1cdc
+pkgver=0.4.1.r0.g6a7828f2
 pkgrel=1
 pkgdesc='A modern archive manager for the Linux desktop.'
 url='https://github.com/AkiZip/AkiZip'
