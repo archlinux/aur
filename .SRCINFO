@@ -1,6 +1,6 @@
 pkgbase = eitri-git
 	pkgdesc = Your Neovim, with a readable Claude Code panel beside it (built from source)
-	pkgver = 0.2.0.17.g37b10ae
+	pkgver = 0.2.1.0.ga97d6a1
 	pkgrel = 1
 	url = https://github.com/HunterGrey-cyber/eitri
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = eitri-git
 	optdepends = neovim: the editor (any nvim >= 0.10 on PATH)
 	optdepends = claude-code: the Claude Code CLI the panel drives
 	optdepends = noto-fonts: the ⏵⏵ mode glyph
+	optdepends = neovide: eitri split
 	provides = eitri
 	conflicts = eitri
 	options = !strip

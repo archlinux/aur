@@ -6,7 +6,7 @@
 # (D15, spec docs/superpowers/specs/2026-09-27-v1-dist-design.md sec 9).
 
 pkgname=eitri-git
-pkgver=0.2.0.17.g37b10ae
+pkgver=0.2.1.0.ga97d6a1
 pkgrel=1
 pkgdesc="Your Neovim, with a readable Claude Code panel beside it (built from source)"
 arch=('x86_64')
@@ -30,6 +30,7 @@ optdepends=(
 	'neovim: the editor (any nvim >= 0.10 on PATH)'
 	'claude-code: the Claude Code CLI the panel drives'
 	'noto-fonts: the ⏵⏵ mode glyph'
+	'neovide: eitri split'
 )
 # Arch's Rust package guideline (fetch the crate registry in prepare(), build --frozen in
 # build()); clang/pkgconf for skia-bindings/gtk4-rs's build scripts; protobuf for
@@ -190,7 +191,18 @@ package() {
 	# by this package no longer listing it), and the icon is every file of packaging/icons/hicolor.
 	install -Dm0644 "packaging/cn.huntergrey.eitri.desktop" \
 		"$pkgdir/usr/share/applications/cn.huntergrey.eitri.desktop"
-	local _icon
+	# The panel's own entry (`eitri panel`), and the nvim plugin that adds :EitriPanel.
+	install -Dm0644 "packaging/cn.huntergrey.eitri.Panel.desktop" \
+		"$pkgdir/usr/share/applications/cn.huntergrey.eitri.Panel.desktop"
+	local _icon _plugin _ext
+	while IFS= read -r _plugin; do
+		install -Dm0644 "nvim/eitri.nvim/$_plugin" "$pkgdir/usr/share/eitri/nvim/eitri.nvim/$_plugin"
+	done < <(cd nvim/eitri.nvim && find . -type f | sed 's#^\./##' | LC_ALL=C sort)
+	# The GNOME Shell extension a companion panel on GNOME uses: an explicit list of the four files the shell loads, so
+	# the checkout's testing.js, README.md and test/ never ride along.
+	for _ext in metadata.json extension.js direction.js policy.js; do
+		install -Dm0644 "gnome-extension/$_ext" "$pkgdir/usr/share/gnome-shell/extensions/eitri@huntergrey.cn/$_ext"
+	done
 	while IFS= read -r _icon; do
 		install -Dm0644 "packaging/icons/$_icon" "$pkgdir/usr/share/icons/$_icon"
 	done < <(cd packaging/icons && find hicolor -type f | LC_ALL=C sort)
