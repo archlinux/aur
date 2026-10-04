@@ -1,6 +1,6 @@
 pkgbase = pandia
-	pkgdesc = JSON IDE built for files the rest of your tools choke on
-	pkgver = 1.0.4
+	pkgdesc = A powerful, open-source JSON visualization and editing tool for developers
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://www.pandia.app/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = pandia
 	depends = libsoup3
 	depends = webkit2gtk-4.1
 	options = !lto
-	source = pandia-1.0.4.tar.gz::https://github.com/hendurhance/pandia/archive/v1.0.4.tar.gz
+	source = pandia-1.0.7.tar.gz::https://github.com/hendurhance/pandia/archive/v1.0.7.tar.gz
 	source = pandia.desktop
-	sha256sums = f5745a4e9601d1e990b85d690c9d7efd6bf0be31784b3d7966fda3dffb41db3b
-	sha256sums = fc33f56e614ac421b3f620e32e62b67e3bcf6566d980d18cdd8c88635e1f2c7f
+	sha256sums = 7904ff5f3ee3cd69106efd4968cf1efc44549fd0a6f796c4f041d9dc973fb064
+	sha256sums = a271b0980d3c1b4c0fc011de9d92e746a04c754610a955181cc4ed6fe659d95e
 
 pkgname = pandia

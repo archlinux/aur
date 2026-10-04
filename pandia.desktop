@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Pandia
+GenericName=JSON IDE built for files the rest of your tools choke on
 Comment=The JSON workbench
 Exec=env WEBKIT_DISABLE_DMABUF_RENDERER=1 /usr/bin/pandia
 Icon=pandia
