@@ -1,7 +1,7 @@
 pkgbase = python-paragrep
 	pkgdesc = grep-like tool that searches for and displays entire paragraphs matching a pattern
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bmc/paragrep
 	arch = any
 	license = BSD-3-Clause

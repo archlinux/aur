@@ -4,7 +4,7 @@
 pkgname=python-paragrep
 _pkgname=paragrep
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="grep-like tool that searches for and displays entire paragraphs matching a pattern"
 arch=('any')
 url="https://github.com/bmc/paragrep"
@@ -25,6 +25,8 @@ build() {
 package() {
 	cd "$_srcdir"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+	install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$_pkgname/CHANGELOG.md"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 	install -Dm644 man/paragrep.1 "$pkgdir/usr/share/man/man1/paragrep.1"
 }
