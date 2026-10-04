@@ -8,7 +8,7 @@
 # 代价：自动模式明显更慢（双核 + 无 FMA）。
 
 pkgname=upmix-core-legacy-bin
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Stereo to 5.1 upmixer with HTDemucs separation (prebuilt for pre-AVX2 CPUs)"
 arch=('x86_64')
@@ -41,7 +41,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/gensui-fuga/upmix-core/v${pkgver}-legacy/LICENSE"
 )
 sha256sums=(
-  '0903dd79035fd5bc4e9ecc4b0ae8a9e93c91fde02e60062533c0cd3e628c56a0'
+  '2e5d5cac71b20ec6755f32bc9c484f853718d22b5a0328671bc586223a2b3557'
   '55aadbacf89b539c4f086c608a0f21129a0ce0c09285447e2eb356d37017bf0d'
 )
 
