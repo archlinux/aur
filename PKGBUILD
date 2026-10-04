@@ -5,7 +5,7 @@ pkgname=(cataclysm-tlg-bin cataclysm-tlg-tiles-bin)
 pkgname=cataclysm-tlg-bin
 _tagver=1.0-2026-10-04-1050
 pkgver=1.0.r20261004.1050
-pkgrel=1
+pkgrel=2
 pkgdesc="Cataclysm: The Last Generation, a post-apocalyptic roguelike (fork of DDA) (curses)"
 url="https://cataclysmtlg.com/"
 arch=('x86_64')
@@ -19,8 +19,8 @@ _basename="cataclysm-tlg"
 _tlgdir="cataclysm-tlg-1.0"
 _downloadurl="https://github.com/Cataclysm-TLG/Cataclysm-TLG/releases/download/cataclysm-tlg-$_tagver"
 source=(
-	"$pkgbase-curses.tar.gz::$_downloadurl/ctlg-linux-curses-x64-${_tagver#*-}.tar.gz"
-	"$pkgbase-tiles.tar.gz::$_downloadurl/ctlg-linux-tiles-sounds-x64-${_tagver#*-}.tar.gz"
+	"$pkgbase-curses-$pkgver.tar.gz::$_downloadurl/ctlg-linux-curses-x64-${_tagver#*-}.tar.gz"
+	"$pkgbase-tiles-$pkgver.tar.gz::$_downloadurl/ctlg-linux-tiles-sounds-x64-${_tagver#*-}.tar.gz"
 )
 sha256sums=(
 	'69709272253144ef73f739b13b21d1a5d147af36aaca4375d6a4fa5b8ac88819'
@@ -31,8 +31,8 @@ noextract=("$pkgbase-curses.tar.gz" "$pkgbase-tiles.tar.gz")
 
 prepare() {
 	mkdir -p _curses _tiles
-	bsdtar -xzf "$srcdir/$pkgbase-curses.tar.gz" -C _curses
-	bsdtar -xzf "$srcdir/$pkgbase-tiles.tar.gz" -C _tiles
+	bsdtar -xzf "$srcdir/$pkgbase-curses-$pkgver.tar.gz" -C _curses
+	bsdtar -xzf "$srcdir/$pkgbase-tiles-$pkgver.tar.gz" -C _tiles
 }
 
 package_cataclysm-tlg-bin() {
