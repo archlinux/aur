@@ -2,7 +2,7 @@
 # Automatically updated by GitHub Actions
 
 pkgname=zerx-lab-dida365-bin
-pkgver=8.0.10
+pkgver=8.0.20
 pkgrel=1
 pkgdesc="滴答清单 - 跨平台 Todo & Task Manager"
 arch=('x86_64')
@@ -38,8 +38,8 @@ provides=('dida' 'dida365')
 conflicts=('dida' 'dida365')
 options=('!strip')
 
-source_x86_64=("dida-${pkgver}-amd64.deb::https://dida365.com/static/getApp/download?type=linux_deb_x64")
-sha256sums_x86_64=('cf3e25f360d55924f5f2aca7ebe6dc7866f645d596df011e47a01eabb5e3d183')
+source_x86_64=("dida-${pkgver}-amd64.deb::https://cdn.dida365.cn/download/linux/linux_deb_x64/dida-${pkgver}-amd64.deb")
+sha256sums_x86_64=('e9db6c1742e81f741b041e6107df34daff6f96335173b7a3b7f563223686af82')
 
 package() {
     cd "$srcdir"
