@@ -7,14 +7,15 @@
 
 pkgname=ubl-tools
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Read UBL e-invoices (Peppol BIS 3.0, OIOUBL) offline, in the terminal or as a printable page"
 arch=('x86_64')
-url="https://gitea.weircon.dk/agw/ubl-tools"
+url="https://asger.weirsøe.dk/en/projects/ubl-tools"
+_repo="https://gitea.weircon.dk/agw/ubl-tools"
 license=('MIT OR Apache-2.0')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$_repo/archive/v$pkgver.tar.gz")
 sha256sums=('0ed5baba3e5e30fb934412d4da49e03a77d464127c67d3639990ac96568592f1')
 
 prepare() {
