@@ -3,11 +3,11 @@
 _name=vercel-oidc
 pkgname=python-$_name
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OIDC helpers for Vercel Python applications.'
 arch=('any')
 _repo='https://github.com/vercel/vercel-py'
-url="$_repo/src/$_name"
+url="$_repo/tree/main/src/$_name"
 license=('MIT')
 depends=('python'
          'python-anyio'
