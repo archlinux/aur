@@ -3,7 +3,7 @@
 
 pkgname=qbak
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Single-command backup helper for Linux/POSIX, written in Rust"
 arch=('x86_64')
 url="https://github.com/andreas-glaser/qbak"
@@ -14,14 +14,21 @@ _tag="v1.5.1"
 _srcdir="qbak-1.5.1"
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/andreas-glaser/qbak/tar.gz/refs/tags/$_tag")
 sha256sums=('51d4bf3f8b893ffb6b09617e8236e49e9294b28526acae8d6cff8e248b2ab14a')
-function build() {
+
+build() {
 	cd "$_srcdir"
 	export RUSTUP_TOOLCHAIN=stable
 	cargo build --release --locked || cargo build --release
 }
-function package() {
+
+package() {
 	cd "$_srcdir"
 	install -Dm755 "target/release/qbak" "$pkgdir/usr/bin/qbak"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+	install -Dm644 CONTRIBUTING.md "$pkgdir/usr/share/doc/$pkgname/CONTRIBUTING.md"
+	install -Dm644 PROJECT.md "$pkgdir/usr/share/doc/$pkgname/PROJECT.md"
+	install -Dm644 docs/github-actions.md "$pkgdir/usr/share/doc/$pkgname/github-actions.md"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	fi

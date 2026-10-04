@@ -1,7 +1,7 @@
 pkgbase = qbak
 	pkgdesc = Single-command backup helper for Linux/POSIX, written in Rust
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andreas-glaser/qbak
 	arch = x86_64
 	license = MIT
