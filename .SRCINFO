@@ -1,0 +1,26 @@
+pkgbase = wingdrive-bin
+	pkgdesc = WingDrive desktop file manager
+	pkgver = 2.0.0alpha6
+	pkgrel = 1
+	url = https://github.com/bernardopg/wingdrive
+	arch = x86_64
+	license = LicenseRef-FSL-1.1-ALv2
+	license = GPL-3.0-only
+	depends = glibc
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = xdotool
+	depends = xdg-utils
+	depends = alsa-lib
+	depends = libpipewire
+	depends = jack
+	depends = libva
+	provides = wingdrive
+	conflicts = wingdrive
+	options = !strip
+	source = WingDrive-2.0.0-alpha.6-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v2.0.0-alpha.6/WingDrive-2.0.0-alpha.6-x86_64.AppImage
+	source = LICENSE::https://github.com/bernardopg/wingdrive/releases/download/v2.0.0-alpha.6/LICENSE
+	sha256sums = 8ddd18ce381c10f3e8f5c72dacd16260d8a7ccacd4ac83547ce1b974adb86577
+	sha256sums = 24e941b64ab9f59b5a7ca1bafb27bd25e550d7d9461c5890482443f5b19b50b8
+
+pkgname = wingdrive-bin
