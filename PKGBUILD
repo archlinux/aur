@@ -2,7 +2,7 @@
 # Maintainer: bnema <b at bnema dot dev>
 
 pkgname='neferwl-bin'
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Minimal Wayland compositor with column tiling, for the TTY'
 url='https://github.com/bnema/neferwl'
@@ -15,10 +15,10 @@ optdepends=('xwayland-satellite>=0.7: X11 apps' 'foot: default terminal' 'fuzzel
 install=neferwl.install
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bnema/neferwl/releases/download/v${pkgver}/neferwl_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('3f0249dd3bb510bbf287c509486ee9938dedf75c2f300f2546ad0de4889b1cf2')
+sha256sums_aarch64=('e5a273577767b08e15b927a505b06c7dd9236c5da53187e4064a37fad0ec1f83')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bnema/neferwl/releases/download/v${pkgver}/neferwl_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('f28ba76f9cce6a034a2c3f95a478ecfb697d402e271c9838b9c1a3471bd754a4')
+sha256sums_x86_64=('14419aa827b80bc5b0dab4716ab40edb1d820b4ef866fbc0f09b06fbc4b538d0')
 
 package() {
   install -Dm755 ./neferwl "${pkgdir}/usr/bin/neferwl"
