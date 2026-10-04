@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Fast service fingerprinting CLI for 170+ protocols (TCP/UDP/SCTP)"
 
-pkgver=1.70.2
+pkgver=1.70.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('1bd43675955a523f8b13884f0092e9601ba4199b99827312dd1e9897ee87e803')
-sha256sums_aarch64=('774a62ef9a2731213f18117f7c2ee24770dcf0c5f30bebd8e3be30459f5972e4')
+sha256sums_x86_64=('069762cbbba1ca5e14eb7b7ea6f13b076c4f9ad49db5af091593428d44108c4f')
+sha256sums_aarch64=('a5dcc8bc85274b1302534145e91ccf101d565c03d29117c917ea39ae0d8da65d')
 
 
 package() {
