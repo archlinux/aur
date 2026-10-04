@@ -1,6 +1,6 @@
 # Maintainer: Cogumelo cogumelo@tutamail.com
 pkgname=imageviewer
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 license=('GPL-3.0-or-later')
 arch=('x86_64')
@@ -17,8 +17,8 @@ source=(
   com.github.aliencoweatcake.imageviewer.appdata.xml
 )
 sha256sums=(
-  'd304c47afcba88a95e1309fca5b75710dd5f919ed5f62c6a8895e2c383d76c00'
-  '1a6c1e058714e80740e6caf8f73be2cd646c994d7abea0988005b1f777d3533e'
+  '4635767ebf9243f67428ee47aaadba4e39081dc03e718036fb44b783cbd79777'
+  '7f8fd6ceca5850471c7360417766b2fd3eb16e55aa4cc24d80b600b9606656ad'
   '240692987a63667433c1a85587ad86bd15a7895c9c91325265450515c0b595a5'
 )
 
@@ -38,7 +38,7 @@ build() {
 
 package() {
   install -Dm 755 "$srcdir"/src/ImageViewer/ImageViewer "$pkgdir"/usr/bin/ImageViewer
-  install -Dm 755 ImageViewer.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/ImageViewer.svg
-  install -Dm 755 com.github.aliencoweatcake.imageviewer.desktop "$pkgdir"/usr/share/applications/com.github.aliencoweatcake.imageviewer.desktop
-  install -Dm 755 com.github.aliencoweatcake.imageviewer.appdata.xml "$pkgdir"/usr/share/metainfo/com.github.aliencoweatcake.imageviewer.appdata.xml
+  install -Dm 644 ImageViewer.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/ImageViewer.svg
+  install -Dm 644 com.github.aliencoweatcake.imageviewer.desktop "$pkgdir"/usr/share/applications/com.github.aliencoweatcake.imageviewer.desktop
+  install -Dm 644 com.github.aliencoweatcake.imageviewer.appdata.xml "$pkgdir"/usr/share/metainfo/com.github.aliencoweatcake.imageviewer.appdata.xml
 }
