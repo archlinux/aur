@@ -1,7 +1,7 @@
 # Maintainer: Tomas <me+aur at wereii.cz>
 
 pkgname=spacestation14-launcher-bin
-pkgver=0.40.1
+pkgver=0.40.2
 pkgrel=1
 pkgdesc="Space Station 14 launcher"
 url="https://spacestation14.com/"
@@ -17,7 +17,7 @@ source=(
     "spacestation14.svg"
     "SS14.desktop")
 
-sha256sums=('0767cd58d2bc576864c8b41d8b4b50578857e9eedd821cff554530260418338c'
+sha256sums=('226f3b0359b9c325c87543330128d34fbaee245cb9e7f8b66f232289936a9e13'
             'ba123bf55027694ffbf3528f58ba7554d072a023de3282187dd692f365ee9ce5'
             '7645b08e7ca3ac6460ceea8862793c63bc088c04b52b535bce07e5fd4327d4be')
 
