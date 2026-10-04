@@ -3,7 +3,7 @@
 
 pkgname=hburger
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Shorten long strings and paths while preserving readability"
 arch=('x86_64')
 url="https://github.com/niqodea/hburger"
@@ -24,7 +24,8 @@ build() {
 package() {
 	cd "$_srcdir"
 	install -Dm755 "target/release/hburger" "$pkgdir/usr/bin/hburger"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+	install -Dm644 prompt.sh "$pkgdir/usr/share/doc/$pkgname/examples/prompt.sh"
+	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
