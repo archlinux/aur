@@ -1,6 +1,6 @@
 pkgbase = mdcz
 	pkgdesc = Media metadata scraper (desktop, built on Electron)
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/ShotHeadman/mdcz
 	install = mdcz.install
@@ -11,10 +11,10 @@ pkgbase = mdcz
 	depends = electron
 	conflicts = mdcz
 	replaces = mdcz
-	source = mdcz-0.16.0.tar.gz::https://github.com/ShotHeadman/mdcz/archive/refs/tags/v0.16.0.tar.gz
+	source = mdcz-0.17.0.tar.gz::https://github.com/ShotHeadman/mdcz/archive/refs/tags/v0.17.0.tar.gz
 	source = mdcz.desktop
 	source = mdcz.sh
-	sha256sums = 286bd51e70fdd720e6d9df95cb710d59898ac7c814a085c3313ac6b7a0f34200
+	sha256sums = e0850551fe12ab9a0109f78b733d307eccf2525dc94a47ab090670d7c377d720
 	sha256sums = 045c3410b0ecb1aa6eb4e1a9c5d72f70d49146135f7f631decbc40bbb0bbde40
 	sha256sums = cbfd7e103b2cd99572348601e4e9d809d7dca993b1c7d664ddeeb7a24f84549a
 
