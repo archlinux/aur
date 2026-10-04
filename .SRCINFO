@@ -1,6 +1,6 @@
 pkgbase = dopeiptv
 	pkgdesc = Linux IPTV player with Xtream Codes, M3U, EPG, timeshift, recording and multiview
-	pkgver = 1.2.12
+	pkgver = 1.2.14
 	pkgrel = 1
 	url = https://github.com/slimture/dopeIPTV
 	arch = any
@@ -21,7 +21,8 @@ pkgbase = dopeiptv
 	provides = dopeiptv
 	conflicts = dopeiptv-git
 	conflicts = dopeiptv-bin
-	source = dopeIPTV::git+https://github.com/slimture/dopeIPTV.git#tag=v1.2.12
-	sha256sums = 7e886a97742274b0d7807a5db7fa2a81b43b0f24d9b6ca5e849f7b205f4fe8f3
+	conflicts = dopeiptv
+	source = dopeIPTV::git+https://github.com/slimture/dopeIPTV.git#tag=v1.2.14
+	sha256sums = 4ef0a0ef61ad295f60f45a0d596f32d408baa456f6fd7d7b12130fe7896fe3e1
 
 pkgname = dopeiptv
