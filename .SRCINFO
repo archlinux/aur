@@ -1,0 +1,13 @@
+pkgbase = bank-icbc
+	pkgdesc = 中国工商银行控件
+	pkgver = 3.3.0.2
+	pkgrel = 1
+	url = https://www.icbc.com.cn/
+	arch = x86_64
+	license = custom
+	optdepends = browser360-bin: 支持的浏览器
+	options = !strip
+	source = https://epass.icbc.com.cn/signed_uos_product_SecEditCtlAdv.ICBC.x86_64.deb
+	sha256sums = bc7740b1d054e3d7b4e14064be7a5e806b684e96bd7580a9568a7ec62932a9c5
+
+pkgname = bank-icbc
