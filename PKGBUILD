@@ -1,16 +1,16 @@
 # Maintainer: se2crid
 pkgname=plumeimpactor-git
-pkgver=2.0.0.r1.g464429d
+pkgver=2.6.5.r4.gc7f8387
 pkgrel=1
 pkgdesc="Feature rich iOS/tvOS sideloading app written in Rust (git)"
 arch=('x86_64')
-url="https://github.com/khcrysalis/Impactor"
+url="https://github.com/claration/Impactor"
 license=('MIT')
 depends=('gtk3' 'usbmuxd' 'libayatana-appindicator')
 makedepends=('git' 'cargo' 'clang' 'cmake' 'pkgconf')
 provides=('plumeimpactor')
 conflicts=('plumeimpactor')
-source=('git+https://github.com/khcrysalis/Impactor.git')
+source=('Impactor::git+https://github.com/claration/Impactor.git')
 sha256sums=('SKIP')
 options=('!lto')
 
@@ -34,8 +34,6 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 package/linux/dev.khcrysalis.PlumeImpactor.desktop \
     "$pkgdir/usr/share/applications/dev.khcrysalis.PlumeImpactor.desktop"
-  install -Dm644 package/linux/dev.khcrysalis.PlumeImpactor.metainfo.xml \
-    "$pkgdir/usr/share/metainfo/dev.khcrysalis.PlumeImpactor.metainfo.xml"
   for size in 16 32 48 64 128 256 512; do
     install -Dm644 "package/linux/icons/hicolor/${size}x${size}/apps/dev.khcrysalis.PlumeImpactor.png" \
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/dev.khcrysalis.PlumeImpactor.png"
