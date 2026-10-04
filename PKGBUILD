@@ -1,21 +1,17 @@
 # Maintainer: HorneroOS contributors <https://github.com/HorneroOS/config>
 # Package: hornero-config - curated HorneroOS desktop defaults.
-# Profile selection: HORNERO_PROFILE=base|desktop|developer (default: base).
-# All three names currently resolve to profiles/base, the only curated
-# composition in this repo. Desktop and developer remain accepted aliases
-# so callers can request them today without breaking when curated
-# desktop/developer compositions land later.
+# Profile selection: HORNERO_PROFILE=base (default and only shipped composition).
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)"
 arch=('any')
 url="https://github.com/HorneroOS/config"
 license=('MIT')
-# python-materialyoucolor: lib/dots/generate-m3-colors.py (theme switching via
-# `horneroctl scheme regenerate`); without it every theme set rolls back.
+# python-materialyoucolor: lib/hornero/generate-m3-colors.py (theme switching via
+# `horneroctl appearance scheme regenerate`); without it every theme set rolls back.
 depends=('bash' 'git' 'python' 'python-materialyoucolor')
 makedepends=('librsvg')
 optdepends=(
@@ -37,7 +33,7 @@ optdepends=(
 # Named "config" (not "$pkgname") so the checkout lands at
 # "${srcdir}/config", matching _hornero_repo_root() below and keeping
 # AUR chroot builds identical to local packaging/ builds.
-source=("config::git+https://github.com/HorneroOS/config.git#tag=v0.2.3")
+source=("config::git+https://github.com/HorneroOS/config.git#tag=v0.3.0")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
@@ -58,11 +54,11 @@ _hornero_repo_root() {
 _hornero_profile_manifest() {
   local profile="${HORNERO_PROFILE:-base}"
   case "$profile" in
-    base|desktop|developer)
+    base)
       printf '%s:%s' "$profile" "profiles/base/profile.toml"
       ;;
     *)
-      echo "error: unknown HORNERO_PROFILE='$profile' (want base, desktop, or developer)" >&2
+      echo "error: unknown HORNERO_PROFILE='$profile' (want base)" >&2
       return 1
       ;;
   esac
@@ -142,10 +138,10 @@ package() {
     "$pkgdir/etc/xdg/hornero/shell.json"
 
   # Implementation libraries, CLI adapters, and theme recipes.
-  # Staged canonical hornero/* is the source; dots/* are back-compat symlinks.
+  # Stage the canonical Hornero data and configuration paths.
   mkdir -p "$pkgdir/usr/share/hornero/lib"
-  cp -a "$stage/.local/lib/dots" "$pkgdir/usr/share/hornero/lib/dots"
-  cp -a "$stage/.local/bin"/dots-* "$pkgdir/usr/share/hornero/bin/"
+  cp -a "$stage/.local/lib/hornero" "$pkgdir/usr/share/hornero/lib/hornero"
+  cp -a "$stage/.local/bin"/hornero-* "$pkgdir/usr/share/hornero/bin/"
   mkdir -p "$pkgdir/usr/share/hornero/themes"
   cp -a "$stage/.local/share/hornero/themes/." "$pkgdir/usr/share/hornero/themes/"
   # Layout presets are authored by HorneroOS/shell and copied into this
@@ -207,7 +203,7 @@ package() {
     -type d -exec chmod 755 {} +
   find "$pkgdir/etc/xdg" "$pkgdir/etc/systemd/user" "$pkgdir/usr/share/hornero" "$pkgdir/usr/share/themes" \
     -type f -exec chmod 644 {} +
-  chmod 755 "$pkgdir"/usr/share/hornero/bin/dots-*
+  chmod 755 "$pkgdir"/usr/share/hornero/bin/hornero-*
   chmod 755 "$pkgdir"/etc/xdg/hypr/scripts/*.sh
 
   # Ship the license alongside the payload for offline inspection.
