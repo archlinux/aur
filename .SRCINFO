@@ -1,0 +1,21 @@
+pkgbase = commit-sage-bin
+	pkgdesc = AI-powered git commit message generator (prebuilt binary)
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/AhmedOsman101/commit-sage-cli
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = gcc-libs
+	provides = commit-sage=2.1.0
+	conflicts = commit-sage
+	options = !strip
+	source = https://raw.githubusercontent.com/AhmedOsman101/commit-sage-cli/v2.1.0/LICENSE
+	sha256sums = bbd34c3771c7de3e8369e916892fb70af83a3c6926b9c0a3499716c7c7626bd9
+	source_x86_64 = https://github.com/AhmedOsman101/commit-sage-cli/releases/download/v2.1.0/commit-sage-linux-x64
+	sha256sums_x86_64 = dda34a747ceaae16aab88fd84a3efdd9a25246b93317a5d3322e47ec71d7dbd3
+	source_aarch64 = https://github.com/AhmedOsman101/commit-sage-cli/releases/download/v2.1.0/commit-sage-linux-arm64
+	sha256sums_aarch64 = 176e2bf9d9789d4dcc52915c5fe657f1e0a97ad3fc6704c0097ed8f5031a5464
+
+pkgname = commit-sage-bin
