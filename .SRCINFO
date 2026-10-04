@@ -1,6 +1,6 @@
 pkgbase = neferwl-git
 	pkgdesc = Minimal Wayland compositor with column tiling, for the TTY (git version)
-	pkgver = 0.2.0.r0.g13c6a90
+	pkgver = 0.3.0.r0.gcf370a0
 	pkgrel = 1
 	url = https://github.com/bnema/neferwl
 	install = neferwl.install
