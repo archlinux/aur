@@ -1,12 +1,13 @@
 pkgbase = r-heplots
 	pkgdesc = Visualizing Hypothesis Tests in Multivariate Linear Models
-	pkgver = 1.8.5
+	pkgver = 1.8.6
 	pkgrel = 1
 	url = https://cran.r-project.org/package=heplots
 	arch = any
 	license = GPL-2.0-or-later
 	depends = r-car
 	depends = r-generics
+	depends = r-glue
 	depends = r-magrittr
 	depends = r-purrr
 	depends = r-rgl
@@ -24,7 +25,6 @@ pkgbase = r-heplots
 	optdepends = r-effectsize
 	optdepends = r-ggbiplot
 	optdepends = r-ggplot2
-	optdepends = r-glue
 	optdepends = r-gplots
 	optdepends = r-here
 	optdepends = r-htmltools
@@ -45,8 +45,8 @@ pkgbase = r-heplots
 	optdepends = r-tidyr
 	optdepends = r-tinytable
 	optdepends = r-vcdextra
-	source = https://cran.r-project.org/src/contrib/heplots_1.8.5.tar.gz
-	md5sums = b115b4d28c34cc15ebc1f90114d029b5
-	b2sums = 6747bfd442128b950d1e12079603d7d78c387ddeca4c3a2b80b21ee7990867819b8d61e2843e3b4331c7531947d11e3a6d0e1791053e7400e0c0cff47b4346b3
+	source = https://cran.r-project.org/src/contrib/heplots_1.8.6.tar.gz
+	md5sums = a2d4beb4e52bd204f5a0539a438060d7
+	b2sums = a92f7a8e3455923f52c4fea25f7b9c7bc3f2583afa736b49257869aba1a78fbeb0faa21867b12ce70d6c5d9716fb15317f48942936b6d1d3b71d243c7746c568
 
 pkgname = r-heplots
