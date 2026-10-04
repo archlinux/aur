@@ -1,6 +1,6 @@
 # Maintainer: shimoxi123 <shimoxijimu@163.com>
 pkgname=zorite
-pkgver=0.11.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="A local-first outliner and daily-journal note app (Logseq-style)."
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=(
 # rust 已包含 cargo；git 依赖由 cargo 内置的 libgit2 拉取，无需 git 包
 makedepends=('rust' 'pkg-config')
 source=("https://github.com/packetThrower/zorite/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9b85435b0c936b02fde21aaa9d66b37fd043dd35223e971279ee3e952c0c9c2a')
+sha256sums=('34ae5110b398358e1267bd6d0ceaab305a55115fa2c41e2d11073b1a54074235')
 
 build() {
   cd "$srcdir/zorite-$pkgver"
