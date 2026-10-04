@@ -20,6 +20,8 @@ depends=(
   'python-pyperclip>=1.8.2'
 	'python-arc4>=0.3.0'
   'python-pillow>=9.0.0'
+  'glibc'
+  'libgcc'
 )
 makedepends=(
   'python-build'
@@ -32,20 +34,18 @@ makedepends=(
 )
 source=("git+$url#tag=$pkgver")
 b2sums=('7322f50aeaf084677c40f2e54bfa87e23c2c0206428d42377d91f1b3c03a92ed2bbd984d27d336b7039de4c4b115567bc45a4894aac1f3c90657ad201cc93db9')
-options=(!lto)
+#options=(!lto)
 
 prepare() {
   cd "$_name/$_name/utils/rlers"
   git clean -dfx
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_HOME="$srcdir/cargo"
   cargo fetch --locked --target host-tuple
 }
 
 build() {
   cd "$_name"
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_HOME="$srcdir/cargo"
   python -m build -wnx
 }
 
