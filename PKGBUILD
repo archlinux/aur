@@ -3,7 +3,7 @@
 
 pkgname=go-typ0
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive CLI tool for typing practice and speed tests, built with Bubble Tea"
 arch=('x86_64')
 url="https://github.com/TusharIbtekar/go-typ0"
@@ -14,15 +14,18 @@ _tag="v1.1.2"
 _srcdir="go-typ0-1.1.2"
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/TusharIbtekar/go-typ0/tar.gz/refs/tags/$_tag")
 sha256sums=('49c4e2bbdea8a96aefff49b6e1184873a99a668fa8538496307534eb78f33d60')
-function build() {
+
+build() {
 	cd "$_srcdir"
 	export CGO_ENABLED=0
 	export GOFLAGS="-trimpath -mod=readonly -modcacherw"
 	go build -o "$pkgname" ./cmd/typ0
 }
-function package() {
+
+package() {
 	cd "$_srcdir"
 	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	fi
