@@ -1,7 +1,7 @@
 # Maintainer: HorneroOS contributors <https://github.com/HorneroOS/shell>
 
 pkgname=hornero-shell
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Hornero OS desktop shell, built with Quickshell, QML and Qt for Wayland"
 arch=('x86_64')
@@ -14,10 +14,11 @@ license=('GPL-3.0-or-later')
 # the shell adopts an API newer than the packaged release.
 depends=(
   'aubio'
+  'hornero-config>=0.3.0'
+  'horneroctl-bin>=0.2.0_preview14.2'
   'libcava'
   'libqalculate'
   'pipewire'
-  'python-pywal16'
   'qt6-base'
   'qt6-declarative'
   'quickshell>=0.3.1'
@@ -40,7 +41,7 @@ optdepends=(
   'swappy: screenshot annotation'
   'wl-clipboard: clipboard integration via wl-copy'
 )
-source=("$pkgname::git+https://github.com/HorneroOS/shell.git#tag=v1.1.1")
+source=("$pkgname::git+https://github.com/HorneroOS/shell.git#tag=v1.2.0")
 sha256sums=('SKIP')
 
 build() {
