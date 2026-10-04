@@ -1,0 +1,27 @@
+pkgbase = python-vercel-oidc
+	pkgdesc = OIDC helpers for Vercel Python applications.
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/vercel/vercel-py/src/vercel-oidc
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-cryptography
+	checkdepends = python-trio
+	checkdepends = python-pyjwt
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-anyio
+	depends = python-httpx2
+	depends = python-vercel-headers
+	optdepends = python-pyjwt: verify
+	optdepends = python-cryptography: verify
+	source = vercel-oidc::git+https://github.com/vercel/vercel-py.git#tag=vercel-oidc-v0.9.0
+	sha256sums = 8decb2baa29333c549c350136119cac08ba5509301d183e34b6291574018488c
+
+pkgname = python-vercel-oidc
