@@ -29,8 +29,8 @@
 
 pkgname=kahawai-gstreamer
 pkgver=1.28.7
-pkgrel=1
-_kahawai=0.0.21-rc.1
+pkgrel=2
+_kahawai=0.0.21-rc.2
 _prefix=/opt/kahawai-gstreamer
 pkgdesc="GStreamer with Kahawai's patches, isolated in /opt/kahawai-gstreamer"
 arch=(x86_64 aarch64)
@@ -88,7 +88,7 @@ source=(
 )
 sha256sums=('4aabbbf88837a592d425c592c852c577359df65f62c2f58d57db7695d6ebbaa8'
             'd5acc3e2cd92f09ccfefa357905758274b205ce9b3521ab1d88dbb4072a25f21'
-            'ccacf79d72de94d548ccafa4c885bed33294493a6e3233b2624c53c43c6bc201'
+            '664f0aa523f673da1944773a49728be70ca5b95dcebe5f7364cffb3b002daf1c'
             'ae3fa961395406d8309f7d493a28c084e6350e639b009203d8bee59ef02f2086'
             'a7ca7bc1b9d22296991f993d45a10b0789cb26ed0809a4f9c32c80f044fc83b8')
 
