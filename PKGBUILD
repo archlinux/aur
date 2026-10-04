@@ -1,16 +1,16 @@
-# Maintainer: Javier Orfo <javierorfo@protonmail.com>
+# Maintainer: javy
 
 pkgname=passcualito
-pkgver=0.1.1
-pkgrel=5
+pkgver=0.1.0
+pkgrel=1
 pkgbin=passc
 pkgdesc="Simple Command-Line Password Manager for Linux"
 arch=('x86_64')
-url="https://codeberg.org/caskstrength/passcualito"
+url="https://codeberg.org/javy/passcualito"
 license=('MIT')
 makedepends=('go' 'git')
 source=("$pkgname::git+$url.git#tag=v$pkgver")
-sha512sums=('8c3c69e2b465e9d70bc2b84e277966ab0be08f97e84270bb6ff34e886b86e621af35e03f37b923e65497a64c3b028fce8e0d7109f4f1de05d6c9e961d5ba7ebf')
+sha512sums=('859fe7cd826a489729754d148fc0c7d77fb11d1083c20e12eb38a9176390058ecd360a0e66356d2d80a222190b75d69a3b1a9241e58d9a8f6cbd99bd5f1509bf')
 conflicts=("${pkgname}")
 
 build() {
