@@ -1,0 +1,55 @@
+post_install() {
+    echo -e "\e[1;34m:: 正在部署灵犀 AI 的按需 (On-Demand) 用户服务...\e[0m"
+
+    local post_script="/opt/lingxi-ai/plugin/tools/post-install-linux.sh"
+    if [ -f "$post_script" ]; then
+        sed -i 's/systemctl --user stop.*/true/g' "$post_script"
+        sed -i 's/systemctl --user disable.*/true/g' "$post_script"
+        sed -i '/# ---- 6\. 写 systemd --user/,$d' "$post_script"
+        echo "exit 0" >> "$post_script"
+    fi
+
+    # 2. 在系统用户配置区提供 Service 模板
+    mkdir -p /etc/systemd/user
+    
+    cat > /etc/systemd/user/lingxi-ai.service << 'EOF'
+[Unit]
+Description=Lingxi AI WPS plugin background server
+After=default.target
+
+[Service]
+Type=simple
+Environment=LINGXI_STATIC_PORT=3889
+Environment=PROXY_PORT=3890
+WorkingDirectory=%h
+ExecStartPre=/usr/bin/bash /opt/lingxi-ai/plugin/tools/post-install-linux.sh /opt/lingxi-ai
+ExecStart=/usr/bin/bash %h/.lingxi-ai/tools/service-watchdog.sh --node /opt/lingxi-ai/plugin/runtime/node-linux-x64/bin/node --script %h/.lingxi-ai/tools/serve-permanent.js --root %h/.lingxi-ai --log %h/.lingxi-ai/server.log --static-port 3889 --proxy-port 3890 --idle-seconds 30 --start-now
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target
+EOF
+
+    echo -e "\e[1;32m======================================================================\e[0m"
+    echo -e " 🚀 灵犀 AI (lingxi-ai) 核心文件已安装就绪！"
+    echo -e ""
+    echo -e " \e[1;36m[需要使用的用户，请在普通终端 (无需 sudo) 执行以下命令：]\e[0m"
+    echo -e "   \e[1;33msystemctl --user enable --now lingxi-ai\e[0m"
+    echo -e ""
+    echo -e " (执行后，它会自动完成 WPS 侧边栏的初始化，并驻留后台。重启 WPS 生效)"
+    echo -e "\e[1;32m======================================================================\e[0m"
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo -e "\e[1;34m:: 正在清理系统级 Systemd 注册模板...\e[0m"
+    rm -f /etc/systemd/user/lingxi-ai.service
+    echo -e "\e[1;33m======================================================================\e[0m"
+    echo -e " 卸载完成。若需彻底清理个人空间配置，请手动执行: "
+    echo -e "   \e[1;31mrm -rf ~/.lingxi-ai\e[0m"
+    echo -e "\e[1;33m======================================================================\e[0m"
+}
