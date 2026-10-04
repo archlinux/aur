@@ -3,7 +3,7 @@
 
 pkgname=clipy
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage clipboard history"
 arch=('x86_64')
 url="https://github.com/szktkfm/clipy"
@@ -25,6 +25,11 @@ build() {
 package() {
 	cd "$_srcdir"
 	install -Dm755 "clipy" "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 assets/clipy-demo.gif "$pkgdir/usr/share/doc/$pkgname/clipy-demo.gif"
+	install -d "$pkgdir/usr/share/$pkgname/shell"
+	install -Dm644 shell/clipy.bash "$pkgdir/usr/share/$pkgname/shell/clipy.bash"
+	install -Dm644 shell/clipy.zsh "$pkgdir/usr/share/$pkgname/shell/clipy.zsh"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	fi
