@@ -1,7 +1,7 @@
 pkgbase = maryanne-bin
 	pkgdesc = Maryanne: EPUB & PDF reader with natural voice read-aloud
 	pkgver = 3.11.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://maryanne.app
 	arch = x86_64
 	license = custom

@@ -1,7 +1,7 @@
 # Maintainer: Sentria <admin@sentrialabs.com>
 pkgname=maryanne-bin
 pkgver=3.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Maryanne: EPUB & PDF reader with natural voice read-aloud'
 arch=('x86_64')
 url='https://maryanne.app'
