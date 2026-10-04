@@ -2,12 +2,14 @@ post_install() {
     echo
     echo "==> HDAS installed successfully!"
     echo
-    echo "Enable the hdas service for your init system, then start it."
-    echo "The monitor requires root and SUDO_USER set to your username."
+    echo "systemd:  sudo systemctl enable --now hdas@\$USER"
+    echo "Other init systems (dinit, OpenRC, runit, s6): see"
+    echo "  https://github.com/adelmonte/hdas/tree/master/init"
     echo
 }
 
 post_upgrade() {
+    systemctl daemon-reload 2>/dev/null || true
     echo
     echo "==> HDAS upgraded. Restart the hdas service if running."
     echo

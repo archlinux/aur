@@ -1,5 +1,5 @@
 pkgname=hdas
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Track which packages create files in your home directory using eBPF"
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('rust' 'clang')
 options=(!lto)
 install=hdas.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f3d05d3a4a515b322924d8f9fc278aa745ba7d558ad0ab43744ef0ac588bd8c3')
+sha256sums=('f7b20acab9996416d6f8a40206f6247b9b700610c052615d81669d9d8c64415b')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -20,6 +20,7 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "target/release/hdas" "$pkgdir/usr/bin/hdas"
+    install -Dm644 "hdas@.service" "$pkgdir/usr/lib/systemd/system/hdas@.service"
 
     # Shell completions
     install -dm755 "$pkgdir/usr/share/bash-completion/completions"
