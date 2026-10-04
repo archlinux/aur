@@ -1,7 +1,7 @@
 pkgbase = musetext-git
 	pkgdesc = Minimalist text animation tool that renders transparent WebM video with FFmpeg
 	pkgver = v.261004
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aydevix/muse
 	arch = x86_64
 	license = GPL-3.0-or-later

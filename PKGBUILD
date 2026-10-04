@@ -2,7 +2,7 @@
 
 pkgname=musetext-git
 pkgver=v.261004
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalist text animation tool that renders transparent WebM video with FFmpeg"
 arch=('x86_64')
 url="https://github.com/aydevix/muse"
@@ -40,4 +40,7 @@ package() {
 	install -Dm755 "musetext-$pkgver-$CARCH" "$pkgdir/usr/bin/muse"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	# Desktop entry so Muse shows up in the application menu, plus its icon.
+	install -Dm644 dev.muse.Animator.desktop "$pkgdir/usr/share/applications/dev.muse.Animator.desktop"
+	install -Dm644 logo/muse-logo.png "$pkgdir/usr/share/icons/hicolor/1000x1000/apps/muse.png"
 }
