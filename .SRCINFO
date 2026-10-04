@@ -1,8 +1,8 @@
 pkgbase = ahfail
 	pkgdesc = Screen locker that says 'ah ah ah, you didn't say the magic word' on a wrong password
 	pkgver = 0.10.2
-	pkgrel = 1
-	url = https://gitea.weircon.dk/agw/gtk-ahfail
+	pkgrel = 2
+	url = https://asger.weirsøe.dk/en/projects/ahfail
 	install = ahfail.install
 	arch = x86_64
 	license = AGPL-3.0-only

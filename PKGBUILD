@@ -1,4 +1,5 @@
 # Maintainer: Asger Geel Weirsoe <asger at weircon dot dk>
+#   build recipe:  https://gitea.weircon.dk/agw/gtk-ahfail
 #
 # DISCLAIMER
 #
@@ -20,10 +21,11 @@
 #    will be replaced.
 pkgname=ahfail
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Screen locker that says 'ah ah ah, you didn't say the magic word' on a wrong password"
 arch=('x86_64')
-url="https://gitea.weircon.dk/agw/gtk-ahfail"
+url="https://asger.weirsøe.dk/en/projects/ahfail"
+_repo="https://gitea.weircon.dk/agw/gtk-ahfail"
 license=('AGPL-3.0-only')
 # gst-plugins-bad-libs: libgstplayer. gst-plugins-base/-good are runtime plugins
 # (audio conversion, the mpg123 mp3 decoder) that namcap cannot see being used.
@@ -38,7 +40,7 @@ optdepends=('pipewire-pulse: raise the volume to 100% on a failed attempt (or li
 backup=('etc/pam.d/ahfail')
 install=ahfail.install
 options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$_repo/archive/v$pkgver.tar.gz")
 sha256sums=('7a437e3c813c0302ef9864d0ad6acbb7746aad4178e66f5a772c08d7808f07d2')
 
 prepare() {
