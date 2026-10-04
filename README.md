@@ -4,26 +4,22 @@ AUR packaging for the prebuilt Mango Layout Tray release. It downloads the Linux
 x86_64 archive from GitHub and installs the app, its bundled layer-shell library,
 desktop entry, icon, documentation, and licenses. Rust is not needed.
 
-The upstream GitHub repository is currently private. Make it public before
-publishing this package to AUR so its release archive can be downloaded without
-GitHub credentials. The package has been built locally using the same verified
-release archive, downloaded with the maintainer's authenticated GitHub session.
+Install with an AUR helper:
 
-Build and install locally:
+```sh
+yay -S mango-layout-tray-bin
+```
+
+Or build and install locally:
 
 ```sh
 makepkg -si
 ```
 
-The `origin` remote points to the intended AUR repository. Once your AUR account
-and SSH key are ready, publish the prepared commit:
-
-```sh
-git push -u origin master
-```
-
-This repository has not been pushed to AUR. `mango-layout-tray-bin` provides and
-conflicts with the source package `mango-layout-tray`.
+The public GitHub release archive is checked against its pinned SHA256 checksum.
+`mango-layout-tray-bin` provides and conflicts with the source package
+`mango-layout-tray`. The `origin` remote points to its AUR repository; publish
+updates with `git push origin master`.
 
 For a new release, update `pkgver`, reset `pkgrel` to `1`, replace the archive's
 SHA256 checksum, then regenerate the metadata and test the package:
