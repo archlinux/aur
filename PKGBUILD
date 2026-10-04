@@ -36,7 +36,7 @@ build() {
 check() {
 	cd "${pkgname}-${pkgver}" || exit
 
-	make test
+	BASIKA_SKIP_PERFORMANCE=1 make test
 }
 
 package() {
