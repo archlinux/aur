@@ -3,7 +3,7 @@
 
 _pkgname=nitrolaunch
 pkgname=$_pkgname-cli
-pkgver=0.32.1
+pkgver=0.32.2
 pkgrel=1
 pkgdesc="A fast, extensible, and powerful Minecraft launcher (CLI Version)"
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 depends=(glibc gcc-libs)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a49d178c3b88577bb09ebe6d7e770ae23c06f2c6aeb8d06cf36b849652878de4')
+sha256sums=('f342017e45d2550a7d1cf0d3b3475b3c75800ea0d3759a45af8c360d6f0d0b27')
 options=(!lto)
 
 prepare() {
