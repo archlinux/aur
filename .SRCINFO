@@ -1,0 +1,24 @@
+pkgbase = katemark-git
+	pkgdesc = GitHub-styled live Markdown preview for Kate (KTextEditor/KF6)
+	pkgver = 0.4.1.r0.gcc3f815
+	pkgrel = 1
+	url = https://github.com/obook/katemark
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = ktexteditor
+	depends = syntax-highlighting
+	depends = kxmlgui
+	depends = kconfig
+	depends = ki18n
+	depends = kcoreaddons
+	depends = qt6-base
+	depends = qt6-webengine
+	provides = katemark
+	conflicts = katemark
+	source = git+https://github.com/obook/katemark.git
+	sha256sums = SKIP
+
+pkgname = katemark-git
