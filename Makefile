@@ -1,7 +1,5 @@
 include prelude.mk
 
-PKG_NAME := cmake-common
-
 .PHONY: all
 all: build
 
@@ -16,13 +14,13 @@ build:
 commit:
 	@echo '====================================================== Commit ==='
 	git add PKGBUILD .SRCINFO
-	source ./PKGBUILD && git commit -m "aur: $$pkgver-$$pkgrel"
+	source PKGBUILD && git commit -m "aur: $$pkgver-$$pkgrel"
 	@echo '================================================================='
 
 .PHONY: push
 push:
 	@echo '================================================= Push to AUR ==='
-	git push 'ssh://aur@aur.archlinux.org/$(call escape,$(PKG_NAME)).git' "$$( git symbolic-ref HEAD ):master"
+	source PKGBUILD && git push "ssh://aur@aur.archlinux.org/$$pkgname.git" "$$( git symbolic-ref HEAD ):master"
 	@echo '============================================ Push to upstream ==='
 	git push
 	@echo '================================================================='
