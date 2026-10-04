@@ -1,7 +1,7 @@
 pkgbase = rsnip
 	pkgdesc = A powerful command-line snippet manager
 	pkgver = 0.7.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/sysid/rsnip
 	arch = x86_64
 	license = custom
