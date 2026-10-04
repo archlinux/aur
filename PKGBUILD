@@ -3,13 +3,14 @@
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
 pkgver="0.9"
-pkgrel="0"
+pkgrel="1"
 _name="notebook"
 pkgname="$_name"
 pkgdesc='Markdown Desktop Wiki'
 url='https://codeberg.org/tuxnix/notebook'
 arch=('any')
 license=('GPL-2.0-only')
+backup=('etc/notebook.conf' 'etc/$notebook.conf.py')
 depends=('pandoc' 'python')
 optdepends=(
     'retext: Markdown-Editor for writing notebooks'
@@ -23,6 +24,7 @@ optdepends=(
 makedepends=('git')
 source=('git+https://codeberg.org/tuxnix/notebook')
 sha512sums=('SKIP')
+install="$_name.install"
 
 package() {
     cd "$srcdir/$_name"
@@ -37,7 +39,7 @@ package() {
     install -Dm644 "tamplate.html" "$pkgdir/usr/share/$_name/tamplate.html"
     install -Dm644 "rename-links.lua" "$pkgdir/usr/share/$_name/rename-links.lua"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_name/LICENSE"
-    #install -Dm644 "README.md" "$pkgdir/usr/share/doc/$_name/README.md"
+    # install -Dm644 "README.md" "$pkgdir/usr/share/doc/$_name/README.md"
 
     # Manpage (falls vorhanden):
     if [[ -f "$_name.1" ]]; then

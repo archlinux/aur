@@ -1,8 +1,9 @@
 pkgbase = notebook
 	pkgdesc = Markdown Desktop Wiki
 	pkgver = 0.9
-	pkgrel = 0
+	pkgrel = 1
 	url = https://codeberg.org/tuxnix/notebook
+	install = notebook.install
 	arch = any
 	license = GPL-2.0-only
 	makedepends = git
@@ -15,6 +16,8 @@ pkgbase = notebook
 	optdepends = python-pyqt6-webengine: Web engine for ReText
 	optdepends = python-flask: For serving sides from browser to editor
 	optdepends = nodejs: JavaScript-functions browser like search
+	backup = etc/notebook.conf
+	backup = etc/$notebook.conf.py
 	source = git+https://codeberg.org/tuxnix/notebook
 	sha512sums = SKIP
 
