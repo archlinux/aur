@@ -1,6 +1,6 @@
 pkgbase = music-tui
-	pkgdesc = A keyboard- and mouse-driven terminal music player built with ratatui
-	pkgver = 0.1.1
+	pkgdesc = A keyboard and mouse-driven terminal music player built with ratatui
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/adelmonte/music-tui
 	install = music-tui.install
@@ -9,7 +9,7 @@ pkgbase = music-tui
 	makedepends = cargo
 	depends = alsa-lib
 	options = !lto
-	source = music-tui-0.1.1.tar.gz::https://github.com/adelmonte/music-tui/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 40f0ca742e24f86b988348b0cc1a30c4855e3db0e48071635e4e11beb5de9d8b
+	source = music-tui-0.1.2.tar.gz::https://github.com/adelmonte/music-tui/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = d22428db3dea0858a9eeb595745286431b4995db4e0f26bd3591c333b612c129
 
 pkgname = music-tui
