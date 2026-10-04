@@ -1,6 +1,6 @@
 pkgbase = rassumfrassum
 	pkgdesc = LSP/JSONRPC multiplexer for connecting one LSP client to multiple servers
-	pkgver = 0.3.4
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://github.com/joaotavora/rassumfrassum
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = rassumfrassum
 	makedepends = python-installer
 	makedepends = git
 	depends = python>=3.10
-	source = rassumfrassum-0.3.4::git+https://github.com/joaotavora/rassumfrassum.git#tag=v0.3.4
-	sha256sums = 8991ceecb44b5b46727e5d72d8183df9f93057ac4af4f15b1dae05236c57c5d6
+	source = rassumfrassum-0.3.5::git+https://github.com/joaotavora/rassumfrassum.git#tag=v0.3.5
+	sha256sums = 245be3632b6175eda1dec95beae215f837e2b560d024db30be4d78b11a593cdf
 
 pkgname = rassumfrassum

@@ -1,7 +1,7 @@
 # Maintainer: Frestein <fresteinart@gmail.com>
 
 pkgname=rassumfrassum
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="LSP/JSONRPC multiplexer for connecting one LSP client to multiple servers"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python>=3.10')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'git')
 source=("${pkgname}-${pkgver}::git+https://github.com/joaotavora/rassumfrassum.git#tag=v${pkgver}")
-sha256sums=('8991ceecb44b5b46727e5d72d8183df9f93057ac4af4f15b1dae05236c57c5d6')
+sha256sums=('245be3632b6175eda1dec95beae215f837e2b560d024db30be4d78b11a593cdf')
 
 build() {
   cd "${pkgname}-${pkgver}"
