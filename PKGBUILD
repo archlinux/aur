@@ -4,7 +4,7 @@ pkgname=doudou-bin
 pkgver=22.0.0
 pkgrel=1
 pkgdesc="The final music player"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://openlyst.ink"
 license=('GPL3')
 depends=('gtk3')
@@ -12,8 +12,10 @@ optdepends=()
 provides=('doudou')
 conflicts=('doudou')
 options=('!strip')
-source=("doudou-bin-${pkgver}.zip::https://gitlab.com/Openlyst/doudou/-/releases/v22.0.0/downloads/doudou-linux-x64-22.0.0-2026-09-16.zip")
-sha256sums=('SKIP')
+source_x86_64=("doudou-bin-${pkgver}-x86_64.zip::https://gitlab.com/Openlyst/doudou/-/releases/v22.0.0/downloads/doudou-linux-x64-22.0.0-2026-09-13.zip")
+source_aarch64=("doudou-bin-${pkgver}-aarch64.zip::https://gitlab.com/Openlyst/doudou/-/releases/v22.0.0/downloads/doudou-linux-arm64-22.0.0-2026-09-13.zip")
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 
 package() {
     cd "${srcdir}/bundle"
