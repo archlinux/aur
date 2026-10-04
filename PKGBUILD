@@ -1,7 +1,7 @@
 # Maintainer: sinder <smirnov.sinder@gmail.com>
 pkgname=live-paper-bin
 _pkgname=live-paper
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A Wayland video wallpaper engine (prebuilt binary)"
 arch=('x86_64')
@@ -13,9 +13,9 @@ conflicts=('live-paper')
 source=("$_pkgname-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/live-paper-linux-x86_64.tar.gz"
         "LICENSE-$pkgver::$url/raw/v$pkgver/LICENSE"
         "config.example-$pkgver.toml::$url/raw/v$pkgver/config.example.toml")
-sha256sums=('db1687a83077a0b0df0f431fea466e10d81665a0760286852c0fdc1add784f96'
+sha256sums=('e2cc9083232c9f047f5ae1bd77afe8287fc2a8bd551be10d0f5ea589f6a863dc'
             '1c602b2b246b5b2decd611a21c3e20456f442b1b585b60222e10836aed53c0d9'
-            '6a7d64d698e6cf5d2319a80e9aed825ff45340dda44a1699d8976159ec5131af')
+            '1db4595ae8180484d7b4b8f81059c6bc5ff38cd32795eaa40fe7cb779265b7ba')
 
 package() {
     install -Dm755 "$srcdir/live-paper-linux-x86_64" "$pkgdir/usr/bin/live-paper"
