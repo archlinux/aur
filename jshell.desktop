@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Oracle Java 26 Shell
-Comment=Oracle Java 26 Shell
+Name=Oracle Java 27 Shell
+Comment=Oracle Java 27 Shell
 Keywords=java;shell
-Exec=/usr/lib/jvm/java-26-jdk/bin/jshell
+Exec=/usr/lib/jvm/java-27-jdk/bin/jshell
 Terminal=true
 Type=Application
 Icon=java-jdk

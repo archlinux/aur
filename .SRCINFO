@@ -1,28 +1,28 @@
 pkgbase = jdk
 	pkgdesc = Oracle Java
-	pkgver = 26.0.2
+	pkgver = 27
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	arch = x86_64
 	license = LicenseRef-Custom
 	makedepends = python-html2text
 	makedepends = alsa-lib
-	noextract = jdk-26.0.2_doc-all.zip
-	source = https://download.oracle.com/java/26/archive/jdk-26.0.2_linux-x64_bin.tar.gz
-	source = https://download.oracle.com/otn_software/java/jdk/26.0.2+10/818d462d89b645c7a1aad49066c454e5/jdk-26.0.2_doc-all.zip
-	source = jdk-26_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-26-final-spec/license.html
+	noextract = jdk-27_doc-all.zip
+	source = https://download.oracle.com/java/27/archive/jdk-27_linux-x64_bin.tar.gz
+	source = https://download.oracle.com/otn_software/java/jdk/27+35/55ce5470a6294008af0057ff4626d0e5/jdk-27_doc-all.zip
+	source = jdk-27_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-27-final-spec/license.html
 	source = java.desktop
 	source = jconsole.desktop
 	source = jshell.desktop
 	source = java_16.png
 	source = java_48.png
 	source = LICENSE
-	sha256sums = 11de2bce72e7f07b9e80afa9bdd950b42f3a5c69cf4969e44389d50f466959e2
-	sha256sums = b6600b90e3d177d8b02a278761ac2ec59742682a722bad281421013844e0e875
-	sha256sums = 27984b214d135bc4f6fb04c2d2cb85de8b9ad55f7b5752bf128f58c62e11ddcc
-	sha256sums = 0a0c33a4cebf59d365a95869f0513a8f2b54ed69db7c8b8220f364b4a3069726
-	sha256sums = 25aa549dfc515ca177e416bc1635db85655db2d2e9c77ea153b8768e11953b16
-	sha256sums = 3e59f0f2e134b87deedb10469a331f974d5b575d748633dcc1e3000f798a9c89
+	sha256sums = 0c7bb6c33c7fcc46674054cab734e3ca027ba05323c6c6ecbc8786f76a45b155
+	sha256sums = 767e992ce20e86a0452570ff9c0e0ee3bafb7a05ca99d5555634a9552011c0be
+	sha256sums = 64c4284265aa0d7f0499dbb8eb9cc1d86ad75570e92e8b31675e6dc806ef001e
+	sha256sums = d3db8fd5b469110709dc4986b3ef8d858bfeb77851a32ff0d1c7df7e0a0e075f
+	sha256sums = 72bbb9357debef6f03e5ee9a26189cd3e1a4f2c670595742b7f25b0b47caf044
+	sha256sums = 848acd359383b9d0a496a33f9146a25f31ec1343d1bde6896fff6b640da1b863
 	sha256sums = d27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed
 	sha256sums = 7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176
 	sha256sums = 20becfcac0bdeaa29a76e6966d727f8cc79381354cbd5d530cdec823954df19f
@@ -42,12 +42,12 @@ pkgname = jre
 	depends = zlib
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
-	provides = java-runtime=26
-	provides = java-runtime-jdk26
-	provides = jre26-jdk=26.0.2-1
-	provides = java-runtime-headless=26
-	provides = java-runtime-headless-jdk=26
-	provides = jre26-jdk-headless=26.0.2-1
+	provides = java-runtime=27
+	provides = java-runtime-jdk27
+	provides = jre27-jdk=27-1
+	provides = java-runtime-headless=27
+	provides = java-runtime-headless-jdk=27
+	provides = jre27-jdk-headless=27-1
 	conflicts = jdk
 	backup = etc/java-jdk/jaxp.properties
 	backup = etc/java-jdk/jaxp-strict.properties.template
@@ -83,16 +83,16 @@ pkgname = jdk
 	depends = hicolor-icon-theme
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
-	provides = java-environment=26
-	provides = java-environment-jdk=26
-	provides = jdk26-jdk=26.0.2-1
-	provides = jre=26
-	provides = java-runtime=26
-	provides = java-runtime-jdk26
-	provides = jre26-jdk=26.0.2-1
-	provides = java-runtime-headless=26
-	provides = java-runtime-headless-jdk=26
-	provides = jre26-jdk-headless=26.0.2-1
+	provides = java-environment=27
+	provides = java-environment-jdk=27
+	provides = jdk27-jdk=27-1
+	provides = jre=27
+	provides = java-runtime=27
+	provides = java-runtime-jdk27
+	provides = jre27-jdk=27-1
+	provides = java-runtime-headless=27
+	provides = java-runtime-headless-jdk=27
+	provides = jre27-jdk-headless=27-1
 	conflicts = jre
 	backup = etc/java-jdk/jaxp.properties
 	backup = etc/java-jdk/jaxp-strict.properties.template
