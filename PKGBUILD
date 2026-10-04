@@ -1,25 +1,29 @@
 pkgname=clash-nyanpasu-bin
 _pkgname=clash-nyanpasu
-pkgver=1.6.1
-pkgrel=3
+_upstream_tag=v2.0.0-beta.1
+_source_url=https://github.com/libnyanpasu/clash-nyanpasu/releases/download/v2.0.0-beta.1/Clash.Nyanpasu_2.0.0-beta.1_amd64.deb
+pkgver=2.0.0beta.1
+pkgrel=1
 pkgdesc="A Clash GUI based on tauri. Clash Nyanpasu! (∠・ω< )⌒☆​"
 arch=('x86_64')
 url="https://github.com/LibNyanpasu/clash-nyanpasu"
 license=('GPL3')
 options=('!strip' '!debug')
-depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator' 'mihomo')
+depends=(webkit2gtk-4.1 gtk3 libayatana-appindicator mihomo)
+makedepends=('libarchive')
 conflicts=('clash-nyanpasu-git' 'clash-nyanpasu-appimage' 'clash-nyanpasu')
 provides=('clash-nyanpasu')
 optdepends=('clash-rs: custom protocol network proxy, coding with rust')
-source=("${_pkgname}-${pkgver}-${arch}.deb::https://github.com/LibNyanpasu/clash-nyanpasu/releases/download/v${pkgver}/clash-nyanpasu_${pkgver}_amd64.deb")
-sha256sums=('d7dd4c86aede61060da983be6b81b5b1047fea11bc59c1702e7e4011d371d23e')
+source=("${_pkgname}-${pkgver}-${CARCH}.deb::${_source_url}")
+sha256sums=('4b731a1f47983a6cef330b093a8dc3c6bb3675ede7d5f37893797c63617ec4e3')
 
 package() {
-  tar xpf data.tar.gz -C ${pkgdir}
-  rm ${pkgdir}/usr/bin/clash
-  rm ${pkgdir}/usr/bin/mihomo
-  rm ${pkgdir}/usr/bin/clash-rs
-  rm ${pkgdir}/usr/bin/mihomo-alpha
+  local -a data_archives=("${srcdir}"/data.tar.*)
+  if (( ${#data_archives[@]} != 1 )) || [[ ! -f ${data_archives[0]} ]]; then
+    printf '%s\n' 'Expected exactly one Debian data archive' >&2
+    return 1
+  fi
+  bsdtar -xf "${data_archives[0]}" -C "${pkgdir}"
+  rm -f "${pkgdir}"/usr/bin/{clash,mihomo,clash-rs,mihomo-alpha,clash-rs-alpha,meow}
   # thanks https://aur.archlinux.org/clash-meta-is-mihomo.git
-
 }
