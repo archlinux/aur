@@ -1,7 +1,7 @@
 pkgbase = omarchist-bin
 	pkgdesc = A GUI app for Omarchy Linux.
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/tahayvr/omarchist
 	install = omarchist.install
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = omarchist-bin
 	provides = omarchist
 	conflicts = omarchist
 	conflicts = omarchist-git
-	source_x86_64 = omarchist-linux-x86_64-1.0.1.tar.gz::https://github.com/tahayvr/omarchist/releases/download/v1.0.1/omarchist-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 93b08b60990b50839de4100d5d8944ff822e142769c33b74eed02b749dec2773
-	source_aarch64 = omarchist-linux-aarch64-1.0.1.tar.gz::https://github.com/tahayvr/omarchist/releases/download/v1.0.1/omarchist-linux-aarch64.tar.gz
-	sha256sums_aarch64 = c0f093fdaabc3cdcfb0062d44c368a84d88b376c2cd8e543dddf1e368b7ff8c1
+	source_x86_64 = omarchist-linux-x86_64-2.0.0.tar.gz::https://github.com/tahayvr/omarchist/releases/download/v2.0.0/omarchist-linux-x86_64.tar.gz
+	sha256sums_x86_64 = d0da1516e491dfe4c305225af886db1f0834195d6723e9e053d5f3a437d3f739
+	source_aarch64 = omarchist-linux-aarch64-2.0.0.tar.gz::https://github.com/tahayvr/omarchist/releases/download/v2.0.0/omarchist-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 74bf51b9d91fd7482a3329a0e69f7315b27d56edf08c7caced26593e9480f43c
 
 pkgname = omarchist-bin
