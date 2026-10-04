@@ -1,0 +1,27 @@
+pkgbase = sable-next-git
+	pkgdesc = Sable rewrite in Rust and Svelte
+	pkgver = 0.0.2
+	pkgrel = 1
+	url =  https://next.sable.moe
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = alsa-lib
+	depends = gtk3
+	depends = libcups
+	depends = libpipewire
+	depends = libxkbcommon
+	depends = mesa
+	depends = nspr
+	depends = nss
+	makedepends = ccache
+	makedepends = cmake
+	makedepends = mise
+	makedepends = xdotool
+  	makedepends = wget
+	options = !lto
+	options = !debug
+	conflicts=sable-next
+	source = sable-next-git::git+https://git.sable.moe/SableClient/sable-next.git
+	sha256sums = SKIP
+
+pkgname = sable-next-git
