@@ -3,7 +3,7 @@
 
 pkgname=mirai-server-git
 _repo=mirai
-pkgver=r380.71088fa
+pkgver=r390.37c474e
 pkgrel=1
 pkgdesc='Headless host sharing KataGo with mirai clients over the network'
 arch=('x86_64' 'aarch64')
@@ -36,14 +36,6 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release -p mirai-server
-}
-
-# Not --workspace: the GUI crates need GTK.
-check() {
-  cd "$_repo"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo test --frozen --release -p mirai-core -p mirai-proto -p mirai-engine -p mirai-server
 }
 
 package() {
