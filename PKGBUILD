@@ -1,18 +1,18 @@
-# Maintainer: Cask Strength
+# Maintainer: javy
 
 pkgname=archbeg
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=2
 pkgdesc="Software to use AUR (Arch User Repository) outside AUR."
 arch=('x86_64')
-url="https://codeberg.org/caskstrength/archbeg"
+url="https://codeberg.org/javy/archbeg"
 license=('MIT')
 depends=('curl' 'libundr' 'libarchive')
 makedepends=('gcc')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("$pkgname::git+$url.git#tag=$pkgver")
-sha512sums=('06eac12905d0e7d6de533d0714420fc59c339ab0cbe574dfb33798deca777228e49e031477d52f40d06a2a7b77f122c55a7d71dbf87fcdc91fcea9cda3f0a1d3')
+sha512sums=('835f8884a7d571b93592bbc827d1856ecda7b39e7421bce9bbeb55f68bc1e384a4f9a18855c9e12338167f53dfea6f138c0eb37fda92bf7225815246f92584a6')
 
 build() {
   cd "$pkgname"
