@@ -1,7 +1,7 @@
 pkgbase = python-tree-sitter-swift
 	pkgdesc = Swift grammar for tree-sitter
-	pkgver = 0.7.3
-	pkgrel = 2
+	pkgver = 0.7.4
+	pkgrel = 1
 	url = https://github.com/alex-pinkus/tree-sitter-swift
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = python-tree-sitter-swift
 	makedepends = python-setuptools
 	depends = python
 	depends = python-tree-sitter
-	source = python-tree-sitter-swift-0.7.3.tar.gz::https://files.pythonhosted.org/packages/source/t/tree_sitter_swift/tree_sitter_swift-0.7.3.tar.gz
-	sha256sums = a87f1dba3050a346ee3442aad8d727afd74555dea258e31c71c7934d8c04af9b
+	source = python-tree-sitter-swift-0.7.4.tar.gz::https://files.pythonhosted.org/packages/source/t/tree_sitter_swift/tree_sitter_swift-0.7.4.tar.gz
+	sha256sums = 1676a8ee04442993b84c239291d5976b823d22d25b02cfc5161a1bd644b390f5
 
 pkgname = python-tree-sitter-swift
