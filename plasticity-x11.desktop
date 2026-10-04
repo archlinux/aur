@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Plasticity (X11)
+Comment=Run Plasticity with X11 or XWayland
+GenericName=3D CAD Modeler
+Exec=plasticity --x11 %U
+Icon=plasticity
+Type=Application
+StartupNotify=true
+Categories=Graphics;3DGraphics;
+Keywords=CAD;3D;Modeling;Modelling;Design;X11;XWayland;

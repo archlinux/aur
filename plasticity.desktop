@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Plasticity
+Comment=Plasticity: CAD for artists
+GenericName=3D CAD Modeler
+Exec=plasticity %U
+Icon=plasticity
+Type=Application
+StartupNotify=true
+Categories=Graphics;3DGraphics;
+Keywords=CAD;3D;Modeling;Modelling;Design;NURBS;Solid;Surface;STEP;STL;OBJ;
+MimeType=application/x-plasticity;model/obj;model/stl;model/step;model/iges;application/x-3dm;

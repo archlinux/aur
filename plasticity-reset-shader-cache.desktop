@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Plasticity (Reset shader cache)
+Comment=Back up Plasticity's GPU caches and launch with fresh shader caches
+GenericName=3D CAD Modeler
+Exec=plasticity --reset-shader-cache %U
+Icon=plasticity
+Type=Application
+StartupNotify=false
+Categories=Graphics;3DGraphics;
+Keywords=CAD;3D;Modeling;Modelling;Shader;Cache;Reset;Repair;

@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+backend=""
+reset_shader_cache=0
+
+fail() {
+  printf 'Plasticity: %s\n' "$1" >&2
+  if [[ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ]]; then
+    notify-send --app-name=Plasticity --icon=plasticity "Plasticity" "$1" || true
+  fi
+  exit 1
+}
+
+while (($# > 0)); do
+  case "$1" in
+    --x11)
+      backend=x11
+      shift
+      ;;
+    --wayland)
+      backend=wayland
+      shift
+      ;;
+    --reset-shader-cache)
+      reset_shader_cache=1
+      shift
+      ;;
+    --)
+      break
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+
+if ((reset_shader_cache)); then
+  while IFS= read -r pid; do
+    if [[ "$pid" == "$$" ]]; then
+      continue
+    fi
+    process_state=$(ps -p "$pid" -o stat= || true)
+    if [[ -n "$process_state" && "$process_state" != Z* ]]; then
+      fail "Save and close Plasticity before resetting its shader cache."
+    fi
+  done < <(pgrep -u "$UID" -x 'Plasticity|plasticity' || true)
+
+  profile="${XDG_CONFIG_HOME:-$HOME/.config}/Plasticity"
+  backup=""
+  for cache in GPUCache DawnCache; do
+    if [[ -e "$profile/$cache" || -L "$profile/$cache" ]]; then
+      if [[ -z "$backup" ]]; then
+        backup=$(mktemp -d "$profile/gpu-cache-backup-XXXXXXXX") || fail "Unable to create a shader-cache backup."
+      fi
+      mv -- "$profile/$cache" "$backup/$cache" || fail "Unable to move the shader cache into $backup."
+    fi
+  done
+
+  if [[ -n "$backup" ]]; then
+    printf 'Plasticity: shader cache backed up to %s\n' "$backup"
+    if [[ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ]]; then
+      notify-send --app-name=Plasticity --icon=plasticity "Plasticity shader cache reset" \
+        "Shader caches backed up to $backup." || true
+    fi
+  fi
+fi
+
+if [[ -z "$backend" ]]; then
+  for arg in "$@"; do
+    case "$arg" in
+      --)
+        break
+        ;;
+      --ozone-platform|--ozone-platform=*)
+        exec /usr/lib/plasticity/Plasticity "$@"
+        ;;
+    esac
+  done
+
+  if [[ "${XDG_SESSION_TYPE:-}" == wayland || ( "${XDG_SESSION_TYPE:-}" != x11 && -n "${WAYLAND_DISPLAY:-}" ) ]]; then
+    backend=wayland
+  else
+    backend=x11
+  fi
+fi
+
+exec /usr/lib/plasticity/Plasticity "--ozone-platform=$backend" "$@"
