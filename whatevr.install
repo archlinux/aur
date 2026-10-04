@@ -1,14 +1,4 @@
-_update_databases() {
-    if command -v update-desktop-database >/dev/null 2>&1; then
-        update-desktop-database -q /usr/share/applications || true
-    fi
-    if command -v update-mime-database >/dev/null 2>&1; then
-        update-mime-database /usr/share/mime || true
-    fi
-}
-
 post_install() {
-    _update_databases
     cat <<'EOF'
 ==> whatevr installed whatevrd systemd user units.
 ==> Enable one startup mode:
@@ -19,14 +9,9 @@ EOF
 }
 
 post_upgrade() {
-    _update_databases
     cat <<'EOF'
 ==> Reload whatevrd's systemd user units and restart the active startup mode:
 ==>   systemctl --user daemon-reload
 ==>   systemctl --user try-restart whatevrd.socket whatevrd.service
 EOF
-}
-
-post_remove() {
-    _update_databases
 }
