@@ -1,0 +1,26 @@
+pkgbase = uniterm-fork-bin
+	pkgdesc = Lightweight all-in-one terminal with 30+ protocols and a built-in autonomous AI agent (fork build: AI thinking stream + Wayland launcher fix)
+	pkgver = 1.9.5.thinking.1
+	pkgrel = 1
+	url = https://uniterm.net
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	provides = uniterm
+	conflicts = uniterm
+	conflicts = uniterm-bin
+	conflicts = uniterm-git
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/Teejer/uniterm/releases/download/v1.9.5.thinking.1/uniterm-linux-amd64-v1.9.5.thinking.1.deb
+	source_x86_64 = LICENSE::https://raw.githubusercontent.com/Teejer/uniterm/v1.9.5.thinking.1/LICENSE
+	sha256sums_x86_64 = f6794af38ac2c301df2e818fbb0ace00ac688f12ab2914dec59247a0c99dcb55
+	sha256sums_x86_64 = 80b7ddff03e2b4535e40a063a1079d4e02f57826720d6c9b2eb8d635bbec0715
+	source_aarch64 = https://github.com/Teejer/uniterm/releases/download/v1.9.5.thinking.1/uniterm-linux-arm64-v1.9.5.thinking.1.deb
+	source_aarch64 = LICENSE::https://raw.githubusercontent.com/Teejer/uniterm/v1.9.5.thinking.1/LICENSE
+	sha256sums_aarch64 = 9de16b1d293097af9e64bc1921f8aa45f975245d11f2d3cd8d978d4724ba0c59
+	sha256sums_aarch64 = 80b7ddff03e2b4535e40a063a1079d4e02f57826720d6c9b2eb8d635bbec0715
+
+pkgname = uniterm-fork-bin
