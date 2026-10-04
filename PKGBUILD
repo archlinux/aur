@@ -43,10 +43,6 @@ prepare() {
     local _mirrors=(
         "https://github.com/${_base}|GitHub"
         "https://ghfast.top/https://github.com/${_base}|ghfast"
-        "https://ghproxy.com/https://github.com/${_base}|ghproxy"
-        "https://gh-proxy.com/https://github.com/${_base}|ghproxy2"
-        "https://ghproxy.net/https://github.com/${_base}|ghproxy3"
-        "https://ghgo.xyz/https://github.com/${_base}|ghgo"
         "https://gh.ddlc.top/https://github.com/${_base}|ghddl"
     )
 
@@ -55,22 +51,30 @@ prepare() {
     local _tmpdir
     _tmpdir=$(mktemp -d)
 
+    # Probe with a real ranged GET (-L follows redirects, so we time the actual
+    # CDN endpoint instead of a 302 hop) and capture the first bytes.  A bare
+    # HTTP status is not enough: dead/parked proxies happily answer 200 with an
+    # HTML error page, so verify the payload really looks like a zstd archive.
     for i in "${!_mirrors[@]}"; do
         local _entry="${_mirrors[$i]}"
         local _url="${_entry%%|*}"
         local _name="${_entry##*|}"
         (
-            local _result
-            _result=$(curl -sI --max-time 5 -o /dev/null -w "%{time_total} %{http_code}" "$_url" 2>/dev/null) || true
-            echo "${_result} ${_name} ${_url}" > "$_tmpdir/$i"
+            local _result _magic
+            _result=$(curl -sL --max-time 8 -r 0-3 \
+                -o "$_tmpdir/$i.bin" \
+                -w "%{time_total} %{http_code}" "$_url" 2>/dev/null) || true
+            _magic=$(od -An -tx1 -N4 "$_tmpdir/$i.bin" 2>/dev/null | tr -d ' \n')
+            printf '%s %s %s %s\n' "${_result:-0.000 000}" "${_magic:--}" "$_name" "$_url" \
+                > "$_tmpdir/$i"
         ) &
     done
     wait
 
     for i in "${!_mirrors[@]}"; do
-        local _time _code _name _url
-        read _time _code _name _url < "$_tmpdir/$i" 2>/dev/null || continue
-        if [[ "$_code" =~ ^(200|301|302) ]]; then
+        local _time _code _magic _name _url
+        read -r _time _code _magic _name _url < "$_tmpdir/$i" 2>/dev/null || continue
+        if [[ "$_code" == 200 || "$_code" == 206 ]] && [[ "$_magic" != 3c21444f ]]; then
             printf "    %-12s % 6ss (%s)\n" "$_name" "$_time" "$_code"
             if awk "BEGIN{exit !($_time < $_best_time)}" 2>/dev/null; then
                 _best_time="$_time"
@@ -78,7 +82,7 @@ prepare() {
                 _best_name="$_name"
             fi
         else
-            printf "    %-12s failed (%s)\n" "$_name" "$_code"
+            printf "    %-12s rejected (%s)\n" "$_name" "$_code"
         fi
     done
     rm -rf "$_tmpdir"
@@ -90,7 +94,10 @@ prepare() {
 
     msg "Best mirror: $_best_name (${_best_time}s)"
     msg "Downloading $_file..."
-    curl -L --progress-bar -o "$srcdir/$_file" "$_best_url"
+    curl -L --fail -C - --retry 5 --retry-delay 3 --retry-all-errors \
+         --connect-timeout 15 --progress-bar \
+         -o "$srcdir/$_file" "$_best_url" \
+        || { error "Download failed: $_best_url"; return 1; }
 
     msg "Verifying checksum..."
     local _real
