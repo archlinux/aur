@@ -1,7 +1,7 @@
 pkgbase = shuvarie
 	pkgdesc = Blazingly fast AI coding TUI for chivalrous people
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shuvarie.org/
 	arch = x86_64
 	arch = aarch64

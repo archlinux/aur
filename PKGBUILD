@@ -2,7 +2,7 @@
 
 pkgname=shuvarie
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Blazingly fast AI coding TUI for chivalrous people"
 arch=("x86_64" "aarch64")
@@ -43,6 +43,23 @@ build() {
     export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=clang
     export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=clang
     export RUSTFLAGS="${RUSTFLAGS} -Clink-arg=-fuse-ld=lld"
+
+    # cc-rs appends the environment CFLAGS *after* the flags a build script
+    # asks for, so makepkg's -O2 overrides them. aws-lc-sys depends on that
+    # ordering for its jitterentropy sources: jitterentropy-base.c aborts with
+    # #error unless it is compiled with -O0, and the crate's own CFLAGS fix-up
+    # no longer applies because cc-rs >= 1.6 snapshots the environment once per
+    # build script. Drop the optimization flags and let cc-rs use cargo's
+    # opt-level (profile.release = "s" in Cargo.toml) for the other C sources.
+    _strip_opt_flags() {
+        local flag out=()
+        for flag in $1; do
+            [[ $flag == -O* ]] || out+=("$flag")
+        done
+        printf '%s' "${out[*]}"
+    }
+    export CFLAGS="$(_strip_opt_flags "$CFLAGS")"
+    export CXXFLAGS="$(_strip_opt_flags "$CXXFLAGS")"
 
     cargo build --release --locked
 }
