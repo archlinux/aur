@@ -2,8 +2,8 @@
 
 pkgname=rampup
 pkgver=r22.577b
-pkgrel=1
-pkgdesc='systemd service for ec_su_axb35 fan ramp curves'
+pkgrel=2
+pkgdesc='Systemd service for ec_su_axb35 fan ramp curves (AMD Strix Halo)'
 arch=('any')
 url='https://codeberg.org/radupotop/rampup'
 license=('MIT')

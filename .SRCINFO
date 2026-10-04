@@ -1,7 +1,7 @@
 pkgbase = rampup
-	pkgdesc = systemd service for ec_su_axb35 fan ramp curves
+	pkgdesc = Systemd service for ec_su_axb35 fan ramp curves (AMD Strix Halo)
 	pkgver = r22.577b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/radupotop/rampup
 	arch = any
 	license = MIT
