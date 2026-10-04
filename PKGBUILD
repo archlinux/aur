@@ -1,13 +1,13 @@
 # Maintainer: Felitendo
 # This PKGBUILD is updated automatically:
-# https://github.com/Felitendo/PKGBUILDS
+# https://git.felo.gg/Felitendo/PKGBUILDS
 
 pkgname=modrinth-enhanced-bin
 pkgver=0.21.6
 pkgrel=1
 pkgdesc="Modrinth App without ads or telemetry, with offline and Ely.by accounts and Linux fixes (upstream binary)"
 arch=('x86_64')
-url="https://github.com/Felitendo/Modrinth-Enhanced"
+url="https://git.felo.gg/Felitendo/Modrinth-Enhanced"
 license=('GPL-3.0-only')
 depends=('cairo' 'dbus' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme'
          'libdrm' 'libgcc' 'libsoup3' 'webkit2gtk-4.1'
@@ -25,7 +25,7 @@ _asset="Modrinth.Enhanced_0.21.6_amd64.deb"
 # the monitor's refresh rate. vblank-shim.c, preloaded by modrinth-enhanced.sh,
 # paces it at the monitor's rate instead and keeps the app on X11, the only
 # place that works; it is not part of upstream's release.
-source=("${pkgname}-${pkgver}.deb::https://github.com/Felitendo/Modrinth-Enhanced/releases/download/${_tag}/${_asset}"
+source=("${pkgname}-${pkgver}.deb::https://git.felo.gg/Felitendo/Modrinth-Enhanced/releases/download/${_tag}/${_asset}"
         "vblank-shim.c"
         "modrinth-enhanced.sh")
 noextract=("${pkgname}-${pkgver}.deb")
