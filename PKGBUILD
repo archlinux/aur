@@ -4,7 +4,7 @@
 pkgname=python-posce
 _pkgname=posce
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A note-taking toolkit for your command line"
 arch=('any')
 url="https://github.com/vdt/posce"
@@ -24,7 +24,7 @@ build() {
 package() {
 	cd "$_srcdir"
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	fi
+	install -Dm644 readme.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+	install -Dm644 changes.md "$pkgdir/usr/share/doc/$_pkgname/changes.md"
+	install -Dm644 license.md "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
