@@ -4,7 +4,7 @@
 pkgname=python-procmux-git
 _pkgname=procmux-git
 pkgver=r133.3fc3aef
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI utility for running multiple commands in parallel"
 arch=('any')
 url="https://github.com/napisani/procmux"
@@ -29,7 +29,10 @@ build() {
 package() {
 	cd procmux
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	fi
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+	install -Dm644 demo.gif "$pkgdir/usr/share/doc/$_pkgname/demo.gif"
+	install -d "$pkgdir/usr/share/$_pkgname/examples"
+	install -Dm644 procmux.yaml "$pkgdir/usr/share/$_pkgname/examples/procmux.yaml"
+	install -Dm644 procmux.override.yaml "$pkgdir/usr/share/$_pkgname/examples/procmux.override.yaml"
+	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }

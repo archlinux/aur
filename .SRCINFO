@@ -1,7 +1,7 @@
 pkgbase = python-procmux-git
 	pkgdesc = A TUI utility for running multiple commands in parallel
 	pkgver = r133.3fc3aef
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/napisani/procmux
 	arch = any
 	license = MIT
