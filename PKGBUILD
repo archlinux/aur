@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.20
-pkgver=1.0.0beta20
+_tag=v1.0.0-beta.21
+pkgver=1.0.0beta21
 pkgrel=1
 pkgdesc="A desktop shell for niri, built with Quickshell: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
@@ -31,6 +31,9 @@ depends=(
     # Theme: palettes from the wallpaper, the wallpaper folder picker.
     'matugen'
     'zenity'
+    # Launcher: files found by name in the home, and opened.
+    'fd'
+    'xdg-utils'
     # Capture: screenshots, text recognition (capture.ocr_language is eng),
     # screen recording.
     'grim'
@@ -79,7 +82,7 @@ optdepends=(
 options=('!lto')
 install=bioma-shell.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('23e5b8bcd685a489c5d726d9e8a6cf0e2cda1d9d9261c67155508967beba4bcb')
+sha256sums=('0e21f0ff3a6a9ae0ed9d3e10329cb9dd790cf2b0abb7aa9fa21048faf0f5a864')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
