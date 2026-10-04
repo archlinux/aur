@@ -1,6 +1,6 @@
 pkgbase = nuvio-linux-git
 	pkgdesc = Nuvio desktop media player — upstream source packaged for Arch Linux (git)
-	pkgver = r3123.gd499bed3
+	pkgver = r3259.g25390def
 	pkgrel = 1
 	url = https://github.com/NuvioMedia/NuvioDesktop
 	install = nuvio-linux-git.install
