@@ -1,6 +1,6 @@
 pkgbase = libfishcamp
 	pkgdesc = INDI driver for products manufactured by fishcamp
-	pkgver = 2.2.4
+	pkgver = 2.2.5
 	pkgrel = 1
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = libfishcamp
 	license = LGPL-2.1-or-later
 	makedepends = cmake
 	depends = libusb
-	source = https://github.com/indilib/indi-3rdparty/archive/v2.2.4.tar.gz
-	sha256sums = bb1efc5a6a7a00ce34dd5f3817c877d5537050550be8f8654aaa3d3ec08cc5ef
+	source = https://github.com/indilib/indi-3rdparty/archive/v2.2.5.tar.gz
+	sha256sums = c4db74b0b8c87a906cf7f90393118002e7fcce419cd967943034eca22bbbb059
 
 pkgname = libfishcamp
