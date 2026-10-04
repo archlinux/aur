@@ -2,80 +2,68 @@
 # Automatically updated by GitHub Actions
 
 pkgname=zerx-lab-fluxdown-bin
-pkgver=0.4.8
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="FluxDown - Rust 驱动的多协议下载管理器（HTTP/FTP/BitTorrent）"
 arch=('x86_64')
 url="https://fluxdown.zerx.dev"
 license=('LicenseRef-proprietary')
 depends=(
-    'at-spi2-core'
-    'cairo'
+    'alsa-lib'
+    'dbus'
     'fontconfig'
-    'gdk-pixbuf2'
-    'glib2'
+    'freetype2'
     'glibc'
     'gtk3'
-    'harfbuzz'
     'hicolor-icon-theme'
     'libayatana-appindicator'
-    'libepoxy'
     'libgcc'
-    'libnotify'
-    'libsecret'
     'libstdc++'
-    'libxss'
-    'libxtst'
-    'nss'
-    'openssl'
-    'pango'
+    'libx11'
+    'libxkbcommon'
+    'libxkbcommon-x11'
+    'vulkan-icd-loader'
+    'wayland'
+    'xdotool'
     'xdg-utils'
 )
 provides=('fluxdown')
 conflicts=('fluxdown')
 options=('!strip')
 
-source_x86_64=("FluxDown-${pkgver}-linux-x64.tar.gz::https://fluxdown.zerx.dev/api/download/FluxDown-${pkgver}-linux-x64.tar.gz")
-sha256sums_x86_64=('3188587d7b1b9074d3166dadeb64f2e3fe60e7aafd0de027755fbeabcc691761')
+source_x86_64=("FluxDown-${pkgver}-linux-x64.tar.gz::https://github.com/zerx-lab/FluxDown/releases/download/v${pkgver}/FluxDown-${pkgver}-linux-x64.tar.gz")
+sha256sums_x86_64=('979fe7957c119f62095ebc097e2e6392caa1d6a11550297fd69d7de9874cfcdd')
 
 package() {
     cd "$srcdir/FluxDown-${pkgver}-linux-x64"
 
-    # 主程序和 NMH 二进制
-    install -Dm755 flux_down       "$pkgdir/opt/fluxdown/flux_down"
-    install -Dm755 fluxdown_nmh    "$pkgdir/opt/fluxdown/fluxdown_nmh"
-
-    # .so 插件库
-    for lib in lib/*.so; do
-        install -Dm755 "$lib" "$pkgdir/opt/fluxdown/$lib"
+    # 四个二进制必须同目录，宿主按 current_exe 查找兄弟进程。
+    local binary
+    for binary in fluxdown-desktop fluxdown-agent fluxdownd fluxdown_nmh; do
+        install -Dm755 "$binary" "$pkgdir/opt/fluxdown/$binary"
     done
 
-    # native_assets.json（Flutter 运行时需要）
-    echo '{"format-version":[1,0,0],"native-assets":{}}' \
-        > "$pkgdir/opt/fluxdown/lib/native_assets.json"
-
-    # data 目录（flutter_assets、图标、desktop 等）
-    cp -r data/ "$pkgdir/opt/fluxdown/data/"
-
-    # /usr/bin 启动脚本
     install -d "$pkgdir/usr/bin"
-    cat > "$pkgdir/usr/bin/flux_down" <<'EOF'
-#!/bin/bash
-exec /opt/fluxdown/flux_down "$@"
+    ln -s /opt/fluxdown/fluxdown-desktop "$pkgdir/usr/bin/fluxdown-desktop"
+    ln -s /opt/fluxdown/fluxdown-agent "$pkgdir/usr/bin/fluxdown-agent"
+
+    # 对齐上游 Arch 包的旧自启迁移：--silentStart 转交 agent。
+    cat > "$pkgdir/opt/fluxdown/flux_down" <<'EOF'
+#!/bin/sh
+if [ "$1" = "--silentStart" ]; then
+    shift
+    exec /opt/fluxdown/fluxdown-agent --autostart "$@"
+fi
+exec /opt/fluxdown/fluxdown-desktop "$@"
 EOF
-    chmod 755 "$pkgdir/usr/bin/flux_down"
+    chmod 755 "$pkgdir/opt/fluxdown/flux_down"
+    ln -s /opt/fluxdown/flux_down "$pkgdir/usr/bin/flux_down"
 
-    # 桌面文件（Exec 保持 flux_down，与现有包一致）
-    install -Dm644 data/com.fluxdown.app.desktop \
+    # GPUI 资源已内嵌，desktop 和图标位于发布包根目录。
+    install -Dm644 com.fluxdown.app.desktop \
         "$pkgdir/usr/share/applications/com.fluxdown.app.desktop"
-
-    # 图标
-    install -Dm644 \
-        data/icons/hicolor/256x256/apps/com.fluxdown.app.png \
+    install -Dm644 com.fluxdown.app.png \
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.fluxdown.app.png"
-    install -Dm644 \
-        data/icons/hicolor/scalable/apps/com.fluxdown.app.svg \
-        "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.fluxdown.app.svg"
 
     # Native Messaging Host — Chromium / Chrome / Brave
     local _nmh_manifest
@@ -88,17 +76,16 @@ EOF
     "chrome-extension://meleenglfggcmcajknpeeeiobnpfmahc/"
   ]
 }'
-    install -Dm644 /dev/stdin \
-        "$pkgdir/etc/chromium/native-messaging-hosts/com.fluxdown.nmh.json" \
-        <<< "$_nmh_manifest"
-    install -Dm644 /dev/stdin \
-        "$pkgdir/etc/opt/chrome/native-messaging-hosts/com.fluxdown.nmh.json" \
-        <<< "$_nmh_manifest"
+    local manifest_dir
+    for manifest_dir in etc/chromium/native-messaging-hosts etc/opt/chrome/native-messaging-hosts; do
+        install -d "$pkgdir/$manifest_dir"
+        printf '%s\n' "$_nmh_manifest" > "$pkgdir/$manifest_dir/com.fluxdown.nmh.json"
+        chmod 644 "$pkgdir/$manifest_dir/com.fluxdown.nmh.json"
+    done
 
     # Native Messaging Host — Firefox
-    install -Dm644 /dev/stdin \
-        "$pkgdir/usr/lib/mozilla/native-messaging-hosts/com.fluxdown.nmh.json" \
-        <<'EOF'
+    install -d "$pkgdir/usr/lib/mozilla/native-messaging-hosts"
+    cat > "$pkgdir/usr/lib/mozilla/native-messaging-hosts/com.fluxdown.nmh.json" <<'EOF'
 {
   "name": "com.fluxdown.nmh",
   "description": "FluxDown Native Messaging Host",
@@ -109,4 +96,5 @@ EOF
   ]
 }
 EOF
+    chmod 644 "$pkgdir/usr/lib/mozilla/native-messaging-hosts/com.fluxdown.nmh.json"
 }
