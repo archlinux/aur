@@ -4,7 +4,7 @@ pkgname=kilt-bin
 pkgver=11.0.0
 pkgrel=1
 pkgdesc="E926 API client"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://openlyst.ink"
 license=('GPL3')
 depends=('gtk3')
@@ -12,8 +12,10 @@ optdepends=()
 provides=('kilt')
 conflicts=('kilt')
 options=('!strip')
-source=("kilt-bin-${pkgver}.zip::https://gitlab.com/Openlyst/klit/-/releases/v11.0.0/downloads/kilt-linux-x64-11.0.0-2026-08-27.zip")
-sha256sums=('SKIP')
+source_x86_64=("kilt-bin-${pkgver}-x86_64.zip::https://gitlab.com/Openlyst/klit/-/releases/v11.0.0/downloads/kilt-linux-x64-11.0.0-2026-08-27.zip")
+source_aarch64=("kilt-bin-${pkgver}-aarch64.zip::https://gitlab.com/Openlyst/klit/-/releases/v11.0.0/downloads/kilt-linux-arm64-11.0.0-2026-08-27.zip")
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 
 package() {
     cd "${srcdir}/bundle"
