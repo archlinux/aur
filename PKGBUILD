@@ -1,6 +1,6 @@
 # Maintainer: nihitdev
 pkgname=zay-git
-pkgver=0.r3.g4bc43a1
+pkgver=0.r12.g31ddd4b
 pkgrel=1
 pkgdesc='Pacman with native AUR awareness'
 arch=('x86_64')
