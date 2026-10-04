@@ -2,8 +2,8 @@
 
 pkgname=wegame-launcher
 pkgver=0.1.0
-pkgrel=1
-pkgdesc='Standalone launcher that installs and runs Tencent WeGame with Proton (unofficial)'
+pkgrel=2
+pkgdesc='开箱即用的简易 WeGame 启动器，使用 Proton 运行'
 arch=('any')
 url='https://github.com/SHORiN-KiWATA/wegame-launcher'
 license=('GPL-3.0-only')
