@@ -1,5 +1,5 @@
 pkgname=slskr
-pkgver=0.2.42
+pkgver=0.2.49
 pkgrel=3
 pkgdesc='Rust Soulseek daemon with bundled Web UI'
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ build() {
   cd "${srcdir}/slskR-release-v${pkgver}"
   npm --prefix web ci
   npm --prefix web run build
-  cargo build --release -p slskr --locked
+  SLSKR_APP_VERSION="$pkgver" cargo build --release -p slskr --locked
 }
 
 package() {
