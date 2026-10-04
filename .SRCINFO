@@ -9,6 +9,7 @@ pkgbase = nokkvi-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = cmake
+	makedepends = clang
 	depends = pipewire
 	depends = fontconfig
 	depends = alsa-lib
