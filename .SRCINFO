@@ -1,7 +1,7 @@
 pkgbase = protonup-qt
 	pkgdesc = Install and manage GE-Proton, Luxtorpeda & more for Steam, Lutris and Heroic
 	pkgver = 2.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://davidotek.github.io/protonup-qt
 	arch = any
 	license = GPL-3.0-or-later
@@ -36,6 +36,8 @@ pkgbase = protonup-qt
 	optdepends = xxd: required for SteamTinkerLaunch
 	optdepends = yad: required for SteamTinkerLaunch
 	source = protonup-qt-2.15.1.tar.gz::https://github.com/DavidoTek/ProtonUp-Qt/archive/refs/tags/v2.15.1.tar.gz
+	source = https://github.com/DavidoTek/ProtonUp-Qt/pull/647.patch
 	sha256sums = 7028c0f3451fcb69f384ba0687b58a973b35fab2b0a64d5435eb1f782f09ea08
+	sha256sums = 9cbbea6c9e600ebe2ecb85ec4ebf5d00a48fdaf3d8c2fc88288d26e9a206280d
 
 pkgname = protonup-qt

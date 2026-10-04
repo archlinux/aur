@@ -2,7 +2,7 @@
 pkgname=protonup-qt
 _app_id=net.davidotek.pupgui2
 pkgver=2.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Install and manage GE-Proton, Luxtorpeda & more for Steam, Lutris and Heroic"
 arch=('any')
 url="https://davidotek.github.io/protonup-qt"
@@ -45,8 +45,17 @@ optdepends=(
   'xxd: required for SteamTinkerLaunch'
   'yad: required for SteamTinkerLaunch'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/DavidoTek/ProtonUp-Qt/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7028c0f3451fcb69f384ba0687b58a973b35fab2b0a64d5435eb1f782f09ea08')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/DavidoTek/ProtonUp-Qt/archive/refs/tags/v$pkgver.tar.gz"
+        'https://github.com/DavidoTek/ProtonUp-Qt/pull/647.patch')
+sha256sums=('7028c0f3451fcb69f384ba0687b58a973b35fab2b0a64d5435eb1f782f09ea08'
+            '9cbbea6c9e600ebe2ecb85ec4ebf5d00a48fdaf3d8c2fc88288d26e9a206280d')
+
+prepare() {
+  cd "ProtonUp-Qt-$pkgver"
+
+  # Support proton-wineland
+  patch -Np1 -i ../647.patch
+}
 
 build() {
   cd "ProtonUp-Qt-$pkgver"
