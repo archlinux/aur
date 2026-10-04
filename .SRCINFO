@@ -1,6 +1,6 @@
 pkgbase = salamlang
 	pkgdesc = General-purpose systems programming language with a built-in DSL
-	pkgver = 0.4.8
+	pkgver = 0.4.9
 	pkgrel = 1
 	url = https://github.com/SalamLang/Salam
 	arch = x86_64
@@ -11,16 +11,15 @@ pkgbase = salamlang
 	makedepends = lld
 	depends = zlib
 	depends = zstd
-	depends = libxml2
-	provides = salam=0.4.8
+	provides = salam=0.4.9
 	conflicts = salam-bin
 	options = !strip
 	options = !debug
-	source = salam-0.4.8.tar.gz::https://github.com/SalamLang/Salam/archive/refs/tags/v0.4.8.tar.gz
-	sha256sums = d1aaa7654e5da7c1760031dcd0b1ea8ac12e06d63ac3e07b98d695b91d705929
-	source_x86_64 = salam-seed-0.4.7-x86_64.tar.gz::https://github.com/SalamLang/Salam/releases/download/v0.4.7/salam-0.4.7-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 39bc9e0d626f9074abb3b0ce9412c60977b0f6b74a5a4e5c95948a4178e0a02a
-	source_aarch64 = salam-seed-0.4.7-aarch64.tar.gz::https://github.com/SalamLang/Salam/releases/download/v0.4.7/salam-0.4.7-linux-aarch64.tar.gz
-	sha256sums_aarch64 = b313e01a561acd3a23b018f87e805311dca5b8f78152f24de16e9339f9faa16a
+	source = salam-0.4.9.tar.gz::https://github.com/SalamLang/Salam/archive/refs/tags/v0.4.9.tar.gz
+	sha256sums = 1aac15b01008328ed00cdcfca7c45531ddf992678287415f8e4f3692145d9715
+	source_x86_64 = salam-seed-0.4.8-x86_64.tar.gz::https://github.com/SalamLang/Salam/releases/download/v0.4.8/salam-0.4.8-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 55810d1dc85dde83b502ec96a97dd3d9ac94c4d4ad596be1517a368491b48d88
+	source_aarch64 = salam-seed-0.4.8-aarch64.tar.gz::https://github.com/SalamLang/Salam/releases/download/v0.4.8/salam-0.4.8-linux-aarch64.tar.gz
+	sha256sums_aarch64 = bc8cca81ce7fa351b6f7c3e1ad9b470cb22fc20b5ced3993542692dfc76b4605
 
 pkgname = salamlang
