@@ -1,6 +1,6 @@
 # Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 pkgname=p4lang-p4c
-pkgver=1.2.5.17
+pkgver=1.2.5.18
 _googletest_ver=1.14.0
 _bpftool_ver=7.5.0
 _p4runtime_commit=ec4eb5ef70dbcbcbf2f8357a4b2b8c2f218845a5
@@ -34,7 +34,7 @@ source=(
     "bpftool-$_bpftool_ver.tar.gz::https://github.com/libbpf/bpftool/releases/download/v$_bpftool_ver/bpftool-libbpf-v$_bpftool_ver-sources.tar.gz"
     "git+https://github.com/p4lang/p4runtime.git#commit=$_p4runtime_commit"
 )
-sha256sums=('3f49bdfe453668d0a5dc6f53f47446201fe976d8b2d60c1042894e3be42cf3ab'
+sha256sums=('e424bafd0bb376885ce5cfaf582bbbb14edc271069723480555b41fff9f2963f'
             '8ad598c73ad796e0d8280b082cebd82a630d73e73cd3c70057938a6501bba5d7'
             '1468d3fb8c70698359a6593d8828f0e0a56b72244cb8632c6e1947e11b3520b9'
             '34edb82696aaaca15eba56880d6e6d249131920664ae5805d86e351d13d0723a')
