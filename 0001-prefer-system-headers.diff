@@ -1,0 +1,32 @@
+diff --git a/meson.build b/meson.build
+index 4964301b..e6bc34c7 100644
+--- a/meson.build
++++ b/meson.build
+@@ -37,15 +37,19 @@ if get_option('build_id')
+ endif
+ 
+ dxvk_include_dirs = ['./include']
+-if fs.is_dir('./include/vulkan/include')
+-  dxvk_include_dirs += ['./include/vulkan/include']
+-elif not cpp.check_header('vulkan/vulkan.h')
+-  error('Missing Vulkan-Headers')
++if not cpp.check_header('vulkan/vulkan.h')
++  if fs.is_dir('./include/vulkan/include')
++    dxvk_include_dirs += ['./include/vulkan/include']
++  else
++    error('Missing Vulkan-Headers')
++  endif
+ endif
+-if fs.is_dir('./include/spirv/include')
+-  dxvk_include_dirs += ['./include/spirv/include']
+-elif not cpp.check_header('spirv/unified1/spirv.hpp')
+-  error('Missing SPIRV-Headers')
++if not cpp.check_header('spirv/unified1/spirv.hpp')
++  if fs.is_dir('./include/spirv/include')
++    dxvk_include_dirs += ['./include/spirv/include']
++  else
++    error('Missing SPIRV-Headers')
++  endif
+ endif
+ 
+ dep_displayinfo = dependency(

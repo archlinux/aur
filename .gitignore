@@ -1,0 +1,6 @@
+*
+!PKGBUILD
+!*.diff
+!.nvchecker.toml
+!.SRCINFO
+!.gitignore

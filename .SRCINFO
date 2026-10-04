@@ -1,0 +1,36 @@
+pkgbase = dxvk
+	pkgdesc = Vulkan-based implementation of D3D8, 9, 10 and 11 for Linux / Wine.
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/doitsujin/dxvk
+	arch = x86_64
+	license = Zlib
+	makedepends = git
+	makedepends = meson
+	makedepends = mingw-w64-gcc
+	makedepends = glfw
+	makedepends = sdl2
+	makedepends = sdl3
+	makedepends = vulkan-headers
+	makedepends = spirv-headers
+	makedepends = glslang
+	source = git+https://github.com/doitsujin/dxvk.git#tag=v3.1.1
+	source = git+https://github.com/Joshua-Ashton/mingw-directx-headers.git
+	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
+	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
+	source = git+https://github.com/doitsujin/libdisplay-info.git
+	source = git+https://github.com/doitsujin/dxbc-spirv.git
+	source = 0001-prefer-system-headers.diff
+	sha256sums = a186af690b633ca3b14037e56649d1b7135e07d0b53657976330f3ab462b2a6c
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 04d0439a304c85f4b743dc3ab1683329b165b94ee01bb3d73404f7b741c4ebb4
+
+pkgname = dxvk
+	depends = glibc
+	optdepends = sdl2: Use SDL2 WSI driver
+	optdepends = sdl3: Use SDL3 WSI driver
+	optdepends = glfw: Use GLFW WSI driver

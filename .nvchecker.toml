@@ -1,0 +1,5 @@
+[dxvk]
+source = "github"
+github = "doitsujin/dxvk"
+prefix = "v"
+use_latest_release = true
