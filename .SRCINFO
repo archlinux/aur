@@ -9,7 +9,7 @@ pkgbase = kilt-unstable
 	provides = kilt
 	conflicts = kilt
 	options = !strip
-	source = kilt-unstable-12.0.0.zip::https://gitlab.com/Openlyst/klit/-/releases/nightly/downloads/kilt-linux-x64-12.0.0-2026-09-29.zip
+	source = kilt-unstable-12.0.0.zip::https://gitlab.com/Openlyst/klit/-/releases/nightly/downloads/kilt-linux-x64-12.0.0-2026-10-04.zip
 	sha256sums = SKIP
 
 pkgname = kilt-unstable
