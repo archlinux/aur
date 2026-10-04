@@ -1,6 +1,6 @@
 pkgbase = flamez
 	pkgdesc = A live process-lifetime and CPU-activity flamegraph
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/hspak/flamez
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = flamez
 	optdepends = libdecor: client-side window decorations on Wayland
 	provides = flamez
 	conflicts = flamez
-	source = https://github.com/hspak/flamez/archive/refs/tags/0.3.1.tar.gz
-	sha256sums = e18aad1d43342c539c0f3e97d3291b2406f48f44c56509fde0c51077f377d5a9
+	source = https://github.com/hspak/flamez/archive/refs/tags/0.3.2.tar.gz
+	sha256sums = 6f77d5d60f0378173f8b32fcfd4b01b914fb4cac5c797846b29f6e5cbc577426
 
 pkgname = flamez
