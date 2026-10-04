@@ -3,7 +3,7 @@
 
 pkgname=rfc_reader
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="TUI to fetch, cache, and browse RFCs (Request for Comments)"
 arch=('x86_64')
 url="https://github.com/ozan2003/rfc_reader"
@@ -24,6 +24,8 @@ build() {
 package() {
 	cd "$_srcdir"
 	install -Dm755 "target/release/rfc_reader" "$pkgdir/usr/bin/rfc_reader"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	fi
