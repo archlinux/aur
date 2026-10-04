@@ -3,7 +3,7 @@
 # Contributor: jthvai
 
 pkgname=naps2-bin
-pkgver=8.4.0
+pkgver=8.4.1
 pkgrel=1
 pkgdesc="NAPS2 - Not Another PDF Scanner. Scan documents to PDF and more, as simply as possible."
 arch=("aarch64" "x86_64")
@@ -20,8 +20,8 @@ options=("!strip" "!debug")
 source_aarch64=("https://github.com/cyanfish/${pkgname%-bin}/releases/download/v$pkgver/${pkgname%-bin}-$pkgver-linux-arm64.rpm")
 source_x86_64=("https://github.com/cyanfish/${pkgname%-bin}/releases/download/v$pkgver/${pkgname%-bin}-$pkgver-linux-x64.rpm")
 
-sha256sums_aarch64=("323df1913bfe7068ee9f3d664745bf9c5a00fe5aa9850d83f3d55d97faa26c9a")
-sha256sums_x86_64=("455729fce073637b2f9c4bbb6008b0eacef9d3fa9ab3e8062b61932915b189dd")
+sha256sums_aarch64=("cc2c6a6c6d907b3e9551812e25ced89066a0247e49a62ad9b12924fbe359fdf3")
+sha256sums_x86_64=("1e56a6abd5143357d01bf9c72926cd28d5a3c94ecce64c8a2aa9ef100e71949b")
 
 package() {
   rm -r "${srcdir}/usr/lib/.build-id"
