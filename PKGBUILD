@@ -1,6 +1,7 @@
 # maintainer: verse <versedev.store@proton.me>
+_pkgname=ClakIME
 pkgname=clak
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Fast and highly stable Vietnamese input method for Fcitx5 and Wayland"
 arch=('x86_64' 'aarch64')
@@ -14,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$_pkgname-$pkgver"
     cmake -B build -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr
@@ -22,5 +23,5 @@ build() {
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install "$srcdir/$pkgname-$pkgver/build"
+    DESTDIR="$pkgdir" cmake --install "$srcdir/$_pkgname-$pkgver/build"
 }
