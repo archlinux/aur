@@ -1,7 +1,7 @@
 pkgbase = python-shy-sh
 	pkgdesc = Shell copilot: an AI copilot for your shell (installs as 'shy')
 	pkgver = 1.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mceck/shy-sh
 	arch = any
 	license = MIT

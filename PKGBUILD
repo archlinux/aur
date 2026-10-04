@@ -4,7 +4,7 @@
 pkgname=python-shy-sh
 _pkgname=shy-sh
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Shell copilot: an AI copilot for your shell (installs as 'shy')"
 arch=('any')
 url="https://github.com/mceck/shy-sh"
@@ -24,7 +24,8 @@ build() {
 package() {
 	cd "$_srcdir"
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	fi
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+	install -d "$pkgdir/usr/share/doc/$_pkgname/images"
+	install -Dm644 docs/images/*.gif "$pkgdir/usr/share/doc/$_pkgname/images/"
+	install -Dm644 License.md "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
