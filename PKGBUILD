@@ -1,6 +1,6 @@
 # Maintainer: koxt2 <koxt2@protonmail.com>
 pkgname=datarecovery
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="GTK4/Libadwaita application for data recovery using ddrescue and PhotoRec"
 arch=('any')
