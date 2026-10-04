@@ -1,14 +1,14 @@
 pkgbase = whatsapp-nativefier
-	pkgdesc = WhatsApp desktop (nativefier/Electron) with save-as download dialog, single instance, tray, menu bar, spell checker
+	pkgdesc = WhatsApp desktop with tray, spellcheck and save-as downloads
 	pkgver = 2.3000.1019818867
-	pkgrel = 1
+	pkgrel = 6
 	url = https://web.whatsapp.com/
-	arch = armv7l
-	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom
 	makedepends = imagemagick
-	makedepends = nodejs-nativefier
+	makedepends = nodejs>=22
+	makedepends = nodejs-nativefier=52.0.0
 	makedepends = unzip
 	depends = gtk3
 	depends = libxss
@@ -16,9 +16,53 @@ pkgbase = whatsapp-nativefier
 	optdepends = libindicator-gtk3
 	source = whatsapp-nativefier.png
 	source = whatsapp-nativefier.desktop
-	source = whatsapp-nativefier-inject.js
+	source = whatsapp-nativefier-with-remote-control
+	source = whatsapp-nativefier-with-remote-control.desktop
+	source = patch-nativefier.cjs
+	source = control-adapter.cjs
+	source = control-approval.cjs
+	source = control-cli.cjs
+	source = control-client.cjs
+	source = control-core.cjs
+	source = control-electron-bridge.cjs
+	source = control-electron-main.cjs
+	source = control-electron-preload.cjs
+	source = control-electron-shell.cjs
+	source = control-mcp.cjs
+	source = control-private.cjs
+	source = control-requests.cjs
+	source = control-service.cjs
+	source = wa-js-4.6.0.tgz::https://registry.npmjs.org/@wppconnect/wa-js/-/wa-js-4.6.0.tgz
 	sha256sums = 3899581abcfed9b40b7208bbbca8bdbfe3ae9655980dbf55f04dec9cb3309f27
 	sha256sums = bad0489ae519bc78afab3d226966691feede8bcedf58025af1b171215ae51423
-	sha256sums = SKIP
+	sha256sums = b2201760b0af5438bb2c5586f0f9cb2d187624c9e5e32f690aa8a0458366db8b
+	sha256sums = e6dbedc1987b61d8277a2a0679a336ad24975e8dbfe01893f3b43b9980a64fc6
+	sha256sums = ef75ea31c473853a7d2f5e720e706b5d5b9481bbfe7016b7b433a751432ed657
+	sha256sums = 865e57c6e9c22ec5ecaaff515c3d7d9a628e0d4f747c787be5510dd9ea9e055b
+	sha256sums = 6dfd81bb3022d31684179d263d5e58873fe012a593a64b960ca630775a2aa283
+	sha256sums = 7568863ebe91915263682413730003d7728b21cf0959231a1ad1ce71280b8f2d
+	sha256sums = 4f12ef5c578893c15df4ba5573f3e57375563d452ed123cdfa75d4a539df66e0
+	sha256sums = 6e7172449a27e0ea8d6bf606a57ae73cd3bc4bc5afcb5f4c0aebc27e7a047667
+	sha256sums = dc0e1ab9300faf47bda45cf02440264151c934ead80071dfd21bd9c5ad993a12
+	sha256sums = 3126e0b1a0283fc7f856cfdf870ec8912f386f08ba766ad43e4132cdf673a039
+	sha256sums = 87e17077bb01abea3ace4e1d3fd1a92f494ab6b884966911e1ebe9153c090ac1
+	sha256sums = 38213d746a3a70da594a11d531f490109c183fbb5b770ee4ab6bbe919a8a8116
+	sha256sums = 9467f68be8ec6f1d8b2354bbeb2da2d2f5ca69e17062850ac23ff685cd914034
+	sha256sums = 75dd0a0015022f8ec3ffdfb591fda86b3a80c3b7a9a325ccd15be98dbd8270f4
+	sha256sums = 89e86bb24a0aaaeac55ba39e440cf0580601ff6168eba0cc40d2c83dd7a7cd16
+	sha256sums = 31e26c1d07dcd295279e6e6a55466727916812900cd76567283944a9ad0c8a37
+	sha256sums = 28f761a900db2160ec7a165c2a67b97cf6f814d8a797a5d9b6bfc06df1574df9
 
 pkgname = whatsapp-nativefier
+	pkgdesc = WhatsApp desktop with tray, spellcheck and save-as downloads
+	conflicts = whatsapp-nativefier-with-remote-control
+
+pkgname = whatsapp-nativefier-with-remote-control
+	pkgdesc = WhatsApp desktop with authenticated local CLI/MCP remote control
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	depends = nodejs>=22
+	depends = util-linux
+	provides = whatsapp-nativefier=2.3000.1019818867
+	conflicts = whatsapp-nativefier

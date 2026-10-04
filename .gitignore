@@ -5,3 +5,6 @@ whatsapp-nativefier-*.log
 PKGBUILD-namcap.log
 pkg/
 src/
+wa-js-*.tgz
+whatsapp-nativefier-with-remote-control-*.pkg.tar.*
+whatsapp-nativefier-*.src.tar.*

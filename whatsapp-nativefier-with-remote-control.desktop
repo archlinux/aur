@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=WhatsApp (Local Remote Control)
+Comment=WhatsApp desktop with authenticated local CLI/MCP controls
+Exec=whatsapp-nativefier-with-remote-control
+Icon=whatsapp-nativefier
+Terminal=false
+Categories=Network;InstantMessaging;

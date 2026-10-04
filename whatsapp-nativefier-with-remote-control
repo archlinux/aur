@@ -1,0 +1,3 @@
+#!/bin/sh
+export WHATSAPP_CONTROLS=1
+exec /opt/whatsapp-nativefier/WhatsApp "$@"
