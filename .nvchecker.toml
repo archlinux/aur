@@ -1,0 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
+[zsh-patina]
+source = "git"
+git = "https://github.com/michel-kraemer/zsh-patina.git"
