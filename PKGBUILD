@@ -3,10 +3,10 @@ _pkgname=zalo
 pkgname=zalo-for-linux-bin
 provides=(zalo)
 conflicts=(zalo)
-pkgver=26.9.10
+pkgver=26.10.10
 _zadarkver=26.2.1
-_commithash=8ec7c5b
-pkgrel=9
+_commithash=d52f22e
+pkgrel=1
 pkgdesc="Zalo for Linux"
 arch=('x86_64' 'aarch64')
 url="https://github.com/VN-Linux-Family/zalo-for-linux"
@@ -50,8 +50,8 @@ sha256sums=(
     'b9478f6156fc65858971ca8fb0cc0b94d327ed34f704ce4c614b10e7510dbfe9'
     '54556414e921d2e72db65cdace024251c05e31ce2e1aa3db82aa330436815445'
 )
-sha256sums_x86_64=('5cf20abd4dffba23be5a9d12751320a4b6940d17d134d33270d8480d235bece0')
-sha256sums_aarch64=('b24e7daa35884016553a8b96b62bd5edf71fae15b439406183d37f188dfb3079')
+sha256sums_x86_64=('8f6af9233b3a62a65581d2429a981a21674a3fe562ba1d2aae7d6a1aaa8fc0a6')
+sha256sums_aarch64=('c23b74a72d034370252c704738d27c316a24018455ebd1744890e9b6c54c0fd2')
 
 package() {
     install -Dm755 "${srcdir}/zalo.AppImage" "${pkgdir}/usr/bin/zalo"
