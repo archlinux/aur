@@ -1,7 +1,7 @@
 pkgbase = frep
-	pkgdesc = Fast find-and-replace tool; search and replace in files or stdin
+	pkgdesc = Fast find-and-replace tool; search and replace in files or stdin (DEPRECATED upstream: use scooter)
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thomasschafer/frep
 	arch = x86_64
 	license = MIT

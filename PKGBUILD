@@ -3,8 +3,8 @@
 
 pkgname=frep
 pkgver=0.1.4
-pkgrel=1
-pkgdesc="Fast find-and-replace tool; search and replace in files or stdin"
+pkgrel=2
+pkgdesc="Fast find-and-replace tool; search and replace in files or stdin (DEPRECATED upstream: use scooter)"
 arch=('x86_64')
 url="https://github.com/thomasschafer/frep"
 license=('MIT')
@@ -24,6 +24,7 @@ build() {
 package() {
 	cd "$_srcdir"
 	install -Dm755 "target/release/frep" "$pkgdir/usr/bin/frep"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	fi
