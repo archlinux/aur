@@ -26,14 +26,14 @@
 # update check. The same recipe builds the source package `ahfail`.
 #
 #   build recipe:  https://gitea.weircon.dk/agw/gtk-ahfail
-#   download:      https://asger.weirsoe.dk/tarballz/ahfail-0.10.2-c5726a1a42f8-x86_64.tar.zst
+#   download:      https://asger.weirsoe.dk/tarballz/ahfail-0.10.2-454f97eea9c0-x86_64.tar.zst
 
 pkgname=ahfail-bin
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Screen locker that says 'ah ah ah, you didn't say the magic word' on a wrong password (prebuilt binary)"
 arch=('x86_64')
-url="https://gitea.weircon.dk/agw/gtk-ahfail"
+url="https://asger.weirsøe.dk/en/projects/ahfail"
 license=('AGPL-3.0-only')
 # gst-plugins-bad-libs: libgstplayer. gst-plugins-base/-good are runtime plugins
 # (audio conversion, the mpg123 mp3 decoder) that namcap cannot see being used.
@@ -49,8 +49,8 @@ conflicts=('ahfail')
 backup=('etc/pam.d/ahfail')
 install=ahfail.install
 options=('!strip' '!debug')
-source=("https://asger.weirsoe.dk/tarballz/ahfail-0.10.2-c5726a1a42f8-x86_64.tar.zst")
-sha256sums=('c5726a1a42f8cd5ae24bf4e4d9131fcd556485006bf81bb48110ccb85e84a6ee')
+source=("https://asger.weirsoe.dk/tarballz/ahfail-0.10.2-454f97eea9c0-x86_64.tar.zst")
+sha256sums=('454f97eea9c02a4cab7b25e91b5ac050a608c4cf0143f895d7b6b01df2d34314')
 
 package() {
     # The tarball is a staged `meson install` tree: usr/ and etc/ at its root.

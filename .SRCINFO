@@ -1,8 +1,8 @@
 pkgbase = ahfail-bin
 	pkgdesc = Screen locker that says 'ah ah ah, you didn't say the magic word' on a wrong password (prebuilt binary)
 	pkgver = 0.10.2
-	pkgrel = 1
-	url = https://gitea.weircon.dk/agw/gtk-ahfail
+	pkgrel = 2
+	url = https://asger.weirsøe.dk/en/projects/ahfail
 	install = ahfail.install
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -32,7 +32,7 @@ pkgbase = ahfail-bin
 	options = !strip
 	options = !debug
 	backup = etc/pam.d/ahfail
-	source = https://asger.weirsoe.dk/tarballz/ahfail-0.10.2-c5726a1a42f8-x86_64.tar.zst
-	sha256sums = c5726a1a42f8cd5ae24bf4e4d9131fcd556485006bf81bb48110ccb85e84a6ee
+	source = https://asger.weirsoe.dk/tarballz/ahfail-0.10.2-454f97eea9c0-x86_64.tar.zst
+	sha256sums = 454f97eea9c02a4cab7b25e91b5ac050a608c4cf0143f895d7b6b01df2d34314
 
 pkgname = ahfail-bin
