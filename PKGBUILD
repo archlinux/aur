@@ -3,7 +3,7 @@
 
 pkgname=lineselect
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive line selection from stdin for use in shell pipelines"
 arch=('x86_64')
 url="https://github.com/urbanogilson/lineselect"
@@ -24,6 +24,8 @@ build() {
 package() {
 	cd "$_srcdir"
 	install -Dm755 "target/release/lineselect" "$pkgdir/usr/bin/lineselect"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 .github/example.gif "$pkgdir/usr/share/doc/$pkgname/example.gif"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	fi
