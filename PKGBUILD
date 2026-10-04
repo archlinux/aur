@@ -1,11 +1,11 @@
 pkgname=orangplayer-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Media player for your files, YouTube, YT Music, SoundCloud and Spotify, with lyrics, downloads and skins"
 arch=('x86_64')
 url="https://github.com/Orang-Studio/OrangPlayer"
 license=('GPL-3.0-or-later')
-depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'taglib' 'ffmpeg' 'yt-dlp' 'libplacebo' 'libass' 'luajit' 'lcms2'
+depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'taglib' 'ffmpeg>=9' 'ffmpeg<10' 'yt-dlp' 'libplacebo' 'libass' 'luajit' 'lcms2'
          'uchardet' 'zimg' 'libpulse' 'libpipewire' 'alsa-lib' 'sndio' 'libva' 'libvdpau' 'libdrm' 'libdisplay-info'
          'mesa' 'libglvnd' 'vulkan-icd-loader' 'wayland' 'libxkbcommon' 'libx11' 'libxext' 'libxfixes' 'libxpresent'
          'libxrandr' 'libxss' 'libxv' 'libjpeg-turbo' 'zlib' 'openssl' 'hicolor-icon-theme')
@@ -16,7 +16,7 @@ provides=('orangplayer')
 conflicts=('orangplayer' 'orang-player')
 options=('!strip' '!debug')
 source=("$url/releases/download/v$pkgver/orangplayer-$pkgver-x86_64.tar.zst")
-sha256sums=('d914a37106073ebdb7767072bbae098a038ce9410c15acccf599891aca93cddf')
+sha256sums=('07c844755c37f2c66f75c07000139d6e82328f42875bec5e138f82f85eb2d59a')
 
 package() {
     cp -a usr "$pkgdir/"

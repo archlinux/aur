@@ -1,6 +1,6 @@
 pkgbase = orangplayer-bin
 	pkgdesc = Media player for your files, YouTube, YT Music, SoundCloud and Spotify, with lyrics, downloads and skins
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Orang-Studio/OrangPlayer
 	arch = x86_64
@@ -9,7 +9,8 @@ pkgbase = orangplayer-bin
 	depends = qt6-declarative
 	depends = qt6-svg
 	depends = taglib
-	depends = ffmpeg
+	depends = ffmpeg>=9
+	depends = ffmpeg<10
 	depends = yt-dlp
 	depends = libplacebo
 	depends = libass
@@ -49,7 +50,7 @@ pkgbase = orangplayer-bin
 	conflicts = orang-player
 	options = !strip
 	options = !debug
-	source = https://github.com/Orang-Studio/OrangPlayer/releases/download/v0.1.0/orangplayer-0.1.0-x86_64.tar.zst
-	sha256sums = d914a37106073ebdb7767072bbae098a038ce9410c15acccf599891aca93cddf
+	source = https://github.com/Orang-Studio/OrangPlayer/releases/download/v0.1.1/orangplayer-0.1.1-x86_64.tar.zst
+	sha256sums = 07c844755c37f2c66f75c07000139d6e82328f42875bec5e138f82f85eb2d59a
 
 pkgname = orangplayer-bin
