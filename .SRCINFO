@@ -1,7 +1,7 @@
 pkgbase = edgcpp-git
 	pkgdesc = The EDG C/C++ front end with its C-generating back end (eccp), prelinker and runtime
 	pkgver = r62403.f0e30b6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://edgcpp.org
 	arch = x86_64
 	arch = aarch64

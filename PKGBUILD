@@ -2,7 +2,7 @@
 
 pkgname=edgcpp-git
 pkgver=r62403.f0e30b6
-pkgrel=1
+pkgrel=2
 pkgdesc="The EDG C/C++ front end with its C-generating back end (eccp), prelinker and runtime"
 arch=('x86_64' 'aarch64')
 url="https://edgcpp.org"
@@ -30,10 +30,16 @@ sha256sums=('SKIP'
             '81831901bda74b2bf54b94519f4953e773a385989404050dc1c3f9cf2169cf1c'
             '6fbf98c33f08bb5270aa9f04bec34c912c61f546285de11e74d11c954aaae939')
 
-# The preset and its build directory, per architecture.
+# The preset and its build directory, per architecture. _target is the
+# default target's own name where the build has one: eccp reads
+# lib_<target>/ for any --target, the default's name included, and cpfe
+# reads the macro table there; upstream's test suite passes it. The
+# x86_64 build names its default target nothing.
 case $CARCH in
-    x86_64)  _preset=linux-gcc-release;         _build=build/gcc-release ;;
-    aarch64) _preset=linux-aarch64-gcc-release; _build=build/aarch64-gcc-release ;;
+    x86_64)  _preset=linux-gcc-release;         _build=build/gcc-release
+             _target= ;;
+    aarch64) _preset=linux-aarch64-gcc-release; _build=build/aarch64-gcc-release
+             _target=linux_aarch64 ;;
 esac
 
 pkgver() {
@@ -60,6 +66,9 @@ _mkbase() {
     # The generator sorts; C collation keeps the table's order the same
     # whatever the build session's locale.
     (cd "$base/lib" && LC_ALL=C sh "$srcdir/edgcpp/util/make_predef_macro_table")
+    # One target, one table: under --target <default> cpfe reads
+    # lib_<target>/predefined_macros.txt. A link cannot drift from lib/.
+    [ -z "$_target" ] || ln -s lib "$base/lib_$_target"
 }
 
 build() {
@@ -82,10 +91,13 @@ build() {
     # The default target (linux_x86_64 or linux_aarch64) reads lib/; an
     # empty EDG_CPP_RT_LIBS builds no per-target runtimes (the x86_64
     # preset lists eight, each needing a lib_<target>/ the base does not
-    # have).
+    # have; the aarch64 preset lists the default target's own name, whose
+    # runtime is lib/libC.a already).
     cmake --preset "$_preset" -DEDG_CPP_RT_LIBS= \
           -DCMAKE_BUILD_TYPE=None -DEDG_PREFERRED_LINKER=bfd
     cmake --build "$_build"
+    # eccp links --target programs with lib_<target>/libC.a.
+    [ -z "$_target" ] || ln -sfn lib "$_build/lib_$_target"
     _strict_facts >> "$srcdir/base/lib/predefined_macros.txt"
 }
 
@@ -145,6 +157,18 @@ int main ()
 SMOKE
     "$_build/bin/eccp" -A -x "$srcdir/smoke.cpp" -o "$srcdir/smoke"
     "$srcdir/smoke"
+    # The same program under the default target's own name, as the test
+    # suite compiles: cpfe must find lib_<target>/predefined_macros.txt
+    # in the base and eccp lib_<target>/libC.a in the build directory.
+    # The driver only warns about a missing lib_<target>/; the warning
+    # fails the check too.
+    if [ -n "$_target" ]; then
+        "$_build/bin/eccp" -A --target "$_target" -x "$srcdir/smoke.cpp" \
+            -o "$srcdir/smoke-target" 2> "$srcdir/smoke-target.err" ||
+            { cat "$srcdir/smoke-target.err"; return 1; }
+        ! grep -e 'target-specific' -e 'is unset' "$srcdir/smoke-target.err"
+        "$srcdir/smoke-target"
+    fi
 }
 
 package() {
@@ -159,6 +183,9 @@ package() {
     install -Dm644 "$_build/lib/libC.a" "$base/lib/libC.a"
     install -Dm644 "$srcdir/base/lib/predefined_macros.txt" \
             "$base/lib/predefined_macros.txt"
+    # The installed EDG_BASE and library directory are one tree, so one
+    # link serves cpfe's table and eccp's runtime under --target.
+    [ -z "$_target" ] || ln -s lib "$base/lib_$_target"
     cp -r --no-preserve=ownership include_c++ "$base/include"
     cp -r --no-preserve=ownership include_c99 "$base/include_c99"
     install -Dm755 "$srcdir/eccp" "$pkgdir/usr/bin/eccp"
