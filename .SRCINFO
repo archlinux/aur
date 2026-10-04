@@ -1,7 +1,7 @@
 pkgbase = fstk
 	pkgdesc = Stack-based file & directory manager: modern cut/paste alternative to mv
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/archsyscall/fstk
 	arch = x86_64
 	license = MIT

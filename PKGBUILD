@@ -3,7 +3,7 @@
 
 pkgname=fstk
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Stack-based file & directory manager: modern cut/paste alternative to mv"
 arch=('x86_64')
 url="https://github.com/archsyscall/fstk"
@@ -24,6 +24,10 @@ build() {
 package() {
 	cd "$_srcdir"
 	install -Dm755 "target/release/fstk" "$pkgdir/usr/bin/fstk"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 <("$pkgdir/usr/bin/fstk" completion bash) "$pkgdir/usr/share/bash-completion/completions/fstk"
+	install -Dm644 <("$pkgdir/usr/bin/fstk" completion zsh) "$pkgdir/usr/share/zsh/site-functions/_fstk"
+	install -Dm644 <("$pkgdir/usr/bin/fstk" completion fish) "$pkgdir/usr/share/fish/vendor_completions.d/fstk.fish"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	fi
