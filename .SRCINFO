@@ -1,7 +1,7 @@
 pkgbase = gocost
 	pkgdesc = A simple, keyboard-driven TUI for tracking monthly expenses (Go + Bubble Tea)
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/madalinpopa/gocost
 	arch = x86_64
 	license = MIT
