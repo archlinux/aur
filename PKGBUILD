@@ -1,7 +1,7 @@
 # Maintainer: Felitendo
 # Contributor: Infrawrench LLC <astrid@infrawrench.com>
 # This PKGBUILD is updated automatically:
-# https://github.com/Felitendo/PKGBUILDS
+# https://git.felo.gg/Felitendo/PKGBUILDS
 
 pkgname=schist
 pkgver=0.15.0
