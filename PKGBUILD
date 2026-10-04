@@ -4,7 +4,7 @@
 pkgname=python-tuitorial
 _pkgname=tuitorial
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tutorial presentation tool using Textual, with syntax highlighting"
 arch=('any')
 url="https://github.com/basnijholt/tuitorial"
@@ -24,6 +24,10 @@ build() {
 package() {
 	cd "$_pkgname"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+	install -Dm644 AUTHORS.md "$pkgdir/usr/share/doc/$_pkgname/AUTHORS.md"
+	install -d "$pkgdir/usr/share/$_pkgname/examples"
+	install -Dm644 examples/*.yaml "$pkgdir/usr/share/$_pkgname/examples/"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 	fi

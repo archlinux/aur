@@ -1,7 +1,7 @@
 pkgbase = python-tuitorial
 	pkgdesc = A tutorial presentation tool using Textual, with syntax highlighting
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/basnijholt/tuitorial
 	arch = any
 	license = MIT
