@@ -1,58 +1,50 @@
-# Maintainer: Namkhai B. <echo em.roekn.kn | sed s/\\./@/2 | rev>
+# Maintainer: Cyridge cyridge@proton.me
+# Contributor: Namkhai B. <echo em.roekn.kn | sed s/\\./@/2 | rev>
 
 _pkgname=ananicy-cpp
 pkgname=ananicy-cpp-nosystemd
-_pkgver=1.1.1
-pkgver=${_pkgver//-/.}
-pkgrel=0
-pkgdesc="Ananicy rewritten in C++ for much lower CPU and memory usage."
-url="https://gitlab.com/ananicy-cpp/ananicy-cpp/"
-license=(GPLv3)
-source=("https://gitlab.com/ananicy-cpp/${_pkgname}/-/archive/v${_pkgver}/${_pkgname}-v${_pkgver}.tar.gz")
-sha256sums=('36d673c1fd2a7e52d8fd5a0e2e66045011b73125b7d8bc295019f434de87c3a1'
-            'a9a98ba8ff2b3f7e12f2ac75361018a9ba42f9298aa7e8f6bad3613a03591bc0')
-declare -g -A externals
-externals['std-format']="dfa4fdc87c7cb9bb1683125009baa7278bb85901"
-
-for external in "${!externals[@]}"; do
-    source+=(https://gitlab.com/ananicy-cpp/stl-polyfills/${external}/-/archive/${externals[$external]}/${external}-${externals[$external]}.tar.gz)
-done
-arch=(x86_64 i386 aarch64 armv7h)
-depends=(fmt spdlog nlohmann-json)
-makedepends=(cmake git)
+pkgver=1.2.0
+pkgrel=1
+_stdformat=dfa4fdc87c7cb9bb1683125009baa7278bb85901
+pkgdesc="Ananicy rewritten in C++ for much lower CPU and memory usage (without systemd)"
+url="https://gitlab.com/ananicy-cpp/ananicy-cpp"
+license=(GPL-3.0-only)
+arch=(x86_64 i686 aarch64 armv7h)
+depends=(fmt spdlog nlohmann-json gcc-libs glibc)
+makedepends=(cmake)
 optdepends=("ananicy-rules-git: community rules")
+provides=(ananicy-cpp)
 conflicts=(ananicy-cpp)
+source=("https://gitlab.com/ananicy-cpp/${_pkgname}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz"
+        "https://gitlab.com/ananicy-cpp/stl-polyfills/std-format/-/archive/${_stdformat}/std-format-${_stdformat}.tar.gz"
+        glibc-2.42-headers.patch)
+sha256sums=('d75157b9588748ce6ae04c3e2d71625d8eec6bf2d23e06f8cb6f9687c74813f7'
+            'a9a98ba8ff2b3f7e12f2ac75361018a9ba42f9298aa7e8f6bad3613a03591bc0'
+            'bc77738a583e9855167c8b78c23d3739d4c2c396f7561ecdd4522c8ed45b5c94')
 
 prepare() {
-    cd "${_pkgname}-v${_pkgver}"
+    cd "${_pkgname}-v${pkgver}"
 
-    echo Externals: "${!externals[@]}"
-    for external in "${!externals[@]}"; do
-      [ -d "external/${external}" ] && rm -rf "external/${external}"/*
-      mv -v "../${external}-${externals[$external]}/"* external/${external}/
-    done
+    rm -rf external/std-format
+    mv "../std-format-${_stdformat}" external/std-format
 
-    cmake -B "build" . \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_INSTALL_PREFIX=/usr \
-            -DUSE_EXTERNAL_SPDLOG=ON \
-            -DUSE_EXTERNAL_JSON=ON \
-            -DUSE_EXTERNAL_FMTLIB=ON \
-            -DENABLE_SYSTEMD=OFF \
-            -DVERSION=${_pkgver}
+    # upstream 7786652, not in a release yet
+    patch -Np1 -i ../glibc-2.42-headers.patch
 }
 
 build() {
-    cd "${_pkgname}-v${_pkgver}"
-
+    cmake -B build -S "${_pkgname}-v${pkgver}" \
+        -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DUSE_EXTERNAL_SPDLOG=ON \
+        -DUSE_EXTERNAL_JSON=ON \
+        -DUSE_EXTERNAL_FMTLIB=ON \
+        -DENABLE_SYSTEMD=OFF \
+        -DVERSION=${pkgver}
     cmake --build build
 }
 
 package() {
-    cd "${_pkgname}-v${_pkgver}"
-
-    export DESTDIR="$pkgdir"
-    cmake --install build --component Runtime
-
-    install -m755 -d "$pkgdir/etc/ananicy.d"
+    DESTDIR="$pkgdir" cmake --install build --component Runtime
+    install -dm755 "$pkgdir/etc/ananicy.d"
 }

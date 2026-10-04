@@ -1,0 +1,160 @@
+From 77866526e1116c0b237970cf6faa2972748e57f1 Mon Sep 17 00:00:00 2001
+From: ReBiz <18418739-rebizzz@users.noreply.gitlab.com>
+Date: Tue, 18 Aug 2026 00:33:15 +0000
+Subject: [PATCH] fix: add missing <cstring> and <cstdint> headers for glibc
+ 2.42
+
+---
+ src/config.cpp                                   | 1 +
+ src/platform/linux/backtrace.cpp                 | 1 +
+ src/platform/linux/cgroups.cpp                   | 1 +
+ src/platform/linux/debug.cpp                     | 2 ++
+ src/platform/linux/process.cpp                   | 1 +
+ src/platform/linux/singleton_process.cpp         | 1 +
+ src/platform/systemd/service.cpp                 | 1 +
+ src/tests/unit-core.cpp                          | 1 +
+ src/tests/unit-cpuset.cpp                        | 1 +
+ src/utility/argument_parsing/argument.cpp        | 1 +
+ src/utility/argument_parsing/argument_parser.cpp | 1 +
+ 11 files changed, 12 insertions(+)
+
+diff --git a/src/config.cpp b/src/config.cpp
+index 4a53e2f..ce9eb3f 100644
+--- a/src/config.cpp
++++ b/src/config.cpp
+@@ -6,6 +6,7 @@
+ #include "core/priority.hpp"
+ 
+ #include <chrono> // for system_clock::now
++#include <cstdint>
+ #include <fstream>
+ 
+ #include <fmt/chrono.h>
+diff --git a/src/platform/linux/backtrace.cpp b/src/platform/linux/backtrace.cpp
+index fed73c5..9375978 100644
+--- a/src/platform/linux/backtrace.cpp
++++ b/src/platform/linux/backtrace.cpp
+@@ -1,5 +1,6 @@
+ #include "utility/backtrace.hpp"
+ 
++#include <cstdint>
+ #include <cstdlib>    // for free
+ #include <cxxabi.h>   // for abi::__cxa_demangle
+ #include <execinfo.h> // for backtrace, backtrace_symbols
+diff --git a/src/platform/linux/cgroups.cpp b/src/platform/linux/cgroups.cpp
+index 4f4d535..c5766d2 100644
+--- a/src/platform/linux/cgroups.cpp
++++ b/src/platform/linux/cgroups.cpp
+@@ -1,6 +1,7 @@
+ #include "core/cgroups.hpp"
+ #include "utility/mounts.hpp"
+ 
++#include <cstdint>
+ #include <filesystem>  // for path
+ #include <fstream>     // for ifstream
+ #include <mutex>       // for mutex, lock_guard
+diff --git a/src/platform/linux/debug.cpp b/src/platform/linux/debug.cpp
+index 1cbfb48..b8bd8ae 100644
+--- a/src/platform/linux/debug.cpp
++++ b/src/platform/linux/debug.cpp
+@@ -1,4 +1,5 @@
+ #include "utility/debug.hpp"
++
+ #include "core/cgroups.hpp"
+ #include "service.hpp"
+ #include "utility/utils.hpp"
+@@ -7,6 +8,7 @@
+ #include <iostream>    // for cout
+ #include <string>      // for string
+ #include <string_view> // for string_view
++#include <unistd.h>
+ 
+ #include <fmt/format.h>
+ 
+diff --git a/src/platform/linux/process.cpp b/src/platform/linux/process.cpp
+index d84cecf..ab6a9ad 100644
+--- a/src/platform/linux/process.cpp
++++ b/src/platform/linux/process.cpp
+@@ -14,6 +14,7 @@
+ #include <filesystem> // for path
+ #include <fstream>    // for ifstream
+ #include <thread>     // for jthread
++#include <unistd.h>
+ 
+ #include <fmt/format.h>
+ #include <fmt/ranges.h>
+diff --git a/src/platform/linux/singleton_process.cpp b/src/platform/linux/singleton_process.cpp
+index 92ab2ab..9c7a6fd 100644
+--- a/src/platform/linux/singleton_process.cpp
++++ b/src/platform/linux/singleton_process.cpp
+@@ -2,6 +2,7 @@
+ 
+ #include <cerrno>
+ #include <chrono>
++#include <cstring>
+ #include <fcntl.h> /* For O_* constants */
+ #include <sys/ipc.h>
+ #include <sys/mman.h>
+diff --git a/src/platform/systemd/service.cpp b/src/platform/systemd/service.cpp
+index d716481..0602321 100644
+--- a/src/platform/systemd/service.cpp
++++ b/src/platform/systemd/service.cpp
+@@ -2,6 +2,7 @@
+ 
+ #include <systemd/sd-daemon.h>
+ #include <systemd/sd-login.h>
++#include <unistd.h>
+ 
+ #include <spdlog/spdlog.h>
+ 
+diff --git a/src/tests/unit-core.cpp b/src/tests/unit-core.cpp
+index b71e033..b9db9a0 100644
+--- a/src/tests/unit-core.cpp
++++ b/src/tests/unit-core.cpp
+@@ -9,6 +9,7 @@
+ 
+ #include <filesystem>
+ #include <fstream>
++#include <unistd.h>
+ 
+ #include <spdlog/spdlog.h>
+ 
+diff --git a/src/tests/unit-cpuset.cpp b/src/tests/unit-cpuset.cpp
+index 31ac770..daaa11c 100644
+--- a/src/tests/unit-cpuset.cpp
++++ b/src/tests/unit-cpuset.cpp
+@@ -5,6 +5,7 @@
+ #include "core/x3d.hpp"
+ 
+ #include <spdlog/spdlog.h>
++#include <unistd.h>
+ 
+ TEST_SUITE_BEGIN("CpuSet");
+ 
+diff --git a/src/utility/argument_parsing/argument.cpp b/src/utility/argument_parsing/argument.cpp
+index 954a588..cf3a331 100644
+--- a/src/utility/argument_parsing/argument.cpp
++++ b/src/utility/argument_parsing/argument.cpp
+@@ -1,6 +1,7 @@
+ #include "utility/argument_parser.hpp"
+ 
+ #include <cstdlib>
++#include <cstring>
+ #include <cxxabi.h>
+ #include <iostream>
+ #include <memory>
+diff --git a/src/utility/argument_parsing/argument_parser.cpp b/src/utility/argument_parsing/argument_parser.cpp
+index c51f851..b91139a 100644
+--- a/src/utility/argument_parsing/argument_parser.cpp
++++ b/src/utility/argument_parsing/argument_parser.cpp
+@@ -1,6 +1,7 @@
+ #include "utility/argument_parser.hpp"
+ 
+ #include <algorithm>
++#include <cstdint>
+ #include <cxxabi.h>
+ #include <functional>
+ #include <iostream>
+-- 
+2.55.0
+
