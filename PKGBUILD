@@ -6,7 +6,7 @@
 # (D15, spec docs/superpowers/specs/2026-09-27-v1-dist-design.md sec 9).
 
 pkgname=eitri-git
-pkgver=0.2.0.0.gd0d362e
+pkgver=0.2.0.17.g37b10ae
 pkgrel=1
 pkgdesc="Your Neovim, with a readable Claude Code panel beside it (built from source)"
 arch=('x86_64')
@@ -54,7 +54,7 @@ sha256sums=('SKIP'
             'd60acfe00a2932254bb0ad20e01b0d74397a0875595de719654b214f4b03f307')
 
 # pkgver(): git describe --long --tags, ARM-safe against a prerelease tag such as v0.2.0-rc.1
-# (docs/workspace/2026-09-27-codex-v1dist-plan-verdicts.md #2). The naive "insert .r before the
+# (the private review notes #2). The naive "insert .r before the
 # first hyphen" sed spec sec 3 first wrote breaks on exactly that tag -- `v0.2.0-rc.1-0-g1234567`
 # becomes `0.2.0.rrc.1.0-g1234567` (a double "r" from misplacing .r, and an un-substituted trailing
 # hyphen makepkg's own pkgver linter rejects outright: "pkgver is not allowed to contain colons,
@@ -162,7 +162,9 @@ build() {
 
 	# The sidecar, from the Verdandi clone prepare() checked out and archived -- the same
 	# --build-sidecar-into entry point eitri-bin's build() uses (spec sec 9: "the sidecar recipe
-	# exists once").
+	# exists once"). Its slow part (npm's ~120 MB of the Agent SDK, then the TypeScript build and the
+	# single binary) says nothing about how long it takes, so this one line does, as in eitri-bin.
+	msg2 "Installing the Claude Agent SDK and building the sidecar (1-3 min)"
 	sh packaging/install.sh \
 		--build-sidecar-into "$srcdir/sidecar" \
 		--node "$srcdir/node-v22.23.2-linux-x64.tar.xz" \
@@ -184,7 +186,14 @@ package() {
 	install -m0644 "$srcdir/sidecar/verdandi-claude-sidecar.rev" "$pkgdir/usr/lib/eitri/verdandi-claude-sidecar.rev"
 
 	install -Dm0755 "packaging/eitri.launcher.sh" "$pkgdir/usr/bin/eitri"
-	install -Dm0644 "packaging/eitri.desktop" "$pkgdir/usr/share/applications/eitri.desktop"
+	# The desktop entry is named by the application id (it replaced eitri.desktop, which an upgrade drops
+	# by this package no longer listing it), and the icon is every file of packaging/icons/hicolor.
+	install -Dm0644 "packaging/cn.huntergrey.eitri.desktop" \
+		"$pkgdir/usr/share/applications/cn.huntergrey.eitri.desktop"
+	local _icon
+	while IFS= read -r _icon; do
+		install -Dm0644 "packaging/icons/$_icon" "$pkgdir/usr/share/icons/$_icon"
+	done < <(cd packaging/icons && find hicolor -type f | LC_ALL=C sort)
 
 	# D15: this tree's own LICENSE, plus the built SDK's and Node's licences. No
 	# THIRD-PARTY-LICENSES/SOURCE is written here at all -- unlike packaging/install.sh's own
@@ -193,6 +202,9 @@ package() {
 	# generated third-party attribution outright rather than shipping a placeholder saying so.
 	install -d "$pkgdir/usr/share/licenses/$pkgname"
 	install -m0644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	# The icon is the Eitri logo, which LICENSE's MIT does not cover: its CC BY 4.0 notice (and the credit
+	# for the colours) travels with it.
+	install -m0644 "packaging/icons/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-icon"
 	if [ -f "$srcdir/sidecar/LICENSE.md" ]; then
 		install -m0644 "$srcdir/sidecar/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 	fi
