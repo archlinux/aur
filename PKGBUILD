@@ -1,7 +1,7 @@
 # Maintainer: VBen <devel@velmeden.info>
 pkgname=loxone-config-bin
-pkgver=17.1.7.27
-pkgrel=2
+pkgver=17.2.8.28
+pkgrel=1
 pkgdesc="Loxone Config - home automation configuration software (Wine)"
 arch=('x86_64')
 url="https://www.loxone.com"
@@ -22,7 +22,7 @@ source=(
     "loxone-config-dpi.sh"
     "loxone-config-dpi.desktop"
 )
-sha256sums=('478b163c6883514d9faf83e4ce2fc1d4637bd0c5b3b8d05600b4eeade475949a'
+sha256sums=('2c750c68a0bc185da173367368a70ebc93349e6ac96d982d8e91f5702fc01703'
             '3def05431934b75dbda853eef3ec62659249c0194f7337751946d08de8d5954b'
             '3ff9c4f99a924d74e3240dba49fbdce737113e1072f9f7aadf6d9fe6c76260b1'
             'bd0052ac963c24524d2ebe4c3e0955713a4b0faa08439f497f2bb536825d8217'
