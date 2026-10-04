@@ -1,0 +1,5 @@
+[baken-bin]
+source = "github"
+github = "M-Igashi/baken"
+use_latest_release = true
+prefix = "v"
