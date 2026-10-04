@@ -1,0 +1,25 @@
+# Colored makepkg-like functions
+note() {
+    printf "${_blue}==>${_yellow} NOTE:${_bold} %s${_all_off}\n" "$1"
+}
+
+_all_off="$(tput sgr0)"
+_bold="${_all_off}$(tput bold)"
+_blue="${_bold}$(tput setaf 4)"
+_yellow="${_bold}$(tput setaf 3)"
+
+
+post_install() {
+    systemctl daemon-reload
+    note '农业银行需要手动将 CA 证书添加到信任列表中，此证书不会手动安装'
+    note '运行 /opt/apps/com.websocket.tdr.abc/files/bin/install_ca.sh 会将证书安装到本用户的信任列表中'
+    note 'Firefox 系请手动将证书添加到信任列表中'
+}
+post_upgrade() {
+    systemctl daemon-reload
+}
+
+pre_remove() {
+    systemctl disable OnWebABC.service
+    systemctl daemon-reload
+}

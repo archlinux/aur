@@ -1,0 +1,19 @@
+pkgbase = bank-abc
+	pkgdesc = 中国农业银行控件
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://perbank.abchina.com/EbankSite/ebank/frequentlyQuestions
+	install = .install
+	arch = x86_64
+	license = custom
+	depends = nss
+	optdepends = browser360-bin: 支持的浏览器
+	options = !strip
+	source = install_ca.sh
+	source = OnWebSocketTray_ABC.desktop
+	sha256sums = e9b5ac75b7806d85f6b268220207797a2b529879ff592ac453e30e7097780877
+	sha256sums = ca75c0747601064326553a688b2e8c4f54f4cc7bd631747bf2f0b6bb079fdd12
+	source_x86_64 = https://ebhelper.cdn-static.abchina.com.cn/ebhelper/DriverData/signed_abc_tdr_websocket_usbkey_uos_x86.deb
+	sha256sums_x86_64 = b68c6784750b7c9256de51ae1aa7de0a4f62f035301d3e1f04c94c2cbc2403b1
+
+pkgname = bank-abc
