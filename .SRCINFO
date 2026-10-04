@@ -1,6 +1,6 @@
 pkgbase = nogforge
 	pkgdesc = Packages the KognogOS way, in a terminal: what's installed, searching and installing, and updates you can read, on top of nog
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/jetomev/nogforge
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = nogforge
 	depends = python-forgekit>=0.6.0
 	depends = nog>=1.7.0
 	optdepends = archlinux-appstream-data: app names and category badges
-	source = nogforge-1.1.0.tar.gz::https://github.com/jetomev/nogforge/releases/download/v1.1.0/nogforge-1.1.0.tar.gz
-	source = nogforge-1.1.0.tar.gz.asc::https://github.com/jetomev/nogforge/releases/download/v1.1.0/nogforge-1.1.0.tar.gz.asc
+	source = nogforge-1.1.1.tar.gz::https://github.com/jetomev/nogforge/releases/download/v1.1.1/nogforge-1.1.1.tar.gz
+	source = nogforge-1.1.1.tar.gz.asc::https://github.com/jetomev/nogforge/releases/download/v1.1.1/nogforge-1.1.1.tar.gz.asc
 	validpgpkeys = 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
-	sha256sums = e42765299dfd1a4059638243d5b64ae9367e923f11d88df8191e1d75d153a27b
+	sha256sums = 9fd76043169cd6c81e924dcd61fff68601e7c093cd6f1c802c6f04d651ded9a4
 	sha256sums = SKIP
 
 pkgname = nogforge

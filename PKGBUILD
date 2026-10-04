@@ -2,7 +2,7 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=nogforge
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Packages the KognogOS way, in a terminal: what's installed, searching and installing, and updates you can read, on top of nog"
 arch=('any')
@@ -17,7 +17,7 @@ depends=('python' 'python-textual' 'python-rich' 'python-forgekit>=0.6.0' 'nog>=
 optdepends=('archlinux-appstream-data: app names and category badges')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('e42765299dfd1a4059638243d5b64ae9367e923f11d88df8191e1d75d153a27b'
+sha256sums=('9fd76043169cd6c81e924dcd61fff68601e7c093cd6f1c802c6f04d651ded9a4'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
