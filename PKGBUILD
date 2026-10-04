@@ -3,7 +3,7 @@
 # Contributor: Steven Terwindt <git@sbbh.cloud>
 
 pkgname='statemate-bin'
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Declarative system configuration management'
 url='https://github.com/subbeh/statemate'
@@ -13,10 +13,10 @@ provides=('statemate')
 conflicts=('statemate')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/subbeh/statemate/releases/download/v${pkgver}/statemate_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('5021969809ca63d5a61e73f69bbfb1fab53111e5a5066750ebba85b30832465a')
+sha256sums_aarch64=('5bfcd090daef3309b2eff5e9149ae42808c1d584876a739ccad23532d49d8e64')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/subbeh/statemate/releases/download/v${pkgver}/statemate_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('b7b9c5d5aa38fd0f44a870ed350dcd1fd7249aeb858d8dc8531bd4e4e1dd9272')
+sha256sums_x86_64=('e278517475060fedea36917f24a0541a0ec055d233bf12f6668f69d786cdcd57')
 
 package() {
   install -Dm755 mate "${pkgdir}/usr/bin/mate"
