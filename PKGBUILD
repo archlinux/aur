@@ -4,7 +4,7 @@
 pkgname=python-json-leaves
 _pkgname=json-leaves
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Extract the leaves from a JSON file and show the paths to them"
 arch=('any')
 url="https://github.com/talwrii/json-leaves"
@@ -24,6 +24,8 @@ build() {
 package() {
 	cd "$_srcdir"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+	install -Dm644 logo.png "$pkgdir/usr/share/doc/$_pkgname/logo.png"
 	if [ -f LICENSE ]; then
 		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 	fi

@@ -1,7 +1,7 @@
 pkgbase = python-json-leaves
 	pkgdesc = Extract the leaves from a JSON file and show the paths to them
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/talwrii/json-leaves
 	arch = any
 	license = unknown
