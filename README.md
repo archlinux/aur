@@ -5,6 +5,12 @@ The upstream Debian package revision is 2.2.0-25.
 
 Build and install with `makepkg -si`.
 
+The package is managed by pacman. Run `typeless` using the entry point at
+`/usr/bin/typeless`; the bundled application and resources live in
+`/opt/Typeless`, following the Linux layout for self-contained vendor software.
+The build checkout is not used by the installed application and may be moved
+or removed after installation. Uninstall with `sudo pacman -Rns typeless-bin`.
+
 For global keyboard capture, the user must belong to the `input` group.
 If needed, run `sudo usermod -aG input "$USER"`, then log out and back in.
 The package supplies a uinput module configuration and device access rule.
