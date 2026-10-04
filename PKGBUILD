@@ -19,12 +19,12 @@ license=("GPL3")
 depends=("qt6-base" "polkit" "flatpak")
 makedepends=("cmake" "ninja" "qt6-tools")
 optdepends=("paru: AUR helper for AUR tab operations and Snap setup (snapd is built from the AUR)")
-source=("https://github.com/MX-Linux/mx-packageinstaller/archive/refs/tags/36.03.1.tar.gz")
-sha256sums=('0f82787823f53019846e9e2ec79e474c26849b9097d10072599d2fa9b61b9d86')
+source=("https://github.com/MX-Linux/mx-packageinstaller/archive/refs/tags/26.10.tar.gz")
+sha256sums=('965485300ab1ec41f9235f9aaf13618efe9896ee0322985e090020c87b07775b')
 
 # dpkg-source packed this tarball from a directory called "src", so that - not
 # ${pkgname}-${pkgver} - is what it unpacks to.
-_srcdir="mx-packageinstaller-36.03.1"
+_srcdir="mx-packageinstaller-26.10"
 
 build() {
   cd "${srcdir}/${_srcdir}"
