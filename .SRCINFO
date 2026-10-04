@@ -1,6 +1,6 @@
 pkgbase = scrambles-viewer-bin
 	pkgdesc = View WCA scramble PDFs at a competition
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/maxidragon/scrambles-viewer
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = scrambles-viewer-bin
 	conflicts = scrambles-viewer
 	options = !strip
 	options = !debug
-	source = scrambles-viewer-bin-0.1.0.deb::https://github.com/maxidragon/scrambles-viewer/releases/download/desktop-v0.1.0/Scrambles.Viewer_0.1.0_amd64.deb
-	source = LICENSE-0.1.0::https://raw.githubusercontent.com/maxidragon/scrambles-viewer/desktop-v0.1.0/LICENSE
-	sha256sums = 052aded47bad296c42555d750d9a42cabff0afcd829be68c22dd7940734b7427
+	source = scrambles-viewer-bin-0.1.1.deb::https://github.com/maxidragon/scrambles-viewer/releases/download/desktop-v0.1.1/Scrambles.Viewer_0.1.1_amd64.deb
+	source = LICENSE-0.1.1::https://raw.githubusercontent.com/maxidragon/scrambles-viewer/desktop-v0.1.1/LICENSE
+	sha256sums = 77c9b55c404a7225b65707a1d74dfdf748284b1c2289a67dadf5d0e5b601269f
 	sha256sums = 2fc937834f80ea37f5291832b6cb1a82c503d9fc299845ecdf1469be60e89d9d
 
 pkgname = scrambles-viewer-bin
