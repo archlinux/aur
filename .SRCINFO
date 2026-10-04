@@ -1,6 +1,6 @@
 pkgbase = python-firedrake-fiat
 	pkgdesc = FInite element Automatic Tabulator
-	pkgver = 2026.4.0
+	pkgver = 2026.10.0
 	pkgrel = 1
 	url = https://github.com/firedrakeproject/fiat
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-firedrake-fiat
 	depends = python-symengine
 	depends = python-sympy
 	options = !emptydirs
-	source = fiat-2026.4.0.tar.gz::https://github.com/firedrakeproject/fiat/archive/2026.4.0.tar.gz
-	sha512sums = 0a07ac2e20b971254244fa1a3b0d710e2b79d17b920d4753b30f4c624f758ba60d383b52d402eab3eb9e6adde2296310c6412c6043b39652bd478b3e8a85ae6f
+	source = fiat-2026.10.0.tar.gz::https://github.com/firedrakeproject/fiat/archive/2026.10.0.tar.gz
+	sha512sums = 6c48735bdfaf76dc402a00ba826872ef3e16553bb2327809d94a119274524acff40cb44f206fafcba3b6e30ac63db3f8005c18558e77bd2be46a508eab55f141
 
 pkgname = python-firedrake-fiat
