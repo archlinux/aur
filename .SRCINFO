@@ -1,8 +1,8 @@
 pkgbase = clockenstein
 	pkgdesc = Calendar application with local, Google and CalDAV support
 	pkgver = 2.0.0
-	pkgrel = 1
-	url = https://github.com/xapp-project/clockenstein
+	pkgrel = 2
+	url = https://xapp-project.org/clockenstein.html
 	arch = any
 	license = GPL-3.0-or-later
 	checkdepends = desktop-file-utils
@@ -26,6 +26,8 @@ pkgbase = clockenstein
 	depends = xapp
 	depends = xapp-symbolic-icons
 	source = git+https://github.com/xapp-project/clockenstein.git#tag=2.0.0
+	source = install_dir.patch
 	sha256sums = b4cb76ae1e22b48f782b082255bf551d0a5c1943afe09c887d0a7c1bb3e9a620
+	sha256sums = 400137f29fe9406e7f87895eb018f4fcc19f6826669fde85f06b34bf06d1d477
 
 pkgname = clockenstein
