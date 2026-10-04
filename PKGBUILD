@@ -1,7 +1,7 @@
 # Maintainer: nardholio <nardholio@gmail.com>
 
 pkgname=x11-multimonitor-center
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="X11 tray app to move newly spawned windows to the monitor with the mouse cursor if they spawn somewhere else"
 arch=('any')
@@ -49,12 +49,12 @@ static gboolean delayed_move_cb(gpointer user_data)
 
     if (!enabled) goto cleanup;
 
-    /* WnckWindowType type = wnck_window_get_window_type(window);
+    WnckWindowType type = wnck_window_get_window_type(window);
     if (type == WNCK_WINDOW_DOCK || type == WNCK_WINDOW_DESKTOP ||
         type == WNCK_WINDOW_MENU || type == WNCK_WINDOW_UTILITY ||
         type == WNCK_WINDOW_SPLASHSCREEN || type == WNCK_WINDOW_TOOLBAR) {
         goto cleanup;
-    } */
+    }
 
     GdkDisplay *display = gdk_display_get_default();
     GdkSeat *seat = gdk_display_get_default_seat(display);
