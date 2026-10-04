@@ -1,6 +1,6 @@
 pkgbase = cachymonitor
 	pkgdesc = Gaming-oriented system monitor: FPS, 1% low, frametime, CPU/GPU/RAM/VRAM via MangoHud
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/YOUNES-2-wq/cachymonitor
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = cachymonitor
 	optdepends = nvidia-utils: NVIDIA GPU readings via nvidia-smi
 	optdepends = pciutils: GPU marketing name via lspci
 	optdepends = dmidecode: RAM type and speed (requires root)
-	source = cachymonitor-1.4.2.tar.gz::https://github.com/YOUNES-2-wq/cachymonitor/archive/refs/tags/v1.4.2.tar.gz
-	sha256sums = e0f7f21874f32b80da4ac1fb0612727ffb360a3e49e9637761e6a6e444577c2d
+	source = cachymonitor-1.4.3.tar.gz::https://github.com/YOUNES-2-wq/cachymonitor/archive/refs/tags/v1.4.3.tar.gz
+	sha256sums = e8e99c3edeaada07a17bf0d89219b699f8fb5c9887b0a56a3ca4ca30a4b1b94f
 
 pkgname = cachymonitor
