@@ -1,0 +1,22 @@
+pkgbase = mango-layout-tray-bin
+	pkgdesc = A visual layout picker for MangoWM in your system tray (prebuilt binary)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/mikkelrask/mango-layout-tray
+	arch = x86_64
+	license = MIT
+	depends = gtk4>=4.8
+	depends = glibc>=2.39
+	depends = libgcc
+	depends = wayland
+	depends = glib2
+	depends = cairo
+	depends = hicolor-icon-theme
+	optdepends = mangowm: Wayland compositor controlled by this app
+	provides = mango-layout-tray=0.1.1
+	conflicts = mango-layout-tray
+	options = !debug
+	source_x86_64 = mango-layout-tray-bin-0.1.1-x86_64.tar.gz::https://github.com/mikkelrask/mango-layout-tray/releases/download/v0.1.1/mango-layout-tray-0.1.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 24b8c30a9f74b3bfdfaad6480f3bee15b391bea88b3ff04482088752c74df1c8
+
+pkgname = mango-layout-tray-bin
