@@ -6,14 +6,14 @@
 pkgname='slang-snapshot'
 _pkgname="${pkgname%-snapshot}"
 pkgdesc='S-Lang is a powerful interpreted language (development snapshot)'
-_pkgver=2.3.4-23
+_pkgver=2.3.4-29
 _prever="pre$_pkgver"
 pkgver="${_pkgver//-/.}"
 pkgrel=1
 url='https://jedsoft.org/snapshots/'
-changelog="$pkgname.changelog"
+changelog="$_pkgname.changelog"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
-license=('GPL-2.0-or-later')  # SPDX-License-Identifier: GPL-2.0-or-later
+license=('GPL-2.0-or-later')
 depends=(
   'glibc'
   'libpng'
@@ -28,14 +28,13 @@ backup=('etc/slsh.rc')
 source=("$url$_pkgname-$_prever.tar.gz")
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis
 # Taken from $url
-md5sums=('e44eb4d1f189d52d608f532c992a53b5')
+md5sums=('3a2e7dae4c6c4d4839eebb6d246877c6')
 
 build() {
   cd "$_pkgname-$_prever"
 
-  ./configure --prefix=/usr --sysconfdir=/etc
-
-  make
+  ./configure --prefix=/usr --sysconfdir=/etc \
+    && make
 }
 
 check() {

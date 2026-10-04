@@ -52,3 +52,15 @@ Changes since 2.3.3
 23. src/slerr.c: print_queue was not designed to support reentrancy,
     so a safety check was implemented to enforce this restriction.
     (thanks go to Morten Bo Johansen for helping)
+24. src/slang.h: Added a define for SLANG_SIZEOF_LONG
+25. modules/chksum.sl+related files: Added 64bit CRC routines and the hmacsum
+    function to complement hmac_new/close functions.  The 64 bit CRC
+    algorthms include: XZ(default), NVME, EMCA-182, and GO-ISO.
+26. A number of unsigned integer overflow checks were added to fix potential
+    memory corruption issues identified by AISLE <https://aisle.com/>. (Thanks go to Miroslav
+    Lichvar for sending me the report)
+27. src/_slang.h: Changed `#if _SL_HAS_BUILTIN_OVERFLOW` to `#ifdef _SL_HAS_BUILTIN_OVERFLOW`
+28. src/slermin.c: Avoid a corrupt terminfo file causing the
+    pSLtt_tigetstr function to read past the end of the string table.
+29. Additional unsigned int overflow checks added based upon an
+    analysis by Anthropic/Claude provided by Miroslav Lichvar
