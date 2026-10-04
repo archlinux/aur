@@ -1,17 +1,17 @@
 # Maintainer: jazztickets <amF6enRpY2tldHNAZ21haWwuY29tCg==>
 pkgname=openflap
-pkgver=1.0.7
-pkgbuild=r79
+pkgver=1.1.0
+pkgbuild=r102
 pkgfullname=(${pkgname}-${pkgver}${pkgbuild})
 pkgrel=1
 pkgdesc="A game about bouncing balls through holes"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/jazztickets/openflap"
 license=('GPL3')
-depends=('sdl2' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer')
+depends=('sdl3' 'sdl3_ttf' 'sdl3_mixer')
 makedepends=('cmake')
 source=("https://gitlab.com/jazztickets/uploads/-/raw/main/${pkgfullname}-src.tar.gz")
-sha256sums=('33f9662ec7a7d1d55a2b3b25bd78b4850a1b9f68f2435ee3d3f1ab5bb56cd034')
+sha256sums=('28b14ea6d384508d42a572897bd5402ee0ee3985cc98b1e04652085fb8a454ce')
 
 prepare() {
 	cd "$srcdir/$pkgfullname"
