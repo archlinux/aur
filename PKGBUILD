@@ -5,7 +5,7 @@
 pkgname=rocm-gfx90a-bin
 pkgdesc="ROCm Core SDK - CDNA2"
 pkgver=10.0.0
-pkgrel=2
+pkgrel=3
 epoch=0
 arch=('x86_64')
 url='http://www.amd.com'
@@ -25,6 +25,8 @@ options=('!strip')
 source=(
 "https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx90a-10.0.0.tar.gz"
 )
+
+noextract=(therock-dist-linux-gfx90a-10.0.0.tar.gz)
 
 sha256sums=('19cc76973a79622fd9d9be67101abf2c2a0a997658083e359c5b9accf10fef79')
 
