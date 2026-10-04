@@ -1,0 +1,16 @@
+pkgbase = tree-sitter-fish
+	pkgdesc = Fish shell grammar for tree-sitter
+	pkgver = 3.7.0
+	pkgrel = 1
+	url = https://github.com/ram02z/tree-sitter-fish
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = Unlicense
+	depends = glibc
+	optdepends = tree-sitter: core library
+	source = tree-sitter-fish-3.7.0.tar.gz::https://github.com/ram02z/tree-sitter-fish/archive/refs/tags/3.7.0.tar.gz
+	source = tree-sitter-fish-makefile.patch
+	sha256sums = 00234274eebcd0815bb3679b0ac82d96c69a61a9e4d7db9dd2ab34fc89010871
+	sha256sums = 52f7583c07c8d4134cecd619974b876a057fa05f7130f20a59af2fb0fa4d29d1
+
+pkgname = tree-sitter-fish

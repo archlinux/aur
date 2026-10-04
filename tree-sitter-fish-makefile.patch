@@ -1,0 +1,18 @@
+diff '--color=auto' -u -r -N tree-sitter-fish-3.7.0/src/Makefile tree-sitter-fish-3.7.0-makefile/src/Makefile
+--- tree-sitter-fish-3.7.0/src/Makefile	1970-01-01 00:00:00.000000000 +0000
++++ tree-sitter-fish-3.7.0-makefile/src/Makefile	2026-10-04 21:00:27.026016040 +0000
+@@ -0,0 +1,14 @@
++PREFIX ?= /usr
++LIBDIR ?= $(PREFIX)/lib
++
++LIB := libtree-sitter-fish.so
++
++$(LIB): parser.c scanner.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -fPIC -shared -I. -o $@ $^
++
++install: $(LIB)
++	install -Dvm755 $(LIB) $(DESTDIR)$(LIBDIR)/$(LIB)
++	install -dm755 $(DESTDIR)$(LIBDIR)/tree_sitter
++	ln -sf ../$(LIB) $(DESTDIR)$(LIBDIR)/tree_sitter/fish.so
++
++.PHONY: install
