@@ -1,10 +1,10 @@
 pkgbase = parmen
-	pkgdesc = 2D classic and 3D Star Trek Tridimensional Chess
+	pkgdesc = 2D classic and 3D Star Trek Tridimensional Chess freeware program
 	pkgver = 2.98f
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.parmen.com/
 	arch = x86_64
-	license = custom
+	license = LicenseRef-freeware
 	depends = bash
 	depends = glu
 	depends = freeglut
