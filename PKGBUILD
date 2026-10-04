@@ -1,15 +1,17 @@
 # Maintainer: teejer <teejer@users.noreply.github.com>
-# Fork build of uniterm carrying two not-yet-upstream patches:
-#   - AI thinking/reasoning visibility (upstream PR #1084)
-#   - GNOME/Wayland desktop-file app_id fix (upstream PR #1085)
-# Built by GitHub Actions from https://github.com/Teejer/uniterm (branch
-# local-build). Once both PRs ship in an official upstream release, retire
-# this package and use uniterm-bin instead.
+# Fork build based on upstream v1.10.0 carrying one not-yet-upstream patch:
+#   - Per-tab AI panel: the uniTerm AI conversation is tied to the active
+#     terminal tab instead of being global (upstream PR #1091).
+# The previous fork patches (AI thinking stream #1084, Wayland desktop-file
+# app_id #1085) shipped in upstream v1.10.0 and are no longer carried here.
+# Built by GitHub Actions from https://github.com/Teejer/uniterm (tag
+# v1.10.0.pertab.1). Once PR #1091 ships in an official upstream release,
+# retire this package and use uniterm-bin instead.
 
 pkgname=uniterm-fork-bin
-pkgver=1.9.5.thinking.1
+pkgver=1.10.0.pertab.1
 pkgrel=1
-pkgdesc="Lightweight all-in-one terminal with 30+ protocols and a built-in autonomous AI agent (fork build: AI thinking stream + Wayland launcher fix)"
+pkgdesc="Lightweight all-in-one terminal with 30+ protocols and a built-in autonomous AI agent (fork build: per-tab AI panel)"
 arch=('x86_64' 'aarch64')
 url="https://uniterm.net"
 license=('Apache-2.0')
@@ -25,7 +27,7 @@ source_x86_64=(
   "LICENSE::https://raw.githubusercontent.com/Teejer/uniterm/v${pkgver}/LICENSE"
 )
 sha256sums_x86_64=(
-  'f6794af38ac2c301df2e818fbb0ace00ac688f12ab2914dec59247a0c99dcb55'
+  '1ee3c4dcd79d8685d7f71ef95a5407bdf41f3bec2b52c2d711a78e6c9afc073e'
   '80b7ddff03e2b4535e40a063a1079d4e02f57826720d6c9b2eb8d635bbec0715'
 )
 
@@ -34,7 +36,7 @@ source_aarch64=(
   "LICENSE::https://raw.githubusercontent.com/Teejer/uniterm/v${pkgver}/LICENSE"
 )
 sha256sums_aarch64=(
-  '9de16b1d293097af9e64bc1921f8aa45f975245d11f2d3cd8d978d4724ba0c59'
+  '7c70defc7a94c70c25eb440b121c4ed45ddcd83487416a1fdd2280b7ced16bea'
   '80b7ddff03e2b4535e40a063a1079d4e02f57826720d6c9b2eb8d635bbec0715'
 )
 
