@@ -1,13 +1,13 @@
 # Maintainer: Felitendo
 # This PKGBUILD is updated automatically:
-# https://github.com/Felitendo/PKGBUILDS
+# https://git.felo.gg/Felitendo/PKGBUILDS
 
 pkgname=untix-git
 pkgver=4.3.2.r31.g48ce032
 pkgrel=1
 pkgdesc="GTK4 + LibAdwaita client for WebUntis (git)"
 arch=('any')
-url="https://codeberg.org/ostfriese4/untis"
+url="https://codeberg.org/ostfriese4/untix"
 license=('GPL-3.0-or-later')
 # main adds a QR code login: the camera comes through the portal (libportal)
 # as a PipeWire stream, is shown with gtk4paintablesink and decoded with
@@ -20,7 +20,7 @@ depends=('gtk4' 'libadwaita' 'webkitgtk-6.0' 'libsecret' 'python'
 makedepends=('meson' 'ninja' 'glib2-devel' 'gettext' 'git')
 provides=('untix')
 conflicts=('untix' 'untis' 'timetable')
-source=("${pkgname}::git+https://codeberg.org/ostfriese4/untis.git")
+source=("${pkgname}::git+https://codeberg.org/ostfriese4/untix.git")
 sha256sums=('SKIP')
 
 pkgver() {

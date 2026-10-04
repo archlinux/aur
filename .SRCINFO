@@ -2,7 +2,7 @@ pkgbase = untix-git
 	pkgdesc = GTK4 + LibAdwaita client for WebUntis (git)
 	pkgver = 4.3.2.r31.g48ce032
 	pkgrel = 1
-	url = https://codeberg.org/ostfriese4/untis
+	url = https://codeberg.org/ostfriese4/untix
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = meson
@@ -32,7 +32,7 @@ pkgbase = untix-git
 	conflicts = untix
 	conflicts = untis
 	conflicts = timetable
-	source = untix-git::git+https://codeberg.org/ostfriese4/untis.git
+	source = untix-git::git+https://codeberg.org/ostfriese4/untix.git
 	sha256sums = SKIP
 
 pkgname = untix-git
