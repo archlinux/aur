@@ -5,7 +5,7 @@
 _pkgname="wsjtx"
 pkgbase="$_pkgname-improved-qt6"
 pkgname=("$_pkgname-improved-qt6")
-pkgver=3.2.0+260908
+pkgver=3.2.0+260924
 pkgrel=1
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB"
 url="https://sourceforge.net/projects/wsjt-x-improved/"
@@ -41,21 +41,23 @@ conflicts=("$_pkgname")
 
 options=('!lto')
 
-_dl_url_base="https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v${pkgver%+*}/Source%20code/Qt6"
+_dl_url_base="https://downloads.sourceforge.net/project/wsjt-x-improved/WS_v${pkgver%+*}/Source%20code/Qt6"
 
 _file="$_pkgname-improved-qt6-$pkgver.tar.gz"
 noextract=("$_file")
-source=("$_file"::"$_dl_url_base/wsjtx-${pkgver%+*}_improved_PLUS_${pkgver#*+}_qt6.tgz")
+source=("$_file"::"$_dl_url_base/ws-${pkgver%+*}_${pkgver#*+}_qt6.tgz")
 
-sha256sums=('12107d85421ce09a93ee2bf5e3cb00e408040b75202eaff2ed325215850b079f'
-  '1bed40669196a61a483871842539fe6b75e55faeb222e435ecb4ef6b3d97a530'
-  '5274956473bbe0179a475b63199bd771c65aae45541fa3372d80653d5af592a2')
+sha256sums=(
+  '73422be3c137e21f11d4beaa1c6a2b4c110e12a443cad6c320d8c84a3c614aeb'
+  '73673f48fdaee9a270dd508c511f07723c5c1ef539f92d5ce59444572c58107c'
+  'd418193681f787163456ad210e6a7e0d4c036f4bdc72250ab128f74363a90a4d'
+)
 
 for i in ${_pkgs//:/ }; do
   _file="$_pkgname-improved-${i,,}-qt6-$pkgver.tar.gz"
   pkgname+=("$_pkgname-improved-${i,,}-qt6")
   noextract+=("$_file")
-  source+=("$_file"::"$_dl_url_base/wsjtx-${pkgver%+*}_improved_${i}_PLUS_${pkgver#*+}_qt6.tgz")
+  source+=("$_file"::"$_dl_url_base/ws-${pkgver%+*}_${i}_${pkgver#*+}_qt6.tgz")
 done
 
 if [[ ! "$_pkgs" =~ AL ]]; then
@@ -70,10 +72,10 @@ prepare() {
   for i in "${noextract[@]}"; do
     printf "Extracting %s...\n" "$i"
     mkdir -p "${i%.tar.gz}"
-    pushd "${i%.tar.gz}" > /dev/null
+    pushd "${i%.tar.gz}" &> /dev/null
     bsdtar -xf "../$i" --strip-components 1
-    bsdtar -xf src/wsjtx.tgz
-    popd
+    bsdtar -xf src/ws.tgz
+    popd &> /dev/null
   done
 }
 
@@ -81,11 +83,11 @@ build() {
   export CFLAGS+=' -Wno-error=format-security'
 
   for i in "${noextract[@]}"; do
-    pushd "${i%.tar.gz}" > /dev/null
+    pushd "${i%.tar.gz}" &> /dev/null
     printf "\nBuilding %s...\n" "${i%.tar.gz}"
     local _cmake_options=(
       -B build
-      -S wsjtx
+      -S ws
       -G Ninja
       -DCMAKE_BUILD_TYPE=None
       -DCMAKE_INSTALL_PREFIX='/usr'
@@ -95,7 +97,7 @@ build() {
 
     cmake "${_cmake_options[@]}"
     cmake --build build
-    popd
+    popd &> /dev/null
   done
 }
 
@@ -104,7 +106,8 @@ _package() {
   DESTDIR="$pkgdir" cmake --install "$pkgname-$pkgver"/build
 
   mkdir -pm755 "$pkgdir/usr/bin"
-  ln -sf "/usr/lib/$_pkgname/wsjtx" "$pkgdir/usr/bin/wsjtx"
+  ln -sf "/usr/lib/$_pkgname/ws" "$pkgdir/usr/bin/ws"
+  ln -sf "/usr/lib/$_pkgname/ws" "$pkgdir/usr/bin/wsjtx"
 
   # set rpath
   for i in "$pkgdir"/usr/lib/wsjtx/*; do
