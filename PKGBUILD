@@ -3,7 +3,7 @@
 
 pkgname=paper-age
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy and secure paper backups of secrets via encrypted QR code"
 arch=('x86_64')
 url="https://github.com/matiaskorhonen/paper-age"
@@ -24,7 +24,7 @@ build() {
 package() {
 	cd "$_srcdir"
 	install -Dm755 "target/release/paper-age" "$pkgdir/usr/bin/paper-age"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
