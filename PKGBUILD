@@ -1,5 +1,5 @@
 pkgname=gnome-shell-extension-super-key
-pkgver=10
+pkgver=11
 pkgrel=1
 pkgdesc="Binds the Super key to a custom action"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('gnome-shell')
 _uuid='super-key@tommimon.github.com'
 source=("${_uuid}-v${pkgver}.zip::${url}/releases/download/v${pkgver}/${_uuid}.v${pkgver}.shell-extension.zip")
 noextract=("${_uuid}-v${pkgver}.zip")
-sha256sums=('43ca3aa4182f7351fe2ce355113312f10740960ad03fad24698f72358d110b42')
+sha256sums=('d4c9d8b11c82e97d2cdc0ef324a7eddf2096b3ab546f622709d91eae81acee69')
 
 package() {
   local extension_dir="${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
