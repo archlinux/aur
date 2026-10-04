@@ -1,16 +1,19 @@
 pkgbase = finar-bin-unstable
 	pkgdesc = Deprecated - install finar-unstable instead
-	pkgver = 4.1.1
+	pkgver = 4.2.0
 	pkgrel = 2
 	url = https://openlyst.ink
 	install = finar-bin-unstable.install
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	depends = gtk3
 	provides = finar
 	conflicts = finar
 	options = !strip
-	source = finar-bin-unstable-4.1.1.zip::https://gitlab.com/Openlyst/finar/-/releases/nightly/downloads/finar-linux-x64-4.1.1-2026-09-29.zip
-	sha256sums = SKIP
+	source_x86_64 = finar-bin-unstable-4.2.0-x86_64.zip::https://gitlab.com/Openlyst/finar/-/releases/nightly/downloads/finar-linux-x64-4.2.0-2026-09-30.zip
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = finar-bin-unstable-4.2.0-aarch64.zip::https://gitlab.com/Openlyst/finar/-/releases/nightly/downloads/finar-linux-arm64-4.2.0-2026-09-30.zip
+	sha256sums_aarch64 = SKIP
 
 pkgname = finar-bin-unstable

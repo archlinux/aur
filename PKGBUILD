@@ -1,10 +1,10 @@
 # Maintainer: OpenLyst <https://openlyst.ink>
 # Deprecated - use finar-unstable instead. Kept so existing installs still build.
 pkgname=finar-bin-unstable
-pkgver=4.1.1
+pkgver=4.2.0
 pkgrel=2
 pkgdesc="Deprecated - install finar-unstable instead"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://openlyst.ink"
 license=('GPL3')
 depends=('gtk3')
@@ -13,8 +13,10 @@ provides=('finar')
 conflicts=('finar')
 options=('!strip')
 install=finar-bin-unstable.install
-source=("finar-bin-unstable-${pkgver}.zip::https://gitlab.com/Openlyst/finar/-/releases/nightly/downloads/finar-linux-x64-4.1.1-2026-09-29.zip")
-sha256sums=('SKIP')
+source_x86_64=("finar-bin-unstable-${pkgver}-x86_64.zip::https://gitlab.com/Openlyst/finar/-/releases/nightly/downloads/finar-linux-x64-4.2.0-2026-09-30.zip")
+source_aarch64=("finar-bin-unstable-${pkgver}-aarch64.zip::https://gitlab.com/Openlyst/finar/-/releases/nightly/downloads/finar-linux-arm64-4.2.0-2026-09-30.zip")
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 
 package() {
     cd "${srcdir}/bundle"
