@@ -1,45 +1,42 @@
-# Maintainer: Sable Maintainers <https://github.com/SableClient/Sable>
+# Maintainer: Sable Maintainers <https://git.sable.moe/SableClient/sable-next>
 
 pkgname=sable-nightly-bin
 # pkgver mirrors the release version with '-' replaced by '.', so each nightly
 # sorts above the last. _relver keeps the original form for the asset URL.
-pkgver=1.22.6.nightly.260929220402.6a3803b232a1
+pkgver=1.22.10.nightly.261004132138.27df61cfed90
 pkgrel=1
-_relver=1.22.6-nightly.260929220402.6a3803b232a1
-pkgdesc="An almost stable Matrix client (nightly builds)"
+_relver=1.22.10-nightly.261004132138.27df61cfed90
+pkgdesc="A Matrix client (nightly builds)"
 arch=('x86_64')
-url="https://github.com/SableClient/Sable"
+url="https://git.sable.moe/SableClient/sable-next"
 license=('AGPL-3.0-or-later')
 # The bundled CEF runtime needs Chromium's system libraries, not webkit2gtk.
 depends=(
   'gtk3'
   'nss'
+  'nspr'
+  'mesa'
+  'libdrm'
+  'libxkbcommon'
   'alsa-lib'
   'libcups'
-  'libdrm'
-  'mesa'
-  'libxkbcommon'
-  'libxss'
-  'libxcomposite'
-  'libxdamage'
-  'libxrandr'
-  'at-spi2-core'
-  'dbus'
+  'libpipewire'
   'libayatana-appindicator'
+  'xdg-utils'
+  'xorg-xwayland'
   'hicolor-icon-theme'
   'desktop-file-utils'
-  'xdg-utils'
 )
 provides=('sable')
 conflicts=('sable' 'sable-bin')
 options=('!strip' '!debug')
 install=${pkgname}.install
-source_x86_64=("${pkgname}-${pkgver}.deb::${url}/releases/download/nightly/Sable-${_relver}-linux-x86_64.deb")
-sha256sums_x86_64=('a03a55389f17686834718a935a5634d698ac8e49dfbad4d3a74a73391c25a0b9')
+source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/nightly-${_relver}/sable-next-${_relver}-linux-x86_64.deb")
+sha256sums_x86_64=('372f46306259155cf85242c69d3d1f26217c892095403247e68180cb04949f32')
 
 package() {
   # bsdtar reads whichever compression nfpm used for data.tar.*
-  bsdtar -O -xf "${srcdir}/${pkgname}-${pkgver}.deb" 'data.tar*' \
+  bsdtar -O -xf "${srcdir}/${pkgname}-${pkgver}-x86_64.deb" 'data.tar*' \
     | bsdtar -xp -C "${pkgdir}"
   find "${pkgdir}" -type d -exec chmod 755 {} +
 }
