@@ -1,11 +1,11 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-app-library-git
-pkgver=1.7.0.r7.g5b7638f
+pkgver=1.9.0.r1.g9e50e13
 pkgrel=1
 pkgdesc="An application launcher for the COSMIC desktop"
 arch=('x86_64' 'aarch64')
-url="https://github.com/pop-os/cosmic-applibrary"
+url="https://github.com/pop-os/cosmic-app-library"
 license=('GPL-3.0-only')
 depends=(
   'cosmic-icons-git'
@@ -19,22 +19,22 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'cosmic-applibrary')
-source=('git+https://github.com/pop-os/cosmic-applibrary.git')
+source=('git+https://github.com/pop-os/cosmic-app-library.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd cosmic-applibrary
+  cd "${pkgname%-git}"
   git describe --long --tags --abbrev=7 | sed 's/^epoch-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd cosmic-applibrary
+  cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target host-tuple
 }
 
 build() {
-  cd cosmic-applibrary
+  cd "${pkgname%-git}"
   export GETTEXT_SYSTEM=true
   export RUSTUP_TOOLCHAIN=stable
 
@@ -46,6 +46,6 @@ build() {
 }
 
 package() {
-  cd cosmic-applibrary
+  cd "${pkgname%-git}"
   just rootdir="$pkgdir" install
 }
