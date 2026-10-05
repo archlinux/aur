@@ -8,20 +8,28 @@
 # 代价：自动模式明显更慢（双核 + 无 FMA）。
 
 pkgname=upmix-core-legacy-bin
-pkgver=0.5.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Stereo to 5.1 upmixer with HTDemucs separation (prebuilt for pre-AVX2 CPUs)"
 arch=('x86_64')
 url="https://github.com/gensui-fuga/upmix-core"
 license=('MIT')
+# 依赖表是直接扫二进制 + 扫 libonnxruntime.so 得出的：
+#   readelf -d   → glibc(libc/libm/ld-linux) + gcc-libs(libgcc_s/libstdc++)
+#                  （libonnxruntime.so.1.23.2 也只吃这两个，没有 zlib/brotli/zstd）
+#   strings 里的 dlopen 名 → libglvnd(libGL.so.1/libEGL.so.1)、libx11、libxcb、
+#                            libxcursor、libxi、libxkbcommon、libxkbcommon-x11、
+#                            libxrender、wayland(libwayland-client/-egl)
+# winit/glutin 那套是运行时 dlopen 的，DT_NEEDED 里根本看不到，但缺了启动就崩，
+# 所以必须显式写出来。libglvnd 自己依赖 mesa + opengl-driver，不用再列 mesa。
+# openssl 只有 upmix-core(CLI) 直接链（下模型走 TLS）；GUI 用不到，同一个包一起列。
+# ffmpeg 是运行时调起的外部程序：随包那份 167MB 的故意不装，直接用系统 ffmpeg。
 depends=(
-  'glibc'
+  'ffmpeg'
   'gcc-libs'
-  'openssl'
-  'zlib'
-  'brotli'
-  'zstd'
-  'mesa'
+  'glibc'
+  'hicolor-icon-theme'
+  'libglvnd'
   'libx11'
   'libxcb'
   'libxcursor'
@@ -29,19 +37,18 @@ depends=(
   'libxkbcommon'
   'libxkbcommon-x11'
   'libxrender'
+  'openssl'
   'wayland'
-  'hicolor-icon-theme'
-  'ffmpeg'
 )
 provides=('upmix-core')
 conflicts=('upmix-core')
 options=('!strip')
 source=(
-  "upmix-core-linux-x86_64-legacy-v${pkgver}.tar.gz::https://github.com/gensui-fuga/upmix-core/releases/download/v${pkgver}-legacy/upmix-core-linux-x86_64-legacy.tar.gz"
+  "upmix-core-linux-${CARCH}-legacy-v${pkgver}.tar.gz::https://github.com/gensui-fuga/upmix-core/releases/download/v${pkgver}-legacy/upmix-core-linux-x86_64-legacy.tar.gz"
   "LICENSE::https://raw.githubusercontent.com/gensui-fuga/upmix-core/v${pkgver}-legacy/LICENSE"
 )
 sha256sums=(
-  '2e5d5cac71b20ec6755f32bc9c484f853718d22b5a0328671bc586223a2b3557'
+  '87bcab5529c6323d78335d3ebde825218e3b7e1903421dfc96abb2d1cb91eda6'
   '55aadbacf89b539c4f086c608a0f21129a0ce0c09285447e2eb356d37017bf0d'
 )
 
