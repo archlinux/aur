@@ -1,0 +1,16 @@
+pkgbase = benben-appimage
+	pkgdesc = An oldschool fast and efficient CLI audio player
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://chiselapp.com/user/MistressRemilia/repository/benben/home
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = fuse2
+	optdepends = remote-benben: Used to control from Unix socket
+	provides = benben
+	conflicts = benben
+	options = !strip
+	source = https://chiselapp.com/user/MistressRemilia/repository/benben/uv/benben-0.7.1-x86_64.AppImage
+	sha256sums = 37f6545c35f35d952c313e9f9398b01c7bc67957457b1f35a29056291ead8165
+
+pkgname = benben-appimage
