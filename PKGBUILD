@@ -3,12 +3,12 @@
 _name=bitstruct
 pkgname=python-${_name}
 pkgver=8.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="This module performs conversions between Python values and C bit field structs represented as Python byte strings"
 arch=('x86_64')
 url="https://github.com/eerimoq/${_name}"
 license=('MIT')
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel python-setuptools)
 depends=('python')
 source=(${_name}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
 sha256sums=('dd8874ce7e0bd8ffb4e00121b62144af222ef7121ccad7a1f1763925a55db7f3')
