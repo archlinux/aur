@@ -2,7 +2,7 @@
 
 pkgname=quarry-sql
 _pkgname=quarry
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A fast SQL client and TUI for PostgreSQL, MySQL / MariaDB and SQLite'
 arch=('x86_64')
@@ -19,7 +19,7 @@ conflicts=('quarry')
 # makepkg's -flto turns the bundled C code (SQLite, aws-lc) into GCC LTO objects the Rust link can't resolve.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aeb8aa5cee60d35a3852e7060a20c5439ef29df056975cc0e18f9e2f9e7c1971')
+sha256sums=('9125110845948fb586e13d3f9f28291bd979c1f6a33771788bbee1917cc1e0e3')
 
 prepare() {
   cd "$_pkgname-$pkgver"
