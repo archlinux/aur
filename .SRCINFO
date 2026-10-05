@@ -11,6 +11,6 @@ pkgbase = mbv
 	depends = gtk4
 	depends = gtk4-layer-shell
 	source = mbv-0.23.0-linux-x86_64.tar.gz::https://github.com/slatkin/mbv/releases/download/v0.23.0/mbv-0.23.0-linux-x86_64.tar.gz
-	sha256sums = 605d64b4a11b21fd8f548b2603f49c4f229ae365a3543cfae3925000cdddffdb
+	sha256sums = a8a44bf5565ab2d08087748033d8779be5a829210b98fa70e51a036c85fdb943
 
 pkgname = mbv
