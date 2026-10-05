@@ -3,8 +3,9 @@
 # shellcheck shell=bash disable=SC2034,SC2148,SC2154,SC2164
 
 pkgname=xyce-serial-bin
-pkgver=7.10.0
-_pkg_date=260108
+_xyce_ver=7.10.0
+_pkg_date=261004
+pkgver="${_xyce_ver}r${_pkg_date}"
 pkgrel=1
 pkgdesc="Open-source, SPICE-compatible, high-performance analog circuit simulator"
 arch=(x86_64)
@@ -18,12 +19,12 @@ conflicts=(
 )
 
 makedepends=(
+    'git'
     'tar'
 )
 
 depends=(
     'blas-openblas'
-    'gcc-libs'
     'fftw'
     'suitesparse'
 )
@@ -34,22 +35,50 @@ optdepends=(
     'adms: Convert Verilog-A models to C++ for Xyce'
 )
 
-source=(
-    "xyce_${pkgver}-${_pkg_date}.tar.zst::https://github.com/ResRipper/Xyce-Builder/releases/download/Xyce-${pkgver}-${_pkg_date}/xyce_serial-${pkgver}.tar.zst"
+checkdepends=(
+    'bc'
+    'perl'
+    'python-numpy'
+    'python-scipy'
 )
-sha256sums=(
-    '4475cafa31932f57ad51e9d2a4f5f31d4c1711f87dc99cc3ee096d8dc46b5f55'
+
+source=(
+    "xyce_${_xyce_ver}-${_pkg_date}.tar.zst::https://github.com/ResRipper/Xyce-Builder/releases/download/Xyce-${_xyce_ver}-${_pkg_date}/xyce_serial-${_xyce_ver}.tar.zst"
+    "Xyce_Regression::git+https://github.com/Xyce/Xyce_Regression#tag=Release-${_xyce_ver}"
+)
+b2sums=(
+    '72b927c7f3ad9a00d8685257f8276a1519fc7265d506c08e85c62787afa30db1bb1611352a1187c855338c713d0238652a29490b62f2716785eb321f3d16e55d'
+    '838107646009e48622e8ca9473024b3aba657c54dc07dccf98d5d9c304909afd3ca4c8544f71a3e1f9a0dff2b7894e8c2dec2b6f72f21c0706b0b9e413692a40'
 )
 
 prepare() {
     # Already provided by ADMS
-    rm "${srcdir}/bin/admsXml"
+    rm "${srcdir}/usr/bin/admsXml"
+}
+
+check() {
+    cd "${srcdir}/usr"
+
+    # Clean-up
+    rm -rf "${srcdir}/test_output"
+    rm -f "${srcdir}/test_results"
+    
+    mkdir -p "${srcdir}/test_output"
+
+    cd "${srcdir}/Xyce_Regression"
+    # Patch for Numpy 2.x
+    git cherry-pick -n -m 1 a77e39e409d3ab2ae05d6dcbf08d9e42e3fd0f15
+
+    eval "$(${srcdir}/Xyce_Regression/TestScripts/suggestXyceTagList.sh ${srcdir}/usr/bin/Xyce)"
+
+    "${srcdir}"/Xyce_Regression/TestScripts/run_xyce_regression \
+    --output="${srcdir}/test_output" \
+    --xyce_test="${srcdir}/Xyce_Regression" \
+    --resultfile="${srcdir}"/test_results \
+    --taglist="${TAGLIST}" \
+    "${srcdir}/usr/bin/Xyce"
 }
 
 package() {
-    mkdir -p "${pkgdir}/usr"
-    mv "${srcdir}/bin" "${pkgdir}/usr/"
-    mv "${srcdir}/include" "${pkgdir}/usr/"
-    mv "${srcdir}/lib" "${pkgdir}/usr/"
-    mv "${srcdir}/share" "${pkgdir}/usr/"
+    cp -r "${srcdir}/usr" "${pkgdir}"
 }
