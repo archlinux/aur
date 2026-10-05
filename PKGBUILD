@@ -1,5 +1,5 @@
 pkgname=hoshi-bin
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Hoshi desktop app"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
 )
 
 sha256sums=(
-  '8ade9357b711c92cb068b87767a5fe483c8bcc3c4a95929361b53271dc910bcd'
+  'b7039344a8fe1e602cd644d611e27a53c0a776f14d8fb1f3080cf421f6bfc118'
 )
 
 package() {
