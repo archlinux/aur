@@ -2,7 +2,7 @@
 # Created with assistance from GLM 5.3 Flash.
 
 pkgname=b4-bin
-pkgver=1.84.0
+pkgver=1.85.0
 pkgrel=1
 pkgdesc="Network packet processor with a friendly UI for circumventing Deep Packet Inspection (DPI) systems"
 arch=('x86_64' 'i686' 'aarch64' 'riscv64' 'loong64' 'ppc64' 'ppc64le' 's390x')
@@ -28,14 +28,14 @@ source_ppc64=("${pkgname}-${pkgver}-ppc64.tar.gz::${_baseurl}/b4-linux-ppc64.tar
 source_ppc64le=("${pkgname}-${pkgver}-ppc64le.tar.gz::${_baseurl}/b4-linux-ppc64le.tar.gz")
 source_s390x=("${pkgname}-${pkgver}-s390x.tar.gz::${_baseurl}/b4-linux-s390x.tar.gz")
 
-sha256sums_x86_64=('62ddef5bd1d3be2c32596d274e73300fbc81fe9f735f5c25eb1155423cb43d5d')
-sha256sums_i686=('fce73f47ee8509b5f34a3e262ace9a85f1a258fcb7718d0520ccd44853882029')
-sha256sums_aarch64=('74fb0a35d0bad6775ac359470de9340088e8a16bfa2833231ba3946e574fc7c8')
-sha256sums_riscv64=('44e633606d330dc2bea8e9bed7ddddaa44ae037e538cadaf86cd7f58e47032ac')
-sha256sums_loong64=('67f7a510ce6eb25e9497f8b595febd61e0ba63e547e1b87a69d97c0ae0159c8f')
-sha256sums_ppc64=('1f0b5b5f45b99f7e1f7dde462bea32c8dcf513659898f64f7b49183beb933742')
-sha256sums_ppc64le=('7419420da94f4a9458a90a8b0b09a133d47e79c079facbaaab58bf2ec35ea115')
-sha256sums_s390x=('7b8754d2c2d7863956f7b2d2eccc54c4a0ed4b1be35167ca4b4af600a845235b')
+sha256sums_x86_64=('4cf02a7967369c62ec592341a58b66f34b65cb83b352d57aca16b22ae38cc4f3')
+sha256sums_i686=('537f727c5c7e1b66fd5f673e76d6a92a04dee92e5417f8e9c8b5656c8f8cb341')
+sha256sums_aarch64=('1cc489a897b3815da227277d4b4303b88a640b106ba1953516dee055612be432')
+sha256sums_riscv64=('a5c455b279ab857dc95aa718b8ece558ca041544deebfe0957a9e0d71372e394')
+sha256sums_loong64=('0f1fd96251d207c3dacec4fe24751e128675414f138bceaa212154e7c44b0bf8')
+sha256sums_ppc64=('fdb7e0410c5dcf310ac7f786252313062b53b2ae096b6431a266329030ec8193')
+sha256sums_ppc64le=('b9eb9295d03cd7f825edfa8d489c8103e4dc96dfe6f7fac8f7f0319694e419ab')
+sha256sums_s390x=('faf2a488e2c46fc5f0982869496ef4391f018313b25361427ca399ca270f2693')
 
 backup=('etc/b4/b4.json')
 
