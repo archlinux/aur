@@ -1,0 +1,21 @@
+pkgbase = docan-gtk-bin
+	pkgdesc = Universal AI chat application with file attachment support
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/ixnewton/docan
+	arch = x86_64
+	license = AGPL3
+	depends = gtk3
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = libsecret
+	depends = json-glib
+	provides = docan
+	conflicts = docan
+	conflicts = docan-bin
+	replaces = docan-bin
+	options = !strip
+	source = docan-gtk-bin-3.0.2.zip::https://github.com/ixnewton/docan/releases/download/v3.0.2/docan-3.0.2-2026-10-04-linux-x64.zip
+	sha256sums = d1d93b96a28ff5073235502c1743891cb5a07b54e7d2c57e638d773502b3549d
+
+pkgname = docan-gtk-bin

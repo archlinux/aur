@@ -1,0 +1,45 @@
+# Maintainer: CxOrg <https://github.com/ixnewton>
+# Maintainer: Ian Newton <i.newton@c-org.com>
+pkgname=docan-gtk-bin
+pkgver=3.0.2
+pkgrel=1
+pkgdesc="Universal AI chat application with file attachment support"
+arch=('x86_64')
+url="https://github.com/ixnewton/docan"
+license=('AGPL3')
+depends=('gtk3' 'glib2' 'hicolor-icon-theme' 'libsecret' 'json-glib')
+provides=('docan')
+conflicts=('docan' 'docan-bin')
+replaces=('docan-bin')
+options=('!strip')
+source=("docan-gtk-bin-${pkgver}.zip::https://github.com/ixnewton/docan/releases/download/v${pkgver}/docan-${pkgver}-2026-10-04-linux-x64.zip")
+sha256sums=('d1d93b96a28ff5073235502c1743891cb5a07b54e7d2c57e638d773502b3549d')
+
+package() {
+    cd "${srcdir}"
+
+    install -d "${pkgdir}/opt/docan"
+    install -Dm755 "docan" "${pkgdir}/opt/docan/docan"
+    install -d "${pkgdir}/opt/docan/lib"
+    install -Dm644 lib/*.so "${pkgdir}/opt/docan/lib/"
+    cp -r data "${pkgdir}/opt/docan/"
+
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/docan.desktop" <<EOF
+[Desktop Entry]
+Name=Docan
+Comment=Universal AI chat application
+Exec=/opt/docan/docan
+Icon=docan
+Type=Application
+Categories=Network;Chat;Utility;
+Keywords=ai;chat;assistant;llm;
+EOF
+
+    if [ -f "data/flutter_assets/assets/icon.png" ]; then
+        install -Dm644 "data/flutter_assets/assets/icon.png" \
+            "${pkgdir}/usr/share/icons/hicolor/512x512/apps/docan.png"
+    fi
+
+    install -d "${pkgdir}/usr/bin"
+    ln -s /opt/docan/docan "${pkgdir}/usr/bin/docan"
+}
