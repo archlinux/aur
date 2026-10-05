@@ -1,2 +1,0 @@
-#!/bin/sh
-exec /usr/bin/electron43 /usr/lib/opennow/opennow-stable/dist-electron/main/index.js "$@"

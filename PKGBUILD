@@ -1,40 +1,38 @@
 # Maintainer: solsTiCe d'Hiver <solsticedhiver@gmail.com>
 pkgname=opennow
 _pkgname=OpenNOW
-pkgver=0.5.5
+pkgver=1.0.2
 _pkgver=$pkgver
 pkgrel=1
 pkgdesc="custom GeForce Now client"
 url="https://opennow.zortos.me/"
 license=('MIT')
-depends=('gtk3' 'cairo' 'pango' 'mesa' 'dbus' 'libx11' 'at-spi2-core' 'hicolor-icon-theme' 'nss' 'nspr' 'alsa-lib'
-	'electron43>=43.3.0' 'gstreamer' 'gst-plugins-base-libs' 'gst-plugins-bad-libs' 'gst-libav' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
-makedepends=('npm' 'imagemagick' 'libxcrypt-compat' 'cargo')
+depends=('gtk3' 'cairo' 'pango' 'mesa' 'dbus' 'libx11' 'at-spi2-core' 'hicolor-icon-theme' 'nss' 'nspr' 'alsa-lib' 'sdl3'
+	'gstreamer' 'gst-plugins-base-libs' 'gst-plugins-bad-libs' 'gst-libav' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
+makedepends=('imagemagick' 'libxcrypt-compat' 'rust' 'cmake' 'qt6-base' 'qt6-declarative' 'qt6-multimedia' 'qt6-shadertools' 'vulkan-headers' 'wayland-protocols' 'ffmpeg')
 # dependencies for rust opennow-streamer: cargo gstreamer gst-plugins-base-libs gst-plugins-bad-libs gst-libav gst-plugins-{good|bad|ugly}
-options=(!strip)
 provides=('opennow')
 conflicts=('opennow-appimage')
 arch=('x86_64')
 source=(opennow-${pkgver}.tar.gz::https://github.com/OpenCloudGaming/OpenNOW/archive/refs/tags/v${_pkgver}.tar.gz
-	opennow.desktop opennow)
+	opennow.desktop)
 
-sha256sums=('5c9baac5d30547c8b64de904648f66bd36980b449ccdbcc8957a7af9ba1b5984'
-            '2ab63a0c3b39b7220bd1d16d5a61daf2578c8b3dadbbbcacd4287d8b568cd513'
-            'd6e8f57fb06df8ec46d4e88f13dabadc8281cfc4122cc0c337f3efde9096a27f')
+sha256sums=('08506d2256b944d8c2c353448a9fc5dd59dabdc4e28ce1f1420f0d7c72c12f46'
+            '2ab63a0c3b39b7220bd1d16d5a61daf2578c8b3dadbbbcacd4287d8b568cd513')
 
-prepare() {
-	cd "$_pkgname-$_pkgver"
-	cd opennow-stable
-	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	# fix: remove call to ensure-electron-installed.mjs
-	sed -i -e '/ensure-electron-installed.mjs/d' package.json
-	npm install --cache "${srcdir}/npm/cache"
-}
+#prepare() {
+#}
 
 build() {
 	cd "$_pkgname-$_pkgver"
-	npm run build
-	npm run native:build
+	# HELP needed here, to find a better way to deal with compilation error because of archlinux's default flags
+	# I couldn't get it to work, so I'm using a hammer
+	export CFLAGS=""
+	export CXXFLAGS=""
+	export LDFLAGS=""
+	cmake -S opennow-qt -B build/opennow-qt -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr
+	cmake --build build/opennow-qt
+
 	mkdir hicolor || :
 	# create a set of icons from huge logo.png
 	for i in 8x8 16x16 20x20 22x22 24x24 32x32 36x36 40x40 42x42 48x48 64x64 72x72 80x80 96x96 128x128 192x192 256x256 384x384 512x512 1024x1024; do
@@ -44,26 +42,24 @@ build() {
 	done
 }
 
+#test() {
+#	cd "$_pkgname-$_pkgver"
+#	ctest --test-dir build/opennow-qt --output-on-failure
+#}
+
 package() {
 	cd "$_pkgname-$_pkgver"
-	mkdir -p "${pkgdir}/usr/lib/opennow/native/opennow-streamer/bin"
-	mkdir -p "${pkgdir}/usr/lib/opennow/opennow-stable"
-	cp -a opennow-stable/dist-electron ${pkgdir}/usr/lib/opennow/opennow-stable
-	# force/set the app name to keep the previously created config dir; why does it ignore the package.json?
-	sed -i ${pkgdir}/usr/lib/opennow/opennow-stable/dist-electron/main/index.js -e '/import.*app/a app$1.setVersion("'$_pkgver'")\napp$1.setName("opennow-stable")'
-	cp -a opennow-stable/dist ${pkgdir}/usr/lib/opennow/opennow-stable
-	cp -a opennow-stable/package.json ${pkgdir}/usr/lib/opennow/opennow-stable
-	# only install the required npm module
-	npm install --cache "${srcdir}/npm/cache" --omit=dev --prefix "${pkgdir}/usr/lib/opennow/opennow-stable"
-	cp -a native/opennow-streamer/bin/opennow-streamer ${pkgdir}/usr/lib/opennow/native/opennow-streamer/bin/
-        # manually strip binary streamer
-        strip ${pkgdir}/usr/lib/opennow/native/opennow-streamer/bin/opennow-streamer
+	DESTDIR="${pkgdir}" cmake --install build/opennow-qt
+
 	# misc (licence, dekstop)
 	install -m644 -D -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
 	install -m 644 -D -t "${pkgdir}/usr/share/applications/" "${srcdir}/opennow.desktop"
 	# icons
 	mkdir -p "${pkgdir}/usr/share/icons"
 	cp -a hicolor "${pkgdir}/usr/share/icons"
-	# wrapper launcher
-	install -m 755 -D -t "${pkgdir}/usr/bin" "${srcdir}/opennow"
+
+	# move lib to the right place
+	mkdir -p ${pkgdir}/usr/lib/
+	mv ${pkgdir}/usr/bin/libopennow_streamer_ffi.so ${pkgdir}/usr/lib/
+	chmod -x ${pkgdir}/usr/lib/libopennow_streamer_ffi.so
 }
