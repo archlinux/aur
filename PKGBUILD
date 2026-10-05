@@ -3,8 +3,8 @@
 pkgname=android_translation_layer-git
 _pkgname="${pkgname%-git}"
 _pkgname="${_pkgname//-/_}"
-pkgver=r1227.cf2c759f
-pkgrel=2
+pkgver=r1291.c63c3c27
+pkgrel=1
 pkgdesc='A translation layer for running Android apps on a Linux system'
 url='https://gitlab.com/android_translation_layer/android_translation_layer'
 arch=(x86_64 aarch64 armv7h)
@@ -30,6 +30,8 @@ depends=(
   libgudev
   libopensles-standalone
   libportal
+  libsecret
+  libx11
   pango
   sqlite
   vulkan-icd-loader
