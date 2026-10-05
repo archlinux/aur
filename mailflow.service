@@ -1,0 +1,26 @@
+[Unit]
+Description=MailFlow webmail
+Documentation=https://github.com/maathimself/mailflow
+After=network-online.target postgresql.service redis.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=mailflow
+Group=mailflow
+Environment=NODE_ENV=production
+EnvironmentFile=/etc/mailflow/mailflow.env
+WorkingDirectory=/usr/share/webapps/mailflow
+ExecStart=/usr/lib/mailflow/node src/index.js
+Restart=on-failure
+RestartSec=5
+
+# Hardening. V8 needs writable executable pages, so MemoryDenyWriteExecute stays off.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+
+[Install]
+WantedBy=multi-user.target

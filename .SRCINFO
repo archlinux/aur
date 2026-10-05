@@ -1,0 +1,33 @@
+pkgbase = mailflow
+	pkgdesc = Self-hosted unified webmail client
+	pkgver = 3.8.2
+	pkgrel = 1
+	url = https://github.com/maathimself/mailflow
+	install = mailflow.install
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = nvm
+	depends = glibc
+	optdepends = postgresql>=16: local database server
+	optdepends = redis: local session store
+	optdepends = nginx: reverse proxy and static frontend
+	noextract = node-v22.23.3-linux-x64.tar.xz
+	backup = etc/mailflow/mailflow.env
+	source = mailflow-3.8.2.tar.gz::https://github.com/maathimself/mailflow/archive/refs/tags/v3.8.2.tar.gz
+	source = listen-host.patch
+	source = mailflow.service
+	source = mailflow.sysusers
+	source = mailflow.tmpfiles
+	source = mailflow.env
+	source = mailflow.nginx.conf
+	source = node-v22.23.3-linux-x64.tar.xz::https://nodejs.org/dist/v22.23.3/node-v22.23.3-linux-x64.tar.xz
+	sha512sums = ac2a2b7e5c7c6c1aee5191dbbbe65a4e83be3683b035f5b682afbd07e94536bf87d58dbbe2220e19991c9d1158b88a695ee440cdbe3fb5badc2f473f4207d276
+	sha512sums = 1ec6fa4942d64b0b58f357a40cfc7ef2b9bccfb23025b6e2160b4241c17469862c57fe320189bb45072d75438f625c29882071fa61c702ade48b8c1df1bb633f
+	sha512sums = 82bfb4572f22f4cdd0603e0e276d8009f0fcc49c2460e449822abe1b50f8e1187922dd9294e988ce273ba9c93778d85ba55fc2d268704c0951b56da0ca16f7ed
+	sha512sums = 28a031baab898730af2377cbce2f840f166d8df38113b07f2a5a817aed48fa06f7e126d7e54c7b02866bcbac9fc09260d70c233f0a16800856700c459de95dba
+	sha512sums = 6eb1876c58b01dd5cef329e612a8ffefaf24f71927b49ab7fc3ed0bb2022f5b907670eeadf47426ae069e92dc8265cadf4eb805e34dbb0ca3a0c4581cb58df8f
+	sha512sums = 1406c85323f37eed7830e9e89ab3991151ddf47732480352e2e48bdb9783478af94e0e036d42756a6db8462fc3104ffca6ca9777bb3bea9e4e641628840ab2db
+	sha512sums = 737b706277e08d3fd04623881922f0c1e0700136981ef96051839a42e38b9a58d80c0b150e9d3f889186699c96d5313ef9e952f1bce681f825d738630eca9646
+	sha512sums = 2328e1770768d2ed352d6434b4465cce0af280c41f5417224fbd1d81a2d6063eb4ed41938c2dec8e0dabcd38361695643796b8765c495cbf4bfefd020f81f925
+
+pkgname = mailflow
