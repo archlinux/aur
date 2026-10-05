@@ -1,6 +1,6 @@
 pkgbase = foot-tabs
 	pkgdesc = Fast, lightweight and minimalistic Wayland terminal emulator (unofficial fork with tabs)
-	pkgver = 1.28.0.tabs3
+	pkgver = 1.28.0.tabs4
 	pkgrel = 1
 	url = https://github.com/joshuarosato/foot-tabs
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = foot-tabs
 	provides = foot=1.28.0
 	conflicts = foot
 	backup = etc/xdg/foot/foot.ini
-	source = foot-tabs-1.28.0-tabs3.tar.gz::https://github.com/joshuarosato/foot-tabs/archive/refs/tags/1.28.0-tabs3.tar.gz
-	sha256sums = f83e3e0b5782d34fda2c590ad11d9d72bbc30ca5e2f7b7841624120091e0403c
+	source = foot-tabs-1.28.0-tabs4.tar.gz::https://github.com/joshuarosato/foot-tabs/archive/refs/tags/1.28.0-tabs4.tar.gz
+	sha256sums = 255f96036596795650ff41fb22990c6e2d469b30925be88befc81cb2a4cc11b0
 
 pkgname = foot-tabs
