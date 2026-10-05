@@ -1,6 +1,7 @@
 # Maintainer: nomisge <nomisge @ live . de>
 pkgname=asciidoc-revealjs-toolkit
-pkgver=1.0.1
+_cmdname=adoc-revealjs
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Asciidoc to Reveal.js toolkit'
 arch=('x86_64')
@@ -9,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("${pkgname}-${pkgver}.zip::${url}/archive/v${pkgver}.zip")
-sha256sums=('19a092532f31ff4de07808b091ebdeaf4bf23b7198cc5ada3e345c75f64c5222')
+sha256sums=('44b351d7a8779a443759630cdcb81382f126fbc84359286b0f28e739cabff81b')
 
 build() {
   cd "${srcdir}/${pkgname}"
@@ -57,11 +58,11 @@ package() {
 
   # Install a CLI launcher
   install -d "${pkgdir}/usr/bin"
-  cat > "${pkgdir}/usr/bin/${pkgname}" <<'EOF'
+  cat > "${pkgdir}/usr/bin/${_cmdname}" <<'EOF'
 #!/bin/sh
-exec node /usr/lib/asciidoc-revealjs-toolkit/adoc-revealjs.js "$@"
+exec node /usr/lib/asciidoc-revealjs-toolkit/bin/adoc-revealjs.js "$@"
 EOF
-  chmod 755 "${pkgdir}/usr/bin/${pkgname}"
+  chmod 755 "${pkgdir}/usr/bin/${_cmdname}"
 
 }
 
