@@ -1,6 +1,6 @@
 pkgbase = agent-session-status
 	pkgdesc = Show coding-agent session status in desktop status bars
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/dcaixinha/agent-session-status
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = agent-session-status
 	optdepends = claude-code: local Claude Code session events
 	optdepends = openai-codex-bin: local Codex session events
 	options = !debug
-	source = agent-session-status-0.1.2.tar.gz::https://github.com/dcaixinha/agent-session-status/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 5b6fa414ef5375e8af4b1d29766096371badba811e78a1535966f31e38283dfa
+	source = agent-session-status-0.1.3.tar.gz::https://github.com/dcaixinha/agent-session-status/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = c820a48557cdc110df5e15d3ac49757a0f2bd73514ef7c3084340d51d9da40b7
 
 pkgname = agent-session-status
