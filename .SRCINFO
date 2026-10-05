@@ -1,6 +1,6 @@
 pkgbase = hornero-config
 	pkgdesc = HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/HorneroOS/config
 	arch = any
@@ -11,7 +11,12 @@ pkgbase = hornero-config
 	depends = python
 	depends = python-materialyoucolor
 	optdepends = hyprland: compositor defaults under /etc/xdg/hypr
+	optdepends = niri: compositor defaults in /etc/niri (fallback) and ~/.config/niri
+	optdepends = xdg-desktop-portal-gtk: default fallback portal and file chooser for Niri sessions
+	optdepends = xdg-desktop-portal-gnome: screencasting portal for Niri sessions
+	optdepends = xwayland-satellite: XWayland bridge for Niri sessions
 	optdepends = kitty: terminal defaults under /etc/xdg/kitty
+	optdepends = exo: Hornero default application launcher and TerminalEmulator helper
 	optdepends = gtk3: GTK 3 defaults under /etc/xdg/gtk-3.0
 	optdepends = fontconfig: font defaults under /etc/xdg/fontconfig
 	optdepends = fastfetch: system info defaults under /etc/xdg/fastfetch
@@ -24,7 +29,7 @@ pkgbase = hornero-config
 	optdepends = papirus-icon-theme: Papirus-Dark factory icons
 	optdepends = orchis-theme: Orchis factory GTK themes
 	optdepends = ttf-material-symbols-variable: Material Symbols shell icon font
-	source = config::git+https://github.com/HorneroOS/config.git#tag=v0.3.0
+	source = config::git+https://github.com/HorneroOS/config.git#tag=v0.3.1
 	sha256sums = SKIP
 
 pkgname = hornero-config

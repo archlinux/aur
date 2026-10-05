@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)"
 arch=('any')
@@ -16,7 +16,12 @@ depends=('bash' 'git' 'python' 'python-materialyoucolor')
 makedepends=('librsvg')
 optdepends=(
   'hyprland: compositor defaults under /etc/xdg/hypr'
+  'niri: compositor defaults in /etc/niri (fallback) and ~/.config/niri'
+  'xdg-desktop-portal-gtk: default fallback portal and file chooser for Niri sessions'
+  'xdg-desktop-portal-gnome: screencasting portal for Niri sessions'
+  'xwayland-satellite: XWayland bridge for Niri sessions'
   'kitty: terminal defaults under /etc/xdg/kitty'
+  'exo: Hornero default application launcher and TerminalEmulator helper'
   'gtk3: GTK 3 defaults under /etc/xdg/gtk-3.0'
   'fontconfig: font defaults under /etc/xdg/fontconfig'
   'fastfetch: system info defaults under /etc/xdg/fastfetch'
@@ -33,7 +38,7 @@ optdepends=(
 # Named "config" (not "$pkgname") so the checkout lands at
 # "${srcdir}/config", matching _hornero_repo_root() below and keeping
 # AUR chroot builds identical to local packaging/ builds.
-source=("config::git+https://github.com/HorneroOS/config.git#tag=v0.3.0")
+source=("config::git+https://github.com/HorneroOS/config.git#tag=v0.3.1")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
@@ -99,6 +104,9 @@ package() {
   for entry in "$stage"/.config/*; do
     [[ -e "$entry" ]] || continue
     base="$(basename "$entry")"
+    # Niri reads /etc/niri/config.kdl as its system fallback, not
+    # /etc/xdg/niri. Install it once below at the upstream-owned path.
+    [[ "$base" == niri ]] && continue
     if [[ "$base" == systemd ]]; then
       # systemd owns /etc/xdg/systemd/user as a symlink to /etc/systemd/user.
       # Putting a directory at that XDG path makes pacman refuse the package.
@@ -117,6 +125,16 @@ package() {
       install -Dm644 "$entry" "$pkgdir/etc/xdg/$base"
     fi
   done
+
+  # Niri reads /etc/niri/config.kdl as its system fallback after the user's
+  # XDG config. Keep one source file: materialize.sh also places it in the
+  # staged HOME for chezmoi and package-only user setup.
+  if [[ ! -f "$stage/.config/niri/config.kdl" ]]; then
+    echo "error: staged Niri config missing" >&2
+    return 1
+  fi
+  install -Dm644 "$stage/.config/niri/config.kdl" \
+    "$pkgdir/etc/niri/config.kdl"
 
   # Thunar ships /etc/xdg/Thunar/uca.xml itself. Packaging the staged user
   # custom actions there causes a pacman ownership conflict on Arch. The
