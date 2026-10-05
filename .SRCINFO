@@ -1,6 +1,6 @@
 pkgbase = datarecovery
 	pkgdesc = GTK4/Libadwaita application for data recovery using ddrescue and PhotoRec
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/koxt2/DataRecovery
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = datarecovery
 	depends = udisks2
 	depends = polkit
 	depends = hdf5
-	source = datarecovery-0.7.0.tar.gz::https://github.com/koxt2/DataRecovery/archive/refs/tags/v0.7.0.tar.gz
+	source = datarecovery-0.7.1.tar.gz::https://github.com/koxt2/DataRecovery/archive/refs/tags/v0.7.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = datarecovery
