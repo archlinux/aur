@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=lowfat-bin
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Lightweight CLI that filters verbose command output to cut AI agent token costs"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/zdk/lowfat/v${pkgv
 source_x86_64=("lowfat-${pkgver}-x86_64.tar.gz::${_relurl}/lowfat-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("lowfat-${pkgver}-aarch64.tar.gz::${_relurl}/lowfat-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('b727674547d95907efffa3e2ca07531331e23cd6fb1cc5f9f8112ab1e129f1a1')
-sha256sums_x86_64=('dccc2cfabe341873a7d8ca11cc6a250bb304792ff31773c86e4a58cbc01be36e')
-sha256sums_aarch64=('64465a52361c4f420217fd9892fa8576f4d1425ceb6a0530d3e55cfbb9ad3991')
+sha256sums_x86_64=('78f8e715646db15e41e807dccad0676f2826ab6ddecc85e6930c7b98e317ecad')
+sha256sums_aarch64=('6bef2a40770d23a8ca36170d0a5130f69d821f7d4bf9235a8a2809588e563054')
 
 package() {
     # Each release tarball extracts to a single `lowfat` binary.
