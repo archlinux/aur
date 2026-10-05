@@ -3,16 +3,16 @@
 # Auto Upgrade: https://github.com/phnx47/pkgbuilds
 
 pkgname=moon
-pkgver=2.5.6
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc='Task runner and repo management tool for the web ecosystem'
 license=('MIT')
 url="https://github.com/moonrepo/moon"
 arch=('x86_64' 'aarch64')
 depends=('glibc' 'libgcc')
-makedepends=('cargo' 'protobuf')
+makedepends=('cargo' 'cmake' 'protobuf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('40468c58e99071ddeb3a1c059dc5640d7afc911e55d1eca89f7846e2315cf33f')
+sha256sums=('89bd2d1edf7552f7ab1b1d4c817b69a7f0d778dfe2a220799a6e96a4f4b03e76')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -28,6 +28,9 @@ build() {
     CFLAGS+=' -ffat-lto-objects'
     CXXFLAGS+=' -ffat-lto-objects'
   fi
+
+  # jitterentropy in aws-lc-sys fails with -O2 from CFLAGS
+  export AWS_LC_SYS_CMAKE_BUILDER=1
 
   cargo build --release --frozen
 
