@@ -7,8 +7,14 @@ pkgname=ase-explorer
 # (`vercmp 00.00.29-1 00.00.35-1` = -1). Mit epoch gilt wieder die SSOT allein
 # (`vercmp 1:00.00.29-1 00.00.35-1` = 1) — ab hier laufen Paket und Katalog gleich.
 epoch=1
-pkgver=00.00.29
-pkgrel=2
+# 00.00.32 ist der erste Stand, in dem ein aus dem Quellbaum gestarteter Explorer die daneben
+# gebauten Werkzeuge nimmt statt der installierten, und in dem ein fehlgeschlagener
+# Dateistart eine Zeile hinterlaesst. Bei 00.00.29 stand hier genau die installierte Fassung:
+# gleiche Version heisst fuer pacman kein Update, und der Betreiber haette aktualisiert, ohne
+# etwas zu bekommen. DIE QUELLEN KOMMEN VON HEAD, nicht von einem Tag — deshalb ist die
+# Version die EINZIGE Stelle, die ueber das Anbieten entscheidet.
+pkgver=00.00.32
+pkgrel=1
 pkgdesc='ASE Hierarchical Project Explorer with NerdFont Icons'
 arch=('x86_64')
 url='https://github.com/antarien/ase-client-explorer'
