@@ -1,10 +1,11 @@
+# Maintainer: Michael Gerdau <mgd@qata.de>
 # Maintainer: René Wagner <rwa at clttr dot info>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-mp3-tag'
 pkgver='1.16'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Module for reading tags of MP3 audio files"
 arch=('any')
 license=('PerlArtistic' 'GPL')
