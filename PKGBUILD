@@ -2,8 +2,8 @@
 # Created with assistance from GLM 5.3 Flash.
 
 pkgname=telegram-drive-appimage
-pkgver=3.9.8
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="Turn your Telegram account into an unlimited, secure cloud storage drive (from AppImage)"
 arch=('x86_64')
 url="https://github.com/caamer20/Telegram-Drive"
@@ -27,7 +27,7 @@ optdepends=(
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/caamer20/Telegram-Drive/releases/download/v${pkgver}/Telegram.Drive_${pkgver}_amd64.AppImage"
         "LICENSE::https://raw.githubusercontent.com/caamer20/Telegram-Drive/v${pkgver}/packaging/arch/UPSTREAM-LICENSE-NOTICE")
-sha256sums=('07c6dc2d0ab59bbf5a1f2449da54c8a259dc1a638bb09d9e5ccb87052c365041'
+sha256sums=('0f3e33f1ac5f5480b1b0d1eba5d3c1778c33ea437c7a680ffe57c3338346e02b'
             '164994ae2a66a7215deca4a6ebf5822cc1d67737c5c1e1ba2f32b28016e0d6fb')
 
 prepare() {
