@@ -32,21 +32,24 @@ pkgver() {
 }
 
 prepare() {
+  cd "$_reponame"
   # Fix missing FULL RELRO on mold-wrapper.so
-  sed -i '/command.arg("-ldl")/ s/arg.*/args(["-ldl", "-Wl,-z,relro,-z,now"]);/' "$_reponame"/build.rs
+  sed -i '/command.arg("-ldl")/ s/arg.*/args(["-ldl", "-Wl,-z,relro,-z,now"]);/' build.rs
+
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
   cd "$_reponame"
-  # Options below are used by both build() and check()
+  # Option(s) below are used by both build() and check()
   export ZSTD_SYS_USE_PKG_CONFIG=1
 
-  cargo build --release --locked --package mold-cli
+  cargo build --release --frozen --package mold-cli
 }
 
 check() {
   cd "$_reponame"
-  cargo test --locked --package mold-cli
+  cargo test --frozen
 }
 
 package() {
