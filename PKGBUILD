@@ -4,28 +4,31 @@
 pkgname=openspace-git
 _pkgname=OpenSpace
 _vcpkg_commit='04a9d8e5212d01ee1dd9478eadd9caade4f8b0d4'
-pkgver=v0.20.0.1076.g7494b2659a
+pkgver=v0.20.0.1089.g924e0fb1f6
 pkgrel=1
 pkgdesc="OpenSpace is an open source, non-commercial, and freely available interactive data visualization software designed to visualize the entire known universe and portray our ongoing efforts to investigate the cosmos"
 arch=('x86_64')
 url="https://github.com/OpenSpace/OpenSpace"
 license=('MIT')
 makedepends=('cmake' 'git' 'sed' 'glm' 'websocketpp' 'vcpkg' 'autoconf' 'autoconf-archive' 'automake' 'libtool')
-depends=('gdal' 'mpv' 'vulkan-headers' 'libxinerama' 'libxi' 'qt6-base' 'nss' 'at-spi2-core' 'libxcomposite' 'libxdamage' 'python-pandas')
+depends=('gdal' 'mpv' 'vulkan-headers' 'libxinerama' 'libxi' 'qt6-base' 'nss' 'at-spi2-core' 'libxcomposite' 'libxdamage' 'python-pandas' 'alsa-lib')
 conflicts=('openspace')
 source=("git+https://github.com/OpenSpace/OpenSpace.git#branch=master"
 	"vcpkg-${_vcpkg_commit}.tar.gz::https://github.com/microsoft/vcpkg/archive/${_vcpkg_commit}.tar.gz"
 	"open-space"
 	"update-cfg.patch"
-	"globebrowsingmodule.patch")
+	"globebrowsingmodule.patch"
+	"fix-soloud-system-alsa.patch"
+	)
 sha256sums=('SKIP'
 			'SKIP' # vcpkg archive pinned to _vcpkg_commit
 			48f9ad3ab1ffc9ef6172cdba1b7bf1d0c36127723d3e73bb7beb273f1d0a54af
 		    776d986d6592fbedddaaa79385d3e42b39e1bd1ae9480404559410bcc930c963
 		    608d02fe1828d5bdc9f5cf20b02d1294b216212ccf0402b4922eacdade1e1088
+		    81a96d64d2ba2eb5f50d184af23d64ac389418912320265e6f3f593625c5ca6e
 		    )
 
-options=(!debug)
+options=(!debug '!lto')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -42,6 +45,9 @@ prepare() {
 
 	# Patch globebrowsingmodule.cpp to compile against current GDAL versions.
 	patch -Np1 -i "${srcdir}/globebrowsingmodule.patch"
+
+	# Other existing patches...
+    patch -Np1 -i "${srcdir}/fix-soloud-system-alsa.patch"
 
 	# The vcpkg snapshot is only used for its build scripts.  Resolve the
 	# curated ports through Microsoft's Git registry instead of requiring
@@ -61,6 +67,8 @@ build() {
 
 	export VCPKG_ROOT="${srcdir}/vcpkg-${_vcpkg_commit}"
 	export VCPKG_DISABLE_METRICS=1
+	# Limit memory pressure during vcpkg dependency builds
+    export VCPKG_MAX_CONCURRENCY=4
 
 	cmake \
 		-S "${srcdir}/${_pkgname}" \
@@ -72,7 +80,7 @@ build() {
 		-DVCPKG_TARGET_TRIPLET:STRING=x64-linux \
 		-DASSIMP_BUILD_MINIZIP=1
 
-	cmake --build "${_build_dir}" --parallel
+	cmake --build "${_build_dir}" --parallel 16
 }
 
 package() {
@@ -85,9 +93,6 @@ package() {
 	mkdir -p "$pkgdir/opt/OpenSpace/shaders"
 	cp -R "${srcdir}/${_pkgname}/shaders"  "$pkgdir/opt/OpenSpace"
 	mkdir -p "$pkgdir/opt/OpenSpace/documentation"
-	cp -R "${srcdir}/${_pkgname}/documentation"  "$pkgdir/opt/OpenSpace"
-	rm "$pkgdir/opt/OpenSpace/documentation/.gitignore"
-	rm "$pkgdir/opt/OpenSpace/documentation/.git"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/atmosphere/shaders"
 	cp -R "${srcdir}/${_pkgname}/modules/atmosphere/shaders"  "$pkgdir/opt/OpenSpace/modules/atmosphere"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/base/shaders"

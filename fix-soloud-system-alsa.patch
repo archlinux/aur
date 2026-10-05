@@ -1,0 +1,24 @@
+--- a/modules/audio/CMakeLists.txt
++++ b/modules/audio/CMakeLists.txt
+@@ -43,5 +43,20 @@
+ 
+ begin_dependency("SoLoud")
+ find_package(soloud CONFIG REQUIRED)
+-target_link_libraries(openspace-module-audio PRIVATE soloud::soloud)
++
++# Use the system ALSA shared library instead of vcpkg's static libasound.a.
++find_library(
++  SYSTEM_ALSA_LIBRARY
++  NAMES asound
++  PATHS /usr/lib
++  NO_DEFAULT_PATH
++  REQUIRED
++)
++
++target_link_libraries(
++  openspace-module-audio
++  PRIVATE
++    soloud::soloud
++    "${SYSTEM_ALSA_LIBRARY}"
++)
+ end_dependency("SoLoud")
