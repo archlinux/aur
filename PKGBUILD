@@ -2,7 +2,7 @@
 pkgname=open-cad-studio
 _pkgname=OpenCADStudio 
 pkgver=2026.40
-pkgrel=1
+pkgrel=2
 pkgdesc="A CAD application built with Rust — 2D/3D drawing, DWG/DXF support, and GPU-accelerated rendering"
 arch=('x86_64')
 url="https://github.com/HakanSeven12/OpenCADStudio"
@@ -15,8 +15,8 @@ source=(
     "OpenCADStudio.desktop"
 )
 sha256sums=('4ac608d1c72211c05f9d35dda6039753c200f0c8a81c0332dbd9becf0ab274f7'
-            '0d1be965a2d3d2b9013be97fd18b4e5bee92369547cf184c19de0629879f362b'
-            'ad8b78df51f5bb346a41812b649b7f201c460c045982080c51539398fb9b2f93')
+            '7c0c21229d5cc12db7ee404188652adce00a3acb51ec2631221c5605c01741bf'
+            '178b67c82a369bf193dfe87e26ea8cc5dab823b0dc9382466c971e5845bc1638')
 options=(!lto)
 prepare() {
     cd "$srcdir/$_pkgname-$pkgver"
