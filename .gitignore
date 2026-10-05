@@ -1,0 +1,32 @@
+# Der AUR nimmt NUR Wurzeldateien an: ein Push mit Unterverzeichnis wird serverseitig
+# abgewiesen ("the repository must not contain subdirectories"). makepkg legt hier aber
+# neben dem PKGBUILD seine Arbeit ab — je Quelle einen Git-Spiegel, dazu src/, pkg/ und die
+# fertigen Pakete. Ein `git add -A` fasst das alles mit, und der Fehler faellt erst beim
+# Push auf, also nach dem Commit.
+#
+# Diese Liste ist deshalb keine Bequemlichkeit, sondern die einzige Stelle, an der sich der
+# Fall verhindern laesst: die sechs getrackten Dateien stehen namentlich, alles andere ist
+# Erzeugnis.
+
+# makepkg-Arbeit
+/src/
+/pkg/
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.log
+
+# Git-Spiegel der Quellen, je Eintrag aus source=()
+/ase-client-explorer/
+/ase-utils/
+/ase-fileio/
+/ase-json/
+/ase-adp-gtk/
+/ase-adp-libgit2/
+/ase-adp-libcuckoo/
+/ase-containers/
+/ase-math/
+/ase-types/
+/ase-log/
+/ase-ecs/
+/ase-platform/
+/entt/

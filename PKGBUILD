@@ -13,7 +13,9 @@ pkgdesc='ASE Hierarchical Project Explorer with NerdFont Icons'
 arch=('x86_64')
 url='https://github.com/antarien/ase-client-explorer'
 license=('custom')
-depends=('gtkmm-4.0' 'libadwaita' 'ttf-fira-code' 'ttf-nerd-fonts-symbols-mono' 'nlohmann-json' 'libgit2')
+# spdlog ist die Senke hinter ase::log und liegt als Repo-Paket (1.17.0). entt steht NICHT in
+# den Arch-Repos und kommt deshalb unten als Quelle, nicht als Abhaengigkeit.
+depends=('gtkmm-4.0' 'libadwaita' 'ttf-fira-code' 'ttf-nerd-fonts-symbols-mono' 'nlohmann-json' 'libgit2' 'spdlog')
 makedepends=('cmake' 'ninja' 'gcc' 'pkgconf' 'git')
 source=(
     "ase-client-explorer::git+https://github.com/antarien/ase-client-explorer.git"
@@ -34,9 +36,26 @@ source=(
     # wird gegen ZIELE, geholt werden VERZEICHNISSE. Auf einer Entwicklermaschine faellt das nie
     # auf, weil das Monorepo vollstaendig daliegt — der Fremdbau ist die erste Messung.
     #
-    # NICHT gebraucht wird core/ase-log, obwohl beide Adapter es nennen: der Zug steht hinter
-    # `if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)` und gilt ihrem eigenen
-    # Beispiel-Executable. Im Bau des Explorers ist der Explorer die Wurzel, also schweigt er.
+    # core/ase-log GEHOERT SEIT 2026-10-05 DAZU, und hier stand das Gegenteil: „NICHT gebraucht
+    # […] der Zug steht hinter `if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)` und gilt
+    # ihrem eigenen Beispiel-Executable". Das war richtig gemessen, SOLANGE allein die beiden
+    # Adapter es nannten. Der Explorer zieht es jetzt selbst, weil er bis dahin keinen
+    # Fehlerkanal hatte und ein fehlgeschlagener Dateistart nirgends sichtbar war.
+    #
+    # ase-ecs und entt kommen mit, nicht als Wahl: ase::log → ase::ecs → entt, ase::types.
+    # entt steht in keinem Arch-Repo, also wird es als Quelle geholt und unten ueber
+    # FETCHCONTENT_SOURCE_DIR_ENTT eingehaengt — damit klont der Bau nichts selbst.
+    #
+    # ALLE QUELLEN SIND ANONYM ERREICHBAR, gemessen ohne Zugangsdaten mit ase-utils als
+    # Positivkontrolle. ase-platform, ase-log und ase-ecs waren bis zu diesem Stand privat und
+    # liessen den Fremdbau am Holen scheitern; sie sind es nicht mehr. Dieselbe Lage hatten
+    # ase-containers, ase-math und ase-types am 2026-09-16.
+    #
+    # DIE LISTE WIRD NIE AUF DIE VORHANDENE SICHTBARKEIT ZURECHTGESCHNITTEN. Wer das tut,
+    # baut ein Paket, das allein auf der Maschine des Autors uebersetzt — und merkt es nicht,
+    # weil dort das ganze Monorepo liegt. Der Abschluss bestimmt die Sichtbarkeit, nicht
+    # umgekehrt; ein Vorhaben, das ueber das AUR an die Linux-Gemeinschaft geht, kann keine
+    # private Kante im Abschluss tragen.
     #
     # DER ABSCHLUSS BESTIMMT DIE SICHTBARKEIT, NICHT UMGEKEHRT.
     #
@@ -53,12 +72,26 @@ source=(
     "ase-containers::git+https://github.com/antarien/ase-containers.git"
     "ase-math::git+https://github.com/antarien/ase-math.git"
     "ase-types::git+https://github.com/antarien/ase-types.git"
+    "ase-log::git+https://github.com/antarien/ase-log.git"
+    "ase-ecs::git+https://github.com/antarien/ase-ecs.git"
+    # ase-platform steht in KEINER dokumentierten Kette und brach den Bau trotzdem:
+    # core/ase-ecs/CMakeLists.txt:188 bindet es als PRIVATE fuer sleep_nanos(). Ein
+    # PRIVATE-Eintrag wird nicht weitergereicht, muss aber im Baum stehen. Gefunden hat es
+    # erst eine Rechnung ueber die CMakeLists statt ueber ihre Beschreibung.
+    "ase-platform::git+https://github.com/antarien/ase-platform.git"
+    # Der Tag ist festgenagelt, weil cmake/Dependencies.cmake und die CMakeLists des Explorers
+    # dieselbe Fassung deklarieren: ein wanderndes HEAD waere ein zweiter Stand im selben Baum.
+    "entt::git+https://github.com/skypjack/entt.git#tag=v3.13.0"
     "file-icons.hpp"
     "colors.hpp"
     "design_tokens.hpp"
     "ui_icons.hpp"
 )
 sha256sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -79,7 +112,7 @@ prepare() {
     # Reconstruct monorepo layout expected by CMakeLists.txt
     # (../../foundation, ../../adapter, ../sha-client-web)
     cd "${srcdir}"
-    mkdir -p ase-root/foundation ase-root/adapter ase-root/clients \
+    mkdir -p ase-root/foundation ase-root/adapter ase-root/core ase-root/clients \
              ase-root/clients/sha-client-web/sha-web-console/generated
     mv ase-utils            ase-root/foundation/
     mv ase-fileio           ase-root/foundation/
@@ -87,6 +120,9 @@ prepare() {
     mv ase-containers       ase-root/foundation/
     mv ase-math             ase-root/foundation/
     mv ase-types            ase-root/foundation/
+    mv ase-platform         ase-root/foundation/
+    mv ase-log              ase-root/core/
+    mv ase-ecs              ase-root/core/
     mv ase-adp-gtk          ase-root/adapter/
     mv ase-adp-libgit2      ase-root/adapter/
     mv ase-adp-libcuckoo    ase-root/adapter/
@@ -100,9 +136,13 @@ prepare() {
 
 build() {
     cd "${srcdir}/ase-root/clients/ase-client-explorer"
+    # FETCHCONTENT_SOURCE_DIR_ENTT zeigt auf die oben GEHOLTE Quelle. Ohne diese Zeile klonte
+    # der Rueckfall in der CMakeLists des Explorers waehrend build(), und ein Paketbau, der
+    # selbst ins Netz greift, ist weder nachvollziehbar noch offline wiederholbar.
     cmake -B build -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DFETCHCONTENT_SOURCE_DIR_ENTT="${srcdir}/entt"
     ninja -C build
 }
 
