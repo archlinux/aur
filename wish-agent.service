@@ -4,7 +4,7 @@ Documentation=https://github.com/WindustH/wish-core/blob/master/docs/deployment.
 After=network-online.target
 
 [Service]
-ExecStart=/usr/bin/wish-agent
+ExecStart=/usr/bin/wish
 EnvironmentFile=-%h/.config/wish-agent/wish.env
 WorkingDirectory=%h
 Restart=on-failure
