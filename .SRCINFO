@@ -1,6 +1,6 @@
 pkgbase = spo-cli
 	pkgdesc = a spotify tui app, less is more
-	pkgver = 0.6.6
+	pkgver = 0.6.7
 	pkgrel = 1
 	url = https://github.com/woquchonglang/spo-cli
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = spo-cli
 	provides = spo-cli
 	conflicts = spo-cli-bin
 	options = !debug
-	options = !strip
-	source = spo-cli-0.6.6::git+https://github.com/woquchonglang/spo-cli.git#tag=v0.6.6
-	sha256sums = 8b158629606d8dd33d5b40b6d6e331d018aac02c511fdde69313822dfbf7d05a
+	options = !buildflags
+	source = spo-cli-0.6.7::git+https://github.com/woquchonglang/spo-cli.git#tag=v0.6.7
+	sha256sums = 123423306e4aa134f0cb4cb3fa3d16435acdf06dcd938889cd8d0176dcd1b3ef
 
 pkgname = spo-cli
