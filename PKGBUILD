@@ -2,19 +2,19 @@
 
 _pkgname=AriaNg
 pkgname="${_pkgname,,}"
-pkgver=1.3.14
+pkgver=1.3.15
 pkgrel=1
 pkgdesc="A modern web frontend making aria2 easier to use."
 arch=('any')
 url="https://github.com/mayswind/${_pkgname}"
 license=('MIT')
-makedepends=("npm" "gulp")
+makedepends=("npm" "gulp" "git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('7f207bf59760a4b888e97915fae87d6a53c93f25f9a94f3248938f4c424c78b7')
+sha256sums=('8bb47d124147c6f32ab52cb5a338bb8e0517e31dc9ae21eaef590f69022b985f')
 
 build() {
     cd "${_pkgname}-${pkgver}"
-    npm install
+    npm install --allow-git=root
     gulp clean build
 }
 
