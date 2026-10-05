@@ -1,0 +1,20 @@
+pkgbase = libvirt-iso-debian-offline-bin
+	pkgdesc = Official Debian stable DVD-1 offline installation ISO for libvirt
+	pkgver = 13.7.0
+	pkgrel = 1
+	url = https://www.debian.org/distrib/
+	arch = x86_64
+	license = LicenseRef-Various
+	checkdepends = libarchive
+	noextract = debian-13.7.0-amd64-DVD-1.iso
+	source = debian-13.7.0-amd64-DVD-1.iso::https://cdimage.debian.org/debian-cd/13.7.0/amd64/iso-dvd/debian-13.7.0-amd64-DVD-1.iso
+	source = SHA512SUMS-13.7.0-offline::https://cdimage.debian.org/debian-cd/13.7.0/amd64/iso-dvd/SHA512SUMS
+	source = SHA512SUMS-13.7.0-offline.sig::https://cdimage.debian.org/debian-cd/13.7.0/amd64/iso-dvd/SHA512SUMS.sign
+	source = DISTRIBUTION-LICENSE
+	validpgpkeys = DF9B9C49EAA9298432589D76DA87E80D6294BE9B
+	sha512sums = 305cc7a3f0d4e293ff979cc6c047d7fe46454853a0f170a0520acd8aab37c2f8839969c817afac2b4324ef5944e0038502b7fcca5dfcd48b5b77544ef1f14cee
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = 4750f195399fb0d348dedd081d23f82c9fcd5545af7dc27a1af7084bbc23d14ea4cc86e91ae7e3e7be696e2c300632610e08a576797782d837028e5a265e8b78
+
+pkgname = libvirt-iso-debian-offline-bin
