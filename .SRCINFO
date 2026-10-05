@@ -1,6 +1,6 @@
 pkgbase = aspia-router-bin
 	pkgdesc = Remote desktop control and file transfer tool (router, official binary)
-	pkgver = 3.0.23
+	pkgver = 3.0.24
 	pkgrel = 1
 	url = https://aspia.org/
 	install = aspia-router.install
@@ -14,7 +14,7 @@ pkgbase = aspia-router-bin
 	conflicts = aspia-router
 	options = !debug
 	options = !strip
-	source_x86_64 = https://github.com/dchapyshev/aspia/releases/download/v3.0.23/aspia-router-3.0.23-x86_64.deb
-	sha256sums_x86_64 = 23bfd2bd5ee37a6699b57871fc446d2c040d2de4dd973d6a0464a76f0ad6676e
+	source_x86_64 = https://github.com/dchapyshev/aspia/releases/download/v3.0.24/aspia-router-3.0.24-x86_64.deb
+	sha256sums_x86_64 = 8273441e5ef564bf43d3b823a5692eaa446b3e9a2f2f4a170ce551b8123bbe8e
 
 pkgname = aspia-router-bin
