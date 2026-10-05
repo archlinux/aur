@@ -6,7 +6,7 @@
 # Contributor: Dobroslaw Kijowski
 
 pkgname=mitmproxy-git
-pkgver=12.2.3.r89.gd9a72da7b
+pkgver=12.2.3.r99.g3368a0a06
 pkgrel=1
 pkgdesc='SSL-capable man-in-the-middle HTTP proxy'
 arch=('any')
@@ -50,13 +50,14 @@ checkdepends=(
 )
 conflicts=('mitmproxy')
 provides=('mitmproxy')
-source=("git+https://github.com/mitmproxy/mitmproxy.git")
-sha1sums=('SKIP')
+source=("git+https://github.com/mitmproxy/mitmproxy.git"
+         fix-pyproject.patch)
+sha256sums=('SKIP'
+            '1d09dc7c05bf6a3dd54122f633f05613d1c78a00797e329c8fb94de23ac9c5db')
 
 prepare() {
   cd "${pkgname%-git}"
-  # fix a pytest / pyproject config error during check
-  sed -i -r "/tool.pytest.individual_coverage/,/^\]$/d" pyproject.toml
+  patch -p1 < ../fix-pyproject.patch
 }
 
 pkgver() {

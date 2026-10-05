@@ -1,6 +1,6 @@
 pkgbase = mitmproxy-git
 	pkgdesc = SSL-capable man-in-the-middle HTTP proxy
-	pkgver = 12.2.3.r89.gd9a72da7b
+	pkgver = 12.2.3.r99.g3368a0a06
 	pkgrel = 1
 	url = https://mitmproxy.org/
 	arch = any
@@ -44,6 +44,8 @@ pkgbase = mitmproxy-git
 	provides = mitmproxy
 	conflicts = mitmproxy
 	source = git+https://github.com/mitmproxy/mitmproxy.git
-	sha1sums = SKIP
+	source = fix-pyproject.patch
+	sha256sums = SKIP
+	sha256sums = 1d09dc7c05bf6a3dd54122f633f05613d1c78a00797e329c8fb94de23ac9c5db
 
 pkgname = mitmproxy-git

@@ -1,0 +1,33 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: a821 <a821@home>
+Date: Mon, 5 Oct 2026 07:28:01 +0000
+Subject: [PATCH] fix pyproject incompatible types
+
+we cannot mix native TOML types with INI format configuration options,
+so migrate options to the recommened native TOML types.
+---
+ pyproject.toml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 577894ae8..1516f81bb 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -139,11 +139,11 @@ exclude_lines = [
+     "\\.\\.\\.",
+ ]
+ 
+-[tool.pytest.ini_options]
++[tool.pytest]
+ asyncio_mode = "auto"
+ asyncio_default_fixture_loop_scope = "function"
+-testpaths = "test"
+-addopts = "--capture=no --color=yes"
++testpaths = [ "test" ]
++addopts = [ "--capture=no", "--color=yes" ]
+ filterwarnings = [
+     "ignore::DeprecationWarning:tornado.*:",
+     "ignore:datetime.datetime.utcnow:DeprecationWarning:aioquic.*:",
+-- 
+2.56.0
+
