@@ -3,7 +3,7 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@gmail.com>
 
 pkgname=nco
-pkgver=5.4.0
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="netCDF Operators allow users to manipulate and analyse data stored in NetCDF files"
 url="http://nco.sourceforge.net/"
@@ -35,7 +35,7 @@ source=(
   'use_antlr2.patch'
 )
 sha256sums=(
-  '28d9c90230839e47b6fa40ef1a9eb872afa7017ab0953af627a6cc4d10ad8db7'
+  '17f43eaf0d6dd4c5afde4d3b1b1c2d3b6d231c2b684b2b3a13924a62f884f01c'
   'dccc14050d0928f88f28358fd8f25266a67a965c79606d8156f95185e7a3d139'
 )
 
