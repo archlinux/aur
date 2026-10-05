@@ -1,8 +1,8 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _name="scikit-misc"
 pkgname="python-${_name}"
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.5.3
+pkgrel=1
 pkgdesc="Miscellaenous tools for scientific computing"
 arch=('x86_64')
 url="https://github.com/has2k1/${_name}"
@@ -35,7 +35,7 @@ source=(
   "${_name}-${pkgver}"::"git+${url}#tag=v${pkgver}"
 )
 
-sha256sums=('3582a72cdd8a9e4986b160df9d49fedc8c93a5952c2eec3749d7b265d0395fca')
+sha256sums=('1229ddd5bb4bc3b97702bca83862ab1783e4d53719c78b72a8a88efa34906d79')
 
 _archive="${_name}-${pkgver}"
 
