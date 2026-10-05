@@ -1,4 +1,4 @@
-# Maintainer: Lucas <lucaszhou007 at 163 dot com>
+# Maintainer: Lucas <lucaszhou007@163.com>
 #
 # amdgpu-fan-ctl-bmc —— 用 rocm-smi 读到的 AMD GPU 温度，通过 BMC（带外管理）
 # 控制机箱风扇。
