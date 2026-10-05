@@ -1,6 +1,6 @@
 pkgbase = sashfold-bin
 	pkgdesc = A web browser engine written from scratch, down to its own TLS client and Wayland window
-	pkgver = 0.1.5
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://sashfold.com
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = sashfold-bin
 	optdepends = pipewire-pulse: sound (or pulseaudio)
 	provides = sashfold
 	conflicts = sashfold
-	source = sashfold-0.1.5-linux-x64.tar.gz::https://github.com/codingncaffeine/Sashfold/releases/download/v0.1.5/sashfold-0.1.5-linux-x64.tar.gz
-	sha256sums = 1370c220ee1e9434f5ed37563d50567bc01da792004f63b9ace238a578f956b9
+	source = sashfold-0.2.0-linux-x64.tar.gz::https://github.com/codingncaffeine/Sashfold/releases/download/v0.2.0/sashfold-0.2.0-linux-x64.tar.gz
+	sha256sums = 791a985e51cc088820cb074781eca14b89536d067ab27040257a0309674354aa
 
 pkgname = sashfold-bin
