@@ -1,0 +1,5 @@
+# pacman runs post_install on a first install. The text is the installed
+# tree's own file, the one every package channel prints.
+post_install() {
+  cat /usr/share/vgshell/bin/lib/post-install.txt
+}
