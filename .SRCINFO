@@ -1,6 +1,6 @@
 pkgbase = locally-uncensored-bin
 	pkgdesc = Plug-and-play local AI studio — uncensored chat, image & video generation, and a coding agent
-	pkgver = 3.0.3
+	pkgver = 3.0.5
 	pkgrel = 1
 	url = https://github.com/PurpleDoubleD/locally-uncensored
 	arch = x86_64
@@ -20,12 +20,12 @@ pkgbase = locally-uncensored-bin
 	depends = wayland
 	depends = webkit2gtk-4.1
 	optdepends = python312: ComfyUI / speech-to-text backends (LU needs Python 3.10-3.12; run "python3.12 -m ensurepip --user" once to give it pip)
-	provides = locally-uncensored=3.0.3
+	provides = locally-uncensored=3.0.5
 	conflicts = locally-uncensored
 	options = !debug
-	source = locally-uncensored-bin-3.0.3.deb::https://github.com/PurpleDoubleD/locally-uncensored/releases/download/v3.0.3/Locally.Uncensored_3.0.3_amd64.deb
-	source = LICENSE-3.0.3::https://raw.githubusercontent.com/PurpleDoubleD/locally-uncensored/v3.0.3/LICENSE
-	sha256sums = c534533f698ab1c70881a5a01a50ad0a7d109692033bc02f33411425f87ca3a3
+	source = locally-uncensored-bin-3.0.5.deb::https://github.com/PurpleDoubleD/locally-uncensored/releases/download/v3.0.5/Locally.Uncensored_3.0.5_amd64.deb
+	source = LICENSE-3.0.5::https://raw.githubusercontent.com/PurpleDoubleD/locally-uncensored/v3.0.5/LICENSE
+	sha256sums = 79a56c16217d8a4db3ce748a7c4618d77bed0d46bc9b8ab1a71e9cbd576d770a
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 
 pkgname = locally-uncensored-bin
