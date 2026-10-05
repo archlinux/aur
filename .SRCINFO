@@ -1,6 +1,6 @@
 pkgbase = tmog-bin
 	pkgdesc = Task Manager TMOG, a native system monitor and task manager (precompiled binary)
-	pkgver = 0.1.4
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://tmog.org
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tmog-bin
 	provides = tmog-task-manager
 	conflicts = tmog-task-manager
 	options = !strip
-	source = https://tmog.org/downloads/TaskManagerOG-0.1.4-linux-x86_64.tar.gz
-	sha256sums = ef271c46149907fdd40e94c4cd6e1a3ed0bf08983a6f23d8da83063b034df247
+	source = https://tmog.org/rtm/downloads/TaskManagerOG-1.0.0-linux-x86_64.tar.gz
+	sha256sums = a147c613d4a6f5c0ec16eaf52965593de523f9f0231e09c241460cc63352f325
 
 pkgname = tmog-bin

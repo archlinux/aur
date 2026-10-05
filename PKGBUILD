@@ -1,6 +1,6 @@
 # Maintainer: Marcel W. Wysocki <maci.stgn@gmail.com>
 pkgname=tmog-bin
-pkgver=0.1.4
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Task Manager TMOG, a native system monitor and task manager (precompiled binary)"
 arch=('x86_64')
@@ -14,8 +14,8 @@ depends=(
 )
 provides=('tmog-task-manager')
 conflicts=('tmog-task-manager')
-source=("https://tmog.org/downloads/TaskManagerOG-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('ef271c46149907fdd40e94c4cd6e1a3ed0bf08983a6f23d8da83063b034df247')
+source=("https://tmog.org/rtm/downloads/TaskManagerOG-${pkgver}-linux-x86_64.tar.gz")
+sha256sums=('a147c613d4a6f5c0ec16eaf52965593de523f9f0231e09c241460cc63352f325')
 options=('!strip')
 
 package() {
@@ -40,6 +40,16 @@ package() {
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 share/doc/tmog/THIRD_PARTY_NOTICES.md \
     "${pkgdir}/usr/share/licenses/${pkgname}/THIRD_PARTY_NOTICES.md"
+  install -Dm644 share/doc/tmog/Fluent-System-Icons-LICENSE.txt \
+    "${pkgdir}/usr/share/licenses/${pkgname}/Fluent-System-Icons-LICENSE.txt"
+  install -Dm644 share/doc/tmog/Michroma-OFL.txt \
+    "${pkgdir}/usr/share/licenses/${pkgname}/Michroma-OFL.txt"
+  install -Dm644 share/doc/tmog/Selawik-OFL.txt \
+    "${pkgdir}/usr/share/licenses/${pkgname}/Selawik-OFL.txt"
+  install -Dm644 share/doc/tmog/libwebm-LICENSE.txt \
+    "${pkgdir}/usr/share/licenses/${pkgname}/libwebm-LICENSE.txt"
+  install -Dm644 share/doc/tmog/libwebm-PATENTS.txt \
+    "${pkgdir}/usr/share/licenses/${pkgname}/libwebm-PATENTS.txt"
 
   install -Dm644 share/doc/taskmanagerog/copyright \
     "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
