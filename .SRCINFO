@@ -1,0 +1,23 @@
+pkgbase = zap
+	pkgdesc = Native Zig AUR helper with libalpm transactions and systemd run0
+	pkgver = 0.1.0.r9.g2a72f84c64b3
+	pkgrel = 1
+	url = https://github.com/cube-one-ber/zap
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = pkgconf
+	makedepends = zig0.15
+	depends = pacman>=7.0
+	depends = libalpm.so
+	depends = curl
+	depends = git
+	depends = bubblewrap
+	depends = systemd>=256
+	depends = base-devel
+	optdepends = polkit: authentication for systemd run0
+	conflicts = zap-git
+	conflicts = zap-bin
+	source = zap-0.1.0.r9.g2a72f84c64b3.tar.gz::https://github.com/cube-one-ber/zap/releases/download/v0.1.0.r9.g2a72f84c64b3/zap-source.tar.gz
+	sha256sums = 56b97e96f59906397b8362ea060a005966603e3858928274b2a3a601473363e9
+
+pkgname = zap
