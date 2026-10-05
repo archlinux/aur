@@ -2,7 +2,7 @@
 # Builds kache from the latest `main`. pkgver() derives the version from git,
 # so this tracks unreleased/dev code — rebuild to update.
 pkgname=kache-git
-pkgver=0.28.1.r1034.g3cd7e83
+pkgver=1.0.0.r1104.g7c27329
 pkgrel=1
 pkgdesc='Content-addressed zero-copy build cache for Rust, C/C++ and more (latest git main)'
 arch=('x86_64' 'aarch64')
