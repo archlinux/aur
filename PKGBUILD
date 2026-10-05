@@ -1,12 +1,18 @@
 # Maintainer: VanillaGreen <brad@vanillagreen.com>
 pkgname=vsys-git
-pkgver=0.10.0.r205.gb730834
+pkgver=0.10.0.r206.g6be85a7
 pkgrel=1
 pkgdesc="Terminal dashboard for Linux machines that run AI agents (tracks main)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/vanillagreencom/vsys"
 license=('MIT')
-depends=('python' 'systemd-libs')
+depends=('python' 'systemd' 'systemd-libs')
+optdepends=('udisks2: drive lifetime writes where no smart report exists'
+	'tmux: lane pane reads and the jump to a lane'
+	'libnotify: desktop notifications for alerts'
+	'sccache: build cache statistics'
+	'btrfs-progs: the scrub reporter, which writes the damaged-file report'
+	'smartmontools: the smart reporter, which writes drive lifetime writes')
 provides=('vsys')
 conflicts=('vsys')
 makedepends=('git' 'bun')
