@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=datazen
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Lightweight, open-source AI database client"
 arch=('x86_64')
@@ -36,13 +36,18 @@ source=(
     'system-prompts-path.patch'
 )
 sha256sums=(
-'14598cb6bec0b9dde1b21b79142ac3f0720c5a9a0dcaabe672097780c0b5eeec'
-    'b12b1123e1827d744b4a4136bd615a3e83110790e051342197fcd00e4e5f814a'
+'289cde54f81ad30b5824ade99ebaae9abab21fe634a0a81cadc83e7b1197a5b6'
+    'b956f85c0bd22328bf15116c6f2dcd6d7f9776083f6cc18ab5f983349737f79a'
 )
 
 prepare() {
     cd "${pkgname}-${pkgver}"
     patch -Np1 -i "${srcdir}/system-prompts-path.patch"
+
+    # Keep Tailwind's source scan inside the upstream tree instead of inheriting
+    # the AUR repository's ignore-all .gitignore and dropping utility styles.
+    mkdir -p .git
+    : > .git/HEAD
 
     # The public source tree excludes the private Pro extension resources.
     node -e '
@@ -70,7 +75,7 @@ build() {
     export CARGO_HOME="${srcdir}/.cargo"
     export RUSTUP_TOOLCHAIN=stable
     export npm_config_cache="${srcdir}/.npm-cache"
-    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}/${pkgname}-${pkgver}=/build/${pkgname} --remap-path-prefix=${srcdir}/.cargo/registry=/cargo-registry --remap-path-prefix=${srcdir}/.cargo/git=/cargo-git"
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}/${pkgname}-${pkgver}=/build/${pkgname} --remap-path-prefix=${srcdir}/.cargo/registry=/cargo-registry --remap-path-prefix=${srcdir}/.cargo/git=/cargo-git --remap-path-prefix=$(rustc --print sysroot)=/rust-toolchain"
 
     # Build the community edition with PostgreSQL, MySQL, SQLite and Redis.
     node scripts/with-driver-inject.mjs --drivers=basic -- \
