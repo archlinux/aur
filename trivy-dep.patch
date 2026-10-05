@@ -1,0 +1,11 @@
+--- go.mod.org	2026-10-05 08:42:22.977818215 +0200
++++ go.mod	2026-10-05 08:45:41.239345633 +0200
+@@ -8,7 +8,7 @@
+ 	github.com/GehirnInc/crypt v0.0.0-20230320061759-8cc1b52080c5
+ 	github.com/Masterminds/semver v1.5.0
+ 	github.com/alicebob/miniredis/v2 v2.38.0
+-	github.com/aquasecurity/trivy v0.74.0
++	github.com/aquasecurity/trivy v0.75.0
+ 	github.com/aquasecurity/trivy-db v0.0.0-20260813095258-0e0340a01b57
+ 	github.com/aws/aws-sdk-go-v2 v1.44.0
+ 	github.com/aws/aws-sdk-go-v2/config v1.32.40
