@@ -1,6 +1,6 @@
 # Maintainer: Harsh Sharma <harsh@codelif.in>
 pkgname=whatevr
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Native WhatsApp client for Linux (whatevrd daemon + whattui terminal frontend)"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ provides=('whatevrd' 'whattui')
 conflicts=('whatevr-git' 'whatevr-bin')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('86f44fb0a98de4412a88915a89270d3c969ccc5dc5fd5f87e445ae2e18f34fbf')
+sha256sums=('7c1efa17725b85ad1b61912b31c400927916a009f58db5d948f6eecf77a5b75d')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
