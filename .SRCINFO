@@ -1,6 +1,6 @@
 pkgbase = waveflow-bin
-	pkgdesc = Spotify for your local files - bit-perfect Hi-Res music player
-	pkgver = 1.8.0
+	pkgdesc = Local-first music player with Hi-Res audio, exclusive output, word-by-word synced lyrics, smart playlists and plugins
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/InstaZDLL/WaveFlow
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = waveflow-bin
 	conflicts = waveflow
 	options = !strip
 	options = !debug
-	source = waveflow-bin-1.8.0.deb::https://github.com/InstaZDLL/WaveFlow/releases/download/v1.8.0/WaveFlow_1.8.0_linux-x86_64.deb
-	sha256sums = dbfb3ea628f295285c261cd246fd942f30efac23a1957b3c52c89e2e7eb85ad5
+	source = waveflow-bin-1.8.1.deb::https://github.com/InstaZDLL/WaveFlow/releases/download/v1.8.1/WaveFlow_1.8.1_linux-x86_64.deb
+	sha256sums = f366b8e69fe78dc317a6acfb73c4d9bc31d625971580d0655e887044e9075e6f
 
 pkgname = waveflow-bin
