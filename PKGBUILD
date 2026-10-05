@@ -4,7 +4,7 @@ _pkgauthor=MertJSX
 _pkgname=folderhost
 pkgname=${_pkgname}-bin
 pkgdesc="Your own private cloud in one executable. Share files, collaborate on code, and manage users without complex setup"
-pkgver=26.8.0
+pkgver=26.10.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,8 +25,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 sha256sums=('b3c521ca240eef60c6de45d07363225550a46e627daf59bc6c6d4698a8375cf6'
             'fcf2d6994049b7e62ec2ff28aff21554ed56077da6b21e128c4a995266266421')
-sha256sums_x86_64=('532261d9fb9430a3b5bf84e1a5b315fa7b4c3fbfaae2a63f10820911977aca00')
-sha256sums_aarch64=('532261d9fb9430a3b5bf84e1a5b315fa7b4c3fbfaae2a63f10820911977aca00')
+sha256sums_x86_64=('b688ddc2803ce8d9039aaa5127c3f764bd546930e159f9d5eed8d2001458d176')
+sha256sums_aarch64=('b688ddc2803ce8d9039aaa5127c3f764bd546930e159f9d5eed8d2001458d176')
 
 
 case ${CARCH} in
