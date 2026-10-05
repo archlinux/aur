@@ -1,5 +1,5 @@
 pkgbase = python-surya-ocr
-	pkgdesc = OCR, layout, reading order, and table recognition in 90+ languages
+	pkgdesc = OCR, layout analysis, reading order, and table recognition in 90+ languages
 	pkgver = 0.22.1
 	pkgrel = 1
 	url = https://github.com/datalab-to/surya
