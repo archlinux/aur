@@ -1,6 +1,6 @@
 # Maintainer: Dominik Chwirot dchwirot01@gmail.com
 pkgname=sealsay
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="CLI app that generates ASCII art of a seal saying a message"
 arch=(any)
@@ -10,7 +10,7 @@ depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/phantypengy/sealsay/archive/v$pkgver.tar.gz")
-sha256sums=('39ea3521db281278c4b7483a9fef200966188796c9dd971e802d13fb28a0ca86')
+sha256sums=('78f0a45e43f3703a515898ff89b784ca10ed436e15aa5f1f5659db1328199905')
 
 build() {
     cd "$srcdir/sealsay-$pkgver"
