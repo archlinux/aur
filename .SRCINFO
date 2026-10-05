@@ -1,7 +1,7 @@
 pkgbase = xdg-desktop-portal-generic
 	pkgdesc = Generic XDG desktop portal backend for Wayland compositors (experimental, see .install notes)
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lamco-admin/xdg-desktop-portal-generic
 	install = xdg-desktop-portal-generic.install
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname=xdg-desktop-portal-generic
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Generic XDG desktop portal backend for Wayland compositors (experimental, see .install notes)'
 arch=('x86_64')
 url='https://github.com/lamco-admin/xdg-desktop-portal-generic'
@@ -31,11 +31,16 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/libexec/$pkgname"
+  # Arch package etiquette: avoid /usr/libexec. Other portal backends and
+  # xdg-desktop-portal itself install the binary directly under /usr/lib.
+  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/lib/$pkgname"
   install -Dm644 data/generic.portal "$pkgdir/usr/share/xdg-desktop-portal/portals/generic.portal"
   install -Dm644 data/org.freedesktop.impl.portal.desktop.generic.service \
     "$pkgdir/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.generic.service"
   install -Dm644 "data/$pkgname.service" "$pkgdir/usr/lib/systemd/user/$pkgname.service"
+  sed -i "s|/usr/libexec/$pkgname|/usr/lib/$pkgname|g" \
+    "$pkgdir/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.generic.service" \
+    "$pkgdir/usr/lib/systemd/user/$pkgname.service"
   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
   install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
 }
