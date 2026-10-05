@@ -37,6 +37,9 @@ const entries = [
   // CLI passthrough entry, resolved at runtime via
   // require.resolve("@getpaseo/cli/dist/run.js") which nft cannot follow.
   "packages/cli/dist/run.js",
+  // The CLI resolves the server's public export to locate its supervisor.
+  // That dynamic lookup is not reached by the upstream desktop trace.
+  "packages/server/dist/server/server/exports.js",
 ];
 
 // Files read at runtime via fs APIs or resolved relative to the install

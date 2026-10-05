@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=paseo
-pkgver=0.9.1
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents (built from source, runs on system Electron)"
 arch=('x86_64')
@@ -26,12 +26,12 @@ source=(
     'trace-desktop.mjs'
     'system-electron-paths.patch'
 )
-sha256sums=('f4638aeaec4aedfd132ea7bf3faa40b3b0ad9e9eba9ba84a3640f8ca8b77f4eb'
+sha256sums=('4a61418e41457dc7afd444ffb8e9209228e4320c7482bbf3cb17008b2a339c1a'
             'f9e194a879a87d87021ad06f489a9e4197ded629055a38e2da3557a423785de4'
             '6ae9c520668f639a22f17df7814548056ee46aa99a2886639405297a7b1ef212'
             'df0d01b98ac405c5c25edbb91d61bb9e05355a57e0e652e00823d6331618d686'
-            '0bd531415e7504c4bbff0ce137a5541a4ba7d0c29281139b29d94ee537fde307'
-            '9c76df40b274123e128228dc841f44f018e4ffd8473a97f0a6b7a9c8a4c2e4fa'
+            '620279e619a4f42dcfb45991d679bc82e891d69cabc77a9512b77a47f4df59c2'
+            'e9fe33e993a8da7a8d26d421b4530e907e99b745d16b1c34a963e01f112ede08'
             'a30964e6b5767a12af0ccaa1a67b325a54990ebd386fef8a8326847cc54b955d')
 
 # Repo-relative path of the installed node-pty. npm hoists it to the root
@@ -221,6 +221,7 @@ package() {
         usr/lib/paseo/packages/cli/dist/index.js
         usr/lib/paseo/packages/cli/dist/run.js
         usr/lib/paseo/packages/server/dist/scripts/supervisor-entrypoint.js
+        usr/lib/paseo/packages/server/dist/server/server/exports.js
         usr/lib/paseo/node_modules/@getpaseo/cli
         usr/lib/paseo/node_modules/@getpaseo/server
         "usr/lib/paseo/$(_node_pty_dir)/build/Release/pty.node"
