@@ -1,6 +1,6 @@
 pkgname=pheonix-nfx-bin
 pkgver=1.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform package manager for the Pheonix Studios ecosystem"
 
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
     "NFX-v${pkgver}.zip::https://pheonix-studios-git.github.io/PPI/data/NFX/nfx_zip/NFX-v${pkgver}.zip"
 )
 
-sha256sums=('cc29b4efc93ed9110a5ca0f1d2b49e55b7d43038362a9e2b02629ec2e7d3ce55')
+sha256sums=('5410f9da3cabf7937b7b961e492dd198f459c41eb70380e2a6ea6ed329f4244b')
 
 prepare() {
     cd "$srcdir"
