@@ -36,5 +36,5 @@ modules/eifc/header-unit/textual-tokens/test.mft.cpp aarch64=COMP x86_64=COMP
 modules/eifc/header-unit/true-false-tokens/test.mft.cpp aarch64=COMP x86_64=COMP
 modules/eifc/header-unit/using-directive-namespace/test.mft.cpp aarch64=COMP x86_64=COMP
 modules/eifc/header-unit/using-directive/test.mft.cpp aarch64=COMP x86_64=COMP
-modules/eifc/invalid-checksum/test.mft.cpp x86_64=DIFF
+modules/eifc/invalid-checksum/test.mft.cpp aarch64=DIFF x86_64=DIFF
 modules/eifc/modules/import-function/test.mft.cpp aarch64=COMP x86_64=COMP

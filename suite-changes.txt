@@ -1,10 +1,11 @@
 # edgcpp-git test list: changes. One line per test that is not plain.
 #   <path> [target=A,B] [lib=X] [headers=X] [skip=A,B] [noskip=A,B] [A=STATUS]... [reference]
 #   STATUS: PASS COMP ICE LINK EXEC CRASH DIFF. The grammar is in suite.py.
+changes/EDGcpfe15293.sft.cpp aarch64=DIFF
 changes/EDGcpfe18231.sft.cpp aarch64=COMP
-changes/EDGcpfe23928.sft.cpp x86_64=DIFF
+changes/EDGcpfe23928.sft.cpp aarch64=DIFF x86_64=DIFF
 changes/EDGcpfe23990.sft.cpp target=win32
-changes/EDGcpfe24848.sft.cpp x86_64=DIFF
+changes/EDGcpfe24848.sft.cpp aarch64=DIFF x86_64=DIFF
 changes/EDGcpfe25760.sft.cpp target=win32
 changes/EDGcpfe25936.sft.cpp aarch64=COMP x86_64=COMP
 changes/EDGcpfe26810.sft.cpp target=win64
@@ -12,4 +13,5 @@ changes/EDGcpfe26854.sft.cpp target=win64
 changes/EDGcpfe26874.sft.cpp aarch64=COMP
 changes/EDGcpfe28054.sft.cpp aarch64=COMP
 changes/EDGcpfe28368.sft.cpp target=aarch64
+changes/EDGcpfe28681.sft.cpp aarch64=DIFF
 changes/EDGcpfe28794.sft.cpp target=win64
