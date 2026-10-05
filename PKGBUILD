@@ -1,5 +1,5 @@
 pkgname=openchamber-desktop-appimage
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Desktop and web interface for OpenCode AI agent'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('fuse2')
 source=(
   "https://github.com/openchamber/openchamber/releases/download/v${pkgver}/OpenChamber-${pkgver}-linux-x86_64.AppImage"
 )
-sha512sums=('143d60120c66b7b6c42112067a3862b58409b99174d4dde39bf1c0427c9380edafd69d098c4da3f800f33b4bf4293ab7f1f6efe6001cb4ba7a4bd85a6ddcdf6c')
+sha512sums=('97bccbc402ebce58ac0e0d91ae362bd4b45f2558d4e2dc90cdc031db25e76ffda6629fc0fb04bc0e44a5c6b1dee5fc0abf007ee74e186f13a53616476beec21c')
 
 _installdir=/opt/openchamber
 
