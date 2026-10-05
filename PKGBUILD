@@ -2,14 +2,14 @@
 # Contributor: Sainnhe Park <sainnhe@gmail.com>
 pkgname=basedpyright-git
 _pkgname=basedpyright
-pkgver=v1.39.2.r0.gceb200c19
+pkgver=v1.40.1.r10.gfa4b52d94
 pkgrel=1
 pkgdesc="Fork of pyright, a static type checker for Python, with various improvements and new features"
 arch=('any')
 url="https://github.com/DetachHead/basedpyright"
 license=('MIT')
 depends=('nodejs')
-makedepends=('npm' 'python' 'uv')
+makedepends=('pnpm' 'python' 'uv')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/DetachHead/basedpyright.git")
@@ -30,14 +30,14 @@ prepare() {
 
   # ./build/generateAllDocstubs.sh
   uv sync --only-group=docstubs --no-install-project
-  uv run --no-sync build/py3_8/generate_docstubs.py
+  uv run --no-sync build/py_old/generate_docstubs.py
 
-  npm ci
+  pnpm install --frozen-lockfile
 }
 
 build() {
   cd "${srcdir}/${_pkgname}/packages/pyright"
-  npm run build
+  pnpm run build
 }
 
 package() {
