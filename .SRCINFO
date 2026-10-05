@@ -10,6 +10,7 @@ pkgbase = tidy-cleaner-git
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
+	depends = fontconfig
 	optdepends = polkit: Elevated privilege actions (system-wide uninstallation)
 	optdepends = nvidia-utils: GPU telemetry for NVIDIA graphics cards
 	optdepends = flatpak: Flatpak application management

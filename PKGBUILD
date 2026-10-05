@@ -7,7 +7,7 @@ pkgdesc="Modern, ultra-fast, and safe system cleaner, manager, and hardware tele
 arch=('x86_64' 'aarch64')
 url="https://github.com/Matvel007/Tidy-Cleaner"
 license=('MIT')
-depends=('gcc-libs' 'glibc')
+depends=('gcc-libs' 'glibc' 'fontconfig')
 makedepends=('cargo' 'git')
 optdepends=(
     'polkit: Elevated privilege actions (system-wide uninstallation)'
