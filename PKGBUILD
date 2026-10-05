@@ -6,20 +6,21 @@
 
 pkgname=aurcache-server
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Build server and pacman repository for Arch Linux packages from the AUR"
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/gyscos/AURCache"
 license=(GPL-3.0-or-later)
-# alpm-pkgbuild-bridge is what `alpm-srcinfo` shells out to in order to parse a
-# PKGBUILD; without it every package add fails. It is reached through a
-# confining wrapper this package installs ahead of it on PATH -- see
-# packaging/alpm-pkgbuild-bridge-wrapper.
+# alpm-pkgbuild-bridge is what parses a PKGBUILD; without it every package add
+# fails. The server runs it through aurcache-sandbox, both by absolute path,
+# and the two speak an interface that changes with them (`aurcache-sandbox
+# parse ...`), so the sandbox is pinned to this release: a partial upgrade
+# would otherwise refuse every parse until both match.
 # libgit2 and xz are what the binary actually links (`ldd` on the built
 # artifact, not guesswork): libgit2-sys uses the system library when it finds
 # one, which on Arch it does. openssl is deliberately absent -- the TLS stack
 # here is rustls over aws-lc-rs/ring, and nothing links libssl.
-depends=(gcc-libs libgit2 xz alpm-pkgbuild-bridge aurcache-sandbox)
+depends=(gcc-libs libgit2 xz alpm-pkgbuild-bridge "aurcache-sandbox=$pkgver")
 # rust-wasm supplies the wasm32-unknown-unknown std the frontend compiles
 # against, and wasm-bindgen emits its JS glue. The latter's version must match
 # the `wasm-bindgen` crate in frontend-rs/Cargo.lock (0.2.128 today) --
