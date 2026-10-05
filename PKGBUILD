@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.23
-pkgver=1.0.0beta23
+_tag=v1.0.0-beta.24
+pkgver=1.0.0beta24
 pkgrel=1
 pkgdesc="A desktop shell for niri, built with Quickshell: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
@@ -28,9 +28,13 @@ depends=(
     # The two voices (Typography): expressive and technical.
     'ttf-spectral'
     'ttf-orbitron'
-    # Theme: palettes from the wallpaper, the wallpaper folder picker.
+    # Theme: palettes from the wallpaper, the wallpaper folder picker, and
+    # Bioma's own cursors, rendered from SVG in the palette (scripts/cursors).
+    # The cursor and icon themes are built per user, in their palette, by the
+    # shell's first start, and put on the desktop then (services/Looks.qml).
     'matugen'
     'zenity'
+    'librsvg'
     # Launcher: files found by name in the home, and opened.
     'fd'
     'xdg-utils'
@@ -84,7 +88,7 @@ optdepends=(
 options=('!lto')
 install=bioma-shell.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('3ea930a94a607caf929d454c729d127aada0e1ad72f8336fe8d04ec46f14ea32')
+sha256sums=('754965b42536fbac79d41e88065b948bd4e3721119498ebc22c30189efe53829')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
