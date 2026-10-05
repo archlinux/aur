@@ -1,6 +1,6 @@
 # Maintainer: Serge Ovanesyan
 pkgname=calendarchy-bin
-pkgver=0.1.7
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='Terminal calendar app for Google Calendar and iCloud'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 provides=('calendarchy')
 conflicts=('calendarchy')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/calendarchy-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('33682d1fd3f373a0586ecfa99fbfa36761210edc170e6972da0004db63872f34')
+sha256sums=('7321e46d27c330708e14aa1dd3ffec4d6561ae3cdba384c46e15d2cd6d099fbc')
 
 package() {
   install -Dm755 calendarchy "$pkgdir/usr/bin/calendarchy"
