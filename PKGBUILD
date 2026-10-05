@@ -2,13 +2,12 @@
 # scripts/prepare-aur.py sets the release source fields for AUR builds.
 
 pkgname=omarchy-flux
-pkgver='0.13.0'
+pkgver='0.14.0'
 pkgrel=1
 pkgdesc='Connect an Omarchy computer to your phone with Flux for Android'
 arch=('x86_64' 'aarch64')
 url='https://github.com/bjarneo/flux'
-# The repository has no license yet.
-license=('LicenseRef-unknown')
+license=('MIT')
 depends=('qt6-base>=6.6' 'qt6-declarative>=6.6' 'qt6-svg' 'qt6-wayland' 'ttf-font-nerd' 'wl-clipboard' 'pipewire' 'avahi' 'xdg-utils')
 optdepends=(
 	'quickshell: the flux plugin for omarchy-shell'
@@ -21,9 +20,9 @@ optdepends=(
 makedepends=('go>=1.27.1' 'cmake' 'ninja' 'git')
 install=omarchy-flux.install
 
-_source_url='https://github.com/bjarneo/flux/archive/refs/tags/v0.13.0.tar.gz'
-_source_sha256='29cd0fe96c22e436a3d6d89dd321e1a2149dae84c4ce1b417364ab6e837f23c0'
-_source_dir='flux-0.13.0'
+_source_url='https://github.com/bjarneo/flux/archive/refs/tags/v0.14.0.tar.gz'
+_source_sha256='ba5f62900ab7be58554d856f87f11582d6417c40c94b4fc2b599880ea63db482'
+_source_dir='flux-0.14.0'
 
 if [[ -n $_source_url ]]; then
 	source=("${pkgname}-${pkgver}.tar.gz::${_source_url}")
@@ -65,4 +64,5 @@ check() {
 package() {
 	_src
 	make install DESTDIR="$pkgdir" PREFIX=/usr
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
