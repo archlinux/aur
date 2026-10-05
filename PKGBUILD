@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=netsukuku-rs-bin
-pkgver=0.1.8 # renovate: datasource=github-releases depName=M0Rf30/netsukuku-rs
+pkgver=0.1.9 # renovate: datasource=github-releases depName=M0Rf30/netsukuku-rs
 pkgrel=1
 pkgdesc="Rust reimplementation of the Netsukuku mesh routing protocol: QSPN v2, Hooking, Coordinator, PeerServices, ANDNA (prebuilt static binary)"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,10 @@ backup=('etc/ntkd/ntkd.toml')
 # default port 269.
 source=("ntkd.service::${url}/raw/v${pkgver}/contrib/systemd/ntkd.service"
   "ntkd.toml::${url}/raw/v${pkgver}/contrib/systemd/ntkd.toml")
-sha256sums=('7f770bece8fdd52a7761951de92c2b5ff45ada09e24d194b2f4cb3b76198c660'
-  '92e4e2fa58defd6f809bdda8df063e5dc947cb9d71a7df538a06586608b38fb1')
+sha256sums=('c641f10508d78820999d1cb460d351f0fdda3fe071dd18ad3919349e5f9c5cc1'
+            '92e4e2fa58defd6f809bdda8df063e5dc947cb9d71a7df538a06586608b38fb1')
+sha256sums_x86_64=('ad65ae27deacfaa5b52d512448c53efa51c4a7f0cae1c5642e71ee5fb25e6779')
+sha256sums_aarch64=('7b5345db4f5510742bdb78d229125b033535995cc9365e2f746bb9218254ce65')
 
 package() {
   install -Dm0755 "$srcdir/ntkd" \
@@ -36,6 +38,4 @@ package() {
 source_x86_64=("ntkd-${pkgver}-x86_64-unknown-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/ntkd-${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("ntkd-${pkgver}-aarch64-unknown-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/ntkd-${pkgver}-aarch64-unknown-linux-musl.tar.gz")
 
-sha256sums_x86_64=('2c629daf14fea6978abf86f1baaf304ed55c0c8a5423a7744f34c10005054980')
-sha256sums_aarch64=('7c90a09d2654074b15b1b3519f3adb7c70f29de2caf2ba3e21a322dd1d14aec4')
 
