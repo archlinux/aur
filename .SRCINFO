@@ -1,7 +1,7 @@
 pkgbase = ipt_netflow
 	pkgdesc = Netflow as netfilter extension
 	pkgver = 2.6
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/aabc/ipt-netflow
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = ipt_netflow
 	makedepends = sed
 	depends = linux
 	depends = iptables
-	source = https://github.com/aabc/ipt-netflow/archive/v2.6.tar.gz
+	source = ipt_netflow-2.6.tar.gz::https://codeload.github.com/aabc/ipt-netflow/tar.gz/refs/tags/v2.6
 	source = 01.patch::https://salsa.debian.org/debian/iptables-netflow/-/raw/d40c76fb1ad8be0168944cae47f62776314c123d/debian/patches/0001-Fix-compile-for-stable-kernels-by-not-using-ref_modu.patch
 	source = 02.patch::https://salsa.debian.org/debian/iptables-netflow/-/raw/d40c76fb1ad8be0168944cae47f62776314c123d/debian/patches/0002-Namespace-sk_error_report.patch
 	source = 03.patch::https://salsa.debian.org/debian/iptables-netflow/-/raw/d40c76fb1ad8be0168944cae47f62776314c123d/debian/patches/0003-Fix-compilation-on-CentOS-8.patch

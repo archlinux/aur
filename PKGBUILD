@@ -3,18 +3,20 @@
 
 _netflow='ipt-netflow'
 pkgname='ipt_netflow'
+_name='NETFLOW'
 pkgver='2.6'
-pkgrel='10'
+pkgrel='11'
 pkgdesc='Netflow as netfilter extension'
 arch=('x86_64' 'aarch64')
-url="https://github.com/aabc/${_netflow}"
+_uri="github.com/aabc/${_netflow}"
+url="https://${_uri}"
 _gitlab_version='d40c76fb1ad8be0168944cae47f62776314c123d'
 _gitlab_uri="https://salsa.debian.org/debian/iptables-netflow/-/raw"
 _gitlab_url="${_gitlab_uri}/${_gitlab_version}/debian/patches"
 license=('GPL')
 depends=('linux' 'iptables')
 makedepends=('gcc' 'gzip' 'gawk' 'sed')
-source=("${url}/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/tar.gz/refs/tags/v${pkgver}"
 	"01.patch::${_gitlab_url}/0001-Fix-compile-for-stable-kernels-by-not-using-ref_modu.patch"
 	"02.patch::${_gitlab_url}/0002-Namespace-sk_error_report.patch"
 	"03.patch::${_gitlab_url}/0003-Fix-compilation-on-CentOS-8.patch"
@@ -108,36 +110,39 @@ _kver="`pacman -Ql linux${_linux_custom} | gawk 'match($0, /(\/usr\/lib\/modules
 
 prepare() {
   cd "${_netflow}-${pkgver}"
-
   for e in "../"*".patch"
     do
     echo "Apply patch: ${e}"
     patch -p1 -i "../${e}"
   done
 
-  ./configure \
-    --disable-snmp-agent \
-    --disable-dkms \
-    --disable-dkms-install \
-    --kver=${_kver} \
-    --kdir=${_kdir}\build
 }
 
 build() {
   cd "${_netflow}-${pkgver}"
+  export CFLAGS="${CFLAGS} ${DEBUG_CFLAGS}"
+  export CXXLAGS="${CXXFLAGS} ${DEBUG_CXXFLAGS}"
+  export LDFLAGS="${LDFLAGS}"
+  ./configure \
+    --disable-snmp-agent \
+    --disable-dkms \
+    --disable-dkms-install \
+    --kver="${_kver}" \
+    --kdir="${_kdir}/build" \
+    --ipt-inc="/usr/include"
   make
 }
 
 check() {
   cd "${_netflow}-${pkgver}"
-  gzip --best -c "ipt_NETFLOW.ko" > "ipt_NETFLOW.ko.gz"
+  gzip --best -c "ipt_${_name}.ko" > "ipt_${_name}.ko.gz"
 }
 
 package() {
   cd "${_netflow}-${pkgver}"
-  install -Dm0755 "libipt_NETFLOW.so" -t "${pkgdir}/usr/lib/xtables"
-  install -Dm0755 "libip6t_NETFLOW.so" -t "${pkgdir}/usr/lib/xtables"
-  install -Dm0644 "ipt_NETFLOW.ko.gz" -t "${pkgdir}${_kdir}/extra"
+  install -Dm0755 "libipt_${_name}.so" -t "${pkgdir}/usr/lib/xtables"
+  install -Dm0755 "libip6t_${_name}.so" -t "${pkgdir}/usr/lib/xtables"
+  install -Dm0644 "ipt_${_name}.ko.gz" -t "${pkgdir}${_kdir}/extra"
   install -Dm0644 "CREDITS" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm0644 "README" "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm0644 "README.promisc" "${pkgdir}/usr/share/doc/${pkgname}"
