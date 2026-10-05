@@ -12,7 +12,8 @@ license=(GPL-3.0-only)
 arch=(x86_64 i686 aarch64 armv7h)
 depends=(fmt spdlog nlohmann-json gcc-libs glibc)
 makedepends=(cmake)
-optdepends=("ananicy-rules-git: community rules")
+optdepends=("cachyos-ananicy-rules: cachyos rules"
+	"cachyos-ananicy-rules-git: cachyos rules git")
 provides=(ananicy-cpp)
 conflicts=(ananicy-cpp)
 source=("https://gitlab.com/ananicy-cpp/${_pkgname}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz"
