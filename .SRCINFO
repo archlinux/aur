@@ -1,6 +1,6 @@
 pkgbase = strawberry-lite
 	pkgdesc = A music player aimed at audio enthusiasts and music collectors, fewer features, Gstreamer and alsa only
-	pkgver = 1.2.30
+	pkgver = 1.2.31
 	pkgrel = 1
 	url = https://www.strawberrymusicplayer.org/
 	arch = x86_64
@@ -30,18 +30,20 @@ pkgbase = strawberry-lite
 	depends = libcdio
 	depends = libebur128
 	depends = libgcc
+	depends = libsecret
 	depends = libstdc++
 	depends = libx11
 	depends = qt6-base
 	depends = sqlite
 	depends = taglib
+	depends = uchardet
 	depends = udisks2
 	optdepends = gst-libav: additional codecs
 	optdepends = gst-plugins-bad: additional codecs
 	optdepends = gst-plugins-ugly: additional codecs
 	provides = strawberry
 	conflicts = strawberry
-	source = git+https://github.com/jonaski/strawberry.git#tag=1.2.30
-	sha256sums = 42e03ed581cc762d08e8b004e8f915ac23170cfe2c4d62dd34f5aec689f64361
+	source = git+https://github.com/jonaski/strawberry.git#tag=1.2.31
+	sha256sums = 19cf94a546c30e84783222c67e412049ba6bea6baa6d0ed00e94c3f0cac099fd
 
 pkgname = strawberry-lite
