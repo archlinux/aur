@@ -2,7 +2,7 @@
 
 pkgname=piliplus
 _srcname=PiliPlus
-pkgver=2.1.5
+pkgver=2.1.6
 pkgrel=1
 pkgdesc="A third-party Bilibili client developed in Flutter"
 url="https://github.com/bggRGjQaUbCoE/${_srcname}"
@@ -12,7 +12,7 @@ depends=('gtk3' 'mpv' 'libayatana-appindicator' 'webkit2gtk-4.1')
 makedepends=('git' 'clang' 'cmake' 'ninja' 'fvm' 'patchelf')
 options=('!debug')
 source=("git+${url}.git#tag=${pkgver}")
-sha256sums=('071e5790843fd3b37e23e22d1cc1ad1b07f9755ba52c5e8fa956af480f91e776')
+sha256sums=('bd92be1ec09373058e85e381925e48a78aa2edf1d735ace159b764d7de28af5e')
 
 prepare() {
 	cd "${_srcname}/"
@@ -29,11 +29,12 @@ prepare() {
 	                null_safety_for_selectable_region selectable_region
 	                editable_text text_field scroll_position scrollable
 	                scrollable_gesture draggable_scrollable_sheet scaffold
-	                text text_painter sliver refresh_indicator)
+	                text text_painter sliver refresh_indicator double_tap_gesture)
 
 	printf "正在应用 Flutter 引擎补丁...\n"
 	git -C "${_sdk}" reset --hard HEAD
 	for _patch in "${_patches[@]}"; do
+		[[ -f "${_scripts}/${_patch}.patch" ]] || continue
 		git -C "${_sdk}" apply "${_scripts}/${_patch}.patch"
 	done
 
