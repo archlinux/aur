@@ -1,6 +1,6 @@
 pkgbase = wish-agent
 	pkgdesc = Self-hosted AI agent server and web app: long-lived sessions, shell tools and many model providers
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/WindustH/wish-core
 	arch = x86_64
@@ -19,13 +19,14 @@ pkgbase = wish-agent
 	depends = libgcc
 	conflicts = wish-agent-bin
 	conflicts = wish-agent-git
+	conflicts = tk
 	options = !lto
 	options = !debug
-	source = wish-core::git+https://github.com/WindustH/wish-core.git#tag=v0.1.2
-	source = wish-web::git+https://github.com/WindustH/wish-web.git#tag=v0.1.2
+	source = wish-core::git+https://github.com/WindustH/wish-core.git#tag=v0.1.3
+	source = wish-web::git+https://github.com/WindustH/wish-web.git#tag=v0.1.3
 	source = wish-agent.service
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 25634e8af4577f11942192e92101376aab960ba40c7350f7d6ba8b806a174791
+	sha256sums = 932ff80ab90865dbeb39168c36293738af32ec5f197c7630930d0a54c2bac0d0
 
 pkgname = wish-agent
