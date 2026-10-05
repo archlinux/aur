@@ -47,7 +47,7 @@
 
 pkgname=mediatek-mt7927-dkms
 pkgver=2.16
-pkgrel=1
+pkgrel=2
 # Keywords: MT7927 MT7925 MT6639 MT7902 Filogic 380 WiFi 7 Bluetooth btusb mt7925e mt7921e
 pkgdesc="DKMS Bluetooth (MT6639) and WiFi (MT7925e/MT7902) modules for MediaTek MT7927 Filogic 380"
 arch=('x86_64')
@@ -80,16 +80,16 @@ sha256sums=('f9fef3d14c0df53819026f4be74459835c2a0b0dcbf5b5bbd9ea19f0829402b3'
 
 # Auto-download via ASUS CDN token API
 _download_driver_zip() {
-  DRIVER_FILENAME="${_driver_filename}" "${startdir}/download-driver.sh" "${SRCDEST:-.}"
+  DRIVER_FILENAME="${_driver_filename}" "${startdir}/download-driver.sh" "${SRCDEST:-$PWD}"
 }
 
 prepare() {
-  local _zips=("${SRCDEST:-.}"/DRV_WiFi_MTK_MT7925_MT7927*.zip)
+  local _zips=("${SRCDEST:-$PWD}"/DRV_WiFi_MTK_MT7925_MT7927*.zip)
 
   # Auto-download if no ZIP found
   if [[ ! -f "${_zips[0]}" ]]; then
     _download_driver_zip
-    _zips=("${SRCDEST:-.}/${_driver_filename}")
+    _zips=("${SRCDEST:-$PWD}/${_driver_filename}")
   fi
 
   if [[ ! -f "${_zips[0]}" ]]; then
@@ -120,7 +120,7 @@ prepare() {
 }
 
 build() {
-  local _zips=("${SRCDEST:-.}"/DRV_WiFi_MTK_MT7925_MT7927*.zip)
+  local _zips=("${SRCDEST:-$PWD}"/DRV_WiFi_MTK_MT7925_MT7927*.zip)
 
   make -C "${startdir}" sources \
     MT76_KVER="${_mt76_kver}" \

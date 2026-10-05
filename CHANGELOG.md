@@ -5,6 +5,18 @@ All notable changes to the MediaTek MT7927 DKMS package are documented here.
 Format: `v<pkgver>-<pkgrel>` where pkgver bumps for driver/patch changes
 and pkgrel bumps for PKGBUILD packaging changes.
 
+## [2.16-2] - 2026-10-05
+
+### Packaging
+
+- Fix `PKGBUILD` locating the ASUS driver ZIP by a `.`-relative glob (`${SRCDEST:-.}`) captured while makepkg's working directory is `$srcdir`, then consuming that same string from `build()`'s `make -C "${startdir}"` call - which moves make's working directory one level up before `$(DRIVER_ZIP)` is ever checked. The zip auto-downloads correctly into `$srcdir`; the existence check then looks for it, via the stale relative path, in `$startdir`. Resolve against `$PWD` instead of `.` at all four call sites so the path survives the later `-C` (#115)
+
+### Documentation
+
+- Document that `BT_RAM_CODE_MT6639_2_1_hdr.bin` is built per-vendor rather than universal - two ASUS boards share one hash, two Gigabyte boards share a different one, across four reports in #23 and #116 - and point readers at extracting from their own board's vendor package rather than reusing a hash posted for different hardware
+- Document the Ubuntu/Debian initramfs trap: a firmware file swapped under `/lib/firmware/` is silently reverted at the next boot until `update-initramfs -u -k all` runs, since the initramfs carries its own copy (#109)
+- Add ASUS ROG STRIX X870-F GAMING WIFI to the supported hardware table (#116)
+
 ## [2.16-1] - 2026-09-17
 
 ### Driver

@@ -59,6 +59,7 @@ device ID and firmware patches not yet in mainline. Supports kernels 6.17+.
 | ASUS ROG Strix X870-I | 0489:e13a | 14c3:7927 |
 | ASUS ROG Strix X870E-E | 13d3:3588 | 14c3:7927 |
 | ASUS ROG STRIX B850-E GAMING WIFI | 0489:e13a | 14c3:7927 |
+| ASUS ROG STRIX X870-F GAMING WIFI | 0489:e13a | 14c3:7927 |
 | Gigabyte X870E Aorus Master X3D | 0489:e10f | 14c3:7927 |
 | Gigabyte Z790 AORUS MASTER X | 0489:e10f | 14c3:7927 |
 | Gigabyte Z790 AORUS ELITE X WiFi7 | 0489:e10f | 14c3:7927 |
@@ -469,10 +470,30 @@ make download                      # fetches the ASUS driver ZIP
 python3 extract_firmware.py DRV_WiFi_MTK_*.zip /usr/lib/firmware/mediatek/mt7927/
 ```
 
+**Extract from your own board's vendor package, not a hash posted by someone with a
+different board.** `BT_RAM_CODE_MT6639_2_1_hdr.bin` is not one universal file - at
+least two distinct builds are confirmed across reports in
+[#23](https://github.com/jetm/mediatek-mt7927-dkms/issues/23): ASUS boards converge
+on one hash, a Gigabyte board produced a different one. The firmware is built
+per-vendor, at minimum. `make download` only knows how to fetch the ASUS package; for
+any other board, pull the driver ZIP from your own motherboard vendor's support page
+and point `extract_firmware.py` at that instead.
+
 The Bluetooth blob (`BT_RAM_CODE_MT6639_2_1_hdr.bin`) is still installed by this
 package, and has to be: linux-firmware only accepts vendor blobs from the copyright
 holder, so MR !946 was closed and MT6639 BT firmware has to be submitted by MediaTek
 before it can live there.
+
+**On Ubuntu/Debian, swapping a firmware file under `/lib/firmware/` is not enough.**
+The initramfs carries its own copy of the firmware (and of the driver module on some
+setups), so a replaced file is silently undone at the next boot until you run
+`sudo update-initramfs -u -k all`. Confirm which build an image will actually load
+before assuming a swap took effect:
+
+```bash
+lsinitrd -f usr/lib/firmware/mediatek/mt7927/WIFI_MT6639_PATCH_MCU_2_1_hdr.bin \
+  /boot/initrd.img-$(uname -r) | grep -a -o -m1 -E '20[0-9]{12}'
+```
 
 ### Bluetooth modules on kernel 7.1+
 
