@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-th
 	pkgdesc = Thai language pack for Firefox Nightly
-	pkgver = 159.0a1.20261004.215034
+	pkgver = 159.0a1.20261005.080154
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-th
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-th-159.0a1.20261004.215034.xpi
-	source = firefox-nightly-i18n-th-159.0a1.20261004.215034.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-159.0a1.th.langpack.xpi
-	sha256sums = 3e26cc77ef413f4f5188f9ad3cb396ea7dd3080b9c778185869ea09275321675
+	noextract = firefox-nightly-i18n-th-159.0a1.20261005.080154.xpi
+	source = firefox-nightly-i18n-th-159.0a1.20261005.080154.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-159.0a1.th.langpack.xpi
+	sha256sums = 35b407fecc8d02a628554324590312967556f5a2fc5d94866a2205f8ce8e5d1d
 
 pkgname = firefox-nightly-i18n-th
