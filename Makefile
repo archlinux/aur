@@ -2,7 +2,7 @@
 all: upgrade build verify
 
 init:
-	yay -S devtools nvchecker namcap
+	yay -S --needed devtools nvchecker namcap
 
 clean:
 	rm -rf pkg src *.deb *.pkg.tar.zst *.log
