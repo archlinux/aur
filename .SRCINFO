@@ -1,0 +1,23 @@
+pkgbase = ceru-music-bin
+	pkgdesc = 澜音 - 一款简洁优雅的跨平台音乐播放器，支持获取公开音乐信息和基于插件的播放功能。
+	pkgver = 2.2.0
+	pkgrel = 5
+	url = https://ceru.docs.shiqianjiang.cn/
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = electron44
+	depends = at-spi2-core
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	optdepends = libayatana-appindicator: 托盘图标支持
+	provides = ceru-music
+	conflicts = ceru-music-appimage
+	source = LICENSE::https://raw.githubusercontent.com/timeshiftsauce/CeruMusic/main/LICENSE
+	sha256sums = 156192fbbc7e97514fc250480ed4bd1570f1a7f6e59420b088b4151a7e68431b
+	source_x86_64 = ceru-music-2.2.0-linux-amd64.deb::https://github.com/timeshiftsauce/CeruMusic/releases/download/v2.2.0/ceru-music-2.2.0-linux-amd64.deb
+	sha256sums_x86_64 = 50df31c3284b06369cbdb4402ec7e879eff4af0c3056dcb3d17b598ec78f9b3f
+
+pkgname = ceru-music-bin
