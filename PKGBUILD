@@ -5,7 +5,7 @@
 # and uses xfce patches from:
 # https://github.com/simplejack-src/gtk3-classic-xfce (repository no longer available)
 
-__arch_pkg_commit="f5ba7bf3a87dacd8f332e083eaecaee25be8636b"
+__arch_pkg_commit="3ad1ef389f34cc098b05ac6e060a8f55ca9f5a33"
 _gtkver=3.24.52
 
 _gtk3_classic_commit="1adb3ea1fb666564c1ec7e2bc1c567de3798b75a"
