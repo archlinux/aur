@@ -1,0 +1,51 @@
+[Unit]
+Description=amdgpu-fan-ctl-bmc — 用 rocm-smi 读 AMD GPU 温度，通过 BMC（H3C HDM）调机箱风扇
+Documentation=file:/usr/share/doc/amdgpu-fan-ctl-bmc/README.md
+Documentation=file:/usr/share/doc/amdgpu-fan-ctl-bmc/USAGE.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+
+# 用专用系统账户运行，不用 root（账户由 amdgpu-fan-ctl-bmc.sysusers 创建）。
+# 本机跑 rocm-smi 要访问 /dev/kfd、/dev/dri/renderD*，所以补上 render/video 组。
+User=amdgpu-fan-ctl-bmc
+Group=amdgpu-fan-ctl-bmc
+SupplementaryGroups=render video
+
+# BMC 密码放这里，权限 0600，别写进 config.toml：
+#   install -m 0600 /dev/null /etc/amdgpu-fan-ctl-bmc/hdm.env
+#   printf 'IPMI_PASSWORD=xxxx\n' > /etc/amdgpu-fan-ctl-bmc/hdm.env
+# 变量名要和 config.toml 里 [bmc] password_env 的值一致（默认 IPMI_PASSWORD）。
+# 前缀 "-" 表示文件不存在也算正常（比如改用 password_cmd 从别处取密码）。
+# EnvironmentFile 由 systemd（root）读取后再降权，所以 0600、属主 root 即可。
+EnvironmentFile=-/etc/amdgpu-fan-ctl-bmc/hdm.env
+
+ExecStart=/usr/bin/amdgpu-fan-ctl-bmc --config /etc/amdgpu-fan-ctl-bmc/config.toml
+
+# 无论怎么退出（正常 / 崩溃 / 被 kill）都尝试把 BMC 恢复成接管前的模式
+ExecStopPost=/usr/bin/amdgpu-fan-ctl-bmc --config /etc/amdgpu-fan-ctl-bmc/config.toml --restore
+
+Restart=on-failure
+RestartSec=10s
+TimeoutStopSec=20s
+
+# --- 权限收窄：只需要读 GPU 温度、访问 BMC -----------------------------
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+RestrictRealtime=yes
+
+# /var/lib/amdgpu-fan-ctl-bmc 由 systemd 建好，属主/权限交给上面的服务账户
+# （存"接管前的 BMC 模式"快照；它同时是该账户的家目录，用 --remote 时 .ssh 放这里）
+StateDirectory=amdgpu-fan-ctl-bmc
+# metrics_file 建议写 /run/amdgpu-fan-ctl-bmc/metrics.prom —— 这个目录由 systemd
+# 建好并只授权给本服务写（不再放开整个 /run）
+RuntimeDirectory=amdgpu-fan-ctl-bmc
+
+[Install]
+WantedBy=multi-user.target

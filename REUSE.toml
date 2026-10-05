@@ -1,0 +1,32 @@
+version = 1
+
+# 打包文件（PKGBUILD 及其辅助文件）按 RFC 0040 / RFC 0052 用 0BSD。
+[[annotations]]
+path = [
+    "PKGBUILD",
+    ".SRCINFO",
+    ".gitignore",
+    "*.install",
+    "*.service",
+    "*.sysusers",
+    "sync.sh",
+    "hdm.env.example",
+    "README-AUR.md",
+    "LICENSE",
+    "LICENSES/**",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+# 程序本体（被一起放进 AUR 仓库的副本）沿用它自己的 MIT。
+[[annotations]]
+path = [
+    "LICENSE-MIT",
+    "amdgpu_fan_ctl_bmc.py",
+    "test_amdgpu_fan_ctl_bmc.py",
+    "config.toml",
+    "README.md",
+    "USAGE.md",
+]
+SPDX-FileCopyrightText = "amdgpu-fan-ctl-bmc contributors"
+SPDX-License-Identifier = "MIT"

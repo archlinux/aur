@@ -1,0 +1,37 @@
+post_install() {
+  cat <<'EOF'
+
+amdgpu-fan-ctl-bmc 已安装，但还没有配置
+—— 它现在绝不会动你的风扇。
+（/etc/amdgpu-fan-ctl-bmc/config.toml 出厂就是 mode="observe" + dry_run=true，只读不写。）
+
+它调节的是**主板 BMC 管的机箱风扇**，不是显卡自带风扇 —— AMD Instinct
+这类被动散热卡根本没有风扇。工作方式是：温度从 rocm-smi 读，转速指令发给
+BMC。所以下面第 1) 步的 BMC 地址和账号是必需的，没有 BMC 它什么都控制不了。
+
+服务由专用系统账户 amdgpu-fan-ctl-bmc 运行（安装时已自动创建用户和同名组，
+定义在 /usr/lib/sysusers.d/amdgpu-fan-ctl-bmc.conf），不再用 root。
+
+三步上手指南：
+
+  1) 填 BMC 地址和账号：编辑 /etc/amdgpu-fan-ctl-bmc/config.toml 的 [bmc] 段
+     （H3C HDM 出厂是 host = "192.168.10.254"、username = "admin"）,实际根据不同型号决定
+
+  2) 放 BMC 密码（权限必须是 0600、属主 root；EnvironmentFile 由 systemd 以 root
+     读取后再降权，所以服务账户本身无需能读它）：
+       sudo install -m 0600 /dev/null /etc/amdgpu-fan-ctl-bmc/hdm.env
+       sudo sh -c 'printf "IPMI_PASSWORD=你的密码\n" > /etc/amdgpu-fan-ctl-bmc/hdm.env'
+
+  3) 先只看不动，确认读到的温度和转速都对：
+       sudo amdgpu-fan-ctl-bmc --config /etc/amdgpu-fan-ctl-bmc/config.toml --selftest
+
+确认无误、把 config.toml 的 mode/dry_run 改好之后，再开机自启：
+
+       sudo systemctl enable --now amdgpu-fan-ctl-bmc.service
+
+完整说明：
+  /usr/share/doc/amdgpu-fan-ctl-bmc/README.md
+  /usr/share/doc/amdgpu-fan-ctl-bmc/USAGE.md
+
+EOF
+}

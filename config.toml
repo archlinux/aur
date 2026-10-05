@@ -1,0 +1,98 @@
+# amdgpu-fan-ctl-bmc 配置
+#
+# ⚠️ dry_run 默认 true：此时程序只打印决策，绝不写 BMC。
+#    确认曲线和阈值合理之后，再改成 false（或启动时加 --live）才会真正下发。
+
+[general]
+mode = "observe"          # observe | assist | control
+dry_run = true           # ← 看完 dry-run 日志再改成 false
+poll_interval = 2.0      # 采样周期（秒）
+log_level = "info"
+state_dir = "/var/lib/amdgpu-fan-ctl-bmc"
+metrics_file = ""        # 例如 "/run/amdgpu-fan-ctl-bmc/metrics.prom"（给 node_exporter textfile 用；该目录由 unit 的 RuntimeDirectory 建好并授权给服务账户）
+
+[gpu]
+# 温度源只有一个：`rocm-smi -t --json`。
+# 这里配的只是"在哪台机器上执行 rocm-smi"，以及怎么解析它的输出。
+rocm_smi = "/opt/rocm/bin/rocm-smi"   # 绝对路径：systemd 和 `ssh host 'cmd'` 的 PATH 里都没有 /opt/rocm/bin
+# 可选白名单：只有型号串里含这个子串的卡才参与。留空 = 本机所有 AMD 卡都参与
+# （多卡时每个标签取最热的那张，安全方向）。故意留空，不绑定具体型号。
+rocm_smi_match = ""
+# 默认在本机跑 rocm-smi。要用远程，命令行给 `--remote user@host -p <端口>`：
+#     python3 amdgpu_fan_ctl_bmc.py -c config.toml --remote lucas@127.0.0.1 -p 2222 --status
+# 下面这两行是可选的"预置默认值"，命令行给的参数优先。
+remote = ""              # 例如 "lucas@127.0.0.1"；空 = 本机
+port = 0                 # 0 = ssh 默认 22
+# 传给 ssh 的额外选项（放在目标主机之前）。默认带 -F /dev/null 是因为本机
+# /etc/ssh/ssh_config.d/ 下有个属主被搞坏的文件，不加它会直接报
+# "Bad owner or permissions" 而连不上任何主机。副作用：~/.ssh/config 的
+# Host 别名/跳板机不再生效——要用别名就把 -F /dev/null 去掉。
+ssh_options = ["-F", "/dev/null", "-o", "BatchMode=yes", "-o", "ConnectTimeout=10",
+               "-o", "StrictHostKeyChecking=accept-new"]
+ssh_identity = ""        # 可选 -i 私钥路径（支持 ~）；留空 = 交给 ssh 找默认私钥
+timeout = 20             # 单次 rocm-smi 调用的超时（秒）
+smoothing = 0.35         # 温度指数平滑系数，越小越平滑
+critical_temp = 90       # 最热的一路 GPU 传感器到此直接拉满
+idle_max_temp = 55       # 最热的一路低于此值、且利用率也够低时，GPU 项封顶
+idle_max_gpu_use = 0     # 还要求 GPU 利用率 <= 此值才算空闲；填 100 就退化成"只看温度"
+idle_pwm = 22
+
+[bmc]
+host = "192.168.1.56"
+username = "admin"
+password_env = "IPMI_PASSWORD"   # 推荐：用 systemd EnvironmentFile 注入（见 amdgpu-fan-ctl-bmc.service）
+password_cmd = []               # 备选：["zsh","-c","eval \"$(sed -n 257p /home/lucas/.zshrc)\"; print -rn -- \"$IPMI_PASSWORD\""]
+verify_tls = false
+timeout = 15
+min_write_interval = 5.0  # 两次写 BMC 的最小间隔（秒），避免高频写 BMC 配置
+write_deadband = 3        # PWM 变化小于此值就不写
+critical_sensors = ["CPU1_TEMP", "CPU2_TEMP", "MB_TEMP", "OCP_INLET_TEMP"]
+# BMC 不报 higher_critical_threshold 的传感器用这里的兜底值。H3C HDM 上
+# OCP_INLET_TEMP 直接给 NA（同组的 INPUT_TEMP_01/02 报 54），所以补 54。
+# BMC 只要自己报了阈值，一律以 BMC 为准。
+sensor_thresholds = { OCP_INLET_TEMP = 54.0 }
+max_consecutive_errors = 8
+
+[fan]
+min_pwm = 20
+max_pwm = 100
+ramp_down_step = 5        # 每次最多降这么多（降噪）；升温不限速（安全优先）
+
+[assist]
+trigger_temp = 78         # 结温到 78°C 接管风扇
+trigger_pwm = 45          # 接管瞬间的 PWM 下限
+release_temp = 62         # 降到 62°C 以下开始计时交还
+release_cycles = 10       # 连续 10 个周期都够凉就交还 BMC 自动控制
+
+[restore]
+on_exit = true            # 退出 / SIGTERM 时恢复接管前的 BMC 模式
+
+# --- 风扇曲线：points = [[温度°C, PWM%], ...]，分段线性插值 -------------------
+# 最终 PWM = 所有曲线在该时刻的最大值（再被 min_pwm/max_pwm 夹住）。
+# 这样"接管期间 BMC 曲线停摆"也不会让 CPU/主板失控。
+#
+# 曲线名 = 温度读数的名字。rocm-smi 报出来的传感器会自动变成 gpu_<名字>
+# （如 gpu_junction / gpu_edge / gpu_mem / gpu_hbm_0 / gpu_hbm_1），名字对不上就用 gpu_default。
+# gpu_mem 喂进去的是 max(memory, 所有 HBM 堆)。
+
+[curves.gpu_junction]
+points = [[40,20],[55,25],[65,35],[75,50],[80,65],[85,80],[88,100]]
+
+[curves.gpu_edge]
+points = [[45,20],[65,30],[78,50],[88,100]]
+
+[curves.gpu_mem]
+points = [[45,20],[65,30],[80,45],[90,70],[95,100]]
+
+# 兜底：rocm-smi 报出来但没有同名曲线的传感器走这条
+[curves.gpu_default]
+points = [[50,20],[70,35],[85,70],[95,100]]
+
+[curves.cpu_max]
+points = [[45,20],[60,28],[70,38],[80,55],[90,80],[97,100]]
+
+[curves.mb]
+points = [[30,20],[45,30],[55,50],[62,100]]
+
+[curves.inlet]
+points = [[25,20],[32,35],[38,60],[45,100]]

@@ -1,0 +1,5 @@
+# makepkg 的中间产物与构建结果：AUR 仓库里不该有这些
+/pkg/
+/src/
+/*.pkg.tar.*
+/__pycache__/

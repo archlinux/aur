@@ -1,0 +1,14 @@
+# amdgpu-fan-ctl-bmc.service 的专用系统账户。
+#
+# 由 systemd-sysusers 处理：本文件装到 /usr/lib/sysusers.d/ 后，pacman 在安装/升级
+# 时会自动调用 systemd-sysusers，创建 amdgpu-fan-ctl-bmc 用户（及同名组），
+# 不需要手动 useradd。u 行同时会创建与用户同名的组，服务里的 Group= 就指它。
+#
+# 用 u! 而不是 u：账户会被完全锁定，除了“密码登录”之外，SSH 之类的非密码认证也
+# 不能用它登录（只是本服务自己往外发起 ssh 时仍照常工作）。登录 shell 默认
+# /usr/sbin/nologin。
+#
+# 家目录指向 StateDirectory=/var/lib/amdgpu-fan-ctl-bmc（由 systemd 建好并把属主
+# 改成这个账户）；sysusers 只写家目录字段、不建目录。用 --remote 经 SSH 读温度时，
+# known_hosts 和私钥就放在该目录的 .ssh/ 下；不用远端（rocm-smi 在本机跑）时不依赖家目录。
+u! amdgpu-fan-ctl-bmc - "amdgpu-fan-ctl-bmc service account" /var/lib/amdgpu-fan-ctl-bmc
