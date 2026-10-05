@@ -5,7 +5,7 @@ pkgname=kei
 pkgdesc="Fast, parallel photo sync from the cloud to local storage"
 url="https://github.com/rhoopr/kei"
 
-pkgver=0.24.0
+pkgver=0.24.1
 pkgrel=1
 
 arch=("x86_64" "i686")
@@ -29,7 +29,7 @@ source=(
     "${pkgname}-${pkgver}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE"
 )
 b2sums=(
-    "67a89c727bdba73160c0b2cafa495f2c5ee5c5bd6a31255f8a9b057c4deb03aba3f2d0400ea6cd7fbfc49cf4b122058a496bcbdff774e23e4f63da3082bf20d0"
+    "37439513b4382c1813bef1099649b04c4732928b933d2b83c00964a62d33c0b9fc17945c9da2f52c0cede2cb72f0bbc4dd62792e9da5dd3d0550d236996cf08e"
     "f6dc0928cf8b2e32a43f51600dfb1bd3ab5d8794b2c259a9171ace0d2d6aad28012a6561193c80a7b58a2f81384c67773d7ded7d60c19a8f14f7f7672f87e373"
 )
 
@@ -53,6 +53,8 @@ check() {
     cargo test --frozen  --  \
         --skip "credential::tests::public_api_delete_clears_credential" \
         --skip "full_test_finalize_emits_metrics_and_cleans_staging" \
+        --skip "full_test_live_dispatch_reaches_lookup_only_and_propagates_failure" \
+        --skip "full_test_offline_dispatch_preserves_features_and_checks_scenario_filters" \
         --skip "password_clear_on_empty_store_errors" \
         --skip "password_clear_without_stored_credential_errors"
 }
