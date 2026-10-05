@@ -2,7 +2,7 @@
 
 pkgname=stools-bin
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal, fast, Fuzzel-style application launcher with pinyin support"
 arch=('x86_64')
 url="https://github.com/cap153/stools"
@@ -34,7 +34,7 @@ source=(
 )
 
 # updpkgsums
-sha256sums=('0e73922064425a4faa8c387260456b2d56df9662df429d2b5fb58ad59b60bd15'
+sha256sums=('f3899059dfcada97eece223f17d7149528336f705a09ab7a45655912e0fe1b05'
             'c9ce99448e12a0efefde70a0d275e005362ec627d93242045d884b3f2cb492f5'
             '34eb566db977573133cc556dd6e6422dffdd11b7aed5035ec1184744b7837ae3'
             '26bc02acb6900eefb9bacdda0830b61b60f354c7b8e3b47a2f01a0c512eaeb39')
