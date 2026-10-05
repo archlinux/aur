@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=cronopete-bin
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="A graphical backup utility based on Apple Time Machine idea."
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('cronopete')
 depends=('dconf' 'gcc-libs' 'gtk3' 'hicolor-icon-theme' 'libayatana-appindicator' 'libgee' 'libnotify' 'rsync' 'udisks2')
 options=('!strip' '!debug')
 source=("cronopete-${pkgver}-1-x86_64.pkg.tar.zst::https://www.rastersoft.com/descargas/cronopete/cronopete-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('5ccfda23ccd48d909b813b04819ed4a40ebd4d8a458b20c770af371aa1bb09db')
+sha256sums=('87e1e0b0b550058f72cc2793bdaf12818f7cf20bbe69da07149a08a040c98e8c')
 
 latestver() {
   curl -fsSL "${url}" |
