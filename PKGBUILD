@@ -5,11 +5,11 @@
 
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.3.25.r2.g5affbc9.pandoc.3.11
+pkgver=0.3.25.r2.g5affbc9.pandoc.3.12
 _pandoc_type=stock
-_pandoc_ver=3.11
-_pandoc_lua_ver=0.5.4
-_pandoc_commit=b913622e1ff87c69ab8b1a606577122e220925cd
+_pandoc_ver=3.12
+_pandoc_lua_ver=0.5.4.1
+_pandoc_commit=381230ee36d8fa871c28f8982e22579f1a8f723b
 pkgrel=1
 pkgdesc='Pandoc filter for cross-references (static build)'
 arch=('i686' 'x86_64')
