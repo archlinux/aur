@@ -5,7 +5,7 @@ _name=${pkgname#python-}
 pkgdesc="Encode spatial data as topology in Python"
 url="https://mattijn.github.io/topojson/"
 
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 
 arch=("any")
@@ -37,7 +37,7 @@ source=(
     "python-topojson-flit-4.patch"
 )
 b2sums=(
-    "400cb72652ac3a4e2c167f53eed7f6701b64797192042867966348c029e9575c295bed284d1ba663a91746648736d4365140e14e510896805ed090bf26170f96"
+    "c1bee02e13d163a482df9f44c518f2eecec4c85046fd84c8d0727d6b1d04544fad83f343fec2219df3fa8a6b9eb0dc873caf0f7d1a47c0971e605b2b3aab102c"
     "b10395a1d9adfeb3011d728dcb0fd2b73efe56b060ae3eb0875a581adb078f4eedf3a65db438ab8fa95d9a80668d2c6be58f0327f694eaaf34689354d55f5ac6"
 )
 
