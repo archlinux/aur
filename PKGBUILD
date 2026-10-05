@@ -2,8 +2,8 @@
 
 pkgname=pixez-git
 _pkgname=pixez
-pkgver=0.9.109.r35.g126bd52
-pkgrel=2
+pkgver=0.9.109.r40.gb593440
+pkgrel=1
 pkgdesc="Pixiv third-party client written in Flutter"
 arch=('x86_64')
 url="https://github.com/Notsfsssf/pixez-flutter"
@@ -24,6 +24,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
+    find plugins -name ".fvmrc" -delete
     fvm install
     fvm flutter --disable-analytics
     fvm flutter --no-version-check pub get

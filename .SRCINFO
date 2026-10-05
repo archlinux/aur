@@ -1,7 +1,7 @@
 pkgbase = pixez-git
 	pkgdesc = Pixiv third-party client written in Flutter
-	pkgver = 0.9.109.r35.g126bd52
-	pkgrel = 2
+	pkgver = 0.9.109.r40.gb593440
+	pkgrel = 1
 	url = https://github.com/Notsfsssf/pixez-flutter
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -14,7 +14,7 @@ pkgbase = pixez-git
 	makedepends = patchelf
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	provides = pixez=0.9.109.r35.g126bd52
+	provides = pixez=0.9.109.r40.gb593440
 	conflicts = pixez
 	options = !lto
 	source = pixez::git+https://github.com/Notsfsssf/pixez-flutter.git#branch=master
