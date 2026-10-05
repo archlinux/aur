@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Photon Studio
+Comment=Offline image editor with Photoshop-equivalent capabilities and native PSD support
+Exec=photon-studio %U
+Icon=photon-studio
+Terminal=false
+Type=Application
+Categories=Graphics;2DGraphics;RasterGraphics;
+MimeType=application/x-photon;application/pdf;image/svg+xml;image/vnd.adobe.photoshop;image/x-photoshop;image/psd;image/x-psb;image/png;image/jpeg;image/tiff;image/gif;image/bmp;image/x-bmp;image/webp;image/avif;image/heic;image/heif;image/jxl;image/x-dcraw;image/x-adobe-dng;image/x-canon-cr2;image/x-canon-cr3;image/x-canon-crw;image/x-epson-erf;image/x-fuji-raf;image/x-hasselblad-3fr;image/x-hasselblad-fff;image/x-kodak-dcr;image/x-kodak-kdc;image/x-leaf-mos;image/x-mamiya-mef;image/x-minolta-mdc;image/x-minolta-mrw;image/x-nikon-nef;image/x-nikon-nrw;image/x-olympus-orf;image/x-panasonic-rw;image/x-panasonic-rw2;image/x-pentax-pef;image/x-phaseone-iiq;image/x-samsung-srw;image/x-sigma-x3f;image/x-sony-arw;image/x-sony-sr2;image/x-sony-srf;
+StartupNotify=true
+StartupWMClass=photon-studio
