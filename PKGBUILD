@@ -1,8 +1,8 @@
 # Maintainer: latte_macchiato <contact@lattemacchiato.dev>
 
 pkgname=late-sh-cli
-pkgver=0.48.5
-_tag=v0.48.5
+pkgver=0.48.6_cli
+_tag=v0.48.6-cli
 pkgrel=1
 pkgdesc='Companion CLI for late.sh terminal clubhouse'
 arch=('x86_64')
