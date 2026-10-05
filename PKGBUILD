@@ -33,7 +33,7 @@ optdepends=(
     'flameshot: Screenshot without/with Zalo window button'
     'gnome-screenshot: Screenshot without/with Zalo window button'
     'xfce4-screenshooter: Screenshot without/with Zalo window button'
-    'mate-screenshot: Screenshot without/with Zalo window button'
+    'mate-utils: Screenshot without/with Zalo window button'
     'scrot: Screenshot without/with Zalo window button'
     'wine: Voice/Video call engine support (or download portable wine in-app)'
     'v4l-utils: control camera formats (fix inverted/green camera)'
