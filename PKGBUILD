@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libpng
-pkgver=1.6.58
+pkgver=1.6.59
 _apngver=$pkgver
 pkgrel=1
 arch=('any')
@@ -10,7 +10,7 @@ license=('libpng-2.0')
 url="http://www.libpng.org/pub/png/libpng.html"
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://downloads.sourceforge.net/sourceforge/libpng/libpng-$pkgver.tar.xz")
-sha256sums=('28eb403f51f0f7405249132cecfe82ea5c0ef97f1b32c5a65828814ae0d34775')
+sha256sums=('d80dd2a38a37f803cb9b6ac7b14bd6e74ddc3b654780a8380bdf93523fdb4389')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
