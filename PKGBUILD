@@ -1,16 +1,16 @@
 # Maintainer: byteowlz <dev@byteowlz.com>
 pkgname=scrpr
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A fast CLI for extracting main content from websites"
 arch=('x86_64' 'aarch64')
 url="https://github.com/byteowlz/scrpr"
 license=('MIT')
 conflicts=('scrpr-bin')
-source_x86_64=("scrpr-1.2.0-x86_64.tar.gz::https://github.com/byteowlz/scrpr/releases/download/v1.2.0/scrpr-v1.2.0-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('e6478dd171805aed9c9f7a579afc0d98bd17e831b477de55adca86816058394e')
-source_aarch64=("scrpr-1.2.0-aarch64.tar.gz::https://github.com/byteowlz/scrpr/releases/download/v1.2.0/scrpr-v1.2.0-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_aarch64=('30df7bcaa1fe417302fd2dd71ccdf5ce60a367b87d1c33960b24f83927ab945a')
+source_x86_64=("scrpr-1.3.0-x86_64.tar.gz::https://github.com/byteowlz/scrpr/releases/download/v1.3.0/scrpr-v1.3.0-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('b2f5ea913a842c830bff5fa7bf2f805a4fae10060086f78db8412d8614118fc3')
+source_aarch64=("scrpr-1.3.0-aarch64.tar.gz::https://github.com/byteowlz/scrpr/releases/download/v1.3.0/scrpr-v1.3.0-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_aarch64=('3f6c46235738031a3c5a555fbace8ffe162b49c52962cdbd2a5afefdf19f21cd')
 
 package() {
     cd "$srcdir"
