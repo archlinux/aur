@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=kache
-pkgver=0.28.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Zero-copy, content-addressed build cache for Rust, C/C++ and more'
 url='https://kunobi.ninja/docs/kache'
@@ -11,10 +11,12 @@ depends=('libgcc')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kunobi-ninja/kache/archive/v$pkgver.tar.gz")
-sha256sums=('c295e6aed7f4f8b16b8c6b3b84a914b42c4f0a2af8dc18652da85ae97b84aac1')
-b2sums=('f3313f7139e08ccbf67897c67201d4f90da82d3d7f271ccbf547499e823672f059b8f4dc69841b4a0fbbf462abbbc25ea46f993e81aca27b68025e130fffa634')
+sha256sums=('15eb7fc402b7d83a9587f7f273008a621ad9d68b9663a27da50f921ad1e16de8')
+b2sums=('d30ff858d8adcb17d423c0b3aacdd9267cbafeb81871ecc4d4bc50694ea1a6375750acf69bba41533783cdcefe3ce3848e554695677486784cb0f8329fe53ffc')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
+# Upstream's release profile sets lto = "fat" (OOM-kills the build); `!lto` only covers C flags.
+export CARGO_PROFILE_RELEASE_LTO=thin
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -32,11 +34,6 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
 
-  # kache's own integration tests rebuild the `kache` binary internally
-  # (to exercise it as an rustc/cc wrapper) and spawn a short-lived local
-  # daemon over a Unix socket — no network access is needed, but the
-  # nested `cargo build` isn't run with --frozen, so force offline mode
-  # to make sure it only ever uses the registry cache from prepare().
   CARGO_TARGET_DIR=target CARGO_NET_OFFLINE=true \
     cargo test --release --frozen -p kache
 }
