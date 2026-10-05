@@ -1,6 +1,6 @@
 pkgbase = python-fastdownload
 	pkgdesc = Easily download, verify, and extract arcrhives. To be used with fast.ai
-	pkgver = 0.0.6
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/fastai/fastdownload
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-fastdownload
 	makedepends = python-setuptools
 	depends = python-fastcore
 	depends = python-fastprogress
-	source = fastdownload-0.0.6.tar.gz::https://github.com/fastai/fastdownload/archive/refs/tags/0.0.6.tar.gz
-	sha512sums = 62168f8c20eafc7aa94017a363b2dfb68062ec337b88eb3d601d50234074be1e1a3337354d52483fe801d173534f6139e4c97041f3cdd9eb79b9179ee91325a2
+	source = fastdownload-0.0.8.tar.gz::https://github.com/fastai/fastdownload/archive/refs/tags/0.0.8.tar.gz
+	sha512sums = 4d262ef4d7eb74142ad3d38fcc16030b0834d60309d988c0402580022a63dbe6a24b358911f3b811529329337aa775fa4ab8b3897a8b8bc436c5b9a94ca560cb
 
 pkgname = python-fastdownload

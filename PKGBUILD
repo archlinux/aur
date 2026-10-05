@@ -3,7 +3,7 @@
 
 pkgname=python-fastdownload
 _pkgname=fastdownload
-pkgver=0.0.6
+pkgver=0.0.8
 pkgrel=1
 pkgdesc='Easily download, verify, and extract arcrhives. To be used with fast.ai'
 arch=('any')
@@ -17,16 +17,16 @@ makedepends=(
   python-setuptools
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/fastai/fastdownload/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('62168f8c20eafc7aa94017a363b2dfb68062ec337b88eb3d601d50234074be1e1a3337354d52483fe801d173534f6139e4c97041f3cdd9eb79b9179ee91325a2')
+sha512sums=('4d262ef4d7eb74142ad3d38fcc16030b0834d60309d988c0402580022a63dbe6a24b358911f3b811529329337aa775fa4ab8b3897a8b8bc436c5b9a94ca560cb')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 # vim:set ts=2 sw=2 et:
