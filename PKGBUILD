@@ -1,7 +1,7 @@
 # Maintainer: Charles Pritchard <charlespritchard.work@gmail.com>
 pkgname=shiftpaper
 # pkgver and sha256sums are set by the release workflow on each tag.
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Parallax wallpaper daemon for Wayland with monocular depth estimation"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 optdepends=('onnxruntime-cuda: bake wallpapers on an NVIDIA GPU')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/CPritch/shiftpaper/archive/v$pkgver.tar.gz")
-sha256sums=('b39310a519c773936eade6f602dea74d389af056831e05ce49f1a10c8141bc60')
+sha256sums=('5edf2123fa6cbe0ebcd00f933774aefedd03afd4cc3077b1caf82d6732409bfc')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -46,4 +46,8 @@ package() {
 	install -Dm644 shiftpaperd.service "$pkgdir/usr/lib/systemd/user/shiftpaperd.service"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 assets/icon/hicolor/scalable/apps/shiftpaper.svg \
+		"$pkgdir/usr/share/icons/hicolor/scalable/apps/shiftpaper.svg"
+	install -Dm644 assets/icon/hicolor/symbolic/apps/shiftpaper-symbolic.svg \
+		"$pkgdir/usr/share/icons/hicolor/symbolic/apps/shiftpaper-symbolic.svg"
 }
