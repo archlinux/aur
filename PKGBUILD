@@ -9,13 +9,13 @@
 pkgbase=godot-double
 pkgname=(godot-double godot-double-mono)
 pkgver=4.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced cross-platform 2D and 3D game engine (double-precision build)'
 url='https://godotengine.org/'
 license=(MIT)
 arch=(x86_64)
 options=(!lto)
-makedepends=(alsa-lib dotnet-sdk git nuget pulse-native-provider scons setconf yasm)
+makedepends=(alsa-lib dotnet-sdk git pulse-native-provider scons setconf yasm)
 depends=(brotli ca-certificates embree freetype2 graphite libglvnd libspeechd libsquish libtheora libvorbis
          libwebp libwslay libxcursor libxi libxinerama libxrandr miniupnpc openxr pcre2)
 optdepends=('pipewire-alsa: for audio support'
@@ -67,8 +67,8 @@ build() {
 
   _args=(
     -j"${GDOPS_SCONS_JOBS:-$(nproc --all)}"
-    cflags="$CFLAGS -fPIC -Wl,-z,relro,-z,now -w"
-    cxxflags="$CXXFLAGS -fPIC -Wl,-z,relro,-z,now -w"
+    cflags="$CFLAGS -fPIC -Wl,-z,relro,-z,now -march=${_CARCH/_/-} -w"
+    cxxflags="$CXXFLAGS -fPIC -Wl,-z,relro,-z,now -march=${_CARCH/_/-} -w"
     linkflags="$LDFLAGS"
     arch=$_CARCH
     builtin_brotli=no
