@@ -1,0 +1,20 @@
+pkgbase = shot-hyprland
+	pkgdesc = Hyprland screenshot utility with a wlr-layer-shell capture bar
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/AuthenticSm1les/hyprshot
+	arch = x86_64
+	license = MIT
+	makedepends = pkgconf
+	depends = grim
+	depends = slurp
+	depends = wl-clipboard
+	depends = hyprland
+	depends = hyprtoolkit
+	depends = hyprutils
+	optdepends = libnotify: desktop notification when a screenshot is saved
+	optdepends = xdg-utils: open the saved screenshot from that notification
+	source = shot-hyprland-2.0.1.tar.gz::https://github.com/AuthenticSm1les/hyprshot/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = a1d292dbaeebc6115c8bad19cea295b1da7293b2c0673e7a0ee9c794855110f8
+
+pkgname = shot-hyprland
