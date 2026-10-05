@@ -1,7 +1,7 @@
 pkgbase = screenix-bin
 	pkgdesc = Professional screen recorder with smooth zoom effects
 	pkgver = 1.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mathisdev7/screenix
 	arch = x86_64
 	license = MIT
@@ -19,7 +19,10 @@ pkgbase = screenix-bin
 	depends = tesseract
 	depends = tesseract-data-eng
 	depends = xdotool
+	depends = grim
+	depends = gnome-screenshot
 	depends = pipewire
+	depends = vulkan-icd-loader
 	depends = wireplumber
 	depends = xdg-desktop-portal
 	optdepends = gst-plugins-bad: additional media codec support
@@ -34,6 +37,6 @@ pkgbase = screenix-bin
 	options = !strip
 	options = !debug
 	source = https://github.com/mathisdev7/screenix-releases/releases/download/v1.8.2/Screenix_1.8.2_amd64.deb
-	sha256sums = SKIP
+	sha256sums = b34ba2d62315f4697405fa0bbb505c20dcd03454586718d7f431f6292e2c5e96
 
 pkgname = screenix-bin

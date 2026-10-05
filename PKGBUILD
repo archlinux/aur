@@ -1,7 +1,7 @@
 # Maintainer: Mathis <999frostz@gmail.com>
 pkgname=screenix-bin
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Professional screen recorder with smooth zoom effects"
 arch=('x86_64')
 url="https://github.com/mathisdev7/screenix"
@@ -18,8 +18,13 @@ depends=(
   'gst-plugins-good'
   'gst-libav'
   'ffmpeg'
+  'tesseract'
+  'tesseract-data-eng'
   'xdotool'
+  'grim'
+  'gnome-screenshot'
   'pipewire'
+  'vulkan-icd-loader'
   'wireplumber'
   'xdg-desktop-portal'
 )
@@ -36,7 +41,7 @@ provides=('screenix')
 conflicts=('screenix')
 options=('!strip' '!debug')
 source=("https://github.com/mathisdev7/screenix-releases/releases/download/v${pkgver}/Screenix_${pkgver}_amd64.deb")
-sha256sums=('SKIP')
+sha256sums=('b34ba2d62315f4697405fa0bbb505c20dcd03454586718d7f431f6292e2c5e96')
 
 package() {
   bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}/"
