@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=spyder-ai-chat
 pkgname=python-${_base}
-pkgver=1.0.7
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="OpenAI-compatible AI chat pane + FIM completion for Spyder 6"
 url="https://sourceforge.net/projects/spyder-ai-chat-plugin"
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(spyder)
 makedepends=(python-build python-installer python-setuptools)
 source=(https://pypi.org/packages/source/${_base::1}/${_base//-/_}/${_base//-/_}-${pkgver}.tar.gz)
-sha512sums=('389abe16a1336df47a8640da8069e5faf39444d8edfcdbba43620b1b52885c4bf4748ddcb905b72ae7fe7676b2b528cf27250d4e07a89a01398c6ca6ba10d5c0')
+sha512sums=('99cd0bad4003cfb4e624f764b6ca79d4aaea4440e979a7e3be93137ae728edcd08eaa596cb841cfed026ec5b81a82bc6ad9ad5356e6a7abe572ad7a2d7db5c43')
 
 build() {
   cd ${_base//-/_}-${pkgver}
