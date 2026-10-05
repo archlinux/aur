@@ -1,7 +1,7 @@
 pkgbase = xdg-desktop-portal-gtk4-git
 	pkgdesc = GTK4 implementation of xdg-desktop-portal
 	pkgver = 1.5.1.r68.g8f88da6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JohnRTitor/xdg-desktop-portal-gtk4
 	arch = x86_64
 	license = LGPL-2.1-only

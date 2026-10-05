@@ -1,7 +1,7 @@
 # Maintainer: Supernovatux <thulashitharan.d at gmail dot com>
 pkgname=xdg-desktop-portal-gtk4-git
 pkgver=1.5.1.r68.g8f88da6
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK4 implementation of xdg-desktop-portal"
 arch=('x86_64')
 url="https://github.com/JohnRTitor/xdg-desktop-portal-gtk4"
@@ -39,5 +39,5 @@ check() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make install DESTDIR="$pkgdir" PREFIX=/usr
+	make install DESTDIR="$pkgdir" PREFIX=/usr LIBEXECDIR=/usr/lib
 }
