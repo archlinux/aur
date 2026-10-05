@@ -1,6 +1,6 @@
 # Maintainer: kvunoff <kvunoff@proton.me>
 pkgname=whoisthat
-pkgver=0.11.4
+pkgver=0.11.5
 pkgrel=1
 pkgdesc="Modern terminal-based VPN client with Xray-core backend"
 arch=('x86_64')
@@ -17,10 +17,6 @@ sha256sums=('SKIP')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    cd parser
-    cargo build --release
-    cd ..
-
     cd core/core
     go build -o whoisthat-core
     cd ../..
@@ -30,7 +26,6 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    install -Dm755 target/release/whoisthat              "${pkgdir}/usr/bin/whoisthat"
-    install -Dm755 core/core/whoisthat-core               "${pkgdir}/usr/bin/whoisthat-core"
-    install -Dm755 parser/target/release/whoisthat-parser "${pkgdir}/usr/bin/whoisthat-parser"
+    install -Dm755 target/release/whoisthat "${pkgdir}/usr/bin/whoisthat"
+    install -Dm755 core/core/whoisthat-core  "${pkgdir}/usr/bin/whoisthat-core"
 }
