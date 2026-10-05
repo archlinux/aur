@@ -1,0 +1,16 @@
+pkgbase = qbx-lua-git
+	pkgdesc = Lua linter, formatter, and language server for FiveM (git version)
+	pkgver = 1.0.6.r63.gc33a513
+	pkgrel = 1
+	url = https://github.com/Qbox-project/qbx-lua
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = qbx-lua
+	conflicts = qbx-lua
+	source = qbx-lua::git+https://github.com/Qbox-project/qbx-lua.git
+	sha256sums = SKIP
+
+pkgname = qbx-lua-git
