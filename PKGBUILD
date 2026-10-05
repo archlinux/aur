@@ -1,24 +1,24 @@
-# Maintainer: Christopher Sieh (stelzo) <stelzo@steado.de>
+# Maintainer: stelzo <stelzo@steado.de>
 pkgname=pelorus-bin
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
-pkgdesc="Highly efficient Lidar Inertial Odometry."
+pkgdesc="Resource-aware Lidar-Inertial Odometry"
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/stelzo/pelorus"
 license=('MIT' 'Apache-2.0')
-depends=('libgcc' 'glibc' 'minot>=0.10.0' 'minot<0.11.0')
+depends=('libgcc' 'glibc' 'minot>=0.13.0' 'minot<0.14.0' 'dedrunk' 'marina')
 makedepends=()
 options=('!lto' '!strip' '!debug')
 source_x86_64=(
-  "$pkgname-$pkgver-bin.deb::https://uos-robotics.codeberg.page/ppa/ubuntu/pool/main/noble/pelorus_$pkgver-1_amd64.deb"
-  "$pkgname-$pkgver-bin-lib.deb::https://uos-robotics.codeberg.page/ppa/ubuntu/pool/main/noble/libpelorus_$pkgver-1_amd64.deb"
-  "$pkgname-$pkgver-bin-dev.deb::https://uos-robotics.codeberg.page/ppa/ubuntu/pool/main/noble/libpelorus-dev_$pkgver-1_amd64.deb"
+  "$pkgname-$pkgver-bin.deb::https://ppa.steado.tech/ubuntu/pool/main/noble/pelorus_$pkgver-1_amd64.deb"
+  "$pkgname-$pkgver-bin-lib.deb::https://ppa.steado.tech/ubuntu/pool/main/noble/libpelorus_$pkgver-1_amd64.deb"
+  "$pkgname-$pkgver-bin-dev.deb::https://ppa.steado.tech/ubuntu/pool/main/noble/libpelorus-dev_$pkgver-1_amd64.deb"
 )
 sha256sums_x86_64=('SKIP' 'SKIP' 'SKIP')
 source_aarch64=(
-  "$pkgname-$pkgver-bin.deb::https://uos-robotics.codeberg.page/ppa/ubuntu/pool/main/noble/pelorus_$pkgver-1_arm64.deb"
-  "$pkgname-$pkgver-bin-lib.deb::https://uos-robotics.codeberg.page/ppa/ubuntu/pool/main/noble/libpelorus_$pkgver-1_arm64.deb"
-  "$pkgname-$pkgver-bin-dev.deb::https://uos-robotics.codeberg.page/ppa/ubuntu/pool/main/noble/libpelorus-dev_$pkgver-1_arm64.deb"
+  "$pkgname-$pkgver-bin.deb::https://ppa.steado.tech/ubuntu/pool/main/noble/pelorus_$pkgver-1_arm64.deb"
+  "$pkgname-$pkgver-bin-lib.deb::https://ppa.steado.tech/ubuntu/pool/main/noble/libpelorus_$pkgver-1_arm64.deb"
+  "$pkgname-$pkgver-bin-dev.deb::https://ppa.steado.tech/ubuntu/pool/main/noble/libpelorus-dev_$pkgver-1_arm64.deb"
 )
 sha256sums_aarch64=('SKIP' 'SKIP' 'SKIP')
 noextract=("$pkgname-$pkgver-bin.deb" "$pkgname-$pkgver-bin-lib.deb" "$pkgname-$pkgver-bin-dev.deb")
