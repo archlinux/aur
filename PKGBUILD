@@ -1,7 +1,7 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=zux
-pkgver=1.20.2
+pkgver=1.20.3
 pkgrel=1
 pkgdesc="mDNS-SD Visualizer - A cross platform mDNS browsing visualizer written in Rust using tauri and svelte"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('zux-bin')
 makedepends=('cargo' 'git' 'file' 'nodejs' 'pnpm' 'base-devel' 'rust' 'librsvg' 'patchelf')
 options=('!strip' '!emptydirs')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2873ab0148b6c0d58106f7dbdef003b48d95d0c60bb95d9c22f8368cb26296e6')
+sha256sums=('798f5e889943838dcad0efe99838c7ffefe817b6292b873d92b264e339e41303')
 _builddir="$pkgname-$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
