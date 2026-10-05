@@ -2,7 +2,7 @@
 # Maintainer: combor <163394+combor@users.noreply.github.com>
 
 pkgname='telesfor-bin'
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='Live TV from streaming services in Plex, as a virtual HDHomeRun tuner.'
 url='https://github.com/combor/telesfor'
@@ -15,10 +15,10 @@ backup=('etc/telesfor/telesfor.env')
 install=telesfor.install
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/combor/telesfor/releases/download/v${pkgver}/telesfor_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('fccbaecf4056da490f34e4e346d7d7cc21d99c74589965a67dc30814bf7e71aa')
+sha256sums_aarch64=('c1fce79c4b20976460afc8b8953dd507229759df0ea959c4bc9988f5d1415f4b')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/combor/telesfor/releases/download/v${pkgver}/telesfor_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('c9068ddf9eb8111351ff2b3463885b3afc82a9ac16da0c75dd5b0aba3dca3faa')
+sha256sums_x86_64=('f556ab0bc7853423d878a843b6d6b19367fbd38b55bcf2479ed4e61b1604ce6e')
 
 package() {
   install -Dm755 "./telesfor" "${pkgdir}/usr/bin/telesfor"
