@@ -1,21 +1,21 @@
 pkgbase = rocksdb-tools
 	pkgdesc = Core tools from the RocksDB storage
-	pkgver = 10.7.5
+	pkgver = 11.8.1
 	pkgrel = 1
 	url = http://rocksdb.org
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = gcc
+	makedepends = clang
 	makedepends = make
 	depends = bzip2
-	depends = gcc-libs
 	depends = lz4
 	depends = snappy
 	depends = zlib
 	depends = gflags
+	depends = zstd
 	provides = rocksdb-tools
-	source = https://github.com/facebook/rocksdb/archive/v10.7.5.tar.gz
-	sha256sums = a9948bf5f00dd1e656fc40c4b0bf39001c3773ad22c56959bdb1c940d10e3d8d
+	source = https://github.com/facebook/rocksdb/archive/v11.8.1.tar.gz
+	sha256sums = 618d9726a7cb1cf4ce034f4cdca49de98aa64867dda06b91371a791ae8921aff
 
 pkgname = rocksdb-tools
