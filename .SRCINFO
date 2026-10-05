@@ -1,6 +1,6 @@
 pkgbase = openspace-git
 	pkgdesc = OpenSpace is an open source, non-commercial, and freely available interactive data visualization software designed to visualize the entire known universe and portray our ongoing efforts to investigate the cosmos
-	pkgver = v0.20.0.1076.g7494b2659a
+	pkgver = v0.20.0.1089.g924e0fb1f6
 	pkgrel = 1
 	url = https://github.com/OpenSpace/OpenSpace
 	arch = x86_64
@@ -26,17 +26,21 @@ pkgbase = openspace-git
 	depends = libxcomposite
 	depends = libxdamage
 	depends = python-pandas
+	depends = alsa-lib
 	conflicts = openspace
 	options = !debug
+	options = !lto
 	source = git+https://github.com/OpenSpace/OpenSpace.git#branch=master
 	source = vcpkg-04a9d8e5212d01ee1dd9478eadd9caade4f8b0d4.tar.gz::https://github.com/microsoft/vcpkg/archive/04a9d8e5212d01ee1dd9478eadd9caade4f8b0d4.tar.gz
 	source = open-space
 	source = update-cfg.patch
 	source = globebrowsingmodule.patch
+	source = fix-soloud-system-alsa.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 48f9ad3ab1ffc9ef6172cdba1b7bf1d0c36127723d3e73bb7beb273f1d0a54af
 	sha256sums = 776d986d6592fbedddaaa79385d3e42b39e1bd1ae9480404559410bcc930c963
 	sha256sums = 608d02fe1828d5bdc9f5cf20b02d1294b216212ccf0402b4922eacdade1e1088
+	sha256sums = 81a96d64d2ba2eb5f50d184af23d64ac389418912320265e6f3f593625c5ca6e
 
 pkgname = openspace-git
