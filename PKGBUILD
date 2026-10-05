@@ -2,7 +2,7 @@
 
 pkgname=bionic_translation-git
 _pkgname="${pkgname%-git}"
-pkgver=r121.ee37eb2
+pkgver=r130.6253dec
 pkgrel=1
 pkgdesc='A set of libraries for loading bionic-linked .so files on musl/glibc'
 url='https://gitlab.com/android_translation_layer/bionic_translation'
