@@ -1,38 +1,66 @@
 post_install() {
-    echo "==> Setting up quickshell-greetd..."
-    
-    # Create greeter user if not exists
-    if ! id greeter &>/dev/null; then
-        useradd -r -s /bin/false greeter
-        usermod -a -G seat greeter
-        echo "==> Created greeter user and added to seat group"
-    fi
-    
-    # Enable seatd
-    systemctl enable seatd
-    systemctl start seatd
-    
-    # Setup greetd config if not exists
-    if [ ! -f /etc/greetd/config.toml ]; then
-        cp /etc/greetd/config.toml.example /etc/greetd/config.toml
-        echo "==> Created /etc/greetd/config.toml"
-    fi
-    
-    # Create default greeter config
-    mkdir -p /home/greeter/.config/quickshell/greeter
-    cp /usr/share/quickshell-greetd/greeter.qml /home/greeter/.config/quickshell/greeter/shell.qml
-    chown -R greeter:greeter /home/greeter/.config 2>/dev/null || true
-    
-    echo "==> Setup complete!"
-    echo "==> Enable greetd: sudo systemctl enable greetd"
-    echo "==> Start greetd: sudo systemctl start greetd"
+    cat <<'EOF'
+
+quickshell-greetd installed.
+
+The package does not create users, enable services or overwrite
+/etc/greetd/config.toml. Do it deliberately:
+
+  1. greetd ships the `greeter` user; confirm it can access seats:
+       usermod -aG video,input,seat greeter
+
+  2. Point greetd at the launcher (an example is installed next to it):
+       cp /etc/greetd/config.toml.example /etc/greetd/config.toml
+
+  3. Optional - turn an existing Quickshell shell into the login theme.
+     The tree is copied, never modified. Add --appearance to also export the
+     palette and wallpaper (credential-shaped config fields are redacted,
+     because the theme directory is world-readable):
+       qsgreet-theme-prepare ~/.config/quickshell/<shell> \
+           --surface modules/iris/lock/IrisLockSurface.qml \
+           --appearance \
+           /usr/share/quickshell-greetd/themes/<name>
+     then set QSGREET_THEME=<name> in /etc/quickshell-greetd/config.env.
+
+     A prepared theme must be readable by the greeter user:
+       chmod -R a+rX /usr/share/quickshell-greetd/themes/<name>
+
+  4. Optional - set an avatar. ~/.face is invisible to the greeter because
+     a home directory is mode 700, so it goes in a shared store:
+       sudo qsgreet-set-avatar ~/Pictures/me.png
+
+  5. Optional - fingerprint and keyring unlock. Both belong in greetd's PAM
+     stack, where it already runs as root for the target user; the greeter
+     gains no privilege. See:
+       /usr/share/doc/quickshell-greetd/pam.d-greetd.example
+     Keep a root TTY open while editing /etc/pam.d/greetd.
+
+  6. Test before enabling, from a TTY:
+       GREETD_SOCK= quickshell-greetd-launcher
+
+With no theme configured the greeter shows its built-in login, and it falls
+back to that login whenever a theme fails to load or fails to draw.
+
+EOF
 }
 
 post_upgrade() {
-    post_install
+    cat <<'EOF'
+
+quickshell-greetd upgraded. Themes prepared by an older version must be
+regenerated, because the injected entry and adapter files are versioned
+alongside the core:
+
+  qsgreet-theme-prepare <shell tree> --force /usr/share/quickshell-greetd/themes/<name>
+
+EOF
 }
 
 pre_remove() {
-    systemctl stop greetd 2>/dev/null || true
-    systemctl disable greetd 2>/dev/null || true
+    cat <<'EOF'
+
+Remember to point /etc/greetd/config.toml at another greeter before
+rebooting, otherwise greetd will have nothing to launch.
+
+EOF
 }
