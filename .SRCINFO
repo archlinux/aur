@@ -1,0 +1,30 @@
+pkgbase = python-protobuf-py
+	pkgdesc = Idiomatic Protocol Buffers for Python.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/bufbuild/protobuf-py
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	checkdepends = python-hypothesis
+	checkdepends = python-pytest
+	checkdepends = python-pydantic
+	makedepends = python-uv-build
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-typing_extensions
+	optdepends = python-pydantic
+	noextract = protoc_runner-36.1-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.musllinux_1_1_x86_64.whl
+	source = protobuf-py::git+https://github.com/bufbuild/protobuf-py.git#tag=v0.6.0
+	source = https://github.com/googleapis/googleapis/raw/refs/heads/master/google/rpc/status.proto
+	sha256sums = 024e0c9784c5c697e88d244a1de4a92abe77d54673d75efc7c91f0f5d7ecdf9b
+	sha256sums = SKIP
+	source_x86_64 = https://files.pythonhosted.org/packages/py3/p/protoc-runner/protoc_runner-36.1-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.musllinux_1_1_x86_64.whl
+	sha256sums_x86_64 = 7dc4894afdc87f213fcc51a974520ac68d6641406811d671ef23caa2ecd88220
+	source_aarch64 = https://files.pythonhosted.org/packages/py3/p/protoc-runner/protoc_runner-36.1-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.musllinux_1_1_x86_64.whl
+	sha256sums_aarch64 = 03b0f9bee44c5ce2ac601a88c8b35ea5b25e30d585ce95e67b32d35f14015edf
+
+pkgname = python-protobuf-py
