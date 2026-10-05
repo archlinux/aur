@@ -1,24 +1,41 @@
 pkgbase = python-surya-ocr
-	pkgdesc = OCR, layout analysis, reading order, table recognition in 90+ languages
-	pkgver = 0.17.0
+	pkgdesc = OCR, layout, reading order, and table recognition in 90+ languages
+	pkgver = 0.22.1
 	pkgrel = 1
-	url = https://pypi.org/project/surya-ocr/
+	url = https://github.com/datalab-to/surya
 	arch = any
-	license = GPL3
+	license = Apache-2.0
+	checkdepends = python-pytest
 	makedepends = python-build
+	makedepends = python-hatchling
 	makedepends = python-installer
-	makedepends = python-wheel
-	depends = python-pytorch
+	depends = python>=3.10
+	depends = python-beautifulsoup4>=4.12.0
+	depends = python-click>=8.1.8
+	depends = python-dotenv>=1.0.0
+	depends = python-filelock>=3.16.0
+	depends = python-filetype>=1.2.0
+	depends = python-httpx>=0.27.0
+	depends = python-huggingface-hub>=1.5.0
+	depends = python-numpy
+	depends = python-openai>=1.55.0
 	depends = python-opencv
-	depends = python-chex
-	depends = python-optax
-	depends = python-flax
-	depends = python-safetensors
-	depends = python-transformers
-	optdepends = python-pytorch-cuda
-	optdepends = python-pytorch-rocm
-	provides = python-surya
-	source = surya_ocr-0.17.0.tar.gz::https://files.pythonhosted.org/packages/source/s/surya_ocr/surya_ocr-0.17.0.tar.gz
-	sha256sums = 3110ec9a2be0d4296968ced02ee4d33941f34c145a2d6ac508f75122014ed170
+	depends = python-pillow>=10.2.0
+	depends = python-platformdirs>=4.3.6
+	depends = python-pydantic>=2.5.3
+	depends = python-pydantic-settings>=2.1.0
+	depends = python-pypdfium2>=5.10.1
+	depends = python-pytorch>=2.7.0
+	depends = python-requests>=2.28.0
+	depends = python-torchvision>=0.20.0
+	depends = python-tqdm
+	depends = python-transformers>=5.12.1
+	optdepends = docker: for the NVIDIA/vLLM inference backend
+	optdepends = llama-cpp: for the local llama-server inference backend
+	optdepends = python-flask: for the surya_screenshot web application
+	optdepends = python-pdftext: for bad-PDF-text detection in surya_gui
+	optdepends = python-streamlit: for the surya_gui Streamlit application
+	source = surya-ocr-0.22.1.tar.gz::https://files.pythonhosted.org/packages/source/s/surya_ocr/surya_ocr-0.22.1.tar.gz
+	sha256sums = 792fc63d18cf648ed3608a3d0e3ed06ae627a31b08a8501d601bda4763ba6f9c
 
 pkgname = python-surya-ocr
