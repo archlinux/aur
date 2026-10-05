@@ -1,6 +1,6 @@
 # Maintainer: Harsh Sharma <harsh@codelif.in>
 pkgname=whatevr
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Native WhatsApp client for Linux (whatevrd daemon + whattui terminal frontend)"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ provides=('whatevrd' 'whattui')
 conflicts=('whatevr-git' 'whatevr-bin')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('7c1efa17725b85ad1b61912b31c400927916a009f58db5d948f6eecf77a5b75d')
+sha256sums=('474c68807e30ea4fc72d832e13357124a69ac13d31f19cbccc075f9dfee737df')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -25,4 +25,9 @@ package() {
 	just install /usr "$pkgdir"
 	install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" \
 		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	local completions="$pkgdir/usr/share"
+	install -d "$completions/bash-completion/completions" "$completions/zsh/site-functions" "$completions/fish/vendor_completions.d"
+	"$pkgdir/usr/bin/whatevrd" completion bash >"$completions/bash-completion/completions/whatevrd"
+	"$pkgdir/usr/bin/whatevrd" completion zsh >"$completions/zsh/site-functions/_whatevrd"
+	"$pkgdir/usr/bin/whatevrd" completion fish >"$completions/fish/vendor_completions.d/whatevrd.fish"
 }
