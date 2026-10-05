@@ -1,0 +1,21 @@
+pkgbase = gfake-git
+	pkgdesc = GUI to rewrite git commit author and committer dates
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/5unekku/gfake
+	arch = any
+	license = BSD-3-Clause
+	makedepends = cargo
+	depends = git
+	depends = fontconfig
+	depends = libxkbcommon
+	optdepends = vulkan-icd-loader: GPU rendering via Vulkan
+	optdepends = libglvnd: GPU rendering via OpenGL
+	optdepends = wayland: Wayland session support
+	optdepends = libx11: X11 session support
+	provides = gfake
+	conflicts = gfake
+	source = git+https://gitlab.com/5unekku/gfake.git
+	sha256sums = SKIP
+
+pkgname = gfake-git
