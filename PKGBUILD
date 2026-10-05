@@ -2,7 +2,7 @@
 _pkgname=trilinos
 pkgname="${_pkgname}16"
 pkgver=16.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Algorithms and solutions of large-scale, complex multi-physics engineering and scientific problems - 16.X branch"
 arch=('x86_64')
 url="https://github.com/trilinos/Trilinos"
@@ -33,10 +33,12 @@ source=(
 	"${_pkgname}::git+${url}#tag=trilinos-release-${pkgver//./-}"
     "0001-epextra-openmp-linkage-workaround.patch"
     "0002-fix-kokkos-cmake-use-install_includedir.patch"
+    "0003-fix-superludist.patch"
 )
 b2sums=('6983395fcedffd6de4896512333c3f383aed2781b7db4ef6906bbffcad524bc2130c7e5837a026f6d3b6b1cbf55ade0e6dc13024513648d8f57c3ceffcbeef3d'
         '76bcd57791866166387af5bd4b2984b9344c766f0a838fd5d0f32ae7670d181a17470efc429aef774b7e6feca68d1d407211bfdee885eaf8536f751b304c76d2'
-        '3a11a4ebaf068da3f84e43ec475c7befd6fe3dfcc8b4705c9414218673055f8d2f856eff9e113a8759ffa18c22468e30e86be9b0391a4b546ed1a6e2f746df47')
+        '3a11a4ebaf068da3f84e43ec475c7befd6fe3dfcc8b4705c9414218673055f8d2f856eff9e113a8759ffa18c22468e30e86be9b0391a4b546ed1a6e2f746df47'
+        'ef2b115c0c729015ec3c3777a2b25ae06e8de0fefee1e2d3135835e7c61c7609135db1cbeb680d691289a172b592ceb2ee3d4930f682f3b1570c81687beb471f')
 
 prepare() {
 	cd "${_pkgname}"
@@ -48,6 +50,9 @@ prepare() {
 	# Kokkos uses a fixed path of /usr/include
 	# however we want it to respect CMAKE_INSTALL_INCLUDEDIR
 	patch -Np1 < ../0002-fix-kokkos-cmake-use-install_includedir.patch
+
+	# Call signature changed for dSolveInit and zSolveInit in superlu_dist 9.3.0
+	patch -Np1 < ../0003-fix-superludist.patch
 }
 
 build() {

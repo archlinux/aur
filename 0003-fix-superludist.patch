@@ -1,0 +1,43 @@
+diff --git a/packages/amesos2/src/Amesos2_Superludist_FunctionMap.hpp b/packages/amesos2/src/Amesos2_Superludist_FunctionMap.hpp
+index 92dc738599f..0a5410a5095 100644
+--- a/packages/amesos2/src/Amesos2_Superludist_FunctionMap.hpp
++++ b/packages/amesos2/src/Amesos2_Superludist_FunctionMap.hpp
+@@ -444,9 +444,10 @@ namespace Amesos2 {
+     static void SolveInit(SLUD::amesos2_superlu_dist_options_t* options, SLUD::SuperMatrix* A, 
+ 			  SLUD::int_t* perm_r, SLUD::int_t* perm_c, SLUD::int_t nrhs, 
+ 			  type_map::LUstruct_t* lu, SLUD::gridinfo_t* grid, 
+-			  type_map::SOLVEstruct_t* solve_struct)
++			  type_map::SOLVEstruct_t* solve_struct,
++			  type_map::ScalePermstruct_t* scale_perm)
+     {
+-      SLUD::D::dSolveInit(options, A, perm_r, perm_c, nrhs, lu, grid, solve_struct);
++      SLUD::D::dSolveInit(options, A, perm_r, perm_c, nrhs, A->ncol, lu, grid, solve_struct, scale_perm);
+     }
+ 
+     static void LUstructInit(SLUD::int_t m, SLUD::int_t n,
+@@ -714,9 +715,10 @@ namespace Amesos2 {
+     static void SolveInit(SLUD::amesos2_superlu_dist_options_t* options, SLUD::SuperMatrix* A,
+ 			  SLUD::int_t* perm_r, SLUD::int_t* perm_c, SLUD::int_t nrhs,
+ 			  type_map::LUstruct_t* lu, SLUD::gridinfo_t* grid, 
+-			  type_map::SOLVEstruct_t* solve_struct)
++			  type_map::SOLVEstruct_t* solve_struct,
++			  type_map::ScalePermstruct_t* scale_perm)
+     {
+-      SLUD::Z::zSolveInit(options, A, perm_r, perm_c, nrhs, lu, grid, solve_struct);
++      SLUD::Z::zSolveInit(options, A, perm_r, perm_c, nrhs, A->ncol, lu, grid, solve_struct, scale_perm);
+     }
+ 
+     static void LUstructInit(SLUD::int_t m, SLUD::int_t n, type_map::LUstruct_t* lu)
+diff --git a/packages/amesos2/src/Amesos2_Superludist_def.hpp b/packages/amesos2/src/Amesos2_Superludist_def.hpp
+index 571bfb9f7f8..3bc8a0f14b8 100644
+--- a/packages/amesos2/src/Amesos2_Superludist_def.hpp
++++ b/packages/amesos2/src/Amesos2_Superludist_def.hpp
+@@ -676,7 +676,7 @@ namespace Amesos2 {
+         }
+         function_map::SolveInit(&(data_.options), &(data_.A), data_.perm_r.getRawPtr(),
+                                 data_.perm_c.getRawPtr(), as<SLUD::int_t>(nrhs), &(data_.lu),
+-                                &(data_.grid), &(data_.solve_struct));
++                                &(data_.grid), &(data_.solve_struct), &(data_.scale_perm));
+         // Flag that we can reuse this solve_struct unless another
+         // symbolicFactorization is called between here and the next
+         // solve.
