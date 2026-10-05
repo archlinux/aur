@@ -1,12 +1,12 @@
 pkgbase = redress
 	pkgdesc = A tool for analyzing stripped Go binaries
-	pkgver = 1.2.77
+	pkgver = 1.2.91
 	pkgrel = 1
 	url = https://github.com/goretk/redress
 	arch = any
 	license = AGPL-3.0-or-later
 	makedepends = go
-	source = redress-1.2.77.tar.gz::https://github.com/goretk/redress/archive/v1.2.77.tar.gz
-	sha256sums = 1d251518d49345693127ae97f7eb9eae202bfdb2cf467584ed2513c39b805237
+	source = redress-1.2.91.tar.gz::https://github.com/goretk/redress/archive/v1.2.91.tar.gz
+	sha256sums = 1fdf67f6c8a001a22d879ff04f8ee24e59b59c65cbacc9c5e16d992264b3e53e
 
 pkgname = redress
