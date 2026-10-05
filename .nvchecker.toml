@@ -1,0 +1,4 @@
+[oleafly]
+source = "git"
+git = "https://github.com/Oleafly/Oleafly.git"
+prefix = "v"
