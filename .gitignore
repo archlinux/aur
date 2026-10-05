@@ -30,3 +30,7 @@
 /ase-ecs/
 /ase-platform/
 /entt/
+# spdlog fehlte hier, obwohl es im selben Zug in source=() kam wie entt: gemessen 2026-10-05
+# war /spdlog/ der einzige ungetrackte Eintrag im Repo. Eine Liste, die aus einer Quellenzeile
+# abgeleitet wird, muss mit ihr zusammen wachsen.
+/spdlog/
