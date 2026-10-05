@@ -1,0 +1,30 @@
+pkgbase = spo-cli
+	pkgdesc = a spotify tui app, less is more
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = https://github.com/woquchonglang/spo-cli
+	arch = x86_64
+	license = GPL-2.1
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = clang
+	makedepends = mold
+	makedepends = sdbus-cpp
+	makedepends = python
+	makedepends = pkgconf
+	makedepends = openssl
+	makedepends = alsa-lib
+	makedepends = fftw
+	makedepends = boost
+	makedepends = liburing
+	makedepends = ccache
+	depends = glibc
+	provides = spo-cli
+	conflicts = spo-cli-bin
+	options = !debug
+	options = !strip
+	source = spo-cli-0.6.6::git+https://github.com/woquchonglang/spo-cli.git#tag=v0.6.6
+	sha256sums = 8b158629606d8dd33d5b40b6d6e331d018aac02c511fdde69313822dfbf7d05a
+
+pkgname = spo-cli
