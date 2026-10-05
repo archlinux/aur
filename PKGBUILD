@@ -22,7 +22,7 @@ source=('https://github.com/hajisensai/Fushi/archive/refs/tags/v2.7.0-beta.14929
 sha256sums=('741acd68c4462891d17ff59fba415f5f4b32efdf760b87139319d0999ab997e9'
             'e1ec95e6c550458a34de93580cb85dac24da0e9bedb9bb42811f050ac5a0c7d5'
             '8334fd0a75f8cfdfff0873b3c9ae9f0d19acfffdf59c07d4cb4d95b1e3ed2391'
-            '12157c9050b3d984803b59e2d4e1b344af4be4218b36a8c168b862d802ca1556'
+            'e610eb1629f86bb8812402681bd68503ca038423a684cb5fb037b4914450d83e'
             'c96cbc90cca94c8e7d661003e65b9206ae6f060a29f409e509f1f5b6393dc3ec')
 
 prepare() {
@@ -47,6 +47,8 @@ package() {
   local dest="${pkgdir}/usr/lib/fushi"
   install -dm755 "${dest}"
   cp -a "${bundle}/." "${dest}/"
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -s /usr/lib/fushi/fushi "${pkgdir}/usr/bin/fushi"
   # Linux has no version pipeline: overwrite the pubspec-derived version.json
   # so PackageInfo (and thus the in-app updater) reports the beta release.
   printf '{"app_name":"fushi","version":"2.7.0-beta.14929","build_number":"14929","package_name":"fushi"}' > "${dest}/data/flutter_assets/version.json"
