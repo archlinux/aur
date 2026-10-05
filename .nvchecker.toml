@@ -1,6 +1,5 @@
 [marktext]
-source = "github"
-github = "marktext/marktext"
+source = "git"
+git = "https://github.com/marktext/marktext.git"
 prefix = "v"
-include_regex = 'v\d+\.\d+\.\d+'
-use_max_tag = true
+exclude_regex = ".*(beta|rc).*"

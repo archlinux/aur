@@ -1,79 +1,51 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Gabriel Saillard (GitSquared) <gabriel@saillard.dev>
 # Contributor: David Birks <david@tellus.space>
 # Contributor: Simon Doppler (dopsi) <dop.simon@gmail.com>
 # Contributor: dpeukert
 
 pkgname=marktext
-pkgver=0.17.1
-pkgrel=4
-pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability'
-arch=(x86_64)
-url=https://www.marktext.cc
-_url="https://github.com/$pkgname/$pkgname"
-license=(MIT)
-_electron=electron15
-depends=("$_electron"
-         libxkbfile
-         libsecret
-         openssl
-         ripgrep)
-makedepends=(jq
-             git
-             nodejs-lts-hydrogen
-             npm
-             node-gyp
-             moreutils
-             yarn
-             yq)
-_archive="$pkgname-$pkgver"
-source=("$_url/archive/v$pkgver/$_archive.tar.gz"
-        "$pkgname.sh"
-        "$pkgname-arg-handling.patch")
-sha256sums=('d94433ee167cd2fcddd5ccbffd3e17f2933f7dee1e2346f3a6aaa2e8d9052581'
-            '8f37f164a642a536b75f54b49e7c7a7c1e4d355a91dd8ece4cab6a95b42d369e'
-            'c754a1cad52d10a38eeddb9293ce0a4540296c6adbb47eb5311eaaeded150a01')
+pkgver=0.20.0
+pkgrel=1
+pkgdesc="A simple and elegant open-source markdown editor that focused on speed and usability"
+arch=('x86_64')
+url="https://marktext.me/"
+license=('MIT')
+_electron=electron42
+depends=('bash' "$_electron" 'glib2' 'glibc' 'libgcc' 'libsecret' 'libstdc++' 'libx11' 'libxkbfile')
+makedepends=('pnpm')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/marktext/marktext/archive/v${pkgver}.tar.gz"
+        "${pkgname}-arg-handling.patch"
+        "${pkgname}.sh")
+sha256sums=('9a052868129560e46de583c37f793d250241fab05c120ea0b84e6b195a4d5400'
+            '3f7b433eb1e2e9c70bcd9b4c02bb6d92d77f39e5c0790677f43ae9615091e53d'
+            '0f1ce8eb888caada8e7774cbc89d81f2b62eb143fe3d185d009d42584cbe501b')
 
 prepare() {
-	local _electronDist=$(dirname $(realpath $(which $_electron)))
-	local _electronVersion=$($_electron --version | sed -e 's/^v//')
-	cd "$_archive"
-	jq 'del(.devDependencies["electron"], .scripts["preinstall", "postinstall"])' \
-		package.json | sponge package.json
-	yq -y ". + {\"electronDist\": \"$_electronDist\", \"electronVersion\": \"$_electronVersion\"}" \
-		electron-builder.yml | sponge electron-builder.yml
-	mkdir -p "$srcdir/node_modules"
-	yarn --cache-folder "$srcdir/node_modules" install --frozen-lockfile
-	yarn --cache-folder "$srcdir/node_modules" add -D --no-lockfile --ignore-scripts electron@$_electronVersion
-	patch -p1 < "$srcdir/$pkgname-arg-handling.patch"
+    cd "${pkgname}-${pkgver}"
+    patch -Np1 -i "${srcdir}/${pkgname}-arg-handling.patch"
+    sed -i "s/process.resourcesPath/path.dirname(app.getAppPath())/g" \
+        packages/desktop/src/main/globalSetting.ts \
+        packages/desktop/src/main/ipc/bootInfo.ts
+    sed -i "s/@ELECTRON@/${_electron}/" "${srcdir}/${pkgname}.sh"
 }
 
 build() {
-	cd "$_archive"
-	yarn --cache-folder "$srcdir/node_modules" run \
-		electron-rebuild
-	node .electron-vue/build.js
-	yarn --cache-folder "$srcdir/node_modules" run \
-		electron-builder --linux --x64 --dir
-	sed -e "s/@ELECTRON@/$_electron/" "../$pkgname.sh" > "$pkgname"
+    cd "${pkgname}-${pkgver}"
+    pnpm install --frozen-lockfile --ignore-scripts
+    pnpm run build:linux --dir \
+        --config.electronDist="/usr/lib/${_electron}" \
+        --config.electronVersion="$(cat /usr/lib/${_electron}/version)"
 }
 
 package() {
-	cd "$_archive"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "$pkgname"
-	local _dist=build/linux-unpacked/resources
-	install -Dm0644 -t "$pkgdir/usr/lib/$pkgname/" "$_dist/app.asar"
-	cp -a "$_dist"/{app.asar.unpacked,hunspell_dictionaries} "$pkgdir/usr/lib/$pkgname/"
-	local _rg_path="$pkgdir/usr/lib/$pkgname/app.asar.unpacked/node_modules/vscode-ripgrep/bin/"
-	mkdir -p $_rg_path
-	ln -sf /usr/bin/rg "$_rg_path"
-	install -Dm0755 -t "$pkgdir/usr/share/applications/" "resources/linux/$pkgname.desktop"
-	install -Dm0755 -t "$pkgdir/usr/share/metainfo/" "resources/linux/$pkgname.appdata.xml"
-	install -Dm0644 resources/icons/icon.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
-	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
-	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md CONTRIBUTING.md
-	cp -a docs "$pkgdir/usr/share/doc/$pkgname/"
-	pushd "resources/icons"
-	find -name maktext.png -exec \
-		install -Dm0644 {} "$pkgdir/usr/share/icons/hicolor/{}" \;
+    cd "${pkgname}-${pkgver}"
+    install -Dm644 dist/linux-unpacked/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r dist/linux-unpacked/resources/{app.asar.unpacked,icons,static} "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "packages/desktop/build/linux/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "packages/desktop/build/linux/${pkgname}.appdata.xml" -t "${pkgdir}/usr/share/metainfo"
+    install -Dm644 packages/desktop/build/icons/icon.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
