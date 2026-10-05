@@ -1,6 +1,6 @@
 pkgbase = stirling-pdf-desktop
 	pkgdesc = Locally hosted, web-based PDF manipulation tool (Tauri desktop app, official Stirling PDF Inc build)
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://www.stirling.com
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = stirling-pdf-desktop
 	conflicts = stirling-pdf-git
 	conflicts = stirling-pdf-bin
 	options = !strip
-	source_x86_64 = stirling-pdf-desktop-3.0.0.deb::https://github.com/Stirling-Tools/Stirling-PDF/releases/download/v3.0.0/Stirling-PDF-linux-x86_64.deb
-	sha256sums_x86_64 = 340cb9f2fcaa5f86123ca6a082f8627a590f502191150fbf21a76aefbb86a120
+	source_x86_64 = stirling-pdf-desktop-3.1.0.deb::https://github.com/Stirling-Tools/Stirling-PDF/releases/download/v3.1.0/Stirling-PDF-linux-x86_64.deb
+	sha256sums_x86_64 = 7e8ea61811aa12de67dca30504323ab53c23d382276b82421ee430a8ea75de5a
 
 pkgname = stirling-pdf-desktop
