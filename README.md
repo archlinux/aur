@@ -525,6 +525,13 @@ shadowing the in-tree ones, and the archived originals are never put back.
 Delete the orphans at that point and the system has no `btusb` on disk at all -
 Bluetooth keeps working until the next reboot, then does not.
 
+From 2.16-3 the package ships a `POST_REMOVE` hook that restores the archived
+`btusb`/`btmtk` and deletes our orphaned copies whichever order you do this in.
+It relies on the `.origin` record DKMS writes next to each archived module,
+which I checked on DKMS 3.4.3; a DKMS that does not write it leaves the hook
+with nothing to restore. It only runs for a version that already carries it,
+so an install made before 2.16-3 still needs the order below.
+
 Remove the modules **before** disabling the opt-in:
 
 ```bash

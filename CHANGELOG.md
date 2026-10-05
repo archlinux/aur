@@ -5,6 +5,12 @@ All notable changes to the MediaTek MT7927 DKMS package are documented here.
 Format: `v<pkgver>-<pkgrel>` where pkgver bumps for driver/patch changes
 and pkgrel bumps for PKGBUILD packaging changes.
 
+## [2.16-3] - 2026-10-05
+
+### Packaging
+
+- Ship `dkms-post-remove.sh` and declare it as `POST_REMOVE` in `dkms.conf`. DKMS restores the in-tree modules it archived only for modules the conf being removed declares, and `btusb`/`btmtk` are declared only while the Bluetooth build is on. Removing the package after the opt-in was switched off (or after a kernel crossed 7.1) therefore left our copies orphaned under `updates/dkms`, still shadowing the in-tree ones, with the archived originals never restored, and no `btusb` on disk once the orphans were deleted. The hook reads the `.origin` record DKMS writes next to each archived module, puts `btusb`/`btmtk` back, and removes our copy of the same module. It does nothing while another version is still active for the kernel. Checked against DKMS 3.4.3 in a scratch tree; a DKMS that does not write `.origin` leaves it with nothing to restore. An install made before 2.16-3 still needs the order documented in the README (#114)
+
 ## [2.16-2] - 2026-10-05
 
 ### Packaging
