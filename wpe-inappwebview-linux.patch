@@ -1,18 +1,18 @@
-diff -ruN clean/fushi/pubspec.yaml mod/fushi/pubspec.yaml
---- clean/fushi/pubspec.yaml	2026-09-03 16:29:15.000000000 +0800
-+++ mod/fushi/pubspec.yaml	2026-09-05 05:33:13.385504911 +0800
-@@ -64,7 +64,7 @@
+diff -ruN a/fushi/pubspec.yaml b/fushi/pubspec.yaml
+--- a/fushi/pubspec.yaml	2026-09-12 06:49:50.000000000 +0800
++++ b/fushi/pubspec.yaml	2026-09-12 17:54:32.587689439 +0800
+@@ -87,7 +87,7 @@
    flutter_markdown: ^0.6.18
    flutter_exit_app: ^1.0.5
    flutter_html: ^3.0.0
 -  flutter_inappwebview: ^6.1.5
 +  flutter_inappwebview: ^6.2.0-beta.3
-   flutter_logs: ^2.1.11 
-   flutter_riverpod: ^2.3.6
-   flutter_staggered_grid_view: ^0.7.0
-diff -ruN clean/packages/flutter_inappwebview_windows/lib/src/in_app_webview/in_app_webview_controller.dart mod/packages/flutter_inappwebview_windows/lib/src/in_app_webview/in_app_webview_controller.dart
---- clean/packages/flutter_inappwebview_windows/lib/src/in_app_webview/in_app_webview_controller.dart	2026-09-03 16:29:15.000000000 +0800
-+++ mod/packages/flutter_inappwebview_windows/lib/src/in_app_webview/in_app_webview_controller.dart	2026-09-05 05:33:13.388567809 +0800
+   flutter_logs: ^2.1.11
+   # v101 统一更新提醒的系统通知后端。选 20.x 而不是 22.x：22 起要求
+   # `sdk: ^3.10.0`，会把本包的 SDK 下界从 3.8 顶上去；20.1.0 的
+diff -ruN a/packages/flutter_inappwebview_windows/lib/src/in_app_webview/in_app_webview_controller.dart b/packages/flutter_inappwebview_windows/lib/src/in_app_webview/in_app_webview_controller.dart
+--- a/packages/flutter_inappwebview_windows/lib/src/in_app_webview/in_app_webview_controller.dart	2026-09-12 06:49:50.000000000 +0800
++++ b/packages/flutter_inappwebview_windows/lib/src/in_app_webview/in_app_webview_controller.dart	2026-09-12 17:54:32.577279904 +0800
 @@ -190,7 +190,9 @@
          } else {
            // restore controller properties
@@ -49,9 +49,9 @@ diff -ruN clean/packages/flutter_inappwebview_windows/lib/src/in_app_webview/in_
      }
  
      Map<String, dynamic> args = <String, dynamic>{};
-diff -ruN clean/packages/flutter_inappwebview_windows/lib/src/print_job/print_job_controller.dart mod/packages/flutter_inappwebview_windows/lib/src/print_job/print_job_controller.dart
---- clean/packages/flutter_inappwebview_windows/lib/src/print_job/print_job_controller.dart	2026-09-03 16:29:15.000000000 +0800
-+++ mod/packages/flutter_inappwebview_windows/lib/src/print_job/print_job_controller.dart	2026-09-05 05:33:13.392866325 +0800
+diff -ruN a/packages/flutter_inappwebview_windows/lib/src/print_job/print_job_controller.dart b/packages/flutter_inappwebview_windows/lib/src/print_job/print_job_controller.dart
+--- a/packages/flutter_inappwebview_windows/lib/src/print_job/print_job_controller.dart	2026-09-12 06:49:50.000000000 +0800
++++ b/packages/flutter_inappwebview_windows/lib/src/print_job/print_job_controller.dart	2026-09-12 17:54:32.578339505 +0800
 @@ -11,16 +11,14 @@
  class WindowsPrintJobControllerCreationParams
      extends PlatformPrintJobControllerCreationParams {
@@ -79,9 +79,9 @@ diff -ruN clean/packages/flutter_inappwebview_windows/lib/src/print_job/print_jo
      channel = MethodChannel(
          'com.pichillilorenzo/flutter_inappwebview_printjobcontroller_${params.id}');
      handler = _handleMethod;
-diff -ruN clean/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_listener.dart mod/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_listener.dart
---- clean/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_listener.dart	2026-09-03 16:29:15.000000000 +0800
-+++ mod/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_listener.dart	2026-09-05 05:33:13.391781104 +0800
+diff -ruN a/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_listener.dart b/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_listener.dart
+--- a/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_listener.dart	2026-09-12 06:49:50.000000000 +0800
++++ b/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_listener.dart	2026-09-12 17:54:32.579276920 +0800
 @@ -95,7 +95,7 @@
    }
  
@@ -91,9 +91,9 @@ diff -ruN clean/packages/flutter_inappwebview_windows/lib/src/web_message/web_me
      return {
        "id": _id,
        "jsObjectName": params.jsObjectName,
-diff -ruN clean/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_port.dart mod/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_port.dart
---- clean/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_port.dart	2026-09-03 16:29:15.000000000 +0800
-+++ mod/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_port.dart	2026-09-05 05:33:13.390393673 +0800
+diff -ruN a/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_port.dart b/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_port.dart
+--- a/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_port.dart	2026-09-12 06:49:50.000000000 +0800
++++ b/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_port.dart	2026-09-12 17:54:32.580306230 +0800
 @@ -67,7 +67,7 @@
    }
  
@@ -103,9 +103,9 @@ diff -ruN clean/packages/flutter_inappwebview_windows/lib/src/web_message/web_me
      return {
        "index": params.index,
        "webMessageChannelId": this._webMessageChannel.params.id
-diff -ruN clean/packages/flutter_inappwebview_windows/lib/src/web_storage/web_storage_manager.dart mod/packages/flutter_inappwebview_windows/lib/src/web_storage/web_storage_manager.dart
---- clean/packages/flutter_inappwebview_windows/lib/src/web_storage/web_storage_manager.dart	2026-09-03 16:29:15.000000000 +0800
-+++ mod/packages/flutter_inappwebview_windows/lib/src/web_storage/web_storage_manager.dart	2026-09-05 05:33:13.394028855 +0800
+diff -ruN a/packages/flutter_inappwebview_windows/lib/src/web_storage/web_storage_manager.dart b/packages/flutter_inappwebview_windows/lib/src/web_storage/web_storage_manager.dart
+--- a/packages/flutter_inappwebview_windows/lib/src/web_storage/web_storage_manager.dart	2026-09-12 06:49:50.000000000 +0800
++++ b/packages/flutter_inappwebview_windows/lib/src/web_storage/web_storage_manager.dart	2026-09-12 17:54:32.581228285 +0800
 @@ -64,7 +64,7 @@
      List<WebsiteDataRecord> recordList = [];
      List<String> dataTypesList = [];
@@ -133,9 +133,9 @@ diff -ruN clean/packages/flutter_inappwebview_windows/lib/src/web_storage/web_st
      }
  
      var timestamp = date.millisecondsSinceEpoch;
-diff -ruN clean/packages/flutter_inappwebview_windows/pubspec.yaml mod/packages/flutter_inappwebview_windows/pubspec.yaml
---- clean/packages/flutter_inappwebview_windows/pubspec.yaml	2026-09-03 16:29:15.000000000 +0800
-+++ mod/packages/flutter_inappwebview_windows/pubspec.yaml	2026-09-05 05:33:13.387577812 +0800
+diff -ruN a/packages/flutter_inappwebview_windows/pubspec.yaml b/packages/flutter_inappwebview_windows/pubspec.yaml
+--- a/packages/flutter_inappwebview_windows/pubspec.yaml	2026-09-12 06:49:50.000000000 +0800
++++ b/packages/flutter_inappwebview_windows/pubspec.yaml	2026-09-12 17:54:32.582095071 +0800
 @@ -1,7 +1,7 @@
  name: flutter_inappwebview_windows
  resolution: workspace
@@ -145,9 +145,9 @@ diff -ruN clean/packages/flutter_inappwebview_windows/pubspec.yaml mod/packages/
  homepage: https://inappwebview.dev/
  repository: https://github.com/pichillilorenzo/flutter_inappwebview/tree/master/flutter_inappwebview_windows
  issue_tracker: https://github.com/pichillilorenzo/flutter_inappwebview/issues
-diff -ruN clean/third_party/flutter_inappwebview_android/lib/src/in_app_webview/in_app_webview_controller.dart mod/third_party/flutter_inappwebview_android/lib/src/in_app_webview/in_app_webview_controller.dart
---- clean/third_party/flutter_inappwebview_android/lib/src/in_app_webview/in_app_webview_controller.dart	2026-09-03 16:29:15.000000000 +0800
-+++ mod/third_party/flutter_inappwebview_android/lib/src/in_app_webview/in_app_webview_controller.dart	2026-09-05 05:33:13.395535880 +0800
+diff -ruN a/third_party/flutter_inappwebview_android/lib/src/in_app_webview/in_app_webview_controller.dart b/third_party/flutter_inappwebview_android/lib/src/in_app_webview/in_app_webview_controller.dart
+--- a/third_party/flutter_inappwebview_android/lib/src/in_app_webview/in_app_webview_controller.dart	2026-09-12 06:49:50.000000000 +0800
++++ b/third_party/flutter_inappwebview_android/lib/src/in_app_webview/in_app_webview_controller.dart	2026-09-12 17:54:32.583031223 +0800
 @@ -186,7 +186,9 @@
          } else {
            // restore controller properties
@@ -183,9 +183,9 @@ diff -ruN clean/third_party/flutter_inappwebview_android/lib/src/in_app_webview/
      }
  
      Map<String, dynamic> args = <String, dynamic>{};
-diff -ruN clean/third_party/flutter_inappwebview_android/lib/src/print_job/print_job_controller.dart mod/third_party/flutter_inappwebview_android/lib/src/print_job/print_job_controller.dart
---- clean/third_party/flutter_inappwebview_android/lib/src/print_job/print_job_controller.dart	2026-09-03 16:29:15.000000000 +0800
-+++ mod/third_party/flutter_inappwebview_android/lib/src/print_job/print_job_controller.dart	2026-09-05 05:33:13.399805177 +0800
+diff -ruN a/third_party/flutter_inappwebview_android/lib/src/print_job/print_job_controller.dart b/third_party/flutter_inappwebview_android/lib/src/print_job/print_job_controller.dart
+--- a/third_party/flutter_inappwebview_android/lib/src/print_job/print_job_controller.dart	2026-09-12 06:49:50.000000000 +0800
++++ b/third_party/flutter_inappwebview_android/lib/src/print_job/print_job_controller.dart	2026-09-12 17:54:32.584015989 +0800
 @@ -11,16 +11,14 @@
  class AndroidPrintJobControllerCreationParams
      extends PlatformPrintJobControllerCreationParams {
@@ -205,9 +205,9 @@ diff -ruN clean/third_party/flutter_inappwebview_android/lib/src/print_job/print
    }
  }
  
-diff -ruN clean/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_listener.dart mod/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_listener.dart
---- clean/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_listener.dart	2026-09-03 16:29:15.000000000 +0800
-+++ mod/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_listener.dart	2026-09-05 05:33:13.396694046 +0800
+diff -ruN a/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_listener.dart b/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_listener.dart
+--- a/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_listener.dart	2026-09-12 06:49:50.000000000 +0800
++++ b/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_listener.dart	2026-09-12 17:54:32.584944969 +0800
 @@ -95,7 +95,7 @@
    }
  
@@ -217,9 +217,9 @@ diff -ruN clean/third_party/flutter_inappwebview_android/lib/src/web_message/web
      return {
        "id": _id,
        "jsObjectName": params.jsObjectName,
-diff -ruN clean/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_port.dart mod/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_port.dart
---- clean/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_port.dart	2026-09-03 16:29:15.000000000 +0800
-+++ mod/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_port.dart	2026-09-05 05:33:13.397886219 +0800
+diff -ruN a/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_port.dart b/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_port.dart
+--- a/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_port.dart	2026-09-12 06:49:50.000000000 +0800
++++ b/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_port.dart	2026-09-12 17:54:32.585853653 +0800
 @@ -67,7 +67,7 @@
    }
  
@@ -229,9 +229,9 @@ diff -ruN clean/third_party/flutter_inappwebview_android/lib/src/web_message/web
      return {
        "index": params.index,
        "webMessageChannelId": this._webMessageChannel.params.id
-diff -ruN clean/third_party/flutter_inappwebview_android/lib/src/webview_asset_loader.dart mod/third_party/flutter_inappwebview_android/lib/src/webview_asset_loader.dart
---- clean/third_party/flutter_inappwebview_android/lib/src/webview_asset_loader.dart	2026-09-03 16:29:15.000000000 +0800
-+++ mod/third_party/flutter_inappwebview_android/lib/src/webview_asset_loader.dart	2026-09-05 05:33:13.398981531 +0800
+diff -ruN a/third_party/flutter_inappwebview_android/lib/src/webview_asset_loader.dart b/third_party/flutter_inappwebview_android/lib/src/webview_asset_loader.dart
+--- a/third_party/flutter_inappwebview_android/lib/src/webview_asset_loader.dart	2026-09-12 06:49:50.000000000 +0800
++++ b/third_party/flutter_inappwebview_android/lib/src/webview_asset_loader.dart	2026-09-12 17:54:32.586705549 +0800
 @@ -54,7 +54,7 @@
    }
  
