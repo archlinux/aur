@@ -1,0 +1,20 @@
+pkgbase = gnome-shell-extension-symmetric-resize
+	pkgdesc = Resize GNOME windows from the center or with a fixed aspect ratio
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/madmoh/gnome-shell-extension-symmetric-resize
+	arch = any
+	license = MIT
+	depends = gnome-shell>=50
+	depends = gnome-shell<51
+	depends = gjs
+	depends = gtk4
+	depends = libadwaita
+	conflicts = gnome-shell-extension-symmetric-resize-git
+	noextract = symmetric-resize@madmoh.github.io-1.0.0.zip
+	source = symmetric-resize@madmoh.github.io-1.0.0.zip::https://github.com/madmoh/gnome-shell-extension-symmetric-resize/releases/download/v1.0.0/symmetric-resize@madmoh.github.io.shell-extension.zip
+	source = gnome-shell-extension-symmetric-resize-1.0.0-LICENSE::https://raw.githubusercontent.com/madmoh/gnome-shell-extension-symmetric-resize/v1.0.0/LICENSE
+	sha256sums = 84d52e6c725a73723096d9acec06d614f7841dd5f3d9d830621bd5e07e8840b7
+	sha256sums = 81380b7cff0d2450171b74c270c4994dc2842c2de1067303caef1262875099ba
+
+pkgname = gnome-shell-extension-symmetric-resize
