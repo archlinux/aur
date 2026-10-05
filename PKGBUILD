@@ -2,7 +2,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 _base=rasterio
 pkgname=python-${_base}
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Fast and direct raster I/O for use with NumPy"
 url="https://github.com/${_base}/${_base}"
@@ -16,7 +16,7 @@ optdepends=('ipython: for ipython support'
   'python-matplotlib: for plotting support'
   'python-swiftclient: for OpenStack support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('b5dee2765da54ea557dd5971a89c4a500a809a935b6d243268a98824efe1f8073b62bf8faa843673fa871baf7d6c5d5efe8c40c686f36da04ac8bdee1121dbd5')
+sha512sums=('1555f76a963a2520c2bcade4844b62e5b9b2b82254bc3024e033a4df9da64295ab5ed8f1821f824d4ea9f593156e7d3c8eab332d5f04150d6956eec27221d482')
 
 build() {
   cd ${_base}-${pkgver}
