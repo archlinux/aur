@@ -14,9 +14,9 @@ pkgbase = lumina-code-cef-bin
 	noextract = lumina-code-cef-bin-0.3.0-*.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = lumina-code-cef-bin-0.3.0-amd64.deb::https://github.com/iewnfod/lumina-code/releases/download/v0.3.0/Lumina.Code.CEF_0.3.0_amd64.deb
-	sha256sums_x86_64 = fa8851a7f9d9f6117693c217a603554ebeef17764cb895f0382e2a99e72cfa0f
-	source_aarch64 = lumina-code-cef-bin-0.3.0-arm64.deb::https://github.com/iewnfod/lumina-code/releases/download/v0.3.0/Lumina.Code.CEF_0.3.0_arm64.deb
-	sha256sums_aarch64 = e218b53ad1fb979f4e5183e698b4f51547e215908de4fecd23cefce2e5899c3f
+	source_x86_64 = lumina-code-cef-bin-0.3.0-amd64.deb::https://github.com/iewnfod/lumina-code/releases/download/v0.4.0/Lumina.Code.CEF_0.3.0_amd64.deb
+	sha256sums_x86_64 = ab33ccc95f59de59976d2521c9c035fff86b45405fda59dfe91d20d107282147
+	source_aarch64 = lumina-code-cef-bin-0.3.0-arm64.deb::https://github.com/iewnfod/lumina-code/releases/download/v0.4.0/Lumina.Code.CEF_0.3.0_arm64.deb
+	sha256sums_aarch64 = 41f6d3d73770932e47daf9101c925c66f086d85cfff817fa88c59c2304c75e59
 
 pkgname = lumina-code-cef-bin

@@ -59,13 +59,13 @@ optdepends=(
 #   x86_64  -> Lumina.Code.CEF_<ver>_amd64.deb
 #   aarch64 -> Lumina.Code.CEF_<ver>_arm64.deb
 #
-# The URL's tag segment is the v0.3.0 placeholder (the release TAG verbatim,
+# The URL's tag segment is the v0.4.0 placeholder (the release TAG verbatim,
 # e.g. "v0.1.2-2"), NOT "v${pkgver}": republished releases carry a suffix in
 # the tag while the assets stay named after the plain app version.
-source_x86_64=("${pkgname}-${pkgver}-amd64.deb::${url}/releases/download/v0.3.0/Lumina.Code.CEF_${pkgver}_amd64.deb")
-source_aarch64=("${pkgname}-${pkgver}-arm64.deb::${url}/releases/download/v0.3.0/Lumina.Code.CEF_${pkgver}_arm64.deb")
-sha256sums_x86_64=('fa8851a7f9d9f6117693c217a603554ebeef17764cb895f0382e2a99e72cfa0f')
-sha256sums_aarch64=('e218b53ad1fb979f4e5183e698b4f51547e215908de4fecd23cefce2e5899c3f')
+source_x86_64=("${pkgname}-${pkgver}-amd64.deb::${url}/releases/download/v0.4.0/Lumina.Code.CEF_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname}-${pkgver}-arm64.deb::${url}/releases/download/v0.4.0/Lumina.Code.CEF_${pkgver}_arm64.deb")
+sha256sums_x86_64=('ab33ccc95f59de59976d2521c9c035fff86b45405fda59dfe91d20d107282147')
+sha256sums_aarch64=('41f6d3d73770932e47daf9101c925c66f086d85cfff817fa88c59c2304c75e59')
 
 # No arch-independent sources — empty arrays keep makepkg's parser happy.
 source=()
