@@ -1,7 +1,7 @@
 pkgbase = recoil-engine-rc
 	pkgdesc = A powerful free cross-platform RTS game engine. (GitHub — latest Release Candidate tag). This version is used for public engine testing in BAR — Join the Discord if you want to help
 	pkgver = VERSION
-	pkgrel = 1
+	pkgrel = 2
 	url = https://beyond-all-reason.github.io/RecoilEngine/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -37,6 +37,6 @@ pkgbase = recoil-engine-rc
 	source = buildcache.patch
 	sha256sums = SKIP
 	sha256sums = f1ec1a8d70f05a9e917cf9edbc4274a7a5efe81dbc51ddfb6778040f65ec33f2
-	sha256sums = 8c9af0eb1089d2531f5e511292fdde82aef53747b2314104baa850075465035c
+	sha256sums = d1c22222d1fc787a959334d75fde4cdcd833cd29038d8513c0c7dc60f6943d45
 
 pkgname = recoil-engine-rc
