@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=ghorg
-pkgver=1.11.15
+pkgver=1.11.16
 pkgrel=1
 pkgdesc='allows you to quickly clone all of an orgs, or users repos into a single directory.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('daf3353bd0291445fef483b16b0add06bc6d08a1e08d70329b055123ef255095')
+sha256sums=('a8f172c428ee341b49025dc4b08057b3910714e78ab7941f8e93bd091710ecca')
 
 build() {
   cd $pkgname-$pkgver
