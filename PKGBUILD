@@ -2,7 +2,7 @@
 
 pkgname=wegame-dwproton
 pkgver=7.06.27.1446
-pkgrel=7
+pkgrel=8
 pkgdesc='Unofficial bundled DWProton integration for Tencent WeGame'
 arch=('x86_64')
 url='https://github.com/ParticleG/wegame-dwproton'
@@ -51,7 +51,7 @@ noextract=("$pkgname-${pkgver}.exe")
 sha256sums=(
   '0948beca682116a643629c93ff787d2602b599b4ca1c586d8b2c02a7f4ef6d26'
   'SKIP'
-  '025c6b280eed43dc03d790d98e1e4fedc71aaa7f39c5ae432694f78fb60c41b8'
+  '94f8d2fee5f9bf378e0fcee51e2ed54dc801fad49374353fcacad41facb9392d'
   '137b871cdbec553738e81b50f512122ef184a25e52866b19fd23f42a5953e97d'
   'e5226b324e862ac81ef975dc82b75e863eb3b1733e9683296ed13916d7e3012e'
   '0efdfb60c908ef0a75356d827e087e3afd4b66881ed895951bcc3e98360eac3a'

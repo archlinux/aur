@@ -29,6 +29,7 @@ readonly client="$install_dir/wegame.exe"
 readonly update_status="$install_dir/update.tmp"
 readonly update_payload="$install_dir/wegame_update"
 readonly backup_root="$state_dir/update-backups"
+readonly lock_file="$state_dir/launcher.lock"
 readonly prefix_config_marker="$prefix/.wegame-dwproton-config-v1"
 update_recovered=0
 update_managed_pending=0
@@ -58,7 +59,7 @@ Run the official Tencent WeGame client in an isolated DWProton prefix.
 Options:
   --install          Run the official installer when WeGame is not installed
   --recover-update   Apply only the confirmed update failure state
-  --stop             Stop processes in this package's Wine prefix
+  --stop             Stop the running WeGame session (launcher and Wine processes)
   --print-prefix     Print the Wine prefix path
   --version          Print the package version
   -h, --help         Show this help
@@ -78,17 +79,32 @@ path_is_within() {
     [[ "$resolved_path" == "$resolved_root" || "$resolved_path" == "$resolved_root/"* ]]
 }
 
-prefix_is_active() {
-    local environment variable
+process_uses_prefix() {
+    local pid=$1 environment variable value
 
-    for environment in /proc/[0-9]*/environ; do
-        [[ -r "$environment" ]] || continue
-        while IFS= read -r -d '' variable; do
-            if [[ "$variable" == "STEAM_COMPAT_DATA_PATH=$compat_data" ||
-                  "$variable" == "WINEPREFIX=$prefix" ]]; then
-                return 0
-            fi
-        done < <(cat -- "$environment" 2>/dev/null)
+    environment="/proc/$pid/environ"
+    [[ -r "$environment" ]] || return 1
+
+    while IFS= read -r -d '' variable; do
+        case "$variable" in
+            STEAM_COMPAT_DATA_PATH=*|WINEPREFIX=*) value=${variable#*=} ;;
+            *) continue ;;
+        esac
+        value=${value%/}
+        if [[ "$value" == "$compat_data" || "$value" == "$prefix" ]]; then
+            return 0
+        fi
+    done < <(cat -- "$environment" 2>/dev/null)
+
+    return 1
+}
+
+prefix_is_active() {
+    local pid
+
+    for pid in /proc/[0-9]*; do
+        pid=${pid#/proc/}
+        process_uses_prefix "$pid" && return 0
     done
 
     return 1
@@ -541,11 +557,22 @@ proton_wineserver() {
 
 stop_prefix_for_transition() {
     local wineserver
+    local -a leftovers=()
+
     wineserver=$(proton_wineserver)
     [[ -x "$wineserver" ]] ||
         die "DWProton wineserver was not found at '$wineserver'."
     WINEPREFIX="$prefix" "$wineserver" -k >/dev/null 2>&1 || true
-    WINEPREFIX="$prefix" "$wineserver" -w >/dev/null 2>&1 ||
+    WINEPREFIX="$prefix" timeout 30 "$wineserver" -w >/dev/null 2>&1 ||
+        die 'The previous Wine desktop did not stop during the display transition.'
+
+    mapfile -t leftovers < <(prefix_pids)
+    ((${#leftovers[@]} == 0)) && return 0
+    log 'Stopping processes left over from the previous Wine desktop.'
+    signal_processes TERM "${leftovers[@]}"
+    wait_for_processes 20 "${leftovers[@]}" && return 0
+    signal_processes KILL "${leftovers[@]}"
+    wait_for_processes 20 "${leftovers[@]}" ||
         die 'The previous Wine desktop did not stop during the display transition.'
 }
 
@@ -727,6 +754,18 @@ cleanup_niri_children() {
     stop_child "${niri_xserver_pid:-}"
 }
 
+cleanup_session_at_exit() {
+    local -a targets=()
+
+    cleanup_niri_children
+    mapfile -t targets < <(session_pids)
+    ((${#targets[@]} == 0)) && return 0
+    signal_processes TERM "${targets[@]}"
+    wait_for_processes 20 "${targets[@]}" && return 0
+    signal_processes KILL "${targets[@]}"
+    wait_for_processes 20 "${targets[@]}" || true
+}
+
 
 run_proton_in_niri() {
     local target=$1 mode='rootful' transition_file exit_code
@@ -751,6 +790,7 @@ run_proton_in_niri() {
     niri_twm_pid=''
     niri_fix_pid=''
     trap 'cleanup_niri_children; stop_prefix_for_transition; exit 143' INT TERM HUP
+    trap 'cleanup_session_at_exit' EXIT
 
     while true; do
         : > "$transition_file"
@@ -824,8 +864,109 @@ install_wegame() {
     log 'Installation finished. Start WeGame again with wegame-dwproton.'
 }
 
+process_holds_launcher_lock() {
+    local pid=$1 target
+
+    # The launcher keeps the instance lock open on descriptor 9 and every
+    # descendant inherits it, so this identifies the whole launcher session.
+    target=$(readlink -- /proc/"$pid"/fd/9 2>/dev/null) || return 1
+    [[ "$target" == "$lock_file" ]]
+}
+
+invoking_ancestors() {
+    local pid=$PPID parent line hops=0
+
+    while [[ "$pid" =~ ^[0-9]+$ ]] && ((pid > 1)) && ((hops < 64)); do
+        printf '%s\n' "$pid"
+        parent=''
+        while IFS= read -r line; do
+            [[ "$line" == 'PPid:'* ]] || continue
+            parent=${line#PPid:}
+            break
+        done < /proc/"$pid"/status 2>/dev/null || true
+        parent=${parent//[[:space:]]/}
+        [[ "$parent" =~ ^[0-9]+$ ]] || break
+        pid=$parent
+        ((hops++)) || true
+    done
+}
+
+matched_pids() {
+    local predicate=$1 pid
+
+    for pid in /proc/[0-9]*; do
+        pid=${pid#/proc/}
+        "$predicate" "$pid" && printf '%s\n' "$pid"
+    done
+}
+
+process_is_session_member() {
+    local pid=$1
+
+    process_uses_prefix "$pid" || process_holds_launcher_lock "$pid"
+}
+
+prefix_pids() {
+    matched_pids process_uses_prefix
+}
+
+session_pids() {
+    local pid excluded=' '
+
+    while IFS= read -r pid; do
+        excluded+="$pid "
+    done < <(invoking_ancestors)
+    excluded+="$$ "
+
+    while IFS= read -r pid; do
+        [[ "$excluded" != *" $pid "* ]] || continue
+        printf '%s\n' "$pid"
+    done < <(matched_pids process_is_session_member)
+}
+
+process_running() {
+    local pid=$1 state='' line
+
+    while IFS= read -r line; do
+        [[ "$line" == 'State:'* ]] || continue
+        state=${line#State:}
+        break
+    done < <(cat -- /proc/"$pid"/status 2>/dev/null) || true
+    state=${state//[[:space:]]/}
+
+    [[ -n "$state" && "$state" != 'Z' ]]
+}
+
+wait_for_processes() {
+    local attempt pid
+    local -a pending=()
+    local steps=$1
+    shift
+
+    for ((attempt = 0; attempt < steps; attempt++)); do
+        pending=()
+        for pid in "$@"; do
+            process_running "$pid" && pending+=("$pid")
+        done
+        ((${#pending[@]} == 0)) && return 0
+        sleep 0.1
+    done
+
+    return 1
+}
+
+signal_processes() {
+    local signal=$1 pid
+    shift
+
+    for pid in "$@"; do
+        kill "-$signal" -- "$pid" 2>/dev/null || true
+    done
+}
+
 stop_wegame() {
-    local proton_dir wineserver
+    local proton_dir wineserver count pid
+    local -a targets=() remaining=()
     resolve_proton
     proton_dir=${proton%/*}
     wineserver="$proton_dir/files/bin/wineserver"
@@ -836,8 +977,40 @@ stop_wegame() {
         return 0
     }
 
-    WINEPREFIX="$prefix" "$wineserver" -k
-    log 'Stop request sent to the WeGame prefix.'
+    mapfile -t targets < <(session_pids)
+    count=${#targets[@]}
+
+    WINEPREFIX="$prefix" "$wineserver" -k >/dev/null 2>&1 || true
+
+    if ((count == 0)); then
+        log 'No running WeGame session was found.'
+        return 0
+    fi
+
+    if wait_for_processes 50 "${targets[@]}"; then
+        log "Stopped the WeGame session ($count processes)."
+        return 0
+    fi
+
+    log "Stopping the WeGame session ($count processes)."
+    signal_processes TERM "${targets[@]}"
+    if wait_for_processes 50 "${targets[@]}"; then
+        log "Stopped the WeGame session ($count processes)."
+        return 0
+    fi
+
+    log "Force-stopping the WeGame session ($count processes)."
+    signal_processes KILL "${targets[@]}"
+    if wait_for_processes 50 "${targets[@]}"; then
+        log "Force-stopped the WeGame session ($count processes)."
+        return 0
+    fi
+
+    remaining=()
+    for pid in "${targets[@]}"; do
+        process_running "$pid" && remaining+=("$pid")
+    done
+    die "Could not stop the WeGame session: ${remaining[*]}"
 }
 
 launch_wegame() {

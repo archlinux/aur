@@ -60,12 +60,14 @@ wegame-dwproton                 Install on first use, otherwise launch WeGame
 wegame-dwproton --install       Run the installer when WeGame is absent
 wegame-dwproton --recover-update
                                 Recover only the confirmed updater failure state
-wegame-dwproton --stop          Stop this package's Wine prefix
+wegame-dwproton --stop          Stop the running WeGame session (launcher and Wine processes)
 wegame-dwproton --print-prefix  Print the Wine prefix path
 wegame-dwproton --version       Print the package version
 ```
 
 The bundled `/usr/share/wegame-dwproton/dwproton/proton` runtime is preferred. `WEGAME_DWPROTON_PROTON` explicitly overrides it; existing system, Lutris, and Steam DWProton installations remain fallback locations. `WEGAME_DWPROTON_SHARE_DIR` overrides the package data directory for development and tests.
+
+`--stop` ends the launcher session that owns the instance lock, not only the Wine prefix. It first asks the bundled `wineserver` to stop the prefix, then terminates the launcher and every process bound to this package's prefix, escalating from `SIGTERM` to `SIGKILL`. This also clears a launcher that is stuck waiting for a wedged Wine process, so the next `wegame-dwproton` run is accepted.
 
 ## Confirmed update recovery
 
@@ -104,6 +106,7 @@ tests/test-launch-lifecycle.sh
 tests/test-update-recovery.sh
 tests/test-nested-x11-fix.sh
 tests/test-niri-x11-launch.sh
+tests/test-stop-session.sh
 ```
 
 Build the package:
