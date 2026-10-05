@@ -7,7 +7,7 @@ _barch=('linux-x64' 'linux-arm64')
 pkgname=github-${_pkgname}-bin
 pkgdesc="GitHub Copilot CLI brings the power of Copilot coding agent directly to your terminal."
 
-pkgver=1.0.91
+pkgver=1.0.92
 pkgrel=1
 
 arch=('x86_64' 'aarch64')
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_appname}-${_barch[1]}.tar.gz")
 sha256sums=('33657f2e7383f2167b47d5f8c549a6071905a5c93d5d67d17e5c5399f126f07b'
-            '7785011a8c97314f0800b76e02bdac7951bae7e6bfde49416c142ae4fca08345'
+            '242fb78a1c6e4ff05acb6b9135fc6e3cb0714ecbe87cddbd8bf69d2fa2559c37'
             'c694e2d9b3f3bb40704ca9bdc823dc90269999ab4c013dfd8a52c407046074b4')
-sha256sums_x86_64=('0e7a0e85290228afecce4d4eed42fda80c0f5b9c86f433deb246cde1d5eec8e5')
-sha256sums_aarch64=('26a42491bec497a921f198d550a614e0a8989f1c2418f5bb1dd2150f09e6eac0')
+sha256sums_x86_64=('1d8daedb9cdb200061471cabe9f924f80293689cb9c42489344864c044f33ea9')
+sha256sums_aarch64=('634d5200d96c17f01357637a166bb303744e8ca965550d6bbcb72b52b5e3c6a4')
 
 
 package() {
