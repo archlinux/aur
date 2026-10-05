@@ -1,0 +1,4 @@
+[ytarchive]
+source = "git"
+git = "https://github.com/dreammu/ytarchive.git"
+prefix = "v"
