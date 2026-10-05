@@ -3,7 +3,7 @@
 # pkgver is rewritten from the release tag, and checksums by updpkgsums, by
 # packaging/aur/publish.sh on every release.
 pkgname=mlp-gui
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Desktop app to encrypt and decrypt files with AES-256-GCM (GUI for mlp)'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ checkdepends=('desktop-file-utils')
 optdepends=('mlp: command-line interface using the same keyfile')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c3d71a4590cbfcd9744270c307a4e0717ccda2eacc4e54cd9c3ea6c88c58072b')
+sha256sums=('c0d9beb69d9b61905ab7e5af30e041338a647dbd689230434d6f575643039e6d')
 
 prepare() {
   cd "mask-decryption-$pkgver"
