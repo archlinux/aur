@@ -5,8 +5,8 @@ post_install() {
     }
 
     if ! command -v tun2socks &>/dev/null; then
-        echo ":: WARNING: tun2socks binary not found."
-        echo "   Install 'tun2socks' or 'tun2socks-bin' for TUN mode VPN support."
+        echo ":: INFO: tun2socks binary not found in PATH."
+        echo "   WhoisThat will automatically download and manage pinned tun2socks v2.7.0 when TUN mode is used."
     fi
 }
 
