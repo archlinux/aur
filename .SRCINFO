@@ -1,6 +1,6 @@
 pkgbase = python-pydocket
 	pkgdesc = A distributed background task system for Python functions
-	pkgver = 0.26.0
+	pkgver = 0.26.1
 	pkgrel = 1
 	url = https://github.com/chrisguidry/docket
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = python-pydocket
 	depends = python-typing_extensions
 	depends = python-uncalled-for
 	depends = python-exceptiongroup
-	source = https://files.pythonhosted.org/packages/source/p/pydocket/pydocket-0.26.0.tar.gz
-	sha256sums = a168adbc5ed280ed5c557bb97e7162b8ac883baca395b205dfb14494cbf85231
+	source = https://files.pythonhosted.org/packages/source/p/pydocket/pydocket-0.26.1.tar.gz
+	sha256sums = 1032d3a3c1442a648761b1a23590bb8baee35f5b381002c1149b117decf20cec
 
 pkgname = python-pydocket
