@@ -3,7 +3,7 @@
 
 pkgname=prek
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="⚡ Better 'pre-commit', re-engineered in Rust"
 arch=('x86_64')
 url='https://github.com/j178/prek'
@@ -56,6 +56,10 @@ package() {
     "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
   install -Dm644 <(env PATH="$pkgdir/usr/bin" COMPLETE=fish "$pkgname") \
     "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+  install -Dm644 <(env PATH="$pkgdir/usr/bin" COMPLETE=elvish "$pkgname") \
+    "$pkgdir/usr/share/elvish/lib/$pkgname.elv"
+  install -Dm644 <(env PATH="$pkgdir/usr/bin" COMPLETE=nushell "$pkgname") \
+    "$pkgdir/usr/share/nu/scripts/$pkgname.nu"
 
   # documentation
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
