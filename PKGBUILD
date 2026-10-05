@@ -1,7 +1,7 @@
 # Contributor: Lex Black <autumn-wind@web.de>
 
 pkgname=greenbone-feed-sync
-pkgver=25.4.2
+pkgver=25.5.0
 pkgrel=1
 pkgdesc='script for downloading the Greenbone Community Feed'
 arch=('any')
@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         greenbone-nvt-sync.timer
         greenbone-scapdata-sync.service
         greenbone-scapdata-sync.timer)
-sha512sums=('c07af536dfda46cd482c92659cdbed0eff83ed0b454cf3791b63c28361edbabd500d2ed18f2ed534a47ff1edfb66161c9a2f9b87142f3583f596f74d5b639a97'
+sha512sums=('1b35998c084d19e9d4b528bff1d785ec01b7e65cc26fad467693f06d43e9caed9fe8e21f9a331713be4fc24bb982623735f18388dafc239b04b7cb323a990df3'
             'SKIP'
             '0e61d540bbe7d4a88d080e0b213f6c472d9b1b5bf122780dec9e2644fe15bae9a9938432fdcfde73ed9d280dd319dd4796acb83ea8135aab3fe981a00b612504'
             '4d259ff625d29b10040ab1ff7cb472b3dee2355c8ef01275754c5c08779e0de3d5ae1cbb157239fd17d663644b43a642fe15c2d8e13cde037e52ad6a4e2e0afd'
