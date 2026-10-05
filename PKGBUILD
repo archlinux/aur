@@ -1,13 +1,13 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=dbx-mcp-server-git
-pkgver=0.4.80.r6178.g3e82d6d65
+pkgver=0.4.107.r7872.ge983f2432
 pkgrel=1
 pkgdesc="MCP server for DBX — query databases from Claude Code, Cursor, and other AI agents (built from git)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/t8y2/dbx/tree/main/crates/dbx-mcp"
 license=('Apache-2.0')
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'gcc-libs' 'openssl')
 makedepends=('rust' 'cargo' 'git')
 optdepends=('dbx: desktop app to configure the database connections the MCP server reuses')
 provides=('dbx-mcp-server')
@@ -37,10 +37,10 @@ prepare() {
     # Use Arch's openssl dependency instead of upstream's vendored feature:
     # the latter embeds a temporary $srcdir OpenSSL install path.
     sed -i 's/openssl = { version = "0.10", features = \["vendored"\] }/openssl = "0.10"/' \
-        crates/dbx-core/Cargo.toml
+        crates/dbx-drivers/Cargo.toml crates/dbx-driver-postgres/Cargo.toml
     # This upstream-only workspace fallback embeds $srcdir through
     # env!("CARGO_MANIFEST_DIR") in release binaries.
-    sed -i '/CARGO_MANIFEST_DIR/,+2d' crates/dbx-core/src/agent_service.rs
+    sed -i '/CARGO_MANIFEST_DIR/,+2d' crates/dbx-driver-agent/src/agent_service.rs
 
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/^host: //p')"
 }
@@ -48,15 +48,14 @@ prepare() {
 build() {
     cd "${srcdir}/dbx"
     export CARGO_HOME="${srcdir}/.cargo"
-    export RUSTUP_TOOLCHAIN=stable
     export CARGO_PROFILE_RELEASE_LTO=false
     # Strip $srcdir from panic-message paths so makepkg doesn't warn about a
     # reference to $srcdir, and remap Cargo's registry and Git source trees
     # for reproducibility.
-    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}/dbx=/build/dbx --remap-path-prefix=${srcdir}/.cargo/registry=/cargo-registry --remap-path-prefix=${srcdir}/.cargo/git=/cargo-git"
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}/dbx=/build/dbx --remap-path-prefix=${srcdir}/.cargo/registry=/cargo-registry --remap-path-prefix=${srcdir}/.cargo/git=/cargo-git --remap-path-prefix=$(rustc --print sysroot)=/rust-toolchain"
 
-    # dbx-mcp pulls dbx-core with default-features=false, so the heavy
-    # sqlcipher/duckdb native builds are skipped — only this crate is built.
+    # dbx-mcp enables bundled SQLite and the DuckDB sidecar, avoiding the
+    # desktop's SQLCipher and DynamoDB dependencies.
     cargo build --frozen --release -p dbx-mcp
 }
 
