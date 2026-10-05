@@ -1,0 +1,16 @@
+pkgbase = mass-certificate-generator-bin
+	pkgdesc = Batch certificate generator with custom fonts, layouts, and CSV/Excel data (standalone binary)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/KaziRifatMorshed/Mass-Certificate-Generator-MCG-gh-Public
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	provides = mass-certificate-generator
+	conflicts = mass-certificate-generator
+	source = https://github.com/KaziRifatMorshed/Mass-Certificate-Generator-MCG-gh-Public/releases/download/v1.1/MassCertificateGenerator-v1.1.0-linux-x86_64.tar.gz
+	sha256sums = aadd824d7d7dc1c000a2d2230bf72aa570b8152e440d5fbfe0f080478c026cd7
+
+pkgname = mass-certificate-generator-bin
