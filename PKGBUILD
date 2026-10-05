@@ -2,7 +2,7 @@
 
 _pkgname=openclaw
 pkgname=$_pkgname-esr
-pkgver=2026.8.34
+pkgver=2026.8.35
 pkgrel=1
 pkgdesc="Multi-channel AI gateway with extensible messaging integrations (extended stable release)"
 arch=(x86_64 aarch64)
@@ -26,7 +26,7 @@ optdepends=(
     'go: for installing skill tools not packaged for Arch'
 )
 source=($_pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz)
-sha256sums=(39e80e7d2952362317d431f62c6d9fecff3b48e2de26482078378b6d6ba05f1f)
+sha256sums=(e268aa06b67f2c9bd73c41dde69ac8de13cff4d71031e107b29f9385895c0ec4)
 options=(!debug !strip)
 install=$pkgname.install
 noextract=($_pkgname-$pkgver.tgz)

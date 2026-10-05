@@ -1,6 +1,6 @@
 pkgbase = openclaw-esr
 	pkgdesc = Multi-channel AI gateway with extensible messaging integrations (extended stable release)
-	pkgver = 2026.8.34
+	pkgver = 2026.8.35
 	pkgrel = 1
 	url = https://github.com/openclaw/openclaw
 	install = openclaw-esr.install
@@ -21,10 +21,10 @@ pkgbase = openclaw-esr
 	optdepends = go: for installing skill tools not packaged for Arch
 	provides = openclaw
 	conflicts = openclaw
-	noextract = openclaw-2026.8.34.tgz
+	noextract = openclaw-2026.8.35.tgz
 	options = !debug
 	options = !strip
-	source = openclaw-2026.8.34.tgz::https://registry.npmjs.org/openclaw/-/openclaw-2026.8.34.tgz
-	sha256sums = 39e80e7d2952362317d431f62c6d9fecff3b48e2de26482078378b6d6ba05f1f
+	source = openclaw-2026.8.35.tgz::https://registry.npmjs.org/openclaw/-/openclaw-2026.8.35.tgz
+	sha256sums = e268aa06b67f2c9bd73c41dde69ac8de13cff4d71031e107b29f9385895c0ec4
 
 pkgname = openclaw-esr
