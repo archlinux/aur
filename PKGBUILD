@@ -2,7 +2,7 @@
 # Maintainer: Julian Xhokaxhiu <https://julianxhokaxhiu.com>
 
 pkgname=open-webui
-pkgver=0.11.3
+pkgver=0.11.4
 pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
 arch=('any')
