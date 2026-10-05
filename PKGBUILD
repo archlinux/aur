@@ -9,9 +9,9 @@ _gitname=ai-usage-widget
 _plasmoid=org.muddyblack.aiUsageWidget
 
 pkgname=plasma6-applets-ai-usage
-pkgver=3.1.1
+pkgver=3.3.0
 pkgrel=1
-pkgdesc="KDE Plasma 6 panel widget tracking AI usage quotas across 14 AI providers"
+pkgdesc="KDE Plasma 6 panel widget tracking AI usage quotas across multiple providers"
 arch=('any')
 url="https://github.com/Muddyblack/ai-usage-widget"
 license=('MIT')
@@ -28,7 +28,7 @@ optdepends=(
 )
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('813ab6147c06bf8cc76c8cc8e9070e9d821f91cdc00765fcadbb118da8498310')
+sha256sums=('6f7954d8d6aff2151a1ebb13d7f9b903898c6f4acbc0d32ba5532a2e85791d01')
 
 build() {
     cd "${_gitname}-${pkgver}"
@@ -44,7 +44,7 @@ check() {
     # Keep these offline backend checks separate from the standalone frontends.
     PYTHONPATH="${PWD}/tests/python" python -m unittest \
         test_fixtures test_provider_values test_collect test_envelope test_muse \
-        test_credentials test_codex_stats test_codex_rate_limits
+        test_credentials test_codex_stats test_codex_rate_limits test_junie test_mimo
     ./tests/python-interp.test.sh
     ./tests/history-io.test.sh
 }
