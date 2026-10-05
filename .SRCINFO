@@ -1,7 +1,7 @@
 pkgbase = fthr-clips-bin
 	pkgdesc = Instant replay capture and clip management (official Linux binary)
-	pkgver = 1.1.0alpha
-	pkgrel = 2
+	pkgver = 1.1.1alpha
+	pkgrel = 1
 	url = https://github.com/FTHR-Community/FTHR-Clips
 	arch = x86_64
 	license = GPL-3.0-only
@@ -14,6 +14,10 @@ pkgbase = fthr-clips-bin
 	depends = libdrm
 	depends = libxcb
 	depends = wayland
+	optdepends = pipewire: ScreenCast portal capture server and runtime library
+	optdepends = dbus: ScreenCast portal communication
+	optdepends = xdg-desktop-portal: ScreenCast capture broker
+	optdepends = xdg-desktop-portal-kde: ScreenCast picker/backend for KDE Plasma
 	optdepends = pipewire-pulse: desktop audio through PipeWire
 	optdepends = pulseaudio: alternative desktop audio server
 	optdepends = grim: screenshots on supported Wayland compositors
@@ -26,12 +30,12 @@ pkgbase = fthr-clips-bin
 	optdepends = xdotool: X11 window detection
 	optdepends = xorg-xprop: X11 fullscreen detection
 	optdepends = xorg-xrandr: native X11 monitor geometry
-	provides = fthr-clips=1.1.0alpha
+	provides = fthr-clips=1.1.1alpha
 	conflicts = fthr-clips
-	noextract = FTHRClips-1.1.0-alpha-x86_64.AppImage
+	noextract = FTHRClips-1.1.1-alpha-x86_64.AppImage
 	options = !strip
 	options = !debug
-	source = FTHRClips-1.1.0-alpha-x86_64.AppImage::https://github.com/FTHR-Community/FTHR-Clips/releases/download/v1.1.0-alpha/FTHRClips-1.1.0-alpha-x86_64.AppImage
-	sha256sums = 47634819ac68e797ca42e76c9d1fe9f465d817f937a177d75733f4a591086b1a
+	source = FTHRClips-1.1.1-alpha-x86_64.AppImage::https://github.com/FTHR-Community/FTHR-Clips/releases/download/v1.1.1-alpha/FTHRClips-1.1.1-alpha-x86_64.AppImage
+	sha256sums = 12c0140d360e0ec1f8815b1ba167ba5ea21b6657be119345f375708e2c02c5f9
 
 pkgname = fthr-clips-bin

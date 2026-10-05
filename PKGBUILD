@@ -1,8 +1,8 @@
 # Maintainer: Vaspyyy <lolbautz2 at gmail dot com>
 pkgname=fthr-clips-bin
-pkgver=1.1.0alpha
-pkgrel=2
-_upstream_version=1.1.0-alpha
+pkgver=1.1.1alpha
+pkgrel=1
+_upstream_version=1.1.1-alpha
 pkgdesc='Instant replay capture and clip management (official Linux binary)'
 arch=('x86_64')
 url='https://github.com/FTHR-Community/FTHR-Clips'
@@ -10,6 +10,10 @@ license=('GPL-3.0-only' 'MIT')
 depends=('glibc' 'zlib' 'libglvnd' 'libdrm' 'libxcb' 'wayland')
 makedepends=('python' 'squashfs-tools')
 optdepends=(
+  'pipewire: ScreenCast portal capture server and runtime library'
+  'dbus: ScreenCast portal communication'
+  'xdg-desktop-portal: ScreenCast capture broker'
+  'xdg-desktop-portal-kde: ScreenCast picker/backend for KDE Plasma'
   'pipewire-pulse: desktop audio through PipeWire'
   'pulseaudio: alternative desktop audio server'
   'grim: screenshots on supported Wayland compositors'
@@ -28,7 +32,7 @@ conflicts=('fthr-clips')
 options=('!strip' '!debug')
 source=("FTHRClips-${_upstream_version}-x86_64.AppImage::https://github.com/FTHR-Community/FTHR-Clips/releases/download/v${_upstream_version}/FTHRClips-${_upstream_version}-x86_64.AppImage")
 noextract=("FTHRClips-${_upstream_version}-x86_64.AppImage")
-sha256sums=('47634819ac68e797ca42e76c9d1fe9f465d817f937a177d75733f4a591086b1a')
+sha256sums=('12c0140d360e0ec1f8815b1ba167ba5ea21b6657be119345f375708e2c02c5f9')
 
 prepare() {
   # Read the ELF boundary without executing the downloaded AppImage runtime.
@@ -49,7 +53,7 @@ PY
   rm -rf squashfs-root
   unsquashfs -no-progress -d squashfs-root -o "$_offset" "${noextract[0]}"
   # Fail closed on launcher/layout changes: a new release needs review.
-  echo '943c78b5fd42cf82c035365c24c97faf81736a3959f0b68d1aa7d17621061c0c  squashfs-root/AppRun' | sha256sum -c -
+  echo 'a1bd02202fa82b8e1caeff603b491f774733b2005e40d70ba3fe2f71a4e6ea4b  squashfs-root/AppRun' | sha256sum -c -
   python - <<'PY'
 from pathlib import Path
 import stat
@@ -75,13 +79,13 @@ package() {
   install -d "$pkgdir/usr/lib/fthr-clips" "$pkgdir/usr/bin"
   cp -a FTHRClips _internal "$pkgdir/usr/lib/fthr-clips/"
   # Preserve PyInstaller's relative runtime tree. Adapt upstream's tiny launcher
-  # for a fixed system location and a stable Qt/Wayland desktop identity.
+  # (which already honours a preset QT_QPA_PLATFORM) for a fixed system location
+  # and a stable Qt/Wayland desktop identity.
   sed -e 's|^HERE=.*|HERE=/usr/lib/fthr-clips|' \
-      -e 's/if \[ -n "${WAYLAND_DISPLAY:-}" \]/if [ -z "${QT_QPA_PLATFORM:-}" ] \&\& [ -n "${WAYLAND_DISPLAY:-}" ]/' \
-      -e 's/elif \[ -n "${DISPLAY:-}" \]/elif [ -z "${QT_QPA_PLATFORM:-}" ] \&\& [ -n "${DISPLAY:-}" ]/' \
       -e 's|exec "$HERE/FTHRClips"|exec "$HERE/FTHRClips" -desktopfile fthr-clips|' \
       AppRun > "$pkgdir/usr/bin/fthr-clips"
-  # v1.1.0-alpha has an invisible native KWin window (upstream PR #10).
+  # v1.1.0-alpha had an invisible native KWin window (upstream PR #10); native
+  # mode is not yet requalified for this package.
   # UI-only fallback: WAYLAND_DISPLAY remains set for the capture engine.
   sed -i '/^HERE=/a\
 # Remove this KDE fallback after upstream fixes its native Wayland window.\
