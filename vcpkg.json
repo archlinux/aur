@@ -5,5 +5,13 @@
     "libremidi",
     "llfio",
     "stb"
-  ]
+  ],
+  "features": {
+    "backbeat": {
+      "description": "Backbeat chart library integration (GPL-3.0)",
+      "dependencies": [
+        "backbeat"
+      ]
+    }
+  }
 }

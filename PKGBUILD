@@ -2,11 +2,11 @@
 pkgname=rhythmgame-git
 _pkgname=RhythmGame
 pkgver=1.3.18.r3.g2e7a9b35e
-pkgrel=1
+pkgrel=2
 pkgdesc="A customizable BMS player for Windows and Linux – development git build"
 arch=(x86_64)
 url="https://github.com/Bobini1/RhythmGame"
-license=(MIT)
+license=(GPL-3.0-only)
 depends=(
   qt6-base
   qt6-declarative
@@ -51,6 +51,8 @@ makedepends=(
   curl
   zip
   unzip
+  clang
+  rustup
 )
 provides=(rhythmgame)
 conflicts=(rhythmgame)
@@ -61,7 +63,7 @@ source=(
 )
 sha256sums=('SKIP'
             'SKIP'
-            'dacf65553b650c5d82f33f5dfde4f4eeabb0840b34d7914a60629659f9f41ae6')
+            'f091398a474bba833a9ab0773f70e5bd410c5d37741563872babb5c97628932e')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -75,6 +77,7 @@ pkgver() {
 }
 
 prepare() {
+  rustup toolchain install 1.96.0 --profile minimal
   cd "${srcdir}/vcpkg"
   ./bootstrap-vcpkg.sh -disableMetrics
   cd "$srcdir/$_pkgname"
@@ -88,7 +91,9 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DRhythmGame_DEVELOPER_MODE=OFF \
+    -DRhythmGame_USE_BACKBEAT=ON \
     -DVCPKG_FEATURE_FLAGS=manifests \
+    -DVCPKG_OVERLAY_PORTS="${srcdir}/${_pkgname}/vcpkgOverlayPorts" \
     -DCMAKE_CXX_STANDARD=23 \
     -DUSE_SYSTEM_LIBRARIES=ON \
     -Wno-dev \
