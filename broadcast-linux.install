@@ -16,6 +16,7 @@ post_install() {
       cp -n /usr/share/doc/broadcast-linux/config.toml "${XDG_CONFIG_HOME:-$HOME/.config}/broadcast-linux/config.toml"
     Edit it, then run 'systemctl --user reload broadcast-linux'.
     Guide: /usr/share/doc/broadcast-linux/README.md
+    Check the setup: broadcast-linux doctor
     Logs: journalctl --user -u broadcast-linux -b
 MSG
 }
