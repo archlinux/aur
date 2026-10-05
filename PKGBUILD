@@ -2,7 +2,7 @@
 
 _name=speechmatics-rt
 pkgname=python-$_name
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Speechmatics Real-Time API Client."
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('python-setuptools'
              'python-wheel')
 optdepends=('python-aiohttp: jwt')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('51b8f2724ad07173d32441670a08668861999fd742c84cc63c8569908f1e1621')
+sha256sums=('8370f738cee9507fca18c8df88cf2cd029b7dc6810c8e854d35478241d080ca4')
 
 build() {
   cd "$srcdir"/${_name//-/_}-$pkgver
