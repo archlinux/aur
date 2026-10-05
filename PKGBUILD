@@ -32,7 +32,7 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 sha256sums=('e46b7da5b3e99ff9c65845a34be73d5e958037e39d640c1bbc791cb61051b847'
             'cfc3366f4709236ec9dca210979fc0e8c0eeee1c4f45053c6ac0b72fead9c694')
-sha256sums_x86_64=('9071f8fc7b91c52d66d1e31573369c2ed701443cb1f08d7814df1009555dcba0')
+sha256sums_x86_64=('270b85449ee1ac86916d9323b7ef5f5b82158def037363bd173c98850502f1f8')
 
 
 prepare() {
