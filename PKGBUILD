@@ -1,15 +1,15 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=tone3000-plugin-bin
-pkgver=0.0.9
-_tar_sha='3e23fb63965f310834090c1cae0357ea0b279cfc14d6980e3beb0b7b5a54b546'
+pkgver=0.0.11
+_tar_sha='d16dfcf8a007749f6722d82a9cdd8535e1134902eae773f92c339c813efd9185'
 _license_sha='88d4908d7343898f682e47e70f4288728006ed650dbf79e8940c709d55b76326'
-pkgrel=1
+pkgrel=3
 pkgdesc="TONE3000 — NAM & IR loader plugin (VST3/CLAP/LV2/Standalone) (Github release binary)"
 arch=('x86_64')
 url="https://github.com/tone-3000/tone3000-plugin"
 _github_url="https://github.com/tone-3000/tone3000-plugin"
 license=('MIT')
-depends=('webkit2gtk-4.1' 'gtk3' 'alsa-lib' 'freetype2' 'curl' 'hicolor-icon-theme' 'glibc' 'gcc-libs')
+depends=('gtk3' 'alsa-lib' 'freetype2' 'curl' 'hicolor-icon-theme' 'glibc' 'gcc-libs')
 optdepends=('jack: JACK audio backend for standalone')
 provides=('tone3000-plugin')
 conflicts=('tone3000-plugin')
