@@ -1,9 +1,10 @@
 pkgbase = stan-desktop
 	pkgdesc = Unnofficial Stan desktop application
-	pkgver = 1.0.10
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/stan-desktop
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = unzip
 	depends = electron-castlab-bin
@@ -12,7 +13,7 @@ pkgbase = stan-desktop
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/stan-desktop/application/-/archive/1.0.10/application-1.0.10.tar.bz2
-	sha256sums = e679d8eea3667e869bde6c9400af95ba2df111783c24d3ab0a509f503054c729
+	source = https://gitlab.com/linuxbombay/stan-desktop/application/-/archive/1.1.0/application-1.1.0.tar.bz2
+	sha256sums = 7ac547e99cdc225d07c99e210558935b35e7558b9c78f67db2c903f1312d8ed5
 
 pkgname = stan-desktop
