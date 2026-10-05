@@ -9,6 +9,21 @@ license=('custom')
 depends=(
     'gtkmm-4.0'
     'libadwaita'
+    # EIN PAKETNAME SCHUETZT NICHT GEGEN EINEN SONAME-SPRUNG.
+    #
+    # 'graphviz' deckt die Kopfdateien zur Bauzeit, und es blieb installiert, als graphviz von 8
+    # auf 16.0.0 ging — gewandert ist allein die Bibliotheksnummer. Gemessen 2026-10-05: das
+    # Binaer vom 1. Jun verlangt libcgraph.so.8, auf der Platte liegt libcgraph.so.10
+    # (graphviz 16.0.0-1, 14. Aug). ldd meldete die eine unaufgeloeste Abhaengigkeit, pacman
+    # meldete nichts — und der Betrachter startete monatelang nicht, ohne dass es auffiel: der
+    # Explorer loest .md korrekt auf diese .desktop auf und sieht nur einen angelegten Prozess.
+    #
+    # Die .so-Form faengt genau das: makepkg loest sie zur Bauzeit auf die GEBUNDENE Nummer auf
+    # (libcgraph.so=10-64), und der naechste Sprung wird eine gemeldete Verletzung statt eines
+    # stillen Bruchs. Eingetragen sind die zwei Sonames, die objdump real im Binaer findet —
+    # libcdt steht in der pkg-config-Zeile der CMakeLists, aber in keinem NEEDED.
+    'libgvc.so'
+    'libcgraph.so'
     'graphviz'
     'tinyxml2'
     'cairomm-1.16'
