@@ -1,6 +1,6 @@
 pkgbase = ojo
 	pkgdesc = Security scanner for dependencies, secrets, misconfiguration, and code
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/colibrisec/ojo
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ojo
 	makedepends = go
 	provides = ojo
 	conflicts = ojo-bin
-	source = ojo-0.2.2.tar.gz::https://github.com/colibrisec/ojo/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = 913beb9b3aed4fb04129295c73b9793760ccc36df4dd8bb7a2bc45c6919c46fa
+	source = ojo-0.2.3.tar.gz::https://github.com/colibrisec/ojo/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = c9292bb07d418b69f0b8747b542cb5f97a61ad1a1f1167a06b376df8257bba05
 
 pkgname = ojo

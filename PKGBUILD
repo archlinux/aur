@@ -6,7 +6,7 @@
 # aur.archlinux.org/ojo.git. Don't hand-edit pkgver/sha256sums here --
 # edit the placeholders and let CI fill them in.
 pkgname=ojo
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Security scanner for dependencies, secrets, misconfiguration, and code"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ makedepends=('go')
 provides=('ojo')
 conflicts=('ojo-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/colibrisec/ojo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('913beb9b3aed4fb04129295c73b9793760ccc36df4dd8bb7a2bc45c6919c46fa')
+sha256sums=('c9292bb07d418b69f0b8747b542cb5f97a61ad1a1f1167a06b376df8257bba05')
 
 build() {
   cd "$pkgname-$pkgver"
