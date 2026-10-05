@@ -1,6 +1,6 @@
 pkgbase = moonstone
 	pkgdesc = Modern, deterministic Lua project environments and package manager written in Zig
-	pkgver = 0.5.9
+	pkgver = 0.5.10
 	pkgrel = 1
 	url = https://github.com/moonstone-sh/moonstone
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = moonstone
 	conflicts = moon
 	conflicts = moonbit
 	conflicts = moonscript
-	source = https://github.com/moonstone-sh/moonstone/archive/refs/tags/v0.5.9/moonstone-0.5.9.tar.gz
-	sha256sums = 2395a32ffba222a0ca35fd624e5db96e0f60db7203a52eda098ebe6ac863b827
+	source = https://github.com/moonstone-sh/moonstone/archive/refs/tags/v0.5.10/moonstone-0.5.10.tar.gz
+	sha256sums = d472f93c908be0599feddc68a59c0606209c45540030bdfd05d15a5dbdaa26e0
 
 pkgname = moonstone
