@@ -1,0 +1,5 @@
+source: github_release
+repo: theonedev/tod
+prefix: v
+verify_commands:
+  - tod version
