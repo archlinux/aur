@@ -5,8 +5,8 @@ provides=(zalo)
 conflicts=(zalo)
 pkgver=26.10.10
 _zadarkver=26.2.1
-_commithash=ed91566
-pkgrel=1
+_commithash=a532d9e
+pkgrel=2
 pkgdesc="Zalo for Linux"
 arch=('x86_64' 'aarch64')
 url="https://github.com/VN-Linux-Family/zalo-for-linux"
@@ -27,12 +27,12 @@ optdepends=(
     'xfce4-screenshooter: Screenshot without/with Zalo window button'
     'mate-screenshot: Screenshot without/with Zalo window button'
     'scrot: Screenshot without/with Zalo window button'
-    
+
     # Audio/Video Calling (ZCall Bridge)
     'wine: Voice/Video call engine support (or download portable wine in-app)'
     'v4l-utils: control camera formats (fix inverted/green camera)'
     'V4L2LOOPBACK-MODULE: loopback camera support'
-    
+
     # Wayland Screen Sharing Bridge
     'xorg-server-xvfb: headless X server for Wayland screen-sharing bridge'
     'xdotool: window resizing for screen bridge display'
@@ -43,18 +43,18 @@ source=(
     "zalo.desktop"
     "Zalo.png"
 )
-source_x86_64=("zalo.AppImage::https://github.com/VN-Linux-Family/zalo-for-linux/releases/download/${pkgver}/Zalo-${pkgver}+ZaDark-${_zadarkver}-${_commithash}-x86_64.AppImage")
-source_aarch64=("zalo.AppImage::https://github.com/VN-Linux-Family/zalo-for-linux/releases/download/${pkgver}/Zalo-${pkgver}+ZaDark-${_zadarkver}-${_commithash}-aarch64.AppImage")
+source_x86_64=("Zalo-${pkgver}+ZaDark-${_zadarkver}-${_commithash}.AppImage::https://github.com/VN-Linux-Family/zalo-for-linux/releases/download/${pkgver}/Zalo-${pkgver}+ZaDark-${_zadarkver}-${_commithash}-x86_64.AppImage")
+source_aarch64=("Zalo-${pkgver}+ZaDark-${_zadarkver}-${_commithash}.AppImage::https://github.com/VN-Linux-Family/zalo-for-linux/releases/download/${pkgver}/Zalo-${pkgver}+ZaDark-${_zadarkver}-${_commithash}-aarch64.AppImage")
 options=(!strip !debug)
 sha256sums=(
     'b9478f6156fc65858971ca8fb0cc0b94d327ed34f704ce4c614b10e7510dbfe9'
     '54556414e921d2e72db65cdace024251c05e31ce2e1aa3db82aa330436815445'
 )
-sha256sums_x86_64=('b57e5e23eff15c25263dab604a2881068e17a57999a57e172e23e176cac00c0e')
-sha256sums_aarch64=('297a04415fa9429c99db458d4c6eea58d146d5c78ade062ca7da5a264a4dfc34')
+sha256sums_x86_64=('2aba0a230747e1b21e941abcd247fc2d9ca7a516b5cf52a229e7dced63df90ad')
+sha256sums_aarch64=('5186d7991c9b5ef4d678a4fddc6d9264b2e9676f8a12764e58dc85e4e7b3ecf1')
 
 package() {
-    install -Dm755 "${srcdir}/zalo.AppImage" "${pkgdir}/usr/bin/zalo"
+    install -Dm755 "${srcdir}/Zalo-${pkgver}+ZaDark-${_zadarkver}-${_commithash}.AppImage" "${pkgdir}/usr/bin/zalo"
     install -Dm644 "${srcdir}/zalo.desktop" "${pkgdir}/usr/share/applications/zalo.desktop"
     install -Dm644 "${srcdir}/Zalo.png" "${pkgdir}/opt/zalo/icon.png"
 }
