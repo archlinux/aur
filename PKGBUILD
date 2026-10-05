@@ -2,7 +2,7 @@
 
 pkgname=gufo
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast inference engine for AMD Strix Halo (gfx1151)"
 arch=(x86_64)
 url='https://github.com/gufo-org/gufo'
@@ -26,7 +26,6 @@ depends=(
 makedepends=(
   cmake
   hipcub
-  ninja
   pkgconf
   rocm-llvm
   rocprim
@@ -44,7 +43,7 @@ build() {
   # Load the standard header before HIP headers in host C++ translation units.
   CXXFLAGS+=' -include format'
 
-  cmake -S "${srcdir}/${pkgname}-${pkgver}" -B build -G Ninja \
+  cmake -S "${srcdir}/${pkgname}-${pkgver}" -B build \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_CXX_FLAGS="${CXXFLAGS}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -59,8 +58,9 @@ build() {
     -DGUFO_FFMPEG_EXECUTABLE=/usr/bin/ffmpeg \
     -DGUFO_FFPROBE_EXECUTABLE=/usr/bin/ffprobe
 
-  # Follow upstream's four-job build to limit HIP compiler memory use.
-  cmake --build build --parallel 4
+  # Do not hardcode the --parallel value here.
+  # Set MAKEFLAGS in /etc/makepkg.conf instead.
+  cmake --build build
 }
 
 package() {
