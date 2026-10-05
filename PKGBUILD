@@ -6,7 +6,7 @@
 # publicly downloadable. See PKGBUILD comments and package() before redistributing.
 
 pkgname=airwallex-cli
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='CLI for the Airwallex platform (proprietary beta)'
 arch=('x86_64' 'aarch64')
@@ -27,9 +27,9 @@ source=(
 )
 
 # amd64 / arm64 sha256 digests cross-checked against the upstream
-# airwallex-linux-checksums.txt on 2026-09-30; do NOT edit these by hand.
+# airwallex-linux-checksums.txt on 2026-10-05; do NOT edit these by hand.
 sha256sums=(
-  'ec95d740f44368511db0cc4cdeaf945f38ff0e52f3227c5f31c9f7602a098b2d'  # airwallex-linux-checksums.txt
+  'dcea645280b9be33c49be171d2e04ce98fa554faf60e86be12a352e00098fe39'  # airwallex-linux-checksums.txt
   'SKIP'                                                              # README.md license notice
 )
 
