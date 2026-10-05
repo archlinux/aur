@@ -12,7 +12,7 @@
 # supervisor.
 #
 # Wrap in the interactive login shell (-ilc) so the daemon and its agents get
-# the full PATH (git, node, ~/.local/bin CLIs). --foreground keeps this process
-# as the daemon so logout/stop cleanly tears it down.
+# the full PATH (git, node, ~/.local/bin CLIs). `daemon run` keeps this process
+# in the foreground so logout/stop cleanly tears it down.
 exec "$(getent passwd "$(id -u)" | cut -d: -f7)" -ilc \
-  "exec /opt/Paseo/resources/bin/paseo daemon start --foreground"
+  "exec /opt/Paseo/resources/bin/paseo daemon run"
