@@ -1,6 +1,6 @@
 pkgbase = geolibre-bin
 	pkgdesc = Lightweight, cloud-native GIS platform for visualizing and analyzing geospatial data
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://geolibre.app/
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = geolibre-bin
 	optdepends = xdotool: global keyboard shortcuts
 	provides = geolibre
 	conflicts = geolibre
-	noextract = geolibre-bin-3.2.0.deb
+	noextract = geolibre-bin-3.3.0.deb
 	options = !strip
 	options = !debug
-	source = geolibre-bin-3.2.0.deb::https://github.com/opengeos/GeoLibre/releases/download/v3.2.0/GeoLibre.Desktop_3.2.0_amd64.deb
-	sha256sums = bd9cfc1ce6d3eadb58c10dd3447d6060500d38503b18c06770b67d14965609fd
+	source = geolibre-bin-3.3.0.deb::https://github.com/opengeos/GeoLibre/releases/download/v3.3.0/GeoLibre.Desktop_3.3.0_amd64.deb
+	sha256sums = 7fc4d3177ee06e2a62da17be4c9d7ff68bc37b74e213815e9aa9fb6003d5aa24
 
 pkgname = geolibre-bin
