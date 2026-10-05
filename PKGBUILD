@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=lowfat
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Lightweight CLI that filters verbose command output to cut AI agent token costs"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ conflicts=('lowfat-bin')
 # /usr/src/debug tree, and a dangling build-id symlink (namcap E).
 options=('!lto' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('aafa1c88f5923f01f2a6e2fd1f7d9ea96d4de5feda1295fcf38f7e4de99bdedf')
+sha256sums=('d89db7bdb285fc7ba20f0e8c680974f3fe4ff45b301cfe865c4bab35003229ac')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -36,6 +36,10 @@ build() {
 
     export CARGO_HOME="${srcdir}/.cargo"
     export RUSTUP_TOOLCHAIN=stable
+
+    # Rust panic locations and bundled SQLite diagnostics must not leak build paths.
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}=/build/lowfat --remap-path-prefix=$(rustc --print sysroot)=/rust-toolchain"
+    export CFLAGS="${CFLAGS} -ffile-prefix-map=${srcdir}=/build/lowfat"
 
     # Only the `lowfat` binary crate; the other workspace members are libs.
     # rusqlite is built with the `bundled` feature, so SQLite is compiled
