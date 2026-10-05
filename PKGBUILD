@@ -2,8 +2,8 @@
 
 pkgname=morewaita-icon-theme
 _reponame=MoreWaita
-pkgver=50
-_commit=73e900822829768560f88084eababc03f664bc35 # full commit ID
+pkgver=50.1
+_commit=1934092ebc94977f03e49a49f5543297479ac0e4 # full commit ID
 pkgrel=1
 pkgdesc="An expanded Adwaita-styled companion icon theme with extra icons for popular apps to complement Gnome Shell's original icons. AUR package maintained by upstream developer."
 arch=(any)
