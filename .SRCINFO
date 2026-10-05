@@ -1,6 +1,6 @@
 pkgbase = python-fasta2a
 	pkgdesc = Convert an AI Agent into a A2A server! ✨
-	pkgver = 2.0.1
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/pydantic/fasta2a
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-fasta2a
 	depends = python-opentelemetry-api
 	optdepends = python-logfire: logfire
 	optdepends = python-pydantic-ai-slim: pydantic-ai
-	source = https://files.pythonhosted.org/packages/source/f/fasta2a/fasta2a-2.0.1.tar.gz
-	sha256sums = f044485ddb7d8904a58b3de2ae924ff9d227be142f79c489e54c95acc2a660c9
+	source = https://files.pythonhosted.org/packages/source/f/fasta2a/fasta2a-2.1.1.tar.gz
+	sha256sums = cec2b74a6fb14740b28c33a23fd2a59d2ce46efba3240e0124497cffab84652c
 
 pkgname = python-fasta2a

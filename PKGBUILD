@@ -2,22 +2,36 @@
 
 _name=fasta2a
 pkgname=python-$_name
-pkgver=2.0.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Convert an AI Agent into a A2A server! ✨"
 arch=('any')
 url="https://github.com/pydantic/fasta2a"
 license=('MIT')
-depends=('python' 'python-starlette' 'python-pydantic' 'python-opentelemetry-api')
-makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-anyio' 'python-asgi-lifespan' 'python-dirty-equals' 'python-httpx' 'python-inline-snapshot' 'python-pytest')
-optdepends=('python-logfire: logfire' 'python-pydantic-ai-slim: pydantic-ai')
+depends=('python'
+         'python-starlette'
+         'python-pydantic'
+         'python-opentelemetry-api')
+makedepends=('python-hatchling'
+             'python-uv-dynamic-versioning'
+             'python-build'
+             'python-installer'
+             'python-wheel')
+checkdepends=('python-anyio'
+              'python-asgi-lifespan'
+              'python-dirty-equals'
+              'python-httpx'
+              'python-inline-snapshot'
+              'python-pytest')
+optdepends=('python-logfire: logfire'
+
+            'python-pydantic-ai-slim: pydantic-ai')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('f044485ddb7d8904a58b3de2ae924ff9d227be142f79c489e54c95acc2a660c9')
+sha256sums=('cec2b74a6fb14740b28c33a23fd2a59d2ce46efba3240e0124497cffab84652c')
 
 build() {
-    cd "$srcdir"/$_name-$pkgver
-    python -m build --wheel --no-isolation
+  cd "$srcdir"/$_name-$pkgver
+  python -m build --wheel --no-isolation
 }
 
 check() {
