@@ -1,13 +1,13 @@
 # Maintainer: Matvel007
 pkgname=tidy-cleaner-bin
 _pkgname=tidy-cleaner
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Modern, ultra-fast, and safe system cleaner, manager, and hardware telemetry dashboard for Linux (precompiled binary)"
 arch=('x86_64')
 url="https://github.com/Matvel007/Tidy-Cleaner"
 license=('MIT')
-depends=('gcc-libs' 'glibc')
+depends=('gcc-libs' 'glibc' 'fontconfig')
 optdepends=(
     'polkit: Elevated privilege actions (system-wide uninstallation)'
     'nvidia-utils: GPU telemetry for NVIDIA graphics cards'
@@ -19,7 +19,7 @@ optdepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/tidy-cleaner-v$pkgver-linux-x86_64.tar.gz")
-sha256sums_x86_64=('22a804b0ccdb5b837e2572cbb29be797250a627db0d8669f959153db62b71057')
+sha256sums_x86_64=('aa1fbf73743821afe52d67d63600274848077a80d22bba8fd8d833a229d505e3')
 
 package() {
     cd "$srcdir/tidy-cleaner"
