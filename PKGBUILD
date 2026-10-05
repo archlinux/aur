@@ -1,10 +1,10 @@
 # Maintainer: Bink
 # Set true for a portable CPU/CUDA build (all CPU variants, no -march=native).
-: "${aur_llamacpp_build_universal:=false}"
+: "${_aur_llamacpp_build_universal:=${aur_llamacpp_build_universal:-false}}"
 pkgname=llama.cpp-cuda-git
 _pkgname="${pkgname%-cuda-git}"
-pkgver=b10970.r2.7cf1c54a96
-pkgrel=2
+pkgver=b11433.r0.50569eb87d
+pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)"
 arch=(x86_64 aarch64)
 url='https://github.com/ggml-org/llama.cpp'
@@ -12,9 +12,9 @@ license=('MIT')
 backup=('etc/conf.d/llama.cpp')
 depends=(
   cuda
-  curl
   gcc-libs
   glibc
+  nccl
   nvidia-utils
   openssl
 )
@@ -26,8 +26,7 @@ makedepends=(
 )
 optdepends=(
   'ccache: greatly reduce package re-build time'
-  'nccl: needed for multi-GPU parallelism (rebuild required)'
-  'rdma-core: RDMA transport for RPC backend (rebuild required)'
+  'rdma-core: RDMA transport for RPC (rebuild with _aur_llamacpp_cmakeopts="-DGGML_RPC_RDMA=ON")'
   'python-numpy: needed for convert_hf_to_gguf.py'
   'python-safetensors: needed for convert_hf_to_gguf.py'
   'python-sentencepiece: needed for convert_hf_to_gguf.py'
@@ -37,9 +36,24 @@ optdepends=(
 provides=(
   "${_pkgname}"
   libggml
-  libggml.so
   ggml
   ggml-cuda-git
+  libggml.so
+  libggml-base.so
+  libggml-cpu.so
+  libggml-cuda.so
+  libggml-rpc.so
+  libllama.so
+  libllama-common.so
+  libmtmd.so
+  libllama-server-impl.so
+  libllama-cli-impl.so
+  libllama-quantize-impl.so
+  libllama-perplexity-impl.so
+  libllama-fit-params-impl.so
+  libllama-completion-impl.so
+  libllama-bench-impl.so
+  libllama-batched-bench-impl.so
 )
 conflicts=(
   "${_pkgname}"
@@ -96,7 +110,9 @@ build() {
     -DGGML_OPENMP=ON
     -DGGML_LTO=ON
     -DGGML_RPC=ON
+    -DGGML_RPC_RDMA=OFF
     -DGGML_CUDA=ON
+    -DGGML_CUDA_NCCL=ON
     -DGGML_CUDA_FA_ALL_QUANTS=ON
     -DGGML_CUDA_COMPRESSION_MODE=speed
     -DGGML_CUDA_GRAPHS=ON
@@ -106,8 +122,8 @@ build() {
     -Wno-dev
   )
 
-  if [[ ${aur_llamacpp_build_universal} == true ]]; then
-    echo "Building universal binary [aur_llamacpp_build_universal == true]"
+  if [[ ${_aur_llamacpp_build_universal} == true ]]; then
+    echo "Building universal binary [_aur_llamacpp_build_universal == true]"
     _cmake_options+=(
       -DGGML_BACKEND_DL=ON
       -DGGML_NATIVE=OFF
@@ -123,10 +139,11 @@ build() {
   fi
 
   # Allow user-specified additional flags
-  if [[ -n "${aur_llamacpp_cmakeopts:-}" ]]; then
-    echo "Applying custom CMake options: ${aur_llamacpp_cmakeopts}"
+  if [[ -n "${_aur_llamacpp_cmakeopts:-${aur_llamacpp_cmakeopts:-}}" ]]; then
+    local _extra_cmake="${_aur_llamacpp_cmakeopts:-${aur_llamacpp_cmakeopts:-}}"
+    echo "Applying custom CMake options: ${_extra_cmake}"
     # shellcheck disable=SC2206 # intentional word splitting
-    _cmake_options+=(${aur_llamacpp_cmakeopts})
+    _cmake_options+=(${_extra_cmake})
   fi
 
   cmake "${_cmake_options[@]}"
