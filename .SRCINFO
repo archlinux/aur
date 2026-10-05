@@ -1,0 +1,15 @@
+pkgbase = zwanzig
+	pkgdesc = A linter for the Zig programming language
+	pkgver = 0.15.1
+	pkgrel = 1
+	url = https://github.com/forketyfork/zwanzig
+	arch = x86_64
+	license = MIT
+	makedepends = zig
+	depends = glibc
+	source = zwanzig-0.15.1.tar.gz::https://github.com/forketyfork/zwanzig/archive/refs/tags/v0.15.1.tar.gz
+	source = build-with-pie.patch
+	sha256sums = e788c1430fbdc9f3694436097c5dda85fa7d6516cf4bca446fd343c11c791b21
+	sha256sums = 2801483d4b790b7eb5fdf3c8a3593cc0e9ebda9d79a1605614cb532b63180236
+
+pkgname = zwanzig

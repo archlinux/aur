@@ -1,0 +1,10 @@
+--- build.zig.org	2026-10-05 08:15:38.056351680 +0200
++++ build.zig	2026-10-05 08:15:10.546835027 +0200
+@@ -34,6 +34,7 @@
+         .name = "zwanzig",
+         .root_module = exe_module,
+     });
++    exe.pie = true;
+     b.installArtifact(exe);
+ 
+     // Create a run step
