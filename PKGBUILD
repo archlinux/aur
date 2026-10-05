@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Simple blue light filter for Wayland compositors supporting wlr-gamma-control'
 arch=('x86_64')
 url='https://github.com/SoulThy/melatonina'
-# Upstream v0.1.0 declares no license. Resolve this with upstream before submission.
+# Upstream v0.1.0 declares no license.
 # The adjacent 0BSD LICENSE covers only these packaging files.
 license=('LicenseRef-unknown')
 # zig-git currently provides zig=0.17.0; the repository's Zig 0.16 is too old.
