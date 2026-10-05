@@ -1,13 +1,13 @@
 pkgbase = agentics-desktop
-	pkgdesc = Agentics Desktop - the PowerBoard wallpaper companion and desktop agent host
-	pkgver = 0.1.46
+	pkgdesc = AzrOS - the Agentics agentic desktop with the Azros Agent built in
+	pkgver = 0.1.47
 	pkgrel = 1
 	url = https://agentics.co.za
 	arch = x86_64
 	license = custom
 	options = !strip
 	options = !debug
-	source = agentics-desktop-0.1.46-x86_64.AppImage::https://repo.agentics.co.za/x86_64/agentics-desktop-0.1.46-x86_64.AppImage
-	sha512sums = 14b6770bbec241fbb6f537f3b6938a6498f15919701e597fa4ad4aa54e5524eff0bb120e1c2be0cb0fc7917e2272490b6ebef44b30a58ae7e3f2b28eddbb13bb
+	source = agentics-desktop-0.1.47-x86_64.AppImage::https://repo.agentics.co.za/x86_64/agentics-desktop-0.1.47-x86_64.AppImage
+	sha512sums = bf8501a87af9b1074b237a435450ea416bc5bf4a872a4cd25d5cd73941dd4ed290e209ead06d384ddc4c00fae13966834af637bee109ce805b86765b09cccc3d
 
 pkgname = agentics-desktop
