@@ -1,6 +1,6 @@
 pkgbase = modctl
 	pkgdesc = command line mod manager
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://modctl.org
 	arch = aarch64
@@ -10,10 +10,10 @@ pkgbase = modctl
 	makedepends = scdoc
 	depends = glibc
 	depends = libarchive
-	source = https://github.com/mfinelli/modctl/releases/download/v0.7.0/modctl_v0.7.0.tar.zst
-	source = https://github.com/mfinelli/modctl/releases/download/v0.7.0/modctl_v0.7.0.tar.zst.asc
+	source = https://github.com/mfinelli/modctl/releases/download/v0.7.1/modctl_v0.7.1.tar.zst
+	source = https://github.com/mfinelli/modctl/releases/download/v0.7.1/modctl_v0.7.1.tar.zst.asc
 	validpgpkeys = 2AF87031171950F11C460B5AEF5F1F6026B2C9C5
-	sha256sums = e2b79d7f359e6c1dcc44cb509325342a5193401eced6967ce13ad8f987daa27c
+	sha256sums = 204525d247c9358e47bb8026c3bdc9a0d42303d8d2afbfeefdc1fe1c28477c9a
 	sha256sums = SKIP
 
 pkgname = modctl

@@ -2,7 +2,7 @@
 
 _github=https://github.com/mfinelli/modctl
 pkgname=modctl
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="command line mod manager"
 arch=(aarch64 x86_64)
@@ -12,7 +12,7 @@ depends=(glibc libarchive)
 makedepends=(go scdoc)
 source=(${_github}/releases/download/v${pkgver}/${pkgname}_v${pkgver}.tar.zst{,.asc})
 validpgpkeys=(2AF87031171950F11C460B5AEF5F1F6026B2C9C5)
-sha256sums=('e2b79d7f359e6c1dcc44cb509325342a5193401eced6967ce13ad8f987daa27c'
+sha256sums=('204525d247c9358e47bb8026c3bdc9a0d42303d8d2afbfeefdc1fe1c28477c9a'
             'SKIP')
 
 check() {
