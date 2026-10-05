@@ -1,6 +1,6 @@
 pkgbase = dsh-tui-bin
 	pkgdesc = Claude Code style fullscreen TUI launcher for DeepSeek Harness (dsh)
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/ccch1mneyyy/dsh-TUI
 	install = dsh-tui-bin.install
@@ -14,7 +14,7 @@ pkgbase = dsh-tui-bin
 	conflicts = dsh-tui
 	conflicts = dsh-git
 	options = !strip
-	source = dsh-tui-0.12.0.tgz::https://registry.npmjs.org/@deepseek-harness-tui/dsh-tui/-/dsh-tui-0.12.0.tgz
-	sha256sums = bb23c50fa03ee613a5c3f3cf7bd75e0365e3d9f140d9fcab914b6a277018a178
+	source = dsh-tui-0.13.0.tgz::https://registry.npmjs.org/@deepseek-harness-tui/dsh-tui/-/dsh-tui-0.13.0.tgz
+	sha256sums = 0e84f15d1ef831caacf1758cba634b03ab9108d772e8f776a751e381a1ce9ddc
 
 pkgname = dsh-tui-bin
