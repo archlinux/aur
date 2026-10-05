@@ -7,7 +7,7 @@ pkgbase=${_pkgbase}-bin
 pkgname=(${_pkgname[0]}-bin ${_pkgname[1]}-bin)
 _pkgdesc="Lossless MP3 volume adjustment"
 
-pkgver=3.9.1
+pkgver=3.9.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -47,10 +47,10 @@ sha256sums=('8e557208f0bd83f91b38dcc81ccf914c4c84060ab6dbc5072dbf369791ffc135'
             'd44f58c2eb6c2fc3ce21e45e357ffb49c22006f2279a95c74ef078d2227a3dea'
             '9837d092603c7c1749fad2857287d179ece88b1fdf1b25f36220dccbf92bb083'
             '502ed5dc6994e95e2d00f1714a3f90c4a0f14f2b18448a35eb7ff746850dcaed')
-sha256sums_x86_64=('d5f608e30ac3ecf12f97a50e0e4642896479caf498bd73dab94f2282d06f9b31'
-                   'c539f907de5319d38267e1aafbc00303445ade36b6d362d5475cd729ff8637ad')
-sha256sums_aarch64=('789a851cc3cf97af36cea902709ee0c5bc38126d7208333993803fce974e7789'
-                    'e51548412278e540930f535f12d71c4c1a788b0a062900706135cf4eff1a9d07')
+sha256sums_x86_64=('2d4ecf9ab2e88d2cf69c42199d30a5fb3c1f8454c433a99fc323e06e70766955'
+                   '936ecbda4311c83ad05476dae649982eeac0a04375e096c2d14f9ee28ee11951')
+sha256sums_aarch64=('8757444697a0786a88e7a5402bbee7de5d0c7667451a8ba4d623733ae15cb2d6'
+                    '45d9ec0c6c4f94fbd19f8944cca224a1042ebd51e71fc157284b010522d7ef98')
 
 
 package_mp3rgain-bin() {
