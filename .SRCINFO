@@ -1,6 +1,6 @@
 pkgbase = chatwithwork-local-agent
 	pkgdesc = Chat with Work: desktop app, terminal interface and local background agent
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/crmne/chatwithwork-local-agent
 	install = chatwithwork-local-agent.install
@@ -28,7 +28,7 @@ pkgbase = chatwithwork-local-agent
 	conflicts = chatwithwork-local-agent-git
 	options = !debug
 	options = !lto
-	source = chatwithwork-local-agent-0.3.0.tar.gz::https://github.com/crmne/chatwithwork-local-agent/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 00636f8491a1867c003c22e42bfe43bb690989033646dc64cf455f5466207460
+	source = chatwithwork-local-agent-0.3.1.tar.gz::https://github.com/crmne/chatwithwork-local-agent/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 249845e9b6422ed573e868c04eaeb9ccb1f5ce350ae4096778398833557ecfa0
 
 pkgname = chatwithwork-local-agent

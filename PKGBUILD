@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=chatwithwork-local-agent
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Chat with Work: desktop app, terminal interface and local background agent"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ conflicts=('cww' 'chatwithwork-local-agent-bin' 'chatwithwork-local-agent-git')
 # empty.
 options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crmne/chatwithwork-local-agent/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('00636f8491a1867c003c22e42bfe43bb690989033646dc64cf455f5466207460')
+sha256sums=('249845e9b6422ed573e868c04eaeb9ccb1f5ce350ae4096778398833557ecfa0')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
