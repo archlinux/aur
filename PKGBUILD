@@ -3,11 +3,12 @@
 # Upstream ships no LICENSE file; the "Important Notice" in the README is the
 # sole license grant. It explicitly disallows redistribution, modification, and
 # reverse-engineering, which is unusual for AUR but the tarballs themselves are
-# publicly downloadable. See PKGBUILD comments and package() before redistributing.
+# publicly downloadable. The README is pinned to the release tag and installed
+# as the license text.
 
 pkgname=airwallex-cli
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI for the Airwallex platform (proprietary beta)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/airwallex/airwallex-cli'
@@ -16,75 +17,22 @@ depends=('glibc')
 optdepends=('bash-completion: shell completions (provided by upstream)')
 provides=('airwallex')
 conflicts=('airwallex')
+# Ship the upstream binary byte-for-byte so it matches the published checksum.
+options=('!strip')
 
-# Per-OS upstream checksum file is the same artifact the official install.sh
-# downloads for integrity verification. We use it to pin both per-arch tarball
-# digests so makepkg refuses to package a tampered asset, and then ship it
-# under /usr/share so users can reproduce the check out-of-band.
-source=(
-  "airwallex-linux-checksums.txt::https://github.com/airwallex/airwallex-cli/releases/download/v${pkgver}/airwallex-linux-checksums.txt"
-  "LICENSE::https://raw.githubusercontent.com/airwallex/airwallex-cli/master/README.md"
-)
+_rel="https://github.com/airwallex/airwallex-cli/releases/download/v${pkgver}"
+source=("${pkgname}-${pkgver}-README.md::https://raw.githubusercontent.com/airwallex/airwallex-cli/v${pkgver}/README.md")
+source_x86_64=("${_rel}/airwallex_${pkgver}_linux_amd64.tar.gz")
+source_aarch64=("${_rel}/airwallex_${pkgver}_linux_arm64.tar.gz")
 
-# amd64 / arm64 sha256 digests cross-checked against the upstream
-# airwallex-linux-checksums.txt on 2026-10-05; do NOT edit these by hand.
-sha256sums=(
-  'dcea645280b9be33c49be171d2e04ce98fa554faf60e86be12a352e00098fe39'  # airwallex-linux-checksums.txt
-  'SKIP'                                                              # README.md license notice
-)
-
-# CARCH -> asset filename fragment used by upstream release artifacts.
-_asset_for_carch() {
-  case "$CARCH" in
-    x86_64) echo 'amd64' ;;
-    aarch64) echo 'arm64' ;;
-    *) return 1 ;;
-  esac
-}
-
-prepare() {
-  local asset="airwallex_${pkgver}_linux_$(_asset_for_carch).tar.gz"
-  local url="https://github.com/airwallex/airwallex-cli/releases/download/v${pkgver}/${asset}"
-
-  msg2 "Downloading ${asset}"
-  if ! curl -fsSL -o "${srcdir}/${asset}" "${url}"; then
-    error "Failed to download ${url}"
-    return 1
-  fi
-
-  # Use the upstream-issued per-OS checksums file (the same one the official
-  # install.sh consumes) to verify the downloaded archive before extraction.
-  local expected
-  expected=$(awk -v name="$asset" '$2 == name { print $1; exit }' \
-    "$srcdir/airwallex-linux-checksums.txt")
-  if [ -z "$expected" ]; then
-    error "Asset ${asset} not listed in airwallex-linux-checksums.txt"
-    return 1
-  fi
-
-  local actual
-  actual=$(sha256sum "$srcdir/$asset" | awk '{print $1}')
-  if [ "$expected" != "$actual" ]; then
-    error "SHA256 mismatch for ${asset}: expected ${expected}, got ${actual}"
-    return 1
-  fi
-  msg2 "Checksum OK (${actual})"
-}
+# Tarball digests must match upstream airwallex-linux-checksums.txt for v${pkgver}.
+sha256sums=('cb69fbd14f17d818171bf3e142a08898f68529ace0ebe7dee172a8702bb3298e')
+sha256sums_x86_64=('0a9a3e20741ba76a03ef54d873f5f98d1de83a8caccf9feb4f057fb83f2c03f4')
+sha256sums_aarch64=('e1cea306ef6094bbab5d1eabdc4ef2dce733f9f7334b1fbf0d7162c75c6282ed')
 
 package() {
-  local asset="airwallex_${pkgver}_linux_$(_asset_for_carch).tar.gz"
-
-  install -d "$pkgdir/usr/bin"
-
   # Tarball layout: a single `airwallex` executable at the archive root.
-  bsdtar --no-same-owner -xf "$srcdir/$asset" -C "$pkgdir/usr/bin" airwallex
-  chmod 0755 "$pkgdir/usr/bin/airwallex"
-
-  # Ship the upstream notice + integrity artifacts under /usr/share so users
-  # can read the EULA terms and re-verify against the published checksums
-  # without going back to GitHub.
-  install -Dm0644 "$srcdir/LICENSE" \
+  install -Dm0755 "$srcdir/airwallex" "$pkgdir/usr/bin/airwallex"
+  install -Dm0644 "$srcdir/${pkgname}-${pkgver}-README.md" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm0644 "$srcdir/airwallex-linux-checksums.txt" \
-    "$pkgdir/usr/share/licenses/$pkgname/airwallex-linux-checksums.txt"
 }

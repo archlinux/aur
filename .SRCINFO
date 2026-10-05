@@ -1,7 +1,7 @@
 pkgbase = airwallex-cli
 	pkgdesc = CLI for the Airwallex platform (proprietary beta)
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/airwallex/airwallex-cli
 	arch = x86_64
 	arch = aarch64
@@ -10,9 +10,12 @@ pkgbase = airwallex-cli
 	optdepends = bash-completion: shell completions (provided by upstream)
 	provides = airwallex
 	conflicts = airwallex
-	source = airwallex-linux-checksums.txt::https://github.com/airwallex/airwallex-cli/releases/download/v0.4.2/airwallex-linux-checksums.txt
-	source = LICENSE::https://raw.githubusercontent.com/airwallex/airwallex-cli/master/README.md
-	sha256sums = dcea645280b9be33c49be171d2e04ce98fa554faf60e86be12a352e00098fe39
-	sha256sums = SKIP
+	options = !strip
+	source = airwallex-cli-0.4.2-README.md::https://raw.githubusercontent.com/airwallex/airwallex-cli/v0.4.2/README.md
+	sha256sums = cb69fbd14f17d818171bf3e142a08898f68529ace0ebe7dee172a8702bb3298e
+	source_x86_64 = https://github.com/airwallex/airwallex-cli/releases/download/v0.4.2/airwallex_0.4.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0a9a3e20741ba76a03ef54d873f5f98d1de83a8caccf9feb4f057fb83f2c03f4
+	source_aarch64 = https://github.com/airwallex/airwallex-cli/releases/download/v0.4.2/airwallex_0.4.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = e1cea306ef6094bbab5d1eabdc4ef2dce733f9f7334b1fbf0d7162c75c6282ed
 
 pkgname = airwallex-cli
