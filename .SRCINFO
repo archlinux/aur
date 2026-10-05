@@ -17,7 +17,6 @@ pkgbase = ase-explorer
 	depends = ttf-nerd-fonts-symbols-mono
 	depends = nlohmann-json
 	depends = libgit2
-	depends = spdlog
 	source = ase-client-explorer::git+https://github.com/antarien/ase-client-explorer.git
 	source = ase-utils::git+https://github.com/antarien/ase-utils.git
 	source = ase-fileio::git+https://github.com/antarien/ase-fileio.git
@@ -32,10 +31,12 @@ pkgbase = ase-explorer
 	source = ase-ecs::git+https://github.com/antarien/ase-ecs.git
 	source = ase-platform::git+https://github.com/antarien/ase-platform.git
 	source = entt::git+https://github.com/skypjack/entt.git#tag=v3.13.0
+	source = spdlog::git+https://github.com/gabime/spdlog.git#tag=v1.13.0
 	source = file-icons.hpp
 	source = colors.hpp
 	source = design_tokens.hpp
 	source = ui_icons.hpp
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

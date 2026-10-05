@@ -13,9 +13,11 @@ pkgdesc='ASE Hierarchical Project Explorer with NerdFont Icons'
 arch=('x86_64')
 url='https://github.com/antarien/ase-client-explorer'
 license=('custom')
-# spdlog ist die Senke hinter ase::log und liegt als Repo-Paket (1.17.0). entt steht NICHT in
-# den Arch-Repos und kommt deshalb unten als Quelle, nicht als Abhaengigkeit.
-depends=('gtkmm-4.0' 'libadwaita' 'ttf-fira-code' 'ttf-nerd-fonts-symbols-mono' 'nlohmann-json' 'libgit2' 'spdlog')
+# spdlog UND entt stehen hier NICHT, obwohl ase::log beide braucht: der Client baut sie aus
+# der Quelle und bindet sie statisch, so wie alle fuenf Tiers. Das Repo-Paket spdlog waere
+# eine Shared Library und zoege libfmt nach — gemessen scheitert genau das, wenn ein zweites
+# Praefix im Suchpfad eine aeltere libfmt fuehrt. Statisch gebunden braucht die Laufzeit nichts.
+depends=('gtkmm-4.0' 'libadwaita' 'ttf-fira-code' 'ttf-nerd-fonts-symbols-mono' 'nlohmann-json' 'libgit2')
 makedepends=('cmake' 'ninja' 'gcc' 'pkgconf' 'git')
 source=(
     "ase-client-explorer::git+https://github.com/antarien/ase-client-explorer.git"
@@ -79,15 +81,18 @@ source=(
     # PRIVATE-Eintrag wird nicht weitergereicht, muss aber im Baum stehen. Gefunden hat es
     # erst eine Rechnung ueber die CMakeLists statt ueber ihre Beschreibung.
     "ase-platform::git+https://github.com/antarien/ase-platform.git"
-    # Der Tag ist festgenagelt, weil cmake/Dependencies.cmake und die CMakeLists des Explorers
-    # dieselbe Fassung deklarieren: ein wanderndes HEAD waere ein zweiter Stand im selben Baum.
+    # Die Tags sind festgenagelt, weil cmake/Dependencies.cmake und die CMakeLists des
+    # Explorers dieselben Fassungen deklarieren: ein wanderndes HEAD waere ein zweiter Stand
+    # im selben Baum.
     "entt::git+https://github.com/skypjack/entt.git#tag=v3.13.0"
+    "spdlog::git+https://github.com/gabime/spdlog.git#tag=v1.13.0"
     "file-icons.hpp"
     "colors.hpp"
     "design_tokens.hpp"
     "ui_icons.hpp"
 )
 sha256sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -136,13 +141,14 @@ prepare() {
 
 build() {
     cd "${srcdir}/ase-root/clients/ase-client-explorer"
-    # FETCHCONTENT_SOURCE_DIR_ENTT zeigt auf die oben GEHOLTE Quelle. Ohne diese Zeile klonte
-    # der Rueckfall in der CMakeLists des Explorers waehrend build(), und ein Paketbau, der
-    # selbst ins Netz greift, ist weder nachvollziehbar noch offline wiederholbar.
+    # Die beiden FETCHCONTENT_SOURCE_DIR_* zeigen auf die oben GEHOLTEN Quellen. Ohne sie
+    # klonte FetchContent in der CMakeLists des Explorers waehrend build(), und ein Paketbau,
+    # der selbst ins Netz greift, ist weder nachvollziehbar noch offline wiederholbar.
     cmake -B build -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DFETCHCONTENT_SOURCE_DIR_ENTT="${srcdir}/entt"
+        -DFETCHCONTENT_SOURCE_DIR_ENTT="${srcdir}/entt" \
+        -DFETCHCONTENT_SOURCE_DIR_SPDLOG="${srcdir}/spdlog"
     ninja -C build
 }
 
