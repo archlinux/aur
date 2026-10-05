@@ -74,7 +74,6 @@ depends=(brial
          python-requests
          python-rpy2
          python-scipy
-         python-sphinx
          python-sympy
          python-traitlets
          rankwidth
@@ -116,6 +115,7 @@ optdepends=('benzene: for generating fusenes and benzenoids'
             'python-pycosat: picosat SAT solver'
             'python-pynormaliz: Normaliz backend for polyhedral computations'
             'python-pyscipopt: SCIP mixed integer linear programming backend'
+            'python-sphinx: to print documentation in HTML format'
             'regina: some methods related to low-dimensional topology'
             'rubiks: Rubiks cube algorithms'
             'sage-data-cunningham_tables: list of prime numbers in the Cunningham table'
@@ -145,7 +145,7 @@ conflicts=(sagemath)
 provides=(sagemath)
 source=(git+https://github.com/sagemath/sage#branch=develop
         latte-count.patch
-        cython-3.3.patch)
+        maxima-5.50.patch)
 sha256sums=('SKIP'
             'c3aa0243de70fe9c58772c83e748510b7af6950f98d01b3a819e6f8d1232c797'
             '01d4ba96770db3cffb41d09ec40910ba09147cde26c745ac8b7bd80a957e1055')
@@ -160,8 +160,8 @@ prepare(){
 
 # use correct latte-count binary name
   patch -p1 -i ../latte-count.patch
-# fixes and workarounds for cython 3.3
-  patch -p1 -i ../cython-3.3.patch
+# fix tests with maxima 5.50
+  patch -p1 -i ../maxima-5.50.patch
 }
 
 build() {
