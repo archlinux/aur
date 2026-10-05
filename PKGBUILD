@@ -1,7 +1,7 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=mdns-browser
-pkgver=2.5.6
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="A cross platform mDNS browsing app written in Rust using tauri and svelte"
 arch=('x86_64')
@@ -11,9 +11,9 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 conflicts=('mdns-browser-bin')
 makedepends=('cargo' 'cargo-auditable' 'git' 'file' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rust' 'nodejs' 'pnpm')
 options=('!strip' '!emptydirs')
-source=("v2.5.6.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v2.5.6.tar.gz")
-sha256sums=('5c2312acd7231cffa55f5da087545d16f70c57235226d14ee38a56f219267259')
-_builddir="$pkgname-2.5.6"
+source=("v2.6.2.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v2.6.2.tar.gz")
+sha256sums=('8e88650ea2e5fb5573d21ee6842505f7e0d02dc90a2a3d4322702996c503cd20')
+_builddir="$pkgname-2.6.2"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
     pnpm install --frozen-lockfile
@@ -35,7 +35,7 @@ build() {
 }
 check() {
     cd "$srcdir/$_builddir" || exit 1
-    cargo test --locked --frozen --manifest-path src-tauri/Cargo.toml --package=models --package=mdns-browser
+    cargo test --locked --frozen --manifest-path src-tauri/Cargo.toml --package=mdns-browser
 }
 package() {
     install -Dm755 "${srcdir}/${_builddir}/src-tauri/target/release/mdns-browser" "$pkgdir"/usr/bin/mdns-browser
