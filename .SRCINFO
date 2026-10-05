@@ -1,7 +1,7 @@
 pkgbase = retuner
 	pkgdesc = A precision audio pitch shifting plugin for converting music between different tuning standards
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kushview/retuner
 	arch = x86_64
 	arch = aarch64
