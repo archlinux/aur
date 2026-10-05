@@ -1,0 +1,67 @@
+From 1143a913f8ff7023bb96b67ca1c1ae2955a19aee Mon Sep 17 00:00:00 2001
+From: claudecode <hockinglee@gmail.com>
+Date: Mon, 5 Oct 2026 12:48:28 +0800
+Subject: [PATCH] Default the logfile to /tmp/minicom.log
+
+It used to be minicom.log in the home directory.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+---
+ config.h.in   | 2 +-
+ configure.ac  | 2 +-
+ man/minicom.1 | 6 +++---
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/config.h.in b/config.h.in
+index 2f04e31..5fee3d4 100644
+--- a/config.h.in
++++ b/config.h.in
+@@ -358,7 +358,7 @@
+ 
+ 
+ /* Defines from old config.h */
+-#define LOGFILE "minicom.log"        /* Not defined = not used */
++#define LOGFILE "/tmp/minicom.log"   /* Not defined = not used */
+ #define CALLOUT ""                   /* Gets run to get into dialut mode */
+ #define CALLIN  ""                   /* Gets run to get into dial in mode */
+ 
+diff --git a/configure.ac b/configure.ac
+index daff1e4..fc376cd 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -324,7 +324,7 @@ dnl ---------------------------------------------------------------
+ 
+ AH_BOTTOM([
+ /* Defines from old config.h */
+-#define LOGFILE "minicom.log"        /* Not defined = not used */
++#define LOGFILE "/tmp/minicom.log"   /* Not defined = not used */
+ #define CALLOUT ""                   /* Gets run to get into dialut mode */
+ #define CALLIN  ""                   /* Gets run to get into dial in mode */
+ 
+diff --git a/man/minicom.1 b/man/minicom.1
+index 094e689..be1e6b4 100644
+--- a/man/minicom.1
++++ b/man/minicom.1
+@@ -526,8 +526,8 @@ Options to configure the logfile writing.
+ .PD 1
+ .TP 0.5i
+ .B A - File name
+-Here you can enter the name of the logfile. The file will be written in
+-your home directory, and the default value is "minicom.log". 
++Here you can enter the name of the logfile. A relative name is taken from
++your home directory. The default value is "/tmp/minicom.log".
+ If you blank the name, all logging is turned off.
+ .TP 0.5i
+ .B B - Log connects and hangups
+@@ -895,7 +895,7 @@ with a dot.
+ minirc.*
+ $HOME/.minirc.*
+ $HOME/.dialdir
+-$HOME/minicom.log
++/tmp/minicom.log
+ /usr/share/locale/*/LC_MESSAGES/minicom.mo
+ .fi
+ .SH SEE ALSO
+-- 
+2.55.0
+
