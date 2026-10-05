@@ -1,0 +1,3 @@
+[python-deltalake]
+source = "pypi"
+pypi = "deltalake"
