@@ -1,6 +1,6 @@
 # Maintainer: nomisge <nomisge @ live . de>
 pkgname=asciidoc-revealjs-toolkit
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Asciidoc to Reveal.js toolkit'
 arch=('x86_64')

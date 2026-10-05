@@ -1,6 +1,6 @@
 pkgbase = asciidoc-revealjs-toolkit
 	pkgdesc = Asciidoc to Reveal.js toolkit
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://codeberg.org/nomisge/asciidoc-revealjs-toolkit
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = asciidoc-revealjs-toolkit
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	source = asciidoc-revealjs-toolkit-1.0.0.zip::https://codeberg.org/nomisge/asciidoc-revealjs-toolkit/archive/v1.0.0.zip
+	source = asciidoc-revealjs-toolkit-1.0.1.zip::https://codeberg.org/nomisge/asciidoc-revealjs-toolkit/archive/v1.0.1.zip
 	sha256sums = 19a092532f31ff4de07808b091ebdeaf4bf23b7198cc5ada3e345c75f64c5222
 
 pkgname = asciidoc-revealjs-toolkit
