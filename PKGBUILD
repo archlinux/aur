@@ -2,7 +2,7 @@
 # Contributor: Felix Kauselmann <licorn at gmail dot com>
 
 pkgname=yacreader-poppler
-pkgver=10.3.1
+pkgver=10.3.2
 pkgrel=1
 pkgdesc="Comic reader for cross-platform reading and managing your digital comic collection, using poppler for PDF"
 arch=(x86_64)
@@ -35,7 +35,7 @@ optdepends=(
 provides=(yacreader)
 conflicts=(yacreader)
 source=("git+https://github.com/YACReader/yacreader.git#tag=${pkgver}")
-sha256sums=('9d09866cca964ce108e8387a5bfa0e96745262235af93b03ca0d28c0d64d5add')
+sha256sums=('f5b5839e4b58b7424e4423587e93723131398391ae09679e406b257cd3f4be1e')
 
 build() {
   # Disable warning Detected locale "C" with character encoding "ANSI_X3.4-1968", which is not UTF-8.
