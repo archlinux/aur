@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=lenovo-wwan-unlock
 pkgver=4.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="FCC and DPR unlock for Lenovo PCs"
 arch=(x86_64)
 url=https://github.com/lenovo/lenovo-wwan-unlock
@@ -36,7 +36,7 @@ package() {
     # -> Rolling Wireless: RW350, RW101R-GL
     # -> Foxconn: SDX61
     install -D -m755 fcc-unlock.d/1eac:100d "$pkgdir"/usr/lib/ModemManager/fcc-unlock.d/1eac:100d
-    # 1eac:1007 included in modemmanager
+    install -D -m755 fcc-unlock.d/1eac:1007 "$pkgdir"/usr/lib/ModemManager/fcc-unlock.d/1eac:1007
     install -D -m755 fcc-unlock.d/2c7c:6008 "$pkgdir"/usr/lib/ModemManager/fcc-unlock.d/2c7c:6008
     install -D -m755 fcc-unlock.d/14c3:4d75 "$pkgdir"/usr/lib/ModemManager/fcc-unlock.d/14c3:4d75
     install -D -m755 fcc-unlock.d/17cb:0308 "$pkgdir"/usr/lib/ModemManager/fcc-unlock.d/17cb:0308
