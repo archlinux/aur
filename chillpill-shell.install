@@ -21,6 +21,7 @@ post_upgrade() {
 
 print_notice() {
   echo -e "\n${BOLD}Run '${GREEN}chillpill-shell${NC}${BOLD}' to start now, or open '${GREEN}CP-Shell${NC}${BOLD}' from your app launcher.${NC}"
+  echo -e "${BOLD}Config App:${NC} '${GREEN}chillpill-config${NC}' ${BOLD}(Command)${NC} | ${GREEN}CP-Shell's Config${NC} ${BOLD}(App launcher)${NC}"
   echo -e "\n${BLUE}==>${NC} ${BOLD}To auto start, paste this in your Hyprland (Lua) config:${NC}"
   echo -e "\n${BOLD}hl.on(\"hyprland.start\", function()"
   echo -e "  hl.exec_cmd(\"chillpill-shell\")"

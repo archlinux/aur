@@ -1,6 +1,6 @@
 # Maintainer: LUCKY / LuckySingh1 <luckysingh71826@gmail.com>
 pkgname=chillpill-shell
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Lightweight and feature rich dynamic pill bar for Hyprland"
 depends=(
@@ -29,7 +29,7 @@ license=('GPL-3.0')
 options=('!debug')
 url="https://github.com/LUCKYS1NGHH/ChillPill-Shell"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LUCKYS1NGHH/ChillPill-Shell/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7d50e63dca9ccc2dfb612bbea761f7595537eb629c549c50d3174abbcfcefc32')
+sha256sums=('1090f640383c8d84527df456568ef73ea68b461d4d6f5831b19d4ec87dd53af8')
 
 package() {
   cd "ChillPill-Shell-$pkgver"
@@ -40,6 +40,7 @@ package() {
   install -d "$pkgdir/usr/share/chillpill-shell/IslandBackend"
   cp -r scripts "$pkgdir/usr/share/chillpill-shell"
   cp -r share "$pkgdir/usr/share/chillpill-shell"
+  cp -r config-app "$pkgdir/usr/share/chillpill-shell"
 
   install -m 644 qml/* "$pkgdir/usr/share/chillpill-shell"
 
@@ -53,7 +54,9 @@ package() {
     "$pkgdir/usr/share/chillpill-shell/IslandBackend"
 
   install -Dm755 launcher.sh "$pkgdir/usr/bin/chillpill-shell"
+  install -Dm755 config-launcher.sh "$pkgdir/usr/bin/chillpill-config"
   install -Dm644 chillpill.desktop "$pkgdir/usr/share/applications/chillpill.desktop"
+  install -Dm644 chillpill-config.desktop "$pkgdir/usr/share/applications/chillpill-config.desktop"
   install -Dm644 config.jsonc "$pkgdir/usr/share/chillpill-shell/config.jsonc.example"
 }
 
