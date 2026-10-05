@@ -9,7 +9,7 @@ pkgdesc="Fast, disk space efficient package manager"
 arch=('x86_64')
 url="https://github.com/pnpm/pnpm"
 license=('MIT')
-makedepends=(git rust)
+makedepends=(git mold rust)
 optdepends=(nodejs)
 conflicts=(pnpm)
 provides=(pnpm)
@@ -23,6 +23,7 @@ prepare() {
 
 build() {
   cd pnpm
+  export RUSTFLAGS+=" -C link-args=-fuse-ld=mold" # needed for aws-lc ?
   cargo build --release --bin pnpm
 }
 
@@ -32,6 +33,6 @@ package() {
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   cd "$pkgdir/usr/bin"
   ln pnpm pn
-  install -Dm755 <(echo -e '#!/bin/sh\nexec/usr/bin/pnpm dlx' '"$@"') pnpx
+  install -Dm755 <(echo -e '#!/bin/sh'"\n exec/usr/bin/pnpm dlx" '"$@"') pnpx
   ln pnpx pnx
 }

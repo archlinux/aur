@@ -6,6 +6,7 @@ pkgbase = pnpm-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = mold
 	makedepends = rust
 	optdepends = nodejs
 	provides = pnpm
