@@ -346,6 +346,54 @@ applet_start() {
     fi
 }
 
+applet_pdfjsfix() {
+    if pgrep --quiet '^(wechat|WeChatAppEx)$'; then
+        echo 'Warning: Refusing to run pdfjsfix while WeChat is running' >&2
+        return 1
+    fi
+    local data_dir="${WECHAT_DATA_DIR}" documents_dir config_dir key output command
+    local resource='/opt/wechat-universal/XFile/xfile_web_resource'
+    if [[ -z "${data_dir}" ]]; then
+        documents_dir="${XDG_DOCUMENTS_DIR:-$(xdg-user-dir DOCUMENTS)}"
+        [[ -n "${documents_dir}" ]] || return 1
+        data_dir="${documents_dir}/WeChat_Data"
+    fi
+    config_dir="${data_dir}/home/.xwechat/radium/mmkv/xweb_global_storage"
+    if [[ ! -f "${config_dir}/xweb_global_storage" || ! -f "${config_dir}/xweb_global_storage.crc" ]]; then
+        echo "Warning: XWeb configuration not found in '${config_dir}'" >&2
+        return 1
+    fi
+    for command in strings sed python bsdtar; do
+        if ! command -v "${command}" >/dev/null; then
+            echo "Warning: pdfjsfix requires '${command}'" >&2
+            return 1
+        fi
+    done
+    if [[ ! -f /usr/share/pdf.js/web/cmaps/UniGB-UCS2-H.bcmap ]]; then
+        echo 'Warning: Install pdfjs to provide /usr/share/pdf.js/web/cmaps/' >&2
+        return 1
+    fi
+    key=$(strings /opt/wechat-universal/RadiumWMPF/runtime/WeChatAppEx | sed -n '/^[-A-Za-z0-9]\{43\}=$/{p;q}')
+    if [[ -z "${key}" ]]; then
+        echo 'Warning: Could not extract the XWeb configuration key' >&2
+        return 1
+    fi
+    if ! python -c 'import sys, mmkv; mmkv.MMKV.initializeMMKV(sys.argv[1]); kv = mmkv.MMKV("xweb_global_storage", mmkv.MMKVMode.MultiProcess, sys.argv[2]); sys.exit(1) if not kv.set(True, "disable_web_res_sig_verify") else None; kv.sync(); mmkv.MMKV.onExit()' "${config_dir}" "${key:0:16}"; then
+        echo 'Warning: Could not update XWeb configuration. Download and build Tencent MMKV and its Python binding, then retry.' >&2
+        return 1
+    fi
+    output=$(mktemp /tmp/wechat-pdfjsfix.XXXXXX) || return 1
+    if ! bsdtar --create --format zip --file "${output}" \
+        --exclude 'XViewer/lib/web/cmaps' \
+        -s '|^cmaps|XViewer/lib/web/cmaps|' \
+        "@${resource}" -C /usr/share/pdf.js/web cmaps; then
+        echo 'Warning: Could not repack XFile web resources' >&2
+        return 1
+    fi
+    chmod 644 "${output}" || return 1
+    printf 'Please review %s and replace %s with it before opening WeChat\n' "${output}" "${resource}"
+}
+
 applet_stop() {
     notifier_item=$(notifier_get)
     [[ -z "${notifier_item}" ]] && return
@@ -413,8 +461,11 @@ case "${applet}" in
     'dde-file-manager')
         applet_dde "$@"
         ;;
+    'pdfjsfix.sh'|'pdfjsfix')
+        applet_pdfjsfix "$@"
+        ;;
     *)
-        echo "Unknown applet '${applet}', allowed: start.sh (alias start, wechat-universal, wechat-universal.sh), stop.sh (alias stop)"
+        echo "Unknown applet '${applet}', allowed: start.sh (alias start, wechat-universal, wechat-universal.sh), stop.sh (alias stop), pdfjsfix.sh (alias pdfjsfix)"
         false
         ;;
 esac
