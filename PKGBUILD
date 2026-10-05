@@ -1,6 +1,6 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=tabulate
-pkgver=1.5
+pkgver=2.0
 pkgrel=1
 pkgdesc="Table maker for modern C++"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=(MIT)
 depends=()
 makedepends=(cmake)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('324c9f2427d4d0e568b63fcd7bd81f4eee6743d7106af5ead134f81d637f190f77122f28cc42b9e95f7782f5058492b1903eadb44e1c3061a636b32bb93d0ed2')
+sha512sums=('50508ac58fdb7542a095b02e04da32f87ae6595b5c0de143b5071878ea819db01b71b21d8aed1a99c6fd22342bbd5fa531d9a354723ba2e5513a8e858233ee09')
 
 build() {
   cmake \
