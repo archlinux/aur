@@ -2,7 +2,7 @@
 # Created with assistance from GLM 5.3 Flash.
 
 pkgname=whisp
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Anti-Note for GNOME — a fluid, gesture-driven scratchpad with WYSIWYG Markdown"
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=('meson')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tanaybhomia/Whisp/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('020a8def2afeb76d8f459acd3099b5c94d573e059037db01df14c8dc295cb1d8')
+sha256sums=('e358e1580fbc454a53fbee99bc8b4f2b3973b12edfc5e24e0c8ab7fa2e5dbe29')
 
 build() {
   cd "${srcdir}/Whisp-${pkgver}"
