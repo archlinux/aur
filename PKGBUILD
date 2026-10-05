@@ -25,7 +25,7 @@ optdepends=(
     'flameshot: Screenshot without/with Zalo window button'
     'gnome-screenshot: Screenshot without/with Zalo window button'
     'xfce4-screenshooter: Screenshot without/with Zalo window button'
-    'mate-screenshot: Screenshot without/with Zalo window button'
+    'mate-utils: Screenshot without/with Zalo window button'
     'scrot: Screenshot without/with Zalo window button'
 
     # Audio/Video Calling (ZCall Bridge)
