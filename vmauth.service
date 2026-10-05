@@ -23,6 +23,7 @@ ProtectHostname=true
 ProtectControlGroups=true
 ProtectKernelModules=true
 ProtectKernelTunables=true
+ProtectProc=invisible
 LockPersonality=true
 RestrictRealtime=true
 RestrictNamespaces=true
