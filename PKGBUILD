@@ -2,14 +2,14 @@
 
 pkgname=dusklight
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusklight"
 license=('CC0-1.0')
 depends=('glibc' 'libgcc' 'abseil-cpp' 'libstdc++' 'sdl3' 'freetype2'
 	 'libpng' 'fmt' 'sqlite' 'libogg' 'opus' 'curl')
-makedepends=('cmake' 'ninja' 'clang' 'lld' 'vulkan-headers' 'git')
+makedepends=('cmake' 'ninja' 'vulkan-headers' 'git')
 provides=('tp-dusk')
 conflicts=('tp-dusk')
 replaces=('tp-dusk')
@@ -24,6 +24,10 @@ sha256sums=('535d50e77ddeaf2dd4c9baa7b96f8fea83f3b818b44eac7f8265e239cb37fb5d'
             'SKIP'
             'SKIP'
             'SKIP')
+# Mod support seems dependent on LTO being turned off
+# plus debug info being into the binary. In the future,
+# if this can be removed, I would like to remove it.
+options=(!lto !debug)
 
 prepare() {
 	cd "$srcdir/$pkgname"
@@ -39,13 +43,13 @@ build() {
 	cd "$srcdir"
 	cmake -B build -S ${pkgname} -GNinja \
 	-DCMAKE_BUILD_TYPE=None \
-	-DCMAKE_C_COMPILER=clang \
-	-DCMAKE_CXX_COMPILER=clang++ \
+	-DCMAKE_C_COMPILER=gcc \
+	-DCMAKE_CXX_COMPILER=g++ \
 	-DCMAKE_SKIP_RPATH=ON \
-	-DCMAKE_C_FLAGS="${CFLAGS} -flto=thin -DNDEBUG" \
-	-DCMAKE_CXX_FLAGS="${CXXFLAGS} -flto=thin -DNDEBUG" \
-	-DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS} -fuse-ld=lld" \
-	-DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS} -fuse-ld=lld" \
+	-DCMAKE_C_FLAGS="${CFLAGS} -g -DNDEBUG" \
+	-DCMAKE_CXX_FLAGS="${CXXFLAGS} -g -DNDEBUG" \
+	-DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS}" \
+	-DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS}" \
 	-DDUSK_ENABLE_OPUS=ON \
 	-DDUSK_PACKAGE_INSTALL=OFF \
 	-DAURORA_SDL3_PROVIDER=system
