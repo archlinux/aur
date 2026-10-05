@@ -32,7 +32,7 @@
 # submittable package, not a simulation of one.
 
 pkgname=cordial
-pkgver=0.21.1
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="Roblox's official Android build, run natively on Linux -- Cordial ships no Roblox code and fetches a signature-verified one"
 arch=('x86_64')
@@ -106,6 +106,15 @@ makedepends=(
   'libpipewire'
   'libpulse'
   'alsa-lib'
+  # dynarmic, the VR mode's translator (crates/cordial-guest): Boost's headers,
+  # which it find_package()s, and lld and llvm for that crate's arm64 test
+  # image, which check() builds.
+  'boost'
+  'lld'
+  'llvm'
+  # Vulkan's C headers, for the guest_vk and guest_xr layout tests check() runs:
+  # they compile a probe against them for arm64 and fail without them.
+  'vulkan-headers'
 )
 optdepends=(
   # `bwrap` is genuinely optional: sandbox.rs only ever *subtracts* from what
@@ -117,10 +126,10 @@ optdepends=(
   # starts and window.rs dlopens these for it; CORDIAL_MONITOR needs Xinerama.
   'libx11: X11 session fallback'
   'libxinerama: CORDIAL_MONITOR monitor selection under X11'
-  # Roblox's own Android build, unpacked by Sober, is the copy Cordial looks
-  # for first. It is a suggestion and not a dependency because a user-supplied
-  # APK works just as well and neither one comes from this package.
-  'sober: a Roblox build for Cordial to run (Cordial ships none)'
+  # Sober's Roblox build can be copied into Cordial's own store (Settings,
+  # Roblox). It is a suggestion and not a dependency: Cordial downloads its own
+  # build, and nothing from this package depends on Sober.
+  'sober: its Roblox build can be imported into Cordial (Cordial downloads its own)'
 )
 conflicts=('cordial-git' 'cordial-bin')
 install="$pkgname.install"
@@ -152,8 +161,18 @@ source=(
   "android_bionic::git+https://github.com/minecraft-linux/android_bionic.git"
   "android_core::git+https://github.com/minecraft-linux/android_core.git"
   "libjnivm::git+https://github.com/ChristopherHX/libjnivm.git"
+  # dynarmic and the six of its externals that are compiled; biscuit, catch,
+  # oaknut and zydis's own copy of zycore are not, and are never fetched.
+  "dynarmic::git+https://github.com/azahar-emu/dynarmic.git"
+  "dynarmic-fmt::git+https://github.com/fmtlib/fmt.git"
+  "dynarmic-mcl::git+https://github.com/azahar-emu/mcl.git"
+  "dynarmic-robin-map::git+https://github.com/Tessil/robin-map.git"
+  "dynarmic-xbyak::git+https://github.com/herumi/xbyak.git"
+  "dynarmic-zydis::git+https://github.com/zyantific/zydis.git"
+  "dynarmic-zycore::git+https://github.com/zyantific/zycore-c.git"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+            'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
   cd "$srcdir/$pkgname"
@@ -166,12 +185,24 @@ prepare() {
   git submodule init
   git config submodule."third_party/mcpelauncher-linker".url "$srcdir/mcpelauncher-linker"
   git config submodule."third_party/libjnivm".url "$srcdir/libjnivm"
+  git config submodule."third_party/dynarmic".url "$srcdir/dynarmic"
   git -c protocol.file.allow=always submodule update
 
   cd third_party/mcpelauncher-linker
   git submodule init
   git config submodule.bionic.url "$srcdir/android_bionic"
   git config submodule.core.url "$srcdir/android_core"
+  git -c protocol.file.allow=always submodule update
+
+  cd "$srcdir/$pkgname/third_party/dynarmic"
+  git submodule init externals/fmt externals/mcl externals/robin-map \
+    externals/xbyak externals/zydis externals/zycore
+  git config submodule.fmt.url "$srcdir/dynarmic-fmt"
+  git config submodule.mcl.url "$srcdir/dynarmic-mcl"
+  git config submodule.robin-map.url "$srcdir/dynarmic-robin-map"
+  git config submodule.xbyak.url "$srcdir/dynarmic-xbyak"
+  git config submodule.zydis.url "$srcdir/dynarmic-zydis"
+  git config submodule.zycore.url "$srcdir/dynarmic-zycore"
   git -c protocol.file.allow=always submodule update
 
   cd "$srcdir/$pkgname"
@@ -303,4 +334,19 @@ package() {
     "$pkgdir/usr/share/licenses/$pkgname/libjnivm-MIT.txt"
   install -Dm644 third_party/mocktail-webview/LICENSE \
     "$pkgdir/usr/share/licenses/$pkgname/mocktail-webview-Apache-2.0.txt"
+  # dynarmic and its compiled-in externals, the VR mode's translator.
+  install -Dm644 third_party/dynarmic/LICENSE.txt \
+    "$pkgdir/usr/share/licenses/$pkgname/dynarmic-0BSD.txt"
+  install -Dm644 third_party/dynarmic/externals/fmt/LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/fmt-MIT.txt"
+  install -Dm644 third_party/dynarmic/externals/mcl/LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/mcl-MIT.txt"
+  install -Dm644 third_party/dynarmic/externals/robin-map/LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/robin-map-MIT.txt"
+  install -Dm644 third_party/dynarmic/externals/xbyak/COPYRIGHT \
+    "$pkgdir/usr/share/licenses/$pkgname/xbyak-BSD-3-Clause.txt"
+  install -Dm644 third_party/dynarmic/externals/zydis/LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/zydis-MIT.txt"
+  install -Dm644 third_party/dynarmic/externals/zycore/LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/zycore-MIT.txt"
 }

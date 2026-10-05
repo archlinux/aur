@@ -10,13 +10,10 @@ Cordial ships no Roblox build. On first run it offers to fetch one, and
 installs it only if Roblox's own signing certificate signed it.
 
 Roblox publishes no Android binary of its own -- its endpoint answers
-supportsAndroidBinaries: false -- so the build comes from a third-party mirror,
-or from a copy Sober has already unpacked, or from an APK you point it at:
-
-    ~/.var/app/org.vinegarhq.Sober/data/sober/packages/x86_64/com.roblox.client/
-
-A local copy is preferred when there is one: it costs no request and no bytes,
-and it gets the same signature check either way.
+supportsAndroidBinaries: false -- so the build comes from a third-party
+mirror, and Cordial keeps its own copy of it. If you would rather use Sober's
+build, or an APK you already have, Settings > Roblox can copy either in. Cordial
+does not follow Sober's updates after that.
 
 Start it with `cordial-shell`, or from your application list. `cordial-run` is
 the loader the shell launches and is not what you run by hand.
