@@ -1,6 +1,6 @@
 pkgbase = ojo-bin
 	pkgdesc = Security scanner for dependencies, secrets, misconfiguration, and code (prebuilt binary)
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/colibrisec/ojo
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = ojo-bin
 	conflicts = ojo
 	options = !strip
 	options = !debug
-	source_x86_64 = ojo-0.2.2-x86_64::https://github.com/colibrisec/ojo/releases/download/v0.2.2/ojo_v0.2.2_linux_amd64
-	sha256sums_x86_64 = 47fa6fcc65b588964eb29b3247f8b11e8c6d348a8a592c69f39ac98041e563b9
-	source_aarch64 = ojo-0.2.2-aarch64::https://github.com/colibrisec/ojo/releases/download/v0.2.2/ojo_v0.2.2_linux_arm64
-	sha256sums_aarch64 = dd821e98b4266dfe51135dc6b88d3de4b1ba34dc1abb0fdf0539fc469cb3bdce
+	source_x86_64 = ojo-0.2.3-x86_64::https://github.com/colibrisec/ojo/releases/download/v0.2.3/ojo_v0.2.3_linux_amd64
+	sha256sums_x86_64 = fec89f4d866dea82445c48b50c18b6fa82930c800cb60c38ffef09803c0e5692
+	source_aarch64 = ojo-0.2.3-aarch64::https://github.com/colibrisec/ojo/releases/download/v0.2.3/ojo_v0.2.3_linux_arm64
+	sha256sums_aarch64 = 25b2004a5ce27c3e4bd23e666f22cba3631dfafc1a7eb18ea95aa29f5a1d6d72
 
 pkgname = ojo-bin
