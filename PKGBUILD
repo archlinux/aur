@@ -3,7 +3,7 @@
 # https://git.felo.gg/Felitendo/PKGBUILDS
 
 pkgname=kitty-tune-bin
-pkgver=1.3.9
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="SoundCloud and YouTube music player (upstream binary)"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/alan7383/Kit
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::https://github.com/alan7383/KittyTuneDesktop/releases/download/v${pkgver}/kitty-tune_${pkgver}_arm64.deb")
 noextract=("${pkgname}-${pkgver}-x86_64.deb" "${pkgname}-${pkgver}-aarch64.deb")
 sha256sums=('bd8242976bf55d5b44ed3bad59d26baf2f2103d3244f20348630f30bd6d21eae')
-sha256sums_x86_64=('0a8cb3df98ffb09d396806dff86b6dcc8c25735368188fc24ffb47b297e32648')
-sha256sums_aarch64=('c7714a34259ba5416f9d0be0c77532d4c97cf7ea36640cca0a8fae116948989a')
+sha256sums_x86_64=('be47d51eea1bd400bb6a52c38b84043e55cd777d36c6a51ee2c519c118ae6a14')
+sha256sums_aarch64=('3ffe6f0e9658040a92458a3071052a26aad83debcfb88d65d7ba80883a660f22')
 
 package() {
   bsdtar -xOf "$srcdir/${pkgname}-${pkgver}-${CARCH}.deb" 'data.tar.*' \
