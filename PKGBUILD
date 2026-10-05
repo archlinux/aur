@@ -1,6 +1,6 @@
 
 pkgname=labymodlauncher-bin
-pkgver=3.1.9
+pkgver=3.1.10
 pkgrel=1
 pkgdesc="A launcher for LabyMod, a Minecraft client that adds a bunch of useful features (official)"
 arch=('x86_64')
@@ -9,8 +9,8 @@ license=('LicenseRef-Proprietary')
 provides=('labylauncher')
 depends=('gtk3' 'nss' 'alsa-lib')
 options=(!strip !debug)
-source=("${pkgname}-${pkgver}.AppImage::https://releases.r2.labymod.net/launcher/stable/linux/x64/LabyMod%20Launcher-3.1.9-x86_64.AppImage")
-sha256sums=('ac31bee635c7f20dfd59e2fc3f3a472031cf430b0901971b3ae066937d3f4756')
+source=("${pkgname}-${pkgver}.AppImage::https://releases.r2.labymod.net/launcher/stable/linux/x64/LabyMod%20Launcher-3.1.10-x86_64.AppImage")
+sha256sums=('81cdfd829c5439f097f60c020ae51fc82eeab1e5f706ec84935342ac1895f6f1')
 
 package() {
     cd "${srcdir}"
