@@ -4,7 +4,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=irlba
-_pkgver=2.3.7
+_pkgver=2.4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b211a9d41ec6f99ae3c84c99d705ba10')
-b2sums=('268d804eb9d5884fdd9ce054c9660bf2b7dcf6915225c04b3f7a18e2e706d77333a25535241e741d378f6ca85282890d77d6e53d3a824fd880ff0416dc9fbf21')
+md5sums=('3bd6570ce08a025c0a76c5b1077d51c5')
+b2sums=('9f6de8952ee5219365f7ff3854dcb026152bcba71e97d98ee9e2ed3e6f582f7b88a13935b0c2efd73cf93b886e45881f80e7a47d5b22c915b65db420e00f5c92')
 
 build() {
   mkdir build
