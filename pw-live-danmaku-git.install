@@ -1,0 +1,36 @@
+post_install() {
+  cat <<'EOF'
+The systemd user unit is installed but deliberately not enabled:
+
+  systemctl --user enable --now pw-live-danmaku
+
+It publishes a PipeWire video node named "pw-live-danmaku" (480x1080, 30 fps) and
+draws the chat of room 1746707149, which is upstream's own room -- change it, or
+the overlay shows someone else's stream:
+
+  systemctl --user edit pw-live-danmaku          # override ExecStart=
+
+The room is a room number or a URL (https://live.bilibili.com/545068). Add
+--cookie-file for real nicknames; Bilibili masks them on an anonymous connection.
+Write that path with systemd's %h, never ~:
+
+  --cookie-file %h/.config/pw-live-danmaku/cookie
+
+Select the node from OBS with the obs-pwvideo plugin; the linux-pipewire plugin
+shipped with OBS goes through xdg-desktop-portal and cannot see this kind of node.
+Set the source size to exactly --size (480x1080): a smaller negotiated size is
+clipped, not scaled.
+
+The room starts empty, because a panel is a window rather than a log. --history N
+keeps the last N rows on disk so the next start has something to show.
+
+Options are the ExecStart arguments of the unit, e.g.
+
+  pw-live-danmaku --help                        # full list
+  pw-live-danmaku --demo --dump /tmp/panel.png  # render without a live room
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
