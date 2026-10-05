@@ -2,7 +2,7 @@
 
 pkgname=edgcpp-git
 pkgver=r62403.f0e30b6
-pkgrel=3
+pkgrel=4
 pkgdesc="The EDG C/C++ front end with its C-generating back end (eccp), prelinker and runtime"
 arch=('x86_64' 'aarch64')
 url="https://edgcpp.org"
