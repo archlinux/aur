@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fmsb
-_pkgver=0.7.6
+_pkgver=0.7.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Functions for Medical Statistics Book with some Demographic Data"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-vcd
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('281b8f4834c1583168cb0bfd32b58ee2')
-b2sums=('c26909c62c231ae997e7b27ee382918ccc5ae83536f10a31d00cd3b96f582eed4a997a1327ff25814dd1221d00b1ce4eb4c26758e1a9116819298f8ee05540ab')
+md5sums=('e33c84c42fc035c050a0d1f9dc2c01b8')
+b2sums=('39b3fba6a22ab2a533ea2f830ea2ff763c445bfba077bbdff560e8c70f7bc055234c8d4fbd2c9d6e539a37f3357206531b8d6d95f41f865936720d82e30bab27')
 
 build() {
   mkdir build
