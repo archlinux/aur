@@ -1,7 +1,7 @@
 # Maintainer: Timur Bagautdinov <mr.bagautdinov14 at gmail dot com>
 
 pkgname="voxelcore"
-pkgver=0.31.4
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="Minecraft-like game engine in C++ with OpenGL"
 url="https://github.com/MihailRis/$pkgname"
@@ -9,31 +9,47 @@ license=("custom")
 arch=('x86_64')
 options=("lto" "strip" "!debug")
 depends=("gcc-libs" "bash" "glibc" "hicolor-icon-theme" "libglvnd" "zlib" "glfw" "glew" "glm" "libpng" "libvorbis" "openal" "luajit" "curl" "freetype2")
-makedepends=("cmake" "sed" "entt")
+makedepends=("cmake" "sed")
 source=(
-    "$url/archive/refs/tags/v$pkgver.zip"
+    "$pkgname-$pkgver::git+https://github.com/MihailRis/voxelcore.git#tag=v$pkgver"
+    "entt-3.16.0::git+https://github.com/skypjack/entt.git#tag=v3.16.0"
     "voxelcore.sh"
-    "patch-01.patch"
 )
-sha256sums=("9327075d3c0195b292cd108a1e1c8b312a1b7c865d6bd6255d443b8033c1af9c"
-            "9766b3fcdd35932709d9f8f7bd8c322d139f830440eb649bdff9a45cc14ef02e"
-            "ac8709370b77c1a1f3aed19c387600394d60d3eab41858772195d5e0c259ec94")
+sha256sums=(
+    "e7eee099b46ee2fa0fc99ee619cf47a2d75c1b3167d32f88d677e96f341340f8"
+    "de25424025094e6a0bff5dadd16893d5f0158d68ca4691d2e43643c2176f6d06"
+    "9766b3fcdd35932709d9f8f7bd8c322d139f830440eb649bdff9a45cc14ef02e"
+)
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    # Patch for 0.31.4
-    patch -p1 -i "$srcdir/patch-01.patch"
-
     # Desktop file patching to run custom launch script that installed in system (check voxelcore.sh for more details)
     sed -i 's|Exec=VoxelEngine|Exec=voxelcore|' "$srcdir/$pkgname-$pkgver/dev/VoxelCore.desktop"
+
+    # EnTT detection fix
+    sed -i 's|find_package(EnTT REQUIRED)|find_package(EnTT CONFIG REQUIRED)\ntarget_link_libraries(VoxelEngineSrc PRIVATE EnTT::EnTT)|' "$srcdir/$pkgname-$pkgver/src/CMakeLists.txt"
 }
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
 
+    # Prepare old entt v3.16.0
+    cd "$srcdir/entt-3.16.0"
     mkdir -p build
-    cmake -DCMAKE_BUILD_TYPE=Release -S . -B ./build
+    cmake -DCMAKE_BUILD_TYPE=Release \
+        -DENTT_INSTALL=ON \
+        -DCMAKE_INSTALL_PREFIX="$srcdir/entt-prefix" \
+        -S . -B ./build
+    cmake --build ./build
+    cmake --install ./build
+
+    # Build voxelcore
+    cd "$srcdir/voxelcore-$pkgver"
+    mkdir -p build
+    cmake -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_PREFIX_PATH="$srcdir/entt-prefix" \
+        -S . -B ./build
     cmake --build build -j$(nproc)
 }
 
