@@ -2,7 +2,7 @@
 # Created with assistance from Qwen 3.6 (Alibaba).
 
 pkgname=retrom-bin
-pkgver=0.8.1
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="Your own private cloud game-library service (prebuilt binary)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('retrom' 'retrom-git')
 options=('!strip')
 
 source=("${pkgname}-${pkgver}.deb::https://github.com/JMBeresford/retrom/releases/download/v${pkgver}/Retrom_${pkgver}_amd64.deb")
-sha256sums=('5ebf0e666fa2f92c5fcd34142d2c3d03dd161a9ac1f48ecb6fda8eb1db89d818')
+sha256sums=('b4c0b6d78bdea45b486be6b0f85d9bcbedf8be7fef246090ef65d4323e19fc64')
 
 package() {
     # Извлекаем data.tar.gz из .deb
