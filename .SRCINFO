@@ -1,6 +1,6 @@
 pkgbase = speedcrunch-git
 	pkgdesc = Simple, high precision and powerful calculator.
-	pkgver = 0.12.0.r695.g05d4f0f7
+	pkgver = 1.0.0.r2.g2acd0f7b
 	pkgrel = 1
 	url = https://www.speedcrunch.org/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = speedcrunch-git
 	depends = qt6-tools
 	provides = speedcrunch
 	conflicts = speedcrunch
-	source = git+https://bitbucket.org/heldercorreia/speedcrunch.git
+	source = git+https://github.com/heldercorreia/speedcrunch.git
 	sha256sums = SKIP
 
 pkgname = speedcrunch-git

@@ -3,7 +3,7 @@
 
 _pkgname=speedcrunch
 pkgname="${_pkgname}"-git
-pkgver=0.12.0.r695.g05d4f0f7
+pkgver=1.0.0.r2.g2acd0f7b
 pkgrel=1
 pkgdesc="Simple, high precision and powerful calculator."
 arch=('i686' 'x86_64' 'aarch64')
@@ -13,17 +13,16 @@ depends=('qt6-tools')
 makedepends=('git' 'cmake' 'python-sphinx')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("git+https://bitbucket.org/heldercorreia/speedcrunch.git")
+source=("git+https://github.com/heldercorreia/speedcrunch.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${_pkgname}"
-    printf "0.12.0.r%s.%s" "$(git rev-list 0e9c32a2cc445affd5887cf98515603a3168fa5c..HEAD | wc -l)" "$(git describe --tags | sed 's|^.*-||')"
+    git describe --always | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 prepare() {
     cd "${_pkgname}"
-    sed -i 's|GitHub light|GitHub Light|' src/resources/speedcrunch.qrc
     sed -i 's|QHELPGENERATOR := qhelpgenerator|QHELPGENERATOR := /usr/lib/qt6/qhelpgenerator|' doc/src/Makefile
     cd doc/src
     make build-bundled
