@@ -1,7 +1,7 @@
 # Maintainer: justbispo <aur.fyxy0@slmail.me>
 
 pkgname=razer-cli
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="CLI for configuring Razer devices."
 arch=(any)
@@ -16,7 +16,7 @@ makedepends=(
 )
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('119d74b754d9ca4325bbcb3741b3a83dbeeebb7b56448af7eb99eea5ec3d1fd9')
+sha256sums=('65e6dd74842ae6d944717dc777e98b8a17a39f59767145809c10bf2f138f26a1')
 
 build() {
     cd "$pkgname-$pkgver"
