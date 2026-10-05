@@ -3,7 +3,7 @@
 
 pkgname='xtables-addons'
 pkgver='3.31'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Set of additional extensions for the Xtables packet filter that is present in the Linux kernel'
 arch=('x86_64' 'aarch64')
 license=('GPL2')
@@ -20,23 +20,26 @@ _kernver="`pacman -Ql linux${_linux_custom} | awk '/(\/modules\/)([0-9.-])+-(.*)
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-
   autoreconf -fvi
+}
+
+build() {
+  cd "${pkgname}-${pkgver}"
+  export CFLAGS="${CFLAGS} ${DEBUG_CFLAGS}"
+  export CXXLAGS="${CXXFLAGS} ${DEBUG_CXXFLAGS}"
+  export LDFLAGS="${LDFLAGS}"
   ./configure \
     --prefix="/usr" \
     --sysconfdir="/etc" \
     --bindir="/usr/bin" \
     --sbindir="/usr/bin" \
     --libdir="/usr/lib" \
+    --includedir="/usr/include" \
     --mandir="/usr/share/man" \
     --docdir="/usr/share/doc" \
     --libexecdir="/usr/lib/iptables" \
     --with-xtlibdir="/usr/lib/xtables" \
     --with-kbuild="${_kernver}build"
-}
-
-build() {
-  cd "${pkgname}-${pkgver}"
   make
 }
 

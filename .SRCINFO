@@ -1,7 +1,7 @@
 pkgbase = xtables-addons
 	pkgdesc = Set of additional extensions for the Xtables packet filter that is present in the Linux kernel
 	pkgver = 3.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://inai.de/projects/xtables-addons
 	arch = x86_64
 	arch = aarch64
