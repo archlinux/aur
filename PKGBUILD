@@ -2,7 +2,7 @@
 # The release workflow sets pkgver and publishes this file to the AUR on every
 # release tag, so the AUR version never falls behind the latest tag.
 pkgname=neferwl-git
-pkgver=0.3.0.r0.gcf370a0
+pkgver=0.4.0.r1.g245c4bb
 pkgrel=1
 pkgdesc='Minimal Wayland compositor with column tiling, for the TTY (git version)'
 arch=('x86_64' 'aarch64')
