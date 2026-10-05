@@ -1,4 +1,4 @@
-# Maintainer: lucas <lucas@localhost>
+# Maintainer: lucas <lucaszhou007@163.com>
 pkgname=llama-prism-rocm-bin
 pkgver=b10754
 _commit=2459f68
