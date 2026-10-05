@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=datazen-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Lightweight, open-source AI database client"
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=(
 )
 noextract=("${pkgname}-${pkgver}.deb")
 sha256sums=(
-    '1098d9cef69d22bfa730a7ee9a5c29d2e0abe33bae982db1a293620509ef2001'
+    'f02a9768f244c50ba67cd191adcc2fa831ba41b35534e9a0232e7c29553adfae'
     'd8369d4fd80887d45cd647bb67f2fbf4c500c516745b96444fc07d814fe48209'
 )
 
