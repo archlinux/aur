@@ -2,7 +2,7 @@
 pkgname=mass-certificate-generator-bin
 pkgver=1.1.0
 _tag="v1.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="Batch certificate generator with custom fonts, layouts, and CSV/Excel data (standalone binary)"
 arch=('x86_64')
 url="https://github.com/KaziRifatMorshed/Mass-Certificate-Generator-MCG-gh-Public"
