@@ -1,0 +1,4 @@
+# edgcpp-git test list: reflections. One line per test that is not plain.
+#   <path> [target=A,B] [lib=X] [headers=X] [skip=A,B] [noskip=A,B] [A=STATUS]... [reference]
+#   STATUS: PASS COMP ICE LINK EXEC CRASH DIFF. The grammar is in suite.py.
+reflections/demo1.sft.cpp x86_64=DIFF

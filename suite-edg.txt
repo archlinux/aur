@@ -1,17 +1,42 @@
 # edgcpp-git test list: edg. One line per test that is not plain.
 #   <path> [target=A,B] [lib=X] [headers=X] [skip=A,B] [noskip=A,B] [A=STATUS]... [reference]
 #   STATUS: PASS COMP ICE LINK EXEC CRASH DIFF. The grammar is in suite.py.
-edg/ccs/coroutines/gnats15431_21/test.mft.cpp aarch64=COMP
+edg/ccs/coroutines/gnats15431_21/test.mft.cpp aarch64=COMP x86_64=COMP
+edg/ccs/coroutines/gnats20948-implicit-return3.sft.cpp x86_64=DIFF
+edg/ccs/coroutines/gnats23854-no_lowering.sft.cpp x86_64=DIFF
+edg/ccs/gnats18674.sft.cpp x86_64=DIFF
 edg/ccs/gnats20969d.sft.cpp aarch64=COMP
-edg/ccs/gnats21546.sft.cpp aarch64=COMP
+edg/ccs/gnats20969f.sft.cpp target=x86_64
+edg/ccs/gnats21546.sft.cpp aarch64=COMP x86_64=COMP
+edg/ccs/gnats25030.sft.cpp target=x86_64
+edg/ccs/gnats25030b.sft.cpp target=x86_64
+edg/cmeerw/gnats-19349.sft.cpp x86_64=DIFF
+edg/cmeerw/gnats-24564.sft.cpp x86_64=DIFF
 edg/cmeerw/gnats-25554.sft.cpp aarch64=COMP
-edg/cmeerw/gnats-26097.sft.cpp aarch64=COMP
+edg/cmeerw/gnats-25680-32.sft.cpp target=i686
+edg/cmeerw/gnats-25680-64.sft.cpp target=x86_64
+edg/cmeerw/gnats-25683.sft.cpp x86_64=DIFF
+edg/cmeerw/gnats-25869-il-display.sft.cpp x86_64=DIFF
+edg/cmeerw/gnats-26058.sft.cpp x86_64=DIFF
+edg/cmeerw/gnats-26097.sft.cpp aarch64=COMP x86_64=COMP
+edg/cmeerw/gnats-26310-bases.sft.cpp x86_64=DIFF
+edg/cmeerw/gnats-26310-deriv.sft.cpp x86_64=DIFF
+edg/cmeerw/gnats-26310-steps.sft.cpp x86_64=DIFF
 edg/cmeerw/gnats-26329-adjust-bfk.sft.cpp target=aarch64
 edg/cmeerw/gnats-26329-builtins.sft.cpp aarch64=COMP
-edg/cmeerw/gnats-26329-dump.sft.cpp aarch64=COMP
+edg/cmeerw/gnats-26329-dump.sft.cpp aarch64=COMP x86_64=COMP
 edg/cmeerw/gnats-26329-target.sft.cpp target=aarch64,armv7
-edg/cmeerw/gnats-26691.sft.cpp aarch64=COMP
+edg/cmeerw/gnats-26502-display.sft.cpp x86_64=DIFF
+edg/cmeerw/gnats-26664-disp.sft.cpp x86_64=DIFF
+edg/cmeerw/gnats-26691.sft.cpp aarch64=COMP x86_64=COMP
+edg/cmeerw/gnats-26742-disp.sft.cpp x86_64=DIFF
 edg/cmeerw/gnats-27093-constexpr.sft.cpp target=aarch64
+edg/cmeerw/gnats-27093-errors.sft.cpp target=aarch64
+edg/cmeerw/gnats-27093-neon-type-mangling.sft.cpp target=aarch64
+edg/cmeerw/gnats-27093-neon-types.sft.cpp target=aarch64
+edg/cmeerw/gnats-27093-sve-type-mangling.sft.cpp target=aarch64
+edg/cmeerw/gnats-27093-sve-types.sft.cpp target=aarch64
+edg/cmeerw/gnats-27143.sft.cpp x86_64=DIFF
 edg/cmeerw/gnats-27146-builtin-types.sft.cpp target=aarch64,armv7
 edg/cmeerw/gnats-27146-neon-type-mangling.sft.cpp target=aarch64,armv7 aarch64=COMP
 edg/cmeerw/gnats-27181-32.sft.cpp target=armv7,i686,win32
@@ -19,25 +44,37 @@ edg/cmeerw/gnats-27181-customer.sft.cpp target=aarch64,win64
 edg/cmeerw/gnats-27181-msvc.sft.cpp target=aarch64,win64
 edg/cmeerw/gnats-27181-run.sft.cpp target=aarch64
 edg/cmeerw/gnats-27181.sft.cpp target=aarch64,armv7,win32,win64
-edg/cmeerw/gnats-27236.sft.cpp target=aarch64,armv7,i686,x86_64 aarch64=COMP
+edg/cmeerw/gnats-27219.sft.cpp target=x86_64
+edg/cmeerw/gnats-27231.sft.cpp x86_64=DIFF
+edg/cmeerw/gnats-27236.sft.cpp target=aarch64,armv7,i686,x86_64 aarch64=COMP x86_64=COMP
+edg/cmeerw/gnats-27272.sft.cpp target=x86_64
 edg/cmeerw/gnats-27391.sft.cpp target=armv7,x86_64
+edg/cmeerw/gnats-27465.sft.cpp target=x86_64
 edg/cmeerw/gnats-27483-cpu.sft.cpp target=aarch64,armv7,i686,x86_64
-edg/cmeerw/gnats-27483-dump.sft.cpp target=aarch64,armv7,i686,x86_64 aarch64=COMP
+edg/cmeerw/gnats-27483-dump.sft.cpp target=aarch64,armv7,i686,x86_64 aarch64=COMP x86_64=COMP
 edg/cmeerw/gnats-27486-coro.sft.cpp target=aarch64,armv7,i686,x86_64
 edg/cmeerw/gnats-27486-uint16x8.sft.cpp target=aarch64
 edg/cmeerw/gnats-27525-c.sft.cpp target=aarch64,armv7,i686,x86_64
 edg/cmeerw/gnats-27525-mangling.sft.cpp target=aarch64,armv7,i686,x86_64
 edg/cmeerw/gnats-27525.sft.cpp target=aarch64,armv7,i686,x86_64 aarch64=COMP
-edg/cmeerw/gnats-27706.sft.cpp aarch64=COMP
+edg/cmeerw/gnats-27596-display.sft.cpp x86_64=DIFF
+edg/cmeerw/gnats-27628-display.sft.cpp x86_64=DIFF
+edg/cmeerw/gnats-27706.sft.cpp aarch64=COMP x86_64=COMP
 edg/cmeerw/gnats-27849.sft.cpp target=aarch64,armv7
-edg/cmeerw/gnats-27850-dump.sft.cpp target=aarch64,armv7,i686,x86_64 aarch64=COMP
-edg/cmeerw/gnats-27904.sft.cpp target=aarch64,armv7,i686,x86_64 aarch64=COMP
-edg/cmeerw/gnats-27950-dump.sft.cpp target=aarch64,armv7,i686,x86_64 aarch64=COMP
-edg/cmeerw/gnats-27990-dump.sft.cpp target=aarch64,armv7,i686,x86_64 aarch64=COMP
-edg/cmeerw/gnats-28013-display.sft.cpp target=aarch64,armv7,i686,x86_64
+edg/cmeerw/gnats-27850-dump.sft.cpp target=aarch64,armv7,i686,x86_64 aarch64=COMP x86_64=COMP
+edg/cmeerw/gnats-27887.sft.cpp x86_64=DIFF
+edg/cmeerw/gnats-27904.sft.cpp target=aarch64,armv7,i686,x86_64 aarch64=COMP x86_64=COMP
+edg/cmeerw/gnats-27919-mangling.sft.cpp target=aarch64
+edg/cmeerw/gnats-27919.sft.cpp target=aarch64
+edg/cmeerw/gnats-27950-dump.sft.cpp target=aarch64,armv7,i686,x86_64 aarch64=COMP x86_64=COMP
+edg/cmeerw/gnats-27950.sft.cpp target=aarch64
+edg/cmeerw/gnats-27990-dump.sft.cpp target=aarch64,armv7,i686,x86_64 aarch64=COMP x86_64=COMP
+edg/cmeerw/gnats-28013-display.sft.cpp target=aarch64,armv7,i686,x86_64 x86_64=DIFF
 edg/cmeerw/gnats-28013-err.sft.cpp target=aarch64,armv7,i686,x86_64
 edg/cmeerw/gnats-28013.sft.cpp target=aarch64,armv7,i686,x86_64
-edg/cmeerw/gnats-28358.sft.cpp target=aarch64,armv7,i686,x86_64 aarch64=COMP
+edg/cmeerw/gnats-28071-display.sft.cpp x86_64=DIFF
+edg/cmeerw/gnats-28204.sft.cpp target=aarch64
+edg/cmeerw/gnats-28358.sft.cpp target=aarch64,armv7,i686,x86_64 aarch64=COMP x86_64=COMP
 edg/cmeerw/gnats-28440.sft.cpp target=aarch64,armv7
 edg/cmeerw/gnats-28565-dump.sft.cpp target=riscv32,riscv64
 edg/cmeerw/gnats-28565-mangling.sft.cpp target=riscv32,riscv64
@@ -45,24 +82,69 @@ edg/cmeerw/gnats-28565.sft.cpp target=riscv32,riscv64
 edg/cmeerw/gnats-28572-diag.sft.cpp target=riscv32,riscv64
 edg/cmeerw/gnats-28572-disp.sft.cpp target=riscv64
 edg/cmeerw/gnats-28572.sft.cpp target=riscv32,riscv64
-edg/cmeerw/gnats-28642-dump.sft.cpp target=aarch64,armv7,i686,riscv32,riscv64,x86_64 aarch64=COMP
-edg/cmeerw/gnats-28648.sft.cpp target=aarch64,armv7,i686,riscv32,riscv64,x86_64 aarch64=COMP
-edg/cmeerw/gnats-28894-dump.sft.cpp target=aarch64,armv7,i686,riscv32,riscv64,x86_64 aarch64=COMP
-edg/cmeerw/gnats-28966.sft.cpp target=aarch64,armv7,i686,riscv32,riscv64,x86_64 aarch64=COMP
-edg/daveed/18767a.sft.cpp aarch64=COMP
-edg/daveed/d00072a.sft.cpp aarch64=COMP
-edg/daveed/d00300a.sft.cpp aarch64=COMP
-edg/daveed/d00300d.sft.cpp aarch64=COMP
-edg/daveed/d00300f.sft.cpp aarch64=COMP
-edg/daveed/d00300g.sft.cpp aarch64=COMP
-edg/daveed/d00300i.sft.cpp aarch64=COMP
-edg/daveed/d00330a.sft.cpp aarch64=COMP
-edg/daveed/d00443a.sft.cpp aarch64=COMP
-edg/daveed/d00443b.sft.cpp aarch64=COMP
-edg/daveed/d00443c.sft.cpp aarch64=COMP
-edg/daveed/d00448a.sft.cpp aarch64=COMP
-edg/daveed/d00448b.sft.cpp aarch64=COMP
-edg/daveed/d00451a.sft.cpp aarch64=COMP
-edg/daveed/d00521_6.sft.cpp aarch64=COMP
-edg/daveed/d00593a.sft.cpp aarch64=COMP
-edg/daveed/g21168a.sft.cpp aarch64=COMP
+edg/cmeerw/gnats-28642-dump.sft.cpp target=aarch64,armv7,i686,riscv32,riscv64,x86_64 aarch64=COMP x86_64=COMP
+edg/cmeerw/gnats-28648.sft.cpp target=aarch64,armv7,i686,riscv32,riscv64,x86_64 aarch64=COMP x86_64=COMP
+edg/cmeerw/gnats-28724-theadvector.sft.cpp target=riscv64
+edg/cmeerw/gnats-28894-dump.sft.cpp target=aarch64,armv7,i686,riscv32,riscv64,x86_64 aarch64=COMP x86_64=COMP
+edg/cmeerw/gnats-28966.sft.cpp target=aarch64,armv7,i686,riscv32,riscv64,x86_64 aarch64=COMP x86_64=COMP
+edg/daveed/18767a.sft.cpp aarch64=COMP x86_64=COMP
+edg/daveed/d00072a.sft.cpp aarch64=COMP x86_64=COMP
+edg/daveed/d00250a.sft.cpp x86_64=DIFF
+edg/daveed/d00300a.sft.cpp aarch64=COMP x86_64=COMP
+edg/daveed/d00300b.sft.cpp x86_64=DIFF
+edg/daveed/d00300c.sft.cpp x86_64=DIFF
+edg/daveed/d00300d.sft.cpp aarch64=COMP x86_64=COMP
+edg/daveed/d00300e.sft.cpp x86_64=DIFF
+edg/daveed/d00300f.sft.cpp aarch64=COMP x86_64=COMP
+edg/daveed/d00300g.sft.cpp aarch64=COMP x86_64=COMP
+edg/daveed/d00300h.sft.cpp x86_64=DIFF
+edg/daveed/d00300i.sft.cpp aarch64=COMP x86_64=COMP
+edg/daveed/d00330a.sft.cpp aarch64=COMP x86_64=COMP
+edg/daveed/d00330b.sft.cpp x86_64=DIFF
+edg/daveed/d00330c.sft.cpp x86_64=DIFF
+edg/daveed/d00330d.sft.cpp x86_64=DIFF
+edg/daveed/d00330e.sft.cpp x86_64=DIFF
+edg/daveed/d00330f.sft.cpp x86_64=DIFF
+edg/daveed/d00330g.sft.cpp x86_64=DIFF
+edg/daveed/d00330h.sft.cpp x86_64=DIFF
+edg/daveed/d00330i.sft.cpp x86_64=DIFF
+edg/daveed/d00393a/test.mft.cpp x86_64=DIFF
+edg/daveed/d00443a.sft.cpp aarch64=COMP x86_64=COMP
+edg/daveed/d00443b.sft.cpp aarch64=COMP x86_64=COMP
+edg/daveed/d00443c.sft.cpp aarch64=COMP x86_64=COMP
+edg/daveed/d00448a.sft.cpp aarch64=COMP x86_64=COMP
+edg/daveed/d00448b.sft.cpp aarch64=COMP x86_64=COMP
+edg/daveed/d00451a.sft.cpp aarch64=COMP x86_64=COMP
+edg/daveed/d00521_6.sft.cpp aarch64=COMP x86_64=COMP
+edg/daveed/d00593a.sft.cpp aarch64=COMP x86_64=COMP
+edg/daveed/g10238a.sft.cpp x86_64=DIFF
+edg/daveed/g10238b.sft.cpp x86_64=DIFF
+edg/daveed/g21168a.sft.cpp aarch64=COMP x86_64=COMP
+edg/daveed/g24520c/test.mft.cpp x86_64=DIFF
+edg/gnats/22605.sft.cpp x86_64=DIFF
+edg/rma/accdecl22.sft.cpp x86_64=DIFF
+edg/rma/anonunion25.sft.cpp x86_64=DIFF
+edg/rma/bug_main.sft.cpp x86_64=DIFF
+edg/rma/defarg06.sft.cpp x86_64=DIFF
+edg/rma/defarg17.sft.cpp x86_64=DIFF
+edg/rma/defarg21.sft.cpp x86_64=DIFF
+edg/rma/del04.sft.cpp x86_64=DIFF
+edg/rma/disambig16.sft.cpp x86_64=DIFF
+edg/rma/dtorbug.sft.cpp x86_64=DIFF
+edg/rma/enum07.sft.cpp x86_64=DIFF
+edg/rma/enum08.sft.cpp x86_64=DIFF
+edg/rma/hidden_name14.sft.cpp x86_64=DIFF
+edg/rma/hidden_name15.sft.cpp x86_64=DIFF
+edg/rma/hidden_name28.sft.cpp x86_64=DIFF
+edg/rma/init33.sft.cpp x86_64=DIFF
+edg/rma/lifetime18.sft.cpp x86_64=DIFF
+edg/rma/linkage02.sft.cpp x86_64=DIFF
+edg/rma/linkage13.sft.cpp x86_64=DIFF
+edg/rma/linkage22.sft.cpp x86_64=DIFF
+edg/rma/linkage23.sft.cpp x86_64=DIFF
+edg/rma/list95.sft.cpp x86_64=DIFF
+edg/rma/m12056.sft.cpp x86_64=DIFF
+edg/rma/mail.sft.cpp x86_64=DIFF
+edg/rma/ms_cpgen02.sft.cpp x86_64=DIFF
+edg/wcc/gnats26516-ms-fp-call-conv-86_32.sft.cpp target=i686
+edg/wcc/gnats26516-ms-fp-call-conv-86_64.sft.cpp target=x86_64

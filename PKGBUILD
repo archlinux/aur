@@ -31,26 +31,30 @@ source=("edgcpp::git+https://github.com/edgcpp/compiler.git"
         "edg_eccp_config"
         "suite.py"
         "suite-changes.txt"
+        "suite-cwg.txt"
         "suite-edg.txt"
         "suite-imported-clang-c.txt"
         "suite-imported-clang-cpp.txt"
         "suite-imported-gnu-c.txt"
         "suite-imported-gnu-cpp.txt"
         "suite-modules.txt"
+        "suite-reflections.txt"
         "suite-regressions.txt")
 sha256sums=('SKIP'
             'ceced79cd33724d912e50c358d03d0a67b66a0d6c3f93ce60af32476ca01b8b5'
             '81831901bda74b2bf54b94519f4953e773a385989404050dc1c3f9cf2169cf1c'
             '6fbf98c33f08bb5270aa9f04bec34c912c61f546285de11e74d11c954aaae939'
-            '7f25bb80837ef0e4bbda06e3c320804c76eaa8220a01e235d191d0f3897dc3a2'
-            '1b1c1ba080c6790d1154a1a9ec3e5896c14b7de9753a2a3a7ee31dc8b8da7d05'
-            '24077dbfadac38db3eaf9ef07de10384e67d9fbd5d798f796a0c0012845df2de'
-            'c22f883fc65729a6a281dcc93005529a92060a846dc3d0810fad34180a5e42e8'
-            '6530ac5ec33fc53b9106b07a658d07741852f2671685946980edd262ed916665'
-            '4e73d3d422c8dff5a2f5bb264ffbd857a870935c044527946d65114412499a53'
-            '87c5269a34be2d4fe1ac86f186328ef517afc97dc009df93eae67a560fa46042'
-            '61bdede776b7f21c2be104bea5b756708191343e77fa9b51b44abd6087ac3fe0'
-            '86a6d65699ca47b6f9d71b4401894e1e0ab329051c1dfe0bc51ea66a71ee90db')
+            '4a4af1d6ebaf915382eed700bfbe9a79eb154c3a30fa37a68621fcd092ee89d1'
+            'eb8ec88ecfbd85e1a659e44edb6c4159540222544e7cc2b59a8d70e3761b5b88'
+            '6cf9d00bc530013b5997d871c141ccc815547633cfe0fd9b9ad41f2fa9324ba6'
+            '08a6f65b2600ddb77aab11206d09fd1e98ae61fe88c65178eb0ad74d75ed4507'
+            'd1d0c874c57d9d4dd0ef385e246a9931b72fcb2758deb509e41239cdee0f93c5'
+            'ca312765a3949d6ba72de26fb2f4f78d6e1d20ae3604b2b7c7f8d4e14d4fdfd2'
+            'de68079ca666ce5fb68b15d93c412bd30b03abc8ee8b3ff19a1331abefefee92'
+            '2b74ec61692a8b4e04a1fa72a09987692742f1d24b103b70069d19b15739207f'
+            'be92986e4f51df5a4f74afb7624d7b91278fbf3db2c62f60be5771e7f0aaf2a3'
+            'f7c6a70dceb225b457a20d53c35554c27090c33c2ae59d4ff1312f1acac48221'
+            '504c220e3bcc0828fda0147fa4bf8970e37379298bd2628dd7f485ec75ed91cc')
 
 # The preset and its build directory, per architecture. _target is the
 # default target's own name (LEGACY_TARGET_CONFIGURATION_NAME in the
@@ -85,6 +89,8 @@ prepare() {
     sed -i '/^# Import the named .* target as target configuration/,/^TARGET_CONFIGURATION_[0-9]*=/d' "$pf"
     sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' "$pf"
     ! grep -e '^import <support/target/' -e '^TARGET_CONFIGURATION_' "$pf"
+    # gcc accepts #pragma weak; upstream enables it in debug builds only.
+    echo PRAGMA_WEAK_ALLOWED=1 >> cmake/macro-conf/support/simple-conf/release/base.cmakedef
 }
 
 # The EDG_BASE the package builds with, tests with and installs: the

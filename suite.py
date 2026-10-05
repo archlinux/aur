@@ -129,10 +129,15 @@ def write_skip_lists(src, entries, arch):
 def run_edgy(src, build, runs, jobs):
     env = os.environ.copy()
     env.pop("EDG_USE_SYSTEM_HEADERS", None)
+    # The recordings were made in the C locale; gcc quotes differently
+    # under UTF-8.
+    env["LC_ALL"] = "C"
     env["PATH"] = f"{src}/dev_tools/bin:{env['PATH']}"
     env["PYTHONPATH"] = f"{src}/dev_tools/pylibs"
     script = f"""
 set -eu
+# Tests crash on purpose; one cpfe core is gigabytes.
+ulimit -c 0
 . "{build}/environment.sh"
 export EDG_GCC_INCL_SCRAPE="$(edg-scrape-compiler gcc --lang c++ includes)"
 export EDG_GCC_CINCL_SCRAPE="$(edg-scrape-compiler gcc --lang c includes)"

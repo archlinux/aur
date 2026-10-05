@@ -1,0 +1,6 @@
+# edgcpp-git test list: cwg. One line per test that is not plain.
+#   <path> [target=A,B] [lib=X] [headers=X] [skip=A,B] [noskip=A,B] [A=STATUS]... [reference]
+#   STATUS: PASS COMP ICE LINK EXEC CRASH DIFF. The grammar is in suite.py.
+cwg/cwg1835.sft.cpp x86_64=DIFF
+cwg/cwg2585.sft.cpp x86_64=DIFF
+cwg/cwg2630/test.mft.cpp target=win32
