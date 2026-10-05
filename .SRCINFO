@@ -1,6 +1,6 @@
 pkgbase = standardnotes-bin
 	pkgdesc = Free, open-source encrypted notes app.
-	pkgver = 3.202.0
+	pkgver = 3.202.7
 	pkgrel = 1
 	url = https://github.com/standardnotes/app
 	install = standardnotes.install
@@ -13,9 +13,9 @@ pkgbase = standardnotes-bin
 	options = !strip
 	source = standard-notes.sh
 	sha256sums = 71f0811526d428b541ef39ee804b257ed60b1b9b5d620436c79ed77e17eb4d16
-	source_x86_64 = standardnotes-bin-3.202.0-amd64.deb::https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.202.0/standard-notes-3.202.0-linux-amd64.deb
-	sha256sums_x86_64 = b51d6895ccef371a61b68996ddefeb6fe107a65f95c71490c610cd9349d3d1cb
-	source_aarch64 = standardnotes-bin-3.202.0-aarch64.deb::https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.202.0/standard-notes-3.202.0-linux-arm64.deb
-	sha256sums_aarch64 = 4d50f635b2e91a7c2a0ea059d9dea2f77e671f8c66d43d22ad786e78f8fbb675
+	source_x86_64 = standardnotes-bin-3.202.7-amd64.deb::https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.202.7/standard-notes-3.202.7-linux-amd64.deb
+	sha256sums_x86_64 = d4ae080b2f5dba594b67a7180bf7b81a254a7b62500e2ea86af031dfc0b988f1
+	source_aarch64 = standardnotes-bin-3.202.7-aarch64.deb::https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.202.7/standard-notes-3.202.7-linux-arm64.deb
+	sha256sums_aarch64 = 4e2f3ffd5001a17b103b879b2a3229189e0ce885bd9ef19192aa39c64d6141e4
 
 pkgname = standardnotes-bin
