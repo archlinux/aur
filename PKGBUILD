@@ -3,7 +3,7 @@
 pkgname=insensical-bin
 _pkgname=insensical
 _repo=mah3uz/insensical-release
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A terminal multiplexer with a window of its own, for supervising many terminals and coding agents (prebuilt)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('insensical')
 conflicts=('insensical')
 options=('!strip' '!debug')
 source=("https://github.com/$_repo/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('ec2ea09bc94794bd4999a42b7f981426922d126bb64cc3903cd2b8cae6b6e8b0')
+sha256sums=('318de171684e189e841b89f5a408b65287196100e6a277428379af67a3c7e3e7')
 
 package() {
   cd "$_pkgname-$pkgver-x86_64-unknown-linux-gnu"
