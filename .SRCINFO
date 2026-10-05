@@ -1,0 +1,32 @@
+pkgbase = footage-bin
+	pkgdesc = Trim, flip, rotate and crop videos using native Arch Linux libraries
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://gitlab.com/adhami3310/Footage
+	install = footage-bin.install
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = ostree
+	makedepends = perl
+	depends = dconf
+	depends = glib2
+	depends = glibc
+	depends = graphene
+	depends = gst-editing-services
+	depends = gst-libav
+	depends = gst-plugin-gtk4
+	depends = gst-plugins-bad
+	depends = gst-plugins-base
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
+	depends = gst-plugins-ugly
+	depends = gstreamer
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libadwaita
+	depends = libgcc
+	provides = footage=1.4.0
+	conflicts = footage
+	options = !debug
+
+pkgname = footage-bin
