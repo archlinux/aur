@@ -1,0 +1,16 @@
+pkgbase = msedit-mod-bin
+	pkgdesc = A simple editor for simple needs (Microsoft Edit) — maryasov modified build (prebuilt)
+	pkgver = 2.0.0.r505.gfd2e67a
+	pkgrel = 1
+	url = https://github.com/maryasov/edit
+	arch = x86_64
+	license = MIT
+	depends = icu
+	provides = msedit
+	conflicts = msedit
+	conflicts = msedit-git
+	conflicts = msedit-mod-git
+	source_x86_64 = msedit-x86_64.tar.zst::https://github.com/maryasov/edit/releases/download/nightly/msedit-x86_64.tar.zst
+	sha256sums_x86_64 = b87d2931b1e7e3a35de378d15cbfaf94680c9fe3f7ca1ba0a166d17913b5c273
+
+pkgname = msedit-mod-bin
