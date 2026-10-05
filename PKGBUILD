@@ -1,11 +1,11 @@
 # Maintainer: Kazi Rifat Morshed <kazirifatmorshed@gmail.com>
 pkgname=mass-certificate-generator-bin
-pkgver=1.1
+pkgver=1.1.0
 _tag="v1.1"
 pkgrel=1
 pkgdesc="Batch certificate generator with custom fonts, layouts, and CSV/Excel data (standalone binary)"
 arch=('x86_64')
-url="https://gitlab.com/KaziRifatMorshed/mass-certificate-generator"
+url="https://github.com/KaziRifatMorshed/Mass-Certificate-Generator-MCG-gh-Public"
 license=('Apache-2.0')
 depends=('glibc' 'fontconfig' 'hicolor-icon-theme')
 provides=('mass-certificate-generator')
