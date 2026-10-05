@@ -10,8 +10,8 @@ license=("GPL3")
 provides=("jellyfin-autorefresh")
 source_x86_64=("$url/releases/download/$pkgver/$_pkgname-$pkgver-amd64-linux.tar.gz")
 source_aarch64=("$url/releases/download/$pkgver/$_pkgname-$pkgver-arm64-linux.tar.gz")
-sha256sums_x86_64=('b00e112e15a816e255f9382a3397e5edb2f410028f9232a7fbf4f9705ff5e42a')
-sha256sums_aarch64=('431785185d8ada87863f098d68c4800f6f2669a499e970bcba0f81a0e92394c5')
+sha256sums_x86_64=('aa33e5b934a9002d38131cddf813b28c8e708ed7f63bf92d31e7ef999482a4da')
+sha256sums_aarch64=('6261fe6db9f68b25aa656ed8def753ac98e02899652f787428c5ca90c2568cc2')
 package() {
     [ -f ./$_pkgname-amd64 ] && mv ./$_pkgname-amd64 ./$_pkgname
     [ -f ./$_pkgname-arm64 ] && mv ./$_pkgname-arm64 ./$_pkgname

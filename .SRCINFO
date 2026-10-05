@@ -8,8 +8,8 @@ pkgbase = jellyfin-autorefresh-new-releases-bin
 	license = GPL3
 	provides = jellyfin-autorefresh
 	source_x86_64 = https://github.com/SinTan1729/jellyfin-autorefresh-new-releases/releases/download/0.4.19/jellyfin-autorefresh-0.4.19-amd64-linux.tar.gz
-	sha256sums_x86_64 = b00e112e15a816e255f9382a3397e5edb2f410028f9232a7fbf4f9705ff5e42a
+	sha256sums_x86_64 = aa33e5b934a9002d38131cddf813b28c8e708ed7f63bf92d31e7ef999482a4da
 	source_aarch64 = https://github.com/SinTan1729/jellyfin-autorefresh-new-releases/releases/download/0.4.19/jellyfin-autorefresh-0.4.19-arm64-linux.tar.gz
-	sha256sums_aarch64 = 431785185d8ada87863f098d68c4800f6f2669a499e970bcba0f81a0e92394c5
+	sha256sums_aarch64 = 6261fe6db9f68b25aa656ed8def753ac98e02899652f787428c5ca90c2568cc2
 
 pkgname = jellyfin-autorefresh-new-releases-bin
