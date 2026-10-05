@@ -1,5 +1,5 @@
 pkgname=nagram-desktop
-pkgver=7.2.10
+pkgver=7.2.10.3
 _td_commit=bc9c263e2bfee06aaab41e82db51a103376030bc
 pkgrel=1
 pkgdesc='An independent Telegram client built with Qt.'
@@ -75,7 +75,7 @@ optdepends=(
   'xdg-desktop-portal: desktop integration'
 )
 source=(
-  "git+https://github.com/NextAlone/Nagram-Qt.git#tag=v${pkgver}-pre.2"
+  "git+https://github.com/NextAlone/Nagram-Qt.git#tag=v${pkgver}"
   "git+https://github.com/tdlib/td.git#commit=${_td_commit}"
   "git+https://github.com/Microsoft/GSL.git"
   "git+https://github.com/Cyan4973/xxHash.git"
@@ -115,7 +115,7 @@ source=(
   "git+https://gitlab.com/mnauw/cppgir.git"
   "git+https://github.com/martinmoene/expected-lite.git"
 )
-sha512sums=('5f627d3699f2d25af785f404204a8db542b10cef2f902051b0a370aab1e629900560e6e102c46f877ccb39c3f2609bd1b08848f27c860cf8d299a28845aca6e3'
+sha512sums=('d19e8ba70b5f91f20df96150a2d7c642097003a00493ed8389ec566f2b13bad80aa20fc4d5728bc9af1821c60183933ed60318d5ff88393493bc4c174205cf92'
             '12d3b77dbb2a7b7deaef0e173626b9d16acfbdde5b1df4bd58a70a7541a5d8032f25ecbc14604b0e47aa3d6d76704c56409d432717412c6046efebd0ab6180f1'
             'SKIP'
             'SKIP'
