@@ -1,0 +1,18 @@
+pkgbase = msedit-mod-git
+	pkgdesc = A simple editor for simple needs (Microsoft Edit) — maryasov modified build
+	pkgver = 2.0.0.r505.gfd2e67a
+	pkgrel = 1
+	url = https://github.com/maryasov/edit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = icu
+	provides = msedit
+	conflicts = msedit
+	conflicts = msedit-git
+	source = msedit::git+https://github.com/maryasov/edit.git#branch=mk
+	sha256sums = SKIP
+
+pkgname = msedit-mod-git
