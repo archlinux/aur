@@ -1,6 +1,6 @@
 pkgbase = python-pypdfium2
 	pkgdesc = An ABI-level Python 3 binding to PDFium (unofficial AUR package)
-	pkgver = 5.13.0
+	pkgver = 5.14.0
 	pkgrel = 1
 	url = https://github.com/pypdfium2-team/pypdfium2
 	changelog = python-pypdfium2.changelog.md
@@ -13,16 +13,13 @@ pkgbase = python-pypdfium2
 	makedepends = python-installer
 	makedepends = python-build
 	makedepends = python-packaging
-	makedepends = python-setuptools-scm>=7.1
 	depends = python>=3.7.0
 	optdepends = python-pillow: support PIL image objects for raster graphics
 	optdepends = python-numpy: support numpy arrays for raster graphics
 	optdepends = python-opencv: to save with pypdfium2's numpy adapter in the rendering CLI
 	optdepends = python-tabulate: prettier output where tables are involved
 	options = !debug
-	source = https://files.pythonhosted.org/packages/source/p/pypdfium2/pypdfium2-5.13.0.tar.gz
-	source = ctypesgen::git+https://github.com/pypdfium2-team/ctypesgen#commit=956523ebca0a5d6dcf93aa3eea2454e295470031
-	sha256sums = 7ca2d8e31bd8d0d40c496416b7d8bea423388669ffd494929f50e8c3a82326b8
-	sha256sums = SKIP
+	source = https://files.pythonhosted.org/packages/source/p/pypdfium2/pypdfium2-5.14.0.tar.gz
+	sha256sums = c5f009b3157f10e97dceb55963f5910eff92feb00587ba10a76f12b87ce1a4b6
 
 pkgname = python-pypdfium2
