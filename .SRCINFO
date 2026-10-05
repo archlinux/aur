@@ -1,22 +1,22 @@
 pkgbase = memerist
-	pkgdesc = A simple meme editor for Linux
+	pkgdesc = A simple and modern meme editor
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vani-tty1/memerist
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = blueprint-compiler
-	makedepends = gcc
 	makedepends = meson
 	makedepends = ninja
+	depends = cairo
+	depends = gdk-pixbuf2
 	depends = glib2
 	depends = gtk4
 	depends = imagemagick
 	depends = libadwaita
 	depends = libepoxy
-	depends = libjpeg-turbo
-	depends = libpng
+	depends = pango
 	source = memerist-2.5.0.tar.gz::https://github.com/vani-tty1/memerist/archive/refs/tags/v2.5.0.tar.gz
 	b2sums = 19b2f9193629ccb44d2f398f0a5fa1e46dd9dee5cfaf2c3241de5ffc8103571d0ace49e3bea9a328bec08b700cb61a98db79231a752a5cf6810eaca30d3ed157
 
