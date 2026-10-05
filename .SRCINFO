@@ -1,0 +1,13 @@
+pkgbase = melatonina
+	pkgdesc = Simple blue light filter for Wayland compositors supporting wlr-gamma-control
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SoulThy/melatonina
+	arch = x86_64
+	license = LicenseRef-unknown
+	makedepends = zig>=0.17.0
+	makedepends = zig<0.18
+	source = melatonina-0.1.0.tar.gz::https://github.com/SoulThy/melatonina/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = e77492b8db969e974c81e7d40d5d648d31a5b238d219e143ebd3228a20740d8e
+
+pkgname = melatonina
