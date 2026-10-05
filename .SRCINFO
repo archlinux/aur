@@ -1,0 +1,26 @@
+pkgbase = filmcraft-bin
+	pkgdesc = Video editor: edit video, color and sound — a clean-room Premiere-style editor in Rust (official binary)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://getartcraft.com/apps/filmcraft
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	depends = alsa-lib
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	depends = libglvnd
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = wayland
+	provides = filmcraft
+	conflicts = filmcraft
+	options = !strip
+	source = https://github.com/storytold/filmcraft/releases/download/v0.2.0/filmcraft-0.2.0-linux-x86_64.tar.gz
+	sha256sums = 35743d048fcd942a1fe36b8c95f0af7b3ce7d5577325afabfae1083175d22fa5
+
+pkgname = filmcraft-bin
