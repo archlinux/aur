@@ -1,6 +1,6 @@
 pkgbase = alphai-tui-bin
 	pkgdesc = Terminal stock dashboard with live charts, AI-scored news and SEC Form 4 trades
-	pkgver = 0.29.0
+	pkgver = 0.30.0
 	pkgrel = 1
 	url = https://github.com/makeev/alphai-tui
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = alphai-tui-bin
 	license = MIT
 	depends = gcc-libs
 	depends = glibc
-	provides = alphai-tui=0.29.0
+	provides = alphai-tui=0.30.0
 	conflicts = alphai-tui
 	options = !debug
-	source_x86_64 = alphai-tui-0.29.0-x86_64.tar.xz::https://github.com/makeev/alphai-tui/releases/download/v0.29.0/alphai-tui-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 93499057d46ec63bd50aa79e7fee42ab12822712f6690e5bfe997c63888dfb5e
-	source_aarch64 = alphai-tui-0.29.0-aarch64.tar.xz::https://github.com/makeev/alphai-tui/releases/download/v0.29.0/alphai-tui-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = e762bcab72778cbd40afaabdb466647537639f8c62b0fca03d28f3a7e35a1954
+	source_x86_64 = alphai-tui-0.30.0-x86_64.tar.xz::https://github.com/makeev/alphai-tui/releases/download/v0.30.0/alphai-tui-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = c17c90ddb72ad83798b7b9fc1dbef746a89c4be099477b34530cfdcc15780cbc
+	source_aarch64 = alphai-tui-0.30.0-aarch64.tar.xz::https://github.com/makeev/alphai-tui/releases/download/v0.30.0/alphai-tui-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 4fba8cd6f393fb37e0c0c15fe2fa822dcdadd7b415e823e7f29294a70aa0489e
 
 pkgname = alphai-tui-bin
