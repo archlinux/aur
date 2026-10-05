@@ -1,7 +1,7 @@
 pkgbase = jwm-git
 	pkgdesc = JWM is a light-weight window manager for the X11 Window System. Git version.
 	pkgver = s1685.r173.85930c4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://joewing.net/projects/jwm/
 	arch = i686
 	arch = x86_64

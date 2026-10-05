@@ -2,7 +2,7 @@
 # Contributor: Corey Mwamba <contact.me@coreymwamba.co.uk>
 pkgname=jwm-git
 pkgver=s1685.r173.85930c4
-pkgrel=2
+pkgrel=3
 pkgdesc="JWM is a light-weight window manager for the X11 Window System. Git version."
 arch=('i686' 'x86_64')
 url="http://joewing.net/projects/jwm/"
@@ -26,11 +26,11 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  /usr/bin/cp -f /usr/share/automake-1.18/config.guess .
-  /usr/bin/cp -f /usr/share/automake-1.18/config.sub .
-  /usr/bin/cp -f /usr/share/automake-1.18/install-sh .
-  /usr/bin/cp -f /usr/share/automake-1.18/compile .
-  /usr/bin/cp -f /usr/share/automake-1.18/missing .
+  /usr/bin/cp -f /usr/share/automake-1.19/config.guess .
+  /usr/bin/cp -f /usr/share/automake-1.19/config.sub .
+  /usr/bin/cp -f /usr/share/automake-1.19/install-sh .
+  /usr/bin/cp -f /usr/share/automake-1.19/compile .
+  /usr/bin/cp -f /usr/share/automake-1.19/missing .
   /usr/bin/cp -f /usr/share/gettext/config.rpath .
   /usr/bin/cp -f /usr/share/gettext/po/Makefile.in.in po/
    export ACLOCAL_PATH="/usr/share/aclocal"
