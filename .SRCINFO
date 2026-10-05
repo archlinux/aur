@@ -1,12 +1,12 @@
 pkgbase = whoseware
 	pkgdesc = Who owns, leads or funds the software you run? Checks packages against the fashware lists
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/fulgidus/whoseware
 	arch = x86_64
 	license = X11
 	makedepends = zig
-	source = whoseware-0.2.0-src.tar.gz::https://github.com/fulgidus/whoseware/releases/download/v0.2.0/whoseware-0.2.0-src.tar.gz
-	sha256sums = 92c3bfe7349a9f92e6929dcc53216b0c7b26c7ca3ffab945ed6f3481418b18e1
+	source = whoseware-0.2.1-src.tar.gz::https://github.com/fulgidus/whoseware/releases/download/v0.2.1/whoseware-0.2.1-src.tar.gz
+	sha256sums = 4c0b96fc9467cfbebff4a33ad7a013f36ec34bcd164ea3e15c27bccad07b8a71
 
 pkgname = whoseware
