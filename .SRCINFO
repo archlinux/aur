@@ -1,7 +1,7 @@
 pkgbase = qv2ray
 	pkgdesc = Cross-platform V2ray Client written in Qt (Stable Release)
 	pkgver = 2.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Qv2ray/Qv2ray
 	arch = x86_64
 	license = GPL3
@@ -22,6 +22,8 @@ pkgbase = qv2ray
 	provides = qv2ray
 	conflicts = qv2ray
 	source = Qv2ray::git+https://github.com/Qv2ray/Qv2ray
+	source = fix-modern-protobuf-abseil-log-conflict.patch
 	sha512sums = SKIP
+	sha512sums = 9f09156eed3d53fe62bd3c3c8ce244e837604657f6fec0b21442c53ababa0f4c5b7f975c37b8da1de5eb90a1e1d2ec47bb943f34295c10102944c4ed09a21e68
 
 pkgname = qv2ray

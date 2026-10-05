@@ -1,10 +1,11 @@
-# Maintainer: Neboer <rubinposter at gmail dot com>
+# Maintainer: EEEntity <eeentity at hotmail dot com>
+# Contributor: Neboer <rubinposter at gmail dot com>
 # Contributor: DuckSoft <realducksoft at gmail dot com>
 # Contributor: ArielAxionL <i at axionl dot me>
 # Contributor: Leroy.H.Y <me at lhy0403 dot top>
 pkgname=qv2ray
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform V2ray Client written in Qt (Stable Release)"
 arch=('x86_64')
 url='https://github.com/Qv2ray/Qv2ray'
@@ -16,9 +17,11 @@ makedepends=('git' 'make' 'qt5-tools' 'which' 'gcc' 'qt5-declarative'
 provides=('qv2ray')
 conflicts=('qv2ray')
 
-source=('Qv2ray::git+https://github.com/Qv2ray/Qv2ray')
+source=('Qv2ray::git+https://github.com/Qv2ray/Qv2ray'
+        'fix-modern-protobuf-abseil-log-conflict.patch')
 
-sha512sums=('SKIP')
+sha512sums=('SKIP'
+            '9f09156eed3d53fe62bd3c3c8ce244e837604657f6fec0b21442c53ababa0f4c5b7f975c37b8da1de5eb90a1e1d2ec47bb943f34295c10102944c4ed09a21e68')
 
 pkgver() {
     printf "%s" $(cat ${srcdir}/Qv2ray/makespec/VERSION)
@@ -27,6 +30,7 @@ pkgver() {
 prepare() {
     cd "${srcdir}/Qv2ray"
     git submodule update --recursive --init
+    patch -Np1 -i "${srcdir}/fix-modern-protobuf-abseil-log-conflict.patch"
 }
 
 build() {
@@ -36,6 +40,7 @@ build() {
     cd "${srcdir}/Qv2ray"
     mkdir -p build && cd build
     cmake .. \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
         -DQV2RAY_ZXING_PROVIDER="module" \
         -DQV2RAY_TRANSLATION_PATH="/usr/share/qv2ray/lang" \
