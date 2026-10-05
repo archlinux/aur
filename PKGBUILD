@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=chatwithwork-local-agent-git
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Chat with Work: desktop app, terminal interface and local background agent (development version)"
 arch=('x86_64' 'aarch64')

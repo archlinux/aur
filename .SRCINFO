@@ -1,6 +1,6 @@
 pkgbase = chatwithwork-local-agent-git
 	pkgdesc = Chat with Work: desktop app, terminal interface and local background agent (development version)
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/crmne/chatwithwork-local-agent
 	install = chatwithwork-local-agent-git.install
