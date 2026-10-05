@@ -1,20 +1,30 @@
 # Maintainer: Dheeraj Vittal Shenoy <dheerajshenoy22@gmail.com>
 pkgname=lektra-git
-pkgver=0.7.6.r7.gfbf34bf
-pkgrel=2
+pkgver=0.7.9
+pkgrel=0
 pkgdesc="High-performance document and image viewer that prioritizes screen space and control."
 arch=('x86_64')
 url="https://codeberg.org/lektra/lektra"
 license=('AGPL-3.0')
 depends=(
     'qt6-base'
+    'qt6-svg'
     'qt6-imageformats'
-    'djvulibre'
-    'lua'
+    'libarchive'
+)
+optdepends=(
+    'djvulibre: DjVu documents'
+    'librsvg: more accurate rendering of SVG images'
+    'libexif: EXIF metadata in the properties of images'
+    'binutils: symbolized stack traces in crash reports'
+    'xdg-utils: open links in the web browser'
+    'qt6-wayland: native Wayland support'
+    'kvantum: Kvantum theme engine'
+    'lua-language-server: completion for init.lua, using the installed Lua stubs'
 )
 makedepends=('git' 'cmake' 'pkgconf')
-provides=("lektra")
-conflicts=("lektra")
+provides=('lektra')
+conflicts=('lektra' 'lektra-bin')
 source=(
     "lektra::git+https://codeberg.org/lektra/lektra.git"
 )
