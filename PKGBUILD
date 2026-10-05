@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-lite-git
-pkgver=1.2.23.r0.g1e88a0451
+pkgver=1.2.31.r14.g5e57257d7
 pkgrel=1
 pkgdesc="A music player aimed at audio enthusiasts and music collectors, fewer features, Gstreamer and alsa only"
 arch=(x86_64 i686 armv7h aarch64)
@@ -24,11 +24,13 @@ depends=(
     libcdio
     libebur128
     libgcc
+    libsecret
     libstdc++
     libx11
     qt6-base
     sqlite
     taglib
+    uchardet
     udisks2
     )
 makedepends=(
@@ -74,7 +76,7 @@ build() {
     -DENABLE_TIDAL=OFF
   )
 
-  cmake -B build -S "strawberry" -Wno-dev \
+  cmake -B build -S "strawberry" -Wno-author \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     "${_flags[@]}"
