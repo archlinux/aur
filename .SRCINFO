@@ -1,6 +1,6 @@
 pkgbase = pcsx-redux-git
 	pkgdesc = Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development
-	pkgver = r7743.8f4649d2
+	pkgver = r7877.97643900
 	pkgrel = 1
 	url = https://github.com/grumpycoders/pcsx-redux.git
 	arch = x86_64
@@ -52,6 +52,8 @@ pkgbase = pcsx-redux-git
 	source = git+https://github.com/pcsx-redux/nugget.git
 	source = git+https://github.com/pcsx-redux/thorvg.git
 	source = git+https://github.com/epezent/implot.git
+	source = git+https://github.com/ArthurSonzogni/FTXUI.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

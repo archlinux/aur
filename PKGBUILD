@@ -3,7 +3,7 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r7743.8f4649d2
+pkgver=r7877.97643900
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64' 'aarch64')
@@ -57,8 +57,10 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/pcsx-redux/nugget.git'
         'git+https://github.com/pcsx-redux/thorvg.git'
         'git+https://github.com/epezent/implot.git'
+        'git+https://github.com/ArthurSonzogni/FTXUI.git'
         )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -114,6 +116,7 @@ prepare() {
   git config submodule.src/mips.url "$srcdir/nugget"
   git config submodule.third_party/thorvg.url "$srcdir/thorvg"
   git config submodule.third_party/implot.url "$srcdir/implot"
+  git config submodule.third_party/ftxui.url "$srcdir/FTXUI"
   
 
   git -c protocol.file.allow=always submodule update third_party/imgui \
@@ -137,7 +140,8 @@ prepare() {
                        third_party/cueparser \
                        src/mips \
                        third_party/thorvg \
-                       third_party/implot
+                       third_party/implot \
+                       third_party/ftxui
                        
 
 
