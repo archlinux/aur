@@ -3,7 +3,7 @@
 # publish-aur.yml copies this file into the AUR repo on every release and
 # rewrites pkgver, pkgrel and sha256sums, so those three are placeholders.
 pkgname=gryt-chat-bin
-pkgver=1.13.13
+pkgver=1.13.14
 pkgrel=1
 pkgdesc='Gryt Chat — real-time voice chat desktop client'
 arch=('x86_64')
@@ -18,7 +18,7 @@ provides=('gryt-chat')
 conflicts=('gryt-chat')
 options=('!strip' '!debug')
 source=("https://github.com/Gryt-chat/gryt/releases/download/v${pkgver}/Gryt-Chat-${pkgver}-linux-amd64.deb")
-sha256sums=('4a421d7ea3186c48934800d6af6dca65d618eb60f266da80b8ae6d93c4e7ceac')
+sha256sums=('207b29e095bf2a21c90eceafd39799ee02f8722e0e1f4d946c3c369b8a7085a1')
 
 package() {
   bsdtar -xf data.tar.xz -C "${pkgdir}/"
