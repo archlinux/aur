@@ -1,6 +1,6 @@
 # Maintainer: ParsaGP <psrzp1386@gmail.com>
 pkgname=beatmapexporter-cli-bin
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="osu!lazer Beatmap Exporter utility - CLI version"
 arch=("x86_64")
@@ -13,7 +13,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    "0480b10757d94b52efd1a6bdf819f6a3d2ee48da9c06aa7ae0b2bc8e6c4eaa6c"
+    "e9280eb2c7c55db24be97ca352b1c0cba10da61d5bcf877d8e7034985e8ab42d"
 )
 
 package() {
