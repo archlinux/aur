@@ -1,6 +1,6 @@
 # Maintainer: zhullyb <zhullyb [at] outlook [dot] com>
 pkgname=wechat-devtools-bin
-pkgver=2.01.2510290_2
+pkgver=2.02.2608080_1
 pkgrel=1
 epoch=2
 pkgdesc="WeChat Devtools For Linux."
@@ -16,7 +16,7 @@ source=(
     "wechat-devtools.desktop"
     "wechat-devtools.svg"
 )
-md5sums=('1bc844e146765194fe45505049111f58'
+md5sums=('bb18bf8ed7a3cd4da66386f7f596968d'
          '08b27001217b9732289cd0e33f8f8d58'
          '945fac0a68c298b66f3808f2f1694c98')
 
