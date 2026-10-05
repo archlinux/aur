@@ -2,7 +2,7 @@
 
 pkgname=wfweb-appimage
 _appname=wfweb
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='Headless wfview fork: control Icom transceivers from a web browser (AppImage release)'
 arch=('x86_64' 'aarch64')
@@ -16,9 +16,6 @@ noextract=("${_appname}_${pkgver}-${CARCH}.AppImage")
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/adecarolis/${_appname}/v${pkgver}/LICENSE")
 source_x86_64=("${_appname}_${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_appname}_${pkgver}-x86_64.AppImage")
 source_aarch64=("${_appname}_${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/${_appname}_${pkgver}-aarch64.AppImage")
-sha256sums=('8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
-sha256sums_x86_64=('37b7b6233ff01c518c41d30b7bf60249296a56bf46cca592b27724046f7eb052')
-sha256sums_aarch64=('45fed20d71a1f1039e94afdfd6ab31698196dfd98c45fdd7295fd32b7444e577')
 
 prepare() {
     local _appimage="${_appname}_${pkgver}-${CARCH}.AppImage"
@@ -41,3 +38,6 @@ package() {
 
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+sha256sums=('8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
+sha256sums_x86_64=('0e307021a8c3475626db1fc94b188ff46efe4ad9fe3f3243a8b0b75f6a6ce411')
+sha256sums_aarch64=('027e9e0995b96bf9e2e8b9e7c513aa95098cbca6bb73a0f74fe0a1ee03d9db42')
