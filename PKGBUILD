@@ -3,7 +3,7 @@
 
 pkgname='rustpython'
 _pkgname='RustPython'
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A Python Interpreter written in Rust'
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ depends=('gcc-libs' 'glibc' 'libffi' 'openssl' 'xz')
 makedepends=('cargo')
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('6fa2bfd6d3a6c0ecb2aae216552ba24ad263546198c8a7b0c03c8111b6389d9c')
+sha256sums=('bf290cf7a70f813758819d895868b2b49b9edea1f10de3524df2cae1f2d58a4d')
 
 _rustpythonpath="/usr/lib/${pkgname}-${pkgver}"
 
