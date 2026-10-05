@@ -1,6 +1,6 @@
 pkgbase = kangentic-bin
 	pkgdesc = Desktop Kanban board for orchestrating AI coding agents
-	pkgver = 0.43.2
+	pkgver = 0.44.0
 	pkgrel = 1
 	url = https://github.com/Kangentic/kangentic
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = kangentic-bin
 	optdepends = libappindicator-gtk3: tray/status indicator support
 	provides = kangentic
 	conflicts = kangentic
-	noextract = kangentic_0.43.2_amd64.deb
-	source = https://github.com/Kangentic/kangentic/releases/download/v0.43.2/kangentic_0.43.2_amd64.deb
-	sha256sums = bd50323c0388628ea1b12fc27290f1d155586b0b98df5f3cf8b63b11280b4f69
+	noextract = kangentic_0.44.0_amd64.deb
+	source = https://github.com/Kangentic/kangentic/releases/download/v0.44.0/kangentic_0.44.0_amd64.deb
+	sha256sums = 86211c4b8459e32debb30149901beb37a9807f706c3566e9aeb9cec098ac67a2
 
 pkgname = kangentic-bin
