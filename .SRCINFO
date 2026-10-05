@@ -16,7 +16,6 @@ pkgbase = ananicy-cpp-nosystemd
 	depends = libgcc
 	depends = libstdc++
 	optdepends = cachyos-ananicy-rules: cachyos rules
-	optdepends = cachyos-ananicy-rules-git: cachyos rules git
 	provides = ananicy-cpp
 	conflicts = ananicy-cpp
 	source = https://gitlab.com/ananicy-cpp/ananicy-cpp/-/archive/v1.2.0/ananicy-cpp-v1.2.0.tar.gz
