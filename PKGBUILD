@@ -6,17 +6,17 @@ pkgname='hunspell-si'
 #   $ git log -1 -- si_LK/si_LK.*
 pkgver='2012.09.01'
 _commit='a4473e06b56bfe35187e302754f6baaa8d75e54f'
-pkgrel=1
+pkgrel=2  # TODO Remember to drop to 1 on version change
 pkgdesc='Sinhala dictionary for Hunspell'
 arch=('any')
-url='https://cgit.freedesktop.org/libreoffice/dictionaries/tree/si_LK'
-_src_url='https://cgit.freedesktop.org/libreoffice/dictionaries/plain/si_LK'
+url='https://github.com/LibreOffice/dictionaries'
+_src_url="https://raw.githubusercontent.com/LibreOffice/dictionaries"
 license=('GPL3')
 optdepends=('hunspell: the spell checking libraries and apps')
 provides=('hunspell-dictionary')
 source=(
-  "${pkgname}-${pkgver}.aff::${_src_url}/si_LK.aff?id=${_commit}"
-  "${pkgname}-${pkgver}.dic::${_src_url}/si_LK.dic?id=${_commit}"
+  "${pkgname}-${pkgver}.aff::${_src_url}/${_commit}/si_LK/si_LK.aff"
+  "${pkgname}-${pkgver}.dic::${_src_url}/${_commit}/si_LK/si_LK.dic"
 )
 b2sums=(
   'aabca563c98074dc7d1c75331d1faec55e92543c169d821cba600c53497bccb938c6ad5c545d8632925398c6a1eb865377a6b2bcf5ac45de4119e2ff9100c1e1'
