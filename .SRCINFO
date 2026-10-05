@@ -1,17 +1,27 @@
 pkgbase = lektra-bin
 	pkgdesc = High-performance Document and Image viewer that prioritizes screen space and control
 	pkgver = 0.7.9
-	pkgrel = 0
+	pkgrel = 1
 	url = https://codeberg.org/lektra/lektra
 	arch = x86_64
-	license = AGPL-3.0
+	license = AGPL-3.0-only
 	depends = qt6-base
+	depends = qt6-svg
 	depends = qt6-imageformats
-	depends = djvulibre
-	depends = lua
-	provides = lektra
+	depends = libarchive
+	optdepends = djvulibre: DjVu documents
+	optdepends = librsvg: more accurate rendering of SVG images
+	optdepends = libexif: EXIF metadata in the properties of images
+	optdepends = binutils: symbolized stack traces in crash reports
+	optdepends = xdg-utils: open links in the web browser
+	optdepends = qt6-wayland: native Wayland support
+	optdepends = kvantum: Kvantum theme engine
+	optdepends = lua-language-server: completion for init.lua, using the installed Lua stubs
+	provides = lektra=0.7.9
 	conflicts = lektra
 	conflicts = lektra-git
+	options = !strip
+	options = !debug
 	source = lektra-0.7.9-x86_64.tar.gz::https://codeberg.org/lektra/lektra/releases/download/v0.7.9/lektra-0.7.9-x86_64.tar.gz
 	sha256sums = 8515b805f0e831ef407ac8be1503e83e1083acae6d3ec9454f090b4eb1fedeff
 
