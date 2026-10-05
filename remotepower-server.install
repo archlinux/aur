@@ -25,6 +25,10 @@ _setup_msg() {
            remotepower-passwd
       4) Browse to your server and log in.
 
+    SSH gateway (optional): this package does not include the gateway daemon.
+    From an unpacked RemotePower release run packaging/install-sshgw.sh as root
+    (see docs/sshgw.md).
+
     Optional features: install python-reportlab (PDF), python-webauthn (passkeys,
     AUR), python-pysaml2 + xmlsec (SAML, AUR), python-psycopg + postgresql
     (Postgres backend for large / multi-node fleets).
