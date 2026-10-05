@@ -3,7 +3,7 @@
 pkgname=art_standalone-git
 _pkgname="${pkgname%-git}"
 pkgver=r227.66a5d907
-pkgrel=1
+pkgrel=2
 pkgdesc='A standalone version of Dalvik with Art built in'
 url='https://gitlab.com/android_translation_layer/art_standalone'
 arch=(x86_64 aarch64 armv7h)
