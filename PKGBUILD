@@ -1,7 +1,7 @@
 # Maintainer: Emiliano Gandini Outeda <emiliano.gandini@protonmail.com>
 
 pkgname=trustsight
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc='Audits AUR PKGBUILD updates before install: structure, commands, novelty'
 arch=('any')
@@ -21,13 +21,16 @@ makedepends=(
   'python-wheel'
   'python-hatchling'
   'python-pytest'
+  # The property-based parser tests (spec §12) import hypothesis; the
+  # package's own check() runs the suite.
+  'python-hypothesis'
 )
 optdepends=(
   'pyalpm: native version comparison (faster discovery)'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 
-sha256sums=('4ed254976a0fc891565f8b4ac9f1d9e1de36ff0818032d267f913a76e32405ab')
+sha256sums=('b9789466bab24a6910ba9ff1a2b896fb3e059b4730a6a6a591414b591ba74ee7')
 
 build() {
   cd "$pkgname-$pkgver"
