@@ -7,7 +7,7 @@
 
 pkgname=recoil-engine
 pkgver=VERSION # This will be automatically updated by makepkg via pkgver()
-pkgrel=1
+pkgrel=2 #rebuild to hopefully work with libjsoncpp.so.26 
 pkgdesc="A powerful free cross-platform RTS game engine. (GitHub — latest Stable/Release tag).
 This version is the stable engine release used by BAR."
 arch=('x86_64')
@@ -37,8 +37,7 @@ source=("${pkgname%-git}::git+${_ghurl}.git${_tag}${_git_commit}"
 )
 sha256sums=('SKIP'
             'f1ec1a8d70f05a9e917cf9edbc4274a7a5efe81dbc51ddfb6778040f65ec33f2'
-            '8c9af0eb1089d2531f5e511292fdde82aef53747b2314104baa850075465035c'
-)
+            'd1c22222d1fc787a959334d75fde4cdcd833cd29038d8513c0c7dc60f6943d45')
 
 pkgver() {
   # Set the repository owner and name
