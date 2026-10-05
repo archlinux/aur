@@ -1,0 +1,53 @@
+diff --git a/gtk/meson.build b/gtk/meson.build
+index 3c9a57f..f88928a 100644
+--- a/gtk/meson.build
++++ b/gtk/meson.build
+@@ -77,6 +77,15 @@ if get_option('qsv').enabled()
+   ghb_deps += dependency('vpl')
+ endif
+ 
++if get_option('vaapi').enabled()
++  ghb_deps += [
++    dependency('libva'),
++    dependency('libva-drm'),
++    dependency('libva-x11'),
++    dependency('x11'),
++  ]
++endif
++
+ if get_option('x265').enabled()
+   ghb_deps += dependency('x265')
+   if get_option('numa').enabled()
+diff --git a/gtk/meson_options.txt b/gtk/meson_options.txt
+index a728981..9072ef6 100644
+--- a/gtk/meson_options.txt
++++ b/gtk/meson_options.txt
+@@ -35,5 +35,10 @@ option('qsv',
+        value: 'disabled',
+        description: 'Enable QSV encoder')
+ 
++option('vaapi',
++       type: 'feature',
++       value: 'disabled',
++       description: 'Enable VA-API encoder')
++
+ option('x265',
+        type: 'feature',
+        value: 'disabled',
+diff --git a/gtk/module.defs b/gtk/module.defs
+index 237681c..4164f91 100644
+--- a/gtk/module.defs
++++ b/gtk/module.defs
+@@ -72,6 +72,12 @@ else
+     GTK.CONFIGURE.extra += -Dqsv=disabled
+ endif
+ 
++ifeq (1,$(FEATURE.vaapi))
++    GTK.CONFIGURE.extra += -Dvaapi=enabled
++else
++    GTK.CONFIGURE.extra += -Dvaapi=disabled
++endif
++
+ ifeq (1,$(FEATURE.libdovi))
+     GTK.CONFIGURE.extra += -Dlibdovi=enabled
+ else
