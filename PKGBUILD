@@ -1,6 +1,6 @@
 pkgbase=rust-dos
 pkgname=('rust-dos' 'libretro-rust-dos')
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/dividebysandwich/rust-dos"
@@ -11,7 +11,7 @@ makedepends=('cargo')
 options=('!lto')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Update with updpkgsums once v$pkgver is tagged.
-sha256sums=('c25475f534078660f3a6f353c58a65db1190a9a056e9f303dad6ea7f6fb31299')
+sha256sums=('5fe5aaa19a3c5793f99ca58a40e4e7dc75088f460dade8f0e4785e9e9c6e2d14')
 
 prepare() {
     cd "$pkgbase-$pkgver"
@@ -40,7 +40,7 @@ check() {
 }
 
 package_rust-dos() {
-    pkgdesc="x86 DOS emulator featuring 386 to Pentium CPUs, DPMI host, VGA/VESA/S3/Voodoo, SB16/GUS/MT-32/GM, IDE, PnP, PCI, Win3x, Win95, NE2000 with NAT, IPX and serial multiplayer, RetroAchievements, save states, rewind, and WASM."
+    pkgdesc="A fast x86 DOS emulator featuring 386 to Pentium CPUs, DPMI host, VGA/VESA/S3/Voodoo, SB16/GUS/MT-32/GM, IDE, PnP, PCI, Win3x, Win95, NE2000 with NAT, IPX and serial multiplayer, RetroAchievements, save states, rewind, and WASM."
     # SDL2 opens the window, the sound device and the OpenGL context of the
     # CRT shaders. ALSA (alsa-lib) sends MIDI out of the system's MIDI ports
     # (midisynth=host in [sound]). munt's libmt32emu plays the Roland MT-32
@@ -63,7 +63,7 @@ package_rust-dos() {
 }
 
 package_libretro-rust-dos() {
-    pkgdesc="rust-dos x86 DOS emulator as a libretro core, for RetroArch and the other libretro frontends"
+    pkgdesc="Rust-DOS fast x86 DOS emulator as a libretro core, for RetroArch and the other libretro frontends"
     # munt's libmt32emu plays the MT-32 (midisynth=mt32), loaded when it is
     # chosen. SoundFonts and MT-32 ROMs go in RetroArch's system/rust-dos
     # folder, set in rust-dos.conf there.
