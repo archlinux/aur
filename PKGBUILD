@@ -2,7 +2,7 @@
 
 _pkgname=openclaw
 pkgname=$_pkgname-esr
-pkgver=2026.8.33
+pkgver=2026.8.34
 pkgrel=1
 pkgdesc="Multi-channel AI gateway with extensible messaging integrations (extended stable release)"
 arch=(x86_64 aarch64)
@@ -26,7 +26,7 @@ optdepends=(
     'go: for installing skill tools not packaged for Arch'
 )
 source=($_pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz)
-sha256sums=(7d5f81f19b49272d81730344f609b2e408c904764dd6b0568f3d7c30040888de)
+sha256sums=(39e80e7d2952362317d431f62c6d9fecff3b48e2de26482078378b6d6ba05f1f)
 options=(!debug !strip)
 install=$pkgname.install
 noextract=($_pkgname-$pkgver.tgz)
@@ -35,6 +35,10 @@ package() {
     export SHARP_IGNORE_GLOBAL_LIBVIPS=1
     npm install --silent --global --cache "$srcdir"/npm-cache \
         --prefix "$pkgdir"/usr "$srcdir"/$_pkgname-$pkgver.tgz
+
+    # workaround: npm's postinstall fails openclaw's argv[1] check, leaving the
+    # lifecycle marker uncleared and the cli erroring EACCES at runtime
+    node "$pkgdir"/usr/lib/node_modules/$_pkgname/scripts/postinstall-bundled-plugins.mjs
 
     cat > $_pkgname <<'EOF'
 #!/bin/sh
