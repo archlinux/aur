@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@agentics.co.za>
 # ---
 pkgname=agentics-cli
-pkgver=2.1.113
+pkgver=2.1.114
 pkgrel=1
 pkgdesc="Agentics CLI - the terminal Orb, an encrypted Agentics component decrypted and run at runtime by the Agentics launcher"
 arch=('x86_64')
@@ -9,11 +9,11 @@ url="https://agentics.co.za"
 license=('custom')
 depends=('agentics')
 options=('!strip' '!debug')
-source=("agentics-cli-2.1.113-x86_64.enc::https://repo.agentics.co.za/x86_64/agentics-cli-2.1.113-x86_64.enc")
-sha512sums=('60054b51e71417504b09fab30af1b338b061d8060905b05c0279967fb5da0eee910250979bd5acb69db2707a1cd811c953249652994e2d3f0ff8e34ebd9855e5')
+source=("agentics-cli-2.1.114-x86_64.enc::https://repo.agentics.co.za/x86_64/agentics-cli-2.1.114-x86_64.enc")
+sha512sums=('1be2fd1e77e5ec5e199ba603a80fc822ef43f56225848e50a5007a1c5ecbd922ab1312de95c186228a6778261df11d61559be94dd5782f119578a3371407f579')
 
 package() {
-  install -Dm644 "$srcdir/agentics-cli-2.1.113-x86_64.enc" "$pkgdir/opt/agentics/components/cli/2.1.113/cli-2.1.113-linux-amd64.enc"
+  install -Dm644 "$srcdir/agentics-cli-2.1.114-x86_64.enc" "$pkgdir/opt/agentics/components/cli/2.1.114/cli-2.1.114-linux-amd64.enc"
   install -dm755 "$pkgdir/usr/share/doc/agentics-cli"
   printf '%s\n' \
     'agentics-cli ships the encrypted Agentics cli component.' \
