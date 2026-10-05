@@ -1,7 +1,7 @@
 pkgbase = ase-viewer
 	pkgdesc = ASE TECH & DESIGN Documentation Viewer — Native GTK4 Markdown renderer
 	pkgver = 00.00.34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/antarien/ase-client-viewer
 	arch = x86_64
 	license = custom
@@ -12,8 +12,6 @@ pkgbase = ase-viewer
 	makedepends = git
 	depends = gtkmm-4.0
 	depends = libadwaita
-	depends = libgvc.so
-	depends = libcgraph.so
 	depends = graphviz
 	depends = tinyxml2
 	depends = cairomm-1.16

@@ -5,7 +5,10 @@ pkgname=ase-viewer
 # seit fontconfig ihn aus seinem Dachheader genommen hat. Ohne diesen Stand scheitert ein
 # Fremdbau an zweiunddreissig fehlenden CMake-Variablen oder am Cairo-Backend.
 pkgver=00.00.34
-pkgrel=1
+# pkgrel 2, weil -1 gebaut und dann an der eigenen Abhaengigkeitszeile scheiterte: die beiden
+# Sonames unten waren nicht erfuellbar. Der Quellstand ist unveraendert, allein das Rezept ist
+# repariert — das ist genau der Fall, fuer den pkgrel da ist.
+pkgrel=2
 pkgdesc='ASE TECH & DESIGN Documentation Viewer — Native GTK4 Markdown renderer'
 arch=('x86_64')
 url='https://github.com/antarien/ase-client-viewer'
@@ -13,21 +16,31 @@ license=('custom')
 depends=(
     'gtkmm-4.0'
     'libadwaita'
-    # EIN PAKETNAME SCHUETZT NICHT GEGEN EINEN SONAME-SPRUNG.
+    # EIN PAKETNAME SCHUETZT NICHT GEGEN EINEN SONAME-SPRUNG — UND DIE .so-FORM TUT ES HIER
+    # EBENSO WENIG, WEIL DER LIEFERANT SEINE SONAMES NICHT ERKLAERT.
     #
-    # 'graphviz' deckt die Kopfdateien zur Bauzeit, und es blieb installiert, als graphviz von 8
-    # auf 16.0.0 ging — gewandert ist allein die Bibliotheksnummer. Gemessen 2026-10-05: das
-    # Binaer vom 1. Jun verlangt libcgraph.so.8, auf der Platte liegt libcgraph.so.10
-    # (graphviz 16.0.0-1, 14. Aug). ldd meldete die eine unaufgeloeste Abhaengigkeit, pacman
-    # meldete nichts — und der Betrachter startete monatelang nicht, ohne dass es auffiel: der
-    # Explorer loest .md korrekt auf diese .desktop auf und sieht nur einen angelegten Prozess.
+    # 'graphviz' deckt die Kopfdateien zur Bauzeit, und es blieb installiert, als graphviz auf
+    # 16.0.0 ging — gewandert ist allein die Bibliotheksnummer. Gemessen 2026-10-05: das
+    # installierte Binaer verlangt libcgraph.so.8, das neu gebaute libcgraph.so.10, auf der
+    # Platte liegt .so.10 (graphviz 16.0.0-1, 14. Aug). ldd meldete die eine unaufgeloeste
+    # Abhaengigkeit, pacman meldete nichts — und der Betrachter startete monatelang nicht, ohne
+    # dass es auffiel: der Explorer loest .md korrekt auf diese .desktop auf und sieht nur einen
+    # angelegten Prozess.
     #
-    # Die .so-Form faengt genau das: makepkg loest sie zur Bauzeit auf die GEBUNDENE Nummer auf
-    # (libcgraph.so=10-64), und der naechste Sprung wird eine gemeldete Verletzung statt eines
-    # stillen Bruchs. Eingetragen sind die zwei Sonames, die objdump real im Binaer findet —
-    # libcdt steht in der pkg-config-Zeile der CMakeLists, aber in keinem NEEDED.
-    'libgvc.so'
-    'libcgraph.so'
+    # HIER STANDEN DESHALB 'libgvc.so' UND 'libcgraph.so', UND GENAU DAS MACHTE DAS PAKET
+    # UNINSTALLIERBAR. makepkg loest die Form zur Bauzeit richtig auf die gebundene Nummer auf
+    # (libgvc.so=7-64, libcgraph.so=10-64) — nur erfuellt sie niemand: libalpm bedient eine
+    # Soname-Abhaengigkeit allein aus dem provides-Feld eines Paketes, und graphviz fuehrt dort
+    # nichts ('Provides: None', in der installierten UND in der Repo-Datenbank). Gemessen ohne
+    # yay, am Resolver selbst: `pacman -T libcgraph.so=10-64 libgvc.so=7-64` nennt beide und
+    # endet mit rc=127, derselbe Aufruf auf 'graphviz' endet mit rc=0.
+    #
+    # EIN NICHT ERFUELLBARER SCHUTZ IST SCHLIMMER ALS DER STILLE BRUCH, DEN ER FANGEN SOLLTE:
+    # der Sprung liess den Betrachter nicht starten, diese Zeile liess ihn nicht einmal
+    # installieren, und die Meldung traf nicht den Sprung, sondern das eigene Paket. Was den
+    # Sprung real faengt, steht nicht im PKGBUILD: ein AUR-Paket wird bei jeder Installation neu
+    # uebersetzt und bindet dabei die heutige Nummer. Dass vier Monate niemand uebersetzte, ist
+    # der Befund — nicht die fehlende Deklaration bei graphviz.
     'graphviz'
     'tinyxml2'
     'cairomm-1.16'
