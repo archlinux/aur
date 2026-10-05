@@ -4,7 +4,7 @@
 pkgname=piliplus-git
 _srcname=PiliPlus
 _pkgname=piliplus
-pkgver=2.1.2.3.r10.g95d299d
+pkgver=2.1.5.r38.g7a4f442
 pkgrel=1
 pkgdesc="A third-party Bilibili client developed in Flutter"
 url="https://github.com/bggRGjQaUbCoE/${_srcname}"
@@ -38,7 +38,7 @@ prepare() {
 	                null_safety_for_selectable_region selectable_region
 	                editable_text text_field scroll_position scrollable
 	                scrollable_gesture draggable_scrollable_sheet scaffold
-	                text text_painter sliver refresh_indicator)
+	                text text_painter sliver refresh_indicator double_tap_gesture)
 
 	printf "正在应用 Flutter 引擎补丁...\n"
 	git -C "${_sdk}" reset --hard HEAD
