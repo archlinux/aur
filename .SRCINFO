@@ -1,6 +1,6 @@
 pkgbase = xca-rs-bin
 	pkgdesc = XCA rewritten in Rust with GTK4 and GOST support — prebuilt binary
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/RinWate/xca-rs
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = xca-rs-bin
 	depends = glib2
 	depends = glibc
 	depends = poppler
-	provides = xca-rs=0.5.0
+	provides = xca-rs=0.6.0
 	conflicts = xca-rs
-	source = https://github.com/RinWate/xca-rs/releases/download/v0.5.0/xca-rs-0.5.0-1-x86_64.pkg.tar.zst
-	sha256sums = 3365acdfa2321dafd15a0ddfbc56048166d4b31e38b38fe743b9a27ff5ed49c8
+	source = https://github.com/RinWate/xca-rs/releases/download/v0.6.0/xca-rs-0.6.0-1-x86_64.pkg.tar.zst
+	sha256sums = 9051058699e214446bf1ec756a58c387e82d685ce84a7a454e0ef7f84d9a0b15
 
 pkgname = xca-rs-bin
