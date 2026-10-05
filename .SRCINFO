@@ -1,14 +1,14 @@
 pkgbase = charls-git
 	pkgdesc = A C++ JPEG-LS library implementation
-	pkgver = 2.4.1.r69.gcb6a9d7
+	pkgver = 2.4.1.r181.g5eb2dde
 	pkgrel = 1
 	url = https://github.com/team-charls/charls
 	arch = i686
 	arch = x86_64
-	license = BSD
+	arch = aarch64
+	license = BSD-3-Clause
 	makedepends = git
 	makedepends = cmake
-	makedepends = dos2unix
 	provides = charls
 	conflicts = charls
 	source = git+https://github.com/team-charls/charls.git
