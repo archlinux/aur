@@ -3,7 +3,7 @@
 # Based on https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
 
 pkgname=jagex-launcher
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc='Jagex Launcher for Linux'
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source=("${_appimage}::https://rs-launcher-updates.runescape.com/production/linux/x64/releases/$pkgver/jagex-launcher-beta-linux-x86_64.AppImage"
         "JAGEX-EULA")
-sha256sums=('b5f9220d419adf0e8f1d182f63ad9a0917fc6a5e30d2b788a03602dcb2ccd22a'
+sha256sums=('f3a6527c823022f0c7ac1448ad90a5a5f5122816ac4b78cc0e3a3ff67391984b'
             '9feba555717fe2e04335146cace192f48760e46670f4fa8248732fc4ea07e6fd')
 
 prepare() {
