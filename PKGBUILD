@@ -23,9 +23,6 @@ conflicts=(
     gtk3-classic
     gtk3-typeahead
     gtk3-print-backends
-    gtk3-nocsd
-    gtk3-nocsd-git
-    gtk3-nocsd-legacy-git
 )
 provides=(
     gtk3-classic=$_gtkver
@@ -81,16 +78,19 @@ makedepends=(
     sassc
     wayland-protocols
 )
-install=gtk3.install
 source=(git+$url.git#commit=$_gtk3_classic_commit
         "https://gitlab.gnome.org/GNOME/gtk/-/archive/$_gtkver/gtk-$_gtkver.tar.gz"
-        "gtk-query-immodules-3.0.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/$__arch_pkg_commit/gtk-query-immodules-3.0.hook"
+        # https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/$__arch_pkg_commit/gtk-remove-immodules-cache.hook
+        gtk-remove-immodules-cache.hook
+        # https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/$__arch_pkg_commit/gtk-query-immodules-3.0.hook
+        gtk-query-immodules-3.0.hook
         settings.ini
         appearance__file-chooser-xfce.patch
 )
 sha256sums=('2469fa03798678187bb9df9e0006126832a0fca9b87a8493254b9b865ca3834e'
             'e62514019679f831fcb37f3d294a761c3a6c14f1d346745ad11d70c2be17146e'
-            'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
+            '8b0e709db60de160b391ed5b37d93d5c80271ebc4771410ab381ade067ec4865'
+            'fc38d4b0c21d6e4879fc9160756c7bad1deedac151d9530a0b860c3deaa6d6f0'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
             'd0ada6a7a4124f8cf5b1a1881029b7eb9f0bbda777080b9acc62ef449319a6f2')
 
@@ -126,7 +126,7 @@ package_gtk3-classic-xfce()
     DESTDIR="$pkgdir" meson install -C build
 
     install -Dm644 settings.ini -t "$pkgdir/usr/share/gtk-3.0"
-    install -Dm644 gtk-query-immodules-3.0.hook -t "$pkgdir/usr/share/libalpm/hooks"
+    install -Dm644 gtk-*.hook -t "$pkgdir/usr/share/libalpm/hooks"
 
     rm "$pkgdir/usr/bin/gtk-update-icon-cache"
 }
