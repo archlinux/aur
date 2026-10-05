@@ -1,6 +1,6 @@
 pkgbase = pane-bin
 	pkgdesc = Terminal-native AI agent manager — any provider, one unified interface
-	pkgver = 2.4.159
+	pkgver = 2.4.160
 	pkgrel = 1
 	url = https://github.com/dcouple/Pane
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = pane-bin
 	depends = fuse2
 	provides = pane
 	conflicts = pane
-	noextract = Pane-2.4.159-linux-x86_64.AppImage
+	noextract = Pane-2.4.160-linux-x86_64.AppImage
 	options = !strip
 	options = !debug
-	source = Pane-2.4.159-linux-x86_64.AppImage::https://github.com/greenfield-inc/Pane/releases/download/v2.4.159/Pane-2.4.159-linux-x86_64.AppImage
-	sha256sums = 4de36c2864e03d6faf08e8ba4229ae097221c880972dd2644de94a107afacfe2
+	source = Pane-2.4.160-linux-x86_64.AppImage::https://github.com/greenfield-inc/Pane/releases/download/v2.4.160/Pane-2.4.160-linux-x86_64.AppImage
+	sha256sums = ff9a3c3d0e493fc022415b0562f88cf460cc0ba63747f49dcdfe29d721c12d40
 
 pkgname = pane-bin
