@@ -1,7 +1,7 @@
 pkgbase = openvpn-connect-linux
 	pkgdesc = Community port of OpenVPN Connect to Linux
 	pkgver = 3.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dresden196/openvpn-connect-linux
 	install = openvpn-connect-linux.install
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = openvpn-connect-linux
 	depends = openvpn
 	depends = polkit
 	depends = libsecret
-	depends = electron37
+	depends = electron44
 	depends = hicolor-icon-theme
 	optdepends = networkmanager: network state detection
 	optdepends = libnotify: desktop notifications

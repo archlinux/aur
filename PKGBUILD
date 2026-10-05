@@ -2,12 +2,12 @@
 
 pkgname=openvpn-connect-linux
 pkgver=3.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Community port of OpenVPN Connect to Linux"
 arch=('x86_64')
 url="https://github.com/dresden196/openvpn-connect-linux"
 license=('MIT' 'LicenseRef-OpenVPN-Connect')
-depends=('openvpn' 'polkit' 'libsecret' 'electron37' 'hicolor-icon-theme')
+depends=('openvpn' 'polkit' 'libsecret' 'electron44' 'hicolor-icon-theme')
 makedepends=('npm' 'nodejs' 'python' 'gcc' 'make')
 optdepends=(
     'networkmanager: network state detection'
@@ -78,7 +78,7 @@ package() {
     # Launcher script
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/openvpn-connect" << 'EOF'
 #!/bin/bash
-exec electron37 /usr/lib/openvpn-connect-linux --no-sandbox "$@"
+exec electron44 /usr/lib/openvpn-connect-linux --no-sandbox "$@"
 EOF
 
     # Desktop entry
