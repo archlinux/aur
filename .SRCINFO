@@ -1,7 +1,7 @@
 pkgbase = kcd
 	pkgdesc = Lightweight, headless implementation of the KDE Connect protocol (v8) written in Go
 
-	pkgver = 1.22.0
+	pkgver = 1.22.1
 	pkgrel = 1
 	url = https://github.com/bethropolis/kcd
 	arch = aarch64
@@ -21,7 +21,7 @@ pkgbase = kcd
 	conflicts = kcd-bin
 	provides = kcd
 	
-	source = kcd_1.22.0.tar.gz::https://github.com/bethropolis/kcd/releases/download/v1.22.0/kcd-1.22.0.tar.gz
-	sha256sums = f5de8d4b787bb13593edee80a61c4bc5596ca62bb46e8df4d09a9a82ae2e2071
+	source = kcd_1.22.1.tar.gz::https://github.com/bethropolis/kcd/releases/download/v1.22.1/kcd-1.22.1.tar.gz
+	sha256sums = 79a34be0983193e145b31fa7b1db8a6ed34da746b0da1b359485fd8f255562eb
 	
 pkgname = kcd
