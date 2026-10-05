@@ -1,9 +1,10 @@
 pkgbase = ipt_ndpi
-	pkgdesc = nDPI as netfilter extension.
-	pkgver = 1.2_5.1.0.6322.3c97f2c
+	pkgdesc = nDPI as netfilter extension
+	pkgver = 1.2_5.1.0.6501.63880be
 	pkgrel = 1
 	url = https://github.com/vel21ripn/nDPI
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = git
 	depends = iptables
