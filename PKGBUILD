@@ -1,5 +1,5 @@
 pkgname=mingw-w64-cdt
-pkgver=1.4.5
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Constrained Delaunay Triangulation (C++) (mingw-w64)"
 license=('MPL-2.0')
@@ -9,7 +9,7 @@ depends=()
 makedepends=('mingw-w64-cmake')
 options=('staticlibs' '!buildflags' '!strip')
 source=("https://github.com/artem-ogre/CDT/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('5b964a00147d17f5d6ffd9c800d4f12f1e540ce8e932655469f65aea9a3005d7')
+sha256sums=('81ed0c7a8cbdc059b26948a160c3ce68c7a147976334093fe3175c8fa161a447')
 
 _architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
