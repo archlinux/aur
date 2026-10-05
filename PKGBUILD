@@ -1,4 +1,3 @@
-
 pkgname=mingw-w64-gl2ps
 pkgver=1.4.3
 pkgrel=1
@@ -6,8 +5,8 @@ pkgdesc="an OpenGL to PostScript printing library (mingw-w64)"
 arch=('any')
 url='http://geuz.org/gl2ps/'
 license=('LGPL')
-depends=('mingw-w64-libpng' 'mingw-w64-freeglut')
-makedepends=('mingw-w64-cmake')
+depends=('mingw-w64-libpng')
+makedepends=('mingw-w64-cmake' 'mingw-w64-freeglut')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://geuz.org/gl2ps/src/gl2ps-${pkgver}.tgz")
 sha256sums=('2e0a5368917cf0e5467ba8618bc576f50ae9f316c61201635b09711c7908efcc')
@@ -21,9 +20,7 @@ prepare() {
 build() {
   cd "${srcdir}/gl2ps-${pkgver}"
   for _arch in ${_architectures}; do
-    ${_arch}-cmake -DPDFLATEX_COMPILER=0 \
-      -DZGLUT_glut_LIBRARY_RELEASE=/usr/${_arch}/lib/libfreeglut.dll.a \
-       -B build-${_arch} .
+    ${_arch}-cmake -DPDFLATEX_COMPILER=0 -B build-${_arch} .
     cmake --build build-${_arch}
   done
 }
