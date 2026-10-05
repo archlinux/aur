@@ -6,7 +6,7 @@
 #  - regenerate .SRCINFO: makepkg --printsrcinfo > .SRCINFO
 pkgname=mcu-studio
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Repair damaged JPEGs by editing their DCT coefficients directly, with an MCU-level editor"
 arch=('x86_64')
 _repo_url="https://github.com/TheGameratorT/mcu-studio"
@@ -17,7 +17,7 @@ license=('GPL-3.0-only')
 depends=('qt6-base' 'libjpeg-turbo')
 makedepends=('cmake' 'qt6-tools')
 source=("$pkgname-$pkgver.tar.gz::$_repo_url/archive/v$pkgver.tar.gz")
-sha256sums=('7c0d884c347a384a2ba6974697d62bb1cd0660da074bfd41e697ca985cb6d9d4')
+sha256sums=('d4f677511f448069807bcad64d63e7a3ef814b9f1f558a855f2b61806397693c')
 _srcdir="$pkgname-$pkgver"
 
 build() {
