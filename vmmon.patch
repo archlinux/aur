@@ -1,7 +1,6 @@
-diff --git a/vmmon/Makefile b/vmmon/Makefile
-index 7230c14..d881a6f 100644
---- a/vmmon/Makefile
-+++ b/vmmon/Makefile
+diff --git a/vmmon-only/Makefile b/vmmon-only/Makefile
+--- a/vmmon-only/Makefile
++++ b/vmmon-only/Makefile
 @@ -40,8 +40,11 @@ else
  INCLUDE      += -I$(SRCROOT)/shared
  endif

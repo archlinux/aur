@@ -18,7 +18,7 @@ pkgname=vmware-workstation
 pkgver=26H1u1
 _buildver=25688693
 _pkgver=${pkgver}_${_buildver}
-pkgrel=3
+pkgrel=4
 epoch=${_buildver}
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
@@ -110,8 +110,8 @@ sha256sums=('da823c853cc7e57be7b9b070c8aed20fe9d75fd519ae6f175ab1dafc7283002e'
             'fe1b1be8297f4170406f97dd1f8b385d911faf45afe19cbc0c26b8092b3ddf8d'
             '7ba8cbdb1981a9a714b4068e651cc7a20ab358dddf6cab68519d9f324ea800b3'
             '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
-            '16f0780792cd66f580a0a872679cac76f8df936a0f2d90ac2d014902d46da58c'
-            'cefe79e418a7403bc0a788b1ca695a9463d6c2d9ecbf1ce15125e39e39391c2b')
+            'bd74524f7708c66b8f9e41a98dc7540811c22a55db1e947a365d6a5a127175b2'
+            '63313ecd65b91b025edf383b8f1afbabb5201709a65a0d63ba025ec6915dda81')
 options=(!strip emptydirs !debug)
 
 if [ -z "$_remove_vmware_keymaps_dependency" ]; then
