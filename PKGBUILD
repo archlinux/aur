@@ -5,7 +5,7 @@
 
 pkgname=cmake-common
 _name="${pkgname//-/_}"
-pkgver=7.0.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc='Utilities to help develop C++/CMake projects'
 arch=(any)
