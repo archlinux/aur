@@ -15,7 +15,9 @@ depends=(
     'python-httpx'
     'python-psutil'
     'python-dbgpu'
-    'python-nvidia-ml-py'
+)
+optdepends=(
+    'python-nvidia-ml-py: NVIDIA GPU detection via NVML (pulls in nvidia-utils)'
 )
 makedepends=(
     'python-build'
