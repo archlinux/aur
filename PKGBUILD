@@ -1,7 +1,7 @@
 # Maintainer: Brian Crescimanno <brian.crescimanno[a]me.com>
 
 pkgname="qbittorrent-tui"
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A terminal-based user interface for monitoring and managing qBittorrent."
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
 provides=("$pkgname")
 
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1e8716c987ebb250dc04bfb86346ddc42207d25d1b0d7172c69c51b769c15aa1')
+sha256sums=('ba3f7ba0c636773ab5ddb0ab3176c45e6f0774f3f5a3daccf34ca4d9e57b2b88')
 
 build() {
   cd ${_pkgsrc}
