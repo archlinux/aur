@@ -1,6 +1,6 @@
 pkgbase = netsukuku-rs
 	pkgdesc = Rust reimplementation of the Netsukuku mesh routing protocol: QSPN v2, Hooking, Coordinator, PeerServices, ANDNA
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/M0Rf30/netsukuku-rs
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = netsukuku-rs
 	makedepends = cargo
 	options = !lto
 	backup = etc/ntkd/ntkd.toml
-	source = netsukuku-rs-0.1.8.tar.gz::https://github.com/M0Rf30/netsukuku-rs/archive/v0.1.8.tar.gz
-	sha256sums = 572c3cccd9ede05018e921bf3a37d76cdba0187dcda91d776827dc3248148bb1
+	source = netsukuku-rs-0.1.9.tar.gz::https://github.com/M0Rf30/netsukuku-rs/archive/v0.1.9.tar.gz
+	sha256sums = cb852975588afaac1b909a861d4ff09a783719b52e42ed038bbf755873eeaa85
 
 pkgname = netsukuku-rs
