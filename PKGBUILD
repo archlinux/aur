@@ -4,7 +4,7 @@ pkgdesc="Zalo for Linux — unofficial port with ZaDark, running on system Elect
 arch=('x86_64' 'aarch64')
 url="https://github.com/doandat943/zalo-for-linux"
 license=('MIT')
-pkgver=26.8.20+26.2.1.r99.87b0696
+pkgver=26.10.10+26.2.1.r141.a532d9e
 pkgrel=1
 epoch=1
 provides=('zalo')
@@ -87,21 +87,21 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname"
-    
+
     # Zalo version = repo's latest tag, same number as the DMG on zadn.vn
     export ZALO_VERSION="$(git describe --tags --abbrev=0)"
     export ZALO_WIN_VERSION="$ZALO_VERSION"
     export ZADARK_VERSION="$(node -p "require('./plugins/zadark/package.json').version")"
-    
+
     # npm >= 12 blocks git deps (crx in zadark's lockfile) — allow-git=all
     # scripts skipped, so fetch sqlite3's N-API v6 prebuilt manually
     export npm_config_allow_git="all"
     npm ci --ignore-scripts --no-audit --no-fund
     (cd node_modules/sqlite3 && npx prebuild-install -r napi)
-    
-    node scripts/download-dmg.js
+
+    node scripts/download.js
     node scripts/prepare-zadark.js
-    node scripts/prepare-app.js    
+    node scripts/prepare-app.js
     node scripts/setup-zcall-bridge.js
     test -f app/native/qt-call-and-cap/pipebridge.exe || {
         echo 'ERROR: call engine missing (qt-call-and-cap/pipebridge.exe) — Windows installer download failed' >&2
@@ -113,7 +113,7 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
     local _lib="$pkgdir/usr/lib/zalo"
-    
+
     install -d "$_lib" "$_lib/plugins"
     # Strip Mach-O/PE natives from the DMG: Linux bindings always sit under a
     # path containing "linux"; keep qt-call-and-cap (the Wine call engine).
@@ -127,7 +127,7 @@ package() {
     rm -rf "$_lib/plugins/zadark/node_modules"
     # gulp in the zadark submodule leaves the o+w bit; packages must not be world-writable
     chmod -R o-w "$_lib"
-    
+
     install -Dm755 "$srcdir/zalo.sh" "$pkgdir/usr/bin/zalo"
     install -Dm644 "$srcdir/zalo.desktop" "$pkgdir/usr/share/applications/zalo.desktop"
     install -Dm644 app/pc-dist/favicon-512x512.png \
