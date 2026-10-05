@@ -1,6 +1,6 @@
 # Maintainer: aurora <aurora@example.com>
 pkgname=anich
-pkgver=1.5.26
+pkgver=1.5.27
 pkgrel=1
 pkgdesc='一个支持超分辨率的在线动漫弹幕APP。多平台，多番剧源，多弹幕，高清无广告。追番看番必备软件。'
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=('libappindicator-gtk3: tray icon support')
 conflicts=('anich-bin' 'anich-app-bin')
 options=('!strip')
 source=("${pkgname}-${pkgver}.zip::https://github.com/Sle2p/AniCh/releases/download/${pkgver}/anich-linux-${pkgver}.zip")
-sha256sums=('89b83f0623f8b7dc2b2e09dbdf2b482a1fb2c112ff2cde84a37f8323e23d1085')
+sha256sums=('7207b087fd4e801de60e38264cf4fc3c96711a6371a4032396529f1e1968a3e4')
 
 package() {
     # 安装二进制包到 /opt/anich
