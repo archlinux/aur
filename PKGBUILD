@@ -1,52 +1,52 @@
-# Maintainer: Maarten de Vries <maarten@de-vri.es>
+# Maintainer: hanker
+# Contributor: Maarten de Vries <maarten@de-vri.es>
 pkgname=dynamixel-sdk
-pkgver=3.7.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="SDK for communicating with Dynamixel motors (C and C++ bindings)"
 url="https://github.com/ROBOTIS-GIT/DynamixelSDK"
 arch=(x86_64 i386)
-license=(BSD)
-
-source=("https://github.com/ROBOTIS-GIT/DynamixelSDK/archive/${pkgver}.tar.gz")
-sha512sums=('8593d993b9485aba2516f1bbcc0ef01adde07f6d891451d8854a361a4dee9fee25cbb7ad44efeabae07a446472944d630b36c77e83a8aa7d8a5a22edc90e93d0')
-
-_dir="DynamixelSDK-$pkgver"
-if [[ $CARCH == i386 ]]; then
-	_cxxdir="$_dir/c++/build/linux32"
-	_cdir="$_dir/c/build/linux32"
-	_libsuffix="x86"
-else
-	_cxxdir="$_dir/c++/build/linux64"
-	_cdir="$_dir/c/build/linux64"
-	_libsuffix="x64"
-fi
+license=('Apache-2.0')
+depends=('glibc' 'libgcc' 'libstdc++')
+makedepends=('cmake')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ROBOTIS-GIT/DynamixelSDK/archive/refs/tags/$pkgver.tar.gz")
+sha512sums=('fb44d8e1abb3b4f6c18716b3bd8998664d9244a4e3663c9bfb4eb32c29f773895710a44d9344b245e3767c939dc60c9548c2aecea16f2adece605881f47eafaf')
 
 build() {
-	local _cflags="-fPIC -I../../include/dynamixel_sdk $CFLAGS"
-	local _cxxflags="-fPIC -I../../include/dynamixel_sdk $CXXFLAGS"
-	# At the time of writing, the Makefiles use CCFLAGS and CXFLAGS, not CFLAGS and CXXFLAGS...
-	make -C "$_cxxdir" LDFLAGS="-shared $LDFLAGS" CCFLAGS="$_cflags" CXFLAGS="$_cxxflags"
-	make -C "$_cdir"   LDFLAGS="-shared $LDFLAGS" CCFLAGS="$_cflags" CXFLAGS="$_cxxflags"
+
+	cd "$srcdir/DynamixelSDK-$pkgver"
+
+	# C library
+	cmake \
+		-S c \
+		-B build-c \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib
+
+	cmake --build build-c
+
+	# C++ library
+	cmake \
+		-S c++ \
+		-B build-cpp \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib
+
+	cmake --build build-cpp
 }
 
 package() {
-	# C++ library
-	install -m755 -D "$srcdir/$_cxxdir/libdxl_${_libsuffix}_cpp.so" "$pkgdir/usr/lib/libdxl_${_libsuffix}_cpp.so.2.0.0"
-	ln -s "libdxl_${_libsuffix}_cpp.so.2.0.0" "$pkgdir/usr/lib/libdxl_${_libsuffix}_cpp.so.2.0"
-	ln -s "libdxl_${_libsuffix}_cpp.so.2.0.0" "$pkgdir/usr/lib/libdxl_${_libsuffix}_cpp.so.2"
-	ln -s "libdxl_${_libsuffix}_cpp.so.2.0.0" "$pkgdir/usr/lib/libdxl_${_libsuffix}_cpp.so"
 
-	# C library
-	install -m755 -D "$srcdir/$_cdir/libdxl_${_libsuffix}_c.so"     "$pkgdir/usr/lib/libdxl_${_libsuffix}_c.so.2.0.0"
-	ln -s "libdxl_${_libsuffix}_c.so.2.0.0" "$pkgdir/usr/lib/libdxl_${_libsuffix}_c.so.2.0"
-	ln -s "libdxl_${_libsuffix}_c.so.2.0.0" "$pkgdir/usr/lib/libdxl_${_libsuffix}_c.so.2"
-	ln -s "libdxl_${_libsuffix}_c.so.2.0.0" "$pkgdir/usr/lib/libdxl_${_libsuffix}_c.so"
+	cd "$srcdir/DynamixelSDK-$pkgver"
 
-	# Includes
-	install -m755 -d "$pkgdir/usr/include"
-	cp -r "$srcdir/$_cdir/../../include"   "$pkgdir/usr/include/dynamixel_sdk_c"
-	cp -r "$srcdir/$_cxxdir/../../include" "$pkgdir/usr/include/dynamixel_sdk_cpp"
+	# Install C library
+	DESTDIR="$pkgdir" cmake --install build-c
+
+	# Install C++ library
+	DESTDIR="$pkgdir" cmake --install build-cpp
 
 	# License
-	install -m644 -Dt "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/$_dir/LICENSE"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
