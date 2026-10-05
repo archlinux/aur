@@ -1,7 +1,7 @@
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 
 pkgname=surrealdb-studio-bin
-pkgver=1.1.0
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="SurrealDB Studio, the new official app of SurrealDB"
 arch=("x86_64" "aarch64")
@@ -12,8 +12,8 @@ provides=("surrealdb-studio")
 optdepends=('surrealdb: non-sandboxed SurrealDB instance')
 source_x86_64=("https://download.surrealdb.com/studio/v${pkgver//_/-}/surrealdb-studio_${pkgver//_/-}_amd64.deb")
 source_aarch64=("https://download.surrealdb.com/studio/v${pkgver//_/-}/surrealdb-studio_${pkgver//_/-}_arm64.deb")
-sha256sums_x86_64=('2752dc1dba88ac13d03e081bce2182d99e5db2f805a5269ebcb7d2f917a67cdd')
-sha256sums_aarch64=('eceefce7f21a727941d7350fd985ee208afa04e7806f93aea058b0f62884dc9c')
+sha256sums_x86_64=('73f03f894bfa67535983074e55ec28bf4e59b6899d289b1829e08c171e15130e')
+sha256sums_aarch64=('8552b6e3a0c5897ee57250e42881c8d7f5704e14198663de60f3fa03a0fb18ca')
 
 package() {
 	_arch="${arch//x86_64/amd64}"; _arch="${_arch//aarch64/arm64}"
