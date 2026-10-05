@@ -1,6 +1,6 @@
 pkgbase = quickshell-greetd
 	pkgdesc = Theme-agnostic greetd greeter built on Quickshell; runs an existing Quickshell lockscreen as the login screen
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/everyoneexe/quickshell-greetd
 	install = quickshell-greetd.install
@@ -17,7 +17,7 @@ pkgbase = quickshell-greetd
 	optdepends = fprintd: fingerprint login, via pam_fprintd in /etc/pam.d/greetd
 	optdepends = gnome-keyring: keyring unlock at login, via pam_gnome_keyring
 	backup = etc/quickshell-greetd/config.env
-	source = quickshell-greetd::git+https://github.com/everyoneexe/quickshell-greetd.git#tag=v2.0.0
+	source = quickshell-greetd::git+https://github.com/everyoneexe/quickshell-greetd.git#tag=v2.1.0
 	sha256sums = SKIP
 
 pkgname = quickshell-greetd

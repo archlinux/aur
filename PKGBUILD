@@ -1,6 +1,6 @@
 # Maintainer: everyoneexe <everyoneexe@users.noreply.github.com>
 pkgname=quickshell-greetd
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Theme-agnostic greetd greeter built on Quickshell; runs an existing Quickshell lockscreen as the login screen"
 arch=('any')
@@ -42,6 +42,7 @@ package() {
 
     # Adapters injected into prepared themes, selected by --kind.
     install -Dm644 adapters/lockscreen/Main.qml "$share/adapters/lockscreen/Main.qml"
+    install -Dm644 adapters/lockscreen/LockContext.qml "$share/adapters/lockscreen/LockContext.qml"
     install -Dm644 adapters/standalone/Main.qml "$share/adapters/standalone/Main.qml"
 
     install -Dm755 launcher/quickshell-greetd-launcher "$pkgdir/usr/bin/quickshell-greetd-launcher"
