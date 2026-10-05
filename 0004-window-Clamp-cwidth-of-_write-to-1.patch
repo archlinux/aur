@@ -1,0 +1,47 @@
+From 4cf049fb3ccd3e187aa9f8df34204b2f4a034f83 Mon Sep 17 00:00:00 2001
+From: Adam Lackorzynski <adam@l4re.org>
+Date: Sun, 12 Jul 2026 22:44:29 +0200
+Subject: [PATCH 4/6] window: Clamp cwidth of _write to 1
+
+Users of _write assume that the return value of _write is at least one.
+Since _write is static change the semantics and return 1 at least.
+
+Signed-off-by: Adam Lackorzynski <adam@l4re.org>
+---
+ src/window.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/window.c b/src/window.c
+index af2184f..3510c27 100644
+--- a/src/window.c
++++ b/src/window.c
+@@ -337,7 +337,7 @@ static void _gotoxy(int x, int y)
+ static int _write(wchar_t c, int doit, int x, int y, char attr, char color)
+ {
+   ELM *e;
+-  int cwidth = 0;
++  int cwidth = 1;
+ 
+   /* If the terminal has automatic margins, we can't write to the
+    * last line, last character. After scrolling, this "invisible"
+@@ -376,7 +376,7 @@ static int _write(wchar_t c, int doit, int x, int y, char attr, char color)
+       }
+       cwidth = wcwidth(c);
+       if (cwidth < 0)
+-	cwidth = 0;
++	cwidth = 1;
+ 
+       curx += cwidth;
+     }
+@@ -388,7 +388,7 @@ static int _write(wchar_t c, int doit, int x, int y, char attr, char color)
+ 
+       cwidth = wcwidth(c);
+       if (cwidth < 0)
+-	cwidth = 0;
++	cwidth = 1;
+     }
+   }
+   return cwidth;
+-- 
+2.55.0
+

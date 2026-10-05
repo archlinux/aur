@@ -1,0 +1,73 @@
+From a546af2f16c50f32bc4cc92108f53beb9391d8f9 Mon Sep 17 00:00:00 2001
+From: Adam Lackorzynski <adam@l4re.org>
+Date: Mon, 25 May 2026 09:18:15 +0200
+Subject: [PATCH] dial: Fix use of check_io_frontend
+
+check_io_frontend shall use the bytes_read argument to know how many
+bytes where actually returned.
+
+Suggested by Andy Alt via https://salsa.debian.org/minicom-team/minicom/-/merge_requests/27
+
+Signed-off-by: Adam Lackorzynski <adam@l4re.org>
+---
+ src/dial.c | 31 +++++++++++++++++--------------
+ 1 file changed, 17 insertions(+), 14 deletions(-)
+
+diff --git a/src/dial.c b/src/dial.c
+index b4ef461..9f53730 100644
+--- a/src/dial.c
++++ b/src/dial.c
+@@ -460,13 +460,14 @@ MainLoop:
+     }
+ 
+     /* Wait 'till the modem says something */
++    int buf_read_size = 1;
+     modbuf[0] = 0;
+     modidx = 0;
+     s = buf;
+     buf[0] = 0;
+     while (dialtime > 0) {
+       if (*s == 0) {
+-        x = check_io_frontend(buf, sizeof(buf), NULL);
++        x = check_io_frontend(buf, sizeof(buf), &buf_read_size);
+         s = buf;
+       }
+       if (x & 2) {
+@@ -487,19 +488,21 @@ MainLoop:
+         return retst;
+       }
+       if (x & 1) {
+-        /* Data available from the modem. Put in buffer. */
+-        if (*s == '\r' || *s == '\n') {
+-          /* We look for [\r\n]STRING[\r\n] */
+-          modbuf[modidx] = 0;
+-          modidx = 0;
+-        } else if (modidx < 127) {
+-          /* Normal character. Add. */
+-          modbuf[modidx++] = *s;
+-          modbuf[modidx] = 0;
+-        }
+-        /* Skip to next received char */
+-        if (*s)
+-          s++;
++	if (s - buf < buf_read_size) {
++	  /* Data available from the modem. Put in buffer. */
++	  if (*s == '\r' || *s == '\n') {
++	    /* We look for [\r\n]STRING[\r\n] */
++	    modbuf[modidx] = 0;
++	    modidx = 0;
++	  } else if (modidx < 127) {
++	    /* Normal character. Add. */
++	    modbuf[modidx++] = *s;
++	    modbuf[modidx] = 0;
++	  }
++	  /* Skip to next received char */
++	  if (*s)
++	    s++;
++	}
+         /* Only look when we got a whole line. */
+         if (modidx == 0 &&
+             !strncmp(modbuf, P_MCONNECT, strlen(P_MCONNECT))) {
+-- 
+GitLab
+

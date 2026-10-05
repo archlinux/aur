@@ -1,0 +1,31 @@
+From 9b1fcf3f47169569d79dc25488ef6b8fec740531 Mon Sep 17 00:00:00 2001
+From: Adam Lackorzynski <adam@l4re.org>
+Date: Sun, 31 May 2026 22:06:13 +0200
+Subject: [PATCH] window: Consider that wcwidth can return -1 on invalid input
+
+---
+ src/window.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/window.c b/src/window.c
+index a41b928..af2184f 100644
+--- a/src/window.c
++++ b/src/window.c
+@@ -375,6 +375,8 @@ static int _write(wchar_t c, int doit, int x, int y, char attr, char color)
+           outchar(buf[i]);
+       }
+       cwidth = wcwidth(c);
++      if (cwidth < 0)
++	cwidth = 0;
+ 
+       curx += cwidth;
+     }
+@@ -385,6 +387,8 @@ static int _write(wchar_t c, int doit, int x, int y, char attr, char color)
+       e->color = color;
+ 
+       cwidth = wcwidth(c);
++      if (cwidth < 0)
++	cwidth = 0;
+     }
+   }
+   return cwidth;

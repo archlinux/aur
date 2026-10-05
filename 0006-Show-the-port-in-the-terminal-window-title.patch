@@ -1,0 +1,201 @@
+From ad396a37692e5b196ab369817a7375ceec2aec98 Mon Sep 17 00:00:00 2001
+From: Hocking Lee <hockinglee@gmail.com>
+Date: Sun, 4 Oct 2026 23:39:43 +0800
+Subject: [PATCH 6/6] Show the port in the terminal window title
+
+Set the xterm window title (OSC 0) to "minicom: <port>" on
+xterm-compatible terminals, and keep it updated if the port changes.
+The previous title is saved/restored with XTWINOPS 22/23.
+
+Without this, VTE >= 0.78 based terminals (xfce4-terminal,
+gnome-terminal, ...) show an empty title while minicom runs: VTE clears
+the title on DECSTR, which minicom sends at startup as part of xterm's
+is2, wiping out whatever title the shell set (e.g. the command line).
+
+The title is emitted after IS so a reset in IS cannot clear it.
+Set MINICOM_NO_TITLE to disable.
+---
+ src/main.c   |  3 ++
+ src/window.c | 98 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ src/window.h |  1 +
+ 3 files changed, 102 insertions(+)
+
+diff --git a/src/main.c b/src/main.c
+index a5bafd3..ee913ce 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -907,6 +907,9 @@ dirty_goto:
+       init_emul(terminal, 0);
+       size_changed = 0;
+     }
++    /* Show the port in the terminal window title. */
++    mc_wsettitle(dial_tty);
++
+     /* Update the timer. */
+     timer_update();
+ 
+diff --git a/src/window.c b/src/window.c
+index 386f92a..294d87b 100644
+--- a/src/window.c
++++ b/src/window.c
+@@ -179,6 +179,98 @@ static void outstr(const char *s)
+   tputs(s, 1, outchar);
+ }
+ 
++/*
++ * Terminal window title (xterm OSC 0), showing the port in use.
++ * The previous title is saved with XTWINOPS 22 when minicom takes
++ * over the screen and restored with XTWINOPS 23 when it gives it
++ * back.  Set MINICOM_NO_TITLE in the environment to disable.
++ *
++ * Ordering matters: VTE >= 0.78 clears the title on any reset,
++ * including the DECSTR found in xterm's is2/rs2, but keeps the title
++ * stack.  So save before IS, show ours after it, and restore after
++ * RS/IS.  (RIS, as in xterm's rs1, also clears the stack; then the
++ * shell has to set the title again.)
++ */
++static int _title_ok = -1;    /* -1: not checked yet */
++static int _title_saved;
++static char _title[256];
++
++static int title_supported(void)
++{
++  static const char *const terms[] = {
++    "xterm", "rxvt", "screen", "tmux", "vte", "gnome", "konsole",
++    "alacritty", "foot", "kitty", "wezterm", "putty", "st-", NULL
++  };
++  const char *t = getenv("TERM");
++  int i;
++
++  if (_title_ok >= 0)
++    return _title_ok;
++  _title_ok = 0;
++  if (getenv("MINICOM_NO_TITLE") || t == NULL)
++    return 0;
++  for (i = 0; terms[i]; i++)
++    if (strncmp(t, terms[i], strlen(terms[i])) == 0)
++      return _title_ok = 1;
++  return 0;
++}
++
++static void title_out(void)
++{
++  outstr("\033]0;");
++  outstr(_title);
++  outstr("\007");
++}
++
++/* Save the current title, before sending IS. */
++static void title_save(void)
++{
++  if (!title_supported() || _title_saved)
++    return;
++  outstr("\033[22;0t");
++  _title_saved = 1;
++}
++
++/* Show our title, after sending IS. */
++static void title_show(void)
++{
++  if (_title_saved && _title[0])
++    title_out();
++}
++
++/* Give the saved title back. */
++static void title_give_back(void)
++{
++  if (_title_saved) {
++    outstr("\033[23;0t");
++    _title_saved = 0;
++  }
++}
++
++/*
++ * Set the terminal window title to "minicom: <port>".
++ * Cheap to call repeatedly; only emits when the title changes.
++ */
++void mc_wsettitle(const char *port)
++{
++  char t[sizeof(_title)];
++  size_t i;
++
++  if (port == NULL || !title_supported())
++    return;
++  snprintf(t, sizeof(t), "minicom: %s", port);
++  for (i = 0; t[i]; i++)        /* no control chars inside OSC */
++    if ((unsigned char)t[i] < 0x20 || t[i] == 0x7f)
++      t[i] = '?';
++  if (strcmp(t, _title) == 0)
++    return;
++  strcpy(_title, t);
++  if (!_title_saved)
++    return;                     /* shown by title_show() */
++  title_out();
++  mc_wflush();
++}
++
+ 
+ /*
+  * Turn off all attributes
+@@ -677,6 +769,7 @@ void mc_wleave(void)
+     outstr(KE);
+   if (RS != NULL)
+     outstr(RS);
++  title_give_back();
+   mc_wflush();
+ }
+ 
+@@ -690,12 +783,14 @@ void mc_wreturn(void)
+ 
+   setcbreak(1); /* Cbreak, no echo */
+ 
++  title_save(); /* Window title */
+   if (IS != NULL)
+     outstr(IS); /* Initialization string */
+   if (EA != NULL)
+     outstr(EA); /* Graphics init. */
+   if (KS != NULL)
+     outstr(KS); /* Keypad mode */
++  title_show(); /* Window title */
+ 
+   _gotoxy(0, 0);
+   _cursor(ocursor);
+@@ -2013,6 +2108,7 @@ int win_init(int fg, int bg, int attr)
+   use_status = 0;
+ #endif
+ 
++  title_save();          /* Window title */
+   if (IS != NULL)
+     outstr(IS); /* Initialization string */
+ 
+@@ -2104,6 +2200,7 @@ int win_init(int fg, int bg, int attr)
+     outstr(EA);          /* Graphics init. */
+   if (KS != NULL)
+     outstr(KS);          /* Keypad mode */
++  title_show();          /* Window title */
+ 
+   setcbreak(1);          /* Cbreak, no echo */
+ 
+@@ -2132,6 +2229,7 @@ void win_end(void)
+     outstr(RS);
+   else if (IS != NULL)
+     outstr(IS);
++  title_give_back();
+ 
+   mc_wflush();
+   free(gmap);
+diff --git a/src/window.h b/src/window.h
+index d47efe1..ddeab9d 100644
+--- a/src/window.h
++++ b/src/window.h
+@@ -158,6 +158,7 @@ int mc_wprintf(WIN *, const char *, ...)
+ void mc_wbell(void);
+ void mc_wcursor(WIN *win, int type);
+ void mc_wtitle(WIN *w, int pos , const char *s);
++void mc_wsettitle(const char *port);
+ void mc_wcurbar(WIN *w, int y , int attr);
+ int mc_wselect(int x, int y, const char *const *choices,
+             void (*const *funlist)(void) ,
+-- 
+2.55.0
+

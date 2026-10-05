@@ -1,0 +1,213 @@
+From 7230754f16ba76eb72e1201b63adaa63f402b8c9 Mon Sep 17 00:00:00 2001
+From: claudecode <hockinglee@gmail.com>
+Date: Mon, 5 Oct 2026 14:27:03 +0800
+Subject: [PATCH] ble: Receive notifications through AcquireNotify
+
+With StartNotify, BlueZ registers one ATT notification handler per
+D-Bus client and each emits its own PropertiesChanged signal. Signals
+are broadcast, so with two minicoms on the same characteristic each one
+received every notification twice.
+
+AcquireNotify hands us a socket of our own that carries each value once.
+It is also exclusive: a second program on the same characteristic now
+gets "read characteristic in use by another program" instead of
+sharing the link, where the device would get both programs' writes and
+answer each one twice. StartNotify is kept as a fallback for BlueZ
+versions without AcquireNotify.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+---
+ src/ble.c | 106 ++++++++++++++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 92 insertions(+), 14 deletions(-)
+
+diff --git a/src/ble.c b/src/ble.c
+index ead386f..763f0f8 100644
+--- a/src/ble.c
++++ b/src/ble.c
+@@ -1227,6 +1227,7 @@ struct bridge {
+   char wpath[192], rpath[192];
+   int write_nr, chunk;
+   int up, connecting, discovering, we_connected;
++  int nfd;                 /* AcquireNotify socket, -1 if StartNotify is used */
+   uint64_t next_try, connected_at;
+   unsigned long dropped;
+   FILE *log;
+@@ -1270,11 +1271,19 @@ static void br_state(struct bridge *b, int st, const char *fmt, ...)
+   shm->state = st;
+ }
+ 
++static void br_close_notify(struct bridge *b)
++{
++  if (b->nfd >= 0)
++    close(b->nfd);
++  b->nfd = -1;
++}
++
+ static void br_down(struct bridge *b, const char *why)
+ {
+   if (b->up)
+     br_state(b, BS_DOWN, "%s", why);
+   b->up = 0;
++  br_close_notify(b);
+   b->next_try = now_ms() + 500;
+ }
+ 
+@@ -1325,26 +1334,73 @@ static int br_resolve(struct bridge *b, sd_bus_error *err)
+   return 0;
+ }
+ 
++/*
++ * Subscribe through AcquireNotify: we get our own socket with every
++ * notification exactly once. With StartNotify, BlueZ emits one
++ * PropertiesChanged signal per subscribed client, and as signals are
++ * broadcast every client sees each value once per subscriber (data
++ * doubled with two minicoms on the same characteristic). AcquireNotify
++ * is also exclusive, which keeps a second program off the same link:
++ * the peer could not tell its writes apart from ours.
++ */
++static int br_acquire_notify(struct bridge *b, sd_bus_error *err)
++{
++  sd_bus_message *reply = NULL;
++  int fd;
++  uint16_t mtu;
++  int r;
++
++  br_close_notify(b);
++  r = sd_bus_call_method(b->bus, BLUEZ, b->rpath, IFACE_CHAR, "AcquireNotify",
++                         err, &reply, "a{sv}", 0);
++  if (r >= 0) {
++    r = sd_bus_message_read(reply, "hq", &fd, &mtu);
++    if (r >= 0 && (b->nfd = fcntl(fd, F_DUPFD_CLOEXEC, 3)) < 0)
++      r = -errno;
++    sd_bus_message_unref(reply);
++    if (r < 0)
++      return r;
++    fcntl(b->nfd, F_SETFL, fcntl(b->nfd, F_GETFL) | O_NONBLOCK);
++    return 0;
++  }
++  if (sd_bus_error_has_name(err, "org.bluez.Error.InProgress") ||
++      sd_bus_error_has_name(err, "org.bluez.Error.NotPermitted")) {
++    sd_bus_error_free(err);
++    sd_bus_error_set(err, "org.bluez.Error.InProgress",
++                     _("read characteristic in use by another program"));
++    return r;
++  }
++  if (!sd_bus_error_has_name(err, SD_BUS_ERROR_UNKNOWN_METHOD) &&
++      !sd_bus_error_has_name(err, "org.bluez.Error.NotSupported"))
++    return r;
++
++  /* Old BlueZ: fall back to the PropertiesChanged signals. */
++  blog(b, "AcquireNotify: %s, using StartNotify", errtext(err, r));
++  sd_bus_error_free(err);
++  r = sd_bus_call_method(b->bus, BLUEZ, b->rpath, IFACE_CHAR, "StartNotify",
++                         err, NULL, NULL);
++  /* Some BlueZ versions complain if notifications are already on. */
++  if (r < 0 && (sd_bus_error_has_name(err, "org.bluez.Error.InProgress") ||
++                sd_bus_error_has_name(err, "org.bluez.Error.AlreadyExists")))
++    r = 0;
++  return r;
++}
++
+ static int br_go_up(struct bridge *b)
+ {
+   sd_bus_error err = SD_BUS_ERROR_NULL;
+   int r = br_resolve(b, &err);
+-  if (r >= 0) {
+-    r = sd_bus_call_method(b->bus, BLUEZ, b->rpath, IFACE_CHAR, "StartNotify",
+-                           &err, NULL, NULL);
+-    /* Some BlueZ versions complain if notifications are already on. */
+-    if (r < 0 && (sd_bus_error_has_name(&err, "org.bluez.Error.InProgress") ||
+-                  sd_bus_error_has_name(&err, "org.bluez.Error.AlreadyExists")))
+-      r = 0;
+-  }
++  if (r >= 0)
++    r = br_acquire_notify(b, &err);
+   if (r < 0) {
+     snprintf(shm->msg, sizeof(shm->msg), "%s", errtext(&err, r));
+     blog(b, "go_up failed: %s", shm->msg);
+     sd_bus_error_free(&err);
+     return r;
+   }
+-  blog(b, "up: write %s (%s, chunk %d), notify %s", b->wpath,
+-       b->write_nr ? "command" : "request", b->chunk, b->rpath);
++  blog(b, "up: write %s (%s, chunk %d), notify %s (%s)", b->wpath,
++       b->write_nr ? "command" : "request", b->chunk, b->rpath,
++       b->nfd >= 0 ? "acquired" : "signals");
+   b->up = 1;
+   br_state(b, BS_UP, NULL);
+   return 0;
+@@ -1397,7 +1453,7 @@ static int br_props_changed(sd_bus_message *m, void *ud, sd_bus_error *ret_error
+           sd_bus_message_read_array(m, 'y', &p, &n) < 0 ||
+           sd_bus_message_exit_container(m) < 0)
+         return 0;
+-      if (b->up)
++      if (b->up && b->nfd < 0)
+         br_value(b, p, n);
+     } else if (is_dev && !strcmp(k, "Connected")) {
+       if (var_basic(m, 'b', &v) < 0)
+@@ -1690,10 +1746,11 @@ static void __attribute__((noreturn)) bridge_main(struct bridge *b)
+         br_retry(b);
+     }
+ 
+-    struct pollfd p[3] = {
++    struct pollfd p[4] = {
+       { b->master, POLLIN, 0 },
+       { b->life, POLLIN, 0 },
+       { -1, 0, 0 },
++      { b->nfd, POLLIN, 0 },
+     };
+     int timeout = 1000;
+     if (b->bus) {
+@@ -1715,11 +1772,29 @@ static void __attribute__((noreturn)) bridge_main(struct bridge *b)
+       if (t < timeout)
+         timeout = t;
+     }
+-    if (poll(p, 3, timeout) < 0)
++    if (poll(p, 4, timeout) < 0)
+       continue;
+ 
+     if (p[1].revents)
+       break;               /* minicom is gone */
++    if (b->nfd >= 0 && p[3].revents) {
++      /* one notification per read; 0 bytes is an empty notification */
++      ssize_t n;
++      while ((n = read(b->nfd, buf, sizeof(buf))) >= 0 &&
++             !(n == 0 && (p[3].revents & POLLHUP)))
++        if (b->up && n)
++          br_value(b, buf, n);
++      if ((n < 0 && errno != EAGAIN && errno != EINTR) ||
++          (p[3].revents & (POLLHUP | POLLERR))) {
++        int connected = 0;
++        blog(b, "notify socket closed");
++        /* Usually the link went down; the Connected signal comes later. */
++        if (b->bus)
++          sd_bus_get_property_trivial(b->bus, BLUEZ, b->dev, IFACE_DEVICE,
++                                      "Connected", NULL, 'b', &connected);
++        br_down(b, connected ? _("notifications stopped") : _("disconnected"));
++      }
++    }
+     if (p[0].revents & POLLIN) {
+       ssize_t n = read(b->master, buf, sizeof(buf));
+       if (n > 0) {
+@@ -1733,7 +1808,9 @@ static void __attribute__((noreturn)) bridge_main(struct bridge *b)
+ 
+   blog(b, "exiting, dropped %lu bytes", b->dropped);
+   if (b->bus) {
+-    if (b->up && b->rpath[0])
++    if (b->nfd >= 0)
++      br_close_notify(b);
++    else if (b->up && b->rpath[0])
+       sd_bus_call_method(b->bus, BLUEZ, b->rpath, IFACE_CHAR, "StopNotify",
+                          NULL, NULL, NULL);
+     discovery_stop(b->bus, b->adapter, &b->discovering);
+@@ -1813,6 +1890,7 @@ static int bridge_start(struct ctx *c, struct target *t, struct chr *wc,
+     shm->pid = getpid();
+ 
+     memset(&b, 0, sizeof(b));
++    b.nfd = -1;
+     /* Keep only what the bridge needs: 3=master 4=slave 5=lifeline. */
+     int devnull = open("/dev/null", O_RDWR);
+     if (devnull >= 0) {
+-- 
+2.55.0
+

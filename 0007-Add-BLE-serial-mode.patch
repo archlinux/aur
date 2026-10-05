@@ -1,0 +1,2424 @@
+From 1828a19a002ce1a56fe71abad44cd8ef10956a1b Mon Sep 17 00:00:00 2001
+From: Hocking Lee <hockinglee@gmail.com>
+Date: Mon, 5 Oct 2026 10:54:44 +0800
+Subject: [PATCH] Add BLE serial mode (--ble)
+
+Talk to a Bluetooth Low Energy device through a pair of GATT
+characteristics, one written to and one notifying, like the ble-serial
+project does (e.g. the Nordic UART Service).
+
+  minicom --ble                 scan, pick a device and characteristics
+  minicom --ble=AA:BB:..        connect directly
+  --ble-adapter=hciN|ADDR       adapter to use
+  --ble-write=UUID / --ble-read=UUID   characteristics to preselect
+
+BlueZ is driven over D-Bus with sd-bus (libsystemd). The device list
+and the characteristic dialog use minicom's own window library. The
+NUS characteristics 6e400002-... (write) and 6e400003-... (read) are
+preselected when present, so Enter on "Connect" is enough.
+
+A detached helper process relays between a pty and the device, and
+minicom opens the pty like a serial port, so capture, transfers and
+scripts keep working. The helper:
+ - writes in ATT MTU sized chunks, without response when allowed;
+ - reconnects by itself when the link drops, the peer's GATT database
+   changes, the device object expires, bluetoothd restarts or the
+   adapter is re-enumerated (found again by its address);
+ - discards data typed while the link is down instead of blocking;
+ - exits and disconnects when minicom goes away (lifeline pipe EOF),
+   also if minicom is killed.
+Minicom shows a window while the link is down, and leaves with a
+message (disconnecting the device) if the helper dies.
+
+Setup errors (no bluetoothd, no adapter, rfkill, connect/service
+discovery timeout, no suitable characteristics, StartNotify refused)
+are reported in a window or on exit.
+
+BLE support is built when libsystemd is found (--enable-ble, default
+auto). MINICOM_BLE_LOG=<file> logs the helper's activity.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+---
+ configure.ac    |   16 +
+ man/minicom.1   |   38 +
+ src/Makefile.am |    8 +-
+ src/ble.c       | 2039 +++++++++++++++++++++++++++++++++++++++++++++++
+ src/ble.h       |   46 ++
+ src/main.c      |   11 +
+ src/minicom.c   |   68 +-
+ 7 files changed, 2221 insertions(+), 5 deletions(-)
+ create mode 100644 src/ble.c
+ create mode 100644 src/ble.h
+
+diff --git a/configure.ac b/configure.ac
+index 1d0b0b3..daff1e4 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -38,6 +38,22 @@ if test -n "$PKG_CONFIG" && test "x$enable_lockdev" = xyes; then
+ 	PKG_CHECK_MODULES([LOCKDEV], [lockdev], AC_DEFINE([HAVE_LOCKDEV],[1],[Define if you have lockdev]),[:])
+ fi
+ 
++AC_ARG_ENABLE([ble],
++        AS_HELP_STRING([--enable-ble],
++                       [Enable BLE serial support via BlueZ/libsystemd (def: auto)]),
++        [], [enable_ble="auto"])
++
++have_ble=no
++if test "x$enable_ble" != xno; then
++	PKG_CHECK_MODULES([LIBSYSTEMD], [libsystemd >= 221],
++		[have_ble=yes
++		 AC_DEFINE([HAVE_BLE],[1],[Define to enable BLE serial support])],
++		[if test "x$enable_ble" = xyes; then
++		   AC_MSG_ERROR([BLE support requested but libsystemd (sd-bus) not found])
++		 fi])
++fi
++AM_CONDITIONAL([HAVE_BLE], [test "x$have_ble" = xyes])
++
+ AC_ARG_ENABLE([lock-dir],
+ 	AS_HELP_STRING([--enable-lock-dir=DIR],
+ 	               [Set com line lock directory (def: try common locations)]),
+diff --git a/man/minicom.1 b/man/minicom.1
+index 6b3d42f..8708df4 100644
+--- a/man/minicom.1
++++ b/man/minicom.1
+@@ -130,6 +130,44 @@ Buffering mode of capture file. MODE can be one of:
+    L  Line buffered.
+    F  Fully buffered.
+ .TP 0.5i
++.B \-\-ble[=ADDRESS]
++BLE serial mode (only if minicom was built with BLE support): talk to a
++Bluetooth Low Energy device through a pair of GATT characteristics, one
++that is written to and one that sends notifications, in the same way as
++the ble-serial project. BlueZ (bluetoothd) must be running.
++.RS
++.PP
++Without ADDRESS, a list of the devices found by scanning is shown; pick
++one with the cursor keys and Enter. Press A to also show devices without
++a name. After connecting, the write and read characteristics are chosen
++in a dialog. The Nordic UART Service characteristics
++6e400002-b5a3-f393-e0a9-e50e24dcca9e (write) and
++6e400003-b5a3-f393-e0a9-e50e24dcca9e (read) are preselected if the
++device has them, so Enter on "Connect" is enough.
++.PP
++With ADDRESS, minicom connects to that device directly and skips the
++dialog if both characteristics are found.
++.PP
++Minicom then talks to the device through a pseudo terminal. A small
++helper process relays data between it and the device. Data are written
++in chunks of the ATT MTU, without response if the characteristic allows
++it. If the link drops, a window says so and the helper reconnects by
++itself (also after the adapter has been re-plugged); data typed while
++the link is down are discarded. The device is disconnected when minicom
++exits, unless it was already connected before minicom started. Set
++MINICOM_BLE_LOG to a file name to log what the helper does.
++.RE
++.TP 0.5i
++.B \-\-ble\-adapter=NAME
++Bluetooth adapter to use in BLE serial mode, by name (e.g. hci1) or
++address. Default is the lowest numbered adapter.
++.TP 0.5i
++.B \-\-ble\-write=UUID
++Characteristic to preselect for writing in BLE serial mode.
++.TP 0.5i
++.B \-\-ble\-read=UUID
++Characteristic to preselect for notifications in BLE serial mode.
++.TP 0.5i
+ .B \-F, \-\-statlinefmt
+ Format for the status line. The following format specifier are available:
+    %H  Escape key for help screen.
+diff --git a/src/Makefile.am b/src/Makefile.am
+index ba92f71..5c477a7 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -8,11 +8,11 @@ dist_bin_SCRIPTS = xminicom
+ minicom_SOURCES = minicom.c vt100.c config.c help.c updown.c \
+ 	util.c dial.c window.c wkeys.c ipc.c \
+ 	windiv.c sysdep1.c sysdep1_s.c sysdep2.c rwconf.c main.c \
+-	file.c getsdir.c wildmat.c common.c
++	file.c getsdir.c wildmat.c common.c ble.c
+ 
+ noinst_HEADERS = configsym.h defmap.h \
+ 	getsdir.h intl.h keyboard.h minicom.h \
+-	port.h vt100.h window.h sysdep.h
++	port.h vt100.h window.h sysdep.h ble.h
+ 
+ runscript_SOURCES = script.c sysdep1_s.c common.c port.h minicom.h
+ 
+@@ -30,7 +30,9 @@ AM_CPPFLAGS = @CPPFLAGS@ -I$(top_srcdir)/lib -DCONFDIR=\"$(confdir)\" \
+               -DLOCALEDIR=\"$(datadir)/locale\"
+ 
+ ascii_xfr_LDADD = @LIBINTL@
+-minicom_LDADD = @LIBINTL@ $(LIBICONV) $(MINICOM_LIBPORT) $(LOCKDEV_LIBS)
++minicom_CFLAGS = $(AM_CFLAGS) $(LIBSYSTEMD_CFLAGS)
++minicom_LDADD = @LIBINTL@ $(LIBICONV) $(MINICOM_LIBPORT) $(LOCKDEV_LIBS) \
++	$(LIBSYSTEMD_LIBS)
+ minicom_keyserv_LDADD = @LIBINTL@ $(MINICOM_LIBPORT)
+ runscript_LDADD = @LIBINTL@ $(MINICOM_LIBPORT)
+ 
+diff --git a/src/ble.c b/src/ble.c
+new file mode 100644
+index 0000000..ead386f
+--- /dev/null
++++ b/src/ble.c
+@@ -0,0 +1,2039 @@
++/*
++ * ble.c	BLE serial support: talk to a device through a pair of GATT
++ *		characteristics (one written to, one notifying), like the
++ *		ble-serial Python project does.
++ *
++ *		This file is part of the minicom communications package.
++ *
++ *		This program is free software; you can redistribute it and/or
++ *		modify it under the terms of the GNU General Public License
++ *		as published by the Free Software Foundation; either version
++ *		2 of the License, or (at your option) any later version.
++ *
++ * Design: BlueZ is driven over D-Bus (sd-bus). The device and the two
++ * characteristics are chosen in a small UI built with minicom's own
++ * window library. Then a detached bridge process is started that relays
++ * between the master side of a pseudo terminal and the characteristics;
++ * minicom opens the slave side as if it were a serial port, so all of
++ * minicom's features (capture, transfers, scripts, ...) keep working.
++ *
++ * The bridge reconnects by itself when the link drops, and exits (and
++ * disconnects the device) when minicom goes away, which it notices by
++ * EOF on a "lifeline" pipe. Its state is shared with minicom through an
++ * anonymous shared mapping so minicom can show a "link lost" window.
++ */
++#include <config.h>
++
++#ifdef HAVE_BLE
++
++#include "port.h"
++#include "minicom.h"
++#include "intl.h"
++#include "ble.h"
++
++#include <errno.h>
++#include <fcntl.h>
++#include <poll.h>
++#include <signal.h>
++#include <stdarg.h>
++#include <stdint.h>
++#include <strings.h>
++#include <time.h>
++#include <wchar.h>
++#include <termios.h>
++#include <sys/mman.h>
++#include <sys/wait.h>
++#include <systemd/sd-bus.h>
++
++#define BLUEZ          "org.bluez"
++#define IFACE_ADAPTER  "org.bluez.Adapter1"
++#define IFACE_DEVICE   "org.bluez.Device1"
++#define IFACE_SERVICE  "org.bluez.GattService1"
++#define IFACE_CHAR     "org.bluez.GattCharacteristic1"
++#define IFACE_PROPS    "org.freedesktop.DBus.Properties"
++#define NUS_SERVICE    "6e400001-b5a3-f393-e0a9-e50e24dcca9e"
++
++#define CONNECT_TIMEOUT_MS   30000  /* Connect() + service discovery */
++#define SEARCH_TIMEOUT_MS    20000  /* --ble=ADDR: wait for advertising */
++#define BRIDGE_START_MS      15000
++#define RETRY_MS             2000
++
++/* ---------------------------------------------------------------------
++ * BlueZ object snapshot (GetManagedObjects)
++ */
++
++enum { O_ADAPTER = 1, O_DEVICE, O_SERVICE, O_CHAR };
++
++#define CF_READ      0x01
++#define CF_WRITE     0x02
++#define CF_WRITE_NR  0x04
++#define CF_NOTIFY    0x08
++#define CF_INDICATE  0x10
++
++struct bobj {
++  int type;
++  char *path;
++  char *addr, *name, *alias, *uuid;
++  char *parent;            /* Adapter (device), Device (service), Service (char) */
++  int has_rssi, rssi;
++  int connected, resolved, powered;
++  int nus;                 /* device advertises the Nordic UART Service */
++  unsigned flags;          /* characteristic CF_* flags */
++  unsigned mtu;
++};
++
++struct bstore {
++  struct bobj *v;
++  int n;
++};
++
++static void store_free(struct bstore *s)
++{
++  for (int i = 0; i < s->n; i++) {
++    struct bobj *o = &s->v[i];
++    free(o->path); free(o->addr); free(o->name); free(o->alias);
++    free(o->uuid); free(o->parent);
++  }
++  free(s->v);
++  s->v = NULL;
++  s->n = 0;
++}
++
++static struct bobj *store_find(struct bstore *s, int type, const char *path)
++{
++  for (int i = 0; i < s->n; i++)
++    if (s->v[i].type == type && !strcmp(s->v[i].path, path))
++      return &s->v[i];
++  return NULL;
++}
++
++/* Read a variant holding a single basic type; skip it if it is not. */
++static int var_basic(sd_bus_message *m, char want, void *out)
++{
++  const char *contents;
++  int r = sd_bus_message_peek_type(m, NULL, &contents);
++  if (r < 0)
++    return r;
++  if (!contents || contents[0] != want || contents[1])
++    return sd_bus_message_skip(m, "v") < 0 ? -EBADMSG : 0;
++  if ((r = sd_bus_message_enter_container(m, 'v', contents)) < 0 ||
++      (r = sd_bus_message_read_basic(m, want, out)) < 0)
++    return r;
++  r = sd_bus_message_exit_container(m);
++  return r < 0 ? r : 1;
++}
++
++static int var_str(sd_bus_message *m, char want, char **out)
++{
++  const char *s = NULL;
++  int r = var_basic(m, want, &s);
++  if (r > 0) {
++    free(*out);
++    *out = strdup(s ? s : "");
++  }
++  return r;
++}
++
++static int var_strv(sd_bus_message *m, char ***out)
++{
++  const char *contents;
++  int r = sd_bus_message_peek_type(m, NULL, &contents);
++  *out = NULL;
++  if (r < 0)
++    return r;
++  if (!contents || strcmp(contents, "as"))
++    return sd_bus_message_skip(m, "v") < 0 ? -EBADMSG : 0;
++  if ((r = sd_bus_message_enter_container(m, 'v', "as")) < 0 ||
++      (r = sd_bus_message_read_strv(m, out)) < 0)
++    return r;
++  return sd_bus_message_exit_container(m);
++}
++
++static void strv_free(char **v)
++{
++  if (!v)
++    return;
++  for (char **p = v; *p; p++)
++    free(*p);
++  free(v);
++}
++
++static unsigned char_flags(char **v)
++{
++  unsigned f = 0;
++  for (char **p = v; p && *p; p++) {
++    if (!strcmp(*p, "read"))
++      f |= CF_READ;
++    else if (!strcmp(*p, "write"))
++      f |= CF_WRITE;
++    else if (!strcmp(*p, "write-without-response"))
++      f |= CF_WRITE_NR;
++    else if (!strcmp(*p, "notify"))
++      f |= CF_NOTIFY;
++    else if (!strcmp(*p, "indicate"))
++      f |= CF_INDICATE;
++  }
++  return f;
++}
++
++/* Parse an a{sv} property dict into o. */
++static int parse_props(sd_bus_message *m, struct bobj *o)
++{
++  int r;
++  if ((r = sd_bus_message_enter_container(m, 'a', "{sv}")) < 0)
++    return r;
++  while ((r = sd_bus_message_enter_container(m, 'e', "sv")) > 0) {
++    const char *k;
++    if ((r = sd_bus_message_read(m, "s", &k)) < 0)
++      return r;
++    int b = 0;
++    int16_t n = 0;
++    uint16_t q = 0;
++    char **sv = NULL;
++
++    if (!strcmp(k, "Address"))
++      r = var_str(m, 's', &o->addr);
++    else if (!strcmp(k, "Name"))
++      r = var_str(m, 's', &o->name);
++    else if (!strcmp(k, "Alias"))
++      r = var_str(m, 's', &o->alias);
++    else if (!strcmp(k, "UUID"))
++      r = var_str(m, 's', &o->uuid);
++    else if (!strcmp(k, "Adapter") || !strcmp(k, "Device") || !strcmp(k, "Service"))
++      r = var_str(m, 'o', &o->parent);
++    else if (!strcmp(k, "RSSI")) {
++      if ((r = var_basic(m, 'n', &n)) > 0) {
++        o->has_rssi = 1;
++        o->rssi = n;
++      }
++    } else if (!strcmp(k, "Connected")) {
++      if ((r = var_basic(m, 'b', &b)) > 0)
++        o->connected = b;
++    } else if (!strcmp(k, "ServicesResolved")) {
++      if ((r = var_basic(m, 'b', &b)) > 0)
++        o->resolved = b;
++    } else if (!strcmp(k, "Powered")) {
++      if ((r = var_basic(m, 'b', &b)) > 0)
++        o->powered = b;
++    } else if (!strcmp(k, "MTU")) {
++      if ((r = var_basic(m, 'q', &q)) > 0)
++        o->mtu = q;
++    } else if (!strcmp(k, "Flags")) {
++      if ((r = var_strv(m, &sv)) >= 0)
++        o->flags = char_flags(sv);
++      strv_free(sv);
++    } else if (!strcmp(k, "UUIDs")) {
++      if ((r = var_strv(m, &sv)) >= 0)
++        for (char **p = sv; p && *p; p++)
++          if (!strcasecmp(*p, NUS_SERVICE))
++            o->nus = 1;
++      strv_free(sv);
++    } else
++      r = sd_bus_message_skip(m, "v");
++    if (r < 0)
++      return r;
++    if ((r = sd_bus_message_exit_container(m)) < 0)
++      return r;
++  }
++  if (r < 0)
++    return r;
++  return sd_bus_message_exit_container(m);
++}
++
++static int iface_type(const char *iface)
++{
++  if (!strcmp(iface, IFACE_ADAPTER))
++    return O_ADAPTER;
++  if (!strcmp(iface, IFACE_DEVICE))
++    return O_DEVICE;
++  if (!strcmp(iface, IFACE_SERVICE))
++    return O_SERVICE;
++  if (!strcmp(iface, IFACE_CHAR))
++    return O_CHAR;
++  return 0;
++}
++
++/* Load all BlueZ objects we care about. */
++static int store_load(sd_bus *bus, struct bstore *s, sd_bus_error *err)
++{
++  sd_bus_message *reply = NULL;
++  int r;
++
++  store_free(s);
++  r = sd_bus_call_method(bus, BLUEZ, "/", "org.freedesktop.DBus.ObjectManager",
++                         "GetManagedObjects", err, &reply, NULL);
++  if (r < 0)
++    return r;
++
++  if ((r = sd_bus_message_enter_container(reply, 'a', "{oa{sa{sv}}}")) < 0)
++    goto out;
++  while ((r = sd_bus_message_enter_container(reply, 'e', "oa{sa{sv}}")) > 0) {
++    const char *path;
++    if ((r = sd_bus_message_read(reply, "o", &path)) < 0 ||
++        (r = sd_bus_message_enter_container(reply, 'a', "{sa{sv}}")) < 0)
++      goto out;
++    while ((r = sd_bus_message_enter_container(reply, 'e', "sa{sv}")) > 0) {
++      const char *iface;
++      int t;
++      if ((r = sd_bus_message_read(reply, "s", &iface)) < 0)
++        goto out;
++      if ((t = iface_type(iface)) == 0)
++        r = sd_bus_message_skip(reply, "a{sv}");
++      else {
++        struct bobj *nv = realloc(s->v, (s->n + 1) * sizeof(*nv));
++        if (!nv) {
++          r = -ENOMEM;
++          goto out;
++        }
++        s->v = nv;
++        struct bobj *o = &s->v[s->n++];
++        memset(o, 0, sizeof(*o));
++        o->type = t;
++        o->path = strdup(path);
++        r = parse_props(reply, o);
++      }
++      if (r < 0 || (r = sd_bus_message_exit_container(reply)) < 0)
++        goto out;
++    }
++    if (r < 0 ||
++        (r = sd_bus_message_exit_container(reply)) < 0 ||
++        (r = sd_bus_message_exit_container(reply)) < 0)
++      goto out;
++  }
++  if (r >= 0)
++    r = sd_bus_message_exit_container(reply);
++out:
++  sd_bus_message_unref(reply);
++  if (r < 0)
++    sd_bus_error_set_errno(err, r);
++  return r;
++}
++
++/* ---------------------------------------------------------------------
++ * Misc helpers
++ */
++
++static uint64_t now_ms(void)
++{
++  struct timespec ts;
++  clock_gettime(CLOCK_MONOTONIC, &ts);
++  return (uint64_t)ts.tv_sec * 1000 + ts.tv_nsec / 1000000;
++}
++
++/* Turn a D-Bus error into something a user can act upon. */
++static const char *errtext(const sd_bus_error *e, int r)
++{
++  static char buf[200];
++  const char *n = e && e->name ? e->name : "";
++
++  if (!strcmp(n, SD_BUS_ERROR_SERVICE_UNKNOWN) ||
++      !strcmp(n, SD_BUS_ERROR_NAME_HAS_NO_OWNER))
++    return _("bluetoothd is not running (try: systemctl start bluetooth)");
++  if (!strcmp(n, SD_BUS_ERROR_ACCESS_DENIED))
++    return _("access to BlueZ denied by the D-Bus policy");
++  if (!strcmp(n, SD_BUS_ERROR_NO_REPLY) || !strcmp(n, SD_BUS_ERROR_TIMEOUT) ||
++      r == -ETIMEDOUT)
++    return _("timeout");
++  if (!strcmp(n, "org.bluez.Error.NotReady"))
++    return _("adapter not ready (powered off?)");
++  if (!strcmp(n, "org.bluez.Error.Blocked"))
++    return _("adapter blocked by rfkill (try: rfkill unblock bluetooth)");
++  if (!strcmp(n, "org.bluez.Error.NotPermitted") ||
++      !strcmp(n, "org.bluez.Error.NotAuthorized"))
++    snprintf(buf, sizeof(buf), _("not permitted (pairing needed?): %s"),
++             e->message ? e->message : n);
++  else if (e && e->message)
++    snprintf(buf, sizeof(buf), "%s", e->message);
++  else if (*n)
++    snprintf(buf, sizeof(buf), "%s", n);
++  else
++    snprintf(buf, sizeof(buf), "%s", strerror(r < 0 ? -r : EIO));
++  buf[strcspn(buf, "\r\n")] = 0;
++  return buf;
++}
++
++/* "Name (AA:BB:...)" or just the address. */
++static void make_label(char *buf, size_t sz, const char *name, const char *addr)
++{
++  if (name && *name)
++    snprintf(buf, sz, "%s (%s)", name, addr);
++  else
++    snprintf(buf, sz, "%s", addr);
++}
++
++/*
++ * Copy at most cols display columns of src to dst, padding with spaces
++ * to exactly cols. Control and zero-width characters are dropped so a
++ * device name cannot mess up the screen.
++ */
++static void fit(char *dst, size_t dsz, const char *src, int cols)
++{
++  mbstate_t st;
++  size_t o = 0, n = strlen(src);
++  int w = 0;
++
++  memset(&st, 0, sizeof(st));
++  while (n && o + MB_CUR_MAX < dsz) {
++    wchar_t wc;
++    size_t l = mbrtowc(&wc, src, n, &st);
++    int cw;
++    if (l == (size_t)-1 || l == (size_t)-2 || l == 0) {
++      memset(&st, 0, sizeof(st));
++      l = 1;
++      cw = -1;
++    } else
++      cw = wcwidth(wc);
++    if (cw < 0) {
++      if (w + 1 > cols)
++        break;
++      dst[o++] = '?';
++      w++;
++    } else if (cw > 0) {
++      if (w + cw > cols)
++        break;
++      memcpy(dst + o, src, l);
++      o += l;
++      w += cw;
++    }
++    src += l;
++    n -= l;
++  }
++  while (w < cols && o + 1 < dsz) {
++    dst[o++] = ' ';
++    w++;
++  }
++  dst[o] = 0;
++}
++
++static const char *flagstr(unsigned f)
++{
++  static char buf[64];
++  buf[0] = 0;
++  if (f & CF_WRITE_NR)
++    strcat(buf, "write-nr ");
++  if (f & CF_WRITE)
++    strcat(buf, "write ");
++  if (f & CF_NOTIFY)
++    strcat(buf, "notify ");
++  if (f & CF_INDICATE)
++    strcat(buf, "indicate ");
++  if (f & CF_READ)
++    strcat(buf, "read ");
++  if (*buf)
++    buf[strlen(buf) - 1] = 0;
++  return buf;
++}
++
++/* ---------------------------------------------------------------------
++ * UI helpers (minicom window library)
++ */
++
++static int ui_getkey(int timeout_ms)
++{
++  mc_wflush();
++  if (check_io_input(timeout_ms))
++    return wxgetch();
++  return -1;
++}
++
++static int is_enter(int c)
++{
++  return c == '\n' || c == '\r';
++}
++
++static WIN *ui_box(int w, int h, const char *title)
++{
++  if (w > COLS - 4)
++    w = COLS - 4;
++  if (h > LINES - 4)
++    h = LINES - 4;
++  /* Window coordinates exclude the border; keep it fully visible. */
++  int x1 = (COLS - w) / 2, y1 = (LINES - h + 1) / 2;
++  if (y1 < 1)
++    y1 = 1;
++  WIN *win = mc_wopen(x1, y1, x1 + w - 1, y1 + h - 1,
++                      BDOUBLE, stdattr, mfcolor, mbcolor, 0, 0, 1);
++  if (!win)
++    leave(_("Could not open window\n"));
++  mc_wresetam(win);
++  mc_wcursor(win, CNONE);
++  if (title)
++    mc_wtitle(win, TMID, title);
++  return win;
++}
++
++static int ui_width(WIN *w)
++{
++  return w->x2 - w->x1 + 1;
++}
++
++/* Put a line at row y, padded/clipped to the window width. */
++static void ui_line(WIN *w, int y, int hl, const char *fmt, ...)
++{
++  char raw[512], buf[1024];
++  va_list ap;
++  int hi = (stdattr & XA_REVERSE) ? stdattr & ~XA_REVERSE : stdattr | XA_REVERSE;
++
++  va_start(ap, fmt);
++  vsnprintf(raw, sizeof(raw), fmt, ap);
++  va_end(ap);
++  fit(buf, sizeof(buf), raw, ui_width(w) - 1);
++  mc_wsetattr(w, hl ? hi : stdattr);
++  mc_wlocate(w, 0, y);
++  mc_wputs(w, buf);
++  mc_wsetattr(w, stdattr);
++}
++
++/* Show a (multi-line) message and wait for a key. */
++static void ui_msg(const char *title, const char *fmt, ...)
++{
++  char buf[512];
++  va_list ap;
++  int lines = 1, width = 0, cur = 0;
++
++  va_start(ap, fmt);
++  vsnprintf(buf, sizeof(buf), fmt, ap);
++  va_end(ap);
++  for (char *p = buf; ; p++) {
++    if (*p == '\n' || !*p) {
++      if (cur > width)
++        width = cur;
++      cur = 0;
++      if (!*p)
++        break;
++      lines++;
++    } else
++      cur++;
++  }
++  WIN *w = ui_box(width + 4, lines + 2, title);
++  int y = 0;
++  for (char *p = buf, *e; p; p = e ? e + 1 : NULL, y++) {
++    if ((e = strchr(p, '\n')))
++      *e = 0;
++    ui_line(w, y, 0, " %s", p);
++  }
++  ui_line(w, lines + 1, 0, "  %s", _("Press any key to continue"));
++  mc_wredraw(w, 1);
++  while (ui_getkey(1000) < 0)
++    ;
++  mc_wclose(w, 1);
++}
++
++/* A "please wait" window; returns it so the caller can close it. */
++static WIN *ui_wait(const char *fmt, ...)
++{
++  char buf[256];
++  va_list ap;
++  va_start(ap, fmt);
++  vsnprintf(buf, sizeof(buf), fmt, ap);
++  va_end(ap);
++  WIN *w = ui_box(mbswidth(buf) + 4, 3, NULL);
++  ui_line(w, 0, 0, " %s", buf);
++  ui_line(w, 2, 0, " %s", _("Esc: cancel"));
++  mc_wredraw(w, 1);
++  mc_wflush();
++  return w;
++}
++
++/* ---------------------------------------------------------------------
++ * Adapter and discovery
++ */
++
++struct ctx {
++  sd_bus *bus;
++  char adapter[64];        /* object path, e.g. /org/bluez/hci0 */
++  char adapter_addr[18];
++  int discovering;
++};
++
++static void fatal_bus(const char *what, const sd_bus_error *e, int r)
++{
++  char buf[400];
++  snprintf(buf, sizeof(buf), "minicom: BLE: %s: %s\n", what, errtext(e, r));
++  leave(buf);
++}
++
++static void find_adapter(struct ctx *c, const char *want)
++{
++  sd_bus_error err = SD_BUS_ERROR_NULL;
++  struct bstore s = { 0 };
++  struct bobj *a = NULL;
++  int r;
++
++  if ((r = store_load(c->bus, &s, &err)) < 0)
++    fatal_bus(_("cannot talk to BlueZ"), &err, r);
++
++  for (int i = 0; i < s.n; i++) {
++    struct bobj *o = &s.v[i];
++    if (o->type != O_ADAPTER)
++      continue;
++    const char *base = strrchr(o->path, '/') + 1;
++    if (!want) {
++      /* Default: the lowest numbered one, like bluetoothctl. */
++      if (!a || strlen(o->path) < strlen(a->path) ||
++          (strlen(o->path) == strlen(a->path) && strcmp(o->path, a->path) < 0))
++        a = o;
++    } else if (!strcmp(base, want) || (o->addr && !strcasecmp(o->addr, want))) {
++      a = o;
++      break;
++    }
++  }
++  if (!a) {
++    char buf[200];
++    if (want)
++      snprintf(buf, sizeof(buf), _("minicom: BLE: adapter %s not found\n"), want);
++    else
++      snprintf(buf, sizeof(buf), _("minicom: BLE: no Bluetooth adapter found\n"));
++    store_free(&s);
++    leave(buf);
++  }
++  snprintf(c->adapter, sizeof(c->adapter), "%s", a->path);
++  snprintf(c->adapter_addr, sizeof(c->adapter_addr), "%s", a->addr ? a->addr : "");
++
++  if (!a->powered) {
++    r = sd_bus_set_property(c->bus, BLUEZ, c->adapter, IFACE_ADAPTER,
++                            "Powered", &err, "b", 1);
++    if (r < 0)
++      fatal_bus(_("cannot power on the adapter"), &err, r);
++    /* Powering on is asynchronous in some kernels; give it a moment. */
++    for (int i = 0; i < 30; i++) {
++      int on = 0;
++      sd_bus_error_free(&err);
++      if (sd_bus_get_property_trivial(c->bus, BLUEZ, c->adapter, IFACE_ADAPTER,
++                                      "Powered", &err, 'b', &on) >= 0 && on)
++        break;
++      usleep(100000);
++    }
++  }
++  sd_bus_error_free(&err);
++  store_free(&s);
++}
++
++static int discovery_start(sd_bus *bus, const char *adapter, int *discovering,
++                           sd_bus_error *err)
++{
++  int r;
++  if (*discovering)
++    return 0;
++  /* Only LE devices; failure just means a less filtered list. */
++  sd_bus_call_method(bus, BLUEZ, adapter, IFACE_ADAPTER, "SetDiscoveryFilter",
++                     NULL, NULL, "a{sv}", 2, "Transport", "s", "le",
++                     "DuplicateData", "b", 1);
++  r = sd_bus_call_method(bus, BLUEZ, adapter, IFACE_ADAPTER, "StartDiscovery",
++                         err, NULL, NULL);
++  if (r < 0 && sd_bus_error_has_name(err, "org.bluez.Error.InProgress")) {
++    sd_bus_error_free(err);
++    r = 0;
++  }
++  if (r >= 0)
++    *discovering = 1;
++  return r;
++}
++
++static void discovery_stop(sd_bus *bus, const char *adapter, int *discovering)
++{
++  if (!*discovering)
++    return;
++  sd_bus_call_method(bus, BLUEZ, adapter, IFACE_ADAPTER, "StopDiscovery",
++                     NULL, NULL, NULL);
++  *discovering = 0;
++}
++
++/* ---------------------------------------------------------------------
++ * Device list
++ */
++
++struct target {
++  char path[128];
++  char addr[18];
++  char name[64];
++  int we_connected;        /* we made the connection, so we drop it */
++};
++
++struct dev_entry {
++  char path[128];
++  char addr[18];
++  char name[64];
++  int rssi, has_rssi, nus, connected;
++  unsigned order;
++};
++
++static int dev_cmp(const void *a, const void *b)
++{
++  const struct dev_entry *x = a, *y = b;
++  return x->order < y->order ? -1 : x->order > y->order;
++}
++
++/*
++ * Show the scan list and let the user pick a device.
++ * Returns 1 with t filled, 0 if the user wants to quit.
++ */
++static int scan_ui(struct ctx *c, struct target *t)
++{
++  /* Stable display order: the order in which devices showed up. */
++  static char (*seen)[18];
++  static unsigned nseen;
++  struct dev_entry *list = NULL;
++  int nlist = 0, cur = 0, top = 0, show_all = 0, ret = 0;
++  char sel[18] = "";
++  char status[160] = "";
++  uint64_t next = 0;
++  sd_bus_error err = SD_BUS_ERROR_NULL;
++  struct bstore s = { 0 };
++
++  int r = discovery_start(c->bus, c->adapter, &c->discovering, &err);
++  if (r < 0)
++    snprintf(status, sizeof(status), _("Cannot scan: %s"), errtext(&err, r));
++  sd_bus_error_free(&err);
++
++  char title[64];
++  snprintf(title, sizeof(title), _(" BLE devices (%s) "), strrchr(c->adapter, '/') + 1);
++  WIN *w = ui_box(78, LINES - 4, title);
++  int h = w->y2 - w->y1 + 1;
++  int rows = h - 4;           /* status, header, ..., blank, keys */
++  if (rows < 1)
++    rows = 1;
++  mc_wredraw(w, 1);
++
++  for (;;) {
++    if (now_ms() >= next) {
++      next = now_ms() + 500;
++      if ((r = store_load(c->bus, &s, &err)) < 0) {
++        snprintf(status, sizeof(status), "%s", errtext(&err, r));
++        sd_bus_error_free(&err);
++      } else {
++        struct dev_entry *nl = realloc(list, (s.n + 1) * sizeof(*nl));
++        if (!nl)
++          leave("minicom: out of memory\n");
++        list = nl;
++        nlist = 0;
++        for (int i = 0; i < s.n; i++) {
++          struct bobj *o = &s.v[i];
++          if (o->type != O_DEVICE || !o->addr || !o->parent ||
++              strcmp(o->parent, c->adapter))
++            continue;
++          if (!o->has_rssi && !o->connected)
++            continue;         /* cached, not seen in this scan */
++          const char *nm = o->name ? o->name : "";
++          if (!show_all && !*nm && !o->nus)
++            continue;
++          struct dev_entry *e = &list[nlist++];
++          memset(e, 0, sizeof(*e));
++          snprintf(e->path, sizeof(e->path), "%s", o->path);
++          snprintf(e->addr, sizeof(e->addr), "%s", o->addr);
++          snprintf(e->name, sizeof(e->name), "%s", nm);
++          e->rssi = o->rssi;
++          e->has_rssi = o->has_rssi;
++          e->nus = o->nus;
++          e->connected = o->connected;
++          unsigned k;
++          for (k = 0; k < nseen && strcmp(seen[k], e->addr); k++)
++            ;
++          if (k == nseen) {
++            void *ns = realloc(seen, (nseen + 1) * sizeof(*seen));
++            if (!ns)
++              leave("minicom: out of memory\n");
++            seen = ns;
++            snprintf(seen[nseen++], sizeof(*seen), "%s", e->addr);
++          }
++          e->order = k;
++        }
++        qsort(list, nlist, sizeof(*list), dev_cmp);
++        if (c->discovering)
++          snprintf(status, sizeof(status), _("Scanning... %d device(s)"), nlist);
++      }
++      /* Keep the cursor on the same device while the list changes. */
++      cur = 0;
++      for (int i = 0; i < nlist; i++)
++        if (!strcmp(list[i].addr, sel))
++          cur = i;
++    }
++
++    if (cur >= nlist)
++      cur = nlist ? nlist - 1 : 0;
++    if (cur < top)
++      top = cur;
++    if (cur >= top + rows)
++      top = cur - rows + 1;
++    if (nlist)
++      snprintf(sel, sizeof(sel), "%s", list[cur].addr);
++
++    ui_line(w, 0, 0, " %s", status);
++    ui_line(w, 1, 0, "  %-4s  %-17s  %s", "RSSI", _("Address"), _("Name"));
++    for (int i = 0; i < rows; i++) {
++      int k = top + i;
++      if (k >= nlist) {
++        ui_line(w, 2 + i, 0, "%s", "");
++        continue;
++      }
++      struct dev_entry *e = &list[k];
++      char rs[8], nm[200];
++      if (e->has_rssi)
++        snprintf(rs, sizeof(rs), "%4d", e->rssi);
++      else
++        snprintf(rs, sizeof(rs), "%4s", "");
++      fit(nm, sizeof(nm), *e->name ? e->name : _("(unnamed)"),
++          ui_width(w) - 30 - 12 > 8 ? ui_width(w) - 30 - 12 : 8);
++      ui_line(w, 2 + i, k == cur, "  %s  %-17s  %s %s%s", rs, e->addr, nm,
++              e->nus ? "[UART]" : "", e->connected ? "[conn]" : "");
++    }
++    ui_line(w, h - 1, 0, " %s",
++            show_all ? _("Up/Down: move  Enter: connect  A: named only  Esc: quit")
++                     : _("Up/Down: move  Enter: connect  A: show all  Esc: quit"));
++    mc_wflush();
++
++    int ch = ui_getkey(100);
++    if (ch < 0)
++      continue;
++    switch (ch) {
++      case K_UP: case 'k':
++        if (cur > 0)
++          cur--;
++        break;
++      case K_DN: case 'j':
++        if (cur + 1 < nlist)
++          cur++;
++        break;
++      case K_PGUP:
++        cur = cur > rows ? cur - rows : 0;
++        break;
++      case K_PGDN:
++        cur = cur + rows < nlist ? cur + rows : (nlist ? nlist - 1 : 0);
++        break;
++      case K_HOME:
++        cur = 0;
++        break;
++      case K_END:
++        cur = nlist ? nlist - 1 : 0;
++        break;
++      case 'a': case 'A':
++        show_all = !show_all;
++        next = 0;
++        break;
++      case 27:
++        ret = 0;
++        goto out;
++      default:
++        if (is_enter(ch) && nlist) {
++          struct dev_entry *e = &list[cur];
++          snprintf(t->path, sizeof(t->path), "%s", e->path);
++          snprintf(t->addr, sizeof(t->addr), "%s", e->addr);
++          snprintf(t->name, sizeof(t->name), "%s", e->name);
++          ret = 1;
++          goto out;
++        }
++        break;
++    }
++    if (nlist)
++      snprintf(sel, sizeof(sel), "%s", list[cur].addr);
++  }
++out:
++  mc_wclose(w, 1);
++  free(list);
++  store_free(&s);
++  return ret;
++}
++
++/* --ble=ADDR: find the device object, scanning for it if needed. */
++static int find_target(struct ctx *c, const char *addr, struct target *t)
++{
++  sd_bus_error err = SD_BUS_ERROR_NULL;
++  struct bstore s = { 0 };
++  uint64_t deadline = now_ms() + SEARCH_TIMEOUT_MS;
++  WIN *w = NULL;
++  int ret = -1;
++
++  for (;;) {
++    int r = store_load(c->bus, &s, &err);
++    if (r < 0)
++      fatal_bus(_("cannot talk to BlueZ"), &err, r);
++    for (int i = 0; i < s.n; i++) {
++      struct bobj *o = &s.v[i];
++      if (o->type == O_DEVICE && o->addr && o->parent &&
++          !strcmp(o->parent, c->adapter) && !strcasecmp(o->addr, addr)) {
++        snprintf(t->path, sizeof(t->path), "%s", o->path);
++        snprintf(t->addr, sizeof(t->addr), "%s", o->addr);
++        snprintf(t->name, sizeof(t->name), "%s", o->name ? o->name : "");
++        ret = 1;
++        goto out;
++      }
++    }
++    if (!w) {
++      w = ui_wait(_("Searching for %s..."), addr);
++      if ((r = discovery_start(c->bus, c->adapter, &c->discovering, &err)) < 0) {
++        mc_wclose(w, 1);
++        w = NULL;
++        ui_msg(_(" Error "), _("Cannot scan: %s"), errtext(&err, r));
++        goto out;
++      }
++    }
++    if (now_ms() > deadline) {
++      mc_wclose(w, 1);
++      w = NULL;
++      ui_msg(_(" Error "), _("Device %s not found"), addr);
++      goto out;
++    }
++    if (ui_getkey(300) == 27) {
++      ret = 0;
++      goto out;
++    }
++  }
++out:
++  if (w)
++    mc_wclose(w, 1);
++  sd_bus_error_free(&err);
++  store_free(&s);
++  return ret;
++}
++
++/* ---------------------------------------------------------------------
++ * Connecting
++ */
++
++struct async {
++  int done, r;
++  sd_bus_error err;
++};
++
++static int async_cb(sd_bus_message *m, void *ud, sd_bus_error *ret_error)
++{
++  struct async *a = ud;
++  (void)ret_error;
++  const sd_bus_error *e = sd_bus_message_get_error(m);
++  a->done = 1;
++  a->r = 0;
++  if (e) {
++    sd_bus_error_copy(&a->err, e);
++    a->r = -sd_bus_message_get_errno(m);
++    if (a->r == 0)
++      a->r = -EIO;
++  }
++  return 0;
++}
++
++static void pump(sd_bus *bus)
++{
++  while (sd_bus_process(bus, NULL) > 0)
++    ;
++}
++
++static void disconnect_dev(sd_bus *bus, const char *path)
++{
++  sd_bus_message *m = NULL;
++  if (sd_bus_message_new_method_call(bus, &m, BLUEZ, path, IFACE_DEVICE,
++                                     "Disconnect") >= 0)
++    sd_bus_call(bus, m, 5 * 1000000ULL, NULL, NULL);
++  sd_bus_message_unref(m);
++}
++
++/* Returns 1 connected with services resolved, 0 cancelled, -1 failed. */
++static int connect_ui(struct ctx *c, struct target *t)
++{
++  char label[128];
++  struct async a = { 0, 0, SD_BUS_ERROR_NULL };
++  sd_bus_slot *slot = NULL;
++  int connected = 0, resolved = 0, ret = -1;
++  uint64_t deadline = now_ms() + CONNECT_TIMEOUT_MS;
++
++  make_label(label, sizeof(label), t->name, t->addr);
++  t->we_connected = 0;
++  discovery_stop(c->bus, c->adapter, &c->discovering);
++
++  sd_bus_get_property_trivial(c->bus, BLUEZ, t->path, IFACE_DEVICE,
++                              "Connected", NULL, 'b', &connected);
++  WIN *w = ui_wait(_("Connecting to %s..."), label);
++
++  if (!connected) {
++    int r = sd_bus_call_method_async(c->bus, &slot, BLUEZ, t->path, IFACE_DEVICE,
++                                     "Connect", async_cb, &a, NULL);
++    if (r < 0) {
++      a.done = 1;
++      a.r = r;
++    }
++    t->we_connected = 1;
++    while (!a.done) {
++      pump(c->bus);
++      if (a.done)
++        break;
++      if (ui_getkey(50) == 27 || now_ms() > deadline) {
++        int timeout = now_ms() > deadline;
++        sd_bus_slot_unref(slot);
++        slot = NULL;
++        disconnect_dev(c->bus, t->path);   /* also aborts a pending connect */
++        mc_wclose(w, 1);
++        if (timeout) {
++          ui_msg(_(" Error "), _("Cannot connect to %s:\n%s"), label, _("timeout"));
++          return -1;
++        }
++        return 0;
++      }
++    }
++    sd_bus_slot_unref(slot);
++    if (a.r < 0) {
++      mc_wclose(w, 1);
++      ui_msg(_(" Error "), _("Cannot connect to %s:\n%s"), label, errtext(&a.err, a.r));
++      sd_bus_error_free(&a.err);
++      return -1;
++    }
++  }
++
++  /* GATT discovery happens after the link is up. */
++  mc_wclose(w, 1);
++  w = ui_wait(_("Discovering services of %s..."), label);
++  for (;;) {
++    resolved = 0;
++    connected = 1;
++    sd_bus_get_property_trivial(c->bus, BLUEZ, t->path, IFACE_DEVICE,
++                                "ServicesResolved", NULL, 'b', &resolved);
++    sd_bus_get_property_trivial(c->bus, BLUEZ, t->path, IFACE_DEVICE,
++                                "Connected", NULL, 'b', &connected);
++    if (resolved) {
++      ret = 1;
++      break;
++    }
++    if (!connected) {
++      mc_wclose(w, 1);
++      w = NULL;
++      ui_msg(_(" Error "), _("%s disconnected during service discovery"), label);
++      break;
++    }
++    if (now_ms() > deadline) {
++      mc_wclose(w, 1);
++      w = NULL;
++      ui_msg(_(" Error "), _("Service discovery on %s timed out"), label);
++      break;
++    }
++    if (ui_getkey(200) == 27) {
++      ret = 0;
++      break;
++    }
++  }
++  if (w)
++    mc_wclose(w, 1);
++  if (ret != 1 && t->we_connected)
++    disconnect_dev(c->bus, t->path);
++  return ret;
++}
++
++/* ---------------------------------------------------------------------
++ * Characteristic selection
++ */
++
++struct chr {
++  char path[192];
++  char uuid[40];
++  char svc[40];
++  unsigned flags;
++};
++
++static int load_chars(struct ctx *c, const char *dev, struct chr **out)
++{
++  sd_bus_error err = SD_BUS_ERROR_NULL;
++  struct bstore s = { 0 };
++  struct chr *v = NULL;
++  int n = 0;
++  size_t dl = strlen(dev);
++
++  if (store_load(c->bus, &s, &err) < 0) {
++    sd_bus_error_free(&err);
++    *out = NULL;
++    return 0;
++  }
++  for (int i = 0; i < s.n; i++) {
++    struct bobj *o = &s.v[i];
++    if (o->type != O_CHAR || !o->uuid || strncmp(o->path, dev, dl) ||
++        o->path[dl] != '/')
++      continue;
++    struct chr *nv = realloc(v, (n + 1) * sizeof(*v));
++    if (!nv)
++      break;
++    v = nv;
++    struct chr *ch = &v[n++];
++    memset(ch, 0, sizeof(*ch));
++    snprintf(ch->path, sizeof(ch->path), "%s", o->path);
++    snprintf(ch->uuid, sizeof(ch->uuid), "%s", o->uuid);
++    ch->flags = o->flags;
++    struct bobj *sv = o->parent ? store_find(&s, O_SERVICE, o->parent) : NULL;
++    if (sv && sv->uuid)
++      snprintf(ch->svc, sizeof(ch->svc), "%s", sv->uuid);
++    /* Generic Access/Attribute services are never a serial port. */
++    if (!strncasecmp(ch->svc, "00001800-", 9) || !strncasecmp(ch->svc, "00001801-", 9))
++      n--;
++  }
++  store_free(&s);
++  *out = v;
++  return n;
++}
++
++#define CAN_WRITE(f) ((f) & (CF_WRITE | CF_WRITE_NR))
++#define CAN_READ(f)  ((f) & (CF_NOTIFY | CF_INDICATE))
++
++/* Index of the first characteristic with the uuid and capability. */
++static int chr_find(struct chr *v, int n, const char *uuid, int wr)
++{
++  for (int i = 0; i < n; i++)
++    if (!strcasecmp(v[i].uuid, uuid) &&
++        (wr ? CAN_WRITE(v[i].flags) : CAN_READ(v[i].flags)))
++      return i;
++  return -1;
++}
++
++/* Popup list to pick one characteristic; returns index or -1. */
++static int chr_pick(struct chr *v, int n, int wr, int cur)
++{
++  int idx[n > 0 ? n : 1], m = 0, sel = 0, top = 0;
++
++  for (int i = 0; i < n; i++)
++    if (wr ? CAN_WRITE(v[i].flags) : CAN_READ(v[i].flags)) {
++      if (i == cur)
++        sel = m;
++      idx[m++] = i;
++    }
++  if (m == 0)
++    return -1;
++
++  WIN *w = ui_box(74, m + 2 < LINES - 6 ? m + 2 : LINES - 6,
++                  wr ? _(" Write characteristic ") : _(" Read (notify) characteristic "));
++  int rows = (w->y2 - w->y1 + 1) - 2;
++  mc_wredraw(w, 1);
++  for (;;) {
++    if (sel < top)
++      top = sel;
++    if (sel >= top + rows)
++      top = sel - rows + 1;
++    for (int i = 0; i < rows; i++) {
++      int k = top + i;
++      if (k >= m) {
++        ui_line(w, i, 0, "%s", "");
++        continue;
++      }
++      struct chr *ch = &v[idx[k]];
++      ui_line(w, i, k == sel, " %-36s  %s", ch->uuid, flagstr(ch->flags));
++    }
++    ui_line(w, rows + 1, 0, " %s", _("Up/Down: move  Enter: select  Esc: cancel"));
++    int ch = ui_getkey(1000);
++    if (ch == K_UP || ch == 'k')
++      sel = sel > 0 ? sel - 1 : m - 1;
++    else if (ch == K_DN || ch == 'j')
++      sel = sel + 1 < m ? sel + 1 : 0;
++    else if (ch == 27) {
++      mc_wclose(w, 1);
++      return -1;
++    } else if (is_enter(ch)) {
++      mc_wclose(w, 1);
++      return idx[sel];
++    }
++  }
++}
++
++/*
++ * Dialog with the write/read characteristics preselected.
++ * Returns 1 to connect, 0 to go back.
++ */
++static int chars_ui(const char *label, struct chr *v, int n, int *wi, int *ri)
++{
++  enum { FC_WRITE, FC_READ, FC_OK, FC_BACK };
++  int focus = (*wi >= 0 && *ri >= 0) ? FC_OK : (*wi < 0 ? FC_WRITE : FC_READ);
++
++  WIN *w = ui_box(76, 9, _(" BLE serial "));
++  mc_wredraw(w, 1);
++  for (;;) {
++    char wbuf[128], rbuf[128];
++    if (*wi >= 0)
++      snprintf(wbuf, sizeof(wbuf), "%s  %s", v[*wi].uuid, flagstr(v[*wi].flags));
++    else
++      snprintf(wbuf, sizeof(wbuf), "%s", _("<none>"));
++    if (*ri >= 0)
++      snprintf(rbuf, sizeof(rbuf), "%s  %s", v[*ri].uuid, flagstr(v[*ri].flags));
++    else
++      snprintf(rbuf, sizeof(rbuf), "%s", _("<none>"));
++
++    ui_line(w, 0, 0, " %s %s", _("Device:"), label);
++    ui_line(w, 1, 0, "%s", "");
++    ui_line(w, 2, focus == FC_WRITE, " %-7s %s", _("Write:"), wbuf);
++    ui_line(w, 3, focus == FC_READ, " %-7s %s", _("Read:"), rbuf);
++    ui_line(w, 4, 0, "%s", "");
++    /* Buttons on one line, highlighted separately. */
++    ui_line(w, 5, 0, "%s", "");
++    int bx = (ui_width(w) - 24) / 2;
++    mc_wlocate(w, bx, 5);
++    mc_wsetattr(w, focus == FC_OK ? (stdattr ^ XA_REVERSE) : stdattr);
++    mc_wputs(w, _("[ Connect ]"));
++    mc_wsetattr(w, stdattr);
++    mc_wputs(w, "   ");
++    mc_wsetattr(w, focus == FC_BACK ? (stdattr ^ XA_REVERSE) : stdattr);
++    mc_wputs(w, _("[ Back ]"));
++    mc_wsetattr(w, stdattr);
++    ui_line(w, 6, 0, "%s", "");
++    ui_line(w, 8, 0, " %s", _("Up/Down/Tab: move  Enter: change/confirm  Esc: back"));
++
++    int ch = ui_getkey(1000);
++    if (ch < 0)
++      continue;
++    if (ch == K_UP || ch == 'k' || (ch == K_LT && focus == FC_BACK))
++      focus = focus > FC_WRITE ? focus - 1 : FC_BACK;
++    else if (ch == K_DN || ch == 'j' || ch == '\t' || (ch == K_RT && focus == FC_OK))
++      focus = focus < FC_BACK ? focus + 1 : FC_WRITE;
++    else if (ch == 27) {
++      mc_wclose(w, 1);
++      return 0;
++    } else if (is_enter(ch)) {
++      if (focus == FC_WRITE || focus == FC_READ) {
++        int k = chr_pick(v, n, focus == FC_WRITE, focus == FC_WRITE ? *wi : *ri);
++        if (k >= 0) {
++          *(focus == FC_WRITE ? wi : ri) = k;
++          focus++;
++          if (focus == FC_READ && *ri >= 0)
++            focus = FC_OK;
++        }
++      } else if (focus == FC_BACK) {
++        mc_wclose(w, 1);
++        return 0;
++      } else if (*wi < 0 || *ri < 0)
++        mc_wbell();
++      else {
++        mc_wclose(w, 1);
++        return 1;
++      }
++    }
++  }
++}
++
++/* ---------------------------------------------------------------------
++ * Bridge process
++ */
++
++enum { BS_STARTING, BS_UP, BS_DOWN, BS_FAILED, BS_EXITED };
++
++struct shm {
++  volatile int state;
++  volatile pid_t pid;
++  volatile int we_connected;   /* the bridge owns the link */
++  char dev[128];
++  char msg[200];
++};
++
++static struct shm *shm;
++static int lifeline = -1;
++static char tty_path[64];
++static char label_buf[128];
++
++struct bridge {
++  sd_bus *bus;
++  int master, life;
++  char adapter[64], adapter_addr[18], dev[128], addr[18];
++  sd_bus_slot *pslot;      /* PropertiesChanged match, tied to dev */
++  char wuuid[40], ruuid[40], wsvc[40], rsvc[40];
++  char wpath[192], rpath[192];
++  int write_nr, chunk;
++  int up, connecting, discovering, we_connected;
++  uint64_t next_try, connected_at;
++  unsigned long dropped;
++  FILE *log;
++  sd_bus_slot *cslot;
++  struct async ca;
++};
++
++static volatile sig_atomic_t br_quit;
++
++static void br_sig(int sig)
++{
++  (void)sig;
++  br_quit = 1;
++}
++
++static void blog(struct bridge *b, const char *fmt, ...)
++{
++  va_list ap;
++  if (!b->log)
++    return;
++  struct timespec ts;
++  clock_gettime(CLOCK_REALTIME, &ts);
++  fprintf(b->log, "%ld.%03ld ", (long)ts.tv_sec, ts.tv_nsec / 1000000);
++  va_start(ap, fmt);
++  vfprintf(b->log, fmt, ap);
++  va_end(ap);
++  fputc('\n', b->log);
++  fflush(b->log);
++}
++
++static void br_state(struct bridge *b, int st, const char *fmt, ...)
++{
++  if (fmt) {
++    va_list ap;
++    va_start(ap, fmt);
++    vsnprintf(shm->msg, sizeof(shm->msg), fmt, ap);
++    va_end(ap);
++    blog(b, "state %d: %s", st, shm->msg);
++  } else
++    blog(b, "state %d", st);
++  shm->state = st;
++}
++
++static void br_down(struct bridge *b, const char *why)
++{
++  if (b->up)
++    br_state(b, BS_DOWN, "%s", why);
++  b->up = 0;
++  b->next_try = now_ms() + 500;
++}
++
++/* Look up the characteristics again (paths may change after reconnect). */
++static int br_resolve(struct bridge *b, sd_bus_error *err)
++{
++  struct bstore s = { 0 };
++  size_t dl = strlen(b->dev);
++  int r, wbest = -1, rbest = -1;
++
++  if ((r = store_load(b->bus, &s, err)) < 0)
++    return r;
++  b->wpath[0] = b->rpath[0] = 0;
++  for (int i = 0; i < s.n; i++) {
++    struct bobj *o = &s.v[i];
++    if (o->type != O_CHAR || !o->uuid || strncmp(o->path, b->dev, dl) ||
++        o->path[dl] != '/')
++      continue;
++    struct bobj *sv = o->parent ? store_find(&s, O_SERVICE, o->parent) : NULL;
++    const char *svc = sv && sv->uuid ? sv->uuid : "";
++    /* Prefer the same service if the uuid is used more than once. */
++    if (!strcasecmp(o->uuid, b->wuuid) && CAN_WRITE(o->flags)) {
++      int score = !strcasecmp(svc, b->wsvc);
++      if (score > wbest) {
++        wbest = score;
++        snprintf(b->wpath, sizeof(b->wpath), "%s", o->path);
++        b->write_nr = !!(o->flags & CF_WRITE_NR);
++        b->chunk = o->mtu > 23 ? (int)o->mtu - 3 : 20;
++      }
++    }
++    if (!strcasecmp(o->uuid, b->ruuid) && CAN_READ(o->flags)) {
++      int score = !strcasecmp(svc, b->rsvc);
++      if (score > rbest) {
++        rbest = score;
++        snprintf(b->rpath, sizeof(b->rpath), "%s", o->path);
++      }
++    }
++  }
++  store_free(&s);
++  if (!b->wpath[0] || !b->rpath[0]) {
++    sd_bus_error_setf(err, "org.bluez.Error.DoesNotExist",
++                      "characteristic %s not found on the device",
++                      !b->wpath[0] ? b->wuuid : b->ruuid);
++    return -ENOENT;
++  }
++  if (b->chunk > 512)
++    b->chunk = 512;
++  return 0;
++}
++
++static int br_go_up(struct bridge *b)
++{
++  sd_bus_error err = SD_BUS_ERROR_NULL;
++  int r = br_resolve(b, &err);
++  if (r >= 0) {
++    r = sd_bus_call_method(b->bus, BLUEZ, b->rpath, IFACE_CHAR, "StartNotify",
++                           &err, NULL, NULL);
++    /* Some BlueZ versions complain if notifications are already on. */
++    if (r < 0 && (sd_bus_error_has_name(&err, "org.bluez.Error.InProgress") ||
++                  sd_bus_error_has_name(&err, "org.bluez.Error.AlreadyExists")))
++      r = 0;
++  }
++  if (r < 0) {
++    snprintf(shm->msg, sizeof(shm->msg), "%s", errtext(&err, r));
++    blog(b, "go_up failed: %s", shm->msg);
++    sd_bus_error_free(&err);
++    return r;
++  }
++  blog(b, "up: write %s (%s, chunk %d), notify %s", b->wpath,
++       b->write_nr ? "command" : "request", b->chunk, b->rpath);
++  b->up = 1;
++  br_state(b, BS_UP, NULL);
++  return 0;
++}
++
++static void br_value(struct bridge *b, const void *p, size_t n)
++{
++  const char *s = p;
++  while (n) {
++    ssize_t w = write(b->master, s, n);
++    if (w < 0 && errno == EINTR)
++      continue;
++    if (w < 0) {
++      /* minicom is not reading (e.g. in a menu): drop like a UART would */
++      b->dropped += n;
++      blog(b, "dropped %zu bytes: %s", n, strerror(errno));
++      return;
++    }
++    s += w;
++    n -= w;
++  }
++}
++
++static int br_props_changed(sd_bus_message *m, void *ud, sd_bus_error *ret_error)
++{
++  struct bridge *b = ud;
++  const char *path = sd_bus_message_get_path(m);
++  const char *iface;
++  int r;
++  (void)ret_error;
++
++  if (!path || sd_bus_message_read(m, "s", &iface) < 0)
++    return 0;
++  int is_dev = !strcmp(path, b->dev) && !strcmp(iface, IFACE_DEVICE);
++  int is_rd = b->rpath[0] && !strcmp(path, b->rpath) && !strcmp(iface, IFACE_CHAR);
++  if (!is_dev && !is_rd)
++    return 0;
++
++  if (sd_bus_message_enter_container(m, 'a', "{sv}") < 0)
++    return 0;
++  while ((r = sd_bus_message_enter_container(m, 'e', "sv")) > 0) {
++    const char *k;
++    int v = 0;
++    if (sd_bus_message_read(m, "s", &k) < 0)
++      return 0;
++    if (is_rd && !strcmp(k, "Value")) {
++      const void *p;
++      size_t n;
++      if (sd_bus_message_enter_container(m, 'v', "ay") < 0 ||
++          sd_bus_message_read_array(m, 'y', &p, &n) < 0 ||
++          sd_bus_message_exit_container(m) < 0)
++        return 0;
++      if (b->up)
++        br_value(b, p, n);
++    } else if (is_dev && !strcmp(k, "Connected")) {
++      if (var_basic(m, 'b', &v) < 0)
++        return 0;
++      blog(b, "Connected=%d", v);
++      if (!v)
++        br_down(b, _("disconnected"));
++      else
++        b->connected_at = now_ms();
++    } else if (is_dev && !strcmp(k, "ServicesResolved")) {
++      if (var_basic(m, 'b', &v) < 0)
++        return 0;
++      blog(b, "ServicesResolved=%d", v);
++      if (v && !b->up)
++        b->next_try = 0;     /* handled from the main loop */
++    } else if (sd_bus_message_skip(m, "v") < 0)
++      return 0;
++    if (sd_bus_message_exit_container(m) < 0)
++      return 0;
++  }
++  return 0;
++}
++
++/* Is path the object itself or one of its parents? */
++static int path_covers(const char *path, const char *obj)
++{
++  size_t l = strlen(path);
++  return obj[0] && !strncmp(path, obj, l) && (obj[l] == 0 || obj[l] == '/');
++}
++
++static int br_ifaces_removed(sd_bus_message *m, void *ud, sd_bus_error *ret_error)
++{
++  struct bridge *b = ud;
++  const char *path;
++  (void)ret_error;
++  if (sd_bus_message_read(m, "o", &path) < 0)
++    return 0;
++  if (!strcmp(path, b->dev)) {
++    blog(b, "device object removed");
++    br_down(b, _("device removed"));
++  } else if (b->up && (path_covers(path, b->wpath) || path_covers(path, b->rpath))) {
++    /* e.g. the peer's GATT database changed (Service Changed) */
++    blog(b, "%s removed", path);
++    br_down(b, _("GATT service removed"));
++  }
++  return 0;
++}
++
++static int br_owner_changed(sd_bus_message *m, void *ud, sd_bus_error *ret_error)
++{
++  struct bridge *b = ud;
++  const char *name, *old, *new;
++  (void)ret_error;
++  if (sd_bus_message_read(m, "sss", &name, &old, &new) >= 0 &&
++      !strcmp(name, BLUEZ)) {
++    blog(b, "bluez owner '%s' -> '%s'", old, new);
++    b->discovering = 0;
++    b->connecting = 0;
++    b->cslot = sd_bus_slot_unref(b->cslot);
++    br_down(b, _("bluetoothd restarted"));
++  }
++  return 0;
++}
++
++static int br_match_dev(struct bridge *b)
++{
++  char rule[400];
++  b->pslot = sd_bus_slot_unref(b->pslot);
++  snprintf(rule, sizeof(rule),
++           "type='signal',sender='" BLUEZ "',interface='" IFACE_PROPS "',"
++           "member='PropertiesChanged',path_namespace='%s'", b->dev);
++  return sd_bus_add_match(b->bus, &b->pslot, rule, br_props_changed, b);
++}
++
++static int br_open_bus(struct bridge *b)
++{
++  int r;
++
++  if ((r = sd_bus_open_system(&b->bus)) < 0)
++    return r;
++  if ((r = br_match_dev(b)) < 0 ||
++      (r = sd_bus_match_signal(b->bus, NULL, BLUEZ, "/",
++                               "org.freedesktop.DBus.ObjectManager",
++                               "InterfacesRemoved", br_ifaces_removed, b)) < 0 ||
++      (r = sd_bus_match_signal(b->bus, NULL, "org.freedesktop.DBus",
++                               "/org/freedesktop/DBus", "org.freedesktop.DBus",
++                               "NameOwnerChanged", br_owner_changed, b)) < 0) {
++    b->pslot = sd_bus_slot_unref(b->pslot);
++    b->bus = sd_bus_flush_close_unref(b->bus);
++    return r;
++  }
++  return 0;
++}
++
++/*
++ * The adapter may have been re-enumerated (USB reset/replug: hci1 ->
++ * hci2), which changes all object paths. Find it again by its address.
++ * Returns 0 if the adapter exists.
++ */
++static int br_relocate(struct bridge *b)
++{
++  sd_bus_error err = SD_BUS_ERROR_NULL;
++  struct bstore s = { 0 };
++  int ret = -1;
++
++  if (store_load(b->bus, &s, &err) < 0) {
++    sd_bus_error_free(&err);
++    return -1;
++  }
++  for (int i = 0; i < s.n; i++) {
++    struct bobj *o = &s.v[i];
++    if (o->type != O_ADAPTER || !o->addr || strcasecmp(o->addr, b->adapter_addr))
++      continue;
++    ret = 0;
++    if (strcmp(o->path, b->adapter)) {
++      char *p;
++      blog(b, "adapter %s moved: %s -> %s", b->adapter_addr, b->adapter, o->path);
++      snprintf(b->adapter, sizeof(b->adapter), "%s", o->path);
++      snprintf(b->dev, sizeof(b->dev), "%s/dev_%s", o->path, b->addr);
++      for (p = strrchr(b->dev, '/'); *p; p++)
++        if (*p == ':')
++          *p = '_';
++      b->discovering = 0;
++      b->rpath[0] = b->wpath[0] = 0;
++      if (br_match_dev(b) < 0)
++        blog(b, "cannot watch %s", b->dev);
++    }
++    break;
++  }
++  store_free(&s);
++  return ret;
++}
++
++/* Write data to the device, split into ATT sized chunks. */
++static void br_write(struct bridge *b, const char *p, size_t n)
++{
++  while (n && b->up) {
++    size_t l = n > (size_t)b->chunk ? (size_t)b->chunk : n;
++    sd_bus_message *m = NULL;
++    sd_bus_error err = SD_BUS_ERROR_NULL;
++    int r = sd_bus_message_new_method_call(b->bus, &m, BLUEZ, b->wpath,
++                                           IFACE_CHAR, "WriteValue");
++    if (r >= 0)
++      r = sd_bus_message_append_array(m, 'y', p, l);
++    if (r >= 0)
++      r = sd_bus_message_append(m, "a{sv}", 1, "type", "s",
++                                b->write_nr ? "command" : "request");
++    if (r >= 0)
++      r = sd_bus_call(b->bus, m, 5 * 1000000ULL, &err, NULL);
++    sd_bus_message_unref(m);
++    if (r < 0) {
++      blog(b, "write of %zu bytes failed: %s", l, errtext(&err, r));
++      if (sd_bus_error_has_name(&err, SD_BUS_ERROR_UNKNOWN_OBJECT) ||
++          sd_bus_error_has_name(&err, SD_BUS_ERROR_UNKNOWN_METHOD))
++        br_down(b, _("GATT service removed"));
++      sd_bus_error_free(&err);
++      /* A failing link is reported through Connected=false; data is lost. */
++      return;
++    }
++    p += l;
++    n -= l;
++  }
++}
++
++/* Called periodically while the link is down. */
++static void br_retry(struct bridge *b)
++{
++  sd_bus_error err = SD_BUS_ERROR_NULL;
++  int connected = 0, resolved = 0, r;
++
++  b->next_try = now_ms() + RETRY_MS;
++  if (b->connecting)
++    return;
++
++  r = sd_bus_get_property_trivial(b->bus, BLUEZ, b->dev, IFACE_DEVICE,
++                                  "Connected", &err, 'b', &connected);
++  if (r < 0) {
++    blog(b, "device lookup: %s", errtext(&err, r));
++    sd_bus_error_free(&err);
++    if (br_relocate(b) < 0) {
++      snprintf(shm->msg, sizeof(shm->msg), _("Bluetooth adapter %s not available"),
++               b->adapter_addr);
++      return;
++    }
++    if (sd_bus_get_property_trivial(b->bus, BLUEZ, b->dev, IFACE_DEVICE,
++                                    "Connected", NULL, 'b', &connected) >= 0)
++      goto found;
++    /* Device object gone (temporary device expired): scan to recreate it. */
++    snprintf(shm->msg, sizeof(shm->msg), _("searching for the device"));
++    if (discovery_start(b->bus, b->adapter, &b->discovering, &err) < 0) {
++      blog(b, "discovery: %s", errtext(&err, -EIO));
++      sd_bus_error_free(&err);
++    }
++    return;
++  }
++found:
++  discovery_stop(b->bus, b->adapter, &b->discovering);
++
++  if (connected) {
++    sd_bus_get_property_trivial(b->bus, BLUEZ, b->dev, IFACE_DEVICE,
++                                "ServicesResolved", NULL, 'b', &resolved);
++    if (resolved) {
++      if (br_go_up(b) < 0)
++        b->next_try = now_ms() + RETRY_MS * 2;
++    } else if (b->connected_at && now_ms() - b->connected_at > CONNECT_TIMEOUT_MS) {
++      blog(b, "services never resolved, dropping the link");
++      disconnect_dev(b->bus, b->dev);
++      b->connected_at = 0;
++    } else if (!b->connected_at)
++      b->connected_at = now_ms();
++    return;
++  }
++
++  blog(b, "connecting");
++  sd_bus_error_free(&b->ca.err);
++  memset(&b->ca, 0, sizeof(b->ca));
++  r = sd_bus_call_method_async(b->bus, &b->cslot, BLUEZ, b->dev, IFACE_DEVICE,
++                               "Connect", async_cb, &b->ca, NULL);
++  if (r >= 0) {
++    b->connecting = 1;
++    b->we_connected = shm->we_connected = 1;
++  }
++}
++
++static void br_check_connect(struct bridge *b)
++{
++  if (!b->connecting || !b->ca.done)
++    return;
++  b->connecting = 0;
++  b->cslot = sd_bus_slot_unref(b->cslot);
++  if (b->ca.r < 0 && (sd_bus_error_has_name(&b->ca.err, "org.bluez.Error.InProgress") ||
++                      sd_bus_error_has_name(&b->ca.err, SD_BUS_ERROR_NO_REPLY))) {
++    /* BlueZ keeps trying to connect in the background; just wait. */
++    blog(b, "connect still pending: %s", errtext(&b->ca.err, b->ca.r));
++    b->next_try = now_ms() + RETRY_MS * 5;
++  } else if (b->ca.r < 0) {
++    blog(b, "connect failed: %s", errtext(&b->ca.err, b->ca.r));
++    snprintf(shm->msg, sizeof(shm->msg), "%s", errtext(&b->ca.err, b->ca.r));
++  } else {
++    b->connected_at = now_ms();
++    b->next_try = 0;
++  }
++}
++
++static void __attribute__((noreturn)) bridge_main(struct bridge *b)
++{
++  char buf[4096];
++  int r;
++
++  signal(SIGTERM, br_sig);
++  signal(SIGINT, br_sig);
++  signal(SIGHUP, br_sig);
++  signal(SIGPIPE, SIG_IGN);
++  signal(SIGCHLD, SIG_DFL);
++  signal(SIGALRM, SIG_IGN);
++
++  if ((r = br_open_bus(b)) < 0) {
++    snprintf(shm->msg, sizeof(shm->msg), "D-Bus: %s", strerror(-r));
++    shm->state = BS_FAILED;
++    _exit(1);
++  }
++  if (br_go_up(b) < 0) {
++    if (b->we_connected)
++      disconnect_dev(b->bus, b->dev);
++    shm->state = BS_FAILED;
++    _exit(1);
++  }
++
++  while (!br_quit) {
++    if (b->bus) {
++      while ((r = sd_bus_process(b->bus, NULL)) > 0)
++        ;
++      if (r < 0) {
++        blog(b, "bus lost: %s", strerror(-r));
++        b->cslot = sd_bus_slot_unref(b->cslot);
++        b->pslot = sd_bus_slot_unref(b->pslot);
++        b->connecting = 0;
++        b->discovering = 0;
++        b->bus = sd_bus_flush_close_unref(b->bus);
++        br_down(b, _("lost connection to D-Bus"));
++        b->next_try = now_ms() + RETRY_MS;
++      }
++    }
++    br_check_connect(b);
++
++    if (!b->up && now_ms() >= b->next_try) {
++      if (!b->bus && br_open_bus(b) < 0)
++        b->next_try = now_ms() + RETRY_MS;
++      else
++        br_retry(b);
++    }
++
++    struct pollfd p[3] = {
++      { b->master, POLLIN, 0 },
++      { b->life, POLLIN, 0 },
++      { -1, 0, 0 },
++    };
++    int timeout = 1000;
++    if (b->bus) {
++      uint64_t usec;
++      p[2].fd = sd_bus_get_fd(b->bus);
++      p[2].events = sd_bus_get_events(b->bus);
++      if (sd_bus_get_timeout(b->bus, &usec) >= 0 && usec != UINT64_MAX) {
++        struct timespec ts;
++        clock_gettime(CLOCK_MONOTONIC, &ts);
++        uint64_t nowu = (uint64_t)ts.tv_sec * 1000000 + ts.tv_nsec / 1000;
++        int t = usec > nowu ? (int)((usec - nowu + 999) / 1000) : 0;
++        if (t < timeout)
++          timeout = t;
++      }
++    }
++    if (!b->up) {
++      uint64_t n = now_ms();
++      int t = b->next_try > n ? (int)(b->next_try - n) : 0;
++      if (t < timeout)
++        timeout = t;
++    }
++    if (poll(p, 3, timeout) < 0)
++      continue;
++
++    if (p[1].revents)
++      break;               /* minicom is gone */
++    if (p[0].revents & POLLIN) {
++      ssize_t n = read(b->master, buf, sizeof(buf));
++      if (n > 0) {
++        if (b->up)
++          br_write(b, buf, n);
++        else
++          b->dropped += n;     /* link down: the "wire" is cut */
++      }
++    }
++  }
++
++  blog(b, "exiting, dropped %lu bytes", b->dropped);
++  if (b->bus) {
++    if (b->up && b->rpath[0])
++      sd_bus_call_method(b->bus, BLUEZ, b->rpath, IFACE_CHAR, "StopNotify",
++                         NULL, NULL, NULL);
++    discovery_stop(b->bus, b->adapter, &b->discovering);
++    if (b->we_connected)
++      disconnect_dev(b->bus, b->dev);
++    sd_bus_flush_close_unref(b->bus);
++  }
++  shm->state = BS_EXITED;
++  _exit(0);
++}
++
++/*
++ * Create the pty and start the bridge as a grandchild (so minicom's
++ * wait() calls for its own children never reap it).
++ * Returns 0 on success with tty_path set.
++ */
++static int bridge_start(struct ctx *c, struct target *t, struct chr *wc,
++                        struct chr *rc, char *err, size_t errsz)
++{
++  int master, slave, lp[2];
++  struct termios tio;
++
++  if (!shm) {
++    shm = mmap(NULL, sizeof(*shm), PROT_READ | PROT_WRITE,
++               MAP_SHARED | MAP_ANONYMOUS, -1, 0);
++    if (shm == MAP_FAILED) {
++      shm = NULL;
++      snprintf(err, errsz, "mmap: %s", strerror(errno));
++      return -1;
++    }
++  }
++  memset(shm, 0, sizeof(*shm));
++  shm->state = BS_STARTING;
++  shm->we_connected = t->we_connected;
++  snprintf(shm->dev, sizeof(shm->dev), "%s", t->path);
++
++  if ((master = posix_openpt(O_RDWR | O_NOCTTY | O_CLOEXEC)) < 0 ||
++      grantpt(master) < 0 || unlockpt(master) < 0 ||
++      ptsname_r(master, tty_path, sizeof(tty_path)) != 0) {
++    snprintf(err, errsz, "pty: %s", strerror(errno));
++    if (master >= 0)
++      close(master);
++    return -1;
++  }
++  /*
++   * The bridge keeps the slave open too, so the master never sees EIO
++   * while minicom closes/reopens the port.
++   */
++  if ((slave = open(tty_path, O_RDWR | O_NOCTTY | O_CLOEXEC)) < 0) {
++    snprintf(err, errsz, "%s: %s", tty_path, strerror(errno));
++    close(master);
++    return -1;
++  }
++  tcgetattr(slave, &tio);
++  cfmakeraw(&tio);
++  tcsetattr(slave, TCSANOW, &tio);
++
++  if (pipe2(lp, O_CLOEXEC) < 0) {
++    snprintf(err, errsz, "pipe: %s", strerror(errno));
++    close(master);
++    close(slave);
++    return -1;
++  }
++
++  fflush(NULL);
++  pid_t pid = fork();
++  if (pid < 0) {
++    snprintf(err, errsz, "fork: %s", strerror(errno));
++    close(master); close(slave); close(lp[0]); close(lp[1]);
++    return -1;
++  }
++  if (pid == 0) {
++    struct bridge b;
++    if (fork() != 0)
++      _exit(0);
++    setsid();
++    shm->pid = getpid();
++
++    memset(&b, 0, sizeof(b));
++    /* Keep only what the bridge needs: 3=master 4=slave 5=lifeline. */
++    int devnull = open("/dev/null", O_RDWR);
++    if (devnull >= 0) {
++      dup2(devnull, 0);
++      dup2(devnull, 1);
++      dup2(devnull, 2);
++    }
++    if (dup2(master, 3) < 0 || dup2(slave, 4) < 0 || dup2(lp[0], 5) < 0)
++      _exit(1);
++    closefrom(6);
++    const char *logf = getenv("MINICOM_BLE_LOG");
++    if (logf && *logf)
++      b.log = fopen(logf, "a");
++
++    b.master = 3;
++    b.life = 5;
++    fcntl(b.master, F_SETFL, fcntl(b.master, F_GETFL) | O_NONBLOCK);
++    snprintf(b.adapter, sizeof(b.adapter), "%s", c->adapter);
++    snprintf(b.adapter_addr, sizeof(b.adapter_addr), "%s", c->adapter_addr);
++    snprintf(b.dev, sizeof(b.dev), "%s", t->path);
++    snprintf(b.addr, sizeof(b.addr), "%s", t->addr);
++    snprintf(b.wuuid, sizeof(b.wuuid), "%s", wc->uuid);
++    snprintf(b.ruuid, sizeof(b.ruuid), "%s", rc->uuid);
++    snprintf(b.wsvc, sizeof(b.wsvc), "%s", wc->svc);
++    snprintf(b.rsvc, sizeof(b.rsvc), "%s", rc->svc);
++    b.we_connected = t->we_connected;
++    blog(&b, "bridge for %s on %s, pty %s", t->addr, c->adapter, tty_path);
++    bridge_main(&b);
++  }
++  waitpid(pid, NULL, 0);
++  close(master);
++  close(slave);
++  close(lp[0]);
++  if (lifeline >= 0)
++    close(lifeline);
++  lifeline = lp[1];
++  return 0;
++}
++
++/* Wait for the bridge to come up. Returns 0 if it did. */
++static int bridge_wait(const char *label, char *err, size_t errsz)
++{
++  uint64_t deadline = now_ms() + BRIDGE_START_MS;
++  WIN *w = ui_wait(_("Starting BLE serial on %s..."), label);
++  int ret = -1;
++
++  for (;;) {
++    int st = shm->state;
++    if (st == BS_UP) {
++      ret = 0;
++      break;
++    }
++    if (st == BS_FAILED || st == BS_EXITED) {
++      snprintf(err, errsz, "%s", shm->msg[0] ? shm->msg : _("bridge failed"));
++      break;
++    }
++    if (now_ms() > deadline) {
++      snprintf(err, errsz, "%s", _("timeout"));
++      break;
++    }
++    if (ui_getkey(100) == 27) {
++      snprintf(err, errsz, "%s", _("cancelled"));
++      break;
++    }
++  }
++  mc_wclose(w, 1);
++  if (ret < 0) {
++    /* Make the bridge go away (it disconnects if it connected). */
++    close(lifeline);
++    lifeline = -1;
++    for (int i = 0; i < 50 && shm->state != BS_EXITED && shm->state != BS_FAILED &&
++         shm->pid && kill(shm->pid, 0) == 0; i++)
++      usleep(100000);
++  }
++  return ret;
++}
++
++/* ---------------------------------------------------------------------
++ * Public interface
++ */
++
++/* The user cancelled: leave minicom without an error. */
++static void __attribute__((noreturn)) quit_ui(struct ctx *c)
++{
++  discovery_stop(c->bus, c->adapter, &c->discovering);
++  sd_bus_flush_close_unref(c->bus);
++  mc_wclose(stdwin, 1);
++  exit(0);
++}
++
++const char *ble_setup(const char *addr, const char *adapter,
++                      const char *wuuid, const char *ruuid)
++{
++  struct ctx c;
++  int r;
++
++  memset(&c, 0, sizeof(c));
++  if (!wuuid)
++    wuuid = BLE_DEFAULT_WRITE_UUID;
++  if (!ruuid)
++    ruuid = BLE_DEFAULT_READ_UUID;
++
++  setcbreak(2);
++  if ((r = sd_bus_open_system(&c.bus)) < 0) {
++    char buf[200];
++    snprintf(buf, sizeof(buf), _("minicom: BLE: cannot connect to the system bus: %s\n"),
++             strerror(-r));
++    leave(buf);
++  }
++  find_adapter(&c, adapter);
++
++  for (;;) {
++    struct target t;
++    struct chr *v = NULL;
++    char err[256];
++    int n, wi, ri;
++
++    memset(&t, 0, sizeof(t));
++    if (addr) {
++      r = find_target(&c, addr, &t);
++      if (r < 0)
++        leave("");
++    } else
++      r = scan_ui(&c, &t);
++    if (r == 0)
++      quit_ui(&c);
++
++    r = connect_ui(&c, &t);
++    if (r <= 0) {
++      if (addr && r < 0)
++        leave("");
++      if (addr)
++        quit_ui(&c);
++      continue;
++    }
++
++    make_label(label_buf, sizeof(label_buf), t.name, t.addr);
++    n = load_chars(&c, t.path, &v);
++    wi = chr_find(v, n, wuuid, 1);
++    ri = chr_find(v, n, ruuid, 0);
++    int any_w = 0, any_r = 0;
++    for (int i = 0; i < n; i++) {
++      any_w |= !!CAN_WRITE(v[i].flags);
++      any_r |= !!CAN_READ(v[i].flags);
++    }
++    if (!any_w || !any_r) {
++      ui_msg(_(" Error "), _("%s has no %s characteristic"), label_buf,
++             !any_w ? _("writable") : _("notifying"));
++      if (t.we_connected)
++        disconnect_dev(c.bus, t.path);
++      free(v);
++      if (addr)
++        leave("");
++      continue;
++    }
++    /* With an explicit address and both UUIDs present, skip the dialog. */
++    if (!(addr && wi >= 0 && ri >= 0) && !chars_ui(label_buf, v, n, &wi, &ri)) {
++      if (t.we_connected)
++        disconnect_dev(c.bus, t.path);
++      free(v);
++      if (addr)
++        quit_ui(&c);
++      continue;
++    }
++
++    if (bridge_start(&c, &t, &v[wi], &v[ri], err, sizeof(err)) < 0 ||
++        bridge_wait(label_buf, err, sizeof(err)) < 0) {
++      ui_msg(_(" Error "), _("Cannot start BLE serial on %s:\n%s"), label_buf, err);
++      free(v);
++      if (addr)
++        leave("");
++      continue;
++    }
++    free(v);
++    break;
++  }
++  sd_bus_flush_close_unref(c.bus);
++  return tty_path;
++}
++
++const char *ble_label(void)
++{
++  return shm ? label_buf : NULL;
++}
++
++void ble_check_status(void)
++{
++  static WIN *w;
++  char buf[300];
++
++  if (!shm)
++    return;
++  int st = shm->state;
++  if (st == BS_EXITED || st == BS_FAILED ||
++      (shm->pid && kill(shm->pid, 0) < 0 && errno == ESRCH)) {
++    /* It could not clean up after itself if it was killed. */
++    sd_bus *bus = NULL;
++    if (st != BS_EXITED && shm->we_connected && sd_bus_open_system(&bus) >= 0) {
++      disconnect_dev(bus, shm->dev);
++      sd_bus_flush_close_unref(bus);
++    }
++    snprintf(buf, sizeof(buf), _("minicom: BLE serial bridge for %s terminated\n"),
++             label_buf);
++    leave(buf);
++  }
++  if (st == BS_DOWN && !w) {
++    char why[sizeof(shm->msg)];
++    snprintf(buf, sizeof(buf), _("BLE link to %s lost, reconnecting..."), label_buf);
++    snprintf(why, sizeof(why), "%s", shm->msg);
++    int ww_w = mbswidth(buf) > mbswidth(why) ? mbswidth(buf) : mbswidth(why);
++    WIN *ww = ui_box(ww_w + 4, 2, NULL);
++    ui_line(ww, 0, 0, " %s", buf);
++    ui_line(ww, 1, 0, " %s", why);
++    mc_wredraw(ww, 1);
++    mc_wflush();
++    w = ww;
++  } else if (st == BS_UP && w) {
++    mc_wclose(w, 1);
++    w = NULL;
++    mc_wflush();
++  }
++}
++
++#endif /* HAVE_BLE */
+diff --git a/src/ble.h b/src/ble.h
+new file mode 100644
+index 0000000..8b8e5f5
+--- /dev/null
++++ b/src/ble.h
+@@ -0,0 +1,46 @@
++/*
++ * ble.h	BLE serial (GATT write/notify characteristic) support.
++ *
++ *		This file is part of the minicom communications package.
++ *
++ *		This program is free software; you can redistribute it and/or
++ *		modify it under the terms of the GNU General Public License
++ *		as published by the Free Software Foundation; either version
++ *		2 of the License, or (at your option) any later version.
++ */
++#ifndef MINICOM_BLE_H
++#define MINICOM_BLE_H
++
++#ifdef HAVE_BLE
++
++#define BLE_DEFAULT_WRITE_UUID "6e400002-b5a3-f393-e0a9-e50e24dcca9e"
++#define BLE_DEFAULT_READ_UUID  "6e400003-b5a3-f393-e0a9-e50e24dcca9e"
++
++/*
++ * Run the BLE device/characteristic selection UI (the window system must
++ * be initialized), connect, and start the bridge process that relays
++ * between a pseudo terminal and the selected characteristics.
++ *
++ * addr:    device address to use directly, or NULL to scan.
++ * adapter: adapter name (e.g. "hci1"), or NULL for the first one.
++ * wuuid/ruuid: characteristic UUIDs to preselect, or NULL for the
++ *          Nordic UART Service defaults.
++ *
++ * Returns the pty to open as the port. Does not return if the user
++ * cancels (exit status 0) or on fatal errors (via leave()).
++ */
++const char *ble_setup(const char *addr, const char *adapter,
++                      const char *wuuid, const char *ruuid);
++
++/* Human readable name of the connected device, or NULL. */
++const char *ble_label(void);
++
++/*
++ * Called from the main loop: show/hide the "link lost" window. Calls
++ * leave() if the bridge process died.
++ */
++void ble_check_status(void);
++
++#endif /* HAVE_BLE */
++
++#endif
+diff --git a/src/main.c b/src/main.c
+index ee913ce..1fba462 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -25,6 +25,7 @@
+ #include "minicom.h"
+ #include "intl.h"
+ #include "sysdep.h"
++#include "ble.h"
+ #include <errno.h>
+ 
+ #include <stdbool.h>
+@@ -679,6 +680,9 @@ static void show_status_fmt(const char *fmt)
+                 {
+                   char b[COLS - bufi];
+                   bufi += scnprintf(buf + bufi, COLS - bufi, "%s",
++#ifdef HAVE_BLE
++                                   ble_label() ? ble_label() :
++#endif
+                                    shortened_devpath(b, sizeof(b), dial_tty));
+                 }
+               break;
+@@ -908,7 +912,14 @@ dirty_goto:
+       size_changed = 0;
+     }
+     /* Show the port in the terminal window title. */
++#ifdef HAVE_BLE
++    mc_wsettitle(ble_label() ? ble_label() : dial_tty);
++
++    /* Show/hide the "BLE link lost" window. */
++    ble_check_status();
++#else
+     mc_wsettitle(dial_tty);
++#endif
+ 
+     /* Update the timer. */
+     timer_update();
+diff --git a/src/minicom.c b/src/minicom.c
+index 68a7430..feee879 100644
+--- a/src/minicom.c
++++ b/src/minicom.c
+@@ -36,6 +36,7 @@
+ #include "port.h"
+ #include "minicom.h"
+ #include "intl.h"
++#include "ble.h"
+ 
+ static const char option_string[] =
+ #ifdef ENABLE_NLS
+@@ -908,9 +909,20 @@ static void helpthem(void)
+     "  -R, --remotecharset    : character set of communication partner\n"
+     "  -v, --version          : output version information and exit\n"
+     "  -h, --help             : show help\n"
+-    "  configuration          : configuration file to use\n\n"
+-    "These options can also be specified in the MINICOM environment variable.\n"),
++    "  configuration          : configuration file to use\n\n"),
+     PACKAGE);
++#ifdef HAVE_BLE
++  printf(_(
++    "  --ble[=ADDRESS]        : BLE serial mode: scan and pick a device, or\n"
++    "                           connect to ADDRESS directly\n"
++    "  --ble-adapter=NAME     : Bluetooth adapter to use (e.g. hci1)\n"
++    "  --ble-write=UUID       : characteristic to write to\n"
++    "                           (default %s)\n"
++    "  --ble-read=UUID        : characteristic to receive notifications from\n"
++    "                           (default %s)\n\n"),
++    BLE_DEFAULT_WRITE_UUID, BLE_DEFAULT_READ_UUID);
++#endif
++  printf(_("These options can also be specified in the MINICOM environment variable.\n"));
+   if (mc) {
+     printf(_("This variable is currently set to \"%s\".\n"), mc);
+   } else {
+@@ -1234,7 +1246,16 @@ int main(int argc, char **argv)
+ 
+   enum {
+     OPT_CAP_BUF_MODE = 256,
++    OPT_BLE,
++    OPT_BLE_ADAPTER,
++    OPT_BLE_WRITE,
++    OPT_BLE_READ,
+   };
++#ifdef HAVE_BLE
++  int ble_mode = 0;
++  const char *ble_addr = NULL, *ble_adapter = NULL;
++  const char *ble_wuuid = NULL, *ble_ruuid = NULL;
++#endif
+ 
+   static struct option long_options[] =
+   {
+@@ -1265,6 +1286,12 @@ int main(int argc, char **argv)
+     { "option",                  required_argument, NULL, 'O' },
+     { "statlinefmt",             required_argument, NULL, 'F' },
+     { "capturefile-buffer-mode", required_argument, NULL, OPT_CAP_BUF_MODE },
++#ifdef HAVE_BLE
++    { "ble",                     optional_argument, NULL, OPT_BLE },
++    { "ble-adapter",             required_argument, NULL, OPT_BLE_ADAPTER },
++    { "ble-write",               required_argument, NULL, OPT_BLE_WRITE },
++    { "ble-read",                required_argument, NULL, OPT_BLE_READ },
++#endif
+     { NULL, 0, NULL, 0 }
+   };
+ 
+@@ -1469,6 +1496,21 @@ int main(int argc, char **argv)
+           docap = 1;
+           vt_set(addlf, -1, docap, -1, -1, -1, -1, -1, addcr);
+           break;
++#ifdef HAVE_BLE
++        case OPT_BLE:
++          ble_mode = 1;
++          ble_addr = optarg && *optarg ? optarg : NULL;
++          break;
++        case OPT_BLE_ADAPTER:
++          ble_adapter = optarg;
++          break;
++        case OPT_BLE_WRITE:
++          ble_wuuid = optarg;
++          break;
++        case OPT_BLE_READ:
++          ble_ruuid = optarg;
++          break;
++#endif
+         case OPT_CAP_BUF_MODE:
+           switch (toupper(optarg[0])) {
+             case 'N':
+@@ -1608,6 +1650,15 @@ int main(int argc, char **argv)
+     st_attr = XA_REVERSE;
+   }
+ 
++#ifdef HAVE_BLE
++  if (ble_mode) {
++    /* The port is a pty created after the device has been picked. */
++    if (dosetup) {
++      fprintf(stderr, _("minicom: --ble cannot be used with --setup\n"));
++      exit(1);
++    }
++  } else
++#endif
+   if (dial_tty == NULL) {
+     if (!dosetup) {
+       while ((dial_tty = get_port(P_PORT)) != NULL && open_term(doinit, 1, 0) < 0)
+@@ -1629,6 +1680,14 @@ int main(int argc, char **argv)
+   if (COLS < 40 || LINES < 10)
+     leave(_("Sorry. Your screen is too small.\n"));
+ 
++#ifdef HAVE_BLE
++  if (ble_mode) {
++    dial_tty = (char *)ble_setup(ble_addr, ble_adapter, ble_wuuid, ble_ruuid);
++    if (open_term(doinit, 1, 0) < 0)
++      leave("");
++  }
++#endif
++
+   if (dosetup) {
+     if (config(1)) {
+       mc_wclose(stdwin, 1);
+@@ -1722,6 +1781,11 @@ int main(int argc, char **argv)
+           }
+       }
+     const char lfm_s[Lockfile_mode_max] = { '?', 'U', 'F', 'T' };
++#ifdef HAVE_BLE
++    if (ble_label())
++      mc_wprintf(us, "%s BLE %s via %s\r\n", _("Port"), ble_label(), dial_tty);
++    else
++#endif
+     mc_wprintf(us, "%s %s%s [%c]\r\n", _("Port"), P_PORT, port_date,
+ 	       lfm_s[lockfile_mode]);
+   }
+-- 
+2.55.0
+
