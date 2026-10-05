@@ -7,3 +7,5 @@ Icon=devinorium
 Terminal=false
 Categories=Development;Utility;
 Keywords=devin;ai;agent;coding;
+StartupNotify=true
+StartupWMClass=gitlab.openlyst.devinorium
