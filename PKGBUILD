@@ -45,4 +45,9 @@ package() {
 	just install /usr "$pkgdir"
 	install -Dm644 "$srcdir/$_pkgname/LICENSE" \
 		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	local completions="$pkgdir/usr/share"
+	install -d "$completions/bash-completion/completions" "$completions/zsh/site-functions" "$completions/fish/vendor_completions.d"
+	"$pkgdir/usr/bin/whatevrd" completion bash >"$completions/bash-completion/completions/whatevrd"
+	"$pkgdir/usr/bin/whatevrd" completion zsh >"$completions/zsh/site-functions/_whatevrd"
+	"$pkgdir/usr/bin/whatevrd" completion fish >"$completions/fish/vendor_completions.d/whatevrd.fish"
 }
