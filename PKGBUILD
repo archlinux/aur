@@ -11,7 +11,7 @@ pkgname='py-cidr'
 pkgdesc='Python module providing network / CIDR tools'
 _gitname='py-cidr'
 
-pkgver="5.0.3"
+pkgver="5.0.5"
 pkgrel=1
 url="https://github.com/gene-git/py-cidr"
 

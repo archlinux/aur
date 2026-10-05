@@ -1,11 +1,17 @@
 -------------------------------------------------------
  Changelog    : py-cidr
- Tags         : 4.0.0 ➙ 5.0.3
-              : 2026-07-27 ➙ 2026-09-09
+ Tags         : 5.0.0 ➙ 5.0.5
+              : 2026-08-25 ➙ 2026-10-05
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-09   : 5.0.3
+ 2026-10-05   : 5.0.5
+              - Mon Oct  5 11:18:28 AM EDT 2026
+            
+                * Documentation available at https://py-cidr.readthedocs.io
+                * Switch python docstrings from google to sphinx format
+
+ 2026-09-09   : 5.0.3, origin/master
               - **5.0.3**
             
                 * Change Arch package dependencies that have been renamed:
@@ -13,7 +19,7 @@
                   - pyconcurrent -> python-pyconcurrent
                   - lockmgr -> python-lockmgr
 
- 2026-08-25   : 5.0.2, origin/master
+ 2026-08-25   : 5.0.2
               - Manual / repo version update
 
  2026-08-25   : 5.0.1
@@ -37,15 +43,3 @@
                   In the future, some/all of Cidr may be migrated to use the new fast codebase.
             
                 * See manual for details and how to use the new speedy class!
-
- 2026-07-27   : 4.0.0
-              - **4.0.0**
-            
-                * CidrMap:
-                  - use Patricia26 (instead of PyTricia) for the Patricia trees.
-                  - maps are now very much smaller, about 1/6 th the size of previous files.
-                    A benefit that Patricia26 stores only the necessary data.
-                  - cache files are automatically converted to the new format.
-                  - PrefixMap: compact defaults to False.
- 2026-03-11   ⋯
-              - update Docs/Changelogs
