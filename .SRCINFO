@@ -13,6 +13,6 @@ pkgbase = islamic-prayer-timings
 	provides = islamic-prayer-timings
 	conflicts = islamic-prayer-timings-git
 	source = git+https://github.com/abdalrahmanshaban0/islamic-prayer-timings.git#tag=v1.1.1
-	sha256sums = SKIP
+	sha256sums = 3cb290c896ddd905365917ca659751aea12242072467d07add0bea1935be3d00
 
 pkgname = islamic-prayer-timings
