@@ -18,10 +18,10 @@
 # symbol table. All three warnings are expected.
 
 pkgname=xunhen
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-_version=1.0.0
-_commit=0cb2312485642a2169fa2abbd6d481a69cb70660
+_version=1.0.1
+_commit=d850818fbfab68a599b02f128827c5732def6975
 pkgdesc="Browse the editing history that survived in Neovim undo files"
 arch=('x86_64')
 url="https://github.com/nuggocto/xunhen"
@@ -30,7 +30,7 @@ depends=()
 makedepends=('go>=2:1.27.1')
 checkdepends=('git')
 source=("xunhen_${_version}_source.tar.gz::https://github.com/nuggocto/xunhen/releases/download/v${_version}/xunhen_${_version}_source.tar.gz")
-sha256sums=('11b694b24f3ec646e5c6f256379c9c023eadc7d4159a77be290f10cc73ddba1d')
+sha256sums=('b5e3b5f4e0899aba3c9f0a9320f9d6b4450965427943992ce151693dbc272032')
 
 # The go command's environment for every step: no go.env file, no
 # workspace, no toolchain download, and a module cache inside $srcdir.
@@ -80,7 +80,6 @@ package() {
   # relative link from one of them to a file the archive lacks. Symbolic
   # links to the license files keep the README's links to them working.
   install -Dm644 README.md CHANGELOG.md -t "$pkgdir/usr/share/doc/$pkgname/"
-  install -Dm644 docs/install.md docs/usage.md docs/troubleshooting.md -t "$pkgdir/usr/share/doc/$pkgname/docs/"
   ln -s "../../licenses/$pkgname/LICENSE" "../../licenses/$pkgname/THIRD_PARTY_NOTICES.txt" \
     "$pkgdir/usr/share/doc/$pkgname/"
 }
