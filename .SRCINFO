@@ -1,0 +1,20 @@
+pkgbase = libvirt-iso-ubuntu-desktop-lts-bin
+	pkgdesc = Official Ubuntu LTS Desktop installation ISO for libvirt
+	pkgver = 26.04.1
+	pkgrel = 1
+	url = https://ubuntu.com/download/desktop
+	arch = x86_64
+	license = LicenseRef-Various
+	checkdepends = libarchive
+	noextract = ubuntu-26.04.1-desktop-amd64.iso
+	source = ubuntu-26.04.1-desktop-amd64.iso::https://releases.ubuntu.com/26.04/ubuntu-26.04.1-desktop-amd64.iso
+	source = SHA256SUMS-26.04.1-ubuntu-desktop-lts::https://releases.ubuntu.com/26.04/SHA256SUMS
+	source = SHA256SUMS-26.04.1-ubuntu-desktop-lts.sig::https://releases.ubuntu.com/26.04/SHA256SUMS.gpg
+	source = DISTRIBUTION-LICENSE
+	validpgpkeys = 843938DF228D22F7B3742BC0D94AA3F0EFE21092
+	sha256sums = 601e30fbf5d97759367c632e2c33630665039b7e2158fd068403da3ccf1bda1f
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = ccee829abe16869c3b4e989844357a0fff8fc74ca5eb8d80d83019982c487185
+
+pkgname = libvirt-iso-ubuntu-desktop-lts-bin
