@@ -1,7 +1,7 @@
 # maintainer: verse <versedev.store@proton.me>
 _pkgname=ClakIME
 pkgname=clak
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="Fast and highly stable Vietnamese input method for Fcitx5 and Wayland"
 arch=('x86_64' 'aarch64')
