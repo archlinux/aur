@@ -1,7 +1,7 @@
 # Maintainer: justbispo <aur.fyxy0@slmail.me>
 
 pkgname=chromium-material-icons-for-github-bin
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc='Browser Addon that enhances file browsers of version controls with material icons.'
 arch=(any)
@@ -12,7 +12,7 @@ optdepends=(chromium vivaldi google-chrome opera brave ungoogled-chromium)
 provides=(chromium-material-icons-for-github)
 install=chromium-material-icons-for-github.install
 source=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/github-material-icons-chrome-extension.zip")
-sha256sums=('64f9587f2b2c72ac9db2bb167e95f48c5a6db763b6738cb96d134e867f73926f')
+sha256sums=('70c12b5740c8cd983dc5450a77cbfa0ecd004d96863be844df45131b0fe42367')
 
 build() {
     cd "$srcdir"/"$_dirname"
