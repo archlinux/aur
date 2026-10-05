@@ -1,7 +1,11 @@
 # Maintainer: Antarien <dev@antarien.com>
 pkgname=ase-viewer
-pkgver=00.00.33
-pkgrel=2
+# 00.00.34 traegt die Uebersetzbarkeit gegen die heutigen Bibliotheken: LANGUAGES CXX C fuer
+# die neun geholten Vorhaben, die C mitbringen, und den Header, der FcFreeTypeQuery erklaert,
+# seit fontconfig ihn aus seinem Dachheader genommen hat. Ohne diesen Stand scheitert ein
+# Fremdbau an zweiunddreissig fehlenden CMake-Variablen oder am Cairo-Backend.
+pkgver=00.00.34
+pkgrel=1
 pkgdesc='ASE TECH & DESIGN Documentation Viewer — Native GTK4 Markdown renderer'
 arch=('x86_64')
 url='https://github.com/antarien/ase-client-viewer'
