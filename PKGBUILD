@@ -2,7 +2,7 @@
 
 pkgname=quarry-sql-bin
 _pkgname=quarry
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A fast SQL client and TUI for PostgreSQL, MySQL / MariaDB and SQLite (prebuilt)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ provides=('quarry-sql')
 conflicts=('quarry-sql' 'quarry')
 options=('!strip' '!debug')
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('20e5ff5606719267da6e6579c75c35d162250fbd6f5f5b366985a71cbce13c72')
+sha256sums=('cc45915be638260a8b563bd4dfeda10959cd512d5a6aef7dfe82872b73343632')
 
 package() {
   cd "$_pkgname-$pkgver-x86_64-unknown-linux-gnu"
