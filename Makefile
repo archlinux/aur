@@ -1,6 +1,9 @@
 .DELETE_ON_ERROR:
 all: upgrade build verify
 
+init:
+	yay -S devtools nvchecker namcap
+
 clean:
 	rm -rf pkg src *.deb *.pkg.tar.zst *.log
 
