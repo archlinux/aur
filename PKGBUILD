@@ -4,8 +4,8 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird
-pkgver=20260901
-pkgrel=2
+pkgver=20261004
+pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
 url='https://github.com/LadybirdBrowser/ladybird'
@@ -14,7 +14,7 @@ depends=(curl ffmpeg libgl qt6-base qt6-multimedia qt6-positioning ttf-liberatio
 makedepends=(autoconf-archive automake cargo cmake git libtool make nasm ninja patch pkg-config tar unzip zip)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
 source=(
-  "git+$url#commit=e980ca4bec2f889acbb59af4abb9bd7986ff8422" # 2026-09-01
+  "git+$url#commit=20e815a4df3d6b721b3ea185ad39d2627d71963a" # 2026-10-04
   "git+https://github.com/microsoft/vcpkg.git#commit=7f3781e19cc7d4e4882a4caec01668c6f7b5c163" # 2026-08-27 (vcpkg.json:builtin-baseline)
   "hb-fc-whole-archive.patch"
   "new-tab.patch"
@@ -31,7 +31,8 @@ sha256sums=(
 prepare() {
   export VCPKG_ROOT="${srcdir}/vcpkg"
   export VCPKG_DISABLE_METRICS="true"
-  export RUSTUP_TOOLCHAIN=stable
+  unset CARGO_TARGET_DIR
+  export RUSTUP_TOOLCHAIN="$(sed -n 's/^channel = "\(.*\)"/\1/p' ladybird/rust-toolchain.toml)"
 
   local use_linker=
   if ! echo $'#if defined(__clang__)\nWE ARE ON CLANG\n#endif' | "${CC:-/usr/bin/cc}" -E - | grep -q 'WE ARE ON CLANG'; then
@@ -64,6 +65,8 @@ prepare() {
 
 build() {
   cd "${srcdir}"
+  unset CARGO_TARGET_DIR
+  export RUSTUP_TOOLCHAIN="$(sed -n 's/^channel = "\(.*\)"/\1/p' ladybird/rust-toolchain.toml)"
   cmake --build build
 }
 

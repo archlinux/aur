@@ -1,7 +1,7 @@
 pkgbase = ladybird
 	pkgdesc = Truly independent web browser
-	pkgver = 20260901
-	pkgrel = 2
+	pkgver = 20261004
+	pkgrel = 1
 	url = https://github.com/LadybirdBrowser/ladybird
 	arch = x86_64
 	license = BSD-2-Clause
@@ -31,7 +31,7 @@ pkgbase = ladybird
 	options = !buildflags
 	options = !staticlibs
 	options = !emptydirs
-	source = git+https://github.com/LadybirdBrowser/ladybird#commit=e980ca4bec2f889acbb59af4abb9bd7986ff8422
+	source = git+https://github.com/LadybirdBrowser/ladybird#commit=20e815a4df3d6b721b3ea185ad39d2627d71963a
 	source = git+https://github.com/microsoft/vcpkg.git#commit=7f3781e19cc7d4e4882a4caec01668c6f7b5c163
 	source = hb-fc-whole-archive.patch
 	source = new-tab.patch
