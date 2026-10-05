@@ -6,7 +6,7 @@
 # .deb basename follows Tauri bundle / productName (capital O), e.g. Orateur_0.2.2_amd64.deb.
 
 pkgname=orateur-desktop-bin
-pkgver=0.2.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Orateur speech-assistant status overlay (Tauri)'
 arch=('x86_64')
@@ -26,7 +26,7 @@ _tag="desktop-v${pkgver}"
 _deb="Orateur_${pkgver}_amd64.deb"
 
 source_x86_64=("${pkgname}-${pkgver}.deb::${url}/releases/download/${_tag}/${_deb}")
-sha256sums_x86_64=('fd41d22cb7eed6e5d6c31d1369cb73b886d5ef89c3f53b2068f55ebc4a04983a')
+sha256sums_x86_64=('318401d87d12779280fc44675c5faf54980c369ea150bbaccba3446820809dc4')
 
 prepare() {
   bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.deb"

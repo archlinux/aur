@@ -1,6 +1,6 @@
 pkgbase = orateur-desktop-bin
 	pkgdesc = Orateur speech-assistant status overlay (Tauri)
-	pkgver = 0.2.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/orateurhq/orateur
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = orateur-desktop-bin
 	depends = hicolor-icon-theme
 	provides = orateur-desktop
 	conflicts = orateur-desktop
-	source_x86_64 = orateur-desktop-bin-0.2.2.deb::https://github.com/orateurhq/orateur/releases/download/desktop-v0.2.2/Orateur_0.2.2_amd64.deb
-	sha256sums_x86_64 = fd41d22cb7eed6e5d6c31d1369cb73b886d5ef89c3f53b2068f55ebc4a04983a
+	source_x86_64 = orateur-desktop-bin-0.5.0.deb::https://github.com/orateurhq/orateur/releases/download/desktop-v0.5.0/Orateur_0.5.0_amd64.deb
+	sha256sums_x86_64 = 318401d87d12779280fc44675c5faf54980c369ea150bbaccba3446820809dc4
 
 pkgname = orateur-desktop-bin
