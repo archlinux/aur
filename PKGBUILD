@@ -4,12 +4,11 @@
 # Provides the ScreenCast and Screenshot portal interfaces by capturing from
 # the compositor through Halley's IPC and producing PipeWire streams.
 #
-# Sourced from the Halley monorepo via portal-specific release tags
-# (`halley-portal-v$pkgver`), decoupled from the main compositor release tags
-# (`v*`). The package only changes when you bump `pkgver`/`pkgrel` here.
+# Sourced from the immutable Halley release containing this portal version.
+# The portal retains its own version; it does not inherit the compositor version.
 
 pkgname=xdg-desktop-portal-halley
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Native xdg-desktop-portal ScreenCast and Screenshot backend for the Halley compositor"
 arch=('x86_64')
@@ -19,18 +18,23 @@ depends=('pipewire' 'xdg-desktop-portal' 'mesa' 'libdrm')
 makedepends=('cargo' 'rust' 'pkgconf')
 optdepends=('halley: the Halley compositor this portal backend captures from')
 options=('!debug' '!lto')
-# The portal release tag inside the Halley repo. Bump together with pkgver.
-_tag="halley-portal-v$pkgver"
+# Halley v0.8.0 contains halley-portal v0.2.1.
+_tag="v0.8.0"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('2a743f543de22942d3c783e35bc8992c2485809679df1d52bf4ef2ec6e018eda')
+sha256sums=('70c0b5ba02a4e83a8ac22e4e910c5b516045ed407c4034721e987b5c324f1d17')
 
-# GitHub tag archives extract to "<repo>-<tag>" -> "halley-halley-portal-v$pkgver"
-_srcdir="halley-$_tag"
+# GitHub strips the v prefix in the release archive directory.
+_srcdir="halley-${_tag#v}"
 
 build() {
   cd "$srcdir/$_srcdir"
   export CARGO_TARGET_DIR=target
   cargo build --release --locked -p halley-portal
+}
+
+check() {
+  cd "$srcdir/$_srcdir"
+  cargo test --release --locked -p halley-portal
 }
 
 package() {
