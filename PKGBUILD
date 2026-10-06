@@ -1,15 +1,15 @@
 pkgname=paramountplus
 _pkgname=ParamountPlus
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc="Unnofficial ParamountPlus desktop application"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/paramountplus"
 license=('GPL')
 depends=('electron-castlab-bin' 'libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('5dc6f97958cf006b6b0ffcfb60f93936aa2b394c0da39594ad87b1ead3242256')
+sha256sums=('a592ec1aca39cd3ee877b1a557a786b59dfc9719f7f59ab9b943d8588e927601')
 
 package() {
     cd "$srcdir/application-$pkgver"

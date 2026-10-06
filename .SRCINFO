@@ -1,9 +1,10 @@
 pkgbase = paramountplus
 	pkgdesc = Unnofficial ParamountPlus desktop application
-	pkgver = 1.0.12
+	pkgver = 1.0.13
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/paramountplus
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = unzip
 	depends = electron-castlab-bin
@@ -12,7 +13,7 @@ pkgbase = paramountplus
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/paramountplus/application/-/archive/1.0.12/application-1.0.12.tar.bz2
-	sha256sums = 5dc6f97958cf006b6b0ffcfb60f93936aa2b394c0da39594ad87b1ead3242256
+	source = https://gitlab.com/linuxbombay/paramountplus/application/-/archive/1.0.13/application-1.0.13.tar.bz2
+	sha256sums = a592ec1aca39cd3ee877b1a557a786b59dfc9719f7f59ab9b943d8588e927601
 
 pkgname = paramountplus
