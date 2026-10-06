@@ -2,19 +2,31 @@
 
 pkgname=why3-bin
 pkgver=1.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Software verification platform for deductive program verification"
 arch=('x86_64')
 url="https://gitlab.inria.fr/why3/why3"
-license=('LGPL2.1')
+license=('LGPL-2.1-only')
 
 # Prebuilt Debian binaries: no debug symbols to extract and nothing to strip,
 # so skip both to avoid a wall of gdb-add-index/readelf errors during makepkg
 options=('!strip' '!debug')
 
-# Runtime dependencies — most must be provided by Arch packages
+# Native binaries: why3 and isabelle_client link only against these.
+# The OCaml runtime is statically linked, so the ocaml package is not needed.
 depends=(
-  'ocaml'
+  'glibc'
+  'gmp'
+  'zlib'
+)
+
+# why3ide.cmxs is loaded on demand and links against GTK3/GtkSourceView3
+# (gtk3 pulls in cairo, pango, gdk-pixbuf2 and glib2)
+optdepends=(
+  'gtk3: graphical IDE (why3 ide)'
+  'gtksourceview3: graphical IDE (why3 ide)'
+  'z3: SMT prover backend'
+  'cvc5: SMT prover backend'
 )
 
 makedepends=('binutils' 'tar')
