@@ -2,8 +2,8 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=sonic-quick-image-editor
-pkgver=0.6.2.1.1
-pkgrel=1
+pkgver=0.7.0.1
+pkgrel=2
 pkgdesc='QML image editing components with SonicDE defaults'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-quick-image-editor'
@@ -16,12 +16,13 @@ depends=(glibc
          qt6-base
          qt6-declarative
          sonic-frameworks-quick-ui)
-makedepends=(sonic-frameworks-cmake-modules)
+makedepends=(sonic-frameworks-cmake-modules
+             qt6-shadertools)
 provides=(kquickimageeditor)
 conflicts=(kquickimageeditor)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('6f695834bdeea7cece70038c0b81437e36c614f7978f902a1b7885be67965623')
+sha256sums=('ac92df06d7c938783d795de793c68d0e3baf7567977b46afa7dcc0070857dc54')
 
 prepare() {
   sed -e 's|OpenCV 4.7|OpenCV 5|' -i $pkgname-$pkgver/CMakeLists.txt
