@@ -7,6 +7,7 @@
 
 pkgname=mautrix-signal-bin
 provides=('mautrix-signal')
+conflicts=('mautrix-signal')
 pkgver="0.2609.0"
 _libsigver="0.102.2"
 pkgrel=1
@@ -14,6 +15,7 @@ pkgdesc="A Matrix-Signal puppeting bridge (Golang version)"
 arch=('x86_64' 'aarch64')
 license=('AGPL-3.0-or-later')
 depends=()
+options=(!debug)
 url="https://github.com/mautrix/signal"
 _ci_job_url="https://mau.dev/mautrix/signal/-/jobs"
 source_x86_64=("$pkgname"::"${url}/releases/download/v${pkgver}/mautrix-signal-amd64")
@@ -28,7 +30,7 @@ sha256sums=('3384dd44aa72937047f03f4a524efdf92162029ab85e830f5c7d4747b40359d8'
             '2515ba90e73c054289c3877a86b01ae57117aaa8096348e69d4d0cbe01304a9d'
             '2582791c2210b568afcb916112299a929424c18b381ae8b6b57a2144d0f18b63')
 sha256sums_x86_64=('e4481d0abb0e8cd98eba54d3d42e119cd2bd03faac3885c544286e602b5f7b06')
-sha256sums_aarch64=('e4481d0abb0e8cd98eba54d3d42e119cd2bd03faac3885c544286e602b5f7b06')
+sha256sums_aarch64=('48c00d37c4e67434770db3e462295f26f676f6ce8cc67cc9c417ec8f85a1e665')
 
 prepare() {
   cd "${srcdir}/"

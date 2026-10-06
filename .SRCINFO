@@ -7,6 +7,8 @@ pkgbase = mautrix-signal-bin
 	arch = aarch64
 	license = AGPL-3.0-or-later
 	provides = mautrix-signal
+	conflicts = mautrix-signal
+	options = !debug
 	backup = etc/mautrix-signal/config.yaml
 	source = sysusers-mautrix-signal.conf
 	source = mautrix-signal.tmpfiles
@@ -17,6 +19,6 @@ pkgbase = mautrix-signal-bin
 	source_x86_64 = mautrix-signal-bin::https://github.com/mautrix/signal/releases/download/v0.2609.0/mautrix-signal-amd64
 	sha256sums_x86_64 = e4481d0abb0e8cd98eba54d3d42e119cd2bd03faac3885c544286e602b5f7b06
 	source_aarch64 = mautrix-signal-bin::https://github.com/mautrix/signal/releases/download/v0.2609.0/mautrix-signal-arm64
-	sha256sums_aarch64 = e4481d0abb0e8cd98eba54d3d42e119cd2bd03faac3885c544286e602b5f7b06
+	sha256sums_aarch64 = 48c00d37c4e67434770db3e462295f26f676f6ce8cc67cc9c417ec8f85a1e665
 
 pkgname = mautrix-signal-bin
