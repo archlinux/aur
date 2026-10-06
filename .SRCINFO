@@ -1,0 +1,22 @@
+pkgbase = siegefx-bin
+	pkgdesc = Open-source reimplementation of the Dungeon Siege engine, in alpha (needs the original game data)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/codingncaffeine/SiegeFX
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = openal
+	depends = libgl
+	depends = libxkbcommon
+	depends = openssl
+	depends = gcc-libs
+	depends = glibc
+	optdepends = xdg-desktop-portal: choosing a screenshots folder in Options
+	provides = siegefx
+	conflicts = siegefx
+	options = !strip
+	options = !debug
+	source = https://github.com/codingncaffeine/SiegeFX/releases/download/v0.5.0/SiegeFX-v0.5.0-linux-x64.tar.gz
+	sha256sums = f6f5530c787ca5f937e371b2415803476e285ec00679de4250df84fb64c12eec
+
+pkgname = siegefx-bin
