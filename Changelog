@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : cidrtools
- Tags         : 1.1.0 ➙ 1.4.1
-              : 2026-08-20 ➙ 2026-10-06
+ Tags         : 1.2.0 ➙ 1.4.2
+              : 2026-08-22 ➙ 2026-10-06
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-10-06   : 1.4.2
+              - release 1.4.2 (readthedocs fix)
+              - * More tweaks needed for readthedocs to work with the C-code API reference.
 
  2026-10-06   : 1.4.1
               - **1.4.1**
@@ -34,9 +38,3 @@
             
                 * Add ct_cidrs_intersection().
                   Computes the intersecting subnet(s) of two sets of cidr blocks.
-
- 2026-08-20   : 1.1.0
-              - **1.1.0**
-            
-                * Bug fix: Original code assumed excluded cidrs are subnets.
-                  Enhance code to handle excluded networks being supernets.
