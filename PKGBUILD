@@ -4,8 +4,8 @@
 # (repository is being renamed to claude-desktop-extra; the old URL redirects)
 
 pkgname=claude-desktop-extra
-pkgver=2.9939.4
-pkgrel=7
+pkgver=2.19675.1
+pkgrel=1
 pkgdesc="Claude Desktop (official Linux build) with extra features: Computer Use, custom themes, multi-profile, Quick Entry - for distros upstream does not ship"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickjaja/claude-desktop-extra"
@@ -22,7 +22,7 @@ license=('custom:Claude')
 #   missing from most third-party Electron PKGBUILDs.
 depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2'
          'glibc' 'gtk3' 'hicolor-icon-theme' 'libcap-ng' 'libcups' 'libdrm'
-         'libnotify' 'libseccomp' 'libsecret' 'libx11' 'libxcb' 'libxcomposite'
+         'libnotify' 'libpipewire' 'libseccomp' 'libsecret' 'libx11' 'libxcb' 'libxcomposite'
          'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'mesa'
          'nspr' 'nss' 'pango' 'systemd-libs' 'xdg-desktop-portal' 'xdg-utils')
 # Cowork's VM deps (QEMU + UEFI firmware + virtiofsd) mirror the official Claude
@@ -33,7 +33,6 @@ depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2'
 # (NOT qemu-base — it has no emulator binary and is x86_64-only). /dev/kvm
 # access still needs the user in the `kvm` group.
 optdepends=('nodejs: System Node.js for MCP extensions that require specific versions (Electron bundles Node.js as fallback)'
-            'sqlite: Project detection (detectedProjects) - without it, periodic ENOENT errors spam logs/main.log'
             'claude-code: optional pinned Claude Code CLI. NOT required - the app auto-downloads a checksum-verified CLI matching its required version. To force a system binary set CLAUDE_CODE_LOCAL_BINARY=/path/to/claude (npm i -g @anthropic-ai/claude-code)'
             'virtiofsd: Cowork agent workspace VM - shares $HOME into the guest'
             'imagemagick: Computer Use screenshot crop via convert - ONLY for the residual KDE-without-kwin-bridge spectacle tier (bundled bridges cover X11/wlroots/GNOME/KDE 6.6+)'
@@ -57,10 +56,10 @@ install="$pkgname.install"
 # claude-desktop/ (Electron runtime + resources/app.asar already patched + our CU
 # bridges under resources/), plus launcher/, icons/, and copyright. No separate
 # Electron zip source.
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.9939.4-7/claude-desktop-2.9939.4-linux.tar.gz")
-sha256sums_x86_64=('430508b0cdaff026df62444dc605db46f31782f4165916af0418c527ba8dfdcb')
-source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.9939.4-7/claude-desktop-2.9939.4-linux-aarch64.tar.gz")
-sha256sums_aarch64=('2b4ea81e92a062bc4b32eb276db35c14c0ad0a5519bec7eda872b8ba8bc6e2b0')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.19675.1/claude-desktop-2.19675.1-linux.tar.gz")
+sha256sums_x86_64=('229742dbb0d44e656be7799216093777c0f7d91930beec30c56858c6fdb8198f')
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.19675.1/claude-desktop-2.19675.1-linux-aarch64.tar.gz")
+sha256sums_aarch64=('2d2d38c761c10a6fe2bc95280cecde94ddb926e2db516b4ef0f857e8e45563dc')
 options=('!strip' '!emptydirs')
 
 package() {
