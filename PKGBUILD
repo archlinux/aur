@@ -1,6 +1,6 @@
 # Maintainer: Charles Pritchard <charlespritchard.work@gmail.com>
 pkgname=shiftpaper-git
-pkgver=0.4.0.r0.g44334ee
+pkgver=0.4.1.r0.g68a9ab3
 pkgrel=1
 pkgdesc="Parallax wallpaper daemon for Wayland with monocular depth estimation"
 arch=('x86_64')
@@ -56,4 +56,11 @@ package() {
 		"$pkgdir/usr/share/icons/hicolor/scalable/apps/shiftpaper.svg"
 	install -Dm644 assets/icon/hicolor/symbolic/apps/shiftpaper-symbolic.svg \
 		"$pkgdir/usr/share/icons/hicolor/symbolic/apps/shiftpaper-symbolic.svg"
+	install -Dm644 -t "$pkgdir/usr/share/man/man1" assets/man/*.1
+	install -Dm644 assets/completions/shiftpaper.bash \
+		"$pkgdir/usr/share/bash-completion/completions/shiftpaper"
+	install -Dm644 assets/completions/_shiftpaper \
+		"$pkgdir/usr/share/zsh/site-functions/_shiftpaper"
+	install -Dm644 assets/completions/shiftpaper.fish \
+		"$pkgdir/usr/share/fish/vendor_completions.d/shiftpaper.fish"
 }
