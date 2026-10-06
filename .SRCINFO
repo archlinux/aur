@@ -1,6 +1,6 @@
 pkgbase = koreader-nightly-bin
 	pkgdesc = An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats (Nightly Build)
-	pkgver = 2026.07.2_220_g83f443ce4
+	pkgver = 2026.07.2_226_g1533bf17a
 	pkgrel = 1
 	url = https://github.com/koreader/koreader/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = koreader-nightly-bin
 	conflicts = koreader-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = koreader-nightly-x86_64-2026.07.2_220_g83f443ce4.deb::https://gitlab.com/koreader/nightly-builds/-/jobs/16929117520/artifacts/raw/koreader/koreader_2026.07.2-220-g83f443ce4-1_amd64.deb
-	sha256sums_x86_64 = 44548161522301ece15b263eae12426b173c233b858d51340bda125ac1f946d7
-	source_aarch64 = koreader-nightly-aarch64-2026.07.2_220_g83f443ce4.deb::https://gitlab.com/koreader/nightly-builds/-/jobs/16929117521/artifacts/raw/koreader/koreader_2026.07.2-220-g83f443ce4-1_arm64.deb
-	sha256sums_aarch64 = 1ea1f7047b6a0ef5600a4e96f67854329758350ecc104ecbb81386a3f5b9de41
+	source_x86_64 = koreader-nightly-x86_64-2026.07.2_226_g1533bf17a.deb::https://gitlab.com/koreader/nightly-builds/-/jobs/16958327746/artifacts/raw/koreader/koreader_2026.07.2-226-g1533bf17a-1_amd64.deb
+	sha256sums_x86_64 = 5ab0f7ece71459fcc4363f739306701aaf9a918110ad01fa518138d5547154ec
+	source_aarch64 = koreader-nightly-aarch64-2026.07.2_226_g1533bf17a.deb::https://gitlab.com/koreader/nightly-builds/-/jobs/16958327747/artifacts/raw/koreader/koreader_2026.07.2-226-g1533bf17a-1_arm64.deb
+	sha256sums_aarch64 = 70d87cfc4cd1f715e2187e0b9f895e318ebf87c5db1f4a1f8284be98dcc14640
 
 pkgname = koreader-nightly-bin
