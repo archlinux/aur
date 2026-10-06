@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=sonic-pipewire
-pkgver=6.7.4
+pkgver=6.7.5
 pkgrel=1
 pkgdesc='X11-focused PipeWire components for SonicDE'
 arch=(x86_64)
@@ -26,7 +26,7 @@ provides=(kpipewire)
 conflicts=(kpipewire)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('7dada2803e10501af8b64eff16048409fc346b9883a8f58042e135341afc6558')
+sha256sums=('8cec77c3cdb7535082b54708ed038c66d998133ec10da77f2cc3de0e44867c9d')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
