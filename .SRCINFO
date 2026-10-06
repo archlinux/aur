@@ -1,7 +1,7 @@
 pkgbase = rocm-gfx110x-bin
 	pkgdesc = ROCm Core SDK - RDNA3
-	pkgver = 10.0.0
-	pkgrel = 2
+	pkgver = 10.1.0
+	pkgrel = 1
 	epoch = 0
 	url = http://www.amd.com
 	arch = x86_64
@@ -186,8 +186,9 @@ pkgbase = rocm-gfx110x-bin
 	conflicts = miopen-hip
 	conflicts = rocm-ml-libraries
 	conflicts = rocm-ml-sdk
+	noextract = therock-dist-linux-gfx110X-all-10.1.0.tar.gz
 	options = !strip
-	source = https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx110X-all-10.0.0.tar.gz
-	sha256sums = 1fdac4cfda1ff7f2d31a89737d4a21f9ce87cb857d26fa460e35f1e4537a330a
+	source = https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx110X-all-10.1.0.tar.gz
+	sha256sums = 0f5da124601786ab1b9fdbccfca83b931aae3bf7da9c604079ddb2dcfa65d717
 
 pkgname = rocm-gfx110x-bin
