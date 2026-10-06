@@ -1,7 +1,7 @@
 pkgbase = sonic-frameworks-io
 	pkgdesc = Resource and network access abstraction
-	pkgver = 6.29.0.1
-	pkgrel = 2
+	pkgver = 6.30.0
+	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-frameworks-io
 	arch = x86_64
 	groups = sonicde-frameworks
@@ -44,7 +44,7 @@ pkgbase = sonic-frameworks-io
 	optdepends = switcheroo-control: hybrid GPU support
 	provides = kio
 	conflicts = kio
-	source = sonic-frameworks-io-6.29.0.1.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-io/archive/refs/tags/6.29.0.1.tar.gz
-	sha256sums = f6d934883f73618740ea90f09bdd00211da599e648310262daf97a84ad1b6d27
+	source = sonic-frameworks-io-6.30.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-io/archive/refs/tags/6.30.0.tar.gz
+	sha256sums = 5ad46286321937b7325e5ca5fc8dc282045ce13946ff651214837efb8c535f8d
 
 pkgname = sonic-frameworks-io

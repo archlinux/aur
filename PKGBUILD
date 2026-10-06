@@ -4,8 +4,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-frameworks-io
-pkgver=6.29.0.1
-pkgrel=2
+pkgver=6.30.0
+pkgrel=1
 pkgdesc='Resource and network access abstraction'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-frameworks-io'
@@ -49,7 +49,7 @@ provides=(kio)
 conflicts=(kio)
 groups=(sonicde-frameworks)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('f6d934883f73618740ea90f09bdd00211da599e648310262daf97a84ad1b6d27')
+sha256sums=('5ad46286321937b7325e5ca5fc8dc282045ce13946ff651214837efb8c535f8d')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
