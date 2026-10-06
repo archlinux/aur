@@ -1,7 +1,7 @@
 pkgname=linux-wireless-reg-unlocked
 _pkgbase=linux
 
-_kernelpkgver=7.2.8.arch1-2
+_kernelpkgver=7.2.9.arch1-1
 
 _kernver="$(
   printf '%s\n' "${_kernelpkgver}" |
@@ -18,7 +18,7 @@ _kernelmajor="${_kernver%%.*}"
 _krel="${_kernver}-${_archrel}"
 
 pkgver="${_kernver}"
-pkgrel=2
+pkgrel=1
 
 pkgdesc="Research-only patched iwlwifi and cfg80211 modules with modified wireless regulatory behavior for Arch Linux"
 arch=('x86_64')
@@ -57,7 +57,7 @@ source=(
   'dracut-wireless-reg-unlocked.conf'
 )
 
-sha256sums=('12e8d5a973d1ad7c5a5c69882e4022b131ed715db7003fdcd760ddf8c3e51941'
+sha256sums=('b4c5dfbe51a364a6c7f03869200f88c8e1f77403539005f14b7fc6bc91b8d8ba'
             'da2ab52ccdef2b93088c9e0c56bc1c166bf748d021b529cb2af2ff6c5d9e85cc'
             '96f91b3ff8d5caafe4939cb22bb455d34d107d08e14cf3af6dbb47ef70553732'
             'e8574dead1cb1f2b3732b0daeffa5bb9d71e1cc8eee5203348bbe9169c5adbe6'
