@@ -2,12 +2,12 @@
 
 pkgname=printcraft
 pkgver=0.2.1
-pkgrel=3
+pkgrel=4
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Adobe Acrobat'
 arch=(x86_64)
-license=(MIT)
+license=(MIT Apache-2.0)
 depends=(glibc # libc.so libm.so
          libgcc)
 makedepends=(cargo)
