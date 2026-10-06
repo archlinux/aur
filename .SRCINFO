@@ -1,6 +1,6 @@
 pkgbase = aspia-relay-bin
 	pkgdesc = Remote desktop control and file transfer tool (relay, official binary)
-	pkgver = 3.0.24
+	pkgver = 3.0.25
 	pkgrel = 1
 	url = https://aspia.org/
 	install = aspia-relay.install
@@ -14,7 +14,7 @@ pkgbase = aspia-relay-bin
 	conflicts = aspia-relay
 	options = !debug
 	options = !strip
-	source_x86_64 = https://github.com/dchapyshev/aspia/releases/download/v3.0.24/aspia-relay-3.0.24-x86_64.deb
-	sha256sums_x86_64 = 22da8f4c7a9861f38371ae7b0bda3101c7cb942a77ca88674ace981af41899d7
+	source_x86_64 = https://github.com/dchapyshev/aspia/releases/download/v3.0.25/aspia-relay-3.0.25-x86_64.deb
+	sha256sums_x86_64 = df6ceab58ebba6e3ba998d81eaa2c6c3e1429e709ddbc32056690698522d99cf
 
 pkgname = aspia-relay-bin
