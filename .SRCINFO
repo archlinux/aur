@@ -1,7 +1,7 @@
 pkgbase = rocm-gfx90a-bin
 	pkgdesc = ROCm Core SDK - CDNA2
-	pkgver = 10.0.0
-	pkgrel = 3
+	pkgver = 10.1.0
+	pkgrel = 1
 	epoch = 0
 	url = http://www.amd.com
 	arch = x86_64
@@ -186,9 +186,9 @@ pkgbase = rocm-gfx90a-bin
 	conflicts = miopen-hip
 	conflicts = rocm-ml-libraries
 	conflicts = rocm-ml-sdk
-	noextract = therock-dist-linux-gfx90a-10.0.0.tar.gz
+	noextract = therock-dist-linux-gfx90a-10.1.0.tar.gz
 	options = !strip
-	source = https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx90a-10.0.0.tar.gz
-	sha256sums = 19cc76973a79622fd9d9be67101abf2c2a0a997658083e359c5b9accf10fef79
+	source = https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx90a-10.1.0.tar.gz
+	sha256sums = b2abcbab59fe20ce98b5ec176a86cc5e8293ecaa07c1c940202de64bfe5bf4cd
 
 pkgname = rocm-gfx90a-bin
