@@ -3,7 +3,7 @@
 replaces=('pepper')
 conflicts=('crown-bin')
 pkgname=crown
-pkgver=0.65.1
+pkgver=0.65.2
 pkgrel=1
 pkgdesc="A complete and cross-platform game engine designed for flexibility, performance, and fast-iterations."
 arch=(x86_64)
@@ -23,7 +23,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/crownengine/crown/archive/r
         "package-linux-x64-only.patch"
         "crown.sh"
         )
-sha256sums=('b069cd95c7455f0f94a21017f90e508723b6215760e4e82ebb8ecc2aa9166453'
+sha256sums=('3491ad2c8ce1dc2983a9c68cd62d78700cbe5f892482065c85aefd820299dac2'
             '1736b28950909295e2ccec3fee5e737e1cd4d260c9d46f03f3c8bc7b24f57638'
             'a3623e9786261ab6d15e1a07091b2117d2d9cd4d25176209a42392ba512dfe08')
 options=('!strip')
