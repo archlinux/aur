@@ -2,8 +2,8 @@
 
 pkgname='blepfx-spectra-clap-bin'
 pkgver='release_128'
-pkgrel='1'
-pkgdesc='a digital degrader'
+pkgrel='2'
+pkgdesc='a morphing engine'
 url="https://fx.amee.ee/plugin/spectra"
 license=('custom:Potion Seller Public License')
 source=("https://github.com/blepfx/dist/releases/download/${pkgver//_/-}/spectra-${CARCH}-unknown-linux-gnu.zip"
