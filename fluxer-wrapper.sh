@@ -13,17 +13,17 @@ if [ ! -s "$CONFIG" ]; then
     exit 1
   fi
 
-  # Patch
+  # Always rebuild from source
   cd "$APP_DIR/resources"
-  npx @electron/asar extract app.asar /tmp/fluxer-asar-patch
+  pnpx @electron/asar extract app.asar.original /tmp/fluxer-asar-patch
   find /tmp/fluxer-asar-patch -type f \( -name '*.js' -o -name '*.json' -o -name '*.html' \) \
-    -exec sed -i "s/web.fluxer\.app/${DOMAIN}/g; s/fluxer\.org/${DOMAIN}/g" {} +
-  npx @electron/asar pack /tmp/fluxer-asar-patch /tmp/fluxer-new.asar
+    -exec sed -i "s/web\.fluxer\.app/${DOMAIN}/g; s/fluxer\.org/${DOMAIN}/g" {} +
+  pnpx @electron/asar pack /tmp/fluxer-asar-patch /tmp/fluxer-new.asar
   mv /tmp/fluxer-new.asar app.asar
   rm -rf /tmp/fluxer-asar-patch
 
   echo "$DOMAIN" | tee "$CONFIG"
-  zenity --info --text="Done. Configured domain: $DOMAIN. Remove $CONFIG to start again."
+  zenity --info --text="Done. Configured domain: $DOMAIN. Remove the content of $CONFIG to start again."
   echo
 fi
 
