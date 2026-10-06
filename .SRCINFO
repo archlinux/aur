@@ -1,0 +1,13 @@
+pkgbase = openfootmanager-bin
+	pkgdesc = Open-source football management simulation game
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/openfootmanager/openfootmanager
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	source = Openfoot.Manager_0.2.0_amd64.deb::https://github.com/openfootmanager/openfootmanager/releases/download/v0.2.0/Openfoot.Manager_0.2.0_amd64.deb
+	sha256sums = 23584354aee549d098392315810d67e5fd7fece9f8f2ad5b1058c1e6cd2e5aad
+
+pkgname = openfootmanager-bin
