@@ -1,0 +1,43 @@
+pkgbase = misari-git
+	pkgdesc = Personal niri fork with a scrollable tiling Wayland desktop
+	pkgver = 26.4.0.v1.0.r17.gb9c5c01
+	pkgrel = 1
+	url = https://github.com/mengdehong/Misari
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = rust>=1.87
+	makedepends = clang
+	makedepends = pkgconf
+	depends = cairo
+	depends = glib2
+	depends = glibc
+	depends = libdisplay-info
+	depends = libgcc
+	depends = libinput
+	depends = libpipewire
+	depends = libxkbcommon
+	depends = libglvnd
+	depends = mesa
+	depends = pango
+	depends = pixman
+	depends = seatd
+	depends = systemd
+	depends = systemd-libs
+	depends = wayland
+	depends = xdg-desktop-portal
+	depends = xdg-desktop-portal-impl
+	optdepends = xwayland-satellite: X11 application support
+	optdepends = xdg-desktop-portal-gnome: screencasting
+	optdepends = xdg-desktop-portal-gtk: file chooser and other desktop portals
+	provides = misari=26.4.0.v1.0
+	provides = niri=26.4.0
+	provides = wayland-compositor
+	conflicts = misari
+	conflicts = niri
+	options = !debug
+	options = !lto
+	source = misari::git+https://github.com/mengdehong/Misari.git#branch=main
+	sha256sums = SKIP
+
+pkgname = misari-git
