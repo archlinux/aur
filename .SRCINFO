@@ -1,7 +1,7 @@
 pkgbase = xca-rs
 	pkgdesc = XCA (X Certificate and Key Management) rewritten in Rust with GTK4 and GOST support
-	pkgver = 0.6.0
-	pkgrel = 3
+	pkgver = 0.6.1
+	pkgrel = 1
 	url = https://github.com/RinWate/xca-rs
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -16,7 +16,7 @@ pkgbase = xca-rs
 	depends = glibc
 	depends = poppler
 	options = !lto
-	source = xca-rs-0.6.0.tar.gz::https://github.com/RinWate/xca-rs/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = afcdd300dddfed64529ffb38450c8c92b18df26aba76469170b52e64cbe629fe
+	source = xca-rs-0.6.1.tar.gz::https://github.com/RinWate/xca-rs/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = 5f8db3f4e34fc3d6ff1f0d8860598a6f70ec8995610e201e43904b59c9e84276
 
 pkgname = xca-rs

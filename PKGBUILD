@@ -4,8 +4,8 @@
 # checksum, build-test with `makepkg -si`, then refresh .SRCINFO.
 
 pkgname=xca-rs
-pkgver=0.6.0
-pkgrel=3
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="XCA (X Certificate and Key Management) rewritten in Rust with GTK4 and GOST support"
 arch=('x86_64')
 url="https://github.com/RinWate/xca-rs"
@@ -13,7 +13,7 @@ license=('GPL-2.0-or-later')
 depends=('gtk4' 'libadwaita' 'openssl' 'openssl-gost-engine' 'glib2' 'glibc' 'poppler')
 makedepends=('rust' 'gcc' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('afcdd300dddfed64529ffb38450c8c92b18df26aba76469170b52e64cbe629fe')
+sha256sums=('5f8db3f4e34fc3d6ff1f0d8860598a6f70ec8995610e201e43904b59c9e84276')
 options=(!lto)
 
 # GitHub tag tarballs extract into "<canonical-repo-name>-<version>/".
