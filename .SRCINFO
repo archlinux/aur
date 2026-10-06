@@ -1,0 +1,20 @@
+pkgbase = minimax-code
+	pkgdesc = MiniMax Code terminal AI coding agent (mcode CLI)
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://agent.minimax.cn/download
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = node-gyp
+	makedepends = npm
+	makedepends = python
+	depends = gcc-libs
+	depends = glibc
+	depends = nodejs>=22.19
+	optdepends = git: version control features
+	options = !strip
+	source = LICENSE
+	sha256sums = 9d8b53a4e5afaa1b1cae3e7e5048952cd09050722951cab6638163500e0b3579
+
+pkgname = minimax-code
