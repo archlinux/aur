@@ -1,6 +1,6 @@
 pkgbase = lich-bin
 	pkgdesc = A terminal-first ADE for the coding agents you already use
-	pkgver = 0.59.0
+	pkgver = 0.60.0
 	pkgrel = 1
 	url = https://github.com/omartelo/lich
 	arch = x86_64
@@ -30,10 +30,10 @@ pkgbase = lich-bin
 	optdepends = zenity: native folder picker
 	provides = lich
 	conflicts = lich
-	source = lich-v0.59.0-linux-amd64.tar.zst::https://github.com/omartelo/lich/releases/download/v0.59.0/lich-v0.59.0-linux-amd64.tar.zst
-	source = lich-0.59.0.desktop::https://raw.githubusercontent.com/omartelo/lich/v0.59.0/build/linux/lich.desktop
-	source = lich-0.59.0.png::https://raw.githubusercontent.com/omartelo/lich/v0.59.0/build/appicon.png
-	sha256sums = 0806c0e514a7d44889e9351202fa46ac63dd08f6c472eb26dbbc059c1773cb50
+	source = lich-v0.60.0-linux-amd64.tar.zst::https://github.com/omartelo/lich/releases/download/v0.60.0/lich-v0.60.0-linux-amd64.tar.zst
+	source = lich-0.60.0.desktop::https://raw.githubusercontent.com/omartelo/lich/v0.60.0/build/linux/lich.desktop
+	source = lich-0.60.0.png::https://raw.githubusercontent.com/omartelo/lich/v0.60.0/build/appicon.png
+	sha256sums = a479f4950fdee4857aee7200c15853d751e211a75870ee73af8cc77b1aaf4c6c
 	sha256sums = 6af34ff31490c369e1f4266b355a6a10bd0817fed0b61793ce163ac6bfa14769
 	sha256sums = 75aa775e531ad495d905a37f07e8e608f4d93e4b2ff1d4b145a764e71ac48b0a
 
