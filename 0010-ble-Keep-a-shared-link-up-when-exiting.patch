@@ -1,0 +1,218 @@
+From d47d8be65d8332dc107838b98c1d4bf208be589b Mon Sep 17 00:00:00 2001
+From: claudecode <hockinglee@gmail.com>
+Date: Tue, 6 Oct 2026 10:45:49 +0800
+Subject: [PATCH] ble: Keep a shared link up when exiting
+
+Two minicoms can share one link, e.g. on different characteristics of
+the same device. The one that made the connection dropped it on exit,
+cutting off the other.
+
+Before disconnecting, check whether another client is still subscribed
+to a characteristic of the device (Notifying or NotifyAcquired). If so,
+leave the link up and, if we made it, leave a marker in
+$XDG_RUNTIME_DIR so the last minicom using it drops it. The marker goes
+away when the link does. Links minicom did not make are still never
+dropped.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+---
+ src/ble.c | 105 +++++++++++++++++++++++++++++++++++++++++++++++-------
+ 1 file changed, 92 insertions(+), 13 deletions(-)
+
+diff --git a/src/ble.c b/src/ble.c
+index 763f0f8..ce86c8e 100644
+--- a/src/ble.c
++++ b/src/ble.c
+@@ -33,6 +33,7 @@
+ 
+ #include <errno.h>
+ #include <fcntl.h>
++#include <limits.h>
+ #include <poll.h>
+ #include <signal.h>
+ #include <stdarg.h>
+@@ -926,6 +927,79 @@ static void disconnect_dev(sd_bus *bus, const char *path)
+   sd_bus_message_unref(m);
+ }
+ 
++/*
++ * Several programs (e.g. two minicoms on different characteristics) can
++ * share one link. Is anyone else subscribed to a characteristic of dev?
++ * Our own read characteristic (skip) is left out: BlueZ may not have
++ * processed our unsubscribe yet.
++ */
++static int link_in_use(sd_bus *bus, const char *dev, const char *skip)
++{
++  sd_bus_error err = SD_BUS_ERROR_NULL;
++  struct bstore s = { 0 };
++  size_t dl = strlen(dev);
++  int used = 0;
++
++  if (store_load(bus, &s, &err) < 0) {
++    sd_bus_error_free(&err);
++    return 0;
++  }
++  for (int i = 0; i < s.n && !used; i++) {
++    struct bobj *o = &s.v[i];
++    int on = 0;
++    if (o->type != O_CHAR || strncmp(o->path, dev, dl) || o->path[dl] != '/' ||
++        (skip && !strcmp(o->path, skip)))
++      continue;
++    /* StartNotify sets Notifying, AcquireNotify sets NotifyAcquired. */
++    if ((sd_bus_get_property_trivial(bus, BLUEZ, o->path, IFACE_CHAR,
++                                     "Notifying", NULL, 'b', &on) >= 0 && on) ||
++        (sd_bus_get_property_trivial(bus, BLUEZ, o->path, IFACE_CHAR,
++                                     "NotifyAcquired", NULL, 'b', &on) >= 0 && on))
++      used = 1;
++  }
++  store_free(&s);
++  return used;
++}
++
++/*
++ * A link minicom made and handed over to another minicom when it exited
++ * first is marked with a file, so that the last one drops it.
++ */
++static void link_mark_path(char *buf, size_t sz, const char *adapter_addr,
++                           const char *addr)
++{
++  const char *dir = getenv("XDG_RUNTIME_DIR");
++  snprintf(buf, sz, "%s/minicom-ble-%s-%s", dir && *dir ? dir : "/tmp",
++           adapter_addr, addr);
++}
++
++static void link_mark_clear(const char *adapter_addr, const char *addr)
++{
++  char path[PATH_MAX];
++  link_mark_path(path, sizeof(path), adapter_addr, addr);
++  unlink(path);
++}
++
++/* We are done with the link: drop it unless someone else still uses it. */
++static void release_link(sd_bus *bus, const char *dev, const char *adapter_addr,
++                         const char *addr, int we_connected, const char *skip)
++{
++  char path[PATH_MAX];
++  link_mark_path(path, sizeof(path), adapter_addr, addr);
++  if (!we_connected && access(path, F_OK) < 0)
++    return;                  /* not ours: leave it alone */
++  if (link_in_use(bus, dev, skip)) {
++    if (we_connected) {
++      int fd = open(path, O_WRONLY | O_CREAT | O_CLOEXEC | O_NOFOLLOW, 0600);
++      if (fd >= 0)
++        close(fd);
++    }
++    return;
++  }
++  disconnect_dev(bus, dev);
++  unlink(path);
++}
++
+ /* Returns 1 connected with services resolved, 0 cancelled, -1 failed. */
+ static int connect_ui(struct ctx *c, struct target *t)
+ {
+@@ -1010,8 +1084,8 @@ static int connect_ui(struct ctx *c, struct target *t)
+   }
+   if (w)
+     mc_wclose(w, 1);
+-  if (ret != 1 && t->we_connected)
+-    disconnect_dev(c->bus, t->path);
++  if (ret != 1)
++    release_link(c->bus, t->path, c->adapter_addr, t->addr, t->we_connected, NULL);
+   return ret;
+ }
+ 
+@@ -1210,6 +1284,8 @@ struct shm {
+   volatile pid_t pid;
+   volatile int we_connected;   /* the bridge owns the link */
+   char dev[128];
++  char adapter_addr[18], addr[18];
++  char rpath[192];             /* our read characteristic, once up */
+   char msg[200];
+ };
+ 
+@@ -1402,6 +1478,7 @@ static int br_go_up(struct bridge *b)
+        b->write_nr ? "command" : "request", b->chunk, b->rpath,
+        b->nfd >= 0 ? "acquired" : "signals");
+   b->up = 1;
++  snprintf(shm->rpath, sizeof(shm->rpath), "%s", b->rpath);
+   br_state(b, BS_UP, NULL);
+   return 0;
+ }
+@@ -1459,8 +1536,10 @@ static int br_props_changed(sd_bus_message *m, void *ud, sd_bus_error *ret_error
+       if (var_basic(m, 'b', &v) < 0)
+         return 0;
+       blog(b, "Connected=%d", v);
+-      if (!v)
++      if (!v) {
++        link_mark_clear(b->adapter_addr, b->addr);
+         br_down(b, _("disconnected"));
++      }
+       else
+         b->connected_at = now_ms();
+     } else if (is_dev && !strcmp(k, "ServicesResolved")) {
+@@ -1716,8 +1795,7 @@ static void __attribute__((noreturn)) bridge_main(struct bridge *b)
+     _exit(1);
+   }
+   if (br_go_up(b) < 0) {
+-    if (b->we_connected)
+-      disconnect_dev(b->bus, b->dev);
++    release_link(b->bus, b->dev, b->adapter_addr, b->addr, b->we_connected, NULL);
+     shm->state = BS_FAILED;
+     _exit(1);
+   }
+@@ -1814,8 +1892,8 @@ static void __attribute__((noreturn)) bridge_main(struct bridge *b)
+       sd_bus_call_method(b->bus, BLUEZ, b->rpath, IFACE_CHAR, "StopNotify",
+                          NULL, NULL, NULL);
+     discovery_stop(b->bus, b->adapter, &b->discovering);
+-    if (b->we_connected)
+-      disconnect_dev(b->bus, b->dev);
++    release_link(b->bus, b->dev, b->adapter_addr, b->addr, b->we_connected,
++                 b->rpath[0] ? b->rpath : NULL);
+     sd_bus_flush_close_unref(b->bus);
+   }
+   shm->state = BS_EXITED;
+@@ -1846,6 +1924,8 @@ static int bridge_start(struct ctx *c, struct target *t, struct chr *wc,
+   shm->state = BS_STARTING;
+   shm->we_connected = t->we_connected;
+   snprintf(shm->dev, sizeof(shm->dev), "%s", t->path);
++  snprintf(shm->adapter_addr, sizeof(shm->adapter_addr), "%s", c->adapter_addr);
++  snprintf(shm->addr, sizeof(shm->addr), "%s", t->addr);
+ 
+   if ((master = posix_openpt(O_RDWR | O_NOCTTY | O_CLOEXEC)) < 0 ||
+       grantpt(master) < 0 || unlockpt(master) < 0 ||
+@@ -2039,8 +2119,7 @@ const char *ble_setup(const char *addr, const char *adapter,
+     if (!any_w || !any_r) {
+       ui_msg(_(" Error "), _("%s has no %s characteristic"), label_buf,
+              !any_w ? _("writable") : _("notifying"));
+-      if (t.we_connected)
+-        disconnect_dev(c.bus, t.path);
++      release_link(c.bus, t.path, c.adapter_addr, t.addr, t.we_connected, NULL);
+       free(v);
+       if (addr)
+         leave("");
+@@ -2048,8 +2127,7 @@ const char *ble_setup(const char *addr, const char *adapter,
+     }
+     /* With an explicit address and both UUIDs present, skip the dialog. */
+     if (!(addr && wi >= 0 && ri >= 0) && !chars_ui(label_buf, v, n, &wi, &ri)) {
+-      if (t.we_connected)
+-        disconnect_dev(c.bus, t.path);
++      release_link(c.bus, t.path, c.adapter_addr, t.addr, t.we_connected, NULL);
+       free(v);
+       if (addr)
+         quit_ui(&c);
+@@ -2088,8 +2166,9 @@ void ble_check_status(void)
+       (shm->pid && kill(shm->pid, 0) < 0 && errno == ESRCH)) {
+     /* It could not clean up after itself if it was killed. */
+     sd_bus *bus = NULL;
+-    if (st != BS_EXITED && shm->we_connected && sd_bus_open_system(&bus) >= 0) {
+-      disconnect_dev(bus, shm->dev);
++    if (st != BS_EXITED && sd_bus_open_system(&bus) >= 0) {
++      release_link(bus, shm->dev, shm->adapter_addr, shm->addr, shm->we_connected,
++                   shm->rpath[0] ? shm->rpath : NULL);
+       sd_bus_flush_close_unref(bus);
+     }
+     snprintf(buf, sizeof(buf), _("minicom: BLE serial bridge for %s terminated\n"),
+-- 
+2.55.0
+

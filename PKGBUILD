@@ -9,7 +9,7 @@
 _pkgname=minicom
 pkgname=minicom-ble
 pkgver=2.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='minicom with a BLE serial mode (GATT write/notify characteristics via BlueZ), plus UI hang fixes'
 arch=('x86_64')
 url='https://salsa.debian.org/minicom-team/minicom'
@@ -34,7 +34,8 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://salsa.debian.org/minicom-team/min
         '0006-Show-the-port-in-the-terminal-window-title.patch'
         '0007-Add-BLE-serial-mode.patch'
         '0008-Default-the-logfile-to-tmp-minicom.log.patch'
-        '0009-ble-Receive-notifications-through-AcquireNotify.patch')
+        '0009-ble-Receive-notifications-through-AcquireNotify.patch'
+        '0010-ble-Keep-a-shared-link-up-when-exiting.patch')
 sha256sums=('b296b0e5795ca143fb1ffa78f46fd294daddfccd720faf9909a842d2f70c564e'
             '4b00e97cadeb51e2cacba7114d2572dbe671b00f0f6695df96aa0ea0dab68c15'
             '329d949e938aa519948ad66c0b680d3af0fbbed8fd392c7fe4dad254fafab804'
@@ -44,7 +45,8 @@ sha256sums=('b296b0e5795ca143fb1ffa78f46fd294daddfccd720faf9909a842d2f70c564e'
             'cbc77159409ba42d5bfcae3aaefad67d7a402b2fcd0ff2b7bf000838037c5584'
             '8a83ea0d1185ba6adecab95d786d7bc1fa4c0ceeff72d3bf9d1f9108e76e0b59'
             'a945ed38bce24c1d02ed06456d26457358cccea4d5f97f1221b8a03a16fe2fad'
-            'b45ed635ac2678155ad48e3ad59ebb849b7326f9d72b06cb3413f499434cee17')
+            'b45ed635ac2678155ad48e3ad59ebb849b7326f9d72b06cb3413f499434cee17'
+            '8e6d7fd3a9dafc04c1a76f9b0c74ede8fd8ccd3db816629eb7f4c12aae332ec9')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
@@ -68,6 +70,8 @@ prepare() {
   # BLE: subscribe with AcquireNotify; with StartNotify two minicoms on
   # one characteristic each got every notification twice.
   patch -Np1 -i ../0009-ble-Receive-notifications-through-AcquireNotify.patch
+  # BLE: on exit, don't drop a link another program still uses.
+  patch -Np1 -i ../0010-ble-Keep-a-shared-link-up-when-exiting.patch
 
   # 0007 and 0008 touch configure.ac and src/Makefile.am
   autoreconf -fi
