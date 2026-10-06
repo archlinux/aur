@@ -16,7 +16,7 @@ index 86e330fc..41d3427c 100644
  native/system/test/bin/
 +apps/desktop/.desktop-build/
 diff --git a/apps/desktop/package.json b/apps/desktop/package.json
-index 3eaf57f5..238b8af5 100644
+index cd0def79..900f3329 100644
 --- a/apps/desktop/package.json
 +++ b/apps/desktop/package.json
 @@ -33,6 +33,8 @@
@@ -832,6 +832,55 @@ index 106830b5..702361f7 100644
  const descriptor = await verifyDesktopRuntime(paths.dsh, readDesktopRuntime(paths.dsh).release.version,
    resolveDesktopPackageTarget(target))
  if (windows && !values.unsigned) await verifyWindowsCode(application)
+diff --git a/apps/desktop/src/main.ts b/apps/desktop/src/main.ts
+index b4b8153b..abbca86b 100644
+--- a/apps/desktop/src/main.ts
++++ b/apps/desktop/src/main.ts
+@@ -203,6 +203,16 @@ function platformLoginUrl(authorizeUrl: string): string {
+   return url.href
+ }
+ 
++/**
++ * Resolve the icon file this process draws: the packaged resource beside the
++ * application, or the development artwork from the checkout.
++ * @returns absolute path of the icon PNG.
++ */
++function applicationIconPath(): string {
++  return app.isPackaged ? join(process.resourcesPath, 'icon.png')
++    : join(app.getAppPath(), 'resources', 'icon-windows.png')
++}
++
+ function createWindow(preload: string, show = false, primary = false): BrowserWindow {
+   const window = new BrowserWindow({
+     width: 1280,
+@@ -226,6 +236,10 @@ function createWindow(preload: string, show = false, primary = false): BrowserWi
+       visualEffectState: 'active' as const,
+       backgroundColor: '#00000000',
+     } : {}),
++    // X11 window managers read the icon from the window itself, so the taskbar and the
++    // window switcher need it here. Wayland associates the window through its application
++    // id, and macOS and Windows take the icon from the bundle and the executable.
++    ...(process.platform === 'linux' ? { icon: applicationIconPath() } : {}),
+     webPreferences: {
+       preload,
+       nodeIntegration: false,
+@@ -922,15 +936,13 @@ async function main(): Promise<void> {
+     updates.dispose()
+   })
+ 
+-  const applicationIconPath = development ? join(app.getAppPath(), 'resources', 'icon-windows.png')
+-    : join(process.resourcesPath, 'icon.png')
+   app.setAboutPanelOptions({
+     applicationName: 'DeepSeek Harness',
+     applicationVersion: app.getVersion(),
+     // The release has no separate build number; omit Electron's bundle version.
+     version: '',
+     copyright: '',
+-    iconPath: applicationIconPath,
++    iconPath: applicationIconPath(),
+   })
+   // A custom application menu replaces Electron's default menu, so macOS needs
+   // its standard menus and application hide commands declared explicitly.
 diff --git a/apps/desktop/tests/desktop-build-paths.spec.ts b/apps/desktop/tests/desktop-build-paths.spec.ts
 index a5e9faf2..67d33c7d 100644
 --- a/apps/desktop/tests/desktop-build-paths.spec.ts
@@ -930,7 +979,7 @@ index c802f668..7a93f29e 100644
      expect(() => resolveDesktopPackageTarget('mac-arm64', 'darwin', 'x64')).toThrow(/Apple Silicon/u)
      expect(() => resolveDesktopPackageTarget('mac-arm64', 'linux', 'arm64')).toThrow(/macOS/u)
 diff --git a/package.json b/package.json
-index f5ce66dc..288dc4ce 100644
+index f4970a17..8b3f261c 100644
 --- a/package.json
 +++ b/package.json
 @@ -38,6 +38,8 @@
