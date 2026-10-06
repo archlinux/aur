@@ -1,6 +1,6 @@
 pkgbase = tl-render
 	pkgdesc = tlRender is an open source library for building playback and review applications for visual effects, film, and animation.
-	pkgver = 0.24.1
+	pkgver = 0.24.3
 	pkgrel = 1
 	url = https://github.com/grizzlypeak3d/tlRender
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = tl-render
 	depends = sdl2
 	depends = subprocessh-git
 	depends = fmt
-	source = tlRender-0.24.1.tar.gz::https://github.com/grizzlypeak3d/tlRender/archive/refs/tags/0.24.1.tar.gz
+	source = tlRender-0.24.3.tar.gz::https://github.com/grizzlypeak3d/tlRender/archive/refs/tags/0.24.3.tar.gz
 	source = 0001-Export-ffmpeg-targets-correctly.patch
-	sha256sums = b82811fcc9d3de0be5c0e7433fc075c129c7b53072a3f39ff0c2ac4d6ecaf3dd
+	sha256sums = c5ddcdd9cda40e9cee546f06d6b37c7e60dec6a9261cc6b218879f119a62498f
 	sha256sums = 3d0fca023f893555f19d21367055541e2024371a950a12480dda0894c3b6a7e1
 
 pkgname = tl-render
