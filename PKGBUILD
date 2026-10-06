@@ -2,7 +2,7 @@
 
 pkgname=mboxshell-git
 _pkgname=${pkgname%%-git}
-pkgver=0.6.1.r0.gc2b3a33
+pkgver=1.0.0.r2.g4752929
 pkgrel=1
 pkgdesc="Fast terminal viewer for MBOX files of any size without loading them into memory"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
