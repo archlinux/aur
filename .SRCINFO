@@ -1,8 +1,8 @@
 pkgbase = tuack-ng-bin
 	pkgdesc = 重构后的 tuack 项目，旨在提供更加高效和轻量的出题体验。
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
-	url = https://github.com/tuack-ng/tuack-ng
+	url = https://github.com/tuackng/tuack-ng
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	depends = gcc-libs
@@ -12,7 +12,7 @@ pkgbase = tuack-ng-bin
 	provides = tuack-ng
 	conflicts = tuack-ng
 	options = !debug
-	source = https://github.com/tuack-ng/tuack-ng/releases/download/1.0.1/tuack-ng-linux-x86_64.zip
-	sha256sums = 46e5b07dfce80cad603d313ab7ff1bb94c8180c923d50b012f792c89a89db78b
+	source = https://github.com/tuackng/tuack-ng/releases/download/1.0.2/tuack-ng-linux-x86_64.zip
+	sha256sums = 8a61a99e22daa146f70a2061d616d12261ca576b27dc4f9870c8a6d760741d9f
 
 pkgname = tuack-ng-bin
