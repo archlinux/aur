@@ -1,6 +1,6 @@
 pkgbase = shiftpaper
 	pkgdesc = Parallax wallpaper daemon for Wayland with monocular depth estimation
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/CPritch/shiftpaper
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = shiftpaper
 	depends = onnxruntime
 	optdepends = onnxruntime-cuda: bake wallpapers on an NVIDIA GPU
 	options = !lto
-	source = shiftpaper-0.4.0.tar.gz::https://github.com/CPritch/shiftpaper/archive/v0.4.0.tar.gz
-	sha256sums = 5edf2123fa6cbe0ebcd00f933774aefedd03afd4cc3077b1caf82d6732409bfc
+	source = shiftpaper-0.4.1.tar.gz::https://github.com/CPritch/shiftpaper/archive/v0.4.1.tar.gz
+	sha256sums = 8a88eb33a5a28f71f56ec22ea6ce486fd43a898ce23c907218f0bcfec6ad5932
 
 pkgname = shiftpaper

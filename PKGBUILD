@@ -1,7 +1,7 @@
 # Maintainer: Charles Pritchard <charlespritchard.work@gmail.com>
 pkgname=shiftpaper
 # pkgver and sha256sums are set by the release workflow on each tag.
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Parallax wallpaper daemon for Wayland with monocular depth estimation"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 optdepends=('onnxruntime-cuda: bake wallpapers on an NVIDIA GPU')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/CPritch/shiftpaper/archive/v$pkgver.tar.gz")
-sha256sums=('5edf2123fa6cbe0ebcd00f933774aefedd03afd4cc3077b1caf82d6732409bfc')
+sha256sums=('8a88eb33a5a28f71f56ec22ea6ce486fd43a898ce23c907218f0bcfec6ad5932')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -50,4 +50,11 @@ package() {
 		"$pkgdir/usr/share/icons/hicolor/scalable/apps/shiftpaper.svg"
 	install -Dm644 assets/icon/hicolor/symbolic/apps/shiftpaper-symbolic.svg \
 		"$pkgdir/usr/share/icons/hicolor/symbolic/apps/shiftpaper-symbolic.svg"
+	install -Dm644 -t "$pkgdir/usr/share/man/man1" assets/man/*.1
+	install -Dm644 assets/completions/shiftpaper.bash \
+		"$pkgdir/usr/share/bash-completion/completions/shiftpaper"
+	install -Dm644 assets/completions/_shiftpaper \
+		"$pkgdir/usr/share/zsh/site-functions/_shiftpaper"
+	install -Dm644 assets/completions/shiftpaper.fish \
+		"$pkgdir/usr/share/fish/vendor_completions.d/shiftpaper.fish"
 }
