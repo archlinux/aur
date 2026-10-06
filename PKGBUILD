@@ -1,6 +1,6 @@
 pkgname=wanpipe
 pkgver=7.0.38
-pkgrel=9
+pkgrel=10
 pkgdesc='Sangoma WANPIPE drivers and utilities for DAHDI'
 arch=(x86_64)
 url=https://ftp.sangoma.com/linux/current_wanpipe/
@@ -22,7 +22,7 @@ source=(
 )
 sha256sums=(
   95266edd83bd8bb427f47f7a39365795936acc0d6e2e3a1e482bd015bba90fa2
-  57390f6d7991614af7671297ecc4bd062889d4f51403e7c99353658d8cc61e0f
+  4b1fabab743cd59a60f4dd8bca1a8dc36264c875ed9090515594281187cb1588
   59b6f271556eadc0a4f71454ab3ec015478cbf3b81cf0446d9bb9cba62d2e0d6
 )
 
@@ -36,7 +36,7 @@ _linuxpkgver() {
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  patch -Np5 -i "${srcdir}/arch-kernel-compat.patch"
+  patch -Np1 -i "${srcdir}/arch-kernel-compat.patch"
 }
 
 build() {

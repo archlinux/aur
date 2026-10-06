@@ -1,5 +1,5 @@
---- /tmp/opencode/wanpipe-orig/wanpipe-7.0.38/Makefile	2008-08-01 00:30:00.000000000 -0300
-+++ /tmp/opencode/wanpipe-src/wanpipe-7.0.38/Makefile	2026-05-09 13:16:25.189529253 -0300
+--- a/Makefile
++++ b/Makefile
 @@ -136,7 +136,7 @@
  		ZAP_PROT=TDM
  		PROTS=DEF-TDM
@@ -20,6 +20,34 @@
  			DAHDI_VER=-DDAHDI_$(DAHDI_MAJOR)$(DAHDI_MINOR)
  			DAHDI_CFLAGS+= $(DAHDI_VER)
  		else
+@@ -221,12 +221,12 @@
+ endif
+ 
+ ifneq (,$(wildcard $(KDIR)/include/linux/device.h))
+-KERN_CLASS_DEV_GROUPS=$(shell awk 'BEGIN { s=0 } /\*\*dev_groups;/ { s=1; exit } END { print s }' $(KDIR)/include/linux/device.h)
++KERN_CLASS_DEV_GROUPS=$(shell awk 'BEGIN { s=0 } /\*(const[ \t]+)?\*dev_groups;/ { s=1; exit } END { print s }' $(KDIR)/include/linux/device.h)
+ ifneq ($(KERN_CLASS_DEV_GROUPS),0)
+ EXTRA_CFLAGS+=-DKERN_CLASS_DEV_GROUPS=$(KERN_CLASS_DEV_GROUPS)
+ endif
+ else ifneq (,$(wildcard $(KSRC)/include/linux/device.h))
+-KERN_CLASS_DEV_GROUPS=$(shell awk 'BEGIN { s=0 } /\*\*dev_groups;/ { s=1; exit } END { print s }' $(KSRC)/include/linux/device.h)
++KERN_CLASS_DEV_GROUPS=$(shell awk 'BEGIN { s=0 } /\*(const[ \t]+)?\*dev_groups;/ { s=1; exit } END { print s }' $(KSRC)/include/linux/device.h)
+ ifneq ($(KERN_CLASS_DEV_GROUPS),0)
+ EXTRA_CFLAGS+=-DKERN_CLASS_DEV_GROUPS=$(KERN_CLASS_DEV_GROUPS)
+ endif
+@@ -237,10 +237,10 @@
+ 
+ ifeq ($(KERN_CLASS_DEV_GROUPS),0)
+ ifneq (,$(wildcard $(KDIR)/include/linux/device/bus.h))
+-KERN_CLASS_DEV_GROUPS=$(shell awk 'BEGIN { s=0 } /\*\*dev_groups;/ { s=1; exit } END { print s }' $(KDIR)/include/linux/device/bus.h)
++KERN_CLASS_DEV_GROUPS=$(shell awk 'BEGIN { s=0 } /\*(const[ \t]+)?\*dev_groups;/ { s=1; exit } END { print s }' $(KDIR)/include/linux/device/bus.h)
+ EXTRA_CFLAGS+=-DKERN_CLASS_DEV_GROUPS=$(KERN_CLASS_DEV_GROUPS)
+ else ifneq (,$(wildcard $(KSRC)/include/linux/device/bus.h))
+-KERN_CLASS_DEV_GROUPS=$(shell awk 'BEGIN { s=0 } /\*\*dev_groups;/ { s=1; exit } END { print s }' $(KSRC)/include/linux/device/bus.h)
++KERN_CLASS_DEV_GROUPS=$(shell awk 'BEGIN { s=0 } /\*(const[ \t]+)?\*dev_groups;/ { s=1; exit } END { print s }' $(KSRC)/include/linux/device/bus.h)
+ EXTRA_CFLAGS+=-DKERN_CLASS_DEV_GROUPS=$(KERN_CLASS_DEV_GROUPS)
+ else
+ KERN_CLASS_DEV_GROUPS=0
 @@ -576,7 +576,6 @@
  .PHONY: install_kmod
  install_kmod:
@@ -28,8 +56,71 @@
  	install -m 644 -D $(WAN_DIR)/wanec.${MODTYPE} 		$(INSTALLPREFIX)/$(KINSTDIR)/net/wanrouter/wanec.${MODTYPE}   
  	install -m 644 -D $(WAN_DIR)/wan_aften.${MODTYPE} 	$(INSTALLPREFIX)/$(KINSTDIR)/net/wanrouter/wan_aften.${MODTYPE}   
  	install -m 644 -D $(WAN_DIR)/sdladrv.${MODTYPE} 	$(INSTALLPREFIX)/$(KINSTDIR)/drivers/net/wan/sdladrv.${MODTYPE}
---- /tmp/opencode/wanpipe-orig/wanpipe-7.0.38/patches/kdrivers/src/net/Makefile	2008-08-01 00:30:00.000000000 -0300
-+++ /tmp/opencode/wanpipe-src/wanpipe-7.0.38/patches/kdrivers/src/net/Makefile	2026-05-09 13:13:16.878017914 -0300
+--- a/api/libsangoma/libsangoma-pvt.h
++++ b/api/libsangoma/libsangoma-pvt.h
+@@ -139,7 +139,7 @@
+ #if defined(__WINDOWS__)
+ 	OutputDebugString(buf);
+ #else
+-	printf(buf);
++	printf("%s", buf);
+ #endif
+ 	va_end(args);
+ }
+@@ -166,4 +166,3 @@
+ #endif
+ 
+ #endif	/* _LIBSNAGOMA_PVT_H */
+-
+--- a/patches/kdrivers/include/wanpipe_common.h
++++ b/patches/kdrivers/include/wanpipe_common.h
+@@ -1150,7 +1150,7 @@
+ 		}
+ 		return;
+ 	}
+-	del_timer(&wan_timer->timer_info);
++	timer_delete(&wan_timer->timer_info);
+ #elif defined(__FreeBSD__)
+ 	untimeout(wan_timer->timer_func,
+ 		  (void*)wan_timer->timer_arg, 
+--- a/patches/kdrivers/include/wanpipe_includes.h
++++ b/patches/kdrivers/include/wanpipe_includes.h
+@@ -252,9 +252,28 @@
+ #  include <linux/stddef.h>	/* offsetof, etc. */
+ #  include <linux/errno.h>	/* returns codes */
+ #  include <linux/string.h>	/* inline memset, etc */
++#  if LINUX_VERSION_CODE >= KERNEL_VERSION(7,2,0)
++/* Linux 7.2 removed strncpy(); keep its exact semantics (zero padding, no forced NUL). */
++static inline char *wp_compat_strncpy(char *dest, const char *src, size_t count)
++{
++	char *tmp = dest;
++
++	while (count) {
++		if ((*tmp = *src) != 0)
++			src++;
++		tmp++;
++		count--;
++	}
++	return dest;
++}
++#   define strncpy wp_compat_strncpy
++#  endif
+ #  include <linux/ctype.h>
+ #  include <linux/kernel.h>	/* printk()m and other usefull stuff */
+ #  include <linux/timer.h>
++#  if !defined(from_timer) && defined(timer_container_of)
++#   define from_timer(var, timer, timer_fieldname) timer_container_of(var, timer, timer_fieldname)
++#  endif
+ #  include <linux/kmod.h>
+ #  include <net/ip.h>
+ #  include <net/protocol.h>
+@@ -408,4 +427,3 @@
+ #endif
+ 
+ #endif	/* __WANPIPE_INCLUDES_H	*/
+-
+--- a/patches/kdrivers/src/net/Makefile
++++ b/patches/kdrivers/src/net/Makefile
 @@ -7,7 +7,7 @@
  
  
@@ -71,36 +162,8 @@
  
  obj-m += $(WAN_MODULES)      
 -
---- /tmp/opencode/wanpipe-orig/wanpipe-7.0.38/patches/kdrivers/include/wanpipe_common.h	2008-08-01 00:30:00.000000000 -0300
-+++ /tmp/opencode/wanpipe-src/wanpipe-7.0.38/patches/kdrivers/include/wanpipe_common.h	2026-05-09 12:03:35.076788819 -0300
-@@ -1150,7 +1150,7 @@
- 		}
- 		return;
- 	}
--	del_timer(&wan_timer->timer_info);
-+	timer_delete(&wan_timer->timer_info);
- #elif defined(__FreeBSD__)
- 	untimeout(wan_timer->timer_func,
- 		  (void*)wan_timer->timer_arg, 
---- /tmp/opencode/wanpipe-orig/wanpipe-7.0.38/patches/kdrivers/include/wanpipe_includes.h	2008-08-01 00:30:00.000000000 -0300
-+++ /tmp/opencode/wanpipe-src/wanpipe-7.0.38/patches/kdrivers/include/wanpipe_includes.h	2026-05-09 13:11:07.541609248 -0300
-@@ -255,6 +255,9 @@
- #  include <linux/ctype.h>
- #  include <linux/kernel.h>	/* printk()m and other usefull stuff */
- #  include <linux/timer.h>
-+#  if !defined(from_timer) && defined(timer_container_of)
-+#   define from_timer(var, timer, timer_fieldname) timer_container_of(var, timer, timer_fieldname)
-+#  endif
- #  include <linux/kmod.h>
- #  include <net/ip.h>
- #  include <net/protocol.h>
-@@ -408,4 +411,3 @@
- #endif
- 
- #endif	/* __WANPIPE_INCLUDES_H	*/
--
---- /tmp/opencode/wanpipe-orig/wanpipe-7.0.38/patches/kdrivers/src/net/wanpipe_cdev_linux.c	2008-08-01 00:30:00.000000000 -0300
-+++ /tmp/opencode/wanpipe-src/wanpipe-7.0.38/patches/kdrivers/src/net/wanpipe_cdev_linux.c	2026-05-09 12:04:13.224540984 -0300
+--- a/patches/kdrivers/src/net/wanpipe_cdev_linux.c
++++ b/patches/kdrivers/src/net/wanpipe_cdev_linux.c
 @@ -194,7 +194,7 @@
  		return err;
  	}
@@ -119,13 +182,14 @@
  	if (IS_ERR(wp_cdev_class)) {
  		DEBUG_ERROR("%s(): Error creating class!\n",__FUNCTION__);
  		cdev_del(&wp_cdev_dev);
-@@ -1025,4 +1025,3 @@
+@@ -1024,5 +1024,4 @@
+ EXPORT_SYMBOL(wanpipe_cdev_cfg_ctrl_create);
  EXPORT_SYMBOL(wanpipe_cdev_timer_create);
  EXPORT_SYMBOL(wanpipe_cdev_logger_create);
- 
 -
---- /tmp/opencode/wanpipe-orig/wanpipe-7.0.38/patches/kdrivers/wanec/wanec_dev.c	2008-08-01 00:30:00.000000000 -0300
-+++ /tmp/opencode/wanpipe-src/wanpipe-7.0.38/patches/kdrivers/wanec/wanec_dev.c	2026-05-09 13:13:33.660330655 -0300
+ 
+--- a/patches/kdrivers/wanec/wanec_dev.c
++++ b/patches/kdrivers/wanec/wanec_dev.c
 @@ -139,7 +139,7 @@
  
  	DEBUG_EVENT("%s: Registering Wanpipe ECDEV Device!\n",__FUNCTION__);
@@ -135,8 +199,8 @@
  #endif
  
  #ifdef WP_CONFIG_DEVFS_FS
---- /tmp/opencode/wanpipe-orig/wanpipe-7.0.38/util/Makefile	2008-08-01 00:30:00.000000000 -0300
-+++ /tmp/opencode/wanpipe-src/wanpipe-7.0.38/util/Makefile	2026-05-09 13:16:05.087154216 -0300
+--- a/util/Makefile
++++ b/util/Makefile
 @@ -23,8 +23,6 @@
  	make -C wanconfig all CC=$(CC) SYSINC=$(SYSINC) EXTRA_FLAGS="$(EXTRA_FLAGS)" ARCH=$(ARCH)
  	make -C wanec_client all CC=$(CC)  SYSINC=$(SYSINC) WANINCDIR=$(WANINCDIR) EXTRA_FLAGS="$(EXTRA_FLAGS)" ARCH=$(ARCH)
@@ -155,19 +219,3 @@
  	make -C wan_aftup install WAN_VIRTUAL=$(WAN_VIRTUAL) 
  	make -C bwm install WAN_VIRTUAL=$(WAN_VIRTUAL)
  	make -C wancfg_zaptel install WAN_VIRTUAL=$(WAN_VIRTUAL)
---- /tmp/opencode/wanpipe-orig/wanpipe-7.0.38/api/libsangoma/libsangoma-pvt.h	2008-08-01 00:30:00.000000000 -0300
-+++ /tmp/opencode/wanpipe-src/wanpipe-7.0.38/api/libsangoma/libsangoma-pvt.h	2026-05-09 13:18:03.328360761 -0300
-@@ -139,7 +139,7 @@
- #if defined(__WINDOWS__)
- 	OutputDebugString(buf);
- #else
--	printf(buf);
-+	printf("%s", buf);
- #endif
- 	va_end(args);
- }
-@@ -166,4 +166,3 @@
- #endif
- 
- #endif	/* _LIBSNAGOMA_PVT_H */
--
