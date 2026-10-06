@@ -1,0 +1,38 @@
+pkgbase = strata-engine-git
+	pkgdesc = Run Qwen3.8-Flash-Next (125B MoE) on one consumer NVIDIA GPU plus system RAM, with a local OpenAI/Anthropic-compatible API (git version)
+	pkgver = 0.1.39.r845.g6f32ec07
+	pkgrel = 1
+	url = https://github.com/Niko1221/Strata
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = python
+	depends = cuda>=13
+	depends = nvidia-utils>=580
+	depends = gcc-libs
+	depends = python
+	depends = python-numpy
+	depends = python-jinja
+	depends = python-regex
+	depends = python-yaml
+	depends = python-tqdm
+	depends = python-requests
+	depends = python-pillow
+	depends = python-psutil
+	optdepends = cmake: recompile the engine when your GPU is outside the architectures built here
+	optdepends = ninja: recompile the engine when your GPU is outside the architectures built here
+	optdepends = gcc: recompile the engine when your GPU is outside the architectures built here
+	optdepends = nodejs: run npx-based MCP servers from the web chat
+	provides = strata-engine
+	conflicts = strata-engine
+	options = !lto
+	options = !debug
+	source = Strata::git+https://github.com/Niko1221/Strata.git
+	source = llama.cpp::git+https://github.com/ggml-org/llama.cpp.git#commit=3cf03257f219afbe7334045ff7c6a06ac68c627d
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = strata-engine-git
