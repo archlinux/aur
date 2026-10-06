@@ -1,0 +1,26 @@
+pkgbase = omnigent
+	pkgdesc = Omnigent desktop client for AI agents (built from release source)
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/omnigent-ai/omnigent
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = nodejs>=22
+	makedepends = pnpm
+	depends = alsa-lib
+	depends = gtk3
+	depends = libdrm
+	depends = libxss
+	depends = libxtst
+	depends = mesa
+	depends = nss
+	depends = xdg-utils
+	options = !strip
+	source = omnigent-0.17.0.tar.gz::https://github.com/omnigent-ai/omnigent/archive/refs/tags/v0.17.0.tar.gz
+	source = omnigent-desktop
+	source = omnigent-desktop.desktop
+	sha256sums = 739c0b90554a23012ccf9facbc04ac22ac7222ea0acf4fed4d61eb9ad59d4b41
+	sha256sums = 8393e46f4aac97b93894ca4ef7068fd78ad6f809b3339576171abda089d24654
+	sha256sums = c6eac7eefe6ab74a06f452e1ab106e25e8780c7044dfc337a742b35d9ed354fe
+
+pkgname = omnigent

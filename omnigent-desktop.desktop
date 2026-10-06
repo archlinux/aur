@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Omnigent
+Comment=Collaborate with AI agents
+Exec=omnigent-desktop %U
+Terminal=false
+Type=Application
+Icon=omnigent-desktop
+StartupWMClass=Omnigent
+Categories=Development;
+MimeType=x-scheme-handler/omnigent;

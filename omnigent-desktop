@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /opt/omnigent-desktop/omnigent-desktop-electron "$@"
