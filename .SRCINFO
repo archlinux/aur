@@ -5,6 +5,7 @@ pkgbase = gitframe-bin
 	url = https://github.com/hiroaqii/gitframe
 	arch = x86_64
 	license = MIT
+	depends = git
 	provides = gitframe
 	conflicts = gitframe
 	options = !strip
