@@ -1,0 +1,17 @@
+pkgbase = gopherttype-bin
+	pkgdesc = CLI typing test game written in Go
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mkhamat/gopherttype
+	arch = x86_64
+	arch = aarch64
+	license = Unlincense
+	provides = gopherttype
+	conflicts = gopherttype
+	options = !strip
+	source_x86_64 = gopherttype-x86_64-0.1.0.tgz::https://github.com/mkhamat/gopherttype/releases/download/v0.1.0/gopherttype_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = ff3cf0c87e74850ca2cc1737b7af80d6c4cbd39846dee67ea8f5466ce2a65f68
+	source_aarch64 = gopherttype-aarch64-0.1.0.tgz::https://github.com/mkhamat/gopherttype/releases/download/v0.1.0/gopherttype_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1c381820e35d376d2171919bad77ec498ccf9e26425e44cee4f56413809a7487
+
+pkgname = gopherttype-bin

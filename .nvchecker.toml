@@ -1,0 +1,5 @@
+[gopherttype-bin]
+source = "github"
+github = "mkhamat/gopherttype"
+use_latest_release = true
+prefix = "v"
