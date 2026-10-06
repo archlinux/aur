@@ -1,6 +1,6 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
-pkgver=0.9.145
+pkgver=0.9.146
 pkgrel=1
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('rootapp')
 options=('!strip')
 
 source=("Root-${pkgver}-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage")
-sha256sums=('b006d673ea17cc61afa2fb4a904eaae9bbb7e6d68b81c61974571b0b483ac889')
+sha256sums=('21075c5c91652e839981fe5c3c9b5c703a0d11cada52ec996339ea96c02b24ff')
 
 prepare() {
     chmod +x "${srcdir}/Root-${pkgver}-x86_64.AppImage"
