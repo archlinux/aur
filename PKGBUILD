@@ -1,8 +1,8 @@
 # Maintainer: Davide Carnemolla <herbrant@protonmail.com>
 
 pkgname=jasmin-compiler-bin
-pkgver=2026.03.2
-pkgrel=2
+pkgver=2026.09.0
+pkgrel=1
 pkgdesc="Compiler for the Jasmin language for high-assurance and high-speed cryptography"
 arch=('x86_64')
 url="https://github.com/jasmin-lang/jasmin"
@@ -32,7 +32,7 @@ source=(
   "libapron_${_apron_debver}_amd64.deb::https://repo.formosa-crypto.org/debian/pool/main/a/apron/libapron_${_apron_debver}_amd64.deb"
 )
 
-sha256sums=('4835908c5f00d13390cc41959ddaaf3cd2436be795e5bf7fdab4e888c49915c3' 'c32aa0507c4afa33063bc8bb7bf64c1782684b723301ae35061736363a4ee555')
+sha256sums=('ec484fe4ee6757cc06895ce778b3e061e934c6679b8de6e802f76e63acf3ec8b' 'c32aa0507c4afa33063bc8bb7bf64c1782684b723301ae35061736363a4ee555')
 
 package() {
   cd "$srcdir"
