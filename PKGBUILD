@@ -2,8 +2,9 @@
 
 pkgname=lightcraft
 pkgver=0.2.1
-pkgrel=1
-url="https://github.com/storytold/$pkgname"
+pkgrel=2
+url="https://getartcraft.com/apps/$pkgname"
+_url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Adobe Lightroom'
 arch=(x86_64)
 license=(MIT)
@@ -11,7 +12,7 @@ depends=(glibc # libc.so libm.so
          libgcc)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
-source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
+source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
 sha256sums=('8ea97455d15e94d7b3d45aa9ef9bfacefa569c8b00e3062c3a040fa57387a9ac')
 
 _srcenv() {
