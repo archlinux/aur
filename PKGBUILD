@@ -15,5 +15,5 @@ options=(strip !debug)
 
 package() {
     mkdir -p "${pkgdir}/usr/lib/clap/"
-    mv "${srcdir}/filtrr.clap" "${pkgdir}/usr/lib/clap/crunchrr.clap"
+    mv "${srcdir}/filtrr.clap" "${pkgdir}/usr/lib/clap/filtrr.clap"
 }
