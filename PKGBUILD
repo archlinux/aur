@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=printcraft
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Adobe Acrobat'
@@ -12,7 +12,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('83ade9f41dfc9e37073c0dcfc50044cd71097369a9eb238b708fdd30c7a1c4f8')
+sha256sums=('db39eb513b0652e32f5456cb4bb0ecc2df2ff0bb62355a834d840d2ebc0cd02f')
 
 _srcenv() {
 	cd "$_archive"
