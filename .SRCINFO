@@ -1,6 +1,6 @@
 pkgbase = p2r3-convert-git
-	pkgdesc = Truly universal file converter
-	pkgver = 0.0.0.r474.g6998584
+	pkgdesc = Truly universal file converter (convert.to.it)
+	pkgver = 0.0.0.r796.g00a3535
 	pkgrel = 1
 	url = https://github.com/p2r3/convert
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = p2r3-convert-git
 	depends = pango
 	depends = systemd-libs
 	provides = p2r3-convert
-	conflicts = p2r3-convert
+	provides = convert-to-it
 	source = p2r3-convert-git::git+https://github.com/p2r3/convert
 	sha512sums = SKIP
 

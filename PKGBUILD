@@ -1,10 +1,11 @@
 # Maintainer: Elia Nitsche <nitscheelia at gmail dot com>
 
+# upstream now calls it 'convert to it'
 pkgname="p2r3-convert-git"
-_pkgname=${pkgname%-git}
-pkgver=0.0.0.r474.g6998584
+_pkgname="convert-to-it"
+pkgver=0.0.0.r796.g00a3535
 pkgrel=1
-pkgdesc="Truly universal file converter"
+pkgdesc="Truly universal file converter (convert.to.it)"
 arch=("x86_64")
 url="https://github.com/p2r3/convert"
 license=("GPL-2.0-only")
@@ -35,8 +36,7 @@ depends=(
 )
 makedepends=("git" "bun" "chromium")
 optdepends=()
-provides=(${_pkgname})
-conflicts=(${_pkgname})
+provides=(${pkgname%-git} ${_pkgname})
 source=("${pkgname}::git+${url}")
 sha512sums=("SKIP")
 
@@ -67,14 +67,13 @@ build() {
 	bun run desktop:dist:linux
 }
 
-# currently fails
-#test() {
-#	bun test
-#}
+test() {
+	bun test
+}
 
 package() {
 	cd "${pkgname}"
-	./release/Convert\ to\ it\!-0.0.0.AppImage --appimage-extract
+	./release/convert-to-it-0.0.0-linux-x86_64.AppImage --appimage-extract
 	outputDir="./squashfs-root"
 
 	install -dm755 "${pkgdir}/opt/${_pkgname}"
