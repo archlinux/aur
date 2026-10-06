@@ -1,9 +1,8 @@
-
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=filmcraft
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Adobe Premiere Pro'
@@ -44,7 +43,7 @@ package() {
 	depends+=(libasound.so
 	          libgcc_s.so)
 	cd "$_archive"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"{,-cli}
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "packaging/linux/ai.storyteller.$pkgname.desktop"
 	install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "packaging/linux/ai.storyteller.$pkgname.mime.xml"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-{APACHE,MIT}

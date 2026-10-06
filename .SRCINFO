@@ -1,7 +1,7 @@
 pkgbase = filmcraft
 	pkgdesc = vibe coded clean-room reimplementation of Adobe Premiere Pro
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getartcraft.com/apps/filmcraft
 	arch = x86_64
 	license = MIT
