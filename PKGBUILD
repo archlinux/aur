@@ -2,7 +2,7 @@
 
 _pkgname=sing-box
 pkgname="$_pkgname"-ref1nd-testing-bin
-_pkgver_testing=1.15.0-alpha.9-reF1nd # renovate: datasource=github-releases depName=reF1nd/sing-box-releases
+_pkgver_testing=1.15.0-alpha.10-reF1nd # renovate: datasource=github-releases depName=reF1nd/sing-box-releases
 pkgver="${_pkgver_testing//-/.}"
 pkgrel=2
 
@@ -31,8 +31,8 @@ sha256sums=('4da8152e6cc1b50b1eaa4ff5606510aeb6d3f6a6a5c91614d4b2c0ea9a2b1bde'
             '0b8740010bb3b2a5b65f1cc444b00127372d015f70f272ed566606949ed2b91b'
             'ebdab3b912603c44b4d76640c5db5c4bc0ca04213d7f34ccaa5e789ba40b426f'
             '0d0631619b6f680b9a80b9a8f65c7a30f2565e80279182f63c77854051c5d473')
-sha256sums_x86_64=('56bc85650ec7be6532e7119e86647ceb09c6909f054c80ebb46c195f7151e787')
-sha256sums_aarch64=('d7821dc2b90494f765c40df0c9ef623d48681152fee452410e979be9769f1b71')
+sha256sums_x86_64=('97fd2707adfa0893730c4b50b280d0d79c2f3c0bd4f2d79bfeca26812f16e68e')
+sha256sums_aarch64=('9ea10909fc9127daf84ae092e7fcbaf3f31134afd14b88af2ed6513e30f3ca3c')
 
 backup=("etc/$_pkgname/config.json")
 
