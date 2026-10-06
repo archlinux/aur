@@ -1,0 +1,39 @@
+pkgbase = misari-bin
+	pkgdesc = Personal niri fork with a scrollable tiling Wayland desktop
+	pkgver = 26.4.0.v1.0
+	pkgrel = 1
+	url = https://github.com/mengdehong/Misari
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = cairo
+	depends = glib2
+	depends = glibc
+	depends = libdisplay-info
+	depends = libgcc
+	depends = libinput
+	depends = libpipewire
+	depends = libxkbcommon
+	depends = libglvnd
+	depends = mesa
+	depends = pango
+	depends = pixman
+	depends = seatd
+	depends = systemd
+	depends = systemd-libs
+	depends = wayland
+	depends = xdg-desktop-portal
+	depends = xdg-desktop-portal-impl
+	optdepends = xwayland-satellite: X11 application support
+	optdepends = xdg-desktop-portal-gnome: screencasting
+	optdepends = xdg-desktop-portal-gtk: file chooser and other desktop portals
+	provides = misari=26.4.0.v1.0
+	provides = niri=26.4.0
+	provides = wayland-compositor
+	conflicts = misari
+	conflicts = niri
+	options = !debug
+	options = !strip
+	source = https://github.com/mengdehong/Misari/releases/download/misari-v26.4.0.v1.0/misari-26.4.0.v1.0-1-x86_64.pkg.tar.zst
+	sha256sums = c38b2adb3252c14d51d842d106f8f55df2aeedd0aed7200ba8b4212a010b450a
+
+pkgname = misari-bin
