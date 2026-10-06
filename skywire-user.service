@@ -22,7 +22,10 @@ Wants=network-online.target
 Environment="GODEBUG=madvdontneed=1"
 Type=simple
 Environment="SYSTEMDCHILD=1"
-ExecStart=/usr/bin/skywire visor -ps -q http --loglvl debug
+# No --loglvl: the level comes from log_level in the visor config,
+# which autoconfig sets from LOGLVL in /etc/skywire.conf (default info).
+# A flag here would override that and get flushed into the config.
+ExecStart=/usr/bin/skywire visor -ps -q http
 Restart=always
 RestartSec=20
 TimeoutSec=30
