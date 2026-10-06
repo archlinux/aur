@@ -1,23 +1,23 @@
 # Maintainer: Bernardo Gomes <bernardopg@users.noreply.github.com>
 pkgname=wingdrive-bin
-pkgver=2.0.0alpha6
+pkgver=2.0.0alpha7
 pkgrel=1
 pkgdesc='WingDrive desktop file manager'
 arch=('x86_64')
 url='https://github.com/bernardopg/wingdrive'
-license=('LicenseRef-FSL-1.1-ALv2' 'GPL-3.0-only')
+license=('Apache-2.0' 'GPL-3.0-only')
 depends=('glibc' 'gtk3' 'webkit2gtk-4.1' 'xdotool' 'xdg-utils' 'alsa-lib' 'libpipewire' 'jack' 'libva')
 provides=('wingdrive')
 conflicts=('wingdrive')
 options=('!strip')
-_upstream_version=2.0.0-alpha.6
-source=("WingDrive-2.0.0-alpha.6-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/WingDrive-2.0.0-alpha.6-x86_64.AppImage"
+_upstream_version=2.0.0-alpha.7
+source=("WingDrive-2.0.0-alpha.7-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/WingDrive-2.0.0-alpha.7-x86_64.AppImage"
         "LICENSE::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/LICENSE")
-sha256sums=('8ddd18ce381c10f3e8f5c72dacd16260d8a7ccacd4ac83547ce1b974adb86577' '24e941b64ab9f59b5a7ca1bafb27bd25e550d7d9461c5890482443f5b19b50b8')
+sha256sums=('4569f2da5ec552f3b12f5964cbf79cb4a943f47cc79d300e1ac949dc9950be49' '57b9dfbad7aaae518f06685835124ca850c722aceef664feaf6a05144b0e7ae8')
 
 prepare() {
-  chmod +x "WingDrive-2.0.0-alpha.6-x86_64.AppImage"
-  "./WingDrive-2.0.0-alpha.6-x86_64.AppImage" --appimage-extract > /dev/null
+  chmod +x "WingDrive-2.0.0-alpha.7-x86_64.AppImage"
+  "./WingDrive-2.0.0-alpha.7-x86_64.AppImage" --appimage-extract > /dev/null
   find squashfs-root -type d -exec chmod 755 {} +
 }
 
