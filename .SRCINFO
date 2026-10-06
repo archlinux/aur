@@ -1,0 +1,25 @@
+pkgbase = aulos-bin
+	pkgdesc = A modern music player for the COSMIC desktop (binary release)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/M0Rf30/aulos
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = alsa-lib
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libxkbcommon
+	depends = wayland
+	optdepends = vulkan-icd-loader: GPU accelerated rendering
+	provides = aulos
+	conflicts = aulos
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/M0Rf30/aulos/releases/download/0.1.0/aulos-0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 81847701a353dd4189fbba06976d335e8d844090d80a9f3f39b57461a6832b32
+	source_aarch64 = https://github.com/M0Rf30/aulos/releases/download/0.1.0/aulos-0.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 78b487e69f8a320da45fd9fddd6c2fca79e22c41924fdbea97cd27ba2b2f30d8
+
+pkgname = aulos-bin
