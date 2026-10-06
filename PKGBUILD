@@ -1,7 +1,7 @@
 # Maintainer: Dustin Pilgrim <dustin.pilgrim1997@gmail.com>
 
 pkgname=halley
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Spatial Wayland compositor built around infinite workspace navigation"
 arch=('x86_64')
@@ -36,7 +36,7 @@ optdepends=(
 )
 options=('!debug' '!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/saltnpepper97/halley/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b35f12742dabb31e4ff6d8ecd5098e46f834b6f20a69157b26149a8a790fd89e')
+sha256sums=('70c0b5ba02a4e83a8ac22e4e910c5b516045ed407c4034721e987b5c324f1d17')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -46,7 +46,7 @@ build() {
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
-  cargo test --release --locked -p halley-cli --no-fail-fast || true
+  cargo test --release --locked -p halley-cli --no-fail-fast
 }
 
 package() {
@@ -66,6 +66,9 @@ package() {
 
   install -Dm644 "packaging/systemd-user/halley.service" \
     "$pkgdir/usr/lib/systemd/user/halley.service"
+
+  install -Dm644 "packaging/systemd-user/halley-direct-session.target" \
+    "$pkgdir/usr/lib/systemd/user/halley-direct-session.target"
 
   install -Dm644 "packaging/systemd-user/halley-shutdown.target" \
     "$pkgdir/usr/lib/systemd/user/halley-shutdown.target"
