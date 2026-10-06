@@ -1,5 +1,7 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
+# Source: https://github.com/jmelahman/pkgbuilds
+
 pkgname=tinyfeed
 pkgver=1.5.0
 pkgrel=3
