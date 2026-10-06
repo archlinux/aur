@@ -2,8 +2,9 @@
 
 pkgname=effectcraft
 pkgver=0.3.1
-pkgrel=1
-url="https://github.com/storytold/$pkgname"
+pkgrel=2
+url="https://getartcraft.com/apps/$pkgname"
+_url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded compositor in the spirit of After Effects'
 arch=(x86_64)
 license=(MIT)
@@ -12,7 +13,7 @@ depends=(alsa-lib
          libgcc)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
-source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
+source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
 sha256sums=('fb16a4a35e60c18ed817128d9515054d0362a7bde547f6be217ffe27181db89f')
 
 _srcenv() {
