@@ -1,34 +1,32 @@
 # Maintainer: Dustin Pilgrim <dustin.pilgrim1997@gmail.com>
 #
-# This package tracks the `halley-lift` command-palette binary only, sourced from
-# the Halley monorepo via Lift-specific release tags (`halley-lift-v$pkgver`).
-# It is intentionally decoupled from the main Halley compositor release tags
-# (`v*`), so installing/updating this package will NOT pull or reinstall the
-# compositor. The package only changes when you bump `pkgver`/`pkgrel` here.
+# Standalone Lift release; versioned independently of the Halley compositor.
 
 pkgname=halley-lift
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Search and action launcher for the Halley Wayland compositor"
 arch=('x86_64')
-url="https://github.com/saltnpepper97/halley"
+url="https://github.com/saltnpepper97/halley-lift"
 license=('GPL-3.0-only')
-depends=('wayland' 'libxkbcommon')
+depends=('wayland' 'libxkbcommon' 'fontconfig')
 makedepends=('cargo' 'rust' 'pkgconf')
 optdepends=('halley: the Halley compositor this launcher controls via IPC')
 options=('!debug')
-# The Lift release tag inside the Halley repo. Bump together with pkgver.
-_tag="halley-lift-v$pkgver"
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('87de318457e7dce30180795207a56d634c1dd8e70e1c0391697c5b0329a85fd5')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('11108c58c715d468c3a9ba67c9b929b9efa4069f12a3ddb7d1594590afa6b219')
 
-# GitHub tag archives extract to "<repo>-<tag>" -> "halley-halley-lift-v$pkgver"
-_srcdir="halley-$_tag"
+_srcdir="$pkgname-$pkgver"
 
 build() {
   cd "$srcdir/$_srcdir"
   export CARGO_TARGET_DIR=target
   cargo build --release --locked -p halley-lift
+}
+
+check() {
+  cd "$srcdir/$_srcdir"
+  cargo test --release --locked
 }
 
 package() {
@@ -37,7 +35,7 @@ package() {
   install -Dm755 "target/release/halley-lift" \
     "$pkgdir/usr/bin/halley-lift"
 
-  install -Dm644 "halley-lift/README.md" \
+  install -Dm644 "README.md" \
     "$pkgdir/usr/share/doc/$pkgname/README.md"
 
   install -Dm644 "examples/lift.rune" \
