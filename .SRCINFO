@@ -1,13 +1,13 @@
 pkgbase = blepfx-destruqtor-clap-bin
 	pkgdesc = companding distortion/saturation/exciter plugin.
-	pkgver = release_67
+	pkgver = release_128
 	pkgrel = 1
 	url = https://fx.amee.ee/plugin/destruqtor
 	arch = x86_64
 	license = custom:Potion Seller Public License
 	options = strip
 	options = !debug
-	source = https://github.com/blepfx/dist/releases/download/release-67/destruqtor-x86_64-unknown-linux-gnu.zip
+	source = https://github.com/blepfx/dist/releases/download/release-128/destruqtor-x86_64-unknown-linux-gnu.zip
 	source = LICENSE::https://raw.githubusercontent.com/blepfx/dist/refs/heads/main/LICENSE.txt
 	sha256sums = e4c7a1ff6191aaf36bc5a243444108076639628114068291ff2d4b22086efc8a
 	sha256sums = 1cba06d144eb15023d17c4f41ff04ec404bb19550cec408f72373effdb6463ed
