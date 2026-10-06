@@ -5,7 +5,7 @@
 #   Additionally, a lot of things ends up directly linked against .so files in /opt/kytyps5/plugins/
 
 pkgname=kytyps5-git
-pkgver=2026.09.20.r0.ba55ba5d
+pkgver=2026.10.05.r0.cdb64bfd
 pkgrel=1
 pkgdesc="PlayStation 5 emulator for Windows, Linux and macOS"
 arch=("x86_64")
@@ -21,6 +21,7 @@ depends=(
 	"libheif"
 	"libmng"
 	"libraw"
+	"libxss"
 	"jasper"
 	"layer-shell-qt"
 	"openexr"
