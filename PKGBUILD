@@ -3,8 +3,8 @@
 # Release notes https://rocm.docs.amd.com/en/latest/about/release-notes.html
 pkgname=rocm-gfx103x-bin
 pkgdesc="ROCm Core SDK - RDNA2"
-pkgver=10.0.0
-pkgrel=2
+pkgver=10.1.0
+pkgrel=1
 epoch=0
 arch=('x86_64')
 url='http://www.amd.com'
@@ -21,18 +21,19 @@ conflicts=('opencl-amd' 'opencl-amd-dev' 'rocm-bin' 'rocm-gfx101x-bin' 'rocm-gfx
 'rocm-ml-libraries' 'rocm-ml-sdk')
 optdepends=('clinfo')
 options=('!strip')
+noextract=("therock-dist-linux-gfx103X-all-10.1.0.tar.gz")
 
 source=(
-"https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx103X-all-10.0.0.tar.gz"
+"https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx103X-all-10.1.0.tar.gz"
 )
 
 sha256sums=(
-"1913cf553193a5642bc0894807e68dd206724b377b779101add8e62844c2e20c"
+"9fcf1764468bc75d2497b0b09165fef6f3e0bc01aec1fc76af7c8afd8f954d1e"
 )
 
 prepare() {
     mkdir -p "${srcdir}/opt/rocm/core"
-    bsdtar xf therock-dist-linux-gfx103X-all-10.0.0.tar.gz -C ${srcdir}/opt/rocm/core
+    bsdtar xf therock-dist-linux-gfx103X-all-10.1.0.tar.gz -C ${srcdir}/opt/rocm/core
 }
 
 package() {
