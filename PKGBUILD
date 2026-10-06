@@ -1,5 +1,6 @@
 # Maintainer: Roald Clark <roaldclark@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
+# Source: https://github.com/jmelahman/pkgbuilds
 
 pkgname=python-dict2xml
 _pkgname=${pkgname#python-}
