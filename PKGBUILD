@@ -1,6 +1,6 @@
 # Maintainer: ChTBoner
 pkgname=qusb2snes-git
-pkgver=r613.b88d1bb
+pkgver=r614.6cfbd35
 pkgrel=1
 pkgdesc="A Qt based webserver for usb2snes"
 license=("GPL3")
