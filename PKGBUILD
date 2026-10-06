@@ -19,7 +19,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine-src-5.8
 pkgver=5.8.3
-pkgrel=1
+pkgrel=2
 _uetag="${pkgver}-release"
 _ueminor="5.8"
 _ueminor_us="5_8"
@@ -597,8 +597,9 @@ package() {
   ## into its own install tree at runtime (DDC, config and Saved data go to the
   ## user's home / project dirs). World-writable /opt would let any local user
   ## replace engine binaries another user then executes — a local privesc.
+  ## EXCEPTION: generated-artifact locations are made user-writable below (see
+  ## the "UBT assumes the engine tree is USER-WRITABLE" comment).
   install -dm755 "${pkgdir}/${UE_INSTALL_DIR}/Engine"
-
   # Ship ONLY the Installed Build (the redistributable engine produced by
   # "Make Installed Build Linux"). It already contains the headers and static
   # libs needed to compile C++ projects, so we deliberately do NOT also rsync
@@ -609,6 +610,35 @@ package() {
     # Can never be too careful with recursive rm...
     rm -r "${srcdir}/${pkgname}/LocalBuilds"
   fi
+
+  # UBT assumes the engine tree is USER-WRITABLE — Epic's launcher installs are
+  # per-user writable dirs, and UBT writes per-user generated state into the
+  # tree during game-only workflows. Its design makes this unbounded:
+  #   - RulesCompiler sets every engine plugin's DefaultOutputBaseDir to the
+  #     plugin's own directory, so -projectfiles writes intellisense/PCH data
+  #     into up to ~900 <plugin>/Intermediate trees, creating them where
+  #     missing (e.g. Experimental/HttpInsights ships none).
+  #   - ProjectFileGenerator writes PrimaryProjectName.txt/PrimaryProjectPath.txt
+  #     into Engine/Intermediate/ProjectFiles (read back by nobody — write-only
+  #     bookkeeping), "<name>.ubtplugin.csproj.props" next to every .csproj,
+  #     and rules-assembly caches under Intermediate/Build.
+  # So instead of whitelisting individual directories (which can never converge),
+  # grant write access to everything that is GENERATED ARTIFACT SURFACE and keep
+  # everything that EXECUTES root-owned:
+  #   - all directories outside Engine/Binaries: writable (UBT creates new files)
+  #   - all non-executable files outside Engine/Binaries: writable (UBT
+  #     overwrites generated ones, e.g. .csproj.props)
+  #   - Engine/Binaries and every file with the owner-exec bit: untouched,
+  #     root-owned 755 — a local user can never replace an executable another
+  #     user then runs, which is the privesc the original 755 policy guards
+  #     against. Poisoning shared build artifacts between users on a multi-user
+  #     box remains possible; Epic's own model assumes a per-user engine.
+  # Pacman records these perms, so they survive upgrades; runtime-created
+  # files/dirs are untracked and inherit the recorded dir perms.
+  find "${pkgdir}/${UE_INSTALL_DIR}/Engine" -type d -name Binaries -prune \
+    -o -type d -exec chmod a+rwX '{}' +
+  find "${pkgdir}/${UE_INSTALL_DIR}/Engine" -type d -name Binaries -prune \
+    -o -type f ! -perm -0100 -exec chmod a+rw '{}' +
 
   # Ensure InstalledBuild.txt is present so UBT treats this as an installed engine,
   # preventing the "unique build environment" error when building projects.
