@@ -1,0 +1,14 @@
+pkgbase = tsuzuri-bin
+	pkgdesc = Block-based notebook for the terminal. Plain Markdown files, Vim editing, live preview, boards, calendars and 96 themes
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/jaisuriya-11/tsuzuri
+	arch = x86_64
+	license = MIT
+	provides = tsuzuri
+	conflicts = tsuzuri
+	options = !strip
+	source_x86_64 = tsuzuri-x86_64-0.2.0.tgz::https://github.com/jaisuriya-11/tsuzuri/releases/download/v0.2.0/tsuzuri-linux.tar.gz
+	sha256sums_x86_64 = 619069055015f2005f72c8ca02a334c607ccac795259352eb19527f38e9fb89d
+
+pkgname = tsuzuri-bin

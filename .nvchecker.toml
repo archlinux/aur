@@ -1,0 +1,5 @@
+[tsuzuri-bin]
+source = "github"
+github = "jaisuriya-11/tsuzuri"
+use_latest_release = true
+prefix = "v"
