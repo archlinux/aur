@@ -1,0 +1,8 @@
+#!/bin/sh
+# Isolate the vendor Qt stack to this process and its children.
+appdir=/opt/ctg/CtyunClouddeskPublic
+export LD_LIBRARY_PATH="$appdir/lib"
+export QT_PLUGIN_PATH="$appdir/plugins"
+export QML2_IMPORT_PATH="$appdir/qml"
+export QT_QPA_PLATFORM=xcb
+exec "$appdir/clouddesktop-qml" "$@"
