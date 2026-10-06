@@ -2,7 +2,7 @@
 
 pkgname=pomtex-bin
 _pkgname=pomtex
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="On-demand LaTeX: a portable TeX kernel that installs CTAN packages only when a document needs them (static binary)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 options=('!debug')
-sha256sums=('893dc9198cc93497c44701ed21c71319f8ca415021bd84467b25b84ac5312aeb')
+sha256sums=('17164430b4c439f05f30d6aa779b201a25fd66846b7ffc00dbf27ea89fe0c69b')
 
 package() {
   cd "$_pkgname-$pkgver-linux-x86_64"
