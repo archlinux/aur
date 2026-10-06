@@ -3,8 +3,8 @@
 # Release notes https://rocm.docs.amd.com/en/latest/about/release-notes.html
 pkgname=rocm-bin
 pkgdesc="ROCm Core SDK - Multi Arch"
-pkgver=10.0.0
-pkgrel=2
+pkgver=10.1.0
+pkgrel=1
 epoch=0
 arch=('x86_64')
 url='https://www.amd.com'
@@ -20,18 +20,19 @@ conflicts=('opencl-amd' 'opencl-amd-dev' 'rocm-gfx101x-bin' 'rocm-gfx103x-bin' '
 'rocm-ml-libraries' 'rocm-ml-sdk')
 optdepends=('clinfo')
 options=('!strip')
+noextract=("therock-dist-linux-multiarch-10.1.0.tar.gz")
 
 source=(
-"https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-multiarch-10.0.0.tar.gz"
+"https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-multiarch-10.1.0.tar.gz"
 )
 
 sha256sums=(
-"1c5e807875d26a2470ecc7323daa5b5b9009208a55c3290ac255a909cde15fc6"
+"a95c72f0052168f2262365dff71c2259331721ad0a65da7957dc7d96ccb77021"
 )
 
 prepare() {
     mkdir -p "${srcdir}/opt/rocm/core"
-    bsdtar xf therock-dist-linux-multiarch-10.0.0.tar.gz -C ${srcdir}/opt/rocm/core
+    bsdtar xf therock-dist-linux-multiarch-10.1.0.tar.gz -C ${srcdir}/opt/rocm/core
 }
 
 package() {
