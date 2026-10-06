@@ -2,7 +2,7 @@
 
 pkgname='blepfx-filtrr-clap-bin'
 pkgver='release_128'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='a digital degrader'
 url="https://fx.amee.ee/plugin/filtrr"
 license=('custom:Potion Seller Public License')

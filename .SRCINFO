@@ -1,7 +1,7 @@
 pkgbase = blepfx-filtrr-clap-bin
 	pkgdesc = a digital degrader
 	pkgver = release_128
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fx.amee.ee/plugin/filtrr
 	arch = x86_64
 	license = custom:Potion Seller Public License
