@@ -1,5 +1,7 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
+# Source: https://github.com/jmelahman/pkgbuilds
+
 pkgname=dockerfilegraph
 pkgver=0.21.0
 pkgrel=3
