@@ -1,7 +1,7 @@
 pkgbase = gsl-shell-bin
 	pkgdesc = GNU Scientific Library shell based on LuaJIT2
 	pkgver = 2.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://franko.github.io/gsl-shell/
 	arch = x86_64
 	license = GPL-3.0-only
