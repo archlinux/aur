@@ -1,0 +1,22 @@
+pkgbase = stable-diffusion.cpp-rocm-bin
+	pkgdesc = stable-diffusion.cpp upstream Linux x86_64 prebuilt binaries with the ROCm backend
+	pkgver = master_929_3f8527a
+	pkgrel = 1
+	url = https://github.com/leejet/stable-diffusion.cpp
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = hip-runtime-amd
+	depends = hipblas
+	depends = rocblas
+	provides = stable-diffusion.cpp
+	conflicts = stable-diffusion.cpp
+	conflicts = stable-diffusion.cpp-git
+	conflicts = stable-diffusion.cpp-vulkan-bin
+	options = !strip
+	options = !debug
+	source = stable-diffusion.cpp-rocm-bin-master_929_3f8527a.zip::https://github.com/leejet/stable-diffusion.cpp/releases/download/master-929-3f8527a/sd-master-3f8527a-bin-Linux-Ubuntu-24.04-x86_64-rocm-7.14.0.zip
+	sha256sums = b4877986cc25cc04decc073874eed5ea411fc0bb19f5338f0ea3511a8e8b1c58
+
+pkgname = stable-diffusion.cpp-rocm-bin
