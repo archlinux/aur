@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /opt/omnigent-cli/bin/python -m omnigent "$@"

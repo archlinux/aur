@@ -1,0 +1,9 @@
+Omnigent is licensed under Apache-2.0; see LICENSE and NOTICE.
+
+This package contains separately licensed Python dependencies. Their original
+license files, notices and metadata are retained under:
+  /opt/omnigent-cli/lib/python*/site-packages/
+Each distribution's *.dist-info directory identifies its license and, where
+provided by upstream, contains license texts under licenses/ or LICENSE*.
+Vendored native-library license files are retained alongside their libraries.
+Exact versions and source hashes are listed in requirements.txt and PKGBUILD.
