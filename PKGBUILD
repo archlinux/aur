@@ -1,13 +1,14 @@
 # Maintainer: antiquete <antiquete@proton.me>
 
 pkgname=opencode-sandbox-git
-pkgver=1.6.2
+pkgver=1.7.0
 pkgrel=1
-pkgdesc="Run OpenCode inside an isolated Docker sandbox (git master)"
+pkgdesc="Run OpenCode inside an isolated container (git master)"
 arch=("any")
 url="https://github.com/Antiquete/opencode-sandbox"
 license=("GPL-3.0-or-later")
-depends=("bash" "docker")
+depends=("bash")
+optdepends=("docker: Docker runtime" "podman: Podman runtime")
 makedepends=("git" "make" "gcc")
 source=("opencode-sandbox::git+https://github.com/Antiquete/opencode-sandbox.git")
 sha256sums=("SKIP")
