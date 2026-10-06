@@ -5,7 +5,7 @@
 # Contributor: hexchain <i@hexchain.org>
 
 pkgname=mercurygram-desktop-git
-pkgver=v7.2.10.1.beta.r0.gb2f6c20
+pkgver=r26530.3d6b68f
 pkgrel=1
 pkgdesc='Privacy-focused Telegram Desktop fork'
 arch=('x86_64')
@@ -88,7 +88,10 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = mercurygram-desktop-git
 	pkgdesc = Privacy-focused Telegram Desktop fork
-	pkgver = v7.2.10.1.beta.r0.gb2f6c20
+	pkgver = r26530.3d6b68f
 	pkgrel = 1
 	url = https://mercurygram.org/
 	arch = x86_64
