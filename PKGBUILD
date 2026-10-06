@@ -40,7 +40,7 @@ source=(
   "git+${url}.git#tag=v${pkgver}"
   "${pkgname}.desktop"
 )
-sha256sums=('e829b05067effd452832d132083b5ab48d97510286739445cb9b55f462bc34bd'
+sha256sums=('24651518b305f72f743c00032c6c0316f64adc7a56f03ff02223dd9e5f79a4db'
             '2012d68d4a1a7672497eaad7db0d398356e230e588344038d7151d4eeee9d3f6')
 
 prepare() {
