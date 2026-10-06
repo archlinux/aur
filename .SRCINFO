@@ -1,11 +1,13 @@
 pkgbase = mmsimpulse-git
 	pkgdesc = A Wayland session of KWin plus the illogical-impulse shell — no desktop environment
-	pkgver = r131.7c920d6
+	pkgver = r132.efbb53d
 	pkgrel = 1
 	url = https://github.com/mahirsn/mmsimpulse
-	arch = any
+	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
 	depends = kwin
 	depends = kglobalacceld
 	depends = quickshell

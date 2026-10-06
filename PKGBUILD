@@ -1,9 +1,11 @@
 # Maintainer: mahirsn <mahirsuna72@gmail.com>
 pkgname=mmsimpulse-git
-pkgver=r131.7c920d6
+pkgver=r132.efbb53d
 pkgrel=1
 pkgdesc="A Wayland session of KWin plus the illogical-impulse shell — no desktop environment"
-arch=('any')
+# Not 'any': the workspace-sharing KWin effect is compiled, against the
+# installed KWin, so this package has to be rebuilt when KWin is updated.
+arch=('x86_64')
 url="https://github.com/mahirsn/mmsimpulse"
 license=('GPL-3.0-or-later')
 # Any KWin 6 satisfies this: the stock `kwin` package, or a fork such as
@@ -50,7 +52,7 @@ optdepends=(
   'ydotool: cursor warping, which KWin exposes no D-Bus call for'
   'supergfxctl: the AMD/NVIDIA display switch in the bar, on ASUS laptops with a GPU MUX'
 )
-makedepends=('git')
+makedepends=('git' 'cmake' 'extra-cmake-modules')
 provides=('mmsimpulse')
 conflicts=('mmsimpulse')
 source=("$pkgname::git+$url.git")
@@ -61,7 +63,14 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+  cmake -S "$srcdir/$pkgname/kwin-effect" -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
+}
+
 package() {
+  DESTDIR="$pkgdir" cmake --install build
+
   cd "$srcdir/$pkgname"
 
   # The session itself is package-owned, so a normal install needs no sudo
