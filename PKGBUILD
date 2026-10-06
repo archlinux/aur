@@ -30,7 +30,5 @@ package() {
 	install -d "$pkgdir/usr/share/$pkgname/shell"
 	install -Dm644 shell/clipy.bash "$pkgdir/usr/share/$pkgname/shell/clipy.bash"
 	install -Dm644 shell/clipy.zsh "$pkgdir/usr/share/$pkgname/shell/clipy.zsh"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
