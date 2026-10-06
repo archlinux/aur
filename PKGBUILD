@@ -6,11 +6,10 @@ pkgver=2026.06.27
 pkgrel=1
 pkgdesc='CUPS filter for TSPL printers '
 arch=('x86_64' 'aarch64')
-url='https://github.com/ogarcia/rucio'
+url='https://github.com/ogarcia/rastertotspl'
 license=('MPL-2.0')
 depends=('cups')
 makedepends=('cargo' 'clang' 'git' 'rust')
-#options=('!lto')
 source=("${pkgname}-${pkgver}::git+https://github.com/ogarcia/rastertotspl.git#commit=${_commit}")
 b2sums=('7c78d5ad7a3589811508d1bc633b779f44114007e289c67a04054677c8c0c5dfd0319b2e0e145824e3d68e1754032bff879970460bed5b30e6c7bff74d9d4a68')
 
