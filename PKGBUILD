@@ -6,7 +6,7 @@
 pkgname=bibletime-git
 _gitname="bibletime"
 pkgver=3.2.0.r25
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="A Bible study application based on the Sword library and Qt toolkit."
 arch=('x86_64' 'i686')
@@ -15,9 +15,11 @@ license=('GPL-2.0-only')
 depends=(
   'sword>=1.8.1'
   'clucene>=2.3.3.4'
+  'hicolor-icon-theme'
+  'qt6-base'
+  'qt6-declarative'
   'qt6-speech'
-  'qt6-webengine>=6.7'
-  'qt6-svg>=6.7'
+  'qt6-svg'
 )
 makedepends=(
   'cmake>=3.25'
@@ -26,7 +28,7 @@ makedepends=(
   'fop'
   'git'
   'po4a'
-  'qt6-tools>=6.7'
+  'qt6-tools'
 )
 provides=('bibletime')
 conflicts=('bibletime')
