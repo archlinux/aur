@@ -1,9 +1,10 @@
 pkgbase = pomtex
 	pkgdesc = On-demand LaTeX: a portable TeX kernel that installs CTAN packages only when a document needs them
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/Huseynteymurzade28/pomtex
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = crystal
 	depends = gc
@@ -11,7 +12,7 @@ pkgbase = pomtex
 	depends = openssl
 	depends = zlib
 	depends = xz
-	source = pomtex-0.3.1.tar.gz::https://github.com/Huseynteymurzade28/pomtex/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = ea548fd9ae3e7e29e1d37acc605ea9d77b0118092b65742968afb37594011df7
+	source = pomtex-0.3.2.tar.gz::https://github.com/Huseynteymurzade28/pomtex/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = 89e17b70290dc859d45dcb3324cb3f870876f4c54ead174d5730f58cc2b62f0d
 
 pkgname = pomtex
