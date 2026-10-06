@@ -1,0 +1,19 @@
+pkgbase = dncdbg-git
+	pkgdesc = Managed-code debugger for .NET applications with DAP support
+	pkgver = 1.2.0.r262.gdf46c2c
+	pkgrel = 1
+	url = https://github.com/viewizard/dncdbg
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = clang
+	makedepends = llvm
+	depends = glibc
+	depends = gcc-libs
+	provides = dncdbg
+	conflicts = dncdbg
+	source = git+https://github.com/viewizard/dncdbg.git
+	sha256sums = SKIP
+
+pkgname = dncdbg-git
