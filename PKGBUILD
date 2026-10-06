@@ -1,7 +1,7 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=mdns-tui-browser
-pkgver=1.37.3
+pkgver=1.38.0
 pkgrel=1
 pkgdesc="A terminal-based mDNS service browser"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('cargo' 'cargo-auditable' 'git' 'rust')
 options=('!strip' '!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fcbf565658e28dcdf126433b18f6b118f4022acebe8904f1d8abd55a51b717fd')
+sha256sums=('706192fddc3da180e46551abcd5325bdeb01f145a566cb83caff5a0d5614e1be')
 _builddir="$pkgname-$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
@@ -30,4 +30,6 @@ package() {
     install -Dm644 "${srcdir}/${_builddir}"/README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
     install -Dm644 "${srcdir}/${_builddir}"/CHANGELOG.md "$pkgdir"/usr/share/doc/$pkgname/CHANGELOG.md
     install -Dm644 "${srcdir}/${_builddir}"/docs/mdns-tui-browser.1 "$pkgdir"/usr/share/man/man1/mdns-tui-browser.1
+    install -Dm644 "${srcdir}/${_builddir}"/packaging/linux/mdns-tui-browser.desktop "$pkgdir"/usr/share/applications/mdns-tui-browser.desktop
+    install -Dm644 "${srcdir}/${_builddir}"/packaging/linux/mdns-tui-browser.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/mdns-tui-browser.svg
 }
