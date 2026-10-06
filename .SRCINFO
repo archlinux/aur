@@ -18,6 +18,6 @@ pkgbase = kerminal-bin
 	provides = kerminal
 	conflicts = kerminal
 	source_x86_64 = kerminal-x86_64-2.6.6.deb::https://github.com/klpod221/kerminal/releases/download/v2.6.6/Kerminal_2.6.6_amd64.deb
-	sha256sums_x86_64 = 739ab549e3503246e667d96cee0994104cfc408030129f667b2110dc032b78cb
+	sha256sums_x86_64 = baba9cfae7c7ada07c64f11d54b6a37a37fd65dddbaa2ccd8fbf61a0417f9548
 
 pkgname = kerminal-bin
