@@ -1,5 +1,7 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
+# Source: https://github.com/jmelahman/pkgbuilds
+
 pkgname=faas-cli
 pkgver=0.18.16
 pkgrel=1
