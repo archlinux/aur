@@ -3,7 +3,7 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=sonic-qt-theme-bridge
-pkgver=6.7.4
+pkgver=6.7.5
 pkgrel=1
 pkgdesc='Qt Platform Theme integration plugins for the SonicDE workspaces'
 arch=(x86_64)
@@ -36,7 +36,7 @@ provides=(plasma-integration)
 conflicts=(plasma-integration)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d2eaf97c667f83f9a62417c970533b265749b1a3b9e6541a4e2136ef640bb984')
+sha256sums=('c18495b34791dcab807cc4e64b3001f92e2bfeafe3ad01ed15ea14edacbebefe')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
