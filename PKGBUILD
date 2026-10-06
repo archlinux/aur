@@ -1,7 +1,7 @@
 # Maintainer: theorangeguo
 # Packaging Repo: https://github.com/theorangeguo/aur-packages/tree/main/packages/antigravity-tools-bin
 pkgname=antigravity-tools-bin
-pkgver=4.9.4
+pkgver=4.9.6
 pkgrel=1
 pkgdesc=Professional\ Antigravity\ Account\ Manager\ \&\ Switcher
 arch=(x86_64 )
@@ -18,10 +18,10 @@ validpgpkeys=()
 
 source=(LICENSE )
 sha256sums=('6f0afc78b16f446941c6201dcc0a53e1d19dcb96b9fc2ccb497b1bf029aa3512')
-sha256sums_x86_64=('9bcf77af4ff59ecff6913f4d555ecb5a40056cb0788de62ca646a8b0b413d136')
-source_x86_64=(antigravity-tools-bin-4.9.4-x86_64.deb::https://github.com/lbjlaq/Antigravity-Manager/releases/download/v4.9.4/Antigravity.Tools_4.9.4_amd64.deb )
+sha256sums_x86_64=('7757b24add46462a2bcd2866de8184f0330098a1139ae91b16e5183a744589a3')
+source_x86_64=(antigravity-tools-bin-4.9.6-x86_64.deb::https://github.com/lbjlaq/Antigravity-Manager/releases/download/v4.9.6/Antigravity.Tools_4.9.6_amd64.deb )
 
-_deb_source_file=antigravity-tools-bin-4.9.4-x86_64.deb
+_deb_source_file=antigravity-tools-bin-4.9.6-x86_64.deb
 _deb_relocate_usr_local=true
 _service_file=''
 _service_install_path=''
