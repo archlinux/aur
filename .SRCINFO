@@ -1,0 +1,19 @@
+pkgbase = kubecom-bin
+	pkgdesc = A fast, keyboard-driven terminal UI for Kubernetes (a launcher: kubecom itself lives in ~/.local/kubecom and updates with kubecom update)
+	pkgver = 26.10.06
+	pkgrel = 1
+	url = https://github.com/neuroplastio/kubecom
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = kubecom
+	conflicts = kubecom
+	conflicts = kube-commander
+	options = !strip
+	options = !debug
+	source_x86_64 = kubecom-launcher-26.10.06-x86_64::https://github.com/neuroplastio/kubecom/releases/download/26.10.06/kubecom-launcher_linux_amd64
+	sha256sums_x86_64 = 0b002a3ad53c4621fee6a0f0f42619adf12e8746cdf2da8c840a73995ab1dbd4
+	source_aarch64 = kubecom-launcher-26.10.06-aarch64::https://github.com/neuroplastio/kubecom/releases/download/26.10.06/kubecom-launcher_linux_arm64
+	sha256sums_aarch64 = 9b881e06e50dfb414ed7b520a97e48951b90eb668b1c868ffd931cd021044942
+
+pkgname = kubecom-bin
