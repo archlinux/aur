@@ -2,6 +2,6 @@ version = 1
 
 # Only the Arch packaging sources are covered, not the upstream application.
 [[annotations]]
-path = ["PKGBUILD", ".SRCINFO", "README.Arch", "niri-fx-studio.desktop"]
+path = ["PKGBUILD", ".SRCINFO", "README.Arch", "niri-fx-studio.desktop", "niri-fx-packaged.desktop"]
 SPDX-FileCopyrightText = "2026 Julien Turbide"
 SPDX-License-Identifier = "0BSD"

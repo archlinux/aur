@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=NiriFX (package)
+Comment=Niri with configurable NiriFX window effects
+Exec=/usr/bin/niri-fx-session
+Type=Application
+DesktopNames=niri
