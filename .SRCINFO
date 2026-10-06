@@ -1,10 +1,12 @@
 pkgbase = moc-stable-complete
 	pkgdesc = Music On Console is an ncurses-based console audio player - stable version with patches that support PulseAudio and FluidSynth, compiled against current FFmpeg
 	pkgver = 2.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://moc.daper.net/
 	install = moc-stable-complete.install
+	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL-2.0-or-later
 	makedepends = speex
 	makedepends = ffmpeg>=5.1
