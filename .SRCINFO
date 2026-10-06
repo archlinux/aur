@@ -1,6 +1,6 @@
 pkgbase = libmpq
 	pkgdesc = A C library for reading and creating Blizzard MPQ archives
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://libmpq.org/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = libmpq
 	depends = bzip2
 	depends = xz
 	depends = zlib
-	source = https://github.com/mbroemme/libmpq/releases/download/v0.8.0/libmpq-0.8.0.tar.gz
-	sha256sums = 6e5061c3fdfb1e1545b8a6c1b17a8f4b3696bdba0c0519989787a0b8bb19a64c
+	source = https://github.com/mbroemme/libmpq/releases/download/v0.8.1/libmpq-0.8.1.tar.gz
+	sha256sums = 19d6a9a6cee300c308b2fcbca98641f222a5bf9bc5dd4294b095e7b1962bbded
 
 pkgname = libmpq

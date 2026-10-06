@@ -1,7 +1,7 @@
 # Maintainer: Maik Broemme <mbroemme@libmpq.org>
 pkgname="libmpq"
 pkgdesc="A C library for reading and creating Blizzard MPQ archives"
-pkgver="0.8.0"
+pkgver="0.8.1"
 pkgrel="1"
 arch=("x86_64")
 url="https://libmpq.org/"
@@ -15,7 +15,7 @@ source=(
   "https://github.com/mbroemme/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
 )
 sha256sums=(
-  "6e5061c3fdfb1e1545b8a6c1b17a8f4b3696bdba0c0519989787a0b8bb19a64c"
+  "19d6a9a6cee300c308b2fcbca98641f222a5bf9bc5dd4294b095e7b1962bbded"
 )
 
 prepare() {
