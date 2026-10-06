@@ -1,7 +1,7 @@
 # Maintainer: Charles Pritchard <charlespritchard.work@gmail.com>
 pkgname=shiftpaper
 # pkgver and sha256sums are set by the release workflow on each tag.
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Parallax wallpaper daemon for Wayland with monocular depth estimation"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 optdepends=('onnxruntime-cuda: bake wallpapers on an NVIDIA GPU')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/CPritch/shiftpaper/archive/v$pkgver.tar.gz")
-sha256sums=('8a88eb33a5a28f71f56ec22ea6ce486fd43a898ce23c907218f0bcfec6ad5932')
+sha256sums=('416e63a90749e826a61305a0860254209371e2637aefa5f39b1710c137b6bf31')
 
 prepare() {
 	cd "$pkgname-$pkgver"
