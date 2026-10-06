@@ -2,7 +2,7 @@
 
 pkgname=artcraft
 pkgver=0.41.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/storytold/$pkgname"
 pkgdesc='IDE for interactive AI image and video creation'
 arch=(x86_64)
@@ -10,7 +10,11 @@ license=(MIT)
 depends=(alsa-lib
          atkmm
          cairo
+         dbus
+         gdk-pixbuf2
+         glib2
          glibc # libc.so libm.so
+         gtk3
          libgcc
          libstdc++
          libsoup3
@@ -60,7 +64,14 @@ build() {
 package() {
 	depends+=(libasound.so
 	          libcairo.so
-	          libgcc_s.so)
+	          libdbus-1.so
+	          libgcc_s.so
+	          libgdk-3.so libgdk_pixbuf-2.0.so libgtk-3.so libwebkit2gtk-4.1.so
+	          libgio-2.0.so
+	          libglib-2.0.so
+	          libgobject-2.0.so
+	          libjavascriptcoregtk-4.1.so
+	          libsoup-3.0.so)
 	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.md
