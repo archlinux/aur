@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=wolf-lang
-pkgver=0.2.23
+pkgver=0.2.24
 pkgrel=1
 pkgdesc='The wolf systems language: the wolfgang compiler, its runtime and the C importer'
 arch=('x86_64' 'aarch64')
@@ -72,6 +72,12 @@ package() {
     install -Dm755 wolf "$pkgdir/usr/lib/$pkgname/wolf"
     install -Dm755 wolf-cimport-worker "$pkgdir/usr/lib/$pkgname/wolf-cimport-worker"
     install -Dm644 libwolf_rt.a "$pkgdir/usr/lib/$pkgname/libwolf_rt.a"
+    # 0.2.24 (kw12): the freestanding runtime travels beside libwolf_rt.a
+    # when the toolchain could build it (the x86_64-unknown-none target);
+    # `cargo xtask dist` skips it loudly otherwise, as with Arch's rust.
+    if [[ -f libwolf_rt_none.a ]]; then
+        install -Dm644 libwolf_rt_none.a "$pkgdir/usr/lib/$pkgname/libwolf_rt_none.a"
+    fi
 
     install -dm755 "$pkgdir/usr/bin"
     printf '#!/bin/sh\nexec /usr/lib/%s/wolf "$@"\n' "$pkgname" > "$pkgdir/usr/bin/wolf"
