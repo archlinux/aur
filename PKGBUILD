@@ -2,6 +2,7 @@
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Andrey Mikhaylenko <neithere at gmail dot com>
+# Source: https://github.com/jmelahman/pkgbuilds
 
 pkgname=python-blessings
 _name=${pkgname#python-}
