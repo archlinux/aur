@@ -2,13 +2,14 @@
 
 pkgname=zsh-patina-bin
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A blazingly fast Zsh syntax highlighter'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url='https://github.com/michel-kraemer/zsh-patina'
 license=('MIT')
 depends=('libgcc')
-conflicts=('zsh-patina-git' 'zsh-patina')
+conflicts=('zsh-patina')
+provides=('zsh-patina')
 source_x86_64=("$url/releases/download/$pkgver/zsh-patina-v$pkgver-$CARCH-unknown-linux-gnu.tar.gz")
 source_aarch64=("$url/releases/download/$pkgver/zsh-patina-v$pkgver-$CARCH-unknown-linux-gnu.tar.gz")
 source_armv7h=("$url/releases/download/$pkgver/zsh-patina-v$pkgver-arm-unknown-linux-gnueabihf.tar.gz")
