@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-frameworks-core-addons
-pkgver=6.29.0
+pkgver=6.30.0
 pkgrel=1
 pkgdesc='Addons to QtCore'
 arch=(x86_64)
@@ -30,7 +30,7 @@ provides=(kcoreaddons)
 conflicts=(kcoreaddons)
 groups=(sonicde-frameworks)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('05443150753802e778aeb2604921c6d5d1067463cf662232433acbf988114734')
+sha256sums=('41514b9cea9a97ab92db6a11444dfb7bd70cd52c1c834a64ac59d88edf385914')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
