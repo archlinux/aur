@@ -2,7 +2,7 @@
 # Contributor: Kimiblock Moe
 
 pkgname=clash-rs
-pkgver=0.10.8
+pkgver=0.10.10
 pkgrel=1
 pkgdesc="custom protocol network proxy"
 arch=(x86_64 armv7h aarch64 i686)
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         clash-rs.service
         clash-rs@.service
         config.yaml)
-sha256sums=('1eea145b11df8fed17b141c9a6a24a9c0d3e197a1c60c750ed0603b4cf54ab95'
+sha256sums=('3a566b8cd84df96dc3d071e1b603a7b07e6c15b2cd274ca12f4583db92f50c0e'
             '64c1b08fe40af101b5a113212e28aec7e91f63424bec85d50efc5b0fc9ce62ce'
             'c1629d3f5b48053616141076ad8d21031fbca84a352b123d9e3c5bad6406f4a7'
             'd6f1782c0a57591ef6b8c4c898fc7a883363ec45742ae41eee8b91eb68d90f05')
@@ -24,8 +24,7 @@ sha256sums=('1eea145b11df8fed17b141c9a6a24a9c0d3e197a1c60c750ed0603b4cf54ab95'
 prepare() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    ## TODO: get upstream to sync their Cargo.lock
-    cargo fetch --target host-tuple
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
