@@ -1,12 +1,12 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname=shuvarie
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 epoch=
 pkgdesc="Blazingly fast AI coding TUI for chivalrous people"
 arch=("x86_64" "aarch64")
-url="https://shuvarie.org/"
+url="https://github.com/shuvarie/shuvarie"
 license=('MIT')
 groups=()
 depends=(glibc)
@@ -25,7 +25,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    "f585b5434b814e252b8962e529a8553769bd5bfea1e80ec65f488c3bd64c1249"
+    "9f322dfa46028037291c89ad9dedba1f0f95ade905b345bc9441bd727e8015bf"
 )
 validpgpkeys=()
 

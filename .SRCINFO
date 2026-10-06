@@ -1,8 +1,8 @@
 pkgbase = shuvarie
 	pkgdesc = Blazingly fast AI coding TUI for chivalrous people
-	pkgver = 0.3.0
-	pkgrel = 2
-	url = https://shuvarie.org/
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/shuvarie/shuvarie
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = shuvarie
 	depends = glibc
 	options = lto
 	options = strip
-	source = shuvarie-v0.3.0.tar.gz::https://github.com/shuvarie/shuvarie/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = f585b5434b814e252b8962e529a8553769bd5bfea1e80ec65f488c3bd64c1249
+	source = shuvarie-v0.3.1.tar.gz::https://github.com/shuvarie/shuvarie/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 9f322dfa46028037291c89ad9dedba1f0f95ade905b345bc9441bd727e8015bf
 
 pkgname = shuvarie
