@@ -1,0 +1,4 @@
+[filmcraft]
+source = "git"
+git = "https://github.com/storytold/filmcraft.git"
+prefix = "v"
