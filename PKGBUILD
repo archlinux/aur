@@ -1,6 +1,6 @@
 # Maintainer: Lawrence Stalder <lawrence.stalder@pm.me>
 pkgname=piclift
-pkgver=0.5.9
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="SD card photo import, cull, and upload tool for photographers"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('cargo' 'cmake' 'nasm')
 # unaffected.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('22d35493f1db73e80f11bd4adb2b92df44ce2e05b824d5f64bbd1cc15b931e03')
+sha256sums=('787bc16dc24725e5d010f33154dcbe75351ad6d68fb2ccf24d3fb6095aece09b')
 
 prepare() {
   cd "$pkgname"
@@ -30,6 +30,10 @@ build() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  # aws-lc-sys's default cc builder applies makepkg's CFLAGS (-O2) to its
+  # jitterentropy source, which refuses to compile with optimizations; the
+  # CMake builder compiles it at -O0 as upstream intends.
+  export AWS_LC_SYS_CMAKE_BUILDER=1
   cargo build --frozen --release
   # Generate shell completions from the freshly built binary.
   ./target/release/piclift completions bash > completions.bash
