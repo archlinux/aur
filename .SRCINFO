@@ -1,7 +1,7 @@
 pkgbase = jasmine
 	pkgdesc = Website launcher and session management platform with profiles for each tab plus Internet radio, IPTV and podcasts support.
 	pkgver = 1.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alamahant/Jasmine
 	arch = i686
 	arch = x86_64

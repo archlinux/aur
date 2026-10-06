@@ -3,7 +3,7 @@
 pkgname=jasmine
 _pkgname=Jasmine
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Website launcher and session management platform with profiles for each tab plus Internet radio, IPTV and podcasts support.'
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/alamahant/${_pkgname}"
@@ -16,7 +16,7 @@ sha256sums=('18ddf1e9edf96ac62fb418449727feea5471f0263844e0c8d6e60405684429c9')
 
 
 build(){
-  cd "$srcdir/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   
   cmake -B build_dir -S . -G Ninja \
     -DCMAKE_INSTALL_PREFIX='/usr' \
@@ -25,6 +25,6 @@ build(){
 }
 
 package() {
-  cd "$srcdir/${_pkgname}-${pkgver}"
-  DESTDIR="$pkgdir" cmake --install ./build_dir/
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  DESTDIR="${pkgdir}" cmake --install ./build_dir/
 }
