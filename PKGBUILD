@@ -2,7 +2,7 @@
 
 pkgname=stably-orca
 pkgver=1.4.221
-pkgrel=1
+pkgrel=2
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/stablyai/orca'
@@ -79,6 +79,7 @@ source_x86_64=(
 )
 source_aarch64=(
   "pnpm-exe-linux-arm64-$_pnpmver.tgz::https://registry.npmjs.org/@pnpm/exe.linux-arm64/-/exe.linux-arm64-$_pnpmver.tgz"
+)
 sha256sums=('33cb58e5ef1070b5e644e2fe7fdaa87ad9b53d677a09dc6eda7781e06e00cf6f'
             '5ef12ab545a211627c23f05eb589a051e6c207a3f2c3382add8f0573400b871d'
             'd76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d'
@@ -184,6 +185,9 @@ build() {
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   export ORCA_FORCE_NATIVE_REBUILD=1
   export HUSKY=0
+  # Upstream scripts such as build:cli call bare `pnpm`; resolve it to the
+  # pinned copy instead of whatever the build host has installed.
+  export PATH="$srcdir/pnpm:$PATH"
 
   install -d "$HOME" "$XDG_CACHE_HOME" "$XDG_DATA_HOME" "$PNPM_HOME" \
     "$npm_config_cache" "$npm_config_store_dir" "$ELECTRON_BUILDER_CACHE"
