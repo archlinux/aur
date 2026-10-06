@@ -1,6 +1,6 @@
 pkgbase = sonic-frameworks-keybind
 	pkgdesc = Add support for global workspace shortcuts
-	pkgver = 6.29.0
+	pkgver = 6.30.0
 	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-frameworks-keybind
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = sonic-frameworks-keybind
 	depends = qt6-base
 	provides = kglobalaccel
 	conflicts = kglobalaccel
-	source = sonic-frameworks-keybind-6.29.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-keybind/archive/refs/tags/6.29.0.tar.gz
-	sha256sums = 7ba0f0f6be33aed23bc31d281ff044258b659535e763dea4dea9a1e77340ee65
+	source = sonic-frameworks-keybind-6.30.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-keybind/archive/refs/tags/6.30.0.tar.gz
+	sha256sums = c31507e0bbea544da33ceb7525cb8cdf9c45e95cf893060bb5209534d16b9895
 
 pkgname = sonic-frameworks-keybind
