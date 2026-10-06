@@ -2,7 +2,7 @@
 # Contributor: Ray Shirohara <RShirohara@gmail.com>
 
 pkgname=textimg
-pkgver=3.1.10
+pkgver=3.2.3
 pkgrel=1
 pkgdesc='Command to convert from color text (ANSI or 256) to image.'
 arch=('x86_64')
@@ -12,13 +12,19 @@ depends=('glibc')
 makedepends=('go')
 optdepends=('noto-fonts-cjk: Default font used in linux')
 provides=('textimg')
-options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('c5e652a79a6300014e00270e824e6592074179f4c39af0d855e6118326112ed8')
+sha256sums=('c9d88a8c9dcaab794d35db014dd48a33d45ea876ab2f423d48ff6778ae4b4339')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  go build -buildmode=pie --trimpath
+
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+
+  go build -ldflags "-linkmode=external"
 }
 
 check() {
