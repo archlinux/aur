@@ -2,7 +2,7 @@
 # Contributor: oscarcl <oscar.cowderylack@gmail.com>
 # Contributor: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
-pkgver=1.40.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="OmniSharp server (STDIO) based on Roslyn workspaces"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('dotnet-sdk')
 makedepends=('git')
 source=("git+$url#tag=v$pkgver")
-sha256sums=('5b4574424dcda1b3ce22d38a01da2ae35c7e46084c600cc3080aecfd89d5730c')
+sha256sums=('a44d79f00ae41dd5dedac56df6704a44828f119a451aff0dd477f98c229e4a33')
 prepare() {
     cd "$srcdir/$pkgname"
 
@@ -49,6 +49,7 @@ prepare() {
 build() {
     cd "$srcdir/$pkgname"
 
+	mkdir -p artifacts/scripts
     dotnet cake --target PublishNet10Builds --configuration Release --exclusive --use-global-dotnet-sdk
 }
 
