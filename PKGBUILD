@@ -3,19 +3,21 @@
 
 pkgname=python-forgekit
 _srcname=forgekit
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
-pkgdesc="Shared Textual TUI shell library for the Forge Suite — menu bar, dialogs, settings forms and save flows, Catppuccin theme"
+pkgdesc="Shared Textual TUI shell library for the Forge Suite — menu bar, dialogs, settings forms and save flows, a start-up check, Catppuccin theme"
 arch=('any')
-url="https://github.com/jetomev/forgekit"
+# 0.7.0: forgekit lives in the Forge Suite repository (D-60); releases are tagged forgekit-vX.Y.Z there
+_repo="https://github.com/jetomev/forge-suite"
+url="${_repo}/tree/main/forgekit"
 license=('GPL3')
 # 0.6.0: python-pyte draws a program's screen inside the app (RunWindow)
 depends=('python' 'python-textual' 'python-rich' 'python-pyte')
 optdepends=('python-gobject: the polkit password asked inside the app (grubForge)'
             'polkit: the same')
-source=("${_srcname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_srcname}-${pkgver}.tar.gz"
-        "${_srcname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${_srcname}-${pkgver}.tar.gz.asc")
-sha256sums=('4272206cc8c9725a3074061e4931096986303070356d19553dc0ca31b2cd5a4e'
+source=("${_srcname}-${pkgver}.tar.gz::${_repo}/releases/download/${_srcname}-v${pkgver}/${_srcname}-${pkgver}.tar.gz"
+        "${_srcname}-${pkgver}.tar.gz.asc::${_repo}/releases/download/${_srcname}-v${pkgver}/${_srcname}-${pkgver}.tar.gz.asc")
+sha256sums=('89b48206ab5372fc2b681bccc85cb790981dd1cd1cf8bd4eaf0003b697e83eb9'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
@@ -32,7 +34,8 @@ from forgekit import (ForgeApp, ForgeModal, ConfirmDialog, ForgePanelScreen,
                       MenuBar, FORGE_CSS, COLORS, GPL3_NOTICE, __version__,
                       ROLES, glyph, console_mode,
                       SettingRow, ReviewDialog, ProgressDialog, ManualScreen,  # 0.5.0
-                      TerminalPane, RunWindow, PasswordBridge, PasswordDialog, InAppPolkitAgent)  # 0.6.0
+                      TerminalPane, RunWindow, PasswordBridge, PasswordDialog, InAppPolkitAgent,  # 0.6.0
+                      start_check, Need, NeedsApp, sway_session, program, service, a_file)  # 0.7.0
 assert __version__ == '${pkgver}', __version__
 
 class _Smoke(ForgeApp):
@@ -56,6 +59,8 @@ print('forgekit headless mount OK (window and console mode)')
     # 0.6.0: a program's run and its password inside the app, in a real
     # pseudo-terminal with stand-in tools (no sudo, no polkit needed)
     PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_v06
+    # 0.7.0: the start-up check, every kind of need fed a known-bad input
+    PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_v07
 }
 
 package() {
