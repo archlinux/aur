@@ -1,8 +1,8 @@
 # Maintainer: Davide Carnemolla <herbrant@protonmail.com>
 
 pkgname=libjasmin-easycrypt-bin
-pkgver=2026.03.2
-pkgrel=2
+pkgver=2026.09.0
+pkgrel=1
 pkgdesc="EasyCrypt libraries used for verifying Jasmin implementations"
 arch=('x86_64')
 url="https://github.com/jasmin-lang/jasmin"
@@ -25,7 +25,7 @@ source=(
   "LICENSE-${pkgver}::https://raw.githubusercontent.com/jasmin-lang/jasmin/v${pkgver}/LICENSE"
 )
 
-sha256sums=('69259f903a31470d4f5f9f8b96af78ce3e24aea76b36b1e355e8dad6a5d0aa48'
+sha256sums=('950604d7ae822e2d892cf9007439686e3dde07efd7fe87169049cc1725781ce6'
             'c7232c2cda11e4270104f2fd4bfbc7b368f536ad58271a9ad2775d1000aefc05')
 
 package() {
