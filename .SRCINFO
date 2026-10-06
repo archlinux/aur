@@ -1,6 +1,6 @@
 pkgbase = sonic-desktop-interface
 	pkgdesc = Sonic Desktop Interface
-	pkgver = 6.7.4.2
+	pkgver = 6.7.5.2
 	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-desktop-interface
 	arch = x86_64
@@ -94,9 +94,9 @@ pkgbase = sonic-desktop-interface
 	optdepends = sonic-screen: screen management
 	provides = plasma-desktop
 	conflicts = plasma-desktop
-	source = sonic-desktop-interface-6.7.4.2.tar.gz::https://github.com/Sonic-DE/sonic-desktop-interface/archive/refs/tags/6.7.4.2.tar.gz
+	source = sonic-desktop-interface-6.7.5.2.tar.gz::https://github.com/Sonic-DE/sonic-desktop-interface/archive/refs/tags/6.7.5.2.tar.gz
 	source = 0001-add-explicit-input-backend-options.patch
-	sha256sums = 45c1f2c66b05afc838509cf87a10eaf0d6f119fd082d2fdc13f86194111d5a0f
+	sha256sums = 406c3dcc2839bbda5fe5bb76a0c1c484fd183cbc333d3ae72f84e70713a3367e
 	sha256sums = 63afec950ae88f89fcf206b8e40aab3dcc4f5a4df6f456b31ad3ebf20158f440
 
 pkgname = sonic-desktop-interface
