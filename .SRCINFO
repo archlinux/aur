@@ -1,7 +1,7 @@
 pkgbase = skylendar
 	pkgdesc = Powerful and portable astrology program
 	pkgver = 5.1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/skylendar
 	arch = i686
 	arch = x86_64
