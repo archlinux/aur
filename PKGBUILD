@@ -15,7 +15,7 @@
 # and not the version; a build in a network-isolated chroot will still fail.
 
 pkgname=xpcog
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Audio player for the formats other players do not open"
 arch=('x86_64')
@@ -62,7 +62,7 @@ source=(
 # The release tarball is checksummed; the vcpkg tree is not, because a git
 # source is pinned by its commit and makepkg wants SKIP for one.
 sha256sums=(
-  'dfeff2a91e4e1492400a0ab82263a097e19af9d6e1a5970916187053f761d07d'
+  '38673f95b1be7ec392e8e15f6e0281297a0d80bbbea761c262ee1a5c517db5c4'
   'SKIP'
 )
 
