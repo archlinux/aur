@@ -1,51 +1,86 @@
 NiriFX development package for Arch Linux
 ========================================
 
-Open NiriFX Studio from your application launcher, or run:
+This recipe builds main. Use the AUR helper's development-package update option
+or rebuild to fetch new commits; ordinary version checks may not detect them.
+
+Both packages contain the CLI, Studio, preset library, optional shell pickers,
+complete NiriFX compositor and packaged login entry. Choose niri-fx for a
+versioned release or niri-fx-git for main; they are alternatives with the same
+features. No separate compositor package is needed.
+
+Open NiriFX Studio from the application launcher, or run:
 
     /usr/bin/niri-fx studio --active
 
-Install Chromium for an app-style window. Otherwise Studio opens your default
-browser. Niri is needed to validate and apply effects; preview and JSON export
-also work without a running compositor. Quickshell and GTK pickers are optional.
-Choose a preset for each action, review the proposed changes, then Apply.
-Installing, upgrading or removing this package does not apply effects.
+Install Chromium for an app-style window. Otherwise Studio opens the default
+browser. Preview and JSON export work without a running compositor. Quickshell
+and GTK pickers are optional. Choose a preset for each action, review the proposed
+changes, then Apply. Stock Niri supports the documented open/close/resize effects;
+the NiriFX session adds continuous drag, custom movement and swaps.
 
-This package builds CLI, Studio, the preset library and integrations from the
-current main branch. It conflicts with the release package niri-fx; choose one.
-Use niri-fx for versioned releases. Development updates can change behavior.
-It does not include the patched compositor or add a NiriFX login session.
-Stock Niri supports the documented open/close/resize effects; continuous drag,
-custom movement and swaps require the separately prepared full NiriFX session.
-No stock Niri, shell, service or user configuration files are replaced.
+Prepare the NiriFX session
+-------------------------
 
-Updates and existing managed sessions
-------------------------------------
+Installing this package does not activate its compositor or change user settings.
+It installs a candidate at /usr/lib/niri-fx/session-candidate and a separate
+"NiriFX (package)" login entry. Stock Niri remains installed for its session
+service, shutdown handling, portal configuration and recovery entry. Its
+executable, service and login files are not replaced.
 
-Use your AUR helper's development-package update option, or rebuild the recipe,
-to pick up commits from main. Ordinary version checks may not notice new commits. Reopen Studio to use the
-updated package; refreshing a page does not replace its running server.
-System Python minor-version updates can require rebuilding AUR Python packages.
+As your normal user, review adoption with your Niri configuration:
 
-An existing managed NiriFX session uses retained virtual environments so that
-its selected and previous tools survive package updates. This package does not
-replace those environments or switch their launchers. Do not use /usr/bin/python
-as a managed tools runtime, upgrade a retained environment in place, or remove
-retained files to resolve a package/launcher mismatch.
+    /usr/bin/niri-fx native adopt --config ~/.config/niri/config.kdl
 
-If a user-installed niri-fx or Studio launcher takes precedence over this package,
-it remains in place. Use /usr/bin/niri-fx explicitly to test the packaged tools.
-Use the reviewed managed-tool workflow to update an existing full session:
+Review the proposed files and plan_sha256. Repeat with --apply and
+--expect-plan REVIEWED_SHA256 to copy the compositor, config and tools into
+private retained storage and select them for the next login. Then log out and
+choose "NiriFX (package)". An unprepared user receives an error; the login entry
+never adopts a candidate automatically. Keep the ordinary Niri entry for recovery.
 
-https://github.com/jturbide/niri-fx/blob/main/docs/tool-updates.md
+For later package versions, omit --config so the current settings are preserved:
 
-Recovery
---------
+    /usr/bin/niri-fx native adopt
 
-Use Studio Restore for effects applied by the standalone tools. Removing the
-package leaves your effects, saved profiles and Restore history in place; restore
-effects before removal if you want the underlying configuration back. Native
-session rollback is a separate reviewed operation. Keep stock Niri available.
+Review the new plan before repeating it with --apply and --expect-plan.
+Package updates alone do not change retained selections. Use /usr/bin/niri-fx
+explicitly when adopting an update: an existing personal CLI launcher may still
+point at the retained tools. Reopen system-package Studio to use updated tools;
+refreshing an old page does not replace its running server.
+
+Existing managed installations are preserved. Unsupported migration states are
+refused with guidance instead of replacing user files. System Python minor
+updates can require rebuilding the AUR package. Retained tools and compositor
+copies still depend on the system Python and native libraries.
+
+Desktop integration and recovery
+--------------------------------
+
+Install xdg-desktop-portal-gnome for screencasting and xdg-desktop-portal-gtk as the
+fallback portal. GNOME's file chooser requires Nautilus unless the user explicitly
+selects GTK for FileChooser. X11 applications need xwayland-satellite. Shell,
+notification, secret-service and authentication-agent choices remain yours.
+
+Use Studio Restore for effects applied to the stock configuration. Package
+removal preserves user settings, profiles, Restore history and retained native
+bundles; it removes the packaged candidate, dispatcher and chooser entry. Choose
+stock Niri or reinstall the package to regain that chooser entry. Native session
+rollback is a separate reviewed operation. Do not remove retained files or use
+pacman --overwrite to resolve another user's login entry or launcher.
+
+Build and acceptance scope
+--------------------------
+
+Both recipes use one NiriFX source tree for tools and native patches. The upstream
+Niri revision is pinned. Locked Cargo dependencies are fetched during prepare();
+native regression tests and the release/default-feature build run offline.
+The producer strips its binary before recording its hash. makepkg's subsequent
+strip/debug processing and C LTO are disabled; Rust's thin LTO stays enabled.
+
+A package build and container adoption check do not establish display-manager
+login, systemd session lifecycle, portals/PipeWire, physical input, lock/unlock,
+suspend/resume, mixed monitors or GPU behavior. Those remain separate acceptance
+gates. Building or installing a package never opens a session automatically.
 
 Portable examples: /usr/share/doc/niri-fx/examples/
 Current-source documentation: https://github.com/jturbide/niri-fx/tree/main/docs
