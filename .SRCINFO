@@ -1,6 +1,6 @@
 pkgbase = sonic-frameworks-gui-addons
 	pkgdesc = Addons to QtGui
-	pkgver = 6.29.0
+	pkgver = 6.30.0
 	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-frameworks-gui-addons
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = sonic-frameworks-gui-addons
 	optdepends = qt6-declarative: QML bindings
 	provides = kguiaddons
 	conflicts = kguiaddons
-	source = sonic-frameworks-gui-addons-6.29.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-gui-addons/archive/refs/tags/6.29.0.tar.gz
-	sha256sums = 339f7da21289a6da39d1a6ae647fee558ed60aabf1568a71125c2ea6d077446d
+	source = sonic-frameworks-gui-addons-6.30.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-gui-addons/archive/refs/tags/6.30.0.tar.gz
+	sha256sums = effea7dd33a15c2a66d2d98172ecd3b350629a44acf3a41e873056ff0ea1d088
 
 pkgname = sonic-frameworks-gui-addons

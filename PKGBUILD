@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-frameworks-gui-addons
-pkgver=6.29.0
+pkgver=6.30.0
 pkgrel=1
 pkgdesc='Addons to QtGui'
 arch=(x86_64)
@@ -28,7 +28,7 @@ provides=(kguiaddons)
 conflicts=(kguiaddons)
 groups=(sonicde-frameworks)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('339f7da21289a6da39d1a6ae647fee558ed60aabf1568a71125c2ea6d077446d')
+sha256sums=('effea7dd33a15c2a66d2d98172ecd3b350629a44acf3a41e873056ff0ea1d088')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
