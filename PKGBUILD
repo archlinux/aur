@@ -1,6 +1,6 @@
 # Maintainer: Stéphane Jourdois <stephane@jourdois.fr>
 pkgname=wlr-utils
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='Native screen tools for wlroots compositors: pick, switch, capture, inspect and annotate — one capture engine'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=('noto-fonts-cjk: render CJK (Japanese/Chinese/Korean) text'
             'tesseract-data-fra: French OCR for `wlr-peek ocr`'
             'xdg-desktop-portal-wlr: screencast portal that drives wlr-chooser')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4fc9b8ad3ab57e392c0e7fc9c832219bb35212b102494efebd14a68221b7d4f1')
+sha256sums=('fa709c5d8eed578d18094dab1743036b07c7e672b92cfccbca019d197293e997')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -45,13 +45,5 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	for _bin in wlr-chooser wlr-switcher wlr-overlayd wlr-peek wlr-shot wlr-draw; do
-		install -Dm755 "target/release/$_bin" "$pkgdir/usr/bin/$_bin"
-	done
-	install -Dm644 -t "$pkgdir/usr/lib/systemd/user" \
-		crates/wlr-chooser/contrib/wlr-overlayd.service \
-		crates/wlr-draw/contrib/wlr-draw.service
-	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-	install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
-	install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
+	DESTDIR="$pkgdir" PREFIX=/usr sh packaging/install.sh
 }
