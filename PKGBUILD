@@ -2,8 +2,8 @@
 
 # Release notes https://rocm.docs.amd.com/en/latest/about/release-notes.html
 pkgname=rocm-bin-extras
-pkgdesc="ROCm Core SDK - Extras (MIGraphX)"
-pkgver=10.0.0
+pkgdesc="ROCm Core SDK - Extras (MIGraphX, Optic, RVS)"
+pkgver=10.1.0
 pkgrel=1
 epoch=0
 arch=('x86_64')
@@ -16,18 +16,24 @@ options=('!strip')
 noextract=()
 
 source=(
-"https://stable.repo.amd.com/rocm/migraphx/tarball/migraphx-2.17.0%2Brocm10.0.0.tar.gz"
-"https://github.com/ROCm/roc-optiq/releases/download/v1.0.0-optiq/roc-optiq_1.0.0.2-1_amd64-ubuntu-26.deb"
-"https://stable.repo.amd.com/rocm/extras/rvs/packages/ubuntu2604/pool/main/amdrocm10-rvs_1.6.122-708_amd64.deb"
+"https://stable.repo.amd.com/rocm/migraphx/tarball/amdrocm10-migraphx-2.18.0.tar.gz"
+"https://stable.repo.amd.com/rocm/extras/rocoptiq/packages/ubuntu2604/pool/main/amdrocm10-roc-optiq_1.1.0.2-1_amd64.deb"
+"https://stable.repo.amd.com/rocm/extras/rvs/packages/ubuntu2604/pool/main/amdrocm10-rvs_1.6.131-844_amd64.deb"
 # "https://rocm.frameworks.amd.com/deb-multi-arch/amdrocm-migraphx/pool/main/amdrocm-migraphx_2.16.0-3.py314_amd64.deb"
 # "https://rocm.frameworks.amd.com/deb-multi-arch/amdrocm-migraphx/pool/main/amdrocm-migraphx-dev_2.16.0-3.py314_amd64.deb"
 )
 
 sha256sums=(
-"bf4def72ae884f5373ed3b7315ecf3bb2e4f7107d130592d5bb0ccc37d496e54"
-"d6744d12af4526cf7538361f6faed84f54844a7fd05be3221d436ecdc7607f20"
-"989649e8306a8a8417e98f9c07314437e90a85704d8c9a99fc163b2476d5f7f9"
+"200ad8ef19057615f577c58af4b3010acc22ca1e8425a5866e96c42209f7d2a4"
+"9932bbe621bee8cc9fa739f91be82862745fbc032472a29104b423a8e6f35d25"
+"47b4bc75f4bc747edd33ba6861069e06210eed38b66ff7052b3175e2f8cabe6c"
 )
+
+prepare() {
+    mkdir -p "${srcdir}/opt/migraphx"
+    bsdtar xf amdrocm10-migraphx-2.18.0.tar.gz -C ${srcdir}/opt/migraphx
+}
+
 
 package() {
     for p in *.deb; do
@@ -44,7 +50,5 @@ package() {
     done
 
     mkdir -p "$pkgdir/opt"
-
-    cp -a "$srcdir/migraphx-2.17.0+rocm10.0.0" "$pkgdir/opt/"
     cp -a "$srcdir/opt/." "$pkgdir/opt/"
 }
