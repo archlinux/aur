@@ -1,10 +1,12 @@
 pkgbase = moc-development
 	pkgdesc = Music On Console is an ncurses-based console audio player - latest version with patches that supports PulseAudio and FluidSynth, compiled against current FFmpeg
 	pkgver = 2.6_alpha3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://moc.daper.net/
 	install = moc-development.install
+	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL-2.0-or-later
 	makedepends = speex
 	makedepends = ffmpeg>=5.1
