@@ -2,7 +2,7 @@
 
 pkgname=bettbox-compatible-pre-bin
 _pkgname=Bettbox
-pkgver=1.19.4
+pkgver=1.19.5pre1
 pkgrel=1
 _pkgver="${pkgver/pre/-pre}"
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash. (Build with GOAMD64=v1)"
@@ -14,16 +14,20 @@ provides=("${pkgname%-compatible-pre-bin}=${pkgver}")
 depends=(
     'gtk3'
     'libayatana-appindicator'
+    'libayatana-indicator'
     'libkeybinder3'
 )
 optdepends=('polkit: for TUN authorization')
 options=('!debug')
-source=("restart-bettbox.hook")
+source=("restart-bettbox.hook" "99-bettbox.rules" "bettbox.install")
 source_x86_64=(
     "${pkgname%-pre-bin}-${pkgver}-${arch}.deb::${url}/releases/download/v${_pkgver}/${_pkgname}-${_pkgver%-pre*}-linux-amd64-compatible.deb"
 )
-sha256sums=('03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2')
-sha256sums_x86_64=('280b8d16d6d79e1b8ce7339969362ad60f38a37b63e1e5a1b4d0ca5b82fe8e07')
+sha256sums=('03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2'
+            'f1a21fce8675e6bd03565f56d21954e9c13991426bdc38368cd1b85f6893a593'
+            'c6a494309939447475c29c83020d0ad19b12bed0b3f5aaae3c7c8b5f32942d2b')
+sha256sums_x86_64=('a8273118257592bac6f6906395e3b33ac4cdc04978f97c8a2fbbe3802088d69c')
+install=bettbox.install
 
 prepare() {
     bsdtar -xf "${srcdir}/data."*
@@ -47,6 +51,7 @@ package() {
 
     install -Dm644 -t "${pkgdir}/usr/share/libalpm/hooks/" "${srcdir}/restart-bettbox.hook"
 
-    # Set setuid on BettboxCore for TUN mode (to avoid password prompt)
-    chmod u+sx "${pkgdir}/usr/lib/${pkgname%-compatible-pre-bin}/BettboxCore"
+    # Polkit rule for resolvectl command
+    install -Dm644 "${srcdir}/99-bettbox.rules" \
+        "${pkgdir}/usr/share/polkit-1/rules.d/99-bettbox.rules"
 }
