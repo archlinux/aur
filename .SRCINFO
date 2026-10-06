@@ -1,6 +1,6 @@
 pkgbase = happy-photon-bin
 	pkgdesc = Happy Photon is a RAW photo editor designed with speed in mind.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/seasalim/happy-photon
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = happy-photon-bin
 	depends = gcc-libs
 	depends = hicolor-icon-theme
 	options = !strip
-	source = https://github.com/seasalim/happy-photon/releases/download/v0.3.0/happy-photon-0.3.0-linux-x64.tar.gz
+	source = https://github.com/seasalim/happy-photon/releases/download/v0.3.1/happy-photon-0.3.1-linux-x64.tar.gz
 	source = happy-photon.desktop
 	source = happy-photon.svg
-	sha256sums = 4a24006897a2d394799a024fc9eb1e1d71744e96c9af23a981481199cabd5f57
+	sha256sums = 4c4773d715b5a7898fca24f6cfd9b909452a414b5b4a3fba80311a4245fcdd2b
 	sha256sums = d7540b5a7947c7c2deed1112abf28750686a7bc2e5a57f88c4ec22e90be20471
 	sha256sums = 31cf9545f64a8e26b06512ae0d48d23727cdda8532c2bec5351d300fd2ca0423
 
