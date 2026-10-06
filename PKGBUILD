@@ -3,7 +3,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=sonic-frameworks-idle-tracker
-pkgver=6.29.0
+pkgver=6.30.0
 pkgrel=1
 pkgdesc='X11 user activity monitoring framework for SonicDE'
 arch=(x86_64)
@@ -23,7 +23,7 @@ provides=(kidletime)
 conflicts=(kidletime)
 groups=(sonicde-frameworks)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('dfc49ab447bca0043fcca711eb40c0e9b870ac286344b370d30107bd40121df5')
+sha256sums=('846d6bf634a7e2bac7d225505775fe0f8f4b07976a22d335e35a4ccdcecac502')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
