@@ -1,16 +1,16 @@
 pkgbase = next-music
 	pkgdesc = Web client for Yandex Music with support for themes, addons, Discord Rich Presence (RPC) and OBS widget
-	pkgver = 3.17.3
+	pkgver = 3.17.4
 	pkgrel = 1
 	url = https://github.com/Web-Next-Music/Next-Music-Client
 	arch = x86_64
 	license = MIT
-	noextract = next-music_3.17.3_x64.pkg.tar.zst
+	noextract = next-music_3.17.4_x64.pkg.tar.zst
 	options = !strip
 	options = !debug
 	options = !zipman
 	options = !emptydirs
-	source = next-music_3.17.3_x64.pkg.tar.zst::https://github.com/Web-Next-Music/Next-Music-Client/releases/download/v3.17.3/next-music_3.17.3_x64.pkg.tar.zst
-	sha256sums = f8be0c0030872ae637423de24edf1e66044eace58e6d4949dfdb979fdad1f75a
+	source = next-music_3.17.4_x64.pkg.tar.zst::https://github.com/Web-Next-Music/Next-Music-Client/releases/download/v3.17.4/next-music_3.17.4_x64.pkg.tar.zst
+	sha256sums = c8027b8b313c22c13b15e3241eedc149dc28113a38650aa3f354908032961a9a
 
 pkgname = next-music
