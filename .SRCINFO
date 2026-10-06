@@ -1,0 +1,17 @@
+pkgbase = pasejo
+	pkgdesc = CLI password manager for teams using age
+	pkgver = 2026.10.4
+	pkgrel = 1
+	url = https://github.com/metio/pasejo
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = 0BSD
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	source = pasejo-2026.10.4.tar.gz::https://github.com/metio/pasejo/archive/refs/tags/2026.10.4.tar.gz
+	b2sums = efccce002cf72056a2e51db9d5111625478a123b2f31ef783d0a28c197ef006044118a4d46024a2f82249c6e420c26251127122eb8542f1ab156dc1a2cbab44d
+
+pkgname = pasejo
