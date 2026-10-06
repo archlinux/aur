@@ -1,13 +1,13 @@
 pkgbase = azros-agent
 	pkgdesc = Azros Agent - the Azros coding agent on its own, building into your AzrOS Workspace
-	pkgver = 0.1.47
+	pkgver = 0.1.50
 	pkgrel = 1
 	url = https://agentics.co.za
 	arch = x86_64
 	license = custom
 	options = !strip
 	options = !debug
-	source = azros-agent-0.1.47-x86_64.AppImage::https://repo.agentics.co.za/x86_64/azros-agent-0.1.47-x86_64.AppImage
-	sha512sums = 2fa8a48ddec22f24a451cc0210c4f5dbd400a4a50a50bcd3c4fc4cdf58fc318ca87b455ac4d31cb4d83dc9d0950d413f28d69587de89219efdfc4607364615e5
+	source = azros-agent-0.1.50-x86_64.AppImage::https://repo.agentics.co.za/x86_64/azros-agent-0.1.50-x86_64.AppImage
+	sha512sums = ca1151b74b197893fa6c3dff863927e3626d43eb0c19324fa041a5c48beb48e3feca1b317205ea20eb54b3083ccede8917622c4fe27adeb0afa99fd7034f28cc
 
 pkgname = azros-agent
