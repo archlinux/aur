@@ -2,14 +2,14 @@
 PROJECT=ufo
 BASE_NAME=ufo
 DESCR="A tool for opening files"
-makedepends=("bash" "chrpath" "findutils" "glib2" "amalthea-gdc" "gcc-d")
-depends=("glib2" "amalthea-gdc")
+makedepends=("bash" "chrpath" "findutils" "glib2" "amalthea-ldc2" "ldc")
+depends=("glib2" "amalthea-ldc2")
 pkgver=0.10.1
 pkgrel=0
 license=("BSL-1.0")
 
-DC=gdc
-DC_PKG=gcc-d
+DC=ldc2
+DC_PKG=ldc
 
 pkgname=ufo
 pkgdesc="${DESCR}"

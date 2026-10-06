@@ -9,10 +9,10 @@ pkgbase = ufo
 	makedepends = chrpath
 	makedepends = findutils
 	makedepends = glib2
-	makedepends = amalthea-gdc
-	makedepends = gcc-d
+	makedepends = amalthea-ldc2
+	makedepends = ldc
 	depends = glib2
-	depends = amalthea-gdc
+	depends = amalthea-ldc2
 	source = ufo-0.10.1.tar.gz::https://gitlab.com/os-18/ufo/-/archive/v0.10.1/ufo-v0.10.1.tar.gz
 	sha256sums = 186705d2c8ba15a7d261a70feb53823d06db8193c4e8f52b3b8125d903166693
 
