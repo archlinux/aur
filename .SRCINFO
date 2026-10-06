@@ -8,8 +8,8 @@ pkgbase = useful-autoclicker-git
 	license = MIT
 	license = LGPL-3.0-or-later
 	makedepends = git
-	makedepends = java-environment>=8
-	depends = java-runtime>=8
+	makedepends = java-environment>=17
+	depends = java-runtime>=17
 	depends = libx11
 	depends = libxtst
 	depends = libxt

@@ -7,8 +7,8 @@ pkgdesc="A versatile autoclicker with hotkey toggle, randomized timings and clic
 arch=('x86_64' 'aarch64')
 url="https://github.com/Rutger505/Useful-Autoclicker"
 license=('MIT' 'LGPL-3.0-or-later')
-depends=('java-runtime>=8' 'libx11' 'libxtst' 'libxt' 'libxinerama' 'libxkbcommon-x11')
-makedepends=('git' 'java-environment>=8')
+depends=('java-runtime>=17' 'libx11' 'libxtst' 'libxt' 'libxinerama' 'libxkbcommon-x11')
+makedepends=('git' 'java-environment>=17')
 options=('!debug')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
