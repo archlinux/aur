@@ -1,20 +1,19 @@
 # Maintainer: Elia Nitsche <nitscheelia at gmail dot com>
 pkgname="quantframe-git"
 _pkgname=${pkgname%-git}
-pkgver=1.6.19.r0.ge1b708a
+pkgver=1.6.30.r0.g0a46342
 pkgrel=1
-pkgdesc="algorithmic trading program for Warframe"
+pkgdesc="algorithmic trading program for Warframe Market"
 arch=("x86_64")
 url="https://github.com/Kenya-DK/quantframe-react"
-license=("custom:MIT-modified")
+license=("GPL-3.0-only")
 depends=(
 	'webkit2gtk-4.1'		# tauri runtime
 	'appmenu-gtk-module'	# global menu support
 	'libappindicator-gtk3'	# tray support
 	# already pulled in by 'webkit2gtk-4.1'
 	#'gtk3' 'glib2' 'openssl' 'librsvg'
-	# seems to be not needed even though it is in the tauri prerequisites
-	#'wget' 'curl' 'xdotool' 
+	'wget' 'curl' 'xdotool' 
 )
 makedepends=('git' 'nodejs' 'pnpm' 'rust' 'cargo' 'jq')
 optdepends=()
@@ -54,8 +53,9 @@ package() {
 	outputDir="./src-tauri/target/release"
 	iconsDir="src-tauri/icons"
 	#install -Dm755 "./src-tauri/target/release/Quantframe" "${pkgdir}/usr/lib/quantframe/Quantframe"
-	#install -Dm755 ${srcdir} "${pkgdir}/usr/bin/${_pkgname}"
-	install -Dm755 "${outputDir}/Quantframe" "${pkgdir}/usr/bin/${_pkgname}"
+	
+	install -Dm755 ${srcdir}/../quantframe.sh "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 "${outputDir}/Quantframe" "${pkgdir}/usr/lib/${_pkgname}/Quantframe"
 
 	# copy resources
 	mkdir -p "${pkgdir}/usr/lib/${_pkgname}/"
@@ -68,6 +68,3 @@ package() {
 
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
-# On wayland you might need the following flags to run the app:
-# WEBKIT_DISABLE_DMABUF_RENDERER=1 quantframe
-# WEBKIT_DISABLE_DMABUF_RENDERER=1 GDK_BACKEND=x11 quantframe

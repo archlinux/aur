@@ -20,6 +20,7 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
+    "quantframe.sh",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
