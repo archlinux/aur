@@ -1,16 +1,16 @@
 pkgbase = ingitdb-bin
 	pkgdesc = ingitdb – a CLI for a developer-grade, schema-validated, AI-native database whose storage engine is a Git repository.
-	pkgver = 0.69.0
+	pkgver = 0.70.0
 	pkgrel = 1
 	url = https://ingitdb.com
 	license = MIT
 	conflicts = ingitdb
 	provides = ingitdb
 	arch = aarch64
-	source_aarch64 = ingitdb-bin_0.69.0_aarch64.tar.gz::https://github.com/ingitdb/ingitdb-cli/releases/download/v0.69.0/ingitdb_0.69.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 21662d02fbf755e64d3a9e0b3634122969fe7ca6999bd88a27dcdad537271114
+	source_aarch64 = ingitdb-bin_0.70.0_aarch64.tar.gz::https://github.com/ingitdb/ingitdb-cli/releases/download/v0.70.0/ingitdb_0.70.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6985fb6efcb6e2dce09da7bab3e89f8906e06c620ca011fd767e894bb4611843
 	arch = x86_64
-	source_x86_64 = ingitdb-bin_0.69.0_x86_64.tar.gz::https://github.com/ingitdb/ingitdb-cli/releases/download/v0.69.0/ingitdb_0.69.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = fe0b38206be9d43460844501bc582910f9768c934328e200e82d51446bcaea04
+	source_x86_64 = ingitdb-bin_0.70.0_x86_64.tar.gz::https://github.com/ingitdb/ingitdb-cli/releases/download/v0.70.0/ingitdb_0.70.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 759ecbf2f3b7ff2cb3bf8e5fdb50309bcd4f4d022e1bfe49f32b94777277f4ca
 	
 pkgname = ingitdb-bin
