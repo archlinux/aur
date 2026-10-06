@@ -1,6 +1,6 @@
 # Maintainer: vani-tty1 <giovannirafanan609@gmail.com>
 pkgname=memerist-git
-pkgver=2.2.0.r5.g29f2d1f
+pkgver=2.5.0.r0.g0e64cf1
 pkgrel=1
 pkgdesc="VCS package for memerist"
 arch=('x86_64' 'aarch64')
