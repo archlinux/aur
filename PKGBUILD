@@ -2,7 +2,7 @@
 #              Darjan Krijan [https://disc-kuraudo.eu]
 
 pkgname=opari2
-pkgver=2.0.9
+pkgver=2.0.10
 pkgrel=1
 pkgdesc="Instrumentation tool for OpenMP and hybrid codes."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://www.vi-hps.org/projects/score-p/"
 license=('BSD')
 depends=('gcc-fortran')
 source=(http://perftools.pages.jsc.fz-juelich.de/cicd/$pkgname/tags/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('d57139f757c5666afaaead45ed3d0954a9b98c4a6cef6b22afe672707cffd779')
+sha256sums=('49d9526bf76ebf7836e62f70850d4d605b08910dbabddac3f7479b509abce887')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
