@@ -2,8 +2,8 @@
 
 pkgname=python-systemrdl-compiler
 _name=${pkgname#python-}
-pkgver=1.32.2
-pkgrel=2
+pkgver=1.33.0
+pkgrel=1
 pkgdesc="Parse and elaborate front-end for SystemRDL 2.0"
 provides=(${pkgname})
 conflicts=(${pkgname})
@@ -34,7 +34,7 @@ optdepends=()
 options=('!strip' '!lto' '!debug')
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('fb9739c2877788fed23ea1cf3787a85e9aacb1e8bfccfbd9f42019718eb184b9')
+sha256sums=('185c3c3b1488b51e6451c3fdcedef507efa3426eec53bd5e4288dde308b1df22')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
