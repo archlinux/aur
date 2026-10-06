@@ -2,7 +2,7 @@
 
 pkgname=bettbox-pre-bin
 _pkgname=Bettbox
-pkgver=1.19.4
+pkgver=1.19.5pre1
 pkgrel=1
 _pkgver="${pkgver/pre/-pre}"
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash."
@@ -14,11 +14,12 @@ provides=("${pkgname%-pre-bin}=${pkgver}")
 depends=(
     'gtk3'
     'libayatana-appindicator'
+    'libayatana-indicator'
     'libkeybinder3'
 )
 optdepends=('polkit: for TUN authorization')
 options=('!debug')
-source=("restart-bettbox.hook")
+source=("restart-bettbox.hook" "99-bettbox.rules" "bettbox.install")
 # Upstream names its debs by Debian architecture (amd64/arm64), which does not
 # match the AUR architecture names, so both the cache name and the URL are
 # spelled out per architecture. ${arch} cannot be used here: makepkg binds it
@@ -30,9 +31,12 @@ source_x86_64=(
 source_aarch64=(
     "${pkgname%-pre-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${_pkgver}/${_pkgname}-${_pkgver%-pre*}-linux-arm64.deb"
 )
-sha256sums=('03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2')
-sha256sums_x86_64=('5e9133e3fd6249ae09b26a93051075dc82fa6b7255ce1a7c14b43113e7effc80')
-sha256sums_aarch64=('4422a41e8456647ecbe3d7ab07e7c763f899f3208eb79007a419b53f180bdc40')
+sha256sums=('03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2'
+            'f1a21fce8675e6bd03565f56d21954e9c13991426bdc38368cd1b85f6893a593'
+            'c6a494309939447475c29c83020d0ad19b12bed0b3f5aaae3c7c8b5f32942d2b')
+sha256sums_x86_64=('eb8874f8ce99f03b00dbbe08411704c4ad73b0b825db2f715268abefc65f02bb')
+sha256sums_aarch64=('0afde7f9677669ddd69161ec4a0986dbb6be34a1b54eed5d831deff7faf5a663')
+install=bettbox.install
 
 prepare() {
     bsdtar -xf "${srcdir}/data."*
@@ -56,6 +60,7 @@ package() {
 
     install -Dm644 -t "${pkgdir}/usr/share/libalpm/hooks/" "${srcdir}/restart-bettbox.hook"
 
-    # Set setuid on BettboxCore for TUN mode (to avoid password prompt)
-    chmod u+sx "${pkgdir}/usr/lib/${pkgname%-pre-bin}/BettboxCore"
+    # Polkit rule for resolvectl command
+    install -Dm644 "${srcdir}/99-bettbox.rules" \
+        "${pkgdir}/usr/share/polkit-1/rules.d/99-bettbox.rules"
 }

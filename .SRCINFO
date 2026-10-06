@@ -1,16 +1,18 @@
 pkgbase = bettbox-pre-bin
 	pkgdesc = A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash.
-	pkgver = 1.19.4
+	pkgver = 1.19.5pre1
 	pkgrel = 1
 	url = https://github.com/appshubcc/Bettbox
+	install = bettbox.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
 	depends = gtk3
 	depends = libayatana-appindicator
+	depends = libayatana-indicator
 	depends = libkeybinder3
 	optdepends = polkit: for TUN authorization
-	provides = bettbox=1.19.4
+	provides = bettbox=1.19.5pre1
 	conflicts = bettbox
 	conflicts = bettbox-compatible
 	conflicts = bettbox-compatible-pre
@@ -20,10 +22,14 @@ pkgbase = bettbox-pre-bin
 	conflicts = bettbox-compatible-pre-bin
 	options = !debug
 	source = restart-bettbox.hook
+	source = 99-bettbox.rules
+	source = bettbox.install
 	sha256sums = 03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2
-	source_x86_64 = bettbox-1.19.4-x86_64.deb::https://github.com/appshubcc/Bettbox/releases/download/v1.19.4/Bettbox-1.19.4-linux-amd64.deb
-	sha256sums_x86_64 = 5e9133e3fd6249ae09b26a93051075dc82fa6b7255ce1a7c14b43113e7effc80
-	source_aarch64 = bettbox-1.19.4-aarch64.deb::https://github.com/appshubcc/Bettbox/releases/download/v1.19.4/Bettbox-1.19.4-linux-arm64.deb
-	sha256sums_aarch64 = 4422a41e8456647ecbe3d7ab07e7c763f899f3208eb79007a419b53f180bdc40
+	sha256sums = f1a21fce8675e6bd03565f56d21954e9c13991426bdc38368cd1b85f6893a593
+	sha256sums = c6a494309939447475c29c83020d0ad19b12bed0b3f5aaae3c7c8b5f32942d2b
+	source_x86_64 = bettbox-1.19.5pre1-x86_64.deb::https://github.com/appshubcc/Bettbox/releases/download/v1.19.5-pre1/Bettbox-1.19.5-linux-amd64.deb
+	sha256sums_x86_64 = eb8874f8ce99f03b00dbbe08411704c4ad73b0b825db2f715268abefc65f02bb
+	source_aarch64 = bettbox-1.19.5pre1-aarch64.deb::https://github.com/appshubcc/Bettbox/releases/download/v1.19.5-pre1/Bettbox-1.19.5-linux-arm64.deb
+	sha256sums_aarch64 = 0afde7f9677669ddd69161ec4a0986dbb6be34a1b54eed5d831deff7faf5a663
 
 pkgname = bettbox-pre-bin
