@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Fork of cscope (C source code browser), actively maintained"
 arch=('x86_64')
 url="https://github.com/agvxov/csope"
-license=('unknown')
+license=('BSD-4-Clause')
 depends=('ncurses' 'readline')
 makedepends=('git' 'gcc' 'make' 'flex' 'pkgconf')
 provides=('csope')
@@ -41,7 +41,5 @@ package() {
 	install -Dm644 scripts/gmacs.ml "$pkgdir/usr/share/$pkgname/scripts/gmacs.ml"
 	cp -r scripts/pycscope "$pkgdir/usr/share/$pkgname/scripts/"
 	install -Dm644 scripts/pycscope/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.pycscope"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
