@@ -7,8 +7,8 @@
 _pkgname='icann-rdap'
 pkgname="$_pkgname-bin"
 pkgdesc='ICANN implementation of RDAP: the Registry Data Access Protocol (pre-compiled)'
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 changelog="$_pkgname.changelog"
 url="https://github.com/icann/$_pkgname"
 arch=('aarch64' 'x86_64')
@@ -17,21 +17,25 @@ license=('Apache-2.0 OR MIT')
 depends=('glibc' 'libgcc')
 provides=('rdap' "$_pkgname")
 conflicts=('openrdap-client' "${provides[@]}")
-source_aarch64=(
-  "$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$CARCH-unknown-linux-gnu.tar.gz"
+
+_readmes=(
   "README-$pkgver.md::$_rawurl/README.md"
   "README-cli-$pkgver.md::$_rawurl/$_pkgname-cli/README.md"
   "README-srv-$pkgver.md::$_rawurl/$_pkgname-srv/README.md"
+)
+
+_licenses=(
   "$_rawurl/LICENSE-APACHE"
   "$_rawurl/LICENSE-MIT"
 )
+
+source_aarch64=(
+  "$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$CARCH-unknown-linux-gnu.tar.gz"
+  "${_readmes[@]}" "${_licenses[@]}"
+)
 source_x86_64=(
   "$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$CARCH-unknown-linux-gnu.tar.gz"
-  "README-$pkgver.md::$_rawurl/README.md"
-  "README-cli-$pkgver.md::$_rawurl/$_pkgname-cli/README.md"
-  "README-srv-$pkgver.md::$_rawurl/$_pkgname-srv/README.md"
-  "$_rawurl/LICENSE-APACHE"
-  "$_rawurl/LICENSE-MIT"
+  "${_readmes[@]}" "${_licenses[@]}"
 )
 
 _skip=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
@@ -63,11 +67,11 @@ package() {
 }
 
 sha256sums_aarch64=(
-  '07a33ae06a871186d96132cefb4c9efb4b89af2113667200e4c85fd99fc337e9'
+  '7815dfca55d253f7a12a15d8b4fba3eaf40835b62de5550075be37f66a623b09'
   "${_skip[@]}"
 )
 sha256sums_x86_64=(
-  'd5f69ff57ab2ac2392683b026ff1bd36ad99e9382a381fcf739db0259879fa14'
+  '3be04caab9d70b7047df1d5d76478cbea9d3192b284d73abe04ca850bfe9e34f'
   "${_skip[@]}"
 )
 
