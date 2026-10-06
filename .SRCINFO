@@ -1,8 +1,8 @@
 pkgbase = storytold-suite
-	pkgdesc = Metapackage with all the vibe coded clean-room reimplementations of Adobe Creative Suite apps
+	pkgdesc = Metapackage with the 7 ArtCraft reimplementations of Adobe Creative Suite apps
 	pkgver = 1
-	pkgrel = 1
-	url = https://getartcraft.com/
+	pkgrel = 2
+	url = https://getartcraft.com/apps
 	arch = any
 	license = MIT
 	depends = designcraft
