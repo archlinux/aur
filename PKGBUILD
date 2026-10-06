@@ -1,7 +1,7 @@
 # Maintainer: Aria Vesta <dev@ariavesta.com>
 pkgname=botropolis
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="Every Claude Code session on this machine, drawn as a city"
 arch=('x86_64' 'aarch64')
 url="https://github.com/auroq/botropolis"
@@ -31,7 +31,7 @@ conflicts=('botropolis-bin')
 options=('!debug')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('937592759ed09a29f25f067c40805411c31bf1fbd19d544733ec677c409a65b4')
+sha256sums=('1d073e3922ae25745758c799c0085893c5f1f60e53033f24a508666ab296ac16')
 
 build() {
     cd "${pkgname}-${pkgver}"
