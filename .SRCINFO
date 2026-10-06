@@ -1,6 +1,6 @@
 pkgbase = subtitles-contact-sheet-qt
 	pkgdesc = Create subtitles/video contact sheets, previews, small animations, screenshots and thumbnails
-	pkgver = 1.20
+	pkgver = 1.21
 	pkgrel = 1
 	url = https://vongoob9.gitlab.io/subtitles_contact_sheet_qt
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = subtitles-contact-sheet-qt
 	optdepends = ttf-dejavu: default font for scs
 	conflicts = subtitles-contact-sheet-qt-cli-git
 	conflicts = subtitles-contact-sheet-qt-gui-git
-	source = subtitles_contact_sheet_qt-1.20.tar.gz::https://gitlab.com/vongooB9/subtitles_contact_sheet_qt/-/archive/1.20/subtitles_contact_sheet_qt-1.20.tar.gz
-	b2sums = 4b8446d001f38ef36bb139d437566e9c864c1da56cd4fe72d4c29e49c9462ea36116378587898bee11983bd8750512c1553755a654b4426ab59ed8c0f078876a
+	source = subtitles_contact_sheet_qt-1.21.tar.gz::https://gitlab.com/vongooB9/subtitles_contact_sheet_qt/-/archive/1.21/subtitles_contact_sheet_qt-1.21.tar.gz
+	b2sums = 4ccfac1832261372fa8b415623a71c38f461a3fecdac8244f55a427e572add73d09589f125d5caac40bbcd4aa021d548c19c1bfc06a76bf4a5550238b0135b94
 
 pkgname = subtitles-contact-sheet-qt-cli
 	pkgdesc = Create subtitles/video contact sheets, previews, small animations, screenshots and thumbnails (CLI)
