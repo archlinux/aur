@@ -2,8 +2,8 @@
 
 _name=vercel-oidc
 pkgname=python-$_name
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc='OIDC helpers for Vercel Python applications.'
 arch=('any')
 _repo='https://github.com/vercel/vercel-py'
@@ -26,7 +26,7 @@ checkdepends=('python-pytest'
 optdepends=('python-pyjwt: verify'
             'python-cryptography: verify')
 source=("$_name::git+$_repo.git#tag=$_name-v$pkgver")
-sha256sums=('8decb2baa29333c549c350136119cac08ba5509301d183e34b6291574018488c')
+sha256sums=('c88958e62fdd71617be1b5dfb348b00d385cb4c85a051b72808ffd632f305cf8')
 
 build() {
   cd "$srcdir"/$_name/src/$_name
