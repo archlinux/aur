@@ -5,7 +5,7 @@ pkgname=mmaid
 # mmaid-go-$pkgver rather than mmaid-$pkgver. Naming it here keeps build() and
 # the Makefile's dry run reading the same value instead of both hardcoding it.
 _repo=mmaid-go
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Terminal Mermaid diagram renderer - inline diagrams from Mermaid syntax in your terminal"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ license=('MIT')
 depends=()
 makedepends=('go>=1.23')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aaronsb/mmaid-go/archive/v$pkgver.tar.gz")
-sha256sums=('7cbcfff9e84edb705f547a83f9eee570e9abb52c7c5cf80899b855e9d579e592')
+sha256sums=('a220feac64062521eca290ef56bfe49b11918d82d3787ee643ea48dc3d9ec46e')
 
 build() {
     cd "$srcdir/$_repo-$pkgver"
