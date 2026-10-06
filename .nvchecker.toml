@@ -1,0 +1,4 @@
+[designcraft]
+source = "git"
+git = "https://github.com/storytold/designcraft.git"
+prefix = "v"
