@@ -3,7 +3,7 @@
 pkgname='blepfx-prisma-clap-bin'
 pkgver='release_128'
 pkgrel='1'
-pkgdesc='a digital degrader'
+pkgdesc='a chromatic manipulator'
 url="https://fx.amee.ee/plugin/prisma"
 license=('custom:Potion Seller Public License')
 source=("https://github.com/blepfx/dist/releases/download/${pkgver//_/-}/prisma-${CARCH}-unknown-linux-gnu.zip"
