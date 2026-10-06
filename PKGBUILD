@@ -3,8 +3,8 @@
 # Release notes https://rocm.docs.amd.com/en/latest/about/release-notes.html
 pkgname=rocm-gfx1153-bin
 pkgdesc="ROCm Core SDK - Ryzen AI 5/7 - Gorgon Point"
-pkgver=10.0.0
-pkgrel=2
+pkgver=10.1.0
+pkgrel=1
 epoch=0
 arch=('x86_64')
 url='http://www.amd.com'
@@ -20,18 +20,19 @@ conflicts=('opencl-amd' 'opencl-amd-dev' 'rocm-bin' 'rocm-gfx101x-bin' 'rocm-gfx
 'rocm-ml-libraries' 'rocm-ml-sdk')
 optdepends=('clinfo')
 options=('!strip')
+noextract=("therock-dist-linux-gfx1153-10.1.0.tar.gz")
 
 source=(
-"https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx1153-10.0.0.tar.gz"
+"https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx1153-10.1.0.tar.gz"
 )
 
 sha256sums=(
-"7a34d3d63511bdbe2b5f782a429a88b9e200ae628ffae5c17cde980cd4597269"
+"a3282f3b2e806bf9d7379920a02070a7ad9b019c271e083ffd9a53112d41c27a"
 )
 
 prepare() {
     mkdir -p "${srcdir}/opt/rocm/core"
-    bsdtar xf therock-dist-linux-gfx1153-10.0.0.tar.gz -C ${srcdir}/opt/rocm/core
+    bsdtar xf therock-dist-linux-gfx1153-10.1.0.tar.gz -C ${srcdir}/opt/rocm/core
 }
 
 package() {
