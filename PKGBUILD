@@ -1,5 +1,7 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
+# Source: https://github.com/jmelahman/pkgbuilds
+
 pkgname=vibecheck
 pkgver=1.7.7
 pkgrel=5
