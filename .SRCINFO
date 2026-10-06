@@ -1,6 +1,6 @@
 pkgbase = gitcrawl-bin
 	pkgdesc = Local-first GitHub issue and pull request crawler for maintainer triage
-	pkgver = 0.11.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/openclaw/gitcrawl
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = gitcrawl-bin
 	provides = gitcrawl
 	conflicts = gitcrawl
 	options = !strip
-	source_x86_64 = gitcrawl-0.11.0-linux_amd64.tar.gz::https://github.com/openclaw/gitcrawl/releases/download/v0.11.0/gitcrawl_0.11.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = d8d3fa8a8ad9b1255959ac15d685d423763ecc33d27531a25df744ccbb52e5d4
-	source_aarch64 = gitcrawl-0.11.0-linux_arm64.tar.gz::https://github.com/openclaw/gitcrawl/releases/download/v0.11.0/gitcrawl_0.11.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 0cf57f2dd647bbd0014173605a7af3fa4b1f3787de41dfa3f201435772551eb0
+	source_x86_64 = gitcrawl-0.15.0-linux_amd64.tar.gz::https://github.com/openclaw/gitcrawl/releases/download/v0.15.0/gitcrawl_0.15.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = abdab92fbfd1bc407a798b7dabc37fe67da3c42966f63a65e70193fac808b495
+	source_aarch64 = gitcrawl-0.15.0-linux_arm64.tar.gz::https://github.com/openclaw/gitcrawl/releases/download/v0.15.0/gitcrawl_0.15.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 63ff95a7f84d42f983c383e59f6882799fe018dfd5e1f5d1702379f9c2d73b3c
 
 pkgname = gitcrawl-bin
