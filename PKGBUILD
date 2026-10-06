@@ -1,26 +1,27 @@
-# Maintainer: erffy <https://codeberg.org/erffy>
+# Maintainer: erenvly <https://codeberg.org/erenvly>
 
 _pkgbase="zig-waybar-contrib"
 pkgname="${_pkgbase}-beta-bin"
-pkgver=26.09.16.1
+epoch=1
+pkgver=1.0.0_staging.38
 pkgrel=1
 pkgdesc='High-performance Waybar modules written in Zig for efficient system monitoring (Beta binary version)'
 arch=('x86_64')
-url="https://codeberg.org/erffy/$_pkgbase"
+url="https://codeberg.org/erenvly/$_pkgbase"
 license=('GPL3')
 provides=("${_pkgbase}=$pkgver")
-conflicts=("${_pkgbase}-bin")
+conflicts=("$_pkgbase")
 optdepends=(
   'fakeroot: updates module'
 )
 source=(
-  "zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/releases/download/pre-26.09.16.1/zig-waybar-contrib-release-pre-26.09.16.1.zip"
-  "config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/pre-26.09.16.1/config.waybar.jsonc"
-  "LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/pre-26.09.16.1/LICENSE"
+  "zig-waybar-contrib.zip::https://codeberg.org/erenvly/zig-waybar-contrib/releases/download/1.0.0-staging.38/zig-waybar-contrib-release-1.0.0-staging.38.zip"
+  "config.waybar.jsonc::https://codeberg.org/erenvly/zig-waybar-contrib/raw/tag/1.0.0-staging.38/config.waybar.jsonc"
+  "LICENSE::https://codeberg.org/erenvly/zig-waybar-contrib/raw/tag/1.0.0-staging.38/LICENSE"
 )
-sha256sums=('6a9d69b3b8e3c9af4712add1b254fa19697e1a570a3166477c073ef8358ff348'
+sha256sums=('ea171f61a7b6b5582c2ebfb95ccbd8f9a7d3ba1198812feb2e7cf501834c207f'
             'dcd740a429998be22dbbf6eb47e89cc4a24863af75839d0f8621c146a125575d'
-            '4452bc2d13bcd25bdd45ca659672df16c273ab9d1e65c4064447eec382dc96d6')
+            '2299c7882f95e4d84c68a527b7473b6e086a523379bcebb38905c7758a03a472')
 
 package() {
   cd "$srcdir"
