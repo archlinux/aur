@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-terminal-tools
-pkgver=6.7.4
+pkgver=6.7.5
 pkgrel=1
 pkgdesc='Tools based on SonicDE Frameworks to better interact with the system'
 arch=(x86_64)
@@ -34,7 +34,7 @@ provides=(kde-cli-tools)
 conflicts=(kde-cli-tools)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('65a68df3909d247912df53d197bb6a4574cb85aec967378260276efc32a9ee1f')
+sha256sums=('05115bf0a4791ee110daa2a7ae458aaa30b8a2047a7e49ae41dc7de0793a95d9')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
