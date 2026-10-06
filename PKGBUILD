@@ -2,7 +2,7 @@
 
 pkgname=wolf-lang-bin
 _pkgname=wolf-lang
-pkgver=0.2.23
+pkgver=0.2.24
 pkgrel=1
 pkgdesc='The wolf systems language: the wolfgang compiler, its runtime and the C importer (release archive)'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url='https://github.com/wolffe-lang/wolf-lang'
 license=('GPL-3.0-or-later')
 # `sh` runs the /usr/bin/wolf exec script; `cc` (gcc) links every
 # program `wolf build` produces, so gcc is a runtime dependency.
-# glibc floor: the 0.2.23 archives import at most GLIBC_2.34 (objdump -T,
+# glibc floor: the 0.2.24 archives import at most GLIBC_2.34 (objdump -T,
 # x86_64 and aarch64); every Arch glibc meets that, so it stays unversioned.
 depends=('sh' 'gcc' 'gcc-libs' 'glibc')
 optdepends=(
@@ -35,8 +35,8 @@ options=('!strip' '!debug')
 # no `+dev` suffix, which a from-tarball rebuild could not manage.
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/wolf-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/wolf-$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('6f505eb542d340d3f818e6b4de57ef13736d0186b8b4efae999aa4aa1a4e44b0')
-sha256sums_aarch64=('f3b31984150cc7018f51d75dfd5a2ef39a7b721be2fc798c1a2ea02c152ee2ff')
+sha256sums_x86_64=('501d6d3f45124c84708b410dac62af5d358d24c1746323f17d42378b043519c7')
+sha256sums_aarch64=('3e4386bbba3c8a28647d2c4952e6b57f069720844e09ae079adac0162fdf3271')
 
 package() {
     local _triple
@@ -57,6 +57,10 @@ package() {
     install -Dm755 wolf "$pkgdir/usr/lib/$_pkgname/wolf"
     install -Dm755 wolf-cimport-worker "$pkgdir/usr/lib/$_pkgname/wolf-cimport-worker"
     install -Dm644 libwolf_rt.a "$pkgdir/usr/lib/$_pkgname/libwolf_rt.a"
+    # 0.2.24 (kw12): every release archive carries the freestanding
+    # runtime, which `wolf build --target x86_64-unknown-none` finds beside
+    # the binary.
+    install -Dm644 libwolf_rt_none.a "$pkgdir/usr/lib/$_pkgname/libwolf_rt_none.a"
 
     install -dm755 "$pkgdir/usr/bin"
     printf '#!/bin/sh\nexec /usr/lib/%s/wolf "$@"\n' "$_pkgname" > "$pkgdir/usr/bin/wolf"
