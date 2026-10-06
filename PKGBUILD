@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=typephp
-pkgver=0.8.1
+pkgver=0.9.4
 pkgrel=1
 pkgdesc='AOT compiler that compiles PHP to native binaries'
 arch=('x86_64' 'aarch64')
@@ -17,20 +17,20 @@ source=(
   "phpy-${_phpy_commit}.tar.gz::https://github.com/swoole/phpy/archive/${_phpy_commit}.tar.gz"
   'tpc.sh'
   'php-config.sh'
-  'typephp-root-path.patch'
+  'typephp-runtime-root.patch'
 )
-b2sums=('f414b09d0ed612fdd0a3704e9c33865ef2b1476b6a9a9755883824b5ef66eedb10a07b9c62bd178d751235dc1343861a4c6e1c7a6d2bab93b334d369dd26b2b2'
+b2sums=('c578bb678d509a352a7c05e4cbca67817db8d79893b295eea636d2c4ca371c5547762f90e836ce9324e637e42ddba24d8ca46f973bb90c049a13be947e1f3b0c'
         '1054bbbf7ca92037dbbc6306509ea9079f5bfe787aac50dec325f900ec1ef3d58ec4c84ae9a4a4d3d58f2acba8431a221cb69a04cfc92984ae9e3c1a5c914b4e'
-        '65d611297e462695090408e36fdd81c879b6d1dda3f712a9bc2eee0ce30c588adec69e5db46a8a624bf5c77615f61859147f5ae3693945ec41e8707d1a208f08'
+        'ecc44f15abc5a0ef0519fb53b6e8fbe7b1c1c54ee78395e69e6df9a23e9cf911453aacd10a44cd301fda21a25537038fe2640aa8edc2867125082796edabd500'
         '0fb3520559f06c333b67894671815fb570ee7b5ffa3f1d1b2f6176a87dd123534457a66fb1a7fa69c7021421126faff0522237b8b8802056f6cea8e88e9b27d3'
-        '0c2402dec6bfe10ef7abd18e0ed1d8f95939992bd5ebf5e5c91cd5d26466ecf84c562d9383c38296a5287433cc1e21d1b5c700d29f3cbbd3477c2eb0cc5b3059')
+        'ac60525b225bed62866da8eb62635250969792db69b2eff8a4d61edc9fe639fddfd49a06646020dc7fe1e87bae254994535d9f8ed7f6a1e74dd40b3676298698')
 
 prepare() {
   local php_args=()
 
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  patch -Np1 -i "${srcdir}/typephp-root-path.patch"
+  patch -Np1 -i "${srcdir}/typephp-runtime-root.patch"
 
   # Arch ships iconv.so with php, but extensions may be disabled in php.ini.
   # Load it for Composer without modifying the host's PHP configuration.
@@ -73,9 +73,15 @@ build() {
 check() {
   local src="${srcdir}/${pkgname}-${pkgver}"
   local phpx_home="${src}/vendor/swoole/phpx"
+  local php_conf="${srcdir}/php-conf.d"
+
+  install -d "${php_conf}"
+  printf 'extension=%s\n' \
+    "${srcdir}/phpy-${_phpy_commit}/modules/phpy.so" > "${php_conf}/phpy.ini"
 
   PHPX_HOME="${phpx_home}" \
   PHP_HOME="$(php-config --prefix)" \
+  PHP_INI_SCAN_DIR="${php_conf}" \
   LD_LIBRARY_PATH="${phpx_home}/lib:$(php-config --prefix)/lib" \
     "${src}/tpc" --version
 }
@@ -102,6 +108,11 @@ package() {
     printf '%s\n' 'php_hash.h already contains the upstream C++ fix'
   fi
   install -Dm755 "${srcdir}/php-config.sh" "${appdir}/php/bin/php-config"
+  install -Dm755 "${srcdir}/phpy-${_phpy_commit}/modules/phpy.so" \
+    "${appdir}/php/lib/phpy.so"
+  install -d "${appdir}/php/conf.d"
+  printf 'extension=%s\n' '/opt/typephp/php/lib/phpy.so' \
+    > "${appdir}/php/conf.d/phpy.ini"
   ln -s /usr/bin/php "${appdir}/php/bin/php"
   ln -s /usr/lib/libphp.so "${appdir}/php/lib/libphp.so"
 

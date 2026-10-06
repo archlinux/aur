@@ -1,0 +1,36 @@
+diff --git a/src/compiler.php b/src/compiler.php
+--- a/src/compiler.php
++++ b/src/compiler.php
+@@ -33,7 +33,7 @@ function runCompiler(int $argc, array $argv, CompilerRuntime $runtime): void
+     // The PHP entrypoint already loaded Composer's project autoloader in
+     // bin/bootstrap.php. The native binary loads its embedded copy here.
+     if (!$runtime->sourceEntry) {
+-        require_once dirname(__DIR__) . '/vendor/autoload.php';
++        require_once $runtime->installationRoot . '/vendor/autoload.php';
+     }
+ 
+     configureProxyEnvironment($argv);
+
+diff --git a/src/CompilerBase.php b/src/CompilerBase.php
+--- a/src/CompilerBase.php
++++ b/src/CompilerBase.php
+@@ -770,7 +770,18 @@ public function __construct(string $rootPath, ?CompilerRuntime $compilerRuntime = null)
+         $this->symbols = new SymbolRepository();
+         $this->setPhpVersion(self::DEFAULT_PHP_VERSION);
+         $this->printer = new PrettyPrinter\Standard();
+-        $this->setBuildDir($rootPath . '/build');
++        $buildDirectory = $rootPath . '/build';
++        if (!$this->compilerRuntime->sourceEntry) {
++            $cacheHome = getenv('XDG_CACHE_HOME');
++            if ($cacheHome === false || $cacheHome === '') {
++                $home = getenv('HOME');
++                $cacheHome = $home !== false && $home !== ''
++                    ? $home . '/.cache'
++                    : sys_get_temp_dir();
++            }
++            $buildDirectory = rtrim($cacheHome, '/\\') . '/typephp/build';
++        }
++        $this->setBuildDir($buildDirectory);
+         $climate = new CLImate();
+         $this->climate = $climate;
+     }
