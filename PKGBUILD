@@ -1,5 +1,4 @@
-# Maintainer: Fauzan <fauzan@pacman.id>
-# Contributor: itsmefdil <https://github.com/itsmefdil>
+# Maintainer: Fadilah Riczky (itsmefdil) <friczky@gmail.com>
 
 pkgname=termimus-ssh-bin
 _pkgname=termimus
