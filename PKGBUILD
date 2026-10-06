@@ -1,5 +1,6 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
+# Source: https://github.com/jmelahman/pkgbuilds
 
 pkgname=connections
 pkgver=0.1.21
