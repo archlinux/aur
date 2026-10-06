@@ -3,7 +3,7 @@
 
 _pyname=lizard
 pkgname=python-$_pyname
-pkgver=1.24.0
+pkgver=1.24.1
 pkgrel=1
 pkgdesc="Code analyzer for Java, C/C++, JavaScript, Python, Ruby, Swift and Objective C"
 arch=('any')
@@ -26,7 +26,7 @@ checkdepends=(
     'python-pytest'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/terryyin/lizard/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('41828a3dbcb66279396158bd75423121fb45759978bb0f111ffd7e665d33f80a599947cac94d7ba8cfbe02d543ad22a87d9f5b46f7a6e32b273e7d054a280eed')
+b2sums=('9a71f8257cc9c895d84715a040fe781f047bc5101f82b1fca13a19f566a7a82795133b96e4ef63e5e0034e473e523dc006f63cac258f4ec4d62252476f29a14b')
 
 build() {
     cd $_pyname-$pkgver
