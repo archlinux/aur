@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=effectcraft
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded compositor in the spirit of After Effects'
@@ -13,7 +13,7 @@ depends=(alsa-lib
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('f31e6cc226c4c5b9fd58a1016cd30138ab139a6de9bb1901ef1cac59bf55e8c6')
+sha256sums=('fb16a4a35e60c18ed817128d9515054d0362a7bde547f6be217ffe27181db89f')
 
 _srcenv() {
 	cd "$_archive"
