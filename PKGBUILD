@@ -1,7 +1,7 @@
 # Maintainer: Matthew Phillips <matthew@matthewphillips.info>
 pkgname=augur-dbus
 _name=augur
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='AI for desktop programs, as a session D-Bus service'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glib2' 'json-glib' 'libsoup3' 'glibc' 'dbus')
 makedepends=('meson')
 checkdepends=('python')
 source=("$url/releases/download/v$pkgver/$_name-$pkgver.tar.xz")
-sha256sums=('1f16ea3fdeb44915a78d9bf1d295e0a0ef1c2c0f9102600296fdbff07af2f057')
+sha256sums=('7a860b0b051ed58725c376bc75b0961adbfc6fff32e99fdc054c3eb2117c37d7')
 
 build() {
 	arch-meson "$_name-$pkgver" build
