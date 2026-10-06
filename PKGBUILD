@@ -2,7 +2,7 @@
 # Old Maintainer: Manuel Mendez <mmendez534@gmail.com>
 
 pkgname=include-what-you-use
-pkgver=0.26
+pkgver=0.27
 pkgrel=1
 _clang_major=23
 _clang_minor=1
@@ -11,7 +11,7 @@ pkgdesc="A tool for use with clang to analyze #includes in C and C++ source file
 url="https://include-what-you-use.org"
 license=('LicenseRef-LLVM-Release-License')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('dc7cd155d69bf5604de9560bd38b755b4f3194dc7ed358f36d0cb71015489b50f4743a85e8590bf016351442841c7f0dc7707d3db45f5949f3ad83d3395256d7')
+sha512sums=('82c04eaee610488a266938ef050fc169c66ac7624a12ec40afbfbeabcd7aedcf1387186ffb9f3c0ba665998e5c686d51fb8800d928e7074e8dc8a86336e074ec')
 arch=('x86_64')
 _min="${_clang_ver}"
 _max=$((_clang_major + 1)).0
