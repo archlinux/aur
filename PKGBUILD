@@ -14,8 +14,6 @@ depends=(
 makedepends=(
 	'git'
 )
-conflicts=(upm-bin upm-git)
-provides=(upm-bin upm-git)
 license=('MIT')
 
 source=("git+https://github.com/unjs/upm.git#tag=v$pkgver")
