@@ -1,9 +1,9 @@
 # Maintainer: Bink
-: "${aur_ggml_build_universal:=false}"
+: "${_aur_ggml_build_universal:=${aur_ggml_build_universal:-false}}"
 pkgname=ggml-cuda-git
 _pkgname="${pkgname%-cuda-git}"
 _srcname=llama.cpp
-pkgver=b10970.r3.1bc7a5af0d
+pkgver=b11434.r0.5e03bdd870
 pkgrel=1
 epoch=1
 pkgdesc="Tensor library for machine learning (with NVIDIA CUDA optimizations)"
@@ -14,6 +14,7 @@ depends=(
   cuda
   gcc-libs
   glibc
+  nccl
   nvidia-utils
 )
 makedepends=(
@@ -23,16 +24,19 @@ makedepends=(
   ninja
 )
 optdepends=(
-  'nccl: needed for multi-GPU parallelism (rebuild required)'
-  'rdma-core: RDMA transport for RPC backend (rebuild required)'
+  'rdma-core: RDMA transport for RPC (rebuild with _aur_ggml_cmakeopts="-DGGML_RPC_RDMA=ON")'
 )
 # Note: This package provides libggml (with CUDA) to support downstream packages
 # like llama.cpp-cuda-git and whisper.cpp-cuda that require CUDA-enabled GGML backends.
 provides=(
   ggml-cuda-git
   libggml
-  libggml.so
   ggml
+  libggml.so
+  libggml-base.so
+  libggml-cpu.so
+  libggml-cuda.so
+  libggml-rpc.so
 )
 conflicts=(
   libggml
@@ -54,16 +58,11 @@ build() {
     export PATH="/opt/cuda/bin:$PATH"
   fi
 
-  # Build only the ggml/ subfolder from llama.cpp, so ggml stays in sync with
-  # what the current llama.cpp code expects.
-  #
-  # Building ggml/ directly makes its CMakeLists.txt think it's a standalone
-  # build, which requires a ggml.pc.in file that llama.cpp doesn't ship,
-  # causing a CMake error.
-  #
-  # This fix will wrap it in a tiny generated CMakeLists.txt that just does
-  # add_subdirectory() on ggml/, like llama.cpp's own build uses normally,
-  # so the standalone-build detection never triggers.
+  # Build only the ggml/ subfolder of llama.cpp, so ggml stays in sync with
+  # llama.cpp. A tiny generated CMakeLists.txt just does add_subdirectory() on
+  # ggml/, like llama.cpp's own build. Building ggml/ directly would make its
+  # CMakeLists.txt think it is a standalone build, which needs a ggml.pc.in
+  # file llama.cpp does not ship.
   local _wrapper="${srcdir}/_ggml_wrapper"
   mkdir -p "${_wrapper}"
   cat > "${_wrapper}/CMakeLists.txt" <<EOF
@@ -87,7 +86,9 @@ EOF
     -DGGML_OPENMP=ON
     -DGGML_LTO=ON
     -DGGML_RPC=ON
+    -DGGML_RPC_RDMA=OFF
     -DGGML_CUDA=ON
+    -DGGML_CUDA_NCCL=ON
     -DGGML_CUDA_FA_ALL_QUANTS=ON
     -DGGML_CUDA_COMPRESSION_MODE=speed
     -DGGML_CUDA_GRAPHS=ON
@@ -97,16 +98,15 @@ EOF
     -Wno-dev
   )
 
-  if [[ ${aur_ggml_build_universal} == true ]]; then
-    echo "Building universal binary [aur_ggml_build_universal == true]"
+  if [[ ${_aur_ggml_build_universal} == true ]]; then
+    echo "Building universal binary [_aur_ggml_build_universal == true]"
     _cmake_options+=(
       -DGGML_BACKEND_DL=ON
       -DGGML_NATIVE=OFF
       -DGGML_CPU_ALL_VARIANTS=ON
     )
   else
-    # we lose GGML_NATIVE_DEFAULT due to how makepkg includes
-    # $SOURCE_DATE_EPOCH in ENV
+    # makepkg sets SOURCE_DATE_EPOCH, which would otherwise disable native defaults
     _cmake_options+=(
       -DGGML_BACKEND_DL=OFF
       -DGGML_NATIVE=ON
@@ -115,10 +115,11 @@ EOF
   fi
 
   # Allow user-specified additional flags
-  if [[ -n "${aur_ggml_cmakeopts:-}" ]]; then
-    echo "Applying custom CMake options: ${aur_ggml_cmakeopts}"
+  if [[ -n "${_aur_ggml_cmakeopts:-${aur_ggml_cmakeopts:-}}" ]]; then
+    local _extra_cmake="${_aur_ggml_cmakeopts:-${aur_ggml_cmakeopts:-}}"
+    echo "Applying custom CMake options: ${_extra_cmake}"
     # shellcheck disable=SC2206 # intentional word splitting
-    _cmake_options+=(${aur_ggml_cmakeopts})
+    _cmake_options+=(${_extra_cmake})
   fi
 
   cmake "${_cmake_options[@]}"
