@@ -1,0 +1,17 @@
+pkgbase = torresmo
+	pkgdesc = Dead simple and minimal TUI client for the Transmission daemon
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://sr.ht/~paemuri/torresmo
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	optdepends = transmission-cli: the Transmission daemon to connect to
+	options = !debug
+	source = torresmo-1.0.3.tar.gz::https://git.sr.ht/~paemuri/torresmo/archive/v1.0.3.tar.gz
+	sha256sums = 740d677a1eb0677f9c71033305b7e43b1725fe9ba08fdce44d6fc83287c7d73d
+
+pkgname = torresmo
