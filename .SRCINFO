@@ -1,0 +1,13 @@
+pkgbase = bitsrunlogin-go
+	pkgdesc = Headless login tool for Srun (深澜) campus networks, written in Go
+	pkgver = 1.6.8
+	pkgrel = 1
+	url = https://github.com/Mmx233/BitSrunLoginGo
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = go
+	source = https://github.com/Mmx233/BitSrunLoginGo/archive/refs/tags/v1.6.8.tar.gz
+	sha256sums = bfabe44928c51e1a020aaf153dac2cb03e34efeeb659e0bf5b99d3ec99339584
+
+pkgname = bitsrunlogin-go
