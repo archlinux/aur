@@ -1,0 +1,52 @@
+NiriFX development package for Arch Linux
+========================================
+
+Open NiriFX Studio from your application launcher, or run:
+
+    /usr/bin/niri-fx studio --active
+
+Install Chromium for an app-style window. Otherwise Studio opens your default
+browser. Niri is needed to validate and apply effects; preview and JSON export
+also work without a running compositor. Quickshell and GTK pickers are optional.
+Choose a preset for each action, review the proposed changes, then Apply.
+Installing, upgrading or removing this package does not apply effects.
+
+This package builds CLI, Studio, the preset library and integrations from the
+current main branch. It conflicts with the release package niri-fx; choose one.
+Use niri-fx for versioned releases. Development updates can change behavior.
+It does not include the patched compositor or add a NiriFX login session.
+Stock Niri supports the documented open/close/resize effects; continuous drag,
+custom movement and swaps require the separately prepared full NiriFX session.
+No stock Niri, shell, service or user configuration files are replaced.
+
+Updates and existing managed sessions
+------------------------------------
+
+Use your AUR helper's development-package update option, or rebuild the recipe,
+to pick up commits from main. Ordinary version checks may not notice new commits. Reopen Studio to use the
+updated package; refreshing a page does not replace its running server.
+System Python minor-version updates can require rebuilding AUR Python packages.
+
+An existing managed NiriFX session uses retained virtual environments so that
+its selected and previous tools survive package updates. This package does not
+replace those environments or switch their launchers. Do not use /usr/bin/python
+as a managed tools runtime, upgrade a retained environment in place, or remove
+retained files to resolve a package/launcher mismatch.
+
+If a user-installed niri-fx or Studio launcher takes precedence over this package,
+it remains in place. Use /usr/bin/niri-fx explicitly to test the packaged tools.
+Use the reviewed managed-tool workflow to update an existing full session:
+
+https://github.com/jturbide/niri-fx/blob/main/docs/tool-updates.md
+
+Recovery
+--------
+
+Use Studio Restore for effects applied by the standalone tools. Removing the
+package leaves your effects, saved profiles and Restore history in place; restore
+effects before removal if you want the underlying configuration back. Native
+session rollback is a separate reviewed operation. Keep stock Niri available.
+
+Portable examples: /usr/share/doc/niri-fx/examples/
+Current-source documentation: https://github.com/jturbide/niri-fx/tree/main/docs
+Source and issues: https://github.com/jturbide/niri-fx
