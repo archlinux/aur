@@ -1,0 +1,19 @@
+pkgbase = fiilctl
+	pkgdesc = FIIL 蓝牙耳机控制台（Qt Quick 界面，走经典蓝牙 SPP，免手机 App）
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/xzl01/fiilctl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = bluez-libs
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = bluez-utils
+	provides = fiilctl
+	source = fiilctl-1.0.0.tar.gz::https://github.com/xzl01/fiilctl/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 3a110beb2a5bd6df5bbad97c8219890cb56928796c2f7e70066ae1411bc808e2
+
+pkgname = fiilctl
