@@ -6,7 +6,7 @@
 _orig_pkgname=devtools
 pkgname=devtools-doas
 epoch=1
-pkgver=1.5.0
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='Tools for Arch Linux package maintainers (patched for opendoas)'
 arch=('any')
@@ -33,13 +33,11 @@ depends=(
   rsync
   sed
   util-linux
-
+  opendoas
   breezy
   git
   mercurial
   subversion
-
-  opendoas
 )
 makedepends=(
   asciidoctor
@@ -64,10 +62,10 @@ validpgpkeys=(
   'E240B57E2C4630BA768E2F26FC1B547C8D8172C8' # Levente Polyak <anthraxx@archlinux.org>
   'F00B96D15228013FFC9C9D0393B11DAA4C197E3D' # Christian Heusel (gromit packager key) <gromit@archlinux.org>
 )
-sha256sums=('e196cc3cb055f07da9542cd2a9db543178a57eeb3a1df0be4c81952c122b5f37'
+sha256sums=('be0d739c9c8c76fc3242eb48f4812d308f37b560751380486616210e42514cc5'
             'SKIP'
             'SKIP')
-b2sums=('cc9e05b6bf2cf40d1e76dcd3f0ac04fbccf926c00fa972451c3555f36897aff3677848a7ed1acec69962730896690ccfbef6750b1274d561d60c7d16714a5437'
+b2sums=('58a1cc3eeaef0cacef7bb56019a58469d67f430547b31216ea520154ddf79a02a194b931dac4429042571414a166b5fea59715fac61618714f596db060d683d2'
         'SKIP'
         'SKIP')
 install=devtools.install
