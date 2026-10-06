@@ -1,15 +1,18 @@
 pkgbase = tic-tac-toe-tui-git
 	pkgdesc = Tic Tac Toe TUI
-	pkgver = r5.c0fc66c
+	pkgver = r38.dea67b9
 	pkgrel = 1
-	url = https://github.com/rutger505/tic-tac-toe-cli
+	url = https://github.com/Rutger505/tic-tac-toe-tui
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	depends = glibc
+	depends = gcc-libs
 	provides = tic-tac-toe-tui
 	conflicts = tic-tac-toe-tui
-	source = tic-tac-toe-tui-git::git+https://github.com/rutger505/tic-tac-toe-cli.git
+	source = tic-tac-toe-tui::git+https://github.com/Rutger505/tic-tac-toe-tui.git
 	sha256sums = SKIP
 
 pkgname = tic-tac-toe-tui-git
