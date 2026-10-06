@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Muxel <sebastian@muxel.dev>
 
 pkgname='blepfx-filtrr-clap-bin'
-pkgver='release_128'
+pkgver='a nonlinear ladder'
 pkgrel='2'
 pkgdesc='a digital degrader'
 url="https://fx.amee.ee/plugin/filtrr"
