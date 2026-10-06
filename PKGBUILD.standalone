@@ -1,7 +1,7 @@
 pkgname=zig-git
-pkgver=0.17.0.r1245.gefd6f190fd82
+pkgver=0.18.0.r47.g069986fdbf4c
 pkgrel=1
-pkgdesc='Zig programming language (static standalone toolchain)'
+pkgdesc='General-purpose programming language (static standalone toolchain)'
 arch=('aarch64' 'x86_64')
 url='https://ziglang.org/'
 license=('MIT' 'Apache-2.0-with-LLVM-exception')
