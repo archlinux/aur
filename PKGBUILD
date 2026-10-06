@@ -1,4 +1,4 @@
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 # Contributor: Callum Parsey <callum@neoninteger.au>
 # Contributor: Laszlo Papp <lpapp@kde.org>
 
@@ -8,7 +8,7 @@
 # `conflicts` directives. Neither scenario is ideal, so just use the old name.
 pkgname=adduser-deb
 _pkgname=adduser-debian
-pkgver=3.155
+pkgver=3.159
 pkgrel=1
 pkgdesc="Debian's 'adduser' and 'deluser' commands for creating and removing users"
 arch=("any")
@@ -43,7 +43,7 @@ backup=("etc/adduser.conf" "etc/deluser.conf")
 source=("https://salsa.debian.org/debian/adduser/-/archive/debian/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         "arch-license-path.patch"
         "arch-policy.patch")
-sha256sums=('6ada7f113ff0c43efcf621c07fe22a7b2de9023cd735d738c66562430854ce9c'
+sha256sums=('d0927c02b1dc7acfa299b3cdc3c016575d4a52635b5d3f5e4404d5ee33d8cdaa'
             'fa6590b6d8d6dfab1b4da3230115c3d69fd70c7dea84e5308369819c0a5734f4'
             '0298fd67a2b313f44d83024c737fbf0408871c29e28324223abe8d3269391ec9')
 
