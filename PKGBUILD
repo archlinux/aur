@@ -1,7 +1,7 @@
 # Maintainer: sigurd4 <sigurd dot spangelo at gmail dot com>
 
 pkgname=enneagram
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="An exploration into the enneagram."
 url="https://github.com/sigurd4/enneagram"
@@ -12,7 +12,7 @@ makedepends=('cargo' 'rust' 'base-devel')
 provides=('enneagram')
 conflicts=('enneagram-git')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('f8c2e62f4f0fcf75f249d17c80783ea6693ba779c32c47ddb6a139a7e4f2e4ce')
+sha256sums=('73c613809dbaddf0eeda5cc820c323c0348ea86b66df65d14794b9584921c5cf')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
