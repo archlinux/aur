@@ -1,7 +1,7 @@
 pkgbase = mautrix-signal-bin
 	pkgdesc = A Matrix-Signal puppeting bridge (Golang version)
 	pkgver = 0.2609.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mautrix/signal
 	arch = x86_64
 	arch = aarch64
