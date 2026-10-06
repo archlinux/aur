@@ -3,7 +3,7 @@
 pkgname=tnylpo-git
 pkgver=r210.0eea604
 _pkgname=tnylpo
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility to run programs written for CP/M-80."
 arch=('x86_64' 'armv7h' 'armv6h' 'aarch64' 'i686' 'pentium4')
 url="https://gitlab.com/gbrein/tnylpo"
@@ -20,7 +20,10 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  make
+  # Upstream replaced the plain Makefile with build.sh + makefile.mk
+  # (OS-specific CFLAGS/LIBS dispatch); "make" alone no longer finds a
+  # makefile at all.
+  sh build.sh
 }
 
 package() {
