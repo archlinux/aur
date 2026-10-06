@@ -1,7 +1,7 @@
 # Maintainer: Hüseyn Teymurzade <https://github.com/Huseynteymurzade28>
 
 pkgname=pomtex
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="On-demand LaTeX: a portable TeX kernel that installs CTAN packages only when a document needs them"
 arch=('x86_64')
@@ -10,11 +10,13 @@ license=('MIT')
 depends=('gc' 'pcre2' 'openssl' 'zlib' 'xz')
 makedepends=('crystal')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('639d94ffb89d0ad2e45cdab75b77cbce0a83f0cecec5733238d0451260a2038d')
+sha256sums=('a05fbb3978e2d603176dcb1a964714f844a90fef4702008fa1e85264a3fb6d41')
 
 build() {
   cd "$pkgname-$pkgver"
   crystal build src/pomtex.cr -o pomtex --release --no-debug
+  for shell in bash fish zsh; do ./pomtex completions "$shell" > "pomtex.$shell"; done
+  ./pomtex manpage > pomtex.1
 }
 
 check() {
@@ -25,6 +27,10 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 pomtex "$pkgdir/usr/bin/pomtex"
+  install -Dm644 pomtex.bash "$pkgdir/usr/share/bash-completion/completions/pomtex"
+  install -Dm644 pomtex.fish "$pkgdir/usr/share/fish/vendor_completions.d/pomtex.fish"
+  install -Dm644 pomtex.zsh "$pkgdir/usr/share/zsh/site-functions/_pomtex"
+  install -Dm644 pomtex.1 "$pkgdir/usr/share/man/man1/pomtex.1"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   cp -r examples "$pkgdir/usr/share/doc/$pkgname/"
