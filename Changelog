@@ -1,9 +1,18 @@
 -------------------------------------------------------
  Changelog    : cidrtools
- Tags         : 1.0.1 ➙ 1.4.0
-              : 2026-08-20 ➙ 2026-08-25
+ Tags         : 1.1.0 ➙ 1.4.1
+              : 2026-08-20 ➙ 2026-10-06
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-10-06   : 1.4.1
+              - **1.4.1**
+            
+                * Documentation now available on readthedocs https://cidrtools.readthedocs.io
+                * Install local copy of html docs to /usr/share/cidrtools/docs
+                * scripts/do-build: add argument check
+ 2026-09-07   ⋯
+              - Add link to manual at top level
 
  2026-08-25   : 1.4.0
               - **1.4.0**
@@ -13,7 +22,7 @@
                 * ct_str_to_cidr_block(): unrecognized cidr now sets to "0.0.0.0/32" and returns -2
                   while return of -1 indicates an error.
 
- 2026-08-23   : 1.3.0, origin/master
+ 2026-08-23   : 1.3.0
               - **1.3.0**
             
                 * Add new ct_str_to_cidr_block_limit() which caller can set minimum prefix permitted
@@ -31,6 +40,3 @@
             
                 * Bug fix: Original code assumed excluded cidrs are subnets.
                   Enhance code to handle excluded networks being supernets.
-
- 2026-08-20   : 1.0.1
-              - aur PKGBUILD
