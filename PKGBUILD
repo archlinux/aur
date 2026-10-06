@@ -2,7 +2,7 @@
 
 pkgname='blepfx-crunchrr-clap-bin'
 pkgver='release_128'
-pkgrel='2'
+pkgrel='1'
 pkgdesc='a digital degrader'
 url="https://fx.amee.ee/plugin/crunchrr"
 license=('custom:Potion Seller Public License')
