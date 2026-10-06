@@ -2,8 +2,9 @@
 
 pkgname=printcraft
 pkgver=0.2.1
-pkgrel=1
-url="https://github.com/storytold/$pkgname"
+pkgrel=2
+url="https://getartcraft.com/apps/$pkgname"
+_url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Adobe Acrobat'
 arch=(x86_64)
 license=(MIT)
@@ -11,7 +12,7 @@ depends=(glibc # libc.so libm.so
          libgcc)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
-source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
+source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
 sha256sums=('db39eb513b0652e32f5456cb4bb0ecc2df2ff0bb62355a834d840d2ebc0cd02f')
 
 _srcenv() {
