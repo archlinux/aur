@@ -1,6 +1,6 @@
 pkgbase = zz-beta-bin
 	pkgdesc = Terminal, browser, and agent workspace
-	pkgver = 0.15.0
+	pkgver = 0.15.1
 	pkgrel = 1
 	url = https://github.com/demfabris/zz
 	arch = x86_64
@@ -38,9 +38,9 @@ pkgbase = zz-beta-bin
 	conflicts = zz-bin
 	options = !debug
 	options = !strip
-	source_x86_64 = https://github.com/demfabris/zz/releases/download/v0.15.0/zz-0.15.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 2011cc3a264bf96b9d483926234cfbf63ffdf6b44b813355170f36f648cd2981
-	source_aarch64 = https://github.com/demfabris/zz/releases/download/v0.15.0/zz-0.15.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 688b5a259fbd3d092ee367a30c70abe7bb7d3b8245b8eedd7d1d085eb9511a9c
+	source_x86_64 = https://github.com/demfabris/zz/releases/download/v0.15.1/zz-0.15.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 962bcaf2bd494cdca86b571e9d5ebe135865e29c5776920fdaa4e0995ecfd5f9
+	source_aarch64 = https://github.com/demfabris/zz/releases/download/v0.15.1/zz-0.15.1-linux-aarch64.tar.gz
+	sha256sums_aarch64 = cf2ec04869607700c7ca9fc1e2e90193d7cb8193055c7604f85e9d52a5362461
 
 pkgname = zz-beta-bin
