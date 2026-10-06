@@ -20,7 +20,7 @@ conflicts=("${_pkgname}")
 
 install="${pkgname}.install"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/${appname}_${pkgver}_${_barch[0]}.deb")
-sha256sums_x86_64=('d6b3fe6611b92a72203002adb7f96415bddd59c1a4db9f8431a2e6416ad35f76')
+sha256sums_x86_64=('f4030b4b6de2e0800ab443f5e6478bb3d61bdc1ee55f9bb6655ada80d2e742fb')
 
 package() {
     cd "${pkgdir}"
