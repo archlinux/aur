@@ -21,8 +21,8 @@ source_x86_64=("RustRover-${_dlver}-${arch[0]}.tar.gz::https://download.jetbrain
 source_aarch64=("RustRover-${_dlver}-${arch[1]}.tar.gz::https://download.jetbrains.com/rustrover/RustRover-${_dlver}-${arch[1]}.tar.gz")
 sha256sums=('cd4f42c4d3f9c0fb967a96da2c0c71884df55fe21409a97d12690e8a4c878a06'
             'db26ca1fd026fbacfeb87f4bad42d78b3512bb733ce1c566bdd5b751e77d7bb3')
-sha256sums_x86_64=('b776e2dcaad0e33c04d457e50f6cd1067a49fc87742ed330bcd97a39d90e3b9c')
-sha256sums_aarch64=('9203b257290a4d8684a37bc772f985061e2aec88ebfe79a12770cd85054c3ae4')
+sha256sums_x86_64=('2bee9b427b7c6e2f41c30fed648f495fa521a013432718395231cb77a545ede9')
+sha256sums_aarch64=('0b42b5273805c83e8499b49aa780c582dedf6bb8020451365d3e5ade795e6d46')
 
 package_rustrover-eap() {
   depends=(
