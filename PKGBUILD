@@ -4,7 +4,7 @@
 pkgname=bollywood-git
 pkgver=r9.31e1677
 pkgrel=1
-pkgdesc="Runs terminal screencasts in multiple panes, resulting in a Hollywood-style real-time hacking terminal"
+pkgdesc="Run terminal screencasts in multiple panes for a Hollywood-style hacking terminal"
 arch=('any')
 url="https://github.com/abloch/bollywood"
 license=('LicenseRef-unknown')

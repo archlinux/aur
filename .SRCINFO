@@ -1,5 +1,5 @@
 pkgbase = bollywood-git
-	pkgdesc = Runs terminal screencasts in multiple panes, resulting in a Hollywood-style real-time hacking terminal
+	pkgdesc = Run terminal screencasts in multiple panes for a Hollywood-style hacking terminal
 	pkgver = r9.31e1677
 	pkgrel = 1
 	url = https://github.com/abloch/bollywood
