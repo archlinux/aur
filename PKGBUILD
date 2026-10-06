@@ -5,6 +5,7 @@
 # Regenerate checksums and .SRCINFO for a release with scripts/linux/gen-aur.sh.
 pkgname=linuxfiles-bin
 _pkgname=linuxfiles
+_tag=0.1.0-alpha1
 pkgver=0.1.0alpha1
 pkgrel=1
 pkgdesc='LinuxFiles, Files for Linux: unofficial port of Files by the Files Community (Uno Platform), prebuilt binaries'
@@ -13,19 +14,20 @@ url='https://github.com/MemerGamer/LinuxFiles'
 license=('MIT')
 # The runtime is bundled; these are the native libraries Skia/Uno load at runtime.
 depends=('fontconfig' 'freetype2' 'libx11' 'libxcursor' 'libxrandr' 'libxi' 'libxext' 'mesa' 'glib2' 'hicolor-icon-theme')
-optdepends=('gvfs: network and MTP locations'
+optdepends=('polkit: authenticated root actions'
+            'gvfs: network and MTP locations'
             'udisks2: mount and eject drives'
             'libsecret: saved network credentials (Secret Service provider)'
             'gnome-disk-utility: format and manage drives')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip' '!debug')  # stripping breaks the self-contained .NET binaries
-_base="$url/releases/download/linux-v${pkgver/alpha/-alpha}"  # 0.1.0alpha1 -> tag linux-v0.1.0-alpha1
+_base="$url/releases/download/linux-v$_tag"
 source=("$pkgname-$pkgver.tar.gz::$_base/files-linux-x64.tar.gz"
         "$pkgname-packaging-$pkgver.tar.gz::$_base/files-packaging.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz" "$pkgname-packaging-$pkgver.tar.gz")
-sha256sums=('7f3a3663cb9f93980268b53f9c243d342a96c18b06936a0da259a2b695ac76c2'
-            '871fcaacdb4b3fd0bc5add6ab4718aceb415bb4f41f1b06abceb40272cb27396')  # scripts/linux/gen-aur.sh fills these in
+sha256sums=('fe6144bc6feafa03d1c4c4fc4ce45afd5ec2c78836a036bd746533e6240af6ad'
+            '973496ee2c5124bc56f5980333bf6de88e76064b81f6c3d9aeb9314df3024aba')  # scripts/linux/gen-aur.sh fills these in
 
 prepare() {
   mkdir -p app packaging
@@ -38,6 +40,10 @@ package() {
 
   install -dm755 "$pkgdir/usr/lib/$_pkgname"
   cp -a app/. "$pkgdir/usr/lib/$_pkgname/"
+  install -Dm755 app/elevation-helper/files-elevation-helper "$pkgdir/usr/lib/linuxfiles/files-elevation-helper"
+  rm -rf "$pkgdir/usr/lib/$_pkgname/elevation-helper"
+  install -Dm644 packaging/linux/io.github.memergamer.LinuxFiles.root-actions.policy \
+    "$pkgdir/usr/share/polkit-1/actions/io.github.memergamer.LinuxFiles.root-actions.policy"
   # The launcher finds /usr/lib/linuxfiles/Files.dll on its own.
   install -Dm755 packaging/linux/files "$pkgdir/usr/bin/files"
 

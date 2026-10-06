@@ -15,6 +15,7 @@ pkgbase = linuxfiles-bin
 	depends = mesa
 	depends = glib2
 	depends = hicolor-icon-theme
+	optdepends = polkit: authenticated root actions
 	optdepends = gvfs: network and MTP locations
 	optdepends = udisks2: mount and eject drives
 	optdepends = libsecret: saved network credentials (Secret Service provider)
@@ -27,7 +28,7 @@ pkgbase = linuxfiles-bin
 	options = !debug
 	source = linuxfiles-bin-0.1.0alpha1.tar.gz::https://github.com/MemerGamer/LinuxFiles/releases/download/linux-v0.1.0-alpha1/files-linux-x64.tar.gz
 	source = linuxfiles-bin-packaging-0.1.0alpha1.tar.gz::https://github.com/MemerGamer/LinuxFiles/releases/download/linux-v0.1.0-alpha1/files-packaging.tar.gz
-	sha256sums = 7f3a3663cb9f93980268b53f9c243d342a96c18b06936a0da259a2b695ac76c2
-	sha256sums = 871fcaacdb4b3fd0bc5add6ab4718aceb415bb4f41f1b06abceb40272cb27396
+	sha256sums = fe6144bc6feafa03d1c4c4fc4ce45afd5ec2c78836a036bd746533e6240af6ad
+	sha256sums = 973496ee2c5124bc56f5980333bf6de88e76064b81f6c3d9aeb9314df3024aba
 
 pkgname = linuxfiles-bin
