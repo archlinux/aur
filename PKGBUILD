@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="A modern music player for the COSMIC desktop (binary release)"
 arch=(x86_64 aarch64)
 url="https://github.com/M0Rf30/aulos"
-license=(GPL-3.0-or-later)
+license=(GPL-3.0-only)
 depends=(
   alsa-lib
   glibc
