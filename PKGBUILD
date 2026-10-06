@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-gtk-theme-bridge
-pkgver=6.7.4
+pkgver=6.7.5
 pkgrel=1
 pkgdesc='Syncs SonicDE settings to GTK applications'
 arch=(x86_64)
@@ -33,7 +33,7 @@ provides=(kde-gtk-config)
 conflicts=(kde-gtk-config)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c75dc18e367c5eda1fd0ce090297e851bc79b1badc742f66bc7f577bc6efb307')
+sha256sums=('fc6b34d7466f37c45cf7af2d0ffd17d40291684239ad60331bf73353db764980')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
