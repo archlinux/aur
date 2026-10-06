@@ -1,12 +1,12 @@
 # Maintainer: stormix <hello@stormix.co>
 pkgname=deadlock-modmanager-git
 pkgver=1.0.0.r16.g2868189
-pkgrel=2
+pkgrel=3
 pkgdesc='A mod manager for the Valve game Deadlock (git)'
 arch=('x86_64')
 url='https://github.com/deadlock-mod-manager/deadlock-mod-manager'
 license=('GPL-3.0-only')
-makedepends=('git' 'cargo' 'cargo-tauri' 'pnpm' 'protobuf')
+makedepends=('git' 'cargo' 'cargo-tauri' 'nodejs' 'pnpm' 'protobuf')
 depends=('webkit2gtk-4.1' 'cairo' 'desktop-file-utils' 'xdg-utils' 'gdk-pixbuf2'
          'glib2' 'gtk3' 'libsoup3' 'pango' 'openssl' 'bzip2' 'hicolor-icon-theme'
          'gst-plugins-good' 'glibc' 'libgcc' 'libstdc++' 'dbus')
@@ -23,7 +23,9 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${pkgname}/apps/desktop"
-    pnpm install
+    # The root impeccable devDependency pulls puppeteer, whose postinstall downloads Chrome.
+    export PUPPETEER_SKIP_DOWNLOAD=1
+    pnpm install --frozen-lockfile --filter @deadlock-mods/desktop...
 
     cd src-tauri
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
