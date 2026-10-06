@@ -3,7 +3,7 @@
 pkgname=i-ching-diviner
 _pkgname=IChingDiviner
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='I Ching oracle with AI interpretations of hexagrams.'
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/alamahant/${_pkgname}"
@@ -15,7 +15,7 @@ sha256sums=('446effd6d0ac20f8ba5c7b682217405ad985e3f5ea7b2f4b88edbaca97ab9dc0')
 
 
 build(){
-  cd "$srcdir/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   
   cmake -B build_dir -S . -G Ninja \
     -DCMAKE_INSTALL_PREFIX='/usr' \
@@ -24,6 +24,6 @@ build(){
 }
 
 package() {
-  cd "$srcdir/${_pkgname}-${pkgver}"
-  DESTDIR="$pkgdir" cmake --install ./build_dir/
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  DESTDIR="${pkgdir}" cmake --install ./build_dir/
 }
