@@ -2,23 +2,25 @@
 # Maintainer: Sakshham Bhagat <sakshhamtg@gmail.com>
 
 pkgname='adbt-bin'
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='A modern, keyboard-driven Android Debug Bridge TUI.'
 url='https://github.com/SakshhamTheCoder/adbt'
 arch=('aarch64' 'x86_64')
-license=('MIT')
+license=('Apache-2.0')
 provides=('adbt')
 conflicts=('adbt')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/SakshhamTheCoder/adbt/releases/download/v${pkgver}/adbt_Linux_arm64.tar.gz")
-sha256sums_aarch64=('b73f073b1458a43c7d6762cf4f0be3d0714b02434b532df6f5e942b7168905fd')
+sha256sums_aarch64=('48ddab134738f064797045e35a280d450c4c6668d71506ca80d49a9f85bd5d35')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/SakshhamTheCoder/adbt/releases/download/v${pkgver}/adbt_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('442aee09c9251b31586e32565276d3d6fd42acd5f2f38306aab7d476969f737f')
+sha256sums_x86_64=('f8f2f2bb146120b85510055f4cfa6ab63af658a541fa7b14903ff4e71ada6df7')
 
 package() {
   install -Dm755 "./adbt" "${pkgdir}/usr/bin/adbt"
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/adbt/LICENSE"
+  install -Dm644 "./NOTICE" "${pkgdir}/usr/share/licenses/adbt/NOTICE"
+  install -Dm644 "./THIRD_PARTY_NOTICES.md" "${pkgdir}/usr/share/licenses/adbt/THIRD_PARTY_NOTICES.md"
   install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/adbt/README.md"
 }

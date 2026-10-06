@@ -1,16 +1,16 @@
 pkgbase = adbt-bin
 	pkgdesc = A modern, keyboard-driven Android Debug Bridge TUI.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/SakshhamTheCoder/adbt
-	license = MIT
+	license = Apache-2.0
 	conflicts = adbt
 	provides = adbt
 	arch = aarch64
-	source_aarch64 = https://github.com/SakshhamTheCoder/adbt/releases/download/v0.2.0/adbt_Linux_arm64.tar.gz
-	sha256sums_aarch64 = b73f073b1458a43c7d6762cf4f0be3d0714b02434b532df6f5e942b7168905fd
+	source_aarch64 = adbt-bin_0.2.1_aarch64.tar.gz::https://github.com/SakshhamTheCoder/adbt/releases/download/v0.2.1/adbt_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 48ddab134738f064797045e35a280d450c4c6668d71506ca80d49a9f85bd5d35
 	arch = x86_64
-	source_x86_64 = https://github.com/SakshhamTheCoder/adbt/releases/download/v0.2.0/adbt_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 442aee09c9251b31586e32565276d3d6fd42acd5f2f38306aab7d476969f737f
+	source_x86_64 = adbt-bin_0.2.1_x86_64.tar.gz::https://github.com/SakshhamTheCoder/adbt/releases/download/v0.2.1/adbt_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = f8f2f2bb146120b85510055f4cfa6ab63af658a541fa7b14903ff4e71ada6df7
 	
 pkgname = adbt-bin
