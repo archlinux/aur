@@ -2,7 +2,7 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname=mistral-vibe
-pkgver=2.25.8
+pkgver=2.26.0
 pkgrel=1
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
@@ -41,6 +41,7 @@ depends=(
     "python-yaml"
     "python-zstandard"
     "python-sounddevice"
+    "python-croniter"
 )
 # Upstream switched from hatchling to a custom maturin-based build backend in
 # v2.25.8: building the wheel now also compiles the Rust harness extension and
@@ -59,7 +60,7 @@ source=("git+${url}.git#tag=v${pkgver}"
         "clear_multiplexer_env_in_theme_tests.patch"
         "stabilize_click_chain_timing_in_word_drag_tests.patch"
         "stretch_e2e_timeouts_when_builder_is_loaded.patch")
-sha256sums=('b1f32ce61941098130d66724259ee6d09dfc23f1276a90f467e20639c424f274'
+sha256sums=('SKIP'
             'f24330784d56591d197dc260166d29fff717fab763963fb2c7d8221f81135069'
             'ec15c34e133eb3ca09c593ac03a715beb30557585d81b0ac99bffcf5818bd5e2'
             '2706769c69b63715757f2d820b4b3d9c363a278821d58c29fdd5ecf25fb720c9')
