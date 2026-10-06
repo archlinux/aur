@@ -1,6 +1,6 @@
 # Maintainer: Han <tabularasa8931@gmail.com>
 pkgname=gorae
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Terminal-first knowledge base for PDFs, EPUBs, and Markdown — with a built-in AI assistant"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
   'zathura-pdf-mupdf: MuPDF backend for zathura'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Han8931/gorae/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fd54081da0bb09981314af90dffefab2900c59eb39db0b1c49cadc09ac206f0e')
+sha256sums=('b61a3d7b48f483669b4000f3db4c14062e881a64664b96327a26c77d45bb8e08')
 
 prepare() {
   cd "$pkgname-$pkgver"
