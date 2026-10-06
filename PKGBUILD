@@ -3,8 +3,8 @@
 # Release notes https://rocm.docs.amd.com/en/latest/about/release-notes.html
 pkgname=rocm-gfx1151-bin
 pkgdesc="ROCm Core SDK - Ryzen AI Max 300/400 - Strix Halo"
-pkgver=10.0.0
-pkgrel=2
+pkgver=10.1.0
+pkgrel=1
 epoch=0
 arch=('x86_64')
 url='http://www.amd.com'
@@ -20,18 +20,19 @@ conflicts=('opencl-amd' 'opencl-amd-dev' 'rocm-bin' 'rocm-gfx101x-bin' 'rocm-gfx
 'rocm-ml-libraries' 'rocm-ml-sdk')
 optdepends=('clinfo')
 options=('!strip')
+noextract=("therock-dist-linux-gfx1151-10.1.0.tar.gz")
 
 source=(
-"https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx1151-10.0.0.tar.gz"
+"https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx1151-10.1.0.tar.gz"
 )
 
 sha256sums=(
-"4feabd9f2da72352df37f6d714a54847d3fe913c0341fbe2a6542c1164024baf"
+"50deb993035bc2f6a5aba5e3de8d476d8c512a2eec2cbfd5aa569d71e0b8b337"
 )
 
 prepare() {
     mkdir -p "${srcdir}/opt/rocm/core"
-    bsdtar xf therock-dist-linux-gfx1151-10.0.0.tar.gz -C ${srcdir}/opt/rocm/core
+    bsdtar xf therock-dist-linux-gfx1151-10.1.0.tar.gz -C ${srcdir}/opt/rocm/core
 }
 
 package() {

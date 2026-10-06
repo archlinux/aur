@@ -1,7 +1,7 @@
 pkgbase = rocm-gfx1151-bin
 	pkgdesc = ROCm Core SDK - Ryzen AI Max 300/400 - Strix Halo
-	pkgver = 10.0.0
-	pkgrel = 2
+	pkgver = 10.1.0
+	pkgrel = 1
 	epoch = 0
 	url = http://www.amd.com
 	arch = x86_64
@@ -186,8 +186,9 @@ pkgbase = rocm-gfx1151-bin
 	conflicts = miopen-hip
 	conflicts = rocm-ml-libraries
 	conflicts = rocm-ml-sdk
+	noextract = therock-dist-linux-gfx1151-10.1.0.tar.gz
 	options = !strip
-	source = https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx1151-10.0.0.tar.gz
-	sha256sums = 4feabd9f2da72352df37f6d714a54847d3fe913c0341fbe2a6542c1164024baf
+	source = https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx1151-10.1.0.tar.gz
+	sha256sums = 50deb993035bc2f6a5aba5e3de8d476d8c512a2eec2cbfd5aa569d71e0b8b337
 
 pkgname = rocm-gfx1151-bin
