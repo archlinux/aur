@@ -19,7 +19,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine-src-5.6
 pkgver=5.6.1
-pkgrel=2
+pkgrel=3
 _uetag="${pkgver}-release"
 _ueminor="5.6"
 _ueminor_us="5_6"
@@ -623,19 +623,21 @@ package() {
   # So instead of whitelisting individual directories (which can never converge),
   # grant write access to everything that is GENERATED ARTIFACT SURFACE and keep
   # everything that EXECUTES root-owned:
-  #   - all directories outside Engine/Binaries: writable (UBT creates new files)
-  #   - all non-executable files outside Engine/Binaries: writable (UBT
+  #   - all directories outside any Binaries/ tree: writable (UBT creates new
+  #     files, e.g. <install root>/.vscode which the VSCode generator creates in
+  #     the ENGINE ROOT for foreign projects)
+  #   - all non-executable files outside any Binaries/ tree: writable (UBT
   #     overwrites generated ones, e.g. .csproj.props)
-  #   - Engine/Binaries and every file with the owner-exec bit: untouched,
+  #   - Binaries/ trees and every file with the owner-exec bit: untouched,
   #     root-owned 755 — a local user can never replace an executable another
   #     user then runs, which is the privesc the original 755 policy guards
   #     against. Poisoning shared build artifacts between users on a multi-user
   #     box remains possible; Epic's own model assumes a per-user engine.
   # Pacman records these perms, so they survive upgrades; runtime-created
   # files/dirs are untracked and inherit the recorded dir perms.
-  find "${pkgdir}/${UE_INSTALL_DIR}/Engine" -type d -name Binaries -prune \
+  find "${pkgdir}/${UE_INSTALL_DIR}" -type d -name Binaries -prune \
     -o -type d -exec chmod a+rwX '{}' +
-  find "${pkgdir}/${UE_INSTALL_DIR}/Engine" -type d -name Binaries -prune \
+  find "${pkgdir}/${UE_INSTALL_DIR}" -type d -name Binaries -prune \
     -o -type f ! -perm -0100 -exec chmod a+rw '{}' +
 
   # Ensure InstalledBuild.txt is present so UBT treats this as an installed engine,
