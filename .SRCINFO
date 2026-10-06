@@ -10,6 +10,7 @@ pkgbase = rmcl-git
 	makedepends = rust
 	makedepends = cargo
 	makedepends = jdk-openjdk
+	depends = libxcb
 	provides = rmcl
 	conflicts = rmcl
 	conflicts = rmcl-bin

@@ -6,7 +6,7 @@ pkgdesc="Minecraft launcher TUI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/objz/rmcl"
 license=('GPL-3.0-only')
-depends=()
+depends=('libxcb')
 makedepends=('git' 'rust' 'cargo' 'jdk-openjdk')
 provides=('rmcl')
 conflicts=('rmcl' 'rmcl-bin' 'mcl-launcher' 'mcl-launcher-bin' 'mcl-launcher-git')
@@ -36,7 +36,7 @@ check() {
 
 package() {
   cd "$srcdir/rmcl"
-  install -Dm755 "target/release/rmcl" "$pkgdir/usr/bin/rmcl"
+  install -Dm755 "$srcdir/target/release/rmcl" "$pkgdir/usr/bin/rmcl"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
