@@ -2,16 +2,17 @@
 
 pkgname=designcraft
 pkgver=0.2.1
-pkgrel=1
-url="https://github.com/storytold/$pkgname"
-pkgdesc='vibe coded clean-room take on the Adobe InDesign workflow'
+pkgrel=2
+url="https://getartcraft.com/apps/$pkgname"
+_url="https://github.com/storytold/$pkgname"
+pkgdesc='vibe coded clean-room reimplementation of Adobe InDesign'
 arch=(x86_64)
 license=(MIT)
 depends=(glibc # libc.so libm.so
          libgcc)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
-source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
+source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
 sha256sums=('41474c17fe1233ec72ff5f0c276bb10f48f135760d91d520cb765fb47c031b9a')
 
 _srcenv() {

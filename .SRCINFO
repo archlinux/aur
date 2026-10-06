@@ -1,8 +1,8 @@
 pkgbase = designcraft
-	pkgdesc = vibe coded clean-room take on the Adobe InDesign workflow
+	pkgdesc = vibe coded clean-room reimplementation of Adobe InDesign
 	pkgver = 0.2.1
-	pkgrel = 1
-	url = https://github.com/storytold/designcraft
+	pkgrel = 2
+	url = https://getartcraft.com/apps/designcraft
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
