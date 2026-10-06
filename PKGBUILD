@@ -2,7 +2,7 @@
 #              Darjan Krijan [https://disc-kuraudo.eu]
 
 pkgname=scorep
-pkgver=9.4
+pkgver=10.1
 pkgrel=1
 pkgdesc="Highly scalable and easy-to-use tool suite for profiling, event tracing, and online analysis of HPC applications."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ options=('staticlibs')
 source=(
 	http://perftools.pages.jsc.fz-juelich.de/cicd/${pkgname}/tags/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz
 )
-sha256sums=('bea58d8c47a7512eca0a5858179377f3f0861f30eafb342a29aa97c05de8f623')
+sha256sums=('39edf6790c4af25679ab46e361091f177d40ad8f8cfff1b4bf81e775fc59f0c1')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -41,5 +41,5 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   make DESTDIR="${pkgdir}/" install
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 README.LICENSES.md "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
