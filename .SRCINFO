@@ -1,0 +1,15 @@
+pkgbase = blepfx-prisma-clap-bin
+	pkgdesc = a digital degrader
+	pkgver = release_128
+	pkgrel = 1
+	url = https://fx.amee.ee/plugin/prisma
+	arch = x86_64
+	license = custom:Potion Seller Public License
+	options = strip
+	options = !debug
+	source = https://github.com/blepfx/dist/releases/download/release-128/prisma-x86_64-unknown-linux-gnu.zip
+	source = LICENSE::https://raw.githubusercontent.com/blepfx/dist/refs/heads/main/LICENSE.txt
+	sha256sums = 4b597c380469f26004c351ff7fc57a4617671e1501a49c54cbe7264f62bfbe3d
+	sha256sums = 1cba06d144eb15023d17c4f41ff04ec404bb19550cec408f72373effdb6463ed
+
+pkgname = blepfx-prisma-clap-bin
