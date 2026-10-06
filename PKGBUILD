@@ -2,7 +2,7 @@
 # Installs the prebuilt Linux binary from the GitHub release (no compiling).
 pkgname=unbloated-youtube-bin
 _name=unbloated-youtube
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Lightweight, configurable YouTube desktop client: GPUI, embedded mpv, yt-dlp (prebuilt binary)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("$_name")
 conflicts=("$_name")
 options=('!strip')
 source=("$url/releases/download/v$pkgver/$_name-$pkgver-x86_64-linux.tar.gz")
-sha256sums=('531ba8e8c67c5989681f07d27eda3abf6339d5dbe7695d3252526a5be5cd4147')
+sha256sums=('77fd4e595078a5c1b374f7636e1b5960e36595094ce545aa12abfa5efe3d6771')
 
 package() {
   cd "$_name-$pkgver-x86_64-linux"
