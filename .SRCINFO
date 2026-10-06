@@ -1,6 +1,6 @@
 pkgbase = gitty-desktop-bin
 	pkgdesc = A lightweight, modern Git client built with Tauri (prebuilt Arch package)
-	pkgver = 2026.10.1
+	pkgver = 2026.10.2
 	pkgrel = 1
 	url = https://code.cbsk-tech.de/Christoph/Gitty
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = gitty-desktop-bin
 	depends = xdotool
 	provides = gitty-desktop
 	conflicts = gitty-desktop
-	noextract = gitty-desktop-2026.10.1-1-x86_64.pkg.tar.zst
+	noextract = gitty-desktop-2026.10.2-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = gitty-desktop-2026.10.1-1-x86_64.pkg.tar.zst::https://code.cbsk-tech.de/Christoph/Gitty/releases/download/2026.10.1/gitty-desktop-2026.10.1-1-x86_64.pkg.tar.zst
-	sha256sums = 784593b36e0733eef9cbdf6258994c92784b61b0b60bba3a1cdfbf6860dc4aad
+	source = gitty-desktop-2026.10.2-1-x86_64.pkg.tar.zst::https://code.cbsk-tech.de/Christoph/Gitty/releases/download/2026.10.2/gitty-desktop-2026.10.2-1-x86_64.pkg.tar.zst
+	sha256sums = 873a4b1e64816403e5ad8445d2d8f162e9a7db4e14c23e018f69e6aa52df692c
 
 pkgname = gitty-desktop-bin
