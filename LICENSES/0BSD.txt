@@ -1,0 +1,1 @@
+/home/nocifer/Projects/AUR/zoneminder/LICENSE

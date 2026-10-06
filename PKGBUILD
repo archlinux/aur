@@ -14,13 +14,13 @@
 
 _pkgname=zoneminder
 pkgname=zoneminder-git
-pkgver=1.38.0.r4.g6833e51
+pkgver=1.39.36.g575e548
 pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system (git version)'
 arch=('any')
 url='https://zoneminder.com/'
 license=('GPL-2.0-only AND MIT')
-depends=('ffmpeg' 'libvlc' 'polkit'
+depends=('arp-scan' 'ffmpeg' 'libvlc' 'polkit'
          'php-apcu' 'php-fpm' 'php-gd'
          'perl-archive-zip' 'perl-data-dump' 'perl-date-manip' 'perl-datetime' 'perl-dbd-mysql' 'perl-device-serialport' 'perl-file-slurp'
          'perl-image-info' 'perl-libwww' 'perl-mime-lite' 'perl-mime-tools' 'perl-net-sftp-foreign' 'perl-number-bytes-human' 'perl-php-serialization'
@@ -32,7 +32,7 @@ depends=('ffmpeg' 'libvlc' 'polkit'
          # Telemetry
          'perl-json-maybexs'
          # Encryption
-         'perl-crypt-eksblowfish' 'perl-data-entropy'
+         'perl-crypt-eksblowfish'
          # JSON Web Token API
          'nlohmann-json')
 makedepends=('cmake' 'git')
@@ -42,26 +42,23 @@ optdepends=('mariadb'
             'fcgiwrap: required if using nginx'
             'spawn-fcgi: required if using nginx'
             'multiwatch: required if using nginx'
-            'pod2man: required for Docker support'
             'zmeventnotification: machine learning-powered recognition engine & event notification server')
-conflicts=('zoneminder')
-backup=("etc/nginx/sites-available/${_pkgname}.conf"
-        "etc/httpd/conf/extra/${_pkgname}.conf"
-        "etc/php/conf.d/${_pkgname}.ini")
+conflicts=("${_pkgname}")
+backup=("etc/php/conf.d/${_pkgname}.ini")
 install=${_pkgname}.install
-source=("${pkgname}::git+https://github.com/ZoneMinder/zoneminder.git"
-        'https://github.com/FriendsOfCake/crud/archive/v3.2.0.tar.gz'
-        'https://github.com/ZoneMinder/CakePHP-Enum-Behavior/archive/1.0-zm.tar.gz'
-        'https://github.com/ZoneMinder/RtspServer/archive/24e6b7153aa561ecc4123cc7c8fc1b530cde0bc9.tar.gz'
-        'https://github.com/chmike/CxxUrl/archive/eaf46c0207df24853a238d4499e7f4426d9d234c.tar.gz'
-        'zoneminder-nginx.conf'
-        'zoneminder-httpd.conf'
-        'zoneminder-php.ini'
+source=("${pkgname}::git+https://github.com/ZoneMinder/${_pkgname}.git"
+        'crud-3.2.0.tar.gz::https://github.com/FriendsOfCake/crud/archive/v3.2.0.tar.gz'
+        'CakePHP-Enum-Behavior-1.0-zm.tar.gz::https://github.com/ZoneMinder/CakePHP-Enum-Behavior/archive/1.0-zm.tar.gz'
+        'RtspServer-a8781ec608d0252d4752b64fe2b199b35bcc1695.tar.gz::https://github.com/ZoneMinder/RtspServer/archive/a8781ec608d0252d4752b64fe2b199b35bcc1695.tar.gz'
+        'CxxUrl-eaf46c0207df24853a238d4499e7f4426d9d234c.tar.gz::https://github.com/chmike/CxxUrl/archive/eaf46c0207df24853a238d4499e7f4426d9d234c.tar.gz'
+        "${_pkgname}-nginx.conf"
+        "${_pkgname}-httpd.conf"
+        "${_pkgname}-php.ini"
         'fcgiwrap-multiwatch.service')
 b2sums=('SKIP'
         'a6d2c6960515f5b3402c306eb28710d00abce19d07a38a76a841928b69573cb30608f50e7ad458dd8771bb9267e56df68c1037019abb7b5eec4d990a33f9c234'
         '7d5b18e1a7a21c967128745591870cd5bf5b380c55a62f7c465f7cf1fd718961fb392b5bc80c941bf9a9819e7c87829ca6217d19505c655ffdc859e50662659c'
-        '79fc6560c09127b6b9e0af7ffaaac7180882a0798abb5238fd824470f41921ab47e22e3f55c24f7ad79f0a03c722e42a5720cf633835e9e326ae7666f07b6bbc'
+        '0ab7d385dada835906d66cf292cdbd00d657a5fe375de1a9e79f834a272a214cfb32ea7072726eaf1a3dd15036a05142ef9c98124e31c14700475a7bc6662004'
         'fedbb69dd0ed76b07ee8c62de116067dad392614423b5f83c5395ee5de609fedbee2eb4cca0f31dab1c5f4551a4c2ff0e3ac356c7f93f292aad8332e1ab1a0fe'
         '3886117b5471ab62a291a6d068f2bc168c1467da512a68b049a02046ab15ced1078cd96e342222ff8393858ce206ed03fe102b09db4534b97bd3b95d76c3e8cd'
         '9ce42fe44f2c3c1a1b205d36e08e0703519d3bf955c14538171f4b9eabfeae8847fda37b53bfded8e371e6765ef9ecc6a59d3a719ddc1b0acf4f486a925ed6ba'
@@ -71,7 +68,7 @@ b2sums=('SKIP'
 pkgver() {
     cd ${pkgname}
 
-    git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "%s.g%s" "$(cat "${srcdir}"/${pkgname}/version.txt)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare () {
@@ -87,7 +84,7 @@ prepare () {
     # Move third-party plugins into place
     mv ../crud-3.2.0/* web/api/app/Plugin/Crud
     mv ../CakePHP-Enum-Behavior-1.0-zm/* web/api/app/Plugin/CakePHP-Enum-Behavior
-    mv ../RtspServer-24e6b7153aa561ecc4123cc7c8fc1b530cde0bc9/* dep/RtspServer
+    mv ../RtspServer-a8781ec608d0252d4752b64fe2b199b35bcc1695/* dep/RtspServer
     mv ../CxxUrl-eaf46c0207df24853a238d4499e7f4426d9d234c/* dep/CxxUrl
 }
 
@@ -106,7 +103,8 @@ build() {
           -DZM_CACHEDIR=/var/lib/${_pkgname}/cache \
           -DZM_WEBDIR=/usr/share/webapps/${_pkgname}/www \
           -DZM_CGIDIR=/usr/share/webapps/${_pkgname}/cgi-bin \
-          -DZM_WEB_USER=http .
+          -DZM_WEB_USER=http \
+          -Wno-dev .
 
     cmake --build .
 }
@@ -114,60 +112,56 @@ build() {
 package() {
     cd ${pkgname}
 
-    make DESTDIR=${pkgdir} install
-
-    # Remove static cruft
-    rm -r ${pkgdir}/usr/cmake
-    rm -r ${pkgdir}/usr/include
+    make DESTDIR="${pkgdir}" install
 
     # Create ZM_LOGDIR
-    install -dm755 -o http -g http                              ${pkgdir}/var/log/${_pkgname}
+    install -dm755 -o http -g http                              "${pkgdir}"/var/log/${_pkgname}
 
     # Create ZM_CONTENTDIR and its subfolders
-    install -dm775 -o http -g http                              ${pkgdir}/var/lib/${_pkgname}/{cache,events,images}
+    install -dm775 -o http -g http                              "${pkgdir}"/var/lib/${_pkgname}/{cache,events,images}
 
     # Link ZM_CGIDIR and ZM_CACHEDIR inside ZM_WEBDIR and set correct permissions
-    ln -sf /usr/share/webapps/${_pkgname}/cgi-bin               ${pkgdir}/usr/share/webapps/${_pkgname}/www
-    ln -sf /var/lib/${_pkgname}/cache                           ${pkgdir}/usr/share/webapps/${_pkgname}/www
-    chown -Rh http:http                                         ${pkgdir}/usr/share/webapps/${_pkgname}
+    ln -sf /usr/share/webapps/${_pkgname}/cgi-bin               "${pkgdir}"/usr/share/webapps/${_pkgname}/www
+    ln -sf /var/lib/${_pkgname}/cache                           "${pkgdir}"/usr/share/webapps/${_pkgname}/www
+    chown -Rh http:http                                         "${pkgdir}"/usr/share/webapps/${_pkgname}
 
     # Link ZM_WEBDIR/api/app/tmp to ZM_TMPDIR
-    ln -sf /var/tmp/${_pkgname}                                 ${pkgdir}/usr/share/webapps/${_pkgname}/www/api/app/tmp
+    ln -sf /var/tmp/${_pkgname}                                 "${pkgdir}"/usr/share/webapps/${_pkgname}/www/api/app/tmp
 
     # Fix for hardcoded /zm/ links (credit goes to @Kubax on AUR)
-    ln -sf /usr/share/webapps/${_pkgname}/www                   ${pkgdir}/usr/share/webapps/${_pkgname}/www/zm
+    ln -sf /usr/share/webapps/${_pkgname}/www                   "${pkgdir}"/usr/share/webapps/${_pkgname}/www/zm
 
     # Set correct permissions for ZM_CONFIG_DIR & ZM_CONFIG_SUBDIR
-    chmod -R 755                                                ${pkgdir}/etc/${_pkgname}
-    chmod 644                                                   ${pkgdir}/etc/${_pkgname}/zm.conf
-    chmod 644                                                   ${pkgdir}/etc/${_pkgname}/conf.d/*
+    chmod -R 755                                                "${pkgdir}"/etc/${_pkgname}
+    chmod 644                                                   "${pkgdir}"/etc/${_pkgname}/zm.conf
+    chmod 644                                                   "${pkgdir}"/etc/${_pkgname}/conf.d/*
 
     # Nginx
-    install -Dm644 $srcdir/${_pkgname}-nginx.conf               ${pkgdir}/etc/nginx/sites-available/${_pkgname}.conf
+    install -Dm644 "${srcdir}"/${_pkgname}-nginx.conf           "${pkgdir}"/usr/share/${_pkgname}/conf/nginx.conf
 
     # Apache
-    install -Dm644 $srcdir/${_pkgname}-httpd.conf               ${pkgdir}/etc/httpd/conf/extra/${_pkgname}.conf
+    install -Dm644 "${srcdir}"/${_pkgname}-httpd.conf           "${pkgdir}"//usr/share/${_pkgname}/conf/httpd.conf
 
     # php.ini extension
-    install -Dm644 $srcdir/${_pkgname}-php.ini                  ${pkgdir}/etc/php/conf.d/${_pkgname}.ini
+    install -Dm644 "${srcdir}"/${_pkgname}-php.ini              "${pkgdir}"/etc/php/conf.d/${_pkgname}.ini
 
     # fcgiwrap-multiwatch service
-    install -Dm644 $srcdir/fcgiwrap-multiwatch.service          ${pkgdir}/usr/lib/systemd/system/fcgiwrap-multiwatch.service
+    install -Dm644 "${srcdir}"/fcgiwrap-multiwatch.service      "${pkgdir}"/usr/lib/systemd/system/fcgiwrap-multiwatch.service
 
     # systemd service
-    install -Dm644 misc/${_pkgname}.service                     ${pkgdir}/usr/lib/systemd/system/${_pkgname}.service
+    install -Dm644 misc/${_pkgname}.service                     "${pkgdir}"/usr/lib/systemd/system/${_pkgname}.service
 
     # systemd tmpfile
-    install -Dm644 misc/${_pkgname}-tmpfiles.conf               ${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf
+    install -Dm644 misc/${_pkgname}-tmpfiles.conf               "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
 
     # logrotate conf file
-    install -Dm644 misc/logrotate.conf                          ${pkgdir}/etc/logrotate.d/${_pkgname}
+    install -Dm644 misc/logrotate.conf                          "${pkgdir}"/etc/logrotate.d/${_pkgname}
 
     # database schemas
-    install -Dm644 db/zm*.sql                                   ${pkgdir}/usr/share/${_pkgname}/db
+    install -Dm644 db/zm*.sql                                   "${pkgdir}"/usr/share/${_pkgname}/db
 
     # licenses
-    install -Dm644 web/api/app/Plugin/Crud/LICENSE.txt          ${pkgdir}/usr/share/licenses/${pkgname}/Crud
-    install -Dm644 dep/RtspServer/LICENSE                       ${pkgdir}/usr/share/licenses/${pkgname}/RtspServer
-    install -Dm644 dep/CxxUrl/LICENSE                           ${pkgdir}/usr/share/licenses/${pkgname}/CxxUrl
+    install -Dm644 web/api/app/Plugin/Crud/LICENSE.txt          "${pkgdir}"/usr/share/licenses/${pkgname}/Crud
+    install -Dm644 dep/RtspServer/LICENSE                       "${pkgdir}"/usr/share/licenses/${pkgname}/RtspServer
+    install -Dm644 dep/CxxUrl/LICENSE                           "${pkgdir}"/usr/share/licenses/${pkgname}/CxxUrl
 }
