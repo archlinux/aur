@@ -1,7 +1,7 @@
 pkgbase = zodiac-bin
 	pkgdesc = Modern, nice software for astrologers.
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/zodiac-app
 	arch = x86_64
 	license = GPL-3.0-only
