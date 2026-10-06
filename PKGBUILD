@@ -3,8 +3,8 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=sonic-bluetooth-runtime
-pkgver=6.7.4
-pkgrel=2
+pkgver=6.7.5
+pkgrel=1
 pkgdesc='Integrate Bluetooth within SonicDE without Wayland components'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-bluetooth-runtime'
@@ -38,7 +38,7 @@ provides=(bluedevil)
 conflicts=(bluedevil)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d74996463d798e8361eb1c4fa039317e5ff26e575c110d44eab5665d93897aa6')
+sha256sums=('8ea0c52a0ee8f6879ea51430e44e92f5eac0d1b1ba679fe6266933125fc6247f')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
