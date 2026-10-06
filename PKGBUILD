@@ -3,7 +3,7 @@
 pkgname=selene-p2p
 _pkgname=Selene
 pkgver=1.0.7
-pkgrel=3
+pkgrel=4
 pkgdesc='Selene is a Tor-based P2P chat and encrypted file sharing'
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/alamahant/${_pkgname}"
@@ -17,7 +17,7 @@ sha256sums=('7ed549939c88dad8beea3e83e9b6ae2a45840c03848a5c73cfd06a8d3d9cd749'
 install="selene.install"
 
 build(){
-  cd "$srcdir/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   
   cmake -B build_dir -S . -G Ninja \
     -DCMAKE_INSTALL_PREFIX='/usr' \
@@ -26,6 +26,6 @@ build(){
 }
 
 package() {
-  cd "$srcdir/${_pkgname}-${pkgver}"
-  DESTDIR="$pkgdir" cmake --install ./build_dir/
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  DESTDIR="${pkgdir}" cmake --install ./build_dir/
 }

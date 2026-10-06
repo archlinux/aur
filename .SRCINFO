@@ -1,7 +1,7 @@
 pkgbase = selene-p2p
 	pkgdesc = Selene is a Tor-based P2P chat and encrypted file sharing
 	pkgver = 1.0.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/alamahant/Selene
 	install = selene.install
 	arch = i686
