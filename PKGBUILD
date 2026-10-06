@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=sonic-dr-robotnik
-pkgver=6.7.4.1
+pkgver=6.7.5
 pkgrel=1
 pkgdesc='SonicDE crash handler'
 arch=(x86_64)
@@ -43,7 +43,7 @@ provides=(drkonqi)
 conflicts=(drkonqi)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('01e8f38b1caade76a6b7971a5af92d53a3f2f03735e430a81121bace532dcc10')
+sha256sums=('6c727e6c07704fd028c815cf2daa314693bfb52218cd3cf8792aef1f21976961')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
