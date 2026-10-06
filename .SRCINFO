@@ -1,12 +1,11 @@
 pkgbase = gnome-shell-extension-symmetric-resize
 	pkgdesc = Resize GNOME windows from the center or with a fixed aspect ratio
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/madmoh/gnome-shell-extension-symmetric-resize
 	arch = any
 	license = MIT
-	depends = gnome-shell>=50
-	depends = gnome-shell<51
+	depends = gnome-shell
 	depends = gjs
 	depends = gtk4
 	depends = libadwaita
