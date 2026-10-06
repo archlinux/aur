@@ -1,0 +1,17 @@
+pkgbase = env0-cli-bin
+	pkgdesc = The env0 command-line interface
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://www.env0.com
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = env0-cli
+	conflicts = env0-cli
+	options = !strip
+	source_x86_64 = env0-cli-bin-2.6.0-x86_64.tgz::https://registry.npmjs.org/@env0/cli-linux-x64/-/cli-linux-x64-2.6.0.tgz
+	sha256sums_x86_64 = 85828d8e4745cd5f8af2c55e698834de820cc27bf6f02510ae22394ac3240647
+	source_aarch64 = env0-cli-bin-2.6.0-aarch64.tgz::https://registry.npmjs.org/@env0/cli-linux-arm64/-/cli-linux-arm64-2.6.0.tgz
+	sha256sums_aarch64 = 828d1ab4105b2143015056732bed0404db8ac653b35ab3b6271e62d03fffa0b8
+
+pkgname = env0-cli-bin

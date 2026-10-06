@@ -1,0 +1,4 @@
+[env0-cli-bin]
+source = "jq"
+url = "https://registry.npmjs.org/@env0/cli"
+filter = '.["dist-tags"].next'
