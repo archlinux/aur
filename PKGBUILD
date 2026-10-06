@@ -1,7 +1,7 @@
 # Maintainer: Snoopey
 pkgname=omnigent-desktop
 pkgver=0.17.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Desktop client for collaborating with AI agents'
 arch=('x86_64')
 url='https://github.com/omnigent-ai/omnigent'
@@ -11,6 +11,7 @@ depends=('alsa-lib' 'at-spi2-core' 'bash' 'cairo' 'dbus' 'expat' 'glib2' 'glibc'
          'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon'
          'libxrandr' 'mesa' 'nspr' 'nss' 'pango' 'systemd-libs' 'xdg-utils')
 makedepends=('nodejs>=22' 'pnpm')
+optdepends=('omnigent-cli: local CLI, server and agent host')
 # Only the former desktop package conflicts; leave future CLI versions alone.
 conflicts=('omnigent<=0.17.0-2')
 replaces=('omnigent<=0.17.0-2')
