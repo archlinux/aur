@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=designcraft
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded clean-room take on the Adobe InDesign workflow'
@@ -12,7 +12,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('6a2f1d096479ed1ff86a967a62b421528d90ea27250d3a01ef3094d7f5dd8d7d')
+sha256sums=('41474c17fe1233ec72ff5f0c276bb10f48f135760d91d520cb765fb47c031b9a')
 
 _srcenv() {
 	cd "$_archive"

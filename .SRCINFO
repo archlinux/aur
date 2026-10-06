@@ -1,6 +1,6 @@
 pkgbase = designcraft
 	pkgdesc = vibe coded clean-room take on the Adobe InDesign workflow
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/storytold/designcraft
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = designcraft
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
-	source = https://github.com/storytold/designcraft/archive/refs/tags/v0.2.0/designcraft-0.2.0.tar.gz
-	sha256sums = 6a2f1d096479ed1ff86a967a62b421528d90ea27250d3a01ef3094d7f5dd8d7d
+	source = https://github.com/storytold/designcraft/archive/refs/tags/v0.2.1/designcraft-0.2.1.tar.gz
+	sha256sums = 41474c17fe1233ec72ff5f0c276bb10f48f135760d91d520cb765fb47c031b9a
 
 pkgname = designcraft
 	depends = glibc
