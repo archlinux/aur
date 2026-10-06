@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Tower of Atum
+Comment=Multiplayer spell-combat demo, played offline against a local server
+Exec=towerofatum
+Icon=applications-games
+Terminal=false
+Categories=Game;ActionGame;

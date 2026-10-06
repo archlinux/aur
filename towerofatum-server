@@ -1,0 +1,4 @@
+#!/bin/sh
+# Tower of Atum dedicated server: headless, on every network interface, UDP port 17779 unless ATUM_PORT is set
+# (ATUM_BIND to listen on one address). Logs to the terminal. Extra arguments go to the server.
+exec /opt/towerofatum/TowerOfAtum --server -batchmode -nographics --port "${ATUM_PORT:-17779}" --bind "${ATUM_BIND:-0.0.0.0}" -logFile - "$@"

@@ -1,0 +1,12 @@
+#!/bin/sh
+# Tower of Atum, offline: a local server in the background and the game connected to it; closing the game stops the
+# server. Installed by pacman, so the game never updates itself (the AUR package does that). Logs go to
+# $XDG_STATE_HOME/towerofatum; progress is saved under ~/.config/unity3d. Extra arguments go to the game
+# (for example --name Alex). ATUM_PORT changes the port.
+state="${XDG_STATE_HOME:-$HOME/.local/state}/towerofatum"
+mkdir -p "$state"
+port="${ATUM_PORT:-17779}"
+/opt/towerofatum/TowerOfAtum --server -batchmode -nographics --port "$port" -logFile "$state/server.log" &
+server=$!
+trap 'kill "$server" 2>/dev/null' EXIT INT TERM
+/opt/towerofatum/TowerOfAtum --client --port "$port" -logFile "$state/client.log" "$@"
