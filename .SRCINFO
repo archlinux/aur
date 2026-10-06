@@ -1,7 +1,7 @@
 pkgbase = beansprout
 	pkgdesc = A DWM-style tiling window manager with built-in wallpaper and a clock/bar
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/beansprout/beansprout
 	arch = x86_64
 	license = 0BSD
@@ -20,7 +20,7 @@ pkgbase = beansprout
 	depends = pixman
 	conflicts = beansprout-git
 	source = https://codeberg.org/beansprout/beansprout/archive/v1.1.1.tar.gz
-	sha256sums = 9175bc3865c45adeab7260d30836e90e4368461a094442a8ceb40111b6d578f5
+	sha256sums = e30686b3074a47bdcfa5116fb6da782c0def87c38b51ed64a55a2c23c711a151
 
 pkgname = beansprout
 	depends = fcft
