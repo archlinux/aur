@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xkbConfigRegistry version="1.1">
+  <layoutList>
+    <layout>
+      <configItem>
+        <name>eng</name>
+        <shortDescription>en</shortDescription>
+        <description>Rukbi English</description>
+        <countryList>
+          <iso3166Id>EN</iso3166Id>
+        </countryList>
+        <languageList>
+          <iso639Id>eng</iso639Id>
+        </languageList>
+      </configItem>
+      <variantList>
+        <variant>
+          <configItem>
+            <name>deu</name>
+            <shortDescription>ende</shortDescription>
+            <description>Rukbi English + Deutsch</description>
+            <languageList>
+              <iso639Id>eng</iso639Id>
+              <iso639Id>deu</iso639Id>
+            </languageList>
+          </configItem>
+        </variant>
+      </variantList>
+    </layout>
+    <layout>
+      <configItem>
+        <name>deu</name>
+        <shortDescription>de</shortDescription>
+        <description>Rukbi Deutsch</description>
+        <countryList>
+          <iso3166Id>DE</iso3166Id>
+        </countryList>
+        <languageList>
+          <iso639Id>deu</iso639Id>
+        </languageList>
+      </configItem>
+    </layout>
+    <layout>
+      <configItem>
+        <name>rus</name>
+        <shortDescription>ru</shortDescription>
+        <description>Russian Rukbi</description>
+        <countryList>
+          <iso3166Id>RU</iso3166Id>
+        </countryList>
+        <languageList>
+          <iso639Id>rus</iso639Id>
+        </languageList>
+      </configItem>
+      <variantList>
+        <variant>
+          <configItem>
+            <name>ukr</name>
+            <shortDescription>ruuk</shortDescription>
+            <description>Russian Rukbi + Ukrainian</description>
+            <languageList>
+              <iso639Id>rus</iso639Id>
+              <iso639Id>ukr</iso639Id>
+            </languageList>
+          </configItem>
+        </variant>
+      </variantList>
+    </layout>
+    <layout>
+      <configItem>
+        <name>ukr</name>
+        <shortDescription>uk</shortDescription>
+        <description>Ukrainian Rukbi</description>
+        <countryList>
+          <iso3166Id>UA</iso3166Id>
+        </countryList>
+        <languageList>
+          <iso639Id>ukr</iso639Id>
+        </languageList>
+      </configItem>
+      <variantList>
+        <variant>
+          <configItem>
+            <name>rus</name>
+            <shortDescription>ukru</shortDescription>
+            <description>Ukrainian Rukbi + Russian</description>
+            <languageList>
+              <iso639Id>ukr</iso639Id>
+              <iso639Id>rus</iso639Id>
+            </languageList>
+          </configItem>
+        </variant>
+      </variantList>
+    </layout>
+  </layoutList>
+</xkbConfigRegistry>

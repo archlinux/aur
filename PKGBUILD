@@ -1,27 +1,48 @@
-# Maintainer: Denys Popov <denys@denyspopov.biz>
+# Maintainer: willbasky
+# Contributor: Denys Popov <denys@denyspopov.biz>
+# Contributor: Dennis Gawrisch
+#
+# Native extensions packaging for libxkbcommon >= 1.13 (xkeyboard-config >= 2.45):
+# the layout files are installed into the XKB *extensions directory*
+# /usr/share/xkeyboard-config.d/rukbi/, which xkbcommon and libxkbregistry
+# (kwin_wayland, KDE System Settings) scan automatically.
+#
+# No patching of xkeyboard-config files:
+#   - symbols/  -> compiled by xkbcommon via include paths (keymap compilation)
+#   - rules/evdev.xml -> layout registry read by libxkbregistry (GUI discovery)
+#
+# Updates of the xkeyboard-config package do not touch these files, and
+# nothing is reverted on package upgrade/removal.
+
 pkgname=rukbi
-pkgver=4.1
-pkgrel=2
 pkgdesc="Alternative keyboard layouts with miscellaneous useful typographic characters"
-url="http://besisland.name/rukbi"
+pkgver=5.0
+pkgrel=1
+url="https://ilyabirman.ru/typography-layout/"
 arch=("any")
 license=("MIT")
-depends=("xkeyboard-config" "python")
-source=("https://github.com/denyspopov/rukbi/releases/download/$pkgver/$pkgname-$pkgver-linux.tar.bz2")
-md5sums=('6d549c632afcb78f0c84e8ed2ec4249b')
-sha1sums=('487e9426d955525e9b4002b4ca09bde133e25097')
-sha256sums=('fd10e88a18bd2463e81830451577b3aa07bebd90e455f3294f56cfaf95db23fe')
-install=arch-install
+depends=("libxkbcommon>=1.13" "xkeyboard-config")
+makedepends=("git")
+install=rukbi.install
+source=(
+  "git+https://github.com/willbasky/rukbi.git#tag=v5.0"
+  "evdev-rukbi.xml"
+)
+sha256sums=(
+  'SKIP'
+  '1e20d3a7df971ab9d1a10cb8b44a5cee755cd0c02199498934767574a9550756'
+)
 
 package() {
-    local xkbdir="$pkgdir/usr/share/X11/xkb"
-    cd "$srcdir"
+    cd "$srcdir/rukbi"
+    local xkbdir="$pkgdir/usr/share/xkeyboard-config.d/rukbi"
 
-    install -d $xkbdir/symbols
-    install -m 0644 symbols/* $xkbdir/symbols/
+    install -Dm644 symbols/eng "$xkbdir/symbols/eng"
+    install -Dm644 symbols/deu "$xkbdir/symbols/deu"
+    install -Dm644 symbols/rus "$xkbdir/symbols/rus"
+    install -Dm644 symbols/ukr "$xkbdir/symbols/ukr"
+    install -Dm644 "$srcdir/evdev-rukbi.xml" "$xkbdir/rules/evdev.xml"
 
-    install -d $xkbdir/rukbi/install $xkbdir/rukbi/symbols $xkbdir/rukbi/rules
-    install -m 0755 install/* $xkbdir/rukbi/install/
-    install -m 0644 symbols/* $xkbdir/rukbi/symbols/
-    install -m 0644 rules/* $xkbdir/rukbi/rules/
+    install -Dm644 "$srcdir/rukbi/README.md" "$pkgdir/usr/share/doc/rukbi/README.md"
+    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/rukbi/LICENSE"
 }

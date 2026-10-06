@@ -1,17 +1,17 @@
 pkgbase = rukbi
 	pkgdesc = Alternative keyboard layouts with miscellaneous useful typographic characters
-	pkgver = 4.1
-	pkgrel = 2
-	url = http://besisland.name/rukbi
-	install = arch-install
+	pkgver = 5.0
+	pkgrel = 1
+	url = https://ilyabirman.ru/typography-layout/
+	install = rukbi.install
 	arch = any
 	license = MIT
+	makedepends = git
+	depends = libxkbcommon>=1.13
 	depends = xkeyboard-config
-	depends = python
-	source = https://github.com/denyspopov/rukbi/releases/download/4.1/rukbi-4.1-linux.tar.bz2
-	md5sums = 6d549c632afcb78f0c84e8ed2ec4249b
-	sha1sums = 487e9426d955525e9b4002b4ca09bde133e25097
-	sha256sums = fd10e88a18bd2463e81830451577b3aa07bebd90e455f3294f56cfaf95db23fe
+	source = git+https://github.com/willbasky/rukbi.git#tag=v5.0
+	source = evdev-rukbi.xml
+	sha256sums = SKIP
+	sha256sums = 1e20d3a7df971ab9d1a10cb8b44a5cee755cd0c02199498934767574a9550756
 
 pkgname = rukbi
-
