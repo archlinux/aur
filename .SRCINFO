@@ -1,0 +1,19 @@
+pkgbase = syrinc-git
+	pkgdesc = audio file handler which lets you embed, format and convert lyrics data to your favorite songs, to make them display and move along in your music player
+	pkgver = r26.g0b1052baf
+	pkgrel = 1
+	url = https://github.com/techmanwalker/syrinc
+	arch = any
+	license = GPL-3.0
+	makedepends = cmake
+	makedepends = make
+	makedepends = pkgconf
+	makedepends = git
+	makedepends = cxxopts
+	depends = ffmpeg
+	depends = libstdc++
+	provides = syrinc
+	source = git+https://github.com/techmanwalker/syrinc.git
+	sha256sums = SKIP
+
+pkgname = syrinc-git
