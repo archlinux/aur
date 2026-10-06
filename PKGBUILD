@@ -1,6 +1,6 @@
 # Maintainer: Gildedboy
 pkgname=ani-cli-mx
-pkgver=3.0.8
+pkgver=3.0.9
 pkgrel=1
 pkgdesc='Command-line anime streaming helper for Mexico-oriented provider support'
 arch=('any')
@@ -8,8 +8,8 @@ url='https://github.com/Gildedboy/ani-cli-mx'
 license=('GPL')
 depends=('bash' 'curl' 'gawk' 'grep' 'openssl' 'sed' 'fzf' 'mpv' 'python' 'yt-dlp')
 optdepends=('aria2: parallel video downloads')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Gildedboy/ani-cli-mx/archive/refs/tags/v3.0.8.tar.gz")
-sha256sums=('d78f79a8992a1d9572195a5a62fde4f2aee48a3d28949922839a82563d53e13d')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Gildedboy/ani-cli-mx/archive/refs/tags/v3.0.9.tar.gz")
+sha256sums=('652380d89a3180701348c8363987dc4b819258169bd18deba1ec34e383ce9231')
 
 package() {
   cd "${srcdir}"/ani-cli-mx-*/
