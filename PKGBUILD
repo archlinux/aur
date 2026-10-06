@@ -1,5 +1,6 @@
 # Maintainer: Jamison Lahman <jamison@lahman.dev>
 # Contributor:
+# Source: https://github.com/jmelahman/pkgbuilds
 
 pkgname=aligo
 pkgver=2.5.3
