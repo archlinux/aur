@@ -1,21 +1,44 @@
-pkgbase = omnigent
-	pkgdesc = Omnigent desktop client for AI agents (built from release source)
+pkgbase = omnigent-desktop
+	pkgdesc = Desktop client for collaborating with AI agents
 	pkgver = 0.17.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/omnigent-ai/omnigent
 	arch = x86_64
 	license = Apache-2.0
+	license = MIT
+	license = BSD-3-Clause
 	makedepends = nodejs>=22
 	makedepends = pnpm
 	depends = alsa-lib
+	depends = at-spi2-core
+	depends = bash
+	depends = cairo
+	depends = dbus
+	depends = expat
+	depends = glib2
+	depends = glibc
 	depends = gtk3
-	depends = libdrm
-	depends = libxss
-	depends = libxtst
+	depends = hicolor-icon-theme
+	depends = libcups
+	depends = libgcc
+	depends = libx11
+	depends = libxcb
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxext
+	depends = libxfixes
+	depends = libxkbcommon
+	depends = libxrandr
 	depends = mesa
+	depends = nspr
 	depends = nss
+	depends = pango
+	depends = systemd-libs
 	depends = xdg-utils
+	conflicts = omnigent<=0.17.0-2
+	replaces = omnigent<=0.17.0-2
 	options = !strip
+	options = !debug
 	source = omnigent-0.17.0.tar.gz::https://github.com/omnigent-ai/omnigent/archive/refs/tags/v0.17.0.tar.gz
 	source = omnigent-desktop
 	source = omnigent-desktop.desktop
@@ -23,4 +46,4 @@ pkgbase = omnigent
 	sha256sums = 8393e46f4aac97b93894ca4ef7068fd78ad6f809b3339576171abda089d24654
 	sha256sums = c6eac7eefe6ab74a06f452e1ab106e25e8780c7044dfc337a742b35d9ed354fe
 
-pkgname = omnigent
+pkgname = omnigent-desktop
