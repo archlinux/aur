@@ -7,7 +7,7 @@
 
 set -u
 pkgname='libreswan'
-pkgver='5.4'
+pkgver='5.4.1'
 pkgrel='1'
 pkgdesc='IPsec implementation with IKEv1 and IKEv2 keying protocols'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -28,7 +28,7 @@ source=(
   'tmpfiles.conf'
   'libreswan.install'
 )
-sha256sums=('d26340cf625316cc9127e05b392214a24a10889f4f1d9940c2ea64bab710a855'
+sha256sums=('7b0f90c9a83b3ad96b430d85495074eb626599024c973789c1b0b6cff032ee10'
             '78265c690d58228c3bcc1a8793456172c39d493d268e9d9b1816288d0a47f573'
             '762be0c8e1df04bcd94776d19b669bbc20754e19cae7c73a2d45fdc370fa4b32')
 
