@@ -1,12 +1,13 @@
+# Maintainer: Dustin Pilgrim <dustin.pilgrim1997@gmail.com>
+
 pkgname=halley-git
 _pkgname=halley
-pkgver=r1452.47a8e9b
+pkgver=r1507.47f8333
 pkgrel=1
 pkgdesc="Spatial Wayland compositor built around infinite workspace navigation"
 arch=('x86_64')
 url="https://github.com/saltnpepper97/halley"
-license=('GPL-3.0-or-later')
-options=('!debug' '!lto')
+license=('GPL-3.0-only')
 depends=(
   'wayland'
   'libxkbcommon'
@@ -15,8 +16,6 @@ depends=(
   'mesa'
   'libdisplay-info'
   'libdrm'
-  'pipewire'
-  'xdg-desktop-portal'
 )
 makedepends=(
   'git'
@@ -25,16 +24,19 @@ makedepends=(
   'pkgconf'
 )
 optdepends=(
-  'xwayland-satellite: X11 application support'
+  'halley-lift: native search and action launcher'
+  'xdg-desktop-portal-halley: native ScreenCast/Screenshot portal backend'
+  'xorg-xwayland: X11 application support'
   'xdg-desktop-portal-gtk: fallback backend for common file/dialog portals'
-  'fuzzel: launcher bound to Super+d by default'
-  'ghostty: terminal for the default open-terminal binding'
-  'kitty: terminal for the default open-terminal binding'
-  'foot: terminal for the default open-terminal binding'
-  'wezterm: terminal for the default open-terminal binding'
-  'alacritty: terminal for the default open-terminal binding'
+  'fuzzel: alternative launcher'
+  'ghostty: terminal for the default-terminal binding'
+  'kitty: terminal for the default-terminal binding'
+  'foot: terminal for the default-terminal binding'
+  'wezterm: terminal for the default-terminal binding'
+  'alacritty: terminal for the default-terminal binding'
   'wireplumber: provides wpctl for default media-key bindings'
 )
+options=('!debug' '!lto')
 provides=('halley')
 conflicts=('halley')
 source=("git+https://github.com/saltnpepper97/halley.git#branch=main")
@@ -48,12 +50,12 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
   export CARGO_TARGET_DIR=target
-  cargo build --release --locked -p halley -p halley-cli -p halley-portal
+  cargo build --release --locked -p halley -p halley-cli
 }
 
 check() {
   cd "$srcdir/$_pkgname"
-  cargo test --release --locked -p halley-cli --no-fail-fast || true
+  cargo test --release --locked -p halley-cli --no-fail-fast
 }
 
 package() {
@@ -65,31 +67,21 @@ package() {
   install -Dm755 "target/release/halleyctl" \
     "$pkgdir/usr/bin/halleyctl"
 
-  install -Dm755 "target/release/xdg-desktop-portal-halley" \
-    "$pkgdir/usr/bin/xdg-desktop-portal-halley"
-
   install -Dm755 "packaging/wayland-sessions/halley-session" \
     "$pkgdir/usr/bin/halley-session"
 
   install -Dm644 "packaging/wayland-sessions/halley.desktop" \
     "$pkgdir/usr/share/wayland-sessions/halley.desktop"
 
-  install -Dm644 "packaging/dbus-1/services/org.freedesktop.impl.portal.desktop.halley.service" \
-    "$pkgdir/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.halley.service"
-
-  install -Dm644 "packaging/xdg-desktop-portal/portals/halley.portal" \
-    "$pkgdir/usr/share/xdg-desktop-portal/portals/halley.portal"
-
-  install -Dm644 "packaging/xdg-desktop-portal/halley-portals.conf" \
-    "$pkgdir/usr/share/xdg-desktop-portal/halley-portals.conf"
-
   install -Dm644 "packaging/systemd-user/halley.service" \
     "$pkgdir/usr/lib/systemd/user/halley.service"
+
+  install -Dm644 "packaging/systemd-user/halley-direct-session.target" \
+    "$pkgdir/usr/lib/systemd/user/halley-direct-session.target"
 
   install -Dm644 "packaging/systemd-user/halley-shutdown.target" \
     "$pkgdir/usr/lib/systemd/user/halley-shutdown.target"
 
-  if [[ -f LICENSE ]]; then
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  fi
+  install -Dm644 "LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
