@@ -1,0 +1,25 @@
+pkgbase = venturi
+	pkgdesc = Linux-first, performance oriented minimal video editor
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/VenturiVideo/Venturi
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = clang
+	makedepends = pkgconf
+	depends = glibc
+	depends = gcc-libs
+	depends = ffmpeg
+	depends = alsa-lib
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = wayland
+	depends = libx11
+	depends = vulkan-icd-loader
+	depends = hicolor-icon-theme
+	source = venturi-0.4.5.tar.gz::https://github.com/VenturiVideo/Venturi/archive/refs/tags/v0.4.5.tar.gz
+	sha256sums = c9dc9368d8a408996d090ca7421a35778a861eaac40fe8d69f9ab9e6dae30ca3
+
+pkgname = venturi
