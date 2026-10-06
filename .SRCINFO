@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-log4cplus
 	pkgdesc = A C++ logger very close to Java's log4j (mingw-w64)
-	pkgver = 2.2.0.1
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = http://log4cplus.sourceforge.net/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mingw-w64-log4cplus
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://downloads.sourceforge.net/log4cplus/log4cplus-2.2.0.1.tar.xz
-	sha512sums = f9b0654b179bfea9348b117f20ba9006166ed1d464c0e0d9ad3a1239cf3538c7c559b570bc31e3d217a0819bfe6e700b3a3beab38d0e27ff33f96eb7bd45e143
+	source = https://github.com/log4cplus/log4cplus/releases/download/REL_2_2_1/log4cplus-2.2.1.tar.xz
+	sha512sums = 03afe4d832564fd502f4c93887e601fdea67f58de0ce3911b283bd1344cd76c1e55eb4b4a0146d7360cb235bf4fd26dc7d4e53721c9b21e9b04727a6a839eae2
 
 pkgname = mingw-w64-log4cplus
