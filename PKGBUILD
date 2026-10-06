@@ -16,9 +16,9 @@ source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/$_pkgtag/HedgeModManag
 	"$_pkgname.png::https://raw.githubusercontent.com/hedge-dev/HedgeModManager/refs/heads/main/flatpak/hedgemodmanager.png"
 	"LICENSE.md::https://raw.githubusercontent.com/hedge-dev/HedgeModManager/refs/heads/main/LICENSE.md")
 sha256sums=('9d66b1074693ba11198f8a707d5880e63e43a4bddf1d31552d12e0e74447204a'
-	"SKIP"
-	"SKIP"
-	"SKIP")
+	"dd82538a8c12d148a41b2aa1a4a638bd8f83d5c826e8c69c6e04ad8ea5f15e4b"
+	"b261f7ed603f13cb6c10e3d4d9dad7916738939391f63d3b2fddc54476d93f9c"
+	"0af1643d2c72485b0296e5d5d3adc31b335ddef106b9c873d8d8f83b061041da")
 
 package() {
 	install -Dm644 $srcdir/LICENSE.md $pkgdir/usr/share/licenses/${pkgname}/LICENSE
