@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/audit/
+/*.pkg.tar.*
+/crystal-sol-launcher-*.tar.gz
