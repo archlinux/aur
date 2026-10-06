@@ -8,7 +8,7 @@
 # then refresh .SRCINFO (makepkg --printsrcinfo).
 
 pkgname=xca-rs-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="XCA rewritten in Rust with GTK4 and GOST support — prebuilt binary"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=('gtk4' 'libadwaita' 'openssl' 'openssl-gost-engine' 'glib2' 'glibc' 'po
 provides=("${pkgname%-bin}=$pkgver")
 conflicts=("${pkgname%-bin}")
 source=("$url/releases/download/v$pkgver/xca-rs-$pkgver-$pkgrel-x86_64.pkg.tar.zst")
-sha256sums=('9051058699e214446bf1ec756a58c387e82d685ce84a7a454e0ef7f84d9a0b15')
+sha256sums=('25425abb2d5d3342106bb861165b3513e74c69d374423272d1b8e5143358f481')
 
 package() {
     install -Dm755 usr/bin/xca-rs -t "$pkgdir/usr/bin"
