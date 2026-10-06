@@ -3,8 +3,8 @@
 
 pkgname=sonic-silver
 _pkgname=silver
-pkgver=6.7.4.6
-pkgrel=1
+pkgver=6.7.5
+pkgrel=2
 pkgdesc='Highly customizable binary Window Decoration, Application Style and Global Theme plugin for SonicDE.'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-silver'
@@ -26,15 +26,15 @@ depends=(frameworkintegration
          sonic-frameworks-core-addons
          sonic-frameworks-gui-addons
          sonic-frameworks-quick-ui
-         sonic-frameworks-silver-icons
          sonic-frameworks-windowsystem
+         sonic-silver-icons
          xdg-utils)
 makedepends=(sonic-frameworks-cmake-modules)
 provides=(breeze sonic-silver-theme)
 conflicts=(breeze sonic-silver-theme)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('14b49cb576e76c02913ef08fb81adbb25e0613a738e0e439d2c492c4c1d9982b')
+sha256sums=('3681dc23cbbd03644cbef717fa63df36661cae2b9438dadeafd4771fdff58922')
 
 build() {
   cmake -B build -S "${pkgname}-${pkgver}" \
