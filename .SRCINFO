@@ -1,0 +1,25 @@
+pkgbase = slate-editor
+	pkgdesc = A fast, minimal text editor for Linux, built with GPUI Kit
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/pinkpixel-dev/slate
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glibc
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = vulkan-icd-loader
+	depends = wayland
+	depends = xdg-desktop-portal
+	conflicts = slate
+	conflicts = slate-git
+	conflicts = slate-bin
+	options = !lto
+	source = slate-0.7.0.tar.gz::https://github.com/pinkpixel-dev/slate/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 83cd331c52bbc78d29cc671eb5f2628d7bb287bd16bc55ac331929519eca5ecf
+
+pkgname = slate-editor
