@@ -1,0 +1,5 @@
+[artcraft]
+source = "git"
+git = "https://github.com/storytold/artcraft.git"
+prefix = 'artcraft-v'
+include_regex = 'artcraft-v\d+\.\d+\.\d+'
