@@ -3,8 +3,8 @@
 # Release notes https://rocm.docs.amd.com/en/latest/about/release-notes.html
 pkgname=rocm-gfx1152-bin
 pkgdesc="ROCm Core SDK - Ryzen AI 300 - Krackan Point"
-pkgver=10.0.0
-pkgrel=2
+pkgver=10.1.0
+pkgrel=1
 epoch=0
 arch=('x86_64')
 url='http://www.amd.com'
@@ -20,18 +20,19 @@ conflicts=('opencl-amd' 'opencl-amd-dev' 'rocm-bin' 'rocm-gfx101x-bin' 'rocm-gfx
 'rocm-ml-libraries' 'rocm-ml-sdk')
 optdepends=('clinfo')
 options=('!strip')
+noextract=("therock-dist-linux-gfx1152-10.1.0.tar.gz")
 
 source=(
-"https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx1152-10.0.0.tar.gz"
+"https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx1152-10.1.0.tar.gz"
 )
 
 sha256sums=(
-"bbe902444055d2bd4fed1db4eb15873d17041d488ae64f320ca1d283e42474f2"
+"ceed8714adb3db7885f6d25784060687fb772d3d9ed2449779ce7636d88827c0"
 )
 
 prepare() {
     mkdir -p "${srcdir}/opt/rocm/core"
-    bsdtar xf therock-dist-linux-gfx1152-10.0.0.tar.gz -C ${srcdir}/opt/rocm/core
+    bsdtar xf therock-dist-linux-gfx1152-10.1.0.tar.gz -C ${srcdir}/opt/rocm/core
 }
 
 package() {
