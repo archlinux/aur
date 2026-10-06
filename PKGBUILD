@@ -11,8 +11,8 @@ conflicts=("${pkgname%%-git}" lyra-git)
 replaces=(lyra-git)
 depends=(
   cosmic-icon-theme
-  gcc-libs
   glibc
+  libgcc
   libgl
   libxkbcommon
   wayland
