@@ -1,7 +1,7 @@
 pkgbase = ermis
 	pkgdesc = Image, audio, text, PDF, distributed and network steganography suite.
 	pkgver = 1.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alamahant/Ermis
 	arch = i686
 	arch = x86_64
