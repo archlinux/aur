@@ -4,13 +4,13 @@
 # The release workflow's binaries with flea's own closure, whose reasons live beside it in the root PKGBUILD.
 pkgname=flea-bin
 _pkgname=flea
-pkgver=0.3.7
-pkgrel=2
+pkgver=0.3.8
+pkgrel=1
 pkgdesc='Fast, keyboard-first file manager for Omarchy (prebuilt binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/thisisgm/flea'
-license=('MIT')
-depends=('bubblewrap' 'expect' 'gcc-libs' 'glib2' 'glibc' 'gvfs' 'gvfs-afc' 'gvfs-dnssd' 'gvfs-gphoto2' 'gvfs-mtp' 'gvfs-nfs' 'gvfs-smb' 'hicolor-icon-theme' 'kimageformats' 'libheif' 'omarchy' 'python' 'python-gobject' 'qt6-multimedia' 'qt6-webengine' 'quickshell' 'shared-mime-info' 'usbmuxd' 'util-linux' 'wl-clipboard' 'xdg-terminal-exec' 'xdg-utils')
+license=('MIT' 'Apache-2.0' 'EPL-2.0' 'BSD-2-Clause')
+depends=('bubblewrap' 'expect' 'gcc-libs' 'glib2' 'glibc' 'gvfs' 'gvfs-afc' 'gvfs-dnssd' 'gvfs-gphoto2' 'gvfs-mtp' 'gvfs-nfs' 'gvfs-smb' 'hicolor-icon-theme' 'kimageformats' 'libheif' 'omarchy' 'python' 'python-gobject' 'qt6-multimedia' 'qt6-webengine' 'quickjs-ng' 'quickshell' 'shared-mime-info' 'usbmuxd' 'util-linux' 'wl-clipboard' 'xdg-terminal-exec' 'xdg-utils')
 optdepends=('libarchive: archive listing and extraction'
             '7zip: 7z archive support'
             'imagemagick: image conversion'
@@ -28,8 +28,8 @@ options=('!strip' '!debug')
 # The local names carry pkgrel, so a rebuilt release is downloaded again, never read from a stale yay cache.
 source_x86_64=("$_pkgname-v$pkgver-$pkgrel-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-v$pkgver-$pkgrel-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('671fdfa1bf2095900bb084da67b27b036a09d3f6c3368904174e0a6fd787c6a4')
-sha256sums_aarch64=('99c01621c6fb7d6a32195ed942de7d05f3ffb3e8e8427933d42a42b780065231')
+sha256sums_x86_64=('8dbd01d7ba7b9054da61bfab4c396ace756685c7c249aa869d72858aff10d9ad')
+sha256sums_aarch64=('18e691becff0476d8d320c3b570047a1901f3345f40f880149f6a18d01a6583e')
 
 # The source PKGBUILD's package() with the binary read from the tarball's root; the release workflow diffs the two.
 package() {
@@ -50,10 +50,12 @@ package() {
   install -Dm644 packaging/flea.hook -t "$pkgdir/usr/share/libalpm/hooks"
 
   # paths.rs looks for /usr/share/flea/ui/boot/shell.qml, so the UI ships as data beside the binary.
-  install -Dm644 ui/qmldir ui/*.qml -t "$pkgdir/usr/share/flea/ui"
-  install -Dm644 ui/js/*.js -t "$pkgdir/usr/share/flea/ui/js"
-  # The two Quickshell entries, in their own directory so ui/qmldir's singletons stay off the startup path.
-  install -Dm644 ui/boot/shell.qml ui/boot/picker.qml -t "$pkgdir/usr/share/flea/ui/boot"
+  install -Dm644 ui/qmldir ui/*.qml ui/*.js -t "$pkgdir/usr/share/flea/ui"
+  install -Dm644 ui/js/*.js ui/js/*.mjs -t "$pkgdir/usr/share/flea/ui/js"
+  install -Dm644 ui/vendor/*.mjs -t "$pkgdir/usr/share/flea/ui/vendor"
+  install -Dm644 ui/vendor/LICENSES/* -t "$pkgdir/usr/share/flea/ui/vendor/LICENSES"
+  # The shell, the picker and the two tab tear-off windows, in their own directory so ui/qmldir's singletons stay off the startup path.
+  install -Dm644 ui/boot/shell.qml ui/boot/picker.qml ui/boot/fleatab.qml ui/boot/tabtearoff.qml -t "$pkgdir/usr/share/flea/ui/boot"
   # The bar plugin ships as data, flat, for the Enable shelf switch to copy into the user's plugin directory.
   install -Dm644 shelf/manifest.json shelf/README.md shelf/*.qml shelf/*.js -t "$pkgdir/usr/share/flea/shelf"
   # Omarchy's own Commons and Ui, reached as qs.Commons, linked into both config roots the entries use.
