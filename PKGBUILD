@@ -1,5 +1,5 @@
 pkgname=fgen
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Generate images with your ChatGPT subscription from the terminal'
 arch=('x86_64' 'aarch64')
@@ -7,8 +7,8 @@ url='https://github.com/prophesourvolodymyr/fuckinggen'
 license=('WTFPL')
 depends=('glibc')
 makedepends=('rust' 'gcc')
-source=("fgen-0.1.1.tar.gz::https://github.com/prophesourvolodymyr/fuckinggen/archive/refs/tags/v0.1.1.tar.gz")
-sha256sums=('76de50dbea004706a869ded134fc604fd7583efbe9a427fd870ac588a67ede72')
+source=("fgen-0.1.2.tar.gz::https://github.com/prophesourvolodymyr/fuckinggen/archive/refs/tags/v0.1.2.tar.gz")
+sha256sums=('82acb0515fd434f0fcd585d27ffe1930c58ad406cddaeebabeab74d4f4336f22')
 
 build() {
   cd "$srcdir/fuckinggen-$pkgver"
