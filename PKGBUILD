@@ -12,8 +12,8 @@
 # release both files come from.
 pkgname=kubecom-bin
 _pkgname=kubecom
-pkgver=26.10.06
-pkgrel=2
+pkgver=26.10.07
+pkgrel=1
 pkgdesc="A fast, keyboard-driven terminal UI for Kubernetes (a launcher plus a seed build: kubecom updates itself in ~/.local/kubecom with kubecom update)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/neuroplastio/kubecom"
@@ -31,8 +31,8 @@ source_x86_64=("kubecom-launcher-${pkgver}-x86_64::${_release}/kubecom-launcher_
                "kubecom-${pkgver}-x86_64::${_release}/kubecom_linux_amd64")
 source_aarch64=("kubecom-launcher-${pkgver}-aarch64::${_release}/kubecom-launcher_linux_arm64"
                 "kubecom-${pkgver}-aarch64::${_release}/kubecom_linux_arm64")
-sha256sums_x86_64=('0b002a3ad53c4621fee6a0f0f42619adf12e8746cdf2da8c840a73995ab1dbd4' '1ef81bc89ec33477117e6911590a54a0b5341b06cac21fe56cbff256fede4777')
-sha256sums_aarch64=('9b881e06e50dfb414ed7b520a97e48951b90eb668b1c868ffd931cd021044942' 'c5b7780dd5cd8bf222d711af7bfb22262005f70e27fb32fc7a42ed3f0ec2b12f')
+sha256sums_x86_64=('e6ebfab74bb7b0a46f4b1192155fa23d22414d8b92110f0781a4787f64c735c5' '761b4935da56c46f591419d32434265aeb707954b86e4e7c25bf8274be0f12de')
+sha256sums_aarch64=('59f3f87f717718ddb0f1b938efe422a9ca1771af5c9d1597c4f093287164510c' 'd16e3e25ae341c012e04a3261c55ef959a4ec7a2374518e828652c50d75fc4ba')
 
 package() {
   install -Dm755 "kubecom-launcher-${pkgver}-${CARCH}" "$pkgdir/usr/bin/$_pkgname"
