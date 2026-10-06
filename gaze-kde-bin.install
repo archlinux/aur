@@ -97,10 +97,10 @@ strip_gaze_block() {
 	fi
 }
 
-# Files Gaze created itself go away whole, restoring the vendor stack underneath
-# where there is one. The recorded checksum is what Gaze left behind, so a file
-# someone has edited since is kept, while a copy the vendor has changed underneath
-# is still removed rather than shadowing the new vendor stack for good.
+# Remove unchanged files created by Gaze so the vendor stack can take over. Keep
+# files that someone has edited since installation. If the vendor file changed
+# underneath an unchanged Gaze copy, remove the copy so it no longer shadows the
+# updated vendor stack.
 file_sum() {
 	[ -f "$1" ] || return 1
 	if command -v sha256sum >/dev/null 2>&1; then
