@@ -1,7 +1,7 @@
 pkgbase = lightcraft
 	pkgdesc = vibe coded clean-room reimplementation of Adobe Lightroom
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getartcraft.com/apps/lightcraft
 	arch = x86_64
 	license = MIT
