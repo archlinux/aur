@@ -2,4 +2,3 @@
 source = "git"
 git = "https://github.com/thesmokinator/ledgera.git"
 prefix = "v"
-include_pattern = 'v\d+\.\d+\.\d+'
