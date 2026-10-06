@@ -4,7 +4,7 @@
 # Release notes https://rocm.docs.amd.com/en/latest/about/release-notes.html
 pkgname=rocm-gfx94x-bin
 pkgdesc="ROCm Core SDK - CDNA3"
-pkgver=10.0.0
+pkgver=10.1.0
 pkgrel=1
 epoch=0
 arch=('x86_64')
@@ -23,15 +23,15 @@ optdepends=('clinfo')
 options=('!strip')
 
 source=(
-"https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx94X-dcgpu-10.0.0.tar.gz"
+"https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx94X-dcgpu-${pkgver}.tar.gz"
 )
-noextract=(therock-dist-linux-gfx94X-dcgpu-10.0.0.tar.gz)
+noextract=("therock-dist-linux-gfx94X-dcgpu-${pkgver}.tar.gz")
 
-sha256sums=('a7e105c74c26ef88d12f66712a0af1a107ded0405890a8e2389254ed046e7b06')
+sha256sums=('4f929bad2cedd5cc0cfe3d6c5cf24166955540f332f7065453fb968d24e36baa')
 
 prepare() {
     mkdir -p "${srcdir}/opt/rocm/core"
-    bsdtar xf therock-dist-linux-gfx94X-dcgpu-10.0.0.tar.gz -C ${srcdir}/opt/rocm/core
+    bsdtar xf therock-dist-linux-gfx94X-dcgpu-${pkgver}.tar.gz -C ${srcdir}/opt/rocm/core
 }
 
 package() {
