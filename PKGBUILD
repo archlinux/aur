@@ -4,7 +4,7 @@
 pkgname=catdir
 pkgver=0.1.2
 pkgrel=1
-pkgdesc="CLI utility that traverses directories and concatenates the contents of all files within a folder and its subfolders, like cat but for entire directory trees"
+pkgdesc="Concatenate the contents of all files in a directory tree, like cat for whole folders"
 arch=('any')
 url="https://github.com/emilastanov/catdir"
 license=('MIT')
