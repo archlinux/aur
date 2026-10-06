@@ -1,5 +1,5 @@
 pkgbase = dev-prune
-	pkgdesc = Find and reclaim disk space used by stale developer build artifacts and caches (also installs the devp shortcut)
+	pkgdesc = Find and reclaim disk space used by stale developer build artifacts and caches
 	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://github.com/Life-Experimentalist/dev-prune

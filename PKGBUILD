@@ -4,7 +4,7 @@
 pkgname=dev-prune
 pkgver=1.22.0
 pkgrel=1
-pkgdesc="Find and reclaim disk space used by stale developer build artifacts and caches (also installs the devp shortcut)"
+pkgdesc="Find and reclaim disk space used by stale developer build artifacts and caches"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Life-Experimentalist/dev-prune"
 license=('Apache-2.0')
