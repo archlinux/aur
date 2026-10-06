@@ -29,7 +29,10 @@ makedepends=(
   'git'
   'meson'
 )
-checkdepends=('desktop-file-utils')
+checkdepends=(
+  'desktop-file-utils'
+  'python-pycurl'
+)
 _commit=93e33e5ae6792edb209207bb6a4e48b017fc58d8
 source=("git+https://github.com/xapp-project/clockenstein.git#commit=${_commit}")
 # source=("git+https://github.com/xapp-project/clockenstein.git#tag=$pkgver")

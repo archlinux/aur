@@ -6,6 +6,7 @@ pkgbase = clockenstein
 	arch = any
 	license = GPL-3.0-or-later
 	checkdepends = desktop-file-utils
+	checkdepends = python-pycurl
 	makedepends = git
 	makedepends = meson
 	depends = gnome-online-accounts
