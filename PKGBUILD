@@ -1,5 +1,6 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor: Benjamin Denhartog <ben@sudoforge.com>
+# Source: https://github.com/jmelahman/pkgbuilds
 
 pkgname=buildozer-bin
 pkgver=10.1.0
