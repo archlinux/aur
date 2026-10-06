@@ -2,7 +2,7 @@
 
 pkgname=libfprint-elanpress-git
 _pkgname=libfprint
-pkgver=1.94.10.r1.g34fc394
+pkgver=1.94.10.r16.g4fd9f3e
 pkgrel=1
 pkgdesc="libfprint with the elanpress driver for ELAN 04f3:0c6e press sensors (ASUS ROG Flow X13 and other ASUS laptops)"
 url="https://github.com/filip-rs/libfprint"
