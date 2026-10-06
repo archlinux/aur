@@ -9,6 +9,8 @@ pkgbase = sinergia-appimage-manager
 	depends = python-pyqt6
 	optdepends = desktop-file-utils: para actualizar la base de datos de escritorios
 	source = sinergia-appimage-manager-1.0.0.tar.gz::https://github.com/Nacho-Telmo/sinergia-appimage-manager/archive/refs/tags/v1.0.0.tar.gz
+	source = sinergia.svg
 	sha256sums = bcce9d9f4332b95ef0d63e1fd51bc9d50a4db65ddbe3f37083b05248cbbc381b
+	sha256sums = 074d2d6b04ffd0482d053e8025a93cb866616a44a75f56f88b3ae20fd7f05048
 
 pkgname = sinergia-appimage-manager
