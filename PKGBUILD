@@ -2,7 +2,7 @@
 
 pkgname=whisper-cpp-cuda-git
 _pkgsrc=whisper.cpp
-pkgver=1.9.3.r182.g52a939a
+pkgver=1.9.4.r183.g60c0be6
 pkgrel=1
 pkgdesc="High-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model (leveraging NVIDIA CUDA optimizations)"
 arch=(x86_64 aarch64)
@@ -10,14 +10,15 @@ url=https://github.com/ggml-org/whisper.cpp
 license=(MIT)
 depends=(
   ffmpeg
-  glibc
   gcc-libs
+  glibc
   llama.cpp-cuda-git
-  nvidia-utils
   sdl2-compat
 )
 provides=(
   "whisper-cpp=${pkgver}"
+  libwhisper.so
+  libparakeet.so
 )
 conflicts=(
   whisper-cpp
@@ -28,6 +29,7 @@ makedepends=(
   cmake
   git
   ninja
+  patchelf
 )
 source=("git+${url}.git")
 sha256sums=('SKIP')
@@ -54,8 +56,10 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --install build
 
-  # wchess is built but has no upstream cmake install() rule
+  # wchess is built but has no upstream cmake install() rule;
+  # strip the build-tree RPATH after the manual install
   install -Dm755 build/bin/wchess "${pkgdir}/usr/bin/wchess"
+  patchelf --remove-rpath "${pkgdir}/usr/bin/wchess"
 
   install -Dm644 "${_pkgsrc}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
