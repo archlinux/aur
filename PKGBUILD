@@ -1,5 +1,6 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor: Marc Plano-Lesay <marc.planolesay@gmail.com>
+# Source: https://github.com/jmelahman/pkgbuilds
 
 pkgname="ibazel"
 pkgver=0.33.0
