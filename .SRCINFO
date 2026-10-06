@@ -1,6 +1,6 @@
 pkgbase = xtool
 	pkgdesc = Cross-platform Xcode replacement.
-	pkgver = 1.20.1
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = https://xtool.sh/
 	arch = x86_64
@@ -9,11 +9,9 @@ pkgbase = xtool
 	makedepends = clang
 	depends = usbmuxd
 	depends = swift-bin
-	depends = zip
+	depends = unzip
 	depends = xadi
-	source = xtool-1.20.1.tar.gz::https://github.com/xtool-org/xtool/archive/refs/tags/1.20.1.tar.gz
-	source = swift-bin-toolset.json
-	b2sums = 4eec131e4dfc453b51869dadc09c14db453c5e085ded834b89a714a7e24a87f49031ca841bf922ff977df291859dd80e6410ade461cd775dd2f02b35ed15d387
-	b2sums = dc77d0b3b7d6cbde56f954d02e6fc490b5c60796ae0f376d5aa2d7d8a805df7e701b76db7b7664a4a1c91fffadba993b483aaaf8021b0d45cb94393502cb5b4e
+	source = xtool-1.21.0.tar.gz::https://github.com/xtool-org/xtool/archive/refs/tags/1.21.0.tar.gz
+	b2sums = 2b6183a6b35263b1171ede87313d4d89174f43a3cef5e56e0d99259226a225e19d747202e0c23ad73906e27d4355f4ff0ac1c706cab9e32c98bef4123e55030f
 
 pkgname = xtool
