@@ -1,9 +1,9 @@
 # Maintainer: Sebastian Muxel <sebastian@muxel.dev>
 
 pkgname='blepfx-filtrr-clap-bin'
-pkgver='a nonlinear ladder'
+pkgver='release_128'
 pkgrel='2'
-pkgdesc='a digital degrader'
+pkgdesc='a nonlinear ladder'
 url="https://fx.amee.ee/plugin/filtrr"
 license=('custom:Potion Seller Public License')
 source=("https://github.com/blepfx/dist/releases/download/${pkgver//_/-}/filtrr-${CARCH}-unknown-linux-gnu.zip"

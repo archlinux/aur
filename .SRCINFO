@@ -1,5 +1,5 @@
 pkgbase = blepfx-filtrr-clap-bin
-	pkgdesc = a digital degrader
+	pkgdesc = a nonlinear ladder
 	pkgver = release_128
 	pkgrel = 2
 	url = https://fx.amee.ee/plugin/filtrr
