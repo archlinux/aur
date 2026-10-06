@@ -1,6 +1,6 @@
 pkgbase = laneway
 	pkgdesc = A terminal board for Jira
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/cornedor/laneway
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = laneway
 	makedepends = go
 	depends = glibc
 	options = !lto
-	source = laneway-0.7.0.tar.gz::https://github.com/cornedor/laneway/archive/refs/tags/v0.7.0.tar.gz
-	b2sums = b458b35a217c52f1d3a034fc21a3c56b87b94794b5af3105798c48e36ecffb6b82a128923f07b5c39f240738f7b2d21e8a7fa65e1ab88363d472c126190d10d0
+	source = laneway-0.8.0.tar.gz::https://github.com/cornedor/laneway/archive/refs/tags/v0.8.0.tar.gz
+	b2sums = f5db30a8a368d2ab1e0dcd3ec669b14ed3887f13a8e4b49e22b744e0dc62ab2fcacc36d9a7931d4c20c89ec20d643e8927d523d8e10abe431a90b863965de7f2
 
 pkgname = laneway
