@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Thyra
+GenericName=Herdr Web Client
+Comment=Start a Thyra server and open it in the browser
+Exec=thyra --open
+Icon=thyra
+Terminal=true
+Categories=Development;
+Keywords=herdr;terminal;agent;

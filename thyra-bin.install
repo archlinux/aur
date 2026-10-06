@@ -1,0 +1,16 @@
+post_install() {
+  cat <<'MSG'
+==> Thyra is installed as /usr/bin/thyra. It needs a Herdr server.
+==> Run it as a user service:
+      systemctl --user enable --now thyra.service
+    It listens on 127.0.0.1:8787. Settings go in ~/.config/thyra/thyra.env
+    (mode 0600); see /usr/share/doc/thyra/thyra.env.example.
+    `thyra user add <name> --admin` prints a passkey enrollment link.
+==> Shell integration for Herdr panes (per user, edits your rc files):
+      thyra shell-integration install --shell all
+      thyra shell-integration status
+==> `thyra service install` writes its own unit to ~/.config/systemd/user,
+    which shadows the packaged one; use one or the other.
+==> pacman manages updates; the in-app updater is disabled in the packaged unit.
+MSG
+}
