@@ -1,6 +1,6 @@
 pkgbase = forskscope
 	pkgdesc = Local-first cross-platform diff and merge tool
-	pkgver = 0.182.0
+	pkgver = 0.183.0
 	pkgrel = 1
 	url = https://github.com/forskscope/forskscope
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = forskscope
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = xdotool
-	source = forskscope-0.182.0.tar.gz::https://github.com/forskscope/forskscope/archive/refs/tags/0.182.0.tar.gz
-	sha256sums = 8b87a384d06d23057212319be5001e2e329c62b40a57c3c98a625a7d81719e0a
+	source = forskscope-0.183.0.tar.gz::https://github.com/forskscope/forskscope/archive/refs/tags/0.183.0.tar.gz
+	sha256sums = a6ee5b8f681d4a99e736eff0dd90fc7eb641b4a2a221e052eeed948adb78212a
 
 pkgname = forskscope
