@@ -1,8 +1,8 @@
 # Maintainer: xiliuya <xiliuya@aliyun.com>
 
 pkgname=lightpanda
-pkgver=0.4.0
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Headless browser designed for AI and automation - 11x faster than Chrome, 9x less memory"
 arch=('x86_64' 'aarch64')
 url="https://lightpanda.io"
