@@ -3,7 +3,7 @@
 pkgname=('llvm-mos-git')
 _pkgname=${pkgname%-git}
 pkgver=r452222.b05db96bef68
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://llvm-mos.org/wiki/Welcome"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -19,6 +19,15 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
+
+  # Arch's makepkg.conf CFLAGS/CXXFLAGS/LDFLAGS (host x86_64-specific,
+  # e.g. -march=x86-64 -flto=auto) otherwise leak via the environment
+  # into CMake's cross-compilation sub-builds for the freestanding
+  # "mos-unknown-unknown" (6502) target -- clang then rejects
+  # '-march=x86-64' for that target entirely. MOS.cmake sets its own
+  # appropriate flags per target; the host toolchain's flags don't
+  # apply to any of them.
+  unset CFLAGS CXXFLAGS CPPFLAGS LDFLAGS
 
   cmake \
     -S llvm \

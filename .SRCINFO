@@ -1,6 +1,6 @@
 pkgbase = llvm-mos-git
 	pkgver = r452222.b05db96bef68
-	pkgrel = 2
+	pkgrel = 3
 	url = https://llvm-mos.org/wiki/Welcome
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
