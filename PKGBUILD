@@ -1,7 +1,7 @@
 # Maintainer: Davide Carnemolla <herbrant@protonmail.com>
 
 pkgname=easycrypt-bin
-pkgver=2026.07
+pkgver=2026.09
 pkgrel=1
 pkgdesc="Interactive framework for cryptographic proofs (EasyCrypt)"
 arch=('x86_64')
@@ -31,9 +31,11 @@ _debver="${pkgver}-1"
 
 source=(
   "${_pkgname}_${_debver}_amd64.deb::https://repo.formosa-crypto.org/debian/pool/main/e/easycrypt/${_pkgname}_${_debver}_amd64.deb"
+  "easycrypt.sh"
 )
 
-sha256sums=('0a801ef86be76a6e46960c9f2a391e0915d88d53b46019c8a54f5717698c30cb')
+sha256sums=('a5a19fccaaecd6225ee972eed23bce2b81efe6007300f3a8c644f013ad0c0982'
+            'f389fa8ea5c44e872069cfac7b2320b1108442b3efbfc93dda8a9c8d9bca8ed3')
 
 package() {
   cd "$srcdir"
@@ -49,6 +51,18 @@ package() {
   elif [ -f data.tar.zst ]; then
     tar -xf data.tar.zst -C "$pkgdir"
   fi
+
+  # The binary has why3server's path baked in under Debian's OCaml 5.3.0
+  # libdir, while why3-bin installs it elsewhere. Install the real binary
+  # behind a wrapper that sets WHY3LIB to a directory linking why3-bin's
+  # helper executables.
+  local _why3lib
+  _why3lib="$(why3 --print-libdir)"
+  mv "$pkgdir/usr/bin/easycrypt" "$pkgdir/usr/lib/easycrypt/easycrypt"
+  install -Dm755 easycrypt.sh "$pkgdir/usr/bin/easycrypt"
+  install -dm755 "$pkgdir/usr/lib/easycrypt/why3lib"
+  ln -s "$_why3lib/why3server" "$pkgdir/usr/lib/easycrypt/why3lib/why3server"
+  ln -s "$_why3lib/why3cpulimit" "$pkgdir/usr/lib/easycrypt/why3lib/why3cpulimit"
 
   # Remove Debian-specific changelog files
   if [ -d "$pkgdir/usr/share/doc/$_pkgname" ]; then

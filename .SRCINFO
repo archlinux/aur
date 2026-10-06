@@ -1,6 +1,6 @@
 pkgbase = easycrypt-bin
 	pkgdesc = Interactive framework for cryptographic proofs (EasyCrypt)
-	pkgver = 2026.07
+	pkgver = 2026.09
 	pkgrel = 1
 	url = https://github.com/EasyCrypt/easycrypt
 	arch = x86_64
@@ -14,7 +14,9 @@ pkgbase = easycrypt-bin
 	options = !strip
 	options = !debug
 	options = !lto
-	source = easycrypt_2026.07-1_amd64.deb::https://repo.formosa-crypto.org/debian/pool/main/e/easycrypt/easycrypt_2026.07-1_amd64.deb
-	sha256sums = 0a801ef86be76a6e46960c9f2a391e0915d88d53b46019c8a54f5717698c30cb
+	source = easycrypt_2026.09-1_amd64.deb::https://repo.formosa-crypto.org/debian/pool/main/e/easycrypt/easycrypt_2026.09-1_amd64.deb
+	source = easycrypt.sh
+	sha256sums = a5a19fccaaecd6225ee972eed23bce2b81efe6007300f3a8c644f013ad0c0982
+	sha256sums = f389fa8ea5c44e872069cfac7b2320b1108442b3efbfc93dda8a9c8d9bca8ed3
 
 pkgname = easycrypt-bin
