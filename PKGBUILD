@@ -1,7 +1,7 @@
 # Maintainer: nomisge <nomisge @ live . de>
 pkgname=asciidoc-revealjs-toolkit
 _cmdname=adoc-revealjs
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Asciidoc to Reveal.js toolkit'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("${pkgname}-${pkgver}.zip::${url}/archive/v${pkgver}.zip")
-sha256sums=('44b351d7a8779a443759630cdcb81382f126fbc84359286b0f28e739cabff81b')
+sha256sums=('e2bd3d61aa52bfc3e4d297594a7d8e5808d4da4e83ed405f8abcd986f7730dcf')
 
 build() {
   cd "${srcdir}/${pkgname}"
