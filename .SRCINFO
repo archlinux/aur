@@ -1,0 +1,15 @@
+pkgbase = simple-rust-stopwatch
+	pkgdesc = A simple CLI stopwatch that saves your progress
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Arnob90/simple-rust-stopwatch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = simple-rust-stopwatch-0.1.0.tar.gz::https://github.com/Arnob90/simple-rust-stopwatch/archive/v0.1.0.tar.gz
+	sha256sums = 5eb30dcd3e64a6f69fc5a97f540fe532ad3ccf385a08c488d4d66508f30a0d5e
+
+pkgname = simple-rust-stopwatch
