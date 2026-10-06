@@ -12,6 +12,7 @@ pkgbase = tic-tac-toe-tui-git
 	depends = gcc-libs
 	provides = tic-tac-toe-tui
 	conflicts = tic-tac-toe-tui
+	options = !debug
 	source = tic-tac-toe-tui::git+https://github.com/Rutger505/tic-tac-toe-tui.git
 	sha256sums = SKIP
 

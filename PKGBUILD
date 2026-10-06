@@ -9,6 +9,7 @@ url='https://github.com/Rutger505/tic-tac-toe-tui'
 license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo' 'git')
+options=('!debug')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
