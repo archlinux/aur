@@ -1,7 +1,7 @@
 pkgbase = kubecom-bin
-	pkgdesc = A fast, keyboard-driven terminal UI for Kubernetes (a launcher: kubecom itself lives in ~/.local/kubecom and updates with kubecom update)
+	pkgdesc = A fast, keyboard-driven terminal UI for Kubernetes (a launcher plus a seed build: kubecom updates itself in ~/.local/kubecom with kubecom update)
 	pkgver = 26.10.06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/neuroplastio/kubecom
 	arch = x86_64
 	arch = aarch64
@@ -12,8 +12,12 @@ pkgbase = kubecom-bin
 	options = !strip
 	options = !debug
 	source_x86_64 = kubecom-launcher-26.10.06-x86_64::https://github.com/neuroplastio/kubecom/releases/download/26.10.06/kubecom-launcher_linux_amd64
+	source_x86_64 = kubecom-26.10.06-x86_64::https://github.com/neuroplastio/kubecom/releases/download/26.10.06/kubecom_linux_amd64
 	sha256sums_x86_64 = 0b002a3ad53c4621fee6a0f0f42619adf12e8746cdf2da8c840a73995ab1dbd4
+	sha256sums_x86_64 = 1ef81bc89ec33477117e6911590a54a0b5341b06cac21fe56cbff256fede4777
 	source_aarch64 = kubecom-launcher-26.10.06-aarch64::https://github.com/neuroplastio/kubecom/releases/download/26.10.06/kubecom-launcher_linux_arm64
+	source_aarch64 = kubecom-26.10.06-aarch64::https://github.com/neuroplastio/kubecom/releases/download/26.10.06/kubecom_linux_arm64
 	sha256sums_aarch64 = 9b881e06e50dfb414ed7b520a97e48951b90eb668b1c868ffd931cd021044942
+	sha256sums_aarch64 = c5b7780dd5cd8bf222d711af7bfb22262005f70e27fb32fc7a42ed3f0ec2b12f
 
 pkgname = kubecom-bin
