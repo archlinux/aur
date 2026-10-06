@@ -2,7 +2,7 @@
 
 pkgname=bettbox-pre
 _pkgname=Bettbox
-pkgver=1.19.4
+pkgver=1.19.5pre1
 pkgrel=1
 _pkgver="${pkgver/pre/-pre}"
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash."
@@ -19,13 +19,17 @@ provides=("${pkgname%-pre}=${pkgver}")
 depends=(
 	'gtk3'
 	'libayatana-appindicator'
+	'libayatana-indicator'
 	'libkeybinder3'
 )
 makedepends=('git' 'clang' 'cmake' 'ninja' 'go' 'rustup' 'fvm' 'patchelf')
-source=("${_pkgname}-${_pkgver}.tar.gz::${url}/archive/v${_pkgver}.tar.gz" "restart-bettbox.hook" "bettbox.desktop")
-sha256sums=('5339629e0adfe4576d1c25fe323dce4be4e45b1a004ca79853c9f3b180732006'
+source=("${_pkgname}-${_pkgver}.tar.gz::${url}/archive/v${_pkgver}.tar.gz" "restart-bettbox.hook" "bettbox.desktop" "99-bettbox.rules" "bettbox.install")
+sha256sums=('d392dd95917ca8cb342cb69326f44046dbc7190bb3cfa09bfc251b583b6c7b86'
             '03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2'
-            'd7b7bdb64b1aabcedc8092a1498d743fad66d34b7f592194f805d039004d3e0f')
+            'd7b7bdb64b1aabcedc8092a1498d743fad66d34b7f592194f805d039004d3e0f'
+            'f1a21fce8675e6bd03565f56d21954e9c13991426bdc38368cd1b85f6893a593'
+            'c6a494309939447475c29c83020d0ad19b12bed0b3f5aaae3c7c8b5f32942d2b')
+install=bettbox.install
 prepare() {
 	cd "${_pkgname}-${_pkgver}"
 	fvm use 3.44.9
@@ -76,15 +80,16 @@ package () {
 	# Reset RPATH
 	patchelf --set-rpath '$ORIGIN' ${pkgdir}/usr/lib/${pkgname%-pre}/lib/*.so
 
-	# Set setuid on BettboxCore for TUN mode (to avoid password prompt)
-	chmod u+sx "${pkgdir}/usr/lib/${pkgname%-pre}/BettboxCore"
-
 	# Symlink
 	install -dm755 "${pkgdir}/usr/bin"
 	ln -s "/usr/lib/${pkgname%-pre}/${_pkgname}" "${pkgdir}/usr/bin/bettbox"
 
 	# Hook
 	install -Dm644 -t "${pkgdir}/usr/share/libalpm/hooks/" "${srcdir}/restart-bettbox.hook"
+
+	# Polkit rule for resolvectl command
+	install -Dm644 "${srcdir}/99-bettbox.rules" \
+		"${pkgdir}/usr/share/polkit-1/rules.d/99-bettbox.rules"
 
 	# Desktop file
 	install -Dm644 "${srcdir}/bettbox.desktop" -t "${pkgdir}/usr/share/applications/"
