@@ -1,6 +1,6 @@
 pkgbase = sonic-frameworks-color-scheme
 	pkgdesc = Classes to read and interact with KColorScheme
-	pkgver = 6.29.0
+	pkgver = 6.30.0
 	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-frameworks-color-scheme
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = sonic-frameworks-color-scheme
 	depends = sonic-frameworks-gui-addons
 	provides = kcolorscheme
 	conflicts = kcolorscheme
-	source = sonic-frameworks-color-scheme-6.29.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-color-scheme/archive/refs/tags/6.29.0.tar.gz
-	sha256sums = 438ed1bd702ceedb72fdf3103b7db9b88070d771d4873068234be46706d3600b
+	source = sonic-frameworks-color-scheme-6.30.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-color-scheme/archive/refs/tags/6.30.0.tar.gz
+	sha256sums = 50ed2d41f62912cd6de1bdfd2aa400f743e178819d87966b10796b5c22346dfc
 
 pkgname = sonic-frameworks-color-scheme

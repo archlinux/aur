@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=sonic-frameworks-color-scheme
-pkgver=6.29.0
+pkgver=6.30.0
 pkgrel=1
 pkgdesc='Classes to read and interact with KColorScheme'
 arch=(x86_64)
@@ -21,7 +21,7 @@ provides=(kcolorscheme)
 conflicts=(kcolorscheme)
 groups=(sonicde-frameworks)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('438ed1bd702ceedb72fdf3103b7db9b88070d771d4873068234be46706d3600b')
+sha256sums=('50ed2d41f62912cd6de1bdfd2aa400f743e178819d87966b10796b5c22346dfc')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
