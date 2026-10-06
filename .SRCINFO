@@ -1,6 +1,6 @@
 pkgbase = plasma-fusion
 	pkgdesc = Plasma Fusion desktop for KDE Plasma 6
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/archledger/plasma-fusion
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = plasma-fusion
 	makedepends = plasma-desktop
 	makedepends = plasma5support
 	makedepends = systemsettings
-	source = plasma-fusion::git+https://github.com/archledger/plasma-fusion.git#tag=v0.2.0?signed
+	source = plasma-fusion::git+https://github.com/archledger/plasma-fusion.git#tag=v0.3.0?signed
 	validpgpkeys = F35053398E3C80FE20891B82C10B8492BD7F30C6
 	sha256sums = SKIP
 
@@ -85,7 +85,7 @@ pkgname = plasma-fusion
 pkgname = plasma-fusion-decoration
 	pkgdesc = Plasma Fusion window decoration (KDecoration3 plugin)
 	license = GPL-2.0-or-later
-	depends = plasma-fusion=0.2.0
+	depends = plasma-fusion=0.3.0
 	depends = kdecoration
 	depends = kcoreaddons
 	depends = kconfig
@@ -98,7 +98,7 @@ pkgname = plasma-fusion-settings
 	pkgdesc = Plasma Fusion settings page for System Settings
 	license = GPL-2.0-or-later
 	license = CC-BY-SA-4.0
-	depends = plasma-fusion=0.2.0
+	depends = plasma-fusion=0.3.0
 	depends = systemsettings
 	depends = plasma-workspace
 	depends = kirigami
@@ -114,7 +114,7 @@ pkgname = plasma-fusion-settings
 pkgname = plasma-fusion-navigation
 	pkgdesc = Plasma Fusion tablet navigation gestures (KWin effect; rebuild after every kwin update)
 	license = GPL-2.0-or-later
-	depends = plasma-fusion=0.2.0
+	depends = plasma-fusion=0.3.0
 	depends = kwin
 	depends = plasma-activities
 	depends = kconfigwidgets
