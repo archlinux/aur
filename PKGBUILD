@@ -1,13 +1,11 @@
 pkgname=garmin-tracker-rs
-pkgver=2.7.1
+pkgver=2.8.1
 pkgrel=1
 pkgdesc='Sync your devices and track your strength training'
 arch=('x86_64')
 url="https://github.com/Emiliopg91/${pkgname}"
 license=('GPL-2')
-makedepends=(
-  'rust'
-)
+
 source=(
   "git+$url.git#tag=$pkgver"
 )
@@ -16,16 +14,7 @@ sha256sums=(
 )
 
 depends=('webkit2gtk-4.1' 'zlib-ng-compat')
-optdepends=('rclone: cloud backup upload')
-makedepends=(
-  'rust'
-  'mold'
-  'npm'
-  'pnpm'
-  'python-toml'
-  'python-yaml'
-  'sccache'
-)
+makedepends=('mold' 'npm' 'pnpm' 'python-toml' 'python-yaml' 'rust' 'sccache')
 
 install=${pkgname}.install
 
