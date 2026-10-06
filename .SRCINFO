@@ -1,6 +1,6 @@
 pkgbase = clak-bin
 	pkgdesc = Fast and highly stable Vietnamese input method for Fcitx5 and Wayland (precompiled binary)
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/versenilvis/clak
 	install = clak-bin.install
@@ -16,7 +16,7 @@ pkgbase = clak-bin
 	conflicts = fcitx5-clak
 	options = !debug
 	options = !strip
-	source = clak-bin-0.3.2.tar.gz::https://github.com/versenilvis/clak/releases/download/v0.3.2/clak-0.3.2-linux-x86_64.tar.gz
+	source = clak-bin-0.4.0.tar.gz::https://github.com/versenilvis/clak/releases/download/v0.4.0/clak-0.4.0-linux-x86_64.tar.gz
 	sha256sums = SKIP
 
 pkgname = clak-bin
