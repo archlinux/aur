@@ -1,0 +1,4 @@
+[lightcraft]
+source = "git"
+git = "https://github.com/storytold/lightcraft.git"
+prefix = "v"

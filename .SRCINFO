@@ -1,0 +1,17 @@
+pkgbase = lightcraft
+	pkgdesc = vibe coded clean-room reimplementation of Adobe Lightroom
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/storytold/lightcraft
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	source = https://github.com/storytold/lightcraft/archive/refs/tags/v0.2.1/lightcraft-0.2.1.tar.gz
+	sha256sums = 8ea97455d15e94d7b3d45aa9ef9bfacefa569c8b00e3062c3a040fa57387a9ac
+
+pkgname = lightcraft
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
