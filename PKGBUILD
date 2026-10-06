@@ -5,13 +5,13 @@
 pkgname=flea-git
 _pkgname=flea
 # The release workflow writes the tag's own pkgver() value here, and pushes only when the rest of this file changed.
-pkgver=0.3.6.r0.g98404bc
+pkgver=0.3.8.r0.gabb536e
 pkgrel=1
 pkgdesc='Fast, keyboard-first file manager for Omarchy (git version)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/thisisgm/flea'
-license=('MIT')
-depends=('bubblewrap' 'expect' 'gcc-libs' 'glib2' 'glibc' 'gvfs' 'gvfs-afc' 'gvfs-dnssd' 'gvfs-gphoto2' 'gvfs-mtp' 'gvfs-nfs' 'gvfs-smb' 'hicolor-icon-theme' 'kimageformats' 'libheif' 'omarchy' 'python' 'python-gobject' 'qt6-multimedia' 'qt6-webengine' 'quickshell' 'shared-mime-info' 'usbmuxd' 'util-linux' 'wl-clipboard' 'xdg-terminal-exec' 'xdg-utils')
+license=('MIT' 'Apache-2.0' 'EPL-2.0' 'BSD-2-Clause')
+depends=('bubblewrap' 'expect' 'gcc-libs' 'glib2' 'glibc' 'gvfs' 'gvfs-afc' 'gvfs-dnssd' 'gvfs-gphoto2' 'gvfs-mtp' 'gvfs-nfs' 'gvfs-smb' 'hicolor-icon-theme' 'kimageformats' 'libheif' 'omarchy' 'python' 'python-gobject' 'qt6-multimedia' 'qt6-webengine' 'quickjs-ng' 'quickshell' 'shared-mime-info' 'usbmuxd' 'util-linux' 'wl-clipboard' 'xdg-terminal-exec' 'xdg-utils')
 makedepends=('cargo' 'git')
 provides=("$_pkgname")
 # flea-bin provides flea, so this one conflict keeps all three packages mutually exclusive.
@@ -63,9 +63,11 @@ package() {
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 packaging/flea.hook -t "$pkgdir/usr/share/libalpm/hooks"
 
-  install -Dm644 ui/qmldir ui/*.qml -t "$pkgdir/usr/share/flea/ui"
-  install -Dm644 ui/js/*.js -t "$pkgdir/usr/share/flea/ui/js"
-  install -Dm644 ui/boot/shell.qml ui/boot/picker.qml -t "$pkgdir/usr/share/flea/ui/boot"
+  install -Dm644 ui/qmldir ui/*.qml ui/*.js -t "$pkgdir/usr/share/flea/ui"
+  install -Dm644 ui/js/*.js ui/js/*.mjs -t "$pkgdir/usr/share/flea/ui/js"
+  install -Dm644 ui/vendor/*.mjs -t "$pkgdir/usr/share/flea/ui/vendor"
+  install -Dm644 ui/vendor/LICENSES/* -t "$pkgdir/usr/share/flea/ui/vendor/LICENSES"
+  install -Dm644 ui/boot/shell.qml ui/boot/picker.qml ui/boot/fleatab.qml ui/boot/tabtearoff.qml -t "$pkgdir/usr/share/flea/ui/boot"
   install -Dm644 shelf/manifest.json shelf/README.md shelf/*.qml shelf/*.js -t "$pkgdir/usr/share/flea/shelf"
   ln -s /usr/share/omarchy/shell/Commons "$pkgdir/usr/share/flea/ui/Commons"
   ln -s /usr/share/omarchy/shell/Ui "$pkgdir/usr/share/flea/ui/Ui"
