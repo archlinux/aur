@@ -1,0 +1,20 @@
+pkgbase = effectcraft
+	pkgdesc = vibe coded compositor in the spirit of After Effects
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/storytold/effectcraft
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = alsa-lib
+	depends = glibc
+	depends = libgcc
+	source = https://github.com/storytold/effectcraft/archive/refs/tags/v0.3.0/effectcraft-0.3.0.tar.gz
+	sha256sums = f31e6cc226c4c5b9fd58a1016cd30138ab139a6de9bb1901ef1cac59bf55e8c6
+
+pkgname = effectcraft
+	depends = alsa-lib
+	depends = glibc
+	depends = libgcc
+	depends = libasound.so
+	depends = libgcc_s.so
