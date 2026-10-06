@@ -1,0 +1,4 @@
+[printcraft]
+source = "git"
+git = "https://github.com/storytold/printcraft.git"
+prefix = "v"

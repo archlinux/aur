@@ -1,0 +1,17 @@
+pkgbase = printcraft
+	pkgdesc = vibe coded clean-room reimplementation of Adobe Acrobat
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/storytold/printcraft
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	source = https://github.com/storytold/printcraft/archive/refs/tags/v0.2.0/printcraft-0.2.0.tar.gz
+	sha256sums = 83ade9f41dfc9e37073c0dcfc50044cd71097369a9eb238b708fdd30c7a1c4f8
+
+pkgname = printcraft
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
