@@ -1,0 +1,33 @@
+pkgbase = immortal-barons
+	pkgdesc = Persistent multiplayer BBS door game inspired by Barren Realms Elite
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/andy5995/immortal-barons
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = libglvnd
+	makedepends = libx11
+	makedepends = libxcursor
+	makedepends = libxfixes
+	makedepends = libxkbcommon
+	makedepends = libxkbcommon-x11
+	makedepends = vulkan-headers
+	makedepends = wayland
+	source = https://github.com/andy5995/immortal-barons/releases/download/v0.2.3/immortal-barons-v0.2.3-vendored-source.tar.gz
+	sha256sums = 36d780a1511766d6d3ce528898cda72c021c284eca82002f1057075f5e247ee8
+
+pkgname = immortal-barons
+	depends = glibc
+
+pkgname = immortal-barons-sysop
+	pkgdesc = Desktop sysop panel for Immortal Barons
+	depends = glibc
+	depends = immortal-barons=0.2.3-1
+	depends = libglvnd
+	depends = libx11
+	depends = libxcursor
+	depends = libxfixes
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = wayland
