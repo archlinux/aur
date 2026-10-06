@@ -1,7 +1,7 @@
 pkgbase = racer
 	pkgdesc = 2D car racing game
 	pkgver = 1.1.64
-	pkgrel = 4
+	pkgrel = 5
 	url = http://hippo.nipax.cz/download.cz.php?id=64
 	install = racer.install
 	arch = i686

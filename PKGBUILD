@@ -2,7 +2,7 @@
 
 pkgname=racer
 pkgver=1.1.64
-pkgrel=4
+pkgrel=5
 pkgdesc='2D car racing game'
 arch=('i686' 'x86_64')
 url="http://hippo.nipax.cz/download.cz.php?id=64"
@@ -15,15 +15,15 @@ sha256sums=('cefe897592038e7abbea6b7990945cc435eaf83723f446e773a20ac56ad60969'
 install="${pkgname}.install"
 
 build() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}"/usr install
 
   # finally, copy the license and readme files from srcdir to /usr/share/racer:
-  cp ./COPYING $pkgdir/usr/share/${pkgname}
-  cp ./README $pkgdir/usr/share/${pkgname}
+  cp ./COPYING "${pkgdir}/usr/share/${pkgname}"
+  cp ./README  "${pkgdir}/usr/share/${pkgname}"
 }
