@@ -1,7 +1,7 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=gocognit
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Calculates cognitive complexities of functions (and methods) in Go source code. (Golang cognitive complexity)"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/uudashr/gocognit"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='17a530034932293fc20680328d1cad73217db928'
+_commit='e304e0317bef7ab5888217553be77ae89cb24ec3'
 source=("git+https://github.com/uudashr/gocognit.git#commit=$_commit")
 sha256sums=('SKIP')
 
