@@ -1,7 +1,7 @@
 # Maintainer: Damon Petta <d at disassemble dot net>
 
 pkgname=batdoc
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='cat(1) for doc, docx, xls, xlsx, pptx, pdf, and image files (OCR) -- renders to markdown with bat'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cargo')
 # bitcode that rust-lld cannot link (undefined ring_core_* symbols).
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('78fa6ac57722723ffb31ca555ec10ccc4b8790157c3b1ef0c9fc88996c87eae6a1a3bc5a3783d863e46709994453332d3fe437d51c2d81d46ad7dffd6f637496')
+b2sums=('d7b344782e42d3e2743f19fbc5b5806f5c1fab8ea7568b7634f3e022ccd1a9c74e40b5b6703b8b43d39358a07ae762e287a29322a2d05dac8b6577705ddb2503')
 
 prepare() {
     cd "$pkgname-$pkgver"
