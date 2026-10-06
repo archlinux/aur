@@ -1,7 +1,7 @@
 pkgbase = wiso-steuer-2025
 	pkgdesc = File your German tax return for the tax year 2024
 	pkgver = 32.12.3380
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.buhl.de/produkte/wiso-steuer
 	install = wiso-steuer-2025.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = wiso-steuer-2025
 	makedepends = cabextract
 	makedepends = imagemagick
 	makedepends = p7zip
-	makedepends = pev
+	makedepends = readpe
 	makedepends = unshield
 	depends = bash
 	depends = coreutils

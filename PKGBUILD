@@ -2,7 +2,7 @@
 
 pkgname=wiso-steuer-2025
 pkgver=32.12.3380
-pkgrel=1
+pkgrel=2
 pkgdesc='File your German tax return for the tax year 2024'
 arch=('x86_64')
 url='https://www.buhl.de/produkte/wiso-steuer'
@@ -19,7 +19,7 @@ makedepends=(
   'cabextract'
   'imagemagick'
   'p7zip'
-  'pev'
+  'readpe'
   'unshield'
 )
 license=('LicenseRef-custom')
