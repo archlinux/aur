@@ -2,7 +2,7 @@
 
 _name=vercel-sandbox
 pkgname=python-$_name
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Python SDK for Vercel Sandbox.'
 arch=('any')
@@ -14,6 +14,7 @@ depends=('python'
          'python-vercel-oidc'
          'python-anyio'
          'python-httpx2'
+         'python-wsproto'
          'python-pydantic')
 makedepends=('python-hatchling'
              'python-build'
@@ -26,7 +27,7 @@ checkdepends=('python-pytest'
               'python-hypothesis'
               'python-trio')
 source=("$_name::git+$_repo.git#tag=$_name-v$pkgver")
-sha256sums=('695350b46128db0074f51ebbc51da72bf6ef47637b6d1592b65fe07a7f37b272')
+sha256sums=('c88958e62fdd71617be1b5dfb348b00d385cb4c85a051b72808ffd632f305cf8')
 
 build() {
   cd "$srcdir"/$_name/src/$_name

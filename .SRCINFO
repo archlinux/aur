@@ -1,6 +1,6 @@
 pkgbase = python-vercel-sandbox
 	pkgdesc = Python SDK for Vercel Sandbox.
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/vercel/vercel-py/tree/main/src/vercel-sandbox
 	arch = any
@@ -20,8 +20,9 @@ pkgbase = python-vercel-sandbox
 	depends = python-vercel-oidc
 	depends = python-anyio
 	depends = python-httpx2
+	depends = python-wsproto
 	depends = python-pydantic
-	source = vercel-sandbox::git+https://github.com/vercel/vercel-py.git#tag=vercel-sandbox-v0.7.0
-	sha256sums = 695350b46128db0074f51ebbc51da72bf6ef47637b6d1592b65fe07a7f37b272
+	source = vercel-sandbox::git+https://github.com/vercel/vercel-py.git#tag=vercel-sandbox-v0.8.0
+	sha256sums = c88958e62fdd71617be1b5dfb348b00d385cb4c85a051b72808ffd632f305cf8
 
 pkgname = python-vercel-sandbox
