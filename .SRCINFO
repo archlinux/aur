@@ -1,7 +1,7 @@
 pkgbase = immortal-barons
 	pkgdesc = Persistent multiplayer BBS door game inspired by Barren Realms Elite
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andy5995/immortal-barons
 	arch = x86_64
 	license = MIT
@@ -23,7 +23,7 @@ pkgname = immortal-barons
 pkgname = immortal-barons-sysop
 	pkgdesc = Desktop sysop panel for Immortal Barons
 	depends = glibc
-	depends = immortal-barons=0.2.3-1
+	depends = immortal-barons=0.2.3-2
 	depends = libglvnd
 	depends = libx11
 	depends = libxcursor

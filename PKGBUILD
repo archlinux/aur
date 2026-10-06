@@ -3,7 +3,7 @@
 pkgbase=immortal-barons
 pkgname=('immortal-barons' 'immortal-barons-sysop')
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Persistent multiplayer BBS door game inspired by Barren Realms Elite'
 arch=('x86_64')
 url='https://github.com/andy5995/immortal-barons'
@@ -50,7 +50,10 @@ package_immortal-barons() {
   install -Dm755 immortal-barons -t "${pkgdir}/usr/bin"
   install -Dm644 README.md ChangeLog install-xtrn.ini \
     -t "${pkgdir}/usr/share/doc/immortal-barons"
-  install -Dm644 docs/*.md -t "${pkgdir}/usr/share/doc/immortal-barons/docs"
+  install -Dm644 docs/{bbs-cfg,bulletins,charset,command-reference}.md \
+    docs/{door-setup,faq,ftn-transport,inter-bbs}.md \
+    docs/{inter-bbs-troubleshooting,playing,sysop-panel,translating}.md \
+    -t "${pkgdir}/usr/share/doc/immortal-barons/docs"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/immortal-barons"
 }
 
