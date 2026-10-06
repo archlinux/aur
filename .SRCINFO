@@ -1,7 +1,7 @@
 pkgbase = classicimageviewer
 	pkgdesc = Simple and fast multi-platform image viewer and (simple) editor.
 	pkgver = 2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/classicimageviewer/ClassicImageViewer
 	install = classicimageviewer.install
 	arch = i686
