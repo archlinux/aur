@@ -1,50 +1,48 @@
 post_install() {
     echo
-    echo "   ZoneMinder has been installed but some additional steps are required:"
     echo
-    echo "1) You will need to install a MySQL-compatible database server and create a database and user"
-    echo "   for ZoneMinder's use."
+    echo " ZoneMinder has been installed but some additional actions are required:"
     echo
-    echo "2) You will need to install a web server and configure it to serve ZoneMinder's web interface,"
-    echo "   located at /usr/share/webapps/zoneminder/. Premade configurations are provided for Apache and"
-    echo "   Nginx; you can find them at /etc/httpd/conf/extra for Apache and /etc/nginx/sites-available for"
-    echo "   Nginx."
+    echo " 1) You will need to setup a MySQL-compatible database server."
     echo
-    echo "3) If you choose to use Nginx, you will also need to install fcgiwrap, spawn-fcgi and multiwatch"
-    echo "   and then start the following systemd service (provided by this package):"
+    echo " 2) You will need to setup a web server and configure it to serve ZoneMinder's web interface, located at '/usr/share/webapps/zoneminder/'."
     echo
-    echo "   * fcgiwrap-multiwatch.service"
+    echo "    Example configuration files are provided for Apache and Nginx; you can find them at '/usr/share/zoneminder/conf/'."
     echo
-    echo "4) After the previous steps are complete, you will also need to refresh systemd's tmpfiles."
+    echo " 3) If using Nginx, you will need to install 'fcgiwrap', 'spawn-fcgi' and 'multiwatch' and start the 'fcgiwrap-multiwatch' systemd service."
+    echo
+    echo " 4) After the previous steps have been completed, you will need to refresh systemd's tmpfiles."
     echo
     echo
-    echo "   More information on how to setup and use ZoneMinder can be obtained at the following links:"
+    echo " More information on how to setup and use ZoneMinder can be obtained at the following links:"
     echo
-    echo "   * https://wiki.archlinux.org/title/ZoneMinder"
-    echo "   * https://zoneminder.readthedocs.io/en/latest/"
+    echo " * https://zoneminder.readthedocs.io/"
+    echo " * https://wiki.archlinux.org/title/ZoneMinder"
+    echo
     echo
 }
 
 post_upgrade() {
     echo
-    echo "ZoneMinder's database needs to be updated. As the root user, run the following:"
     echo
-    echo "/usr/bin/zmupdate.pl --nointeractive"
-    echo "/usr/bin/zmupdate.pl --nointeractive --freshen > /dev/null 2>&1"
+    echo " ZoneMinder's database needs to be updated. As the root user, run the following commands:"
     echo
-    echo "To also update the PTZ camera control presets, run the following:"
+    echo " /usr/bin/zmupdate.pl"
+    echo " /usr/bin/zmupdate.pl --freshen"
+    echo " /usr/bin/zmcamtool.pl --import"
     echo
-    echo "/usr/bin/zmcamtool.pl --import > /dev/null 2>&1"
     echo
 }
 
 post_remove() {
     echo
-    echo "ZoneMinder's database and user have been left intact. You can remove them by running the following:"
     echo
-    echo "mysql -uroot -p -e \"drop database zm;\""
-    echo "mysql -uroot -p -e \"drop user 'zmuser'@localhost;\""
+    echo " ZoneMinder's database has been left intact. You can delete it by running the following commands:"
     echo
-    echo "If you haven't yet configured a password for the database root user, omit the '-p' option."
+    echo " mysql -u root -p -e \"drop database zm;\""
+    echo " mysql -u root -p -e \"drop user 'zmuser'@localhost;\""
+    echo
+    echo " If you haven't configured a password for the database server's root user, omit the '-p' option."
+    echo
     echo
 }
