@@ -1,5 +1,5 @@
 pkgbase = masscode
-	pkgdesc = A free and open source code snippets manager for developers
+	pkgdesc = Open-source developer workspace for code snippets, notes, and HTTP requests
 	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://github.com/massCodeIO/massCode
