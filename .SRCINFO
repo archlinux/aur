@@ -1,10 +1,11 @@
 pkgbase = photocraft
 	pkgdesc = vibe coded clean-room reimplementation of Adobe Photoshop
 	pkgver = 0.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://getartcraft.com/apps/photocraft
 	arch = x86_64
 	license = MIT
+	license = Apache-2.0
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
