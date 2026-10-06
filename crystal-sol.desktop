@@ -4,6 +4,6 @@ Name=Crystal Sol
 Comment=Sign in, install, update, and play Crystal Sol
 Exec=crystal-sol
 Icon=crystal-sol
-Terminal=true
+Terminal=false
 Categories=Game;StrategyGame;
 StartupNotify=false

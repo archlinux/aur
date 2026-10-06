@@ -8,8 +8,7 @@ the game. The launcher checks authorized game downloads with SHA-256 and Minisig
 Pacman replaces bootstrap installation. No bootstrap is included. Pacman owns
 `/usr/bin/crystal-sol-launcher`, the `crystal-sol` command symlink, desktop entry,
 icon, and license notice. Use pacman/AUR updates for the system launcher; upstream
-Setup does not manage this package. The desktop entry opens a terminal because
-this official Linux launcher is a terminal application.
+Setup does not manage this package. The desktop entry opens the graphical launcher directly with `Terminal=false`.
 
 Official launcher releases are fetched from an immutable, versioned Frostal URL
 and checked against a fixed SHA-256. Do not use mutable stable manifests as
@@ -24,7 +23,8 @@ versions stay beside that folder. Credentials stay under
 `${XDG_CONFIG_HOME:-$HOME/.config}/crystal-sol`. Saves, logs, caches, and downloaded
 game content are per-user and are not package-owned.
 
-The launcher needs a terminal and an available browser for account sign-in.
+The graphical launcher needs an X11 or Wayland desktop and an available
+browser for account sign-in. Linux draws the launcher without a GPU adapter.
 The separately downloaded game needs a working native X11 or Wayland desktop,
 graphics drivers, and sound support. WSL package validation is useful, but cannot
 prove ordinary native Arch desktop rendering, audio, browser sign-in, or session
@@ -36,7 +36,7 @@ The game remains subject to upstream license authorization and download policy.
 
 Validate with `makepkg --printsrcinfo`, `makepkg`, `namcap PKGBUILD`,
 `namcap crystal-sol-bin-*.pkg.tar.zst`, `pacman -Qlp crystal-sol-bin-*.pkg.tar.zst`,
-and `git diff --check`. Do not push until review and native desktop checks finish.
+and `git diff --check`. Review package changes and validation limits before publication.
 
 Release validation (0.1.10-1, 2026-10-06): clean Arch WSL package build,
 package inspection, local installation, integrity, both launcher command startup
@@ -45,3 +45,15 @@ warnings concern retained symbols, the ELF loader, and browser-use xdg-utils.
 The maintainer explicitly authorized publication with real signed-in entitlement
 tests, installed launch-failure diagnostics, and native desktop checks remaining.
 Those checks are not claimed as passed.
+
+Launcher 0.1.11 switches Linux normal startup to the same graphical window as
+Windows. There is no terminal fallback. The exact released executable is tested
+under Xvfb/software rendering without a terminal; native GPU, audio, and browser
+OAuth behavior remain outside that check. The existing authorization and
+private game installation flow is unchanged.
+
+Package 0.1.11-1 was rebuilt cleanly, inspected, installed, and checked with
+pacman -Qkk (zero altered files). Both installed command names opened the GUI
+under Xvfb without a terminal. Namcap has no errors; display libraries are
+loaded dynamically, so its ELF scan reports them as possibly unused. Public
+launcher symbols and ELF-loader warnings remain intentional.
