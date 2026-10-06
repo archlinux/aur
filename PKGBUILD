@@ -15,10 +15,17 @@ _srcdir="ccsum-0.2.3"
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/sevenc-nanashi/ccsum/tar.gz/refs/tags/$_tag")
 sha256sums=('f65087709ea4181caedb43dcc4c4b2beb83bc64c75deefd2f67aa7292b9efd02')
 
+prepare() {
+	cd "$_srcdir"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
 	cd "$_srcdir"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo build --release --locked
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release
 }
 
 package() {
@@ -30,7 +37,5 @@ package() {
 	install -d "$pkgdir/usr/share/$pkgname/demo/bar" "$pkgdir/usr/share/$pkgname/demo/foo"
 	install -Dm644 demo/bar/*.txt "$pkgdir/usr/share/$pkgname/demo/bar/"
 	install -Dm644 demo/foo/*.txt "$pkgdir/usr/share/$pkgname/demo/foo/"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
