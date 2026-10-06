@@ -1,7 +1,7 @@
 pkgbase = blepfx-spectra-clap-bin
-	pkgdesc = a digital degrader
+	pkgdesc = a morphing engine
 	pkgver = release_128
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fx.amee.ee/plugin/spectra
 	arch = x86_64
 	license = custom:Potion Seller Public License
@@ -9,7 +9,7 @@ pkgbase = blepfx-spectra-clap-bin
 	options = !debug
 	source = https://github.com/blepfx/dist/releases/download/release-128/spectra-x86_64-unknown-linux-gnu.zip
 	source = LICENSE::https://raw.githubusercontent.com/blepfx/dist/refs/heads/main/LICENSE.txt
-	sha256sums = 4b597c380469f26004c351ff7fc57a4617671e1501a49c54cbe7264f62bfbe3d
+	sha256sums = 032dfaa43169e98c311c852aed561586ba0fb5a28d1face92ef77e60865244e7
 	sha256sums = 1cba06d144eb15023d17c4f41ff04ec404bb19550cec408f72373effdb6463ed
 
 pkgname = blepfx-spectra-clap-bin
