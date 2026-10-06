@@ -3,7 +3,7 @@
 _pkgname=sofka
 pkgname=sofka-git
 pkgdesc="A Kubernetes TUI, reimagined in Rust"
-pkgver=0.25.0.r0.g3a4fc59
+pkgver=0.30.0.r0.gbc1e3a7
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/nklmilojevic/${_pkgname}"
@@ -32,10 +32,24 @@ prepare() {
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
+# aws-lc-sys (TLS backend since upstream d70417a) compiles jitterentropy with
+# -O0 and hard-errors on any optimization, but cc-rs appends makepkg's CFLAGS
+# after its own flags, so our -O2 wins. Strip -O levels; cc-rs still passes
+# its own -O3 for everything else.
+_strip_cflags_opt() {
+    local v
+    for v in CFLAGS "CFLAGS_${CARCH}_unknown_linux_gnu"; do
+        if [[ -n "${!v}" ]]; then
+            export "$v=$(sed -E 's/(^| )-O[0-9sgz]?( |$)/ /g' <<<"${!v}")"
+        fi
+    done
+}
+
 build() {
     cd "${_pkgname}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    _strip_cflags_opt
     cargo build --frozen --release
 }
 
@@ -43,6 +57,7 @@ check() {
     cd "${_pkgname}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    _strip_cflags_opt
     # The suite builds a rustls-backed kube client even for its fake cluster,
     # so it needs the native root CAs from ca-certificates (present in a
     # devtools chroot). No network or real cluster is required.
