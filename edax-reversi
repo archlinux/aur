@@ -1,0 +1,12 @@
+#!/bin/sh
+if ! test -d "$HOME/.edax.reversi"; then
+    mkdir "$HOME/.edax.reversi";
+fi
+cd /usr/lib/edax-reversi/
+exec ./bin/lEdax-x86-64 \
+     -book-file \
+     "$HOME/.edax.reversi/book_save" \
+     -game-file "$HOME/.edax.reversi/game.log" \
+     -search-log-file "$HOME/.edax.reversi/search.log" \
+     -ui-log-file "$HOME/.edax.reversi/ui.log" \
+     "$@"
