@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=NiriFX Studio
+Comment=Choose and customize window effects for Niri
+Exec=/usr/bin/niri-fx studio --active
+TryExec=/usr/bin/niri-fx
+Icon=niri-fx
+Terminal=false
+Categories=Settings;DesktopSettings;
+Keywords=Niri;Wayland;animations;shaders;fragments;pixels;particles;slices;wobble;iNiR;iRiS;Quickshell;Dank;DMS;Noctalia;
+StartupWMClass=niri-fx-studio
+StartupNotify=false

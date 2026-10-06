@@ -1,0 +1,33 @@
+pkgbase = niri-fx
+	pkgdesc = Window effect presets, portable recipes and a visual Studio for Niri
+	pkgver = 0.21.0
+	pkgrel = 1
+	url = https://github.com/jturbide/niri-fx
+	arch = any
+	license = MIT AND GPL-3.0-or-later AND 0BSD
+	checkdepends = desktop-file-utils
+	checkdepends = git
+	checkdepends = niri
+	checkdepends = python-pillow
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>=77
+	makedepends = python-wheel
+	depends = python
+	depends = hicolor-icon-theme
+	optdepends = niri: validate and apply effects on a Niri desktop
+	optdepends = chromium: open Studio in an app window
+	optdepends = quickshell: optional QML preset picker
+	optdepends = gjs: optional GTK preset picker
+	optdepends = gtk4: optional GTK preset picker
+	optdepends = libadwaita: optional GTK preset picker
+	source = https://github.com/jturbide/niri-fx/releases/download/v0.21.0/niri_fx-0.21.0.tar.gz
+	source = niri-fx-studio.desktop
+	source = README.Arch
+	source = LICENSE
+	sha256sums = 94a0c75a20ccc149186365442f78ba7c67a26257afc437d0e74c2f19c5c4368b
+	sha256sums = 7a3f838400c76a9b4e50749c77b8e8b285d34a19c8f716a5f916af04a12ebb34
+	sha256sums = 595deff577ef0d785c5d4b4091f59bd7f14586a7b0919a4b6279afdc2746406c
+	sha256sums = 336feffd8a99323d56058efe2b2deb3480dcf935dbb6813324c95a7e61bbbca3
+
+pkgname = niri-fx
