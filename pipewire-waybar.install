@@ -1,0 +1,15 @@
+post_install() {
+    cat <<'MSG'
+==> Generate a config from your current sinks:
+      pipewire-waybar generate-config --out ~/.config/pipewire-waybar/config.json
+==> Start the daemon (as your user, not root):
+      systemctl --user enable --now pipewire-waybar
+==> Waybar snippet and example style:
+      /usr/share/pipewire-waybar/
+MSG
+}
+
+post_upgrade() {
+    echo "==> Restart the daemon to pick up the new version:"
+    echo "      systemctl --user restart pipewire-waybar"
+}
