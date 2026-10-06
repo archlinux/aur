@@ -1,0 +1,33 @@
+post_install() {
+	cat <<EOF
+
+===== Nickel Mod Loader Setup =====
+
+NOTE: You must have Cobalt Core installed through Steam to use this package.
+
+1. In the "Library" tab on Steam, press "Add a Game", then choose
+   "Add a Non-Steam Game...", and choose the following path:
+
+       /opt/nickel-mod-loader/NickelLauncher.exe
+
+2. Right click the new "NickelLauncher.exe" entry, choose "Properties", and
+   paste the following line into the "Launch Options" field:
+
+       STEAM_COMPAT_DATA_PATH=~/.steam/steam/steamapps/compatdata/2179850/ %command%
+
+3. Under the "Compatibility" tab, enable "Force the use of a specific Steam
+   Play compatibility tool" and choose the latest stable Proton version
+
+4. Install mods in the following directory (launch Nickel once to create this
+   directory, or create it yourself):
+
+       ~/.steam/steam/steamapps/compatdata/2179850/pfx/drive_c/users/steamuser/AppData/Roaming/Nickel/ModLibrary/
+
+More info: /usr/share/doc/nickel-mod-loader/player-guide.md
+
+EOF
+}
+
+post_upgrade() {
+	post_install
+}

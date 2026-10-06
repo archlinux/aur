@@ -1,0 +1,11 @@
+*
+!.gitignore
+!PKGBUILD
+!*.install
+!*.patch
+!.SRCINFO
+!LICENSE
+!LICENSES
+!LICENSES/**
+!REUSE.toml
+!.nvchecker.toml

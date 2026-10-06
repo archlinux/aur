@@ -1,0 +1,52 @@
+--- a/Nickel/Framework/Nickel.cs
++++ b/Nickel/Framework/Nickel.cs
+@@ -556,7 +556,7 @@
+ 	private static DirectoryInfo GetOrCreateDefaultModLibraryDirectory()
+ 	{
+ 		DirectoryInfo directoryInfo;
+-		if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
++		if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+ 			directoryInfo = new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), NickelConstants.Name, "ModLibrary"));
+ 		else
+ 			directoryInfo = new(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ModLibrary"));
+@@ -569,7 +569,7 @@
+ 	private static DirectoryInfo GetOrCreateDefaultLogDirectory()
+ 	{
+ 		DirectoryInfo directoryInfo;
+-		if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
++		if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+ 			directoryInfo = new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), NickelConstants.Name, "Logs"));
+ 		else
+ 			directoryInfo = new(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs"));
+@@ -582,7 +582,7 @@
+ 	private static DirectoryInfo GetOrCreateDefaultAssemblyCacheDirectory()
+ 	{
+ 		DirectoryInfo directoryInfo;
+-		if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
++		if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+ 			directoryInfo = new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), NickelConstants.Name, "AssemblyCache"));
+ 		else
+ 			directoryInfo = new(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AssemblyCache"));
+--- a/NickelLauncher/NickelLauncher.cs
++++ b/NickelLauncher/NickelLauncher.cs
+@@ -184,7 +184,7 @@
+ 	private static DirectoryInfo GetOrCreateDefaultLogDirectory()
+ 	{
+ 		DirectoryInfo directoryInfo;
+-		if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
++		if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+ 			directoryInfo = new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), NickelConstants.Name, "Logs"));
+ 		else
+ 			directoryInfo = new(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs"));
+--- a/docs/player-guide.md
++++ b/docs/player-guide.md
+@@ -73,3 +73,3 @@
+ ## Windows; Steam Deck / Linux (Proton)
+ 
+-The default `ModLibrary` folder is contained in Nickel's folder.
++The default `ModLibrary` folder for the official Windows build is contained in Nickel's folder. This AUR package stores mods at `%APPDATA%\Nickel\ModLibrary` inside the active Proton prefix.
+@@ -97,3 +97,3 @@
+ ## Windows; Steam Deck / Linux (Proton)
+ 
+-The default `Logs` folder is contained in Nickel's folder.
++The default `Logs` folder for the official Windows build is contained in Nickel's folder. This AUR package stores logs at `%APPDATA%\Nickel\Logs` inside the active Proton prefix.

@@ -1,0 +1,16 @@
+pkgbase = nickel-mod-loader
+	pkgdesc = A modding API / mod loader for the game Cobalt Core (Windows version)
+	pkgver = 1.21.3
+	pkgrel = 1
+	url = https://github.com/Shockah/Nickel
+	install = nickel-mod-loader.install
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = dotnet-sdk
+	optdepends = steam: launch Nickel via Proton
+	source = nickel-mod-loader-1.21.3.tar.gz::https://github.com/Shockah/Nickel/archive/refs/tags/release/1.21.3.tar.gz
+	source = proton-appdata.patch
+	sha256sums = d9815d46a6356f53bd0d105b4c88b483efec6231c07420b6eb39a05223d4b66c
+	sha256sums = 3df6067e52ffef756ee22713a0cdc16a459647fe98b1fe65c14124b30556abb8
+
+pkgname = nickel-mod-loader
