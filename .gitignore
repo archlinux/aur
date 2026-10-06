@@ -1,0 +1,5 @@
+pkg
+src
+.vscode
+*.tar.zst
+plasma-studio/
