@@ -4,8 +4,8 @@
 # Release notes https://rocm.docs.amd.com/en/latest/about/release-notes.html
 pkgname=rocm-gfx908-bin
 pkgdesc="ROCm Core SDK - CDNA1"
-pkgver=10.0.0
-pkgrel=2
+pkgver=10.1.0
+pkgrel=1
 epoch=0
 arch=('x86_64')
 url='http://www.amd.com'
@@ -23,16 +23,16 @@ optdepends=('clinfo')
 options=('!strip')
 
 source=(
-"https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx908-10.0.0.tar.gz"
+"https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx908-${pkgver}.tar.gz"
 )
 
-noextract=(therock-dist-linux-gfx908-10.0.0.tar.gz)
+noextract=("therock-dist-linux-gfx908-${pkgver}.tar.gz")
 
-sha256sums=('d66ea48f449cdf9fa3e5d89a608998e465aeef01531be94be5f2cbd80c4712d3')
+sha256sums=('7a11eb60b42d0aed3a4a6507191dc312b0b8ba83ad84dc19f73e93b360b5a612')
 
 prepare() {
     mkdir -p "${srcdir}/opt/rocm/core"
-    bsdtar xf therock-dist-linux-gfx908-10.0.0.tar.gz -C ${srcdir}/opt/rocm/core
+    bsdtar xf therock-dist-linux-gfx908-"${pkgver}".tar.gz -C ${srcdir}/opt/rocm/core
 }
 
 package() {
