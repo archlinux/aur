@@ -1,0 +1,16 @@
+pkgbase = qwen-minimal-desktop
+	pkgdesc = Single-file GTK4 chat client for Qwen and Kimi with local/cloud backends
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/WgpArch/qwen-minimal-desktop
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	optdepends = ollama: local offline inference
+	source = git+https://github.com/WgpArch/qwen-minimal-desktop.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = qwen-minimal-desktop
