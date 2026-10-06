@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=sonic-frameworks-quick-silver-style
-pkgver=6.7.4
+pkgver=6.7.5
 pkgrel=1
 pkgdesc='Silver Qt Quick Controls style for SonicDE'
 arch=(x86_64)
@@ -22,7 +22,7 @@ provides=(qqc2-breeze-style)
 conflicts=(qqc2-breeze-style)
 groups=(sonicde-frameworks)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c96f8602953f527707c4d235a63e5c31bea6d0f2da884e9fdc8f0ea5fabe3795')
+sha256sums=('056b0205f9ca0d7be21647841368505d8a1290daabbd121b029ce993ff4baaed')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \

@@ -1,6 +1,6 @@
 pkgbase = sonic-frameworks-quick-silver-style
 	pkgdesc = Silver Qt Quick Controls style for SonicDE
-	pkgver = 6.7.4
+	pkgver = 6.7.5
 	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-frameworks-quick-silver-style
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = sonic-frameworks-quick-silver-style
 	depends = sonic-frameworks-quick-ui
 	provides = qqc2-breeze-style
 	conflicts = qqc2-breeze-style
-	source = sonic-frameworks-quick-silver-style-6.7.4.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-quick-silver-style/archive/refs/tags/6.7.4.tar.gz
-	sha256sums = c96f8602953f527707c4d235a63e5c31bea6d0f2da884e9fdc8f0ea5fabe3795
+	source = sonic-frameworks-quick-silver-style-6.7.5.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-quick-silver-style/archive/refs/tags/6.7.5.tar.gz
+	sha256sums = 056b0205f9ca0d7be21647841368505d8a1290daabbd121b029ce993ff4baaed
 
 pkgname = sonic-frameworks-quick-silver-style
