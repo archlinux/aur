@@ -1,7 +1,7 @@
 pkgbase = lunduke-paint-git
 	pkgdesc = Traditional Linux X11 paint program (GTK3/gtkmm), classic MS Paint + KolourPaint feel
 	pkgver = r52.0644594
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BryanLunduke/lunduke-paint
 	arch = x86_64
 	license = GPL-3.0-or-later
