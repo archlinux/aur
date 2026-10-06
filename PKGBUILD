@@ -3,7 +3,7 @@
 
 pkgbase=rustrover-eap
 pkgname=("${pkgbase}" "${pkgbase}-jre")
-pkgver=2026.3pre+263.5153.48
+pkgver=2026.3pre+263.6259.37
 pkgrel=1
 if [[ ${pkgver} =~ (.+)(pre|rc)\+(.+) ]]; then _dlver="${BASH_REMATCH[3]}"
 else _dlver="${pkgver}"
