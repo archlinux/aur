@@ -1,6 +1,6 @@
 # Maintainer: Yast <yastcher@gmail.com>
 pkgname=tapeback
-pkgver=0.9.8
+pkgver=0.9.9
 pkgrel=1
 pkgdesc="Local meeting recorder with transcription and speaker diarization for Obsidian"
 arch=('any')
@@ -15,8 +15,12 @@ optdepends=(
     'cuda: GPU-accelerated transcription and diarization'
 )
 makedepends=('python-pip')
+# The venv holds prebuilt wheels with no debug symbols to split out: with makepkg's
+# default `debug` option every .so failed debugedit and a useless tapeback-debug
+# package was built next to the real one.
+options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yastcher/tapeback/archive/v$pkgver.tar.gz")
-sha256sums=('4b1422e64e1404b5d87e83200005f2a7cde587c040e3dba5c8d724fdca8c76de')
+sha256sums=('449918693bce7ca2b625cb8ee4bb1fed6456e0f22d9c9b1ac18c69e047f7d186')
 
 build() {
     cd "$pkgname-$pkgver"
