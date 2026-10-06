@@ -4,8 +4,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-win
-pkgver=6.7.4.3
-pkgrel=2
+pkgver=6.7.5.3
+pkgrel=1
 pkgdesc='An easy to use, but flexible, X Window Manager'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-win'
@@ -73,7 +73,7 @@ conflicts=(kwin-x11)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 install="$pkgname.install"
-sha256sums=('df7f7f39741da7d4abace2259b05f31ceaed818e1bf599f7d1c407cfecf56f95')
+sha256sums=('953ebf3b68304ae166159dfd689ce726e1d406ea0d93d529ed6962cc917f3fce')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
