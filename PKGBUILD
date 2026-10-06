@@ -1,7 +1,7 @@
 # Maintainer: Markus Hoffmann
 
 pkgname=tone3000-bin
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc='Standalone and audio plug-ins for playing Neural Amp Modeler captures and impulse responses'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/tone-3000/tone3000-plugin/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  'd16dfcf8a007749f6722d82a9cdd8535e1134902eae773f92c339c813efd9185'
+  'c45ea5d64e6eef991b14f1883a4249ed1a883253db1a9d9f0605e0540aba5fc7'
   '88d4908d7343898f682e47e70f4288728006ed650dbf79e8940c709d55b76326'
 )
 
