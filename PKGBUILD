@@ -3,7 +3,7 @@ pkgbase=wireview-hwmon
 pkgname=('wireview-hwmon' 'wireview-hwmon-dkms')
 # Must match the top-level VERSION file ("make check-version").
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="WireView Pro II hwmon daemon, CLI and DKMS kernel module"
 arch=('x86_64')
 url="https://github.com/emaspa/wireview-hwmon"
@@ -35,7 +35,12 @@ package_wireview-hwmon() {
   install -Dm755 wireviewd "$pkgdir/usr/bin/wireviewd"
   install -Dm755 wireviewctl "$pkgdir/usr/bin/wireviewctl"
   install -Dm644 debian/wireviewd.service "$pkgdir/usr/lib/systemd/system/wireviewd.service"
+  # Arch has no dialout group, its serial group is uucp, and udev drops a rule
+  # line whose GROUP it cannot resolve. The grep fails the build if a future
+  # rule stops matching the substitution.
   install -Dm644 99-wireview-hwmon.rules "$pkgdir/usr/lib/udev/rules.d/99-wireview-hwmon.rules"
+  sed -i 's/GROUP="dialout"/GROUP="uucp"/g' "$pkgdir/usr/lib/udev/rules.d/99-wireview-hwmon.rules"
+  grep -q 'GROUP="uucp"' "$pkgdir/usr/lib/udev/rules.d/99-wireview-hwmon.rules"
   install -Dm644 firmware/TG-WV-PRO2-FW.hex "$pkgdir/usr/share/wireview/TG-WV-PRO2-FW.hex"
   # Reference daemon config; private because it may hold the HMAC secret.
   install -dm700 "$pkgdir/etc/wireview"
