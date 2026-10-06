@@ -1,7 +1,7 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 pkgname=cc-switch
-pkgver=3.20.4
+pkgver=4.0.2
 pkgrel=1
 pkgdesc='All-in-One assistant tool for Claude Code, Codex, OpenCode, openclaw & Gemini CLI'
 arch=('x86_64')
@@ -28,15 +28,12 @@ makedepends=(
 )
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-  "0002-feat-universal-provider-Add-one-click-sync-all-providers.patch"
 )
-sha256sums=('6d86cbafddd41299a2be364fe8ad2457941a8c33202ba252fbeeae8b6057b207'
-            '333ef252456975051f0163c9b8bcf37fadec3a43bc05f192cb4ec87b2761b3f6')
+sha256sums=('04b2983ab7e9e7441e16a5173812a4e46d742db077f69635bb66fe08f802ff70')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
   cd "${pkgname}-${pkgver}"
-  patch -p1 -i "${srcdir}/0002-feat-universal-provider-Add-one-click-sync-all-providers.patch"
   cargo fetch --locked --target host-tuple --manifest-path src-tauri/Cargo.toml
 }
 
