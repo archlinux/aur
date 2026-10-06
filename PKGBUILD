@@ -1,5 +1,6 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
+# Source: https://github.com/jmelahman/pkgbuilds
 
 pkgname=nature-sounds
 pkgver=0.2.8
