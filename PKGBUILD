@@ -12,7 +12,7 @@ conflicts=("opencode-sandbox-git")
 depends=("bash")
 optdepends=("docker: Docker runtime" "podman: Podman runtime")
 source=("opencode-sandbox-$pkgver.tar.gz::https://github.com/Antiquete/opencode-sandbox/releases/download/v$pkgver/opencode-sandbox-$pkgver.tar.gz")
-sha256sums=("4857e7883a9cefc7dd1ca2d55350992262c6152012efb14dac043f0ebea2a007")
+sha256sums=("c1dcc5b661000e6814b94a516dfe605d476ef6cc8910818a4bf0d5b9e73f4d40")
 
 package() {
     cd "$srcdir/opencode-sandbox-$pkgver"
