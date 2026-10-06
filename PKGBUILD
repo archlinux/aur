@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=vectorcraft-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Vector illustration and graphics editor (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ source=("$_pkgname-$pkgver-NOTICE.txt::https://raw.githubusercontent.com/storyto
         "$_pkgname-$pkgver-LICENSE-lucide.txt::https://raw.githubusercontent.com/storytold/$_pkgname/v$pkgver/assets/icons/LICENSE-lucide.txt")
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
-sha256sums=('4194dd560003d0587b4c39122c5934f8d45598b297202c3783e88d305446ac63'
+sha256sums=('aa04826ce410a8a24354df5d2d3733f01f44e01c827edf76c51b4721ff07ec61'
             '197b20a10ffd9474e63c08893440abb7724a410c975829d809390f2ce21fac1e'
             '7323e2ad58efcf69f0871f419531f707ae6bee61d00c7d84de6f8300d7ad19f7'
             '262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a'
@@ -35,8 +35,8 @@ sha256sums=('4194dd560003d0587b4c39122c5934f8d45598b297202c3783e88d305446ac63'
             '56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328'
             'c21d7293d87b6d7ab1d0229a2f55b77f33a7613a6a4e66f6693d68d7d8d09464'
             'b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57')
-sha256sums_x86_64=('4efe8fd18bb4d97866ed5e06a94da7cf757c84b305a6719e93d272ff12d47964')
-sha256sums_aarch64=('2a59504a750f9409f1a0ce77e759b81777197475a7bab8cf71bc4c300595f149')
+sha256sums_x86_64=('0c8d008901861cee5b493549cbc57ecadae459374ed748f5036ddf3337c06835')
+sha256sums_aarch64=('85bc8ad7735979cce9a5114484a40561e1c3743ddb1901463b4ab2073d70911e')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-linux-$CARCH"
