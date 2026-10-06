@@ -1,6 +1,6 @@
 pkgbase = sonic-system-info
 	pkgdesc = A utility that provides information about a computer system
-	pkgver = 6.7.4
+	pkgver = 6.7.5
 	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-system-info
 	arch = x86_64
@@ -45,7 +45,7 @@ pkgbase = sonic-system-info
 	optdepends = plasma-disks: SMART devices health monitor
 	provides = kinfocenter
 	conflicts = kinfocenter
-	source = sonic-system-info-6.7.4.tar.gz::https://github.com/Sonic-DE/sonic-system-info/archive/refs/tags/6.7.4.tar.gz
-	sha256sums = a77f207ac3ad2fffc5409917066181c6798c436789eddff69d667170e5f3546b
+	source = sonic-system-info-6.7.5.tar.gz::https://github.com/Sonic-DE/sonic-system-info/archive/refs/tags/6.7.5.tar.gz
+	sha256sums = 1099c7c3df53c18290671a650a41ad9fa748df86a919171753ec26f66421dbc4
 
 pkgname = sonic-system-info
