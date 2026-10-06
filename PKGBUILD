@@ -1,4 +1,4 @@
-# Maintainer:  jokayque <114672278+jokayque@users.noreply.github.com>
+# Maintainer:  kaypes <kayquesousa02004@gmail.com>
 # Contributor: maniacata <maniaciachao at gmail dot com>
 # Contributor: Martin Thierer <thierer@web.de>
 # Contributor: Amy Wilson <awils_1[at]xsmail[dot]com>
