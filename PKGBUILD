@@ -3,7 +3,7 @@
 _pkgbase="zig-waybar-contrib"
 pkgname="${_pkgbase}-beta-bin"
 epoch=1
-pkgver=1.0.0_staging.38
+pkgver=1.0.1_staging.17
 pkgrel=1
 pkgdesc='High-performance Waybar modules written in Zig for efficient system monitoring (Beta binary version)'
 arch=('x86_64')
@@ -15,12 +15,12 @@ optdepends=(
   'fakeroot: updates module'
 )
 source=(
-  "zig-waybar-contrib.zip::https://codeberg.org/erenvly/zig-waybar-contrib/releases/download/1.0.0-staging.38/zig-waybar-contrib-release-1.0.0-staging.38.zip"
-  "config.waybar.jsonc::https://codeberg.org/erenvly/zig-waybar-contrib/raw/tag/1.0.0-staging.38/config.waybar.jsonc"
-  "LICENSE::https://codeberg.org/erenvly/zig-waybar-contrib/raw/tag/1.0.0-staging.38/LICENSE"
+  "zig-waybar-contrib.zip::https://codeberg.org/erenvly/zig-waybar-contrib/releases/download/1.0.1-staging.17/zig-waybar-contrib-release-1.0.1-staging.17.zip"
+  "config.waybar.jsonc::https://codeberg.org/erenvly/zig-waybar-contrib/raw/tag/1.0.1-staging.17/config.waybar.jsonc"
+  "LICENSE::https://codeberg.org/erenvly/zig-waybar-contrib/raw/tag/1.0.1-staging.17/LICENSE"
 )
-sha256sums=('ea171f61a7b6b5582c2ebfb95ccbd8f9a7d3ba1198812feb2e7cf501834c207f'
-            'dcd740a429998be22dbbf6eb47e89cc4a24863af75839d0f8621c146a125575d'
+sha256sums=('f79cb06c1d36d857089b0868e7020578e6e2d5e4a0706a8e987bbb9738693a24'
+            '6b7be08f1eb7d2e434b69b37a71faef94ee9e4db8824ecf20f6651cf09ac4577'
             '2299c7882f95e4d84c68a527b7473b6e086a523379bcebb38905c7758a03a472')
 
 package() {
