@@ -1,14 +1,14 @@
 # Maintainer: ZAvrikDinozavrik <zaz965@stm32f0.ru>
 pkgname=sonycardscanner
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Утилита для работы с камерами Sony"
 arch=('x86_64')
-url="https://git.alexavr.ru/ZAvrikDinozavrik/SonyCardScanner"
+url="https://git.alexavr.ru/ZAvrikDinozavrik/sonycardscanner"
 license=('GPL3')
 depends=('qt5-base' 'libraw' 'opencv')
-source=("sonycardscanner-$pkgver-linux.tar.gz::https://git.alexavr.ru/ZAvrikDinozavrik/SonyCardScanner/archive/v$pkgver.tar.gz")
-b2sums=('SKIP')
+source=("sonycardscanner-$pkgver-linux.tar.gz::https://git.alexavr.ru/ZAvrikDinozavrik/sonycardscanner/archive/v$pkgver.tar.gz")
+sha256sums=('dd091ad8abc6b5dd744732c32879f73ca4b904e36e6f9bc1eb0211bd613eb18a')
 
 build() {
     cd $srcdir/sonycardscanner
