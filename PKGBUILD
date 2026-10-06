@@ -4,12 +4,11 @@
 pkgname=rocm-gfx103x-bin
 pkgdesc="ROCm Core SDK - RDNA2"
 pkgver=10.1.0
-pkgrel=1
+pkgrel=2
 epoch=0
 arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
-makedepends=('wget')
 depends=('ocl-icd' 'gcc-libs')
 provides=('opencl-driver' 'amdrocm-amdsmi' 'amdrocm-llvm' 'amdrocm-runtime' 'amdrocm-fft' 'amdrocm-blas' 'amdrocm-sparse' 'amdrocm-solver' 'amdrocm-dnn' 'amdrocm-rand' 'amdrocm-ccl' 'amdrocm-profiler' 'amdrocm-profiler-base' 'amdrocm-base' 'amdrocm-ck'
 'amdrocm-debugger' 'amdrocm-hipify' 'amdrocm-opencl' 'amdrocm-decode' 'amdrocm-jpeg' 'amdrocm-rccl' 'amdrocm-rocshmem' 'amdrocm-rdc' 'amdrocm-sysdeps' 'rocm' 'rocm-core' 'comgr' 'rocm-hip' 'hip' 'hsa-rocr' 'rocminfo' 'hip-runtime-amd' 'rocm-device-libs' 'rocm-language-runtime' 'rocm-hip-runtime' 'rocm-ocl-icd' 'rocm-opencl-icd-loader' 'rocm-dbgapi' 'rocm-debug-agent' 'rocm-gdb' 'rocprofiler' 'rocprofiler-plugins' 'rocprofiler-register'

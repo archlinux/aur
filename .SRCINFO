@@ -1,12 +1,11 @@
 pkgbase = rocm-gfx103x-bin
 	pkgdesc = ROCm Core SDK - RDNA2
 	pkgver = 10.1.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = http://www.amd.com
 	arch = x86_64
 	license = custom:AMD
-	makedepends = wget
 	depends = ocl-icd
 	depends = gcc-libs
 	optdepends = clinfo
