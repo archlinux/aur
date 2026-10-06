@@ -3,8 +3,9 @@
 
 pkgname=filmcraft
 pkgver=0.2.1
-pkgrel=1
-url="https://github.com/storytold/$pkgname"
+pkgrel=2
+url="https://getartcraft.com/apps/$pkgname"
+_url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Adobe Premiere Pro'
 arch=(x86_64)
 license=(MIT)
@@ -13,7 +14,7 @@ depends=(alsa-lib
          libgcc)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
-source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
+source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
 sha256sums=('72a97dd4a8a13041b3485d019ce166b97e4b2f5b4e977c068ad0cadb08b6bd1a')
 
 _srcenv() {
