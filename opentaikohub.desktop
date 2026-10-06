@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=OpenTaiko Hub
+Comment=Launcher, updater and asset manager for OpenTaiko
+Exec=opentaikohub
+Icon=opentaikohub
+Terminal=false
+Categories=Game;
+StartupNotify=true

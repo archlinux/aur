@@ -1,0 +1,24 @@
+pkgbase = opentaikohub
+	pkgdesc = Launcher, updater and asset manager for OpenTaiko
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/OpenTaiko/OpenTaiko-Hub
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = pkgconf
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = webkit2gtk-4.1
+	depends = xdg-utils
+	conflicts = opentaikohub-bin
+	options = !lto
+	source = opentaikohub-0.2.9.tar.gz::https://github.com/OpenTaiko/OpenTaiko-Hub/archive/refs/tags/v0.2.9.tar.gz
+	source = opentaikohub.desktop
+	sha256sums = 084e258dfd3dda50e0bccb9f4b5b8373a158b47664990fe11fe124909ac5662f
+	sha256sums = ad3a2077b69122ea1282d600a981cf21cf8f1f3177e0db2f891715310d53051e
+
+pkgname = opentaikohub
