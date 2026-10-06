@@ -1,0 +1,19 @@
+pkgbase = augur-dbus
+	pkgdesc = AI for desktop programs, as a session D-Bus service
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/matthewp/augur
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	checkdepends = python
+	checkdepends = dbus
+	makedepends = meson
+	depends = glib2
+	depends = json-glib
+	depends = libsoup3
+	depends = glibc
+	source = https://github.com/matthewp/augur/releases/download/v0.1.0/augur-0.1.0.tar.xz
+	sha256sums = d99802014b4bf3f0a90e25c9833ada7512a2507395e8fa449613c812eb251c23
+
+pkgname = augur-dbus
