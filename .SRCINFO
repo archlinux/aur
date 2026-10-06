@@ -1,7 +1,7 @@
 pkgbase = rocm-gfx101x-bin
 	pkgdesc = ROCm Core SDK - RDNA1
-	pkgver = 10.0.0
-	pkgrel = 2
+	pkgver = 10.1.0
+	pkgrel = 1
 	epoch = 0
 	url = http://www.amd.com
 	arch = x86_64
@@ -186,8 +186,9 @@ pkgbase = rocm-gfx101x-bin
 	conflicts = miopen-hip
 	conflicts = rocm-ml-libraries
 	conflicts = rocm-ml-sdk
+	noextract = therock-dist-linux-gfx101X-dgpu-10.1.0.tar.gz
 	options = !strip
-	source = https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx101X-dgpu-10.0.0.tar.gz
-	sha256sums = 8f69ac5cd3785615a972aa9f90377c7401d5d6a98ede057da68eb2c438b7527b
+	source = https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx101X-dgpu-10.1.0.tar.gz
+	sha256sums = 702bbaa55f3eafd177ddeeed26c93f915dd23de418188cc79cde6dc00819938c
 
 pkgname = rocm-gfx101x-bin
