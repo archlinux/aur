@@ -1,0 +1,5 @@
+[bracco-bin]
+source = "github"
+github = "rawnly/bracco"
+use_latest_release = true
+prefix = "v"

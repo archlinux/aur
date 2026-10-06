@@ -1,0 +1,23 @@
+pkgbase = bracco-bin
+	pkgdesc = Fast, Git-aware fuzzy file picker for the terminal
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/rawnly/bracco
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = git
+	depends = zlib
+	provides = bracco
+	conflicts = bracco
+	options = !strip
+	source = README-0.2.4.md::https://raw.githubusercontent.com/rawnly/bracco/v0.2.4/README.md
+	source = LICENSE-0.2.4::https://raw.githubusercontent.com/rawnly/bracco/v0.2.4/LICENSE
+	sha256sums = 8f7ba3560c8be0ba395ebf716cfc6cd8244cfdf24c19d6cad34851aab3fe2033
+	sha256sums = 362b5bec0e58e1aeb3ecf891d0ed21c8ed3a56ee853ef395fc5e7342bce16c58
+	source_x86_64 = bracco-x86_64-0.2.4.txz::https://github.com/rawnly/bracco/releases/download/v0.2.4/bracco-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = e17f1be4a3078a17a29f53b35d5eeaeb347b527172069e611e16769003dba8a2
+	source_aarch64 = bracco-aarch64-0.2.4.txz::https://github.com/rawnly/bracco/releases/download/v0.2.4/bracco-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = d2fe08535140e1ec52c96edbbfd876eca301449088618e0c626e1a1fba86f2e2
+
+pkgname = bracco-bin
