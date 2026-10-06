@@ -1,0 +1,20 @@
+pkgbase = omp-ctl
+	pkgdesc = Desktop GUI for managing omp configuration in ~/.omp-ctl
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/moecly/omp-ctl
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	makedepends = bun
+	makedepends = cargo
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libsoup3
+	depends = glibc
+	depends = gcc-libs
+	options = !debug
+	source = omp-ctl-0.6.0.tar.gz::https://github.com/moecly/omp-ctl/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = ba9e6cb2dded7e56ac339c823614b5aca89ffe109687fdab9e53d7f098105512
+
+pkgname = omp-ctl
