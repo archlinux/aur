@@ -1,7 +1,7 @@
 # Maintainer: zlicdt <xkicdt1@gmail.com>
 
 pkgname=open-orpheus
-pkgver=0.19.1
+pkgver=0.19.2
 pkgrel=1
 pkgdesc="An open-source implementation of Netease Cloud Music's Orpheus browser host"
 arch=('x86_64')
@@ -55,7 +55,7 @@ source=(
     "wasm-bindgen-$_wasm_bindgen_ver.tar.gz::https://github.com/wasm-bindgen/wasm-bindgen/releases/download/$_wasm_bindgen_ver/wasm-bindgen-$_wasm_bindgen_ver-x86_64-unknown-linux-musl.tar.gz"
     "$pkgname.desktop"
 )
-sha256sums=('2d5d07cdb4a5edbbd47376850584dd209799bb6133b4587da6875cd930341448'
+sha256sums=('72720b90b39b80acba429967dba88704863478eb1f493d2eb158ab7b33bba6e1'
             '82d12bb940e2d4e72e0d5605387fc1b8ca179044e012b620f0ce4e7440e8320e'
             '259b39667fe1dce5d6ce45d4464b7499989c0b0d527c9b9d3597d519dd744e76')
 
