@@ -5,7 +5,7 @@
 _pkgname=upm
 pkgname=upm-git
 pkgver=1.4.0.r0.g2c98bb4
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast, tiny package manager for the npm registry, written in TypeScript.'
 url='https://github.com/unjs/upm'
 arch=('any')
@@ -15,8 +15,8 @@ depends=(
 makedepends=(
 	'git'
 )
-conflicts=(upm upm-bin)
-provides=(upm upm-bin)
+conflicts=(upm)
+provides=(upm)
 license=('MIT')
 
 source=("git+https://github.com/unjs/upm.git")
