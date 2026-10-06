@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-frameworks-auth
-pkgver=6.29.0
+pkgver=6.30.0
 pkgrel=1
 pkgdesc='Abstraction to system policy and authentication features'
 arch=(x86_64)
@@ -23,7 +23,7 @@ provides=(kauth)
 conflicts=(kauth)
 groups=(sonicde-frameworks)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c0096c631d03ae46eb3e23bf3e89f3dfd902a004e79008de63bcce99fa639903')
+sha256sums=('76070e68d857666ebf1c353eab52d06d0b6489ae9b0ca063595782f1653e05bb')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
