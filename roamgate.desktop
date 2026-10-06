@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Roamgate
+GenericName=Herdr Web Client
+Comment=Start a Roamgate server and open it in the browser
+Exec=roamgate --open
+Icon=roamgate
+Terminal=true
+Categories=Development;
+Keywords=herdr;terminal;agent;

@@ -1,0 +1,16 @@
+post_install() {
+  cat <<'MSG'
+==> Roamgate is installed as /usr/bin/roamgate.
+==> To run it as a user service with the packaged unit:
+      systemctl --user enable --now roamgate.service
+    It listens on 127.0.0.1:8787; set HOST/PORT in
+    ~/.config/roamgate/roamgate.env to change that.
+    The login token is in ~/.config/roamgate/auth-token.
+==> `roamgate service install` writes its own unit to ~/.config/systemd/user,
+    which shadows the packaged one; use one or the other.
+==> Coming from herdr-gui-bin? /usr/bin/herdr-gui is gone. Remove the old
+    service (systemctl --user disable --now herdr-gui.service, then delete
+    ~/.config/systemd/user/herdr-gui.service) and see the migration guide:
+    https://github.com/powerfooI/roamgate/blob/main/docs/DEPLOYMENT.md#transition-from-herdr-studio--herdr-gui
+MSG
+}

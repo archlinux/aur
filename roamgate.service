@@ -1,0 +1,21 @@
+# Packaged user unit for the system-wide /usr/bin/roamgate.
+# Unlike `roamgate service install`, it listens on 127.0.0.1:8787 unless
+# ~/.config/roamgate/roamgate.env sets HOST/PORT.
+[Unit]
+Description=Roamgate
+Documentation=https://github.com/powerfooI/roamgate
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+# pacman owns /usr/bin/roamgate; the in-app updater cannot replace it.
+Environment=ROAMGATE_DISABLE_UPDATE_CHECK=1
+EnvironmentFile=-%h/.config/roamgate/roamgate.env
+ExecStart=/usr/bin/roamgate
+Restart=always
+RestartSec=2
+TimeoutStopSec=15
+
+[Install]
+WantedBy=default.target
