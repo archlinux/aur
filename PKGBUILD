@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=clockenstein
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Calendar application with local, Google and CalDAV support"
 arch=('any')
 url="https://xapp-project.org/clockenstein.html"
@@ -30,17 +30,10 @@ makedepends=(
   'meson'
 )
 checkdepends=('desktop-file-utils')
-source=("git+https://github.com/xapp-project/clockenstein.git#tag=$pkgver"
-        'install_dir.patch')
-sha256sums=('b4cb76ae1e22b48f782b082255bf551d0a5c1943afe09c887d0a7c1bb3e9a620'
-            '400137f29fe9406e7f87895eb018f4fcc19f6826669fde85f06b34bf06d1d477')
-
-prepare() {
-  cd "$pkgname"
-
-  # Fix Python module path
-  patch -Np1 -i ../install_dir.patch
-}
+_commit=93e33e5ae6792edb209207bb6a4e48b017fc58d8
+source=("git+https://github.com/xapp-project/clockenstein.git#commit=${_commit}")
+# source=("git+https://github.com/xapp-project/clockenstein.git#tag=$pkgver")
+sha256sums=('4db068251cd3b7ebbdfeb29a2253245b6da2490d2587793e3d296843035941a7')
 
 build() {
   arch-meson "$pkgname" build
