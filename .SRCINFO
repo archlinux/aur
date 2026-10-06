@@ -1,9 +1,10 @@
 pkgbase = tubi
 	pkgdesc = Unnofficial Tubi desktop application
-	pkgver = 1.0.7
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/tubidesktop
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = unzip
 	depends = electron-castlab-bin
@@ -12,7 +13,7 @@ pkgbase = tubi
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/tubidesktop/application/-/archive/1.0.7/application-1.0.7.tar.bz2
-	sha256sums = a623e0930bca411d8d1c088d9061a1a77a345647f34ec64635a26fd6b2c2feb3
+	source = https://gitlab.com/linuxbombay/tubidesktop/application/-/archive/1.0.9/application-1.0.9.tar.bz2
+	sha256sums = 1d9499a744b77c74e4f4333b6926897eb52208f243c3e17faa4ae0d60a2407c7
 
 pkgname = tubi
