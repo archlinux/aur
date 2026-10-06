@@ -1,6 +1,6 @@
 pkgbase = tcode-bin
 	pkgdesc = A native desktop app for the coding agents you already use.
-	pkgver = 0.1.58
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Tryanks/tcode
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = tcode-bin
 	optdepends = nvidia-utils: NVIDIA GPU Vulkan support
 	optdepends = vulkan-intel: Intel GPU Vulkan support
 	optdepends = vulkan-radeon: AMD Radeon Vulkan support
-	source_x86_64 = tcode-0.1.58-linux-x64.tar.gz::https://github.com/Tryanks/tcode/releases/download/v0.1.58/tcode-0.1.58-linux-x64.tar.gz
-	sha256sums_x86_64 = 9edb842c1b4c874de8d256d418552f7af7840f7de2af97117be06d0e3ea93219
-	source_aarch64 = tcode-0.1.58-linux-arm64.tar.gz::https://github.com/Tryanks/tcode/releases/download/v0.1.58/tcode-0.1.58-linux-arm64.tar.gz
-	sha256sums_aarch64 = 8878cb6dd6e78e84eff6bd8449d48bec1d50daf3890ab010534c0f312b04d8d4
+	source_x86_64 = tcode-0.2.0-linux-x64.tar.gz::https://github.com/Tryanks/tcode/releases/download/v0.2.0/tcode-0.2.0-linux-x64.tar.gz
+	sha256sums_x86_64 = 565cf8a3ac7da9f4a328fac0648d4c25118ee8cb0d8fca562e2ec98f81b37b5f
+	source_aarch64 = tcode-0.2.0-linux-arm64.tar.gz::https://github.com/Tryanks/tcode/releases/download/v0.2.0/tcode-0.2.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 0b84231b57c05d726a57000e6aa7a86af5504c41141d339f87a1788c90f47a04
 
 pkgname = tcode-bin
