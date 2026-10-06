@@ -7,7 +7,7 @@ pkgver=0.7.4.r259.84664cd
 pkgrel=1
 pkgdesc="A ridiculous space shooter with nice graphics (development version)"
 arch=('x86_64')
-url="https://marsshooter.org/"
+url="https://github.com/thelaui/M.A.R.S"
 license=('GPL-3.0-or-later')
 depends=(
   'fribidi'
