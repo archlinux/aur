@@ -14,8 +14,8 @@ source=('.managed_by_aur')
 sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 source_x86_64=("CastSound-${pkgver}-linux-x86_64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v${pkgver}/CastSound-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("CastSound-${pkgver}-linux-aarch64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v${pkgver}/CastSound-${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('c1a9d31dc4d843f5a7386eac0ce4c4f96c7e716ccf915ca0b9e00fa2a584fafb')
-sha256sums_aarch64=('ad3e60ebd1435b4533fd6a518a4e1568472229f9df2b07b3fa2f96cf8babf590')
+sha256sums_x86_64=('ec7550e6a9538cace807a59072840ccb248696909f1d5784c5c7fe655c6983dc')
+sha256sums_aarch64=('caff8e4e782bfa34d14b0dc6c78d0bf374a2bbaff826910644079d64e515d999')
 
 package() {
   cd "${srcdir}"
