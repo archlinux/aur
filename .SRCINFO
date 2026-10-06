@@ -1,6 +1,6 @@
 pkgbase = cronopete
 	pkgdesc = A graphical backup utility based on Apple Time Machine idea.
-	pkgver = 5.0.0
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://gitlab.com/rastersoft/cronopete
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = cronopete
 	depends = libnotify
 	depends = rsync
 	depends = udisks2
-	source = cronopete-5.0.0.tar.gz::https://gitlab.com/rastersoft/cronopete/-/archive/5.0.0/cronopete-5.0.0.tar.gz
-	sha512sums = f4576a28837c78acae47998145b6a9e6069bbd1038053034785024bdce4e722be4c22173da638b5d894e23f98b323805eb255d74790e35a46f7a13f516f3b00f
+	source = cronopete-5.1.1.tar.gz::https://gitlab.com/rastersoft/cronopete/-/archive/5.1.1/cronopete-5.1.1.tar.gz
+	sha512sums = 657825403bf5fa1af17582512012ec95a53dfbf0a49ed0b9d644b0ed73ceaa17af4b65468802c2e0a508621420ad37eb95a760edc3a5c329890dbc0a5d668d49
 
 pkgname = cronopete
