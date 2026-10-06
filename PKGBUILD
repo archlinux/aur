@@ -1,5 +1,6 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor: Pierre-Marie de Rodat  <pmderodat@kawie.fr>
+# Source: https://github.com/jmelahman/pkgbuilds
 
 pkgname='python-e3-core'
 _pkgname=${pkgname#python-}
