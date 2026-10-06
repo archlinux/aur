@@ -1,0 +1,5 @@
+[gitframe-bin]
+source = "github"
+github = "hiroaqii/gitframe"
+use_latest_release = true
+prefix = "v"
