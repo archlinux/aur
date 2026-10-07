@@ -1,0 +1,27 @@
+_uuid=computer-use-linux@avifenesh.dev
+
+_shadow_note() {
+    cat <<EOF
+A user copy in ~/.local/share/gnome-shell/extensions/${_uuid}
+overrides this package. To remove it, run this command and log out
+and log in:
+  computer-use-linux setup-window-targeting
+EOF
+}
+
+post_install() {
+    cat <<EOF
+This package installs the computer-use-linux GNOME Shell extension
+for all users. To enable it, run this command and log out and log in:
+  computer-use-linux setup-window-targeting
+The command finds this package, does not write a user copy and
+removes a user copy from an earlier setup.
+
+You must still run "computer-use-linux setup" one time to enable AT-SPI.
+EOF
+}
+
+post_upgrade() {
+    echo "Log out and log in again to load the updated GNOME Shell extension."
+    _shadow_note
+}
