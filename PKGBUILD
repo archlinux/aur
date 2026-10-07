@@ -1,5 +1,5 @@
 pkgname=paintdotjs-bin
-pkgver=2.1.5
+pkgver=2.1.6
 pkgrel=1
 pkgdesc='A desktop port of Paint.NET for Linux and macOS'
 arch=('x86_64')
@@ -16,8 +16,8 @@ source=(
 )
 source_x86_64=("paintdotjs-${pkgver}.AppImage::https://github.com/LabyStudio/paintdotjs/releases/download/v${pkgver}/paintdotjs-${pkgver}-linux-x86_64.AppImage")
 noextract=('paintdotnet.zip' "paintdotjs-${pkgver}.AppImage")
-sha256sums=('ea63aaf115cbb8a45c8c6a1b6fbf1571f77a927170f405a2d49781420e0ce19b' 'd5ae7043f2fb9d365b48dfe243a2aca1c74924de99b04b6445916c95354aefa3')
-sha256sums_x86_64=('f036228c517daa728399ddf05583142c70b31815a89f8a46972fd2fc4b2bd3cc')
+sha256sums=('052971c2179b8d3187e1299fdfb77c4bf9531e53f5f4d3490406e318ac932882' 'd5ae7043f2fb9d365b48dfe243a2aca1c74924de99b04b6445916c95354aefa3')
+sha256sums_x86_64=('97816be9c631214ccabd482eef96b9de2a0764a0c2378a8e9e43bc220c704820')
 
 prepare() {
   mkdir -p paintdotnet-source
