@@ -11,7 +11,7 @@ makedepends=('meson' 'ninja' 'vulkan-headers' 'wayland-protocols'
              'wayland' 'libxcb' 'libx11' 'vulkan-icd-loader'
              'lib32-wayland' 'lib32-libxcb' 'lib32-libx11' 'lib32-vulkan-icd-loader')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('195263991750e09ea053119cc3a247ce187635f23158c48ba66f1076610c4742')
+sha256sums=('18c101960e4d06d31e8259f91621e0e7b9632441a2daf938266b8fc010741bfa')
 
 build() {
     cd vkNemu-$pkgver
