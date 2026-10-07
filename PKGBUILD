@@ -7,7 +7,7 @@ arch=('x86_64' 'aarch64')
 url='https://herdr.dev'
 license=('AGPL-3.0-or-later')
 depends=('gcc-libs' 'glibc')
-makedepends=('cargo' 'git' 'zig')
+makedepends=('cargo' 'git' 'zig=0.16.0')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ogulcancelik/herdr/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('e48f6706440c92362773663131ef5b524c62549523e50a03f2b55d315edca100')
 _zig=/usr/bin/zig
@@ -21,34 +21,17 @@ prepare() {
 
   cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 
-  local zig_seen="${srcdir}/zig-fetch-seen"
-  local zig_urls="${srcdir}/zig-fetch-urls"
-  : > "${zig_seen}"
-  while true; do
-    find vendor/libghostty-vt "${ZIG_GLOBAL_CACHE_DIR}" -name build.zig.zon \
-      -exec sed -n 's/^[[:space:]]*\.url = "\(.*\)",/\1/p' {} + 2>/dev/null \
-      | sort -u > "${zig_urls}"
-
-    local fetched=0
-    while IFS= read -r zig_url; do
-      if grep -Fxq "${zig_url}" "${zig_seen}"; then
-        continue
-      fi
-      local zig_ok=0
-      for _ in 1 2 3; do
-        if "${_zig}" fetch --global-cache-dir "${ZIG_GLOBAL_CACHE_DIR}" "${zig_url}"; then
-          zig_ok=1
-          break
-        fi
-        sleep 2
-      done
-      (( zig_ok == 1 ))
-      printf '%s\n' "${zig_url}" >> "${zig_seen}"
-      fetched=1
-    done < "${zig_urls}"
-
-    (( fetched == 0 )) && break
+  cd vendor/libghostty-vt
+  local attempt
+  for attempt in 1 2 3; do
+    if "${_zig}" build --fetch=all; then
+      return 0
+    fi
+    if (( attempt < 3 )); then
+      sleep 2
+    fi
   done
+  return 1
 }
 
 build() {
