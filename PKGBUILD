@@ -48,12 +48,6 @@ check() {
   [[ "$(./client version)" == $pkgver ]]
 }
 
-_completions() {
-  install -Dm644 "build/$1.bash" "$pkgdir/usr/share/bash-completion/completions/$2"
-  install -Dm644 "build/$1.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$2.fish"
-  install -Dm644 "build/$1.zsh" "$pkgdir/usr/share/zsh/site-functions/_$2"
-}
-
 package_netbird() {
   license=('BSD-3-Clause')
   backup=(etc/default/$pkgname)
@@ -67,7 +61,10 @@ package_netbird() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 build/client "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  _completions client "$pkgname"
+
+  install -Dm644 build/client.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  install -Dm644 build/client.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+  install -Dm644 build/client.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 
   cd release_files/systemd/
   install -Dm644 env "$pkgdir/etc/default/$pkgname"
