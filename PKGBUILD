@@ -1,5 +1,5 @@
 pkgname=accio-bin
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Switch your ai provider credentials and configurations. accio ai!"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 provides=('accio')
 conflicts=('accio')
 source=("accio-${pkgver}-x86_64-linux.tar.gz::https://github.com/nickheyer/accio/releases/download/v${pkgver}/accio-${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('efaa301fe9ad0ab8e8b4650729596b9140b496c39c7634148136781f7e7ad7cc')
+sha256sums=('15b09c190e7007fb3a92e29f73f46b916b0ee8eb9e213bdf0104f4237c776f21')
 
 package() {
   install -Dm755 "${srcdir}/accio" "${pkgdir}/usr/bin/accio"
