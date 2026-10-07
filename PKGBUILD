@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Run it on another machine you own, get the result back — a personal job runner for your tailnet"
 
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -35,17 +35,17 @@ source=("USAGE-${pkgver}.md::${_ghurlraw}/docs/USAGE.md"
 		"SERVICE_UPGRADES-${pkgver}.md::${_ghurlraw}/docs/SERVICE_UPGRADES.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums=('85702095eb10fb8645b767bf12a1cdcfcbdd243d52f3d5888fa1e0c9ecc4a04e'
-            '45288ab9639b6d0c86b8c5295409c2a1ae2687bd567cd906978b63c90ca23cd6'
+sha256sums=('36ea605fa9a9140d536820d6544399a7297759fbada3f9bd423d946c97c5eee6'
+            '67ad6ee2e72901b1545f24b3b152ccd1e35e27c49b7706e3c388805f86f14402'
             'abe86a5d159afab1602de606c0c24f55c4e1922d70f2a11963bdcacc1001aa1f'
-            '771195cf8e9cdf714a5c1bc632f04e47f075cf488bf3255435d812c0a4c331d1'
-            'db53e73c13de3b1b9306b2943a748b2c8da7106cb75e95534f1a2e94c297865b'
+            'baf396f7e9524b0fb2234dab972d71e45f6ed5d0bc1538f8e09858e4f8788379'
+            'efd86b0964348767a30fdd4bdffac2d634dda25a0a7e8768fa0ebe96c7230222'
             'f4625955f10d969e367879f213bab09023fe376fa614abe94bf2ab98d499b549'
-            'd0907c2d9a47956f06044f2231d2e1e7e50826ce6cd77f24e423eebfafc89de9'
+            '0f110a3e275dd3d9afcea028f8a859c84ea7852a5d29ef971fd846a4160b9709'
             '81fc7579f732157a6efc5390dd21e363ed9c037843b842fffe152abc2c1224ab'
-            '0131aff723568efae680b8d95b327edd397fa47a3cd6fd53147bbd805009cb50')
-sha256sums_x86_64=('c4b5c87eff12ac019f8e9fcb8aa77c5f6c6f49f45223b7e2e83ad0640af5bd0d')
-sha256sums_aarch64=('c4a0a1242fb46fc001cd1a1c705654f3ca472fe615088824592a9d84e6d0d1f0')
+            'd3d1dc7f3dc0cac73db8c8ed0873399a57c89d3f323f07145d26a25011d0917d')
+sha256sums_x86_64=('0c47862058f4aa52456129adec9326f698dcc2607d29e500ad36710c17fa6490')
+sha256sums_aarch64=('aee728bb8248a909879f4596d523f574b0743b7d74402ffbfaa830dab5f4c02c')
 
 
 package() {
