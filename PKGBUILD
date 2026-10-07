@@ -2,7 +2,7 @@
 # Maintainer: Saad <sakib.saad.khan@gmail.com>
 
 pkgname='mgit-bin'
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Manage multiple GitHub SSH profiles from one machine'
 url='https://github.com/protibimbok/mgit'
@@ -13,10 +13,10 @@ conflicts=('mgit')
 depends=('git' 'openssh')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/protibimbok/mgit/releases/download/v${pkgver}/mgit_linux_arm64.tar.gz")
-sha256sums_aarch64=('961d0b0b546d96c7ca2f32a98000766239c65ef952ef1859f4ac55b88741b921')
+sha256sums_aarch64=('f532f4f24020e9f479e8a0ac859072ec36ff0d7f2c0a4ff89fed1983efb54021')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/protibimbok/mgit/releases/download/v${pkgver}/mgit_linux_amd64.tar.gz")
-sha256sums_x86_64=('6f6507db43bf76f7792140408c577a0fbeb91b493128c837b237ef6868bb22e9')
+sha256sums_x86_64=('44c50daf79836fa2873769cfc13dc17d02877f42f732325534ed4f017c9d49b1')
 
 package() {
   install -Dm755 "./mgit" "${pkgdir}/usr/bin/mgit"
