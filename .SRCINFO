@@ -1,6 +1,6 @@
 pkgbase = retro68-git
 	pkgdesc = Cross-platform classic Macintosh 68k and PowerPC toolchain
-	pkgver = r1184.f99ecb5aeb
+	pkgver = r1204.8d1e0da4cb
 	pkgrel = 1
 	url = https://github.com/autc04/Retro68
 	arch = x86_64
@@ -30,9 +30,11 @@ pkgbase = retro68-git
 	source = local://MPW_fully_updated.sit
 	source = retro68.sh
 	source = build-toolchain_unset_target_flags.patch
+	source = retro68-pr319.patch::https://patch-diff.githubusercontent.com/raw/autc04/Retro68/pull/319.patch
 	md5sums = SKIP
 	md5sums = 3f32f16d1e3b972e4a8b91ff6fd1406f
 	md5sums = 1b2aa328b29c63cb7376c5fb136b7153
 	md5sums = SKIP
+	md5sums = 18691428d38854289061f7f46d0c2687
 
 pkgname = retro68-git

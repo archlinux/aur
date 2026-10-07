@@ -4,7 +4,7 @@
 _commit=HEAD
 _pkgname=Retro68
 pkgname=${_pkgname,,}-git
-pkgver=r1184.f99ecb5aeb
+pkgver=r1204.8d1e0da4cb
 pkgrel=1
 pkgdesc="Cross-platform classic Macintosh 68k and PowerPC toolchain"
 arch=('x86_64')
@@ -28,12 +28,14 @@ depends=(
 source=("git+$url#commit=$_commit"
         "local://MPW_fully_updated.sit"
         "retro68.sh"
-        "build-toolchain_unset_target_flags.patch")
+        "build-toolchain_unset_target_flags.patch"
+        "retro68-pr319.patch::https://patch-diff.githubusercontent.com/raw/autc04/Retro68/pull/319.patch")
 
 md5sums=('SKIP'
          '3f32f16d1e3b972e4a8b91ff6fd1406f'
          '1b2aa328b29c63cb7376c5fb136b7153'
-         'SKIP')
+         'SKIP'
+         '18691428d38854289061f7f46d0c2687')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -44,6 +46,7 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
   git submodule update --init
   patch -p1 -i "${srcdir}/build-toolchain_unset_target_flags.patch"
+  patch -p1 -i "${srcdir}/retro68-pr319.patch"
   unar -k hidden "${srcdir}/MPW_fully_updated.sit" 'MPW-GM+PR+Final Updates/Interfaces&Libraries/*'
   mv MPW_fully_updated/MPW-GM+PR+Final\ Updates/Interfaces\&Libraries/* InterfacesAndLibraries/
 }
