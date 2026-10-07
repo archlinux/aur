@@ -10,6 +10,7 @@ arch=('any')
 url="https://github.com/milishiajay/gitpulse"
 license=('MIT')
 depends=('python' 'git')
+makedepends=('git')
 provides=("python-gitpulse")
 conflicts=("python-gitpulse")
 source=("$_pkgname::git+$url.git#branch=master")
