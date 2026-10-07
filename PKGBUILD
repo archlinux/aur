@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=publii-bin
 _pkgname=Publii
-pkgver=0.47.9
-_electronversion=41
+pkgver=0.48.0
+_electronversion=43
 pkgrel=1
-pkgdesc="The most intuitive Static Site CMS designed for SEO-optimized and privacy-focused websites.(Prebuilt version.Use system-wide electron)"
+pkgdesc="The most intuitive Static Site CMS designed for SEO-optimized and privacy-focused websites."
 arch=('x86_64')
 url="https://getpublii.com"
 _ghurl="https://github.com/GetPublii/Publii"
@@ -19,10 +19,10 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/download/${_pkgname}-${pkgver}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('eb3a34d54a5211a437c22509d57b55610827b4986fffbcbd60b80e67d81f25ef'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums=('e05852767b9c155b2404d80eba1b345da0205284ee0a1721972859d82bd855d0'
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -46,12 +46,14 @@ prepare() {
         s/\/opt\/${_pkgname}\/${_pkgname}/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    local _app_dir="$(_get_app_dir)"
+    rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/better-sqlite3/prebuilds/"{*arm64*,darwin-*,win32-*}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	local _app_dir="$(_get_app_dir)"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
