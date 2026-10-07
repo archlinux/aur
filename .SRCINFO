@@ -11,9 +11,6 @@ pkgbase = designcraft-git
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	depends = libxkbcommon
-	depends = vulkan-icd-loader
-	depends = wayland
 	provides = designcraft=0.2.1.r39.gd582277
 	conflicts = designcraft
 	source = git+https://github.com/storytold/designcraft.git
@@ -23,7 +20,4 @@ pkgname = designcraft-git
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	depends = libxkbcommon
-	depends = vulkan-icd-loader
-	depends = wayland
 	depends = libgcc_s.so

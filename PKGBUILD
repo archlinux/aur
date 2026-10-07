@@ -11,10 +11,7 @@ arch=(x86_64)
 license=(MIT Apache-2.0)
 depends=(glibc # libc.so libm.so
          hicolor-icon-theme
-         libgcc
-         libxkbcommon
-         vulkan-icd-loader
-         wayland)
+         libgcc)
 makedepends=(cargo
              git)
 provides=("$_pkgname=$pkgver")
