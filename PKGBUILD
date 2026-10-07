@@ -35,7 +35,7 @@ provides=('veshell' 'wayland-compositor')
 conflicts=('veshell' 'veshell-git')
 
 source=("veshell-0.1.0-x86_64.tar.zst::https://github.com/free-explorers/veshell-packaging/releases/download/v0.1.0/veshell-0.1.0-x86_64.tar.zst")
-sha256sums=('615158b9e97943d9dd65abc7bd346bd32a892ff93a547ea4fea8e085ac742ccc')
+sha256sums=('1ff9eebe7fd62ce85fe1eee0c993bae86cd459be4173ea541e25eb2822325377')
 
 package() {
   bsdtar -xf "$srcdir/veshell-0.1.0-x86_64.tar.zst" -C "$pkgdir"
