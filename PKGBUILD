@@ -8,7 +8,8 @@ _url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Microsoft PowerPoint'
 arch=(x86_64)
 license=(MIT Apache-2.0)
-depends=(glibc # libc.so libm.so
+depends=(alsa-lib
+         glibc # libc.so libm.so
          hicolor-icon-theme
          libgcc)
 makedepends=(cargo)
@@ -44,12 +45,13 @@ build() {
 }
 
 package() {
-	depends+=(libgcc_s.so)
+	depends+=(libasound.so
+	          libgcc_s.so)
 	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"{,-cli}
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "packaging/linux/ai.storyteller.$pkgname.desktop"
 	install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "packaging/linux/ai.storyteller.$pkgname.mime.xml"
-	install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/scalable/" assets/app-icon/hicolor/scalable/apps/ai.storyteller.$pkgname.svg
+	# install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/scalable/" assets/app-icon/hicolor/scalable/apps/ai.storyteller.$pkgname.svg
 	for s in ${_icons[@]}; do
 		local dim="${s}x${s}"
 		install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/$dim/apps/" assets/app-icon/hicolor/$dim/apps/ai.storyteller.$pkgname.png
