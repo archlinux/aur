@@ -1,6 +1,6 @@
 # Maintainer: Ibnu Afdel <ibnuafdel at gmail dot com>
 pkgname=dbwiz-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Find, browse, administer, and query your local SQL databases (Docker, SQLite) from a friendly TUI"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/Ibnu-Afdel/dbWiz/v
 source_x86_64=("dbwiz-${pkgver}-x86_64::${_base}/dbwiz-linux-amd64")
 source_aarch64=("dbwiz-${pkgver}-aarch64::${_base}/dbwiz-linux-arm64")
 sha256sums=('b9c8d9918e1315c637cd7907482230f824fd522a622e7aa3ebf99cc590aee9e5')
-sha256sums_x86_64=('b39e7e6e78d7ae8ca6170b690460704e9ba9820a8fbd75ad4b1225143548d076')
-sha256sums_aarch64=('73bec33be21c65ab26d7e2f223a3c208b7c42544b6eeebe947191ada368c8641')
+sha256sums_x86_64=('95bfd41c0fad4f26ac62a61e95a3a005f307abb8aec2257f36fcaf511d0966f4')
+sha256sums_aarch64=('ddb0e40bc1d0efa6618bab3cbf6332f251a70c934618e1b8649bd9956038adcb')
 
 package() {
   local bin="dbwiz-${pkgver}-${CARCH}"
