@@ -1,7 +1,7 @@
 # Maintainer: Coraline Shuryn <coraline.shuryn@gmail.com>
 
 pkgname=spirula-studio-git
-pkgver=2026.9.30.r15.g37d8dc4
+pkgver=2026.10.6.r3.gf113417
 pkgrel=1
 pkgdesc="End-to-end 3D Gaussian Splatting pipeline (Vulkan backend), git version"
 arch=('x86_64' 'aarch64')
@@ -73,6 +73,9 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
+
+  CFLAGS+=" -ffile-prefix-map=${srcdir}=."
+  CXXFLAGS+=" -ffile-prefix-map=${srcdir}=."
 
   cmake -B build -S . -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
