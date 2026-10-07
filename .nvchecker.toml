@@ -1,0 +1,3 @@
+[python-minikerberos]
+source = "pypi"
+pypi = "minikerberos"
