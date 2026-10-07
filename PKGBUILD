@@ -1,7 +1,7 @@
 # Maintainer: Mika Cousin <mika dot cousin at gmail dot com>
 
 pkgname=olc-git
-pkgver=0.10.3.beta
+pkgver=0.11.0.beta
 pkgrel=1
 pkgdesc="Open Lighting Console"
 arch=(any)
@@ -31,7 +31,7 @@ optdepends=(
   "ola: ola backend"
 )
 source=("olc-$pkgver.tar.gz::https://github.com/mikacousin/olc/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('4cbe40a65aefa5cfd940e9d3125924912f383d405557135d01c8295236119952')
+sha256sums=('c4256decc9ecc67b8b0280c460821ff37a559d7c65b24bc11467039230658dac')
 
 build() {
   arch-meson olc-$pkgver build --libexec="lib/olc"
