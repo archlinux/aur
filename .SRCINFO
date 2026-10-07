@@ -4,13 +4,14 @@ pkgbase = python-humps-git
 	pkgrel = 1
 	url = https://github.com/nficano/humps
 	arch = any
-	license = unlicense
+	license = Unlicense
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-poetry-core
 	makedepends = python-installer
 	depends = python
 	provides = python-humps
+	conflicts = python-humps
 	source = git+https://github.com/nficano/humps.git
 	sha256sums = SKIP
 

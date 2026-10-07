@@ -1,3 +1,4 @@
+# Maintainer: Energetix/Dark Nebula <https://github.com/Jobanny-Friki>
 # Contributor: karboncore
 
 pkgname=python-humps-git
@@ -6,12 +7,13 @@ pkgrel=1
 pkgdesc='Convert strings (and dictionary keys) between snake case, camel case and pascal case in Python'
 arch=(any)
 url=https://github.com/nficano/humps
-license=(unlicense)
+license=(Unlicense)
 depends=(python)
 makedepends=(git python-build python-poetry-core python-installer)
-provides=(${pkgname%-git})
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=(git+https://github.com/nficano/humps.git)
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/humps"
