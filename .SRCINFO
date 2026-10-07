@@ -9,6 +9,6 @@ pkgbase = zed-cn
 	conflicts = zed-cn
 	options = !debug
 	source = zed-cn-20261006.tar.gz::https://github.com/TC999/zed-loc/releases/download/20261006/zed-linux-x86_64.tar.gz
-	sha512sums = 6436134c7778d09b4f3f2ac158fd43a85883753b4a5956c3856a10641324daeaab287a0140e625cfb5760f490b2e14619ebef642191455885ce5cbaeac6da1e4
+	sha512sums = ce8c2da654ce129ab66387fef095066b64f6250c9b00a404b41097f69230e7374abca51617ca645a3584458f6fd0352bd637a411074b1ab56a83847931477783
 
 pkgname = zed-cn
