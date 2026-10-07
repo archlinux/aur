@@ -2,7 +2,7 @@
 
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend penpot-mcp)
-pkgver=2.18.0
+pkgver=2.18.3
 pkgrel=1
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
 )
 noextract=($pkgname-$pkgver.tgz)
 sha256sums=(
-  'a92270ca9f4e543bccd0f0825da3f7872482f34c600a3b64aa11ba98b1d19fd2'
+  '503f5a83c87c4f924555327c8289e1015f320b644103e394f00973e957b12fb6'
   '4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c'
   'bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523'
   '828087c8fab14fb481b4bd01d92f47e9ecc9c07551a7a873bcfbafd1e3644afb'
@@ -46,15 +46,18 @@ build() {
   export PATH="$JAVA_HOME/bin/:$PATH"
 
   echo "==== BUILDING MCP SERVER"
-  cd "${srcdir}/${_pkgbase}-${pkgver}/mcp/packages/server"
-  pnpm --config.node-linker=hoisted install
-  rm -rf node_modules dist/node_modules
+  cd "${srcdir}/${_pkgbase}-${pkgver}/mcp"
+  sed -i 's/target=node18/target=node26/' packages/server/package.json
+  pnpm --config.node-linker=hoisted --config.symlink=false install
   pnpm build
-  cp -r ../../node_modules package.json dist
-  sed -i 's#"main": "dist/index.js"#"main": "./index.js"#' dist/package.json
-  cd dist
+  rm -rf ./deployed
+  pnpm deploy --prod --filter mcp-server ./deployed
+  cd deployed
+  mv dist/index.js .
+  mv src/static .
+  rm -rf scripts/ src tsconfig.json pnpm-lock.yaml pnpm-workspace.yaml .gitignore dist
   sed -i 's~process.cwd()~import.meta.dirname~g' index.js
-  sed -i 's~process.argv\[1\].endsWith("index.js")~process.argv[1].endsWith("index.js") || process.argv[1].includes("/bin/penpot-mcp")~' index.js
+  sed -i 's~\(process.argv\[1\].endsWith("index.js")\)~\1 || process.argv[1].includes("/bin/penpot-mcp")~' index.js
 
   echo "==== BULDING FRONTEND"
   cd "${srcdir}/${_pkgbase}-${pkgver}/frontend"
@@ -184,7 +187,7 @@ package_penpot-mcp() {
   install -dm 755 "${pkgdir}/usr/lib/node_modules/penpot-mcp"
   install -dm 755 "${pkgdir}/usr/bin"
   cp --no-preserve=ownership -r \
-    "${srcdir}/${_pkgbase}-${pkgver}/mcp/packages/server/dist/." \
+    "${srcdir}/${_pkgbase}-${pkgver}/mcp/deployed/." \
     "${pkgdir}/usr/lib/node_modules/penpot-mcp/"
   pushd "${pkgdir}/usr/bin"
   ln -s ../lib/node_modules/penpot-mcp/index.js penpot-mcp
