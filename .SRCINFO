@@ -1,6 +1,6 @@
 pkgbase = lutris-git
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.5.22.r299.ga69bfe2
+	pkgver = 0.5.22.r488.g175b67f
 	pkgrel = 1
 	url = https://lutris.net
 	arch = any
@@ -13,7 +13,6 @@ pkgbase = lutris-git
 	depends = curl
 	depends = glib2
 	depends = glib-networking
-	depends = gnome-desktop
 	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = libnotify
