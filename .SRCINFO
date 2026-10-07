@@ -67,7 +67,7 @@ pkgbase = veshell
 	noextract = veshell-cargo-vendor-0.1.0.tar.zst
 	noextract = veshell-pubcache-0.1.0.tar.zst
 	options = !lto
-	source = veshell::git+https://github.com/free-explorers/veshell.git#commit=6670948ebef71bef9b4b5cc4373801dd875b3e92
+	source = veshell::git+https://github.com/free-explorers/veshell.git#commit=e954bb7ebcdfab7892249005c64ff7ba740930d3
 	source = build-veshell.sh
 	source = flutter_linux_3.47.2-stable.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.47.2-stable.tar.xz
 	source = flutter_patched_sdk.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a804b261645ef8c13eb3d5c44a5c2fb0340c5539/flutter_patched_sdk.zip

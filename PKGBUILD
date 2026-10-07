@@ -53,7 +53,7 @@ conflicts=('veshell-git')
 options=('!lto')
 
 # --- pinned inputs ----------------------------------------------------------
-_veshell_commit=6670948ebef71bef9b4b5cc4373801dd875b3e92
+_veshell_commit=e954bb7ebcdfab7892249005c64ff7ba740930d3
 _flutter_version=3.47.2
 _flutter_engine_revision=a804b261645ef8c13eb3d5c44a5c2fb0340c5539
 _input_mirror="${VESHELL_INPUT_MIRROR:-https://github.com/free-explorers/veshell-packaging/releases/download/packaging-inputs-v0.1.0}"
