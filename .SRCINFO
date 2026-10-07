@@ -1,0 +1,19 @@
+pkgbase = hoard-bin
+	pkgdesc = Automatic, versioned game save sync across devices.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/rleeon/hoard
+	arch = x86_64
+	arch = aarch64
+	license = AGPL3
+	depends = libayatana-appindicator
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = hoard
+	conflicts = hoard
+	options = !debug
+	source_x86_64 = hoard_1.2.1_x86_64.deb::https://github.com/rleeon/hoard/releases/download/v1.2.1/Hoard_1.2.1_amd64.deb
+	sha256sums_x86_64 = a118db7511e39a17fe10997a077e161d267fee0ea458bfd973d3a8449ec44df7
+	source_aarch64 = hoard_1.2.1_aarch64.deb::https://github.com/rleeon/hoard/releases/download/v1.2.1/Hoard_1.2.1_arm64.deb
+
+pkgname = hoard-bin
