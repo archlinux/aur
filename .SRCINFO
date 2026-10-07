@@ -1,23 +1,23 @@
 pkgbase = tgrep-bin
 	pkgdesc = Trigram-indexed grep with a client/server architecture for fast local regex search in large codebases
-	pkgver = 1.0.11
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/microsoft/tgrep
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = libarchive
-	provides = tgrep=1.0.11
+	provides = tgrep=1.1.0
 	conflicts = tgrep
-	noextract = tgrep-v1.0.11-x86_64-unknown-linux-musl.tar.gz
-	noextract = tgrep-v1.0.11-aarch64-unknown-linux-musl.tar.gz
+	noextract = tgrep-v1.1.0-x86_64-unknown-linux-musl.tar.gz
+	noextract = tgrep-v1.1.0-aarch64-unknown-linux-musl.tar.gz
 	options = !strip
 	options = !debug
-	source = tgrep-1.0.11-LICENSE::https://raw.githubusercontent.com/microsoft/tgrep/v1.0.11/LICENSE
+	source = tgrep-1.1.0-LICENSE::https://raw.githubusercontent.com/microsoft/tgrep/v1.1.0/LICENSE
 	sha256sums = 5baa259ffd1a975780869d7d2925212224c92206cefb96fb2bf0b146650e5029
-	source_x86_64 = tgrep-v1.0.11-x86_64-unknown-linux-musl.tar.gz::https://github.com/microsoft/tgrep/releases/download/v1.0.11/tgrep-v1.0.11-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = d1bb1f843c82b0285723e76c2a8ae983acfa623f56962127ac9f505be356f887
-	source_aarch64 = tgrep-v1.0.11-aarch64-unknown-linux-musl.tar.gz::https://github.com/microsoft/tgrep/releases/download/v1.0.11/tgrep-v1.0.11-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 272ce6235fb13b3aed6bbd31ff8a494eb506c4a74ffb9af9faeb74d87eb114b1
+	source_x86_64 = tgrep-v1.1.0-x86_64-unknown-linux-musl.tar.gz::https://github.com/microsoft/tgrep/releases/download/v1.1.0/tgrep-v1.1.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = ca957a7a0dca4df04040c6bae3d53804213cf415adc4b4591ab298a750971965
+	source_aarch64 = tgrep-v1.1.0-aarch64-unknown-linux-musl.tar.gz::https://github.com/microsoft/tgrep/releases/download/v1.1.0/tgrep-v1.1.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 99623d037a128402129d788b8d5fef691d43bdef5759bb3cdac8795951903705
 
 pkgname = tgrep-bin
