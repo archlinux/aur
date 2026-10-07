@@ -1,12 +1,12 @@
 pkgbase = ps3-env
 	pkgdesc = Meta package for tools used in the creation of homebrew software for the Sony PlayStation 3 videogame system.
-	pkgver = 20230409
+	pkgver = 20260907
 	pkgrel = 1
 	url = https://github.com/ps3dev/ps3toolchain
 	install = ps3-env.install
 	arch = any
 	license = MIT
-	optdepends = env-modules
+	optdepends = environment-modules
 	source = ps3toolchain.sh
 	source = ps3libraries.sh
 	source = modulefile_ps3toolchain

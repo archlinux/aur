@@ -1,13 +1,13 @@
 # Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
 
 pkgname=ps3-env
-pkgver=20230409
+pkgver=20260907
 pkgrel=1
 pkgdesc='Meta package for tools used in the creation of homebrew software for the Sony PlayStation 3 videogame system.'
 url='https://github.com/ps3dev/ps3toolchain'
 arch=('any')
 license=('MIT')
-optdepends=(env-modules)
+optdepends=(environment-modules)
 install=${pkgname}.install
 source=(
 	"ps3toolchain.sh"
