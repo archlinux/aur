@@ -1,7 +1,7 @@
 # Maintainer: plasmaDestroyer <satyasheel2004@gmail.com>
 pkgname=paclens-bin
 _pkgname=paclens
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A TUI-first pacman + AUR + Flatpak inspection and update tool for Arch Linux (prebuilt binary)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/paclens-x86_6
 # reading what they are installing, so the one thing it must do is verify that
 # what arrived is what was published. Refresh with `updpkgsums` on every
 # version bump; it must match the sha256sums.txt attached to that release.
-sha256sums=('a92aa6cb0593ddc2d21463190880a136f4aa63374f87600376dd86fd55fb9b98')
+sha256sums=('dba9bd3537cd9af396edda7501d1c46b4a9a23416fad3fd91b1b2c87a828ba01')
 
 package() {
   install -Dm755 "$srcdir/paclens" "$pkgdir/usr/bin/$_pkgname"
