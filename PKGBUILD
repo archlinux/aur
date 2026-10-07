@@ -4,12 +4,12 @@
 
 pkgname="line-gtk"
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial native LINE client for Linux. GTK4 / Libadwaita UI with a Deno protocol sidecar (linejs) - Prebuilt binary"
 arch=('x86_64')
 url="https://github.com/MidnightTale/Line-GTK"
 license=('GPL-3.0-or-later')
-depends=('gtk4' 'libadwaita' 'ffmpeg' 'hicolor-icon-theme')
+depends=('gtk4' 'libadwaita' 'ffmpeg' 'hicolor-icon-theme' 'deno')
 optdepends=(
   'poppler: PDF preview in media viewer'
   'gst-plugins-good: extra video playback codecs'
@@ -27,6 +27,11 @@ package() {
 	install -d "${pkgdir}/usr/share/${pkgname}"
 	cp -a protocol "${pkgdir}/usr/share/${pkgname}/protocol"
 	cp -a assets "${pkgdir}/usr/share/${pkgname}/assets"
+
+	# Use system Deno to avoid makepkg stripping the Deno-compiled protocol binary
+	rm -f "${pkgdir}/usr/share/${pkgname}/protocol/line-gtk-protocol"
+	rm -rf "${pkgdir}/usr/share/${pkgname}/protocol/node_modules" \
+		"${pkgdir}/usr/share/${pkgname}/protocol/.deno" 2>/dev/null || true
 
 	install -Dm644 "dev.linegtk.LineGtk.desktop" "${pkgdir}/usr/share/applications/dev.linegtk.LineGtk.desktop"
 
