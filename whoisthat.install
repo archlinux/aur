@@ -3,11 +3,6 @@ post_install() {
         echo ":: WARNING: Could not set capabilities on whoisthat-core."
         echo "   TUN mode requires: sudo setcap cap_net_admin,cap_net_raw,cap_setpcap=+ep /usr/bin/whoisthat-core"
     }
-
-    if ! command -v tun2socks &>/dev/null; then
-        echo ":: INFO: tun2socks binary not found in PATH."
-        echo "   WhoisThat will automatically download and manage pinned tun2socks v2.7.0 when TUN mode is used."
-    fi
 }
 
 post_upgrade() {
