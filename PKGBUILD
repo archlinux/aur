@@ -28,7 +28,5 @@ package() {
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
 	install -Dm644 CONTRIBUTING.md "$pkgdir/usr/share/doc/$_pkgname/CONTRIBUTING.md"
 	install -Dm644 CLAUDE.md "$pkgdir/usr/share/doc/$_pkgname/CLAUDE.md"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
