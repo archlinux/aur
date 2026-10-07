@@ -1,0 +1,23 @@
+pkgbase = puu-bin
+	pkgdesc = Render JSON Schema for humans
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/lusingander/puu
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = puu
+	conflicts = puu
+	options = !strip
+	source = README-0.2.0.md::https://raw.githubusercontent.com/lusingander/puu/v0.2.0/README.md
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/lusingander/puu/v0.2.0/LICENSE
+	sha256sums = 21811d3977c007c991a3d243606015344e21da45565b8948471026007ae0697f
+	sha256sums = 3b607b61bbba8e9b3bd2528080993dc454268b7b3c185ae98d02057ac5ddcc3f
+	source_x86_64 = puu-x86_64-0.2.0.tgz::https://github.com/lusingander/puu/releases/download/v0.2.0/puu-0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 272e536d8bfbc6dbef0641b293238ccbf48458a22155f8671b71536a122d63b3
+	source_aarch64 = puu-aarch64-0.2.0.tgz::https://github.com/lusingander/puu/releases/download/v0.2.0/puu-0.2.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f0c249cabd6128fac47b977196c2ac2b6728ccd32a9882ce6afed07d66a0972b
+
+pkgname = puu-bin

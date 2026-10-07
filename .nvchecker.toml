@@ -1,0 +1,5 @@
+[puu-bin]
+source = "github"
+github = "lusingander/puu"
+use_latest_release = true
+prefix = "v"
