@@ -10,6 +10,7 @@ arch=('any')
 url="https://github.com/BravoAlphaSix/alpheon"
 license=('MIT')
 depends=('python' 'git')
+makedepends=('git')
 provides=("python-alpheon")
 conflicts=("python-alpheon")
 source=("$_pkgname::git+$url.git#branch=master")
