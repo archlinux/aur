@@ -1,6 +1,6 @@
 pkgbase = ghost-cli
 	pkgdesc = CLI Tool for installing & updating Ghost
-	pkgver = 1.32.5
+	pkgver = 1.33.1
 	pkgrel = 1
 	url = https://ghost.org
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = ghost-cli
 	depends = nodejs-lts-jod
 	depends = npm
 	depends = pnpm
-	noextract = ghost-cli-1.32.5.tgz
-	source = https://registry.npmjs.org/ghost-cli/-/ghost-cli-1.32.5.tgz
-	sha256sums = 6b46f79ad0f4bcb76ba0bde2410c3dfed099a783804e8d2feeb116e236045a9b
+	noextract = ghost-cli-1.33.1.tgz
+	source = https://registry.npmjs.org/ghost-cli/-/ghost-cli-1.33.1.tgz
+	sha256sums = cd27705757e9aeb5354d944481a1cb710fd5a349ceb962123dad3cf846d2e847
 
 pkgname = ghost-cli
