@@ -20,4 +20,4 @@ The B7 source files installed manually under `/usr/src/kvmfr-0.0.12` are byte-fo
 paru -S kvmfr-dkms --overwrite '/usr/src/kvmfr-0.0.12/*'
 ```
 
-Do not install this package alongside `looking-glass-module-dkms`; both contain the same DKMS module source.
+Do not install this package alongside `looking-glass-module-dkms`, `looking-glass-module-dkms-git`, or `looking-glass-rc-module-dkms`; each registers the same `kvmfr` DKMS module.
