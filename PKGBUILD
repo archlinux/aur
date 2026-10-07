@@ -30,7 +30,5 @@ package() {
 	install -Dm644 assets/demo.gif "$pkgdir/usr/share/doc/$_pkgname/demo.gif"
 	install -Dm644 assets/widget-screenshot.png "$pkgdir/usr/share/doc/$_pkgname/widget-screenshot.png"
 	install -Dm644 gtime/widget-azclock-sidebar.dconf "$pkgdir/usr/share/$_pkgname/widget-azclock-sidebar.dconf"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
