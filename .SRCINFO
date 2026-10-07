@@ -1,6 +1,6 @@
 pkgbase = emacs-markdown-mode-git
-	pkgdesc = Emacs markdown-mode (latest git version)
-	pkgver = 2.4.r330.ge096bb9
+	pkgdesc = Emacs markdown-mode and derived gfm-mode (latest git version)
+	pkgver = 2.8.r21.g76cb4ff
 	pkgrel = 1
 	url = https://jblevins.org/projects/markdown-mode/
 	install = emacs-markdown-mode-git.install

@@ -2,10 +2,17 @@ post_install() {
     cat <<EOF
 ==> Add this code to your Emacs init to use markdown-mode:
 
-(autoload 'markdown-mode "markdown-mode.el"
+(autoload 'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)
-(setq auto-mode-alist
-   (cons '("\.md" . markdown-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist
+             '("\\.\\(?:md\\|markdown\\|mkd\\|mdown\\|mkdn\\|mdwn\\)\\'" . markdown-mode))
+
+(autoload 'gfm-mode "markdown-mode"
+   "Major mode for editing GitHub Flavored Markdown files" t)
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+
+(with-eval-after-load 'markdown-mode
+  (define-key markdown-mode-map (kbd "C-c C-e") #'markdown-do))
 
 EOF
 }

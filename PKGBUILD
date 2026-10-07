@@ -3,9 +3,9 @@
 # Contributor: Nils <mail n-sch de>
 
 pkgname=emacs-markdown-mode-git
-pkgver=2.4.r330.ge096bb9
+pkgver=2.8.r21.g76cb4ff
 pkgrel=1
-pkgdesc='Emacs markdown-mode (latest git version)'
+pkgdesc='Emacs markdown-mode and derived gfm-mode (latest git version)'
 arch=('i686' 'x86_64')
 url='https://jblevins.org/projects/markdown-mode/'
 license=('GPL')
@@ -19,8 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  # cutting off 'v' prefix that presents in the git tag
-  git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
