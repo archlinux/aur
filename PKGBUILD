@@ -16,8 +16,6 @@ _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
 sha256sums=('41474c17fe1233ec72ff5f0c276bb10f48f135760d91d520cb765fb47c031b9a')
 
-_icons=(512 256 128 64 48 32 16)
-
 _srcenv() {
 	cd "$_archive"
 	export CARGO_HOME="$srcdir"
@@ -30,6 +28,8 @@ _srcenv() {
 	export RUSTUP_TOOLCHAIN=stable
 	CFLAGS+=' -fno-lto'
 }
+
+_icons=(512 256 128 64 48 32 16)
 
 prepare() {
 	_srcenv
@@ -48,7 +48,7 @@ package() {
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "packaging/linux/ai.storyteller.$pkgname.desktop"
 	install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "packaging/linux/ai.storyteller.$pkgname.mime.xml"
 	install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/scalable/" assets/app-icon/hicolor/scalable/apps/ai.storyteller.$pkgname.svg
-	for s in $_icons; do
+	for s in ${_icons[@]}; do
 		local dim="${s}x${s}"
 		install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/$dim/apps/" assets/app-icon/hicolor/$dim/apps/ai.storyteller.$pkgname.png
 	done
