@@ -1,7 +1,7 @@
 # Maintainer: Ilyas Turki <turki.ilyass@gmail.com>
 pkgbase=universe
 pkgname=(universe universe-desktop)
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc='Gamepad-first game launcher: a Rust core, a PySide6 UI, games inside gamescope'
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
   "$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   'GalaxyCommunication-comet-0.3.2.exe::https://github.com/imLinguin/comet/releases/download/v0.3.2/GalaxyCommunication-dummy.exe'
 )
-sha256sums=('70cf64cf4ab8c11bd43238fec90fbef5bd60b169407ff3fd238ceeb50301690f'
+sha256sums=('f3a1b4ca101ace5ce19f9014d4a514fd081845990cc9aed5969f394f94025d0f'
             'c7695267da363a861af99db95cafe68b732ae743e5830b4feea1bc7ee745f99d')
 
 prepare() {
@@ -95,10 +95,11 @@ package_universe() {
   cd "$pkgbase-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm755 target/release/universe -t "$pkgdir/usr/bin"
+  install -Dm755 target/release/universe-system-install -t "$pkgdir/usr/lib/universe"
   for kind in modules sources; do
     install -d "$pkgdir/usr/share/universe/$kind"
     cp -r "$kind/." "$pkgdir/usr/share/universe/$kind"
-    rm -rf "$pkgdir/usr/share/universe/$kind"/*/tests
+    rm -rf "$pkgdir/usr/share/universe/$kind"/*/tests "$pkgdir/usr/share/universe/$kind"/conftest.py "$pkgdir/usr/share/universe/$kind"/test_*.py
   done
   install -Dm644 "$srcdir/GalaxyCommunication-comet-0.3.2.exe" "$pkgdir/usr/share/universe/sources/gog/GalaxyCommunication.exe"
   install -Dm644 extension/metadata.json extension/extension.js -t "$pkgdir/usr/share/gnome-shell/extensions/universe@ilyasturki.github.io"
@@ -109,6 +110,7 @@ package_universe() {
   install -Dm644 packaging/system/70-universe.rules -t "$pkgdir/usr/lib/udev/rules.d"
   install -Dm644 packaging/system/universe.conf -t "$pkgdir/usr/lib/modules-load.d"
   install -Dm644 packaging/system/universe.desktop -t "$pkgdir/usr/share/wayland-sessions"
+  install -Dm644 packaging/system/io.github.ilyasturki.universe.policy -t "$pkgdir/usr/share/polkit-1/actions"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 ui/universe-ui.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 ui/icons/hicolor/scalable/apps/universe-ui.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
