@@ -4,7 +4,7 @@ pkgname=icc_examin
 pkgver=0.56 # renovate: datasource=github-tags depName=oyranos-cms/icc-examin
 pkgrel=1
 pkgdesc="ICC Examin is a colour management utility."
-url="http://oyranos.org/"
+url="https://gitlab.com/oyranos/icc-examin"
 arch=('x86_64')
 depends=('ftgl' 'fltk' 'openicc' 'oyranos')
 optdepends=(argyllcms cinepaint-oyranos)
