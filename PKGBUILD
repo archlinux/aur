@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=whatsapp-electron-bin
-pkgver=1.2.10
-_electronversion=43
+pkgver=1.2.12
+_electronversion=42
 pkgrel=1
-pkgdesc="WhatsApp Client built on Electron with multi-account support!(Prebuilt version.Use system-wide electron)"
+pkgdesc="WhatsApp Client built on Electron with multi-account support!"
 arch=('x86_64')
 url="https://github.com/dagmoller/whatsapp-electron"
 license=('ISC')
@@ -20,10 +20,10 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1995879bbb5cd8324a492e654f43fcbdc7ffd7b0c017db4aa5bb7d13f0e1fd35'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums=('6dd49cf39c71542480c0377c786de39bcb5a5262b0a9227d0818f934d8b6260c'
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -50,10 +50,9 @@ prepare() {
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _check_electron_version
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${_app_dir}/${pkgname%-bin}.desktop"
     asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    rm -rf "${_app_dir}/resources/app.asar"
     find "${srcdir}/app.asar.unpacked/src" -type f -exec sed -i "s/process.resourcesPath/\"\/usr\/lib\/${pkgname%-bin}\"/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
     find "${_app_dir}/resources" -type d -exec chmod 755 {} +
@@ -61,8 +60,8 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	local _app_dir="$(_get_app_dir)"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
