@@ -1,0 +1,13 @@
+post_install() {
+	echo "========================================================================================"
+	echo "If you are unable to open .blender files, please reinstall the package shared-mime-info,"
+	echo "or run the command # update-mime-database /usr/share/mime"
+	echo "========================================================================================"
+}
+
+post_upgrade() {
+	echo "========================================================================================"
+	echo "If you are unable to open .blender files, please reinstall the package shared-mime-info,"
+	echo "or run the command # update-mime-database /usr/share/mime"
+	echo "========================================================================================"
+}

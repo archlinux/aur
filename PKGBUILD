@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=blender-bin
 pkgver=5.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)"
 arch=('x86_64')
 url="https://blender.org"
@@ -59,7 +59,8 @@ depends=('glibc' 'bash' 'hicolor-icon-theme'
 'pulse-native-provider'
 'icu'
 'vulkan-driver'
-'opengl-driver')
+'opengl-driver'
+'shared-mime-info')
 optdepends=('cuda: Cycles renderer CUDA support'
             'intel-compute-runtime: Cycles renderer Intel OneAPI support'
 	    'level-zero-loader: Cycles renderer Intel OneAPI support'
@@ -68,8 +69,8 @@ optdepends=('cuda: Cycles renderer CUDA support'
 	    'hip-runtime-amd: HIP renderer AMD support')
 provides=('blender')
 conflicts=('blender')
-source=("https://mirror.blender.org/release/Blender${pkgver:0:3}/blender-${pkgver}-linux-x64.tar.xz"
-	"x-blender.xml")
+install="${pkgname}.install"
+source=("https://mirror.blender.org/release/Blender${pkgver:0:3}/blender-${pkgver}-linux-x64.tar.xz")
 sha256sums=('84098912789dc450e95697c4184fb8a90acbe5111c2ba4aede3fecb57806a168'
             '230fc11e49d647215f4735117761d887756823ee1c8fab08987218fd037de75c')
 validpgpkeys=()
@@ -83,7 +84,6 @@ package() {
 	install -Dm644 copyright.txt "${pkgdir}/usr/share/licenses/$pkgname/copyright.txt"
 	install -Dm644 readme.html "${pkgdir}/usr/share/doc/$pkgname/readme.html"
 	install -Dm644 blender.desktop "${pkgdir}/usr/share/applications/blender.desktop"
-	install -Dm644 "$srcdir/x-blender.xml" "${pkgdir}/usr/share/mime/application/x-blender.xml"
 	
 	cp -a -r "${pkgver:0:3}" lib "${pkgdir}/usr/lib/${pkgname}"
 	cp -a -r -T license "${pkgdir}/usr/share/licenses/${pkgname}"
