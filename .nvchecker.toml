@@ -1,0 +1,5 @@
+[lazymark-bin]
+source = "github"
+github = "MathiasDrizzy/lazymark"
+use_latest_release = true
+prefix = "v"

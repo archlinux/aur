@@ -1,0 +1,17 @@
+pkgbase = lazymark-bin
+	pkgdesc = Lazy markdown notes, tasks and a Kanban board in your terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/MathiasDrizzy/lazymark
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = lazymark
+	conflicts = lazymark
+	options = !strip
+	source_x86_64 = lazymark-x86_64-1.0.0.tgz::https://github.com/MathiasDrizzy/lazymark/releases/download/v1.0.0/lazymark_1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = a321cba67d5c5db7552aa7d053512dbf4c18f308745219197a238c07acec56c2
+	source_aarch64 = lazymark-aarch64-1.0.0.tgz::https://github.com/MathiasDrizzy/lazymark/releases/download/v1.0.0/lazymark_1.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b8fd7932236fc02cd5f0d78674421384e1ce02c80b52363248f3db4ef970e8df
+
+pkgname = lazymark-bin
