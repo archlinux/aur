@@ -1,7 +1,7 @@
 pkgbase = rayburst
 	pkgdesc = A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust
-	pkgver = 4.0.0
-	pkgrel = 2
+	pkgver = 4.0.1
+	pkgrel = 1
 	url = https://github.com/AnInsomniacy/rayburst
 	install = rayburst.install
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = rayburst
 	depends = webkit2gtk-4.1
 	replaces = motrix-next
 	options = !lto
-	source = rayburst-4.0.0.tar.gz::https://github.com/AnInsomniacy/rayburst/archive/v4.0.0.tar.gz
-	sha256sums = 3ab1041c8ad5c62cd62e968d0141695bff041c06a04f2258dd48d1a07924758f
+	source = rayburst-4.0.1.tar.gz::https://github.com/AnInsomniacy/rayburst/archive/v4.0.1.tar.gz
+	sha256sums = 82bfd6c6de26832bd054f44cac1aa8fd829430d45c80f6e051a6d6c213d8c438
 
 pkgname = rayburst

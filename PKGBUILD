@@ -2,8 +2,8 @@
 # Contributor: le0nxx <leonlawxx@outlook.sg>
 
 pkgname=rayburst
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 pkgdesc="A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust"
 arch=(x86_64 aarch64)
 url="https://github.com/AnInsomniacy/rayburst"
@@ -28,7 +28,7 @@ replaces=(motrix-next)
 options=(!lto)
 install=rayburst.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3ab1041c8ad5c62cd62e968d0141695bff041c06a04f2258dd48d1a07924758f')
+sha256sums=('82bfd6c6de26832bd054f44cac1aa8fd829430d45c80f6e051a6d6c213d8c438')
 
 
 prepare() {
