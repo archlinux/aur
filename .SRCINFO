@@ -1,17 +1,17 @@
 pkgbase = woocommerce-pos-bin
 	pkgdesc = Electron Desktop App for WooCommerce POS.
-	pkgver = 1.10.27
+	pkgver = 1.10.28
 	pkgrel = 1
 	url = https://github.com/wcpos/electron
 	arch = x86_64
 	license = MIT
 	depends = electron43
 	depends = nodejs
-	provides = woocommerce-pos=1.10.27
+	provides = woocommerce-pos=1.10.28
 	conflicts = woocommerce-pos
-	source = woocommerce-pos-1.10.27.rpm::https://github.com/wcpos/electron/releases/download/v1.10.27/woocommerce-pos-1.10.27-1.x86_64.rpm
+	source = woocommerce-pos-1.10.28.rpm::https://github.com/wcpos/electron/releases/download/v1.10.28/woocommerce-pos-1.10.28-1.x86_64.rpm
 	source = woocommerce-pos.sh
-	sha256sums = af7138875527883f977b4489672f4251f2dc63c8eabc2f07cba740ac1d20bc26
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = e982a7f7360917e9178e4c4282c7b3f27f505724ef7ed12c2e6e15ab17e8cdc7
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
 pkgname = woocommerce-pos-bin
