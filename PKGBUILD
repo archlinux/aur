@@ -12,16 +12,16 @@ provides=('iamigrate')
 conflicts=('iamigrate')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/cerberauth/iamigrate/releases/download/v${pkgver}/iamigrate_Linux_arm64.tar.gz")
-sha256sums_aarch64=('97e5feab27be7008b627f6c4d6c00b1f92702189ef5863c91d4b1ade71664bed')
+sha256sums_aarch64=('d3648f0fa0e38fb0cfe199258428628996b7e97801e29bf22b7ca30744afb90b')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/cerberauth/iamigrate/releases/download/v${pkgver}/iamigrate_Linux_armv7.tar.gz")
-sha256sums_armv7h=('77edd6fd48bc8ca8930adde4a3e89fc649dd8b5d473b3edb277e4d5c9061bab7')
+sha256sums_armv7h=('c46d17e5fa3c0b9bdd2ee8229afe9ff1802f331e505065bb901e1295576230ba')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/cerberauth/iamigrate/releases/download/v${pkgver}/iamigrate_Linux_i386.tar.gz")
-sha256sums_i686=('eb0870c2f65bdd32101cf76ec01b78fdc10e2937949d1b2d9b7a789bb962faf5')
+sha256sums_i686=('01e889e8f2fab38419e9124e04b6278d0b1ffee16da7a19b688ebcd2495f8b48')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cerberauth/iamigrate/releases/download/v${pkgver}/iamigrate_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('342804a5c1094fcb37ce077058fda12858d174b68c016728f3f5771c5873ee7a')
+sha256sums_x86_64=('9fdd400e48688dbf223749bf50c0e0e36d7be488a9991c555c9eec71168db47a')
 
 package() {
   install -Dm755 "./iamigrate" "${pkgdir}/usr/bin/iamigrate"
