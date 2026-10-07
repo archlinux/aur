@@ -36,6 +36,17 @@ pkgver() {
 }
 
 prepare() {
+  # clang >= 23 + rust-bindgen without rust-lang/rust-bindgen#3510 (fixes #3509):
+  # libc size_t becomes __BindgenOpaqueArray8 and the KRAID Rust build breaks.
+  local probe
+  printf '#include <string.h>\n' > "$srcdir/bindgen-probe.h"
+  probe=$(bindgen "$srcdir/bindgen-probe.h" --allowlist-function strlen) || return 1
+  if ! grep -q 'fn strlen' <<<"$probe" || grep -q '__BindgenOpaque' <<<"$probe"; then
+    echo "rust-bindgen is affected by rust-bindgen#3509 with clang $(clang -dumpversion);" >&2
+    echo "rebuild it with https://github.com/rust-lang/rust-bindgen/pull/3510" >&2
+    return 1
+  fi
+
   grep -q "'panfrost-rust'" "$srcdir/mesa/meson.options" || {
     echo "this Mesa revision has no -Dpanfrost-rust option (KRAID not present)" >&2
     return 1
