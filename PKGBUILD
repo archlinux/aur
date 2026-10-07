@@ -1,7 +1,7 @@
 # Maintainer: Snoopey <thomas@wrightconsulting.uk>
 pkgname=omnigent-cli
 pkgver=0.17.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Omnigent CLI, server, and agent host with isolated Python dependencies'
 arch=('x86_64')
 url='https://github.com/omnigent-ai/omnigent'
@@ -29,9 +29,9 @@ source=(omnigent-0.17.0.tar.gz::https://files.pythonhosted.org/packages/21/ba/2b
         certifi-2026.7.22-py3-none-any.whl::https://files.pythonhosted.org/packages/0b/a7/71ac2cff56fec219ed242bb11b8efb69fcc4bec75db06fb7bfe35de520e6/certifi-2026.7.22-py3-none-any.whl
         cffi-2.1.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl::https://files.pythonhosted.org/packages/e9/02/4e7d553a7ac4b4238b38b3c1b80d486e9d4436f8d2acbf87a0997fe3f402/cffi-2.1.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
         charset_normalizer-3.5.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/18/24/bad3ac4271589df29cf5ce2f5ae490518a5739358052bd0d61209e6fea54/charset_normalizer-3.5.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
-        claude_agent_sdk-0.2.162-py3-none-manylinux_2_17_x86_64.whl::https://files.pythonhosted.org/packages/d2/33/8a7acd75405d0cfde96c26219dbbac050aa23416ceefd5f62cf7aecfc22d/claude_agent_sdk-0.2.162-py3-none-manylinux_2_17_x86_64.whl
+        claude_agent_sdk-0.2.163-py3-none-manylinux_2_17_x86_64.whl::https://files.pythonhosted.org/packages/e7/ea/fc2a0a4e27c8ccfdbc77344298842adcbb6de03d4cdbae5793ff659b00e0/claude_agent_sdk-0.2.163-py3-none-manylinux_2_17_x86_64.whl
         click-8.5.0-py3-none-any.whl::https://files.pythonhosted.org/packages/58/50/6c0d534c5f134586a8e1ba4e330569e32f057e33372ae556463212fb4cd3/click-8.5.0-py3-none-any.whl
-        cryptography-50.0.1-cp311-abi3-manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/e1/1b/82f0f0d8858d4432be1af790477edf62aef90324041aa07c57e57bef1af7/cryptography-50.0.1-cp311-abi3-manylinux_2_28_x86_64.whl
+        cryptography-50.0.2-cp311-abi3-manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/1a/f1/b474e930c4d910328780e3940da76f5aa5cbc48ce1fc14e44d239d9ea9db/cryptography-50.0.2-cp311-abi3-manylinux_2_28_x86_64.whl
         distro-1.9.0-py3-none-any.whl::https://files.pythonhosted.org/packages/12/b3/231ffd4ab1fc9d679809f356cebee130ac7daa00d6d6f3206dd4fd137e9e/distro-1.9.0-py3-none-any.whl
         fastapi-0.142.2-py3-none-any.whl::https://files.pythonhosted.org/packages/a0/b6/78aaf9141fb46742928c113f3cf6ef2259d538cb02b604b7656c1dc9883c/fastapi-0.142.2-py3-none-any.whl
         filelock-4.0.7-py3-none-any.whl::https://files.pythonhosted.org/packages/06/cf/1731c0dd182ee35f80a39e63afb3d03056ea0dd561b7498932b10b2e34d9/filelock-4.0.7-py3-none-any.whl
@@ -128,9 +128,9 @@ sha256sums=(20bc4039f4f3d6f59e3179b3a1692ce3ea8c7be36619a437748bf2a06bfa4147
             62f22742b58a1a33014a2b6b706588a8d7e2a88ae7bd1a6ebe8c992928483775
             b0431303acaea1089ad4b3e9ce4e6518193def1118d4073ca848635ee4ea2e96
             34276fd796040bf0993ab33a369aa572e6979c7aab225a88893667ad8eac8f7a
-            673598c9916f5f4d03ff49ab3128f856f0c6508135e8e258838fc3b6f7aafa49
+            260cb955d237b7e1897f1dbf9ee5efbf815d8622d0c7459a05409c56432d8501
             255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360
-            51593d180cf6d179bde5c5d065bed81386b1f381656ae7d042b7ffc87a9895ad
+            4061c0079120205fb760c58acab6443e217307dcf05e3702cf970e0689972856
             7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2
             bd5f4d81f1e93a88bcd77caf4dfe3c2dbffc3805407a0007e9a114c18b3a670b
             a93c4d93269b339a6af4848342c7e940d0f9928ad95eff64764699e5f1bf8a6a
@@ -208,7 +208,7 @@ sha256sums=(20bc4039f4f3d6f59e3179b3a1692ce3ea8c7be36619a437748bf2a06bfa4147
             7a6ceec4ea84469f15cf15807a747e9efe57e369c384fa86e022b3bea679b79b
             e09bb6252b6476d8d56100e8147b803befa9a12cea144bbe629dd508800d1ad0
             aac80bec8b6fe35e8480f1c335be8910fa210a0e6f735a139be205dadcacb544
-            4e68d934f21310052df8cb3e79caaced77c61a6201107a76659c033df54fbc28
+            ecfbdbe1ebbef64dbed78bcdaf65cbdf97447f5dfcadd177ec1e17468e678b35
             a0bd60054eae7ce2f8fedb9c295d8137f269fedbf08220a54dde1a0d09f0e9a4
             edd22b3947e18e681e397590651edf2551024be4d53bea5fa55efc428a2acb07
             e9e49acfc1599bb114332a40479d99275e3668b34bd66a6ae2143ba93ec76315)
@@ -224,9 +224,9 @@ noextract=(alembic-1.20.0-py3-none-any.whl
            certifi-2026.7.22-py3-none-any.whl
            cffi-2.1.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
            charset_normalizer-3.5.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
-           claude_agent_sdk-0.2.162-py3-none-manylinux_2_17_x86_64.whl
+           claude_agent_sdk-0.2.163-py3-none-manylinux_2_17_x86_64.whl
            click-8.5.0-py3-none-any.whl
-           cryptography-50.0.1-cp311-abi3-manylinux_2_28_x86_64.whl
+           cryptography-50.0.2-cp311-abi3-manylinux_2_28_x86_64.whl
            distro-1.9.0-py3-none-any.whl
            fastapi-0.142.2-py3-none-any.whl
            filelock-4.0.7-py3-none-any.whl
