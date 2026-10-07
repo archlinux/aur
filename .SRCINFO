@@ -1,15 +1,15 @@
 pkgbase = jellyfin-autorefresh-new-releases-bin
 	pkgdesc = Get missing metadata for new releases in Jellyfin
-	pkgver = 0.4.19
+	pkgver = 0.4.20
 	pkgrel = 1
 	url = https://github.com/SinTan1729/jellyfin-autorefresh-new-releases
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	provides = jellyfin-autorefresh
-	source_x86_64 = https://github.com/SinTan1729/jellyfin-autorefresh-new-releases/releases/download/0.4.19/jellyfin-autorefresh-0.4.19-amd64-linux.tar.gz
-	sha256sums_x86_64 = aa33e5b934a9002d38131cddf813b28c8e708ed7f63bf92d31e7ef999482a4da
-	source_aarch64 = https://github.com/SinTan1729/jellyfin-autorefresh-new-releases/releases/download/0.4.19/jellyfin-autorefresh-0.4.19-arm64-linux.tar.gz
-	sha256sums_aarch64 = 6261fe6db9f68b25aa656ed8def753ac98e02899652f787428c5ca90c2568cc2
+	source_x86_64 = https://github.com/SinTan1729/jellyfin-autorefresh-new-releases/releases/download/0.4.20/jellyfin-autorefresh-0.4.20-amd64-linux.tar.gz
+	sha256sums_x86_64 = de3386b72c7c509e8400b95cc7a7f7fc72b0b5d49b305744ac62f8ff742ee615
+	source_aarch64 = https://github.com/SinTan1729/jellyfin-autorefresh-new-releases/releases/download/0.4.20/jellyfin-autorefresh-0.4.20-arm64-linux.tar.gz
+	sha256sums_aarch64 = 4dc611661cc2e7ed6ea8bd1b51262c30ee7dab1de83f6c93523b84db55e8082b
 
 pkgname = jellyfin-autorefresh-new-releases-bin
