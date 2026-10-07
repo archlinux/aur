@@ -4,7 +4,7 @@
 pkgname=sssnake
 pkgver=0.4.0
 pkgrel=1
-pkgdesc="Smart and sexy snake: the classic snake game for the terminal that can play itself and be used like a screensaver"
+pkgdesc="Smart and sexy snake: terminal snake game that can play itself as a screensaver"
 arch=('x86_64' 'aarch64')
 url="https://github.com/AngelJumbo/sssnake"
 license=('MIT')
