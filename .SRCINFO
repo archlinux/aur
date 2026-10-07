@@ -1,0 +1,22 @@
+pkgbase = nirilayout
+	pkgdesc = Quickly switch niri output configuration between different layouts (GTK switcher)
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/Piero-93/nirilayout
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = gettext
+	makedepends = gobject-introspection
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = glib2
+	depends = cairo
+	depends = pango
+	depends = gdk-pixbuf2
+	depends = graphene
+	depends = glibc
+	source = nirilayout-0.4.0.tar.gz::https://github.com/Piero-93/nirilayout/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = a48355c54e1e092632759594dc0dc919846ec0b867faaabf5d5f06196d733055
+
+pkgname = nirilayout

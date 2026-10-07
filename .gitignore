@@ -1,0 +1,7 @@
+# makepkg build artifacts — never commit these to the AUR repo
+pkg/
+src/
+*.pkg.tar.*
+*.log
+# downloaded source tarball
+/nirilayout-*.tar.gz
