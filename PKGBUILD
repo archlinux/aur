@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=crankshaft
 pkgname="${_pkgname}-client-bin"
-pkgver=2.0.1
+pkgver=2.0.2
 _electronversion=44
 pkgrel=1
-pkgdesc="A fast, feature-rich krunker client written in typescript.(Prebuilt version.Use system-wide electron)"
+pkgdesc="A fast, feature-rich krunker client written in typescript."
 arch=(
     'x86_64'
 )
@@ -19,10 +19,10 @@ source=(
     "${pkgname%-bin}-${pkgver}-${CARCH}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-x64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('068aa270da4836159e7273fa7883991378faa76c5dcbe27c0931071b609fa6d1'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums=('8ffe91e3e7be947ee6fcc06605923edbce9f1be73db3fd7d72bfc4d01e4492e9'
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -49,7 +49,7 @@ prepare() {
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _check_electron_version
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
@@ -60,8 +60,8 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	local _app_dir="$(_get_app_dir)"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
