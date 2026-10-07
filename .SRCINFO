@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-git
 	pkgdesc = Modular initramfs image creation utility - git checkout
-	pkgver = 39.1.r56.g815fb37
+	pkgver = 42.2.r2.g483edb7
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/archlinux/mkinitcpio/mkinitcpio
 	arch = any
@@ -33,8 +33,9 @@ pkgbase = mkinitcpio-git
 	optdepends = lzop: Use lzo compression for the initramfs image
 	optdepends = lz4: Use lz4 compression for the initramfs image
 	optdepends = mkinitcpio-nfs-utils: Support for root filesystem on NFS
+	optdepends = systemd-ukify: alternative UKI generator
 	provides = initramfs
-	provides = mkinitcpio=39.1.r56.g815fb37
+	provides = mkinitcpio=42.2.r2.g483edb7
 	conflicts = mkinitcpio
 	backup = etc/mkinitcpio.conf
 	source = git+https://gitlab.archlinux.org/archlinux/mkinitcpio/mkinitcpio.git?signed

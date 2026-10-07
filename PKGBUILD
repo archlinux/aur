@@ -6,7 +6,7 @@
 # Contributor: Thomas Bächler <thomas@archlinux.org> ([core] package)
 
 pkgname=mkinitcpio-git
-pkgver=39.1.r56.g815fb37
+pkgver=42.2.r2.g483edb7
 pkgrel=1
 pkgdesc='Modular initramfs image creation utility - git checkout'
 arch=('any')
@@ -18,7 +18,8 @@ optdepends=('xz: Use lzma or xz compression for the initramfs image'
             'bzip2: Use bzip2 compression for the initramfs image'
             'lzop: Use lzo compression for the initramfs image'
             'lz4: Use lz4 compression for the initramfs image'
-            'mkinitcpio-nfs-utils: Support for root filesystem on NFS')
+            'mkinitcpio-nfs-utils: Support for root filesystem on NFS'
+            'systemd-ukify: alternative UKI generator')
 makedepends=('git' 'asciidoctor' 'meson')
 checkdepends=('bats' 'bats-assert' 'bzip2' 'lz4' 'lzop')
 provides=('initramfs' "mkinitcpio=${pkgver}")
@@ -37,7 +38,7 @@ pkgver() {
 }
 
 build() {
-	meson setup --prefix=/usr --buildtype=plain mkinitcpio build
+	meson setup -Dsystemd_hooks=true --prefix=/usr --buildtype=plain mkinitcpio build
 }
 
 check() {
