@@ -1,6 +1,6 @@
 pkgbase = taigikeyboard-git
 	pkgver = 3.6.10.r918.0b2c45c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://taigikeyboard.tw
 	arch = x86_64
 	license = Apache-2.0
@@ -24,7 +24,7 @@ pkgbase = taigikeyboard-git
 	source = git+https://github.com/taigikeyboard/taigikeyboard.git
 	source = 0001-build-linux-allow-skipping-font-install-or-splitting.patch
 	sha512sums = SKIP
-	sha512sums = 65ab5e12843cd96f624fdf300f0130bb0b8e509114afe3311168d4e83954c6be26a0366cb422c7bd56c6c50aa18178e13cab85a737463b7574d79968a811e8d8
+	sha512sums = d4d829e520f880cf8a8be6cb596a4fe9f77bb45f102abfe3b6bc51a93ba071214c5c828d9460ca802059aec7b3e6e188359f747f1b40f9fd55147ee828dfc484
 
 pkgname = fcitx5-taigikeyboard-git
 	pkgdesc = Taigi input method for Fcitx5

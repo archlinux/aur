@@ -1,4 +1,4 @@
-From c8b297c85a344133bd7557dad1d09010b6b47e72 Mon Sep 17 00:00:00 2001
+From 075cc8066599d0186a8b20bccd11ff1d418d1a0a Mon Sep 17 00:00:00 2001
 From: Kisaragi Hiu <mail@kisaragi-hiu.com>
 Date: Thu, 8 Oct 2026 03:00:07 +0900
 Subject: [PATCH] build(linux): allow skipping font install or splitting
@@ -16,11 +16,11 @@ install everything. This does not change the upstream packaging
 approach, only making it easier for downstream packages to honor their
 own packaging policies.
 ---
- linux/Makefile | 83 +++++++++++++++++++++++++++++++++-----------------
- 1 file changed, 55 insertions(+), 28 deletions(-)
+ linux/Makefile | 79 ++++++++++++++++++++++++++++++++------------------
+ 1 file changed, 51 insertions(+), 28 deletions(-)
 
 diff --git a/linux/Makefile b/linux/Makefile
-index e47539d4..f5b600c4 100644
+index e47539d4..9e2dffd4 100644
 --- a/linux/Makefile
 +++ b/linux/Makefile
 @@ -31,2 +31,5 @@ DESTDIR ?=
@@ -75,7 +75,7 @@ index e47539d4..f5b600c4 100644
 +	@echo "  make run-engine      - (Linux) run the IBus engine from this tree against a running ibus-daemon (RUST_LOG=debug, repo dictionaries)"
 +	@echo "  make run-settings    - Open the settings window from this tree (macOS host too: GTK + libadwaita from Homebrew); PANE=about picks a pane"
  
-@@ -155,12 +164,23 @@ component: data/taigikeyboard.xml.in
+@@ -155,12 +164,19 @@ component: data/taigikeyboard.xml.in
  
 -# The install layout the engine resolves at runtime
 -# (`taigi-linux-platform::paths::InstallLayout`); the PREFIX must match the
@@ -87,11 +87,7 @@ index e47539d4..f5b600c4 100644
 +# the binaries were built with (`TAIGIKEYBOARD_PREFIX`, default /usr).
 +# Targets are split to allow for split packages to be more easily made, but the
 +# packaging from this file still packs everything in one binary package.
-+INSTALL_DEPS := install-common install-ibus install-fcitx5
-+ifeq ($(INSTALL_FONTS),1)
-+  INSTALL_DEPS += install-fonts
-+endif
-+install: $(INSTALL_DEPS)
++install: install-common install-ibus install-fcitx5
 +	@echo "installed under $(DESTDIR)$(PREFIX); restart fcitx5 (fcitx5 -r) and/or ibus (ibus restart)"
 +
 +# Things shared by both frontends: settings, dictionaries, icons, license.
@@ -106,12 +102,12 @@ index e47539d4..f5b600c4 100644
 -	install -Dm644 data/tw.taigikeyboard.Settings.desktop $(DESTDIR)$(PREFIX)/share/applications/tw.taigikeyboard.Settings.desktop
 +	# Icons:
  	for size in 16 22 24 32 48 64 128 256; do \
-@@ -173,2 +193,4 @@ install: build component install-fcitx5
+@@ -173,2 +189,4 @@ install: build component install-fcitx5
  	done
 +	# Fonts:
 +ifeq ($(INSTALL_FONTS),1)
  	# The bundled typefaces (the ones macOS and Windows ship), as fontconfig
-@@ -178,2 +200,7 @@ install: build component install-fcitx5
+@@ -178,2 +196,7 @@ install: build component install-fcitx5
  	install -Dm644 -t $(DESTDIR)$(FONTDIR_OTF) ../assets/fonts/font/*.otf
 +	# A package gets its cache rebuilt by fontconfig's dpkg trigger; a direct
 +	# install into the live system rebuilds it here. Never for a staging root.
@@ -119,7 +115,7 @@ index e47539d4..f5b600c4 100644
 +endif
 +	# License:
  ifeq ($(LAYOUT),debian)
-@@ -194,6 +221,6 @@ else
+@@ -194,6 +217,6 @@ else
  endif
 -	# A package gets its cache rebuilt by fontconfig's dpkg trigger; a direct
 -	# install into the live system rebuilds it here. Never for a staging root.

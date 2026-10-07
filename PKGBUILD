@@ -10,7 +10,7 @@ pkgname=(fcitx5-taigikeyboard-git ibus-taigikeyboard-git taigikeyboard-common-gi
 # > recent value. makepkg will invoke function pkgver(), and update variable
 # > pkgver accordingly.
 pkgver=3.6.10.r918.0b2c45c
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://taigikeyboard.tw"
 license=('Apache-2.0')
@@ -36,10 +36,8 @@ source=(
 	"git+https://github.com/taigikeyboard/taigikeyboard.git"
 	"0001-build-linux-allow-skipping-font-install-or-splitting.patch"
 )
-sha512sums=(
-	'SKIP'
-	'65ab5e12843cd96f624fdf300f0130bb0b8e509114afe3311168d4e83954c6be26a0366cb422c7bd56c6c50aa18178e13cab85a737463b7574d79968a811e8d8'
-)
+sha512sums=('SKIP'
+	'd4d829e520f880cf8a8be6cb596a4fe9f77bb45f102abfe3b6bc51a93ba071214c5c828d9460ca802059aec7b3e6e188359f747f1b40f9fd55147ee828dfc484')
 # Unbundling libsqlite3-sys while using LTO for C still leads to errors. Disable
 # it instead.
 options=(!lto)
