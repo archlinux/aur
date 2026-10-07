@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=data-peek
 _pkgname=Data-Peek
-pkgver=0.32.0
+pkgver=0.33.0
 _electronversion=38
 _nodeversion=24
 pkgrel=1
@@ -25,10 +25,10 @@ optdepends=(
     'ollama'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('90aeecef057cc1a47bf922786f18c2bd126e1d2d9713581d8d6aa770274bbed6'
+sha256sums=('94f4d5d6e513ef1271dde6aca5ad151ee4a3d8967cbd91394ecfd7ab5ee1ad76'
             'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
