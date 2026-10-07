@@ -1,0 +1,10 @@
+post_install() {
+  echo ">> minitone installed."
+  echo ">> Optional: install yt-dlp for YouTube support."
+  echo ">> Config: ~/.config/minitone/config.json"
+  echo ">> Run: minitone"
+}
+
+post_upgrade() {
+  post_install
+}
