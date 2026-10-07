@@ -1,7 +1,7 @@
 # Maintainer: Jag_k <30597878+jag-k@users.noreply.github.com>
 
 pkgname=clipboard-transformer
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='Rule-based clipboard transformer (built from source)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
 )
 conflicts=('clipboard-transformer-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('8ac5c50fa8eebb545444bc312629c6c19a101cd4bac983e4f62623cc24a81364')
+sha256sums=('2441fb8c75ba96d65bbe31cb46c5f23297820c9f6dc5bc4c0fed411020883e44')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -51,7 +51,7 @@ package() {
   install -Dm0644 assets/generated/linux/app-icon.png \
     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/clipboard-transformer-app.png"
   install -Dm0644 assets/tray.svg \
-    "${pkgdir}/usr/share/icons/hicolor/scalable/status/clipboard-transformer-symbolic.svg"
+    "${pkgdir}/usr/share/icons/hicolor/scalable/status/dev.jagk.clipboard_transformer-symbolic.svg"
   install -Dm0644 LICENSE \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
