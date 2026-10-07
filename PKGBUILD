@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=image-metahub-bin
 _pkgname=Image.MetaHub
-pkgver=0.20.0
+pkgver=0.20.1
 _electronversion=38
 pkgrel=1
 pkgdesc="Local-first AI image organizer and generative media library manager for ComfyUI, A1111, InvokeAI & more. Search huge output folders by prompt, model, LoRA, metadata or visual similarity."
@@ -18,10 +18,10 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('10e8253e6996aaf076b02ef4ca8b851f41d30d74dcf6af441830eba489c8fab3'
+sha256sums=('211e0f7fd9a2aaa867830767129854a79583bee687c9f81a387d1003a8457473'
             'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -48,7 +48,7 @@ prepare() {
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _check_electron_version
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${_app_dir}/${pkgname%-bin}.desktop"
     find "${_app_dir}/resources" -type d -exec chmod 755 {} +
     case "${CARCH}" in
