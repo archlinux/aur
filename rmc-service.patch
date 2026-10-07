@@ -1,0 +1,12 @@
+diff -ur a/build/misc/ras-mc-ctl.service b/build/misc/ras-mc-ctl.service
+--- a/build/misc/ras-mc-ctl.service	2026-10-07 09:41:57.294015147 -0400
++++ b/build/misc/ras-mc-ctl.service	2026-10-07 09:41:58.225727233 -0400
+@@ -5,7 +5,7 @@
+ 
+ [Service]
+ Type=oneshot
+-ExecStart=/usr/bin/ras-mc-ctl --register-labels
++ExecStart=/usr/bin/ras-mc-ctl dimm --register-labels
+ RemainAfterExit=yes
+ 
+ [Install]

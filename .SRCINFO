@@ -1,7 +1,7 @@
 pkgbase = rasdaemon
 	pkgdesc = Rasdaemon is a RAS (Reliability, Availability and Serviceability) logging tool.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mchehab/rasdaemon
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,8 @@ pkgbase = rasdaemon
 	optdepends = python-mysqlclient: to query MySQL/MariaDB with ras-mc-ctl
 	optdepends = python-psycopg2: to query PostgreSQL with ras-mc-ctl
 	source = https://github.com/mchehab/rasdaemon/archive/refs/tags/v1.0.0.tar.gz
+	source = rmc-service.patch
 	sha256sums = 3a1d70bef371e42c1b8f779791ee0a3492070ba4ba7d48450167e075570d5f4e
+	sha256sums = f948006ea3713989992d59a9f23a68683c8d0dfc8c62ae4c5e72e12c356a061c
 
 pkgname = rasdaemon
