@@ -7,10 +7,10 @@ arch=('x86_64' 'aarch64')
 url='https://herdr.dev'
 license=('AGPL-3.0-or-later')
 depends=('gcc-libs' 'glibc')
-makedepends=('cargo' 'git' 'zig0.15')
+makedepends=('cargo' 'git' 'zig')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ogulcancelik/herdr/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('e48f6706440c92362773663131ef5b524c62549523e50a03f2b55d315edca100')
-_zig=/opt/zig0.15/zig
+_zig=/usr/bin/zig
 
 prepare() {
   cd "${pkgname}-${pkgver}"
