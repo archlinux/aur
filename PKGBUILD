@@ -2,7 +2,7 @@
 
 _module="winecharm"
 pkgname="python-${_module}"
-pkgver="1.3"
+pkgver="1.4"
 _src_folder="WineCharm-${pkgver}"
 pkgrel=1
 pkgdesc="A Charming Wine GUI for managing Wine prefixes and applications"
@@ -16,7 +16,7 @@ makedepends=("python-build" "python-installer" "python-wheel")
 license=("GPL-3.0-or-later")
 arch=("any")
 source=("https://github.com/fastrizwaan/WineCharm/archive/refs/tags/${pkgver}.zip")
-sha256sums=("084d3b0f07b4fd2bc181a96be90f1439b39c762ce2503b2c86b8e4be3d81ccf2")
+sha256sums=('fca8eef215d60144f68e6336809c6852c105b797dfe7cde4e65f7923fb959b0d')
 function build() {
     cd "${srcdir}/${_src_folder}"
     python -m build --wheel --no-isolation

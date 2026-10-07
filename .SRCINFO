@@ -1,6 +1,6 @@
 pkgbase = python-winecharm
 	pkgdesc = A Charming Wine GUI for managing Wine prefixes and applications
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://github.com/fastrizwaan/WineCharm
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = python-winecharm
 	depends = lib32-libpulse
 	depends = lib32-openal
 	depends = python-polib
-	source = https://github.com/fastrizwaan/WineCharm/archive/refs/tags/1.3.zip
-	sha256sums = 084d3b0f07b4fd2bc181a96be90f1439b39c762ce2503b2c86b8e4be3d81ccf2
+	source = https://github.com/fastrizwaan/WineCharm/archive/refs/tags/1.4.zip
+	sha256sums = fca8eef215d60144f68e6336809c6852c105b797dfe7cde4e65f7923fb959b0d
 
 pkgname = python-winecharm
