@@ -1,7 +1,7 @@
 # Maintainer: Juniper <trixelit.alias@gmail.com>
 
 pkgname=rox-player-git
-pkgver=1.30.4.r0.gb09d14e
+pkgver=1.30.5.r0.g9b3b1c9
 pkgrel=1
 pkgdesc="Fast, composable music player written in rust (foobar2000 for the current year)"
 arch=('x86_64')
