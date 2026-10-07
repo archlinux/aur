@@ -1,7 +1,7 @@
 # Maintainer: gradia <gradia@disroot.org>
 
 pkgname=olladesk
-pkgver=0.2.6
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Client desktop per Ollama in stile ChatGPT (PySide6/Qt)"
 arch=('any')
@@ -14,6 +14,7 @@ optdepends=(
   'python-pypdf: testo dei PDF allegati'
   'python-keyring: chiave API della ricerca web nel portachiavi (KWallet)'
   'qt6-svg: icona SVG della finestra'
+  'python-qrcode: QR code per abbinare il telefono alla companion web'
 )
 # Sorgente git dal tag firmato dal maintainer: con «?signed» makepkg verifica
 # la firma del tag annotato e la accetta solo da una chiave in validpgpkeys.
