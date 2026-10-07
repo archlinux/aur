@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Zaoqi
 pkgname=electerm
-pkgver=5.5.35
+pkgver=5.5.66
 _electronversion=42
 _nodeversion=24
 pkgrel=1
@@ -30,7 +30,7 @@ makedepends=(
     'jq'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
 sha256sums=('dfd8fe99af043e50760972ca532cc409ecf06ca2311e1d26f920191ca4d0ec0e'
@@ -48,7 +48,7 @@ _get_project_dir() {
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -95,8 +95,8 @@ prepare() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     rm -rf package-lock.json
     export NODE_ENV=development
-    npm install --legacy-peer-deps
-    npm add -D node-gyp --legacy-peer-deps
+    npm install
+    npm add -D node-gyp
 }
 build() {
     cd "$(_get_project_dir)"
