@@ -11,7 +11,7 @@ pkgver=0.10.0 # renovate: datasource=github-tags depName=kennethreitz/requests-h
 pkgrel=1
 pkgdesc="HTML Parsing for Humans"
 arch=('any')
-url="http://html.python-requests.org/"
+url="https://github.com/kennethreitz/requests-html"
 license=('MIT')
 source=("${_pyname}-${pkgver}.tar.gz::https://github.com/kennethreitz/${_pyname}/archive/v${pkgver}.tar.gz")
 
