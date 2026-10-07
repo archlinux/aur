@@ -95,6 +95,14 @@ EOF
 EOF
   fi
 
+  if [ $(vercmp $2 2.4.0.100-1) -lt 0 ]; then
+    cat <<EOF
+  * Version 2.2 seems to modify the behaviour of the DUPLICATI_HOME variable.
+  * This package now leaves it unset. Verify your .pacnew files of /etc/default/duplicati.
+
+EOF
+  fi
+
   cat  <<EOF
   * UI can be accessed via following URL: http://localhost:8200
   * Running duplicati user instance (using current user account)
