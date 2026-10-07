@@ -1,5 +1,5 @@
 pkgbase = rust-dos
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/dividebysandwich/rust-dos
 	arch = x86_64
@@ -7,11 +7,11 @@ pkgbase = rust-dos
 	license = GPL-2.0-or-later
 	makedepends = cargo
 	options = !lto
-	source = rust-dos-1.3.1.tar.gz::https://github.com/dividebysandwich/rust-dos/archive/refs/tags/v1.3.1.tar.gz
-	sha256sums = 5fe5aaa19a3c5793f99ca58a40e4e7dc75088f460dade8f0e4785e9e9c6e2d14
+	source = rust-dos-1.4.0.tar.gz::https://github.com/dividebysandwich/rust-dos/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = 9220bff2c1c1aec326791678aeecf1729177d16112deb0a9e1bc820557c0fc5b
 
 pkgname = rust-dos
-	pkgdesc = A fast x86 DOS emulator featuring 386 to Pentium CPUs, DPMI host, VGA/VESA/S3/Voodoo, SB16/GUS/MT-32/GM, IDE, PnP, PCI, Win3x, Win95, NE2000 with NAT, IPX and serial multiplayer, RetroAchievements, save states, rewind, and WASM.
+	pkgdesc = A fast x86 DOS emulator with optional VR support featuring 386 to Pentium CPUs, DPMI host, VGA/VESA/S3/Voodoo, SB16/GUS/MT-32/GM, IDE, PnP, PCI, Win3x, Win95, NE2000 with NAT, IPX and serial multiplayer, RetroAchievements, save states, rewind, and WASM.
 	depends = alsa-lib
 	depends = glibc
 	depends = hicolor-icon-theme
@@ -20,6 +20,7 @@ pkgname = rust-dos
 	depends = sdl2
 	optdepends = soundfont-fluid: General MIDI SoundFont for the MPU-401 (soundfont= in [sound])
 	optdepends = fluidsynth: software synthesizer to play the MIDI sent out of a MIDI port (midisynth=host)
+	optdepends = openxr: OpenXR loader for VR headsets through SteamVR or Monado (mode=headset in [vr])
 
 pkgname = libretro-rust-dos
 	pkgdesc = Rust-DOS fast x86 DOS emulator as a libretro core, for RetroArch and the other libretro frontends
