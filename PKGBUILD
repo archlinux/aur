@@ -3,7 +3,7 @@
 
 pkgbase="unrealtournament-bonuspacks"
 pkgname=("unrealtournament-bonuspack1" "unrealtournament-bonuspack2" "unrealtournament-bonuspack3" "unrealtournament-bonuspack4")
-pkgver=20250105
+pkgver=20261007
 pkgrel=1
 arch=("i686" "x86_64")
 url="https://archive.org/details/UT-Bonus-Packs"

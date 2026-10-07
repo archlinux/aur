@@ -1,5 +1,5 @@
 pkgbase = unrealtournament-bonuspacks
-	pkgver = 20250105
+	pkgver = 20261007
 	pkgrel = 1
 	url = https://archive.org/details/UT-Bonus-Packs
 	arch = i686
