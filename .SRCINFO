@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-arch-update
 	pkgdesc = Convenient indicator for Arch Linux updates in GNOME Shell.
-	pkgver = 66
-	pkgrel = 2
+	pkgver = 67
+	pkgrel = 1
 	url = https://codeberg.org/RaphaelRochet/arch-update
 	arch = any
 	license = GPL-3.0-or-later
@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-arch-update
 	depends = gnome-shell
 	depends = pacman-contrib
 	conflicts = gnome-shell-extensions-git
-	source = gnome-shell-extension-arch-update-66.tar.gz::https://codeberg.org/RaphaelRochet/arch-update/archive/v66.tar.gz
-	sha256sums = ad9825b76636566692ba7d0301aa16b9fe261e541bfa25c2d749c68366d19718
+	source = gnome-shell-extension-arch-update-67.tar.gz::https://codeberg.org/RaphaelRochet/arch-update/archive/v67.tar.gz
+	sha256sums = acf700f8327b23f039ed527cbc95d2263fa6448d922e676a37657620345e2227
 
 pkgname = gnome-shell-extension-arch-update
