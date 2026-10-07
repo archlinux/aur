@@ -1,15 +1,15 @@
 # Maintainer: Grady Link <aur@grady.link>
 pkgname="scratch-everywhere"
-pkgver=1.1
-pkgrel=3
+pkgver=1.2
+pkgrel=1
 pkgdesc="A custom Scratch runtime written in C++!"
 arch=('any')
 url="https://github.com/ScratchEverywhere/ScratchEverywhere"
 license=('LGPL-3.0-only')
-depends=('curl' 'mesa' 'glfw' 'sdl2' 'miniz' 'luajit' 'stb')
+depends=('curl' 'mesa' 'glfw' 'libpulse' 'miniz' 'luajit' 'stb')
 makedepends=('cmake' 'git')
 source=("ScratchEverywhere-$pkgver.tar.gz::https://github.com/ScratchEverywhere/ScratchEverywhere/archive/$pkgver.tar.gz")
-sha256sums=(7e3a5f024eb737d553e42ea737bfabe566138f22b5ce6732fe07f86ff4cccd4b)
+sha256sums=(09c222a7d39a78ac4ee7c3e421d4f17246335e1ce4a6a6935b88fe42c6fd0214)
 
 build() {
 	cd "ScratchEverywhere-$pkgver"
