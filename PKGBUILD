@@ -2,7 +2,7 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=sudoforge
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="One password box for every admin request on the Sway desktop: polkit's admin pop-up and sudo -A, saying who is asking and what for (KognogOS, Forge Suite)"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('sway: the desktop sudoForge is made for (the service checks it at s
 install=sudoforge.install
 source=("${pkgname}-${pkgver}.tar.gz::${_repo}/releases/download/${pkgname}-v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${_repo}/releases/download/${pkgname}-v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('f1d7d68167e6bc4cacefc4cc46644ab4a2d9d91de2dcdcbc9364d90cb89956db'
+sha256sums=('b09392a6440d02c13e3eb230227d093b0aed66461b6984a06e66cb82cced97f7'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import

@@ -1,6 +1,6 @@
 pkgbase = sudoforge
 	pkgdesc = One password box for every admin request on the Sway desktop: polkit's admin pop-up and sudo -A, saying who is asking and what for (KognogOS, Forge Suite)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/jetomev/forge-suite/tree/main/sudoforge
 	install = sudoforge.install
@@ -14,10 +14,10 @@ pkgbase = sudoforge
 	depends = sudo
 	depends = alacritty
 	optdepends = sway: the desktop sudoForge is made for (the service checks it at start)
-	source = sudoforge-1.0.0.tar.gz::https://github.com/jetomev/forge-suite/releases/download/sudoforge-v1.0.0/sudoforge-1.0.0.tar.gz
-	source = sudoforge-1.0.0.tar.gz.asc::https://github.com/jetomev/forge-suite/releases/download/sudoforge-v1.0.0/sudoforge-1.0.0.tar.gz.asc
+	source = sudoforge-1.0.1.tar.gz::https://github.com/jetomev/forge-suite/releases/download/sudoforge-v1.0.1/sudoforge-1.0.1.tar.gz
+	source = sudoforge-1.0.1.tar.gz.asc::https://github.com/jetomev/forge-suite/releases/download/sudoforge-v1.0.1/sudoforge-1.0.1.tar.gz.asc
 	validpgpkeys = 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
-	sha256sums = f1d7d68167e6bc4cacefc4cc46644ab4a2d9d91de2dcdcbc9364d90cb89956db
+	sha256sums = b09392a6440d02c13e3eb230227d093b0aed66461b6984a06e66cb82cced97f7
 	sha256sums = SKIP
 
 pkgname = sudoforge
