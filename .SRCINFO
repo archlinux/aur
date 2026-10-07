@@ -1,7 +1,7 @@
 pkgbase = visual-studio-code-bin
 	pkgdesc = Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (official binary version)
 	pkgver = 1.140.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.visualstudio.com/
 	install = visual-studio-code-bin.install
 	arch = x86_64
@@ -25,6 +25,8 @@ pkgbase = visual-studio-code-bin
 	optdepends = libdbusmenu-glib: Needed for KDE global menu
 	optdepends = org.freedesktop.secrets: Needed for settings sync
 	optdepends = icu69: Needed for live share
+	optdepends = bubblewrap: Agent host sandboxing
+	optdepends = socat: Agent host sandboxing
 	provides = code
 	provides = vscode
 	conflicts = code

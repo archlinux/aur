@@ -3,7 +3,7 @@
 pkgname=visual-studio-code-bin
 _pkgname=visual-studio-code
 pkgver=1.140.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (official binary version)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://code.visualstudio.com/"
@@ -21,7 +21,10 @@ optdepends=('glib2: Needed for move to trash functionality'
             'libdbusmenu-glib: Needed for KDE global menu'
             'org.freedesktop.secrets: Needed for settings sync'
              # See https://github.com/MicrosoftDocs/live-share/issues/4650
-            'icu69: Needed for live share' )
+            'icu69: Needed for live share'
+            # See https://code.visualstudio.com/docs/agents/run/agent-sandboxing#_check-platform-availability
+            'bubblewrap: Agent host sandboxing' 'socat: Agent host sandboxing'
+            )
 source=(${_pkgname}-bin.sh)
 source_x86_64=(code_${pkgver}_amd64.deb::https://update.code.visualstudio.com/${pkgver}/linux-deb-x64/stable)
 source_aarch64=(code_${pkgver}_arm64.deb::https://update.code.visualstudio.com/${pkgver}/linux-deb-arm64/stable)
