@@ -1,13 +1,14 @@
 pkgbase = filmcraft
 	pkgdesc = vibe coded clean-room reimplementation of Adobe Premiere Pro
 	pkgver = 0.2.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://getartcraft.com/apps/filmcraft
 	arch = x86_64
 	license = MIT
 	license = Apache-2.0
 	makedepends = cargo
 	depends = alsa-lib
+	depends = hicolor-icon-theme
 	depends = glibc
 	depends = libgcc
 	source = https://github.com/storytold/filmcraft/archive/refs/tags/v0.2.1/filmcraft-0.2.1.tar.gz
@@ -15,6 +16,7 @@ pkgbase = filmcraft
 
 pkgname = filmcraft
 	depends = alsa-lib
+	depends = hicolor-icon-theme
 	depends = glibc
 	depends = libgcc
 	depends = libasound.so
