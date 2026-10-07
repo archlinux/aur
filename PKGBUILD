@@ -25,6 +25,11 @@ options=('!lto' '!strip')
 # below is the one Cargo.lock records for it. See prepare() for why a copy of
 # the crate is needed.
 _opus_ver=0.4.0
+# Upstream builds with a pinned nightly; this package builds on stable (plus
+# RUSTC_BOOTSTRAP=1 for the crate-level feature gates), so it needs a stable
+# release that ships every library API upstream calls. 1.98 stabilized
+# Option/Result::map_or_default, first used in 18.7.0.
+_rust_min=1.98.0
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/can1357/oh-my-pi/archive/v${pkgver}.tar.gz"
     "https://static.crates.io/crates/opus/opus-${_opus_ver}.crate"
@@ -47,6 +52,18 @@ fi
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+
+    # An older stable dies deep in the cargo build with E0658 "use of unstable
+    # library feature", which reads like a packaging bug; fail up front.
+    local _rustc _rustc_ver
+    _rustc=$(RUSTUP_TOOLCHAIN=stable rustc --version)
+    _rustc_ver=${_rustc#rustc }
+    _rustc_ver=${_rustc_ver%% *}
+    if (( $(vercmp "${_rustc_ver}" "${_rust_min}") < 0 )); then
+        error "rustc ${_rust_min} or newer is required, found: ${_rustc}"
+        plain "Upgrade the rust package, or run 'rustup update stable' with rustup."
+        return 1
+    fi
 
     patch -p1 -i "${srcdir}/skip-native-embed-for-aur.patch"
 
