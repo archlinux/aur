@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="Terminal app for API testing: create, manage and execute HTTP requests"
 arch=('x86_64')
 url="https://github.com/PierreKieffer/http-tanker"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=()
 makedepends=('go')
 _tag="v0.0.1"
@@ -29,7 +29,5 @@ package() {
 	install -Dm644 assets/tanker_demo.gif "$pkgdir/usr/share/doc/$pkgname/tanker_demo.gif"
 	install -d "$pkgdir/usr/share/doc/$pkgname/docs"
 	install -Dm644 docs/index.html docs/script.js docs/style.css "$pkgdir/usr/share/doc/$pkgname/docs/"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
