@@ -1,0 +1,18 @@
+pkgbase = telegram-notifier-git
+	pkgdesc = Notify a Telegram chat when a systemd unit fails
+	pkgver = r3.683710a
+	pkgrel = 1
+	url = https://github.com/CurrySoftware/Telegram-Notifier
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = curl
+	depends = systemd
+	provides = telegram-notifier
+	conflicts = telegram-notifier
+	backup = etc/telegram/key.sh
+	source = telegram-notifier::git+https://github.com/CurrySoftware/Telegram-Notifier.git
+	sha256sums = SKIP
+
+pkgname = telegram-notifier-git
