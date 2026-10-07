@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=animathio-bin
 _pkgname=AniMathIO
-pkgver=1.7.1
+pkgver=1.8.0
 _electronversion=44
 pkgrel=1
 pkgdesc="AniMathIO revolutionizes the creation of mathematical videos, tailored for educators, students, and professionals seeking to bring complex concepts to life."
@@ -19,11 +19,11 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/AniMathIO/AniMathIO/${pkgname%-bin}-v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('30b39f809d560258d16d56b45f6a2db183c59f35fd25838e8010bc9bc86ef75d'
+sha256sums=('d3027fba325955f368144ea40661965b6c0c19d0a173d1c6f2d2eaf42f01f8a6'
             '48f6289b2552d107a41350b2ee3339010373d1e0dd59834b4c7de5ecab96df72'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
