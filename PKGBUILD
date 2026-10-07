@@ -2,7 +2,7 @@
 
 pkgname=computer-use-linux
 pkgver=0.7.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Control a real Linux desktop from any MCP host (AT-SPI, portals, multi-compositor window targeting)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/agent-sh/computer-use-linux"
@@ -23,13 +23,16 @@ optdepends=(
     'ydotool: input fallback when the RemoteDesktop portal is unavailable'
 )
 conflicts=('computer-use-linux-bin')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3554e606e3f05d544ac2e4c014bb7797ac6a4c0868433d3e191a27f37a0ee809')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+  "gnome-51.patch")
+sha256sums=('3554e606e3f05d544ac2e4c014bb7797ac6a4c0868433d3e191a27f37a0ee809'
+            '31c25c92fa4369e08eb14aa8eba836ca81b2a5039286a41d5ef6b7b8e9095e79')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
-
+    patch -p1 -i "${srcdir}/gnome-51.patch"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 

@@ -1,7 +1,7 @@
 pkgbase = computer-use-linux
 	pkgdesc = Control a real Linux desktop from any MCP host (AT-SPI, portals, multi-compositor window targeting)
 	pkgver = 0.7.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/agent-sh/computer-use-linux
 	arch = x86_64
 	arch = aarch64
@@ -23,6 +23,8 @@ pkgbase = computer-use-linux
 	optdepends = ydotool: input fallback when the RemoteDesktop portal is unavailable
 	conflicts = computer-use-linux-bin
 	source = computer-use-linux-0.7.11.tar.gz::https://github.com/agent-sh/computer-use-linux/archive/refs/tags/v0.7.11.tar.gz
+	source = gnome-51.patch
 	sha256sums = 3554e606e3f05d544ac2e4c014bb7797ac6a4c0868433d3e191a27f37a0ee809
+	sha256sums = 31c25c92fa4369e08eb14aa8eba836ca81b2a5039286a41d5ef6b7b8e9095e79
 
 pkgname = computer-use-linux
