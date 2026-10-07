@@ -1,7 +1,7 @@
 pkgbase = mate-menu
 	pkgdesc = Advanced menu for MATE Panel, a fork of MintMenu
 	pkgver = 26.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ubuntu-mate/mate-menu
 	install = mate-menu.install
 	arch = any
