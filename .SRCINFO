@@ -1,6 +1,6 @@
 pkgbase = soundcraft-git
 	pkgdesc = vibe coded clean-room reimplementation of Avid Pro Tools
-	pkgver = 0.0.0
+	pkgver = 0.0.0.r47.g876b098
 	pkgrel = 1
 	url = https://getartcraft.com/apps/soundcraft
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = soundcraft-git
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	provides = soundcraft=0.0.0
+	provides = soundcraft=0.0.0.r47.g876b098
 	conflicts = soundcraft
 	source = git+https://github.com/storytold/soundcraft.git
 	sha256sums = SKIP
