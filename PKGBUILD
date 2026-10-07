@@ -4,7 +4,7 @@
 pkgname=rotate-env
 pkgver=0.1.3
 pkgrel=1
-pkgdesc="Bulk-rotate a leaked API-key env variable across every .env and .mcp.json file without ever printing the secret"
+pkgdesc="Bulk-rotate a leaked API-key env variable across .env and .mcp.json files"
 arch=('any')
 url="https://github.com/yangsi7/rotate-env"
 license=('MIT')
