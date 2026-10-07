@@ -4,7 +4,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ssl
-pkgver=0.7.0 # renovate: datasource=github-tags depName=savonet/ocaml-ssl
+pkgver=0.8.0 # renovate: datasource=github-tags depName=savonet/ocaml-ssl
 pkgrel=1
 pkgdesc="OCaml SSL Library"
 arch=('x86_64')
@@ -30,4 +30,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('efc12652cee0dc3e5abf1cba7c87cb5e55dc919c8f4093882a7a6a53ad1efaad')
+sha256sums=('b9c45ae1fea3c6d6a247eb6231e6a96b24c0db2d28167aaab93873426b139f3e')
