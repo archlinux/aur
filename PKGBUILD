@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=kangaroo
 pkgname="${_pkgname}-max-bin"
-pkgver=9.8.1.906
+pkgver=9.9.1.1008
 pkgrel=1
-pkgdesc="A SQL client and admin tool for popular databases(SQLite/MySQL/PostgreSQL/...),support table design,query,model,sync,export/import etc,focus on comfortable,fun and developer friendly.(Prebuilt version)"
+pkgdesc="A SQL client and admin tool for popular databases(SQLite/MySQL/PostgreSQL/...),support table design,query,model,sync,export/import etc,focus on comfortable,fun and developer friendly."
 arch=('x86_64')
 url="https://www.datatable.online"
 _ghurl="https://github.com/dbkangaroo/kangaroo"
@@ -34,8 +34,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.pkg.tar.zst::${_ghurl}/releases/download/v${pkgver}/Kangaroo-Multiple-${pkgver}-1-${CARCH}.pkg.tar.zst"
     "LICENSE.html::${url}/en/license/service-agreement.html"
 )
-sha256sums=('c34bb07c76ae8f98891abfc55ecabfed1a4d8b9e0c4c838b388eb2ae4e0c7df5'
-            '9df871416f5e373ffb70e3017e5df5b34779f50b31ad3ec70f235106677c0a01')
+sha256sums=('856411ead5842a4bcb8a523673f5806c0d8eaf6ce68fe2400d536b7d9147a2a7'
+            'cc749036db3e75429e92daacdcdf6d698058737e20be69a592c7786c76aa18d7')
 package() {
     cp -a "${srcdir}/usr" "${pkgdir}"
     rm -rf "${pkgdir}/usr/share/licenses/${_pkgname}"
