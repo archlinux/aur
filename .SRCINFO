@@ -1,6 +1,6 @@
 pkgbase = lito-bin
 	pkgdesc = Module-first C++ build tool with manifest.
-	pkgver = 0.8.4
+	pkgver = 0.8.5
 	pkgrel = 1
 	url = https://github.com/litocpp/lito
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = lito-bin
 	provides = lito
 	conflicts = lito
 	options = !strip
-	source = README-0.8.4.md::https://raw.githubusercontent.com/litocpp/lito/v0.8.4/README.md
+	source = README-0.8.5.md::https://raw.githubusercontent.com/litocpp/lito/v0.8.5/README.md
 	sha256sums = 5ac09bfe493443b79e86f98dea6b46141503946d35117fea2647cbd3f2a297c9
-	source_x86_64 = lito-x86_64-0.8.4.tgz::https://github.com/litocpp/lito/releases/download/v0.8.4/lito-v0.8.4-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 9172b87a8bfc78aa508c2ca85a1f4b95b7c8d669bc4d94ee0dad3e1b9b1d9448
-	source_aarch64 = lito-aarch64-0.8.4.tgz::https://github.com/litocpp/lito/releases/download/v0.8.4/lito-v0.8.4-linux-aarch64.tar.gz
-	sha256sums_aarch64 = ebe8a4e2782a5ffd81fbbb0c7f799a7112bd8d3075bcca90f61d42e749ea4684
+	source_x86_64 = lito-x86_64-0.8.5.tgz::https://github.com/litocpp/lito/releases/download/v0.8.5/lito-v0.8.5-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 1612163dedfff9b2b1d2daf786069730461e999926d3135c756f12d2e3dc6b3d
+	source_aarch64 = lito-aarch64-0.8.5.tgz::https://github.com/litocpp/lito/releases/download/v0.8.5/lito-v0.8.5-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 4aa355a02152c4268eabd156f17062a75e3655177e5d0fba04a632046e9767e8
 
 pkgname = lito-bin
