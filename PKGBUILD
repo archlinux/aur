@@ -4,7 +4,7 @@
 pkgname=secret-stripper
 pkgver=1.5.0
 pkgrel=1
-pkgdesc="Detect and strip secrets (API keys, tokens, credentials) from text, files and clipboard, with optional OCR of screenshots"
+pkgdesc="Detect and strip secrets from text, files and clipboard, with optional screenshot OCR"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kalix127/secret-stripper"
 license=('MIT')
