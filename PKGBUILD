@@ -1,7 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xresconv-gui-bin
 pkgver=3.0.0
-_electronversion=41
 pkgrel=1
 pkgdesc="A GUI batch table conversion tool that conforms to the xresconv-conf specification, with xresloader as the conversion backend."
 arch=(
