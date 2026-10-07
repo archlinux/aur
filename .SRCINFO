@@ -1,0 +1,23 @@
+pkgbase = rust-yak
+	pkgdesc = Terminal-first AI coding agent in Rust
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://github.com/imjiaoyuan/yak
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = gcc
+	depends = glibc
+	depends = gcc-libs
+	provides = yak=0.3.7
+	conflicts = yak
+	conflicts = yak-bin
+	conflicts = yak-git
+	conflicts = rust-yak-bin
+	conflicts = rust-llm
+	conflicts = rust-llm-bin
+	source = yak-0.3.7.tar.gz::https://github.com/imjiaoyuan/yak/archive/refs/tags/v0.3.7.tar.gz
+	sha256sums = 4d4ded4fff8c2824dd83f864a005183667c9dd2a132d50e1c6a40b2f110f84de
+
+pkgname = rust-yak
