@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yet-another-electron-term
 _pkgname=YAET
-pkgver=7.4.7
+pkgver=7.4.9
 _electronversion=41
 _nodeversion=24
 pkgrel=1
@@ -19,7 +19,6 @@ makedepends=(
     'npm'
     'nvm'
     'git'
-    'curl'
     'gendesk'
     'jq'
 )
@@ -27,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('6fc3e1f4a3e4abeea67fef357402429bb01b622e48f9de9d5cbe366471bc96aa'
+sha256sums=('b634c6ba1df545caf8c180d5333555af2d9af31969b090f2139e7a5b4826da92'
             'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -42,7 +41,7 @@ _get_project_dir() {
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
