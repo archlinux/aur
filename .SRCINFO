@@ -1,0 +1,22 @@
+pkgbase = iamigrate-bin
+	pkgdesc = CIAM identity migration toolkit — export, map, validate, and import users into Auth0.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cerberauth/iamigrate
+	license = MIT
+	conflicts = iamigrate
+	provides = iamigrate
+	arch = aarch64
+	source_aarch64 = iamigrate-bin_0.1.0_aarch64.tar.gz::https://github.com/cerberauth/iamigrate/releases/download/v0.1.0/iamigrate_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 97e5feab27be7008b627f6c4d6c00b1f92702189ef5863c91d4b1ade71664bed
+	arch = armv7h
+	source_armv7h = iamigrate-bin_0.1.0_armv7h.tar.gz::https://github.com/cerberauth/iamigrate/releases/download/v0.1.0/iamigrate_Linux_armv7.tar.gz
+	sha256sums_armv7h = 77edd6fd48bc8ca8930adde4a3e89fc649dd8b5d473b3edb277e4d5c9061bab7
+	arch = i686
+	source_i686 = iamigrate-bin_0.1.0_i686.tar.gz::https://github.com/cerberauth/iamigrate/releases/download/v0.1.0/iamigrate_Linux_i386.tar.gz
+	sha256sums_i686 = eb0870c2f65bdd32101cf76ec01b78fdc10e2937949d1b2d9b7a789bb962faf5
+	arch = x86_64
+	source_x86_64 = iamigrate-bin_0.1.0_x86_64.tar.gz::https://github.com/cerberauth/iamigrate/releases/download/v0.1.0/iamigrate_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 342804a5c1094fcb37ce077058fda12858d174b68c016728f3f5771c5873ee7a
+	
+pkgname = iamigrate-bin
