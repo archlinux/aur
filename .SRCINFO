@@ -1,6 +1,6 @@
 pkgbase = mesh-client-bin
 	pkgdesc = Electron desktop client for Meshtastic, MeshCore and Reticulum with BLE, USB serial, TCP and MQTT transports
-	pkgver = 6.1.0
+	pkgver = 6.2.0
 	pkgrel = 1
 	url = https://github.com/Colorado-Mesh/mesh-client
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = mesh-client-bin
 	provides = mesh-client
 	conflicts = mesh-client
 	options = !strip
-	source_x86_64 = mesh-client-bin-6.1.0-x86_64.deb::https://github.com/Colorado-Mesh/mesh-client/releases/download/v6.1.0/mesh-client_6.1.0_amd64.deb
-	sha256sums_x86_64 = 870bb74b8e30157ca5d8d14a9b8d9e2729f2ab3c4c4865b69b9db4ea6be577ca
-	source_aarch64 = mesh-client-bin-6.1.0-aarch64.deb::https://github.com/Colorado-Mesh/mesh-client/releases/download/v6.1.0/mesh-client_6.1.0_arm64.deb
-	sha256sums_aarch64 = d99aa31e65bd9491d83138b2d3cd47dbd4b6eb522f4bb8da95c8564960829c69
+	source_x86_64 = mesh-client-bin-6.2.0-x86_64.deb::https://github.com/Colorado-Mesh/mesh-client/releases/download/v6.2.0/mesh-client_6.2.0_amd64.deb
+	sha256sums_x86_64 = e523d0fb79048dc234044e0bea2d93594c2607c52862025f9d5d0c9d310f2441
+	source_aarch64 = mesh-client-bin-6.2.0-aarch64.deb::https://github.com/Colorado-Mesh/mesh-client/releases/download/v6.2.0/mesh-client_6.2.0_arm64.deb
+	sha256sums_aarch64 = a5d73e45801d2b3e0a69f6b204d3aae3d419939343351df0a0736f384484ed94
 
 pkgname = mesh-client-bin
