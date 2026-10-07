@@ -2,11 +2,11 @@
 
 pkgname=filmcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.2.1.r148.g94a22d7
+pkgver=0.2.1.r170.g8fcad73
 pkgrel=1
 url="https://getartcraft.com/apps/$_pkgname"
 _url="https://github.com/storytold/$_pkgname"
-pkgdesc='vibe coded clean-room reimplementation of Adobe Premiere Pro'
+pkgdesc='vibe coded clean-room reimplementation of Adobe Premiere Pro (Git HEAD)'
 arch=(x86_64)
 license=(MIT Apache-2.0)
 depends=(alsa-lib

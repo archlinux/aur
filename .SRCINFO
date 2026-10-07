@@ -1,6 +1,6 @@
 pkgbase = filmcraft-git
-	pkgdesc = vibe coded clean-room reimplementation of Adobe Premiere Pro
-	pkgver = 0.2.1.r148.g94a22d7
+	pkgdesc = vibe coded clean-room reimplementation of Adobe Premiere Pro (Git HEAD)
+	pkgver = 0.2.1.r170.g8fcad73
 	pkgrel = 1
 	url = https://getartcraft.com/apps/filmcraft
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = filmcraft-git
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	provides = filmcraft=0.2.1.r148.g94a22d7
+	provides = filmcraft=0.2.1.r170.g8fcad73
 	conflicts = filmcraft
 	source = git+https://github.com/storytold/filmcraft.git
 	sha256sums = SKIP
