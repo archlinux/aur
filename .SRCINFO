@@ -1,0 +1,31 @@
+pkgbase = mpf-ui-git
+	pkgdesc = Graphical frontend for Redumper, Aaru, and DiscImageCreator
+	pkgver = 3.10.0.r20.gbade587
+	pkgrel = 2
+	url = https://github.com/SabreTools/MPF
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	makedepends = git
+	makedepends = imagemagick
+	depends = dotnet-runtime-10.0
+	depends = fontconfig
+	depends = libgl
+	depends = libice
+	depends = libsm
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxrandr
+	optdepends = redumper: default dumping backend
+	optdepends = aaru: Aaru dumping backend
+	optdepends = discimagecreator: DiscImageCreator dumping backend
+	provides = mpf-ui
+	conflicts = mpf-ui
+	conflicts = mpf-ui-bin
+	options = !strip
+	source = git+https://github.com/SabreTools/MPF.git#branch=master
+	sha256sums = SKIP
+
+pkgname = mpf-ui-git
