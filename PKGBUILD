@@ -1,7 +1,7 @@
 # Maintainer: mzwing <mzwing@mzwing.eu.org>
 
 pkgname=relvi
-_pkgver=0.1.1
+_pkgver=0.1.2
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc='A focused launcher for Wayland'
@@ -11,7 +11,7 @@ license=('MIT' 'Unicode-3.0')
 makedepends=('cargo')
 depends=('gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk4' 'gtk4-layer-shell' 'libadwaita' 'pango')
 source=("$pkgname-$_pkgver.tar.gz::$url/archive/refs/tags/$pkgname-v$_pkgver.tar.gz")
-sha256sums=('cb05b347cc2b1ecd3beac3c2bda58eccb150f26f0d9b33edf01a2eaf6de61003')
+sha256sums=('a7ba1e5e8479a8c1baf6ddd25f113a49431275b3c8cda1b0c3a347931974d91f')
 
 prepare() {
     cd "$pkgname-$pkgname-v$_pkgver"
