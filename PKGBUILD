@@ -1,6 +1,6 @@
 # Maintainer: Chris Watson (watzon)
 pkgname=sayso-bin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Local voice dictation into any app"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ conflicts=('sayso')
 options=('!strip' '!debug')
 source_x86_64=("https://github.com/watzon/sayso/releases/download/v$pkgver/sayso-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("https://github.com/watzon/sayso/releases/download/v$pkgver/sayso-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('ae8231cc9555978f54ebf2098547a7780577d772bec7bbecbb633692b91c8ee0')
-sha256sums_aarch64=('ecb95ce19fa8f548387b2eaaa842e96097e4d3362783041540a602cfd33f9725')
+sha256sums_x86_64=('75f1d7fa515cc8eea49241e73e15b1f1e1d38270928a91b78f63899c10eca89a')
+sha256sums_aarch64=('d237cc9d6a17376c368a72c10fcfca8dda9ab8dd8919dee83a249197e30b2682')
 
 package() {
   cd "sayso-$pkgver-linux-$CARCH"
