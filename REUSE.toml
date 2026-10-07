@@ -80,6 +80,8 @@ SPDX-License-Identifier = "TODO-Choose-a-license"
 path = [
     "CVE-2025-69419-1.patch",
     "CVE-2025-69419-2.patch",
+    "CVE-2026-63072.patch",
+    "CVE-2026-84782.patch",
 ]
 SPDX-FileCopyrightText = "RHEL contributors"
 SPDX-License-Identifier = "TODO-Choose-a-license"
