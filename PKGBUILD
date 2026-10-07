@@ -2,7 +2,7 @@
 
 pkgname=pentest-ghostwriter
 pkgver=7.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Local-first Arch Linux port of Ghostwriter for single-user offensive security workflows'
 arch=('x86_64')
 url='https://github.com/GhostManager/Ghostwriter'
@@ -44,11 +44,6 @@ source=(
   'ghostwriter-stop'
   'ghostwriter.desktop'
   'stop-ghostwriter.desktop'
-  '0066_alter_reporttemplate_document.py'
-  '0068_merge_pacmanics_local_document_and_upstream_0067.py'
-  '0071_merge_pacmanics_local_document_and_upstream_0070.py'
-  '0072_merge_pacmanics_local_document_and_upstream_0071.py'
-  '0073_merge_pacmanics_local_document_and_upstream_0072.py'
   'README.native-port.md'
 )
 sha256sums=('6e51af18c8b1bbaec86b293cd873306f807821ec1bb58cc30a2651a163ae4818'
@@ -72,11 +67,6 @@ sha256sums=('6e51af18c8b1bbaec86b293cd873306f807821ec1bb58cc30a2651a163ae4818'
             'e60ef994e998c2bbd0f6af32d5da08ef0b6b193fafbb4da8910ea56085a4da6d'
             'c6becd241b2e62443ecfe772e1cb5482425a82012136daa96ce8aa3c33f08864'
             '916d9c97509aad47e0e890c6c956329bd45dbadd324075b26c9b2f11f653aa23'
-            '8afc13e41cf881eab51bec419ae7f5be97e9f66d421f0832543caebfa7bedadc'
-            '796e89d970858a30946ede593f3fe35e5594fc59461f80932fae1ba3e99ae77e'
-            '083a9a14687352f229b0cc10e2aca7d32d423f4eec95c27aa14abdad7f4f95cf'
-            'e44dba9f1aa1fb63bb2c902d5412e2a80f4fb1e9523547ae80912dacfc13f7e7'
-            'd8fef112411eac6163854566750947c03d1f65439b134e98f5a2a57e0f32644c'
             '8c7c12e253b5ce6e4d829e2151f8b210c5599632ce2380542edf62b029646eaa')
 
 prepare() {
@@ -125,6 +115,19 @@ if 'STATICFILES_STORAGE =' not in text:
     )
 
 base.write_text(text, encoding='utf-8')
+
+# BEGIN pentest-ghostwriter native migration-state fix
+template_migration = Path('ghostwriter/reporting/migrations/0020_auto_20201105_0641.py')
+template_migration_text = template_migration.read_text(encoding='utf-8')
+if '/app/ghostwriter/media/templates' not in template_migration_text:
+    raise SystemExit('unexpected upstream template migration state; refusing to guess')
+template_migration_text = template_migration_text.replace(
+    '/app/ghostwriter/media/templates',
+    '/opt/pentest-ghostwriter/app/ghostwriter/media/templates',
+)
+template_migration.write_text(template_migration_text, encoding='utf-8')
+# END pentest-ghostwriter native migration-state fix
+
 
 profile = Path('ghostwriter/users/templates/users/profile.html')
 profile_text = profile.read_text(encoding='utf-8')
@@ -258,11 +261,6 @@ package() {
   install -Dm644 "${srcdir}/stop-ghostwriter.desktop" "${pkgdir}/usr/share/applications/stop-ghostwriter.desktop"
   install -Dm644 "ghostwriter/static/images/favicons/favicon.ico" "${pkgdir}/usr/share/pixmaps/ghostwriter.ico"
   rm -rf "${pkgdir}/opt/${pkgname}/app/ghostwriter/media"
-  install -Dm644 "${srcdir}/0066_alter_reporttemplate_document.py" "${pkgdir}/opt/${pkgname}/app/ghostwriter/reporting/migrations/0066_alter_reporttemplate_document.py"
-  install -Dm644 "${srcdir}/0068_merge_pacmanics_local_document_and_upstream_0067.py" "${pkgdir}/opt/${pkgname}/app/ghostwriter/reporting/migrations/0068_merge_pacmanics_local_document_and_upstream_0067.py"
-  install -Dm644 "${srcdir}/0071_merge_pacmanics_local_document_and_upstream_0070.py" "${pkgdir}/opt/${pkgname}/app/ghostwriter/reporting/migrations/0071_merge_pacmanics_local_document_and_upstream_0070.py"
-  install -Dm644 "${srcdir}/0072_merge_pacmanics_local_document_and_upstream_0071.py" "${pkgdir}/opt/${pkgname}/app/ghostwriter/reporting/migrations/0072_merge_pacmanics_local_document_and_upstream_0071.py"
-  install -Dm644 "${srcdir}/0073_merge_pacmanics_local_document_and_upstream_0072.py" "${pkgdir}/opt/${pkgname}/app/ghostwriter/reporting/migrations/0073_merge_pacmanics_local_document_and_upstream_0072.py"
   install -Dm644 "${srcdir}/README.native-port.md" "${pkgdir}/usr/share/doc/${pkgname}/README.native-port.md"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
