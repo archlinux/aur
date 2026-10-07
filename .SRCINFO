@@ -1,6 +1,6 @@
 pkgbase = lovr-playspace-git
 	pkgdesc = Room boundary overlay for OpenXR, made with LÖVR
-	pkgver = r32.c37f4e5
+	pkgver = r34.31c530d
 	pkgrel = 1
 	url = https://github.com/SpookySkeletons/lovr-playspace
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: sTiKyt <stikyt@proton.me>
 
 pkgname=lovr-playspace-git
-pkgver=r32.c37f4e5
+pkgver=r34.31c530d
 pkgrel=1
 pkgdesc="Room boundary overlay for OpenXR, made with LÖVR"
 arch=('any')

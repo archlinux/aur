@@ -4,3 +4,5 @@ src/
 *.pkg.tar.xz
 .github
 LICENSE
+json/
+lovr-playspace-git/
