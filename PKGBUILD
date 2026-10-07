@@ -23,7 +23,5 @@ function build() {
 function package() {
 	cd "$_srcdir"
 	install -Dm755 "sasqwatch" "$pkgdir/usr/bin/$pkgname"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
