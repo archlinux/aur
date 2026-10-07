@@ -4,7 +4,7 @@ pkgname=opentubex-git
 _pkgname=OpenTubeX
 _ghurl="https://github.com/OpenTubeX/OpenTubeX"
 pkgver=r13031.4842ee9e6
-pkgrel=1
+pkgrel=2
 pkgdesc='A highly customizable, privacy-focused desktop YouTube client'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://opentubex.org"
@@ -14,7 +14,7 @@ optdepends=('ffmpeg: Use the system FFmpeg when installed before first launch; c
             'yt-dlp: Use the system yt-dlp when installed before first launch; configurable later in Settings')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-makedepends=('git' 'npm' 'pnpm')
+makedepends=('git' 'npm' 'pnpm' 'go')
 source=("git+$_ghurl"
         opentubex.desktop
         opentubex.sh)
@@ -53,7 +53,7 @@ build() {
 
 package() {
   install -d "${pkgdir}"/{usr/bin,usr/lib/opentubex-git}
-  cp -R "./$_pkgname/build/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname"
+  cp -R "./$_pkgname/build/linux-unpacked/resources/"{app.asar,app.asar.unpacked} "$pkgdir/usr/lib/$pkgname"
   install -Dm755 "./opentubex.sh" "$pkgdir/usr/bin/opentubex"
   
   cd $_pkgname
