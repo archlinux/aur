@@ -1,7 +1,7 @@
 pkgbase = openssl-1.1
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security
 	pkgver = 1.1.1.w
-	pkgrel = 11
+	pkgrel = 12
 	url = https://www.openssl.org
 	arch = aarch64
 	arch = x86_64
@@ -59,6 +59,8 @@ pkgbase = openssl-1.1
 	source = CVE-2026-45447-2.patch
 	source = CVE-2025-69419-1.patch
 	source = CVE-2025-69419-2.patch
+	source = CVE-2026-63072.patch
+	source = CVE-2026-84782.patch
 	validpgpkeys = EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5
 	sha256sums = cf3098950cb4d853ad95c0841f1f9c6d3dc102dccfcacd521d93925208b76ac8
 	sha256sums = SKIP
@@ -106,5 +108,7 @@ pkgbase = openssl-1.1
 	sha256sums = 4fe62fbbce088325f5b62fab3edfe59d4d9a8108ddfd06cf2a53fa1bd758c5b3
 	sha256sums = d89423836be0cb5ca076e173ea373c4deeef3d6ffa17085ca8a0850b364d7d3b
 	sha256sums = 933c61f15a81ac9c50f66f8c6c059d09f94a116d7b4c4d534a41b1c8f0140160
+	sha256sums = 4da3e07ceed3790c0bd0dd8ff93b97759ff38ed50e123f46ebe44381eea00b93
+	sha256sums = f41abfd62f213e489afcc3d4608b034e1c71a8cecc10b2bb81fc3a8ece31cc21
 
 pkgname = openssl-1.1
