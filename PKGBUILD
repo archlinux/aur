@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=beekeeper-studio-git
 _pkgname="Beekeeper Studio"
-pkgver=6.1.3.r83.gc67ca75
+pkgver=6.1.5.r107.g92f6f0c
 _electronversion=44
 _nodeversion=24
 pkgrel=1
@@ -102,7 +102,7 @@ _set_build_env() {
 	fi
 }
 _get_app_dir() {
-	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _get_electron_version() {
 	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
@@ -128,7 +128,7 @@ prepare() {
         --exec="${pkgname%-git} %U"
     _set_build_env
     _ensure_local_nvm
-    sed -i '/"devDependencies":/{:a;N;/^[[:space:]]*}/!ba;s/"electron": "[^"]*"/"electron": "'${SYSTEM_ELECTRON_VERSION}'"/}' apps/studio/package.json
+    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     find apps/studio -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     export NODE_ENV=development
     yarn add -W -D node-gyp
@@ -145,12 +145,12 @@ build() {
     yarn electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}" --config electron-builder-config.js
     local _app_dir="$(_get_app_dir)"
     case "${CARCH}" in
-        aarch64)    _archrem="x64"      ;;
-        x86_64)     _archrem="arm64"    ;;
-    esac
-    find "${_app_dir}" \
-        \( -name "*darwin*" -o -name "*${_archrem}*" -o -name "*win32*" \) \
-        -exec rm -rf {} +
+		aarch64)	_archrem=x64	;;
+		x86_64)		_archrem=arm	;;
+	esac
+	find "${_app_dir}/resources/app.asar.unpacked" -type d \
+		\( -name "darwin*" -o -name "win32*" -o -name "*${_archrem}"* \) \
+		-exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
