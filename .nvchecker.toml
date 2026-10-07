@@ -1,0 +1,4 @@
+[soundcraft]
+source = "git"
+git = "https://github.com/storytold/soundcraft.git"
+prefix = "v"
