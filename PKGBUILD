@@ -2,14 +2,15 @@
 
 pkgname=deckcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.0.0
+pkgver=0.0.0.r19.g942a2c8
 pkgrel=1
 url="https://getartcraft.com/apps/$_pkgname"
 _url="https://github.com/storytold/$_pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Microsoft PowerPoint'
 arch=(x86_64)
 license=(MIT Apache-2.0)
-depends=(glibc # libc.so libm.so
+depends=(alsa-lib
+         glibc # libc.so libm.so
          hicolor-icon-theme
          libgcc)
 makedepends=(cargo
@@ -41,6 +42,7 @@ prepare() {
 
 pkgver() {
 	cd "$_pkgname"
+	git tag v0.0.0 $(git rev-list --max-parents=0 HEAD) ||:
 	git describe --long --tags --abbrev=7 --match="v*" HEAD |
 			sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
@@ -51,12 +53,13 @@ build() {
 }
 
 package() {
-	depends+=(libgcc_s.so)
+	depends+=(libasound.so
+	          libgcc_s.so)
 	cd "$_pkgname"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"{,-cli}
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "packaging/linux/ai.storyteller.$_pkgname.desktop"
 	install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "packaging/linux/ai.storyteller.$_pkgname.mime.xml"
-	install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/scalable/" assets/app-icon/hicolor/scalable/apps/ai.storyteller.$_pkgname.svg
+	# install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/scalable/" assets/app-icon/hicolor/scalable/apps/ai.storyteller.$_pkgname.svg
 	for s in ${_icons[@]}; do
 		local dim="${s}x${s}"
 		install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/$dim/apps/" assets/app-icon/hicolor/$dim/apps/ai.storyteller.$_pkgname.png
