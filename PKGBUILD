@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('python' 'python-pyqt6')
 optdepends=('desktop-file-utils: para actualizar la base de datos de escritorios')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Nacho-Telmo/sinergia-appimage-manager/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d3e31aa8b3ca93d3f0cc8ce1b33a19ddc1b8aee3c334d85242fac75485a27fdf')
+sha256sums=('SKIP')
 
 
 package() {
