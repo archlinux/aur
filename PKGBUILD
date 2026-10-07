@@ -10,6 +10,7 @@ arch=('any')
 url="https://github.com/milishiajay/termdiff"
 license=('custom:none-declared')
 depends=('python')
+makedepends=('git')
 provides=("python-termdiff")
 conflicts=("python-termdiff")
 source=("$_pkgname::git+$url.git#branch=master")

@@ -5,6 +5,7 @@ pkgbase = python-termdiff-git
 	url = https://github.com/milishiajay/termdiff
 	arch = any
 	license = custom:none-declared
+	makedepends = git
 	depends = python
 	provides = python-termdiff
 	conflicts = python-termdiff
