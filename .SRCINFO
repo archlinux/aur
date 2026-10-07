@@ -1,6 +1,6 @@
 pkgbase = cirrocast
 	pkgdesc = Terminal weather client with pluggable backends and wttr.in-style output
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/YangtseSu/cirrocast
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = cirrocast
 	depends = glibc
 	options = !lto
 	options = !debug
-	source = cirrocast-1.3.0.tar.gz::https://github.com/YangtseSu/cirrocast/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = 5db1f3ecc6052f8b1ee09fe4a8855da87d443525e7ec05adb37dd85afe68af35
+	source = cirrocast-1.4.0.tar.gz::https://github.com/YangtseSu/cirrocast/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = 743d56235ab19a8dc73dc70397bafdc5bddf08a3ebb013ba6729f0ef17977252
 
 pkgname = cirrocast
