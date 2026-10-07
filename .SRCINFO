@@ -2,12 +2,14 @@ pkgbase = localepurge-hook
 	pkgdesc = A hook for run localepurge after each installation or update.
 	pkgver = 1.0
 	pkgrel = 1
+	url = https://aur.archlinux.org/packages/localepurge
 	install = .install
 	arch = any
+	license = 0BSD
 	depends = localepurge
 	options = !strip
 	options = !debug
 	source = 99-localepurge.hook
-	cksums = SKIP
+	sha256sums = 9a4d313e360e9030ad28581c2a399687ac1238faff5dc65e915668354e9d4980
 
 pkgname = localepurge-hook
