@@ -20,13 +20,5 @@ package() {
 	cp -r ./* "$pkgdir/usr/share/$pkgname/"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 nix/NixREADME.md "$pkgdir/usr/share/doc/$pkgname/NixREADME.md"
-	cat >"$pkgdir/usr/share/doc/$pkgname/USAGE.txt" <<'EOF'
-Shunpo se instala en /usr/share/shunpo. Para activarlo, ejecuta desde ahí:
-bash /usr/share/shunpo/install.sh && source ~/.bashrc
-o bien consulta README.md. uninstall.sh revierte la instalación.
-EOF
-
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
