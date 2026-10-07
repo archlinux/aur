@@ -1,15 +1,15 @@
 pkgbase = markflowy-bin
-	pkgdesc = AI-powered cross-platform editor for WYSIWYG Markdown and general-purpose text editing.
-	pkgver = 0.101.1
+	pkgdesc = A local-first Markdown editor. Write visually or in source, organize your own folders, and bring in AI when it helps. Local editing works without an account or an AI provider.
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://www.markflowy.cc/
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	provides = markflowy=0.101.1
+	provides = markflowy=1.0.0
 	conflicts = markflowy
-	source = markflowy-0.101.1.rpm::https://github.com/drl990114/MarkFlowy/releases/download/v0.101.1/MarkFlowy-0.101.1-1.x86_64.rpm
-	sha256sums = 246c6f9ef8dc280ec032953b81c79b23f023a103dfceb3a8cb3333dc96040a02
+	source = markflowy-1.0.0.rpm::https://github.com/drl990114/MarkFlowy/releases/download/v1.0.0/MarkFlowy-1.0.0-1.x86_64.rpm
+	sha256sums = daec168f7e8c69752e603f717cc64a4685154061a1e195d4824b498e8935ccf3
 
 pkgname = markflowy-bin

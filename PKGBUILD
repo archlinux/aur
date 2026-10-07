@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=markflowy-bin
 _pkgname=MarkFlowy
-pkgver=0.101.1
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="AI-powered cross-platform editor for WYSIWYG Markdown and general-purpose text editing."
+pkgdesc="A local-first Markdown editor. Write visually or in source, organize your own folders, and bring in AI when it helps. Local editing works without an account or an AI provider."
 arch=('x86_64')
 url="https://www.markflowy.cc/"
 _ghurl="https://github.com/drl990114/MarkFlowy"
@@ -17,9 +17,10 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('246c6f9ef8dc280ec032953b81c79b23f023a103dfceb3a8cb3333dc96040a02')
+sha256sums=('daec168f7e8c69752e603f717cc64a4685154061a1e195d4824b498e8935ccf3')
 prepare() {
     sed -i "s/Development/Utility/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
