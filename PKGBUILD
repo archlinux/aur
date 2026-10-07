@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bar-lobby-bin
 _pkgname=BeyondAllReason
-pkgver=0.16.2
+pkgver=0.17.0
 _electronversion=37
 pkgrel=1
-pkgdesc="a new WIP lobby for the RTS game Beyond All Reason.(Prebuilt version.Use system-wide electron)"
+pkgdesc="a new WIP lobby for the RTS game Beyond All Reason."
 arch=('x86_64')
 url="https://beyond-all-reason.github.io/bar-lobby/"
 _ghurl="https://github.com/beyond-all-reason/bar-lobby"
@@ -39,7 +39,7 @@ source=(
     "Unlicense-${pkgver}.txt::https://raw.githubusercontent.com/beyond-all-reason/bar-lobby/v${pkgver}/LICENSES/Unlicense.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('93fcfdcb841eef32af0706c3e82b506ed8134e64743ba9e08f50e3851aa5053f'
+sha256sums=('80a0de80e28fa077645579603276959e93386d132340cded20316c5de9875595'
             'aacbf85b939d752b122a6d2eb50650796b7ccf4d38d72bd9ef8b5c47022cdbe8'
             '4f3c4a321eb0c73182eee7afa3fe0111e24dec193f2d6febcf4207f26af26839'
             'ea55e798a1b601516093201441b474c7499b37db0e8920d7b96a21c2d67465b6'
@@ -50,9 +50,9 @@ sha256sums=('93fcfdcb841eef32af0706c3e82b506ed8134e64743ba9e08f50e3851aa5053f'
             'b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5'
             '8eea8287e5876b539670cadb82e99f9a7afddec6f6730811be1daf25d2e9bcfd'
             '0bdebfeda07d45dada625ae1317c6f833186e798b171d0db640bcf32e92a8240'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -79,7 +79,7 @@ prepare() {
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _check_electron_version
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${_app_dir}/${pkgname%-bin}.desktop"
     find "${_app_dir}/resources" -type d -perm 700 -exec chmod 755 {} +
     rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/7zip-bin/"{mac,linux/{arm*,ia32}}
@@ -88,9 +88,9 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+	local _app_dir="$(_get_app_dir)"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    install -Dm644 "${_app_dir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
