@@ -1,6 +1,6 @@
 pkgbase = rovyl-bin
 	pkgdesc = Rovyl radial launcher (prebuilt AppImage)
-	pkgver = 1.16.0
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://github.com/YahyaZekry/rovyl-linux
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = rovyl-bin
 	depends = dbus
 	provides = rovyl
 	conflicts = rovyl
-	noextract = rovyl-1.16.0.AppImage
-	source = rovyl-1.16.0.AppImage::https://github.com/YahyaZekry/rovyl-linux/releases/download/v1.16.0/Rovyl-1.16.0-linux.AppImage
-	sha256sums = ab74dc0af757eb420aef74ddd41849dadff467ccfb78428f8e76925c50ef3512
+	noextract = rovyl-1.17.0.AppImage
+	source = rovyl-1.17.0.AppImage::https://github.com/YahyaZekry/rovyl-linux/releases/download/v1.17.0/Rovyl-1.17.0-linux.AppImage
+	sha256sums = 5ea2d5c5b8bbb60efe3041c7827523649253c8425f8cd7c75c2dc2df5bea6ef4
 
 pkgname = rovyl-bin
