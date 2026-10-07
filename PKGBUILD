@@ -28,7 +28,5 @@ package() {
 	install -Dm644 AUTHORS.md "$pkgdir/usr/share/doc/$_pkgname/AUTHORS.md"
 	install -d "$pkgdir/usr/share/$_pkgname/examples"
 	install -Dm644 examples/*.yaml "$pkgdir/usr/share/$_pkgname/examples/"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
