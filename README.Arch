@@ -1,7 +1,7 @@
 NiriFX for Arch Linux
 ====================
 
-This recipe targets the v0.22.0 release tag. That tag must be published before
+This recipe targets the v0.22.1 release tag. That tag must be published before
 a normal source build; candidate testing uses an explicitly recorded source override.
 
 Both packages contain the CLI, Studio, preset library, optional shell pickers,
@@ -83,5 +83,5 @@ suspend/resume, mixed monitors or GPU behavior. Those remain separate acceptance
 gates. Building or installing a package never opens a session automatically.
 
 Portable examples: /usr/share/doc/niri-fx/examples/
-Versioned documentation: https://github.com/jturbide/niri-fx/tree/v0.22.0/docs
+Versioned documentation: https://github.com/jturbide/niri-fx/tree/v0.22.1/docs
 Source and issues: https://github.com/jturbide/niri-fx

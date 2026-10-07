@@ -1,6 +1,6 @@
 pkgbase = niri-fx
 	pkgdesc = Complete NiriFX compositor, presets, CLI and visual Studio for Niri
-	pkgver = 0.22.0
+	pkgver = 0.22.1
 	pkgrel = 1
 	url = https://github.com/jturbide/niri-fx
 	arch = x86_64
@@ -47,7 +47,7 @@ pkgbase = niri-fx
 	options = !strip
 	options = !debug
 	options = !lto
-	source = niri-fx::git+https://github.com/jturbide/niri-fx.git#tag=v0.22.0
+	source = niri-fx::git+https://github.com/jturbide/niri-fx.git#tag=v0.22.1
 	source = niri::git+https://github.com/niri-wm/niri.git#commit=8ed0da44d974c32c6877d2f4630c314da0717ecb
 	source = niri-fx-studio.desktop
 	source = niri-fx-packaged.desktop
@@ -57,7 +57,7 @@ pkgbase = niri-fx
 	sha256sums = SKIP
 	sha256sums = 7a3f838400c76a9b4e50749c77b8e8b285d34a19c8f716a5f916af04a12ebb34
 	sha256sums = 4f5b3d3b995d406866385c9b892557e4b3521645a59f4526ca999e93cabfb977
-	sha256sums = 56d55a0848d2c1cdc3d1a45fa0a48a56df012b313a056efb83c2b41db3e2efab
+	sha256sums = 1cc0c91edadca4f4ddc59fbe9871b8fcf020d2ded21e2d04a7502b333461adb2
 	sha256sums = 336feffd8a99323d56058efe2b2deb3480dcf935dbb6813324c95a7e61bbbca3
 
 pkgname = niri-fx

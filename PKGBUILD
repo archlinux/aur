@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=niri-fx
-pkgver=0.22.0
+pkgver=0.22.1
 _niri_revision=8ed0da44d974c32c6877d2f4630c314da0717ecb
 pkgrel=1
 pkgdesc='Complete NiriFX compositor, presets, CLI and visual Studio for Niri'
@@ -49,7 +49,7 @@ sha256sums=(
   'SKIP'
   '7a3f838400c76a9b4e50749c77b8e8b285d34a19c8f716a5f916af04a12ebb34'
   '4f5b3d3b995d406866385c9b892557e4b3521645a59f4526ca999e93cabfb977'
-  '56d55a0848d2c1cdc3d1a45fa0a48a56df012b313a056efb83c2b41db3e2efab'
+  '1cc0c91edadca4f4ddc59fbe9871b8fcf020d2ded21e2d04a7502b333461adb2'
   '336feffd8a99323d56058efe2b2deb3480dcf935dbb6813324c95a7e61bbbca3'
 )
 
