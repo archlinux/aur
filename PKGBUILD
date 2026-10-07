@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=printcraft-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='PDF viewer and editor (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
@@ -35,8 +35,8 @@ sha256sums=('ea1edc629f3a66291c05f2c5859ae243c462c7b5315a5b188a97a84beb519b5b'
             'a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697'
             'b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57'
             'b578cdd2345840ada550bd12519533812320d5f1d21cf4c1c7e1b1b0a31c98b7')
-sha256sums_x86_64=('50ad54b7efbce70af3e1fcc23e728204201df9e33a95e35d4f2d4397801992d3')
-sha256sums_aarch64=('75ea79c5be0942ae5de7e95018673580ba6fcafe8ba73c5df4761e16db6d9e4a')
+sha256sums_x86_64=('73b2977330d73716971237f68f89cba6ad52cbfb563ad0ab6d9ad18f44d45192')
+sha256sums_aarch64=('c7ae5dac00b3c11bea4e7cc502878a1b6ab520362d09885293e48417452e5dc0')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-linux-$CARCH"
