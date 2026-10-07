@@ -5,6 +5,7 @@ pkgbase = python-certlint-git
 	url = https://github.com/milishiajay/certlint
 	arch = any
 	license = custom:none-declared
+	makedepends = git
 	depends = python
 	provides = python-certlint
 	conflicts = python-certlint

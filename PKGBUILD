@@ -10,6 +10,7 @@ arch=('any')
 url="https://github.com/milishiajay/certlint"
 license=('custom:none-declared')
 depends=('python')
+makedepends=('git')
 provides=("python-certlint")
 conflicts=("python-certlint")
 source=("$_pkgname::git+$url.git#branch=master")
