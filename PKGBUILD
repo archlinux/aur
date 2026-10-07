@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=tailchat
 pkgname="${_pkgname}-desktop"
-pkgver=1.11.17
+pkgver=1.11.18
 _electronversion=18
 _nodeversion=16
 pkgrel=1
@@ -17,7 +17,7 @@ depends=(
 makedepends=(
     'gendesk'
     'nvm'
-    'yarn'
+    'pnpm'
     'git'
     'jq'
 )
@@ -25,8 +25,8 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('5f7f99dc78ae2b57c3765c14f016160535ca83ccf631e639bc778f1c82da527b'
-            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+sha256sums=('ca8ef10941b2daafe16bd10057c971facdfd0cad6d8db73f999b61420cb3cd5c'
+            'fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -34,7 +34,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_app_dir() {
-	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _get_project_dir() {
 	local d
@@ -52,46 +52,30 @@ _set_build_env() {
 	export XDG_CACHE_HOME="${HOME}/.cache"
 	export XDG_CONFIG_HOME="${HOME}/.config"
 	export XDG_DATA_HOME="${HOME}/.local/share"
-	export YARN_CACHE_FOLDER="${HOME}/.yarn/cache"
-	export YARN_NETWORK_CONCURRENCY=32
+	export XDG_STATE_HOME="${HOME}/.local/state"
+	export PNPM_HOME="${HOME}/.pnpm/bin"
+	export pnpm_config_cache_dir="${HOME}/.pnpm_cache"
+	export pnpm_config_store_dir="${HOME}/.pnpm_store"
+	export pnpm_config_global_dir="${HOME}/.pnpm/global"
+	export pnpm_config_state_dir="${HOME}/.pnpm/state"
+	export pnpm_config_node_linker=hoisted
+	export pnpm_config_minimum_release_age=0
+	export pnpm_config_update_notifier=false
 	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
 	export COREPACK_HOME="${HOME}/.corepack"
-	export npm_config_registry="${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}"
-	local _yarnver _yarnmajor=0
-	_yarnver="$(node -p "require('./package.json').packageManager?.split('@')[1]?.split('-')[0] || ''" 2>/dev/null)"
-	_yarnmajor="${_yarnver%%.*}"
-	_yarnmajor="${_yarnmajor:-0}"
-	if [[ "${_yarnmajor}" -ge 2 ]] 2>/dev/null || [[ -f .yarnrc.yml ]]; then
-		export XDG_STATE_HOME="${HOME}/.local/state"
-		export YARN_ENABLE_GLOBAL_CACHE=false
-		export YARN_ENABLE_MIRROR=false
-		export YARN_GLOBAL_FOLDER="${HOME}/.yarn/berry"
-		export YARN_NODE_LINKER=node-modules
-		export YARN_NM_MODE=hardlinks-local
-		export YARN_ENABLE_TELEMETRY=false
-		export YARN_ENABLE_SCRIPTS=true
-		export YARN_HTTP_TIMEOUT=600000
-		export YARN_HTTP_RETRY=5
-		export YARN_NPM_REGISTRY_SERVER="${YARN_NPM_REGISTRY_SERVER:-${NPM_CONFIG_REGISTRY:-https://registry.yarnpkg.com}}"
-		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${COREPACK_HOME}"
-	else
-		export YARN_GLOBAL_FOLDER="${HOME}/.yarn/global"
-		export YARN_LINK_FOLDER="${HOME}/.yarn/link"
-		export YARN_TEMP_FOLDER="${HOME}/.yarn/tmp"
-		export YARN_NETWORK_TIMEOUT=600000
-		export YARN_CHILD_CONCURRENCY="$(nproc)"
-		export YARN_FROZEN_LOCKFILE=true
-		export YARN_IGNORE_ENGINES=true
-		export YARN_PRODUCTION=false
-		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${YARN_LINK_FOLDER}" "${YARN_TEMP_FOLDER}" "${COREPACK_HOME}"
+	mkdir -p "${HOME}" "${PNPM_HOME}" "${pnpm_config_cache_dir}" "${pnpm_config_store_dir}" "${pnpm_config_global_dir}" "${pnpm_config_state_dir}" "${COREPACK_HOME}"
+	export PATH="${PNPM_HOME}:${PATH}"
+	local _pnpmver=""
+	local _pkgjson="$(_get_project_dir)/package.json"
+	if [ -f "${_pkgjson}" ]; then
+		_pnpmver="$(grep -o '"packageManager"[^,]*' "${_pkgjson}" 2>/dev/null | grep -oE 'pnpm@[^"+]+' | head -n1 | sed 's/^pnpm@//')"
+		if [ -z "${_pnpmver}" ]; then
+			_pnpmver="$(grep -oE '"pnpm"[[:space:]]*:[[:space:]]*"[^"]+"' "${_pkgjson}" 2>/dev/null | grep -oE '[0-9][0-9.]*' | head -n1)"
+		fi
 	fi
-	local _reg="${NPM_CONFIG_REGISTRY:-https://registry.yarnpkg.com}"
-	_reg="${_reg%/}"
-	if [[ -f .yarnrc ]]; then
-		sed -i "s|^registry .*|registry \"${_reg}\"|" .yarnrc
-	fi
-	if [[ -f yarn.lock ]] && grep -q 'resolved "https://registry.yarnpkg.com' yarn.lock; then
-		sed -i "s|https://registry.yarnpkg.com/|${_reg}/|g" yarn.lock
+	if [ -n "${_pnpmver}" ]; then
+		npm install -g "pnpm@${_pnpmver}" --prefix "${HOME}/.pnpm" \
+			--registry "${COREPACK_NPM_REGISTRY}"
 	fi
 }
 _get_electron_version() {
@@ -118,29 +102,30 @@ prepare() {
         --categories="Network" \
         --name="${pkgname}" \
         --exec="${pkgname} %U"
-    sed -i '/"packageManager":/d' "$(_get_project_dir)/package.json"
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} \;
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    sed -i "s/\/build//g" -i electron-builder.yml
+    sed -i 's/yarn build:main/pnpm build:main/g; s/yarn build:renderer/pnpm build:renderer/g' package.json
+    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
+	rm -rf pnpm-lock.yaml
     export NODE_ENV=development
-    yarn install
-    yarn add -D ts-node source-map-support
+    pnpm install
+    pnpm add -D ts-node source-map-support
 }
 build() {
     cd "$(_get_project_dir)/client/desktop"
     _ensure_local_nvm
 	_set_build_env
 	export NODE_ENV=production
-    yarn ts-node ./.erb/scripts/clean.js dist
-    yarn run build
-    yarn electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}" --config.asar=false
+    pnpm ts-node ./.erb/scripts/clean.js dist
+    pnpm run build
+    pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config.asar=false"
 }
 package() {
-    local _src="$(_get_project_dir)"
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-	local _app_dir=$(_get_app_dir)
+	local _app_dir"=$(_get_app_dir)"
 	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
+	rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
+	local _src="$(_get_project_dir)"
     install -Dm644 "${_src}/client/desktop/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${_src}/client/desktop/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${_src}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
