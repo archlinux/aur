@@ -1,6 +1,6 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=paseo-cli-git
-pkgver=0.11.0.beta.5.r56.g8ddeb79c8
+pkgver=0.11.0.r8.g1ae979d3d
 pkgrel=2
 # Publish targets: aur + Arch release + Debian release (opt-in per format).
 _publish_targets="aur github-arch github-deb"
@@ -11,6 +11,13 @@ _publish_targets="aur github-arch github-deb"
 #   the version pin stays Arch-only rather than make the .deb uninstallable
 #   on deb-smoke.
 _deb_depends=('libc6' 'libgcc-s1' 'libstdc++6' 'nodejs' 'bash')
+# Debian variant-exclusion for the fpm conversion (#61): all six paseo-*
+# .debs ship /usr/bin/paseo and are mutually exclusive. Arch-only names
+# (paseo, paseo-bin, ...) have no .deb counterpart, so the Debian list names
+# the concrete sibling .debs plus the shared `paseo` virtual instead of
+# reusing the Arch conflicts array verbatim.
+_deb_provides=('paseo')
+_deb_conflicts=('paseo-cli-edge' 'paseo-cli-git-bin' 'paseo-desktop-bin-edge' 'paseo-desktop-git' 'paseo-desktop-git-bin' 'paseo')
 pkgdesc='Command-line interface for controlling Paseo AI coding agents (git - built from main)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/getpaseo/paseo/tree/main/packages/cli'
@@ -18,7 +25,7 @@ license=('Apache-2.0')
 depends=('nodejs>=22' 'bash' 'glibc' 'gcc-libs')
 makedepends=('git' 'npm')
 provides=('paseo' 'paseo-cli' 'paseo-cli-git')
-conflicts=('paseo' 'paseo-bin' 'paseo-cli' 'paseo-cli-bun' 'paseo-cli-edge')
+conflicts=('paseo' 'paseo-bin' 'paseo-appimage' 'paseo-cli-bun' 'paseo-cli' 'paseo-cli-edge' 'paseo-cli-git-bin' 'paseo-desktop-bin-edge' 'paseo-desktop-git' 'paseo-desktop-git-bin')
 source=('paseo::git+https://github.com/getpaseo/paseo.git#branch=main')
 sha256sums=('SKIP')
 options=('!strip')
