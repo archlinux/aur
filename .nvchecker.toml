@@ -1,0 +1,5 @@
+[netbird]
+source = "github"
+github = "netbirdio/netbird"
+prefix = "v"
+use_latest_release = true
