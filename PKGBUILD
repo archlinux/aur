@@ -32,7 +32,5 @@ package() {
 	install -Dm644 CONTRIBUTING.md "$pkgdir/usr/share/doc/$_pkgname/CONTRIBUTING.md"
 	install -d "$pkgdir/usr/share/doc/$_pkgname/examples"
 	install -Dm644 examples/README*.md examples/assets/img.png "$pkgdir/usr/share/doc/$_pkgname/examples/"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
