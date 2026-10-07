@@ -1,4 +1,4 @@
-# Maintainer: Leonid Lednev <leonidledn at gmail dit com>
+# Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 # Contributor: GI_Jack <GI_Jack@hackermail.com>
 _name=aardwolf
 pkgname="python-$_name"
