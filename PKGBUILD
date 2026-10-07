@@ -2,8 +2,8 @@
 pkgname=textmerger-bin
 _pkgname=textmerger
 pkgver=2.10.7
-pkgrel=1
-pkgdesc="A Rust/Tauri GTK3 application for merging text files"
+pkgrel=2
+pkgdesc="Merge text from multiple files into a single output"
 arch=('x86_64')
 url="https://github.com/pierspad/textmerger"
 license=('GPL3')
@@ -33,7 +33,7 @@ package() {
 Version=${pkgver}
 Type=Application
 Name=TextMerger
-Comment=A Rust/Tauri GTK3 application for merging text files
+Comment=Merge text from multiple files into a single output
 Exec=textmerger
 Icon=textmerger
 Terminal=false
