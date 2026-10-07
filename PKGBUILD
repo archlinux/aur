@@ -2,10 +2,10 @@
 # Contributor: Ariel Abreu <facekapow@outlook.com>
 pkgname=gitify-bin
 _pkgname=Gitify
-pkgver=7.8.0
+pkgver=7.9.0
 _electronversion=44
 pkgrel=1
-pkgdesc="GitHub notifications on your menu bar.(Prebuilt version.Use system-wide electron)"
+pkgdesc="GitHub notifications on your menu bar."
 arch=('x86_64')
 url="https://www.gitify.io/"
 _ghurl="https://github.com/gitify-app/gitify"
@@ -18,11 +18,11 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/gitify-app/gitify/v$pkgver/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('fb46712a7a7a85ca073ca3bb2b28f7563f8eedbe8bc6bfa8be4e06630e8e9025'
+sha256sums=('48ca4dc42ea404d41ca1d677a2a46daf13ae82881519c7f02dd61b0dacdad1e3'
             'e3583a920d79b28287ca8bf4b021c6cbeba746a75073c0c68b0aa64ff0b38961'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -47,7 +47,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
