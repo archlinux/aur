@@ -1,6 +1,6 @@
 # Maintainer: meanlint <meanlint@outlook.com>
 pkgname=gproxy-bin
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Self-hosted LLM API gateway (OpenAI/Claude/Gemini-compatible), prebuilt binary"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source_aarch64=(
     "gproxy-linux-aarch64-${pkgver}.zip::https://github.com/LeenHawk/gproxy/releases/download/v${pkgver}/gproxy-linux-aarch64.zip"
 )
 
-sha256sums_x86_64=('9fea4fa2d45e6adf40d5f415865c3f5c16e507f919e1c4c2838aaf1c4bdafdb9')
-sha256sums_aarch64=('db48370981f7100d091b9241dd1dc2257e68d13e2f7971af81dc9a83fe2c608d')
+sha256sums_x86_64=('c91feb789ca6a30707cb9b7385f6040e7624a5d2641d2131a16d83e8f1bc0b97')
+sha256sums_aarch64=('ff47a499545e2b3bd5ff2d54feef59e9f41badd3cc2a063bddba05fdf59eae84')
 
 source=(
     "gproxy.service"
