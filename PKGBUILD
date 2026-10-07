@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 # Contributor: Alex Dewar <alex.dewar@gmx.co.uk>
 pkgname=pwclient
-pkgver=2.9.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc='The command-line client for the patchwork patch tracking tool'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
 )
 checkdepends=('python-mock' 'python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('0ed1f9d2165e2dbfb7c87dc97ee28fbd8e55da73b8ee3d3438a9155081c3f156')
+sha256sums=('5219cb9bf9d8b544f180dc42daf622b2919dd2fcf6cfe243f8094755b523e157')
 
 build() {
     cd "$pkgname-$pkgver"
