@@ -1,6 +1,6 @@
 pkgbase = pineapple-notepad-bin
 	pkgdesc = A Qt 6, KDE Framework and Scintilla-based Cross-Platform Notepad++ Alternative
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/BLumia/pineapple-notepad
 	arch = x86_64
@@ -25,11 +25,11 @@ pkgbase = pineapple-notepad-bin
 	provides = pineapple-notepad
 	conflicts = pineapple-notepad
 	options = !debug
-	source = pineapple-notepad-bin-1.3.0-deepin.deb::https://github.com/BLumia/pineapple-notepad/releases/download/1.3.0-freeware/pineapple-notepad-deepin-crimson-x86_64-1.3.0.deb
-	source = pineapple-notepad-bin-1.3.0-debian.deb::https://github.com/BLumia/pineapple-notepad/releases/download/1.3.0-freeware/pineapple-notepad-debian-trixie-x86_64-1.3.0.deb
+	source = pineapple-notepad-bin-1.4.0-deepin.deb::https://github.com/BLumia/pineapple-notepad/releases/download/1.4.0-freeware/pineapple-notepad-deepin-crimson-x86_64-1.4.0.deb
+	source = pineapple-notepad-bin-1.4.0-debian.deb::https://github.com/BLumia/pineapple-notepad/releases/download/1.4.0-freeware/pineapple-notepad-debian-trixie-x86_64-1.4.0.deb
 	source = EULA::https://raw.githubusercontent.com/BLumia/pineapple-notepad/master/LICENSE
-	sha256sums = 6f6136a0534cfd02a8ae80ffb256c06bcdb8459e1f31f1c0e439d718c3915787
-	sha256sums = 3ff5467e459de7881c23b81c3d64eff85e523ea36f90e6c39cb28bf8e23ebb43
+	sha256sums = dfced58472ae569b3ac9b8e3e6c84a6e928f8adaeda6fd2f7a2277535734946c
+	sha256sums = c899355ba73c287d223490542f31ef1f1b711d9179ef86d09590897dd901138a
 	sha256sums = f514b2154d0e975b6117368273d091e0b15833d09fc61cfd968c8dce130f639f
 
 pkgname = pineapple-notepad-bin

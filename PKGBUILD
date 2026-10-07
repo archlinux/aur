@@ -1,7 +1,7 @@
 # Maintainer: Alex3236 <me@alex3236.moe>
 
 pkgname=pineapple-notepad-bin
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A Qt 6, KDE Framework and Scintilla-based Cross-Platform Notepad++ Alternative"
 arch=('x86_64')
@@ -34,8 +34,8 @@ source=(
     "${pkgname}-${pkgver}-debian.deb::https://github.com/BLumia/pineapple-notepad/releases/download/${pkgver}-freeware/pineapple-notepad-debian-trixie-x86_64-${pkgver}.deb"
     "EULA::https://raw.githubusercontent.com/BLumia/pineapple-notepad/master/LICENSE"
 )
-sha256sums=('6f6136a0534cfd02a8ae80ffb256c06bcdb8459e1f31f1c0e439d718c3915787'
-            '3ff5467e459de7881c23b81c3d64eff85e523ea36f90e6c39cb28bf8e23ebb43'
+sha256sums=('dfced58472ae569b3ac9b8e3e6c84a6e928f8adaeda6fd2f7a2277535734946c'
+            'c899355ba73c287d223490542f31ef1f1b711d9179ef86d09590897dd901138a'
             'f514b2154d0e975b6117368273d091e0b15833d09fc61cfd968c8dce130f639f')
 
 package() {
