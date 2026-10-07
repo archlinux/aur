@@ -1,7 +1,7 @@
 # Maintainer: Cypher-Monarch <monarchcypher@gmail.com>
 
 pkgname=cyphergatevpn-bin
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="CypherGate VPN binary release"
 arch=('x86_64')
@@ -18,8 +18,8 @@ source=(
 )
 
 sha256sums=(
-  'd8da55a18ecf1f9d4f8e19c9ec708981e62df2dcb3003fc34b47bdb136e62abc'
-  '712b136b484e167ccdf5b85a8dd70f42ef233fb7536d71fda710a2bfffd207eb'
+  'ad54cbe8df336f769f48200796ec6713278d42cf9320debfe8352bfc68def72b'
+  '8cf8d4aa6cf045741f7381cf47c553d2e4ef1a79876990d0bce01bcdb0cef67a'
 )
 
 validpgpkeys=(
