@@ -1,9 +1,21 @@
 -------------------------------------------------------
  Changelog    : patricia26
- Tags         : 1.1.1 ➙ 1.4.1
-              : 2026-08-02 ➙ 2026-10-07
+ Tags         : 1.2.0 ➙ 1.4.2
+              : 2026-08-17 ➙ 2026-10-07
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-10-07   : 1.4.2
+              - **1.4.2**
+                * Finally sorted out the readthedoc quirks with clang/hawkmoth
+
+ 2026-10-07   : HEAD
+              - readthedocs - attempt num N
+              - readthedocs is very fussy about versions for some reason
+              - readthedocs - try simplifying the hawkmoth clang library relationship
+              - readthedocs continued - clang lib version issues
+              - readthedocs: add clang as well
+              - update the clang version for readthedocs
 
  2026-10-07   : 1.4.1
               - **1.4.1**
@@ -11,7 +23,7 @@
                   * Improve the struct docs
                   * Make available on readthedocs https://patricia26.readthedocs.io
 
- 2026-09-12   : 1.4.0, origin/master, origin/HEAD
+ 2026-09-12   : 1.4.0
               - **1.4.0**
             
                 * Little tidy ups.
@@ -40,9 +52,3 @@
                   Can lead to UB.
             
                 * Drop the Patricia26Int experimental class - too slow.
-
- 2026-08-02   : 1.1.1
-              - **1.1.1**
-            
-                * Fix for Python API reference doc.
-                  File name change caused it to be dropped from the PDF.
