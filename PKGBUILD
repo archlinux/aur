@@ -1,4 +1,4 @@
-# Maintainer: grimish@protonmail.com 
+# Maintainer: Grimish <grimish@protonmail.com>
 pkgname=mesa-kraid-git
 pkgver=26.3.0_devel.r230526.gd16ba52c381
 pkgrel=1
