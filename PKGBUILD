@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=vectorcraft
-pkgver=0.3.1
-pkgrel=5
+pkgver=0.4.0
+pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Adobe Illustrator'
@@ -14,7 +14,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('35d4af5db0d9f3446cd9736a7781507978499095a55689d837b4c055a86bb54a')
+sha256sums=('83424fbfc2ec9de3d45238f7d23bc4087e52f2e7b56c8bdac47e82e7fd1b4c0c')
 
 _srcenv() {
 	cd "$_archive"
