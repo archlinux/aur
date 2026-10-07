@@ -30,6 +30,7 @@ prepare() {
 package() {
   # bin
   install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+  install -Dm755 "${srcdir}/usr/bin/${_pkgname}-desktop" "${pkgdir}/usr/bin/${pkgname%-bin}-desktop"
 
   # desktop file
   install -Dm644 "${srcdir}/usr/share/applications/${__pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
