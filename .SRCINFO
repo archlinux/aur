@@ -1,7 +1,7 @@
 pkgbase = sioyek-dev
 	pkgdesc = PDF viewer for research papers (development branch, bundled MuPDF)
 	pkgver = 2.0.0.r1107.gfa4cd23
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ahrm/sioyek
 	arch = x86_64
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = sioyek-dev
 	depends = qt6-svg
 	depends = qt6-speech
 	depends = zlib
-	optdepends = qt6-wayland: Native Wayland (currently broken, uses XWayland by default)
+	optdepends = qt6-wayland: Native Wayland backend with QT_QPA_PLATFORM=wayland
 	provides = sioyek
 	conflicts = sioyek
 	conflicts = sioyek-git

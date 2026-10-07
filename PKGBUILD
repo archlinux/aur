@@ -1,6 +1,6 @@
 pkgname=sioyek-dev
 pkgver=2.0.0.r1107.gfa4cd23
-pkgrel=2
+pkgrel=3
 pkgdesc="PDF viewer for research papers (development branch, bundled MuPDF)"
 arch=('x86_64')
 license=('GPL3')
@@ -15,7 +15,7 @@ depends=(
     'zlib'
 )
 makedepends=('git' 'unzip')
-optdepends=('qt6-wayland: Native Wayland (currently broken, uses XWayland by default)')
+optdepends=('qt6-wayland: Native Wayland backend with QT_QPA_PLATFORM=wayland')
 provides=('sioyek')
 conflicts=('sioyek' 'sioyek-git')
 source=("git+https://github.com/ahrm/sioyek.git#branch=development")
@@ -47,7 +47,7 @@ package() {
     install -Dm755 sioyek "$pkgdir/usr/lib/sioyek/sioyek"
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/sioyek" << 'END'
 #!/bin/sh
-[ -n "$WAYLAND_DISPLAY" ] && export QT_QPA_PLATFORM=xcb
+[ -n "$WAYLAND_DISPLAY" ] && [ -z "$QT_QPA_PLATFORM" ] && export QT_QPA_PLATFORM=xcb
 exec /usr/lib/sioyek/sioyek "$@"
 END
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
