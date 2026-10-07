@@ -1,7 +1,7 @@
 # Maintainer: mzwing <mzwing@mzwing.eu.org>
 
 pkgname=xwayclip-git
-pkgver=0.2.2.r10.g97894ea
+pkgver=0.2.2.r12.gcdc5256
 pkgrel=1
 pkgdesc='Bidirectional clipboard synchronization between X11 and Wayland for poorly implemented apps like Linux QQ'
 arch=('x86_64')
