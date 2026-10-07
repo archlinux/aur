@@ -1,4 +1,4 @@
-# Maintainer: Ibnu Afdel <ibnu@example.com>
+# Maintainer: Ibnu Afdel <ibnuafdel at gmail dot com>
 pkgname=dbwiz-bin
 pkgver=1.1.0
 pkgrel=1
