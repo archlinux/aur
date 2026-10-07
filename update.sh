@@ -8,6 +8,11 @@ cd "$(dirname "$(readlink -f "$0")")"
 repo="Apps2Samsung/Apps2Samsung"
 pkgbuild="PKGBUILD"
 
+if [[ -n "$(git status --porcelain --untracked-files=no)" ]]; then
+	echo "Working tree not clean, aborting" >&2
+	exit 1
+fi
+
 current_ver=$(awk -F= '/^pkgver=/{print $2}' "$pkgbuild")
 
 release_json=$(curl -fsSL "https://api.github.com/repos/$repo/releases/latest")
@@ -45,6 +50,11 @@ sed -i \
 	"$pkgbuild"
 
 makepkg --printsrcinfo > .SRCINFO
+
+echo "Verifying build"
+makepkg -f --clean
+rm -f ./*.pkg.tar.* ./*.tar.gz
+rm -rf pkg src
 
 git add "$pkgbuild" .SRCINFO
 git commit -m "Update to v${latest_tag}"
