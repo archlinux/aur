@@ -1,6 +1,6 @@
 pkgbase = laneway-git
 	pkgdesc = A terminal board for Jira
-	pkgver = 0.10.0.r0.g49e0173
+	pkgver = 0.11.0.r0.gc4ae56f
 	pkgrel = 1
 	url = https://github.com/cornedor/laneway
 	arch = x86_64
