@@ -6,8 +6,8 @@ pkgrel=1
 arch=('x86_64')
 license=('MIT')
 
-pkgver="0.0.1_b10709_9a9394a"
-_tag="prism-b10709-9a9394a"
+pkgver="0.0.2_b10735_842b188"
+_tag="prism-b10735-842b188"
 _asset="llama-${_tag}-bin-linux-cuda-13.3-x64.tar.gz"
 _source="${pkgname}_${_tag}"
 
@@ -16,7 +16,7 @@ conflicts=('llama-cpp' 'llama-cpp-git' 'ggml' 'ggml-cuda')
 provides=('llama-cpp')
 
 source=("${_source}.tar.gz::${url}/releases/download/${_tag}/${_asset}")
-sha256sums=('7e01a434e513b373026c347cd008502ab04f6307d1cab71fcd4cea212b4fdbb0')
+sha256sums=('a84e28e22f108fb1f9b71bbde01e42fbe4626d2f0519b13394dd1ca0b91e9039')
 
 package() {
   cd "${srcdir}/llama-${_tag}"
