@@ -1,0 +1,14 @@
+pkgbase = vduck
+	pkgdesc = Terminal UI to browse and query DuckDB databases and data files
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://github.com/akhenakh/vduck
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = gcc
+	source = vduck-1.2.4.tar.gz::https://github.com/akhenakh/vduck/archive/refs/tags/v1.2.4.tar.gz
+	sha256sums = 34ac434b50370226a406cfb66b5c0b47e44be4984646ddaa45cf9d494e4fbd68
+
+pkgname = vduck
