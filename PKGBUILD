@@ -1,7 +1,7 @@
 # Maintainer: Stéphane Jourdois <stephane@jourdois.fr>
 # Rename to PKGBUILD when publishing the wlr-utils-bin AUR package.
 pkgname=wlr-utils-bin
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc='Native screen tools for wlroots compositors: pick, switch, capture, inspect and annotate (prebuilt binaries)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=('wlr-utils')
 conflicts=('wlr-utils')
 _archive="wlr-utils-$CARCH-unknown-linux-gnu"
 source=("$_archive-$pkgver.tar.xz::$url/releases/download/v$pkgver/$_archive.tar.xz")
-sha256sums=('c53c4451ce79b0e155bfb68cec53d171251459ee3a75a2c1ca8a6072bef21831')
+sha256sums=('754fc7deb4728c0420657fc548c228f359560449f39d346d55b3982208fbaf98')
 
 package() {
 	# The cargo-dist archive unpacks into a single top-level directory named after

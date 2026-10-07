@@ -1,6 +1,6 @@
 pkgbase = wlr-utils-bin
 	pkgdesc = Native screen tools for wlroots compositors: pick, switch, capture, inspect and annotate (prebuilt binaries)
-	pkgver = 1.11.0
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://github.com/sjourdois/wlr-utils
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = wlr-utils-bin
 	optdepends = xdg-desktop-portal-wlr: screencast portal that drives wlr-chooser
 	provides = wlr-utils
 	conflicts = wlr-utils
-	source = wlr-utils-x86_64-unknown-linux-gnu-1.11.0.tar.xz::https://github.com/sjourdois/wlr-utils/releases/download/v1.11.0/wlr-utils-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums = c53c4451ce79b0e155bfb68cec53d171251459ee3a75a2c1ca8a6072bef21831
+	source = wlr-utils-x86_64-unknown-linux-gnu-1.11.1.tar.xz::https://github.com/sjourdois/wlr-utils/releases/download/v1.11.1/wlr-utils-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = 754fc7deb4728c0420657fc548c228f359560449f39d346d55b3982208fbaf98
 
 pkgname = wlr-utils-bin
