@@ -1,6 +1,6 @@
 pkgbase = shopify-cli
 	pkgdesc = A CLI tool to build for the Shopify platform
-	pkgver = 4.8.4
+	pkgver = 4.8.5
 	pkgrel = 1
 	url = https://github.com/Shopify/cli
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = shopify-cli
 	makedepends = jq
 	depends = nodejs
 	depends = libx11
-	noextract = cli-4.8.4.tgz
-	source = https://registry.npmjs.org/@shopify/cli/-/cli-4.8.4.tgz
-	sha256sums = f1cd993e65d5f9ccae0a10ea052b25e3ed98bb9bfb86857abcbe560345826a4d
+	noextract = cli-4.8.5.tgz
+	source = https://registry.npmjs.org/@shopify/cli/-/cli-4.8.5.tgz
+	sha256sums = 268b6ca054ee484ba9bcfe5ebfd6cd2e34770e74cc538a831f2050ba01090b18
 
 pkgname = shopify-cli
