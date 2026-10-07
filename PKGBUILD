@@ -1,4 +1,4 @@
-# Maintainer: Ibnu Afdel <ibnu@example.com>
+# Maintainer: Ibnu Afdel <ibnuafdel at gmail dot com>
 pkgname=pomogo-bin
 pkgver=2.0.0
 pkgrel=1
