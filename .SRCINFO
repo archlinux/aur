@@ -1,0 +1,26 @@
+pkgbase = efr-code
+	pkgdesc = Terminal-first AI agent harness that lives in zsh, with a daemon that owns the state
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/eggfriedrice24/eggfriedrice.code
+	install = efr-code.install
+	arch = x86_64
+	license = MIT
+	checkdepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = zsh
+	optdepends = bubblewrap: the kernel sandbox of the auto mode (also needs Linux 7.1 or newer)
+	optdepends = git: project roots and the git facts of a turn
+	optdepends = xdg-utils: let efr login openai open the browser with EFR_OPEN_BROWSER=1
+	conflicts = efr-code-bin
+	options = !lto
+	source = efr-code-0.0.1.tar.gz::https://github.com/eggfriedrice24/eggfriedrice.code/archive/refs/tags/v0.0.1.tar.gz
+	source = ghostty-22d13172cde98a0a4dda05d3d6a3fcb0dd8ed018.tar.gz::https://github.com/ghostty-org/ghostty/archive/22d13172cde98a0a4dda05d3d6a3fcb0dd8ed018.tar.gz
+	source = https://ziglang.org/download/0.16.0/zig-x86_64-linux-0.16.0.tar.xz
+	b2sums = 29ddaf4ae7516fd0d5bbbe6646ac98cd2edbc6cf481194c58f472d67b2098164f3242dc3f02ba256d5d55e82924013e60fc8adbfb6ff97451c7cc68829299911
+	b2sums = 04e7fc2104a5e6bccbe5b189f5dcc4e3abf0a80410764f6ae44fcd042ca952250df08f6e60631653b00b7202dd1d906ca6033ad66a2ecb1cfa2935496120daef
+	b2sums = 77f476c241e6be49e8e71a98276261bdc8cc0bb90aca277f2d81413fe373d94c442df5277cf4cd0893b986b4c6c2a6f8b2061c9305fe8445883316899ff67958
+
+pkgname = efr-code

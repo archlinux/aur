@@ -1,0 +1,18 @@
+post_install() {
+  cat <<'EOF'
+==> efr-code: do these three steps as your own user:
+==>   1. Add this line to ~/.zshrc:
+==>        source /usr/share/zsh/plugins/efr/efr.plugin.zsh
+==>   2. Start the daemon now and at each login:
+==>        systemctl --user enable --now efrd
+==>   3. Log in to your ChatGPT plan:
+==>        efr login openai
+==> The auto mode needs Linux 7.1 or newer and bubblewrap (pacman -S bubblewrap).
+==> Without them, auto runs as cautious. "efr sandbox check" tells you why.
+EOF
+}
+
+post_upgrade() {
+  # The running daemon keeps the old efrd and its copy of efr-sbx until it restarts.
+  echo '==> efr-code: restart the daemon to use the new version: systemctl --user restart efrd'
+}
