@@ -1,0 +1,22 @@
+pkgbase = mpf-cli-git
+	pkgdesc = Command-line frontend for Redumper, Aaru, and DiscImageCreator
+	pkgver = 3.10.0.r20.gbade587
+	pkgrel = 2
+	url = https://github.com/SabreTools/MPF
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	makedepends = git
+	depends = dotnet-runtime-10.0
+	optdepends = redumper: default dumping backend
+	optdepends = aaru: Aaru dumping backend
+	optdepends = discimagecreator: DiscImageCreator dumping backend
+	provides = mpf-cli
+	conflicts = mpf-cli
+	conflicts = mpf-cli-bin
+	options = !strip
+	source = git+https://github.com/SabreTools/MPF.git#branch=master
+	sha256sums = SKIP
+
+pkgname = mpf-cli-git
