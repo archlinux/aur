@@ -2,7 +2,7 @@
 
 pkgname=artcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.0.0
+pkgver=0.41.0.r8.g3e5793b
 pkgrel=1
 url="https://getartcraft.com/apps/$_pkgname"
 _url="https://github.com/storytold/$_pkgname"
@@ -60,8 +60,8 @@ prepare() {
 
 pkgver() {
 	cd "$_pkgname"
-	git describe --long --tags --abbrev=7 --match="v*" HEAD |
-			sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 --match="$_pkgname-v*" HEAD |
+			sed -e "s/^$_pkgname-v//" -e 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

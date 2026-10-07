@@ -1,6 +1,6 @@
 pkgbase = artcraft-git
 	pkgdesc = IDE for interactive AI image and video creation
-	pkgver = 0.0.0
+	pkgver = 0.41.0.r8.g3e5793b
 	pkgrel = 1
 	url = https://getartcraft.com/apps/artcraft
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = artcraft-git
 	depends = pango
 	depends = sqlite
 	depends = webkit2gtk-4.1
-	provides = artcraft=0.0.0
+	provides = artcraft=0.41.0.r8.g3e5793b
 	conflicts = artcraft
 	options = !lto
 	source = git+https://github.com/storytold/artcraft.git
