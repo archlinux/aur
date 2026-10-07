@@ -10,7 +10,7 @@ pkgdesc="A super \"coolorful\" shell for Hyprland! (latest-commit version)"
 license=('BSD-3-Clause')
 url="https://github.com/retrozinndev/colorshell"
 pkgrel=1
-pkgver=2.1.3.r56.g636d149
+pkgver=2.1.3.r70.ged87dd3
 arch=('any')
 sha256sums=('SKIP')
 provides=("$_pkgname")
@@ -20,7 +20,7 @@ source=(
 )
 makedepends=(
     'git'
-    'pnpm'
+    'bun'
     'jq'
 )
 depends=(
@@ -71,12 +71,12 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
-    pnpm install
+    bun install
 }
 
 build() {
     cd "$_pkgname"
-    pnpm build -rg "/usr/share/colorshell/resources.gresource" -o build
+    bun run build -rg "/usr/share/colorshell/resources.gresource" -o build
 }
 
 package() {
