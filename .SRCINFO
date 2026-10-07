@@ -1,6 +1,6 @@
 pkgbase = trustsight
 	pkgdesc = Audits AUR PKGBUILD updates before install: structure, commands, novelty
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/emiliano-go/trustsight
 	arch = any
@@ -18,10 +18,10 @@ pkgbase = trustsight
 	depends = python-typer
 	depends = python-cryptography
 	optdepends = pyalpm: native version comparison (faster discovery)
-	source = trustsight-0.18.0.tar.gz::https://github.com/emiliano-go/trustsight/releases/download/v0.18.0/trustsight-0.18.0.tar.gz
-	source = trustsight-0.18.0.tar.gz.sig::https://github.com/emiliano-go/trustsight/releases/download/v0.18.0/trustsight-0.18.0.tar.gz.sig
+	source = trustsight-0.18.1.tar.gz::https://github.com/emiliano-go/trustsight/releases/download/v0.18.1/trustsight-0.18.1.tar.gz
+	source = trustsight-0.18.1.tar.gz.sig::https://github.com/emiliano-go/trustsight/releases/download/v0.18.1/trustsight-0.18.1.tar.gz.sig
 	validpgpkeys = F759D6D49B0A395AB922414A5CC3B4C50D37E793
-	sha256sums = c7a32f77f7f0434a634077dbbea63612f6d6348d5bf2f4deb17fb75158e6bc56
-	sha256sums = a22cb0f0857fa90b23573538e5d6ab21956d13f382e21c982a847eebaec38da8
+	sha256sums = f8fcb4575af7b8958c2525784c0727ad652d0c7e86ec0440d8a5286142c0e89e
+	sha256sums = db238649d28b45f7f306654f4fb12ecac40c4223a6ba5404cbb470269d69b854
 
 pkgname = trustsight
