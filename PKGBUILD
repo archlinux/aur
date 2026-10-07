@@ -1,7 +1,7 @@
 # Maintainer: Snoopey <thomas@wrightconsulting.uk>
 pkgname=omnigent-cli
 pkgver=0.17.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Omnigent CLI, server, and agent host with isolated Python dependencies'
 arch=('x86_64')
 url='https://github.com/omnigent-ai/omnigent'
@@ -33,7 +33,7 @@ source=(omnigent-0.17.0.tar.gz::https://files.pythonhosted.org/packages/21/ba/2b
         click-8.5.0-py3-none-any.whl::https://files.pythonhosted.org/packages/58/50/6c0d534c5f134586a8e1ba4e330569e32f057e33372ae556463212fb4cd3/click-8.5.0-py3-none-any.whl
         cryptography-50.0.1-cp311-abi3-manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/e1/1b/82f0f0d8858d4432be1af790477edf62aef90324041aa07c57e57bef1af7/cryptography-50.0.1-cp311-abi3-manylinux_2_28_x86_64.whl
         distro-1.9.0-py3-none-any.whl::https://files.pythonhosted.org/packages/12/b3/231ffd4ab1fc9d679809f356cebee130ac7daa00d6d6f3206dd4fd137e9e/distro-1.9.0-py3-none-any.whl
-        fastapi-0.142.1-py3-none-any.whl::https://files.pythonhosted.org/packages/4d/17/bb503d4b3bea614eae48ffecafe192b097082e8afcf3f2dbde3d78438cc4/fastapi-0.142.1-py3-none-any.whl
+        fastapi-0.142.2-py3-none-any.whl::https://files.pythonhosted.org/packages/a0/b6/78aaf9141fb46742928c113f3cf6ef2259d538cb02b604b7656c1dc9883c/fastapi-0.142.2-py3-none-any.whl
         filelock-4.0.7-py3-none-any.whl::https://files.pythonhosted.org/packages/06/cf/1731c0dd182ee35f80a39e63afb3d03056ea0dd561b7498932b10b2e34d9/filelock-4.0.7-py3-none-any.whl
         ftfy-6.3.1-py3-none-any.whl::https://files.pythonhosted.org/packages/ab/6e/81d47999aebc1b155f81eca4477a616a70f238a2549848c38983f3c22a82/ftfy-6.3.1-py3-none-any.whl
         google_re2-1.1.20251105-1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/03/be/a8def96aa4a80b233e105767d22e3de961dcde5a04f0a05cb4f3ddb4df78/google_re2-1.1.20251105-1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
@@ -132,7 +132,7 @@ sha256sums=(20bc4039f4f3d6f59e3179b3a1692ce3ea8c7be36619a437748bf2a06bfa4147
             255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360
             51593d180cf6d179bde5c5d065bed81386b1f381656ae7d042b7ffc87a9895ad
             7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2
-            7eea2b5b1632ed43de2c090b3a43b7d92267189dfbbd55a967307ed763b6c57a
+            bd5f4d81f1e93a88bcd77caf4dfe3c2dbffc3805407a0007e9a114c18b3a670b
             a93c4d93269b339a6af4848342c7e940d0f9928ad95eff64764699e5f1bf8a6a
             7c70eb532015cd2f9adb53f101fb6c7945988d023a085d127d1573dc49dd0083
             a7bfaa2cf55daf0c5c650e68526bb20b61e37d7f3ae53f6893013acc1c91c116
@@ -208,7 +208,7 @@ sha256sums=(20bc4039f4f3d6f59e3179b3a1692ce3ea8c7be36619a437748bf2a06bfa4147
             7a6ceec4ea84469f15cf15807a747e9efe57e369c384fa86e022b3bea679b79b
             e09bb6252b6476d8d56100e8147b803befa9a12cea144bbe629dd508800d1ad0
             aac80bec8b6fe35e8480f1c335be8910fa210a0e6f735a139be205dadcacb544
-            d6a6304bbc2ddd83adf3a525ca229bdee590fea20ec1ee32540787883f3e0ce8
+            4e68d934f21310052df8cb3e79caaced77c61a6201107a76659c033df54fbc28
             a0bd60054eae7ce2f8fedb9c295d8137f269fedbf08220a54dde1a0d09f0e9a4
             edd22b3947e18e681e397590651edf2551024be4d53bea5fa55efc428a2acb07
             e9e49acfc1599bb114332a40479d99275e3668b34bd66a6ae2143ba93ec76315)
@@ -228,7 +228,7 @@ noextract=(alembic-1.20.0-py3-none-any.whl
            click-8.5.0-py3-none-any.whl
            cryptography-50.0.1-cp311-abi3-manylinux_2_28_x86_64.whl
            distro-1.9.0-py3-none-any.whl
-           fastapi-0.142.1-py3-none-any.whl
+           fastapi-0.142.2-py3-none-any.whl
            filelock-4.0.7-py3-none-any.whl
            ftfy-6.3.1-py3-none-any.whl
            google_re2-1.1.20251105-1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
