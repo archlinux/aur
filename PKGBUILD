@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A live TUI dashboard for a fleet of git repos"
 
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,8 +31,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
 sha256sums=('99492817b5ab9cb78c298b911483e68e2c8e7986f98df634ffedf7e317520ac7'
             'c13c90e64ceabc5dfe6450da43bb2479cd026feed99338bff3391677c65e1c6a')
-sha256sums_x86_64=('e6ad5ebf6a6c2472a75fc58073b8cdbd94075a9101f63c0c3c308fc4bc3c6c69')
-sha256sums_aarch64=('dba51ba2a968cf5dbee4c954337cf914c32f46085a3ecaa6210542cae6509bc6')
+sha256sums_x86_64=('6b297fc19dc83c54663c26b701bc64b33a3ec82c75b9993a1afbe5c7c64a8eed')
+sha256sums_aarch64=('c7f56ec22991177700890fb0247c40895dfd5bbf3ab4f750b2dcbed2bfe1c0e4')
 
 
 package() {

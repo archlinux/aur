@@ -1,6 +1,6 @@
 pkgbase = drydock-bin
 	pkgdesc = A live TUI dashboard for a fleet of git repos
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/yetidevworks/drydock
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = drydock-bin
 	provides = drydock
 	conflicts = drydock
 	options = !strip
-	source = README-1.2.1.md::https://raw.githubusercontent.com/yetidevworks/drydock/v1.2.1/README.md
-	source = LICENSE-1.2.1::https://raw.githubusercontent.com/yetidevworks/drydock/v1.2.1/LICENSE
+	source = README-1.2.2.md::https://raw.githubusercontent.com/yetidevworks/drydock/v1.2.2/README.md
+	source = LICENSE-1.2.2::https://raw.githubusercontent.com/yetidevworks/drydock/v1.2.2/LICENSE
 	sha256sums = 99492817b5ab9cb78c298b911483e68e2c8e7986f98df634ffedf7e317520ac7
 	sha256sums = c13c90e64ceabc5dfe6450da43bb2479cd026feed99338bff3391677c65e1c6a
-	source_x86_64 = drydock-x86_64-1.2.1.tgz::https://github.com/yetidevworks/drydock/releases/download/v1.2.1/drydock-linux-x86_64.tar.gz
-	sha256sums_x86_64 = e6ad5ebf6a6c2472a75fc58073b8cdbd94075a9101f63c0c3c308fc4bc3c6c69
-	source_aarch64 = drydock-aarch64-1.2.1.tgz::https://github.com/yetidevworks/drydock/releases/download/v1.2.1/drydock-linux-aarch64.tar.gz
-	sha256sums_aarch64 = dba51ba2a968cf5dbee4c954337cf914c32f46085a3ecaa6210542cae6509bc6
+	source_x86_64 = drydock-x86_64-1.2.2.tgz::https://github.com/yetidevworks/drydock/releases/download/v1.2.2/drydock-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 6b297fc19dc83c54663c26b701bc64b33a3ec82c75b9993a1afbe5c7c64a8eed
+	source_aarch64 = drydock-aarch64-1.2.2.tgz::https://github.com/yetidevworks/drydock/releases/download/v1.2.2/drydock-linux-aarch64.tar.gz
+	sha256sums_aarch64 = c7f56ec22991177700890fb0247c40895dfd5bbf3ab4f750b2dcbed2bfe1c0e4
 
 pkgname = drydock-bin
