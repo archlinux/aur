@@ -1,8 +1,8 @@
 pkgbase = artcraft
 	pkgdesc = IDE for interactive AI image and video creation
 	pkgver = 0.41.0
-	pkgrel = 2
-	url = https://github.com/storytold/artcraft
+	pkgrel = 3
+	url = https://getartcraft.com
 	arch = x86_64
 	license = MIT
 	makedepends = cargo

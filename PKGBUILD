@@ -2,8 +2,9 @@
 
 pkgname=artcraft
 pkgver=0.41.0
-pkgrel=2
-url="https://github.com/storytold/$pkgname"
+pkgrel=3
+url="https://getartcraft.com"
+_url="https://github.com/storytold/$pkgname"
 pkgdesc='IDE for interactive AI image and video creation'
 arch=(x86_64)
 license=(MIT)
@@ -32,7 +33,7 @@ makedepends=(cargo
 options=(!lto)
 _tag="$pkgname-v$pkgver"
 _archive="$pkgname-$_tag"
-source=("$url/archive/refs/tags/$_tag/$_archive.tar.gz")
+source=("$_url/archive/refs/tags/$_tag/$_archive.tar.gz")
 sha256sums=('c10a89be18b8322e51d9ee6985032ba79872ceb0477beaf72c753d4340baba00')
 
 _srcenv() {
@@ -54,11 +55,21 @@ _srcenv() {
 prepare() {
 	_srcenv
 	cargo fetch --locked --target host-tuple
+	pushd frontend
+	npm ci --allow-git=all --dangerously-allow-all-scripts --no-audit --no-fund
 }
 
 build() {
 	_srcenv
-	cargo build --frozen --release
+	# cargo tauri build
+	pushd frontend
+	env \
+		VITE_ENVIRONMENT_TYPE=production \
+		NODE_OPTIONS=--max-old-space-size=8192 \
+		npx nx run artcraft:build
+	popd
+	# feature enabled to trigger production mode to embed assets
+	cargo build --frozen --release --features tauri/custom-protocol
 }
 
 package() {
