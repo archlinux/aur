@@ -1,6 +1,6 @@
 # Maintainer: mahirsn <mahirsuna72@gmail.com>
 pkgname=mmsimpulse-git
-pkgver=r144.21f16a1
+pkgver=r146.fcf4d75
 pkgrel=1
 pkgdesc="A Wayland session of KWin plus the illogical-impulse shell — no desktop environment"
 # Not 'any': the workspace-sharing KWin effect is compiled, against the
@@ -83,7 +83,7 @@ package() {
   # assembled in $HOME and cannot be built here, so the package ships the
   # tooling and `mmsimpulse-install` does that part once.
   install -d "$pkgdir/usr/share/mmsimpulse"
-  cp -a bin kwin-script overlay session shortcuts install.sh README.md TESTING.md \
+  cp -a bin kwin-script overlay session shortcuts install.sh README.md \
         "$pkgdir/usr/share/mmsimpulse/"
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/mmsimpulse-install" <<'WRAPPER'
@@ -94,6 +94,5 @@ exec /usr/share/mmsimpulse/install.sh "$@"
 WRAPPER
 
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 TESTING.md "$pkgdir/usr/share/doc/$pkgname/TESTING.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
