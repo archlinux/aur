@@ -3,8 +3,8 @@
 
 pkgname=python-paragrep
 _pkgname=paragrep
-pkgver=3.3.0
-pkgrel=2
+pkgver=3.3.2
+pkgrel=1
 pkgdesc="grep-like tool that searches for and displays entire paragraphs matching a pattern"
 arch=('any')
 url="https://github.com/bmc/paragrep"
@@ -14,7 +14,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 _tag="release-$pkgver"
 _srcdir="paragrep-$_tag"
 source=("$_pkgname-$pkgver.tar.gz::https://codeload.github.com/bmc/paragrep/tar.gz/refs/tags/$_tag")
-sha256sums=('86f7cfac16ee737546c6800871746b574427e1f1730a49d510fca825715bf961')
+sha256sums=('318dc9be3312f7b3de001dc5ca1cc1fc85366205d1401f0429d8f300b5b419fc')
 
 build() {
 	cd "$_srcdir"
