@@ -13,6 +13,7 @@ depends=('bash' 'fzf' 'python')
 makedepends=('git')
 provides=('fastdiract')
 conflicts=('fastdiract')
+install=$pkgname.install
 source=("fastdiract::git+https://github.com/dp12/fastdiract.git")
 sha256sums=('SKIP')
 
@@ -27,13 +28,5 @@ package() {
 	cp -r ./* "$pkgdir/usr/share/$_pkgname/"
 	rm -f "$pkgdir/usr/share/$_pkgname/install.sh"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
-	cat >"$pkgdir/usr/share/doc/$_pkgname/USAGE.txt" <<'EOF'
-Para activar fastdiract, añade a tu ~/.bashrc:
-source /usr/share/fastdiract-git/definitions
-fastactions/fastvim requieren Python; fzf es necesario para el cambio de
-contextos. Si vienes de una versión antigua, ejecuta migrate.sh desde
-/usr/share/fastdiract-git/. Consulta README.md para personalización.
-EOF
-
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

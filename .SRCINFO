@@ -3,6 +3,7 @@ pkgbase = python-fastdiract-git
 	pkgver = r9.f386e87
 	pkgrel = 1
 	url = https://github.com/dp12/fastdiract
+	install = python-fastdiract-git.install
 	arch = any
 	license = MIT
 	makedepends = git

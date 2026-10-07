@@ -1,0 +1,7 @@
+post_install() {
+	echo 'Para activar fastdiract, añade a tu ~/.bashrc:'
+	echo '  source /usr/share/fastdiract-git/definitions'
+	echo 'fastactions/fastvim requieren Python; fzf es necesario para el cambio de contextos.'
+	echo 'Si vienes de una versión antigua, ejecuta migrate.sh desde /usr/share/fastdiract-git/.'
+	echo 'Personalización: /usr/share/doc/fastdiract-git/README.md'
+}
