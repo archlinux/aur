@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Run it on another machine you own, get the result back — a personal job runner for your tailnet"
 
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -41,11 +41,11 @@ sha256sums=('36ea605fa9a9140d536820d6544399a7297759fbada3f9bd423d946c97c5eee6'
             'baf396f7e9524b0fb2234dab972d71e45f6ed5d0bc1538f8e09858e4f8788379'
             'efd86b0964348767a30fdd4bdffac2d634dda25a0a7e8768fa0ebe96c7230222'
             'f4625955f10d969e367879f213bab09023fe376fa614abe94bf2ab98d499b549'
-            '0f110a3e275dd3d9afcea028f8a859c84ea7852a5d29ef971fd846a4160b9709'
+            '92d725d06966d72c0d8d3842d47921aee5b117b0f084cbbea5693fc5ecb23349'
             '81fc7579f732157a6efc5390dd21e363ed9c037843b842fffe152abc2c1224ab'
             'd3d1dc7f3dc0cac73db8c8ed0873399a57c89d3f323f07145d26a25011d0917d')
-sha256sums_x86_64=('0c47862058f4aa52456129adec9326f698dcc2607d29e500ad36710c17fa6490')
-sha256sums_aarch64=('aee728bb8248a909879f4596d523f574b0743b7d74402ffbfaa830dab5f4c02c')
+sha256sums_x86_64=('98a63bf6bed8da4991f00a7657cf07da01e068eb25eb5398a14171e1605b223f')
+sha256sums_aarch64=('25abb8b45eba6ad8508a85b4aeb289bd090bba6bbd770fff59e95549e7fa3fb0')
 
 
 package() {
