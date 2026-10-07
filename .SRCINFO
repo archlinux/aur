@@ -1,5 +1,5 @@
 pkgbase = cadcraft-git
-	pkgdesc = vibe coded clean-room reimplementation of Autodesk AutoCAD
+	pkgdesc = vibe coded clean-room reimplementation of Autodesk AutoCAD (Git HEAD)
 	pkgver = 0.0.0.r18.g7d4ca28
 	pkgrel = 1
 	url = https://getartcraft.com/apps/cadcraft
