@@ -1,7 +1,7 @@
 # Maintainer: Emiliano Gandini Outeda <emiliano.gandini@protonmail.com>
 
 pkgname=trustsight
-pkgver=0.17.4
+pkgver=0.18.0
 pkgrel=1
 pkgdesc='Audits AUR PKGBUILD updates before install: structure, commands, novelty'
 arch=('any')
@@ -28,9 +28,17 @@ makedepends=(
 optdepends=(
   'pyalpm: native version comparison (faster discovery)'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+# The release tarball carries a detached signature made with the pinned
+# commit-signing key, whose private half is not available to CI.  makepkg
+# verifies the signature because the key is pinned here and the `.sig` is a
+# declared source; the checksum below is the *real* hash of that signature,
+# never `SKIP`.
+validpgpkeys=('F759D6D49B0A395AB922414A5CC3B4C50D37E793')
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.sig::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.sig")
 
-sha256sums=('ccbb4c33c8748a4f389b53b6e2643e5c906d3841ab0d491a53ca1b5eba1c7975')
+sha256sums=('c7a32f77f7f0434a634077dbbea63612f6d6348d5bf2f4deb17fb75158e6bc56'
+            'a22cb0f0857fa90b23573538e5d6ab21956d13f382e21c982a847eebaec38da8')
 
 build() {
   cd "$pkgname-$pkgver"
