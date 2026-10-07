@@ -1,20 +1,20 @@
 pkgbase = electronwmd-bin
-	pkgdesc = Electron version of Web MiniDisc Pro.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.5.2_1.5.3
+	pkgdesc = Electron version of Web MiniDisc Pro.
+	pkgver = 0.5.3_1.6.1
 	pkgrel = 1
 	url = https://github.com/asivery/ElectronWMD
 	arch = x86_64
 	license = GPL-2.0-only
-	makedepends = fuse2
-	depends = electron31
+	depends = electron44
+	depends = nodejs
 	depends = perl
 	depends = libdbusmenu-glib
-	provides = electronwmd=0.5.2_1.5.3
+	provides = electronwmd=0.5.3_1.6.1
 	conflicts = electronwmd
 	options = !strip
-	source = electronwmd-0.5.2_1.5.3-x86_64.AppImage::https://github.com/asivery/ElectronWMD/releases/download/v0.5.2-1.5.3/electronwmd-0.5.2-1.5.3-linux_x86_64.AppImage
+	source = electronwmd-0.5.3_1.6.1-x86_64.AppImage::https://github.com/asivery/ElectronWMD/releases/download/v0.5.3-1.6.1/electronwmd-0.5.3-1.6.1-linux_x86_64.AppImage
 	source = electronwmd.sh
-	sha256sums = c63589e1f701afc659feb8753efa8b1e5b313fbd32f38d6a877616b24916727a
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = 22a07e7a69d796ccae60dacae013ac610f0df96e73d436620968788715594df5
+	sha256sums = fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8
 
 pkgname = electronwmd-bin
