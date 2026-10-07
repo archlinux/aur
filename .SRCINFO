@@ -1,6 +1,6 @@
 pkgbase = turso-bin
 	pkgdesc = Turso Database is an in-process SQL database, compatible with SQLite.
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/tursodatabase/turso
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = turso-bin
 	depends = libgcc
 	provides = turso
 	conflicts = turso
-	source_x86_64 = turso-bin-0.8.1-x86_64.tar.xz::https://github.com/tursodatabase/turso/releases/download/v0.8.1/turso_cli-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = b4b94f334cc8ccbf6a7cde1aa7c2949acbc51c83dc41680192a47bd619c021eb
-	source_aarch64 = turso-bin-0.8.1-aarch64.tar.xz::https://github.com/tursodatabase/turso/releases/download/v0.8.1/turso_cli-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = a1dfe53b18e273beb97e91f32e57148692e0529450d0db85234a524b5dfafd37
+	source_x86_64 = turso-bin-0.8.2-x86_64.tar.xz::https://github.com/tursodatabase/turso/releases/download/v0.8.2/turso_cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 1a12393fdb1fc36ef4c0339609b2652d6a0f7bb4a5f6c08da4afe1d364422d18
+	source_aarch64 = turso-bin-0.8.2-aarch64.tar.xz::https://github.com/tursodatabase/turso/releases/download/v0.8.2/turso_cli-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 9c88e352173d913a8202637f22030d1521d0f6085e34c39961b2bc2745837d9f
 
 pkgname = turso-bin

@@ -1,7 +1,7 @@
 # Maintainer: aarto <aarto@aur.archlinux.org>
 _pkgname=turso
 pkgname=$_pkgname-bin
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='Turso Database is an in-process SQL database, compatible with SQLite.'
 url='https://github.com/tursodatabase/turso'
@@ -12,8 +12,8 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.xz::$url/releases/download/v$pkgver/${_pkgname}_cli-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.xz::$url/releases/download/v$pkgver/${_pkgname}_cli-aarch64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('b4b94f334cc8ccbf6a7cde1aa7c2949acbc51c83dc41680192a47bd619c021eb')
-sha256sums_aarch64=('a1dfe53b18e273beb97e91f32e57148692e0529450d0db85234a524b5dfafd37')
+sha256sums_x86_64=('1a12393fdb1fc36ef4c0339609b2652d6a0f7bb4a5f6c08da4afe1d364422d18')
+sha256sums_aarch64=('9c88e352173d913a8202637f22030d1521d0f6085e34c39961b2bc2745837d9f')
 
 package() {
     install -Dm755 -t "$pkgdir/usr/bin/" ./**/${_pkgname}db
