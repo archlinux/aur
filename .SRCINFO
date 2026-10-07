@@ -1,5 +1,5 @@
 pkgbase = giq
-	pkgdesc = Git CLI with AI-powered commit messages and insights; drop-in replacement for git with the same commands
+	pkgdesc = Git CLI with AI-powered commit messages and insights; drop-in git replacement
 	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/doganarif/giq

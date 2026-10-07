@@ -4,7 +4,7 @@
 pkgname=giq
 pkgver=0.1.4
 pkgrel=1
-pkgdesc="Git CLI with AI-powered commit messages and insights; drop-in replacement for git with the same commands"
+pkgdesc="Git CLI with AI-powered commit messages and insights; drop-in git replacement"
 arch=('x86_64' 'aarch64')
 url="https://github.com/doganarif/giq"
 license=('MIT')
