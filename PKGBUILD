@@ -5,7 +5,7 @@ _pkgname=rune
 _binaryname=rune
 pkgdesc="Fast, GPU-rendered, keyboard-driven IDE for power users"
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url="https://github.com/unstablebuild/rune"
 license=('GPL-3.0-or-later')
@@ -24,6 +24,7 @@ depends=(
     'libxxf86vm'
     'libglvnd'
 )
+conflicts=('rune-ide')
 
 source_x86_64=(
     "$pkgname-$pkgver-linux-amd64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.tar.gz"
@@ -41,16 +42,18 @@ sha256sums_aarch64=('a07cb3ca75b299aa5609a909f6b5f24c01b3f3c5b08c4164a8e120d3435
 
 package() {
     # upstream ships a self-contained "rune.app" bundle (bin/, share/) whose
-    # binary locates share/ relative to its own path, so the tree is kept
-    # intact under /opt rather than split across the usual FHS locations
-    install -D -m0755 "${srcdir}/${_pkgname}.app/bin/${_binaryname}" "${pkgdir}/opt/${pkgname}/bin/${_binaryname}"
+    # binary locates share/ relative to its own path, and only when that
+    # path is .../rune.app/bin/, so the tree is kept intact under /opt
+    # rather than split across the usual FHS locations
+    local _appdir="/opt/${pkgname}/${_pkgname}.app"
+    install -D -m0755 "${srcdir}/${_pkgname}.app/bin/${_binaryname}" "${pkgdir}${_appdir}/bin/${_binaryname}"
 
     for f in .zlogin .zprofile .zshenv .zshrc; do
-        install -D -m0644 "${srcdir}/${_pkgname}.app/share/zdot/$f" "${pkgdir}/opt/${pkgname}/share/zdot/$f"
+        install -D -m0644 "${srcdir}/${_pkgname}.app/share/zdot/$f" "${pkgdir}${_appdir}/share/zdot/$f"
     done
 
     install -d "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/bin/${_binaryname}" "${pkgdir}/usr/bin/${_binaryname}"
+    ln -s "${_appdir}/bin/${_binaryname}" "${pkgdir}/usr/bin/${_binaryname}"
 
     # renamed from upstream's rune.desktop: the unrelated AUR package
     # "rune" (a Loki Entertainment game) already owns that filename under
