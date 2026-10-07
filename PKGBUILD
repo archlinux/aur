@@ -2,27 +2,32 @@
 
 pkgname=ndpi
 pkgver=6.0 # renovate: datasource=github-tags depName=ntop/nDPI
-pkgrel=1
+pkgrel=2
 pkgdesc="Open and Extensible Deep Packet Inspection Library"
-arch=('x86_64')
-url="http://www.ntop.org/products/ndpi/"
+arch=('x86_64' 'aarch64')
+url="https://www.ntop.org/products/deep-packet-inspection/ndpi/"
 license=('LGPL-3.0-or-later')
-conflicts=('ndpi-svn')
-depends=('libcap')
-makedepends=('json-c' 'libmaxminddb' 'libpcap' 'numactl' 'pcre2' 'rrdtool')
-source=("https://github.com/ntop/nDPI/archive/${pkgver}.tar.gz")
+provides=('libndpi.so')
+conflicts=('ndpi-svn' 'ndpi-git')
+depends=('glibc' 'libmaxminddb' 'libpcap' 'pcre2')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ntop/nDPI/archive/${pkgver}.tar.gz")
+
+prepare() {
+  cd "nDPI-${pkgver}"
+  ./autogen.sh
+}
 
 build() {
-  cd "${srcdir}/nDPI-${pkgver}"
-  unset CPPFLAGS
-  ./autogen.sh
+  cd "nDPI-${pkgver}"
   ./configure \
-    --prefix=/usr
+    --prefix=/usr \
+    --with-pcre2 \
+    --with-maxminddb
   make
 }
 
 package() {
-  cd "${srcdir}/nDPI-${pkgver}"
+  cd "nDPI-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
 
