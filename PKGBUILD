@@ -1,78 +1,59 @@
 # Maintainer: PapyElGringo <adrien@pesler.be>
 pkgname=veshell-git
-pkgver=alpha.1.r138.g04fce58
+pkgver=alpha.1.r402.ge954bb7
 pkgrel=1
-pkgdesc="An innovative not-desktop environment for Linux made with modern technologies like Flutter and Rust."
-arch=('x86_64' 'aarch64')
+pkgdesc="An innovative Not-Desktop environment for Linux built with Flutter and Rust"
+arch=('x86_64')
 url="https://github.com/free-explorers/veshell"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
-  'fontconfig'
-  'libseat.so'
-  'libinput'
-  'libxcb'
-  'libxkbcommon'
-  'mesa'
-  'pixman'
-  'systemd'
-  'wayland'
+  'fontconfig' 'ttf-roboto' 'noto-fonts' 'noto-fonts-cjk'
+  'libglvnd' 'mesa'
+  'libinput' 'seatd' 'systemd-libs' 'libxkbcommon'
+  'libdisplay-info'
+  'pipewire' 'libpulse'
+  'gst-plugins-base' 'gst-plugins-base-libs' 'gst-plugins-good'
+  'dbus' 'upower' 'polkit'
+  'xorg-xwayland' 'xdg-desktop-portal' 'xdg-utils'
 )
 makedepends=(
-  'cargo'
-  'git'
-  'clang'
+  'rust' 'clang' 'cmake' 'ninja' 'pkgconf' 'git'
+  'unzip' 'zstd' 'xz'
+  'gtk3' 'libpulse'
+  'libinput' 'seatd' 'mesa' 'openssl'
+  'pipewire' 'gstreamer' 'gst-plugins-base-libs'
+  'libxkbcommon' 'libdisplay-info' 'wayland' 'systemd-libs'
+  'vulkan-icd-loader'
 )
-provides=('veshell')
-conflicts=('veshell')
-source=("git+https://github.com/free-explorers/veshell.git")
+optdepends=(
+  'networkmanager: network control panel'
+  'bluez: Bluetooth control panel'
+  'rtkit: real-time audio scheduling'
+  'xdg-desktop-portal-gtk: GTK portal fallback backend'
+)
+provides=('veshell' 'wayland-compositor')
+conflicts=('veshell' 'veshell-bin')
+source=('git+https://github.com/free-explorers/veshell.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd veshell
+  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
+    || printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  export CARGO_HOME="${srcdir}/${pkgname%-git}/.cargo"
-  export CARGO_TARGET_DIR=target
-
-  # Tell build.rs to link against system-installed shared libs
-  export VESHELL_LIB_DIR="/usr/lib/veshell"
-
-  cd "${pkgname%-git}"
-  cargo build --release
+  cd veshell
+  # The project's development bootstrap prepares the project-managed .flutter_sdk,
+  # resolves Dart dependencies, runs code generation, builds the Flutter shell,
+  # downloads the matching engine from free-explorers/flutter-engine and compiles
+  # the compositor against the final /usr install paths.
+  VESHELL_ENGINE_REPO=free-explorers/flutter-engine \
+    make build PREFIX=/usr PROFILE=release
 }
 
 package() {
-  cd "${pkgname%-git}"
-
-  # Install binaries and system files
-  install -Dm755 target/release/veshell                        -t "${pkgdir}/usr/bin/"
-  install -Dm755 extra/assets/veshell-session                  -t "${pkgdir}/usr/bin/"
-  install -Dm644 extra/assets/veshell.desktop                  -t "${pkgdir}/usr/share/wayland-sessions/"
-  install -Dm644 extra/assets/veshell-portals.conf             -t "${pkgdir}/usr/share/xdg-desktop-portal/"
-  install -Dm644 extra/assets/veshell-shutdown.target          -t "${pkgdir}/usr/lib/systemd/user/"
-
-  # Install systemd service file
-  install -Dm644 <(sed "s|@bindir@|/usr/bin|" extra/assets/veshell.service.in) \
-  "${pkgdir}/usr/lib/systemd/user/veshell.service"
-
-  # Install Flutter engine
-  install -Dm644 extra/third_party/flutter_engine/release/libflutter_engine.so -t "${pkgdir}/usr/lib/veshell/"
-
-  # Determine architecture-specific paths
-  local arch="x64"
-  [[ "$CARCH" == "aarch64" ]] && arch="arm64"
-
-  # Install app library
-  install -Dm644 "src/shell/build/linux/${arch}/release/bundle/lib/libapp.so" -t "${pkgdir}/usr/lib/veshell/"
-
-  # Install flutter_assets data directory
-  install -d -m755 "${pkgdir}/usr/share/veshell/data"
-  cp -r "src/shell/build/linux/${arch}/release/bundle/data/"* "${pkgdir}/usr/share/veshell/data/"
-
-  # install settings directory if present
-  install -d -m755 "${pkgdir}/usr/share/veshell/settings"
-  cp -r extra/settings/* "${pkgdir}/usr/share/veshell/settings/"
-  
+  cd veshell
+  make install PREFIX=/usr PROFILE=release DESTDIR="$pkgdir"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/veshell/LICENSE"
 }
