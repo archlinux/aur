@@ -1,6 +1,6 @@
 pkgbase = koka-bin
 	pkgdesc = A strongly typed functional-style language with effect types and handlers
-	pkgver = 3.2.3
+	pkgver = 3.2.9
 	pkgrel = 1
 	url = https://github.com/koka-lang/koka
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = koka-bin
 	provides = koka
 	conflicts = koka
 	options = !strip
-	source = https://github.com/koka-lang/koka/releases/download/v3.2.3/koka-v3.2.3-linux-x64.tar.gz
-	sha256sums = e82a4b497f1f8791ee171d06c45293ba16432e485d645ddd9688bafa6ccde5a5
+	source = https://github.com/koka-lang/koka/releases/download/v3.2.9/koka-v3.2.9-linux-x64.tar.gz
+	sha256sums = 310459831a7c6fa6a0cd8e0e02d6b5b3b36441d5e7ce24168bda016cd2e95eee
 
 pkgname = koka-bin

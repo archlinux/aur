@@ -4,7 +4,7 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=koka-bin
-pkgver=3.2.3
+pkgver=3.2.9
 pkgrel=1
 pkgdesc="A strongly typed functional-style language with effect types and handlers"
 arch=(x86_64)
@@ -25,7 +25,7 @@ _dlfilename="koka-v${pkgver}-linux-x64.tar.gz"
 source=(
   "https://github.com/koka-lang/koka/releases/download/v${pkgver}/${_dlfilename}"
 )
-sha256sums=('e82a4b497f1f8791ee171d06c45293ba16432e485d645ddd9688bafa6ccde5a5')
+sha256sums=('310459831a7c6fa6a0cd8e0e02d6b5b3b36441d5e7ce24168bda016cd2e95eee')
 
 package() {
   cd $srcdir
