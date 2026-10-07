@@ -8,7 +8,8 @@ _url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Avid Pro Tools'
 arch=(x86_64)
 license=(MIT Apache-2.0)
-depends=(glibc # libc.so libm.so
+depends=(alsa-lib
+         glibc # libc.so libm.so
          hicolor-icon-theme
          libgcc)
 makedepends=(cargo)
@@ -44,7 +45,8 @@ build() {
 }
 
 package() {
-	depends+=(libgcc_s.so)
+	depends+=(libasound.so
+	          libgcc_s.so)
 	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"{,-cli}
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "packaging/linux/ai.storyteller.$pkgname.desktop"
