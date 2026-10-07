@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pedax-bin
-pkgver=6.119.1+219
+pkgver=6.121.0+221
 pkgrel=1
-pkgdesc="Reversi Board with edax, which is the strongest reversi engine.(Prebuilt version)"
+pkgdesc="Reversi Board with edax, which is the strongest reversi engine."
 arch=('x86_64')
 url="https://sensuikan1973.github.io/pedax/"
 _ghurl="https://github.com/sensuikan1973/pedax"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-ubuntu-latest.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('669e100648801c7c2499ad205fbe94a45f0b4e27180a8f074c532b5d227878d4'
+sha256sums=('778b73a29e8edc9d4a1ebc97903669100136812afd03fc5409eaf429f59cb185'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 prepare() {
     sed -i -e "
