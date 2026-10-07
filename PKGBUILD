@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=photocraft
-pkgver=0.2.0
-pkgrel=5
+pkgver=0.3.0
+pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Adobe Photoshop'
@@ -14,7 +14,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('aa6d2222b0d6d5c1f404031d23c6cd3da38154c764f4a66180995de2090fc7e9')
+sha256sums=('40a4810f2fc474fdfd2b300771c4630d2c3da06ba4b64a5a55cd63304ac1c45b')
 
 _srcenv() {
 	cd "$_archive"
