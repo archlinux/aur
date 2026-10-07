@@ -33,9 +33,6 @@ optdepends=(
   'gnome-keyring: Secret Service provider to store passwords and OAuth tokens'
   'nautilus-python: GNOME Files right-click attachment integration'
 )
-provides=("vireo=$pkgver" "veem=$pkgver")
-conflicts=('vireo' 'veem')
-replaces=('vireo' 'veem')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hyprlab/hylki/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('5c653af17319354bc07f0a6d800d59a693143f485cad29d51bb4d05e41ad15bc')
