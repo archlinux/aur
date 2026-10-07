@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=openhome-bin
 _pkgname=OpenHome
-pkgver=1.17.1
+pkgver=1.18.0
 pkgrel=1
-pkgdesc="Application for importing and transferring Pokémon between save files.(Prebuilt version)"
+pkgdesc="Application for importing and transferring Pokémon between save files."
 arch=(
     'aarch64'
     'x86_64'
@@ -18,14 +18,15 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
-sha256sums_aarch64=('d1375eca9c1ac0527780a0cb8289fe65dc187f6175591d2cc24b59628c9ad660')
-sha256sums_x86_64=('12b8b01a859ae570cd7d38a65ea6fb595ae5602f447cf7fd48f9443079a10a07')
+sha256sums_aarch64=('091f4c9a409ac925e6b965116c075742660788e8b19e0518faaa66cfc7eb381e')
+sha256sums_x86_64=('ebb7382dd83208cae79cab934f3565a25655242bd3ae3a57cff1b66489fedd43')
 prepare() {
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
         s/Categories=/Categories=Game;/g
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
