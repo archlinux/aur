@@ -1,0 +1,5 @@
+/src/
+/pkg/
+*.pkg.tar.*
+/akagi-bin-*.zip
+/akagi-bin-*.png

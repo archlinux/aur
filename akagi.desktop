@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Akagi
+Comment=Mahjong AI assistant
+Exec=akagi
+TryExec=akagi
+Icon=akagi
+Terminal=false
+Categories=Game;

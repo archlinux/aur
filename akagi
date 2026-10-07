@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Preserve config paths relative to the caller before entering the data directory.
+args=("$@")
+for ((index = 0; index < ${#args[@]}; index++)); do
+  case "${args[index]}" in
+    --config|-c)
+      if ((index + 1 < ${#args[@]})); then
+        index=$((index + 1))
+        if [[ -n "${args[index]}" && "${args[index]}" != /* && "${args[index]}" != -* ]]; then
+          args[index]="$PWD/${args[index]}"
+        fi
+      fi
+      ;;
+    --config=*)
+      path="${args[index]#--config=}"
+      if [[ -n "$path" && "$path" != /* ]]; then
+        args[index]="--config=$PWD/$path"
+      fi
+      ;;
+    -c?*)
+      path="${args[index]#-c}"
+      prefix=-c
+      if [[ "$path" == =* ]]; then
+        prefix=-c=
+        path="${path#=}"
+      fi
+      if [[ -n "$path" && "$path" != /* ]]; then
+        args[index]="$prefix$PWD/$path"
+      fi
+      ;;
+    --)
+      break
+      ;;
+  esac
+done
+
+config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/akagi"
+umask 077
+mkdir -p "$config_dir"/{ca,history,logs,mjai_bot}
+cd "$config_dir"
+exec /opt/akagi/akagi "${args[@]}"

@@ -1,0 +1,27 @@
+pkgbase = akagi-bin
+	pkgdesc = Mahjong AI assistant for Majsoul, Tenhou, Riichi City, and Amatsuki (binary release)
+	pkgver = 3.7.1
+	pkgrel = 1
+	url = https://github.com/shinkuan/Akagi
+	arch = x86_64
+	license = Apache-2.0
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = webkit2gtk-4.1
+	optdepends = chromium: browser for Chromium capture mode
+	provides = akagi
+	conflicts = akagi
+	options = !strip
+	options = !debug
+	source = akagi-bin-3.7.1.zip::https://github.com/shinkuan/Akagi/releases/download/v3.7.1/akagi-3.7.1-linux-x64.zip
+	source = akagi-bin-3.7.1.png::https://raw.githubusercontent.com/shinkuan/Akagi/v3.7.1/icons/128x128@2x.png
+	source = akagi
+	source = akagi.desktop
+	sha256sums = e877478d766fca34dd53708c995785863681599b25bf9fb2e49511a1a5394f82
+	sha256sums = 8087dbf92eee0fdd0a9d47d69b2c4a1408f29e052dc1a0be48f31f00b0cd7a09
+	sha256sums = c8c8424b5cf8d312dd5bc4d58a59fa8661f35a6578b3a3c18143cfe6384fff40
+	sha256sums = 22325ed20f35b87db18d58dfa290886d4f96567e4ca2925136d35f48d1b84eb2
+
+pkgname = akagi-bin
