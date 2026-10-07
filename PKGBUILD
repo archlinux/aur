@@ -2,7 +2,7 @@
 pkgbase=protonmail-bridge-free
 pkgname=(protonmail-bridge-free protonmail-bridge-free-core)
 pkgver=3.27.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrate ProtonMail account with any program that supports IMAP and SMTP"
 arch=(x86_64)
 url="https://github.com/ProtonMail/proton-bridge"
@@ -48,6 +48,9 @@ prepare() {
 
 	# Fix build with Qt 6.10
 	sed -e 's|FILENAME_VARIABLE|OUTPUT_SCRIPT|' -i internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
+
+	# Fix binary name for lookup
+	sed -i 's|QString const exeName = "bridge"|QString const exeName = "protonmail-bridge-core"|g' internal/frontend/bridge-gui/bridge-gui/main.cpp
 }
 
 build() {
