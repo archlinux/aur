@@ -422,7 +422,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     zvbi
   )
   makedepends+=(patchutils)
-  source+=("080-ffmpeg-openapv1.1-fix.patch'::'https://code.ffmpeg.org/FFmpeg/FFmpeg/commit/c54710db21c1827dbc3e47658a562525af0fe528.patch")
+  source+=("080-ffmpeg-openapv1.1-fix.patch"::"https://code.ffmpeg.org/FFmpeg/FFmpeg/commit/c54710db21c1827dbc3e47658a562525af0fe528.patch")
   sha256sums+=("6eda059a49ec07dc8d0c872c3c1fc71d8f92c5e76463380c62fe027111b3ae2e")
   _args+=(
     --disable-rpath
