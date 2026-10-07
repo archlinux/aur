@@ -3,19 +3,22 @@
 _pkgname=boomaga
 pkgname=${_pkgname}-git
 pkgver=3.5.0.r1.g34d7549
-pkgrel=1
+pkgrel=2
 pkgdesc="A virtual printer for viewing a document before printing it out using the physical printer (Qt6)"
 arch=('x86_64' 'aarch64')
 url="https://www.boomaga.org"
 license=('LGPL-2.1-or-later')
 depends=('qt6-base' 'poppler' 'cups' 'zlib' 'hicolor-icon-theme')
+optdepends=('sudo: add the virtual printer from the Boomaga GUI')
 makedepends=('qt6-tools' 'git' 'cmake')
 provides=('boomaga')
 conflicts=('boomaga' 'boomaga-qt5' 'boomaga-qt6-git')
 options=(!emptydirs)
 install="${pkgname}.install"
-source=("${_pkgname}::git+https://github.com/Boomaga/boomaga.git#branch=master")
-md5sums=('SKIP')
+source=("${_pkgname}::git+https://github.com/Boomaga/boomaga.git#branch=master"
+        'README.install')
+sha256sums=('SKIP'
+            '481746423a1b4c5d05d992a9282c43078fe8f34524a6224de1553299b716c7ea')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -32,6 +35,6 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" cmake --install build
-    install -D -m755 "${srcdir}/${_pkgname}/scripts/installPrinter.sh" "${pkgdir}/usr/bin/installPrinter.sh"
+    install -D -m644 "${srcdir}/README.install" "${pkgdir}/usr/share/doc/${pkgname}/README.install"
     install -D -m644 "${srcdir}/${_pkgname}/LGPL" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

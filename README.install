@@ -1,0 +1,37 @@
+Boomaga printer setup on Arch Linux
+==================================
+
+The package installs the application, CUPS backend and PPD. Creating a print
+queue is a separate, one-time administrative step. Package installation and
+upgrades do not contact CUPS or change existing printer queues.
+
+Recommended: open Boomaga from your application menu, then choose
+Help -> Add Boomaga as virtual printer. Review the command and confirm it.
+Boomaga opens a terminal for sudo authentication and displays the result.
+This requires sudo access and a supported terminal (for example Konsole).
+Installing sudo does not itself grant administrative access. The GUI command
+always uses sudo; displaying it as a fallback does not remove that requirement.
+
+Alternatively, run the same command directly in a terminal:
+
+    sudo lpadmin -p Boomaga -E -v boomaga:/ \
+        -P /usr/share/ppd/boomaga/boomaga.ppd -o printer-is-shared=false
+
+If sudo is unavailable, run lpadmin from a root shell without the sudo prefix.
+Only printer setup needs administrative privileges; run the Boomaga GUI as
+your normal user. An already configured queue does not require sudo to use.
+
+CUPS must be running. If it is not, start it with:
+
+    sudo systemctl start cups.service
+
+From a root shell, omit sudo here as well.
+
+Verify setup:
+
+    lpstat -v Boomaga
+    printf 'Boomaga test\n' | lp -d Boomaga
+
+The test should open Boomaga with the submitted document. If the queue exists
+but the application does not open, investigate the CUPS backend/session
+activation separately; reinstalling the package does not diagnose that issue.

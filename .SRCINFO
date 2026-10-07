@@ -1,7 +1,7 @@
 pkgbase = boomaga-git
 	pkgdesc = A virtual printer for viewing a document before printing it out using the physical printer (Qt6)
 	pkgver = 3.5.0.r1.g34d7549
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.boomaga.org
 	install = boomaga-git.install
 	arch = x86_64
@@ -15,12 +15,15 @@ pkgbase = boomaga-git
 	depends = cups
 	depends = zlib
 	depends = hicolor-icon-theme
+	optdepends = sudo: add the virtual printer from the Boomaga GUI
 	provides = boomaga
 	conflicts = boomaga
 	conflicts = boomaga-qt5
 	conflicts = boomaga-qt6-git
 	options = !emptydirs
 	source = boomaga::git+https://github.com/Boomaga/boomaga.git#branch=master
-	md5sums = SKIP
+	source = README.install
+	sha256sums = SKIP
+	sha256sums = 481746423a1b4c5d05d992a9282c43078fe8f34524a6224de1553299b716c7ea
 
 pkgname = boomaga-git

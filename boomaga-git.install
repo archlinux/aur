@@ -1,19 +1,16 @@
-_check_and_install_printer() {
-    # The command checks if the printer is already installed
-    lpstat -v boomaga &> /dev/null
-    RESULT=$?
-    if [ "${RESULT}" -ne 0 ]; then 
-        echo "Install the Boomaga printer using the installPrinter.sh script"
-        /usr/bin/installPrinter.sh
-    else
-        echo "Boomaga printer is already installed"
-    fi
-}
-
 post_install() {
-    _check_and_install_printer $1
+    printf '%s\n' \
+        '' \
+        'Boomaga printer setup (only if the queue is missing):' \
+        '    Open Boomaga: Help -> Add Boomaga as virtual printer.' \
+        '    Requires running CUPS, sudo access and a supported terminal.' \
+        '    Manual setup: /usr/share/doc/boomaga-git/README.install' \
+        ''
 }
 
 post_upgrade() {
-    _check_and_install_printer $1
+    # Show the setup instructions once when upgrading from older packaging.
+    if [ "$(vercmp "$2" '3.9.3.r0.g251dcad-2')" -lt 0 ]; then
+        post_install
+    fi
 }
