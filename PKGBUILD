@@ -47,6 +47,7 @@ package() {
 	find usr/share/applications/ -type f -exec install -Dm644 {} ${pkgdir}/{} \;
 	find usr/share/icons/ -type f -exec install -Dm644 {} ${pkgdir}/{} \;
 
-	install -dm755 ${pkgdir}/usr/share/${_pkgname,,}/
+	install -dm755 ${pkgdir}/usr/share/
 	cp -rf usr/share/${_pkgname,,} ${pkgdir}/usr/share/
+	find ${pkgdir}/usr/share/${_pkgname,,} -type d -exec chmod 755 {} +
 }
