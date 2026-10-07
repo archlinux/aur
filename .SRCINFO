@@ -1,16 +1,17 @@
 pkgbase = buildifier
 	pkgdesc = A command line tool to format Bazel BUILD files
 	pkgver = 10.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bazelbuild/buildtools
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	makedepends = bazelisk
+	makedepends = bazel
 	makedepends = git
 	depends = glibc
 	conflicts = buildifier-bin
 	options = !debug
+	options = !lto
 	source = buildifier::git+https://github.com/bazelbuild/buildtools.git#commit=d12fe38eb8b1680838af70fe9a797feb9c3f71ba
 	md5sums = SKIP
 

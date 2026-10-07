@@ -4,40 +4,52 @@
 
 pkgname=buildifier
 pkgver=10.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line tool to format Bazel BUILD files'
 arch=('x86_64' 'aarch64')
 license=('Apache-2.0')
 url='https://github.com/bazelbuild/buildtools'
 depends=('glibc')
-makedepends=('bazelisk' 'git')
+makedepends=('bazel' 'git')
 conflicts=('buildifier-bin')
-# Bazel does not honor makepkg's DEBUG_CFLAGS, so the generated debug package
+# rules_go trims source paths from the binary, so the generated debug package
 # contains no sources and only a dangling build-id symlink.
-options=('!debug')
+options=('!debug' '!lto')
 _commit='d12fe38eb8b1680838af70fe9a797feb9c3f71ba'
 source=("${pkgname}::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
-_BAZEL_OPTIONS=(
-  '--config=release'
-  '--@io_bazel_rules_go//go/config:linkmode=pie'
-  '--@io_bazel_rules_go//go/config:gc_linkopts=-extldflags,-Wl,-znow,-extldflags,-Wl,-zrelro'
-  '--linkopt=-Wl,--as-needed'
-)
+
+_bazel() {
+  local flag options=(
+    '--compilation_mode=opt'
+    '--strip=never'
+    # Bazel's outputs are read-only which prevents makepkg from cleaning up.
+    '--experimental_writable_outputs'
+    # Bazel defines _FORTIFY_SOURCE=1 in opt mode which conflicts with CFLAGS.
+    '--copt=-Wp,-U_FORTIFY_SOURCE'
+    # Stamps the version and commit reported by `buildifier --version`.
+    '--config=release'
+    '--@io_bazel_rules_go//go/config:linkmode=pie'
+    '--@io_bazel_rules_go//go/config:gc_linkopts=-extldflags,-Wl,-zrelro,-extldflags,-Wl,-znow'
+  )
+  for flag in ${CPPFLAGS}; do options+=("--copt=${flag}"); done
+  for flag in ${CFLAGS}; do options+=("--conlyopt=${flag}"); done
+  for flag in ${CXXFLAGS}; do options+=("--cxxopt=${flag}"); done
+  for flag in ${LDFLAGS}; do options+=("--linkopt=${flag}"); done
+  bazel --output_user_root="${srcdir}/bazel" --max_idle_secs=60 "${1}" "${options[@]}" "${@:2}"
+}
 
 prepare() {
   cd "${pkgname}" || exit
 
-  bazelisk fetch "${_BAZEL_OPTIONS[@]}" "//${pkgname}"
+  rm .bazelversion
+  _bazel fetch "//${pkgname}"
 }
 
 build() {
   cd "${pkgname}" || exit
 
-  bazelisk build "${_BAZEL_OPTIONS[@]}" --fetch=false "//${pkgname}"
-  # The bazel server occasionally fails to terminate in a timely fashion which
-  # is not fatal to the build.
-  bazelisk shutdown || true
+  _bazel build --fetch=false "//${pkgname}"
 }
 
 package() {
