@@ -15,10 +15,17 @@ _srcdir="fstk-0.2.3"
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/archsyscall/fstk/tar.gz/refs/tags/$_tag")
 sha256sums=('93c2863dad02795c9b40af966ff28954465b86ec3f023f9c77e88529c1a84b46')
 
+prepare() {
+	cd "$_srcdir"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
 	cd "$_srcdir"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo build --release --locked
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release
 }
 
 package() {
@@ -28,7 +35,5 @@ package() {
 	install -Dm644 <("$pkgdir/usr/bin/fstk" completion bash) "$pkgdir/usr/share/bash-completion/completions/fstk"
 	install -Dm644 <("$pkgdir/usr/bin/fstk" completion zsh) "$pkgdir/usr/share/zsh/site-functions/_fstk"
 	install -Dm644 <("$pkgdir/usr/bin/fstk" completion fish) "$pkgdir/usr/share/fish/vendor_completions.d/fstk.fish"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
