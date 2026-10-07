@@ -2,13 +2,13 @@
 
 pkgname=dameplus
 pkgver=1.0.0beta1
-pkgrel=3
+pkgrel=4
 pkgdesc="A checkers game"
 arch=(any)
 url="https://sourceforge.net/projects/dameplus/"
 license=('GPL')
 depends=(java-runtime)
-makedepends=(gendesk)
+makedepends=(gendesk unzip)
 source=("https://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}/${pkgname}-${pkgver}_linux.tar.gz/download")
 md5sums=('b0a390bdfaa271e9e8e91ed5bc1ee5df')
 
