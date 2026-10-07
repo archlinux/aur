@@ -1,0 +1,3 @@
+[python-winacl]
+source = "pypi"
+pypi = "winacl"
