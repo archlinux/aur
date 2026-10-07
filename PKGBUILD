@@ -2,7 +2,7 @@
 # Maintainer: Energetix/Dark Nebula <https://github.com/Jobanny-Friki>
 
 pkgname=rusty-rain
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A cross platform matrix rain made with Rust"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('704e430b5dd3e95cdbdca90956e8df79de8fa337c1e70c7f54028bd780da76e5')
+sha256sums=('fc43814780c39946dc31c26bc59a0f34538eecef3db52b0305c2156fd52a20d8')
 
 prepare() {
 	cd "rusty-rain-$pkgver"
