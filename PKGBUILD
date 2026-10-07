@@ -15,10 +15,17 @@ _srcdir="vicut-0.4.2"
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/km-clay/vicut/tar.gz/refs/tags/$_tag")
 sha256sums=('8648e99839764ea769ecdf94f36b52b6b950da4ba131ad150090441c2b487e8c')
 
+prepare() {
+	cd "$_srcdir"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
 	cd "$_srcdir"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo build --release --locked
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release
 }
 
 package() {
