@@ -1,6 +1,6 @@
 pkgbase = paintdotjs-bin
 	pkgdesc = A desktop port of Paint.NET for Linux and macOS
-	pkgver = 2.1.4
+	pkgver = 2.1.5
 	pkgrel = 1
 	url = https://paintjs.net/
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = paintdotjs-bin
 	conflicts = paintdotjs
 	options = !strip
 	noextract = paintdotnet.zip
-	noextract = paintdotjs-2.1.4.AppImage
-	source = paintdotjs-2.1.4-source.tar.gz::https://github.com/LabyStudio/paintdotjs/archive/refs/tags/v2.1.4.tar.gz
+	noextract = paintdotjs-2.1.5.AppImage
+	source = paintdotjs-2.1.5-source.tar.gz::https://github.com/LabyStudio/paintdotjs/archive/refs/tags/v2.1.5.tar.gz
 	source = paintdotnet.zip::https://github.com/paintdotnet/release/releases/download/v5.1.12/paint.net.5.1.12.portable.x64.zip
-	sha256sums = f997c719f622008a7272268d4d64547f261111f75bbf0a6c114fb61833b99628
+	sha256sums = ea63aaf115cbb8a45c8c6a1b6fbf1571f77a927170f405a2d49781420e0ce19b
 	sha256sums = d5ae7043f2fb9d365b48dfe243a2aca1c74924de99b04b6445916c95354aefa3
-	source_x86_64 = paintdotjs-2.1.4.AppImage::https://github.com/LabyStudio/paintdotjs/releases/download/v2.1.4/paintdotjs-2.1.4-linux-x86_64.AppImage
-	sha256sums_x86_64 = 4a662cdb0fa07c7b46796eca610a3cfaf23a4757c92c4c2c9c67a449fa5151d8
+	source_x86_64 = paintdotjs-2.1.5.AppImage::https://github.com/LabyStudio/paintdotjs/releases/download/v2.1.5/paintdotjs-2.1.5-linux-x86_64.AppImage
+	sha256sums_x86_64 = f036228c517daa728399ddf05583142c70b31815a89f8a46972fd2fc4b2bd3cc
 
 pkgname = paintdotjs-bin
