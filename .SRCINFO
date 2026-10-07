@@ -1,0 +1,25 @@
+pkgbase = rosu-patcher-bin
+	pkgdesc = Launcher for the RealistikOsu Patcher
+	pkgver = 20261007.1
+	pkgrel = 1
+	url = https://ussr.pl
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = glibc
+	depends = libx11
+	depends = libice
+	depends = libsm
+	depends = fontconfig
+	depends = openssl
+	depends = zlib
+	optdepends = osu-winello: run osu! stable through Wine
+	optdepends = osu-lazer-bin: run osu!lazer
+	optdepends = gst-plugins-base: intro video
+	optdepends = gst-libav: intro video codecs
+	provides = rosu-patcher
+	conflicts = rosu-patcher
+	options = !strip
+	source = rosu-patcher-20261007.1::https://ussr.pl/api/v1/patcher/launcher/linux/download
+	sha256sums = SKIP
+
+pkgname = rosu-patcher-bin
