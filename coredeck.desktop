@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=CoreDeck
+Comment=Command center for the Android SDK: manage emulators, system images and APKs
+Exec=coredeck
+Icon=coredeck
+Terminal=false
+Categories=Development;
+Keywords=Android;AVD;Emulator;SDK;APK;
