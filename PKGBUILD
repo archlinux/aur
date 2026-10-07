@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Play songs (or any audio) in the terminal, feature-full music player"
 arch=('any')
 url="https://github.com/PrajwalVandana/maestro-cli"
-license=('custom')
+license=('MIT')
 depends=('python' 'python-mpv' 'mpv' 'python-mutagen' 'python-requests' 'youtube-dl')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 _tag="2.0.5"
@@ -25,5 +25,5 @@ build() {
 package() {
 	cd "$_srcdir"
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
