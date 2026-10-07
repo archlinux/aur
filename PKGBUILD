@@ -3,8 +3,8 @@
 
 pkgname=qcm-git
 _pkgname=${pkgname%-git}
-pkgver=1.3.5.r2.g24be634
-pkgrel=2
+pkgver=1.3.5.r6.g69643b0
+pkgrel=1
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
 url="https://github.com/hypengw/Qcm"
@@ -34,7 +34,6 @@ makedepends=(
 	'cmake'
 	'ninja'
 	'vulkan-headers'
-	'vulkan-memory-allocator'
 )
 optdepends=('qcm-ncm-plugin-git: Netease Cloud Music plugin')
 replaces=('qcmbackend-git')
@@ -52,9 +51,6 @@ prepare() {
 	mkdir -p .lito
 	cat >.lito/config.toml <<END
 [tools.cmake.overrides.KDSingleApplication]
-source = "installed"
-
-[tools.cmake.overrides.VulkanMemoryAllocator]
 source = "installed"
 END
 
