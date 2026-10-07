@@ -28,7 +28,5 @@ package() {
 	install -Dm644 docs/tasks.md "$pkgdir/usr/share/doc/$pkgname/tasks.md"
 	install -Dm644 assets/demo.png "$pkgdir/usr/share/doc/$pkgname/demo.png"
 	install -Dm644 tests/test.json "$pkgdir/usr/share/$pkgname/testdata/test.json"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
