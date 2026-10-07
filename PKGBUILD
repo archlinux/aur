@@ -1,6 +1,6 @@
 # Maintainer: Edmundo Sanchez <zomundo at gmail dot com>
 pkgname=colibri-bin
-pkgver=1.12.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Tiny local inference engine for large MoE models (prebuilt)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=('colibri')
 source=(
     "https://github.com/JustVugg/colibri/releases/download/v${pkgver}/colibri-v${pkgver}-linux-x86_64.tar.gz"
 )
-sha256sums=('9d5afd587d7c429b2cf0ce0c520d42f4c2883bdc9c560ed9fb5afa0b2c2e0d12')
+sha256sums=('aef2c1e7d5cbad3d27cc90d8432775acdc315ec51f6d7a67a2f13a936f9978ce')
 
 package() {
     local libexec="${pkgdir}/usr/libexec/colibri"
