@@ -12,7 +12,7 @@ arch=('x86_64')
 url="http://gmplib.org/"
 depends=('lib32-gcc-libs' 'sh' 'lib32-gmp')
 makedepends=('gcc-multilib')
-license=('LGPL3')
+license=('LGPL-3.0-or-later')
 options=('!libtool' '!lto') # Fix aggressive alias analysis optimization.
 source=(
   "https://gmplib.org/download/gmp/archive/gmp-${pkgver}.tar.bz2"
