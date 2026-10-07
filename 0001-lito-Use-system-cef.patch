@@ -1,6 +1,6 @@
-From fe5a6cc7f5e96041cffa74de6c6738adbfd29c87 Mon Sep 17 00:00:00 2001
+From 71bfc7e97d774349a61686fbc2e1e71650519695 Mon Sep 17 00:00:00 2001
 From: Zhang Hua <zhanghua.00@qq.com>
-Date: Fri, 25 Sep 2026 20:00:02 +0800
+Date: Wed, 7 Oct 2026 12:17:20 +0800
 Subject: [PATCH] lito: Use system cef
 
 ---
@@ -24,7 +24,7 @@ index 2b6af42..7ac332c 100644
      weweb::BrowserHost::InitOptions opts;
      opts.resources_dir = exe_dir.clone();
 diff --git a/waywallen/WebRenderer/install.lua b/waywallen/WebRenderer/install.lua
-index bd61600..a0fe6f3 100644
+index bd61600..9798084 100644
 --- a/waywallen/WebRenderer/install.lua
 +++ b/waywallen/WebRenderer/install.lua
 @@ -2,7 +2,7 @@ lito.install({
@@ -32,7 +32,7 @@ index bd61600..a0fe6f3 100644
          {
              target = { kind = "bin", name = "waywallen-weweb-renderer" },
 -            destination = "lib/weweb/waywallen-weweb-renderer",
-+            destination = "bin/weweb/waywallen-weweb-renderer",
++            destination = "bin/waywallen-weweb-renderer",
              runtime_search = {
                  {
                      external_asset = {
@@ -63,5 +63,5 @@ index cab9494..98d4f8b 100644
      plugin = ""
      scene_bin = "bin/waywallen-wescene-renderer"
 -- 
-2.55.0
+2.56.0
 

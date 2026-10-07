@@ -5,7 +5,7 @@ _vrento_commit=a781859c940325a909c77613b5b2795cc3d65e48
 
 pkgname=open-wallpaper-engine
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source scene renderer, mostly for linux."
 arch=(x86_64)
 url=https://github.com/waywallen/open-wallpaper-engine
@@ -23,7 +23,7 @@ sha256sums=('7891af872de820cb8d427f9b4086f7849a1528d0dac1f96ecd81a336e17ec1d3'
             'c033a38ac4e58e4a87ad43a84eb5e0fbe312c82b161a1fe5e38890751636f63f'
             '9f9212efdaab0379701eab6634cfd1c051ffe875f4a60b8d7a11d1c99540f85b'
             'f2f5c212bfae9f6331d25840f76ddd903ae6c22a772ae536b362c36b5bbaa3d2'
-            '9b775fdccb4a86139fe5c8e50b8dee032b6aa6e11afdedc0f8798c8703393e5a')
+            '1e2c6bfb4883389b61af805586ebbbf4576aa08c87bad2fd4afdac98e393fc85')
 
 prepare() {
     cd "$srcdir/$pkgname"
