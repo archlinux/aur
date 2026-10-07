@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Like less but for Markdown"
 
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('1e38fc7c2ece4789e8003616847a213dc84cf419c1f9cfa96b8e24b757a3911a')
-sha256sums_aarch64=('53d16609bb920572a66476313412c8eb9d933b173412cf381211c31a3dd563e3')
+sha256sums_x86_64=('c18faa8a45997f7009d448501e0ef9dab961ca72da0f8f70544957d13df6638d')
+sha256sums_aarch64=('f0138089ddada7c16349373ec4d52db60a4ff50ac538e9ff9cc1632688ddaae8')
 
 
 package() {
