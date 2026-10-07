@@ -46,7 +46,7 @@ package() {
             name=$(basename $name)
         fi
         # check that the module exists
-        if [ ! -f "/opt/activitywatch/$dir/$name" ]; then
+        if [ ! -f "$pkgdir/opt/activitywatch/$dir/$name" ]; then
             echo "WARNING: $dir/$name does not exist, skipping"
             continue
         fi
