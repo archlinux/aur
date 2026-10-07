@@ -1,11 +1,17 @@
 -------------------------------------------------------
  Changelog    : patricia26
- Tags         : 1.1.0 ➙ 1.4.0
-              : 2026-07-28 ➙ 2026-09-12
+ Tags         : 1.1.1 ➙ 1.4.1
+              : 2026-08-02 ➙ 2026-10-07
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-12   : 1.4.0
+ 2026-10-07   : 1.4.1
+              - **1.4.1**
+                * Documentation
+                  * Improve the struct docs
+                  * Make available on readthedocs https://patricia26.readthedocs.io
+
+ 2026-09-12   : 1.4.0, origin/master, origin/HEAD
               - **1.4.0**
             
                 * Little tidy ups.
@@ -19,7 +25,7 @@
                   * tweak autodoc settings
                   * remove sphinx-build tmp files from html docs
 
- 2026-09-02   : 1.3.0, origin/master, origin/HEAD
+ 2026-09-02   : 1.3.0
               - **1.3.0**
             
                 * Build manager is meson/meson-python
@@ -40,6 +46,3 @@
             
                 * Fix for Python API reference doc.
                   File name change caused it to be dropped from the PDF.
-
- 2026-07-28   : 1.1.0
-              - Actually use 1.1.0 as the release tag instead of 1.0.4
