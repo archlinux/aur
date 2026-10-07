@@ -3,7 +3,7 @@
 pkgname=visual-studio-code-insiders-bin
 _pkgname=visual-studio-code-insiders
 pkgver=1791307491
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual Studio Code Insiders (vscode): Editor for building and debugging modern web and cloud applications (official binary version)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://code.visualstudio.com/"
@@ -21,7 +21,10 @@ optdepends=('glib2: Needed for move to trash functionality'
             'libdbusmenu-glib: Needed for KDE global menu'
             'org.freedesktop.secrets: Needed for settings sync'
              # See https://github.com/MicrosoftDocs/live-share/issues/4650
-            'icu69: Needed for live share' )
+            'icu69: Needed for live share'
+            # See https://code.visualstudio.com/docs/agents/run/agent-sandboxing#_check-platform-availability
+            'bubblewrap: Agent host sandboxing' 'socat: Agent host sandboxing'
+            )
 source=(${_pkgname}-bin.sh)
 source_x86_64=(code_x64_1791307491.deb::https://vscode.download.prss.microsoft.com/dbazure/download/insider/87b342fb1307208939bf39bddd7dfc94b4ccfdd9/code-insiders_1.142.0-1791307491_amd64.deb)
 source_aarch64=(code_arm64_1791307462.deb::https://vscode.download.prss.microsoft.com/dbazure/download/insider/87b342fb1307208939bf39bddd7dfc94b4ccfdd9/code-insiders_1.142.0-1791307462_arm64.deb)
