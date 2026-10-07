@@ -1,6 +1,6 @@
 pkgbase = frenfoil-bin
 	pkgdesc = Opinionated, e2e-only XMPP client, post-quantum by default
-	pkgver = 0.56.3
+	pkgver = 0.56.4
 	pkgrel = 1
 	url = https://git.josf.dev/josefandersson/frenfoil
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = frenfoil-bin
 	conflicts = frenfoil
 	options = !strip
 	options = !debug
-	source = frenfoil-0.56.3-linux-x64.zip::https://git.josf.dev/josefandersson/frenfoil/releases/download/v0.56.3/frenfoil-0.56.3-linux-x64.zip
-	source = frenfoil-0.56.3.desktop::https://git.josf.dev/josefandersson/frenfoil/raw/tag/v0.56.3/frenfoil.desktop
-	sha256sums = e62acaa85f275b909c934a6ba04509e4d3a8b9179e979084745dec482da6b7dd
+	source = frenfoil-0.56.4-linux-x64.zip::https://git.josf.dev/josefandersson/frenfoil/releases/download/v0.56.4/frenfoil-0.56.4-linux-x64.zip
+	source = frenfoil-0.56.4.desktop::https://git.josf.dev/josefandersson/frenfoil/raw/tag/v0.56.4/frenfoil.desktop
+	sha256sums = d67c06643c0c849da976d6b42f58551b4e0d6d6d92db5302e2b33b3d06f4beb6
 	sha256sums = d6d95f8388758754049ab11eb9d645969f8dd42476b1aa57a5488e1d6039b6f6
 
 pkgname = frenfoil-bin
