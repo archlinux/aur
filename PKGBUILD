@@ -3,9 +3,9 @@
 
 pkgname=python-forgekit
 _srcname=forgekit
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
-pkgdesc="Shared Textual TUI shell library for the Forge Suite — menu bar, dialogs, settings forms and save flows, a start-up check, Catppuccin theme"
+pkgdesc="Shared Textual TUI shell library for the Forge Suite — menu bar, dialogs, settings forms and save flows, a start-up check, a centred password box, Catppuccin theme"
 arch=('any')
 # 0.7.0: forgekit lives in the Forge Suite repository (D-60); releases are tagged forgekit-vX.Y.Z there
 _repo="https://github.com/jetomev/forge-suite"
@@ -17,7 +17,7 @@ optdepends=('python-gobject: the polkit password asked inside the app (grubForge
             'polkit: the same')
 source=("${_srcname}-${pkgver}.tar.gz::${_repo}/releases/download/${_srcname}-v${pkgver}/${_srcname}-${pkgver}.tar.gz"
         "${_srcname}-${pkgver}.tar.gz.asc::${_repo}/releases/download/${_srcname}-v${pkgver}/${_srcname}-${pkgver}.tar.gz.asc")
-sha256sums=('89b48206ab5372fc2b681bccc85cb790981dd1cd1cf8bd4eaf0003b697e83eb9'
+sha256sums=('6a19dd8d42715af0db9430e475db4b4580040f1a9196767fc11399edb798aa96'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
@@ -35,7 +35,8 @@ from forgekit import (ForgeApp, ForgeModal, ConfirmDialog, ForgePanelScreen,
                       ROLES, glyph, console_mode,
                       SettingRow, ReviewDialog, ProgressDialog, ManualScreen,  # 0.5.0
                       TerminalPane, RunWindow, PasswordBridge, PasswordDialog, InAppPolkitAgent,  # 0.6.0
-                      start_check, Need, NeedsApp, sway_session, program, service, a_file)  # 0.7.0
+                      start_check, Need, NeedsApp, sway_session, program, service, a_file,  # 0.7.0
+                      PasswordField)  # 0.8.0
 assert __version__ == '${pkgver}', __version__
 
 class _Smoke(ForgeApp):
@@ -61,6 +62,8 @@ print('forgekit headless mount OK (window and console mode)')
     PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_v06
     # 0.7.0: the start-up check, every kind of need fed a known-bad input
     PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_v07
+    # 0.8.0: the password's dots centred, measured on the drawn line
+    PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_v08
 }
 
 package() {
