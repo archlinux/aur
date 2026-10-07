@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=effectcraft
-pkgver=0.3.1
-pkgrel=5
+pkgver=0.4.0
+pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Adobe After Effects'
@@ -15,7 +15,7 @@ depends=(alsa-lib
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('fb16a4a35e60c18ed817128d9515054d0362a7bde547f6be217ffe27181db89f')
+sha256sums=('cffb81f53b027a1ee24f1453672cedd2bc73f2693932f83c71eefe6a932ba0aa')
 
 _srcenv() {
 	cd "$_archive"

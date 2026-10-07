@@ -1,7 +1,7 @@
 pkgbase = effectcraft
 	pkgdesc = vibe coded clean-room reimplementation of Adobe After Effects
-	pkgver = 0.3.1
-	pkgrel = 5
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://getartcraft.com/apps/effectcraft
 	arch = x86_64
 	license = MIT
@@ -11,8 +11,8 @@ pkgbase = effectcraft
 	depends = hicolor-icon-theme
 	depends = glibc
 	depends = libgcc
-	source = https://github.com/storytold/effectcraft/archive/refs/tags/v0.3.1/effectcraft-0.3.1.tar.gz
-	sha256sums = fb16a4a35e60c18ed817128d9515054d0362a7bde547f6be217ffe27181db89f
+	source = https://github.com/storytold/effectcraft/archive/refs/tags/v0.4.0/effectcraft-0.4.0.tar.gz
+	sha256sums = cffb81f53b027a1ee24f1453672cedd2bc73f2693932f83c71eefe6a932ba0aa
 
 pkgname = effectcraft
 	depends = alsa-lib
