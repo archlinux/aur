@@ -1,0 +1,23 @@
+pkgbase = gsp-alpm-git
+	pkgdesc = GNOME Software plugin for the packages of Arch Linux, through alpm-dbus
+	pkgver = 0.2.0.r17.g424bd72
+	pkgrel = 1
+	url = https://gitlab.archlinux.org/ogarcia/gsp-alpm
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = meson
+	depends = alpm-dbus
+	depends = archlinux-appstream-data
+	depends = glib2
+	depends = glibc
+	depends = gnome-software
+	depends = libarchive
+	depends = pacman
+	depends = libalpm.so
+	provides = gsp-alpm
+	conflicts = gsp-alpm
+	source = gsp-alpm::git+https://gitlab.archlinux.org/ogarcia/gsp-alpm.git
+	sha256sums = SKIP
+
+pkgname = gsp-alpm-git
