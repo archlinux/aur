@@ -3,7 +3,7 @@
 # Contributor: Asuka Minato
 _appname=teams-for-linux
 pkgname="${_appname}-electron-bin"
-pkgver=2.23.0
+pkgver=2.24.0
 _electronversion=43
 pkgrel=1
 pkgdesc="Unofficial Microsoft Teams for Linux client."
@@ -35,11 +35,11 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.armv7l.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.x86_64.rpm")
 sha256sums=('bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
-sha256sums_aarch64=('2ed031e2018b12463e765da5ba836f025aa4d7ffe5a6d2c26e6ba770f5b3a2a6')
-sha256sums_armv7h=('dc2891f59525ecdf390423a909cc56e79fd2702dee7deec6c2bb5cd943557336')
-sha256sums_x86_64=('5e6859b5fac6919b03969ca7ee8cfbddd8ce9616876ac56881565ede1aa9f331')
+sha256sums_aarch64=('a122c033a6406376ee0ed914d0080c0891415f96e50083feeb6336d9d3acdb03')
+sha256sums_armv7h=('7a70f5103264b1105b19fe6e22c7422fba05a8aa648084e6803922505c8dafce')
+sha256sums_x86_64=('c7ffbbb9342e09548e3c6f25ec3afd73d3896e1069b8b9e8a36bd6eb38236fbf')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -63,7 +63,7 @@ prepare() {
         s/\/opt\/${_appname}\/${_appname}/${pkgname%-bin}/g
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_appname}.desktop"
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
@@ -71,7 +71,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(_get_app_dir)
+	local _app_dir="$(_get_app_dir)"
 	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
