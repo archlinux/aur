@@ -1,0 +1,4 @@
+[gridcraft]
+source = "git"
+git = "https://github.com/storytold/gridcraft.git"
+prefix = "v"
