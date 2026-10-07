@@ -4,7 +4,7 @@
 
 _basename=libevdev
 pkgname="lib32-$_basename"
-pkgver=1.13.7
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="Wrapper library for evdev devices (32-bit)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=(MIT)
 depends=('lib32-glibc' "$_basename" 'lib32-check')
 makedepends=('python' 'gcc-multilib' 'valgrind' 'doxygen' 'meson' 'lib32-gcc-libs')
 source=(https://www.freedesktop.org/software/$_basename/$_basename-$pkgver.tar.xz)
-sha512sums=('fd64ded32a7f303d45d545ebf293cc9d1a1e79672e1d5879d05e2c723b78709d1ecc972afb1f043eafe961cbded06d221a6fccc25ebba00a68fcf76e4ee3da8b')
+sha512sums=('527a643ec805618f04967c88105347966fc54726edbd884631255eb8f71cd4fdcb661b2051cd724a979372dbc5a7e47c8ab68098fa8cd3fcdd9a5413db7e062c')
 
 build() {
   export CC="gcc -m32"
