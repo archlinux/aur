@@ -26,7 +26,5 @@ package() {
 	cd "$_srcdir"
 	install -Dm755 "nocjk" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
