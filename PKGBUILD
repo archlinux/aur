@@ -1,6 +1,6 @@
 # Maintainer: surtsingv <282812635+surtsingv@users.noreply.github.com>
 pkgname=cc-switch-cli-musl-bin
-pkgver=5.10.5
+pkgver=5.11.0
 pkgrel=1
 pkgdesc="Static MUSL binary of the CC Switch CLI for Claude Code, Codex, and Gemini CLI"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source_aarch64=(
   "${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/SaladDay/cc-switch-cli/releases/download/v${pkgver}/cc-switch-cli-v${pkgver}-linux-arm64-musl.tar.gz"
 )
 sha256sums=('33a4126cc116d9f4b6bd8e988d17372e6f270d738474d95e02bc30c5bd785b99')
-sha256sums_x86_64=('feda4dca0ecf01ec90708141cc346972683c27c1097fba22235c5022143f80ed')
-sha256sums_aarch64=('982051274b07d588fa790b35d6b17f231a775392c0ee4703696694650a49e347')
+sha256sums_x86_64=('272a4d5414a1bc815752227d305c24d894b6c2f5d59bb5e39853041ff752a7af')
+sha256sums_aarch64=('c84c563f4ab7594113221028893e0e834318216beb1d8b0c0671fd38b328492e')
 
 package() {
   install -Dm755 "${srcdir}/cc-switch" "${pkgdir}/usr/bin/cc-switch"
