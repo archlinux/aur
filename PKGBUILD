@@ -14,11 +14,11 @@ _splTokenCliVersion=5.6.1
 _cargoBuildSbfVersion=4.4.0
 # cargo-build-sbf 4.4.0 default.
 _platformToolsVersion=v1.57
-pkgrel=1
+pkgrel=2
 url="https://github.com/anza-xyz/agave"
 arch=(x86_64)
 license=(Apache-2.0)
-makedepends=(clang cargo git perl protobuf rust systemd-libs)
+makedepends=(clang cargo git protobuf rust systemd-libs)
 source=("git+https://github.com/anza-xyz/agave.git#tag=v${pkgver}"
         "git+https://github.com/anza-xyz/cargo-build-sbf.git#tag=cargo-build-sbf@v${_cargoBuildSbfVersion}"
         "git+https://github.com/solana-program/token-2022.git#tag=cli@v${_splTokenCliVersion}"
@@ -33,7 +33,7 @@ sha256sums=('61b3f3d214474425ff6954c471af7ba8ad1813763d47b2da1f8df30dec0cf25c'
             'b0f7af104adf726fff2a6a09ea2eb2f2d2965c92295f4d7388c08d140e0c2b00'
             'bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0'
             'a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b'
-            'f2ce9d3ae77c90c8a88d55c932f4ea4fbae5bbf33179e1c09af565e60651b96c')
+            '34b4ca06956669e23b7043a4b025365a43b42a6c3f13b21d5a60a6ac7d8b7c3f')
 options=(!lto)
 
 # Build lists
@@ -88,53 +88,6 @@ prepare() {
 
   cd "$srcdir/agave"
   rm rust-toolchain.toml
-  # gen-headers appends argN even when the .inc already named the parameter.
-  perl - <<'PERL'
-use strict;
-use warnings;
-use File::Find;
-
-sub fix_fn {
-  my ($body) = @_;
-  my %map;
-  $body =~ s{
-    (\b(?:const\s+)?(?:unsigned\s+|signed\s+)?(?:u64|uint64_t|uint32_t|uint8_t|int|char|void|Sol\w+)\s*\*?\s*)
-    ([A-Za-z_][A-Za-z0-9_]*)
-    \s+arg(\d+)\b
-  }{
-    $map{$3} = $2;
-    $1 . $2
-  }gex;
-  return $body unless %map;
-  $body =~ s{
-    (\w+_pointer)\((arg\d+(?:\s*,\s*arg\d+)*)\)
-  }{
-    my ($fn, $args) = ($1, $2);
-    my @parts = split /\s*,\s*/, $args;
-    my @new;
-    for my $i (0 .. $#parts) {
-      my $n = $i + 1;
-      push @new, exists $map{$n} ? $map{$n} : $parts[$i];
-    }
-    $fn . "(" . join(", ", @new) . ")"
-  }gex;
-  return $body;
-}
-
-find(sub {
-  return unless -f && /\.h$/;
-  open my $fh, "<", $_ or die $!;
-  local $/;
-  my $text = <$fh>;
-  close $fh;
-  my $fixed = $text =~ s/static\s+[^{;]+\{[^{}]*\}/fix_fn($&)/ger;
-  return if $fixed eq $text;
-  open my $out, ">", $_ or die $!;
-  print $out $fixed;
-  close $out;
-  print "fixed generated header $File::Find::name\n";
-}, "programs/sbf/c/inc");
-PERL
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
   cd "$srcdir/agave/dev-bins"
@@ -242,24 +195,11 @@ package_solana-dev() {
   install -Dm755 "$srcdir/cargo-build-sbf/target/release/cargo-test-sbf" \
     -t "$pkgdir/usr/bin"
 
-  local sdk="$pkgdir/usr/lib/solana/sdk/sbf"
-  install -d "$sdk/c"
-  cp -a programs/sbf/c/inc "$sdk/c/"
-  install -m644 programs/sbf/c/sbf.ld "$sdk/c/"
-
-  install -d "$pkgdir/usr/lib/solana/v1.57"
-  cp -a "$srcdir/platform-tools" "$pkgdir/usr/lib/solana/v1.57/platform-tools"
-
-  # Install program deps
-  install -dm755 "$pkgdir/usr/lib/solana/deps"
-  shopt -s nullglob
-  for dep in target/release/deps/libsolana*program.*; do
-    install -Dm755 "$dep" -t "$pkgdir/usr/lib/solana/deps"
-  done
+  install -d "$pkgdir/usr/lib/solana"
+  cp -a "$srcdir/platform-tools" "$pkgdir/usr/lib/solana/platform-tools"
 }
 
 package_solana() {
   pkgdesc="A fast, secure, and censorship resistant blockchain (meta package)"
   depends=(solana-cli agave-validator solana-dev)
-  arch=(any)
 }

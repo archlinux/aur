@@ -1,6 +1,6 @@
 post_install() {
   cat <<'EOF'
-Platform tools installed to /usr/lib/solana/v1.57/platform-tools
+Platform tools installed to /usr/lib/solana/platform-tools
 
 cargo-build-sbf has been patched to use the system installed copy.
 EOF

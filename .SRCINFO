@@ -1,6 +1,6 @@
 pkgbase = solana
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/anza-xyz/agave
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = solana
 	makedepends = clang
 	makedepends = cargo
 	makedepends = git
-	makedepends = perl
 	makedepends = protobuf
 	makedepends = rust
 	makedepends = systemd-libs
@@ -27,7 +26,7 @@ pkgbase = solana
 	sha256sums = b0f7af104adf726fff2a6a09ea2eb2f2d2965c92295f4d7388c08d140e0c2b00
 	sha256sums = bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0
 	sha256sums = a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b
-	sha256sums = f2ce9d3ae77c90c8a88d55c932f4ea4fbae5bbf33179e1c09af565e60651b96c
+	sha256sums = 34b4ca06956669e23b7043a4b025365a43b42a6c3f13b21d5a60a6ac7d8b7c3f
 
 pkgname = solana-cli
 	pkgdesc = Solana CLI tools

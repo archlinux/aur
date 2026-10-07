@@ -1,37 +1,55 @@
 --- a/src/toolchain.rs
 +++ b/src/toolchain.rs
-@@ -137,6 +137,10 @@
+@@ -100,7 +100,16 @@
+     }
+ }
+ 
++#[allow(unreachable_code)]
+ pub fn validate_platform_tools_version(requested_version: &str, builtin_version: &str) -> String {
++    // Skip version probes. The distro package has one toolchain.
++    if requested_version != builtin_version {
++        warn!(
++            "Ignoring platform-tools version {requested_version}. Using the system toolchain."
++        );
++    }
++    return builtin_version.to_string();
++
+     // Early return here in case it's the first time we're running `cargo build-sbf`
+     // and we need to create the cache folders
+     if requested_version == builtin_version {
+@@ -136,12 +145,8 @@
+     }
  }
 
- pub fn make_platform_tools_path_for_version(version: &str) -> PathBuf {
-+    // The distro package ships this exact toolchain. Do not download it again.
-+    if version == DEFAULT_PLATFORM_TOOLS_VERSION {
-+        return PathBuf::from("/usr/lib/solana/v1.57/platform-tools");
-+    }
-     home_dir()
-         .join(".cache")
-         .join("solana")
-@@ -254,9 +258,16 @@
+-pub fn make_platform_tools_path_for_version(version: &str) -> PathBuf {
+-    home_dir()
+-        .join(".cache")
+-        .join("solana")
+-        .join(version)
+-        .join("platform-tools")
++pub fn make_platform_tools_path_for_version(_version: &str) -> PathBuf {
++    PathBuf::from("/usr/lib/solana/platform-tools")
+ }
+
+ pub fn get_base_rust_version(platform_tools_version: &str) -> String {
+@@ -253,6 +258,16 @@
+     target_path: &Path,
      use_rest_api: bool,
  ) -> Result<(), String> {
-     if config.force_tools_install && target_path.is_dir() {
--        debug!("Remove directory {target_path:?}");
--        fs::remove_dir_all(target_path)
--            .map_err(|err| format!("could not remove {target_path:?}: {err}"))?;
-+        if target_path.starts_with("/usr/lib/solana") {
++    // Never download, replace, or uninstall the distro toolchain.
++    if target_path.starts_with("/usr/lib/solana") {
++        if config.force_tools_install {
 +            warn!(
 +                "Refusing to delete the distro platform-tools at {}.",
 +                target_path.display()
 +            );
-+        } else {
-+            debug!("Remove directory {target_path:?}");
-+            fs::remove_dir_all(target_path)
-+                .map_err(|err| format!("could not remove {target_path:?}: {err}"))?;
 +        }
-     }
-     // Check whether the target path is an empty directory. This can
-     // happen if package download failed on previous run of
-@@ -367,6 +378,7 @@
++        return Ok(());
++    }
+     if config.force_tools_install && target_path.is_dir() {
+         debug!("Remove directory {target_path:?}");
+         fs::remove_dir_all(target_path)
+@@ -367,6 +382,7 @@
  }
 
  // check whether custom solana toolchain is linked, and link it if it is not.
@@ -39,7 +57,7 @@
  fn link_solana_toolchain(
      config: &Config,
      platform_tools_dir: &Path,
-@@ -508,30 +520,23 @@
+@@ -508,30 +524,23 @@
          install_tools(config, &platform_tools_version, false);
      }
 
@@ -75,12 +93,28 @@
 
      platform_tools_version
  }
-
+ 
  // allow user to set proper `rustc` into RUSTC or into PATH
 +#[allow(dead_code)]
  fn check_solana_target_installed(target: &str) {
      let rustc = env::var("RUSTC").unwrap_or("rustc".to_owned());
      let rustc = PathBuf::from(rustc);
+@@ -546,12 +555,9 @@
+ }
+
+ pub fn rust_target_triple(config: &Config) -> String {
+-    let tools_version = semver::Version::parse(&semver_version(
+-        config
+-            .platform_tools_version
+-            .unwrap_or(DEFAULT_PLATFORM_TOOLS_VERSION),
+-    ))
+-    .unwrap();
++    // Target name follows the system toolchain, not a requested version.
++    let tools_version =
++        semver::Version::parse(&semver_version(DEFAULT_PLATFORM_TOOLS_VERSION)).unwrap();
+     let sbpf_minimum_version = semver::Version::parse(&semver_version("v1.44")).unwrap();
+
+     if config.arch == "v0" && tools_version < sbpf_minimum_version {
 --- a/src/bin/build_sbf.rs
 +++ b/src/bin/build_sbf.rs
 @@ -3,7 +3,7 @@
@@ -92,6 +126,17 @@
              get_base_rust_version, install_and_link_tools, install_tools,
              make_platform_tools_path_for_version, rust_target_triple,
              validate_platform_tools_version,
+@@ -56,8 +56,8 @@
+
+     if corrupted_toolchain(platform_tools_dir) {
+         error!(
+-            "The Solana toolchain is corrupted. Please, run cargo-build-sbf with the \
+-             --force-tools-install argument to fix it."
++            "The platform-tools at {} are unusable. Reinstall solana-dev.",
++            platform_tools_dir.display()
+         );
+         exit(1);
+     }
 @@ -120,15 +120,22 @@
          );
      }
