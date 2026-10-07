@@ -1,0 +1,21 @@
+pkgbase = penguin-mail-bin
+	pkgdesc = Mail and calendar for Linux (prebuilt binaries from the GitHub release)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/c9dev/penguin-mail
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk4
+	depends = libadwaita
+	depends = webkitgtk-6.0
+	depends = gnupg
+	depends = hicolor-icon-theme
+	optdepends = gnome-shell-extension-appindicator: tray icon on GNOME Shell
+	optdepends = bubblewrap: run assistant skill scripts
+	provides = penguin-mail
+	conflicts = penguin-mail
+	options = !debug
+	source = penguin-mail-1.0.0-1-x86_64.pkg.tar.zst::https://github.com/c9dev/penguin-mail/releases/download/v1.0.0/penguin-mail-1.0.0-1-x86_64.pkg.tar.zst
+	sha256sums = bad8b0ff00b3117932b5348d7ab6d3915727ad9632c63532da3e6485eb67cdcb
+
+pkgname = penguin-mail-bin
