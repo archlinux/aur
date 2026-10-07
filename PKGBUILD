@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=lightcraft-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Photo library and non-destructive raw development (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
@@ -23,12 +23,12 @@ source=("$_pkgname-$pkgver-NOTICE.txt::https://raw.githubusercontent.com/storyto
         "$_pkgname-$pkgver-OFL-Inter.txt::https://raw.githubusercontent.com/storytold/$_pkgname/v$pkgver/assets/fonts/OFL-Inter.txt")
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
-sha256sums=('a6b376d897358eda47e2e74098b1203b37a23df3e7ddfbd0e67924a3a6f7b5bb'
+sha256sums=('bf18e13bc1b7d546314a370cb35a99007a62841f9b733bb919665ed55eb72e4a'
             'd516dfeae4a19d636c0d16f389d0a8593efd9dd259b8832bb06722a3dc09e0ce'
             '6426c23f529938deddfbaed543e7135e08b514fa6a75b330734331d877c78faf'
             '262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a')
-sha256sums_x86_64=('f036620ec4a28323bfb9d5f02195a9e87de13a1dac92701b9e3459eb2864461f')
-sha256sums_aarch64=('e70f5007d2d5acd5edf7f3c8a9537290142036cbf62acb8a713695a9b1885ab1')
+sha256sums_x86_64=('543f91c96e4081e86065ec8fb3d62447b08bfd6ae0da22df50fc27a55bb9777d')
+sha256sums_aarch64=('57c0c2504de55a8bc6a0c9611a030272abd8e254b255e12f89114ed6bc16c69e')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-linux-$CARCH"
