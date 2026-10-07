@@ -1,0 +1,14 @@
+pkgbase = kvmfr-dkms
+	pkgdesc = DKMS package for the Looking Glass KVMFR kernel module
+	pkgver = B7
+	pkgrel = 1
+	url = https://github.com/gnif/LookingGlass
+	arch = any
+	license = GPL-2.0-or-later
+	depends = dkms
+	provides = kvmfr
+	conflicts = looking-glass-module-dkms
+	source = looking-glass-B7.tar.gz::https://looking-glass.io/artifact/B7/source
+	sha512sums = a3f0193451c64dbd9ead01538fa53cc78b42d318d54b2eef026fb730811e055bb140b67dcd91c1da5ef09ec74fbb141c791b53264a56a943308b81a6e49e1e93
+
+pkgname = kvmfr-dkms
