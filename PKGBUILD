@@ -4,7 +4,7 @@
 # (repository is being renamed to claude-desktop-extra; the old URL redirects)
 
 pkgname=claude-desktop-extra
-pkgver=2.19675.1
+pkgver=2.26454.0
 pkgrel=1
 pkgdesc="Claude Desktop (official Linux build) with extra features: Computer Use, custom themes, multi-profile, Quick Entry - for distros upstream does not ship"
 arch=('x86_64' 'aarch64')
@@ -37,7 +37,8 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
             'virtiofsd: Cowork agent workspace VM - shares $HOME into the guest'
             'imagemagick: Computer Use screenshot crop via convert - ONLY for the residual KDE-without-kwin-bridge spectacle tier (bundled bridges cover X11/wlroots/GNOME/KDE 6.6+)'
             'ydotool: Computer Use input on exotic Wayland compositors ONLY (non-wlroots, non-GNOME, non-KDE; requires ydotoold daemon, v1.0+) - wlroots/GNOME/KDE use the bundled bridges'
-            'socat: Faster Quick Entry toggle via socket (~2ms vs ~25ms python3 - not required)'
+            'bubblewrap: Claude Code shell sandbox (needed with socat when an organization sandbox policy applies)'
+            'socat: Claude Code shell sandbox (with bubblewrap); also a faster Quick Entry toggle via socket (~2ms vs ~25ms python3)'
             'bluez: Hardware Buddy (Nibblet BLE pet) - the daemon Web Bluetooth talks to; without it the in-app device scan finds nothing'
             'gnome-keyring: credential storage backend for libsecret (KDE users: kwallet works too - upstream Recommends gnome-keyring | kwalletd)'
             'xdg-desktop-portal-gtk: portal backend for DEs without their own (GNOME/KDE ship xdg-desktop-portal-gnome/-kde) - file dialogs, screen sharing'
@@ -56,10 +57,10 @@ install="$pkgname.install"
 # claude-desktop/ (Electron runtime + resources/app.asar already patched + our CU
 # bridges under resources/), plus launcher/, icons/, and copyright. No separate
 # Electron zip source.
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.19675.1/claude-desktop-2.19675.1-linux.tar.gz")
-sha256sums_x86_64=('229742dbb0d44e656be7799216093777c0f7d91930beec30c56858c6fdb8198f')
-source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.19675.1/claude-desktop-2.19675.1-linux-aarch64.tar.gz")
-sha256sums_aarch64=('2d2d38c761c10a6fe2bc95280cecde94ddb926e2db516b4ef0f857e8e45563dc')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.26454.0/claude-desktop-2.26454.0-linux.tar.gz")
+sha256sums_x86_64=('94205d65752323da2b3f28cd45d31b5b70172898122a85c567c0b916d4ff7c61')
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.26454.0/claude-desktop-2.26454.0-linux-aarch64.tar.gz")
+sha256sums_aarch64=('f5cd59cedf11f22f59f1ca0ebca9e1ec8d7907b5c9707984798956b64ac0da54')
 options=('!strip' '!emptydirs')
 
 package() {
@@ -114,7 +115,7 @@ StartupWMClass=com.anthropic.Claude
 # second-instance just focuses mainWindow; suppress GNOME's default "New Window" item
 SingleMainWindow=true
 Categories=Utility;Development;
-MimeType=x-scheme-handler/claude;
+MimeType=x-scheme-handler/claude;application/vnd.anthropic.mcpb;application/vnd.anthropic.skill;
 Actions=NewChat;NewCode;
 
 [Desktop Action NewChat]
@@ -156,6 +157,17 @@ EOF
         "$pkgdir/usr/share/gnome-shell/search-providers/com.anthropic.Claude.search-provider.ini"
     install -pDm644 "$_sp/com.anthropic.Claude.SearchProvider.service" \
         "$pkgdir/usr/share/dbus-1/services/com.anthropic.Claude.SearchProvider.service"
+
+    # Shared MIME types (.mcpb/.dxt extensions, .skill). Upstream's postinst
+    # copies this file at configure time; we ship it as a package file, and
+    # shared-mime-info's 30-update-mime-database hook (pulled in by gtk3)
+    # rebuilds the database on install, upgrade and removal.
+    local _mime="$pkgdir/usr/lib/claude-desktop/resources/linux-mime/com.anthropic.Claude.xml"
+    if [ ! -f "$_mime" ]; then
+        echo "ERROR: resources/linux-mime/com.anthropic.Claude.xml missing - upstream layout changed; re-audit" >&2
+        return 1
+    fi
+    install -pDm644 "$_mime" "$pkgdir/usr/share/mime/packages/com.anthropic.Claude.xml"
 
     # Upstream license notice (the official .deb's usr/share/doc copyright file,
     # placed at the tarball root by scripts/build-patched-tarball.sh).
