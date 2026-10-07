@@ -1,0 +1,7 @@
+# shellcheck disable=SC2016
+post_install() {
+	echo 'Para activar navita, agrega esta línea a tu ~/.bashrc o ~/.zshrc:'
+	echo '  source /usr/share/navita/navita.sh'
+	echo 'Por defecto reemplaza el comando `cd`. Configúralo con las variables de'
+	echo 'entorno NAVITA_* (ver /usr/share/doc/navita/README.md) ANTES de la línea `source`.'
+}
