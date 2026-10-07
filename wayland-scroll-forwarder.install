@@ -1,0 +1,13 @@
+post_install() {
+  cat <<MSG
+==> Find your app's window class:  xprop WM_CLASS   (then click the window)
+==> Enable the service for it, e.g. GeForce NOW:
+      systemctl --user enable --now wayland-scroll-forwarder@GeForceNOW
+==> If scrolling still does not work, replug the mouse or log out and in
+    so the udev rule takes effect.
+MSG
+}
+
+post_upgrade() {
+  systemctl --user daemon-reload 2>/dev/null || true
+}

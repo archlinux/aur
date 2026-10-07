@@ -1,0 +1,18 @@
+pkgbase = wayland-scroll-forwarder-git
+	pkgdesc = Fix the mouse wheel in NVIDIA GeForce NOW (and other X11 apps) on Wayland
+	pkgver = r17.1f338f3
+	pkgrel = 1
+	url = https://github.com/Throdne/wayland-scroll-forwarder
+	install = wayland-scroll-forwarder.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = python
+	depends = python-evdev
+	depends = python-xlib
+	provides = wayland-scroll-forwarder
+	conflicts = wayland-scroll-forwarder
+	source = wayland-scroll-forwarder::git+https://github.com/Throdne/wayland-scroll-forwarder.git
+	sha256sums = SKIP
+
+pkgname = wayland-scroll-forwarder-git
