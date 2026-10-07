@@ -4,7 +4,7 @@ _appname=code
 _pkgname="visual-studio-${_appname}"
 pkgname="${_pkgname}-electron-bin"
 _debname=com.microsoft.VSCode
-pkgver=1.139.1
+pkgver=1.140.0
 _electronversion=43
 pkgrel=1
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications."
@@ -52,9 +52,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://code.visualstudio.
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64")
 sha256sums=('68a94e4a9d746da48f5bb990d48b434363e476dfde006394a3ced94b4a54b4a7'
             '0906517d45b48027d8f068e56b308b3e86151c09723680c5c1235165669520ca')
-sha256sums_aarch64=('d067f5cd1b4f9a94e0921cb869ede08db9cb1e289121f2f4657aec3822fd3f5e')
-sha256sums_armv7h=('0533582d47ac9fc1ed0a18905f78049c2c86051a4f23968bbf776e5110658bcb')
-sha256sums_x86_64=('b0676fa039df53589acdd5aa55673267cff910d260e875e7c6118144592d05f0')
+sha256sums_aarch64=('9e68abc85090ca3f70d12e88efddc26a23553195f4185c53f059e6645803bbf3')
+sha256sums_armv7h=('084d6f3a157558764b8cef4a822c73a1e3c4e0e73ee732c351af2b7cde55f288')
+sha256sums_x86_64=('219a29836626afd12222963908abc1ae96a7491ef3bf04e5dd8819e9ceaaacac')
 pkgver() {
     cd "${srcdir}/usr/share/${_appname}/resources/app"
     grep '"version": ' package.json | awk '{print $2}' | tr -d '"' | tr -d ','
@@ -90,7 +90,7 @@ prepare() {
         aarch64)    _arch_rem="x64" ;;
         x86_64)   _arch_rem="arm64" ;;
     esac
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     find "${_app_dir}/resources/app" \
         \( -name "*darwin*" -o -name "*${_arch_rem}*" -o -name "*win32*" \) \
         -exec rm -rf {} +
@@ -98,7 +98,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     cp -a "${_app_dir}/resources/app/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/appdata/${_debname}.appdata.xml" "${pkgdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml"
     install -Dm644 "${srcdir}/usr/share/applications/${_debname}.UrlHandler.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}-UrlHandler.desktop"

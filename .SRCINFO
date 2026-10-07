@@ -1,6 +1,6 @@
 pkgbase = visual-studio-code-electron-bin
 	pkgdesc = Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications.
-	pkgver = 1.139.1
+	pkgver = 1.140.0
 	pkgrel = 1
 	url = https://code.visualstudio.com/
 	arch = aarch64
@@ -27,11 +27,11 @@ pkgbase = visual-studio-code-electron-bin
 	source = visual-studio-code-electron.sh
 	sha256sums = 68a94e4a9d746da48f5bb990d48b434363e476dfde006394a3ced94b4a54b4a7
 	sha256sums = 0906517d45b48027d8f068e56b308b3e86151c09723680c5c1235165669520ca
-	source_aarch64 = visual-studio-code-electron-1.139.1-aarch64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-arm64
-	sha256sums_aarch64 = d067f5cd1b4f9a94e0921cb869ede08db9cb1e289121f2f4657aec3822fd3f5e
-	source_armv7h = visual-studio-code-electron-1.139.1-armv7h.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-armhf
-	sha256sums_armv7h = 0533582d47ac9fc1ed0a18905f78049c2c86051a4f23968bbf776e5110658bcb
-	source_x86_64 = visual-studio-code-electron-1.139.1-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64
-	sha256sums_x86_64 = b0676fa039df53589acdd5aa55673267cff910d260e875e7c6118144592d05f0
+	source_aarch64 = visual-studio-code-electron-1.140.0-aarch64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-arm64
+	sha256sums_aarch64 = 9e68abc85090ca3f70d12e88efddc26a23553195f4185c53f059e6645803bbf3
+	source_armv7h = visual-studio-code-electron-1.140.0-armv7h.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-armhf
+	sha256sums_armv7h = 084d6f3a157558764b8cef4a822c73a1e3c4e0e73ee732c351af2b7cde55f288
+	source_x86_64 = visual-studio-code-electron-1.140.0-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64
+	sha256sums_x86_64 = 219a29836626afd12222963908abc1ae96a7491ef3bf04e5dd8819e9ceaaacac
 
 pkgname = visual-studio-code-electron-bin
