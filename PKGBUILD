@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio-git
 _pkgname="Cherry Studio"
-pkgver=2.0.9.r704.g5a03cf5
+pkgver=2.0.9.r788.g4edb3b8
 _electronversion=44
 _nodeversion=24
 pkgrel=1
@@ -36,12 +36,10 @@ makedepends=(
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}"
-    'build-better-sqlite3.sh'
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '4e7aa663647066f2b85226e010de351c9a24f991c6fea6621f2c6b5edd880baa'
-            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+            'fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -55,7 +53,7 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -113,7 +111,6 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
-        s/@cfgdirname@/${_pkgname// /}/g
     " "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
@@ -123,7 +120,7 @@ prepare() {
         --exec="${pkgname%-git} %U"    
     _ensure_local_nvm
     _set_build_env
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json    
+    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json   
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     local _arch_name
     case "${CARCH}" in
@@ -132,7 +129,6 @@ prepare() {
     esac
     local _binaries_dir="resources/binaries/linux-${_arch_name}"
     mkdir -p "${_binaries_dir}"
-    # Create empty placeholder files (electron-builder needs these to exist during packaging)
     touch "${_binaries_dir}/"{mise,bun,uv,uvx,rg}    
     export NODE_ENV=development
     pnpm install --ignore-scripts
@@ -157,7 +153,7 @@ build() {
 		aarch64)	_archrem=x64	;;
 		x86_64)		_archrem=arm	;;
 	esac
-	find "${_app_dir}/resources/app.asar.unpacked" -type d \
+	find "${_app_dir}/resources/app.asar.unpacked" -depth \
 		\( -name "darwin*" -o -name "win32*" -o -name "*${_archrem}"* \) \
 		-exec rm -rf {} +
 }
@@ -167,7 +163,6 @@ package() {
 	local _app_dir="$(_get_app_dir)"
 	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
     rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
-    # Replace placeholder binaries with symlinks to system binaries
     local _arch_name
     case "${CARCH}" in
         aarch64) _arch_name="linux-arm64"   ;;
