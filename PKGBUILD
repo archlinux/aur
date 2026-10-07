@@ -29,7 +29,5 @@ package() {
 	install -Dm644 CONTRIBUTING.md "$pkgdir/usr/share/doc/$pkgname/CONTRIBUTING.md"
 	install -Dm644 PROJECT.md "$pkgdir/usr/share/doc/$pkgname/PROJECT.md"
 	install -Dm644 docs/github-actions.md "$pkgdir/usr/share/doc/$pkgname/github-actions.md"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
