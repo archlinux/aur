@@ -1,6 +1,6 @@
 pkgbase = crystal-sol-bin
 	pkgdesc = Crystal Sol launcher and licensed game installer (official binary)
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://frostal.us/crystal-sol
 	arch = x86_64
@@ -21,12 +21,12 @@ pkgbase = crystal-sol-bin
 	conflicts = crystal-sol
 	options = !strip
 	options = !debug
-	source = https://downloads.frostal.us/crystal-sol/launcher/0.1.11/crystal-sol-launcher-0.1.11-x86_64-linux.tar.gz
+	source = https://downloads.frostal.us/crystal-sol/launcher/0.1.12/crystal-sol-launcher-0.1.12-x86_64-linux.tar.gz
 	source = crystal-sol.desktop
 	source = crystal-sol.png
 	source = LICENSE-NOTICE
-	sha256sums = 66b47ee9423af668a2fcc9ef9406ad9acc3855c6edf1e748001367f8047a7a2e
-	sha256sums = 67a53badefb32111995c56a2e2fcfd640fdad27d248ee6300d7299df74d8e193
+	sha256sums = 9d373f6974a8c2ec9f3cd5798fecbe1573e1ceca9867f709b193a07cac4cdcdd
+	sha256sums = dfd925478542c21fb4f2c376a5fe11283b2cd1f2800ba545c60e534dd72cb7ca
 	sha256sums = 2f9dd476b59343e516e477bbd731d3a78b0d22362379251fc5a971521a0ad4f3
 	sha256sums = fa418322cd602a3be1078640a784b8f55ffa5fcedfeb817143593bcc922882b0
 

@@ -2,7 +2,7 @@
 Type=Application
 Name=Crystal Sol
 Comment=Sign in, install, update, and play Crystal Sol
-Exec=crystal-sol
+Exec=/usr/bin/crystal-sol-launcher
 Icon=crystal-sol
 Terminal=false
 Categories=Game;StrategyGame;

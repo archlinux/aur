@@ -1,7 +1,7 @@
 # Maintainer: Frostal (upstream project)
 # Crystal Sol's closed-source launcher; licensed game downloads remain per-user.
 pkgname=crystal-sol-bin
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc='Crystal Sol launcher and licensed game installer (official binary)'
 arch=('x86_64')
@@ -24,8 +24,8 @@ source=(
   'LICENSE-NOTICE'
 )
 sha256sums=(
-  '66b47ee9423af668a2fcc9ef9406ad9acc3855c6edf1e748001367f8047a7a2e'
-  '67a53badefb32111995c56a2e2fcfd640fdad27d248ee6300d7299df74d8e193'
+  '9d373f6974a8c2ec9f3cd5798fecbe1573e1ceca9867f709b193a07cac4cdcdd'
+  'dfd925478542c21fb4f2c376a5fe11283b2cd1f2800ba545c60e534dd72cb7ca'
   '2f9dd476b59343e516e477bbd731d3a78b0d22362379251fc5a971521a0ad4f3'
   'fa418322cd602a3be1078640a784b8f55ffa5fcedfeb817143593bcc922882b0'
 )

@@ -57,3 +57,10 @@ pacman -Qkk (zero altered files). Both installed command names opened the GUI
 under Xvfb without a terminal. Namcap has no errors; display libraries are
 loaded dynamically, so its ELF scan reports them as possibly unused. Public
 launcher symbols and ELF-loader warnings remain intentional.
+
+Launcher 0.1.12 preserves transparent rounded edges. X11 bounding and input
+shapes remove the square backdrop and empty border; Wayland uses premultiplied
+alpha. The launcher still needs no GPU adapter. The desktop entry calls
+/usr/bin/crystal-sol-launcher directly, avoiding older per-user bootstrap command
+shadows. Bootstrap remains outside this package. Native desktop visual checks
+and real entitlement account tests remain under the previous publication waiver.
