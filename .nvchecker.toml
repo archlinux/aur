@@ -1,0 +1,5 @@
+[siltide-bin]
+source = "github"
+github = "moezdil/siltide"
+use_latest_release = true
+prefix = "v"

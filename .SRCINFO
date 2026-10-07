@@ -1,0 +1,24 @@
+pkgbase = siltide-bin
+	pkgdesc = Terminal monitor for GPUs, NPUs and other AI accelerators
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/moezdil/siltide
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = siltide
+	conflicts = siltide
+	options = !strip
+	options = !debug
+	source = README-0.1.4.md::https://raw.githubusercontent.com/moezdil/siltide/v0.1.4/README.md
+	source = LICENSE-0.1.4::https://raw.githubusercontent.com/moezdil/siltide/v0.1.4/LICENSE
+	sha256sums = d670cfcf3419c5f0b1840842d012d179b8d545268f2e247976ffc2f92baaa66e
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = siltide-x86_64-0.1.4::https://github.com/moezdil/siltide/releases/download/v0.1.4/siltide-linux-amd64
+	sha256sums_x86_64 = 7fe85b10953010234b48cbaa82ffde1ac18747679c405118cde150758e49b9ef
+	source_aarch64 = siltide-aarch64-0.1.4::https://github.com/moezdil/siltide/releases/download/v0.1.4/siltide-linux-arm64
+	sha256sums_aarch64 = 29dbf7dd2bf0a854d05e2cd7482c2aaeae9325927904720cb3e3d12caafb7170
+
+pkgname = siltide-bin
