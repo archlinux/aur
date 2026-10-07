@@ -1,57 +1,74 @@
 pkgbase = solana
-	pkgver = 4.0.2
+	pkgver = 4.3.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/anza-xyz/agave
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = git
-	makedepends = protobuf
 	makedepends = clang
-	makedepends = curl
 	makedepends = cargo
+	makedepends = git
+	makedepends = perl
+	makedepends = protobuf
+	makedepends = rust
 	makedepends = systemd-libs
+	noextract = platform-tools-linux-x86_64.tar.bz2
 	options = !lto
-	source = git+https://github.com/anza-xyz/agave.git#tag=v4.0.2
-	source = git+https://github.com/solana-program/token-2022.git#tag=cli@v5.5.0
+	source = git+https://github.com/anza-xyz/agave.git#tag=v4.3.0
+	source = git+https://github.com/anza-xyz/cargo-build-sbf.git#tag=cargo-build-sbf@v4.4.0
+	source = git+https://github.com/solana-program/token-2022.git#tag=cli@v5.6.1
+	source = https://github.com/anza-xyz/platform-tools/releases/download/v1.57/platform-tools-linux-x86_64.tar.bz2
 	source = solana.sysusers
 	source = solana.tmpfiles
 	source = solana-sbf_sdk-path.patch
-	sha256sums = bb2d61322ad92abe033c79021c1d7f8a26b55b44662036f552e934acf4f348a6
-	sha256sums = a9a0f6e495f68a77e61ce44a39bed42608bd3afd6aa5ddf09e124b50e17d41a6
+	sha256sums = 61b3f3d214474425ff6954c471af7ba8ad1813763d47b2da1f8df30dec0cf25c
+	sha256sums = b039350d6d73488e1b4296c78475738c3c2e5c54e8370d031983c6e59a6d7c8d
+	sha256sums = 5191648d2bb219c91774966900e6fcf44e2e5b08cfe2b2c483cf955dd36d9cd8
+	sha256sums = b0f7af104adf726fff2a6a09ea2eb2f2d2965c92295f4d7388c08d140e0c2b00
 	sha256sums = bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0
 	sha256sums = a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b
-	sha256sums = a39c403d4b25062e3d887afe16d9d643f058f34b107d6b7b7041c5167a9f12e3
+	sha256sums = f2ce9d3ae77c90c8a88d55c932f4ea4fbae5bbf33179e1c09af565e60651b96c
 
 pkgname = solana-cli
 	pkgdesc = Solana CLI tools
+	depends = bzip2
 	depends = glibc
 	depends = libgcc
 	depends = systemd-libs
+	depends = zstd
 	provides = spl-token
 	conflicts = spl-token
+	conflicts = solana-bin
 
 pkgname = agave-validator
 	pkgdesc = Agave validator and node operator tools for Solana
 	install = agave-validator.install
 	depends = bzip2
 	depends = glibc
+	depends = libcap
 	depends = libgcc
 	depends = libstdc++
-	depends = libcap
-	optdepends = ocl-icd: OpenCL GPU signature verification via perf-libs (requires compatible GPU; opt-in via SOLANA_PERF_LIBS)
-	optdepends = intel-sgx-psw: SGX-backed signing enclave via perf-libs (requires SGX-capable CPU; opt-in via SOLANA_PERF_LIBS)
+	depends = zlib
+	depends = zstd
 
 pkgname = solana-dev
 	pkgdesc = Solana program developer tools
 	install = solana-dev.install
-	depends = bash
 	depends = bzip2
+	depends = cargo
+	depends = clang
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	optdepends = cargo: required for cargo-build-sbf and cargo-test-sbf
+	depends = lld
+	depends = llvm
+	depends = rust
+	depends = zlib
+	depends = zstd
 	conflicts = solana-dev-bin
+	options = !strip
+	options = !debug
+	options = !lto
 
 pkgname = solana
 	pkgdesc = A fast, secure, and censorship resistant blockchain (meta package)

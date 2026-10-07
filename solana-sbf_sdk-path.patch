@@ -1,45 +1,125 @@
-diff --git a/platform-tools-sdk/cargo-build-sbf/src/toolchain.rs b/platform-tools-sdk/cargo-build-sbf/src/toolchain.rs
-index 2903bec190..fc74335614 100644
---- a/platform-tools-sdk/cargo-build-sbf/src/toolchain.rs
-+++ b/platform-tools-sdk/cargo-build-sbf/src/toolchain.rs
-@@ -39,24 +39,7 @@ const GITHUB_API_BYTES_RESPONSE_HEADERS: [(&str, &str); 3] = [
- ];
-
- fn find_installed_platform_tools() -> Vec<String> {
--    let solana = home_dir().join(".cache").join("solana");
--    let package = "platform-tools";
--
--    if let Ok(dir) = std::fs::read_dir(solana) {
--        dir.filter_map(|e| match e {
--            Err(_) => None,
--            Ok(e) => {
--                if e.path().join(package).is_dir() {
--                    Some(e.path().file_name().unwrap().to_string_lossy().to_string())
--                } else {
--                    None
--                }
--            }
--        })
--        .collect::<Vec<_>>()
--    } else {
--        Vec::new()
--    }
-+    vec![DEFAULT_PLATFORM_TOOLS_VERSION.to_string()]
+--- a/src/toolchain.rs
++++ b/src/toolchain.rs
+@@ -137,6 +137,10 @@
  }
 
- fn get_latest_platform_tools_version() -> Result<String, String> {
-@@ -128,12 +111,8 @@ pub(crate) fn validate_platform_tools_version(
+ pub fn make_platform_tools_path_for_version(version: &str) -> PathBuf {
++    // The distro package ships this exact toolchain. Do not download it again.
++    if version == DEFAULT_PLATFORM_TOOLS_VERSION {
++        return PathBuf::from("/usr/lib/solana/v1.57/platform-tools");
++    }
+     home_dir()
+         .join(".cache")
+         .join("solana")
+@@ -254,9 +258,16 @@
+     use_rest_api: bool,
+ ) -> Result<(), String> {
+     if config.force_tools_install && target_path.is_dir() {
+-        debug!("Remove directory {target_path:?}");
+-        fs::remove_dir_all(target_path)
+-            .map_err(|err| format!("could not remove {target_path:?}: {err}"))?;
++        if target_path.starts_with("/usr/lib/solana") {
++            warn!(
++                "Refusing to delete the distro platform-tools at {}.",
++                target_path.display()
++            );
++        } else {
++            debug!("Remove directory {target_path:?}");
++            fs::remove_dir_all(target_path)
++                .map_err(|err| format!("could not remove {target_path:?}: {err}"))?;
++        }
      }
+     // Check whether the target path is an empty directory. This can
+     // happen if package download failed on previous run of
+@@ -367,6 +378,7 @@
  }
 
--pub(crate) fn make_platform_tools_path_for_version(version: &str) -> PathBuf {
--    home_dir()
--        .join(".cache")
--        .join("solana")
--        .join(version)
--        .join("platform-tools")
-+pub(crate) fn make_platform_tools_path_for_version(_version: &str) -> PathBuf {
-+    PathBuf::from("/usr/lib/solana/platform-tools-sdk/sbf")
+ // check whether custom solana toolchain is linked, and link it if it is not.
++#[allow(dead_code)]
+ fn link_solana_toolchain(
+     config: &Config,
+     platform_tools_dir: &Path,
+@@ -508,30 +520,23 @@
+         install_tools(config, &platform_tools_version, false);
+     }
+
+-    if config.no_rustup_override {
+-        let target_triple = rust_target_triple(config);
+-        check_solana_target_installed(&target_triple);
+-    } else {
+-        let platform_tools_dir = make_platform_tools_path_for_version(&platform_tools_version);
+-        link_solana_toolchain(config, &platform_tools_dir, &platform_tools_version);
+-        // RUSTC variable overrides cargo +<toolchain> mechanism of
+-        // selecting the rust compiler and makes cargo run a rust compiler
+-        // other than the one linked in Solana toolchain. We have to prevent
+-        // this by removing RUSTC from the child process environment.
+-        if env::var("RUSTC").is_ok() {
+-            warn!(
+-                "Removed RUSTC from cargo environment, because it overrides +solana cargo command \
+-                 line option."
+-            );
+-            // Safety: cargo-build-sbf doesn't spawn any threads until final child process is spawned
+-            unsafe { env::remove_var("RUSTC") }
+-        }
++    // cargo is the binary inside the toolchain directory, not `cargo +toolchain`,
++    // so rustup is not required. A host RUSTC would still override it.
++    if env::var("RUSTC").is_ok() {
++        warn!("Removed RUSTC from cargo environment so the platform-tools rustc is used.");
++        // Safety: cargo-build-sbf doesn't spawn any threads until final child process is spawned
++        unsafe { env::remove_var("RUSTC") }
++    }
++    if env::var("RUSTUP_TOOLCHAIN").is_ok() {
++        // Safety: same as above.
++        unsafe { env::remove_var("RUSTUP_TOOLCHAIN") }
+     }
+
+     platform_tools_version
  }
 
- pub(crate) fn get_base_rust_version(platform_tools_version: &str) -> String {
+ // allow user to set proper `rustc` into RUSTC or into PATH
++#[allow(dead_code)]
+ fn check_solana_target_installed(target: &str) {
+     let rustc = env::var("RUSTC").unwrap_or("rustc".to_owned());
+     let rustc = PathBuf::from(rustc);
+--- a/src/bin/build_sbf.rs
++++ b/src/bin/build_sbf.rs
+@@ -3,7 +3,7 @@
+         config::Config,
+         post_processing::post_process,
+         toolchain::{
+-            DEFAULT_PLATFORM_TOOLS_VERSION, corrupted_toolchain, generate_toolchain_name,
++            DEFAULT_PLATFORM_TOOLS_VERSION, corrupted_toolchain,
+             get_base_rust_version, install_and_link_tools, install_tools,
+             make_platform_tools_path_for_version, rust_target_triple,
+             validate_platform_tools_version,
+@@ -120,15 +120,22 @@
+         );
+     }
+
+-    let cargo_build = PathBuf::from("cargo");
++    // cargo resolves `rustc` from PATH. An absolute cargo does not select the
++    // sibling rustc, and Arch rustc is not rustup, so `cargo +toolchain` cannot.
++    let mut path_prepend = platform_tools_dir.join("rust").join("bin").into_os_string();
++    path_prepend.push(if cfg!(windows) { ";" } else { ":" });
++    path_prepend.push(llvm_bin.as_os_str());
++    path_prepend.push(if cfg!(windows) { ";" } else { ":" });
++    path_prepend.push(env::var_os("PATH").unwrap_or_default());
++    // Safety: cargo-build-sbf doesn't spawn any threads until final child process is spawned
++    unsafe { env::set_var("PATH", path_prepend) };
++    let cargo_build = platform_tools_dir.join("rust").join("bin").join(if cfg!(windows) {
++        "cargo.exe"
++    } else {
++        "cargo"
++    });
+     let mut cargo_build_args = vec![];
+-
+-    let mut toolchain_name: String;
+-    if !config.no_rustup_override {
+-        toolchain_name = generate_toolchain_name(validated_toolchain_version.as_str());
+-        toolchain_name = format!("+{toolchain_name}");
+-        cargo_build_args.push(toolchain_name.as_str());
+-    };
++    let _ = &validated_toolchain_version;
+
+     cargo_build_args.append(&mut vec!["build", "--target", &target_triple]);
+     if !config.debug {

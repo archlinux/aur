@@ -5,11 +5,8 @@ post_install() {
 
 ==> agave-validator: XDP capabilities have been set on the binary.
     For full XDP support you will also need to enable it at runtime.
-    See: https://www.anza.xyz/blog/agave-xdp-setup-guide
-
-==> perf-libs are installed at /usr/lib/solana/perf-libs
-    To use them, make sure optional dependencies are installed and export:
-    export SOLANA_PERF_LIBS=/usr/lib/solana/perf-libs
+    See: https://www.anza.xyz/blog/agave-xdp-setup-guide (You do not
+    need to run setcap again.)
 
 EOF
 }

@@ -1,10 +1,11 @@
 post_install() {
   cat <<'EOF'
-To use cargo-build-sbf and cargo-test-sbf, add your user to the 'solana'
-group so they can install platform-tools into /usr/lib/solana:
+Platform tools installed to /usr/lib/solana/v1.57/platform-tools
 
-    usermod -aG solana <your-user>
-
-Then log out and back in for the group membership to take effect.
+cargo-build-sbf has been patched to use the system installed copy.
 EOF
+}
+
+post_upgrade() {
+  post_install
 }
