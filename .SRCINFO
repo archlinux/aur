@@ -1,7 +1,7 @@
 pkgbase = zalo-for-linux-bin
 	pkgdesc = Zalo for Linux
 	pkgver = 26.10.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/VN-Linux-Family/zalo-for-linux
 	arch = x86_64
 	arch = aarch64
@@ -33,9 +33,9 @@ pkgbase = zalo-for-linux-bin
 	source = Zalo.png
 	sha256sums = b9478f6156fc65858971ca8fb0cc0b94d327ed34f704ce4c614b10e7510dbfe9
 	sha256sums = 54556414e921d2e72db65cdace024251c05e31ce2e1aa3db82aa330436815445
-	source_x86_64 = Zalo-26.10.10+ZaDark-26.2.1-a532d9e.AppImage::https://github.com/VN-Linux-Family/zalo-for-linux/releases/download/26.10.10/Zalo-26.10.10+ZaDark-26.2.1-a532d9e-x86_64.AppImage
-	sha256sums_x86_64 = 2aba0a230747e1b21e941abcd247fc2d9ca7a516b5cf52a229e7dced63df90ad
-	source_aarch64 = Zalo-26.10.10+ZaDark-26.2.1-a532d9e.AppImage::https://github.com/VN-Linux-Family/zalo-for-linux/releases/download/26.10.10/Zalo-26.10.10+ZaDark-26.2.1-a532d9e-aarch64.AppImage
-	sha256sums_aarch64 = 5186d7991c9b5ef4d678a4fddc6d9264b2e9676f8a12764e58dc85e4e7b3ecf1
+	source_x86_64 = Zalo-26.10.10+ZaDark-26.2.1-5ccd049.AppImage::https://github.com/VN-Linux-Family/zalo-for-linux/releases/download/26.10.10/Zalo-26.10.10+ZaDark-26.2.1-5ccd049-x86_64.AppImage
+	sha256sums_x86_64 = 888879e02cf2cd3c7c0f98fa8c63d12216a132d842822ed216ee414adbcefc08
+	source_aarch64 = Zalo-26.10.10+ZaDark-26.2.1-5ccd049.AppImage::https://github.com/VN-Linux-Family/zalo-for-linux/releases/download/26.10.10/Zalo-26.10.10+ZaDark-26.2.1-5ccd049-aarch64.AppImage
+	sha256sums_aarch64 = af53048cce5cb70c6564b2b0b753a6743c7c513d3c6caf8c462676f9b2d3aa79
 
 pkgname = zalo-for-linux-bin
