@@ -1,7 +1,7 @@
 pkgbase = gtm-player-bin
 	pkgdesc = Reimagined terminal audio player with background daemon, YouTube/Spotify, radio and podcasts (prebuilt binary)
 	pkgver = 0.2.88
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gtmd.dev
 	arch = x86_64
 	arch = aarch64
@@ -16,10 +16,10 @@ pkgbase = gtm-player-bin
 	provides = gtm-player
 	conflicts = gtm-player
 	source = LICENSE-0.2.88::https://raw.githubusercontent.com/prjctimg/gtm/v0.2.88/LICENSE
-	sha256sums = SKIP
+	sha256sums = 74baee093d1aaf8c77670ceafecb2185b4ce18cbd3e4237e9cac60617f3b5d20
 	source_x86_64 = gtm-arch-x86_64-0.2.88.tar.gz::https://github.com/prjctimg/gtm/releases/download/v0.2.88/gtm-arch-x86_64.tar.gz
-	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = b7c5cb3bbe75606e8681504a55a83b13216ed86bd136f5f001958466863ae875
 	source_aarch64 = gtm-arch-aarch64-0.2.88.tar.gz::https://github.com/prjctimg/gtm/releases/download/v0.2.88/gtm-arch-aarch64.tar.gz
-	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = 10e2cdfb5809cb4eee2a94d338e5a4b5d70dd2b03ac0242508b5a58dcfcbecbc
 
 pkgname = gtm-player-bin
