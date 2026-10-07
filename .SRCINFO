@@ -1,0 +1,20 @@
+pkgbase = pomogo
+	pkgdesc = Keyboard-driven Pomodoro and deep-focus timer for the Linux terminal, with an Omarchy bar widget
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/Ibnu-Afdel/pomogo-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	optdepends = libcanberra: transition sounds via canberra-gtk-play
+	optdepends = pipewire-audio: transition sounds via pw-play when canberra is missing
+	optdepends = libnotify: notify-send, used by pomogo doctor
+	options = !lto
+	options = !debug
+	source = pomogo-3.0.1.tar.gz::https://github.com/Ibnu-Afdel/pomogo-rs/archive/refs/tags/v3.0.1.tar.gz
+	sha256sums = f03d55ebc52424cc1f14d281d53b2307f5991c26e08f27c42fefd2b6b033f34a
+
+pkgname = pomogo
