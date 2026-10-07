@@ -1,0 +1,13 @@
+pkgbase = ou
+	pkgdesc = Open an interactive map in your terminal and display a location or geometry
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/akhenakh/ou
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = ou-0.1.5.tar.gz::https://github.com/akhenakh/ou/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = fe38e3291595f42a706c6bb13bd9c52768a8bb72229731711725e8e0b3f33f7e
+
+pkgname = ou
