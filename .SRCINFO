@@ -1,12 +1,12 @@
 pkgbase = lineselect
 	pkgdesc = Interactive line selection from stdin for use in shell pipelines
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.2.3
+	pkgrel = 1
 	url = https://github.com/urbanogilson/lineselect
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = lineselect-0.2.0.tar.gz::https://codeload.github.com/urbanogilson/lineselect/tar.gz/refs/tags/v0.2.0
-	sha256sums = adfe2534871f2030d54a19aa3060c8537bce845a6abe529464b365ba44faa2ab
+	source = lineselect-0.2.3.tar.gz::https://codeload.github.com/urbanogilson/lineselect/tar.gz/refs/tags/v0.2.3
+	sha256sums = b368f206b5dba367f614fb584c88ac9f4d1dc9199882488f84ba699dd70e6924
 
 pkgname = lineselect
