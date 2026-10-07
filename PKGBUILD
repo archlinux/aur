@@ -5,7 +5,7 @@
 
 _pkgname=dxvk-gplasync
 pkgname=$_pkgname-bin
-pkgver=3.0
+pkgver=3.1.1
 pkgrel=1
 _srcver="v$pkgver-1"
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 9/10/11 (with gplasync patch)"
@@ -21,7 +21,7 @@ source=("$url/-/raw/main/releases/$_pkgname-$_srcver.tar.gz"
         "$_pkgname-env.conf"
         'setup_dxvk_proton.sh'
         'setup_dxvk.sh::https://aur.archlinux.org/cgit/aur.git/plain/setup_dxvk.sh?h=dxvk-mingw&id=15fc8ab6b1bb285df589359c50540b9c14c1f063') # https://raw.githubusercontent.com/doitsujin/dxvk/4f90d7bf5f9ad785660507e0cb459a14dab5ac75/setup_dxvk.sh
-sha256sums=('f3d13925baa8124a3b0a6b7cd46ff57e9204426beb42f243dcc17267f7c2c0dc'
+sha256sums=('11b888a49e9f8724a950d19bfef2f5866f91f86a9fb1b31ce0160411271af115'
             '145406e5cf182f6a37ebcb40a38a0cd84f3f547e1943536d03c7d6c6b2b6d950'
             '62fae8dd3f15cb4a7e09ccdce83d5554e593558ed88c40600afe6c2b854e1312'
             'b562e8dc9539ef3cd1554c6679eef10aacf21103403d7390a141a41ae146b7a6')
