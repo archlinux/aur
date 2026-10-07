@@ -1,0 +1,5 @@
+[ddv-bin]
+source = "github"
+github = "lusingander/ddv"
+use_latest_release = true
+prefix = "v"

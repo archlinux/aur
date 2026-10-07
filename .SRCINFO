@@ -1,0 +1,23 @@
+pkgbase = ddv-bin
+	pkgdesc = Terminal DynamoDB Viewer
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/lusingander/ddv
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = ddv
+	conflicts = ddv
+	options = !strip
+	source = README-0.3.1.md::https://raw.githubusercontent.com/lusingander/ddv/v0.3.1/README.md
+	source = LICENSE-0.3.1::https://raw.githubusercontent.com/lusingander/ddv/v0.3.1/LICENSE
+	sha256sums = 9e25f8f8380ffcbb3a3ed23499b624e42c5f3efaa65d0d37d7f2d44e281b347b
+	sha256sums = 17c3246ab4d4629a1be9090ede400436d98d59c42ea85c5dfaf8332311ccdd0b
+	source_x86_64 = ddv-x86_64-0.3.1.tgz::https://github.com/lusingander/ddv/releases/download/v0.3.1/ddv-0.3.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 26032a754d0cd6b90aee4990d8915b6136c720cb40aa3426408ad54c0ed4a56e
+	source_aarch64 = ddv-aarch64-0.3.1.tgz::https://github.com/lusingander/ddv/releases/download/v0.3.1/ddv-0.3.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ad0083a799ca653516b38429f779b2de5e8a3e4db27ef1dbb9c6d2fe9b063ee4
+
+pkgname = ddv-bin
