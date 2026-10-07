@@ -1,6 +1,6 @@
 pkgbase = python-nativeres
 	pkgdesc = Descale analysis tools for VapourSynth
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://pypi.org/project/nativeres/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = python-nativeres
 	depends = python-scipy
 	depends = pyside6
 	depends = vapoursynth-plugin-vsjetpack
-	source = https://files.pythonhosted.org/packages/source/n/nativeres/nativeres-0.4.0.tar.gz
-	sha256sums = 6ab91df045bdcc1e8dc3110c281ca21d358fa9d5d4f68ef0f266cadb1e8bcd0e
+	source = https://files.pythonhosted.org/packages/source/n/nativeres/nativeres-0.4.1.tar.gz
+	sha256sums = 8fb83f77fe5d7e7ae804a4e4fcdb318d90007046daf9519ed2c3009f374283e4
 
 pkgname = python-nativeres
