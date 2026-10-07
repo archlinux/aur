@@ -1,0 +1,5 @@
+[penguin-mail]
+source = "github"
+github = "c9dev/penguin-mail"
+prefix = "v"
+use_latest_release = true
