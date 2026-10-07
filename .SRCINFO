@@ -1,6 +1,6 @@
 pkgbase = prizrak-box-bin
   pkgdesc = A Simple Mihomo GUI.(Prebuilt version.Use system-wide electron)
-  pkgver = 1.0.21_beta05
+  pkgver = 1.0.21_beta06
   pkgrel = 1
   url = https://github.com/legiz-ru/prizrak-box
   arch = aarch64
@@ -12,9 +12,9 @@ pkgbase = prizrak-box-bin
   conflicts = prizrak-box
   source = prizrak-box.sh
   sha256sums = 4497d4c2cfb24ca0665cbeabf377a6bc850a8cfd6dd17469b0dc937a9ed6bf65
-  source_aarch64 = Prizrak-Box-1.0.21_beta05-aarch64.tar.zst::https://github.com/legiz-ru/prizrak-box/releases/download/v1.0.21-beta05/linux-arm64-aur.tar.zst
-  sha256sums_aarch64 = bb1dce6d64b0732756d2b1a4aa0b326085c56c5024c89f5fab58e574e6c74652
-  source_x86_64 = Prizrak-Box-1.0.21_beta05-x86_64.tar.zst::https://github.com/legiz-ru/prizrak-box/releases/download/v1.0.21-beta05/linux-amd64-aur.tar.zst
-  sha256sums_x86_64 = 79f685890517fcdb7d858540bb011bbd34177e386455314dcfceee8f947a8a2f
+  source_aarch64 = Prizrak-Box-1.0.21_beta06-aarch64.tar.zst::https://github.com/legiz-ru/prizrak-box/releases/download/v1.0.21-beta06/linux-arm64-aur.tar.zst
+  sha256sums_aarch64 = 4df465497bb3fe38966df9d5b49110617dd6d82cf3a8b36fd4e0a300be4bb626
+  source_x86_64 = Prizrak-Box-1.0.21_beta06-x86_64.tar.zst::https://github.com/legiz-ru/prizrak-box/releases/download/v1.0.21-beta06/linux-amd64-aur.tar.zst
+  sha256sums_x86_64 = a0decf3ae286cc88731b4ccbf0d95d3d169c75a2087bb9b7cc6d90bab864197e
 
 pkgname = prizrak-box-bin
