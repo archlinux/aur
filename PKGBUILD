@@ -27,7 +27,5 @@ package() {
 	install -Dm755 "portfinder" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 pf.gif "$pkgdir/usr/share/doc/$pkgname/pf.gif"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
