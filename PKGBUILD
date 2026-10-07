@@ -3,10 +3,19 @@
 pkgname=paseo-cli-edge
 _pkgname=cli
 _npmscope=@getpaseo
-pkgver=0.11.0_beta.5
-_tarball_sha='f53ed784ff0420cee99e43b17cecc5da3425c6b95926ae73e0b94892f22d8d7c'
+pkgver=0.11.0
+_tarball_sha='823040e94cd7d1ad631e8248e2d05d2bb647a1610f33bfe574abc4d37b7d129b'
 _license_sha='79d5aedce6aa0adc547336dc1bd34c5cc9308ba110fac7079ed97515ee573ad3'
 pkgrel=1
+# Publish targets: aur + Arch release + Debian release (opt-in per format).
+_publish_targets="aur github-arch github-deb"
+# Debian runtime deps for the fpm conversion, translated from depends:
+#   glibc->libc6, gcc-libs->libgcc-s1 + libstdc++6 (bundled native node
+#   addons link libgcc_s/libstdc++), nodejs->nodejs, bash->bash. Upstream
+#   git builds want Node >=22; no Debian stable / Ubuntu LTS repo carries
+#   that, so the version pin stays Arch-only rather than make the .deb
+#   uninstallable on deb-smoke.
+_deb_depends=('libc6' 'libgcc-s1' 'libstdc++6' 'nodejs' 'bash')
 pkgdesc='Command-line interface for controlling Paseo AI coding agents (edge - latest upstream release, beta or stable)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/getpaseo/paseo/tree/main/packages/cli'
