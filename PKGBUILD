@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A modern, cross-platform ping with real-time diagnostics, network context, quality scoring, and multi-target monitoring"
 
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,9 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}-${pkgrel}_${_barch[0]}.deb")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}-${pkgrel}_${_barch[1]}.deb")
-sha256sums=('af3bf88b64fb242d12fbc697f8e8313c97657b3461bff3ed7e7b99ed1d436727')
-sha256sums_x86_64=('f2755e1d010ddaf61bcf56b825e40601b094bfeda73769a647780aa1fd80353b')
-sha256sums_aarch64=('6659c5c7b423f61170d678eb413490fe45d97b9c72553603fa821925adf9c9ed')
+sha256sums_x86_64=('d120fac9a2a271b40519af4571f7d2907d0478ffc32cef050b3520541d88be31')
+sha256sums_aarch64=('7d59bb321e87522735cbc7e248b548c78a53c10e8eaf533f581632af6ccebdbf')
 
 
 package() {
