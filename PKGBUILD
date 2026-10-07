@@ -4,7 +4,7 @@ pkgname=pump.io
 pkgver=5.1.4 # renovate: datasource=github-tags depName=pump-io/pump.io
 pkgrel=2
 pkgdesc="A stream server that does most of what people really want from a social network"
-url='http://pump.io'
+url='https://pumpio.org/'
 license=('Apache-2.0')
 arch=('x86_64')
 depends=('nodejs' 'graphicsmagick')
