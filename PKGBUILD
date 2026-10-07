@@ -1,6 +1,6 @@
 # Maintainer: aeris <aeris+aur@imirhil.fr>
 pkgname=website-auditing-tool
-pkgver=2.0.1
+pkgver=3.0.1
 pkgrel=1
 gitversion=$pkgver
 #gitversion=2.0.0
@@ -15,8 +15,8 @@ source=(
 	electron-disable-deb.patch
 	"$pkgname.desktop"
 )
-sha256sums=('77070c0da3f18daf855cba91807ad1693fe7fed08e0c4f44843527f5215ce432'
-            'b97f2bcdcd9d4445d02486783e39ae09deea3c441bb97a0b09e809d649b59ff0'
+sha256sums=('59b949080849ccbfdf9cc6030c148a4996029a3e8e951b32538bfc5b3c29dc0e'
+            'fbc179bf6c71afdba68cf342978210198e690fd724f7566e057433189c91e558'
             '6e7c6ee07e476996b72e9ad51dbe5d8515c2be853204b1d35bd83d857fe19392')
 
 prepare() {
@@ -37,9 +37,10 @@ package() {
 	install -Dm 644 resources/app.asar -t "$pkgdir/opt/$pkgname/resources/"
 
 	cd "$srcdir/$pkgname/resources/icons/"
-	for res in 16 24 32 48 64 96 128 256 512; do
+	for res in 16 32 128 256 512; do
 		res="${res}x${res}"
-		install -Dm 644 "$res.png" "$pkgdir/usr/share/icons/hicolor/$res/apps/$pkgname.png"
+		install -Dm 644 "icon_$res.png" "$pkgdir/usr/share/icons/hicolor/$res/apps/$pkgname.png"
+		install -Dm 644 "icon_$res@2x.png" "$pkgdir/usr/share/icons/hicolor/$res@2/apps/$pkgname.png"
 	done
 
 	install -Dm 644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
