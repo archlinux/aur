@@ -4,7 +4,7 @@ _pkgname=eden
 _pkgver=0.2.1
 pkgname="eden-opt"
 pkgver=${_pkgver//-/.}
-pkgrel=1.1
+pkgrel=2
 pkgdesc="The Eden Nintendo Switch emulator Clang PGO version (for Zen2 +)."
 arch=('x86_64' 'aarch64')
 url="https://git.eden-emu.dev/eden-emu/eden"
@@ -28,16 +28,13 @@ _appimage="${_pkgname}-${pkgver}"
 source=("${url}/raw/branch/master/dist/dev.eden_emu.eden.xml")
 source_x86_64=("${_appimage}-x86_64::https://stable.eden-emu.dev/v${_pkgver}/Eden-Linux-v${_pkgver}-steamdeck-clang-pgo.AppImage")
 source_aarch64=("${_appimage}-aarch64::https://stable.eden-emu.dev/v${_pkgver}/Eden-Linux-v${_pkgver}-aarch64-clang-pgo.AppImage")
-b2sums=('93ff8f217b74b140b27aba5c740e945bef37b5528ce865a4c83de7a0cbebc133d923633a7ef93fb24a696caa4003d55315f54a8ebfcd246dd4eebd306e7c7943'
-)
+sha256sums=('4a332861910dbe07d9aa7a7f57e779b1086ad571b0986b4862b995388f51fbbe')
 sha256sums_x86_64=('5cc5b358ac6449b40021b20ba2430b4d12302737db15c8cbe5b46ce9aab85ce5')
 sha256sums_aarch64=('b64f926cbf74fd870a39b144971084323d895d51919b91e906328e7f81bea087')
 
 prepare() {
     chmod +x "${_appimage}-$CARCH"
     ./"${_appimage}-$CARCH" --appimage-extract
-    # icon name
-    sed -i "s|org.eden_emu.eden|dev.eden_emu.eden|" dev.eden_emu.eden.xml
 }
 
 # Fix .desktop file executable
