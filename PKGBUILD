@@ -1,10 +1,10 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 
-# Release notes https://github.com/Mesh-LLM/mesh-llm/releases/tag/v0.77.0
+# Release notes https://github.com/Mesh-LLM/mesh-llm/releases/tag/v0.78.1
 pkgname=mesh-llm-vulkan
 pkgdesc="Mesh LLM lets you pool spare GPU capacity across machines and expose the result as one OpenAI-compatible API."
-pkgver=0.77.0
-_pkgver=0.77.0
+pkgver=0.78.1
+_pkgver=0.78.1
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Mesh-LLM/mesh-llm'
