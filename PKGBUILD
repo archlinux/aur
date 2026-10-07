@@ -1,6 +1,6 @@
 # Maintainer: Starlii10 <starliithestarbot@gmail.com>
 pkgname=scratch-everywhere-git
-pkgver=1.0.rc1.r0.g1f801da
+pkgver=1.2.r0.gb913d49
 pkgrel=1
 pkgdesc="A custom Scratch runtime written in C++!"
 conflicts=('scratch-everywhere')
@@ -8,7 +8,7 @@ provides=("scratch-everywhere=${pkgver})")
 arch=('any')
 url="https://github.com/ScratchEverywhere/ScratchEverywhere"
 license=('LGPL-3.0-only')
-depends=('curl' 'sdl2' 'sdl2_ttf' 'miniz' 'hicolor-icon-theme')
+depends=('curl' 'libpulse' 'miniz' 'luajit' 'stb' 'mesa' 'glfw')
 makedepends=('cmake' 'git')
 source=('ScratchEverywhere::git+https://github.com/ScratchEverywhere/ScratchEverywhere')
 sha256sums=('SKIP')
