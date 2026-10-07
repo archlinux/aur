@@ -1,0 +1,18 @@
+pkgname=opentunnel-bin
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='Public URLs for local services, end-to-end encrypted'
+url='https://opentunnel.xyz'
+arch=('aarch64' 'x86_64')
+license=('MIT')
+provides=('opentunnel')
+conflicts=('opentunnel')
+options=('!debug' '!strip')
+source_aarch64=("opentunnel-0.1.0-aarch64.tar.gz::https://github.com/anomalyco/opentunnel/releases/download/v0.1.0/opentunnel-linux-arm64.tar.gz")
+sha256sums_aarch64=('569561ccb38393b3d54289a22a600200e00c52b4ba578ef92c66e48c053cb78e')
+source_x86_64=("opentunnel-0.1.0-x86_64.tar.gz::https://github.com/anomalyco/opentunnel/releases/download/v0.1.0/opentunnel-linux-x64.tar.gz")
+sha256sums_x86_64=('c0927e7f3d88ffc5ff8bb5499c98294bc52935f890e1f7840f61dfb459eb14e2')
+
+package() {
+  install -Dm755 opentunnel "$pkgdir/usr/bin/opentunnel"
+}
