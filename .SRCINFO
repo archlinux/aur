@@ -1,5 +1,5 @@
 pkgbase = wordcraft-git
-	pkgdesc = vibe coded clean-room reimplementation of Microsoft Word
+	pkgdesc = vibe coded clean-room reimplementation of Microsoft Word (Git HEAD)
 	pkgver = 0.0.0.r19.gc9824ab
 	pkgrel = 1
 	url = https://getartcraft.com/apps/wordcraft
