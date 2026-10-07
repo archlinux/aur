@@ -2,7 +2,7 @@
 pkgname=filmcraft2-bin
 # _pkgname=${pkgname%-bin}
 _pkgname=filmcraft
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Video editing, color grading and audio (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
@@ -32,8 +32,8 @@ sha256sums=('09937ed158c45d60e584a2c5cbd3f941cf0b045c5efaeb9b17eb5f7324783bbf'
             '262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a'
             'a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697'
             'cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a')
-sha256sums_x86_64=('35743d048fcd942a1fe36b8c95f0af7b3ce7d5577325afabfae1083175d22fa5')
-sha256sums_aarch64=('ff1b976cf9025a648c9d9eb6e9538bd834af80687ca8dbb2353e5f05729e2efb')
+sha256sums_x86_64=('dff27e644bcb06b3d4c1f667b8fd544bd15ee4b446c8aee61706712f212887af')
+sha256sums_aarch64=('3d99bfa57ed03c1e3bf4298080ac7b03fc8e640b692969a98d36e0fc25c5c151')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-linux-$CARCH"
