@@ -1,6 +1,6 @@
 pkgbase = niri-fx-git
 	pkgdesc = Complete NiriFX compositor, presets, CLI and visual Studio for Niri
-	pkgver = 0.22.0.r80.g1e715c7
+	pkgver = 0.22.1.r83.ge624114
 	pkgrel = 1
 	url = https://github.com/jturbide/niri-fx
 	arch = x86_64
@@ -44,7 +44,7 @@ pkgbase = niri-fx-git
 	optdepends = xdg-desktop-portal-gtk: fallback desktop portal
 	optdepends = org.freedesktop.secrets: secret portal provider
 	optdepends = xwayland-satellite: run X11 applications
-	provides = niri-fx=0.22.0
+	provides = niri-fx=0.22.1
 	conflicts = niri-fx
 	options = !strip
 	options = !debug

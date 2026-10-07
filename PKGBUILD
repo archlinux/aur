@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=niri-fx-git
-pkgver=0.22.0.r80.g1e715c7
+pkgver=0.22.1.r83.ge624114
 provides=("niri-fx=${pkgver%%.r*}")
 conflicts=('niri-fx')
 _niri_revision=8ed0da44d974c32c6877d2f4630c314da0717ecb
