@@ -1,6 +1,6 @@
 pkgbase = cherry-studio-electron-bin
 	pkgdesc = AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs.
-	pkgver = 2.1.3
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://cherryai.com/
 	arch = aarch64
@@ -18,15 +18,15 @@ pkgbase = cherry-studio-electron-bin
 	depends = uv
 	depends = mise
 	optdepends = ollama: Use your local LLM
-	provides = cherry-studio=2.1.3
+	provides = cherry-studio=2.1.4
 	conflicts = cherry-studio
-	source = LICENSE-2.1.3::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v2.1.3/LICENSE
+	source = LICENSE-2.1.4::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v2.1.4/LICENSE
 	source = cherry-studio-electron.sh
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
-	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
-	source_aarch64 = cherry-studio-electron-2.1.3-aarch64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v2.1.3/Cherry-Studio-2.1.3-linux-arm64.rpm
-	sha256sums_aarch64 = 9833478f8d0cff045b0b9dfda1c83544e802fe383ded12b96b27fe69e90cc629
-	source_x86_64 = cherry-studio-electron-2.1.3-x86_64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v2.1.3/Cherry-Studio-2.1.3-linux-x64.rpm
-	sha256sums_x86_64 = f1c9fabdbe384ba69da2bdce48417ea38d08259d89acec888f966dc703b4e672
+	sha256sums = fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8
+	source_aarch64 = cherry-studio-electron-2.1.4-aarch64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v2.1.4/Cherry-Studio-2.1.4-linux-arm64.rpm
+	sha256sums_aarch64 = f2642eb7947a8fc09cf46170e009c7069e990a67167edcec5a1a4fe6e3a484c1
+	source_x86_64 = cherry-studio-electron-2.1.4-x86_64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v2.1.4/Cherry-Studio-2.1.4-linux-x64.rpm
+	sha256sums_x86_64 = 5194cc0a38fa4da2c5cdfc58737c5806476b20cc3f7dbae5a16860bd6ccae568
 
 pkgname = cherry-studio-electron-bin
