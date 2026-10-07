@@ -1,0 +1,26 @@
+pkgbase = hottyterm-bin
+	pkgdesc = A fork of Ghostty with native HOTTY (HTML over the TTY)
+	pkgver = 26.10.07.r43.c466c76
+	pkgrel = 1
+	url = https://github.com/neuroplastio/hottyterm
+	arch = x86_64
+	license = MIT
+	depends = fontconfig
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = hicolor-icon-theme
+	depends = libadwaita
+	depends = libgcc
+	depends = libglvnd
+	depends = libx11
+	depends = wayland
+	provides = hottyterm
+	conflicts = hottyterm
+	options = !strip
+	options = !debug
+	source_x86_64 = hottyterm-26.10.07-dev.c466c76-linux-x86_64.tar.gz::https://github.com/neuroplastio/hottyterm/releases/download/26.10.07-dev.c466c76/hottyterm-26.10.07-dev.c466c76-linux-x86_64.tar.gz
+	sha256sums_x86_64 = d731547759a5b566e1ac46de2e4f3cb5b83aa1a6b7cdf7c77a9c1e77fd9636e7
+
+pkgname = hottyterm-bin
