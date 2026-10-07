@@ -1,12 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xresconv-gui-bin
-pkgver=2.6.0
+pkgver=3.0.0
 _electronversion=41
 pkgrel=1
-pkgdesc="批量转表工具的GUI版本,依赖electron.(Prebuilt version.Use system-wide electron)"
+pkgdesc="A GUI batch table conversion tool that conforms to the xresconv-conf specification, with xresloader as the conversion backend."
 arch=(
     'aarch64'
-    'armv7h'
     'x86_64'
 )
 url="https://github.com/xresloader/xresconv-gui"
@@ -14,56 +13,44 @@ license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}"
+    'gtk3'
+    'gdk-pixbuf2'
+    'webkit2gtk-4.1'
+    'libayatana-indicator'
+    'libappindicator'
+    'nodejs'
+    'python'
 )
 makedepends=(
     'gendesk'
 )
-source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-arm64.tar.xz")
-source_armv7h=("${pkgname}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-armv7l.tar.xz")
-source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64.tar.xz")
 source=(
-    "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/xresloader/xresconv-gui/v${pkgver}/doc/logo.png"
+    "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/owent/xresconv-gui/v${pkgver}/docs/logo.png"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/owent/xresconv-gui/v${pkgver}/LICENSE"
-    "${pkgname%-bin}.sh"
 )
-sha256sums=('3383900bc8b96fe4f9fcd7c851f925bc995aa3db9c054e5838c1e2703bf57898'
-            '04855dd97336c31e617fba43527ab81b7745f7057641a05eaef99824ec564fb1'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('15007cff1f6c859e3982ffc8bcc72dfc751282598bfc6c4b706195993bf86fe2')
-sha256sums_armv7h=('cf94244f93ef372fd9464a462d04faed9272eba495a418f6ba24eb93d8d9b12a')
-sha256sums_x86_64=('dfd9cce15f810bc058f72b2ee8d23930e4ef01f0b9553db0b387bc716bb64702')
-_get_electron_version() {
-    _elec_ver="$(strings "${srcdir}/${pkgname%-bin}-linux-"*/"${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
-}
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.zst::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-aarch64-bootstrap.tar.zst")
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.zst::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x86_64-bootstrap.tar.zst")
+options=(
+    '!strip'
+    '!emptydirs'
+)
+sha256sums=('7ed93f61f67710129b3756a2c50d9cdb316e8faae5b4080d9a5df93dc33bbfd4'
+            '04855dd97336c31e617fba43527ab81b7745f7057641a05eaef99824ec564fb1')
+sha256sums_aarch64=('cd082b126cba7d101fb8a3f0cc0e75f0ea9768ca955a09300e2477e6325d5182')
+sha256sums_x86_64=('27fbc6968083946416acb642d70f9e1af2a6d4ee6a68031027a01477c9b90b4b')
 prepare() {
-    sed -i -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app.asar/g
-        s/@cfgdirname@/${pkgname%-bin}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " "${srcdir}/${pkgname%-bin}.sh"
-    _get_electron_version
     gendesk -q -f -n \
         --pkgname="${pkgname%-bin}" \
         --pkgdesc="${pkgdesc}" \
         --categories="Utility" \
         --name="${pkgname%-bin}" \
         --exec="${pkgname%-bin} %U"
+    ln -sf "/usr/bin/node" "${srcdir}/${pkgname%-bin}/runtime/node"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	find "${srcdir}/${pkgname%-bin}-linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
-    if find "${srcdir}/${pkgname%-bin}-linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for _subdir in "${srcdir}/${pkgname%-bin}-linux-"*"/resources/"*; do
-            if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
-            fi
-        done
-    fi
+    install -Dm755 -d "${pkgdir}/usr/"{bin,lib}
+    cp -a "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/lib"
+    ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
