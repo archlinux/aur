@@ -1,0 +1,4 @@
+rune-ide-src/
+rune-ide-*.pkg.tar.zst
+pkg/
+src/
