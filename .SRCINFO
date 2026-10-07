@@ -1,5 +1,5 @@
 pkgbase = lightcraft-git
-	pkgdesc = vibe coded clean-room reimplementation of Adobe InDesign
+	pkgdesc = vibe coded clean-room reimplementation of Adobe Lightroom
 	pkgver = 0.2.1.r70.gfb9fb77
 	pkgrel = 1
 	url = https://getartcraft.com/apps/lightcraft
