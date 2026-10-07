@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=klive-ide-bin
 _pkgname='Klive IDE'
-pkgver=0.61.0
+pkgver=0.63.0
 _electronversion=44
 pkgrel=1
 pkgdesc="A retro computer emulator and IDE for Z80 lovers."
@@ -28,10 +28,10 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/dow
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/KliveIdeSetup-${pkgver}-x86_64.AppImage")
 sha256sums=('ad04d247c1ea46d2a869ae87c1fc1dc36c6b2feb60d0b9f6c155a4dfe7ca7f34'
             'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
-sha256sums_aarch64=('5b59ddb2b56972c30e38f8bcf67a196f7140785defeb21d51677d0f32990f585')
-sha256sums_x86_64=('919a75405489fd040704a822848937f507e4794b73f0e158eec375e9bdfbc3f7')
+sha256sums_aarch64=('7323426f6cd0b71a8603e0e83c467110574d3ead708466f4d1ddf02720d63238')
+sha256sums_x86_64=('d53c08ca6686c93ef24fb101354ef9e6f566bac3be8fdc3b0734be2936d377c8')
 _get_app_dir() {
-	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
     echo "Verifying Electron version..."

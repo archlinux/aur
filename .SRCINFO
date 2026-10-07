@@ -1,6 +1,6 @@
 pkgbase = klive-ide-bin
 	pkgdesc = A retro computer emulator and IDE for Z80 lovers.
-	pkgver = 0.61.0
+	pkgver = 0.63.0
 	pkgrel = 1
 	url = https://github.com/Dotneteer/kliveide
 	arch = aarch64
@@ -9,15 +9,15 @@ pkgbase = klive-ide-bin
 	makedepends = asar
 	depends = electron44
 	depends = ffmpeg
-	provides = klive-ide=0.61.0
+	provides = klive-ide=0.63.0
 	conflicts = klive-ide
-	source = LICENSE-0.61.0::https://raw.githubusercontent.com/Dotneteer/kliveide/v0.61.0/LICENSE
+	source = LICENSE-0.63.0::https://raw.githubusercontent.com/Dotneteer/kliveide/v0.63.0/LICENSE
 	source = klive-ide.sh
 	sha256sums = ad04d247c1ea46d2a869ae87c1fc1dc36c6b2feb60d0b9f6c155a4dfe7ca7f34
 	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
-	source_aarch64 = klive-ide-0.61.0-aarch64.AppImage::https://github.com/Dotneteer/kliveide/releases/download/v0.61.0/KliveIdeSetup-0.61.0-arm64.AppImage
-	sha256sums_aarch64 = 5b59ddb2b56972c30e38f8bcf67a196f7140785defeb21d51677d0f32990f585
-	source_x86_64 = klive-ide-0.61.0-x86_64.AppImage::https://github.com/Dotneteer/kliveide/releases/download/v0.61.0/KliveIdeSetup-0.61.0-x86_64.AppImage
-	sha256sums_x86_64 = 919a75405489fd040704a822848937f507e4794b73f0e158eec375e9bdfbc3f7
+	source_aarch64 = klive-ide-0.63.0-aarch64.AppImage::https://github.com/Dotneteer/kliveide/releases/download/v0.63.0/KliveIdeSetup-0.63.0-arm64.AppImage
+	sha256sums_aarch64 = 7323426f6cd0b71a8603e0e83c467110574d3ead708466f4d1ddf02720d63238
+	source_x86_64 = klive-ide-0.63.0-x86_64.AppImage::https://github.com/Dotneteer/kliveide/releases/download/v0.63.0/KliveIdeSetup-0.63.0-x86_64.AppImage
+	sha256sums_x86_64 = d53c08ca6686c93ef24fb101354ef9e6f566bac3be8fdc3b0734be2936d377c8
 
 pkgname = klive-ide-bin
