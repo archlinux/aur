@@ -34,10 +34,10 @@ options=(!strip)
 source=("LICENSE::$url/raw/v$pkgver/LICENSE" 'c0wrk.desktop' 'c0wrk.png')
 sha256sums=('26a0f4863f365c987a6762b0a48e987136543118989b2f00f2d57c70a45ffd15' '817980d6896b98a304ade9b151125408e83bdc00c0e7f006eb5f6d7bb486fe62' '7004f261089ce6744435156a4c6952e2d4d87ad6eec1a1a9af347ae6a1f76938')
 
-source_x86_64=("$url/releases/download/v$pkgver/c0wrk-desktop-linux-amd64.tar.gz")
+source_x86_64=("c0wrk-desktop-$pkgver-linux-amd64.tar.gz::$url/releases/download/v$pkgver/c0wrk-desktop-linux-amd64.tar.gz")
 sha256sums_x86_64=('d987d64a114764056781ce414d9e28699b9f6ebb431cbe43730d3a700609dd42')
 
-source_aarch64=("$url/releases/download/v$pkgver/c0wrk-desktop-linux-arm64.tar.gz")
+source_aarch64=("c0wrk-desktop-$pkgver-linux-arm64.tar.gz::$url/releases/download/v$pkgver/c0wrk-desktop-linux-arm64.tar.gz")
 sha256sums_aarch64=('b5a473503eebb366535108f0d8e3952c4b1982f722953c52b7ea79f33a862795')
 
 package() {
