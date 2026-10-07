@@ -1,0 +1,21 @@
+pkgbase = rovyl-bin
+	pkgdesc = Rovyl radial launcher (prebuilt AppImage)
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://github.com/YahyaZekry/rovyl-linux
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk3
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = alsa-lib
+	depends = libxkbcommon
+	depends = dbus
+	provides = rovyl
+	conflicts = rovyl
+	noextract = rovyl-1.16.0.AppImage
+	source = rovyl-1.16.0.AppImage::https://github.com/YahyaZekry/rovyl-linux/releases/download/v1.16.0/Rovyl-1.16.0-linux.AppImage
+	sha256sums = ab74dc0af757eb420aef74ddd41849dadff467ccfb78428f8e76925c50ef3512
+
+pkgname = rovyl-bin
