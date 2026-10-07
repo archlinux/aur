@@ -1,0 +1,21 @@
+pkgbase = netcatty
+	pkgdesc = AI-Powered SSH Client, SFTP Browser & Terminal Manager.
+	pkgver = 1.1.83
+	pkgrel = 1
+	url = https://netcatty.app/
+	arch = aarcb64
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = gendesk
+	makedepends = jq
+	depends = electron42
+	depends = python
+	source = netcatty-1.1.83.tar.gz::https://github.com/binaricat/Netcatty/archive/refs/tags/v1.1.83.tar.gz
+	source = netcatty.sh
+	sha256sums = ca9f54ff99450788ff47c5c7f723da2332659062dbd43e80a14cd0f78e584573
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
+
+pkgname = netcatty
