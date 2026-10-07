@@ -26,7 +26,7 @@ pkgbase = visual-studio-code-electron-bin
 	source = visual-studio-code-electron.js
 	source = visual-studio-code-electron.sh
 	sha256sums = 68a94e4a9d746da48f5bb990d48b434363e476dfde006394a3ced94b4a54b4a7
-	sha256sums = 0906517d45b48027d8f068e56b308b3e86151c09723680c5c1235165669520ca
+	sha256sums = 4eb64dab756b002c40e8e88e0f9af3238cbfeadedc382ca877363e49f0bd1f93
 	source_aarch64 = visual-studio-code-electron-1.141.0-aarch64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-arm64
 	sha256sums_aarch64 = 1440304b14a016f1f5064fa1bab1882e06f201cae51988cc821b7cc0f473df5b
 	source_armv7h = visual-studio-code-electron-1.141.0-armv7h.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-armhf

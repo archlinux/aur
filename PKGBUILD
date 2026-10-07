@@ -51,7 +51,7 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://code.visualstudi
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-armhf")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64")
 sha256sums=('68a94e4a9d746da48f5bb990d48b434363e476dfde006394a3ced94b4a54b4a7'
-            '0906517d45b48027d8f068e56b308b3e86151c09723680c5c1235165669520ca')
+            '4eb64dab756b002c40e8e88e0f9af3238cbfeadedc382ca877363e49f0bd1f93')
 sha256sums_aarch64=('1440304b14a016f1f5064fa1bab1882e06f201cae51988cc821b7cc0f473df5b')
 sha256sums_armv7h=('f804f4bff3f8986850dbfcc1f98e95b255101f91d0bc485f7ae261e1058159ed')
 sha256sums_x86_64=('6e8ca115fbe125fc2480bd5a853140151aa636a303082d4b8c3194a5c1508b2a')
