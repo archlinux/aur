@@ -9,12 +9,12 @@
 #
 # _tag and pkgver are bumped by .github/workflows/publish-aur.yml when a release
 # is published. pkgver is the tag without the leading "v" and the "-alpha" suffix.
-_tag=v1.4.0.5656
+_tag=v1.4.0.5660
 # The launcher is a separate repository with no tags, so it is pinned by commit.
-_launcher_commit=cbd4d70580f6296bde38b08e7d0682b4b1c1bb0b
+_launcher_commit=fc0bdd8f16e3d09fd18c1d97db4dd63f9baf3fa3
 pkgbase=keeperfx-tux
 pkgname=('keeperfx-tux' 'keeperfx-tux-data' 'keeperfx-tux-launcher')
-pkgver=1.4.0.5656
+pkgver=1.4.0.5660
 # rel 4: ship the pacman hook that reports a library break the soname
 # dependencies below cannot catch, and pick up the launcher fix that stops a
 # crash report carrying a log the failing run never wrote.
@@ -38,7 +38,7 @@ pkgver=1.4.0.5656
 # packages provide the exact versions earlier engines still ask for, so the
 # installs that are out there right now get across too. Also stops the build
 # directory being written into the launcher binary.
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/ForkedInTime/keeperfx-linux-alpha"
 license=('GPL-2.0-or-later')
@@ -79,7 +79,7 @@ source=(
 noextract=("keeperfx-tux-${pkgver}-full.7z")
 sha256sums=(
   'SKIP'
-  'fcd066a09c4450f43e48cd9d5da2089b9acc9fc6b2d63a22c21520d3784000b4'
+  '78a76b436ba024fe115f3dade234fbcaa8f611f6c1ec3cf76d655ce0189f2215'
   'SKIP'
   '31a4488a90ea45828d4a4704c99b5b77e3295d519b6c0fee23c6654a2f8dcc3a'
   '72d72a8e7c1221208eed0622a6e323399ba8cb139ab8840d620ef2697623a1b4'
