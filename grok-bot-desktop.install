@@ -1,0 +1,19 @@
+# Same check as the upstream Debian postinst. The SUID sandbox helper is only
+# needed on kernels without unprivileged user namespaces (e.g. linux-hardened).
+# It runs at install time because the build machine's kernel says nothing
+# about the machine the package is installed on.
+_sandbox_mode() {
+    if [[ -L /proc/self/ns/user ]] && unshare --user true 2>/dev/null; then
+        chmod 0755 '/opt/Grok Bot/chrome-sandbox'
+    else
+        chmod 4755 '/opt/Grok Bot/chrome-sandbox'
+    fi
+}
+
+post_install() {
+    _sandbox_mode
+}
+
+post_upgrade() {
+    _sandbox_mode
+}
