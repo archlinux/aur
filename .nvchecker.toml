@@ -1,0 +1,4 @@
+[deckcraft]
+source = "git"
+git = "https://github.com/storytold/deckcraft.git"
+prefix = "v"
