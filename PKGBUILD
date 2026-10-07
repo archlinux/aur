@@ -4,7 +4,7 @@ pkgname=oyranos
 pkgver=0.9.6 # renovate: datasource=github-tags depName=oyranos-cms/oyranos
 pkgrel=1
 pkgdesc="A Colour Management System (CMS) on operating system level."
-url="http://oyranos.org/"
+url="https://gitlab.com/oyranos/oyranos"
 arch=('x86_64')
 makedepends=(cmake yajl)
 depends=(libxml2 libxinerama libxrandr libxfixes libxxf86vm doxygen graphviz lcms2 libraw libxcm)
