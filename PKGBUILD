@@ -1,13 +1,13 @@
 # Maintainer: monsoon <29970829+monsoon235@users.noreply.github.com>
 pkgname=llama.cpp-openvino-bin
 pkgver=b11460
-pkgrel=1
+pkgrel=2
 pkgdesc='llama.cpp upstream prebuilt binaries with the OpenVINO backend'
 arch=('x86_64')
 url='https://github.com/ggml-org/llama.cpp'
 license=('MIT')
-depends=('glibc' 'gcc-libs' 'openssl' 'level-zero-loader' 'intel-npu-driver')
-optdepends=('intel-compute-runtime: Intel GPU inference')
+depends=('glibc' 'gcc-libs' 'openssl' 'level-zero-loader' 'intel-compute-runtime')
+optdepends=('intel-npu-driver: Intel NPU inference')
 provides=('llama.cpp')
 conflicts=('llama.cpp' 'llama.cpp-rocm-bin' 'llama.cpp-sycl-bin' 'llama.cpp-sycl' 'llama.cpp-openvino')
 options=('!strip' '!debug')
