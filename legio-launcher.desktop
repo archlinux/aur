@@ -1,8 +1,9 @@
 [Desktop Entry]
 Type=Application
 Name=Legio Launcher
-Exec=legio-launcher
+Exec=legio-launcher %u
 StartupWMClass=legio
 Icon=legio-launcher
 Categories=Game;
 Terminal=false
+MimeType=x-scheme-handler/legio;
