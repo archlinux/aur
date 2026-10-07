@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=aulos-git
-pkgver=0.1.0.r31.gcc3793e
+pkgver=0.1.1.r0.ge8cec09
 pkgrel=1
 pkgdesc='A modern music player for the COSMIC desktop'
 arch=(aarch64 x86_64)
@@ -10,15 +10,19 @@ provides=("${pkgname%%-git}")
 conflicts=("${pkgname%%-git}" lyra-git)
 replaces=(lyra-git)
 depends=(
+  alsa-lib
   cosmic-icon-theme
   glibc
   libgcc
   libgl
+  libpipewire
+  libstdc++
   libxkbcommon
   wayland
 )
 makedepends=(
   cargo
+  clang
   cmake
   git
   just
@@ -27,6 +31,7 @@ makedepends=(
 )
 optdepends=(
   'projectm: visualizer presets'
+  'ffmpeg: lossy audio conversion'
 )
 source=("${pkgname%%-git}::git+${url}.git")
 sha256sums=('SKIP')
