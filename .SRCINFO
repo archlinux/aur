@@ -1,6 +1,6 @@
 pkgbase = lightcraft-git
-	pkgdesc = vibe coded clean-room reimplementation of Adobe Lightroom
-	pkgver = 0.2.1.r70.gfb9fb77
+	pkgdesc = vibe coded clean-room reimplementation of Adobe Lightroom (Git HEAD)
+	pkgver = 0.2.1.r78.gb35487a
 	pkgrel = 1
 	url = https://getartcraft.com/apps/lightcraft
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = lightcraft-git
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	provides = lightcraft=0.2.1.r70.gfb9fb77
+	provides = lightcraft=0.2.1.r78.gb35487a
 	conflicts = lightcraft
 	source = git+https://github.com/storytold/lightcraft.git
 	sha256sums = SKIP
