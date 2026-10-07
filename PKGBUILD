@@ -4,7 +4,7 @@
 pkgname=sshz
 pkgver=1.1.0
 pkgrel=1
-pkgdesc="TUI-based SSH connection manager written in Zig with real-time host status monitoring and tag-based organization"
+pkgdesc="TUI SSH connection manager written in Zig with host status monitoring and tags"
 arch=('x86_64' 'aarch64')
 url="https://github.com/midasdf/sshz"
 license=('MIT')

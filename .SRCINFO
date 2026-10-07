@@ -1,5 +1,5 @@
 pkgbase = sshz
-	pkgdesc = TUI-based SSH connection manager written in Zig with real-time host status monitoring and tag-based organization
+	pkgdesc = TUI SSH connection manager written in Zig with host status monitoring and tags
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/midasdf/sshz
