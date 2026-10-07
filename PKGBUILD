@@ -2,7 +2,7 @@
 
 _pkgname=mdwatch
 pkgname="${_pkgname}"
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="A simple CLI tool to live-preview Markdown files in your browser"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('cargo')
 provides=("${_pkgname}=$pkgver")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.zip::https://github.com/vimlinuz/${_pkgname}/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('0b87570d0280fc26a443c3325af533808ed4082f490992789c79b3cdc6fdab94')
+sha256sums=('535ad54fa99547a7c02dbf2dcca925c6619a34ce8a912a0b326b9d4fc9cd503c')
 
 prepare() {
 	cd "${_pkgname}-${pkgver}"
