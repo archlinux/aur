@@ -22,9 +22,25 @@ pkgname=paseo-desktop-git-bin
 # consistent build: pkgver must derive the _asset that is actually on the
 # release, and _commit/_bin_sha must be that same build. Do not hand-edit
 # one of the three in isolation.
-pkgver=0.11.0.beta.5.r27.g13d21f60f
+pkgver=0.11.0.beta.5.r56.g8ddeb79c8
 pkgrel=2
-_commit='13d21f60f1b7888a6105d8c20d044483e6475452'
+# Publish targets: aur + Arch release + Debian release (opt-in per format).
+_publish_targets="aur github-arch github-deb"
+# Debian runtime deps for the fpm conversion, translated from depends and
+# cross-checked against `readelf -d` on the shipped ELF payload:
+#   glibc->libc6, libgcc->libgcc-s1, libstdc++->libstdc++6, gtk3->libgtk-3-0t64,
+#   glib2->libglib2.0-0t64, at-spi2-core->libatspi2.0-0t64, cairo->libcairo2,
+#   pango->libpango-1.0-0, expat->libexpat1, nss->libnss3, nspr->libnspr4,
+#   libcups->libcups2t64, dbus->libdbus-1-3, alsa-lib->libasound2t64,
+#   systemd-libs->libudev1, mesa->libgbm1, libx11->libx11-6, libxcb->libxcb1,
+#   libxext->libxext6, libxcomposite->libxcomposite1, libxdamage->libxdamage1,
+#   libxfixes->libxfixes3, libxrandr->libxrandr2, libxkbcommon->libxkbcommon0.
+#   Electron additionally dlopens libatk1.0-0t64/libatk-bridge2.0-0t64,
+#   libnotify4, libxss1, libxtst6, libsecret-1-0 and libuuid1, and calls
+#   xdg-utils. t64 is what Debian 13 (trixie) and Ubuntu 24.04 (noble) ship;
+#   the pre-t64 names have no candidate on either, which deb-smoke runs.
+_deb_depends=('libc6' 'libgcc-s1' 'libstdc++6' 'libgtk-3-0t64' 'libglib2.0-0t64' 'libatk1.0-0t64' 'libatk-bridge2.0-0t64' 'libatspi2.0-0t64' 'libcairo2' 'libpango-1.0-0' 'libexpat1' 'libx11-6' 'libxcb1' 'libxext6' 'libxcomposite1' 'libxdamage1' 'libxfixes3' 'libxrandr2' 'libxkbcommon0' 'libnspr4' 'libnss3' 'libcups2t64' 'libdbus-1-3' 'libasound2t64' 'libudev1' 'libgbm1' 'libnotify4' 'libxss1' 'libxtst6' 'libsecret-1-0' 'libuuid1' 'xdg-utils' 'hicolor-icon-theme' 'bash' 'nodejs')
+_commit='8ddeb79c8dbb8934244b35ba18472fb9074d8209'
 # Drop the .rN.gSHA git-describe suffix, then turn the prerelease separator
 # dot into a dash (0.9.0.beta.2 -> 0.9.0-beta.2). Only that one dot is
 # touched, so a version without a suffix or without a prerelease is left
@@ -35,10 +51,10 @@ if ! printf '%s' "$_asset_ver" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.]
 	error "paseo-desktop-git-bin: cannot derive a release version from pkgver='$pkgver' (got '$_asset_ver'); refusing to guess an asset name"
 fi
 _asset="Paseo-${_asset_ver}-x64.tar.gz"
-_bin_sha='05734cb9dc4391a0ec72fc387b530ac0729e906045a1af57364bf7725f8c022d'
+_bin_sha='877ff95fed0e75480319ab5dde175b9a9c8755958c8a9688d9bc07d5ddcf7121'
 _icon_sha='585d202ff6a6e41bcd5c7464a1c4889b78977cea000f7b88ba1f67f3d9fff0bd'
 _pkgdesc_base='One interface for all your Claude Code, Codex and OpenCode agents.'
-pkgdesc='One interface for all your Claude Code, Codex and OpenCode agents. (built from main 2026-10-06 @13d21f6)'
+pkgdesc='One interface for all your Claude Code, Codex and OpenCode agents. (built from main 2026-10-07 @8ddeb79)'
 arch=('x86_64')
 url="https://paseo.sh"
 license=("Apache-2.0")
