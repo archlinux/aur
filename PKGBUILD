@@ -2,7 +2,7 @@
 
 pkgname=python-vspackrgb
 _origpkgname=vspackrgb
-pkgver=1.4.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="RGB packing for VapourSynth frames"
 arch=("x86_64")
@@ -22,7 +22,7 @@ makedepends=(
     "python-hatch-sbom"
 )
 source=("${pkgname}::git+${url}.git#tag=${_origpkgname}/v${pkgver}")
-sha256sums=('37f379fe9e3c01a3746eb9919f798a605c80ed426b38fe47c8b488a2e45abd46')
+sha256sums=('9b6f03ebeaa80025db76c2f77399f8ad61a8ff480f7508a9b7a2975149efb9dd')
 
 prepare() {
     cd "${pkgname}/src/${_origpkgname}" || exit
