@@ -2,7 +2,7 @@
 # Maintainer: Energetix/Dark Nebula <https://github.com/Jobanny-Friki>
 
 pkgname=python-wayback-archive
-pkgver=1.4.6
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Download and archive complete websites from the Wayback Machine for offline viewing"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 checkdepends=('python-pytest' 'python-pillow')
 optdepends=('python-pillow: image optimisation' 'python-minify-html: HTML minification (AUR)' 'python-rjsmin: JavaScript minification' 'python-cssmin: CSS minification')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4fcd1bb3bff8430d7bd7c3b88a33f63e12dabf9e72d6338463a12d386142def9')
+sha256sums=('b63f17af72af21659a7a0c74099c15e66550caded6cecaa455b4f3adde9388be')
 
 build() {
 	cd "Wayback-Archive-$pkgver"
