@@ -2,16 +2,18 @@
 
 _pkgname=boomaga
 pkgname=${_pkgname}-git
-pkgver=3.5.0.r1.g34d7549
+pkgver=3.9.3.r0.g251dcad
 pkgrel=2
 pkgdesc="A virtual printer for viewing a document before printing it out using the physical printer (Qt6)"
 arch=('x86_64' 'aarch64')
 url="https://www.boomaga.org"
-license=('LGPL-2.1-or-later')
-depends=('qt6-base' 'poppler' 'cups' 'zlib' 'hicolor-icon-theme')
-optdepends=('sudo: add the virtual printer from the Boomaga GUI')
+license=('GPL-2.0-only' 'LGPL-2.1-or-later')
+depends=('cups' 'ghostscript' 'glibc' 'hicolor-icon-theme' 'libcups'
+         'libgcc' 'libglvnd' 'libstdc++' 'poppler' 'qt6-base' 'zlib')
+optdepends=('sudo: add the virtual printer from the Boomaga GUI'
+            'qt6-wayland: run the GUI natively on Wayland')
 makedepends=('qt6-tools' 'git' 'cmake')
-provides=('boomaga')
+provides=("boomaga=${pkgver}")
 conflicts=('boomaga' 'boomaga-qt5' 'boomaga-qt6-git')
 options=(!emptydirs)
 install="${pkgname}.install"
@@ -29,12 +31,11 @@ build() {
     cmake -B build -S "${_pkgname}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=None \
-        -Wno-dev
+        -Wno-author
     cmake --build build
 }
 
 package() {
     DESTDIR="${pkgdir}" cmake --install build
     install -D -m644 "${srcdir}/README.install" "${pkgdir}/usr/share/doc/${pkgname}/README.install"
-    install -D -m644 "${srcdir}/${_pkgname}/LGPL" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
