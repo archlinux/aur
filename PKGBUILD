@@ -30,7 +30,5 @@ build() {
 package() {
 	cd sclack
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
