@@ -1,6 +1,10 @@
 # Maintainer: Kisaragi Hiu <mail@kisaragi-hiu.com>
 
 pkgbase=taigikeyboard-git
+# split from the original amalgamation that installs all of them all at once
+# installing an ibus input method should not pull in fcitx5 itself or the
+# corresponding fcitx5 input method, and vice versa
+# fonts are not installed, this recommends them from the aur instead
 pkgname=(fcitx5-taigikeyboard-git ibus-taigikeyboard-git taigikeyboard-common-git)
 # > To use pkgver(), you still need to declare the pkgver variable with the most
 # > recent value. makepkg will invoke function pkgver(), and update variable
@@ -55,10 +59,9 @@ build() {
 	make build-fcitx5
 }
 
-# split from the original amalgamation that installs all of them all at once
-# installing an ibus input method should not pull in fcitx5 itself or the
-# corresponding fcitx5 input method, and vice versa
-# fonts are not installed, this pulls from the aur instead
+# We need to use our own install commands because upstream install them all at
+# once. That works for RPM or .deb since they install everything then declare
+# files afterwards, but that's not the case here.
 package_taigikeyboard-common-git() {
 	pkgdesc='Common files for Taigi Keyboard'
 	optdepends=()
@@ -74,8 +77,17 @@ package_taigikeyboard-common-git() {
 			data/icons/hicolor/"$size"x"$size"/apps/taigikeyboard.png \
 			"$pkgdir"/usr/share/icons/hicolor/"$size"x"$size"/apps/taigikeyboard.png
 	done
+	for icon in data/icons/hicolor/*/apps/taigikeyboard-*.png; do
+		install -Dm644 "$icon" "$pkgdir/usr/share/${icon#data/}"
+	done
 	install -Dm755 target/release/taigikeyboard-settings "$pkgdir"/usr/bin/taigikeyboard-settings
 	install -Dm644 data/tw.taigikeyboard.Settings.desktop "$pkgdir"/usr/share/applications/tw.taigikeyboard.Settings.desktop
+	LICENSE_TEXTS=(../NOTICE ../THIRD_PARTY_LICENSES.md ../dictionary/LICENSE)
+	for f in "${LICENSE_TEXTS[@]}"; do
+		name="${f#../}"
+		name="${name#assets/}"
+		install -Dm644 "$f" "$pkgdir/usr/share/licenses/taigikeyboard/${name//\//-}"
+	done
 }
 
 package_ibus-taigikeyboard-git() {
