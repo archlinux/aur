@@ -1,7 +1,7 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 pkgname="python-masky"
 pkgver="0.2.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library with CLI allowing to remotely dump domain user credentials via an ADCS without dumping the LSASS process memory"
 arch=('any')
 url="https://github.com/Z4kSec/masky"
@@ -19,7 +19,6 @@ makedepends=(
   'python-wheel'
   'python-installer'
   'python-setuptools'
-  'python-argcomplete'
   'git'
 )
 source=("git+$url#commit=d0e16e9394fa3ed3a028ec078213288e78292de1") # Didn't tag latest release
@@ -38,9 +37,6 @@ package() {
   cd masky
   python -m installer -d "$pkgdir" dist/*.whl
   install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm0644 <(register-python-argcomplete -s bash masky) "$pkgdir/usr/share/bash-completion/completions/masky"
-  install -Dm0644 <(register-python-argcomplete -s zsh masky) "$pkgdir/usr/share/zsh/site-functions/_masky"
-  install -Dm0644 <(register-python-argcomplete -s fish masky) "$pkgdir/usr/share/fish/vendor_completions.d/masky.fish"
 }
 
 # vim: ts=2 sw=2 et:
