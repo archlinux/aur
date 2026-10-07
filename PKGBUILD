@@ -1,6 +1,10 @@
 # Maintainer: Lasse Vestergaard <hello@lassejlv.dk>
 pkgname=termy-bin
-pkgver=0.2.80
+# Upstream release version (may carry a SemVer pre-release, e.g. 1.0.0-rc.1).
+# makepkg forbids '-' in pkgver, so pkgver drops it (1.0.0rc.1), which vercmp
+# sorts before the 1.0.0 release.
+_version=1.0.0-rc.1
+pkgver=1.0.0rc.1
 pkgrel=1
 pkgdesc="Minimal GPUI-powered terminal (pre-compiled binary)"
 arch=('x86_64')
@@ -12,13 +16,13 @@ depends=('bash' 'glibc' 'gcc-libs' 'glib2'
 provides=('termy')
 conflicts=('termy')
 source=("termy.desktop"
-        "LICENSE::https://raw.githubusercontent.com/lassejlv/termy/v${pkgver}/LICENSE"
-        "termy_icon.png::https://raw.githubusercontent.com/lassejlv/termy/v${pkgver}/assets/termy_icon.png")
+        "LICENSE::https://raw.githubusercontent.com/lassejlv/termy/v${_version}/LICENSE"
+        "termy_icon.png::https://raw.githubusercontent.com/lassejlv/termy/v${_version}/assets/termy_icon.png")
 b2sums=('ce3f66620d3a7da5bd6e017d3432e2f509c095aa32ee8b7ea4ccf24d879f201bf29e62b59708bf32a01338ceedb4bbe9152ee7209564cd0191e5a9c58f8389e2'
         '0128ba93a8dc10df25286bd85db9df93ef7ad68abd077d895ba29c2b1af7eca9530dc7146f0941ff128738416e2319ed3f906ac3525f26eff2589be9369149eb'
         '846adc793544028ef1bb111802a2e61013f6a0623f86d8546e27210ded24b1ef367e73ea4cda56a15f40c85a893d2f5c8288bbde035c9d77aa53d2fd223ead90')
-source_x86_64=("termy-${pkgver}-${CARCH}.tar.gz::https://github.com/lassejlv/termy/releases/download/v${pkgver}/Termy-v${pkgver}-linux-${CARCH}.tar.gz")
-b2sums_x86_64=('ff652c9b4622bd2acafddd6e41823f2394e94c2962d4e55fd22ee945d514b559afe115b645934595b3ac67f20536f0afc20656459beed23a29666bf07f4b4a89')
+source_x86_64=("termy-${pkgver}-${CARCH}.tar.gz::https://github.com/lassejlv/termy/releases/download/v${_version}/Termy-v${_version}-linux-${CARCH}.tar.gz")
+b2sums_x86_64=('4cc4da5cfd2b0039c281392b1d8e914c39e5ee4e52cda00eba76de202ae611d45cffdfc82f431a6ea6f0913246104370cc7b53c46ab6aa89e228b3f007ce2bea')
 
 package() {
   cd "$srcdir/termy"
