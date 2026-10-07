@@ -1,13 +1,20 @@
 pkgbase = ndpi-git
-	pkgdesc = Open and Extensible GPLv3 Deep Packet Inspection Library
-	pkgver = r3017.0f8a9948
+	pkgdesc = Open and Extensible Deep Packet Inspection Library (git version)
+	pkgver = r5934.de3915b9f
 	pkgrel = 1
-	url = http://www.ntop.org/products/ndpi/
+	url = https://www.ntop.org/products/deep-packet-inspection/ndpi/
 	arch = x86_64
-	license = GPL-3.0-or-later
+	arch = aarch64
+	license = LGPL-3.0-or-later
 	makedepends = git
+	depends = glibc
+	depends = libmaxminddb
+	depends = libpcap
+	depends = pcre2
 	provides = ndpi
+	provides = libndpi.so
 	conflicts = ndpi
+	conflicts = ndpi-svn
 	source = ndpi::git+https://github.com/ntop/nDPI.git#branch=dev
 	sha256sums = SKIP
 

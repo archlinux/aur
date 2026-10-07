@@ -2,35 +2,39 @@
 # Maintainer: Toni Uhlig <matzeton@googlemail.com>
 
 pkgname=ndpi-git
-pkgver=r5924.a58fc8468
+pkgver=r5934.de3915b9f
 pkgrel=1
-pkgdesc="Open and Extensible GPLv3 Deep Packet Inspection Library"
-arch=('x86_64')
-url="http://www.ntop.org/products/ndpi/"
-license=('GPL-3.0-or-later')
-provides=('ndpi')
-conflicts=('ndpi')
-source=("${pkgname%-git}::git+https://github.com/ntop/nDPI.git#branch=dev")
+pkgdesc="Open and Extensible Deep Packet Inspection Library (git version)"
+arch=('x86_64' 'aarch64')
+url="https://www.ntop.org/products/deep-packet-inspection/ndpi/"
+license=('LGPL-3.0-or-later')
+provides=("${pkgname%-git}" 'libndpi.so')
+conflicts=("${pkgname%-git}" 'ndpi-svn')
+depends=('glibc' 'libmaxminddb' 'libpcap' 'pcre2')
 makedepends=('git')
+source=("${pkgname%-git}::git+https://github.com/ntop/nDPI.git#branch=dev")
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-  cd "${srcdir}/${pkgname%-git}"
-  CPPFLAGS="${CPPFLAGS} ${CFLAGS}"
+prepare() {
+  cd "${pkgname%-git}"
   ./autogen.sh
-  ./configure --prefix=/usr \
-    --with-pic \
-    --includedir=/usr/include \
-    --libdir=/usr/lib
+}
+
+build() {
+  cd "${pkgname%-git}"
+  ./configure \
+    --prefix=/usr \
+    --with-pcre2 \
+    --with-maxminddb
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${pkgname%-git}"
   make DESTDIR="${pkgdir}" install
   ln -sf /usr/include/ndpi \
     "${pkgdir}/usr/include/libndpi"
