@@ -28,7 +28,5 @@ package() {
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 assets/demo.gif "$pkgdir/usr/share/doc/$pkgname/demo.gif"
 	install -Dm644 assets/sptui.tape "$pkgdir/usr/share/doc/$pkgname/sptui.tape"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
