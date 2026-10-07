@@ -1,18 +1,23 @@
 pkgbase = jet-pilot-bin
-	pkgdesc = An open-source Kubernetes desktop client that focuses on less clutter, speed and good looks.(Prebuilt version)
-	pkgver = 1.35.0
+	pkgdesc = An open-source Kubernetes desktop client that focuses on less clutter, speed and good looks.
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://jet-pilot.app/
+	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = jet-pilot=1.35.0
+	depends = libayatana-indicator
+	depends = libappindicator
+	provides = jet-pilot=2.0.0
 	conflicts = jet-pilot
-	source = jet-pilot-1.35.0.rpm::https://github.com/unxsist/jet-pilot/releases/download/v1.35.0/JET.Pilot-1.35.0-1.x86_64.rpm
-	source = LICENSE-1.35.0::https://raw.githubusercontent.com/unxsist/jet-pilot/v1.35.0/LICENSE
-	sha256sums = ea6d0cee6e8c64fb0632e42fd8d630f99e9d911b3c6641400f065c036138abc3
+	source = LICENSE-2.0.0::https://raw.githubusercontent.com/unxsist/jet-pilot/v2.0.0/LICENSE
 	sha256sums = 508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1
+	source_aarch64 = jet-pilot-2.0.0-aarch64.rpm::https://github.com/unxsist/jet-pilot/releases/download/v2.0.0/JET.Pilot-2.0.0-1.aarch64.rpm
+	sha256sums_aarch64 = b9c86d0d364ba0d3704a31179920be17cdcec716e8f7951c4c9b2b9e7d9e202c
+	source_x86_64 = jet-pilot-2.0.0-x86_64.rpm::https://github.com/unxsist/jet-pilot/releases/download/v2.0.0/JET.Pilot-2.0.0-1.x86_64.rpm
+	sha256sums_x86_64 = ffb5779d8d994e8be60559c3f74e7eae865fc7e7d9550ba1c312d54c142ba6f0
 
 pkgname = jet-pilot-bin
