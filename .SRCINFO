@@ -1,5 +1,5 @@
 pkgbase = python-deploydiff-git
-	pkgdesc = Preview infrastructure changes (Terraform, CloudFormation, Pulumi) with cost impact and rollback commands
+	pkgdesc = Preview infrastructure changes (Terraform, CloudFormation, Pulumi) with cost impact
 	pkgver = r134.acb3fc1
 	pkgrel = 1
 	url = https://github.com/Coding-Dev-Tools/deploydiff
