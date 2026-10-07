@@ -1,22 +1,25 @@
 # Maintainer: H3mul <phil.d324@gmail.com>
 pkgname=python-zoekt-py-git
-pkgver=0.1.1
-pkgrel=3
+pkgver=0.2.0.r22.gc333e39
+pkgrel=1
 pkgdesc="A modern, fully typed Python client and CLI for interacting with Zoekt, a fast, scalable code search engine"
 arch=('any')
 url="https://github.com/udbhav-44/zoekt-py"
 license=('MIT')
 depends=('python' 'python-pip')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 provides=('zoekt-py')
 conflicts=('zoekt-py')
 options=('!debug')
-source=("git+https://github.com/H3mul/zoekt-py.git")
+source=("git+https://github.com/udbhav-44/zoekt-py")
 md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/zoekt-py"
-    grep version pyproject.toml | head -n 1 | sed 's/version = "\(.*\)"/\1/'
+    printf "%s.r%s.g%s" \
+        "$(grep -m1 '^version' pyproject.toml | sed 's/version = "\(.*\)"/\1/')" \
+        "$(git rev-list --count HEAD)" \
+        "$(git rev-parse --short HEAD)"
 }
 
 build() {
