@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=repath-studio-bin
-pkgver=0.4.22
+pkgver=0.4.23
 _electronversion=44
 pkgrel=1
 pkgdesc="A web-based vector graphics editor that combines procedural tooling with traditional design workflows."
@@ -17,10 +17,10 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('acdb96f59f9cb4b623719bbc9b6a5ea4ddb242dea439130be831f60e9c273a58'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums=('5f5f2f4e92edd6212984db6a7729f8f87a903413b2da39bb7eb03c8685cac044'
+            'fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -37,7 +37,6 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
-        s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
