@@ -3,8 +3,8 @@
 
 pkgname=tablecruncher
 _fltkver=1.4.3 ## ...according to the BUILD.md file
-pkgver=1.8
-pkgrel=2
+pkgver=1.8.1
+pkgrel=1
 pkgdesc='Lightweight, powerful CSV editor with built-in JavaScript macros'
 arch=('x86_64')
 url='https://tablecruncher.com'
@@ -14,8 +14,8 @@ depends=('glu' 'hicolor-icon-theme' 'libjpeg-turbo' 'libpng'
 makedepends=('alsa-lib' 'cmake' 'doxygen')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Tablecruncher/tablecruncher/archive/refs/tags/v${pkgver}.tar.gz"
     "fltk-${_fltkver}-source.tar.gz::https://github.com/fltk/fltk/releases/download/release-${_fltkver}/fltk-${_fltkver}-source.tar.gz")
-sha256sums=('3fba78ad71b005b3cb082537fa42ecf003fcb566f60d65b1140d32e9e794dd73'
-    '19725f687146610976a1a43ef448feeba212a7eca88ad5897d22f6adaf3af45b')
+sha256sums=('febd328f1f3e459cc752f3504e78818109c684986d6259f42fd2fb28338a7472'
+            '19725f687146610976a1a43ef448feeba212a7eca88ad5897d22f6adaf3af45b')
 
 build() {
     ## Build FLTK statically by following the instructions in the BUILD.md file
