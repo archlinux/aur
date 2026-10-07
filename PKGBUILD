@@ -15,10 +15,17 @@ _srcdir="is-fast-0.17.7"
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/Magic-JD/is-fast/tar.gz/refs/tags/$_tag")
 sha256sums=('031ac21094cb3b276c3b36eee114aec6b9dd978e91aa4fe2cd4f669c35002963')
 
+prepare() {
+	cd "$_srcdir"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
 	cd "$_srcdir"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo build --release --locked
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release
 }
 
 package() {
@@ -31,7 +38,5 @@ package() {
 	install -d "$pkgdir/usr/share/$pkgname/scripts"
 	install -Dm755 scripts/is-fast-projects.sh "$pkgdir/usr/share/$pkgname/scripts/is-fast-projects.sh"
 	install -Dm644 scripts/is-fast-projects.ps1 "$pkgdir/usr/share/$pkgname/scripts/is-fast-projects.ps1"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
