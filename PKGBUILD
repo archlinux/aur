@@ -2,18 +2,18 @@
 # Maintainer: Energetix/Dark Nebula <https://github.com/Jobanny-Friki>
 
 pkgname=godyl
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="Batch download, checksum-verify, and install static binaries from GitHub/GitLab releases"
 arch=('x86_64')
 url="https://github.com/idelchi/godyl"
 license=('MIT')
 depends=()
 makedepends=('go')
-_tag="v0.2.2"
-_srcdir="godyl-0.2.2"
+_tag="v0.2.3"
+_srcdir="godyl-0.2.3"
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/idelchi/godyl/tar.gz/refs/tags/$_tag")
-sha256sums=('5a7b0156c9db354b5ef52042f65f3e5d5cf77aaa8da3d6bbbe8576605cacfcab')
+sha256sums=('80e8af3316a8bd38126e6d47704a66e5b25c2ff3c1d6e5015756df95a1017b64')
 
 build() {
 	cd "$_srcdir"
