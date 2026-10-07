@@ -1,0 +1,5 @@
+[serie-bin]
+source = "github"
+github = "lusingander/serie"
+use_latest_release = true
+prefix = "v"
