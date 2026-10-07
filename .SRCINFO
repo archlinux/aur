@@ -1,6 +1,6 @@
 pkgbase = pyinstaller-hooks-contrib
 	pkgdesc = Community maintained hooks for PyInstaller
-	pkgver = 2026.7
+	pkgver = 2026.8
 	pkgrel = 1
 	url = https://github.com/pyinstaller/pyinstaller-hooks-contrib
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = pyinstaller-hooks-contrib
 	depends = python-traitlets
 	depends = python-sentry_sdk
 	depends = python-jupyter-core
-	source = pyinstaller-hooks-contrib-2026.7.tar.gz::https://github.com/pyinstaller/pyinstaller-hooks-contrib/archive/refs/tags/v2026.7.tar.gz
-	sha256sums = 8eba000a7b8f365255cf6bce5046b5e92b7aa90c44fb048d71c701ab6100731e
+	source = pyinstaller-hooks-contrib-2026.8.tar.gz::https://github.com/pyinstaller/pyinstaller-hooks-contrib/archive/refs/tags/v2026.8.tar.gz
+	sha256sums = bf03428380f121c996c189c3e69cd9dc633e16048482840c46b53484ec5cf74b
 
 pkgname = pyinstaller-hooks-contrib
