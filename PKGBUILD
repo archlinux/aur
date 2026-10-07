@@ -46,7 +46,7 @@ optdepends=(
 conflicts=("${pkgname}-bin")
 
 source=("${pkgname}-src::git+${url}.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('21c1429df444c9320c29291b32c4add3cc66aff62730ef3954628a710a1b5c96')
 
 prepare() {
     cd "${srcdir}/${pkgname}-src"

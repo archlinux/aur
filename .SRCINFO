@@ -36,6 +36,6 @@ pkgbase = rune-ide
 	options = !lto
 	options = !debug
 	source = rune-ide-src::git+https://github.com/unstablebuild/rune.git#tag=v1.2.1
-	sha256sums = SKIP
+	sha256sums = 21c1429df444c9320c29291b32c4add3cc66aff62730ef3954628a710a1b5c96
 
 pkgname = rune-ide
