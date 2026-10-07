@@ -1,6 +1,6 @@
 pkgbase = ingestr
 	pkgdesc = Command-line tool to copy data from any source to any destination database
-	pkgver = 1.1.57
+	pkgver = 1.1.62
 	pkgrel = 1
 	url = https://github.com/bruin-data/ingestr
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ingestr
 	depends = gcc-libs
 	depends = ca-certificates
 	options = !lto
-	source = ingestr-1.1.57.tar.gz::https://github.com/bruin-data/ingestr/archive/refs/tags/v1.1.57.tar.gz
-	sha256sums = 00ac315138c83c8e4ce43ec8f75a2d6738bcc30b4aefe664a39afde0a2eda660
+	source = ingestr-1.1.62.tar.gz::https://github.com/bruin-data/ingestr/archive/refs/tags/v1.1.62.tar.gz
+	sha256sums = 21310a458ca9ac3b27f580f1e859af49a3e4bdcab0ea8d0bee8493d92626b13e
 
 pkgname = ingestr
