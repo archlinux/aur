@@ -3,18 +3,18 @@
 # Contributor: syntheit <daniel@matv.io>
 
 pkgname=tagspaces
-pkgver=6.14.0
+pkgver=6.14.1
 pkgrel=1
 pkgdesc="Offline file organizer and browser with tagging support"
 arch=('any')
 url="https://www.tagspaces.org"
 license=('AGPL-3.0-or-later')
-_electron=electron42
+_electron=electron44
 depends=('bash' "${_electron}")
 makedepends=('gendesk' 'git' 'libxcrypt-compat' 'nvm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tagspaces/tagspaces/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('54c61cc75028ace766243ccbc85d9213bc42d6df62ddcfa69837249ba3fa086a'
+sha256sums=('ac5a160436f697c1dfff2dd067c89791367c948db9dcf434d5845908f9c88113'
             '3ece307810a9e0acedb73bb422a58233b9d0933ebfd125db6064b5ea4723a60f')
 
 _ensure_local_nvm() {
