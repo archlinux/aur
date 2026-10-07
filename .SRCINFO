@@ -1,0 +1,23 @@
+pkgbase = stu-bin
+	pkgdesc = TUI explorer application for Amazon S3 (AWS S3)
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = https://github.com/lusingander/stu
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = stu
+	conflicts = stu
+	options = !strip
+	source = README-0.7.6.md::https://raw.githubusercontent.com/lusingander/stu/v0.7.6/README.md
+	source = LICENSE-0.7.6::https://raw.githubusercontent.com/lusingander/stu/v0.7.6/LICENSE
+	sha256sums = 7b059989fdf7e40d48d0382f5cdf25c5b1af0bdae6fdf8c441b5b50700343953
+	sha256sums = a175842e633d7fadbaeda6163e4bd9907af3fa9e3b240f9de82540e7882751db
+	source_x86_64 = stu-x86_64-0.7.6.tgz::https://github.com/lusingander/stu/releases/download/v0.7.6/stu-0.7.6-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 78aa850772f068b44eefa91732e345b30bcd17476ac23cb808f6b285a8162126
+	source_aarch64 = stu-aarch64-0.7.6.tgz::https://github.com/lusingander/stu/releases/download/v0.7.6/stu-0.7.6-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = d2bd884ede4ad05483847719daa4343de792f242c711df9ac8e35112caae1965
+
+pkgname = stu-bin
