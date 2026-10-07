@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/Flowtriq/nethawk"
 license=('MIT')
 depends=('glibc' 'libpcap')
-makedepends=('go>=1.26.4' 'gcc' 'libpcap')
+makedepends=('go>=1.26.4' 'gcc')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('389b0ab74978d0506b01197b7010c47881971864e48eff3eb5798cb89a5edc6a')
