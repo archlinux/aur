@@ -1,16 +1,16 @@
 _pkgname=influxdb-cxx
 pkgname="$_pkgname-git"
-pkgver=v0.8.1.r38.g9416dde
+pkgver=0.8.1.r38.g9416dde
 pkgrel=1
 pkgdesc="C++ client library for InfluxDB 1.x/2.x"
 url=https://github.com/offa/$_pkgname
 arch=(x86_64)
 
-provides=($_pkgname $_pkgname-debug)
+provides=($_pkgname=${pkgver} $_pkgname-debug=${pkgver})
 conflicts=($_pkgname $_pkgname-debug)
 
 depends=(curl boost-libs cpr)
-makedepends=(cmake boost)
+makedepends=(git cmake boost)
 
 options=(staticlibs)
 
@@ -19,7 +19,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgname"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
