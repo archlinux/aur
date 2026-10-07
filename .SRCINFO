@@ -1,6 +1,6 @@
 pkgbase = r-semtools
 	pkgdesc = Useful Tools for Structural Equation Modeling
-	pkgver = 0.5.9
+	pkgver = 0.5.10
 	pkgrel = 1
 	url = https://cran.r-project.org/package=semTools
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-semtools
 	optdepends = r-mnormt
 	optdepends = r-parallel
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/semTools_0.5-9.tar.gz
-	sha256sums = 8de79f0b2c4ff07e11254d60d6a3918b36beb5b5323e64be8f0bfe6d18f1ade5
+	source = https://cran.r-project.org/src/contrib/semTools_0.5-10.tar.gz
+	sha256sums = 338ec536c76d0f084089f54fe71362c28786a94868d538741c84a3ede2e247ad
 
 pkgname = r-semtools
