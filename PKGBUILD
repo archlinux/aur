@@ -1,7 +1,7 @@
 # Maintainer: SHORiN-KiWATA <fcl709@outlook.com>
 
 pkgname=wegame-launcher
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='开箱即用的简易 WeGame 启动器，使用 Proton 运行'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
     'mangohud: performance overlay'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('38878f1c650fb89843e5a41b5ccfde17a014f91c0ac1a578ecb0b762dc66a13f')
+sha256sums=('90ea092e707170f7e924c71deec13a7df865bf96d44e63680b21df05fd90ecff')
 
 package() {
     cd "$pkgname-$pkgver"
