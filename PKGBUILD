@@ -66,8 +66,6 @@ prepare() {
   git config submodule.Swifty-LLVM.url "$srcdir/Swifty-LLVM"
   git -c protocol.file.allow=always submodule update Swifty-LLVM
   printf 'internal let hyloVersion = "%s"\n' "$pkgver" >Sources/hc/Version.swift
-  sed -i 's|URL(fileURLWithPath: #filePath)|URL(fileURLWithPath: "/usr/lib/hylo")|' \
-    StandardLibrary/StandardLibrary.swift
 
   _get_llvm
 }
@@ -75,10 +73,6 @@ prepare() {
 build() {
   cd $_pkgname
   _get_llvm
-
-  if [[ -d /usr/lib/swift/bin ]]; then
-    export PATH="/usr/lib/swift/bin:$PATH"
-  fi
 
   swift build \
     --configuration release \
@@ -94,10 +88,6 @@ check() {
   cd $_pkgname
   _get_llvm
 
-  if [[ -d /usr/lib/swift/bin ]]; then
-    export PATH="/usr/lib/swift/bin:$PATH"
-  fi
-
   swift test \
     --configuration release \
     --disable-sandbox \
@@ -111,12 +101,11 @@ package() {
   _bin_dir=$(find "$srcdir/$_pkgname/.build" -type f -name hc -exec dirname {} + | head -n1)
 
   # Install private binaries and resources
-  install -dm755 "$pkgdir"/usr/lib/$_pkgname
   install -Dm755 "$_bin_dir/hc" -t "$pkgdir"/usr/lib/$_pkgname
   install -Dm755 "$_bin_dir/hylo-demangle" -t "$pkgdir"/usr/lib/$_pkgname
 
   # Copy resource bundles if generated
-  for _bundle in "$_bin_dir"/*.resources; do
+  for _bundle in "$_bin_dir"/*.bundle; do
     [[ -e $_bundle ]] && cp -r "$_bundle" "$pkgdir"/usr/lib/$_pkgname
   done
 
