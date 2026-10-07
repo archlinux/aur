@@ -4,7 +4,7 @@
 # Contributor: Jni <jni.viens at protonmail dot com>
 
 pkgname=bitrise
-pkgver=3.1.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Run your bitrise.io automations offline"
 arch=(x86_64)
@@ -20,7 +20,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         bitrise.bash
         bitrise.zsh
         bitrise.fish)
-sha256sums=('1706f3d54b5e963c11a75108adee6e077041e02d8503b3c2ffab06e5267ca1c6'
+sha256sums=('12f8ff23fb86dfc5b83515f6d1ca99a10cb6d4b4d1bb9aa6e5e0190781619bd3'
             'b367b75b82c0fda6c55521b137b767e430f052ed75acb184f1b9bad228b92a39'
             '2e90903f4581ed8894b263ebd0d58811169466ad8ec557b77c272dd3d6c07326'
             'fe394b90914152d73a78096dccaef08d2dc0cd9e1e3745c518ee6507c6611da3')
