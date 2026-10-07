@@ -1,6 +1,6 @@
 pkgbase = penguin-mail
 	pkgdesc = Mail and calendar for Linux. Gmail and IMAP accounts, Google Calendar, contacts, OpenPGP and S/MIME
-	pkgver = 1.0.0
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/c9dev/penguin-mail
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = penguin-mail
 	optdepends = gnome-shell-extension-appindicator: tray icon on GNOME Shell
 	optdepends = bubblewrap: run assistant skill scripts
 	options = !lto
-	source = penguin-mail-1.0.0.tar.gz::https://github.com/c9dev/penguin-mail/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 8d229f41e40c91b97fa100c910ed08f2aff3f798290c1f5933dd27d0b0e4534d
+	source = penguin-mail-1.0.3.tar.gz::https://github.com/c9dev/penguin-mail/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 8b9599517b0e33365b3c4a1370de3ec14918f393ba490cac422901203b1ba6d5
 
 pkgname = penguin-mail
