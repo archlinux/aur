@@ -1,6 +1,6 @@
 pkgname=paintdotjs-bin
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A desktop port of Paint.NET for Linux and macOS'
 arch=('x86_64')
 url='https://paintjs.net/'
@@ -11,12 +11,12 @@ provides=('paintdotjs')
 conflicts=('paintdotjs')
 options=('!strip')
 source=(
-  "paintdotjs-source.tar.gz::https://github.com/LabyStudio/paintdotjs/archive/refs/tags/v${pkgver}.tar.gz"
+  "paintdotjs-${pkgver}-source.tar.gz::https://github.com/LabyStudio/paintdotjs/archive/refs/tags/v${pkgver}.tar.gz"
   "paintdotnet.zip::https://github.com/paintdotnet/release/releases/download/v5.1.12/paint.net.5.1.12.portable.x64.zip"
 )
-source_x86_64=("paintdotjs.AppImage::https://github.com/LabyStudio/paintdotjs/releases/download/v${pkgver}/paintdotjs-${pkgver}-linux-x86_64.AppImage")
-noextract=('paintdotnet.zip' 'paintdotjs.AppImage')
-sha256sums=('784bcbe4fca8608ac6ab17b95c52d86acfefe5e2b99db360de998d2dd91ece1d' 'd5ae7043f2fb9d365b48dfe243a2aca1c74924de99b04b6445916c95354aefa3')
+source_x86_64=("paintdotjs-${pkgver}.AppImage::https://github.com/LabyStudio/paintdotjs/releases/download/v${pkgver}/paintdotjs-${pkgver}-linux-x86_64.AppImage")
+noextract=('paintdotnet.zip' "paintdotjs-${pkgver}.AppImage")
+sha256sums=('633fb6be480570f9e7ff7bd12c5b3b19ae748d127a468d8486d8ca3567b46c4c' 'd5ae7043f2fb9d365b48dfe243a2aca1c74924de99b04b6445916c95354aefa3')
 sha256sums_x86_64=('26ea219e30f50c1229caab9686c796c276d3eea116bc9fc1df9b8a28bebcc82a')
 
 prepare() {
@@ -26,7 +26,7 @@ prepare() {
 
 package() {
   local project="paintdotjs-${pkgver}"
-  install -Dm755 paintdotjs.AppImage "$pkgdir/opt/paintdotjs/paintdotjs.AppImage"
+  install -Dm755 "paintdotjs-${pkgver}.AppImage" "$pkgdir/opt/paintdotjs/paintdotjs.AppImage"
   node "$project/scripts/install_desktop_assets.js" \
     --source paintdotnet-source \
     --output "$pkgdir/opt/paintdotjs/assets" \
