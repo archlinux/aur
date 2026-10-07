@@ -2,11 +2,11 @@
 
 pkgname=vectorcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.4.0.r0.ga26aa5b
+pkgver=0.4.0.r16.g65c5953
 pkgrel=1
 url="https://getartcraft.com/apps/$_pkgname"
 _url="https://github.com/storytold/$_pkgname"
-pkgdesc='vibe coded clean-room reimplementation of Adobe Illustrator'
+pkgdesc='vibe coded clean-room reimplementation of Adobe Illustrator (Git HEAD)'
 arch=(x86_64)
 license=(MIT Apache-2.0)
 depends=(glibc # libc.so libm.so
