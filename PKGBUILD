@@ -8,7 +8,7 @@
 # by hand.
 pkgname=sharkfin-keyboard
 _pkgname=sharkfin
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc='Configurator for Attack Shark and other ROYUAN keyboards'
 arch=('x86_64')
@@ -25,7 +25,7 @@ conflicts=('sharkfin')
 # empty directory plus a dangling symlink. namcap flags both.
 options=('!lto' '!debug')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('00f89d10effe04bbf9483327dbf42ea0760d4cdf77bff20391c529aae4e5ac2878c64c9c8ba9ed1c272b3564c9245502a62e245c7f1d7eae1b1b915b38cd431a')
+b2sums=('75d323cb4f114fe49b1ac4e0fcf7f29961c3e93b716deca9d6f1180e861058ce2d73fc48295bcdfe8024ee93a5aa0d2b32ac82bf5e3599bed1cdebec0a29c3ae')
 
 prepare() {
   cd "$_pkgname-$pkgver/app"
@@ -57,6 +57,8 @@ package() {
   install -Dm0644 "packaging/$_pkgname.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm0644 packaging/com.getsharkfin.sharkfin.metainfo.xml \
     "$pkgdir/usr/share/metainfo/com.getsharkfin.sharkfin.metainfo.xml"
+  install -Dm0644 packaging/com.getsharkfin.sharkfin.metainfo.xml \
+    "$pkgdir/usr/share/metainfo/com.getsharkfin.sharkfin.appdata.xml"
   install -Dm0644 "packaging/70-$_pkgname.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
   install -Dm0644 'LICENSE' -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm0644 'THIRD-PARTY-NOTICES.md' -t "$pkgdir/usr/share/licenses/$pkgname/"
