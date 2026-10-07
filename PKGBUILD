@@ -1,9 +1,9 @@
-# Maintainer: Leonid LEdnev <leonidledn at gmail dit com>
+# Maintainer: Leonid Lednev <leonidledn at gmail dit com>
 # Contributor: GI_Jack <GI_Jack@hackermail.com>
 _name=aardwolf
 pkgname="python-$_name"
 pkgver=0.2.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Asynchronous RDP/VNC client in Python (headless)"
 url="https://github.com/skelsec/$_name"
 arch=('x86_64')
@@ -39,7 +39,7 @@ prepare() {
   cd "$_name"
   git clean -dfx
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch -C rust --locked --target host-tuple
+  cargo fetch -m rust/Cargo.toml --locked --target host-tuple
 }
 
 build() {

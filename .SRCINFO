@@ -1,7 +1,7 @@
 pkgbase = python-aardwolf
 	pkgdesc = Asynchronous RDP/VNC client in Python (headless)
 	pkgver = 0.2.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skelsec/aardwolf
 	arch = x86_64
 	license = MIT
