@@ -1,8 +1,8 @@
 # Maintainer: Ibnu Afdel <ibnuafdel at gmail dot com>
 pkgname=pomogo
-pkgver=3.0.1
+pkgver=4.0.0
 pkgrel=1
-pkgdesc="Keyboard-driven Pomodoro and deep-focus timer for the Linux terminal, with an Omarchy bar widget"
+pkgdesc="Terminal focus companion: autopilot Pomodoro, body reminders, a daily goal and an Omarchy bar widget"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Ibnu-Afdel/pomogo-rs"
 license=('MIT')
@@ -15,7 +15,7 @@ optdepends=(
 )
 options=('!lto' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f03d55ebc52424cc1f14d281d53b2307f5991c26e08f27c42fefd2b6b033f34a')
+sha256sums=('cc7fb1d2582870d4d1b6cc3b154a10f49c8cb6448c711c64ba2f78daaf0d423d')
 
 _srcdir="pomogo-rs-${pkgver}"
 
