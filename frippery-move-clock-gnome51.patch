@@ -1,0 +1,10 @@
+diff -ura .local/share/gnome-shell/extensions/Move_Clock@rmy.pobox.com/metadata.json .local.new/share/gnome-shell/extensions/Move_Clock@rmy.pobox.com/metadata.json
+--- .local/share/gnome-shell/extensions/Move_Clock@rmy.pobox.com/metadata.json	2026-03-26 00:35:38.000000000 +0300
++++ .local.new/share/gnome-shell/extensions/Move_Clock@rmy.pobox.com/metadata.json	2026-10-07 21:10:33.054266448 +0300
+@@ -1,5 +1,5 @@
+ {
+-    "shell-version": ["46", "47", "48", "49", "50"],
++    "shell-version": ["46", "47", "48", "49", "50", "51"],
+     "uuid": "Move_Clock@rmy.pobox.com",
+     "name": "Frippery Move Clock",
+     "description": "Move clock to left of status menu button",

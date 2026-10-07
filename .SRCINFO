@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-frippery-move-clock
 	pkgdesc = GNOME extension that moves the clock from the centre of the panel towards the right. Part of GNOME Shell Frippery.
 	pkgver = 50.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://frippery.org/extensions/index.html
 	arch = any
 	groups = gnome-shell-extensions
@@ -11,6 +11,8 @@ pkgbase = gnome-shell-extension-frippery-move-clock
 	options = !strip
 	options = !debug
 	source = http://frippery.org/extensions/gnome-shell-frippery-50.0.tgz
+	source = frippery-move-clock-gnome51.patch
 	b2sums = 692f8006af818284695911de2b884a21aba0ae176ba9d7ea608ca8734fd22c557efae11d2d58e373f8ae010070fc796dfd9acb2e213941c74d052ff11bc52601
+	b2sums = 9e743412533acce5fb1c6b5c3a507c939cc3cefd2379735aafd24f509497bdf1fdddaf181d1b4426ad9c2ce3e1cb38d732e486711220919759b567a5668a3ddb
 
 pkgname = gnome-shell-extension-frippery-move-clock
