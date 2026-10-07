@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=meru-git
 _pkgname=meru
-pkgver=3.63.0.r0.g421198c
+pkgver=3.63.1.r0.ged5f19e
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+            'fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -83,7 +83,6 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
-        s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}"  \
@@ -94,6 +93,7 @@ prepare() {
     _ensure_local_nvm
     _set_build_env
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
+    jq 'del(.devDependencies."@playwright/test")' package.json > package.json.tmp && mv package.json.tmp package.json
     rm -rf bun.lock
     bun install
 }
