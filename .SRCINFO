@@ -1,0 +1,11 @@
+pkgbase = f45-backgrounds
+	pkgdesc = Desktop backgrounds of the Fedora 45 default theme for GNOME, KDE, Mate and Xfce desktops
+	pkgver = 45.0.3
+	pkgrel = 1
+	url = https://forge.fedoraproject.org/design/backgrounds
+	arch = any
+	license = CC-BY-SA-4.0
+	source = https://forge.fedoraproject.org/design/backgrounds/releases/download/v45.0.3/f45-backgrounds-45.0.3.tar.xz
+	b2sums = 5243cf5966be3354b04038073bc71e745feea6ea58cee1cfa6f6daeafbd477bc2623a99899d2615cad8ee5171429713c4ee56fd4297ecf68e321e41d9938893a
+
+pkgname = f45-backgrounds
