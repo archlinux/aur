@@ -18,14 +18,12 @@ makedepends=(
 )
 
 source=(
-    "https://github.com/terslang/kotki/archive/refs/tags/v${_pkgver}.tar.gz"
+    "$pkgbase-$_pkgver.tar.gz::https://github.com/terslang/kotki/archive/refs/tags/v${_pkgver}.tar.gz"
     "fix-pykotki.patch"
 )
 
-sha256sums=(
-    '6784f82cd5bd9be5a9de28a1a30a21881aa0cbc9ac2a0a744afd82fbff57a50c'
-    '014be1568fce652dd662f4cc4c1562fb83152f12e22d2bc0127dca4512d0c0ab'
-)
+sha256sums=('6784f82cd5bd9be5a9de28a1a30a21881aa0cbc9ac2a0a744afd82fbff57a50c'
+            '014be1568fce652dd662f4cc4c1562fb83152f12e22d2bc0127dca4512d0c0ab')
 
 prepare() {
     cd "${srcdir}/${pkgbase}-${_pkgver}"
@@ -40,7 +38,7 @@ build() {
     local STAGE="${srcdir}/staging"
     cd "${srcdir}/${pkgbase}-${_pkgver}"
 
-    msg2 "Compiling the main Kotki engine (C)..."
+    echo "==> Compiling the main Kotki engine (C)..."
     cmake -B build-kotki \
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_INSTALL_PREFIX=/usr \
@@ -52,7 +50,7 @@ build() {
 
     DESTDIR="${STAGE}" cmake --install build-kotki
 
-    msg2 "Compiling Python's bindings..."
+    echo "==> Compiling Python's bindings..."
     CMAKE_ARGS="-DCMAKE_PREFIX_PATH=${STAGE}/usr" \
         python -m build --wheel --no-isolation
 }
