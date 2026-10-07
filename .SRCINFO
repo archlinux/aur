@@ -1,0 +1,23 @@
+pkgbase = haimacloud-bin
+	pkgdesc = Play 3A with all the special effects, just use the hippocampus cloud computer.特效全开玩3A，就用海马云电脑.
+	pkgver = 2.7.3
+	pkgrel = 1
+	url = https://pc.haimacloud.com/
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = electron39
+	provides = haimacloud=2.7.3
+	conflicts = haimacloud
+	options = !strip
+	options = !emptydirs
+	source = LICENSE.html::https://pc.haimacloud.com/agreement/user
+	source = haimacloud.sh
+	sha256sums = bdb8db760dbceec14806559b3304ff8bb205f8bb7cb24a49280e5ed45a60642b
+	sha256sums = fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8
+	source_aarch64 = haimacloud-2.7.3-aarch64.deb::https://github.com/kota-rina3/hokeshi/releases/download/haimacloud2.7.3/com.haimacloud.otohime_2.7.3.417_arm64.deb
+	sha256sums_aarch64 = 993f974261359f5ddf69d1856584943ebb1858dea92cc46bafa5377e516707bc
+	source_x86_64 = haimacloud-2.7.3-x86_64.deb::https://github.com/kota-rina3/hokeshi/releases/download/haimacloud2.7.3/com.haimacloud.otohime_2.7.3.417_amd64.deb
+	sha256sums_x86_64 = 3d41c409733e4cdb782b92725ca4006a8d18d1b2e32ce980c89d68e2f69fb9ba
+
+pkgname = haimacloud-bin
