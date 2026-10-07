@@ -2,8 +2,11 @@
 
 pkgbase=taigikeyboard-git
 pkgname=(fcitx5-taigikeyboard-git ibus-taigikeyboard-git taigikeyboard-common-git)
-pkgver=3.6.10
-pkgrel=2
+# > To use pkgver(), you still need to declare the pkgver variable with the most
+# > recent value. makepkg will invoke function pkgver(), and update variable
+# > pkgver accordingly.
+pkgver=3.6.10.r918.0b2c45c
+pkgrel=1
 arch=('x86_64')
 url="https://taigikeyboard.tw"
 license=('Apache-2.0')
@@ -30,6 +33,15 @@ sha256sums=('SKIP')
 # Unbundling libsqlite3-sys while using LTO for C still leads to errors. Disable
 # it instead.
 options=(!lto)
+
+pkgver() {
+	cd "$pkgbase"
+	printf "%s" "$(
+		git describe --long --tags --abbrev=7 \
+			--match="desktop-*" |
+			sed 's/^desktop-//; s/\([^-]*-\)g/r\1/; s/-/./g'
+	)"
+}
 
 build() {
 	# The way some protobuf stuff is included ends up putting references to the
