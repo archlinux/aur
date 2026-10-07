@@ -2,11 +2,11 @@
 
 pkgname=photocraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.3.0.r36.gfa0defc
+pkgver=0.3.0.r47.g47f9306
 pkgrel=1
 url="https://getartcraft.com/apps/$_pkgname"
 _url="https://github.com/storytold/$_pkgname"
-pkgdesc='vibe coded clean-room reimplementation of Adobe Photoshop'
+pkgdesc='vibe coded clean-room reimplementation of Adobe Photoshop (Git HEAD)'
 arch=(x86_64)
 license=(MIT Apache-2.0)
 depends=(glibc # libc.so libm.so

@@ -1,6 +1,6 @@
 pkgbase = photocraft-git
-	pkgdesc = vibe coded clean-room reimplementation of Adobe Photoshop
-	pkgver = 0.3.0.r36.gfa0defc
+	pkgdesc = vibe coded clean-room reimplementation of Adobe Photoshop (Git HEAD)
+	pkgver = 0.3.0.r47.g47f9306
 	pkgrel = 1
 	url = https://getartcraft.com/apps/photocraft
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = photocraft-git
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	provides = photocraft=0.3.0.r36.gfa0defc
+	provides = photocraft=0.3.0.r47.g47f9306
 	conflicts = photocraft
 	source = git+https://github.com/storytold/photocraft.git
 	sha256sums = SKIP
