@@ -1,0 +1,27 @@
+post_install() {
+    echo
+    echo "  sudoForge: one password box for every admin request on Sway."
+    echo
+    echo "  1. Start it with your Sway session: hypeForge does this already;"
+    echo "     on another Sway setup add this line to your Sway config:"
+    echo "         exec sudoforge service"
+    echo "  2. Make sudo -A ask in the box (asks for your password once, in the box):"
+    echo "         sudoforge setup"
+    echo
+}
+
+post_upgrade() {
+    # a setup made from a source checkout points elsewhere; say so, change nothing
+    if grep -q '^Path askpass .*sudoforge-askpass' /etc/sudo.conf 2>/dev/null \
+       && ! grep -q '^Path askpass /usr/lib/sudoforge/sudoforge-askpass$' /etc/sudo.conf; then
+        echo "  sudoForge: /etc/sudo.conf names another copy of its helper; run: sudoforge setup"
+    fi
+}
+
+pre_remove() {
+    # take sudoForge's two marked lines back out of /etc/sudo.conf, so sudo is
+    # not left naming a helper that is about to be removed (everything else stays)
+    if [ -f /usr/lib/sudoforge/sudoforge/sudoconf.py ]; then
+        python3 -I /usr/lib/sudoforge/sudoforge/sudoconf.py undo || true
+    fi
+}
