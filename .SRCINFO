@@ -1,0 +1,23 @@
+pkgbase = baidu-translate-company-bin
+	pkgdesc = Unoffical Baidu translate Company Client.百度翻译企业版
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://fanyi.baidu.com/mtpe-organization
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = electron11-bin
+	provides = baidu-translate-company=1.2.1
+	conflicts = baidu-translate-company
+	options = !strip
+	options = !emptydirs
+	source = LICENSE.html::https://edu-wenku.bdimg.com/v1/pc/protocols/help24-new.htm
+	source = baidu-translate-company.sh
+	sha256sums = eb85aa9b3586dcd16b0f18b4b467b46b076688f9d1f723dea7f2eb92cd797ce7
+	sha256sums = fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8
+	source_aarch64 = baidu-translate-company-1.2.1-aarch64.deb::https://github.com/kota-rina3/hokeshi/releases/download/bdfanyi-company-1.2.1/com.baidu.translateclient.company_1.2.1_arm64.deb
+	sha256sums_aarch64 = 03d5248cad4ca923dcd8bb367c9d7e584bd87598a85497de338be2669d7584d5
+	source_x86_64 = baidu-translate-company-1.2.1-x86_64.deb::https://github.com/kota-rina3/hokeshi/releases/download/bdfanyi-company-1.2.1/com.baidu.translateclient.company_1.2.1_amd64.deb
+	sha256sums_x86_64 = 18d94cdc868777aa30a5d45d12283221c08f46dd3a30dcba97d298effd24a397
+
+pkgname = baidu-translate-company-bin
