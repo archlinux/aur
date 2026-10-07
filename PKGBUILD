@@ -2,7 +2,7 @@
 
 _pkgname=oh-my-openagent
 pkgname=omo-bin
-pkgver=5.1.17
+pkgver=5.1.23
 pkgrel=1
 pkgdesc="OmO Native - standalone omo coding-agent CLI"
 arch=('x86_64' 'aarch64')
@@ -20,15 +20,15 @@ _omo_sha=
 case ${CARCH} in
     x86_64)
         _asset=omo-linux-x64
-        _omo_sha=251243a4bea65a5a7322a1ecf70b5d074a7bb0c4acf9f82c12b77eea6dc5185e
+        _omo_sha=c98b3e9fd44c5ac1a60187212820dfb886240af60489171ee0851c6b7300f4c3
         grep -qwi avx2 /proc/cpuinfo || {
             _asset=omo-linux-x64-baseline
-            _omo_sha=0b8658ef7e98c01409f1bb8cb8fda3e456bf48488276a6a39130117a7119e60e
+            _omo_sha=e95087689fbb7879bf1720e64ed085945a28cf0d3f183846faa6c6d416751cfc
         }
         ;;
     aarch64)
         _asset=omo-linux-arm64
-        _omo_sha=7e6bb3709348813e885adeca52d1192be0e68cd4d851500e8ee956086812570f
+        _omo_sha=0f4d4e316e4a003931ddd78145cd8ba544b1f5e5a9b626642535d92e022a2618
         ;;
 esac
 
