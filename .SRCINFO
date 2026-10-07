@@ -1,0 +1,27 @@
+pkgbase = mpf-cli-bin
+	pkgdesc = Command-line frontend for Redumper, Aaru, and DiscImageCreator
+	pkgver = 3.10.0
+	pkgrel = 2
+	url = https://github.com/SabreTools/MPF
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	optdepends = redumper: default dumping backend
+	optdepends = aaru: Aaru dumping backend
+	optdepends = discimagecreator: DiscImageCreator dumping backend
+	provides = mpf-cli
+	conflicts = mpf-cli
+	conflicts = mpf-cli-git
+	noextract = MPF.CLI_3.10.0_net10.0_linux-x64_release.zip
+	noextract = MPF.CLI_3.10.0_net10.0_linux-arm64_release.zip
+	options = !strip
+	source = LICENSE-3.10.0::https://raw.githubusercontent.com/SabreTools/MPF/3.10.0/LICENSE
+	sha256sums = d3473adb99570967c0cc7196d13ace3781b22b93a7ca3046d5a68bd53c665446
+	source_x86_64 = MPF.CLI_3.10.0_net10.0_linux-x64_release.zip::https://github.com/SabreTools/MPF/releases/download/3.10.0/MPF.CLI_3.10.0_net10.0_linux-x64_release.zip
+	sha256sums_x86_64 = f55dd84c6b28ac3c600a9f49fa2c2b9e478345aaca85a964c0dd831fecd4aca4
+	source_aarch64 = MPF.CLI_3.10.0_net10.0_linux-arm64_release.zip::https://github.com/SabreTools/MPF/releases/download/3.10.0/MPF.CLI_3.10.0_net10.0_linux-arm64_release.zip
+	sha256sums_aarch64 = 1430426aea16416d3759abf634275aa360ac213e2b962b26887120bb16460a94
+
+pkgname = mpf-cli-bin
