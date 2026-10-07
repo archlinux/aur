@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Reasonix Studio
+Comment=Desktop window around the Reasonix AI coding agent
+Exec=reasonix-studio %U
+Terminal=false
+Type=Application
+Icon=reasonix-studio
+StartupWMClass=reasonix-studio
+Categories=Development;

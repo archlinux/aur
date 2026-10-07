@@ -1,0 +1,27 @@
+pkgbase = deepseek-reasonix-studio
+	pkgdesc = Reasonix Studio - desktop window around the DeepSeek-native AI coding agent (2.x line)
+	pkgver = 2.30.0
+	pkgrel = 1
+	url = https://github.com/esengine/DeepSeek-Reasonix
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = OFL-1.1
+	makedepends = go
+	makedepends = nodejs>=24
+	makedepends = pnpm
+	depends = electron44
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	optdepends = bubblewrap: sandbox for agent shell commands
+	provides = reasonix-studio
+	conflicts = reasonix-studio
+	options = !debug
+	source = deepseek-reasonix-studio-2.30.0.tar.gz::https://github.com/esengine/DeepSeek-Reasonix/archive/refs/tags/studio-v2.30.0.tar.gz
+	source = reasonix-studio.sh
+	source = reasonix-studio.desktop
+	sha256sums = a9b11a887baf1c5c5f950686422bcbc6cb54506e6fe9ef92a9708c9bedd93b2c
+	sha256sums = 052e14d748355592e4b60f3e81f87537daf3cf18082be73ff7e1a3e80233f806
+	sha256sums = 87b009437ac5b35743a9624da2b1598623a15c89dfc2c1c62409a8baaf8137e7
+
+pkgname = deepseek-reasonix-studio
