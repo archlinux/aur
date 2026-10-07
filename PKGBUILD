@@ -1,8 +1,8 @@
 # Maintainer: colegeming <collegeming@outlook.com>
 
 pkgname=snishaper-bin
-pkgver=1.29.0beta5
-pkgrel=2
+pkgver=1.29.0
+pkgrel=1
 pkgdesc='Local proxy to bypass SNI blocking via ECH injection, TLS fragmentation, QUIC and a TUN device (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/SnishaperTeam/SniShaper'
@@ -21,12 +21,12 @@ options=('!strip')
 # version's cached download under the same filename and the sha256 check
 # fails on every upgrade.
 source_x86_64=(
-    "snishaper-${pkgver}-linux-amd64.tar.gz::https://github.com/SnishaperTeam/SniShaper/releases/download/v1.29.0-beta.5/snishaper-linux-amd64.tar.gz"
+    "snishaper-${pkgver}-linux-amd64.tar.gz::https://github.com/SnishaperTeam/SniShaper/releases/download/v1.29.0/snishaper-linux-amd64.tar.gz"
     "snishaper-${pkgver}-icon.png::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/main/Assets/AppList.targetsize-256_altform-unplated.png"
     "snishaper-${pkgver}-LICENSE::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/main/LICENSE"
 )
 sha256sums_x86_64=(
-    '1671ddc5e577bc0b9c039ae2004094b25c5cc46a17b24a206989ee5a713c112d'
+    '38c1bcc44baa1355160e4b5ac14cd83a202e2b4a6c75a7d785c2b37da8b05a1f'
     'c8c6fb14ef896c6fe2a3d65632445bb1d01a3c78796f3ed494e0592bf329d40b'
     '95bc608f8ed815a6a47f1c209e33c4ea991c5c5acf664fdf3ba204117a7d96b7'
 )
