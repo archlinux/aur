@@ -15,10 +15,17 @@ _srcdir="rfc_reader-0.11.2"
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/ozan2003/rfc_reader/tar.gz/refs/tags/$_tag")
 sha256sums=('e58ccf29dc272bcc199c7a9d9418cc6c8aaea78cc7e8680581a5653d17e38350')
 
+prepare() {
+	cd "$_srcdir"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
 	cd "$_srcdir"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo build --release --locked
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release
 }
 
 package() {
@@ -26,7 +33,5 @@ package() {
 	install -Dm755 "target/release/rfc_reader" "$pkgdir/usr/bin/rfc_reader"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
