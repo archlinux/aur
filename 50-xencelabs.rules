@@ -1,0 +1,16 @@
+# Xencelabs Quick Keys (USB vendor 28bd: 5202 = wired, 5203 = wireless dongle).
+#
+# No dedicated group is used. Access is granted by systemd-logind to the user
+# physically seated at the machine through TAG+="uaccess", which applies a
+# dynamic ACL to the device node for the active session.
+
+# /dev/uinput, where the driver creates its virtual keyboard.
+KERNEL=="uinput", SUBSYSTEM=="misc", OPTIONS+="static_node=uinput", TAG+="uaccess"
+
+# Raw USB device (libusb/hidapi backend).
+SUBSYSTEM=="usb", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="5202", MODE="0660", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="5203", MODE="0660", TAG+="uaccess"
+
+# hidraw nodes.
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="5202", MODE="0660", TAG+="uaccess"
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="5203", MODE="0660", TAG+="uaccess"

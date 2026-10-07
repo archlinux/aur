@@ -8,6 +8,8 @@ pkgbase = xencelabs-quick-keys-go
 	license = MIT
 	makedepends = go
 	source = xencelabs-quick-keys-go-0.1.tar.gz::https://github.com/akhenakh/xencelabs-quick-keys-go/archive/refs/tags/v0.1.tar.gz
+	source = 50-xencelabs.rules
 	sha256sums = 20eff87f8e69cb58f809b07aaf7702012ab1c01e6f8bb2aef81fbafc2e1cbda8
+	sha256sums = afac3bf23b0f18aea1c40a1ee304499c059fc9b561904a65e0ed6db71a88f11d
 
 pkgname = xencelabs-quick-keys-go
