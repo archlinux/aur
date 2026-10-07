@@ -1,6 +1,6 @@
 pkgbase = aulos-bin
 	pkgdesc = A modern music player for the COSMIC desktop (binary release)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/M0Rf30/aulos
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = aulos-bin
 	conflicts = aulos
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/M0Rf30/aulos/releases/download/0.1.1/aulos-0.1.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = ded3011513f54d9d931df662a1984f0041e8ae527cb05c5a3d7a5f1234760d7c
-	source_aarch64 = https://github.com/M0Rf30/aulos/releases/download/0.1.1/aulos-0.1.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 99eccfb9b076b00e890c729f488bae36156ff99f63c29f82edfce49988a65cf7
+	source_x86_64 = https://github.com/M0Rf30/aulos/releases/download/0.1.2/aulos-0.1.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7172063076e87c270a9324ead4e72046b4f60ff09b7e980435883a8ca35855d7
+	source_aarch64 = https://github.com/M0Rf30/aulos/releases/download/0.1.2/aulos-0.1.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f71240aedf1448c3c2eaf43d0c4938ea76aacbd0b676eb38397258f2dc2d9df5
 
 pkgname = aulos-bin
