@@ -1,6 +1,6 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=paseo-desktop-git
-pkgver=0.11.0.beta.5.r56.g8ddeb79c8
+pkgver=0.11.0.r8.g1ae979d3d
 pkgrel=2
 # Publish targets: aur + Arch release + Debian release (opt-in per format).
 _publish_targets="aur github-arch github-deb"
@@ -18,6 +18,13 @@ _publish_targets="aur github-arch github-deb"
 #   xdg-utils. t64 is what Debian 13 (trixie) and Ubuntu 24.04 (noble) ship;
 #   the pre-t64 names have no candidate on either, which deb-smoke runs.
 _deb_depends=('libc6' 'libgcc-s1' 'libstdc++6' 'libgtk-3-0t64' 'libglib2.0-0t64' 'libatk1.0-0t64' 'libatk-bridge2.0-0t64' 'libatspi2.0-0t64' 'libcairo2' 'libpango-1.0-0' 'libexpat1' 'libx11-6' 'libxcb1' 'libxext6' 'libxcomposite1' 'libxdamage1' 'libxfixes3' 'libxrandr2' 'libxkbcommon0' 'libnspr4' 'libnss3' 'libcups2t64' 'libdbus-1-3' 'libasound2t64' 'libudev1' 'libgbm1' 'libnotify4' 'libxss1' 'libxtst6' 'libsecret-1-0' 'libuuid1' 'xdg-utils' 'hicolor-icon-theme' 'bash' 'nodejs')
+# Debian variant-exclusion for the fpm conversion (#61): all six paseo-*
+# .debs ship /usr/bin/paseo and are mutually exclusive. Arch-only names
+# (paseo, paseo-bin, ...) have no .deb counterpart, so the Debian list names
+# the concrete sibling .debs plus the shared `paseo` virtual instead of
+# reusing the Arch conflicts array verbatim.
+_deb_provides=('paseo')
+_deb_conflicts=('paseo-cli-edge' 'paseo-cli-git' 'paseo-cli-git-bin' 'paseo-desktop-bin-edge' 'paseo-desktop-git-bin' 'paseo')
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents. (git - built from main)"
 arch=('x86_64')
 url="https://paseo.sh"
@@ -25,7 +32,7 @@ license=("Apache-2.0")
 depends=(libxkbcommon libxcb libgcc gtk3 libxext libx11 libcups nspr mesa dbus pango libxcomposite libxrandr nodejs glib2 nss libxdamage alsa-lib systemd-libs bash hicolor-icon-theme cairo at-spi2-core expat libstdc++ libxfixes)
 makedepends=('git' 'npm' 'nodejs' 'python')
 provides=("paseo=${pkgver}" "paseo-desktop=${pkgver}" "paseo-desktop-git")
-conflicts=(paseo paseo-bin paseo-appimage paseo-desktop-bin paseo-desktop-bin-edge paseo-cli paseo-cli-git paseo-cli-edge)
+conflicts=(paseo paseo-bin paseo-appimage paseo-cli-bun paseo-desktop-bin paseo-desktop-bin-edge paseo-desktop-git-bin paseo-cli paseo-cli-edge paseo-cli-git paseo-cli-git-bin)
 source=('paseo::git+https://github.com/getpaseo/paseo.git#branch=main')
 sha256sums=('SKIP')
 options=('!strip')
