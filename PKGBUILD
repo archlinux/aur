@@ -4,7 +4,7 @@ _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname='Nuclear Player'
 _debname="com.${pkgname//-/}.Nuclear"
-pkgver=1.49.1
+pkgver=1.50.0
 _nodeversion=24
 pkgrel=1
 pkgdesc="Streaming music player that finds free music for you."
@@ -23,7 +23,6 @@ depends=(
 makedepends=(
     'pnpm'
     'nvm'
-    'curl'
     'rustup'
 )
 optdepends=(
@@ -32,7 +31,7 @@ optdepends=(
     'gst-libav: FFmpeg-based codec support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/player@${pkgver}.tar.gz")
-sha256sums=('df33336c9318c0876ced8d0335d970e9900d251e6d126db7df3352ccaa3fe3a8')
+sha256sums=('fcafdc51a0ec23777d768018345bac5fbfcfd5eb3c6ea71d670de7272994cdca')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -101,17 +100,17 @@ prepare() {
         s/\"active\"\: true\,/\"active\"\: false\,/g
         s/${_appname}-music-player/${pkgname}/g
     " packages/player/src-tauri/tauri.conf.json
+    rustup update stable
+    rustup default stable
     export NODE_ENV=development
     pnpm add -D node-addon-api node-gyp
     pnpm install --no-frozen-lockfile
-    rustup update stable
-    rustup default stable
 }
 build() {
     cd "$(_get_project_dir)"
     _ensure_local_nvm
     _set_build_env
-    exportNODE_ENV=production
+    export NODE_ENV=production
     for pkg in model website i18n themes hifi ui plugin-sdk storybook player; do
         msg2 "Building ${pkg}..."
         cd "$(_get_project_dir)/packages/${pkg}"
@@ -123,10 +122,11 @@ build() {
 }
 package() {
     local _src="$(_get_project_dir)"
-    install -Dm755 "${_src}/packages/player/src-tauri/target/release/${pkgname}" -t "${pkgdir}/usr/bin"
-    install -Dm755 "${_src}/packages/player/src-tauri/resources/${_debname}" \
+    local _appdir="${_src}/packages/player/src-tauri"
+    install -Dm755 "${_appdir}/target/release/${pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm755 "${_appdir}/resources/${_debname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm755 "${_src}/packages/player/src-tauri/resources/${_debname}.metainfo.xml" \
+    install -Dm755 "${_appdir}/resources/${_debname}.metainfo.xml" \
         "${pkgdir}/usr/share/metainfo/${pkgname}.metainfo.xml"
     _icon_sizes=(32x32 64x64 128x128 256x256 512x512)
 	for _icons in "${_icon_sizes[@]}";do
