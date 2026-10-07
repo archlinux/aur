@@ -2,11 +2,11 @@
 
 pkgname=effectcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.4.0.r0.gf5ebe5f
+pkgver=0.4.0.r4.g608d1b0
 pkgrel=1
 url="https://getartcraft.com/apps/$_pkgname"
 _url="https://github.com/storytold/$_pkgname"
-pkgdesc='vibe coded clean-room reimplementation of Adobe After Effects'
+pkgdesc='vibe coded clean-room reimplementation of Adobe After Effects (Git HEAD)'
 arch=(x86_64)
 license=(MIT Apache-2.0)
 depends=(alsa-lib
