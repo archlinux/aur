@@ -1,9 +1,9 @@
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 
 pkgname=python-inplace
 _gitpkgname=inplace
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc='In-place file processing in Python'
 arch=('any')
 url='https://github.com/jwodder/inplace'
@@ -21,7 +21,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/jwodder/inplace/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=('71c92f5b9b53996338bb79b2a3184a9299849504d9b6a4fc99849b8e5360c65dc918965c95a6a3127a5e6c36a4d2bf541700c954904ceced271e42b28c714c02')
+sha512sums=('985109bfe058fb58a6991fdc019d85d419a9b33fb7111503ccbed2d46b76b18f34a92e5cc886471f5b7ceff73a973571e09aee058853074334d6c7eac203f1aa')
 
 build() {
   cd "${_gitpkgname}-${pkgver}"
