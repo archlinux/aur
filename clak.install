@@ -5,13 +5,20 @@ post_install() {
     c_bold="\033[1m"
     c_reset="\033[0m"
 
+    # nap udev rule cho /dev/uinput
+    udevadm control --reload-rules 2>/dev/null || true
+    udevadm trigger /dev/uinput 2>/dev/null || true
+    modprobe uinput 2>/dev/null || true
+
     echo -e "${c_green}::${c_reset} ${c_bold}Cài đặt Clak thành công!${c_reset}"
-    echo -e "${c_cyan}::${c_reset} Hãy khởi động lại Fcitx5 và vào cấu hình (${c_cyan}fcitx5-configtool${c_reset}) thêm Clak vào danh sách bộ gõ để sử dụng"
-    echo -e "${c_yellow}:: Lưu ý:${c_reset} ${c_bold}Hãy tắt hết các bàn phím khác và chỉ thêm mỗi Clak. Nó hỗ trợ gõ cả tiếng Anh và tiếng Việt${c_reset}"
+    echo -e "${c_yellow}:: QUAN TRỌNG:${c_reset} ${c_bold}Hãy mở 'clak-gui' và chạy 'Chẩn đoán'${c_reset}"
+    echo -e "   (hoặc chạy lệnh terminal: ${c_cyan}${c_bold}clak doctor${c_reset})"
+    echo -e "   để kiểm tra môi trường, kích hoạt bộ gõ và tối ưu hóa hệ thống (WPS Office, JetBrains, uinput) chỉ với 1-Click!"
+    echo -e "${c_cyan}:: Lưu ý:${c_reset} Hãy tắt các bộ gõ tiếng Việt khác và chỉ để duy nhất Clak vì Clak đã hỗ trợ cả Tiếng Việt và Tiếng Anh"
     if [ -n "${SUDO_USER:-}" ] && command -v notify-send >/dev/null 2>&1; then
-        sudo -u "$SUDO_USER" DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u "$SUDO_USER")/bus" notify-send -i org.fcitx.Fcitx5.clak "Clak" "Cài đặt thành công! Hãy tắt hết các bàn phím khác và chỉ thêm mỗi Clak. Nó hỗ trợ gõ cả tiếng Anh và tiếng Việt" 2>/dev/null || true
+        sudo -u "$SUDO_USER" DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u "$SUDO_USER")/bus" notify-send -i org.fcitx.Fcitx5.clak "Clak Tiếng Việt" "Cài đặt thành công! Hãy mở 'clak-gui' chạy 'Chẩn đoán' (hoặc gõ 'clak doctor') để kiểm tra và tối ưu 1-click." 2>/dev/null || true
     elif command -v notify-send >/dev/null 2>&1; then
-        notify-send -i org.fcitx.Fcitx5.clak "Clak" "Cài đặt thành công! Hãy tắt hết các bàn phím khác và chỉ thêm mỗi Clak. Nó hỗ trợ gõ cả tiếng Anh và tiếng Việt" 2>/dev/null || true
+        notify-send -i org.fcitx.Fcitx5.clak "Clak Tiếng Việt" "Cài đặt thành công! Hãy mở 'clak-gui' chạy 'Chẩn đoán' (hoặc gõ 'clak doctor') để kiểm tra và tối ưu 1-click." 2>/dev/null || true
     fi
 }
 
