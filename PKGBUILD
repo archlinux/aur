@@ -3,7 +3,7 @@
 # Maintainer: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.74.1
+pkgver=1.76.0
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
@@ -14,14 +14,14 @@ _license_files=(LICENSE-EPL LICENSE-GPL-2.0-ONLY-CLASSPATH-EXCEPTION LICENSE-MIT
 #_licenses="${_license_files[*]/#/LicenseRef-}"
 #license=("${_licenses//${IFS:0:1}/ AND }")
 license=("${_license_files[@]/#/LicenseRef-}")
-depends=('nodejs-lts-krypton' 'nss' 'gtk3' 'libxss' 'libxkbfile' 'ripgrep')
+depends=('nodejs>=24' 'nss' 'gtk3' 'libxss' 'libxkbfile' 'ripgrep')
 makedepends=('bash>=5' 'curl' 'diffutils' 'jq'
              'gcc' 'git' 'make' 'node-gyp' 'npm' 'pkgconf' 'python-setuptools'
              'unzip' 'yarn')
 optdepends=('git: git support' 'libsecret: keytar support')
 options=(!debug !strip)
 
-_tools_commit=05e134eedb9c1dcad4206fb10e75fc5e604abb54
+_tools_commit=48958ecd2eb55d479754ba86552dd8d5253ad6be
 source=(
   "theia-electron.sh"
   "https://gitlab.com/ccorn/theia-packaging-tools/-/raw/$_tools_commit/make-package-json.sh"
@@ -35,7 +35,7 @@ source=(
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE-vscode.txt"
 )
 sha256sums=('49dc3027c1bed942afde93608248765178d8f32145c1f8c75b68f4b191bf0af0'
-            'c58129d148fe24e137a1e408a842ad192ff4772a83c7abf3ee01814148c75519'
+            'c78b5a4e63e2af87bce28c1a706f0b92984af392242e7db99579fd16833d08da'
             '82b7b2cf3b30aecf79b44cb5b5d3000f91e8610a4bcc019720b6ecfa6045529d'
             'f43cc8aaf4738166acdf4e54817ad7e9c031c4dacf23eb8496f9edae33b3f1d0'
             '76f48bbc421d298113c73cee628c9d0fd8b14381590d871928f4f0bd87e812ce'
@@ -54,18 +54,20 @@ prepare() {
   # Note: As of 1.41.0, those get pulled in anyway. Sigh.
   # 1.50.0: @theia/git removed from electron version
   # (presumably in favor of vscode.git{,-base}).
+  # 1.75.0: @theia/scm-extra: deprecated and unavailable for npm.
   # Removing @theia/ai-vercel-ai because it pulls in opentelemetry.
-  # Add dependencies on react as in eclipse-theia/theia-ide.
+  # Add dependencies on react and fs-extra as in eclipse-theia/theia-ide.
   bash make-package-json.sh "${pkgver/.next./-next.}" | \
-  grep -vE "@theia/(ai-vercel-ai|getting-started|git|notebook|plugin[-0-9_a-z]*|preview|test)\b" | \
-  jq '.dependencies."react" = "^18.3.1" |
-      .dependencies."react-dom" = "^18.3.1" |
-      .devDependencies."@types/react" = "^18.3.0" |
-      .devDependencies."@types/react-dom" = "^18.3.0"' >package.json
+  grep -vE "@theia/(ai-vercel-ai|getting-started|git|notebook|plugin[-0-9_a-z]*|preview|scm-extra|test)\b" | \
+  jq '.dependencies."fs-extra" = "^9.1.0" |
+      .dependencies."react" = "^19.2.8" |
+      .dependencies."react-dom" = "^19.2.8" |
+      .devDependencies."@types/react" = "^19.2.18" |
+      .devDependencies."@types/react-dom" = "^19.2.7"' >package.json
 }
 
 build() {
-  local FAKEHOME="$srcdir/.electron-gyp"
+  local FAKEHOME="$srcdir/.yarn-electron-gyp"
   mkdir -p "$FAKEHOME"
 
   # Disable yarn autoclean
