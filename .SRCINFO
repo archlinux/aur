@@ -1,15 +1,15 @@
 pkgbase = ttf-libron
 	pkgdesc = Serif typeface tuned for digital reading and e-readers (Readerly fork)
-	pkgver = 0.25
+	pkgver = 0.30
 	pkgrel = 1
 	url = https://github.com/nicoverbruggen/libron
 	arch = any
 	license = OFL-1.1
-	source = ttf-libron-0.25.zip::https://github.com/nicoverbruggen/libron/releases/download/v0.25/Libron.zip
-	source = LICENSE-0.25::https://raw.githubusercontent.com/nicoverbruggen/libron/v0.25/LICENSE
-	source = COPYRIGHT-0.25::https://raw.githubusercontent.com/nicoverbruggen/libron/v0.25/COPYRIGHT
-	sha256sums = a732102b75e6016ae52d39ec22e182bc89365612c906b5898bcd1f8e02b91a57
-	sha256sums = cb452a7a6e43d36823b393e6fa2cb1b60fccb4533bb30dc96d7262df5dbb477e
-	sha256sums = f266cfea9e68f3a159788da9ecda72e3fa14d76816c0fca30442496b6253e12e
+	source = ttf-libron-0.30.zip::https://github.com/nicoverbruggen/libron/releases/download/v0.30/Libron.zip
+	source = LICENSE-0.30::https://raw.githubusercontent.com/nicoverbruggen/libron/v0.30/LICENSE
+	source = COPYRIGHT-0.30::https://raw.githubusercontent.com/nicoverbruggen/libron/v0.30/COPYRIGHT
+	sha256sums = 9441937b9dabd9cdffc9e0ed329685bb730f214fe79e5c8ae749b174c3e05e1d
+	sha256sums = bc596e272be47691f70c090bca17a8b6e58bd021baada8be18510beceed6cfbd
+	sha256sums = d14a8638c40c1e1a02458b9f46860030b88cc27ac1cae65f18aa943b69495718
 
 pkgname = ttf-libron

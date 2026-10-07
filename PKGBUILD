@@ -1,7 +1,7 @@
 # Maintainer: Umar Alfarouk <medrivia@gmail.com>
 
 pkgname=ttf-libron
-pkgver=0.25
+pkgver=0.30
 pkgrel=1
 pkgdesc="Serif typeface tuned for digital reading and e-readers (Readerly fork)"
 arch=('any')
@@ -11,9 +11,9 @@ depends=()
 source=("ttf-libron-$pkgver.zip::https://github.com/nicoverbruggen/libron/releases/download/v$pkgver/Libron.zip"
   "LICENSE-$pkgver::https://raw.githubusercontent.com/nicoverbruggen/libron/v$pkgver/LICENSE"
   "COPYRIGHT-$pkgver::https://raw.githubusercontent.com/nicoverbruggen/libron/v$pkgver/COPYRIGHT")
-sha256sums=('a732102b75e6016ae52d39ec22e182bc89365612c906b5898bcd1f8e02b91a57'
-  'cb452a7a6e43d36823b393e6fa2cb1b60fccb4533bb30dc96d7262df5dbb477e'
-  'f266cfea9e68f3a159788da9ecda72e3fa14d76816c0fca30442496b6253e12e')
+sha256sums=('9441937b9dabd9cdffc9e0ed329685bb730f214fe79e5c8ae749b174c3e05e1d'
+            'bc596e272be47691f70c090bca17a8b6e58bd021baada8be18510beceed6cfbd'
+            'd14a8638c40c1e1a02458b9f46860030b88cc27ac1cae65f18aa943b69495718')
 
 package() {
   install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" "$srcdir"/Libron-*.ttf
