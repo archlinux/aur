@@ -1,7 +1,7 @@
 # Maintainer:  bipin kumar <kbipinkumar@pm.me>
 
 pkgname=pplacer
-pkgver=1.1.alpha22
+pkgver=1.1.alpha23
 pkgrel=1
 pkgdesc="Phylogenetic placement and downstream analysis"
 arch=("x86_64")
@@ -18,13 +18,13 @@ depends=(
         )
 makedepends=('m4' 'ocamlbuild' 'ocaml-findlib' 'ocaml-topkg' 'opam' 'python-sphinx' 'wget' 'git' 'rsync' 'bubblewrap' 'dune')
 
-_mcl_commit=b1f7a969371d434eaa6848bdbb79a851de617c1f
+_mcl_commit=1f1932b64619e9bd9ecbcb421cb1e3f1eb535e80
 source=("${pkgname}::git+https://github.com/matsen/pplacer.git#tag=v${pkgver}"
         "mcl::git+https://github.com/fhcrc/mcl.git#commit=${_mcl_commit}"
         )
 
-sha256sums=('f586a5065cbbea220b0280b5a692acf965a9dc9a6824d2164a8e9a9c01b4d366'
-            'e416c1c4ba6c1ef5f1fb78b401eb9d9060d61fab5fa294d7d6734f785e7dc556')
+sha256sums=('b946a84e98bce27b606551f177392248d22f5ceb1b4c9e35a85e1ce65c992d53'
+            '45c49e1794fe1e1a2b884d8825e0e4b51644813c7c996fffa265077a570ea287')
 
 prepare() {
   cd "${srcdir}"/"${pkgname}"
@@ -36,14 +36,9 @@ prepare() {
   # Update mcl
   git -c protocol.file.allow=always submodule update mcl
 
-  # --- MCL Patches ---
-  cd mcl
-  # Fix conflicting 'usage' prototype
-  sed -i 's/void usage();/void usage(const char **);/' src/mcl/procinit.h
-  # Fix missing include
-  sed -i '/#include "impala\/stream.h"/a #include "impala/app.h"' src/shmx/mcxclcf.c
-  cd ..
-  
+  # Remove static linking flags to link dynamically against gsl
+  sed -i "s/echo '(-ccopt -static -ccopt -no-pie)'/echo '()'/g" dune
+
   # patch to use mathjax with Sphinx docs
   if [ -d "docs" ]; then
     cd docs

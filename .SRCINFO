@@ -1,6 +1,6 @@
 pkgbase = pplacer
 	pkgdesc = Phylogenetic placement and downstream analysis
-	pkgver = 1.1.alpha22
+	pkgver = 1.1.alpha23
 	pkgrel = 1
 	url = https://matsen.fredhutch.org/pplacer/
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = pplacer
 	depends = python
 	depends = python-biopython
 	depends = python-taxtastic
-	source = pplacer::git+https://github.com/matsen/pplacer.git#tag=v1.1.alpha22
-	source = mcl::git+https://github.com/fhcrc/mcl.git#commit=b1f7a969371d434eaa6848bdbb79a851de617c1f
-	sha256sums = f586a5065cbbea220b0280b5a692acf965a9dc9a6824d2164a8e9a9c01b4d366
-	sha256sums = e416c1c4ba6c1ef5f1fb78b401eb9d9060d61fab5fa294d7d6734f785e7dc556
+	source = pplacer::git+https://github.com/matsen/pplacer.git#tag=v1.1.alpha23
+	source = mcl::git+https://github.com/fhcrc/mcl.git#commit=1f1932b64619e9bd9ecbcb421cb1e3f1eb535e80
+	sha256sums = b946a84e98bce27b606551f177392248d22f5ceb1b4c9e35a85e1ce65c992d53
+	sha256sums = 45c49e1794fe1e1a2b884d8825e0e4b51644813c7c996fffa265077a570ea287
 
 pkgname = pplacer
