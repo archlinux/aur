@@ -4,7 +4,7 @@ _pkgname=hoard
 __pkgname=Hoard
 pkgname=${_pkgname}-bin
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Automatic, versioned game save sync across devices."
 arch=('x86_64' 'aarch64')
 url='https://github.com/rleeon/hoard'
@@ -30,6 +30,7 @@ prepare() {
 package() {
   # bin
   install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+  install -Dm755 "${srcdir}/usr/bin/${_pkgname}d" "${pkgdir}/usr/bin/${pkgname%-bin}d"
   install -Dm755 "${srcdir}/usr/bin/${_pkgname}-desktop" "${pkgdir}/usr/bin/${pkgname%-bin}-desktop"
 
   # desktop file

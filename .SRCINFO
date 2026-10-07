@@ -1,7 +1,7 @@
 pkgbase = hoard-bin
 	pkgdesc = Automatic, versioned game save sync across devices.
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rleeon/hoard
 	arch = x86_64
 	arch = aarch64
