@@ -1,7 +1,7 @@
 # Maintainer: MCbabel <https://github.com/MCbabel>
 pkgname=steam-manifest-downloader-bin
 _pkgname=steam-manifest-downloader
-pkgver=1.4.3
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Download Steam game depots and manifests via a modern Tauri GUI (precompiled)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
   "LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  '792b1cc3ed67e0b4a240f88242e1a23e88c0b949dd5a637e033d3f3b8bfaf7cd'
+  '30789457418f8b273b11f203b5b19ac8685423e3cf7daa5b9299ee6150ca6b24'
   'f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505'
 )
 noextract=("${_pkgname}-${pkgver}.AppImage")
