@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your@email.com>
 pkgbase=linux-galaxyaudio-bin
 pkgname=(linux-galaxyaudio-bin linux-galaxyaudio-headers-bin)
-pkgver=7.2.8
+pkgver=7.2.9
 pkgrel=1
 pkgdesc='Linux kernel for Samsung Galaxy Book 4 with MAX98390 sound support (Binary Release)'
 arch=(x86_64)
@@ -16,7 +16,7 @@ source=(
   "${_pkgname}-headers-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://github.com/antpln/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-headers-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst"
   "${_pkgname}.preset"
 )
-sha256sums=('d15af58d16422ba7877ad03388e01f70fccd38fb26dd3e6e733c991c9bb42575' '74485ba6af6a5183ed692e4e84e2717dda2292a34b91790539623bd842eb1e66' 'ed5f628f80039519b190f5ee5d529d167b6521a041ab20701f0c86a76a4ae963')
+sha256sums=('570b9a53e031f3793da0d0d01fee87d73e2b946fae9b3cb584bb2478b00b5330' '027f2770762404672f3470db32139fa0c441bfe73e9586261f89fc9bc4b05e85' 'ed5f628f80039519b190f5ee5d529d167b6521a041ab20701f0c86a76a4ae963')
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" "${_pkgname}-headers-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 
 package_linux-galaxyaudio-bin() {
