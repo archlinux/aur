@@ -1,16 +1,16 @@
 pkgbase = bitrise-bin
 	pkgdesc = The workflow runner that powers Bitrise builds.Run your automations on your Mac or Linux machine.
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://www.bitrise.io/cli
 	arch = x86_64
 	license = MIT
-	provides = bitrise=3.2.0
+	provides = bitrise=3.2.1
 	conflicts = bitrise
 	options = !strip
-	source = bitrise-3.2.0::https://github.com/bitrise-io/bitrise/releases/download/v3.2.0/bitrise-Linux-x86_64
-	source = LICENSE-3.2.0::https://raw.githubusercontent.com/bitrise-io/bitrise/v3.2.0/LICENSE
-	sha256sums = a05ed94ba246828bd8faae3b0ebd5d5740725c9e2aba1ed1adf96c1317a3b4d5
+	source = bitrise-3.2.1::https://github.com/bitrise-io/bitrise/releases/download/v3.2.1/bitrise-Linux-x86_64
+	source = LICENSE-3.2.1::https://raw.githubusercontent.com/bitrise-io/bitrise/v3.2.1/LICENSE
+	sha256sums = 509952cfde023199f569928aedecf8a6550931df2db2ece6517c6c28492ec3c6
 	sha256sums = a0379118157469b6a466bf070c8986ffbca0874d10bb4950e0c6018544914414
 
 pkgname = bitrise-bin
