@@ -15,7 +15,7 @@ depends=('libx11' 'libxpm' 'libpng' 'zlib')
 optdepends=('xorg-fonts-100dpi: help support')
 source=("https://www.delorie.com/store/ace/$_pkgname-$pkgver.tar.gz"
         "ace14_fixes.patch"
-				"badmatch.patch"
+        "badmatch.patch"
         "canfield.desktop" 
         "freecell.desktop" 
         "golf.desktop"
@@ -48,17 +48,17 @@ md5sums=('b80169fa59d69758bb9686f31a84ad2b'
          'd0a6754557f06c0b49fba303705379c5')
  
 build() {
-  	cd "${srcdir}/${_pkgname}-${pkgver}"
-  	patch -p1 -i "${srcdir}"/ace14_fixes.patch
-  	patch -p1 -i "${srcdir}"/badmatch.patch
-  	LDFLAGS="$LDFLAGS -lpng -lz -lm" ./configure --prefix=/usr
-  	make
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    patch -p1 -i "${srcdir}"/ace14_fixes.patch
+    patch -p1 -i "${srcdir}"/badmatch.patch
+    LDFLAGS="$LDFLAGS -lpng -lz -lm" ./configure --prefix=/usr
+    make
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	make DESTDIR="$pkgdir/" install-strip
-	for G in "${srcdir}"/*.desktop; do 
-	    install -Dm644 $G "${pkgdir}"/usr/share/applications/$(basename $G)
-	done
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    make DESTDIR="$pkgdir/" install-strip
+    for G in "${srcdir}"/*.desktop; do 
+        install -Dm644 $G "${pkgdir}"/usr/share/applications/$(basename $G)
+    done
 }
