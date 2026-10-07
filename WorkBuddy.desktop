@@ -14,7 +14,7 @@ Actions=agentmail;discover;my-files;settings;skills
 
 [Desktop Action agentmail]
 Name=Agent Mail
-Name[zh_CN]=Agent 邮箱
+Name[zh_CN]=智能体邮箱
 Exec=/usr/bin/workbuddy workbuddy://agentmail
 Icon=mail-mark-notjunk-symbolic
 
@@ -26,7 +26,7 @@ Icon=object-ungroup
 
 [Desktop Action my-files]
 Name=My Files
-Name[zh_CN]=资料库
+Name[zh_CN]=本地资料
 Exec=/usr/bin/workbuddy workbuddy://my-files
 Icon=document-preview-symbolic
 

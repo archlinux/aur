@@ -2,7 +2,7 @@
 
 pkgname=workbuddy
 pkgver=5.5.6.38337834_5f969292
-pkgrel=1
+pkgrel=2
 pkgdesc="腾讯云代码助手推出的 AI Agent 办公工具"
 arch=('x86_64' 'aarch64')
 url="https://www.workbuddy.cn/app"
@@ -12,7 +12,9 @@ makedepends=('asar'
 )
 checkdepends=()
 optdepends=(
+	'python-pip'
 	'nodejs-lts: frontend skills'
+	'imagemagick'
 	'gnome-shell-extension-appindicator'
 )
 provides=()
@@ -40,12 +42,22 @@ prepare() {
     tar xf data.tar.xz
 }
 
+_debloat_prompt() {
+    sed -i -e '/<content_policy>/,/<\/content_policy>/d' \
+        -e '/<working_modes>/,/<\/working_modes>/d' \
+        -e '/<personal_files_safety>/,/<\/personal_files_safety>/d' \
+        -e '/{% if IsWindows %}/,/{% endif %}/d' \
+        -e '/<final_answer_instructions>/,/<\/final_answer_instructions>/d' \
+        app.asar.unpacked/resources/templates/*prompt.tpl
+}
+
 build() {
     cd opt/WorkBuddy/resources
     rm -rf app.asar.unpacked/node_modules/better-sqlite3
     mv ${srcdir}/package app.asar.unpacked/node_modules/better-sqlite3
     asar e app.asar app.asar.unpacked || true
     find app.asar.unpacked -type f -exec sed -i "s/process.resourcesPath/\'\/opt\/WorkBuddy\'/g" {} +
+    _debloat_prompt
 }
 
 package() {
@@ -54,6 +66,7 @@ package() {
     install -m644 WorkBuddy.desktop ${pkgdir}/usr/share/applications/workbuddy.desktop
     cd opt/WorkBuddy/resources
     cp -a app.asar.unpacked ${pkgdir}/opt/WorkBuddy/
+#    cp -r wb-guest-sdk/ ${pkgdir}/opt/WorkBuddy/
     install -Dm 755 /dev/stdin "${pkgdir}/usr/bin/workbuddy" <<EOF
 #!/usr/bin/bash
 exec electron /opt/WorkBuddy/app.asar.unpacked "\$@"
