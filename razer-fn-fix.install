@@ -1,0 +1,33 @@
+post_install() {
+    # Create the razer-input group if it does not exist
+    if ! getent group razer-input >/dev/null; then
+        groupadd -r razer-input
+    fi
+
+    # Set up config directory with proper permissions
+    mkdir -p /etc/razer-fn
+    if [ ! -f /etc/razer-fn/config.json ]; then
+        echo '{"profiles": []}' > /etc/razer-fn/config.json
+    fi
+    chown -R root:razer-input /etc/razer-fn
+    chmod 775 /etc/razer-fn
+    chmod 664 /etc/razer-fn/config.json
+
+    # Reload udev rules to apply permission changes for Razer devices
+    udevadm control --reload-rules && udevadm trigger
+
+    echo ">>> Success: 'razer-input' group has been configured."
+    echo ">>> Add your current user to this group to allow the UI to capture inputs:"
+    echo ">>>   sudo usermod -aG razer-input \$USER"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    if getent group razer-input >/dev/null; then
+        groupdel razer-input
+    fi
+    udevadm control --reload-rules && udevadm trigger
+}
