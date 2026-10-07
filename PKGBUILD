@@ -14,7 +14,7 @@ makedepends=('bazel' 'git')
 conflicts=('buildifier-bin')
 # rules_go trims source paths from the binary, so the generated debug package
 # contains no sources and only a dangling build-id symlink.
-options=('!debug' '!lto')
+options=('!debug')
 _commit='d12fe38eb8b1680838af70fe9a797feb9c3f71ba'
 source=("${pkgname}::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
@@ -27,6 +27,8 @@ _bazel() {
     '--experimental_writable_outputs'
     # Bazel defines _FORTIFY_SOURCE=1 in opt mode which conflicts with CFLAGS.
     '--copt=-Wp,-U_FORTIFY_SOURCE'
+    # Bazel prefers lld or gold when installed; use the system default linker.
+    '--linkopt=-fuse-ld=bfd'
     # Stamps the version and commit reported by `buildifier --version`.
     '--config=release'
     '--@io_bazel_rules_go//go/config:linkmode=pie'

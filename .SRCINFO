@@ -11,7 +11,6 @@ pkgbase = buildifier
 	depends = glibc
 	conflicts = buildifier-bin
 	options = !debug
-	options = !lto
 	source = buildifier::git+https://github.com/bazelbuild/buildtools.git#commit=d12fe38eb8b1680838af70fe9a797feb9c3f71ba
 	md5sums = SKIP
 
