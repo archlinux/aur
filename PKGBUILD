@@ -1,34 +1,37 @@
 # Maintainer: robertfoster
 
 pkgname=qviaggiatreno-git
-pkgver=14.f46278b
+pkgver=17.e35721b
 pkgrel=1
 pkgdesc="Un'applicazione per controllare gli orari dei treni in tutta Italia tramite il sito viaggiatreno.it."
 arch=('x86_64')
 url="https://github.com/M0Rf30/qviaggiatreno"
 license=('GPL-2.0-or-later')
-depends=('qt5-base' 'qt5-webkit')
+depends=('qt6-base' 'hicolor-icon-theme' 'libgcc' 'libstdc++' 'glibc')
+makedepends=('cmake' 'git')
 provides=("${pkgname%%-*}")
 conflicts=("${pkgname%%-*}-svn" "${pkgname%%-*}")
 replaces=("${pkgname%%-*}-svn")
 source=("qviaggiatreno::git+https://github.com/M0Rf30/qviaggiatreno")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%%-*}
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-  cd ${pkgname%%-*}
-  qmake
-  make
+  cmake -B build -S ${pkgname%%-*} \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -Wno-dev
+  cmake --build build
+}
+
+check() {
+  QT_QPA_PLATFORM=offscreen ctest --test-dir build --output-on-failure
 }
 
 package() {
-  cd ${pkgname%%-*}
-  install -Dm644 qviaggiatreno.desktop $pkgdir/usr/share/applications/qviaggiatreno.desktop
-  install -Dm644 src/img/logo.svg $pkgdir/usr/share/pixmaps/qviaggiatreno.svg
-  install -Dm755 bin/qviaggiatreno $pkgdir/usr/bin/qviaggiatreno
+  DESTDIR="${pkgdir}" cmake --install build
 }
-
-sha256sums=('SKIP')
