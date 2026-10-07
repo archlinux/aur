@@ -9,9 +9,9 @@ provides=('opentunnel')
 conflicts=('opentunnel')
 options=('!debug' '!strip')
 source_aarch64=("opentunnel-0.1.4-aarch64.tar.gz::https://github.com/anomalyco/opentunnel/releases/download/v0.1.4/opentunnel-linux-arm64.tar.gz")
-sha256sums_aarch64=('5268aa61e16ec0ae242f9a75d780a84d8b40c15da54c47867a9c21256964571f')
+sha256sums_aarch64=('db09fc4da333f9b1e97ab2893f20e3243c2bb901e13ec4b129c48299ef0ac6f0')
 source_x86_64=("opentunnel-0.1.4-x86_64.tar.gz::https://github.com/anomalyco/opentunnel/releases/download/v0.1.4/opentunnel-linux-x64.tar.gz")
-sha256sums_x86_64=('4be205f9f962fec0615a1906c3cfc2b318a1285165c025bbf39276ee20b77b39')
+sha256sums_x86_64=('e1c1969c50394a733403d7cb91117998a61be5d6a35ed5aa30582bb432d1b5e0')
 
 package() {
   install -Dm755 opentunnel "$pkgdir/usr/bin/opentunnel"
