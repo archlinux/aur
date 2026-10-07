@@ -1,8 +1,8 @@
 pkgbase = snav
-	pkgdesc = Fast terminal code navigator with fuzzy search, syntax-highlighted preview and editor integration, powered by ripgrep
+	pkgdesc = Fast terminal code navigator with fuzzy search and preview, powered by ripgrep
 	pkgver = 0.7.4
 	pkgrel = 1
-	url = https://github.com/oomathias/snav
+	url = https://github.com/m7b-io/snav
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = snav
 	depends = glibc
 	depends = ripgrep
 	options = !lto
-	source = snav-0.7.4.tar.gz::https://github.com/oomathias/snav/archive/refs/tags/v0.7.4.tar.gz
+	source = snav-0.7.4.tar.gz::https://github.com/m7b-io/snav/archive/refs/tags/v0.7.4.tar.gz
 	sha256sums = 36e4c20e88d2694911d5c2497b11789d048c5d1129b974cd352ed8fdebe97d97
 
 pkgname = snav

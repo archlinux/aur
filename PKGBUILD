@@ -4,9 +4,9 @@
 pkgname=snav
 pkgver=0.7.4
 pkgrel=1
-pkgdesc="Fast terminal code navigator with fuzzy search, syntax-highlighted preview and editor integration, powered by ripgrep"
+pkgdesc="Fast terminal code navigator with fuzzy search and preview, powered by ripgrep"
 arch=('x86_64' 'aarch64')
-url="https://github.com/oomathias/snav"
+url="https://github.com/m7b-io/snav"
 license=('MIT')
 depends=('glibc' 'ripgrep')
 makedepends=('go>=1.26' 'gcc')
