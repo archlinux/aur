@@ -28,14 +28,14 @@ makedepends=(
 	'extra-cmake-modules'
 	'fcitx5'
 )
-source=("${pkgbase}::git+https://github.com/taigikeyboard/taigikeyboard.git")
+source=("git+https://github.com/taigikeyboard/taigikeyboard.git")
 sha256sums=('SKIP')
 # Unbundling libsqlite3-sys while using LTO for C still leads to errors. Disable
 # it instead.
 options=(!lto)
 
 pkgver() {
-	cd "$pkgbase"
+	cd "${pkgbase%-git}"
 	printf "%s" "$(
 		git describe --long --tags --abbrev=7 \
 			--match="desktop-*" |
@@ -48,8 +48,8 @@ build() {
 	# home and $srcdir paths into the executables and shared libraries.
 	# Work around that and fix makepkg's warning about this.
 	RUSTFLAGS="--remap-path-prefix $HOME=~/ $RUSTFLAGS"
-	RUSTFLAGS="--remap-path-prefix ${srcdir}/${pkgbase}=${pkgbase} $RUSTFLAGS"
-	cd "${pkgbase}/linux"
+	RUSTFLAGS="--remap-path-prefix ${srcdir}/${pkgbase%-git}=${pkgbase%-git} $RUSTFLAGS"
+	cd "${pkgbase%-git}/linux"
 	make build
 	make component
 	make build-fcitx5
@@ -64,7 +64,7 @@ package_taigikeyboard-common-git() {
 	optdepends=()
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
-	cd "${pkgbase}/linux"
+	cd "${pkgbase%-git}/linux"
 	install -d "$pkgdir"/usr/share/taigikeyboard/dictionaries
 	install -m644 \
 		../dictionaries/dictionary.fst ../dictionaries/dictionary.bin ../dictionaries/association.bin ../dictionaries/syllables.fst \
@@ -83,7 +83,7 @@ package_ibus-taigikeyboard-git() {
 	depends=('ibus' 'taigikeyboard-common')
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
-	cd "${pkgbase}/linux"
+	cd "${pkgbase%-git}/linux"
 	install -Dm755 target/release/ibus-engine-taigikeyboard "$pkgdir"/usr/lib/ibus/ibus-engine-taigikeyboard
 	install -Dm644 target/taigikeyboard.xml "$pkgdir"/usr/share/ibus/component/taigikeyboard.xml
 }
@@ -95,6 +95,6 @@ package_fcitx5-taigikeyboard-git() {
 	conflicts=("${pkgname%-git}")
 	# I don't think it is necessary to list libtaigikeyboard.so in provided=
 	# since fcitx5-rime doesn't do it either
-	cd "${pkgbase}/linux"
+	cd "${pkgbase%-git}/linux"
 	DESTDIR="$pkgdir" cmake --install target/fcitx5-build
 }
