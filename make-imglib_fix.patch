@@ -1,0 +1,21 @@
+diff --git ace-1.4/lib/make-imglib.c ace-1.4/lib/make-imglib.c
+index 44c05be..7b14de6 100644
+--- ace-1.4/lib/make-imglib.c
++++ ace-1.4/lib/make-imglib.c
+@@ -1,6 +1,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <ctype.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+@@ -202,7 +203,7 @@ tokenize(char *string)
+   char *rv;
+   if (string) {
+     next = string;
+-    return;
++    return 0;
+   }
+   while (*next && !isgraph(*next)) next++;
+   if (!*next) return 0;
