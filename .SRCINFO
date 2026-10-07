@@ -1,6 +1,6 @@
 pkgbase = opentunnel-bin
 	pkgdesc = Public URLs for local services, end-to-end encrypted
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://opentunnel.xyz
 	arch = aarch64
@@ -10,9 +10,9 @@ pkgbase = opentunnel-bin
 	conflicts = opentunnel
 	options = !debug
 	options = !strip
-	source_aarch64 = opentunnel-0.1.0-aarch64.tar.gz::https://github.com/anomalyco/opentunnel/releases/download/v0.1.0/opentunnel-linux-arm64.tar.gz
-	sha256sums_aarch64 = 1a0605740df3bf2e11c934481740e82f73265e0567c535fa78a01f6f0e4bd3fc
-	source_x86_64 = opentunnel-0.1.0-x86_64.tar.gz::https://github.com/anomalyco/opentunnel/releases/download/v0.1.0/opentunnel-linux-x64.tar.gz
-	sha256sums_x86_64 = c250dee99bcf0f7af7a9ee220457f54c17a3099d8024e956d28bb30caf69b474
+	source_aarch64 = opentunnel-0.1.1-aarch64.tar.gz::https://github.com/anomalyco/opentunnel/releases/download/v0.1.1/opentunnel-linux-arm64.tar.gz
+	sha256sums_aarch64 = b82de7f93504122fb9eb5cd9c22327e813fe30e98b20c4dcb822d6c260c7328b
+	source_x86_64 = opentunnel-0.1.1-x86_64.tar.gz::https://github.com/anomalyco/opentunnel/releases/download/v0.1.1/opentunnel-linux-x64.tar.gz
+	sha256sums_x86_64 = e107fc073ef814d9d9957635706052a7bf50c82e58f1a312b6b6cd67e880f4e5
 
 pkgname = opentunnel-bin
