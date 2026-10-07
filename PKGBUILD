@@ -18,8 +18,8 @@ license=('GPL-3.0-or-later')
 depends=(
   'fontconfig' 'ttf-roboto' 'noto-fonts' 'noto-fonts-cjk'
   'libglvnd' 'mesa'
-  'libinput' 'seatd' 'systemd-libs' 'libxkbcommon'
-  'libdisplay-info'
+  'libinput' 'seatd' 'systemd-libs' 'libxkbcommon' 'libxkbcommon-x11'
+  'libdisplay-info' 'wayland'
   'pipewire' 'libpulse'
   'gst-plugins-base' 'gst-plugins-base-libs' 'gst-plugins-good'
   'dbus' 'upower' 'polkit'
