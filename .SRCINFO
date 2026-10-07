@@ -1,6 +1,6 @@
 pkgbase = goenv
 	pkgdesc = Like pyenv and rbenv, but for Go.
-	pkgver = 3.2.1
+	pkgver = 3.2.2
 	pkgrel = 1
 	url = https://github.com/go-nv/goenv
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = goenv
 	checkdepends = git
 	makedepends = go
 	depends = bash
-	source = goenv-3.2.1.tar.gz::https://github.com/go-nv/goenv/archive/3.2.1.tar.gz
-	sha256sums = 29030c8362c6f07ada11244f4e0926a170aa9631a33c4d08f534ddd4f72ca58f
+	source = goenv-3.2.2.tar.gz::https://github.com/go-nv/goenv/archive/3.2.2.tar.gz
+	sha256sums = b5b39ce5b711a64e75a2d7df27a867645338002a2184beb49cb7984755ed6975
 
 pkgname = goenv
