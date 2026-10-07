@@ -1,0 +1,26 @@
+pkgbase = language-bar-bin
+	pkgdesc = Keyboard layout flag tray for niri, Sway, and X11
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/skorotkiewicz/language-bar
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	depends = glibc
+	depends = gcc-libs
+	depends = libxkbcommon
+	depends = xkeyboard-config
+	depends = dbus
+	optdepends = zenity: shortcut configuration dialogs
+	optdepends = waybar: StatusNotifier tray host
+	optdepends = niri: niri Wayland backend
+	optdepends = sway: Sway Wayland backend
+	provides = language-bar=0.2.0
+	conflicts = language-bar
+	options = !strip
+	source_x86_64 = language-bar-0.2.0-x86_64.tar.gz::https://github.com/skorotkiewicz/language-bar/releases/download/v0.2.0/language-bar-v0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 13456c3ddbb7ef1aa4d5cd577aa4c697394947cb3ac6ea4e6ec7856e3a929d70
+	source_aarch64 = language-bar-0.2.0-aarch64.tar.gz::https://github.com/skorotkiewicz/language-bar/releases/download/v0.2.0/language-bar-v0.2.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e7b508406d00aedb46011a047f569c6e28112cfa230e5203deb4589c4ab202f7
+
+pkgname = language-bar-bin
