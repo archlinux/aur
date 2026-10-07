@@ -1,18 +1,20 @@
 pkgbase = photocraft
 	pkgdesc = vibe coded clean-room reimplementation of Adobe Photoshop
 	pkgver = 0.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://getartcraft.com/apps/photocraft
 	arch = x86_64
 	license = MIT
 	license = Apache-2.0
 	makedepends = cargo
 	depends = glibc
+	depends = hicolor-icon-theme
 	depends = libgcc
 	source = https://github.com/storytold/photocraft/archive/refs/tags/v0.2.0/photocraft-0.2.0.tar.gz
 	sha256sums = aa6d2222b0d6d5c1f404031d23c6cd3da38154c764f4a66180995de2090fc7e9
 
 pkgname = photocraft
 	depends = glibc
+	depends = hicolor-icon-theme
 	depends = libgcc
 	depends = libgcc_s.so
