@@ -2,7 +2,7 @@
 # Contributor: Raansu
 # Contributor: Lance G. <Gero3977@gmail.com>
 pkgname=postybirb-plus
-pkgver=3.1.75
+pkgver=3.1.76
 _electronversion=19
 _nodeversion=18
 pkgrel=1
@@ -17,64 +17,58 @@ depends=(
 makedepends=(
     'npm'
     'nvm'
-    'curl'
     'git'
     'gendesk'
     'yarn'
     'jq'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('2b4e06e84f1d360fe9dc783991ed4080ceb20292870b28ce8b84c5f78d077ed7'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums=('ffee8357929cc7c4e1d2e63728ac15e7d294d1229f881e737d58d3792c4374f9'
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_project_dir() {
+	local d
+	while IFS= read -r d; do
+		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
+	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+}
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
 	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	_ev="$(electron${_electronversion} -v)"
-	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
-	export HOME="${srcdir}/.electron-gyp"
-	mkdir -p "${HOME}"
-	export XDG_CACHE_HOME="${srcdir}/.cache"
-	export XDG_CONFIG_HOME="${srcdir}/.config"
-	export XDG_DATA_HOME="${srcdir}/.local/share"
-	export npm_config_cache="${srcdir}/.npm_cache"
-	export npm_config_maxsockets=32
+	export ELECTRON_BUILDER_OFFLINE=true
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+	export HOME="${srcdir}/.home"
+	export XDG_CACHE_HOME="${HOME}/.cache"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_DATA_HOME="${HOME}/.local/share"
+	export npm_config_cache="${HOME}/.npm_cache"
+	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
+	export COREPACK_HOME="${HOME}/.corepack"
 	export npm_config_audit=false
-	export npm_config_fund=false
-	export npm_config_progress=false
-	export NODE_OPTIONS="--max-old-space-size=4096"
-	export npm_config_node_options="--max-old-space-size=4096"
-	mkdir -p "${npm_config_cache}"
-	local _npmver
-	_npmver="$(node -p "const pm=require('./package.json').packageManager; pm && pm.startsWith('npm@') ? pm.split('@')[1] : ''" 2>/dev/null)"
-	if [[ -n "${_npmver}" ]]; then
-		export COREPACK_HOME="${srcdir}/.corepack"
-		install -dm755 "${srcdir}/.bin"
-		corepack enable --install-directory "${srcdir}/.bin"
-		export PATH="${srcdir}/.bin:${PATH}"
-		corepack prepare "npm@${_npmver}" --activate
-	fi
+	export npm_config_registry="${NPM_CONFIG_REGISTRY:-${npm_config_registry:-https://registry.npmjs.org}}"
+	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}"
 }
 _get_electron_version() {
-    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
-        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
-    [[ -z "${_elec_ver}" ]] && return 1
-    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
+		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
+		| grep -v '^$' | sed 's/^[^0-9]*//' | head -1)
+	[[ -z "${_elec_ver}" ]] && return 1
+	echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "$(_get_project_dir)"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -90,28 +84,38 @@ prepare() {
         --exec="${pkgname} %U"
     _ensure_local_nvm
     _set_build_env
-    sed -i 's/"target": "es5"/"target": "es5",\n    "ignoreDeprecations": "6.0"/' ui/tsconfig.json
+    jq '.compilerOptions.ignoreDeprecations = "6.0"' ui/tsconfig.json > ui/tsconfig.json.tmp && mv ui/tsconfig.json.tmp ui/tsconfig.json
     echo 'declare module "*.css";' >> ui/src/react-app-env.d.ts
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" electron-app/package.json
-    sed -i "s/npm install/NODE_ENV=development npm install/g" package.json
+    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
+    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' electron-app/package.json > electron-app/package.json.tmp && mv electron-app/package.json.tmp electron-app/package.json
     export NODE_OPTIONS="--openssl-legacy-provider"
-    NODE_ENV=development    npm install --legacy-peer-deps --prefer-offline
+    export NODE_ENV=development
+    npm install --legacy-peer-deps --prefer-offline --ignore-scripts
+    cd commons && npm install --legacy-peer-deps && npm run build && cd ..
+    cd electron-app && npm install --legacy-peer-deps && cd ..
+    cd ui && npm install --legacy-peer-deps && cd ..
+    cd electron-app && npx electron-builder install-app-deps && cd ..
     node create-signer.js
 }
 build() {
+    cd "$(_get_project_dir)"
     _ensure_local_nvm
     _set_build_env
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    NODE_ENV=production     npm run make
-    cd "${srcdir}/${pkgname}-${pkgver}/electron-app"
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
+    export NODE_OPTIONS="--openssl-legacy-provider"
+    export NODE_ENV=production
+    npm run build
+    cd "$(_get_project_dir)/electron-app"
+    unset NODE_OPTIONS
+    npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/ui/public/assets/icons/minnowicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
+    local _src="$(_get_project_dir)"
+    install -Dm644 "${_src}/ui/public/assets/icons/minnowicon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+    install -Dm644 "${_src}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${_src}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
