@@ -7,8 +7,8 @@
 # disabled so pacman/yay own upgrades.
 
 pkgname=cline-desktop
-pkgver=0.0.32
-pkgrel=4
+pkgver=0.0.43
+pkgrel=1
 pkgdesc="Cline coding agent as a native desktop app (unofficial Linux build)"
 arch=('x86_64' 'aarch64')
 url="https://cline.bot/desktop"
@@ -47,10 +47,8 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/cline/cline/archive/refs/tags/desktop-v$pkgver.tar.gz"
   'cline-desktop.desktop'
 )
-sha256sums=(
-  '19199a217201750acb7d22dca6d6a43ae37616500bfa468d6201c6a2afac89cf'
-  '307529a42da15c37969fe995736e6b40bcfd46818efb2d44fb7f8919dd2771e7'
-)
+sha256sums=('f31a22000bb95e77a06925b98432fb225c8528b0ece3d3d495a41a780453d45a'
+            '307529a42da15c37969fe995736e6b40bcfd46818efb2d44fb7f8919dd2771e7')
 
 _srcdir="cline-desktop-v$pkgver"
 _appdir="apps/examples/desktop-app"
