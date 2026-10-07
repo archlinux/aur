@@ -15,10 +15,17 @@ _srcdir="paper-age-1.5.0"
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/matiaskorhonen/paper-age/tar.gz/refs/tags/$_tag")
 sha256sums=('bc374b5c3fe18505102af903be3ce72c01c8d2f9a992fd7320a25fea163886e7')
 
+prepare() {
+	cd "$_srcdir"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
 	cd "$_srcdir"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo build --release --locked
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release
 }
 
 package() {
