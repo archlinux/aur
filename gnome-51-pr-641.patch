@@ -1,0 +1,167 @@
+From 96ae74733830d0cbc6c46351c5b623a56f371bf4 Mon Sep 17 00:00:00 2001
+From: josephsellers <6892567+josephsellers@users.noreply.github.com>
+Date: Thu, 17 Sep 2026 13:19:25 +0100
+Subject: [PATCH 1/2] fix: stop using Clutter.get_default_backend()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Gone in GNOME 51 (mutter !4981). Use the stage backend instead.
+Same change as rmader in #632.
+
+Co-authored-by: Robert Mader <robert.mader@collabora.com>
+[Used Grok Build 🤖]
+---
+ keyboard.js | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/keyboard.js b/keyboard.js
+index 6ec9baa9..e3546e53 100644
+--- a/keyboard.js
++++ b/keyboard.js
+@@ -6,7 +6,7 @@ export class Keyboard {
+     #contentPurpose;
+ 
+     constructor () {
+-        let seat = Clutter.get_default_backend().get_default_seat();
++        const seat = global.stage.context.get_backend().get_default_seat();
+         this.#device = seat.create_virtual_device(Clutter.InputDeviceType.KEYBOARD_DEVICE);
+ 
+         Main.inputMethod.connectObject('notify::content-purpose', (method) => {
+
+From 39a0f9077daca21a62adaa975eb6a03bda499f27 Mon Sep 17 00:00:00 2001
+From: josephsellers <6892567+josephsellers@users.noreply.github.com>
+Date: Thu, 17 Sep 2026 13:19:25 +0100
+Subject: [PATCH 2/2] fix: GNOME 51 St.BoxLayout orientation
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+GNOME 51 removed St.BoxLayout:vertical (gnome-shell !3614). Add
+boxLayoutOrientation() so 51 constructs with orientation and 46–50
+keep vertical. Declare shell-version 51.
+
+A failed empty-state constructor previously rejected _buildMenu()
+with no catch, so the clipboard listener never started.
+
+[Used Grok Build 🤖]
+---
+ compat.js        | 25 +++++++++++++++++++++++++
+ confirmDialog.js |  7 +++----
+ extension.js     |  7 ++++---
+ metadata.json    |  3 ++-
+ 4 files changed, 34 insertions(+), 8 deletions(-)
+ create mode 100644 compat.js
+
+diff --git a/compat.js b/compat.js
+new file mode 100644
+index 00000000..83522d7d
+--- /dev/null
++++ b/compat.js
+@@ -0,0 +1,25 @@
++import Clutter from 'gi://Clutter';
++import * as Config from 'resource:///org/gnome/shell/misc/config.js';
++
++const SHELL_VERSION = Number.parseInt(Config.PACKAGE_VERSION.split('.')[0], 10);
++
++/**
++ * Constructor props for a vertical or horizontal St.BoxLayout.
++ *
++ * GNOME 51 removed St.BoxLayout:vertical in favour of :orientation
++ * (gnome-shell !3614). Keep `vertical` on 46–50 so those shells still
++ * construct.
++ *
++ * @param {boolean} [vertical=true]
++ * @returns {object}
++ */
++export function boxLayoutOrientation(vertical = true) {
++    if (SHELL_VERSION >= 51) {
++        return {
++            orientation: vertical
++                ? Clutter.Orientation.VERTICAL
++                : Clutter.Orientation.HORIZONTAL,
++        };
++    }
++    return { vertical };
++}
+diff --git a/confirmDialog.js b/confirmDialog.js
+index 745e912e..cc2c2ed2 100644
+--- a/confirmDialog.js
++++ b/confirmDialog.js
+@@ -2,6 +2,7 @@ import St from 'gi://St';
+ import GObject from 'gi://GObject';
+ import Clutter from 'gi://Clutter';
+ import * as ModalDialog from 'resource:///org/gnome/shell/ui/modalDialog.js';
++import { boxLayoutOrientation } from './compat.js';
+ 
+ export class DialogManager {
+     #openDialog;
+@@ -25,13 +26,11 @@ const ConfirmDialog = GObject.registerClass(
+     _init(title, desc, ok_label, cancel_label, callback) {
+       super._init();
+ 
+-      let main_box = new St.BoxLayout({
+-        vertical: false
+-      });
++      let main_box = new St.BoxLayout();
+       this.contentLayout.add_child(main_box);
+ 
+       let message_box = new St.BoxLayout({
+-        vertical: true
++        ...boxLayoutOrientation(true)
+       });
+       main_box.add_child(message_box);
+ 
+diff --git a/extension.js b/extension.js
+index f93f7fd7..e615ad65 100644
+--- a/extension.js
++++ b/extension.js
+@@ -17,6 +17,7 @@ import { Registry, ClipboardEntry } from './registry.js';
+ import { DialogManager } from './confirmDialog.js';
+ import { PrefsFields } from './constants.js';
+ import { Keyboard } from './keyboard.js';
++import { boxLayoutOrientation } from './compat.js';
+ 
+ const CLIPBOARD_TYPE = St.ClipboardType.CLIPBOARD;
+ 
+@@ -169,7 +170,7 @@ const ClipboardIndicator = GObject.registerClass({
+             this._updateTopbarLayout();
+             this._setupListener();
+             this._setupHistoryIntervalClearing();
+-        });
++        }).catch(e => console.error('Clipboard Indicator: _buildMenu failed', e));
+     }
+ 
+     #updateIndicatorContent(entry) {
+@@ -387,7 +388,7 @@ const ClipboardIndicator = GObject.registerClass({
+         // Empty state section
+         this.emptyStateSection = new St.BoxLayout({
+             style_class: 'clipboard-indicator-empty-state',
+-            vertical: true
++            ...boxLayoutOrientation(true)
+         });
+         this.emptyStateSection.add_child(new St.Icon({
+             icon_name: INDICATOR_ICON,
+@@ -1845,7 +1846,7 @@ const ClipboardIndicator = GObject.registerClass({
+             style_class: 'ci-edit-textbox',
+             x_expand: true,
+             y_expand: true,
+-            vertical: true,
++            ...boxLayoutOrientation(true),
+         });
+ 
+         textBox.add_child(clutterText);
+diff --git a/metadata.json b/metadata.json
+index d8dac1f3..a2513c59 100644
+--- a/metadata.json
++++ b/metadata.json
+@@ -4,7 +4,8 @@
+         "47",
+         "48",
+         "49",
+-        "50"
++        "50",
++        "51"
+     ],
+     "uuid": "clipboard-indicator@tudmotu.com",
+     "name": "Clipboard Indicator",

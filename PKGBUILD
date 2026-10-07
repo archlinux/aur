@@ -4,7 +4,7 @@
 pkgname=gnome-shell-extension-clipboard-indicator
 _uuid=clipboard-indicator@tudmotu.com
 pkgver=71
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds a clipboard indicator to the top panel, and caches clipboard history"
 arch=("any")
 url="https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator"
@@ -13,8 +13,12 @@ makedepends=(
   jq
 )
 conflicts=("gnome-shell-extension-clipboard-history")
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('31d6c3694889b0f1c257b113926643e6a37610495f501cbd810eb2c14b9ebd85')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+  gnome-51-pr-641.patch
+)
+sha256sums=('31d6c3694889b0f1c257b113926643e6a37610495f501cbd810eb2c14b9ebd85'
+            '4b790f67fad8458b1d1706f34e3f7edfc68d5f179193da5a16c457f22c6fb433')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -23,6 +27,8 @@ prepare() {
     -e 's/\bREADME\.rst\b//' \
     -e 's/^\(install:\) all$/\1/' \
     Makefile
+
+  patch -p1 -i ../gnome-51-pr-641.patch
 }
 
 package() {
