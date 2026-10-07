@@ -10,8 +10,8 @@ _svcname=vanta-agent
 
 pkgname=vanta-agent
 # https://app.vanta.com/downloads
-pkgver=2.18.0
-pkgrel=2
+pkgver=2.19.0
+pkgrel=1
 pkgdesc="Vanta agent"
 arch=('x86_64')
 url="https://www.vanta.com/"
@@ -23,7 +23,7 @@ source=(
     "${_svcname}.conf"
     "vanta-setup.sh"
 )
-sha256sums=('0e6e584896237ad11ddaa5bd36de8d1b51a71ae93d84c95dd6b9b0ca7dc3f47d'
+sha256sums=('e2e708f2ce4697e9c116dcb2e59ba35a02db128887247782a70af6b9b39ff706'
             '2d650c20f8cabb78d3c629c38d8eed3b15f0e3f9f0b96b68f67fbe5831b41307'
             '9c93408050135a85d874bc30346ba132a230704de5f0367548128207e923e70d')
 
