@@ -1,5 +1,5 @@
 pkgbase = gridcraft-git
-	pkgdesc = vibe coded clean-room reimplementation of Microsoft Excel
+	pkgdesc = vibe coded clean-room reimplementation of Microsoft Excel (Git HEAD)
 	pkgver = 0.0.0.r14.gefbcb01
 	pkgrel = 1
 	url = https://getartcraft.com/apps/gridcraft
