@@ -1,15 +1,20 @@
 -------------------------------------------------------
  Changelog    : wg_tool
- Tags         : 10.4.0 ➙ 10.5.1
+ Tags         : 10.4.0 ➙ 10.5.2
               : 2026-09-02 ➙ 2026-10-07
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-10-07   : 10.5.2
+              - **10.5.2**
+                * Release changes for readthedocs
+              - fix .readthedocs.yaml file path
 
  2026-10-07   : 10.5.1
               - **10.5.1**
                 * Documentation - now on readthedocs : https://wg_tool.readthedocs.io
 
- 2026-09-10   : 10.5.0, origin/master
+ 2026-09-10   : 10.5.0
               - **10.5.0**
             
                 * Add missing checkdepends() to PKGBUILD
