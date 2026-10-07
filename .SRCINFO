@@ -1,6 +1,6 @@
 pkgbase = atari800
 	pkgdesc = An emulator of the Atari 800/800XL/130XE/5200 with various extensions
-	pkgver = 7.1.2
+	pkgver = 7.2.1
 	pkgrel = 1
 	url = https://atari800.github.io/
 	arch = i686
@@ -14,13 +14,13 @@ pkgbase = atari800
 	depends = zlib
 	depends = lame
 	depends = libpng
-	source = https://github.com/atari800/atari800/releases/download/ATARI800_7_1_2/atari800-7.1.2-src.tgz
+	source = https://github.com/atari800/atari800/releases/download/ATARI800_7_2_1/atari800-7.2.1-src.tgz
 	source = atari.sh
 	source = atari800.desktop
-	md5sums = 1d453ace05eaf9b8455ac0097741d66a
+	md5sums = 3cae877b82ebe6fb6174f36254fbdf18
 	md5sums = 6cb048df098263556dd7529d22e83f05
 	md5sums = 82d425a60aa04f7596ffe0d3cf3dfd92
-	sha256sums = 9602badfd7c45551cb5c4cc77f862af377c43a07caaa0bfc77ac87f9179673e3
+	sha256sums = b05b7b0932a19754eef42839aa0f04aa8a5ec1e55f51054ef3f802d83c7362f7
 	sha256sums = cc88a1b8e91d248e575e42410c2c6eb05bdff28f883f2990a4362565df1b8ccf
 	sha256sums = 95e03020358a0855e12ee19b62abebb336e472fcf525f7eb42dcc28419588df9
 
