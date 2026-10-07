@@ -1,0 +1,23 @@
+pkgbase = strata-rocm
+	pkgdesc = Run server-grade frontier models on consumer GPUs powered by Niko1221's dynamic sparse router offloading (AMD ROCm version)
+	pkgver = 0.1.40.1
+	pkgrel = 1
+	url = https://github.com/Niko1221/Strata
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = hipblaslt
+	makedepends = rocminfo
+	makedepends = rocm-llvm
+	depends = hip-runtime-amd
+	depends = hipblas
+	depends = hipblaslt
+	provides = strata
+	conflicts = strata
+	options = !lto
+	source = strata-0.1.40.1.tar.gz::https://github.com/Niko1221/Strata/archive/refs/tags/v0.1.40.1.tar.gz
+	source = llama.cpp-3cf03257f219afbe7334045ff7c6a06ac68c627d.tar.gz::https://github.com/ggml-org/llama.cpp/archive/3cf03257f219afbe7334045ff7c6a06ac68c627d.tar.gz
+	sha256sums = 45e6ec0f41d96c77fd43d10ad07998cd68b7515c39d5f8e4b5da013a209e0602
+	sha256sums = c076d7534afa0e5d0ec2a0d425b11e791c16f3de0d727221aea071cef156a280
+
+pkgname = strata-rocm
