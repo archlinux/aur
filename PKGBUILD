@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="A CLI flashcard app for UNIX-compatible systems, conforming to the UNIX philosophy"
 arch=('x86_64')
 url="https://github.com/dongyx/hardv"
-license=('MIT')
+license=('BSD-2-Clause')
 depends=('glibc')
 makedepends=('gcc' 'make')
 _tag="v5.0.0-alpha.2"
@@ -28,7 +28,5 @@ package() {
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -d "$pkgdir/usr/share/$pkgname"
 	cp -r test "$pkgdir/usr/share/$pkgname/"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
