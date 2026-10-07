@@ -1,6 +1,6 @@
 pkgbase = photon-studio
 	pkgdesc = Offline image editor with Photoshop-equivalent capabilities and native PSD support
-	pkgver = 0.1.42
+	pkgver = 0.1.43
 	pkgrel = 1
 	url = https://tenzen.studio/photon/
 	arch = x86_64
@@ -36,15 +36,15 @@ pkgbase = photon-studio
 	depends = util-linux
 	depends = util-linux-libs
 	depends = xdg-utils
-	provides = photon-studio-bin=0.1.42
+	provides = photon-studio-bin=0.1.43
 	conflicts = photon-studio-bin
 	options = !strip
 	options = !lto
-	source = photon-studio-0.1.42-x86_64.AppImage::https://downloads.tenzen.studio/photon/stable/linux/0.1.42/Photon-Studio-0.1.42-linux-x64.AppImage
+	source = photon-studio-0.1.43-x86_64.AppImage::https://downloads.tenzen.studio/photon/stable/linux/0.1.43/Photon-Studio-0.1.43-linux-x64.AppImage
 	source = photon-studio.desktop
 	source = photon-studio.sh
 	source = photon-studio.png
-	sha256sums = ee000c70569440c7f6c191b1393d8d3315a231ac7e835122532b76bf8f5bd841
+	sha256sums = 3a3b74b10c30831dfbb11ec8dcaececd451d1e6f7c9700064c1a47318e714441
 	sha256sums = 29ec994ac0ffd028dbc0a86e4a1df1d25dc0de8988458cb0f579a1330ffd5f5d
 	sha256sums = 3dbdf2ebbc5979699219a3d332245a19ab0409f21185a886efd92f8bcdc65969
 	sha256sums = d49bb3c106257c1f75995fa793737113dc87418be5bec19388e6a523ffaafc18
