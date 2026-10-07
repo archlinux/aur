@@ -69,9 +69,7 @@ package_taigikeyboard-common-git() {
 	conflicts=("${pkgname%-git}")
 	cd "${pkgbase%-git}/linux"
 	install -d "$pkgdir"/usr/share/taigikeyboard/dictionaries
-	install -m644 \
-		../dictionaries/dictionary.fst ../dictionaries/dictionary.bin ../dictionaries/association.bin ../dictionaries/syllables.fst \
-		"$pkgdir"/usr/share/taigikeyboard/dictionaries/
+	install -m644 ../assets/dictionaries/dictionary.fst ../assets/dictionaries/dictionary.bin ../assets/dictionaries/association.bin ../assets/dictionaries/syllables.fst "$pkgdir/usr/share/taigikeyboard/dictionaries/"
 	for size in 16 22 24 32 48 64 128 256; do
 		install -Dm644 \
 			data/icons/hicolor/"$size"x"$size"/apps/taigikeyboard.png \
