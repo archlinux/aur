@@ -1,7 +1,7 @@
 # Maintainer: Marco <marcomania2012 at gmail dot com>
 
 pkgname=kf6-servicemenus-flacconvert
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc='KDE service menus for flac file converting'
 arch=('any')
@@ -13,7 +13,7 @@ replaces=("kde-servicemenus-flacconvert" "kf5-servicemenus-flacconvert")
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('05f78d02f171773f4b0c97cda1cf051700194835cb85328b0ffcec4e0d48db54')
+sha256sums=('13538ecf6e76c214f761b8bec5bfe53c8f7486e4954458698fade5b7fbfc692d')
 
 package() {
     cd "${srcdir}"
@@ -21,5 +21,4 @@ package() {
     install -m 644 "${pkgname}-${pkgver}"/servicemenus/*.desktop "${pkgdir}/usr/share/kio/servicemenus/"
     install -dm 755 "${pkgdir}/usr/bin/"
     install -m 755 "${pkgname}-${pkgver}"/bin/* "${pkgdir}/usr/bin/"
-    install -Dm 644 "${pkgname}-${pkgver}"/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
