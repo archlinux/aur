@@ -1,7 +1,7 @@
 # Maintainer: sTiKyt <stikyt@proton.me>
 
 pkgname=stack-wallet-bin
-pkgver=2.6.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="Fully open source multicoin cryptocurrency wallet"
 arch=('x86_64')
@@ -12,12 +12,12 @@ makedepends=('patchelf')
 provides=('stack-wallet')
 conflicts=('stack-wallet' 'stack-wallet-appimage')
 source=(
-    "sw-v${pkgver}-linux.AppImage::https://github.com/cypherstack/stack_wallet/releases/download/build_310/sw-v${pkgver}-linux.AppImage"
+    "sw-v${pkgver}-linux.AppImage::https://github.com/cypherstack/stack_wallet/releases/download/build_316/sw-v${pkgver}-linux.AppImage"
     "stack-wallet.desktop"
-    "LICENSE::https://raw.githubusercontent.com/cypherstack/stack_wallet/build_310/LICENSE"
+    "LICENSE::https://raw.githubusercontent.com/cypherstack/stack_wallet/build_316/LICENSE"
 )
 sha256sums=(
-    '6314b24d47e1026ebc5f7a713cc1822129181aabf912d0deccb1788061dedbb8'
+    '81e0f7edce0f41c6d3a090d906893213f959274f81b3d36e448d941fc8391fbf'
     '2a8a718692c208b85822edf7370bd0c0d41645a3da36fc2d75c785b2ba462796'
     '8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b'
 )
