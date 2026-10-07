@@ -3,12 +3,13 @@
 
 pkgname=shunpo
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Minimalist, fast directory bookmarking and navigation for Bash"
 arch=('any')
 url="https://github.com/egurapha/Shunpo"
 license=('MIT')
 depends=('bash')
+install=$pkgname.install
 _tag="v1.0.5"
 _srcdir="Shunpo-1.0.5"
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/egurapha/Shunpo/tar.gz/refs/tags/$_tag")

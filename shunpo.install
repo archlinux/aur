@@ -1,0 +1,6 @@
+post_install() {
+	echo 'Shunpo se instaló en /usr/share/shunpo. Para activarlo, ejecuta:'
+	echo '  bash /usr/share/shunpo/install.sh && source ~/.bashrc'
+	echo 'uninstall.sh (en el mismo directorio) revierte la activación.'
+	echo 'Más información: /usr/share/doc/shunpo/README.md'
+}
