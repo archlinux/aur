@@ -1,0 +1,15 @@
+pkgbase = vonsimulator-git
+	pkgdesc = Von Neumann machine interpreter and simulator (PHP web app)
+	pkgver = r16.23f1d49
+	pkgrel = 1
+	url = https://github.com/aguglie/vonsimulator
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = php
+	provides = vonsimulator
+	conflicts = vonsimulator
+	source = vonsimulator-git::git+https://github.com/aguglie/vonsimulator.git
+	sha256sums = SKIP
+
+pkgname = vonsimulator-git
