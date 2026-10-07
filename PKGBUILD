@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A small bytecode interpreter and scripting language"
 
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,9 +30,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
-sha256sums=('e46b7da5b3e99ff9c65845a34be73d5e958037e39d640c1bbc791cb61051b847'
+sha256sums=('4c7ffdab1cd44b93b74cb9e8e55a4b5e5ba938dc4a4651736bc0f76bef7a4750'
             'cfc3366f4709236ec9dca210979fc0e8c0eeee1c4f45053c6ac0b72fead9c694')
-sha256sums_x86_64=('270b85449ee1ac86916d9323b7ef5f5b82158def037363bd173c98850502f1f8')
+sha256sums_x86_64=('03d66498b32cf35372bb6f075272c6b138a83738719f704c6c475ec262e29e3e')
 
 
 prepare() {
