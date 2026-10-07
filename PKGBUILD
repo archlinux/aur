@@ -15,10 +15,17 @@ _srcdir="portfolio_rs-0.8.0"
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/MarkusZoppelt/portfolio_rs/tar.gz/refs/tags/$_tag")
 sha256sums=('2f4fe8f04be3ccb76922c88af4e0791af07fd9cb9b4dd06fdf0af54a29e427e0')
 
+prepare() {
+	cd "$_srcdir"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
 	cd "$_srcdir"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo build --release --locked
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release
 }
 
 package() {
@@ -27,9 +34,7 @@ package() {
 	install -d "$pkgdir/usr/share/$pkgname/templates"
 	install -Dm644 example_data.json "$pkgdir/usr/share/$pkgname/example_data.json"
 	cp -r templates/. "$pkgdir/usr/share/$pkgname/templates/"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	if [ -f README.md ]; then
 		install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	fi
