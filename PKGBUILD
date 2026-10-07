@@ -10,6 +10,7 @@ url="https://github.com/mietzen/$_name"
 license=('MIT')
 depends=('python' 'python-pynacl')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
+# smoke-test: python -c "import keepassxc_browser_api"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
 sha256sums=('1e429818c0aa0ab2a99203eaa625815974894cc24d6ad259330adcfe71abeda0')
 
