@@ -9,7 +9,6 @@ arch=('any')
 url="https://github.com/junegunn/fzf-git.sh"
 license=('MIT')
 depends=('fzf' 'git')
-makedepends=('git')
 optdepends=('bat: file previews' 'tmux: tmux key bindings')
 provides=('fzf-git.sh')
 conflicts=('fzf-git.sh')
