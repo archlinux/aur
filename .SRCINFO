@@ -1,6 +1,6 @@
 pkgbase = nginx-ui-bin
 	pkgdesc = Yet another WebUI for Nginx.
-	pkgver = 2.8.3
+	pkgver = 2.8.4
 	pkgrel = 1
 	url = https://nginxui.com/
 	arch = aarch64
@@ -9,16 +9,16 @@ pkgbase = nginx-ui-bin
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = nginx
-	provides = nginx-ui=2.8.3
+	provides = nginx-ui=2.8.4
 	conflicts = nginx-ui
 	options = !strip
-	source_aarch64 = nginx-ui-2.8.3-aarch64.tar.gz::https://github.com/0xJacky/nginx-ui/releases/download/v2.8.3/nginx-ui-linux-arm64-v8a.tar.gz
-	sha256sums_aarch64 = a3cb5f0f00a15da00262b03badf7abb22b0d1d375cf0daca3b31df6231314e3f
-	source_armv7h = nginx-ui-2.8.3-armv7h.tar.gz::https://github.com/0xJacky/nginx-ui/releases/download/v2.8.3/nginx-ui-linux-arm32-v7a.tar.gz
-	sha256sums_armv7h = a3943c4dad47f2f8b38701711a58548b26401c8370cba7d44cf8fd42a143b920
-	source_i686 = nginx-ui-2.8.3-i686.tar.gz::https://github.com/0xJacky/nginx-ui/releases/download/v2.8.3/nginx-ui-linux-32.tar.gz
-	sha256sums_i686 = 83cce1f3ed1ea71a0cebbc82ef95980faa52a188323a73b7b8fb90c2011ffa2e
-	source_x86_64 = nginx-ui-2.8.3-x86_64.tar.gz::https://github.com/0xJacky/nginx-ui/releases/download/v2.8.3/nginx-ui-linux-64.tar.gz
-	sha256sums_x86_64 = c23c9121cd544f5acf01d24e26d561d20a8a77cd2af5b841ab10262c818a27cb
+	source_aarch64 = nginx-ui-2.8.4-aarch64.tar.gz::https://github.com/0xJacky/nginx-ui/releases/download/v2.8.4/nginx-ui-linux-arm64-v8a.tar.gz
+	sha256sums_aarch64 = 531c59d4fcac6a1738fee9bb28abf1865c01a961c042ab14c7550fc09e47d665
+	source_armv7h = nginx-ui-2.8.4-armv7h.tar.gz::https://github.com/0xJacky/nginx-ui/releases/download/v2.8.4/nginx-ui-linux-arm32-v7a.tar.gz
+	sha256sums_armv7h = bc8f45dd9a19ba9c5722dc8f4e31aec50898e29df672ec8c68fb82d64aa02908
+	source_i686 = nginx-ui-2.8.4-i686.tar.gz::https://github.com/0xJacky/nginx-ui/releases/download/v2.8.4/nginx-ui-linux-32.tar.gz
+	sha256sums_i686 = fac9235908b119d99d67c4b437fb626d382059188fea18ecbec1c8ac10c8eff9
+	source_x86_64 = nginx-ui-2.8.4-x86_64.tar.gz::https://github.com/0xJacky/nginx-ui/releases/download/v2.8.4/nginx-ui-linux-64.tar.gz
+	sha256sums_x86_64 = 34bc625f9710ba14fe52932f9a477c48c480cda46bb94acd57676d0c7c644d94
 
 pkgname = nginx-ui-bin
