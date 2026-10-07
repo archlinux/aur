@@ -15,10 +15,17 @@ _srcdir="ren-find-0.0.4"
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/robenkleene/ren-find/tar.gz/refs/tags/$_tag")
 sha256sums=('9f1d7e20773985a3dbdd707a409585ea686d95949b0a02bffda2000207e21267')
 
+prepare() {
+	cd "$_srcdir"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
 	cd "$_srcdir"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo build --release --locked
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release
 }
 
 package() {
@@ -27,7 +34,5 @@ package() {
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 RELEASING.md "$pkgdir/usr/share/doc/$pkgname/RELEASING.md"
 	install -Dm644 ren.gif "$pkgdir/usr/share/doc/$pkgname/ren.gif"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
