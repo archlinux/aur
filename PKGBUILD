@@ -1,8 +1,8 @@
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 
 pkgname=pkgx
-pkgver=2.10.3
-pkgrel=2
+pkgver=2.11.0
+pkgrel=1
 pkgdesc='Run Anything'
 arch=('x86_64')
 url='https://pkgx.sh'
@@ -15,7 +15,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/pkgxdev/pkgx/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=('01be6cf9284718348682f568600dd9dd46dd331fca757d030c79ab3f80e9649770703ed33eebed8020807b9ff42ad0433eca5962773e6ef4dd7babede2d5eb1f')
+sha512sums=('adb39650861abffd291e13a5c0873e1eb253e08f61df415dbb61a3b0c4db0c8f1bcdfc56d73abb146fcb522583b07d09f7088b6b9875cca682ae4b5661b21776')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
