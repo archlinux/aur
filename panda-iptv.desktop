@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Panda IPTV
+GenericName=IPTV Media Player
+Comment=Oriental Brutalist IPTV Player for Linux Desktop & Android
+Exec=panda_iptv %U
+Icon=panda_iptv
+Type=Application
+Categories=AudioVideo;Video;Player;TV;
+Terminal=false
+StartupWMClass=panda_iptv
