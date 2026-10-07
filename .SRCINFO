@@ -1,14 +1,17 @@
 pkgbase = dameplus
 	pkgdesc = A checkers game
 	pkgver = 1.0.0beta1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://sourceforge.net/projects/dameplus/
 	arch = any
 	license = GPL
 	makedepends = gendesk
 	makedepends = unzip
-	depends = java-runtime
+	makedepends = java-environment>=11
+	depends = java-runtime>=11
 	source = https://sourceforge.net/projects/dameplus/files/dameplus/dameplus/dameplus-1.0.0beta1_linux.tar.gz/download
+	source = DamePlusLauncher.java
 	md5sums = b0a390bdfaa271e9e8e91ed5bc1ee5df
+	md5sums = 40cc9f34dca8708db750c325cb925203
 
 pkgname = dameplus
