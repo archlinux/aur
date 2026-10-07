@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-background-logo
 	pkgdesc = GNOME Shell extension to overlay a logo over the default background
-	pkgver = 50.1
+	pkgver = 51.alpha
 	pkgrel = 1
 	url = https://forge.fedoraproject.org/workstation/background-logo-extension
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = gnome-shell-extension-background-logo
 	makedepends = git
 	makedepends = meson
 	depends = gnome-shell
-	source = git+https://forge.fedoraproject.org/workstation/background-logo-extension.git#tag=50.1
+	source = git+https://forge.fedoraproject.org/workstation/background-logo-extension.git#tag=51.alpha
 	source = archlinux-gnome.svg
-	sha256sums = 3b76823a229a66e56bf3c455ecb9e0318521bcb8e24f65597f6d4609072a1e05
+	sha256sums = ca65d666b2a0c54076e2c4d951e17503d6c8fe8308b3a132449577ee3f2fb988
 	sha256sums = ae3223dab86d51ed54ac22c0518102bcd965fe0576839a038e559301cf94cc2c
 
 pkgname = gnome-shell-extension-background-logo
