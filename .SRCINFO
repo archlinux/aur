@@ -1,0 +1,17 @@
+pkgbase = arithmetic-arena-bin
+	pkgdesc = Mental arithmetic chains without the countdown: follow the steps, type the result, see how long it took afterwards
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://kairollmann.de/arithmeticarena
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = hicolor-icon-theme
+	provides = arithmetic-arena
+	conflicts = arithmetic-arena
+	options = !strip
+	source = https://kairollmann.de/arithmeticarena/releases/1.0.0/Arithmetic-Arena_1.0.0_amd64.tar.gz
+	sha256sums = 7ebcd8e75c916b8884b4ceaf4ea0ae7b4f9e0dcdd278e7a49eb1793619463663
+
+pkgname = arithmetic-arena-bin
