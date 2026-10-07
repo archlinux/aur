@@ -1,16 +1,16 @@
 pkgbase = folo-bin
 	pkgdesc = Organizes content into one timeline, keeping you updated on what matters, noise-free. Share lists, explore collections, and enjoy distraction-free browsing.
-	pkgver = 1.14.0
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = https://app.folo.is/
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron43
-	provides = folo=1.14.0
+	depends = electron44
+	provides = folo=1.15.0
 	conflicts = folo
-	source = folo-1.14.0-x86_64.deb::https://github.com/RSSNext/Folo/releases/download/desktop%2Fv1.14.0/Folo-1.14.0-linux-x64.deb
+	source = folo-1.15.0-x86_64.deb::https://github.com/RSSNext/Folo/releases/download/desktop%2Fv1.15.0/Folo-1.15.0-linux-x64.deb
 	source = folo.sh
-	sha256sums = f40af385c91f07ca027b7bdc495c3143bed46b355cb2a12d360da7bdc3eedb2b
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = fb45cc123c82b94d2b644a6f4a33adb7e2cde5e2bff0a07a2183ac6030b277a6
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
 pkgname = folo-bin
