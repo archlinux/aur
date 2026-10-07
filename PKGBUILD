@@ -4,7 +4,7 @@ pkgname=opentubex-git
 _pkgname=OpenTubeX
 _ghurl="https://github.com/OpenTubeX/OpenTubeX"
 pkgver=r13031.4842ee9e6
-pkgrel=2
+pkgrel=3
 pkgdesc='A highly customizable, privacy-focused desktop YouTube client'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://opentubex.org"
@@ -46,6 +46,9 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
+  # Keep build temporary files off the quota-limited /tmp filesystem.
+  export TMPDIR="$srcdir/tmp"
+  mkdir -p "$TMPDIR"
   pnpm install --frozen-lockfile
   # Webpack maps GITHUB_SHA -> BUILD_COMMIT for the About commit line.
   GITHUB_SHA="$(git rev-parse HEAD)" pnpm build
