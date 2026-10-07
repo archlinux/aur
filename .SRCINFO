@@ -1,6 +1,6 @@
 pkgbase = broadcast-linux-bin
 	pkgdesc = NVIDIA Broadcast effects as a virtual mic and camera under Wine
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/kengzzzz/broadcast-linux
 	install = broadcast-linux.install
@@ -9,20 +9,33 @@ pkgbase = broadcast-linux-bin
 	license = LGPL-2.1-or-later
 	license = BSD-3-Clause
 	license = IJG
+	license = OFL-1.1
+	license = Ubuntu-font-1.0
+	license = Bitstream-Vera
 	depends = glibc>=2.39
 	depends = libgcc
 	depends = libpipewire
 	depends = pipewire
+	depends = pipewire-pulse
 	depends = wireplumber
 	depends = libpulse
 	depends = wine>=11
 	depends = nvidia-utils
+	depends = libglvnd
+	depends = libxkbcommon
+	depends = wayland
 	optdepends = v4l2loopback-dkms: virtual camera, unless your kernel already provides the module
-	provides = broadcast-linux=0.3.1
+	optdepends = xdg-desktop-portal: picking a background image in the settings window
+	optdepends = libx11: the settings window on X11
+	optdepends = libxcursor: the settings window on X11
+	optdepends = libxi: the settings window on X11
+	optdepends = libxrender: the settings window on X11
+	optdepends = libxkbcommon-x11: the settings window on X11
+	provides = broadcast-linux=0.4.0
 	conflicts = broadcast-linux
 	options = !strip
 	options = !debug
-	source = https://github.com/kengzzzz/broadcast-linux/releases/download/v0.3.1/broadcast-linux-0.3.1-x86_64.tar.gz
-	sha256sums = 5856af0e8e7b8ff531a008ebe71bfa758071f32924e475ab1af0cde65dfd6916
+	source = https://github.com/kengzzzz/broadcast-linux/releases/download/v0.4.0/broadcast-linux-0.4.0-x86_64.tar.gz
+	sha256sums = 8ce6fa04f7cad92bb1e35fdabf01df97d5bff14f187521b548a8219837c51de2
 
 pkgname = broadcast-linux-bin
