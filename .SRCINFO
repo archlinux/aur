@@ -1,5 +1,5 @@
 pkgbase = artcraft-git
-	pkgdesc = IDE for interactive AI image and video creation
+	pkgdesc = IDE for interactive AI image and video creation (Git HEAD)
 	pkgver = 0.41.0.r8.g3e5793b
 	pkgrel = 1
 	url = https://getartcraft.com/apps/artcraft
