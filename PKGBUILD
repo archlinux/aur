@@ -1,7 +1,7 @@
 # Maintainer: Sinergia Comunidad Linuxera sinergia.comunidad.linuxuera@gmail.com
 pkgname=sinergia-appimage-manager
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Un gestor moderno y oscuro de AppImages para Linux con integración en KDE/Wayland"
 arch=('any')
 url="https://github.com/Nacho-Telmo/sinergia-appimage-manager"
