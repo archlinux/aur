@@ -4,47 +4,54 @@
 
 pkgname=buildozer
 pkgver=10.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line tool to rewrite Bazel BUILD files using standard conventions'
 arch=('x86_64' 'aarch64')
 license=('Apache-2.0')
 url='https://github.com/bazelbuild/buildtools'
 depends=('glibc')
-makedepends=('bazelisk' 'git')
+makedepends=('bazel' 'git')
 conflicts=('buildozer-bin')
-# Bazel does not honor makepkg's DEBUG_CFLAGS, so the generated debug package
+# rules_go trims source paths from the binary, so the generated debug package
 # contains no sources and only a dangling build-id symlink.
 options=('!debug')
 _commit='d12fe38eb8b1680838af70fe9a797feb9c3f71ba'
 source=("${pkgname}::git+$url.git#commit=$_commit")
-_bazelisk_pkgver="1.25.0"
-source_x86_64=(
-  "bazelisk-bin-x86_64-${_bazelisk_pkgver}::https://github.com/bazelbuild/bazelisk/releases/download/v${_bazelisk_pkgver}/bazelisk-linux-amd64"
-)
-source_aarch64=(
-  "bazelisk-bin-aarch64-${_bazelisk_pkgver}::https://github.com/bazelbuild/bazelisk/releases/download/v${_bazelisk_pkgver}/bazelisk-linux-arm64"
-)
 md5sums=('SKIP')
-sha256sums_x86_64=('fd8fdff418a1758887520fa42da7e6ae39aefc788cf5e7f7bb8db6934d279fc4')
-sha256sums_aarch64=('4c8d966e40ac2c4efcc7f1a5a5cceef2c0a2f16b957e791fa7a867cce31e8fcb')
-_BAZEL_OPTIONS=(
-  '--config=release'
-  '--@io_bazel_rules_go//go/config:linkmode=pie'
-  '--@io_bazel_rules_go//go/config:gc_linkopts=-extldflags,-Wl,-znow,-extldflags,-Wl,-zrelro'
-  '--linkopt=-Wl,--as-needed'
-)
+
+_bazel() {
+  local flag options=(
+    '--compilation_mode=opt'
+    '--strip=never'
+    # Bazel's outputs are read-only which prevents makepkg from cleaning up.
+    '--experimental_writable_outputs'
+    # Bazel defines _FORTIFY_SOURCE=1 in opt mode which conflicts with CFLAGS.
+    '--copt=-Wp,-U_FORTIFY_SOURCE'
+    # Bazel prefers lld or gold when installed; use the system default linker.
+    '--linkopt=-fuse-ld=bfd'
+    # Stamps the version and commit reported by `buildozer -version`.
+    '--config=release'
+    '--@io_bazel_rules_go//go/config:linkmode=pie'
+    '--@io_bazel_rules_go//go/config:gc_linkopts=-extldflags,-Wl,-zrelro,-extldflags,-Wl,-znow'
+  )
+  for flag in ${CPPFLAGS}; do options+=("--copt=${flag}"); done
+  for flag in ${CFLAGS}; do options+=("--conlyopt=${flag}"); done
+  for flag in ${CXXFLAGS}; do options+=("--cxxopt=${flag}"); done
+  for flag in ${LDFLAGS}; do options+=("--linkopt=${flag}"); done
+  bazel --output_user_root="${srcdir}/bazel" --max_idle_secs=60 "${1}" "${options[@]}" "${@:2}"
+}
 
 prepare() {
   cd "${pkgname}" || exit
 
-  bazelisk fetch "${_BAZEL_OPTIONS[@]}" "//${pkgname}"
+  rm .bazelversion
+  _bazel fetch "//${pkgname}"
 }
 
 build() {
   cd "${pkgname}" || exit
 
-  bazelisk build "${_BAZEL_OPTIONS[@]}" --fetch=false "//${pkgname}"
-  bazelisk shutdown || true
+  _bazel build --fetch=false "//${pkgname}"
 }
 
 package() {
