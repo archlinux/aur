@@ -31,7 +31,5 @@ package() {
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 src/rapidxml/license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.rapidxml"
 	install -Dm644 src/rapidxml/manual.html "$pkgdir/usr/share/doc/$pkgname/rapidxml-manual.html"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
