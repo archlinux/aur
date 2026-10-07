@@ -1,6 +1,6 @@
 pkgbase = wolfssh
 	pkgdesc = A small, fast, portable SSH implementation, including support for SCP and SFTP
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://www.wolfssl.com/
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = wolfssh
 	depends = glibc
 	depends = wolfssl
 	options = staticlibs
-	source = wolfssh-1.5.0-src.tar.gz::https://github.com/wolfSSL/wolfssh/archive/refs/tags/v1.5.0-stable.tar.gz
-	source = wolfssh-1.5.0-src.tar.gz.asc::https://github.com/wolfSSL/wolfssh/releases/download/v1.5.0-stable/wolfssh-1.5.0-stable.tar.gz.asc
+	source = wolfssh-1.6.0-src.tar.gz::https://github.com/wolfSSL/wolfssh/archive/refs/tags/v1.6.0-stable.tar.gz
+	source = wolfssh-1.6.0-src.tar.gz.asc::https://github.com/wolfSSL/wolfssh/releases/download/v1.6.0-stable/wolfssh-1.6.0-stable.tar.gz.asc
 	validpgpkeys = A2A48E7BCB96C5BECB987314EBC80E415CA29677
-	sha256sums = 5d9be7a577c65b725f1f30ebf2197d7caedd2c9c0012aa113e78a3396104838f
+	sha256sums = e345b580643af6715a4293ed7bab4e99ea562bb379adb8898eeae55c38b12f56
 	sha256sums = SKIP
 
 pkgname = wolfssh
