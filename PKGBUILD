@@ -1,7 +1,7 @@
 # Maintainer: Grady Link <aur@grady.link>
 pkgname="scratch-everywhere"
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A custom Scratch runtime written in C++!"
 arch=('any')
 url="https://github.com/ScratchEverywhere/ScratchEverywhere"
