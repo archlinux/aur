@@ -1,6 +1,6 @@
 pkgbase = ps3-ffmpeg-libs
 	pkgdesc = Complete solution to record, convert and stream audio and video
-	pkgver = 7.1.1
+	pkgver = 9.0.2
 	pkgrel = 1
 	url = https://www.ffmpeg.org
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ps3-ffmpeg-libs
 	options = !emptydirs
 	options = !strip
 	options = staticlibs
-	source = https://www.ffmpeg.org/releases/ffmpeg-7.1.1.tar.xz
-	sha256sums = 733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1
+	source = https://www.ffmpeg.org/releases/ffmpeg-9.0.2.tar.xz
+	sha256sums = 8c3850283eb25fa026482078a04051e0be17347b09ef81a0849bec15a96e002e
 
 pkgname = ps3-ffmpeg-libs

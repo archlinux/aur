@@ -3,7 +3,7 @@
 _target_alias="ppu"
 _pkgname="ffmpeg"
 pkgname="ps3-${_pkgname}-libs"
-pkgver="7.1.1"
+pkgver="9.0.2"
 pkgrel=1
 pkgdesc="Complete solution to record, convert and stream audio and video"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
@@ -14,9 +14,7 @@ options=(!emptydirs !strip staticlibs)
 source=(
 	"https://www.ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz"
 )
-sha256sums=(
-	'733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
-)
+sha256sums=('8c3850283eb25fa026482078a04051e0be17347b09ef81a0849bec15a96e002e')
 
 source /opt/ps3dev/ps3toolchain.sh
 
