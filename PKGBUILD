@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=karbonized-bin
-pkgver=2.1.0
+pkgver=2.2.0
 _electronversion=29
 pkgrel=1
 pkgdesc="a visual editor for creating images of code snippets, mockups and social graphics. Arrange blocks — code, text, images, devices, shapes, QR codes and your own HTML components — on a canvas and export the result in seconds."
@@ -17,10 +17,10 @@ source=(
     "${pkgname%-bin}-${pkgver}.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4d00f1196f549e6fc0c96a3f977674948cd4d2452092bde8739203716da91834'
-            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+sha256sums=('4667fee881370dadd5d38258de54614e047a5d5c03aa15399dd2937f2cc8d4e6'
+            'fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -37,7 +37,6 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
-        s/@cfgdirname@/${pkgname%-bin}/g
     " "${srcdir}/${pkgname%-bin}.sh"
     _check_electron_version
     local _app_dir="$(_get_app_dir)"
