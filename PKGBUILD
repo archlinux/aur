@@ -1,7 +1,7 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=momentum-git
-pkgver=0.1.0.r65.gc3bb71d
+pkgver=0.1.0.r72.g4d8c92f
 pkgrel=1
 pkgdesc="CLI for Sennheiser Momentum 4 headphones (git version)"
 arch=('x86_64' 'aarch64')
@@ -9,6 +9,7 @@ url="https://github.com/timmo001/omarchy-momentumctl"
 license=('Apache-2.0')
 makedepends=('git' 'bun')
 depends=('glibc' 'bluez-utils')
+optdepends=('libpulse: show the Bluetooth codec and sample rate')
 provides=('momentum')
 conflicts=('momentum' 'momentum-bin')
 options=('!strip')

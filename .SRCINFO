@@ -1,6 +1,6 @@
 pkgbase = momentum-git
 	pkgdesc = CLI for Sennheiser Momentum 4 headphones (git version)
-	pkgver = 0.1.0.r65.gc3bb71d
+	pkgver = 0.1.0.r72.g4d8c92f
 	pkgrel = 1
 	url = https://github.com/timmo001/omarchy-momentumctl
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = momentum-git
 	makedepends = bun
 	depends = glibc
 	depends = bluez-utils
+	optdepends = libpulse: show the Bluetooth codec and sample rate
 	provides = momentum
 	conflicts = momentum
 	conflicts = momentum-bin
