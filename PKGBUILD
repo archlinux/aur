@@ -15,10 +15,10 @@ arch+=('aarch64') # Idorobots
 #url='https://atari800.sourceforge.net/'
 url='https://atari800.github.io/'
 _giturl='https://github.com/atari800/atari800'
-license=('GPL2')
-depends=('sdl')
-optdepends=('libpng: PNG screenshot support')
-options=('!strip')
+license=('GPL-2.0-only')
+depends=('glibc' 'sdl2-compat' 'readline' 'curl' 'zlib' 'lame' 'libpng')
+#optdepends=('libpng: PNG screenshot support')
+#options=('!strip')
 _srcdir="${pkgname%-git}-${pkgver%.r*}"
 _srcf="${_srcdir^^}"
 _srcf="${_srcf//./_}"
@@ -84,7 +84,7 @@ build() {
     )
     ./configure "${_copts[@]}"
   fi
-  make
+  make # V=1
 }
 
 package() {
