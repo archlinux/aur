@@ -1,7 +1,7 @@
 # Maintainer: Nacho-Telmo <ignacio.ezcurra@yahoo.com.ar>
 pkgname=sinergia-appimage-manager
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Un gestor moderno y oscuro de AppImages para Linux con integración en KDE/Wayland"
 arch=('any')
 url="https://github.com/Nacho-Telmo/sinergia-appimage-manager"
