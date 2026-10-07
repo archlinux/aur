@@ -15,10 +15,17 @@ _srcdir="tascli-0.14.1"
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/Aperocky/tascli/tar.gz/refs/tags/$_tag")
 sha256sums=('e7ce1b10383724bac04ca8927895693945838e8bee5c43cf89c4ab458b65fb1d')
 
+prepare() {
+	cd "$_srcdir"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
 	cd "$_srcdir"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo build --release --locked
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release
 }
 
 package() {
