@@ -1,6 +1,6 @@
 pkgbase = easyeffects-m0rf30-presets
 	pkgdesc = Community Presets for Easyeffects: curated EQ, bass, loudness, immersive dynamics and headphone-virtualization (HeSuVi, EFOtech MLV, SOFA HRTF) presets
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/M0Rf30/easyeffects-presets
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = easyeffects-m0rf30-presets
 	depends = easyeffects>=7.2.0
 	depends = calf
 	depends = lsp-plugins-lv2
-	source = easyeffects-presets-1.1.2.tar.gz::https://github.com/M0Rf30/easyeffects-presets/archive/refs/tags/v1.1.2.tar.gz
-	sha256sums = 936fb0242141703261d79e14e20d9ecf5697ca963068e74f1ac09100dd3388f9
+	source = easyeffects-presets-1.1.3.tar.gz::https://github.com/M0Rf30/easyeffects-presets/archive/refs/tags/v1.1.3.tar.gz
+	sha256sums = e4dcbf65aa80e2490aaadf08cab45ca859992ef66069cb15432a76c3cf9a1e5a
 
 pkgname = easyeffects-m0rf30-presets

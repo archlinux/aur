@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 pkgname=easyeffects-m0rf30-presets
 _origin=easyeffects-presets
-pkgver=1.1.2 # renovate: datasource=github-releases depName=M0Rf30/easyeffects-presets
+pkgver=1.1.3 # renovate: datasource=github-releases depName=M0Rf30/easyeffects-presets
 pkgrel=1
 pkgdesc="Community Presets for Easyeffects: curated EQ, bass, loudness, immersive dynamics and headphone-virtualization (HeSuVi, EFOtech MLV, SOFA HRTF) presets"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/M0Rf30/${_origin}"
 license=('MIT')
 depends=('easyeffects>=7.2.0' 'calf' 'lsp-plugins-lv2')
 source=("${_origin}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('936fb0242141703261d79e14e20d9ecf5697ca963068e74f1ac09100dd3388f9')
+sha256sums=('e4dcbf65aa80e2490aaadf08cab45ca859992ef66069cb15432a76c3cf9a1e5a')
 
 package() {
   cd "${_origin}-${pkgver}"
