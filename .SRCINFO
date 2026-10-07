@@ -1,6 +1,6 @@
 pkgbase = mbv
 	pkgdesc = Terminal client for Emby media server
-	pkgver = 0.23.6
+	pkgver = 0.23.7
 	pkgrel = 1
 	url = https://github.com/slatkin/mbv
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mbv
 	depends = pipewire
 	depends = gtk4
 	depends = gtk4-layer-shell
-	source = mbv-0.23.6-linux-x86_64.tar.gz::https://github.com/slatkin/mbv/releases/download/v0.23.6/mbv-0.23.6-linux-x86_64.tar.gz
-	sha256sums = 1118b9bd361eead25fb7ccc1773d9d117856997d361a46963f8153161fe933e3
+	source = mbv-0.23.7-linux-x86_64.tar.gz::https://github.com/slatkin/mbv/releases/download/v0.23.7/mbv-0.23.7-linux-x86_64.tar.gz
+	sha256sums = a2777a1cb3149a4e73bbb076cb6386971e967d0e11cf7cabb66ca35a6396e945
 
 pkgname = mbv
