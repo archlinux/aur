@@ -4,7 +4,7 @@
 pkgname=trzsz-ssh
 pkgver=0.1.26
 pkgrel=1
-pkgdesc="Drop-in replacement for the openssh client with login prompt, batch login, remembered passwords, automated interaction, trzsz, zmodem (rz/sz) and udp mode like mosh"
+pkgdesc="Drop-in openssh client replacement with login prompt, trzsz, zmodem (rz/sz) and udp mode"
 arch=('x86_64' 'aarch64')
 url="https://github.com/trzsz/trzsz-ssh"
 license=('MIT')
