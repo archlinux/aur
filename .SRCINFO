@@ -1,6 +1,6 @@
 pkgbase = wordcraft-git
 	pkgdesc = vibe coded clean-room reimplementation of Microsoft Word
-	pkgver = 0.0.0
+	pkgver = 0.0.0.r19.gc9824ab
 	pkgrel = 1
 	url = https://getartcraft.com/apps/wordcraft
 	arch = x86_64
@@ -11,10 +11,7 @@ pkgbase = wordcraft-git
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	depends = libxkbcommon
-	depends = vulkan-icd-loader
-	depends = wayland
-	provides = wordcraft=0.0.0
+	provides = wordcraft=0.0.0.r19.gc9824ab
 	conflicts = wordcraft
 	source = git+https://github.com/storytold/wordcraft.git
 	sha256sums = SKIP
@@ -23,7 +20,4 @@ pkgname = wordcraft-git
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	depends = libxkbcommon
-	depends = vulkan-icd-loader
-	depends = wayland
 	depends = libgcc_s.so
