@@ -4,7 +4,7 @@
 pkgname=octomind
 pkgver=0.36.0
 pkgrel=2
-pkgdesc="Session-based AI development assistant with conversational codebase interaction and multi-provider AI integration"
+pkgdesc="Session-based AI development assistant with multi-provider support"
 arch=('x86_64')
 url="https://github.com/muvon/octomind"
 license=('Apache-2.0')
@@ -15,10 +15,17 @@ _srcdir="octomind-0.36.0"
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/muvon/octomind/tar.gz/refs/tags/$_tag")
 sha256sums=('cb4ddc470d2534c271db2a4165214353070070f371fefce7e84dd3b6be0aeab2')
 
+prepare() {
+	cd "$_srcdir"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
 	cd "$_srcdir"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo build --release --locked
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release
 }
 
 package() {
@@ -33,9 +40,7 @@ package() {
 	install -Dm644 <("$pkgdir/usr/bin/octomind" complete bash) "$pkgdir/usr/share/bash-completion/completions/octomind"
 	install -Dm644 <("$pkgdir/usr/bin/octomind" complete zsh) "$pkgdir/usr/share/zsh/site-functions/_octomind"
 	install -Dm644 <("$pkgdir/usr/bin/octomind" complete fish) "$pkgdir/usr/share/fish/vendor_completions.d/octomind.fish"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	if [ -f README.md ]; then
 		install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	fi

@@ -1,5 +1,5 @@
 pkgbase = octomind
-	pkgdesc = Session-based AI development assistant with conversational codebase interaction and multi-provider AI integration
+	pkgdesc = Session-based AI development assistant with multi-provider support
 	pkgver = 0.36.0
 	pkgrel = 2
 	url = https://github.com/muvon/octomind
