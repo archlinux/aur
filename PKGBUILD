@@ -1,7 +1,7 @@
 # Maintainer: pandasato <sato.du@gmail.com>
 pkgname=panda-iptv-bin
 _pkgname=panda-iptv
-pkgver=0.0.9
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Oriental Brutalist IPTV Player for Linux Desktop (MPV Accelerated)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip')
 source=("https://github.com/satodu/panda-iptv/releases/download/v${pkgver}/panda-iptv-${pkgver}-linux-x64.tar.gz"
         "panda-iptv.desktop"
         "LICENSE")
-sha256sums=('a228dd8431c75d7c89568a424b4757698c86b3c681600c21eb444a19c3fc303d'
+sha256sums=('085ebd1ccebbfcce62725bcb7be82f1115433de83ad89482c4e08e4e1724ffe7'
             '267391f6971858e7235a5a30950e5d01f7abe0f1473cebd24545a149ab0788ad'
             'b3276f476122afd3ca641617539d6c95a3e4cb5cc8f943829343f075cbcf8470')
 
