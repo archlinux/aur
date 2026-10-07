@@ -6,17 +6,15 @@
 
 pkgname=forskscope
 # Keep pkgver in sync with [workspace.package] version in Cargo.toml on each release.
-pkgver=0.185.0
+pkgver=0.186.0
 pkgrel=1
 pkgdesc="Local-first cross-platform diff and merge tool"
 arch=('x86_64')
 url="https://github.com/forskscope/forskscope"
 license=('Apache-2.0')
-# F81: xdotool provides libxdo, which the binary links (see F44) - without it
-# the package builds and installs cleanly and then fails to start. Temporary:
-# the upstream dioxus fix (DioxusLabs/dioxus#5749) drops the libxdo linkage
-# entirely, and this dependency should be removed once that release is taken.
-depends=('webkit2gtk-4.1' 'gtk3' 'xdotool')
+# F81 is closed: F179 removed the libxdo linkage (see vendor/README.md), so
+# xdotool is no longer a runtime dependency here.
+depends=('webkit2gtk-4.1' 'gtk3')
 makedepends=('cargo' 'pkg-config' 'openssl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/forskscope/forskscope/archive/refs/tags/$pkgver.tar.gz")
 # SKIP here is permanent, not a gap to close before the next release
@@ -30,7 +28,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/forskscope/forskscope/archi
 # here. This file is a template; do not copy it and run `makepkg -si`
 # expecting a verified download (see docs/src/users/installation.md's
 # Arch section for the supported path).
-sha256sums=('13fa5dc954b9f7752f3763e40aab3e804de667c1c67732e716c6e6999c35d101')
+sha256sums=('35bedec28e092b84885bfdd7015d2f276ce904860087e40861b3579a3780205f')
 
 build() {
     cd "$pkgname-$pkgver"
