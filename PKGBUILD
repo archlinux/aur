@@ -4,7 +4,7 @@
 # Contributor: Krut Patel <kroot.patel@gmail.com>
 
 pkgname=sioyek-git
-pkgver=2.0.0.r1160.gf4609bfb
+pkgver=2.0.0.r1162.ga539d494
 pkgrel=1
 pkgdesc="PDF viewer for research papers and technical books."
 arch=(x86_64)
@@ -42,7 +42,7 @@ package() {
   cd "sioyek"
   make INSTALL_ROOT="${pkgdir}/" install
   install -D tutorial.pdf -t "${pkgdir}/usr/share/sioyek"
-  install -Dm644 -t "${pkgdir}/etc/sioyek" pdf_viewer/keys.config pdf_viewer/prefs.config
+  install -Dm644 -t "${pkgdir}/usr/share/sioyek" pdf_viewer/keys.config pdf_viewer/prefs.config
   install -Dm644 -t "${pkgdir}/usr/share/man/man1" resources/sioyek.1
   install -d "${pkgdir}/usr/share/sioyek/shaders"
   cp -r pdf_viewer/shaders/* "${pkgdir}/usr/share/sioyek/shaders"
