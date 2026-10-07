@@ -1,7 +1,7 @@
 # Maintainer: Arthur McLain <mclain.it@gmail.com>
 # Contributor: Nikhil Singh <nik.singh710@gmail.com>
 pkgname=getnf
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Command-line tool for installing Nerd Fonts'
 url='https://github.com/getnf/getnf'
@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 makedepends=('git')
 depends=('curl')
 optdepends=('fzf: for "getnf -f" functionality')
-sha256sums=('80ca53081804c19af7b80ed4b5da958cfae07d1d0ae96998a9341300d2e998e4')
+sha256sums=('35f2e859e2e6e0a8ed30bb2b691e23cd9270f6fb64c330b72269eaca76658d9b')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
