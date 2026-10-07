@@ -2,7 +2,7 @@ pkgbase = img2ascii-git
 	pkgdesc = Convert images to ASCII art
 	pkgver = r69.4a233e1
 	pkgrel = 2
-	url = https://github.com/JosefVesely/Image-to-ASCII
+	url = https://github.com/JosefVesely/img2ascii
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = img2ascii-git
 	makedepends = make
 	provides = img2ascii
 	conflicts = img2ascii
-	source = img2ascii::git+https://github.com/JosefVesely/Image-to-ASCII.git
+	source = img2ascii::git+https://github.com/JosefVesely/img2ascii.git
 	sha256sums = SKIP
 
 pkgname = img2ascii-git

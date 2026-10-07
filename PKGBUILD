@@ -6,13 +6,13 @@ pkgver=r69.4a233e1
 pkgrel=2
 pkgdesc="Convert images to ASCII art"
 arch=('x86_64')
-url="https://github.com/JosefVesely/Image-to-ASCII"
+url="https://github.com/JosefVesely/img2ascii"
 license=('MIT')
 depends=()
 makedepends=('git' 'gcc' 'make')
 provides=('img2ascii')
 conflicts=('img2ascii')
-source=("img2ascii::git+https://github.com/JosefVesely/Image-to-ASCII.git")
+source=("img2ascii::git+https://github.com/JosefVesely/img2ascii.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -32,7 +32,5 @@ package() {
 	install -d "$pkgdir/usr/share/$pkgname/examples" "$pkgdir/usr/share/$pkgname/images"
 	install -Dm644 examples/*.png "$pkgdir/usr/share/$pkgname/examples/"
 	install -Dm644 images/* "$pkgdir/usr/share/$pkgname/images/"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
