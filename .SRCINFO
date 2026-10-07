@@ -1,6 +1,6 @@
 pkgbase = clangd-bin
-	pkgdesc = Clangd Language Server
-	pkgver = 22.1.6
+	pkgdesc = Clangd Language Server; AUR package that provides the power of Clangd without the entire LLVM toolkit
+	pkgver = 23.1.0
 	pkgrel = 1
 	url = https://github.com/clangd/clangd
 	arch = x86_64
@@ -8,13 +8,14 @@ pkgbase = clangd-bin
 	depends = glibc
 	optdepends = gcc: Compiler without conflicts with clangd
 	provides = clangd
-	conflicts = clangd
 	conflicts = clang
 	conflicts = clang18
+	conflicts = clang19
 	conflicts = clang20
 	conflicts = clang21
+	conflicts = clang22
 	options = !debug
-	source = https://github.com/clangd/clangd/releases/download/22.1.6/clangd-linux-22.1.6.zip
-	sha512sums = 7eb5463b29203735213d02e75e79a4802030f766c7ce087409f4a1c42f4995f564574303c1814266213fbd078832da44763172f8ba96b2cdfabf102a2dc89b03
+	source = https://github.com/clangd/clangd/releases/download/23.1.0/clangd-linux-23.1.0.zip
+	sha512sums = 98b7ec7cabae024a939da5c510e26b9abfb235dd0006eca1e2c71acfe4d67c727f86910e916ef7543db2ca48c753a160a756d095bc415594f7fdf7cea249e562
 
 pkgname = clangd-bin
