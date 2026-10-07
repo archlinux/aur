@@ -1,6 +1,6 @@
 pkgname=sioyek-dev
 pkgver=2.0.0.r1107.gfa4cd23
-pkgrel=1
+pkgrel=2
 pkgdesc="PDF viewer for research papers (development branch, bundled MuPDF)"
 arch=('x86_64')
 license=('GPL3')
@@ -55,8 +55,8 @@ END
     install -Dm644 resources/sioyek.desktop -t "$pkgdir/usr/share/applications/"
     install -dm755 "$pkgdir/usr/share/sioyek/shaders"
     cp -r pdf_viewer/shaders/* "$pkgdir/usr/share/sioyek/shaders/"
-    install -Dm644 pdf_viewer/keys.config -t "$pkgdir/etc/sioyek/"
-    install -Dm644 pdf_viewer/prefs.config -t "$pkgdir/etc/sioyek/"
+    install -Dm644 pdf_viewer/keys.config -t "$pkgdir/usr/share/sioyek/"
+    install -Dm644 pdf_viewer/prefs.config -t "$pkgdir/usr/share/sioyek/"
     install -Dm644 resources/sioyek.1 -t "$pkgdir/usr/share/man/man1/"
     install -Dm644 tutorial.pdf -t "$pkgdir/usr/share/sioyek/"
 }
