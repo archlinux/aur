@@ -35,7 +35,5 @@ contextos. Si vienes de una versión antigua, ejecuta migrate.sh desde
 /usr/share/fastdiract-git/. Consulta README.md para personalización.
 EOF
 
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
