@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gamlss
-_pkgver=5.5-0
+_pkgver=5.5-5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-distributions3
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('92197f3a70f38b6980a779c380bab8d8')
-b2sums=('0abf7278baf1ef3b18e5d7f84752d9a07c74a5356bee8eccdd37c4346fc2d38e1f17f6e68dff8d474ad2646702fc84283391ab542fafe46c87739b642d1ab315')
+md5sums=('db463a28d6ca2de1e21ac968ad62917c')
+b2sums=('c24bd934b58a05aef8c6d44dfc73d6871423b2e4ec85a489cbb1cd655d594bbffd9e29a015e22a9873473c6c450814b34a3511bbe4eb6bcaf33020b61c4cdf87')
 
 build() {
   mkdir build
