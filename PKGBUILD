@@ -1,7 +1,7 @@
 # Maintainer: Jon Tsiros <jon@brightblock.ai>
 
 pkgname=hyprlayer-server-bin
-pkgver=0.8.8
+pkgver=0.8.9
 pkgrel=1
 pkgdesc="Hyprlayer runtime as a headless server, reached over a local socket or SSH"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!strip' '!debug')
 _bin="hyprlayer-server-x86_64-unknown-linux-gnu"
 source=("${_bin}-${pkgver}::https://github.com/BrightBlock/hyprlayer-releases/releases/download/server-v${pkgver}/${_bin}"
         "hyprlayer-server.service")
-sha256sums=('f2a55b074e2d07ac190ea58c94ebdd90a80ec08b3b8b7cbd44cc173502b32254'
+sha256sums=('f183addc1faf6b7fd47342e39c0fc169310cfed7bead260ab94b97b5bf8f6e11'
             'e578119d5152948b1ba56576c36825d63bce9ad1266e1c8ac661365cd597adae')
 
 package() {
