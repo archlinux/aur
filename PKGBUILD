@@ -8,6 +8,7 @@ arch=(x86_64)
 url=https://www.veeam.com/backup-replication-vcp-download.html?tab=extensions
 license=('LicenseRef-Veeam-EULA')
 depends=()
+options=(!strip)
 source=("https://download2.veeam.com/VBR/v13/VeeamExtract_$pkgver.tar.gz"
     "EULA")
 sha256sums=('4d7d75af3b34f230d94cee9f30b62a38912704921b82a873d10142c46c8627c8'
