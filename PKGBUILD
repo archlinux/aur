@@ -8,6 +8,7 @@ url="https://github.com/udbhav-44/zoekt-py"
 license=('MIT')
 depends=('python' 'python-requests' 'python-click' 'python-pydantic' 'python-rich' 'python-aiohttp')
 makedepends=('git' 'python-setuptools' 'python-pip')
+# smoke-test: zoekt-py --help
 provides=('zoekt-py')
 conflicts=('zoekt-py')
 options=('!debug')
