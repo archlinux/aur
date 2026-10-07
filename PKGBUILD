@@ -1,6 +1,6 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=blender-mcp-git
-pkgver=r243.34b7bd2
+pkgver=r244.7a0373e
 pkgrel=1
 pkgdesc="Connect Blender to Claude AI via Model Context Protocol for prompt-assisted 3D modeling"
 arch=('any')
@@ -26,6 +26,10 @@ package() {
 
     if [ -f "$pkgdir/usr/bin/blender-mcp" ]; then
         sed -i '1s@^#!.*@#!/usr/bin/python@' "$pkgdir/usr/bin/blender-mcp" || true
+    fi
+
+    if [ -f "$pkgdir/usr/bin/mcp-for-blender" ]; then
+        sed -i '1s@^#!.*@#!/usr/bin/python@' "$pkgdir/usr/bin/mcp-for-blender" || true
     fi
 
     find "$pkgdir" -name 'direct_url.json' -delete
