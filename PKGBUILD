@@ -7,7 +7,7 @@
 # of that is reproduced here.
 
 pkgname=claude-desktop
-pkgver=2.9939.4
+pkgver=2.26454.0
 pkgrel=1
 pkgdesc="Official Claude AI desktop app from Anthropic — Chat, Cowork, and Claude Code"
 arch=('x86_64' 'aarch64')
@@ -27,6 +27,7 @@ license=('LicenseRef-Proprietary')
 # to namcap's ELF-header analysis. They are needed.
 depends=('alsa-lib'
          'at-spi2-core'
+         'bubblewrap'
          'cairo'
          'dbus'
          'expat'
@@ -39,6 +40,7 @@ depends=('alsa-lib'
          'libcups'
          'libdrm'
          'libnotify'
+         'libpipewire'
          'libseccomp'
          'libsecret'
          'libx11'
@@ -92,8 +94,8 @@ source=("${pkgname}.sh")
 source_x86_64=("${_baseurl}/${pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("${_baseurl}/${pkgname}_${pkgver}_arm64.deb")
 sha256sums=('2b50c019e70b263750255c446bab8db6ab1e50c7396d37ef6547cf118131da65')
-sha256sums_x86_64=('3cfddb23bf2911e05e27b4ed3856b8e795df94643b2c35b59deb317cf995bca0')
-sha256sums_aarch64=('108ed79ea164b08c4fa0bb4387deef4779957b3f0f9b2d9898e359f363ebf1bc')
+sha256sums_x86_64=('6d3e4973dcb11511ddd962040b3073b435d1592b3174a82ef52e50377a75a63f')
+sha256sums_aarch64=('01bdff873d3ce37b4dcc56cd2dfbc4711b9c8f9abce479e75a52f946a083d981')
 
 package() {
   # A .deb is an ar archive, which makepkg unpacks like any other source:
