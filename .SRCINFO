@@ -1,6 +1,6 @@
 pkgbase = orbt-bin
 	pkgdesc = Universal terminal workspace — sessions, panes, and AI agents
-	pkgver = 0.1.11
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/linuszz/orbt
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = orbt-bin
 	provides = orbt
 	conflicts = orbt
 
-source_x86_64 = orbt-linux-x86_64-0.1.11.tar.gz::https://github.com/linuszz/orbt/releases/download/v0.1.11/orbt-linux-x86_64.tar.gz
-sha256sums_x86_64 = 1a8a5149daa21518d51886f0add601afbeccdb1c31896628a5cb113ad533c795
+source_x86_64 = orbt-linux-x86_64-0.2.0.tar.gz::https://github.com/linuszz/orbt/releases/download/v0.2.0/orbt-linux-x86_64.tar.gz
+sha256sums_x86_64 = 15446b36143e5a4b44ab2a999e516ee020d422a8e8db6c9164fb645985bb1cec
 
 pkgname = orbt-bin
