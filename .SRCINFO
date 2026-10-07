@@ -1,19 +1,19 @@
 pkgbase = scratch-everywhere-bin
 	pkgdesc = A custom Scratch runtime written in C++!
-	pkgver = 1.2
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/ScratchEverywhere/ScratchEverywhere
 	arch = any
 	license = LGPL-3.0-only
 	depends = libpulse
-	provides = scratch-everywhere=1.2)
+	provides = scratch-everywhere=1.2.1)
 	conflicts = scratch-everywhere
 	conflicts = scratch-everywhere-git
 	options = !debug
-	source = https://github.com/ScratchEverywhere/ScratchEverywhere/releases/download/1.2/scratch-linux
-	source = https://raw.githubusercontent.com/ScratchEverywhere/ScratchEverywhere/refs/tags/1.2/gfx/linux/scratch-everywhere.desktop
-	source = https://raw.githubusercontent.com/ScratchEverywhere/ScratchEverywhere/refs/tags/1.2/gfx/linux/scratch-everywhere.svg
-	sha256sums = 8b5667adf66924ca46d8664dd9d442e9431e3c9da8d9edb491ad140ad264b736
+	source = https://github.com/ScratchEverywhere/ScratchEverywhere/releases/download/1.2.1/scratch-linux
+	source = https://raw.githubusercontent.com/ScratchEverywhere/ScratchEverywhere/refs/tags/1.2.1/gfx/linux/scratch-everywhere.desktop
+	source = https://raw.githubusercontent.com/ScratchEverywhere/ScratchEverywhere/refs/tags/1.2.1/gfx/linux/scratch-everywhere.svg
+	sha256sums = 9a3fc7719d4b74af66143080d07cd9f5c035466937fe158d201c2cb62c46fe59
 	sha256sums = d2021afc4e2c5fc2445cfa3ee4a0c4f4ed2068f633b231d99b41e7fe1cb5a771
 	sha256sums = b2067372a4d91529d7e9760c421e597b2aef1e051e53a5886d1afa4f071f4fd8
 
