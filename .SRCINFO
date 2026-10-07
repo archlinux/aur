@@ -1,6 +1,6 @@
 pkgbase = mdsilo-bin
 	pkgdesc = Lightweight Knowledge Base and Feed Reader.
-	pkgver = 0.5.10
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://mdsilo.com/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = mdsilo-bin
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = libsoup
-	provides = mdsilo=0.5.10
+	provides = mdsilo=0.6.0
 	conflicts = mdsilo
-	source = mdsilo-0.5.10.deb::https://github.com/mdSilo/mdSilo-app/releases/download/mdsilo-v0.5.10/mdsilo-0.5.10-1.x86_64.rpm
-	sha256sums = 7e98bc0a12628b1ef20e42c78b7d2db22e0de73ebdbe7561a152d0295ea6e06f
+	source = mdsilo-0.6.0.deb::https://github.com/mdSilo/mdSilo-app/releases/download/mdsilo-v0.6.0/mdsilo-0.6.0-1.x86_64.rpm
+	sha256sums = 33a1294e59f7d822d9c14547db598fe8ec6b5d671ed33da70c428470ed67bf61
 
 pkgname = mdsilo-bin
