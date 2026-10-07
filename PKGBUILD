@@ -31,7 +31,5 @@ package() {
 	install -d "$pkgdir/usr/share/doc/$_pkgname/docs"
 	install -Dm644 docs/*.md "$pkgdir/usr/share/doc/$_pkgname/docs/"
 	install -Dm644 img/shallow-backup-demo.gif "$pkgdir/usr/share/doc/$_pkgname/shallow-backup-demo.gif"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
