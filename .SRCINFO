@@ -1,0 +1,26 @@
+pkgbase = soundcraft-git
+	pkgdesc = vibe coded clean-room reimplementation of Avid Pro Tools
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://getartcraft.com/apps/soundcraft
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = alsa-lib
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	provides = soundcraft=0.0.0
+	conflicts = soundcraft
+	source = git+https://github.com/storytold/soundcraft.git
+	sha256sums = SKIP
+
+pkgname = soundcraft-git
+	depends = alsa-lib
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libasound.so
+	depends = libgcc_s.so
