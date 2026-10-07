@@ -1,6 +1,6 @@
 pkgbase = netron-git
 	pkgdesc = Visualizer for neural network, deep learning and machine learning models.
-	pkgver = 9.3.0.r4.gcb26882
+	pkgver = 9.3.1.r11.g3b1afda
 	pkgrel = 1
 	url = https://netron.app/
 	arch = any
@@ -17,11 +17,11 @@ pkgbase = netron-git
 	depends = electron44
 	optdepends = python-onnx: serializing ONNX models
 	optdepends = python-pytorch: serializing PyTorch models
-	provides = netron=9.3.0
+	provides = netron=9.3.1
 	conflicts = netron
 	source = netron.git::git+https://github.com/lutzroeder/netron.git
 	source = netron.sh
 	sha256sums = SKIP
-	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
+	sha256sums = fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8
 
 pkgname = netron-git
