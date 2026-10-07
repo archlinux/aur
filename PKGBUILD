@@ -1,7 +1,7 @@
 # Maintainer: pacmanics <pacman@altbox.de>
 
 pkgname=pentest-ghostwriter
-pkgver=7.2.7
+pkgver=7.3.1
 pkgrel=1
 pkgdesc='Local-first Arch Linux port of Ghostwriter for single-user offensive security workflows'
 arch=('x86_64')
@@ -48,9 +48,10 @@ source=(
   '0068_merge_pacmanics_local_document_and_upstream_0067.py'
   '0071_merge_pacmanics_local_document_and_upstream_0070.py'
   '0072_merge_pacmanics_local_document_and_upstream_0071.py'
+  '0073_merge_pacmanics_local_document_and_upstream_0072.py'
   'README.native-port.md'
 )
-sha256sums=('79f04675171bc6c614d75ce749a8a3fd253bd0d3c250164cb30277adf446cee1'
+sha256sums=('6e51af18c8b1bbaec86b293cd873306f807821ec1bb58cc30a2651a163ae4818'
             '0dc916398fc88639481ec7156435b00864d2eb0d66154fe9a7a6fa63b8c452b0'
             '41e334ee463f79bab5bcff7a8aeb3239165b218f83077d6c1c962a8264f6abb6'
             'fae92ab2a78fabd39afe125f2ce348fa477a2b9900e66bd245bdf6850b38251e'
@@ -75,6 +76,7 @@ sha256sums=('79f04675171bc6c614d75ce749a8a3fd253bd0d3c250164cb30277adf446cee1'
             '796e89d970858a30946ede593f3fe35e5594fc59461f80932fae1ba3e99ae77e'
             '083a9a14687352f229b0cc10e2aca7d32d423f4eec95c27aa14abdad7f4f95cf'
             'e44dba9f1aa1fb63bb2c902d5412e2a80f4fb1e9523547ae80912dacfc13f7e7'
+            'd8fef112411eac6163854566750947c03d1f65439b134e98f5a2a57e0f32644c'
             '8c7c12e253b5ce6e4d829e2151f8b210c5599632ce2380542edf62b029646eaa')
 
 prepare() {
@@ -223,23 +225,6 @@ class LocalTrustAccountBlockMiddleware(MiddlewareMixin):
 """
 middleware.write_text(mw, encoding='utf-8')
 
-user_detail = Path('ghostwriter/templates/users/user_detail.html')
-ud = user_detail.read_text(encoding='utf-8')
-ud = ud.replace(
-    """  <div class="col-sm-12">
-    <a class="btn btn-primary" href="{% url 'users:update' %}" role="button">My Info</a>
-    <a class="btn btn-primary" href="{% url 'account_email' %}" role="button">E-Mail</a>
-    <!-- Your Stuff: Custom user template urls -->
-  </div>
-""",
-    """  <div class="col-sm-12">
-    <a class="btn btn-primary" href="{% url 'users:update' %}" role="button">My Info</a>
-    <a class="btn btn-primary" href="{% url 'users:userprofile_update' request.user.username %}" role="button">Avatar</a>
-    <!-- Your Stuff: Custom user template urls -->
-  </div>
-""",
-)
-user_detail.write_text(ud, encoding='utf-8')
 PY
 }
 
@@ -277,6 +262,7 @@ package() {
   install -Dm644 "${srcdir}/0068_merge_pacmanics_local_document_and_upstream_0067.py" "${pkgdir}/opt/${pkgname}/app/ghostwriter/reporting/migrations/0068_merge_pacmanics_local_document_and_upstream_0067.py"
   install -Dm644 "${srcdir}/0071_merge_pacmanics_local_document_and_upstream_0070.py" "${pkgdir}/opt/${pkgname}/app/ghostwriter/reporting/migrations/0071_merge_pacmanics_local_document_and_upstream_0070.py"
   install -Dm644 "${srcdir}/0072_merge_pacmanics_local_document_and_upstream_0071.py" "${pkgdir}/opt/${pkgname}/app/ghostwriter/reporting/migrations/0072_merge_pacmanics_local_document_and_upstream_0071.py"
+  install -Dm644 "${srcdir}/0073_merge_pacmanics_local_document_and_upstream_0072.py" "${pkgdir}/opt/${pkgname}/app/ghostwriter/reporting/migrations/0073_merge_pacmanics_local_document_and_upstream_0072.py"
   install -Dm644 "${srcdir}/README.native-port.md" "${pkgdir}/usr/share/doc/${pkgname}/README.native-port.md"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
