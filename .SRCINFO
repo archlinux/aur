@@ -1,6 +1,6 @@
 pkgbase = fastp
 	pkgdesc = a tool designed to provide fast all-in-one preprocessing for FastQ files, developed in C++ with multithreading supported to afford high performance
-	pkgver = 1.3.7
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/OpenGene/fastp
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = fastp
 	depends = isa-l
 	depends = gcc-libs
 	depends = highway
-	source = https://github.com/OpenGene/fastp/archive/refs/tags/v1.3.7.tar.gz
-	sha512sums = 2979a96738d003444e888c1a8fb1f2fd3d85e92cf18aeff39fbd4ac1fbe54e5379b1b83e4ad389226021344866d3cc329c4b8936742d590755736481244fc201
+	source = https://github.com/OpenGene/fastp/archive/refs/tags/v1.4.0.tar.gz
+	sha512sums = 618a6ba2be193c0a0f039a31007beddd16ffa57807b9c2b3fa0978ec9cf1d974202321cae10e532fee90701b5a2c51b3457cecd45e0716eaffede3bd200e90b4
 
 pkgname = fastp
