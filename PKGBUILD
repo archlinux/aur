@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folia-major
 _pkgname=Folia
-pkgver=0.7.11
+pkgver=0.7.13
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -28,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('3cb130b3614df5e69b4666e013988ef5f8eaf56d669ee9f7b949d69bd11a7613'
+sha256sums=('05a8f0a67966bc96046ba6024c901e1288c091a75ab1857d0909e64c9eef90d8'
             'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 _get_project_dir() {
 	local d
@@ -67,7 +67,7 @@ _set_build_env() {
 	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}" "${CARGO_HOME}"
 }
 _get_app_dir() {
-	find "$(_get_project_dir)" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _get_electron_version() {
 	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
@@ -87,7 +87,7 @@ prepare() {
     " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     _set_build_env
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     find electron -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     cp .env.example .env
     rustup update stable
@@ -95,7 +95,7 @@ prepare() {
     export NODE_ENV=development
     export npm_config_allow_remote=all
     rm -rf package-lock.json
-    npm install --legacy-peer-deps
+    npm install
 }
 build() {
 	cd "$(_get_project_dir)"
