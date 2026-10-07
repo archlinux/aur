@@ -32,8 +32,14 @@ makedepends=(
 	'extra-cmake-modules'
 	'fcitx5'
 )
-source=("git+https://github.com/taigikeyboard/taigikeyboard.git")
-sha256sums=('SKIP')
+source=(
+	"git+https://github.com/taigikeyboard/taigikeyboard.git"
+	"0001-build-linux-allow-skipping-font-install-or-splitting.patch"
+)
+sha512sums=(
+	'SKIP'
+	'65ab5e12843cd96f624fdf300f0130bb0b8e509114afe3311168d4e83954c6be26a0366cb422c7bd56c6c50aa18178e13cab85a737463b7574d79968a811e8d8'
+)
 # Unbundling libsqlite3-sys while using LTO for C still leads to errors. Disable
 # it instead.
 options=(!lto)
@@ -45,6 +51,11 @@ pkgver() {
 			--match="desktop-*" |
 			sed 's/^desktop-//; s/\([^-]*-\)g/r\1/; s/-/./g'
 	)"
+}
+
+prepare() {
+	cd "${pkgbase%-git}"
+	patch -p1 -i ../0001-build-linux-allow-skipping-font-install-or-splitting.patch
 }
 
 build() {
@@ -68,24 +79,7 @@ package_taigikeyboard-common-git() {
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 	cd "${pkgbase%-git}/linux"
-	install -d "$pkgdir"/usr/share/taigikeyboard/dictionaries
-	install -m644 ../assets/dictionaries/dictionary.fst ../assets/dictionaries/dictionary.bin ../assets/dictionaries/association.bin ../assets/dictionaries/syllables.fst "$pkgdir/usr/share/taigikeyboard/dictionaries/"
-	for size in 16 22 24 32 48 64 128 256; do
-		install -Dm644 \
-			data/icons/hicolor/"$size"x"$size"/apps/taigikeyboard.png \
-			"$pkgdir"/usr/share/icons/hicolor/"$size"x"$size"/apps/taigikeyboard.png
-	done
-	for icon in data/icons/hicolor/*/apps/taigikeyboard-*.png; do
-		install -Dm644 "$icon" "$pkgdir/usr/share/${icon#data/}"
-	done
-	install -Dm755 target/release/taigikeyboard-settings "$pkgdir"/usr/bin/taigikeyboard-settings
-	install -Dm644 data/tw.taigikeyboard.Settings.desktop "$pkgdir"/usr/share/applications/tw.taigikeyboard.Settings.desktop
-	LICENSE_TEXTS=(../NOTICE ../THIRD_PARTY_LICENSES.md ../dictionary/LICENSE)
-	for f in "${LICENSE_TEXTS[@]}"; do
-		name="${f#../}"
-		name="${name#assets/}"
-		install -Dm644 "$f" "$pkgdir/usr/share/licenses/taigikeyboard/${name//\//-}"
-	done
+	make DESTDIR="$pkgdir" INSTALL_FONTS=0 install-common
 }
 
 package_ibus-taigikeyboard-git() {
@@ -94,8 +88,7 @@ package_ibus-taigikeyboard-git() {
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 	cd "${pkgbase%-git}/linux"
-	install -Dm755 target/release/ibus-engine-taigikeyboard "$pkgdir"/usr/lib/ibus/ibus-engine-taigikeyboard
-	install -Dm644 target/taigikeyboard.xml "$pkgdir"/usr/share/ibus/component/taigikeyboard.xml
+	make DESTDIR="$pkgdir" install-ibus
 }
 
 package_fcitx5-taigikeyboard-git() {
@@ -106,5 +99,5 @@ package_fcitx5-taigikeyboard-git() {
 	# I don't think it is necessary to list libtaigikeyboard.so in provided=
 	# since fcitx5-rime doesn't do it either
 	cd "${pkgbase%-git}/linux"
-	DESTDIR="$pkgdir" cmake --install target/fcitx5-build
+	make DESTDIR="$pkgdir" install-fcitx5
 }
