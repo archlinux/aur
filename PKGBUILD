@@ -4,7 +4,7 @@
 pkgname=marian-lite
 pkgver=0.2.9.2
 _pkgver=0.2.9-2
-pkgrel=1
+pkgrel=2
 pkgdesc="Marian NMT lite"
 arch=('x86_64')
 url="https://github.com/terslang/marian-lite"
@@ -37,4 +37,5 @@ build() {
 package() {
     cd "$srcdir/marian-lite-$_pkgver/build"
     make DESTDIR="$pkgdir/" install
+    install -Dm644 ../LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }

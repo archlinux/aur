@@ -1,7 +1,7 @@
 pkgbase = marian-lite
 	pkgdesc = Marian NMT lite
 	pkgver = 0.2.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/terslang/marian-lite
 	arch = x86_64
 	license = MIT
