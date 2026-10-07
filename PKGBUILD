@@ -1,7 +1,7 @@
 # maintainer: verse <versedev.store@proton.me>
 pkgname=clak-bin
 _pkgname=clak
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Fast and highly stable Vietnamese input method for Fcitx5 and Wayland (precompiled binary)"
 arch=('x86_64')
