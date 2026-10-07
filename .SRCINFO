@@ -1,5 +1,5 @@
 pkgbase = deckcraft-git
-	pkgdesc = vibe coded clean-room reimplementation of Microsoft PowerPoint
+	pkgdesc = vibe coded clean-room reimplementation of Microsoft PowerPoint (Git HEAD)
 	pkgver = 0.0.0.r19.g942a2c8
 	pkgrel = 1
 	url = https://getartcraft.com/apps/deckcraft
