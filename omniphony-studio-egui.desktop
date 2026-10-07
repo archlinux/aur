@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Omniphony Studio (egui)
+Comment=Control and 3D visualization UI for the orender spatial audio engine
+Exec=omniphony-studio-egui
+Icon=omniphony-studio-egui
+Terminal=false
+Categories=AudioVideo;Audio;
