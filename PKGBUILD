@@ -1,13 +1,13 @@
 # Maintainer: Piero <biagini93@ik.me>
 pkgname=nirilayout-git
-pkgver=r41.5f2fd68
+pkgver=0.4.0.r0.gf6e8148
 pkgrel=1
 pkgdesc="Quickly switch niri output configuration between different layouts (GTK switcher)"
 arch=('x86_64')
 url="https://github.com/Piero-93/nirilayout"
 license=('MIT')
-depends=('gtk4' 'gtk4-layer-shell')
-makedepends=('go' 'git' 'gettext')
+depends=('gtk4' 'gtk4-layer-shell' 'glib2' 'cairo' 'pango' 'gdk-pixbuf2' 'graphene' 'glibc')
+makedepends=('go' 'git' 'gettext' 'gobject-introspection')
 provides=('nirilayout')
 conflicts=('nirilayout')
 source=("git+https://github.com/Piero-93/nirilayout.git")
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/nirilayout"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
