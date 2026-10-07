@@ -2,7 +2,7 @@
 # Maintainer: Nebula <nebula@palera.in>
 
 pkgname=palera1n
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc="Jailbreak for A8 through A11, T2 devices, on iOS/iPadOS/tvOS 15.0, bridgeOS 5.0 and higher."
 arch=('x86_64')
@@ -10,8 +10,8 @@ url="https://palera.in"
 licence=('MIT')
 source=("https://github.com/palera1n/palera1n/releases/download/v"${pkgver}"/palera1n-linux-x86_64"
         "https://cdn.nickchan.lol/palera1n/c-rewrite/releases/v"${pkgver}"/docs/palera1n.1")
-sha256sums=('037c2b398bc13bab277ae9abb841ae3c5c5bc89e22332bbcbcd8d04b68214292'
-            '621d23a444579ce3491b9273d2d0401b3ec0801d3e3f78eb6c465c376493d219')
+sha256sums=('ea531df933c0c8edab25ecb8f43faedd010177484482bb3744eaa4cf1cd48658'
+            '4d7ecee9f0f2235b8a26fa3e95569fae2943cdbb0222978ce861d4b5850b9624')
 options=('!strip')
 package() {
     echo "  -> Moving files in place..."
