@@ -9,7 +9,7 @@ pkgver=4.3.2
 pkgrel=4
 pkgdesc="Legacy version of gmp. Provides libgmp.so.3 (32 bit)"
 arch=('x86_64')
-url="http://gmplib.org/"
+url="https://gmplib.org/"
 depends=('lib32-gcc-libs' 'sh' 'lib32-gmp')
 makedepends=('gcc-multilib')
 license=('LGPL-3.0-or-later')
@@ -18,10 +18,8 @@ source=(
   "https://gmplib.org/download/gmp/archive/gmp-${pkgver}.tar.bz2"
   'fix_get-d_and_t-scan.patch'
 )
-sha256sums=(
-  '936162c0312886c21581002b79932829aa048cfaf9937c6265aeaa14f1cd1775'
-  '88e95869f46106147726a6583222be57be15b0e2b05ef642403251ededeb9830'
-)
+sha256sums=('936162c0312886c21581002b79932829aa048cfaf9937c6265aeaa14f1cd1775'
+            '88e95869f46106147726a6583222be57be15b0e2b05ef642403251ededeb9830')
 
 prepare() {
   cd gmp-${pkgver}
