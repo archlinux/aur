@@ -21,6 +21,7 @@ arch=('x86_64' 'aarch64')
 
 depends=(
   'gtk3'
+  'libpulse'  # dlopened by flutter_webrtc's bundled libwebrtc
   'libsecret' # flutter_secure_storage
   'noto-fonts-emoji'
   'openssl'   # sqlite encryption
@@ -75,9 +76,23 @@ build() {
   export CARGO_PROFILE_RELEASE_LTO=false
   export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=$_units
 
+  # cargokit builds dart-sys through rust's cc crate, which picks gcc and
+  # inherits CFLAGS. gcc has no -Wunused-but-set-global and rejects the
+  # -Wno-error= below outright, so pin both compilers to the clang the rest
+  # of the flutter build already uses.
+  export CC=clang
+  export CXX=clang++
+
   export CFLAGS CXXFLAGS
   CFLAGS+=" -Wno-error=deprecated-literal-operator"
   CXXFLAGS+=" -Wno-error=deprecated-literal-operator"
+
+  # flutter builds the app and every plugin with -Wall -Werror, so clang 23's
+  # new -Wunused-but-set-global breaks flutter_webrtc over the parent_class
+  # variable glib's G_DEFINE_TYPE declares. Only the -Wno-error=<name> form
+  # survives the -Werror that cmake appends after these flags.
+  CFLAGS+=" -Wno-error=unused-but-set-global"
+  CXXFLAGS+=" -Wno-error=unused-but-set-global"
 
   # fix missing include
   export CXXFLAGS+=" -include cstdint"

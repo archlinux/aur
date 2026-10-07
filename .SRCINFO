@@ -16,6 +16,7 @@ pkgbase = fluffychat-color-emoji
 	makedepends = patchelf
 	makedepends = rust
 	depends = gtk3
+	depends = libpulse
 	depends = libsecret
 	depends = noto-fonts-emoji
 	depends = openssl
