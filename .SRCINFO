@@ -1,0 +1,39 @@
+pkgbase = hylki
+	pkgdesc = A clean, fast GNOME-native email client
+	pkgver = 1.42.0
+	pkgrel = 1
+	url = https://hylki.hyprlab.co
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	makedepends = gettext
+	makedepends = glib2-devel
+	makedepends = pkgconf
+	depends = cairo
+	depends = dbus
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = graphene
+	depends = gtk4
+	depends = libadwaita
+	depends = openssl
+	depends = pango
+	depends = poppler-glib
+	depends = wayland
+	depends = webkitgtk-6.0
+	optdepends = gnome-keyring: Secret Service provider to store passwords and OAuth tokens
+	optdepends = nautilus-python: GNOME Files right-click attachment integration
+	provides = vireo=1.42.0
+	provides = veem=1.42.0
+	conflicts = vireo
+	conflicts = veem
+	replaces = vireo
+	replaces = veem
+	options = !lto
+	source = hylki-1.42.0.tar.gz::https://github.com/hyprlab/hylki/archive/refs/tags/v1.42.0.tar.gz
+	sha256sums = 5c653af17319354bc07f0a6d800d59a693143f485cad29d51bb4d05e41ad15bc
+
+pkgname = hylki
