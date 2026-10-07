@@ -1,6 +1,6 @@
 pkgbase = diffs-bin
 	pkgdesc = Fast, beautiful diffs in a single local binary
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/imfing/diffs-cli
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = diffs-bin
 	provides = diffs
 	conflicts = diffs
 	options = !strip
-	source_x86_64 = diffs-x86_64-0.6.0.tgz::https://github.com/imfing/diffs-cli/releases/download/v0.6.0/diffs-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = b498ebdfd1f3106e066e18b28b2f4daead01800450bb7143b4dba8569e1f488f
-	source_aarch64 = diffs-aarch64-0.6.0.tgz::https://github.com/imfing/diffs-cli/releases/download/v0.6.0/diffs-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = a2df799f087bf814b03c4c6f27e7e0654bbe4fe8bcf92a89b8f4f6c7e5a47e8c
+	source_x86_64 = diffs-x86_64-0.7.0.tgz::https://github.com/imfing/diffs-cli/releases/download/v0.7.0/diffs-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 115beb0aa42114290a061b95424126602a4608c5d11eda297a0b4311e1b6a7db
+	source_aarch64 = diffs-aarch64-0.7.0.tgz::https://github.com/imfing/diffs-cli/releases/download/v0.7.0/diffs-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a5a84c0f8d4fe5577e9eb6306b6cfd0456e01dd007bd65f6653b3124dd9393da
 
 pkgname = diffs-bin
