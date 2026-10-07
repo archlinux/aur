@@ -1,7 +1,7 @@
 pkgbase = navita
 	pkgdesc = Fast directory navigation for Bash/Zsh with fuzzy search over history
-	pkgver = 2.3.11
-	pkgrel = 2
+	pkgver = 2.3.12
+	pkgrel = 1
 	url = https://github.com/CodesOfRishi/navita
 	arch = any
 	license = Apache-2.0
@@ -14,7 +14,7 @@ pkgbase = navita
 	depends = coreutils
 	optdepends = zsh: para usarlo también en zsh
 	optdepends = less: para ver el historial en un paginador
-	source = navita-2.3.11.tar.gz::https://codeload.github.com/CodesOfRishi/navita/tar.gz/refs/tags/v2.3.11
-	sha256sums = 43e40800127a40ce73e0d3fdc0cb68cfd51ccff681df5d4d5645f892ae24856f
+	source = navita-2.3.12.tar.gz::https://codeload.github.com/CodesOfRishi/navita/tar.gz/refs/tags/v2.3.12
+	sha256sums = 2a69747035b6584500a7b9d9a75ca6ecb9b5a3aabdcf3860628d5313aa8c0401
 
 pkgname = navita

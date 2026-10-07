@@ -2,18 +2,18 @@
 # Maintainer: Energetix/Dark Nebula <https://github.com/Jobanny-Friki>
 
 pkgname=navita
-pkgver=2.3.11
-pkgrel=2
+pkgver=2.3.12
+pkgrel=1
 pkgdesc="Fast directory navigation for Bash/Zsh with fuzzy search over history"
 arch=('any')
 url="https://github.com/CodesOfRishi/navita"
 license=('Apache-2.0')
 depends=('bash' 'fzf' 'grep' 'bc' 'findutils' 'util-linux' 'coreutils')
 optdepends=('zsh: para usarlo también en zsh' 'less: para ver el historial en un paginador')
-_tag="v2.3.11"
-_srcdir="navita-2.3.11"
+_tag="v2.3.12"
+_srcdir="navita-2.3.12"
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/CodesOfRishi/navita/tar.gz/refs/tags/$_tag")
-sha256sums=('43e40800127a40ce73e0d3fdc0cb68cfd51ccff681df5d4d5645f892ae24856f')
+sha256sums=('2a69747035b6584500a7b9d9a75ca6ecb9b5a3aabdcf3860628d5313aa8c0401')
 
 package() {
 	cd "$_srcdir"
@@ -33,7 +33,5 @@ EOF
 	install -Dm755 test/test_NavigateHistory "$pkgdir/usr/share/$pkgname/test/test_NavigateHistory"
 	install -Dm755 test/test_RemoveInvalidPaths "$pkgdir/usr/share/$pkgname/test/test_RemoveInvalidPaths"
 	install -Dm755 test/test_ToggleLastVisits "$pkgdir/usr/share/$pkgname/test/test_ToggleLastVisits"
-	if [ -f LICENSE ]; then
-		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
