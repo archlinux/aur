@@ -2,7 +2,7 @@
 _appname=tabby
 pkgname="${_appname}-electron-bin"
 _pkgname=Tabby
-pkgver=1.0.237
+pkgver=1.0.238
 _electronversion=43
 pkgrel=1
 pkgdesc="Tabby (formerly Terminus) is a highly configurable terminal emulator, SSH and serial client."
@@ -26,6 +26,7 @@ makedepends=(
 )
 options=(
     '!emptydirs'
+    '!strip'
 )
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Eugeny/tabby/v${pkgver}/LICENSE"
@@ -36,11 +37,11 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/downloa
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-x64.rpm")
 sha256sums=('ac295694b9f56e90dce3cf58313ed891d0bd9178adec02d8503a0c07d9d34c68'
             'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
-sha256sums_aarch64=('d4b41fddc7f529ffc03f09e15a8dceab8f97019ca0834dc11e1c92a06e8b6207')
-sha256sums_armv7h=('24a1840ca4ccd5c5a63d5ae661d9fac1c32c89f66067da42b4a57648301bd730')
-sha256sums_x86_64=('162a523b85e04c2118570edecc977c34a20c681ad8a34f63496081ddcae76e8d')
+sha256sums_aarch64=('421f2377dc96c49ed1359704ee1feac065526adacb5408ab5cadd24ba04af466')
+sha256sums_armv7h=('4036cd1257570b932973e291146fa0d209853a1d435294765e63cdad3d4131db')
+sha256sums_x86_64=('d5027a5f905edf40aaf1fd42ef5015abfaffbd96f5825b3622ef352dfc3136b3')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -64,7 +65,7 @@ prepare() {
         s/\/opt\/${_pkgname}\/${_appname} --no-sandbox/${pkgname%-bin}/g
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_appname}.desktop"
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     case "${CARCH}" in
         aarch64)    _arch_rem="x64"     ;;
         armv7h)    _arch_rem="64"   ;;
@@ -72,7 +73,7 @@ prepare() {
     esac
     asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
-    find "${srcdir}" \
+    find "${srcdir}" -depth \
         \( -name "*android*" -o -name "*darwin*" -o -name "*win32*" -o -name "*${_arch_rem}*" \) \
         -exec rm -rf {} +
     asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
@@ -80,7 +81,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(_get_app_dir)
+	local _app_dir="$(_get_app_dir)"
 	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
