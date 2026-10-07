@@ -1,8 +1,8 @@
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 
 pkgname=python-cyclonedx-lib
 _gitpkgname=cyclonedx-python-lib
-pkgver=11.7.0
+pkgver=11.12.0
 pkgrel=1
 pkgdesc='Render and read CycloneDX, a lightweight BOM specification document format'
 arch=('any')
@@ -10,12 +10,15 @@ url='https://github.com/CycloneDX/cyclonedx-python-lib'
 license=('Apache-2.0')
 depends=(
   'python'
+  'python-idna'  # for the `idn-email` format used in CycloneDX schemas
   'python-jsonschema'
   'python-license-expression'
   'python-lxml'
   'python-packageurl'
   'python-py-serializable'
   'python-referencing'
+  'python-rfc3339-validator'  # for the `date-time` format
+  'python-rfc3986-validator'  # for the `uri` format
   'python-sortedcontainers'
   'python-typing_extensions'
 )
@@ -36,18 +39,11 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/CycloneDX/cyclonedx-python-lib/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-sha512sums=('d751ad25411668d3adbc53584939397eab718811605614cce9f67a777df86234dc29e8b7af5086bb451db55f306f8bd875b036fadd4f22b3102a2a9976c3b6f8')
+sha512sums=('21c12da49bd8a8e9ddca91a589527a6038749214cbdf94668ac5eab69ab4693de35fad957c7aec1dbfaca83aed7f4399d41e4d76d6804c24640b4fdf7b83cf93')
 
 prepare() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
   rm -rf dist  # https://github.com/pypa/build/issues/455
-
-  # Consistently failing during `check` in a clean chroot, but passing
-  # outside chroot. Also passing in upstream CI. Needs more analysis.
-  find tests '-(' \
-    -name 'invalid-metadata-timestamp-*.json' \
-    -o -regex '.*/valid-\(attestation\|signatures\|standard\)-.*\.json' \
-    '-)' -exec rm -v '{}' ';'
 }
 
 build() {
