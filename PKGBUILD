@@ -1,7 +1,16 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=paseo-cli-git
-pkgver=0.11.0.beta.5.r27.g13d21f60f
+pkgver=0.11.0.beta.5.r56.g8ddeb79c8
 pkgrel=2
+# Publish targets: aur + Arch release + Debian release (opt-in per format).
+_publish_targets="aur github-arch github-deb"
+# Debian runtime deps for the fpm conversion, translated from depends:
+#   glibc->libc6, gcc-libs->libgcc-s1 + libstdc++6 (bundled native node
+#   addons link libgcc_s/libstdc++), nodejs->nodejs, bash->bash. Upstream
+#   wants Node >=22; no Debian stable / Ubuntu LTS repo carries that, so
+#   the version pin stays Arch-only rather than make the .deb uninstallable
+#   on deb-smoke.
+_deb_depends=('libc6' 'libgcc-s1' 'libstdc++6' 'nodejs' 'bash')
 pkgdesc='Command-line interface for controlling Paseo AI coding agents (git - built from main)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/getpaseo/paseo/tree/main/packages/cli'
