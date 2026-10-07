@@ -1,0 +1,4 @@
+post_install() {
+  echo "Run 'dbwiz' to start. Add it to your app launcher (and the Omarchy menu) with:"
+  echo "  dbwiz desktop install"
+}
