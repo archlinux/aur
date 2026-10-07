@@ -2,10 +2,10 @@
 pkgname=actual-bin
 _pkgname=Actual
 _debname="com.${pkgname%-bin}budget.${pkgname%-bin}"
-pkgver=26.9.0
+pkgver=26.10.0
 _electronversion=43
 pkgrel=1
-pkgdesc="A local-first personal finance tool. It is 100% free and open-source, written in NodeJS, it has a synchronization element so that all your changes can move between devices without any heavy lifting.(Prebuilt version.Use system-wide electron)"
+pkgdesc="A local-first personal finance tool. It is 100% free and open-source, written in NodeJS, it has a synchronization element so that all your changes can move between devices without any heavy lifting."
 arch=(
     'aarch64'
     'x86_64'
@@ -20,6 +20,7 @@ conflicts=(
 )
 depends=(
     "electron${_electronversion}"
+    'nodejs'
 )
 source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/actualbudget/actual/v${pkgver}/LICENSE.txt"
@@ -28,11 +29,11 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-x86_64.AppImage")
 sha256sums=('71e4b3053e4622e1f5fc5d8aa5336350de32ead39247924c596d659b89b47b6f'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('5375f889ec614665f54a029fa8c7537e511d90a67398fb6e0c3ec8b0b66c86d3')
-sha256sums_x86_64=('fb3e5dbe756bfa614be3d0714c182ac9af977d77749d105535f7068aeeb38171')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+sha256sums_aarch64=('b1c4f0792af5273acd81bc6b3ec05e6530f5f3b408a2c3de597ee9622394c17d')
+sha256sums_x86_64=('21455ba3bfb985e969ed2b5aeebde8a0aeec8836351813c07ea63267e1f47b7b')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -59,38 +60,30 @@ prepare() {
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _check_electron_version
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${_app_dir}/${pkgname%-bin}.desktop"
-    rm -rf \
-        "${_app_dir}/resources/app.asar.unpacked/node_modules/bcrypt/prebuilds/"{darwin-*,win32-*,linux-arm,freebsd-*} \
-        "${_app_dir}/resources/app.asar.unpacked/node_modules/argon2/prebuilds/"{darwin-*,win32-*,linux-arm,freebsd-*}
-    case "${CARCH}" in
-        aarch64)
-            rm -rf \
-                "${_app_dir}/resources/app.asar.unpacked/node_modules/bcrypt/prebuilds/linux-x64" \
-                "${_app_dir}/resources/app.asar.unpacked/node_modules/argon2/prebuilds/linux-x64"
-            ;;
-        x86_64)
-            rm -rf \
-                "${_app_dir}/resources/app.asar.unpacked/node_modules/bcrypt/prebuilds/linux-arm64" \
-                "${_app_dir}/resources/app.asar.unpacked/node_modules/argon2/prebuilds/linux-arm64"
-            ;;
-    esac
-    find "${_app_dir}/resources" -type d -exec chmod 755 {} +
     sed -i "s/${_debname}/${pkgname%-bin}/g" "${_app_dir}/resources/extra-resources/linux/${_debname}.metainfo.xml"
+	case "${CARCH}" in
+		aarch64)	_archrem=x64	;;
+		x86_64)		_archrem=arm	;;
+	esac
+	find "${_app_dir}/resources/app.asar.unpacked" -depth \
+		\( -name "darwin*" -o -name "win32*" -o -name "*${_archrem}"* \) \
+		-exec rm -rf {} +
+    find "${_app_dir}/resources" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	local _app_dir="$(_get_app_dir)"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
         _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
         install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
-    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${_app_dir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${_app_dir}/resources/extra-resources/linux/${_debname}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-bin}.metainfo.xml"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
