@@ -1,7 +1,7 @@
 # Maintainer: Ilyas Turki <turki.ilyass@gmail.com>
 pkgbase=universe-bin
 pkgname=(universe-bin universe-desktop-bin)
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc='Gamepad-first game launcher: a Rust core, a PySide6 UI, games inside gamescope (prebuilt release)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "metadata-$pkgver.json::$url/raw/v$pkgver/extension/metadata.json"
   "extension-$pkgver.js::$url/raw/v$pkgver/extension/extension.js"
 )
-sha256sums=('63f2fc9f4877cbdfafdece571b3b4174cb95b4e646abc67210e55a3555bbd310'
+sha256sums=('be2d91a3d4b099f7ac9ad4ee1aefab3fcbd882095e8b06c6954f3cb4485b465b'
             '9553a252999bd38451c6d7a3601eec64ea295c5f1761426106fc92d3add7fcb1'
             'bd002bbb46df0ce972907934d2f96dbb57d132fce86743dde00c2ce0aec11808')
 _id=io.github.ilyasturki.UniverseDesktop
@@ -74,6 +74,7 @@ package_universe-bin() {
     python -m installer --destdir="$pkgdir" "$wheel"
   done
   install -Dm755 bin/universe -t "$pkgdir/usr/bin"
+  install -Dm755 lib/universe/universe-system-install -t "$pkgdir/usr/lib/universe"
   install -d "$pkgdir/usr/share"
   cp -r share/. "$pkgdir/usr/share"
   local f

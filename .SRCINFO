@@ -1,6 +1,6 @@
 pkgbase = universe-bin
 	pkgdesc = Gamepad-first game launcher: a Rust core, a PySide6 UI, games inside gamescope (prebuilt release)
-	pkgver = 0.0.10
+	pkgver = 0.0.11
 	pkgrel = 1
 	url = https://github.com/ilyasturki/universe
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = universe-bin
 	makedepends = python-installer
 	options = !debug
 	options = !strip
-	source = universe-bin-0.0.10.tar.gz::https://github.com/ilyasturki/universe/releases/download/v0.0.10/universe-x86_64-linux.tar.gz
-	source = metadata-0.0.10.json::https://github.com/ilyasturki/universe/raw/v0.0.10/extension/metadata.json
-	source = extension-0.0.10.js::https://github.com/ilyasturki/universe/raw/v0.0.10/extension/extension.js
-	sha256sums = 63f2fc9f4877cbdfafdece571b3b4174cb95b4e646abc67210e55a3555bbd310
+	source = universe-bin-0.0.11.tar.gz::https://github.com/ilyasturki/universe/releases/download/v0.0.11/universe-x86_64-linux.tar.gz
+	source = metadata-0.0.11.json::https://github.com/ilyasturki/universe/raw/v0.0.11/extension/metadata.json
+	source = extension-0.0.11.js::https://github.com/ilyasturki/universe/raw/v0.0.11/extension/extension.js
+	sha256sums = be2d91a3d4b099f7ac9ad4ee1aefab3fcbd882095e8b06c6954f3cb4485b465b
 	sha256sums = 9553a252999bd38451c6d7a3601eec64ea295c5f1761426106fc92d3add7fcb1
 	sha256sums = bd002bbb46df0ce972907934d2f96dbb57d132fce86743dde00c2ce0aec11808
 
@@ -48,7 +48,7 @@ pkgname = universe-bin
 	optdepends = grim: screenshots on sway, hyprland and niri
 	optdepends = spectacle: screenshots on KDE Plasma
 	optdepends = universe-desktop-bin: the library in a GTK app for mouse and keyboard
-	provides = universe=0.0.10
+	provides = universe=0.0.11
 	conflicts = universe
 
 pkgname = universe-desktop-bin
@@ -60,8 +60,8 @@ pkgname = universe-desktop-bin
 	depends = gtk4>=1:4.22
 	depends = hicolor-icon-theme
 	depends = libadwaita>=1:1.9
-	depends = universe=0.0.10
+	depends = universe=0.0.11
 	optdepends = gst-libav: recordings played in the app (H.264, HEVC)
 	optdepends = gst-plugins-bad: recordings played in the app (AV1, VA-API)
-	provides = universe-desktop=0.0.10
+	provides = universe-desktop=0.0.11
 	conflicts = universe-desktop
