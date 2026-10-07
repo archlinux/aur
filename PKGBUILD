@@ -1,32 +1,23 @@
-pkgbase=phoenixbrowser
-
-if [[ "$CARCH" == "aarch64" ]]; then
-    pkgname=(phoenixbrowser phoenixbrowser-aarch64)
-else
-    pkgname=(phoenixbrowser)
-fi
-
+pkgname=phoenixbrowser
 _pkgname=PhoenixBrowser
-_binname=phoenixbrowser
-pkgver=0.90
+pkgver=0.91
 pkgrel=1
 pkgdesc="A light and snappy web browser"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/phoenix/phoenix"
 license=('GPL')
-depends=('libelectron>=2026.6' 'nss' 'gtk3' 'libxss' 'git' 'bitwarden-cli')
-depends_x86_64=('electron-castlab-bin>=v43.0.0')
+depends=('electron-castlab-bin>=v44.5.1' 'libelectron>=2026.6' 'nss' 'gtk3' 'libxss' 'git' 'bitwarden-cli')
 makedepends=('unzip')
 source=("$url/-/archive/$pkgver/phoenix-$pkgver.tar.bz2")
-sha256sums=('46dc2bf1cce23358ef2a867396146b5b0f9d08243fae645a12398c83947131f4')
+sha256sums=('26cc5c6b45699aa6133df80d05e0b90a5f5638cfbca016e9b4daae52ca94d60c')
 
-_package_common() {
+package() {
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/bin"
     install -dm755 "$pkgdir/usr/share/pixmaps" 
     
     cd "$srcdir/phoenix-$pkgver"
-    chmod +x "$_binname"
+    chmod +x "$pkgname"
     ln -sf "/opt/libelectron/node_modules" "$srcdir/phoenix-$pkgver"
     #dep cleanup to use LibElectron deps instead
     rm -rf \
@@ -38,29 +29,16 @@ _package_common() {
 
     rm -rf "version.txt"
     cp -r ./ "$pkgdir/opt/$_pkgname"
-    cp -r "$pkgdir/opt/$_pkgname/sysicons/icon.svg" "$pkgdir/usr/share/pixmaps/$_binname.svg"
+    cp -r "$pkgdir/opt/$_pkgname/sysicons/icon.svg" "$pkgdir/usr/share/pixmaps/$pkgname.svg"
 
     # Symlink electron
-    if [[ "$CARCH" == 'x86_64' ]]; then
-        ln -sf "/bin/electroncastlab" "$pkgdir/opt/$_pkgname/electron"
-    else
-        ln -sf "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname/electron"
-    fi
+    ln -sf "/bin/electroncastlab" "$pkgdir/opt/$_pkgname/electron"
 
     #Symlink binary
-    ln -s "/opt/$_pkgname/$_binname" "$pkgdir/usr/bin/$_binname"
+    ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/phoenix-$pkgver/$_binname.desktop" \
-        "$pkgdir/usr/share/applications/$_binname.desktop"
-    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_binname.desktop"
-}
-
-package_phoenixbrowser() {
-    _package_common
-}
-
-package_phoenixbrowser-aarch64() {
-    pkgdesc="$pkgdesc (ARM64 runtime add-on)"
-    depends=('phoenixbrowser' 'libelectron-electron-meta=44')
+    install -Dm644 "$srcdir/phoenix-$pkgver/$pkgname.desktop" \
+        "$pkgdir/usr/share/applications/$pkgname.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
