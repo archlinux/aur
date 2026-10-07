@@ -1,0 +1,29 @@
+post_install() {
+  cat <<'MESSAGE'
+==> PackageKit picks the alpm-dbus backend over its own alpm backend (from
+    the packagekit package) when DefaultBackend is "auto", the default,
+    but only when packagekitd starts. Restart it so that a running one
+    does not keep using the alpm backend:
+
+      systemctl try-restart packagekit
+
+    To select the backend explicitly, set in
+    /etc/PackageKit/PackageKit.conf:
+
+      [Daemon]
+      DefaultBackend=alpm-dbus
+
+    The gnome-software package of Arch is built without its PackageKit
+    plugin and does not show system updates; gpk-update-viewer (from
+    gnome-packagekit) or KDE Discover do, and so does gnome-software when
+    rebuilt with -D packagekit=true.
+MESSAGE
+}
+
+post_upgrade() {
+  cat <<'MESSAGE'
+==> Restart PackageKit so that it loads the new alpm-dbus backend:
+
+      systemctl try-restart packagekit
+MESSAGE
+}

@@ -1,0 +1,52 @@
+pkgbase = alpm-dbus-git
+	pkgdesc = D-Bus service for system package management on top of ALPM
+	pkgver = 0.4.0.r48.g086356a
+	pkgrel = 1
+	url = https://gitlab.archlinux.org/ogarcia/alpm-dbus
+	arch = x86_64
+	license = Apache-2.0 OR MIT
+	checkdepends = dbus
+	makedepends = cargo
+	makedepends = git
+	makedepends = pacman
+	makedepends = xz
+	options = !lto
+	source = alpm-dbus::git+https://gitlab.archlinux.org/ogarcia/alpm-dbus.git
+	source = alpm::git+https://gitlab.archlinux.org/ogarcia/alpm.git#branch=feat/repo-db-access
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = alpm-dbus-git
+	depends = dbus
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
+	depends = pacman
+	depends = libalpm.so
+	depends = polkit
+	depends = xz
+	depends = liblzma.so
+	optdepends = alpm-dbus-client: command line client
+	optdepends = alpm-packagekit: PackageKit backend, for GNOME Software or KDE Discover
+	provides = alpm-dbus
+	conflicts = alpm-dbus
+
+pkgname = alpm-dbus-client-git
+	pkgdesc = Command line client of the alpm-dbus service
+	depends = alpm-dbus
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
+	provides = alpm-dbus-client
+	conflicts = alpm-dbus-client
+
+pkgname = alpm-packagekit-git
+	pkgdesc = PackageKit backend for the alpm-dbus service
+	install = alpm-packagekit.install
+	depends = alpm-dbus
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
+	depends = packagekit
+	provides = alpm-packagekit
+	conflicts = alpm-packagekit

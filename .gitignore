@@ -1,0 +1,5 @@
+*
+!alpm-packagekit.install
+!.gitignore
+!PKGBUILD
+!.SRCINFO
