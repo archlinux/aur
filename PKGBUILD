@@ -1,8 +1,8 @@
 # Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 
 pkgname=en-croissant
-pkgver=0.15.0
-pkgrel=2
+pkgver=0.15.1
+pkgrel=1
 pkgdesc='Modern chess GUI and analysis tool'
 arch=('x86_64')
 url='https://github.com/franciscoBSalgueiro/en-croissant'
@@ -40,7 +40,7 @@ source=(
   'en-croissant.desktop'
 )
 
-sha512sums=('ace5c341c7270ff1d266c5ae80ebf66ff86519b6bdcef6f58707e25ac0f05af8a2a44a015a6ef2ab6d56d9adbe10e8464e678a0075616602687f7cc6a4b577ae'
+sha512sums=('7f5e293bc9da52a2a02e785c44b9020bce9666934ae10d770eeb38d7b1ba7e8a9cc012e37d14fa91f3b520f604aca5a5f5d1f7431cdc63770d4ade186f40d83e'
             'c780d708a0065a47808a115c9f1106f8aa1eb3038496c3cc6cbe1ca3334d7c28bca496a0b309a4e3c5d4814cdaef2fe1950ee249fd10e7d3bb52e6c2330065cd'
             '0ca0416ec4941d0a9194048b7e099c433bdb7f309dd0746e272757f02e5d13bb899090ac390b9fbdd6f075070e5cf54996d63348f5f1cafdc8f5d7d798b92023')
 
