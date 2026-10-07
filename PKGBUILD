@@ -2,7 +2,7 @@
 # Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 
 pkgname=penguin-mail-bin
-pkgver=1.0.0
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Mail and calendar for Linux (prebuilt binaries from the GitHub release)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('gnome-shell-extension-appindicator: tray icon on GNOME Shell'
 options=('!debug')
 
 source=("penguin-mail-$pkgver-1-x86_64.pkg.tar.zst::https://github.com/c9dev/penguin-mail/releases/download/v$pkgver/penguin-mail-$pkgver-1-x86_64.pkg.tar.zst")
-sha256sums=('bad8b0ff00b3117932b5348d7ab6d3915727ad9632c63532da3e6485eb67cdcb')
+sha256sums=('8ab724781e01bd39addde9ef4d3efffa17536b98f7375168b715f27de99ba260')
 
 package() {
     # The download is already a pacman package tree; lift its files
