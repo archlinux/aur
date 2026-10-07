@@ -8,7 +8,7 @@ pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/grobmeier/humblebee"
 license=('Apache-2.0')
-makedepends=('go>=1.25' 'gcc' 'pkgconf' 'nodejs' 'npm')
+makedepends=('go>=1.25' 'gcc' 'pkgconf' 'nodejs' 'npm' 'gtk3' 'webkit2gtk-4.1')
 options=('!lto')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('d3e3baea2f3df49aa73190a2aea1cdd230efa00932d491813e263d79fd2c65fc')
