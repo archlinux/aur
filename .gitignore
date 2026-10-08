@@ -1,0 +1,4 @@
+src/
+pkg/
+krdc/
+*.pkg.tar.zst
