@@ -11,7 +11,7 @@ pkgname=(
 )
 provides=(gnome-shell)
 conflicts=(gnome-shell)
-pkgver=50.0
+pkgver=51.0
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell with multiseat support"
@@ -80,16 +80,16 @@ makedepends=(
 source=(
   # GNOME Shell tags use SSH signatures which makepkg doesn't understand
   "git+https://gitlab.gnome.org/GNOME/gnome-shell.git#tag=${pkgver/[a-z]/.&}"
-  "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=d2442f455844e5292cb4a74ffc66ecc8d7595a9f"
+  "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=0a4eda0cdc2deb352bebc70ec697c42af46094e4"
   "git+https://github.com/ptomato/jasmine-gjs.git#commit=856465dddbd92e82e574891e1ebc79e17d7b708a"
   "git+https://gitlab.gnome.org/GNOME/libshew.git#commit=d16afc40412b565d2bbecf80335f54a19a978009"
   2230.patch
 )
-b2sums=('1dc5c04956466cf3d98498defdac415dbf54f2e49fd7f84e9c4e95ae20154a11a39101f834993d03ae306bad310787829e329f6420c3114a5ceadfc811a147cc'
-        '8995bd33c011045c391169f044a46dbe42c55219d22fc1f52ec360b9cfb63b7b3a91bb07abb0f22ec7da39825a096bfa5fff9a5080d4d3919286156aeac392e5'
+b2sums=('389bd0dc733f0d558bbce05254df5f0ddf6ba26c8567a6456955748da39b8c4e2af10370781cabc31e7d9c3e88e70d320c756db3058079bd63255fbe647b4e22'
+        'b3ff7babceb21522cbdc8f2d11b00fe7c83a820250629f79831b42c4802613aa116a0df58038c76d9948c452c27cd47eca7a0172f06800df571c90f8671c0b6c'
         'ecbbb9ce5895cc1caed2ddef39c70b4768d78ea0a929ea932d4149f923f92650973cdaefc2aacc9063f2ccf4ec965b57a9698a286f9a6561e39ce2e579ae4522'
         '7b39ef786d0af34f207c36c078fda5410848a5eceb84509b145184be1dbb994aeb3ffa70cb3de363a8460d59c140aafbdee8f74312cf2971a80cc5d485f1b829'
-        '380852c5a52acd350157703fc0b9cb8c9be0d819c43daa0ab035899e6693e732478adba7747bfae73f135552d7b90e337864b328edf12b79aa25d638d058deff')
+        '7e3e8e1d0e531179842243b8b5fe64356ff71ab6b9ace9867c8c66d2994c195ee406d3da69adc195db23d53876b9093ae894adb198eea172b2e2398a2d4679c3')
 
 prepare() {
   # Inject gvc
@@ -116,12 +116,13 @@ build() {
 }
 
 package_gnome-shell-multiseat() {
-  depends+=(libmutter-18.so)
+  depends+=(libmutter-51.so)
   optdepends=(
     'evolution-data-server: Evolution calendar integration'
     'gnome-bluetooth-3.0: Bluetooth support'
     'gnome-control-center: System settings'
     'gnome-disk-utility: Mount with keyfiles'
+    'gnome-extensions-app: Manage gnome-shell extensions'
     'gst-plugin-pipewire: Screen recording'
     'gst-plugins-good: Screen recording'
     'power-profiles-daemon: Power profile switching'
@@ -131,7 +132,7 @@ package_gnome-shell-multiseat() {
   )
   groups=(gnome)
 
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild  --destdir "$pkgdir"
 
   mkdir -p doc/usr/share
   mv {"$pkgdir",doc}/usr/share/doc

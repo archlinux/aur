@@ -1,4 +1,4 @@
-From 3f6a8ba25b20f3990262d31089a76e7613238c5f Mon Sep 17 00:00:00 2001
+From a50f540ec0eea9761f7d1969a80aecf61ffb5f0e Mon Sep 17 00:00:00 2001
 From: Myrrh Periwinkle <myrrhperiwinkle@qtmlabs.xyz>
 Date: Mon, 26 May 2025 10:10:31 +0700
 Subject: [PATCH] LoginDialog: Don't reset auth prompt while launching a
@@ -13,10 +13,10 @@ the authentication prompt so the session launch isn't aborted.
  1 file changed, 12 insertions(+)
 
 diff --git a/js/gdm/loginDialog.js b/js/gdm/loginDialog.js
-index 4441834f27..4e3d25d9de 100644
+index 1e0a754e08..57af3b6279 100644
 --- a/js/gdm/loginDialog.js
 +++ b/js/gdm/loginDialog.js
-@@ -672,6 +672,7 @@ export const LoginDialog = GObject.registerClass({
+@@ -606,6 +606,7 @@ export const LoginDialog = GObject.registerClass({
  
          this._disableUserList = undefined;
          this._userListLoaded = false;
@@ -24,7 +24,7 @@ index 4441834f27..4e3d25d9de 100644
  
          this._realmManager = new Realmd.Manager();
          this._realmManager.connectObject('login-format-changed',
-@@ -1166,6 +1167,16 @@ export const LoginDialog = GObject.registerClass({
+@@ -1107,6 +1108,16 @@ export const LoginDialog = GObject.registerClass({
      }
  
      _loginScreenSessionActivated() {
@@ -41,14 +41,13 @@ index 4441834f27..4e3d25d9de 100644
          if (this.opacity === 255 &&
              this._authPrompt.verificationStatus === AuthPrompt.AuthPromptStatus.NOT_VERIFYING)
              return;
-@@ -1251,6 +1262,7 @@ export const LoginDialog = GObject.registerClass({
+@@ -1197,6 +1208,7 @@ export const LoginDialog = GObject.registerClass({
              mode: Clutter.AnimationMode.EASE_OUT_QUAD,
              onComplete: () => {
-                 this._greeter.call_start_session_when_ready_sync(serviceName, true, null);
+                 this._greeter.call_start_session_when_ready(serviceName, true, null).catch(logError);
 +                this._gdmSessionStarted = true;
                  this._unbindOpacity();
              },
          });
 -- 
 GitLab
-
