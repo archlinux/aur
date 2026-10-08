@@ -1,6 +1,6 @@
 # Maintainer: LUCKY / LuckySingh1 <luckysingh71826@gmail.com>
 pkgname=chillpill-shell
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Lightweight and feature rich dynamic pill bar for Hyprland"
 depends=(
@@ -29,7 +29,7 @@ license=('GPL-3.0')
 options=('!debug')
 url="https://github.com/LUCKYS1NGHH/ChillPill-Shell"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LUCKYS1NGHH/ChillPill-Shell/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1090f640383c8d84527df456568ef73ea68b461d4d6f5831b19d4ec87dd53af8')
+sha256sums=('0ffce38d6e3a2a22ca41d079f068ea804fbc1be8830f8abce927803eb4594209')
 
 package() {
   cd "ChillPill-Shell-$pkgver"
