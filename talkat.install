@@ -4,8 +4,8 @@ post_install() {
     echo "==> IMPORTANT: Calibrate your microphone before first use:"
     echo "    talkat calibrate"
     echo ""
-    echo "==> This sets the optimal silence threshold for your environment."
-    echo "==> Without calibration, voice detection may not work properly."
+    echo "==> Calibration measures room noise and saves a speech threshold:"
+    echo "==> it is how Talkat finds the pauses it cuts your dictation at."
     echo ""
     echo "==> After calibration, enable and start the service:"
     echo "    systemctl --user enable --now talkat"
@@ -13,7 +13,7 @@ post_install() {
     echo "==> Or to start just this once:"
     echo "    systemctl --user start talkat"
     echo ""
-    echo "==> Then test voice dictation:"
+    echo "==> Then test voice dictation — run it again to stop:"
     echo "    talkat listen"
 }
 
@@ -21,6 +21,18 @@ post_upgrade() {
     echo "==> Talkat has been upgraded."
     echo "==> Restart the service to use the new version:"
     echo "    systemctl --user restart talkat"
+
+    # 2.0.0 removed four commands; only tell people coming from 1.x.
+    if [ -n "$2" ] && (( $(vercmp 2.0.0 "$2") > 0 )); then
+        echo ""
+        echo "==> 2.0.0 is a breaking change: dictation is one command now."
+        echo "    talkat listen             toggles dictation on and off"
+        echo "    talkat listen --to-file   long-form notes into a file"
+        echo ""
+        echo "==> long, start-long, stop-long and toggle-long are gone, so"
+        echo "==> update any hotkey bound to them. In niri, bind with"
+        echo "==> repeat=false so holding the key cannot re-trigger it."
+    fi
 }
 
 pre_remove() {
