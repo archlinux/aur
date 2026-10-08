@@ -25,7 +25,7 @@ optdepends=('aalib: ASCII art support'
 	    'libwebp: WebP support'
             'sdl: X support')
 source=("http://download.savannah.gnu.org/releases/fbi-improved/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('3db4051d1a8402a4ddb8c5e0e1dcd829e426adf7c75698235c5c2c09c23a497a')
+sha256sums=('2c6b33c834ca41f7a6d6b2020eb4ff5c1facbab40b7c511c8ff93c74492bdd9d')
 
 build() {
   cd "${pkgname}-${pkgver}"
