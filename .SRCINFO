@@ -1,0 +1,14 @@
+pkgbase = psmc
+	pkgdesc = Implementation of the Pairwise Sequentially Markovian Coalescent model
+	pkgver = 0.6.5
+	pkgrel = 1
+	url = https://github.com/lh3/psmc
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = perl
+	depends = zlib
+	source = psmc-0.6.5.tar.gz::https://github.com/lh3/psmc/archive/0.6.5.tar.gz
+	sha256sums = 0954b3e28dda4ae350bdb9ebe9eeb3afb3a6d4448cf794dac3b4fde895c3489b
+
+pkgname = psmc
