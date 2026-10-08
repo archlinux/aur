@@ -1,0 +1,46 @@
+post_install() {
+  cat <<'EOF'
+
+  ZT9101 (LV-UW03) driver installed.
+
+  * pacman's DKMS hook compiles and signs the module for every installed
+    kernel that has headers. If you saw a warning such as
+
+        Missing <kernel> kernel headers for module zt9101/<version>.
+
+    then install headers for the kernel you boot and finish the build:
+
+        sudo pacman -S linux-headers          # linux
+        sudo pacman -S linux-cachyos-headers  # linux-cachyos
+        sudo pacman -S linux-lts-headers      # linux-lts
+        sudo dkms autoinstall
+
+  * If the adapter is already plugged in, unplug it and plug it back in
+    (or reboot). udev only learns that a driver now exists for it when the
+    device is enumerated.
+
+  * No init-system configuration was installed. The module autoloads from
+    its USB modalias through udev's 80-drivers.rules, which ships with both
+    systemd-udev and eudev -- so this works on Arch, Artix (OpenRC, s6,
+    runit, dinit) and CachyOS alike, with nothing to configure.
+
+  Check status with:
+
+        dkms status | grep zt9101
+        ip link show wlan0
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  cat <<'EOF'
+
+  ZT9101 (LV-UW03) driver removed. Unplug and replug the adapter, or
+  reboot, to release it.
+
+EOF
+}

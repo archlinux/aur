@@ -1,0 +1,16 @@
+pkgbase = omniversify-usb-wireless-drivers-lv-uw03
+	pkgdesc = DKMS driver for the PIX-LINK LV-UW03 USB WiFi adapter (ZTOP ZT9101, 350b:9101)
+	pkgver = 1.2.1800.20241115
+	pkgrel = 2
+	url = https://github.com/phaylali/omniversify-usb-wireless-drivers
+	install = omniversify-usb-wireless-drivers-lv-uw03.install
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = dkms
+	provides = zt9101-dkms
+	conflicts = zt9101-dkms
+	source = omniversify-usb-wireless-drivers-lv-uw03::git+https://github.com/phaylali/omniversify-usb-wireless-drivers.git#tag=v1.2.1800.20241115
+	sha256sums = SKIP
+
+pkgname = omniversify-usb-wireless-drivers-lv-uw03
