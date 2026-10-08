@@ -1,0 +1,23 @@
+pkgbase = mocinha
+	pkgdesc = Small, modular, platform-aware live-system installer (work in progress)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/dani-77/mocinha
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = arch-install-scripts
+	depends = util-linux
+	depends = e2fsprogs
+	depends = dosfstools
+	depends = squashfs-tools
+	optdepends = polkit: start Mocinha from a desktop launcher (pkexec + the session polkit agent)
+	optdepends = sudo: start Mocinha from a terminal
+	optdepends = networkmanager: connect to networks from Mocinha (nmcli)
+	optdepends = iwd: connect to Wi-Fi from Mocinha (iwctl)
+	source = mocinha-0.1.1.tar.gz::https://github.com/dani-77/mocinha/archive/refs/tags/0.1.1.tar.gz
+	sha256sums = c4eca8b5a87f704416f7899a752f97d0dcb1dc0b77aed7786853f2250dafc111
+
+pkgname = mocinha
