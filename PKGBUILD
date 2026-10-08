@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=effectcraft-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Motion graphics and visual effects compositor (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
@@ -31,8 +31,8 @@ sha256sums=('d0bf841555c56b6136745a61ec529c9a558c9dd7404d377d82f86d10e0e9b530'
             '262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a'
             'a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697'
             'cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a')
-sha256sums_x86_64=('e887e5a9148c4bc72a3c929ea8202076b74f91d4051550ca4fec8992eab72dd1')
-sha256sums_aarch64=('47e3c9641359c44ee6aabd223826b48126315e547783ed8fd675332293e4264e')
+sha256sums_x86_64=('3b7b616ba837910e812e53cff1776c56159fe9644ef8dc47a45759bd7ab7679a')
+sha256sums_aarch64=('d6517a75715319191d7c5b7de3cc7e65f9166ca5dfaa8bdb455b1b5a98892663')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-linux-$CARCH"
