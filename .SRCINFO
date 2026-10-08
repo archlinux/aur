@@ -1,12 +1,12 @@
 pkgbase = razer-fn-fix-git
 	pkgdesc = JIT low-level hypershift key layer fix for Razer Keyboards.
-	pkgver = 1.2.0.r13.g04ed4c6
+	pkgver = 1.2.0.r14.gb70ba3a
 	pkgrel = 1
 	url = https://github.com/Adam-AtlasSoftware/razer-fn-fix
 	install = razer-fn-fix.install
 	arch = x86_64
 	arch = aarch64
-	license = GPL-3.0-only
+	license = GPL-3.0-only AND MIT
 	makedepends = gcc
 	makedepends = git
 	depends = glibc

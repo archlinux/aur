@@ -1,12 +1,12 @@
 # Maintainer: Adam <adam@atlas-sw.com>
 pkgname=razer-fn-fix-git
 _basever=1.2.0
-pkgver=1.2.0.r13.g04ed4c6
+pkgver=1.2.0.r14.gb70ba3a
 pkgrel=1
 pkgdesc="JIT low-level hypershift key layer fix for Razer Keyboards."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Adam-AtlasSoftware/razer-fn-fix"
-license=('GPL-3.0-only')
+license=('GPL-3.0-only AND MIT')
 depends=('glibc')
 makedepends=('gcc' 'git')
 provides=('razer-fn-fix')
@@ -30,4 +30,5 @@ package() {
     install -Dm755 "$srcdir/${pkgname}/razer_driver" "$pkgdir/usr/bin/razer_driver"
     install -Dm644 "$srcdir/${pkgname}/razer-fn.service" "$pkgdir/usr/lib/systemd/system/razer-fn.service"
     install -Dm644 "$srcdir/${pkgname}/99-razer-input.rules" "$pkgdir/usr/lib/udev/rules.d/99-razer-input.rules"
+    install -Dm644 "$srcdir/${pkgname}/LICENSE.cJSON" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.cJSON"
 }
