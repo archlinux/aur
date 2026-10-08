@@ -1,0 +1,12 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -73,7 +73,7 @@
+   LinguistTools
+ )
+ 
+-find_package(FFMPEG 3.4 REQUIRED
++find_package(FFMPEG REQUIRED
+   COMPONENTS
+   avutil
+   avcodec
+
