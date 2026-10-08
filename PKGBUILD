@@ -8,7 +8,7 @@ pkgbase=glib2-patched-thumbnailer
 pkgname=(
   glib2-patched-thumbnailer
 )
-pkgver=2.88.3
+pkgver=2.90.1
 pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
@@ -55,11 +55,11 @@ source=(
   glib-compile-schemas.hook
   glib-remove-compiled-schemas.hook
 )
-b2sums=('9239e87c1133864340fda4ba99c53cd1684f421f7fb9a90299b6a25f582db3f70e7aab6988a7943934ece0d48246bc61c764cd08ef98f6bec3d4383a3f1bf679'
+b2sums=('d2a3b7c9745b4473621bc77d1fa690c062510cb53dd24555abceb0216ddb9c3f18214774a6c4a948daf0edcf4738db9ed1cba47ec92481d4eee18906bc0e78a3'
         'SKIP'
         '47cd08ba7e4b3ca0cd19f6dc20e4d73e30cf90f2b78c3d620ee0c7a4d8a4b325a5e88ec2dcc3a63402c16cc1ce8061130afc313e3cbfcd220dff3e642b113a69'
         'cc39621757253c9f9e11da4ae40dc16d24f2898a7ee34fbfe5b7709c4f0139c04fab6c1138402c16859b2421c45d55bdde522aa1a1b2c6c3544d87b7c2d10dff'
-        '84be383030a30f3c681e3b444e7475b7ea7653bf873f3548a77cb00860fc4e1e4731e83be888068dbb36f8ba63d5322449f9d11dbe619de8bea8f9c96e46d2f0'
+        'b3accf9f2dd2c3512c2041a34c0f665dabacbee623a9c6ba4c21f6779f9f25ab31a1aa84dddf5b239ddf390a0fcc4c99b7e9748d63863b37f0590a1414e8e5f1'
         '14c9211c0557f6d8d9a914f1b18b7e0e23f79f4abde117cb03ab119b95bf9fa9d7a712aa0a29beb266468aeb352caa3a9e4540503cfc9fe0bbaf764371832a96'
         'f2e5c26c6bc8f00cab04e73352a72b2d8c6cad5a611fb672a21e7357ee8fcc9f6d35242febf0b73c024eaa397c953df88cb18756fb6fae9ee5c295f642f8da73'
         'd30d349b4cb4407839d9074ce08f5259b8a5f3ca46769aabc621f17d15effdb89c4bf19bd23603f6df3d59f8d1adaded0f4bacd0333afcab782f2d048c882858'
