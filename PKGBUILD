@@ -3,7 +3,7 @@ pkgname=qoder-cn-bin
 _pkgname=Qoder-CN
 pkgver=0.4.3
 _electronversion=43
-pkgrel=1
+pkgrel=2
 pkgdesc="Qoder 全新形态，以编程智能体为核心引擎，从想法到实现，轻松搞定。"
 arch=('x86_64')
 url="https://qoder.cn"
@@ -33,13 +33,13 @@ source=(
 )
 sha256sums=('SKIP'
             '64a79bddff14167a290d3547d7b4bd00cf693be6d11fb6b7018bca9d9d778ab4'
-            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
 pkgver() {
     cd "${srcdir}/app.asar.unpacked"
     grep '"version":' package.json | awk -F'"version": "' '{print $2}' | awk -F',' '{print $1}' | tr -d '"'
 }
 _get_app_dir() {
-	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -57,7 +57,6 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
-        s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/\"\/opt\/${_pkgname//-/ }\/${pkgname%-bin}\"/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     local _app_dir="$(_get_app_dir)"
