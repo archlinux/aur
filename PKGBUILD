@@ -1,3 +1,4 @@
+# shellcheck disable=SC2034,SC2154,SC2164
 # Maintainer: Energetix/Dark Nebula <https://github.com/Jobanny-Friki>
 
 _module="winecharm"
@@ -15,7 +16,7 @@ depends=(
 makedepends=("python-build" "python-installer" "python-wheel")
 license=("GPL-3.0-or-later")
 arch=("any")
-source=("https://github.com/fastrizwaan/WineCharm/archive/refs/tags/${pkgver}.zip")
+source=("$pkgname-$pkgver.zip::https://github.com/fastrizwaan/WineCharm/archive/refs/tags/${pkgver}.zip")
 sha256sums=('fca8eef215d60144f68e6336809c6852c105b797dfe7cde4e65f7923fb959b0d')
 function build() {
     cd "${srcdir}/${_src_folder}"

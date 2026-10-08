@@ -29,7 +29,7 @@ pkgbase = python-winecharm
 	depends = lib32-libpulse
 	depends = lib32-openal
 	depends = python-polib
-	source = https://github.com/fastrizwaan/WineCharm/archive/refs/tags/1.4.zip
+	source = python-winecharm-1.4.zip::https://github.com/fastrizwaan/WineCharm/archive/refs/tags/1.4.zip
 	sha256sums = fca8eef215d60144f68e6336809c6852c105b797dfe7cde4e65f7923fb959b0d
 
 pkgname = python-winecharm
