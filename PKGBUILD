@@ -1,8 +1,8 @@
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 
 pkgname=python-plotink
 _gitpkgname=plotink
-pkgver=1.14.2
+pkgver=1.14.3
 pkgrel=1
 pkgdesc='Common files for Inkscape extensions to drive EggBot, WaterColorBot, and similar plotter-type machines'
 arch=('any')
@@ -27,7 +27,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/evil-mad/plotink/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-sha512sums=('7d86f8d8b59e6d62fbcddf7123d11d96420a7fcfeacc1daf83bc2c064b025c11a1c8d011ba715813f34da220a090569c0b1a67b4fa7daae8a2eb640503c04888')
+sha512sums=('81729cc007289c844a907026b734d0fbb09763ea987269bd4757389c23d635c13001d49c61bb7486e5eb44f3e152e18a26c6e74e42c23da46246f43e59d7e148')
 
 build() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
