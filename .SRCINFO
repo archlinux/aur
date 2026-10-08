@@ -1,7 +1,7 @@
 pkgbase = open-wallpaper-engine
 	pkgdesc = Open source scene renderer, mostly for linux.
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/waywallen/open-wallpaper-engine
 	arch = x86_64
 	license = GPL-2.0-only
@@ -30,6 +30,7 @@ pkgbase = open-wallpaper-engine
 	depends = quickjs-ng
 	depends = glfw
 	depends = wayland
+	options = !lto
 	source = git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v0.3.0
 	source = git+https://github.com/hypengw/SPIRV-Reflect.git#commit=355785128c1b6ba808e3a7d0e344814fe6cff502
 	source = git+https://github.com/hypengw/wavsen.git#commit=73be92f4f9db0179e93e3f28d62077a2aed77a8e

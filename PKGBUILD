@@ -5,7 +5,7 @@ _vrento_commit=a781859c940325a909c77613b5b2795cc3d65e48
 
 pkgname=open-wallpaper-engine
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source scene renderer, mostly for linux."
 arch=(x86_64)
 url=https://github.com/waywallen/open-wallpaper-engine
@@ -14,6 +14,7 @@ depends=(libgcc libstdc++ glibc lz4 freetype2 ffmpeg vulkan-icd-loader libglvnd
          "waywallen>=0.3.8" cef glslang fontconfig quickjs-ng glfw wayland)
 makedepends=(lito "cmake>4.3.1" ninja git "clang>=22" lld llvm eigen vulkan-headers
              waywallen-display)
+options=(!lto)
 source=("git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v$pkgver"
         "git+https://github.com/hypengw/SPIRV-Reflect.git#commit=$_spirv_reflect_commit"
         "git+https://github.com/hypengw/wavsen.git#commit=$_wavsen_commit"
