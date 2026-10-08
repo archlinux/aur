@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=soundcraft
-pkgver=0.0.0
+pkgver=0.3.0
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -40,8 +40,7 @@ prepare() {
 
 build() {
 	_srcenv
-	# https://github.com/storytold/photocraft/issues/392
-	cargo build --frozen --release -p $pkgname -p $pkgname-cli
+	cargo build --frozen --release
 }
 
 package() {

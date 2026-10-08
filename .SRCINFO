@@ -1,6 +1,6 @@
 pkgbase = soundcraft
 	pkgdesc = vibe coded clean-room reimplementation of Avid Pro Tools
-	pkgver = 0.0.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://getartcraft.com/apps/soundcraft
 	arch = x86_64
