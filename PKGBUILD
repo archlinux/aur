@@ -4,7 +4,7 @@ pkgbase=python-spectral-cube
 _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=0.6.7
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Library for reading and analyzing astrophysical spectral data cubes"
 arch=('any')
@@ -24,32 +24,32 @@ makedepends=('python-setuptools-scm'
 #              'python-pytest-xvfb'
 #              'xorg-server-xvfb'
 #              'python-joblib'
-#              'python-matplotlib'
+##              'python-matplotlib'
 #               'python-reproject'
 #               'python-bottleneck'
-##              'python-zarr<3'
+##              'python-zarr'
 #               'python-aplpy'
 #               'python-pvextractor'
 #               'python-regions'
 #               'python-yt'
 #               'python-glue-qt'
-#               'qt6-declarative'
-#               'qt6-svg'
+##              'qt6-declarative'
+##              'qt6-svg'
 #)
-# dask radio_beam tqdm 'python-casa-formats-io' already in makedepends; matplotlib <- aplpy, glue(also scipy), pvextractor...
+## dask radio_beam tqdm 'python-casa-formats-io' already in makedepends; matplotlib <- aplpy, glue(also scipy), pvextractor...
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('96e349422f1bd5a89ff0412abce72265')
+md5sums=('df0a70159d10efefd6a077f303fc6003')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
-prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    sed -e 's/glue.viewers.image.qt/glue_qt.viewers.image/' \
-        -e "s/glue.app.qt/glue_qt.app/" -i ${_pyname}/spectral_cube.py
-}
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+##   sed -e 's/glue.viewers.image.qt/glue_qt.viewers.image/' \
+##       -e "s/glue.app.qt/glue_qt.app/" -i ${_pyname}/spectral_cube.py
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -81,7 +81,7 @@ build() {
 package_python-spectral-cube() {
     depends=('python-numpy>=1.24'
              'python-astropy>=6.1'
-             'python-radio_beam>=0.3.5'
+             'python-radio_beam>=0.3.10'
              'python-joblib>=1.3'
              'python-dask>=2025.1.1'
              'python-casa-formats-io>=0.1'
