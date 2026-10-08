@@ -25,6 +25,7 @@ pkgbase = doors-git
 	depends = libxcb
 	depends = libxkbcommon.so
 	depends = pango
+	depends = pcre2
 	depends = bash
 	depends = shaderc
 	depends = systemd-libs

@@ -20,6 +20,7 @@ depends=(
 	'libxcb'
 	'libxkbcommon.so'
 	'pango'
+	'pcre2'
 	'bash'
 	'shaderc'
 	'systemd-libs'
