@@ -1,6 +1,6 @@
 # Maintainer: jin <mail@nvimer.org>
 pkgname=deepseek-reasonix-desktop
-pkgver=1.38.11
+pkgver=1.39.8
 pkgrel=1
 pkgdesc="Reasonix desktop — an Electron shell around the DeepSeek-native AI coding agent"
 arch=('x86_64' 'aarch64')
@@ -18,28 +18,22 @@ options=('!strip' '!debug')
 # Application UI, Electron shell, service, CLI and launcher are built from source.
 # Only the upstream-pinned Chromium/Electron runtime is a prebuilt dependency.
 _electron_ver=44.2.0
-_commit=11f9705f083819f1dc9ad764d8352013a86ebd44
+_commit=4e7831ba1281ee60dde4f46609e433b61baa185f
 _electron_url="https://github.com/electron/electron/releases/download/v${_electron_ver}"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/desktop-v$pkgver.tar.gz")
 source_x86_64=("${_electron_url}/electron-v${_electron_ver}-linux-x64.zip")
 source_aarch64=("${_electron_url}/electron-v${_electron_ver}-linux-arm64.zip")
 noextract=("electron-v${_electron_ver}-linux-x64.zip" "electron-v${_electron_ver}-linux-arm64.zip")
-sha256sums=('8ac71506cb3e99a4c4466653f3478ae54c0c935e2ad61abaffbc522e3eb86353')
+sha256sums=('8cb9911f67e413d0f1f8c54fef14ff7d033079951c0ac32de192c2364fdaf1d4')
 sha256sums_x86_64=('574f7d8cd2a82d77812849729a282b86639b050de120d58b138a126d16b48692')
 sha256sums_aarch64=('8693fd67332d417775dc2ffc470f4c05eda9d0ed1ac329e4866e108afaa4ddda')
 
 prepare() {
     cd "DeepSeek-Reasonix-desktop-v$pkgver"
-    # Arch ships pnpm 11, which reads upstream's v9 lockfile. Drop only the
-    # package-manager pin/range; preserve all dependency and Node requirements.
+    # Keep upstream's package-manager pin and engine requirements intact;
+    # pnpm selects the pinned version for the workspace.
     node <<'JS'
 const fs = require('node:fs');
-for (const f of ['desktop/package.json', 'desktop/frontend/package.json', 'desktop/electron/package.json']) {
-  const p = JSON.parse(fs.readFileSync(f, 'utf8'));
-  delete p.packageManager;
-  if (p.engines) delete p.engines.pnpm;
-  fs.writeFileSync(f, JSON.stringify(p, null, 2) + '\n');
-}
 const f = 'desktop/packaging/package.mjs';
 let s = fs.readFileSync(f, 'utf8');
 const needle = 'const [finalPath] = await packager(options);';
