@@ -1,7 +1,7 @@
 # Maintainer: Uyanide <pywang0608@foxmail.com>
 
 pkgname=voicefox
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 epoch=1
 _tag="v${pkgver}"
@@ -27,7 +27,7 @@ optdepends=(
 source=(
 	"${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${_tag}.tar.gz"
 )
-sha512sums=('2f3aa8851d9db6d76419b8329722f7975377d47bc6e32a181929968dee22f381ee803debc4bb4fb46da41f951f3aa4555cc157bb1246cb1451b0d662f2a2ed23')
+sha512sums=('17c50c0d9001735a60e21a063da3d711d7726e6d0e9abfae5e092b90c8b746cd01d8340f7532d6f8dcebbf7af5c7e52e8ceb6b577d1249356a705b3ab6fcd7d3')
 
 prepare() {
 	cd "${_srcdir}"
@@ -50,7 +50,8 @@ check() {
 
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo test --frozen --workspace
+	# flaky upstream test: evicts by atime but only staggers mtime, so coarse-clock ties fall back to readdir order
+	cargo test --frozen --workspace -- --skip cover_cache::tests::sweep_evicts_down_to_the_limit_by_oldest_access
 
 	target/release/voicefox --check-libmpv
 }
