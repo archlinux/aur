@@ -10,7 +10,7 @@
 # Plasma Fusion login check keeps the version-bound parts off).
 pkgbase=plasma-fusion
 pkgname=(plasma-fusion plasma-fusion-decoration plasma-fusion-settings plasma-fusion-navigation)
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Plasma Fusion desktop for KDE Plasma 6"
 arch=(x86_64)
