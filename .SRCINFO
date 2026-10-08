@@ -1,6 +1,6 @@
 pkgbase = katana-desktop
 	pkgdesc = Unofficial desktop client for Nonograms Katana user puzzles
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/ArkadyBuryakov/katana-desktop
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = katana-desktop
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = katana-desktop-1.1.3.tar.gz::https://github.com/ArkadyBuryakov/katana-desktop/archive/v1.1.3.tar.gz
-	sha256sums = a753053d23bd0e30871f5e1f72fb4e7107f928289cf2587a1719d76c7dace889
+	source = katana-desktop-1.1.4.tar.gz::https://github.com/ArkadyBuryakov/katana-desktop/archive/v1.1.4.tar.gz
+	sha256sums = 124b004c061b0bb70852891957e55ad03ed04b969b2f2394e5e0bdf21481eebb
 
 pkgname = katana-desktop
