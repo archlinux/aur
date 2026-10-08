@@ -1,30 +1,42 @@
 # Maintainer: khvalera <khvalera@ukr.net>
 pkgname=gsender
-pkgver=1.5.6
-pkgrel=1
+pkgver=1.6.4
+pkgrel=2
 pkgdesc="Connect to and control Grbl-based CNCs"
-arch=("x86_64")
+arch=('x86_64')
 url="https://github.com/Sienci-Labs/${pkgname}"
 license=('MIT')
-depends=('nodejs')
+
+depends=('nodejs>=22.12.0')
 makedepends=('npm' 'yarn' 'libxcrypt-compat' 'debugedit' 'node-gyp')
+
 source=("https://github.com/Sienci-Labs/${pkgname}/archive/v$pkgver.tar.gz")
-sha512sums=('820e429877c91ee8a013278997d962ee7d838509649e667ee9ec9fe79bf8037df31167af8d35bc25e4a45c2d0ebc21dc9ceecb7a38693c3ed5db6d5b9245accf')
+sha512sums=('62a5cdcfcb6369daf586df3b6fbcc6b70e99cb2de5d335d70bc163171116d7be7f89030d67b125498f21930a8154081ce82a8293cd0274c34ec530aa6c1740ce')
 
 build() {
     cd "$pkgname-$pkgver"
-    #sed -i 's/"AppImage",//' package.json
+
+    echo "Node.js: $(node -v)"
+    echo "Yarn: $(yarn -v)"
+
+    node -e 'if (parseInt(process.versions.node) < 22) process.exit(1)'
+
     export NODE_OPTIONS="--openssl-legacy-provider --max-old-space-size=4096"
-    yarn install
+
+    yarn install --frozen-lockfile
     yarn build-prod
     yarn build:linux-x64
 }
 
 package() {
     cd "$pkgname-$pkgver"
+
     install -d "${pkgdir}/usr/bin"
     install -d "${pkgdir}/opt/gSender"
-    cp -dr --no-preserve=ownership ./output/linux-unpacked/* "${pkgdir}"/opt/gSender/
+
+    cp -dr --no-preserve=ownership ./output/linux-unpacked/* "${pkgdir}/opt/gSender/"
+
     ln -sf '/opt/gSender/gsender' "${pkgdir}/usr/bin/gsender"
-    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
