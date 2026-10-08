@@ -5,7 +5,7 @@
 # Contributor: Sauyon Lee <me at sjl dot re>
 
 pkgname=codeql
-pkgver=2.27.1
+pkgver=2.27.2
 pkgrel=1
 pkgdesc="CLI tool for GitHub's CodeQL, including the standard query packs"
 arch=(
@@ -47,9 +47,9 @@ conflicts=('codeql-cli-bin')
 replaces=('codeql-cli-bin')
 options=('!strip')
 source_aarch64=("${pkgname}-bundle-${pkgver}-aarch64.tar.zst::${_bundle_url}/releases/download/codeql-bundle-v${pkgver}/codeql-bundle-linux-arm64.tar.zst")
-sha256sums_aarch64=('5e87cf7254bc948b002ae444066ecc6f913960361ac675d049862dcb62d7786a')
+sha256sums_aarch64=('05edcc33992b383aa8daeea1c45e7b3192a95ff4a63883563b41ead6386f7d89')
 source_x86_64=("${pkgname}-bundle-${pkgver}-x86_64.tar.zst::${_bundle_url}/releases/download/codeql-bundle-v${pkgver}/codeql-bundle-linux64.tar.zst")
-sha256sums_x86_64=('1ec99cfa9420f04c2330784b4ddb8363a0dd67c3e4471cd93963c50e6c433717')
+sha256sums_x86_64=('f24406b1557c506133db1f972758ee64f14eb3587a53367a1bd737f24495ea97')
 
 check() {
 	local codeql="${srcdir}/codeql/codeql"
