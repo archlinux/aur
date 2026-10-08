@@ -3,7 +3,7 @@
 _plugin=histogram
 pkgname=vsview-${_plugin}
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A vsview plugin displaying video clips' histograms and other related visualizations"
 arch=("x86_64")
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
@@ -23,6 +23,7 @@ makedepends=(
     "python-hatchling"
     "python-versioningit"
     "python-hatch-sbom"
+    "python-hatch-rs"
 )
 source=("${pkgname}::git+${url}.git#tag=${_plugin}/v${pkgver}")
 sha256sums=('SKIP')
