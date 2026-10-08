@@ -1,43 +1,30 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=msime-bin
-pkgver=0.9.1
+pkgver=0.11.0
 pkgrel=1
-pkgdesc="Metasequoia IME: IBus frontend and desktop tools for Chinese and Japanese input"
+pkgdesc="MSIME (Metasequoia) Linux input method: IBus host, desktop tools and a Fcitx5 addon"
 arch=('x86_64' 'aarch64')
-url="https://msime.app"
+url="https://github.com/metasequoiaime/msime"
 license=('GPL-3.0-only')
-depends=('cairo' 'curl' 'glib2' 'gtk3' 'ibus' 'libsecret' 'sqlite' 'gcc-libs')
+depends=('alsa-lib' 'cairo' 'dbus' 'fcitx5' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'gtk3' 'ibus' 'libsoup3' 'libx11' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'pango' 'procps-ng' 'python' 'wayland' 'webkit2gtk-4.1')
 optdepends=(
-    'tesseract: local handwriting recognition'
-    'tesseract-data-chi_sim: simplified Chinese data for tesseract'
+    'python-websockets: cloud candidates and online providers'
+    'pipewire: audio capture for the local voice provider (alternatively pulseaudio-utils or alsa-utils)'
+    'quickshell: bar status widget for Omarchy/Quickshell sessions'
 )
-provides=('metasequoia-ime-linux')
-conflicts=('metasequoia-ime-linux')
+provides=('msime-linux')
+conflicts=('msime-linux')
 options=('!strip' '!debug')
 
-_upstream_deb="metasequoia-ime-linux_${pkgver}"
-# The upstream binaries are built against Boost.JSON 1.83; Arch ships a newer
-# Boost, so the compatible runtime library is taken from Ubuntu and installed
-# next to the rest of the system libraries.
-_boost_deb="libboost-json_1.83.0-2.1ubuntu3.2"
+_upstream_deb="msime-linux_${pkgver}"
 
-source_x86_64=(
-    "${_upstream_deb}_amd64.deb::https://github.com/metasequoiaime/MSIME-Linux/releases/download/v${pkgver}/${_upstream_deb}_amd64.deb"
-    "${_boost_deb}_amd64.deb::https://archive.ubuntu.com/ubuntu/pool/universe/b/boost1.83/libboost-json1.83.0_1.83.0-2.1ubuntu3.2_amd64.deb"
-)
-source_aarch64=(
-    "${_upstream_deb}_arm64.deb::https://github.com/metasequoiaime/MSIME-Linux/releases/download/v${pkgver}/${_upstream_deb}_arm64.deb"
-    "${_boost_deb}_arm64.deb::https://ports.ubuntu.com/ubuntu-ports/pool/universe/b/boost1.83/libboost-json1.83.0_1.83.0-2.1ubuntu3.2_arm64.deb"
-)
-sha256sums_x86_64=('a6f41fc80c6489ca851fd923709271bd9b9ba88a8a194eb05201a172ca10eca2'
-                   '819acce84a1327ed7476cbae5b76893f902058ff30d538b637380b8a79ec1571')
-sha256sums_aarch64=('0ea03e38ebf353e622cbef97331864e1783f2f68c84855138fcf303f31ccc5bf'
-                    '926dd1beb34694bc29b49426d29461daa12444ca4b62f14abdd4224db14182a6')
+source_x86_64=("${_upstream_deb}_amd64.deb::https://github.com/metasequoiaime/msime/releases/download/linux-v${pkgver}/${_upstream_deb}_amd64.deb")
+source_aarch64=("${_upstream_deb}_arm64.deb::https://github.com/metasequoiaime/msime/releases/download/linux-v${pkgver}/${_upstream_deb}_arm64.deb")
+sha256sums_x86_64=('912b1f7baf6ded840c5890f4d1d1b283e1e4583294990b0438f3220fc2fd876b')
+sha256sums_aarch64=('b9df7de0d6165c3097f4bf9519de988c29b619bccb10a108f7628416d62fa0be')
 noextract=(
     "${_upstream_deb}_amd64.deb"
     "${_upstream_deb}_arm64.deb"
-    "${_boost_deb}_amd64.deb"
-    "${_boost_deb}_arm64.deb"
 )
 
 package() {
@@ -47,17 +34,9 @@ package() {
         aarch64) _suffix=arm64 ;;
     esac
 
-    local _deb="${_upstream_deb}_${_suffix}.deb"
-    local _boost="${_boost_deb}_${_suffix}.deb"
-
-    bsdtar -xOf "${srcdir}/${_deb}" 'data.tar.*' |
+    # The package keeps the upstream layout, including /usr/lib/x86_64-linux-gnu:
+    # the binaries find their bundled libraries through $ORIGIN-relative RUNPATHs
+    # and the Fcitx5 addon through an absolute Library= path.
+    bsdtar -xOf "${srcdir}/${_upstream_deb}_${_suffix}.deb" 'data.tar.*' |
         bsdtar --no-same-owner -xf - -C "${pkgdir}"
-
-    local _tmp="${srcdir}/boost-${_suffix}"
-    rm -rf "${_tmp}"
-    mkdir -p "${_tmp}"
-    bsdtar -xOf "${srcdir}/${_boost}" 'data.tar.*' | bsdtar -xf - -C "${_tmp}"
-    install -Dm644 "$(find "${_tmp}" -name 'libboost_json.so.1.83.0' -print -quit)" \
-        "${pkgdir}/usr/lib/libboost_json.so.1.83.0"
-    rm -rf "${_tmp}"
 }
