@@ -1,8 +1,8 @@
 # Maintainer: Jesse Pinkman <M-Igashi@users.noreply.github.com>
 pkgname=mp3rgui
-pkgver=3.9.2
+pkgver=3.10.0
 pkgrel=1
-pkgdesc='GUI application for mp3rgain - lossless MP3 volume adjustment'
+pkgdesc='GUI for mp3rgain - lossless MP3 and AAC volume adjustment using ReplayGain'
 arch=('x86_64' 'aarch64')
 url='https://mp3rgain.tyna.ninja/'
 license=('MIT')
