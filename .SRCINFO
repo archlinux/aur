@@ -1,6 +1,6 @@
 pkgbase = vknemu
 	pkgdesc = input based idle frame limiter vulkan layer
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/reakjra/vkNemu
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = vknemu
 	makedepends = lib32-libxcb
 	makedepends = lib32-libx11
 	makedepends = lib32-vulkan-icd-loader
-	source = https://github.com/reakjra/vkNemu/archive/v0.1.1.tar.gz
-	sha256sums = 30c1739518b104f5711644b5832f40c64e80493c47465a61e79a7dd5804a4abb
+	source = https://github.com/reakjra/vkNemu/archive/v0.1.2.tar.gz
+	sha256sums = 698161f2152cbda48f8567e1ce90ae52af0b5d84c4682c8b77b7aa97aaab9bcd
 
 pkgname = vknemu
 	depends = wayland

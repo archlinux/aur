@@ -1,7 +1,7 @@
 # Maintainer: reakjra <reakjra@proton.me>
 pkgbase=vknemu
 pkgname=('vknemu' 'lib32-vknemu')
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='input based idle frame limiter vulkan layer'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('meson' 'ninja' 'vulkan-headers' 'wayland-protocols'
              'wayland' 'libxcb' 'libx11' 'vulkan-icd-loader'
              'lib32-wayland' 'lib32-libxcb' 'lib32-libx11' 'lib32-vulkan-icd-loader')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('30c1739518b104f5711644b5832f40c64e80493c47465a61e79a7dd5804a4abb')
+sha256sums=('698161f2152cbda48f8567e1ce90ae52af0b5d84c4682c8b77b7aa97aaab9bcd')
 
 build() {
     cd vkNemu-$pkgver
