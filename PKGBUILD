@@ -4,7 +4,7 @@
 
 pkgname=capture-studio-bin
 _pkgname=tenzen
-pkgver=0.1.33
+pkgver=0.1.34
 pkgrel=1
 pkgdesc="Record and edit product demos: cut pauses, add zooms and captions (upstream Flatpak bundle)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ options=('!strip' '!debug')
 _bundle="Capture-Studio-${pkgver}-linux-x64.flatpak"
 source=("${_bundle}::https://downloads.tenzen.studio/desktop/stable/linux/${pkgver}/${_bundle}")
 noextract=("${_bundle}")
-sha256sums=('40b2481564f2e76802a8a18002c30adc7e3e137c849560ccccdef91672593dd5')
+sha256sums=('bc45c21639dc3015b4789b209f4d8b3aee89353d22e4ce7c1d7aade9fde6a3ea')
 
 prepare() {
   # A Flatpak bundle is an OSTree static delta carrying a single commit:
