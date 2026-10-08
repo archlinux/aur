@@ -1,8 +1,8 @@
 # Maintainer: rubin55
-: ${aur_llamacpp_build_universal:=false}
+: ${_llamacpp_build_universal:=false}
 _pkgname="llama.cpp"
 pkgname=${_pkgname}-vulkan-git
-pkgver=b10242.r10.fe2adf0e72
+pkgver=b11462.r9.42b021b4dc
 pkgrel=1
 _build_number=0
 _commit_id=
@@ -79,8 +79,8 @@ build() {
     -Wno-dev
   )
 
-  if [[ ${aur_llamacpp_build_universal} == true ]]; then
-    echo "Building universal binary [aur_llamacpp_build_universal == true]"
+  if [[ ${_llamacpp_build_universal} == true ]]; then
+    echo "Building universal binary [_llamacpp_build_universal == true]"
     _cmake_options+=(
       -DGGML_BACKEND_DL=ON
       -DGGML_NATIVE=OFF
@@ -95,10 +95,10 @@ build() {
   fi
 
   # Allow user-specified additional flags
-  if [[ -n "${aur_llamacpp_cmakeopts:-}" ]]; then
-    echo "Applying custom CMake options: ${aur_llamacpp_cmakeopts}"
+  if [[ -n "${_llamacpp_cmakeopts:-}" ]]; then
+    echo "Applying custom CMake options: ${_llamacpp_cmakeopts}"
     # shellcheck disable=SC2206 # intentional word splitting
-    _cmake_options+=(${aur_llamacpp_cmakeopts})
+    _cmake_options+=(${_llamacpp_cmakeopts})
   fi
 
   cmake "${_cmake_options[@]}"
