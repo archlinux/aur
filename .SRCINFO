@@ -5,7 +5,6 @@ pkgbase = python-alpheon-git
 	url = https://github.com/BravoAlphaSix/alpheon
 	arch = any
 	license = MIT
-	makedepends = git
 	depends = python
 	depends = git
 	provides = python-alpheon
