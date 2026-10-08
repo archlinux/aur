@@ -1,7 +1,7 @@
 # Maintainer: Nick Nizovtsev <nizovtsevnv@gmail.com>
 
 pkgname=termide
-pkgver=0.39.0
+pkgver=0.40.0
 pkgrel=1
 pkgdesc="All-in-one terminal workspace: editor, file manager, terminal, git and coding agent"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/termide/termide/archive/$pkgver.tar.gz")
-sha256sums=('86f8560d84601c293af3b629d26df539327f49faa987dbda6fe3d51631620f95')
+sha256sums=('9518864d6631a3ddf90d52f2ae3954c782cc85452a8f78d9bf83d13b00fa7cd0')
 
 prepare() {
     cd "$pkgname-$pkgver"
