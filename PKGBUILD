@@ -3,7 +3,7 @@
 
 pkgname="n8n"
 pkgver=2.42.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services."
 arch=('x86_64')
 url="https://n8n.io"
@@ -121,9 +121,15 @@ package() {
          "${node_root}/node_modules/node-gyp" "${node_root}/node_modules/.bin/node-gyp" \
          "${node_root}/node_modules/flatted/python"
 
-  # Development files
-  find "${node_root}" -name "*.ts" -delete 2>/dev/null || true
-  find "${node_root}" -name "*.js.map" -delete 2>/dev/null || true
+  # *.d.ts only. A '*.ts' glob also deletes
+  # n8n-nodes-base/dist/node-definitions, the node catalog the MCP and AI
+  # node-lookup tools read from disk; '*.md' would take instance-ai's
+  # skills/knowledge-base. .js.map also stays: bin/n8n installs
+  # source-map-support.
+  find "${node_root}" -type f \( -name '*.d.ts' -o -name '*.d.ts.map' \) -delete
+
+  compgen -G "${node_root}/node_modules/n8n-nodes-base/dist/node-definitions/*.ts" >/dev/null ||
+    { echo "==> ERROR: node-definitions were stripped; the node catalog breaks at runtime" >&2; return 1; }
 
   # Directory-based prebuilds (isolated-vm puts .node under prebuilds/{platform}-{arch}/)
   find "${node_root}" -type d -name 'prebuilds' | while IFS= read -r pb; do
