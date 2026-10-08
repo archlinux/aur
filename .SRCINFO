@@ -1,6 +1,6 @@
 pkgbase = tyler-git
 	pkgdesc = Tiling Wayland compositor on wlroots, with the bar and launcher built in
-	pkgver = r45.ea8a910
+	pkgver = r50.9a5e972
 	pkgrel = 1
 	url = https://github.com/thinkoid/tyler
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tyler-git
 	makedepends = meson
 	makedepends = wayland-protocols
 	makedepends = tllist
-	depends = wlroots0.19
+	depends = wlroots0.20
 	depends = wayland
 	depends = libxkbcommon
 	depends = fcft
@@ -24,7 +24,10 @@ pkgbase = tyler-git
 	optdepends = ttf-nerd-fonts-symbols: the private-use glyphs the bundled status feeder emits
 	provides = tyler
 	conflicts = tyler
+	noextract = scenefx-0.5.tar.gz
 	source = tyler::git+https://github.com/thinkoid/tyler.git
+	source = scenefx-0.5.tar.gz::https://github.com/wlrfx/scenefx/archive/refs/tags/0.5.tar.gz
 	sha256sums = SKIP
+	sha256sums = 0fa8ecca0e310f813efd052624c5ed7d9153d6a0fdead5cc957d34c07f9a86c6
 
 pkgname = tyler-git
