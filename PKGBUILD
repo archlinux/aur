@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gridcraft
-pkgver=0.0.0
+pkgver=0.1.0
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -12,10 +12,9 @@ depends=(glibc # libc.so libm.so
          hicolor-icon-theme
          libgcc)
 makedepends=(cargo)
-_sha=efbcb01b7747a409459c7788826118856b3bc9c8
-_archive="$pkgname-$_sha"
-source=("$_url/archive/$_sha/$_archive.tar.gz")
-sha256sums=('c4f32c07c1dc270f25feabe78c7a22050e65a282052e76d445b019aaf67bf34e')
+_archive="$pkgname-$pkgver"
+source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
+sha256sums=('2af4c1eb824b974babe1e0ae4c4158fb3c2360986f20300b58705b1e0b57b54a')
 
 _srcenv() {
 	cd "$_archive"
@@ -39,8 +38,7 @@ prepare() {
 
 build() {
 	_srcenv
-	# https://github.com/storytold/photocraft/issues/392
-	cargo build --frozen --release -p $pkgname -p $pkgname-cli
+	cargo build --frozen --release
 }
 
 package() {
