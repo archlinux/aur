@@ -1,6 +1,6 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname="vouch-proxy"
-pkgver=0.48.0
+pkgver=0.48.0 # renovate: datasource=github-tags depName=vouch/vouch-proxy
 pkgrel=1
 pkgdesc="an SSO and OAuth / OIDC login solution for Nginx using the auth_request module"
 arch=('x86_64')
