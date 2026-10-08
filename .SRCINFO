@@ -1,0 +1,26 @@
+pkgbase = touchfish-client
+	pkgdesc = TouchFish V5 官方支持的现代化客户端，基于 Flutter 构建
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/JohnChiao75/TouchFish-Client
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0
+	makedepends = flutter
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = patchelf
+	depends = gtk3
+	depends = libsecret
+	depends = jsoncpp
+	depends = mpv
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-libav
+	source = touchfish-client-0.0.3.tar.gz::https://github.com/JohnChiao75/TouchFish-Client/archive/refs/heads/aur.tar.gz
+	sha256sums = SKIP
+
+pkgname = touchfish-client
