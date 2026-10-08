@@ -20,6 +20,6 @@ pkgbase = machctrl-bin
 	replaces = machctrl-electron
 	backup = etc/sudoers.d/machctrl
 	source = machctrl-3.0.0.tar.gz::https://github.com/araujo791/MachCtrl-GTK4/releases/download/v3.0.0/machctrl-3.0.0-x86_64.tar.gz
-	sha256sums = SKIP
+	sha256sums = d0d8ed8c58d70b0f0cea7979e4c336e05a897a7475db38bc9b88438fef426c79
 
 pkgname = machctrl-bin

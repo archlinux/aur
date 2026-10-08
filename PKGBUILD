@@ -27,7 +27,7 @@ backup=('etc/sudoers.d/machctrl')
 
 # Binarios pre-compilados da release fixa (tag v$pkgver).
 source=("machctrl-$pkgver.tar.gz::https://github.com/araujo791/MachCtrl-GTK4/releases/download/v$pkgver/machctrl-$pkgver-x86_64.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('d0d8ed8c58d70b0f0cea7979e4c336e05a897a7475db38bc9b88438fef426c79')
 
 package() {
     # O tarball da release extrai numa subpasta machctrl-<ver>-x86_64/
