@@ -11,9 +11,9 @@ pkgrel=1
 # pkgrel of the published artifact; independent of this package's pkgrel so an
 # AUR-only revision does not break the download URL.
 _binrel=1
-_reltag=v1.5.0-arch
+_reltag=v1.6.0
 pkgdesc='A tool for managing OCI containers and pods, with the bcachefs graphdriver compiled in'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/ticpu/bcachefs-storage-driver'
 license=('Apache-2.0')
 depends=(
@@ -44,10 +44,17 @@ conflicts=(podman "$_pkgname")
 backup=(etc/containers/storage.conf.d/00-storage-arch.conf)
 options=('!strip' '!debug')
 validpgpkeys=('E5998E49DC9E1DCFDB9B46EC77EBA10790CFFCCD')
-source=("$_pkgname-$pkgver-$_binrel-$CARCH.pkg.tar.zst::$url/releases/download/$_reltag/$_pkgname-$pkgver-$_binrel-$CARCH.pkg.tar.zst"
-        "$_pkgname-$pkgver-$_binrel-$CARCH.pkg.tar.zst.asc::$url/releases/download/$_reltag/$_pkgname-$pkgver-$_binrel-$CARCH.pkg.tar.zst.asc")
-sha256sums=('07cf643fe7d97c62fb0db3835310ad94fc5dfdc472aef96fd64105a8935f5600'
-            'SKIP')
+_dl="$url/releases/download/$_reltag"
+# The tag in the local name keeps a cached artifact from an older release from
+# being reused when a new release republishes the same filename.
+source_x86_64=("$_pkgname-$pkgver-$_binrel-$_reltag-x86_64.pkg.tar.zst::$_dl/$_pkgname-$pkgver-$_binrel-x86_64.pkg.tar.zst"
+               "$_pkgname-$pkgver-$_binrel-$_reltag-x86_64.pkg.tar.zst.asc::$_dl/$_pkgname-$pkgver-$_binrel-x86_64.pkg.tar.zst.asc")
+source_aarch64=("$_pkgname-$pkgver-$_binrel-$_reltag-aarch64.pkg.tar.zst::$_dl/$_pkgname-$pkgver-$_binrel-aarch64.pkg.tar.zst"
+                "$_pkgname-$pkgver-$_binrel-$_reltag-aarch64.pkg.tar.zst.asc::$_dl/$_pkgname-$pkgver-$_binrel-aarch64.pkg.tar.zst.asc")
+sha256sums_x86_64=('bcece0f339bf322ddf14d296ef02d6512d5b833bf7beee71ff3c47e901c37c6d'
+                   'SKIP')
+sha256sums_aarch64=('274f4a17a36c911133f5baeec2bb37ff4b2727226e04e06b834da9ede638eaa1'
+                    'SKIP')
 
 package() {
   cp -a "$srcdir/etc" "$srcdir/usr" "$pkgdir/"
