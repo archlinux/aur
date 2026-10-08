@@ -7,7 +7,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="Terminal multiplexer with tiling panes, tabs and workspaces that keep running after you close the window"
 
-pkgver=0.2.1
+pkgver=1.0.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,7 +28,7 @@ depends=('glibc')
 options=('!strip' '!lto')
 
 source=("${pkgname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('1072f4087382e815431dff0d3af612dce134f19dd68b53fcdb79c873569524d3')
+sha256sums=('38b18b657b062e5993d1222125bc4ecc0c8efcd8c0eb4edc0bf716d2b66956a2')
 
 
 build() {
