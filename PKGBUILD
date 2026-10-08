@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A multiplatform, nano DLNA media server for the terminal"
 
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.xz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('48261875d49772d86b11bbc8adbdd95434cfb7a8612eb8fbf27a343cf23b45f4')
-sha256sums_aarch64=('29ff8f0ce4619b70d82a1abcaf0c9d6cc77d0c332ddd7299d3e1849aaca28860')
+sha256sums_x86_64=('db8b4b6a214a56d31aa68bb020cf392a37e16be17afea5792b5aedebbb68ed38')
+sha256sums_aarch64=('cff67dd47d1cf3c59f3f32ba5cd6189d73b3c4ad7d2a58a870576d497e1d4d58')
 
 
 case ${CARCH} in
