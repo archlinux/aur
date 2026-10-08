@@ -1,0 +1,4 @@
+[crossplane-gixy]
+source = "git"
+git = "https://github.com/dvershinin/crossplane.git"
+prefix = "v"
