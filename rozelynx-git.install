@@ -1,0 +1,24 @@
+# net-iface per-tab interface binding (SO_BINDTODEVICE) needs CAP_NET_RAW
+# on the browser binary. The build stage cannot grant it (makepkg runs as
+# a regular user), so it is done here, the same way the Gentoo ebuild does
+# in pkg_postinst.
+
+_rozelynx_setcap() {
+  local bin
+  for bin in /usr/lib/rozelynx/rozelynx /usr/lib64/rozelynx/rozelynx; do
+    [[ -x "${bin}" ]] || continue
+    if setcap cap_net_raw+ep "${bin}" 2>/dev/null; then
+      echo "rozelynx: granted cap_net_raw to ${bin} (net-iface interface binding)"
+      return 0
+    fi
+  done
+  echo "rozelynx: warning: could not setcap cap_net_raw (per-tab interface binding stays disabled until granted)"
+}
+
+post_install() {
+  _rozelynx_setcap
+}
+
+post_upgrade() {
+  _rozelynx_setcap
+}

@@ -1,0 +1,66 @@
+pkgbase = rozelynx-git
+	pkgdesc = RozeLynx Web Browser: Firefox fork with LibreWolf privacy patches and per-tab network interface binding
+	pkgver = 156.0.1.r6.ge28dc3a
+	pkgrel = 1
+	url = https://bytewheel.org/rozelynx
+	install = rozelynx-git.install
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	license = GPL-2.0-only
+	license = LGPL-2.1-only
+	makedepends = clang
+	makedepends = curl
+	makedepends = git
+	makedepends = imagemagick
+	makedepends = lld
+	makedepends = nasm
+	makedepends = nodejs
+	makedepends = pkgconf
+	makedepends = python>=3.12
+	makedepends = rust>=1.90
+	makedepends = zip
+	depends = alsa-lib
+	depends = aom
+	depends = at-spi2-core
+	depends = cairo
+	depends = dav1d
+	depends = dbus
+	depends = ffmpeg
+	depends = fontconfig
+	depends = freetype2
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = harfbuzz
+	depends = icu>=78.1
+	depends = libdrm
+	depends = libepoxy
+	depends = libevent
+	depends = libjpeg-turbo
+	depends = libpulse
+	depends = libvpx
+	depends = libwebp
+	depends = libx11
+	depends = libxcb
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxext
+	depends = libxfixes
+	depends = libxrandr
+	depends = mesa
+	depends = nspr>=4.39
+	depends = nss>=3.125
+	depends = pango
+	depends = pixman
+	depends = zlib
+	optdepends = libva: VAAPI hardware video decoding
+	optdepends = networkmanager: geolocation via nearby Wi-Fi networks (necko-wifi)
+	optdepends = vulkan-icd-loader: Vulkan rendering (hwaccel vulkantest)
+	provides = rozelynx=156.0.1
+	conflicts = rozelynx
+	source = rozelynx-git::git+https://github.com/Bytewheel/RozeLynx.git#branch=main
+	sha256sums = SKIP
+
+pkgname = rozelynx-git
+
