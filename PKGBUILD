@@ -2,32 +2,23 @@
 
 pkgbase=computer-use-linux
 pkgname=('computer-use-linux' 'gnome-shell-extension-computer-use-linux')
-pkgver=0.7.11
-pkgrel=4
+pkgver=0.7.12
+pkgrel=1
 pkgdesc="Control a real Linux desktop from any MCP host (AT-SPI, portals, multi-compositor window targeting)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/agent-sh/computer-use-linux"
 license=('MIT')
 makedepends=('cargo')
 checkdepends=('dbus')
-source=(
-  "${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-  "${pkgbase}-pr230.patch::${url}/pull/230.patch"
-  "${pkgbase}-pr231.patch::${url}/pull/231.patch"
-  "${pkgbase}-pr232.patch::${url}/pull/232.patch")
-sha256sums=('3554e606e3f05d544ac2e4c014bb7797ac6a4c0868433d3e191a27f37a0ee809'
-            '2edb81a431d6cf52dcecfbb78568fcd849bd5f94f503c807b6607160e1b17309'
-            '50ca574425ba6c9b67f4d04ca7047039e4a60b7b539bd97424877360df83c07e'
-            'eacdbf947fb3c53e717da3b14c219393fe198670cdd23a1404a67d50ed18a55b')
+source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('f54e12222c1d17b4c83f0356e224a6152a95ebdafbcd087714184e3b8eaadbb0')
 
 _uuid=computer-use-linux@avifenesh.dev
 
 prepare() {
     cd "${pkgbase}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
-    patch -p1 -i "${srcdir}/${pkgbase}-pr230.patch"
-    patch -p1 -i "${srcdir}/${pkgbase}-pr231.patch"
-    patch -p1 -i "${srcdir}/${pkgbase}-pr232.patch"
+
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
