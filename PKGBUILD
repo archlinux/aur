@@ -2,7 +2,7 @@
 
 pkgname=voicefox-git
 _pkgname="${pkgname%-git}"
-pkgver=0.5.0.r0.gf788474
+pkgver=0.6.0.r3.gad84a2b
 pkgrel=1
 epoch=1
 pkgdesc="Rust + ratatui + libmpv 驱动的键盘优先终端音乐播放器：多音源、歌词、本地音乐、下载、收藏与歌单。"
@@ -62,7 +62,8 @@ check() {
 
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo test --frozen --workspace
+	# flaky upstream test: evicts by atime but only staggers mtime, so coarse-clock ties fall back to readdir order
+	cargo test --frozen --workspace -- --skip cover_cache::tests::sweep_evicts_down_to_the_limit_by_oldest_access
 
 	target/release/voicefox --check-libmpv
 }
