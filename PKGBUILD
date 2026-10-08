@@ -13,11 +13,13 @@ source=(
     'update-repo-mirrors'
     'repo-mirrors@.service'
     'repo-mirrors@.timer'
+    'rate-mirrors-repo-updater.install'
 )
 sha256sums=(
-    'f13497749c2809b048c994a7529843686a7ee7aba01a91f20a1b1a49852f978b'
+    '8c015d9348f87b2cb6c95c606e1dcc5af0d5b5ca802ce035edb1f985aa9cf9df'
     'e216d4395321c9341a9a7dcc3fd1a4e9b33ade519ceb31f0f89037fd9d409c23'
     '77e552978ce9f95b1c2bcfed891fb0300ec9136d167cb07496e910b49f000efd'
+    'd51b09bdd59b6c8b8d483dcde128194fe17c38b5f3bea8c9a9ee972265e38de6'
 )
 
 package() {
