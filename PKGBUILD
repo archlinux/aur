@@ -1,7 +1,7 @@
 # Contributor: Asuka Minato <asukaminato at nyan dot eu dot org>
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=ecode-bin
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance"
 url="https://github.com/SpartanJ/ecode"
@@ -11,8 +11,8 @@ depends=(glibc bash libelf libglvnd hicolor-icon-theme sdl2)
 provides=(ecode)
 source=("$url/raw/ecode-$pkgver/LICENSE")
 source_x86_64=("$url/releases/download/ecode-$pkgver/ecode-linux-$pkgver-$arch.tar.gz")
-sha256sums=(SKIP)
-sha256sums_x86_64=('cfa149d3d7f43fae54a2009383b58eaef95d1046c47d80b5e4f97aa03aec4627')
+sha256sums=('SKIP')
+sha256sums_x86_64=('2806d68aa08e81e89eabd1c5eb440b6711a7758e08e2cd24138ea242a4354ade')
 
 package() {
   install -Dm755 ecode/{ecode,ecode.bin} -t "$pkgdir/opt/$pkgname/"
