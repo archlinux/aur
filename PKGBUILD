@@ -9,12 +9,12 @@
 # The broker is standalone: it does not depend on rosec at runtime (rosecd
 # connects to *it*). rosec lists this in its optdepends.
 #
-# The release workflow renders this file by substituting 0.0.33.
+# The release workflow renders this file by substituting 0.0.35.
 # At build time, pkgver() overrides the static version with the actual
 # git-derived version.
 
 pkgname=rosec-uhid-git
-pkgver=0.0.33
+pkgver=0.0.35
 pkgrel=1
 pkgdesc="Privileged broker for rosec's FIDO2/WebAuthn virtual authenticator (git)"
 arch=('x86_64' 'aarch64')
