@@ -1,6 +1,6 @@
 pkgbase = toneshifteq
 	pkgdesc = A dynamic 12-band equalizer for mixing and mastering
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/brummer10/ToneShiftEQ
 	arch = aarch64
@@ -15,8 +15,8 @@ pkgbase = toneshifteq
 	makedepends = libsndfile
 	makedepends = lv2
 	makedepends = xxd
-	source = https://github.com/brummer10/ToneShiftEQ/releases/download/v1.2.0/ToneShiftEQ-v1.2.0-src.tar.xz
-	sha256sums = dd63988c4eeec1332975930367316cee1b11dd89d852fc2b5a1d32ebed29d44a
+	source = https://github.com/brummer10/ToneShiftEQ/releases/download/v1.3.0/ToneShiftEQ-v1.3.0-src.tar.xz
+	sha256sums = eec847f6f7030601323d6ffb47bffdd6f8de879c696721033e6fb9909da4fd2a
 
 pkgname = toneshifteq
 	arch = any
