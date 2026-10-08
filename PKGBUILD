@@ -28,6 +28,8 @@ prepare() {
 package() {
   cp -a "${srcdir}/deb/usr" "${pkgdir}/"
 
+  # the binaries hardcode RUNPATH and a lookup path to the Debian multiarch
+  # directory holding the bundled SDR driver libraries, so keep it as shipped
   rm -r "${pkgdir}/usr/share/doc"
   install -Dm644 "${srcdir}/deb/usr/share/doc/OnAir/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
