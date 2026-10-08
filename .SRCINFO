@@ -1,0 +1,13 @@
+pkgbase = srf
+	pkgdesc = Satellite repeat finder for long DNA sequences
+	pkgver = 20240108
+	pkgrel = 1
+	url = https://github.com/lh3/srf
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	source = srf-20240108.tar.gz::https://github.com/lh3/srf/archive/e54ca8c8eccf6b1f19428b0f862f2c90575290a0.tar.gz
+	sha256sums = 8a9e6851ff02c119eade2b1a8f1758ba0fda4780cd8547630da204abf84ba6c4
+
+pkgname = srf
