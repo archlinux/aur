@@ -1,6 +1,6 @@
 # Maintainer: daonm <https://github.com/the-daonm>
 pkgname=gopac
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A warm, beautiful TUI for Arch Linux package management"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go' 'git')
 optdepends=('yay: AUR helper' 'paru: AUR helper')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('66460ba4ed6caf7ce7784975de577763b1d1361b3fa9998f9d7a1a6a3e31b502')
+sha256sums=('42a59689c6469317718690299eb901a79756875685b84edd7305aa73eb475ba9')
 
 build() {
   cd "$pkgname-$pkgver"
