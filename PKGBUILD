@@ -3,7 +3,7 @@
 
 pkgname=python-forgekit
 _srcname=forgekit
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Shared Textual TUI shell library for the Forge Suite — menu bar, dialogs, settings forms and save flows, a start-up check, a centred password box, Catppuccin theme"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('python-gobject: the polkit password asked inside the app (grubForge
             'polkit: the same')
 source=("${_srcname}-${pkgver}.tar.gz::${_repo}/releases/download/${_srcname}-v${pkgver}/${_srcname}-${pkgver}.tar.gz"
         "${_srcname}-${pkgver}.tar.gz.asc::${_repo}/releases/download/${_srcname}-v${pkgver}/${_srcname}-${pkgver}.tar.gz.asc")
-sha256sums=('6a19dd8d42715af0db9430e475db4b4580040f1a9196767fc11399edb798aa96'
+sha256sums=('ef49b3c6a92c47192717580588e12c4cc5c030a421d9450dd895c6344e83d2f6'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
@@ -64,6 +64,8 @@ print('forgekit headless mount OK (window and console mode)')
     PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_v07
     # 0.8.0: the password's dots centred, measured on the drawn line
     PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_v08
+    # 0.9.0: the menu bar wraps on a narrow window — titles on screen by position, a second-row click
+    PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_menubar
 }
 
 package() {
