@@ -1,7 +1,7 @@
 pkgbase = orca-slicer-bin
 	pkgdesc = G-code generator for 3D printers
 	pkgver = 2.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OrcaSlicer/OrcaSlicer
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -16,6 +16,7 @@ pkgbase = orca-slicer-bin
 	depends = libmspack
 	depends = libice
 	depends = libsm
+	depends = gst-plugin-gtk
 	provides = orca-slicer
 	conflicts = orca-slicer
 	options = !strip

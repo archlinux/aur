@@ -2,14 +2,14 @@
 
 pkgname=orca-slicer-bin
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="G-code generator for 3D printers"
 arch=('x86_64')
 url="https://github.com/OrcaSlicer/OrcaSlicer"
 license=('AGPL-3.0-only')
 depends=('glu' 'cairo' 'gtk3' 'gstreamer' 'gst-plugins-good'
          'wayland' 'webkit2gtk-4.1' 'mesa-utils' 'libmspack'
-         'libice' 'libsm')
+         'libice' 'libsm' 'gst-plugin-gtk')
 provides=("orca-slicer")
 conflicts=("orca-slicer")
 options=(!strip !zipman !debug)
@@ -31,7 +31,7 @@ package() {
   ln -s /opt/${pkgname%-bin}/AppRun ${pkgdir}/usr/bin/orca-slicer
 
   install -Dm644 squashfs-root/com.orcaslicer.OrcaSlicer.desktop ${pkgdir}/usr/share/applications/orca-slicer.desktop
-  sed -i '/^Exec=/ c\Exec=/opt/orca-slicer/AppRun %U' ${pkgdir}/usr/share/applications/orca-slicer.desktop
+  sed -i '/^Exec=/ c\Exec=env MESA_LOADER_DRIVER_OVERRIDE=zink /opt/orca-slicer/AppRun %U' ${pkgdir}/usr/share/applications/orca-slicer.desktop
   sed -i '/^MimeType=/ s|$|x-scheme-handler/orcaslicer;x-scheme-handler/bambustudio;|' ${pkgdir}/usr/share/applications/orca-slicer.desktop
 
   install -d ${pkgdir}/usr/share/icons/
