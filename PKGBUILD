@@ -1,6 +1,6 @@
 pkgname=mangayomi-linux
 pkgver=0.9.8
-pkgrel=8
+pkgrel=9
 pkgdesc="Mangayomi - Manga, Anime and Novel reader (prebuilt zip with AppImage QuickJS fix)"
 arch=('x86_64')
 url="https://github.com/kodjodevf/mangayomi"
@@ -31,12 +31,17 @@ package() {
   # 1) Directory app
   install -d "$pkgdir/opt/mangayomi"
 
-  # 2) Copia i file estratte dallo zip
+  # 2) Copia i file estratti dallo zip
   cp -r "$srcdir/mangayomi" "$srcdir/data" "$srcdir/lib" "$pkgdir/opt/mangayomi/"
 
-  # 3) Sovrascrivi il file .so difettoso con quello estratto dall'AppImage
-  install -m755 "$srcdir/squashfs-root/lib/libflutter_qjs_plugin.so" \
-    "$pkgdir/opt/mangayomi/lib/libflutter_qjs_plugin.so"
+  # 3) Cerca dinamicamente libflutter_qjs_plugin.so nello squashfs e sovrascrivi quella bacata
+  QJS_SO=$(find "$srcdir/squashfs-root" -name "libflutter_qjs_plugin.so" | head -n1)
+  if [ -f "$QJS_SO" ]; then
+    install -m755 "$QJS_SO" "$pkgdir/opt/mangayomi/lib/libflutter_qjs_plugin.so"
+  else
+    echo "ERRORE: libflutter_qjs_plugin.so non trovata nello squashfs!"
+    exit 1
+  fi
 
   chmod 755 "$pkgdir/opt/mangayomi/mangayomi"
   chmod 755 "$pkgdir/opt/mangayomi/lib/"*.so
