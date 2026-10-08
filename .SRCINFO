@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-mvutensils
 	pkgdesc = MVUtensils plugin for VapourSynth
-	pkgver = 9
+	pkgver = 10
 	pkgrel = 1
 	url = https://github.com/myrsloik/mvutensils
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = vapoursynth-plugin-mvutensils
 	depends = libgcc
 	depends = libstdc++
 	depends = vapoursynth
-	source = git+https://github.com/myrsloik/mvutensils.git#tag=v9
-	sha256sums = 40f839b89264322d2db4405080190e88948088dd0087aad41693a002bcafc2ca
+	source = git+https://github.com/myrsloik/mvutensils.git#tag=v10
+	sha256sums = a32f13bf47867241323ca89126bb612876dd3ba900d5162c9da32abacac04477
 
 pkgname = vapoursynth-plugin-mvutensils

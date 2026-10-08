@@ -1,7 +1,7 @@
 # Maintainer: Oliver Freyermuth <o.freyermuth@googlemail.com>
 
 pkgname=vapoursynth-plugin-mvutensils
-pkgver=9
+pkgver=10
 pkgrel=1
 pkgdesc='MVUtensils plugin for VapourSynth'
 arch=(x86_64)
@@ -22,7 +22,7 @@ makedepends=(
   python-installer
 )
 source=(git+https://github.com/myrsloik/mvutensils.git#tag=v${pkgver})
-sha256sums=('40f839b89264322d2db4405080190e88948088dd0087aad41693a002bcafc2ca')
+sha256sums=('a32f13bf47867241323ca89126bb612876dd3ba900d5162c9da32abacac04477')
 
 prepare() {
   cd mvutensils
