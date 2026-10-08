@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Preserve config paths relative to the caller before entering the data directory.
+args=("$@")
+has_config=false
+for ((index = 0; index < ${#args[@]}; index++)); do
+  case "${args[index]}" in
+    --config|-c)
+      has_config=true
+      if ((index + 1 < ${#args[@]})); then
+        index=$((index + 1))
+        if [[ -n "${args[index]}" && "${args[index]}" != /* && "${args[index]}" != -* ]]; then
+          args[index]="$PWD/${args[index]}"
+        fi
+      fi
+      ;;
+    --config=*)
+      has_config=true
+      path="${args[index]#--config=}"
+      if [[ -n "$path" && "$path" != /* ]]; then
+        args[index]="--config=$PWD/$path"
+      fi
+      ;;
+    -c?*)
+      has_config=true
+      path="${args[index]#-c}"
+      prefix=-c
+      if [[ "$path" == =* ]]; then
+        prefix=-c=
+        path="${path#=}"
+      fi
+      if [[ -n "$path" && "$path" != /* ]]; then
+        args[index]="$prefix$PWD/$path"
+      fi
+      ;;
+    --)
+      break
+      ;;
+  esac
+done
+
+# Upstream shares Akagi's config directory name and WebKit application identifier.
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/akagims"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/akagims"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}/akagims"
+umask 077
+mkdir -p "$XDG_CONFIG_HOME"/{history,logs} "$XDG_DATA_HOME" "$XDG_CACHE_HOME"
+if [[ "$has_config" == false ]]; then
+  args=(--config "$XDG_CONFIG_HOME/config.toml" "${args[@]}")
+fi
+cd "$XDG_CONFIG_HOME"
+exec /opt/akagims/akagi "${args[@]}"

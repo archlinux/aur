@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=AkagiMS
+Comment=Mahjong Soul AI assistant with an integrated game window
+Exec=akagims
+TryExec=akagims
+Icon=akagims
+Terminal=false
+Categories=Game;
