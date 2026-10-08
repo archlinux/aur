@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-frei0r
-pkgver=0.1.2 # renovate: datasource=github-tags depName=savonet/ocaml-frei0r
+pkgver=0.1.3 # renovate: datasource=github-tags depName=savonet/ocaml-frei0r
 pkgrel=1
 pkgdesc="OCaml bindings to the frei0r video API"
 arch=('x86_64')
@@ -27,4 +27,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('f6c22e7c9426cfadd1f20f9ee7970b1b5b7546588a872f89f8d8296f7e7bcb08')
+sha256sums=('7184cf02b1692bf3c8069de5137b9d1cc9eec405d25b217ddb4d0d3fd506caba')
