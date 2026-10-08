@@ -6,7 +6,7 @@
 # in seconds, nothing is compiled. The binary + docs come straight from
 # the release tarball below.
 pkgname=zcc
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Blazing-fast code counter (tokei clone) written in ZZ'
 arch=('x86_64')
@@ -15,16 +15,22 @@ license=('MIT')
 depends=('glibc' 'sqlite')
 makedepends=('python')
 source=("zcc-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/zcc-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('03d12b9da5726da90a0a179bd02c89c572da33a3fb183837824c0acf393c1efb')
+sha256sums=('482a60f5185f48f6433b58e2cb929e69609c6e39ef6d59c5b83539ed322379b8')
 
 check() {
   # Prebuilt binary: smoke-test only (full suite ran in CI pre-release).
-  ./zcc --version
-  ./zcc --no-cache . --output json | python3 -c "import json,sys; d=json.load(sys.stdin); assert d['total']['files'] > 0"
+  # The binary links the bundled libstd: run it with the tarball lib dir.
+  LD_LIBRARY_PATH="$srcdir/lib" ./zcc --version
+  LD_LIBRARY_PATH="$srcdir/lib" ./zcc --no-cache . --output json | python3 -c "import json,sys; d=json.load(sys.stdin); assert d['total']['files'] > 0"
+  bash -n zcc-wrapper.sh
 }
 
 package() {
-  install -Dm755 zcc "$pkgdir/usr/bin/zcc"
+  # Real binary + bundled runtime libs live under /usr/lib/zcc;
+  # /usr/bin/zcc is a launcher wrapper setting LD_LIBRARY_PATH.
+  install -Dm755 zcc "$pkgdir/usr/lib/zcc/zcc"
+  install -Dm644 lib/*.so "$pkgdir/usr/lib/zcc/"
+  install -Dm755 zcc-wrapper.sh "$pkgdir/usr/bin/zcc"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 config.example.json "$pkgdir/usr/share/doc/$pkgname/config.example.json"
