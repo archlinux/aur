@@ -1,6 +1,6 @@
 pkgbase = spectrometerui-git
 	pkgdesc = A small desktop application providing a user interface for spectrometer measurements (Y21B7W10034CCPD)
-	pkgver = r1.a69e031
+	pkgver = r19.7d3eead
 	pkgrel = 1
 	url = https://github.com/zaps166/SpectrometerUI
 	arch = x86_64

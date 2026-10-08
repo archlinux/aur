@@ -1,5 +1,5 @@
 pkgname=spectrometerui-git
-pkgver=r1.a69e031
+pkgver=r19.7d3eead
 pkgrel=1
 pkgdesc='A small desktop application providing a user interface for spectrometer measurements (Y21B7W10034CCPD)'
 arch=('x86_64')
@@ -33,7 +33,8 @@ build() {
   cmake -B "build" -S "SpectrometerUI" -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_QT_SERIAL_PORT=ON
+    -DUSE_QT_SERIAL_PORT=ON \
+    -DINCLUDE_QML_CONTENTS=ON
   cmake --build build
 }
 
