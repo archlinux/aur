@@ -1,14 +1,11 @@
 pkgbase = mangayomi-linux
-	pkgdesc = Mangayomi - Manga, Anime and Novel reader (prebuilt Linux zip with fixed QuickJS)
+	pkgdesc = Mangayomi - Manga, Anime and Novel reader (prebuilt zip with AppImage QuickJS fix)
 	pkgver = 0.9.8
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/kodjodevf/mangayomi
 	arch = x86_64
 	license = GPL3
-	makedepends = git
-	makedepends = cmake
-	makedepends = ninja
-	makedepends = gcc
+	makedepends = squashfs-tools
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = mpv
@@ -29,7 +26,7 @@ pkgbase = mangayomi-linux
 	conflicts = mangayomi-git
 	options = !strip
 	source = https://github.com/kodjodevf/mangayomi/releases/download/v0.9.8/Mangayomi-v0.9.8-linux.zip
-	source = flutter_qjs::git+https://github.com/fcanas/flutter_qjs.git#branch=main
+	source = https://github.com/kodjodevf/mangayomi/releases/download/v0.9.8/Mangayomi-v0.9.8-linux-x86_64.AppImage
 	sha256sums = SKIP
 	sha256sums = SKIP
 
