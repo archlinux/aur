@@ -1,8 +1,8 @@
 # Maintainer: Yangtse Su <yangtsesu@gmail.com>
 
 pkgname=tgrep
-pkgver=1.0.11
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Trigram-indexed grep: fast regex search for large codebases with a client/server architecture'
 arch=('x86_64' 'aarch64')
 url='https://github.com/microsoft/tgrep'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc' 'libgcc')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/microsoft/tgrep/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3fd12a6f76186b5ee7c1072d9f60d5133028b10acea125b24fa6b813c04dd839')
+sha256sums=('7a9f136ff8f52175231091ae7710dafb946fd85021efcb62ff5deca4bcb1ac09')
 
 prepare() {
   cd "$pkgname-$pkgver"
