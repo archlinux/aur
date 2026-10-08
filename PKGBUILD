@@ -3,7 +3,7 @@
 # modified by hand
 
 pkgname='python-jupyterlite-core'
-pkgver='0.7.4'
+pkgver='0.8.6'
 _module='jupyterlite-core'
 _src_folder="jupyterlite_core-${pkgver}"
 pkgrel=1
@@ -15,7 +15,7 @@ optdepends=('python-libarchive-c: for better performance when working with archi
 license=('custom:BSD License')
 arch=('any')
 source=("https://github.com/jupyterlite/jupyterlite/releases/download/v${pkgver}/jupyterlite_core-${pkgver}.tar.gz")
-sha256sums=('c8a74b4ca9792f611b657465f63a79543b381063ebebdc2b5b3b695704e14278')
+sha256sums=('d6abd7ff7efb069186db060fbf4a43033ce09373ec3c7273565e0e0819346eb2')
 
 build() {
     cd "${srcdir}/${_src_folder}"
