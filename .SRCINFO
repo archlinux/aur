@@ -1,19 +1,19 @@
 pkgbase = colamd-bin
 	pkgdesc = A free, elegant Markdown editor anyone can pick up. No toolbars, no clutter, and the file on disk is always what you see.
-	pkgver = 2.7.5
+	pkgver = 2.7.6
 	pkgrel = 1
 	url = http://colamd.com/
 	arch = x86_64
 	license = MIT
 	makedepends = asar
 	depends = electron44
-	provides = colamd=2.7.5
+	provides = colamd=2.7.6
 	conflicts = colamd
-	source = colamd-2.7.5.deb::https://github.com/marswaveai/ColaMD/releases/download/v2.7.5/ColaMD_2.7.5_amd64.deb
-	source = LICENSE-2.7.5::https://raw.githubusercontent.com/marswaveai/ColaMD/v2.7.5/LICENSE
+	source = colamd-2.7.6.deb::https://github.com/marswaveai/ColaMD/releases/download/v2.7.6/ColaMD_2.7.6_amd64.deb
+	source = LICENSE-2.7.6::https://raw.githubusercontent.com/marswaveai/ColaMD/v2.7.6/LICENSE
 	source = colamd.sh
-	sha256sums = 8c38c3ec6ec7561ba53cebf4528b9c55f0fb5f613052f59ac3420a9abd78bea6
+	sha256sums = e7af2e725cbdf030d78fb517efe65a34ba1a491d3052148f592a713d476d89bb
 	sha256sums = b458eb0211ec5df71f8c32cfde43027bd0471337d36f1637fe229b76369fcc45
-	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
+	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
 
 pkgname = colamd-bin

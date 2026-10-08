@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=colamd-bin
 _pkgname=ColaMD
-pkgver=2.7.5
+pkgver=2.7.6
 _electronversion=44
 pkgrel=1
 pkgdesc="A free, elegant Markdown editor anyone can pick up. No toolbars, no clutter, and the file on disk is always what you see."
@@ -22,11 +22,11 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/marswaveai/ColaMD/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8c38c3ec6ec7561ba53cebf4528b9c55f0fb5f613052f59ac3420a9abd78bea6'
+sha256sums=('e7af2e725cbdf030d78fb517efe65a34ba1a491d3052148f592a713d476d89bb'
             'b458eb0211ec5df71f8c32cfde43027bd0471337d36f1637fe229b76369fcc45'
-            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
 _get_app_dir() {
-	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -43,7 +43,6 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
-        s/@cfgdirname@/${pkgname%-bin}/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
