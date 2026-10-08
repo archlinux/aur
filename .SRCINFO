@@ -1,10 +1,10 @@
 pkgbase = unbloated-youtube-bin
 	pkgdesc = Lightweight, configurable YouTube desktop client: GPUI, embedded mpv, yt-dlp (prebuilt binary)
-	pkgver = 0.21.3
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://github.com/antlis/unbloated-youtube
 	arch = x86_64
-	license = MIT
+	license = AGPL-3.0-only
 	depends = gcc-libs
 	depends = glibc
 	depends = libxcb
@@ -19,7 +19,7 @@ pkgbase = unbloated-youtube-bin
 	provides = unbloated-youtube
 	conflicts = unbloated-youtube
 	options = !strip
-	source = https://github.com/antlis/unbloated-youtube/releases/download/v0.21.3/unbloated-youtube-0.21.3-x86_64-linux.tar.gz
-	sha256sums = d9cb70bc1fe5886ae03a9307083436a613479088646b984157c2b5d5504b37cd
+	source = https://github.com/antlis/unbloated-youtube/releases/download/v0.22.0/unbloated-youtube-0.22.0-x86_64-linux.tar.gz
+	sha256sums = 53289f1691b5a1534d82320a91f97f99d1e10da8ef1a076e61d5cd92bdaebd82
 
 pkgname = unbloated-youtube-bin
