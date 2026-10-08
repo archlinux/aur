@@ -1,0 +1,23 @@
+pkgbase = rtop-bin
+	pkgdesc = Rust Based Linux System Monitor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/klpod221/rtop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = rtop
+	conflicts = rtop
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/klpod221/rtop/v0.1.0/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/klpod221/rtop/v0.1.0/LICENSE
+	sha256sums = 0559d0875ab20771a2be321eb301be8b68aee3393834eda6025a25def425d190
+	sha256sums = faa1f5852bcf0174cafc33fdb0a7ac5fb0a414f0e19bc838c6d3bd189d52f20d
+	source_x86_64 = rtop-x86_64-0.1.0.tgz::https://github.com/klpod221/rtop/releases/download/v0.1.0/rtop-v0.1.0-x86_64-gnu.tar.gz
+	sha256sums_x86_64 = e68df00863a910a3b19c6133dd350b05e4929f7276f7151b9b2cacf287cd52f8
+	source_aarch64 = rtop-aarch64-0.1.0.tgz::https://github.com/klpod221/rtop/releases/download/v0.1.0/rtop-v0.1.0-aarch64-gnu.tar.gz
+	sha256sums_aarch64 = 58721f7b8bcdb6ff1d4c4695bdc2300e76d237c3525482d735593f1423fa16fa
+
+pkgname = rtop-bin

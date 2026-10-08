@@ -1,0 +1,5 @@
+[rtop-bin]
+source = "github"
+github = "klpod221/rtop"
+use_latest_release = true
+prefix = "v"
