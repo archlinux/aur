@@ -1,7 +1,7 @@
 # Maintainer: Eduardo Parra Mazuecos <eduparra90@gmail.com>
 pkgname=vega-cli-bin
 _pkgname=vega
-pkgver=1.4.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Amazon Vega CLI (KeplerVersionManager) — installs and manages the Vega SDK in \$HOME/vega"
 arch=('x86_64')
@@ -17,9 +17,9 @@ optdepends=(
 provides=('vega' 'kepler' 'vvman')
 conflicts=('vega' 'kepler' 'vvman')
 options=(!strip !debug)
-_sha256=2789ad833bff8395c796d203d805309ea2d27cf26a3d6c1141a5dc6a403aba8a
-source=("vega-1.4.2-linux-x86_64.tar.gz::https://kepler-static-artifacts.kepler.labcollab.net/27/2789ad833bff8395c796d203d805309ea2d27cf26a3d6c1141a5dc6a403aba8a")
-sha256sums=('2789ad833bff8395c796d203d805309ea2d27cf26a3d6c1141a5dc6a403aba8a')
+_sha256=df2dad1b2263cf813404f6c31112935a13570ae8b79a7344e9f110250ea26fbf
+source=("vega-1.4.4-linux-x86_64.tar.gz::https://kepler-static-artifacts.kepler.labcollab.net/df/df2dad1b2263cf813404f6c31112935a13570ae8b79a7344e9f110250ea26fbf")
+sha256sums=('df2dad1b2263cf813404f6c31112935a13570ae8b79a7344e9f110250ea26fbf')
 install="${pkgname}.install"
 
 package() {
