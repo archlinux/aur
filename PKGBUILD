@@ -21,8 +21,8 @@ sha256sums=(
 )
 
 prepare() {
-  bsdtar -xf "${srcdir}/linux_amd64.deb" -C "${srcdir}" data.tar.xz
-  bsdtar -xf "${srcdir}/data.tar.xz" -C "${srcdir}"
+  bsdtar -xf "${srcdir}/linux_amd64.deb" -C "${srcdir}" data.tar.zst
+  bsdtar -xf "${srcdir}/data.tar.zst" -C "${srcdir}"
 }
 
 package() {
