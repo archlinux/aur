@@ -10,7 +10,7 @@ license=('custom')
 depends=('agentics')
 options=('!strip' '!debug')
 source=("agentics-agentboard-0.3.298-x86_64.enc::https://repo.agentics.co.za/x86_64/agentics-agentboard-0.3.298-x86_64.enc")
-sha512sums=('d46ea71ceba9b1703346817ff2232686a8e15365bc924c88f5c6712387f4dfbf99576bba3aa3c89593dbd52b9dff4ed1fe2431015eb642decbbfcba39b5bfba4')
+sha512sums=('8becb30e7559ed4888c8227feb7e64957e350b4ff5edb2455abd53f154997d66ce0881c9b6a130b9418f8895cee3de0a75fa775da5e5aa5980cc77a68c0fabbf')
 
 package() {
   install -Dm644 "$srcdir/agentics-agentboard-0.3.298-x86_64.enc" "$pkgdir/opt/agentics/components/agentboard/0.3.298/agentboard-0.3.298-linux-amd64.enc"
