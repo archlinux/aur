@@ -1,7 +1,7 @@
 pkgname=mangayomi-linux
 pkgver=0.9.8
-pkgrel=3
-pkgdesc="Mangayomi - Manga, Anime and Novel reader (prebuilt Linux zip with QuickJS fix)"
+pkgrel=4
+pkgdesc="Mangayomi - Manga, Anime and Novel reader (prebuilt Linux zip)"
 arch=('x86_64')
 url="https://github.com/kodjodevf/mangayomi"
 license=('GPL3')
@@ -11,37 +11,35 @@ options=(!strip)
 provides=('mangayomi')
 conflicts=('mangayomi' 'mangayomi-bin' 'mangayomi-git')
 
-source=(
-  "https://github.com/kodjodevf/mangayomi/releases/download/v${pkgver}/Mangayomi-v${pkgver}-linux.zip"
-  "https://raw.githubusercontent.com/fcanas/flutter_qjs/main/linux/libflutter_qjs_plugin.so"
-)
-sha256sums=('SKIP' 'SKIP')
+source=("https://github.com/kodjodevf/mangayomi/releases/download/v${pkgver}/Mangayomi-v${pkgver}-linux.zip")
+sha256sums=('SKIP')
 
 package() {
   # 1) Directory app
   install -d "$pkgdir/opt/mangayomi"
 
-  # 2) Copia contenuti dallo zip
-  cp -r "$srcdir"/mangayomi "$srcdir"/data "$srcdir"/lib "$pkgdir/opt/mangayomi/"
-
-  # 3) Patch: Sovrascrivi libflutter_qjs_plugin.so con la versione che esporta jsNewRuntime
-  if [ -f "$srcdir/libflutter_qjs_plugin.so" ]; then
-    cp "$srcdir/libflutter_qjs_plugin.so" "$pkgdir/opt/mangayomi/lib/libflutter_qjs_plugin.so"
-  fi
+  # 2) Copia i file estratti
+  cp -r "$srcdir/mangayomi" "$srcdir/data" "$srcdir/lib" "$pkgdir/opt/mangayomi/"
 
   chmod 755 "$pkgdir/opt/mangayomi/mangayomi"
   chmod 755 "$pkgdir/opt/mangayomi/lib/"*.so
 
-  # 4) Symlink eseguibile
+  # 3) Wrapper script per avviare l'app nella sua directory
   install -d "$pkgdir/usr/bin"
-  ln -s "/opt/mangayomi/mangayomi" "$pkgdir/usr/bin/mangayomi"
+  cat <<'EOF' > "$pkgdir/usr/bin/mangayomi"
+#!/bin/sh
+export LD_LIBRARY_PATH="/opt/mangayomi/lib:${LD_LIBRARY_PATH}"
+cd /opt/mangayomi
+exec ./mangayomi "$@"
+EOF
+  chmod 755 "$pkgdir/usr/bin/mangayomi"
 
-  # 5) Icona
+  # 4) Icona
   install -Dm644 \
     "$srcdir/data/flutter_assets/assets/app_icons/icon.png" \
     "$pkgdir/usr/share/pixmaps/mangayomi.png"
 
-  # 6) Desktop Entry
+  # 5) Desktop entry
   install -Dm644 /dev/stdin \
     "$pkgdir/usr/share/applications/mangayomi.desktop" <<EOF
 [Desktop Entry]
