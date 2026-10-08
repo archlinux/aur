@@ -1,0 +1,12 @@
+pkgbase = cgranges
+	pkgdesc = Fast interval overlap queries on genomic intervals
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/lh3/cgranges
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = cgranges-0.1.1.tar.gz::https://github.com/lh3/cgranges/archive/v0.1.1.tar.gz
+	sha256sums = 9445ec0cab97e736981db440cb306069d6fe33f638fbd142c106a0408ba10d6c
+
+pkgname = cgranges
