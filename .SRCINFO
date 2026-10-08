@@ -1,6 +1,6 @@
 pkgbase = libceed-git
 	pkgdesc = Code for Efficient Extensible Discretizations
-	pkgver = 0.12.0.r1514.g82a1d33
+	pkgver = 1.0.0.r0.g8a374e8
 	pkgrel = 1
 	url = https://github.com/ceed/libceed
 	arch = x86_64

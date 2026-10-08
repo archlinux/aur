@@ -7,7 +7,7 @@
 
 _pkgname=libceed
 pkgname=${_pkgname}-git
-pkgver=0.12.0.r1514.g82a1d33
+pkgver=1.0.0.r0.g8a374e8
 pkgrel=1
 pkgdesc="Code for Efficient Extensible Discretizations"
 arch=('x86_64')
@@ -47,7 +47,7 @@ options=()
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
