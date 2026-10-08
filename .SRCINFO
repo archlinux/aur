@@ -1,6 +1,6 @@
 pkgbase = wegame-launcher
 	pkgdesc = 开箱即用的简易 WeGame 启动器，使用 WE-Proton 运行
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/wegame-launcher
 	arch = any
@@ -29,7 +29,8 @@ pkgbase = wegame-launcher
 	optdepends = 7zip: 解压 WeGame 离线安装包（没有时自动下载）
 	optdepends = gamescope: run WeGame nested in its own compositor
 	optdepends = mangohud: performance overlay
-	source = wegame-launcher-0.2.0.tar.gz::https://github.com/SHORiN-KiWATA/wegame-launcher/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 7c38126214df3bd21353bd57175c04c6bb2ca1a884d16f1b7f04a050a326e2bf
+	optdepends = passt: 独立网络命名空间，TUN 模式的加速器需要
+	source = wegame-launcher-0.3.0.tar.gz::https://github.com/SHORiN-KiWATA/wegame-launcher/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 1644d414effd5c6561de81fb7ab22613c864226bd57522c522d41b1112e324c6
 
 pkgname = wegame-launcher
