@@ -2,7 +2,7 @@
 
 pkgname=storytold-suite
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Metapackage with the 7 ArtCraft reimplementations of Adobe Creative Suite apps'
 arch=(any)
 url=https://getartcraft.com/apps
@@ -11,8 +11,8 @@ depends=(designcraft
          effectcraft
          filmcraft
          lightcraft
+         pdfcraft
          photocraft
-         printcraft
          vectorcraft)
 
 package() {
