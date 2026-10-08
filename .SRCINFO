@@ -1,0 +1,13 @@
+pkgbase = partig
+	pkgdesc = Experimental tool to estimate the similarity between all pairs of contigs
+	pkgver = 20210412
+	pkgrel = 1
+	url = https://github.com/lh3/partig
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	source = partig-20210412.tar.gz::https://github.com/lh3/partig/archive/dcd2f76be562415673ceb061d2f34f1c0b0285c0.tar.gz
+	sha256sums = 2100bb93d30d7655d1597d635f122c56f65aa0eed9248f30c1f29ccedea868ed
+
+pkgname = partig
