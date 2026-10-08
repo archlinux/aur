@@ -1,0 +1,19 @@
+pkgbase = dreamdump
+	pkgdesc = Dump Sega Dreamcast GD-ROM discs
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://codeberg.org/MoriGM/dreamdump
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.26
+	depends = glibc
+	conflicts = dreamdump-bin
+	conflicts = dreamdump-git
+	options = !lto
+	options = !debug
+	source = dreamdump-0.6.0.tar.gz::https://codeberg.org/MoriGM/dreamdump/archive/0.6.0.tar.gz
+	sha256sums = 7ec6930802a6a952e45ac551f0d773c833b4524bda8b3e4168e0ede4e0226f88
+
+pkgname = dreamdump
