@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Distributed, fault tolerant job scheduling system"
 
-pkgver=4.2.0
+pkgver=4.2.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,8 +32,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
 sha256sums=('16e2582c09b22c23e2aa479f7aea410c8d092f56a288144d75fd8b88fd95da35'
             '6aa819ebd51f6ac1c327e9c2fb7c48e692ea8f0b592c359d27e1b24633be775b')
-sha256sums_x86_64=('4db3c62df8fbf4789b7df8d6ca12c58926d91b78a2601a3df5480b327fb8eb1c')
-sha256sums_aarch64=('9115e55f0becb0a2da8aa8d5728847f370a7d7e866cc0bc8b20b85130f369316')
+sha256sums_x86_64=('8f139950f5491cada9f048794cce44bc705060c5dce30dd614c7100744e63216')
+sha256sums_aarch64=('22ddae100d3f68b00f46984b071a74b203f217d2187f31abe45a75c35e81f5bc')
 
 
 package() {
