@@ -1,7 +1,7 @@
 pkgbase = voicefox-bin
 	pkgdesc = Rust + ratatui + libmpv 驱动的键盘优先终端音乐播放器：多音源、歌词、本地音乐、下载、收藏与歌单。
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/emoeem/voicefox
 	arch = x86_64
@@ -13,15 +13,15 @@ pkgbase = voicefox-bin
 	depends = openssl
 	depends = mpv
 	optdepends = nodejs>=23.5.0: support for custom JS music source
-	provides = voicefox=1:0.5.0
+	provides = voicefox=1:0.6.0
 	conflicts = voicefox
 	conflicts = voicefox-git
 	options = !debug
-	source = voicefox-0.5.0-src.tar.gz::https://github.com/emoeem/voicefox/archive/refs/tags/v0.5.0.tar.gz
-	sha512sums = 2f3aa8851d9db6d76419b8329722f7975377d47bc6e32a181929968dee22f381ee803debc4bb4fb46da41f951f3aa4555cc157bb1246cb1451b0d662f2a2ed23
-	source_x86_64 = voicefox-0.5.0-x86_64.zip::https://github.com/emoeem/voicefox/releases/download/v0.5.0/voicefox-linux-x86_64.zip
-	sha512sums_x86_64 = f9618b59430d94014f5bcffe7fb7d32f19f1a9443818875dc2fb34b64a39e085ca3cc96211b16358e5ac2975afd9af96cff61d1306fa7542cbef3f9e63614d38
-	source_aarch64 = voicefox-0.5.0-aarch64.zip::https://github.com/emoeem/voicefox/releases/download/v0.5.0/voicefox-linux-aarch64.zip
-	sha512sums_aarch64 = dae277de5757264a39b73a3869342685f2292abaff1b941ac410afce7a6b4e4047d8870f8cd9bf60f23acd6840ce417fa3d6b030c90f35aab75750f13bc092e0
+	source = voicefox-0.6.0-src.tar.gz::https://github.com/emoeem/voicefox/archive/refs/tags/v0.6.0.tar.gz
+	sha512sums = 17c50c0d9001735a60e21a063da3d711d7726e6d0e9abfae5e092b90c8b746cd01d8340f7532d6f8dcebbf7af5c7e52e8ceb6b577d1249356a705b3ab6fcd7d3
+	source_x86_64 = voicefox-0.6.0-x86_64.zip::https://github.com/emoeem/voicefox/releases/download/v0.6.0/voicefox-linux-x86_64.zip
+	sha512sums_x86_64 = cbff90c26217f4820c27febf1b308454c1c51e9c98dd5aea66703183db0ba02c4bdbbd4d3ef91e25667824a6a553d21c00686bd06fc2935a10a139acbe2319ee
+	source_aarch64 = voicefox-0.6.0-aarch64.zip::https://github.com/emoeem/voicefox/releases/download/v0.6.0/voicefox-linux-aarch64.zip
+	sha512sums_aarch64 = bbc29796f0f231779c17233c8a40cff1bb210462d5e66e5d125951c138a45d4a9c5d1cd87e2ebc6733a580b836aa9fc30db627348881c3d940cb2e34aa8f14f8
 
 pkgname = voicefox-bin
