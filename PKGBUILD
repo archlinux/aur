@@ -1,7 +1,7 @@
 # Maintainer: Anthony Vitacco <avitacco@protonmail.com>
 
 pkgname=urga
-pkgver=0.10.2
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Terminal UI for HashiCorp Nomad'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('47a228b2eee0f5574840de9956fc6725e60657de8a86e233b49134db31317f97')
+sha256sums=('f85cbfbc3a82f81151eb7fafc291519ac89d62358a976d5b4f296e756f8639ee')
 
 prepare() {
   cd "$pkgname-$pkgver"

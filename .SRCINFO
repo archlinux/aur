@@ -1,6 +1,6 @@
 pkgbase = urga
 	pkgdesc = Terminal UI for HashiCorp Nomad
-	pkgver = 0.10.2
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/ingvarch/urga
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = urga
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = urga-0.10.2.tar.gz::https://github.com/ingvarch/urga/archive/refs/tags/v0.10.2.tar.gz
-	sha256sums = 47a228b2eee0f5574840de9956fc6725e60657de8a86e233b49134db31317f97
+	source = urga-0.12.0.tar.gz::https://github.com/ingvarch/urga/archive/refs/tags/v0.12.0.tar.gz
+	sha256sums = f85cbfbc3a82f81151eb7fafc291519ac89d62358a976d5b4f296e756f8639ee
 
 pkgname = urga
