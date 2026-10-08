@@ -1,6 +1,6 @@
 pkgname=mangayomi-linux
 pkgver=0.9.8
-pkgrel=14
+pkgrel=15
 pkgdesc="Mangayomi - Manga, Anime and Novel reader (prebuilt zip with auto-compiled QuickJS FFI fix)"
 arch=('x86_64')
 url="https://github.com/kodjodevf/mangayomi"
@@ -25,7 +25,7 @@ prepare() {
   cd "$srcdir/flutter_qjs"
   git submodule update --init --recursive
 
-  # Genera un CMakeLists.txt mirato usando la struttura esatta dei sorgenti di ekibun/flutter_qjs
+  # Genera CMakeLists.txt includendo SOLO i sorgenti lib (niente qjs.c, qjsc.c o test)
   cat <<'EOF' > linux/CMakeLists.txt
 cmake_minimum_required(VERSION 3.10)
 project(flutter_qjs_plugin LANGUAGES C CXX)
@@ -41,13 +41,17 @@ include_directories(
 
 add_compile_options(-DCONFIG_VERSION="2021-03-27" -D_GNU_SOURCE -DEXPORT -fvisibility=default)
 
-file(GLOB QUICKJS_SOURCES
-  "../cxx/quickjs/*.c"
+set(QUICKJS_SOURCES
+  ../cxx/quickjs/quickjs.c
+  ../cxx/quickjs/libregexp.c
+  ../cxx/quickjs/libunicode.c
+  ../cxx/quickjs/cutils.c
+  ../cxx/quickjs/quickjs-libc.c
+  ../cxx/quickjs/libbf.c
 )
 
-file(GLOB FFI_SOURCES
-  "../cxx/*.cpp"
-  "../cxx/*.c"
+set(FFI_SOURCES
+  ../cxx/ffi.cpp
 )
 
 add_library(flutter_qjs_plugin SHARED
@@ -67,20 +71,16 @@ build() {
 }
 
 package() {
-  # 1) Directory dell'applicazione
   install -d "$pkgdir/opt/mangayomi"
 
-  # 2) Copia dell'applicazione dallo zip
   cp -r "$srcdir/mangayomi" "$srcdir/data" "$srcdir/lib" "$pkgdir/opt/mangayomi/"
 
-  # 3) Sostituzione della libreria .so difettosa con quella ricompilata con i simboli visibili
   install -m755 "$srcdir/flutter_qjs/linux/build/libflutter_qjs_plugin.so" \
     "$pkgdir/opt/mangayomi/lib/libflutter_qjs_plugin.so"
 
   chmod 755 "$pkgdir/opt/mangayomi/mangayomi"
   chmod 755 "$pkgdir/opt/mangayomi/lib/"*.so
 
-  # 4) Wrapper script per LD_LIBRARY_PATH
   install -d "$pkgdir/usr/bin"
   cat <<'EOF' > "$pkgdir/usr/bin/mangayomi"
 #!/bin/sh
@@ -90,7 +90,6 @@ exec ./mangayomi "$@"
 EOF
   chmod 755 "$pkgdir/usr/bin/mangayomi"
 
-  # 5) Icona e Desktop Entry
   install -Dm644 \
     "$srcdir/data/flutter_assets/assets/app_icons/icon.png" \
     "$pkgdir/usr/share/pixmaps/mangayomi.png"
