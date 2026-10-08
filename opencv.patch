@@ -2,8 +2,8 @@
 +++ b/pyproject.toml
 @@ -12,7 +12,7 @@
      "huggingface-hub>=1.0,<2.0",
-     "insightface>=0.7.3,<2.0",
      "numpy>=2.4.0,<3.0",
+     "onnx>=1.22.0",
 -    "opencv-python-headless>=4.7.0.72,<5.0",
 +    "opencv-python-headless>=4.7.0.72,<6.0",
      "orjson>=3.9.5",
