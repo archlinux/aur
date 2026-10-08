@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-utcclock-git
+	pkgdesc = show current UTC time in GNOME topbar
+	pkgver = r164.87c82d7
+	pkgrel = 1
+	url = https://github.com/injcristianrojas/UTCClock
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = jq
+	makedepends = glib2
+	depends = gnome-shell
+	source = git+https://github.com/injcristianrojas/UTCClock
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-utcclock-git
