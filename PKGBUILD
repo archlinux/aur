@@ -4,13 +4,13 @@
 
 pkgname=buildozer
 pkgver=10.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A command line tool to rewrite Bazel BUILD files using standard conventions'
 arch=('x86_64' 'aarch64')
 license=('Apache-2.0')
 url='https://github.com/bazelbuild/buildtools'
 depends=('glibc')
-makedepends=('bazel' 'git')
+makedepends=('bazelisk' 'git')
 conflicts=('buildozer-bin')
 # rules_go trims source paths from the binary, so the generated debug package
 # contains no sources and only a dangling build-id symlink.
@@ -38,13 +38,13 @@ _bazel() {
   for flag in ${CFLAGS}; do options+=("--conlyopt=${flag}"); done
   for flag in ${CXXFLAGS}; do options+=("--cxxopt=${flag}"); done
   for flag in ${LDFLAGS}; do options+=("--linkopt=${flag}"); done
-  bazel --output_user_root="${srcdir}/bazel" --max_idle_secs=60 "${1}" "${options[@]}" "${@:2}"
+  BAZELISK_HOME="${srcdir}/bazelisk" bazelisk \
+    --output_user_root="${srcdir}/bazel" --max_idle_secs=60 "${1}" "${options[@]}" "${@:2}"
 }
 
 prepare() {
   cd "${pkgname}" || exit
 
-  rm .bazelversion
   _bazel fetch "//${pkgname}"
 }
 
