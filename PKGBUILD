@@ -1,7 +1,7 @@
 # Maintainer: Lucas Saavedra Vaz <lucasssvaz@users.noreply.github.com>
 pkgname=traygolin-bin
 _pkgname=traygolin
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Unofficial Linux tray app for the Pangolin VPN client (prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ options=('!debug')
 source_x86_64=("${_pkgname}-${pkgver}-linux-amd64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.tar.gz")
 # Set per release by .github/workflows/aur.yml; these placeholders fail verification.
-sha256sums_x86_64=('8e709404a6ca12d2ca22b560e0c2e840c708401a6024863fbadf7f10e05ee904')
-sha256sums_aarch64=('784c089a08a47c03570961819fa1c1c15ffc88780334296e0c8bd650b7fca339')
+sha256sums_x86_64=('9b81b404a844a7bd989029099ea73d8e485b39ec4fd2c29004e0c3138b6dfb76')
+sha256sums_aarch64=('7da4b90b6983522ca39e22896494248f9741abf834dff1a8d0a5d864730a6209')
 
 package() {
   cp -a "${srcdir}/usr" "${pkgdir}/"
