@@ -1,0 +1,13 @@
+pkgbase = bgt
+	pkgdesc = Flexible genotype query among 30,000+ whole-genome samples
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/lh3/bgt
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	source = bgt-1.0.tar.gz::https://github.com/lh3/bgt/archive/v1.0.tar.gz
+	sha256sums = b7dd90569432d34621d2abaa153dc96157ecea66312a317d34bb6174588c4743
+
+pkgname = bgt
