@@ -2,7 +2,7 @@
 
 _pkgname=pwsafe
 pkgname=passwordsafe
-pkgver=1.25.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc="Simple & Secure Password Management"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=(passwordsafe-$pkgver.tar.gz::https://github.com/pwsafe/pwsafe/archive/$p
 # Rony Shapiro (PasswordSafe signing key) <ronys@pwsafe.org>
 # https://keyserver.ubuntu.com/pks/lookup?search=0xB131423D7F2F1BB9&fingerprint=on&op=index
 validpgpkeys=('C8876BE69A8EC6414C8C8729B131423D7F2F1BB9')
-sha1sums=('30c0da5552a61b3f739040639e48255812f625cd'
+sha1sums=('f7a231a04c49edebcd6192295954ff7d59a98f8a'
           'SKIP')
 
 prepare() {
