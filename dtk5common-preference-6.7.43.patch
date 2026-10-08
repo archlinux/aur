@@ -1,0 +1,62 @@
+diff --git a/configs/org.deepin.dtk.preference.json b/configs/org.deepin.dtk.preference.json
+index 3b786a1..7c7b50f 100644
+--- a/configs/org.deepin.dtk.preference.json
++++ b/configs/org.deepin.dtk.preference.json
+@@ -64,9 +64,9 @@
+             "visibility": "public"
+         },
+         "rules": {
+-            "value": "",
+-            "serial": 0,
+-            "flags": [],
++            "value": "*.debug=false",
++            "serial": 1,
++            "flags": ["global"],
+             "name": "The logging rules of dtk applications",
+             "name[zh_CN]": "日志输出的规则配置",
+             "description": "Configure the category and level of log output",
+@@ -85,6 +85,17 @@
+             "permissions": "readwrite",
+             "visibility": "public"
+         },
++        "disableInWindowBlur": {
++            "value": false,
++            "serial": 0,
++            "flags": [],
++            "name": "Whether to disable InWindowBlur effect",
++            "name[zh_CN]": "是否禁用窗口内模糊效果",
++            "description": "Configure to disable InWindowBlur effect. Default is not disabled (enabled).",
++            "description[zh_CN]": "配置禁用窗口内模糊效果。默认不禁用（启用）。",
++            "permissions": "readwrite",
++            "visibility": "public"
++        },
+         "scrollBarPolicy": {
+             "value": 0,
+             "serial": 0,
+@@ -106,6 +117,26 @@
+             "description[zh_CN]": "配置是否开启紧凑模式, 0为禁用, 1为启用",
+             "permissions": "readwrite",
+             "visibility": "public"
++        },
++        "defaultColorMode": {
++            "value": "color",
++            "serial": 0,
++            "flags": [],
++            "name": "Default Color Mode config",
++            "name[zh_CN]": "默认色彩配置",
++            "description": "Default Configure the color mode",
++            "permissions": "readwrite",
++            "visibility": "public"
++        },
++        "colorMode": {
++            "value": "",
++            "serial": 0,
++            "flags": [],
++            "name": "Color Mode config",
++            "name[zh_CN]": "色彩配置",
++            "description": "Configure the color mode",
++            "permissions": "readwrite",
++            "visibility": "private"
+         }
+     }
+ }
