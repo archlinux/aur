@@ -13,6 +13,7 @@
 pkgname=nodejs-lts-hydrogen
 pkgver=18.20.8
 pkgrel=1
+epoch=1
 pkgdesc='Evented I/O for V8 javascript'
 arch=('x86_64')
 url='https://nodejs.org/'
