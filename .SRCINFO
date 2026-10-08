@@ -1,6 +1,6 @@
 pkgbase = gopac-bin
 	pkgdesc = A warm, beautiful TUI for Arch Linux package management (Binary)
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/the-daonm/gopac
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = gopac-bin
 	optdepends = paru: AUR helper
 	provides = gopac
 	conflicts = gopac
-	source = gopac-1.5.0::https://github.com/the-daonm/gopac/releases/download/v1.5.0/gopac
-	source = LICENCE-1.5.0::https://github.com/the-daonm/gopac/releases/download/v1.5.0/LICENCE
-	source = gopac.fish-1.5.0::https://github.com/the-daonm/gopac/releases/download/v1.5.0/gopac.fish
-	sha256sums = b67887946dd78a961b66248f6ad530e6a10f198454e99da71b2937a4cf5d1781
+	source = gopac-1.6.0::https://github.com/the-daonm/gopac/releases/download/v1.6.0/gopac
+	source = LICENCE-1.6.0::https://github.com/the-daonm/gopac/releases/download/v1.6.0/LICENCE
+	source = gopac.fish-1.6.0::https://github.com/the-daonm/gopac/releases/download/v1.6.0/gopac.fish
+	sha256sums = 3c19ab6e0fd428a128b0fee88cdca28a3a718e2acbe4ebb3d2a773e1819da266
 	sha256sums = 7b057371634a495f9b2d47a44d2fcb3c5ac0a9d43034c57c0f7914160eb3954f
 	sha256sums = 54feeb751e7b2d3295004205cc66b3615713fb33f90fb19e651beb04807c432d
 
