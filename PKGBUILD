@@ -1,9 +1,9 @@
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-pip-api
-pkgver=0.0.34
-pkgrel=3
+pkgver=0.0.35
+pkgrel=1
 pkgdesc="An unofficial, importable pip API"
 url="https://github.com/di/pip-api"
 license=('Apache-2.0')
@@ -11,7 +11,7 @@ arch=('any')
 depends=(
   'python'
   'python-packaging'
-  'python-pyparsing'
+  'python-packaging-legacy'
   'python-pip'
   'python-tomli'
 )
@@ -23,13 +23,8 @@ makedepends=(
 )
 checkdepends=('python-pytest-runner' 'python-pretend' 'python-virtualenv')
 
-source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/di/pip-api/archive/$pkgver.tar.gz"
-  'skip-unsupported-test.patch'
-)
-
-sha512sums=('3492c69be8100bb5dab260a9dfbccd101fddc0aa20358edc34f07e141a63ed8d36534b7011ff4d8b5f988c7517da6f4c8af42397b2bfe1320be0eb0abd03eed1'
-            '41e55d61912e6f010d1087f8883cc2ed1796caaf11a54be950afc5b409ad3ce1f99d7fa9980b83e6b1a4725f9fc402cc213a8f42d71e6f824f9a8fa0442c8d79')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/di/pip-api/archive/$pkgver.tar.gz")
+sha512sums=('c2ea3935d720e50ea411ff7af0b1431ce1350092f7ab885c3ee2cf44c374d304587accdf658aa2557ca68452240067effbeb42322424a8c8a8c758ac207e45b6')
 
 prepare() {
   cd pip-api-$pkgver
@@ -40,18 +35,6 @@ prepare() {
     -e 's/from pip_api\._vendor //' \
     pip_api/*.py tests/*.py
   rm -r pip_api/_vendor
-
-  # Mark irrelevant failing test as xfail.
-  # This workaround is permanent. Remove it only if upstream ever
-  # removes or skips the affected test. For details, see the patch.
-  patch -p1 < "${srcdir}/skip-unsupported-test.patch"
-
-  # Python 3.14 compatibility: use Constant.value, not Constant.s
-  # See also: https://docs.python.org/3/whatsnew/3.14.html#id9
-  sed -i -e 's/value\.s/value.value/g' pip_api/_parse_requirements.py
-
-  # Loosen assertions for Python 3.14 compatibility
-  sed -i -e 's+file:///+file:/+g' tests/test_parse_requirements.py
 }
 
 build() {
