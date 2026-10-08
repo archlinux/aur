@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=http-relay
 pkgname=drand-$_pkgname
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="An HTTP relay for drand nodes"
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=(
     drand-http-relay.service
     drand-http-relay.sysusers
 )
-b2sums=('bee309c5be390b3a78ac9712c659d0c7103fb876ead32be4b7bfaa7b0e7c9770415eff4444f299c22c2563d7716d9b7524f939f3004b5a7d876c6d7d150db852'
+b2sums=('5fd39f7a3d78c5f43702549611a179a6d7ef86ef78808dc31d399d94bdf7a32957a1e8fec196b8acd6f871f8d33775c62a7bb7d490f5bc304322bc20ec5ea281'
         '47f9ad93ef58dd37d07831aa6e52147cd330d006ad8d3f991528ab2cb4a832d870c739175fd0ad5a3920d48fdef18c13ebe01c690834cefc46eb07d7eef42ead'
         'df2985eb14da9a7b69bc28c5745567ce24597a134423d0d20f80dbdf655a3cb9f95427aae5063d57dbee7807291aaa9c8482ceee338f6c96a728bc81d6f32e09'
         'c675c47cebc73f81210a1d430405337e47464ced8a46aca16dc8f0e3aca158f2cd742a715da0511118635db1348ab47b5f6ad0bf9d3dedea0075f4f1a3de356f')
