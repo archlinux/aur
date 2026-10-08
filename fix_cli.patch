@@ -8,23 +8,18 @@
 +const { statSync, chmodSync, existsSync } = require('node:fs')
  const { join } = require('node:path')
  
- const platform = process.platform
-@@ -40,10 +40,15 @@
- // case the platform package was published from a downloaded artifact.
- if (platform !== 'win32') {
-   try {
--    chmodSync(binPath, 0o755)
-+    const stats = statSync(binPath);
-+    const currentPermissions = stats.mode & 0o777;
+ async function main() {
+@@ -61,7 +61,12 @@
+   // case the platform package was published from a downloaded artifact.
+   if (platform !== 'win32') {
+     try {
+-      chmodSync(binPath, 0o755)
++      const stats = statSync(binPath)
++      const currentPermissions = stats.mode & 0o777
 +
-+    if (currentPermissions !== 0o755) {
-+      chmodSync(binPath, 0o755);
-+    }
-   } catch (error) {
--    console.error(`ingit: failed to make the binary executable: ${error.message}`)
--    process.exit(1)
-+    console.error(`ingit: failed to make the binary executable: ${error.message}`);
-+    process.exit(1);
-   }
- }
- 
++      if (currentPermissions !== 0o755) {
++        chmodSync(binPath, 0o755)
++      }
+     } catch (error) {
+       console.error(`ingit: failed to make the binary executable: ${error.message}`)
+       process.exit(1)
