@@ -1,0 +1,20 @@
+pkgbase = rate-mirrors-repo-updater
+	pkgdesc = Periodic mirror ranking for Arch Linux CN and Chaotic-AUR using rate-mirrors
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/6h4n3m/rate-mirrors
+	install = rate-mirrors-repo-updater.install
+	arch = any
+	license = MIT
+	depends = bash
+	depends = coreutils
+	depends = rate-mirrors
+	depends = systemd
+	source = update-repo-mirrors
+	source = repo-mirrors@.service
+	source = repo-mirrors@.timer
+	sha256sums = f13497749c2809b048c994a7529843686a7ee7aba01a91f20a1b1a49852f978b
+	sha256sums = e216d4395321c9341a9a7dcc3fd1a4e9b33ade519ceb31f0f89037fd9d409c23
+	sha256sums = 77e552978ce9f95b1c2bcfed891fb0300ec9136d167cb07496e910b49f000efd
+
+pkgname = rate-mirrors-repo-updater

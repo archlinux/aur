@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo="$1"
+
+mirrorlist="/etc/pacman.d/${repo%-aur}-mirrorlist"
+tmp="$(mktemp)"
+
+trap 'rm -f "$tmp"' EXIT
+
+rate-mirrors \
+    --allow-root \
+    --protocol https \
+    --max-mirrors-to-output 10 \
+    --save "$tmp" \
+    "$repo"
+
+install -m 644 "$tmp" "$mirrorlist"

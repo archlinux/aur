@@ -1,0 +1,5 @@
+post_install() {
+    echo 'Enable timers with:'
+    echo '  systemctl enable --now repo-mirrors@archlinuxcn.timer'
+    echo '  systemctl enable --now repo-mirrors@chaotic-aur.timer'
+}

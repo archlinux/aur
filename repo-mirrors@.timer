@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodically update mirrorlist for %i
+
+[Timer]
+OnBootSec=10min
+OnUnitActiveSec=1week
+RandomizedDelaySec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target

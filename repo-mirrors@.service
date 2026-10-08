@@ -1,0 +1,8 @@
+[Unit]
+Description=Update mirrorlist for %i
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/update-repo-mirrors %i
