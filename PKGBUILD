@@ -2,9 +2,9 @@
 
 pkgbase=taigikeyboard
 pkgname=(fcitx5-taigikeyboard ibus-taigikeyboard taigikeyboard-common)
-pkgver=3.6.10
+pkgver=3.7.0
 _tag="desktop-${pkgver}"
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://taigikeyboard.tw"
 license=('Apache-2.0')
@@ -27,7 +27,7 @@ makedepends=(
 	'fcitx5'
 )
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/taigikeyboard/taigikeyboard/archive/refs/tags/${_tag}.tar.gz")
-sha512sums=('c98ba4034218ffccc24698a613f309c3677a604747fa7f187de6e09bda83d064514fc945a939bd63825b13ab981815a5c706def286ad528982276271bc320519')
+sha512sums=('066aae3ff15b94a776762667fd6d15e62744367b6ff01f97b141183178fe25c110fecdfbcee32f420836fd24a3c3ac1013cdcf38f7cf9e45bfbbafb3f6349194')
 # Unbundling libsqlite3-sys while using LTO for C still leads to errors. Disable
 # it instead.
 options=(!lto)
@@ -52,25 +52,14 @@ package_taigikeyboard-common() {
 	pkgdesc='Common files for Taigi Keyboard'
 	optdepends=()
 	cd "${pkgbase}-${_tag}/linux"
-	install -d "$pkgdir"/usr/share/taigikeyboard/dictionaries
-	install -m644 \
-		../dictionaries/dictionary.fst ../dictionaries/dictionary.bin ../dictionaries/association.bin ../dictionaries/syllables.fst \
-		"$pkgdir"/usr/share/taigikeyboard/dictionaries/
-	for size in 16 22 24 32 48 64 128 256; do
-		install -Dm644 \
-			data/icons/hicolor/"$size"x"$size"/apps/taigikeyboard.png \
-			"$pkgdir"/usr/share/icons/hicolor/"$size"x"$size"/apps/taigikeyboard.png
-	done
-	install -Dm755 target/release/taigikeyboard-settings "$pkgdir"/usr/bin/taigikeyboard-settings
-	install -Dm644 data/tw.taigikeyboard.Settings.desktop "$pkgdir"/usr/share/applications/tw.taigikeyboard.Settings.desktop
+	make DESTDIR="$pkgdir" INSTALL_FONTS=0 install-common
 }
 
 package_ibus-taigikeyboard() {
 	pkgdesc='Taigi input method for IBus'
 	depends=('ibus' 'taigikeyboard-common')
 	cd "${pkgbase}-${_tag}/linux"
-	install -Dm755 target/release/ibus-engine-taigikeyboard "$pkgdir"/usr/lib/ibus/ibus-engine-taigikeyboard
-	install -Dm644 target/taigikeyboard.xml "$pkgdir"/usr/share/ibus/component/taigikeyboard.xml
+	make DESTDIR="$pkgdir" install-ibus
 }
 
 package_fcitx5-taigikeyboard() {
@@ -79,5 +68,5 @@ package_fcitx5-taigikeyboard() {
 	# I don't think it is necessary to list libtaigikeyboard.so in provided=
 	# since fcitx5-rime doesn't do it either
 	cd "${pkgbase}-${_tag}/linux"
-	DESTDIR="$pkgdir" cmake --install target/fcitx5-build
+	make DESTDIR="$pkgdir" install-fcitx5
 }
