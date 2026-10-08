@@ -7,20 +7,22 @@ pkgrel=1
 pkgdesc='GXDE OS fork of the Deepin Tool Kit 5, note that we are conflicted with Deepin DTK5'
 arch=(x86_64 aarch64)
 url='https://github.com/GXDE-OS'
-license=(LGPL-3.0-or-later LGPL-2.1-or-later BSD-3-Clause)
-_mods=(dtk5common dtklog dtk5core dtk5gui dtk5widget)
+license=(LGPL-3.0-or-later LGPL-2.1-or-later BSD-3-Clause GPL-3.0-or-later)
+_mods=(dtk5common dtklog dtk5core dtk5gui dtk5widget dde-qt5platform-plugins dde-qt5integration)
 depends=(qt5-base qt5-svg qt5-x11extras qt5-wayland libqt5xdg
          gsettings-qt5 spdlog systemd-libs dbus icu uchardet librsvg
          libx11 libxext libxi xcb-util startup-notification
          gcc-libs glibc)
-makedepends=(git cmake ninja qt5-tools extra-cmake-modules treeland-protocols)
+makedepends=(git cmake ninja qt5-tools qt5-xcb-private-headers kwayland5 extra-cmake-modules treeland-protocols)
 source=("dtk5common::git+$url/dtk5common.git"
         "dtklog::git+$url/dtklog.git"
         "dtk5core::git+$url/dtk5core.git"
         "dtk5gui::git+$url/dtk5gui.git"
         "dtk5widget::git+$url/dtk5widget.git"
+        "dde-qt5platform-plugins::git+$url/dde-qt5platform-plugins.git"
+        "dde-qt5integration::git+$url/dde-qt5integration.git"
         dtk5common-preference-6.7.43.patch)
-sha256sums=(SKIP SKIP SKIP SKIP SKIP
+sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP
             c906d0091d3d5835f987bda03bc597420b7691dbe636bcb5bdf0ba46796fb32a)
 
 pkgver() {
@@ -63,9 +65,11 @@ build() {
   local -A _extra=(
     [dtk5common]="-DDTK_VERSION=$(sed -n '1s/.*(\([0-9.]*\).*/\1/p' dtk5common/debian/changelog)"
     [dtklog]="-DBUILD_WITH_SYSTEMD=ON"
-    [dtk5core]="-DBUILD_WITH_SYSTEMD=ON -DD_DSG_APP_DATA_FALLBACK=/var/dsg/appdata"
+    [dtk5core]="-DBUILD_WITH_SYSTEMD=ON -DD_DSG_APP_DATA_FALLBACK=/var/dsg/appdata -DFEATURES_INSTALL_DIR=lib/qt/mkspecs/features"
     [dtk5gui]="-DDTK_DISABLE_EX_IMAGE_FORMAT=ON"
     [dtk5widget]="-DBUILD_PLUGINS=OFF -DDTK_STATIC_TRANSLATION=YES"
+    [dde-qt5platform-plugins]="-DQT_XCB_PRIVATE_HEADERS=/usr/include/qtxcb-private"
+    [dde-qt5integration]="-DPLUGIN_INSTALL_BASE_DIR=lib/qt/plugins"
   )
 
   for _m in "${_mods[@]}"; do
@@ -86,14 +90,20 @@ package_gxde-dtk5-git() {
   optdepends=('lshw: hardware info in DSysInfo'
               'gxde-dtk5widget-dev-git: DTK5 widget development files')
   provides=(dtkcommon "dtklog=${pkgver%%.r*}" "dtkcore=${pkgver%%.r*}"
-            "dtkgui=${pkgver%%.r*}" "dtkwidget=${pkgver%%.r*}")
-  conflicts=(dtkcommon dtklog dtkcore dtkgui dtkwidget)
+            "dtkgui=${pkgver%%.r*}" "dtkwidget=${pkgver%%.r*}"
+            deepin-qt5platform-plugins deepin-qt5integration)
+  conflicts=(dtkcommon dtklog dtkcore dtkgui dtkwidget
+             deepin-qt5platform-plugins deepin-qt5integration)
 
   local _m
   for _m in "${_mods[@]}"; do
     DESTDIR="$pkgdir" cmake --install "build-$_m"
   done
   ( cd "$pkgdir" && rm -r "${_widget_dev[@]}" )
+
+  # dde-qt5platform-plugins 写死了 lib/qt5/plugins，Arch 的 Qt5 插件目录是 lib/qt/plugins
+  cp -a "$pkgdir/usr/lib/qt5/plugins/." "$pkgdir/usr/lib/qt/plugins/"
+  rm -r "$pkgdir/usr/lib/qt5"
 
   install -Dm644 dtk5common/LICENSE "$pkgdir/usr/share/licenses/$pkgname/BSD-3-Clause"
 }

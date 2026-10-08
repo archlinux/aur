@@ -8,10 +8,13 @@ pkgbase = gxde-dtk5-git
 	license = LGPL-3.0-or-later
 	license = LGPL-2.1-or-later
 	license = BSD-3-Clause
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = qt5-tools
+	makedepends = qt5-xcb-private-headers
+	makedepends = kwayland5
 	makedepends = extra-cmake-modules
 	makedepends = treeland-protocols
 	depends = qt5-base
@@ -38,7 +41,11 @@ pkgbase = gxde-dtk5-git
 	source = dtk5core::git+https://github.com/GXDE-OS/dtk5core.git
 	source = dtk5gui::git+https://github.com/GXDE-OS/dtk5gui.git
 	source = dtk5widget::git+https://github.com/GXDE-OS/dtk5widget.git
+	source = dde-qt5platform-plugins::git+https://github.com/GXDE-OS/dde-qt5platform-plugins.git
+	source = dde-qt5integration::git+https://github.com/GXDE-OS/dde-qt5integration.git
 	source = dtk5common-preference-6.7.43.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -54,11 +61,15 @@ pkgname = gxde-dtk5-git
 	provides = dtkcore=6.7.43
 	provides = dtkgui=6.7.43
 	provides = dtkwidget=6.7.43
+	provides = deepin-qt5platform-plugins
+	provides = deepin-qt5integration
 	conflicts = dtkcommon
 	conflicts = dtklog
 	conflicts = dtkcore
 	conflicts = dtkgui
 	conflicts = dtkwidget
+	conflicts = deepin-qt5platform-plugins
+	conflicts = deepin-qt5integration
 
 pkgname = gxde-dtk5widget-dev-git
 	pkgdesc = GXDE OS fork of the Deepin Tool Kit 5 widget development files
