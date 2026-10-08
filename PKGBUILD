@@ -1,7 +1,7 @@
 # Maintainer: Koen Hendriks <aur@koenhendriks.nl>
 
 pkgname=laneway-git
-pkgver=0.11.0.r0.gc4ae56f
+pkgver=0.12.0.r0.gc024d23
 pkgrel=1
 pkgdesc='A terminal board for Jira'
 arch=('x86_64' 'aarch64')
