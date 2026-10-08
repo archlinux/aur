@@ -6,11 +6,8 @@ pkgbase=taigikeyboard-git
 # corresponding fcitx5 input method, and vice versa
 # fonts are not installed, this recommends them from the aur instead
 pkgname=(fcitx5-taigikeyboard-git ibus-taigikeyboard-git taigikeyboard-common-git)
-# > To use pkgver(), you still need to declare the pkgver variable with the most
-# > recent value. makepkg will invoke function pkgver(), and update variable
-# > pkgver accordingly.
-pkgver=3.6.10.r918.0b2c45c
-pkgrel=2
+pkgver=3.6.10.r959.7a78928
+pkgrel=1
 arch=('x86_64')
 url="https://taigikeyboard.tw"
 license=('Apache-2.0')
@@ -32,12 +29,8 @@ makedepends=(
 	'extra-cmake-modules'
 	'fcitx5'
 )
-source=(
-	"git+https://github.com/taigikeyboard/taigikeyboard.git"
-	"0001-build-linux-allow-skipping-font-install-or-splitting.patch"
-)
-sha512sums=('SKIP'
-	'd4d829e520f880cf8a8be6cb596a4fe9f77bb45f102abfe3b6bc51a93ba071214c5c828d9460ca802059aec7b3e6e188359f747f1b40f9fd55147ee828dfc484')
+source=("git+https://github.com/taigikeyboard/taigikeyboard.git")
+sha512sums=('SKIP')
 # Unbundling libsqlite3-sys while using LTO for C still leads to errors. Disable
 # it instead.
 options=(!lto)
