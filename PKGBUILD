@@ -1,6 +1,6 @@
 pkgname=mangayomi-linux
 pkgver=0.9.8
-pkgrel=5
+pkgrel=6
 pkgdesc="Mangayomi - Manga, Anime and Novel reader (prebuilt Linux zip with fixed QuickJS)"
 arch=('x86_64')
 url="https://github.com/kodjodevf/mangayomi"
@@ -12,9 +12,13 @@ options=(!strip)
 provides=('mangayomi')
 conflicts=('mangayomi' 'mangayomi-bin' 'mangayomi-git')
 
+# Disabilita qualsiasi prompt di autenticazione o credenziali per Git durante makepkg
+export GIT_TERMINAL_PROMPT=0
+export GIT_ASKPASS=true
+
 source=(
   "https://github.com/kodjodevf/mangayomi/releases/download/v${pkgver}/Mangayomi-v${pkgver}-linux.zip"
-  "flutter_qjs::git+https://github.com/fcanas/flutter_qjs.git"
+  "flutter_qjs::git+https://github.com/fcanas/flutter_qjs.git#branch=main"
 )
 sha256sums=(
   'SKIP'
@@ -22,7 +26,6 @@ sha256sums=(
 )
 
 build() {
-  # Compila libflutter_qjs_plugin.so dai sorgenti C per esportare correttamente i simboli QuickJS
   cd "$srcdir/flutter_qjs/linux"
   mkdir -p build && cd build
   cmake -DCMAKE_BUILD_TYPE=Release ..
@@ -30,20 +33,20 @@ build() {
 }
 
 package() {
-  # 1) Directory di destinazione
+  # 1) Directory app
   install -d "$pkgdir/opt/mangayomi"
 
-  # 2) Copia i file estratte dallo zip
+  # 2) Copia i file estratti dallo zip
   cp -r "$srcdir/mangayomi" "$srcdir/data" "$srcdir/lib" "$pkgdir/opt/mangayomi/"
 
-  # 3) Sovrascrivi il file .so difettoso con quello appena compilato
+  # 3) Sovrascrivi la libreria con quella ricompilata
   install -m755 "$srcdir/flutter_qjs/linux/build/libflutter_qjs_plugin.so" \
     "$pkgdir/opt/mangayomi/lib/libflutter_qjs_plugin.so"
 
   chmod 755 "$pkgdir/opt/mangayomi/mangayomi"
   chmod 755 "$pkgdir/opt/mangayomi/lib/"*.so
 
-  # 4) Wrapper script di avvio
+  # 4) Wrapper script
   install -d "$pkgdir/usr/bin"
   cat <<'EOF' > "$pkgdir/usr/bin/mangayomi"
 #!/bin/sh
