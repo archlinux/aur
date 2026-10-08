@@ -1,0 +1,14 @@
+pkgbase = kosmonaut
+	pkgdesc = A modern NetworkManager TUI written in Rust
+	pkgver = 0.0.1_rc1
+	pkgrel = 1
+	url = https://codeberg.org/kosmonaut/kosmonaut
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = rust
+	depends = networkmanager
+	conflicts = kosmonaut-git
+	source = kosmonaut-0.0.1_rc1.tar.gz::https://codeberg.org/kosmonaut/kosmonaut/archive/v0.0.1-rc1.tar.gz
+	sha256sums = 4cd875ff70a5c145859eeb9c925dd60979bea75a9756da30e2d9ffcb12748f9a
+
+pkgname = kosmonaut
