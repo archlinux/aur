@@ -1,0 +1,18 @@
+pkgbase = dxlaprs-lora-git
+	pkgdesc = LoRa receiver (lorarx) from the dxlAPRS toolchain, used by OpenWebRX for LoRa decoding
+	pkgver = 1.0.20260906
+	pkgrel = 2
+	url = https://github.com/oe5hpm/dxlAPRS
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	provides = dxlaprs-lora
+	conflicts = dxlaprs-lora
+	source = git+https://github.com/oe5hpm/dxlAPRS.git
+	sha256sums = SKIP
+
+pkgname = dxlaprs-lora-git
