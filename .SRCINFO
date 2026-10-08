@@ -1,5 +1,5 @@
 pkgbase = eosctl
-	pkgdesc = Software for managing EOS Cloud.
+	pkgdesc = Software for managing eos cloud.
 	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://dl.eoscloud.io/eosctl
