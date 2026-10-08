@@ -1,8 +1,21 @@
+diff --git a/src/BedrockBoot.Standard/Entity/ConfigEntry.cs b/src/BedrockBoot.Standard/Entity/ConfigEntry.cs
+index 774ee89c..7fc12e1f 100644
+--- a/src/BedrockBoot.Standard/Entity/ConfigEntry.cs
++++ b/src/BedrockBoot.Standard/Entity/ConfigEntry.cs
+@@ -46,7 +46,7 @@ namespace BedrockBoot.Standard.Entity
+         [JsonPropertyName("homeConfig")] public HomeConfig HomeConfig { get; set; } = new();
+ 
+         [JsonPropertyName("isAutoCheckUpdate")]
+-        public bool IsAutoCheckUpdate { get; set; } = true;
++        public bool IsAutoCheckUpdate { get; set; } = false;
+ 
+         [JsonPropertyName("isFirstRun")] public bool IsFirstRun { get; set; } = true;
+         [JsonPropertyName("isAgreeTerms")] public bool IsAgreeTerms { get; set; } = false;
 diff --git a/src/BedrockBoot/Models/CheckUpdate.cs b/src/BedrockBoot/Models/CheckUpdate.cs
-index 7b7bc267..73d7dcdf 100644
+index 29430b9f..c4c587e4 100644
 --- a/src/BedrockBoot/Models/CheckUpdate.cs
 +++ b/src/BedrockBoot/Models/CheckUpdate.cs
-@@ -11,8 +11,15 @@ namespace BedrockBoot.Models;
+@@ -30,8 +30,15 @@ namespace BedrockBoot.Models;
  
  public class CheckUpdate
  {
@@ -18,35 +31,32 @@ index 7b7bc267..73d7dcdf 100644
          // 创建客户端
          var github = new GitHubClient(new ProductHeaderValue("BedrockBoot"));
  
-diff --git a/src/BedrockBoot/Views/Pages/OtherPage/AboutPages/AboutPage.axaml b/src/BedrockBoot/Views/Pages/OtherPage/AboutPages/AboutPage.axaml
-index b13a5d55..431c1a45 100644
---- a/src/BedrockBoot/Views/Pages/OtherPage/AboutPages/AboutPage.axaml
-+++ b/src/BedrockBoot/Views/Pages/OtherPage/AboutPages/AboutPage.axaml
-@@ -183,6 +183,7 @@
-                 <Button Padding="8"
-                         Height="36" Width="100"
-                         Name="CheckUpdateBtn"
-+                        IsVisible="False"
-                         Click="CheckUpdateBtn_OnClick"
-                         Content="{DynamicResource About.Action.CheckUpdate}" />
-             </onePointControls:SettingCard>
-diff --git a/src/BedrockBoot/Views/Pages/SettingSubPage/SettingUniversal.axaml b/src/BedrockBoot/Views/Pages/SettingSubPage/SettingUniversal.axaml
-index ad928a58..899c073c 100644
---- a/src/BedrockBoot/Views/Pages/SettingSubPage/SettingUniversal.axaml
-+++ b/src/BedrockBoot/Views/Pages/SettingSubPage/SettingUniversal.axaml
-@@ -98,6 +98,7 @@
-                                           Header="{DynamicResource Settings.Download.SoftwareUpdate.Title}"
-                                           Description="{DynamicResource Settings.Download.SoftwareUpdate.Desc}"
-                                           IsClickable="True"
-+                                          IsVisible="False"
-                                           Name="SoftwareUpdate"
-                                           Click="SoftwareUpdate_OnClick"
-                                           Glyph="&#xE895;" />
 diff --git a/src/BedrockBoot/Views/Pages/SettingSubPage/SettingUniversalPages/UniversalSoftwareUpdate.axaml b/src/BedrockBoot/Views/Pages/SettingSubPage/SettingUniversalPages/UniversalSoftwareUpdate.axaml
-index 067abdb1..9f234a9a 100644
+index 7ec451b6..4a35bd4c 100644
 --- a/src/BedrockBoot/Views/Pages/SettingSubPage/SettingUniversalPages/UniversalSoftwareUpdate.axaml
 +++ b/src/BedrockBoot/Views/Pages/SettingSubPage/SettingUniversalPages/UniversalSoftwareUpdate.axaml
-@@ -38,6 +38,7 @@
+@@ -13,15 +13,17 @@
+                         Spacing="8">
+                 <onePointControls:SettingCard Header="{DynamicResource Settings.Universal.Update.Auto.Title}"
+                                               Description="{DynamicResource Settings.Universal.Update.Auto.Desc}"
+-                                              Glyph="&#xE965;">
+-                    <ToggleSwitch IsChecked="True"
++                                              Glyph="&#xE965;"
++                                              IsVisible="false">
++                    <ToggleSwitch IsChecked="False"
+                                   Name="IsAutoCheckUpdate"
+                                   IsCheckedChanged="IsAutoCheckUpdate_OnIsCheckedChanged" />
+                 </onePointControls:SettingCard>
+ 
+                 <onePointControls:SettingCard Header="{DynamicResource Settings.Universal.Update.Channel.Title}"
+                                               Description="{DynamicResource Settings.Universal.Update.Channel.Desc}"
+-                                              Glyph="&#xE728;">
++                                              Glyph="&#xE728;"
++                                              IsVisible="false">
+                     <ComboBox Width="280"
+                               SelectedIndex="0"
+                               Name="UpdateTypeBox"
+@@ -38,6 +40,7 @@
                      <Button Padding="8"
                              Height="36" Width="100"
                              Name="CheckUpdateBtn"

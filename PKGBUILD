@@ -1,7 +1,7 @@
 # Maintainer: willker <wz[dot]willker[at]gmail[dot]com>
 
 pkgname=bedrockboot
-pkgver=2.1.10.100
+pkgver=2.1.11.101
 pkgrel=1
 pkgdesc="Industrial Grade Minecraft Bedrock Edition Launcher for Windows & Linux"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
     "CrashStackAnalyzer::git+https://github.com/Round-Studio/CrashStackAnalyzer.git"
     "disable-update-check.patch"
 )
-sha256sums=('54378cf31635d8fcf8c0f1003afdbd7f8b0c800ac7fe1adf812b2fccfd9a95c0'
+sha256sums=('6789c53d5614dc66c139b0548eda8d3456fdd5294ddf08348298c85bb090b3bb'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -36,7 +36,7 @@ sha256sums=('54378cf31635d8fcf8c0f1003afdbd7f8b0c800ac7fe1adf812b2fccfd9a95c0'
             'SKIP'
             'SKIP'
             'SKIP'
-            '7dce907b5c92972c6524c5fd078789287e0753f472c13981948146494a0bd1e5')
+            'b35cf1ba605b4e41dcb981ab5f81857ff42f9e85ba98e6b49bf66ee739073742')
 
 prepare() {
     cd "$pkgname"
@@ -64,6 +64,8 @@ build() {
         --self-contained false \
         -p:Version="${pkgver}" \
         -p:DebugType=none \
+        -p:BuildType=Release \
+        -p:GenerateChangeLogCurrentTag="v${pkgver}" \
         -o build-output
 }
 

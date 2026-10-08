@@ -1,6 +1,6 @@
 pkgbase = bedrockboot
 	pkgdesc = Industrial Grade Minecraft Bedrock Edition Launcher for Windows & Linux
-	pkgver = 2.1.10.100
+	pkgver = 2.1.11.101
 	pkgrel = 1
 	url = https://github.com/Round-Studio/BedrockBoot
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = bedrockboot
 	depends = bzip2
 	depends = libpng
 	depends = brotli
-	source = bedrockboot::git+https://github.com/Round-Studio/BedrockBoot.git#tag=v2.1.10.100
+	source = bedrockboot::git+https://github.com/Round-Studio/BedrockBoot.git#tag=v2.1.11.101
 	source = OnePointUI.Avalonia::git+https://github.com/Round-Studio/OnePointUI.Avalonia.git
 	source = Round.SDK::git+https://github.com/Round-Studio/Round.SDK.git
 	source = PeNet::git+https://github.com/Round-Studio/PeNet.git
@@ -24,7 +24,7 @@ pkgbase = bedrockboot
 	source = PreLoadCpp::git+https://github.com/Round-Studio/PreLoadCpp.git
 	source = CrashStackAnalyzer::git+https://github.com/Round-Studio/CrashStackAnalyzer.git
 	source = disable-update-check.patch
-	sha256sums = 54378cf31635d8fcf8c0f1003afdbd7f8b0c800ac7fe1adf812b2fccfd9a95c0
+	sha256sums = 6789c53d5614dc66c139b0548eda8d3456fdd5294ddf08348298c85bb090b3bb
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -33,6 +33,6 @@ pkgbase = bedrockboot
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 7dce907b5c92972c6524c5fd078789287e0753f472c13981948146494a0bd1e5
+	sha256sums = b35cf1ba605b4e41dcb981ab5f81857ff42f9e85ba98e6b49bf66ee739073742
 
 pkgname = bedrockboot
