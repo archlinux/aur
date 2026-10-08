@@ -1,14 +1,14 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=('far2l' 'far2l-ttyx' 'far2l-gui' 'far2l-python')
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc='Linux port of FAR v2'
 url='https://github.com/elfmz/far2l'
 arch=('x86_64' 'aarch64')
 license=('GPL2')
 source=("far2l-${pkgver}.tar.gz::https://github.com/elfmz/far2l/archive/refs/tags/v_${pkgver}.tar.gz")
-sha256sums=('69a5218fcfd072a2d4b99ecac8363a67d85f2fd67b65243f8ea7b239bb134ed0')
+sha256sums=('a28d647f12b17fce3a89e939ce036fe4ef0d4fb1a9fc7c44fe27d292021522e4')
 depends=('libxml2' 'uchardet')
 options=('!lto')
 makedepends=('cmake' 'wxwidgets-gtk3' 'python-cffi' 'python-markdown' 'libxi')

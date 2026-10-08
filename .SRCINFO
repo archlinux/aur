@@ -1,6 +1,6 @@
 pkgbase = far2l
 	pkgdesc = Linux port of FAR v2
-	pkgver = 2.9.0
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://github.com/elfmz/far2l
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = far2l
 	optdepends = imagemagick: ImageViewer plugin
 	optdepends = libusb: MTP plugin
 	options = !lto
-	source = far2l-2.9.0.tar.gz::https://github.com/elfmz/far2l/archive/refs/tags/v_2.9.0.tar.gz
-	sha256sums = 69a5218fcfd072a2d4b99ecac8363a67d85f2fd67b65243f8ea7b239bb134ed0
+	source = far2l-2.9.1.tar.gz::https://github.com/elfmz/far2l/archive/refs/tags/v_2.9.1.tar.gz
+	sha256sums = a28d647f12b17fce3a89e939ce036fe4ef0d4fb1a9fc7c44fe27d292021522e4
 
 pkgname = far2l
 
