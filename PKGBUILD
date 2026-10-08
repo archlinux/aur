@@ -1,6 +1,6 @@
 # Maintainer: Leo Liu <leoliu0@users.noreply.github.com>
 pkgname=texres-bin
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="Ultra-fast, pure-Rust TeX engine and complete self-contained typesetting suite"
 arch=('x86_64' 'aarch64')
@@ -26,8 +26,8 @@ replaces=('ratex-bin')
 options=('!strip' '!debug')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/leoliu0/texres/releases/download/v${pkgver}/tex-suite-v${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/leoliu0/texres/releases/download/v${pkgver}/tex-suite-v${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('9407bc6272d9afa8ed8b3eb99eb66084a2a36b43cb75e17c8336d1c1a800385c')
-sha256sums_aarch64=('be81b19b0a15de178d4d021d4444d3eb78905ee07306485825fb46d065efec79')
+sha256sums_x86_64=('f83550f80815d55fc398910c3bd63d7aaf60307ae2c3ac70e440ea40321e3c8c')
+sha256sums_aarch64=('148e74970bb0120d37c09ca7fc65461c92a7a894c4ef379331f532db23b39e60')
 
 package() {
     cd "$srcdir/tex-suite-linux-${CARCH}"
