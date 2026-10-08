@@ -1,2 +1,3 @@
-2.49.2-1 [2026-10-02]
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 154.0.8037.97.
+2.50.0-1 [2026-10-07]
+- Upgrade the integrated Screen Capture to version 2.3.8.
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 155.0.8059.40.
