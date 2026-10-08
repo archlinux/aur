@@ -4,7 +4,7 @@ _pkgname=AionUi
 pkgver=2.2.2
 _electronversion=37
 _nodeversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, local, open-source 24/7 Cowork app and OpenClaw for Gemini CLI, Claude Code, Codex, OpenCode, Qwen Code, Goose CLI, Auggie, and more."
 arch=(
     'aarch64'
@@ -20,6 +20,7 @@ depends=(
     'nodejs'
     'python-typing_extensions'
     'python-packaging'
+    'aioncore'
 )
 makedepends=(
     'bun'
@@ -34,48 +35,56 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('a6049f5b76c7b7891a7caaf7be717d38695698b8d70985ad2a05d83658986873'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+            'fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_project_dir() {
+	local d
+	while IFS= read -r d; do
+		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
+	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+}
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _get_electron_version() {
-    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -name "node_modules" \
+    _elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -name "node_modules" \
         -exec jq -r '.devDependencies.electron // empty' {} + 2>/dev/null | grep -v "^$" | head -n 1)
     _elec_ver=$(echo "${_elec_ver}" | sed 's/[^0-9.]//g')
     _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 _set_build_env() {
-    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export HOME="${srcdir}/.electron-gyp"
-    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
-    export NPM_CONFIG_MAXSOCKETS=32
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-            export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
-            export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
-        }
-        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-    fi
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	export ELECTRON_BUILDER_OFFLINE=true
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+	export HOME="${srcdir}/.home"
+	export XDG_CACHE_HOME="${HOME}/.cache"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_DATA_HOME="${HOME}/.local/share"
+	export BUN_INSTALL_CACHE_DIR="${HOME}/.bun/cache"
+	export BUN_INSTALL_GLOBAL_DIR="${HOME}/.bun/global"
+	export BUN_INSTALL_BIN="${HOME}/.bun/bin"
+	export BUN_CONFIG_SKIP_SAVE_LOCKFILE=1
+	export BUN_CONFIG_SKIP_LOAD_LOCKFILE=1
+	export BUN_DISABLE_DOTENV=1
+	export DO_NOT_TRACK=1
+	export BUN_JOBS="$(nproc)"
+	mkdir -p "${HOME}" "${BUN_INSTALL_CACHE_DIR}" "${BUN_INSTALL_GLOBAL_DIR}" "${BUN_INSTALL_BIN}"
 }
 prepare() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "$(_get_project_dir)"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
-        s/@cfgdirname@/${pkgname}/g
     " "${srcdir}/${pkgname}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
@@ -83,19 +92,19 @@ prepare() {
         --categories="System" \
         --name="${pkgname}" \
         --exec="${pkgname} %U"
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
     find packages -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     bun run postinstall || true
     bunx electron-builder install-app-deps
 }
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${_src}"
     _set_build_env
     _ensure_local_nvm
-    
-    # Determine target architecture
+    _ensure_local_nvm
+    _set_build_env
     if [[ "${CARCH}" == "x86_64" ]]; then
         TARGET_ARCH="x64"
     elif [[ "${CARCH}" == "aarch64" ]]; then
@@ -103,7 +112,6 @@ build() {
     else
         TARGET_ARCH="x64"
     fi
-    
     bunx electron-vite build --config packages/desktop/electron.vite.config.ts
     node scripts/build-mcp-servers.js
     node -e "const { prepareAioncore } = require('./packages/shared-scripts/src/prepare-aioncore.js'); \
@@ -115,10 +123,11 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-    local _app_dir=$(_get_app_dir)
-    cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname}/"
+    local _app_dir="$(_get_app_dir)"
+    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
     rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/resources/app.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    local _src="$(_get_project_dir)"
+    install -Dm644 "${_src}/resources/app.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${_src}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${_src}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
