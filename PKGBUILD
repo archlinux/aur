@@ -1,7 +1,7 @@
 # Maintainer: Kazuya Yokogawa <mapk0y at gmail.com>
 
 pkgname='tencentcloud-sdk-python'
-pkgver=3.1.176
+pkgver=3.1.186
 pkgrel=1
 pkgdesc='Tencent Cloud API 3.0 SDK for Python'
 url='https://github.com/TencentCloud/tencentcloud-sdk-python'
@@ -14,7 +14,7 @@ conflicts=()
 source=(
   "${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('6e21b58d21b9fa8d46fcc7de917523481dc7473c3c4244bd3f3cf32b4d991bd8')
+sha256sums=('024ee9a5d48e61408e0fb0fe545c94063a599eb6169b6a70b7fe7b959c13c697')
 
 build() {
   cd "${pkgname}-${pkgver}"
