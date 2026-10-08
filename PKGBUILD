@@ -13,7 +13,7 @@
 # refreshes the license checksums when upstream edits them.
 
 pkgname=narsil-mcp-bin
-pkgver=1.7.0
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Rust MCP server for deep code intelligence: semantic search, call graphs, taint analysis, SBOM"
 arch=('x86_64' 'aarch64')
@@ -45,8 +45,8 @@ source_aarch64=(
 )
 # Both tarball hashes match the upstream .sha256 release assets; license
 # hashes are identical for both architectures (tag content, arch-agnostic).
-sha256sums_x86_64=('46986fe312f6fc1bb5fd57d028ee007a321a810084b7e0a6c6c66b337291f4f0' '22610661fd90ef80e47a421c4417fcd624c3e9571612d4f5e2401fd2b4fe68ef' '38140d0016ebc4e835fe7466764ec59e9bf8ae1678a9143a6bd3ebd87dcd32a6')
-sha256sums_aarch64=('ef79328cf397f21a5ab24b9e932f0254043c9e5672bf7b9df66229fc44c76026' '22610661fd90ef80e47a421c4417fcd624c3e9571612d4f5e2401fd2b4fe68ef' '38140d0016ebc4e835fe7466764ec59e9bf8ae1678a9143a6bd3ebd87dcd32a6')
+sha256sums_x86_64=('f12be877f6dc9f067cd997920ba91408ef985fa94dbe7cf4c3d6b65270f591e4' '22610661fd90ef80e47a421c4417fcd624c3e9571612d4f5e2401fd2b4fe68ef' '38140d0016ebc4e835fe7466764ec59e9bf8ae1678a9143a6bd3ebd87dcd32a6')
+sha256sums_aarch64=('52b717dff055c6551254127344cf1dd9852cc5eff47c204dabe8d0371959580c' '22610661fd90ef80e47a421c4417fcd624c3e9571612d4f5e2401fd2b4fe68ef' '38140d0016ebc4e835fe7466764ec59e9bf8ae1678a9143a6bd3ebd87dcd32a6')
 
 package() {
     # Tarball layout: a single ./narsil-mcp entry, already stripped by
