@@ -1,6 +1,6 @@
 pkgbase = oh-my-pi
 	pkgdesc = Coding agent with the IDE wired in
-	pkgver = 18.7.0
+	pkgver = 18.8.3
 	pkgrel = 1
 	url = https://omp.sh/
 	arch = x86_64
@@ -26,10 +26,10 @@ pkgbase = oh-my-pi
 	optdepends = xdg-desktop-portal-impl: compositor-specific backend for Wayland computer tool portals
 	options = !lto
 	options = !strip
-	source = oh-my-pi-18.7.0.tar.gz::https://github.com/can1357/oh-my-pi/archive/v18.7.0.tar.gz
+	source = oh-my-pi-18.8.3.tar.gz::https://github.com/can1357/oh-my-pi/archive/v18.8.3.tar.gz
 	source = https://static.crates.io/crates/opus/opus-0.4.0.crate
 	source = skip-native-embed-for-aur.patch
-	sha256sums = d49e276b43936aa3f9f9f60fc90ec3a0028cae18c50c737b06a0f32cdb449ad2
+	sha256sums = 74e2dc0c93ec9695040ceecd6b6b489a28fff9b846ca17e2fb345c90975ae559
 	sha256sums = 33718946cc77d4032911d4efe03a66dbcbfbd2bb16c3da06aaeadcc637c32216
 	sha256sums = d60c5282c2eebcde70c70b67d49b3fb8105c15d232d29851c68d858a9195acb6
 
