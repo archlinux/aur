@@ -1,6 +1,6 @@
 # Maintainer: hup2c <hup@dr.com>
 pkgname=onemessage-bin
-pkgver=2.37.5
+pkgver=2.37.14
 pkgrel=1
 pkgdesc="OneMessage 中移集成"
 arch=('x86_64')
