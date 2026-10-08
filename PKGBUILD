@@ -1,7 +1,7 @@
 # Maintainer: Pando85 <pando855@gmail.com>
 _pkgname=rash
 pkgname="${_pkgname}-bin"
-pkgver=2.21.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Declarative shell scripting using Rust native bindings"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("https://github.com/rash-sh/rash/releases/download/v${pkgver}/rash-${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz")
-sha256sums=('7b666694e76c636cd45aa6962efb0be86f1e5b3bab81bcc5c332b26613fd5ac4')
+sha256sums=('27cbe2030f4336d49fbc6277cef332d5efa7faef7c0664d35de74a931a515e40')
 
 package() {
 	install -Dm755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
