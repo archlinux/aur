@@ -3,13 +3,14 @@
 pkgname=python-vspackrgb
 _origpkgname=vspackrgb
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="RGB packing for VapourSynth frames"
 arch=("x86_64")
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
 license=("MIT")
 depends=(
     "python-hatch-cython-varde-git"
+    "vapoursynth"
 )
 makedepends=(
     "git"
@@ -20,6 +21,7 @@ makedepends=(
     "python-hatchling"
     "python-versioningit"
     "python-hatch-sbom"
+    "python-hatch-rs"
 )
 source=("${pkgname}::git+${url}.git#tag=${_origpkgname}/v${pkgver}")
 sha256sums=('9b6f03ebeaa80025db76c2f77399f8ad61a8ff480f7508a9b7a2975149efb9dd')
