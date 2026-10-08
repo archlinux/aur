@@ -1,6 +1,6 @@
 pkgbase = cloudquery-cli
 	pkgdesc = The open source high performance ELT framework powered by Apache Arrow
-	pkgver = 6.43.0
+	pkgver = 6.45.1
 	pkgrel = 1
 	url = https://github.com/cloudquery/cloudquery
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cloudquery-cli
 	license = MPL-2.0
 	makedepends = go>=1.21
 	options = !lto
-	source = cloudquery-cli-6.43.0.tar.gz::https://github.com/cloudquery/cloudquery/archive/refs/tags/cli-v6.43.0.zip
-	sha256sums = 98c75f328eb8cd71cb5b5dfba7799ceead5c03e3349020270f75da80dd0f600d
+	source = cloudquery-cli-6.45.1.tar.gz::https://github.com/cloudquery/cloudquery/archive/refs/tags/cli-v6.45.1.zip
+	sha256sums = d0ef02b8fb1976f1587dc4e5ec80d7fa128daa625c05383399eb0fcbcba79c06
 
 pkgname = cloudquery-cli
