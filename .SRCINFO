@@ -1,6 +1,6 @@
 pkgbase = gnome-vram-booster
 	pkgdesc = Dynamic VRAM prioritization for GNOME
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/sachesi/gnome-vram-booster
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = gnome-vram-booster
 	depends = libgcc
 	depends = glibc
 	optdepends = gnome-shell: the extension that reports the focused window
-	source = gnome-vram-booster-0.7.2.tar.gz::https://github.com/sachesi/gnome-vram-booster/archive/v0.7.2/gnome-vram-booster-0.7.2.tar.gz
-	sha256sums = 8ef11856f838300a75141d411189b7e794c7eedd369d7428b8117af33feacf5c
+	source = gnome-vram-booster-0.7.3.tar.gz::https://github.com/sachesi/gnome-vram-booster/archive/v0.7.3/gnome-vram-booster-0.7.3.tar.gz
+	sha256sums = c343db59eb3c3aa8b2e73168134ad2503bd8c5c50ede1358093d0c5bf2e35ca8
 
 pkgname = gnome-vram-booster

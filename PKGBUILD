@@ -2,7 +2,7 @@
 
 # pkgver and sha256sums are filled in by .github/workflows/aur.yml for each release.
 pkgname=gnome-vram-booster
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='Dynamic VRAM prioritization for GNOME'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('dmemcg-booster' 'libgcc' 'glibc')
 makedepends=('cargo' 'glib2')
 optdepends=('gnome-shell: the extension that reports the focused window')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('8ef11856f838300a75141d411189b7e794c7eedd369d7428b8117af33feacf5c')
+sha256sums=('c343db59eb3c3aa8b2e73168134ad2503bd8c5c50ede1358093d0c5bf2e35ca8')
 
 _ext_uuid=vram-booster@local
 
