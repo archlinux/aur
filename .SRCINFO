@@ -1,7 +1,7 @@
 pkgbase = openssl-1.1
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security
 	pkgver = 1.1.1.w
-	pkgrel = 12
+	pkgrel = 13
 	url = https://www.openssl.org
 	arch = aarch64
 	arch = x86_64
@@ -108,7 +108,7 @@ pkgbase = openssl-1.1
 	sha256sums = 4fe62fbbce088325f5b62fab3edfe59d4d9a8108ddfd06cf2a53fa1bd758c5b3
 	sha256sums = d89423836be0cb5ca076e173ea373c4deeef3d6ffa17085ca8a0850b364d7d3b
 	sha256sums = 933c61f15a81ac9c50f66f8c6c059d09f94a116d7b4c4d534a41b1c8f0140160
-	sha256sums = 4da3e07ceed3790c0bd0dd8ff93b97759ff38ed50e123f46ebe44381eea00b93
+	sha256sums = d13b969c692af11b5531c76b25f7e8c21fee79f2fca694f53ba1c6754d1ade3f
 	sha256sums = f41abfd62f213e489afcc3d4608b034e1c71a8cecc10b2bb81fc3a8ece31cc21
 
 pkgname = openssl-1.1
