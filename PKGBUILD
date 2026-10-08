@@ -16,6 +16,7 @@ depends=(
   'libtde>=0.2.0'
   qt6-base
   qt6-svg
+  wayland
 )
 makedepends=(
   cmake
@@ -32,6 +33,7 @@ optdepends=(
   'librsvg: drawing icons that Qt draws with black patches'
   'qt6-imageformats: thumbnails for WebP, TIFF and other image formats'
   'adwaita-icon-theme: fallback for icons missing from the icon theme'
+  'xdg-desktop-portal: picking files for other applications'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
