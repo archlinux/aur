@@ -1,0 +1,13 @@
+pkgbase = rmaxcut
+	pkgdesc = Find approximate max-cuts in a large graph
+	pkgver = 20210428
+	pkgrel = 1
+	url = https://github.com/lh3/rmaxcut
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	source = rmaxcut-20210428.tar.gz::https://github.com/lh3/rmaxcut/archive/02e9a9b655033bc745db674fd3651dd497986d74.tar.gz
+	sha256sums = 9521b7a01480851a4986a12a2e89567b270beabed31de30c66c157c69a075f0d
+
+pkgname = rmaxcut
