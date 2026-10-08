@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=llmux-bin
-pkgver=0.2.23
+pkgver=0.2.24
 pkgrel=1
 pkgdesc="Multi-provider, multi-account Claude proxy with automatic quota-based rotation"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/2lab-ai/llmux/v${p
 source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/2lab-ai/llmux/releases/download/v${pkgver}/llmux-linux-x86_64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://github.com/2lab-ai/llmux/releases/download/v${pkgver}/llmux-linux-aarch64")
 sha256sums=('18c9008778e81e8815589c8cb3c528f19daac96bc531908f180c7a816278cfd1')
-sha256sums_x86_64=('f535c6ffdd9191609bc67918574a5fbe4545ef49861abec0732ac790cbcc28f3')
-sha256sums_aarch64=('f13495f689238e147ec5617b24b94b3c27dd591e87b863d88400d0dc632cfc94')
+sha256sums_x86_64=('f1bdf8e1efb8f9a065cfa486a42738fe5238a3336756d7e4a8418607ec16f8aa')
+sha256sums_aarch64=('e53632f32421341a871549948d747a9839637c978ec697ab351ee9b997e03dd3')
 
 package() {
     local _src
