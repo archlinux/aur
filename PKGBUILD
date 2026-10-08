@@ -17,7 +17,7 @@ conflicts=('gaze-omarchy')
 backup=('etc/pam.d/gaze-omarchy-face' )
 install='gaze-omarchy-bin.install'
 source=("gaze-omarchy-0.3.9-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-omarchy-0.3.9-1-x86_64.pkg.tar.zst")
-sha256sums=('7b9901b17b6c924ff42d363f5bf0911860e349fe402f89f13ae6c9e30eb16ce9')
+sha256sums=('b6570ee3a8c77b20aa49ef47206d044183c2fb17d30685fab2d29e00afab5c10')
 
 package() {
   bsdtar -xpf "$srcdir/gaze-omarchy-0.3.9-1-x86_64.pkg.tar.zst" -C "$pkgdir"
