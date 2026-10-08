@@ -1,47 +1,48 @@
 # Maintainer: y0sif <https://github.com/y0sif>
+# Contributor: graysky <graysky AT proton DOT me>
+_pkgname=whisrs
 pkgname=whisrs-git
-pkgver=0.1.28
+pkgver=0.1.28.r32.g031a2ff
 pkgrel=1
 pkgdesc='Linux-first voice-to-text dictation tool, written in Rust'
-arch=('x86_64')
+arch=(x86_64)
 url='https://github.com/y0sif/whisrs'
-license=('MIT')
-depends=('gcc-libs' 'alsa-lib' 'libxkbcommon')
-makedepends=('cargo' 'clang' 'cmake' 'git')
-provides=('whisrs')
-conflicts=('whisrs')
+license=(MIT)
+depends=(gcc-libs alsa-lib libxkbcommon)
+makedepends=(git cargo clang cmake)
+provides=($_pkgname)
+conflicts=($_pkgname)
 options=('!lto')
-source=("git+https://github.com/y0sif/whisrs.git")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd whisrs
-  git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' \
-    || printf '0.1.0.r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd $_pkgname
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd whisrs
+  cd $_pkgname
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd whisrs
+  cd $_pkgname
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-targets
+  cargo build --frozen --release
 }
 
 check() {
-  cd whisrs
+  cd $_pkgname
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo test --frozen --release
 }
 
 package() {
-  cd whisrs
+  cd $_pkgname
 
   install -Dm755 target/release/whisrs "$pkgdir/usr/bin/whisrs"
   install -Dm755 target/release/whisrsd "$pkgdir/usr/bin/whisrsd"
