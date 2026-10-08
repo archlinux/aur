@@ -2,7 +2,7 @@
 # Contributor: Maria <maria@kuuro.net>
 
 pkgname=zerobrew-bin
-pkgver=0.3.5
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A drop-in, 5-20x faster, experimental Homebrew alternative'
 
@@ -31,13 +31,13 @@ source_aarch64=(
   "zbx-${pkgver}-${arch[1]}::${url}/releases/download/v${pkgver}/zbx-linux-arm64"
 )
 
-sha256sums=('c1c178cdd22288f9b6565058caeb1ffdfd15cb3f04ade5212d8d15c4b39d2a1d'
+sha256sums=('575ce9bea4fff2970908836e8e0d44a5237c454788265c519857d51d08d2cbd2'
             'c5a4b4e7f1475fe021600420ddfd2c553fb3a0439863bce2188396a92ce69069'
             '58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd')
-sha256sums_x86_64=('faaaa67f60020b95838c9bddb795aad059d6b5567a9a21763314d9af15f4d8ac'
+sha256sums_x86_64=('845277fa4597f0475cdf0cf1ac01cec54e79c20374d1b5757b284448e101362f'
                    '280f26ba6f315299b61963e3dc29ab715ff9ef5ca1c20cba1ab68ffc06bd5153')
-sha256sums_aarch64=('ce0f811fb4c25df9107f749593850df0cc34e5debffda8bef14bc61213f624e3'
-                    '20330e973d8bfbed8c695536234ce87631b9b0221d7aa1b6fff33b12f19ac596')
+sha256sums_aarch64=('092d098fa365b28337bad94804e0d942647fb405f1479a4a02ae53c485ac5449'
+                    '7ce6097f8365974518d25549a65773dd265b070b47749d04f09863a9ced0ed59')
 
 
 package() {
