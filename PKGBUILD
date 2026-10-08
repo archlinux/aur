@@ -3,7 +3,7 @@
 pkgname=pideck-bin
 _pkgname=pi-desktop
 _appname=PiDeck
-pkgver=0.7.9
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Desktop workbench for managing local AI coding agent sessions (prebuilt binary)'
 arch=('x86_64')
@@ -54,7 +54,7 @@ source=('LICENSE')
 source_x86_64=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/ayuayue/PiDeck/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 noextract=("${_pkgname}_${pkgver}_amd64.deb")
 sha256sums=('032c3da0b36939e15b0ba21974baeecf2d0afbdf410a66bd76c2ba28e5baccab')
-sha256sums_x86_64=('1af4cbb053c1039a0a00b970e543d2b24512b46b975462743af9c3726dfe29a8')
+sha256sums_x86_64=('c65ae564382b48c96ae95c7e963b0e317dac95b484bea93a21608a7483794a83')
 
 package() {
   local extract_dir="${srcdir}/deb-extract"
