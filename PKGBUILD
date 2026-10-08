@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r86614.40733220198
+pkgver=r87359.7bb339f2c35
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -33,19 +33,19 @@ depends=(
   qt6-wayland
   sdl3
   simdjson
+  simdutf
   sqlite
   ttf-liberation
   woff2
   mimalloc
   
   angle # AUR
-  simdutf-git # 'simdutf' is v6, we need v7.
   cpptrace # AUR
   libpng-apng # AUR, extra/libpng doesn't provide APNG.
-  vulkan-memory-allocator-git
-  wuffs-lib-git
+  vulkan-memory-allocator # AUR
+  wuffs-lib # AUR
 )
-makedepends=(autoconf-archive automake cargo cmake git nasm ninja patchelf skia-static tar unzip zip)
+makedepends=(autoconf-archive automake rustup cmake git nasm ninja patchelf skia-static tar unzip zip)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
 source=(
   "git+$url"
