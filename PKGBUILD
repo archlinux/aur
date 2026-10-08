@@ -1,7 +1,7 @@
 # Maintainer: orb1n
 
 pkgname=scrcpy-bin
-pkgver=5.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Display and control your Android device"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('libusb: USB connection support')
 provides=('scrcpy')
 conflicts=('scrcpy')
 source=("https://github.com/Genymobile/scrcpy/releases/download/v${pkgver}/scrcpy-linux-x86_64-v${pkgver}.tar.gz" 'scrcpy.desktop')
-sha256sums=('f052ad9eb981879e8c5f066c5ef122b39b6c9853b383d6497219030e6549baed' '8919976f02f450bc0b803caa3b6c8c0305f3cea3b2665bdea566bdba48841af3')
+sha256sums=('9f969d30cc574816077edecda65719c1c70b0aee1df1ba5fa00779ac07b8fd6e' '8919976f02f450bc0b803caa3b6c8c0305f3cea3b2665bdea566bdba48841af3')
 
 package() {
     cd "$srcdir/scrcpy-linux-x86_64-v${pkgver}"
