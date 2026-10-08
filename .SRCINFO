@@ -1,6 +1,6 @@
 pkgbase = gotomux
 	pkgdesc = Fuzzy tmux session picker with presets, zoxide and daemon-assisted cold start
-	pkgver = 0.4.6
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://github.com/fm39hz/gotomux
 	install = gotomux.install
@@ -12,7 +12,7 @@ pkgbase = gotomux
 	optdepends = zoxide: frequent project paths in the picker
 	options = !lto
 	options = !debug
-	source = gotomux-0.4.6.tar.gz::https://github.com/fm39hz/gotomux/archive/v0.4.6.tar.gz
-	sha256sums = 7c0b0985e1ee6d87a18fd3882fd144e38d835c7ac7af0e3ba71f3e0ab52e0d06
+	source = gotomux-0.4.7.tar.gz::https://github.com/fm39hz/gotomux/archive/v0.4.7.tar.gz
+	sha256sums = 312a1e65c64c990be7b19a82067c2e29307302441b3287c7a540919d6337a0dc
 
 pkgname = gotomux
