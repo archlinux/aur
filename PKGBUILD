@@ -13,13 +13,13 @@
 # be `SKIP` in a published package.
 #
 # Asset-name dependency (CTX-0164, issue #264): the inner binary rename
-# `bitty-app` -> `bitty` changes `target/<triple>/release/<name>` inside the
+# `bitty-terminal` -> `bitty` changes `target/<triple>/release/<name>` inside the
 # build, but the published dist name `_bitty_asset` below is constructed by
 # the release workflow (`dist/bitty-${TARGET}`) and stays stable across that
 # rename (verified against the 0164 worktree). If the dist name ever changes,
 # update `_bitty_asset` here and in `release.yml` together.
 pkgname=bitty-bin
-pkgver=0.0.21
+pkgver=0.0.22
 pkgrel=1
 pkgdesc="Bitty pre-alpha terminal workspace minimal correct terminal (prebuilt binary)"
 arch=('x86_64')
@@ -35,7 +35,7 @@ source_x86_64=(
   "bitty-${pkgver}.tar.gz::https://github.com/bitty-terminal/bitty/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums_x86_64=(
-  '8281caa399c1748368886eb87f28e78c3180b2835df5cb24c9dacf3154427881'
+  '00140625136da64afaf7b7628988a318a3f2ac0279add039bd8ff10ffcbafebf'
   'SKIP'
 )
 
