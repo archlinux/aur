@@ -1,0 +1,13 @@
+pkgbase = minisplice
+	pkgdesc = Splice site scoring with a deep-learning model
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/lh3/minisplice
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	source = minisplice-0.4.tar.gz::https://github.com/lh3/minisplice/archive/v0.4.tar.gz
+	sha256sums = 9eb6dd56f60cc3059da50ef5167dda938854bba7247301a3e08da12b00dc2319
+
+pkgname = minisplice
