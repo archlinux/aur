@@ -1,0 +1,13 @@
+pkgbase = sdust
+	pkgdesc = Symmetric DUST for finding low-complexity regions in DNA sequences
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/lh3/sdust
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	source = sdust-0.1.tar.gz::https://github.com/lh3/sdust/archive/v0.1.tar.gz
+	sha256sums = 0825a760fae884e65b2b024cc4f511e32e6c1698571c147daf5a61ba0dcac589
+
+pkgname = sdust
