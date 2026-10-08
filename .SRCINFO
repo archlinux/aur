@@ -1,0 +1,12 @@
+pkgbase = ksw2
+	pkgdesc = Alignment library for DNA/RNA sequences under affine gap cost
+	pkgver = 20230627
+	pkgrel = 1
+	url = https://github.com/lh3/ksw2
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = ksw2-20230627.tar.gz::https://github.com/lh3/ksw2/archive/289609bd9e5381a13b16239d0a7703f1ff03f9ca.tar.gz
+	sha256sums = b7bb4bdd246ac13ef4c94d3d8236b9805056dcaf4ddcbe34db85ab24eacf9ad2
+
+pkgname = ksw2
