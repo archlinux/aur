@@ -1,0 +1,13 @@
+pkgbase = kmer-map
+	pkgdesc = Find locations of k-mers in a genome for k<32
+	pkgver = 20251204
+	pkgrel = 1
+	url = https://github.com/lh3/kmer-map
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	source = kmer-map-20251204.tar.gz::https://github.com/lh3/kmer-map/archive/4da68464298b1fdd7c9eb148c5a87b140471f544.tar.gz
+	sha256sums = a4d98cb7fefd7600540789da17e7a6b3fa05b651c4ea56391d1c1941029ab769
+
+pkgname = kmer-map
