@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A declarative AppImage/binary package manager"
 
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -30,8 +30,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}")
 sha256sums=('7170d4785755f503c7cbbc3719060263e025f57c377a50c94206b23504ae4b82'
             'c1818149b60d0cc6e49438054e61c4d63e44aed0351d0680b39260271ce8b8e6')
-sha256sums_x86_64=('1b4023c6c3a5ba71764fb0271a60cf4c3b65584c68982f127560085076b35098')
-sha256sums_aarch64=('6300556ad5b016650765d0cfcb92f907119e539f51c8594372aa59daceacb455')
+sha256sums_x86_64=('29b518b1c57337d3f2dde3e2c99bac2bfaeabe66a554ef35a16816bc97e78a5c')
+sha256sums_aarch64=('eaee62baff0f28a064de92638f76badff9f0e02672ff66114dbaf461a08bf39e')
 
 
 package() {

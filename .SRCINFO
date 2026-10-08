@@ -1,6 +1,6 @@
 pkgbase = wares-bin
 	pkgdesc = A declarative AppImage/binary package manager
-	pkgver = 0.9.4
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/indium114/wares
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = wares-bin
 	provides = wares
 	conflicts = wares
 	options = !strip
-	source = README-0.9.4.md::https://raw.githubusercontent.com/indium114/wares/0.9.4/README.md
-	source = LICENSE-0.9.4::https://raw.githubusercontent.com/indium114/wares/0.9.4/LICENSE.md
+	source = README-0.9.5.md::https://raw.githubusercontent.com/indium114/wares/0.9.5/README.md
+	source = LICENSE-0.9.5::https://raw.githubusercontent.com/indium114/wares/0.9.5/LICENSE.md
 	sha256sums = 7170d4785755f503c7cbbc3719060263e025f57c377a50c94206b23504ae4b82
 	sha256sums = c1818149b60d0cc6e49438054e61c4d63e44aed0351d0680b39260271ce8b8e6
-	source_x86_64 = wares-x86_64-0.9.4::https://github.com/indium114/wares/releases/download/0.9.4/wares_Linux_x86_64
-	sha256sums_x86_64 = 1b4023c6c3a5ba71764fb0271a60cf4c3b65584c68982f127560085076b35098
-	source_aarch64 = wares-aarch64-0.9.4::https://github.com/indium114/wares/releases/download/0.9.4/wares_Linux_arm64
-	sha256sums_aarch64 = 6300556ad5b016650765d0cfcb92f907119e539f51c8594372aa59daceacb455
+	source_x86_64 = wares-x86_64-0.9.5::https://github.com/indium114/wares/releases/download/0.9.5/wares_Linux_x86_64
+	sha256sums_x86_64 = 29b518b1c57337d3f2dde3e2c99bac2bfaeabe66a554ef35a16816bc97e78a5c
+	source_aarch64 = wares-aarch64-0.9.5::https://github.com/indium114/wares/releases/download/0.9.5/wares_Linux_arm64
+	sha256sums_aarch64 = eaee62baff0f28a064de92638f76badff9f0e02672ff66114dbaf461a08bf39e
 
 pkgname = wares-bin
