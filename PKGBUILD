@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=deeplx-git
-pkgver=1.2.2.r8.g770f63b
+pkgver=1.2.5.r0.g54158cd
 pkgrel=1
 pkgdesc="DLX - Self-hosted translation API server. Unofficial; not affiliated with DeepL SE"
 arch=($CARCH)
@@ -10,7 +10,7 @@ license=('MIT')
 provides=(dlx)
 conflicts=(dlx)
 replaces=()
-depends=(glibc)
+depends=()
 optdepends=()
 makedepends=(go git)
 backup=()
@@ -19,7 +19,7 @@ install=${pkgname}.install
 source=("${pkgname}::git+${url}.git"
     ${pkgname}.install)
 sha256sums=('SKIP'
-            'e8544a1bf2c25684212a7f55cca88748636bacedadf7e2ac7bb0d55285f96f1f')
+            '436441a707b5f22b730ebb378f80d828d1b490b5db1b09219ba961ff4238c9c3')
 
 export CGO_CPPFLAGS="${CPPFLAGS}"
 export CGO_CFLAGS="${CFLAGS}"

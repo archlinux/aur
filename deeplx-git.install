@@ -7,8 +7,8 @@ cat << EOF
   Root privileges: systemctl status dlx.service
 3. Listening at:
   Recommended: 
-  curl -X POST http://localhost:1188/translate \
-    -H "Content-Type: application/json" \
+  curl -X POST http://localhost:1188/translate \\
+    -H "Content-Type: application/json" \\
     -d '{"text": "Hello, world!", "source_lang": "EN", "target_lang": "ZH"}'
 -----------------------------------------------
 EOF
