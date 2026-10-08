@@ -2,13 +2,13 @@
 # Contributor: Yann Büchau <nobodyinperson at posteo de>
 # Contributor: tee < teeaur at duck dot com >
 pkgname=git-annex-standalone
-pkgver=10.20260420
+pkgver=10.20260717
 pkgrel=1
 pkgdesc="Manage files with git, without checking their contents into git. Standalone version, with no Haskell dependency."
 arch=(x86_64 aarch64)
 url="https://git-annex.branchable.com"
 license=('custom')
-depends=("bzip2" "file" "git" "glibc" "gmp" "libffi" "libyaml" "lsof" "rsync" "sqlite" "zlib")
+depends=("botan" "bzip2" "file" "git" "glibc" "gmp" "libffi" "libyaml" "lsof" "rsync" "sqlite" "zlib")
 depends_aarch64=("libffi7")
 provides=("git-annex")
 conflicts=("git-annex")
@@ -30,7 +30,7 @@ source_aarch64=("git-annex-standalone-arm64-${_last_pkgver}.tar.gz::https://down
 sha256sums_x86_64=("${_last_sha256_x86_64}"
                    'SKIP')
 sha256sums_aarch64=("${_last_sha256_aarch64}"
-                   'SKIP')
+                    'SKIP')
 validpgpkeys=("40055C6AFD2D526B2961E78F5EE1DBA789C809CB")
 
 pkgver() {
@@ -38,7 +38,7 @@ pkgver() {
 }
 
 package() {
-  cd "$srcdir/git-annex.linux"
+  cd "git-annex.linux"
 
   for exe in git-annex git-annex-shell; do
     install -Dm755 shimmed/$exe/$exe "$pkgdir/usr/bin/$exe"
