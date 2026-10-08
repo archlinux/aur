@@ -1,0 +1,21 @@
+pkgbase = repos-manager
+	pkgdesc = Clone and update every Git repo you can access on GitHub, GitLab, Forgejo, Bitbucket and Radicle
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Dxsk/repos-manager
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = git
+	depends = gcc-libs
+	depends = glibc
+	optdepends = github-cli: GitHub provider
+	optdepends = glab: GitLab provider
+	optdepends = tea: Forgejo and Gitea login
+	conflicts = repos-manager-bin
+	options = !lto
+	source = repos-manager-1.0.0.tar.gz::https://github.com/Dxsk/repos-manager/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 73868b3f0be2d3ca5ed647eef7c8f90ac518af5f36452412c2a81f582f23d606
+
+pkgname = repos-manager
