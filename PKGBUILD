@@ -7,8 +7,8 @@ pkgdesc="Unofficial Linux tray app for the Pangolin VPN client (git)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lucasssvaz/traygolin"
 license=('Apache-2.0' 'MIT')
-depends=('glib2' 'glibc' 'gtk4' 'libadwaita>=1.9' 'polkit' 'hicolor-icon-theme')
-makedepends=('go' 'gobject-introspection' 'git')
+depends=('glib2' 'glibc' 'gtk4' 'libadwaita>=1.9' 'gobject-introspection' 'polkit' 'hicolor-icon-theme')
+makedepends=('go' 'git')
 optdepends=('pangolin-cli: official Pangolin VPN CLI (pangolin on PATH)')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")

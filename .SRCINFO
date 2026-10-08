@@ -8,12 +8,12 @@ pkgbase = traygolin-git
 	license = Apache-2.0
 	license = MIT
 	makedepends = go
-	makedepends = gobject-introspection
 	makedepends = git
 	depends = glib2
 	depends = glibc
 	depends = gtk4
 	depends = libadwaita>=1.9
+	depends = gobject-introspection
 	depends = polkit
 	depends = hicolor-icon-theme
 	optdepends = pangolin-cli: official Pangolin VPN CLI (pangolin on PATH)
