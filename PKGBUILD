@@ -6,27 +6,28 @@
 
 pkgname=nethack-git
 _pkgname=NetHack
-pkgver=5.0.0_Release+r18864+g083e55e90
+pkgver=5.0.0_Release+r19759+gcb453720b
 pkgrel=1
 pkgdesc='A single player dungeon exploration game'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/NetHack/NetHack'
-license=('LicenseRef-custom')
-depends=('ncurses' 'gzip' 'gdb')
-makedepends=(git curl)
+license=('NGPL')
+depends=('ncurses' 'gzip')
+optdepends=('gdb: backtraces on panic')
+makedepends=(git)
 _branch=NetHack-5.0
 source=("git+https://github.com/NetHack/NetHack.git#branch=${_branch}" nethack.tmpfiles)
 sha256sums=('SKIP'
-  '36aac7645c4972581616e8f78f31c2297e2edfa421f098679004ccb46e44603c')
+  'b4077a48b9ccc184014806fbdc52c2b1c709d9ab9401445751a7089e9f436645')
 conflicts=('nethack')
 provides=('nethack')
+backup=('etc/nethack/sysconf')
 
 pkgver() {
   cd "${_pkgname}"
+  local _version _commits _short_commit_hash
   _version=$(git describe --tags --abbrev=0 | tr - .)
-  #we need to source commit counts from the default branch to match our version checker
-  local _defaultbranch=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
-  _commits=$(git rev-list --count $_defaultbranch)
+  _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
   echo "${_version#'NetHack.'}+r${_commits}+g${_short_commit_hash}"
 }
@@ -42,10 +43,9 @@ prepare() {
   # to allow full access for groups
 
   # With thanks to bugtracker user loqs for the CFLAGS and LDFLAGS adjustments
-  sed -e "s|^MANDIR=.*|MANDIR=$pkgdir/usr/share/man/man6|" \
-    -e 's|NHCFLAGS+=-DHACKDIR=\\".*\\"|NHCFLAGS+=-DHACKDIR=\\"/var/games/nethack/\\"|' \
-    -e 's|NHCFLAGS+=-DSYSCF -DSYSCF_FILE=\\"$(HACKDIR)/sysconf\\"|NHCFLAGS+=-DSYSCF -DSYSCF_FILE=\\"/var/games/nethack/sysconf\\"|' \
-    -i sys/unix/hints/linux.500
+  sed -e 's|NHCFLAGS+=-DHACKDIR=\\".*\\"|NHCFLAGS+=-DHACKDIR=\\"/var/games/nethack/\\"|' \
+    -e 's|NHCFLAGS+=-DSYSCF -DSYSCF_FILE=\\"$(HACKDIR)/sysconf\\"|NHCFLAGS+=-DSYSCF -DSYSCF_FILE=\\"/etc/nethack/sysconf\\"|' \
+    -i sys/unix/hints/linux.501
 
   # Fix the way they disable __warn_unused_result__
   sed '/^#define __warn_unused_result__/ s,/\*empty\*/,__unused__,' \
@@ -56,16 +56,12 @@ prepare() {
     -e '/^FILEPERM\s*=/ s|0644|0664|' \
     -e '/^DIRPERM\s*=/ s|0755|0775|' \
     -i sys/unix/Makefile.top
-
-  sed -e "/^MANDIR\s*=/s|/usr/man/man6|$pkgdir/usr/share/man/man6|" \
-    -i sys/unix/Makefile.doc
 }
 
 build() {
-  cd "NetHack/sys/unix"
-  sh setup.sh hints/linux.500
+  cd "$srcdir/$_pkgname/sys/unix"
+  sh setup.sh hints/linux.501
   cd "$srcdir/$_pkgname"
-  make fetch-lua
   make
 }
 
@@ -87,11 +83,11 @@ package() {
   install -dm755 "$pkgdir"/usr/lib/nethack
   mv "$pkgdir"/var/games/nethack/{nethack,recover} "$pkgdir"/usr/lib/nethack/
 
+  install -dm755 "$pkgdir"/etc/nethack
+  mv "$pkgdir"/var/games/nethack/sysconf "$pkgdir"/etc/nethack/sysconf
+
   install -vDm 644 ../nethack.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/nethack.conf"
 
   install -Dm644 doc/Guidebook.txt "$pkgdir"/usr/share/doc/nethack/Guidebook.txt
   install -Dm644 dat/license "$pkgdir"/usr/share/licenses/nethack/LICENSE
-
-  cd "$pkgdir/var/games/nethack/"
 }
-# vim:set ts=2 sw=2 et:
