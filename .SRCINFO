@@ -1,0 +1,47 @@
+pkgbase = gxde-dtk2-git
+	pkgdesc = GXDE OS DTK2 compatibility stack (DTK2 widget on top of DTK5 core)
+	pkgver = 2.5.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/GXDE-OS
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-or-later
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = qt5-tools
+	depends = gxde-dtk5-git
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-x11extras
+	depends = qt5-multimedia
+	depends = gsettings-qt5
+	depends = librsvg
+	depends = cairo
+	depends = glib2
+	depends = startup-notification
+	depends = wayland
+	depends = libx11
+	depends = libxext
+	depends = libxi
+	depends = libxcb
+	depends = xcb-util
+	depends = gcc-libs
+	depends = glibc
+	source = dtk2core::git+https://github.com/GXDE-OS/dtk2core.git
+	source = dde-qt-dbus-factory::git+https://github.com/GXDE-OS/dde-qt-dbus-factory.git
+	source = dtk2widget::git+https://github.com/GXDE-OS/dtk2widget.git
+	source = gxde-qt5integration::git+https://github.com/GXDE-OS/gxde-qt5integration.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = gxde-dtk2-git
+	optdepends = gxde-dtk2widget-dev-git: DTK2 widget development files
+	provides = deepin-qt-dbus-factory
+	conflicts = deepin-qt-dbus-factory
+
+pkgname = gxde-dtk2widget-dev-git
+	pkgdesc = GXDE OS DTK2 widget development files
+	depends = gxde-dtk2-git=2.5.r0.g0000000-1
+	conflicts = gxde-dtk5widget-dev-git
