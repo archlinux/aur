@@ -2,7 +2,7 @@
 
 _gemname=solargraph
 pkgname=ruby-$_gemname
-pkgver=0.60.3
+pkgver=0.61.0
 pkgrel=1
 pkgdesc="A Ruby language server"
 arch=(any)
@@ -52,10 +52,10 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/castwide/${_gemname}/archive/v${pkgver}.tar.gz"
   "no-git-lsfiles-and-lower-rbs-and-rdoc-requirements.patch"
 )
-sha256sums=('80206f323090ab339843d608d0f5519f9b0164e4d2ac40e03646a170d7cc797c'
-            '71eb4eccd719d0d752b279793ba528cdadfa7bd3c04bfadc2eba6f4236e4b0a7')
-b2sums=('862dce5fbc09030bac47aab6169a36981f086bcd1221554f4a4345ba7d7288b393b07b1207ed33523cd1b5c9f6cfedf8a586a37228fcd7ab6b904a333d57be7a'
-        '940de82bb6e39225a31f0ca80329a1890f9a82b0b63689218ac02d1fdb9e71583f8c674eb41f1aa648261fbeabd9ecb3ce6c8304ae13cd51c82f230091b9032a')
+sha256sums=('5b5585d5047c6623ee150b8deb6b7d68593ed804fa96797f934fb32bb8e510d3'
+            'e1d0054dd02c42efbd598d49c49d3f6a190ef234ca1b1b222c109d416f0461b6')
+b2sums=('58adcae81f6828c254a9deb3dd6fe7ed4081d4dbdc17278f8ba1e8d04e497aa2b6111e41f5d803c95bf360837dd1a3ddbbbbeea80f6b7cfb0d6ea3b80afb7d17'
+        'eca592100065db2dae1028f8762ceec4ed56e42609cddf901b7b0d858445e5f3034595ee65ede9d8a56d79944f4aa568579afb7fddf775ec17e0c6579c230998')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
@@ -66,8 +66,8 @@ prepare() {
   # Skip bundler/setup in tests; we use GEM_HOME/GEM_PATH instead.
   sed --in-place "/require 'bundler\/setup'/d" spec/spec_helper.rb
 
-  # Remove pending from stdlib_map test since the fix is already in place.
-  sed --in-place "/pending 'Pathname not in stdlib?'/d" spec/rbs_map/stdlib_map_spec.rb
+  # Skip; bundler ignores Arch's nokogiri as its gemspec deps differ.
+  sed --in-place "s/it 'loads gems from transitive dependencies'/xit 'loads gems from transitive dependencies'/" spec/external_spec.rb
 }
 
 build() {
@@ -120,7 +120,7 @@ check() {
 
   # Run tests, but exclude specs that require a Bundler Gemfile.lock, bundle exec, or path-based fixture gem.
   SIMPLECOV_DISABLED=1 GEM_HOME="tmp_install/${_gemdir}" GEM_PATH="tmp_install/${_gemdir}:${_gemdir}" \
-    rspec --exclude-pattern "spec/{shell,doc_map,workspace/gemspecs_find_gem,workspace/gemspecs_resolve_require,workspace/gemspecs_fetch_dependencies,workspace/require_paths,yardoc,yard_map/mapper}_spec.rb"
+    rspec --exclude-pattern "spec/{shell,workspace/require_paths,yard_map/mapper}_spec.rb"
 }
 
 package() {

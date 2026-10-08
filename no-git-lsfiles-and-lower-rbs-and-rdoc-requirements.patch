@@ -1,5 +1,5 @@
---- solargraph.gemspec	2026-06-28 12:42:59.980473175 +0200
-+++ solargraph.gemspec	2026-06-28 12:46:44.264523230 +0200
+--- solargraph.gemspec
++++ solargraph.gemspec
 @@ -14,10 +14,9 @@
    s.authors     = ['Fred Snyder']
    s.email       = 'admin@castwide.com'
@@ -18,7 +18,7 @@
    s.add_dependency 'ostruct', '~> 0.6'
    s.add_dependency 'parser', '~> 3.0'
    s.add_dependency 'prism', '~> 1.4'
--  s.add_dependency 'rbs', '>= 3.10.0'
+-  s.add_dependency 'rbs', '>= 3.10.4'
 -  s.add_dependency 'rdoc', '~> 7.0'
 +  s.add_dependency 'rbs', '>= 3.9.0'
 +  s.add_dependency 'rdoc', '>= 6.0'

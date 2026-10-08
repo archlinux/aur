@@ -1,6 +1,6 @@
 pkgbase = ruby-solargraph
 	pkgdesc = A Ruby language server
-	pkgver = 0.60.3
+	pkgver = 0.61.0
 	pkgrel = 1
 	url = https://solargraph.org/
 	arch = any
@@ -39,11 +39,11 @@ pkgbase = ruby-solargraph
 	depends = ruby-yard
 	depends = ruby-yard-activesupport-concern
 	depends = ruby-yard-solargraph
-	source = ruby-solargraph-0.60.3.tar.gz::https://github.com/castwide/solargraph/archive/v0.60.3.tar.gz
+	source = ruby-solargraph-0.61.0.tar.gz::https://github.com/castwide/solargraph/archive/v0.61.0.tar.gz
 	source = no-git-lsfiles-and-lower-rbs-and-rdoc-requirements.patch
-	sha256sums = 80206f323090ab339843d608d0f5519f9b0164e4d2ac40e03646a170d7cc797c
-	sha256sums = 71eb4eccd719d0d752b279793ba528cdadfa7bd3c04bfadc2eba6f4236e4b0a7
-	b2sums = 862dce5fbc09030bac47aab6169a36981f086bcd1221554f4a4345ba7d7288b393b07b1207ed33523cd1b5c9f6cfedf8a586a37228fcd7ab6b904a333d57be7a
-	b2sums = 940de82bb6e39225a31f0ca80329a1890f9a82b0b63689218ac02d1fdb9e71583f8c674eb41f1aa648261fbeabd9ecb3ce6c8304ae13cd51c82f230091b9032a
+	sha256sums = 5b5585d5047c6623ee150b8deb6b7d68593ed804fa96797f934fb32bb8e510d3
+	sha256sums = e1d0054dd02c42efbd598d49c49d3f6a190ef234ca1b1b222c109d416f0461b6
+	b2sums = 58adcae81f6828c254a9deb3dd6fe7ed4081d4dbdc17278f8ba1e8d04e497aa2b6111e41f5d803c95bf360837dd1a3ddbbbbeea80f6b7cfb0d6ea3b80afb7d17
+	b2sums = eca592100065db2dae1028f8762ceec4ed56e42609cddf901b7b0d858445e5f3034595ee65ede9d8a56d79944f4aa568579afb7fddf775ec17e0c6579c230998
 
 pkgname = ruby-solargraph
