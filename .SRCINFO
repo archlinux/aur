@@ -1,0 +1,21 @@
+pkgbase = mqvpn-bin
+	pkgdesc = Multipath VPN using MASQUE CONNECT-IP (RFC 9484) and Multipath QUIC (prebuilt binary)
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/mp0rta/mqvpn
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = libevent
+	depends = gcc-libs
+	depends = glibc
+	provides = mqvpn
+	conflicts = mqvpn
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/mp0rta/mqvpn/releases/download/v0.17.0/mqvpn_0.17.0_amd64.tar.gz
+	sha256sums_x86_64 = 4a64a03c970f57b7023e300604058ebb14b1d54f616211ff5c8bf3428f379d5d
+	source_aarch64 = https://github.com/mp0rta/mqvpn/releases/download/v0.17.0/mqvpn_0.17.0_arm64.tar.gz
+	sha256sums_aarch64 = 04eecbdd8c60bd581731671d3cdf26ff57cd6166e49c21647dc0f8631b4dd1cc
+
+pkgname = mqvpn-bin
