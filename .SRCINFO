@@ -1,6 +1,6 @@
 pkgbase = vsys-git
 	pkgdesc = Terminal dashboard for Linux machines that run AI agents (tracks main)
-	pkgver = 0.10.0.r302.g64c096d
+	pkgver = 0.10.0.r304.g16d1839
 	pkgrel = 1
 	url = https://github.com/vanillagreencom/vsys
 	arch = x86_64
