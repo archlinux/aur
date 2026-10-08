@@ -1,6 +1,6 @@
 pkgbase = flomo-pake
 	pkgdesc = Use Pake to package Flomo.浮墨笔记,像发微博一样记笔记,记录你想法的川流.全平台覆盖,还支持微信服务号输入.
-	pkgver = 3.17.2
+	pkgver = 3.17.3
 	pkgrel = 1
 	url = https://flomoapp.com/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = flomo-pake
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	conflicts = flomo
-	source = flomo-3.17.2.deb::https://github.com/tw93/Pake/releases/download/V3.17.2/Flomo_x86_64.deb
-	source = LICENSE-3.17.2::https://raw.githubusercontent.com/tw93/Pake/V3.17.2/LICENSE
-	sha256sums = f7d13ab87a3365a5d34487acc92f7f727ef6c3d3c1c325030f8b283609e38952
+	source = flomo-3.17.3.deb::https://github.com/tw93/Pake/releases/download/V3.17.3/Flomo_x86_64.deb
+	source = LICENSE-3.17.3::https://raw.githubusercontent.com/tw93/Pake/V3.17.3/LICENSE
+	sha256sums = c6e02c8952f778603ec54577bcfe3341b8c19310ec31f43017f71b2d99c3dba3
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = flomo-pake
