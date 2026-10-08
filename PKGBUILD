@@ -2,7 +2,7 @@
 # Contributor (former maintainer): David Runge <dvzrv@archlinux.org>
 
 pkgname=molecule-plugins
-pkgver=26.7.15
+pkgver=26.9.28
 pkgrel=1
 pkgdesc="Collection of molecule plugins"
 arch=(any)
@@ -49,8 +49,8 @@ replaces=(
 source=(
   $url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz
 )
-sha512sums=('3ee6741f4621f3b5d571aa9c655968e447d26a1805a5e5bc0e27bd0301a0b3980a2594cd3299e900512e44864081efdda8349096d7e8e2cec1302bc9184a6826')
-b2sums=('95c3aa2fe07e026bbb9bab962d92cdd052abdf57461770b9d615f2712926bbfe0d49df056be78062954854054d5f04a1e2169b23cd2f800661a5601f2cf82ae3')
+sha512sums=('3569f41f7ba81bfaa92f28edb22687e8d146c315a10030582d8596d70c302b4bffe2a52433347890f65ecb9cfd0fa00e8d41153a4df70ad58cf6d0fd0688af92')
+b2sums=('4a9511aa2d2fc60b0bec247a9f2137ec503e34ce48d2e08722fa23bfa3421609f03aa9f315494a6c89c15040fa382692a399819c340815809cb3f6b22aba108b')
 
 build() {
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
