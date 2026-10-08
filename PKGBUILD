@@ -3,7 +3,7 @@
 pkgname=python-hatch-sbom
 _origpkgname=hatch_sbom
 pkgver=0.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Hatchling build hook plugin for generating Software Bill of Materials (SBOM)"
 arch=("x86_64")
 url='https://pypi.org/project/hatch-sbom/'
@@ -25,16 +25,7 @@ sha256sums=('6539360cae31e807be0154a292fea2d842a173b314ed567804044a5b1a7f3ce0')
 
 prepare() {
     cd "${_origpkgname}-${pkgver}" || exit
-    
-    sed -i \
-	    -e 's/hatchling==[^",]*/hatchling>=1.28.0,<2.0.0/' \
-	    -e 's/hatch-vcs==[^",]*/hatch-vcs>=0.5.0,<1.0.0/' \
-	    -e 's/uv==[^",]*/uv>=0.12.0/' \
-	    pyproject.toml
-
-    sed -i \
-	    's/BuildHookInterface\[WheelBuilderConfig, Any\]/BuildHookInterface[WheelBuilderConfig]/' \
-	    src/hatch_sbom/plugin.py
+    sed -i -e 's/uv==[^",]*/uv>=0.12.0/' pyproject.toml
 }
 
 package() {
