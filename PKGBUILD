@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A terminal workspace for reviewing Git changes, browsing source, and exploring history"
 
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,7 +27,7 @@ depends=('git')
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('85ad866d8bcec52162570e763ae3417c59d996c20af46b9ad0a7bc8fc86f26c2')
+sha256sums_x86_64=('114de48fdccaf7af44ec6eaad529dc93d3b21ee2d74d1b29f1ce7b342319eb60')
 
 
 case ${CARCH} in
