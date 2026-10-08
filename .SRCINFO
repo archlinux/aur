@@ -1,6 +1,6 @@
 pkgbase = flavor
 	pkgdesc = Several Tailscale and Headscale networks side by side, in one desktop app and daemon
-	pkgver = 0.1.0beta2
+	pkgver = 0.1.0beta3
 	pkgrel = 1
 	url = https://github.com/tame-gg/Flavor
 	install = flavor.install
@@ -25,8 +25,9 @@ pkgbase = flavor
 	depends = libsoup3
 	depends = webkit2gtk-4.1
 	optdepends = polkit: system-wide names through the flavor-netd helper
+	options = !debug
 	backup = etc/apparmor.d/flavor-netd
-	source = git+https://github.com/tame-gg/Flavor.git#tag=v0.1.0-beta.2?signed
+	source = git+https://github.com/tame-gg/Flavor.git#tag=v0.1.0-beta.3?signed
 	validpgpkeys = 0DFC432162BF84C0FD780619FBB96BCEC0361F01
 	sha256sums = SKIP
 

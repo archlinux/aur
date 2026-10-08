@@ -1,6 +1,6 @@
 # Maintainer: ohemilyy <ohemilyy@proton.me>
 pkgname=flavor
-pkgver=0.1.0beta2
+pkgver=0.1.0beta3
 _ver=${pkgver/beta/-beta.}
 pkgrel=1
 pkgdesc='Several Tailscale and Headscale networks side by side, in one desktop app and daemon'
@@ -11,6 +11,7 @@ depends=('cairo' 'dbus' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme
 makedepends=('cargo-auditable' 'git' 'go' 'jq' 'npm' 'rust')
 optdepends=('polkit: system-wide names through the flavor-netd helper')
 backup=('etc/apparmor.d/flavor-netd')
+options=('!debug')
 install=flavor.install
 validpgpkeys=('0DFC432162BF84C0FD780619FBB96BCEC0361F01')
 source=("git+$url.git#tag=v$_ver?signed")
