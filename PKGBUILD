@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=pigoune
-pkgver=2.2.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='All your graphic assets, organized and within reach'
 arch=('aarch64' 'x86_64')
@@ -11,7 +11,7 @@ depends=('libadwaita' 'gtksourceview5')
 makedepends=('blueprint-compiler' 'git' 'meson' 'rust')
 options=('!lto')
 source=("${pkgname}::git+https://github.com/Gor3pig/${pkgname}.git#tag=v${pkgver}")
-b2sums=('db410a7b9f606415ca4c68575287af106a71eb05ee213e05819e193a1cf605baa9243c7b59057ad0bfe575b0d8d9540a1c1b813e00c9ecf831718a8ba821d630')
+b2sums=('8fc9a797d11609504105cd28ae9bbee5ff5f2b05d418867a54d48db68b79ee8c7fac268624409edcdda052d22e486d878a9427cf3a3b75eb9d3f6b3661580de4')
 
 build() {
   arch-meson "${pkgname}" build
