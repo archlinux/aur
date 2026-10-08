@@ -1,6 +1,6 @@
 pkgname=mangayomi-linux
 pkgver=0.9.8
-pkgrel=13
+pkgrel=14
 pkgdesc="Mangayomi - Manga, Anime and Novel reader (prebuilt zip with auto-compiled QuickJS FFI fix)"
 arch=('x86_64')
 url="https://github.com/kodjodevf/mangayomi"
@@ -25,7 +25,7 @@ prepare() {
   cd "$srcdir/flutter_qjs"
   git submodule update --init --recursive
 
-  # Genera un CMakeLists.txt mirato e pulito per compilare unicamente la libreria C/FFI
+  # Genera un CMakeLists.txt mirato usando la struttura esatta dei sorgenti di ekibun/flutter_qjs
   cat <<'EOF' > linux/CMakeLists.txt
 cmake_minimum_required(VERSION 3.10)
 project(flutter_qjs_plugin LANGUAGES C CXX)
@@ -39,25 +39,20 @@ include_directories(
   ${GTK_INCLUDE_DIRS}
 )
 
-add_compile_options(-DCONFIG_VERSION="2021-03-27" -D_GNU_SOURCE -DEXPORT)
+add_compile_options(-DCONFIG_VERSION="2021-03-27" -D_GNU_SOURCE -DEXPORT -fvisibility=default)
 
-set(QUICKJS_SOURCES
-  ../cxx/quickjs/quickjs.c
-  ../cxx/quickjs/libregexp.c
-  ../cxx/quickjs/libunicode.c
-  ../cxx/quickjs/cutils.c
-  ../cxx/quickjs/quickjs-libc.c
-  ../cxx/quickjs/libbf.c
+file(GLOB QUICKJS_SOURCES
+  "../cxx/quickjs/*.c"
 )
 
-set(PLUGIN_SOURCES
-  ../cxx/ffi.cpp
-  ../cxx/quickjs_wrapper.cpp
+file(GLOB FFI_SOURCES
+  "../cxx/*.cpp"
+  "../cxx/*.c"
 )
 
 add_library(flutter_qjs_plugin SHARED
   ${QUICKJS_SOURCES}
-  ${PLUGIN_SOURCES}
+  ${FFI_SOURCES}
 )
 
 target_link_libraries(flutter_qjs_plugin PRIVATE ${GTK_LIBRARIES} -lm -ldl -lpthread)
@@ -78,7 +73,7 @@ package() {
   # 2) Copia dell'applicazione dallo zip
   cp -r "$srcdir/mangayomi" "$srcdir/data" "$srcdir/lib" "$pkgdir/opt/mangayomi/"
 
-  # 3) Sostituzione della libreria .so con quella appena compilata
+  # 3) Sostituzione della libreria .so difettosa con quella ricompilata con i simboli visibili
   install -m755 "$srcdir/flutter_qjs/linux/build/libflutter_qjs_plugin.so" \
     "$pkgdir/opt/mangayomi/lib/libflutter_qjs_plugin.so"
 
