@@ -1,7 +1,7 @@
 pkgbase = nym-vpnd-beta-bin
 	pkgdesc = NymVPN daemon (Beta)
 	pkgver = 2026.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nymtech/nym-vpn-client
 	install = nym-vpnd-beta-bin.install
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = nym-vpnd-beta-bin
 	provides = nym-socks5-proxy
 	conflicts = nym-vpnd
 	options = !debug
-	source_x86_64 = nym-vpn-core-bin-x86_64.tar.gz::https://github.com/nymtech/nym-vpn-client/releases/download/nym-vpn-v2026.13.0-beta.1/nym-vpn-core-v2026.13.0-beta.1_linux_x86_64.tar.gz
+	source_x86_64 = nym-vpn-core-bin-x86_64.tar.gz::https://github.com/nymtech/nym-vpn-client/releases/download/nym-vpn-v2026.13.0-beta.2/nym-vpn-core-v2026.13.0-beta.2_linux_x86_64.tar.gz
 	source_x86_64 = nym-vpnd.service
-	b2sums_x86_64 = dc6e6e08547db9d0e48d79ca235b81f305bb78ea59da9fc61cf50f6b7513cc82d8f2598938b536c2f3a0477a3231320d649b7a0fb51838bd176d97b5b9ec5c59
+	b2sums_x86_64 = 8ad02f76c5a7c9633cf4b113a5c93a1429247fee49e37ae562855b40a2320133fa58e3b4a354ae0046c4dd5560717a8527f952c9435a1026db4c4192289d14b6
 	b2sums_x86_64 = ce22870bc2c4969c77c067047cc5fec0cc32680983071791ca58f0d197c7d82a7c9c2ee0275e80b5c85e912d70144532bc8ff7d82d458ac286d5eaed9f777414
-	source_aarch64 = nym-vpn-core-bin-aarch64.tar.gz::https://github.com/nymtech/nym-vpn-client/releases/download/nym-vpn-v2026.13.0-beta.1/nym-vpn-core-v2026.13.0-beta.1_linux_aarch64.tar.gz
+	source_aarch64 = nym-vpn-core-bin-aarch64.tar.gz::https://github.com/nymtech/nym-vpn-client/releases/download/nym-vpn-v2026.13.0-beta.2/nym-vpn-core-v2026.13.0-beta.2_linux_aarch64.tar.gz
 	source_aarch64 = nym-vpnd.service
-	b2sums_aarch64 = 27a9dafc922db8e21d4d2ab184263c47b0942d14bc296e5abd606cd0d3a467e480f594a2b8755fd8e11be223278e37b8870623d440b61576ba29be2e850e5e82
+	b2sums_aarch64 = 764a1a3694978e4cba7ceff9d834b4521c1193b2e9a0a912cc43e7e73ffc8d7bef7224265dd8c9c89a50fe0df9ff0956128b21e6aab381604b4ebeb8e5fe022d
 	b2sums_aarch64 = ce22870bc2c4969c77c067047cc5fec0cc32680983071791ca58f0d197c7d82a7c9c2ee0275e80b5c85e912d70144532bc8ff7d82d458ac286d5eaed9f777414
 
 pkgname = nym-vpnd-beta-bin
