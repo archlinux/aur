@@ -1,7 +1,7 @@
 # Maintainer: CxOrg <https://github.com/ixnewton>
 # Maintainer: Ian Newton <i.newton@c-org.com>
 pkgname=docan-gtk-bin
-pkgver=3.0.2
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Universal AI chat application with file attachment support"
 arch=('x86_64')
@@ -12,8 +12,8 @@ provides=('docan')
 conflicts=('docan' 'docan-bin')
 replaces=('docan-bin')
 options=('!strip')
-source=("docan-gtk-bin-${pkgver}.zip::https://github.com/ixnewton/docan/releases/download/v${pkgver}/docan-${pkgver}-2026-10-04-linux-x64.zip")
-sha256sums=('d1d93b96a28ff5073235502c1743891cb5a07b54e7d2c57e638d773502b3549d')
+source=("docan-gtk-bin-${pkgver}.zip::https://github.com/ixnewton/docan/releases/download/v${pkgver}/docan-${pkgver}-2026-10-08-linux-x64.zip")
+sha256sums=('b7a31c98eeb0fb79898ae3b979f5a1af86759a1bdbd89c6fea905df15fb47a9e')
 
 package() {
     cd "${srcdir}"
