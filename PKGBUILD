@@ -2,7 +2,7 @@
 
 pkgbase=ollama-bin
 pkgname=(ollama-bin ollama-cuda12-bin ollama-cuda13-bin ollama-vulkan-bin)
-pkgver=0.40.0
+pkgver=0.40.1
 pkgrel=1
 pkgdesc="Create, run and share large language models (LLMs)"
 
@@ -38,7 +38,7 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("ollama-${arch[0]}-${pkgver}.tzst::${url}/releases/download/v${pkgver}/ollama-linux-${_barch[0]}.tar.zst")
 source_aarch64=("ollama-${arch[1]}-${pkgver}.tzst::${url}/releases/download/v${pkgver}/ollama-linux-${_barch[1]}.tar.zst")
 sha256sums=('5934ed2ce0d15154bcdb9c85203210abac0da4314af34081e36df4599f90b226'
-            '09c456b8f3e2fca486f6961e07494f424ec6f998cfd0b23ebde099bc028a47de'
+            '58ebb57d3a353b92e9f0bdd675e3605fe75017c18ab3c1405e3f09d5aadb8956'
             '964956597a56ab8a27f081510b41fb1d60e22c543bbd7267e23dca4ce3334461'
             '5a502d9eab47078f9136b127d72289b3083934c222c7735c4585d0dbc3fef893'
             'b990b0807a787440598c999c12cdd73b08f31f6ad1dacf4cd1127e08b9485a42'
@@ -48,8 +48,8 @@ sha256sums=('5934ed2ce0d15154bcdb9c85203210abac0da4314af34081e36df4599f90b226'
             '14e2e267be85b6943f66dfe60e73f5e0a611eaf40ee69a4cc0d497d071392cf4'
             '137e1d50a5f3058c30a73b7bb3c323888d225e6a7ae47564be869827db0659a3'
             'c45babd58b56b10ece2c652b67ca3104ed0ceaf4d6041b846be4e71dbd669c2d')
-sha256sums_x86_64=('c94aa4156b3d13e64ebc2efe5ea53f015384c882be776e6695cfb37fb180d5ad')
-sha256sums_aarch64=('4d27cb1d8f46176a3c0ce10aea2a16e4ad73dfe1599f2ed13468f29e5b8aba0d')
+sha256sums_x86_64=('a7aebbe3dd76ccf1351a56a3e57218ad4863cb5f9a9938c58de87a37555e355d')
+sha256sums_aarch64=('f5cbd9a97e0de9502ef928cb993f6d16468e25be6d55a8529d7fd2b67a130bcb')
 
 
 package_ollama-bin() {
