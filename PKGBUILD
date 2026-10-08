@@ -1,7 +1,7 @@
 # Maintainer: Tryanks
 
 pkgname=tcode-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A native desktop app for the coding agents you already use."
 arch=('x86_64' 'aarch64')
@@ -26,8 +26,8 @@ optdepends=(
 )
 source_x86_64=("tcode-${pkgver}-linux-x64.tar.gz::https://github.com/Tryanks/tcode/releases/download/v${pkgver}/tcode-${pkgver}-linux-x64.tar.gz")
 source_aarch64=("tcode-${pkgver}-linux-arm64.tar.gz::https://github.com/Tryanks/tcode/releases/download/v${pkgver}/tcode-${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('951f5e5071c21d44bb2eda40143c9e8533583542d2f713c238c5197ecb5b5e1b')
-sha256sums_aarch64=('222a29af90074a1d4e4197557a9addf8f71ffb5e9614c1b158ea82e5c4559b7b')
+sha256sums_x86_64=('48c122cadd7f1016b51d65c67dead54a4bd1556758c1d1de28d4c9430756f305')
+sha256sums_aarch64=('e0be077edfcb320bcc67604536667ed70858a9dab4fd1e410e7935362aaf5a32')
 
 package() {
   local _archdir
