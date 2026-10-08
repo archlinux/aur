@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Name=Eudic
+Name[zh_CN]=欧路词典
+GenericName=Dictionary
+GenericName[zh_CN]=词典软件
+Comment=Eudic English-Chinese Dictionary
+Comment[zh_CN]=权威的英语词典软件
+Exec=/usr/bin/eudic %F
+Icon=com.eusoft.eudic
+Terminal=false
+StartupNotify=true
+StartupWMClass=eudic
+Categories=Office;Dictionary;Education;
+MimeType=application/x-eudic;

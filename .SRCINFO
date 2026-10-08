@@ -1,0 +1,35 @@
+pkgbase = eusoft-eudic
+	pkgdesc = Eudic (欧路词典) - English dictionary software for Linux (Community Repackage)
+	pkgver = 26.9.1
+	pkgrel = 1
+	url = https://www.eudic.net/v4/en/app/eudic
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = at-spi2-core
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libnotify
+	depends = libsecret
+	depends = libxkbcommon-x11
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = util-linux-libs
+	depends = xdg-utils
+	optdepends = noto-fonts-cjk: Chinese font support
+	provides = eudic
+	provides = eusoft-eudic
+	conflicts = eudic
+	noextract = eusoft-eudic-26.9.1.deb
+	options = !strip
+	options = !debug
+	source = eudic.sh
+	source = eusoft-eudic.desktop
+	source = LICENSE
+	sha256sums = 3e25eab799ce856d306afc89427cb3aed2a97b5671f90847d9dccb4c408e4bf4
+	sha256sums = af51836b59312a8e52c41516ec2931303e76baf2c8f67a4e088b4f1d69c14fb3
+	sha256sums = 377ddd4aecf677aa2b0fdd264f6285118f3e01f6463eb957db972d0b8404cf69
+	source_x86_64 = eusoft-eudic-26.9.1.deb::https://static.eudic.net/pkg/eudic.deb?v=26.9.1
+	sha256sums_x86_64 = dd1faab01940cbf8a019a6d813e2ef1f0b50df65ebacdc96939a4d9f0b4d2892
+
+pkgname = eusoft-eudic
