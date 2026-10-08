@@ -3,7 +3,7 @@
 
 pkgname="n8n"
 pkgver=2.42.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services."
 arch=('x86_64')
 url="https://n8n.io"
@@ -46,6 +46,20 @@ package() {
 
   npm install --cache "${srcdir}/npm-cache" --prefix="${pkgdir}/usr" --global --ignore-scripts --allow-remote=all "${srcdir}/${pkgname}-${pkgver}.tgz"
   local node_root="${pkgdir}/usr/lib/node_modules/${pkgname}"
+
+  # stopProcess() dereferences activeWorkflowManager unguarded, but BaseCommand's
+  # init() registers the SIGTERM/SIGINT handlers before Start.init() assigns it,
+  # so a stop inside that window (1.7s warm, 4.4-5.3s on a fresh DB) exits 1 and
+  # leaves a failed systemd unit. The optional chaining matches this file's own
+  # externalHooks?.run() treatment of fields that may not be set yet. Upstream
+  # master is unchanged; drop this when a release guards the stop path itself.
+  local n8n_start="${node_root}/dist/commands/start.js"
+  sed -i \
+    -e 's|this\.activeWorkflowManager\.removeAllQueuedWorkflowActivations()|this.activeWorkflowManager?.removeAllQueuedWorkflowActivations()|' \
+    -e 's|this\.activeWorkflowManager\.removeAllNonWebhookTriggerWorkflows()|this.activeWorkflowManager?.removeAllNonWebhookTriggerWorkflows()|' \
+    "${n8n_start}"
+  [[ $(grep -cF 'activeWorkflowManager?.' "${n8n_start}") -eq 2 ]] ||
+    { echo "==> ERROR: shutdown guard did not apply — upstream reworked start.js; re-check the stop path" >&2; return 1; }
 
   # npm >=12 blocks install scripts, and it blocks them for `npm rebuild` too —
   # the one command whose entire purpose is running them — so every native addon
