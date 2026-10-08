@@ -2,7 +2,7 @@
 # PGP: 813CE099D6CE512BC29A15D841EE1853489958D6
 
 pkgname=nocb
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="x11 clipboard manager with compression and fts"
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = nocb
 	pkgdesc = x11 clipboard manager with compression and fts
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/rotkonetworks/nocb
 	install = nocb.install
@@ -10,7 +10,7 @@ pkgbase = nocb
 	makedepends = git
 	depends = gcc-libs
 	options = !lto
-	source = git+https://github.com/rotkonetworks/nocb.git#tag=v1.2.1
+	source = git+https://github.com/rotkonetworks/nocb.git#tag=v1.2.2
 	sha256sums = SKIP
 
 pkgname = nocb
