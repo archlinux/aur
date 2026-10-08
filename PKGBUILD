@@ -1,11 +1,12 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=codewhale
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="CodeWhale (formerly DeepSeek-TUI) - DeepSeek-first agentic terminal for open-source coding models"
 arch=('x86_64' 'aarch64')
-url="https://github.com/Hmbown/CodeWhale"
+# Upstream moved from Hmbown/CodeWhale to the codewhale-hq organization.
+url="https://github.com/codewhale-hq/Codewhale"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'dbus')
 makedepends=('rust' 'cargo')
@@ -14,8 +15,8 @@ conflicts=('codewhale-bin' 'codewhale-tui' 'deepseek' 'deepseek-tui' 'deepseek-t
 # Upstream's release binaries have no debug symbols.
 options=('!lto' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('768bbe90810917d4a989844ff26133412a5c67c6a6b76b334d378de44a936965')
-_commit=1be1a703b975fc0a6c125886c761141341615a32
+sha256sums=('0b7e025ce1c2c916a089e44bb29ada7239e2153344cce42508ff7534195776ab')
+_commit=fead51eeea0fb6038ea3e30923751b1a1c765b25
 
 prepare() {
     cd "Codewhale-${pkgver}"
@@ -34,24 +35,26 @@ build() {
     export CODEWHALE_BUILD_SHA="${_commit}"
     # Do not retain the build workspace or Cargo cache in Rust panic paths or
     # rquickjs-sys's compiled C source-location strings.
-    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}/Codewhale-${pkgver}=/build/codewhale --remap-path-prefix=${srcdir}/.cargo/registry=/cargo-registry"
+    # rustc rewrites std's /rustc/<commit> paths to the local rust-src copy when
+    # that component is installed (e.g. ~/.rustup/...); map it back.
+    local _sysroot _rustc_commit
+    _sysroot="$(rustc --print sysroot)"
+    _rustc_commit="$(rustc -vV | sed -n 's/^commit-hash: //p')"
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}/Codewhale-${pkgver}=/build/codewhale --remap-path-prefix=${srcdir}/.cargo/registry=/cargo-registry --remap-path-prefix=${_sysroot}/lib/rustlib/src/rust=/rustc/${_rustc_commit}"
     export CFLAGS="${CFLAGS} -ffile-prefix-map=${srcdir}=/build -fdebug-prefix-map=${srcdir}=/build"
 
 
-    # crates/cli ships codewhale; crates/tui ships codewhale-tui.
-    # Upstream removed the deepseek/deepseek-tui legacy shims in v0.8.54.
-    # v0.9.5 narrowed workspace default-members to crates/cli, so codewhale-tui
-    # is no longer reachable by bare --bin; select each package explicitly.
-    cargo build --frozen --release \
-        -p codewhale-cli --bin codewhale \
-        -p codewhale-tui --bin codewhale-tui
+    # crates/cli ships codewhale. v0.10.1 removed the separate codewhale-tui
+    # [[bin]] from crates/tui (it is now a library only); upstream publishes
+    # codewhale-tui as a byte-identical copy of codewhale, so package() links it.
+    cargo build --frozen --release -p codewhale-cli --bin codewhale
 }
 
 package() {
     cd "Codewhale-${pkgver}"
 
     install -Dm755 "target/release/codewhale"     "${pkgdir}/usr/bin/codewhale"
-    install -Dm755 "target/release/codewhale-tui" "${pkgdir}/usr/bin/codewhale-tui"
+    ln -s codewhale "${pkgdir}/usr/bin/codewhale-tui"
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
