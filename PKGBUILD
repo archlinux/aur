@@ -2,7 +2,7 @@
 # Automation: https://github.com/its-me/aur.ttcli
 
 pkgname=ttcli
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="TickTick CLI - tasks, lists, and pomodoro/focus records from the terminal"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=('1password-cli: ttcli login and automatic session refresh'
             'libnotify: desktop notifications')
 conflicts=('ttcli-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/j4y-w4lk3r/ttcli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2f1bd53972d91416f5fdcde841f8b8370a3ec314f754a6c8511117434e1af9f1')
+sha256sums=('1400e58e8b49e9834553ac46e77ca01d6040b4cdb651fded4a99e9069940bd74')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
