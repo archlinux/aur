@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=deckcraft
-pkgver=0.0.0
+pkgver=0.1.0
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -13,10 +13,9 @@ depends=(alsa-lib
          hicolor-icon-theme
          libgcc)
 makedepends=(cargo)
-_sha=942a2c80cc5110f9c8640ffe1925600182ae2284
-_archive="$pkgname-$_sha"
-source=("$_url/archive/$_sha/$_archive.tar.gz")
-sha256sums=('8f2cec6e49b828f192f60efedc536f25a7c2bc505c526eb84633c13dbffa900e')
+_archive="$pkgname-$pkgver"
+source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
+sha256sums=('1c51bb7e4a8c810b9ed9b63a12e1c392756502e04ef09f02d41a34b0830314a6')
 
 _srcenv() {
 	cd "$_archive"
@@ -40,8 +39,7 @@ prepare() {
 
 build() {
 	_srcenv
-	# https://github.com/storytold/photocraft/issues/392
-	cargo build --frozen --release -p $pkgname -p $pkgname-cli
+	cargo build --frozen --release
 }
 
 package() {
