@@ -3,24 +3,27 @@
 # License: GPL-3.0-only
 
 pkgname=stasis-git
-pkgver=1.3.0.r0.gb43675d
+pkgver=1.6.3.r15.g820ea3b
 pkgrel=1
 pkgdesc="A modern Wayland idle manager designed for simplicity and effectiveness (git version)"
 arch=('x86_64')
 url="https://github.com/saltnpepper97/stasis"
-license=('GPL-3.0-only')
+license=('GPL-3.0-only' 'AGPL-3.0-only')
 
 depends=('systemd' 'dbus' 'libinput' 'wayland')
 makedepends=('git' 'cargo' 'rust')
 optdepends=(
   'libnotify: desktop notifications'
-  'pipewire-pulse: audio sink detection for media handling'
-  'pulseaudio: audio sink detection for media handling (alternative to pipewire-pulse)'
+  'pipewire: native audio and microphone detection via pw-dump'
+  'pulseaudio: native audio and microphone detection via pactl (alternative to PipeWire)'
+  'upower: laptop lid state and events'
 )
 
 provides=('stasis')
 conflicts=('stasis')
-options=('!debug')
+# GCC LTO objects from bundled SQLite cannot be linked by Rust's LLD.
+# The upstream Cargo release profile still enables Rust LTO.
+options=('!debug' '!lto')
 
 source=("git+$url.git")
 sha256sums=('SKIP')
@@ -41,18 +44,32 @@ package() {
   # Binary
   install -Dm755 "target/release/stasis" "$pkgdir/usr/bin/stasis"
 
-  # Icon
-  install -Dm644  "assets/stasis.png" \
-    "$pkgdir/usr/share/icons/hicolor/256x256/apps/stasis.png"
+  # Application and tray icons
+  for icon in stasis stasis-tray; do
+    install -Dm644 "assets/$icon.png" \
+      "$pkgdir/usr/share/icons/hicolor/256x256/apps/$icon.png"
+  done
 
-  # License
+  # Source and linked game-discovery library licenses
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSES/AGPL-3.0-only.txt \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSES/AGPL-3.0-only.txt"
+  install -Dm644 THIRD_PARTY.md \
+    "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY.md"
 
-  # Example configuration
-  install -Dm644 "examples/stasis.rune" \
-    "$pkgdir/usr/share/doc/$pkgname/examples/stasis.rune"
+  # Example configurations, including the lid grace-period example
+  for example in examples/*.rune; do
+    install -Dm644 "$example" \
+      "$pkgdir/usr/share/doc/$pkgname/$example"
+  done
 
-  # systemd user unit (new path)
-  install -Dm644 "packaging/systemd/user/stasis.service" \
-    "$pkgdir/usr/lib/systemd/user/stasis.service"
+  # Manual pages
+  install -Dm644 docs/man/stasis.1 "$pkgdir/usr/share/man/man1/stasis.1"
+  install -Dm644 docs/man/stasis.5 "$pkgdir/usr/share/man/man5/stasis.5"
+
+  # Daemon and optional tray systemd user units
+  for service in packaging/systemd/user/*.service; do
+    install -Dm644 "$service" \
+      "$pkgdir/usr/lib/systemd/user/${service##*/}"
+  done
 }
