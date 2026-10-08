@@ -25,7 +25,7 @@ pkgbase = rdc-cli-git
 	provides = rdc-cli
 	conflicts = rdc-cli
 	source = git+https://github.com/BANANASJIM/rdc-cli.git
-	source = git+https://github.com/baldurk/renderdoc.git#tag=v1.41
+	source = git+https://github.com/baldurk/renderdoc.git#tag=v1.46
 	source = renderdoc-swig::https://github.com/baldurk/swig/archive/renderdoc-modified-7.zip
 	sha256sums = SKIP
 	sha256sums = SKIP

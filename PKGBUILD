@@ -33,7 +33,7 @@ provides=('rdc-cli')
 conflicts=('rdc-cli')
 source=(
   "git+https://github.com/BANANASJIM/rdc-cli.git"
-  "git+https://github.com/baldurk/renderdoc.git#tag=v1.41"
+  "git+https://github.com/baldurk/renderdoc.git#tag=v1.46"
   "renderdoc-swig::https://github.com/baldurk/swig/archive/renderdoc-modified-7.zip"
 )
 sha256sums=('SKIP'
