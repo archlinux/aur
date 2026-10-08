@@ -1,0 +1,14 @@
+pkgbase = wgsim
+	pkgdesc = Small tool for simulating sequence reads from a reference genome
+	pkgver = 20111017
+	pkgrel = 1
+	url = https://github.com/lh3/wgsim
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = perl
+	depends = zlib
+	source = wgsim-20111017.tar.gz::https://github.com/lh3/wgsim/archive/a12da3375ff3b51a5594d4b6fa35591173ecc229.tar.gz
+	sha256sums = e1e6bff5c084e4494023505206ae3e0b0f5a315c9f7390b2f347c370c7f36533
+
+pkgname = wgsim
