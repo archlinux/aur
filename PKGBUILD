@@ -1,7 +1,7 @@
 # maintainer: verse <versedev.store@proton.me>
 pkgname=clak-bin
 _pkgname=clak
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Fast and highly stable Vietnamese input method for Fcitx5 and Wayland (precompiled binary)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('clak' 'fcitx5-clak')
 conflicts=('clak' 'fcitx5-clak')
 options=('!debug' '!strip')
 install=clak-bin.install
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-$CARCH.tar.gz")
+source=("$pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-$CARCH.tar.xz")
 sha256sums=('SKIP')
 
 package() {
