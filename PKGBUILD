@@ -3,7 +3,7 @@
 
 pkgname=lurviko
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt Quick file manager with media libraries, cloud storage and an encrypted vault'
 arch=('x86_64')
 url='https://github.com/G-grbz/Lurviko'
@@ -35,15 +35,14 @@ optdepends=(
   'kio-extras: additional network and filesystem protocols'
 )
 install=lurviko.install
-source=("${url}/releases/download/v${pkgver}/Lurviko-${pkgver}.tar.gz")
-sha256sums=('41c5487429bfcbbaa00cf00123b808545594adff358864082310557567a80aba')
+source=("Lurviko-${pkgver}-${pkgrel}.tar.gz::${url}/releases/download/v${pkgver}/Lurviko-${pkgver}.tar.gz")
+sha256sums=('fda1f203689175f1ad8517c892e6ce76cd20aa92788f84d0a62c9b035c6987ee')
 
 prepare() {
   # Installed workers are found in /usr/share/Lurviko. Do not embed the
   # temporary source directory as a development-only fallback in the binary.
   sed -i 's/const QString sourceDir = QString::fromUtf8(LURVIKO_SOURCE_DIR);/const QString sourceDir;/' \
-    "Lurviko-${pkgver}/src/subtitleaimanager.cpp" \
-    "Lurviko-${pkgver}/src/gtmcemanager.cpp"
+    "Lurviko-${pkgver}/src/subtitleaimanager.cpp"
 }
 
 build() {
