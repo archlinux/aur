@@ -1,4 +1,4 @@
-From 33a19c7cb6de4027652194cecb5e1c41e0ed94bb Mon Sep 17 00:00:00 2001
+From e1d028d9f23799c88c692352325d042c2c278254 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Sun, 8 Feb 2026 12:36:54 +0100
 Subject: [PATCH] Use system-provided LAME
@@ -8,10 +8,10 @@ Subject: [PATCH] Use system-provided LAME
  1 file changed, 3 insertions(+), 7 deletions(-)
 
 diff --git a/setup.py b/setup.py
-index 63b9f2f..9a9a9e6 100644
+index 2a96d6c..be7582b 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -6,7 +6,7 @@ import os.path
+@@ -5,7 +5,7 @@ import os.path
  
  print(sys.argv)
  # Grab the library location from the command line
@@ -20,7 +20,7 @@ index 63b9f2f..9a9a9e6 100644
  for argument in sys.argv:
      if argument.startswith('--libdir='):
          libdir = argument
-@@ -15,11 +15,10 @@ if libdir is None:
+@@ -14,11 +14,10 @@ if libdir is None:
          print('Need to specify location of liblame')
          sys.exit(1)
  else:
@@ -33,7 +33,7 @@ index 63b9f2f..9a9a9e6 100644
  for argument in sys.argv:
      if argument.startswith('--incdir='):
          incdir = argument
-@@ -28,16 +27,13 @@ if incdir is None:
+@@ -27,16 +26,13 @@ if incdir is None:
          print('Need to specify location of liblame source')
          sys.exit(1)
  else:
@@ -41,7 +41,7 @@ index 63b9f2f..9a9a9e6 100644
      incdir = incdir[len('--incdir='):]
  
  # Create the extension
- lameenc = distutils.core.Extension(
+ lameenc = setuptools.Extension(
      'lameenc',
      include_dirs=[incdir] if incdir else [],
 -    libraries=['libmp3lame'] if sys.platform == 'win32' else [],
@@ -52,5 +52,5 @@ index 63b9f2f..9a9a9e6 100644
      sources=['lameenc.c']
  )
 -- 
-2.53.0
+2.56.0
 

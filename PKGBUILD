@@ -1,8 +1,8 @@
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 
 pkgname=python-lameenc
 _gitpkgname=lameenc
-pkgver=1.8.2
+pkgver=1.8.4
 pkgrel=1
 pkgdesc='Python bindings for the LAME encoding library'
 arch=('x86_64')
@@ -22,8 +22,8 @@ source=(
   'use-system-lame.patch'
 )
 
-sha512sums=('99a76548c7078ca26831d825f153329464f6e7e8d52dc49ce386a6a7b78a63073515c16e8386bda17794b4b90f0de19a285af1f579d9c873b2232104a93b125d'
-            'd9b262a333afe1a00415a4b76257b9d966a08ce618b5dd5daade9cdfef03d986343ecfbdf0e21d218f9f10b1bae52fb6af2697ee6ee338b4c599127f4e8b62a2')
+sha512sums=('355ffd1ecfa862afe28b0f8844e16e991bf4486e6dcbccbfed3d4b3685fefaf3de7131b0ef528db89641b49890e5eef6ca54843ae60252edfa69e987cbce647b'
+            'e8d862117925dfe8cd36e58e670c3b49ce74a2d96f5fe51a35091ae8422a403b47ae27bbc13d874da43c5e88fca1776f524f0c54976f94dba72d0f5a5fafb7a0')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
@@ -40,18 +40,18 @@ build() {
 
 check() {
   cd "${_gitpkgname}-${pkgver}"
-  local _site_packages
-  _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
-  python -m installer --destdir=tmp_install dist/*.whl
+
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
 
   echo >&2 'Testing the extension'
-  PYTHONPATH="${PWD}/tmp_install/${_site_packages}" python << 'EOF' > actual.txt
+  test-env/bin/python << 'EOF' > actual.txt
 import lameenc
 encoder = lameenc.Encoder()
 encoder.encode('')
 print(encoder.flush().decode(encoding='ascii', errors='replace'))
 EOF
-  if ! grep -qF 'LAME3.' actual.txt; then
+  if ! grep -q 'LAME[1-9]\.' actual.txt; then
     printf >&2 '%s\n' 'Unexpected test output:' '==='
     hexdump >&2 actual.txt
     printf >&2 '\n%s\n' '==='
