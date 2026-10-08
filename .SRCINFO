@@ -1,0 +1,13 @@
+pkgbase = pre-pe
+	pkgdesc = Preprocessing of paired-end reads from experiment-specific protocols
+	pkgver = 20180628
+	pkgrel = 1
+	url = https://github.com/lh3/pre-pe
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	source = pre-pe-20180628.tar.gz::https://github.com/lh3/pre-pe/archive/1c54605ff078e7ed11708a271827a14b0ce2b3ff.tar.gz
+	sha256sums = 8c5e10c061866a7109a407de28b968d18e6708e8d9033642599d4948fa03dacc
+
+pkgname = pre-pe
