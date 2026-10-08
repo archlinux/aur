@@ -1,9 +1,9 @@
 # Maintainer: chadsr <git at ross dot ch>
 
 pkgname=creality-print-appimage
-pkgver=7.2.1 # renovate: datasource=github-releases depName=CrealityOfficial/CrealityPrint
-pkgrel=2
-_build_id=5476
+pkgver=7.3.0 # renovate: datasource=github-releases depName=CrealityOfficial/CrealityPrint
+pkgrel=1
+_build_id=6151
 pkgdesc="Creality Print is a slicer dedicated to FDM printers."
 arch=('x86_64')
 url="https://github.com/CrealityOfficial/CrealityPrint"
@@ -22,7 +22,7 @@ source_x86_64=(
 	"${_filename}::https://github.com/CrealityOfficial/CrealityPrint/releases/download/v${pkgver}/CrealityPrint-V${pkgver}.${_build_id}-${arch[0]}-Release.AppImage"
 	"CrealityPrint.desktop.patch"
 )
-b2sums_x86_64=('1fb62716b501932c0d110c2d0651a735e65afeeb52e1124553056652710c2968fcaa3f7fe6db6467c7be09145857099b022f0fbfbac3421465e4c6ffda6f4130'
+b2sums_x86_64=('82f50585098215c327892271ac8da09c2238785834ae3b72d60b34863b2c18d812d97c31c777fa802c1de9f57b58d4ad9b6fcf84b3de79645f0c9a23497fe60d'
 	'ae7b31dda7ca9b311e9781314dc5a552da3fd7161f8ed0bb260ceb88e26bdd9903b2ace17436fb5929daf3ba93faa067f627384cb116c346875fe2864ca41e35')
 
 prepare() {
