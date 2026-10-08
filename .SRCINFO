@@ -1,6 +1,6 @@
 pkgbase = claude-agent-acp
 	pkgdesc = Use Claude Agent from any ACP client such as Zed!
-	pkgver = 0.87.0
+	pkgver = 0.88.0
 	pkgrel = 1
 	url = https://github.com/agentclientprotocol/claude-agent-acp
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = claude-agent-acp
 	conflicts = claude-code-acp
 	options = !strip
 	options = !debug
-	source = claude-agent-acp-0.87.0.tar.gz::https://github.com/agentclientprotocol/claude-agent-acp/archive/refs/tags/v0.87.0.tar.gz
-	sha256sums = ed0050e6c45d2669de0f032ec9af9d6d5442eb32f8f87a417999aa4bdd0bcce2
+	source = claude-agent-acp-0.88.0.tar.gz::https://github.com/agentclientprotocol/claude-agent-acp/archive/refs/tags/v0.88.0.tar.gz
+	sha256sums = 206a2cabfa7db374eacce645a902992d603d46549bf6dbb911b31ae7344dbd4f
 
 pkgname = claude-agent-acp
