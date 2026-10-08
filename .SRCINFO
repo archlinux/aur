@@ -1,0 +1,20 @@
+pkgbase = dipcall
+	pkgdesc = Reference-based variant calling pipeline for diploid assemblies
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/lh3/dipcall
+	arch = any
+	license = MIT
+	depends = bedtk
+	depends = htsbox
+	depends = k8-bin
+	depends = minimap2
+	depends = perl
+	depends = samtools
+	optdepends = winnowmap: mapping with a repetitive k-mer list (-W)
+	source = dipcall-0.3.tar.gz::https://github.com/lh3/dipcall/archive/v0.3.tar.gz
+	source = paftools.js::https://raw.githubusercontent.com/lh3/minimap2/v2.31/misc/paftools.js
+	sha256sums = d7f711105abc24346c03b8b082adb1427462646c5aed5dd7f48712ab6d1991c3
+	sha256sums = c788e2e41b7fe6f2df05f2d4bb8dbb7b4fc5c42a1759e7666b7b2f7ffca8fd8f
+
+pkgname = dipcall
