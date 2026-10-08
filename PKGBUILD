@@ -10,7 +10,7 @@
 # the builder's keyring for no benefit.
 
 pkgname=tidemark-git
-pkgver=0.5.2.r0.g12c27da
+pkgver=0.6.0.r0.ga37e451
 pkgrel=1
 pkgdesc='Track AI provider quota limits: how much of each rate-limit window is burned, when it resets, and whether the current pace reaches it'
 arch=('x86_64')
@@ -18,13 +18,20 @@ url='https://github.com/zbndev/tidemark'
 license=('MIT')
 # rustls and oo7's native crypto keep OpenSSL and libsecret out; SQLite is the system
 # library rather than a vendored copy, on purpose (CONTEXT.md § API floor).
-depends=('gtk4' 'libadwaita' 'sqlite' 'dbus')
+depends=('sqlite' 'dbus' 'fontconfig' 'hicolor-icon-theme' 'libxkbcommon' 'wayland' 'libglvnd')
 # oo7 talks to the Secret Service over D-Bus, so the keyring never shows up as a library
 # in ldd — but without a provider of org.freedesktop.secrets the app stays in its
 # no-credential state. Any provider works; gnome-keyring is just the common one, so this
 # is an optdepend rather than a hard dependency. Deliberately AUR-only: the repo PKGBUILD
 # omits it for now, and that omission is not drift.
-optdepends=('gnome-keyring: provides the Secret Service where provider keys are stored (KeePassXC also works)')
+optdepends=(
+    'libx11: an X11 session'
+    'libxcursor: an X11 session'
+    'libxi: an X11 session'
+    'libxrandr: an X11 session'
+    'libxkbcommon-x11: an X11 session'
+    'xdg-desktop-portal: the plugin file chooser, and the desktop dark style and accent'
+)
 makedepends=('git' 'cargo' 'cmake' 'clang')
 provides=('tidemark')
 conflicts=('tidemark')
