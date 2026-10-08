@@ -1,0 +1,13 @@
+pkgbase = minipileup
+	pkgdesc = Simple pileup-based variant caller
+	pkgver = 1.4b
+	pkgrel = 1
+	url = https://github.com/lh3/minipileup
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	source = minipileup-1.4b.tar.gz::https://github.com/lh3/minipileup/archive/v1.4b.tar.gz
+	sha256sums = 131efd240e12bb3c54d923b1b90e70055e34ed780dc4d20dbe418e42dba29d00
+
+pkgname = minipileup
