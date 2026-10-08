@@ -196,18 +196,20 @@ def _apply_binary_record_patch(data: bytes, keymap: tuple[int, int, int]) -> byt
     patched = data[queue_key_start : queue_key_start + len(b"ctrl-i")] == b"ctrl-i"
     model_key = _find_binary_model_key(data, keymap, b"ctrl-p" if patched else b"ctrl-n")
     model_cycle = _model_cycle_matches(data)
-    dispatch_g = _dispatch_matches(data, b"ctrl-g")
-    dispatch_p = _dispatch_matches(data, b"ctrl-p")
-    dispatch_i = _dispatch_matches(data, b"ctrl-i")
+    dispatch_g_p = _adjacent_dispatch_pairs(data, b"ctrl-g", b"ctrl-p")
+    dispatch_g_i = _adjacent_dispatch_pairs(data, b"ctrl-g", b"ctrl-i", either_order=True)
 
     if len(model_cycle) != 1:
         raise PatchError("binary-record keymap has an unknown model registry")
 
     model_match = model_cycle[0]
-    if len(dispatch_g) == 1 and len(dispatch_i) == 1 and not dispatch_p:
+    if patched:
+        if len(dispatch_g_i) != 1 or dispatch_g_p:
+            raise PatchError("binary-record keymap is partially patched or has an unknown model registry")
+        dispatch_g, dispatch_i = dispatch_g_i[0]
         if (
-            dispatch_g[0][2].group("guard") is None
-            and dispatch_i[0][2].group("guard") == b"&&" + dispatch_i[0][2].group("action")
+            dispatch_g[2].group("guard") is None
+            and dispatch_i[2].group("guard") == b"&&" + dispatch_i[2].group("action")
             and model_match.group("mlabel") == b"P"
             and model_match.group("mkey") == b"p"
         ):
@@ -216,18 +218,19 @@ def _apply_binary_record_patch(data: bytes, keymap: tuple[int, int, int]) -> byt
                     (queue_key_start, queue_key_start + len(b"ctrl-i")),
                     (editor_key_start, editor_key_start + len(b"ctrl-g")),
                     (model_key, model_key + len(b"ctrl-p")),
-                    (dispatch_g[0][0], dispatch_g[0][1]),
-                    (dispatch_i[0][0], dispatch_i[0][1]),
+                    (dispatch_g[0], dispatch_g[1]),
+                    (dispatch_i[0], dispatch_i[1]),
                     model_match.span(),
                 ]
             )
             return data
         raise PatchError("binary-record keymap is partially patched or has an unknown model registry")
 
-    if len(dispatch_g) != 1 or len(dispatch_p) != 1 or dispatch_i:
+    if len(dispatch_g_p) != 1 or dispatch_g_i:
         raise PatchError("expected one unique binary-record Ctrl-G and Ctrl-P action")
-    g_start, g_end, g_match = dispatch_g[0]
-    p_start, p_end, p_match = dispatch_p[0]
+    dispatch_g, dispatch_p = dispatch_g_p[0]
+    g_start, g_end, g_match = dispatch_g
+    p_start, p_end, p_match = dispatch_p
     if (
         g_match.group("guard") != b"&&" + g_match.group("action")
         or p_match.group("guard") is not None
@@ -329,6 +332,45 @@ def _dispatch_matches(
                 continue
             found.append((absolute_start, absolute_end, match))
         offset = position + 1
+
+
+def _adjacent_dispatch_pairs(
+    data: bytes,
+    first_key: bytes,
+    second_key: bytes,
+    *,
+    either_order: bool = False,
+) -> list[
+    tuple[
+        tuple[int, int, re.Match[bytes]],
+        tuple[int, int, re.Match[bytes]],
+    ]
+]:
+    first_matches = _dispatch_matches(data, first_key)
+    second_matches = _dispatch_matches(data, second_key)
+    pairs = []
+    seen = set()
+
+    for first in first_matches:
+        for second in second_matches:
+            adjacent = (
+                first[0] < second[0]
+                and second[0] - first[1] <= 16
+                and b";" not in data[first[1] : second[0]]
+            )
+            reverse_adjacent = (
+                either_order
+                and second[0] < first[0]
+                and first[0] - second[1] <= 16
+                and b";" not in data[second[1] : first[0]]
+            )
+            if not adjacent and not reverse_adjacent:
+                continue
+            key = (first[0], first[1], second[0], second[1])
+            if key not in seen:
+                seen.add(key)
+                pairs.append((first, second))
+    return pairs
 
 
 HARVEST_KIND_META = {
@@ -433,22 +475,21 @@ def locate_runtime_registry(data: bytes) -> list[tuple[int, int, str]]:
 
 
 def locate_dispatch(data: bytes) -> list[tuple[int, int, str]]:
-    dispatch_g = _dispatch_matches(data, b"ctrl-g")
-    dispatch_p = _dispatch_matches(data, b"ctrl-p")
-    dispatch_i = _dispatch_matches(data, b"ctrl-i")
+    dispatch_g_p = _adjacent_dispatch_pairs(data, b"ctrl-g", b"ctrl-p")
+    dispatch_g_i = _adjacent_dispatch_pairs(data, b"ctrl-g", b"ctrl-i", either_order=True)
     hits: list[tuple[int, int, str]] = []
-    if len(dispatch_g) == 1 and len(dispatch_p) == 1 and not dispatch_i:
-        g_start, g_end, _g_match = dispatch_g[0]
-        p_start, p_end, _p_match = dispatch_p[0]
-        if g_start < p_start and p_start - g_end <= 16 and b";" not in data[g_end:p_start]:
-            hits.append((g_start, p_end, "unpatched"))
-    if len(dispatch_g) == 1 and len(dispatch_i) == 1 and not dispatch_p:
-        g_start, g_end, _g_match = dispatch_g[0]
-        i_start, i_end, _i_match = dispatch_i[0]
-        lo, hi = (g_start, i_end) if g_start < i_start else (i_start, g_end)
-        if abs(i_start - g_end) <= 16 or abs(g_start - i_end) <= 16:
-            if b";" not in data[min(g_end, i_end) : max(g_start, i_start)]:
-                hits.append((lo, hi, "rotated"))
+    if len(dispatch_g_p) == 1 and not dispatch_g_i:
+        dispatch_g, dispatch_p = dispatch_g_p[0]
+        hits.append((dispatch_g[0], dispatch_p[1], "unpatched"))
+    if len(dispatch_g_i) == 1 and not dispatch_g_p:
+        dispatch_g, dispatch_i = dispatch_g_i[0]
+        hits.append(
+            (
+                min(dispatch_g[0], dispatch_i[0]),
+                max(dispatch_g[1], dispatch_i[1]),
+                "rotated",
+            )
+        )
     return hits
 
 
