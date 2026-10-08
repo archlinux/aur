@@ -3,7 +3,7 @@
 # Submit by pushing this (plus the generated .SRCINFO) to ssh://aur@aur.archlinux.org/mailbox-bin.git
 #   makepkg --printsrcinfo > .SRCINFO
 pkgname=mailbox-bin
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="Desktop mail client with a ribbon, calendar peek and reading pane (POP3, IMAP, SMTP)"
 arch=('x86_64' 'aarch64')
@@ -11,13 +11,15 @@ url="https://github.com/codingncaffeine/Mailbox"
 license=('GPL-3.0-or-later')
 provides=('mailbox')
 conflicts=('mailbox')
-# wpewebkit renders the reading pane (text-only without it); libsecret keeps passwords in the
-# keyring through secret-tool; libnotify raises the toasts. The publish is otherwise
-# self-contained (.NET bundled).
+# Chromium renders the reading pane and ships inside the tarball; nss to alsa-lib are the system
+# libraries it links against. libsecret keeps passwords in the keyring through secret-tool;
+# libnotify raises the toasts. The publish is otherwise self-contained (.NET bundled).
 depends=('glibc' 'gcc-libs' 'bash'
          'fontconfig' 'libx11' 'libxext' 'libxi' 'libxrandr' 'libxcursor' 'libice' 'libsm'
-         'libglvnd' 'wayland' 'libxkbcommon' 'mesa' 'glib2' 'libsoup3'
-         'wpewebkit' 'libwpe' 'wpebackend-fdo' 'libsecret' 'libnotify')
+         'libglvnd' 'wayland' 'libxkbcommon' 'mesa' 'glib2'
+         'nss' 'nspr' 'at-spi2-core' 'libcups' 'dbus' 'expat' 'pango' 'cairo' 'systemd-libs'
+         'libxcb' 'libxcomposite' 'libxdamage' 'libxfixes' 'alsa-lib'
+         'libsecret' 'libnotify')
 optdepends=('libldap: look people up in a company or university LDAP directory'
             'hunspell-en_us: spelling, against the desktop dictionaries'
             'ttf-carlito: renders mail set in Calibri at the same metrics'
@@ -31,7 +33,7 @@ options=('!strip')   # self-contained .NET bundle — stripping breaks it
 # asset's name is not the array's suffix and the two cannot be folded into one line.
 source_x86_64=("$url/releases/download/v$pkgver/Mailbox-$pkgver-linux-x64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/Mailbox-$pkgver-linux-arm64.tar.gz")
-sha256sums_x86_64=('35f4c69e94bf18d0edb943a5e12f054c1dc6c435063e35efb632d36e79cc561b')
+sha256sums_x86_64=('d3675fe55593e42685830a8c176650f471e4055565477f621eefd07d89b1d9e7')
 # Filled from the release's own aarch64 tarball, the same step as the line above it. Until an
 # aarch64 asset is published there is nothing to hash, and a hash that is merely plausible is
 # worse than one makepkg refuses.
