@@ -1,6 +1,6 @@
 pkgbase = rsdm-bin
 	pkgdesc = Standalone Rust TTY/TUI Wayland display manager and screen locker (prebuilt binary)
-	pkgver = 1.1.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/Frysuni/rsdm
 	install = rsdm.install
@@ -8,9 +8,11 @@ pkgbase = rsdm-bin
 	arch = aarch64
 	license = GPL-3.0-only
 	depends = pam
-	depends = systemd
+	depends = systemd>=250
 	depends = wayland
 	depends = libxkbcommon
+	depends = libsm
+	depends = libice
 	depends = gcc-libs
 	provides = rsdm
 	conflicts = rsdm
@@ -18,9 +20,9 @@ pkgbase = rsdm-bin
 	backup = etc/pam.d/rsdm
 	backup = etc/pam.d/rsdm-lock
 	backup = etc/logrotate.d/rsdm
-	source_x86_64 = https://github.com/Frysuni/rsdm/releases/download/v1.1.0/rsdm-1.1.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 23ac475b0cf51174dd80c0626431bd6a25fa0cb9f5e80feda536cf2ff718de1c
-	source_aarch64 = https://github.com/Frysuni/rsdm/releases/download/v1.1.0/rsdm-1.1.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 43fdfd22921d07b067aaa97de102fecca965cc5320486f1dd4995facf88f1e65
+	source_x86_64 = https://github.com/Frysuni/rsdm/releases/download/v2.3.0/rsdm-2.3.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b0afc3f1c2214477f22f04760573763ecf67abbaee6767e91bd46f2ba9bd7385
+	source_aarch64 = https://github.com/Frysuni/rsdm/releases/download/v2.3.0/rsdm-2.3.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 49f21bc83e4da01a524b502a29fa4b481d61523cbf2f3f9c285a88aecf385ecd
 
 pkgname = rsdm-bin
