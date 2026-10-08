@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: 0BSD
+
+post_install() {
+  cat <<'EOF'
+Lurviko is installed. To use it as your default file manager, select it in
+Plasma System Settings > Default Applications > File Manager, or run:
+  xdg-mime default lurviko.desktop inode/directory
+  xdg-mime default lurviko.desktop x-scheme-handler/trash
+
+For D-Bus "Show in folder" activation, optionally enable the user service:
+  install -Dm644 /usr/share/Lurviko/dbus-1/services/org.freedesktop.FileManager1.service "${XDG_DATA_HOME:-$HOME/.local/share}/dbus-1/services/org.freedesktop.FileManager1.service"
+Then log out and back in. Existing g-File settings migrate on first launch.
+EOF
+}

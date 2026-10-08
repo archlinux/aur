@@ -1,0 +1,51 @@
+pkgbase = lurviko
+	pkgdesc = Qt Quick file manager with media libraries, cloud storage and an encrypted vault
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/G-grbz/Lurviko
+	install = lurviko.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	license = CC-BY-4.0
+	checkdepends = python
+	checkdepends = breeze-icons
+	checkdepends = desktop-file-utils
+	makedepends = cmake>=3.21
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base>=6.9
+	depends = qt6-declarative>=6.9
+	depends = qt6-multimedia>=6.9
+	depends = qt6-networkauth>=6.9
+	depends = qt6-svg>=6.9
+	depends = kio
+	depends = kservice
+	depends = kwallet
+	depends = kiconthemes
+	depends = karchive
+	depends = kwindowsystem
+	depends = kcoreaddons
+	depends = openssl>=3.2
+	depends = ffmpeg
+	depends = hicolor-icon-theme
+	optdepends = qt6-wayland: Wayland desktop sessions
+	optdepends = qt6-imageformats: additional image formats
+	optdepends = ffmpegthumbnailer: video thumbnails
+	optdepends = poppler: PDF thumbnails
+	optdepends = 7zip: additional archive extraction formats
+	optdepends = libarchive: creating ZIP, 7z and tar archives
+	optdepends = squashfs-tools: AppImage icon previews
+	optdepends = mkvtoolnix-cli: Matroska subtitle extraction
+	optdepends = python: optional AI subtitle workers
+	optdepends = python-pip: installing optional AI worker dependencies in the user cache
+	optdepends = python-certifi: optional subtitle worker HTTPS support
+	optdepends = python-numpy: optional subtitle worker audio processing
+	optdepends = python-pillow: optional media worker artwork processing
+	optdepends = breeze-icons: fallback icon theme
+	optdepends = kio-extras: additional network and filesystem protocols
+	source = https://github.com/G-grbz/Lurviko/releases/download/v1.0.0/Lurviko-1.0.0.tar.gz
+	sha256sums = 41c5487429bfcbbaa00cf00123b808545594adff358864082310557567a80aba
+
+pkgname = lurviko
