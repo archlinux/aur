@@ -3,7 +3,7 @@
 # pkgver / pkgrel / sha256sums are rewritten by scripts/publish-aur.sh at
 # release time (from the release branch). Edit the package body here, not those.
 pkgname=kopuz-bin
-pkgver=0.16.2
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="A modern music player (pre-built binary)"
 arch=('x86_64')
@@ -25,12 +25,11 @@ depends=(
 )
 
 optdepends=(
-    'yt-dlp'
-    'python-mutagen'
+    'ffmpeg: converting YouTube downloads to MP3, FLAC or WAV'
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Kopuz-org/kopuz/releases/download/v${pkgver}/kopuz_v${pkgver}_x86_64-linux.tar.gz")
-sha256sums=('40ea88f43d3f0e543b548b4bec305db88a107a83b19587ab129968855ed1d8d3')
+sha256sums=('0c3ce1be7f14003086cf081c502d355543c7b664f3228552805206b5171a5c0b')
 
 package() {
     cd "kopuz-linux-x86_64"
