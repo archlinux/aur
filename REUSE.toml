@@ -24,23 +24,12 @@ SPDX-License-Identifier = "0BSD"
 [[annotations]]
 path = [
     "archlinux-use-system.patch",
-    "aur-install-notice.patch",
+    "aur-fixes.patch",
     "fix-build-from-tarball.patch",
-    "fix-litellm-exception-list.patch",
     "github-pr-4935.patch",
 ]
 SPDX-FileCopyrightText = [
     "Arch Linux contributors",
-    "aider-chat contributors",
-]
-SPDX-License-Identifier = "Apache-2.0"
-
-[[annotations]]
-path = [
-    "github-pr-4832.patch",
-]
-SPDX-FileCopyrightText = [
-    "paipeng-quiver <pai@quiver.ai>",
     "aider-chat contributors",
 ]
 SPDX-License-Identifier = "Apache-2.0"

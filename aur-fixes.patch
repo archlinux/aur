@@ -1,14 +1,14 @@
-From 4eb4163788835a2369913413a1fd26fb8b66ce5f Mon Sep 17 00:00:00 2001
+From 2e991394fb6e62fef75758fe0c0a52b67b701f52 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Thu, 3 Jul 2025 14:02:50 +0200
-Subject: [PATCH 1/4] AUR-specific: replace auto-updater with a notice
+Subject: [PATCH 1/5] AUR-specific: replace auto-updater with a notice
 
 ---
  aider/versioncheck.py | 27 ++++-----------------------
  1 file changed, 4 insertions(+), 23 deletions(-)
 
 diff --git a/aider/versioncheck.py b/aider/versioncheck.py
-index ac511a02..be67ef10 100644
+index ac511a022..be67ef10b 100644
 --- a/aider/versioncheck.py
 +++ b/aider/versioncheck.py
 @@ -1,5 +1,4 @@
@@ -52,13 +52,13 @@ index ac511a02..be67ef10 100644
  
  def check_version(io, just_check=False, verbose=False):
 -- 
-2.51.0
+2.56.0
 
 
-From 801ee7f4a0d08f29463b6e607db21c7f152febf6 Mon Sep 17 00:00:00 2001
+From da43c37aa60c8e1b3652c41be66a546b19064e3a Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Thu, 3 Jul 2025 14:03:36 +0200
-Subject: [PATCH 2/4] AUR-specific: replace `/help` feature installer
+Subject: [PATCH 2/5] AUR-specific: replace `/help` feature installer
 
 The interactive `/help` feature requires an optional package from the
 AUR. Replace the automatic installer with a notice that asks the user
@@ -69,7 +69,7 @@ to download and install the package by themselves.
  2 files changed, 17 insertions(+), 9 deletions(-)
 
 diff --git a/aider/help.py b/aider/help.py
-index c76188d1..c8772f0b 100755
+index c76188d12..c8772f0b2 100755
 --- a/aider/help.py
 +++ b/aider/help.py
 @@ -16,18 +16,11 @@ warnings.simplefilter("ignore", category=FutureWarning)
@@ -94,7 +94,7 @@ index c76188d1..c8772f0b 100755
  
  def get_package_files():
 diff --git a/aider/utils.py b/aider/utils.py
-index a58fde66..deaa7150 100644
+index a58fde661..deaa71502 100644
 --- a/aider/utils.py
 +++ b/aider/utils.py
 @@ -292,6 +292,21 @@ def touch_file(fname):
@@ -120,20 +120,20 @@ index a58fde66..deaa7150 100644
      if module:
          try:
 -- 
-2.51.0
+2.56.0
 
 
-From ac9a439c07aae0dadd1bd8bcf09c61cc6005d92b Mon Sep 17 00:00:00 2001
+From 2c0743239a19dc64b6d4b2625572963b29bd323b Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Thu, 3 Jul 2025 14:04:12 +0200
-Subject: [PATCH 3/4] AUR-specific: replace google-aiplatform installer
+Subject: [PATCH 3/5] AUR-specific: replace google-aiplatform installer
 
 ---
  aider/models.py | 7 +++----
  1 file changed, 3 insertions(+), 4 deletions(-)
 
 diff --git a/aider/models.py b/aider/models.py
-index b535d01d..021b02d2 100644
+index 633f2be6d..3c07f833b 100644
 --- a/aider/models.py
 +++ b/aider/models.py
 @@ -21,7 +21,7 @@ from aider.dump import dump  # noqa: F401
@@ -145,7 +145,7 @@ index b535d01d..021b02d2 100644
  
  RETRY_TIMEOUT = 60
  
-@@ -1178,11 +1178,10 @@ def check_for_dependencies(io, model_name):
+@@ -1199,11 +1199,10 @@ def check_for_dependencies(io, model_name):
  
      # Check if this is a Vertex AI model and ensure google-cloud-aiplatform is installed
      elif model_name.startswith("vertex_ai/"):
@@ -160,13 +160,13 @@ index b535d01d..021b02d2 100644
  
  
 -- 
-2.51.0
+2.56.0
 
 
-From 93e522cac16e75b73e695d9c91b251848276381a Mon Sep 17 00:00:00 2001
+From 472bb3f9257d852a355745766638a6fb96cc651b Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Thu, 3 Jul 2025 14:04:52 +0200
-Subject: [PATCH 4/4] AUR-specific: replace main branch auto-upgrader
+Subject: [PATCH 4/5] AUR-specific: replace main branch auto-upgrader
 
 Ask user to download and install the `aider-chat-git` package if they
 wish to follow the main development branch.
@@ -176,7 +176,7 @@ wish to follow the main development branch.
  2 files changed, 2 insertions(+), 66 deletions(-)
 
 diff --git a/aider/utils.py b/aider/utils.py
-index deaa7150..43918482 100644
+index deaa71502..439184826 100644
 --- a/aider/utils.py
 +++ b/aider/utils.py
 @@ -1,5 +1,4 @@
@@ -265,7 +265,7 @@ index deaa7150..43918482 100644
      if module:
          try:
 diff --git a/aider/versioncheck.py b/aider/versioncheck.py
-index be67ef10..2a6c18c5 100644
+index be67ef10b..2a6c18c59 100644
 --- a/aider/versioncheck.py
 +++ b/aider/versioncheck.py
 @@ -16,12 +16,10 @@ def install_from_main_branch(io):
@@ -284,5 +284,64 @@ index be67ef10..2a6c18c5 100644
  
  
 -- 
-2.51.0
+2.56.0
+
+
+From 67c38b072e00e25cf0ad341aa3ec63420549a448 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Thu, 8 Oct 2026 16:22:57 +0200
+Subject: [PATCH 5/5] AUR-specific: pick up unknown LiteLLM exceptions
+
+The LiteLLM exception canary is useful for upstream but not for users of
+a system package, where LiteLLM version mismatches are to be expected.
+
+Replace the canary with an auto-importer, which accepts unknown LiteLLM
+exceptions and automatically treats code that raises them as worth
+retrying.
+---
+ aider/exceptions.py | 25 ++++++++++++++++++-------
+ 1 file changed, 18 insertions(+), 7 deletions(-)
+
+diff --git a/aider/exceptions.py b/aider/exceptions.py
+index 5cbd023cc..5fe36ad41 100644
+--- a/aider/exceptions.py
++++ b/aider/exceptions.py
+@@ -62,17 +62,28 @@ class LiteLLMExceptions:
+     def _load(self, strict=False):
+         import litellm
+ 
+-        for var in dir(litellm):
++        actual_exception_names = {
++            ex
++            for ex in dir(litellm)
+             # Filter by BaseException because instances of non-exception classes cannot be caught.
+             # `litellm.ErrorEventError` is an example of a regular class which just happens to end
+             # with `Error`.
+-            if var.endswith("Error") and issubclass(getattr(litellm, var), BaseException):
+-                if var not in self.exception_info:
+-                    raise ValueError(f"{var} is in litellm but not in aider's exceptions list")
++            if ex.endswith("Error") and issubclass(getattr(litellm, ex), BaseException)
++        }
+ 
+-        for var in self.exception_info:
+-            ex = getattr(litellm, var)
+-            self.exceptions[ex] = self.exception_info[var]
++        for name in actual_exception_names & set(self.exception_info):
++            ex = getattr(litellm, name)
++            self.exceptions[ex] = self.exception_info[name]
++
++        for unexpected_name in actual_exception_names - set(self.exception_info):
++            # Exception is in LiteLLM but not in Aider’s exception list.
++            # Accept it and configure it so code that raises it will be retried.
++            ex = getattr(litellm, unexpected_name)
++            self.exceptions[ex] = ExInfo(
++                "APIConnectionError",
++                retry=True,
++                description=f"LiteLLM unexpectedly reported {unexpected_name}.",
++            )
+ 
+     def exceptions_tuple(self):
+         return tuple(self.exceptions)
+-- 
+2.56.0
 
