@@ -1,0 +1,22 @@
+pkgbase = slatekbd
+	pkgdesc = On-screen keyboard for Wayland compositors (layer-shell, input-method-v2, virtual-keyboard)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/maxDTM/slatekbd
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = meson
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = libxkbcommon
+	depends = cairo
+	depends = pango
+	depends = glib2
+	depends = glibc
+	optdepends = hyprland: greeter session and lock-screen integration
+	optdepends = greetd: login-screen keyboard via slatekbd-greeter-session
+	source = slatekbd-0.1.0.tar.gz::https://github.com/maxDTM/slatekbd/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 215c569fe08c5c230f85eb81816b9b1092e9deed78a1c26ff704b44168c92db2
+
+pkgname = slatekbd
