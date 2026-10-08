@@ -1,0 +1,13 @@
+pkgbase = htsbox
+	pkgdesc = Powerful toolset for processing BAM files and a test bed for htslib
+	pkgver = 20250911
+	pkgrel = 1
+	url = https://github.com/lh3/htsbox
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	source = htsbox-20250911.tar.gz::https://github.com/lh3/htsbox/archive/c901cb3a3324c119988f4bcd4412cbe48e1b5a38.tar.gz
+	sha256sums = 085aecc9ad28434aaa7cc61f09b17c93a0ea5c643a688ddbbc1b9ed24c2850d9
+
+pkgname = htsbox
