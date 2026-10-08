@@ -102,8 +102,8 @@ build() {
     cmake   -B _build \
             -DLLVM_ABI_BREAKING_CHECKS:STRING=FORCE_OFF \
             -DCMAKE_BUILD_TYPE=Release \
-      			-DCMAKE_C_FLAGS_RELEASE="${CFLAGS} -march=native" \
-			      -DCMAKE_CXX_FLAGS_RELEASE="${CXXFLAGS} -march=native" \
+      			-DCMAKE_C_FLAGS_RELEASE="${CFLAGS} -march=native -DNDEBUG" \
+			      -DCMAKE_CXX_FLAGS_RELEASE="${CXXFLAGS} -march=native -DNDEBUG" \
             -GNinja \
             -DLLVM_USE_SPLIT_DWARF=ON \
             -DCMAKE_JOB_POOLS="link_pool=2" \
