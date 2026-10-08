@@ -1,6 +1,6 @@
 pkgbase = stuart-bin
 	pkgdesc = A serial terminal TUI - precompiled binary
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/mroetsc/stuart
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = stuart-bin
 	provides = stuart
 	conflicts = stuart
 	options = !debug
-	source = stuart-0.5.0-x86_64.tar.gz::https://github.com/mroetsc/stuart/releases/download/0.5.0/stuart-0.5.0-x86_64-linux.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/mroetsc/stuart/refs/tags/0.5.0/LICENSE
-	sha256sums = 5259648ebcad8268fc807c16cdbfcc030beb46700ae6a2ad06c9723e14f20fdb
+	source = stuart-0.5.1-x86_64.tar.gz::https://github.com/mroetsc/stuart/releases/download/0.5.1/stuart-0.5.1-x86_64-linux.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/mroetsc/stuart/refs/tags/0.5.1/LICENSE
+	sha256sums = 9138ac5503e516ab2c4048f3632be3609031038787210718cd7c3c40c812af91
 	sha256sums = 7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3
 
 pkgname = stuart-bin
