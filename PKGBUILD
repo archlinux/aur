@@ -24,7 +24,6 @@ package() {
     install -dm755 "${pkgdir}/opt/Athas"
     cp -rf "${srcdir}/athas.app/bin" "${pkgdir}/opt/Athas/"
     cp -rf "${srcdir}/athas.app/lib" "${pkgdir}/opt/Athas/"
-    cp -rf "${srcdir}/athas.app/libexec" "${pkgdir}/opt/Athas/"
 
     install -dm755 "${pkgdir}/usr"
     cp -rf "${srcdir}/athas.app/share" "${pkgdir}/usr/"
