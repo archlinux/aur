@@ -1,6 +1,6 @@
 pkgbase = dell-idractools
 	pkgdesc = Dell iDRAC Tools (RACADM, VMCLI, IPMI Tool)
-	pkgver = 11.4.0.0.1435
+	pkgver = 11.4.2.0.1990
 	pkgrel = 2
 	url = https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=2FGYM
 	install = dell-idractools.install
@@ -9,12 +9,12 @@ pkgbase = dell-idractools
 	makedepends = rpmextract
 	conflicts = dell-srvadmin
 	conflicts = dell-mgmtstat
-	source = https://dl.dell.com/FOLDER13988161M/1/Dell-iDRACTools-Web-LX-11.4.0.0-1435_A00.tar.gz.sign
-	source = https://dl.dell.com/FOLDER13988164M/1/Dell-iDRACTools-Web-LX-11.4.0.0-1435_A00.tar.gz
+	source = https://dl.dell.com/FOLDER14927774M/1/Dell-iDRACTools-Web-LX-11.4.2.0-1990_A00.tar.gz.sign
+	source = https://dl.dell.com/FOLDER14927789M/1/Dell-iDRACTools-Web-LX-11.4.2.0-1990_A00.tar.gz
 	source = LICENSE
 	validpgpkeys = 42550ABD1E80D7C1BC0BAD851285491434D8786F
 	sha256sums = SKIP
-	sha256sums = b706d0ac3f09e74a32a9e6dfa883641e1edb0a8d2cbdd85908766f502417c3ca
+	sha256sums = 17ef224d5cb4b646b87dbb4bff3f4f5af901bc7e3589f0f27142caa0b4a130b0
 	sha256sums = 9bc2344836f09db9c0a9b7d1faa06ee59b6b77b5fff75ea2e607f71bd1a29f4e
 
 pkgname = dell-idractools
