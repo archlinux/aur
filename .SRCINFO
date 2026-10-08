@@ -1,6 +1,6 @@
 pkgbase = clash-nyanpasu-appimage
 	pkgdesc = A Clash GUI based on tauri. Clash Nyanpasu! (∠・ω< )⌒☆​
-	pkgver = 2.0.0beta.2
+	pkgver = 2.0.0beta.3
 	pkgrel = 1
 	url = https://github.com/LibNyanpasu/clash-nyanpasu
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = clash-nyanpasu-appimage
 	conflicts = clash-nyanpasu-git
 	conflicts = clash-nyanpasu-bin
 	conflicts = clash-nyanpasu
-	noextract = clash-nyanpasu-2.0.0beta.2-amd64.AppImage
+	noextract = clash-nyanpasu-2.0.0beta.3-amd64.AppImage
 	options = !strip
 	options = !debug
-	source_x86_64 = clash-nyanpasu-2.0.0beta.2-amd64.AppImage::https://github.com/libnyanpasu/clash-nyanpasu/releases/download/v2.0.0-beta.2/Clash.Nyanpasu_2.0.0-beta.2_amd64.AppImage
-	sha256sums_x86_64 = a43c74166aff6b1a7b4531451188871f0036b985d947d685d41fab91d31ecb92
+	source_x86_64 = clash-nyanpasu-2.0.0beta.3-amd64.AppImage::https://github.com/libnyanpasu/clash-nyanpasu/releases/download/v2.0.0-beta.3/Clash.Nyanpasu_2.0.0-beta.3_amd64.AppImage
+	sha256sums_x86_64 = 3e37b41c06004e87df525a6937476bf184604a244225400e591ee7dea8a09375
 
 pkgname = clash-nyanpasu-appimage
