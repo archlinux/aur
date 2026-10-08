@@ -3,7 +3,7 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
 # Set in ~/.makepkg.conf to build for your GPU only, e.g. '8.6;8.9'
-: ${_cuda_arch_list:='7.5;8.0;8.6;8.9;9.0+PTX'}
+: ${_ctranslate2_cuda_arch_list:='7.5;8.0;8.6;8.9;9.0+PTX'}
 
 pkgname=(
   'ctranslate2-cuda'
@@ -89,7 +89,7 @@ build() {
     # CUDA 13 dropped archs below sm_75, so 'Common' fails
     # FindCUDA does not parse 10.0 and up; 9.0 PTX JIT covers those
     -D WITH_CUDA='ON'
-    -D CUDA_ARCH_LIST="$_cuda_arch_list"
+    -D CUDA_ARCH_LIST="$_ctranslate2_cuda_arch_list"
     -D CMAKE_POLICY_VERSION_MINIMUM='3.5'
   )
   cmake "${cmake_options[@]}"
