@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Terminal multiplexer with tiling panes, tabs and workspaces that keep running after you close the window"
 
-pkgver=0.2.1
+pkgver=1.0.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('5fde39e26fe31ddae5693261a53912275ab430f6d2d3fe37e4676b67167aca56')
-sha256sums_aarch64=('eecd08fceb98de931294e02eaefef717f3d8ce14f7ad2112bd9d6259f70cb3af')
+sha256sums_x86_64=('9fa515edded3680088e15adaab6bc71dce18b1b073dd17acaca32ac446bcdf6f')
+sha256sums_aarch64=('cf5b934ff7691c3821a634c7f509498e0f4e6bc6958069a9ffb1a1b9030a29ad')
 
 
 package() {
