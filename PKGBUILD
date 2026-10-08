@@ -22,7 +22,7 @@ pkgname=paseo-desktop-git-bin
 # consistent build: pkgver must derive the _asset that is actually on the
 # release, and _commit/_bin_sha must be that same build. Do not hand-edit
 # one of the three in isolation.
-pkgver=0.11.1.r7.g06fe97c90
+pkgver=0.11.1.r8.gd0bc188a5
 pkgrel=2
 # Publish targets: aur + Arch release. Debian is deliberately off (#60):
 # paseo-desktop-git already ships the same payload on debian-current, so this
@@ -49,7 +49,7 @@ _deb_depends=('libc6' 'libgcc-s1' 'libstdc++6' 'libgtk-3-0t64' 'libglib2.0-0t64'
 # reusing the Arch conflicts array verbatim.
 _deb_provides=('paseo')
 _deb_conflicts=('paseo-cli-edge' 'paseo-cli-git' 'paseo-cli-git-bin' 'paseo-desktop-bin-edge' 'paseo-desktop-git' 'paseo')
-_commit='06fe97c9019c1db4a5264dfb9b369b93e5e2fba4'
+_commit='d0bc188a5b1be72f170f7db850716b7006f12f7e'
 # Drop the .rN.gSHA git-describe suffix, then turn the prerelease separator
 # dot into a dash (0.9.0.beta.2 -> 0.9.0-beta.2). Only that one dot is
 # touched, so a version without a suffix or without a prerelease is left
@@ -60,10 +60,10 @@ if ! printf '%s' "$_asset_ver" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.]
 	error "paseo-desktop-git-bin: cannot derive a release version from pkgver='$pkgver' (got '$_asset_ver'); refusing to guess an asset name"
 fi
 _asset="Paseo-${_asset_ver}-x64.tar.gz"
-_bin_sha='12b58d56a689d8391572702ea80b122a8aeb50b47f2c09235dc0b8ef5343c626'
+_bin_sha='159822748bd06788a58a60726513f3b02a25c85fded5d09a111ee5497e95d5f2'
 _icon_sha='585d202ff6a6e41bcd5c7464a1c4889b78977cea000f7b88ba1f67f3d9fff0bd'
 _pkgdesc_base='One interface for all your Claude Code, Codex and OpenCode agents.'
-pkgdesc='One interface for all your Claude Code, Codex and OpenCode agents. (built from main 2026-10-08 @06fe97c)'
+pkgdesc='One interface for all your Claude Code, Codex and OpenCode agents. (built from main 2026-10-08 @d0bc188)'
 arch=('x86_64')
 url="https://paseo.sh"
 license=("Apache-2.0")
