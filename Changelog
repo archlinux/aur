@@ -1,0 +1,35 @@
+-------------------------------------------------------
+ Changelog    : pyconcurrent
+ Tags         : 2.14.0 ➙ 4.0.1
+              : 2026-03-01 ➙ 2026-10-08
+              : 6 tags. See Docs for full changelog
+-------------------------------------------------------
+
+ 2026-10-08   : 4.0.1
+              - 4.0.1 Documentation available on `readthedocs <https://pyconcurrent.readthedocs.io>`
+
+ 2026-09-09   : 4.0.0, origin/master
+              - **4.0.0**
+            
+                * Rename Arch package to python-pyconcurrent (Arch naming convention)
+                * No functional change.
+
+ 2026-09-09   : 3.0.1
+              - **3.0.1**
+            
+                * Make pytest optional in meson.build.
+                * Remove unused sphinx tmp files from html docs
+
+ 2026-09-07   : 3.0.0
+              - **3.0.0**
+            
+                * Move to meson/meson-python for build/packaging.
+                * No significance in the major version change, just minor number getting large :)
+                * periodic review and tidy up.
+ 2026-03-01   ⋯
+              - update Docs/Changelogs
+
+ 2026-03-01   : 2.14.0
+              - timeout is now float or int. No reason for it to be limited to int.
+ 2026-02-19   ⋯
+              - update Docs/Changelogs

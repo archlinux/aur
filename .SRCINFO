@@ -1,6 +1,6 @@
 pkgbase = python-pyconcurrent
 	pkgdesc = Python module to simplify asyncio/multiprocessing
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://github.com/gene-git/pyconcurrent
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = python-pyconcurrent
 	makedepends = rsync
 	depends = python>=3.14
 	depends = python-dateutil
-	provides = pyconcurrent=4.0.0
+	provides = pyconcurrent=4.0.1
 	conflicts = pyconcurrent
 	replaces = pyconcurrent
-	source = git+https://github.com/gene-git/pyconcurrent#tag=4.0.0
+	source = git+https://github.com/gene-git/pyconcurrent#tag=4.0.1
 	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
 	sha512sums = SKIP
 
