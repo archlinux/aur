@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=solitaire
-pkgver=50.3
+pkgver=51.0
 pkgrel=1
 pkgdesc="Play patience games"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=(
   'gtk4'
   'libadwaita'
-#  'libgnome-games-support-3'
+  'libxml2'
 )
 makedepends=(
   'blueprint-compiler'
@@ -17,8 +17,12 @@ makedepends=(
   'meson'
   'vala'
 )
+checkdepends=(
+  'desktop-file-utils'
+  'appstream'
+)
 source=("$url/-/archive/$pkgver/Solitaire-$pkgver.tar.gz")
-sha256sums=('725eb81532bb7033674affdc6ba0c5361a22e6e0ae2a63b0fd71e3fd74544888')
+sha256sums=('14e37c6ae8ddc9b8fb16604b4c5e50f3f5fb8e9733f965b05a11aed7dfe5ea38')
 
 prepare() {
   cd "Solitaire-$pkgver"
