@@ -1,7 +1,7 @@
 pkgbase = steamcommunity302
 	pkgdesc = 羽翼城制作的Steam、Github等反代加速工具,使用s302命令启动
-	pkgver = 15.0.7
-	pkgrel = 7
+	pkgver = 15.0.8
+	pkgrel = 1
 	url = https://www.dogfight360.com/blog/18682/
 	install = steamcommunity302.install
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = steamcommunity302
 	options = !strip
 	source = s302
 	sha256sums = 4ef0cef466426f5472f503f14c9762c5d512a2ab4296d0734a3d438774ce5fe8
-	source_x86_64 = steamcommunity302-15.0.7.AppImage::https://www.dogfight360.com/Usbeam/V15/Steamcommunity_302_15.0.7_Linux_WebKit_x64.AppImage
-	sha256sums_x86_64 = e17ee108e97c10f4003367e8196cb7f7bec3a30a1da211d063acaf9faa4b7c26
-	source_aarch64 = steamcommunity302-15.0.7.AppImage::https://www.dogfight360.com/Usbeam/V15/Steamcommunity_302_15.0.7_Linux_WebKit_arm64.AppImage
-	sha256sums_aarch64 = 64e9044dffccd8fa164d17ba4a6ea0e77dc6a0550e81634c0fe5dcbf65001458
+	source_x86_64 = steamcommunity302-15.0.8.AppImage::https://www.dogfight360.com/Usbeam/V15/Steamcommunity_302_15.0.8_Linux_WebKit_x64.AppImage
+	sha256sums_x86_64 = 4be7bd01e392483edc943f5f04892aa176946b8b0c8c9396fbb50f508b4a5f52
+	source_aarch64 = steamcommunity302-15.0.8.AppImage::https://www.dogfight360.com/Usbeam/V15/Steamcommunity_302_15.0.8_Linux_WebKit_arm64.AppImage
+	sha256sums_aarch64 = 4be7bd01e392483edc943f5f04892aa176946b8b0c8c9396fbb50f508b4a5f52
 
 pkgname = steamcommunity302

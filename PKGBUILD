@@ -4,8 +4,8 @@
 # - 提权内置(pkexec/polkit/sudo transient daemon),无需旧版 launcher hack
 # - GUI 运行时依赖 fuse2；headless 使用已打包的 CLI/Caddy/规则库
 pkgname=steamcommunity302
-pkgver=15.0.7
-pkgrel=7
+pkgver=15.0.8
+pkgrel=1
 #epoch=
 pkgdesc="羽翼城制作的Steam、Github等反代加速工具,使用s302命令启动"
 url="https://www.dogfight360.com/blog/18682/"
@@ -30,8 +30,8 @@ source_aarch64=(
   "steamcommunity302-${pkgver}.AppImage::https://www.dogfight360.com/Usbeam/V15/Steamcommunity_302_${pkgver}_Linux_WebKit_arm64.AppImage"
 )
 sha256sums=('4ef0cef466426f5472f503f14c9762c5d512a2ab4296d0734a3d438774ce5fe8')
-sha256sums_x86_64=('e17ee108e97c10f4003367e8196cb7f7bec3a30a1da211d063acaf9faa4b7c26')
-sha256sums_aarch64=('64e9044dffccd8fa164d17ba4a6ea0e77dc6a0550e81634c0fe5dcbf65001458')
+sha256sums_x86_64=('4be7bd01e392483edc943f5f04892aa176946b8b0c8c9396fbb50f508b4a5f52')
+sha256sums_aarch64=('4be7bd01e392483edc943f5f04892aa176946b8b0c8c9396fbb50f508b4a5f52')
 options=(!strip)
 install=steamcommunity302.install
 
