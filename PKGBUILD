@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mailspring-git
 _pkgname=Mailspring
-pkgver=1.26.0.r19.g68cbd67
+pkgver=1.26.0.r24.g4ebb582
 _electronversion=44
 _nodeversion=22
 pkgrel=1
@@ -28,7 +28,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -81,12 +81,10 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
-        s/@cfgdirname@/${_pkgname}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto --password-store=\"gnome-libsecret\"/g
     " "${srcdir}/${pkgname%-git}.sh"
     _set_build_env
     _ensure_local_nvm
-    git submodule update --depth=1 --init --recursive
+    git submodule deinit -f --all 2>/dev/null; rm -rf mailsync/* || true
     sed -i "/await createRpmInstaller/d" app/build/build.js
     sed -i "1a exit 0" app/script/mkdeb
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
