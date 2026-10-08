@@ -1,6 +1,6 @@
 pkgname=mangayomi-linux
 pkgver=0.9.8
-pkgrel=15
+pkgrel=16
 pkgdesc="Mangayomi - Manga, Anime and Novel reader (prebuilt zip with auto-compiled QuickJS FFI fix)"
 arch=('x86_64')
 url="https://github.com/kodjodevf/mangayomi"
@@ -25,7 +25,7 @@ prepare() {
   cd "$srcdir/flutter_qjs"
   git submodule update --init --recursive
 
-  # Genera CMakeLists.txt includendo SOLO i sorgenti lib (niente qjs.c, qjsc.c o test)
+  # Genera CMakeLists.txt con l'aggiunta dei flag -Wno-int-conversion per i compilatori GCC moderni
   cat <<'EOF' > linux/CMakeLists.txt
 cmake_minimum_required(VERSION 3.10)
 project(flutter_qjs_plugin LANGUAGES C CXX)
@@ -39,7 +39,7 @@ include_directories(
   ${GTK_INCLUDE_DIRS}
 )
 
-add_compile_options(-DCONFIG_VERSION="2021-03-27" -D_GNU_SOURCE -DEXPORT -fvisibility=default)
+add_compile_options(-DCONFIG_VERSION="2021-03-27" -D_GNU_SOURCE -DEXPORT -fvisibility=default -Wno-int-conversion -Wno-discarded-qualifiers)
 
 set(QUICKJS_SOURCES
   ../cxx/quickjs/quickjs.c
