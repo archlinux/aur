@@ -1,0 +1,13 @@
+pkgbase = dna-nn
+	pkgdesc = Deep-learning models for annotating satellite DNA in long assemblies
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/lh3/dna-nn
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	source = dna-nn-0.1.tar.gz::https://github.com/lh3/dna-nn/archive/v0.1.tar.gz
+	sha256sums = bac26a25ad9e0315351b170bc33ab4e41b7573818fd9527b661f882b96ae0a8a
+
+pkgname = dna-nn
