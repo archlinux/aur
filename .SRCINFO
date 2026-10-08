@@ -1,0 +1,13 @@
+pkgbase = phycfg
+	pkgdesc = Model rooted phylogenetic trees with stochastic context-free grammar
+	pkgver = 20260410
+	pkgrel = 1
+	url = https://github.com/lh3/phycfg
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	source = phycfg-20260410.tar.gz::https://github.com/lh3/phycfg/archive/3bb305fe660dedc3daf3ec8654622e1d60cc203d.tar.gz
+	sha256sums = d755d3a8393e6f1e1edf1e09a4152596abcc6fa725a8c4172b74d4cca0a87b38
+
+pkgname = phycfg
