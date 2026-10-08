@@ -1,0 +1,15 @@
+pkgbase = badclip
+	pkgdesc = Extract breakends and structural-variant signals from long-read alignments
+	pkgver = 20261003
+	pkgrel = 1
+	url = https://github.com/lh3/badclip
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	source = badclip-20261003.tar.gz::https://github.com/lh3/badclip/archive/b1825a9053c1729936fcf8537e234d91fcb123f0.tar.gz
+	sha256sums = 33e386fa401c1ddb3ffe82ea31009f48049c326471b1850a321b917e255cffbc
+
+pkgname = badclip
