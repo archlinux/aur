@@ -15,6 +15,6 @@ pkgbase = gaze-gui-bin
 	provides = gaze-gui=0.3.9-1
 	conflicts = gaze-gui
 	source = gaze-gui-0.3.9-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-gui-0.3.9-1-x86_64.pkg.tar.zst
-	sha256sums = b6dece741c633db99e5db3ace03e6a60e192d753ed3c47740064700dfef8895c
+	sha256sums = cc0db1dc9120c86a937c4bca54da64d01767d586757b993bf43ffb6eaa1fe63d
 
 pkgname = gaze-gui-bin
