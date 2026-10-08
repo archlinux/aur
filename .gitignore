@@ -1,0 +1,15 @@
+*.pkg.tar.zst
+*.tar.gz
+*.tar.bz2
+pkg/
+src/
+# makepkg VCS source mirrors land here (SRCDEST)
+bfc/
+bwa/
+fermi2/
+fermikit/
+hapdip/
+htsbox/
+ropebwt2/
+seqtk/
+trimadap/

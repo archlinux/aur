@@ -1,0 +1,32 @@
+pkgbase = fermikit
+	pkgdesc = De novo assembly based variant calling pipeline for Illumina short reads
+	pkgver = 0.13
+	pkgrel = 1
+	url = https://github.com/lh3/fermikit
+	arch = x86_64
+	license = MIT
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = glibc
+	depends = perl
+	depends = zlib
+	source = fermikit::git+https://github.com/lh3/fermikit.git#tag=v0.13
+	source = bfc::git+https://github.com/lh3/bfc.git#commit=a73dad248dc56d9d4d22eacbbbc51ac276045168
+	source = bwa::git+https://github.com/lh3/bwa.git#commit=eb428d7d31ced059ad39af2701a22ebe6d175657
+	source = fermi2::git+https://github.com/lh3/fermi2.git#commit=ee4c2349b387e628e402f6daa5815ca5c2e12fbf
+	source = hapdip::git+https://github.com/lh3/hapdip.git#commit=84c851465f609cbb324009e5a7a7ae1774719c4a
+	source = htsbox::git+https://github.com/lh3/htsbox.git#commit=7db14a0a83a64cc3a23820bd029802f298fabe7b
+	source = ropebwt2::git+https://github.com/lh3/ropebwt2.git#commit=e23a7df263571c02aa0c0434e623108482097e3d
+	source = seqtk::git+https://github.com/lh3/seqtk.git#commit=5e1e8dbd506ea1ff8c77d468a1f27b8e8f73eac0
+	source = trimadap::git+https://github.com/lh3/trimadap.git#commit=b8eb2f4fee84180d1d4af4929af1571f8cb3c53d
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = fermikit
