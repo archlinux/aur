@@ -1,0 +1,14 @@
+pkgbase = k8-bin
+	pkgdesc = Javascript shell based on V8
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/attractivechaos/k8
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = k8
+	conflicts = k8
+	source = k8-1.2.tar.bz2::https://github.com/attractivechaos/k8/releases/download/v1.2/k8-1.2.tar.bz2
+	sha256sums = a86b160a82f3233a21235d21170f3719a600dbd96bf1ec705a6eb57d770953c9
+
+pkgname = k8-bin
