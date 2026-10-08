@@ -3,8 +3,8 @@
 
 _pkgname=xwayland-satellite
 pkgname="$_pkgname-git"
-pkgver=0.6.r19.gba78881
-pkgrel=2
+pkgver=0.8.2.r18.gae88928
+pkgrel=1
 pkgdesc="Xwayland outside your Wayland - git version"
 arch=(x86_64)
 url="https://github.com/Supreeeme/$_pkgname"
@@ -52,7 +52,7 @@ check() {
 	cd $_pkgname
 	export XDG_RUNTIME_DIR="$(mktemp -d)"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen
+	cargo test --frozen -- --test-threads 1
 }
 
 package() {
