@@ -1,7 +1,7 @@
 # Maintainer: fuero <fuerob@gmail.com>
 pkgname=sofka
 # renovate: datasource=github-releases depName=nklmilojevic/sofka
-pkgver=0.29.9
+pkgver=0.31.1
 pkgrel=1
 pkgdesc='Kubernetes TUI, reimagined in Rust'
 url='https://github.com/nklmilojevic/sofka'
@@ -11,8 +11,10 @@ depends=('glibc' 'libgcc')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate"
+  cc-wrapper.sh
 )
-sha256sums=('cc2683750eac7ad7a0734ae5040f16c6865a7763a216c76afadb2379c82d6a47')
+sha256sums=('9e7fe6ae0175d9756464108548be98c3c75f5dc1cd5727170983b6843df31b70'
+            '5cb813a99ae932d5e1273a3a4f7d109c4db9e1dd1b406512c50862a00279f1f0')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
@@ -24,15 +26,16 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cd "${pkgname}-${pkgver}"
-    export CC=clang
+    # aws-lc-sys-0.45.0/aws-lc/third_party/jitterentropy/jitterentropy-library/src/jitterentropy-base.c:47:3: error: "The CPU Jitter random number generator must not be compiled with optimizations. See documentation. Use the compiler switch -O0 for compiling jitterentropy.c."
+    # cargo:warning=   47 |  #error "The CPU Jitter random number generator must not be compiled with optimizations. See documentation. Use the compiler switch -O0 for compiling jitterentropy.c."
+    export CC=${srcdir}/cc-wrapper.sh ORIG_CC=clang
     cargo build --frozen --release
 }
 
 check() {
     export RUSTUP_TOOLCHAIN=stable
     cd "${pkgname}-${pkgver}"
-    export CC=clang
-    # completion_scripts_work_without_local_configuration fails for now
+    export CC=${srcdir}/cc-wrapper.sh ORIG_CC=clang
     RUST_BACKTRACE=1 LANG=C LC_ALL=C cargo test --frozen
 }
 
