@@ -1,7 +1,7 @@
 # Maintainer: Alex Grabowski <hurufu+arch@gmail.com>
 
 pkgname=python-asn1tools
-pkgver=0.167.0
+pkgver=0.169.0
 pkgrel=1
 pkgdesc='A Python package for ASN.1 parsing, encoding and decoding'
 arch=(any)
@@ -25,7 +25,7 @@ checkdepends=(
     python-trio
 )
 source=(
-    git+https://github.com/eerimoq/asn1tools.git#commit=7b72219c5bc529068d1b9abe84a46773f38c465f
+    git+https://github.com/eerimoq/asn1tools.git#commit=3fdf723dca5efe077e7e2ef0f3d33f791af0e511
 )
 b2sums=(
     SKIP
