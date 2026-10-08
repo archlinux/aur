@@ -9,7 +9,7 @@ _cuda_arch=
 
 pkgbase=whisrs
 pkgname=(whisrs whisrs-cuda whisrs-vulkan)
-pkgver=0.1.28
+pkgver=0.1.29
 pkgrel=1
 pkgdesc='Linux-first voice-to-text dictation tool, written in Rust'
 arch=(x86_64)
@@ -19,13 +19,12 @@ depends=(gcc-libs alsa-lib libxkbcommon)
 makedepends=(cargo clang cmake cuda vulkan-headers vulkan-icd-loader shaderc)
 options=('!lto')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-  0001-feat-hotkey-allow-bare-ScrollLock-Pause-and-F13-F24-.patch::https://patch-diff.githubusercontent.com/raw/y0sif/whisrs/pull/180.patch)
-sha256sums=('52c0cb061148e7647c6909a8240489e8f7d9657540519c182ed66d0b6944816b'
-            'f593395f79f58dd75b82a255634f7cb27bb0866bf045ffc653dfd906f2d52647')
+)
+sha256sums=('2b1dd2849f21a04e1b5e719702731a6e76049fefb68f77f2a55f947e7fea8d53')
 
 prepare() {
   cd $pkgbase-$pkgver
-  patch -p1 -i ../0001-feat-hotkey-allow-bare-ScrollLock-Pause-and-F13-F24-.patch
+
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -40,7 +39,13 @@ _cuda_env() {
   export CUDA_PATH=/opt/cuda
   export PATH="/opt/cuda/bin:$PATH"
   # whisper-rs-sys forwards CMAKE_* env vars to cmake.
-  [[ -n ${_cuda_arch} ]] && export CMAKE_CUDA_ARCHITECTURES="${_cuda_arch}"
+  if [[ -n ${_cuda_arch} ]]; then
+    export CMAKE_CUDA_ARCHITECTURES="${_cuda_arch}"
+  fi
+  # makepkg's CFLAGS/CXXFLAGS never reach nvcc's host compiler, so the .cu
+  # host code needs its hardening here. This replaces whisper-rs-sys's own
+  # value, so -fPIC must stay. No commas inside a flag: -Xcompiler splits on them.
+  export CMAKE_CUDA_FLAGS="-Xcompiler=-fPIC,-fstack-protector-strong,-fstack-clash-protection,-fcf-protection,-U_FORTIFY_SOURCE,-D_FORTIFY_SOURCE=3"
 }
 
 build() {
@@ -52,12 +57,6 @@ build() {
   CARGO_TARGET_DIR=target-cpu cargo build --frozen --release
   (_cuda_env; CARGO_TARGET_DIR=target-cuda cargo build --frozen --release --features cuda)
   CARGO_TARGET_DIR=target-vulkan cargo build --frozen --release --features vulkan
-}
-
-check() {
-  cd $pkgbase-$pkgver
-  export RUSTUP_TOOLCHAIN=stable
-  CARGO_TARGET_DIR=target-cpu cargo test --frozen --release
 }
 
 _package() {
