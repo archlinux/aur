@@ -1,5 +1,5 @@
 pkgname=v6asm-git
-pkgver=2026.10.06.r0.g60f9a71
+pkgver=2026.10.06_04.r0.g873d284
 pkgrel=1
 pkgdesc="CLI Intel 8080/Z80 assembler and FDD image tool for Vector-06c. Git version"
 arch=('x86_64')
