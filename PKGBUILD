@@ -1,4 +1,5 @@
-# Maintainer: Simon Hayessen <simon@lnqs.io>
+# Maintainer: Mitchel Humpherys <mitch.special@gmail.com>
+# Contributor: Simon Hayessen <simon@lnqs.io>
 
 pkgname=gnome-shell-extension-system-monitor-next-git
 pkgver=r1510.cf869fb
