@@ -2,8 +2,8 @@
 
 _pkgname=wechat-devtools
 pkgname="${_pkgname}"-appimage
-pkgver=2.02.2608060
-pkgrel=4
+pkgver=2.02.2608080
+pkgrel=1
 pkgdesc="The development tools for wechat projects"
 arch=(x86_64)
 url="https://github.com/msojocs/wechat-web-devtools-linux"
@@ -13,7 +13,6 @@ provides=(
     "wechat-devtools"
 )
 options=(!strip)
-install="${pkgname}.install"
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=(
     "${_appimage}::https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v${pkgver}-1/WeChat_Dev_Tools_v${pkgver}-1_x86_64_linux.AppImage"
@@ -21,8 +20,8 @@ source_x86_64=(
 )
 noextract=("${_appimage}")
 sha256sums_x86_64=(
-    'a8c91acfd49550612e53404d057499469879a134d58d3d812f7c928bf619cfe2'
-    'c426e4d49ad839e8c726ff0b4cdae2fc5ece9a6b572cb7e9260a654ec28b8989'
+    'fb72fcbd1c55ef82b4b7b97174d93cdfbcdeb2df72c364298cb1616e016e1aca'
+    '1b8e7f7315a7c845d1a3bd7d998bc32b7dd33e2a8921d67d9052db7f982e2ebe'
 )
 
 prepare() {
