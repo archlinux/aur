@@ -6,7 +6,7 @@ pkgbase=taigikeyboard-git
 # corresponding fcitx5 input method, and vice versa
 # fonts are not installed, this recommends them from the aur instead
 pkgname=(fcitx5-taigikeyboard-git ibus-taigikeyboard-git taigikeyboard-common-git)
-pkgver=3.6.10.r959.7a78928
+pkgver=3.7.0.r3.68f2481
 pkgrel=1
 arch=('x86_64')
 url="https://taigikeyboard.tw"
@@ -42,11 +42,6 @@ pkgver() {
 			--match="desktop-*" |
 			sed 's/^desktop-//; s/\([^-]*-\)g/r\1/; s/-/./g'
 	)"
-}
-
-prepare() {
-	cd "${pkgbase%-git}"
-	patch -p1 -i ../0001-build-linux-allow-skipping-font-install-or-splitting.patch
 }
 
 build() {
