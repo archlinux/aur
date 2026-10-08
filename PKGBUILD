@@ -1,6 +1,6 @@
 # Maintainer: galak9 <alterk@qq.com>
 pkgname=qoder-cli-cn-bin
-pkgver=1.1.65
+pkgver=1.1.66
 pkgrel=1
 pkgdesc="Qoder CLI (CN version) - An agentic AI coding tool built for command-line developers"
 arch=('x86_64' 'aarch64')
@@ -29,8 +29,8 @@ sha256sums=('b3c2f69ca7701015b1a7a2f7fa335aba917e7658129bee10fa96d066ba305bda'
             '563610c8624be209fa8353b8b64b6371532400dc43a4139895ec8dc445db7da1'
             '35b2db9d976fd8ac3ec609d0ac4d13c5f47598c25d7a299a16ddd4a2d430cf31'
             'acbcecde9ec8b3843b17f6a8b374babd62505bbc53277d50c2ec0399ec10809b')
-sha256sums_x86_64=('a316b656ddee84fc161540ac5aeeef5b292f01be3b773f24d3e122f251079d79')
-sha256sums_aarch64=('c08c9b9763984cdfae5ac0e08f833a8f2856eaaebcbd02def21d36ca048610a5')
+sha256sums_x86_64=('993904ce824e7a5c9af089f609b99bfb13ef6da28a0136789424de92c7603bfb')
+sha256sums_aarch64=('5c511a1ce9eac3715333e3429cfe911bdda3f79412a25a9f7c853a445a293b9c')
 
 package() {
   install -Dm755 "${srcdir}/qoderclicn" "${pkgdir}/usr/bin/qoderclicn"
