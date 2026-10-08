@@ -9,8 +9,8 @@ arch=('x86_64')
 url="https://github.com/kroketio/sentencepiece-browsermt"
 license=('Apache-2.0')
 depends=('protobuf-21')
-makedepends=('cmake' 'protobuf-21')
-source=("https://github.com/kroketio/sentencepiece-browsermt/archive/refs/tags/$pkgver.tar.gz")
+makedepends=('cmake')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/kroketio/sentencepiece-browsermt/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('1cdd7b4ef66efad3cfb8c0aa7ac78d648a616b37649c4919056eb94dc3202d29')
 
 build() {
