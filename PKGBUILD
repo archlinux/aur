@@ -7,7 +7,7 @@ pkgbase=${_pkgbase}-bin
 pkgname=(${_pkgname[0]}-bin ${_pkgname[1]}-bin)
 _pkgdesc="Lossless MP3 volume adjustment"
 
-pkgver=3.9.2
+pkgver=3.10.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -38,8 +38,8 @@ source_x86_64=("${_pkgname[0]}-${arch[0]}-${pkgver}.tgz::${url}/releases/downloa
 source_aarch64=("${_pkgname[0]}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname[0]}-${_pkgvername}-${_barch[1]}.tar.gz"
 				"${_pkgname[1]}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname[1]}-${_pkgvername}-${_barch[1]}.tar.gz")
 sha256sums=('8e557208f0bd83f91b38dcc81ccf914c4c84060ab6dbc5072dbf369791ffc135'
-            '9ad9cb775377a111741408b1f94c00e61343a29d48da02459ec1d4326afd256e'
-            'f609491c9807ab2a3e1c551c48223a314bf6b1da47bb25d89335c0a997882f4b'
+            '91d45d50146626457d4d65022258fae5fe181372816a1e3e9922885c67e775c9'
+            '6e58b87dd2fccf848ddfbc729d63ccfdf8787a06b92b2a0c99ea1d47ba422789'
             'c0f553ccb5e4d9f922d5651a99f757c4c6e4469226312ddd9146c5f151a2bf35'
             'd5663da72a2e7fadff722207147cd9103868a5b9de7da7483648b74b7971c174'
             '91dad3ec01217a81439663ab9a5838ae0a981aff4a673729db4009cf8594a4f1'
@@ -47,10 +47,10 @@ sha256sums=('8e557208f0bd83f91b38dcc81ccf914c4c84060ab6dbc5072dbf369791ffc135'
             'd44f58c2eb6c2fc3ce21e45e357ffb49c22006f2279a95c74ef078d2227a3dea'
             '9837d092603c7c1749fad2857287d179ece88b1fdf1b25f36220dccbf92bb083'
             '502ed5dc6994e95e2d00f1714a3f90c4a0f14f2b18448a35eb7ff746850dcaed')
-sha256sums_x86_64=('2d4ecf9ab2e88d2cf69c42199d30a5fb3c1f8454c433a99fc323e06e70766955'
-                   '936ecbda4311c83ad05476dae649982eeac0a04375e096c2d14f9ee28ee11951')
-sha256sums_aarch64=('8757444697a0786a88e7a5402bbee7de5d0c7667451a8ba4d623733ae15cb2d6'
-                    '45d9ec0c6c4f94fbd19f8944cca224a1042ebd51e71fc157284b010522d7ef98')
+sha256sums_x86_64=('7313fb286297ba547ca232d17fd3038bd790d964e5928dd1f15990857024c57d'
+                   '14c8b940de9f79c9872bc8b4298f25060a9007cc04c568500517b0587219e64a')
+sha256sums_aarch64=('803912d0cc39c11f40cd0d65b3bad8cc11d7b8eeec41ed447390da3ee0e97908'
+                    '863c3cab0907faf7a5f8059a9c6adcdccdb49ad4e94e1f8cbea2af8550c745a3')
 
 
 package_mp3rgain-bin() {
