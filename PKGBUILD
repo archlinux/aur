@@ -7,7 +7,7 @@ pkgname=(
 	'frida'
 	'python-frida'
 )
-pkgver=17.19.0
+pkgver=17.23.0
 pkgrel=1
 pkgdesc='Dynamic instrumentation toolkit for developers, reverse-engineers, and security researchers'
 arch=('x86_64')
@@ -50,6 +50,7 @@ depends=(
 	'systemd-libs'
 	'zlib'
 )
+checkdepends=('libarchive')
 makedepends=(
 	'brotli'
 	'cmake'
@@ -75,11 +76,11 @@ makedepends=(
 	'vala'
 )
 
-_releng_commit='1089fe24c221811f0089ec7c1c16a6b1602cf079'
+_releng_commit='4e51c61880b8e41aa4b80ae7fb8eb191d9335e08'
 _meson_commit='342713453ed2f10c99fbbe6f7625170e04c12c8f'
 _tomlkit_commit='911cccd630965ff423316e25b4685ecf7df0ec0a'
-_frida_core_commit='b66a485f7c8f12407c51d5994907eca549d27066'
-_frida_gum_commit='02bc3d805455f79eef1de1acbbfe72328d477756'
+_frida_core_commit='68806604814b9f2754985fbf52e803d9a5e90aad'
+_frida_gum_commit='8b3e4865dba4541e6c02d2d5920beb24219a07c1'
 _capstone_commit='d536b1577fd033a31d75f48fd183aa425256cc18'
 _glib_commit='e0cc7c6f0d88f47e4dee4607df085d08c89b8a6a'
 _glib_networking_commit='ef47b1a09cf8c1875f181bcf901643689a56d12f'
@@ -90,15 +91,15 @@ _libdwarf_commit='61ff154ae803d2b0202dbc1bf385cda1ac3ece54'
 _libgee_commit='ad17ed847039469fcc2dc711ecfee2bbf7d2bf87'
 _libnice_commit='9a3da6e3e5bbcf935fd85b6b8557ff8c7dd9032c'
 _lzfse_commit='5cfb7c86919d3c2c636d0d7552b51855a611ba1c'
-_quickjs_commit='5925b4859d6ada980c6f6df5833ce30c6d7ea2e0'
+_quickjs_commit='247bfdcbd3c58171af060351d7587541d05989fd'
 _tinycc_commit='3da7432bebd348bf16cdc7a22c3717b4f22946af'
 _vala_commit='172348fa9123ff4a95d541c5f9e56837434c4b6e'
-_frida_python_commit='9947655e6a30f0f929f5101e1a049291b4f0787a'
+_frida_python_commit='aacd1913e0d72fd424e998fc1f72bd2b6b0a2a49'
 _frida_bindgen_commit='eace04901ef6300429e8c343095297df042dba0e'
 _libusb_commit='ffff4bdfe8faa38cecfad5aab106cae923502d55'
 _lwip_commit='00ea2b4c3c57dae81ec3a88c3d58ef38ab17e0c9'
 _usrsctp_commit='57b8b42abad9b00861f92281f013830bbbd0b5f0'
-_sdk_version='20260717'
+_sdk_version='20261004'
 _sdk_zlib_commit='171a3eacaea8b731ef1fc586e7777b77742e2a1d'
 _sdk_libffi_commit='3fe3257235cc9ffd192e1cd567f1bdfff751fa3e'
 _sdk_pcre2_commit='b47486922fdc3486499b310dc9cf903449700474'
@@ -182,6 +183,8 @@ source=(
 	'frida-releng.patch'
 	'frida-core-arch.patch'
 	'frida-hardening.patch'
+	'vala-drop-deprecated-use-header.patch'
+	'check-python-frida.py'
 	'frida-valac.in'
 	'frida-pkg-config-32'
 	"lib32-zlib-${_compat32_zlib_pkg_commit}.tar.bz2::https://gitlab.archlinux.org/archlinux/packaging/packages/lib32-zlib/-/archive/${_compat32_zlib_pkg_commit}/lib32-zlib-${_compat32_zlib_pkg_commit}.tar.bz2"
@@ -212,12 +215,12 @@ source=(
 	'compat32-libelf.patch'
 )
 b2sums=(
-	'42147318bec5d0486a3571824eb66adebf99339340a6b78f7393c42e1666cd29e1e8cf922c70269dab34206efc77807b7bb4be07c99fcf9db24095a43658e86f'
-	'ea1bcda166d45e240fa543f1c69d3004d863c5f876a86778f98155a89a514c6478e8a435a8b7145899395ed3d5111c2aa1e6bb25c05f22cbd4971e0798f37966'
+	'b1128bcfedd6faf9340f56bb54ebaa4bf5932e84def2905e5e3912d246d643d3211737c6030ffc1efd6a0933bad428b68bbd0bfb50626b5f18babf5e8932a712'
+	'145f12767faa3afde61e75481ed745bbd89c9234f6750bc7e8f546a6e374fe3f9dd48fa69a01d59b3077c0341da2a8a7993a819cd6f70098ccc4ddbccb0e7adf'
 	'bb3d437d5b95d0a3a95933bbe69507c02b97e4482a401acd292badc252c711fbc2ba3a596436af5316a09e4c6faa7b0e3e1c8e2f0e7f7db0560fd487902cbfe2'
 	'4127ac2a39b8e4aaf612b8e0c54d40e87e8a175c408ae1d427333cd7c0fa932d9122f2af01ab2eaad737a8234034c7fc906208cd6241e18918cf9c5ee25f43e9'
-	'fc6b33a3103102adda413dfb2441b2ec43cae1a3d064217a4e3e517578a185b526bdd00edd81f59d4c106810cb25fe37fa9ebbe5313affd9391885cdde3f0a0c'
-	'35369d2cd26706f7045b25b2d2cc183b4bb5a900e1cb5e9de90154f0fe4cf4debb14929d534f8ee476dbba7d8955f87900cf30919b0477f61121a7a373276782'
+	'6dd8034d1d8766141226fc6881ca0c7f3b2ac743e636478736546c52e10dcdb7f98aaf026f90568ba978c5435ebc0c7a4a65d5c276ae320661501406eecf63ee'
+	'7e23c542474e1fa11f128da49673914a5381a5b32ecaa33fb90d82566c5c6a0e6a765ad5508b3fb78e209567619e65f469794bbf45a73e8f1da311da9c52d06d'
 	'31ca08f88cdc0545d32de7e6b06fc6d292729f7368a77e9a7b45688c7d2f5bf99f339970fe1feb9902555ddee28950cc1ef3e39eb7bc49e6febafeacea825eee'
 	'77eff89fb2e8a63a55e73a2a406f14605a6982a5bc802b54e9a7ded7a13b869f174b9de5c725e791afc4f8e806ee7740a4b5c445f77602192f6cb20fe25fe946'
 	'f6c7c429f6b2f51cba67945c2a23d3521d7c581ac6501ed11602fa3f4d41f7d8047b19858d163c96b1dd67e2d7e1cb8e8b330c0080e8a681468a4f6c0aa2f1a3'
@@ -228,10 +231,10 @@ b2sums=(
 	'f78657c43cd94dc191a422e7a124eb7c24f72d02b13e065246bcc329db3fda3aa5366c1cdd7576d6a7770204b6061939886a77523c63b7b832453eccd7ea641a'
 	'884738e164b04edcd09622440863bd856633749e28f42393143155767e25a5132b9fb3448929cf8f3bdf21e9b714d727f1b82fcff550ce9fe948a14f91cb8c4e'
 	'2477febff4fc1fb3f0897001f3f17d57946ae451469f9ca61baf3e5ab7f8b6bf7472c45a5841384512e557be59c15a7f09d39975c0d785a40fdc82158769c8c8'
-	'd358c525f0e7b442c2a4e464891c424145825f09696bcbf32e4e71d2c0cd76d7f00f09a835f7434c5018cccebfca16de89248d3b9a52e102a105c7fa93572988'
+	'2f51a5a74ac154dfb0049c3883e2e4684a5bd7a089351aebc656ebbf57529d42e8b7c45f17ba212952b3b3d57d20832dd19fc9f4f2134629445e3190f3bf8a85'
 	'02baa51cee42221d8653aaab2f895faeaeed52fa4a4e38c8aab0f0dab00377696521cee860494ad5465a7104078a5262c9d0537f656af9e5821e3e55a2aa071e'
 	'd058bde27c8f89883de05a0229e3f4d83c19abc61e7db752bb4d43f6c99f0346ce962ca4ddae2be7ae1a6ededd4c8cf0b9ea4845e5efb2db9af8eda876903274'
-	'81009feb682076c23ddb74988042421df21e0a16fae0702e2f4f262dcb4be1beaae8f035e0b6a012302b6595e184d11400808d60a4c056df05d63d774de0f4e8'
+	'3bccef98af72d0e6477061f7dcbcf02ee71d7a39d5235b7178188e95cbb8342e4a81eff32347e96c82b682c492f1642e60b2c623189ec5058fffa79d590867f0'
 	'a7660f3bcdd83dd5e0193b24f7370a85e5bd1ba1369a783ad86dec35a298ff7a70e9491870b115045deb30d2a736186a38852a8185ba932966fd4e20f228abe4'
 	'11a0be3615a0438b16a2989de8ab8b7e6a5737847fab7e895333b0720837b60b2b53c0883d3721456a4073ae4fae8220c7931b6742281f152d8c59c167000462'
 	'974e1f9584fd444ecd733765ab23aae392a5f1c4a936a408b8e69b148415ea11701e256e7d03f9e603e2447d841393d76cbc1c2d1305ca3b8f056aeafb22adb6'
@@ -257,7 +260,9 @@ b2sums=(
 	'626b745ad1e6e40d443c26712b791ae44af732cbaf97c6baef066d3c88d64811e3e923cd3f85375687af1c186092cbb971cf983b267bdea81858d786395adb7a'
 	'44cf42d2e45b12567b94318f329a11559b4ee6341ae4ce512889871169571591504faf6d24f356edc91b52dcec3659e7121cc474786b52ef12892b019a4ed42c'
 	'4690cc029b269ed47127ed63a418e90109de977998d6a3109a3933e40ddd094443e430c42468f231fef1f9decdad79c8c5c60ca5435f877bcb40944f40c8add2'
-	'b1c3d3c922e35b8205913cae4de6a6862aa166504b8cd4751ae4a387978bed508aaba542c2a7c1f6a6258c8f8a2c7aaf97105b872e09f83dd99b2566369e4c0e'
+	'906469eb53334461f1567f5c7e03aaa12c66bf9f0b78343a2e61a7f50b75ff44d175d2e7af0a759b02e401cb209197dda1b7f3072666faf4b909e8803d9023e5'
+	'ab36292e5e75307b60b6734d08fd9b493bd7bb45db67eceb96f72c56210b8fdf6ab2da9b401886a4b860fb1b15aab542e430703992c428aea3ba151ead480254'
+	'885e711a9d17e86f0757b34b0376bdf9beaba4010c00e65025dd9cb2bef22ef2db340d7811bffffda53ec6ca4156db344c9b9c3cd9dff109ab93a9122687f46b'
 	'ba8d5e9f284c0e74aff61343f2ca4a49be805382ba57ec14d2216d50b56d56669a80ea5c7b7fec259977cde2c6926c23ff97af6bc18b9a084e16d6635128064e'
 	'5a2fa0418c540d8082c622b9db8534d5878ed30fbe817f01979e5773abaa475740b3f8d2b5f1af3caf7c43701af9c41113e5e5da7080260a43608e8260def01f'
 	'd6f6dee0b4abce002222d6e406934d4d43b4c261a61ce1092d8435eba4509d693bd2e278e06f0a5d89cacd5d6a1f78cea7cab225b700c431a14676a00d3f0cec'
@@ -596,6 +601,7 @@ prepare() {
 	patch -Np1 --fuzz=0 -i "${srcdir}/frida-releng.patch"
 	patch -Np1 --fuzz=0 -i "${srcdir}/frida-core-arch.patch"
 	patch -Np1 --fuzz=0 -i "${srcdir}/frida-hardening.patch"
+	patch -Np1 --fuzz=0 -d "${srcdir}/vala-${_vala_commit}" -i "${srcdir}/vala-drop-deprecated-use-header.patch"
 
 	sed -i \
 		"s/libgvc_dep = dependency('libgvc'.*/libgvc_dep = disabler()/" \
@@ -758,6 +764,12 @@ build() {
 	_build_frida_sdk "${_toolchain_prefix}"
 	export FRIDA_COMPAT_SDK="${srcdir}/frida-sdk"
 
+	# Frida's Gum tests rely on hook targets not being transformed by the
+	# compiler. Keep the main Frida build at the Arch-supported -O2 level,
+	# even when the host makepkg.conf requests a more aggressive level.
+	export CFLAGS="${CFLAGS} -O2"
+	export CXXFLAGS="${CXXFLAGS} -O2"
+
 	./configure \
 		--prefix=/usr \
 		--enable-shared \
@@ -769,6 +781,8 @@ build() {
 		--enable-frida-python \
 		-- \
 		-Dportal=disabled \
+		-Dfrida-gum:tests=enabled \
+		-Dfrida-core:tests=enabled \
 		-Dfrida-core:barebone_backend=enabled \
 		-Dfrida-core:compiler_backend=enabled \
 		--wrap-mode=nodownload
@@ -782,6 +796,111 @@ build() {
 			--no-isolation \
 			--outdir "${srcdir}/python-frida-dist" \
 			subprojects/frida-python
+}
+
+check() {
+	local _core_prefix
+	local _failed=0
+	local _libpath=''
+	local _python_root="${srcdir}/check-python-root"
+	local _source_root="${srcdir}/frida-${pkgver}"
+	local _test_list="${srcdir}/frida-meson-tests.txt"
+	local _test_rc
+	local _toolchain_prefix="${_source_root}/deps/toolchain-linux-${CARCH}"
+	local _wheel
+
+	_build_env
+	export FRIDA_COMPAT_PKG_CONFIG="${srcdir}/frida-pkg-config-32"
+	export FRIDA_COMPAT_SDK="${srcdir}/frida-sdk"
+	export PATH="${_toolchain_prefix}/bin:${PATH}"
+	export LD_LIBRARY_PATH="${_toolchain_prefix}/lib:${_toolchain_prefix}/lib/vala-0.58:${LD_LIBRARY_PATH:-}"
+	export VALAC="${srcdir}/frida-valac"
+	export PYTHONPATH="${_source_root}:${PYTHONPATH:-}"
+	export VAPIGEN="${_toolchain_prefix}/bin/vapigen-0.58"
+
+	cd -- "${_source_root}" || return 1
+
+	printf '%s\n' '=== Frida Meson test inventory ==='
+	if python releng/meson/meson.py test -C build --list > "${_test_list}"; then
+		cat -- "${_test_list}"
+		printf '%s\n' 'FRIDA_CHECK_RESULT inventory PASS'
+	else
+		_test_rc=$?
+		cat -- "${_test_list}"
+		printf 'FRIDA_CHECK_RESULT inventory FAIL rc=%d\n' "${_test_rc}"
+		_failed=1
+	fi
+
+	printf '%s\n' '=== Frida upstream test: frida-gum:gum ==='
+	if ! grep -Fxq -- 'frida-gum / gum' "${_test_list}"; then
+		printf '%s\n' 'FRIDA_CHECK_RESULT frida-gum:gum FAIL not-registered'
+		_failed=1
+	else
+		if python releng/meson/meson.py test \
+			-C build \
+			--no-rebuild \
+			--print-errorlogs \
+			'frida-gum:gum'; then
+			printf '%s\n' 'FRIDA_CHECK_RESULT frida-gum:gum PASS'
+		else
+			_test_rc=$?
+			printf 'FRIDA_CHECK_RESULT frida-gum:gum FAIL rc=%d\n' "${_test_rc}"
+			_failed=1
+		fi
+	fi
+
+	printf '%s\n' '=== Frida upstream test: frida-core:core ==='
+	if ! grep -Fxq -- 'frida-core / core' "${_test_list}"; then
+		printf '%s\n' 'FRIDA_CHECK_RESULT frida-core:core FAIL not-registered'
+		_failed=1
+	else
+		for _core_prefix in '/System' '/GDB' '/Injector'; do
+			printf '=== Frida Core test prefix: %s ===\n' "${_core_prefix}"
+			if python releng/meson/meson.py test \
+				-C build \
+				--no-rebuild \
+				--print-errorlogs \
+				--test-args="-r ${_core_prefix}" \
+				'frida-core:core'; then
+				printf 'FRIDA_CHECK_RESULT frida-core:core%s PASS\n' "${_core_prefix}"
+			else
+				_test_rc=$?
+				printf 'FRIDA_CHECK_RESULT frida-core:core%s FAIL rc=%d\n' "${_core_prefix}" "${_test_rc}"
+				_failed=1
+			fi
+		done
+	fi
+
+	printf '%s\n' '=== Frida Python wheel runtime ==='
+	_wheel="$(find "${srcdir}/python-frida-dist" -maxdepth 1 -type f -name '*.whl' -print -quit)"
+	if [[ -z "${_wheel}" ]]; then
+		printf '%s\n' 'FRIDA_CHECK_RESULT python-wheel FAIL missing-wheel'
+		_failed=1
+	else
+		rm -rf -- "${_python_root}"
+		mkdir -p -- "${_python_root}"
+		bsdtar -xf "${_wheel}" -C "${_python_root}"
+
+		while IFS= read -r _dir; do
+			if [[ -z "${_libpath}" ]]; then
+				_libpath="${_dir}"
+			else
+				_libpath+=":${_dir}"
+			fi
+		done < <(find build -type f \( -name '*.so' -o -name '*.so.*' \) -printf '%h\n' | sort -u)
+
+		if PYTHONPATH="${_python_root}" \
+			LD_LIBRARY_PATH="${_libpath}:${LD_LIBRARY_PATH:-}" \
+			python "${srcdir}/check-python-frida.py" "${pkgver}"; then
+			printf '%s\n' 'FRIDA_CHECK_RESULT python-wheel PASS'
+		else
+			_test_rc=$?
+			printf 'FRIDA_CHECK_RESULT python-wheel FAIL rc=%d\n' "${_test_rc}"
+			_failed=1
+		fi
+	fi
+
+	return "${_failed}"
 }
 
 _remove_pkgconfig_requirements() {

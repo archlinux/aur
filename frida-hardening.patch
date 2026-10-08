@@ -69,6 +69,14 @@
 +  local:
 +    *;
 +};
+--- a/subprojects/frida-gum/tests/meson.build
++++ b/subprojects/frida-gum/tests/meson.build
+@@ -57,2 +57,5 @@
+   force_cpp_linking = true
++  # GumJS deliberately hides its bundled C++ runtime from the public ABI.
++  # Keep the exception tests dynamically bound to the system C++ runtime.
++  extra_link_args += ['-lstdc++']
+ endif
 --- a/subprojects/frida-gum/bindings/gumjs/meson.build
 +++ b/subprojects/frida-gum/bindings/gumjs/meson.build
 @@ -246,8 +246,24 @@

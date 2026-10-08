@@ -1,0 +1,50 @@
+--- a/gee/meson.build
++++ b/gee/meson.build
+@@ -16,7 +16,6 @@ valagee_lib = static_library(
+ 	'valagee',
+ 	valagee_sources,
+ 	c_args: ['-DG_LOG_DOMAIN="vala"'],
+-	vala_args: ['--use-header'],
+ 	vala_header: 'valagee.h',
+ 	vala_vapi: 'gee.vapi',
+ 	dependencies: [gobject_dep],
+--- a/vala/meson.build
++++ b/vala/meson.build
+@@ -180,7 +180,6 @@ valacore_lib = library(
+ 	'vala@0@'.format(vala_version_suffix),
+ 	valacore_sources,
+ 	c_args: ['-DG_LOG_DOMAIN="vala"'],
+-	vala_args: ['--use-header'],
+ 	vala_header: 'vala.h',
+ 	vala_vapi: 'vala.vapi',
+ 	dependencies: [gobject_dep, gmodule_dep, valagee_dep],
+--- a/ccode/meson.build
++++ b/ccode/meson.build
+@@ -63,7 +63,6 @@ valaccode_lib = static_library(
+ 	'valaccode',
+ 	valaccode_sources,
+ 	c_args: ['-DG_LOG_DOMAIN="vala-ccode"'],
+-	vala_args: ['--use-header'],
+ 	vala_header: 'valaccode.h',
+ 	vala_vapi: 'valaccode.vapi',
+ 	dependencies: [gobject_dep, valagee_dep, valacore_dep],
+--- a/codegen/meson.build
++++ b/codegen/meson.build
+@@ -37,7 +37,6 @@ valacodegen_lib = library(
+ 	'valacodegen',
+ 	valacodegen_sources,
+ 	c_args: ['-DG_LOG_DOMAIN="vala-ccodegen"'],
+-	vala_args: ['--use-header'],
+ 	vala_header: 'valacodegen.h',
+ 	vala_vapi: 'valacodegen.vapi',
+ 	dependencies: [gobject_dep, valacore_dep, valaccode_dep],
+--- a/libvaladoc/meson.build
++++ b/libvaladoc/meson.build
+@@ -133,7 +133,6 @@ libvaladoc_lib = library(
+ 	'valadoc@0@'.format(vala_version_suffix),
+ 	libvaladoc_sources,
+ 	c_args: ['-DG_LOG_DOMAIN="valadoc"'],
+-	vala_args: ['--use-header'],
+ 	vala_header: 'valadoc.h',
+ 	vala_vapi: 'valadoc@0@.vapi'.format(vala_version_suffix),
+ 	dependencies: [gmodule_dep, valacore_dep, valacodegen_dep, libgvc_dep],
