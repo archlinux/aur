@@ -1,6 +1,6 @@
 pkgbase = nicolino
 	pkgdesc = A fast, modular static site generator written in Crystal
-	pkgver = 0.28.0
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = https://github.com/ralsina/nicolino
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = nicolino
 	depends = libyaml
 	depends = lua54
 	options = !lto
-	source = nicolino-0.28.0::git+https://github.com/ralsina/nicolino.git#tag=v0.28.0
-	sha256sums = cfc59b503ad0c6a29d7dbc34a43abda6896e5016c0e8a9e4db691c7d8e364ec2
+	source = nicolino-0.29.0::git+https://github.com/ralsina/nicolino.git#tag=v0.29.0
+	sha256sums = 5937c69f5234180a01c33781c5c5b214831063735eafedf06f2db46ea508f4fe
 
 pkgname = nicolino
