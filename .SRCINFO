@@ -1,7 +1,7 @@
 pkgbase = mangayomi-linux
 	pkgdesc = Mangayomi - Manga, Anime and Novel reader (prebuilt zip with AppImage QuickJS fix)
 	pkgver = 0.9.8
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/kodjodevf/mangayomi
 	arch = x86_64
 	license = GPL3

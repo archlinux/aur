@@ -1,6 +1,6 @@
 pkgname=mangayomi-linux
 pkgver=0.9.8
-pkgrel=7
+pkgrel=8
 pkgdesc="Mangayomi - Manga, Anime and Novel reader (prebuilt zip with AppImage QuickJS fix)"
 arch=('x86_64')
 url="https://github.com/kodjodevf/mangayomi"
