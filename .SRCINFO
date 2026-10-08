@@ -1,0 +1,13 @@
+pkgbase = editdist-u85
+	pkgdesc = Fast implementation of Ukkonen's O(ND) algorithm for computing edit distance
+	pkgver = 20220421
+	pkgrel = 1
+	url = https://github.com/lh3/editdist-U85
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	source = editdist-u85-20220421.tar.gz::https://github.com/lh3/editdist-U85/archive/520d850697b25562b16e4a9c097f1d5321b51223.tar.gz
+	sha256sums = 801d240b9118c586cdbaadac28d2771f74bea1b33cf99cba92953b09ecba534e
+
+pkgname = editdist-u85
