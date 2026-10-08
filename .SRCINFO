@@ -1,6 +1,6 @@
 pkgbase = opengrep-bin
 	pkgdesc = Lightweight static analysis for many languages. Find bug variants with patterns that look like source code. Fork of semgrep (binary release)
-	pkgver = 1.30.0
+	pkgver = 1.30.2
 	pkgrel = 1
 	url = https://github.com/opengrep/opengrep
 	arch = x86_64
@@ -26,16 +26,16 @@ pkgbase = opengrep-bin
 	depends = python-typing_extensions
 	depends = python-urllib3
 	depends = python-wcmatch
-	provides = opengrep=1.30.0
+	provides = opengrep=1.30.2
 	conflicts = opengrep
 	options = !strip
-	source = opengrep-bin-1.30.0.tar.gz::https://github.com/opengrep/opengrep/archive/refs/tags/v1.30.0.tar.gz
+	source = opengrep-bin-1.30.2.tar.gz::https://github.com/opengrep/opengrep/archive/refs/tags/v1.30.2.tar.gz
 	source = semgrep-interfaces-5e705660dc7381d4c4c247fa83c4c5860e61d555.tar.gz::https://github.com/opengrep/semgrep-interfaces/archive/5e705660dc7381d4c4c247fa83c4c5860e61d555.tar.gz
-	sha256sums = 076ce654391f1164ca3752be5936c8287194ce06a99b9d4aad0c6d58d18283e4
+	sha256sums = 3987d3888e0b7fd4948dbf260b30c8f6c22bed237a2c8cbf0bb5dd70dafdf326
 	sha256sums = 60a283e9a840f1be891ff0ab4794ba7555b443b8415be12bdcf4f92433329e66
-	source_x86_64 = opengrep-core_linux_x86_v1.30.0.tar.gz::https://github.com/opengrep/opengrep/releases/download/v1.30.0/opengrep-core_linux_x86.tar.gz
-	sha256sums_x86_64 = 2a8a6c2f87541b9af04a3902eae6e17e5a87865f05b0eaf3955a5ae0e47ad432
-	source_aarch64 = opengrep-core_linux_aarch64_v1.30.0.tar.gz::https://github.com/opengrep/opengrep/releases/download/v1.30.0/opengrep-core_linux_aarch64.tar.gz
-	sha256sums_aarch64 = 116c1609876ab9e2a09fad8267b1bd3ee3311806506016186cd0691f23d94db5
+	source_x86_64 = opengrep-core_linux_x86_v1.30.2.tar.gz::https://github.com/opengrep/opengrep/releases/download/v1.30.2/opengrep-core_linux_x86.tar.gz
+	sha256sums_x86_64 = 897efa383445efdd8f26d56c24dd76cb2a0b9b69ec0574246c25c2548976c2aa
+	source_aarch64 = opengrep-core_linux_aarch64_v1.30.2.tar.gz::https://github.com/opengrep/opengrep/releases/download/v1.30.2/opengrep-core_linux_aarch64.tar.gz
+	sha256sums_aarch64 = bdf868f94b0c29267987b8d9001170db476513ccfcbd64431f1b626725fc4766
 
 pkgname = opengrep-bin
