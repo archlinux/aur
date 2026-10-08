@@ -1,14 +1,13 @@
 pkgbase = alphadb-bin
 	pkgdesc = SQL Database Version Management
-	pkgver = 1.0.0_beta.50
+	pkgver = 1.0.0_beta.51
 	pkgrel = 1
 	url = https://alphadb.w-kuipers.com/
 	arch = x86_64
 	license = GPL-3.0-or-later
 	provides = alphadb
 	conflicts = alphadb
-
-	source_x86_64 = alphadb-bin-1.0.0_beta.50.tar.gz::https://github.com/w-kuipers/alphadb/releases/download/v1.0.0-beta.50/alphadb-cli_v1.0.0-beta.50_Linux-x86_64.tar.gz
-	sha256sums_x86_64 = 012ac0f4daa5ff746e2ffe0bed4f16f362ffcf88a3a73e6b603041e1d510877c
+	source_x86_64 = alphadb-bin-1.0.0_beta.51.tar.gz::https://github.com/w-kuipers/alphadb/releases/download/v1.0.0-beta.51/alphadb-cli_v1.0.0-beta.51_Linux-x86_64.tar.gz
+	sha256sums_x86_64 = 5b817501720ec50563d8dee703eddf61d68889f0c076db3291dc7d19f1576eb8
 
 pkgname = alphadb-bin
