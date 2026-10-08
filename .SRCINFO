@@ -1,8 +1,8 @@
 pkgbase = nino
 	pkgdesc = A terminal-based text editor inspired by Kilo
 	pkgver = 0.2.1
-	pkgrel = 1
-	url = https://evanlin96069.github.io/nino-editor/
+	pkgrel = 2
+	url = https://evanl.in/nino-editor/
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = git
