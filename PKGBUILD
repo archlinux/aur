@@ -6,14 +6,14 @@ case "$CARCH" in
 esac
 
 pkgname=eosctl
-pkgver=0.12.1
+pkgver=0.16.0
 pkgrel=1
-pkgdesc='Software for managing EOS Cloud.'
+pkgdesc='Software for managing eos cloud.'
 depends=('bash-completion')
 arch=('x86_64' 'aarch64')
 url='https://dl.eoscloud.io/eosctl'
 source=("${pkgname}-${pkgver}::${url}/archives/v${pkgver}/eosctl_${pkgver}_linux_${_debarch}.pacman")
-sha256sums=('834515950fc072854cbd629148ba1cc77b12a7ddc88fb3daf756ad53b7c3084a')
+sha256sums=('82c0281a66f2ef3cd74beaaceb6a01ebb906d942841ed54d70520195dafa8103')
 options=(!debug !lto)
 
 package() {
