@@ -5,7 +5,7 @@
 _dotnet_ver=10.0
 _tgtbin="ImeWlConverterCmd"
 pkgname=imewlconverter
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="深蓝词库转换：一款开源免费的输入法词库转换程序"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -17,7 +17,7 @@ replaces=("${pkgname}"{-bin,-cli})
 depends=("dotnet-runtime-${_dotnet_ver}")
 makedepends=("dotnet-sdk-${_dotnet_ver}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dfd3877a0ee1c26fc773d442c2f4abddc8a1ffb19affc2312183d2e41f1c06c8')
+sha256sums=('00534cd8a7698915a752a8f37d1d2f9ee5724e042767917b5e9e712301fee141')
 
 build() {
     export PACKAGE_VERSION="${pkgver}"
