@@ -1,6 +1,6 @@
 pkgbase = podbox-bin
 	pkgdesc = Podman-native container environment manager
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/bethropolis/podbox
 	license = MIT
@@ -10,10 +10,10 @@ pkgbase = podbox-bin
 	conflicts = podbox
 	provides = podbox
 	arch = aarch64
-	source_aarch64 = podbox-bin_0.8.1_aarch64.tar.gz::https://github.com/bethropolis/podbox/releases/download/v0.8.1/podbox-v0.8.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = 1146a379959c55a5501c54419edc3448886c96a96ce39e6252ebd4588f9f7ca9
+	source_aarch64 = podbox-bin_0.8.2_aarch64.tar.gz::https://github.com/bethropolis/podbox/releases/download/v0.8.2/podbox-v0.8.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 0ca39478dbf21aa1e6e8906426ae8dc6a8a5544b9665b560727178acd942297e
 	arch = x86_64
-	source_x86_64 = podbox-bin_0.8.1_x86_64.tar.gz::https://github.com/bethropolis/podbox/releases/download/v0.8.1/podbox-v0.8.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = d9e5fad3578e03a5d49e6289da7e8af01a7c4b943c0509cfa82f167fd26e9612
+	source_x86_64 = podbox-bin_0.8.2_x86_64.tar.gz::https://github.com/bethropolis/podbox/releases/download/v0.8.2/podbox-v0.8.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 7dfcd41057aece6a488f83606b7fc04388b977df4cb6980f30ef3aa2ed91b49b
 	
 pkgname = podbox-bin
