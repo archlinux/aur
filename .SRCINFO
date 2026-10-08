@@ -1,0 +1,12 @@
+pkgbase = mdust
+	pkgdesc = Masks low-complexity regions and finds duplicated segments in FASTA sequences
+	pkgver = 20150102
+	pkgrel = 1
+	url = https://github.com/lh3/mdust
+	arch = x86_64
+	license = Artistic-1.0
+	depends = glibc
+	source = mdust-20150102.tar.gz::https://github.com/lh3/mdust/archive/3e3fed8da3965ddfc7b440a9ec371af14d4f5dc4.tar.gz
+	sha256sums = 3199638f424d415f28b6f46a69d1cac1f9de605625c3edb958e78a3ee10eab14
+
+pkgname = mdust
