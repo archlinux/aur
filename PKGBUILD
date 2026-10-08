@@ -1,7 +1,7 @@
 # Maintainer: pierspad <pierpaolospadafora@proton.me>
 pkgname=textmerger-bin
 _pkgname=textmerger
-pkgver=2.11.0
+pkgver=2.11.1
 pkgrel=1
 pkgdesc="Merge text from multiple files into a single output"
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!debug')
 source=("textmerger-${pkgver}.deb::https://github.com/pierspad/textmerger/releases/download/v${pkgver}/textmerger_${pkgver}_amd64.deb"
         "LICENSE::https://raw.githubusercontent.com/pierspad/textmerger/main/LICENSE")
 
-sha256sums=('0bd2fd2ebdc03b130d6b3807342a361574f4329f715a77138229200855ebbb02'
+sha256sums=('b117836c25d1abc1a32a6962e4ed338b6b2b3e4d67a165d78d34c1b5b4c49962'
             'e0492c8870ed6ed7720ccdf98de84b894a5f778dd98ea916004af3e3623b70db')
 
 package() {
@@ -30,14 +30,15 @@ package() {
 
     cat <<EOF > "${srcdir}/textmerger.desktop.custom"
 [Desktop Entry]
-Version=${pkgver}
+Version=1.0
+X-AppVersion=${pkgver}
 Type=Application
 Name=TextMerger
 Comment=Merge text from multiple files into a single output
 Exec=textmerger
 Icon=textmerger
 Terminal=false
-Categories=Office;Utility;TextEditor;
+Categories=Utility;TextEditor;
 Keywords=text;merge;files;editor;
 StartupNotify=true
 EOF

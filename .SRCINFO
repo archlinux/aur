@@ -1,6 +1,6 @@
 pkgbase = textmerger-bin
 	pkgdesc = Merge text from multiple files into a single output
-	pkgver = 2.11.0
+	pkgver = 2.11.1
 	pkgrel = 1
 	url = https://github.com/pierspad/textmerger
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = textmerger-bin
 	provides = textmerger
 	conflicts = textmerger
 	options = !debug
-	source = textmerger-2.11.0.deb::https://github.com/pierspad/textmerger/releases/download/v2.11.0/textmerger_2.11.0_amd64.deb
+	source = textmerger-2.11.1.deb::https://github.com/pierspad/textmerger/releases/download/v2.11.1/textmerger_2.11.1_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/pierspad/textmerger/main/LICENSE
-	sha256sums = 0bd2fd2ebdc03b130d6b3807342a361574f4329f715a77138229200855ebbb02
+	sha256sums = b117836c25d1abc1a32a6962e4ed338b6b2b3e4d67a165d78d34c1b5b4c49962
 	sha256sums = e0492c8870ed6ed7720ccdf98de84b894a5f778dd98ea916004af3e3623b70db
 
 pkgname = textmerger-bin
