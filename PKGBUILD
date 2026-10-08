@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-space-bar-git
-pkgver=37.r3.g7a1b1f2
+pkgver=40.r0.g282db83
 pkgrel=1
 pkgdesc="GNOME Shell extension that shows workspaces buttons in top panel"
 arch=('any')
@@ -11,7 +11,6 @@ makedepends=(
   'git'
   'jq'
   'pnpm'
-  'typescript'
   'zip'
 )
 provides=("${pkgname%-git}")
