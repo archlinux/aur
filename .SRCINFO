@@ -1,5 +1,5 @@
 pkgbase = deepskystacker-bin
-	pkgdesc = An tool for astrophotographers that simplifies all the pre-processing steps of deep sky pictures.
+	pkgdesc = A tool for astrophotographers that simplifies all the pre-processing steps of deep sky pictures.
 	pkgver = 6.2.2
 	pkgrel = 1
 	url = https://github.com/deepskystacker/DSS

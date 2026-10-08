@@ -1,7 +1,7 @@
 # Maintainer: Adam Mlady <adam.mlady@elevated.ovh>
 
 pkgname="deepskystacker-bin"
-pkgdesc="An tool for astrophotographers that simplifies all the pre-processing steps of deep sky pictures."
+pkgdesc="A tool for astrophotographers that simplifies all the pre-processing steps of deep sky pictures."
 pkgrel=1
 pkgver=6.2.2
 
