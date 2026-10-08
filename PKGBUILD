@@ -1,7 +1,8 @@
 # Maintainer: Lucas Saavedra Vaz <lucasssvaz@users.noreply.github.com>
 pkgname=traygolin-git
 _pkgname=traygolin
-pkgver=0.1.0.r0.g0000000
+# Placeholder. AUR publish runs makepkg --nobuild so pkgver() replaces this.
+pkgver=0.2.0.r0.g4410ac2
 pkgrel=1
 pkgdesc="Unofficial Linux tray app for the Pangolin VPN client (git)"
 arch=('x86_64' 'aarch64')
