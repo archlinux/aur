@@ -1,12 +1,15 @@
 # Maintainer: AstralDesigns <ianomiruka@gmail.com>
 pkgname=hyprcandy-plus
-pkgver=1.1.78
+pkgver=1.1.79
 pkgrel=1
 pkgdesc="HyprCandy+ installer — a cohesive Hyprland desktop experience"
 arch=('any')
 url="https://github.com/AstralDesigns/candyinstall"
 license=('custom')
-depends=('bash' 'git' 'curl' 'kitty' 'hyprland' 'noctalia-qs')
+# noctalia-qs is deliberately NOT a dep: the AUR/repo noctalia-qs is the stock
+# argc=0 build that aborts QtWebEngine. The patched hyprcandy-qs (QtWebEngine)
+# ships as a GitHub release asset and is provisioned by install.sh instead.
+depends=('bash' 'git' 'curl' 'kitty' 'hyprland')
 optdepends=(
     'hyprland-git: latest development build of Hyprland (replaces hyprland)'
 )
