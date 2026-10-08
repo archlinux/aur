@@ -17,9 +17,9 @@ pkgdesc="AI notepad for back-to-back meetings, repackaged from the official macO
 arch=('x86_64')
 url="https://www.granola.ai"
 license=('LicenseRef-proprietary')
-_electron=electron44
-# version of the installed $_electron package
+# required Electron release whose headers build the native module
 _elver=44.6.0
+_electron="electron${_elver%%.*}"
 # version of Granola's bundled better-sqlite3-multiple-ciphers fork
 _bs3ver=12.9.0
 depends=(
@@ -57,14 +57,6 @@ _bs3rel="app.asar.unpacked/node_modules/better-sqlite3-multiple-ciphers"
 
 prepare() {
   local dmg="$srcdir/granola-$pkgver.dmg"
-
-  # The module builds against $_elver headers and needs the same system Electron major at runtime.
-  local sysver
-  sysver="$(</usr/lib/$_electron/version)"
-  if [[ "$sysver%%.*" != "$_elver%%.*" ]]; then
-    echo "installed $_electron is $sysver, set _electron and _elver to match and run updpkgsums" >&2
-    return 1
-  fi
 
   # The .dmg must bundle the same Electron major as $_electron.
   7z e "$dmg" \
