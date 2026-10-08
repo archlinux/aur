@@ -1,6 +1,6 @@
 pkgbase = wallapop-cli-bin
 	pkgdesc = Terminal CLI for Wallapop
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/Microck/wallapop-cli
 	license = MIT
@@ -8,10 +8,10 @@ pkgbase = wallapop-cli-bin
 	conflicts = wallapop-cli
 	provides = wallapop-cli
 	arch = aarch64
-	source_aarch64 = wallapop-cli-bin_0.3.0_aarch64.tar.gz::https://github.com/Microck/wallapop-cli/releases/download/v0.3.0/wallapop_0.3.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 3d626776590962692fc06d702296611e2e73ba1301bd06898114e97dd6e2a04e
+	source_aarch64 = wallapop-cli-bin_0.3.1_aarch64.tar.gz::https://github.com/Microck/wallapop-cli/releases/download/v0.3.1/wallapop_0.3.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 11d37067c63b5cdffdf90fadb9b3de5822653ad5c2a00f96c6c62d7509eab66a
 	arch = x86_64
-	source_x86_64 = wallapop-cli-bin_0.3.0_x86_64.tar.gz::https://github.com/Microck/wallapop-cli/releases/download/v0.3.0/wallapop_0.3.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 7a445bdd4be9428046b81f969712dcddabb53639c3f656953296811e6be35541
+	source_x86_64 = wallapop-cli-bin_0.3.1_x86_64.tar.gz::https://github.com/Microck/wallapop-cli/releases/download/v0.3.1/wallapop_0.3.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8a57305c23f52152353572b11845e8d747c6df55152571af4798d422da15208f
 	
 pkgname = wallapop-cli-bin
