@@ -1,0 +1,18 @@
+pkgbase = qualcomm-splash-tools
+	pkgdesc = Extract and repack Qualcomm SPLASH!! boot splash images
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/user14923929/qualcomm-splash-tools
+	arch = any
+	license = GPL-3.0-only
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pillow
+	source = qualcomm-splash-tools-0.2.0.tar.gz::https://github.com/user14923929/qualcomm-splash-tools/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 3e85549d6410a657c8673c9ccce4be85695b58715a4093c49312fd39de6f21ef
+
+pkgname = qualcomm-splash-tools
