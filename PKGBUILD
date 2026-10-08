@@ -1,7 +1,7 @@
 # Maintainer: parasail <ikunji@duck.com>
 
 pkgname=crisperweaver-bin
-pkgver=0.13.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="On-device audio transcription and speech synthesis GUI (Flutter frontend for the CrispASR engine)"
 arch=('x86_64')
@@ -33,7 +33,7 @@ source=(
   "com.crispstrobe.crisperweaver.desktop::https://raw.githubusercontent.com/CrispStrobe/CrisperWeaver/v$pkgver/linux/com.crispstrobe.crisperweaver.desktop"
   "com.crispstrobe.crisperweaver.png::https://raw.githubusercontent.com/CrispStrobe/CrisperWeaver/v$pkgver/assets/images/app_logo.png"
 )
-sha256sums=('2e8b7cc573f3789d6740f1a8d2d5eae978f1085ec7c2adb971b2d13160f5cbfe'
+sha256sums=('901585afa578ff5b5f4cf9f8dd200970f48b8d040588cb7d6b17f124d5992a11'
             '372e65ffd4756f00b2092d7ce5716e3bae2c691009a76eeebb3557375a9702d1'
             'b2db71f1de5582bcb49d62fe00e86d8e48babf078b6be511478a317e5c997568'
             '75af78bfe0a7fabd37681984ca1706637e3db09260dea7ec1cc0f6361d4a0007')
