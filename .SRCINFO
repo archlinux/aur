@@ -1,0 +1,21 @@
+pkgbase = pocketlink-git
+	pkgdesc = Lightweight phone companion for sway, niri & co: notifications, clipboard, files, media remote and calls
+	pkgver = 0.1.0.r0.ga04e04e
+	pkgrel = 1
+	url = https://github.com/carnager/pocketlink
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	depends = wl-clipboard
+	depends = xdg-utils
+	optdepends = wireplumber: lower the volume during phone calls (wpctl)
+	optdepends = dms-shell: panel widget for pairing and settings
+	provides = pocketlink
+	conflicts = pocketlink
+	source = git+https://github.com/carnager/pocketlink.git
+	sha256sums = SKIP
+
+pkgname = pocketlink-git
