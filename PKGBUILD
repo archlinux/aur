@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=toon-cli
-pkgver=4.1.1
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Convert JSON to/from TOON (Token-Oriented Object Notation), with token-savings analysis"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/@toon-format/cli/-/cli-$pkgver.tgz")
-sha256sums=('93ec1d3f44a608332d6f1fa811adda4237983841baec9b165e40252f20d83ca6')
+sha256sums=('d1840d9c07b108b97311498052ebb68b68e0414a3a84e6d04f4ea2588fb98064')
 noextract=("$pkgname-$pkgver.tgz")
 
 latestver() {
