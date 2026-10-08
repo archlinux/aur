@@ -1,6 +1,6 @@
 pkgbase = redis-viewer-bin
 	pkgdesc = A Redis visualization client tool that pursues ultimate performance, minimalist layout, efficient interaction, cross platform, and supports deserialization of Java bytecode.
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://redisviewer.com/
 	arch = aarch64
@@ -9,12 +9,12 @@ pkgbase = redis-viewer-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = redis-viewer=3.3.0
+	provides = redis-viewer=3.4.0
 	conflicts = redis-viewer
 	options = !strip
-	source_aarch64 = redis-viewer-3.3.0-aarch64.tar.gz::https://github.com/redisviewer/RedisViewer/releases/download/v3.3.0/RedisViewer_3.3.0_linux_arm64_bin.tar.gz
-	sha256sums_aarch64 = 26270483a8d8620c60116d00c3df76081a62fc7647245dfe650aa95ee9874703
-	source_x86_64 = redis-viewer-3.3.0-x86_64.tar.gz::https://github.com/redisviewer/RedisViewer/releases/download/v3.3.0/RedisViewer_3.3.0_linux_amd64_bin.tar.gz
-	sha256sums_x86_64 = 82ad1618eb852b1d508502e2bc2e31a1f29d9ea2c23b0df8751bb02d906d84f4
+	source_aarch64 = redis-viewer-3.4.0-aarch64.tar.gz::https://github.com/redisviewer/RedisViewer/releases/download/v3.4.0/RedisViewer_3.4.0_linux_arm64_bin.tar.gz
+	sha256sums_aarch64 = fc45edc692e8bb4b801e6a90a8b5e3f508aafbc49b6f7aa52b6da307e58a600d
+	source_x86_64 = redis-viewer-3.4.0-x86_64.tar.gz::https://github.com/redisviewer/RedisViewer/releases/download/v3.4.0/RedisViewer_3.4.0_linux_amd64_bin.tar.gz
+	sha256sums_x86_64 = 053013d9334ca635712d0a1c269565c2e6a0d1cc09207a30db849b4a0482edd2
 
 pkgname = redis-viewer-bin
