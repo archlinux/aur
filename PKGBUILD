@@ -1,8 +1,8 @@
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 
 pkgname=python-pip-audit
-pkgver=2.10.0
-pkgrel=2
+pkgver=2.10.1
+pkgrel=1
 pkgdesc='A tool for scanning Python environments for known vulnerabilities'
 arch=('any')
 url='https://github.com/pypa/pip-audit'
@@ -25,10 +25,22 @@ makedepends=(
   'python-build'
   'python-flit'
   'python-installer'
+  'python-pyproject-patcher'
 )
 options=('!debug' '!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pypa/pip-audit/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('397829c78b2bf01604d5b909a0b5080062a2e7abab790aabf27ca4f366ed148aa167520aa99f1e35a73283d1577be8b85a00f30cc9df2a08e60669fe180d8f97')
+sha512sums=('8b448b994afad72e55b3b5ea60ea8733887a7e259c625b4df91fd27f7e6ff6f781e1074a04d646245b50c143c97ac43541beafa9fdc064d2d9db4d8b772fd4cf')
+
+prepare() {
+  cd "${srcdir}/${pkgname#python-}-${pkgver}"
+
+  echo >&2 'Stripping overly strict version requirements'
+  python << 'EOF'
+from pyproject_patcher import patch_in_place
+with patch_in_place('pyproject.toml') as toml:
+    toml.build_system_requires.strip_constraint('flit_core')
+EOF
+}
 
 build() {
   cd "${srcdir}/${pkgname#python-}-${pkgver}"
