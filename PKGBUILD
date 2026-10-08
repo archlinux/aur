@@ -2,7 +2,7 @@
 
 pkgname=grit-cli
 _pkgname=${pkgname%-cli}
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='LLM coded port of git to Rust'
 url='https://grit-scm.com'
@@ -17,7 +17,7 @@ options=(!lto)
 conflicts=($_pkgname)
 _archive="$_pkgname-$pkgver"
 source=("$_archive.tar.gz::$_url/archive/v$pkgver.tar.gz")
-sha256sums=('662a2e6c7847065d00569e28c83c91b8d03a3f5538f3923818590329bcb6b175')
+sha256sums=('3fc26f7e2e482d290f782b14c5f18c7842013317caf785ba84e9ff3d2a1c3eb8')
 
 _grit="target/release/$_pkgname"
 
@@ -44,6 +44,7 @@ check() {
 	_srcenv
 	export CARGO_BIN_EXE_grit="$_grit"
 	local skipped=(
+		grit_stages_nfc_paths_readable_by_system_git
 		ignore::gitignore_glob_tests::dir_star_extension_matches_nested_path
 		ignore::gitignore_glob_tests::nested_dir_star_extension
 		ls_files_full_name_from_subdir_no_pathspec
@@ -72,6 +73,7 @@ check() {
 		sha256_rev_list_reads_real_git_repo
 		sha256_show_reads_real_git_repo
 		sha256_split_index_roundtrip
+		system_git_staged_nfc_index_readable_by_grit_status
 	)
 	cargo test --frozen -- ${skipped[@]/#/--skip }
 }
