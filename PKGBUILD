@@ -4,12 +4,12 @@
 #   makepkg --printsrcinfo > .SRCINFO
 
 pkgname=openwood-git
-pkgver=r8.29b9e98
+pkgver=r10.30bafa9
 pkgrel=1
 pkgdesc="Control a Charnwood E-series stove (Aire 300) over BLE: CLI + MQTT bridge with Home Assistant discovery"
 arch=(any)
 url="https://github.com/trougnouf/openwood"
-license=("LicenseRef-Unknown")  # TODO: set a proper SPDX id once upstream adds a LICENSE
+license=("GPL-3.0-or-later")
 makedepends=(git python-build python-installer python-wheel python-setuptools)
 depends=(python python-bleak)
 optdepends=(
@@ -44,4 +44,6 @@ package() {
     "$pkgdir/usr/lib/sysusers.d/openwood.conf"
   install -Dm644 packaging/systemd/mqtt.env \
     "$pkgdir/etc/openwood/mqtt.env"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

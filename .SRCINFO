@@ -1,10 +1,10 @@
 pkgbase = openwood-git
 	pkgdesc = Control a Charnwood E-series stove (Aire 300) over BLE: CLI + MQTT bridge with Home Assistant discovery
-	pkgver = r8.29b9e98
+	pkgver = r10.30bafa9
 	pkgrel = 1
 	url = https://github.com/trougnouf/openwood
 	arch = any
-	license = LicenseRef-Unknown
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
