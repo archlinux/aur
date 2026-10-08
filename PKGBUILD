@@ -13,7 +13,7 @@
 # on Arch. It does hard-require a download transport, hence curl in depends.
 
 pkgname=unsloth-desktop-bin
-pkgver=0.1.904.beta
+pkgver=0.1.905.beta
 pkgrel=1
 pkgdesc='Unsloth Desktop - train and run open models locally (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -52,9 +52,9 @@ options=('!strip')
 
 _tag="v${pkgver/.beta/-beta}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb"::"https://github.com/unslothai/unsloth/releases/download/${_tag}/Unsloth-Desktop-Ubuntu.deb")
-sha256sums_x86_64=('eed936faa97fed4748c6479584f9da940e2deb07d11e4fac6e8d29fbdcf2a9f8')
+sha256sums_x86_64=('9c4e7dfff6e27fffa2c2f5190ca16e3c5b100da2e0af75c7085a961c7b5e42fd')
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb"::"https://github.com/unslothai/unsloth/releases/download/${_tag}/Unsloth-Desktop-Ubuntu-ARM64.deb")
-sha256sums_aarch64=('3c8d5c738d3e893ff5076bb8f5bfeae6b1462d2370f4907002ef0c65d50dd472')
+sha256sums_aarch64=('a0e68d00b9a7bfb75a72e9cc9e895e761f030e04cb3fda4947faecb5736d0ea6')
 
 package() {
 	bsdtar -xf data.tar.gz -C "$pkgdir"
