@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=deepseek-reasonix-desktop-bin
-pkgver=1.38.11
+pkgver=1.39.8
 pkgrel=1
 pkgdesc="Reasonix Desktop - Electron desktop client for the DeepSeek-native AI coding agent"
 arch=('x86_64')
@@ -22,7 +22,7 @@ _relurl="${url}/releases/download/desktop-v${pkgver}"
 source=("${pkgname}-${pkgver}.deb::${_relurl}/Reasonix-linux-amd64.deb"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/desktop-v${pkgver}/LICENSE")
 noextract=("${pkgname}-${pkgver}.deb")
-sha256sums=('b8b02e3dcfbff35bdbd19c2178e3d9e0b53bcf929c9f56065c65417bda8074c2'
+sha256sums=('52f46765dd95c03a6d332dbe92ef2291644b6e2745117305d694ccba076de8e5'
             'dc024237821ac82056c37f8d82e3be919bd51e39a4529ec12a8ab3e2a346dc4c')
 
 prepare() {
