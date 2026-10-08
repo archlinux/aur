@@ -1,7 +1,7 @@
 pkgbase = raddebugger
 	pkgdesc = A native, user-mode, multi-process, graphical debugger
 	pkgver = 0.9.29
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/EpicGames/raddebugger
 	arch = x86_64
 	license = MIT
@@ -16,10 +16,8 @@ pkgbase = raddebugger
 	depends = freetype2
 	optdepends = zenity: Display graphical dialogs
 	source = raddebugger-0.9.29.tar.gz::https://github.com/EpicGames/raddebugger/archive/refs/tags/v0.9.29-alpha.tar.gz
-	source = raddbg_readme-0.9.29.md::https://github.com/EpicGames/raddebugger/releases/download/v0.9.29-alpha/raddbg_readme.md
 	source = raddbg.desktop
 	sha256sums = a9e1646d04c408c91ae1312b5844e79e76849f96091021501f6caa3b49688434
-	sha256sums = 69e23cdcf2913e17c917d3c04022772a8e46310ae7bbe681d3f88db41ab2272b
 	sha256sums = 83eb8667c0dd87d1a88a582656b155350d556d1c95970dc1b1a1821d1d0f36e7
 
 pkgname = raddebugger
