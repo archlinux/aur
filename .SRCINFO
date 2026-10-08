@@ -1,0 +1,25 @@
+pkgbase = whatsapp-tui-git
+	pkgdesc = WhatsApp in the terminal, vim-style: fast, runs in the background, with a VS Code palette, lists, notes and local AI
+	pkgver = r57.dbcf006
+	pkgrel = 1
+	url = https://sambuaneesh.github.io/whatsapp-tui/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	optdepends = kitty: sharp pictures, animations and profile pictures
+	optdepends = mpv: voice notes and videos
+	optdepends = ffmpeg: GIFs and making stickers
+	optdepends = yazi: picking files to attach
+	optdepends = wl-clipboard: copy and paste on Wayland
+	optdepends = xclip: copy and paste on X11
+	optdepends = libnotify: desktop notifications
+	optdepends = ollama: search by meaning and the local AI (embeddinggemma, qwen3:4b)
+	provides = whatsapp-tui
+	conflicts = whatsapp-tui
+	source = whatsapp-tui::git+https://github.com/sambuaneesh/whatsapp-tui.git
+	sha256sums = SKIP
+
+pkgname = whatsapp-tui-git
