@@ -1,7 +1,7 @@
 # Maintainer: Per Osbeck <per@osbeck.com>
 _pkgname=globalping
 pkgname=$_pkgname-cli
-pkgver=1.6.0 # renovate: datasource=github-releases depName=jsdelivr/globalping-cli
+pkgver=1.6.1 # renovate: datasource=github-releases depName=jsdelivr/globalping-cli
 pkgrel=1
 pkgdesc="Better understand your network routing, fix anycast issues, monitor your CDN and DNS performance, do uptime monitoring and build your own network tools for personal or public use."
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/jsdelivr/globalping-cli"
 license=('MPL-2.0')
 makedepends=('git' 'go')
 source=("$pkgname::git+https://github.com/jsdelivr/$pkgname.git#tag=v$pkgver")
-sha256sums=('492ade328f0df5bbd02e0ec4fc308c442ac03e0a79cd9b1e9496063c6564ad5c')
+sha256sums=('80adf6b5e2c21527f5d5622d4be6e071668376d8e7f943b24ac39cb5ef2aff48')
 conflicts=("$_pkgname" "$_pkgname-bin")
 
 build() {
