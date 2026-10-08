@@ -1,6 +1,6 @@
 # Maintainer: Arnaud Gissinger <agissing@student.42.fr>
 pkgname=pen-dev-bin
-pkgver=1.2.15
+pkgver=1.2.16
 pkgrel=1
 pkgdesc='Pen: AI-powered design canvas (formerly Pencil) (bin)'
 arch=('x86_64' 'aarch64')
@@ -20,9 +20,9 @@ sha256sums=(
     '42b82acedd61dfb095f44aaadbc58b703fabaa1c25d60b6e133231a0c70c8c53'
 )
 source_x86_64=("${_release}/Pen-${pkgver}-linux-x64.tar.gz")
-sha256sums_x86_64=('62be02efa74085ac97987d4025effce797bb596468279c2dd99a71022d192ba0')
+sha256sums_x86_64=('fff138d6f7b8ada69a6e6e9473e7e22408602f85287ec5f87b8339c4de405541')
 source_aarch64=("${_release}/Pen-${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('005b09aa54442663dc85a620c1392eb3d6d1b2e7e35eefe61ab5e1e619c8688d')
+sha256sums_aarch64=('f54010f6403862436715e0371f7e2e2ec04f15ade3091a65c125d96afbe0477e')
 
 package() {
     local upstream_arch=x64
