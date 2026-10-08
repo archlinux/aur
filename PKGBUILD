@@ -1,6 +1,6 @@
 # Maintainer: Evilleader evilleader91@gmail.com
 pkgname=optiscaler-client-bin
-pkgver=1.0.7.2
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="A modern manager for OptiScaler"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
 # Do NOT use 'SKIP' here -- 'SKIP' tells updpkgsums to leave that entry
 # untouched, which is exactly the "skipped verification" behavior that got
 # flagged. Any non-SKIP placeholder works since it's always replaced.
-sha256sums=('f3d979e11d5f95ad4b890fb0d4ba80dbab8a31de9c582bf15129af88c41f465e'
+sha256sums=('fe9ecbcfed1d7bdd6c1bb91ea6fcb0d2e1f8efd3cfd06d1bb361c30dbe1d3d00'
             '6cbd9f7a125322895f5d2081c274a24580ea4c499e96e7c0624174b41f5abe06'
             '1fee9e445e1633a393d5cb27b415dbf432aa2d6195fcd92b8e05cd79fe6bf955')
 
