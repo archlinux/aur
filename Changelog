@@ -1,0 +1,31 @@
+-------------------------------------------------------
+ Changelog    : lockmgr
+ Tags         : 1.10.0 ➙ 2.0.1
+              : 2026-09-09 ➙ 2026-10-08
+              : 6 tags. See Docs for full changelog
+-------------------------------------------------------
+
+ 2026-10-08   : 2.0.1
+              - 2.0.1 Documentaion available on `radthedocs <https://lockmgr.readthedocs.io>`
+
+ 2026-09-09   : 2.0.0, origin/master
+              - **2.0.0**
+            
+                * Rename Arch package to python-lockmgr (Arch naming convention)
+                * No functional change.
+
+ 2026-09-09   : 1.10.2
+              - **1.10.2**
+            
+                * Use meson parallel test capability instead of bash script
+
+ 2026-09-09   : 1.10.1
+              - **1.10.1**
+            
+                * Drop unused pytest from meson.build (thank you @piater)
+
+ 2026-09-09   : 1.10.0
+              - **1.10.0**
+            
+                * Bug in meson test runner with PYTHONPATH
+                  One of those mornings ...
