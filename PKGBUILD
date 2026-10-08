@@ -36,8 +36,10 @@ makedepends=(
 optdepends=('python-gobject: squeekboard-entry command')
 conflicts=(squeekboard stevia)
 provides=(squeekboard phosh-osk-provider)
-source=("git+https://gitlab.gnome.org/World/Phosh/squeekboard.git")
-b2sums=("SKIP")
+source=("git+https://gitlab.gnome.org/World/Phosh/squeekboard.git"
+        0002-Fix-build-with-Rust-1.98.0.patch)
+b2sums=('SKIP'
+        '7f1e9f3b89480a8ac4f5a46b452f536d58d03d11216fc04e1ddf7b61102283eff0abff837b3e2122240738ea674f93b3528cb492bfae24c20b6a49547d28a879')
 
 
 pkgver() {
@@ -48,6 +50,9 @@ pkgver() {
 prepare() {
   cd $_pkgname
   cargo fetch --locked --target "$(rustc --print host-tuple)"
+
+  # Rust 1.98.0 and later lint invalid_runtime_symbol_definitions
+  git apply -3 ../0002-Fix-build-with-Rust-1.98.0.patch
 }
 
 build() {

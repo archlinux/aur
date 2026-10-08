@@ -35,6 +35,8 @@ pkgbase = squeekboard-git
 	conflicts = squeekboard
 	conflicts = stevia
 	source = git+https://gitlab.gnome.org/World/Phosh/squeekboard.git
+	source = 0002-Fix-build-with-Rust-1.98.0.patch
 	b2sums = SKIP
+	b2sums = 7f1e9f3b89480a8ac4f5a46b452f536d58d03d11216fc04e1ddf7b61102283eff0abff837b3e2122240738ea674f93b3528cb492bfae24c20b6a49547d28a879
 
 pkgname = squeekboard-git
