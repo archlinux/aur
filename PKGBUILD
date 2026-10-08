@@ -2,7 +2,7 @@
 
 pkgname=tgrep
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Trigram-indexed grep: fast regex search for large codebases with a client/server architecture'
 arch=('x86_64' 'aarch64')
 url='https://github.com/microsoft/tgrep'
