@@ -1,6 +1,6 @@
 # Maintainer: 0x2501 <0x2501@sol740.net>
 pkgname=tvmv-git
-pkgver=0.6.0.r1.g17b360e
+pkgver=0.6.0.r4.gd5e2d9a
 pkgrel=1
 pkgdesc='Command-line tool to bulk-rename TV episode files with minimal fuss.'
 arch=('x86_64')
