@@ -2,7 +2,7 @@
 
 pkgname=korb
 pkgver=0.4.7
-pkgrel=8
+pkgrel=9
 pkgdesc='Unofficial grocery delivery CLI for German supermarket chain REWE'
 arch=('x86_64')
 url='https://github.com/yannick-cw/korb'
@@ -42,7 +42,7 @@ source=(
   'korb-auth-helper.sh'
   # Any recent version of the .xapk will do; we only need it for the backend credentials
   # Pinning the version anyway for reproducibility
-  'de.rewe.app.mobile.xapk::xapk://de.rewe.app.mobile@5.11.0'
+  'de.rewe.app.mobile.xapk::xapk://de.rewe.app.mobile@5.18.1'
 )
 
 sha512sums=('cf900c35310ed9e13417e6c2b6a64a30f5121adfed5e0bdaff2bcc5b6a2074334f36425396859217db19fb9d04d9e63e449a7c02906e513f63fbeddd4fa5cc7b'
@@ -101,7 +101,7 @@ prepare() {
     -out certs/mobile-clients-api.rewe.de/private.key \
     -passin env:passphrase
 
-  # ghc v9.6.6 does not support the 2024 language edition.
+  # ghc v9.6.7 does not support the 2024 language edition.
   # Remove this patch once v9.10.1 or newer lands on extra.
   # See also: https://downloads.haskell.org/~ghc/9.10.1/docs/users_guide/exts/control.html#extension-GHC2024
   sed -i \
