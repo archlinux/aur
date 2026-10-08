@@ -14,7 +14,7 @@ conflicts=('mangayomi' 'mangayomi-bin' 'mangayomi-git')
 
 source=(
   "https://github.com/kodjodevf/mangayomi/releases/download/v${pkgver}/Mangayomi-v${pkgver}-linux.zip"
-  "https://github.com/kodjodevf/mangayomi/releases/download/v${pkgver}/Mangayomi-v${pkgver}-linux-x86_64.AppImage"
+  "https://github.com/kodjodevf/mangayomi/releases/download/v${pkgver}/Mangayomi-v${pkgver}-linux.AppImage"
 )
 sha256sums=(
   'SKIP'
@@ -23,8 +23,8 @@ sha256sums=(
 
 prepare() {
   cd "$srcdir"
-  chmod +x "Mangayomi-v${pkgver}-linux-x86_64.AppImage"
-  ./"Mangayomi-v${pkgver}-linux-x86_64.AppImage" --appimage-extract > /dev/null
+  chmod +x "Mangayomi-v${pkgver}-linux.AppImage"
+  ./"Mangayomi-v${pkgver}-linux.AppImage" --appimage-extract > /dev/null
 }
 
 package() {

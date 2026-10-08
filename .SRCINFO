@@ -26,7 +26,7 @@ pkgbase = mangayomi-linux
 	conflicts = mangayomi-git
 	options = !strip
 	source = https://github.com/kodjodevf/mangayomi/releases/download/v0.9.8/Mangayomi-v0.9.8-linux.zip
-	source = https://github.com/kodjodevf/mangayomi/releases/download/v0.9.8/Mangayomi-v0.9.8-linux-x86_64.AppImage
+	source = https://github.com/kodjodevf/mangayomi/releases/download/v0.9.8/Mangayomi-v0.9.8-linux.AppImage
 	sha256sums = SKIP
 	sha256sums = SKIP
 
