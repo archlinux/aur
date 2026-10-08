@@ -14,7 +14,7 @@ pkgbase = hyper-headset-bin
 	source = hyper_headset_Linux-1.10.2.zip::https://github.com/lennardkittner/hyperheadset/releases/download/v1.10.2/hyper_headset_Linux.zip
 	source = 99-HyperHeadset-1.10.2.rules::https://raw.githubusercontent.com/lennardkittner/hyperheadset/v1.10.2/99-HyperHeadset.rules
 	source = hyper-headset-1.10.2.desktop::https://raw.githubusercontent.com/lennardkittner/hyperheadset/v1.10.2/hyper-headset.desktop
-	sha256sums = a52e05a59409173bfed71e0a09e2f079f8de97885d66727a4f4cd0e84bc8ad3a
+	sha256sums = 8c45e221857ef91179d5552345fd54c8327ea7dc301f24f3ac5a06e07ab660e5
 	sha256sums = b3cf6440fd2d957f94fc8457bd65ed7cd841fc7f482587b554405cb6a5b5caf7
 	sha256sums = 08e7ca1fdd0f6f62d50590afc7092e95ad9d71ebee75eacd604c5ea45462f706
 
