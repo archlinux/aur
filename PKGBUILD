@@ -9,7 +9,7 @@ pkgdesc='A Modern Linker in Rust'
 arch=('x86_64')
 url="https://github.com/rui314/$_reponame"
 license=('MIT')
-# bundled: xxhash, mimalloc, libblake3, zlib
+# bundled: mimalloc
 depends=(
   glibc
   libgcc
@@ -53,12 +53,7 @@ check() {
 }
 
 package() {
-  PREFIX="$pkgdir/usr" "$_reponame/install-mold.sh"
-
-  # Use /usr/lib instead of libexec
-  mkdir -p "$pkgdir/usr/lib/$_reponame"
-  mv "$pkgdir/usr/libexec/$_reponame/ld" "$pkgdir/usr/lib/$_reponame/"
-  rm -rf "$pkgdir/usr/libexec"
+  PREFIX="$pkgdir/usr" LIBEXECDIR="$PREFIX/lib" "$_reponame/install-mold.sh"
 
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$_reponame/LICENSE"
 }
