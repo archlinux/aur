@@ -3,7 +3,7 @@
 
 _name=pydocket
 pkgname=python-${_name}
-pkgver=0.26.1
+pkgver=0.26.2
 pkgrel=1
 pkgdesc="A distributed background task system for Python functions"
 
@@ -34,7 +34,7 @@ depends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
-sha256sums=('1032d3a3c1442a648761b1a23590bb8baee35f5b381002c1149b117decf20cec')
+sha256sums=('7809eee323d413f23ec227a8eae2d0c7da802730e3c89a81c923aeae71212c26')
 
 build() {
 	cd "${_name}-${pkgver}"
