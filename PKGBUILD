@@ -6,12 +6,12 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="TUI for Github Pull Requests"
 
-pkgver=0.1.47
+pkgver=0.1.49
 pkgrel=1
 _gitversion=v${pkgver}
 
 arch=('x86_64' 'aarch64')
-_barch=('linux_.amd64' 'linux_.arm64')
+_barch=('linux_amd64' 'linux_arm64')
 
 _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('097b20c67932518864fdda278ad041e8ed38bd19508505c469d73af1745fb017')
-sha256sums_aarch64=('60bc34679b49a5b7826a758c502393945f3ebca68f79f9deec6eb9da8bd4b07d')
+sha256sums_x86_64=('dabeeeb1b48b728cc578b233b89e317397799f76b40eea910eb061f061a9daf4')
+sha256sums_aarch64=('4e890d825b947bf231fb2e2b07079d4ca75c45e893fc37bb0f7afc36e897cf71')
 
 
 package() {
