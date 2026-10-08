@@ -1,0 +1,7 @@
+/.vscode/
+/json-logic-py/
+/src/
+/pkg/
+*.log
+*.pkg.*
+*.tar.*
