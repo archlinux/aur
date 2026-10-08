@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=cadcraft
-pkgver=0.0.0
+pkgver=0.1.0
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -12,10 +12,9 @@ depends=(glibc # libc.so libm.so
          hicolor-icon-theme
          libgcc)
 makedepends=(cargo)
-_sha=7d4ca2830d4516656799a3a32a6ab03093759140
-_archive="$pkgname-$_sha"
-source=("$_url/archive/$_sha/$_archive.tar.gz")
-sha256sums=('06fd604739e65e66659dab3647e50da7530f0c7c4d23079bb3e3cd1a2600e6ca')
+_archive="$pkgname-$pkgver"
+source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
+sha256sums=('c1b4c0113dc3d5755e8a66743bcd99c41e41b2733457b62b09cc963ed263cbe1')
 
 _srcenv() {
 	cd "$_archive"
@@ -39,8 +38,7 @@ prepare() {
 
 build() {
 	_srcenv
-	# https://github.com/storytold/photocraft/issues/392
-	cargo build --frozen --release -p $pkgname -p $pkgname-cli
+	cargo build --frozen --release
 }
 
 package() {
