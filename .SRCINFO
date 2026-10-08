@@ -26,7 +26,7 @@ pkgbase = kerminal
 	depends = hicolor-icon-theme
 	source = git+https://github.com/klpod221/kerminal.git#tag=v2.6.6
 	source = kerminal.desktop
-	sha256sums = cddcc6e30b878066a2c2611461f180acbc3fa12056f630c0af23d28c082065a2
+	sha256sums = 408ba7f423f5aefacc15eca5a49f8f20de5dd7f8ee55b9aa2d06b041af8d78e5
 	sha256sums = 2012d68d4a1a7672497eaad7db0d398356e230e588344038d7151d4eeee9d3f6
 
 pkgname = kerminal
