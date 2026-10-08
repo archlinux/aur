@@ -5,7 +5,7 @@ pkgname=(
   minijinja-cli
   python-minijinja
 )
-pkgver=2.24.0
+pkgver=2.24.0 # renovate: datasource=github-tags depName=mitsuhiko/minijinja
 _srcdir=minijinja-cli-${pkgver}
 pkgrel=1
 pkgdesc="A powerful but minimal dependency template engine for Rust compatible with Jinja/Jinja2"
@@ -62,8 +62,6 @@ package_minijinja-cli() {
 
   cd $_srcdir
   install -vDm755 -t "$pkgdir/usr/bin" target/release/minijinja-cli
-
-  rm ./AGENTS.md # temporarily remove a dangling symlink
   install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
 }
 
