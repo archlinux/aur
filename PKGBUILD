@@ -10,7 +10,7 @@
 # end-user application. arch=('any') — pure Python, no compiled extension.
 
 pkgname=jellytoast
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Audio-first native Jellyfin / Subsonic desktop music client with bit-perfect mpv playback'
 arch=('any')
@@ -43,10 +43,12 @@ depends=(
 # AUR-only ones here avoids forcing an AUR transitive dep on every install.
 optdepends=(
   'kwindowsystem: live glass blur behind the Frosted theme (KDE); absent, the Frosted body paints near-opaque instead'
-  'pyatv: AirPlay 2 casting (AUR)'
   'python-numpy: audio visualizer'
-  'python-async-upnp-client: DLNA casting (AUR)'
+  'python-async-upnp-client: DLNA casting (AUR; app targets >=0.47 — older may misbehave)'
   'python-soco: Sonos casting (AUR)'
+  # NB: AirPlay 2 casting needs pyatv, which has no repo or AUR package as of
+  # 2026-07 — installable via pip into the system env if wanted; the feature
+  # no-ops without it. Re-add here if/when python-pyatv lands on the AUR.
 )
 
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
@@ -55,10 +57,10 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 # moving branch). `pkgver` is kept in lockstep with pyproject by
 # dev/cut_release.sh and gated by tests/test_version_consistency.py; the digest
 # is refreshed by `updpkgsums` (the aur.yml workflow runs it, as does a manual
-# cut). The value below is the v0.1.7 tag archive — matches pkgver, so a
-# direct `makepkg` of this checkout works.
+# cut). The value below matches the $pkgver tag archive, so a direct
+# `makepkg` of this checkout works.
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('caae1a6d624fb98760f050e2988ffd3326a4491aa08241ef25d6b3c203b5bb78')
+sha256sums=('83b9ff94d7a65d691929cd14480322a90e2ed2b550b2cdb6d3ade756ad1dcb8e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
