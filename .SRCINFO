@@ -11,8 +11,8 @@ pkgbase = opentunnel-bin
 	options = !debug
 	options = !strip
 	source_aarch64 = opentunnel-0.1.4-aarch64.tar.gz::https://github.com/anomalyco/opentunnel/releases/download/v0.1.4/opentunnel-linux-arm64.tar.gz
-	sha256sums_aarch64 = db09fc4da333f9b1e97ab2893f20e3243c2bb901e13ec4b129c48299ef0ac6f0
+	sha256sums_aarch64 = a2d9ca2bf20c5dfa07f61bd81e172a263bc221162d14998f283c0ef8219e0b20
 	source_x86_64 = opentunnel-0.1.4-x86_64.tar.gz::https://github.com/anomalyco/opentunnel/releases/download/v0.1.4/opentunnel-linux-x64.tar.gz
-	sha256sums_x86_64 = e1c1969c50394a733403d7cb91117998a61be5d6a35ed5aa30582bb432d1b5e0
+	sha256sums_x86_64 = 38667d36d72da6d28384cb4301f8db79ba60fe0386b074d4cbb8e8fa4cc8a915
 
 pkgname = opentunnel-bin
