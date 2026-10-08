@@ -1,0 +1,13 @@
+pkgbase = tabtk
+	pkgdesc = Toolkit for processing tab-delimited files
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/lh3/tabtk
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	source = tabtk-0.1.tar.gz::https://github.com/lh3/tabtk/archive/v0.1.tar.gz
+	sha256sums = 311df21ef04b4d396a7552ce1384bf056e1d6f87a5679d55e905ec6c8591b906
+
+pkgname = tabtk
