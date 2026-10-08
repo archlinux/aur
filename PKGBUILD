@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=wordcraft
-pkgver=0.0.0
+pkgver=0.1.0
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -12,10 +12,9 @@ depends=(glibc # libc.so libm.so
          hicolor-icon-theme
          libgcc)
 makedepends=(cargo)
-_sha=c9824abfc20619ccc9dd876cfa1cc9ceb7c4dca4
-_archive="$pkgname-$_sha"
-source=("$_url/archive/$_sha/$_archive.tar.gz")
-sha256sums=('9ace7c369cd90aaf9a4e0c14ae76d975f487b3eccdece16dd35b5eb2bd922a96')
+_archive="$pkgname-$pkgver"
+source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
+sha256sums=('bdea28703540ed6e39d5572b14efa9b7d70db96ff0a44e8c6f23772d82057c31')
 
 _srcenv() {
 	cd "$_archive"
@@ -39,8 +38,7 @@ prepare() {
 
 build() {
 	_srcenv
-	# https://github.com/storytold/photocraft/issues/392
-	cargo build --frozen --release -p $pkgname -p $pkgname-cli
+	cargo build --frozen --release
 }
 
 package() {
