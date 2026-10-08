@@ -1,16 +1,16 @@
 # Maintainer: Austin Riba <austin@m51.io>
 pkgname=gelly
-pkgver=1.15.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="Jellyfin and Subsonic music player"
 url="https://github.com/Fingel/gelly"
 license=("GPL-3.0-or-later")
 depends=("libadwaita" "gst-plugins-good" "org.freedesktop.secrets")
-makedepends=("cargo" "gettext")
+makedepends=("cargo" "gettext" "cmake")
 arch=("x86_64" "aarch64")
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Fingel/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=("d43be0da21a5ca05113e623993591bb0a1c9302a348f15e94b29395773acc8aa49c0777e9959b64f2cd5ad8968a72e24c9047557082032b26fc01809c01c98b7")
+sha512sums=("fc5d702b1509c7b71d07b650ff731d6dcc89a8d35238c8df793f25322e61b2aef6600779b1d69c44c9cbb793c6812472344b7147b22895188a1acfc023c1afc1")
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -22,6 +22,8 @@ build() {
     cd "$srcdir/$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    # Remove this once a fixed version of aws-lc is released. And the makedepends on cmake.
+    export AWS_LC_SYS_CMAKE_BUILDER=1
     LOCALEDIR=/usr/share/locale cargo build --frozen --release
 }
 

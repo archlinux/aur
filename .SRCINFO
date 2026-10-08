@@ -1,6 +1,6 @@
 pkgbase = gelly
 	pkgdesc = Jellyfin and Subsonic music player
-	pkgver = 1.15.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/Fingel/gelly
 	arch = x86_64
@@ -8,11 +8,12 @@ pkgbase = gelly
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = gettext
+	makedepends = cmake
 	depends = libadwaita
 	depends = gst-plugins-good
 	depends = org.freedesktop.secrets
 	options = !lto
-	source = gelly-1.15.0.tar.gz::https://github.com/Fingel/gelly/archive/refs/tags/v1.15.0.tar.gz
-	sha512sums = d43be0da21a5ca05113e623993591bb0a1c9302a348f15e94b29395773acc8aa49c0777e9959b64f2cd5ad8968a72e24c9047557082032b26fc01809c01c98b7
+	source = gelly-1.16.0.tar.gz::https://github.com/Fingel/gelly/archive/refs/tags/v1.16.0.tar.gz
+	sha512sums = fc5d702b1509c7b71d07b650ff731d6dcc89a8d35238c8df793f25322e61b2aef6600779b1d69c44c9cbb793c6812472344b7147b22895188a1acfc023c1afc1
 
 pkgname = gelly
