@@ -1,7 +1,7 @@
 # Maintainer: gradia <gradia@disroot.org>
 
 pkgname=olladesk
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Client desktop per Ollama in stile ChatGPT (PySide6/Qt), con companion web per smartphone e tablet"
 arch=('any')
