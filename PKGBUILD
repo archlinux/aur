@@ -1,7 +1,7 @@
 # Maintainer: Mikkel Kappel Persson <mikkel@kappelpersson.dk>
 pkgname=huebox
 _name=huebox
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A terminal theme editor with live preview"
 arch=(any)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(python-pygments python-textual)
 makedepends=(python-build python-installer python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('a2a57dd484858f172001d0aedb70a8566815aea296e76e300c02a81cdd937b3a')
+sha256sums=('650602de9618746d3ea1679feec7adeb96b8a29e00aed2859f4f846b5e2705fc')
 
 build() {
   cd "$_name-$pkgver"
