@@ -4,7 +4,7 @@
 pkgname='openwebrx-plus'
 _pkgname='openwebrx'
 pkgver=1.2.126
-pkgrel=1
+pkgrel=3
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
 url='https://luarvique.github.io/ppa/'
@@ -42,8 +42,8 @@ optdepends=(
     'nrsc5: decode HDRadio broadcasts'
     'csdr-skimmer: decode multiple CW signals at once'
     'radiosonde_auto_rx: decode radiosonde data'
-    'python-meshtastic: decode Meshtastic messages'
-    # lorarx (dxlAPRS): decode LoRa data, manual build required, no AUR package yet
+    'meshtastic-python: decode Meshtastic messages'
+    'dxlaprs-lora-git: decode LoRa data (LoRaWAN, LoRa APRS, Meshtastic, FANET)'
     # tools
     'imagemagick: automatically convert received images to the PNG format'
     'sox: sound processing tools'
@@ -72,7 +72,6 @@ optdepends=(
     # radioberry, no aur package yet
     'soapyfcdpp-git: interfacing with the Funcube Dongle Pro+'
     'soapybladerf: interfacing with Blade RF devices'
-    # sddc, no aur package yet
     'soapysddc: interfacing with SDDC SDR devices such as the RX666, RX888, HF103, etc'
     # hpsdr, no aur package yet
     # runds, no aur package yet
