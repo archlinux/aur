@@ -3,7 +3,7 @@
 _pkgauthor=dd86k
 _pkgname=ddgst
 pkgname=${_pkgname}-bin
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Console hashing utility with a twist"
@@ -20,8 +20,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[0]}.tar.gz")
 sha256sums=('6d489af6292662d9e36d34ce49423784984a5f6e41d7b58f49b01264df59fa03'
-            '40812fa1b361a114b74d00f27918a81e74c93c8cd03df1e8808e83e1632108fb')
-sha256sums_x86_64=('bc6dcaab4d679393493901b286cac05a21c998c487e13531a1e1e4a3eb8c7f9c')
+            'ce77721bb5a2e20380b714c61371811e727c191b1e58bf90ce9d6b585114d4d1')
+sha256sums_x86_64=('9075bcd0cc112577d4a79705f55f763d587ee1fe3ff83be510b13af403e85e5d')
 
 
 package() {
