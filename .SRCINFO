@@ -1,6 +1,6 @@
 pkgbase = gorae-bin
 	pkgdesc = Terminal-first knowledge base for PDFs, EPUBs, and Markdown — with a built-in AI assistant
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/Han8931/gorae
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = gorae-bin
 	optdepends = zathura-pdf-mupdf: MuPDF backend for zathura
 	provides = gorae
 	conflicts = gorae
-	noextract = gorae-2.5.0
-	source = gorae-2.5.0::https://github.com/Han8931/gorae/releases/download/v2.5.0/gorae-linux-amd64
-	source = LICENSE-gorae-2.5.0::https://raw.githubusercontent.com/Han8931/gorae/v2.5.0/LICENSE
-	sha256sums = d32dcd6af1926979eb5ed325ef27169022ae2915922ca9245295e05adc90f52d
+	noextract = gorae-2.6.0
+	source = gorae-2.6.0::https://github.com/Han8931/gorae/releases/download/v2.6.0/gorae-linux-amd64
+	source = LICENSE-gorae-2.6.0::https://raw.githubusercontent.com/Han8931/gorae/v2.6.0/LICENSE
+	sha256sums = cec9ad12b0c3218e4e3f32a9e28552c18e566c35331849a31b67b194e9238d83
 	sha256sums = SKIP
 
 pkgname = gorae-bin
