@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=WeChat Dev Tools
+Name[zh_CN]=微信开发者工具
+Comment=The development tools for wechat projects
+Comment[zh_CN]=提供微信开发相关项目的开发IDE支持
+Categories=Development;
+Exec=/opt/wechat-devtools-appimage/wechat-devtools.AppImage
+Icon=/usr/share/icons/hicolor/512x512/apps/wechat-devtools.png
+Type=Application
+Terminal=false
+StartupWMClass=wechat_devtools
+MimeType=x-scheme-handler/wechatide
