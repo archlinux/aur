@@ -9,6 +9,6 @@ pkgbase = gaze-kde-bin
 	provides = gaze-kde=0.3.9-1
 	conflicts = gaze-kde
 	source = gaze-kde-0.3.9-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-kde-0.3.9-1-x86_64.pkg.tar.zst
-	sha256sums = 96cd9b5ab4a8bd0491247f2694e04580297692f62bbe5ccf1373d15f1610a4e2
+	sha256sums = 8585d3a191e2153049ef4784c7c2886a1e40b80c34a5958c11f4c0e31e62fb6b
 
 pkgname = gaze-kde-bin
