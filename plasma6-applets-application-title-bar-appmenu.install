@@ -1,0 +1,9 @@
+post_install() {
+  echo "Add \"Application Title Bar with App Menu\" to a panel with \"Add Widgets…\"."
+  echo "Remove the stock Global Menu widget from your panels, or both react to Alt+letter."
+}
+
+post_upgrade() {
+  echo "Restart Plasma to load the new version of the widget:"
+  echo "  systemctl --user restart plasma-plasmashell.service"
+}
