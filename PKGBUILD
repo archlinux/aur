@@ -8,7 +8,7 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm" "${pkgbase}-xpu" "${pkgbase}-opt-xpu")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.14.0
+pkgver=2.14.1
 pkgrel=1
 pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 arch=('x86_64')
@@ -129,9 +129,10 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         fix_cmake_prefix_path.patch
         aotriton_disable_install.patch
         pyproject.patch
+        fix_noinline_macro.h
         $pkgname-187006.patch::https://github.com/pytorch/pytorch/pull/187006.patch
         )
-b2sums=('6d4fde493619021b22e2f972b6a730c0a90975805b869d2e8bc4398419630af91a7cf0a67a172250c1511b27f91d29b98e614408eda78b7d921acb4e2878dd69'
+b2sums=('92a5e26e27889896c55947c21c7c3a182e856c4feb6d35665ee20d01bd53df03e18a7c912a07acd7b927f869dfddb55cdc0b0916be72531d5b2b63b75b32196d'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -175,6 +176,7 @@ b2sums=('6d4fde493619021b22e2f972b6a730c0a90975805b869d2e8bc4398419630af91a7cf0a
         'eb1a4305c9e753774ce27256f8e7f35ae52986c8dfefddb71062f7abc71eec04eaae80cd03b9cb362150465000728390b7bfd0e539f772761c0a8d5dd8dbe980'
         'ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0'
         '55bb148db8d61c90fd59257bd70fdf13577a9740f02c39d7fce786eea2c6b324c7ef913eba7c0a4d6c8894c072270bc79f1c83a8ccd269ac973cb6c00c014381'
+        'ccfa6616257ed9df0efa4ae5c7491b980e0b87667cef53b2f1164909791ac7aa36aadcadb199b12acebd0781a29126b4289d5266beb3488141f0253c96704c93'
         '8b7d8ee806613a5e3ce5ecf6be09b3f1bb31fed193b644dc17b1caad2212e2774e0f67452199bc00c5655fea6b6401ad00e4e99b4fd858fcb3749f1e1f4c9d04')
 options=('!lto' '!debug')
 
@@ -300,6 +302,13 @@ _prepare() {
   export CC="${NVCC_CCBIN/++/cc}"
   export CXX="$NVCC_CCBIN"
   export CXXFLAGS+=" -Wno-error=maybe-uninitialized"
+  # The HIP headers (hip/amd_detail/host_defines.h) define __noinline__ as an
+  # empty macro when compiled with GCC. This breaks GCC 16's libstdc++ <format>,
+  # which uses [[__gnu__::__noinline__]] and then fails with
+  # "error: expected an identifier for the attribute name".
+  # Force-including <format> before any HIP header fixes this.
+  # Now that's some bs.
+  export CXXFLAGS+=" -include ${srcdir}/fix_noinline_macro.h"
   export CUDAHOSTCXX="${NVCC_CCBIN}"
   export CUDA_HOST_COMPILER="${CUDAHOSTCXX}"
   export CUDA_HOME=/opt/cuda
