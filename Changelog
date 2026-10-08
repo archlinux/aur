@@ -1,14 +1,17 @@
 -------------------------------------------------------
  Changelog    : kea_config
- Tags         : 6.5.1 ➙ 6.6.3
-              : 2026-09-05 ➙ 2026-10-08
+ Tags         : 6.6.0 ➙ 6.6.4
+              : 2026-09-06 ➙ 2026-10-08
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-10-08   : 6.6.3
+ 2026-10-08   : 6.6.4
+              - 6.6.4 Readme update
+
+ 2026-10-08   : 6.6.3, origin/master
               - 6.6.3 Documentation on `readthedocs <https://kea-config.readthedocs.io>`
 
- 2026-09-09   : 6.6.2, origin/master
+ 2026-09-09   : 6.6.2
               - **6.6.2**
                 * Remove unneeded sphinx tmp file from html docs
 
@@ -20,6 +23,3 @@
               - **6.6.0**
             
                 * FIx copy /paste error in meson.build (/usr/share/...)
-
- 2026-09-05   : 6.5.1
-              - Add checkdepends on pytest to PKGBUILD
