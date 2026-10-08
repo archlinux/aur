@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Surgical terminal storage navigator"
 
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}-${_gitversion}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[1]}-${_gitversion}.tar.gz")
-sha256sums_x86_64=('1f83acd45855ca8851510f6078d3910e827228fc773410b8075fc89b1bfa5020')
-sha256sums_aarch64=('9fdc8c9086748992651422e97fd55e61431c397e1b30ec1cc67503ff2d03ddb1')
+sha256sums_x86_64=('38857c3e466cb3909030a1de09dad2a3bd5029dc14c8733fc39d97628a9863b8')
+sha256sums_aarch64=('881cde0dbe238ee1c738420209048cc05285ce4ef43c1ebf5f52cf033e7e6521')
 
 
 case ${CARCH} in
