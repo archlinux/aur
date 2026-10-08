@@ -1,19 +1,18 @@
 pkgbase = sift-context-bin
 	pkgdesc = Sift a codebase into an LLM-friendly context document
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/bethropolis/sift
-	arch = x86_64
-	arch = aarch64
 	license = MIT
 	optdepends = chromium: chromeless window for sift serve --app
 	optdepends = git: repository cloning with sift clone and serve --allow-clone
-	provides = sift
 	conflicts = sift
-	options = !debug
-	source_x86_64 = sift-context-bin-1.3.0.tar.gz::https://github.com/bethropolis/sift/releases/download/v1.3.0/sift_1.3.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 9b82e6fe05ec2842f032b27ed596610f4babda2716724f5d217621ff9c8b2557
-	source_aarch64 = sift-context-bin-1.3.0.tar.gz::https://github.com/bethropolis/sift/releases/download/v1.3.0/sift_1.3.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 440dbe3583ae01fdabef4ad64afa42ce01099e92a17839832dd1a92d29ff35cb
-
+	provides = sift
+	arch = aarch64
+	source_aarch64 = sift-context-bin_1.4.0_aarch64.tar.gz::https://github.com/bethropolis/sift/releases/download/v1.4.0/sift_1.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 08719df8efa75935f45d4e563025a71f3eda2e313d490124d48d656c8f8d52b5
+	arch = x86_64
+	source_x86_64 = sift-context-bin_1.4.0_x86_64.tar.gz::https://github.com/bethropolis/sift/releases/download/v1.4.0/sift_1.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = a5fe11d1f2f177b11b720365b5993109e5a1542dffeaeb28f03b09e38cdafb21
+	
 pkgname = sift-context-bin
