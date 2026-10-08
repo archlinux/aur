@@ -1,0 +1,25 @@
+pkgbase = pocket-bin
+	pkgdesc = A terminal file manager with previews, playlists and a shared SSH session
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/skorotkiewicz/pocket
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-unknown
+	depends = glibc
+	depends = gcc-libs
+	depends = tmux
+	depends = coreutils
+	optdepends = ffmpeg: music tags, waveform previews and host audio playback
+	optdepends = glib2: system trash and default-app opening with gio
+	optdepends = xdg-utils: fallback default-app opening
+	optdepends = openssh: connect to a Pocket session from the terminal
+	provides = pocket=0.1.0
+	conflicts = pocket
+	options = !strip
+	source_x86_64 = pocket-0.1.0-x86_64.tar.gz::https://github.com/skorotkiewicz/pocket/releases/download/v0.1.0/pocket-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0e0d677483fa9ed0430d8e7010b2978d6b572ffe44436b7ab38e29d6c9374f8c
+	source_aarch64 = pocket-0.1.0-aarch64.tar.gz::https://github.com/skorotkiewicz/pocket/releases/download/v0.1.0/pocket-v0.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 6ee20b613f8514a413180225362cc6a857a9f4ee3d9ed0edbcfd6e13c2361190
+
+pkgname = pocket-bin
