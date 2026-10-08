@@ -2,7 +2,7 @@
 
 pkgname=codeg-bin
 _pkgname=codeg
-pkgver=0.33.0
+pkgver=0.34.0
 pkgrel=1
 pkgdesc='Collaborative multi-agent AI coding workspace (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -27,8 +27,8 @@ source_x86_64=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/xintaofei/co
 source_aarch64=("${_pkgname}_${pkgver}_arm64.deb::https://github.com/xintaofei/codeg/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 noextract=("${_pkgname}_${pkgver}_amd64.deb" "${_pkgname}_${pkgver}_arm64.deb")
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('735222062c83074a67a2c145c6b433adb957c3b29299f9248272ff4d4dfb16be')
-sha256sums_aarch64=('a6cee66ffdcff676eea1b4107a39f4b31c008c8afbbfb0e1cd5a99b288d020df')
+sha256sums_x86_64=('50abb6eb54f0284c37b264dc3b8c986d2f3d7ac0c117e367db6a2062e916f52a')
+sha256sums_aarch64=('41170f25774a835f4f7f329a28e95583df7939a1cd90728024b2d1be7dbf832e')
 
 package() {
   local deb_arch
