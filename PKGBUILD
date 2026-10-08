@@ -1,12 +1,12 @@
 # Maintainer: Frys (Frysuni)
 pkgname=rsdm
-pkgver=1.1.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Standalone Rust TTY/TUI Wayland display manager and screen locker'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Frysuni/rsdm'
 license=('GPL-3.0-only')
-depends=('pam' 'systemd' 'wayland' 'libxkbcommon' 'gcc-libs')
+depends=('pam' 'systemd>=250' 'wayland' 'libxkbcommon' 'libsm' 'libice' 'gcc-libs')
 makedepends=('cargo' 'pkgconf')
 provides=('rsdm')
 conflicts=('rsdm-bin')
@@ -16,8 +16,7 @@ backup=('etc/rsdm.toml'
         'etc/logrotate.d/rsdm')
 install='rsdm.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Frysuni/rsdm/archive/refs/tags/v$pkgver.tar.gz")
-# Replace SKIP with the release tarball's sha256 (updatepkgsums / sha256sum).
-sha256sums=('5f1f983cada940a23da5d76306f3df202d1f331f432df0688cab2cfa85474947')
+sha256sums=('84e8834f264c8f1f8ab4b5eba531db0fb7a39b1e1bc331918d6d261be28c62bb')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -43,6 +42,8 @@ package() {
   install -Dm755 target/release/rsdm "$pkgdir/usr/bin/rsdm"
   install -Dm644 packaging/systemd/rsdm.service \
     "$pkgdir/usr/lib/systemd/system/rsdm.service"
+  install -Dm644 packaging/systemd/rsdm@.service \
+    "$pkgdir/usr/lib/systemd/system/rsdm@.service"
   install -Dm644 packaging/systemd/rsdm-idle.service \
     "$pkgdir/usr/lib/systemd/user/rsdm-idle.service"
   install -Dm644 packaging/pam/rsdm "$pkgdir/etc/pam.d/rsdm"
