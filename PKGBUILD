@@ -2,7 +2,7 @@
 
 pkgname="concurrently"
 pkgdesc="Run multiple commands concurrently"
-pkgver=10.0.5
+pkgver=10.0.6
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/open-cli-tools/concurrently"
@@ -22,7 +22,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('ea6375cca4786ebeaef80b17a45c81571d0f6e31732e0032b13b5788c29eeac15bbd8d313a71892a40a48a645b2fdf006348e958a26d396d56e304a912c72c82')
+b2sums=('027f6d04fdd6a67dab0432dde5c062e98af0aabe040738d6b73374883b2e9e286aa4093e2813ea2671262261b07bf33bf2b8ada8311e873564041d39699db4ed')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
