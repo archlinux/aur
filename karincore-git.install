@@ -1,0 +1,41 @@
+# Создаёт группу `karincore`, которой /etc/sudoers.d/zz-karincore теперь
+# ограничивает свои NOPASSWD-правила, и добавляет в неё устанавливающего
+# пользователя. Раньше эти правила были написаны как
+# `ALL ALL=(ALL) NOPASSWD:`, то есть их мог вызвать любой локальный
+# аккаунт — этот хук позволяет ограничить их реальными пользователями
+# приложения, не ломая при этом типичный однопользовательский
+# десктоп/Steam Deck сценарий, для которого этот пакет в основном и ставится.
+
+_add_installing_user() {
+    local target_user="${SUDO_USER:-${DOAS_USER:-}}"
+    if [ -z "$target_user" ]; then
+        target_user="$(logname 2>/dev/null || true)"
+    fi
+    if [ -n "$target_user" ] && [ "$target_user" != "root" ]; then
+        gpasswd -a "$target_user" karincore >/dev/null 2>&1
+        echo "==> Пользователь '$target_user' добавлен в группу 'karincore'."
+        echo "    Перезайдите в сессию (или выполните 'newgrp karincore'), чтобы это применилось."
+    else
+        echo "==> Не удалось определить, какого пользователя добавить в группу 'karincore'."
+        echo "    Выполните: sudo gpasswd -a <ваш-логин> karincore"
+    fi
+}
+
+post_install() {
+    getent group karincore >/dev/null 2>&1 || groupadd -r karincore
+    _add_installing_user
+}
+
+post_upgrade() {
+    getent group karincore >/dev/null 2>&1 || groupadd -r karincore
+    # Добавляем автоматически только если в группе вообще никого нет —
+    # апгрейд не должен молча менять членство в группе на уже настроенной
+    # многопользовательской системе.
+    if [ -z "$(getent group karincore | cut -d: -f4)" ]; then
+        _add_installing_user
+    fi
+}
+
+post_remove() {
+    getent group karincore >/dev/null 2>&1 && groupdel karincore >/dev/null 2>&1 || true
+}

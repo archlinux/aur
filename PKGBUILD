@@ -1,16 +1,18 @@
 # Maintainer: detestern <detestern@proton.me>
 pkgname=karincore-git
-pkgver=1.3.1.r28.95c910e
+pkgver=1.3.8.r36.2bdb254
 pkgrel=1
 pkgdesc="KarinCore - Modern and secure proxy client"
 arch=('x86_64')
 url="https://github.com/detestern/KarinCore"
 license=('MIT')
 
-depends=('webkit2gtk-4.1' 'gtk3' 'cairo' 'pango' 'glib2' 'xray' 'openvpn' 'wireguard-tools')
+depends=('webkit2gtk-4.1' 'gtk3' 'cairo' 'pango' 'glib2' 'xray' 'openvpn' 'wireguard-tools' 'iproute2' 'iptables' 'sudo' 'python')
 makedepends=('npm' 'rust' 'cargo' 'git')
 provides=('karincore')
 conflicts=('karincore')
+install=karincore-git.install
+options=('!debug')
 
 source=("KarinCore::git+https://github.com/detestern/KarinCore.git"
 "karin-proxy-daemon.service")
@@ -139,18 +141,16 @@ build() {
     npm install
     npm run tauri build -- --no-bundle
 
-    cd src-tauri
-    cargo build --release --bin karin-proxy-daemon
 }
 
 package() {
     cd "$srcdir/KarinCore"
 
     install -Dm755 "src-tauri/target/release/karin-proxy" "$pkgdir/usr/bin/karincore"
-    install -Dm755 "src-tauri/target/release/karin-proxy-daemon" "$pkgdir/usr/bin/karin-proxy-daemon"
 
     install -Dm644 "$srcdir/karin-proxy-daemon.service" "$pkgdir/usr/lib/systemd/system/karin-proxy-daemon.service"
     install -Dm755 "src-tauri/system/route.sh" "$pkgdir/etc/karin-proxy/route.sh"
+    install -dm750 "$pkgdir/etc/sudoers.d"
     install -Dm440 "src-tauri/system/karincore-sudoers" "$pkgdir/etc/sudoers.d/zz-karincore"
 
     install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/pixmaps/karincore.png"
