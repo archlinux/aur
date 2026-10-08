@@ -1,6 +1,6 @@
 pkgbase = gitframe-bin
 	pkgdesc = A terminal workspace for reviewing Git changes, browsing source, and exploring history
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/hiroaqii/gitframe
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gitframe-bin
 	provides = gitframe
 	conflicts = gitframe
 	options = !strip
-	source_x86_64 = gitframe-x86_64-0.1.5.tgz::https://github.com/hiroaqii/gitframe/releases/download/v0.1.5/gitframe-v0.1.5-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 114de48fdccaf7af44ec6eaad529dc93d3b21ee2d74d1b29f1ce7b342319eb60
+	source_x86_64 = gitframe-x86_64-0.1.6.tgz::https://github.com/hiroaqii/gitframe/releases/download/v0.1.6/gitframe-v0.1.6-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 2b1368d65d32be54304bfef2c3a41c190377e3b57a2248dc831d604704483f94
 
 pkgname = gitframe-bin
