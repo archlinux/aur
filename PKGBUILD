@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Finance terminal, in your terminal"
 
-pkgver=0.15.8
+pkgver=0.16.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_gitname}-${arch[0]}-${pkgver}.gz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}.gz")
 source_aarch64=("${_gitname}-${arch[1]}-${pkgver}.gz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[1]}.gz")
-sha256sums=('72d7231885e80c183bd7b8167dfeed272fab49464760129ae30e477373cb5ace'
+sha256sums=('3f0fc0697fd96a354f314d24bceb83f5926209e85829a5a152e574f7550288e3'
             '735bda4a87be6cbfa596f6957866c94838a171ed7e371d6cb59998e60b87f1a7')
-sha256sums_x86_64=('942e196ecab4129bbfd64dbc3debbd023dda19231fba996cef2c772392d1c13e')
-sha256sums_aarch64=('cbac93fdbbf4c5f8718ce9c67f4b47c2aca4a71c2a1ba48a8e2ef74bb2521ead')
+sha256sums_x86_64=('98d3b0ec6373c643dc1012190645dde6bdaa757de137091c54d476e2d2d0bbe3')
+sha256sums_aarch64=('9c79d96ed91024db8200767620d656f984a40b2ca6d21f1fa4399afa9592e6dd')
 
 
 package() {
