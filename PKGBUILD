@@ -1,7 +1,7 @@
 # Maintainer: uberben <ben at benbergman dot ca>
 
 pkgname="orca-slicer-nightly-bin"
-pkgver=2026.09.09.233242Z
+pkgver=2026.10.08.025151Z
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (nightly builds)"
 arch=('x86_64' 'aarch64')
@@ -94,6 +94,8 @@ prepare() {
   filename=$(basename "${appimage_url}")
   msg2 "Extracting AppImage..."
   "$startdir/${filename}" --appimage-extract
+  msg2 "Fix directories permissions"
+  find squashfs-root -type d -perm 0700 -exec chmod 0755 {} +
 
   sed -i 's|Exec=AppRun|Exec=/opt/orca-slicer-nightly/bin/orca-slicer|g' \
     "squashfs-root/com.orcaslicer.OrcaSlicer.desktop"
