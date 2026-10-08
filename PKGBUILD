@@ -1,4 +1,4 @@
-# Maintainer: bethropolis <66518866+bethropolis at users.noreply.github dot com>
+# Maintainer: bethropolis
 pkgname=sift-context-bin
 pkgver=1.3.0
 pkgrel=1
