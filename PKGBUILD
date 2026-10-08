@@ -4,7 +4,7 @@
 # -bin). Installed under /opt/towerofatum; `towerofatum` plays offline and `towerofatum-server` hosts.
 pkgname=towerofatum-bin
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Work-in-progress multiplayer spell-combat game, played offline against a local server"
 arch=('x86_64')
 url="https://github.com/NickMarcha/TowerOfAtum-releases"
@@ -27,7 +27,7 @@ sha256sums=('dcd8d358bbe46d1f6bfbd629c0b88956bb602384c951d20a8ed08a61986f4b06'
             'f5ee4cb6381515b3da3cc17a0765c5984312f3837ed6f698e93e388c39bbf88d'
             '3801c09495ed6ae351ebb358d166cba64f87498205fefb3a97cbe52dd9dd1893'
             '63bc756c48c78a6f5f44c8ec41e4e420dc5c80b4cc63cdfc69cf0a3613231c86'
-            'fec0d4268bc27e670132cb59bf7be166d5f6ed7e182004a5d85dfa0410d31148'
+            'd566efc26511564ab5279849db8fdf0a1865959b6a2b9f150b74b2950033405d'
             '8c3e8d3a9708c0cf435c6d040019c69ad9084bf099d1083ae3dc9fbcad2ccedd')
 
 package() {
@@ -39,7 +39,7 @@ package() {
     install -Dm755 towerofatum "$pkgdir/usr/bin/towerofatum"
     install -Dm755 towerofatum-server "$pkgdir/usr/bin/towerofatum-server"
     install -Dm644 towerofatum.desktop "$pkgdir/usr/share/applications/towerofatum.desktop"
-    install -Dm644 towerofatum.png "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/towerofatum.png"
+    install -Dm644 towerofatum.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/towerofatum.png"
     install -Dm644 towerofatum.png "$pkgdir/usr/share/pixmaps/towerofatum.png"
     install -Dm644 "$game/README.txt" "$pkgdir/usr/share/doc/towerofatum/README.txt"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
