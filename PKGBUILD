@@ -79,7 +79,7 @@
 # 'madvise' - madvise, prevent applications from allocating more memory resources than necessary
 # More infos here:
 # https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/performance_tuning_guide/sect-red_hat_enterprise_linux-performance_tuning_guide-configuring_transparent_huge_pages
-: "${_hugepage:=always}"
+: "${_hugepage:=madvise}"
 
 # CPU compiler optimizations - Defaults to native if left empty
 # - "native" (use compiler autodetection)
@@ -156,7 +156,7 @@ _minor=9
 #_rcver=rc8
 pkgver=${_major}.${_minor}
 _tagrel=2
-pkgrel=1
+pkgrel=2
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 pkgdesc='Linux EEVDF scheduler Kernel by CachyOS targeted for Servers workloads'
 _kernver="$pkgver-$pkgrel"
@@ -188,7 +188,7 @@ makedepends=(
 )
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=615.71.09
+_nv_ver=615.78.08
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
@@ -624,6 +624,13 @@ _package-headers() {
     # Install .so files if they exist
     if compgen -G "rust/*.so" 1>/dev/null; then
         install -Dt "$builddir/rust" rust/*.so
+    fi
+
+    # Install generated Rust files
+    if [ -d rust/kernel ]; then
+        while IFS= read -r -d "" _gen; do
+            install -Dm644 "$_gen" "$builddir/$_gen"
+        done < <(find rust -type f -name 'generated_*.rs' -print0)
     fi
 
     echo "Installing unstripped VDSO..."
