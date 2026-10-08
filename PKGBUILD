@@ -3,10 +3,10 @@
 _pkgname=cartridge
 pkgname=${_pkgname}-bin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open-source desktop emulator for Windows & Linux. Drag a ROM in, it plays."
 arch="x86_64"
-url="https://github.com/makuka97/CARTRIDGE"
+url="https://github.com/makuka97/CARTRIDGE_DESKTOP"
 license=("GPL-3.0")
 
 conflicts=(${_pkgname})
@@ -15,7 +15,7 @@ provides=(${_pkgname})
 makedepends=(gendesk)
 
 _target="CARTRIDGE-0.4.0.AppImage"
-_download_url="https://github.com/makuka97/CARTRIDGE/releases/download/EmulatorLinux"
+_download_url="https://neonatox.vegnux.com/software/emulators/"
 
 source=("$_download_url/$_target")
 
