@@ -1,7 +1,7 @@
 pkgbase = morphe-desktop
 	pkgdesc = Tool for patching Android apps using Morphe Desktop (CLI & GUI)
 	pkgver = 1.18.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://morphe.software
 	arch = any
 	license = GPL-3.0-or-later

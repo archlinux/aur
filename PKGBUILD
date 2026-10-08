@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=morphe-desktop
 pkgver=1.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for patching Android apps using Morphe Desktop (CLI & GUI)"
 arch=('any')
 url="https://morphe.software"
@@ -34,6 +34,9 @@ package() {
 
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<'WRAPPER'
 #!/bin/sh
+# AWT assumes the window manager reparents windows; tiling and wlroots
+# compositors do not, leaving the GUI as a blank or unresizable window.
+export _JAVA_AWT_WM_NONREPARENTING=1
 exec /usr/bin/java -jar /usr/share/java/morphe-desktop/morphe-desktop.jar "$@"
 WRAPPER
     ln -s "${pkgname}" "${pkgdir}/usr/bin/morphe-cli"
