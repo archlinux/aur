@@ -24,14 +24,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  # `search::tests::stats_requests_match_detail_so_spans_are_available_to_count`
-  # asserts on SearchOptions::default(), whose ColorMode::Auto reads
-  # `io::stdout().is_terminal()`. In a terminal that returns true and the
-  # assertion fails; in CI the stdout is a pipe and it passes. Pipe the output
-  # so the tests see the same non-tty stdout as upstream CI, and keep the exit
-  # status of cargo rather than of the pipe consumer.
-  set -o pipefail
-  cargo test --release --frozen --workspace 2>&1 | cat
+  cargo test --release --frozen --workspace
 }
 
 package() {
