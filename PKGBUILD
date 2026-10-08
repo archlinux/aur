@@ -2,6 +2,10 @@
 # Contributor: westpain <homicide@disroot.org>
 # Contributor: rikki48 <xdxdxdxdlmao@mail.ru>
 
+# prevent excessive memory usage
+export DEBUG_CFLAGS="-g1"
+export DEBUG_CXXFLAGS="-g1"
+
 ## options
 : ${_use_sodeps:=false}
 
@@ -10,16 +14,16 @@
 
 _pkgname="ayugram-desktop"
 pkgname="$_pkgname-git"
-pkgver=7.0.9.r1.gdb3b989
-pkgrel=2
+pkgver=7.2.9.r0.gd4b7546
+pkgrel=1
 pkgdesc="Desktop Telegram client with good customization and Ghost mode"
 url="https://github.com/AyuGram/AyuGramDesktop"
 license=('GPL-3.0-or-later')
 arch=('x86_64' 'aarch64')
 
 depends=(
+  abseil-cpp
   ada
-  cmark-gfm
   ffmpeg
   hunspell
   kcoreaddons
@@ -34,12 +38,12 @@ depends=(
   openal
   openh264
   opus
-  protobuf
   qt6-base
   qt6-imageformats
   qt6-svg
   qt6-wayland
   rnnoise
+  tlottie
   xxhash
 
   ## for libtg_owt
@@ -89,7 +93,6 @@ sha256sums=(
 
 prepare() {
   cd "$_pkgsrc"
-  git rm -r 'Telegram/ThirdParty/cmark-gfm'
   git rm -r 'Telegram/ThirdParty/hunspell'
   git rm -r 'Telegram/ThirdParty/kcoreaddons'
   git rm -r 'Telegram/ThirdParty/libfido2'
@@ -160,8 +163,10 @@ package() {
       'libavfilter.so'
       'libavformat.so'
       'libavutil.so'
+      'libcairo.so'
       'libcrypto.so'
       'libfido2.so'
+      'libfontconfig.so'
       'libgio-2.0.so'
       'libglib-2.0.so'
       'libgobject-2.0.so'
@@ -173,8 +178,10 @@ package() {
       'libopenal.so'
       'libopenh264.so'
       'libopus.so'
+      'libpango-1.0.so'
+      'libpangocairo-1.0.so'
+      'libpangoft2-1.0.so'
       'libpipewire-0.3.so'
-      'libprotobuf-lite.so'
       'libsrtp2.so'
       'libssl.so'
       'libswresample.so'
