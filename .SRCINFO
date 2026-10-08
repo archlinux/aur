@@ -1,6 +1,6 @@
 pkgbase = rosec-uhid-bin
 	pkgdesc = Privileged broker for rosec's FIDO2/WebAuthn virtual authenticator (prebuilt)
-	pkgver = 0.0.33
+	pkgver = 0.0.35
 	pkgrel = 1
 	url = https://github.com/jmylchreest/rosec
 	install = rosec-uhid.install
@@ -11,9 +11,9 @@ pkgbase = rosec-uhid-bin
 	provides = rosec-uhid
 	conflicts = rosec-uhid
 	conflicts = rosec-uhid-git
-	source_x86_64 = rosec-0.0.33-x86_64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.33/rosec-0.0.33-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = bcd9c4509c7a12a9c1ddd3e35653255be425640f23148d29dadad54d9362f268
-	source_aarch64 = rosec-0.0.33-aarch64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.33/rosec-0.0.33-aarch64-unknown-linux-gnu.tar.gz
+	source_x86_64 = rosec-0.0.35-x86_64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.35/rosec-0.0.35-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b4cb8ddf1cb3edad8975622eebfe7edfba584f65775db3902152912a93e5617d
+	source_aarch64 = rosec-0.0.35-aarch64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.35/rosec-0.0.35-aarch64-unknown-linux-gnu.tar.gz
 	sha256sums_aarch64 = @AARCH64_SHA256@
 
 pkgname = rosec-uhid-bin

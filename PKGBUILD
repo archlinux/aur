@@ -17,13 +17,13 @@
 #
 # This reuses the main rosec release tarball, which already carries the
 # rosec-uhid binary and the contrib/uhid units + modules-load file. The
-# release workflow renders this file by substituting 0.0.33 and the
-# bcd9c4509c7a12a9c1ddd3e35653255be425640f23148d29dadad54d9362f268 / @AARCH64_SHA256@ checksums before committing to the AUR.
+# release workflow renders this file by substituting 0.0.35 and the
+# b4cb8ddf1cb3edad8975622eebfe7edfba584f65775db3902152912a93e5617d / @AARCH64_SHA256@ checksums before committing to the AUR.
 #
 # To build manually, replace the placeholders and run makepkg -si.
 
 pkgname=rosec-uhid-bin
-pkgver=0.0.33
+pkgver=0.0.35
 pkgrel=1
 pkgdesc="Privileged broker for rosec's FIDO2/WebAuthn virtual authenticator (prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -43,7 +43,7 @@ source_aarch64=(
     "rosec-${pkgver}-aarch64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v${pkgver}/rosec-${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
 )
 
-sha256sums_x86_64=('bcd9c4509c7a12a9c1ddd3e35653255be425640f23148d29dadad54d9362f268')
+sha256sums_x86_64=('b4cb8ddf1cb3edad8975622eebfe7edfba584f65775db3902152912a93e5617d')
 sha256sums_aarch64=('@AARCH64_SHA256@')
 
 package() {
