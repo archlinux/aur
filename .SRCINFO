@@ -1,0 +1,54 @@
+pkgbase = rozelynx-bin
+	pkgdesc = RozeLynx Web Browser: Firefox fork with LibreWolf privacy patches and per-tab network interface binding (binary release; Wayland-only builds - build rozelynx-git for X11/XWayland)
+	pkgver = 156.0.1
+	pkgrel = 1
+	url = https://bytewheel.org/rozelynx
+	install = rozelynx-bin.install
+	arch = x86_64
+	license = MPL-2.0
+	license = GPL-2.0-only
+	license = LGPL-2.1-only
+	depends = alsa-lib
+	depends = aom
+	depends = at-spi2-core
+	depends = cairo
+	depends = dav1d
+	depends = dbus
+	depends = ffmpeg
+	depends = fontconfig
+	depends = freetype2
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = harfbuzz
+	depends = icu>=78.1
+	depends = libdrm
+	depends = libepoxy
+	depends = libevent
+	depends = libjpeg-turbo
+	depends = libpulse
+	depends = libvpx
+	depends = libwebp
+	depends = libx11
+	depends = libxcb
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxext
+	depends = libxfixes
+	depends = libxrandr
+	depends = mesa
+	depends = nspr>=4.39
+	depends = nss>=3.125
+	depends = pango
+	depends = pixman
+	depends = zlib
+	optdepends = libva: VAAPI hardware video decoding
+	optdepends = networkmanager: geolocation via nearby Wi-Fi networks (necko-wifi)
+	optdepends = vulkan-icd-loader: Vulkan rendering (hwaccel vulkantest)
+	provides = rozelynx=156.0.1
+	conflicts = rozelynx
+	source = https://github.com/Bytewheel/RozeLynx/releases/download/v156.0.1/rozelynx-156.0.1-x86_64.tar.xz
+	sha256sums = 69f9a26c7b86e98e9a3d55f611d2dec24f0d03c0253c8b638957da209d4ad100
+
+pkgname = rozelynx-bin
+
