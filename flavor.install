@@ -1,0 +1,21 @@
+_apparmor() {
+  [ -r /sys/module/apparmor/parameters/enabled ] && grep -q Y /sys/module/apparmor/parameters/enabled && command -v apparmor_parser >/dev/null
+}
+
+post_install() {
+  _apparmor && apparmor_parser -r /etc/apparmor.d/flavor-netd
+  echo "Enable the daemon once per user: systemctl --user enable --now flavord"
+  echo "Optional system-wide names helper: systemctl enable --now flavor-netd.socket (see https://github.com/tame-gg/Flavor/blob/main/doc/system-wide-names.md)"
+}
+
+post_upgrade() {
+  _apparmor && apparmor_parser -r /etc/apparmor.d/flavor-netd
+  return 0
+}
+
+pre_remove() {
+  if [ -r /sys/kernel/security/apparmor/profiles ] && grep -q '^flavor-netd ' /sys/kernel/security/apparmor/profiles && command -v apparmor_parser >/dev/null; then
+    apparmor_parser -R /etc/apparmor.d/flavor-netd
+  fi
+  return 0
+}
