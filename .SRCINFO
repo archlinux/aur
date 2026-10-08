@@ -1,0 +1,13 @@
+pkgbase = gfatools
+	pkgdesc = Tools for manipulating sequence graphs in the GFA and rGFA formats
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/lh3/gfatools
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	source = gfatools-0.5.tar.gz::https://github.com/lh3/gfatools/archive/v0.5.tar.gz
+	sha256sums = 0653dc143c2224743afb6bb638da3465231ec0bb476c0d55e2eb6708ee105712
+
+pkgname = gfatools
