@@ -1,0 +1,27 @@
+pkgbase = dreamdump-bin
+	pkgdesc = Dump Sega Dreamcast GD-ROM discs
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://codeberg.org/MoriGM/dreamdump
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = dreamdump
+	conflicts = dreamdump
+	conflicts = dreamdump-git
+	noextract = dreamdump-0.6.0-linux-386
+	noextract = dreamdump-0.6.0-linux-amd64
+	noextract = dreamdump-0.6.0-linux-arm64
+	options = !strip
+	options = !debug
+	source = dreamdump-0.6.0.tar.gz::https://codeberg.org/MoriGM/dreamdump/archive/0.6.0.tar.gz
+	sha256sums = 7ec6930802a6a952e45ac551f0d773c833b4524bda8b3e4168e0ede4e0226f88
+	source_i686 = dreamdump-0.6.0-linux-386::https://codeberg.org/MoriGM/dreamdump/releases/download/0.6.0/dreamdump-_linux_386
+	sha256sums_i686 = feaf4688b938f90fe62e903544d6aa30066503416122f526173b94f153170a92
+	source_x86_64 = dreamdump-0.6.0-linux-amd64::https://codeberg.org/MoriGM/dreamdump/releases/download/0.6.0/dreamdump-_linux_amd64
+	sha256sums_x86_64 = 45ccf5152536ce2eb36c3bc8420c9d3615c2ec401c7ecd04478d4b79a787d0d7
+	source_aarch64 = dreamdump-0.6.0-linux-arm64::https://codeberg.org/MoriGM/dreamdump/releases/download/0.6.0/dreamdump-_linux_arm64
+	sha256sums_aarch64 = c72df283245729f71d34d5a52c1e3b68ec1b5631cc0b17100f08775941e7b561
+
+pkgname = dreamdump-bin
