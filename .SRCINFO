@@ -1,8 +1,9 @@
 pkgbase = yaabsa-bin
 	pkgdesc = Unofficial feature rich, responsive, modern client for Audiobookshelf
 	pkgver = 1.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Vito0912/yaabsa
+	install = yaabsa.install
 	arch = x86_64
 	arch = aarch64
 	license = AGPL-3.0-only

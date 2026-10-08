@@ -1,0 +1,3 @@
+post_upgrade() {
+	ln -s "/usr/share/yaabsa/yaabsa" "/usr/bin/yaabsa" || true
+}
