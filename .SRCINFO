@@ -1,5 +1,5 @@
 pkgbase = nvidia-utils
-	pkgver = 615.71.09
+	pkgver = 615.78.08
 	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = aarch64
@@ -12,18 +12,18 @@ pkgbase = nvidia-utils
 	source = systemd-homed-override.conf
 	source = systemd-suspend-override.conf
 	source = nvidia-utils.conf
-	source = https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-kernel-module-source-615.71.09.tar.xz
+	source = https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-kernel-module-source-615.78.08.tar.xz
 	sha512sums = de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770
 	sha512sums = 1bcf2c6ee71686c0d32625e746ec8c0f7cf42fc63c76c3076ff2526b2661e8b9e9f76eaa2c4b213c7cc437a6f06006cc07672c4974d7f4515b2de2fd7c47a891
 	sha512sums = 7f1457dc454144fdece5abf795744c4c948a13feb8d49c20e2a1b8b8973e86f980233b521485d73eb039c396688f287a3a5b3de8cb1fb20ed70cc62e4ba91250
 	sha512sums = a0183adce78e40853edf7e6b73867e7a8ea5dabac8e8164e42781f64d5232fbe869f850ab0697c3718ebced5cde760d0e807c05da50a982071dfe1157c31d6b8
 	sha512sums = 55def6319f6abb1a4ccd28a89cd60f1933d155c10ba775b8dfa60a2dc5696b4b472c14b252dc0891f956e70264be87c3d5d4271e929a4fc4b1a68a6902814cee
-	sha512sums = a380e5faeb19293c90f613cd92bcd1cef7597ee52f79f03ffdffe5d37d2badc05b6bdb4c26a9d610868ae4c16eafd56e7d16f769e849dc0335d0d248c6235fe9
-	sha512sums = 0b32c1aaa5ed261bdee7232d5e5d293e53c42ac9896f49c4be4e6b9b6bce1370cb69a7f7fde5531a7537d5e925d651c36bcb512a2f827c2d2cb26ede33f7c057
-	source_aarch64 = https://download.nvidia.com/XFree86/Linux-aarch64/615.71.09/NVIDIA-Linux-aarch64-615.71.09.run
-	sha512sums_aarch64 = 316f90d5e0ba74db3a79a91464955240aa2c14e986653067fe902c132c771898d2866afc4e6498069b33665596e17b1b5282980936e1e6e31cabb53787e70196
-	source_x86_64 = https://download.nvidia.com/XFree86/Linux-x86_64/615.71.09/NVIDIA-Linux-x86_64-615.71.09.run
-	sha512sums_x86_64 = 446091ef413d815ecc2de0253b1c0065cb12f623a219a3a5c38e48a0084aa73adbb7426c3c334a52f42520da8c6b2186b84f8fbf96a2260d13a320123f804bc0
+	sha512sums = ed3b16bba49bdc9394f11d63b6aaf4437e59cf973cf500d90beee4536ffc693e459ce7031cfbd955531b9ef05f9a5d48a7a7210cbeb4e9e33df4e38a60370d38
+	sha512sums = 5ced2c7e3e9df21f8494ea439ac2103307fcbcb295a3f11e5fdf4f1dbeda3f0b13800a06f8147ebd064f98897c24e92f5de82023a8ca43a582694d951c9620c9
+	source_aarch64 = https://download.nvidia.com/XFree86/Linux-aarch64/615.78.08/NVIDIA-Linux-aarch64-615.78.08.run
+	sha512sums_aarch64 = 6844c78be6e2780ad38461a6b87cfefa702d403c1d20e888003a999dffa609733d0933daa24f3bc077005b95638cc9d76f76c465bfbe9e46f7dbe832cbb90a5d
+	source_x86_64 = https://download.nvidia.com/XFree86/Linux-x86_64/615.78.08/NVIDIA-Linux-x86_64-615.78.08.run
+	sha512sums_x86_64 = fb0c16c9812e60ac1f5ca663f03dd84f386ae4ad55beab4655c65fe8d094c98246c5acbcf9e385e93e38dbfb340472712fc80593a8bf0be47f34ff871bf4d83d
 
 pkgname = nvidia-utils
 	pkgdesc = NVIDIA drivers utilities
@@ -53,7 +53,7 @@ pkgname = nvidia-open-dkms
 	pkgdesc = NVIDIA open kernel modules - module sources
 	license = MIT AND GPL-2.0-only
 	depends = dkms
-	depends = nvidia-utils=615.71.09
+	depends = nvidia-utils=615.78.08
 	provides = nvidia-open
 	provides = NVIDIA-MODULE
 	provides = nvidia-dkms
