@@ -1,6 +1,6 @@
 pkgbase = python-nodriver
 	pkgdesc = Successor of Undetected-Chromedriver. Providing a blazing fast framework for web automation, webscraping, bots and any other creative ideas which are normally hindered by annoying anti bot systems like Captcha / CloudFlare / Imperva / hCaptcha
-	pkgver = 0.50.5
+	pkgver = 0.50.6
 	pkgrel = 1
 	url = https://github.com/UltrafunkAmsterdam/nodriver
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-nodriver
 	depends = python-mss
 	depends = python-deprecated
 	depends = python-websockets
-	source = https://files.pythonhosted.org/packages/source/n/nodriver/nodriver-0.50.5.tar.gz
-	sha256sums = 7fd7e6b1b0154d6b57b7b06ea78f8bee5d5f47246049741150e395a3c64a4cc8
+	source = https://files.pythonhosted.org/packages/source/n/nodriver/nodriver-0.50.6.tar.gz
+	sha256sums = ea3918af54c1417f1a4bca12a023c8d7dd75673486494190c90022ad36625f3b
 
 pkgname = python-nodriver
