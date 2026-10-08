@@ -1,7 +1,7 @@
 # Maintainer: nathawat <nathawat[at]noreply[dot]codeberg[dot]org>
 
 pkgname=iweap
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Secure interactive IWD 802.1X profile generator"
 arch=('x86_64' 'aarch64')
@@ -20,12 +20,12 @@ makedepends=('cargo')
 _tag=v${pkgver}
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-b2sums=('18df30972813fc96f4789cffc3c3df728f99f37b5b1d0af2623a98301f42399b4d2c86712737e8724bb8a2fe5e70ba0ee07354f23c095b9912c2fb079ded1dd8')
+b2sums=('54ed9e0c836ef7b27e1a49f73ceda597ecbee390f5846272896f76a94ae5df3be7fccda25a0ef56172128d2b5434ff20453058cb469582886c858118a792e15b')
 
 prepare() {
 	cd "${pkgname}"
 
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's|host: ||p')"
+	cargo fetch --locked
 }
 
 build() {
