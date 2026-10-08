@@ -1,0 +1,13 @@
+pkgbase = bedtk
+	pkgdesc = Simple toolkit for processing BED files
+	pkgver = 20250824
+	pkgrel = 1
+	url = https://github.com/lh3/bedtk
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	source = bedtk-20250824.tar.gz::https://github.com/lh3/bedtk/archive/fa2cc15a8ab61d28bf6a4cfd50f36f883021a385.tar.gz
+	sha256sums = 77b66e5ed963c74aea081f760396c317de9345274f97f905f323e73dee24e6f6
+
+pkgname = bedtk
