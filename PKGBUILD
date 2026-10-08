@@ -2,7 +2,7 @@
 # Orginally Packaged By: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=rasdaemon
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Rasdaemon is a RAS (Reliability, Availability and Serviceability) logging tool."
 arch=(i686 x86_64)
 url="https://github.com/mchehab/rasdaemon"
@@ -13,6 +13,10 @@ optdepends=('mariadb-libs: if MySQL/MariaDB will be used'
             'postgresql-libs: if PostgreSQL will be used'
             'python-mysqlclient: to query MySQL/MariaDB with ras-mc-ctl'
             'python-psycopg2: to query PostgreSQL with ras-mc-ctl')
+backup=("etc/logrotate.d/$pkgname"
+        "etc/rsyslog.d/$pkgname.conf"
+        "etc/sysconfig/$pkgname"
+        "etc/syslog-ng/conf.d/$pkgname.conf")
 source=("$url/archive/refs/tags/v$pkgver.tar.gz"
         "rmc-service.patch")
 sha256sums=('3a1d70bef371e42c1b8f779791ee0a3492070ba4ba7d48450167e075570d5f4e'
