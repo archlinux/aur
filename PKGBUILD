@@ -1,9 +1,9 @@
 # Maintainer: Daniel Korbelainen <officialpand@gmail.com>
 # pkgver and sha256sums are set by CI (.github/workflows/release.yml) from the git tag.
 pkgname=sniptext
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="Screen text extractor with OCR and spell correction"
+pkgdesc="Screen text extractor: region capture, Tesseract OCR, clipboard"
 arch=('any')
 url="https://github.com/dkorbelainen/sniptext"
 license=('MIT')
@@ -12,7 +12,6 @@ depends=(
     'python'
     'python-numpy'
     'python-pillow'
-    'python-pynput'
     'python-pyyaml'
     'python-loguru'
     'python-pytesseract'
@@ -21,8 +20,6 @@ depends=(
     'libnotify'
 )
 optdepends=(
-    'python-symspellpy: Spell correction for English text'
-    'python-scikit-learn: Adaptive OCR quality analysis'
     'tesseract-data-rus: Russian language support'
     'tesseract-data-ell: Greek language support'
     'tesseract-data-equ: Mathematical equations and symbols'
@@ -39,7 +36,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1c266ae00732aee3b6338de02df5988f133378222d56a17211b58bbf52261cdd')
+sha256sums=('1d2a777ba1c06eb7c6cc081cc32f02e7968dd7ddfc9fdd4443c8dd9999d8c853')
 
 build() {
     cd "$pkgname-$pkgver"
