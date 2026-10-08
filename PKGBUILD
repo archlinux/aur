@@ -2,7 +2,7 @@
 
 pkgname=wordcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.0.0.r19.gc9824ab
+pkgver=0.1.0.r3.gdb0cfed
 pkgrel=1
 url="https://getartcraft.com/apps/$_pkgname"
 _url="https://github.com/storytold/$_pkgname"
@@ -41,7 +41,6 @@ prepare() {
 
 pkgver() {
 	cd "$_pkgname"
-	git tag v0.0.0 $(git rev-list --max-parents=0 HEAD) ||:
 	git describe --long --tags --abbrev=7 --match="v*" HEAD |
 			sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
