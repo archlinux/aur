@@ -1,7 +1,7 @@
 pkgbase = mangayomi-linux
-	pkgdesc = Mangayomi - Manga, Anime and Novel reader (prebuilt Linux zip)
+	pkgdesc = Mangayomi - Manga, Anime and Novel reader (prebuilt Linux zip with QuickJS fix)
 	pkgver = 0.9.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kodjodevf/mangayomi
 	arch = x86_64
 	license = GPL3
@@ -25,6 +25,8 @@ pkgbase = mangayomi-linux
 	conflicts = mangayomi-git
 	options = !strip
 	source = https://github.com/kodjodevf/mangayomi/releases/download/v0.9.8/Mangayomi-v0.9.8-linux.zip
+	source = https://raw.githubusercontent.com/fcanas/flutter_qjs/main/linux/libflutter_qjs_plugin.so
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mangayomi-linux
