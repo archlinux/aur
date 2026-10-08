@@ -56,12 +56,12 @@ index f99b39e2..6750798e 100644
      KF6::BookmarksWidgets
 diff --git a/ai/aiconfig.cpp b/ai/aiconfig.cpp
 new file mode 100644
-index 00000000..e5902144
+index 00000000..f3a50435
 --- /dev/null
 +++ b/ai/aiconfig.cpp
 @@ -0,0 +1,98 @@
 +/*
-+    SPDX-FileCopyrightText: 2026 Teejer <teej.d.man@gmail.com>
++    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
 +    SPDX-License-Identifier: GPL-2.0-or-later
 +*/
@@ -160,12 +160,12 @@ index 00000000..e5902144
 +}
 diff --git a/ai/aiconfig.h b/ai/aiconfig.h
 new file mode 100644
-index 00000000..06c9f6cf
+index 00000000..e2d2dff0
 --- /dev/null
 +++ b/ai/aiconfig.h
 @@ -0,0 +1,56 @@
 +/*
-+    SPDX-FileCopyrightText: 2026 Teejer <teej.d.man@gmail.com>
++    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
 +    SPDX-License-Identifier: GPL-2.0-or-later
 +*/
@@ -222,12 +222,12 @@ index 00000000..06c9f6cf
 +};
 diff --git a/ai/aiconversation.cpp b/ai/aiconversation.cpp
 new file mode 100644
-index 00000000..b5611170
+index 00000000..cfed010d
 --- /dev/null
 +++ b/ai/aiconversation.cpp
 @@ -0,0 +1,851 @@
 +/*
-+    SPDX-FileCopyrightText: 2026 Teejer <teej.d.man@gmail.com>
++    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
 +    SPDX-License-Identifier: GPL-2.0-or-later
 +*/
@@ -1079,12 +1079,12 @@ index 00000000..b5611170
 +}
 diff --git a/ai/aiconversation.h b/ai/aiconversation.h
 new file mode 100644
-index 00000000..0e428237
+index 00000000..5aabf21e
 --- /dev/null
 +++ b/ai/aiconversation.h
 @@ -0,0 +1,151 @@
 +/*
-+    SPDX-FileCopyrightText: 2026 Teejer <teej.d.man@gmail.com>
++    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
 +    SPDX-License-Identifier: GPL-2.0-or-later
 +*/
@@ -1236,12 +1236,12 @@ index 00000000..0e428237
 +};
 diff --git a/ai/aiconversationpage.cpp b/ai/aiconversationpage.cpp
 new file mode 100644
-index 00000000..00d9530d
+index 00000000..ffc0ed5b
 --- /dev/null
 +++ b/ai/aiconversationpage.cpp
 @@ -0,0 +1,380 @@
 +/*
-+    SPDX-FileCopyrightText: 2026 Teejer <teej.d.man@gmail.com>
++    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
 +    SPDX-License-Identifier: GPL-2.0-or-later
 +*/
@@ -1622,12 +1622,12 @@ index 00000000..00d9530d
 +#include "aiconversationpage.moc"
 diff --git a/ai/aiconversationpage.h b/ai/aiconversationpage.h
 new file mode 100644
-index 00000000..0ab24ead
+index 00000000..ffd4a319
 --- /dev/null
 +++ b/ai/aiconversationpage.h
 @@ -0,0 +1,66 @@
 +/*
-+    SPDX-FileCopyrightText: 2026 Teejer <teej.d.man@gmail.com>
++    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
 +    SPDX-License-Identifier: GPL-2.0-or-later
 +*/
@@ -1694,12 +1694,12 @@ index 00000000..0ab24ead
 +};
 diff --git a/ai/aihttpclient.cpp b/ai/aihttpclient.cpp
 new file mode 100644
-index 00000000..8177bc9c
+index 00000000..ed935fa3
 --- /dev/null
 +++ b/ai/aihttpclient.cpp
 @@ -0,0 +1,288 @@
 +/*
-+    SPDX-FileCopyrightText: 2026 Teejer <teej.d.man@gmail.com>
++    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
 +    SPDX-License-Identifier: GPL-2.0-or-later
 +*/
@@ -1988,12 +1988,12 @@ index 00000000..8177bc9c
 +}
 diff --git a/ai/aihttpclient.h b/ai/aihttpclient.h
 new file mode 100644
-index 00000000..c45eb170
+index 00000000..d6372667
 --- /dev/null
 +++ b/ai/aihttpclient.h
 @@ -0,0 +1,65 @@
 +/*
-+    SPDX-FileCopyrightText: 2026 Teejer <teej.d.man@gmail.com>
++    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
 +    SPDX-License-Identifier: GPL-2.0-or-later
 +*/
@@ -2059,12 +2059,12 @@ index 00000000..c45eb170
 +};
 diff --git a/ai/aikeys.cpp b/ai/aikeys.cpp
 new file mode 100644
-index 00000000..9ec31a47
+index 00000000..da1a66c6
 --- /dev/null
 +++ b/ai/aikeys.cpp
 @@ -0,0 +1,109 @@
 +/*
-+    SPDX-FileCopyrightText: 2026 Teejer <teej.d.man@gmail.com>
++    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
 +    SPDX-License-Identifier: GPL-2.0-or-later
 +*/
@@ -2174,12 +2174,12 @@ index 00000000..9ec31a47
 +}
 diff --git a/ai/aikeys.h b/ai/aikeys.h
 new file mode 100644
-index 00000000..eb7cdd71
+index 00000000..49f66d8c
 --- /dev/null
 +++ b/ai/aikeys.h
 @@ -0,0 +1,30 @@
 +/*
-+    SPDX-FileCopyrightText: 2026 Teejer <teej.d.man@gmail.com>
++    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
 +    SPDX-License-Identifier: GPL-2.0-or-later
 +*/
@@ -2210,12 +2210,12 @@ index 00000000..eb7cdd71
 +}
 diff --git a/ai/aipanel.cpp b/ai/aipanel.cpp
 new file mode 100644
-index 00000000..e88584ab
+index 00000000..5a3ea477
 --- /dev/null
 +++ b/ai/aipanel.cpp
 @@ -0,0 +1,184 @@
 +/*
-+    SPDX-FileCopyrightText: 2026 Teejer <teej.d.man@gmail.com>
++    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
 +    SPDX-License-Identifier: GPL-2.0-or-later
 +*/
@@ -2400,12 +2400,12 @@ index 00000000..e88584ab
 +}
 diff --git a/ai/aipanel.h b/ai/aipanel.h
 new file mode 100644
-index 00000000..d2d232b5
+index 00000000..1ed65299
 --- /dev/null
 +++ b/ai/aipanel.h
 @@ -0,0 +1,70 @@
 +/*
-+    SPDX-FileCopyrightText: 2026 Teejer <teej.d.man@gmail.com>
++    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
 +    SPDX-License-Identifier: GPL-2.0-or-later
 +*/
@@ -2476,12 +2476,12 @@ index 00000000..d2d232b5
 +};
 diff --git a/ai/aisettingsdialog.cpp b/ai/aisettingsdialog.cpp
 new file mode 100644
-index 00000000..169f0657
+index 00000000..75d85212
 --- /dev/null
 +++ b/ai/aisettingsdialog.cpp
 @@ -0,0 +1,282 @@
 +/*
-+    SPDX-FileCopyrightText: 2026 Teejer <teej.d.man@gmail.com>
++    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
 +    SPDX-License-Identifier: GPL-2.0-or-later
 +*/
@@ -2764,12 +2764,12 @@ index 00000000..169f0657
 +}
 diff --git a/ai/aisettingsdialog.h b/ai/aisettingsdialog.h
 new file mode 100644
-index 00000000..d149de3a
+index 00000000..39533b0d
 --- /dev/null
 +++ b/ai/aisettingsdialog.h
 @@ -0,0 +1,58 @@
 +/*
-+    SPDX-FileCopyrightText: 2026 Teejer <teej.d.man@gmail.com>
++    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
 +    SPDX-License-Identifier: GPL-2.0-or-later
 +*/
@@ -2828,11 +2828,11 @@ index 00000000..d149de3a
 +};
 diff --git a/ai/aitext.h b/ai/aitext.h
 new file mode 100644
-index 00000000..419934a9
+index 00000000..d0a21673
 --- /dev/null
 +++ b/ai/aitext.h
 @@ -0,0 +1,39 @@
-+// SPDX-FileCopyrightText: 2026 Teejer <teej.d.man@gmail.com>
++// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +
 +#pragma once
@@ -2873,12 +2873,12 @@ index 00000000..419934a9
 +}
 diff --git a/ai/aitools.cpp b/ai/aitools.cpp
 new file mode 100644
-index 00000000..2e560e4e
+index 00000000..e7099853
 --- /dev/null
 +++ b/ai/aitools.cpp
 @@ -0,0 +1,377 @@
 +/*
-+    SPDX-FileCopyrightText: 2026 Teejer <teej.d.man@gmail.com>
++    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
 +    SPDX-License-Identifier: GPL-2.0-or-later
 +*/
@@ -3256,12 +3256,12 @@ index 00000000..2e560e4e
 +}
 diff --git a/ai/aitools.h b/ai/aitools.h
 new file mode 100644
-index 00000000..80d4b192
+index 00000000..0e9e547d
 --- /dev/null
 +++ b/ai/aitools.h
 @@ -0,0 +1,53 @@
 +/*
-+    SPDX-FileCopyrightText: 2026 Teejer <teej.d.man@gmail.com>
++    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
 +    SPDX-License-Identifier: GPL-2.0-or-later
 +*/
@@ -3682,12 +3682,12 @@ index 5e37a59c..c9fa694a 100644
      rdpgraphics.cpp
 diff --git a/rdp/rdpaiinput.cpp b/rdp/rdpaiinput.cpp
 new file mode 100644
-index 00000000..9c95b795
+index 00000000..f3617341
 --- /dev/null
 +++ b/rdp/rdpaiinput.cpp
 @@ -0,0 +1,195 @@
 +/*
-+    SPDX-FileCopyrightText: 2026 Teejer <teej.d.man@gmail.com>
++    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
 +    SPDX-License-Identifier: GPL-2.0-or-later
 +*/
@@ -3883,12 +3883,12 @@ index 00000000..9c95b795
 +}
 diff --git a/rdp/rdpaiinput.h b/rdp/rdpaiinput.h
 new file mode 100644
-index 00000000..86059d08
+index 00000000..a1960f89
 --- /dev/null
 +++ b/rdp/rdpaiinput.h
 @@ -0,0 +1,42 @@
 +/*
-+    SPDX-FileCopyrightText: 2026 Teejer <teej.d.man@gmail.com>
++    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
 +    SPDX-License-Identifier: GPL-2.0-or-later
 +*/
@@ -4762,12 +4762,12 @@ index 00000000..80cc5156
 +}
 diff --git a/test/run_ai_test.sh b/test/run_ai_test.sh
 new file mode 100755
-index 00000000..df4d6937
+index 00000000..9c6f7974
 --- /dev/null
 +++ b/test/run_ai_test.sh
 @@ -0,0 +1,96 @@
 +#!/usr/bin/env bash
-+# SPDX-FileCopyrightText: 2026 Teejer <teej.d.man@gmail.com>
++# SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +# SPDX-License-Identifier: GPL-2.0-or-later
 +#
 +# Builds and runs the AI conversation engine test against a local mock

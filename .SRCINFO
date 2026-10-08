@@ -1,0 +1,41 @@
+pkgbase = krdc-ai
+	pkgdesc = KDE Remote Desktop Client with an integrated AI assistant panel (per-connection chat, screenshots, mouse/keyboard control)
+	pkgver = 26.11.70
+	pkgrel = 2
+	url = https://invent.kde.org/network/krdc
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = glibc
+	depends = libstdc++
+	depends = qt6-base
+	depends = qtkeychain-qt6
+	depends = wayland
+	depends = kbookmarks
+	depends = kcmutils
+	depends = kcompletion
+	depends = kconfig
+	depends = kconfigwidgets
+	depends = kcoreaddons
+	depends = kcrash
+	depends = kdnssd
+	depends = kguiaddons
+	depends = ki18n
+	depends = kio
+	depends = knotifyconfig
+	depends = kstatusnotifieritem
+	depends = kwidgetsaddons
+	depends = kxmlgui
+	depends = libssh
+	depends = freerdp
+	depends = libvncserver
+	provides = krdc=26.11.70
+	conflicts = krdc
+	replaces = krdc
+	source = krdc::git+https://invent.kde.org/network/krdc.git#commit=5876dc366adc24f0751eaae6ef81cee742ce04e6
+	source = krdc-ai.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = krdc-ai
