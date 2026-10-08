@@ -1,7 +1,7 @@
 pkgbase = qoder-cn-ide-bin
 	pkgdesc = 面向真实软件开发的 AI 原生 Qoder CN IDE。
 	pkgver = 1.32.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://qoder.cn
 	arch = x86_64
 	license = LicenseRef-custom
@@ -22,6 +22,6 @@ pkgbase = qoder-cn-ide-bin
 	sha256sums = SKIP
 	sha256sums = d93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61
 	sha256sums = 144551f99c19e89223da901011e9d237904bd895900676b9b69d317bcb4181b8
-	sha256sums = fcadea06f057b073452ef94d4fa3358151968396c5b19b9b3e820c6246688c14
+	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
 
 pkgname = qoder-cn-ide-bin
