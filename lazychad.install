@@ -1,29 +1,20 @@
 post_install() {
   echo "==> LazyChad has been successfully installed."
-  echo "==> Type 'lchad' to start."
-  echo "==> IMPORTANT: Run 'lazychad-deps' as your normal user to complete setup (Node/Python/Rust)."
+  echo "==> REQUIRED NEXT STEP: run 'lazychad-deps' as your normal user"
+  echo "    (installs Neovim 0.12+, the language tools and all plugins)."
+  echo "==> Then start the editor with: lchad   (check your setup: lchad --doctor)"
 }
 
 post_upgrade() {
   echo "==> LazyChad has been successfully upgraded."
-  echo "==> IMPORTANT: Run 'lazychad-deps' as your normal user to update toolchain."
+  echo "==> Run 'lazychad-deps' as your normal user to update Neovim and the toolchain."
 }
 
 post_remove() {
-  echo "==> Cleaning up LazyChad user directories..."
-
-  # Loop through all home directories (including root) and remove LazyChad folders
-  for user_home in /home/* /root; do
-    [ -d "$user_home" ] || continue
-    for sub in .config/LazyChad .local/share/LazyChad .local/state/LazyChad .cache/LazyChad; do
-      if [ -d "$user_home/$sub" ]; then
-        echo "  -> Removing $user_home/$sub"
-        rm -rf "$user_home/$sub"
-      fi
-    done
-  done
-
-  echo "==> Note: Neovim installed via 'lazychad-nvim' under /usr/local is NOT removed."
-  echo "==>       Run 'lazychad-nvim --uninstall' to remove it."
-  echo "==> Done. All LazyChad-related user data has been removed."
+  # Packages shouldn't delete users' files; lazychad-uninstall does a full cleanup.
+  echo "==> LazyChad removed. Each user's config and plugins are kept in:"
+  echo "      ~/.config/LazyChad  ~/.local/share/LazyChad  ~/.local/state/LazyChad  ~/.cache/LazyChad"
+  echo "==> To delete them: rm -rf ~/.config/LazyChad ~/.local/share/LazyChad ~/.local/state/LazyChad ~/.cache/LazyChad"
+  echo "==> Neovim installed by lazychad-nvim under /usr/local was not removed. To remove it:"
+  echo "      sudo rm -rf /usr/local/bin/nvim /usr/local/lib/nvim /usr/local/share/nvim /usr/local/share/applications/nvim.desktop /usr/local/share/man/man1/nvim.1"
 }

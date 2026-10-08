@@ -1,6 +1,6 @@
 # Maintainer: Mistan Khomdram <mistankhomdram@gmail.com>
 pkgname=lazychad
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 epoch=1
 pkgdesc="An intelligent, highly-aesthetic Neovim wrapper built on NvChad"
@@ -8,21 +8,28 @@ arch=('any')
 url="https://github.com/MistanKh/LazyChad"
 license=('MIT')
 depends=(
-  'neovim' 'git' 'ripgrep' 'fd' 'bash' 'make' 'unzip' 'gcc'
-  'ttf-jetbrains-mono-nerd' 'neovide'
-
-  'nodejs' 'npm' 
-  'python' 'python-pip'
-  'lazygit' 'lua51' 'luarocks' 'lua-jsregexp'
+  'git' 'curl' 'tar' 'ripgrep' 'fd' 'bash' 'make' 'unzip' 'gcc'
+  'ttf-jetbrains-mono-nerd'
+  'nodejs' 'npm'
+  'python' 'python-pynvim'
+  'lua51' 'luarocks' 'lua-jsregexp'
   'wl-clipboard' 'xclip'
+)
+# neovim is optional, as in nfpm.yaml: 'lazychad-nvim' installs Neovim 0.12+
+# to /usr/local, and a hard depend would tie LazyChad to the repo package.
+optdepends=(
+  'neovim: system Neovim (lazychad-deps installs 0.12+ to /usr/local)'
+  'neovide: GUI frontend (lazychad-deps --gui)'
+  'lazygit: terminal Git UI'
 )
 provides=('lchad')
 install=lazychad.install
-source=("git+https://github.com/MistanKh/LazyChad.git")
-sha256sums=('SKIP')
+# Built from the tagged release; the AUR sync workflow fills in the checksum.
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('d03cf324b150c6bb4b8608fc0c7de980d1780ca6a9a8569b0118628a332073d2')
 
 package() {
-  cd "$srcdir/LazyChad"
+  cd "$srcdir/LazyChad-$pkgver"
 
   # Install the wrapper binary
   install -Dm755 bin/lchad "$pkgdir/usr/bin/lchad"
@@ -33,7 +40,7 @@ package() {
   # Install the Neovim configuration files
   install -dm755 "$pkgdir/usr/share/lazychad"
   cp -a init.lua lua .version "$pkgdir/usr/share/lazychad/"
-  
+
   # Install documentation and license
   install -Dm644 README.md "$pkgdir/usr/share/doc/lazychad/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
