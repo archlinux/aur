@@ -1,6 +1,6 @@
 pkgbase = onekeepass-bin
 	pkgdesc = A secure password manager for macOS,Linux and Windows platforms
-	pkgver = 0.26.0
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://github.com/OneKeePass/desktop
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = onekeepass-bin
 	depends = hicolor-icon-theme
 	provides = OneKeePass
 	conflicts = onekeepass
-	source_x86_64 = https://github.com/OneKeePass/desktop/releases/download/v0.26.0/OneKeePass_0.26.0_linux_x86_64.deb
-	sha256sums_x86_64 = 4ebda8c78fca8521240c0a54e3dec23ec9902a6598fdb1d9c0834c764d494b0a
+	source_x86_64 = https://github.com/OneKeePass/desktop/releases/download/v0.27.0/OneKeePass_0.27.0_linux_x86_64.deb
+	sha256sums_x86_64 = 1f934b32bc02f7c6eb082f8a9730cc7ea0772afde960de56b15008941c612faf
 
 pkgname = onekeepass-bin
