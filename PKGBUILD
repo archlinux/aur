@@ -5,7 +5,7 @@ pkgname=kendex-bin
 # 5.x a machine already holds and refuses the upgrade. Every kendex package
 # carries the same epoch so the four stay comparable with each other.
 epoch=1
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Package manager for AI coding agents, skills, and hooks (prebuilt desktop app and CLI)'
 arch=('x86_64' 'aarch64')
@@ -61,12 +61,12 @@ sha256sums=(
   '1097d93034e32eaa55c2a08e73960a886a62394691f8c3456617336c458dfc36'
 )
 sha256sums_x86_64=(
-  '72de2db9ac3c54fa6b40aabbb04c5f27b9da08199476cccac81cacd0a67c95b9'
-  '19f714768ce02548f0701a68b29eb1cc73190044d6e27d097f41d32f9e0c3a1a'
+  '5709d62768a5dd26bfd82acc7f20132ae770919eea49ac59143323be4a688d84'
+  '5c01940516d6301a11909fce9acd3edc9a3da7f8be0eca484f1ea839b8776d22'
 )
 sha256sums_aarch64=(
-  '434d4c69293a7f337245224e4a5b607e2c2ffe852ec0a778fa6116f4dd0f217c'
-  '337fb1fcb2d53177aef8afb529ba74353ecac8188ab619d346192a75f11c7b16'
+  'b018485e027e35b0bb2b773d94b8a794812f685b3fa184c17059874e37026b32'
+  '261f8b354419d05a28d274fd6ec3add8bf887629bb8b83add5d818502bfdf71f'
 )
 
 package() {
