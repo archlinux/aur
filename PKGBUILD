@@ -17,9 +17,9 @@
 # anything depending on tio stays satisfied.
 
 pkgname=tio-fork-jetm
-pkgver=3.9.r100.ga068040
+pkgver=3.9.r103.g543107c
 pkgrel=1
-_commit=a068040d39d057ec368d5d2bd71e868fc6b88c0e
+_commit=543107cf9f1f4bec993355e9e0d3ecbd2d42f715
 pkgdesc='Serial device I/O tool - fork with socket client mode and RFC 2217'
 arch=('x86_64')
 url='https://github.com/jetm/tio'
