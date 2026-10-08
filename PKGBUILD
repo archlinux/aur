@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="A multiplatform, nano DLNA media server for the terminal"
 
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,7 +27,7 @@ depends=('glibc' 'libgcc')
 options=('!lto' '!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('530b665da3316758881ff4600b9bb74b8b87b7a40a9d16246b40f53c1d7941e8')
+sha256sums=('591956fc7c3f2cdc9f6633c20bf96ede0480e3efed664ad28ba4afada218c849')
 
 
 prepare() {
