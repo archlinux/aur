@@ -1,0 +1,18 @@
+pkgbase = git-identity-manager-bin
+	pkgdesc = Switch between Git identities per repository (prebuilt static binary)
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/Dxsk/git-identity-manager
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = git
+	provides = git-identity-manager
+	conflicts = git-identity-manager
+	conflicts = git-identity
+	source_x86_64 = git-identity-manager-1.2.1-x86_64.tar.gz::https://github.com/Dxsk/git-identity-manager/releases/download/v1.2.1/git-identity-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = a045137c58f323dba479ae07c5e8dd03b605aced83d0a91a28ee93df426f99d9
+	source_aarch64 = git-identity-manager-1.2.1-aarch64.tar.gz::https://github.com/Dxsk/git-identity-manager/releases/download/v1.2.1/git-identity-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 5149c17eaee1821a35f4d51f02b41def74ac3396fa5df744ee5ed11ca89c6a0a
+
+pkgname = git-identity-manager-bin
