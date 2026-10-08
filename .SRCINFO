@@ -1,0 +1,18 @@
+pkgbase = crateyard-bin
+	pkgdesc = Crateyard: self-hosted Rust crate and npm package registry with an embedded web UI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/skorotkiewicz/registry
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = crateyard=0.1.0
+	conflicts = crateyard
+	options = !strip
+	options = !debug
+	source_x86_64 = crateyard-bin-v0.1.0-x86_64.tar.gz::https://github.com/skorotkiewicz/registry/releases/download/v0.1.0/crateyard-linux-amd64.tar.gz
+	sha256sums_x86_64 = 525d88b787aa29daabbf5ff41d3e362f976d2998e015ca13fadbfd146d88976c
+	source_aarch64 = crateyard-bin-v0.1.0-aarch64.tar.gz::https://github.com/skorotkiewicz/registry/releases/download/v0.1.0/crateyard-linux-arm64.tar.gz
+	sha256sums_aarch64 = 87159820010e90e4ef0dfa354f6ae86ebf3a830fc07f6869252865dfefcc4e9b
+
+pkgname = crateyard-bin
