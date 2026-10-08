@@ -1,0 +1,17 @@
+pkgbase = nak-nodb-bin
+	pkgdesc = a command line tool for doing all things Nostr (nodb version)
+	pkgver = 0.21.1
+	pkgrel = 1
+	url = https://github.com/fiatjaf/nak
+	arch = x86_64
+	license = Unlicense
+	provides = nak
+	conflicts = nak
+	conflicts = nak-bin
+	conflicts = nak-b-bin
+	source = nak-nodb-bin-0.21.1::https://github.com/fiatjaf/nak/releases/download/v0.21.1/nak-nodb-v0.21.1-linux-amd64
+	source = nak.1::https://github.com/fiatjaf/nak/releases/download/v0.21.1/nak.1
+	sha256sums = 2ecf1c12a6443dc56a1934693da66cbe0ce74f34bcb999c74acaf492bd6dc2bc
+	sha256sums = SKIP
+
+pkgname = nak-nodb-bin
