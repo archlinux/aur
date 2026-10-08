@@ -1,6 +1,6 @@
 pkgbase = ocaml-lo
 	pkgdesc = OCaml bindings for LO library
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/savonet/ocaml-lo
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ocaml-lo
 	depends = ocaml
 	depends = liblo
 	options = !strip
-	source = https://github.com/savonet/ocaml-lo/archive/v0.2.0.tar.gz
-	sha256sums = c8e11170e0f44ba096be0f19e7e78827f2fbb9cdb030fa0fdb88bc24bb9e1051
+	source = https://github.com/savonet/ocaml-lo/archive/v0.2.1.tar.gz
+	sha256sums = 6a85c0b9fc8ae28c021c3a0288d28d14b87744d4b69420e74fff520adee84cc8
 
 pkgname = ocaml-lo

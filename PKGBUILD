@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-lo
-pkgver=0.2.0 # renovate: datasource=github-tags depName=savonet/ocaml-lo
+pkgver=0.2.1 # renovate: datasource=github-tags depName=savonet/ocaml-lo
 pkgrel=1
 pkgdesc="OCaml bindings for LO library"
 arch=('x86_64')
@@ -27,4 +27,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('c8e11170e0f44ba096be0f19e7e78827f2fbb9cdb030fa0fdb88bc24bb9e1051')
+sha256sums=('6a85c0b9fc8ae28c021c3a0288d28d14b87744d4b69420e74fff520adee84cc8')
