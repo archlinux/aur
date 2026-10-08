@@ -45,17 +45,22 @@ engine test). The package patch is just that range squashed:
   `shared-mime-info`, and shipping it fails install with "exists in
   filesystem" errors. extra/krdc strips it the same way.
 
-## Publishing to the AUR (optional)
+## Publishing to the AUR
+
+Repo is live: https://aur.archlinux.org/packages/krdc-ai (remote `origin`
+= `ssh://aur@aur.archlinux.org/krdc-ai.git`, login = your archlinux.org
+account, SSH key added under aur.archlinux.org → My Settings).
+
+**Every commit must contain an up-to-date `.SRCINFO`** or the AUR
+pre-receive hook rejects the push:
 
 ```bash
-git init && git add PKGBUILD krdc-ai.patch README.md
-git commit -m "krdc-ai: initial package"
-git remote add origin ssh://aur@aur.archlinux.org/krdc-ai.git   # after requesting the package
-git push -u origin master
+makepkg --printsrcinfo > .SRCINFO   # run after any PKGBUILD change
+git add PKGBUILD krdc-ai.patch README.md .SRCINFO
+git commit && git push
 ```
 
-`krdc-ai.patch` must be committed alongside the PKGBUILD (it is a `source=`
-entry). Users building from the AUR get it via the normal helper flow.
+Users install it with any AUR helper: `yay -S krdc-ai`.
 
 ## Going back to the repo version
 
