@@ -1,8 +1,8 @@
 pkgbase = codewhale-bin
 	pkgdesc = CodeWhale (formerly DeepSeek-TUI) - DeepSeek-first agentic terminal for open-source coding models
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
-	url = https://github.com/Hmbown/CodeWhale
+	url = https://github.com/codewhale-hq/Codewhale
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -20,11 +20,11 @@ pkgbase = codewhale-bin
 	conflicts = deepseek-tui-bin
 	replaces = deepseek-tui-bin
 	options = !strip
-	source = LICENSE-0.10.0::https://raw.githubusercontent.com/Hmbown/CodeWhale/v0.10.0/LICENSE
+	source = LICENSE-0.10.1::https://raw.githubusercontent.com/codewhale-hq/Codewhale/v0.10.1/LICENSE
 	sha256sums = 25b5d5a7553af7604772f65aac936540d7e9f5562a9e6a8ca9d02e4f628e9d51
-	source_x86_64 = codewhale-0.10.0-x86_64::https://github.com/Hmbown/CodeWhale/releases/download/v0.10.0/codewhale-linux-x64
-	sha256sums_x86_64 = c443c2c32c743dd80ff56397b1e7bbfe55b1ca6306ff55065b977bc655d50ed1
-	source_aarch64 = codewhale-0.10.0-aarch64::https://github.com/Hmbown/CodeWhale/releases/download/v0.10.0/codewhale-linux-arm64
-	sha256sums_aarch64 = f3e2d82257cac33ef033f033a9638cb00189a3334deb58fbff7b89aed218273a
+	source_x86_64 = codewhale-0.10.1-x86_64::https://github.com/codewhale-hq/Codewhale/releases/download/v0.10.1/codewhale-linux-x64
+	sha256sums_x86_64 = ed2d83b3853de803ee39f574c745d1e1c9f6f8bf99ed3aec3835425e0c26993b
+	source_aarch64 = codewhale-0.10.1-aarch64::https://github.com/codewhale-hq/Codewhale/releases/download/v0.10.1/codewhale-linux-arm64
+	sha256sums_aarch64 = efe702a5083fe78a7e09676b129dedba4f595a12b4c824c7f1a794da9ca6d6da
 
 pkgname = codewhale-bin
