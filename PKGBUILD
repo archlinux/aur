@@ -4,7 +4,7 @@
 
 _pkgname=proto
 pkgname="${_pkgname}-bin"
-pkgver=0.63.0
+pkgver=0.63.1
 pkgrel=1
 pkgdesc='Pluggable multi-language version manager'
 license=('MIT')
@@ -16,8 +16,8 @@ depends=('glibc' 'libgcc' 'git' 'unzip' 'gzip' 'xz')
 optdepends=('rustup: support for Rust toolchains')
 source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}.tar.xz::${url}/releases/download/v${pkgver}/proto_cli-${arch[0]}-unknown-linux-gnu.tar.xz")
 source_aarch64=("${_pkgname}-${pkgver}-${arch[1]}.tar.xz::${url}/releases/download/v${pkgver}/proto_cli-${arch[1]}-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('c9284511751f83cc5dc12ca1beaa4a90c805b2c5d991a3800df171d142981c35')
-sha256sums_aarch64=('38b6f99eb55bdbab45fd89abdf79339bdc6db34fd2883bdaf8af0d7132932443')
+sha256sums_x86_64=('f4712f107ab31403ca3454e3cefcc96433f8970dbedc3cb310624ca537a64ea0')
+sha256sums_aarch64=('8809a83ebd818aeb34d9144a55c1726dd959212bc745ed9c6c0f9367a153893b')
 
 prepare() {
   cd "proto_cli-${CARCH}-unknown-linux-gnu"
