@@ -9,9 +9,9 @@
 # pushes it. Do not hand-edit those three fields in the AUR checkout.
 
 pkgname=ivar
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
-pkgdesc="Mount the repos a feature spans into one directory, on one branch, for one agent session"
+pkgdesc="Multi-repo worktrees for coding agents: one feature across repos, on one branch, one PR per repo"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mnzsss/ivar"
 license=('Apache-2.0')
@@ -31,7 +31,7 @@ conflicts=('ivar-bin')
 #   -debug split package to carry.
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('657c67b3788a782ab9afad611d64cf10628f793c2b02f14411bee5c85e42756d')
+sha256sums=('c2ba8bf90993f44072feee924b7287d6715a3fdb01955562d6cd3c2341d6eb94')
 
 prepare() {
     cd "$pkgname-$pkgver"
