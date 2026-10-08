@@ -1,6 +1,6 @@
 pkgbase = claude-desktop-extra
 	pkgdesc = Claude Desktop (official Linux build) with extra features: Computer Use, custom themes, multi-profile, Quick Entry - for distros upstream does not ship
-	pkgver = 2.26454.0
+	pkgver = 2.26454.2
 	pkgrel = 1
 	url = https://github.com/patrickjaja/claude-desktop-extra
 	install = claude-desktop-extra.install
@@ -57,13 +57,13 @@ pkgbase = claude-desktop-extra
 	replaces = claude-desktop-bin
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = claude-desktop-2.26454.0-1-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.26454.0/claude-desktop-2.26454.0-linux.tar.gz
+	source_x86_64 = claude-desktop-2.26454.2-1-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.26454.2/claude-desktop-2.26454.2-linux.tar.gz
 	optdepends_x86_64 = qemu-system-x86: Cowork agent workspace VM (needs /dev/kvm + user in kvm group)
 	optdepends_x86_64 = edk2-ovmf: Cowork agent workspace VM UEFI firmware (OVMF)
-	sha256sums_x86_64 = 94205d65752323da2b3f28cd45d31b5b70172898122a85c567c0b916d4ff7c61
-	source_aarch64 = claude-desktop-2.26454.0-1-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.26454.0/claude-desktop-2.26454.0-linux-aarch64.tar.gz
+	sha256sums_x86_64 = 55d03dc938b76fb99a07a1abeea8c9958a5d918517eefceac0dfc9799768f8f0
+	source_aarch64 = claude-desktop-2.26454.2-1-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.26454.2/claude-desktop-2.26454.2-linux-aarch64.tar.gz
 	optdepends_aarch64 = qemu-system-aarch64: Cowork agent workspace VM (needs /dev/kvm + user in kvm group)
 	optdepends_aarch64 = edk2-aarch64: Cowork agent workspace VM UEFI firmware (AAVMF)
-	sha256sums_aarch64 = f5cd59cedf11f22f59f1ca0ebca9e1ec8d7907b5c9707984798956b64ac0da54
+	sha256sums_aarch64 = 2607aa00d1eb52f0b6918243dbe9ff1ea4d44f085d6e3406b1e541044a17d28a
 
 pkgname = claude-desktop-extra
