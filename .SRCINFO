@@ -1,7 +1,7 @@
 pkgbase = iptvnator-electron-bin
 	pkgdesc = Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more.
 	pkgver = 0.24.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://4gray.github.io/iptvnator/
 	arch = aarch64
 	arch = armv7h
@@ -13,13 +13,13 @@ pkgbase = iptvnator-electron-bin
 	conflicts = iptvnator
 	source = LICENSE-0.24.0.md::https://raw.githubusercontent.com/4gray/iptvnator/v0.24.0/LICENSE.md
 	source = iptvnator-electron.sh
-	sha256sums = 475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = b60916d2da44b630140f8e933e5edff88c27285bce1a3d7d7cf2877e3ebf08c6
+	sha256sums = fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8
 	source_aarch64 = iptvnator-electron-0.24.0-aarch64.deb::https://github.com/4gray/iptvnator/releases/download/v0.24.0/iptvnator-0.24.0-linux-arm64.deb
-	sha256sums_aarch64 = fa6e968ca22848194a542095ee2a59bac6d50e2dfa699b827f801eaeb71991e8
+	sha256sums_aarch64 = 759ccfdbaf066ab95d646413035e5b4cd2d471ff82c740c1380a9ddfa735df55
 	source_armv7h = iptvnator-electron-0.24.0-armv7h.deb::https://github.com/4gray/iptvnator/releases/download/v0.24.0/iptvnator-0.24.0-linux-armv7l.deb
-	sha256sums_armv7h = 9eeabf872f79159147a237bb4b8c50342aa96cb032c2616352d1e133276c1a09
+	sha256sums_armv7h = dabcf3eb783f0425431b0d3400f393110319717661f8146b433195650724bc86
 	source_x86_64 = iptvnator-electron-0.24.0-x86_64.deb::https://github.com/4gray/iptvnator/releases/download/v0.24.0/iptvnator-0.24.0-linux-amd64.deb
-	sha256sums_x86_64 = f30bac91ae2fe6788bc8124188a32eca2dcf8013c04c7861cce3851d958b11ff
+	sha256sums_x86_64 = faaa85552ef23ee64ec835f51c598f788e998a329010ed73ec024b963fedf0a2
 
 pkgname = iptvnator-electron-bin

@@ -4,7 +4,7 @@ pkgname="${_appname}-electron-bin"
 _pkgname=IPTVnator
 pkgver=0.24.0
 _electronversion=43
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more."
 arch=(
     'aarch64'
@@ -27,13 +27,13 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-arm64.deb")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-armv7l.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-amd64.deb")
-sha256sums=('475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('fa6e968ca22848194a542095ee2a59bac6d50e2dfa699b827f801eaeb71991e8')
-sha256sums_armv7h=('9eeabf872f79159147a237bb4b8c50342aa96cb032c2616352d1e133276c1a09')
-sha256sums_x86_64=('f30bac91ae2fe6788bc8124188a32eca2dcf8013c04c7861cce3851d958b11ff')
+sha256sums=('b60916d2da44b630140f8e933e5edff88c27285bce1a3d7d7cf2877e3ebf08c6'
+            'fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8')
+sha256sums_aarch64=('759ccfdbaf066ab95d646413035e5b4cd2d471ff82c740c1380a9ddfa735df55')
+sha256sums_armv7h=('dabcf3eb783f0425431b0d3400f393110319717661f8146b433195650724bc86')
+sha256sums_x86_64=('faaa85552ef23ee64ec835f51c598f788e998a329010ed73ec024b963fedf0a2')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -50,7 +50,6 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
-        s/@cfgdirname@/${_appname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
@@ -65,7 +64,7 @@ prepare() {
 		aarch64)	_archrem=x64	;;
 		x86_64)		_archrem=arm	;;
 	esac
-	find "${_app_dir}/resources/app.asar.unpacked" -type d \
+	find "${_app_dir}/resources/app.asar.unpacked" -depth \
 		\( -name "darwin*" -o -name "win32*" -o -name "*${_archrem}"* \) \
 		-exec rm -rf {} +
 }
