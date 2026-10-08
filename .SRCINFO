@@ -1,0 +1,23 @@
+pkgbase = playy
+	pkgdesc = Music player for the terminal: your music folder and YouTube Music in one library, offline or online
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sambuaneesh/playy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = mpv
+	depends = yt-dlp
+	depends = ffmpeg
+	depends = glibc
+	optdepends = kitty: sharp cover art (other terminals show block art)
+	optdepends = libnotify: a notification when a song starts
+	optdepends = wl-clipboard: copy links and open shared links from the clipboard (Wayland)
+	optdepends = xdg-utils: open links in the browser
+	provides = playy
+	conflicts = playy-bin
+	source = playy-0.1.0.tar.gz::https://github.com/sambuaneesh/playy/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 1e026c93844537661a335f5aada6a42e3d1d36b036502f767b959022b8721a70
+
+pkgname = playy
