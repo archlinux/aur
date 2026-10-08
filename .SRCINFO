@@ -1,0 +1,18 @@
+pkgbase = quotabox-bin
+	pkgdesc = Claude Code, ChatGPT / Codex and GitHub Copilot usage limits in your tray
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://quotabox.sademir.com
+	arch = x86_64
+	license = MIT
+	depends = gtk4
+	depends = libadwaita
+	depends = hicolor-icon-theme
+	optdepends = gnome-shell-extension-appindicator: tray icon on GNOME
+	optdepends = waybar: usage in the bar via `quotabox waybar`
+	provides = quotabox
+	conflicts = quotabox
+	source = https://quotabox.sademir.com/linux/quotabox-0.1.0-x86_64.tar.gz
+	sha256sums = 16375b9fd3e25caba67465f223a2e016117ab2f7e3dc13f46d08309368cc8b34
+
+pkgname = quotabox-bin
