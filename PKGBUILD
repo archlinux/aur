@@ -1,3 +1,4 @@
+# Maintainer: Thien An Dang Thanh <thienandangthanh at gmail dot com>
 pkgname=aicoworker-bin
 pkgver=2026.8.3
 pkgrel=1
