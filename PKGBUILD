@@ -12,7 +12,7 @@ package() {
 }
 
 pkgname="nak-bin"
-pkgver="0.21.0"
+pkgver="0.21.2"
 pkgrel="1"
 pkgdesc="a command line tool for doing all things Nostr"
 arch=("x86_64")
@@ -23,4 +23,5 @@ provides=("nak")
 conflicts=("nak")
 source=("$pkgname-$pkgver::https://github.com/fiatjaf/nak/releases/download/v$pkgver/nak-v$pkgver-linux-amd64" "nak.1::https://github.com/fiatjaf/nak/releases/download/v$pkgver/nak.1")
 
-sha256sums=('7bf6d8d82a9e9cf9aca74a04449fb2235bc49624a73b3539cf7d6f95304837a1' 'SKIP')
+sha256sums=('0acd56fea6ab1b9a0a68c8615670c6f8eff9e8878922442e387b94ee15266bb8'
+            '59c7c04cc84a343c72bfc83d17f6ea4a4a2216bd71c9ef11c6997baeb70b9ca3')

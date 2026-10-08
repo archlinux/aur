@@ -1,0 +1,1444 @@
+.nh
+.TH nak 1
+
+.SH NAME
+.PP
+nak - the nostr army knife command-line tool
+
+
+.SH SYNOPSIS
+.PP
+nak
+
+.PP
+.RS
+
+.nf
+[--auth]
+[--force-pre-auth|--fpa]
+[--sec]=[value]
+
+.fi
+.RE
+
+.PP
+\fBUsage\fP:
+
+.PP
+.RS
+
+.nf
+nak [GLOBAL OPTIONS] [command [COMMAND OPTIONS]] [ARGUMENTS...]
+
+.fi
+.RE
+
+
+.SH GLOBAL OPTIONS
+.PP
+\fB--auth\fP: always perform nip42 "AUTH" when facing an "auth-required: " rejection and try again
+
+.PP
+\fB--force-pre-auth, --fpa\fP: after connecting, wait for a nip42 "AUTH" message to be received, act on it and only then send the query
+
+.PP
+\fB--sec\fP="": secret key to sign the event, as nsec, ncryptsec or hex, or a bunker URL (default: "c0fe69bdd4f04f3a67964c2595a9f17ab726e115e5a90ca116969c55aa7235a8")
+
+
+.SH COMMANDS
+.SH event
+.PP
+generates an encoded event and either prints it or sends it to a set of relays
+
+.PP
+\fB--author, -a\fP="": set the event pubkey or add an 'a' tag if it's an address
+
+.PP
+\fB--confirm\fP: ask before publishing the event
+
+.PP
+\fB--content, -c\fP="": event content (if it starts with an '@' will read from a file)
+
+.PP
+\fB--created-at, --time, --ts\fP="": unix timestamp value for the created_at field (default: 2026-10-08 14:40:41 +0000 UTC)
+
+.PP
+\fB--envelope\fP: print the event enveloped in a ["EVENT", ...] message ready to be sent to a relay
+
+.PP
+\fB--force-sign\fP: when an event is already signed and not modified it isn't signed again even when a different --sec is given, this option negates that
+
+.PP
+\fB--github\fP: treat empty stdin as no stdin at all, as GitHub Actions always opens it
+
+.PP
+\fB--jq\fP="": filter returned events with jq expression
+
+.PP
+\fB--jq-raw\fP: print --jq string results without JSON quoting, like \fB\fCjq -r\fR
+
+.PP
+\fB--kind, -k\fP="": event kind number or name (default: 0)
+
+.PP
+\fB--musig\fP="": number of signers to use for musig2 (default: 1)
+
+.PP
+\fB--nevent\fP: print the nevent code (to stderr) after the event is published
+
+.PP
+\fB--no-sign\fP: print the event without signing it, using the specified pubkey
+
+.PP
+\fB--outbox\fP: publish to the "write" relays of the author and to the "read" relays of anyone mentioned  in "p" tags
+
+.PP
+\fB--pow\fP="": nip13 difficulty to target when doing hash work on the event id (default: 0)
+
+.PP
+\fB--tag, -t\fP="": sets a tag field on the event, takes a value like -t e= or -t sometag="value one;value two;value three"
+
+.PP
+\fB-d\fP="": shortcut for --tag d=
+
+.PP
+\fB-e\fP="": shortcut for --tag e=
+
+.PP
+\fB-h\fP="": shortcut for --tag h=
+
+.PP
+\fB-p\fP="": shortcut for --tag p=
+
+.SH req
+.PP
+generates encoded REQ messages and optionally use them to talk to relays
+
+.PP
+\fB--author, -a\fP="": only accept events from these authors
+
+.PP
+\fB--bare\fP: when printing the filter, print just the filter, not enveloped in a ["REQ", ...] array
+
+.PP
+\fB--id, -i\fP="": only accept events with these ids
+
+.PP
+\fB--ids-only\fP: use nip77 to fetch just a list of ids
+
+.PP
+\fB--jq\fP="": filter returned events with jq expression
+
+.PP
+\fB--jq-raw\fP: print --jq string results without JSON quoting, like \fB\fCjq -r\fR
+
+.PP
+\fB--kind, -k\fP="": only accept events with these kind numbers or kind names
+
+.PP
+\fB--limit, -l\fP="": only accept up to this number of events (default: 0)
+
+.PP
+\fB--no-verify\fP: skip event signature verification from relays
+
+.PP
+\fB--only-missing\fP="": use nip77 negentropy to only fetch events that aren't present in the given jsonl file
+
+.PP
+\fB--outbox\fP: read from "write" relays of "authors" and/or from the "read" relays of any "#p" or "#P" tags
+
+.PP
+\fB--outbox-relays-per-pubkey, -n\fP="": number of outbox relays to use for each pubkey (default: 3)
+
+.PP
+\fB--paginate\fP: make multiple REQs to the relay decreasing the value of 'until' until 'limit' or 'since' conditions are met
+
+.PP
+\fB--paginate-interval\fP="": time between queries when using --paginate (default: 0s)
+
+.PP
+\fB--search\fP="": a nip50 search query, use it only with relays that explicitly support it
+
+.PP
+\fB--since, -s\fP="": only accept events newer than this (unix timestamp) (default: 1970-01-01 00:00:00 +0000 UTC)
+
+.PP
+\fB--spell\fP: output a spell event (kind 777) instead of a filter
+
+.PP
+\fB--stream\fP: keep the subscription open, printing all events as they are returned
+
+.PP
+\fB--tag, -t\fP="": takes a tag like -t e=, only accept events with these tags
+
+.PP
+\fB--until, -u\fP="": only accept events older than this (unix timestamp) (default: 1970-01-01 00:00:00 +0000 UTC)
+
+.PP
+\fB-d\fP="": shortcut for --tag d=
+
+.PP
+\fB-e\fP="": shortcut for --tag e=
+
+.PP
+\fB-h\fP="": shortcut for --tag h=
+
+.PP
+\fB-p\fP="": shortcut for --tag p=
+
+.SH filter
+.PP
+applies an event filter to an event to see if it matches.
+
+.PP
+\fB--author, -a\fP="": only accept events from these authors
+
+.PP
+\fB--id, -i\fP="": only accept events with these ids
+
+.PP
+\fB--jq\fP="": filter matching events with jq expression
+
+.PP
+\fB--jq-raw\fP: print --jq string results without JSON quoting, like \fB\fCjq -r\fR
+
+.PP
+\fB--kind, -k\fP="": only accept events with these kind numbers or kind names
+
+.PP
+\fB--limit, -l\fP="": only accept up to this number of events (default: 0)
+
+.PP
+\fB--search\fP="": a nip50 search query, use it only with relays that explicitly support it
+
+.PP
+\fB--since, -s\fP="": only accept events newer than this (unix timestamp) (default: 1970-01-01 00:00:00 +0000 UTC)
+
+.PP
+\fB--tag, -t\fP="": takes a tag like -t e=, only accept events with these tags
+
+.PP
+\fB--until, -u\fP="": only accept events older than this (unix timestamp) (default: 1970-01-01 00:00:00 +0000 UTC)
+
+.PP
+\fB-d\fP="": shortcut for --tag d=
+
+.PP
+\fB-e\fP="": shortcut for --tag e=
+
+.PP
+\fB-h\fP="": shortcut for --tag h=
+
+.PP
+\fB-p\fP="": shortcut for --tag p=
+
+.SH fetch
+.PP
+fetches events related to the given nip19 or nip05 code, or nostr web address, from the included relay hints or the author's outbox relays.
+
+.PP
+\fB--author, -a\fP="": only accept events from these authors
+
+.PP
+\fB--id, -i\fP="": only accept events with these ids
+
+.PP
+\fB--jq\fP="": filter returned events with jq expression
+
+.PP
+\fB--jq-raw\fP: print --jq string results without JSON quoting, like \fB\fCjq -r\fR
+
+.PP
+\fB--kind, -k\fP="": only accept events with these kind numbers or kind names
+
+.PP
+\fB--limit, -l\fP="": only accept up to this number of events (default: 0)
+
+.PP
+\fB--relay, -r\fP="": also use these relays to fetch from
+
+.PP
+\fB--search\fP="": a nip50 search query, use it only with relays that explicitly support it
+
+.PP
+\fB--since, -s\fP="": only accept events newer than this (unix timestamp) (default: 1970-01-01 00:00:00 +0000 UTC)
+
+.PP
+\fB--tag, -t\fP="": takes a tag like -t e=, only accept events with these tags
+
+.PP
+\fB--until, -u\fP="": only accept events older than this (unix timestamp) (default: 1970-01-01 00:00:00 +0000 UTC)
+
+.PP
+\fB-d\fP="": shortcut for --tag d=
+
+.PP
+\fB-e\fP="": shortcut for --tag e=
+
+.PP
+\fB-h\fP="": shortcut for --tag h=
+
+.PP
+\fB-p\fP="": shortcut for --tag p=
+
+.SH count
+.PP
+generates encoded COUNT messages and optionally use them to talk to relays
+
+.PP
+\fB--author, -a\fP="": only accept events from these authors
+
+.PP
+\fB--id, -i\fP="": only accept events with these ids
+
+.PP
+\fB--kind, -k\fP="": only accept events with these kind numbers or kind names
+
+.PP
+\fB--limit, -l\fP="": only accept up to this number of events (default: 0)
+
+.PP
+\fB--search\fP="": a nip50 search query, use it only with relays that explicitly support it
+
+.PP
+\fB--since, -s\fP="": only accept events newer than this (unix timestamp) (default: 1970-01-01 00:00:00 +0000 UTC)
+
+.PP
+\fB--tag, -t\fP="": takes a tag like -t e=, only accept events with these tags
+
+.PP
+\fB--until, -u\fP="": only accept events older than this (unix timestamp) (default: 1970-01-01 00:00:00 +0000 UTC)
+
+.PP
+\fB-d\fP="": shortcut for --tag d=
+
+.PP
+\fB-e\fP="": shortcut for --tag e=
+
+.PP
+\fB-h\fP="": shortcut for --tag h=
+
+.PP
+\fB-p\fP="": shortcut for --tag p=
+
+.SH decode
+.PP
+decodes nip19, nip21, nip05 or hex entities
+
+.PP
+\fB--id, -e\fP: return just the event id, if applicable
+
+.PP
+\fB--pubkey, -p\fP: return just the pubkey, if applicable
+
+.SH encode
+.PP
+encodes notes and other stuff to nip19 entities
+
+.SS npub
+.PP
+encode a hex public key into bech32 'npub' format
+
+.SS nsec
+.PP
+encode a hex private key into bech32 'nsec' format
+
+.SS nprofile
+.PP
+generate profile codes with attached relay information
+
+.PP
+\fB--outbox\fP="": automatically appends outbox relays to the code (default: <<>>)
+
+.PP
+\fB--relay, -r\fP="": attach relay hints to the code
+
+.SS nevent
+.PP
+generate event codes with optionally attached relay information
+
+.PP
+\fB--author, -a\fP="": attach an author pubkey as a hint to the nevent code (default: pk::0000000000000000000000000000000000000000000000000000000000000000)
+
+.PP
+\fB--outbox\fP="": automatically appends outbox relays to the code (default: <<>>)
+
+.PP
+\fB--relay, -r\fP="": attach relay hints to the code
+
+.SS naddr
+.PP
+generate codes for addressable events
+
+.PP
+\fB--identifier, -d\fP="": the "d" tag identifier of this replaceable event -- can also be read from stdin
+
+.PP
+\fB--kind, -k\fP="": kind of referred replaceable event (default: 0)
+
+.PP
+\fB--outbox\fP="": automatically appends outbox relays to the code (default: <<>>)
+
+.PP
+\fB--pubkey, --author, -a, -p\fP="": pubkey of the naddr author (default: pk::0000000000000000000000000000000000000000000000000000000000000000)
+
+.PP
+\fB--relay, -r\fP="": attach relay hints to the code
+
+.SH key
+.PP
+operations on secret keys: generate, derive, encrypt, decrypt
+
+.SS generate
+.PP
+generates a secret key
+
+.SS public
+.PP
+computes a public key from a secret key
+
+.PP
+\fB--with-parity\fP: output 33 bytes instead of 32, the first one being either '02' or '03', a prefix indicating whether this pubkey is even or odd.
+
+.SS expand
+.PP
+left-pads a hex key to 64 characters
+
+.SS encrypt
+.PP
+encrypts a secret key and prints an ncryptsec code
+
+.PP
+\fB--logn\fP="": the bigger the number the harder it will be to bruteforce the password (default: 16)
+
+.SS decrypt
+.PP
+takes an ncrypsec and a password and decrypts it into an nsec
+
+.SS combine
+.PP
+combines two or more pubkeys using musig2
+
+.SS validate
+.PP
+validates a public key by attempting to parse it
+
+.SS default
+.PP
+prints the default secret key
+
+.SH kind
+.PP
+look up information about a Nostr event kind
+
+.PP
+\fB--schema\fP="": url to download the YAML schema from, or path to the file (default: "https://raw.githubusercontent.com/nostr-protocol/registry-of-kinds/refs/heads/master/schema.yaml")
+
+.SH verify
+.PP
+checks the hash and signature of an event given through stdin or as the first argument
+
+.SH relay
+.PP
+gets the relay information document for the given relay, as JSON
+
+.SH admin
+.PP
+manage relays using the relay management API
+
+.SS allowpubkey
+.PP
+the "allowpubkey" relay management RPC call
+
+.PP
+\fB--pubkey\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information. (default: pk::0000000000000000000000000000000000000000000000000000000000000000)
+
+.PP
+\fB--reason\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.SS banpubkey
+.PP
+the "banpubkey" relay management RPC call
+
+.PP
+\fB--pubkey\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information. (default: pk::0000000000000000000000000000000000000000000000000000000000000000)
+
+.PP
+\fB--reason\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.SS unallowpubkey
+.PP
+the "unallowpubkey" relay management RPC call
+
+.PP
+\fB--pubkey\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information. (default: pk::0000000000000000000000000000000000000000000000000000000000000000)
+
+.SS unbanpubkey
+.PP
+the "unbanpubkey" relay management RPC call
+
+.PP
+\fB--pubkey\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information. (default: pk::0000000000000000000000000000000000000000000000000000000000000000)
+
+.SS listallowedpubkeys
+.PP
+the "listallowedpubkeys" relay management RPC call
+
+.SS listbannedpubkeys
+.PP
+the "listbannedpubkeys" relay management RPC call
+
+.SS listeventsneedingmoderation
+.PP
+the "listeventsneedingmoderation" relay management RPC call
+
+.SS allowevent
+.PP
+the "allowevent" relay management RPC call
+
+.PP
+\fB--id\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information. (default: id::0000000000000000000000000000000000000000000000000000000000000000)
+
+.PP
+\fB--reason\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.SS banevent
+.PP
+the "banevent" relay management RPC call
+
+.PP
+\fB--id\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information. (default: id::0000000000000000000000000000000000000000000000000000000000000000)
+
+.PP
+\fB--reason\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.SS listbannedevents
+.PP
+the "listbannedevents" relay management RPC call
+
+.SS changerelayname
+.PP
+the "changerelayname" relay management RPC call
+
+.PP
+\fB--name\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.SS changerelaydescription
+.PP
+the "changerelaydescription" relay management RPC call
+
+.PP
+\fB--description\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.SS changerelayicon
+.PP
+the "changerelayicon" relay management RPC call
+
+.PP
+\fB--icon\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.SS allowkind
+.PP
+the "allowkind" relay management RPC call
+
+.PP
+\fB--kind\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information. (default: 0)
+
+.SS disallowkind
+.PP
+the "disallowkind" relay management RPC call
+
+.PP
+\fB--kind\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information. (default: 0)
+
+.SS listallowedkinds
+.PP
+the "listallowedkinds" relay management RPC call
+
+.SS blockip
+.PP
+the "blockip" relay management RPC call
+
+.PP
+\fB--ip\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.PP
+\fB--reason\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.SS unblockip
+.PP
+the "unblockip" relay management RPC call
+
+.PP
+\fB--ip\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.PP
+\fB--reason\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.SS listblockedips
+.PP
+the "listblockedips" relay management RPC call
+
+.SS listallowedevents
+.PP
+the "listallowedevents" relay management RPC call
+
+.SS listdisallowedkinds
+.PP
+the "listdisallowedkinds" relay management RPC call
+
+.SS supportedmethods
+.PP
+the "supportedmethods" relay management RPC call
+
+.SS stats
+.PP
+the "stats" relay management RPC call
+
+.SS grantadmin
+.PP
+the "grantadmin" relay management RPC call
+
+.PP
+\fB--methods\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.PP
+\fB--pubkey\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information. (default: pk::0000000000000000000000000000000000000000000000000000000000000000)
+
+.SS revokeadmin
+.PP
+the "revokeadmin" relay management RPC call
+
+.PP
+\fB--methods\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.PP
+\fB--pubkey\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information. (default: pk::0000000000000000000000000000000000000000000000000000000000000000)
+
+.SS createrole
+.PP
+the "createrole" relay management RPC call
+
+.PP
+\fB--color\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information. (default: 0)
+
+.PP
+\fB--description\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.PP
+\fB--label\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.PP
+\fB--order\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information. (default: 0)
+
+.PP
+\fB--role_id\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.SS editrole
+.PP
+the "editrole" relay management RPC call
+
+.PP
+\fB--color\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information. (default: 0)
+
+.PP
+\fB--description\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.PP
+\fB--label\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.PP
+\fB--order\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information. (default: 0)
+
+.PP
+\fB--role_id\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.SS deleterole
+.PP
+the "deleterole" relay management RPC call
+
+.PP
+\fB--role_id\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.SS assignrole
+.PP
+the "assignrole" relay management RPC call
+
+.PP
+\fB--pubkey\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information. (default: pk::0000000000000000000000000000000000000000000000000000000000000000)
+
+.PP
+\fB--role_id\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.SS unassignrole
+.PP
+the "unassignrole" relay management RPC call
+
+.PP
+\fB--pubkey\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information. (default: pk::0000000000000000000000000000000000000000000000000000000000000000)
+
+.PP
+\fB--role_id\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.SS assignmethod
+.PP
+the "assignmethod" relay management RPC call
+
+.PP
+\fB--method\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.PP
+\fB--pubkey\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information. (default: pk::0000000000000000000000000000000000000000000000000000000000000000)
+
+.SS unassignmethod
+.PP
+the "unassignmethod" relay management RPC call
+
+.PP
+\fB--method\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.PP
+\fB--pubkey\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information. (default: pk::0000000000000000000000000000000000000000000000000000000000000000)
+
+.SS listclaims
+.PP
+the "listclaims" relay management RPC call
+
+.SS createclaim
+.PP
+the "createclaim" relay management RPC call
+
+.PP
+\fB--claim\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.SS deleteclaim
+.PP
+the "deleteclaim" relay management RPC call
+
+.PP
+\fB--claim\fP="": parameter for this management RPC call, see https://nips.nostr.com/86 for more information.
+
+.SH bunker
+.PP
+starts a nip46 signer daemon with the given --sec key
+
+.PP
+\fB--authorized-keys, -k\fP="": pubkeys for which we will always respond
+
+.PP
+\fB--authorized-secrets, -s\fP="": secrets for which we will always respond
+
+.PP
+\fB--persist\fP: whether to read and store authorized keys from and to a config file
+
+.PP
+\fB--profile\fP="": config file name to use for --persist mode (implies that if provided) -- based on --config-path, i.e. ~/.config/nak/ (default: "default")
+
+.PP
+\fB--qrcode\fP: display a QR code for the bunker URI
+
+.SS connect
+.PP
+use the client-initiated NostrConnect flow of NIP46
+
+.PP
+\fB--profile\fP="": profile name of the bunker to connect to
+
+.SH serve
+.PP
+starts an in-memory relay for testing purposes
+
+.PP
+\fB--auth\fP: require AUTH for all operations
+
+.PP
+\fB--blossom\fP: enable blossom server
+
+.PP
+\fB--eager-auth\fP: send AUTH challenge immediately on connect
+
+.PP
+\fB--events\fP="": file containing the initial batch of events that will be served by the relay as newline-separated JSON (jsonl)
+
+.PP
+\fB--grasp\fP: enable grasp server
+
+.PP
+\fB--hostname\fP="": hostname where to listen for connections (default: "localhost")
+
+.PP
+\fB--negentropy\fP: enable negentropy syncing
+
+.PP
+\fB--port\fP="": port where to listen for connections (default: 10547)
+
+.SH blossom
+.PP
+an army knife for blossom things
+
+.PP
+\fB--server, -s\fP="": the hostname of the target mediaserver
+
+.SS list
+.PP
+lists blobs from a pubkey
+
+.SS upload
+.PP
+uploads a file to a specific mediaserver.
+
+.PP
+\fB--auto\fP: upload to the current user's advertised blossom servers
+
+.SS download
+.PP
+downloads files from mediaservers
+
+.PP
+\fB--output, -o\fP="": file name to save downloaded file to, can be passed multiple times when downloading multiple hashes
+
+.SS del, delete
+.PP
+deletes a file from a mediaserver
+
+.SS check
+.PP
+asks the mediaserver if it has the specified hashes.
+
+.SS mirror
+.PP
+mirrors a from a server to another
+
+.SH dekey
+.PP
+handles NIP-4E decoupled encryption keys
+
+.PP
+\fB--authorize-all, --yolo\fP: do not ask for confirmation, just automatically send the decoupled encryption key to all devices that exist
+
+.PP
+\fB--device\fP="": name of this device that will be published and displayed on other clients (default: "nak@runnervmmprz5")
+
+.PP
+\fB--reject-all\fP: do not ask for confirmation, just not send the decoupled encryption key to any device
+
+.PP
+\fB--rotate\fP: force the creation of a new decoupled encryption key, effectively invalidating any previous ones
+
+.SH encrypt
+.PP
+encrypts a string with nip44 (or nip04 if specified using a flag) and returns the resulting ciphertext as base64
+
+.PP
+\fB--nip04\fP: use nip04 encryption instead of nip44
+
+.PP
+\fB--recipient-pubkey, -p, --tgt, --target, --pubkey, --to\fP="":  (default: pk::0000000000000000000000000000000000000000000000000000000000000000)
+
+.SH decrypt
+.PP
+decrypts a base64 nip44 ciphertext (or nip04 if specified using a flag) and returns the resulting plaintext
+
+.PP
+\fB--nip04\fP: use nip04 encryption instead of nip44
+
+.PP
+\fB--sender-pubkey, -p, --src, --source, --pubkey, --from\fP="":  (default: pk::0000000000000000000000000000000000000000000000000000000000000000)
+
+.SH gift
+.PP
+gift-wraps (or unwraps) an event according to NIP-59
+
+.SS wrap
+.PP
+turns an event into a rumor (unsigned) then gift-wraps it to the recipient
+
+.PP
+\fB--recipient-pubkey, -p, --tgt, --target, --pubkey, --to\fP="":  (default: pk::0000000000000000000000000000000000000000000000000000000000000000)
+
+.PP
+\fB--use-our-identity-key\fP: Encrypt with the key given to --sec directly even when a decoupled key exists for the sender.
+
+.PP
+\fB--use-their-identity-key\fP: Encrypt to the public key given as --recipient-pubkey directly even when a decoupled key exists for the receiver.
+
+.SS unwrap
+.PP
+decrypts a gift-wrap event sent by the sender to us and exposes its internal rumor (unsigned event).
+
+.SH outbox
+.PP
+manage outbox relay hints database
+
+.SS list
+.PP
+list outbox relays for a given pubkey
+
+.SH mcp
+.PP
+pander to the AI gods
+
+.SH curl
+.PP
+calls curl but with a nip98 header
+
+.PP
+\fB--sec\fP="": secret key to sign the event, as nsec, ncryptsec or hex, or a bunker URL (default: "c0fe69bdd4f04f3a67964c2595a9f17ab726e115e5a90ca116969c55aa7235a8")
+
+.SH fs
+.PP
+mount a FUSE filesystem that exposes Nostr events as files.
+
+.PP
+\fB--auto-publish-articles\fP="": delay after which edited articles will be auto-published. (default: 17520h0m0s)
+
+.PP
+\fB--auto-publish-notes\fP="": delay after which new notes will be auto-published, set to -1 to not publish. (default: 30s)
+
+.PP
+\fB--pubkey\fP="": public key from where to to prepopulate directories (default: pk::0000000000000000000000000000000000000000000000000000000000000000)
+
+.SH publish
+.PP
+publishes a note with content from stdin or argument
+
+.PP
+\fB--comment\fP="": event id, naddr1 or nevent1 code to comment on (NIP-22 kind 1111, takes precedence over --reply)
+
+.PP
+\fB--confirm\fP: ask before publishing the event
+
+.PP
+\fB--created-at, --time, --ts\fP="": unix timestamp value for the created_at field (default: 2026-10-08 14:40:41 +0000 UTC)
+
+.PP
+\fB--nevent\fP: print the nevent code (to stderr) after the event is published
+
+.PP
+\fB--relay, -r\fP="": also publish to these relays
+
+.PP
+\fB--reply\fP="": event id, naddr1 or nevent1 code to reply to
+
+.PP
+\fB--tag, -t\fP="": sets a tag field on the event, takes a value like -t e= or -t sometag="value one;value two;value three"
+
+.SH nsite
+.PP
+publishes and downloads nip-5A static sites
+
+.SS upload
+.PP
+uploads site files and publishes manifest event
+
+.PP
+\fB--description\fP="": a human-readable description of the site
+
+.PP
+\fB--identifier, -d\fP="": publish named site as kind 35128 with this d tag
+
+.PP
+\fB--outbox\fP: append given relays to user's outbox relays instead of using them exclusively
+
+.PP
+\fB--root\fP: publish root site as kind 15128
+
+.PP
+\fB--server, -s\fP="": blossom server hostname or URL, can be given multiple times
+
+.PP
+\fB--source\fP="": a link to the source code of the site
+
+.PP
+\fB--tag, -t\fP="": inject extra tag into the manifest event, e.g. -t action=profile
+
+.PP
+\fB--title\fP="": a human-readable title for the site
+
+.PP
+\fB--yes, -y\fP: skip upload confirmation prompt
+
+.SS download
+.PP
+downloads all files from a published nsite
+
+.PP
+\fB--server, -s\fP="": extra blossom server hostname or URL to try, can be given multiple times
+
+.SH git
+.PP
+nip34 and grasp-related operations
+
+.SS init
+.PP
+initialize a nip34 repository configuration
+
+.PP
+\fB--description\fP="": repository description
+
+.PP
+\fB--earliest-unique-commit\fP="": earliest unique commit of the repository
+
+.PP
+\fB--force, -f\fP: overwrite existing nip34.json file
+
+.PP
+\fB--grasp-servers\fP="": grasp servers (can be used multiple times)
+
+.PP
+\fB--identifier\fP="": unique identifier for the repository
+
+.PP
+\fB--interactive, -i\fP: prompt for repository details interactively
+
+.PP
+\fB--name\fP="": repository name
+
+.PP
+\fB--owner\fP="": owner public key
+
+.PP
+\fB--relays\fP="": relay URLs to publish to (can be used multiple times)
+
+.SS sync
+.PP
+sync repository with relays
+
+.SS clone
+.PP
+clone a NIP-34 repository from a nostr:// URI
+
+.SS download
+.PP
+download a file from a NIP-34 repository
+
+.PP
+\fB--output, -O\fP="": output path (use '-' for stdout)
+
+.PP
+\fB--ref, -r\fP="": git ref/tag/branch/commit to read from
+
+.SS ls
+.PP
+list files in a remote NIP-34 repository
+
+.PP
+\fB--ref, -r\fP="": git ref/tag/branch/commit to read from
+
+.SS cat
+.PP
+print the contents of a file in a remote NIP-34 repository
+
+.PP
+\fB--ref, -r\fP="": git ref/tag/branch/commit to read from
+
+.SS history
+.PP
+print the commit history of a remote NIP-34 repository
+
+.PP
+\fB--ref, -r\fP="": git ref/tag/branch/commit to read from
+
+.SS push
+.PP
+push git changes
+
+.PP
+\fB--force, -f\fP: force push to git remotes
+
+.PP
+\fB--no-announcement\fP: skip publishing updated repository announcement event
+
+.PP
+\fB--tags\fP: push all refs under refs/tags
+
+.SS pull
+.PP
+pull git changes
+
+.PP
+\fB--ff\fP: allow fast-forward merges
+
+.PP
+\fB--ff-only\fP: only allow fast-forward merges
+
+.PP
+\fB--no-ff\fP: always perform a merge instead of fast-forwarding
+
+.PP
+\fB--rebase\fP: rebase instead of merge
+
+.SS fetch
+.PP
+fetch git data
+
+.SS patch
+.PP
+patch-related operations
+
+.PP
+\fB--all\fP: list all patches, including applied and closed
+
+.PP
+\fB--applied\fP: list only applied/merged patches
+
+.PP
+\fB--closed\fP: list only closed patches
+
+.SS send
+.PP
+edit and send a patch event (kind 1617)
+
+.SS reply
+.PP
+reply to a patch with a NIP-22 comment event
+
+.SS close
+.PP
+close a patch by publishing a status event
+
+.PP
+\fB--applied\fP: mark the patch as applied instead of closed
+
+.SS apply
+.PP
+apply a patch to current branch
+
+.PP
+\fB--without-key\fP: apply patch without requiring a signer and skip status publication
+
+.SS pull
+.PP
+fetch a patch, apply it, and create refs/nostr/patch/ without touching the current branch
+
+.SS pr
+.PP
+pull-request-related operations
+
+.PP
+\fB--all\fP: list all pull requests, including merged and closed
+
+.PP
+\fB--closed\fP: list only closed pull requests
+
+.PP
+\fB--merged\fP: list only merged pull requests
+
+.SS send
+.PP
+create and send a pull request event (kind 1618)
+
+.SS update
+.PP
+update the tip of an existing pull request (kind 1619)
+
+.SS reply
+.PP
+reply to a pull request with a NIP-22 comment event
+
+.SS close
+.PP
+close a pull request by publishing a status event
+
+.PP
+\fB--merged\fP: mark the pull request as merged instead of closed
+
+.SS pull
+.PP
+fetch a pull request's tip into refs/nostr/pr/
+
+.SS merge
+.PP
+merge a pull request into the current branch and publish a merged status event
+
+.PP
+\fB--without-key\fP: merge without requiring a signer and skip status publication
+
+.SS issue
+.PP
+issue-related operations
+
+.PP
+\fB--all\fP: list all issues, including closed
+
+.PP
+\fB--closed\fP: list only closed issues
+
+.SS create
+.PP
+edit and send an issue event (kind 1621)
+
+.SS reply
+.PP
+reply to an issue with a NIP-22 comment event
+
+.SS close
+.PP
+close an issue by publishing a status event
+
+.SS status
+.PP
+show repository status and synchronization information
+
+.SH group
+.PP
+nip29 group-related operations: info, chat, forum, members, admins, roles
+
+.SS info
+.PP
+show group information
+
+.SS members
+.PP
+list and manage group members
+
+.SS admins
+.PP
+manage group administrators
+
+.SS roles
+.PP
+manage group roles and permissions
+
+.SS chat
+.PP
+send and read group chat messages
+
+.SS send
+.PP
+sends a message to the chat
+
+.SS talk
+.PP
+get livekit connection details
+
+.SS forum
+.PP
+forum topic operations
+
+.SS create
+.PP
+edit and send a forum topic event (kind 11)
+
+.SS comment
+.PP
+comment on a forum topic with a NIP-22 comment event
+
+.SS put-user
+.PP
+add a user to the group with optional roles
+
+.PP
+\fB--pubkey\fP="":  (default: pk::0000000000000000000000000000000000000000000000000000000000000000)
+
+.PP
+\fB--role\fP="":
+
+.SS remove-user
+.PP
+remove a user from the group
+
+.PP
+\fB--pubkey\fP="":  (default: pk::0000000000000000000000000000000000000000000000000000000000000000)
+
+.SS create-group
+.PP
+creates a new group
+
+.SS edit-metadata
+.PP
+edits the group metadata
+
+.PP
+\fB--about\fP="":
+
+.PP
+\fB--all-kinds\fP: specify this to delete the supported_kinds property, meaning everything will be supported
+
+.PP
+\fB--children\fP="": set child group identifiers (semicolon-separated)
+
+.PP
+\fB--closed\fP:
+
+.PP
+\fB--hidden\fP:
+
+.PP
+\fB--kind, --supported-kinds\fP="": list of event kind numbers supported by this group
+
+.PP
+\fB--livekit\fP:
+
+.PP
+\fB--name\fP="":
+
+.PP
+\fB--no-livekit\fP:
+
+.PP
+\fB--open\fP:
+
+.PP
+\fB--orphan\fP: remove parent tag, making this group an orphan
+
+.PP
+\fB--parent\fP="": set parent group identifier
+
+.PP
+\fB--picture\fP="":
+
+.PP
+\fB--private\fP:
+
+.PP
+\fB--public\fP:
+
+.PP
+\fB--restricted\fP:
+
+.PP
+\fB--unrestricted\fP:
+
+.PP
+\fB--visible\fP:
+
+.SS delete-event
+.PP
+delete an event from the group
+
+.PP
+\fB--event\fP="":  (default: id::0000000000000000000000000000000000000000000000000000000000000000)
+
+.SS delete-group
+.PP
+deletes the group
+
+.SS create-invite
+.PP
+creates an invite code
+
+.PP
+\fB--code\fP="":
+
+.SH podcast
+.PP
+play podcasts from Nostr
+
+.SS play
+.PP
+play latest episode from podcast or specific episode
+
+.PP
+\fB--player\fP="": player command to use, defaults to auto-detect
+
+.PP
+\fB--relay, -r\fP="": also use these relays to fetch from
+
+.SS info
+.PP
+display podcast metadata
+
+.PP
+\fB--relay, -r\fP="": also use these relays to fetch from
+
+.SS list
+.PP
+list podcast episodes
+
+.PP
+\fB--limit, -l\fP="": maximum number of episodes to fetch (default: 50)
+
+.PP
+\fB--relay, -r\fP="": also use these relays to fetch from
+
+.SH nip
+.PP
+list NIPs or get the description of a NIP from its number
+
+.SS open
+.PP
+open the NIP page in the browser
+
+.SH sync
+.PP
+sync events between two relays using negentropy
+
+.PP
+\fB--author, -a\fP="": only accept events from these authors
+
+.PP
+\fB--id, -i\fP="": only accept events with these ids
+
+.PP
+\fB--kind, -k\fP="": only accept events with these kind numbers or kind names
+
+.PP
+\fB--limit, -l\fP="": only accept up to this number of events (default: 0)
+
+.PP
+\fB--search\fP="": a nip50 search query, use it only with relays that explicitly support it
+
+.PP
+\fB--since, -s\fP="": only accept events newer than this (unix timestamp) (default: 1970-01-01 00:00:00 +0000 UTC)
+
+.PP
+\fB--tag, -t\fP="": takes a tag like -t e=, only accept events with these tags
+
+.PP
+\fB--until, -u\fP="": only accept events older than this (unix timestamp) (default: 1970-01-01 00:00:00 +0000 UTC)
+
+.PP
+\fB-d\fP="": shortcut for --tag d=
+
+.PP
+\fB-e\fP="": shortcut for --tag e=
+
+.PP
+\fB-h\fP="": shortcut for --tag h=
+
+.PP
+\fB-p\fP="": shortcut for --tag p=
+
+.SH spell
+.PP
+downloads a spell event and executes its REQ request
+
+.PP
+\fB--outbox-relays-per-pubkey, -n\fP="": number of outbox relays to use for each pubkey (default: 3)
+
+.PP
+\fB--pub\fP="": public key to run spells in the context of (if you don't want to pass a --sec)
+
+.SH profile
+.PP
+displays profile information for a given pubkey
+
+.PP
+\fB--about\fP: print only the about text
+
+.PP
+\fB--metadata\fP: print the profile metadata as JSON
+
+.PP
+\fB--name\fP: print only the name
+
+.PP
+\fB--picture\fP: print only the picture URL
+
+.SH validate
+.PP
+validates events against the provided RoK YAML schema
+
+.PP
+\fB--schema\fP="": url to download the YAML schema from, or path to the file (default: "https://raw.githubusercontent.com/nostr-protocol/registry-of-kinds/refs/heads/master/schema.yaml")
+
+.SH relays
+.PP
+prints the nip65 relays for a given pubkey, one relay per line
+
+.PP
+\fB--inbox, --read\fP: only print relays marked as inbox/read
+
+.PP
+\fB--outbox, --write\fP: only print relays marked as outbox/write
