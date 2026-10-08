@@ -1,0 +1,15 @@
+pkgbase = booruflow-bin
+	pkgdesc = An open-source, cross-platform booru browser and image downloader.
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/normalllll/BooruFlow
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk3
+	depends = gcc-libs
+	provides = booruflow
+	conflicts = booruflow
+	source = https://github.com/normalllll/BooruFlow/releases/download/v0.11.0%2B38/linux_amd64.deb
+	sha256sums = 0590147bf18df2942c4ccdd710cea10c7bd08dbc59fec6f96647867250c3e78f
+
+pkgname = booruflow-bin
