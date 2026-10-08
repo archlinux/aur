@@ -4,7 +4,7 @@
 _pkgauthor=ovh
 _pkgname=shai
 pkgname=${_pkgname}-bin
-pkgver=0.1.11
+pkgver=0.2.1
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Terminal coding agent and pair-programming buddy"
@@ -22,8 +22,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}")
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4'
-            '838bac01d38978ebce5532a12207526d69d52a4f6088dcf258a118050163084a')
-sha256sums_x86_64=('215a56669e0117eabdc7895e9c96fa6277ccd4824447560526859b0fb1824fb0')
+            'f86e1d4578b91a4be829fdf95cc29bd1914c2751bae46806c5136f8f90f3ddcc')
+sha256sums_x86_64=('996763d20c09dad2efd4af9dfcdf53582a213ebd2942d6c73bc92579bbef75df')
 
 
 package() {
