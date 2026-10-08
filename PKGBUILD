@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: revelation60 <benruyl@gmail.com>
 pkgname=gnome-shell-extension-gtile-git
-pkgver=66.r0.g22d1838
+pkgver=71.r0.g04f161a
 pkgrel=1
 _nodeversion=24
 pkgdesc="A window tiling extension for GNOME"
@@ -36,15 +36,17 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-  cd gTile
   _ensure_local_nvm
   nvm install "${_nodeversion}"
+
+  cd gTile
+  npm install
 }
 
 build() {
   cd gTile
   export npm_config_cache="$srcdir/npm_cache"
-  npm install
+  _ensure_local_nvm
   npm run build:dist
 }
 
