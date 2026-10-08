@@ -1,6 +1,7 @@
 # Maintainer: CharOfString <root@charofstring.cc>
 
-pkgname=gxde-dtk5-git
+pkgbase=gxde-dtk5-git
+pkgname=(gxde-dtk5-git gxde-dtk5widget-dev-git)
 pkgver=6.7.43.r4500.g16597fc
 pkgrel=1
 pkgdesc='GXDE OS fork of the Deepin Tool Kit 5, note that we are conflicted with Deepin DTK5'
@@ -13,10 +14,6 @@ depends=(qt5-base qt5-svg qt5-x11extras qt5-wayland libqt5xdg
          libx11 libxext libxi xcb-util startup-notification
          gcc-libs glibc)
 makedepends=(git cmake ninja qt5-tools extra-cmake-modules treeland-protocols)
-optdepends=('lshw: hardware info in DSysInfo')
-provides=(dtkcommon "dtklog=${pkgver%%.r*}" "dtkcore=${pkgver%%.r*}"
-          "dtkgui=${pkgver%%.r*}" "dtkwidget=${pkgver%%.r*}")
-conflicts=(dtkcommon dtklog dtkcore dtkgui dtkwidget)
 source=("dtk5common::git+$url/dtk5common.git"
         "dtklog::git+$url/dtklog.git"
         "dtk5core::git+$url/dtk5core.git"
@@ -79,12 +76,38 @@ build() {
   done
 }
 
-package() {
+_widget_dev=(usr/lib/libdtkwidget.so
+             usr/include/dtk5/DWidget
+             usr/lib/pkgconfig/dtkwidget.pc
+             usr/lib/cmake/DtkWidget
+             usr/lib/qt/mkspecs/modules/qt_lib_DtkWidget.pri)
+
+package_gxde-dtk5-git() {
+  optdepends=('lshw: hardware info in DSysInfo'
+              'gxde-dtk5widget-dev-git: DTK5 widget development files')
+  provides=(dtkcommon "dtklog=${pkgver%%.r*}" "dtkcore=${pkgver%%.r*}"
+            "dtkgui=${pkgver%%.r*}" "dtkwidget=${pkgver%%.r*}")
+  conflicts=(dtkcommon dtklog dtkcore dtkgui dtkwidget)
+
   local _m
   for _m in "${_mods[@]}"; do
     DESTDIR="$pkgdir" cmake --install "build-$_m"
   done
+  ( cd "$pkgdir" && rm -r "${_widget_dev[@]}" )
 
   install -Dm644 dtk5common/LICENSE "$pkgdir/usr/share/licenses/$pkgname/BSD-3-Clause"
 }
 
+package_gxde-dtk5widget-dev-git() {
+  pkgdesc='GXDE OS fork of the Deepin Tool Kit 5 widget development files'
+  depends=("gxde-dtk5-git=$pkgver-$pkgrel")
+  conflicts=(gxde-dtk2widget-dev-git)
+
+  local _root="$srcdir/widget-root" _f
+  rm -rf "$_root"
+  DESTDIR="$_root" cmake --install build-dtk5widget
+  for _f in "${_widget_dev[@]}"; do
+    install -d "$pkgdir/$(dirname "$_f")"
+    mv "$_root/$_f" "$pkgdir/$_f"
+  done
+}

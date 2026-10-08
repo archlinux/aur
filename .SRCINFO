@@ -33,17 +33,6 @@ pkgbase = gxde-dtk5-git
 	depends = startup-notification
 	depends = gcc-libs
 	depends = glibc
-	optdepends = lshw: hardware info in DSysInfo
-	provides = dtkcommon
-	provides = dtklog=6.7.43
-	provides = dtkcore=6.7.43
-	provides = dtkgui=6.7.43
-	provides = dtkwidget=6.7.43
-	conflicts = dtkcommon
-	conflicts = dtklog
-	conflicts = dtkcore
-	conflicts = dtkgui
-	conflicts = dtkwidget
 	source = dtk5common::git+https://github.com/GXDE-OS/dtk5common.git
 	source = dtklog::git+https://github.com/GXDE-OS/dtklog.git
 	source = dtk5core::git+https://github.com/GXDE-OS/dtk5core.git
@@ -58,3 +47,20 @@ pkgbase = gxde-dtk5-git
 	sha256sums = c906d0091d3d5835f987bda03bc597420b7691dbe636bcb5bdf0ba46796fb32a
 
 pkgname = gxde-dtk5-git
+	optdepends = lshw: hardware info in DSysInfo
+	optdepends = gxde-dtk5widget-dev-git: DTK5 widget development files
+	provides = dtkcommon
+	provides = dtklog=6.7.43
+	provides = dtkcore=6.7.43
+	provides = dtkgui=6.7.43
+	provides = dtkwidget=6.7.43
+	conflicts = dtkcommon
+	conflicts = dtklog
+	conflicts = dtkcore
+	conflicts = dtkgui
+	conflicts = dtkwidget
+
+pkgname = gxde-dtk5widget-dev-git
+	pkgdesc = GXDE OS fork of the Deepin Tool Kit 5 widget development files
+	depends = gxde-dtk5-git=6.7.43.r4500.g16597fc-1
+	conflicts = gxde-dtk2widget-dev-git
