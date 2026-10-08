@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=grok-build
-pkgver=1.0.46
+pkgver=1.0.50
 pkgrel=1
 pkgdesc="Grok CLI - command line interface for xAI's Grok"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('grok')
 options=('!strip')
 source_x86_64=("grok-$pkgver-x86_64::https://x.ai/cli/grok-${pkgver}-linux-x86_64")
 source_aarch64=("grok-$pkgver-aarch64::https://x.ai/cli/grok-${pkgver}-linux-aarch64")
-sha512sums_x86_64=('861cd90852c15b8b0c8c36c33ce6b744c9633c1f984f1d7273f44ebfef4320603e9a354105fae25dd2d5d4894aaf79bc749fe4a222aa586818ed51be83a44dfa')
-sha512sums_aarch64=('9eccfb851ccc2aa513c5474cbc3bf9ce9f2571729b4bb290ff350f90d22591ef88ebd919f2dd8dff271c7a0c18ecc1f1512b332b0f2d23cc4980d75474dd3717')
+sha512sums_x86_64=('c955de8b2dc25b9b357b2882f7b2a4deb8d9f44b9ec628716c041941ed22f5633b222747c08292bd1b30493cb0ccecb2f48bce9e17f03906eb7437989ffeefc1')
+sha512sums_aarch64=('8651b58a99c975b6ecd39914b5c0081e1c36941b5e3bb165e4a704ce87888317b0e50c2a98d625676e72898eaaa51fa0b07c643c2716e40220dfc5f65e2a733b')
 
 package() {
   local _bin
