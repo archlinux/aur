@@ -1,14 +1,17 @@
 -------------------------------------------------------
  Changelog    : dns_tools
- Tags         : 5.1.1 ➙ 5.3.2
-              : 2026-01-04 ➙ 2026-10-08
+ Tags         : 5.2.0 ➙ 5.3.3
+              : 2026-01-24 ➙ 2026-10-08
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-10-08   : 5.3.2
+ 2026-10-08   : 5.3.3
+              - 5.3.3 Readme update
+
+ 2026-10-08   : 5.3.2, origin/master
               - 5.3.2 Documentation available on `readthedocs <https://dns-tools.readthedocs.io>`
 
- 2026-09-09   : 5.3.1, origin/master
+ 2026-09-09   : 5.3.1
               - **5.3.1**
             
                 * Change Arch package dependencies that have been renamed:
@@ -33,8 +36,4 @@
                 pyconcurrent is new dependency (was optional):
                   Reduce maintenance and no loner having duplicate code copied from pyconcurrent module.
  2026-01-04   ⋯
-              - update Docs/Changelog
-
- 2026-01-04   : 5.1.1
-              - fix type
               - update Docs/Changelog
