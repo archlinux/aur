@@ -4,7 +4,7 @@
 # (https://aur.archlinux.org/packages/nightlightd); keep the two in step.
 pkgname=nightlightd
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Zero-config screen colour temperature daemon for X11, with tray, panel and TUI clients"
 arch=('x86_64')
 url="https://github.com/umutdinceryananer/nightlightd"
@@ -41,7 +41,10 @@ package() {
   install -Dm755 target/release/nightlight-tray -t "$pkgdir/usr/bin/"
   install -Dm755 target/release/nightlight-panel -t "$pkgdir/usr/bin/"
   install -Dm755 target/release/nightlight-tui -t "$pkgdir/usr/bin/"
-  install -Dm644 dist/nightlightd.service "$pkgdir/usr/lib/systemd/user/nightlightd.service"
+  # The packaged unit, which starts /usr/bin/nightlightd. The one in dist/
+  # is for source installs and starts ~/.cargo/bin, where this package puts
+  # nothing, so shipped here it could never start.
+  install -Dm644 dist/deb/nightlightd.service "$pkgdir/usr/lib/systemd/user/nightlightd.service"
   install -Dm644 dist/nightlight-tray.desktop "$pkgdir/etc/xdg/autostart/nightlight-tray.desktop"
   # The panel's applications-menu entry (#50). The tray's entry above is
   # autostart and never appears in a menu, so without this the settings
