@@ -8,6 +8,8 @@ pkgbase = nak-bin
 	provides = nak
 	conflicts = nak
 	source = nak-bin-0.21.0::https://github.com/fiatjaf/nak/releases/download/v0.21.0/nak-v0.21.0-linux-amd64
+	source = nak.1::https://github.com/fiatjaf/nak/releases/download/v0.21.0/nak.1
 	sha256sums = 7bf6d8d82a9e9cf9aca74a04449fb2235bc49624a73b3539cf7d6f95304837a1
+	sha256sums = SKIP
 
 pkgname = nak-bin
