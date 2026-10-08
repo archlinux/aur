@@ -1,0 +1,23 @@
+pkgbase = neferbar-git
+	pkgdesc = One-cell-high, terminal-style status bar for Wayland, driven by scripts (git version)
+	pkgver = 0.2.0.r0.gc616855
+	pkgrel = 1
+	url = https://github.com/bnema/neferbar
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=2:1.27
+	makedepends = git
+	depends = glibc
+	depends = fontconfig
+	depends = libxkbcommon
+	depends = vulkan-icd-loader
+	depends = vulkan-driver
+	optdepends = ttf-jetbrains-mono-nerd: default font, with the icons modules print
+	provides = neferbar
+	conflicts = neferbar
+	conflicts = neferbar-bin
+	source = git+https://github.com/bnema/neferbar.git
+	sha256sums = SKIP
+
+pkgname = neferbar-git
