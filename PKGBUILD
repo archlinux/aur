@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=arf
-pkgver=0.5.3 # renovate: datasource=github-tags depName=eitsupi/arf
+pkgver=0.6.0 # renovate: datasource=github-tags depName=eitsupi/arf
 pkgrel=1
 pkgdesc="A modern R console"
 url="https://github.com/eitsupi/arf"
@@ -33,4 +33,4 @@ package() {
   install -Dm644 "${srcdir}/arf-${pkgver}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('ae7ea35c08fb9d9a36d0487a6fbd2227685405c958af87fb9681fa57d3d165268db87e2082ad6ca9cbf5798eda3c96e02a03a712a3566a45aef93b6e65d8ae5b')
+sha512sums=('ecfb9e252b230eae9e3cda11cb9e87bb5fff8affd5480c5f132f4eb3c4a58089d226861359a7950b236f218e8d8e5abc30ccc273c11b8a21160c21d8dbb38b73')
