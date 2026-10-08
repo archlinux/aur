@@ -1,5 +1,5 @@
 pkgbase = smash
-	pkgdesc = Smash through to find duplicate files super fast by slicing files intelligently
+	pkgdesc = Find duplicate files super fast by slicing files intelligently
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/thushan/smash

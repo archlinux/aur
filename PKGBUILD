@@ -3,7 +3,7 @@
 pkgname=smash
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Smash through to find duplicate files super fast by slicing files intelligently"
+pkgdesc="Find duplicate files super fast by slicing files intelligently"
 arch=('x86_64' 'aarch64')
 url="https://github.com/thushan/smash"
 license=('Apache-2.0')
