@@ -1,18 +1,21 @@
 -------------------------------------------------------
  Changelog    : netcheck
- Tags         : 1.9.2 ➙ 1.11.1
-              : 2025-10-13 ➙ 2026-09-10
+ Tags         : 1.10.0 ➙ 1.11.2
+              : 2026-01-04 ➙ 2026-10-08
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-10   : 1.11.1
+ 2026-10-08   : 1.11.2
+              - 1.11.2 Documentation available `readthedocs <https://netcheck.readthedocs.io>`
+
+ 2026-09-10   : 1.11.1, origin/master
               - **1.11.1**
             
                 * Change Arch package dependencies that have been renamed:
             
                   - pyconcurrent -> python-pyconcurrent
 
- 2026-01-06   : 1.11.0, origin/master
+ 2026-01-06   : 1.11.0
               - update Docs/Changelogs
 
  2026-01-06   : 1.10.1
@@ -27,8 +30,4 @@
                 * Testing to confirm all working on python 3.14.2
                 * License GPL-2.0-or-later
  2025-10-13   ⋯
-              - update Docs Changelogs
-
- 2025-10-13   : 1.9.2
-              - Add missing depenency python-dateutil in Arch PKGBUILD
               - update Docs Changelogs

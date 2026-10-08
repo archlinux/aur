@@ -12,7 +12,7 @@ pkgname='netcheck'
 pkgdesc='Check network connectivity'
 _gitname='netcheck'
 
-pkgver="1.11.1"
+pkgver="1.11.2"
 pkgrel=1
 url="https://github.com/gene-git/netcheck"
 
