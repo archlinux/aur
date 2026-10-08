@@ -1,4 +1,4 @@
-[humanifyjs]
+[humanify]
 source = "github"
 github = "jehna/humanify"
 prefix = "v"
