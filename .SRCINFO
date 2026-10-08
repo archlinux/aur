@@ -1,7 +1,7 @@
 pkgbase = rasdaemon
 	pkgdesc = Rasdaemon is a RAS (Reliability, Availability and Serviceability) logging tool.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mchehab/rasdaemon
 	arch = i686
 	arch = x86_64

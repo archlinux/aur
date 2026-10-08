@@ -2,7 +2,7 @@
 # Orginally Packaged By: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=rasdaemon
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Rasdaemon is a RAS (Reliability, Availability and Serviceability) logging tool."
 arch=(i686 x86_64)
 url="https://github.com/mchehab/rasdaemon"
@@ -20,7 +20,9 @@ sha256sums=('3a1d70bef371e42c1b8f779791ee0a3492070ba4ba7d48450167e075570d5f4e'
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    meson setup --prefix=/usr --sbindir=bin build
+    meson setup --prefix=/usr --sbindir=bin build \
+          -Dcxl=disabled \
+          -Dreri=disabled
     make
 
     # fix ras-mc-ctl service file
