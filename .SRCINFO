@@ -11,8 +11,8 @@ pkgbase = tower-bin
 	conflicts = tower
 	conflicts = tower-git
 	source_aarch64 = https://github.com/geoffjay/tower/releases/download/v0.1.0/tower-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = PLACEHOLDER_AARCH64
+	sha256sums_aarch64 = d534f30e7ea8abcfd8f85d3eaa73aa8cff16392c9e69c1700d98180ac3c8774c
 	source_x86_64 = https://github.com/geoffjay/tower/releases/download/v0.1.0/tower-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = PLACEHOLDER_X86_64
+	sha256sums_x86_64 = 12c43af353474d2c23ce9dad1ab14318293fee0603599d3a124be96aca9d050a
 
 pkgname = tower-bin
