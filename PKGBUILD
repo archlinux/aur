@@ -6,7 +6,7 @@
 # packaging/zz.version in the zcc repo) — nothing is compiled except zcc
 # itself, so installs take seconds, not tens of minutes.
 pkgname=zcc
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Blazing-fast code counter (tokei clone) written in ZZ'
 arch=('x86_64')
@@ -15,9 +15,9 @@ license=('MIT')
 depends=('glibc' 'sqlite')
 makedepends=('clang' 'unzip')
 source=("zcc-$pkgver-src.tar.gz::$url/releases/download/v$pkgver/zcc-$pkgver-src.tar.gz"
-        "zz-0.1.4-$CARCH.zip::https://github.com/zaidejjo/zz/releases/download/v0.1.4/zz-0.1.4-linux-x86_64.zip")
-sha256sums=('b61716a7515ad79268efd52c15c3771b75b77df810e1b831e308dca172ffa0c2'
-            'ed9868ecbcc2325d63d751e3109cf204d73b51cd83ddfeb1a14e6fa852e82623')
+        "zz-0.2.0-$CARCH.zip::https://github.com/zaidejjo/zz/releases/download/v0.2.0/zz-0.2.0-linux-x86_64.zip")
+sha256sums=('ea98ea73ca3d55da7441d50699411519edb839a8b4de9873ea05bcc3f6b3981f'
+            '33f9def16420b9e1c49901f6538bac54252d60f689f23b678633abafccb3f374')
 
 build() {
   # Prebuilt toolchain (auto-extracted flat into $srcdir by makepkg).
