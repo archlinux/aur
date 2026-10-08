@@ -1,0 +1,19 @@
+pkgbase = lua-uuid
+	pkgdesc = A pure Lua uuid generator
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Tieske/uuid
+	arch = any
+	license = MIT
+	source = lua-uuid-1.0.0.tar.gz::https://github.com/Tieske/uuid/archive/refs/tags/1.0.0.tar.gz
+	sha512sums = 93d996e5d580d37fa7e2c70f748f2af13660bf6354dc21982874285f3c69d5c2a76f4af99f30b85125213ed3f1ca207a919f623edf36ba2e60ab76e2d1c9acf7
+
+pkgname = lua-uuid
+
+pkgname = lua51-uuid
+
+pkgname = lua52-uuid
+
+pkgname = lua53-uuid
+
+pkgname = lua54-uuid
