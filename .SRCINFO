@@ -1,0 +1,23 @@
+pkgbase = strength-tracker-rs
+	pkgdesc = Sync your devices and track your strength training
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/Emiliopg91/strength-tracker-rs
+	install = strength-tracker-rs.install
+	arch = x86_64
+	license = GPL-2
+	makedepends = mold
+	makedepends = npm
+	makedepends = pnpm
+	makedepends = python-toml
+	makedepends = python-yaml
+	makedepends = rust
+	makedepends = sccache
+	depends = webkit2gtk-4.1
+	depends = zlib-ng-compat
+	conflicts = garmin-tracker-rs
+	replaces = garmin-tracker-rs
+	source = git+https://github.com/Emiliopg91/strength-tracker-rs.git#tag=3.0.0
+	sha256sums = SKIP
+
+pkgname = strength-tracker-rs
