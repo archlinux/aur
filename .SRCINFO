@@ -1,6 +1,6 @@
 pkgbase = python-jupyterlite-sphinx
 	pkgdesc = Sphinx extension for deploying JupyterLite
-	pkgver = 0.22.1
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = None
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-jupyterlite-sphinx
 	depends = python-pydata-sphinx-theme
 	depends = python-myst-parser
 	depends = python-hatch
-	source = https://github.com/jupyterlite/jupyterlite-sphinx/releases/download/v0.22.1/jupyterlite_sphinx-0.22.1.tar.gz
-	sha256sums = e13682884deaecdb88dc81917df8a7275291f17575c3d1707b791e4a876a8556
+	source = https://github.com/jupyterlite/jupyterlite-sphinx/releases/download/v0.23.0/jupyterlite_sphinx-0.23.0.tar.gz
+	sha256sums = ac7d4af5bda5b72ad728b74e343e4210e3517c8ba45c639e67185e5ab27079af
 
 pkgname = python-jupyterlite-sphinx

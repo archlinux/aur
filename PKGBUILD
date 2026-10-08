@@ -4,7 +4,7 @@
 
 pkgname='python-jupyterlite-sphinx'
 _module='jupyterlite-sphinx'
-pkgver='0.22.1'
+pkgver='0.23.0'
 _src_folder="jupyterlite_sphinx-${pkgver}"
 pkgrel=1
 pkgdesc="Sphinx extension for deploying JupyterLite"
@@ -15,7 +15,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('unknown')
 arch=('any')
 source=("https://github.com/jupyterlite/jupyterlite-sphinx/releases/download/v${pkgver}/jupyterlite_sphinx-${pkgver}.tar.gz")
-sha256sums=('e13682884deaecdb88dc81917df8a7275291f17575c3d1707b791e4a876a8556')
+sha256sums=('ac7d4af5bda5b72ad728b74e343e4210e3517c8ba45c639e67185e5ab27079af')
 
 build() {
     cd "${srcdir}/${_src_folder}"
