@@ -5,11 +5,11 @@
              "prompt-toolkit >= 2.0.0, < 4.0.0",
              "pygments >= 2.0.2, < 3.0.0",
 -            "websockets >= 13.0.0, < 14.0.0",
-+            "websockets >= 16.0.0, < 17.0.0",
++            "websockets >= 17.0.0, < 18.0.0",
          ],
          license="wxWindows Library Licence, Version 3.1",
          zip_safe=False,
-@@ -75,6 +75,10 @@
+@@ -82,6 +82,10 @@
  
  
  def detect_version() -> str:
