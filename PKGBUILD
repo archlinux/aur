@@ -2,7 +2,7 @@
 # pkgver and sha256sums are filled in by .github/workflows/release.yml on each release.
 pkgname=katana-desktop-bin
 _pkgname=katana-desktop
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Unofficial desktop client for Nonograms Katana user puzzles (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=("$_pkgname")
 options=('!strip')
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('b92660d0dadd69eaa0cd64239f33f1313b6ac5a4e6ed6cd7a399c9016a791674')
-sha256sums_aarch64=('47b1224de997283d8278d5b2d881d1ac96d1eec0f20e23fbf02ca7b98cc15b99')
+sha256sums_x86_64=('e716dcd4cf6582aee603a4930e6cc7a596b7ea0cf1028894e7c8a551316204ee')
+sha256sums_aarch64=('9d6d275e20348f713cc11aed88f9b333983410ab8013ea37e5784fe1117f384b')
 
 package() {
   cp -a usr "$pkgdir/"
