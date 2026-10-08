@@ -3,7 +3,7 @@
 # Submit by pushing this (plus the generated .SRCINFO) to ssh://aur@aur.archlinux.org/mailbox-bin.git
 #   makepkg --printsrcinfo > .SRCINFO
 pkgname=mailbox-bin
-pkgver=0.6.7
+pkgver=0.6.8
 pkgrel=1
 pkgdesc="Desktop mail client with a ribbon, calendar peek and reading pane (POP3, IMAP, SMTP)"
 arch=('x86_64' 'aarch64')
@@ -33,7 +33,7 @@ options=('!strip')   # self-contained .NET bundle — stripping breaks it
 # asset's name is not the array's suffix and the two cannot be folded into one line.
 source_x86_64=("$url/releases/download/v$pkgver/Mailbox-$pkgver-linux-x64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/Mailbox-$pkgver-linux-arm64.tar.gz")
-sha256sums_x86_64=('d3675fe55593e42685830a8c176650f471e4055565477f621eefd07d89b1d9e7')
+sha256sums_x86_64=('70f34850d7299c7eca7c38bcaa96ef265bd00f7d70ff63df6d75af26a49e7ca8')
 # Filled from the release's own aarch64 tarball, the same step as the line above it. Until an
 # aarch64 asset is published there is nothing to hash, and a hash that is merely plausible is
 # worse than one makepkg refuses.
