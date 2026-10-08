@@ -2,9 +2,8 @@
 # Co-maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=cloudflare-warp-minimal-bin
-#todo: remove .0 from pkgver, add it to source for regex for nvchecker
-pkgver=2026.7.1377.0
-pkgrel=4
+pkgver=2026.8.2100
+pkgrel=1
 pkgdesc="Minimal Cloudflare WARP client"
 arch=('x86_64')
 url="https://developers.cloudflare.com/warp-client"
@@ -13,9 +12,9 @@ install=${pkgname}.install
 depends=('glibc' 'tpm2-tss' 'libgcc' 'nss' 'dbus' 'nftables')
 provides=('cloudflare-warp-bin' 'cloudflare-warp')
 conflicts=('cloudflare-warp-bin' 'cloudflare-warp')
-source=("https://pkg.cloudflareclient.com/pool/trixie/main/c/cloudflare-warp/cloudflare-warp_${pkgver}_amd64.deb")
+source=("https://pkg.cloudflareclient.com/pool/trixie/main/c/cloudflare-warp/cloudflare-warp_${pkgver}.0_amd64.deb")
 #Debian Package Index: https://pkg.cloudflareclient.com/dists/trixie/main/binary-amd64/Packages
-sha256sums=('5afe38d0536b49bd09509264b68018e5440b28538323e1984d8096c512062658')
+sha256sums=('e22c0310206b904da3368c94defa1e6db88865ac1905ccf007cb416eefadafe5')
 
 prepare() {
     bsdtar -xzf data.tar.gz -C "$srcdir"
