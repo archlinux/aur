@@ -1,0 +1,20 @@
+pkgbase = hotprint
+	pkgdesc = Arrange images and PDF pages and print them on CTP500-class Bluetooth thermal printers
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/maxDTM/hotprint
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = python-pillow
+	depends = poppler
+	depends = librsvg
+	depends = bluez-utils
+	optdepends = imagemagick: import HEIC and other formats Pillow cannot read
+	source = hotprint-0.1.0.tar.gz::https://github.com/maxDTM/hotprint/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = ff837ab74fa7f08e15070bd114b320fc2bd1079ed5f04f28ad9e393a1366c371
+
+pkgname = hotprint
