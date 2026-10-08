@@ -1,6 +1,6 @@
 # Maintainer: Ateles
 pkgname=dawn-writer-git
-pkgver=0.1.3.r0.g33e15d8
+pkgver=0.1.3.r2.g3f7fb90
 pkgrel=3
 pkgdesc='draft anything, write now - a distraction-free writing environment with live markdown rendering'
 arch=('x86_64')
