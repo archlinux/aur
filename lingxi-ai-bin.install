@@ -25,7 +25,7 @@ Environment=LINGXI_STATIC_PORT=3889
 Environment=PROXY_PORT=3890
 WorkingDirectory=%h
 ExecStartPre=/usr/bin/bash /opt/lingxi-ai/plugin/tools/post-install-linux.sh /opt/lingxi-ai
-ExecStart=/usr/bin/bash %h/.lingxi-ai/tools/service-watchdog.sh --node /opt/lingxi-ai/plugin/runtime/node-linux-x64/bin/node --script %h/.lingxi-ai/tools/serve-permanent.js --root %h/.lingxi-ai --log %h/.lingxi-ai/server.log --static-port 3889 --proxy-port 3890 --idle-seconds 30 --start-now
+ExecStart=/opt/lingxi-ai/plugin/runtime/node-linux-x64/bin/node %h/.lingxi-ai/tools/serve-permanent.js --root %h/.lingxi-ai
 Restart=always
 RestartSec=3
 

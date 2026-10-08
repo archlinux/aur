@@ -1,7 +1,7 @@
 pkgbase = lingxi-ai-bin
 	pkgdesc = WPS Office AI Agent 插件（灵犀AI），支持多种大模型、MCP与本地化部署
 	pkgver = 1.4.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wps-ai.llteac.cn
 	install = lingxi-ai-bin.install
 	arch = x86_64
