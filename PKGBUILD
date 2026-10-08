@@ -2,19 +2,38 @@
 # Maintainer: Christian Heusel <christian at heusel dot eu>
 pkgname="qemu-esp-xtensa-git"
 _gitname="qemu"
-pkgver=r99808.31099a4e5c
+pkgver=r117398.febae182e1
 pkgrel=1
 pkgdesc="Espressif's fork of QEMU with support for ESP32 xtensa boards. Git version."
 arch=("x86_64")
 url="https://github.com/espressif/qemu"
-license=("GPL2")
-depends=("glib2" "dtc" "pixman" "systemd-libs" "libseccomp" "gnutls" "libbpf")
-makedepends=("gcc" "git" "ninja" "python" "pkgconf")
+license=("GPL-2.0-or-later")
+depends=(
+  "dtc"
+  "gcc-libs"
+  "glib2"
+  "glibc"
+  "gnutls"
+  "libbpf"
+  "libgcrypt"
+  "libseccomp"
+  "libslirp"
+  "pixman"
+  "systemd-libs"
+)
+makedepends=(
+  "git"
+  "meson"
+  "ninja"
+  "pkgconf"
+  "python"
+  "python-setuptools"
+)
 provides=("qemu-esp-xtensa")
 conflicts=("qemu-esp-xtensa")
-options=("!buildflags" "!makeflags")
+options=("!buildflags" "!lto")
 source=("qemu::git+https://github.com/espressif/qemu.git#branch=esp-develop")
-md5sums=("SKIP")
+sha256sums=("SKIP")
 
 pkgver() {
   cd "$srcdir/${_gitname}"
@@ -25,10 +44,12 @@ build() {
   cd "$srcdir/${_gitname}"
   ./configure \
             --target-list=xtensa-softmmu \
-            --prefix=${pkgdir}/opt/${pkgname} \
+            --prefix=/opt/${pkgname} \
             --enable-gcrypt \
+            --enable-slirp \
             --enable-debug \
-            --enable-sanitizers \
+            --disable-docs \
+            --disable-werror \
             --disable-strip \
             --disable-user \
             --disable-capstone \
@@ -39,10 +60,8 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${_gitname}/build"
-  ninja install
-  mkdir -p ${pkgdir}/usr/bin
-  chmod +x ${pkgdir}/opt/${pkgname}/bin/qemu-system-xtensa
-  ln -s /opt/${pkgname}/bin/qemu-system-xtensa ${pkgdir}/usr/bin/qemu-esp-xtensa
+  cd "$srcdir/${_gitname}"
+  meson install -C build --destdir "$pkgdir"
+  install -d "${pkgdir}/usr/bin"
+  ln -s "/opt/${pkgname}/bin/qemu-system-xtensa" "${pkgdir}/usr/bin/qemu-esp-xtensa"
 }
-
