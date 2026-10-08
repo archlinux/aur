@@ -8,7 +8,7 @@ pkgname=(
   gdm-multiseat
   libgdm-multiseat
 )
-pkgver=50.0
+pkgver=51.0
 pkgrel=1
 pkgdesc="Display manager and login screen with multiseat support"
 url="https://gitlab.gnome.org/GNOME/gdm"
@@ -52,9 +52,9 @@ source=(
   0001-Xsession-Don-t-start-ssh-agent-by-default.patch
   291.patch
 )
-b2sums=('5c3784315c8718aabe6c4abacfca3bc00ac8d028f2a0442d397496633f1e0af44ac4dd156d8b2025212b68a43b3d837d32423aa82cc2be7d565f2445c8144839'
+b2sums=('96f65701f3bfec2d6df04357daa91e3fffe9953b1e4a664e1007559e7ebfb995ee421710b61de60ba2076960b0f20c1a0c6e16e0ef4530843f2a91308f1926c8'
         'f7e868fdd7cc121433de1572583eb728f4d186cd4f52c6d6c8f2ccf4a3cf781144ff71f704f13571ddb97a1ff4ec55cfa3df25d38737ad19da21e84ddc2d3ee4'
-        '3e29d50e6f96a7d56f40fae808ba25147a4c4114bae4fb48b1f7c9c698359dcca95d3eae65f9c288f4667b3f94a56f05761d36ea0e32898723c3453ec9e491db')
+        'bd44b52ccdc6a8ca96f61493b1da3a3b51350ba088e3aab7a170bdf2905ea0517b0a688b7dd5f1dd889b59754d6b3d1771df397bc569c4538a551ddeeb6d9c1d')
 
 prepare() {
   cd gdm

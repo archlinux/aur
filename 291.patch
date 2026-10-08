@@ -1,65 +1,65 @@
+From 9aa66cc8514ec2a497c9d957ed5f7b0a2e739873 Mon Sep 17 00:00:00 2001
+From: Myrrh Periwinkle <myrrhperiwinkle@qtmlabs.xyz>
+Date: Mon, 26 May 2025 09:48:11 +0700
+Subject: [PATCH 1/4] daemon: Replace some seat0 checks with sd_seat_can_tty
+
+Fixes code that checks for seat0 when we actually want to check if the
+seat is VT-capable instead.
+---
+ daemon/gdm-local-display-factory.c | 2 +-
+ daemon/gdm-session.c               | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
 diff --git a/daemon/gdm-local-display-factory.c b/daemon/gdm-local-display-factory.c
-index 4f0b84f0b..ebc11e6a1 100644
+index 4f0b84f0b..3e14b80cc 100644
 --- a/daemon/gdm-local-display-factory.c
 +++ b/daemon/gdm-local-display-factory.c
-@@ -291,7 +291,8 @@ on_display_status_changed (GdmDisplay             *display,
+@@ -291,7 +291,7 @@ on_display_status_changed (GdmDisplay             *display,
                  if (is_local &&
                      ((g_strcmp0 (session_class, "greeter") != 0 &&
                        (!seat_active_session || g_strcmp0(session_id, seat_active_session) == 0)) ||
 -                     factory->active_vt == GDM_INITIAL_VT || g_strcmp0 (seat_id, "seat0") != 0)) {
-+                     (sd_seat_can_tty (seat_id) && factory->active_vt == GDM_INITIAL_VT) ||
-+                     (!sd_seat_can_tty (seat_id) && g_strcmp0 (session_class, "greeter") == 0))) {
++                     factory->active_vt == GDM_INITIAL_VT || !sd_seat_can_tty (seat_id))) {
                          /* reset num failures */
                          factory->num_failures = 0;
  
-@@ -366,21 +367,6 @@ lookup_prepared_display_by_seat_id (const char *id,
-         return lookup_by_seat_id (id, display, user_data);
- }
+diff --git a/daemon/gdm-session.c b/daemon/gdm-session.c
+index e54881be4..c6d8f029a 100644
+--- a/daemon/gdm-session.c
++++ b/daemon/gdm-session.c
+@@ -3451,7 +3451,8 @@ gdm_session_get_display_mode (GdmSession *self)
+                  self->is_program_session? "yes" : "no",
+                  self->display_seat_id);
  
--static gboolean
--lookup_managed_display_by_seat_id (const char *id,
--                                   GdmDisplay *display,
--                                   gpointer    user_data)
--{
--        int status;
--
--        status = gdm_display_get_status (display);
--
--        if (status != GDM_DISPLAY_MANAGED)
--                return FALSE;
--
--        return lookup_by_seat_id (id, display, user_data);
--}
--
- #ifdef HAVE_UDEV
- static gboolean
- udev_is_settled (GdmLocalDisplayFactory *factory)
-@@ -513,19 +499,11 @@ static GdmDisplay *
- get_display_for_seat (GdmLocalDisplayFactory *factory,
-                       const char             *seat_id)
- {
--        GdmDisplay *display;
-         GdmDisplayStore *store;
--        gboolean is_seat0;
+-        if (g_strcmp0 (self->display_seat_id, "seat0") != 0) {
++        if (self->display_seat_id != NULL &&
++            !sd_seat_can_tty (self->display_seat_id)) {
+                 return GDM_SESSION_DISPLAY_MODE_LOGIND_MANAGED;
+         }
  
-         store = gdm_display_factory_get_display_store (GDM_DISPLAY_FACTORY (factory));
- 
--        is_seat0 = g_strcmp0 (seat_id, "seat0") == 0;
--        if (is_seat0)
--                display = gdm_display_store_find (store, lookup_prepared_display_by_seat_id, (gpointer) seat_id);
--        else
--                display = gdm_display_store_find (store, lookup_managed_display_by_seat_id, (gpointer) seat_id);
--
--        return display != NULL ? g_object_ref (display) : NULL;
-+        return gdm_display_store_find (store, lookup_prepared_display_by_seat_id, (gpointer) seat_id);
- }
- 
- static void
+-- 
+GitLab
+
+
+From baa62432358cbce4c75763eba1aca6ecb8c79031 Mon Sep 17 00:00:00 2001
+From: Myrrh Periwinkle <myrrhperiwinkle@qtmlabs.xyz>
+Date: Sun, 25 May 2025 20:03:30 +0700
+Subject: [PATCH 2/4] daemon: Reactivate greeter after opening non-VT user
+ session
+
+systemd-logind automatically activates newly created sessions on non-VT
+seats. Switch back to the greeter session in that case so the greeter
+can complete whatever is needed between opening and starting the
+session, and switch to the actual session when we start it.
+---
+ daemon/gdm-manager.c | 28 ++++++++++++++++++++++++++--
+ 1 file changed, 26 insertions(+), 2 deletions(-)
+
 diff --git a/daemon/gdm-manager.c b/daemon/gdm-manager.c
-index cf0c2c8ca..12f096855 100644
+index f16b7c21d..305a4a2ee 100644
 --- a/daemon/gdm-manager.c
 +++ b/daemon/gdm-manager.c
-@@ -1627,6 +1627,13 @@ on_start_user_session (StartUserSessionOperation *operation)
+@@ -1667,6 +1667,13 @@ on_start_user_session (StartUserSessionOperation *operation)
  
          g_object_unref (display);
  
@@ -73,7 +73,7 @@ index cf0c2c8ca..12f096855 100644
          start_user_session (operation->manager, operation);
  
   out:
-@@ -1649,7 +1656,7 @@ queue_start_user_session (GdmManager *manager,
+@@ -1689,7 +1696,7 @@ queue_start_user_session (GdmManager *manager,
          g_object_set_data (G_OBJECT (session), "start-user-session-operation", operation);
  }
  
@@ -82,7 +82,7 @@ index cf0c2c8ca..12f096855 100644
  start_user_session_if_ready (GdmManager *manager,
                               GdmSession *session,
                               const char *service_name)
-@@ -1663,6 +1670,8 @@ start_user_session_if_ready (GdmManager *manager,
+@@ -1703,6 +1710,8 @@ start_user_session_if_ready (GdmManager *manager,
          } else {
                  g_object_set_data (G_OBJECT (session), "waiting-to-start", GINT_TO_POINTER (TRUE));
          }
@@ -91,7 +91,7 @@ index cf0c2c8ca..12f096855 100644
  }
  
  static void
-@@ -1704,6 +1713,8 @@ on_user_session_opened (GdmSession       *session,
+@@ -1744,6 +1753,8 @@ on_user_session_opened (GdmSession       *session,
                          const char       *session_id,
                          GdmManager       *manager)
  {
@@ -100,7 +100,7 @@ index cf0c2c8ca..12f096855 100644
          manager->user_sessions = g_list_append (manager->user_sessions,
                                                        g_object_ref (session));
          if (g_strcmp0 (service_name, "gdm-autologin") == 0 &&
-@@ -1713,7 +1724,20 @@ on_user_session_opened (GdmSession       *session,
+@@ -1753,7 +1764,20 @@ on_user_session_opened (GdmSession       *session,
                  g_object_set_data (G_OBJECT (session), "start-when-ready", GINT_TO_POINTER (TRUE));
          }
  
@@ -122,17 +122,97 @@ index cf0c2c8ca..12f096855 100644
  }
  
  static void
-diff --git a/daemon/gdm-session.c b/daemon/gdm-session.c
-index 5c04ad1be..5c875823f 100644
---- a/daemon/gdm-session.c
-+++ b/daemon/gdm-session.c
-@@ -3437,7 +3437,8 @@ gdm_session_get_display_mode (GdmSession *self)
-                  self->is_program_session? "yes" : "no",
-                  self->display_seat_id);
+-- 
+GitLab
+
+
+From b13150a803d6820f44449e60039640fe66aaa92b Mon Sep 17 00:00:00 2001
+From: Myrrh Periwinkle <myrrhperiwinkle@qtmlabs.xyz>
+Date: Mon, 26 May 2025 08:57:30 +0700
+Subject: [PATCH 3/4] daemon: Check for prepared display before creating
+ non-seat0 display
+
+Fixes an issue where duplicate greeter sessions are created when
+multiple sessions on the same non-seat0 seat is terminated.
+
+Checking for managed displays is not needed here since any managed
+display should already be registered with systemd-logind and therefore
+will be detected by gdm_get_login_window_session_id.
+---
+ daemon/gdm-local-display-factory.c | 22 +---------------------
+ 1 file changed, 1 insertion(+), 21 deletions(-)
+
+diff --git a/daemon/gdm-local-display-factory.c b/daemon/gdm-local-display-factory.c
+index 3e14b80cc..9c7037f8c 100644
+--- a/daemon/gdm-local-display-factory.c
++++ b/daemon/gdm-local-display-factory.c
+@@ -366,21 +366,6 @@ lookup_prepared_display_by_seat_id (const char *id,
+         return lookup_by_seat_id (id, display, user_data);
+ }
  
--        if (g_strcmp0 (self->display_seat_id, "seat0") != 0) {
-+        if (self->display_seat_id != NULL &&
-+            !sd_seat_can_tty (self->display_seat_id)) {
-                 return GDM_SESSION_DISPLAY_MODE_LOGIND_MANAGED;
-         }
+-static gboolean
+-lookup_managed_display_by_seat_id (const char *id,
+-                                   GdmDisplay *display,
+-                                   gpointer    user_data)
+-{
+-        int status;
+-
+-        status = gdm_display_get_status (display);
+-
+-        if (status != GDM_DISPLAY_MANAGED)
+-                return FALSE;
+-
+-        return lookup_by_seat_id (id, display, user_data);
+-}
+-
+ #ifdef HAVE_UDEV
+ static gboolean
+ udev_is_settled (GdmLocalDisplayFactory *factory)
+@@ -515,15 +500,10 @@ get_display_for_seat (GdmLocalDisplayFactory *factory,
+ {
+         GdmDisplay *display;
+         GdmDisplayStore *store;
+-        gboolean is_seat0;
  
+         store = gdm_display_factory_get_display_store (GDM_DISPLAY_FACTORY (factory));
+ 
+-        is_seat0 = g_strcmp0 (seat_id, "seat0") == 0;
+-        if (is_seat0)
+-                display = gdm_display_store_find (store, lookup_prepared_display_by_seat_id, (gpointer) seat_id);
+-        else
+-                display = gdm_display_store_find (store, lookup_managed_display_by_seat_id, (gpointer) seat_id);
++        display = gdm_display_store_find (store, lookup_prepared_display_by_seat_id, (gpointer) seat_id);
+ 
+         return display != NULL ? g_object_ref (display) : NULL;
+ }
+-- 
+GitLab
+
+
+From cff573c407453cb5181c776ca7761851ea59e6c8 Mon Sep 17 00:00:00 2001
+From: Myrrh Periwinkle <myrrhperiwinkle@qtmlabs.xyz>
+Date: Mon, 26 May 2025 08:44:30 +0700
+Subject: [PATCH 4/4] daemon: Don't switch to greeter if a background non-VT
+ user session end
+
+---
+ daemon/gdm-local-display-factory.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/daemon/gdm-local-display-factory.c b/daemon/gdm-local-display-factory.c
+index 9c7037f8c..ffc8f67d0 100644
+--- a/daemon/gdm-local-display-factory.c
++++ b/daemon/gdm-local-display-factory.c
+@@ -291,7 +291,8 @@ on_display_status_changed (GdmDisplay             *display,
+                 if (is_local &&
+                     ((g_strcmp0 (session_class, "greeter") != 0 &&
+                       (!seat_active_session || g_strcmp0(session_id, seat_active_session) == 0)) ||
+-                     factory->active_vt == GDM_INITIAL_VT || !sd_seat_can_tty (seat_id))) {
++                     (sd_seat_can_tty (seat_id) && factory->active_vt == GDM_INITIAL_VT) ||
++                     (!sd_seat_can_tty (seat_id) && g_strcmp0 (session_class, "greeter") == 0))) {
+                         /* reset num failures */
+                         factory->num_failures = 0;
+ 
+-- 
+GitLab
+
