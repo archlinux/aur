@@ -3,8 +3,8 @@
 
 pkgname=vocalinux-bin
 # AUR pkgver cannot contain hyphens (v0.14.0-beta -> 0.14.0beta).
-pkgver=0.18.0
-_tag=0.18.0
+pkgver=0.18.1
+_tag=0.18.1
 pkgrel=1
 pkgdesc="Free, offline voice dictation for Linux (prebuilt AppImage)"
 arch=('x86_64' 'aarch64')
@@ -42,8 +42,8 @@ source_aarch64=("Vocalinux-${_tag}-aarch64.AppImage::https://github.com/VocaHQ/v
 sha256sums=('837006a9c689146308eae8c57cba1cdcc06673a108e72f39231837c6f63ae487'
             '128b8939ffc00314a55d0600ab29c6a92dfb116138e088c59579a086616ec8ec'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef')
-sha256sums_x86_64=('54b9280d80a5e8be2d6cdf9a0334ade4e93426f65a5074a6b69ac9a25e28521f')
-sha256sums_aarch64=('a9e7741cb62fc0aae5e2257e721344748bc01b99765f0161a80bc983476bcdcb')
+sha256sums_x86_64=('cd28ba97405d4631d330fd67f7d766fd6f6a0338a30fcb73466d8a6731d8252a')
+sha256sums_aarch64=('37baf4222f861c6f82b906de40947994c9fc59905fb3303fb884f29d349d1435')
 
 package() {
   install -Dm755 "Vocalinux-${_tag}-${CARCH}.AppImage" \
