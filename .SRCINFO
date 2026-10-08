@@ -1,6 +1,6 @@
 pkgbase = panda-iptv-bin
 	pkgdesc = Oriental Brutalist IPTV Player for Linux Desktop (MPV Accelerated)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/satodu/panda-iptv
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = panda-iptv-bin
 	provides = panda-iptv
 	conflicts = panda-iptv
 	options = !strip
-	source = https://github.com/satodu/panda-iptv/releases/download/v0.1.1/panda-iptv-0.1.1-linux-x64.tar.gz
+	source = https://github.com/satodu/panda-iptv/releases/download/v0.1.2/panda-iptv-0.1.2-linux-x64.tar.gz
 	source = panda-iptv.desktop
 	source = LICENSE
-	sha256sums = 0ef143d98a29b2221291f8a2c788b18fbf4fd6ca9e5010f6be823d687de5edbf
+	sha256sums = fb909fd12e763834c83a6db517a7fca444a7d08bd017972496e54bf6d76f6fd2
 	sha256sums = 267391f6971858e7235a5a30950e5d01f7abe0f1473cebd24545a149ab0788ad
 	sha256sums = b3276f476122afd3ca641617539d6c95a3e4cb5cc8f943829343f075cbcf8470
 
