@@ -1,6 +1,6 @@
 pkgbase = pocketlink-git
 	pkgdesc = Lightweight phone companion for sway, niri & co: notifications, clipboard, files, media remote and calls
-	pkgver = 0.1.0.r0.ga04e04e
+	pkgver = 0.2.0.r0.g8e31f9c
 	pkgrel = 1
 	url = https://github.com/carnager/pocketlink
 	arch = x86_64
