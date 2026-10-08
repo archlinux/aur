@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ore
-_pkgver=1.7.5.1
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4c8634c849a71076543c387429174bc0')
-b2sums=('2e037b7f1200f54938245b825975007b5fc3b24909142c0caf8d8c58fca22b48fd929ab57dd1b92fda1075bac2b79a73947eefbd0627befd28e9e93438ee310e')
+md5sums=('575068992b7173ed5996899898b390ca')
+b2sums=('9c7cb093aede066a777bcc67e698511bc635b82f20989ee2fd0b676425baec03abe7cb897946f5536d431d4350ef57d21772e6a8b89fddbedea3544c10096f3f')
 
 build() {
   mkdir build
