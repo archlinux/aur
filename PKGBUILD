@@ -2,7 +2,7 @@
 
 _pkgname=stevia
 pkgname=stevia-git
-pkgver=0.53.0.r0.g9a8d1ee
+pkgver=0.58.0.r12.g564ec21
 pkgrel=1
 pkgdesc='A user friendly on screen keyboard for Phosh'
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
@@ -34,7 +34,7 @@ checkdepends=(xorg-server-xvfb)
 conflicts=(stevia squeekboard)
 provides=(stevia phosh-osk-provider)
 source=("git+https://gitlab.gnome.org/World/Phosh/stevia.git")
-b2sums=("SKIP")
+b2sums=('SKIP')
 
 
 pkgver() {
@@ -43,7 +43,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson $_pkgname build
+  arch-meson $_pkgname -Duim=disabled -Dgovarnam=disabled build
   meson compile -C build
 }
 
