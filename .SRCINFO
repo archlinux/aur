@@ -1,6 +1,6 @@
 pkgbase = flint-bin
 	pkgdesc = A small bytecode interpreter and scripting language
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/programmersd21/flint
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = flint-bin
 	provides = flint
 	conflicts = flint
 	options = !strip
-	source = README-0.9.0.md::https://raw.githubusercontent.com/programmersd21/flint/v0.9.0/README.md
-	source = LICENSE-0.9.0::https://raw.githubusercontent.com/programmersd21/flint/v0.9.0/LICENSE
+	source = README-0.10.0.md::https://raw.githubusercontent.com/programmersd21/flint/v0.10.0/README.md
+	source = LICENSE-0.10.0::https://raw.githubusercontent.com/programmersd21/flint/v0.10.0/LICENSE
 	sha256sums = 4c7ffdab1cd44b93b74cb9e8e55a4b5e5ba938dc4a4651736bc0f76bef7a4750
 	sha256sums = cfc3366f4709236ec9dca210979fc0e8c0eeee1c4f45053c6ac0b72fead9c694
-	source_x86_64 = flint-x86_64-0.9.0.tgz::https://github.com/programmersd21/flint/releases/download/v0.9.0/flint-v0.9.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 03d66498b32cf35372bb6f075272c6b138a83738719f704c6c475ec262e29e3e
+	source_x86_64 = flint-x86_64-0.10.0.tgz::https://github.com/programmersd21/flint/releases/download/v0.10.0/flint-v0.10.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 5cdada425305412d22d85f49ab33997f4c2b031dae7bf13a73216b2eea170b5f
 
 pkgname = flint-bin
