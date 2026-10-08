@@ -1,7 +1,7 @@
 pkgbase = libretro-melondsds-bin
 	pkgdesc = An enhanced remake of the melonDS core for libretro
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JesseTG/melonds-ds
 	arch = x86_64
 	arch = aarch64

@@ -2,7 +2,7 @@
 _pkgname=libretro-melondsds
 pkgname=$_pkgname-bin
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An enhanced remake of the melonDS core for libretro"
 arch=('x86_64' 'aarch64')
 url="https://github.com/JesseTG/melonds-ds"
@@ -17,10 +17,11 @@ b2sums_x86_64=('711301b2a092a73eb5f4e0cc035c4634a81c0091c1af8fdccecd889c0de2560a
 b2sums_aarch64=('7d10af89b49b2bb87addb2a1ce7b834fdf3bccb7f3799d65a0ec6a38a6c345265d2acdabc932bc9ba2520679454d94d12618d60fca1a8f2029c26a9624e86f63')
 
 package() {
-        _pkg=melondsds_libretro-linux-x86_64-Release
+        _arch=${CARCH}
         if [ "${CARCH}" = "aarch64" ]; then
-          _pkg=melondsds_libretro-linux-arm64-Release
+          _arch=arm64
         fi
+        _pkg=melondsds_libretro-linux-${_arch}-Release
 
 	install -Dm644 -t "$pkgdir"/usr/lib/libretro "${srcdir}/${_pkg}/cores/melondsds_libretro.so"
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname "${srcdir}/${_pkg}/cores/melondsds-LICENSE.txt"
