@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=paseo
-pkgver=0.10.3
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents (built from source, runs on system Electron)"
 arch=('x86_64')
@@ -26,13 +26,13 @@ source=(
     'trace-desktop.mjs'
     'system-electron-paths.patch'
 )
-sha256sums=('4a61418e41457dc7afd444ffb8e9209228e4320c7482bbf3cb17008b2a339c1a'
+sha256sums=('c1520504874d4b70f6f8ef710b5f2a693d5a1ae69473d8f017173678a8055b8e'
             'f9e194a879a87d87021ad06f489a9e4197ded629055a38e2da3557a423785de4'
             '6ae9c520668f639a22f17df7814548056ee46aa99a2886639405297a7b1ef212'
             'df0d01b98ac405c5c25edbb91d61bb9e05355a57e0e652e00823d6331618d686'
             '620279e619a4f42dcfb45991d679bc82e891d69cabc77a9512b77a47f4df59c2'
             'e9fe33e993a8da7a8d26d421b4530e907e99b745d16b1c34a963e01f112ede08'
-            'a30964e6b5767a12af0ccaa1a67b325a54990ebd386fef8a8326847cc54b955d')
+            '4111231339f8fcad31ec5fc139f9292c26182785838f22076d4c05f8c8463579')
 
 # Repo-relative path of the installed node-pty. npm hoists it to the root
 # node_modules in some releases and nests it under packages/server in others
@@ -77,6 +77,12 @@ prepare() {
     # that path resolves into electron*/resources, so the read threw ENOENT and
     # the whole editor-target list failed for anyone with a supported editor
     # installed — not just a missing icon. Point it at the assets we ship.
+    #
+    # 0.11.0 folded getBundledCliShimPath()'s per-platform branches into
+    # resolveCliShimPath() (cli-install/path.ts), which for packaged Linux
+    # still resolves <dir of exe>/resources/bin/paseo — i.e. inside the system
+    # electron* tree. The cli-install/paths.ts hunk now short-circuits Linux to
+    # /usr/bin/paseo before that call, same intent as before.
     patch -Np1 -i "${srcdir}/system-electron-paths.patch"
 
     # Keep npm state inside $srcdir; skip lifecycle scripts (no electron /
@@ -227,6 +233,10 @@ package() {
         "usr/lib/paseo/$(_node_pty_dir)/build/Release/pty.node"
         usr/lib/paseo/packages/app/dist/index.html
         usr/lib/paseo/skills
+        # 0.11.0 built-in plugins, compiled by the daemon at runtime (esbuild)
+        # and resolved relative to the server dist, not through the module
+        # graph.
+        usr/lib/paseo/packages/server/dist/server/builtin-plugins/claude-usage-source/paseo-plugin.json
         # Hardcoded by system-electron-paths.patch: the window icon and the
         # editor-target icons. Upstream reads both out of process.resourcesPath,
         # which under system Electron points into electron*/resources instead of
