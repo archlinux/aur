@@ -4,23 +4,17 @@
 
 pkgname="ibazel"
 pkgver=0.33.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool for building Bazel targets when source files change."
 arch=("x86_64" "aarch64")
 license=("Apache-2.0")
 url="https://github.com/bazelbuild/bazel-watcher"
-makedepends=("git" "python")
+makedepends=("bazelisk" "git" "python")
 depends=("bazel")
 conflicts=('ibazel-bin' 'ibazel-git')
 _commit='ed00d96be0ce5b01aa2c43abbcd29172d4573091'
-source=(
-  "${pkgname}::git+$url.git#commit=$_commit"
-  'bazel-9.patch'  # https://github.com/bazelbuild/bazel-watcher/pull/847
-)
-sha256sums=(
-  'SKIP'
-  'a9f7dbc265d25a1de8ede1c51da0579af01b461651312bdbe3e7d06b3d6318c9'
-)
+source=("${pkgname}::git+$url.git#commit=$_commit")
+sha256sums=('SKIP')
 
 _bazel() {
   local flag options=(
@@ -49,16 +43,13 @@ _bazel() {
   for flag in ${CFLAGS}; do options+=("--conlyopt=${flag}"); done
   for flag in ${CXXFLAGS}; do options+=("--cxxopt=${flag}"); done
   for flag in ${LDFLAGS}; do options+=("--linkopt=${flag}"); done
-  bazel --output_user_root="${srcdir}/bazel" --max_idle_secs=60 "${1}" "${options[@]}" "${@:2}"
+  BAZELISK_HOME="${srcdir}/bazelisk" bazelisk \
+    --output_user_root="${srcdir}/bazel" --max_idle_secs=60 "${1}" "${options[@]}" "${@:2}"
 }
 
 prepare() {
   cd "${pkgname}" || exit
 
-  rm .bazelversion
-  patch -Np1 -i "${srcdir}/bazel-9.patch"
-  # Keep the changes above from stamping the version as "-dirty".
-  git ls-files -z --modified | xargs -0 git update-index --assume-unchanged
   _bazel fetch "//cmd/${pkgname}"
 }
 
