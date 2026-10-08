@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="sot"
-pkgver=6.1.0
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="Command-line System Obervation Tool"
 
@@ -20,7 +20,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 depends=('python' 'python-textual' 'python-distro' 'python-psutil' 'python-py-cpuinfo' 'python-rich')
 
 source=("${_pypi_package}-${_upstreamver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('775629be8780787b27dbc31bfd9e85602a2c9492e9ed3b0327af76c1aeab202d')
+sha256sums=('4e1d64baf37fca73446b1ba8cbd728fe8c7e0aa64f59e75eddb05b32c63c7e6f')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
