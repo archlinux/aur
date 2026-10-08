@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=EGGNOGG+
+Comment=A competitive arcade game of immortals sword-fighting to the death
+Exec=eggnogg+
+Icon=eggnogg+
+Terminal=false
+StartupNotify=false
+Categories=Game;ArcadeGame;
