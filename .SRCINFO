@@ -1,0 +1,21 @@
+pkgbase = dreamdump-git
+	pkgdesc = Dump Sega Dreamcast GD-ROM discs
+	pkgver = 0.6.0.r2.g742d0ef
+	pkgrel = 1
+	url = https://codeberg.org/MoriGM/dreamdump
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = EPL-2.0
+	makedepends = git
+	makedepends = go>=1.26
+	depends = glibc
+	provides = dreamdump
+	conflicts = dreamdump
+	conflicts = dreamdump-bin
+	options = !lto
+	options = !debug
+	source = dreamdump::git+https://codeberg.org/MoriGM/dreamdump.git#branch=main
+	sha256sums = SKIP
+
+pkgname = dreamdump-git
