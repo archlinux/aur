@@ -1,6 +1,6 @@
 pkgbase = qt6-opcua
 	pkgdesc = Qt 6 wrapper for existing OPC UA stacks
-	pkgver = 6.11.2
+	pkgver = 6.12.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = qt6-opcua
 	makedepends = qt6-declarative
 	depends = qt6-base
 	depends = openssl
-	source = https://github.com/qt/qtopcua/archive/refs/tags/v6.11.2.tar.gz
-	sha256sums = 2e4899113dd54107f13821f9cfcfdde0ea43a79878454c2f4519c785c8f8050c
+	source = https://github.com/qt/qtopcua/archive/refs/tags/v6.12.0.tar.gz
+	sha256sums = c4eefbe575f9d8ae6402749d45c3a534c7cc3a5c4c7bf4d76dbcd78ed19891f4
 
 pkgname = qt6-opcua
