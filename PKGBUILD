@@ -1,7 +1,7 @@
 # Maintainer: Liam Doan <not.lamdn@gmail.com>
 
 pkgname=surfshark-client
-pkgver=3.13.0
+pkgver=3.14.0
 pkgrel=1
 pkgdesc="Official Surfshark VPN client"
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://ocean.surfshark.com/debian/pool/main/s/surfshark_${pkgver}_amd64.deb")
-sha256sums=('6754219b04dd31a97a7433d8d0a04780c91c3518c12166f37655fdbb0583fcc0')
+sha256sums=('61e20cf567da917a038f40dc6e4a3cb0006a32cac3e212a62f8cb7fe349540b6')
 
 prepare() {
     tar xf data.tar.xz
@@ -41,7 +41,7 @@ package(){
 
 	# SUID chrome-sandbox for Electron 5+
 	chmod 4755 "${pkgdir}/opt/Surfshark/chrome-sandbox" || true
-	
+
 	# Assign correct permissions for systemctl to run surfsharkd service as user
 	chmod 755 "${pkgdir}/opt/Surfshark/resources/dist/resources/surfsharkd.js" || true
 	chmod 744 "${pkgdir}/opt/Surfshark/resources/dist/resources/surfsharkd2.js" || true
@@ -49,5 +49,5 @@ package(){
 	# Permissions for update and diagnostics
 	chmod 755 "${pkgdir}/opt/Surfshark/resources/dist/resources/update" || true
 	chmod 755 "${pkgdir}/opt/Surfshark/resources/dist/resources/diagnostics" || true
-	 
+
 }
