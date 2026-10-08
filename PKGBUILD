@@ -1,8 +1,8 @@
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 
 pkgname=python-mixpanel
 _gitpkgname=mixpanel-python
-pkgver=5.1.0
+pkgver=5.4.0
 pkgrel=1
 pkgdesc='Official Mixpanel Python library'
 arch=('any')
@@ -12,7 +12,7 @@ depends=(
   'python'
   'python-asgiref'
   'python-httpx'
-  'python-json-logic'
+  'python-json-logic>0.6.3'  # v0.6.3 lacks the `operations` feature
   'python-pydantic'
   'python-requests'
   'python-urllib3'
@@ -37,7 +37,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/mixpanel/mixpanel-python/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=('fd51bf0dab181600346d897791ce7cbb3bf196ae2d2d63b66c029693e82767aa81760fde2a2873221cc811a9efc04cf52608c9efae4fff388a9e73d79d7a938f')
+sha512sums=('cf9e52d519a6a21a7252527147dede09c9e573e2d532dd8bb899ae60c9e30343fa325920d12a464a762bed8ef4925ea151998a067aa8fa2e95d0ec800ae670d6')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
