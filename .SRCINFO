@@ -1,0 +1,25 @@
+pkgbase = aegis-tools-git
+	pkgdesc = Developer tools for Aegis Authenticator (decrypt-vault, gen-vault, gen-icons, gen-qr)
+	pkgver = 0.3.5.r49.gf670b2e
+	pkgrel = 1
+	url = https://github.com/alexbakker/aegis-tools
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-cryptography
+	depends = python-lxml
+	depends = python-qrcode
+	depends = python-reportlab
+	depends = python-svglib
+	depends = python-xmltodict
+	provides = aegis-tools
+	conflicts = aegis-tools
+	source = aegis-tools::git+https://github.com/alexbakker/aegis-tools.git
+	sha256sums = SKIP
+
+pkgname = aegis-tools-git
