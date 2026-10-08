@@ -1,12 +1,12 @@
 pkgbase = kst4contest-git
 	pkgdesc = ON4KST Chat Client for VHF/UHF contest operation (git)
-	pkgver = 1.44.0.r314.g3e8457ee
+	pkgver = 1.50.0.r315.g2a5c89b9
 	pkgrel = 1
 	url = https://github.com/praktimarc/kst4contest
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = java-environment=21
-	makedepends = maven
+	makedepends = gradle
 	makedepends = git
 	depends = gst-plugins-base
 	depends = gst-plugins-good

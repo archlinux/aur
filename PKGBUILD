@@ -1,13 +1,13 @@
 # Maintainer: Philipp Wagner <philipp@wagnersnetz.de>
 pkgname=kst4contest-git
-pkgver=1.44.0.r314.g3e8457ee
+pkgver=1.50.0.r315.g2a5c89b9
 pkgrel=1
 pkgdesc="ON4KST Chat Client for VHF/UHF contest operation (git)"
 arch=('x86_64')
 url="https://github.com/praktimarc/kst4contest"
 license=('GPL-3.0-only')
 depends=('gst-plugins-base' 'gst-plugins-good')
-makedepends=('java-environment=21' 'maven' 'git')
+makedepends=('java-environment=21' 'gradle' 'git')
 provides=('kst4contest')
 conflicts=('kst4contest' 'kst4contest-bin')
 source=("kst4contest::git+https://github.com/praktimarc/kst4contest.git")
@@ -15,8 +15,8 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/kst4contest"
-    BASE=$(grep -m1 '<version>' pom.xml \
-        | sed 's/.*<version>\(.*\)<\/version>.*/\1/' | sed 's/[-.]nightly//')
+    BASE=$(grep -m1 '^version=' gradle.properties \
+        | cut -d= -f2 | sed 's/[-.]nightly//')
     printf '%s.r%s.g%s' "${BASE}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -26,24 +26,13 @@ build() {
     export JAVA_HOME=$(find /usr/lib/jvm -maxdepth 1 -name 'java-21-*' -type d | head -n 1)
     export PATH="${JAVA_HOME}/bin:${PATH}"
 
-    mvn -B -DskipTests package dependency:copy-dependencies \
-        -DincludeScope=runtime \
-        -DoutputDirectory=target/dist-libs
+    ./gradlew --offline -S :app-desktop:createDistributable
 
-    cp "$(ls -t target/praktiKST-*.jar | head -n 1)" target/dist-libs/app.jar
-
+    # package() reads dist/KST4Contest. Application name, icon and the JDK
+    # module list come from app-desktop/build.gradle.kts.
+    rm -rf dist
     mkdir -p dist
-    ADD_MODULES="$(java packaging/AddModules.java)"
-    jpackage \
-        --type app-image \
-        --name KST4Contest \
-        --icon packaging/icons/kst4contest.png \
-        --input target/dist-libs \
-        --main-jar app.jar \
-        --main-class kst4contest.view.Kst4ContestApplication \
-        --module-path target/dist-libs \
-        --add-modules "$ADD_MODULES" \
-        --dest dist
+    cp -a app-desktop/build/compose/binaries/main/app/KST4Contest dist/
 }
 
 package() {
