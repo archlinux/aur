@@ -5,11 +5,13 @@ post_install() {
     if [ -f "$post_script" ]; then
         sed -i 's/systemctl --user stop.*/true/g' "$post_script"
         sed -i 's/systemctl --user disable.*/true/g' "$post_script"
+        sed -i 's/grep -i jspluginonline/grep -E -i "<jsplugin(online)?[ >]"/g' "$post_script"
+        
         sed -i '/# ---- 6\. 写 systemd --user/,$d' "$post_script"
         echo "exit 0" >> "$post_script"
     fi
 
-    # 2. 在系统用户配置区提供 Service 模板
+    # 在系统用户配置区提供 Service 模板
     mkdir -p /etc/systemd/user
     
     cat > /etc/systemd/user/lingxi-ai.service << 'EOF'

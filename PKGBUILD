@@ -3,7 +3,7 @@
 pkgname=lingxi-ai-bin
 _pkgname=lingxi-ai
 pkgver=1.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="WPS Office AI Agent 插件（灵犀AI），支持多种大模型、MCP与本地化部署"
 arch=('x86_64')
 url="https://wps-ai.llteac.cn"
