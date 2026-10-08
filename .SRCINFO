@@ -1,0 +1,22 @@
+pkgbase = mediarium-bin
+	pkgdesc = Self-hosted media manager for movies, TV, music, ebooks and audiobooks: search, download and organise
+	pkgver = 2.1.10
+	pkgrel = 1
+	url = https://filebrowser.org/
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0
+	depends = par2cmdline
+	depends = p7zip
+	provides = mediarium
+	conflicts = mediarium
+	source = mediarium.sysusers
+	source = mediarium.tmpfiles
+	sha256sums = b9ed5becafa699a8c3f058473ccc997a853c63ed5ad1167716d1d3fc0e30dccf
+	sha256sums = 4227a0b0f667a3821d2924a84089f76df8d3b6c5dcd861ae0c881f942f04ca9a
+	source_x86_64 = Mediarium-x86_64-2.1.10.tar.gz::https://github.com/rdborg/Mediarium/releases/download/v2.1.10/mediarium_2.1.10_linux_amd64.tar.gz
+	sha256sums_x86_64 = 85ee45cec616cfa9fdaea050a956ae9278426d08604c13399e714a722a7c1a4b
+	source_aarch64 = Mediarium-aarch64-2.1.10.tar.gz::https://github.com/rdborg/Mediarium/releases/download/v2.1.10/mediarium_2.1.10_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9cc25cbde6961f3fc6eb594277bd93cc052b7d6b960bb60916be1a5bce2ca697
+
+pkgname = mediarium-bin

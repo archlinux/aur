@@ -1,0 +1,5 @@
+[mediarium-bin]
+source = "github"
+github = "rdborg/Mediarium"
+use_latest_release = true
+prefix = "v"

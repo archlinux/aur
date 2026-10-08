@@ -1,0 +1,2 @@
+d /var/lib/mediarium 0750 mediarium mediarium -
+d /etc/mediarium/ 0755 mediarium mediarium -
