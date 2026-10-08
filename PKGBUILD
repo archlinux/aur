@@ -1,6 +1,6 @@
 # Maintainer: Lucasion <lucasion@hotmail.com>
 pkgname=ionix-openconnect-tools
-pkgver=r5.5c1b067
+pkgver=r7.f9af428
 pkgrel=1
 pkgdesc="CLI utility for managing and connecting to OpenConnect VPN servers"
 arch=('any')
