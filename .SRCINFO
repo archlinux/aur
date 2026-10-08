@@ -1,0 +1,13 @@
+pkgbase = hickit
+	pkgdesc = TAD calling, phase imputation and 3D modelling for diploid single-cell Hi-C
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/lh3/hickit
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	source = hickit-0.1.1.tar.gz::https://github.com/lh3/hickit/archive/v0.1.1.tar.gz
+	sha256sums = d781cb42b34f801c64cc2f21253d92fef42a030c0ce9a6e62f1620c2ea47b04a
+
+pkgname = hickit
