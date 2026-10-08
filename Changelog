@@ -1,18 +1,21 @@
 -------------------------------------------------------
  Changelog    : nginx_passwd
- Tags         : 3.3.1 ➙ 4.0.2
-              : 2026-01-04 ➙ 2026-09-10
+ Tags         : 3.3.2 ➙ 4.0.3
+              : 2026-05-05 ➙ 2026-10-08
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-10   : 4.0.2
+ 2026-10-08   : 4.0.3
+              - 4.0.3 Documentation on `readthedocs <https://nginx-passwd.readthedocs.io>`
+
+ 2026-09-10   : 4.0.2, origin/master
               - **Version 4.0.2**
             
                 * Change Arch package dependencies that have been renamed:
             
                   - pyconcurrent -> python-pyconcurrent
 
- 2026-09-09   : 4.0.1, origin/master
+ 2026-09-09   : 4.0.1
               - **Version 4.0.1**
             
                 * Remove sphinx tmp files from html docs
@@ -31,8 +34,4 @@
  2026-05-05   : 3.3.2
               - Fix goofy typo in installer - thanks to @solsticedhiver in the aur
  2026-01-04   ⋯
-              - update Docs/Changelogs
-
- 2026-01-04   : 3.3.1
-              - Small non-code tidy ups
               - update Docs/Changelogs
