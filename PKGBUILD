@@ -17,7 +17,7 @@ conflicts=('gaze-hyprlock')
 backup=('etc/pam.d/hyprlock-gaze' 'etc/pam.d/hyprlock-gaze-simultaneous' )
 install='gaze-hyprlock-bin.install'
 source=("gaze-hyprlock-0.3.9-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-hyprlock-0.3.9-1-x86_64.pkg.tar.zst")
-sha256sums=('e2240a9a7baa084f83c3be3dfe15b009488f794758f5c3f8aecbecfccdacaf8f')
+sha256sums=('7357e5b14ef23ae154ec4c8c4ccae00948711beac60a7f7e97f8bc743e2926e0')
 
 package() {
   bsdtar -xpf "$srcdir/gaze-hyprlock-0.3.9-1-x86_64.pkg.tar.zst" -C "$pkgdir"
