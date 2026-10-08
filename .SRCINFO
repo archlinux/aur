@@ -1,16 +1,16 @@
 pkgbase = vev-bin
 	pkgdesc = Terminal multiplexer with a per-user daemon, server-side rendering, and minimal socket/SSH diffs
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/bnema/vev
 	license = MIT
 	conflicts = vev
 	provides = vev
 	arch = aarch64
-	source_aarch64 = vev-bin_0.7.0_aarch64.tar.gz::https://github.com/bnema/vev/releases/download/v0.7.0/vev_linux_arm64.tar.gz
-	sha256sums_aarch64 = 3ed3f8fd7866eb446730c88c190be4f64623f29149b5d58b1e718f3e34878b2f
+	source_aarch64 = vev-bin_0.8.0_aarch64.tar.gz::https://github.com/bnema/vev/releases/download/v0.8.0/vev_linux_arm64.tar.gz
+	sha256sums_aarch64 = 791b85c80ce9f7e23ab2fc27c7fad966332afce51c3e2afa8819b401059f6d17
 	arch = x86_64
-	source_x86_64 = vev-bin_0.7.0_x86_64.tar.gz::https://github.com/bnema/vev/releases/download/v0.7.0/vev_linux_x86_64.tar.gz
-	sha256sums_x86_64 = e20488e3c26b42ccd355d18e57e25d05d98f77408e3c7aed22542de4699931a8
+	source_x86_64 = vev-bin_0.8.0_x86_64.tar.gz::https://github.com/bnema/vev/releases/download/v0.8.0/vev_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 71b7337e22544da1002d4f84581c96a65e1636017eadfef6ce4d034589e713c5
 	
 pkgname = vev-bin
