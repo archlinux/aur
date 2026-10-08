@@ -1,6 +1,6 @@
 pkgbase = repo-notes-git
 	pkgdesc = Standalone CLI and MCP server for repo-scoped Markdown notes (git version)
-	pkgver = 20260929.2.r55.g3a451c7
+	pkgver = 20260929.2.r57.geb39b34
 	pkgrel = 1
 	url = https://github.com/timmo001/notes
 	install = repo-notes.install
