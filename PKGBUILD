@@ -3,7 +3,7 @@
 
 _pkgname=kosmonaut
 pkgname=${_pkgname}-git
-pkgver=0.0.1.r96.g85522ef
+pkgver=0.0.1_rc1.r97.ge5c2ad9
 pkgrel=1
 pkgdesc="A modern NetworkManager TUI written in Rust"
 arch=('x86_64')
@@ -19,7 +19,8 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     local base
-    base="$(sed -n 's/^version *= *"\([^"]*\)".*/\1/p' Cargo.toml | head -n1)"
+    base="$(awk -F'"' '/^[[:space:]]*version[[:space:]]*=/ {print $2; exit}' Cargo.toml)"
+    base="${base//-/_}"
     printf '%s.r%s.g%s' "${base:-0.0.1}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 

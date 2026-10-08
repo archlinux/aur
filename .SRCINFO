@@ -1,6 +1,6 @@
 pkgbase = kosmonaut-git
 	pkgdesc = A modern NetworkManager TUI written in Rust
-	pkgver = 0.0.1.r96.g85522ef
+	pkgver = 0.0.1_rc1.r97.ge5c2ad9
 	pkgrel = 1
 	url = https://codeberg.org/kosmonaut/kosmonaut
 	arch = x86_64
