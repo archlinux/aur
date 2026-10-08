@@ -2,7 +2,7 @@
 
 pkgname="booruflow-bin"
 pkgdesc="An open-source, cross-platform booru browser and image downloader."
-pkgrel=1
+pkgrel=2
 pkgver=0.11.0
 
 url="https://github.com/normalllll/BooruFlow"

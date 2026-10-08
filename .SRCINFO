@@ -1,7 +1,7 @@
 pkgbase = booruflow-bin
 	pkgdesc = An open-source, cross-platform booru browser and image downloader.
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/normalllll/BooruFlow
 	arch = x86_64
 	license = GPL-3.0-or-later
