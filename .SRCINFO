@@ -1,6 +1,6 @@
 pkgbase = rocm-nightly-gfx1151-bin
 	pkgdesc = AMD ROCm Nightly Release (gfx1151) - Monolithic Install
-	pkgver = 10.2.0a20261007
+	pkgver = 10.2.0a20261008
 	pkgrel = 1
 	url = https://nightly.repo.amd.com
 	arch = x86_64
@@ -64,7 +64,7 @@ pkgbase = rocm-nightly-gfx1151-bin
 	provides = rocm-opencl-sdk
 	provides = rocm-opencl-runtime
 	provides = rocm-ml-sdk
-	provides = rocm=10.2.0a20261007
+	provides = rocm=10.2.0a20261008
 	provides = opencl-driver
 	conflicts = amdsmi
 	conflicts = rocm-core
@@ -123,7 +123,7 @@ pkgbase = rocm-nightly-gfx1151-bin
 	conflicts = rocm
 	options = !strip
 	options = !debug
-	source = https://nightly.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx1151-10.2.0a20261007.tar.gz
-	sha256sums = ddc518e6e0fc6141bc8f7c35fdbdca88a155d840f23094d27e86a877804bd476
+	source = https://nightly.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx1151-10.2.0a20261008.tar.gz
+	sha256sums = d929bb6fc321809f525b526a9bcac3b25933039e974945edbc3adab83e800f4f
 
 pkgname = rocm-nightly-gfx1151-bin
