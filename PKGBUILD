@@ -1,47 +1,38 @@
 # Maintainer: Amolith <amolith@secluded.site>
+# Maintainer: Viktoras Agejevas <v.agejevas@gmail.com>
 pkgname=goradion
+pkgver=0.13.0
+pkgrel=1
 pkgdesc='Terminal based online radio player'
 arch=('x86_64' 'aarch64')
-url="https://github.com/agejevasv/goradion"
-pkgver=0.10.0
-pkgrel=1
+url='https://github.com/agejevasv/goradion'
 license=('Unlicense')
-makedepends=('go')
-depends=('mpv')
-
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('67741a7c48e36536737320661be10446e27856484c70c3a7ac7d6a30d45dd68e34e685ba9e8558f65c06b176a9b4a6487d26f619c2657da747ca20483ddd4da9')
+depends=('glibc' 'libgcc' 'alsa-lib')
+makedepends=('cargo')
+options=('!lto' '!debug')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('47bf820e9b4a343ea13cbbb833ab8ba5f65f13d33c345674690c4930b42d384328de29895c013bfc7886409403a5e2b769057a804f7039a1eddd65d4bacc5af0')
 
 prepare() {
-  cd "${pkgname}-${pkgver}" || exit
-  mkdir -p build/
-  export GOPATH="${srcdir}"
-  go mod download -modcacherw
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
-  cd "${pkgname}-${pkgver}" || exit
-
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  go build \
-    -trimpath \
-    -buildmode=pie \
-    -mod=readonly \
-    -modcacherw \
-    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -bindnow" \
-    -o build/"${pkgname}" \
-    .
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
 }
 
 check() {
-  cd "${pkgname}-${pkgver}" || exit
-  go test ./...
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen --all-features
 }
 
 package() {
-  cd "${pkgname}-${pkgver}" || exit
-  install -Dm755 build/"$pkgname" "$pkgdir/usr/bin/$pkgname"
+  cd "$pkgname-$pkgver"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
