@@ -19,14 +19,12 @@ pkgbase = ctranslate2-cuda
 	source = git+https://github.com/OpenNMT/CTranslate2.git#tag=v4.8.2
 	source = git+https://github.com/jarro2783/cxxopts.git
 	source = git+https://github.com/NVIDIA/cccl.git
-	source = git+https://github.com/google/googletest.git
 	source = git+https://github.com/google/cpu_features.git
 	source = git+https://github.com/gabime/spdlog.git
 	source = git+https://github.com/google/ruy.git
 	source = git+https://github.com/pytorch/cpuinfo.git
 	source = git+https://github.com/NVIDIA/cutlass.git
 	sha256sums = 3ebe3d22a615f1b04710e19aa7d94c26c704bdd1e3ed3b3d31f7f7e77dfc2ebd
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -56,5 +54,6 @@ pkgname = python-ctranslate2-cuda
 	depends = glibc
 	depends = libstdc++
 	optdepends = python-pytorch: model converters
+	optdepends = python-transformers: Hugging Face model converter
 	provides = python-ctranslate2=4.8.2
 	conflicts = python-ctranslate2

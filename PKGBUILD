@@ -33,7 +33,6 @@ options=('!lto')
 source=("git+https://github.com/OpenNMT/CTranslate2.git#tag=v$pkgver"
         'git+https://github.com/jarro2783/cxxopts.git'
         'git+https://github.com/NVIDIA/cccl.git'
-        'git+https://github.com/google/googletest.git'
         'git+https://github.com/google/cpu_features.git'
         'git+https://github.com/gabime/spdlog.git'
         'git+https://github.com/google/ruy.git'
@@ -46,22 +45,21 @@ sha256sums=('3ebe3d22a615f1b04710e19aa7d94c26c704bdd1e3ed3b3d31f7f7e77dfc2ebd'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             'SKIP')
 
 prepare() {
   cd CTranslate2
-  git submodule init
+  git submodule init third_party/thrust
   git config submodule."third_party/thrust".url "$srcdir/cccl"
-  for submodule in cxxopts googletest cpu_features spdlog ruy cutlass; do
+  for submodule in cxxopts cpu_features spdlog ruy cutlass; do
+    git submodule init "third_party/${submodule}"
     git config submodule."third_party/${submodule}".url "$srcdir/${submodule}"
   done
   git -c protocol.file.allow=always submodule update
 
   pushd third_party/ruy
-  git submodule init
+  git submodule init third_party/cpuinfo
   git config submodule."cpuinfo".url "$srcdir/cpuinfo"
-  git config submodule."googletest".url "$srcdir/googletest"
   git -c protocol.file.allow=always submodule update
   popd
 
@@ -70,10 +68,8 @@ prepare() {
   # Relax pybind11 version
   sed -i 's/pybind11==2.11.1/pybind11/g' python/pyproject.toml
 
-  # Include cstdint
-  pushd third_party/cxxopts
-  git cherry-pick -X theirs -n 63d1b65a694cfceafc20863afa75df49dfbe6b2a
-  popd
+  # Remove the /usr/local RUNPATH from the Python extension
+  sed -i '/-Wl,-rpath/d' python/setup.py
 }
 
 build() {
@@ -95,7 +91,6 @@ build() {
     -D WITH_CUDA='ON'
     -D CUDA_ARCH_LIST="$_cuda_arch_list"
     -D CMAKE_POLICY_VERSION_MINIMUM='3.5'
-    -D ENABLE_CPU_DISPATCH='OFF'
   )
   cmake "${cmake_options[@]}"
   cmake --build build
@@ -139,7 +134,10 @@ package_python-ctranslate2-cuda() {
     'glibc'
     'libstdc++'
   )
-  optdepends=('python-pytorch: model converters')
+  optdepends=(
+    'python-pytorch: model converters'
+    'python-transformers: Hugging Face model converter'
+  )
 
   cd CTranslate2/python
   python -m installer --destdir="$pkgdir" dist/*.whl
