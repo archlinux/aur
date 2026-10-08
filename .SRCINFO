@@ -1,6 +1,6 @@
 pkgbase = solidtime-bin
-	pkgdesc = Desktop Application for Solidtime - The modern open-source time-tracker.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.3.1
+	pkgdesc = Desktop Application for Solidtime - The modern open-source time-tracker.
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/solidtime-io/solidtime-desktop
 	arch = aarch64
@@ -9,14 +9,14 @@ pkgbase = solidtime-bin
 	makedepends = asar
 	depends = electron41
 	depends = python
-	provides = solidtime=0.3.1
+	provides = solidtime=0.3.2
 	conflicts = solidtime
 	options = !emptydirs
 	source = solidtime.sh
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = solidtime-0.3.1-aarch64.rpm::https://github.com/solidtime-io/solidtime-desktop/releases/download/v0.3.1/solidtime-aarch64.rpm
-	sha256sums_aarch64 = 897b90ec7ebd3792c4c6ba8f8f4a6efb3b3e59d0464ed741c86efddd1ac382a4
-	source_x86_64 = solidtime-0.3.1-x86_64.rpm::https://github.com/solidtime-io/solidtime-desktop/releases/download/v0.3.1/solidtime-x86_64.rpm
-	sha256sums_x86_64 = afbf16ff316adcb86551b77c1a1f3f8b4240b0a70ec01b3ec0125e7a3e8e682a
+	sha256sums = fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8
+	source_aarch64 = solidtime-0.3.2-aarch64.rpm::https://github.com/solidtime-io/solidtime-desktop/releases/download/v0.3.2/solidtime-aarch64.rpm
+	sha256sums_aarch64 = c0e4325a516bdb1cf8cf45d151ac5dd8a45733d6a66d27d4e65f26fb67838cc9
+	source_x86_64 = solidtime-0.3.2-x86_64.rpm::https://github.com/solidtime-io/solidtime-desktop/releases/download/v0.3.2/solidtime-x86_64.rpm
+	sha256sums_x86_64 = 7309142136b27d922ec2ef5f1712c6bba504e8ce1bacad5f6a211019fe729b6e
 
 pkgname = solidtime-bin

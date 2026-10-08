@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=solidtime-bin
 _pkgname=Solidtime
-pkgver=0.3.1
+pkgver=0.3.2
 _electronversion=41
 pkgrel=1
-pkgdesc="Desktop Application for Solidtime - The modern open-source time-tracker.(Prebuilt version.Use system-wide electron)"
+pkgdesc="Desktop Application for Solidtime - The modern open-source time-tracker."
 arch=(
     'aarch64'
     'x86_64'
@@ -28,11 +28,11 @@ source=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-x86_64.rpm")
-sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('897b90ec7ebd3792c4c6ba8f8f4a6efb3b3e59d0464ed741c86efddd1ac382a4')
-sha256sums_x86_64=('afbf16ff316adcb86551b77c1a1f3f8b4240b0a70ec01b3ec0125e7a3e8e682a')
+sha256sums=('fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8')
+sha256sums_aarch64=('c0e4325a516bdb1cf8cf45d151ac5dd8a45733d6a66d27d4e65f26fb67838cc9')
+sha256sums_x86_64=('7309142136b27d922ec2ef5f1712c6bba504e8ce1bacad5f6a211019fe729b6e')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -49,21 +49,19 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
-        s/@cfgdirname@/${pkgname%-bin}/g
     " "${srcdir}/${pkgname%-bin}.sh"
     _check_electron_version
     sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    local _app_dir=$(_get_app_dir)
+    local _app_dir="$(_get_app_dir)"
     asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    rm -rf "${_app_dir}/resources/app.asar"
-    find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
+    find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	local _app_dir="$(_get_app_dir)"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
