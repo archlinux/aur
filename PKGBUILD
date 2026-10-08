@@ -1,13 +1,13 @@
 pkgname=mangayomi-linux
 pkgver=0.9.8
-pkgrel=11
+pkgrel=12
 pkgdesc="Mangayomi - Manga, Anime and Novel reader (prebuilt zip with auto-compiled QuickJS FFI fix)"
 arch=('x86_64')
 url="https://github.com/kodjodevf/mangayomi"
 license=('GPL3')
 
 depends=('gtk3' 'webkit2gtk-4.1' 'mpv' 'libsoup3' 'libepoxy' 'alsa-lib' 'hicolor-icon-theme' 'cairo' 'pango' 'at-spi2-core' 'fontconfig' 'glib2' 'glibc' 'gcc-libs')
-makedepends=('git' 'cmake' 'ninja' 'gcc')
+makedepends=('git' 'cmake' 'ninja' 'gcc' 'pkgconf')
 options=(!strip)
 provides=('mangayomi')
 conflicts=('mangayomi' 'mangayomi-bin' 'mangayomi-git')
@@ -23,17 +23,51 @@ sha256sums=(
 
 prepare() {
   cd "$srcdir/flutter_qjs"
-  # Inizializza i sottomoduli git (es. QuickJS)
   git submodule update --init --recursive
 
-  # Mock per la macro di Flutter e disabilitazione dei test in CMakeLists.txt
-  sed -i '1i macro(apply_standard_settings TARGET)\nendmacro()' linux/CMakeLists.txt
+  # Patch al CMakeLists.txt per compilazione autonoma senza ambiente Flutter completo
+  cat <<'EOF' > linux/CMakeLists.txt
+cmake_minimum_required(VERSION 3.10)
+project(flutter_qjs_plugin LANGUAGES C CXX)
+
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GTK REQUIRED gtk+-3.0)
+
+include_directories(
+  cxx
+  cxx/quickjs
+  ${GTK_INCLUDE_DIRS}
+)
+
+add_compile_options(-DCONFIG_VERSION="2021-03-27" -D_GNU_SOURCE -DEXPORT)
+
+file(GLOB QUICKJS_SOURCES
+  "cxx/quickjs/quickjs.c"
+  "cxx/quickjs/libregexp.c"
+  "cxx/quickjs/libunicode.c"
+  "cxx/quickjs/cutils.c"
+  "cxx/quickjs/quickjs-libc.c"
+  "cxx/quickjs/libbf.c"
+)
+
+file(GLOB PLUGIN_SOURCES
+  "cxx/ffi.cpp"
+  "cxx/quickjs_wrapper.cpp"
+)
+
+add_library(flutter_qjs_plugin SHARED
+  ${QUICKJS_SOURCES}
+  ${PLUGIN_SOURCES}
+)
+
+target_link_libraries(flutter_qjs_plugin PRIVATE ${GTK_LIBRARIES} -lm -ldl -lpthread)
+EOF
 }
 
 build() {
   cd "$srcdir/flutter_qjs/linux"
   mkdir -p build && cd build
-  cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_LTO=OFF ..
+  cmake -DCMAKE_BUILD_TYPE=Release ..
   make -j$(nproc)
 }
 
@@ -41,10 +75,10 @@ package() {
   # 1) Directory dell'applicazione
   install -d "$pkgdir/opt/mangayomi"
 
-  # 2) Copia dell'applicazione estratta dallo zip
+  # 2) Copia dell'applicazione dallo zip
   cp -r "$srcdir/mangayomi" "$srcdir/data" "$srcdir/lib" "$pkgdir/opt/mangayomi/"
 
-  # 3) Sostituzione della libreria .so con quella appena compilata
+  # 3) Sostituzione della libreria .so difettosa con quella appena compilata
   install -m755 "$srcdir/flutter_qjs/linux/build/libflutter_qjs_plugin.so" \
     "$pkgdir/opt/mangayomi/lib/libflutter_qjs_plugin.so"
 

@@ -1,7 +1,7 @@
 pkgbase = mangayomi-linux
 	pkgdesc = Mangayomi - Manga, Anime and Novel reader (prebuilt zip with auto-compiled QuickJS FFI fix)
 	pkgver = 0.9.8
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/kodjodevf/mangayomi
 	arch = x86_64
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = mangayomi-linux
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = gcc
+	makedepends = pkgconf
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = mpv
