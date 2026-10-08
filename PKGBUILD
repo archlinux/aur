@@ -2,8 +2,8 @@
 # Adapted from deepseek-harness-bin by Byeonghoon Yoo <bhyoo@bhyoo.com> (https://aur.archlinux.org/packages/deepseek-harness-bin)
 
 pkgname=dsh-tui-bin
-_npmver=0.13.0
-pkgver=0.13.0
+_npmver=0.14.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Claude Code style fullscreen TUI launcher for DeepSeek Harness (dsh)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=('!strip')
 provides=('dsh-tui')
 conflicts=('dsh-tui' 'dsh-git')
 source=("dsh-tui-${_npmver}.tgz::https://registry.npmjs.org/@deepseek-harness-tui/dsh-tui/-/dsh-tui-${_npmver}.tgz")
-sha256sums=('0e84f15d1ef831caacf1758cba634b03ab9108d772e8f776a751e381a1ce9ddc')
+sha256sums=('6b5ab593dfa9d1f54230de3741bfc1462b5bd0b2be29faa7fe9e5acf40666c05')
 
 prepare() {
     rm -rf npm-root npm-cache
