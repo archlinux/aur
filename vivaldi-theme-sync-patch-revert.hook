@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Remove
+Type = Package
+Target = vivaldi
+Target = vivaldi-snapshot
+Target = vivaldi-theme-sync-patch
+
+[Action]
+Description = Reverting Vivaldi OS color scheme patch...
+When = PreTransaction
+Exec = /usr/share/libalpm/scripts/vivaldi-theme-sync-patch revert
+NeedsTargets

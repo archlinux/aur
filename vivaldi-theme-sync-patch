@@ -1,0 +1,40 @@
+#!/bin/bash
+set -euo pipefail
+
+js=/usr/share/vivaldi-theme-sync-patch/os-theme-sync.js
+tag='<script src="os-theme-sync.js"></script>'
+supported=(vivaldi vivaldi-snapshot)
+
+apply() {
+  install -m644 "$js" "$1/os-theme-sync.js"
+  if ! grep -qF "$tag" "$1/window.html"; then
+    sed -i "s|</head>|  $tag\n</head>|" "$1/window.html"
+  fi
+  grep -qF "$tag" "$1/window.html"
+}
+
+revert() {
+  rm -f "$1/os-theme-sync.js"
+  sed -i "\|$tag|d" "$1/window.html"
+}
+
+case ${1-} in
+  apply | revert) mode=$1 ;;
+  *) echo "usage: $0 apply|revert < package names" >&2; exit 2 ;;
+esac
+
+pkgs=()
+while read -r pkg; do
+  if [[ $pkg == vivaldi-theme-sync-patch ]]; then
+    pkgs+=("${supported[@]}")
+  else
+    pkgs+=("$pkg")
+  fi
+done
+
+for pkg in "${pkgs[@]}"; do
+  dir=/opt/$pkg/resources/vivaldi
+  if [[ -f $dir/window.html ]]; then
+    "$mode" "$dir"
+  fi
+done

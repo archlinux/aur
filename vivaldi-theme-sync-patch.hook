@@ -1,0 +1,13 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = vivaldi
+Target = vivaldi-snapshot
+Target = vivaldi-theme-sync-patch
+
+[Action]
+Description = Patching Vivaldi to follow the OS color scheme...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/vivaldi-theme-sync-patch apply
+NeedsTargets
