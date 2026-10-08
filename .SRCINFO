@@ -1,0 +1,20 @@
+pkgbase = aioncore-bin
+	pkgdesc = The backend server for AionUi, built with Rust (Axum + Tokio + SQLite). It provides HTTP REST APIs and WebSocket real-time events for the AionUi desktop client.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/iOfficeAI/AionCore
+	arch = aarch64
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = zlib-ng-compat
+	depends = xz
+	depends = libgcc
+	provides = aioncore
+	conflicts = aioncore
+	source_aarch64 = aioncore-0.2.2-aarch64.tar.gz::https://github.com/iOfficeAI/AionCore/releases/download/v0.2.2/aioncore-v0.2.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e9bbb4a6f909cd14aa8b3d78a5c139557c2063930d155f6102df424d27155292
+	source_x86_64 = aioncore-0.2.2-x86_64.tar.gz::https://github.com/iOfficeAI/AionCore/releases/download/v0.2.2/aioncore-v0.2.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1c3f241c7deff8e9d6da189c1017e6b12df7b538a1f557276c79b3c33d257335
+
+pkgname = aioncore-bin
