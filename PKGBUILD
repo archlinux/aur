@@ -1,7 +1,7 @@
 # Maintainer: Mikołaj <mikolaj.q@wp.pl>
 
 pkgname=nudl
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Unofficial downloader for Hyundai, Kia and Genesis (HMG) infotainment navigation firmware"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'git')
 options=('!lto')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chenxiaolong/nudl/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ffc0276b9e824ecc8cee29fcec87bf8a48a766fe0015c519d07b0b3a52e99dee')
+sha256sums=('2308efcded545d16382c7e188815879c67f4f465da63f9ed686d7ee15ac8a582')
 
 prepare() {
   cd "$pkgname-$pkgver"
