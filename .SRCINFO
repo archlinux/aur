@@ -1,6 +1,6 @@
 pkgbase = gnome-console-jc
 	pkgdesc = A simple user-friendly terminal emulator for the GNOME desktop (JC fork)
-	pkgver = 49.0
+	pkgver = 51.0
 	pkgrel = 1
 	url = https://github.com/juancri/console
 	arch = x86_64
@@ -14,15 +14,15 @@ pkgbase = gnome-console-jc
 	makedepends = meson
 	depends = dconf
 	depends = gcc-libs
-	depends = gtk4
-	depends = glib2
+	depends = gtk4>=4.22
+	depends = glib2>=2.88
 	depends = glibc
 	depends = hicolor-icon-theme
-	depends = libadwaita
+	depends = libadwaita>=1.9
 	depends = libgtop
 	depends = pango
-	depends = vte4
-	source = gnome-console-jc::git+https://github.com/juancri/console.git#branch=48.0.1-jc
+	depends = vte4>=0.77
+	source = gnome-console-jc::git+https://github.com/juancri/console.git#tag=jc-51.0-r1
 	sha256sums = SKIP
 
 pkgname = gnome-console-jc
