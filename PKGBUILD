@@ -1,14 +1,15 @@
 # Maintainer: kengzzzz
 
 pkgname=broadcast-linux-bin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="NVIDIA Broadcast effects as a virtual mic and camera under Wine"
 arch=(x86_64)
 url="https://github.com/kengzzzz/broadcast-linux"
 license=(MIT LGPL-2.1-or-later BSD-3-Clause IJG OFL-1.1 Ubuntu-font-1.0 Bitstream-Vera)
-depends=('glibc>=2.39' libgcc libpipewire pipewire pipewire-pulse wireplumber libpulse 'wine>=11' nvidia-utils libglvnd libxkbcommon wayland)
-optdepends=('v4l2loopback-dkms: virtual camera, unless your kernel already provides the module'
+depends=('glibc>=2.35' libgcc libpipewire pipewire wireplumber 'wine>=10' nvidia-utils libglvnd libxkbcommon wayland)
+optdepends=('pipewire-pulse: lets apps that use PulseAudio (most of them) see the devices'
+            'v4l2loopback-dkms: virtual camera, unless your kernel already provides the module'
             'xdg-desktop-portal: picking a background image in the settings window'
             'libx11: the settings window on X11'
             'libxcursor: the settings window on X11'
@@ -21,7 +22,7 @@ options=(!strip !debug)
 install=broadcast-linux.install
 source=("$url/releases/download/v$pkgver/broadcast-linux-$pkgver-$CARCH.tar.gz")
 # Run updpkgsums after the GitHub release is published, before pushing to AUR.
-sha256sums=('8ce6fa04f7cad92bb1e35fdabf01df97d5bff14f187521b548a8219837c51de2')
+sha256sums=('4f4fa643a69fcdf360154c5a4237c4a2fabe44c5ed60057bd06c0898c8190a54')
 
 package() {
     cd "broadcast-linux-$pkgver-$CARCH"
