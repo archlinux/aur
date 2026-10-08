@@ -1,7 +1,7 @@
 # Maintainer: Nils Pukropp <contact@narl.io>
 
 pkgname=proton-drive-for-linux-bin
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Unofficial Proton Drive client: FUSE files-on-demand mount, CLI, GTK4 app, tray (binaries)"
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=("proton-drive-linux-$pkgver-x86_64.tar.gz::$_repo/releases/download/$_ta
         "io.narl.proton-drive-linux-$pkgver.svg::$_raw/packaging/io.narl.proton-drive-linux.svg"
         "proton-drive-$pkgver.service::$_raw/packaging/proton-drive.service"
         "LICENSE-$pkgver::$_raw/LICENSE")
-sha256sums=('bd124e249089d2817101e4f8b705ac511decb79a410ab26b0eac9125888f7300'
+sha256sums=('e8a2ca20dc5a4b050a85056196eb7f3f4a428db2a8d41aa09b813e007609c0b6'
             'd190d6771fff0b975271fb62fd3fb0fa8bbf17d7278c10853c18557855b0c123'
             '1d95e250370220e3bb6aead6ce34d1d6cc759f42c4803b75f1667e78ff47c6c0'
             'e598a93c2715c3a9fdc7fb937902083d4a1135e8fbdfe6fe7e37f0383ebbd828'
