@@ -4,10 +4,11 @@
 # Contributor: caoticofanegas
 # Contributor: AlD <daniel@lbe.rs>
 # Contributor: Terrence
+# Contributor: CountMurphy (sarif)
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
 pkgrel=1
-pkgver=3.1.0
+pkgver=3.2.4
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('AGPL-3.0-only')
@@ -74,10 +75,10 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
 	'https://download.geonames.org/export/dump/admin1CodesASCII.txt'
 	'https://download.geonames.org/export/dump/admin2Codes.txt'
 	'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson')
-b2sums=('4775e0118f6a524e5748e4b992a5e7214346274debaf7c00a46a785d9366c2c0885aa4ddd45ea1b278cec05345a6f00afd8cf7f151addc2689292eba554167f4'
-        'cddeb3faa28e4ba9d8ddbc12d0b123c7bef6c5bfaa40e3c24abee2983868531c049afe4a2e3aea1c03b186c06f7b95f4d2708e8f28ac8f4ce9eb6e037b021637'
-        '37d887f04462975ee280134604242b859bc8f921f82785e6b69f6a100150217b6aa22ba3446c34d7a83e5d88fcbf8cb5182e1e97c2b918bb63bc6583cfb17839'
-        '5a92b4730cf9c93e1722e492ecf7dad343f0ac9330327a2351e37d996db326a926bed9808e43d99d3b46796be9cfc48dc01e0b8339c0e886aa182c2da136eb9b'
+b2sums=('7cf250b78000169632631552a36755227be5bf4a206ae274f82d2f3262607352d2df749fddef16d4fb45a21bd9d6c4cdde368b7283b903d3a556a420c3e56f08'
+        '6c8decad88b49a2d62c1ffbcc682c26250e459c0205f2e300973a837578841d896a51dfabf9ec8a4bc288e966303cf32dae02cebb9f78fdad807b07b3fd410c6'
+        '2d94fcc21861067920f0df1e6e5ac74b4413515777b204070c5d8fc01026c54e993e4eff65dabeb3629ee24d238a1a52793c061947009ddac5f0ebf64a58312d'
+        '48cf0c345047b50831f1f5a4fc0f5478aedddc50c6d62faf4205a6a093213a402e15567594a10987c9a97fb69f47894835409a9461d0cda9bf579e25e0d0e42b'
         'e69ee70889da5b4eebafe7ed98cbeda735f5f280152e238e695b4e028edb496293435a2ff1ab021e5d263cc2133bfeadb23afd2d4936e40027a2ce28e09d12ef'
         'c6071ce12cc719a6bf33d9486f54648edb62c710b216181524fef9a9fec26cf9ced6d65a3433b2af941e75b03fc4b261d5e901a7f736de29b0b98192df59fdd2'
         '8a66c540b5cea1e303602cf78ca173da226c6693ec455a060c3d8a6e9616c5bfbab590e8e8a3c8e395bce8e026107b03abfa862ff436d22db271c359a977219d'
@@ -97,7 +98,8 @@ prepare() {
 	# Patches to avoid calling npm in package scripts
 	pnpm fetch --ignore-scripts  # First, get node_modules folder to patch into
 	pnpm install --filter immich --frozen-lockfile --offline  # sometimes pnpm fetch doesn't give us the node_modules folder
-	sharp_dir="$(pnpm patch sharp | sed -n '3p' | sed 's/^[[:space:]]*//')"
+	sharp_dir="$(mktemp -d "${srcdir}/sharp-patch.XXXXXXXX")"
+	pnpm patch sharp --edit-dir "$sharp_dir"
 	(
 	cd "$sharp_dir"
 	patch -p1 < "${srcdir}/sharp.patch"
