@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="An opinionated personal dashboard for your terminal"
 
-pkgver=1.20.0
+pkgver=1.22.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ makedepends=('cargo')
 options=('!lto' '!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('4b2ac2e9c722a87e7da1dc69d2e84a3fa417122dffb56bdd5f5532119a143088')
+sha256sums=('597ad1715b7ba3b8da970ab63ecf540e0428fe45484ced5312d118cdc1c1c6b6')
 
 
 prepare() {
