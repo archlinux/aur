@@ -1,6 +1,6 @@
 pkgname=mangayomi-linux
 pkgver=0.9.8
-pkgrel=16
+pkgrel=17
 pkgdesc="Mangayomi - Manga, Anime and Novel reader (prebuilt zip with auto-compiled QuickJS FFI fix)"
 arch=('x86_64')
 url="https://github.com/kodjodevf/mangayomi"
@@ -25,7 +25,7 @@ prepare() {
   cd "$srcdir/flutter_qjs"
   git submodule update --init --recursive
 
-  # Genera CMakeLists.txt con l'aggiunta dei flag -Wno-int-conversion per i compilatori GCC moderni
+  # Genera CMakeLists.txt escludendo quickjs-libc.c per risolvere il conflitto su js_module_loader
   cat <<'EOF' > linux/CMakeLists.txt
 cmake_minimum_required(VERSION 3.10)
 project(flutter_qjs_plugin LANGUAGES C CXX)
@@ -39,14 +39,15 @@ include_directories(
   ${GTK_INCLUDE_DIRS}
 )
 
-add_compile_options(-DCONFIG_VERSION="2021-03-27" -D_GNU_SOURCE -DEXPORT -fvisibility=default -Wno-int-conversion -Wno-discarded-qualifiers)
+# Flag di compatibilità applicati solo al codice C
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-int-conversion -Wno-discarded-qualifiers")
+add_compile_options(-DCONFIG_VERSION="2021-03-27" -D_GNU_SOURCE -DEXPORT -fvisibility=default)
 
 set(QUICKJS_SOURCES
   ../cxx/quickjs/quickjs.c
   ../cxx/quickjs/libregexp.c
   ../cxx/quickjs/libunicode.c
   ../cxx/quickjs/cutils.c
-  ../cxx/quickjs/quickjs-libc.c
   ../cxx/quickjs/libbf.c
 )
 
@@ -75,6 +76,7 @@ package() {
 
   cp -r "$srcdir/mangayomi" "$srcdir/data" "$srcdir/lib" "$pkgdir/opt/mangayomi/"
 
+  # Sovrascrive la libreria originale corrotta con quella appena linkata con successo
   install -m755 "$srcdir/flutter_qjs/linux/build/libflutter_qjs_plugin.so" \
     "$pkgdir/opt/mangayomi/lib/libflutter_qjs_plugin.so"
 
