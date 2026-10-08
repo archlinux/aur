@@ -1,6 +1,6 @@
 pkgbase = traygolin-bin
 	pkgdesc = Unofficial Linux tray app for the Pangolin VPN client (prebuilt)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/lucasssvaz/traygolin
 	arch = x86_64
@@ -11,15 +11,16 @@ pkgbase = traygolin-bin
 	depends = glibc
 	depends = gtk4
 	depends = libadwaita>=1.9
+	depends = gobject-introspection
 	depends = polkit
 	depends = hicolor-icon-theme
 	optdepends = pangolin-cli: official Pangolin VPN CLI (pangolin on PATH)
 	provides = traygolin
 	conflicts = traygolin
 	options = !debug
-	source_x86_64 = traygolin-0.1.0-linux-amd64.tar.gz::https://github.com/lucasssvaz/traygolin/releases/download/v0.1.0/traygolin-0.1.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = ad23d667dcd189cc67836eecef676e3f747a2e395936e8f40a10ded0a7ccf95a
-	source_aarch64 = traygolin-0.1.0-linux-arm64.tar.gz::https://github.com/lucasssvaz/traygolin/releases/download/v0.1.0/traygolin-0.1.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = c62df1ac8807e4fbb51ca1f2ebc8e767ea0868278fa88dbd7871d1b81e1200f2
+	source_x86_64 = traygolin-0.1.1-linux-amd64.tar.gz::https://github.com/lucasssvaz/traygolin/releases/download/v0.1.1/traygolin-0.1.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 8e709404a6ca12d2ca22b560e0c2e840c708401a6024863fbadf7f10e05ee904
+	source_aarch64 = traygolin-0.1.1-linux-arm64.tar.gz::https://github.com/lucasssvaz/traygolin/releases/download/v0.1.1/traygolin-0.1.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 784c089a08a47c03570961819fa1c1c15ffc88780334296e0c8bd650b7fca339
 
 pkgname = traygolin-bin

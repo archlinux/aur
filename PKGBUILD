@@ -1,13 +1,13 @@
 # Maintainer: Lucas Saavedra Vaz <lucasssvaz@users.noreply.github.com>
 pkgname=traygolin-bin
 _pkgname=traygolin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Unofficial Linux tray app for the Pangolin VPN client (prebuilt)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lucasssvaz/traygolin"
 license=('Apache-2.0' 'MIT')
-depends=('glib2' 'glibc' 'gtk4' 'libadwaita>=1.9' 'polkit' 'hicolor-icon-theme')
+depends=('glib2' 'glibc' 'gtk4' 'libadwaita>=1.9' 'gobject-introspection' 'polkit' 'hicolor-icon-theme')
 optdepends=('pangolin-cli: official Pangolin VPN CLI (pangolin on PATH)')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -15,8 +15,8 @@ options=('!debug')
 source_x86_64=("${_pkgname}-${pkgver}-linux-amd64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.tar.gz")
 # Set per release by .github/workflows/aur.yml; these placeholders fail verification.
-sha256sums_x86_64=('ad23d667dcd189cc67836eecef676e3f747a2e395936e8f40a10ded0a7ccf95a')
-sha256sums_aarch64=('c62df1ac8807e4fbb51ca1f2ebc8e767ea0868278fa88dbd7871d1b81e1200f2')
+sha256sums_x86_64=('8e709404a6ca12d2ca22b560e0c2e840c708401a6024863fbadf7f10e05ee904')
+sha256sums_aarch64=('784c089a08a47c03570961819fa1c1c15ffc88780334296e0c8bd650b7fca339')
 
 package() {
   cp -a "${srcdir}/usr" "${pkgdir}/"
