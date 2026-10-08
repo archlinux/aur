@@ -14,9 +14,9 @@
 
 pkgname=ivar-bin
 _pkgname=ivar
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
-pkgdesc="Mount the repos a feature spans into one directory, on one branch, for one agent session (prebuilt binary)"
+pkgdesc="Multi-repo worktrees for coding agents: one feature across repos, on one branch, one PR per repo (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mnzsss/ivar"
 license=('Apache-2.0')
@@ -41,9 +41,9 @@ source=(
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30' 'ab849d302d516ef62a39d65a01205355bf73e3cac4041cf77c3cfaeeaf4da748')
 
 source_x86_64=("$_pkgname-$pkgver-x86_64::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64")
-sha256sums_x86_64=('2ee217b91a9c398c644e1f9bef00bf069173ee00a54dda9362a8bc38f7f7d42f')
+sha256sums_x86_64=('044226501d6fed866be5730d7c3d9cdf9abee81440bf5ba5193803cce864639c')
 source_aarch64=("$_pkgname-$pkgver-aarch64::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64")
-sha256sums_aarch64=('147eb0eb67e58250a5fcfa065ef0d39b96633554c1a9285a5e9ba35dd262e8fb')
+sha256sums_aarch64=('dc585f7d98edca4377860ea08b5d1d3a99d8cbb610ddcdc0d8d42bed4d6cf533')
 
 package() {
     install -Dm0755 "$srcdir/$_pkgname-$pkgver-$CARCH" "$pkgdir/usr/bin/$_pkgname"
