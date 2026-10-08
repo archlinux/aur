@@ -1,28 +1,68 @@
-# Maintainer: Javier Domingo Cansino <javierdo1@gmail.com>
-pkgname=parse
-pkgver=1.0.0
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+
+_gitauthor=atif-1402
+_gitname=parse
+_appname=${_gitname}
+pkgname=${_appname}
+pkgdesc="Make messy Linux command output readable"
+
+pkgver=0.1.0
 pkgrel=1
-pkgdesc="Parse linux sdk"
-url="https://parse.com/"
-arch=('x86_64' 'i686')
-license=('custom')
-depends=('curl' 'util-linux')
-makedepends=('make' 'autoconf')
-_parse_sdk="parse-embedded-sdks-${pkgver}"
-source=("https://parse.com/downloads/embedded_linux/${_parse_sdk}.zip")
-md5sums=('b6aaa9fc8704604baadfbaf5a6640b67')
+_gitversion=v${pkgver}
+
+arch=('x86_64' 'aarch64')
+_barch=('linux_amd64' 'linux_arm64')
+
+_ghurl="https://github.com/${_gitauthor}/${_gitname}"
+_ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
+url=${_ghurl}
+
+license=('MIT')
+
+makedepends=('go')
+provides=("${_appname}")
+
+options=('!strip')
+
+source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('0ee090b58a07372185717a8a812b8658702ca7becf92b5492207784f2550788f')
+
+
+prepare() {
+	cd "${srcdir}/${pkgname}-${pkgver}/" || exit
+
+	go mod tidy
+}
 
 build() {
-  cd "${srcdir}/${_parse_sdk}"
-  autoreconf -fi
-  ./configure --prefix=/usr
-  make
+	cd "${srcdir}/${pkgname}-${pkgver}/" || exit
+
+	export CGO_ENABLED=0
+
+	if [[ -f .ldflags ]]; then
+		ldflags=$(<.ldflags)
+	else
+		# interim until commit fix is released
+		ldflags="-checklinkname=0"
+	fi
+
+	go build -trimpath -ldflags "${ldflags}" -o "${pkgname}" ./
+}
+
+check() {
+	cd "${srcdir}/${pkgname}-${pkgver}/" || exit
+
+	# Run all package tests using the offline module cache
+	export GOPROXY=off
+	go test -v ./...
 }
 
 package() {
-  cd "${srcdir}/${_parse_sdk}"
-  make DESTDIR="${pkgdir}" install
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
+	cd "${srcdir}/${pkgname}-${pkgver}/" || exit
 
-# vim:set ts=2 sw=2 et:
+	install -Dm755 ${_appname} -t "${pkgdir}/usr/bin/"
+
+	install -Dm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+}

@@ -1,4 +1,5 @@
-*.pkg.tar.xz
-*.zip
-/pkg/
-/src/
+*
+!.nvchecker.toml
+!.gitignore
+!PKGBUILD
+!.SRCINFO

@@ -1,0 +1,5 @@
+[parse]
+source = "github"
+github = "atif-1402/parse"
+use_latest_release = true
+prefix = "v"
