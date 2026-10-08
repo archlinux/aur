@@ -1,6 +1,6 @@
 pkgname=mangayomi-linux
 pkgver=0.9.8
-pkgrel=10
+pkgrel=11
 pkgdesc="Mangayomi - Manga, Anime and Novel reader (prebuilt zip with auto-compiled QuickJS FFI fix)"
 arch=('x86_64')
 url="https://github.com/kodjodevf/mangayomi"
@@ -21,11 +21,19 @@ sha256sums=(
   'SKIP'
 )
 
+prepare() {
+  cd "$srcdir/flutter_qjs"
+  # Inizializza i sottomoduli git (es. QuickJS)
+  git submodule update --init --recursive
+
+  # Mock per la macro di Flutter e disabilitazione dei test in CMakeLists.txt
+  sed -i '1i macro(apply_standard_settings TARGET)\nendmacro()' linux/CMakeLists.txt
+}
+
 build() {
-  # Compila la libreria C flutter_qjs dai sorgenti originali di ekibun
   cd "$srcdir/flutter_qjs/linux"
   mkdir -p build && cd build
-  cmake -DCMAKE_BUILD_TYPE=Release ..
+  cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_LTO=OFF ..
   make -j$(nproc)
 }
 
@@ -36,14 +44,14 @@ package() {
   # 2) Copia dell'applicazione estratta dallo zip
   cp -r "$srcdir/mangayomi" "$srcdir/data" "$srcdir/lib" "$pkgdir/opt/mangayomi/"
 
-  # 3) Sostituzione della libreria .so difettosa dello zip con quella appena compilata
+  # 3) Sostituzione della libreria .so con quella appena compilata
   install -m755 "$srcdir/flutter_qjs/linux/build/libflutter_qjs_plugin.so" \
     "$pkgdir/opt/mangayomi/lib/libflutter_qjs_plugin.so"
 
   chmod 755 "$pkgdir/opt/mangayomi/mangayomi"
   chmod 755 "$pkgdir/opt/mangayomi/lib/"*.so
 
-  # 4) Wrapper script di avvio
+  # 4) Wrapper script per LD_LIBRARY_PATH
   install -d "$pkgdir/usr/bin"
   cat <<'EOF' > "$pkgdir/usr/bin/mangayomi"
 #!/bin/sh
@@ -53,12 +61,11 @@ exec ./mangayomi "$@"
 EOF
   chmod 755 "$pkgdir/usr/bin/mangayomi"
 
-  # 5) Icona
+  # 5) Icona e Desktop Entry
   install -Dm644 \
     "$srcdir/data/flutter_assets/assets/app_icons/icon.png" \
     "$pkgdir/usr/share/pixmaps/mangayomi.png"
 
-  # 6) Desktop entry
   install -Dm644 /dev/stdin \
     "$pkgdir/usr/share/applications/mangayomi.desktop" <<EOF
 [Desktop Entry]
