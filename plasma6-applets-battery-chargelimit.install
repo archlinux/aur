@@ -1,0 +1,11 @@
+post_install() {
+  echo "In the System Tray settings, Entries, disable \"Power & Battery\" and enable"
+  echo "\"Power & Battery (charge limit)\"."
+  echo "A copy installed with kpackagetool6 would hide this one, remove it:"
+  echo "  kpackagetool6 --type Plasma/Applet --remove org.kde.plasma.battery.chargelimit"
+}
+
+post_upgrade() {
+  echo "Restart Plasma to load the new version of the widget:"
+  echo "  systemctl --user restart plasma-plasmashell.service"
+}

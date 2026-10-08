@@ -1,0 +1,25 @@
+pkgbase = plasma6-applets-battery-chargelimit
+	pkgdesc = The stock Plasma 6 Power & Battery applet with a switch for the battery charge limit
+	pkgver = 6.7.5.1
+	pkgrel = 1
+	url = https://github.com/uselessfire/plasma-battery-chargelimit
+	install = plasma6-applets-battery-chargelimit.install
+	arch = any
+	license = LGPL-2.0-or-later AND GPL-2.0-or-later
+	depends = kcmutils
+	depends = kconfig
+	depends = kcoreaddons
+	depends = kirigami
+	depends = kitemmodels
+	depends = knotifications
+	depends = ksvg
+	depends = kwindowsystem
+	depends = libplasma
+	depends = plasma-workspace>=6.7
+	depends = powerdevil>=6.7
+	depends = qt6-declarative
+	depends = upower>=1.90.10
+	source = plasma-battery-chargelimit-6.7.5.1.tar.gz::https://github.com/uselessfire/plasma-battery-chargelimit/archive/refs/tags/v6.7.5.1.tar.gz
+	sha256sums = a88e6ce3036ebd4373a8c4c74e4edf9bedc1cef0f94a251054a4a5a0c371d667
+
+pkgname = plasma6-applets-battery-chargelimit
