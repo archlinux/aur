@@ -14,13 +14,14 @@
 #   modifiche non ancora rilasciate)
 
 pkgname=klamav-py
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="Frontend Python minimale per ClamAV via clamd, erede spirituale di KlamAV 0.22"
 arch=('any')
 url="https://github.com/gradia64/KlamAV-Py"
 license=('GPL-3.0-or-later')
-depends=('python>=3.10')
+# hicolor-icon-theme: l'icona va in /usr/share/icons/hicolor (namcap lo esige).
+depends=('python>=3.10' 'hicolor-icon-theme')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=(
   'pyside6: GUI (klamav-py-gui)'
