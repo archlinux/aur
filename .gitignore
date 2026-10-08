@@ -1,0 +1,7 @@
+/.work/
+/plans/
+/src/
+/pkg/
+/*.deb
+/*.pkg.tar.*
+/*.log
