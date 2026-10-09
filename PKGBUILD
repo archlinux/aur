@@ -6,7 +6,7 @@ _appname=ptc
 pkgname=${_gitname}-bin
 pkgdesc="A terminal pomodoro timer with a task list, written in Rust with ratatui. It is scriptable with Lua plugins."
 
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,7 +27,7 @@ depends=('glibc' 'libgcc')
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_gitversion}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('4d72acf9fa1f0010c63ff4ba3563ed46af25af836821e203475f6c83079761f1')
+sha256sums_x86_64=('1cffb461df41e36b07d4d7ac7925ee6ff067fa533c6a1a5497c90d65e0d53c8a')
 
 
 case ${CARCH} in
