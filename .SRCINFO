@@ -1,0 +1,21 @@
+pkgbase = ecsterm-bin
+	pkgdesc = Execute commands or open a shell on ECS tasks with simple TUI
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/aronjohanns/ecsterm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = aws-cli
+	depends = aws-session-manager-plugin
+	provides = ecsterm
+	conflicts = ecsterm
+	options = !strip
+	source_x86_64 = ecsterm-x86_64-0.1.1.txz::https://github.com/aronjohanns/ecsterm/releases/download/v0.1.1/ecsterm-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 808e79e4915901cf8969533057c843eef383d804c2faed00a92107702d494db7
+	source_aarch64 = ecsterm-aarch64-0.1.1.txz::https://github.com/aronjohanns/ecsterm/releases/download/v0.1.1/ecsterm-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 03721366d0b7e403c97ec4f8e0ea563c60b0dafc4588dc2dc569d638e07efaef
+
+pkgname = ecsterm-bin

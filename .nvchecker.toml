@@ -1,0 +1,5 @@
+[ecsterm-bin]
+source = "github"
+github = "aronjohanns/ecsterm"
+use_latest_release = true
+prefix = "v"
