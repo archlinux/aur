@@ -24,8 +24,8 @@ source_aarch64=(
     "${_pkgname}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/yak-aarch64-unknown-linux-musl.tar.gz"
 )
 sha256sums=('b0adbc31ae0c3ab64ae21504359ba5e70f29886a559c99a79fb5cba762de670c')
-sha256sums_x86_64=('f6476519bc3692760b890dec0fba3dc60039e6ceb31e4aa7247f8b1c968cc29b')
-sha256sums_aarch64=('b9d2896ee912f4a771b962b28f8367b8b0e73a7548f2fcd756c48ba3025601d1')
+sha256sums_x86_64=('1b7f1e0c38d99a5e57aaea43798bb04031ecb447b2a818a74ecf55a19416dbaa')
+sha256sums_aarch64=('889aff46ccc0a16da7883834a9d4924b94b29d1f377be2d320a3a6cdbe68b733')
 
 # Upstream ships a static-pie (musl) single binary, so there are no runtime
 # shared-library dependencies and no build step. The release tarball contains
