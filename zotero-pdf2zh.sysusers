@@ -1,0 +1,2 @@
+#Type Name          ID GECOS                              Home directory             Shell
+u     zotero-pdf2zh  - "Zotero PDF2zh translation server" /var/lib/zotero-pdf2zh    /usr/bin/nologin

@@ -1,0 +1,43 @@
+#!/bin/sh
+# 在运行时目录里、以服务用户 zotero-pdf2zh 的身份运行本项目的脚本。
+#
+# 服务端把 config/、translated/ 和翻译环境都写在自己的目录下，所以这些脚本
+# 必须跑在 /var/lib/zotero-pdf2zh/app，而不是只读的 /usr/lib/zotero-pdf2zh。
+#
+#   sudo zotero-pdf2zh                            # 前台运行服务端（排查问题用）
+#   sudo zotero-pdf2zh manage_packages.py status  # 查看翻译环境状态
+#   sudo zotero-pdf2zh update_packages.py         # 更新翻译环境依赖
+
+set -eu
+
+app=/var/lib/zotero-pdf2zh/app
+script=${1:-server.py}
+if [ "$#" -gt 0 ]; then
+	shift
+fi
+
+case $script in
+	server.py | manage_packages.py | update_packages.py) ;;
+	-h | --help)
+		echo "用法: zotero-pdf2zh [脚本] [参数...]"
+		echo "  脚本: server.py（默认）、manage_packages.py、update_packages.py"
+		echo "  例:   sudo zotero-pdf2zh manage_packages.py status"
+		exit 0
+		;;
+	*)
+		echo "未知脚本: $script（可用: server.py manage_packages.py update_packages.py）" >&2
+		exit 1
+		;;
+esac
+
+if [ "$(id -u)" -ne 0 ]; then
+	echo "需要 root 权限，请用: sudo zotero-pdf2zh $script" >&2
+	exit 1
+fi
+
+install -d -o zotero-pdf2zh -g zotero-pdf2zh -m 0755 /var/lib/zotero-pdf2zh
+runuser -u zotero-pdf2zh -- /usr/lib/zotero-pdf2zh/runtime-sync
+exec runuser -u zotero-pdf2zh -- env HOME=/var/lib/zotero-pdf2zh \
+	PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 \
+	/usr/bin/uv run --python 3.12 --with-requirements "$app/requirements.txt" \
+	"$app/$script" "$@"

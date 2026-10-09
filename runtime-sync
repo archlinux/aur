@@ -1,0 +1,28 @@
+#!/bin/sh
+# 把只读的软件目录同步到可写的运行时目录。
+#
+# 为什么需要这一步：这个服务端用 __file__ 定位自己的根目录，并把
+# config/、translated/ 以及 uv 创建的翻译环境（zotero-pdf2zh-venv、
+# zotero-pdf2zh-next-venv）全都写在那个目录里。而 /usr/lib 是只读的，
+# 所以每次启动先把代码同步到 /var/lib/zotero-pdf2zh/app，再从那里运行，
+# 这样配置、翻译结果和翻译环境都落在 /var/lib 里，卸载包时也不会丢。
+#
+# --exclude 里的路径是运行期数据，--delete 不会删掉被排除的文件，
+# 所以包升级时用户配置和已建好的翻译环境都会被保留。
+
+set -eu
+
+src=/usr/lib/zotero-pdf2zh
+dst=/var/lib/zotero-pdf2zh/app
+
+mkdir -p "$dst"
+
+exec rsync -rlptD --delete \
+	--exclude=/config/config.json \
+	--exclude=/config/config.toml \
+	--exclude=/config/venv.json \
+	--exclude=/config/package_update_state.json \
+	--exclude='/zotero-pdf2zh*-venv*' \
+	--exclude=/translated/ \
+	--exclude='__pycache__/' \
+	"$src"/ "$dst"/

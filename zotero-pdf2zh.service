@@ -1,0 +1,41 @@
+[Unit]
+Description=Zotero PDF2zh translation server
+Documentation=https://github.com/guaguastandup/zotero-pdf2zh
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=zotero-pdf2zh
+Group=zotero-pdf2zh
+# StateDirectory 负责创建并归属 /var/lib/zotero-pdf2zh；app/ 子目录由下面的
+# ExecStartPre 同步出来，所以工作目录用上一级，避免首次启动时目录还不存在。
+StateDirectory=zotero-pdf2zh
+WorkingDirectory=/var/lib/zotero-pdf2zh
+Environment=HOME=/var/lib/zotero-pdf2zh
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONDONTWRITEBYTECODE=1
+# 改监听地址/端口：在 /etc/conf.d/zotero-pdf2zh 里写同名变量覆盖即可
+Environment=ZOTERO_PDF2ZH_HOST=127.0.0.1
+Environment=ZOTERO_PDF2ZH_PORT=8890
+EnvironmentFile=-/etc/conf.d/zotero-pdf2zh
+# 代码在 /usr/lib 是只读的，先同步到 /var/lib/zotero-pdf2zh/app 再运行
+ExecStartPre=/usr/lib/zotero-pdf2zh/runtime-sync
+# --check_update false：服务端的源码更新由 pacman 管，且自更新会被下次启动时
+# 的同步覆盖回去，所以关掉它，避免出现“更新了又回退”的怪现象。
+ExecStart=/usr/bin/uv run --python 3.12 \
+          --with-requirements /var/lib/zotero-pdf2zh/app/requirements.txt \
+          /var/lib/zotero-pdf2zh/app/server.py \
+          --host ${ZOTERO_PDF2ZH_HOST} --port ${ZOTERO_PDF2ZH_PORT} --check_update false
+Restart=on-failure
+RestartSec=5
+SyslogIdentifier=zotero-pdf2zh
+ProtectSystem=full
+ProtectHome=yes
+PrivateTmp=yes
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=multi-user.target

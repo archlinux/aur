@@ -1,0 +1,45 @@
+post_install() {
+	cat <<'EOF'
+==> Zotero PDF2zh 服务端安装完成。
+
+    开机自启并立即启动:  sudo systemctl enable --now zotero-pdf2zh
+    查看日志:            journalctl -u zotero-pdf2zh -f
+    健康检查:            curl http://127.0.0.1:8890/health
+    监控页面:            http://127.0.0.1:8890/
+
+    默认监听 127.0.0.1:8890。要改地址或端口，在 /etc/conf.d/zotero-pdf2zh 里写
+    ZOTERO_PDF2ZH_HOST=... / ZOTERO_PDF2ZH_PORT=...，然后 systemctl restart。
+
+    数据目录 /var/lib/zotero-pdf2zh：
+      app/            实际运行的代码副本（启动时从 /usr/lib/zotero-pdf2zh 同步）
+      app/config/     配置文件；也可以只在 Zotero 插件里设置，插件会写到这里
+      app/translated/ 翻译结果
+      .cache/uv       服务端自己的 Python 3.12 运行时与依赖缓存在这里
+
+    服务端本身由 uv 以 Python 3.12 运行（不占用系统 Python）。所以第一次启动时
+    uv 会先下载 Python 3.12 和服务端依赖，需要联网；之后启动就直接用缓存。
+    再往后，第一次翻译时还会用 uv 自动下载 pdf2zh_next 翻译环境（几百 MB 到
+    1 GB 以上），这段时间请耐心等待，进度可在 http://127.0.0.1:8890/ 上看到。
+
+    注意：服务端自带的“启动时检查并更新源码”已关闭，版本由 pacman 管理。
+EOF
+}
+
+post_upgrade() {
+	cat <<'EOF'
+==> Zotero PDF2zh 服务端已升级。
+
+    配置、翻译结果和翻译环境都在 /var/lib/zotero-pdf2zh，升级不会动它们；
+    已建好的翻译环境也不会因为升级而重建。
+    重启服务以生效: sudo systemctl restart zotero-pdf2zh
+EOF
+}
+
+pre_remove() {
+	cat <<'EOF'
+==> 注意：数据目录 /var/lib/zotero-pdf2zh 不会被自动删除，
+    里面还留着配置、翻译结果和 uv 建好的翻译环境（可能有好几个 GB）。
+    确认不再需要时再自行删除：sudo rm -rf /var/lib/zotero-pdf2zh
+    系统用户 zotero-pdf2zh 同样会保留，不需要时：sudo userdel zotero-pdf2zh
+EOF
+}

@@ -1,0 +1,26 @@
+pkgbase = zotero-pdf2zh
+	pkgdesc = Local translation server for the Zotero PDF2zh plugin (pdf2zh / pdf2zh_next)
+	pkgver = 4.1.7
+	pkgrel = 1
+	url = https://github.com/guaguastandup/zotero-pdf2zh
+	install = zotero-pdf2zh.install
+	arch = any
+	license = AGPL-3.0-or-later
+	depends = uv
+	depends = rsync
+	depends = util-linux
+	optdepends = conda: 改用 conda 而不是 uv 创建翻译环境
+	source = zotero-pdf2zh-4.1.7.tar.gz::https://github.com/guaguastandup/zotero-pdf2zh/archive/refs/tags/v4.1.7.tar.gz
+	source = zotero-pdf2zh
+	source = zotero-pdf2zh.service
+	source = zotero-pdf2zh.sysusers
+	source = zotero-pdf2zh.tmpfiles
+	source = runtime-sync
+	sha256sums = 251af9cbf8fb4868f7db6277bee17889f048d941d66f8250466524cc1e995b6f
+	sha256sums = 999069cd75912175337876386f19c7e76018af583016751f8f1b32111e6051c8
+	sha256sums = 9fd26ede77a329564c28d4e195bac0089a3b968c7dd0472ed660e6a92613d1aa
+	sha256sums = 8e7c4f78c646faa853089c36af1d3b3c7c2e47b31c31b6f8ea211045f62bc69f
+	sha256sums = 1e244726ae9f6f3aa64c286de5b1a77b824d5a54e76c330597aaf44daace5d3d
+	sha256sums = e700543cd37c598cc717f620b726767d7f8ad416ca8ba7636348495829f0e151
+
+pkgname = zotero-pdf2zh
