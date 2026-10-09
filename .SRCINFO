@@ -1,7 +1,7 @@
 pkgbase = eusoft-ting-de
 	pkgdesc = Daily German Listening (每日德语听力) for Linux (Community Repackage)
 	pkgver = 26.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eudic.net/v4/de/app/ting
 	arch = x86_64
 	license = LicenseRef-Proprietary

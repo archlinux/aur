@@ -2,7 +2,7 @@
 
 pkgname=eusoft-ting-de
 pkgver=26.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Daily German Listening (每日德语听力) for Linux (Community Repackage)"
 arch=('x86_64')
 url="https://www.eudic.net/v4/de/app/ting"
@@ -60,7 +60,6 @@ package() {
 
     # Install desktop entry
     install -Dm644 "${srcdir}/eusoft-ting-de.desktop" "${pkgdir}/usr/share/applications/eusoft-ting-de.desktop"
-    ln -sf eusoft-ting-de.desktop "${pkgdir}/usr/share/applications/ting_de.desktop"
 
     # Install license
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
