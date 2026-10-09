@@ -2,7 +2,7 @@
 
 _gitname='kara'
 pkgname="plasma6-applets-${_gitname}-git"
-pkgver=0.8.0.r2.g2c9f792
+pkgver=1.0.0.r3.g64a843c
 pkgrel=1
 pkgdesc='KDE Plasma Pager Applet'
 url='https://github.com/dhruv8sh/kara'
@@ -15,6 +15,7 @@ makedepends=(
     'cmake'
     'extra-cmake-modules'
     'plasma-workspace'
+    'vulkan-headers'
 )
 source=("git+${url}.git")
 sha256sums=('SKIP')
