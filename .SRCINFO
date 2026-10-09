@@ -1,7 +1,7 @@
 pkgbase = krdc-ai
 	pkgdesc = KDE Remote Desktop Client with an integrated AI assistant panel (per-connection chat, screenshots, mouse/keyboard control)
 	pkgver = 26.11.70
-	pkgrel = 13
+	pkgrel = 14
 	url = https://invent.kde.org/network/krdc
 	arch = x86_64
 	license = GPL-2.0-or-later
