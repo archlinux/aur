@@ -1,16 +1,16 @@
 pkgbase = peaproxy-bin
 	pkgdesc = Localhost multi-provider AI gateway with API keys, local runtimes, and optional subscription OAuth
-	pkgver = 3.0.6
+	pkgver = 3.0.7
 	pkgrel = 1
 	url = https://github.com/ks1686/peaproxy
 	license = MIT
 	conflicts = peaproxy
 	provides = peaproxy
 	arch = aarch64
-	source_aarch64 = peaproxy-bin_3.0.6_aarch64.tar.gz::https://github.com/ks1686/peaproxy/releases/download/v3.0.6/peaproxy_3.0.6_linux_arm64.tar.gz
-	sha256sums_aarch64 = 0d870aae8adf677d7e7e79ab4b2f520ddb0ba18e87118755a427f83a59bc156d
+	source_aarch64 = peaproxy-bin_3.0.7_aarch64.tar.gz::https://github.com/ks1686/peaproxy/releases/download/v3.0.7/peaproxy_3.0.7_linux_arm64.tar.gz
+	sha256sums_aarch64 = 16954618702880994a86fc242c556c690ee6dd66fa80ebc4fc0c51259d127426
 	arch = x86_64
-	source_x86_64 = peaproxy-bin_3.0.6_x86_64.tar.gz::https://github.com/ks1686/peaproxy/releases/download/v3.0.6/peaproxy_3.0.6_linux_amd64.tar.gz
-	sha256sums_x86_64 = b3df7b21debbb13456180449557e7f91cd54a3ba693c2f708b1b94b60b413b65
+	source_x86_64 = peaproxy-bin_3.0.7_x86_64.tar.gz::https://github.com/ks1686/peaproxy/releases/download/v3.0.7/peaproxy_3.0.7_linux_amd64.tar.gz
+	sha256sums_x86_64 = c70dd69ae1fe79f0dfb5b5317fc5b74cce586c1c94239b47ed2dfe42dd4c9007
 	
 pkgname = peaproxy-bin
