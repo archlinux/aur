@@ -1,12 +1,9 @@
-diff --git a/forge.config.js b/forge.config.js
-index 010235b..293fc75 100644
---- a/forge.config.js
-+++ b/forge.config.js
-@@ -6,50 +6,9 @@ module.exports = {
-     },
+--- a/forge.config.js	2026-10-09 23:33:33.829444714 +0200
++++ b/forge.config.js	2026-10-09 23:33:33.847527285 +0200
+@@ -13,63 +13,8 @@
      rebuildConfig: {},
      makers: [
--        {
+         {
 -            name: '@electron-forge/maker-squirrel',
 -            config: {
 -                name: 'CVRX',
@@ -20,7 +17,7 @@ index 010235b..293fc75 100644
 -                setupExe: `CVRX-v${version}-Windows.exe`,
 -            },
 -        },
-         {
+-        {
              name: '@electron-forge/maker-zip',
              platforms: ['linux'],
          },
@@ -44,6 +41,20 @@ index 010235b..293fc75 100644
 -            },
 -        },
 -        {
+-            // Community-maintained AppImage maker — covers distros that don't
+-            // use deb/rpm (Arch, NixOS, Steam Deck/SteamOS, etc.) plus anyone
+-            // who prefers a portable single-file binary.
+-            name: '@reforged/maker-appimage',
+-            config: {
+-                options: {
+-                    icon: 'icon/cvrx-logo.png',
+-                    categories: ['Network', 'Utility'],
+-                    // Must match packagerConfig.executableName above.
+-                    bin: 'cvrx',
+-                },
+-            },
+-        },
+-        {
 -            name: '@electron-forge/maker-dmg',
 -            config: {
 -                overwrite: true,
@@ -51,6 +62,5 @@ index 010235b..293fc75 100644
 -                name: `CVRX-v${version}-MacOS`,
 -            },
 -        },
--    ],
-+   ],
+     ],
  };
