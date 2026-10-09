@@ -1,7 +1,7 @@
 pkgbase = vsview
 	pkgdesc = The next-generation VapourSynth previewer
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-view
 	arch = x86_64
 	license = EUPL-1.2
@@ -13,7 +13,6 @@ pkgbase = vsview
 	makedepends = python-versioningit
 	makedepends = python-wheel
 	makedepends = python-hatch-sbom
-	depends = vsview-cli
 	depends = vapoursynth
 	depends = python-jetpytools
 	depends = python-vsjetengine
@@ -25,6 +24,7 @@ pkgbase = vsview
 	depends = python-typing_extensions
 	depends = python-keyring
 	depends = python-dotenv
+	depends = python-cyclopts>=5.1.0
 	depends = pyside6
 	optdepends = vapoursynth-plugin-bestsource: Source filter
 	optdepends = vsview-comp: Make comparisons with Slowpoke Pics
@@ -34,7 +34,6 @@ pkgbase = vsview
 	optdepends = vsview-audio-convert: Convert and resample audio
 	optdepends = vsview-nativeres: Analyze and determine native resolution
 	optdepends = vsview-plugins-all: Meta package for all plugins
-	optdepends = vsview-plugins-essential: Meta package for essential plugins
 	source = vsview::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-view.git#tag=vsview/v0.12.0
 	sha256sums = SKIP
 
