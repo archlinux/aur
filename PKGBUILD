@@ -1,13 +1,13 @@
 # Maintainer: Felitendo
 # This PKGBUILD is updated automatically:
-# https://git.felo.gg/Felitendo/PKGBUILDS
+# https://github.com/Felitendo/PKGBUILDS
 
 pkgname=face-unlock-bin
 pkgver=2.1.0
 pkgrel=1
 pkgdesc="Face ID for Linux: the lock screen, sudo and admin prompts by face, on Plasma, GNOME, Hyprland and Niri (upstream binary)"
 arch=('x86_64')
-url="https://git.felo.gg/LoonixTools/face-unlock"
+url="https://github.com/LoonixTools/face-unlock"
 # The program is GPL, the two face networks are MIT (YuNet) and Apache-2.0
 # (SFace). The daemon has OpenCV (Apache-2.0) linked in, with its copies of
 # protobuf, libjpeg-turbo, libpng and zlib. All texts are in the package.
