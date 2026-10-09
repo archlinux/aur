@@ -5,7 +5,7 @@
 
 _name=FFcuesplitter
 pkgname=ffcuesplitter
-pkgver=1.0.31
+pkgver=1.0.32
 pkgrel=1
 pkgdesc='FFmpeg based audio splitter for CDDA images associated with .cue files'
 url="https://github.com/jeanslack/$_name"
@@ -14,7 +14,7 @@ license=(GPL-3.0)
 depends=(python-charset-normalizer python-tqdm ffmpeg)
 makedepends=(python-build python-installer python-wheel python-hatchling)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jeanslack/$_name/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('761e536aeed1b5b20ae809901459071007716fbb5387f654fc4da8340457d378')
+sha256sums=('41c9b026811b09058cbf9afd0cb69ce768ccd9ff4c9b4f98bc3b67ca378afcd1')
 
 build() {
     cd $_name-$pkgver
