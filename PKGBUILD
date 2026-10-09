@@ -1,7 +1,7 @@
 # Maintainer: CharOfString <root@charofstring.cc>
 
 pkgname=gxde-display-manager-git
-pkgver=1.3.2.gxde1.r122.g7e7f8d9
+pkgver=1.3.2.gxde2.r124.g9e4078d
 pkgrel=1
 pkgdesc='GXDE Display Manager is a fork of SDDM maintained by GXDE OS contributors.'
 arch=(x86_64 aarch64)
@@ -54,12 +54,6 @@ prepare() {
     msg2 "$_m -> $_tag"
     git -C "$_m" checkout -q --detach "refs/tags/$_tag"
   done
-
-  sed -i '/^find_package(Qt6 COMPONENTS/s/ WaylandClient REQUIRED)/ WaylandClient WaylandClientPrivate REQUIRED)/' \
-    "gxde-display-manager/src/greeter-classic/CMakeLists.txt"
-
-  sed -i 's/window()->sendRecursiveExposeEvent();/window()->updateExposure();/' \
-    "gxde-display-manager/src/greeter-classic/lock/waylandsessionlock.cpp"
 
   sed -i 's|/usr/sbin/gxdm-emergency-mode|/usr/bin/gxdm-emergency-mode|' \
     gxdm-emergency-mode/data/gxdm-rescue.service

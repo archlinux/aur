@@ -1,6 +1,6 @@
 pkgbase = gxde-display-manager-git
 	pkgdesc = GXDE Display Manager is a fork of SDDM maintained by GXDE OS contributors.
-	pkgver = 1.3.2.gxde1.r122.g7e7f8d9
+	pkgver = 1.3.2.gxde2.r124.g9e4078d
 	pkgrel = 1
 	url = https://github.com/GXDE-OS
 	arch = x86_64
