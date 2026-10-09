@@ -1,6 +1,6 @@
 # Maintainer: Andrew Mello <andrew@88plug.com>
 pkgname=k3d-gpu
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Bootstrap GPU-ready k3d clusters: launcher + NVIDIA device plugin manifest for k3s on Docker"
 arch=('any')
@@ -21,6 +21,7 @@ package() {
     install -Dm755 scripts/k3d-gpu              "$pkgdir/usr/bin/k3d-gpu"
     install -Dm644 share/nvidia-device-plugin.yml "$pkgdir/usr/share/k3d-gpu/nvidia-device-plugin.yml"
     install -Dm644 share/intel-gpu-plugin.yml   "$pkgdir/usr/share/k3d-gpu/intel-gpu-plugin.yml"
+    install -Dm644 share/intel-npu-plugin.yml   "$pkgdir/usr/share/k3d-gpu/intel-npu-plugin.yml"
     install -Dm644 share/gaudi-device-plugin.yml "$pkgdir/usr/share/k3d-gpu/gaudi-device-plugin.yml"
     install -Dm644 README.md  "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 LICENSE.md    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
