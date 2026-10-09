@@ -1,6 +1,6 @@
 # Maintainer: Agil Mammadov <mammadovagil@proton.me>
 pkgname=cpak-bin
-pkgver=2.14.4
+pkgver=2.14.5
 pkgrel=1
 pkgdesc="A fast, decentralized, portable, powerful and low-memory footprint package format for Linux."
 arch=('x86_64' 'aarch64')
@@ -29,11 +29,11 @@ optdepends=(
 )
 
 source=("cpak-${pkgver}.tar.gz::https://github.com/Containerpak/cpak/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d2a5519a2da3ded0518d46861d47338db356de685af5cad63eeb02c02d104bfd')
-sha256sums_x86_64=('7ad3f984cf1ac53229553e84a8fa3211eb539783dbb5314cffc39679c41e5863'
-                   '9f942fc8d9a6b649f2e7189b525151fed041773a1d1f80128b41638ce8fbca2a')
-sha256sums_aarch64=('d8c71693e2c245d891eb8774ee7c86087902d70a694922d1faebad00564f7b1d'
-                    'f841becfcf9504bd4726b8a55aca0f798e37bf55222d068f84ac1759fa464d91')
+sha256sums=('99bf0951563e46f587bd4d747ebb25bd22c719424ab291eac73be992f0dfe766')
+sha256sums_x86_64=('4a2ddca2f3c90754585b6b3632a5939ead7f8f11bc282138e9a9d4e30197b4d8'
+                   'f06beab8172842e6347d22b2ae955a3e486a10305c697d1aeb3db71b440c7b18')
+sha256sums_aarch64=('314b710cade85d750a3dab9c830b79f6248edaed511bd068d61cd72084681aa2'
+                    'd21bf166a8690cd88bfc2100be1bc33a242563f7e84695027e7672fd65fec97a')
 
 source_x86_64=(
   "cpak-${pkgver}-linux-amd64::https://github.com/Containerpak/cpak/releases/download/v${pkgver}/cpak-linux-amd64"
