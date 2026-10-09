@@ -2,7 +2,7 @@
 # Maintainer: Ismet Togay <ismet.togay at gmail dot com>
 
 pkgname=command-code-desktop
-pkgver=0.1.49
+pkgver=0.1.51
 pkgrel=1
 pkgdesc="Desktop app for Command Code, an AI coding agent that learns your coding taste"
 arch=('x86_64')
@@ -27,7 +27,7 @@ install=command-code-desktop.install
 # License = upstream ToS (https://commandcode.ai/terms); none shipped in source
 source=("${pkgname}-${pkgver}.deb::https://github.com/CommandCodeAI/desktop/releases/download/v${pkgver}/CommandCode-${pkgver}-amd64.deb"
         "LICENSE-command-code")
-sha256sums=('2271882a7635ec6c9bc3196b552cb50e9507a2b282606e729d07331b9b92740b'
+sha256sums=('34998392db0840152944bbf26d65456f7f8e57bc385d955633cfe98c06244b8b'
             '0ecb7f651dd3c281515717e87240db1e417cd846cd521b4661512868d2f03768')
 
 package() {
