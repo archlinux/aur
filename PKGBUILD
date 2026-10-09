@@ -11,7 +11,7 @@ _pkgname=kappastream
 _repo="https://github.com/kappy7777/kappastream"
 
 pkgname=${_pkgname}-git
-pkgver=1.0.5.r0.g4b104bc
+pkgver=1.0.6.r0.g6c2585d
 pkgrel=1
 pkgdesc="A lightweight, anonymous Twitch viewer (live stream, chat, favorites) for Linux"
 arch=('x86_64')
@@ -140,4 +140,7 @@ package() {
     "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm644 "packaging/shared/dev.kappy.kappastream.metainfo.xml" \
     "${pkgdir}/usr/share/metainfo/dev.kappy.kappastream.metainfo.xml"
+
+  # License (Arch convention: /usr/share/licenses/<pkgname>/).
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }

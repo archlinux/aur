@@ -1,6 +1,6 @@
 pkgbase = kappastream-git
 	pkgdesc = A lightweight, anonymous Twitch viewer (live stream, chat, favorites) for Linux
-	pkgver = 1.0.5.r0.g4b104bc
+	pkgver = 1.0.6.r0.g6c2585d
 	pkgrel = 1
 	url = https://github.com/kappy7777/kappastream
 	arch = x86_64
