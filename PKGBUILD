@@ -3,14 +3,14 @@
 
 pkgname=mirai-git
 _repo=mirai
-pkgver=r390.37c474e
+pkgver=r470.c73dc75
 pkgrel=1
 pkgdesc='GTK4/libadwaita Go board for analysis, review and play with KataGo'
 arch=('x86_64' 'aarch64')
 url='https://github.com/zhaob1n/mirai'
 license=('GPL-3.0-or-later')
 depends=('glib2' 'glibc' 'graphene' 'gtk4' 'hicolor-icon-theme' 'libadwaita' 'libgcc' 'libsoup3' 'pango')
-makedepends=('blueprint-compiler' 'cargo' 'gettext' 'git' 'just')
+makedepends=('cargo' 'gettext' 'git' 'just')
 optdepends=('katago: local analysis engine (katago-opencl, katago-cuda, ...)')
 provides=('mirai')
 conflicts=('mirai')

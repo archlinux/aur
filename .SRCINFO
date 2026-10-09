@@ -1,12 +1,11 @@
 pkgbase = mirai-git
 	pkgdesc = GTK4/libadwaita Go board for analysis, review and play with KataGo
-	pkgver = r390.37c474e
+	pkgver = r470.c73dc75
 	pkgrel = 1
 	url = https://github.com/zhaob1n/mirai
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
-	makedepends = blueprint-compiler
 	makedepends = cargo
 	makedepends = gettext
 	makedepends = git
