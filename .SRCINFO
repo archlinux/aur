@@ -1,7 +1,7 @@
 pkgbase = xlax
 	pkgdesc = multi window input software
 	pkgver = 2.4
-	pkgrel = 3
+	pkgrel = 5
 	url = http://hea-www.harvard.edu/~fine/Tech/xlax.html
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = xlax
 	depends = imake
 	depends = libxaw
 	depends = libbsd
+	depends = xorg-fonts-misc
 	source = http://hea-www.harvard.edu/~fine/Tech/xlax2.4.tar.gz
 	source = xlax.ad
-	md5sums = a0bcf5c6f55fc609371db17b56062b57
-	md5sums = 237150bf5830ef0936453fb8ac1e7b21
+	sha256sums = aae925379d15ccec6fa9f82b14096d14613c9d342820e515aa61052bbe9ad2dc
+	sha256sums = e7706af1560056155f232f814f17edfd7da695d25a55c90faba3e5277393fa64
 
 pkgname = xlax
-
