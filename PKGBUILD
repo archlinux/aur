@@ -1,24 +1,40 @@
-# Maintainer: GI_Jack <GI_Jack@hackermail.com>
-
-pkgname=python-winsspi
-_pkgname=winsspi
+# Maintainer: Leonid Lednev <leonidledn at gmail dot com>
+# Contributor: GI_Jack <GI_Jack@hackermail.com>
+_name=winsspi
+pkgname="python-$_name"
 pkgver=0.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Windows SSPI wrapper in pure python"
-url="https://pypi.org/project/winsspi"
+url="https://github.com/skelsec/$_name"
 arch=('any')
 license=('MIT')
-depends=('python' 'python-minikerberos')
-makedepends=('python-build' 'python-installer' 'python-wheel')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('0170ba489fa258f1aa4e6760a162846c3f2d0d451c836683eb4f613b66dd41f3')
+depends=(
+  'python>=3.6'
+  'python-minikerberos>=0.3.1'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  'python-setuptools'
+  'git'
+)
+source=("git+$url#tag=$pkgver")
+b2sums=('602d2449e9ef5514196f7014db302ae12ab53627cb4236070288ef2b3c0fedc704d2f7b23af9fd79bb1319e824d8210431efbe3973f6d9ae59876328fe6ed067')
+
+prepare() {
+  git -C "$_name" clean -dfx
+}
 
 build() {
-    cd "${_pkgname}-${pkgver}"
-    python -m build --wheel --no-isolation
+  cd "$_name"
+  python -m build -wnx
 }
 
 package() {
-    cd "${_pkgname}-${pkgver}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+  cd "$_name"
+  python -m installer -d "$pkgdir" dist/*.whl
+  install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
+
+# vim: ts=2 sw=2 et:

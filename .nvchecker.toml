@@ -1,0 +1,3 @@
+[python-winsspi]
+source = "pypi"
+pypi = "winsspi"
