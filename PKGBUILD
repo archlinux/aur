@@ -1,24 +1,31 @@
 # Maintainer: hiruocha <hiruocha[at]outlook[dot]com>
 
 pkgname=nipaplay-reload
-pkgver=1.11.6
+pkgver=1.11.9
 pkgrel=1
 pkgdesc="A cross platform danmaku video player"
 arch=('x86_64')
 url="https://github.com/AimesSoft/NipaPlay-Reload"
-license=('GPL-3.0-or-later')
+license=('MIT' 'MPL-2.0' 'ISC')
 conflicts=("${pkgname%-reload}")
 
 depends=('gtk3'
          'mpv'
          'ffmpeg'
-         'libass'
          'sqlite'
          'libkeybinder3'
          'alsa-lib'
          'libayatana-appindicator'
          'libevdev'
          'gstreamer'
+         'libpulse'
+         'vulkan-icd-loader'
+         'libepoxy'
+         'wayland'
+         'freetype2'
+         'harfbuzz'
+         'fribidi'
+         'fontconfig'
          'libc++')
 makedepends=('clang'
              'cmake'
@@ -29,19 +36,25 @@ makedepends=('clang'
              'llvm'
              'cargo'
              'python'
-             'patchelf')
+             'patchelf'
+             'meson'
+             'vulkan-headers')
 source=("git+https://github.com/AimesSoft/NipaPlay-Reload.git#tag=v$pkgver"
+        "git+https://github.com/AimesSoft/Erika.git#tag=v0.2.1"
         "git+https://github.com/AimesSoft/media-kit.git"
         "git+https://github.com/AimesSoft/libmpv-darwin-build.git"
         "git+https://github.com/AimesSoft/mpv.git"
         "git+https://github.com/AimesSoft/libplacebo.git"
+        "libass-0.17.5.tar.xz::https://github.com/libass/libass/releases/download/0.17.5/libass-0.17.5.tar.xz"
         "fix-dart-path.patch"
         "use-system-cargo.patch")
-sha256sums=('91592d92ff1ca1b6aed20af51fc974675657531da9f60937e5f6d2b0e2f6bf4f'
+sha256sums=('c5361af2e2811868d1189bedc91388b6df1c2ee39dd8d1e0da1f868bf60f8bd1'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
+            '2dca25c0e0c837ddf00b52011b3f82cac1e4ddd3ad018227806b0c2288864acc'
             '5571b73e8f03a9fa1d4821486bbb0cf1c362180f6c68d26e9477d7cf35b71d51'
             'c1a31687404dd9cf73cd415ead0a4940410b3a1a19e000d539e610e6bfd422b0')
 
@@ -70,8 +83,18 @@ prepare() {
 }
 
 build() {
+  cd "$srcdir/Erika"
+  install -d third_party/cache
+  cp "$srcdir/libass-0.17.5.tar.xz" third_party/cache/
+
+  bash scripts/build_linux_libass.sh
+
+  export LIBCLANG_PATH="$(llvm-config --libdir)"
+  cargo build --locked --release -p erika_capi
+  export ERIKA_LIBRARY_DIR="$srcdir/Erika/target/release"
+
   cd "$srcdir/NipaPlay-Reload"
-  fvm flutter build linux --release -v
+  fvm flutter build linux --release -v --dart-define=NIPAPLAY_LINUX_ERIKA=true
 }
 
 package() {
@@ -90,4 +113,6 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/io.github.MCDFsteve.NipaPlay-Reload.png"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/Erika/third_party/src/linux-libass-0.17.5/COPYING" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.libass"
 }
