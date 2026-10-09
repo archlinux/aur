@@ -28,9 +28,9 @@
 # different versions. Bump pkgrel when only _kahawai changes.
 
 pkgname=kahawai-gstreamer
-pkgver=1.28.7
-pkgrel=2
-_kahawai=0.0.21-rc.2
+pkgver=1.28.8
+pkgrel=1
+_kahawai=0.0.22-rc.1
 _prefix=/opt/kahawai-gstreamer
 pkgdesc="GStreamer with Kahawai's patches, isolated in /opt/kahawai-gstreamer"
 arch=(x86_64 aarch64)
@@ -86,9 +86,9 @@ source=(
   # https://gitlab.archlinux.org/archlinux/packaging/packages/gstreamer
   arch-faac-2.0.patch
 )
-sha256sums=('4aabbbf88837a592d425c592c852c577359df65f62c2f58d57db7695d6ebbaa8'
-            'd5acc3e2cd92f09ccfefa357905758274b205ce9b3521ab1d88dbb4072a25f21'
-            '664f0aa523f673da1944773a49728be70ca5b95dcebe5f7364cffb3b002daf1c'
+sha256sums=('f181a8e3115326fc9e0abf132c19db7e6b71648c8c001e15d13fd9402ba61625'
+            '1c0406a1b0e2e5ca71611347273fe584629cf59e874ffcea07f8b82729793b0e'
+            'e462f3ac120062c1b88df1ce831a18983d0bba1f2cbf70940910e61e2028b8e3'
             'ae3fa961395406d8309f7d493a28c084e6350e639b009203d8bee59ef02f2086'
             'a7ca7bc1b9d22296991f993d45a10b0789cb26ed0809a4f9c32c80f044fc83b8')
 
