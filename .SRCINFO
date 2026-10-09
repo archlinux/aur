@@ -1,16 +1,16 @@
 pkgbase = kubert-bin
 	pkgdesc = A kubectx and kubens alternative with context isolation, multi-cluster execution and more.
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/idebeijer/kubert
 	license = MIT
 	conflicts = kubert
 	provides = kubert
 	arch = aarch64
-	source_aarch64 = https://github.com/idebeijer/kubert/releases/download/v0.8.1/kubert_0.8.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 736b2bda9b718941ae4335b0c4d4f08ab6586e1dac422fca7174bc4f81018c1b
+	source_aarch64 = kubert-bin_0.8.2_aarch64.tar.gz::https://github.com/idebeijer/kubert/releases/download/v0.8.2/kubert_0.8.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 156dc9f8ae64522fc6af233a4a79a205f6a51629d3753c57473e108a5031e76e
 	arch = x86_64
-	source_x86_64 = https://github.com/idebeijer/kubert/releases/download/v0.8.1/kubert_0.8.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 36678f956230e25eabb660544ce8b0f2d1db1b830eb1a551e71697137eaf7b2e
+	source_x86_64 = kubert-bin_0.8.2_x86_64.tar.gz::https://github.com/idebeijer/kubert/releases/download/v0.8.2/kubert_0.8.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 302871d4c92c90e6df8faa1adc40181ffb5b909afb63b28f81915f856272f342
 	
 pkgname = kubert-bin
