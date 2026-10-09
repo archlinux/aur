@@ -1,0 +1,36 @@
+pkgbase = eusoft-ting-en
+	pkgdesc = Daily English Listening (每日英语听力) for Linux (Community Repackage)
+	pkgver = 26.6.2
+	pkgrel = 1
+	url = https://www.eudic.net/v4/en/app/ting
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = util-linux-libs
+	depends = xdg-utils
+	optdepends = noto-fonts-cjk: Chinese font support
+	provides = ting-en
+	provides = eusoft-ting
+	provides = eusoft-ting-en
+	conflicts = ting-en
+	noextract = eusoft-ting-en-26.6.2.deb
+	options = !strip
+	options = !debug
+	source = ting-en.sh
+	source = eusoft-ting-en.desktop
+	source = LICENSE
+	sha256sums = cb43dcf4fb84da5a129a1966f75c28ae90f0fd4420a7b0440f208aafe80df13f
+	sha256sums = 2c9e526e8475c970ee9be671477946a5d98eeae89ed5c356f844c2058fd054da
+	sha256sums = 377ddd4aecf677aa2b0fdd264f6285118f3e01f6463eb957db972d0b8404cf69
+	source_x86_64 = eusoft-ting-en-26.6.2.deb::https://static.eudic.net/pkg/ting_en/ting_en.deb?v=26.9.1
+	sha256sums_x86_64 = f90beed26f9e6a834cb6055925d8d844c6290bb44a7da91d9d0b674da8b3cd5b
+
+pkgname = eusoft-ting-en
