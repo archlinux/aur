@@ -1,8 +1,10 @@
 # Maintainer: OldJobobo
 pkgbase=splinterm
 pkgname=('splinterm' 'splinterm-mcp')
-pkgver=0.1.0
-_upstream_ver=0.1.0
+pkgver=0.1.1
+_upstream_ver=0.1.1
+# Candidate template only; publish after verified GitHub release publication.
+# Candidate tooling must bind the new archive checksum.
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/oldjobobo/splinterm'
@@ -28,7 +30,7 @@ source=(
   "https://github.com/OldJobobo/splinterm/releases/download/v$_upstream_ver/$pkgbase-$_upstream_ver.tar.gz"
 )
 sha256sums=(
-  'bac906ff649c4700366dca05ae4593b2b757aab4d54fbd6202a7ff5481926112'
+  '276770c8f3b4ae10466ff965c07af2860ae91a8649d312f32cb760aef5b784f2'
 )
 
 prepare() {
@@ -115,6 +117,7 @@ package_splinterm() {
   install -Dm644 docs/presets.md "$pkgdir/usr/share/doc/splinterm/presets.md"
   install -Dm644 docs/remote.md "$pkgdir/usr/share/doc/splinterm/remote.md"
   install -Dm644 docs/usage.md "$pkgdir/usr/share/doc/splinterm/usage.md"
+  install -Dm644 docs/accessibility.md "$pkgdir/usr/share/doc/splinterm/accessibility.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/splinterm/LICENSE"
   install -Dm644 THIRD_PARTY.md "$pkgdir/usr/share/licenses/splinterm/THIRD_PARTY.md"
 }
