@@ -1,8 +1,8 @@
 # Maintainer: Vitaliy VVS Star <vitaliy <dot> star <at> Gmail-DOT-Com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=librechat
-pkgver=0.8.7
-pkgrel=2
+pkgver=0.8.8
+pkgrel=1
 pkgdesc="Open-source ChatGPT clone fully customizable and compatible with any AI provider"
 arch=('x86_64')
 url="https://github.com/danny-avila/LibreChat"
@@ -23,7 +23,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/danny-avila/LibreChat/archive/refs/tags/v$pkgver.tar.gz"
   librechat.install librechat.env librechat.service librechat.sysusers librechat-server.sh
 )
-sha256sums=('de94ba3ecc8053f0cf494071da19882e2fe509bfd9f32451f1f12cb715b8e7b6'
+sha256sums=('3a2811324c95f7d851ebf6a12a5238fd10a96190a473854d8bcbf05ca96e46b8'
             '063927ce15c895c49252b1d0e12dbf7aa15c6a335630576db7cee0c4beaf964f'
             'c1996fb6baa3f6decfdf27cac916ab6a9eb49bd9ff28e5a350dc9396c96ff0e4'
             '6d8d9cbf687b9978ca33be6ae270fe2a6a65938ee945d3dca5435531ba5cadf8'
