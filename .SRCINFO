@@ -1,5 +1,5 @@
 pkgbase = d-lan
-	pkgver = 1.4.0
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://www.d-lan.net/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = d-lan
 	makedepends = qt6-base
 	makedepends = qt6-svg
 	options = strip
-	source = git+https://github.com/Ummon/D-LAN.git#commit=27a419071cbb2d28a2a480b0b23c11d8cd97c5df
-	sha256sums = f4f830d45cf7d5af2e8da1d87f7941a09987e7af55fa5ee9d69ec30026cd8ac4
+	source = git+https://github.com/Ummon/D-LAN.git#commit=ad2e6d22a76ba0f9006363997e689c150de81a9b
+	sha256sums = cab95e1420af48f74704e2d08e7ea7925c991d52d22c715e1142765280267890
 
 pkgname = d-lan-core
 	pkgdesc = A free LAN file sharing software (headless core)
@@ -39,3 +39,4 @@ pkgname = d-lan-gui
 	depends = qt6-svg
 	depends = hicolor-icon-theme
 	depends = qt6-base
+	depends = desktop-file-utils
