@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=chiasmus
-pkgver=0.1.32
+pkgver=0.1.34
 pkgrel=1
 pkgdesc="MCP server for formal verification with Z3, Prolog, and tree-sitter"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('nodejs>=20')
 makedepends=('npm' 'node-gyp' 'python')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('5d5fbe19a20fe5c585a4a07f08ff25c4da1f34159579f486791812686cefafd0')
+sha256sums=('109f36e75625923e51efb3a64759c1e477ca5a640701fa4dffc2f5a451402a8c')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 latestver() {
