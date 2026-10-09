@@ -1,6 +1,6 @@
 pkgbase = jorvik-git
 	pkgdesc = Chat and voice for Matrix (git)
-	pkgver = 1.0.18.r2.g4a07d66
+	pkgver = 1.0.19.r2.gf3d4c01
 	pkgrel = 1
 	url = https://github.com/jorvikapp/jorvik
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = jorvik-git
 	makedepends = pnpm
 	makedepends = ttf-dejavu
 	depends = electron44
-	provides = jorvik=1.0.18
+	provides = jorvik=1.0.19
 	conflicts = jorvik
 	options = !strip
 	source = jorvik::git+https://github.com/jorvikapp/jorvik.git
