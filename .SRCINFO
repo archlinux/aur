@@ -1,6 +1,6 @@
 pkgbase = veshell-git
 	pkgdesc = An innovative Not-Desktop environment for Linux built with Flutter and Rust
-	pkgver = alpha.1.r451.g62cc96a
+	pkgver = alpha.1.r452.g8de24c3
 	pkgrel = 1
 	url = https://github.com/free-explorers/veshell
 	arch = x86_64
