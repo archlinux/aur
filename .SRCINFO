@@ -1,6 +1,6 @@
 pkgbase = koala-clash-bin
 	pkgdesc = A geeked Mihomo client with features which improve the user experience.
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/coolcoala/koala-clash
 	arch = x86_64
@@ -31,13 +31,13 @@ pkgbase = koala-clash-bin
 	depends = nss
 	depends = systemd-libs
 	depends = libxfixes
-	provides = koala-clash=1.4.1
+	provides = koala-clash=1.5.0
 	conflicts = koala-clash
 	conflicts = koala-clash-git
 	conflicts = koala-clash-electron-git
-	source_x86_64 = koala-clash-bin-1.4.1_amd64.deb::https://github.com/coolcoala/koala-clash/releases/download/1.4.1/Koala.Clash_amd64.deb
-	sha256sums_x86_64 = 03fc897e17cbd21b5f3c66ea565bd56f08887ea250441595d8ad2b8deb88498c
-	source_aarch64 = koala-clash-bin-1.4.1_arm64.deb::https://github.com/coolcoala/koala-clash/releases/download/1.4.1/Koala.Clash_arm64.deb
-	sha256sums_aarch64 = 873124981f9138ead9dac703fe9f6ea5ed04fbe3582b5b9b8b6523f1b69fb1ac
+	source_x86_64 = koala-clash-bin-1.5.0_amd64.deb::https://github.com/coolcoala/koala-clash/releases/download/1.5.0/Koala.Clash_amd64.deb
+	sha256sums_x86_64 = a1f50306b39be42946776bd671a9cfa960903942c975fc0b8f55943d425d48c0
+	source_aarch64 = koala-clash-bin-1.5.0_arm64.deb::https://github.com/coolcoala/koala-clash/releases/download/1.5.0/Koala.Clash_arm64.deb
+	sha256sums_aarch64 = 6cabc6ccd026c9cbd2e384fa9fe0835beff04cd695f3833e1915385806c228db
 
 pkgname = koala-clash-bin

@@ -1,7 +1,7 @@
 # Maintainer: coolcoala
 # Publisher: prettyleaf
 pkgname="koala-clash-bin"
-pkgver="1.4.1"
+pkgver="1.5.0"
 pkgrel=1
 pkgdesc="A geeked Mihomo client with features which improve the user experience."
 arch=("x86_64" "aarch64")
@@ -15,9 +15,9 @@ provides=("koala-clash=${pkgver}")
 conflicts=('koala-clash' 'koala-clash-git' 'koala-clash-electron-git')
 license=("GPL-3.0-only")
 source_x86_64=("${pkgname}-${pkgver}_amd64.deb::${url}/releases/download/${pkgver}/Koala.Clash_amd64.deb")
-sha256sums_x86_64=('03fc897e17cbd21b5f3c66ea565bd56f08887ea250441595d8ad2b8deb88498c')
+sha256sums_x86_64=('a1f50306b39be42946776bd671a9cfa960903942c975fc0b8f55943d425d48c0')
 source_aarch64=("${pkgname}-${pkgver}_arm64.deb::${url}/releases/download/${pkgver}/Koala.Clash_arm64.deb")
-sha256sums_aarch64=('873124981f9138ead9dac703fe9f6ea5ed04fbe3582b5b9b8b6523f1b69fb1ac')
+sha256sums_aarch64=('6cabc6ccd026c9cbd2e384fa9fe0835beff04cd695f3833e1915385806c228db')
 
 prepare() {
         if [ "$CARCH" = "aarch64" ]; then
