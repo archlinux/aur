@@ -1,1 +1,1 @@
-SMARTCTL_EXPORTER_ARGS="--smartctl.interval=60s"
+SMARTCTL_EXPORTER_ARGS="--web.listen-address=127.0.0.1:9633"

@@ -1,4 +1,4 @@
-From 06cb7f46f6b4d47d37ff2cababd1b3bc818c8149 Mon Sep 17 00:00:00 2001
+From fdbbce24029bfeabf518e86625be95add2e9fb06 Mon Sep 17 00:00:00 2001
 From: Konstantin Shalygin <k0ste@k0ste.ru>
 Date: Fri, 25 Apr 2025 16:00:24 +0300
 Subject: [PATCH] cleanup: better logging for device & type, use Kingpin to
@@ -10,12 +10,12 @@ Subject: [PATCH] cleanup: better logging for device & type, use Kingpin to
 
 Signed-off-by: Konstantin Shalygin <k0ste@k0ste.ru>
 ---
- main.go     | 34 ++++++++++------------------------
+ main.go     | 31 ++++++++-----------------------
  readjson.go | 23 +++++++++++------------
- 2 files changed, 21 insertions(+), 36 deletions(-)
+ 2 files changed, 19 insertions(+), 35 deletions(-)
 
 diff --git a/main.go b/main.go
-index c5b138a..09a9e34 100644
+index df5dd31..def0d79 100644
 --- a/main.go
 +++ b/main.go
 @@ -14,7 +14,6 @@
@@ -26,18 +26,16 @@ index c5b138a..09a9e34 100644
  	"log/slog"
  	"net/http"
  	"os"
-@@ -102,30 +101,31 @@ var (
+@@ -139,7 +138,7 @@ var (
  		"The interval between smartctl polls",
  	).Default("60s").Duration()
  	smartctlRescanInterval = kingpin.Flag("smartctl.rescan",
 -		"The interval between rescanning for new/disappeared devices. If the interval is smaller than 1s no rescanning takes place. If any devices are configured with smartctl.device also no rescanning takes place.",
 +		"The interval between rescanning for new/disappeared devices. If the interval is smaller than 1s no rescanning takes place. If any devices are configured with smartctl.device also no rescanning takes place",
  	).Default("10m").Duration()
--	smartctlScan    = kingpin.Flag("smartctl.scan", "Enable scanning. This is a default if no devices are specified").Default("false").Bool()
-+	smartctlScan = kingpin.Flag("smartctl.scan", "Enable scanning. This is a default if no devices are specified",
-+	).Default("false").Bool()
+ 	smartctlScan    = kingpin.Flag("smartctl.scan", "Enable scanning. This is a default if no devices are specified").Default("false").Bool()
  	smartctlDevices = kingpin.Flag("smartctl.device",
- 		"The device to monitor. Device type can be specified after a semicolon, eg. '/dev/bus/0;megaraid,1' (repeatable)",
+@@ -147,22 +146,22 @@ var (
  	).Strings()
  	smartctlDeviceExclude = kingpin.Flag(
  		"smartctl.device-exclude",
@@ -65,7 +63,7 @@ index c5b138a..09a9e34 100644
  )
  
  // scanDevices uses smartctl to gather the list of available devices.
-@@ -177,15 +177,6 @@ func buildDevicesFromFlag(devices []Device) []Device {
+@@ -214,15 +213,6 @@ func buildDevicesFromFlag(devices []Device) []Device {
  	return devices
  }
  
@@ -81,7 +79,7 @@ index c5b138a..09a9e34 100644
  func main() {
  	metricsPath := kingpin.Flag(
  		"web.telemetry-path", "Path under which to expose metrics",
-@@ -198,11 +189,6 @@ func main() {
+@@ -235,11 +225,6 @@ func main() {
  	kingpin.HelpFlag.Short('h')
  	kingpin.Parse()
  	logger := promslog.New(promslogConfig)
@@ -93,7 +91,7 @@ index c5b138a..09a9e34 100644
  	logger.Info("Starting smartctl_exporter", "version", version.Info())
  	logger.Info("Build context", "build_context", version.BuildContext())
  	var devices []Device
-@@ -258,7 +244,7 @@ func main() {
+@@ -295,7 +280,7 @@ func main() {
  		}
  		landingPage, err := web.NewLandingPage(landingConfig)
  		if err != nil {
@@ -102,7 +100,7 @@ index c5b138a..09a9e34 100644
  			os.Exit(1)
  		}
  		http.Handle("/", landingPage)
-@@ -266,7 +252,7 @@ func main() {
+@@ -303,7 +288,7 @@ func main() {
  
  	srv := &http.Server{}
  	if err := web.ListenAndServe(srv, toolkitFlags, logger); err != nil {
@@ -112,10 +110,10 @@ index c5b138a..09a9e34 100644
  	}
  }
 diff --git a/readjson.go b/readjson.go
-index a03b1d6..f2737a7 100644
+index 4e389e1..b5ea46e 100644
 --- a/readjson.go
 +++ b/readjson.go
-@@ -69,14 +69,14 @@ func readSMARTctl(logger *slog.Logger, device Device, wg *sync.WaitGroup) {
+@@ -69,13 +69,13 @@ func readSMARTctl(logger *slog.Logger, device Device, wg *sync.WaitGroup) {
  	logger.Debug("Calling smartctl with args", "args", strings.Join(smartctlArgs, " "))
  	out, err := exec.Command(*smartctlPath, smartctlArgs...).Output()
  	if err != nil {
@@ -123,8 +121,7 @@ index a03b1d6..f2737a7 100644
 +		logger.Warn("S.M.A.R.T. output reading", "device", device.Label, "type", device.Type, "err", err)
  	}
  	// Accommodate a smartmontools pre-7.3 bug
- 	cleaned_out := strings.TrimPrefix(string(out), "  Pending defect count:")
- 	json := parseJSON(cleaned_out)
+ 	json := parseJSON(strings.TrimPrefix(string(out), "  Pending defect count:"))
  	rcOk := resultCodeIsOk(logger, device, json.Get("smartctl.exit_status").Int())
  	jsonOk := jsonIsOk(logger, json)
 -	logger.Debug("Collected S.M.A.R.T. json data", "device", device, "duration", time.Since(start))
@@ -132,7 +129,7 @@ index a03b1d6..f2737a7 100644
  	if rcOk && jsonOk {
  		jsonCache.Store(device, JSONCache{JSON: json, LastCollect: time.Now()})
  	}
-@@ -127,7 +127,7 @@ func readData(logger *slog.Logger, device Device) gjson.Result {
+@@ -126,7 +126,7 @@ func readData(logger *slog.Logger, device Device) gjson.Result {
  
  	cacheValue, found := jsonCache.Load(device)
  	if !found {
@@ -141,7 +138,7 @@ index a03b1d6..f2737a7 100644
  		return gjson.Result{}
  	}
  	return cacheValue.(JSONCache).JSON
-@@ -139,30 +139,30 @@ func resultCodeIsOk(logger *slog.Logger, device Device, SMARTCtlResult int64) bo
+@@ -138,30 +138,30 @@ func resultCodeIsOk(logger *slog.Logger, device Device, SMARTCtlResult int64) bo
  	if SMARTCtlResult > 0 {
  		b := SMARTCtlResult
  		if (b & 1) != 0 {
@@ -180,7 +177,7 @@ index a03b1d6..f2737a7 100644
  		}
  	}
  	return result
-@@ -171,7 +171,6 @@ func resultCodeIsOk(logger *slog.Logger, device Device, SMARTCtlResult int64) bo
+@@ -170,7 +170,6 @@ func resultCodeIsOk(logger *slog.Logger, device Device, SMARTCtlResult int64) bo
  // Check json
  func jsonIsOk(logger *slog.Logger, json gjson.Result) bool {
  	messages := json.Get("smartctl.messages")

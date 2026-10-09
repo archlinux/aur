@@ -1,34 +1,53 @@
 [Unit]
-Description=Prometheus exporter for S.M.A.R.T. metrics
+Description=Prometheus exporter for S.M.A.R.T. metrics using smartctl
+Documentation=https://github.com/prometheus-community/smartctl_exporter
 Requires=network-online.target
-After=network-online.target basic.target
-Wants=network-online.target
+After=network-online.target nss-lookup.target basic.target
+Wants=network-online.target nss-lookup.target
+ConditionVirtualization=false
 StartLimitIntervalSec=30
 StartLimitBurst=3
 
 [Service]
-User=root
-Group=root
-EnvironmentFile=-/etc/conf.d/smartctl_exporter
-ExecStart=/usr/bin/smartctl_exporter $SMARTCTL_EXPORTER_ARGS
 Restart=on-failure
 RestartSec=30
+EnvironmentFile=-/etc/conf.d/smartctl_exporter
+User=smartctl_exporter
+Group=smartctl_exporter
+ExecStart=/usr/bin/smartctl_exporter $SMARTCTL_EXPORTER_ARGS
+ExecStop=/bin/kill -s SIGTERM $MAINPID
+ExecReload=/bin/kill -HUP $MAINPID
+LimitNOFILE=1048576
+UMask=0077
 NoNewPrivileges=true
-PrivateTmp=true
-ProtectHome=true
 ProtectSystem=strict
+ProtectHome=true
+#PrivateUsers=yes       # this breaks smartctl
+PrivateTmp=true
+#PrivateDevices=true    # this is actually needed to access the disks
 ProtectHostname=true
-ProtectControlGroups=true
-ProtectKernelModules=true
+ProtectClock=true
 ProtectKernelTunables=true
+ProtectKernelModules=true
 ProtectKernelLogs=true
-LockPersonality=true
-RestrictRealtime=true
+ProtectControlGroups=true
+ProtectProc=invisible
 RestrictNamespaces=true
-RestrictSUIDSGID=true
+LockPersonality=true
 MemoryDenyWriteExecute=true
-CapabilityBoundingSet=CAP_SYS_ADMIN CAP_SYS_RAWIO CAP_MKNOD
-AmbientCapabilities=
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+# CAP_SYS_ADMIN: Required by NVME_IOCTL_ADMIN_CMD to read NVMe SMART/Health Information
+# CAP_DAC_READ_SEARCH: Required to search for disks
+# CAP_SYS_RAWIO: Required to to read disk SMART/Health Information
+AmbientCapabilities=CAP_SYS_ADMIN CAP_DAC_READ_SEARCH CAP_SYS_RAWIO
+CapabilityBoundingSet=CAP_SYS_ADMIN CAP_DAC_READ_SEARCH CAP_SYS_RAWIO
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+SystemCallArchitectures=native
 
 [Install]
 WantedBy=multi-user.target
