@@ -1,0 +1,16 @@
+post_install () {
+systemd-sysusers
+chown -R tune:tune /opt/tune
+chown tune:tune /etc/default/tune-server
+}
+
+post_upgrade() {
+chown -R tune:tune /opt/tune
+chown tune:tune /etc/default/tune-server
+}
+
+post_remove() {
+rm /usr/lib/tmpfiles.d/tune-server.conf
+rm /usr/lib/sysusers.d/tune-server.conf
+systemd-sysusers
+}

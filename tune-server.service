@@ -1,0 +1,49 @@
+[Unit]
+Description=Tune music server
+Documentation=https://github.com/renesenses/tune-server-rust
+# network-online : la découverte DLNA/mDNS émet des paquets multicast dès le
+# démarrage ; sans cette dépendance le scan initial part avant que l'interface
+# ait une adresse et ne trouve aucun appareil.
+After=network-online.target sound.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=tune
+Group=tune
+# Les DAC USB sont exposés par ALSA sous /dev/snd, dont le groupe est `audio`.
+# Sans ce groupe, la « sortie locale » ne voit aucun périphérique.
+SupplementaryGroups=audio
+
+# Les données (base SQLite, cache de pochettes, fichiers importés) vivent ici,
+# séparées du programme : `apt purge` ne les emporte pas.
+WorkingDirectory=/var/lib/tune
+Environment=TUNE_WEB_DIR=/opt/tune/web
+# `-` : le service démarre même si l'administrateur a supprimé le fichier.
+EnvironmentFile=-/etc/default/tune-server
+ExecStart=/opt/tune/tune-server
+
+Restart=always
+RestartSec=3
+
+# Un serveur audio ouvre beaucoup de descripteurs (bibliothèque + sockets des
+# zones) et veut de la priorité temps réel pour ne pas hoqueter à la lecture.
+LimitNOFILE=65536
+LimitRTPRIO=95
+LimitMEMLOCK=infinity
+AmbientCapabilities=CAP_SYS_NICE
+CapabilityBoundingSet=CAP_SYS_NICE
+
+# Durcissement calibré sur ce que le serveur fait RÉELLEMENT.
+NoNewPrivileges=yes
+# `full` et non `strict` : /opt doit rester inscriptible, la mise à jour
+# intégrée (Réglages → Mise à jour) réécrit /opt/tune/tune-server et
+# /opt/tune/web en place. `strict` la ferait échouer en « Permission denied ».
+ProtectSystem=full
+PrivateTmp=yes
+# ProtectHome est VOLONTAIREMENT absent : sur un poste Linux la musique est
+# le plus souvent sous /home, et l'import de fichiers y écrit. `yes` masquerait
+# la bibliothèque, `read-only` casserait l'import.
+
+[Install]
+WantedBy=multi-user.target
