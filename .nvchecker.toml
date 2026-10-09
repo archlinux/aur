@@ -1,0 +1,5 @@
+[crabseek-bin]
+source = "github"
+github = "aronkv/crabseek"
+use_latest_release = true
+prefix = "v"

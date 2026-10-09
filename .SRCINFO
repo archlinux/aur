@@ -1,0 +1,16 @@
+pkgbase = crabseek-bin
+	pkgdesc = A fast, keyboard-driven Soulseek client for the terminal
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/aronkv/crabseek
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = crabseek
+	conflicts = crabseek
+	options = !strip
+	source_x86_64 = crabseek-x86_64-0.2.1.tgz::https://github.com/aronkv/crabseek/releases/download/v0.2.1/crabseek-0.2.1-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 5fe6c63bac7ca8c3893d7c45a5902dbd1f715a68ce06c2f39fdecd74132b119e
+
+pkgname = crabseek-bin
