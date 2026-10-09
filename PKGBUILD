@@ -1,7 +1,7 @@
 # Maintainer: f4iey (f4iey@f6kgl.ampr.org)
 
 pkgname=klog-bin
-pkgver=2.5
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="A multiplatform free hamradio logger"
 arch=('i686' 'x86_64' 'armv7h')
@@ -22,7 +22,7 @@ elif [ "$CARCH" == "armv7h" ]; then
     sha256sums=(164a923d2a53899781a0a43d8ee8f154bd6c102e4365575654659cadde06b89d)
 fi
 
-source=("http://ftp.fr.debian.org/debian/pool/main/k/klog/${debfile}")
+source=("https://ftp.fr.debian.org/debian/pool/main/k/klog/${debfile}")
 
 build() {
     echo '/usr/lib/gcc/x86_64-pc-linux-gnu/7.5.0' > "$srcdir/klog-bin.conf"
