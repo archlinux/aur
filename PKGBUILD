@@ -1,4 +1,4 @@
-# Maintainer: Rhácius Castelo <358627+rhacius@users.noreply.github.com>
+# Maintainer: Rhácius Castelo <rhacius@gmail.com>
 
 pkgname=genex-desktop-bin
 pkgver=0.1.4
