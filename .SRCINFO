@@ -1,0 +1,22 @@
+pkgbase = pdfcraft-bin
+	pkgdesc = Open-source native PDF workbench, Acrobat alternative (prebuilt binary)
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/storytold/pdfcraft
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	optdepends = vulkan-icd-loader: GPU-accelerated rendering
+	provides = pdfcraft
+	conflicts = pdfcraft
+	source_x86_64 = pdfcraft-0.4.0-linux-x86_64.tar.gz::https://github.com/storytold/pdfcraft/releases/download/v0.4.0/pdfcraft-0.4.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 4879b3cdb4d1261945af03b1c5f00f3e868d05e84e77911960cac505aa16c1db
+	source_aarch64 = pdfcraft-0.4.0-linux-aarch64.tar.gz::https://github.com/storytold/pdfcraft/releases/download/v0.4.0/pdfcraft-0.4.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 08b2ff6c538adb3cc08a88814a3cce6eee09cb98c9af934c393a5131a315590e
+
+pkgname = pdfcraft-bin
