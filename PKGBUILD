@@ -2,17 +2,18 @@
 # Contributor: Christopher Arndt <osam -at- chrisarndt -dot- de>
 
 pkgname=seq66
-pkgver=0.99.26
+pkgver=0.99.28
 pkgrel=1
 pkgdesc='A live-looping MIDI sequencer with a Qt graphical interface'
 arch=(aarch64 x86_64)
 url='https://github.com/ahlstromcj/seq66'
 license=(GPL-2.0-only GPL-3.0-or-later)
-depends=(gcc-libs glibc qt5-base)
+depends=(glibc libgcc libstdc++ qt5-base)
 makedepends=(alsa-lib git jack liblo meson ninja qt5-tools)
+optdepends=('bash: JACK and Pulseaudio helper scripts')
 groups=(pro-audio)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ahlstromcj/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2730eb666689be3a67c1431f01e2d242449fb786590e8c58245c5c2d5f599b34')
+sha256sums=('64de2fb642f770e1727c3f1c4e156838866092d11d94d8dd8495f3965b50d09a')
 
 prepare() {
   meson subprojects download --sourcedir=$pkgname-$pkgver
