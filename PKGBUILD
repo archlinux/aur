@@ -7,10 +7,10 @@
 # Contributor: 
 # 
 pkgname='mkpkg'
-pkgdesc='Tool to rebuild packages based on dependency triggers'
+pkgdesc='Tool to rebuild packages tiggered by dependency changes'
 _gitname='Arch-mkpkg'
 
-pkgver="8.1.0"
+pkgver="8.1.2"
 pkgrel=1
 url="https://github.com/gene-git/Arch-mkpkg"
 

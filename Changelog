@@ -1,9 +1,15 @@
 -------------------------------------------------------
  Changelog    : Arch-mkpkg
- Tags         : 7.8.0 ➙ 8.1.0
-              : 2025-11-13 ➙ 2026-09-10
+ Tags         : 8.0.1 ➙ 8.1.2
+              : 2026-01-03 ➙ 2026-10-09
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-10-09   : 8.1.2
+              - readthedocs link update
+
+ 2026-10-09   : 8.1.1, origin/master
+              - 8.1.1 Documentation available on `readthedocs <https://mkpkg.readthedocs.io>`
 
  2026-09-10   : 8.1.0
               - **8.1.0**
@@ -21,13 +27,3 @@
  2026-01-03   : 8.0.1
               - Arch didnt pick up tag - bump and try again
               - update Docs/Changelogs Docs/mkpkg.pdf for 8.0.0
-
- 2025-11-13   : 8.0.0
-              - update Docs/Changelogs Docs/mkpkg.pdf for 7.8.0
-
- 2025-11-13   : 7.8.0
-              - Release 7.8.0
-                New feature: Support for uninstalled package dependency getting version from program.
-                  See new PKGBUILD variable, _dep_vers_prog, in docs
- 2025-10-14   ⋯
-              - update Docs/Changelogs Docs/mkpkg.pdf for 7.7.2
