@@ -2,13 +2,13 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=bitlaforge
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Solo Bitcoin mining, honestly framed: start and stop the miner, live speed, heat pause, real odds, history (Forge Suite)"
 arch=('any')
 url="https://github.com/jetomev/bitlaforge"
 license=('GPL3')
-depends=('python' 'python-textual' 'python-rich' 'python-tomlkit' 'python-forgekit>=0.5.1' 'util-linux')
+depends=('python' 'python-textual' 'python-rich' 'python-tomlkit' 'python-forgekit>=0.10.0' 'util-linux')
 # minerd is AUR-only, so it can't be a hard depends=. bitlaForge finds it at
 # runtime; without it the Dashboard says so and the manual's
 # "Installing the miner" page says how. util-linux gives setpriv, which makes
@@ -16,7 +16,7 @@ depends=('python' 'python-textual' 'python-rich' 'python-tomlkit' 'python-forgek
 optdepends=('cpuminer: the miner bitlaForge runs (pooler cpuminer, provides minerd)')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('c279e93e283bc61cfbbfd83566cb8306a97d9d96550522cd6bc6e871d3eafb4d'
+sha256sums=('879fad5026cb0f3a26a5140adebee7820590638c205f2a069e2b448f66d1fe78'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import

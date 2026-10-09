@@ -1,6 +1,6 @@
 pkgbase = bitlaforge
 	pkgdesc = Solo Bitcoin mining, honestly framed: start and stop the miner, live speed, heat pause, real odds, history (Forge Suite)
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/jetomev/bitlaforge
 	arch = any
@@ -9,13 +9,13 @@ pkgbase = bitlaforge
 	depends = python-textual
 	depends = python-rich
 	depends = python-tomlkit
-	depends = python-forgekit>=0.5.1
+	depends = python-forgekit>=0.10.0
 	depends = util-linux
 	optdepends = cpuminer: the miner bitlaForge runs (pooler cpuminer, provides minerd)
-	source = bitlaforge-1.0.0.tar.gz::https://github.com/jetomev/bitlaforge/releases/download/v1.0.0/bitlaforge-1.0.0.tar.gz
-	source = bitlaforge-1.0.0.tar.gz.asc::https://github.com/jetomev/bitlaforge/releases/download/v1.0.0/bitlaforge-1.0.0.tar.gz.asc
+	source = bitlaforge-1.1.0.tar.gz::https://github.com/jetomev/bitlaforge/releases/download/v1.1.0/bitlaforge-1.1.0.tar.gz
+	source = bitlaforge-1.1.0.tar.gz.asc::https://github.com/jetomev/bitlaforge/releases/download/v1.1.0/bitlaforge-1.1.0.tar.gz.asc
 	validpgpkeys = 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
-	sha256sums = c279e93e283bc61cfbbfd83566cb8306a97d9d96550522cd6bc6e871d3eafb4d
+	sha256sums = 879fad5026cb0f3a26a5140adebee7820590638c205f2a069e2b448f66d1fe78
 	sha256sums = SKIP
 
 pkgname = bitlaforge
