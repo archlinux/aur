@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Daily Spanish Listening
+Name[zh_CN]=每日西语听力
+Comment=Daily Spanish Listening from Eusoft
+Comment[zh_CN]=精听细读，更好学西语
+GenericName=Language Learning
+GenericName[zh_CN]=语言学习
+Exec=/usr/bin/ting-es %U
+Terminal=false
+Type=Application
+Icon=ting_es
+StartupWMClass=com.eusoft.ting.es
+MimeType=x-scheme-handler/eudic-ting-es;
+Categories=Education;Language;AudioVideo;
