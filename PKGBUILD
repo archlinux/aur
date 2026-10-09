@@ -1,6 +1,6 @@
 # Maintainer: Mistan Khomdram <mistankhomdram@gmail.com>
 pkgname=lazychad
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 epoch=1
 pkgdesc="An intelligent, highly-aesthetic Neovim wrapper built on NvChad"
@@ -26,7 +26,7 @@ provides=('lchad')
 install=lazychad.install
 # Built from the tagged release; the AUR sync workflow fills in the checksum.
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d03cf324b150c6bb4b8608fc0c7de980d1780ca6a9a8569b0118628a332073d2')
+sha256sums=('516622c53a7645147ae9b9cb9e24b49476bf2cb00acded1abb486d1b0b733203')
 
 package() {
   cd "$srcdir/LazyChad-$pkgver"
