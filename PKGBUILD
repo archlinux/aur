@@ -1,7 +1,7 @@
 # Maintainer: kekmacska
 
 pkgname=stellastack-git
-pkgver=0
+pkgver=0.99.1.r7.gf6daf1eeb
 pkgrel=1
 pkgdesc='Linux astrophotography stacking app with calibration, frame analysis, and FITS/XISF export. Built with C++20 and Qt 6'
 arch=('any')
