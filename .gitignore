@@ -5,3 +5,7 @@ pkg/
 *.log
 *.deb
 *.zip
+
+# nvchecker local version records (not committed)
+oldver.json
+newver.json
