@@ -1,0 +1,19 @@
+pkgbase = taskhub-cli-bin
+	pkgdesc = Command-line client and MCP server for TaskHub
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MachineLearning-Nerd/taskhub-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = taskhub-cli
+	conflicts = taskhub-cli
+	conflicts = taskhub
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/MachineLearning-Nerd/taskhub-cli/releases/download/v0.1.0/taskhub-cli-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = 2b34808fcb27178978219d10ecb2c8a2d3cd580a407b58dcdf7f83364761d2a9
+	source_aarch64 = https://github.com/MachineLearning-Nerd/taskhub-cli/releases/download/v0.1.0/taskhub-cli-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = 2d137ff7c4038b964ace0a8134da0d6660645288211fee3efd58516fce31d1a0
+
+pkgname = taskhub-cli-bin
