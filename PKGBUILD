@@ -10,11 +10,13 @@
 #   /usr/bin/zz      -> `zz run main.zz`, `zz check`, `zz build`, REPL
 #   /usr/bin/zz-lsp  -> language server
 #   /usr/lib/zz/     -> prebuilt native runtime (libzz_native_rt.a +
-#                       shared libstd) so `zz build` works with no sources
-#                       and no Rust toolchain
+#                       static libstd rlib) so `zz build` links with no
+#                       sources and no Rust toolchain. AOT outputs carry
+#                       no libstd dependency and no RUNPATH (#303), so
+#                       downstream packages ship no lib/ dir.
 
 pkgname=zz-lang
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='ZZ programming language toolchain — prebuilt binary (zz run main.zz, plus zz-lsp)'
 arch=('x86_64' 'aarch64')
@@ -25,8 +27,8 @@ makedepends=('unzip')
 conflicts=('zz')
 source_x86_64=("$pkgname-$pkgver-$CARCH.zip::https://github.com/zaidejjo/zz/releases/download/v$pkgver/zz-$pkgver-linux-x86_64.zip")
 source_aarch64=("$pkgname-$pkgver-$CARCH.zip::https://github.com/zaidejjo/zz/releases/download/v$pkgver/zz-$pkgver-linux-aarch64.zip")
-sha256sums_x86_64=('c771a53be4a8de6b374d44679c2f3c4cb73cf84ed02ff9729b7cf912dfedfdac')
-sha256sums_aarch64=('770aa6edbdf0e040ac7e3decdf5cfaead89f7605e593945ba6cc121a827ccbf5')
+sha256sums_x86_64=('be7de833b94a3e2f7c9abdaea488b0744c0ec65d6271cbd2a8556f80dd1c0812')
+sha256sums_aarch64=('0506aa2348ea260ac123859fab43bbbda40cd4ae4bcf24f9612e3d0f084dd5a3')
 
 check() {
   # Prebuilt binaries: smoke-test only (full suite ran in CI pre-release).
@@ -40,7 +42,7 @@ package() {
   install -Dm755 zz "$pkgdir/usr/bin/zz"
   install -Dm755 zz-lsp "$pkgdir/usr/bin/zz-lsp"
   install -Dm644 lib/libzz_native_rt.a "$pkgdir/usr/lib/zz/libzz_native_rt.a"
-  install -Dm644 lib/libstd-* "$pkgdir/usr/lib/zz/"
+  install -Dm644 lib/libstd-*.rlib "$pkgdir/usr/lib/zz/"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
