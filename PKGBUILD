@@ -2,7 +2,7 @@
 
 _pypiname="lxst"
 pkgname="python-${_pypiname}"
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Lightweight Extensible Signal Transport for Reticulum"
 arch=(
@@ -42,7 +42,7 @@ source=(
 noextract=(
   "${source[@]##*/}"
 )
-sha256sums=('d26281e247510b2c76cf2a67c55ffac178839597f25e29ef14343b6c8da69c87')
+sha256sums=('feadeb244d12378c27c35dbe48a251ff4db03faf3c8f55b769f9d7656d0adeb7')
 
 package() {
   local python_version="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
@@ -52,9 +52,9 @@ package() {
   python -m installer --destdir="${pkgdir}" "${_pypiname//-/_}-${pkgver}-py3-none-any.whl"
 
   cd "${pkgdir}"
-  install -vd "usr/share/licenses/${pkgname}"
-  ln -vsf "${site_packages}/${_pypiname}-${pkgver}.dist-info/licenses/LICENSE" \
-    "usr/share/licenses/${pkgname}/LICENSE"
+  install -vd "usr/share/licenses"
+  ln -vsf "${site_packages}/${_pypiname}-${pkgver}.dist-info/licenses" \
+    "usr/share/licenses/${pkgname}"
 
   cd "${site_packages#\/}/LXST"
   find . -maxdepth 1 -type f -name 'filterlib*' -and -not -name "filterlib.cpython-${python_version//.}-${CARCH}-linux-gnu.so" -delete
