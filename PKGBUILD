@@ -1,7 +1,7 @@
 # Maintainer: Aaron Coach <aur@awc.id.au>
 pkgname=tracefinity
 _pkgname=tracefinity
-pkgver=0.9.4
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Generate custom gridfinity bins with AI, from photos of your tools"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tracefinity/tracefinity
   "tracefinity.nginx.conf"
   "tracefinity.env")
 
-sha256sums=('b360ef1c702e0bb4ff3461d8210cd52635dc323be82f22b7ac3a95bc514e472a'
+sha256sums=('86b1a15da65ecc330555cd1fbae8cf9da30d4811a7c1fb74a44ad31d9fcd78df'
             'd4f393ee489dc518bf42a93d8ace1322bc7edd68d96a5d676a7f0b00f948e773'
             '7e50478cde51f9c618eeeb09e7529f9471b2e0bd463c72987fb7415eba3adf35'
             '7be50bd94eefbbb8907f5f150761b76e16f65f7a2527f2bb371cac426303cf2d'
