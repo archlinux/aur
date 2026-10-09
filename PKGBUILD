@@ -1,7 +1,7 @@
 # Maintainer: NidoBr <nidobrcontato@gmail.com>
 
 pkgname=tclvfs
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Virtual filesystem extension for Tcl"
 arch=('x86_64')
@@ -10,10 +10,10 @@ license=('BSD-3-Clause')
 
 depends=('tcl')
 
-source=("https://core.tcl-lang.org/tclvfs/tarball/tclvfs-20230905112324-f082c47f9b.tar.gz")
-sha256sums=('0b0ec1020e16a32ce54ec46de25c8a5bed3a0179037db13b8eaca735c36e8157')
+source=("https://core.tcl-lang.org/tclvfs/tarball/tclvfs-20260902141922-ba2505e7d7.tar.gz")
+sha256sums=('b0dbaafc328d83d3b0bb2aa5ca817daaf2f3ca499603926ef7817dd78517406b')
 
-_dir="tclvfs-20230905112324-f082c47f9b"
+_dir="tclvfs-20260902141922-ba2505e7d7"
 
 build() {
     cd "$srcdir/$_dir"
