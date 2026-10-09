@@ -1,17 +1,14 @@
 # Maintainer: Costin Botescu <costin.botescu@gmail.com>
 pkgname=actionswf
 pkgver=1.183
-pkgrel=1
+pkgrel=2
 _rel_at_source=1
 pkgdesc="Action Swf library"
 arch=('x86_64')
 url="https://github.com/colin-i/${pkgname}"
 license=('0BSD')
-depends=('bc' 'python' 'haxe') #weak depends #bc only for oaalternative.sh
-optdepends=(
-    'ffdec-bin: oaalternative.sh'
-) # aur weak depends
-makedepends=('ocompiler' 'bc' 'ffdec-bin' 'python' 'haxe')
+depends=(bc ffdec-bin python haxe) #weak depends
+makedepends=(ocompiler)
 source=("${pkgname}-${pkgver}-${_rel_at_source}.tar.gz::https://github.com/colin-i/${pkgname}/archive/${pkgname}-${pkgver}-${_rel_at_source}.tar.gz")
 sha256sums=('506cdc324b69f398c05e6ed5733fac37980c5212f93bc20cb8cd6333d683cdc4')
 
