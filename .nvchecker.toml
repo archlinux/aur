@@ -1,0 +1,4 @@
+[par]
+source = "bitbucket"
+bitbucket = "amc-nicemice/par"
+use_max_tag = true
