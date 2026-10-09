@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=UCPD-Monitor
+Comment=STM32 UCPD Monitor — USB-PD CC Line Monitoring desktop app.
+GenericName=UCPD-Monitor
+Exec=ucpd-monitor %U
+Icon=ucpd-monitor
+Path=/opt/ucpd-monitor/
+Terminal=false
+StartupNotify=true
+Type=Application
+StartupWMClass=UCPD-Monitor
+Categories=Development;

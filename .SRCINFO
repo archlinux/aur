@@ -1,0 +1,17 @@
+pkgbase = ucpd-monitor
+	pkgdesc = A cross-platform Electron desktop application for real-time monitoring and analysis of USB Power Delivery (PD) communication captured by STM32 UCPD hardware.
+	pkgver = 3.2.7
+	pkgrel = 1
+	url = https://github.com/aso/UCPD-Monitor/tree/main
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = gtk3
+	depends = nss
+	options = !strip
+	source = https://github.com/aso/UCPD-Monitor/releases/download/v3.2.7/UCPD-Monitor-3.2.7.AppImage
+	source = ucpd-monitor.desktop
+	sha256sums = c14cd44421ab57b20ab8cd01e48c1167a5145a51ac60b45c3ac3831d99ab40d1
+	sha256sums = 70fa7e53f9aba409e044f3a3afd03f37b63e9bb9633093c7312de3564984f184
+
+pkgname = ucpd-monitor
