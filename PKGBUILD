@@ -2,7 +2,7 @@
 
 pkgname=framework-control-beta
 pkgver=0.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight control surface for Framework laptops (Fan, Battery, Power, LEDs) - beta/pre-release"
 arch=('x86_64')
 url="https://github.com/ozturkkl/framework-control"
@@ -10,12 +10,14 @@ license=('MIT')
 depends=('xdg-utils' 'hicolor-icon-theme')
 optdepends=('framework-system: Framework CLI on PATH; otherwise auto-downloaded on first run')
 makedepends=('cargo' 'nodejs' 'npm')
+# ring's C/asm objects fail to link under makepkg's default LTO
+options=('!lto')
 conflicts=('framework-control')
 provides=('framework-control')
 install=framework-control-beta.install
 _pkgname=framework-control
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/ozturkkl/framework-control/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2caa4b93df321bad4690a9d0f2d8f87aab85d85174bf278683fb77658710ea70')
+sha256sums=('a3989f85b9a856775a7f4036eede98b77a369ef577eaad73fe9051e889700318')
 
 _port=30912
 
