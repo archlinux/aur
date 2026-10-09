@@ -16,6 +16,6 @@ pkgbase = klog-bin
 	provides = klog
 	conflicts = klog
 	source = https://ftp.fr.debian.org/debian/pool/main/k/klog/klog_2.5.2-1_amd64.deb
-	sha256sums = c2466629d8d5904699bb2f716a3b604d3044a24ea95e8a9316ffab2950b6b6ea
+	sha256sums = 0055cb379c3b915967f20c7a24be27ce7f42f3c830f29efeb75a11e65d4745cd
 
 pkgname = klog-bin
