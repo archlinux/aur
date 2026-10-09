@@ -9,3 +9,12 @@
      "orjson>=3.9.5",
      "pillow>=12.2,<13",
      "pydantic>=2.0.0,<3",
+--- a/immich_ml/models/transforms.py
++++ b/immich_ml/models/transforms.py
+@@ -76,6 +76,8 @@ def widen(array: NDArray[Any]) -> NDArray[Any]:
+     """Single precision from half through OpenCV, as numpy converts one value at a time without native half support."""
+     if array.dtype != np.float16 or array.size == 0:
+         return array.astype(np.float32, copy=False)
++    if not hasattr(cv2, "convertFp16"):
++        return array.astype(np.float32)
+     return cv2.convertFp16(array.reshape(-1, array.shape[-1]).view(np.int16)).reshape(array.shape)  # int16 carries half
