@@ -1,7 +1,7 @@
 # Maintainer: Anand Pant
 
 pkgname=foundry-cli-bin
-pkgver=0.0.56
+pkgver=0.0.57
 pkgrel=1
 pkgdesc="Foundry DevOps automation CLI"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('foundry-cli')
 conflicts=('foundry-cli')
 
 _asset="foundry-cli_${pkgver}_linux_amd64.tar.gz"
-_sha256='361e19c17036e2d3db3fa4a60b4f2595ba43c9d46d6661df589b9aba3d4f0319'
+_sha256='d73adf66df8a7d700d79b78ec94468b5623a9dd8260d5cb4e2c086b71951ada0'
 
 prepare() {
   gh release download "v${pkgver}" \
