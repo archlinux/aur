@@ -11,6 +11,14 @@ If this project saves you or your company time, consider [sponsoring](https://gi
 
 - A mount wizard
 
+## [2.23.1] - 2026-10-08
+
+### Changed
+- Czech translation
+
+### Fixed
+- Various Creation Wizard issues and behaviors
+
 ## [2.23.0] - 2026-10-02
 
 ### Added

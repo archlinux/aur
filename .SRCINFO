@@ -1,6 +1,6 @@
 pkgbase = sysd-manager
 	pkgdesc = A systemd GUI to manage service, timer, socket and other units.
-	pkgver = 2.23.0
+	pkgver = 2.23.1
 	pkgrel = 1
 	url = https://github.com/plrigaux/sysd-manager
 	install = sysd-manager.install
@@ -17,7 +17,7 @@ pkgbase = sysd-manager
 	depends = systemd-libs
 	depends = gtksourceview5
 	depends = gettext
-	source = sysd-manager-2.23.0.tar.gz::https://github.com/plrigaux/sysd-manager/archive/refs/tags/v2.23.0.tar.gz
-	sha256sums = adca7bea16709786dbb3006c1ef58e7ef7653b660a7784e42a7fb583fdd5adae
+	source = sysd-manager-2.23.1.tar.gz::https://github.com/plrigaux/sysd-manager/archive/refs/tags/v2.23.1.tar.gz
+	sha256sums = e9b207291de206139a0e34f07be871c6d3f3bfca5ba8d824762ae842aa2a0452
 
 pkgname = sysd-manager
