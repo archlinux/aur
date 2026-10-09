@@ -1,21 +1,20 @@
 pkgbase = actionswf
 	pkgdesc = Action Swf library
 	pkgver = 1.183
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/colin-i/actionswf
 	arch = x86_64
 	license = 0BSD
-	makedepends = lib32-glibc
-	makedepends = bc
 	makedepends = ocompiler
+	makedepends = bc
 	makedepends = ffdec-bin
 	makedepends = python
 	makedepends = haxe
-	depends = lib32-glibc
 	depends = bc
-	depends = ffdec-bin
 	depends = python
-	source = actionswf-1.183-0.tar.gz::https://github.com/colin-i/actionswf/archive/actionswf-1.183-0.tar.gz
-	sha256sums = ab2db7ffa48e895ee68f46ee6e0dbf497dbb8e65ae1d6d39f4fa33b2722065f4
+	depends = haxe
+	optdepends = ffdec-bin: oaalternative.sh
+	source = actionswf-1.183-1.tar.gz::https://github.com/colin-i/actionswf/archive/actionswf-1.183-1.tar.gz
+	sha256sums = 506cdc324b69f398c05e6ed5733fac37980c5212f93bc20cb8cd6333d683cdc4
 
 pkgname = actionswf

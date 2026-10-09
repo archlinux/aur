@@ -1,18 +1,22 @@
 # Maintainer: Costin Botescu <costin.botescu@gmail.com>
 pkgname=actionswf
 pkgver=1.183
-pkgrel=0
+pkgrel=1
+_rel_at_source=1
 pkgdesc="Action Swf library"
 arch=('x86_64')
 url="https://github.com/colin-i/${pkgname}"
 license=('0BSD')
-depends=('lib32-glibc' 'bc' 'ffdec-bin' 'python')
-makedepends=('lib32-glibc' 'bc' 'ocompiler' 'ffdec-bin' 'python' 'haxe')
-source=("${pkgname}-${pkgver}-0.tar.gz::https://github.com/colin-i/${pkgname}/archive/${pkgname}-${pkgver}-0.tar.gz")
-sha256sums=('ab2db7ffa48e895ee68f46ee6e0dbf497dbb8e65ae1d6d39f4fa33b2722065f4')
+depends=('bc' 'python' 'haxe') #weak depends #bc only for oaalternative.sh
+optdepends=(
+    'ffdec-bin: oaalternative.sh'
+) # aur weak depends
+makedepends=('ocompiler' 'bc' 'ffdec-bin' 'python' 'haxe')
+source=("${pkgname}-${pkgver}-${_rel_at_source}.tar.gz::https://github.com/colin-i/${pkgname}/archive/${pkgname}-${pkgver}-${_rel_at_source}.tar.gz")
+sha256sums=('506cdc324b69f398c05e6ed5733fac37980c5212f93bc20cb8cd6333d683cdc4')
 
 _ver_atsource_fn() {
-	cd "$pkgname-$pkgname-$pkgver-0"
+	cd "$pkgname-$pkgname-$pkgver-${_rel_at_source}"
 }
 
 prepare() {
