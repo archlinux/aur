@@ -1,14 +1,14 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=oh-my-pi
-pkgver=18.8.6
+pkgver=18.8.7
 pkgrel=1
 pkgdesc="Coding agent with the IDE wired in"
 arch=('x86_64')
 url="https://omp.sh/"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'oniguruma' 'opus' 'pcre2' 'zstd')
-makedepends=('bun' 'cargo')
+makedepends=('bun' 'cargo' 'cmake' 'curl')
 optdepends=(
     'alsa-lib: ALSA fallback for live voice, STT, and TTS'
     'at-spi2-core: Linux accessibility backend for the computer tool'
@@ -34,11 +34,14 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/can1357/oh-my-pi/archive/v${pkgver}.tar.gz"
     "https://static.crates.io/crates/opus/opus-${_opus_ver}.crate"
     "skip-native-embed-for-aur.patch"
+    "system-grammars-for-aur.patch"
+    "prepare-grammars.sh"
 )
-sha256sums=('3b81436939c6877216a4ef0b19ec3e9d45f43c0d5ebb5be633a63d8f1b5d4e39'
+sha256sums=('4d83e33a47e3ff13509084c65c9e4f846597dfb0bc6b502f26a1aef948a7b51b'
             '33718946cc77d4032911d4efe03a66dbcbfbd2bb16c3da06aaeadcc637c32216'
             'd60c5282c2eebcde70c70b67d49b3fb8105c15d232d29851c68d858a9195acb6'
-)
+            '724888738f0e886693d8a6aa6cfd5f6dba9a98122353e4636a9ca946ae1fa9e7'
+            '5f4beb9da3a47af641fc4880c4c6170bd8cf3cb5aa2bbc4e99f0f98e1a593f54')
 
 _variants=('baseline:x86-64-v2' 'modern:x86-64-v3')
 _cargo_features=()
@@ -66,6 +69,13 @@ prepare() {
     fi
 
     patch -p1 -i "${srcdir}/skip-native-embed-for-aur.patch"
+    patch -p1 -i "${srcdir}/system-grammars-for-aur.patch"
+
+    # The tagged registry pins release, filenames, sizes, and decompressed hashes.
+    # Fetch in prepare() so building and packaging need no grammar downloads.
+    bash "${srcdir}/prepare-grammars.sh" \
+        crates/pi-ast/src/language/wasm_grammars.rs \
+        "${srcdir}/grammars-${pkgver}"
 
     RUSTUP_TOOLCHAIN=stable cargo fetch --locked --target x86_64-unknown-linux-gnu
 
@@ -88,17 +98,10 @@ EOF
     RUSTUP_TOOLCHAIN=stable cargo fetch --offline --target x86_64-unknown-linux-gnu \
         --config "${srcdir}/system-opus.toml"
 
-    # tree-sitter's vendored array.h type-puns every Array(T)* through a generic
-    # Array* whose contents member is void*. _array__grow may realloc and store
-    # the new contents through the punned type, so under -fstrict-aliasing
-    # (implied by -O2) GCC keeps the pre-realloc pointer in a register and the
-    # tree-sitter-haskell scanner writes into the freed block; glibc aborts with
-    # "corrupted size vs. prev_size" on the next allocation. Fixed upstream in
-    # tree-sitter 0.26.4 (tree-sitter/tree-sitter@ed6e42c), but the grammar
-    # crates vendor their own pre-fix copy of the header.
-    #
-    # cc-rs spawns the compiler from each crate's build script, so
-    # CARGO_PKG_NAME selects which crates get the flag.
+    # Vendored array.h type-punning can cause GCC strict-aliasing miscompiles.
+    # Haskell is now WASM, but native Bash/HTML/Python/YAML retain pre-fix headers
+    # (fixed in tree-sitter 0.26.4, tree-sitter/tree-sitter@ed6e42c).
+    # cc-rs exposes CARGO_PKG_NAME to scope the workaround to tree-sitter crates.
     local _cc
     _cc=$(command -v "${CC:-cc}")
     cat >"${srcdir}/cc-tree-sitter" <<EOF
@@ -207,5 +210,10 @@ package() {
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "../lib/${pkgname}/omp" "${pkgdir}/usr/bin/omp"
     _install_completions "${pkgdir}/usr/bin/omp"
+    # The loader checks these exact hashed filenames before the user's cache;
+    # missing packaged files still use upstream's verified on-demand installer.
+    install -dm755 "${pkgdir}/usr/share/${pkgname}/grammars"
+    install -m644 "${srcdir}/grammars-${pkgver}/"*.wasm \
+        "${pkgdir}/usr/share/${pkgname}/grammars/"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
