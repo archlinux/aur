@@ -78,9 +78,14 @@
 # listed in makedepends. libxkbcommon is the only strict build-time link
 # dep (xkbcommon-sys); the X11/Wayland/GL entries cover pkgconf probes
 # plus the eframe 0.27 / winit dlopen + fallback runtime surface.
+# Build posture: build() additionally probes a native target-cpu with a
+# 3-tier safe fallback (-C target-cpu=native -> x86-64-v2 -> omit all
+# CPU flags) and appends the winning flag to any makepkg.conf RUSTFLAGS
+# (never replacing it; no manual feature pinning) — see the build()
+# comments below.
 
 pkgname=ramsleuth
-pkgver=2.4.13   # FIXED — taken from the git tag v$pkgver (no pkgver())
+pkgver=2.4.14   # FIXED — taken from the git tag v$pkgver (no pkgver())
 pkgrel=1
 pkgdesc="Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients"
 arch=(x86_64)
@@ -89,14 +94,14 @@ license=(MIT GPL-2.0-only)
 # git-commit source: makepkg clones the repo and checks out the pinned
 # immutable v$pkgver release commit via the #commit= fragment.
 # The "$pkgname::" rename extracts to $srcdir/ramsleuth (see header note above).
-source=("$pkgname::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=271a9b5caa88798ecf4f24fc9f0a1f6a6d5a53f5")
+source=("$pkgname::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=115e99bb3f73afd531297e9ba8ce358f8a992778")
 # Content-addressed VCS pin: the sha256 of `git archive --format tar
 # <commit>` for the immutable #commit= ref above — exactly what makepkg
 # 7.x generates for tag/commit-pinned git sources (makepkg -g) and what
 # its integrity gate verifies (a *sums entry per source; '-' fails the
 # gate on 7.x, and SKIP passes only as a no-op — not the form 7.x
 # generates for #commit fragments).
-sha256sums=('6ed6bf540aee61ca6b0f7a0affc02037a64a26fe84e2434f3995322abaabd984')
+sha256sums=('518a8bdb0bc85aab8f8d46a89174609e204319ad93ac266b4d94468d46c9bb61')
 install=ramsleuth.install
 # The in-repo ramsleuth_intel DKMS source ships bundled (package() step (12))
 # and would file-conflict with the standalone ramsleuth-intel-dkms extra, so the
@@ -111,6 +116,29 @@ depends=(libx11 libxkbcommon wayland libxrandr libxi libxcursor libxinerama mesa
 
 build() {
     cd "$srcdir/ramsleuth"
+
+    # 3-tier safe target-cpu probe (research: Rust AUR Target-CPU Optimization).
+    # No manual feature pinning (+sse4a / +avx512f): those opcodes SIGILL on
+    # modern Intel clients. Fallback: native -> x86-64-v2 -> (omit all CPU flags).
+    local target_cpu_flag=""
+    if rustc --print cfg -C target-cpu=native >/dev/null 2>&1; then
+        target_cpu_flag="-C target-cpu=native"
+    elif rustc --print cfg -C target-cpu=x86-64-v2 >/dev/null 2>&1; then
+        target_cpu_flag="-C target-cpu=x86-64-v2"
+    fi
+    # Tier 3: both probes failed (non-x86 / masked VM CPUID) -> flag stays empty.
+
+    # Append to (never replace) any makepkg.conf RUSTFLAGS, without introducing
+    # a leading/trailing/double space when either side is empty.
+    if [ -n "$target_cpu_flag" ]; then
+        if [ -n "${RUSTFLAGS:-}" ]; then
+            RUSTFLAGS="${RUSTFLAGS} ${target_cpu_flag}"
+        else
+            RUSTFLAGS="${target_cpu_flag}"
+        fi
+        export RUSTFLAGS
+    fi
+
     # --locked: build the committed pins verbatim (reproducible).
     cargo build --release --locked
 }
@@ -154,9 +182,9 @@ package() {
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/ramsleuth/LICENSE"
 
     # (8) the application-menu entry — shared asset next to the preset.
-    # The FILENAME matches the GUI's Wayland app_id ("RamSleuth" — eframe/winit
-    # 0.29 sets app_id = window title), so KWin's app_id -> desktop-file match
-    # resolves the taskbar icon (C21-45).
+    # The FILENAME matches the GUI's Wayland app_id ("RamSleuth" — eframe 0.27
+    # / winit 0.29 sets app_id = window title), so KWin's app_id ->
+    # desktop-file match resolves the taskbar icon (C21-45).
     install -Dm644 "packaging/shared/RamSleuth.desktop" \
         "$pkgdir/usr/share/applications/RamSleuth.desktop"
 
