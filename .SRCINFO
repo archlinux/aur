@@ -1,0 +1,25 @@
+pkgbase = mindforge
+	pkgdesc = A working agreement between you and your AI assistant that does not decay: tiered context, explicit triggers, a closeout that can't be forgotten. Any Linux distribution, no desktop needed: a terminal tool (bash)
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/jetomev/mindforge
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = git
+	depends = coreutils
+	depends = grep
+	depends = sed
+	depends = gawk
+	optdepends = github-cli: checks that a queued task's issue is still open (rot check R8)
+	optdepends = libnotify: a desktop notification when a session needs you
+	optdepends = python: the brief's project table
+	optdepends = libpulse: the chime sound (paplay)
+	optdepends = pipewire: the chime sound (pw-play)
+	source = mindforge-0.1.7.tar.gz::https://github.com/jetomev/mindforge/releases/download/v0.1.7/mindforge-0.1.7.tar.gz
+	source = mindforge-0.1.7.tar.gz.asc::https://github.com/jetomev/mindforge/releases/download/v0.1.7/mindforge-0.1.7.tar.gz.asc
+	validpgpkeys = 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
+	sha256sums = 42acba0a397b156070461c2161f9d361ee7ef6e8a96a6afa5af55d5cda9cbd3e
+	sha256sums = SKIP
+
+pkgname = mindforge
