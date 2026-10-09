@@ -1,15 +1,15 @@
 # Maintainer: blazebsc <blakeisfruity at proton dot me>
 # Maintainer: ofatrii <pub@oftr.me>
 pkgname=froststrap
-_tag='v2.0.2'
+_tag='v2.0.5'
 pkgver=${_tag#v}
 pkgver=${pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="A fork of Fishstrap/Bloxstrap, focused on performance and customization"
 arch=('x86_64')
 url="https://github.com/Froststrap/Froststrap"
 license=('AGPL-3.0-or-later' 'MIT' 'MPL-2.0')
-depends=('dotnet-runtime-10.0' 'icu' 'fontconfig' 'hicolor-icon-theme')
+depends=('dotnet-runtime-10.0' 'icu' 'fontconfig' 'hicolor-icon-theme' 'dbus')
 makedepends=('dotnet-sdk-10.0' 'git' 'rust')
 source=("git+${url}.git#tag=${_tag}"
     "git+https://github.com/Froststrap/ColorPicker.git")
