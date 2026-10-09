@@ -5,23 +5,24 @@
 # pkgver and source checksum are replaced by prepare-aur.sh before publication
 
 pkgname=system-bridge
-pkgver=5.10.0
+pkgver=5.11.0
 epoch=2
 pkgrel=1
 pkgdesc="A bridge for your systems"
 makedepends=('git' 'mise')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.10.0.tar.gz")
-sha256sums=('9fadb20943a1ca25c816c41b3e919562dfc5dea03ff109b2b21915cf98b19f8a')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.11.0.tar.gz")
+sha256sums=('07dc0c19d3d43f772c889de2b3f90d8d8a625b9d3ab16a6158a1987ead026690')
 conflicts=('system-bridge-git' 'system-bridge-git-debug')
 
 arch=('x86_64')
 url="https://github.com/timmo001/system-bridge"
 license=('Apache-2.0')
 depends=('libx11' 'libxtst' 'libxkbcommon' 'libxkbcommon-x11')
-optdepends=('pciutils: GPU model identification via lspci'
-            'zenity: tray and desktop confirmation prompts'
-            'lm_sensors: broader temperature and fan sensor coverage'
-            'nvidia-utils: NVIDIA GPU metrics via nvidia-smi')
+optdepends=('lm_sensors: broader temperature and fan sensor coverage'
+            'nvidia-utils: NVIDIA GPU metrics via nvidia-smi'
+            'pciutils: GPU model identification via lspci'
+            'pipewire: name apps using the microphone or camera via pw-dump'
+            'zenity: tray and desktop confirmation prompts')
 provides=('system-bridge')
 options=('!strip')
 
