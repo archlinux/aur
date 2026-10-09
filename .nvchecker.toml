@@ -1,0 +1,5 @@
+[catmd]
+source = "github"
+github = "schneidermayer/catmd"
+use_latest_release = true
+prefix = "v"

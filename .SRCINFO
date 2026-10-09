@@ -1,0 +1,16 @@
+pkgbase = catmd
+	pkgdesc = Like 'cat', but with markdown support
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/schneidermayer/catmd
+	arch = x86_64
+	license = Unlincense
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	provides = catmd
+	options = !lto
+	source = catmd-1.1.0.tgz::https://github.com/schneidermayer/catmd/archive/v1.1.0.tar.gz
+	sha256sums = d78d7408ebe0491b597a032e98063297ac12998a3982ea6fd169917d10954eb9
+
+pkgname = catmd
