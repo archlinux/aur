@@ -1,6 +1,6 @@
 pkgbase = veshell-git
 	pkgdesc = An innovative Not-Desktop environment for Linux built with Flutter and Rust
-	pkgver = alpha.1.r452.g8de24c3
+	pkgver = v0.1.1.r1.g57386c9
 	pkgrel = 1
 	url = https://github.com/free-explorers/veshell
 	arch = x86_64
@@ -60,6 +60,7 @@ pkgbase = veshell-git
 	provides = wayland-compositor
 	conflicts = veshell
 	conflicts = veshell-bin
+	options = !lto
 	source = git+https://github.com/free-explorers/veshell.git
 	sha256sums = SKIP
 
