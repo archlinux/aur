@@ -2,7 +2,7 @@
 
 pkgname=eusoft-eudic
 pkgver=26.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Eudic (欧路词典) - English dictionary software for Linux (Community Repackage)"
 arch=('x86_64')
 url="https://www.eudic.net/v4/en/app/eudic"
@@ -72,7 +72,6 @@ package() {
 
     # Install desktop entry
     install -Dm644 "${srcdir}/eusoft-eudic.desktop" "${pkgdir}/usr/share/applications/eusoft-eudic.desktop"
-    ln -sf eusoft-eudic.desktop "${pkgdir}/usr/share/applications/eudic.desktop"
 
     # Install hicolor icons
     install -Dm644 "${pkgdir}/usr/share/pixmaps/com.eusoft.eudic.png" \

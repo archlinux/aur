@@ -1,7 +1,7 @@
 pkgbase = eusoft-eudic
 	pkgdesc = Eudic (欧路词典) - English dictionary software for Linux (Community Repackage)
 	pkgver = 26.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eudic.net/v4/en/app/eudic
 	arch = x86_64
 	license = LicenseRef-Proprietary
