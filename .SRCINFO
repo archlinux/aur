@@ -1,6 +1,6 @@
 pkgbase = helm-unittest-bin
 	pkgdesc = Unit test for helm chart in YAML to keep your chart functional and robust
-	pkgver = 1.1.2
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/helm-unittest/helm-unittest
 	install = helm-unittest-bin.install
@@ -11,9 +11,9 @@ pkgbase = helm-unittest-bin
 	provides = helm-unittest
 	conflicts = helm-unittest
 	conflicts = helm-unittest-git
-	source_x86_64 = helm-unittest-1.1.2-x86_64.tgz::https://github.com/helm-unittest/helm-unittest/releases/download/v1.1.2/helm-unittest-linux-amd64-1.1.2.tgz
-	sha512sums_x86_64 = 6f3fcf2c39b05441f279c11f10c5817c2172614b5ed882ef9e12d2877bf80c02aa4276e4344ea4588b3f8b7313a4647bcf28b93e4bfe927d97247e0d05a2c68c
-	source_aarch64 = helm-unittest-1.1.2-aarch64.tgz::https://github.com/helm-unittest/helm-unittest/releases/download/v1.1.2/helm-unittest-linux-arm64-1.1.2.tgz
-	sha512sums_aarch64 = 4de58deba7f427d578e7c21a082993cb8edc116f2b65204c6872198615f6f93a11fe0eca0330d1bcad35cff33ad7aa1a5f792b3d57fd5500d35c0011d901da03
+	source_x86_64 = helm-unittest-1.2.1-x86_64.tgz::https://github.com/helm-unittest/helm-unittest/releases/download/v1.2.1/helm-unittest-linux-amd64-1.2.1.tgz
+	sha512sums_x86_64 = b4af54e63438a2e948005fb304ac9d675e6b854dfd0f0a54400117d5aeee912ad90a8cf76e94e62ab6e43dc6337c04d67c9c8ccaae71497f4f7acc8a6784e9b0
+	source_aarch64 = helm-unittest-1.2.1-aarch64.tgz::https://github.com/helm-unittest/helm-unittest/releases/download/v1.2.1/helm-unittest-linux-arm64-1.2.1.tgz
+	sha512sums_aarch64 = 9f8df991cd4ecad9cceb0080047105d4e6d0a200229b9d994625d15497800ed51ffbc7da172ba326fa8bb77976b29f41d03dfa56e3a53457ae9f0bf99fad7ccf
 
 pkgname = helm-unittest-bin

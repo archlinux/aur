@@ -3,7 +3,7 @@
 _pkgname=helm-unittest
 _pluginname=unittest
 pkgname=$_pkgname-bin
-pkgver=1.1.2 # renovate: datasource=github-releases depName=helm-unittest/helm-unittest
+pkgver=1.2.1 # renovate: datasource=github-releases depName=helm-unittest/helm-unittest
 pkgrel=1
 pkgdesc="Unit test for helm chart in YAML to keep your chart functional and robust"
 url="https://github.com/helm-unittest/helm-unittest"
@@ -16,8 +16,8 @@ source_aarch64=(
   "$_pkgname-$pkgver-aarch64.tgz::$url/releases/download/v$pkgver/${_pkgname}-linux-arm64-$pkgver.tgz"
 )
 arch=('x86_64' 'aarch64')
-sha512sums_x86_64=('6f3fcf2c39b05441f279c11f10c5817c2172614b5ed882ef9e12d2877bf80c02aa4276e4344ea4588b3f8b7313a4647bcf28b93e4bfe927d97247e0d05a2c68c')
-sha512sums_aarch64=('4de58deba7f427d578e7c21a082993cb8edc116f2b65204c6872198615f6f93a11fe0eca0330d1bcad35cff33ad7aa1a5f792b3d57fd5500d35c0011d901da03')
+sha512sums_x86_64=('b4af54e63438a2e948005fb304ac9d675e6b854dfd0f0a54400117d5aeee912ad90a8cf76e94e62ab6e43dc6337c04d67c9c8ccaae71497f4f7acc8a6784e9b0')
+sha512sums_aarch64=('9f8df991cd4ecad9cceb0080047105d4e6d0a200229b9d994625d15497800ed51ffbc7da172ba326fa8bb77976b29f41d03dfa56e3a53457ae9f0bf99fad7ccf')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "${_pkgname}-git")
 install=$pkgname.install
