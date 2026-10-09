@@ -1,0 +1,4 @@
+[shipyard-bin]
+source = "git"
+git = "https://github.com/cosscom/shipyard.git"
+prefix = "v"
