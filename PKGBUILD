@@ -1,6 +1,6 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
 pkgname=radiosonde_auto_rx
-pkgver=1.8.2
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Automatically Track Radiosonde Launches using RTLSDR"
 arch=('x86_64')
@@ -38,17 +38,18 @@ package() {
     install -Dm755 "auto_rx/dft_detect" "$pkgdir/opt/$pkgname/auto_rx/dft_detect"
     install -Dm755 "auto_rx/fsk_demod" "$pkgdir/opt/$pkgname/auto_rx/fsk_demod"
     install -Dm755 "auto_rx/imet4iq" "$pkgdir/opt/$pkgname/auto_rx/imet4iq"
+    install -Dm755 "auto_rx/c50iq" "$pkgdir/opt/$pkgname/auto_rx/c50iq"
     install -Dm755 "auto_rx/mk2a1680mod" "$pkgdir/opt/$pkgname/auto_rx/mk2a1680mod"
     install -Dm755 "auto_rx/rs41mod" "$pkgdir/opt/$pkgname/auto_rx/rs41mod"
     install -Dm755 "auto_rx/dfm09mod" "$pkgdir/opt/$pkgname/auto_rx/dfm09mod"
-    install -Dm755 "auto_rx/m10mod" "$pkgdir/opt/$pkgname/auto_rx/m10mod"
-    install -Dm755 "auto_rx/m20mod" "$pkgdir/opt/$pkgname/auto_rx/m20mod"
+    install -Dm755 "auto_rx/m10m20mod" "$pkgdir/opt/$pkgname/auto_rx/m10m20mod"
     install -Dm755 "auto_rx/rs92mod" "$pkgdir/opt/$pkgname/auto_rx/rs92mod"
     install -Dm755 "auto_rx/lms6Xmod" "$pkgdir/opt/$pkgname/auto_rx/lms6Xmod"
     install -Dm755 "auto_rx/meisei100mod" "$pkgdir/opt/$pkgname/auto_rx/meisei100mod"
     install -Dm755 "auto_rx/imet54mod" "$pkgdir/opt/$pkgname/auto_rx/imet54mod"
     install -Dm755 "auto_rx/mp3h1mod" "$pkgdir/opt/$pkgname/auto_rx/mp3h1mod"
     install -Dm755 "auto_rx/mts01mod" "$pkgdir/opt/$pkgname/auto_rx/mts01mod"
+    install -Dm755 "auto_rx/cf06ht03mod" "$pkgdir/opt/$pkgname/auto_rx/cf06ht03mod"
     install -Dm755 "auto_rx/iq_dec" "$pkgdir/opt/$pkgname/auto_rx/iq_dec"
     install -Dm755 "auto_rx/weathex301d" "$pkgdir/opt/$pkgname/auto_rx/weathex301d"
     install -Dm755 "auto_rx/rd94rd41drop" "$pkgdir/opt/$pkgname/auto_rx/rd94rd41drop"
