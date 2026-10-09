@@ -1,6 +1,6 @@
 pkgbase = brum
 	pkgdesc = Multi-Pane Web Environment (File Commander/Manager) - By Woofson
-	pkgver = 1.6.2
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/Woofson/brum
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = brum
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	options = !lto
-	source = brum-1.6.2.tar.gz::https://github.com/Woofson/brum/archive/refs/tags/v1.6.2.tar.gz
-	sha256sums = 3082ec2a7a94e809bff761aae48d5dba972ba137745fd868a6c9432b979ec919
+	source = brum-1.7.0.tar.gz::https://github.com/Woofson/brum/archive/refs/tags/v1.7.0.tar.gz
+	sha256sums = 1346e4ee057ba3ac1de2a3c3d2fe224f0d19008cd3635ebb4d624fa3f3b0dca2
 
 pkgname = brum
