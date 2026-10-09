@@ -7,7 +7,7 @@ conflicts=(librewolf)
 # The pkgver should always ends with a trailing ".0" for "round" release, so "155.0_1" should instead be "155.0.0_1" for instance
 # Otherwise, we will face version comparison issues: "warning: librewolf: local (154.0_2-1) is newer than extra-testing (154.0.1_2-1)"
 # We therefore "re-compute" the pkgver to match the actual upstream version scheme in the custom _pkgver variable, see README.md for more details
-pkgver=154.0.1_2
+pkgver=157.0.1_1
 # Extract the first part of the pkgver, this represents the Firefox release this LibreWolf release is based on
 _firefoxver="${pkgver%_*}"
 # Remove any trailing ".0" to match the real Firefox version, as "round" Firefox releases actually doesn't contain it,
@@ -102,10 +102,10 @@ source=(
   allow_dark.patch
 )
 
-sha256sums=('87f8f3eb9766cf25a1f3e8231a7304d3977a90d21fe269702074b9d5acc8df29'
+sha256sums=('4b363d2c85eda694c671bda98fc1f0a0ad9cfa030c975ae4fd0e1092a3f59eb2'
             'SKIP'
             '3d6ac59ae9d5ba4c9fe15f95c1338fa68214dec6119f8432336403e3be50f8ae'
-            '16841807098201ea8577ed391f24282a761bd265cfd3f959da920f241a11e8fe')
+            '5745d2548227c498f7619b3503fcae06d00b7829b783143639f2688bba6a4aee')
 
 validpgpkeys=('662E3CDD6FE329002D0CA5BB40339DD82B12EF16') # https://rpm.librewolf.net/pubkey.gpg
 
