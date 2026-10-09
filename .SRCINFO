@@ -1,12 +1,12 @@
 pkgbase = phinger-cursors
 	pkgdesc = Most likely the most over-engineered cursor theme.
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/phisch/phinger-cursors
 	arch = any
 	license = CC-BY-SA-4.0
-	source = phinger-cursors-2.1.tar.bz2::https://github.com/phisch/phinger-cursors/releases/download/v2.1/phinger-cursors-variants.tar.bz2
-	md5sums = c633fcc6d7e8a765d1374acb4cf73e7c
-	sha256sums = ddb7310c62bf8e0e2798a24f8a867e4af7b17a39757ba45c85e13f3988f646fc
+	source = phinger-cursors-2.2.tar.bz2::https://github.com/phisch/phinger-cursors/releases/download/v2.2/phinger-cursors-variants.tar.bz2
+	md5sums = 10861addf60784e866dc47fe84f1c7b8
+	sha256sums = 46d4cfc30a38c19cada3339027b5a78f7b0bf74f3220eba7001c4fdd9d5a6e56
 
 pkgname = phinger-cursors
