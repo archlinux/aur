@@ -1,6 +1,6 @@
 pkgbase = paperling-bin
 	pkgdesc = A minimal, distraction-free markdown editor
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/Razee4315/Paperling
 	arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = paperling-bin
 	provides = paperling
 	conflicts = paperling
 	options = !strip
-	source = README-1.1.0.md::https://raw.githubusercontent.com/Razee4315/Paperling/v1.1.0/README.md
-	source = LICENSE-1.1.0::https://raw.githubusercontent.com/Razee4315/Paperling/v1.1.0/LICENSE
+	source = README-1.1.1.md::https://raw.githubusercontent.com/Razee4315/Paperling/v1.1.1/README.md
+	source = LICENSE-1.1.1::https://raw.githubusercontent.com/Razee4315/Paperling/v1.1.1/LICENSE
 	sha256sums = fec0d36765d76e568012e7e6db74c984fb7beee6693741722e2c73edf41ebe39
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	source_x86_64 = paperling-x86_64-1.1.0.deb::https://github.com/Razee4315/Paperling/releases/download/v1.1.0/Paperling_1.1.0_amd64.deb
-	sha256sums_x86_64 = 78f325efa94bbbf518ffd502cb7f607f29d02e8076e6e2c6c04bee1882d784a5
+	source_x86_64 = paperling-x86_64-1.1.1.deb::https://github.com/Razee4315/Paperling/releases/download/v1.1.1/Paperling_1.1.1_amd64.deb
+	sha256sums_x86_64 = 05a104d442e83f70a9b5d655029527e041848ad523dcecff3faf7cab04d866b3
 
 pkgname = paperling-bin
