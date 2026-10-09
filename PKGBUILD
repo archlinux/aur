@@ -1,7 +1,7 @@
 # Maintainer: Sintan Santorum <c1scu0hh at anonaddy dot me>
 pkgname="jellyfin-autorefresh-new-releases-bin"
 _pkgname="jellyfin-autorefresh"
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Get missing metadata for new releases in Jellyfin"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ license=("GPL3")
 provides=("jellyfin-autorefresh")
 source_x86_64=("$url/releases/download/$pkgver/$_pkgname-$pkgver-amd64-linux.tar.gz")
 source_aarch64=("$url/releases/download/$pkgver/$_pkgname-$pkgver-arm64-linux.tar.gz")
-sha256sums_x86_64=('c01cc1ca0da790771a07bc55e3501411812162617047580823f9b203d1c7cd48')
-sha256sums_aarch64=('8c5b89554ecef9fd09020598e3acd36338f50dd01f2a33c6926e8a84bb57cf84')
+sha256sums_x86_64=('9bf1e9726c7e81f74b68cdb036ce87c738504b14ace821105af3a06c9f211c96')
+sha256sums_aarch64=('4c6e7ac3dea38bb3180e1bf2f5f1089b2254d6511ca1047ecbf0262ceff81013')
 package() {
     [ -f ./$_pkgname-amd64 ] && mv ./$_pkgname-amd64 ./$_pkgname
     [ -f ./$_pkgname-arm64 ] && mv ./$_pkgname-arm64 ./$_pkgname
