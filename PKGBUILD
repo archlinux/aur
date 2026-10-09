@@ -1,13 +1,13 @@
 # Maintainer: Felitendo
 # This PKGBUILD is updated automatically:
-# https://git.felo.gg/Felitendo/PKGBUILDS
+# https://github.com/Felitendo/PKGBUILDS
 
 pkgname=modrinth-enhanced
 pkgver=0.21.6
 pkgrel=1
 pkgdesc="Modrinth App without ads or telemetry, with offline and Ely.by accounts and Linux fixes"
 arch=('x86_64')
-url="https://git.felo.gg/Felitendo/Modrinth-Enhanced"
+url="https://github.com/Felitendo/Modrinth-Enhanced"
 license=('GPL-3.0-only')
 depends=('cairo' 'dbus' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme'
          'libdrm' 'libgcc' 'libsoup3' 'webkit2gtk-4.1'
@@ -31,7 +31,7 @@ _base="v0.21.6"
 # the monitor's refresh rate. vblank-shim.c, preloaded by modrinth-enhanced.sh,
 # paces it at the monitor's rate instead and keeps the app on X11, the only
 # place that works; it is not part of upstream's release.
-source=("${pkgname}-${_tag}.tar.gz::https://git.felo.gg/Felitendo/Modrinth-Enhanced/archive/${_tag}.tar.gz"
+source=("${pkgname}-${_tag}.tar.gz::https://github.com/Felitendo/Modrinth-Enhanced/archive/refs/tags/${_tag}.tar.gz"
         "modrinth-code-${_upstream}.tar.gz::https://github.com/modrinth/code/archive/refs/tags/${_upstream}.tar.gz"
         "vblank-shim.c"
         "modrinth-enhanced.sh")
@@ -40,7 +40,7 @@ if [[ "$_base" != "$_upstream" ]]; then
   source+=("modrinth-code-${_base}.tar.gz::https://github.com/modrinth/code/archive/refs/tags/${_base}.tar.gz")
   noextract+=("modrinth-code-${_base}.tar.gz")
 fi
-sha256sums=('0bf2326e345ba2c6f25a6954538d20b4b63d7010ccdd54281186bac1196ef493' 'dd058ca164096a0f9aeeffec5dfa7905979719a33976643895806b0c82b6f409' '0190921b8ff2fb1deec3209cba71c01541ca1f013e3ba41680f1636e185fd455' 'b24872f82645c52ee4804599cd678d138876fb193c754403fa9c5cf92bd745b9')
+sha256sums=('ae076f375b826e77dc60e7060752fc7d71fc42ec297b4f4bea05b75d11164f73' 'dd058ca164096a0f9aeeffec5dfa7905979719a33976643895806b0c82b6f409' '0190921b8ff2fb1deec3209cba71c01541ca1f013e3ba41680f1636e185fd455' 'b24872f82645c52ee4804599cd678d138876fb193c754403fa9c5cf92bd745b9')
 
 prepare() {
   # What upstream's scripts/prepare.sh does with two shallow tags: apply the
@@ -71,7 +71,7 @@ prepare() {
     git tag upstream
     git checkout -q -b enhanced base
   fi
-  git am -q --3way --whitespace=nowarn "$srcdir/modrinth-enhanced/patches/"*.patch
+  git am -q --3way --whitespace=nowarn "$srcdir/Modrinth-Enhanced-${_tag#v}/patches/"*.patch
   if [[ "$_base" != "$_upstream" ]]; then
     git rebase -q --onto upstream base enhanced
   fi
