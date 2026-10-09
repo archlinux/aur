@@ -1,6 +1,6 @@
 pkgbase = phpactor-bin
 	pkgdesc = Mainly a PHP Language Server with more features than you can shake a stick at
-	pkgver = 2026.07.22.0
+	pkgver = 2026.10.07.0
 	pkgrel = 1
 	url = https://github.com/phpactor/phpactor
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = phpactor-bin
 	provides = phpactor
 	conflicts = phpactor
 	conflicts = phpactor-git
-	source = phpactor-2026.07.22.0.phar::https://github.com/phpactor/phpactor/releases/download/2026.07.22.0/phpactor.phar
-	source = LICENSE-2026.07.22.0::https://github.com/phpactor/phpactor/raw/refs/tags/2026.07.22.0/LICENSE
-	sha256sums = 8c0155380b9d7559a12f35ddf8d09c1dc23e72f1797498038251fc35ad15574d
+	source = phpactor-2026.10.07.0.phar::https://github.com/phpactor/phpactor/releases/download/2026.10.07.0/phpactor.phar
+	source = LICENSE-2026.10.07.0::https://github.com/phpactor/phpactor/raw/refs/tags/2026.10.07.0/LICENSE
+	sha256sums = b28bf6166e016d539fc2f2aec18ef918b12590e436a6f1ccbdf30b5bbdbdb16b
 	sha256sums = 4287c3b7c293133dc59e92cb32a1aae899c4441ac6d64455c537c82070c84caa
 
 pkgname = phpactor-bin
