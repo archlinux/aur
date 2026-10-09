@@ -1,7 +1,7 @@
 # Maintainer: Matthias Mailänder <matthias@mailaender.name>
 
 pkgname=theia-bin
-pkgver=1.73.100
+pkgver=1.76.0
 pkgrel=1
 pkgdesc="Cloud and Desktop IDE Platform"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('theia')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret' 'alsa-lib')
 optdepends=('libappindicator-gtk3: Systray indicator')
 source=("TheiaIDE_x64_${pkgver}.deb::https://www.eclipse.org/downloads/download.php?file=/theia/ide/${pkgver}/linux/TheiaIDE.deb&r=1")
-sha256sums=('6f4f87e35c891f595e453afcae3566ebb8a3be4e378a4ee7172d34ab0033bec2')
+sha256sums=('92e46d9396ac96b6d9db11249440b2edd1084e8c5511272f4abf3fb6a9c570b5')
 options=('!strip')
 
 package() {
