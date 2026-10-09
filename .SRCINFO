@@ -1,0 +1,17 @@
+pkgbase = steam-manifest-downloader-terminal-bin
+	pkgdesc = Terminal UI and headless CLI (smd) of Steam Manifest Downloader (precompiled)
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/MCbabel/Steam-Manifest-Downloader
+	arch = x86_64
+	license = GPL-2.0-or-later
+	optdepends = openssl: for the optional DepotDownloaderMod engine
+	provides = steam-manifest-downloader-terminal=1.5.0
+	conflicts = steam-manifest-downloader-terminal
+	options = !strip
+	source = smd-1.5.0::https://github.com/MCbabel/Steam-Manifest-Downloader/releases/download/v1.5.0/Steam-Manifest-Downloader-Terminal_1.5.0_linux-x64
+	source = LICENSE-1.5.0::https://github.com/MCbabel/Steam-Manifest-Downloader/raw/v1.5.0/LICENSE
+	sha256sums = e8819e62b65a9c83d6f71d6369006c3f5ccbaa61d479b5636d97314c0f3021c2
+	sha256sums = f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505
+
+pkgname = steam-manifest-downloader-terminal-bin
