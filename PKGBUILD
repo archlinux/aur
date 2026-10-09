@@ -1,7 +1,7 @@
 # Maintainer: Jon Tsiros <jon@brightblock.ai>
 
 pkgname=hyprlayer-desktop-bin
-pkgver=0.8.10
+pkgver=0.8.11
 pkgrel=1
 pkgdesc="Native desktop app for spec-driven development with coding agents"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!strip' '!debug' '!emptydirs')
 _deb="Hyprlayer_${pkgver}_amd64.deb"
 source=("${_deb}::https://github.com/BrightBlock/hyprlayer-releases/releases/download/v${pkgver}/${_deb}"
         "hyprlayer-server.service")
-sha256sums=('bfc7f3297015e9b2babaa369ec77de6b6f358f92c0832fb4d4352aee98ea7a5f'
+sha256sums=('7a8b9ca5761b20d2e0e9259a3eaf8dd1bb6f925bf99d05dd53e7bfdcc97cdad8'
             'e578119d5152948b1ba56576c36825d63bce9ad1266e1c8ac661365cd597adae')
 noextract=("${_deb}")
 
