@@ -30,6 +30,6 @@ pkgbase = cfait
 	options = !strip
 	options = !debug
 	source = cfait-source-v1.1.9.tar.gz::https://git.disroot.org/trougnouf/cfait/releases/download/v1.1.9/cfait-source-v1.1.9.tar.gz
-	sha256sums = c9b5bad006f6e16442beadf4169c4973d5883b3c6afe8af587f5bc522f5f0558
+	sha256sums = bc565608d5558feeb858b11018d5af1949be03bad46ef05deae2b98613b165f0
 
 pkgname = cfait
