@@ -18,12 +18,11 @@
 # writable install — `sudo` + re-packaging, not runtime lazy install.
 pkgname=hermes-agent
 pkgver=0.21.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
 url="https://github.com/NousResearch/hermes-agent"
 license=('MIT')
-groups=()
 depends=(
     'python>=3.14'
     'nodejs>=22.22'
@@ -43,7 +42,6 @@ optdepends=(
 makedepends=('npm' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('1ba3500cdbe876bb9d347b3c12f41c591a421293eac58faba23571287dfe1cf8')
-validpgpkeys=()
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -98,7 +96,8 @@ package() {
   _optdir="$pkgdir/opt/$pkgname"
   install -d "$_optdir"
 
-  # Copy application files (bsdtar; avoids an rsync makedepend)
+  # Copy application files (bsdtar; avoids an rsync makedepend).
+  # Exclude tests — they bloat /opt and trigger namcap false positives.
   bsdtar -C . -cf - \
     --exclude='__pycache__' --exclude='.git' \
     --exclude='node_modules' --exclude='web/src' \
@@ -107,7 +106,7 @@ package() {
     --exclude='web/eslint.config.js' --exclude='web/README.md' \
     --exclude='ui-tui/src' --exclude='ui-tui/node_modules' \
     --exclude='scripts/tests' --exclude='scripts/install.*' \
-    --exclude='build' \
+    --exclude='tests' --exclude='build' \
     . | bsdtar -C "$_optdir" -xf -
 
   echo "console.log('skipping build, using prebuilt dist/entry.js')" > "$_optdir/ui-tui/scripts/build.mjs"
@@ -122,6 +121,10 @@ package() {
   if [ -d "ui-tui/dist" ]; then
     cp -a ui-tui/dist/* "$_tuidir/"
   fi
+  # namcap: world-readable/executable tree for packaged TUI assets
+  chmod -R a+rX "$_optdir/ui-tui/dist" "$_tuidir" 2>/dev/null || true
+  # uv leaves a world-writable lock inside the venv; drop it from the package
+  rm -f "$_optdir/venv/.lock"
 
   install -d "$_optdir/venv/lib/python3.14/site-packages"
   {
