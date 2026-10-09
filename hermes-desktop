@@ -16,6 +16,16 @@ export HERMES_DESKTOP_IS_PACKAGED=1
 export HERMES_DESKTOP_RESOURCES_PATH=/usr/lib/hermes-agent-desktop
 export HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME=1
 
+# Reuse the hermes-agent AUR package as the only local agent runtime.
+# Do not set HERMES_DESKTOP_HERMES_ROOT to /opt — that path is read-only and
+# must not be treated as a writable checkout. The CLI wrapper owns the venv.
+if [[ -z "${HERMES_DESKTOP_HERMES:-}" ]]; then
+  export HERMES_DESKTOP_HERMES=/usr/bin/hermes
+fi
+if [[ ! -x "${HERMES_DESKTOP_HERMES}" ]]; then
+  printf '%s\n' "hermes-desktop: ${HERMES_DESKTOP_HERMES} is missing or not executable. Install the hermes-agent package; this app will not bootstrap a private agent tree." >&2
+fi
+
 # Reuse a local browser for agent tools, not the user's browser profile.
 # Hermes' own .env loader still honors an explicitly configured browser path.
 if [[ -z "${AGENT_BROWSER_EXECUTABLE_PATH:-}" ]]; then

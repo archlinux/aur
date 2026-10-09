@@ -5,14 +5,14 @@ _upstream=Hermes                 # productName + executableName
 _pkgver_tag=v0.21.6
 _commit=818c13be1dc4fd28987e1e881a9408224afd4535
 pkgver=0.21.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
 arch=('x86_64')
 url='https://github.com/NousResearch/hermes-agent'
 license=('MIT')
 depends=(
-  'curl' 'electron42' 'git' 'hicolor-icon-theme' 'libnotify' 'libsecret' 'libx11' 'libxi'
-  'nodejs>=22.22' 'npm' 'python>=3.14' 'uv' 'xdg-utils'
+  'curl' 'electron42' 'git' 'hicolor-icon-theme' 'hermes-agent' 'libnotify' 'libsecret'
+  'libx11' 'libxi' 'nodejs>=22.22' 'npm' 'python>=3.14' 'uv' 'xdg-utils'
 )
 optdepends=(
   'libayatana-appindicator: tray indicator support'
@@ -32,18 +32,16 @@ source=(
   'harden-hud-modifier-monitor.patch'
   'hermes-desktop'
   'launcher.test.cjs'
-  'runtime.test.cjs'
   'runtime-policy.test.py'
 )
 sha256sums=('1ba3500cdbe876bb9d347b3c12f41c591a421293eac58faba23571287dfe1cf8'
-            '9cc548c0d9ac9a160286a69dcf99b3d008cbaf35bb219b4a38009d3db7590f12'
+            '9556b266dbd34bfd9e7620cabb8c032a293a41f3fc36c089804f3cea0208696e'
             '047d6e615017b2bb8584383234cdfb3169694e25c10221d7a78da864884b1481'
-            '9c7b16d573e521d0a750ad2a188d37d5f4de0f39936504678243e767a6e88e5b'
+            '5dfb78ff90b1a96ed16127e053743817bcad4ebd7a1f785808590aad5a8ee4eb'
             '308fcfeea8385b3f192f1958bb83428f862cf3080a87ae1c3d020df27abb5fb4'
             'cf8b625b00e606b5b135bf5a38a851d8a699c819139e6720eecfa043ba886e9b'
-            '700eaf971f8aeedf0268cd85954235d1770b786b19ca7e9d7905bf17aed86d44'
-            'dcb84ac7c5f5a7168d089ba082a8c8c77cf3955abc79775f530aee870a30d5df'
-            '3c85cd9077b8e326dfe2a44011bfc92108f8db403a88974688dc1f5c026aed37'
+            '8a677666d7d20578a88a745d83b4a75412a55fd5c184fd4f66a50dfe66adb3c6'
+            '202e474fda5fd845f1ba334e503e751f746fb7d1f378fb0d3e8142b4795a025b'
             'cfe7eaf68db1aeb5570f12f7f03c4547ed5c754680be8faa47f112303e0db7d5')
 
 # Resolve srcdir inside makepkg's functions; it is empty at the top level.
@@ -138,11 +136,10 @@ check() {
   local check_venv="${srcdir}/hermes-check-venv"
   export UV_PROJECT_ENVIRONMENT="${check_venv}"
   export UV_CACHE_DIR="${srcdir}/uv-cache"
-  uv venv "${check_venv}" --python /usr/bin/python3
+  uv venv "${check_venv}" --python /usr/bin/python3 --clear
   uv sync --frozen --no-group dev
   export HERMES_PYTHON="${check_venv}/bin/python"
   node "${srcdir}/launcher.test.cjs"
-  node "${srcdir}/runtime.test.cjs" "$PWD/scripts/install.sh" "$PWD"
   python -B "${srcdir}/runtime-policy.test.py" "$PWD"
   npm run typecheck --workspace apps/desktop
   # The upstream live-portal fixture does not forward XAUTHORITY to Electron.
@@ -184,11 +181,8 @@ package() {
     "${pkgdir}/usr/lib/${pkgname}/app.asar.unpacked"
   install -Dm644 "${resources}/install-stamp.json" \
     "${pkgdir}/usr/lib/${pkgname}/install-stamp.json"
-  # Bootstrap uses the reviewed installer and patch from this exact package,
-  # not an unpatched installer downloaded separately from GitHub.
-  install -Dm644 scripts/install.sh "${pkgdir}/usr/lib/${pkgname}/runtime/install.sh"
-  install -Dm644 "${srcdir}/runtime-policy.patch" \
-    "${pkgdir}/usr/lib/${pkgname}/runtime/runtime-policy.patch"
+  # Local agent runtime comes from the hermes-agent dependency (/usr/bin/hermes).
+  # This package must not ship or run an installer that writes an agent tree.
   install -Dm755 "${srcdir}/hermes-desktop" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${_pkgname}.desktop" <<EOF
 [Desktop Entry]

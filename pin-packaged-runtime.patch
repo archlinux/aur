@@ -1,8 +1,7 @@
-diff --git a/apps/desktop/electron/active-runtime-state.test.ts b/apps/desktop/electron/active-runtime-state.test.ts
-index afc3e74b..40dd193f 100644
---- a/apps/desktop/electron/active-runtime-state.test.ts
-+++ b/apps/desktop/electron/active-runtime-state.test.ts
-@@ -58,3 +58,57 @@ test('a repair that deleted the marker does not strand a healthy install', () =>
+diff '--color=auto' -Naur clean/hermes-agent-0.21.6/apps/desktop/electron/active-runtime-state.test.ts edited/hermes-agent-0.21.6/apps/desktop/electron/active-runtime-state.test.ts
+--- a/apps/desktop/electron/active-runtime-state.test.ts	2026-10-08 18:40:51.000000000 +0800
++++ b/apps/desktop/electron/active-runtime-state.test.ts	2026-10-09 17:38:22.884173235 +0800
+@@ -58,3 +58,57 @@
    // usability, not marker presence, must decide the next boot.
    assert.equal(classifyActiveRuntime(null, 1, true).shouldUseActiveRuntime, true)
  })
@@ -60,11 +59,10 @@ index afc3e74b..40dd193f 100644
 +    assert.equal(classifyActiveRuntime(marker, 1, usable, { ...policy, ...overrides }).policyOnly, false)
 +  }
 +})
-diff --git a/apps/desktop/electron/active-runtime-state.ts b/apps/desktop/electron/active-runtime-state.ts
-index 8b42be2d..293a0ecd 100644
---- a/apps/desktop/electron/active-runtime-state.ts
-+++ b/apps/desktop/electron/active-runtime-state.ts
-@@ -6,11 +6,18 @@ export interface BootstrapMarkerLike {
+diff '--color=auto' -Naur clean/hermes-agent-0.21.6/apps/desktop/electron/active-runtime-state.ts edited/hermes-agent-0.21.6/apps/desktop/electron/active-runtime-state.ts
+--- a/apps/desktop/electron/active-runtime-state.ts	2026-10-08 18:40:51.000000000 +0800
++++ b/apps/desktop/electron/active-runtime-state.ts	2026-10-09 17:38:22.884212334 +0800
+@@ -6,11 +6,18 @@
  export interface ActiveRuntimeState {
    hasValidMarker: boolean
    shouldUseActiveRuntime: boolean
@@ -84,7 +82,7 @@ index 8b42be2d..293a0ecd 100644
  }
  
  export function hasValidBootstrapMarker(
-@@ -42,10 +49,26 @@ export function hasValidBootstrapMarker(
+@@ -42,10 +49,26 @@
  export function classifyActiveRuntime(
    marker: BootstrapMarkerLike | null | undefined,
    schemaVersion: number,
@@ -112,7 +110,7 @@ index 8b42be2d..293a0ecd 100644
    if (!runtimeUsable) {
      return {
        hasValidMarker,
-@@ -54,6 +77,18 @@ export function classifyActiveRuntime(
+@@ -54,6 +77,18 @@
      }
    }
  
@@ -131,11 +129,10 @@ index 8b42be2d..293a0ecd 100644
    return {
      hasValidMarker,
      shouldUseActiveRuntime: true,
-diff --git a/apps/desktop/electron/main.ts b/apps/desktop/electron/main.ts
-index fcc49e5c..253c2198 100644
---- a/apps/desktop/electron/main.ts
-+++ b/apps/desktop/electron/main.ts
-@@ -109,7 +109,7 @@ import {
+diff '--color=auto' -Naur clean/hermes-agent-0.21.6/apps/desktop/electron/main.ts edited/hermes-agent-0.21.6/apps/desktop/electron/main.ts
+--- a/apps/desktop/electron/main.ts	2026-10-08 18:40:51.000000000 +0800
++++ b/apps/desktop/electron/main.ts	2026-10-09 17:38:22.886369032 +0800
+@@ -109,7 +109,7 @@
    resolveLinuxPasswordStore
  } from './bootstrap-platform'
  import { decideBootstrapRepair } from './bootstrap-repair-guard'
@@ -144,17 +141,17 @@ index fcc49e5c..253c2198 100644
  import { bootstrapSnapshot } from './bootstrap-state'
  import {
    BROWSER_WINDOW_HEIGHT,
-@@ -739,6 +739,9 @@ if (USER_DATA_OVERRIDE || process.env.HERMES_DATA_DIR_SUFFIX) {
+@@ -739,6 +739,9 @@
  
  const DEV_SERVER = process.env.HERMES_DESKTOP_DEV_SERVER
  const IS_PACKAGED = app.isPackaged || Boolean(process.env.HERMES_DESKTOP_IS_PACKAGED)
 +const PACKAGE_MANAGED_RUNTIME = process.env.HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME === '1'
 +const PACKAGE_MANAGED_UPDATE_MESSAGE =
-+  'This Hermes runtime is managed by the system package. Update hermes-agent-desktop with your package manager.' 
++  'This Hermes runtime is managed by the hermes-agent system package. Update hermes-agent and hermes-agent-desktop with your AUR helper; the desktop app will not install or modify an agent tree.' 
  const IS_MAC = process.platform === 'darwin'
  const IS_WINDOWS = process.platform === 'win32'
  const IS_WSL = isWslEnvironment()
-@@ -4742,6 +4745,14 @@ async function releaseBackendLock(updateRoot: string, tag: string): Promise<{ un
+@@ -4742,6 +4745,14 @@
  // Detection (checkUpdates / commit changelog / "N behind") stays in the UI;
  // only this apply action changed.
  async function applyUpdates(): Promise<UpdaterApplyResultWire> {
@@ -169,7 +166,7 @@ index fcc49e5c..253c2198 100644
    return updateOperation.apply(async (): Promise<UpdaterApplyResultWire> => {
      updateInFlight = true
      let handedOff: boolean = false
-@@ -4943,15 +4954,19 @@ async function isSourceRuntimeUsable(root: string): Promise<boolean> {
+@@ -4943,15 +4954,19 @@
  }
  
  function activeRuntimeState(backend: SourceBackend | null): ActiveRuntimeState {
@@ -195,7 +192,7 @@ index fcc49e5c..253c2198 100644
    )
  
    // The canonical install stamp (written next to the runtime by the bootstrap)
-@@ -5361,6 +5376,17 @@ async function resolveHermesBackend(backendArgs: string[]): Promise<ResolvedHerm
+@@ -5361,6 +5376,17 @@
  
    const activeRuntime: ActiveRuntimeState = activeRuntimeState(activeBackend)
  
@@ -213,7 +210,7 @@ index fcc49e5c..253c2198 100644
    if (activeBackend && !bootstrapRepairRequested) {
      if (!activeRuntime.hasValidMarker) {
        rememberLog(
-@@ -5408,16 +5434,20 @@ async function resolveHermesBackend(backendArgs: string[]): Promise<ResolvedHerm
+@@ -5408,16 +5434,20 @@
    //    resolveHermesBackend was the old "no payload" path and forced the
    //    user into a dead end. With the bootstrap protocol, "no install yet"
    //    is a recoverable state the GUI can drive through.
@@ -236,7 +233,7 @@ index fcc49e5c..253c2198 100644
      installStamp: INSTALL_STAMP, // may be null in dev
      isPackaged: IS_PACKAGED,
      platform: process.platform,
-@@ -5437,6 +5467,7 @@ interface ResolvedHermesBackend {
+@@ -5437,6 +5467,7 @@
    root?: string
    installStamp?: Readonly<InstallStamp> | null
    activeRoot?: string
@@ -244,26 +241,25 @@ index fcc49e5c..253c2198 100644
    isPackaged?: boolean
    platform?: NodeJS.Platform
    readyFile?: boolean
-@@ -5479,7 +5510,8 @@ async function ensureRuntime(
+@@ -5479,6 +5510,17 @@
    }
  
    if (backend.kind === 'bootstrap-needed') {
--    rememberLog('[bootstrap] no Hermes install found; starting first-launch bootstrap')
-+    const policyOnly = Boolean(backend.policyOnly) && !bootstrapRepairRequested
-+    rememberLog(policyOnly ? '[bootstrap] refreshing package policy only' : '[bootstrap] starting runtime setup')
++    if (PACKAGE_MANAGED_RUNTIME) {
++      rememberLog('[bootstrap] REFUSING installer: package-managed runtime uses hermes-agent; will not write an agent tree')
++      const packagedError: Error & { isBootstrapFailure?: boolean } = new Error(
++        'Hermes Agent is provided by the hermes-agent system package. Install or update hermes-agent with your AUR helper. This app will not download or write a runtime under the agent tree.'
++      )
++
++      packagedError.isBootstrapFailure = true
++      bootstrapFailure = packagedError
++      throw packagedError
++    }
++
+     rememberLog('[bootstrap] no Hermes install found; starting first-launch bootstrap')
  
      if (await handOffWindowsBootstrapRecovery('bootstrap-needed')) {
-       const handoffError: Error & { isBootstrapFailure?: boolean; bootstrapHandedOff?: boolean } = new Error(
-@@ -5523,6 +5555,8 @@ async function ensureRuntime(
-       hermesHome: HERMES_HOME,
-       logRoot: path.join(HERMES_HOME, 'logs'),
-       abortSignal: bootstrapAbortController.signal,
-+      pinExistingCheckout: PACKAGE_MANAGED_RUNTIME,
-+      policyOnly,
-       onEvent: ev => {
-         // Tee every bootstrap event to (a) the desktop log for forensics
-         // and (b) the renderer for live progress UI. Either may be absent;
-@@ -18645,14 +18679,24 @@ const disposeTerminalSession = terminalIpc.disposeTerminalSession
+@@ -18645,14 +18687,24 @@
  
  ipcMain.handle(
    'hermes:updates:check',

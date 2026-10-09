@@ -32,6 +32,23 @@ function runLauncher(t, browsers = [], override) {
   return { bin, home, stderr: result.stderr, values: result.stdout.split('\0').slice(0, -1) }
 }
 
+test('package-managed launcher pins the hermes-agent CLI and leaves the agent tree sealed', t => {
+  const home = fs.mkdtempSync(path.join(os.tmpdir(), 'hermes-launcher-hermes-'))
+  t.after(() => fs.rmSync(home, { recursive: true, force: true }))
+  fs.mkdirSync(path.join(home, '.config'))
+  const result = spawnSync('/bin/bash', ['-c', `
+    exec() {
+      /bin/bash -c 'printf "%s\\0" "\${HERMES_DESKTOP_HERMES:-}" "\${HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME:-}" "\${HERMES_DESKTOP_HERMES_ROOT:-}"' probe
+    }
+    ${launcher}
+  `, 'hermes-desktop'], { env: { HOME: home, PATH: '/usr/bin:/bin' }, cwd: home, encoding: 'utf8' })
+  assert.equal(result.status, 0, result.stderr)
+  const values = result.stdout.split('\0').slice(0, -1)
+  assert.equal(values[0], '/usr/bin/hermes')
+  assert.equal(values[1], '1')
+  assert.equal(values[2], '')
+})
+
 test('explicit browser path is not replaced by automatic detection', t => {
   const result = runLauncher(t, ['google-chrome-stable', 'chromium'], '/custom/browser with spaces')
   assert.equal(result.values[0], '/custom/browser with spaces')
