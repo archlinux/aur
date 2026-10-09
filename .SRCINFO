@@ -1,16 +1,16 @@
 pkgbase = backup-git-repos-bin
 	pkgdesc = Backs up every repository on a self-hosted GitLab or Forgejo instance, or a GitHub.com account, to a local, restorable copy.
-	pkgver = 1.13.8
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://github.com/alrayyes/backup-git-repos
 	license = GPL3
 	conflicts = backup-git-repos
 	provides = backup-git-repos
 	arch = aarch64
-	source_aarch64 = https://github.com/alrayyes/backup-git-repos/releases/download/v1.13.8/backup-git-repos_1.13.8_linux_arm64.tar.gz
-	sha256sums_aarch64 = e2e9cf48ce7109e9a9a7cd1b7c605f14d1f0f58bab41e28584e5300e80cdb9ce
+	source_aarch64 = https://github.com/alrayyes/backup-git-repos/releases/download/v1.14.0/backup-git-repos_1.14.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 45d07fc7be0d9cfb2c4282d89ebc01be91911d55d353df6f277678887f35f1c0
 	arch = x86_64
-	source_x86_64 = https://github.com/alrayyes/backup-git-repos/releases/download/v1.13.8/backup-git-repos_1.13.8_linux_amd64.tar.gz
-	sha256sums_x86_64 = 44d3ddc015aa92ea82b35b995231991ee4629acbae01529c3d455f34776d81f8
+	source_x86_64 = https://github.com/alrayyes/backup-git-repos/releases/download/v1.14.0/backup-git-repos_1.14.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 23fef183099cd29333281aa31ad0096821e48f783808a850881d9e53526204a9
 	
 pkgname = backup-git-repos-bin
