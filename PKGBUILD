@@ -2,7 +2,7 @@
 pkgname=zerus-ade-nightly-bin
 pkgver=0.37.0.r102.g578458c.n3
 pkgrel=1
-pkgdesc='Nightly agent development environment for persistent local and remote tmux sessions'
+pkgdesc='Agent development environment for AI coding agents across machines (nightly)'
 arch=('x86_64')
 url='https://github.com/ufna/zerus'
 license=('MIT')
