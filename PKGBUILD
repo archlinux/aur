@@ -2,8 +2,8 @@
 
 pkgbase=obsidian
 pkgname=(${pkgbase}-{bin,appimage})
-pkgver=1.13.7
-pkgrel=2
+pkgver=1.14.4
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/obsidianmd/obsidian-releases"
 license=('custom')
@@ -20,13 +20,13 @@ source_x86_64=(
 source_aarch64=(
     "${pkgbase}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/Obsidian-${pkgver}-arm64.AppImage"
 )
-
 sha256sums=('a94e20705d4b67501f225d74f4460b746a258e52aa6bc522aed1e26ac42dbef9'
             'febbd56ffe802968b7e848b468f2f2762f5927d6934b4ee70569977aa5d3f843')
-sha256sums_x86_64=('17dc33b49cb3e785ecc27edd2ea0c79e40207798b554fd2886e36ebee7af9ae0'
-                   'e0d8e0a611624de8c9c7dcd8a9e648279fb0a0d552faa1312b7e4f3a5fa72663')
-sha256sums_aarch64=('e286fd2bb2a5d346a35a577bd764c73fd5537dddec2b99a1a3e5e35974085203')
+sha256sums_x86_64=('85b10dcba6edfc1c0460a6d18260cf31c30447a444bd858a6440b9c9c8806d25'
+                   '6362ddbeeeebb7bbccb48fae009572cf2284ef92f5c919c1332aba48de6ffeaa')
+sha256sums_aarch64=('721829a4f0ffadf7674f396aed58a5699e116b76b78747873d1751193efb66a9')
 noextract=("${pkgbase}-${pkgver}-${CARCH}.AppImage")
+options=("!strip")
 
 package_obsidian-bin() {
     pkgdesc="A powerful knowledge base that works on top of a local folder of plain text Markdown files (Official binary package with bundled Electron)"
