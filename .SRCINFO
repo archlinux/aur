@@ -1,6 +1,6 @@
 pkgbase = mold-ai-bin
 	pkgdesc = AI image/video CLI for remote GPU hosts (prebuilt GPU-free client)
-	pkgver = 0.33.0
+	pkgver = 0.34.0
 	pkgrel = 1
 	url = https://github.com/utensils/mold
 	install = mold-ai-bin.install
@@ -12,14 +12,14 @@ pkgbase = mold-ai-bin
 	optdepends = bash-completion: Bash tab completion
 	optdepends = zsh-completions: Zsh tab completion (also auto-found via /usr/share/zsh/site-functions)
 	optdepends = fish: Fish tab completion
-	provides = mold-ai=0.33.0
+	provides = mold-ai=0.34.0
 	conflicts = mold-ai
 	conflicts = mold-ai-git
 	conflicts = mold
 	options = !strip
-	source = LICENSE-0.33.0::https://github.com/utensils/mold/raw/v0.33.0/LICENSE
+	source = LICENSE-0.34.0::https://github.com/utensils/mold/raw/v0.34.0/LICENSE
 	sha256sums = cd904e73d29dc7d62178ebc6def9e500c6b176e8e4c40f58e4b0b5f008380311
-	source_x86_64 = https://github.com/utensils/mold/releases/download/v0.33.0/mold-x86_64-unknown-linux-gnu-cpu.tar.gz
-	sha256sums_x86_64 = f967386163226f9e46bd8c88d890fb771a6b30442753bbb7f7609d1023c5b800
+	source_x86_64 = https://github.com/utensils/mold/releases/download/v0.34.0/mold-x86_64-unknown-linux-gnu-cpu.tar.gz
+	sha256sums_x86_64 = 5daccc5ade016b966e45134191e193cae7a02abf33ee1e60d49116d295ddb202
 
 pkgname = mold-ai-bin
