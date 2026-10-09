@@ -23,14 +23,14 @@
 # only for packaging/aur/test-in-container.sh (a local, test-only source= override, never pushed).
 
 pkgname=eitri-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 # _realver: the release's own EITRI_VERSION, hyphenated (e.g. "0.2.0-rc.1"), as GitHub's release
 # tag and every asset filename actually spell it. pkgver above is that same string with '-' -> '_'
 # (spec docs/superpowers/specs/2026-09-27-v1-dist-design.md sec 3 -- makepkg's pkgver may not
 # contain a hyphen at all), so the two diverge for any prerelease and only _realver is right to use
 # in a download URL or an asset's on-disk name. bump-bin.sh sets both from the same RELEASE key.
-_realver=0.2.1
+_realver=0.2.2
 pkgdesc="Your Neovim, with a readable Claude Code panel beside it (prebuilt binaries; builds its own sidecar on install)"
 arch=('x86_64')
 url="https://github.com/HunterGrey-cyber/eitri"
@@ -75,7 +75,7 @@ source=(
 # NODE_SHA256_linux_x64, which bump-bin.sh writes along with _nodever above, so a Node bump in
 # packaging/pins.env reaches this PKGBUILD through the next release's RELEASE rather than through a
 # second, hand-edited copy of the pin.
-sha256sums=('f490bc7b3fb6fb98565306ef0568ae4fa2a4fd988dc3fa9ff5efb322f197cc08'
+sha256sums=('7078ebb9a2cc67f8d2a2f4539253f32cb42c6434b4b3d499d8d6f0b78b7d16fc'
             'b0571203c2bcb663bb39596df97e527975d8cc073962f780f7d35215430bcf25'
             'd60acfe00a2932254bb0ad20e01b0d74397a0875595de719654b214f4b03f307')
 
