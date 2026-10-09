@@ -13,7 +13,7 @@ depends=(gxde-dtk5-git qt6-base qt6-svg qt6-declarative qt6-5compat
          libqtxdg spdlog fmt systemd-libs dbus glib2 wayland libglvnd
          libx11 libxext libxi libxcb xcb-util xcb-util-wm xcb-util-cursor startup-notification
          gcc-libs glibc)
-makedepends=(git cmake ninja qt6-tools qt6-shadertools qt6-xcb-private-headers treeland-protocols)
+makedepends=(git cmake ninja vulkan-headers qt6-tools qt6-shadertools qt6-xcb-private-headers treeland-protocols)
 optdepends=('lshw: hardware info in DSysInfo')
 provides=(dtk6log "dtk6core=${pkgver%%.r*}" "dtk6gui=${pkgver%%.r*}" "dtk6widget=${pkgver%%.r*}"
           "dtk6declarative=${pkgver%%.r*}" "deepin-qt6platform-plugins=${pkgver%%.r*}"

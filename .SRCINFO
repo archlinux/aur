@@ -9,6 +9,7 @@ pkgbase = gxde-dtk6-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = vulkan-headers
 	makedepends = qt6-tools
 	makedepends = qt6-shadertools
 	makedepends = qt6-xcb-private-headers
