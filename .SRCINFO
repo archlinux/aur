@@ -1,6 +1,6 @@
 pkgbase = hax
 	pkgdesc = Minimalist, terminal-native coding agent written in C
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/OleksandrChekhovskyi/hax
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = hax
 	optdepends = wl-clipboard: clipboard support on Wayland
 	optdepends = xclip: clipboard support and image paste on X11
 	optdepends = xsel: clipboard support on X11
-	source = hax-0.5.0.tar.xz::https://github.com/OleksandrChekhovskyi/hax/releases/download/v0.5.0/hax-0.5.0.tar.xz
-	sha256sums = c1a15c354969b8700f72ffa7b7eee0ec35d700b229f56f067814237fc0052586
+	source = hax-0.6.0.tar.xz::https://github.com/OleksandrChekhovskyi/hax/releases/download/v0.6.0/hax-0.6.0.tar.xz
+	sha256sums = 491f4b707840babd4a7748aa85d2bf0ceab131a53f11be8e2aaa489f41ed500f
 
 pkgname = hax
