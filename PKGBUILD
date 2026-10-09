@@ -3,7 +3,7 @@
 # Contributor: Spider.007 <aur@spider007.net>
 
 pkgname=graylog
-pkgver=7.1.9
+pkgver=7.1.10
 pkgrel=1
 pkgdesc='Free and open source log management platform'
 arch=('any')
@@ -18,7 +18,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://packages.graylog2.org/releases/$pkgname/$pkgname-${pkgver/_/-}.tgz"
 	graylog-tmpfiles.conf
 	graylog.service)
-sha256sums=('c9574e67f4018ac4fd7941547dd4b62472688fb8137e802dab2fce621ae63f08'
+sha256sums=('e4fdf7a4b1b422614b4f97785ac112a3bd8ebc166d9da1d81e5ff1c559169447'
             'c29ccbf1fc25f6d00afd520811c3aab4b6adcb4d12bb4686400adeb0b040409a'
             'fc94037dd0c40999c7316b8347259b5de56414bc0849248fb52959c00c98e506')
 
