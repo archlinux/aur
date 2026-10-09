@@ -1,6 +1,6 @@
 pkgbase = relvi-git
 	pkgdesc = A focused launcher for Wayland
-	pkgver = 0.1.2.r5.g7e49538
+	pkgver = 0.1.2.r7.g51f22f5
 	pkgrel = 1
 	url = https://github.com/so1ve/relvi
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = relvi-git
 	depends = gtk4-layer-shell
 	depends = libadwaita
 	depends = pango
-	provides = relvi=0.1.2.r5.g7e49538
+	provides = relvi=0.1.2.r7.g51f22f5
 	conflicts = relvi
 	source = relvi-git::git+https://github.com/so1ve/relvi.git
 	sha256sums = SKIP
