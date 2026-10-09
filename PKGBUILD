@@ -1,7 +1,7 @@
 # Maintainer: Yo'av Moshe <aur@yoavmoshe.com>
 
 pkgname=hylki
-pkgver=1.42.0
+pkgver=1.43.0
 pkgrel=1
 pkgdesc="A clean, fast GNOME-native email client"
 arch=('x86_64' 'aarch64')
@@ -35,7 +35,7 @@ optdepends=(
 )
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hyprlab/hylki/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5c653af17319354bc07f0a6d800d59a693143f485cad29d51bb4d05e41ad15bc')
+sha256sums=('5b731ca1e94b5016d453a0b588266c212691c70a0ca6b476ff725fbdc108cd2e')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -65,6 +65,13 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
+  # Some tests read the user's Hylki settings; keep them away from the
+  # builder's real ~/.config/hylki etc.
+  export XDG_CONFIG_HOME="$srcdir/xdg/config"
+  export XDG_DATA_HOME="$srcdir/xdg/data"
+  export XDG_CACHE_HOME="$srcdir/xdg/cache"
+  export XDG_STATE_HOME="$srcdir/xdg/state"
+  mkdir -p "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_CACHE_HOME" "$XDG_STATE_HOME"
   cargo test --frozen
 }
 
