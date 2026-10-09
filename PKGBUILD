@@ -2,7 +2,7 @@
 _base=jupyprint
 pkgname=python-${_base}
 pkgdesc="A simple python package to print markdown and LaTeX equations from code cells in Jupyter notebooks"
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 arch=(any)
 url="https://github.com/pxr687/${_base}"
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(python-pandas ipython)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('fcca5f4bef2288041e979944adba1f443c7270215b9389e759677c50786d075f30e54f4e9a7e18e45e1578b54b7348d1f42c9dae02a58633746511e8326fcede')
+sha512sums=('1d67e1b2531ffde3a198ce1268b62a0143d53c661b5db4b6dc2f5d7a32792446899fa4e42943463b34a5f492821aed4368c84f2fc48dc08dc8036c2a172d7033')
 
 build() {
   cd ${_base}-${pkgver}
