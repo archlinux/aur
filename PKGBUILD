@@ -1,7 +1,7 @@
 # Maintainer: Daniël Nazarkin <aur@danicatgames.nl>
 
 pkgname=lore-vcs
-pkgver=0.9.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='Lore is a next-generation, open source version control system'
 url='https://github.com/EpicGames/lore'
@@ -10,14 +10,14 @@ depends=('glibc' 'libgcc')
 makedepends=('cargo')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('155b3e39c70f704449485ea440d0e681ded0a997e5cb465cd17b7709f8bea2ca')
+sha256sums=('6d91c54dc46f40c114e8db4c159f84629aee3a549a3823458063a1718be82878')
 options=(!lto)
 
 prepare() {
   cd "lore-$pkgver"
 
-  sed -i "s/^version = \"0.8.7-nightly\"/version = \"${pkgver}\"/" Cargo.toml
-  sed -i "s/^version = \"0.8.7-nightly\"/version = \"${pkgver}\"/" Cargo.lock
+  sed -i "s/^version = \"0.10.1-nightly\"/version = \"${pkgver}\"/" Cargo.toml
+  sed -i "s/^version = \"0.10.1-nightly\"/version = \"${pkgver}\"/" Cargo.lock
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target host-tuple
