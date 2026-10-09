@@ -7,11 +7,12 @@
 _pkgname=faup
 pkgname=${_pkgname}-git
 pkgver=r519.g8a736da
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast URL decoder library and utility'
 url='https://github.com/stricaud/faup'
-license=('custom')
+license=('WTFPL')
 arch=('x86_64')
+depends=('glibc')
 makedepends=('git' 'cmake')
 conflicts=('faup')
 provides=('faup')
