@@ -1,5 +1,5 @@
 pkgname=wsjtz
-pkgver=2.0.14
+pkgver=2.0.19
 pkgrel=1
 pkgdesc="Fork of WSJT-X with automation features"
 arch=('i686' 'x86_64' 'aarch64')
