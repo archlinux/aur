@@ -1,0 +1,22 @@
+pkgbase = bitchord-bin
+	pkgdesc = A modern YouTube Music client with clean aesthetics inspired by Apple Music (prebuilt)
+	pkgver = 1.8
+	pkgrel = 5
+	url = https://github.com/kushagrasinghx/BitChord
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = imagemagick
+	depends = glibc
+	depends = jq
+	optdepends = libnotify: notification when launching while an instance is already running
+	optdepends = kscreen: KDE Wayland monitor-scale detection for HiDPI
+	optdepends = mpv: alternative media backend
+	provides = bitchord
+	conflicts = bitchord
+	options = !strip
+	source = BitChord-1.8-linux-amd64.deb::https://github.com/kushagrasinghx/BitChord/releases/download/v1.8/BitChord-1.8-linux-amd64.deb
+	source = LICENSE-1.8::https://raw.githubusercontent.com/kushagrasinghx/BitChord/main/LICENSE
+	sha256sums = b5ac5b568015720ada47f378263e83c7dd6d8232d95fc26ddeb4bd1651db1a54
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+
+pkgname = bitchord-bin
