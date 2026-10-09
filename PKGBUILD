@@ -1,7 +1,7 @@
 # Maintainer: Mehdi <mah.fat@gmail.com>
 
 pkgname=studio-brightness-linux
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Brightness control for Apple Cinema, Thunderbolt, Studio and Pro XDR displays'
 url='https://github.com/mfat/studio-brightness-linux'
@@ -14,7 +14,7 @@ checkdepends=('desktop-file-utils' 'appstream')
 optdepends=('libnotify: desktop notifications with --notify')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8ce8422077ae0c37fb16b05972cdf101f71b6e29371f075e4e01647f2555331f')
+sha256sums=('aa6da0f23bf2b339ecd7fcf7f9be532ad38e70e960d0d68049a2bd5759c1199f')
 
 check() {
 	make -C "${pkgname}-${pkgver}" check
