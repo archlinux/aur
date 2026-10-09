@@ -1,6 +1,6 @@
 pkgbase = nym-vpnc-bin
 	pkgdesc = NymVPN command-line client
-	pkgver = 2026.12.4
+	pkgver = 2026.13.0
 	pkgrel = 1
 	url = https://github.com/nymtech/nym-vpn-client
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = nym-vpnc-bin
 	provides = nym-vpnc
 	conflicts = nym-vpnc
 	options = !debug
-	source_x86_64 = https://github.com/nymtech/nym-vpn-client/releases/download/nym-vpn-v2026.12.4/nym-vpn-core-v2026.12.4_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 17ec7c1d41395328aada6a71633ba11c9a152960d836f00ba6a9792fb0aa76a4
-	source_aarch64 = https://github.com/nymtech/nym-vpn-client/releases/download/nym-vpn-v2026.12.4/nym-vpn-core-v2026.12.4_linux_aarch64.tar.gz
-	sha256sums_aarch64 = cca9b7bf98aab43d481b5a3ad0098300ee08e3d2e11497b423a71457ab8b565a
+	source_x86_64 = https://github.com/nymtech/nym-vpn-client/releases/download/nym-vpn-v2026.13.0/nym-vpn-core-v2026.13.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = b118acc5c5b1de49c079558d27674f6bea751a13e00e81e6831d0c2d95ccd5be
+	source_aarch64 = https://github.com/nymtech/nym-vpn-client/releases/download/nym-vpn-v2026.13.0/nym-vpn-core-v2026.13.0_linux_aarch64.tar.gz
+	sha256sums_aarch64 = 193df821712f5f738c0ce464e67305f456e44258b1006a574e0001b0571ae870
 
 pkgname = nym-vpnc-bin
