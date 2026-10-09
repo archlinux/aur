@@ -18,7 +18,7 @@ build() {
     export CGO_ENABLED=0
     export GOPATH="$srcdir/gopath"
     export GOCACHE="$srcdir/gocache"
-    export GOFLAGS=-mod=readonly
+    export GOFLAGS="-mod=readonly -buildvcs=false"
     go build -trimpath -ldflags "-s -w" -o "$srcdir/$pkgname" .
 }
 
