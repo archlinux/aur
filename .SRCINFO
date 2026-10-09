@@ -1,5 +1,5 @@
 pkgbase = cstats
-	pkgdesc = Command-line RetroMC statistics tool
+	pkgdesc = Command-line RetroMC/BetaMC statistics tool
 	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/svgaming234/cstats

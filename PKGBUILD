@@ -3,7 +3,7 @@
 pkgname=cstats
 pkgver=0.11.0
 pkgrel=1
-pkgdesc="Command-line RetroMC statistics tool"
+pkgdesc="Command-line RetroMC/BetaMC statistics tool"
 arch=(any)
 url="https://github.com/svgaming234/cstats"
 license=('MIT')
