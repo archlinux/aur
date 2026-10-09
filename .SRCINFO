@@ -1,6 +1,6 @@
 pkgbase = sibyl
 	pkgdesc = Persistent memory and task coordination CLI for AI coding agents
-	pkgver = 1.4.8
+	pkgver = 1.4.9
 	pkgrel = 1
 	url = https://github.com/hyperb1iss/sibyl
 	arch = any
@@ -26,9 +26,9 @@ pkgbase = sibyl
 	depends = python-websockets
 	provides = sibyl-cli
 	conflicts = sibyl-cli
-	source = sibyl-dev-1.4.8.tar.gz::https://files.pythonhosted.org/packages/87/fd/be6252e596fda602e809716506cbb75621f27e709d44a633844df066f96d/sibyl_dev-1.4.8.tar.gz
-	source = sibyl-core-1.4.8.tar.gz::https://files.pythonhosted.org/packages/1e/93/5cff6bdc9d74a4a04f532713778e58230ffb6a5d06e8aff267e690a8e1b1/sibyl_core-1.4.8.tar.gz
-	sha256sums = 4affb5e9183164760ed91e7709d07746f5e73a2d140b2830425f5c016832a623
-	sha256sums = 8bb948ad025f703c708a21f2fec96d14cbf62cfb97d25a544f9fa0d40585a18c
+	source = sibyl-dev-1.4.9.tar.gz::https://files.pythonhosted.org/packages/6f/7b/7f8efb15d2c7908c7944c918313edefac60a624aa05aad437fdc8eafb35d/sibyl_dev-1.4.9.tar.gz
+	source = sibyl-core-1.4.9.tar.gz::https://files.pythonhosted.org/packages/40/77/ab940de2a7762bd79a31aec24acc9b501ffc55793742e4303536168f0931/sibyl_core-1.4.9.tar.gz
+	sha256sums = 3f08f3a8eebb7e969f235b569c9c1fbf07b938077808a24062430588317243c3
+	sha256sums = 49517aaa674c2c4e809dafbcee831dc96ecce6cffb3ad47b8a1533294a690191
 
 pkgname = sibyl
