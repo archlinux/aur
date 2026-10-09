@@ -1,0 +1,22 @@
+pkgbase = emposium
+	pkgdesc = Anime, manga and community in one application
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://emposium.ru
+	arch = x86_64
+	license = custom
+	depends = dbus
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = glib-networking
+	depends = libayatana-appindicator
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-libav
+	optdepends = gnome-keyring: Secret Service for secure session storage
+	options = !strip
+	source = emposium-0.6.2.tar.gz::https://api.emposium.ru/v1/releases/0.6.2/downloads/linux-tar
+	sha256sums = 941d4ac426cb09d9b5dbe35ef8b734bae45241a99efcfdb3a92cdec5a7762b58
+
+pkgname = emposium
