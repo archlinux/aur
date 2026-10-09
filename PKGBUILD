@@ -2,7 +2,7 @@
 # Maintainer: bnema <b at bnema dot dev>
 
 pkgname='neferbar-bin'
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='One-cell-high, terminal-style status bar for Wayland, driven by scripts'
 url='https://github.com/bnema/neferbar'
@@ -14,10 +14,10 @@ depends=('glibc' 'fontconfig' 'libxkbcommon' 'vulkan-icd-loader' 'vulkan-driver'
 optdepends=('ttf-jetbrains-mono-nerd: default font, with the icons modules print')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bnema/neferbar/releases/download/v${pkgver}/neferbar_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('996a25947d8d9dfeaa8f34ee7fcbbf26542e59832f0070c261c93e58503c5ec1')
+sha256sums_aarch64=('72ec2b402c4d1e329b3a6b5f014a6137bcbe62cb386de0b05e2d69eed74295b0')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bnema/neferbar/releases/download/v${pkgver}/neferbar_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('c3b84cec2fad573418ad9f0a62000f21e590c94659351e75419f03ea1e203c81')
+sha256sums_x86_64=('1c33f516b6c122978f305ca6f60093d98554dbdd55d14c80cba68674e8ad6e2f')
 
 package() {
   install -Dm755 ./neferbar "${pkgdir}/usr/bin/neferbar"
