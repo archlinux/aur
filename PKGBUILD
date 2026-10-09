@@ -3,20 +3,27 @@
 
 pkgname=xlax
 pkgver=2.4
-pkgrel=3
+pkgrel=5
 pkgdesc="multi window input software"
 arch=('i686' 'x86_64')
 url="http://hea-www.harvard.edu/~fine/Tech/xlax.html"
-depends=('imake' 'libxaw' 'libbsd')
+depends=('imake' 'libxaw' 'libbsd' 'xorg-fonts-misc')
 license=('custom')
 options=()
 source=(http://hea-www.harvard.edu/~fine/Tech/xlax$pkgver.tar.gz xlax.ad)
-md5sums=(a0bcf5c6f55fc609371db17b56062b57 237150bf5830ef0936453fb8ac1e7b21)
+#md5sums=(a0bcf5c6f55fc609371db17b56062b57 237150bf5830ef0936453fb8ac1e7b21)
+sha256sums=(
+	aae925379d15ccec6fa9f82b14096d14613c9d342820e515aa61052bbe9ad2dc
+	e7706af1560056155f232f814f17edfd7da695d25a55c90faba3e5277393fa64
+)
+
 
 build() {
+  LEGACY='-std=gnu17 -Wno-old-style-definition'
+
   cd $srcdir/xlax$pkgver
-  xmkmf -a          || return 1
-  make LDLIBS=-lbsd || return 1
+  xmkmf -a                           || return 1
+  make LDLIBS=-lbsd CFLAGS="$LEGACY" || return 1
 }
 
 package() {
