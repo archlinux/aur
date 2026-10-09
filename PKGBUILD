@@ -14,7 +14,7 @@ sha256sums=('977a8fdb86a8ed5e8304b89d5a432536e3c42681edb5b9e3018e687be59d918f')
 
 build() {
   cd "$srcdir/LexicMap-$pkgver"
-  go build -trimpath -o "$srcdir/$pkgname" "./$pkgname"
+  go build -trimpath -buildvcs=false -o "$srcdir/$pkgname" "./$pkgname"
 }
 
 package() {
