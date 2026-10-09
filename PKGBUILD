@@ -1,7 +1,7 @@
 # Maintainer: Jose Andres Auyon <auyon.joseandres@gmail.com>
 pkgname=git-profile-switcher-git
 _appname=git-profile-switcher
-pkgver=1.2.0.r0.g9164785
+pkgver=1.3.0.r0.g750aafa
 pkgrel=1
 pkgdesc="Cross-platform desktop tray app for managing multiple Git identities"
 arch=('x86_64')
