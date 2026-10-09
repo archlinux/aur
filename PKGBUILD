@@ -1,6 +1,6 @@
 # Maintainer: syhanjin <syhanjin666@gmail.com>
 pkgname=dm-tool-bin
-pkgver=2.1.5.3
+pkgver=2.1.9.4
 pkgrel=1
 pkgdesc="达妙电机上位机工具"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     "send.png"
 )
 sha256sums=(
-    '1dbcd3b642f8a771453b4080523a712b421257c6f3c1ebf3f356c2551ba669c0'
+    'ec5c0aaa9763cf9b658639c28f6466e5fcff311a478f25dfa30766dbc70129ff'
     'a0e2a0eef89c95bd8c6736ec58ada0271be4843d444590c2c0b07ca079c6699f'
 )
 _appimage="DMTool.v${pkgver}-x86_64.AppImage"
