@@ -1,6 +1,6 @@
 pkgbase = awob-listener-power-profile-bin
 	pkgdesc = awob listener: power profile
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/jmylchreest/awob
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = awob-listener-power-profile-bin
 	provides = awob-listener-power-profile
 	conflicts = awob-listener-power-profile
 	conflicts = awob-git
-	source = awob-0.1.8-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jmylchreest/awob/releases/download/v0.1.8/awob-0.1.8-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 0dd8459642e318cbd6e1c6aaafd5b9622604e1e68d80770aa7a69432ca0a4223
+	source = awob-0.1.9-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jmylchreest/awob/releases/download/v0.1.9/awob-0.1.9-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 9d71ba4df3bd815077926ccb8eea20d0119b7dd4ad048001d1bd2884e14b2c15
 
 pkgname = awob-listener-power-profile-bin
