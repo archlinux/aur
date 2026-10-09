@@ -2,27 +2,28 @@
 
 pkgname=kytyps5-nightly-bin
 pkgver=2026.10.08.aa3b2cd
-pkgrel=1
+pkgrel=2
 _appname=kytyps5
 _tag=KytyPS5-2026-10-08-aa3b2cd
 _commit=aa3b2cd57f84e414a4af0ccbc42d7eb35a8af17b
 pkgdesc="PlayStation 5 emulator (upstream nightly binary release)"
 arch=('x86_64')
 url="https://github.com/KytyPS5/KytyPS5"
-license=('GPL-2.0-only' 'MIT' 'LGPL-3.0-only' 'Unicode-3.0')
+license=('GPL-2.0-only' 'MIT' 'LGPL-3.0-only' 'Unicode-3.0' 'LGPL-2.1-or-later' 'BSD-3-Clause')
 depends=(
   'alsa-lib'
   'brotli'
   'dbus'
   'fontconfig'
   'freetype2'
-  'gcc-libs'
   'glib2'
   'glibc'
   'krb5'
   'libdrm'
+  'libgcc'
   'libglvnd'
   'libpulse'
+  'libstdc++'
   'libx11'
   'libxcb'
   'libxcursor'
@@ -72,6 +73,7 @@ package() {
 
   install -Dm755 -t "$_dest" "$srcdir/kyty_emulator" "$srcdir/launcher"
   install -Dm644 -t "$_dest" "$srcdir/qt.conf"
+  install -Dm644 -t "$_dest/assets/sounds" "$srcdir/assets/sounds"/*
   install -dm755 "$_dest/lib"
   install -m644 -t "$_dest/lib" "$srcdir/lib"/*.so.*
   cp -a "$srcdir/plugins" "$_dest/"
@@ -100,4 +102,7 @@ EOF
   install -Dm644 "$srcdir/$_appname.desktop" "$pkgdir/usr/share/applications/$_appname.desktop"
   install -Dm644 "$srcdir/LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$srcdir/Kyty-MIT-$pkgver.txt" "$pkgdir/usr/share/licenses/$pkgname/Kyty-MIT.txt"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/ffmpeg" \
+    "$srcdir/licenses/ffmpeg/copyright" "$srcdir/licenses/ffmpeg/SOURCE.txt"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/opus" "$srcdir/licenses/opus/COPYING"
 }
