@@ -2,7 +2,7 @@
 # The release workflow sets pkgver and publishes this file to the AUR on every
 # release tag, so the AUR version never falls behind the latest tag.
 pkgname=neferbar-git
-pkgver=0.2.0.r0.gc616855
+pkgver=0.3.0.r0.gda0887c
 pkgrel=1
 pkgdesc='One-cell-high, terminal-style status bar for Wayland, driven by scripts (git version)'
 arch=('x86_64' 'aarch64')
