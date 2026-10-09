@@ -1,7 +1,7 @@
 # Maintainer: Bernardo Pinto Gomes <bernardopgomes@hotmail.com>
 # shellcheck disable=all
 pkgname=full-upgrade
-pkgver=3.48.12
+pkgver=3.48.13
 pkgrel=1
 pkgdesc="Orquestrador Bash modular para atualizar, manter e auditar máquinas Arch Linux"
 arch=('any')
@@ -19,6 +19,10 @@ optdepends=(
   'libnotify: notificações desktop'
   'xdg-utils: abrir último log e integrar com desktop'
   'xdg-terminal-exec: escolher terminal para ações do systray'
+  'python: atualização verificada da suíte Artcraft'
+  'git: clones das releases Artcraft'
+  'desktop-file-utils: validação e cache dos launchers Artcraft'
+  'shared-mime-info: atualização das associações MIME Artcraft'
   'flatpak: atualização de aplicações Flatpak'
   'fwupd: atualização de firmware'
   'btrfs-progs: snapshots e doctor de saúde btrfs'
@@ -27,7 +31,7 @@ optdepends=(
 )
 makedepends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('121f3c636a06d4b7348555b2c199bb99a87dd6ce98126e17b10b73cf4f355806')
+sha256sums=('6eaea41aab557711abfbce8a8b124036ac09688ac2358bc62330947bb9709062')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
