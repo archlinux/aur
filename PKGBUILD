@@ -4,7 +4,7 @@
 
 pkgname=rust-yak
 _pkgname=yak
-pkgver=0.3.9
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Terminal-first AI coding agent in Rust'
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ conflicts=('yak' 'yak-bin' 'yak-git' 'rust-yak-bin' 'rust-llm' 'rust-llm-bin')
 source=(
     "${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('d770fe2b26581c7f258fc9e266859a9cd72c6655e6bd9e5522fdc795e80f40b5')
+sha256sums=('13f01b4e64b15165e2e626cde277f0e08dea95565c97a6993baa719b96733772')
 
 # Release profile already sets lto=thin and strip=true. crates.io is reached
 # during build() (small four-crate dependency set), matching the common
