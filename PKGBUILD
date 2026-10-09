@@ -4,8 +4,8 @@
 # Contributor: pika02 <pikakolendo02 ät gmail döt com>
 
 pkgname=pulseaudio-dlna-cygn
-pkgver=0.6.1
-pkgrel=3
+pkgver=0.6.6.1
+pkgrel=1
 pkgdesc='Small DLNA server which brings DLNA/UPnP support to PulseAudio, Cygn edition'
 arch=('any')
 url=https://github.com/Cygn/pulseaudio-dlna/
@@ -50,18 +50,18 @@ optdepends=(
 )
 
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/Cygn/pulseaudio-dlna/archive/${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/Cygn/pulseaudio-dlna/archive/pulseaudio-dlna-${pkgver%.*}-${pkgver##*.}.tar.gz"
   'setuptools-importlib-compat.patch'
   'python-314-compat.patch'
 )
 sha256sums=(
-  '497743700377389ae03ffae2d8fbf8c49ed8ec219d53fd8ca7f0aea0d464b15d'
+  '92445a47ca85c041042cb8e9e5718e525233710023929e64f785b056fbd9a397'
   'f9eac4689c9bab1b07cad23dda77c4044732ca170560bf8a8a5c1fa63198a05a'
   '871b56713a120294c7ab48c6d388e2e6f1cea73d3298c4085edd85c84df20295'
 )
 
 prepare() {
-  mv "pulseaudio-dlna-${pkgver}" "${pkgname}-${pkgver}"
+  mv "pulseaudio-dlna-pulseaudio-dlna-${pkgver%.*}-${pkgver##*.}" "${pkgname}-${pkgver}"
   cd "${pkgname}-${pkgver}"
 
   echo >&2 'Fixing build-time warnings'
