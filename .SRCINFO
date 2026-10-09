@@ -1,0 +1,23 @@
+pkgbase = walleclipse-git
+	pkgdesc = Preloaded layer-shell wallpaper daemon for Hyprland (hyprpaper replacement)
+	pkgver = 0.1.0.r3.gc5f4742
+	pkgrel = 1
+	url = https://github.com/AymanLyesri/WallEclipse
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = libpng
+	depends = libjpeg-turbo
+	depends = libwebp
+	depends = hyprland
+	depends = jq
+	optdepends = mpvpaper: animated (gif/mp4/webm) wallpapers
+	provides = walleclipse
+	conflicts = walleclipse
+	source = git+https://github.com/AymanLyesri/WallEclipse.git
+	sha256sums = SKIP
+
+pkgname = walleclipse-git
