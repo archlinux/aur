@@ -1,5 +1,5 @@
 pkgname=libaaruformat
-_pkgver=1.0.0-beta.1
+_pkgver=1.0.0-beta.2
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="Library for reading and writing AaruFormat disk images"
