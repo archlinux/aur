@@ -2,7 +2,7 @@
 # Contributor: LLL2yu <lll2yu@protonmail.com>
 
 pkgname=gallery-dl
-pkgver=1.32.15
+pkgver=1.32.16
 pkgrel=1
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites'
 arch=(any)
@@ -29,7 +29,7 @@ optdepends=(
 )
 source=(git+"${url}".git#tag=v"${pkgver}"?signed)
 validpgpkeys=(3E09F5908333DD83DBDCE7375680CA389D365A88) #Mike Fährmann
-sha512sums=('c4c40bfd561585c5078fb79da6c590212c8d4de066cd5d43f6cb8befa3691ba404955fffc7e22d88948c48054cb9eceded92df1161fb77d9e46dc859f8b85c56')
+sha512sums=('7041fac19a8e90dea8ed7acdd5e98adbef9c6affb2f877081d2a06de8dc3290366e243f105d370e6ec23bec44b65fc527aa2e47a8ea2ba33c006092de18efd43')
 
 prepare() {
     # Clean out old wheels etc.
