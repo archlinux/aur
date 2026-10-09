@@ -18,6 +18,11 @@ optdepends=('gnome-keyring: persist the Tuta session across reboots (Secret Serv
             'kwallet: alternative Secret Service provider')
 provides=('tutabridge')
 conflicts=('tutabridge')
+# makepkg's lto option puts -flto in CFLAGS, and the C code cargo builds
+# (SQLCipher and its OpenSSL) would come out as GCC bytecode, which rust-lld,
+# the Rust linker since 1.90, cannot read: the link fails on sqlite3_* symbols.
+# Rust code is not affected either way, makepkg leaves RUSTFLAGS alone.
+options=(!lto)
 source=("$pkgname::git+https://github.com/spartanz51/tutabridge.git")
 sha256sums=('SKIP')
 

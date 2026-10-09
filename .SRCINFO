@@ -19,6 +19,7 @@ pkgbase = tutabridge-git
 	optdepends = kwallet: alternative Secret Service provider
 	provides = tutabridge
 	conflicts = tutabridge
+	options = !lto
 	source = tutabridge-git::git+https://github.com/spartanz51/tutabridge.git
 	sha256sums = SKIP
 
