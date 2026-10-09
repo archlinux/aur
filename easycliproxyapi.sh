@@ -14,7 +14,6 @@ trap 'if [[ -n "$sync_tmp" ]]; then rm -f -- "$sync_tmp"; fi' EXIT
 
 sync_file() {
     local source="$1" destination="$2" mode="$3"
-    # Package timestamps can be older than a user copy (including downgrades).
     if [[ -f "$destination" ]] && cmp -s -- "$source" "$destination"; then
         chmod "$mode" "$destination"
         return
@@ -22,20 +21,47 @@ sync_file() {
     sync_tmp=$(mktemp "${destination}.sync.XXXXXX")
     cp -- "$source" "$sync_tmp"
     chmod "$mode" "$sync_tmp"
-    # Same-directory rename is atomic and does not overwrite a running inode.
     mv -fT -- "$sync_tmp" "$destination"
     sync_tmp=''
 }
 
-sync_file "$LIB_DIR/EasyCLIProxyAPI" "$USER_DIR/EasyCLIProxyAPI" 755
-sync_file "$LIB_DIR/core-version.txt" "$USER_DIR/core-version.txt" 644
-sync_file "$LIB_DIR/portable-app.json" "$USER_DIR/portable-app.json" 644
-for source in "$LIB_DIR"/cpa-core/*; do
-    [[ -f "$source" ]] || continue
-    sync_file "$source" "$USER_DIR/cpa-core/${source##*/}" 644
-done
+read_version() {
+    local json_file="$1"
+    if [[ -f "$json_file" ]]; then
+        sed -n 's/.*"version":[[:space:]]*"\([^"]*\)".*/\1/p' "$json_file" | head -n 1
+    fi
+}
 
-# Only package-managed files are touched; preserve user settings and core data.
+USER_MANIFEST="$USER_DIR/portable-app.json"
+LIB_MANIFEST="$LIB_DIR/portable-app.json"
+
+USER_VER=$(read_version "$USER_MANIFEST")
+LIB_VER=$(read_version "$LIB_MANIFEST")
+
+# Decide whether to sync:
+# Sync if user executable does not exist, or user version is unrecognized,
+# or system version is strictly newer than user version (e.g. system update).
+# If user version >= system version (e.g. in-app portable update), do not overwrite user files.
+SHOULD_SYNC=0
+if [[ ! -f "$USER_DIR/EasyCLIProxyAPI" || -z "$USER_VER" ]]; then
+    SHOULD_SYNC=1
+elif [[ -n "$LIB_VER" ]]; then
+    HIGHEST_VER=$(printf '%s\n%s\n' "$LIB_VER" "$USER_VER" | sort -V | tail -n 1)
+    if [[ "$HIGHEST_VER" == "$LIB_VER" && "$LIB_VER" != "$USER_VER" ]]; then
+        SHOULD_SYNC=1
+    fi
+fi
+
+if [[ "$SHOULD_SYNC" -eq 1 ]]; then
+    sync_file "$LIB_DIR/EasyCLIProxyAPI" "$USER_DIR/EasyCLIProxyAPI" 755
+    sync_file "$LIB_DIR/core-version.txt" "$USER_DIR/core-version.txt" 644
+    sync_file "$LIB_DIR/portable-app.json" "$USER_DIR/portable-app.json" 644
+    for source in "$LIB_DIR"/cpa-core/*; do
+        [[ -f "$source" ]] || continue
+        sync_file "$source" "$USER_DIR/cpa-core/${source##*/}" 644
+    done
+fi
+
 flock -u 9
 exec 9>&-
 trap - EXIT

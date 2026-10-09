@@ -1,7 +1,7 @@
 # Maintainer: doudou <951028382@qq.com>
 
 pkgname=easycliproxyapi-bin
-pkgver=0.3.11
+pkgver=0.3.27
 pkgrel=1
 pkgdesc='Cross-platform GUI desktop management client for CLIProxyAPI (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -41,18 +41,12 @@ source_x86_64=(
 source_aarch64=(
   "${_gh}/releases/download/v${pkgver}/EasyCLIProxyAPI-v${pkgver}-Linux-aarch64.tar.gz"
 )
-sha256sums=(
-  '3d422eb9876fd5c2a365e322ef6ed3860d1ba9832ea444d5e390334b624cf83f'
-  '6b46832343f2db8f6c1513fead0ff47a7a3ec539efcecdbc478cdd218be1222e'
-  '93ef8519c69bb9d8a9ddab07156a832a11fefd89680cc5db638cd34adce44c9d'
-  '6bd5d3c4fb6a34c0b83e91acd53a52fb8fd1ae9e19ba55b23788ec1dc52dbac7'
-)
-sha256sums_x86_64=(
-  '53852ecb48b736de94c072be02d20793e14d69850a56d2bd26cf2ed4d063aa78'
-)
-sha256sums_aarch64=(
-  '07e5b723fdd2b14e58fd374379f62d60850d4eca6c5cf014e64676492cdd6e14'
-)
+sha256sums=('609a5432ce3ded66168c2017b3ece1442215de5925d9c3eea33940915d448cfe'
+            '6b46832343f2db8f6c1513fead0ff47a7a3ec539efcecdbc478cdd218be1222e'
+            '93ef8519c69bb9d8a9ddab07156a832a11fefd89680cc5db638cd34adce44c9d'
+            '6bd5d3c4fb6a34c0b83e91acd53a52fb8fd1ae9e19ba55b23788ec1dc52dbac7')
+sha256sums_x86_64=('8bfded41ccbd0bc57aa3565d56352aa6be9696c549a649ec208b1c8d71b025a6')
+sha256sums_aarch64=('826134b1d81cbacf8cfe2e19762012455dc56d64f00bdb2e9d0fc28002ff36ba')
 
 _release_arch() {
   case "$CARCH" in
