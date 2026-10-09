@@ -56,10 +56,10 @@ index f99b39e2..6750798e 100644
      KF6::BookmarksWidgets
 diff --git a/ai/aiconfig.cpp b/ai/aiconfig.cpp
 new file mode 100644
-index 00000000..bb14b053
+index 00000000..b2005995
 --- /dev/null
 +++ b/ai/aiconfig.cpp
-@@ -0,0 +1,101 @@
+@@ -0,0 +1,116 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -72,6 +72,17 @@ index 00000000..bb14b053
 +#include <KSharedConfig>
 +
 +#include <QChar>
++#include <QDir>
++#include <QStandardPaths>
++
++QString AiConfig::defaultScreenshotPath()
++{
++    QString pictures = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
++    if (pictures.isEmpty()) {
++        pictures = QDir::homePath();
++    }
++    return pictures + QStringLiteral("/krdc-ai");
++}
 +
 +AiConfig AiConfig::load()
 +{
@@ -90,6 +101,7 @@ index 00000000..bb14b053
 +    config.imageMaxSize = group.readEntry(QStringLiteral("ImageMaxSize"), config.imageMaxSize);
 +    config.imageQuality = group.readEntry(QStringLiteral("ImageQuality"), config.imageQuality);
 +    config.timeoutSeconds = group.readEntry(QStringLiteral("TimeoutSeconds"), config.timeoutSeconds);
++    config.screenshotPath = group.readEntry(QStringLiteral("ScreenshotPath"), AiConfig{}.screenshotPath);
 +
 +    return config;
 +}
@@ -110,6 +122,7 @@ index 00000000..bb14b053
 +    group.writeEntry(QStringLiteral("ImageMaxSize"), imageMaxSize);
 +    group.writeEntry(QStringLiteral("ImageQuality"), imageQuality);
 +    group.writeEntry(QStringLiteral("TimeoutSeconds"), timeoutSeconds);
++    group.writeEntry(QStringLiteral("ScreenshotPath"), screenshotPath);
 +
 +    group.config()->sync();
 +}
@@ -156,6 +169,8 @@ index 00000000..bb14b053
 +        "- For keyboard shortcuts always use the hotkey tool with the combination as one string, modifiers first: \"ctrl+a\", "
 +        "\"win+e\", \"alt+tab\", \"ctrl+shift+esc\". Never press the modifier and the key separately, never type a shortcut "
 +        "with type_text. Use press_key only for single keys like return, escape or tab.\n"
++        "- When writing a guide or documenting a procedure, capture each key step with save_screenshot using short "
++        "descriptive file names, then quote the paths it returns in the write-up.\n"
 +        "- Never guess a coordinate you cannot see; take a screenshot first.\n"
 +        "- If an action needs a password or would delete or overwrite something, stop and let "
 +        "the user do it or confirm it.\n"
@@ -163,10 +178,10 @@ index 00000000..bb14b053
 +}
 diff --git a/ai/aiconfig.h b/ai/aiconfig.h
 new file mode 100644
-index 00000000..e2d2dff0
+index 00000000..09f2fe6d
 --- /dev/null
 +++ b/ai/aiconfig.h
-@@ -0,0 +1,56 @@
+@@ -0,0 +1,61 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -205,8 +220,13 @@ index 00000000..e2d2dff0
 +    int imageMaxSize = 1280;
 +    int imageQuality = 80;
 +
++    /** Folder the save_screenshot tool writes files into. */
++    QString screenshotPath = defaultScreenshotPath();
++
 +    /** Seconds to wait for a response before giving up. */
 +    int timeoutSeconds = 120;
++
++    static QString defaultScreenshotPath();
 +
 +    static AiConfig load();
 +    void save() const;
@@ -225,10 +245,10 @@ index 00000000..e2d2dff0
 +};
 diff --git a/ai/aiconversation.cpp b/ai/aiconversation.cpp
 new file mode 100644
-index 00000000..7b85ef52
+index 00000000..18745d6c
 --- /dev/null
 +++ b/ai/aiconversation.cpp
-@@ -0,0 +1,922 @@
+@@ -0,0 +1,977 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -244,6 +264,7 @@ index 00000000..7b85ef52
 +
 +#include <QBuffer>
 +#include <QCryptographicHash>
++#include <QDateTime>
 +#include <QDir>
 +#include <QFile>
 +#include <QFileInfo>
@@ -251,6 +272,7 @@ index 00000000..7b85ef52
 +#include <QJsonDocument>
 +#include <QJsonParseError>
 +#include <QJsonObject>
++#include <QRegularExpression>
 +#include <QStandardPaths>
 +#include <QTimer>
 +
@@ -773,6 +795,59 @@ index 00000000..7b85ef52
 +            finishTool(call, QStringLiteral("Screenshot attached. Remote screen is %1x%2 pixels.").arg(screenSize().width()).arg(screenSize().height()),
 +                       image);
 +        }
++        return;
++    }
++
++    if (name == QLatin1String("save_screenshot")) {
++        if (!m_view || m_view->status() != RemoteView::Connected) {
++            failTool(call, QStringLiteral("No screenshot available. Is the connection established?"));
++            return;
++        }
++
++        // The saved file is the full-resolution PNG, unlike the downscaled
++        // JPEG that goes to the model: the point of this tool is a readable
++        // image for a guide.
++        QPixmap pixmap = m_view->takeScreenshot();
++        if (pixmap.isNull()) {
++            failTool(call, QStringLiteral("No screenshot available. Is the connection established?"));
++            return;
++        }
++
++        // The model supplies only a base name; anything path-shaped is
++        // stripped so the file always lands in the configured folder.
++        QString base = args.value(QStringLiteral("filename")).toString().trimmed();
++        base.remove(QRegularExpression(QStringLiteral("[/\\\\]")));
++        base.replace(QRegularExpression(QStringLiteral("[^A-Za-z0-9._ -]")), QStringLiteral("_"));
++        base = base.trimmed();
++        while (base.startsWith(QLatin1Char('.'))) {
++            base.remove(0, 1);
++        }
++        if (base.length() > 64) {
++            base.truncate(64);
++        }
++        if (base.isEmpty()) {
++            base = QDateTime::currentDateTime().toString(QStringLiteral("screenshot-yyyy-MM-dd-HHmmss"));
++        }
++
++        QDir directory(m_config.screenshotPath);
++        if (!directory.exists() && !directory.mkpath(QStringLiteral("."))) {
++            failTool(call, QStringLiteral("Could not create the screenshot folder %1.").arg(directory.absolutePath()));
++            return;
++        }
++
++        QString fileName = base + QStringLiteral(".png");
++        int suffix = 2;
++        while (directory.exists(fileName)) {
++            fileName = base + QLatin1Char('-') + QString::number(suffix++) + QStringLiteral(".png");
++        }
++
++        QFile file{directory.filePath(fileName)};
++        if (!file.open(QIODevice::WriteOnly) || !pixmap.save(&file, "PNG")) {
++            failTool(call, QStringLiteral("Could not write %1.").arg(file.fileName()));
++            return;
++        }
++
++        finishTool(call, QStringLiteral("Saved %1 (%2x%3).").arg(file.fileName()).arg(pixmap.width()).arg(pixmap.height()));
 +        return;
 +    }
 +
@@ -2586,10 +2661,10 @@ index 00000000..1ed65299
 +};
 diff --git a/ai/aisettingsdialog.cpp b/ai/aisettingsdialog.cpp
 new file mode 100644
-index 00000000..75d85212
+index 00000000..37de9a9e
 --- /dev/null
 +++ b/ai/aisettingsdialog.cpp
-@@ -0,0 +1,282 @@
+@@ -0,0 +1,308 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -2607,6 +2682,7 @@ index 00000000..75d85212
 +#include <QComboBox>
 +#include <QDialogButtonBox>
 +#include <QDoubleSpinBox>
++#include <QFileDialog>
 +#include <QFormLayout>
 +#include <QGroupBox>
 +#include <QHBoxLayout>
@@ -2688,6 +2764,26 @@ index 00000000..75d85212
 +    m_rememberHistory = new QCheckBox(i18n("&Remember each connection's chat history between restarts"), behaviourGroup);
 +    behaviourLayout->addWidget(m_rememberHistory);
 +
++    // Folder for the save_screenshot tool, which the assistant uses to
++    // document steps for guides.
++    auto *pathRow = new QHBoxLayout();
++    auto *pathLabel = new QLabel(i18n("Screenshot &folder:"), behaviourGroup);
++    m_screenshotPath = new QLineEdit(behaviourGroup);
++    m_screenshotPath->setPlaceholderText(AiConfig::defaultScreenshotPath());
++    pathLabel->setBuddy(m_screenshotPath);
++    auto *browseButton = new QPushButton(i18n("&Browse…"), behaviourGroup);
++    pathRow->addWidget(pathLabel);
++    pathRow->addWidget(m_screenshotPath, 1);
++    pathRow->addWidget(browseButton);
++    behaviourLayout->addLayout(pathRow);
++    connect(browseButton, &QPushButton::clicked, this, [this] {
++        const QString directory = QFileDialog::getExistingDirectory(this, i18n("Screenshot Folder"),
++                                                                    m_screenshotPath->text().trimmed());
++        if (!directory.isEmpty()) {
++            m_screenshotPath->setText(directory);
++        }
++    });
++
 +    // --- Advanced, collapsed unless the user opens it ---
 +    auto *advancedToggle = new QCheckBox(i18n("&Show advanced settings"), this);
 +    layout->addWidget(advancedToggle);
@@ -2765,6 +2861,10 @@ index 00000000..75d85212
 +    config.autoExecute = m_autoExecute->isChecked();
 +    config.attachScreenshot = m_attachScreenshot->isChecked();
 +    config.rememberHistory = m_rememberHistory->isChecked();
++    config.screenshotPath = m_screenshotPath->text().trimmed();
++    if (config.screenshotPath.isEmpty()) {
++        config.screenshotPath = AiConfig::defaultScreenshotPath();
++    }
 +    config.maxTokens = m_maxTokens->value();
 +    config.temperature = m_temperature->value();
 +    config.timeoutSeconds = m_timeout->value();
@@ -2781,6 +2881,7 @@ index 00000000..75d85212
 +    m_autoExecute->setChecked(config.autoExecute);
 +    m_attachScreenshot->setChecked(config.attachScreenshot);
 +    m_rememberHistory->setChecked(config.rememberHistory);
++    m_screenshotPath->setText(config.screenshotPath);
 +    m_maxTokens->setValue(config.maxTokens);
 +    m_temperature->setValue(config.temperature);
 +    m_timeout->setValue(config.timeoutSeconds);
@@ -2874,10 +2975,10 @@ index 00000000..75d85212
 +}
 diff --git a/ai/aisettingsdialog.h b/ai/aisettingsdialog.h
 new file mode 100644
-index 00000000..39533b0d
+index 00000000..59200f00
 --- /dev/null
 +++ b/ai/aisettingsdialog.h
-@@ -0,0 +1,58 @@
+@@ -0,0 +1,59 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -2930,6 +3031,7 @@ index 00000000..39533b0d
 +    QCheckBox *m_autoExecute = nullptr;
 +    QCheckBox *m_attachScreenshot = nullptr;
 +    QCheckBox *m_rememberHistory = nullptr;
++    QLineEdit *m_screenshotPath = nullptr;
 +    QSpinBox *m_maxTokens = nullptr;
 +    QDoubleSpinBox *m_temperature = nullptr;
 +    QSpinBox *m_timeout = nullptr;
@@ -2983,10 +3085,10 @@ index 00000000..d0a21673
 +}
 diff --git a/ai/aitools.cpp b/ai/aitools.cpp
 new file mode 100644
-index 00000000..569f991d
+index 00000000..1910bf19
 --- /dev/null
 +++ b/ai/aitools.cpp
-@@ -0,0 +1,464 @@
+@@ -0,0 +1,484 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -3302,6 +3404,19 @@ index 00000000..569f991d
 +
 +    {
 +        QJsonObject properties;
++        properties.insert(QStringLiteral("filename"),
++                          property(QStringLiteral("string"),
++                                   QStringLiteral("File name for the image, without a path, e.g. \"step-1-start-menu\". The "
++                                                  "extension is added automatically. Leave empty for a timestamped name.")));
++        tools.append(wrapped(QStringLiteral("save_screenshot"),
++                             QStringLiteral("Save a full-resolution screenshot of the remote screen as a PNG file on the "
++                                            "local computer, in the configured screenshot folder. Use it to document steps "
++                                            "for a guide; the reply gives the full path to quote in the write-up."),
++                             properties));
++    }
++
++    {
++        QJsonObject properties;
 +        properties.insert(QStringLiteral("seconds"), property(QStringLiteral("number"), QStringLiteral("How long to wait.")));
 +        properties.insert(QStringLiteral("reason"), property(QStringLiteral("string"), QStringLiteral("What you are waiting for.")));
 +        tools.append(wrapped(QStringLiteral("wait"),
@@ -3320,7 +3435,7 @@ index 00000000..569f991d
 +        QStringLiteral("take_screenshot"), QStringLiteral("screen_info"),      QStringLiteral("mouse_move"),
 +        QStringLiteral("mouse_click"),     QStringLiteral("mouse_drag"),       QStringLiteral("mouse_scroll"),
 +        QStringLiteral("type_text"),       QStringLiteral("press_key"),        QStringLiteral("hotkey"),
-+        QStringLiteral("wait"),
++        QStringLiteral("save_screenshot"), QStringLiteral("wait"),
 +    };
 +    return names.contains(name);
 +}
@@ -3405,6 +3520,13 @@ index 00000000..569f991d
 +            return QStringLiteral("Press %1").arg(keys.toString());
 +        }
 +        return QStringLiteral("Press %1").arg(chord.join(QLatin1Char('+')));
++    }
++    if (name == QLatin1String("save_screenshot")) {
++        const QString filename = arguments.value(QStringLiteral("filename")).toString().trimmed();
++        if (filename.isEmpty()) {
++            return QStringLiteral("Save a screenshot to a new file on this computer");
++        }
++        return QStringLiteral("Save a screenshot as “%1” on this computer").arg(truncated(filename, 40));
 +    }
 +    if (name == QLatin1String("wait")) {
 +        return QStringLiteral("Wait %1 s").arg(arguments.value(QStringLiteral("seconds")).toDouble());
@@ -4625,10 +4747,10 @@ index 1600b660..4fcfc2a4 100644
  endif()
 diff --git a/test/aiengine_test.cpp b/test/aiengine_test.cpp
 new file mode 100644
-index 00000000..80cc5156
+index 00000000..716169cd
 --- /dev/null
 +++ b/test/aiengine_test.cpp
-@@ -0,0 +1,435 @@
+@@ -0,0 +1,436 @@
 +/*
 +    Standalone test for the AI conversation engine. Not built by default; see
 +    test_ai.sh. Drives AiConversation against a mock OpenAI-compatible server
@@ -5031,6 +5153,7 @@ index 00000000..80cc5156
 +    // The mock server only offers known tools, so exercise the parser guard
 +    // through the tool schema table instead.
 +    check(!AiTools::isKnownTool(QStringLiteral("launch_nukes")), "an invented tool is not known");
++    check(AiTools::isKnownTool(QStringLiteral("save_screenshot")), "the screenshot save tool is known");
 +    check(AiTools::schemas().size() >= 8, "the schema list offers the expected number of tools");
 +    check(!AiTools::isKnownTool(QString()), "the empty name is not a tool");
 +}
