@@ -27,6 +27,6 @@ pkgbase = cfait-bin
 	options = !strip
 	options = !emptydirs
 	source = https://git.disroot.org/trougnouf/cfait/releases/download/v1.1.9/cfait-linux-v1.1.9.tar.xz
-	sha256sums = 99a0f6c9df8e1418b05fd0eb5b9e49e20e52d662e020a0ee526fc694d0dbc61a
+	sha256sums = a3f54e5babd6577fe84a3a9557965ca284cdcc5ea94d92be1e259681d4308208
 
 pkgname = cfait-bin
