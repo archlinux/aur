@@ -1,0 +1,3 @@
+[python-aiosmb]
+source = "pypi"
+pypi = "aiosmb"

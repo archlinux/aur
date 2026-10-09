@@ -1,26 +1,49 @@
-# Maintainer: GI_Jack <GI_Jack@hackermail.com>
-
+# Maintainer: Leonid Lednev <GI_Jack@hackermail.com>
+# Contributor: GI_Jack <GI_Jack@hackermail.com>
 pkgname=python-aiosmb
-_pkgname=aiosmb
-pkgver=0.4.11
+pkgver=0.4.14
 pkgrel=1
 pkgdesc="Fully asynchronous SMB library written in pure python."
 url="https://github.com/skelsec/aiosmb"
 arch=('any')
 license=('MIT')
-depends=('python' 'python-minikerberos' 'python-winsspi' 'python-asysocks'
-	 'python-prompt_toolkit' 'python-winacl' 'python-six' 'python-tqdm'
-	 'python-colorama')
-makedepends=('python-build' 'python-installer' 'python-wheel')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('6d66f51ed2354f76f206613eac0d63f37cfd9ed44be9f8a06594d410244273d7')
+depends=(
+  'python>=3.7'
+  'python-unicrypto>=0.0.12'
+  'python-asyauth>=0.0.23'
+  'python-asysocks>=0.2.18'
+  'python-prompt_toolkit>=3.0.2'
+  'python-winacl>=0.1.9'
+  'python-six'
+  'python-tqdm'
+  'python-colorama'
+  'python-asn1crypto'
+  'python-wcwidth'
+  'python-cryptography'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  'python-setuptools>=61.0.0'
+  'git'
+)
+source=("git+$url#tag=$pkgver")
+b2sums=('53eb804a3351a7c476079d01d7a4ff52312e867f47b7114d878323cae77db6ca01163041f085a0fc953c1a5342c3ff6f54a5fe7713c942c35ea8e6bf84ae7c73')
+
+prepare() {
+  git -C aiosmb clean -dfx
+}
 
 build() {
-    cd "${_pkgname}-${pkgver}"
-    python -m build --wheel --no-isolation
+  cd aiosmb
+  python -m build -wnx
 }
 
 package() {
-    cd "${_pkgname}-${pkgver}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+  cd aiosmb
+  python -m installer -d "$pkgdir" dist/*.whl
+  install -Dm0644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
 }
+
+# vim: ts=2 sw=2 et:
