@@ -1,6 +1,6 @@
 pkgbase = claude-desktop
 	pkgdesc = Official Claude AI desktop app from Anthropic — Chat, Cowork, and Claude Code
-	pkgver = 2.26454.2
+	pkgver = 2.31226.0
 	pkgrel = 1
 	url = https://claude.com/download
 	arch = x86_64
@@ -54,13 +54,13 @@ pkgbase = claude-desktop
 	options = !debug
 	source = claude-desktop.sh
 	sha256sums = 2b50c019e70b263750255c446bab8db6ab1e50c7396d37ef6547cf118131da65
-	source_x86_64 = https://downloads.claude.ai/claude-desktop/apt/stable/pool/main/c/claude-desktop/claude-desktop_2.26454.2_amd64.deb
+	source_x86_64 = https://downloads.claude.ai/claude-desktop/apt/stable/pool/main/c/claude-desktop/claude-desktop_2.31226.0_amd64.deb
 	depends_x86_64 = qemu-system-x86
 	depends_x86_64 = edk2-ovmf
-	sha256sums_x86_64 = b251a0224a8635874f33598df8ed8952b427f84815ee59580cc022d6bdb2430f
-	source_aarch64 = https://downloads.claude.ai/claude-desktop/apt/stable/pool/main/c/claude-desktop/claude-desktop_2.26454.2_arm64.deb
+	sha256sums_x86_64 = eb86fda7c8073117b29f2e9022da5ffd398b8f125e331d7d5956e9ba0e3bd6d4
+	source_aarch64 = https://downloads.claude.ai/claude-desktop/apt/stable/pool/main/c/claude-desktop/claude-desktop_2.31226.0_arm64.deb
 	optdepends_aarch64 = qemu-system-aarch64: run Cowork tasks in a local virtual machine
 	optdepends_aarch64 = edk2-aarch64: UEFI firmware for the Cowork virtual machine
-	sha256sums_aarch64 = 30b2f854d7cc4422b43e8f39f07573c87f7981605197766262d88153c7e9938b
+	sha256sums_aarch64 = 06797cc89cf369809235a4095b877af05931e5df48bc9907d318fb513ae75b05
 
 pkgname = claude-desktop
