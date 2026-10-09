@@ -2,7 +2,7 @@
 
 _name=openinference-instrumentation-litellm
 pkgname=python-$_name
-pkgver=0.1.49
+pkgver=0.1.50
 pkgrel=1
 pkgdesc="OpenInference liteLLM Instrumentation."
 arch=('any')
@@ -32,7 +32,7 @@ checkdepends=('python-pytest-asyncio'
 source=("$_repo/archive/refs/tags/$pkgname-v$pkgver.tar.gz"
         "fix-duplicated-thinking-text.patch"
         "litellm-1.101-streaming-cost.patch")
-sha256sums=('bd43ef95aa41805e81de91f1f62665460e9b2670e5b2d2a20b301f87da17034c'
+sha256sums=('e4cf05f71cbfeb8a0f3d45bf9e8d3f3d7f04b69e7311a8507f6cf3aadffdd5a6'
             '40007b9e2e2557deae751e058df6d0a289aea0721eca29e64f97318beb635474'
             '870faeb49e5a54bf88e1001ec7d77922fcc019369bc4cc14f1efd84a192d5613')
 
