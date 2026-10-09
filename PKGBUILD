@@ -1,7 +1,7 @@
 # Maintainer: Egor Tensin <egor@tensin.name>
 pkgname=yandex-cloud-cli-bin
-pkgver=1.39.0
-pkgrel=2
+pkgver=1.40.0
+pkgrel=1
 pkgdesc='Yandex.Cloud CLI'
 arch=('x86_64')
 url='https://yandex.cloud/en/docs/cli/'
