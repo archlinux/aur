@@ -7,7 +7,7 @@
 pkgbase=nvidia-utils-g2
 pkgname=('nvidia-utils-g2' 'opencl-nvidia-g2' 'nvidia-open-dkms-g2')
 pkgver=615.78.08
-pkgrel=1
+pkgrel=2
 arch=('aarch64' 'x86_64')
 url="https://www.nvidia.com/"
 license=('LicenseRef-NVIDIA-Driver-License-Agreement')
@@ -95,7 +95,7 @@ package_opencl-nvidia-g2() {
     depends=('zlib')
     optdepends=('opencl-headers: headers necessary for OpenCL development')
     conflicts=('opencl-nvidia')
-    provides=('opencl-driver' 'opencl-nvidia')
+    provides=('opencl-driver' "opencl-nvidia=$pkgver")
     cd "${_pkg}"
 
     # OpenCL
@@ -116,7 +116,7 @@ package_nvidia-utils-g2() {
                 'xorg-server-devel: nvidia-xconfig'
                 'opencl-nvidia: OpenCL support')
     conflicts=('nvidia-libgl' 'nvidia-utils')
-    provides=('vulkan-driver' 'opengl-driver' 'nvidia-libgl' 'nvidia-utils')
+    provides=('vulkan-driver' 'opengl-driver' 'nvidia-libgl' "nvidia-utils=$pkgver")
     replaces=('nvidia-libgl')
     install="nvidia-utils.install"
 
@@ -302,7 +302,7 @@ package_nvidia-open-dkms-g2() {
   depends+=('dkms' "nvidia-utils-g2=$pkgver")
   license=('MIT AND GPL-2.0-only')
   conflicts=('nvidia-open' 'NVIDIA-MODULE' 'nvidia-dkms' 'nvidia-open-dkms')
-  provides=('nvidia-open' 'NVIDIA-MODULE' 'nvidia-dkms' 'nvidia-open-dkms')
+  provides=('nvidia-open' 'NVIDIA-MODULE' 'nvidia-dkms' "nvidia-open-dkms=$pkgver")
   replaces=('nvidia-dkms')
 
   install -dm 755 "${pkgdir}/usr/src"

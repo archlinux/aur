@@ -1,6 +1,6 @@
 pkgbase = nvidia-utils-g2
 	pkgver = 615.78.08
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nvidia.com/
 	arch = aarch64
 	arch = x86_64
@@ -42,7 +42,7 @@ pkgname = nvidia-utils-g2
 	provides = vulkan-driver
 	provides = opengl-driver
 	provides = nvidia-libgl
-	provides = nvidia-utils
+	provides = nvidia-utils=615.78.08
 	conflicts = nvidia-libgl
 	conflicts = nvidia-utils
 	replaces = nvidia-libgl
@@ -52,7 +52,7 @@ pkgname = opencl-nvidia-g2
 	depends = zlib
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = opencl-driver
-	provides = opencl-nvidia
+	provides = opencl-nvidia=615.78.08
 	conflicts = opencl-nvidia
 
 pkgname = nvidia-open-dkms-g2
@@ -63,7 +63,7 @@ pkgname = nvidia-open-dkms-g2
 	provides = nvidia-open
 	provides = NVIDIA-MODULE
 	provides = nvidia-dkms
-	provides = nvidia-open-dkms
+	provides = nvidia-open-dkms=615.78.08
 	conflicts = nvidia-open
 	conflicts = NVIDIA-MODULE
 	conflicts = nvidia-dkms
