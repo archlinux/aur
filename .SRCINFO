@@ -5,7 +5,7 @@ pkgbase = plink2-bin
 	url = https://www.cog-genomics.org/plink/2.0/
 	arch = x86_64
 	license = GPL-3.0-or-later
-	license = custom:Intel Simplified Software License
+	license = LicenseRef-Intel-Simplified-Software-License
 	provides = plink2=2.0a7.11
 	conflicts = plink2
 	options = !strip

@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Whole-genome association analysis toolset for large-scale variant data"
 arch=('x86_64')
 url="https://www.cog-genomics.org/plink/2.0/"
-license=('GPL-3.0-or-later' 'custom:Intel Simplified Software License')
+license=('GPL-3.0-or-later' 'LicenseRef-Intel-Simplified-Software-License')
 provides=("plink2=$pkgver")
 conflicts=('plink2')
 options=('!strip' '!debug')
