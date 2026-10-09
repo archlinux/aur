@@ -1,6 +1,6 @@
 pkgbase = r-gson
 	pkgdesc = Base Class and Methods for 'gson' Format
-	pkgver = 0.2.0
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=gson
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-gson
 	depends = r-rlang
 	depends = r-tidyr
 	depends = r-yulab.utils
-	source = https://cran.r-project.org/src/contrib/gson_0.2.0.tar.gz
-	sha256sums = 5cc9b12f49226f3ae0a355f305db277d04d9337bfaa4029e7f35dd5f64d88208
+	source = https://cran.r-project.org/src/contrib/gson_0.2.2.tar.gz
+	sha256sums = 583c5bce81f7d551b3bf8bcdfe868a5347a6b91c32e599189b62c701ba2427a3
 
 pkgname = r-gson
