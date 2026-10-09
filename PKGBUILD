@@ -7,11 +7,12 @@
 _pkgname=youtube
 pkgname=youtubedr
 pkgver=2.10.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Download YouTube videos"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
 url='https://github.com/kkdai/youtube'
 license=('MIT')
+depends=('glibc')
 makedepends=('go' 'git')
 source=("git+${url}#tag=v${pkgver}")
 sha256sums=('SKIP')
@@ -47,4 +48,5 @@ package() {
   cd "${srcdir}/${_pkgname}"
   install -Dvm755 youtubedr -t "${pkgdir}/usr/bin"
   install -Dvm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dvm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
