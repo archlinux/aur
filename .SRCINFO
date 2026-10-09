@@ -1,6 +1,6 @@
 pkgbase = watchit-rs-bin
 	pkgdesc = Terminal browser for IMDb Top 250 movies and series written in Rust
-	pkgver = 0.7.6
+	pkgver = 0.7.7
 	pkgrel = 1
 	url = https://github.com/isene/watchit
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = watchit-rs-bin
 	provides = watchit
 	conflicts = watchit-rs
 	options = !strip
-	source = README-0.7.6.md::https://raw.githubusercontent.com/isene/watchit/v0.7.6/README.md
+	source = README-0.7.7.md::https://raw.githubusercontent.com/isene/watchit/v0.7.7/README.md
 	sha256sums = 1de24196d45e42668a79979afdfe8e564223967ea56548151ca918f88ccee8b9
-	source_x86_64 = watchit-x86_64-0.7.6::https://github.com/isene/watchit/releases/download/v0.7.6/watchit-linux-x86_64
-	sha256sums_x86_64 = 273d83f7e19f15b5e749fecdb8718bd3756d8970aac69e10a08cdc4aa488a72d
-	source_aarch64 = watchit-aarch64-0.7.6::https://github.com/isene/watchit/releases/download/v0.7.6/watchit-linux-aarch64
-	sha256sums_aarch64 = c4601b1f5d8a310a442f97eec34ad5205419b4c36fe918bb7ee8a5d727109e7e
+	source_x86_64 = watchit-x86_64-0.7.7::https://github.com/isene/watchit/releases/download/v0.7.7/watchit-linux-x86_64
+	sha256sums_x86_64 = 8d99290a51f30a560609aaa05e8371dea18a33dd97652c38fb43edfb0774c3ac
+	source_aarch64 = watchit-aarch64-0.7.7::https://github.com/isene/watchit/releases/download/v0.7.7/watchit-linux-aarch64
+	sha256sums_aarch64 = e35b63bdfe8a57ba073875ebd5d1e8659c9a1ebc0ec035c6da1d6df41e4dfd9e
 
 pkgname = watchit-rs-bin
