@@ -1,5 +1,5 @@
 pkgbase = zerus-ade-bin
-	pkgdesc = An agent development environment for persistent local and remote tmux sessions
+	pkgdesc = Agent development environment for AI coding agents across your machines
 	pkgver = 0.37.0
 	pkgrel = 1
 	url = https://github.com/ufna/zerus
