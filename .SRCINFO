@@ -1,6 +1,6 @@
 pkgbase = seam-bin
 	pkgdesc = A command-line interface (CLI) for interacting with the Seam API.
-	pkgver = 0.44.0
+	pkgver = 0.46.0
 	pkgrel = 1
 	url = https://github.com/seamapi/cli
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = seam-bin
 	conflicts = seam
 	options = !strip
 	options = !debug
-	source = https://github.com/seamapi/cli/raw/v0.44.0/LICENSE.txt
+	source = https://github.com/seamapi/cli/raw/v0.46.0/LICENSE.txt
 	sha256sums = 7d1bb1fea421a830bb2a9f818df04d19c0b353bd04e285ffc3c4a2ab81a2277d
-	source_x86_64 = seam-bin-0.44.0-x86_64::https://github.com/seamapi/cli/releases/download/v0.44.0/seam-v0.44.0-linux-x64
-	sha256sums_x86_64 = debb8e6ac5d109bd5deec9b24acc379802e84a8969e9c99e234a1c63b89d83a6
-	source_aarch64 = seam-bin-0.44.0-aarch64::https://github.com/seamapi/cli/releases/download/v0.44.0/seam-v0.44.0-linux-arm64
-	sha256sums_aarch64 = 407ad95a1c417b550648b6255685e7e72742e19df97b64e5f3b50d8126f2a679
+	source_x86_64 = seam-bin-0.46.0-x86_64::https://github.com/seamapi/cli/releases/download/v0.46.0/seam-v0.46.0-linux-x64
+	sha256sums_x86_64 = 5d3a62a3ee4314b8dc4358f19796fdeb7d950742e802e41050a529aa54371ea0
+	source_aarch64 = seam-bin-0.46.0-aarch64::https://github.com/seamapi/cli/releases/download/v0.46.0/seam-v0.46.0-linux-arm64
+	sha256sums_aarch64 = 9eeb4fe31940b0f23b5ca9ad864c26569a24536c2f9e13de82b2b0cfbc27ebec
 
 pkgname = seam-bin
