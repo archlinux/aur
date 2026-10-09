@@ -1,0 +1,17 @@
+pkgbase = flashalizer
+	pkgdesc = GUI to make .swf files
+	pkgver = 1.6
+	pkgrel = 0
+	url = https://github.com/colin-i/flashalizer
+	arch = any
+	license = 0BSD
+	makedepends = ant
+	depends = java-runtime
+	depends = jna
+	depends = jna-platform
+	depends = javassist-bin
+	depends = actionswf
+	source = flashalizer-1.6-0.tar.gz::https://github.com/colin-i/flashalizer/archive/flashalizer-1.6-0.tar.gz
+	sha256sums = bec8c3cd2c8184c6364c79676f5929addb8a4ae20ec3da0bb672c66be74a115d
+
+pkgname = flashalizer
