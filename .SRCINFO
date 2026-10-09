@@ -1,6 +1,6 @@
 pkgbase = coredeck-bin
 	pkgdesc = Native desktop command center for the Android SDK (AVDs, system images, APK inspection)
-	pkgver = 0.13.1
+	pkgver = 0.13.2
 	pkgrel = 1
 	url = https://coredeck.dev
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = coredeck-bin
 	conflicts = coredeck
 	options = !strip
 	options = !debug
-	source = CoreDeck-0.13.1-LICENSE::https://raw.githubusercontent.com/devmuaz/CoreDeck/v0.13.1/LICENSE
+	source = CoreDeck-0.13.2-LICENSE::https://raw.githubusercontent.com/devmuaz/CoreDeck/v0.13.2/LICENSE
 	source = coredeck.desktop
 	sha256sums = d38b5905e96871c4c21563212bdb13d856663b2b94a57efcf8068ff537919706
 	sha256sums = 7ea39a99bffcea8f965587c322381cd87544dec1e6e4991f03bb38b17eb7d3e9
-	source_x86_64 = coredeck-bin-0.13.1-x86_64.tar.gz::https://github.com/devmuaz/CoreDeck/releases/download/v0.13.1/coredeck-linux-x86-64.tar.gz
-	sha256sums_x86_64 = 1269ea608ed8e37031956ad2b520db967b7ae9d264d09b8b0bd5b3792c51b560
-	source_aarch64 = coredeck-bin-0.13.1-aarch64.tar.gz::https://github.com/devmuaz/CoreDeck/releases/download/v0.13.1/coredeck-linux-arm64.tar.gz
-	sha256sums_aarch64 = 2ca3574f5250f2404d060639e093ab006ca473569a324de0968a045f61957a38
+	source_x86_64 = coredeck-bin-0.13.2-x86_64.tar.gz::https://github.com/devmuaz/CoreDeck/releases/download/v0.13.2/coredeck-linux-x86-64.tar.gz
+	sha256sums_x86_64 = e269b93f9876dfb2b3c82d83cbf3942fa08debb0865c4ba76be1f53d27fd161f
+	source_aarch64 = coredeck-bin-0.13.2-aarch64.tar.gz::https://github.com/devmuaz/CoreDeck/releases/download/v0.13.2/coredeck-linux-arm64.tar.gz
+	sha256sums_aarch64 = ff344058d61fbcee235cfa4ae8c212d3f85ffb7ba2519c928f4f5eb12ae5c688
 
 pkgname = coredeck-bin
