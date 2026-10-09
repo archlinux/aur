@@ -22,5 +22,5 @@ source=("install.sh::https://raw.githubusercontent.com/sparklost/endcord/main/to
 sha256sums=('SKIP')
 
 package() {
-    install -Dm755 "${srcdir}/install.sh" "${pkgdir}/usr/bin/endcord-install"
+    install -Dm755 "${srcdir}/install.sh" "${pkgdir}/usr/bin/endcord-installer"
 }
