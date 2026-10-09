@@ -3,7 +3,7 @@
 _pkgname="rustatio"
 pkgname="$_pkgname-bin"
 pkgver="2.11.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern cross-platform BitTorrent ratio management tool that emulates popular torrent clients (prebuilt)"
 url="https://github.com/takitsu21/rustatio"
 license=('MIT')
@@ -18,8 +18,14 @@ depends=(
   'gtk3'
 )
 
-source=("LICENSE::https://raw.githubusercontent.com/takitsu21/rustatio/v${pkgver}/LICENSE")
-sha256sums=('f6788a3a6fc81be8fd0afb7a279245ab7c9931aea951f26b27ffcf0b8118ee70')
+source=(
+  "LICENSE::https://raw.githubusercontent.com/takitsu21/rustatio/v${pkgver}/LICENSE"
+  "rustatio.desktop"
+)
+sha256sums=(
+  'f6788a3a6fc81be8fd0afb7a279245ab7c9931aea951f26b27ffcf0b8118ee70'
+  '1ff829efbc0cb3e1b4fc0f5155b80e15a236e297a03b61d9d37505f5f777e04e'
+)
 sha256sums_x86_64=('b1a53d89458e3057dff3b9d56f6a5a8d3fa2de376b16a5d23c6ede0b16a22c89')
 
 source_x86_64=("${pkgname}-${pkgver}.deb::https://github.com/takitsu21/rustatio/releases/download/v${pkgver}/Rustatio_${pkgver}_amd64.deb")
@@ -40,7 +46,7 @@ package() {
   install -m755 usr/bin/rustatio-desktop "${pkgdir}/usr/bin/rustatio-desktop"
   ln -s /usr/bin/rustatio-desktop "${pkgdir}/usr/bin/${_pkgname}"
 
-  install -m644 usr/share/applications/Rustatio.desktop "${pkgdir}/usr/share/applications/"
+  install -m644 "${srcdir}/rustatio.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/"
 
   for _size in 32x32 128x128 256x256 512x512 1024x1024; do

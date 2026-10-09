@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Rustatio
+Comment=Modern BitTorrent ratio management tool
+Exec=rustatio-desktop
+Icon=rustatio-desktop
+Terminal=false
+StartupWMClass=rustatio-desktop
+Categories=Network;FileTransfer;P2P;
+Keywords=bittorrent;torrent;ratio;faker;
