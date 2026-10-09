@@ -1,0 +1,13 @@
+diff '--color=auto' -u -r -N gimp-deskew-plugin-1.2/autogen.sh gimp-deskew-plugin-1.2-autogen/autogen.sh
+--- gimp-deskew-plugin-1.2/autogen.sh	2026-01-17 13:29:54.000000000 +0000
++++ gimp-deskew-plugin-1.2-autogen/autogen.sh	2026-10-09 14:30:20.317623403 +0000
+@@ -98,6 +98,9 @@
+ elif (automake-1.18 --version) < /dev/null > /dev/null 2>&1; then
+    AUTOMAKE=automake-1.18
+    ACLOCAL=aclocal-1.18
++elif (automake-1.19 --version) < /dev/null > /dev/null 2>&1; then
++   AUTOMAKE=automake-1.19
++   ACLOCAL=aclocal-1.19
+ else
+     echo
+     echo "  You must have automake 1.6 or newer installed to compile $PROJECT."

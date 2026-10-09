@@ -1,0 +1,26 @@
+pkgbase = gimp-plugin-deskew
+	pkgdesc = Automatically unskew scanned documents
+	pkgver = 1.2
+	pkgrel = 2
+	url = https://github.com/gimp-plugins-justice/gimp-deskew-plugin
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = intltool
+	makedepends = gettext
+	depends = gimp>=3
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = glib2
+	depends = babl
+	depends = gegl
+	provides = gimp-plugin-deskew
+	conflicts = gimp-plugin-deskew
+	source = gimp-deskew-plugin-1.2.tar.gz::https://github.com/gimp-plugins-justice/gimp-deskew-plugin/archive/refs/tags/v1.2.tar.gz
+	source = gimp-deskew-plugin-autogen.patch
+	sha256sums = a5013be98ba8cf60a40704d8c8899ccabbd4f846ef0d813ead92dc378be4e74e
+	sha256sums = dc30607cc0c7e53b79a08343d0b7cf779451c6cf5f196f7bf9245010cc494ab1
+
+pkgname = gimp-plugin-deskew
