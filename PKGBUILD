@@ -89,24 +89,9 @@ package() {
 
     cd "$_pkgFullName/build/"
 
-    install -dm755 "$pkgdir/usr/lib/micode"
+    install -dm755 "$pkgdir/usr/lib/miacode"
 
-    # install -Dm755 MiaCode \
-    #     "$pkgdir/usr/lib/micode/MiaCode"
-
-    # install -Dm644 libbass.so \
-    #     "$pkgdir/usr/lib/micode/libbass.so"
-
-    # install -Dm644 libbassmix.so \
-    #     "$pkgdir/usr/lib/micode/libbassmix.so"
-
-    # install -Dm644 libbass_fx.so \
-    #     "$pkgdir/usr/lib/micode/libbass_fx.so"
-
-    # install -Dm644 libbassflac.so \
-    # "$pkgdir/usr/lib/micode/libbassflac.so"
-
-    cp -a bin "$pkgdir/usr/lib/micode/"
+    cp -a bin "$pkgdir/usr/lib/miacode/"
 
     install -dm755 "$pkgdir/usr/bin"
     install -dm755 "$pkgdir/usr/share/applications"
@@ -124,7 +109,7 @@ EOF
 
     cat > "$pkgdir/usr/bin/MiaCode" <<'EOF'
 #!/bin/sh
-exec /usr/lib/micode/bin/MiaCode "$@"
+exec /usr/lib/miacode/bin/MiaCode "$@"
 EOF
 
     chmod 755 "$pkgdir/usr/bin/MiaCode"

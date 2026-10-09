@@ -1,6 +1,6 @@
 pkgbase = mia-code-git
 	pkgdesc = A Simai editor built for professional chart creators
-	pkgver = v2.0.0-alpha
+	pkgver = v2.0.0_alpha
 	pkgrel = 1
 	url = https://github.com/fanfaredash/MiaCode
 	arch = x86_64
