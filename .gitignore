@@ -3,5 +3,6 @@ pkg/
 *.tar.gz
 *.tar.zst
 
-# wg-corplink
-wireguard-go/
+# bare repo
+wireguard-go-git/
+corplink-rs-git/
