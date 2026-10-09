@@ -1,7 +1,7 @@
 # Maintainer: Sherlock Holo <sherlockya(at)gmail.com>
 
 pkgname=gnome-shell-extension-kimpanel-git
-pkgver=r193.ff82841
+pkgver=r200.3e818bb
 pkgrel=1
 epoch=1
 pkgdesc="KDE's kimpanel implementation for GNOME Shell, now support fcitx"
@@ -51,4 +51,5 @@ build() {
 package(){
   cd ${srcdir}/$_gitname/build
   make DESTDIR=${pkgdir} install
+  glib-compile-schemas "${pkgdir}/usr/share/gnome-shell/extensions/${_extensionname}/schemas"
 }
