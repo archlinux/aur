@@ -1,38 +1,38 @@
 _pkgname=cyberdrop_dl_patched
 pkgname=cyberdropdownloader
-pkgver=8.10.0
+pkgver=10.10.0
 pkgrel=1
-pkgdesc="Bulk downloader for multiple file hosts and forum sites"
+pkgdesc="Bulk asynchronous downloader for multiple file hosts"
 arch=('any')
-url="https://github.com/jbsparrow/CyberDropDownloader"
-license=('GPL-3.0-or-later')
+url="https://github.com/Cyberdrop-DL/cyberdrop-dl"
+license=('GPL-3.0-only')
 depends=(
-    apprise
     python-aiodns
-    python-aiofiles
+    python-aiohappyeyeballs
     python-aiohttp
     python-aiolimiter
     python-aiosqlite
-    python-asyncpraw
+    python-async-mega.py
     python-beautifulsoup4
+    python-brotli
     python-certifi
     python-curl_cffi
-    python-dateparser
-    python-get-video-properties
+    python-cyclopts
+    python-idna
     python-imagesize
-    python-inquirerpy
-    python-jeepney
     python-m3u8
-    python-myjdapi
-    python-packaging
+    python-multidict
     python-propcache
     python-psutil
-    python-pycares
     python-pycryptodome
     python-pydantic
+    python-questionary
     python-rich
+    python-rich-rst
     python-send2trash
-    python-truststore
+    python-soupsieve
+    python-typing_extensions
+    python-wassima
     python-xxhash
     python-yaml
     python-yarl
@@ -40,15 +40,16 @@ depends=(
 makedepends=(
     python-build
     python-installer
-    python-poetry-core
+    python-uv-build
     python-wheel
 )
 optdepends=(
+    'apprise: Notifications to other services'
     'flaresolverr: A proxy server to bypass Cloudflare protection'
 )
 conflicts=('cyberdrop-dl' 'cyberdrop-dl-git')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('347fe1ca38150f1ce172e55dabf27514a51217dc7a67a68ce53f9c9c2b118020')
+sha256sums=('96d00970e54f97780162c8355fb7f8fd30770a637ce7092eafe2e6f7d07f9700')
 
 build(){
     cd $_pkgname-$pkgver
