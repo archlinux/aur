@@ -1,7 +1,7 @@
 pkgbase = atelierb-cssp-bin
 	pkgdesc = The industrial tool to efficiently deploy the B Method (CSP Educational Version)
 	pkgver = 24.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.atelierb.eu
 	arch = x86_64
 	license = custom
@@ -10,7 +10,7 @@ pkgbase = atelierb-cssp-bin
 	depends = libxinerama
 	depends = fontconfig
 	depends = libsm
-	depends = icu72-bin
+	depends = icu72
 	depends = tk
 	depends = python
 	depends = cmake
@@ -22,7 +22,8 @@ pkgbase = atelierb-cssp-bin
 	optdepends = firefox
 	provides = atelierb
 	conflicts = atelierb
-	source = https://www.atelierb.eu/wp-content/uploads/2024/09/atelierb-cssp-24.04-debian12.deb
+	options = !strip
+	source = https://www.atelierb.eu/wp-content/uploads/2024/09/atelierb-cssp-24.04-debian-12.deb
 	sha256sums = SKIP
 
 pkgname = atelierb-cssp-bin

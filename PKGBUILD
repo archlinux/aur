@@ -3,12 +3,12 @@
 
 pkgname=atelierb-cssp-bin
 pkgver=24.04
-pkgrel=1
+pkgrel=2
 pkgdesc="The industrial tool to efficiently deploy the B Method (CSP Educational Version)"
 arch=('x86_64')
 url="https://www.atelierb.eu"
 license=('custom')
-depends=('libxrandr' 'libxcursor' 'libxinerama' 'fontconfig' 'libsm' 'icu72-bin' 'tk' 'python' 'cmake' 'qt5-multimedia' 'qt5-quickcontrols2' 'qt5-quickcontrols' 'qt5-declarative')
+depends=('libxrandr' 'libxcursor' 'libxinerama' 'fontconfig' 'libsm' 'icu72' 'tk' 'python' 'cmake' 'qt5-multimedia' 'qt5-quickcontrols2' 'qt5-quickcontrols' 'qt5-declarative')
 optdepends=('texlive-bin' 'firefox')
 options=('!strip')
 provides=('atelierb')
