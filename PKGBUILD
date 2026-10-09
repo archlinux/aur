@@ -3,7 +3,7 @@
 _pkgname='mytimer'
 _pkgauthor='sepandhaghighi'
 pkgname="${_pkgname}"
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 pkgdesc="A Geeky Timer for Terminal Enthusiasts"
 
@@ -16,7 +16,7 @@ depends=('python' 'python-nava' 'python-art' 'python-jdatetime' 'python-colorama
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('5c891ab9d018a8d01eea4fcb9bff6f75d413ed5ee725436691f422319df6b63c')
+sha256sums=('017362be7f9dc62a8b09019ca0eb4aed122805bace3468cf8dfcdee760d90bb2')
 
 _pypi_package=${_pkgname}
 _pypi_version=${pkgver}
