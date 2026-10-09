@@ -1,7 +1,7 @@
 pkgbase = tuack-gui-git
 	pkgdesc = 美观、跨平台的 Tuack-NG 图形化前端
 	pkgver = 1.1.0.alpha.1.0.g53dd54f
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tuackng/Tuack-GUI
 	install = tuack-gui-git.install
 	arch = x86_64

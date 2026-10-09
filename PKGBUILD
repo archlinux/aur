@@ -2,7 +2,7 @@
 
 pkgname=tuack-gui-git
 pkgver=1.1.0.alpha.1.0.g53dd54f
-pkgrel=3
+pkgrel=4
 pkgdesc="美观、跨平台的 Tuack-NG 图形化前端"
 arch=("x86_64")
 url="https://github.com/tuackng/Tuack-GUI"
@@ -32,12 +32,12 @@ sha256sums=(
 install="tuack-gui-git.install"
 
 pkgver() {
-    cd tuack-gui
+    cd Tuack-GUI
     git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//; s/-/./g'
 }
 
 prepare() {
-    cd tuack-gui
+    cd Tuack-GUI
     export RUSTUP_TOOLCHAIN=stable
     # 预取 crates.io 依赖（构建期不再联网拉 Rust 依赖）
     cargo fetch --locked --manifest-path src-tauri/Cargo.toml --target "$(rustc --print host-tuple)"
@@ -45,14 +45,14 @@ prepare() {
 }
 
 build() {
-    cd tuack-gui
+    cd Tuack-GUI
     export RUSTUP_TOOLCHAIN=stable
     # 前端构建 + Rust release 构建；--no-bundle 跳过 deb/AppImage 打包器
     pnpm tauri build --no-bundle
 }
 
 package() {
-    cd tuack-gui
+    cd Tuack-GUI
 
     # 主程序直接进 /usr/bin：sidecar（tuack-ng/typst）按 exe 同目录解析，
     # 正好命中 /usr/bin 的系统二进制；assets 由 tuack-ng 原生从
