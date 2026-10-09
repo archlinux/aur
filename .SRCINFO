@@ -1,6 +1,6 @@
 pkgbase = stc-coda
 	pkgdesc = The Common Data Access toolset
-	pkgver = 2.25.6
+	pkgver = 2.25.7
 	pkgrel = 1
 	url = https://www.stcorp.nl
 	arch = x86_64
@@ -10,6 +10,6 @@ pkgbase = stc-coda
 	depends = hdf5
 	depends = java-environment
 	provides = hdf-coda
-	source = https://github.com/stcorp/coda/releases/download/2.25.6/coda-2.25.6.tar.gz
-	md5sums = cd88d415866c2d3a91966fddf64ec9bc
+	source = https://github.com/stcorp/coda/releases/download/2.25.6/coda-2.25.7.tar.gz
+	md5sums = 12e6e5bbf3ff9fc66387de76c1941ae9
 pkgname = stc-coda
