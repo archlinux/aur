@@ -2,7 +2,7 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=nogforge
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Packages the KognogOS way, in a terminal: what's installed, searching and installing, and updates you can read, on top of nog"
 arch=('any')
@@ -11,13 +11,13 @@ license=('GPL3')
 # nog 1.6.1: the --json answers nogForge reads, and `nog update a b c` (only
 # the ticked ones). forgekit 0.5.2: the Forge Suite's shared base (the bottom
 # bar that follows the screen). Both must be on the AUR first: dependency order.
-depends=('python' 'python-textual' 'python-rich' 'python-forgekit>=0.6.0' 'nog>=1.7.0')
+depends=('python' 'python-textual' 'python-rich' 'python-forgekit>=0.10.0' 'nog>=1.7.0')
 # v1.1.0: nog runs inside nogForge and the password is asked in its own box:
 # no desktop password window needed (forgekit 0.6.0); nog 1.7.0 reports its steps
 optdepends=('archlinux-appstream-data: app names and category badges')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('fbb66221306e11247f431b4cadb77304639fe2f03091d111b670ddff1b92e321'
+sha256sums=('dd1f2d6d2809bdea85ff518b7764868d4f0ee38938a70de9d1c28c7c3eb128db'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
