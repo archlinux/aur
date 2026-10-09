@@ -2,7 +2,7 @@
 # Contributor: René Wagner < rwagner at rw-net dot de >
 # Contributor: Diab Neiroukh <lazerl0rd@thezest.dev>
 
-pkgname=mimalloc
+pkgname=mimalloc2
 pkgver=2.2.4
 pkgrel=1
 pkgdesc='General-purpose allocator with excellent performance characteristics'
@@ -11,14 +11,12 @@ url='https://github.com/microsoft/mimalloc'
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'cmake')
+provides=('libmimalloc.so=2-64')
 source=(
   "$pkgname::git+$url#tag=v$pkgver"
-  'remove-staticlib-refs.patch'
 )
-sha512sums=('9d4b6aa445c7cf1056fdd0e7aebfb534784e591c267f20242085aa3249dd9f92069bda52e7325f0b262a2063581ddfe7cabee47cfe171c46c69e834250acd65f'
-            'e8a32f066f269d449a765ddc54c192ce7b615e034753b1ffdc66153374e9b7f1973ebc7acf45a90f8ccf05962708f9288e4c5f3819abfe2c909530152e24437a')
-b2sums=('c998cacfd3711eaddde276d26ab99955ef326d9587b2865ddbf183524989c8258d4c4ce7d15b28dace975f84f057248519035f9bbd4d574b522c8010130fcf93'
-        'b34f447b1cf74110c97404fe815329cf84ae8ff798766eefc0f4e451cf52211e5745463c3d99209eafa8d3e1bc02ca66b5e526c04773ec5a21b626b428942f1c')
+sha512sums=('9d4b6aa445c7cf1056fdd0e7aebfb534784e591c267f20242085aa3249dd9f92069bda52e7325f0b262a2063581ddfe7cabee47cfe171c46c69e834250acd65f')
+b2sums=('c998cacfd3711eaddde276d26ab99955ef326d9587b2865ddbf183524989c8258d4c4ce7d15b28dace975f84f057248519035f9bbd4d574b522c8010130fcf93')
 
 build() {
   cmake \
@@ -41,9 +39,11 @@ check() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 
-  pushd "$pkgdir/usr/lib/cmake/mimalloc"
-  patch -p1 -i "$srcdir/remove-staticlib-refs.patch"
-  popd
+  rm -rf "$pkgdir/usr/include"
+  rm -rf "$pkgdir/usr/lib/cmake"
+  rm -rf "$pkgdir/usr/lib/pkgconfig"
+  rm -f "$pkgdir/usr/lib/libmimalloc.a"
+  rm -f "$pkgdir/usr/lib/libmimalloc.so"
 
   # license
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$pkgname/LICENSE"
