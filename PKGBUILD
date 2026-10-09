@@ -2,7 +2,7 @@
 # Maintainer: Patrick Wicki <patrick.wicki96@gmail.com>
 
 pkgname=gnome-extra-meta
-pkgver=49
+pkgver=51
 pkgrel=1
 pkgdesc='Meta package to install gnome-extra'
 arch=(any)
@@ -10,8 +10,8 @@ url='https://www.gnome.org/'
 license=(GPL)
 depends=(
   chatty
-  dconf-editor
   d-spy
+  dconf-editor
   endeavour
   file-roller
   ghex
@@ -19,13 +19,13 @@ depends=(
   gnome-builder
   gnome-calls
   gnome-chess
-  gnome-mahjongg
   gnome-mines
   gnome-nibbles
   gnome-robots
   gnome-sound-recorder
   gnome-sudoku
   gnome-tweaks
+  iagno
   lightsoff
   manuals
   quadrapassel
