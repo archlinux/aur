@@ -1,6 +1,6 @@
 pkgbase = mp3rgui
 	pkgdesc = GUI for mp3rgain - lossless MP3 and AAC volume adjustment using ReplayGain
-	pkgver = 3.10.0
+	pkgver = 3.11.0
 	pkgrel = 1
 	url = https://mp3rgain.tyna.ninja/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mp3rgui
 	depends = gtk3
 	optdepends = mp3rgain: CLI tool for batch processing
 	optdepends = noto-fonts-cjk: display CJK characters in file names
-	source = https://github.com/M-Igashi/mp3rgain/archive/v3.10.0.tar.gz
+	source = https://github.com/M-Igashi/mp3rgain/archive/v3.11.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = mp3rgui

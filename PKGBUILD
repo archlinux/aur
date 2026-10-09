@@ -1,6 +1,6 @@
 # Maintainer: Jesse Pinkman <M-Igashi@users.noreply.github.com>
 pkgname=mp3rgui
-pkgver=3.10.0
+pkgver=3.11.0
 pkgrel=1
 pkgdesc='GUI for mp3rgain - lossless MP3 and AAC volume adjustment using ReplayGain'
 arch=('x86_64' 'aarch64')
