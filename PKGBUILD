@@ -2,7 +2,7 @@
 
 pkgname=eusoft-dehelper
 pkgver=13.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Dehelper (德语助手) - German dictionary software for Linux (Community Repackage)"
 arch=('x86_64')
 url="https://www.eudic.net/v4/de/app/dehelper"
@@ -72,7 +72,6 @@ package() {
 
     # Install desktop entry
     install -Dm644 "${srcdir}/eusoft-dehelper.desktop" "${pkgdir}/usr/share/applications/eusoft-dehelper.desktop"
-    ln -sf eusoft-dehelper.desktop "${pkgdir}/usr/share/applications/dehelper.desktop"
 
     # Install hicolor icons
     install -Dm644 "${pkgdir}/usr/share/pixmaps/com.eusoft.dehelper.png" \

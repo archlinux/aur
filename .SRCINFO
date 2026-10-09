@@ -1,7 +1,7 @@
 pkgbase = eusoft-dehelper
 	pkgdesc = Dehelper (德语助手) - German dictionary software for Linux (Community Repackage)
 	pkgver = 13.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eudic.net/v4/de/app/dehelper
 	arch = x86_64
 	license = LicenseRef-Proprietary
