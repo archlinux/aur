@@ -16,7 +16,7 @@ pkgbase = plan9port-wayland-git
 	conflicts = plan9port
 	options = !zipman
 	options = staticlibs
-	source = plan9port-wayland-git::git+https://github.com/droyo/plan9port.git#branch=wayland-im
+	source = plan9port-wayland-git::git+https://github.com/lufia/plan9port.git#branch=im2
 	source = plan9.sh
 	source = acme.sh
 	source = acme.png

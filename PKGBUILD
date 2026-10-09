@@ -6,8 +6,8 @@
 # Contributor: Sergiusz Urbaniak <sergiusz.urbaniak@gmail.com>
 
 pkgname=plan9port-wayland-git
-pkgver=r3950.0c6d0f74
-pkgrel=2
+pkgver=r3990.0258e1f2
+pkgrel=1
 pkgdesc="A port of many Plan 9 libraries and programs to Unix with devdraw Wayland patches."
 arch=('i686' 'x86_64')
 url="https://github.com/9fans/plan9port"
@@ -19,7 +19,7 @@ provides=('plan9port')
 install='plan9.install'
 conflicts=('9base' 'plan9port')
 options=('!zipman' 'staticlibs')
-source=("$pkgname::git+https://github.com/droyo/plan9port.git#branch=wayland-im"
+source=("$pkgname::git+https://github.com/lufia/plan9port.git#branch=im2"
         plan9.sh acme.sh acme.png acme.desktop)
 md5sums=('SKIP'
          'c884c3c90a107f1a178718c304c67d30'
