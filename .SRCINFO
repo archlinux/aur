@@ -1,0 +1,19 @@
+pkgbase = wtfi2
+	pkgdesc = Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/kanywst/wtfi2
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = cargo
+	provides = wtfi
+	conflicts = wtfi2-git
+	conflicts = wtfi2-bin
+	options = !lto
+	options = !debug
+	source = wtfi2-0.6.0.tar.gz::https://github.com/kanywst/wtfi2/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 230396dbb1b49830b42ffaf8a390e0faad60999bf0b3a2f59f7a511746235ba9
+
+pkgname = wtfi2
