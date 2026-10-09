@@ -1,0 +1,14 @@
+# Apply the udev rule to displays that are already plugged in, so they work without
+# replugging: hidraw/backlight permissions, and the usbhid -> appledisplay handover.
+post_install() {
+	if [ -d /run/udev ]; then
+		udevadm control --reload-rules
+		udevadm trigger --action=add --subsystem-match=hidraw --subsystem-match=backlight
+		udevadm trigger --action=add --subsystem-match=usb --property-match=DRIVER=usbhid
+	fi
+	return 0
+}
+
+post_upgrade() {
+	post_install
+}
