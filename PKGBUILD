@@ -3,7 +3,7 @@
 # The prebuilt Linux release from https://github.com/NickMarcha/TowerOfAtum-releases (the source is private, hence
 # -bin). Installed under /opt/towerofatum; `towerofatum` plays offline and `towerofatum-server` hosts.
 pkgname=towerofatum-bin
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Work-in-progress multiplayer spell-combat game, played offline against a local server"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("https://github.com/NickMarcha/TowerOfAtum-releases/releases/download/cl
         'towerofatum.desktop'
         'towerofatum.png'
         'LICENSE')
-sha256sums=('07e4dbf017a5646ca1817ec5510fbd0bad0c06514a1317d8193baea31ccb5be6'
+sha256sums=('afb2a6a36d0cdd8acff728fcbdef9a36bc7ca094eb5b614836f4810c29a0a6ee'
             'f5ee4cb6381515b3da3cc17a0765c5984312f3837ed6f698e93e388c39bbf88d'
             '3801c09495ed6ae351ebb358d166cba64f87498205fefb3a97cbe52dd9dd1893'
             '63bc756c48c78a6f5f44c8ec41e4e420dc5c80b4cc63cdfc69cf0a3613231c86'
