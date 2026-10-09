@@ -1,7 +1,7 @@
 # Maintainer: kengzzzz
 
 pkgname=broadcast-linux-bin
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="NVIDIA Broadcast effects as a virtual mic and camera under Wine"
 arch=(x86_64)
@@ -22,7 +22,7 @@ options=(!strip !debug)
 install=broadcast-linux.install
 source=("$url/releases/download/v$pkgver/broadcast-linux-$pkgver-$CARCH.tar.gz")
 # Run updpkgsums after the GitHub release is published, before pushing to AUR.
-sha256sums=('4f4fa643a69fcdf360154c5a4237c4a2fabe44c5ed60057bd06c0898c8190a54')
+sha256sums=('66073fc35759f37470d65bf7a15de997e58142017a12878144fa04180ad7db44')
 
 package() {
     cd "broadcast-linux-$pkgver-$CARCH"
