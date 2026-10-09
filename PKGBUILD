@@ -1,4 +1,4 @@
-# Maintainer: Barakah Alrashedi <barakah@unixv.com>
+# Maintainer: Barakah <sub@unixv.com>
 #
 # Official Cursor Linux build of Grok Bot, repackaged for Arch.
 # The package name matches this directory so the tree can be pushed to the AUR.
