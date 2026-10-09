@@ -3,8 +3,8 @@
 # Auto Upgrade: https://github.com/phnx47/pkgbuilds
 
 pkgname=proto
-pkgver=0.62.3
-pkgrel=3
+pkgver=0.63.1
+pkgrel=1
 pkgdesc='Pluggable multi-language version manager'
 arch=('x86_64' 'aarch64')
 url='https://github.com/moonrepo/proto'
@@ -13,7 +13,7 @@ depends=('glibc' 'libgcc' 'git' 'unzip' 'gzip' 'xz')
 optdepends=('rustup: support for Rust toolchains')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('d9edee09cf9ed53d139012c857e649306e9dd9b7928f466630b806d465080c9a')
+sha256sums=('e37ff82eebcecd23c36818ffcbe54f10d2e28c924cfe3d55b24512573dce0520')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -29,6 +29,9 @@ build() {
     CFLAGS+=' -ffat-lto-objects'
     CXXFLAGS+=' -ffat-lto-objects'
   fi
+
+  # jitterentropy in aws-lc-sys fails with -O2 from CFLAGS
+  export AWS_LC_SYS_CMAKE_BUILDER=1
 
   cargo build --release --frozen
 
