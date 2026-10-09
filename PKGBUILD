@@ -3,7 +3,7 @@
 pkgname=zashterminal
 # NOTE: CI updates this value automatically based on
 # locale/src/zashterminal/settings/config.py (APP_VERSION).
-pkgver=0.8.9
+pkgver=0.8.10
 pkgrel=1
 pkgdesc="A modern GTK4/Adwaita terminal emulator with advanced session management, SSH integration, and security features."
 arch=('any')
@@ -16,9 +16,6 @@ depends=(
     'sshpass' 'rsync' 'vte4' 'gobject-introspection' 'python-regex' 'python-pygments'
 )
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'uv' 'gettext')
-conflicts=('zash')
-provides=('zash' 'zashterminal')
-replaces=('zash')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
