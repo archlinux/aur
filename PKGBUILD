@@ -1,13 +1,13 @@
 # Maintainer: blazebsc <blakeisfruity@proton.me>
 # Maintainer: ofatrii <pub@oftr.me>
 pkgname=froststrap-git
-pkgver=2.0.3.r5.g3319c2c5
+pkgver=2.0.5.r13.gdd8c3cf
 pkgrel=1
 pkgdesc="A fork of Fishstrap/Bloxstrap, focused on performance and customization"
 arch=('x86_64')
 url="https://github.com/Froststrap/Froststrap"
 license=('AGPL-3.0-or-later' 'MIT' 'MPL-2.0')
-depends=('dotnet-runtime-10.0' 'icu' 'fontconfig' 'hicolor-icon-theme')
+depends=('dotnet-runtime-10.0' 'icu' 'fontconfig' 'hicolor-icon-theme' 'dbus')
 makedepends=('dotnet-sdk-10.0' 'git' 'rust')
 provides=('froststrap')
 conflicts=('froststrap')

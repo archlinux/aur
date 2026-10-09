@@ -1,6 +1,6 @@
 pkgbase = froststrap-git
 	pkgdesc = A fork of Fishstrap/Bloxstrap, focused on performance and customization
-	pkgver = 2.0.3.r5.g3319c2c5
+	pkgver = 2.0.5.r13.gdd8c3cf
 	pkgrel = 1
 	url = https://github.com/Froststrap/Froststrap
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = froststrap-git
 	depends = icu
 	depends = fontconfig
 	depends = hicolor-icon-theme
+	depends = dbus
 	provides = froststrap
 	conflicts = froststrap
 	source = git+https://github.com/Froststrap/Froststrap.git
