@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Name=Frhelper
+Name[zh_CN]=法语助手
+GenericName=French-Chinese Dictionary
+GenericName[zh_CN]=法语词典
+Comment=Frhelper French-Chinese Dictionary and Conjugation
+Comment[zh_CN]=权威的法语词典与动词变位软件
+Exec=/usr/bin/frhelper %F
+Icon=com.eusoft.frhelper
+Terminal=false
+StartupNotify=true
+StartupWMClass=frhelper
+Categories=Office;Dictionary;Education;
+MimeType=application/x-frhelper;
