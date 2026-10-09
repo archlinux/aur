@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Name=Dehelper
+Name[zh_CN]=德语助手
+GenericName=German-Chinese Dictionary
+GenericName[zh_CN]=德语词典
+Comment=Dehelper German-Chinese Dictionary and Conjugation
+Comment[zh_CN]=权威的德语词典与变位变格软件
+Exec=/usr/bin/dehelper %F
+Icon=com.eusoft.dehelper
+Terminal=false
+StartupNotify=true
+StartupWMClass=dehelper
+Categories=Office;Dictionary;Education;
+MimeType=application/x-dehelper;
