@@ -1,29 +1,35 @@
 # Maintainer: Bingusfan360 <bingusfan360@proton.me>
+#
+# mahoragaos is free and open source. Development and hosting are funded
+# entirely by donations — every contribution goes directly to keeping the
+# project running.
+# Donate (hosted, one-tap): https://www.buymeacoffee.com/bingusfan360
+# Bank transfer / card / PayPal / crypto: https://mediaserver.tail5cfbf6.ts.net/
 pkgname=mahoragaos
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
-pkgdesc="An agentic backend that *will* be the best"
+pkgdesc="An agentic backend that *will* be the best. Free and open source, funded by donations: https://www.buymeacoffee.com/bingusfan360 · https://mediaserver.tail5cfbf6.ts.net/"
 arch=('any')
 url="https://gitlab.com/Bingusfan360/MahoragaOS"
 license=('AGPL-3.0-or-later')
 depends=('python' 'pyside6' 'hicolor-icon-theme')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("$url/-/archive/v0.6.4/MahoragaOS-v0.6.4.tar.gz"
+source=("$url/-/archive/v0.7.0/MahoragaOS-v0.7.0.tar.gz"
         "mahoragaos.desktop"
         "mahoragaos.svg"
         "mahoragaos.fish")
-sha256sums=('221827ad6249356ae8268879156be4a3e58b9a490f180fd67e196ceda1dc2ace'
+sha256sums=('3e2d3bfa7bda6c8736372c42cee7c2ef5a33dcdb3b090c178aeb561d45480505'
             'SKIP'
             'SKIP'
             'SKIP')
 
 build() {
-  cd MahoragaOS-v0.6.4
+  cd MahoragaOS-v0.7.0
   /usr/bin/python -m build --wheel
 }
 
 package() {
-  cd MahoragaOS-v0.6.4
+  cd MahoragaOS-v0.7.0
   /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
 
   # Install desktop file
