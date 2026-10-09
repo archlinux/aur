@@ -1,6 +1,6 @@
 # Maintainer: 0bCdian <diegoparranava@protonmail.com>
 pkgname='waypaper-engine'
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A wallpaper setter GUI with playlist functionality for Wayland and X11"
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
 )
 _archive="Waypaper-Engine-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1bc91c73157dd91349998a8a7855d3c0a45708f819ccfe39212ec83cc6e2bb28')
+sha256sums=('e43674eb148dc49cc93a6c957ea3d431b6bd1749151e0d9e09127551b7f92d69')
 
 prepare() {
   cd "$_archive"
