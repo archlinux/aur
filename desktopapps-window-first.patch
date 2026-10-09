@@ -1,0 +1,69 @@
+diff --git a/internal/providers/desktopapplications/activate.go b/internal/providers/desktopapplications/activate.go
+index 8ba9c60..eca0818 100644
+--- a/internal/providers/desktopapplications/activate.go
++++ b/internal/providers/desktopapplications/activate.go
+@@ -257,15 +257,44 @@ func pinItem(identifier string) {
+ 	}
+ }
+ 
++func isAppWindow(f *DesktopFile, v *wlr.Window) bool {
++	bin := strings.Fields(f.Exec)[0]
++
++	return v.AppID == f.StartupWMClass || v.AppID == f.Icon || v.AppID == bin || v.Title == bin
++}
++
+ func appHasWindow(f *DesktopFile) (wl.ProxyId, bool) {
+ 	w := wlr.Windows()
+-	bin := strings.Fields(f.Exec)[0]
+ 
+ 	for k, v := range w {
+-		if v.AppID == f.StartupWMClass || v.AppID == f.Icon || v.AppID == bin || v.Title == bin {
++		if isAppWindow(f, v) {
+ 			return k, true
+ 		}
+ 	}
+ 
+ 	return wl.ProxyId(0), false
+ }
++
++// appWindowScore returns the best score any of the app's windows gets for the
++// query, computed the same way as the windows provider does.
++func appWindowScore(f *DesktopFile, runes []rune, slab *common.FuzzySlab, exact bool) int32 {
++	var best int32
++
++	for _, v := range wlr.Windows() {
++		if !isAppWindow(f, v) {
++			continue
++		}
++
++		for _, s := range []string{v.Title, v.AppID} {
++			score, _, start := common.FuzzyScore(runes, s, exact, slab)
++
++			if score == 0 {
++				continue
++			}
++
++			best = max(best, max(score-start, 10))
++		}
++	}
++
++	return best
++}
+diff --git a/internal/providers/desktopapplications/query.go b/internal/providers/desktopapplications/query.go
+index a6e32be..1fe3672 100644
+--- a/internal/providers/desktopapplications/query.go
++++ b/internal/providers/desktopapplications/query.go
+@@ -150,8 +150,12 @@ func Query(conn net.Conn, query string, runes []rune, _ bool, exact bool, _ uint
+ 				}
+ 				pinsMu.RUnlock()
+ 
++				// Place the app right below its own window instead of halving its
++				// score, which let unrelated matches slip in between the two.
+ 				if query != "" && config.WindowIntegration && config.ScoreOpenWindows && hasWindow {
+-					score = int32(score / 2)
++					if ws := appWindowScore(v, runes, slab, exact); ws > config.MinScore {
++						score = ws - 1
++					}
+ 				}
+ 
+ 				entries = append(entries, &pb.QueryResponse_Item{
