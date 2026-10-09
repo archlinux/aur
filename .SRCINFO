@@ -1,6 +1,6 @@
 pkgbase = talkat
 	pkgdesc = Voice-to-text dictation system for Wayland Linux compositors
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/ronakrm/talkat
 	install = talkat.install
@@ -15,7 +15,7 @@ pkgbase = talkat
 	optdepends = xclip: Clipboard support on X11
 	optdepends = libnotify: Desktop notifications
 	options = !strip
-	source = talkat-2.0.0.tar.gz::https://github.com/ronakrm/talkat/archive/v2.0.0.tar.gz
-	sha256sums = b72c97508229a4096bfd42bb80563a29d9bfaba5a735b9e852879c950ae61fb9
+	source = talkat-2.1.0.tar.gz::https://github.com/ronakrm/talkat/archive/v2.1.0.tar.gz
+	sha256sums = 0f3b7baad8f8954fd07953f68baec65bf058438870d9e71485b0bbcf1bfaf70b
 
 pkgname = talkat
