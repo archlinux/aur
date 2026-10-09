@@ -82,7 +82,8 @@ package_python-fastmcp-slim() {
             'python-pydantic'
             'python-email-validator'
             'python-pydantic-settings'
-            'python-dotenv' 'python-rich'
+            'python-dotenv'
+            'python-rich'
             'python-typing_extensions')
   optdepends=('python-anthropic: anthropic'
   
@@ -104,6 +105,8 @@ package_python-fastmcp-slim() {
               'python-cachetools: client'
               
               'python-pydantic-monty: code-mode'
+              
+              'python-typesafe-sdk: jev'
               
               'python-google-genai: gemini'
               'python-jsonref: gemini'
@@ -250,6 +253,8 @@ package_python-fastmcp() {
               'python-pyjwt: azure'
               
               'python-pydantic-monty: code-mode'
+              
+              'python-typesafe-sdk: jev'
               
               'python-google-genai: gemini'
               'python-jsonref: gemini'
