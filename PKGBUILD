@@ -5,7 +5,7 @@
 
 _pypiname="fastavro"
 pkgname="python-${_pypiname}"
-pkgver=1.12.2
+pkgver=1.13.1
 pkgrel=1
 pkgdesc="Fast read/write of AVRO files"
 arch=(
@@ -39,7 +39,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
 )
-b2sums=('c8fb6402d569ea890a0657c6de06299b602a3483686a114154b2eec6e7441c27cfcfbaa52c4355078f22821a83beb0373cd749355286b418b44813f8e48e79b6')
+b2sums=('b9a44f24525396c7ece1f4148c7453ef14c6c7e41af1da683865f234e8de6074371be3a52f8e19c2c9bf56cd4fe4db4ebb50e7129b1aae44ce5a89feae5d4a09')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
