@@ -1,0 +1,49 @@
+From c70d84fa61249f551344d802514c36aaa354fbda Mon Sep 17 00:00:00 2001
+From: leycec <leycec@gmail.com>
+Date: Fri, 28 Aug 2026 22:36:29 -0400
+Subject: [PATCH] Backport Click >= 8.5.0 pytest compatibility
+
+Backport the pytest warning filter from upstream commit c70d84f for
+beartype 0.22.9. The commit's unrelated import-order hunk does not apply
+to this older release and is intentionally omitted.
+
+Upstream: https://github.com/beartype/beartype/commit/c70d84fa61249f551344d802514c36aaa354fbda
+---
+ pytest.ini | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/pytest.ini b/pytest.ini
+index 2eacacc48..18c38f493 100644
+--- a/pytest.ini
++++ b/pytest.ini
+@@ -48,23 +48,24 @@ filterwarnings =
+ 
+     # Avoid coercing all non-fatal warnings matching one or more of the
+     # following patterns formatted as:
+-    #     ignore:{warning_message}:{warning_classname}:{module_name}
++    #     ignore:{warning_message_regex}:{warning_classname}:{module_name_regex}
+     #
+     # ...where:
+-    # * "{warning_message}" is a regular expression matching the plaintext of
+-    #   the warning message to be ignored.
++    # * "{warning_message_regex}" is a regular expression matching the plaintext
++    #   of the warning message to be ignored.
+     # * "{warning_classname}" is the fully-qualified classname of the warning
+     #   to be ignored.
+-    # * "{module_name}" is the fully-qualified name of the module emitting the
+-    #   warning to be ignored.
++    # * "{module_name_regex}" is a regular expression matching the
++    #   fully-qualified name of the module emitting the warning to be ignored.
+     #
+     # For example:
+-    #     ignore:^Use of \.\. or absolute path in a resource path.*:DeprecationWarning:pkg_resources
++    #     ignore:^Use of \.\. or absolute path in a resource path.*:DeprecationWarning:^pkg_resources\..*$
+     #
+     # See also:
+     # * https://docs.python.org/3/library/warnings.html and
+     # * https://docs.pytest.org/en/latest/warnings.html
+     ignore:^'cgi' is deprecated and slated for removal in Python 3\.13$:DeprecationWarning:babel.messages.catalog
++    ignore:^'click\.utils\..+' is deprecated and will be removed in Click 9\.0\.$:DeprecationWarning:^rich_click.*$
+ 
+ # Newline-delimited list of all custom marks applied by this test suite.
+ # Failing to explicitly list such marks here induces non-fatal warnings: e.g.,

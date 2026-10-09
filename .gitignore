@@ -6,3 +6,4 @@
 !PKGBUILD
 !numpy-2.5-backport.patch
 !ee167cf-idempotence-backport.patch
+!c70d84f-click-8.5-backport.patch
