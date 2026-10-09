@@ -1,0 +1,11 @@
+post_install() {
+  echo 'FreeTurn installed as /usr/bin/freeturn-desktop.'
+  echo 'One-time setup (VPN service): open FreeTurn -> Home -> Install VPN service,'
+  echo 'or run: freeturn-desktop install-service (elevates via polkit/sudo).'
+  echo 'Without the service the app falls back to the embedded backend, which'
+  echo 'needs root for TUN — see Home -> Install VPN service for details.'
+}
+
+post_upgrade() {
+  post_install
+}
