@@ -2,17 +2,19 @@
 _pkgname=crab-on-desk
 pkgname="${_pkgname}-git"
 pkgver=r0.0000000
-pkgrel=1
+pkgrel=2
 pkgdesc="A rust based pet for coding agents."
 arch=('x86_64')
 url="https://github.com/Supernovatux/${_pkgname}"
 license=('AGPL-3.0-or-later')
-depends=('gcc-libs' 'glibc' 'wayland' 'libglvnd' 'libxkbcommon')
+depends=('gcc-libs' 'glibc' 'wayland' 'libglvnd' 'libxkbcommon'
+         'libxcb' 'libx11' 'libxcursor' 'libxrandr' 'libxi' 'libxkbcommon-x11')
 makedepends=('git' 'cargo' 'cmake' 'clang')
 options=('!lto')
 optdepends=('crab-on-desk-themes: Themes from rullerzhou-afk/clawd-on-desk ported for this proj'
             'hyprland: cursor tracking (roam, dizzy, eye tracking), permission prompt placement and focusing the terminal from it'
-            'kwin: cursor tracking (roam, dizzy, eye tracking) and permission prompt placement on KDE Plasma'
+            'kwin: cursor tracking (roam, dizzy, eye tracking) and permission prompt placement on KDE Plasma (Wayland)'
+            'picom: per-pixel transparency on X11 window managers that do not composite themselves'
             'xdg-desktop-portal: system accent colour and light/dark scheme in the settings and permission windows'
             'claude-code: the agent whose hooks drive the pet')
 provides=("${_pkgname}")
