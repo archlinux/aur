@@ -1,24 +1,45 @@
-# Maintainer: GI_Jack <GI_Jack@hackermail.com>
-
+# Maintainer: Leonid Lednev <leonidledn at gmail dot com>
+# Contributor: GI_Jack <GI_Jack@hackermail.com>
 pkgname=python-pylnk3
-_pkgname=pylnk3
 pkgver=0.4.3
-pkgrel=2
-pkgdesc="Python library for reading and writing Windows shortcut files (.lnk)."
-url="https://pypi.org/project/pylnk3/"
+pkgrel=3
+pkgdesc="Python library for reading and writing Windows shortcut files (.lnk)"
+url="https://github.com/strayge/pylnk"
 arch=('any')
-license=('LGPLv3')
-depends=('python')
-makedepends=('python-build' 'python-installer' 'python-wheel')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('fbc5f512b581382c2a4c11e6df3796f9975bcfd99e3fca2afe531ea61b3c4ac2')
+license=('LGPL-3.0-or-later')
+depends=(
+  'python>=3.9'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  'python-setuptools'
+  'git'
+)
+checkdepends=(
+  'python-pytest'
+)
+source=("git+$url#tag=$pkgver")
+b2sums=('b238c0ca932d9c397d9ce8338c91f6c17302b1af70d9f208b0563287525b649f4214a2e5dab851f57416b96f72bf63cd8797db390651adf4b6b1edc3a74ed36c')
+
+prepare() {
+  git -C pylnk clean -dfx
+}
 
 build() {
-    cd "${_pkgname}-${pkgver}"
-    python -m build --wheel --no-isolation
+  cd pylnk
+  python -m build -wnx
+}
+
+check() {
+  cd pylnk
+  pytest
 }
 
 package() {
-    cd "${_pkgname}-${pkgver}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+  cd pylnk
+  python -m installer -d "$pkgdir" dist/*.whl
 }
+
+# vim: ts=2 sw=2 et:
