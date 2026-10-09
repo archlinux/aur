@@ -2,7 +2,7 @@
 # Community-driven packaging
 
 pkgname="rotatrix"
-pkgver=1.5.1
+pkgver=1.6.0b2
 pkgrel=1
 pkgdesc="Rotatrix configuration application (AppImage)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   LICENSE # url: https://rotatrix.com/eula/
 )
 sha256sums=(
-  7e0e5cbae055262ba723c59404549107d186a8cf1217cfd449cff3e46f68059a
+  89761a4f1ba3dad37e4076f1fe30e267ad18cdc7bf9f71ccb4d6a31db7a5ea78
   c38bb9b9c10c1a0cf7aa327432c3fd12cece2714ab9fe06799c7440cac383dfb
 )
 DLAGENTS+=("rotatrix::${startdir}/rotatrix-download %u %o")
