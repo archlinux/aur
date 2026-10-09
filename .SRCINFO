@@ -1,10 +1,11 @@
 pkgbase = omniversify-hypr-calendar
 	pkgdesc = Three-calendar (Gregorian, Hijri, Amazigh) floating overlay for Hyprland
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/phaylali/hypr-calendar-omniversify
 	arch = any
 	license = Unlicense
+	license = GPL-2.0-only
 	makedepends = git
 	depends = python
 	depends = python-gobject
@@ -12,7 +13,7 @@ pkgbase = omniversify-hypr-calendar
 	depends = hyprland
 	optdepends = noto-fonts: Arabic and Tifinagh glyphs for the Hijri/Amazigh tags
 	optdepends = waybar: the clock module this overlay is meant to be bound to
-	source = omniversify-hypr-calendar::git+https://github.com/phaylali/hypr-calendar-omniversify.git#tag=v1.0.1
+	source = omniversify-hypr-calendar::git+https://github.com/phaylali/hypr-calendar-omniversify.git#tag=v1.0.2
 	sha256sums = SKIP
 
 pkgname = omniversify-hypr-calendar

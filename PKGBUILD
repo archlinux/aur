@@ -1,12 +1,12 @@
 # Maintainer: Phaylali <admin@omniversify.com>
 
 pkgname=omniversify-hypr-calendar
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Three-calendar (Gregorian, Hijri, Amazigh) floating overlay for Hyprland"
 arch=('any')
 url="https://github.com/phaylali/hypr-calendar-omniversify"
-license=('Unlicense')
+license=('Unlicense' 'GPL-2.0-only')
 depends=('python' 'python-gobject' 'gtk4' 'hyprland')
 optdepends=(
   'noto-fonts: Arabic and Tifinagh glyphs for the Hijri/Amazigh tags'
