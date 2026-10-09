@@ -13,7 +13,7 @@ conflicts=("${_pkgname}")
 options=('!strip')
 
 depends=(
-  'libayatana-appindicator3'
+  'libayatana-appindicator'
   'webkit2gtk-4.1'
   'gtk3'
 )
