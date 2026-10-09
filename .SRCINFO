@@ -1,6 +1,6 @@
 pkgbase = grubforge
 	pkgdesc = The GRUB boot menu without editing files by hand: plain-word settings, a review before every save, a backup first
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/jetomev/grubforge
 	arch = any
@@ -8,13 +8,13 @@ pkgbase = grubforge
 	depends = python
 	depends = python-textual
 	depends = python-rich
-	depends = python-forgekit>=0.6.0
+	depends = python-forgekit>=0.10.0
 	depends = polkit
 	depends = python-gobject
-	source = grubforge-2.1.0.tar.gz::https://github.com/jetomev/grubforge/releases/download/v2.1.0/grubforge-2.1.0.tar.gz
-	source = grubforge-2.1.0.tar.gz.asc::https://github.com/jetomev/grubforge/releases/download/v2.1.0/grubforge-2.1.0.tar.gz.asc
+	source = grubforge-2.2.0.tar.gz::https://github.com/jetomev/grubforge/releases/download/v2.2.0/grubforge-2.2.0.tar.gz
+	source = grubforge-2.2.0.tar.gz.asc::https://github.com/jetomev/grubforge/releases/download/v2.2.0/grubforge-2.2.0.tar.gz.asc
 	validpgpkeys = 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
-	sha256sums = 74285d0747833060ab993fce98dd2fe6e40e5cf3d517b599c6614917558b0f30
+	sha256sums = 9d042e59074e96f0ff63422158f87fefa88b135aea50a5fdd9c8862cc95c136a
 	sha256sums = SKIP
 
 pkgname = grubforge

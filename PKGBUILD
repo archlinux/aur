@@ -2,7 +2,7 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=grubforge
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="The GRUB boot menu without editing files by hand: plain-word settings, a review before every save, a backup first"
 arch=('any')
@@ -14,10 +14,10 @@ license=('GPL3')
 # must be on the AUR first — dependency order)
 # v2.1.0: polkit's password asked in grubForge's own box (forgekit's
 # InAppPolkitAgent, through python-gobject), on a text console too
-depends=('python' 'python-textual' 'python-rich' 'python-forgekit>=0.6.0' 'polkit' 'python-gobject')
+depends=('python' 'python-textual' 'python-rich' 'python-forgekit>=0.10.0' 'polkit' 'python-gobject')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('74285d0747833060ab993fce98dd2fe6e40e5cf3d517b599c6614917558b0f30'
+sha256sums=('9d042e59074e96f0ff63422158f87fefa88b135aea50a5fdd9c8862cc95c136a'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
@@ -77,7 +77,8 @@ print('grubforge helper refusal checks OK')
     # v2.0.0: every screen's flows headless — settings, boot menu, themes,
     # backups, distributions, and that nothing is cut off at 100 columns.
     PYTHONDONTWRITEBYTECODE=1 python -m unittest \
-        tests.test_v2_settings tests.test_v2_bootmenu tests.test_v2_themes_backups
+        tests.test_v2_settings tests.test_v2_bootmenu tests.test_v2_themes_backups \
+        tests.test_v220
 }
 
 package() {
