@@ -17,8 +17,8 @@ depends=(
   'graphviz'
   'igraph'
   'python'
-  'qt5-svg'
-  'quazip-qt5'
+  'qt6-svg'
+  'quazip-qt6'
   'spdlog'
   'z3'
 )
@@ -41,17 +41,7 @@ _source_main() {
   sha256sums=('SKIP')
 }
 
-_source_patch() {
-  source+=(
-    'fix-igraph-calls.patch'
-  )
-  sha256sums+=(
-    '7f5bce57a8ef4a045a8feaa446ff76daf964428c435ca0655485d6a5c5debbe5'
-  )
-}
-
 _source_main
-_source_patch
 
 pkgver() {
   cd "$_pkgsrc"

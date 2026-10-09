@@ -17,15 +17,13 @@ pkgbase = hal-emsec-git
 	depends = graphviz
 	depends = igraph
 	depends = python
-	depends = qt5-svg
-	depends = quazip-qt5
+	depends = qt6-svg
+	depends = quazip-qt6
 	depends = spdlog
 	depends = z3
 	provides = hal-emsec
 	conflicts = hal-emsec
 	source = hal-emsec::git+https://github.com/emsec/hal.git#branch=master
-	source = fix-igraph-calls.patch
 	sha256sums = SKIP
-	sha256sums = 7f5bce57a8ef4a045a8feaa446ff76daf964428c435ca0655485d6a5c5debbe5
 
 pkgname = hal-emsec-git
