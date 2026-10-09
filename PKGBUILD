@@ -1,5 +1,5 @@
 pkgname=fenriz-desktop-bin
-pkgver=0.1.18
+pkgver=0.1.19
 pkgrel=1
 pkgdesc="Desktop shell for Wayland compositors (Binary Release)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('fenriz-desktop')
 conflicts=('fenriz-desktop' 'fenriz-desktop-git')
 backup=('etc/pam.d/fenriz-desktop')
 source=("${url}/releases/download/v${pkgver}/fenriz-desktop-${pkgver}.tar.gz")
-sha256sums=('5eef054fa0d4affe9c2978f4acf832fa5a9d27743d90cc62aa0aeb94eac52812')
+sha256sums=('67dc1dca4ecebacdf89be3cfb9d0f513f68dc3571a4f8b61daed34deaddd7bfa')
 
 package() {
     cd "fenriz-desktop-${pkgver}"
