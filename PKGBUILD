@@ -1,6 +1,6 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 pkgname=nuclei-git
-pkgver=3.11.1.r6609.a2b6d2a
+pkgver=3.11.1.r6653.59dad1b
 pkgrel=1
 pkgdesc="Fast and customizable vulnerability scanner"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
@@ -40,7 +40,6 @@ build() {
   export GOFLAGS='-buildmode=pie -mod=readonly -modcacherw'
   go build -ldflags "-compressdwarf=false -linkmode external" ./cmd/nuclei
   go build ./cmd/docgen
-  ./docgen docs.md nuclei-jsonschema.json
 }
 
 check() {
@@ -51,17 +50,18 @@ check() {
   export CGO_LDFLAGS="$LDFLAGS"
   export GOPATH="$srcdir"
   export GOFLAGS='-buildmode=pie -mod=readonly -modcacherw'
-  # Tests to skip
-  # - github.com/projectdiscovery/nuclei/v3/lib: Connects to an external host and gets an unexpected result
-  # - github.com/projectdiscovery/nuclei/v3/pkg/operators/common/dsl: Always returns nil, but expects an error
-  go test $(go list ./... | grep -v "github.com/projectdiscovery/nuclei/v3/lib$\|github.com/projectdiscovery/nuclei/v3/pkg/operators/common/dsl$")
+  local _skip=(
+    'lib' # Connects to an external host and gets an unexpected result
+    'pkg/operators/common/dsl' # Always returns nil, but expects an error
+  )
+  go test $(go list ./... | grep -Ev "$(printf 'github\.com/projectdiscovery/nuclei/v3/%s$|' "${_skip[@]}" | sed 's/|$//')")
 }
 
 package() {
   cd nuclei
   install -Dm0755 nuclei -t "$pkgdir/usr/bin/"
   install -Dm0644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm0644 docs.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm0644 <(./docgen /dev/stdout nuclei-jsonschema.json) "$pkgdir/usr/share/doc/$pkgname/docs.md"
 }
 
 # vim: ts=2 sw=2 et:
