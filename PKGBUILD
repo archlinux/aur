@@ -2,8 +2,8 @@
 
 _pkgname=crosspoint-sync
 pkgname=${_pkgname}-git
-pkgver=r137.ec98b5b
-pkgrel=2
+pkgver=r156.7140edf
+pkgrel=1
 pkgdesc="Lightweight KoSync Server for Syncing Crosspoint/CrossInk stats & progress"
 arch=("any")
 url="https://github.com/crosspoint-reader/crosspoint-sync"
@@ -19,14 +19,12 @@ source=(
 	'crosspoint-sync.service'
 	'sysusers.conf'
 	'tmpfiles.conf'
-	'0001-Allow-the-listening-socket-to-be-set-using-the-LISTE.patch'
 )
 sha256sums=('SKIP'
-            'b230082fec4fecace12f350e27754b242fd9c077f2ae0bb42fc9ad22fe77c7c6'
+            'ce0f26820cb42766ca720ff8c1c5ec7cfda4e491189c861cc3b7af6ab2772df3'
             'bbdd8040565e60573327c6adcbdbab2e1ea1294353f511a89b9ade66399229fe'
             '497f0708a4465f8426a45d33c63f9a73930d31985411c03d57abb7266e3b2c98'
-            '76ba495d8f493c75ad18aeff4775a55aac3a8499fec3606e8e6361fc04288011'
-            '69ecaacfac8b23c33afaf94da1d6c9d324677086fccbd8182bed444708888307')
+            '76ba495d8f493c75ad18aeff4775a55aac3a8499fec3606e8e6361fc04288011')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
@@ -44,8 +42,6 @@ prepare() {
 
 build() {
 	cd "$srcdir/${_pkgname}"
-
-	patch -p1 < "${srcdir}/0001-Allow-the-listening-socket-to-be-set-using-the-LISTE.patch"
 
 	npm run build
 	npm ci --omit=dev
