@@ -6,7 +6,7 @@
 # Maintainer: Small_Fox <smallfox0305@gmail.com>
 pkgname=mia-code-git
 _pkgFullName=MiaCode
-pkgver=1.0.0.r1064.g36dc7d08
+pkgver=v2.0.0_alpha
 pkgrel=1
 epoch=
 pkgdesc="A Simai editor built for professional chart creators"
