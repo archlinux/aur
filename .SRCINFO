@@ -1,13 +1,13 @@
 pkgbase = elephant-clipboard-substring
 	pkgdesc = clipboard provider for elephant (case-insensitive substring search, space-separated AND terms, newest first)
 	pkgver = 2.22.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = go
-	depends = elephant
+	depends = elephant=2.22.1
 	depends = wl-clipboard
 	depends = imagemagick
 	provides = elephant-clipboard=2.22.1
