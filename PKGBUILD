@@ -14,7 +14,7 @@
 # scripts/generate-inputs.sh, then re-render this recipe.
 
 pkgname=veshell
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="An innovative Not-Desktop environment for Linux built with Flutter and Rust"
 arch=('x86_64')
@@ -53,10 +53,10 @@ conflicts=('veshell-git')
 options=('!lto')
 
 # --- pinned inputs ----------------------------------------------------------
-_veshell_commit=e954bb7ebcdfab7892249005c64ff7ba740930d3
+_veshell_commit=62cc96a5d8450ba0f23e5a87d5ba4c4e033739c7
 _flutter_version=3.47.2
 _flutter_engine_revision=a804b261645ef8c13eb3d5c44a5c2fb0340c5539
-_input_mirror="${VESHELL_INPUT_MIRROR:-https://github.com/free-explorers/veshell-packaging/releases/download/packaging-inputs-v0.1.0}"
+_input_mirror="${VESHELL_INPUT_MIRROR:-https://github.com/free-explorers/veshell-packaging/releases/download/packaging-inputs-v0.1.1}"
 
 source=(
   "veshell::git+https://github.com/free-explorers/veshell.git#commit=$_veshell_commit"
@@ -69,8 +69,8 @@ source=(
   "linux-x64-profile_flutter-gtk.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a804b261645ef8c13eb3d5c44a5c2fb0340c5539/linux-x64-profile/linux-x64-flutter-gtk.zip"
   "linux-x64-release_flutter-gtk.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a804b261645ef8c13eb3d5c44a5c2fb0340c5539/linux-x64-release/linux-x64-flutter-gtk.zip"
   "linux-engine-sdk-release-x86_64-${_flutter_engine_revision}.tar.gz::https://github.com/free-explorers/flutter-engine/releases/download/linux-engine-sdk-release-x86_64-a804b261645ef8c13eb3d5c44a5c2fb0340c5539/linux-engine-sdk-release-x86_64-a804b261645ef8c13eb3d5c44a5c2fb0340c5539.tar.gz"
-  "veshell-cargo-vendor-0.1.0.tar.zst::$_input_mirror/veshell-cargo-vendor-0.1.0.tar.zst"
-  "veshell-pubcache-0.1.0.tar.zst::$_input_mirror/veshell-pubcache-0.1.0.tar.zst"
+  "veshell-cargo-vendor-0.1.1.tar.zst::$_input_mirror/veshell-cargo-vendor-0.1.1.tar.zst"
+  "veshell-pubcache-0.1.1.tar.zst::$_input_mirror/veshell-pubcache-0.1.1.tar.zst"
 )
 sha256sums=(
   'SKIP'  # pinned git commit
@@ -98,8 +98,8 @@ noextract=(
   "linux-x64-profile_flutter-gtk.zip"
   "linux-x64-release_flutter-gtk.zip"
   "linux-engine-sdk-release-x86_64-${_flutter_engine_revision}.tar.gz"
-  "veshell-cargo-vendor-0.1.0.tar.zst"
-  "veshell-pubcache-0.1.0.tar.zst"
+  "veshell-cargo-vendor-0.1.1.tar.zst"
+  "veshell-pubcache-0.1.1.tar.zst"
 )
 
 prepare() {
@@ -107,8 +107,8 @@ prepare() {
   mkdir -p "$srcdir/flutter-sdk" "$srcdir/cargo-vendor" "$srcdir/pubcache"
   tar -xJf "$srcdir/flutter_linux_${_flutter_version}-stable.tar.xz" \
     -C "$srcdir/flutter-sdk" --strip-components=1
-  tar -xf "$srcdir/veshell-cargo-vendor-0.1.0.tar.zst" -C "$srcdir/cargo-vendor"
-  tar -xf "$srcdir/veshell-pubcache-0.1.0.tar.zst" -C "$srcdir/pubcache"
+  tar -xf "$srcdir/veshell-cargo-vendor-0.1.1.tar.zst" -C "$srcdir/cargo-vendor"
+  tar -xf "$srcdir/veshell-pubcache-0.1.1.tar.zst" -C "$srcdir/pubcache"
 }
 
 build() {
