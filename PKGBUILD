@@ -1,11 +1,11 @@
 # Maintainer: The_Seventh <gustavo.gianeli13@gmail.com>
 pkgname=arch-update-full
 pkgver=4.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Sentinel Protocol: Update automation (Pacman/AUR/Flatpak/Snap) and auditing."
 arch=('any')
 url="https://github.com/GustavoGianeli/arch-update-full"
-license=('MIT')
+license=('GPL3')
 depends=('systemd' 'bash' 'pacman' 'pacman-contrib' 'libnotify' 'procps-ng' 'pciutils' 'coreutils' 'curl' 'wget')
 optdepends=(
   'yay: For AUR update support'
@@ -34,6 +34,7 @@ source=(
   "farol_amarelo_simbolo.png"
   "farol_vermelho_simbolo.png"
   "simbolo_tux_kernel_update.png"
+  "LICENSE::https://raw.githubusercontent.com/GustavoGianeli/arch-update-full/main/LICENSE"
 )
 
 # Use 'updpkgsums' para preencher isso automaticamente // Use 'updpkgsums' to automatically fill this in.
@@ -45,7 +46,8 @@ sha256sums=('aba87faea83f114c174889d688bf08c32b512573425885573a3d123fd8c92015'
             'c58cf401d1220fe69d53a1266527d99f1aff1ab2add3d31f946aa1bf277c190f'
             '9cbee1e5686754aa92847375e6afc65f5996cf2eb79e57b7a83efe876d853ee8'
             '53945258786075a41ec0a95e5ef7417917f6100e2a3927138c3e765e369f1188'
-            'dfc18ff554e7d92ffbc43936def6a698856743566270c7c0684148eac7e20b55')
+            'dfc18ff554e7d92ffbc43936def6a698856743566270c7c0684148eac7e20b55'
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
 # 1. Instala o script executável
@@ -63,6 +65,9 @@ package() {
   install -Dm644 "${srcdir}/farol_amarelo_simbolo.png" "${pkgdir}/usr/share/arch-update-full/icons/farol_amarelo_simbolo.png"
   install -Dm644 "${srcdir}/farol_vermelho_simbolo.png" "${pkgdir}/usr/share/arch-update-full/icons/farol_vermelho_simbolo.png"
   install -Dm644 "${srcdir}/simbolo_tux_kernel_update.png" "${pkgdir}/usr/share/arch-update-full/icons/simbolo_tux_kernel_update.png"
+  
+  # Instala a licença GPLv3 oficial do pacote
+  install -Dm644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   
 }
 
