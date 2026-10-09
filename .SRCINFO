@@ -2,7 +2,7 @@ pkgbase = fcitx5-lotus-git
 	pkgdesc = Vietnamese input method for fcitx5
 	pkgver = 3.6.0.r1120.g91d1b9c
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = https://github.com/LotusInputMethod/fcitx5-lotus
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -12,7 +12,6 @@ pkgbase = fcitx5-lotus-git
 	makedepends = gcc
 	makedepends = git
 	makedepends = python
-	makedepends = librsvg
 	source = git+https://github.com/LotusInputMethod/fcitx5-lotus.git#branch=dev
 	sha256sums = SKIP
 
