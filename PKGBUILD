@@ -5,21 +5,31 @@ _upstream=Hermes                 # productName + executableName
 _pkgver_tag=v0.21.6
 _commit=818c13be1dc4fd28987e1e881a9408224afd4535
 pkgver=0.21.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
 arch=('x86_64')
 url='https://github.com/NousResearch/hermes-agent'
 license=('MIT')
+# Runtime: Electron shell + hermes-agent. Anything hermes-agent already
+# declares (depends or optdepends: python, nodejs, uv, ffmpeg, ripgrep,
+# agent-browser, chromium/chrome, …) must not be repeated here — chroot
+# installs hermes-agent first, so prepare/check see those tools transitively.
 depends=(
-  'curl' 'electron42' 'git' 'hicolor-icon-theme' 'hermes-agent' 'libnotify' 'libsecret'
-  'libx11' 'libxi' 'nodejs>=22.22' 'npm' 'python>=3.14' 'uv' 'xdg-utils'
+  'electron42'
+  'hermes-agent'
+  'hicolor-icon-theme'
+  'libnotify'
+  'libsecret'
+  'libx11'
+  'libxi'
+  'xdg-utils'
 )
+# npm is not a hermes-agent dependency; nodejs comes via hermes-agent.
+makedepends=('npm')
+# git is not declared by hermes-agent; check() sets GIT_CEILING_DIRECTORIES.
+checkdepends=('git')
 optdepends=(
   'libayatana-appindicator: tray indicator support'
-  'google-chrome: local browser automation (or chromium)'
-  'chromium: local browser automation (or google-chrome)'
-  'ffmpeg: audio and video processing'
-  'ripgrep: fast file content search'
 )
 conflicts=('hermes-agent-desktop-bin')
 options=('!debug')
