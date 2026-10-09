@@ -1,0 +1,5 @@
+post_install() {
+  echo ">>> vrgb-gui: start it from the app menu (VRGB) and enable \"Start at login\","
+  echo "    or, on desktops without XDG autostart: systemctl --user enable vrgb-gui.service"
+  echo "    The tray restores the lighting itself; vrgb-restore.service is not needed."
+}

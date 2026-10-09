@@ -1,0 +1,6 @@
+post_install() {
+  echo ">>> vrgb: the logged-in user can control the keyboard right away (udev uaccess)."
+  echo "    Restore the lighting at every login (any desktop with a systemd user session):"
+  echo "        systemctl --user enable vrgb-restore.service"
+  echo "    Using the GUI (vrgb-gui)? Enable \"Start at login\" there instead - not both."
+}
