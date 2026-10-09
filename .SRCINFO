@@ -1,6 +1,6 @@
 pkgbase = chirp-next-bin
 	pkgdesc = GUI tool for programming ham radios (AppImage binary)
-	pkgver = 20261002
+	pkgver = 20261009
 	pkgrel = 1
 	epoch = 1
 	url = https://chirpmyradio.com/projects/chirp/wiki/Home
@@ -12,13 +12,13 @@ pkgbase = chirp-next-bin
 	conflicts = chirp
 	conflicts = chirp-daily
 	conflicts = chirp-next
-	noextract = Chirp-next-20261002-x86_64.AppImage
+	noextract = Chirp-next-20261009-x86_64.AppImage
 	options = !strip
 	options = !debug
-	source = Chirp-next-20261002-x86_64.AppImage::https://github.com/GaryScottMartin/chirp-next-mirror/releases/download/20261002/Chirp-next-20261002-x86_64.AppImage
+	source = Chirp-next-20261009-x86_64.AppImage::https://github.com/GaryScottMartin/chirp-next-mirror/releases/download/20261009/Chirp-next-20261009-x86_64.AppImage
 	source = chirp.desktop
 	source = chirp.png
-	sha256sums = d6eac874888f27697c7d2d9a6434a1066f951ca1ff18b285654aa479ca217907
+	sha256sums = ab72cfadbc63812898bdebd5719928f530b2ceee136dbc490406709a253fc481
 	sha256sums = b70bd2d91d0277d3820010ee9d2dfe7f7b6e6d92c640cc3b51a6ec2e18be6aae
 	sha256sums = aecc40abb16119e386c922ec48ee7d8bc6949ccb207ac03a7d0f620f0b9120ac
 
