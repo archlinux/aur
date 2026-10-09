@@ -15,6 +15,7 @@ import sys
 import tempfile
 import types
 import unittest
+from typing import Any, Dict, Optional
 from unittest.mock import patch
 
 faulthandler.dump_traceback_later(30, exit=True)
@@ -24,7 +25,7 @@ if full_router:
     sys.argv.remove("--full-router")
 sys.path.insert(0, str(source))
 
-from hermes_cli import banner, image_provenance, update_contract
+from hermes_cli import image_provenance, source_check, update_contract
 
 
 class UpdatePolicyTests(unittest.TestCase):
@@ -40,7 +41,6 @@ class UpdatePolicyTests(unittest.TestCase):
         self.addCleanup(env.stop)
         os.environ.pop("HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME", None)
         self.mock(image_provenance, "IMAGE_PROVENANCE_PATH", self.root / "image.json")
-        self.mock(banner, "upstream_commits_behind", lambda: [])
         # Supply only deployment discovery/config IO; admission logic stays real.
         config = types.ModuleType("hermes_cli.config")
         config.detect_install_method = lambda root: "git"
@@ -49,6 +49,7 @@ class UpdatePolicyTests(unittest.TestCase):
         config.format_docker_update_message = lambda: "Update the container image"
         config.load_config = lambda: {}
         config.get_project_root = lambda: self.root
+        config.require_readable_config_before_write = lambda path: {}
         if full_router:
             from hermes_cli import config as real_config
             from hermes_cli.web_routers import actions
@@ -67,15 +68,28 @@ class UpdatePolicyTests(unittest.TestCase):
             function.returns = None
             for arg in (*function.args.posonlyargs, *function.args.args, *function.args.kwonlyargs):
                 arg.annotation = None
-            namespace = {"asyncio": asyncio, "contextlib": contextlib, "_log": logging.getLogger(__name__)}
+            namespace = {
+                "asyncio": asyncio,
+                "contextlib": contextlib,
+                "_log": logging.getLogger(__name__),
+                "Any": Any,
+                "Dict": Dict,
+                "Optional": Optional,
+            }
             exec(compile(ast.Module(body=[function], type_ignores=[]), str(file), "exec"), namespace)
             self.route = namespace["check_hermes_update"]
+        version = types.SimpleNamespace(derived_version="test")
         route_globals = patch.dict(self.route.__globals__, {
             "_dashboard_local_update_managed_externally": lambda: False,
             "_server_path": lambda name: self.root,
             "detect_install_method": config.detect_install_method,
             "recommended_update_command_for_method": config.recommended_update_command_for_method,
             "get_hermes_home": lambda: self.root,
+            "get_version_info": lambda: version,
+            "is_commit_build": lambda root: False,
+            "COMMIT_BUILD_REFUSAL_MESSAGE": "commit-build",
+            "_MANAGED_EXTERNALLY_MESSAGE": "managed externally",
+            "_config_profile_scope": contextlib.nullcontext,
             "__version__": "test", "_NON_APPLYABLE_MESSAGES": {},
         })
         route_globals.start()
@@ -89,7 +103,7 @@ class UpdatePolicyTests(unittest.TestCase):
     def test_query_agrees_with_update_admission_without_network_or_cache_changes(self):
         cache = self.root / ".update_check"
         cache.write_text("existing cache")
-        with patch.object(banner, "check_for_updates", return_value=5) as query:
+        with patch.object(source_check, "check_for_updates", return_value={"behind": 5}) as query:
             result = asyncio.run(self.route(force=True))
         refusal = update_contract.evaluate_update_admission(self.root)
         self.assertEqual(refusal.code, "package-managed")
@@ -102,7 +116,7 @@ class UpdatePolicyTests(unittest.TestCase):
 
     def test_image_provenance_remains_authoritative(self):
         (self.root / "image.json").write_text("{}")
-        with patch.object(banner, "check_for_updates", return_value=5) as query:
+        with patch.object(source_check, "check_for_updates", return_value={"behind": 5}) as query:
             result = asyncio.run(self.route())
         refusal = update_contract.evaluate_update_admission(self.root)
         self.assertEqual(refusal.code, "image-marker-invalid")
@@ -112,7 +126,7 @@ class UpdatePolicyTests(unittest.TestCase):
 
     def test_ordinary_source_checkout_keeps_update_check(self):
         self.receipt.unlink()
-        with patch.object(banner, "check_for_updates", return_value=5) as query:
+        with patch.object(source_check, "check_for_updates", return_value={"behind": 5, "commits": []}) as query:
             result = asyncio.run(self.route())
         self.assertIsNone(update_contract.evaluate_update_admission(self.root))
         self.assertTrue(result["can_apply"])
@@ -120,17 +134,13 @@ class UpdatePolicyTests(unittest.TestCase):
         self.assertEqual(result["behind"], 5)
         query.assert_called_once()
 
-    def test_banner_skips_package_updates_but_keeps_source_updates(self):
-        self.mock(banner, "__file__", str(self.root / "hermes_cli/banner.py"))
-        self.mock(banner, "get_hermes_home", lambda: self.root)
-        self.mock(banner, "_resolve_repo_dir", lambda: self.root)
-        with patch.object(banner, "_check_via_local_git", return_value=5) as query:
-            for passive in (False, True):
-                self.assertIsNone(banner.check_for_updates(passive=passive))
-            query.assert_not_called()
-            self.receipt.unlink()
-            self.assertEqual(banner.check_for_updates(), 5)
-            query.assert_called_once()
+    def test_source_check_skips_package_updates_but_keeps_source_updates(self):
+        # Package receipt present: refuse before any network/cache work.
+        status = source_check.check_for_updates(install_root=self.root, home=self.root)
+        self.assertEqual(status.get("reason"), "package-managed")
+        self.assertFalse(status.get("supported"))
+        self.receipt.unlink()
+        self.assertFalse(update_contract.is_desktop_package_managed(self.root))
 
 
 unittest.main()

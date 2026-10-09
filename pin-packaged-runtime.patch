@@ -1,8 +1,8 @@
 diff --git a/apps/desktop/electron/active-runtime-state.test.ts b/apps/desktop/electron/active-runtime-state.test.ts
-index afc3e74..b8f3aee 100644
+index afc3e74b..40dd193f 100644
 --- a/apps/desktop/electron/active-runtime-state.test.ts
 +++ b/apps/desktop/electron/active-runtime-state.test.ts
-@@ -58,3 +58,33 @@ test('a repair that deleted the marker does not strand a healthy install', () =>
+@@ -58,3 +58,57 @@ test('a repair that deleted the marker does not strand a healthy install', () =>
    // usability, not marker presence, must decide the next boot.
    assert.equal(classifyActiveRuntime(null, 1, true).shouldUseActiveRuntime, true)
  })
@@ -36,25 +36,55 @@ index afc3e74..b8f3aee 100644
 +
 +  assert.equal(state.shouldUseActiveRuntime, true)
 +})
++
++test('a matching checkout without the package policy still needs bootstrap', () => {
++  const state = classifyActiveRuntime(VALID_MARKER, 1, true, {
++    expectedCommit: 'a'.repeat(40), activeCommit: 'a'.repeat(40), packagePatchReady: false
++  })
++  assert.equal(state.shouldUseActiveRuntime, false)
++  assert.equal(state.usabilityReason, 'package-patch-missing')
++})
++
++test('only a healthy, fully bootstrapped runtime at the package pin qualifies for policy-only refresh', () => {
++  const commit = VALID_MARKER.pinnedCommit
++  const policy = { expectedCommit: commit, activeCommit: commit, packagePatchReady: false }
++  assert.equal(classifyActiveRuntime(VALID_MARKER, 1, true, policy).policyOnly, true)
++  for (const [marker, usable, overrides] of [
++    [null, true, {}],
++    [{ ...VALID_MARKER, schemaVersion: 0 }, true, {}],
++    [{ ...VALID_MARKER, pinnedCommit: 'b'.repeat(40) }, true, {}],
++    [VALID_MARKER, false, {}],
++    [VALID_MARKER, true, { activeCommit: 'b'.repeat(40) }],
++    [VALID_MARKER, true, { expectedCommit: '0'.repeat(40), activeCommit: '0'.repeat(40) }]
++  ] as const) {
++    assert.equal(classifyActiveRuntime(marker, 1, usable, { ...policy, ...overrides }).policyOnly, false)
++  }
++})
 diff --git a/apps/desktop/electron/active-runtime-state.ts b/apps/desktop/electron/active-runtime-state.ts
-index 6d922a4..a3c6722 100644
+index 8b42be2d..293a0ecd 100644
 --- a/apps/desktop/electron/active-runtime-state.ts
 +++ b/apps/desktop/electron/active-runtime-state.ts
-@@ -6,7 +6,12 @@ export interface BootstrapMarkerLike {
+@@ -6,11 +6,18 @@ export interface BootstrapMarkerLike {
  export interface ActiveRuntimeState {
    hasValidMarker: boolean
    shouldUseActiveRuntime: boolean
 -  usabilityReason: 'usable' | 'unusable'
-+  usabilityReason: 'commit-mismatch' | 'usable' | 'unusable'
++  usabilityReason: 'commit-mismatch' | 'package-patch-missing' | 'usable' | 'unusable'
+   /** The canonical-root install stamp (written by the bootstrap), when the
+    *  active runtime was desktop-installed. Populated by the caller
+    *  (main.ts activeRuntimeState); undefined when never set. */
+   canonicalInstallStamp?: { source?: unknown; commit?: unknown; branch?: unknown } | null
++  policyOnly?: boolean
 +}
 +
 +interface RuntimeCommitPolicy {
 +  activeCommit?: unknown
 +  expectedCommit?: unknown
++  packagePatchReady?: boolean
  }
  
  export function hasValidBootstrapMarker(
-@@ -38,7 +43,8 @@ export function hasValidBootstrapMarker(
+@@ -42,10 +49,26 @@ export function hasValidBootstrapMarker(
  export function classifyActiveRuntime(
    marker: BootstrapMarkerLike | null | undefined,
    schemaVersion: number,
@@ -64,7 +94,25 @@ index 6d922a4..a3c6722 100644
  ): ActiveRuntimeState {
    const hasValidMarker = hasValidBootstrapMarker(marker, schemaVersion)
  
-@@ -50,6 +56,18 @@ export function classifyActiveRuntime(
++  if (commitPolicy.packagePatchReady === false) {
++    return {
++      hasValidMarker,
++      shouldUseActiveRuntime: false,
++      usabilityReason: 'package-patch-missing',
++      policyOnly:
++        runtimeUsable &&
++        hasValidMarker &&
++        typeof commitPolicy.expectedCommit === 'string' &&
++        /^(?!0+$)[0-9a-f]{40}$/i.test(commitPolicy.expectedCommit) &&
++        commitPolicy.activeCommit === commitPolicy.expectedCommit &&
++        marker?.pinnedCommit === commitPolicy.expectedCommit
++    }
++  }
++
+   if (!runtimeUsable) {
+     return {
+       hasValidMarker,
+@@ -54,6 +77,18 @@ export function classifyActiveRuntime(
      }
    }
  
@@ -83,68 +131,33 @@ index 6d922a4..a3c6722 100644
    return {
      hasValidMarker,
      shouldUseActiveRuntime: true,
-diff --git a/apps/desktop/electron/bootstrap-runner.ts b/apps/desktop/electron/bootstrap-runner.ts
-index dee008f..e674c1e 100644
---- a/apps/desktop/electron/bootstrap-runner.ts
-+++ b/apps/desktop/electron/bootstrap-runner.ts
-@@ -923,6 +923,7 @@ async function runBootstrap(opts) {
-     logRoot,
-     onEvent,
-     abortSignal,
-+    pinExistingCheckout = false,
-     writeMarker, // callback to write the bootstrap-complete marker; main.ts provides
-     gitBinary // probed git path from main.ts; bare 'git' when absent
-   } = opts
- 
-diff --git a/apps/desktop/electron/bootstrap-runner.ts b/apps/desktop/electron/bootstrap-runner.ts
---- a/apps/desktop/electron/bootstrap-runner.ts
-+++ b/apps/desktop/electron/bootstrap-runner.ts
-@@ -974,14 +975,14 @@ async function runBootstrap(opts) {
- 
-   try {
-     const existingCheckout = hasExistingGitCheckout(activeRoot)
--    const pinCommit = !existingCheckout
-+    const pinCommit = Boolean(pinExistingCheckout) || !existingCheckout
- 
-     if (existingCheckout && installStamp && installStamp.commit) {
-       emit({
-         type: 'log',
--        line:
--          `[bootstrap] existing checkout detected at ${activeRoot}; ` +
--          `not pinning to packaged install stamp ${installStamp.commit.slice(0, 12)}`
-+        line: pinCommit
-+          ? `[bootstrap] existing checkout detected at ${activeRoot}; pinning to packaged install stamp ${installStamp.commit.slice(0, 12)}`
-+          : `[bootstrap] existing checkout detected at ${activeRoot}; not pinning to packaged install stamp ${installStamp.commit.slice(0, 12)}`
-       })
-     }
- 
 diff --git a/apps/desktop/electron/main.ts b/apps/desktop/electron/main.ts
-index 888377d..26d23a1 100644
+index fcc49e5c..253c2198 100644
 --- a/apps/desktop/electron/main.ts
 +++ b/apps/desktop/electron/main.ts
-@@ -78,7 +78,7 @@ import {
+@@ -109,7 +109,7 @@ import {
    resolveLinuxPasswordStore
  } from './bootstrap-platform'
  import { decideBootstrapRepair } from './bootstrap-repair-guard'
 -import { runBootstrap } from './bootstrap-runner'
-+import { resolveCheckoutHead, runBootstrap } from './bootstrap-runner'
++import { isPackagedRuntimePatched, resolveCheckoutHead, runBootstrap } from './bootstrap-runner'
+ import { bootstrapSnapshot } from './bootstrap-state'
  import {
    BROWSER_WINDOW_HEIGHT,
-   BROWSER_WINDOW_MIN_HEIGHT,
-@@ -446,6 +446,9 @@ if (USER_DATA_OVERRIDE) {
+@@ -739,6 +739,9 @@ if (USER_DATA_OVERRIDE || process.env.HERMES_DATA_DIR_SUFFIX) {
  
  const DEV_SERVER = process.env.HERMES_DESKTOP_DEV_SERVER
  const IS_PACKAGED = app.isPackaged || Boolean(process.env.HERMES_DESKTOP_IS_PACKAGED)
 +const PACKAGE_MANAGED_RUNTIME = process.env.HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME === '1'
 +const PACKAGE_MANAGED_UPDATE_MESSAGE =
-+  'This Hermes runtime is managed by the system package. Update hermes-agent-desktop with your package manager.'
++  'This Hermes runtime is managed by the system package. Update hermes-agent-desktop with your package manager.' 
  const IS_MAC = process.platform === 'darwin'
  const IS_WINDOWS = process.platform === 'win32'
  const IS_WSL = isWslEnvironment()
-@@ -3633,6 +3636,14 @@ async function releaseBackendLock(updateRoot, tag) {
+@@ -4742,6 +4745,14 @@ async function releaseBackendLock(updateRoot: string, tag: string): Promise<{ un
  // Detection (checkUpdates / commit changelog / "N behind") stays in the UI;
  // only this apply action changed.
- async function applyUpdates(opts: { stopSafeBlockers?: boolean } = {}) {
+ async function applyUpdates(): Promise<UpdaterApplyResultWire> {
 +  if (PACKAGE_MANAGED_RUNTIME) {
 +    return {
 +      ok: false,
@@ -153,125 +166,127 @@ index 888377d..26d23a1 100644
 +    }
 +  }
 +
-   if (updateInFlight) {
-     throw new Error('An update is already in progress.')
-   }
-@@ -4971,12 +4976,16 @@ async function isActiveRuntimeUsable() {
+   return updateOperation.apply(async (): Promise<UpdaterApplyResultWire> => {
+     updateInFlight = true
+     let handedOff: boolean = false
+@@ -4943,15 +4954,19 @@ async function isSourceRuntimeUsable(root: string): Promise<boolean> {
  }
  
- async function activeRuntimeState() {
+ function activeRuntimeState(backend: SourceBackend | null): ActiveRuntimeState {
 -  // We DELIBERATELY do NOT verify that the checkout is currently at the
 -  // pinned commit -- users update via the in-app update path or `hermes
 -  // update`, which moves HEAD legitimately. The marker only attests "a
 -  // desktop-managed bootstrap ran here at least once"; runtime usability is
 -  // what decides whether we can actually launch.
--  return classifyActiveRuntime(readBootstrapMarker(), BOOTSTRAP_MARKER_SCHEMA_VERSION, await isActiveRuntimeUsable())
 +  // Self-managed installs may move HEAD via `hermes update`, so usability is
 +  // authoritative there. A system package owns its runtime version instead;
 +  // passing the package pin makes a mismatched checkout re-run bootstrap.
 +  const expectedCommit = PACKAGE_MANAGED_RUNTIME ? INSTALL_STAMP?.commit : null
-+  const usable = await isActiveRuntimeUsable()
-+
-+  return classifyActiveRuntime(readBootstrapMarker(), BOOTSTRAP_MARKER_SCHEMA_VERSION, usable, {
-+    activeCommit: expectedCommit ? resolveCheckoutHead(ACTIVE_HERMES_ROOT) : null,
-+    expectedCommit
-+  })
- }
+   const state: ActiveRuntimeState = classifyActiveRuntime(
+     readBootstrapMarker(),
+     BOOTSTRAP_MARKER_SCHEMA_VERSION,
+-    backend !== null
++    backend !== null,
++    {
++      activeCommit: expectedCommit ? resolveCheckoutHead(ACTIVE_HERMES_ROOT) : null,
++      expectedCommit,
++      packagePatchReady: !PACKAGE_MANAGED_RUNTIME || isPackagedRuntimePatched(ACTIVE_HERMES_ROOT)
++    }
+   )
  
- function writeBootstrapMarker(payload) {
-@@ -5264,6 +5281,22 @@ async function createActiveBackend(backendArgs) {
-   }
- }
+   // The canonical install stamp (written next to the runtime by the bootstrap)
+@@ -5361,6 +5376,17 @@ async function resolveHermesBackend(backendArgs: string[]): Promise<ResolvedHerm
  
-+function createBootstrapNeededBackend(backendArgs) {
-+  return {
-+    kind: 'bootstrap-needed',
-+    label: 'Hermes Agent not installed yet; bootstrap required',
-+    command: null,
-+    args: backendArgs,
-+    bootstrap: true,
-+    env: {},
-+    shell: false,
-+    activeRoot: ACTIVE_HERMES_ROOT,
-+    installStamp: INSTALL_STAMP,
-+    isPackaged: IS_PACKAGED,
-+    platform: process.platform
-+  }
-+}
-+
- async function resolveHermesBackend(backendArgs) {
-   // 1. Explicit override -- HERMES_DESKTOP_HERMES_ROOT points at a developer
-   //    checkout. Honour it as-is (no bootstrap; the user is driving).
-@@ -5316,6 +5349,14 @@ async function resolveHermesBackend(backendArgs) {
-   //    bootstrap when the runtime itself is unusable.
-   const activeRuntime = await activeRuntimeState()
+   const activeRuntime: ActiveRuntimeState = activeRuntimeState(activeBackend)
  
-+  if (activeRuntime.usabilityReason === 'commit-mismatch') {
++  if (
++    activeRuntime.usabilityReason === 'commit-mismatch' ||
++    activeRuntime.usabilityReason === 'package-patch-missing'
++  ) {
 +    rememberLog(
-+      `[bootstrap] Active Hermes runtime at ${ACTIVE_HERMES_ROOT} does not match packaged commit ${INSTALL_STAMP?.commit?.slice(0, 12)}; refreshing the package-managed runtime.`
++      `[bootstrap] Active Hermes runtime at ${ACTIVE_HERMES_ROOT} does not match the desktop package (${activeRuntime.usabilityReason}); refreshing the package-managed runtime.`
 +    )
 +
-+    return createBootstrapNeededBackend(backendArgs)
++    return createBootstrapNeededBackend(backendArgs, activeRuntime.policyOnly)
 +  }
 +
-   if (activeRuntime.shouldUseActiveRuntime && !bootstrapRepairRequested) {
+   if (activeBackend && !bootstrapRepairRequested) {
      if (!activeRuntime.hasValidMarker) {
        rememberLog(
-@@ -5447,20 +5488,7 @@ async function resolveHermesBackend(backendArgs) {
+@@ -5408,16 +5434,20 @@ async function resolveHermesBackend(backendArgs: string[]): Promise<ResolvedHerm
    //    resolveHermesBackend was the old "no payload" path and forced the
    //    user into a dead end. With the bootstrap protocol, "no install yet"
    //    is a recoverable state the GUI can drive through.
--  return {
--    kind: 'bootstrap-needed',
--    label: 'Hermes Agent not installed yet; bootstrap required',
--    command: null,
--    args: backendArgs,
--    bootstrap: true,
--    env: {},
--    shell: false,
--    // Hints for the bootstrap runner / UI layer:
--    activeRoot: ACTIVE_HERMES_ROOT,
--    installStamp: INSTALL_STAMP, // may be null in dev
--    isPackaged: IS_PACKAGED,
--    platform: process.platform
--  }
 +  return createBootstrapNeededBackend(backendArgs)
- }
++}
++
++function createBootstrapNeededBackend(backendArgs: string[], policyOnly = false): ResolvedHermesBackend {
+   return {
+     kind: 'bootstrap-needed',
+-    label: 'Hermes Agent not installed yet; bootstrap required',
++    label: 'Hermes Agent runtime setup required',
+     command: null,
+     args: backendArgs,
+     bootstrap: true,
+     env: {},
+     shell: false,
+-    // Hints for the bootstrap runner / UI layer:
+     activeRoot: ACTIVE_HERMES_ROOT,
++    policyOnly,
+     installStamp: INSTALL_STAMP, // may be null in dev
+     isPackaged: IS_PACKAGED,
+     platform: process.platform,
+@@ -5437,6 +5467,7 @@ interface ResolvedHermesBackend {
+   root?: string
+   installStamp?: Readonly<InstallStamp> | null
+   activeRoot?: string
++  policyOnly?: boolean
+   isPackaged?: boolean
+   platform?: NodeJS.Platform
+   readyFile?: boolean
+@@ -5479,7 +5510,8 @@ async function ensureRuntime(
+   }
  
- function ensureRuntime(backend: any, assertStillOwned: () => void): Promise<any> {
-@@ -4871,6 +4896,7 @@ async function runEnsureRuntime(backend: any): Promise<any> {
+   if (backend.kind === 'bootstrap-needed') {
+-    rememberLog('[bootstrap] no Hermes install found; starting first-launch bootstrap')
++    const policyOnly = Boolean(backend.policyOnly) && !bootstrapRepairRequested
++    rememberLog(policyOnly ? '[bootstrap] refreshing package policy only' : '[bootstrap] starting runtime setup')
+ 
+     if (await handOffWindowsBootstrapRecovery('bootstrap-needed')) {
+       const handoffError: Error & { isBootstrapFailure?: boolean; bootstrapHandedOff?: boolean } = new Error(
+@@ -5523,6 +5555,8 @@ async function ensureRuntime(
        hermesHome: HERMES_HOME,
        logRoot: path.join(HERMES_HOME, 'logs'),
        abortSignal: bootstrapAbortController.signal,
 +      pinExistingCheckout: PACKAGE_MANAGED_RUNTIME,
++      policyOnly,
        onEvent: ev => {
          // Tee every bootstrap event to (a) the desktop log for forensics
          // and (b) the renderer for live progress UI. Either may be absent;
-@@ -18055,15 +18083,24 @@ const terminalIpc = registerTerminalIpc({
+@@ -18645,14 +18679,24 @@ const disposeTerminalSession = terminalIpc.disposeTerminalSession
  
- const disposeTerminalSession = terminalIpc.disposeTerminalSession
- 
--ipcMain.handle('hermes:updates:check', async (_event, opts) =>
--  checkUpdates({ force: Boolean(opts?.force) }).catch(error => ({
-+ipcMain.handle('hermes:updates:check', async (_event, opts) => {
-+  if (PACKAGE_MANAGED_RUNTIME) {
-+    return {
-+      supported: false,
-+      branch: INSTALL_STAMP?.branch || readDesktopUpdateConfig().branch,
-+      message: PACKAGE_MANAGED_UPDATE_MESSAGE,
-+      fetchedAt: Date.now()
+ ipcMain.handle(
+   'hermes:updates:check',
+-  async (_event: Electron.IpcMainInvokeEvent, opts?: { force?: boolean }): Promise<UpdaterStatusWire> =>
+-    checkUpdates({ force: Boolean(opts?.force) }).catch((error: Error): UpdaterStatusWire => ({
++  async (_event: Electron.IpcMainInvokeEvent, opts?: { force?: boolean }): Promise<UpdaterStatusWire> => {
++    if (PACKAGE_MANAGED_RUNTIME) {
++      return {
++        supported: false,
++        branch: INSTALL_STAMP?.branch || readDesktopUpdateConfig().branch,
++        message: PACKAGE_MANAGED_UPDATE_MESSAGE,
++        fetchedAt: Date.now()
++      }
 +    }
-+  }
 +
-+  return checkUpdates({ force: Boolean(opts?.force) }).catch(error => ({
-     supported: true,
-     branch: readDesktopUpdateConfig().branch,
-     error: error?.kind === GIT_UNUSABLE ? GIT_UNUSABLE : 'check-failed',
-     message: error?.message || String(error),
-     fetchedAt: Date.now()
-   }))
--)
-+})
++    return checkUpdates({ force: Boolean(opts?.force) }).catch((error: Error): UpdaterStatusWire => ({
+       supported: true,
+       branch: readDesktopUpdateConfig().branch,
+       error: 'check-failed',
+       message: error?.message || String(error),
+       fetchedAt: Date.now()
+     }))
++  }
+ )
  
  ipcMain.handle('hermes:updates:apply', async (_event, payload) =>
-   applyUpdates(payload || {}).catch(error => ({

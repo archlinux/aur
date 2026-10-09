@@ -2,9 +2,9 @@
 pkgname=hermes-agent-desktop
 _pkgname=hermes-desktop          # /usr/bin launcher name (AUR convention, lowercase)
 _upstream=Hermes                 # productName + executableName
-_pkgver_tag=v2026.9.24
-_commit=f97608f178d1ffeca59860195ab7da295f7c8e5f
-pkgver=0.21.5
+_pkgver_tag=v0.21.6
+_commit=818c13be1dc4fd28987e1e881a9408224afd4535
+pkgver=0.21.6
 pkgrel=1
 pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
 arch=('x86_64')
@@ -12,7 +12,7 @@ url='https://github.com/NousResearch/hermes-agent'
 license=('MIT')
 depends=(
   'curl' 'electron42' 'git' 'hicolor-icon-theme' 'libnotify' 'libsecret' 'libx11' 'libxi'
-  'nodejs>=22.22' 'npm' 'uv' 'xdg-utils'
+  'nodejs>=22.22' 'npm' 'python>=3.14' 'uv' 'xdg-utils'
 )
 optdepends=(
   'libayatana-appindicator: tray indicator support'
@@ -21,15 +21,12 @@ optdepends=(
   'ffmpeg: audio and video processing'
   'ripgrep: fast file content search'
 )
-makedepends=('python')
 conflicts=('hermes-agent-desktop-bin')
 options=('!debug')
 source=(
   "hermes-agent-${_pkgver_tag}.tar.gz::${url}/archive/refs/tags/${_pkgver_tag}.tar.gz"
-  'system-electron-resources.patch'
   'pin-packaged-runtime.patch'
   'fix-voice-prefs-storage-spy.patch'
-  'system-browser.patch'
   'packaged-bootstrap.patch'
   'runtime-policy.patch'
   'harden-hud-modifier-monitor.patch'
@@ -38,18 +35,16 @@ source=(
   'runtime.test.cjs'
   'runtime-policy.test.py'
 )
-sha256sums=('15b15ce4e6ec8ea424a081823709d1e17f0943e7b42b59597d24ebb94cbd1742'
-            'ee465a1aa2ad5789fa5c7b3a89993bbf0e68efddbf27c93109519b72a4cb90f7'
-            '0d4263cdf9266f1abedc7543e44b9062e152634c1a490a1efff2345043740d53'
+sha256sums=('1ba3500cdbe876bb9d347b3c12f41c591a421293eac58faba23571287dfe1cf8'
+            '9cc548c0d9ac9a160286a69dcf99b3d008cbaf35bb219b4a38009d3db7590f12'
             '047d6e615017b2bb8584383234cdfb3169694e25c10221d7a78da864884b1481'
-            'fa8933a96e58575e7d4f876a7eb380d6c1723233832b787a46fb158f79df7718'
-            'ab2b14399696da255d62237f01c061ed25bf2d7d12870b78185c906edbdb0ec2'
-            '252858c8127398ce631a0ea94b9899e228bda736796aee1914337b9828faad07'
-            '1602743519aa74866979707665a8641df20d966c6197b7a5d028b62860b528cb'
+            '9c7b16d573e521d0a750ad2a188d37d5f4de0f39936504678243e767a6e88e5b'
+            '308fcfeea8385b3f192f1958bb83428f862cf3080a87ae1c3d020df27abb5fb4'
+            'cf8b625b00e606b5b135bf5a38a851d8a699c819139e6720eecfa043ba886e9b'
             '700eaf971f8aeedf0268cd85954235d1770b786b19ca7e9d7905bf17aed86d44'
             'dcb84ac7c5f5a7168d089ba082a8c8c77cf3955abc79775f530aee870a30d5df'
-            '1a39719fd6b6ac2e773e6f72bd55ef313469734cf72dbe1f9adf7bff0979c873'
-            '79b361c4cdd363ef8a2fdd1d6f8fab2a0116f10ab3ab63e527c87c0e3f36f8f7')
+            '3c85cd9077b8e326dfe2a44011bfc92108f8db403a88974688dc1f5c026aed37'
+            'cfe7eaf68db1aeb5570f12f7f03c4547ed5c754680be8faa47f112303e0db7d5')
 
 # Resolve srcdir inside makepkg's functions; it is empty at the top level.
 _extract_dir() {
@@ -66,10 +61,8 @@ _set_npm_env() {
 prepare() {
   cd "$(_extract_dir)"
   _set_npm_env
-  patch --batch --fuzz=0 -Np1 -i "${srcdir}/system-electron-resources.patch"
   patch --batch --fuzz=0 -Np1 -i "${srcdir}/pin-packaged-runtime.patch"
   patch --batch --fuzz=0 -Np1 -i "${srcdir}/fix-voice-prefs-storage-spy.patch"
-  patch --batch --fuzz=0 -Np1 -i "${srcdir}/system-browser.patch"
   patch --batch --fuzz=0 -Np1 -i "${srcdir}/packaged-bootstrap.patch"
   patch --batch --fuzz=0 -Np1 -i "${srcdir}/runtime-policy.patch"
   patch --batch --fuzz=0 -Np1 -i "${srcdir}/harden-hud-modifier-monitor.patch"
@@ -108,11 +101,10 @@ build() {
   # makepkg runs build() in a separate subshell from prepare().
   export GITHUB_SHA="${_commit}" GITHUB_REF_NAME="${_pkgver_tag}"
   export CFLAGS CXXFLAGS CPPFLAGS LDFLAGS
-  local electron_version
-  electron_version="$(< /usr/lib/electron42/version)"
   # Keep upstream's package.json and lockfile pins intact for deterministic
-  # npm ci. The builder CLI override below selects the system runtime without
-  # pretending that the locked npm tooling package was resolved at a new pin.
+  # npm ci. electron-builder still prepares a throwaway Electron zip for the
+  # packager; package() retains only app resources and the launcher runs
+  # Arch's electron42.
   npm run build
 
   # Upstream writes the wall clock into the bundled install stamp. Normalize it
@@ -124,9 +116,11 @@ build() {
     build/install-stamp.json
   grep -Fq "\"builtAt\": \"${build_time}\"" build/install-stamp.json
 
-  # Use Arch's Electron distribution; package() retains only app resources.
-  npm run builder -- --linux dir \
-    -c.electronVersion="${electron_version}"
+  # Upstream's prepared-packaging gate admits `--dir`, not a bare `dir` token,
+  # and rejects `-c.electronVersion=…` overrides. Omit --x64: an explicit arch
+  # flag stages into build/native-deps-<platform>-<arch>, which productOutput
+  # does not allow; host arch reuses the allowed build/native-deps path.
+  npm run builder -- --linux --dir
 }
 
 check() {
@@ -138,6 +132,15 @@ check() {
   export LANG=C.UTF-8 LC_ALL=C.UTF-8
   export GIT_CEILING_DIRECTORIES="${TMPDIR:-/tmp}"
   unset HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME
+  # Upstream electron tests import hermes_cli/pm through HERMES_PYTHON; a bare
+  # system interpreter lacks the locked deps. Prepare a throwaway venv from
+  # uv.lock (network only for wheels missing from the host uv cache).
+  local check_venv="${srcdir}/hermes-check-venv"
+  export UV_PROJECT_ENVIRONMENT="${check_venv}"
+  export UV_CACHE_DIR="${srcdir}/uv-cache"
+  uv venv "${check_venv}" --python /usr/bin/python3
+  uv sync --frozen --no-group dev
+  export HERMES_PYTHON="${check_venv}/bin/python"
   node "${srcdir}/launcher.test.cjs"
   node "${srcdir}/runtime.test.cjs" "$PWD/scripts/install.sh" "$PWD"
   python -B "${srcdir}/runtime-policy.test.py" "$PWD"

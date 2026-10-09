@@ -48,10 +48,10 @@ function fixture(t) {
     return spawnSync('/bin/bash', ['-c', `
       source "$1" --manifest >/dev/null
       INSTALL_DIR="$2"
-      REPO_URL_HTTPS="$3"
+      REPO_URL="$3"
       INSTALL_COMMIT="$4"
       BRANCH=main
-      clone_repo
+      stage_repository
       test "$PWD" = "$INSTALL_DIR"
     `, 'test', path.join(resources, 'install.sh'), root, repo, commit],
     { env, cwd: home, encoding: 'utf8', timeout: 15000 })
@@ -105,90 +105,6 @@ for (const ignored of [false, true]) {
   })
 }
 
-test('package bootstrap does not persist browser detection or rewrite explicit browser config', t => {
-  const f = fixture(t)
-  const envFile = path.join(f.home, '.env')
-  const browser = path.join(f.home, 'chrome')
-  fs.writeFileSync(browser, '#!/bin/sh\nexit 0\n', { mode: 0o755 })
-  const detect = () => f.shell('configure_browser_env_from_system_browser', { AGENT_BROWSER_EXECUTABLE_PATH: browser })
-  assert.equal(detect().status, 0)
-  assert.equal(fs.existsSync(envFile), false)
-  const explicit = 'AGENT_BROWSER_EXECUTABLE_PATH=/custom/browser\n'
-  fs.writeFileSync(envFile, explicit)
-  assert.equal(detect().status, 0)
-  assert.equal(fs.readFileSync(envFile, 'utf8'), explicit)
-})
-
-for (const selection of ['version', 'path', 'path with spaces', 'broken path']) {
-  test(`package venv stage preserves installed files with a ${selection} selection`, t => {
-    const f = fixture(t)
-    f.succeeds(f.first)
-    const venv = path.join(f.root, 'venv')
-    const created = spawnSync('/usr/bin/python', ['-m', 'venv', '--without-pip', venv], { encoding: 'utf8' })
-    assert.equal(created.status, 0, created.stderr)
-    const version = spawnSync(path.join(venv, 'bin/python'), ['-c', 'import sys; print("%s.%s" % sys.version_info[:2])'], { encoding: 'utf8' }).stdout.trim()
-    fs.writeFileSync(path.join(venv, 'keep'), 'installed extension')
-    let selected = version
-    if (selection !== 'version') {
-      selected = path.join(f.home, selection === 'path with spaces' ? 'python with spaces' : 'python')
-      fs.symlinkSync(selection === 'broken path' ? '/bin/false' : '/usr/bin/python', selected)
-    }
-    const result = f.shell('cd "$INSTALL_DIR"\nDISTRO=arch\nUV_CMD=/bin/false\nPYTHON_VERSION="$TEST_PYTHON_VERSION"\nsetup_venv', { TEST_PYTHON_VERSION: selected })
-    if (selection === 'broken path') assert.notEqual(result.status, 0)
-    else assert.equal(result.status, 0, result.stderr + result.stdout)
-    assert.equal(fs.readFileSync(path.join(venv, 'keep'), 'utf8'), 'installed extension')
-  })
-}
-
-for (const state of ['wrong version', 'broken interpreter']) {
-  test(`package venv stage rebuilds a ${state}`, t => {
-    const f = fixture(t)
-    f.succeeds(f.first)
-    const venv = path.join(f.root, 'venv')
-    fs.mkdirSync(path.join(venv, 'bin'), { recursive: true })
-    fs.symlinkSync(state === 'wrong version' ? '/usr/bin/python' : '/bin/false', path.join(venv, 'bin/python'))
-    fs.writeFileSync(path.join(venv, 'keep'), 'old environment')
-    const uv = path.join(f.home, 'bin/uv')
-    // Stub interpreter provisioning, but create the real venv that setup_venv validates.
-    fs.writeFileSync(uv, '#!/bin/sh\n[ "$1" = venv ] && [ "$3" = --python ] || exit 1\nexec /usr/bin/python -m venv --without-pip "$2"\n', { mode: 0o755 })
-    const result = f.shell('cd "$INSTALL_DIR"\nDISTRO=arch\nUV_CMD="$HOME/bin/uv"\nPYTHON_VERSION=3.0\nsetup_venv', { PYTHONOPTIMIZE: '1' })
-    assert.equal(result.status, 0, result.stderr + result.stdout)
-    assert.equal(fs.existsSync(path.join(venv, 'keep')), false)
-    const probe = spawnSync(path.join(venv, 'bin/python'), ['-c', 'import sys; sys.exit(sys.prefix == sys.base_prefix)'])
-    assert.equal(probe.status, 0)
-  })
-}
-
-for (const mode of ['local browser', 'no browser', 'ordinary installer']) {
-  test(`installer guidance: ${mode}`, t => {
-    const f = fixture(t)
-    f.succeeds(f.first)
-    fs.writeFileSync(path.join(f.root, 'package.json'), '{}')
-    const browser = path.join(f.home, 'chrome')
-    fs.writeFileSync(browser, '#!/bin/sh\nexit 0\n', { mode: 0o755 })
-    const result = f.shell(`
-      HAS_NODE=true
-      DISTRO=arch
-      SKIP_BROWSER=true
-      run_with_timeout() { test "$2" = npm; }
-      install_node_deps
-      print_success
-    `, {
-      HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME: mode === 'ordinary installer' ? '' : '1',
-      AGENT_BROWSER_EXECUTABLE_PATH: mode === 'local browser' ? browser : ''
-    })
-    assert.equal(result.status, 0, result.stderr + result.stdout)
-    if (mode === 'ordinary installer') {
-      assert.match(result.stdout, /npx playwright install chromium/)
-      assert.match(result.stdout, /hermes update/)
-    } else {
-      assert.doesNotMatch(result.stdout, /npx playwright install|hermes update|Browser tools will be unavailable|Browser engine setup complete/)
-      assert.match(result.stdout, /AUR helper/)
-      assert.match(result.stdout, mode === 'local browser' ? /Using local browser:/ : /Install Chrome or Chromium/)
-    }
-  })
-}
-
 for (const change of ['unstaged', 'staged', 'patch conflict', 'bad new patch']) {
   test(`package bootstrap preserves the checkout on ${change}`, t => {
     const f = fixture(t)
@@ -218,23 +134,19 @@ test('invalid pins and missing package patches fail before creating a checkout',
   assert.equal(fs.existsSync(f.root), false)
 })
 
-test('the packaged backend uses system uv and refuses updates without a desktop environment flag', t => {
+test('package-managed installs refuse hermes update via the shared admission gate', t => {
   const f = fixture(t)
   f.succeeds(f.first)
-  fs.writeFileSync(path.join(f.home, 'bin', 'uv'), '#!/bin/sh\nexit 99\n', { mode: 0o755 })
   const env = { ...f.env, PYTHONPATH: path.resolve(process.argv[3]), TEST_ROOT: f.root }
   delete env.HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME
   const result = spawnSync('/usr/bin/python', ['-B', '-c', `
-import os
 from pathlib import Path
-from hermes_cli import managed_uv
-from hermes_cli.update_contract import evaluate_update_admission
+import os
+from hermes_cli.update_contract import evaluate_update_admission, is_desktop_package_managed
 
-managed_uv._PROJECT_ROOT = Path(os.environ['TEST_ROOT'])
-assert managed_uv.resolve_uv() == '/usr/bin/uv'
-assert str(managed_uv.ensure_uv()) == '/usr/bin/uv'
-assert managed_uv.update_managed_uv(force=True) == '/usr/bin/uv'
-refusal = evaluate_update_admission(Path(os.environ['TEST_ROOT']))
+root = Path(os.environ['TEST_ROOT'])
+assert is_desktop_package_managed(root)
+refusal = evaluate_update_admission(root)
 assert refusal is not None and refusal.code == 'package-managed'
 assert 'hermes-agent-desktop' in refusal.update_command
   `], { env, cwd: f.home, encoding: 'utf8', timeout: 15000 })
@@ -246,8 +158,8 @@ test('the packaged installer uses system uv even with an old private copy on PAT
   fs.writeFileSync(path.join(f.home, 'bin', 'uv'), '#!/bin/sh\nexit 99\n', { mode: 0o755 })
   const result = spawnSync('/bin/bash', ['-c', `
     source "$1" --manifest >/dev/null
-    DISTRO=arch
-    install_uv
+    UV_CMD=""
+    ensure_uv
     test "$UV_CMD" = /usr/bin/uv
   `, 'test', installer], { env: f.env, cwd: f.home, encoding: 'utf8' })
   assert.equal(result.status, 0, result.stderr + result.stdout)
