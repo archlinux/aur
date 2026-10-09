@@ -18,12 +18,12 @@ import sys
 os.chdir(sys.argv[1] if len(sys.argv) > 1 else '.')
 
 def apply(path, replacements):
+    """逐个锚点替换；锚点缺失直接失败，避免"构建成功但补丁没生效"的静默失配。"""
     with open(path, 'r', encoding='utf-8') as f:
         content = f.read()
     for old, new in replacements:
         if old not in content:
-            print(f"WARN: pattern not found in {path}: {old[:70]!r}")
-            continue
+            sys.exit(f"FAIL: anchor missing in {path}: {old[:80]!r}")
         content = content.replace(old, new, 1)
     with open(path, 'w', encoding='utf-8') as f:
         f.write(content)
