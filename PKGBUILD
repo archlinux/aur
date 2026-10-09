@@ -1,8 +1,8 @@
 # Maintainer: BlackCherry <blackcherry at danwin1210 dot de>
 
 pkgname=mangowm-wlonly
-stablecommit=3e0a7c8c6cb84b3080dd7adf6b030275ebca6439
-pkgver=0.17.5
+stablecommit=e0159f89f5aa061eabd1c1c0781853567568cc70
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="mangowm without scenefx"
 url="https://github.com/mangowm/mango/tree/wl-only"
@@ -34,7 +34,6 @@ provides=(mangowm wayland-compositor)
 conflicts=(mangowm mangowm-git)
 source=("$pkgname::git+https://github.com/mangowm/mango.git#commit=$stablecommit")
 md5sums=('SKIP')
-options=('!strip' '!lto')
 
 build() {
   arch-meson --wipe $pkgname build
