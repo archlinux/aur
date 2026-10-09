@@ -1,0 +1,16 @@
+pkgbase = pomodoro-time-chamber-bin
+	pkgdesc = A terminal pomodoro timer with a task list, written in Rust with ratatui. It is scriptable with Lua plugins.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/andersondanilo/pomodoro-time-chamber
+	arch = x86_64
+	license = Unlincense
+	depends = glibc
+	depends = libgcc
+	provides = ptc
+	conflicts = pomodoro-time-chamber
+	options = !strip
+	source_x86_64 = ptc-x86_64-1.1.0.tgz::https://github.com/andersondanilo/pomodoro-time-chamber/releases/download/v1.1.0/ptc-v1.1.0-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 4d72acf9fa1f0010c63ff4ba3563ed46af25af836821e203475f6c83079761f1
+
+pkgname = pomodoro-time-chamber-bin

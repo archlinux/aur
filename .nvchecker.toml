@@ -1,0 +1,5 @@
+[pomodoro-time-chamber-bin]
+source = "github"
+github = "andersondanilo/pomodoro-time-chamber"
+use_latest_release = true
+prefix = "v"
