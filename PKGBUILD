@@ -3,7 +3,7 @@
 # Upstream ships an AppImage only. This unpacks that AppImage so pacman owns
 # every file and the app cannot replace itself underneath the package.
 pkgname=thinkwatch-lite-bin
-pkgver=2026.10.2
+pkgver=2026.10.9
 pkgrel=1
 pkgdesc="A local gateway for Claude Code, Codex and other AI clients"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('e2fsprogs' 'expat' 'fontconfig' 'freetype2' 'fribidi' 'harfbuzz'
 _asset="ThinkWatch-Lite-$pkgver-linux-x86_64.AppImage"
 source=("$_asset::https://github.com/ThinkWatchProject/ThinkWatch-Lite/releases/download/v$pkgver/$_asset"
         "LICENSE::https://raw.githubusercontent.com/ThinkWatchProject/ThinkWatch-Lite/v$pkgver/LICENSE")
-sha256sums=('2119a66982688aaf66399a2be05d7ef0bd0badf910602b45e74e620ef66115ac'
+sha256sums=('6f48ae50164780dae40df3eb17f80ff507807936d3b5680a909c88475ed7fa63'
             '7252131fc6a9010e307564a50152aeae79c6bde89665b3e4b3f2aca9591749dd')
 
 build() {
@@ -25,11 +25,10 @@ build() {
   ./"$_asset" --appimage-extract > /dev/null
   cd squashfs-root
 
-  # The AppImage carries the graphics stack of the distribution it was built
-  # on. WebKitGTK asks Mesa for an EGL display, Mesa loads the bundled
-  # libwayland-client, and on a host with a newer Wayland that call fails with
-  # EGL_BAD_PARAMETER: the web process dies and the window stays blank.
-  # Removing these four makes Mesa and GTK use the host's copies.
+  # Upstream used to bundle its build distribution's libwayland-client/cursor/
+  # egl/server. WebKitGTK loaded them instead of the host's, Mesa's EGL display
+  # call failed with EGL_BAD_PARAMETER and the window stayed blank. 2026.10.9
+  # ships none of them; kept as a guard against a regression.
   rm -f usr/lib/libwayland-client.so.0 usr/lib/libwayland-cursor.so.0 \
         usr/lib/libwayland-egl.so.1 usr/lib/libwayland-server.so.0
 
