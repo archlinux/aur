@@ -1,7 +1,7 @@
 # Maintainer: Jose Andres Auyon <auyon.joseandres@gmail.com>
 pkgname=git-profile-switcher-bin
 _appname=git-profile-switcher
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Cross-platform desktop tray app for managing multiple Git identities"
 arch=('x86_64')
@@ -26,7 +26,7 @@ _asset="Git.Profile.Switcher-${pkgver}.AppImage"
 source=("${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_asset}"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/Kinau-Guatemala/git-profile-switcher/v${pkgver}/LICENSE")
 # Checksums produced by `updpkgsums`; regenerate whenever pkgver changes.
-sha256sums=('834cbcca4e2c9b4b0c163e28dac91404ad2621f35ba69ea5cebe9e3a7dfcc299'
+sha256sums=('6790fb45af48dad24c42f89bf767cda5076de1cc24ae86ef948729a0f69ccd6b'
             'a75d1cbb2e90e3438c93ec0977d445e2c7c9fb35b9ba858d1a5407d72e516b6c')
 
 build() {
