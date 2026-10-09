@@ -3,7 +3,7 @@
 
 pkgname=python-forgekit
 _srcname=forgekit
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Shared Textual TUI shell library for the Forge Suite — menu bar, dialogs, settings forms and save flows, a start-up check, a centred password box, Catppuccin theme"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('python-gobject: the polkit password asked inside the app (grubForge
             'polkit: the same')
 source=("${_srcname}-${pkgver}.tar.gz::${_repo}/releases/download/${_srcname}-v${pkgver}/${_srcname}-${pkgver}.tar.gz"
         "${_srcname}-${pkgver}.tar.gz.asc::${_repo}/releases/download/${_srcname}-v${pkgver}/${_srcname}-${pkgver}.tar.gz.asc")
-sha256sums=('ef49b3c6a92c47192717580588e12c4cc5c030a421d9450dd895c6344e83d2f6'
+sha256sums=('8a64cca88613c04fd23a4281f510eb6c36201247ddeb8bacbd12bdb3e8454bf5'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
@@ -36,7 +36,9 @@ from forgekit import (ForgeApp, ForgeModal, ConfirmDialog, ForgePanelScreen,
                       SettingRow, ReviewDialog, ProgressDialog, ManualScreen,  # 0.5.0
                       TerminalPane, RunWindow, PasswordBridge, PasswordDialog, InAppPolkitAgent,  # 0.6.0
                       start_check, Need, NeedsApp, sway_session, program, service, a_file,  # 0.7.0
-                      PasswordField)  # 0.8.0
+                      PasswordField,  # 0.8.0
+                      MENU_HINT, assign_accels, hypeforge_mode, add_hypeforge_argument,  # 0.10.0
+                      menu_key_clashes, AboutView, LicenseView, ShortcutsView, ManualView)
 assert __version__ == '${pkgver}', __version__
 
 class _Smoke(ForgeApp):
@@ -66,6 +68,9 @@ print('forgekit headless mount OK (window and console mode)')
     PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_v08
     # 0.9.0: the menu bar wraps on a narrow window — titles on screen by position, a second-row click
     PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_menubar
+    # 0.10.0: the menu's keys (Javier's letter rule, numbers with Help), --hypeforge and Settings'
+    # close request, one dropdown at a time, Help's pages in the work area, the pane's mouse and keys
+    PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_v010
 }
 
 package() {

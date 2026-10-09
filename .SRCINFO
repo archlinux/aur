@@ -1,6 +1,6 @@
 pkgbase = python-forgekit
 	pkgdesc = Shared Textual TUI shell library for the Forge Suite — menu bar, dialogs, settings forms and save flows, a start-up check, a centred password box, Catppuccin theme
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/jetomev/forge-suite/tree/main/forgekit
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = python-forgekit
 	depends = python-pyte
 	optdepends = python-gobject: the polkit password asked inside the app (grubForge)
 	optdepends = polkit: the same
-	source = forgekit-0.9.0.tar.gz::https://github.com/jetomev/forge-suite/releases/download/forgekit-v0.9.0/forgekit-0.9.0.tar.gz
-	source = forgekit-0.9.0.tar.gz.asc::https://github.com/jetomev/forge-suite/releases/download/forgekit-v0.9.0/forgekit-0.9.0.tar.gz.asc
+	source = forgekit-0.10.0.tar.gz::https://github.com/jetomev/forge-suite/releases/download/forgekit-v0.10.0/forgekit-0.10.0.tar.gz
+	source = forgekit-0.10.0.tar.gz.asc::https://github.com/jetomev/forge-suite/releases/download/forgekit-v0.10.0/forgekit-0.10.0.tar.gz.asc
 	validpgpkeys = 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
-	sha256sums = ef49b3c6a92c47192717580588e12c4cc5c030a421d9450dd895c6344e83d2f6
+	sha256sums = 8a64cca88613c04fd23a4281f510eb6c36201247ddeb8bacbd12bdb3e8454bf5
 	sha256sums = SKIP
 
 pkgname = python-forgekit
