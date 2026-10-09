@@ -1,6 +1,6 @@
 pkgname=fenriz-git
-pkgver=0.1.18
-pkgrel=2
+pkgver=0.1.19
+pkgrel=1
 pkgdesc="A fast, stable tiling Wayland compositor"
 arch=('x86_64')
 url="https://github.com/zackb/fenriz"
