@@ -2,7 +2,7 @@
 
 _pkgname="certigo"
 pkgname="${_pkgname}-bin"
-pkgver=1.18.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc="A utility to examine and validate certificates in a variety of formats"
 arch=(
@@ -28,7 +28,7 @@ source_x86_64=(
 )
 sha256sums=('12b4b5eb2a783de0c77402ab9dfb45a1230c940adce1887766bdc076bb0d441b'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('0f3878fef6f42740d6a5dc201d3e7c6456299216ed0a3ec7254a65f5451068ae')
+sha256sums_x86_64=('3310cf57ef4e31f06b5049ed7c6fba0208eadd4214c6248cd246de3f9efed8a7')
 
 prepare() {
   cd "${srcdir}"
