@@ -1,7 +1,7 @@
 # Maintainer: f4iey <jules@f4iey.fr>
 
 pkgname=wfview-bin
-pkgver=2.11
+pkgver=2.23
 pkgrel=2
 _pkgbase=${pkgname%-bin}
 
@@ -13,8 +13,8 @@ depends=(hidapi opus portaudio qcustomplot qt5-base qt5-gamepad qt5-multimedia q
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 
-source=("http://ftp.debian.org/debian/pool/main/w/$_pkgbase/${_pkgbase}_$pkgver-${pkgrel}_amd64.deb")
-md5sums=('8d4cd32df4c459e010e54ab24e5d0000')
+source=("https://ftp.debian.org/debian/pool/main/w/$_pkgbase/${_pkgbase}_$pkgver-${pkgrel}_amd64.deb")
+md5sums=('8d4cd32df4c459e010e54ab24e5d000')
 
 package() {
   cd "$srcdir"
