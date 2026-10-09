@@ -1,6 +1,6 @@
 pkgbase = sish-bin
 	pkgdesc = HTTP(S)/WS(S)/TCP Tunnels to localhost using only SSH
-	pkgver = 2.24.0
+	pkgver = 2.24.1
 	pkgrel = 1
 	url = https://github.com/antoniomika/sish
 	install = sish.install
@@ -12,9 +12,9 @@ pkgbase = sish-bin
 	provides = sish
 	conflicts = sish
 	options = !strip
-	source_x86_64 = sish-x86_64-2.24.0.tgz::https://github.com/antoniomika/sish/releases/download/v2.24.0/sish-2.24.0.linux-amd64.tar.gz
-	sha256sums_x86_64 = bcbc229d71eac79ca9fa08f06dd70c58d8605730167264ab134b84fdb6e75078
-	source_aarch64 = sish-aarch64-2.24.0.tgz::https://github.com/antoniomika/sish/releases/download/v2.24.0/sish-2.24.0.linux-arm64.tar.gz
-	sha256sums_aarch64 = ce047903462cf2c765f32074cd88c9994335f95988a51057fc65626db4d22a49
+	source_x86_64 = sish-x86_64-2.24.1.tgz::https://github.com/antoniomika/sish/releases/download/v2.24.1/sish-2.24.1.linux-amd64.tar.gz
+	sha256sums_x86_64 = 88b437859a98886a8de2ea618338342b17afaf3b907112e9c2e2046d8064b376
+	source_aarch64 = sish-aarch64-2.24.1.tgz::https://github.com/antoniomika/sish/releases/download/v2.24.1/sish-2.24.1.linux-arm64.tar.gz
+	sha256sums_aarch64 = bcd03e7190675247655254f7ddec4caf08a1724ea4098cac8d25e5f488707e24
 
 pkgname = sish-bin
