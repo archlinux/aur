@@ -4,15 +4,25 @@
 
 _pkgname=deadbeef-lyricbar
 pkgname=deadbeef-plugin-lyricbar-git
-pkgver=r197.gcf9f821
+pkgver=r202.g3383709
 pkgrel=1
 pkgdesc="DeaDBeeF lyric bar plugin"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686')
 url="https://github.com/AsVHEn/deadbeef-lyricbar"
 license=('MIT')
 provides=('deadbeef-plugin-lyricbar')
 conflicts=('deadbeef-plugin-lyricbar')
-depends=('deadbeef' 'gtkmm3' 'curl')
+depends=('deadbeef'
+         'glibc'
+         'libgcc'
+         'libstdc++'
+         'libsigc++'
+         'glib2'
+         'glibmm'
+         'gtk3'
+         'gtkmm3'
+         'pangomm'
+         'curl')
 makedepends=('git' 'pkgconf' 'taglib')
 source=("${_pkgname}::git+${url}"
         "${_pkgname}-makefile.patch")
@@ -45,4 +55,5 @@ build() {
 package() {
   cd "${_pkgname}"
   make prefix="${pkgdir}/usr" install
+  install -Dvm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
