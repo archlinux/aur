@@ -1,6 +1,6 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname="vouch-proxy"
-pkgver=0.48.0 # renovate: datasource=github-tags depName=vouch/vouch-proxy
+pkgver=0.50.0 # renovate: datasource=github-tags depName=vouch/vouch-proxy
 pkgrel=1
 pkgdesc="an SSO and OAuth / OIDC login solution for Nginx using the auth_request module"
 arch=('x86_64')
@@ -24,5 +24,5 @@ package() {
   install -Dm755 vouch-proxy "$pkgdir"/usr/bin/vouch-proxy
 }
 
-sha256sums=('6d40dea6766e9d569834153cb56079fc60d4c07cdf38f9d03c760c37616545c7'
+sha256sums=('87f6bd07b258e19d4982eb417df701659bbbb05fbf4f29d63cf70ba3912210ee'
             'f4c79517e2eca2ca13756bf2c4fdafa7c2970195548151bf527178dfd8953603')
