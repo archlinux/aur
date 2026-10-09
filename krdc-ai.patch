@@ -56,10 +56,10 @@ index f99b39e2..6750798e 100644
      KF6::BookmarksWidgets
 diff --git a/ai/aiconfig.cpp b/ai/aiconfig.cpp
 new file mode 100644
-index 00000000..b2005995
+index 00000000..af01d38f
 --- /dev/null
 +++ b/ai/aiconfig.cpp
-@@ -0,0 +1,116 @@
+@@ -0,0 +1,128 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -155,7 +155,7 @@ index 00000000..b2005995
 +
 +QString AiConfig::defaultSystemPrompt()
 +{
-+    return QStringLiteral(
++    QString prompt = QStringLiteral(
 +        "You are an assistant embedded in KRDC, a remote desktop client. You are looking at the "
 +        "screen of a remote machine that the user is connected to, usually over RDP.\n\n"
 +        "Rules:\n"
@@ -175,6 +175,18 @@ index 00000000..b2005995
 +        "- If an action needs a password or would delete or overwrite something, stop and let "
 +        "the user do it or confirm it.\n"
 +        "- Keep answers short. Report what you did and what the screen now shows.");
++    if (prompt.contains(QLatin1String("If the reported image size differs"))) {
++        // The old wording made the model rescale coordinates itself, and
++        // models are bad at that arithmetic: clicks landed off target by the
++        // downscale factor. The point tools map screenshot pixels to screen
++        // pixels now, so the model must not.
++        return prompt.replace(
++            QLatin1String("If the reported image size differs from the screen size, scale the coordinates you read off the "
++                          "image accordingly."),
++            QStringLiteral("Point tools take coordinates in this image's pixels and are mapped to the real screen "
++                           "for you; do not scale coordinates yourself."));
++    }
++    return prompt;
 +}
 diff --git a/ai/aiconfig.h b/ai/aiconfig.h
 new file mode 100644
@@ -245,10 +257,10 @@ index 00000000..09f2fe6d
 +};
 diff --git a/ai/aiconversation.cpp b/ai/aiconversation.cpp
 new file mode 100644
-index 00000000..18745d6c
+index 00000000..f02e7d0c
 --- /dev/null
 +++ b/ai/aiconversation.cpp
-@@ -0,0 +1,977 @@
+@@ -0,0 +1,1002 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -500,7 +512,7 @@ index 00000000..18745d6c
 +    Q_EMIT entriesChanged();
 +}
 +
-+QByteArray AiConversation::grabScreenshot() const
++QByteArray AiConversation::grabScreenshot()
 +{
 +    if (!m_view || m_view->status() != RemoteView::Connected) {
 +        return {};
@@ -522,7 +534,24 @@ index 00000000..18745d6c
 +    if (!pixmap.save(&buffer, "JPEG", std::clamp(m_config.imageQuality, 10, 100))) {
 +        return {};
 +    }
++    m_sentImageSize = pixmap.size();
 +    return bytes;
++}
++
++QPoint AiConversation::toScreen(const QPoint &pos) const
++{
++    const QSize screen = screenSize();
++    if (screen.isEmpty() || !m_sentImageSize.isValid() || m_sentImageSize.isEmpty()
++        || m_sentImageSize == screen) {
++        return pos;
++    }
++
++    // Integer math with rounding half a pixel either way is far below the
++    // size of a button; the model's own reading of the image is the coarse
++    // step here, not this conversion.
++    const int x = qRound(qreal(pos.x()) * screen.width() / m_sentImageSize.width());
++    const int y = qRound(qreal(pos.y()) * screen.height() / m_sentImageSize.height());
++    return QPoint{std::clamp(x, 0, screen.width() - 1), std::clamp(y, 0, screen.height() - 1)};
 +}
 +
 +QSize AiConversation::screenSize() const
@@ -792,7 +821,13 @@ index 00000000..18745d6c
 +        if (image.isEmpty()) {
 +            failTool(call, QStringLiteral("No screenshot available. Is the connection established?"));
 +        } else {
-+            finishTool(call, QStringLiteral("Screenshot attached. Remote screen is %1x%2 pixels.").arg(screenSize().width()).arg(screenSize().height()),
++            finishTool(call,
++                       QStringLiteral("Screenshot attached; this image is %1x%2 pixels, the screen is %3x%4 pixels. "
++                                      "Point tools take coordinates in this image's pixels.")
++                           .arg(m_sentImageSize.width())
++                           .arg(m_sentImageSize.height())
++                           .arg(screenSize().width())
++                           .arg(screenSize().height()),
 +                       image);
 +        }
 +        return;
@@ -858,6 +893,8 @@ index 00000000..18745d6c
 +        result.insert(QStringLiteral("url"), view ? view->url().toString() : QString());
 +        result.insert(QStringLiteral("screen_width"), size.width());
 +        result.insert(QStringLiteral("screen_height"), size.height());
++        result.insert(QStringLiteral("screenshot_width"), m_sentImageSize.width());
++        result.insert(QStringLiteral("screenshot_height"), m_sentImageSize.height());
 +        result.insert(QStringLiteral("connected"), view && view->status() == RemoteView::Connected);
 +        result.insert(QStringLiteral("input_ready"), view && view->supportsAiControl());
 +        finishTool(call, QString::fromUtf8(QJsonDocument(result).toJson(QJsonDocument::Compact)));
@@ -870,7 +907,7 @@ index 00000000..18745d6c
 +    }
 +
 +    if (name == QLatin1String("mouse_move")) {
-+        const QPoint pos{int(args.value(QStringLiteral("x")).toDouble()), int(args.value(QStringLiteral("y")).toDouble())};
++        const QPoint pos = toScreen(QPoint{int(args.value(QStringLiteral("x")).toDouble()), int(args.value(QStringLiteral("y")).toDouble())});
 +        view->aiMouseMove(pos);
 +        finishTool(call, QStringLiteral("Pointer moved to (%1, %2).").arg(pos.x()).arg(pos.y()));
 +        return;
@@ -884,7 +921,7 @@ index 00000000..18745d6c
 +            return;
 +        }
 +
-+        const QPoint pos{int(args.value(QStringLiteral("x")).toDouble()), int(args.value(QStringLiteral("y")).toDouble())};
++        const QPoint pos = toScreen(QPoint{int(args.value(QStringLiteral("x")).toDouble()), int(args.value(QStringLiteral("y")).toDouble())});
 +        const int clicks = clampInt(args.value(QStringLiteral("clicks")).toDouble(1), 1, 3, 1);
 +
 +        view->aiMouseMove(pos);
@@ -904,8 +941,8 @@ index 00000000..18745d6c
 +            return;
 +        }
 +
-+        const QPoint from{int(args.value(QStringLiteral("from_x")).toDouble()), int(args.value(QStringLiteral("from_y")).toDouble())};
-+        const QPoint to{int(args.value(QStringLiteral("to_x")).toDouble()), int(args.value(QStringLiteral("to_y")).toDouble())};
++        const QPoint from = toScreen(QPoint{int(args.value(QStringLiteral("from_x")).toDouble()), int(args.value(QStringLiteral("from_y")).toDouble())});
++        const QPoint to = toScreen(QPoint{int(args.value(QStringLiteral("to_x")).toDouble()), int(args.value(QStringLiteral("to_y")).toDouble())});
 +
 +        // Intermediate moves so the remote drags (text selection, window
 +        // moves) track the pointer instead of teleporting.
@@ -922,7 +959,7 @@ index 00000000..18745d6c
 +    }
 +
 +    if (name == QLatin1String("mouse_scroll")) {
-+        const QPoint pos{int(args.value(QStringLiteral("x")).toDouble()), int(args.value(QStringLiteral("y")).toDouble())};
++        const QPoint pos = toScreen(QPoint{int(args.value(QStringLiteral("x")).toDouble()), int(args.value(QStringLiteral("y")).toDouble())});
 +        const QString direction = args.value(QStringLiteral("direction")).toString().toLower();
 +        const int notches = clampInt(args.value(QStringLiteral("notches")).toDouble(1), 1, 20, 1);
 +
@@ -1228,10 +1265,10 @@ index 00000000..18745d6c
 +}
 diff --git a/ai/aiconversation.h b/ai/aiconversation.h
 new file mode 100644
-index 00000000..461fd969
+index 00000000..7f510f6a
 --- /dev/null
 +++ b/ai/aiconversation.h
-@@ -0,0 +1,158 @@
+@@ -0,0 +1,171 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -1249,6 +1286,7 @@ index 00000000..461fd969
 +#include <QList>
 +#include <QObject>
 +#include <QPointer>
++#include <QSize>
 +#include <QString>
 +
 +class RemoteView;
@@ -1324,11 +1362,22 @@ index 00000000..461fd969
 +    void cancel();
 +    void clear();
 +
-+    /** @return a JPEG of the remote screen, scaled down for the model. */
-+    QByteArray grabScreenshot() const;
++    /** @return a JPEG of the remote screen, scaled down for the model.
++     * Records the returned image's size so pointer coordinates the model
++     * reads off it can be mapped back to screen pixels. */
++    QByteArray grabScreenshot();
 +
 +    /** @return the size of the remote screen, or an invalid size. */
 +    QSize screenSize() const;
++
++    /**
++     * Maps a position the model read off the last screenshot it received
++     * to remote screen pixels. Screenshots are downscaled, so a coordinate
++     * taken from one is off by that factor; the model cannot be trusted
++     * with that arithmetic. Positions arrive in screen pixels when no
++     * screenshot has been sent (or it was sent unscaled).
++     */
++    QPoint toScreen(const QPoint &pos) const;
 +
 +Q_SIGNALS:
 +    void entriesChanged();
@@ -1370,6 +1419,7 @@ index 00000000..461fd969
 +    AiHttpClient m_client;
 +    QString m_key;
 +    AiConfig m_config;
++    QSize m_sentImageSize;
 +    QList<Entry> m_entries;
 +    QPointer<RemoteView> m_view;
 +    QString m_title;
