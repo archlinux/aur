@@ -1,6 +1,6 @@
 pkgbase = phc-intel-dkms-stable
 	pkgdesc = Frequency driver for Intel CPUs with undervolting feature. DKMS-based kernel module, stable branch.
-	pkgver = 0.3.2.rev44
+	pkgver = 0.3.2.rev58
 	pkgrel = 6
 	url = https://gitlab.com/linux-phc/phc-intel
 	arch = any
@@ -10,13 +10,13 @@ pkgbase = phc-intel-dkms-stable
 	depends = dkms
 	optdepends = phc-intel-scripts: To control the driver.
 	provides = linux-phc
-	provides = phc-intel-dkms=0.3.2.rev44
-	provides = phc-intel-patch=0.3.2.rev44
+	provides = phc-intel-dkms=0.3.2.rev58
+	provides = phc-intel-patch=0.3.2.rev58
 	provides = PHC-INTEL-MODULE
 	conflicts = phc-intel-dkms
-	source = https://gitlab.com/linux-phc/phc-intel/-/archive/rev44/phc-intel-rev44.tar.bz2
+	source = https://gitlab.com/linux-phc/phc-intel/-/archive/rev58/phc-intel-rev58.tar.bz2
 	source = dkms.conf.in
-	sha256sums = f3b70962e94c604adf9285f06ed1f1aaadcdee88f9ddf213255ed96c97d0c096
+	sha256sums = b5ff84c8cc9845c64afd0cf795d97d65ea4e15007418cd611c2a592af7c9bce9
 	sha256sums = 9162c25d0df436a00d8b45d9e97c24a1f2999f5b8a4f78f2995df15d2d31baa7
 
 pkgname = phc-intel-dkms-stable

@@ -9,8 +9,8 @@ groups=(
   'linux-phc'
   'phc-intel'
 )
-_downloadver=rev44 # Set this to specify what to download.
-pkgver=0.3.2.rev44
+_downloadver=rev58 # Set this to specify what to download.
+pkgver=0.3.2.rev58
 pkgrel=6
 pkgdesc="Frequency driver for Intel CPUs with undervolting feature. DKMS-based kernel module, stable branch."
 url="https://gitlab.com/linux-phc/phc-intel"
@@ -37,7 +37,7 @@ source=(
   'dkms.conf.in'
 )
 sha256sums=(
-  'f3b70962e94c604adf9285f06ed1f1aaadcdee88f9ddf213255ed96c97d0c096' # Main source
+  'b5ff84c8cc9845c64afd0cf795d97d65ea4e15007418cd611c2a592af7c9bce9' # Main source
   '9162c25d0df436a00d8b45d9e97c24a1f2999f5b8a4f78f2995df15d2d31baa7' # dkms.conf.in
 )
 
