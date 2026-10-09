@@ -1,6 +1,6 @@
 pkgbase = yututui-bin
 	pkgdesc = Fast, low-RAM YouTube Music player for your terminal (prebuilt binary)
-	pkgver = 1.7.7
+	pkgver = 1.7.8
 	pkgrel = 1
 	url = https://github.com/Ochichan/Yututui
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = yututui-bin
 	optdepends = xsel: copy text on X11 (alternative to xclip)
 	provides = yututui
 	conflicts = yututui
-	source = yututui-bin-1.7.7-x86_64.tar.gz::https://github.com/Ochichan/Yututui/releases/download/v1.7.7/yututui-linux-x64.tar.gz
-	source = LICENSE-1.7.7::https://raw.githubusercontent.com/Ochichan/Yututui/v1.7.7/LICENSE
-	sha256sums = fd2c1976bb1cee07f9dba8b3e6fb21e2954acd3fc2a3152567900bfc56c169d7
+	source = yututui-bin-1.7.8-x86_64.tar.gz::https://github.com/Ochichan/Yututui/releases/download/v1.7.8/yututui-linux-x64.tar.gz
+	source = LICENSE-1.7.8::https://raw.githubusercontent.com/Ochichan/Yututui/v1.7.8/LICENSE
+	sha256sums = 9fc0a11738d61098ab06f956421b23f954cae105a883c5fb97b2ae8566ec404a
 	sha256sums = 4187ff1dba7402a773eb6d3d588ad540e4dcf40606237f004160ee67e019ddc8
 
 pkgname = yututui-bin
