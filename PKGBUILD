@@ -5,7 +5,7 @@ _upstream=Hermes                 # productName + executableName
 _pkgver_tag=v0.21.6
 _commit=818c13be1dc4fd28987e1e881a9408224afd4535
 pkgver=0.21.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
 arch=('x86_64')
 url='https://github.com/NousResearch/hermes-agent'
@@ -26,8 +26,7 @@ depends=(
 )
 # npm is not a hermes-agent dependency; nodejs comes via hermes-agent.
 makedepends=('npm')
-# git is not declared by hermes-agent; check() sets GIT_CEILING_DIRECTORIES.
-checkdepends=('git')
+# check() only needs tools from hermes-agent (python/uv/nodejs) plus makedepends npm.
 optdepends=(
   'libayatana-appindicator: tray indicator support'
 )
@@ -35,24 +34,20 @@ conflicts=('hermes-agent-desktop-bin')
 options=('!debug')
 source=(
   "hermes-agent-${_pkgver_tag}.tar.gz::${url}/archive/refs/tags/${_pkgver_tag}.tar.gz"
-  'pin-packaged-runtime.patch'
+  'package-managed-runtime.patch'
+  'package-managed-bootstrap.patch'
   'fix-voice-prefs-storage-spy.patch'
-  'packaged-bootstrap.patch'
-  'runtime-policy.patch'
   'harden-hud-modifier-monitor.patch'
   'hermes-desktop'
   'launcher.test.cjs'
-  'runtime-policy.test.py'
 )
 sha256sums=('1ba3500cdbe876bb9d347b3c12f41c591a421293eac58faba23571287dfe1cf8'
-            '9556b266dbd34bfd9e7620cabb8c032a293a41f3fc36c089804f3cea0208696e'
+            'af06707c57ae08646af03af8f05aee5b94651028b115eaaa18c7ed11ca4edb04'
+            '6a11f2a21bdd3bc6e459072e681641386621b99e90f37005906f0c361fa05886'
             '047d6e615017b2bb8584383234cdfb3169694e25c10221d7a78da864884b1481'
-            '5dfb78ff90b1a96ed16127e053743817bcad4ebd7a1f785808590aad5a8ee4eb'
-            '308fcfeea8385b3f192f1958bb83428f862cf3080a87ae1c3d020df27abb5fb4'
             'cf8b625b00e606b5b135bf5a38a851d8a699c819139e6720eecfa043ba886e9b'
             '8a677666d7d20578a88a745d83b4a75412a55fd5c184fd4f66a50dfe66adb3c6'
-            '202e474fda5fd845f1ba334e503e751f746fb7d1f378fb0d3e8142b4795a025b'
-            'cfe7eaf68db1aeb5570f12f7f03c4547ed5c754680be8faa47f112303e0db7d5')
+            '202e474fda5fd845f1ba334e503e751f746fb7d1f378fb0d3e8142b4795a025b')
 
 # Resolve srcdir inside makepkg's functions; it is empty at the top level.
 _extract_dir() {
@@ -69,10 +64,9 @@ _set_npm_env() {
 prepare() {
   cd "$(_extract_dir)"
   _set_npm_env
-  patch --batch --fuzz=0 -Np1 -i "${srcdir}/pin-packaged-runtime.patch"
+  patch --batch --fuzz=0 -Np1 -i "${srcdir}/package-managed-runtime.patch"
+  patch --batch --fuzz=0 -Np1 -i "${srcdir}/package-managed-bootstrap.patch"
   patch --batch --fuzz=0 -Np1 -i "${srcdir}/fix-voice-prefs-storage-spy.patch"
-  patch --batch --fuzz=0 -Np1 -i "${srcdir}/packaged-bootstrap.patch"
-  patch --batch --fuzz=0 -Np1 -i "${srcdir}/runtime-policy.patch"
   patch --batch --fuzz=0 -Np1 -i "${srcdir}/harden-hud-modifier-monitor.patch"
   # Keep desktop metadata aligned with the Agent release, not the separately
   # versioned upstream desktop package.json.
@@ -150,7 +144,6 @@ check() {
   uv sync --frozen --no-group dev
   export HERMES_PYTHON="${check_venv}/bin/python"
   node "${srcdir}/launcher.test.cjs"
-  python -B "${srcdir}/runtime-policy.test.py" "$PWD"
   npm run typecheck --workspace apps/desktop
   # The upstream live-portal fixture does not forward XAUTHORITY to Electron.
   # Without xvfb-run, a graphical host's DISPLAY would falsely enable it.

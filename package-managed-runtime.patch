@@ -1,0 +1,72 @@
+--- a/apps/desktop/electron/main.ts	2026-10-08 18:40:51.000000000 +0800
++++ b/apps/desktop/electron/main.ts	2026-10-09 19:16:08.123255625 +0800
+@@ -739,6 +739,9 @@
+ 
+ const DEV_SERVER = process.env.HERMES_DESKTOP_DEV_SERVER
+ const IS_PACKAGED = app.isPackaged || Boolean(process.env.HERMES_DESKTOP_IS_PACKAGED)
++const PACKAGE_MANAGED_RUNTIME = process.env.HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME === '1'
++const PACKAGE_MANAGED_UPDATE_MESSAGE =
++  'This Hermes runtime is managed by the hermes-agent system package. Update hermes-agent and hermes-agent-desktop with your AUR helper; the desktop app will not install or modify an agent tree.'
+ const IS_MAC = process.platform === 'darwin'
+ const IS_WINDOWS = process.platform === 'win32'
+ const IS_WSL = isWslEnvironment()
+@@ -4742,6 +4745,14 @@
+ // Detection (checkUpdates / commit changelog / "N behind") stays in the UI;
+ // only this apply action changed.
+ async function applyUpdates(): Promise<UpdaterApplyResultWire> {
++  if (PACKAGE_MANAGED_RUNTIME) {
++    return {
++      ok: false,
++      error: 'package-managed',
++      message: PACKAGE_MANAGED_UPDATE_MESSAGE
++    }
++  }
++
+   return updateOperation.apply(async (): Promise<UpdaterApplyResultWire> => {
+     updateInFlight = true
+     let handedOff: boolean = false
+@@ -5479,6 +5490,17 @@
+   }
+ 
+   if (backend.kind === 'bootstrap-needed') {
++    if (PACKAGE_MANAGED_RUNTIME) {
++      rememberLog('[bootstrap] REFUSING installer: package-managed runtime uses hermes-agent; will not write an agent tree')
++      const packagedError: Error & { isBootstrapFailure?: boolean } = new Error(
++        'Hermes Agent is provided by the hermes-agent system package. Install or update hermes-agent with your AUR helper. This app will not download or write a runtime under the agent tree.'
++      )
++
++      packagedError.isBootstrapFailure = true
++      bootstrapFailure = packagedError
++      throw packagedError
++    }
++
+     rememberLog('[bootstrap] no Hermes install found; starting first-launch bootstrap')
+ 
+     if (await handOffWindowsBootstrapRecovery('bootstrap-needed')) {
+@@ -18645,14 +18667,24 @@
+ 
+ ipcMain.handle(
+   'hermes:updates:check',
+-  async (_event: Electron.IpcMainInvokeEvent, opts?: { force?: boolean }): Promise<UpdaterStatusWire> =>
+-    checkUpdates({ force: Boolean(opts?.force) }).catch((error: Error): UpdaterStatusWire => ({
++  async (_event: Electron.IpcMainInvokeEvent, opts?: { force?: boolean }): Promise<UpdaterStatusWire> => {
++    if (PACKAGE_MANAGED_RUNTIME) {
++      return {
++        supported: false,
++        branch: INSTALL_STAMP?.branch || readDesktopUpdateConfig().branch,
++        message: PACKAGE_MANAGED_UPDATE_MESSAGE,
++        fetchedAt: Date.now()
++      }
++    }
++
++    return checkUpdates({ force: Boolean(opts?.force) }).catch((error: Error): UpdaterStatusWire => ({
+       supported: true,
+       branch: readDesktopUpdateConfig().branch,
+       error: 'check-failed',
+       message: error?.message || String(error),
+       fetchedAt: Date.now()
+     }))
++  }
+ )
+ 
+ ipcMain.handle('hermes:updates:apply', async (_event, payload) =>

@@ -1,0 +1,54 @@
+--- a/apps/desktop/electron/bootstrap-runner.ts	2026-10-08 18:40:51.000000000 +0800
++++ b/apps/desktop/electron/bootstrap-runner.ts	2026-10-09 19:16:08.083417928 +0800
+@@ -318,6 +318,12 @@
+   pinCommit = true,
+   _download = downloadInstallScript
+ }) {
++  if (process.env.HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME === '1') {
++    throw new Error(
++      'Package-managed desktop uses the hermes-agent system package; runtime bootstrap is disabled and the agent tree is read-only.'
++    )
++  }
++
+   // 1. Dev shortcut: prefer a local checkout's installer so we can iterate
+   //    without pushing. SOURCE_REPO_ROOT comes from main.ts (path.resolve
+   //    of APP_ROOT/../..).
+--- a/apps/desktop/electron/bootstrap-runner.test.ts	2026-10-08 18:40:51.000000000 +0800
++++ b/apps/desktop/electron/bootstrap-runner.test.ts	2026-10-09 19:16:08.101723544 +0800
+@@ -3,7 +3,7 @@
+ import os from 'node:os'
+ import path from 'node:path'
+ 
+-import { test } from 'vitest'
++import { test, vi } from 'vitest'
+ 
+ import {
+   buildPinArgs,
+@@ -25,6 +25,27 @@
+   return fs.mkdtempSync(path.join(os.tmpdir(), 'hermes-bootstrap-test-'))
+ }
+ 
++
++test('package-managed resolveInstallScript refuses to bootstrap a runtime', async () => {
++  vi.stubEnv('HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME', '1')
++  try {
++    await assert.rejects(
++      resolveInstallScript({
++        installStamp: { commit: 'a'.repeat(40), branch: 'main' },
++        sourceRepoRoot: null,
++        hermesHome: '/tmp/home',
++        emit: () => {},
++        _download: async () => {
++          throw new Error('unexpected download')
++        }
++      }),
++      /hermes-agent system package|runtime bootstrap is disabled|agent tree is read-only/
++    )
++  } finally {
++    vi.unstubAllEnvs()
++  }
++})
++
+ test('runBootstrap bails immediately when the signal is already aborted', async () => {
+   const controller = new AbortController()
+   controller.abort()
