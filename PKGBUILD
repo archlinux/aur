@@ -2,18 +2,18 @@
 
 pkgname=drops-cursor-theme
 pkgver=2026.06.05.200310
-pkgrel=1
+pkgrel=2
 _pkgid=2330173
 pkgdesc="HDPI cursor theme drawn from scratch, available in 32/48/64/96px sizes"
 arch=('any')
 url="https://www.gnome-look.org/p/${_pkgid}"
 license=('GPL-3.0-or-later')
 depends=()
-makedepends=('curl' 'jq' 'perl' 'unzip')
+makedepends=('curl' 'jq' 'perl' 'python' 'unzip')
 options=('!strip' '!docs' '!debug')
 install=drops-cursor-theme.install
-source=()
-sha256sums=()
+source=('xcursor-to-scalable.py')
+sha256sums=('94b535771dcfe40ec606295f5929cbbcb9cd309dff4c1e4d7c9a7c4babf20798')
 
 pkgver() {
   local json timestamp
@@ -51,6 +51,10 @@ build() {
     unzip -o "$f"
   done
   rm -f ./*.zip
+
+  # GNOME Shell 50+ only loads cursors_scalable/ (SVG); Xcursor-only themes fall back to Adwaita
+  find "$srcdir" -mindepth 2 -maxdepth 2 -type d -exec test -d {}/cursors \; -print0 |
+    xargs -0 python3 -I "$srcdir/xcursor-to-scalable.py"
 }
 
 package() {
