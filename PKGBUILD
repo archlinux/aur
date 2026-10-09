@@ -12,7 +12,7 @@ _repo="https://github.com/kappy7777/kappastream"
 
 pkgname=${_pkgname}-git
 pkgver=1.0.7.r0.g59b039f
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight, anonymous Twitch viewer (live stream, chat, favorites) for Linux"
 arch=('x86_64')
 url="${_repo}"
@@ -69,6 +69,9 @@ build() {
   # Keep the cargo cache inside $srcdir so makepkg cleans it up and the
   # build is hermetic to $pkgdir/src.
   export CARGO_HOME="${srcdir}/.cargo-home"
+
+  # rustup also provides cargo; pin stable so an unset or nightly user default never leaks in.
+  export RUSTUP_TOOLCHAIN=stable
 
   # 1) Frontend → dist/ (Vite production build).
   npm ci --no-audit --no-fund
