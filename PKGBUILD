@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=tidydr
-_pkgver=0.0.6
+_pkgver=0.0.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -15,15 +15,24 @@ depends=(
   r-rlang
 )
 optdepends=(
+  r-ade4
+  r-ape
+  r-ecodist
   r-knitr
+  r-labdsv
   r-prettydoc
   r-rmarkdown
+  r-rtsne
   r-singlecellexperiment
+  r-smacof
   r-summarizedexperiment
+  r-testthat
+  r-uwot
+  r-vegan
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e8ed646669fb6a8ac418f9273844df05')
-b2sums=('608f96e8a573b850c554cd4715b82d1564ccc1685aa8c4e82a19ce30e4ffff54a5bec141d28796135fd4cfcc08e02b8b90e314be2d0d11fa43ab912db68de64c')
+md5sums=('3f3f831e09a89fda30c5a17723180da1')
+b2sums=('0aa43d74a4b264ba404196427c88cc134fc9483b194ef96e2e2d340801e2022067b385e41e31ab5cae0a710883574a59dcaf3d877d23666085e3abd031614d6d')
 
 build() {
   mkdir build

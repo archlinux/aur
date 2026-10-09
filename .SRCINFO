@@ -1,6 +1,6 @@
 pkgbase = r-tidydr
 	pkgdesc = Unify Dimensionality Reduction Results
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=tidydr
 	arch = any
@@ -8,13 +8,22 @@ pkgbase = r-tidydr
 	depends = r-ggfun
 	depends = r-ggplot2
 	depends = r-rlang
+	optdepends = r-ade4
+	optdepends = r-ape
+	optdepends = r-ecodist
 	optdepends = r-knitr
+	optdepends = r-labdsv
 	optdepends = r-prettydoc
 	optdepends = r-rmarkdown
+	optdepends = r-rtsne
 	optdepends = r-singlecellexperiment
+	optdepends = r-smacof
 	optdepends = r-summarizedexperiment
-	source = https://cran.r-project.org/src/contrib/tidydr_0.0.6.tar.gz
-	md5sums = e8ed646669fb6a8ac418f9273844df05
-	b2sums = 608f96e8a573b850c554cd4715b82d1564ccc1685aa8c4e82a19ce30e4ffff54a5bec141d28796135fd4cfcc08e02b8b90e314be2d0d11fa43ab912db68de64c
+	optdepends = r-testthat
+	optdepends = r-uwot
+	optdepends = r-vegan
+	source = https://cran.r-project.org/src/contrib/tidydr_0.0.7.tar.gz
+	md5sums = 3f3f831e09a89fda30c5a17723180da1
+	b2sums = 0aa43d74a4b264ba404196427c88cc134fc9483b194ef96e2e2d340801e2022067b385e41e31ab5cae0a710883574a59dcaf3d877d23666085e3abd031614d6d
 
 pkgname = r-tidydr
