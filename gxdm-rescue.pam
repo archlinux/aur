@@ -1,0 +1,11 @@
+#%PAM-1.0
+# Arch policy for gxdm-emergency-mode. Install as /etc/pam.d/gxdm-rescue.
+# Fail closed if logind integration is unavailable.
+auth        include     system-login
+account     include     system-login
+password    include     system-login
+session     required    pam_loginuid.so
+session     optional    pam_keyinit.so      force revoke
+session     include     system-auth
+session     required    pam_env.so
+session     required    pam_systemd.so
