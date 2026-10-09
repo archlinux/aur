@@ -20,6 +20,7 @@ depends=(
 	electron43
     libstdc++
 	libpipewire
+    libgcc
 )
 makedepends=(
 	p7zip

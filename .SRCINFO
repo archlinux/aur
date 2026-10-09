@@ -15,6 +15,7 @@ pkgbase = notion-app-electron
 	depends = electron43
 	depends = libstdc++
 	depends = libpipewire
+	depends = libgcc
 	noextract = better-sqlite3-13.0.1.tgz
 	noextract = node-pipewire-1.1.0.tgz
 	noextract = node-pipewire-1.1.0-napi-v6-linux-x64.tar.gz
