@@ -1,6 +1,6 @@
 pkgbase = zennotes-bin
 	pkgdesc = Keyboard-first, local-first Markdown notes with vim motions and live preview
-	pkgver = 2.64.0
+	pkgver = 2.65.0
 	pkgrel = 1
 	url = https://github.com/ZenNotes/zennotes
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = zennotes-bin
 	conflicts = zennotes
 	conflicts = ZenNotes
 	options = !strip
-	source = ZenNotes-2.64.0-linux-x64.tar.gz::https://github.com/ZenNotes/zennotes/releases/download/v2.64.0/ZenNotes-2.64.0-linux-x64.tar.gz
-	sha256sums = 50064e0baab0f28fd7bb292c6a590d5a5be0cd82585de9e5085df3b917222c91
+	source = ZenNotes-2.65.0-linux-x64.tar.gz::https://github.com/ZenNotes/zennotes/releases/download/v2.65.0/ZenNotes-2.65.0-linux-x64.tar.gz
+	sha256sums = 934c681b523224b0a56d975f7993710308ec722b6658988ff3ce6464a543a53a
 
 pkgname = zennotes-bin
