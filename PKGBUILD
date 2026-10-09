@@ -1,8 +1,8 @@
 pkgname=pnpm-git
-pkgver=v12.9.0.1.gbf5cdd3390
+pkgver=12.11.2.0.g1e37c514f2
 pkgver() {
   cd pnpm
-  git describe --long --tags | sed -e "s/pnpr@//" -e 's/alpha./r/' -e 's/\-/\./g'
+  git describe --long --tags | sed -e "s/v//" -e "s/pnpr@//" -e 's/alpha./r/' -e 's/\-/\./g'
 }
 pkgrel=1
 pkgdesc="Fast, disk space efficient package manager"
@@ -15,11 +15,6 @@ conflicts=(pnpm)
 provides=(pnpm)
 source=("git+${url}.git")
 b2sums=('SKIP')
-prepare() {
-  cd pnpm
-  rm .cargo/config.toml # vendored crates
-  # cargo fetch --locked
-}
 
 build() {
   cd pnpm
