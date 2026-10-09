@@ -1,7 +1,7 @@
 pkgbase = gproxy-bin
 	pkgdesc = Self-hosted LLM API gateway (OpenAI/Claude/Gemini-compatible), prebuilt binary
-	pkgver = 4.1.1
-	pkgrel = 2
+	pkgver = 4.1.3
+	pkgrel = 1
 	url = https://github.com/LeenHawk/gproxy
 	install = gproxy-bin.install
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = gproxy-bin
 	source = gproxy.env
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = gproxy-linux-x86_64-4.1.1.zip::https://github.com/LeenHawk/gproxy/releases/download/v4.1.1/gproxy-linux-x86_64.zip
-	sha256sums_x86_64 = f9a45e37ec9cca69735ab76eab93b4b7dc9e24d460ea66d9fbbd4185ea7a1d65
-	source_aarch64 = gproxy-linux-aarch64-4.1.1.zip::https://github.com/LeenHawk/gproxy/releases/download/v4.1.1/gproxy-linux-aarch64.zip
-	sha256sums_aarch64 = 422910a213dbcbca33889de9f762c9bee8f6a23bafea3aed5845dd15e5e32af3
+	source_x86_64 = gproxy-linux-x86_64-4.1.3.zip::https://github.com/LeenHawk/gproxy/releases/download/v4.1.3/gproxy-linux-x86_64.zip
+	sha256sums_x86_64 = 043fce8d3441da712eb345bfed372c9f900219988fcb6572a22c3d80e29c8f5f
+	source_aarch64 = gproxy-linux-aarch64-4.1.3.zip::https://github.com/LeenHawk/gproxy/releases/download/v4.1.3/gproxy-linux-aarch64.zip
+	sha256sums_aarch64 = 3bec8ba6e5e447ce70e83c53e61149aad8be98cfcb05d0ea782972dc8b250f08
 
 pkgname = gproxy-bin
