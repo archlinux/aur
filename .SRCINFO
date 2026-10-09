@@ -1,6 +1,6 @@
 pkgbase = lssh
 	pkgdesc = Simple SSH server manager
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Lecer69/LSSH
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = lssh
 	makedepends = cargo
 	depends = openssh
 	depends = sshpass
-	source = lssh-0.1.0.tar.gz::https://github.com/Lecer69/LSSH/archive/v0.1.0.tar.gz
-	sha256sums = aeb3a3df778e87400da67238c9d25119297531fa9ca71b3ba3d89911834ccabb
+	source = lssh-0.2.0.tar.gz::https://github.com/Lecer69/LSSH/archive/v0.2.0.tar.gz
+	sha256sums = a6389296ea082ef4ea3e28360d03ca716a6d7fc4416777fbdf298844acc5b72c
 
 pkgname = lssh
