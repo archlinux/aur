@@ -2,7 +2,7 @@
 
 pkgname=eusoft-frhelper
 pkgver=13.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Frhelper (法语助手) - French dictionary software for Linux (Community Repackage)"
 arch=('x86_64')
 url="https://www.eudic.net/v4/fr/app/frhelper"
@@ -72,7 +72,6 @@ package() {
 
     # Install desktop entry
     install -Dm644 "${srcdir}/eusoft-frhelper.desktop" "${pkgdir}/usr/share/applications/eusoft-frhelper.desktop"
-    ln -sf eusoft-frhelper.desktop "${pkgdir}/usr/share/applications/frhelper.desktop"
 
     # Install hicolor icons
     install -Dm644 "${pkgdir}/usr/share/pixmaps/com.eusoft.frhelper.png" \
