@@ -1,11 +1,12 @@
 pkgbase = wlib-bin
 	pkgdesc = Modern Linux game manager for F95Zone
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/kirin-3/wLib
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = ca-certificates
+	depends = python-cryptography
 	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = libxkbcommon-x11
@@ -23,7 +24,7 @@ pkgbase = wlib-bin
 	provides = wlib
 	conflicts = wlib
 	options = !strip
-	source = wlib-bin-0.3.6.tar.gz::https://github.com/kirin-3/wLib/releases/download/v0.3.6/wLib-v0.3.6-linux-x86_64.tar.gz
-	sha256sums = b5029f95b14cc101c293e9757ed648bff944eeaefb84e5999846bf50e2accadb
+	source = wlib-bin-0.3.7.tar.gz::https://github.com/kirin-3/wLib/releases/download/v0.3.7/wLib-v0.3.7-linux-x86_64.tar.gz
+	sha256sums = 4d68e3299ad39c7639fe6c50bfa5ecf535a88a2ca88d2d612687a6d5632428b8
 
 pkgname = wlib-bin
