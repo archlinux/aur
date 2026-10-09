@@ -8,9 +8,17 @@
 # system Chrome/Chromium) stay as package dependencies. The launcher pins
 # AGENT_BROWSER_EXECUTABLE_PATH and disables lazy PM installs so Hermes does not
 # download browsers or re-fetch tools that pacman provides.
+#
+# /opt is root-owned and HERMES_DISABLE_LAZY_INSTALLS=1, so opt-in extras that
+# users commonly hit must be preinstalled here. Ship: all + messaging, plus
+# anthropic (Anthropic / anthropic_messages proxies), edge-tts + ddgs +
+# doc-extract (default TTS / free search / documents), and gateway extensions
+# (feishu, matrix, dingtalk, wecom, teams, google-chat). Anything else
+# (bedrock, voice, fal, …) needs a rebuild with more --extra flags or a
+# writable install — `sudo` + re-packaging, not runtime lazy install.
 pkgname=hermes-agent
 pkgver=0.21.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
 url="https://github.com/NousResearch/hermes-agent"
@@ -29,7 +37,10 @@ optdepends=(
     'chromium: local browser automation (or google-chrome)'
     'google-chrome: local browser automation (or chromium)'
 )
-makedepends=('npm')
+# cmake: matrix → mautrix[encryption] → python-olm ships a vendored libolm that
+# still declares cmake_minimum_required < 3.5; CMake ≥ 4 refuses that unless
+# CMAKE_POLICY_VERSION_MINIMUM is raised (set in build()).
+makedepends=('npm' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('1ba3500cdbe876bb9d347b3c12f41c591a421293eac58faba23571287dfe1cf8')
 validpgpkeys=()
@@ -52,9 +63,23 @@ build() {
     --clear \
     venv
 
+  # python-olm (matrix) + other sdists; keep downloads off system Python.
+  CMAKE_POLICY_VERSION_MINIMUM=3.5 \
   UV_PYTHON_DOWNLOADS=never \
     UV_PROJECT_ENVIRONMENT="$PWD/venv" \
-    uv sync --frozen --no-dev --no-install-project --extra all --extra messaging
+    uv sync --frozen --no-dev --no-install-project \
+      --extra all \
+      --extra messaging \
+      --extra anthropic \
+      --extra edge-tts \
+      --extra ddgs \
+      --extra doc-extract \
+      --extra feishu \
+      --extra matrix \
+      --extra dingtalk \
+      --extra wecom \
+      --extra teams \
+      --extra google-chat
 }
 
 check() {
@@ -62,7 +87,8 @@ check() {
 
   test -s hermes_cli/web_dist/index.html
   test -s ui-tui/dist/entry.js
-  PYTHONPATH="$PWD" venv/bin/python -c 'import hermes_cli.main'
+  PYTHONPATH="$PWD" venv/bin/python -c \
+    'import hermes_cli.main, anthropic, edge_tts, ddgs, lark_oapi, mautrix, defusedxml'
 }
 
 package() {
