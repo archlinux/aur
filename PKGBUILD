@@ -11,7 +11,7 @@
 # listeners follow.
 
 pkgname=awob-listeners-all
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="awob listeners: all official listeners (meta-package)"
 arch=('any')
