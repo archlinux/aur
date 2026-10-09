@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=stremio-server-go-bin
-pkgver=0.23.0 # renovate: datasource=github-releases depName=M0Rf30/stremio-server-go
+pkgver=0.24.0 # renovate: datasource=github-releases depName=M0Rf30/stremio-server-go
 pkgrel=1
 pkgdesc="IPv6-capable, pure-Go drop-in for Stremio's streaming server with HLS transcoding and DLNA casting"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -24,10 +24,10 @@ source_x86_64=("${pkgname%%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/downlo
 source_aarch64=("${pkgname%%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/stremio-server_Linux_arm64.tar.gz")
 source_armv7h=("${pkgname%%-bin}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/stremio-server_Linux_armv7.tar.gz")
 sha256sums=('aede86d121b9be90fc31e051696bea95527711953c924b49ac7101fb4280cb40'
-            '54852db559effa603fe7a6bd8064102b2d47710f29f378188b0005813abc0b93')
-sha256sums_x86_64=('35dc1177ae79cd1ccca8a02fe1dad3c11c1b08c974fe5852894e2e0920cb5797')
-sha256sums_aarch64=('6dd0b125085d754d1ccf7b7c20ea79a4bf188418930a64dd4fdac03cb54aedd4')
-sha256sums_armv7h=('604de325d7086d00121cb481c94134f066ddf41e57f83d37e7d7eec0cd5ca73d')
+            'dfd3c12bd257647703cfb5964c22935e67ff4d0a6d655cec5e17c21c29878680')
+sha256sums_x86_64=('8e73f7e42ca6ac100fa406a12f8f52a2c8531757c65eefe85b1e75c594914135')
+sha256sums_aarch64=('a99b4d62b89d5df4b936478117a149ff7717e1d4389a19e2678378aeef066ed1')
+sha256sums_armv7h=('6b9ff22119b67bcc99a814a1ba4eb779ce85439a33874c48394dc807cae9b803')
 
 package() {
   # Install binary
