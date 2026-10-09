@@ -3,7 +3,7 @@
 _Name="CrealityPrint"
 _pkgname="creality-print"
 pkgname="${_pkgname}-bin"
-pkgver=7.2.1.5476
+pkgver=7.3.0.6151
 _pkgver="${pkgver%.*}"
 pkgrel=1
 epoch=1
@@ -17,37 +17,52 @@ license=(
   'AGPL-3.0-only'
 )
 depends=(
+  # 'alsa-lib'
   'at-spi2-core'
   'bzip2'
   'cairo'
   'dbus'
-  'expat'
+  # 'expat'
   'fontconfig'
+  'freetype2'
+  'fribidi'
   'gdk-pixbuf2'
   'glib2'
   'glibc'
+  # 'glu'
   'gst-plugins-base-libs'
   'gstreamer'
   'gtk3'
   'harfbuzz'
+  # 'lerc'
   'libatomic'
   'libdeflate'
   'libgcc'
-  'libgl'
+  'libglvnd'
   'libice'
+  # 'libmspack'
   # 'libsecret'
   'libsm'
   'libsoup3'
+  # 'libsrtp'
   'libstdc++'
+  'libthai'
+  'libtiff'
   'libx11'
   'libxext'
+  'libxft'
+  'libxkbcommon'
+  'libxrender'
   'nspr'
   'nss'
-  'pango'
+  # 'opus'
+  # 'pango'
   'sh'
+  # 'speexdsp'
   'wayland'
   'webkit2gtk-4.1'
-  'zlib'
+  # 'xz'
+  # 'zlib'
   'zstd'
 )
 makedepends=(
@@ -75,7 +90,7 @@ source_x86_64=(
 sha256sums=('11c4dc922dfc686a051c2169549d8934ae1a0477fdf5c225860db08eb51a8fc1'
             '83686d847e3403f7025427c411ce97257cbe522b6e95a5f5a44456c79af11d8c'
             '5537d2d539c94627446bf7eb30d30fda28d1de8aa9a41c25b83012db52ff6f8b')
-sha256sums_x86_64=('b28f66c25d0c6652ed6ae49d0766780f46a5b839b93ce1968e639823e1f6e2f3')
+sha256sums_x86_64=('96d3b74d24745fa0d664b23e031595db4e5b79830e4d8b885e728c172ef9915c')
 
 prepare() {
   local source_array="source_${CARCH}[0]"
@@ -106,8 +121,8 @@ package() {
   install -vDm644 "${_pkgsrc}-LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.txt"
 
   cd "${source_artifact%.AppImage}"
-  install -vDm644 "${_Name}.desktop" "${pkgdir}/usr/share/applications/${_Name}.desktop"
-  install -vDm644 "${_Name}.png" "${pkgdir}/usr/share/pixmaps/${_Name}.png"
+  install -vDm644 "${_Name}.desktop" -t "${pkgdir}/usr/share/applications"
+  install -vDm644 "${_Name}.png"     -t "${pkgdir}/usr/share/pixmaps"
 
   install -vdm755 "${pkgdir}/opt/${_pkgname}"
   cp -a --no-preserve=ownership -t "${pkgdir}/opt/${_pkgname}" "bin" "resources" "usr/lib"
