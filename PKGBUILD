@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Terminal Unicode Explorer"
 
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,8 +32,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
 sha256sums=('3a7ce0da39af074959e86316e14b676603058dfdc14d6c4ba078f85d8a75c056'
             '3b607b61bbba8e9b3bd2528080993dc454268b7b3c185ae98d02057ac5ddcc3f')
-sha256sums_x86_64=('462e36b62f6114422cecb4b753d3a0133f8ffd49ad9b8ff01d5ac74ce986d9b3')
-sha256sums_aarch64=('b0e48ba7908ec5209ec7d19c5a5ce10b1ab1857744670628cfc549ec8e9e83ba')
+sha256sums_x86_64=('4aeb339d4c0e222a20830cd99ab62116ac61469e16f952080c542f0c70cd3a02')
+sha256sums_aarch64=('e609c78ea1fa9d6cae06f026bd486e9ece39db2ea3a936e809ff5057ec148a3d')
 
 
 package() {
