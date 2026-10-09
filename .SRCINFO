@@ -1,0 +1,23 @@
+pkgbase = deckcraft-bin
+	pkgdesc = Open-source native presentation app, PowerPoint alternative (prebuilt binary)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/storytold/deckcraft
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	optdepends = vulkan-icd-loader: GPU-accelerated rendering
+	provides = deckcraft
+	conflicts = deckcraft
+	source_x86_64 = deckcraft-0.3.0-linux-x86_64.tar.gz::https://github.com/storytold/deckcraft/releases/download/v0.3.0/deckcraft-0.3.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 179d6ce47401ba37c233c3fc0a18034126aed81ac36a49c4df6ecdaca9b5ab7f
+	source_aarch64 = deckcraft-0.3.0-linux-aarch64.tar.gz::https://github.com/storytold/deckcraft/releases/download/v0.3.0/deckcraft-0.3.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = fe1d936c7e67371aba2e3ed86ffe9bc20720a6e1ff5b0a390c82283bb94c243f
+
+pkgname = deckcraft-bin
