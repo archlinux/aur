@@ -2,7 +2,7 @@
 
 pkgname=eusoft-ting-fr
 pkgver=26.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Daily French Listening (每日法语听力) for Linux (Community Repackage)"
 arch=('x86_64')
 url="https://www.eudic.net/v4/fr/app/ting"
@@ -60,7 +60,6 @@ package() {
 
     # Install desktop entry
     install -Dm644 "${srcdir}/eusoft-ting-fr.desktop" "${pkgdir}/usr/share/applications/eusoft-ting-fr.desktop"
-    ln -sf eusoft-ting-fr.desktop "${pkgdir}/usr/share/applications/ting_fr.desktop"
 
     # Install license
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
