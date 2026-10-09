@@ -1,0 +1,18 @@
+pkgbase = workspaceforge
+	pkgdesc = Your workspaces in the terminal: names, order and the apps that open on each. For KognogOS's hypeForge desktop on Sway; runs in any terminal, even a plain text console (Forge Suite)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jetomev/forge-suite/tree/main/workspaceforge
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-textual
+	depends = python-forgekit>=0.10.0
+	optdepends = sway: the desktop it is made for, with hypeForge (open windows follow their workspace when you save)
+	source = workspaceforge-1.0.0.tar.gz::https://github.com/jetomev/forge-suite/releases/download/workspaceforge-v1.0.0/workspaceforge-1.0.0.tar.gz
+	source = workspaceforge-1.0.0.tar.gz.asc::https://github.com/jetomev/forge-suite/releases/download/workspaceforge-v1.0.0/workspaceforge-1.0.0.tar.gz.asc
+	validpgpkeys = 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
+	sha256sums = fcea990887f3672a4233fccc186496ce5401afbe00dca531e847dcf0c734217c
+	sha256sums = SKIP
+
+pkgname = workspaceforge
