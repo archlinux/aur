@@ -2,7 +2,7 @@
 
 pkgname=v2raya-bin
 _pkgname=v2raya
-pkgver=2.5.9
+pkgver=2.5.10
 pkgrel=1
 pkgdesc="A web GUI client of Project V which supports VMess, VLESS, Shadowsocks, Trojan, TUIC, Juicity and AnyTLSs"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'loong64')
@@ -28,11 +28,11 @@ source_loong64=(
     "installer_archlinux_loongarch64_${pkgver}.pkg.tar.zst::https://github.com/v2rayA/v2rayA/releases/download/v${pkgver}/installer_archlinux_loongarch64_${pkgver}.pkg.tar.zst"
 )
 
-sha256sums_i686=('6f733741a98b78973ad10bc448db54b018f07a480efdd5586a27861ef4d7b9ad')
-sha256sums_x86_64=('19ca71f5d7378cf38e4b1c68db4b6f75e6c744b7f1460fa8c886e50bcb22692a')
-sha256sums_armv7h=('45386bcee14b09ec81e06f16c221760469829be57bb693d22c0779e8e8b1616c')
-sha256sums_aarch64=('572c7848590d2cbbcee24d39998299ce1a80774db8f70e8b42ecb8ac619d7b3b')
-sha256sums_loong64=('50319b2aac1bbd3bb6ef487308fca79405c4d2393d961490ad3bd742c9b47231')
+sha256sums_i686=('7094b088f63ebe8303f929f264b3e2de4b4b29d3911c3e84cd8f299ac3da37e1')
+sha256sums_x86_64=('2a8b6924976391a1958ee7aaf0595c4f5b93df2cb54575c5a806b3edc3d8d1e5')
+sha256sums_armv7h=('a1d0155119cf3178f9c5a85f42667f14cec79a104636b750cd3fbe32fa280664')
+sha256sums_aarch64=('a349f7c37453dfd21b94dd22fcb19c426d36374592a5f2ac659dbbdd3fb652c0')
+sha256sums_loong64=('a7859b383bdc123749428581a3bcb9924d9522e0ba4fbcb0c8b17ef75e45170c')
 
 package() {
     depends+=('v2ray-domain-list-community' 'v2ray-geoip')
