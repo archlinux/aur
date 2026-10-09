@@ -6,7 +6,7 @@ _appname=zl
 pkgname=${_gitname}-bin
 pkgdesc="A modern ls alternative written in Zig"
 
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums=('e25a65cd5229e2022d25f31f07c3ac5b51ff7ba59554cf1e63b0a00d7f8c4cac'
+sha256sums=('989d139b79d8bf88667dcca394f82af7cd5f55a7b9a700a52f7082a26e606e5f'
             '0cc8677757eeadbb8743f51a8a5302af7af538ea75c0b8e1b301d277d0280c08')
-sha256sums_x86_64=('41b8592e987c20e74b2ac022a8c48b48f6796d4ee1b152d4ca7d9c07fb12d157')
-sha256sums_aarch64=('4d4c877a0b31de3a33b97cf6b1dfb424960748dd7d40d61f0118554b4664214f')
+sha256sums_x86_64=('1b9d20aade4c77a77b935ca2f76c4db44ee7a2cfd340842fa05eec598b29e01c')
+sha256sums_aarch64=('e9f9de6ad27004d5005566e37b3b346e55bc5e9506e720c2f603a7631e650cdf')
 
 
 case ${CARCH} in
