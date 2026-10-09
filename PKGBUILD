@@ -1,7 +1,7 @@
 # Maintainer: Twooey Rhone twooey@rhone.dev	
 
 pkgname=quiver-launcher-bin
-pkgver=3.4.5
+pkgver=3.5.0
 pkgrel=1
 pkgdesc='Launcher for downloading, installing, and running apps from GitHub and GitLab releases (prebuilt AppImage)'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
   "LICENSE-${pkgver}::https://raw.githubusercontent.com/tgeorgiadis/quiver-launcher/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  '877ddfa3628104689f575848ff03512a2cf312a441dede8f80185bbb33626107'
+  '8dfe4aa1b0da8e85df229cf177b654d59eaa87965d121d9ac062b54d2a1bc3d0'
   '59cfef4bce249fc3db346fd32d90963719a27c7ffbfa38e42af00496c9b138dc'
 )
 

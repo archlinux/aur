@@ -1,6 +1,6 @@
 pkgbase = quiver-launcher-bin
 	pkgdesc = Launcher for downloading, installing, and running apps from GitHub and GitLab releases (prebuilt AppImage)
-	pkgver = 3.4.5
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://github.com/tgeorgiadis/quiver-launcher
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = quiver-launcher-bin
 	provides = quiver-launcher
 	conflicts = quiver-launcher
 	options = !strip
-	source = quiver-launcher-bin-3.4.5.AppImage::https://github.com/tgeorgiadis/quiver-launcher/releases/download/v3.4.5/QuiverLauncher-linux-x64.AppImage
-	source = LICENSE-3.4.5::https://raw.githubusercontent.com/tgeorgiadis/quiver-launcher/v3.4.5/LICENSE
-	sha256sums = 877ddfa3628104689f575848ff03512a2cf312a441dede8f80185bbb33626107
+	source = quiver-launcher-bin-3.5.0.AppImage::https://github.com/tgeorgiadis/quiver-launcher/releases/download/v3.5.0/QuiverLauncher-linux-x64.AppImage
+	source = LICENSE-3.5.0::https://raw.githubusercontent.com/tgeorgiadis/quiver-launcher/v3.5.0/LICENSE
+	sha256sums = 8dfe4aa1b0da8e85df229cf177b654d59eaa87965d121d9ac062b54d2a1bc3d0
 	sha256sums = 59cfef4bce249fc3db346fd32d90963719a27c7ffbfa38e42af00496c9b138dc
 
 pkgname = quiver-launcher-bin
