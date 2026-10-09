@@ -1,7 +1,7 @@
 pkgbase = plasma6-applet-quicklaunch
 	pkgdesc = Customizable quicklaunch widget for KDE Plasma 6 panels
 	pkgver = 6.5.80
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ixnewton/org.kde.plasma.quicklaunch
 	arch = x86_64
 	license = GPL-2.0-only
