@@ -2,7 +2,7 @@
 # Maintainer: Patrick Wicki <patrick.wicki96@gmail.com>
 
 pkgname=gnome-meta
-pkgver=50
+pkgver=51
 pkgrel=1
 pkgdesc='Meta package to install GNOME'
 arch=(any)

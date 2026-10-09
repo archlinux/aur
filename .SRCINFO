@@ -1,6 +1,6 @@
 pkgbase = gnome-meta
 	pkgdesc = Meta package to install GNOME
-	pkgver = 50
+	pkgver = 51
 	pkgrel = 1
 	url = https://www.gnome.org/
 	arch = any
