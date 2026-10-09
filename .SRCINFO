@@ -1,0 +1,25 @@
+pkgbase = mold-ai-desktop-bin
+	pkgdesc = Mold desktop app for remote GPU hosts — gallery, model manager and job queue (prebuilt, GPU-free)
+	pkgver = 0.34.0
+	pkgrel = 1
+	url = https://github.com/utensils/mold
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsoup3
+	depends = hicolor-icon-theme
+	depends = gcc-libs
+	depends = glibc
+	optdepends = ffmpeg: video upscaling and mp4 mux fallback
+	optdepends = gst-plugins-good: in-app video playback
+	optdepends = gst-plugins-bad: in-app video playback
+	optdepends = gst-libav: H.264 in-app video playback
+	provides = mold-ai-desktop=0.34.0
+	conflicts = mold-ai-desktop
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/utensils/mold/releases/download/v0.34.0/mold-desktop-x86_64-unknown-linux-gnu-cpu.tar.gz
+	sha256sums_x86_64 = b33410a961290de5c4ae910050844a5796700fe5e9d67d979a32f7466632e78c
+
+pkgname = mold-ai-desktop-bin
