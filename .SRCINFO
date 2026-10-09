@@ -1,6 +1,6 @@
 pkgbase = archtoys-bin
 	pkgdesc = System-wide color picker for Linux, inspired by PowerToys (precompiled binary)
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/Mujtaba1i/Archtoys
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = archtoys-bin
 	depends = libglvnd
 	depends = wayland
 	depends = hicolor-icon-theme
-	provides = archtoys=0.3.0
+	provides = archtoys=0.3.1
 	conflicts = archtoys
 	options = !debug
-	source = archtoys-linux-x86_64-v0.3.0.tar.gz::https://github.com/Mujtaba1i/Archtoys/releases/download/v0.3.0/archtoys-linux-x86_64.tar.gz
-	sha256sums = f206e6158820115c4b7642287fb19b5bd7ec0d259e3c72dcdc72fba281d3a879
+	source = archtoys-linux-x86_64-v0.3.1.tar.gz::https://github.com/Mujtaba1i/Archtoys/releases/download/v0.3.1/archtoys-linux-x86_64.tar.gz
+	sha256sums = 5bfe2d24ff5418603ab3dac8196ec0ff413e5c40e2bf3f16236d129827dced76
 
 pkgname = archtoys-bin
