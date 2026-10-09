@@ -1,0 +1,22 @@
+pkgbase = wordcraft-bin
+	pkgdesc = Open-source native word processor, Word alternative (prebuilt binary)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/storytold/wordcraft
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	optdepends = vulkan-icd-loader: GPU-accelerated rendering
+	provides = wordcraft
+	conflicts = wordcraft
+	source_x86_64 = wordcraft-0.3.0-linux-x86_64.tar.gz::https://github.com/storytold/wordcraft/releases/download/v0.3.0/wordcraft-0.3.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = c0b3a4b61afe0e8891b1386f73dc94adf528d8d87360f3fb71a97ba03381aec2
+	source_aarch64 = wordcraft-0.3.0-linux-aarch64.tar.gz::https://github.com/storytold/wordcraft/releases/download/v0.3.0/wordcraft-0.3.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = c3bd964e73e7cd2c556a9d0eba04acd41aefac8dbce39ec7223360a7d1fbcd36
+
+pkgname = wordcraft-bin
