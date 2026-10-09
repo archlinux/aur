@@ -1,6 +1,6 @@
 # Maintainer: Ibnu Afdel <ibnuafdel at gmail dot com>
 pkgname=pomogo
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Terminal focus companion: autopilot Pomodoro, body reminders, a daily goal and an Omarchy bar widget"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=(
 )
 options=('!lto' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cc7fb1d2582870d4d1b6cc3b154a10f49c8cb6448c711c64ba2f78daaf0d423d')
+sha256sums=('9926b1de34a4cfde913895f3dbac0cc9a62c6654888617e8bf66c411f945f034')
 
 _srcdir="pomogo-rs-${pkgver}"
 

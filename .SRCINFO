@@ -1,6 +1,6 @@
 pkgbase = pomogo
 	pkgdesc = Terminal focus companion: autopilot Pomodoro, body reminders, a daily goal and an Omarchy bar widget
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://github.com/Ibnu-Afdel/pomogo-rs
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = pomogo
 	optdepends = libnotify: notify-send, used by pomogo doctor
 	options = !lto
 	options = !debug
-	source = pomogo-4.0.0.tar.gz::https://github.com/Ibnu-Afdel/pomogo-rs/archive/refs/tags/v4.0.0.tar.gz
-	sha256sums = cc7fb1d2582870d4d1b6cc3b154a10f49c8cb6448c711c64ba2f78daaf0d423d
+	source = pomogo-4.0.1.tar.gz::https://github.com/Ibnu-Afdel/pomogo-rs/archive/refs/tags/v4.0.1.tar.gz
+	sha256sums = 9926b1de34a4cfde913895f3dbac0cc9a62c6654888617e8bf66c411f945f034
 
 pkgname = pomogo
