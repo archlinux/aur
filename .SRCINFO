@@ -1,20 +1,29 @@
 pkgbase = yad-light
-	pkgdesc = A fork of zenity - display graphical dialogs from shell scripts or command line w\o html, spell, sourceview
-	pkgver = 14.1
-	pkgrel = 3
+	pkgdesc = A fork of zenity - display graphical dialogs from shell scripts or command line (without HTML, AppIndicator, spell check and GtkSourceView)
+	pkgver = 15.0
+	pkgrel = 7
 	url = https://github.com/v1cont/yad
 	arch = x86_64
 	license = GPL3
 	makedepends = autoconf
 	makedepends = automake
-	makedepends = intltool
+	makedepends = gettext
 	depends = gtk3
+	optdepends = xdg-utils: open links from --text-info --show-uri and --icons (default OpenCommand)
+	optdepends = xterm: terminal for --icons entries with Terminal=true (default Terminal setting)
+	optdepends = xorg-xwayland: X11-only modes (--notebook, --paned, --plug) with GDK_BACKEND=x11 on Wayland
 	provides = yad
 	conflicts = yad
 	conflicts = yad-git
 	conflicts = yad-gtk2
 	replaces = yad
-	source = https://git.altlinux.org/tasks/398769/build/100/x86_64/srpm/yad-14.1-alt1.src.rpm
-	sha256sums = 520dc26b56c2da198798d65a34f19f409c2d4ff8721f1ad12c2a0be460935594
+	source = https://ftp.altlinux.org/pub/distributions/ALTLinux/Sisyphus/files/SRPMS/yad-15.0-alt1.src.rpm
+	source = yad-settings
+	source = wayland.en.txt
+	source = wayland.ru.txt
+	sha256sums = 7106e790dac1ef39cda18b6bd64c803bc8cd46b475473decba6cb4e5239fed49
+	sha256sums = cade839df31924b33d8cfec7c1c5174f7eea41496cf1358472996cef427a9a0a
+	sha256sums = 48fbfb554f3e982f953811dbedcd1ebf5228bff71de88a50e1dfe7532e015296
+	sha256sums = 4fd9fd005335d3d0bcd45d4e4fccadcddb1de967203436eeaeb73318d3695903
 
 pkgname = yad-light

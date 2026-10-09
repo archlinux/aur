@@ -1,0 +1,111 @@
+YAD on Wayland
+==============
+
+YAD runs on Wayland through GTK3, but some features depend on X11 and are
+unavailable in a native Wayland session.
+
+
+1. Unsupported modes
+--------------------
+
+--notebook, --paned
+    Prints "This mode not supported outside X11" and exits with code 1.
+    Tabs are embedded with XEmbed.
+    Alternative: separate windows or XWayland.
+
+--notification
+    Same message, exit code 1. Uses GtkStatusIcon (XEmbed tray).
+    Alternative: --indicator.
+
+--plug, --tabnum
+    --plug is ignored and the dialog opens as a separate window.
+    Alternative: separate windows or XWayland.
+
+--print-xid, YAD_XID variable
+    X11 only.
+
+
+2. Window options without effect
+--------------------------------
+
+On Wayland, a client cannot set its window position or window manager
+hints. GTK3 implements these calls as no-ops on Wayland:
+
+  - --on-top, --sticky, --skip-taskbar;
+  - --posx, --posy, the position part of --geometry, --center, --mouse.
+
+Window size (--width, --height, the size part of --geometry) works.
+Use compositor rules for placement and always-on-top, for example
+labwc window rules.
+
+
+3. Tray icon: --indicator
+-------------------------
+
+--indicator uses StatusNotifierItem (SNI) over D-Bus and works on Wayland.
+
+Requirements:
+
+  - YAD built with AppIndicator support.
+    Check: yad --help-all | grep -- --indicator
+    This PKGBUILD disables it by default (--disable-appindicator).
+    To enable it, remove that flag, install libayatana-appindicator,
+    and add it to depends.
+  - An SNI host: KDE Plasma, GNOME with gnome-shell-extension-appindicator,
+    or a panel with an SNI tray (sfwbar, waybar).
+
+Do not combine --indicator with --notification: the latter takes
+precedence and YAD exits with the X11 error.
+
+Supported options: --image, --text (title), --menu, --command, --hidden,
+--listen, --timeout. --listen commands: icon, tooltip, visible, action,
+quit, menu.
+
+The indicator is menu-only. A --command action is added as an "Activate"
+menu item unless it is menu or quit. A "Quit" item is always added.
+
+Example:
+
+    yad --indicator \
+      --image=applications-other \
+      --text="My Tray Icon" \
+      --menu="Terminal!foot|Files!thunar" \
+      --command=menu
+
+
+4. yad-settings
+---------------
+
+This package installs:
+
+  - /usr/bin/yad-settings-x11: the original YAD settings editor with tabs
+    (--notebook and --plug), X11 only;
+  - /usr/bin/yad-settings: a wrapper.
+
+The wrapper runs the original editor when WAYLAND_DISPLAY is unset or
+GDK_BACKEND starts with x11. Otherwise it opens the Wayland version: a main
+window with "Main", "Editor", "Load defaults", "About Wayland", and "Close"
+buttons.
+
+  - Each settings group opens in its own window.
+  - "Save" writes ~/.config/yad/settings.conf (or YAD_SETTINGS_FILE)
+    immediately.
+  - "Editor": text-info settings; they take effect only when YAD is built
+    with GtkSourceView (this package is built without it).
+  - "Load defaults" opens the main settings window filled with YAD
+    defaults; they are applied only after "Save" ("Cancel" keeps the
+    current settings).
+  - "About Wayland" shows this text.
+
+
+5. XWayland
+-----------
+
+If the compositor supports XWayland, YAD can run through X11:
+
+    GDK_BACKEND=x11 yad --notebook ...
+    GDK_BACKEND=x11 yad-settings
+
+This makes --notebook, --paned, and --plug work. A --notification icon
+under XWayland is visible only with an XEmbed tray; SNI-only panels such as
+sfwbar do not show it.

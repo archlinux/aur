@@ -1,0 +1,236 @@
+#!/usr/bin/env bash
+#
+# yad-settings for yad-light. Based on yad-settings from YAD, GPL-3.0-or-later.
+#
+# The upstream editor (installed as yad-settings-x11) embeds its tabs with
+# --plug/--notebook, which YAD supports only on the X11 GDK backend.
+# On native Wayland every settings section opens in its own window instead.
+
+if [[ -z $WAYLAND_DISPLAY || $GDK_BACKEND == x11* ]]; then
+    exec yad-settings-x11 "$@"
+fi
+
+# Strings match upstream msgids, so the existing yad translations apply.
+TEXTDOMAIN=yad
+TEXTDOMAINDIR=/usr/share/locale
+
+filename=${YAD_SETTINGS_FILE:-${XDG_CONFIG_HOME:-$HOME/.config}/yad/settings.conf}
+title=$"YAD settings"
+main_label=$"Main"
+editor_label=$"Editor"
+# Not in the yad catalog, so the help label and text are picked by locale here.
+case ${LC_ALL:-${LC_MESSAGES:-$LANG}} in
+    ru*) help_label="О Wayland" help_file=/usr/share/yad-light/wayland.ru.txt ;;
+    *) help_label="About Wayland" help_file=/usr/share/yad-light/wayland.en.txt ;;
+esac
+declare -A Common SourceView
+
+# Reads settings from $1; YAD creates the file with defaults if it is missing.
+load_settings() {
+    local ln section=
+    Common=() SourceView=()
+    YAD_SETTINGS_FILE=$1 yad --write-settings
+    while IFS= read -r ln; do
+        case $ln in
+            '' | '#'*) ;;
+            '['*']') section=${ln:1:-1} ;;
+            *=*)
+                case $section in
+                    Common) Common[${ln%%=*}]=${ln#*=} ;;
+                    SourceView) SourceView[${ln%%=*}]=${ln#*=} ;;
+                esac
+                ;;
+        esac
+    done < "$1"
+    # YAD without GtkSourceView omits this section; use YAD's built-in defaults.
+    (( ${#SourceView[@]} )) || SourceView=([Theme]= [LineNum]=false [LineHilite]=false
+        [LineMarks]=false [Mark1Color]=lightgreen [Mark2Color]=pink [RightMargin]=0 [Brackets]=false
+        [Indent]=false [HomeEnd]=0 [SmartBS]=false [TabWidth]=8 [IndentWidth]=4 [Spaces]=true)
+}
+
+# Shows YAD defaults in the main form; nothing changes until the user saves.
+edit_defaults() {
+    local dir
+    dir=$(mktemp -d) || return 1
+    load_settings "$dir/settings.conf"
+    rm -rf -- "$dir"
+    edit_main
+    load_settings "$filename"
+}
+
+save_settings() {
+    cat > "$filename.tmp" <<EOF || return 1
+[Common]
+# Default width of dialog window
+Width=${Common[Width]}
+# Default height of dialog window
+Height=${Common[Height]}
+# Borders around dialog
+Border=${Common[Border]}
+# Show remaining time and percentage in timeout progress bar
+ShowRemain=${Common[ShowRemain]}
+# Combo-box in entry dialog is always editable
+ComboAlwaysEditable=${Common[ComboAlwaysEditable]}
+# Default terminal command (use %s for arguments placeholder)
+Terminal=${Common[Terminal]}
+# Default open command (use %s for arguments placeholder)
+OpenCommand=${Common[OpenCommand]}
+# Default date format (see strftime(3) for details)
+DateFormat=${Common[DateFormat]}
+# Default color for URI highlight in text-info dialog
+URIColor=${Common[URIColor]}
+# Maximum number of tabs in notebook dialog
+MaxTab=${Common[MaxTab]}
+# Use large previews in file selection dialogs)
+LargePreview=${Common[LargePreview]}
+# Set width of search entry in search bar
+SearchWidth=${Common[SearchWidth]}
+# Ignore unknown command-line options
+IgnoreUnknownOptions=${Common[IgnoreUnknownOptions]}
+# Enable debug mode with information about deprecated features
+Debug=${Common[Debug]}
+
+[SourceView]
+# Default color theme for text-info dialog
+Theme=${SourceView[Theme]}
+# Show line numbers
+LineNum=${SourceView[LineNum]}
+# Highlight current line
+LineHilite=${SourceView[LineHilite]}
+# Enable line marks mode
+LineMarks=${SourceView[LineMarks]}
+# Default color for first type of text marks
+Mark1Color=${SourceView[Mark1Color]}
+# Default color for second type of text marks
+Mark2Color=${SourceView[Mark2Color]}
+# Show right margin at position (0 to disable)
+RightMargin=${SourceView[RightMargin]}
+# Highlight matching brackets
+Brackets=${SourceView[Brackets]}
+# Use autoindent
+Indent=${SourceView[Indent]}
+# Smart Home/End behavior (0 - never, 1 - before, 2 - after, 3 - always)
+HomeEnd=${SourceView[HomeEnd]}
+# Use smart backspace
+SmartBS=${SourceView[SmartBS]}
+# Default tabulation width
+TabWidth=${SourceView[TabWidth]}
+# Default indentation width
+IndentWidth=${SourceView[IndentWidth]}
+# Insert spaces instead of tabs
+Spaces=${SourceView[Spaces]}
+EOF
+    mv -f -- "$filename.tmp" "$filename"
+}
+
+# Prints field values separated by \x1f (no eval needed); fails on cancel.
+form() {
+    yad --title="$title" --image=preferences-other --form --bool-fmt=t --num-output \
+        --separator='\037' --button=yad-save:0 --button=yad-cancel:1 "$@"
+}
+
+edit_main() {
+    local out i
+    local -a vals keys=(Width Height Border ShowRemain ComboAlwaysEditable Terminal OpenCommand
+                        DateFormat URIColor MaxTab LargePreview SearchWidth IgnoreUnknownOptions Debug)
+
+    out=$(form --text=$"Main YAD settings and default values\n\n" \
+        --field=$"Width of dialog window::NUM" \
+        --field=$"Height of dialog window::NUM" \
+        --field=$"Border width around dialog::NUM" \
+        --field=$"Show remaining time and percentage in timeout progress bar:CHK" \
+        --field=$"Combo-box in entry dialog is always editable:CHK" \
+        --field=$"Default terminal command:" \
+        --field=$"Default open command:" \
+        --field=$"Default date format:" \
+        --field=$"Default URI color in text-info dialog::CLR" \
+        --field=$"Maximum number of tabs in notebook dialog::NUM" \
+        --field=$"Use large previews in file selection dialogs:CHK" \
+        --field=$"Search entry width::NUM" \
+        --field=$"Ignore unknown command-line options:CHK" \
+        --field=$"Enable debug mode with information about deprecated features:CHK" \
+        -- \
+        "${Common[Width]}!-1..32767" "${Common[Height]}!-1..32767" "${Common[Border]}" \
+        "${Common[ShowRemain]}" "${Common[ComboAlwaysEditable]}" "${Common[Terminal]}" \
+        "${Common[OpenCommand]}" "${Common[DateFormat]}" "${Common[URIColor]}" \
+        "${Common[MaxTab]}" "${Common[LargePreview]}" "${Common[SearchWidth]}!-1..1024" \
+        "${Common[IgnoreUnknownOptions]}" "${Common[Debug]}") || return 0
+
+    IFS=$'\x1f' read -r -a vals <<< "$out"
+    (( ${#vals[@]} == ${#keys[@]} )) || { echo "yad-settings: unexpected form output" >&2; return 1; }
+    for i in "${!keys[@]}"; do
+        Common[${keys[i]}]=${vals[i]}
+    done
+    save_settings
+}
+
+edit_editor() {
+    local out t i themes=$"<Empty>!" homend_list
+    local -a vals theme_names homend=(never before after always)
+    local -a keys=(Theme LineNum LineHilite LineMarks Mark1Color Mark2Color RightMargin
+                   Brackets Indent HomeEnd SmartBS TabWidth IndentWidth Spaces)
+
+    mapfile -t theme_names < <(yad-tools --show-themes 2> /dev/null)
+    for t in "${theme_names[@]}"; do
+        if [[ $t == "${SourceView[Theme]}" ]]; then themes+="^$t!"; else themes+="$t!"; fi
+    done
+    i=${SourceView[HomeEnd]}
+    [[ $i == [0-3] ]] || i=0
+    homend[i]="^${homend[i]}"
+    homend_list=$(IFS='!'; echo "${homend[*]}")
+
+    out=$(form --text=$"YAD settings for text editor\nThis settings only usefull when YAD built with GtkSourceView\n\n" \
+        --field=$"Default theme for text-info dialog::CB" \
+        --field=$"Show line numbers:CHK" \
+        --field=$"Hightlight current line:CHK" \
+        --field=$"Enable line marks mode:CHK" \
+        --field=$"Color of first type marks::CLR" \
+        --field=$"Color of second type marks::CLR" \
+        --field=$"Right margin position::NUM" \
+        --field=$"Highlight matching brackets:CHK" \
+        --field=$"Use autoindentation:CHK" \
+        --field=$"Smart Home/End behavior::CB" \
+        --field=$"Use smart backspace:CHK" \
+        --field=$"Tabulation width::NUM" \
+        --field=$"Indentation width::NUM" \
+        --field=$"Insert spaces instead of tabulation:CHK" \
+        -- \
+        "${themes%?}" "${SourceView[LineNum]}" "${SourceView[LineHilite]}" \
+        "${SourceView[LineMarks]}" "${SourceView[Mark1Color]}" \
+        "${SourceView[Mark2Color]}" "${SourceView[RightMargin]}!-1..256" \
+        "${SourceView[Brackets]}" "${SourceView[Indent]}" "$homend_list" \
+        "${SourceView[SmartBS]}" "${SourceView[TabWidth]}" \
+        "${SourceView[IndentWidth]}" "${SourceView[Spaces]}") || return 0
+
+    IFS=$'\x1f' read -r -a vals <<< "$out"
+    (( ${#vals[@]} == ${#keys[@]} )) || { echo "yad-settings: unexpected form output" >&2; return 1; }
+    for i in "${!keys[@]}"; do
+        SourceView[${keys[i]}]=${vals[i]}
+    done
+    # Combo boxes return 1-based indexes; the first theme entry is <Empty>.
+    if (( vals[0] > 1 )); then
+        SourceView[Theme]=${theme_names[vals[0] - 2]}
+    else
+        SourceView[Theme]=
+    fi
+    SourceView[HomeEnd]=$(( vals[9] - 1 ))
+    save_settings
+}
+
+
+load_settings "$filename"
+while :; do
+    yad --title="$title" --image=preferences-other --width=500 \
+        --text=$"<span size='xx-large' weight='bold'>YAD settings editor</span>" --text-align=center \
+        --button="$main_label:10" --button="$editor_label:11" \
+        --button=$"Load defaults!view-refresh:3" \
+        --button="$help_label!dialog-information:12" --button=yad-close:1 > /dev/null
+    case $? in
+        10) edit_main ;;
+        11) edit_editor ;;
+        3) edit_defaults ;;
+        12) yad --title="$help_label" --text-info --filename="$help_file" \
+                --wrap --width=700 --height=600 --button=yad-close:0 > /dev/null ;;
+        *) break ;;
+    esac
+done
