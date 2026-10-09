@@ -2,7 +2,7 @@
 
 pkgname=wish-agent-bin
 _pkgname=wish-agent
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Self-hosted AI agent server and web app: long-lived sessions, shell tools and many model providers"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=("wish-agent.service")
 source_x86_64=("$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('932ff80ab90865dbeb39168c36293738af32ec5f197c7630930d0a54c2bac0d0')
-sha256sums_x86_64=('7758a8e4a0dfcabe34cc6fd0ea1b6236669ba67ee34b5d55fb6d31b0b76f3da1')
-sha256sums_aarch64=('2be02df3eaf4ab4bdc218253ddd63b8f215026a82f27f8887e49f99766c2a841')
+sha256sums_x86_64=('1ad321cb99b9ab144799bd58bcf1c2ee2317899de27905b4ca917fcede0ea66e')
+sha256sums_aarch64=('7d2ab2b2ba0f32db8acc7de16b6dca1a5bc8d1197f56dec2f842e7dfbc53feb9')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-$CARCH-unknown-linux-gnu"

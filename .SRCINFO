@@ -1,6 +1,6 @@
 pkgbase = wish-agent-bin
 	pkgdesc = Self-hosted AI agent server and web app: long-lived sessions, shell tools and many model providers
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/WindustH/wish-core
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = wish-agent-bin
 	options = !debug
 	source = wish-agent.service
 	sha256sums = 932ff80ab90865dbeb39168c36293738af32ec5f197c7630930d0a54c2bac0d0
-	source_x86_64 = wish-agent-0.2.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/WindustH/wish-core/releases/download/v0.2.0/wish-agent-0.2.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 7758a8e4a0dfcabe34cc6fd0ea1b6236669ba67ee34b5d55fb6d31b0b76f3da1
-	source_aarch64 = wish-agent-0.2.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/WindustH/wish-core/releases/download/v0.2.0/wish-agent-0.2.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 2be02df3eaf4ab4bdc218253ddd63b8f215026a82f27f8887e49f99766c2a841
+	source_x86_64 = wish-agent-0.2.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/WindustH/wish-core/releases/download/v0.2.1/wish-agent-0.2.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1ad321cb99b9ab144799bd58bcf1c2ee2317899de27905b4ca917fcede0ea66e
+	source_aarch64 = wish-agent-0.2.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/WindustH/wish-core/releases/download/v0.2.1/wish-agent-0.2.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7d2ab2b2ba0f32db8acc7de16b6dca1a5bc8d1197f56dec2f842e7dfbc53feb9
 
 pkgname = wish-agent-bin
