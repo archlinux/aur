@@ -1,13 +1,13 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=zerobrew
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A drop-in, 5-20x faster, experimental Homebrew alternative.'
 arch=(
     'x86_64'
     'aarch64'
 )
-url='https://github.com/lucasgelfond/zerobrew'
+url='https://github.com/zerobrewhq/zerobrew'
 license=(
     'MIT'
     'Apache-2.0'
@@ -32,7 +32,7 @@ source=(
     'zerobrew.install'
 )
 sha256sums=(
-    '696fb9028a4b553fe87eb58af81f44f0676312e07ed89be78fc0886f1f3127a5'
+    '6a4707445597e56eaf4010e2bfec3266c2e465e39fc13f44cb3ffdf451f844e6'
     '9092be5274ca2a0bf7193c58fb0cc63d7328bc8eb3d390db7aae3ab70ce02b39'
 )
 
