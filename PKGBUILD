@@ -1,12 +1,12 @@
 # Maintainer: tuanapi <tuanapi@proton.me>
 pkgname=openanime
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc="Unofficial OpenAnime Linux client - Compiled from source (WebGPU/Vulkan support)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tuanapi/OpenAnime-Linux"
 license=('MIT')
-depends=('gtk3' 'nss' 'libxss' 'alsa-lib' 'libxtst' 'libxkbfile' 'libxkbcommon')
+depends=('gtk3' 'nss' 'libxss' 'alsa-lib' 'libxtst' 'libxkbfile' 'libxkbcommon' 'cups-libs' 'mesa')
 makedepends=('nodejs' 'npm' 'git')
 provides=("${pkgname}")
 conflicts=("${pkgname}-bin")
