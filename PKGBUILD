@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="pipelex"
-pkgver=0.79.0
+pkgver=0.79.1
 pkgrel=1
 pkgdesc="Open-source language for AI Agents to create and run repeatable AI workflows"
 
@@ -18,7 +18,7 @@ depends=('python' 'python-tomlkit' 'python-anthropic' 'python-rich' 'python-inst
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('8ab2153d31186d75c721dace9be3b54768f89cb1e13065ba6c84380954a8499e')
+sha256sums=('e983f032187cc238763d8419236766d40e43082fec8d14a2f4d958f34be29b91')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
