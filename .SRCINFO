@@ -1,0 +1,42 @@
+pkgbase = libfprint-goodix53x5-533c-git
+	pkgdesc = Goodix 53x5 Milan fingerprint driver with 27c6:533c support from seaweeduk/goodix53x5-libfprint#334 (replaces fprintd)
+	pkgver = r340.5a05d2a
+	pkgrel = 1
+	url = https://github.com/nikicat/goodix53x5-libfprint
+	install = libfprint-goodix53x5.install
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = meson
+	makedepends = ninja
+	makedepends = perl
+	makedepends = pkgconf
+	makedepends = python
+	makedepends = systemd
+	depends = dbus
+	depends = glib2
+	depends = glibc
+	depends = libdeflate
+	depends = libgusb
+	depends = openssl
+	depends = pam
+	depends = polkit
+	depends = systemd-libs
+	provides = libfprint-goodix53x5
+	provides = fprintd=1.94.5
+	conflicts = libfprint-goodix53x5
+	conflicts = fprintd
+	options = !debug
+	backup = etc/fprintd.conf
+	source = git+https://github.com/nikicat/goodix53x5-libfprint.git#branch=goodix-533c-variant-ops
+	source = libfprint::git+https://gitlab.freedesktop.org/libfprint/libfprint.git#commit=0c97a47d8ef405cd577b87058c1e89cae9d242e7
+	source = fprintd::git+https://gitlab.freedesktop.org/libfprint/fprintd.git#commit=b54a007ccf58ac0ae074c7151b223f35cbd17306
+	source = libfprint-goodix53x5.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = libfprint-goodix53x5-533c-git

@@ -1,0 +1,84 @@
+_goodix_sensor_present() {
+  local device
+  for device in /sys/bus/usb/devices/*; do
+    [[ "$(cat "$device/idVendor" 2>/dev/null)" == 27c6 ]] || continue
+    case "$(cat "$device/idProduct" 2>/dev/null)" in
+      5335|533c|5385|5395) return 0 ;;
+    esac
+  done
+  return 1
+}
+
+_goodix_refresh() {
+  if command -v udevadm >/dev/null 2>&1; then
+    udevadm control --reload-rules || true
+    udevadm trigger --subsystem-match=usb --attr-match=idVendor=27c6 --action=add || true
+  fi
+  [[ -d /run/systemd/system ]] || return 0
+  systemctl daemon-reload || true
+  if _goodix_sensor_present; then
+    # Open the sensor now rather than on the first unlock.
+    systemctl restart fprintd.service || true
+  else
+    systemctl try-restart fprintd.service || true
+    echo "libfprint-goodix53x5: no Goodix 27c6:5335, 27c6:533c, 27c6:5385 or 27c6:5395 sensor found;"
+    echo "other fingerprint readers are not supported."
+  fi
+}
+
+post_install() {
+  _goodix_refresh
+  cat <<'EOF'
+
+libfprint-goodix53x5 replaces fprintd with a matching patched fprintd. Its
+libfprint lives in a private directory and leaves any system libfprint alone.
+Fingerprint login is not enabled automatically; add pam_fprintd.so to the PAM
+services you want, as described at
+https://wiki.archlinux.org/title/Fprint#Configuration
+EOF
+  if compgen -G '/var/lib/fprint/*/goodix53x5' >/dev/null; then
+    cat <<'EOF'
+
+libfprint-goodix53x5: existing goodix53x5 fingerprints were found. Prints
+enrolled with the older sigfm driver are not compatible. If verification
+reports invalid data, delete them and enroll again:
+
+  fprintd-delete "$USER"
+  fprintd-enroll
+EOF
+  fi
+}
+
+post_upgrade() {
+  _goodix_refresh
+  if (( $(vercmp "$2" 1:0) < 0 )); then
+    cat <<'EOF'
+
+libfprint-goodix53x5: this update replaces the sigfm matcher with the native
+Milan matcher and now ships its own fprintd. Fingerprints enrolled with the
+sigfm driver are not compatible. Delete them and enroll again:
+
+  fprintd-delete "$USER"
+  fprintd-enroll
+
+Recognition keeps improving with use: successful unlocks are learned.
+EOF
+  fi
+}
+
+pre_remove() {
+  if [[ -d /run/systemd/system ]]; then
+    systemctl stop fprintd.service || true
+  fi
+}
+
+post_remove() {
+  if [[ -d /run/systemd/system ]]; then
+    systemctl daemon-reload || true
+  fi
+  if command -v udevadm >/dev/null 2>&1; then
+    udevadm control --reload-rules || true
+  fi
+  echo "libfprint-goodix53x5 was removed. Restore the distribution's fingerprint"
+  echo "support with: sudo pacman -S fprintd"
+}
