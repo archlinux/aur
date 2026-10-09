@@ -7,11 +7,12 @@
 _pkgname=fcp
 pkgname=fcp-git
 pkgver=v0.2.2.r0.gf8db060
-pkgrel=1
+pkgrel=2
 pkgdesc="A faster rust cp command"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686')
 url='https://github.com/Svetlitski/fcp'
-license=('BSD')
+license=('BSD-3-Clause')
+depends=('glibc' 'libgcc')
 makedepends=('git' 'cargo')
 provides=('fcp')
 conflicts=('fcp')
@@ -33,6 +34,7 @@ build() {
 
 package() {
   cd "${_pkgname}"
-  install -Dvm755 target/release/fcp -t "${pkgdir}/usr/bin"
-  install -Dvm644 LICENSE README.md -t "${pkgdir}/usr/share/doc/fcp"
+  install -Dvm0755 target/release/fcp -t "${pkgdir}/usr/bin"
+  install -Dvm0644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -Dvm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
