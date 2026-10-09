@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Tang Dynasty (Wayland)
+GenericName=FPGA IDE
+Comment=Tang Dynasty with native Wayland support
+Icon=tang-dynasty
+Exec=tang-dynasty-wayland -gui
+TryExec=tang-dynasty-wayland
+Terminal=false
+Categories=Development;IDE;
+StartupWMClass=td
