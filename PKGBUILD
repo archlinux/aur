@@ -6,11 +6,12 @@
 
 pkgname=sshportal
 pkgver=1.31.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Transparent SSH bastion daemon"
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://github.com/alterway/sshportal'
 license=('Apache-2.0')
+depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         'sshportal.service'
