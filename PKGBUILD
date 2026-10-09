@@ -34,7 +34,7 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm0755 target/release/wtfi2 "$pkgdir/usr/bin/wtfi2"
+    install -Dm0755 target/release/wtfi "$pkgdir/usr/bin/wtfi"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
