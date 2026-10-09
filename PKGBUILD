@@ -7,7 +7,7 @@ pkgver=20.1.1
 pkgrel=2
 pkgdesc="An automatic Flowinity/PrivateUploader upload wrapper for screenshot utilities (KDE Spectacle). (Source version)"
 arch=('i686' 'x86_64')
-url="https://github.com/Flowinity/flameshot"
+url="https://github.com/Flowinity/flowshot"
 license=('GPL')
 depends=(qt6-base hicolor-icon-theme qt6-svg kguiaddons spectacle)
 makedepends=(qt6-tools git cmake)
@@ -38,4 +38,3 @@ package() {
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}" install
 }
-sha256sums=('f0a9e54bee78fa1abb01369afbb6caf4982041af2a9b609628a9ce999a5dfee8')
