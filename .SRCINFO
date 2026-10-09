@@ -1,0 +1,20 @@
+pkgbase = elephant-clipboard-substring
+	pkgdesc = clipboard provider for elephant (case-insensitive substring search, space-separated AND terms, newest first)
+	pkgver = 2.22.1
+	pkgrel = 1
+	url = https://github.com/abenz1267/elephant
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go
+	depends = elephant
+	depends = wl-clipboard
+	depends = imagemagick
+	provides = elephant-clipboard=2.22.1
+	conflicts = elephant-clipboard
+	source = elephant-2.22.1.tar.gz::https://github.com/abenz1267/elephant/archive/refs/tags/v2.22.1.tar.gz
+	source = clipboard-substring-search.patch
+	sha256sums = 3d1d0d4c55ae531fa3f06406b96504b5165a0d7b53523d1f8351d9d93e457f44
+	sha256sums = 5b9145dacc6716c4a82de9911b5313f8e493791f4a66f4d34a9984aef92af2bb
+
+pkgname = elephant-clipboard-substring
