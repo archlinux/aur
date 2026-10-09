@@ -2,17 +2,24 @@
 
 _name=uncalled-for
 pkgname=python-$_name
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Async dependency injection for Python functions."
 arch=('any')
 license=('MIT')
 url="https://github.com/chrisguidry/uncalled-for/"
 depends=('python')
-makedepends=('python-hatchling' 'python-hatch-vcs' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-randomly' 'python-pytest-timeout')
+makedepends=('python-hatchling'
+             'python-hatch-vcs'
+             'python-build'
+             'python-installer'
+             'python-wheel')
+checkdepends=('python-pytest'
+              'python-pytest-asyncio'
+              'python-pytest-randomly'
+              'python-pytest-timeout')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('335b95bd2422332ec210d518f314a16e4c640921c39fc8bf2ad095bd3538f4af')
+sha256sums=('6412b19d1b1e7d431981fee01f8b47be7802f48328a48cbe9603acee757ec553')
 
 build() {
   cd "$srcdir"/${_name//-/_}-$pkgver
