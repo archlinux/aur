@@ -1,0 +1,3 @@
+[python-msldap]
+source = "pypi"
+pypi = "msldap"
