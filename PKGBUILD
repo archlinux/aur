@@ -2,7 +2,7 @@
 
 _pkgname_prefix=globalprotect-openconnect
 pkgname="${_pkgname_prefix}-git"
-pkgver=2.6.5.r6.gd75e422
+pkgver=3.0.0.r17.g8724ed3
 pkgrel=1
 pkgdesc="A GUI client for GlobalProtect VPN, based on OpenConnect, supports the SSO authentication method."
 arch=(x86_64 aarch64)
@@ -10,7 +10,7 @@ url="https://github.com/yuezk/GlobalProtect-openconnect"
 license=('GPL3')
 
 makedepends=(git pkg-config 'openconnect>=8.20' webkit2gtk-4.1 curl wget file openssl appmenu-gtk-module libappindicator-gtk3 librsvg libsecret cargo)
-depends=(vpnc openssl webkit2gtk-4.1 libappindicator-gtk3 libsecret libxml2 shared-mime-info desktop-file-utils)
+depends=(vpnc openssl webkit2gtk-4.1 libappindicator-gtk3 libsecret libxml2 shared-mime-info desktop-file-utils xdg-utils)
 optdepends=('wmctrl: for window management')
 
 conflicts=('globalprotect-openconnect')
