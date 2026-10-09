@@ -2,12 +2,12 @@
 
 pkgname=oh-my-pi
 pkgver=18.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Coding agent with the IDE wired in"
 arch=('x86_64')
 url="https://omp.sh/"
 license=('MIT')
-depends=('gcc-libs' 'glibc' 'oniguruma' 'opus' 'pcre2' 'zstd')
+depends=('gcc-libs' 'glibc' 'icu' 'oniguruma' 'opus' 'pcre2' 'zstd')
 makedepends=('bun' 'cargo' 'cmake' 'curl')
 optdepends=(
     'alsa-lib: ALSA fallback for live voice, STT, and TTS'
