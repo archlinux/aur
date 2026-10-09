@@ -2,7 +2,7 @@
 # Maintainer: Stanislav (Stas) Katkov <aur@poshtui.com>
 
 pkgname='poshtui-bin'
-pkgver=0.34.0
+pkgver=0.34.1
 pkgrel=1
 pkgdesc='Gems documentation browser for Ruby developers'
 url='https://poshtui.com'
@@ -12,13 +12,13 @@ provides=('posh')
 conflicts=('posh')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/skatkov/homebrew-tap/releases/download/${pkgver}/homebrew-tap_Linux_arm64.tar.gz")
-sha256sums_aarch64=('850c05e327683fe1141cd71f0caabad3bc0f40ced27f83d4301e4dab1e6bd873')
+sha256sums_aarch64=('a3b6905dfef23939c642d12d11bb4cc1caea5e4e54d34db76db9fca7c72ce840')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/skatkov/homebrew-tap/releases/download/${pkgver}/homebrew-tap_Linux_i386.tar.gz")
-sha256sums_i686=('59f59afdb05495c4dd436f230034873e17e8f81ff2715d7c337578d37a892486')
+sha256sums_i686=('1e9831718f9f83b00fb6844f3c1c9b0d8c776390fe91bb32568ed06d44f905a4')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/skatkov/homebrew-tap/releases/download/${pkgver}/homebrew-tap_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('a74a815cee69d3d2ea9165c3b22657257b7ce6b3cf60be744869b4e1a4b74595')
+sha256sums_x86_64=('eff9fca31e65cbc29b108de835856e3bbf1dd85ce785d43a7c1ff858049eb561')
 
 package() {
   install -Dm755 "./posh" "${pkgdir}/usr/bin/posh"
