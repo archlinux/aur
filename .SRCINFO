@@ -1,13 +1,13 @@
 pkgbase = elephant-desktopapplications-windowfirst
 	pkgdesc = desktopapplications provider for elephant (an app with open windows ranks directly below its own window)
 	pkgver = 2.22.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = go
-	depends = elephant
+	depends = elephant=2.22.1
 	provides = elephant-desktopapplications=2.22.1
 	conflicts = elephant-desktopapplications
 	source = elephant-2.22.1.tar.gz::https://github.com/abenz1267/elephant/archive/refs/tags/v2.22.1.tar.gz

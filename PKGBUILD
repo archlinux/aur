@@ -6,18 +6,20 @@
 #
 # NOTE: elephant providers are Go plugins (-buildmode=plugin). The .so must be
 # built with the same Go toolchain and module versions as the installed elephant
-# binary, otherwise it fails to load. Do not mix with elephant-bin, and rebuild
-# this package whenever elephant is upgraded.
+# binary, otherwise it fails to load. Do not mix with elephant-bin.
+# depends pins elephant to the exact same pkgver on purpose: pacman will refuse
+# to upgrade elephant until this package has been updated to match, instead of
+# silently leaving a plugin that no longer loads.
 
 pkgname=elephant-desktopapplications-windowfirst
 _provider=desktopapplications
 pkgver=2.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc='desktopapplications provider for elephant (an app with open windows ranks directly below its own window)'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
 license=('GPL-3.0-only')
-depends=('elephant')
+depends=("elephant=${pkgver}")
 makedepends=('go')
 provides=("elephant-desktopapplications=${pkgver}")
 conflicts=('elephant-desktopapplications')
