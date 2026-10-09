@@ -1,6 +1,6 @@
 pkgbase = tensorrt
 	pkgdesc = A platform for high-performance deep learning inference on NVIDIA hardware
-	pkgver = 11.3.0.99
+	pkgver = 11.4.0.106
 	pkgrel = 1
 	url = https://developer.nvidia.com/tensorrt/
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = tensorrt
 	makedepends = python-setuptools
 	makedepends = python-typing_extensions
 	makedepends = python-wheel
-	source = https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/11.3.0/tars/TensorRT-Enterprise-11.3.0.99-Linux-x86_64-cuda-13.4-Release-external.tar.zst
-	source = git+https://github.com/NVIDIA/TensorRT.git#tag=v11.3
+	source = https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/11.4.0/tars/TensorRT-Enterprise-11.4.0.106-Linux-x86_64-cuda-13.4-Release-external.tar.zst
+	source = git+https://github.com/NVIDIA/TensorRT.git#tag=v11.4
 	source = git+https://github.com/protocolbuffers/protobuf.git
 	source = cub-nvlabs::git+https://github.com/NVlabs/cub.git
 	source = git+https://github.com/onnx/onnx-tensorrt.git
@@ -28,8 +28,8 @@ pkgbase = tensorrt
 	source = git+https://github.com/pybind/pybind11.git
 	source = 010-tensorrt-use-local-pybind11-sources.patch
 	source = TensorRT-LICENSE-AGREEMENT.txt
-	sha256sums = c383126a0e51e5962afac9caf97149a3c1908bf6b4e0ccc781a6eb6d984bf0c6
-	sha256sums = 9998b5f3b7ed8507709110c98b2d6c9cf279454e6c238165ffb27806d0492438
+	sha256sums = c67c87674cbe7b2337d1c30cb16d48686ab79ecb11bf08cb764b71f4f2bb711b
+	sha256sums = 6aa6856994d4b6e1a4a6c38b1a66c1c6d30f39e7479295e777ca5f2d2cbdb9c7
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -74,4 +74,4 @@ pkgname = python-tensorrt
 	optdepends = python-tf2onnx: for tensorflow-quantization python module
 	provides = python-onnx-graphsurgeon=0.6.2
 	provides = python-polygraphy=0.53.6
-	provides = python-tensorflow-quantization=2.2.1
+	provides = python-tensorflow-quantization=0.2.0

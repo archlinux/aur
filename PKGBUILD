@@ -5,11 +5,11 @@ pkgname=(
     'tensorrt'
     'tensorrt-cross-builder-libs'
     'python-tensorrt')
-pkgver=11.3.0.99
+pkgver=11.4.0.106
 _cudaver=13.4
 _onnx_graphsurgeon_ver=0.6.2
 _polygraphy_ver=0.53.6
-_tensorflow_quantization_ver=2.2.1
+_tensorflow_quantization_ver=0.2.0
 pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
 arch=('x86_64')
@@ -39,8 +39,8 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         'git+https://github.com/pybind/pybind11.git'
         '010-tensorrt-use-local-pybind11-sources.patch'
         'TensorRT-LICENSE-AGREEMENT.txt')
-sha256sums=('c383126a0e51e5962afac9caf97149a3c1908bf6b4e0ccc781a6eb6d984bf0c6'
-            '9998b5f3b7ed8507709110c98b2d6c9cf279454e6c238165ffb27806d0492438'
+sha256sums=('c67c87674cbe7b2337d1c30cb16d48686ab79ecb11bf08cb764b71f4f2bb711b'
+            '6aa6856994d4b6e1a4a6c38b1a66c1c6d30f39e7479295e777ca5f2d2cbdb9c7'
             'SKIP'
             'SKIP'
             'SKIP'
