@@ -2,7 +2,7 @@ pkgbase = tuack-gui-git
 	pkgdesc = 美观、跨平台的 Tuack-NG 图形化前端
 	pkgver = 1.1.0.alpha.1.14.g68fe7b3
 	pkgrel = 2
-	url = https://github.com/Qaaxaap/tuack-gui
+	url = https://github.com/tuackng/Tuack-GUI
 	install = tuack-gui-git.install
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -17,7 +17,7 @@ pkgbase = tuack-gui-git
 	depends = tuack-ng
 	options = !lto
 	options = !debug
-	source = git+https://github.com/Qaaxaap/tuack-gui.git#branch=main
+	source = git+https://github.com/tuackng/Tuack-GUI.git#branch=main
 	source = tuack-gui.desktop
 	sha256sums = SKIP
 	sha256sums = cd42b230ea4da37772c2d06f991df71c03b55c9fe6700248830a8bf80f420640

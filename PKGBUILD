@@ -5,7 +5,7 @@ pkgver=1.1.0.alpha.1.14.g68fe7b3
 pkgrel=2
 pkgdesc="美观、跨平台的 Tuack-NG 图形化前端"
 arch=("x86_64")
-url="https://github.com/Qaaxaap/tuack-gui"
+url="https://github.com/tuackng/Tuack-GUI"
 license=("AGPL-3.0-or-later")
 depends=(
     "gtk3"
@@ -22,7 +22,7 @@ makedepends=(
 )
 options=("!lto" "!debug")
 source=(
-    "git+https://github.com/Qaaxaap/tuack-gui.git#branch=main"
+    "git+https://github.com/tuackng/Tuack-GUI.git#branch=main"
     "tuack-gui.desktop"
 )
 sha256sums=(
