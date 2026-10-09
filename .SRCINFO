@@ -1,6 +1,6 @@
 pkgbase = ownfoil-git
 	pkgdesc = iSwitch library manager, with a self-hosted Tinfoil Shop
-	pkgver = r587.639a8a3
+	pkgver = r676.a9ac747
 	pkgrel = 1
 	url = https://github.com/a1ex4/ownfoil
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = ownfoil-git
 	depends = python-flask-login
 	depends = python-flask-migrate
 	depends = python-flask-sqlalchemy
+	depends = python-pillow
 	depends = python-yaml
 	depends = python-nstools
 	depends = python-requests

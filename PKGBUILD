@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=ownfoil-git
-pkgver=r587.639a8a3
+pkgver=r676.a9ac747
 pkgrel=1
 pkgdesc=i'Switch library manager, with a self-hosted Tinfoil Shop'
 arch=('any')
@@ -16,6 +16,7 @@ depends=(
   'python-flask-login'
   'python-flask-migrate'
   'python-flask-sqlalchemy'
+  'python-pillow'
   'python-yaml'
   'python-nstools'
   'python-requests'
