@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=mcp-gitee-git
-pkgver=1.0.0.r10.g2c585e2
+pkgver=1.0.0.r13.g246fa03
 pkgrel=1
 pkgdesc="Gitee MCP Server is a Model Context Protocol (MCP) server implementation for Gitee."
 arch=($CARCH)
