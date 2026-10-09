@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ecode
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance."
 arch=('x86_64' 'aarch64')
@@ -17,13 +17,12 @@ makedepends=(
   'git'
   'premake'
 )
-provides=('libeepp.so')
 source=("git+https://github.com/SpartanJ/eepp.git#tag=$pkgname-$pkgver"
         'git+https://github.com/SpartanJ/efsw.git'
         'git+https://github.com/SpartanJ/soil2.git'
         'git+https://github.com/jimon/premake-ninja.git'
         'git+https://github.com/Jarod42/premake-cmake.git')
-sha256sums=('f667765450b84c9dbd11e8d76f9c311432246431f418619bfe832a03b814f5e7'
+sha256sums=('c611459d1f4f9b6fb10659306e9abab1bf7f92bd31a7a1f1faf889d6054ca54d'
             'SKIP'
             'SKIP'
             'SKIP'
