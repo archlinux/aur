@@ -1,7 +1,7 @@
 pkgbase = python-letterboxdpy
 	pkgdesc = A Python library for Letterboxd data.
-	pkgver = 6.5.7
-	pkgrel = 2
+	pkgver = 6.5.9
+	pkgrel = 1
 	url = https://github.com/nmcassa/letterboxdpy
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = python-letterboxdpy
 	depends = python-lxml
 	depends = python-curl_cffi
 	depends = python-fastfingertips
-	source = https://files.pythonhosted.org/packages/source/l/letterboxdpy/letterboxdpy-6.5.7.tar.gz
-	sha512sums = 7d17c18e9ec23e9981138b6d0486243475cec3bfa3b6b03b7bbeea4ed173ccf077d65bd1ebabbed6fea724d0d9028067477ecce0b2cf328d129ea8914fdc11ae
+	source = https://files.pythonhosted.org/packages/source/l/letterboxdpy/letterboxdpy-6.5.9.tar.gz
+	sha512sums = 068d9d14131c55106f78fd03c250a0328f20f6325b3e49315c7386bce86b156c4cce1f27ca1bb4a889cbc397a82267a48c4eed432b5fdf57929af6b498e86083
 
 pkgname = python-letterboxdpy
