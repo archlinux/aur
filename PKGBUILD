@@ -1,7 +1,7 @@
 # Maintainer: Fabrice Aneche <akh@inair.space>
 
 pkgname=satsat
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="Satellite pass tracker for the desktop, a port of the SatSat iOS app"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=(
   'mesa: GPU-accelerated rendering'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/akhenakh/gosatsat/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b9b9695f2620c60d1e3aadd66902006132a1f7ad272c85ca91d26461837ea658')
+sha256sums=('0f74ec17f33f5bcb96d25ff31ab1bf24cf14b576973662f3cf3fea76f8f5cd36')
 
 build() {
   cd "gosatsat-$pkgver"
