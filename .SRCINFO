@@ -1,0 +1,18 @@
+pkgbase = ding-bin
+	pkgdesc = Looping audio notifications for your terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/skorotkiewicz/ding
+	arch = x86_64
+	arch = aarch64
+	license = unknown
+	depends = gcc-libs
+	depends = alsa-lib
+	conflicts = ding
+	options = !strip
+	source_x86_64 = ding-bin-0.1.0-1-x86_64.tar.gz::https://github.com/skorotkiewicz/ding/releases/download/v0.1.0/ding-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ce1235e16860c1ebbba1a952afddb6efbcfc0e0e24ac26a0b74b3f8132731c45
+	source_aarch64 = ding-bin-0.1.0-1-aarch64.tar.gz::https://github.com/skorotkiewicz/ding/releases/download/v0.1.0/ding-v0.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 11e7220f4bac8c2473db9fed59955a54bc4bb747b3b4710c042673403797b166
+
+pkgname = ding-bin
