@@ -124,6 +124,12 @@ package() {
   local _m
   make -C golang-gxde-dev install DESTDIR="$pkgdir"
   cp -a gxde-k9/src/. "$pkgdir/"
+  # gxde-k9 用 mkdir -p 创建 /tmp/GXDE/gxde-k9/$UID；若由 root 先创建，父目录为 755，
+  # 其他用户的 gxde-k9 无法创建自己的锁目录而退出。预先以 1777 创建父目录。
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/gxde-k9.conf" <<'END'
+d /tmp/GXDE 1777 root root -
+d /tmp/GXDE/gxde-k9 1777 root root -
+END
   make -C gxde-api install DESTDIR="$pkgdir" SYSTEMD_LIB_DIR=/usr/lib
   rm -r "$pkgdir/boot"
   install -Dm644 deepin-keyring/keyrings/*.gpg -t "$pkgdir/usr/share/keyrings/"
@@ -137,6 +143,8 @@ package() {
   ln -s ../usr/lib/deepin/os-version "$pkgdir/etc/os-version"
 
   make -C gxde-desktop-schemas install DESTDIR="$pkgdir" DISTRO="$(_distro)"
+  # gxde-dock（gxde-core-git）安装内容更完整的同名 schema
+  rm "$pkgdir/usr/share/glib-2.0/schemas/com.deepin.dde.dock.module.gschema.xml"
   make -C build-gxde-network-utils-qt6 install INSTALL_ROOT="$pkgdir"
   for _m in disomaster-qt6 dframework-dbus-qt6 udisks2-qt6 gxde-movie-reborn \
             libdbusmenu-qt6 xdg-desktop-portal-gxde; do
