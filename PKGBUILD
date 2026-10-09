@@ -3,19 +3,20 @@
 _reposite=codeberg.org
 _repouser=gwh
 _repoproj=x50ng
-_pkgtagname=2.7.0
+_pkgtagname=2.7.1
 _repourl=https://${_reposite}/${_repouser}/${_repoproj}
 _repoarchive=${_pkgtagname}.tar.gz
 _repourlarchive=${_repourl}/archive/${_repoarchive}
 _sub1name=ui4x
+_sub1tagname=1.1.1
 _sub1url=https://${_reposite}/${_repouser}/${_sub1name}
-_sub1archive=5933080.tar.gz
+_sub1archive=${_sub1tagname}.tar.gz
 _sub1urlarchive=${_sub1url}/archive/${_sub1archive}
 #_patch1=Makefile.patch
 
 pkgname=${_repoproj}
 pkgver=${_pkgtagname}
-pkgrel=2
+pkgrel=1
 pkgdesc='HP 50g hardware level emulator'
 arch=('any')
 url=${_repourl}
@@ -28,8 +29,8 @@ source=("${_repourlarchive}"
         "${_sub1urlarchive}"
         #"${_patch1}"
         )
-sha256sums=('b30657efcffbbfed61c0538adc733aa0252fa2282057e4a3b2f747a85efc9e44'
-            'ef9966198c2ba4bde5323a743b3fc242adccfcce33a6f53874c84da26241e861')
+sha256sums=('dae5c2f66479ff7d12aede06f0a03f6f7c53732b3fa67dbbbcfb081d35c040c3'
+            '2e1522a5e498c10313dfa3ef53d2f51e63a66fe8ac5723b2d49b6c0244296f94')
 
 prepare() {
     #patch -d "${_repoproj}" -Np1 -i ../"${_patch1}"
