@@ -23,6 +23,7 @@ provides=("${_appname}")
 conflicts=("${pkgname%-bin}")
 
 depends=('glibc' 'libgcc')
+optdepends=('aws-cli' 'aws-session-manager-plugin')
 
 options=('!strip')
 
