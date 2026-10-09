@@ -1,12 +1,12 @@
 # Maintainer: marang <1550038+marang@users.noreply.github.com>
-# Release template: the AUR workflow replaces sha256sums from the immutable
-# pushed v0.1.0 tag before it verifies, builds, and publishes this package.
-# The bootstrap checksum is replaced before publication; an unverified source
+# Release template: the AUR workflow resolves the requested immutable release
+# tag, pins source to its verified commit and computes the archive checksum
+# before verification, build and publication. Historical bootstrap placeholders
 # must never reach the AUR.
 pkgname=sway-session
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
-_commit=cfe15e5ee3d88496a0d8c9f230351cdefb1d4b0e
+_commit=8826d261450e0611a5cc8ad6789d6ed1e94bafde
 pkgdesc="Persistent work sessions for Sway"
 arch=('x86_64' 'aarch64')
 url="https://github.com/marang/sway-session"
@@ -14,14 +14,14 @@ license=('MIT')
 depends=('sway')
 makedepends=('go>=1.26.5')
 options=('!debug')
-source=("sway-session-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2ebd08224fb5449bc7008d90984d18ccae9dd5e68ee4d131a50ec15fc71dec48')
+source=("sway-session-$pkgver.tar.gz::$url/archive/8826d261450e0611a5cc8ad6789d6ed1e94bafde.tar.gz")
+sha256sums=('b40f6615570395bf68af2b26aa2346f0d92cccbe8cfb671cdf38855d80b6c5fd')
 
 _go_build_flags=(-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw)
 _go_ldflags=(-s -w -buildid= -X "main.version=$pkgver" -X "main.commit=$_commit" -X "main.modified=false" -X "github.com/marang/sway-session/internal/buildmetadata.Stamp=sway-session-build-v1|$pkgver|$_commit|false|end-sway-session-build-v1")
 
 build() {
-  cd "sway-session-$pkgver"
+  cd "sway-session-8826d261450e0611a5cc8ad6789d6ed1e94bafde"
   export GOCACHE="$srcdir/go-build"
   export GOMODCACHE="$srcdir/go-mod"
   export GOTOOLCHAIN=local
@@ -30,7 +30,7 @@ build() {
 }
 
 check() {
-  cd "sway-session-$pkgver"
+  cd "sway-session-8826d261450e0611a5cc8ad6789d6ed1e94bafde"
   export GOCACHE="$srcdir/go-build"
   export GOMODCACHE="$srcdir/go-mod"
   export GOTOOLCHAIN=local
@@ -39,7 +39,7 @@ check() {
 }
 
 package() {
-  cd "sway-session-$pkgver"
+  cd "sway-session-8826d261450e0611a5cc8ad6789d6ed1e94bafde"
   install -Dm755 sway-session "$pkgdir/usr/bin/sway-session"
   install -Dm644 contrib/completions/bash/sway-session "$pkgdir/usr/share/bash-completion/completions/sway-session"
   install -Dm644 contrib/completions/zsh/_sway-session "$pkgdir/usr/share/zsh/site-functions/_sway-session"
