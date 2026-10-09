@@ -1,6 +1,6 @@
 pkgbase = texres-bin
 	pkgdesc = Ultra-fast, pure-Rust TeX engine and complete self-contained typesetting suite
-	pkgver = 0.7.6
+	pkgver = 0.7.7
 	pkgrel = 1
 	url = https://github.com/leoliu0/texres
 	arch = x86_64
@@ -26,9 +26,9 @@ pkgbase = texres-bin
 	replaces = ratex-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = texres-bin-0.7.6-x86_64.tar.gz::https://github.com/leoliu0/texres/releases/download/v0.7.6/tex-suite-v0.7.6-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 6cbd07f79cfbbeb9402d90fa2ee306a718cfc57316d2f620c9a48c2f1d889118
-	source_aarch64 = texres-bin-0.7.6-aarch64.tar.gz::https://github.com/leoliu0/texres/releases/download/v0.7.6/tex-suite-v0.7.6-linux-aarch64.tar.gz
-	sha256sums_aarch64 = ef53486332964a8697f5dcbb6a9e55cec56338711a297d3cee06e04f52a92667
+	source_x86_64 = texres-bin-0.7.7-x86_64.tar.gz::https://github.com/leoliu0/texres/releases/download/v0.7.7/tex-suite-v0.7.7-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 9def9237216b6d144c9b3473e79557c87d3a192d69ad39a9349c96e177321f2f
+	source_aarch64 = texres-bin-0.7.7-aarch64.tar.gz::https://github.com/leoliu0/texres/releases/download/v0.7.7/tex-suite-v0.7.7-linux-aarch64.tar.gz
+	sha256sums_aarch64 = f1433257e98454889b1c2e591453c2aa800abe2404c3490d228194687be8f181
 
 pkgname = texres-bin
