@@ -1,13 +1,13 @@
 pkgbase = rime-wanxiang-gram-zh-hans
 	pkgdesc = 万象词库中文语法模型
-	pkgver = 20261007.075646
+	pkgver = 20261009.195155
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/amzxyz/RIME-LMDG
 	arch = any
 	license = CC-BY-4.0
-	source = wanxiang-lts-zh-hans.20261007.075646.gram::https://github.com/amzxyz/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram
-	sha256sums = c330bca73a4102b097fd6b239e6d10097a41995864f13004dec06e8cec98f2cc
+	source = wanxiang-lts-zh-hans.20261009.195155.gram::https://github.com/amzxyz/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram
+	sha256sums = 6169f35d48aa1018e6effd16cb6ae07f307964cffe5d8c79b97faf2164693bec
 
 pkgname = rime-wanxiang-gram-zh-hans
 	replaces = rime-lmdg
