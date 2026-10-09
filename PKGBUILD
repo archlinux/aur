@@ -7,7 +7,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-autocomplete-bin
 pkgdesc="Shell auto-completion tool that works like code editors IntelliSense."
 
-pkgver=0.7.1
+pkgver=0.7.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,10 +30,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
         "LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
-sha256sums=('693b9e6728565a7ebd8d38ff387affb94daad07733a4c9b3ab87e71e7b951864'
+sha256sums=('bf3510d8a7e46b4a09191d5a52dd9bd6db8a06b9c315674ddf5a500e678bdbd2'
             '0db3336be1d50c18d8d0f844a996cdddaf66a018dbdee58ab94933c1c6ffc2e9')
-sha256sums_x86_64=('850c96fc1ac4b5040f9451f00f4975076c5155c31ddf7188375faef6808d20a4')
-sha256sums_aarch64=('7db939fe4721207c5a17d51866e347c7bc29ff72941484334732ddd9f5a09f6e')
+sha256sums_x86_64=('f72e1716f52e5d628e817587d4cdc050caa58b4fae91ec5ce33eb1ca57596029')
+sha256sums_aarch64=('42b127aab1ac0e933b59db709d6fd1009f2da343ea76ccaac87dc3b5d441aae2')
 
 
 build() {
