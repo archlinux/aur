@@ -81,10 +81,29 @@ check() {
 package(){
     cd "$srcdir/$pkgname"
 
+    _version="${pkgver%%.r[0-9]*}"
+
     DESTDIR="$pkgdir" cmake --install build
 
-    xz -9 -e -c "$srcdir/$pkgname.1" > "$srcdir/$pkgname.1.xz"
+    install -d "$pkgdir/usr/lib/pkgconfig"
+    # install pkgconf
+    cat > "$pkgdir/usr/lib/pkgconfig/sep.pc" <<EOF
+prefix=/usr
+libdir=\${prefix}/lib
+includedir=\${prefix}/include
 
+Name: $pkgname
+Description: $pkgdesc
+Version: $_version
+Libs: -L\${libdir} -l$pkgname
+Cflags: -I\${includedir}
+EOF
+
+    # Install CMake find module
+    install -Dm644 FindSEP.cmake "$pkgdir/usr/lib/cmake/SEP/FindSEP.cmake"
+
+    # compress manpage
+    xz -9 -e -c "$srcdir/$pkgname.1" > "$srcdir/$pkgname.1.xz"
     # Install manpage
     install -Dm644 "$srcdir/$pkgname.1.xz" "$pkgdir/usr/share/man/man1/$pkgname.1.xz" # it is vendored because pkgbuild can't compile it due to python dependency hell
 
