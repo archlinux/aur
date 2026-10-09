@@ -1,6 +1,6 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=tabulate
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="Table maker for modern C++"
 arch=(x86_64)

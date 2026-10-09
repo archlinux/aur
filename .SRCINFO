@@ -1,12 +1,12 @@
 pkgbase = tabulate
 	pkgdesc = Table maker for modern C++
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/p-ranav/tabulate
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	source = tabulate-2.1.tar.gz::https://github.com/p-ranav/tabulate/archive/v2.1.tar.gz
+	source = tabulate-2.2.tar.gz::https://github.com/p-ranav/tabulate/archive/v2.2.tar.gz
 	sha512sums = d91d3bcb6946660f3b5493d51d7170ad19bbcf837cfae69a43cbe870284f65f751f347632fa16b341cf4ca99745afd5acb90bf496f85c32d037e0c0e1d316700
 
 pkgname = tabulate
