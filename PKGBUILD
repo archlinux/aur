@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=hashcards
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Plain text-based spaced repetition system for flashcards"
 arch=(x86_64)
@@ -13,10 +13,10 @@ depends=(
 )
 makedepends=(cargo git openssh)
 options=(!lto)
-_commit=2699292
+_commit=24cb76c
 source=("$pkgname::git+$url#commit=$_commit"
         eudoxia0.keys)
-sha256sums=('f8651760ddc953c80c0235923ebb04fa48ed1cad70ea557e60ddc51531c4f850'
+sha256sums=('6d0ef3360e19fe7437ffdb010a5f6aac89b5c043c89333ca8ec210a31903e977'
             '0304ac02afcca0315861846a780945e8ef329553b480297d529768de0d172cda')
 
 prepare() {
@@ -34,6 +34,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+    export AWS_LC_SYS_NO_JITTER_ENTROPY=1
     cd "$pkgname"
     cargo build --frozen --release --all-features
 }
