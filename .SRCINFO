@@ -1,0 +1,16 @@
+pkgbase = javassist-bin
+	pkgdesc = Java bytecode engineering toolkit (prebuilt jar from Maven Central)
+	pkgver = 3.33.0
+	pkgrel = 1
+	url = https://www.javassist.org/
+	arch = any
+	license = MPL-1.1
+	license = LGPL-2.1-or-later
+	license = Apache-2.0
+	depends = java-runtime
+	provides = javassist=3.33.0
+	conflicts = javassist
+	source = javassist-3.33.0.jar::https://repo1.maven.org/maven2/org/javassist/javassist/3.33.0-GA/javassist-3.33.0-GA.jar
+	sha256sums = 1620478adc5f4d2eccd356e59513c270f1508bed53ce75deffb3107b7b43db2c
+
+pkgname = javassist-bin
