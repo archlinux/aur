@@ -1,0 +1,15 @@
+pkgbase = gset
+	pkgdesc = Generic Syntax Extension Tool - write in any language syntax, compile to any language
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/Crazygiscool/GSETLang
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	source = gset-3.3.0.tar.gz::https://github.com/Crazygiscool/GSETLang/archive/refs/tags/v3.3.0.tar.gz
+	sha256sums = ae963048193d47b86ab8ab31cf1b8d3ca86f5a21b3727ad50623594000c291b0
+
+pkgname = gset
