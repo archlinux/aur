@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=clockenstein
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Calendar application with local, Google and CalDAV support"
 arch=('any')
 url="https://xapp-project.org/clockenstein.html"
@@ -19,6 +19,7 @@ depends=(
   'python-google-auth-httplib2'
   'python-google-auth-oauthlib'
   'python-icalendar'
+  'python-pycurl'
   'python-rich'
   'python-setproctitle'
   'python-xapp'
@@ -29,10 +30,7 @@ makedepends=(
   'git'
   'meson'
 )
-checkdepends=(
-  'desktop-file-utils'
-  'python-pycurl'
-)
+checkdepends=('desktop-file-utils')
 _commit=93e33e5ae6792edb209207bb6a4e48b017fc58d8
 source=("git+https://github.com/xapp-project/clockenstein.git#commit=${_commit}")
 # source=("git+https://github.com/xapp-project/clockenstein.git#tag=$pkgver")
