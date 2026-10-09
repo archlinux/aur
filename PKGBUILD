@@ -1,7 +1,7 @@
 # Maintainer: lpt <aur AT lucapetrucci DOT net>
 
 pkgname=youtube-local
-pkgver=2.8.13
+pkgver=2.8.15
 pkgrel=1
 pkgdesc="Browser based client for watching YouTube anonymously and with greater page performance"
 url="https://github.com/user234683/youtube-local"
@@ -12,7 +12,7 @@ source=(
 	"youtube-local.service"
 )
 sha256sums=(
-	"8670dfde2c7f59f9a35bd1e1700ec2c463f149a33884728ced5a32b7158ad7f3"
+	"a84768fbf136e8fb2a938db0988875be1f08d01df8cfae00028a6446d42fb62b"
 	"ce89efec6cac4db6f60cd3e02003c13e7a264f30f2b7d6797dd4efebc1a0f230"
 	"ab7878c75eea2caac1c731ce2cb79193a19758f2c546f853793c9e2822752591"
 )
