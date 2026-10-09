@@ -18,7 +18,7 @@
 # this repo, unlike the AMD vendored ryzen_smu), and (4) a short README.
 #
 # SOURCE — the commit-pinned RamSleuth repo (sibling pattern, like the AMD
-# extra): pkgver is the FIXED ramsleuth workspace version (2.4.13 today;
+# extra): pkgver is the FIXED ramsleuth workspace version (2.4.14 today;
 # bumped with the INTEL-20 release). The source pins to the immutable
 # v$pkgver release commit via the standard VCS #commit= fragment, with
 # sha256sums the content-addressed checksum of the pinned commit's
@@ -48,7 +48,7 @@
 # installed /usr/share copy (no clone on the target path).
 
 pkgname=ramsleuth-intel-dkms
-pkgver=2.4.13   # FIXED — the ramsleuth workspace version (no pkgver())
+pkgver=2.4.14   # FIXED — the ramsleuth workspace version (no pkgver())
 pkgrel=1
 pkgdesc="Provisioning tools for the optional ramsleuth_intel DKMS module (RamSleuth live Intel IMC subtimings)"
 arch=(x86_64)
@@ -70,14 +70,14 @@ conflicts=('ramsleuth' 'ramsleuth-bin')
 # (sibling pattern, like the AMD extra).
 # git-commit source: makepkg clones the repo and checks out the pinned
 # immutable v$pkgver release commit via the #commit= fragment.
-source=("ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=271a9b5caa88798ecf4f24fc9f0a1f6a6d5a53f5")
+source=("ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=115e99bb3f73afd531297e9ba8ce358f8a992778")
 # Content-addressed VCS pin: the sha256 of `git archive --format tar
 # <commit>` for the immutable #commit= ref above — exactly what makepkg
 # 7.x generates for tag/commit-pinned git sources (makepkg -g) and what
 # its integrity gate verifies (a *sums entry per source; '-' fails the
 # gate on 7.x, and SKIP passes only as a no-op — not the form 7.x
 # generates for #commit fragments).
-sha256sums=('6ed6bf540aee61ca6b0f7a0affc02037a64a26fe84e2434f3995322abaabd984')
+sha256sums=('518a8bdb0bc85aab8f8d46a89174609e204319ad93ac266b4d94468d46c9bb61')
 
 package() {
   # 1) DKMS config (sourced by DKMS on the target; not at build time).
