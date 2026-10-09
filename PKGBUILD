@@ -1,6 +1,6 @@
 # Maintainer: Daniel Serrano <anabasasoft@gmail.com>
 pkgname=visagevault
-pkgver=1.7.2
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Gestor de fotografías inteligente con reconocimiento facial (Código Fuente)"
 arch=('any') # 'any' porque es Python puro, corre en cualquier arquitectura
@@ -26,6 +26,8 @@ depends=(
     'python-google-api-python-client' # AUR
     'python-rawpy'                # AUR
     'python-face_recognition'     # AUR
+    'python-cryptography'         # Repositorio oficial (caja fuerte)
+    'python-send2trash'           # Repositorio oficial (papelera)
 )
 makedepends=('git') # Necesario para descargar
 
@@ -33,7 +35,7 @@ makedepends=('git') # Necesario para descargar
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/anabasasoft/visagevault/releases/download/v${pkgver}/visagevault-${pkgver}.tar.gz")
 
 # Generar checksums con 'updpkgsums' antes de subir, o usar SKIP para desarrollo
-sha256sums=('0cf45ce1f2c474016d61b57ecdcce6ad790ee9e8adf680bee215970cd3c7cb4b')
+sha256sums=('9d89a6247123a9ed1503858598d6fae74d89601e10df90be75c31dab0497fc46')
 
 # No hay función build() porque Python no se "compila" en binario,
 # pero podemos pre-compilar el bytecode para que arranque más rápido.

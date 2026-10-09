@@ -1,6 +1,6 @@
 pkgbase = visagevault
 	pkgdesc = Gestor de fotografías inteligente con reconocimiento facial (Código Fuente)
-	pkgver = 1.7.2
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/anabasasoft/visagevault
 	arch = any
@@ -19,10 +19,12 @@ pkgbase = visagevault
 	depends = python-google-api-python-client
 	depends = python-rawpy
 	depends = python-face_recognition
+	depends = python-cryptography
+	depends = python-send2trash
 	provides = visagevault
 	conflicts = visagevault
 	conflicts = visagevault-bin
-	source = visagevault-1.7.2.tar.gz::https://github.com/anabasasoft/visagevault/releases/download/v1.7.2/visagevault-1.7.2.tar.gz
-	sha256sums = 0cf45ce1f2c474016d61b57ecdcce6ad790ee9e8adf680bee215970cd3c7cb4b
+	source = visagevault-1.8.0.tar.gz::https://github.com/anabasasoft/visagevault/releases/download/v1.8.0/visagevault-1.8.0.tar.gz
+	sha256sums = 9d89a6247123a9ed1503858598d6fae74d89601e10df90be75c31dab0497fc46
 
 pkgname = visagevault
