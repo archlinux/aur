@@ -3,7 +3,7 @@
 
 pkgname=aspia-client-bin
 _pkgname=${pkgname%-bin}
-pkgver=3.0.30
+pkgver=3.0.31
 pkgrel=1
 pkgdesc="Remote desktop control and file transfer tool (client, official binary)"
 url="https://aspia.org/"
@@ -21,7 +21,7 @@ provides=(aspia-client)
 conflicts=(aspia-client)
 options=(!debug !strip)
 source_x86_64=("https://github.com/dchapyshev/aspia/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${arch}.deb")
-sha256sums_x86_64=('3c4b8540bb3640cf97c38c648ea5dca8864c67337b7f0dc8494fd1d01b154737')
+sha256sums_x86_64=('fbd6e197513caa9dc05bc0895e72d1e334d2d764375683749412b5393968df46')
 
 package() {
   cd "${srcdir}"
