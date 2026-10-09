@@ -4,9 +4,9 @@
 # before verification, build and publication. Historical bootstrap placeholders
 # must never reach the AUR.
 pkgname=sway-session
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
-_commit=af3cc7bd006ab35991ab4918adaf9bc07be8f5ed
+_commit=fef106ddc3f868988a9f9f77dcc4ed8349358b6b
 pkgdesc="Persistent work sessions for Sway"
 arch=('x86_64' 'aarch64')
 url="https://github.com/marang/sway-session"
@@ -14,14 +14,14 @@ license=('MIT')
 depends=('sway')
 makedepends=('go>=1.26.5')
 options=('!debug')
-source=("sway-session-$pkgver.tar.gz::$url/archive/af3cc7bd006ab35991ab4918adaf9bc07be8f5ed.tar.gz")
-sha256sums=('9ebcfffcddaf734f2bcda77b3ee4817b69af2740fc9868151aa11d5cfca14b8b')
+source=("sway-session-$pkgver.tar.gz::$url/archive/fef106ddc3f868988a9f9f77dcc4ed8349358b6b.tar.gz")
+sha256sums=('c1e15f9ad2c358fd14e2bbb63e0e48f636d5a4c483ba0ac253bbb909e823a1b8')
 
 _go_build_flags=(-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw)
 _go_ldflags=(-s -w -buildid= -X "main.version=$pkgver" -X "main.commit=$_commit" -X "main.modified=false" -X "github.com/marang/sway-session/internal/buildmetadata.Stamp=sway-session-build-v1|$pkgver|$_commit|false|end-sway-session-build-v1")
 
 build() {
-  cd "sway-session-af3cc7bd006ab35991ab4918adaf9bc07be8f5ed"
+  cd "sway-session-fef106ddc3f868988a9f9f77dcc4ed8349358b6b"
   export GOCACHE="$srcdir/go-build"
   export GOMODCACHE="$srcdir/go-mod"
   export GOTOOLCHAIN=local
@@ -30,7 +30,7 @@ build() {
 }
 
 check() {
-  cd "sway-session-af3cc7bd006ab35991ab4918adaf9bc07be8f5ed"
+  cd "sway-session-fef106ddc3f868988a9f9f77dcc4ed8349358b6b"
   export GOCACHE="$srcdir/go-build"
   export GOMODCACHE="$srcdir/go-mod"
   export GOTOOLCHAIN=local
@@ -39,7 +39,7 @@ check() {
 }
 
 package() {
-  cd "sway-session-af3cc7bd006ab35991ab4918adaf9bc07be8f5ed"
+  cd "sway-session-fef106ddc3f868988a9f9f77dcc4ed8349358b6b"
   install -Dm755 sway-session "$pkgdir/usr/bin/sway-session"
   install -Dm644 contrib/completions/bash/sway-session "$pkgdir/usr/share/bash-completion/completions/sway-session"
   install -Dm644 contrib/completions/zsh/_sway-session "$pkgdir/usr/share/zsh/site-functions/_sway-session"
