@@ -2,18 +2,26 @@
 
 _name=smithy-xml
 pkgname=python-$_name
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='XML serialization and deserialization support for Smithy tooling.'
 arch=('any')
 _repo='https://github.com/smithy-lang/smithy-python'
 url="$_repo/tree/develop/packages/smithy-xml"
 license=('Apache-2.0')
-depends=('python' 'python-smithy-core')
-makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel' 'git')
-checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-freezegun')
+depends=('python'
+         'python-smithy-core')
+makedepends=('python-hatchling'
+             'python-build'
+             'python-installer'
+             'python-wheel'
+             'git')
+checkdepends=('python-pytest'
+              'python-pytest-asyncio'
+              'python-freezegun'
+              'python-smithy-test')
 source=("$_name::git+$_repo.git#tag=$_name/v$pkgver")
-sha256sums=('6062c931f1e01c738ca7672a37df37982dfbd470f268b081055a8b65e8124d1f')
+sha256sums=('9355f1aed64cf1ea03806a76efc1c6c419d6caa2cf3733fa692153fb99e83abe')
 
 build() {
   cd "$srcdir"/$_name/packages/$_name
