@@ -1,6 +1,6 @@
 pkgbase = download-media
 	pkgdesc = Interactive yt-dlp wrapper with probe-first wizard, clipboard, carousel item picker, history, and cookies support
-	pkgver = 0.0.2
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/edicsonabel/download-media
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = download-media
 	optdepends = wl-clipboard: clipboard URL detection on Wayland
 	optdepends = xclip: clipboard URL detection on X11
 	optdepends = xsel: alternate clipboard URL detection on X11
-	source = download-media-0.0.2.tar.gz::https://github.com/edicsonabel/download-media/archive/v0.0.2.tar.gz
-	sha256sums = e4770ce6cdbe5d77c7ef73528b9f9b8833e15c3121d96b9c42d7b5a774534eea
+	source = download-media-0.1.0.tar.gz::https://github.com/edicsonabel/download-media/archive/v0.1.0.tar.gz
+	sha256sums = 407b9c66af0f56243bfc44a59b5d48aef28282627ea8f6ccd63b498c29f718e1
 
 pkgname = download-media
