@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-vsfeel-git
 	pkgdesc = Plugin for Vapoursynth: vsfeel (GIT version)
 	pkgver = 1.1.1.17.g0f3858e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TheFeelTrain/vapoursynth-feel
 	arch = x86_64
 	license = MIT
@@ -15,9 +15,9 @@ pkgbase = vapoursynth-plugin-vsfeel-git
 	makedepends = python-hatch-vcs
 	makedepends = python-installer
 	makedepends = python-setuptools-scm
-	depends = vapoursynth>=80
+	depends = vapoursynth
 	depends = vulkan-icd-loader
-	optdepends = vapoursynth-plugin-vsjetpack: vs-jetpack backend integration
+	optdepends = vapoursynth-plugin-vsjetpack: vsjetpack integration
 	provides = vapoursynth-plugin-vsfeel
 	conflicts = vapoursynth-plugin-vsfeel
 	source = vsfeel::git+https://github.com/TheFeelTrain/vapoursynth-feel.git

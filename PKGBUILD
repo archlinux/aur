@@ -3,13 +3,13 @@
 _plug=vsfeel
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=1.1.1.17.g0f3858e
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url="https://github.com/TheFeelTrain/vapoursynth-feel"
 license=('MIT')
 depends=(
-    'vapoursynth>=80'
+    'vapoursynth'
     'vulkan-icd-loader'
 )
 makedepends=(
@@ -25,7 +25,7 @@ makedepends=(
     'python-setuptools-scm'
 )
 optdepends=(
-    'vapoursynth-plugin-vsjetpack: vs-jetpack backend integration'
+    'vapoursynth-plugin-vsjetpack: vsjetpack integration'
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
