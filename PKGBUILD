@@ -2,7 +2,7 @@
 
 pkgname=music-tui-bin
 _pkgname=music-tui
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="Terminal music player backed by MPD, with covers, synced lyrics and a visualizer."
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-stable" "$_pkgname-git")
 options=('!strip')
 source=("$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('db46694db5f16ee15468847d30aa3d82879b91a6fec3e7efec2a70731a1460be')
+sha256sums=('a83e6ceaa85426f859ed5a0f657075f6f262d70ecf04cbbe798ca4d8c9c7e983')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-x86_64-unknown-linux-gnu"
