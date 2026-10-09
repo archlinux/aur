@@ -1,32 +1,29 @@
 # Maintainer: Deposite Pirate <dpirate at metalpunks dot info>
 #
-# Previous maintainers:
-#   Giovanni Scafora <giovanni at archlinux dot org>
-#   damir <damir at archlinux dot org>
-#
 # Upstream: https://git.metalpunks.info/arch-ports
 #
 # vim: ts=2 sw=2
 
-
 pkgname=mpck
 pkgver=0.21
-pkgrel=3
-license=('GPL')
+pkgrel=4
 pkgdesc="Reads MP3 files and tries to determine if they are correct"
 arch=('x86_64' 'i686')
 url='https://checkmate.gissen.nl'
+license=('GPL-2.0-or-later')
+depends=('glibc')
 source=("${url}/checkmate-${pkgver}.tar.gz")
-md5sums=('81d5d0b620f0fe3cc23c272021e9f23c')
+sha256sums=('a27b4843ec06b069a46363836efda3e56e1daaf193a73a4da875e77f0945dd7a')
 
 build() {
   cd checkmate-${pkgver}
-  CFLAGS="${CFLAGS}" ./configure --prefix=/usr
+  CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" ./configure --prefix=/usr
   make
 }
 
 package() {
   cd checkmate-${pkgver}
-  make prefix="${pkgdir}/usr" install
-  install -Dvm644 AUTHORS HISTORY NEWS -t "${pkgdir}/usr/share/doc/${pkgname}"
+  make install prefix="${pkgdir}/usr"
+  install -Dvm644 AUTHORS HISTORY NEWS README.md TODO \
+    -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
