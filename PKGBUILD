@@ -2,7 +2,7 @@
 
 pkgname=eusoft-ting-es
 pkgver=26.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Daily Spanish Listening (每日西语听力) for Linux (Community Repackage)"
 arch=('x86_64')
 url="https://www.eudic.net/v4/es/app/ting"
@@ -60,7 +60,6 @@ package() {
 
     # Install desktop entry
     install -Dm644 "${srcdir}/eusoft-ting-es.desktop" "${pkgdir}/usr/share/applications/eusoft-ting-es.desktop"
-    ln -sf eusoft-ting-es.desktop "${pkgdir}/usr/share/applications/ting_es.desktop"
 
     # Install license
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
