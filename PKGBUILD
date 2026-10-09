@@ -1,10 +1,10 @@
 # Maintainer: Felitendo
 # This PKGBUILD is updated automatically:
-# https://git.felo.gg/Felitendo/PKGBUILDS
+# https://github.com/Felitendo/PKGBUILDS
 
 pkgname=capture-studio-bin
 _pkgname=tenzen
-pkgver=0.1.34
+pkgver=0.1.35
 pkgrel=1
 pkgdesc="Record and edit product demos: cut pauses, add zooms and captions (upstream Flatpak bundle)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ options=('!strip' '!debug')
 _bundle="Capture-Studio-${pkgver}-linux-x64.flatpak"
 source=("${_bundle}::https://downloads.tenzen.studio/desktop/stable/linux/${pkgver}/${_bundle}")
 noextract=("${_bundle}")
-sha256sums=('bc45c21639dc3015b4789b209f4d8b3aee89353d22e4ce7c1d7aade9fde6a3ea')
+sha256sums=('728ee0b37612e760022855a989c2806ffffead9fe8b6698460f674ef0920251b')
 
 prepare() {
   # A Flatpak bundle is an OSTree static delta carrying a single commit:
