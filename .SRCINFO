@@ -1,0 +1,16 @@
+pkgbase = aiyou
+	pkgdesc = Export, maintain and analyze all your AI coding-agent chat history in one git-versioned store
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/geniusrise/you
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = git
+	options = !lto
+	source = aiyou-0.2.0.tar.gz::https://github.com/geniusrise/you/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = a83a4553545bca85ca39e04811103ae73f004bb3420b59cccec5363a7d61c66d
+
+pkgname = aiyou
