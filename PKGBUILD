@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=paseo
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents (built from source, runs on system Electron)"
 arch=('x86_64')
@@ -26,12 +26,12 @@ source=(
     'trace-desktop.mjs'
     'system-electron-paths.patch'
 )
-sha256sums=('c1520504874d4b70f6f8ef710b5f2a693d5a1ae69473d8f017173678a8055b8e'
+sha256sums=('a9889135353b1d811ad904a5014363c2e872a1f3b195dbbf544da664f0015e88'
             'f9e194a879a87d87021ad06f489a9e4197ded629055a38e2da3557a423785de4'
             '6ae9c520668f639a22f17df7814548056ee46aa99a2886639405297a7b1ef212'
             'df0d01b98ac405c5c25edbb91d61bb9e05355a57e0e652e00823d6331618d686'
             '620279e619a4f42dcfb45991d679bc82e891d69cabc77a9512b77a47f4df59c2'
-            'e9fe33e993a8da7a8d26d421b4530e907e99b745d16b1c34a963e01f112ede08'
+            '9ed8aeb2692ae8c51e9fb72f9b099e09358159bec5f7d3bdae1fbdf5940382f2'
             '4111231339f8fcad31ec5fc139f9292c26182785838f22076d4c05f8c8463579')
 
 # Repo-relative path of the installed node-pty. npm hoists it to the root
@@ -121,6 +121,13 @@ build() {
     # export for the renderer, then the desktop main process. No
     # electron-builder involved.
     npm run build:server
+    # Daemon Web UI (browser build, precompressed) into
+    # packages/server/dist/server/web-ui, as upstream's nix/package.nix does.
+    # Official desktop builds serve resources/app-dist instead; under system
+    # Electron that path points into electron*/resources, so the daemon falls
+    # back to web-ui and returned 404 without this. Runs before the Electron
+    # renderer export below, since both write packages/app/dist.
+    npm run build:daemon-web-ui
     npm run build --workspace=@getpaseo/expo-two-way-audio
     (cd packages/app && PASEO_WEB_PLATFORM=electron npx expo export --platform web)
     npm run build:main --workspace=@getpaseo/desktop
@@ -237,6 +244,8 @@ package() {
         # and resolved relative to the server dist, not through the module
         # graph.
         usr/lib/paseo/packages/server/dist/server/builtin-plugins/claude-usage-source/paseo-plugin.json
+        # Daemon Web UI, served from disk rather than through the module graph.
+        usr/lib/paseo/packages/server/dist/server/web-ui/index.html
         # Hardcoded by system-electron-paths.patch: the window icon and the
         # editor-target icons. Upstream reads both out of process.resourcesPath,
         # which under system Electron points into electron*/resources instead of

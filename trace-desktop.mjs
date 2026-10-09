@@ -50,6 +50,8 @@ const additionalInputs = [
   // Expo web export served to the renderer via the paseo:// protocol.
   // Upstream's Nix installPhase copies packages/app/dist separately.
   "packages/app/dist/**",
+  // Daemon Web UI (browser export), served from disk by the daemon.
+  "packages/server/dist/server/web-ui/**",
   // Bundled agent skills, resolved from the repo root in unpackaged mode.
   // Also copied outside the trace by upstream's installPhase.
   "skills/**",
