@@ -1,0 +1,21 @@
+pkgbase = zondd-git
+	pkgdesc = SSH-authenticated operations with command policies and manual approval
+	pkgver = r10.3b3c60b
+	pkgrel = 1
+	url = https://github.com/futpib/zondd
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = openssh
+	optdepends = systemd: run the daemon as a user service
+	provides = zondd
+	provides = zondctl
+	conflicts = zondd
+	conflicts = zondctl
+	source = zondd::git+https://github.com/futpib/zondd.git
+	sha256sums = SKIP
+
+pkgname = zondd-git

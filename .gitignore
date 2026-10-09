@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/zondd/
+/*.pkg.tar.*
+/*.src.tar.*
