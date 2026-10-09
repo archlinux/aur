@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Daily German Listening
+Name[zh_CN]=每日德语听力
+Comment=Daily German Listening from Eusoft
+Comment[zh_CN]=精听细读，更好学德语
+GenericName=Language Learning
+GenericName[zh_CN]=语言学习
+Exec=/usr/bin/ting-de %U
+Terminal=false
+Type=Application
+Icon=ting_de
+StartupWMClass=com.eusoft.ting.de
+MimeType=x-scheme-handler/eudic-ting-de;
+Categories=Education;Language;AudioVideo;
