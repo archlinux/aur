@@ -2,7 +2,7 @@
 
 pkgname=flakewm-git
 _pkgname=flakewm
-pkgver=3.0.0.gxde3.r0.g0000000
+pkgver=3.0.0.gxde3.r0.g8e41598
 pkgrel=1
 pkgdesc='GXDE Wayland compositor'
 arch=('x86_64' 'aarch64')
@@ -61,9 +61,16 @@ pkgver() {
   (
     set -o pipefail
     git describe --long --tags --abbrev=7 2>/dev/null |
-      sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+      sed 's/^v//;s/\([^-]*-g[0-9a-f]*\)$/r\1/;s/-/./g' ||
       printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
+}
+
+prepare() {
+  local _tag
+  _tag=$(git -C "$_pkgname" describe --tags --abbrev=0)
+  msg2 "$_pkgname -> $_tag"
+  git -C "$_pkgname" checkout -q --detach "refs/tags/$_tag"
 }
 
 build() {

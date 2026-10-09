@@ -1,6 +1,6 @@
 pkgbase = flakewm-git
 	pkgdesc = GXDE Wayland compositor
-	pkgver = 3.0.0.gxde3.r0.g0000000
+	pkgver = 3.0.0.gxde3.r0.g8e41598
 	pkgrel = 1
 	url = https://github.com/flake-wm/flake-wm
 	arch = x86_64
