@@ -4,7 +4,7 @@ pkgbase=vrgb
 pkgname=(vrgb vrgb-gui)
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="RGB control for ASUS Vivobook HID LampArray (ITE5570) keyboards"
+pkgdesc="RGB keyboard backlight control for ASUS Vivobook S14/S16 laptops (ITE5570 HID LampArray)"
 arch=(any)
 url="https://github.com/vrgb-dev/vrgb"
 license=(MIT)
@@ -28,7 +28,7 @@ build() {
 }
 
 package_vrgb() {
-  pkgdesc="RGB control for ASUS Vivobook HID LampArray (ITE5570) keyboards — Core CLI"
+  pkgdesc="RGB keyboard backlight control for ASUS Vivobook S14/S16 laptops (ITE5570 HID LampArray) - CLI"
   depends=(python)
   install=vrgb.install
 
@@ -42,7 +42,7 @@ package_vrgb() {
 }
 
 package_vrgb-gui() {
-  pkgdesc="VRGB Suite: GUI and tray for vrgb with idle auto-off, daytime-off and rainbow"
+  pkgdesc="GUI and tray for vrgb, RGB keyboard backlight control for ASUS Vivobook S14/S16 (ITE5570) - idle auto-off, daytime-off, rainbow"
   depends=("vrgb=$pkgver" python python-pyqt6 hicolor-icon-theme)  # vrgb is imported as a module at runtime
   optdepends=('polkit: password prompt fallback when the keyboard is not accessible'
               'libxss: idle auto-off in X11 sessions')
