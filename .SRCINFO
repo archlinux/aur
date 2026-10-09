@@ -1,6 +1,6 @@
 pkgbase = zz
 	pkgdesc = ZZ programming language toolchain — prebuilt binary (zz run main.zz, plus zz-lsp)
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/zaidejjo/zz
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = zz
 	depends = curl
 	depends = sqlite
 	conflicts = zz-lang
-	source_x86_64 = zz-0.2.1-x86_64.zip::https://github.com/zaidejjo/zz/releases/download/v0.2.1/zz-0.2.1-linux-x86_64.zip
-	sha256sums_x86_64 = c771a53be4a8de6b374d44679c2f3c4cb73cf84ed02ff9729b7cf912dfedfdac
-	source_aarch64 = zz-0.2.1-x86_64.zip::https://github.com/zaidejjo/zz/releases/download/v0.2.1/zz-0.2.1-linux-aarch64.zip
-	sha256sums_aarch64 = 770aa6edbdf0e040ac7e3decdf5cfaead89f7605e593945ba6cc121a827ccbf5
+	source_x86_64 = zz-0.2.2-x86_64.zip::https://github.com/zaidejjo/zz/releases/download/v0.2.2/zz-0.2.2-linux-x86_64.zip
+	sha256sums_x86_64 = be7de833b94a3e2f7c9abdaea488b0744c0ec65d6271cbd2a8556f80dd1c0812
+	source_aarch64 = zz-0.2.2-x86_64.zip::https://github.com/zaidejjo/zz/releases/download/v0.2.2/zz-0.2.2-linux-aarch64.zip
+	sha256sums_aarch64 = 0506aa2348ea260ac123859fab43bbbda40cd4ae4bcf24f9612e3d0f084dd5a3
 
 pkgname = zz
