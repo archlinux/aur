@@ -53,7 +53,7 @@ pkgbase = gxde-dtk6-git
 	conflicts = deepin-qt6platform-plugins
 	conflicts = deepin-qt6integration
 	source = dtk6log::git+https://github.com/GXDE-OS/dtk6log.git
-	source = dtk6core::git+https://github.com/GXDE-OS/dtk6core.git#branch=arch/dtkcore
+	source = dtk6core::git+https://github.com/GXDE-OS/dtk6core.git
 	source = dtk6gui::git+https://github.com/GXDE-OS/dtk6gui.git
 	source = dtk6widget::git+https://github.com/GXDE-OS/dtk6widget.git
 	source = dtk6declarative::git+https://github.com/GXDE-OS/dtk6declarative.git

@@ -21,7 +21,7 @@ provides=(dtk6log "dtk6core=${pkgver%%.r*}" "dtk6gui=${pkgver%%.r*}" "dtk6widget
 conflicts=(dtk6log dtk6core dtk6gui dtk6widget dtk6declarative
            deepin-qt6platform-plugins deepin-qt6integration)
 source=("dtk6log::git+$url/dtk6log.git"
-        "dtk6core::git+$url/dtk6core.git#branch=arch/dtkcore"
+        "dtk6core::git+$url/dtk6core.git"
         "dtk6gui::git+$url/dtk6gui.git"
         "dtk6widget::git+$url/dtk6widget.git"
         "dtk6declarative::git+$url/dtk6declarative.git"
