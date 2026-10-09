@@ -2,7 +2,7 @@
 pkgname=zerus
 pkgver=0.37.0
 pkgrel=1
-pkgdesc='An agent development environment for persistent local and remote tmux sessions'
+pkgdesc='Agent development environment for AI coding agents across your machines'
 arch=('x86_64')
 url='https://github.com/ufna/zerus'
 license=('MIT')
