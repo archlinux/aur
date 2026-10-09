@@ -24,8 +24,8 @@ package() {
   local _release_dir="${srcdir}/Herdr-${pkgver}-${CARCH}-unknown-linux-gnu"
 
   install -Dm755 "${_release_dir}/bin/herdr-gpui" "${pkgdir}/usr/bin/herdr-gpui"
-  install -Dm644 "${_release_dir}/share/applications/herdr-gpui.desktop" \
-    "${pkgdir}/usr/share/applications/herdr-gpui.desktop"
+  install -Dm644 "${_release_dir}/share/applications/so.pen.herdr-gpui.desktop" \
+    "${pkgdir}/usr/share/applications/so.pen.herdr-gpui.desktop"
   install -Dm644 "${_release_dir}/share/icons/hicolor/scalable/apps/herdr-gpui.svg" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/herdr-gpui.svg"
 
