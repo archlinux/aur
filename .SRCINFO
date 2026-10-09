@@ -1,7 +1,7 @@
 pkgbase = ryzen-smu-dkms
 	pkgdesc = Provisioning tools for the optional ryzen_smu DKMS module (RamSleuth live AMD subtimings)
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MadGoatHaz/RamSleuth
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = ryzen-smu-dkms
 	depends = dkms
 	conflicts = ramsleuth
 	conflicts = ramsleuth-bin
-	source = ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=271a9b5caa88798ecf4f24fc9f0a1f6a6d5a53f5
-	sha256sums = 6ed6bf540aee61ca6b0f7a0affc02037a64a26fe84e2434f3995322abaabd984
+	source = ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=115e99bb3f73afd531297e9ba8ce358f8a992778
+	sha256sums = 518a8bdb0bc85aab8f8d46a89174609e204319ad93ac266b4d94468d46c9bb61
 
 pkgname = ryzen-smu-dkms
