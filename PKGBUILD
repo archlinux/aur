@@ -1,9 +1,9 @@
 # Maintainer: getzze <getzze at gmail dot com>
 
 pkgname=gnome-shell-extension-logo-menu
-pkgver=24.8
+pkgver=25.2
 _pkgname=Logomenu
-_tag="270626"
+_tag="280926"
 pkgrel=1
 pkgdesc='Quick access menu for the GNOME panel that help ease the workflow for newcomers and power users alike.'
 arch=('any')
