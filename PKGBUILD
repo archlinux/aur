@@ -3,9 +3,13 @@
 # The Python environment is bundled because upstream pins a large, partly native
 # dependency set. uv's relocatable mode keeps the packaged environment usable
 # after makepkg moves it under /opt.
+#
+# Runtime tools Arch already ships (python, nodejs, uv, ffmpeg, ripgrep, and a
+# system Chrome/Chromium) stay as package dependencies. The launcher pins
+# AGENT_BROWSER_EXECUTABLE_PATH and disables lazy PM installs so Hermes does not
+# download browsers or re-fetch tools that pacman provides.
 pkgname=hermes-agent
-pkgver=0.21.5
-_tagver=2026.9.24
+pkgver=0.21.6
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
@@ -13,30 +17,25 @@ url="https://github.com/NousResearch/hermes-agent"
 license=('MIT')
 groups=()
 depends=(
-    'python311'
-    'nodejs'
+    'python>=3.14'
+    'nodejs>=22.22'
     'uv'
     'ripgrep'
     'ffmpeg'
-    'nss'
-    'atk'
-    'at-spi2-core'
-    'cups'
-    'libdrm'
-    'libxkbcommon'
-    'mesa'
-    'pango'
-    'cairo'
-    'alsa-lib'
+    # AUR: agent-browser or agent-browser-bin (Provides agent-browser)
+    'agent-browser'
 )
-
-makedepends=('npm' 'rsync')
-source=("${pkgname}-${_tagver}.tar.gz::https://github.com/NousResearch/hermes-agent/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('15b15ce4e6ec8ea424a081823709d1e17f0943e7b42b59597d24ebb94cbd1742')
+optdepends=(
+    'chromium: local browser automation (or google-chrome)'
+    'google-chrome: local browser automation (or chromium)'
+)
+makedepends=('npm')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('1ba3500cdbe876bb9d347b3c12f41c591a421293eac58faba23571287dfe1cf8')
 validpgpkeys=()
 
 build() {
-  cd "${pkgname}-${_tagver}"
+  cd "${pkgname}-${pkgver}"
 
   # vite-plugin-tailwindcss uses the ignore package which walks up the tree to read
   # .gitignore files. Creating an empty .git directory stops the scan at this level.
@@ -48,21 +47,18 @@ build() {
   npm run build --workspace ui-tui
 
   UV_PYTHON_DOWNLOADS=never uv venv \
-    --python /usr/bin/python3.11 \
+    --python /usr/bin/python3 \
     --relocatable \
+    --clear \
     venv
-    
+
   UV_PYTHON_DOWNLOADS=never \
     UV_PROJECT_ENVIRONMENT="$PWD/venv" \
-    uv lock 
-  
-  UV_PYTHON_DOWNLOADS=never \
-    UV_PROJECT_ENVIRONMENT="$PWD/venv" \
-    uv sync --locked --no-dev --no-install-project --extra all,messaging
+    uv sync --frozen --no-dev --no-install-project --extra all --extra messaging
 }
 
 check() {
-  cd "${pkgname}-${_tagver}"
+  cd "${pkgname}-${pkgver}"
 
   test -s hermes_cli/web_dist/index.html
   test -s ui-tui/dist/entry.js
@@ -70,22 +66,23 @@ check() {
 }
 
 package() {
-  cd "${pkgname}-${_tagver}"
+  cd "${pkgname}-${pkgver}"
 
   # Install to /opt
   _optdir="$pkgdir/opt/$pkgname"
   install -d "$_optdir"
 
-  # Copy application files
-  rsync -a --exclude='__pycache__' --exclude='.git' \
-  --exclude='node_modules' --exclude='web/src' \
-  --exclude='web/package.json' --exclude='web/package-lock.json' \
-  --exclude='web/vite.config.ts' --exclude='web/tsconfig*.json' \
-  --exclude='web/eslint.config.js' --exclude='web/README.md' \
-  --exclude='ui-tui/src' --exclude='ui-tui/node_modules' \
-  --exclude='scripts/tests' --exclude='scripts/install.*' \
-  --exclude='build' \
-  . "$_optdir/"
+  # Copy application files (bsdtar; avoids an rsync makedepend)
+  bsdtar -C . -cf - \
+    --exclude='__pycache__' --exclude='.git' \
+    --exclude='node_modules' --exclude='web/src' \
+    --exclude='web/package.json' --exclude='web/package-lock.json' \
+    --exclude='web/vite.config.ts' --exclude='web/tsconfig*.json' \
+    --exclude='web/eslint.config.js' --exclude='web/README.md' \
+    --exclude='ui-tui/src' --exclude='ui-tui/node_modules' \
+    --exclude='scripts/tests' --exclude='scripts/install.*' \
+    --exclude='build' \
+    . | bsdtar -C "$_optdir" -xf -
 
   echo "console.log('skipping build, using prebuilt dist/entry.js')" > "$_optdir/ui-tui/scripts/build.mjs"
 
@@ -100,19 +97,32 @@ package() {
     cp -a ui-tui/dist/* "$_tuidir/"
   fi
 
-  install -d "$_optdir/venv/lib/python3.11/site-packages"
+  install -d "$_optdir/venv/lib/python3.14/site-packages"
   {
       echo "import sys; sys.path.insert(0, \"/opt/$pkgname\")"
-  } > "$_optdir/venv/lib/python3.11/site-packages/hermes.pth"
+  } > "$_optdir/venv/lib/python3.14/site-packages/hermes.pth"
 
   install -d "$pkgdir/usr/bin"
   {
-    echo "#!/bin/bash"
-    echo "unset PYTHONPATH"
-    echo "unset PYTHONHOME"
+    echo '#!/bin/bash'
+    echo 'unset PYTHONPATH'
+    echo 'unset PYTHONHOME'
     echo ': "${XDG_DATA_HOME:=$HOME/.local/share}"'
+    # Root-owned /opt must not grow a PM store; Arch packages supply tools.
     echo 'export HERMES_DISABLE_LAZY_INSTALLS=1'
     echo 'export HERMES_LAZY_INSTALL_TARGET="$XDG_DATA_HOME/hermes-agent/python"'
+    # Prefer system Chrome/Chromium — blocks PM Chromium auto-download.
+    echo 'if [[ -z "${AGENT_BROWSER_EXECUTABLE_PATH:-}" ]]; then'
+    echo '  for browser in google-chrome-stable google-chrome chromium; do'
+    echo '    if browser_path="$(type -P "${browser}")"; then'
+    echo '      export AGENT_BROWSER_EXECUTABLE_PATH="${browser_path}"'
+    echo '      break'
+    echo '    fi'
+    echo '  done'
+    echo 'fi'
+    echo 'if [[ -z "${AGENT_BROWSER_EXECUTABLE_PATH:-}" ]]; then'
+    echo '  printf "%s\n" "hermes: No Chrome/Chromium on PATH. Install chromium or google-chrome, or set AGENT_BROWSER_EXECUTABLE_PATH. Browser downloads are disabled." >&2'
+    echo 'fi'
     echo "exec /opt/$pkgname/venv/bin/python -m hermes_cli.main" '"$@"'
   } > "$pkgdir/usr/bin/hermes"
 
