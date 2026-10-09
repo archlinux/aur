@@ -1,6 +1,6 @@
 pkgbase = kendex
 	pkgdesc = Package manager for AI coding agents, skills, and hooks (desktop app and CLI)
-	pkgver = 1.12.2
+	pkgver = 1.13.0
 	pkgrel = 1
 	epoch = 1
 	url = https://kendex.ai
@@ -20,7 +20,7 @@ pkgbase = kendex
 	conflicts = kendex-bin
 	conflicts = kendex-cli-git
 	options = !lto
-	source = kendex-1.12.2.tar.gz::https://github.com/vanillagreencom/kendex/archive/refs/tags/v1.12.2.tar.gz
-	sha256sums = 4c7bfb7c8656b5a7cceee1caf2d48934d81e92fc8ef08b97477c34625358f7aa
+	source = kendex-1.13.0.tar.gz::https://github.com/vanillagreencom/kendex/archive/refs/tags/v1.13.0.tar.gz
+	sha256sums = 4a0696ef33891c9891ffa3945fa284efb5ceeadc2c31197ba9cf2abb98b973b0
 
 pkgname = kendex
