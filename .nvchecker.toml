@@ -1,0 +1,4 @@
+[deluge-labelplus]
+source = "github"
+github = "haridusministeerium/deluge-labelplus"
+use_latest_release = true
