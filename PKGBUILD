@@ -1,7 +1,7 @@
 # Maintainer: Snoopey <thomas@wrightconsulting.uk>
 pkgname=omnigent-cli
 pkgver=0.17.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Omnigent CLI, server, and agent host with isolated Python dependencies'
 arch=('x86_64')
 url='https://github.com/omnigent-ai/omnigent'
@@ -34,7 +34,7 @@ source=(omnigent-0.17.0.tar.gz::https://files.pythonhosted.org/packages/21/ba/2b
         cryptography-50.0.2-cp311-abi3-manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/1a/f1/b474e930c4d910328780e3940da76f5aa5cbc48ce1fc14e44d239d9ea9db/cryptography-50.0.2-cp311-abi3-manylinux_2_28_x86_64.whl
         distro-1.9.0-py3-none-any.whl::https://files.pythonhosted.org/packages/12/b3/231ffd4ab1fc9d679809f356cebee130ac7daa00d6d6f3206dd4fd137e9e/distro-1.9.0-py3-none-any.whl
         fastapi-0.142.2-py3-none-any.whl::https://files.pythonhosted.org/packages/a0/b6/78aaf9141fb46742928c113f3cf6ef2259d538cb02b604b7656c1dc9883c/fastapi-0.142.2-py3-none-any.whl
-        filelock-4.0.8-py3-none-any.whl::https://files.pythonhosted.org/packages/89/6b/b45e5ad90c6ac8805b72277d75ef651bca11d3665194de7c0162bd8324eb/filelock-4.0.8-py3-none-any.whl
+        filelock-4.0.9-py3-none-any.whl::https://files.pythonhosted.org/packages/01/4f/83454fafd628e1e7e1726d74e44fb2332be5969d04c6182ca1fecb6c580e/filelock-4.0.9-py3-none-any.whl
         ftfy-6.3.1-py3-none-any.whl::https://files.pythonhosted.org/packages/ab/6e/81d47999aebc1b155f81eca4477a616a70f238a2549848c38983f3c22a82/ftfy-6.3.1-py3-none-any.whl
         google_re2-1.1.20251105-1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/03/be/a8def96aa4a80b233e105767d22e3de961dcde5a04f0a05cb4f3ddb4df78/google_re2-1.1.20251105-1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
         griffelib-2.3.0-py3-none-any.whl::https://files.pythonhosted.org/packages/41/63/e876e789525063c840ccfa8857febdabd6523bcef9ce7eb979b9305ea895/griffelib-2.3.0-py3-none-any.whl
@@ -91,7 +91,7 @@ source=(omnigent-0.17.0.tar.gz::https://files.pythonhosted.org/packages/21/ba/2b
         secretstorage-3.5.0-py3-none-any.whl::https://files.pythonhosted.org/packages/b7/46/f5af3402b579fd5e11573ce652019a67074317e18c1935cc0b4ba9b35552/secretstorage-3.5.0-py3-none-any.whl
         six-1.17.0-py2.py3-none-any.whl::https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl
         sniffio-1.3.1-py3-none-any.whl::https://files.pythonhosted.org/packages/e9/44/75a9c9421471a6c4805dbf2356f7c181a29c1879239abab1ea2cc8f38b40/sniffio-1.3.1-py3-none-any.whl
-        sqlalchemy-2.1.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/41/0f/6db5347662a9ed83509a5236e64afc15285947ed4dd71e618912bde83445/sqlalchemy-2.1.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+        sqlalchemy-2.1.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/4a/6e/c5a397f0a81e486d41cb8f59c2d8270e01527a141d845e0287019c44f940/sqlalchemy-2.1.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
         sse_starlette-3.5.0-py3-none-any.whl::https://files.pythonhosted.org/packages/be/e4/cdda14023c316d71493bc54fdffc3dd006631b88866145c9d3cc33e0f1df/sse_starlette-3.5.0-py3-none-any.whl
         starlette-1.7.0-py3-none-any.whl::https://files.pythonhosted.org/packages/4e/d6/1ec1b290f9e0fb067899b61e1d37a30c923068bad260b216dbe37a7d2967/starlette-1.7.0-py3-none-any.whl
         tiktoken-0.14.0-cp314-cp314-manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/5b/7d/144af98dc5ad68108451a82e2f5a17f80e2663f5115058b8dfd215c1ad02/tiktoken-0.14.0-cp314-cp314-manylinux_2_28_x86_64.whl
@@ -133,7 +133,7 @@ sha256sums=(20bc4039f4f3d6f59e3179b3a1692ce3ea8c7be36619a437748bf2a06bfa4147
             4061c0079120205fb760c58acab6443e217307dcf05e3702cf970e0689972856
             7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2
             bd5f4d81f1e93a88bcd77caf4dfe3c2dbffc3805407a0007e9a114c18b3a670b
-            325ff22f358c18443b1fcdfa0a7aa3faec4b500c2807c554719da4567b533d31
+            9287fd61b99a806e5202be29a83034c0808a1b9830e820537c2f5773981f7eeb
             7c70eb532015cd2f9adb53f101fb6c7945988d023a085d127d1573dc49dd0083
             a7bfaa2cf55daf0c5c650e68526bb20b61e37d7f3ae53f6893013acc1c91c116
             1b8f9cd525681c26b1d6d574faa1371651e8459ca51d209684f50b8096ae06e0
@@ -190,7 +190,7 @@ sha256sums=(20bc4039f4f3d6f59e3179b3a1692ce3ea8c7be36619a437748bf2a06bfa4147
             0ce65888c0725fcb2c5bc0fdb8e5438eece02c523557ea40ce0703c266248137
             4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274
             2f6da418d1f1e0fddd844478f41680e794e6051915791a034ff65e5f100525a2
-            18148691d761ef20a92cfc7dced305834e2c6ab4f4f3648f66f5d4028e234089
+            36e6a8fdbddc0635a3bb30cfddf35facaabc8d17e32060c51d50ad11cd48c4c3
             3e6e1070df3f0f5d9cea81496de92dbb72f6721871d99748ece67441dd8b7997
             67f8e99895493dd2911a03f11314af6ceebeae4e704bb9f43dfc6a9db151c93e
             e3442bbb2f0c588cec876061e37ae67b455b9df9978b003c8fe30e45f2ef5b42
@@ -208,7 +208,7 @@ sha256sums=(20bc4039f4f3d6f59e3179b3a1692ce3ea8c7be36619a437748bf2a06bfa4147
             7a6ceec4ea84469f15cf15807a747e9efe57e369c384fa86e022b3bea679b79b
             e09bb6252b6476d8d56100e8147b803befa9a12cea144bbe629dd508800d1ad0
             aac80bec8b6fe35e8480f1c335be8910fa210a0e6f735a139be205dadcacb544
-            e123f2259fbbdce673d221be4c5a7ee3ba768191531f133f52b6b5cc42bebfaa
+            c1f2ea2d642b0846e462b28e131d41d5f90c671003555eb0db10214352e07864
             a0bd60054eae7ce2f8fedb9c295d8137f269fedbf08220a54dde1a0d09f0e9a4
             edd22b3947e18e681e397590651edf2551024be4d53bea5fa55efc428a2acb07
             e9e49acfc1599bb114332a40479d99275e3668b34bd66a6ae2143ba93ec76315)
@@ -229,7 +229,7 @@ noextract=(alembic-1.20.0-py3-none-any.whl
            cryptography-50.0.2-cp311-abi3-manylinux_2_28_x86_64.whl
            distro-1.9.0-py3-none-any.whl
            fastapi-0.142.2-py3-none-any.whl
-           filelock-4.0.8-py3-none-any.whl
+           filelock-4.0.9-py3-none-any.whl
            ftfy-6.3.1-py3-none-any.whl
            google_re2-1.1.20251105-1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
            griffelib-2.3.0-py3-none-any.whl
@@ -286,7 +286,7 @@ noextract=(alembic-1.20.0-py3-none-any.whl
            secretstorage-3.5.0-py3-none-any.whl
            six-1.17.0-py2.py3-none-any.whl
            sniffio-1.3.1-py3-none-any.whl
-           sqlalchemy-2.1.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+           sqlalchemy-2.1.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
            sse_starlette-3.5.0-py3-none-any.whl
            starlette-1.7.0-py3-none-any.whl
            tiktoken-0.14.0-cp314-cp314-manylinux_2_28_x86_64.whl
