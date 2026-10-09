@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=PCL-N
-Comment=一个基于 PCL-CE 开发的 Minecraft 启动器
-Exec=/usr/bin/pcl-n
-Icon=pcl-n
-Terminal=false
-Type=Application
-Categories=Game;
-Keywords=minecraft;launcher;
