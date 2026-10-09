@@ -1,13 +1,13 @@
 # Maintainer: Felitendo
 # This PKGBUILD is updated automatically:
-# https://git.felo.gg/Felitendo/PKGBUILDS
+# https://github.com/Felitendo/PKGBUILDS
 
 pkgname=middleclick-autoscroll
 pkgver=1.7.0
 pkgrel=1
 pkgdesc="Middle-click autoscroll in every application that supports it"
 arch=('any')
-url="https://git.felo.gg/LoonixTools/middleclick-autoscroll"
+url="https://github.com/LoonixTools/middleclick-autoscroll"
 license=('GPL-3.0-or-later')
 depends=('bash' 'systemd' 'coreutils' 'gawk' 'grep' 'sed' 'gettext')
 makedepends=('gettext' 'scdoc')
@@ -16,15 +16,15 @@ optdepends=('flatpak: cover Flatpak applications too'
             'steam: cover the Steam interface'
             'desktop-file-utils: refresh the desktop database after a change')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2583f80d56effb0fefcb93b6623a6f8a6cfdcf31217b8ca283591a882f484ea2')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('f52f5678ba100b2632632759e8506eeeaba3002c041596ca2109f45fc7fae9b5')
 
 build() {
   # pass the version being packaged so `middleclick-autoscroll --version`
   # cannot drift away from pkgver
-  make -C "${pkgname}" VERSION="$pkgver"
+  make -C "${pkgname}-${pkgver}" VERSION="$pkgver"
 }
 
 package() {
-  make -C "${pkgname}" VERSION="$pkgver" DESTDIR="$pkgdir" install
+  make -C "${pkgname}-${pkgver}" VERSION="$pkgver" DESTDIR="$pkgdir" install
 }
