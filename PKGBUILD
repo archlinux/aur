@@ -13,7 +13,7 @@
 pkgbase=mesa-nollvm-git
 pkgname=(mesa-nollvm-git)
 pkgdesc="an open-source implementation of the OpenGL specification, git version that doesn't use llvm"
-pkgver=26.2.0_devel.222348.d08d345686c
+pkgver=26.3.0_devel.231132.5bd05bf4371
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
@@ -76,7 +76,7 @@ build() {
        -D llvm=disabled \
        -D lmsensors=enabled \
        -D valgrind=disabled \
-       -D vulkan-layers=device-select,overlay,screenshot,anti-lag,vram-report-limit \
+       -D vulkan-layers=device-select,overlay,screenshot,vram-report-limit \
        -D tools=[] \
        -D zstd=enabled \
        -D microsoft-clc=disabled \
