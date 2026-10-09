@@ -1,7 +1,7 @@
 # Maintainer: Vaishnav-Sabari-Girish <vaishnav.sabari.girish@gmail.com>
 
 pkgname=wireforge
-pkgver=0.6.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Braille Wireframe Viewer"
 arch=(
@@ -9,7 +9,7 @@ arch=(
   'aarch64'
   'riscv64'
 )
-url="https://github.com/Vaishnav-Sabari-Girish/wireforge"
+url="https://github.com/lenitain/wireforge"
 license=('MIT')
 
 depends=('gcc-libs')
@@ -18,7 +18,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('eb247e7d721d53757cbd2c6f9c62593209d171481f47750835a3c2ca8cd371a5')
+sha256sums=('b422f8e695891226a6eab7a79b9028f80406850f0139a12b8e872af62d167216')
 
 build() {
   cd "$pkgname-$pkgver"

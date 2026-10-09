@@ -1,15 +1,15 @@
 pkgbase = wireforge
 	pkgdesc = Braille Wireframe Viewer
-	pkgver = 0.6.0
+	pkgver = 0.8.0
 	pkgrel = 1
-	url = https://github.com/Vaishnav-Sabari-Girish/wireforge
+	url = https://github.com/lenitain/wireforge
 	arch = x86_64
 	arch = aarch64
 	arch = riscv64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = wireforge-0.6.0.tar.gz::https://github.com/Vaishnav-Sabari-Girish/wireforge/archive/v0.6.0.tar.gz
-	sha256sums = eb247e7d721d53757cbd2c6f9c62593209d171481f47750835a3c2ca8cd371a5
+	source = wireforge-0.8.0.tar.gz::https://github.com/lenitain/wireforge/archive/v0.8.0.tar.gz
+	sha256sums = b422f8e695891226a6eab7a79b9028f80406850f0139a12b8e872af62d167216
 
 pkgname = wireforge
