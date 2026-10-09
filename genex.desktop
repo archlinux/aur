@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Genex
+GenericName=Game studio
+Comment=Desktop app for game development with AI
+Exec=genex %U
+Icon=genex
+Type=Application
+Terminal=false
+Categories=Development;Game;
+StartupWMClass=Genex
+StartupNotify=true
