@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=chess-cat
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc=' Visualize chess boards in your terminal'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('cargo')
 provides=('chess-cat')
 conflicts=('chess-cat-git' 'chess-cat-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('3a8198d50e83fe7b0b6ac59a86ef6100db1298ca65d9c73d3c0a9405c28701d2')
+sha256sums=('3c07624e1eee99a966adc363e8bba77bc0d6098b99eb16da17b4bca61b6d0090')
 
 prepare() {
     cd "$pkgname-$pkgver"
