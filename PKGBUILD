@@ -482,6 +482,7 @@ package() {
     -e 's/@@PACKAGE/chromium/g' \
     -e 's/@@desktop_exec/chromium/g' \
     -e 's/@@desktop_icon/chromium/g' \
+    -e 's/@@startup_wm_class/chromium/g' \
     -e 's|@@uri_scheme|x-scheme-handler/chromium;|g' \
     -e 's/@@extra_desktop_entries//g' \
     "$pkgdir/usr/share/applications/chromium.desktop" \
