@@ -2,7 +2,7 @@
 
 pkgname=genex-desktop-bin
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop app for game development with AI'
 arch=('x86_64')
 url='https://github.com/genex-games/genex-desktop'
@@ -44,6 +44,7 @@ package() {
   install -dm755 "$pkgdir/opt/genex"
   bsdtar --extract --file "$srcdir/Genex-linux-x64-${pkgver}.zip" \
     --directory "$pkgdir/opt/genex" --strip-components=1
+  chown -R root:root "$pkgdir/opt/genex"
 
   # User namespaces cover the sandbox on Arch. The setuid bit is the fallback
   # Electron uses when unprivileged user namespaces are disabled.

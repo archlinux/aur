@@ -1,7 +1,7 @@
 pkgbase = genex-desktop-bin
 	pkgdesc = Desktop app for game development with AI
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/genex-games/genex-desktop
 	arch = x86_64
 	license = MIT
