@@ -56,10 +56,10 @@ index f99b39e2..6750798e 100644
      KF6::BookmarksWidgets
 diff --git a/ai/aiconfig.cpp b/ai/aiconfig.cpp
 new file mode 100644
-index 00000000..f3a50435
+index 00000000..bb14b053
 --- /dev/null
 +++ b/ai/aiconfig.cpp
-@@ -0,0 +1,98 @@
+@@ -0,0 +1,101 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -153,6 +153,9 @@ index 00000000..f3a50435
 +        "the coordinates you read off the image accordingly.\n"
 +        "- Prefer small, verifiable steps. Act, then take a screenshot to see what happened "
 +        "before acting again.\n"
++        "- For keyboard shortcuts always use the hotkey tool with the combination as one string, modifiers first: \"ctrl+a\", "
++        "\"win+e\", \"alt+tab\", \"ctrl+shift+esc\". Never press the modifier and the key separately, never type a shortcut "
++        "with type_text. Use press_key only for single keys like return, escape or tab.\n"
 +        "- Never guess a coordinate you cannot see; take a screenshot first.\n"
 +        "- If an action needs a password or would delete or overwrite something, stop and let "
 +        "the user do it or confirm it.\n"
@@ -222,10 +225,10 @@ index 00000000..e2d2dff0
 +};
 diff --git a/ai/aiconversation.cpp b/ai/aiconversation.cpp
 new file mode 100644
-index 00000000..cfed010d
+index 00000000..7b85ef52
 --- /dev/null
 +++ b/ai/aiconversation.cpp
-@@ -0,0 +1,851 @@
+@@ -0,0 +1,922 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -893,30 +896,44 @@ index 00000000..cfed010d
 +    }
 +
 +    if (name == QLatin1String("press_key")) {
-+        const QStringList modifierNames = [&args] {
-+            QStringList names;
-+            for (const QJsonValue &value : args.value(QStringLiteral("modifiers")).toArray()) {
-+                names.append(value.toString());
++        QStringList names;
++        for (const QJsonValue &value : args.value(QStringLiteral("modifiers")).toArray()) {
++            names.append(value.toString().trimmed().toLower());
++        }
++        // Models that cannot emit the modifiers array often write the whole
++        // combination into key instead: "ctrl+a". Accept both spellings.
++        names.append(AiKeys::splitChord(args.value(QStringLiteral("key")).toString()));
++        names.removeAll(QString());
++
++        QString error;
++        if (!sendChord(view, names, &error)) {
++            failTool(call, error);
++            return;
++        }
++        finishTool(call, QStringLiteral("Pressed %1.").arg(names.join(QLatin1Char('+'))));
++        return;
++    }
++
++    if (name == QLatin1String("hotkey")) {
++        // Normally one string like "ctrl+a"; the old array form is accepted
++        // too so an in-flight conversation never breaks on the schema change.
++        const QJsonValue keys = args.value(QStringLiteral("keys"));
++        QStringList names;
++        if (keys.isArray()) {
++            for (const QJsonValue &entry : keys.toArray()) {
++                names.append(AiKeys::splitChord(entry.toString()));
 +            }
-+            return names;
-+        }();
++        } else {
++            names = AiKeys::splitChord(keys.toString());
++        }
++        names.removeAll(QString());
 +
-+        QStringList unknownModifiers;
-+        const Qt::KeyboardModifiers modifiers = AiKeys::modifiers(modifierNames, unknownModifiers);
-+        if (!unknownModifiers.isEmpty()) {
-+            failTool(call, QStringLiteral("Unknown modifier key(s): %1.").arg(unknownModifiers.join(QStringLiteral(", "))));
++        QString error;
++        if (!sendChord(view, names, &error)) {
++            failTool(call, error);
 +            return;
 +        }
-+
-+        const int key = AiKeys::qtKey(args.value(QStringLiteral("key")).toString());
-+        if (key == 0) {
-+            failTool(call, QStringLiteral("Unknown key “%1”.").arg(args.value(QStringLiteral("key")).toString()));
-+            return;
-+        }
-+
-+        view->aiKeyPress(key, modifiers, true);
-+        view->aiKeyPress(key, modifiers, false);
-+        finishTool(call, QStringLiteral("Key pressed."));
++        finishTool(call, QStringLiteral("Pressed %1.").arg(names.join(QLatin1Char('+'))));
 +        return;
 +    }
 +
@@ -966,6 +983,63 @@ index 00000000..cfed010d
 +    } else {
 +        QTimer::singleShot(m_typeDelay, this, &AiConversation::typeNextChunk);
 +    }
++}
++
++bool AiConversation::sendChord(RemoteView *view, const QStringList &names, QString *error)
++{
++    if (names.isEmpty() || names.size() > 8) {
++        *error = QStringLiteral("The key combination must hold between 1 and 8 keys.");
++        return false;
++    }
++
++    QVector<int> keys;
++    keys.reserve(names.size());
++    for (const QString &name : names) {
++        if (name == QLatin1String("backtab")) {
++            // Reverse tab is Shift+Tab: Qt has no separate key for it and the
++            // wire only knows Tab with Shift held.
++            if (!keys.contains(AiKeys::qtKey(QStringLiteral("shift")))) {
++                keys.append(AiKeys::qtKey(QStringLiteral("shift")));
++            }
++            keys.append(AiKeys::qtKey(QStringLiteral("tab")));
++            continue;
++        }
++        const int key = AiKeys::qtKey(name);
++        if (key == 0) {
++            *error = QStringLiteral("Unknown key “%1”. Use names like ctrl, alt, shift, win, return, tab, f5, or a single "
++                                    "character; join combination keys with “+”, modifiers first.")
++                         .arg(name);
++            return false;
++        }
++        keys.append(key);
++    }
++
++    // Everything but the last key is held down; the last key is tapped. Each
++    // key is pressed by its own name (no Qt modifier flags) so the down and
++    // up of each key pair up exactly, even when the tapped key is itself a
++    // modifier, e.g. ctrl+shift+tab.
++    qCDebug(KRDC) << "AI chord down:" << names.join(QLatin1Char('+'));
++    for (int i = 0; i + 1 < keys.size(); ++i) {
++        view->aiKeyPress(keys.at(i), Qt::NoModifier, true);
++    }
++    view->aiKeyPress(keys.last(), Qt::NoModifier, true);
++
++    // The final key is released immediately; the held keys are released on a
++    // short stagger. A down and its up in the same millisecond are dropped by
++    // some remote applications.
++    constexpr int StepMs = 15;
++    view->aiKeyPress(keys.last(), Qt::NoModifier, false);
++    for (int i = keys.size() - 2; i >= 0; --i) {
++        const int key = keys.at(i);
++        // Release through m_view (a QPointer): if the tab closes before the
++        // timer fires, the release is skipped instead of dangling.
++        QTimer::singleShot((keys.size() - 1 - i) * StepMs, this, [this, key] {
++            if (m_view) {
++                m_view->aiKeyPress(key, Qt::NoModifier, false);
++            }
++        });
++    }
++    return true;
 +}
 +
 +QString AiConversation::historyFilePath() const
@@ -1079,10 +1153,10 @@ index 00000000..cfed010d
 +}
 diff --git a/ai/aiconversation.h b/ai/aiconversation.h
 new file mode 100644
-index 00000000..5aabf21e
+index 00000000..461fd969
 --- /dev/null
 +++ b/ai/aiconversation.h
-@@ -0,0 +1,151 @@
+@@ -0,0 +1,158 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -1203,6 +1277,13 @@ index 00000000..5aabf21e
 +    void runTool(const PendingTool &pending);
 +    void finishTool(const AiToolCall &call, const QString &result, const QByteArray &image = QByteArray());
 +    void failTool(const AiToolCall &call, const QString &message);
++
++    /**
++     * Holds every name but the last down, taps the last one, then releases
++     * the held keys on a short stagger. @p names is the combination in order,
++     * modifiers first ("ctrl", "a"). Used by both press_key and hotkey.
++     */
++    bool sendChord(RemoteView *view, const QStringList &names, QString *error);
 +    void setBusy(bool busy);
 +
 +    int startTyping(const AiToolCall &call, const QString &text, int delayMs);
@@ -2059,10 +2140,10 @@ index 00000000..d6372667
 +};
 diff --git a/ai/aikeys.cpp b/ai/aikeys.cpp
 new file mode 100644
-index 00000000..da1a66c6
+index 00000000..cbb0ad14
 --- /dev/null
 +++ b/ai/aikeys.cpp
-@@ -0,0 +1,109 @@
+@@ -0,0 +1,127 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -2077,6 +2158,12 @@ index 00000000..da1a66c6
 +int AiKeys::qtKey(const QString &name)
 +{
 +    static const QHash<QString, int> table = {
++        {QStringLiteral("ctrl"), Qt::Key_Control},
++        {QStringLiteral("control"), Qt::Key_Control},
++        {QStringLiteral("shift"), Qt::Key_Shift},
++        {QStringLiteral("alt"), Qt::Key_Alt},
++        {QStringLiteral("option"), Qt::Key_Alt},
++        {QStringLiteral("opt"), Qt::Key_Alt},
 +        {QStringLiteral("return"), Qt::Key_Return},
 +        {QStringLiteral("enter"), Qt::Key_Return},
 +        {QStringLiteral("numpadenter"), Qt::Key_Enter},
@@ -2110,6 +2197,8 @@ index 00000000..da1a66c6
 +        {QStringLiteral("menu"), Qt::Key_Menu},
 +        {QStringLiteral("contextmenu"), Qt::Key_Menu},
 +        {QStringLiteral("win"), Qt::Key_Super_L},
++        {QStringLiteral("lwin"), Qt::Key_Super_L},
++        {QStringLiteral("rwin"), Qt::Key_Super_R},
 +        {QStringLiteral("super"), Qt::Key_Super_L},
 +        {QStringLiteral("meta"), Qt::Key_Super_L},
 +        {QStringLiteral("cmd"), Qt::Key_Super_L},
@@ -2172,12 +2261,22 @@ index 00000000..da1a66c6
 +
 +    return modifiers;
 +}
++
++QStringList AiKeys::splitChord(const QString &chord)
++{
++    QStringList names = chord.toLower().split(QLatin1Char('+'), Qt::SkipEmptyParts);
++    for (QString &name : names) {
++        name = name.trimmed();
++    }
++    names.removeAll(QString());
++    return names;
++}
 diff --git a/ai/aikeys.h b/ai/aikeys.h
 new file mode 100644
-index 00000000..49f66d8c
+index 00000000..2a327790
 --- /dev/null
 +++ b/ai/aikeys.h
-@@ -0,0 +1,30 @@
+@@ -0,0 +1,41 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -2207,6 +2306,17 @@ index 00000000..49f66d8c
 + * @return the matching Qt modifier mask
 + */
 +Qt::KeyboardModifiers modifiers(const QStringList &names, QStringList &unknown);
++
++/**
++ * Splits a chord written as one string, e.g. "ctrl+a" or "ctrl+shift+esc",
++ * into its key names. Models that cannot emit array arguments reliably send
++ * combinations this way even where a list was asked for, so both key tools
++ * accept it.
++ *
++ * @return the names, lower-case and empty parts removed; empty when the
++ * string holds no usable name
++ */
++QStringList splitChord(const QString &chord);
 +}
 diff --git a/ai/aipanel.cpp b/ai/aipanel.cpp
 new file mode 100644
@@ -2873,10 +2983,10 @@ index 00000000..d0a21673
 +}
 diff --git a/ai/aitools.cpp b/ai/aitools.cpp
 new file mode 100644
-index 00000000..e7099853
+index 00000000..569f991d
 --- /dev/null
 +++ b/ai/aitools.cpp
-@@ -0,0 +1,377 @@
+@@ -0,0 +1,464 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -2884,6 +2994,8 @@ index 00000000..e7099853
 +*/
 +
 +#include "aitools.h"
++
++#include "aikeys.h"
 +
 +#include <QRegularExpression>
 +#include <QJsonValue>
@@ -2992,14 +3104,43 @@ index 00000000..e7099853
 +
 +QStringList normalizedChord(const QString &key, const QJsonArray &modifiers)
 +{
-+    QStringList chord;
++    QStringList chord = AiKeys::splitChord(key);
 +    for (const QJsonValue &value : modifiers) {
 +        chord.append(value.toString().toLower());
 +    }
-+    chord.append(key.toLower());
 +    chord.removeAll(QString());
 +    chord.sort();
 +    return chord;
++}
++
++// The hotkey tool's "keys" argument: normally one string like "ctrl+a";
++// models that do send the old array form are accepted too.
++QStringList hotkeyChord(const QJsonObject &arguments)
++{
++    const QJsonValue value = arguments.value(QStringLiteral("keys"));
++    QStringList names;
++    if (value.isArray()) {
++        for (const QJsonValue &entry : value.toArray()) {
++            names.append(AiKeys::splitChord(entry.toString()));
++        }
++    } else {
++        names = AiKeys::splitChord(value.toString());
++    }
++    names.removeAll(QString());
++    names.sort();
++    return names;
++}
++
++bool isDangerousChord(const QStringList &sortedChord)
++{
++    for (const DangerousChord &dangerous : dangerousChords()) {
++        QStringList expected = dangerous.keys;
++        expected.sort();
++        if (expected == sortedChord) {
++            return true;
++        }
++    }
++    return false;
 +}
 +
 +QString modifierList(const QJsonArray &modifiers)
@@ -3009,6 +3150,24 @@ index 00000000..e7099853
 +        names.append(value.toString());
 +    }
 +    return names.join(QLatin1Char('+'));
++}
++
++// An array property must declare its element schema; servers that validate
++// arguments reject or drop bare arrays, which is why press_key's modifiers
++// never arrived and the model fell back to one keystroke at a time.
++QJsonObject arrayProperty(const QString &description, const QJsonArray &allowed)
++{
++    QJsonObject items;
++    items.insert(QStringLiteral("type"), QStringLiteral("string"));
++    if (!allowed.isEmpty()) {
++        items.insert(QStringLiteral("enum"), allowed);
++    }
++
++    QJsonObject object;
++    object.insert(QStringLiteral("type"), QStringLiteral("array"));
++    object.insert(QStringLiteral("description"), description);
++    object.insert(QStringLiteral("items"), items);
++    return object;
 +}
 +
 +QString truncated(const QString &text, int limit = 70)
@@ -3115,11 +3274,30 @@ index 00000000..e7099853
 +                     QStringLiteral("Key to press, e.g. return, tab, escape, backspace, delete, space, up, down, left, right, "
 +                                    "home, end, pageup, pagedown, printscreen, f1…f12, win, menu, or a single character.")));
 +        properties.insert(QStringLiteral("modifiers"),
-+                          property(QStringLiteral("array"),
-+                                   QStringLiteral("Modifiers held while pressing the key: control, alt, shift, meta."),
-+                                   QJsonArray{QStringLiteral("control"), QStringLiteral("alt"), QStringLiteral("shift"), QStringLiteral("meta")}));
-+        tools.append(wrapped(QStringLiteral("press_key"), QStringLiteral("Press a key or a key combination on the remote machine."), properties,
++                          arrayProperty(QStringLiteral("Modifiers held while pressing the key: control, alt, shift, meta."),
++                                        QJsonArray{QStringLiteral("control"), QStringLiteral("alt"), QStringLiteral("shift"),
++                                                   QStringLiteral("meta")}));
++        tools.append(wrapped(QStringLiteral("press_key"),
++                             QStringLiteral("Press a single key, optionally with modifiers held. For a keyboard shortcut such as "
++                                            "Ctrl+A or Alt+Tab, prefer the hotkey tool."),
++                             properties,
 +                             {QStringLiteral("key")}));
++    }
++
++    {
++        QJsonObject properties;
++        properties.insert(
++            QStringLiteral("keys"),
++            property(QStringLiteral("string"),
++                     QStringLiteral("The combination as one string, keys joined with \"+\", modifiers first and the final key "
++                                    "last: \"ctrl+a\", \"win+d\", \"alt+tab\", \"ctrl+shift+esc\". Modifier names: ctrl, alt, "
++                                    "shift, win.")));
++        tools.append(wrapped(QStringLiteral("hotkey"),
++                             QStringLiteral("Press a keyboard shortcut on the remote machine, e.g. ctrl+a to select all. All "
++                                            "keys in the string are held down together, exactly as if you pressed the "
++                                            "combination on the keyboard yourself."),
++                             properties,
++                             {QStringLiteral("keys")}));
 +    }
 +
 +    {
@@ -3141,7 +3319,8 @@ index 00000000..e7099853
 +    static const QStringList names = {
 +        QStringLiteral("take_screenshot"), QStringLiteral("screen_info"),      QStringLiteral("mouse_move"),
 +        QStringLiteral("mouse_click"),     QStringLiteral("mouse_drag"),       QStringLiteral("mouse_scroll"),
-+        QStringLiteral("type_text"),       QStringLiteral("press_key"),        QStringLiteral("wait"),
++        QStringLiteral("type_text"),       QStringLiteral("press_key"),        QStringLiteral("hotkey"),
++        QStringLiteral("wait"),
 +    };
 +    return names.contains(name);
 +}
@@ -3164,16 +3343,14 @@ index 00000000..e7099853
 +    }
 +
 +    if (name == QLatin1String("press_key")) {
-+        const QStringList chord =
-+            normalizedChord(arguments.value(QStringLiteral("key")).toString(), arguments.value(QStringLiteral("modifiers")).toArray());
-+        for (const DangerousChord &dangerous : dangerousChords()) {
-+            QStringList expected = dangerous.keys;
-+            expected.sort();
-+            if (expected == chord) {
-+                return Risk::Dangerous;
-+            }
-+        }
-+        return Risk::Action;
++        return isDangerousChord(
++            normalizedChord(arguments.value(QStringLiteral("key")).toString(), arguments.value(QStringLiteral("modifiers")).toArray()))
++            ? Risk::Dangerous
++            : Risk::Action;
++    }
++
++    if (name == QLatin1String("hotkey")) {
++        return isDangerousChord(hotkeyChord(arguments)) ? Risk::Dangerous : Risk::Action;
 +    }
 +
 +    return Risk::Action;
@@ -3220,6 +3397,15 @@ index 00000000..e7099853
 +        }
 +        return QStringLiteral("Press %1+%2").arg(modifiers, key);
 +    }
++    if (name == QLatin1String("hotkey")) {
++        QStringList chord = hotkeyChord(arguments);
++        // Show the natural reading order (ctrl+a), not the sorted match form.
++        const QJsonValue keys = arguments.value(QStringLiteral("keys"));
++        if (keys.isString()) {
++            return QStringLiteral("Press %1").arg(keys.toString());
++        }
++        return QStringLiteral("Press %1").arg(chord.join(QLatin1Char('+')));
++    }
 +    if (name == QLatin1String("wait")) {
 +        return QStringLiteral("Wait %1 s").arg(arguments.value(QStringLiteral("seconds")).toDouble());
 +    }
@@ -3243,6 +3429,17 @@ index 00000000..e7099853
 +    if (name == QLatin1String("press_key")) {
 +        const QStringList chord =
 +            normalizedChord(arguments.value(QStringLiteral("key")).toString(), arguments.value(QStringLiteral("modifiers")).toArray());
++        for (const DangerousChord &dangerous : dangerousChords()) {
++            QStringList expected = dangerous.keys;
++            expected.sort();
++            if (expected == chord) {
++                return QString::fromLatin1(dangerous.reason) + QStringLiteral(".");
++            }
++        }
++    }
++
++    if (name == QLatin1String("hotkey")) {
++        const QStringList chord = hotkeyChord(arguments);
 +        for (const DangerousChord &dangerous : dangerousChords()) {
 +            QStringList expected = dangerous.keys;
 +            expected.sort();
@@ -3682,10 +3879,10 @@ index 5e37a59c..c9fa694a 100644
      rdpgraphics.cpp
 diff --git a/rdp/rdpaiinput.cpp b/rdp/rdpaiinput.cpp
 new file mode 100644
-index 00000000..f3617341
+index 00000000..0a56244e
 --- /dev/null
 +++ b/rdp/rdpaiinput.cpp
-@@ -0,0 +1,195 @@
+@@ -0,0 +1,201 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -3730,10 +3927,10 @@ index 00000000..f3617341
 +        {Qt::Key_Down, VK_DOWN},
 +        {Qt::Key_PageUp, VK_PRIOR},
 +        {Qt::Key_PageDown, VK_NEXT},
-+        {Qt::Key_Shift, VK_SHIFT},
-+        {Qt::Key_Control, VK_CONTROL},
++        {Qt::Key_Shift, VK_LSHIFT},
++        {Qt::Key_Control, VK_LCONTROL},
 +        {Qt::Key_Meta, VK_LWIN},
-+        {Qt::Key_Alt, VK_MENU},
++        {Qt::Key_Alt, VK_LMENU},
 +        {Qt::Key_AltGr, VK_RMENU},
 +        {Qt::Key_CapsLock, VK_CAPITAL},
 +        {Qt::Key_NumLock, VK_NUMLOCK},
@@ -3864,16 +4061,22 @@ index 00000000..f3617341
 +
 +QVector<DWORD> RdpAiInput::modifierVirtualKeys(Qt::KeyboardModifiers modifiers)
 +{
++    // Left-side specific virtual keys, not the generic VK_SHIFT/VK_CONTROL/
++    // VK_MENU aliases: winpr's virtual-key-to-scancode tables (and the RDP
++    // protocol itself) only know the specific keys, so the generic codes
++    // convert to scancode 0 and every injected combination loses its
++    // modifiers. Injecting the specific key is also what a physical
++    // left-hand keyboard press produces, which the manual input path shows.
 +    QVector<DWORD> keys;
 +
 +    if (modifiers & Qt::ShiftModifier) {
-+        keys.append(VK_SHIFT);
++        keys.append(VK_LSHIFT);
 +    }
 +    if (modifiers & Qt::ControlModifier) {
-+        keys.append(VK_CONTROL);
++        keys.append(VK_LCONTROL);
 +    }
 +    if (modifiers & Qt::AltModifier) {
-+        keys.append(VK_MENU);
++        keys.append(VK_LMENU);
 +    }
 +    if (modifiers & Qt::MetaModifier) {
 +        keys.append(VK_LWIN);
@@ -3930,7 +4133,7 @@ index 00000000..a1960f89
 +QVector<DWORD> modifierVirtualKeys(Qt::KeyboardModifiers modifiers);
 +}
 diff --git a/rdp/rdpsession.cpp b/rdp/rdpsession.cpp
-index 963f448c..bf4556e9 100644
+index 963f448c..a21d9873 100644
 --- a/rdp/rdpsession.cpp
 +++ b/rdp/rdpsession.cpp
 @@ -4,6 +4,7 @@
@@ -3941,7 +4144,7 @@ index 963f448c..bf4556e9 100644
  #include "rdpcliprdr.h"
  #include "rdpdisp.h"
  #include "rdpgraphics.h"
-@@ -1585,6 +1586,203 @@ void RdpSession::setState(RdpSession::State newState)
+@@ -1585,6 +1586,304 @@ void RdpSession::setState(RdpSession::State newState)
      Q_EMIT stateChanged();
  }
  
@@ -4046,20 +4249,121 @@ index 963f448c..bf4556e9 100644
 +    return freerdp_input_send_mouse_event(m_context.rdp->input, flags, uint16_t(remote.x()), uint16_t(remote.y()));
 +}
 +
++// Enhanced keys of a 101-key keyboard (MS-RDPBCGR 2.2.8.1.1.3.1.1.1). The
++// winpr virtual-key-to-scancode tables list these under an extended table
++// that is only consulted when the virtual key carries the KBDEXT tag, and
++// the manual input path receives that tag from the XKB key tables. Without
++// it, winpr searches the plain table, finds e.g. VK_DECIMAL instead of
++// VK_DELETE at 0x53, and converts to scancode 0.
++static DWORD extendedVirtualKey(DWORD virtualKey)
++{
++    switch (virtualKey) {
++    case VK_RETURN: // main Enter is extended; numpad Enter is a multivk
++    case VK_RCONTROL:
++    case VK_RMENU:
++    case VK_SNAPSHOT:
++    case VK_DIVIDE:
++    case VK_VOLUME_MUTE:
++    case VK_VOLUME_DOWN:
++    case VK_VOLUME_UP:
++    case VK_MEDIA_NEXT_TRACK:
++    case VK_MEDIA_PREV_TRACK:
++    case VK_MEDIA_PLAY_PAUSE:
++    case VK_MEDIA_STOP:
++    case VK_BROWSER_HOME:
++    case VK_BROWSER_SEARCH:
++    case VK_BROWSER_FAVORITES:
++    case VK_BROWSER_REFRESH:
++    case VK_BROWSER_STOP:
++    case VK_BROWSER_FORWARD:
++    case VK_BROWSER_BACK:
++    case VK_HOME:
++    case VK_UP:
++    case VK_PRIOR:
++    case VK_LEFT:
++    case VK_RIGHT:
++    case VK_END:
++    case VK_DOWN:
++    case VK_NEXT:
++    case VK_INSERT:
++    case VK_DELETE:
++    case VK_APPS:
++        return virtualKey | KBDEXT;
++    default:
++        return virtualKey;
++    }
++}
++
 +bool RdpSession::aiSendVirtualKey(DWORD virtualKey, bool pressed)
 +{
 +    if (!aiInputReady() || virtualKey == 0) {
++        qCWarning(KRDC) << "AI key refused: input ready =" << aiInputReady() << "virtual key =" << virtualKey;
 +        return false;
++    }
++
++    // Log the keyboard-type setting once per process: every virtual key is
++    // turned into an RDP scancode through it, so a wrong value here breaks
++    // all injected keys while typed text still works via the Unicode channel.
++    static bool loggedKeyboardType = false;
++    if (!loggedKeyboardType) {
++        loggedKeyboardType = true;
++        qCWarning(KRDC) << "AI input: FreeRDP_KeyboardType ="
++                        << freerdp_settings_get_uint32(m_context.rdp->settings, FreeRDP_KeyboardType);
++    }
++
++    // The Windows keys need the EXTENDED1 flag (MS-RDPBCGR 2.2.8.1.1.3.1.1.1).
++    // The virtual-key-to-scancode conversion only ever yields the plain
++    // EXTENDED flag, and the server silently drops a 0x5B/0x5C that arrives
++    // without extended1.
++    if (virtualKey == VK_LWIN || virtualKey == VK_RWIN) {
++        UINT16 flags = KBD_FLAGS_EXTENDED1;
++        if (!pressed) {
++            flags |= KBD_FLAGS_RELEASE;
++        }
++        const UINT16 code = (virtualKey == VK_LWIN) ? 0x5B : 0x5C;
++        const bool sent = freerdp_input_send_keyboard_event(m_context.rdp->input, flags, uint8_t(code));
++        qCDebug(KRDC) << "AI key" << virtualKey << (pressed ? "down" : "up") << "scancode" << code << "extended1"
++                      << "sent =" << sent;
++        return sent;
++    }
++
++    // Pause is not one scancode: a physical press is the sequence
++    // E1 1D 45 E1 9D C5 (left Ctrl + NumLock) and has no separate release.
++    if (virtualKey == VK_PAUSE) {
++        if (!pressed) {
++            return true;
++        }
++        auto *input = m_context.rdp->input;
++        bool ok = freerdp_input_send_keyboard_event(input, KBD_FLAGS_EXTENDED1, 0x1D);
++        ok = freerdp_input_send_keyboard_event(input, 0, 0x45) && ok;
++        ok = freerdp_input_send_keyboard_event(input, KBD_FLAGS_EXTENDED1 | KBD_FLAGS_RELEASE, 0x1D) && ok;
++        ok = freerdp_input_send_keyboard_event(input, KBD_FLAGS_RELEASE, 0x45) && ok;
++        qCDebug(KRDC) << "AI key" << virtualKey << "pause sequence sent =" << ok;
++        return ok;
++    }
++
++    // NumLock: winpr's table lists it unextended, but a physical press is
++    // E0 45; tagging it KBDEXT finds no table entry, so send it directly.
++    if (virtualKey == VK_NUMLOCK) {
++        UINT16 flags = KBD_FLAGS_EXTENDED;
++        if (!pressed) {
++            flags |= KBD_FLAGS_RELEASE;
++        }
++        const bool sent = freerdp_input_send_keyboard_event(m_context.rdp->input, flags, 0x45);
++        qCDebug(KRDC) << "AI key" << virtualKey << (pressed ? "down" : "up") << "scancode 69 extended sent =" << sent;
++        return sent;
 +    }
 +
 +    const auto keyboardType = freerdp_settings_get_uint32(m_context.rdp->settings, FreeRDP_KeyboardType);
-+    const DWORD code = GetVirtualScanCodeFromVirtualKeyCode(virtualKey, keyboardType);
++    const DWORD code = GetVirtualScanCodeFromVirtualKeyCode(extendedVirtualKey(virtualKey), keyboardType);
 +    if (code == 0) {
-+        qCWarning(KRDC) << "No scancode for virtual key" << virtualKey;
++        qCWarning(KRDC) << "No scancode for virtual key" << virtualKey << "keyboard type" << keyboardType;
 +        return false;
 +    }
 +
-+    return freerdp_input_send_keyboard_event_ex(m_context.rdp->input, pressed ? TRUE : FALSE, FALSE, code);
++    const bool sent = freerdp_input_send_keyboard_event_ex(m_context.rdp->input, pressed ? TRUE : FALSE, FALSE, code);
++    qCDebug(KRDC) << "AI key" << virtualKey << (pressed ? "down" : "up") << "scancode" << code << "sent =" << sent;
++    return sent;
 +}
 +
 +bool RdpSession::aiSendUnicodeChar(QChar ch)
@@ -4089,12 +4393,12 @@ index 963f448c..bf4556e9 100644
 +        if (vk != 0) {
 +            const bool shift = modifiers.testFlag(Qt::ShiftModifier);
 +            if (shift) {
-+                aiSendVirtualKey(VK_SHIFT, true);
++                aiSendVirtualKey(VK_LSHIFT, true);
 +            }
 +            const bool sent = aiSendVirtualKey(vk, true);
 +            aiSendVirtualKey(vk, false);
 +            if (shift) {
-+                aiSendVirtualKey(VK_SHIFT, false);
++                aiSendVirtualKey(VK_LSHIFT, false);
 +            }
 +            if (sent) {
 +                continue;
