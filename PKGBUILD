@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=budget-tracker
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Simple TUI budget tracker. Designed to track income and expenses and help visualize and gather basic insights from your transactions.'
 arch=(
@@ -18,7 +18,7 @@ options=(
 provides=('budget-tracker')
 conflicts=('budget-tracker-git' 'budget-tracker-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a32fc7263d470b6a8d6d7f178a818aa3b46fdb1eef35268cb3c46c8223efc427')
+sha256sums=('18c12f3d3c6e0eed58039c4c1a1c8206609beeeb9152c6104420afa82e459b7c')
 
 prepare() {
     cd "budget-tracker-tui-$pkgver"
