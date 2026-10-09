@@ -1,0 +1,19 @@
+pkgbase = neboto-bin
+	pkgdesc = A fast, keyboard-driven terminal UI for browsing AWS
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/neboto/neboto-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = neboto
+	conflicts = neboto
+	options = !strip
+	source_x86_64 = neboto-x86_64-0.2.1.tgz::https://github.com/neboto/neboto-tui/releases/download/v0.2.1/neboto-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 16b5194379b8188eee4bdd59f60d5c42b25b1feb26327ff3172be813be1a7883
+	source_aarch64 = neboto-aarch64-0.2.1.tgz::https://github.com/neboto/neboto-tui/releases/download/v0.2.1/neboto-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 2a0d9244b1b274d51a60d50f2a8f8abf562442f02bc77baee98e6d511b09e354
+
+pkgname = neboto-bin
