@@ -3,7 +3,7 @@
 
 _pkgname=frida
 pkgname=python-$_pkgname-bin
-pkgver=17.23.1
+pkgver=17.23.3
 pkgrel=1
 
 pkgdesc='Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android. Python 3 binary version from PyPi'
@@ -21,10 +21,10 @@ conflicts=('python-frida' 'python2-frida')
 
 # Hashes updated by updpkgsums
 sha256sums=('5ea1544b51a28bc823b03159190d4108f9fb4f4ef912389f5137c6d295e175b2')
-sha256sums_i686=('1a98d5fd3c392320f91eb767facf712eeb198e8c34d02efbdabe558b589b0560')
-sha256sums_x86_64=('05d5cbf01cdeade78a10aa1de7da6a46e1fe50a7fb2baefa414d8ff2ab7cbf9b')
-sha256sums_armv7l=('80829faa43de1c4bfdba029af051d9fa2dc1be2236a3b16ac94f9e101ba92bb8')
-sha256sums_aarch64=('4ab8ed28261459ace61e304dd2776d886a169192a6bfe48cc821b30971541d22')
+sha256sums_i686=('2ac9c44787d69a5c51775d3d16ca8b2a6404e756f58f0fbafcc7e55322857316')
+sha256sums_x86_64=('c92313a20db077663ccf4b1c281b69dcff316b1e5fad506e27567fed1468ce7d')
+sha256sums_armv7l=('576a268ffa0018692f75f8f15ddbc97e2f17f31b259ef25c0772dbd772a804f4')
+sha256sums_aarch64=('1972f685e93d99279e2d23ed8364758bc21c37a17ec13bca91154b5dd5b42905')
 
 # Built distributions taken from https://pypi.org/project/frida/#files
 _py=cp37
