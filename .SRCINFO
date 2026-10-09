@@ -1,7 +1,7 @@
 pkgbase = proton-autogen
 	pkgdesc = Automatic Proton/Wine launcher for Windows executables
-	pkgver = 3.3.8
-	pkgrel = 2
+	pkgver = 3.3.9
+	pkgrel = 1
 	url = https://github.com/N3oRay/proton-autogen
 	arch = any
 	license = MIT
@@ -26,7 +26,7 @@ pkgbase = proton-autogen
 	optdepends = gamescope: Micro-compositor
 	optdepends = dolphin: Dolphin file manager integration
 	optdepends = nemo: Nemo file manager integration
-	source = proton-autogen-3.3.8.tar.gz::https://github.com/N3oRay/proton-autogen/archive/refs/tags/v3.3.8.tar.gz
-	sha256sums = 77d83a0d30473f0f12f327f0b168745f2ee637d9c4f2094e0907533b5c7c23f5
+	source = proton-autogen-3.3.9.tar.gz::https://github.com/N3oRay/proton-autogen/archive/refs/tags/v3.3.9.tar.gz
+	sha256sums = 0c9712a4eb5e08d755edde5ae83e1b0ba63c30c9f7d5d5c7ea119487b075a995
 
 pkgname = proton-autogen
