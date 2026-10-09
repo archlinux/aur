@@ -1,0 +1,5 @@
+[wikid-bin]
+source = "github"
+github = "sharkthakftw/wikid"
+use_latest_release = true
+prefix = "v"
