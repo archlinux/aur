@@ -14,7 +14,7 @@ sha256sums=('eb5a6641264f84997eaa22df7c9cad735c100b434dfd62c2560aba78164f34f6')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  go build -trimpath -o "$srcdir/$pkgname" "./$pkgname"
+  go build -trimpath -buildvcs=false -o "$srcdir/$pkgname" "./$pkgname"
 }
 
 package() {
