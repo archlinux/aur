@@ -1,6 +1,6 @@
 # Maintainer: Mikkel Rask <mikkelrask@users.noreply.github.com>
 pkgname=khal-agenda-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='An on-demand Wayland calendar popup for khal (prebuilt binary)'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("khal-agenda=$pkgver")
 conflicts=('khal-agenda')
 options=('!debug')
 source_x86_64=("$pkgname-$pkgver-$CARCH.tar.gz::$url/releases/download/v$pkgver/khal-agenda-$pkgver-linux-$CARCH.tar.gz")
-sha256sums_x86_64=('0e7e4f1f74f07ef3359a2e4111943a68bcd7bf1ef305f1336706eb1c0b1ea2c3')
+sha256sums_x86_64=('7d2c42eff3569502e052a234f1b9da584868a37e6a8d306de299709698ca61ca')
 
 package() {
     install -Dm755 "$srcdir/bin/khal-agenda" "$pkgdir/usr/bin/khal-agenda"
