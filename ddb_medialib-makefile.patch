@@ -1,14 +1,24 @@
-diff -u -r -N ddb_medialib-orig/Makefile ddb_medialib-makefile/Makefile
---- ddb_medialib-orig/Makefile	2021-01-15 20:53:07.358290582 +0100
-+++ ddb_medialib-makefile/Makefile	2021-01-15 20:52:50.691678078 +0100
-@@ -18,8 +18,8 @@
-     CXXFLAGS += -DDEBUG -ggdb3 -Wall
-     CCFLAGS += -DDEBUG -ggdb3 -Wall
- else
--    CXXFLAGS += -DNDEBUG -O3 -fomit-frame-pointer
--    CCFLAGS += -DNDEBUG -O3 -fomit-frame-pointer
-+    CXXFLAGS += -DNDEBUG -O3 -fomit-frame-pointer $(COPT)
-+    CCFLAGS += -DNDEBUG -O3 -fomit-frame-pointer $(COPT)
- endif
+diff '--color=auto' -u -r -N ddb_medialib/Makefile ddb_medialib-makefile/Makefile
+--- ddb_medialib/Makefile	2026-10-09 13:02:10.425510309 +0000
++++ ddb_medialib-makefile/Makefile	2026-10-09 13:12:14.327346555 +0000
+@@ -10,6 +10,7 @@
  
- ifdef GTK2
+ CCFLAGS = -fPIC -pipe
+ CXXFLAGS += -std=c++17 -fPIC -pipe $$(pkg-config --cflags gtkmm-$(GTKMM_VER))
++LDFLAGS += -Wl,--as-needed
+ LIBS += $$(pkg-config --libs gtkmm-$(GTKMM_VER)) -lboost_thread
+ 
+ SQLITE_FLAGS = -D_HAVE_SQLITE_CONFIG_H
+@@ -28,10 +29,10 @@
+ 
+ 
+ $(PLUGIN_FILENAME): sqlite3.o sqlite_locked.o database.o main_widget.o medialib.o plugin.o scan_thread.o settings_dlg.o settings.o
+-	$(CXX) -o $(PLUGIN_FILENAME) -shared database.o sqlite_locked.o main_widget.o medialib.o plugin.o scan_thread.o settings_dlg.o settings.o sqlite3.o $(LIBS)
++	$(CXX) -o $(PLUGIN_FILENAME) -shared $(LDFLAGS) database.o sqlite_locked.o main_widget.o medialib.o plugin.o scan_thread.o settings_dlg.o settings.o sqlite3.o $(LIBS)
+ 
+ sqlite3.o: sqlite3/sqlite3.c sqlite3/sqlite3.h sqlite3/config.h
+-	$(CC) $(CCFLAGS) $(SQLITE_FLAGS) -c sqlite3/sqlite3.c
++	$(CC) $(CFLAGS) $(CCFLAGS) $(SQLITE_FLAGS) -c sqlite3/sqlite3.c
+ 
+ sqlite_locked.o: sqlite3/sqlite_locked.cpp sqlite3/sqlite_locked.h sqlite3/sqlite3.h sqlite3/config.h
+ 	$(CXX) $(CXXFLAGS) -c sqlite3/sqlite_locked.cpp

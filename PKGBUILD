@@ -5,17 +5,27 @@
 _pkgname=ddb_medialib
 pkgname=deadbeef-plugin-medialib-git
 pkgver=r108.g0557ac1
-pkgrel=2
+pkgrel=3
 pkgdesc="DeaDBeeF media library plugin"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686')
 url="https://github.com/sgomin/ddb_medialib"
-license=('unknown')
-depends=('deadbeef' 'gtkmm3' 'boost-libs')
-makedepends=('git' 'boost')
+license=('LicenseRef-NoLicense')
+depends=('deadbeef'
+         'glibc'
+         'libgcc'
+         'libstdc++'
+         'libsigc++'
+         'boost-libs'
+         'glibmm'
+         'gtkmm3'
+         'atkmm')
+makedepends=('git')
 source=("${_pkgname}::git+https://github.com/sgomin/${_pkgname}"
-        "${_pkgname}-makefile.patch")
+        "${_pkgname}-makefile.patch"
+        "LICENSE")
 sha256sums=('SKIP'
-            '38db1362fd3d6117b98b36499f508ac55bf9017f2068ad8cde38bd201f24133e')
+            'c586c8651f342d2f539cb6de9f4753da5ef982d4b75b2345d64ca24c7e76978f'
+            '1d6cbc79f97533a4497791f144206705f7a171e209226708d349c01dc6563041')
 
 pkgver() {
   cd "${_pkgname}"
@@ -33,11 +43,12 @@ prepare() {
 
 build() {
   cd "${_pkgname}"
-  CUSTOMFLAGS="-fomit-frame-pointer"
-  make COPT="${CUSTOMFLAGS}" CXXOPT="${CUSTOMFLAGS}"
+  make
 }
 
 package() {
   cd "${_pkgname}"
   make DESTDIR="${pkgdir}" install
+  install -Dvm0644 "${srcdir}/LICENSE" \
+    -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
