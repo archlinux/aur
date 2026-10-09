@@ -6,7 +6,7 @@ pkgver=25.0.4.1
 _build=7
 _hash=eda28b422d69454c901d71e19e354064
 _majver="${pkgver%%.*}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Oracle Java'
 arch=('x86_64')
 url='https://www.oracle.com/java/'
@@ -16,7 +16,7 @@ makedepends=(
     # to satisfy pkgcheck:
     'alsa-lib')
 source=("https://download.oracle.com/java/${_majver}/archive/jdk-${pkgver}_linux-x64_bin.tar.gz"
-        "https://download.oracle.com/otn_software/java/jdk/${pkgver}+${_build}/${_hash}/jdk-${pkgver%.*}_doc-all.zip"
+        "https://download.oracle.com/otn_software/java/jdk/${pkgver%.*}+${_build}/${_hash}/jdk-${pkgver%.*}_doc-all.zip"
         "jdk-${_majver}_doc-license.html"::"https://download.oracle.com/otndocs/jcp/java_se-${_majver}-final-spec/license.html"
         'java.desktop'
         'jconsole.desktop'
