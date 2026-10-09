@@ -1,7 +1,7 @@
 # Maintainer: Rafael Escobar <rafael@paemuri.com>
 
 pkgname=torresmo
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc='Dead simple and minimal TUI client for the Transmission daemon'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=('transmission-cli: the Transmission daemon to connect to')
 # The release profile strips the binary, so a debug package would be empty.
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('d4754c57b70228bb5af7079b975646c5151ac0dc4c7e56f2f286302f8991a9aa')
+sha256sums=('c77ba5cd9218ff8e783646dcc34a6dde94d9e319708da4bcde78f871c6265252')
 
 prepare() {
   cd "$pkgname-$pkgver"
