@@ -1,0 +1,17 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    ".SRCINFO",
+    "LICENSE",
+    "REUSE.toml",
+    "hermes-desktop",
+    "launcher.test.cjs",
+    "package-managed-runtime.patch",
+    "package-managed-bootstrap.patch",
+    "fix-voice-prefs-storage-spy.patch",
+    "harden-hud-modifier-monitor.patch",
+]
+SPDX-FileCopyrightText = "hermes-agent-desktop AUR contributors"
+SPDX-License-Identifier = "0BSD"

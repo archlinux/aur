@@ -5,15 +5,15 @@ _upstream=Hermes                 # productName + executableName
 _pkgver_tag=v0.21.6
 _commit=818c13be1dc4fd28987e1e881a9408224afd4535
 pkgver=0.21.6
-pkgrel=4
-pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
+pkgrel=5
+pkgdesc="Desktop UI for Hermes Agent (chat, voice, files, settings)"
 arch=('x86_64')
 url='https://github.com/NousResearch/hermes-agent'
 license=('MIT')
-# Runtime: Electron shell + hermes-agent. Anything hermes-agent already
-# declares (depends or optdepends: python, nodejs, uv, ffmpeg, ripgrep,
-# agent-browser, chromium/chrome, …) must not be repeated here — chroot
-# installs hermes-agent first, so prepare/check see those tools transitively.
+# Runtime: Electron shell + hermes-agent. Do not repeat hermes-agent's own
+# depends/optdepends (ffmpeg, ripgrep, agent-browser, chromium/chrome, …).
+# Tools check() invokes directly are listed in checkdepends even when
+# hermes-agent would pull them in transitively.
 depends=(
   'electron42'
   'hermes-agent'
@@ -24,9 +24,9 @@ depends=(
   'libxi'
   'xdg-utils'
 )
-# npm is not a hermes-agent dependency; nodejs comes via hermes-agent.
+# npm is not a hermes-agent dependency; nodejs is declared in checkdepends.
 makedepends=('npm')
-# check() only needs tools from hermes-agent (python/uv/nodejs) plus makedepends npm.
+checkdepends=('nodejs' 'python' 'uv')
 optdepends=(
   'libayatana-appindicator: tray indicator support'
 )
