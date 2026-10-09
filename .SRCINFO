@@ -1,0 +1,21 @@
+pkgbase = gophie-bin
+	pkgdesc = A modern Gopher client (prebuilt Linux binary)
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/jankammerath/gophie
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = gtk3
+	depends = glib2
+	depends = cairo
+	depends = pango
+	depends = gdk-pixbuf2
+	depends = libx11
+	options = !strip
+	options = !debug
+	source = gophie-bin-1.1-linux.tar.gz::https://github.com/jankammerath/gophie/releases/download/1.1/Gophie-1.1-Linux.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/jankammerath/gophie/1.1/LICENSE
+	sha256sums = a2376776009a99b8592a94db705c433fd3a8d451923bb6a4f5c90ee5d33cf5a7
+	sha256sums = 8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b
+
+pkgname = gophie-bin
