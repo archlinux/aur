@@ -4,7 +4,7 @@
 pkgname=gset-git
 pkgver=2.0.2
 pkgrel=1
-pkgdesc="GSET - Generic Syntax Extension Tool. Write in any language syntax, compile to any language."
+pkgdesc="[DEPRECATED: use the gset package] GSET - Generic Syntax Extension Tool. Write in any language syntax, compile to any language."
 arch=(x86_64 aarch64)
 url="https://github.com/Crazygiscool/GSETLang"
 license=(CC-BY-NC-4.0)

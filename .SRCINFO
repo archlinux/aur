@@ -1,5 +1,5 @@
 pkgbase = gset-git
-	pkgdesc = GSET - Generic Syntax Extension Tool. Write in any language syntax, compile to any language.
+	pkgdesc = [DEPRECATED: use the gset package] GSET - Generic Syntax Extension Tool. Write in any language syntax, compile to any language.
 	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/Crazygiscool/GSETLang
