@@ -1,0 +1,22 @@
+pkgbase = gridcraft-bin
+	pkgdesc = Open-source native spreadsheet, Excel alternative (prebuilt binary)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/storytold/gridcraft
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	optdepends = vulkan-icd-loader: GPU-accelerated rendering
+	provides = gridcraft
+	conflicts = gridcraft
+	source_x86_64 = gridcraft-0.3.0-linux-x86_64.tar.gz::https://github.com/storytold/gridcraft/releases/download/v0.3.0/gridcraft-0.3.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = e515ae88ae2480a04a4b5d249540ee82ac521d0be8b86bbca8f56547bc8154ff
+	source_aarch64 = gridcraft-0.3.0-linux-aarch64.tar.gz::https://github.com/storytold/gridcraft/releases/download/v0.3.0/gridcraft-0.3.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = c200cf6af2b5da99239f10e836a6e7ad9c4dc4c50ca44983700d1d960bf50e2b
+
+pkgname = gridcraft-bin
