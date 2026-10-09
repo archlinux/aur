@@ -2,7 +2,7 @@
 pkgname=filmcraft2-bin
 # _pkgname=${pkgname%-bin}
 _pkgname=filmcraft
-pkgver=0.2.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Video editing, color grading and audio (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
@@ -26,14 +26,14 @@ source=("$_pkgname-$pkgver-NOTICE.txt::https://raw.githubusercontent.com/storyto
         "$_pkgname-$pkgver-OFL-NotoSerif.txt::https://raw.githubusercontent.com/storytold/$_pkgname/v$pkgver/assets/fonts/OFL-NotoSerif.txt")
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
-sha256sums=('09937ed158c45d60e584a2c5cbd3f941cf0b045c5efaeb9b17eb5f7324783bbf'
+sha256sums=('5761787313b9d6c13dd5f03da2e04209ad7bd08eff8920edfd184141d791195c'
             'd30f3aee39b72be3d1c1bdf994b75470ff53a354ca8ba6039c3a70a647b732fe'
             '79d32f0c9576355f9eaedf8ba8727a149cf3e42ed753ff5d25ac882bf072e27a'
             '262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a'
             'a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697'
             'cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a')
-sha256sums_x86_64=('dff27e644bcb06b3d4c1f667b8fd544bd15ee4b446c8aee61706712f212887af')
-sha256sums_aarch64=('3d99bfa57ed03c1e3bf4298080ac7b03fc8e640b692969a98d36e0fc25c5c151')
+sha256sums_x86_64=('841790ff6649f0d49daa4a8ade1cb18d948e5ca43d00771046663e06c8d8ce83')
+sha256sums_aarch64=('3fbfc9b49a02bfa8a6ba6bd7f1841773b626a2adf0918f5e6164299d3f12f144')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-linux-$CARCH"
