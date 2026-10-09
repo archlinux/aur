@@ -3,7 +3,7 @@
 
 pkgname=stable-diffusion.cpp-vulkan-git
 _pkgname=stable-diffusion.cpp
-pkgver=r929.3f8527a
+pkgver=r948.228c707
 pkgrel=1
 pkgdesc="Diffusion model (Flux, Ideogram, Krea, Lens, LTX, MiniMax, Qwen Image, SD, Wan, Z-Image...) inference in pure C/C++ (Vulkan version)"
 license=('MIT')
@@ -29,8 +29,8 @@ options=(
     lto
     !debug)
 source=("git+https://github.com/leejet/stable-diffusion.cpp.git"
-        #"git+https://github.com/leejet/ggml.git#branch=int8_convrot"
-        "git+https://github.com/leejet/ggml.git#commit=89c4413f5da6fb20cc796f16033d37f129be81fd"
+        "git+https://github.com/leejet/ggml.git#branch=sd.cpp"
+        #"git+https://github.com/leejet/ggml.git#commit=66c1a2876031613788054a394bafb08d2e9f42dc"
         "git+https://github.com/leejet/sdcpp-webui.git")
 sha256sums=('SKIP'
             'SKIP'
