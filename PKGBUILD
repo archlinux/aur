@@ -5,9 +5,9 @@
 # Contributor: Danct12 <danct12 at disroot dot org>
 # Contributor: Bart Ribbers <bribbers at disroot dot org>
 
-_pkgver_sys='20.0-20260403'
-_pkgver_vendor='20.0-20260403'
-_pkgver_images_vendor='20.0-20260428'
+_pkgver_sys='20.0-20260927'
+_pkgver_vendor='20.0-20260927'
+_pkgver_images_vendor=$_pkgver_vendor
 _pkgver_images_vendor_x86=$_pkgver_vendor
 _pkgver_images_vendor_arm=$_pkgver_vendor
 _pkgver_images_vendor_arm64=$_pkgver_vendor
@@ -33,14 +33,14 @@ source_armv7h=("$_srcprefix/system/lineage/waydroid_arm/lineage-$_pkgver_images_
                "$_srcprefix/vendor/waydroid_arm/lineage-$_pkgver_images_vendor_arm-MAINLINE-waydroid_arm-vendor.zip")
 source_aarch64=("$_srcprefix/system/lineage/waydroid_arm64/lineage-$_pkgver_images_system_arm64-VANILLA-waydroid_arm64-system.zip"
                 "$_srcprefix/vendor/waydroid_arm64/lineage-$_pkgver_images_vendor_arm64-MAINLINE-waydroid_arm64-vendor.zip")
-sha256sums_x86_64=('2e343b14c649a685853e7957ac34feb1ca110425d78a47ebad764caae24116a8'
-                   'cba35433ffca73ed349e096b1daec495b3204e01c0e541c4203671e6d648e874')
-sha256sums_i686=('7ec24e44b7b80b7bc57e77cf8c94f3f53c669b8f30cb1df560602616dae477ef'
-                 '03f1dfc41b0f37471843c1f2ecb72bc635e8ddf6ecd80b2c41ec6ef8ebe303a7')
-sha256sums_armv7h=('4d3d1a3631165118a0ad43d84ae84bf3f0207c429148747e59d4485727107a68'
-                   'b81703ff498af328ffe39354a8d9956be51a184fa319e2648964910d35ba9673')
-sha256sums_aarch64=('c4b45fad36bee7c0db8a1d9315a5be0035520c53d3d005a807735ae9b7ee79cf'
-                    '1e6d33d464277ea3964e4658001c8882f21325616d6bcc66d473bc9ee1e246c7')
+sha256sums_x86_64=('053552725bf4ae25e2d3f7e6f1947203294aa9d73dc17fe1f3abe646e5d3bd8a'
+                   'd911b8353f6c807b94790b1c41c67e863a9f3dcd1cf3ec0232351398235afd7a')
+sha256sums_i686=('be42a16bc10ea14ce44e1fc67c046dd2d85171f03d135fd13fcddc6796951702'
+                 '99af2f69d5fd2c1f2d3830183f6de9689375833ac082e16cc5c9a94cd953990e')
+sha256sums_armv7h=('c36f1298165c572c803c0d76ed6086d37e7639dbb3d8bcec0f5e16984e494152'
+                   '335c710902148cf6f4edac5e7ab464f1af536deb460eb81facd31b9557cec1e7')
+sha256sums_aarch64=('5fb8179ed4455f45919c5a2bfbfdd1591619295994ad321217f03bb1dcfc53a7'
+                    '20a49c11961a5ac7295320f578764eeab3c982b217f1bfde7473adfc22e747ae')
 
 package() {
 	install -Dm644 {system,vendor}.img -t "$pkgdir/usr/share/waydroid-extra/images/"
