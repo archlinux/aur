@@ -9,6 +9,7 @@ pkgbase = wak-git
 	makedepends = clang
 	makedepends = make
 	makedepends = xz
+	options = !zipman
 	source = git+https://github.com/raygard/wak.git
 	md5sums = SKIP
 

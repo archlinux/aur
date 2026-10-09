@@ -8,6 +8,7 @@ license=('0BSD')
 depends=()
 makedepends=('git' 'clang' 'make' 'xz')
 source=("git+$url.git")
+options=('!zipman')
 md5sums=('SKIP')
 
 pkgver() {
