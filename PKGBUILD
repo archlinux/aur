@@ -4,8 +4,8 @@
 # Contributor: Mattias Andersson <contact at stablemate dot se>
 
 pkgname=playwright
-pkgver=1.63.0
-pkgrel=2
+pkgver=1.64.0
+pkgrel=1
 pkgdesc='Node.js library to automate Chromium, Firefox and WebKit with a single API'
 arch=('any')
 url='https://playwright.dev'
@@ -27,10 +27,8 @@ noextract=(
   "$pkgname-$pkgver.tgz"
   "playwright-core-$pkgver.tgz"
 )
-sha512sums=(
-  'fbbce204b89d4b835a34276de7b4940d3fb062699de5f9a241e8d489cfe46fe62c61208fc8e384f6c79bccc8cd990aec9cda4326a778587bd5ffc95f29f50352'
-  'ad80ac045fcce478d4721e766dbb5538d1058efe97bbcb26f21ef674d951e5bcc81357ef0bf6f182ca7392349f53e3307843263ccf0a25e6c6ea79f2c68e660a'
-)
+sha512sums=('915cd39d815813243d446cc18cd09ddbec84a969956f19770073f29efdea43a2538efe1afa4c11727a90c08a6e3f7367ae722b13f43ac1600802f31f204dbf62'
+            '4fdafe319913102976fa851c676e98819cd3ad889d4ec2216189098b1fba8833b298e6f5141d912cb48ec511a7646bf90d2b6df9a76e2156edf84f16ca05d8a6')
 
 check() {
   local checkdir="$srcdir/check"
