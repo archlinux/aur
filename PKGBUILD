@@ -3,7 +3,7 @@
 # Contributor: Sebastian Wiesner <sebastian@swsnr.de>
 pkgname=gnome-shell-extension-tiling-assistant
 _uuid=tiling-assistant@leleat-on-github
-pkgver=55
+pkgver=56
 pkgrel=1
 pkgdesc="A GNOME Shell extension which adds a Windows-like snap assist to the GNOME desktop"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('gnome-shell')
 makedepends=('git')
 install='tiling-assistant.install'
 source=("git+https://github.com/ubuntu/Tiling-Assistant.git#tag=v$pkgver")
-sha256sums=('3ec73feb26d648b16a92f4ec4ba9a3345551cad9573280a7a325e5a21002a2d7')
+sha256sums=('3e5f44e2296cb378b96074948cac46e04599c0e6dfa5ee81619228dbeb178dd4')
 
 build() {
   cd Tiling-Assistant
