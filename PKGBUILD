@@ -2,7 +2,7 @@
 
 pkgname=python-bikkuri
 _pkg="${pkgname#python-}"
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Calculate the surprisal of words in texts."
 url="https://github.com/jnphilipp/bikkuri"
@@ -11,11 +11,16 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setup
 license=('GPL-3.0-or-later')
 arch=(x86_64 aarch64)
 source=("$_pkg-$pkgver.tar.gz::${url}/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=("b8ed6abf24983f032477efd223d59ee8d4e07852987ff5e570868866dfc4c143c6d4ba5789799f60e662d488dd3153d769cf105f24edc3901053a9f81ffdc85b")
+sha512sums=("9e1398ff3224438baa83267f721f8072a81061d627d71f16d2b60db8f1354dac6c2d689cb0545ec9dd0c16eeae68b1cf9894e6b693c49877cde0669fc8d706c4")
 
 build() {
 	cd $_pkg-$pkgver
     python -m build --wheel --no-isolation
+}
+
+check() {
+	cd "${_pkg}-$pkgver"
+	make test
 }
 
 package() {

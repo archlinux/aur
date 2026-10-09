@@ -1,6 +1,6 @@
 pkgbase = python-bikkuri
 	pkgdesc = Calculate the surprisal of words in texts.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/jnphilipp/bikkuri
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-bikkuri
 	makedepends = python-setuptools
 	makedepends = python-setuptools-rust
 	depends = python
-	source = bikkuri-0.2.0.tar.gz::https://github.com/jnphilipp/bikkuri/archive/refs/tags/0.2.0.tar.gz
-	sha512sums = b8ed6abf24983f032477efd223d59ee8d4e07852987ff5e570868866dfc4c143c6d4ba5789799f60e662d488dd3153d769cf105f24edc3901053a9f81ffdc85b
+	source = bikkuri-0.3.0.tar.gz::https://github.com/jnphilipp/bikkuri/archive/refs/tags/0.3.0.tar.gz
+	sha512sums = 9e1398ff3224438baa83267f721f8072a81061d627d71f16d2b60db8f1354dac6c2d689cb0545ec9dd0c16eeae68b1cf9894e6b693c49877cde0669fc8d706c4
 
 pkgname = python-bikkuri
