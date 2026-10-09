@@ -17,7 +17,7 @@ conflicts=('yak' 'yak-bin' 'yak-git' 'rust-yak-bin' 'rust-llm' 'rust-llm-bin')
 source=(
     "${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('8a4691aef42b62d41ae63d0438338b6639beb5c55d26a332fccb6da9f65eab2f')
+sha256sums=('d770fe2b26581c7f258fc9e266859a9cd72c6655e6bd9e5522fdc795e80f40b5')
 
 # Release profile already sets lto=thin and strip=true. crates.io is reached
 # during build() (small four-crate dependency set), matching the common
