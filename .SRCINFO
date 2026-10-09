@@ -1,0 +1,22 @@
+pkgbase = sep
+	pkgdesc = Python and C library for source extraction and photometry
+	pkgver = 1.4.1.r1.g93b3ac5
+	pkgrel = 1
+	url = https://github.com/sep-developers/sep
+	arch = any
+	license = MIT, LGPL, BSD
+	makedepends = cmake
+	makedepends = make
+	makedepends = pkgconf
+	makedepends = git
+	makedepends = xz
+	provides = sep
+	options = !zipman
+	source = git+https://github.com/sep-developers/sep.git
+	source = sep.1
+	source = https://raw.githubusercontent.com/paolostivanin/stellastack/refs/heads/main/vendor/sep/stellastack-fixes.patch
+	sha256sums = SKIP
+	sha256sums = 63b41608372b36cebc37cbc00fe9daa707b5ef5f0651d7394d90055646761aaf
+	sha256sums = ff84117efbb7a20f3a1d77e5258e086afbab3c11cf124ddd0bc76d31e3523e84
+
+pkgname = sep

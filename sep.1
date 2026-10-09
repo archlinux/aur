@@ -1,0 +1,2033 @@
+'\" t
+.\" Man page generated from reStructuredText
+.\" by the Docutils 0.22.4 manpage writer.
+.
+.
+.nr rst2man-indent-level 0
+.
+.de1 rstReportMargin
+\\$1 \\n[an-margin]
+level \\n[rst2man-indent-level]
+level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
+-
+\\n[rst2man-indent0]
+\\n[rst2man-indent1]
+\\n[rst2man-indent2]
+..
+.de1 INDENT
+.\" .rstReportMargin pre:
+. RS \\$1
+. nr rst2man-indent\\n[rst2man-indent-level] \\n[an-margin]
+. nr rst2man-indent-level +1
+.\" .rstReportMargin post:
+..
+.de UNINDENT
+. RE
+.\" indent \\n[an-margin]
+.\" old: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.nr rst2man-indent-level -1
+.\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.in \\n[rst2man-indent\\n[rst2man-indent-level]]u
+..
+.TH "SEP" "1" "Oct 09, 2026" "1.4" "sep"
+.SH NAME
+sep \- sep Documentation
+.sp
+\fIPython library for Source Extraction and Photometry\fP
+.SH ABOUT
+.sp
+Source Extractor \%<http://\:www\:.astromatic\:.net/\:software/\:sextractor>
+(Bertin & Arnouts 1996) is a widely used
+command\-line program for segmentation and analysis of astronomical
+images. It reads in FITS format files, performs a configurable series
+of tasks, including background estimation, source detection,
+deblending and a wide array of source measurements, and finally
+outputs a FITS format catalog file.
+.sp
+While Source Extractor is highly useful, the fact that it can only be
+used as an executable can limit its applicability or lead to awkward
+workflows. There is often a desire to have programmatic access to
+perform one or more of the above tasks on in\-memory images as part of
+a larger custom analysis.
+.sp
+\fBSEP makes the core algorithms of Source Extractor available as a
+library of stand\-alone functions and classes.\fP These operate directly
+on in\-memory arrays (no FITS files or configuration files).  The code
+is derived from the Source Extractor code base (written in C) and aims
+to produce results compatible with Source Extractor whenever possible.
+SEP consists of a C library with no dependencies outside the standard
+library, and a Python module that wraps the C library in a Pythonic
+API. The Python wrapper operates on NumPy arrays with NumPy as its
+only dependency. See below for language\-specfic build and usage
+instructions.
+.sp
+\fBSome features:\fP
+.INDENT 0.0
+.IP \(bu 2
+spatially variable background and noise estimation
+.IP \(bu 2
+source extraction, with on\-the\-fly convolution and source deblending
+.IP \(bu 2
+circular and elliptical aperture photometry
+.IP \(bu 2
+fast: implemented in C with Python bindings via Cython
+.UNINDENT
+.sp
+\fBAdditional features not in Source Extractor:\fP
+.INDENT 0.0
+.IP \(bu 2
+Optimized matched filter for variable noise in source extraction.
+.IP \(bu 2
+Circular annulus and elliptical annulus aperture photometry functions.
+.IP \(bu 2
+Local background subtraction in shape consistent with aperture in
+aperture photometry functions.
+.IP \(bu 2
+Exact pixel overlap mode in all aperture photometry functions.
+.IP \(bu 2
+Masking of elliptical regions on images.
+.UNINDENT
+.SS SEP, SEP\-PJW, and Package Names
+.sp
+\fBsep\fP was originally released by Kyle Barbary, at
+kbarbary/sep \%<https://\:github\:.com/\:kbarbary/\:sep> (\fBsep<=1.2.1\fP). For a
+brief period, the package was maintained by Peter Watson, under the
+\fBsep\-pjw\fP package name, at
+PJ\-Watson/sep\-pjw \%<https://\:github\:.com/\:PJ-Watson/\:sep-pjw> and
+PyPI/sep\-pjw \%<https://\:pypi\:.org/\:project/\:sep-pjw/>
+(\fB1.3.0<=sep\-pjw<=1.3.8\fP). Both of these repositories will be archived,
+and future development will take place at
+sep\-developers/sep \%<https://\:github\:.com/\:sep-developers/\:sep>
+(\fBsep>=1.4.0\fP).
+Note that there may be some incompatibilities between \fBsep==1.2.1\fP and
+\fBsep==1.4.0\fP when using the C\-API directly \-\- the changes are documented
+here \%<>\&.
+.SH INSTALLATION
+.SS with conda
+.sp
+SEP can be installed with conda from the \fBconda\-forge\fP channel:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+conda install \-c conda\-forge sep
+.EE
+.UNINDENT
+.UNINDENT
+.SS with pip
+.sp
+SEP can also be installed with pip \%<https://\:pip\:.pypa\:.io>\&. After
+ensuring that numpy is installed, run
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+python \-m pip install sep
+.EE
+.UNINDENT
+.UNINDENT
+.sp
+If you get an error about permissions, you are probably using your
+system Python. In this case, I recommend using pip\(aqs \(dquser install\(dq \%<https://\:pip\:.pypa\:.io/\:en/\:latest/\:user_guide/#\:user-installs> option to
+install sep into your user directory
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+python \-m pip install \-\-user sep
+.EE
+.UNINDENT
+.UNINDENT
+.sp
+Do \fBnot\fP install \fBsep\fP or other third\-party Python packages using
+\fBsudo\fP unless you are fully aware of the risks.
+.SH USAGE GUIDE
+.SS Matched Filter (Convolution)
+.sp
+For source detection, SEP supports using a matched filter, which can
+give the optimal detection signal\-to\-noise for objects with some known
+shape. This is controlled using the \fBfilter_kernel\fP keyword in
+\fBsep.extract\fP \%<#\:sep\:.extract>\&. For example:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+import sep
+
+kernel = np.array([[1., 2., 3., 2., 1.],
+                   [2., 3., 5., 3., 2.],
+                   [3., 5., 8., 5., 3.],
+                   [2., 3., 5., 3., 2.],
+                   [1., 2., 3., 2., 1.]])
+objects = sep.extract(data, thresh, filter_kernel=kernel)
+.EE
+.UNINDENT
+.UNINDENT
+.sp
+If \fBfilter_kernel\fP is not specified, a default 3\-by\-3 kernel
+is used. To disable filtering entirely, specify \fBfilter_kernel=None\fP\&.
+.sp
+What array should be used for \fBfilter_kernel\fP? It should be
+approximately the shape of the objects you are trying to detect. For
+example, to optimize for the detection of point sources,
+\fBfilter_kernel\fP should be set to shape of the point spread function
+(PSF) in the data. For galaxy detection, a larger kernel could be
+used. In practice, anything that is roughly the shape of the desired
+object works well since the main goal is to negate the effects of
+background noise, and a reasonable estimate is good enough.
+.SS Correct treatment in the presence of variable noise
+.sp
+In Source Extractor, the matched filter is implemented assuming there
+is equal noise across all pixels in the kernel. The matched filter
+then simplifies to a convolution of the data with the kernel. In
+\fBsep.extract\fP \%<#\:sep\:.extract>, this is also the behavior when there is constant noise
+(when \fBerr\fP is not specified).
+.sp
+In the presence of independent noise on each pixel, SEP uses a full
+matched filter implementation that correctly accounts for the noise in
+each pixel. This is not available in Source Extractor. Some benefits
+of this method are that detector sensitivity can be taken into account
+and edge effects are handled gracefully. For example, suppose we have
+an image with noise that is higher in one region than another. This
+can often occur when coadding images:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+# create a small image with higher noise in the upper left
+n = 16
+X, Y = np.meshgrid(np.arange(n), np.arange(n))
+mask = Y > X
+error = np.ones((n, n))
+error[mask] = 4.0
+data = error * np.random.normal(size=(n, n))
+
+# add source to middle of data
+source = 3.0 * np.array([[1., 2., 1.],
+                         [2., 4., 2.],
+                         [1., 2., 1.]])
+m = n // 2 \- 1
+data[m:m+3, m:m+3] += source
+
+plt.imshow(data, interpolation=\(aqnearest\(aq, origin=\(aqlower\(aq, cmap=\(aqbone\(aq)
+.EE
+.UNINDENT
+.UNINDENT
+[image]
+.sp
+Specifying \fBfilter_type=\(aqconv\(aq\fP will use simple convolution, matching the
+behavior of Source Extractor. The object is not detected:
+.sp
+.EX
+>>> objects = sep.extract(data, 3.0, err=error, filter_type=\(aqconv\(aq)
+>>> len(objects)
+0
+.EE
+.sp
+Setting \fBfilter_type=\(aqmatched\(aq\fP (the default)
+correctly deweights the noisier pixels around the source and detects
+the object:
+.sp
+.EX
+>>> objects = sep.extract(data, 3.0, err=error, filter_type=\(aqmatched\(aq)
+>>> len(objects)
+1
+.EE
+.SS Derivation of the matched filter formula
+.sp
+Assume that we have an image containing a single point source. This
+produces a signal with PSF S_i and noise N_i at each pixel
+indexed by i\&. Then the measured image data D_i (i.e. our
+pixel values) is given by:
+.sp
+.ce
+D_i = S_i + N_i
+
+
+.ce 0
+.sp
+Then we want to apply a linear transformation T_i which gives an
+output Y:
+.sp
+.ce
+Y = \esum_i T_i D_i = T^T D
+
+
+.ce 0
+.sp
+We use matrix notation from here on and drop the explicit sums. Our
+objective is to find the transformation T_i which maximizes the
+signal\-to\-noise ratio SNR\&.
+.sp
+.ce
+SNR^2 = \efrac{(T^T S)^2}{E[(T^T N)^2]}
+
+
+.ce 0
+.sp
+We can expand the denominator as:
+.sp
+.ce
+E[(T^T N)^2] = E[(T^T N)(N^T T)] = T^T \ecdot E[N N^T] \ecdot T
+= T^T C T
+
+
+.ce 0
+.sp
+Where C_{ik} is the covariance of the noise between pixels
+i and k\&. Now using the Cauchy\-Schwarz inequality on the
+numerator:
+.sp
+.ce
+(T^T S)^2 = (T^T C^{1/2} C^{\-1/2} S)^2 \ele (T^T C^{1/2})^2
+(C^{\-1/2} S)^2 = (T^T C T) (S^T C^{\-1} S)
+
+
+.ce 0
+.sp
+since C^T = C\&. The signal\-to\-noise ratio is therefore bounded by:
+.sp
+.ce
+&SNR^2 \ele \efrac{(T^T C T)(S^T C^{\-1} S)}{(T^T C T)} \e\e
+&SNR^2 \ele S^T C^{\-1} S
+
+
+.ce 0
+.sp
+Choosing T = \ealpha C^{\-1} S where \ealpha is an arbitrary
+normalization constant, we get equality. Hence this choise of T is
+the optimal linear tranformation. We normalize this linear transformation
+so that if there is no signal and only noise, we get an expected
+signal\-to\-noise ratio of 1. With this definition, the output SNR
+represents the number of standard deviations above the background. This
+gives:
+.sp
+.ce
+&E[(T^T N)^2] = T^T C T = \ealpha^2 S^T C^{\-1} C C^{\-1} S = \ealpha^2
+S^T C^{\-1} S = 1 \e\e
+&\ealpha = \efrac{1}{\esqrt{S^T C^{\-1} S}}
+
+
+.ce 0
+.sp
+Putting everything together, our normalized linear transformation is:
+.sp
+.ce
+T = \efrac{C^{\-1} S}{\esqrt{S^T C^{\-1} S}}
+
+
+.ce 0
+.sp
+And the optimal signal\-to\-noise is given in terms of the known variables
+as:
+.sp
+.ce
+SNR = \efrac{S^T C^{\-1} D}{\esqrt{S^T C^{\-1} S}}
+
+
+.ce 0
+.SS Aperture photometry
+.sp
+There are four aperture functions available:
+.TS
+box center;
+l|l.
+T{
+Function
+T}	T{
+Sums data within...
+T}
+_
+T{
+\fBsep.sum_circle\fP \%<#\:sep\:.sum_circle>
+T}	T{
+circle(s)
+T}
+_
+T{
+\fBsep.sum_circann\fP \%<#\:sep\:.sum_circann>
+T}	T{
+circular annulus/annuli
+T}
+_
+T{
+\fBsep.sum_ellipse\fP \%<#\:sep\:.sum_ellipse>
+T}	T{
+ellipse(s)
+T}
+_
+T{
+\fBsep.sum_ellipann\fP \%<#\:sep\:.sum_ellipann>
+T}	T{
+elliptical annulus/annuli
+T}
+.TE
+.sp
+The follow examples demonstrate options for circular aperture
+photometry. The other functions behave similarly.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+# sum flux in circles of radius=3.0
+flux, fluxerr, flag = sep.sum_circle(data, objs[\(aqx\(aq], objs[\(aqy\(aq], 3.0)
+
+# x, y and r can be arrays and obey numpy broadcasting rules.
+# Here, r is an array instead of a single number:
+flux, fluxerr, flag = sep.sum_circle(data, objs[\(aqx\(aq], objs[\(aqy\(aq],
+                                     3.0 * np.ones(len(objs)))
+
+# use a different subpixel sampling (default is 5; 0 means \(dqexact\(dq)
+flux, fluxerr, flag = sep.sum_circle(data, objs[\(aqx\(aq], objs[\(aqy\(aq], 3.0,
+                                     subpix=0)
+.EE
+.UNINDENT
+.UNINDENT
+.sp
+\fBError calculation\fP
+.sp
+In the default modes illustrated above, the uncertainty \fBfluxerr\fP is
+not calculated and values of 0 are simply returned. The uncertainty can be
+flexibly and efficiently calculated, depending on the characteristics
+of your data. The presence of an \fBerr\fP or \fBvar\fP keyword indicates
+a per\-pixel noise, while the presense of a \fBgain\fP keyword indicates
+that the Poisson uncertainty on the total sum should be included. Some
+illustrative examples:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+# Specify a per\-pixel \(dqbackground\(dq error and a gain. This is suitable
+# when the data have been background subtracted.
+flux, fluxerr, flag = sep.sum_circle(data, objs[\(aqx\(aq], objs[\(aqy\(aq], 3.0,
+                                     err=bkg.globalrms, gain=1.0)
+
+# Variance can be passed instead of error, with identical results.
+flux, fluxerr, flag = sep.sum_circle(data, objs[\(aqx\(aq], objs[\(aqy\(aq], 3.0,
+                                     var=bkg.globalrms**2, gain=1.0)
+
+# Error or variance can be arrays, indicating that the background error
+# is variable.
+bkgrms = bkg.rms()  # array, same shape as data
+flux, fluxerr, flag = sep.sum_circle(data, objs[\(aqx\(aq], objs[\(aqy\(aq], 3.0,
+                                     err=bkgrms, gain=1.0)
+
+# If your uncertainty array already includes Poisson noise from the object,
+# leave gain as None (default):
+flux, fluxerr, flag = sep.sum_circle(data, objs[\(aqx\(aq], objs[\(aqy\(aq], 3.0,
+                                     err=error_array)
+
+# If your data represent raw counts (it is not background\-subtracted),
+# set only gain to get the poisson error:
+flux, fluxerr, flag = sep.sum_circle(data, objs[\(aqx\(aq], objs[\(aqy\(aq], 3.0,
+                                     gain=1.0)
+.EE
+.UNINDENT
+.UNINDENT
+.sp
+The error is calculated as
+.sp
+.ce
+\esigma_F^2 = \esum_i \esigma_i^2 + F/g
+.ce 0
+.sp
+where the sum is over pixels in the aperture, \esigma_i is the
+noise in each pixel, F is the sum in the aperture and
+g is the gain. The last term is not added if \fBgain\fP is
+\fINone\fP\&.
+.sp
+\fBMasking\fP
+.sp
+Apply a mask (same shape as data). Pixels where the mask is True are
+\(dqcorrected\(dq to the average value within the aperture.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+flux, fluxerr, flag = sep.sum_circle(data, objs[\(aqx\(aq], objs[\(aqy\(aq], 3.0,
+                                     mask=mask)
+.EE
+.UNINDENT
+.UNINDENT
+.sp
+\fBLocal background subtraction\fP
+.sp
+The \fBsum_circle\fP \%<#\:sep\:.sum_circle> and \fBsum_ellipse\fP \%<#\:sep\:.sum_ellipse> functions have options
+for performing local background subtraction. For example, to subtract the
+background calculated in an annulus between 6 and 8 pixel radius:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+flux, fluxerr, flag = sep.sum_circle(data, objs[\(aqx\(aq], objs[\(aqy\(aq], 3.0,
+                                     mask=mask, bkgann=(6., 8.))
+.EE
+.UNINDENT
+.UNINDENT
+.sp
+Pixels in the background annulus are not subsampled and any masked
+pixels in the annulus are completely igored rather than corrected.
+The inner and outer radii can also be arrays. The error in the background
+is included in the reported error.
+.SS Equivalent of FLUX_AUTO (e.g., MAG_AUTO) in Source Extractor
+.sp
+This is a two\-step process. First we calculate the Kron radius for each
+object, then we perform elliptical aperture photometry within that radius:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+kronrad, krflag = sep.kron_radius(data, x, y, a, b, theta, 6.0)
+flux, fluxerr, flag = sep.sum_ellipse(data, x, y, a, b, theta, 2.5*kronrad,
+                                      subpix=1)
+flag |= krflag  # combine flags into \(aqflag\(aq
+.EE
+.UNINDENT
+.UNINDENT
+.sp
+This specific example is the equilvalent of setting \fBPHOT_AUTOPARAMS
+2.5, 0.0\fP in Source Extractor (note the 2.5 in the argument to
+\fBsep.sum_ellipse\fP). The second Source Extractor parameter is a
+minimum diameter. To replicate Source Extractor behavior for non\-zero
+values of the minimum diameter, one would put in logic to use circular
+aperture photometry if the Kron radius is too small. For example:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+r_min = 1.75  # minimum diameter = 3.5
+use_circle = kronrad * np.sqrt(a * b) < r_min
+cflux, cfluxerr, cflag = sep.sum_circle(data, x[use_circle], y[use_circle],
+                                        r_min, subpix=1)
+flux[use_circle] = cflux
+fluxerr[use_circle] = cfluxerr
+flag[use_circle] = cflag
+.EE
+.UNINDENT
+.UNINDENT
+.sp
+\fBWarning:\fP
+.INDENT 0.0
+.INDENT 3.5
+Caution should be used when calculating Kron radii in crowded fields.
+In almost all cases, one would want to pass in a segmentation map to
+mask out nearby  objects, as described below in
+Segmentation\-masked image measurements\&.
+.UNINDENT
+.UNINDENT
+.SS Equivalent of FLUX_RADIUS in Source Extractor
+.sp
+In Source Extractor, the FLUX_RADIUS parameter gives the radius of a
+circle enclosing a desired fraction of the total flux. For example,
+with the setting \fBPHOT_FLUXFRAC 0.5\fP, FLUX_RADIUS will give the
+radius of a circle containing half the \(dqtotal flux\(dq of the object. For
+the definition of \(dqtotal flux\(dq, Source Extractor uses its measurement
+of FLUX_AUTO, which is taken through an elliptical aperture (see
+above). Thus, with the setting \fBPHOT_FLUXFRAC 1.0\fP, you would find
+the circle containing the same flux as whatever ellipse Source
+Extractor used for \fBFLUX_AUTO\fP\&.
+.sp
+Given a previous calculation of \fBflux\fP as above, calculate the
+radius for a flux fraction of 0.5:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+r, flag = sep.flux_radius(data, objs[\(aqx\(aq], objs[\(aqy\(aq], 6.*objs[\(aqa\(aq], 0.5,
+                          normflux=flux, subpix=5)
+.EE
+.UNINDENT
+.UNINDENT
+.sp
+And for multiple flux fractions:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+r, flag = sep.flux_radius(data, objs[\(aqx\(aq], objs[\(aqy\(aq], 6.*objs[\(aqa\(aq],
+                          [0.5, 0.6], normflux=flux, subpix=5)
+.EE
+.UNINDENT
+.UNINDENT
+.SS Equivalent of XWIN_IMAGE, YWIN_IMAGE in Source Extractor
+.sp
+Source Extractor\(aqs XWIN_IMAGE, YWIN_IMAGE parameters can be used for
+more accurate object centroids than the default X_IMAGE, Y_IMAGE.
+Here, the \fBwinpos\fP function provides this behavior.  To match Source
+Extractor exactly, the right \fBsig\fP parameter (giving a description
+of the effective width) must be used for each object.  Source
+Extractor uses \fB2.  / 2.35 * (half\-light radius)\fP where the
+half\-light radius is calculated using \fBflux_radius\fP with a fraction
+of 0.5 and a normalizing flux of \fBFLUX_AUTO\fP\&. The equivalent here is:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+sig = 2. / 2.35 * r  # r from sep.flux_radius() above, with fluxfrac = 0.5
+xwin, ywin, flag = sep.winpos(data, objs[\(aqx\(aq], objs[\(aqy\(aq], sig)
+.EE
+.UNINDENT
+.UNINDENT
+.SS Segmentation\-masked image measurements
+.sp
+SourceExtractor provides a mechanism for measuring the \(dqAUTO\(dq and
+\(dqFLUX_RADIUS\(dq parameters for a given object including a mask for
+neighboring sources. In addition to the mask, setting the SourceExtractor
+parameter \fBMASK_TYPE=CORRECT\fP further fills the masked pixels of a given
+source with \(dqgood\(dq pixel values reflected opposite of the masked pixels.
+The \fBSEP\fP photometry and measurement functions provide an option for
+simple masking without reflection or subtracting neighbor flux.
+.sp
+For example, using a segmentation array provided by \fBsep.extract\fP, we
+can compute the masked \fBflux_radius\fP that could otherwise be
+artificially large due to flux from nearby sources:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+# list of object id numbers that correspond to the segments
+seg_id = np.arange(1, len(objs)+1, dtype=np.int32)
+
+r, flag = sep.flux_radius(data, objs[\(aqx\(aq], objs[\(aqy\(aq], 6.*objs[\(aqa\(aq],
+                          0.5, seg_id=seg_id, seg=seg,
+                          normflux=flux, subpix=5)
+.EE
+.UNINDENT
+.UNINDENT
+.sp
+To enforce that a given measurement \fBonly\fP includes pixels within a
+segment, provide negative values in the \fBseg_id\fP list.  Otherwise the
+mask for a given object will be pixels with
+\fB(seg == 0) | (seg_id == id_i)\fP\&.
+.sp
+The following functions include the segmentation masking:
+\fBsum_circle\fP, \fBsum_circann\fP, \fBsum_ellipse\fP, \fBsum_ellipann\fP,
+\fBflux_radius\fP , and \fBkron_radius\fP (\fBwinpos\fP \fBcurrently does not\fP).
+.SS Masking image regions
+.sp
+Create a boolean array with elliptical regions set to True:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+mask = np.zeros(data.shape, dtype=np.bool)
+sep.mask_ellipse(mask, objs[\(aqx\(aq], objs[\(aqy\(aq], obs[\(aqa\(aq], objs[\(aqb\(aq],
+                 objs[\(aqtheta\(aq], r=3.)
+.EE
+.UNINDENT
+.UNINDENT
+.SS Changelog
+.SS Upgrading From kbarbary/sep
+.SS Changes to the C API
+.sp
+This page details cumulative changes to the C API between v1.2.1 and
+v1.4.0, or since this package was forked from
+kbarbary/sep \%<https://\:github\:.com/\:kbarbary/\:sep>\&. Almost all changes to
+the public API are to integer parameters, many of which have been changed
+from \fBint\fP to \fBint64_t\fP, to fix problems which may arise with
+extremely large arrays. The other change of note is to the \fBsep_image\fP
+struct, which enables the user to pass an existing segmentation map, and
+re\-extract all morphological and photometric quantities on a different
+image.
+.sp
+All changes here are transparent to users of the Python interface.
+.INDENT 0.0
+.TP
+.B struct sep_image 
+.INDENT 7.0
+.IP \(bu 2
+Three new parameters have been added:
+.INDENT 2.0
+.TP
+.B int64_t *segids 
+The unique ids in an existing segmentation map.
+.UNINDENT
+.INDENT 2.0
+.TP
+.B int64_t *idcounts 
+The number of occurrences of each unique id in an existing
+segmentation map.
+.UNINDENT
+.INDENT 2.0
+.TP
+.B int64_t numids 
+The total number of unique ids in an existing segmentation map.
+.UNINDENT
+.IP \(bu 2
+The type of \fBw\fP and \fBh\fP has changed from \fBint\fP to \fBint64_t\fP\&.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B struct sep_bkg 
+.INDENT 7.0
+.IP \(bu 2
+The type of the following parameters has changed from \fBint\fP to
+\fBint64_t\fP: \fBw\fP, \fBh\fP, \fBbw\fP, \fBbh\fP, \fBnx\fP, \fBny\fP, and \fBn\fP\&.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B struct sep_catalog 
+.INDENT 7.0
+.IP \(bu 2
+The type of the following parameters has changed from \fBint\fP to
+\fBint64_t\fP: \fBnpix\fP, \fBtnpix\fP, \fBxmin\fP, \fBxmax\fP, \fBymin\fP,
+\fBymax\fP, \fBxcpeak\fP, \fBycpeak\fP, \fBxpeak\fP, \fBypeak\fP, \fBpix\fP, and
+\fBobjectspix\fP\&.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B int sep_background() 
+.INDENT 7.0
+.IP \(bu 2
+The type of the following parameters has changed from \fBint\fP to
+\fBint64_t\fP: \fBbw\fP, \fBbh\fP, \fBfw\fP, and \fBfh\fP\&.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B float sep_bkg_pix() 
+.INDENT 7.0
+.IP \(bu 2
+The type of \fBx\fP and \fBy\fP has changed from \fBint\fP to \fBint64_t\fP\&.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B int sep_bkg_line() 
+.INDENT 7.0
+.IP \(bu 2
+The type of \fBy\fP has changed from \fBint\fP to \fBint64_t\fP\&.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B int sep_bkg_subline() 
+.INDENT 7.0
+.IP \(bu 2
+The type of \fBy\fP has changed from \fBint\fP to \fBint64_t\fP\&.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B int sep_bkg_rmsline() 
+.INDENT 7.0
+.IP \(bu 2
+The type of \fBy\fP has changed from \fBint\fP to \fBint64_t\fP\&.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B int sep_extract() 
+.INDENT 7.0
+.IP \(bu 2
+The type of \fBconvw\fP and \fBconvh\fP has changed from \fBint\fP to
+\fBint64_t\fP\&.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B int sep_sum_circann_multi() 
+.INDENT 7.0
+.IP \(bu 2
+The type of \fBn\fP has changed from \fBint\fP to \fBint64_t\fP\&.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B int sep_flux_radius() 
+.INDENT 7.0
+.IP \(bu 2
+The type of \fBn\fP has changed from \fBint\fP to \fBint64_t\fP\&.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B void sep_set_ellipse() 
+.INDENT 7.0
+.IP \(bu 2
+The type of \fBw\fP and \fBh\fP has changed from \fBint\fP to \fBint64_t\fP\&.
+.UNINDENT
+.UNINDENT
+.SS Full Changelog
+.SS New Changelog
+.sp
+\fBFull Changelog\fP
+.SS v1.3.7 (8 November 2024)
+.INDENT 0.0
+.IP \(bu 2
+Test against Python 3.13.
+.IP \(bu 2
+Update the Makefile to support Semantic Versioning from git tags.
+.IP \(bu 2
+Update the C libraries to allow for passing the version as a compiler
+flag.
+.IP \(bu 2
+Update \fBsetup.py\fP to pass the SCM version to the Cython compiler.
+.IP \(bu 2
+Include C tests in the Tox suite (for linux and macos only).
+.IP \(bu 2
+Document any and all changes to the C API since forking.
+.IP \(bu 2
+Restructure changelog documentation.
+.UNINDENT
+.SS v1.3.6 (7 October 2024)
+.INDENT 0.0
+.IP \(bu 2
+Fix wrong int type in Windows
+(#2 \%<https://\:github\:.com/\:PJ-Watson/\:sep-pjw/\:issues/2>, thanks to
+@acenko for pointing this out).
+.IP \(bu 2
+Update tests to run on multiple operating systems.
+.UNINDENT
+.SS v1.3.5 (12 June 2024)
+.INDENT 0.0
+.IP \(bu 2
+Small fixes and updates to ensure compatibility with NumPy 2.0.
+.UNINDENT
+.SS v1.3.4 (21 February 2024)
+.INDENT 0.0
+.IP \(bu 2
+Include .clang\-format as a pre\-commit hook, to ensure consistent code
+style (improved readability, easier maintenance).
+.IP \(bu 2
+Fixed \fBmake test\fP to account for the changes in
+v1.3.0 \%<https://\:github\:.com/\:PJ-Watson/\:sep-pjw/\:releases/\:tag/\:v1\:.3.0>\&.
+.IP \(bu 2
+All header files include the correct definitions.
+.UNINDENT
+.SS v1.3.3 (7 February 2024)
+.INDENT 0.0
+.IP \(bu 2
+Add changelog to documentation.
+.IP \(bu 2
+Add tests for re\-running with seg map.
+.IP \(bu 2
+Fix array boundary bugs when re\-running with seg map.
+.IP \(bu 2
+Fix bug with precision loss when calculating threshold.
+.IP \(bu 2
+Improve error handling when object pixels exceed pix stack.
+.UNINDENT
+.SS v1.3.2 (5 February 2024)
+.INDENT 0.0
+.IP \(bu 2
+Move documentation to new location, fix package names and imports.
+.IP \(bu 2
+Add wheels for Python 3.11/3.12.
+.IP \(bu 2
+Fix C compilation errors on windows (VLAs).
+.IP \(bu 2
+Publish updated version to PyPI under new name.
+.UNINDENT
+.SS v1.3.1 (31 January 2024)
+.INDENT 0.0
+.IP \(bu 2
+Formatting changes (follow black \%<https://\:github\:.com/\:psf/\:black>
+formatting style).
+.IP \(bu 2
+Fix \fBbench.py\fP and \fBtest.py\fP, removing deprecated functions.
+.IP \(bu 2
+Move metadata into \fBpyproject.toml\fP\&.
+.IP \(bu 2
+Add pre\-commit hooks for code and docstring validation.
+.IP \(bu 2
+Change to dynamic versioning (git tag/commit based).
+.UNINDENT
+.SS v1.3.0 (1 December 2023)
+.INDENT 0.0
+.IP \(bu 2
+The \fBsegmentation_map\fP argument of \fBsep.extract()\fP will now accept
+either an array or boolean. If an existing segmentation map is passed,
+the object detection stage is skipped, and sources will be individually
+analysed according to the provided map. This change is
+backwards\-compatible with respect to the Python module.
+.sp
+Please note that as no deblending is performed, the calculated
+thresholds (and any dependent parameters) may not be the same as
+originally derived.
+.IP \(bu 2
+Use 64\-bit integers throughout, to fix memory addressing with large
+arrays
+(#122 \%<https://\:github\:.com/\:kbarbary/\:sep/\:issues/\:122>,
+inspired by Gabe Brammer\(aqs fork \%<https://\:github\:.com/\:gbrammer/\:sep>
+with additional fixes).
+.UNINDENT
+.SS Original Changelog
+.sp
+This is the original changelog from kbarbary/sep \%<https://\:github\:.com/\:kbarbary/\:sep>,
+copied here for posterity.
+.SS v1.2.1 (1 June 2022)
+.INDENT 0.0
+.IP \(bu 2
+Same as v1.2.0 but with new wheels for Python 3.10 and AArch64.
+.UNINDENT
+.SS v1.2.0 (1 May 2021)
+.INDENT 0.0
+.IP \(bu 2
+Changed \fBnumpy.float\fP and \fBnumpy.int\fP types for deprecations in numpy 1.20 (#96).
+.IP \(bu 2
+Make it possible to safely invoke C library from multiple threads on
+independent inputs.
+.sp
+Global config functions such as \fBset_sub_object_limit()\fP
+and \fBset_extract_pixstack()\fP still configure global params
+(once for all threads), while other functions will retain their data
+in thread\-local storages, so they can be invoked from multiple threads as
+long as they work on independent structures.
+.sp
+Library compilation will now require a C11 compatible compiler, which should
+be nowadays available on all supported platforms.
+.IP \(bu 2
+Mark some pointer parameters with \fBconst *\fP\&. This is a backward\-compatible
+change, but makes it easier to extract constants that can be safely shared
+between multiple threads and/or invocations.
+.UNINDENT
+.SS v1.1.1 (6 January 2021)
+.INDENT 0.0
+.IP \(bu 2
+Same as v1.1.0 but with wheels built and uploaded to PyPI. Please report if you
+have problems with wheels.
+.UNINDENT
+.SS v1.1.0 (3 January 2021)
+.INDENT 0.0
+.IP \(bu 2
+Add segmentation masking to the photometry and kron/auto functions (#69).
+.IP \(bu 2
+Add functions \fBsep.set_sub_object_limit(limit)\fP and \fBsep.get_sub_object_limit()\fP
+for modifying and retrieving the sub\-object deblending limit. Previously this
+parameter was hard\-coded to 1024. 1024 is now the default value.
+.IP \(bu 2
+This and future versions are now Python 3 only. Python 2 is no longer
+supported.
+.IP \(bu 2
+Modernize setup.py with pyproject.toml
+.UNINDENT
+.SS v1.0.3 (12 June 2018)
+.INDENT 0.0
+.IP \(bu 2
+Fix double\-free bug in sep_extract() arising when an error status occurs
+and convolution is on. (#56)
+.IP \(bu 2
+Work around numpy dependency in setup. (#59)
+.UNINDENT
+.SS v1.0.2 (19 September 2017)
+.INDENT 0.0
+.IP \(bu 2
+Fix makefile so that \fBmake install\fP works on OS X for the C library.
+Python module and C code are unchanged.
+.UNINDENT
+.SS v1.0.1 (10 July 2017)
+.INDENT 0.0
+.IP \(bu 2
+Fix bug when using masked filter and noise array where objects with member
+pixels at end of image (maximum y coordinate) were erroneously missed.
+.UNINDENT
+.SS v1.0.0 (30 September 2016)
+.INDENT 0.0
+.IP \(bu 2
+Remove features deprecated in previous versions.
+.IP \(bu 2
+Fix bug in Background.rms() giving nonsensical results.
+.UNINDENT
+.SS v0.6.0 (25 August 2016)
+.INDENT 0.0
+.IP \(bu 2
+New, more coherent C API. This change should be transparent to users
+of the Python module.
+.IP \(bu 2
+Add variance uncertainty parameters \fBerrx2\fP, \fBerry2\fP and \fBerrxy\fP to
+output of \fBsep.extract()\fP\&.
+.IP \(bu 2
+Add a minimum sigma to \fBsep.winpos()\fP to match Source Extractor
+behavior.
+.IP \(bu 2
+Fix use of boolean masks in \fBsep.kron_radius()\fP\&. Formerly, using a
+boolean mask resulted in nonsense results.
+.IP \(bu 2
+Fix segfault in \fBBackground.back()\fP when box size is same as image size.
+.IP \(bu 2
+Fix bug in creating long error messages on Python 3.
+.UNINDENT
+.SS v0.5.2 (4 January 2016)
+.sp
+Adds OS X and Windows support.
+.SS v0.5.1 (30 November 2015)
+.sp
+Bugfix release for problem in setup.py in packaged code.
+.SS v0.5.0 (22 November 2015)
+.INDENT 0.0
+.IP \(bu 2
+\fBsep.extract()\fP now uses a more correct matched filter algorithm in the
+presence of a noise array, rather than simple convolution. The \fBconv\fP
+keyword has been changed to \fBfilter_kernel\fP to reflect this, and a
+\fBfilter_type\fP keyword has been added to allow selecting the old behavior
+of simple convolution.
+.IP \(bu 2
+\fBsep.extract()\fP now accepts a \fBmask\fP keyword argument.
+.IP \(bu 2
+\fBsep.extract()\fP can now return a segmentation map.
+.IP \(bu 2
+Special methods added to allow \fBdata \- bkg\fP and \fBnp.array(bkg)\fP where
+\fBbkg\fP is a Background object.
+.UNINDENT
+.SS v0.4.1 (10 November 2015)
+.sp
+Bugfix release, fixing error estimate in \fBsep.sum_circle\fP and
+\fBsep.sum_ellipse\fP when \fBbkgann\fP keyword argument is given.
+.SS v0.4.0 (1 June 2015)
+.INDENT 0.0
+.IP \(bu 2
+New \fBsep.winpos()\fP function.
+.UNINDENT
+.SS v0.3.0 (23 February 2015)
+.INDENT 0.0
+.IP \(bu 2
+New \fBsep.flux_radius()\fP function.
+.UNINDENT
+.SS v0.2.0 (13 December 2014)
+.INDENT 0.0
+.IP \(bu 2
+\fB[breaking change]\fP \fBtheta\fP field in \fBextract()\fP output is now in
+radians rather than degrees, for compatibility with new ellipse
+aperture functions.
+.IP \(bu 2
+\fB[deprecation]\fP Change \fBmask_ellipse()\fP parameters from ellipse
+coefficients to ellipse axes and position angle, to match aperture
+functions. (Old behavior still works as well.)
+.IP \(bu 2
+\fB[deprecation]\fP Change \fBapercirc()\fP to \fBsum_circle()\fP, to match
+new aperture functions. (Old name, \fBapercirc()\fP, still works.)
+.IP \(bu 2
+Add \fBsum_circann()\fP, \fBsum_ellipse()\fP, \fBsum_ellipann()\fP,
+\fBkron_radius()\fP, \fBellipse_coeffs()\fP, \fBellipse_axes()\fP functions.
+.IP \(bu 2
+Exact mode aperture photometery in all functions, with \fBsubpix=0\fP\&.
+.IP \(bu 2
+Enable variable thresholding in \fBsep.extract\fP\&. [#11]
+.IP \(bu 2
+Fix bug in background masking. This bug impacted masking in all
+functions that used masking. Also affected C library.
+.IP \(bu 2
+More detail in error messages coming from within the C library.
+More helpful error message for non\-native byteorder arrays.
+.IP \(bu 2
+Add ability to change pixel stack size used in \fBextract()\fP, with
+\fBset_extract_pixstack()\fP function
+.UNINDENT
+.SS v0.1.0 (11 August 2014)
+.sp
+This is the first official release.
+.SS Reference/API
+.sp
+\fBBackground estimation & source detection\fP
+.TS
+box center;
+l|l.
+T{
+\fBsep.Background\fP
+T}	T{
+T}
+_
+T{
+\fBsep.extract\fP \%<#\:sep\:.extract>(data, thresh[, err, mask, ...])
+T}	T{
+Extract sources from an image.
+T}
+.TE
+.SS sep.Background
+.SS sep.extract
+.INDENT 0.0
+.TP
+.B sep.extract(data, thresh, err=None, mask=None, minarea=5, filter_kernel=default_kernel, filter_type=\(aqmatched\(aq, deblend_nthresh=32, deblend_cont=0.005, clean=True, clean_param=1.0, segmentation_map=False)
+Extract sources from an image.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.TP
+\fBdata\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+Data array (2\-d).
+.TP
+\fBthresh\fP (float)
+Threshold pixel value for detection. If an \fBerr\fP or \fBvar\fP array
+is not given, this is interpreted as an absolute threshold. If \fBerr\fP
+or \fBvar\fP is given, this is interpreted as a relative threshold: the
+absolute threshold at pixel (j, i) will be \fBthresh * err[j, i]\fP or
+\fBthresh * sqrt(var[j, i])\fP\&.
+.TP
+\fBerr, var\fP (float or \fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>, optional)
+Error \fIor\fP variance (specify at most one). This can be used to
+specify a pixel\-by\-pixel detection threshold; see \(dqthresh\(dq argument.
+.TP
+\fBgain\fP (float, optional)
+Conversion factor between data array units and poisson counts. This
+does not affect detection; it is used only in calculating Poisson
+noise contribution to uncertainty parameters such as \fBerrx2\fP\&. If
+not given, no Poisson noise will be added.
+.TP
+\fBmask\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>, optional)
+Mask array. \fBTrue\fP values, or numeric values greater than
+\fBmaskthresh\fP, are considered masked. Masking a pixel is equivalent
+to setting data to zero and noise (if present) to infinity, and occurs
+\fIbefore\fP filtering.
+.TP
+\fBmaskthresh\fP (float, optional)
+Threshold for a pixel to be masked. Default is \fB0.0\fP\&.
+.TP
+\fBminarea\fP (int, optional)
+Minimum number of pixels required for an object. Default is 5.
+.TP
+\fBfilter_kernel\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray> or None, optional)
+Filter kernel used for on\-the\-fly filtering (used to
+enhance detection). Default is a 3x3 array:
+[[1,2,1], [2,4,2], [1,2,1]]. Set to \fBNone\fP to skip
+convolution.
+.TP
+\fBfilter_type\fP ({\(aqmatched\(aq, \(aqconv\(aq}, optional)
+Filter treatment. This affects filtering behavior when a noise
+array is supplied. \fB\(aqmatched\(aq\fP (default) accounts for
+pixel\-to\-pixel noise in the filter kernel. \fB\(aqconv\(aq\fP is
+simple convolution of the data array, ignoring pixel\-to\-pixel
+noise across the kernel.  \fB\(aqmatched\(aq\fP should yield better
+detection of faint sources in areas of rapidly varying noise
+(such as found in coadded images made from semi\-overlapping
+exposures).  The two options are equivalent when noise is
+constant.
+.TP
+\fBdeblend_nthresh\fP (int, optional)
+Number of thresholds used for object deblending. Default is 32.
+.TP
+\fBdeblend_cont\fP (float, optional)
+Minimum contrast ratio used for object deblending. Default is 0.005.
+To entirely disable deblending, set to 1.0.
+.TP
+\fBclean\fP (bool, optional)
+Perform cleaning? Default is True.
+.TP
+\fBclean_param\fP (float, optional)
+Cleaning parameter (see SExtractor manual). Default is 1.0.
+.TP
+\fBsegmentation_map\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray> or bool, optional)
+If \fBTrue\fP, also return a \(dqsegmentation map\(dq giving the member
+pixels of each object. Default is False.
+.sp
+\fINew in v1.3.0\fP:
+An existing segmentation map can also be supplied in
+the form of an \fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>\&. If this is the case, then the
+object detection stage is skipped, and the objects in the
+segmentation map are analysed and extracted.
+.UNINDENT
+.TP
+.B Returns
+.INDENT 7.0
+.TP
+\fBobjects\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+Extracted object parameters (structured array). Available fields are:
+.INDENT 7.0
+.IP \(bu 2
+\fBthresh\fP (float) Threshold at object location.
+.IP \(bu 2
+\fBnpix\fP (int) Number of pixels belonging to the object.
+.IP \(bu 2
+\fBtnpix\fP (int) Number of pixels above threshold (unconvolved data).
+.IP \(bu 2
+\fBxmin\fP, \fBxmax\fP (int) Minimum, maximum x coordinates of pixels.
+.IP \(bu 2
+\fBymin\fP, \fBymax\fP (int) Minimum, maximum y coordinates of pixels.
+.IP \(bu 2
+\fBx\fP, \fBy\fP (float) object barycenter (first moments).
+.IP \(bu 2
+\fBx2\fP, \fBy2\fP, \fBxy\fP (float) Second moments.
+.IP \(bu 2
+\fBerrx2\fP, \fBerry2\fP, \fBerrxy\fP (float) Second moment errors.
+Note that these will be zero if error is not given.
+.IP \(bu 2
+\fBa\fP, \fBb\fP, \fBtheta\fP (float) Ellipse parameters, scaled as
+described by Section 8.4.2 in \(dqThe Source Extractor Guide\(dq or
+Section 10.1.5\-6 of v2.13 of SExtractor\(aqs User Manual.
+.IP \(bu 2
+\fBcxx\fP, \fBcyy\fP, \fBcxy\fP (float) Alternative ellipse parameters.
+.IP \(bu 2
+\fBcflux\fP (float) Sum of member pixels in convolved data.
+.IP \(bu 2
+\fBflux\fP (float) Sum of member pixels in unconvolved data.
+.IP \(bu 2
+\fBcpeak\fP (float) Peak value in convolved data.
+.IP \(bu 2
+\fBpeak\fP (float) Peak value in unconvolved data.
+.IP \(bu 2
+\fBxcpeak\fP, \fBycpeak\fP (int) Coordinate of convolved peak pixel.
+.IP \(bu 2
+\fBxpeak\fP, \fBypeak\fP (int) Coordinate of unconvolved peak pixel.
+.IP \(bu 2
+\fBflag\fP (int) Extraction flags.
+.UNINDENT
+.TP
+\fBsegmap\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>, optional)
+Array of integers with same shape as data. Pixels not belonging to
+any object have value 0. All pixels belonging to the \fBi\fP\-th object
+(e.g., \fBobjects[i]\fP) have value \fBi+1\fP\&. Only returned if
+\fBsegmentation_map = True | ~numpy.ndarray\fP\&.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+\fBAperture photometry\fP
+.TS
+box center;
+l|l.
+T{
+\fBsep.sum_circle\fP \%<#\:sep\:.sum_circle>(data, x, y, r[, err, var, ...])
+T}	T{
+Sum data in circular aperture(s).
+T}
+_
+T{
+\fBsep.sum_circann\fP \%<#\:sep\:.sum_circann>(data, x, y, rin, rout[, ...])
+T}	T{
+Sum data in circular annular aperture(s).
+T}
+_
+T{
+\fBsep.sum_ellipse\fP \%<#\:sep\:.sum_ellipse>(data, x, y, a, b, theta, r)
+T}	T{
+Sum data in elliptical aperture(s).
+T}
+_
+T{
+\fBsep.sum_ellipann\fP \%<#\:sep\:.sum_ellipann>(data, x, y, a, b, theta, ...)
+T}	T{
+Sum data in elliptical annular aperture(s).
+T}
+.TE
+.SS sep.sum_circle
+.INDENT 0.0
+.TP
+.B sep.sum_circle(data, x, y, r, err=None, var=None, mask=None, maskthresh=0.0, segmap=None, seg_id=None, bkgann=None, gain=None, subpix=5)
+Sum data in circular aperture(s).
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.TP
+\fBdata\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+2\-d array to be summed.
+.TP
+\fBx, y, r\fP (array_like)
+Center coordinates and radius (radii) of aperture(s).
+\fBx\fP corresponds to the second (\(dqfast\(dq) axis of the input array
+and \fBy\fP corresponds to the first (\(dqslow\(dq) axis.
+\fBx, y = (0.0, 0.0)\fP corresponds to the center of the first
+element of the array. These inputs obey numpy broadcasting rules.
+.TP
+\fBerr, var\fP (float or \fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+Error \fIor\fP variance (specify at most one).
+.TP
+\fBmask\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>, optional)
+Mask array. If supplied, a given pixel is masked if its value
+is greater than \fBmaskthresh\fP\&.
+.TP
+\fBmaskthresh\fP (float, optional)
+Threshold for a pixel to be masked. Default is \fB0.0\fP\&.
+.TP
+\fBsegmap\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>, optional)
+Segmentation image with dimensions of \fBdata\fP and dtype \fBnp.int32\fP\&.
+This is an optional input and corresponds to the segmentation map
+output by \fBextract\fP \%<#\:sep\:.extract>\&.
+.TP
+\fBseg_id\fP (array_like, optional)
+Array of segmentation ids used to mask additional pixels in the image.
+Dimensions correspond to the dimensions of \fBx\fP and \fBy\fP\&. The
+behavior differs depending on whether \fBseg_id\fP is negative or
+positive. If \fBseg_id\fP is positive, all pixels belonging to other
+objects are masked. (Pixel \fBj, i\fP is masked if \fBseg[j, i] != seg_id
+and seg[j, i] != 0\fP). If \fBseg_id\fP is negative, all pixels other
+than those belonging to the object of interest are masked. (Pixel \fBj,
+i\fP is masked if \fBseg[j, i] != \-seg_id\fP).  NB: must be included if
+\fBsegmap\fP is provided.
+.TP
+\fBbkgann\fP (tuple, optional)
+Length 2 tuple giving the inner and outer radius of a
+\(dqbackground annulus\(dq. If supplied, the background is estimated
+by averaging unmasked pixels in this annulus. If supplied, the inner
+and outer radii obey numpy broadcasting rules along with \fBx\fP,
+\fBy\fP and \fBr\fP\&.
+.TP
+\fBgain\fP (float, optional)
+Conversion factor between data array units and poisson counts,
+used in calculating poisson noise in aperture sum. If \fBNone\fP
+(default), do not add poisson noise.
+.TP
+\fBsubpix\fP (int, optional)
+Subpixel sampling factor. If 0, exact overlap is calculated.
+Default is 5.
+.UNINDENT
+.TP
+.B Returns
+.INDENT 7.0
+.TP
+\fBsum\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+The sum of the data array within the aperture.
+.TP
+\fBsumerr\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+Error on the sum.
+.TP
+\fBflags\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+Integer giving flags. (0 if no flags set.)
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS sep.sum_circann
+.INDENT 0.0
+.TP
+.B sep.sum_circann(data, x, y, rin, rout, err=None, var=None, mask=None, maskthresh=0.0, seg_id=None, segmap=None, gain=None, subpix=5)
+Sum data in circular annular aperture(s).
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.TP
+\fBdata\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+2\-d array to be summed.
+.TP
+\fBx, y, rin, rout\fP (array_like)
+Center coordinates and inner and outer radii of aperture(s).
+\fBx\fP corresponds to the second (\(dqfast\(dq) axis of the input array
+and \fBy\fP corresponds to the first (\(dqslow\(dq) axis.
+\fBx, y = (0.0, 0.0)\fP corresponds to the center of the first
+element of the array. These inputs obey numpy broadcasting rules.
+It is required that \fBrout >= rin >= 0.0\fP\&.
+.TP
+\fBerr, var\fP (float or ndarray)
+Error \fIor\fP variance (specify at most one).
+.TP
+\fBmask\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>, optional)
+Mask array. If supplied, a given pixel is masked if its value
+is greater than \fBmaskthresh\fP\&.
+.TP
+\fBmaskthresh\fP (float, optional)
+Threshold for a pixel to be masked. Default is \fB0.0\fP\&.
+.TP
+\fBsegmap\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>, optional)
+Segmentation image with dimensions of \fBdata\fP and dtype \fBnp.int32\fP\&.
+This is an optional input and corresponds to the segmentation map
+output by \fBextract\fP \%<#\:sep\:.extract>\&.
+.TP
+\fBseg_id\fP (array_like, optional)
+Array of segmentation ids used to mask additional pixels in the image.
+Dimensions correspond to the dimensions of \fBx\fP and \fBy\fP\&. The
+behavior differs depending on whether \fBseg_id\fP is negative or
+positive. If \fBseg_id\fP is positive, all pixels belonging to other
+objects are masked. (Pixel \fBj, i\fP is masked if \fBseg[j, i] != seg_id
+and seg[j, i] != 0\fP). If \fBseg_id\fP is negative, all pixels other
+than those belonging to the object of interest are masked. (Pixel \fBj,
+i\fP is masked if \fBseg[j, i] != \-seg_id\fP).  NB: must be included if
+\fBsegmap\fP is provided.
+.TP
+\fBgain\fP (float, optional)
+Conversion factor between data array units and poisson counts,
+used in calculating poisson noise in aperture sum. If \fBNone\fP
+(default), do not add poisson noise.
+.TP
+\fBsubpix\fP (int, optional)
+Subpixel sampling factor. Default is 5.
+.UNINDENT
+.TP
+.B Returns
+.INDENT 7.0
+.TP
+\fBsum\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+The sum of the data array within the aperture.
+.TP
+\fBsumerr\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+Error on the sum.
+.TP
+\fBflags\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+Integer giving flags. (0 if no flags set.)
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS sep.sum_ellipse
+.INDENT 0.0
+.TP
+.B sep.sum_ellipse(data, x, y, a, b, theta, r, err=None, var=None, mask=None, maskthresh=0.0, seg_id=None, segmap=None, bkgann=None, gain=None, subpix=5)
+Sum data in elliptical aperture(s).
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.TP
+\fBdata\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+2\-d array to be summed.
+.TP
+\fBx, y\fP (array_like)
+Center coordinates and radius (radii) of aperture(s).
+\fBx\fP corresponds to the second (\(dqfast\(dq) axis of the input array
+and \fBy\fP corresponds to the first (\(dqslow\(dq) axis.
+\fBx, y = (0.0, 0.0)\fP corresponds to the center of the first
+element of the array. These inputs obey numpy broadcasting rules.
+.TP
+\fBa, b, theta\fP (array_like)
+Ellipse parameters. These inputs, along with \fBx\fP, \fBy\fP, and \fBr\fP,
+obey numpy broadcasting rules. \fBa\fP is the semi\-major axis,
+\fBb\fP is the semi\-minor axis and \fBtheta\fP is angle in radians between
+the positive x axis and the major axis. It must be in the range
+\fB[\-pi/2, pi/2]\fP\&. It is also required that \fBa >= b >= 0.0\fP\&.
+.TP
+\fBr\fP (array_like, optional)
+Scaling factor for the semi\-minor and semi\-major axes. The
+actual ellipse used will have semi\-major axis \fBa * r\fP and
+semi\-minor axis \fBb * r\fP\&. Setting this parameter to a value
+other than 1.0 is exactly equivalent to scaling both \fBa\fP and
+\fBb\fP by the same value. Default is 1.0.
+.TP
+\fBerr, var\fP (float or \fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+Error \fIor\fP variance (specify at most one).
+.TP
+\fBmask\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>, optional)
+Mask array. If supplied, a given pixel is masked if its value
+is greater than \fBmaskthresh\fP\&.
+.TP
+\fBmaskthresh\fP (float, optional)
+Threshold for a pixel to be masked. Default is \fB0.0\fP\&.
+.TP
+\fBsegmap\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>, optional)
+Segmentation image with dimensions of \fBdata\fP and dtype \fBnp.int32\fP\&.
+This is an optional input and corresponds to the segmentation map
+output by \fBextract\fP \%<#\:sep\:.extract>\&.
+.TP
+\fBseg_id\fP (array_like, optional)
+Array of segmentation ids used to mask additional pixels in the image.
+Dimensions correspond to the dimensions of \fBx\fP and \fBy\fP\&. The
+behavior differs depending on whether \fBseg_id\fP is negative or
+positive. If \fBseg_id\fP is positive, all pixels belonging to other
+objects are masked. (Pixel \fBj, i\fP is masked if \fBseg[j, i] != seg_id
+and seg[j, i] != 0\fP). If \fBseg_id\fP is negative, all pixels other
+than those belonging to the object of interest are masked. (Pixel \fBj,
+i\fP is masked if \fBseg[j, i] != \-seg_id\fP).  NB: must be included if
+\fBsegmap\fP is provided.
+.TP
+\fBbkgann\fP (tuple, optional)
+Length 2 tuple giving the inner and outer radius of a
+\(dqbackground annulus\(dq. If supplied, the background is estimated
+by averaging unmasked pixels in this annulus. If supplied, the inner
+and outer radii obey numpy broadcasting rules, along with \fBx\fP,
+\fBy\fP, and ellipse parameters.
+.TP
+\fBgain\fP (float, optional)
+Conversion factor between data array units and poisson counts,
+used in calculating poisson noise in aperture sum. If \fBNone\fP
+(default), do not add poisson noise.
+.TP
+\fBsubpix\fP (int, optional)
+Subpixel sampling factor. Default is 5.
+.UNINDENT
+.TP
+.B Returns
+.INDENT 7.0
+.TP
+\fBsum\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+The sum of the data array within the aperture.
+.TP
+\fBsumerr\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+Error on the sum.
+.TP
+\fBflags\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+Integer giving flags. (0 if no flags set.)
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS sep.sum_ellipann
+.INDENT 0.0
+.TP
+.B sep.sum_ellipann(data, x, y, a, b, theta, rin, rout, err=None, var=None, mask=None, maskthresh=0.0, gain=None, subpix=5)
+Sum data in elliptical annular aperture(s).
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.TP
+\fBdata\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+2\-d array to be summed.
+.TP
+\fBx, y\fP (array_like)
+Center coordinates and radius (radii) of aperture(s).
+\fBx\fP corresponds to the second (\(dqfast\(dq) axis of the input array
+and \fBy\fP corresponds to the first (\(dqslow\(dq) axis.
+\fBx, y = (0.0, 0.0)\fP corresponds to the center of the first
+element of the array. These inputs obey numpy broadcasting rules.
+.TP
+\fBa, b, theta, rin, rout\fP (array_like)
+Elliptical annulus parameters. These inputs, along with \fBx\fP and \fBy\fP,
+obey numpy broadcasting rules. \fBa\fP is the semi\-major axis,
+\fBb\fP is the semi\-minor axis and \fBtheta\fP is angle in radians between
+the positive x axis and the major axis. It must be in the range
+\fB[\-pi/2, pi/2]\fP\&. It is also required that \fBa >= b >= 0.0\fP and
+\fBrout >= rin >= 0.0\fP
+.TP
+\fBerr, var\fP (float or \fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+Error \fIor\fP variance (specify at most one).
+.TP
+\fBmask\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>, optional)
+Mask array. If supplied, a given pixel is masked if its value
+is greater than \fBmaskthresh\fP\&.
+.TP
+\fBmaskthresh\fP (float, optional)
+Threshold for a pixel to be masked. Default is \fB0.0\fP\&.
+.TP
+\fBgain\fP (float, optional)
+Conversion factor between data array units and poisson counts,
+used in calculating poisson noise in aperture sum. If \fBNone\fP
+(default), do not add poisson noise.
+.TP
+\fBsegmap\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>, optional)
+Segmentation image with dimensions of \fBdata\fP and dtype \fBnp.int32\fP\&.
+This is an optional input and corresponds to the segmentation map
+output by \fBextract\fP \%<#\:sep\:.extract>\&.
+.TP
+\fBseg_id\fP (array_like, optional)
+Array of segmentation ids used to mask additional pixels in the image.
+Dimensions correspond to the dimensions of \fBx\fP and \fBy\fP\&. The
+behavior differs depending on whether \fBseg_id\fP is negative or
+positive. If \fBseg_id\fP is positive, all pixels belonging to other
+objects are masked. (Pixel \fBj, i\fP is masked if \fBseg[j, i] != seg_id
+and seg[j, i] != 0\fP). If \fBseg_id\fP is negative, all pixels other
+than those belonging to the object of interest are masked. (Pixel \fBj,
+i\fP is masked if \fBseg[j, i] != \-seg_id\fP).  NB: must be included if
+\fBsegmap\fP is provided.
+.TP
+\fBsubpix\fP (int, optional)
+Subpixel sampling factor. Default is 5.
+.UNINDENT
+.TP
+.B Returns
+.INDENT 7.0
+.TP
+\fBsum\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+The sum of the data array within the aperture(s).
+.TP
+\fBsumerr\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+Error on the sum.
+.TP
+\fBflags\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+Integer giving flags. (0 if no flags set.)
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+\fBAperture utilities\fP
+.TS
+box center;
+l|l.
+T{
+\fBsep.kron_radius\fP \%<#\:sep\:.kron_radius>(data, x, y, a, b, theta, r)
+T}	T{
+Calculate Kron \(dqradius\(dq within an ellipse.
+T}
+_
+T{
+\fBsep.flux_radius\fP \%<#\:sep\:.flux_radius>(data, x, y, rmax, frac[, ...])
+T}	T{
+Return radius of a circle enclosing requested fraction of total flux.
+T}
+_
+T{
+\fBsep.winpos\fP \%<#\:sep\:.winpos>(data, xinit, yinit, sig[, mask, ...])
+T}	T{
+Calculate more accurate object centroids using \(aqwindowed\(aq algorithm.
+T}
+_
+T{
+\fBsep.mask_ellipse\fP \%<#\:sep\:.mask_ellipse>(arr, x, y, a, b, theta[, r])
+T}	T{
+Mask ellipse(s) in an array.
+T}
+_
+T{
+\fBsep.ellipse_axes\fP \%<#\:sep\:.ellipse_axes>(cxx, cyy, cxy)
+T}	T{
+Convert from coefficient ellipse representation to ellipse axes and angle.
+T}
+_
+T{
+\fBsep.ellipse_coeffs\fP \%<#\:sep\:.ellipse_coeffs>(a, b, theta)
+T}	T{
+Convert from ellipse axes and angle to coefficient representation.
+T}
+.TE
+.SS sep.kron_radius
+.INDENT 0.0
+.TP
+.B sep.kron_radius(data, x, y, a, b, theta, r, mask=None, maskthresh=0.0, seg_id=None, segmap=None)
+Calculate Kron \(dqradius\(dq within an ellipse.
+.sp
+The Kron radius is given by
+.sp
+.ce
+\esum_i r_i I(r_i) / \esum_i I(r_i)
+.ce 0
+.sp
+where the sum is over all pixels in the aperture and the radius is given
+in units of \fBa\fP and \fBb\fP: \fBr_i\fP is the distance to the pixel relative
+to the distance to the ellipse specified by \fBa\fP, \fBb\fP, \fBtheta\fP\&.
+Equivalently, after converting the ellipse parameters to their coefficient
+representation, \fBr_i\fP is given by
+.sp
+.ce
+r_i^2 = cxx(x_i \- x)^2 + cyy(y_i \- y)^2 + cxx(x_i \- x)(y_i \- y)
+.ce 0
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.TP
+\fBdata\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+Data array.
+.TP
+\fBx, y\fP (array_like)
+Ellipse center(s).
+.TP
+\fBa, b, theta\fP (array_like)
+Ellipse parameters.
+.TP
+\fBr\fP (array_like)
+\(dqRadius\(dq of ellipse over which to integrate. If the ellipse
+extent correponds to second moments of an object, this is the
+number of \(dqisophotal radii\(dq in Source Extractor parlance. A
+Fixed value of 6 is used in Source Extractor.
+.TP
+\fBmask\fP (\fBnumpy.ndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>, optional)
+An optional mask.
+.TP
+\fBmaskthresh\fP (float, optional)
+Pixels with mask > maskthresh will be ignored.
+.TP
+\fBsegmap\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>, optional)
+Segmentation image with dimensions of \fBdata\fP and dtype \fBnp.int32\fP\&.
+This is an optional input and corresponds to the segmentation map
+output by \fBextract\fP \%<#\:sep\:.extract>\&.
+.TP
+\fBseg_id\fP (array_like, optional)
+Array of segmentation ids used to mask additional pixels in the image.
+Dimensions correspond to the dimensions of \fBx\fP and \fBy\fP\&. The
+behavior differs depending on whether \fBseg_id\fP is negative or
+positive. If \fBseg_id\fP is positive, all pixels belonging to other
+objects are masked. (Pixel \fBj, i\fP is masked if \fBseg[j, i] != seg_id
+and seg[j, i] != 0\fP). If \fBseg_id\fP is negative, all pixels other
+than those belonging to the object of interest are masked. (Pixel \fBj,
+i\fP is masked if \fBseg[j, i] != \-seg_id\fP).  NB: must be included if
+\fBsegmap\fP is provided.
+.UNINDENT
+.TP
+.B Returns
+.INDENT 7.0
+.TP
+\fBkronrad\fP (array_like)
+The Kron radius.
+.TP
+\fBflag\fP (array_like)
+Integer value indicating conditions about the aperture or how
+many masked pixels it contains.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS sep.flux_radius
+.INDENT 0.0
+.TP
+.B sep.flux_radius(data, x, y, rmax, frac, normflux=None, mask=None, maskthresh=0.0, subpix=5)
+Return radius of a circle enclosing requested fraction of total flux.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.TP
+\fBdata\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+2\-d array to be summed.
+.TP
+\fBx, y\fP (array_like)
+Center coordinates and radius (radii) of aperture(s).
+\fBx\fP corresponds to the second (\(dqfast\(dq) axis of the input array
+and \fBy\fP corresponds to the first (\(dqslow\(dq) axis.
+\fBx, y = (0.0, 0.0)\fP corresponds to the center of the first
+element of the array. Shapes must match.
+.TP
+\fBrmax\fP (array_like)
+Maximum radius to analyze. Used as normalizing flux if \fBnormflux\fP
+is None. Shape must match x and y.
+.TP
+\fBfrac\fP (array_like)
+Requested fraction of light (in range 0 to 1). Can be scalar or array.
+.TP
+\fBnormflux\fP (array_like, optional)
+Normalizing flux for each position. If not given, the sum
+within \fBrmax\fP is used as the normalizing flux. If given,
+shape must match x, y and rmax.
+.TP
+\fBmask\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>, optional)
+Mask array. If supplied, a given pixel is masked if its value
+is greater than \fBmaskthresh\fP\&.
+.TP
+\fBmaskthresh\fP (float, optional)
+Threshold for a pixel to be masked. Default is \fB0.0\fP\&.
+.TP
+\fBsegmap\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>, optional)
+Segmentation image with dimensions of \fBdata\fP and dtype \fBnp.int32\fP\&.
+This is an optional input and corresponds to the segmentation map
+output by \fBextract\fP \%<#\:sep\:.extract>\&.
+.TP
+\fBseg_id\fP (array_like, optional)
+Array of segmentation ids used to mask additional pixels in the image.
+Dimensions correspond to the dimensions of \fBx\fP and \fBy\fP\&. The
+behavior differs depending on whether \fBseg_id\fP is negative or
+positive. If \fBseg_id\fP is positive, all pixels belonging to other
+objects are masked. (Pixel \fBj, i\fP is masked if \fBseg[j, i] != seg_id
+and seg[j, i] != 0\fP). If \fBseg_id\fP is negative, all pixels other
+than those belonging to the object of interest are masked. (Pixel \fBj,
+i\fP is masked if \fBseg[j, i] != \-seg_id\fP).  NB: must be included if
+\fBsegmap\fP is provided.
+.TP
+\fBsubpix\fP (int, optional)
+Subpixel sampling factor. Default is 5.
+.UNINDENT
+.TP
+.B Returns
+.INDENT 7.0
+.TP
+\fBradius\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+The sum of the data array within the aperture(s). Shape is
+same as \fBx\fP, except if \fBfrac\fP is an array; then the
+dimension of \fBfrac\fP will be appended. For example, if \fBx\fP
+and \fBfrac\fP are both 1\-d arrays, the result will be a 2\-d
+array with the trailing dimension corresponding to \fBfrac\fP\&.
+.TP
+\fBflags\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+Integer giving flags. Same shape as \fBx\fP\&. (0 if no flags set.)
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS sep.winpos
+.INDENT 0.0
+.TP
+.B sep.winpos(data, xinit, yinit, sig, mask=None, maskthresh=0.0, subpix=11, minsig=2.0 / 2.35 * 0.5)
+Calculate more accurate object centroids using \(aqwindowed\(aq algorithm.
+.sp
+Starting from the supplied initial center position, an iterative
+algorithm is used to determine a better object centroid. On each
+iteration, the centroid is calculated using all pixels within a
+circular aperture of \fB4*sig\fP from the current position,
+weighting pixel positions by their flux and the amplitude of a 2\-d
+Gaussian with sigma \fBsig\fP\&. Iteration stops when the change in
+position falls under some threshold or a maximum number of
+iterations is reached. This is equivalent to \fBXWIN_IMAGE\fP and
+\fBYWIN_IMAGE\fP parameters in Source Extractor (for the correct choice
+of sigma for each object).
+.sp
+\fBNote:\fP One should be cautious about using windowed positions in
+crowded fields or for sources with nearby neighbors, as the iterative
+algorithm can fail catastrophically.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.TP
+\fBdata\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+Data array.
+.TP
+\fBxinit, yinit\fP (array_like)
+Initial center(s).
+.TP
+\fBsig\fP (array_like)
+Gaussian sigma used for weighting pixels. Pixels within a circular
+aperture of radius 4*sig are included.
+.TP
+\fBmask\fP (\fBnumpy.ndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>, optional)
+An optional mask.
+.TP
+\fBmaskthresh\fP (float, optional)
+Pixels with mask > maskthresh will be ignored.
+.TP
+\fBsubpix\fP (int, optional)
+Subpixel sampling used to determine pixel overlap with
+aperture.  11 is used in Source Extractor. For exact overlap
+calculation, use 0.
+.TP
+\fBminsig\fP (float, optional)
+Minimum bound on \fBsig\fP parameter. \fBsig\fP values smaller than this
+are increased to \fBminsig\fP to replicate Source Extractor behavior.
+Source Extractor uses a minimum half\-light radius of 0.5 pixels,
+equivalent to a sigma of 0.5 * 2.0 / 2.35.
+.UNINDENT
+.TP
+.B Returns
+.INDENT 7.0
+.TP
+\fBx, y\fP (np.ndarray)
+New x and y position(s).
+.TP
+\fBflag\fP (np.ndarray)
+Flags.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS sep.mask_ellipse
+.INDENT 0.0
+.TP
+.B sep.mask_ellipse(arr, x, y, a, b, theta, r=1.0)
+Mask ellipse(s) in an array.
+.sp
+Set array elements to True (or 1) if they fall within the given
+ellipse.  The \fBr\fP keyword can be used to scale the ellipse.
+Equivalently, after converting \fBa\fP, \fBb\fP, \fBtheta\fP to a
+coefficient ellipse representation (\fBcxx\fP, \fBcyy\fP, \fBcxy\fP),
+pixels that fulfill the condition
+.sp
+.ce
+cxx(x_i \- x)^2 + cyy(y_i \- y)^2 + cxx(x_i \- x)(y_i \- y) < r^2
+.ce 0
+.sp
+will be masked.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.TP
+\fBarr\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+Input array to be masked. Array is updated in\-place.
+.TP
+\fBx, y\fP (array_like)
+Center of ellipse(s).
+.TP
+\fBa, b, theta\fP (array_like, optional)
+Parameters defining the extent of the ellipe(s).
+.TP
+\fBcxx, cyy, cxy\fP (array_like, optional)
+Alternative ellipse representation. Can be used as
+\fBmask_ellipse(arr, x, y, cxx=..., cyy=..., cxy=...)\fP\&.
+.TP
+\fBr\fP (array_like, optional)
+Scale factor of ellipse(s). Default is 1.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS sep.ellipse_axes
+.INDENT 0.0
+.TP
+.B sep.ellipse_axes(cxx, cyy, cxy)
+Convert from coefficient ellipse representation to ellipse axes and angle.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.TP
+\fBcxx, cyy, cxy\fP (array_like)
+Describes the ellipse(s) \fBcxx * x**2 + cyy * y**2 + cxy * x * y = 1\fP
+.UNINDENT
+.TP
+.B Returns
+.INDENT 7.0
+.TP
+\fBa, b, theta\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+Ellipse(s) semi\-major, semi\-minor axes and position angle
+respectively.  Position angle is radians counter clockwise
+from positive x axis to major axis, and lies in range
+\fB(\-pi/2, pi/2)\fP
+.UNINDENT
+.TP
+.B Raises
+.INDENT 7.0
+.TP
+.B ValueError
+If input parameters do not describe an ellipse.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS sep.ellipse_coeffs
+.INDENT 0.0
+.TP
+.B sep.ellipse_coeffs(a, b, theta)
+Convert from ellipse axes and angle to coefficient representation.
+.INDENT 7.0
+.TP
+.B Parameters
+.INDENT 7.0
+.TP
+\fBa, b, theta\fP (array_like)
+Ellipse(s) semi\-major, semi\-minor axes and position angle
+respectively.  Position angle is radians counter clockwise
+from positive x axis to major axis, and lies in range
+\fB[\-pi/2, pi/2]\fP
+.UNINDENT
+.TP
+.B Returns
+.INDENT 7.0
+.TP
+\fBcxx, cyy, cxy\fP (\fBndarray\fP \%<https://\:numpy\:.org/\:doc/\:stable/\:reference/\:generated/\:numpy\:.ndarray\:.html#\:numpy\:.ndarray>)
+Describes the ellipse(s) \fBcxx * x^2 + cyy * y^2 + cxy * xy = 1\fP
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+\fBLow\-level utilities\fP
+.TS
+box center;
+l|l.
+T{
+\fBsep.get_extract_pixstack\fP \%<#\:sep\:.get_extract_pixstack>()
+T}	T{
+Get the size in pixels of the internal pixel buffer used in extract().
+T}
+_
+T{
+\fBsep.set_extract_pixstack\fP \%<#\:sep\:.set_extract_pixstack>(size)
+T}	T{
+Set the size in pixels of the internal pixel buffer used in extract().
+T}
+_
+T{
+\fBsep.get_sub_object_limit\fP \%<#\:sep\:.get_sub_object_limit>()
+T}	T{
+Get the limit on the number of sub\-objects when deblending in extract().
+T}
+_
+T{
+\fBsep.set_sub_object_limit\fP \%<#\:sep\:.set_sub_object_limit>(limit)
+T}	T{
+Set the limit on the number of sub\-objects when deblending in extract().
+T}
+.TE
+.SS sep.get_extract_pixstack
+.INDENT 0.0
+.TP
+.B sep.get_extract_pixstack()
+Get the size in pixels of the internal pixel buffer used in extract().
+.UNINDENT
+.SS sep.set_extract_pixstack
+.INDENT 0.0
+.TP
+.B sep.set_extract_pixstack(size)
+Set the size in pixels of the internal pixel buffer used in extract().
+.sp
+The current value can be retrieved with get_extract_pixstack. The
+initial default is 300000.
+.UNINDENT
+.SS sep.get_sub_object_limit
+.INDENT 0.0
+.TP
+.B sep.get_sub_object_limit()
+Get the limit on the number of sub\-objects when deblending in extract().
+.UNINDENT
+.SS sep.set_sub_object_limit
+.INDENT 0.0
+.TP
+.B sep.set_sub_object_limit(limit)
+Set the limit on the number of sub\-objects when deblending in extract().
+.sp
+The current value can be retrieved with get_sub_object_limit. The
+initial default is 1024.
+.UNINDENT
+.sp
+\fBFlags\fP
+.TS
+box center;
+l|l.
+T{
+Flag
+T}	T{
+Description
+T}
+_
+T{
+\fBsep.OBJ_MERGED\fP
+T}	T{
+object is result of deblending
+T}
+_
+T{
+\fBsep.OBJ_TRUNC\fP
+T}	T{
+object is truncated at image boundary
+T}
+_
+T{
+\fBsep.OBJ_SINGU\fP
+T}	T{
+x, y fully correlated in object
+T}
+_
+T{
+\fBsep.APER_TRUNC\fP
+T}	T{
+aperture truncated at image boundary
+T}
+_
+T{
+\fBsep.APER_HASMASKED\fP
+T}	T{
+aperture contains one or more masked pixels
+T}
+_
+T{
+\fBsep.APER_ALLMASKED\fP
+T}	T{
+aperture contains only masked pixels
+T}
+_
+T{
+\fBsep.APER_NONPOSITIVE\fP
+T}	T{
+aperture sum is negative in \fBkron_radius\fP
+T}
+.TE
+.sp
+To see if a given flag is set in \fBflags\fP:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+is_merged = (flags & sep.OBJ_MERGED) != 0
+.EE
+.UNINDENT
+.UNINDENT
+.sp
+\fBNote:\fP
+.INDENT 0.0
+.INDENT 3.5
+The coordinate convention in SEP is that (0, 0) corresponds to the
+center of the first element of the data array. This agrees with the
+0\-based indexing in Python and C.  However, note that
+this differs from the FITS convention where the center of the first
+element is at coordinates (1, 1). As Source Extractor deals with
+FITS files, its outputs follow the FITS convention. Thus, the
+coordinates from SEP will be offset from Source Extractor
+coordinates by \-1 in x and y.
+.UNINDENT
+.UNINDENT
+.sp
+For complete API documentation, see Reference/API \%<>\&.
+.SH CONTRIBUTING
+.sp
+Report a bug or documentation issue:
+\%<http://\:github\:.com/\:sep-developers/\:sep/\:issues>
+.sp
+Development of \fBsep\fP takes place on GitHub at
+\%<http://\:github\:.com/\:sep-developers/\:sep>\&.  Contributions of bug fixes,
+documentation improvements and minor feature additions are welcome via
+GitHub pull requests. For major features, it is best to open an issue
+discussing the change first.
+.SH LICENSE AND CITATION
+.sp
+The license for SEP is the Lesser GNU Public License (LGPL), granted
+with the permission from the original author of Source Extractor.
+.sp
+If you use SEP in a publication, please cite Barbary (2016) \%<http://\:dx\:.doi\:.org/\:10\:.21105/\:joss\:.00058> and the original Source
+Extractor paper: Bertin & Arnouts 1996 \%<http://\:adsabs\:.harvard\:.edu/\:abs/\:1996A%26AS\:..117\:..393B>\&.
+.sp
+The DOI for the sep v1.0.0 code release is 10.5281/zenodo.159035 \%<http://\:dx\:.doi\:.org/\:10\:.5281/\:zenodo\:.159035>\&.
+.SH Author
+Peter Watson
+.SH Copyright
+2014-2024, Peter Watson and contributors
+.\" End of generated man page.
