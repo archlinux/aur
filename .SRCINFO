@@ -1,7 +1,7 @@
 pkgbase = brother-hl-l3295cdw
 	pkgdesc = LPR and CUPS driver for the Brother HL-L3295CDW
 	pkgver = 3.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://support.brother.com/g/b/downloadlist.aspx?c=us&lang=en&prod=hll3295cdw_us&os=127
 	install = brother-hl-l3295cdw.install
 	arch = i686
@@ -10,13 +10,13 @@ pkgbase = brother-hl-l3295cdw
 	depends = cups
 	depends = ghostscript
 	depends = perl
-	depends = lib32-glibc
-	depends = lib32-gcc-libs
-	source = https://download.brother.com/welcome/dlf105748/hll3295cdwpdrv-3.5.1-1.i386.rpm
+	options = !debug
+	options = !strip
+	source = https://download.brother.com/welcome/dlf105748/hll3295cdwpdrv-3.5.1-2.i386.rpm
 	source = cupswrapper-license.txt
 	source = lpr-license.txt
-	md5sums = ab06b2c771502b7716f1608aa977d8a6
-	md5sums = 97ad0cffd216059e9d1d3121899d8646
-	md5sums = 5e87a3dc0f3e3438c088eda0f3565f0d
+	sha256sums = bd49b0a0d0e5d90264b03232c4ec53f845f5d5e0929cc39ee7f7e85f48e616ca
+	sha256sums = 2c6aa6a641332e5c87e971ac2a8beae13b059747bdba331bbd515914770d72d9
+	sha256sums = 9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67
 
 pkgname = brother-hl-l3295cdw

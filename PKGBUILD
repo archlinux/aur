@@ -3,28 +3,24 @@
 # The Brother printer drivers are proprietary and are distributed as RPM or DEB.
 pkgname=brother-hl-l3295cdw
 pkgver=3.5.1
-pkgrel=1
+_rpmrel=2
+pkgrel=2
 pkgdesc="LPR and CUPS driver for the Brother HL-L3295CDW"
 arch=("i686" "x86_64")
 url="https://support.brother.com/g/b/downloadlist.aspx?c=us&lang=en&prod=hll3295cdw_us&os=127"
 license=('LicenseRef-Brother Industries Ltd EULA')
 depends=('cups' 'ghostscript' 'perl')
-# The 32-bit version of glibc is required for the 32-bit version of the driver
-if test "$CARCH" == x86_64; then
-  depends+=('lib32-glibc' 'lib32-gcc-libs')
-fi
+options=('!debug' '!strip')
 install="$pkgname.install"
 source=(
-  "https://download.brother.com/welcome/dlf105748/hll3295cdwpdrv-$pkgver-1.i386.rpm"
+  "https://download.brother.com/welcome/dlf105748/hll3295cdwpdrv-$pkgver-$_rpmrel.i386.rpm"
   "cupswrapper-license.txt"
   "lpr-license.txt"
 )
-
-  # md5sums for the source files
-md5sums=(
-         "ab06b2c771502b7716f1608aa977d8a6"
-         "97ad0cffd216059e9d1d3121899d8646"
-         "5e87a3dc0f3e3438c088eda0f3565f0d"
+sha256sums=(
+  'bd49b0a0d0e5d90264b03232c4ec53f845f5d5e0929cc39ee7f7e85f48e616ca'
+  '2c6aa6a641332e5c87e971ac2a8beae13b059747bdba331bbd515914770d72d9'
+  '9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67'
 )
 
 prepare() {
@@ -36,6 +32,8 @@ prepare() {
 package(){
   # Extract the RPM
   cp -R "$srcdir/opt" "$pkgdir/opt"
+  # Keep only the binaries for this architecture
+  find "$pkgdir/opt/brother/Printers/hll3295cdw/lpd" -mindepth 1 -maxdepth 1 -type d ! -name "$CARCH" -exec rm -r {} +
   # Extract the lpd filter and config files based on the $CARCH variable - i686 or x86_64
   ln -s "/opt/brother/Printers/hll3295cdw/lpd/$CARCH/brhll3295cdwfilter" "$pkgdir/opt/brother/Printers/hll3295cdw/lpd/brhll3295cdwfilter"
   ln -s "/opt/brother/Printers/hll3295cdw/lpd/$CARCH/brprintconf_hll3295cdw" "$pkgdir/opt/brother/Printers/hll3295cdw/lpd/brprintconf_hll3295cdw"
