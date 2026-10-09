@@ -1,6 +1,6 @@
 pkgbase = glideftp-bin
 	pkgdesc = Desktop FTP/SFTP client
-	pkgver = 1.7.7
+	pkgver = 1.7.8
 	pkgrel = 1
 	url = https://github.com/Quirky1869/GlideFTP
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = glideftp-bin
 	depends = webkit2gtk-4.1
 	provides = glideftp
 	conflicts = glideftp
-	source_x86_64 = glideftp-bin-1.7.7.tar.gz::https://github.com/Quirky1869/GlideFTP/releases/download/v1.7.7/GlideFTP-Linux-v1.7.7.tar.gz
-	sha256sums_x86_64 = 53b468b740a04da88031ace4e015bd1f4afb7af711a52d09eae26aab0cf6f0c1
+	source_x86_64 = glideftp-bin-1.7.8.tar.gz::https://github.com/Quirky1869/GlideFTP/releases/download/v1.7.8/GlideFTP-Linux-v1.7.8.tar.gz
+	sha256sums_x86_64 = b7db19eedd7cf2de2871d2cf519b043282b57fc5ed1f1828b3a2a6c0a7f10414
 
 pkgname = glideftp-bin
