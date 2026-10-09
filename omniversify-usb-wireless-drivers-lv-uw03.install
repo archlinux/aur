@@ -19,6 +19,17 @@ post_install() {
     (or reboot). udev only learns that a driver now exists for it when the
     device is enumerated.
 
+  * Only ONE network daemon may drive this adapter. If iwd is enabled next
+    to NetworkManager, both fight over the device and the kernel ends up
+    reporting "networkmanager is blocked on a mutex likely owned by iwd",
+    with no wifi at all. Check who is running:
+
+        systemctl is-active NetworkManager iwd wpa_supplicant
+
+    and disable the one you do not want. Artix: replace "systemctl" with
+    "rc-update del ... default" (OpenRC, runit), "s6-rc -d change ..." (s6)
+    or "dinitctl stop ..." (dinit). See the README troubleshooting section.
+
   * No init-system configuration was installed. The module autoloads from
     its USB modalias through udev's 80-drivers.rules, which ships with both
     systemd-udev and eudev -- so this works on Arch, Artix (OpenRC, s6,
