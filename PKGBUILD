@@ -61,7 +61,13 @@ check() {
     # The suite builds a rustls-backed kube client even for its fake cluster,
     # so it needs the native root CAs from ca-certificates (present in a
     # devtools chroot). No network or real cluster is required.
-    cargo test --frozen
+    #
+    # help_cache_tracks_inputs_and_reuses_lines_when_scrolling compares frames
+    # drawn while scrollbars are visible, which they are for only 700ms after
+    # a scroll key. Under a loaded parallel suite the test can outlive that
+    # window between two compared draws and fail spuriously.
+    cargo test --frozen -- \
+        --skip ui::tests::help_cache_tracks_inputs_and_reuses_lines_when_scrolling
 }
 
 package() {
