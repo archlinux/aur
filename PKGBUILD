@@ -1,7 +1,7 @@
 # Maintainer: araujo791 <https://github.com/araujo791>
 pkgname=machctrl-bin
 pkgver=3.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Hardware monitor and optimizer for Linux — CPU, GPU, RAM, fans, temperature and system tuning (prebuilt)"
 arch=('x86_64')
 url="https://github.com/araujo791/MachCtrl-GTK4"
