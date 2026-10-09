@@ -3,9 +3,9 @@
 _pkgname=MasterDnsVPN
 pkgname=masterdnsvpn
 pkgver=2026.06.13.234407_7de2476
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced DNS tunneling VPN for censorship bypass"
-arch=("any")
+arch=("x86_64")
 url="https://github.com/masterking32/MasterDnsVPN"
 license=("MIT")
 depends=()
@@ -21,31 +21,41 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
+  export GOPATH="${srcdir}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  go build -o masterdnsvpn-client-${pkgver//_/-}-${pkgrel} \
-    -buildmode=pie \
-    -trimpath \
-    -mod=readonly \
-    -modcacherw \
-    -ldflags "-linkmode external \
-              -extldflags \"$LDFLAGS\"" \
-    ./cmd/client
-  go build -o masterdnsvpn-server-${pkgver//_/-}-${pkgrel} \
-    -buildmode=pie \
-    -trimpath \
-    -mod=readonly \
-    -modcacherw \
-    -ldflags "-linkmode external \
-              -extldflags \"$LDFLAGS\"" \
-    ./cmd/server
+
+  local _target
+  for _target in client server; do
+    go build -o "${srcdir}/${pkgname}-${_target}" \
+      -buildmode=pie \
+      -trimpath \
+      -mod=readonly \
+      -modcacherw \
+      -ldflags "-linkmode external \
+                -X masterdnsvpn-go/internal/version.BuildVersion=v${pkgver//_/-} \
+                -extldflags \"$LDFLAGS\"" \
+      "./cmd/${_target}"
+  done
+}
+
+check() {
+  cd "${srcdir}/${_pkgname}"
+  export GOPATH="${srcdir}"
+  go test -mod=readonly ./...
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    install -D -m 755 "masterdnsvpn-client-${pkgver//_/-}-${pkgrel}" "${pkgdir}/usr/bin/${pkgname}-client"
-    install -D -m 755 "masterdnsvpn-server-${pkgver//_/-}-${pkgrel}" "${pkgdir}/usr/bin/${pkgname}-server"
+
+    local _target
+    for _target in client server; do
+      install -Dm 755 "${srcdir}/${pkgname}-${_target}" "${pkgdir}/usr/bin/${pkgname}-${_target}"
+    done
     install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm 644 README.MD "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm 644 client_config.toml.simple server_config.toml.simple client_resolvers.simple \
+      -t "${pkgdir}/usr/share/doc/${pkgname}/examples"
 }
