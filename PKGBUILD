@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Productivity-focused sandboxing for Linux"
 
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -33,8 +33,8 @@ source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/$
 sha256sums=('31b0e6225b61f06c77f7788c1531fa5884899664aa861e0d57e327aafeeb843b'
             'd78ef79ac814b25c9a02aab1a8a328b1cc5d4f603be522c072b44e70f2f3803f'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('14d4300d07fa46af4a03a42ba85386c515e87cf97fb6d14b297abd689cd11629')
-sha256sums_aarch64=('7c24d1a08adae381e63bb59334c77234a5bfa7bbcc6882e19acc9890fa8b5cb6')
+sha256sums_x86_64=('aa21b6b9c626ae109c32b403e4eaac51c2c50f775c85e58abedde4116a86b4de')
+sha256sums_aarch64=('86ae5d48b1e55cef98bbcd1d69237f5e8024eb6bcfb9559b062949fac0ca7469')
 
 
 package() {
