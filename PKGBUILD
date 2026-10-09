@@ -1,7 +1,7 @@
 # Maintainer: calibancode <17374198+calibancode@users.noreply.github.com>
 
 pkgname=katwhisker
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Small web radio player for KDE Plasma, using the radio-browser.info directory'
 arch=('x86_64')
@@ -24,7 +24,7 @@ depends=(
 )
 makedepends=('cmake' 'extra-cmake-modules')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c88179be43e0253831ca9407258d13ef5da32d9b3c8012ab9b6a03fdea6963e5')
+sha256sums=('6b22537555d504d8239956e958b6d962b5e070c2b65b9f309cd243523c36d272')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
