@@ -1,7 +1,7 @@
 pkgbase = sing-box-for-linux-bin
 	pkgdesc = Linux client for sing-box, The universal proxy platform.
-	pkgver = 1.14.2
-	pkgrel = 4
+	pkgver = 1.14.3
+	pkgrel = 1
 	url = https://sing-box.sagernet.org/
 	install = sing-box-for-linux-bin.install
 	arch = x86_64
@@ -24,11 +24,11 @@ pkgbase = sing-box-for-linux-bin
 	depends = polkit
 	provides = sing-box-for-linux
 	conflicts = sing-box-for-linux
-	source = LicenseRef-sing-box-for-linux-bin-1.14.2-4-exception::https://raw.githubusercontent.com/SagerNet/sing-box/v1.14.2/LICENSE
+	source = LicenseRef-sing-box-for-linux-bin-1.14.3-1-exception::https://raw.githubusercontent.com/SagerNet/sing-box/v1.14.3/LICENSE
 	sha512sums = 35b76843c30240d073dbffade3cc76f569e01b273974d2a7110fcb41fca76b22c0be04da0aac33157083f188ebf69177e1f5a158f08327c4d235996877b53ab4
-	source_x86_64 = SFL-sing-box-for-linux-bin-1.14.2-4-x64.pkg.tar.zst::https://github.com/SagerNet/sing-box/releases/download/v1.14.2/SFL-1.14.2-x64.pkg.tar.zst
-	sha512sums_x86_64 = 894aff1fe3b47b047200f60373f1eaf4464ea14f7b6707a906b041f3e75134ed7a24c59437cb0dba2e5b5e0ab4c63bcd186285159e489e73ef3417d3246f11bd
-	source_aarch64 = SFL-sing-box-for-linux-bin-1.14.2-4-aarch64.pkg.tar.zst::https://github.com/SagerNet/sing-box/releases/download/v1.14.2/SFL-1.14.2-aarch64.pkg.tar.zst
-	sha512sums_aarch64 = 7c993f6552454965476d9131b9593edd76e8f1198e5b6f07c8b8cef2f77ee4fbaef4b11976363ff499ef29307568ab33b0f635ab63dfe6be983a93d917004396
+	source_x86_64 = SFL-sing-box-for-linux-bin-1.14.3-1-x64.pkg.tar.zst::https://github.com/SagerNet/sing-box/releases/download/v1.14.3/SFL-1.14.3-x64.pkg.tar.zst
+	sha512sums_x86_64 = a5f61e502c1d3a34f860de564b748fe95dc2e2dd56af0d063fb324bb02eb57a49d53cff790dea9a0f5feb306c3716accde826ea49c5f17e0d9f52397613c3327
+	source_aarch64 = SFL-sing-box-for-linux-bin-1.14.3-1-aarch64.pkg.tar.zst::https://github.com/SagerNet/sing-box/releases/download/v1.14.3/SFL-1.14.3-aarch64.pkg.tar.zst
+	sha512sums_aarch64 = 4a5f09ce367d3f99f3aeacc3e5ddd1efe722599e6385e68c5ae1513d651fb23fee2c26567f83e1fe418b70248c82d910f2c8fd5e60aac6fca1b76028cd181938
 
 pkgname = sing-box-for-linux-bin
