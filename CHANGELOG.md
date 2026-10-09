@@ -18,15 +18,601 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 # [Unreleased]
 
-> Important: 0 potentially breaking changes below, indicated by **❗ BREAKING ❗**
+Unreleased changes are in [`.changeset/`](.changeset/), one file per change. Run `cargo xtask changeset preview` to see them as release notes.
+
+# [1.0.0] - 2026-10-06
+
+> Important: 3 potentially breaking changes below, indicated by **❗ BREAKING ❗**
 
 ## ❗ BREAKING ❗
 
+- **`rover subgraph check`'s JSON `downstream` task changes shape, bumping `json_version` to `"3"` - @dotdat**
+
+  The `downstream` task's `blocking_variants: [String]` field is replaced by `variants`, a list of per-contract-variant results (`graph_id`, `variant_name`, `blocking`, `fails_upstream_workflow`, `status`) instead of just the names of variants blocking the check. `json_version` in the response envelope moves from `"2"` to `"3"` to reflect the shape change. `rover graph check` shares the response envelope, moves to `"3"` too, and now reports the `downstream` task as well. Text output changes too: a downstream check summary now always renders whenever a downstream task ran, even when nothing is blocking — "No contract variants configured for this graph." or "Checked N contract variants[, all passed]." — instead of staying silent unless something was blocking.
+
+- **Remove `rover cloud` commands - @dotdat**
+
+  `rover cloud config fetch`, `rover cloud config update`, and `rover cloud config validate` have been removed, along with their underlying GraphQL operations.
+
+- **Remove Federation 1 support - @dotdat**
+
+  Rover no longer supports Federation 1. `rover supergraph compose`, `rover dev`, `rover lsp`, `rover connector`, and `rover install --plugin supergraph@<version>` now reject any Federation 1 version (for example `federation_version: 1` in `supergraph.yaml`, or `latest-0`/an exact `0.x` version for the plugin installer) with an error pointing at the [Federation 2 migration guide](https://www.apollographql.com/docs/federation/federation-2/moving-to-federation-2#opt-in-to-federation-2). `rover init` no longer maps a template's federation version to a Federation 1 build pipeline track.
+
 ## 🚀 Features
+
+- **Federation 3 `supergraph` and `router` versions - @dotdat PR #4004**
+
+  `rover plugin install supergraph@=3.0.0-preview.1`, `supergraph@3` and `supergraph@latest-3` used to be refused ("Must be 'latest-2' or an exact version preceded with an '='"), and `federation_version: =3.0.0-preview.1` in `supergraph.yaml` was silently dropped. Rover now accepts a Federation 3 version everywhere a Federation version can be written: `rover plugin install`, `supergraph.yaml`, `--federation-version`, and the plugin manifest. It installs and composes with it, under the same ELv2 license as Federation 2. `router@3` and `router@=3.x.y` are accepted too, and so is the older `latest-3` spelling for both plugins (on the command line and in the manifest), with the usual deprecation warning asking for `3`. `latest` still means the newest 2.x. Resolving a floating `3` or `latest-3` asks the plugin registry for its newest 3.x, which the registry has to support; installing an exact `=3.x.y` does not. This needs `apollo-federation-types` 0.18 and `apollo-language-server` 0.11, which Rover now depends on.
+
+- **`--include-contract-checks` on the check commands - @dotdat**
+
+  `rover graph check`, `rover subgraph check`, and `publish --check` go by Studio's overall result for the check by default, as they did before 1.0, so an existing CI pipeline doesn't start failing because a blocking contract variant's check failed. The contract variants are still reported in text and `--format json`, with the status Studio gave the downstream task. Pass `--include-contract-checks` to include the contract variants' checks in the result, so the command also fails when a blocking contract variant's own check has failed, even if Studio's overall result says the check passed.
+
+- **Commands that download a plugin on their own now warn, and `APOLLO_ROVER_ALLOW_AUTOMATIC_DOWNLOAD` turns those downloads off - @SharkBaitDLS, @dotdat PR #3996**
+
+  `rover supergraph compose`, `rover dev`, `rover lsp`, and `rover connector` still download a plugin they need and don't have. When nothing sets the new `APOLLO_ROVER_ALLOW_AUTOMATIC_DOWNLOAD` setting, each such download prints a warning naming the plugin and saying that a future version of Rover will not install plugins automatically. `--no-config-notices` doesn't silence it.
+
+  Set the setting to `true` to keep downloading without the warning, or to `false` to stop downloading now: in the environment (`true`/`1` or `false`/`0`), on a profile with `rover config set APOLLO_ROVER_ALLOW_AUTOMATIC_DOWNLOAD false`, or under `settings:` in the project's `.rover/rover.yaml`. With it set to `false`, a missing plugin stops the command with error E058, naming the plugin, where Rover looked, and how to install it. `rover config show` reports the setting and where it came from. `rover plugin install` isn't affected and always downloads, and `--skip-update`/`APOLLO_ROVER_SKIP_UPDATE` still forbid downloads.
+
+- **Log in with OAuth, and authenticate CI with client-credential pairs - @dotdat**
+
+  Rover can now authenticate with OAuth, as well as with API keys:
+
+  - `rover auth login`, using the browser or `--no-browser`, plus `rover auth logout` and `rover auth whoami`
+  - `rover auth grants revoke`, which revokes every grant one user holds in an organization
+  - authenticating with a client-credential pair by setting `APOLLO_CLIENT_ID` and `APOLLO_CLIENT_SECRET`
+  - the `--oauth-*` flags and their `APOLLO_OAUTH_*` settings, which now appear in `rover config show`
+
+  `rover config auth` and `rover config whoami` now point out that `rover auth login` is available.
+
+- **`rover auth grants revoke` revokes every grant a user holds in an organization - @dotdat**
+
+  `rover auth grants revoke --org <ORGANIZATION_ID> --user <USER_ID> --all [--confirm]` revokes the user's grants under Rover's own OAuth client and under every client-credential pair in the organization. Before revoking anything, it lists every pair and asks for confirmation, naming each OAuth client. Pass `--confirm` to skip the prompt; without a terminal to ask on (or with `--format json`), it fails with a new error code (`E062`) instead of waiting. Every client is attempted even when one fails, and the outcome under each is reported individually; if any failed, the command exits non-zero with a new error code (`E063`) and names the clients to retry, which is safe to do because revoking where the user holds no grant succeeds. Access tokens the user already holds keep working until they expire, and the sweep doesn't stop them logging in again. `--format json` reports `organization_id`, `user_id`, `user_is_member`, `cancelled`, and a `clients` array of `client_id`, `name`, `kind`, `outcome`, and `error`.
+
+- **`rover api-key list` reports client-credential pairs alongside API keys - @dotdat**
+
+  `rover api-key list <ORGANIZATION_ID>` now also lists the organization's client-credential pairs, in a `Client-credential pairs` table after the existing API key table. `--format json` adds a `client_credentials` array (`key_type: "ClientCredentials"`, `client_id`, `name`, `graphs`, `scopes`, `created_at`, `created_by`) and a `key_type` field on every existing `keys` entry. A new `--type <operator|subgraph|client-credentials>` flag (repeatable) narrows which types are reported; a type excluded entirely is omitted from the JSON payload rather than reported as `[]`. Existing `keys`-only output is unchanged when an organization has no pairs, or when `--type` excludes them.
+
+  Pairs are paged and capped independently of API keys: by default, up to 100 are collected before returning, and a new `--limit <N>` flag overrides that cap. When more pairs exist beyond the cap, the command still succeeds, printing a resume note (and a JSON `client_credentials_next_after` cursor) that a new `--after <CURSOR>` flag accepts to continue from.
+
+- **`rover api-key rotate` mints a new secret for a client-credential pair - @dotdat**
+
+  `rover api-key rotate <ORGANIZATION_ID> <CLIENT_ID> [--grace-period-days <DAYS>]` rotates a pair's secret, printing the new client ID/secret/expiry to stdout (so CI setup can capture them) and a one-time reminder to stderr that the secret can't be shown again, alongside a warning naming when every previous secret stops working - immediately by default, or at the end of `--grace-period-days` when given. `--format json` reports `client_id`, `client_secret`, `secret_expires_at`, `grace_period_days`, and `previous_secrets_expire_at` under `key_type: "ClientCredentials"`. Rotating an ID that isn't a client-credential pair in that organization fails with a new, stable error code (`E057`) rather than silently doing nothing.
+
+- **`rover api-key delete` deletes client-credential pairs - @dotdat**
+
+  `rover api-key delete <ORGANIZATION_ID> <ID>` now accepts a pair's client ID as well as an API key's ID - no flag picks the type; Rover looks the ID up as a pair first. Deleting a pair confirms on stderr that it can no longer obtain tokens and that access tokens it already holds keep working until they expire, and `--format json` reports `key_type: "ClientCredentials"` alongside the existing `id`. Deleting an API key is unchanged, including for callers who can't see the organization's pairs.
+
+- **`rover api-key create` supports `client-credentials`, a new API key type for CI setup - @dotdat**
+
+  `rover api-key create <ORGANIZATION_ID> client-credentials <NAME> --graph-id <GRAPH_ID>... [--secret-lifetime-days <DAYS>]` registers an OAuth 2.0 client-credentials pair scoped to the named graphs, requesting exactly the `rover:cli` scope. On success it prints the client ID and secret to stdout (so CI setup can capture them) and a one-time reminder to stderr that the secret can't be shown again; `--format json` reports `client_id`, `client_secret`, `secret_expires_at`, `name`, `graphs`, and `scopes` under `key_type: "ClientCredentials"`. The pair is usable immediately by setting `APOLLO_CLIENT_ID`/`APOLLO_CLIENT_SECRET` to the reported values. Existing `operator`/`subgraph` behavior is unchanged.
+
+- **`rover plugin install` installs a plugin, under a new `plugin` noun - @SharkBaitDLS**
+
+  `rover plugin install <name>@<version>` does exactly what `rover install --plugin <name>@<version>` does, including `--force` and `--elv2-license`. `rover install --plugin` keeps working, but is now deprecated and prints a warning naming the `rover plugin install` command to use instead. With `--format json`, both report the plugin they installed under `data.plugins`, in the same shape `rover supergraph compose` uses. Plugin install errors now suggest `rover plugin install` too.
+
+- **New `rover config show` command reports every setting's effective value and which source supplied it - @dotdat**
+
+  `rover config show [--profile] [--format json]` reports every setting's effective value and which of a flag, an environment variable, an explicit profile, the project file, the default profile, or Rover's built-in default supplied it, along with any lower-precedence source it overrode. It also reports whether the active profile has a credential and where it came from, without ever printing the credential's value.
+
+- **Profiles can now store `APOLLO_REGISTRY_URL`, `APOLLO_TELEMETRY_URL`, and `APOLLO_TELEMETRY_DISABLED`; new `rover config set`/`unset` verbs - @dotdat**
+
+  `rover config set <SETTING> <VALUE> [--profile]` stores one of these settings on a profile, validating the value syntactically before storing anything, and creating a settings-only profile with no credential if it doesn't already exist. `rover config unset <SETTING> [--profile]` removes a stored setting; unsetting one that isn't stored is a no-op, not an error. Precedence is now, for these three settings: explicit flag > environment variable > the active profile > built-in default - a value stored on a profile takes effect only when neither the flag nor the environment variable supplies one. Run `rover config show` to see each setting's effective value and source. A value that fails its type's syntactic check now carries a stable `error.code` (`E054`) in `--format json`, alongside the existing message.
+
+- **Rover prints a notice when a profile setting redirects a network destination, or an environment variable silently overrides one - @dotdat**
+
+  A one-line `Note:` to stderr when a profile sets `APOLLO_REGISTRY_URL`/`APOLLO_TELEMETRY_URL` away from their defaults, or when an environment variable silently overrides one of `APOLLO_REGISTRY_URL`/`APOLLO_TELEMETRY_URL`/`APOLLO_TELEMETRY_DISABLED` on an explicitly selected profile (`--profile <name>`). At most one notice per setting per process; suppress all of them with the new `--no-config-notices` flag or `APOLLO_ROVER_NO_CONFIG_NOTICES` environment variable (neither a profile nor a project file can suppress them). Notices never appear in `--format json` output and never affect the exit code.
+
+- **A profile setting this version of Rover doesn't recognize now warns instead of being silently skipped - @dotdat**
+
+  For example, one written by a newer Rover version, or a typo. Rover warns once on stderr and otherwise ignores it, rather than silently doing nothing - so a config directory shared across Rover versions doesn't break the older one.
+
+- **`rover plugin install --no-download` never downloads - @SharkBaitDLS**
+
+  `rover plugin install --no-download` (or `APOLLO_ROVER_NO_DOWNLOAD=true`) uses a plugin that's already installed, and makes no connection to the plugin registry at all. If no installed release matches the version asked for, it fails straight away with the new error E058, naming the plugin, the version, the directory it looked in, and the control that disabled downloads, rather than downloading it anyway. `--skip-update` (or `APOLLO_ROVER_SKIP_UPDATE`) on `rover supergraph compose`, `rover dev`, `rover lsp`, and `rover connector` now fails the same way, with E058, when no installed release matches, where it used to report a generic "not installed" error; for `apollo-mcp-server@latest` it now finds the newest installed release of any version. The two controls are separate: `--no-download` doesn't affect the on-the-fly commands, and `APOLLO_ROVER_SKIP_UPDATE` doesn't stop an explicit `rover plugin install` from downloading.
+
+- **`rover plugin install` records what it installed in `plugin-versions.lock` - @SharkBaitDLS**
+
+  Each successful `rover plugin install` (or `rover install --plugin`) now records the plugin, the version it asked for, and the exact release it installed in `plugin-versions.lock`, beside the `bin` directory in `~/.rover` (or `$APOLLO_HOME/.rover`). Installing one plugin leaves every other entry as it was, so a floating version such as `2` recorded earlier keeps the release it was locked at. Other commands never write the file. A lockfile Rover can't read, including one written by a newer version of Rover, stops the install with error E052 naming the file, rather than being ignored or overwritten. Plugins installed into `APOLLO_NODE_MODULES_BIN_DIR` aren't recorded, and neither is a fallback to an already-installed release when the plugin registry can't be reached.
+
+- **`rover plugin install` installs into the project you're in - @SharkBaitDLS**
+
+  Run inside a project, meaning a directory that has a `.rover/` directory in it or in one of its parents, `rover plugin install` now puts the plugin in that project's `.rover/bin/` and records it in the project's `.rover/plugin-versions.lock`, leaving `~/.rover` untouched. `--format json` reports the install with `"level": "project"`. Outside a project nothing changes: Rover never creates a `.rover/` directory on its own, so the plugin installs into `~/.rover/bin/` (or `$APOLLO_HOME/.rover/bin/`) exactly as before. A `rover.yaml` that sets `install_root` at the level being installed into stops the install with error E052, since Rover doesn't support redirecting an install root yet.
+
+- **`rover plugin install --global` installs for the whole machine, even inside a project - @SharkBaitDLS**
+
+  `--global` (or `-g`) installs into `~/.rover/bin/` (or `$APOLLO_HOME/.rover/bin/`) and records the install in the global lockfile, leaving the project's `.rover/` untouched. For CI images that can't pass flags, `APOLLO_ROVER_GLOBAL=true` (or `1`) does the same.
+
+- **Commands that use a plugin look in the project first, then globally - @SharkBaitDLS**
+
+  Inside a project, `rover supergraph compose`, `rover dev`, `rover lsp`, and `rover connector` use a plugin installed in the project's `.rover/bin/` when it has the version needed, and otherwise one installed globally, so a plugin installed for the whole machine keeps working in a project that hasn't installed its own. `--format json` reports which level the plugin came from. A plugin these commands download still goes to `~/.rover/bin/`. Under `--skip-update`, a plugin installed at neither level fails with E058 naming both directories searched. A working directory Rover can't read, such as one that has since been deleted, counts as being outside any project.
+
+- **`rover plugin install --manifest-path` names the project to install into - @SharkBaitDLS**
+
+  `--manifest-path <FILE>` (or `-m`) installs into the project whose manifest `<FILE>` is, rather than the one found by searching up from the working directory: the plugin goes in a `bin/` directory beside the manifest, and the install is recorded in the `plugin-versions.lock` there. It can't be combined with `--global`, and is refused before anything is installed when `APOLLO_ROVER_GLOBAL` is set.
+
+- **`rover plugin install --manifest-path` creates the project it names - @SharkBaitDLS**
+
+  When the manifest `--manifest-path` names doesn't exist yet, a successful install creates it, along with any missing parent directories, the `bin/` the plugin goes in, the lockfile, and a `.gitignore` ignoring `bin/` so the binaries aren't committed while `rover.yaml` and `plugin-versions.lock` are. An existing `.gitignore` is left as it is. If the install fails, the directories it was creating are removed again. This is the only way Rover ever creates a project: no other command does.
+
+- **`rover supergraph compose`, `rover connector`, `rover lsp`, and `rover dev` take the `supergraph` version from `rover.yaml` - @SharkBaitDLS**
+
+  When neither `--federation-version` nor `federation_version` in `supergraph.yaml` sets it, these commands now use the `supergraph` version declared in a `.rover/rover.yaml` manifest: the project's, found by searching up from the working directory, and otherwise the global one in `~/.rover` (or `$APOLLO_HOME/.rover`). The flag, then `supergraph.yaml`, still win over both, so adding a manifest never changes what an existing repository composes with; when `supergraph.yaml` and the manifest disagree, Rover warns once that `supergraph.yaml` is overriding the manifest. A floating version declared in a manifest uses the exact release that level's `plugin-versions.lock` records, without asking the plugin registry. A manifest that its lockfile no longer matches stops the command with error E052, naming the `rover plugin install` that brings the lockfile up to date.
+
+- **`rover dev` takes the `router` and `apollo-mcp-server` versions from `rover.yaml` - @SharkBaitDLS**
+
+  When `--router-version` (or `APOLLO_ROVER_DEV_ROUTER_VERSION`) and `--mcp-version` (or `APOLLO_ROVER_DEV_MCP_VERSION`) aren't set, `rover dev` now uses the `router` and `apollo-mcp-server` versions declared in the project's or the global `rover.yaml`, pinned to the release the declaring level's `plugin-versions.lock` records, the same way it already takes the `supergraph` version. A composition version set by `--composition-version` or `APOLLO_ROVER_DEV_COMPOSITION_VERSION` now also stays in effect when `federation_version` in `supergraph.yaml` changes mid-session, as one set by `--federation-version` already did, since both outrank `supergraph.yaml`.
+
+- **`rover plugin install` with no plugin named installs what the lockfile records - @SharkBaitDLS**
+
+  Run with no `<NAME>@<VERSION>`, `rover plugin install` installs every plugin the `plugin-versions.lock` at the level it targets records, at exactly the release recorded there, the way `npm ci` installs from `package-lock.json`. It asks the plugin registry to resolve nothing, so a committed project lockfile installs the same releases on every machine. The level is chosen as it is for a named install: the project in scope, otherwise the global level, or whichever `--global` or `--manifest-path` names. A locked release the plugin registry no longer serves fails with error E051 naming the lockfile, rather than installing a neighbouring release. With neither a lockfile nor a `rover.yaml` there, the command fails, asking for a plugin to be named. `--format json` reports every plugin installed under `data.plugins`.
+
+- **`rover plugin install` with no plugin named also installs what `rover.yaml` declares - @SharkBaitDLS**
+
+  A plugin the target level's `rover.yaml` declares but its `plugin-versions.lock` doesn't record yet is resolved, installed, and added to the lockfile, while every plugin already locked keeps the release recorded for it: a floating version such as `2` is never re-resolved unless it's named on the command line. A locked release the manifest no longer allows, such as one locked at `2.1.0` and now declared `=2.2.0`, stops the install with error E052 before anything is downloaded, naming the `rover plugin install` that updates it.
+
+- **`rover dev` gains `--router-version`/`--composition-version`; `rover template` gains `--templates-api` - @dotdat**
+
+  `--router-version`/`APOLLO_ROVER_DEV_ROUTER_VERSION` and `--composition-version`/`APOLLO_ROVER_DEV_COMPOSITION_VERSION` are scoped to `rover dev`, matching the existing `--mcp-version` pairing; `--federation-version` still takes precedence over `--composition-version`, as it did over the env var before. `--templates-api`/`APOLLO_TEMPLATES_API` is scoped to `rover template` (`rover init` doesn't use the templates API - it fetches templates from GitHub - so it doesn't get this flag). All three were previously env-var-only.
+
+- **`--config-home`, `--rover-home`, and `--no-color` are new global flags - @dotdat**
+
+  `--config-home`/`APOLLO_CONFIG_HOME` overrides where Rover's config directory (profiles) lives; `--rover-home`/`APOLLO_HOME` overrides where Rover installs its binary and plugins. Both were previously env-var-only. `--no-color` is a new flag alongside the existing `NO_COLOR`/`APOLLO_NO_COLOR` environment variables, which keep their current deny-list parsing (unset, empty, `0`, and `false` count as unset; anything else disables color) unchanged.
+
+- **`--vcs-remote-url`, `--vcs-branch`, `--vcs-commit`, and `--vcs-author` are new global flags, paired with the existing `APOLLO_VCS_*` environment variables - @dotdat**
+
+  These override the Git context (remote URL, branch, commit, author) reported to GraphOS on check/publish. Previously env-var-only; the flag wins when both are set, and omitting both still falls back to the value inferred from the current directory's Git repository exactly as before.
+
+- **`--registry-url`, `--telemetry-url`, `--telemetry-disabled`, `--checks-timeout`, and `--download-host` are new global flags, each paired with their existing environment variable - @dotdat**
+
+  `APOLLO_REGISTRY_URL`, `APOLLO_TELEMETRY_URL`, `APOLLO_CHECKS_TIMEOUT_SECONDS`, and `APOLLO_ROVER_DOWNLOAD_HOST` were previously env-var-only and undocumented; they now have flag equivalents (`--registry-url`, `--telemetry-url`, `--checks-timeout`, `--download-host`), and the flag wins when both are set. `--telemetry-disabled` is a new flag alongside the existing `APOLLO_TELEMETRY_DISABLED` env var, which keeps its current presence-only behavior (any value, including `false`, disables telemetry) unchanged. Part of ROVER-451's Prerequisite slice; no existing behavior changes for anyone who doesn't pass these flags.
+
+- **`--log`, `--format`, `--client-timeout`, and the six `--oauth-*` flags now accept an environment variable equivalent - @dotdat**
+
+  `--log`/`APOLLO_LOG_LEVEL`, `--format`/`APOLLO_FORMAT`, `--client-timeout`/`APOLLO_CLIENT_TIMEOUT`, `--oauth-authorization-url`/`APOLLO_OAUTH_AUTHORIZATION_URL`, `--oauth-token-url`/`APOLLO_OAUTH_TOKEN_URL`, `--oauth-whoami-url`/`APOLLO_OAUTH_WHOAMI_URL`, `--oauth-revocation-url`/`APOLLO_OAUTH_REVOCATION_URL`, `--oauth-device-authorization-url`/`APOLLO_OAUTH_DEVICE_AUTHORIZATION_URL`, and `--oauth-client-id`/`APOLLO_OAUTH_CLIENT_ID` were previously flag-only. The flag wins when both are set; each flag's `--help` text now names its environment variable. No existing behavior changes: this is purely additive, part of ROVER-451's Prerequisite slice giving every global setting both a flag and an environment variable.
+
+- **`--profile` is now a global flag, accepted by every command - @dotdat**
+
+  Previously `--profile` was only defined on commands that talk to GraphOS; commands with no use for a credential (`rover template`, `rover docs`, `rover completion`, `rover update`, `rover install`, `rover info`, `rover explain`) rejected it as an unrecognized argument. It's now resolved once, globally, and every command accepts it — commands that don't use a credential simply ignore it. Omitting `--profile` still resolves to the `default` profile exactly as before; this is the first step of ROVER-451's configuration-precedence work and does not change behavior for anyone who doesn't pass `--profile` today.
+
+- **Add `--no-browser` to `rover auth login` - @dotdat**
+
+  `rover auth login --no-browser` uses the OAuth 2.0 Device Authorization Grant (RFC 8628) instead of the local browser/redirect-server flow: it prints a verification URL and code to enter from any device, then polls until you approve the request, for headless or browser-less environments. Ignores `--no-open`, since there's no local browser step to skip. The device authorization endpoint can be overridden with `--oauth-device-authorization-url`, matching the other OAuth endpoint overrides.
+
+- **Add `--preserve-comments` to `rover persisted-queries generate` - @ebylund**
+
+  Keeps the contiguous comment block directly above each operation in the generated operation body, instead of dropping it during normalization. Comments elsewhere in a document are still dropped. Off by default; manifests generated without the flag are byte-for-byte unchanged. Because an operation's ID is a hash of its body, enabling this changes the ID of every operation that has a preceding comment, so every client generating a manifest for the same graph must enable it too.
+
+- **Add `rover auth logout` - @dotdat**
+
+  `rover auth logout` revokes the OAuth session stored by `rover auth login` for the given `--profile` (or "default") — the access token and, if one was issued, the refresh token (RFC 7009) — then removes the local credential. Revocation is best-effort: if the OAuth server can't be reached, Rover still clears the local credential and warns instead of leaving you stuck "logged in" locally. Only meaningful for profiles logged in via `rover auth login`; running it against a profile holding a Personal API Key (from `rover config auth`) errors and points you at `rover config delete` instead.
+
+- **`rover auth whoami` reports how the current grant was established - @dotdat**
+
+  Gains a `Grant Type` row (`grant_type` in JSON): `Browser login`/`"authorization_code"` and `Device code (--no-browser)`/`"device_code"` for a profile logged in via `rover auth login`, `Client credentials`/`"client_credentials"` for an `APOLLO_CLIENT_ID`/`APOLLO_CLIENT_SECRET` exchange, or `Unknown — log in again to record it`/`"unknown"` for an OAuth login stored by an older Rover version that didn't record it. Omitted from text output (and `null` in JSON) for a Personal API Key, which has no grant at all. `rover auth login` now records which flow it used; `rover config whoami`'s output is unchanged.
+
+- **Print a one-time startup notice when `rover dev` runs with no GraphOS credentials - @SharkBaitDLS**
+
+  `rover dev` has always been able to compose and run a local router session with no API key, graph ref, or offline license — but running it that way gave no confirmation that this was expected, intentional behavior rather than a misconfiguration. It now prints `Running without GraphOS credentials. GraphOS Router Enterprise features and @connect are disabled. Pass --graph-ref, set APOLLO_KEY/APOLLO_GRAPH_REF, or pass --license to enable them.` once at startup, but only when nothing else already explained the gap (e.g. a `--graph-ref` or non-default `--profile` that couldn't resolve credentials still gets its existing, more specific warning instead).
+
+- **Add `rover contract preview` - @sirdodger**
+
+  `rover contract preview` previews a contract by applying include/exclude/hide-unreachable-types filters to a graph variant's current composed schema, without publishing a contract variant. It runs asynchronously on the server; by default Rover polls until the build completes (or `APOLLO_CHECKS_TIMEOUT_SECONDS` elapses), or pass `--async` to just start the build and check on it later with `--build-id`. Exits non-zero if composition or filtering fails.
+
+- **Add `rover subgraph preview` - @sirdodger**
+
+  `rover subgraph preview` composes a preview supergraph from hypothetical subgraph changes described by a `--subgraph-changes` YAML file (add/update a subgraph's schema or routing URL, or mark one `remove: true`), with optional include/exclude/hide-unreachable-types contract filters, without publishing anything. It runs asynchronously on the server; by default Rover polls until the build completes (or `APOLLO_CHECKS_TIMEOUT_SECONDS` elapses), or pass `--async` to just start the build and check on it later with `--build-id`. Exits non-zero if composition or filtering fails.
+
+  `rover subgraph delete`'s pre-confirmation build-error check now runs through this same async preview path instead of a synchronous dry-run mutation, avoiding a long-held server connection (and its timeout risk) while previewing the deletion of a subgraph from a large supergraph.
+
+- **Report contract variant visibility on `rover graph check` - @dotdat**
+
+  `rover graph check` now reports a downstream check summary for a graph's contract variants, in both text and JSON: how many were checked and their pass/fail breakdown, not just the names of variants that are blocking (previously, `graph check` reported nothing about contract variants at all). With `--include-contract-checks`, a blocking downstream contract failure also makes `graph check` exit non-zero, as it does for `subgraph check`.
+
+- **`rover graph publish` polls a triggered launch to completion - @dotdat**
+
+  `graph publish` now waits for the launch it triggers (and any downstream contract-variant launches) to finish before returning, and `--format json` gains `launch_url`, `launch_status`, `launch_superseded`, and `downstream_launches` fields reflecting the outcome.
+
+- **Report triggered downstream contract-variant launches on `rover graph publish` - @dotdat**
+
+  `rover graph publish` now reports which contract variants had a downstream launch triggered by the publish, with links to each — in text ("Triggered downstream launches for N contract variant(s): ...", printed to stderr) and as a `downstream_launches` JSON array alongside a `launch_url` field. Rover polls the publish's launch (and its downstream launches) to completion before reporting success, and fails the publish with E047 if the published variant's own launch didn't complete successfully. A failed downstream contract-variant launch is a warning, unless `--include-contract-checks` is passed. Nothing new prints when the publish triggered no downstream launches. stdout is unchanged for now (still just the schema hash on success) — a printed note warns that a future version will move this report into stdout, and points scripts that only need the hash at `--format json`'s `.data.api_schema_hash`. Note: like other Studio launch data fetched after the fact, this can race a concurrent publish to the same variant — a known limitation, not solved here.
+
+- **`rover subgraph publish` polls a triggered launch to completion - @dotdat**
+
+  `subgraph publish` now waits (bounded by `--checks-timeout`/`APOLLO_CHECKS_TIMEOUT_SECONDS`) for the launch it triggers (and any downstream contract-variant launches) to finish before returning, and `--format json` gains `launch_status`, `launch_superseded`, and `downstream_launches` fields reflecting the outcome.
+
+- **Report triggered downstream contract-variant launches on `rover subgraph publish` - @dotdat**
+
+  `rover subgraph publish` now reports which contract variants had a downstream launch triggered by the publish, with a link, in text (printed to stderr) and JSON. Fails the publish with E047 if the published variant's own launch didn't complete successfully. A failed downstream contract-variant launch is a warning, unless `--include-contract-checks` is passed.
+
+- **`rover supergraph compose`, `rover connector`, `rover dev`, and `rover lsp` report which plugin they used - @SharkBaitDLS**
+
+  Every run now prints one stderr line per plugin it resolved — name, exact version, and whether it was downloaded, already installed, or a fallback — even on cached runs, which previously printed nothing, e.g. `` Using the `supergraph` plugin v2.9.3 (downloaded). ``. `rover dev` and `rover lsp` print it too, once per plugin as they resolve it and again whenever it changes.
+
+- **`--format json` reports the plugins a run used - @SharkBaitDLS**
+
+  `data` gains a `plugins` array, one entry per plugin the run resolved, each with `name`, `version`, `source` (`downloaded`, `installed`, or `fallback`), `level` (`global` or `project`), and the `path` it ran from — the same information the stderr line carries, in a form a script can read. `rover supergraph compose` and every `rover connector` subcommand report the supergraph binary they ran on. The array is present whenever the run reached the composition stack at all, empty rather than missing, so nothing has to tell "no plugins" apart from an older Rover.
+
+  A run that fails reports it too, in the same place and the same shape, so a failed composition still answers which federation version rejected the schema — as does a run that resolved a plugin and then failed for some other reason. A run that never resolved one reports an empty array rather than a placeholder entry: the array describes what a run used, and a plugin that never resolved has no source, level, or path.
+
+  `rover dev` and `rover lsp` report each plugin on stderr as they resolve it, and again when it changes, rather than in JSON — their envelope is only rendered when the session exits, which is no moment a consumer is waiting on.
+
+- **Plugin install failures report their own error codes - @SharkBaitDLS**
+
+  When Rover can't obtain a plugin — for `rover install --plugin`, or on the fly for `rover supergraph compose`, `rover dev`, `rover connector`, and `rover lsp` — the error now carries a stable code under `error.code`, so a script can tell the failures apart: `E048` when the requested version can't be resolved against the plugin registry, `E049` when the artifact can't be downloaded, and `E050` when it can't be unpacked or written into the install directory. Each comes with a suggestion naming the plugin and what to do next, in place of the previous generic ones. Run `rover explain <CODE>` for details.
+
+  An exact version the registry has no artifact for is told apart from a failed download: a release the registry says was withdrawn (`410 Gone`) is reported as `E051`, naming where the version was set — `rover install --plugin`, a version flag, an environment variable, or `supergraph.yaml` — and the newest release in the same major to set there instead, and a version the registry never published (`404 Not Found`) is reported as `E048`.
+
+- **`config show` reports a setting with no built-in default as `none` (text) or `null` (JSON), not the string `"none"` - @dotdat**
+
+  `rover config show`'s `value` field is now `null` in `--format json` for a setting that falls all the way through to the builtin tier with no default of its own (currently only `APOLLO_GRAPH_REF`), rather than the literal string `"none"` - which is itself a valid value for some settings, so a script could no longer tell an unset setting apart from a real one that happened to be set to that string. Text output is unaffected, still rendering `none`.
+
+- **Profiles can now store `APOLLO_CHECKS_TIMEOUT_SECONDS` - @dotdat**
+
+  The same profile tier, `rover config show`/`set`/`unset` support, and override notice that `APOLLO_REGISTRY_URL`/`APOLLO_TELEMETRY_URL`/`APOLLO_TELEMETRY_DISABLED` already have now also cover `APOLLO_CHECKS_TIMEOUT_SECONDS`, which controls how long check/launch polling waits before giving up. A stored value that isn't a whole number of seconds fails the command at write time (`rover config set`) or read time, carrying the same stable `error.code` (`E054`) the other settings' invalid values do.
+
+- **Profile-stored OAuth endpoint settings now take effect - @dotdat**
+
+  `rover config set` already accepted `APOLLO_OAUTH_AUTHORIZATION_URL`, `APOLLO_OAUTH_TOKEN_URL`, `APOLLO_OAUTH_DEVICE_AUTHORIZATION_URL`, `APOLLO_OAUTH_REVOCATION_URL`, `APOLLO_OAUTH_WHOAMI_URL`, and `APOLLO_OAUTH_CLIENT_ID`, but nothing read the stored value - the `--oauth-*` flags always resolved to their built-in default first. They now go through the same profile tier as every other setting (flag > environment variable > profile > built-in default), appear in `rover config show`, and print the one-line override notice when a profile redirects an endpoint - only for the endpoints the running `rover auth` subcommand uses. An invalid stored value fails the command with `error.code` `E054`.
+
+- **Groundwork for project-file settings: the `settings:` section of `rover.yaml` - @dotdat**
+
+  Adds the rules for reading a `settings:` section from a project's `rover.yaml`, which later changes in this release wire up. A key may be a setting's canonical name (`APOLLO_REGISTRY_URL`) or its all-lowercase form (`apollo_registry_url`). An unrecognized key gets a warning and is ignored. A credential (`APOLLO_KEY`, `APOLLO_CLIENT_ID`, `APOLLO_CLIENT_SECRET`) fails the command with `error.code` `E060`. A setting spelled both ways fails it with `E061`.
+
+- **`rover.yaml`'s JSON schema documents the `settings:` section - @dotdat**
+
+  The project manifest's `settings:` section is read separately from `plugins:`, so a problem in one section never refuses the other. That holds even for a repeated key under `plugins:`. These cases print a warning and apply nothing, instead of failing the command:
+
+  - a `settings:` section in the user-level `rover.yaml`, whose warning points at `rover config set`
+  - a project manifest Rover can't read or parse at all
+  - a top-level YAML merge key (`<<`)
+
+- **Every command checks the project's `rover.yaml` `settings:` section before it runs - @dotdat**
+
+  Run inside a project, every command first reads the `settings:` section of the `rover.yaml` that plugin discovery finds. A credential in that section fails the command before it sends any request, including the update check (`E060`), as does one setting spelled both ways (`E061`). In these cases Rover prints one warning and the command carries on:
+
+  - an unrecognized key
+  - a `settings:` section in the user-level `rover.yaml`
+  - a project manifest Rover can't read or parse
+
+  Outside a project, nothing changes.
+
+- **Project-file settings take effect, between an explicit profile and the default profile - @dotdat**
+
+  A value under `settings:` in the project's `rover.yaml` now applies to every command run in that project, for every setting `rover config set` accepts. The full order is: flag, environment variable, a profile named with `--profile` (including `--profile default` typed literally), the project file, the `default` profile, then Rover's built-in default. This covers `APOLLO_TELEMETRY_URL` and `APOLLO_TELEMETRY_DISABLED` too. A stored `false` in the file is a typed boolean and leaves telemetry enabled. A value that fails validation fails the command with `error.code` `E054`, naming the file and the key as written. Rover never falls back to a lower tier. Without a project file, every value resolves exactly as before.
+
+- **Notices for project-file settings - @dotdat**
+
+  A project file that redirects a network destination (for example, `APOLLO_ROVER_DOWNLOAD_HOST`) prints ``Note: `rover.yaml` sets `APOLLO_ROVER_DOWNLOAD_HOST` to `https://mirror.example.com`.`` once, the first time Rover sends a request there. An environment variable overriding a project-file value prints a notice too, worded like the one for overriding an explicitly selected profile. A profile named with `--profile` outranking the project file prints nothing about the file. As with every configuration notice, only `--no-config-notices` or `APOLLO_ROVER_NO_CONFIG_NOTICES` can suppress these, not a key in the project file itself.
+
+- **`rover config show` reports project-file settings - @dotdat**
+
+  A setting supplied by the project's `rover.yaml` now reports `source: "project_file"`, under its canonical name even when the file uses the lowercase spelling. Every lower-precedence value it beat, or that beat it, is listed under `overridden`, highest first. A losing value is reported as stored, even if it wouldn't pass validation; a winning value that fails validation fails the command with `E054`, as it does everywhere else. When an invalid stored `APOLLO_TELEMETRY_URL` or `APOLLO_TELEMETRY_DISABLED` is ignored in favor of the built-in default, every stored value for it is still listed under `overridden`. Like every other command, `config show` fails inside a project whose `rover.yaml` names a credential (`E060`) or spells one setting both ways (`E061`).
+
+- **Profiles can now store `APOLLO_CLIENT_TIMEOUT` - @dotdat**
+
+  The same profile tier, `rover config show`/`set`/`unset` support, and override notice that `APOLLO_CHECKS_TIMEOUT_SECONDS` already has now also cover `APOLLO_CLIENT_TIMEOUT`, which bounds how long Rover waits on an individual HTTP request before giving up - distinct from `--checks-timeout`'s polling budget. A profile-resolved value also extends to plugin downloads' longer timeout, the same way an explicit `--client-timeout` already did. A stored value that isn't a whole number of seconds fails the command at write time (`rover config set`) or read time, carrying the same stable `error.code` (`E054`) the other settings' invalid values do.
+
+- **Profiles can now store `APOLLO_ROVER_DOWNLOAD_HOST` - @dotdat**
+
+  The same profile tier, `rover config show`/`set`/`unset` support, and override notice as `APOLLO_REGISTRY_URL`/`APOLLO_TELEMETRY_URL` now also cover `APOLLO_ROVER_DOWNLOAD_HOST`, which redirects where Rover downloads plugin binaries (the `router`/`supergraph` composition plugins, and the MCP server binary) from. A stored non-default value prints the same one-line notice a profile-stored registry or telemetry override already does, the first time a plugin download actually happens - a command that never downloads anything prints no notice.
+
+- **Profiles can now store `APOLLO_TEMPLATES_API` for `rover template` - @dotdat**
+
+  `rover template use`/`list` now resolve `APOLLO_TEMPLATES_API` through the same profile tier as every other profile-eligible setting, and `rover config show`/`set`/`unset` report and store it. `rover init`'s own template source is unaffected for now - it fetches templates through a separate, GitHub-based path this doesn't touch yet.
+
+- **Profiles can now store `APOLLO_GRAPH_REF` - @dotdat**
+
+  A profile (or the active environment) can now supply `APOLLO_GRAPH_REF`, reported and stored through `rover config show`/`set`/`unset` like every other profile-eligible setting. This setting has no flag of its own - `--graph-ref` is a separate, per-invocation argument unaffected by this change - and it drives one thing: `rover dev` forwards it to the spawned router to enable GraphOS Router Enterprise features, exactly as if the environment variable had been set directly. It's never used to select what a command (schema retrieval, checks, publishes) acts on.
+
+- **Add `rover auth login` - @dotdat**
+
+  `rover auth login` authenticates via OAuth 2.0 (PKCE authorization-code flow): it opens your browser, completes the login against Apollo's Identity service, and stores the resulting session the same way `rover config auth` stores a Personal API Key (`--profile <name>` works the same way). Uses a static, pre-registered OAuth client (one per environment) rather than registering a new client per install; the top-level `--oauth-authorization-url`/`--oauth-token-url`/`--oauth-client-id` flags override the defaults (Apollo's production OAuth server and its registered `rover` client) for testing against other environments. These are top-level flags, not ones scoped to `auth login`, so they'll also apply to any future command that needs to refresh an OAuth token. The authorization URL is always printed to stderr regardless of whether a browser opens; pass `--no-open` to skip the open attempt entirely — useful over SSH or in any environment without a browser.
+
+- **Add `rover auth whoami` - @dotdat**
+
+  `rover auth whoami` displays the identity of the currently authenticated profile. For a profile logged in via `rover auth login`, it queries the OAuth identity provider's `/userinfo` endpoint directly and shows the account's name, email, and user ID; for a profile still using a legacy Personal API Key (via `rover config auth` or `APOLLO_KEY`), it falls back to the same Apollo Studio lookup `rover config whoami` already does. `rover config whoami` itself is unchanged aside from a new stderr note pointing at `rover auth whoami` going forward. Both lookups now go through a `tower` retry/timeout policy (bounded per-attempt timeout, exponential-backoff retry on transient failures) — the OAuth REST call didn't have either before, so a hung connection or a flaky identity provider could previously leave the command stuck indefinitely. The new `--oauth-whoami-url` flag overrides the `/userinfo` endpoint the same way the existing OAuth endpoint flags do.
+
+- **Add OAuth 2.0 client credentials authentication for CI - @dotdat**
+
+  If `APOLLO_CLIENT_ID` and `APOLLO_CLIENT_SECRET` are both set, Rover now exchanges them for an access token via the OAuth 2.0 client credentials grant (RFC 6749 §4.4) and uses it exactly as it would an `APOLLO_KEY` — no new subcommand, no stored session, no other behavior change. This is meant for CI/machine-to-machine use where the interactive, browser-based `rover auth login` isn't an option. Precedence is unambiguous: `APOLLO_KEY` still always wins; if it's unset and both client-credentials env vars are present, the exchanged token is used instead; otherwise Rover falls back to whatever a stored profile already resolves to, unchanged. Setting only one of `APOLLO_CLIENT_ID`/`APOLLO_CLIENT_SECRET` is treated as a configuration error rather than silently falling through to a stored profile. The exchange reuses the same OAuth token endpoint `rover auth login` does (override with `--oauth-token-url`).
 
 ## 🐛 Fixes
 
+- **`rover auth login --no-browser` works against GraphOS - @dotdat**
+
+  The device-code login failed before it started, with "failed to request a device code: Failed to request a device code". Three things were wrong:
+
+  - Rover asked for a device code at `https://auth.apollographql.com/oauth2/device/authorize`, which doesn't exist. The endpoint the server advertises is `https://auth.apollographql.com/oauth2/device_authorization`, now the default for `APOLLO_OAUTH_DEVICE_AUTHORIZATION_URL`.
+  - Rover's OAuth client was registered before the registration asked for the device-code grant, so the server refused it with `unsupported_grant_type`. Rover now uses a client registered for both the browser and the device-code login: the default `APOLLO_OAUTH_CLIENT_ID` is now `UOsTLIgQb6eFevYcnQewoCDJZagFswCfESvr1hdIU8w`.
+  - The server's answer pointed at a Studio page that doesn't take the code. Rover now sends you to `/device` on the OAuth server, `https://auth.apollographql.com/device`, and no longer prints the server's "Or open this URL directly" link.
+
+  When the server refuses the request, the error now includes its reason, for example `Failed to request a device code: Server returned error response: unsupported_grant_type: Unsupported grant type`. A login made before this change keeps working until it expires. Logging out of one may print a warning that the old token couldn't be revoked; the credential is still removed.
+
+- **A masked credential has the same width however long it is - @dotdat**
+
+  `rover auth whoami`, `rover config whoami` and debug logs mask a credential by keeping its first and last four characters, but they put one `*` in place of every hidden character. An OAuth access token runs to about 2,000 characters, so after `rover auth login` every row of `rover auth whoami`'s table was over 2,000 characters wide. The hidden part is now always eight `*`, for example `eyJr********Qw8A`, for API keys too. A key of eight characters or fewer, which was printed in full, is now masked entirely as `********`. Masking a very short key (one to three characters) also no longer panics in debug builds.
+
+- **A failed `publish --check` is E043, and `--format json` reports the check result - @dotdat**
+
+  When `rover graph publish --check` or `rover subgraph publish --check` stopped because the check failed, it exited with "Schema checks must pass before publishing. Fix the check failures above and try again." and no error code, and `--format json` reported `"data": null`. It now fails with E043, the code `rover graph check` and `rover subgraph check` use for a failed check, and `data` carries the check result in the same shape as the check commands' JSON, with `json_version` `"3"`. The message is unchanged.
+
+- **`rover graph publish` and `rover subgraph publish --format json` keep the publish response when the launch wait times out - @dotdat**
+
+  When either command stopped waiting for the launch it triggered, it failed with E065 and `data` held nothing but `"success": false`, losing `api_schema_hash` and the rest of the response though the schema was published. `data` now carries the publish response, as it already does for a failed launch (E047), with `launch_status` `null` because Rover stopped waiting before it learned the outcome.
+
+- **A failed contract-variant launch fails `rover graph publish` and `rover subgraph publish` only with `--include-contract-checks` - @dotdat**
+
+  Both commands wait for the launches a publish triggers, and exited non-zero with E047 when any downstream contract-variant launch failed, though the schema was published and 0.x didn't fail on it. By default, a failed contract-variant launch is now a warning on stderr ("Warning: The publish succeeded, but a downstream contract launch failed: mobile. Pass --include-contract-checks to make this fail the command."), the command exits zero, and `--format json` reports no `error` while `data.downstream_launches` still shows the launch as `FAILED`. Pass `--include-contract-checks`, which already makes a blocking contract variant's failed check fail `publish --check`, to fail with E047 as before. A failed launch of the published variant itself still fails with E047 either way.
+
+- **`--background` on `rover graph publish` and `rover subgraph publish` is deprecated - @dotdat fixes ROVER-495**
+
+  Both commands listed `--background` in `--help` through the shared check options, but never read it: `publish --check` always waits for the check, because the check decides whether the publish happens. The flag now belongs to `rover graph check` and `rover subgraph check`. The publish commands still accept it, hidden from `--help` and with no effect, and print a warning that it has moved and will be removed from them in a future version.
+
+- **`rover dev` and `rover lsp` use `APOLLO_HOME` for a mid-session `federation_version` change - @dotdat PR #3996**
+
+  When `supergraph.yaml`'s `federation_version` changed during a session, the new `supergraph` plugin was looked for, and downloaded into, `~/.rover/bin`, ignoring `APOLLO_HOME` and `--rover-home`. It now uses the same location the session started with.
+
+- **`rover plugin install` confirms an install that downloads nothing - @dotdat**
+
+  A plugin that was already installed (a re-run, `--no-download`, or a floating version satisfied by what was on disk) made `rover plugin install` exit successfully without printing anything, so it looked as though nothing had happened. It now says on stderr which plugin and version it found and where, for example "the 'supergraph' plugin v2.9.3 is already installed at …". A download still reports itself as before, and `--format json` is unchanged.
+
+- **Plugin failures in `--format json` name the plugin and the requested version - @dotdat PR #3994 fixes ROVER-503**
+
+  A plugin install or resolution failure (E048 to E052 and E058) reported only `error.message` and `error.code`, so a script had to parse the message to learn which plugin failed. `error` now also carries `plugin` and `requested_version` (for example `"router"` and `"=2.9.9"`). Failures that are about a manifest or lockfile rather than a plugin don't carry them. `data` on such a failure now has `"plugins": []`, as it does for a composition that failed before using one, instead of no `plugins` key.
+
+- **`rover dev` fails on an invalid `--composition-version` - @dotdat PR #3993 fixes ROVER-502**
+
+  `rover dev --composition-version =2.15.2` (or `2`) printed an error about the doubled `=` and then carried on with a different composition version. An invalid `--composition-version`, or `APOLLO_ROVER_DEV_COMPOSITION_VERSION`, now fails the command before it starts, with a message that says to use an exact version such as `2.9.0`, with no leading `=`.
+
+- **Refusing Federation 1 has its own error code, E064 - @dotdat PR #3984 fixes ROVER-493**
+
+  A request for Federation 1 (`federation_version: 1`, `latest-0`, `latest-1` or `=0.x`, `rover plugin install supergraph@1`, or a Federation 1 `rover init` template) was refused with a plain `error:` and `error.code: null` in `--format json`. It now carries E064, which `rover explain E064` describes. `rover plugin install` and `rover install --plugin` now refuse it when they run rather than while parsing arguments, so `--format json` reports it in the usual `error` envelope. A bare `rover plugin install` refuses a Federation 1 version declared in the manifest or recorded in the lockfile too, instead of downloading it.
+
+- **`rover dev` reports a missing supergraph plugin as E058 - @dotdat fixes ROVER-501**
+
+  With no `supergraph` plugin installed and automatic downloads turned off, `rover dev` printed "Error occurred when composing supergraph" with no error code and kept waiting for a composition that could never happen. It now fails with E058 and the guidance to run `rover plugin install` or set `APOLLO_ROVER_ALLOW_AUTOMATIC_DOWNLOAD`, as `rover supergraph compose` does.
+
+- **`rover auth login --no-open` stops saying it's opening your browser, and `rover auth logout` keeps your settings - @dotdat fixes ROVER-500**
+
+  - `--no-open` still printed "Opening your browser to authenticate. If it doesn't open automatically, visit this URL: …". With it, Rover now just prints "Visit this URL to authenticate: …".
+  - `rover auth logout` deleted the whole profile, including settings stored with `rover config set`. It now removes only the credential, as the profile-configuration spec requires, and a profile left with no settings is still removed entirely.
+
+- **`rover init` handles OAuth logins, bad pasted keys and a missing terminal properly - @dotdat fixes ROVER-499**
+
+  - A `rover auth login` credential is accepted. `rover init` counted an OAuth token as no key at all and refused it with "Invalid API key found".
+  - A key pasted at `rover init`'s prompt is checked with the registry before the command says it was saved. A key the registry refuses is removed from the profile again, rather than staying stored for every later command to fail on with E013.
+  - With no credential and no terminal to prompt on, `rover init` now says so and points at `rover auth login` and `APOLLO_KEY`, instead of failing with "Unexpected system error: IO error: not a terminal … This isn't your fault!"
+
+- **A `=1.x.y` Federation pin is refused instead of quietly composing on Federation 2 - @dotdat fixes ROVER-498**
+
+  `federation_version: =1.0.0` in `supergraph.yaml` isn't a version the supergraph plugin's parser accepts, so Rover dropped the config's version and carried on with the latest Federation 2, ignoring the pin. It now fails with the Federation 1 message, as `=0.x`, `1` and `latest-1` already did. `--federation-version =1.0.0` (and `v1.2.3`, `=0.10.0`) fail with the same message, and the error for a value that isn't a supported version no longer offers `1`, which Rover refuses.
+
+- **`rover subgraph delete --confirm` no longer says it's checking for build errors - @dotdat fixes ROVER-497**
+
+  `--confirm` skips the dry-run preview of the build errors a delete might cause, but the command still printed "Checking for build errors resulting from deleting subgraph…" first. The message now appears only when the preview actually runs.
+
+- **Publish launch-wait messages read correctly, and the timeout has an error code, E065 - @dotdat fixes ROVER-496**
+
+  When `rover graph publish` or `rover subgraph publish` stopped waiting for its launch, the error said "Timed out waiting for the launch to complete, or raise APOLLO_CHECKS_TIMEOUT_SECONDS.", a sentence missing its clause, and carried no code. It now says "Timed out waiting for the launch to complete.", with the suggestion to raise the timeout beneath it, and carries E065, which `rover explain E065` describes. One failed downstream contract launch is now reported as "a downstream contract launch failed" instead of "downstream contract launch failed".
+
+- **A malformed API key is reported as E014 by more commands - @dotdat PR #3982 fixes ROVER-491**
+
+  `APOLLO_KEY=notakey rover config whoami` reported E013 (the registry didn't recognize the key) instead of E014 (the key is malformed), because the registry's rejection of it wasn't checked against the key's shape. `rover config whoami`, `rover graph check`, `rover subgraph check`, `rover init` and the contract and subgraph previews now check it, as the commands that fetch and publish already did.
+
+- **`rover explain` honors `NO_COLOR` and `--no-color` - @dotdat fixes ROVER-490**
+
+  `rover explain` styled its rendered markdown with ANSI escape sequences even with `NO_COLOR=1` (or `APOLLO_NO_COLOR`, or `--no-color`), or when stdout wasn't a terminal. It now prints plain text in each of those cases.
+
+- **E020 points new users at `rover auth login` and client credentials - @dotdat fixes ROVER-487**
+
+  With no configuration profiles, commands like `rover auth whoami` failed with E020, whose suggestion only mentioned `rover config auth` and `$APOLLO_KEY`. It now leads with `rover auth login` and mentions `$APOLLO_CLIENT_ID`/`$APOLLO_CLIENT_SECRET` for CI; the E020 explanation says the same.
+
+- **`--query-percentage-threshold` keeps its value - @dotdat fixes ROVER-494**
+
+  `rover graph check`, `rover subgraph check` and `publish --check` turned any `--query-percentage-threshold` below `100` into `0`, so the threshold silently did nothing, and rejected decimals. `--query-percentage-threshold 25` now sends `0.25`, and values like `0.5` are accepted.
+
+- **`rover auth logout` and E024 suggest a `rover config delete` command that works - @dotdat fixes ROVER-486**
+
+  Both told you to run `rover config delete --profile <NAME>`, but `config delete` takes the profile name as a positional argument, so following the suggestion failed with a missing-argument error. They now suggest `rover config delete <NAME>`.
+
+- **`APOLLO_GRAPH_REF` is validated the same way from every source - @dotdat fixes ROVER-488**
+
+  An invalid `APOLLO_GRAPH_REF` was rejected with E054 when stored on a profile or in `rover.yaml`, but accepted from the environment and reported as-is by `rover config show`; it is now rejected there too. An invalid `APOLLO_GRAPH_REF` in `rover.yaml` also failed `rover config show` but not `rover config list`, unlike every other setting; commands that resolve settings now fail on it consistently.
+
+- **`rover plugin install` warns when a plugin version uses a legacy spelling - @dotdat fixes ROVER-489**
+
+  `rover plugin install supergraph@latest-2` and `@vX.Y.Z` worked silently. They still work, and now print a deprecation warning naming the modern spelling (`2`, `=X.Y.Z`), once per distinct spelling. `rover install --plugin` shares the argument and warns the same way.
+
+- **`rover --help` opens with Rover's own description again - @dotdat**
+
+  `rover --help` and `rover help` printed an internal note about the `--oauth-*` flags where Rover's description and getting-started steps belong, in every build since OAuth stopped being an optional feature. `rover -h` was unaffected.
+
+- **`rover auth grants revoke --all` lists every pair instead of failing before it revokes anything - @dotdat**
+
+  The sweep lists every client-credential pair in the organization before revoking, and asked the Platform API for all of them in one page size that overflowed to `-1`, so the listing was refused with "'first' must be positive, but -1 was given" and nothing was revoked. Each page now asks for at most 50 pairs, and the listing pages through the rest. `rover api-key list` with a `--limit` too large for a GraphQL `Int` is fixed the same way.
+
+- **Setting errors name a command that exists - @dotdat**
+
+  `rover config set` and `rover config unset` now tell you why a setting can't be stored in a profile, and which flag to pass instead. For example, `rover config set APOLLO_VCS_COMMIT abc123` says "`APOLLO_VCS_COMMIT` can't be stored in a profile. It describes a single invocation rather than an environment. Pass `--vcs-commit`, or set `APOLLO_VCS_COMMIT` in the environment." Previously it said the name wasn't a Rover setting at all. The same settings in a project's `rover.yaml` now get the "can't be set in a project file" warning. The error for a credential in `rover.yaml` (`E060`) now suggests `rover config auth`, which every build has, instead of `rover auth login`.
+
+- **`rover plugin install --manifest-path` reads that project's settings - @dotdat**
+
+  With `--manifest-path`, `rover plugin install` now reads the `settings:` section of the manifest it names, not of the project found from the working directory, so a project's `APOLLO_ROVER_DOWNLOAD_HOST` applies to the install it asked for. Messages about that file name it by its own file name, such as `rover-ci.yaml`, rather than `rover.yaml`. Project settings and plugins are also now found by the same discovery code, so the two can't disagree about where a project is.
+
+- **A response Rover can't parse now says where it failed - @dotdat**
+
+  When a GraphOS response couldn't be parsed, Rover reported only `Deserialization error` (`E012`), leaving no way to tell a non-JSON reply (an outage or proxy page) from a response of the wrong shape. The message now names the HTTP status, whether the failure was a syntax error (not JSON at all) or a data error (JSON of the wrong shape), and the line and column. It still never quotes the response body, which may hold a secret.
+
+- **`rover lsp` honors `APOLLO_HOME` (`--rover-home`) - @SharkBaitDLS**
+
+  `rover lsp` installed and looked for its `supergraph` plugin under `~/.rover` even when `APOLLO_HOME` (or `--rover-home`) moved Rover's home elsewhere, unlike every other plugin-using command. It now uses the same Rover home they do.
+
+- **An empty `APOLLO_HOME` no longer installs Rover and its plugins into the working directory - @SharkBaitDLS**
+
+  An exported but empty `APOLLO_HOME` (or `--rover-home ""`) used to place `.rover/` under whatever directory you ran Rover from, so `rover install` and plugin installs scattered copies across your projects and missed the ones already in `~/.rover`. An empty value now counts as unset, and Rover uses `~/.rover` as it does when the variable isn't set at all. On a machine with no home directory, that means Rover now reports the missing home directory rather than installing into the working directory. An empty `APOLLO_NODE_MODULES_BIN_DIR` likewise counts as unset.
+
+- **A profile with stored settings and no credential now names itself when a command needs its credential - @dotdat**
+
+  A profile created with `rover config set` (settings only, no credential yet) used to fail any command that then needed its credential with an opaque filesystem error. It now fails with "Profile `<name>` has settings but no credential. Run `rover auth login --profile <name>`, or set `APOLLO_KEY` in the environment."
+
+- **`rover config whoami` no longer rejects a valid client-credentials identity - @briangeorge**
+
+  `APOLLO_CLIENT_ID`/`APOLLO_CLIENT_SECRET` authenticates as a service account, but `rover config whoami` only ever recognized `User`/`Graph` actor types and rejected everything else — including a fully valid, successfully-authenticated service account — with "The key provided is invalid. Rover only accepts personal and graph API keys". `Actor` (and the platform API response mapping that produces it) now has a `SERVICE_ACCOUNT` variant, so a service-account identity passes through cleanly, reporting `Key Type: Service Account` and its id under `User ID` (there's no dedicated field for it yet, and it's the closest existing fit).
+
+- **Plugin version lookups honor the global HTTP settings and retry transient failures - @SharkBaitDLS**
+
+  Resolving a floating plugin version (`latest-2`, `latest`) — the lookup `rover supergraph compose`, `rover dev`, `rover connector`, `rover lsp`, and `rover install --plugin` make before downloading — used its own HTTP client. It ignored `--client-timeout` and `--insecure-accept-invalid-certs`/`--insecure-accept-invalid-hostnames`, had no timeout at all (a hung registry connection could stall a run indefinitely), and failed on the first transient error. It now uses Rover's configured client, bounds each attempt at 10 seconds, and retries connection failures, timeouts, and 5xx/408/425/429 responses for up to 10 seconds (or `--client-timeout`, if shorter) before falling back to an already-installed plugin or failing.
+
+- **Composition and related errors no longer print their cause twice - @SharkBaitDLS**
+
+  A number of error types (`supergraph compose`'s Federation Version/binary-install/subgraph-resolution errors, the LSP's composition-pipeline error, the router config address parser, and several errors in `rover-client`, `rover-http`, `rover-graphql`, and `rover-storage`) embedded their underlying cause's message directly in their own text while also registering that same cause as the error's `source`. When such an error surfaced through Rover's normal error-chain rendering, this produced the same message twice — once inline, once again under "Caused by:". These errors now describe only their own context; the cause still renders, exactly once, in the "Caused by:" section.
+
+  Some of these errors also reach users through call sites that print an error directly rather than walking its chain — `rover dev`'s composition output, the language server's diagnostics, and a couple of credential-store warnings. Those now render the full chain explicitly, so the cause is still shown there rather than being dropped along with the duplicate.
+
+- **`rover supergraph compose` no longer prints a blank line to stderr when composition raises no hints - @SharkBaitDLS**
+
+  Composition hints were rendered with a trailing newline and then printed with another, and an empty hint list still printed the empty string — so a run with nothing to say emitted a bare blank line to stderr, and a run that did raise hints ended them with a doubled newline. Hints now print without the extra newline, and produce no stderr output at all when there are none. stdout is unchanged, so a redirected supergraph schema is unaffected.
+
+- **`rover supergraph compose` no longer mislabels a failure to create its temporary directory - @SharkBaitDLS**
+
+  If Rover couldn't create the temporary directory it writes the resolved supergraph config into, it reported "Failed to run the composition binary" and dropped the underlying cause entirely — describing a step it had not reached, and saying nothing about the one that failed. It now names the real step and shows the cause.
+
+- **Stop warning that a floating `federation_version` will become an error - @SharkBaitDLS**
+
+  `rover supergraph compose` warned that "future versions ... will fail without an exact federation version". It now describes the actual risk of leaving the version floating: each run composes with whatever released most recently, which can change your supergraph schema or outrun your router. The nudge to pin is unchanged, and `rover dev` and the language server stay silent as before.
+
+- **`rover graph publish`/`subgraph publish --format json` keep the publish response when a triggered launch fails - @dotdat**
+
+  When a launch fails, the schema publish itself has still succeeded. A failed launch of the published variant, or, with `--include-contract-checks`, a failed downstream contract-variant launch, makes either command fail with `E047`, and `--format json` keeps the full publish response in `data` (`api_schema_hash`, `launch_status`, `launch_superseded`, `downstream_launches`, and so on) alongside the coded error, instead of reporting `"data": null` with no `error.code`.
+
+- **`rover connector test` now exits non-zero and reports `success: false` when the suite fails - @benjamn**
+
+  A failing connector test suite makes the `supergraph test-connectors` binary exit 1, but Rover's shared execution helper whitelisted exit 1 as success (correct for `compose`, where it means "composed with build errors"), so Rover reported success and exited 0 on failing runs — and `--format json` told machines `{"data": {"output": "", "success": true}}`. The exit-code policy is now per-subcommand, and `test-connectors` treats only exit 0 as success, matching the exit-code contract documented in the Apollo-Connectors-CLI README.
+
+- **`rover subgraph check --include-contract-checks` fails on an actually-failed blocking downstream contract check, even when the overall workflow status hasn't caught up - @dotdat**
+
+  `subgraph check`'s exit code only ever looked at the overall check-workflow status, never at the downstream task's per-variant data, so a blocking downstream contract check that had genuinely failed could be missed entirely if Studio's aggregate status hadn't caught up yet — the command would report success and exit zero. With `--include-contract-checks` it now escalates to a failure whenever any downstream variant is an actual blocking failure, the same `DownstreamCheckResponse::has_blocking_failure` gate `graph check` already uses, bringing `subgraph check`'s exit code and JSON `downstream.task_status` in line with `graph check`'s existing behavior. Supersedes the stale, unmerged #3377.
+
+- **Surface the underlying GraphQL errors when a response has no `data` field - @sirdodger**
+
+  Requests that returned GraphQL errors alongside a null/missing `data` field previously showed a generic message instead of the actual error text. `GraphQLServiceError::NoData` now maps to the underlying errors (joined by newline) when there are any, falling back to the generic "No data field provided" message only when the response truly carried no errors either.
+
+- **Restore the `--license` flag on `rover dev` - @SharkBaitDLS**
+
+  `rover dev --license <path>` let you start a local router session with an [offline enterprise license](https://www.apollographql.com/docs/router/enterprise-features/#offline-enterprise-license), no GraphOS credentials or network calls required. The flag survived a `rover dev` internals rewrite, and kept appearing in `--help` and linking to real router docs, but the code that actually read it was deleted along the way — passing `--license` silently did nothing. It's wired back up now, forwarded to the router the same way it always was, independent of whatever `--graph-ref`/`APOLLO_KEY` credentials are also resolved.
+
+- **Fail immediately on errors that a retry can't fix - @SharkBaitDLS**
+
+  A rejected API key, a permissions failure, or a bad endpoint URL used to be retried repeatedly for the full `--client-timeout` (30 seconds by default) before Rover said anything, so a mistyped key or URL took the better part of a minute to report. These now fail as soon as the answer comes back. Rate limits and server errors are still retried, since those do clear up on their own.
+
+- **Stop reporting a malformed API key when the format is fine - @SharkBaitDLS fixes #1171**
+
+  A revoked, expired, or unrecognized API key used to fail with `error[E014]: The API key you provided is malformed.`, sending you off to fix a format that was already correct. `E014` is now reserved for keys that genuinely aren't shaped like `user:my-username:secretkey` or `service:graph-id:secretkey`. Anything else the registry turns down reports `error[E013]: The registry did not recognize the provided API key`, so you're pointed at whether the key is still valid rather than at how it looks. Introspecting your own subgraph no longer blames your Apollo credentials either.
+
+- **Fix interactive confirmation prompts not waiting for input when stdout (but not stdin) is redirected - fixes #1455**
+
+  `y/N` confirmation prompts (the ELv2 license acceptance prompt, `rover graph delete`/`rover subgraph delete` confirmations) checked whether *stdout* was attached to a terminal before reading an answer. Redirecting stdout while leaving stdin interactive made the prompt print, then immediately read an empty answer instead of waiting for input, defaulting to "no" and erroring out. Prompts now read from stdin directly, gated on stdin's own terminal status.
+
+- **Catch a bad API key while `rover init` is still asking for one - @SharkBaitDLS**
+
+  `rover init` only checked that a pasted key began with `user:`, so a truncated key was accepted and saved, then failed on the next request. It now checks the whole key, and says which thing is wrong: a key that isn't shaped like a key at all asks you for a valid one, while a graph key gets the guidance for clearing `APOLLO_KEY` and stored profiles. A key pasted with a trailing newline is no longer saved with it. `rover init` also stops reusing an `APOLLO_KEY` that looks like a graph key but is truncated.
+
+- **Report an API key the registry refuses outright, not just one it names in a response - @SharkBaitDLS**
+
+  Commands on Rover's newer request stack could only recognize a rejected API key when the registry said so in the body of its response. When it refused the request outright instead, the failure surfaced as an internal error rather than `E013`/`E014`. Those commands now report a refused request as `E013`/`E014` too, matching the rest of Rover.
+
+- **Report a rejected API key as `E013` instead of an internal error - @SharkBaitDLS part of #1171**
+
+  When the registry turned down an API key, several commands reported it as an internal error carrying no error code at all, while others reported `E013` — so the same key gave different diagnostics depending on which command you ran. `rover graph fetch`, `rover client check`, `rover graph-artifact list-tags`, and remote subgraph fetching during composition now report it the same way as the rest. `rover graph validate-operations` and `rover subgraph fetch-all` continue to report `E033` where a rejection could equally mean your key is valid but lacks permission for that operation. Failures that aren't about your credentials are unaffected.
+
+- **Show successful build and operation check sections in plain-text check output - fixes #1816**
+
+  `rover subgraph check` and `rover graph check` now show explicit `Build Check [PASSED]` and `Operation Check [PASSED]` sections even when no schema changes or operation warnings were found. This makes successful check results visible alongside linter and other check sections.
+
+- **Report a rejected API key as `E013`/`E014` even when the registry responds `200 OK` - @dotdat**
+
+  When the registry rejects a key by returning `HTTP 200` with `"data": null` and a body-level "Invalid credentials" error (rather than an `HTTP 401`/`406`), Rover used to report a generic, undifferentiated `error: No data field provided` instead of the usual `E013`/`E014`. The credential-rejection check only ever looked at a nested `extensions.response` field on each GraphQL error, never the error's own top-level `message`, which is where this particular response places the context. The check now looks at each error's top-level message, and runs regardless of whether `data` is present, `null`, or omitted. A related gap is fixed alongside it: `rover graph fetch` and `rover graph-artifact list-tags` now also check whether the rejected key was malformed (e.g. missing colons) before settling on `E013`, matching the check every other command already applied - so a key that was never validly shaped reports `E014` there too, not just `E013`.
+
 ## 🛠 Maintenance
+
+- **Changelog entries are written as changesets in `.changeset/` - @dotdat**
+
+  Each pull request adds one file to `.changeset/` instead of editing `CHANGELOG.md`, so open pull requests no longer conflict over the changelog. `cargo xtask changeset release` writes each release's `CHANGELOG.md` section and GitHub release notes from them. CI requires a changeset unless a pull request only changes `docs/` or carries the `skip-changeset` label. See `.changeset/README.md`.
+
+- **`cargo xtask register-oauth-client` registers the device-code grant type - @dotdat**
+
+  OAuth clients provisioned via `cargo xtask register-oauth-client` are now registered with the `urn:ietf:params:oauth:grant-type:device_code` grant type as well as `authorization_code`, which `rover auth login --no-browser` needs.
+
+- **Fix a flaky lint-report test - @dotdat**
+
+  `rover-client`'s `utf8_points_to_correct_place` test could fail depending on whether the `NO_COLOR`/`APOLLO_NO_COLOR` environment variables happened to be set in the environment running the test suite, since that changes not just color but the literal report-kind text ("Warning" vs the raw "WARNING" level string). The test now pins both env vars unset for its duration, so it's deterministic regardless of the ambient environment. No user-facing behavior change.
+
+- **Update the Studio schema: `deleteOAuthClient` now returns the deleted client's ID - @dotdat**
+
+  `rover api-key delete` reads that ID as the mutation's result, in place of the `Void` the schema used to declare, and no longer treats any other response as a successful delete. The command's output is unchanged.
+
+- **Stop reading the unused `APOLLO_NODE_MODULES_BIN` variable - @dotdat**
+
+  Rover registered `APOLLO_NODE_MODULES_BIN` as an environment variable it reads, but nothing ever used its value. It's no longer read. `APOLLO_NODE_MODULES_BIN_DIR`, which the npm installer sets, is unaffected.
+
+- **Test that an unconfigured user is unaffected - @dotdat**
+
+  New integration tests check that, with no configuration, `rover config show` and other commands create nothing beyond the files Rover already wrote before profile settings existed. They also check that a read-only configuration directory doesn't make those commands fail. The smoke tests now run the end-to-end suite with Rover's config home pointed at an empty location.
+
+- **Add a `rover-client` operation to look up one client-credential pair by its client ID - @dotdat**
+
+  `pair_get::GetOAuthClient` looks up a single pair via `Organization.oauthClient`, reporting the Platform API's deliberately uninformative `null` (no such pair, no permission, or not enrolled) as `None` - the "not a pair, or can't tell" signal `rover api-key delete`/`rename` need to fall back to treating an ID as an API key. An HTTP 403 on the lookup is reported as `PairPermissionDenied`, which callers treat as "can't tell" too: `studio_graphql_service_with_attempt_timeout`, whose only callers are the pair reads, now classifies 403s the way `studio_graphql_service_with_timeout` already does. Also fixes `pair_delete` so a permission denial from `deleteOAuthClient` is reported as `E053`, matching `pair_create`. `rover api-key delete` and `rename` use it to tell a pair's client ID from an API key's ID.
+
+- **Add a non-retrying, timeout-bounded Studio GraphQL service constructor - @dotdat**
+
+  `StudioClient` gains `studio_graphql_service_with_timeout`, a sibling to `studio_graphql_service` that swaps its ambient retry layer for a single per-attempt timeout - for a non-idempotent mutation where a retry could double the effect of a request the server already committed. Also adds `RoverClientError::PairPermissionDenied` (error code `E053`) and wires the new `PermissionDeniedLayer` into `studio_graphql_service_with_timeout` only, so a permission-denied response is classified for the operations that use it without changing behavior for `studio_graphql_service`'s existing callers. `rover api-key create`, `rotate`, and `delete` use it for client-credential pairs.
+
+- **Classify an HTTP 403 from Apollo Studio as a distinct permission-denied error - @dotdat**
+
+  `rover-studio` gains a `PermissionDeniedLayer`, mirroring the existing `RejectedCredentialLayer` for the previously-unclassified case where a credential authenticates fine but isn't permitted to do something. The client-credential pair commands use it.
+
+- **Stop baking "N operation(s)" text into a `rover-client` type - @dotdat**
+
+  Removes pluralization print concerns from rover-client and hoists them into the binary
+
+- **Move check-workflow text rendering out of `rover-client` - @dotdat**
+
+  `CheckWorkflowResponse` UI concerns are moved higher up to the CLI binary. Its hand-rolled "N item(s)" pluralization now uses the `pluralizer` crate.
+
+- **Switch `graph publish`/`subgraph publish` from raw `eprintln!` to `rover-print` - @dotdat**
+
+  Both commands now print their stderr status lines through `rover-print`'s `Print`/`PrintExt` trait via an injected printer, matching the pattern already used by `contract preview`/`subgraph preview`. No user-facing output change.
+
+- **latest_plugin_versions.json migration - @dotdat**
+
+  Rover's bundled copy of `latest_plugin_versions.json` has been deleted and its behavior has been moved into the Orbiter service, its only real consumer.
+
+- **Add an RFC 8628 OAuth device authorization grant implementation to `rover-auth` - @dotdat**
+
+  Adds `DeviceAuthorizationFlow` to `rover-auth`'s oauth2 module: requesting a device code, and polling the token endpoint until the user approves the request from another device. `rover auth login --no-browser` uses it.
+
+- **Replace GitHub reqwest client with apollo-http-client - @SharkBaitDLS**
+
+- **Simplify the `rover-print` API to stop propagating write errors - @dotdat**
+
+  `Print`/`PrintExt` methods (`print`, `print_line`, `infoln`, `warnln`, `errln`, `successln`) no longer return `std::io::Result<()>`. A failed terminal write now records a best-effort `tracing::error!` diagnostic (visible when running with `--log`) instead of being propagated; most callers previously discarded the error with `let _ = ...`, so this is a no-op for them. A few call sites (`rover config auth`, `rover config whoami`, `rover persisted-queries generate`) previously used `?` and would fail the whole command on a print error — those now continue and succeed instead, which is an intentional, if obscure, behavior change.
+
+- **Retry the Check Markdown Links CI job on transient network failures - @dotdat**
+
+  The `Check Markdown Links` job now retries up to 3 times if it fails, since transient connection resets to external hosts were occasionally failing the job on a link that was never actually broken. `lychee` (the link checker) doesn't retry connection-establishment errors regardless of its own retry config, so this is handled at the CI level instead, matching how other flaky steps are already retried in this repo. No user-facing change.
+
+- **Store profile credentials in the OS keychain instead of a plaintext file - @dotdat**
+
+  `rover config auth` now stores each profile's API key in the OS-native credential store (Keychain on macOS, Credential Manager on Windows, the kernel keyring on Linux), falling back to a permission-hardened (`0600`/`0700`) JSON file when no native keychain is available — for example, headless Linux/CI, or an unsigned local build on macOS. Existing plaintext `$APOLLO_CONFIG_HOME/profiles/<profile>/.sensitive` files are transparently migrated the first time they're read, then removed. `rover config auth`, `whoami`, `list`, `delete`, and `clear` all behave the same as before, and the `APOLLO_KEY` environment variable override is unaffected. On some platforms the OS may now prompt for keychain access the first time a credential is read or written in a session. If Rover ever fails to read, write, or delete a credential, it now surfaces a dedicated error, E046, instead of a generic failure.
+
+- **Add OAuth token storage to the credential model - @dotdat**
+
+  A profile's stored credential can now be an OAuth access token (with an optional refresh token and expiry), alongside the existing Personal API Key, in the same OS-native secret store added above. Requests made with an OAuth credential now send `Authorization: Bearer <token>` instead of `x-api-key`. This is internal plumbing — see `rover auth login` above for the command that writes one.
+
+- **Add `rover-client` operations to create/rotate/delete client-credential pairs - @dotdat**
+
+  Three new operations for the Platform API's `createOAuthClient`/`rotateOAuthClientSecret`/`deleteOAuthClient` mutations, alongside the already-added pair-listing operation. `rover api-key create`'s `client-credentials` type, `rover api-key rotate`, and `rover api-key delete` use them.
 
 # [0.41.0] - 2026-07-09
 
