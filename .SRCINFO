@@ -1,18 +1,18 @@
 pkgbase = postgresql-jdbc
 	pkgdesc = The official JDBC driver for PostgreSQL. Contains JDBC 4.2 drivers.
-	pkgver = 42.7.13
+	pkgver = 42.7.14
 	pkgrel = 1
 	url = https://jdbc.postgresql.org/
 	arch = any
 	license = BSD-2-Clause
 	depends = java-runtime-headless
-	noextract = postgresql-42.7.13.jar
+	noextract = postgresql-42.7.14.jar
 	source = LICENSE
-	source = https://repo1.maven.org/maven2/org/postgresql/postgresql/42.7.13/postgresql-42.7.13.jar
-	source = https://repo1.maven.org/maven2/org/postgresql/postgresql/42.7.13/postgresql-42.7.13.jar.asc
+	source = https://repo1.maven.org/maven2/org/postgresql/postgresql/42.7.14/postgresql-42.7.14.jar
+	source = https://repo1.maven.org/maven2/org/postgresql/postgresql/42.7.14/postgresql-42.7.14.jar.asc
 	validpgpkeys = 86C0144909739E0EE3D1B545305F296EAC47556B
 	sha1sums = 98ca35c08254ed04b2f40e01aa5b1d29c2920665
-	sha1sums = a6e1bd21b412d6ffb3df23cd13d507bc2cc9e37d
+	sha1sums = 0e7c94ce80cb1dd9875ff44ffe6a40a8aaa3eefd
 	sha1sums = SKIP
 
 pkgname = postgresql-jdbc
