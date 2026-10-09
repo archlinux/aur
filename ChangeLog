@@ -1,6 +1,31 @@
-## Security updates
-* Updated `google.golang.org/grpc` to v1.83.1, addressing CVE-2026-84304 ([#5581](https://github.com/grafana/pyroscope/pull/5581), [#5582](https://github.com/grafana/pyroscope/pull/5582)).
-* Updated `golang.org/x/crypto` to v0.56.0, addressing CVE-2026-78662 and CVE-2026-56855 ([#5587](https://github.com/grafana/pyroscope/pull/5587)).
+## Version 2.3.2 release notes
+
+### Security fixes
+
+* Updated UI `undici` to v8.10.2, addressing CVE-2026-84961, a TLS certificate validation bypass ([#5749](https://github.com/grafana/pyroscope/pull/5749)).
+* Updated `google.golang.org/grpc` to v1.83.2, addressing CVE-2026-84445 ([#5609](https://github.com/grafana/pyroscope/pull/5609), [#5610](https://github.com/grafana/pyroscope/pull/5610)).
+* Updated OpenTelemetry trace exporters to v1.45.0 ([#5649](https://github.com/grafana/pyroscope/pull/5649), [#5650](https://github.com/grafana/pyroscope/pull/5650), [#5651](https://github.com/grafana/pyroscope/pull/5651)).
+* Updated OpenTelemetry log modules to v0.21.0 ([#5722](https://github.com/grafana/pyroscope/pull/5722)).
+* Updated UI `js-yaml` to v4.3.2 ([#5616](https://github.com/grafana/pyroscope/pull/5616)).
+* Updated UI `brace-expansion` to v5.0.12 ([#5705](https://github.com/grafana/pyroscope/pull/5705)).
+
+### Documentation
+
+* Expanded recording rules CLI documentation, added Rust jemalloc profiling documentation and a v2.0 upgrade guide, and corrected profile type documentation ([#5622](https://github.com/grafana/pyroscope/pull/5622)).
+
+## Changelog
+* 0707df2b06343fec8b28cd464bec706c62a7a850 [release/v2.3] docs: Expand recording rules CLI, add Rust jemalloc profiling, fix profile types, add v2.0 upgrade guide (#5622)
+* 1bdb9a6a1b014bb16fdf9c0a2e3a7491c2ba5396 docs: Update release notes for v2.3.1/v2.2.2 (#5603)
+* 3c4756f665e234f52f4f9c8e0a7ee80d212d4b5f docs: add v2.3.2 release notes (#5751)
+* 7a681d2e350f6adc83c77b8b45674e0e1f857b93 fix(deps): update otel log modules to v0.21.0 [security] (release/v2.3) (#5722)
+* 729f36f80e4e78622ca8bc79b23dba84f39b6a02 fix(deps): update undici to 8.10.2 to address TLS validation bypass (#5747) (#5749)
+* a7274c2a6272b2047eab35d0602631915993dddc fix(security/high/): update module google.golang.org/grpc to v1.83.2 [security] (#5609)
+* 3ddd069c4afb8b8c109509b9e23afefa8431a96b fix(security/high/api): update module google.golang.org/grpc to v1.83.2 [security] (#5610)
+* a77692b3d57b151f8e47a0fabbfcb6c09db0149a fix(security/high/ui): update dependency brace-expansion to v5.0.12 [security] (release/v2.3) (#5705)
+* 0c751c0d1077c09d47828870029a9a8ca9762498 fix(security/high/ui): update dependency js-yaml to v4.3.2 [security] (release/v2.3) (#5616)
+* 634fe731380170c7ce8d708c5e1da179fe14d427 fix(security/low/): update module go.opentelemetry.io/otel/exporters/otlp/otlptrace to v1.45.0 [security] (#5649)
+* 287630fab61e03c915493ee9f460141395d54cd7 fix(security/unknown/): update module go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc to v1.45.0 [security] (#5650)
+* 28c325e0c43ef18719a867017f060744f8aec7ab fix(security/unknown/): update module go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp to v1.45.0 [security] (#5651)
 
 As always, feedback is more than welcome, feel free to open issues/discussions.
 You can reach out to the team using:
@@ -15,6 +40,7 @@ You can reach out to the team using:
 - [grafana/pyroscope](https://hub.docker.com/r/grafana/pyroscope/tags)
 
 ```bash
-  docker pull grafana/pyroscope:2.3.1
+  docker pull grafana/pyroscope:2.3.2
 ```
+
 
