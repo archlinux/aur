@@ -6,7 +6,7 @@
 # in seconds, nothing is compiled. The binary + docs come straight from
 # the release tarball below.
 pkgname=zcc
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Blazing-fast code counter (tokei clone) written in ZZ'
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('MIT')
 depends=('glibc' 'sqlite')
 makedepends=('python')
 source=("zcc-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/zcc-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('482a60f5185f48f6433b58e2cb929e69609c6e39ef6d59c5b83539ed322379b8')
+sha256sums=('16504a6835e187953d25c8cec1e0f39dfa8f1011401b35d86c8882aa930d09be')
 
 check() {
   # Prebuilt binary: smoke-test only (full suite ran in CI pre-release).
