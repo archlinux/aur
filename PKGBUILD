@@ -2,7 +2,7 @@
 _pkgname=cliphist-tui
 _oldpkgname=shorinclip
 pkgname=cliphist-tui-git
-pkgver=r53.g7feb84e
+pkgver=r54.g3b1a0c9
 pkgrel=1
 pkgdesc="A wayland clipboard TUI based on fzf and cliphist. Use chafa for image preview."
 arch=('x86_64')
