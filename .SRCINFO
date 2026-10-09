@@ -1,6 +1,6 @@
 pkgbase = grid-rs-bin
 	pkgdesc = AI-native TUI spreadsheet written in Rust
-	pkgver = 0.1.5
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/isene/grid
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = grid-rs-bin
 	provides = grid
 	conflicts = grid-rs
 	options = !strip
-	source = README-0.1.5.md::https://raw.githubusercontent.com/isene/grid/v0.1.5/README.md
-	sha256sums = 120025fb6272656d3459ce3937d8c81189c60dbc1955113bfdf0d2fc6e81d77c
-	source_x86_64 = grid-x86_64-0.1.5::https://github.com/isene/grid/releases/download/v0.1.5/grid-linux-x86_64
-	sha256sums_x86_64 = 4942c85c2aa12663d0dd17b96d658aed85429c9b513c8dd932dab339a7d49ebe
-	source_aarch64 = grid-aarch64-0.1.5::https://github.com/isene/grid/releases/download/v0.1.5/grid-linux-aarch64
-	sha256sums_aarch64 = 9332590d6bf832ec556138651b8048645e855e559291debc503ebad8d3cb6ec8
+	source = README-0.2.0.md::https://raw.githubusercontent.com/isene/grid/v0.2.0/README.md
+	sha256sums = a4393bfe113ed39edc4be572362bd2b01673f88ced4874918a41de0b79496c93
+	source_x86_64 = grid-x86_64-0.2.0::https://github.com/isene/grid/releases/download/v0.2.0/grid-linux-x86_64
+	sha256sums_x86_64 = ca79efda370278a3dd7e5085d3501bd5a6f861b27a9a4d70c5f13a98b819b82e
+	source_aarch64 = grid-aarch64-0.2.0::https://github.com/isene/grid/releases/download/v0.2.0/grid-linux-aarch64
+	sha256sums_aarch64 = 012ace42734aa9e6a2f5b5ea19881ec793d59d461868767ce7154c3ff8ae9583
 
 pkgname = grid-rs-bin
