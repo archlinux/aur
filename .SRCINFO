@@ -1,12 +1,12 @@
 pkgbase = dnssec-without-root
 	pkgdesc = DNSSEC keys without the '.' root
-	pkgver = 2026.08.12
+	pkgver = 2026.10.09
 	pkgrel = 1
 	url = https://sr.ht/~yukikoo/dane_without_root/
 	arch = any
 	license = AGPL-3.0-or-later
-	source = git+https://git.sr.ht/~yukikoo/dane_without_root#tag=dnssec-2026.08.12?signed
+	source = git+https://git.sr.ht/~yukikoo/dane_without_root#tag=dnssec-2026.10.09?signed
 	validpgpkeys = FB798BFB115895C9C95900649C2B29DD4A62ED27
-	sha256sums = 7d570a62521ccb9161dfb1a5d390a093f11df5ac8dd6da70eb5d22374e234c9e
+	sha256sums = d1b613c1a92c84e6ce1b5954914338adf37fa1b8c4a0387cf10245994dc37ba0
 
 pkgname = dnssec-without-root
