@@ -1,6 +1,6 @@
 pkgbase = python-smithy-http
 	pkgdesc = HTTP components for Smithy tooling.
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/smithy-lang/smithy-python/tree/develop/packages/smithy-http
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-smithy-http
 	optdepends = python-awscrt: awscrt
 	optdepends = python-aiohttp: aiohttp
 	optdepends = python-yarl: aiohttp
-	source = smithy-http::git+https://github.com/smithy-lang/smithy-python.git#tag=smithy-http/v0.5.0
-	sha256sums = f54ff2760bfaa689abb5c73475e28b6171d3adceb6dc176a5fbbe75eb97e43d1
+	source = smithy-http::git+https://github.com/smithy-lang/smithy-python.git#tag=smithy-http/v0.6.0
+	sha256sums = 9355f1aed64cf1ea03806a76efc1c6c419d6caa2cf3733fa692153fb99e83abe
 
 pkgname = python-smithy-http
