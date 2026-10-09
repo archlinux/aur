@@ -56,10 +56,10 @@ index f99b39e2..6750798e 100644
      KF6::BookmarksWidgets
 diff --git a/ai/aiconfig.cpp b/ai/aiconfig.cpp
 new file mode 100644
-index 00000000..af01d38f
+index 00000000..ddb91146
 --- /dev/null
 +++ b/ai/aiconfig.cpp
-@@ -0,0 +1,128 @@
+@@ -0,0 +1,130 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -172,6 +172,8 @@ index 00000000..af01d38f
 +        "- When writing a guide or documenting a procedure, capture each key step with save_screenshot using short "
 +        "descriptive file names, then quote the paths it returns in the write-up.\n"
 +        "- Never guess a coordinate you cannot see; take a screenshot first.\n"
++        "- On every click or drag, set the target field to a few words naming what you are clicking, e.g. \"the OK button\"; "
++        "the user approves the action from that and a zoomed crop of the spot.\n"
 +        "- If an action needs a password or would delete or overwrite something, stop and let "
 +        "the user do it or confirm it.\n"
 +        "- Keep answers short. Report what you did and what the screen now shows.");
@@ -257,10 +259,10 @@ index 00000000..09f2fe6d
 +};
 diff --git a/ai/aiconversation.cpp b/ai/aiconversation.cpp
 new file mode 100644
-index 00000000..f02e7d0c
+index 00000000..c7432a0d
 --- /dev/null
 +++ b/ai/aiconversation.cpp
-@@ -0,0 +1,1002 @@
+@@ -0,0 +1,1077 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -284,6 +286,8 @@ index 00000000..f02e7d0c
 +#include <QJsonDocument>
 +#include <QJsonParseError>
 +#include <QJsonObject>
++#include <QPainter>
++#include <QPixmap>
 +#include <QRegularExpression>
 +#include <QStandardPaths>
 +#include <QTimer>
@@ -401,6 +405,79 @@ index 00000000..f02e7d0c
 +        return AiTools::dangerReason(pending.call.name, pending.call.arguments);
 +    }
 +    return {};
++}
++
++QPixmap AiConversation::pendingPreview() const
++{
++    if (m_queueIndex >= m_queue.size()) {
++        return {};
++    }
++    const PendingTool &pending = m_queue.at(m_queueIndex);
++    const QString name = pending.call.name;
++    if (name != QLatin1String("mouse_click") && name != QLatin1String("mouse_drag") && name != QLatin1String("mouse_scroll")) {
++        return {};
++    }
++    if (!m_view || m_view->status() != RemoteView::Connected) {
++        return {};
++    }
++
++    // Work in screen pixels: the full-resolution grab, with the model's
++    // screenshot coordinates mapped in the same way runTool will map the
++    // action itself, so the crosshair marks exactly where the click lands.
++    const QPixmap screen = m_view->takeScreenshot();
++    if (screen.isNull()) {
++        return {};
++    }
++
++    QList<QPoint> points;
++    if (name == QLatin1String("mouse_drag")) {
++        const QJsonObject args = pending.call.arguments;
++        points.append(toScreen(QPoint{int(args.value(QStringLiteral("from_x")).toDouble()),
++                                      int(args.value(QStringLiteral("from_y")).toDouble())}));
++        points.append(toScreen(QPoint{int(args.value(QStringLiteral("to_x")).toDouble()),
++                                      int(args.value(QStringLiteral("to_y")).toDouble())}));
++    } else {
++        const QJsonObject args = pending.call.arguments;
++        points.append(toScreen(QPoint{int(args.value(QStringLiteral("x")).toDouble()), int(args.value(QStringLiteral("y")).toDouble())}));
++    }
++
++    // A crop that holds every marked point with margin, so a drag shows both
++    // ends, capped so a huge drag does not shrink the target to nothing.
++    QRect bounds{QRect(points.first(), QSize{1, 1})};
++    for (const QPoint &point : points) {
++        bounds = bounds.united(QRect{point, QSize{1, 1}});
++    }
++    constexpr int Margin = 90;
++    bounds = bounds.adjusted(-Margin, -Margin, Margin, Margin).intersected(screen.rect());
++    if (bounds.isEmpty()) {
++        return {};
++    }
++    if (bounds.width() > 480 || bounds.height() > 360) {
++        // Too big to read a control in: fall back to a fixed crop on the
++        // first point (the click itself), which is always a single point.
++        const QPoint anchor = points.first();
++        bounds = QRect{anchor.x() - 160, anchor.y() - 120, 320, 240}.intersected(screen.rect());
++    }
++
++    QPixmap crop = screen.copy(bounds);
++
++    QPainter painter{&crop};
++    painter.setRenderHint(QPainter::Antialiasing);
++    QPen pen{QColor{255, 60, 60}, 2.0};
++    painter.setPen(pen);
++    for (const QPoint &point : points) {
++        const QPoint local = point - bounds.topLeft();
++        if (!bounds.contains(point)) {
++            continue;
++        }
++        constexpr int Arm = 12;
++        painter.drawLine(local.x() - Arm, local.y(), local.x() + Arm, local.y());
++        painter.drawLine(local.x(), local.y() - Arm, local.x(), local.y() + Arm);
++        painter.drawEllipse(local, 8, 8);
++    }
++    painter.end();
++
++    return crop;
 +}
 +
 +void AiConversation::setConfig(const AiConfig &config)
@@ -1265,10 +1342,10 @@ index 00000000..f02e7d0c
 +}
 diff --git a/ai/aiconversation.h b/ai/aiconversation.h
 new file mode 100644
-index 00000000..7f510f6a
+index 00000000..b5cf09bf
 --- /dev/null
 +++ b/ai/aiconversation.h
-@@ -0,0 +1,171 @@
+@@ -0,0 +1,180 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -1286,6 +1363,7 @@ index 00000000..7f510f6a
 +#include <QList>
 +#include <QObject>
 +#include <QPointer>
++#include <QPixmap>
 +#include <QSize>
 +#include <QString>
 +
@@ -1346,6 +1424,14 @@ index 00000000..7f510f6a
 +    QString pendingSummary() const;
 +    /** Why the pending tool call needs approval even with auto-execute on. */
 +    QString pendingReason() const;
++
++    /**
++     * A zoomed crop of the current remote screen around the point the pending
++     * click or drag is about to act on, with a crosshair on it, so the user
++     * can see what is there before approving. Returns a null pixmap when the
++     * pending call is not a point action or no screen is available.
++     */
++    QPixmap pendingPreview() const;
 +
 +    void setConfig(const AiConfig &config);
 +    const AiConfig &config() const;
@@ -1442,10 +1528,10 @@ index 00000000..7f510f6a
 +};
 diff --git a/ai/aiconversationpage.cpp b/ai/aiconversationpage.cpp
 new file mode 100644
-index 00000000..ffc0ed5b
+index 00000000..f73827e6
 --- /dev/null
 +++ b/ai/aiconversationpage.cpp
-@@ -0,0 +1,380 @@
+@@ -0,0 +1,403 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -1464,6 +1550,7 @@ index 00000000..ffc0ed5b
 +#include <QLabel>
 +#include <QLocale>
 +#include <QPlainTextEdit>
++#include <QPixmap>
 +#include <QPushButton>
 +#include <QScrollBar>
 +#include <QTextBrowser>
@@ -1545,6 +1632,14 @@ index 00000000..ffc0ed5b
 +    approvalLayout->addWidget(new QLabel(QStringLiteral("<b>%1</b>").arg(i18n("The assistant wants to:")), m_approvalBar));
 +    approvalLayout->addWidget(m_approvalText);
 +    approvalLayout->addWidget(m_approvalReason);
++
++    // A zoomed crop of the screen around the point a pending click targets,
++    // so the user sees what is there, not just a coordinate.
++    m_approvalPreview = new QLabel(m_approvalBar);
++    m_approvalPreview->setAlignment(Qt::AlignCenter);
++    m_approvalPreview->setStyleSheet(QStringLiteral("border:1px solid palette(mid);"));
++    m_approvalPreview->setVisible(false);
++    approvalLayout->addWidget(m_approvalPreview);
 +    approvalLayout->addLayout(approvalButtons);
 +
 +    m_approvalBar->setStyleSheet(QStringLiteral("background:#54411f;border-radius:6px;"));
@@ -1662,6 +1757,20 @@ index 00000000..ffc0ed5b
 +    if (awaiting) {
 +        m_approvalText->setText(m_conversation->pendingSummary());
 +        m_approvalReason->setText(m_conversation->pendingReason());
++
++        const QPixmap preview = m_conversation->pendingPreview();
++        if (preview.isNull()) {
++            m_approvalPreview->setVisible(false);
++        } else {
++            // Fit the crop to the panel width without upscaling tiny crops
++            // past their own size; the crosshair stays accurate either way.
++            const int widest = qMin(preview.width() * 2, 300);
++            m_approvalPreview->setPixmap(
++                preview.scaled(widest, preview.height() * 2, Qt::KeepAspectRatio, Qt::SmoothTransformation));
++            m_approvalPreview->setVisible(true);
++        }
++    } else {
++        m_approvalPreview->setVisible(false);
 +    }
 +
 +    m_approvalBar->setVisible(awaiting);
@@ -1828,10 +1937,10 @@ index 00000000..ffc0ed5b
 +#include "aiconversationpage.moc"
 diff --git a/ai/aiconversationpage.h b/ai/aiconversationpage.h
 new file mode 100644
-index 00000000..ffd4a319
+index 00000000..bf2615aa
 --- /dev/null
 +++ b/ai/aiconversationpage.h
-@@ -0,0 +1,66 @@
+@@ -0,0 +1,67 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -1890,6 +1999,7 @@ index 00000000..ffd4a319
 +    QWidget *m_approvalBar;
 +    QLabel *m_approvalText;
 +    QLabel *m_approvalReason;
++    QLabel *m_approvalPreview = nullptr;
 +    QPushButton *m_approveButton;
 +    QPushButton *m_denyButton;
 +    QPlainTextEdit *m_input;
@@ -3142,10 +3252,10 @@ index 00000000..d0a21673
 +}
 diff --git a/ai/aitools.cpp b/ai/aitools.cpp
 new file mode 100644
-index 00000000..1910bf19
+index 00000000..92f41f92
 --- /dev/null
 +++ b/ai/aitools.cpp
-@@ -0,0 +1,484 @@
+@@ -0,0 +1,496 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -3379,6 +3489,10 @@ index 00000000..1910bf19
 +                                   QJsonArray{QStringLiteral("left"), QStringLiteral("right"), QStringLiteral("middle")}));
 +        properties.insert(QStringLiteral("clicks"),
 +                          property(QStringLiteral("integer"), QStringLiteral("1 for a single click, 2 for a double click.")));
++        properties.insert(QStringLiteral("target"),
++                          property(QStringLiteral("string"),
++                                   QStringLiteral("What you are clicking, in a few words, e.g. \"the OK button\". Shown to the "
++                                                  "user for approval.")));
 +        tools.append(wrapped(QStringLiteral("mouse_click"), QStringLiteral("Click at a point on the remote screen."), properties,
 +                             {QStringLiteral("x"), QStringLiteral("y")}));
 +    }
@@ -3392,6 +3506,10 @@ index 00000000..1910bf19
 +        properties.insert(QStringLiteral("button"),
 +                          property(QStringLiteral("string"), QStringLiteral("Which button to drag with."),
 +                                   QJsonArray{QStringLiteral("left"), QStringLiteral("right"), QStringLiteral("middle")}));
++        properties.insert(QStringLiteral("target"),
++                          property(QStringLiteral("string"),
++                                   QStringLiteral("What you are dragging and where, in a few words, e.g. \"the file into the "
++                                                  "folder\". Shown to the user for approval.")));
 +        tools.append(
 +            wrapped(QStringLiteral("mouse_drag"), QStringLiteral("Press, move and release to drag something on the remote screen."), properties,
 +                    {QStringLiteral("from_x"), QStringLiteral("from_y"), QStringLiteral("to_x"), QStringLiteral("to_y")}));
@@ -3546,13 +3664,17 @@ index 00000000..1910bf19
 +    if (name == QLatin1String("mouse_click")) {
 +        const QString button = arguments.value(QStringLiteral("button")).toString();
 +        const int clicks = int(arguments.value(QStringLiteral("clicks")).toDouble(1));
-+        return QStringLiteral("Click %1 button at (%2, %3)%4")
++        const QString target = arguments.value(QStringLiteral("target")).toString().trimmed();
++        return QStringLiteral("Click %1 button at (%2, %3)%4%5")
 +            .arg(button.isEmpty() ? QStringLiteral("left") : button, number(QStringLiteral("x")), number(QStringLiteral("y")),
-+                 clicks > 1 ? QStringLiteral(" (%1×)").arg(clicks) : QString());
++                 clicks > 1 ? QStringLiteral(" (%1×)").arg(clicks) : QString(),
++                 target.isEmpty() ? QString() : QStringLiteral(" — “%1”").arg(truncated(target, 60)));
 +    }
 +    if (name == QLatin1String("mouse_drag")) {
-+        return QStringLiteral("Drag from (%1, %2) to (%3, %4)")
-+            .arg(number(QStringLiteral("from_x")), number(QStringLiteral("from_y")), number(QStringLiteral("to_x")), number(QStringLiteral("to_y")));
++        const QString target = arguments.value(QStringLiteral("target")).toString().trimmed();
++        return QStringLiteral("Drag from (%1, %2) to (%3, %4)%5")
++            .arg(number(QStringLiteral("from_x")), number(QStringLiteral("from_y")), number(QStringLiteral("to_x")), number(QStringLiteral("to_y")),
++                 target.isEmpty() ? QString() : QStringLiteral(" — “%1”").arg(truncated(target, 60)));
 +    }
 +    if (name == QLatin1String("mouse_scroll")) {
 +        return QStringLiteral("Scroll %1 at (%2, %3)")
