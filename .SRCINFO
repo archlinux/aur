@@ -1,6 +1,6 @@
 pkgbase = gitst-bin
 	pkgdesc = Real-time, glanceable interactive git status for the terminal
-	pkgver = 0.1.8
+	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://github.com/dfallman/gitst
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = gitst-bin
 	provides = gitst
 	conflicts = gitst
 	options = !strip
-	source_x86_64 = gitst-x86_64-0.1.8.tgz::https://github.com/dfallman/gitst/releases/download/0.1.8/gitst-0.1.8-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 6c3eb5eab939aad775b5d237b1a1658f1c90be9aa1d99468494e85d66c685fb3
-	source_aarch64 = gitst-aarch64-0.1.8.tgz::https://github.com/dfallman/gitst/releases/download/0.1.8/gitst-0.1.8-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = c6ab4ec2f17d87c4f82b2ac357ab82ee94e03514d3756c881568653e2021fcd6
+	source_x86_64 = gitst-x86_64-0.1.13.tgz::https://github.com/dfallman/gitst/releases/download/0.1.13/gitst-0.1.13-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e8e8029e7ccd0ab70432d00404ebda5256daec1d6cab62e28e96dc5680368fc3
+	source_aarch64 = gitst-aarch64-0.1.13.tgz::https://github.com/dfallman/gitst/releases/download/0.1.13/gitst-0.1.13-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = c9b88b6daa97561b7c7331db9601c02f895088577962d581845a07dd443c9cf5
 
 pkgname = gitst-bin
