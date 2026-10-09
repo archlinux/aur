@@ -1,6 +1,6 @@
 # Maintainer: Charles Pritchard <charlespritchard.work@gmail.com>
 pkgname=shiftpaper-git
-pkgver=0.4.2.r0.g7284100
+pkgver=0.4.3.r0.g110f9f6
 pkgrel=1
 pkgdesc="Parallax wallpaper daemon for Wayland with monocular depth estimation"
 arch=('x86_64')
