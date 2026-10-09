@@ -1,6 +1,6 @@
 pkgbase = torchvision
 	pkgdesc = Datasets, transforms, and models specific to computer vision
-	pkgver = 0.29.0
+	pkgver = 0.29.1
 	pkgrel = 1
 	url = https://github.com/pytorch/vision
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = torchvision
 	depends = libpng
 	depends = libstdc++
 	depends = libwebp
-	source = vision-0.29.0.tar.gz::https://github.com/pytorch/vision/archive/v0.29.0.tar.gz
+	source = vision-0.29.1.tar.gz::https://github.com/pytorch/vision/archive/v0.29.1.tar.gz
 	source = fix-build.patch
-	b2sums = 04ef5fdfa8f7aaf19ca0347552922c552f1446f3f4aaf4667c888130862fb17d39b567ae9e779094c1567b3f6f9c2ea908bc54b5a89183af0a67fe3348a06dde
+	b2sums = d4fc874b14a664b70ab367f7ed8428cc48c14a92a353a517c6e572e175947e4049adfe5965b000f89f717b78e1d31d271475db03dd23e19d6619d6c7ba47085e
 	b2sums = 30d09ff1511178e25c31c6ecee789c141179bb3cc34f37299d74891973a80a357a9f51a93cfa36834e29a0ba2a366b0974ee5cd88cb5f6a92f7553cd2cd80e98
 
 pkgname = torchvision
