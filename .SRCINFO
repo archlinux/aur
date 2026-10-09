@@ -1,6 +1,6 @@
 pkgbase = linuxqq-wayland-fix-git
 	pkgdesc = 修复 Linux QQ 在 Wayland 下的屏幕共享、共享电脑声音、剪贴板和截图问题
-	pkgver = r102.7d7f82d
+	pkgver = r111.01bdc03
 	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/linuxqq-wayland-fix
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = linuxqq-wayland-fix-git
 	depends = glibc
 	depends = glib2
 	depends = libx11
-	depends = libxres
 	depends = wayland
 	depends = linuxqq
 	optdepends = xdg-desktop-portal: 屏幕录制（需要合成器对应的后端）
