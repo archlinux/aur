@@ -1,5 +1,5 @@
 pkgname=strength-tracker-rs
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Sync your devices and track your strength training'
 arch=('x86_64')
