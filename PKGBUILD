@@ -1,6 +1,6 @@
 # Maintainer: Vladimir Alyamkin <ufna@ufna.dev>
 pkgname=zerus-ade-nightly-bin
-pkgver=0.37.0.r78.gfef1a00.n2
+pkgver=0.37.0.r102.g578458c.n3
 pkgrel=1
 pkgdesc='Nightly agent development environment for persistent local and remote tmux sessions'
 arch=('x86_64')
@@ -19,8 +19,8 @@ optdepends=('konsole: external KDE terminal integration'
 provides=("zerus=$pkgver" 'hgs' 'hgs-tray')
 conflicts=('zerus' 'zerus-git' 'zerus-ade-bin')
 options=('!strip' '!debug')
-source=("https://github.com/ufna/zerus/releases/download/nightly-37851516418/zerus-${pkgver}-arch-${CARCH}.tar.gz")
-sha256sums=('efd7dbc93f2a2e0f762b41374a198d33653b22320cd2ed63dc1c93e3ece1abd3')
+source=("https://github.com/ufna/zerus/releases/download/nightly-37891961076/zerus-${pkgver}-arch-${CARCH}.tar.gz")
+sha256sums=('91646f03c66aa2a28f4a84db1f332acecf509ffaf044f83fb20a3b0de2d556b4')
 
 package() {
     cp -a "$srcdir/zerus-0.37.0-arch-$CARCH/usr" "$pkgdir/"

@@ -1,6 +1,6 @@
 pkgbase = zerus-ade-nightly-bin
 	pkgdesc = Nightly agent development environment for persistent local and remote tmux sessions
-	pkgver = 0.37.0.r78.gfef1a00.n2
+	pkgver = 0.37.0.r102.g578458c.n3
 	pkgrel = 1
 	url = https://github.com/ufna/zerus
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = zerus-ade-nightly-bin
 	optdepends = npm: install Codex and DeepSeek Harness from Accounts
 	optdepends = git: Git repository and worktree features
 	optdepends = systemd: user service autostart and isolated DeepSeek scopes
-	provides = zerus=0.37.0.r78.gfef1a00.n2
+	provides = zerus=0.37.0.r102.g578458c.n3
 	provides = hgs
 	provides = hgs-tray
 	conflicts = zerus
@@ -36,7 +36,7 @@ pkgbase = zerus-ade-nightly-bin
 	conflicts = zerus-ade-bin
 	options = !strip
 	options = !debug
-	source = https://github.com/ufna/zerus/releases/download/nightly-37851516418/zerus-0.37.0.r78.gfef1a00.n2-arch-x86_64.tar.gz
-	sha256sums = efd7dbc93f2a2e0f762b41374a198d33653b22320cd2ed63dc1c93e3ece1abd3
+	source = https://github.com/ufna/zerus/releases/download/nightly-37891961076/zerus-0.37.0.r102.g578458c.n3-arch-x86_64.tar.gz
+	sha256sums = 91646f03c66aa2a28f4a84db1f332acecf509ffaf044f83fb20a3b0de2d556b4
 
 pkgname = zerus-ade-nightly-bin
