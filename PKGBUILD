@@ -5,7 +5,7 @@ _pkgname=duodiff
 _execname=${_pkgname}
 
 pkgname=${_pkgname}
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 _pkgver=v${pkgver}
 pkgdesc="A cross-platform TUI directory comparison tool"
@@ -19,7 +19,7 @@ provides=("${_execname}")
 makedepends=('rust')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${_pkgname}/archive/${_pkgver}.tar.gz")
-sha256sums=('9f70c180c111b9d82ffa264cbbd9836e99db37b9c029fe27859c95025a92adee')
+sha256sums=('02488ded7580626a1cb48017335f4d5549538e1d87cd6a7c68b980afdf045d39')
 
 prepare() {
 	cd ${srcdir}/${pkgname}-${pkgver}/ || exit 1
