@@ -1,8 +1,8 @@
 # Maintainer: Tuack-GUI Develop Team
 
 pkgname=tuack-gui-git
-pkgver=1.1.0.alpha.1.14.g68fe7b3
-pkgrel=2
+pkgver=1.1.0.alpha.1.0.g53dd54f
+pkgrel=3
 pkgdesc="美观、跨平台的 Tuack-NG 图形化前端"
 arch=("x86_64")
 url="https://github.com/tuackng/Tuack-GUI"
