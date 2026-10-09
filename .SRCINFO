@@ -1,0 +1,18 @@
+pkgbase = python-smithy-test
+	pkgdesc = Test-support helpers for generated Smithy clients.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/smithy-lang/smithy-python/tree/develop/packages/smithy-test
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	source = smithy-test::git+https://github.com/smithy-lang/smithy-python.git#tag=smithy-test/v0.1.0
+	sha256sums = 9355f1aed64cf1ea03806a76efc1c6c419d6caa2cf3733fa692153fb99e83abe
+
+pkgname = python-smithy-test
