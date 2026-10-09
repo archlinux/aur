@@ -4,7 +4,7 @@ pkgbase = modkit-bin
 	pkgrel = 2
 	url = https://github.com/nanoporetech/modkit
 	arch = x86_64
-	license = custom
+	license = LicenseRef-modkit
 	provides = modkit=0.6.4
 	conflicts = modkit
 	options = !strip
