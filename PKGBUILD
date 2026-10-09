@@ -8,7 +8,7 @@
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
 pkgrel=1
-pkgver=3.2.4
+pkgver=3.3.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('AGPL-3.0-only')
@@ -75,7 +75,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
 	'https://download.geonames.org/export/dump/admin1CodesASCII.txt'
 	'https://download.geonames.org/export/dump/admin2Codes.txt'
 	'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson')
-b2sums=('7cf250b78000169632631552a36755227be5bf4a206ae274f82d2f3262607352d2df749fddef16d4fb45a21bd9d6c4cdde368b7283b903d3a556a420c3e56f08'
+b2sums=('66335b33ef0930d1c6e1d102a2a1280ad937f4f08f9438104ba386d24c5b6444f5fc28d5c21dc1fc39446770e21a9caeb901e1f999badaa577929b46465b87a3'
         '6c8decad88b49a2d62c1ffbcc682c26250e459c0205f2e300973a837578841d896a51dfabf9ec8a4bc288e966303cf32dae02cebb9f78fdad807b07b3fd410c6'
         '2d94fcc21861067920f0df1e6e5ac74b4413515777b204070c5d8fc01026c54e993e4eff65dabeb3629ee24d238a1a52793c061947009ddac5f0ebf64a58312d'
         '48cf0c345047b50831f1f5a4fc0f5478aedddc50c6d62faf4205a6a093213a402e15567594a10987c9a97fb69f47894835409a9461d0cda9bf579e25e0d0e42b'
@@ -99,7 +99,7 @@ prepare() {
 	pnpm fetch --ignore-scripts  # First, get node_modules folder to patch into
 	pnpm install --filter immich --frozen-lockfile --offline  # sometimes pnpm fetch doesn't give us the node_modules folder
 	sharp_dir="$(mktemp -d "${srcdir}/sharp-patch.XXXXXXXX")"
-	pnpm patch sharp --edit-dir "$sharp_dir"
+	pnpm patch sharp --edit-dir "$sharp_dir" < <(yes '' 2>/dev/null)
 	(
 	cd "$sharp_dir"
 	patch -p1 < "${srcdir}/sharp.patch"
