@@ -8,15 +8,15 @@
 # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=kahawai-gstreamer
 
 pkgname=kahawai
-_tag=0.0.21-rc.2
+_tag=0.0.22-rc.1
 # The stamped commit the release was built from, which `kahawai --version`
 # and a satellite's hello report. From the release notes.
-_commit=7b998b295f7ab081cf6b059d82e69dd5bb83a1c8
+_commit=c49e093c79bdd06a72bc2aa34f2c3122d9e60b06
 pkgver=${_tag/-rc./rc}
 pkgrel=1
 # The GStreamer this release's patch set was built for. Exact: kahawai and
 # the plugins it loads must agree on one GStreamer.
-_gst=1.28.7
+_gst=1.28.8
 _gst_prefix=/opt/kahawai-gstreamer
 pkgdesc="Self-hosted media streaming: hub, mediahost and transcoder in one binary"
 arch=(x86_64 aarch64)
@@ -43,7 +43,7 @@ source=("https://github.com/iksteen/kahawai/releases/download/v$_tag/kahawai-$_t
         kahawai-hub.service
         kahawai-mediahost.service
         kahawai-transcoder.service)
-sha256sums=('664f0aa523f673da1944773a49728be70ca5b95dcebe5f7364cffb3b002daf1c'
+sha256sums=('e462f3ac120062c1b88df1ce831a18983d0bba1f2cbf70940910e61e2028b8e3'
             'd865db520499a83a564a1dd7ff586db8944de0d4015056f69e224359c0b190db'
             'defd1b5741b7bc13ad1c66c368daf1e93075a8e940cd7810bc642aa0e385ff23'
             '73baebedb951be68563bf9ccfd8ec3c7203caf5080cead15069d8ebc6bbc76e6'
