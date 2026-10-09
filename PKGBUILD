@@ -1,6 +1,6 @@
 # Maintainer: Felitendo
 # This PKGBUILD is updated automatically:
-# https://git.felo.gg/Felitendo/PKGBUILDS
+# https://github.com/Felitendo/PKGBUILDS
 
 pkgname=moonlight-vrr
 pkgver=6.1.0_vrr18
