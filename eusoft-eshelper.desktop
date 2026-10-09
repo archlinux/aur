@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Name=Eshelper
+Name[zh_CN]=西语助手
+GenericName=Spanish-Chinese Dictionary
+GenericName[zh_CN]=西语词典
+Comment=Eshelper Spanish-Chinese Dictionary and Conjugation
+Comment[zh_CN]=权威的西语词典与变位变格软件
+Exec=/usr/bin/eshelper %F
+Icon=com.eusoft.eshelper
+Terminal=false
+StartupNotify=true
+StartupWMClass=eshelper
+Categories=Office;Dictionary;Education;
+MimeType=application/x-eshelper;
