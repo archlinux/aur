@@ -1,0 +1,19 @@
+pkgbase = post-install-arch-full
+	pkgdesc = Advanced Arch Linux post-installation automation, intelligent multimedia codecs detection, and system setup.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/GustavoGianeli/post-install-arch-full
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = pacman
+	source = post-install-arch-full
+	source = LICENSE
+	source = iconeodin.png
+	source = post-install-arch-full.desktop
+	sha256sums = 14e56b6506397038bd4630ae45c1e23381bce8a2411a8f711827fbf88a7195cd
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = 2eaa3fadd7b41d9395bca2dc5ebdc9bd3e206a842a7ee441d0d7be04deb77c59
+	sha256sums = 8529b988d4e3e6ef611ad5ef2124fafa2cbe416b78698c9596845d5471d93651
+
+pkgname = post-install-arch-full

@@ -1,0 +1,1217 @@
+#!/bin/bash
+
+SHELL=${SHELL:-/bin/bash}
+
+#===============================================================
+# DEFINIÇÃO DE CORES ANSI PARA O TERMINAL
+#===============================================================
+NC="\033[0m"
+CYAN_NEON="\033[1;36m"
+GREEN_NEON="\033[1;32m"
+YELLOW_NEON="\033[1;33m"
+NEON_BLUE="\033[1;34m"
+WHITE_NEON='\033[1;97m'
+
+# ==============================================================================
+# PALETA DE CORES E GRADIENTE (RGB TRUE COLOR)
+# ==============================================================================
+GRAD_1="\e[38;2;0;220;255m"   # Neon Blue
+GRAD_2="\e[38;2;80;185;255m"  # Azul Claro
+GRAD_3="\e[38;2;130;160;250m" # Azul Lavanda
+GRAD_4="\e[38;2;170;135;245m" # Roxo Suave
+GRAD_5="\e[38;2;190;120;235m" # Roxo Pastel
+GRAD_6="\e[38;2;160;100;210m" # Roxo Atenuado
+
+PINK_NEON="\e[38;2;255;105;180m"
+RED_NEON="\e[38;2;255;50;50m"
+
+#===============================================================
+#inicial log // start log
+#===============================================================
+DOC_DIR="$(xdg-user-dir DOCUMENTS 2>/dev/null)"
+
+if [[ -z "$DOC_DIR" || ! -d "$DOC_DIR" ]]; then
+    # "Documentos" atende tanto PT-BR quanto ES-ES (Espanha / América Latina)
+    if [[ -d "$HOME/Documentos" ]]; then
+        DOC_DIR="$HOME/Documentos"
+    else
+        DOC_DIR="$HOME/Documents"
+    fi
+fi
+
+LOG_DIR="$DOC_DIR/Odin_Logs"
+mkdir -p "$LOG_DIR"
+
+TIMESTAMP="$(date +'%Y-%m-%d_%H-%M-%S')"
+LOG_TXT="$LOG_DIR/odin_execucao_$TIMESTAMP.txt"
+LOG_PDF="$LOG_DIR/odin_execucao_$TIMESTAMP.pdf"
+
+# Redirecionamento em tempo real para tela e para o arquivo TXT
+exec > >(tee -a "$LOG_TXT") 2>&1
+
+gerar_log_pdf() {
+    # Desativa o redirecionamento para exibir mensagens finais diretamente no TTY
+    exec > /dev/tty 2>&1
+
+    echo ""
+    echo "[ODIN LOG] Finalizando gravação do log em formato PDF..."
+
+    # Garante as dependências necessárias no Arch Linux
+    if ! command -v enscript &>/dev/null || ! command -v ps2pdf &>/dev/null || ! command -v iconv &>/dev/null; then
+        echo "[ODIN LOG] Instalando dependências ('enscript', 'ghostscript', 'glibc')..."
+        sudo pacman -S --noconfirm --needed enscript ghostscript glibc >/dev/null 2>&1
+    fi
+
+    if command -v enscript &>/dev/null && command -v ps2pdf &>/dev/null; then
+        # O sed limpa todas as sequências de escape ANSI (\x1b\[[0-9;]*[a-zA-Z])
+        sed -r "s/\x1B\[[0-9;]*[a-zA-Z]//g" "$LOG_TXT" | \
+        iconv -f UTF-8 -t ISO-8859-1//TRANSLIT 2>/dev/null | \
+        enscript -B --line-numbers --font=Courier8 --encoding=latin1 -p - 2>/dev/null | \
+        ps2pdf - "$LOG_PDF" 2>/dev/null
+    fi
+
+    if [[ -f "$LOG_PDF" ]]; then
+        echo "[ODIN LOG] Logs gravados com sucesso em:"
+        echo "  - TXT: $LOG_TXT"
+        echo "  - PDF: $LOG_PDF"
+    else
+        echo "[ODIN LOG] Falha ao gerar PDF. O log TXT está disponível em: $LOG_TXT"
+    fi
+}
+
+trap gerar_log_pdf EXIT
+
+#==================================================================
+#verificar idiomas 
+#==================================================================
+VERIFICAR_IDIOMA() {
+    
+    local sys_locale="${LC_ALL:-${LANG:-$LC_MESSAGES}}"
+    
+   
+    local sys_lang="${sys_locale%%.*}"
+
+    
+    IDIOMA_SISTEMA=""
+
+    echo -e "${CYAN_NEON}[LANG CHECK] Detectando idioma do sistema operacional...${NC}"
+
+    case "$sys_lang" in
+        pt*|PT*)
+            IDIOMA_SISTEMA="PT_BR"
+            if [[ "$sys_lang" == "pt_BR" ]]; then
+                echo -e "${GREEN_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Padrão definido: PT-BR (Português Brasil)${NC}"
+            else
+                echo -e "${YELLOW_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Mapeado para: PT-BR (Português Brasil)${NC}"
+            fi
+            ;;
+
+        es*|ES*)
+            IDIOMA_SISTEMA="ES_ES"
+            if [[ "$sys_lang" == "es_ES" ]]; then
+                echo -e "${GREEN_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Padrão definido: ES-ES (Español España)${NC}"
+            else
+                echo -e "${YELLOW_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Mapeado para: ES-ES (Español España)${NC}"
+            fi
+            ;;
+
+        en*|EN*)
+            IDIOMA_SISTEMA="EN_US"
+            if [[ "$sys_lang" == "en_US" ]]; then
+                echo -e "${GREEN_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Padrão definido: EN-US (English United States)${NC}"
+            else
+                # Mapeia qualquer variação de inglês (en_CA, en_GB, en_AU, etc.) para EN-US
+                echo -e "${YELLOW_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Mapeado para: EN-US (English United States)${NC}"
+            fi
+            ;;
+
+        *)
+            IDIOMA_SISTEMA="EN_US"
+            if [[ -n "$sys_lang" ]]; then
+                # Idioma não suportado diretamente (ex: ja_JP, fr_FR) caindo no Fallback EN-US
+                echo -e "${YELLOW_NEON}[LANG] Idioma não suportado: '$sys_lang' ===> Aplicando Fallback: EN-US (English United States)${NC}"
+            else
+                echo -e "${NEON_BLUE}[LANG] Nenhum locale definido no ambiente ===> Aplicando Padrão Global: EN-US${NC}"
+            fi
+            ;;
+    esac
+    echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
+    echo ""
+
+}
+
+#=========================================================================================================
+
+msg() {
+    local pt_msg="$1"  # 1º argumento: Português (PT-BR)
+    local en_msg="$2"  # 2º argumento: Inglês (EN-US)
+    local es_msg="$3"  # 3º argumento: Espanhol (ES-ES)
+
+    case "$IDIOMA_SISTEMA" in
+        "PT_BR") echo -e "$pt_msg" ;;
+        "EN_US") echo -e "$en_msg" ;;
+        "ES_ES") echo -e "$es_msg" ;;
+        *)       echo -e "$en_msg" ;; # Fallback padrão para Inglês
+    esac
+}
+export -f msg
+
+#===========================================================================================
+# MÓDULO: GERENCIADOR DE SERVIÇOS (SYSTEMD / OPENRC)
+#===========================================================================================
+manage_service() {
+    local action="$1"   # enable, start, stop, restart, status, is-enabled
+    local service="$2"  # nome do serviço
+
+    if command -v systemctl &>/dev/null && pidof systemd &>/dev/null; then
+        case "$action" in
+            enable)     sudo systemctl enable "$service" ;;
+            start)      sudo systemctl start "$service" ;;
+            restart)    sudo systemctl restart "$service" ;;
+            stop)       sudo systemctl stop "$service" ;;
+            status)     sudo systemctl status "$service" ;;
+            is-enabled) systemctl is-enabled --quiet "$service" ;;
+        esac
+    elif command -v rc-service &>/dev/null; then
+        case "$action" in
+            enable)     sudo rc-update add "$service" default ;;
+            start)      sudo rc-service "$service" start ;;
+            restart)    sudo rc-service "$service" restart ;;
+            stop)       sudo rc-service "$service" stop ;;
+            status)     sudo rc-service "$service" status ;;
+            is-enabled) rc-update show default 2>/dev/null | awk '{print $1}' | grep -qx "$service" ;;
+        esac
+    else
+        if [ "$action" = "enable" ]; then
+            msg "${YELLOW_NEON:-}[AVISO] Gerenciador de init não suportado para: $service${NC:-}" \
+                "${YELLOW_NEON:-}[WARNING] Unsupported init manager for: $service${NC:-}" \
+                "${YELLOW_NEON:-}[AVISO] Gestor de init no soportado para: $service${NC:-}"
+        fi
+        return 1
+    fi
+}
+export -f manage_service
+
+#============================================================================================
+
+MENU_CABECALHO() {
+    clear 
+
+    msg "${CYAN_NEON}Bem-vindo ao Odin - Instalador Pós-Instalação Arch Linux${NC}"\
+        "${CYAN_NEON}Welcome to Odin - Post-Installation Arch Linux Installer${NC}" \
+        "${CYAN_NEON}Bienvenido a Odin - Instalador Post-Instalación Arch Linux${NC}"
+    echo ""
+    echo -e "${GRAD_1}  ██████╗  ██████╗ ███████╗████████╗    ██╗███╗   ██╗███████╗████████╗█████╗  ██╗     ██╗     ${NC}"
+    echo -e "${GRAD_2}  ██╔══██╗██╔═══██╗██╔════╝╚══██╔══╝    ██║████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║     ██║     ${NC}"
+    echo -e "${GRAD_3}  ██████╔╝██║   ██║███████╗   ██║       ██║██╔██╗ ██║███████╗   ██║   ███████║██║     ██║     ${NC}"
+    echo -e "${GRAD_4}  ██╔═══╝ ██║   ██║╚════██║   ██║       ██║██║╚██╗██║╚════██║   ██║   ██╔══██║██║     ██║     ${NC}"
+    echo -e "${GRAD_5}  ██║     ╚██████╔╝███████║   ██║       ██║██║ ╚████║███████║   ██║   ██║  ██║███████╗███████╗${NC}"
+    echo -e "${GRAD_6}  ╚═╝      ╚═════╝ ╚══════╝   ╚═╝       ╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝${NC}"
+    echo -e "                                                                                              "
+    echo -e "${GRAD_4}              █████╗ ██████╗  ██████╗██╗  ██╗    ███████╗██╗   ██╗██╗     ██╗     ${NC}"
+    echo -e "${GRAD_5}             ██╔══██╗██╔══██╗██╔════╝██║  ██║    ██╔════╝██║   ██║██║     ██║     ${NC}"
+    echo -e "${GRAD_5}             ███████║██████╔╝██║     ███████║    █████╗  ██║   ██║██║     ██║     ${NC}"
+    echo -e "${GRAD_6}             ██╔══██║██╔══██╗██║     ██╔══██║    ██╔══╝  ██║   ██║██║     ██║     ${NC}"
+    echo -e "${GRAD_6}             ██║  ██║██║  ██║╚██████╗██║  ██║    ██║     ╚██████╔╝███████╗███████╗${NC}"
+    echo -e "${GRAD_6}             ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝    ╚═╝      ╚═════╝ ╚══════╝╚══════╝${NC}"
+    echo ""
+    echo -e "  ${PINK_NEON}─────────────────────────────── ${RED_NEON}< PROJECT-ODIN -V: 1.0 >${PINK_NEON} ────────────────────────────────${NC}"
+    echo ""
+    echo -e "  ${NEON_BLUE}───────────>>[ COMPLETE POST-INSTALLER FOR ARCH AND DERIVATIVES ]<<───────────${NC}"
+    echo -e "  ${NEON_BLUE}-----------------------------------------------------------------------------------------${NC}"
+    echo -e "${RED_NEON}By: 𝕿𝖍𝖊 S𝖊𝖛𝖊𝖓𝖙𝖍🐧 ${NC}"
+    echo -e "${RED_NEON}--------------------------------${NC}"
+    echo ""
+    
+    echo "!ainda nao é uma versao pronta nao deve ser utilizada!"
+    echo "!This is not yet a finished version; it should not be used.!"
+    echo "¡Aún no es una versión lista; no debe utilizarse!"
+    
+    
+    sleep 1
+}
+
+
+CHAMAR_MENU_OPCOES() {
+    local opcao
+    local opcao_sair
+
+    while true; do
+        MENU_CABECALHO
+        
+        msg "${CYAN_NEON}1) - Script Iniciantes Padrão:${NC}\n   Instala tudo por padrão que seu arch precisa para você poder sair usando\n   como (codecs de multimídia, leitura de arquivos, otimização de hardware).\n" \
+            "${CYAN_NEON}1) - Standard Beginner Script:${NC}\n   Installs everything your arch needs out of the box so you can start using it\n   (such as multimedia codecs, file readers, hardware optimization).\n" \
+            "${CYAN_NEON}1) - Script Principiante Estándar:${NC}\n   Instala todo lo que tu arch necesita por defecto para que puedas usarlo\n   (como códecs multimedia, lectura de archivos, optimización de hardware).\n"
+        
+        echo ""
+        sleep 0.2    
+      
+        msg "${CYAN_NEON}2) - Para Avançados/Intermediários:${NC}\n   Chama blocos para você escolher o que quer instalar dentro da lista disponível.\n" \
+            "${CYAN_NEON}2) - For Advanced/Intermediate:${NC}\n   Calls blocks for you to choose what to install from the available list.\n" \
+            "${CYAN_NEON}2) - Para Avanzados/Intermedios:${NC}\n   Llama bloques para que elijas qué instalar dentro de la lista disponible.\n"
+        
+        echo ""
+        sleep 0.2    
+      
+        msg "${CYAN_NEON}3) - Opções Pré-definidas:${NC}\n   Escolha uma opção pré-definida para deixar seu arch pronto para um dos propósitos:\n   ${YELLOW_NEON}GAME${NC}   : Deixa seu arch pronto para jogos com instalação de pacotes e bibliotecas próprias\n            para jogar com opção de baixar kernel-zen para baixa latência.\n   ${YELLOW_NEON}DEV${NC}    : Baixa e deixa pronto seu arch para programação baixando as principais\n            linguagens, compiladores e VMs.\n   ${RED_NEON}HACKER${NC} : (Opção instável) Habilita os repositórios do black arch e baixa as\n            principais ferramentas deixando seu arch pronto para pentest.\n" \
+            "${CYAN_NEON}3) - Pre-defined Options:${NC}\n   Choose a pre-defined option to ready your arch for one of these purposes:\n   ${YELLOW_NEON}GAME${NC}   : Gets your arch ready for gaming by installing specific packages and\n            libraries, with an option to download kernel-zen for low latency.\n   ${YELLOW_NEON}DEV${NC}    : Readies your arch for programming by downloading the main languages,\n            compilers, and VMs.\n   ${RED_NEON}HACKER${NC} : (Unstable option) Enables black arch repos and downloads the main\n            tools, leaving your arch ready for pentesting.\n" \
+            "${CYAN_NEON}3) - Opciones Predefinidas:${NC}\n   Elija una opción predefinida para preparar su arch para uno de estos propósitos:\n   ${YELLOW_NEON}GAME${NC}   : Prepara tu arch para juegos instalando paquetes y librerías propias,\n            con la opción de descargar kernel-zen para baja latencia.\n   ${YELLOW_NEON}DEV${NC}    : Prepara tu arch para programación descargando los lenguajes principales,\n            compiladores y VMs.\n   ${RED_NEON}HACKER${NC} : (Opción inestable) Habilita los repositorios de black arch y descarga\n            las herramientas principales, dejándolo listo para pentest.\n"
+        
+        echo ""
+        sleep 0.2
+     
+        msg "${RED_NEON}4) - Sair do script${NC}" \
+            "${RED_NEON}4) - Exit script${NC}" \
+            "${RED_NEON}4) - Salir del script${NC}"
+
+        echo -e "${NEON_BLUE}-----------------------------------------------------------------------------------------${NC}"
+        
+        msg "\nEscolha uma opção [1-4]:" \
+            "\nChoose an option [1-4]:" \
+            "\nElija una opción [1-4]:"
+        read -rp ">> " opcao
+
+        case "$opcao" in
+            1) 
+                OPCAO_INICIANTE_SCRIPT_PADRAO 
+                ;;
+            2) 
+                OPCAO_INTERMEDIARIO_AVANCADO_SCRIPT 
+                ;;
+            3) 
+                OPCAO_PRE_DEFINIDAS_SCRIPTS 
+                ;;
+            4)
+                echo ""
+                msg "${YELLOW_NEON}Gostaria de encerrar o projeto Odin e gerar seu log de sessão?${NC}\n[1] Sim, encerra   [2] Não, volta para as opções" \
+                    "${YELLOW_NEON}Would you like to close Project Odin and generate your session log?${NC}\n[1] Yes, exit      [2] No, return to options" \
+                    "${YELLOW_NEON}¿Te gustaría cerrar el proyecto Odin y generar tu registro de sesión?${NC}\n[1] Sí, cerrar     [2] No, volver a las opciones"
+                read -rp ">> " opcao_sair
+                
+                case "$opcao_sair" in
+                    1)
+                        echo ""
+                        # Loop de contagem regressiva de 5 a 0
+                        for i in {5..0}; do
+                            msg "Encerrando em $i..." "Exiting in $i..." "Cerrando en $i..."
+                            sleep 1
+                        done
+                        exit 0
+                        ;;
+                    2)
+                        continue # Pula o resto e volta pro começo do 'while true'
+                        ;;
+                    *)
+                        msg "\n${RED_NEON}[ERRO] Opção inválida! Retornando ao menu principal...${NC}" \
+                            "\n${RED_NEON}[ERROR] Invalid option! Returning to main menu...${NC}" \
+                            "\n${RED_NEON}[ERROR] ¡Opción inválida! Volviendo al menú principal...${NC}"
+                        sleep 2
+                        ;;
+                esac
+                ;;
+            *)
+                msg "\n${RED_NEON}Opção inválida, digite uma opção válida (1, 2, 3, 4)...${NC}" \
+                    "\n${RED_NEON}Invalid option, please enter a valid option (1, 2, 3, 4)...${NC}" \
+                    "\n${RED_NEON}Opción inválida, por favor ingrese una opción válida (1, 2, 3, 4)...${NC}"
+                read -rp "Pressione ENTER para tentar novamente... / Press ENTER to try again..."
+                ;;
+        esac
+    done
+}
+
+
+#===========================================================================================
+#COMEÇO DAS FUNÇÕES DE CADA OPÇÃO DO MENU // START OF EACH MENU OPTION FUNCTIONS
+#===========================================================================================
+
+FUNCAO_CORE(){
+
+    _core_sep() { echo -e "${NEON_BLUE}\n------------------------------------------------------------${NC}"; }
+
+    _core_skip() {
+        msg "-> Pulando esta etapa." "-> Skipping this step." "-> Saltando este paso."
+    }
+
+    _core_ask_yn() {
+        local answer
+        while true; do
+            msg "$1" "$2" "$3"
+            if ! read -r -p "> " answer; then
+                echo
+                return 1
+            fi
+            answer="${answer//[[:space:]]/}"
+            answer="${answer,,}"
+            case "$answer" in
+                s|sim|y|yes|si|sí) return 0 ;;
+                n|nao|não|no) return 1 ;;
+                *) msg "${RED_NEON}[ERRO]: Opção inválida.${NC}" "${RED_NEON}[ERROR]: Invalid option.${NC}" "${RED_NEON}[ERROR]: Opción no válida.${NC}" ;;
+            esac
+        done
+    }
+
+    _core_install() {
+        if sudo pacman -S --needed --noconfirm "$@"; then
+            msg "-> Pacotes instalados: $*" "-> Packages installed: $*" "-> Paquetes instalados: $*"
+            return 0
+        fi
+        msg "${RED_NEON}[ERRO]: Falha ao instalar: $* ${NC}" "${RED_NEON}[ERROR]: Failed to install: $* ${NC}" "${RED_NEON}[ERROR]: Error al instalar: $* ${NC}"
+        return 1
+    }
+
+    _core_init_pkg() {
+        if command -v systemctl &>/dev/null && pidof systemd &>/dev/null; then return 0; fi
+        if command -v rc-service &>/dev/null && pacman -Si "$1-openrc" &>/dev/null; then
+            _core_install "$1-openrc"
+        fi
+        return 0
+    }
+
+    _core_sudo_keepalive_start() {
+        if [ -n "${CORE_SUDO_PID:-}" ] && kill -0 "$CORE_SUDO_PID" 2>/dev/null; then return 0; fi
+        local parent_pid=$$
+        (
+            while kill -0 "$parent_pid" 2>/dev/null; do
+                sudo -n true 2>/dev/null
+                sleep 45
+            done
+        ) >/dev/null 2>&1 &
+        CORE_SUDO_PID=$!
+        disown "$CORE_SUDO_PID" 2>/dev/null
+    }
+
+    _core_sudo_keepalive_stop() {
+    if [ -n "${CORE_SUDO_PID:-}" ]; then
+        kill "$CORE_SUDO_PID" 2>/dev/null || true
+        CORE_SUDO_PID=""
+    fi
+    }
+
+    _core_has_bluetooth() {
+    compgen -G "/sys/class/bluetooth/hci*" >/dev/null && return 0
+    if command -v rfkill &>/dev/null && rfkill list bluetooth 2>/dev/null | grep -qi bluetooth; then return 0; fi
+    return 1
+    }
+
+    _core_is_artix() { 
+    [ -f /etc/artix-release ] || grep -qi '^ID=artix' /etc/os-release 2>/dev/null
+    }
+
+    _core_flathub() {
+    if sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo; then
+        msg "-> Flathub ativado." "-> Flathub enabled." "-> Flathub activado."
+    else
+        msg "${RED_NEON}[ERRO]: Falha ao ativar Flathub.${NC}" "${RED_NEON}[ERROR]: Failed to enable Flathub.${NC}" "${RED_NEON}[ERROR]: Error al activar Flathub.${NC}"
+    fi
+    }
+
+    _core_draw_bar() {
+    local atual=$1
+    local total=$2
+    local largura=20
+    
+    local porcentagem num_eq num_esp preenchimento vazios
+
+    [ "$total" -le 0 ] && total=1
+    [ "$atual" -gt "$total" ] && atual=$total
+
+    porcentagem=$(( atual * 100 / total ))
+    num_eq=$(( atual * largura / total ))
+    num_esp=$(( largura - num_eq ))
+
+    preenchimento=$(printf '%*s' "$num_eq" '' | tr ' ' '=')
+    vazios=$(printf '%*s' "$num_esp" '' | tr ' ' ' ')
+
+    printf "\r\e[K   Executando testes… [\e[32m%s\e[0m%s] \e[1;33m%3d%%\e[0m concluídos" \
+        "$preenchimento" "$vazios" "$porcentagem"
+    }
+
+    #==========================
+    local resp_audio mirror_target reflector_ok ucode_pkg root_fs
+    local efi_dir conf limine_conf user_uid mirror_run_bak
+    local base_pkgs=(git base-devel dkms curl wget exfatprogs htop unrar tar gzip bzip2 xz lrzip p7zip ntfs-3g dosfstools lm_sensors fastfetch)
+    local target_user="${SUDO_USER:-${USER:-$(id -un)}}"
+
+    echo -e "${CYAN_NEON}\n============================================================${NC}"
+    echo ""
+    msg "${CYAN_NEON}[CORE]:${NC} ${NEON_BLUE}Iniciando configurações essenciais do Project Odin...${NC}" \
+        "${CYAN_NEON}[CORE]:${NC} ${NEON_BLUE}Starting essential configurations for Project Odin...${NC}" \
+        "${CYAN_NEON}[CORE]:${NC} ${NEON_BLUE}Iniciando configuraciones esenciales del Project Odin...${NC}"
+        sleep 0.2
+    echo -e "${PINK_NEON}\n============================================================${NC}"
+    _core_sep
+    echo ""
+    msg "${YELLOW_NEON}[1/15]: Solicitando credenciais de sudo...${NC}" \
+        "${YELLOW_NEON}[1/15]: Requesting sudo credentials...${NC}" \
+        "${YELLOW_NEON}[1/15]: Solicitando credenciales de sudo...${NC}"
+        echo ""
+    if ! sudo -v; then
+        msg "${RED_NEON}[ERRO]:  Não foi possível validar o sudo. Abortando o CORE.!${NC}" \
+            "${RED_NEON}[ERROR]: Could not validate sudo. Aborting CORE.!${NC}" \
+            "${RED_NEON}[ERROR]: No se pudo validar sudo. Abortando el CORE.!${NC}"
+        return 1
+    fi
+    _core_sudo_keepalive_start
+    msg "-> Sudo validado e keep-alive ativo." \
+        "-> Sudo validated and keep-alive active." \
+        "-> Sudo validado y keep-alive activo."
+    
+    sleep 0.2
+    #echo -e "${NEON_BLUE}---------------------------------------------------------------- [2/15]${NC}"
+    _core_sep
+    echo ""
+    msg "${CYAN_NEON}[2/15]: Sincronizando o relógio do sistema (NTP)...${NC}" \
+        "${CYAN_NEON}[2/15]: Synchronizing system clock (NTP)...${NC}" \
+        "${CYAN_NEON}[2/15]: Sincronizando el reloj del sistema (NTP)...${NC}"
+    echo ""
+    if command -v timedatectl &>/dev/null && pidof systemd &>/dev/null; then
+        sudo timedatectl set-ntp true
+        msg "-> NTP ativado via systemd. Relógio sincronizado." \
+            "-> NTP enabled via systemd. Clock synced." \
+            "-> NTP activado vía systemd. Reloj sincronizado."
+    elif command -v rc-service &>/dev/null; then
+        if pacman -Q chrony &>/dev/null; then
+            manage_service enable chronyd
+            manage_service start chronyd
+        elif pacman -Q ntp &>/dev/null; then
+            manage_service enable ntpd
+            manage_service start ntpd
+        elif _core_ask_yn "Nenhum cliente NTP encontrado. Instalar o chrony? [s/n]" \
+                          "No NTP client found. Install chrony? [y/n]" \
+                          "Ningún cliente NTP encontrado. ¿Instalar chrony? [s/n]"; then
+            if _core_install chrony; then
+                _core_init_pkg chrony
+                manage_service enable chronyd
+                manage_service start chronyd
+            fi
+        else
+            _core_skip
+        fi
+    else
+        _core_skip
+    fi
+
+    sleep 0.2    
+    echo ""
+    #echo -e "${NEON_BLUE}---------------------------------------------------------------- [3/15]${NC}"
+    _core_sep
+    echo ""
+    msg "${CYAN_NEON}[3/15]: Configurando repositórios e otimizações no pacman.conf...${NC}" \
+        "${CYAN_NEON}[3/15]: Configuring repositories and optimizations in pacman.conf...${NC}" \
+        "${CYAN_NEON}[3/15]: Configurando repositorios y optimizaciones en pacman.conf...${NC}"
+    echo ""
+    if [ ! -f /etc/pacman.conf.bak-core ]; then
+        sudo cp /etc/pacman.conf /etc/pacman.conf.bak-core
+    fi
+
+    if grep -q "^\[multilib\]" /etc/pacman.conf; then
+        msg "-> Repositório Multilib já está ativo." \
+            "-> Multilib repository is already enabled." \
+            "-> Repositorio Multilib ya está activado."
+    else
+        sudo sed -i '/^#\[multilib\]/{N;s/#//g}' /etc/pacman.conf
+        sudo sed -i '/^\[multilib\]/{n;s/^#//}' /etc/pacman.conf 2>/dev/null || true
+
+        if grep -q "^\[multilib\]" /etc/pacman.conf; then
+            msg "-> Repositório Multilib e Include ativados com sucesso." \
+                "-> Multilib repository and Include enabled successfully." \
+                "-> Repositorio Multilib e Include activados con éxito."
+        else
+            msg "${RED_NEON}[ERRO]: Falha ao ativar Multilib.${NC}" "${RED_NEON}[ERROR] Failed to enable Multilib.${NC}" "${RED_NEON}[ERROR] Error al activar Multilib.${NC}"
+        fi
+    fi
+    echo ""
+    if grep -q "^ParallelDownloads *= *7 *$" /etc/pacman.conf; then
+        msg "-> Downloads paralelos já configurados (7)." "-> Parallel downloads already set (7)." "-> Descargas paralelas ya configuradas (7)."
+    else
+        if grep -q "^#\?ParallelDownloads" /etc/pacman.conf; then
+            sudo sed -i 's/^#\?ParallelDownloads.*/ParallelDownloads = 7/' /etc/pacman.conf
+        else
+            sudo sed -i '/^\[options\]/a ParallelDownloads = 7' /etc/pacman.conf
+        fi
+        msg "-> ParallelDownloads definido para 7." "-> ParallelDownloads set to 7." "-> ParallelDownloads establecido en 7."
+    fi
+    echo ""
+    if grep -q "^ILoveCandy" /etc/pacman.conf; then
+        msg "-> ILoveCandy já ativo." "-> ILoveCandy already enabled." "-> ILoveCandy ya activado."
+    elif _core_ask_yn "Deseja ativar o efeito 'ILoveCandy' na barra do Pacman? [s/n]" \
+                      "Enable 'ILoveCandy' effect on Pacman's progress bar? [y/n]" \
+                      "¿Habilitar efecto 'ILoveCandy' en la barra de Pacman? [s/n]"; then
+        sudo sed -i '/^\[options\]/a ILoveCandy' /etc/pacman.conf
+        msg "-> ILoveCandy ativado." "-> ILoveCandy enabled." "-> ILoveCandy activado."
+    else
+        _core_skip
+    fi
+
+    sleep 0.2
+    echo ""
+    #echo -e "${NEON_BLUE} ---------------------------------------------------------------- [4/15]${NC}"
+    _core_sep
+    echo ""
+    msg "${CYAN_NEON}[4/15]: Atualizando lista de espelhos com Reflector...${NC}" \
+        "${CYAN_NEON}[4/15]: Updating mirrorlist with Reflector...${NC}" \
+        "${CYAN_NEON}[4/15]: Actualizando lista de espejos con Reflector...${NC}"
+    echo ""
+    mirror_target="/etc/pacman.d/mirrorlist"
+    reflector_ok=true
+    echo ""
+    if _core_is_artix; then
+        if [ -f /etc/pacman.d/mirrorlist-arch ]; then
+            mirror_target="/etc/pacman.d/mirrorlist-arch"
+        else
+            reflector_ok=false
+            msg "-> Artix sem mirrorlist-arch. Pulando reflector." \
+                "-> Artix without mirrorlist-arch. Skipping reflector." \
+                "-> Artix sin mirrorlist-arch. Saltando reflector."
+        fi
+    fi
+    
+    if $reflector_ok; then
+        if ! command -v reflector &>/dev/null; then
+            sudo pacman -Syu --needed --noconfirm reflector
+        fi
+
+        if command -v reflector &>/dev/null; then
+            [ -f "${mirror_target}.bak-core" ] || sudo cp -f "$mirror_target" "${mirror_target}.bak-core" 2>/dev/null
+            mirror_run_bak=$(mktemp)
+            sudo cp -f "$mirror_target" "$mirror_run_bak" 2>/dev/null
+
+            msg "${CYAN_NEON}-> Reflector executando. Acompanhe o progresso:${NC}" \
+                "${CYAN_NEON}-> Reflector running. Follow the progress:${NC}" \
+                "${CYAN_NEON}-> Reflector ejecutando. Siga el progreso:${NC}"
+
+           
+            tput civis 2>/dev/null || true
+            local total_espelhos=10
+            local atual=0
+
+            sudo reflector --latest "$total_espelhos" --protocol https --sort rate --download-timeout 7 --save "$mirror_target" --verbose 2>&1 | while read -r linha; do
+                if echo "$linha" | grep -qE "http://|https://|Rating|downloading"; then
+                    ((atual++))
+                    _core_draw_bar "$atual" "$total_espelhos"
+                fi
+            done
+            local ref_status=${PIPESTATUS[0]} 
+            
+            tput cnorm 2>/dev/null || true
+            echo "" 
+
+            if [ "$ref_status" -eq 0 ]; then
+                msg "-> Espelhos otimizados com sucesso." \
+                    "-> Mirrors optimized successfully." \
+                    "-> Espejos optimizados con éxito."
+            else
+                sudo cp -f "$mirror_run_bak" "$mirror_target" 2>/dev/null
+                msg "${RED_NEON}[ERRO]: Reflector falhou. Restaurado backup.${NC}" \
+                    "${RED_NEON}[ERROR]: Reflector failed. Backup restored.${NC}" \
+                    "${RED_NEON}[ERROR]: Reflector falló. Backup restaurado.${NC}"
+            fi
+            rm -f "$mirror_run_bak"
+        else
+            msg "${YELLOW_NEON}[AVISO]: Reflector não pôde ser instalado.${NC}" \
+                "${YELLOW_NEON}[WARNING]: Reflector could not be installed.${NC}" \
+                "${YELLOW_NEON}[AVISO]: Reflector no se pudo instalar.${NC}"
+        fi
+    fi
+
+    sleep 0.2
+    echo ""
+    #echo -e "${NEON_BLUE}---------------------------------------------------------------- [5/15]${NC}"
+    _core_sep
+    echo ""
+    msg "${CYAN_NEON}[5/15]: Sincronizando repositórios e atualizando o sistema (Syyu):${NC}" \
+        "${CYAN_NEON}[5/15]: Synchronizing repos and updating system (Syyu):${NC}" \
+        "${CYAN_NEON}[5/15]: Sincronizando repositorios y actualizando el sistema (Syyu):${NC}"
+    echo ""
+
+    if sudo pacman -Syyu --noconfirm; then
+        msg "-> Sistema atualizado e sincronizado." \
+            "-> System updated and synchronized." \
+            "-> Sistema actualizado y sincronizado."
+    else
+        msg "${RED_NEON}[ERRO CRÍTICO]: Sincronização do Pacman falhou. Abortando CORE.${NC}" \
+            "${RED_NEON}[CRITICAL ERROR]: Pacman synchronization failed. Aborting CORE.${NC}" \
+            "${RED_NEON}[ERROR CRÍTICO]: Sincronización de Pacman falló. Abortando CORE.${NC}"
+        return 1
+    fi
+
+    sleep 0.2
+    echo ""
+    #echo -e "${NEON_BLUE}---------------------------------------------------------------- [6/15]${NC}"
+    _core_sep
+    echo ""
+    msg "${CYAN_NEON}[6/15]: Verificando e Autoconfigurando Microcódigo da CPU...${NC}" \
+        "${CYAN_NEON}[6/15]: Checking and Autoconfiguring CPU Microcode...${NC}" \
+        "${CYAN_NEON}[6/15]: Comprobando y Autoconfigurando Microcódigo de CPU...${NC}"
+    echo ""
+
+    ucode_pkg=""
+    if grep -q "AuthenticAMD" /proc/cpuinfo; then
+        ucode_pkg="amd-ucode"
+        msg "-> Processador AMD detectado. Instalando amd-ucode..." \
+            "-> AMD Processor detected. Installing amd-ucode..." \
+            "-> Procesador AMD detectado. Instalando amd-ucode..."
+    elif grep -q "GenuineIntel" /proc/cpuinfo; then
+        ucode_pkg="intel-ucode"
+        msg "-> Processador Intel detectado. Instalando intel-ucode..." \
+            "-> Intel Processor detected. Installing intel-ucode..." \
+            "-> Procesador Intel detectado. Instalando intel-ucode..."
+    fi
+
+    if [ -n "$ucode_pkg" ]; then
+        _core_install "$ucode_pkg"
+
+        if command -v mkinitcpio &>/dev/null; then
+            msg "-> Compilando imagens de boot (mkinitcpio)..." \
+                "-> Building boot images (mkinitcpio)..." \
+                "-> Compilando imágenes de arranque (mkinitcpio)..."
+            sudo mkinitcpio -P >/dev/null 2>&1
+        elif command -v dracut &>/dev/null; then
+            sudo dracut --regenerate-all --force >/dev/null 2>&1
+        elif command -v booster &>/dev/null; then
+            sudo booster build >/dev/null 2>&1
+        fi
+
+        if command -v grub-mkconfig &>/dev/null && [ -d /boot/grub ]; then
+            sudo grub-mkconfig -o /boot/grub/grub.cfg >/dev/null 2>&1
+        fi
+
+        if command -v bootctl &>/dev/null && bootctl is-installed &>/dev/null; then
+            for efi_dir in /boot /efi /boot/efi; do
+                if sudo test -d "$efi_dir/loader/entries"; then
+                    while IFS= read -r -d '' conf; do
+                        if ! sudo grep -q "${ucode_pkg}.img" "$conf" && sudo grep -q "^initrd" "$conf"; then
+                            sudo sed -i "0,/^initrd/{s|^initrd|initrd /${ucode_pkg}.img\ninitrd|}" "$conf"
+                        fi
+                    done < <(sudo find "$efi_dir/loader/entries" -maxdepth 1 -name '*.conf' -print0)
+                fi
+            done
+        fi
+
+        for limine_conf in /boot/limine.conf /boot/limine/limine.conf /boot/EFI/limine/limine.conf /efi/limine.conf; do
+            if sudo test -f "$limine_conf"; then
+                if ! sudo grep -q "${ucode_pkg}.img" "$limine_conf" && sudo grep -qi "module_path:.*initramfs" "$limine_conf"; then
+                    sudo sed -i -E "/module_path:.*initramfs/I{h;s|initramfs[^[:space:]]*|${ucode_pkg}.img|I;G}" "$limine_conf" 2>/dev/null || true
+                fi
+            fi
+        done
+
+        msg "-> Blindagem da CPU finalizada." "-> CPU shielding completed." "-> Blindaje de CPU finalizado."
+    else
+        msg "-> Ambiente virtualizado ou CPU sem microcódigo dedicado." \
+            "-> Virtualized environment or CPU without dedicated microcode." \
+            "-> Entorno virtualizado o CPU sin microcódigo dedicado."
+    fi
+
+    sleep 0.2
+    echo ""
+    #echo -e "${NEON_BLUE}---------------------------------------------------------------- [7/15]${NC}"
+    _core_sep
+    echo ""
+    msg "${CYAN_NEON}[7/15]: Verificando hardware Bluetooth...${NC}" \
+        "${CYAN_NEON}[7/15]: Checking Bluetooth hardware...${NC}" \
+        "${CYAN_NEON}[7/15]: Comprobando el hardware Bluetooth...${NC}"
+    echo ""
+
+    if ! _core_has_bluetooth; then
+        msg "-> Nenhum adaptador Bluetooth detectado." \
+            "-> No Bluetooth adapter detected." \
+            "-> Ningún adaptador Bluetooth detectado."
+    elif pacman -Q bluez &>/dev/null && manage_service is-enabled bluetooth; then
+        msg "-> Bluetooth já instalado e ativo." \
+            "-> Bluetooth already installed and active." \
+            "-> Bluetooth ya instalado y activo."
+    elif _core_ask_yn "Bluetooth detectado. Instalar e ativar o serviço? [s/n]" \
+                      "Bluetooth detected. Install and enable service? [y/n]" \
+                      "Bluetooth detectado. ¿Instalar y activar servicio? [s/n]"; then
+        if _core_install bluez bluez-utils; then
+            _core_init_pkg bluez
+            manage_service enable bluetooth
+            manage_service start bluetooth
+        fi
+    else
+        _core_skip
+    fi
+
+    sleep 0.2
+    echo ""
+    #echo -e "${NEON_BLUE}---------------------------------------------------------------- [8/15]${NC}"
+    _core_sep
+    echo ""
+    msg "${CYAN_NEON}[8/15]: Verificando daemon de energia...${NC}" \
+        "${CYAN_NEON}[8/15]: Checking power daemon...${NC}" \
+        "${CYAN_NEON}[8/15]: Comprobando el demonio de energía...${NC}"
+    echo ""
+
+    if pacman -Q power-profiles-daemon &>/dev/null || pacman -Q tlp &>/dev/null; then
+        msg "-> Gerenciador de energia já instalado." \
+            "-> Power manager already installed." \
+            "-> Gestor de energía ya instalado."
+    else
+        if _core_install power-profiles-daemon; then
+            _core_init_pkg power-profiles-daemon
+            manage_service enable power-profiles-daemon
+            manage_service start power-profiles-daemon
+        fi
+    fi
+
+    sleep 0.2
+    echo ""
+    #echo -e "${NEON_BLUE}---------------------------------------------------------------- [9/15]${NC}"
+    _core_sep
+    echo ""
+    msg "${CYAN_NEON}[9/15]: Verificando gerenciador de impressora (CUPS)...${NC}" \
+        "${CYAN_NEON}[9/15]: Checking printer manager (CUPS)...${NC}" \
+        "${CYAN_NEON}[9/15]: Comprobando el administrador de impresoras (CUPS)...${NC}"
+    echo ""
+
+    if pacman -Q cups &>/dev/null; then
+        msg "-> CUPS já instalado." "-> CUPS already installed." "-> CUPS ya instalado."
+    elif _core_ask_yn "Gerenciador de impressora (CUPS) não encontrado. Instalar e ativar? [s/n]" \
+                      "Printer manager (CUPS) not found. Install and enable? [y/n]" \
+                      "Administrador de impresoras (CUPS) no encontrado. ¿Instalar y activar? [s/n]"; then
+        if _core_install cups cups-pdf ghostscript gsfonts gutenprint; then
+            _core_init_pkg cups
+            manage_service enable cups
+            manage_service start cups
+        fi
+    else
+        _core_skip
+    fi
+
+    sleep 0.2
+    echo ""
+    #echo -e "${NEON_BLUE}---------------------------------------------------------------- [10/15]${NC}"
+    _core_sep
+    echo ""
+    msg "${CYAN_NEON}[10/15]: Verificando servidor de áudio...${NC}" \
+        "${CYAN_NEON}[10/15]: Checking audio server...${NC}" \
+        "${CYAN_NEON}[10/15]: Comprobando el servidor de audio...${NC}"
+    echo ""
+
+    if pacman -Q pipewire &>/dev/null || pacman -Q pulseaudio &>/dev/null; then
+        msg "-> Servidor de áudio já instalado." \
+            "-> Audio server already installed." \
+            "-> Servidor de audio ya instalado."
+    else
+        while true; do
+            msg "Nenhum áudio detectado. Qual instalar? [1] Pipewire (Recomendado) [2] PulseAudio [3] Pular" \
+                "No audio detected. Which to install? [1] Pipewire (Recommended) [2] PulseAudio [3] Skip" \
+                "Sin audio detectado. ¿Cuál instalar? [1] Pipewire (Recomendado) [2] PulseAudio [3] Saltar"
+            read -r -p "> " resp_audio || resp_audio=3
+            resp_audio="${resp_audio//[[:space:]]/}"
+            case "$resp_audio" in
+                1) 
+                    if _core_install pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber; then
+                        if command -v systemctl &>/dev/null && pidof systemd &>/dev/null; then
+                            sudo systemctl --global enable pipewire pipewire-pulse wireplumber >/dev/null 2>&1 || true
+                        fi
+                    fi
+                    break 
+                    ;;
+                2) 
+                    _core_install pulseaudio pulseaudio-alsa pulseaudio-bluetooth
+                    break 
+                    ;;
+                3) 
+                    _core_skip
+                    break 
+                    ;;
+                *) 
+                    msg "${RED_NEON}[ERRO]: Digite 1, 2 ou 3.${NC}" "${RED_NEON}[ERROR]: Type 1, 2, or 3.${NC}" "${RED_NEON}[ERROR]: Escriba 1, 2 o 3.${NC}" 
+                    ;;
+            esac
+        done
+    fi
+
+    sleep 0.2
+    echo ""
+    #echo -e "${NEON_BLUE}---------------------------------------------------------------- [11/15]${NC}"
+    _core_sep
+    echo ""
+    msg "${CYAN_NEON}[11/15]: Verificando Flatpak...${NC}" \
+        "${CYAN_NEON}[11/15]: Checking Flatpak...${NC}" \
+        "${CYAN_NEON}[11/15]: Comprobando Flatpak...${NC}"
+    echo ""
+
+    if pacman -Q flatpak &>/dev/null; then
+        _core_flathub
+    elif _core_ask_yn "Flatpak não instalado. Instalar e ativar o Flathub? [s/n]" \
+                      "Flatpak not installed. Install and enable Flathub? [y/n]" \
+                      "Flatpak no instalado. ¿Instalar y activar Flathub? [s/n]"; then
+        if _core_install flatpak; then _core_flathub; fi
+    else
+        _core_skip
+    fi
+
+    sleep 0.2
+    echo ""
+    #echo -e "${NEON_BLUE}---------------------------------------------------------------- [12/15]${NC}"
+    _core_sep
+    echo ""
+    msg "${CYAN_NEON}[12/15]: Verificando ambiente gráfico...${NC}" \
+        "${CYAN_NEON}[12/15]: Checking desktop environment...${NC}" \
+        "${CYAN_NEON}[12/15]: Comprobando el entorno gráfico...${NC}"
+    echo ""
+
+    if [[ "${XDG_CURRENT_DESKTOP:-}" == *GNOME* ]] && command -v gsettings &>/dev/null; then
+        if _core_ask_yn "${CYAN_NEON}[12/15]: GNOME detectado. Permitir volume acima de 100% (até 150%)? [s/n]${NC}" \
+                        "${CYAN_NEON}[12/15]: GNOME detected. Allow volume above 100% (up to 150%)? [y/n]${NC}" \
+                        "${CYAN_NEON}[12/15]: GNOME detectado. ¿Permitir volumen por encima del 100% (hasta 150%)? [s/n]${NC}"; then
+            user_uid=$(id -u "$target_user" 2>/dev/null || echo "")
+            if [ -n "$user_uid" ] && [ -S "/run/user/$user_uid/bus" ] \
+               && sudo -u "$target_user" DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$user_uid/bus" \
+                    gsettings set org.gnome.desktop.sound allow-volume-above-100-percent true 2>/dev/null; then
+                msg "-> Configuração de volume aplicada." "-> Volume setting applied." "-> Configuración de volumen aplicada."
+            else
+                msg "${YELLOW_NEON}[AVISO]: Sessão D-Bus do usuário indisponível. Depois, dentro do GNOME, rode: gsettings set org.gnome.desktop.sound allow-volume-above-100-percent true${NC}" \
+                    "${YELLOW_NEON}[WARNING]: User D-Bus session unavailable. Later, inside GNOME, run: gsettings set org.gnome.desktop.sound allow-volume-above-100-percent true${NC}" \
+                    "${YELLOW_NEON}[AVISO]: Sesión D-Bus del usuario no disponible. Luego, dentro de GNOME, ejecute: gsettings set org.gnome.desktop.sound allow-volume-above-100-percent true${NC}"
+            fi
+        else
+            _core_skip
+        fi
+    else
+        msg "-> Ambiente gráfico não GNOME pulando..." "-> Desktop environment is not GNOME. Skipping..." "-> Entorno gráfico no es GNOME. Saltando..."
+    fi
+
+    sleep 0.2
+    echo ""
+    #echo -e "${NEON_BLUE}---------------------------------------------------------------- [13/15]${NC}"
+    _core_sep
+    echo ""
+    if pacman -Q linux &>/dev/null; then base_pkgs+=(linux-headers); fi
+    if pacman -Q linux-lts &>/dev/null; then base_pkgs+=(linux-lts-headers); fi
+    if pacman -Q linux-zen &>/dev/null; then base_pkgs+=(linux-zen-headers); fi
+    if pacman -Q linux-hardened &>/dev/null; then base_pkgs+=(linux-hardened-headers); fi
+
+    msg "${CYAN_NEON}[13/15]: Instalando pacotes base e kernel headers:${NC} ${base_pkgs[*]}..." \
+        "${CYAN_NEON}[13/15]: Installing base packages and kernel headers:${NC} ${base_pkgs[*]}..." \
+        "${CYAN_NEON}[13/15]: Instalando paquetes base y cabeceras del kernel:${NC} ${base_pkgs[*]}..."
+    _core_install "${base_pkgs[@]}"
+
+    sleep 0.2
+    echo ""
+    #echo -e "${NEON_BLUE}---------------------------------------------------------------- [14/15]${NC}"
+    root_fs=$(findmnt -n -o FSTYPE / 2>/dev/null)
+    echo ""
+
+    if [ "$root_fs" = "ext4" ]; then
+        _core_sep
+        msg "${CYAN_NEON}[14/15]: Sistema de arquivos EXT4 detectado na raiz (/).${NC}" \
+            "${CYAN_NEON}[14/15]: EXT4 filesystem detected on root (/).${NC}" \
+            "${CYAN_NEON}[14/15]: Sistema de archivos EXT4 detectado en la raíz (/).${NC}"
+        echo ""
+
+        if _core_ask_yn "Deseja instalar o Timeshift para criar pontos de restauração (RSYNC)? [s/n]" \
+                        "Do you want to install Timeshift to create restore points (RSYNC)? [y/n]" \
+                        "¿Desea instalar Timeshift para crear puntos de restauración (RSYNC)? [s/n]"; then
+            echo ""
+            if _core_install timeshift; then
+                msg "-> Timeshift instalado com sucesso!" \
+                    "-> Timeshift installed successfully!" \
+                    "-> ¡Timeshift instalado con éxito!"
+                    echo ""
+                msg "${YELLOW_NEON}[14/15]: NOTA: Nenhuma rotina foi ativada. Abra o aplicativo para configurar seus backups manuais.${NC}" \
+                    "${YELLOW_NEON}[14/15]: NOTE: No routine was activated. Open the app to configure your manual backups.${NC}" \
+                    "${YELLOW_NEON}[14/15]: NOTA: No se activó ninguna rutina. Abra la aplicación para configurar sus backups manuales.${NC}"
+            fi
+        else
+            _core_skip
+        fi
+    fi
+
+    
+    #echo -e "${NEON_BLUE}---------------------------------------------------------------- [15/15]${NC}"
+    _core_sep
+    echo -e "${NEON_BLUE}============================================================${NC}"
+    msg "${CYAN_NEON}[15/15] [CORE]:${NC} ${NEON_BLUE}Fundação do sistema estabelecida com sucesso!${NC}" \
+        "${CYAN_NEON}[15/15] [CORE]:${NC} ${NEON_BLUE}System foundation successfully established!${NC}" \
+        "${CYAN_NEON}[15/15] [CORE]:${NC} ${NEON_BLUE}¡Fundación del sistema establecida con éxito!${NC}"
+
+    _core_sudo_keepalive_stop
+     echo -e "${NEON_BLUE}============================================================${NC}"
+
+    return 0
+}
+
+#========================================
+#FIM DO CORE // END OF CORE
+#========================================
+CODECS_MULTIMIDIA_CORE() {
+    echo ""
+    _core_sep
+    echo ""
+    echo -e "${NEON_BLUE}===========================================================================================${NC}"
+    msg "${CYAN_NEON}[CODECS]:${NC} ${NEON_BLUE}Verificando ambiente gráfico e instalando pacotes de mídia...${NC}" \
+        "${CYAN_NEON}[CODECS]:${NC} ${NEON_BLUE}Checking desktop environment and installing media packages...${NC}" \
+        "${CYAN_NEON}[CODECS]:${NC} ${NEON_BLUE}Comprobando el entorno gráfico e instalando paquetes de medios...${NC}"
+     echo -e "${NEON_BLUE}===========================================================================================${NC}"
+    echo ""
+
+    
+    local pacotes_multimidia=(
+        ffmpeg gstreamer gst-plugins-base gst-plugins-good 
+        gst-plugins-bad gst-plugins-ugly gst-libav gstreamer-vaapi
+        libjpeg-turbo libpng libwebp libavif libtiff 
+        libheif libjxl libraw librsvg gdk-pixbuf2 taglib
+        libdvdread libdvdnav libdvdcss libva-utils
+    )
+
+   
+    local pacotes_desktop=()
+
+    local de_detectado="${XDG_CURRENT_DESKTOP:-${XDG_SESSION_DESKTOP:-${DESKTOP_SESSION:-}}}"
+
+    case "${de_detectado^^}" in
+        *KDE*|*PLASMA*)
+            msg "${CYAN_NEON}-> Ambiente KDE detectado: Selecionando thumbnailers nativos${NC} (kdegraphics/ffmpegthumbs)." \
+                "${CYAN_NEON}-> KDE environment detected: Selecting native thumbnailers${NC} (kdegraphics/ffmpegthumbs)." \
+                "${CYAN_NEON}-> Entorno KDE detectado: Seleccionando thumbnailers nativos${NC} (kdegraphics/ffmpegthumbs)."
+            pacotes_desktop=(kdegraphics-thumbnailers ffmpegthumbs kio-extras)
+            ;;
+        *GNOME*)
+            msg "${CYAN_NEON}-> Ambiente GNOME detectado: Selecionando thumbnailers GTK e conector de extensões${NC}." \
+                "${CYAN_NEON}-> GNOME environment detected: Selecting GTK thumbnailers and extension connector.${NC}" \
+                "${CYAN_NEON}-> Entorno GNOME detectado: Seleccionando thumbnailers GTK y conector de extensiones.${NC}"
+            pacotes_desktop=(gst-thumbnailers poppler-glib libgsf gnome-browser-connector)
+            ;;
+        *CINNAMON*)
+            msg "${CYAN_NEON}-> Ambiente Cinnamon detectado: Selecionando thumbnailers GTK/Nemo${NC} (Tumbler/FFmpegthumbnailer)." \
+                "${CYAN_NEON}-> Cinnamon environment detected: Selecting GTK/Nemo thumbnailers${NC} (Tumbler/FFmpegthumbnailer)." \
+                "${CYAN_NEON}-> Entorno Cinnamon detectado: Seleccionando thumbnailers GTK/Nemo${NC} (Tumbler/FFmpegthumbnailer)."
+            pacotes_desktop=(tumbler ffmpegthumbnailer poppler-glib libgsf)
+            ;;
+        *MATE*)
+            msg "${CYAN_NEON}-> Ambiente MATE detectado: Selecionando thumbnailers GTK/Caja${NC} (Tumbler/FFmpegthumbnailer)." \
+                "${CYAN_NEON}-> MATE environment detected: Selecting GTK/Caja thumbnailers${NC} (Tumbler/FFmpegthumbnailer)." \
+                "${CYAN_NEON}-> Entorno MATE detectado: Seleccionando thumbnailers GTK/Caja${NC} (Tumbler/FFmpegthumbnailer)."
+            pacotes_desktop=(tumbler ffmpegthumbnailer poppler-glib libgsf)
+            ;;
+        *XFCE*)
+            msg "${CYAN_NEON}-> Ambiente XFCE detectado: Selecionando Tumbler e complementos${NC}." \
+                "${CYAN_NEON}-> XFCE environment detected: Selecting Tumbler and add-ons${NC}." \
+                "${CYAN_NEON}-> Entorno XFCE detectado: Seleccionando Tumbler y complementos${NC}."
+            pacotes_desktop=(tumbler poppler-glib libgsf)
+            ;;
+        *LXQT*)
+            msg "${CYAN_NEON}-> Ambiente LXQt detectado: Selecionando thumbnailers leves${NC} (Tumbler/FFmpegthumbs)." \
+                "${CYAN_NEON}-> LXQt environment detected: Selecting lightweight thumbnailers${NC} (Tumbler/FFmpegthumbs)." \
+                "${CYAN_NEON}-> Entorno LXQt detectado: Seleccionando thumbnailers ligeros${NC} (Tumbler/FFmpegthumbs)."
+            pacotes_desktop=(tumbler ffmpegthumbs poppler-glib libgsf)
+            ;;
+        *)
+            # Fallback: informa qual interface está em uso e segue com a base padrão
+            if [[ -n "$de_detectado" ]]; then
+                msg "${CYAN_NEON}-> Interface detectada: ${CYAN_NEON}${de_detectado}${NC} (sem perfil específico). Seguindo com a base padrão (Tumbler)." \
+                    "${CYAN_NEON}-> Interface detected: ${CYAN_NEON}${de_detectado}${NC} (no specific profile). Proceeding with the standard base (Tumbler)." \
+                    "${CYAN_NEON}-> Interfaz detectada: ${CYAN_NEON}${de_detectado}${NC} (sin perfil específico). Continuando con la base estándar (Tumbler)."
+            else
+                msg "${CYAN_NEON}-> Nenhuma interface gráfica detectada (TTY ou sessão sem DE). Seguindo com a base padrão (Tumbler).${NC}" \
+                    "${CYAN_NEON}-> No graphical interface detected (TTY or session without a DE). Proceeding with the standard base (Tumbler).${NC}" \
+                    "${CYAN_NEON}-> No se detectó ninguna interfaz gráfica (TTY o sesión sin DE). Continuando con la base estándar (Tumbler).${NC}"
+            fi
+            pacotes_desktop=(tumbler gst-thumbnailers)
+            ;;
+    esac
+
+    # Junta os pacotes base com os pacotes específicos do DE em uma única linha de execução
+    local pacotes_finais=("${pacotes_multimidia[@]}" "${pacotes_desktop[@]}")
+
+    echo ""
+    # Instalação unificada
+    if sudo pacman -S --needed --noconfirm "${pacotes_finais[@]}"; then
+        echo ""
+        msg "-> ${CYAN_NEON}Codecs e pacotes de mídia instalados com sucesso!${NC}" \
+            "-> ${CYAN_NEON}Codecs and media packages installed successfully!${NC}" \
+            "-> ${CYAN_NEON}¡Códecs y paquetes de medios instalados con éxito!${NC}"
+    else
+        echo ""
+        msg "${RED_NEON}[ERRO]: Falha ao instalar os codecs de multimídia.${NC}" \
+            "${RED_NEON}[ERROR]: Failed to install multimedia codecs.${NC}" \
+            "${RED_NEON}[ERROR]: Error al instalar los códecs de multimedia.${NC}"
+        return 1
+    fi
+}
+
+#===========================================================================================
+#ENCERRAMENTO DOS CODECS // END OF CODECS
+#===========================================================================================
+
+
+
+#===========================================================================================
+# FUNÇÃO DE REINICIALIZAÇÃO // REBOOT FUNCTION
+#===========================================================================================
+PERGUNTAR_REINICIAR() {
+    echo ""
+    msg "${CYAN_NEON} [?] Recomendo reiniciar o sistema para aplicar todas as alterações.${NC}" \
+        "${CYAN_NEON} [?] Recommended to reboot the system to apply all changes.${NC}" \
+        "${CYAN_NEON} [?] Se recomienda reiniciar el sistema para aplicar todos los cambios.${NC}"
+    echo "" 
+    msg "${CYAN_NEON} [?] Gostaria de reiniciar agora? (s/N):${NC} " \
+        "${CYAN_NEON} [?] Would you like to reboot now? (y/N):${NC} " \
+        "${CYAN_NEON} [?] ¿Te gustaría reiniciar ahora? (s/N):${NC} "
+    
+    echo ""
+
+    read -rp " > " RESPOSTA
+
+    case "$RESPOSTA" in
+        [Ss]|[Yy])
+            echo ""
+            msg "${RED_NEON} [!] Reiniciando o sistema...${NC}" \
+                "${RED_NEON} [!] Rebooting system...${NC}" \
+                "${RED_NEON} [!] Reiniciando el sistema...${NC}"
+
+            for i in {5..1}; do
+                echo -ne " ${CYAN_NEON}Reboot $i...${NC}\r"
+                sleep 1
+            done
+            echo ""
+            sudo reboot
+            ;;
+
+        [Nn])
+            echo ""
+            msg "${CYAN_NEON} [i] Reinicialização ignorada. Voltando ao menu...${NC}" \
+                "${CYAN_NEON} [i] Reboot skipped. Returning to menu...${NC}" \
+                "${CYAN_NEON} [i] Reinicio omitido. Volviendo al menú...${NC}"
+            sleep 1.5
+            ;;
+
+        *)
+            echo ""
+            msg "${RED_NEON} [!] Opção inválida. Retornando ao menu por segurança...${NC}" \
+                "${RED_NEON} [!] Invalid option. Returning to menu for safety...${NC}" \
+                "${RED_NEON} [!] Opción inválida. Volviendo al menú por seguridad...${NC}"
+            sleep 1.5
+            ;;
+    esac
+}
+
+#===========================================================================================
+#fim da função de reinicialização // end of reboot function
+#==========================================================================================
+
+#===========================================================================================
+#FUNÇÃO DE MENSAGEM FINAL // FINISH MESSAGE FUNCTION
+#===========================================================================================
+MENSAGEM_FINAL() {
+
+    msg "" "" ""
+    msg "${NEON_BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}" \
+        "${NEON_BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}" \
+        "${NEON_BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+
+    msg "${CYAN_NEON} [✓] Instalação concluída com sucesso! O teu Arch está afiado.${NC}" \
+        "${CYAN_NEON} [✓] Installation successfully completed! Your Arch is ready for battle.${NC}" \
+        "${CYAN_NEON} [✓] ¡Instalación completada con éxito! Tu Arch está listo.${NC}"
+    echo ""
+
+    msg "${WHITE_NEON}Obrigado por usar o Pós-Instalação Odin!${NC}" \
+        "${WHITE_NEON}Thank you for using Odin Post-Installation!${NC}" \
+        "${WHITE_NEON}¡Gracias por usar Odin Post-Instalación!${NC}"
+
+    echo ""
+    echo -e "${CYAN_NEON}"
+    echo -e "       .--.                   /\\\\"
+    echo -e "      |o_o |                 /  \\\\"
+    echo -e "      |:_/ |                / /\\\\ \\\\"
+    echo -e "     //   \\\\ \\\\              / /  \\\\ \\\\"
+    echo -e "    (|     | )            / / /\\\\ \\\\ \\\\"
+    echo -e "   /'\\\\_   _/\\'          / /_/__  \\\\ \\\\ \\\\"
+    echo -e "   \\\\___)=(___/         /__________\\\\ \\\\_\\\\"
+    echo -e "                       \\\\______________/"
+    echo -e "${NC}"
+
+    msg " ${RED_NEON}By: 𝕿𝖍𝖊 S𝖊𝖛𝖊𝖓𝖙𝖍🐧${NC}" \
+        " ${RED_NEON}By: 𝕿𝖍𝖊 S𝖊𝖛𝖊𝖓𝖙𝖍🐧${NC}" \
+        " ${RED_NEON}By: 𝕿𝖍𝖊 S𝖊𝖛𝖊𝖓𝖙𝖍🐧${NC}"
+
+    msg "${NEON_BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}" \
+        "${NEON_BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}" \
+        "${NEON_BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+    msg "" "" ""
+
+    PERGUNTAR_REINICIAR
+}
+
+#===========================================================================================
+#fim da função mensagem // end of message function
+#==========================================================================================
+
+#===========================================================================================
+#FUNÇÕES DE CADA OPÇÃO DO MENU // FUNCTIONS OF EACH MENU OPTION
+#===========================================================================================
+
+OPCAO_INICIANTE_SCRIPT_PADRAO() {
+    MENU_CABECALHO
+    msg "${CYAN_NEON}[MODO INICIANTE]${NC} Executando instalação padrão..." \
+        "${CYAN_NEON}[BEGINNER MODE]${NC} Running standard installation..." \
+        "${CYAN_NEON}[MODO PRINCIPIANTE]${NC} Ejecutando instalación estándar..."
+        echo ""
+
+    msg "${CYAN_NEON}Executando função CORE para estabelecer a fundação do sistema...${NC}" \
+        "${CYAN_NEON}Executing CORE function to establish system foundation...${NC}" \
+        "${CYAN_NEON}Ejecutando función CORE para establecer la fundación del sistema...${NC}"
+        FUNCAO_CORE
+    echo ""
+    msg "${CYAN_NEON}Executando função CODECS para instalar codecs multimídia...${NC}" \
+        "${CYAN_NEON}Executing CODECS function to install multimedia codecs...${NC}" \
+        "${CYAN_NEON}Ejecutando función CODECS para instalar códecs multimedia...${NC}"
+        CODECS_MULTIMIDIA_CORE
+
+
+    echo ""
+    sleep 0.2
+    MENSAGEM_FINAL
+}
+
+OPCAO_INTERMEDIARIO_AVANCADO_SCRIPT() {
+    MENU_CABECALHO
+    msg "${CYAN_NEON}[MODO AVANÇADO]${NC} Carregando lista de blocos..." \
+        "${CYAN_NEON}[ADVANCED MODE]${NC} Loading block list..." \
+        "${CYAN_NEON}[MODO AVANZADO]${NC} Cargando lista de bloques..."
+        echo ""
+
+
+
+    msg "${CYAN_NEON} Pressione ENTER para voltar ao menu...${NC}" \
+        "${CYAN_NEON} Press ENTER to return to menu...${NC}" \
+        "${CYAN_NEON} Presione ENTER para volver al menú...${NC}"
+    read -r
+}
+
+OPCAO_PRE_DEFINIDAS_SCRIPTS() {
+    MENU_CABECALHO
+    msg "${CYAN_NEON}[MODO PRÉ-DEFINIDO]${NC} Carregando perfis (GAME, DEV, HACKER)..." \
+        "${CYAN_NEON}[PRE-DEFINED MODE]${NC} Loading profiles (GAME, DEV, HACKER)..." \
+        "${CYAN_NEON}[MODO PREDEFINIDO]${NC} Cargando perfiles (GAME, DEV, HACKER)..."
+        echo ""
+
+
+
+
+    msg "${CYAN_NEON} Pressione ENTER para voltar ao menu...${NC}" \
+        "${CYAN_NEON} Press ENTER to return to menu...${NC}" \
+        "${CYAN_NEON} Presione ENTER para volver al menú...${NC}"
+    read -r
+
+}
+
+#===========================================================================================
+# PONTO DE ENTRADA PRINCIPAL // MAIN ENTRY POINT
+#===========================================================================================
+MAIN() {
+
+    VERIFICAR_IDIOMA 
+
+    while true; do
+        MENU_CABECALHO
+        CHAMAR_MENU_OPCOES
+        
+    done
+}
+
+MAIN "$@"

@@ -1,0 +1,18 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=Post Install Arch
+GenericName=System Updater
+Comment=Sentinel Protocol: Update automation (Pacman/AUR/Flatpak/Snap) and auditing.
+
+Exec=post-install-arch-full
+
+Icon=iconeodin
+
+Terminal=true
+
+Categories=System;Utility;ArchLinux;
+Keywords=update;arch;pacman;yay;flatpak;sentinela;cyberpunk;
+StartupNotify=true
+
+StartupWMClass=post-install-arch-full
