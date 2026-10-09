@@ -52,6 +52,9 @@ prepare() {
 
   # fix for Boost 1.89
   sed -E -e 's&\bsystem\b&&g' -i CMakeLists.txt bba/CMakeLists.txt
+
+  # SB_FILTER_50NS (1e6050d) added 2 bels to UP5K without updating the test
+  sed -E -e 's&ASSERT_EQ\(bel_count, 5438\)&ASSERT_EQ(bel_count, 5440)&' -i ice40/tests/up5k.cc
 }
 
 build() {
