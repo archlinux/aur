@@ -1,6 +1,6 @@
 # Maintainer: Felitendo
 # This PKGBUILD is updated automatically:
-# https://git.felo.gg/Felitendo/PKGBUILDS
+# https://github.com/Felitendo/PKGBUILDS
 
 pkgname=nextcloud-native-bin
 pkgver=0.1.0alpha.2
