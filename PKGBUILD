@@ -1,8 +1,8 @@
 # Maintainer: Musashi <visika at pm dot me>
 
 pkgname=logseq-appimage
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge management and collaboration."
 arch=("x86_64")
 url="https://github.com/logseq/logseq"
@@ -14,7 +14,7 @@ source=(
   ${url}/raw/${pkgver}/LICENSE.md
 )
 sha256sums=(
-  49de367078b37670febdb987e562b75dee1e1ae96c28bfb8738779c42297dd0c
+  1335725626f6cbfbf3b00b7743a60356d2d7dad123cf00bbf974a9beef556870
   2467b8901ba62f7708c479944468a677897472a39ecbda1d23818ecf9538620b
 )
 _filename="Logseq-linux-x86_64-${pkgver}.AppImage"
