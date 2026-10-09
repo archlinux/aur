@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiocSingular
-_pkgver=1.28.0
+_pkgver=1.28.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ad586e9236ce6ee15e6ae67dc3180e45')
-b2sums=('9fee9e9687f6fb2f8bfa951978bb9998a330ae7d2c545336910e9cc974b1f33b968a1737ba950ba41aadef70ad3e79703522dfcff275e2af1068de3c692c1311')
+md5sums=('e81f52e88e8fceee9a3362c63ecad3f5')
+b2sums=('f02869fcb6d0e2cf35bb8b5fd3e5f60938c2da540c6e1e7c49af0fb38c3ac46def94d3be2dce6362f6d5c435a5291af4a7f0494ff246d93e38c3d611d9480a07')
 
 build() {
   mkdir build
