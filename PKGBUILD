@@ -3,7 +3,7 @@
 _pkgname=sofka
 pkgname=sofka-git
 pkgdesc="A Kubernetes TUI, reimagined in Rust"
-pkgver=0.30.0.r0.gbc1e3a7
+pkgver=0.31.4.r0.g22b8488
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/nklmilojevic/${_pkgname}"

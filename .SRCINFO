@@ -1,6 +1,6 @@
 pkgbase = sofka-git
 	pkgdesc = A Kubernetes TUI, reimagined in Rust
-	pkgver = 0.30.0.r0.gbc1e3a7
+	pkgver = 0.31.4.r0.g22b8488
 	pkgrel = 1
 	url = https://github.com/nklmilojevic/sofka
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = sofka-git
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
-	provides = sofka=0.30.0.r0.gbc1e3a7
+	provides = sofka=0.31.4.r0.g22b8488
 	conflicts = sofka
 	options = !lto
 	options = !debug
