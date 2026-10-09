@@ -1,0 +1,37 @@
+pkgbase = mold-ai-desktop
+	pkgdesc = Mold desktop app — local AI image and video generation with a gallery, model manager and job queue (built from source, CUDA)
+	pkgver = 0.34.0
+	pkgrel = 1
+	url = https://github.com/utensils/mold
+	arch = x86_64
+	license = MIT
+	makedepends = rust>=1.93
+	makedepends = cargo
+	makedepends = cuda
+	makedepends = cudnn
+	makedepends = clang
+	makedepends = lld
+	makedepends = nasm
+	makedepends = bun
+	makedepends = protobuf
+	makedepends = pkgconf
+	depends = cuda
+	depends = cudnn
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsoup3
+	depends = hicolor-icon-theme
+	depends = gcc-libs
+	depends = glibc
+	optdepends = nvidia-utils: NVIDIA GPU driver (required for any local GPU generation)
+	optdepends = ffmpeg: video upscaling and mp4 mux fallback
+	optdepends = gst-plugins-good: in-app video playback
+	optdepends = gst-plugins-bad: in-app video playback
+	optdepends = gst-libav: H.264 in-app video playback
+	provides = mold-ai-desktop=0.34.0
+	conflicts = mold-ai-desktop-bin
+	options = !lto
+	source = mold-ai-desktop-0.34.0.tar.gz::https://github.com/utensils/mold/archive/refs/tags/v0.34.0.tar.gz
+	sha256sums = c1aa8eb536efa428f09e883eb68901bd57e04fd59c515b372ffc229a0d0af732
+
+pkgname = mold-ai-desktop
