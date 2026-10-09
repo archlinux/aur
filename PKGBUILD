@@ -5,7 +5,7 @@ _pkgname=dekit
 pkgname=${_pkgname}-bin
 pkgdesc="Run multiple commands in parallel"
 
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,10 +27,10 @@ source=("CHANGELOG-${pkgver}.md::${_urlraw}/CHANGELOG.md"
 		"README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
-sha256sums=('dab0873d5e77937947d0235f207821a8934fa531f8a3c66bd24ab3f4d16c46ac'
-            '48b9dc33bbf0603627fc33542252dba87c4bc2442e3fdf820eb9b83c26c17551')
-sha256sums_x86_64=('330753d26feb9f96b79a388e730f8bd4414564520257f37bfc997c626b450f44')
-sha256sums_aarch64=('35b2ae81a23a1b67c3f2fb95f993b26257af23270f651cc44cc1f64eba23d5fe')
+sha256sums=('0cd6657d3191d1f0bd217f5124baaf165251287af2dd2634f8020a217936eab7'
+            'c0a2a5b8ab8e2faa72f2838bcda75b8ee228fe5429d408b8e32d8a4db7847c3f')
+sha256sums_x86_64=('59563c26122073b0430488ec16ab38f44c838b5cf6924f34fc5971f68e2cc810')
+sha256sums_aarch64=('6bbc4de2f475ece6a0211578f8754fe611d70149fca24e59f3bc694a78db37fc')
 
 
 build() {
