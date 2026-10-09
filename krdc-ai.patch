@@ -1528,10 +1528,10 @@ index 00000000..b5cf09bf
 +};
 diff --git a/ai/aiconversationpage.cpp b/ai/aiconversationpage.cpp
 new file mode 100644
-index 00000000..f73827e6
+index 00000000..5c162ed5
 --- /dev/null
 +++ b/ai/aiconversationpage.cpp
-@@ -0,0 +1,403 @@
+@@ -0,0 +1,404 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -1762,11 +1762,12 @@ index 00000000..f73827e6
 +        if (preview.isNull()) {
 +            m_approvalPreview->setVisible(false);
 +        } else {
-+            // Fit the crop to the panel width without upscaling tiny crops
-+            // past their own size; the crosshair stays accurate either way.
-+            const int widest = qMin(preview.width() * 2, 300);
++            // Show the crop no larger than it was captured: the panel shows
++            // the spot in context rather than a magnified close-up, which
++            // keeps the approval bar compact.
++            const int widest = qMin(preview.width(), 220);
 +            m_approvalPreview->setPixmap(
-+                preview.scaled(widest, preview.height() * 2, Qt::KeepAspectRatio, Qt::SmoothTransformation));
++                preview.scaled(widest, 165, Qt::KeepAspectRatio, Qt::SmoothTransformation));
 +            m_approvalPreview->setVisible(true);
 +        }
 +    } else {
