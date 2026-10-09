@@ -2,7 +2,7 @@
 
 pkgname=eusoft-eshelper
 pkgver=13.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Eshelper (西语助手) - Spanish dictionary software for Linux (Community Repackage)"
 arch=('x86_64')
 url="https://www.eudic.net/v4/es/app/eshelper"
@@ -72,7 +72,6 @@ package() {
 
     # Install desktop entry
     install -Dm644 "${srcdir}/eusoft-eshelper.desktop" "${pkgdir}/usr/share/applications/eusoft-eshelper.desktop"
-    ln -sf eusoft-eshelper.desktop "${pkgdir}/usr/share/applications/eshelper.desktop"
 
     # Install hicolor icons
     install -Dm644 "${pkgdir}/usr/share/pixmaps/com.eusoft.eshelper.png" \
