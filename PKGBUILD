@@ -2,7 +2,7 @@
 
 pkgname=python-wifit3
 _name=${pkgname#python-}
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="A standalone USB Wi-Fi auditor"
 provides=(${pkgname})
@@ -33,7 +33,7 @@ makedepends=(
 optdepends=()
 license=('GPL-2.0-only')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('f069f53ece74b7a652763ee250d9490ce70ace4d700b290c52b8e09e96bb059c')
+sha256sums=('5e3f793199a36d29cb132f0c6a215442e803270cc25485804b1538e0e64f0206')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
