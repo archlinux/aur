@@ -105,7 +105,7 @@ source=(
 sha256sums=('4b363d2c85eda694c671bda98fc1f0a0ad9cfa030c975ae4fd0e1092a3f59eb2'
             'SKIP'
             '3d6ac59ae9d5ba4c9fe15f95c1338fa68214dec6119f8432336403e3be50f8ae'
-            '5745d2548227c498f7619b3503fcae06d00b7829b783143639f2688bba6a4aee')
+            '9e6d74d85b1d43b702425d1080264ea9e8bcc2da661ac1bd2472c90a25f4c57c')
 
 validpgpkeys=('662E3CDD6FE329002D0CA5BB40339DD82B12EF16') # https://rpm.librewolf.net/pubkey.gpg
 
