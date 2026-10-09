@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=blme
-_pkgver=1.0-7
+_pkgver=1.0-8
 pkgname=r-${_pkgname,,}
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc='Bayesian Linear Mixed-Effects Models'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5647b91ce106aab2fce9e50c62324bba3236977956b1ecec08a4611fa3f21efa')
+sha256sums=('aa2434a13a0c67e44482bd182999e8d6041a43e0547042ff71ccc4564cf126e5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
