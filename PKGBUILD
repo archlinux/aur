@@ -1,24 +1,26 @@
 # Maintainer: OldJobobo
 pkgbase=splinterm-bin
 pkgname=('splinterm-bin' 'splinterm-mcp-bin')
-pkgver=0.1.0
+pkgver=0.1.1
+# Candidate template only; publish after verified GitHub release publication.
+# Candidate tooling must bind the commit and checksums.
 pkgrel=1
-_commit=7bba5a91fd4624f2f2699dd95af01d97d6200bc2
+_commit=136ef81d268d9734f5ffb687089859438ba99579
 arch=('x86_64')
 url='https://github.com/oldjobobo/splinterm'
 license=('MIT')
 options=('!strip' '!debug')
 source=(
-  "splinterm-$pkgver-$CARCH.pkg.tar.zst::https://github.com/OldJobobo/splinterm/releases/download/v0.1.0/splinterm-$_commit-$CARCH.pkg.tar.zst"
-  "splinterm-mcp-$pkgver-$CARCH.pkg.tar.zst::https://github.com/OldJobobo/splinterm/releases/download/v0.1.0/splinterm-mcp-$_commit-$CARCH.pkg.tar.zst"
+  "splinterm-$pkgver-$CARCH.pkg.tar.zst::https://github.com/OldJobobo/splinterm/releases/download/v0.1.1/splinterm-$_commit-$CARCH.pkg.tar.zst"
+  "splinterm-mcp-$pkgver-$CARCH.pkg.tar.zst::https://github.com/OldJobobo/splinterm/releases/download/v0.1.1/splinterm-mcp-$_commit-$CARCH.pkg.tar.zst"
 )
 noextract=(
   "splinterm-$pkgver-$CARCH.pkg.tar.zst"
   "splinterm-mcp-$pkgver-$CARCH.pkg.tar.zst"
 )
 sha256sums=(
-  '0057bdf34f924fd6bb3153e618dce7df5dd3ba1a170fe2904c4ec319a014f89b'
-  'a279a5afcd9771a3265cbaf08cf4cee91901be4471149f89562356a27e02f869'
+  '63fa181440433fdb351e71339554befdf75e7961e5a142aa03827c95fc886be5'
+  '3572291ae5a9f7ea0d0adbd88e53be05159b05916a3992133af283e85f5decc7'
 )
 
 _extract_payload() {
