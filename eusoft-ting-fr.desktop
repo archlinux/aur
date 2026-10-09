@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Daily French Listening
+Name[zh_CN]=每日法语听力
+Comment=Daily French Listening from Eusoft
+Comment[zh_CN]=精听细读，更好学法语
+GenericName=Language Learning
+GenericName[zh_CN]=语言学习
+Exec=/usr/bin/ting-fr %U
+Terminal=false
+Type=Application
+Icon=ting_fr
+StartupWMClass=com.eusoft.ting.fr
+MimeType=x-scheme-handler/eudic-ting-fr;
+Categories=Education;Language;AudioVideo;
