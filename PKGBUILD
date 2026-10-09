@@ -1,7 +1,7 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=orca-slicer-git
-pkgver=2.5.0.r30479.f18eb21
+pkgver=2.5.0.r30599.ccd6086
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
@@ -10,9 +10,9 @@ license=('AGPL-3.0-only')
 depends=('assimp' 'bash' 'cairo' 'curl' 'dbus' 'expat' 'draco' 'ffmpeg' 'fontconfig' 'gdk-pixbuf2' 'glib2' 'glibc' 'glfw' 'gmp' 'gspell' 'gstreamer'
          'gst-plugins-bad-libs' 'gtk3' 'hicolor-icon-theme' 'icu' 'imath' 'libgcc' 'libpng' 'libglvnd' 'libjpeg-turbo'  'libspnav'
          'libstdc++' 'libx11' 'libxkbcommon' 'mesa' 'mesa-utils' 'mpfr' 'nlopt' 'onetbb' 'opencascade' 'opencv' 'openssl' 'openvdb'
-         'pango' 'python' 'wayland' 'webkit2gtk-4.1' 'zlib' 'libnoise')
-makedepends=('ccache' 'cereal' 'cgal' 'cmake' 'eigen' 'extra-cmake-modules' 'git' 'glew' 'libigl' 'libmspack' 'm4' 'ninja'
-             'opencsg' 'pkgconf' 'python-numpy' 'superlu' 'uv' 'wayland-protocols')
+         'pango' 'python' "uv" 'wayland' 'webkit2gtk-4.1' 'zlib' 'libnoise')
+makedepends=('cereal' 'cgal' 'cmake' 'eigen' 'extra-cmake-modules' 'git' 'glew' 'libigl' 'libmspack' 'm4' 'ninja'
+             'opencsg' 'pkgconf' 'python-numpy' 'superlu' 'wayland-protocols')
 optdepends=('nvidia-utils: for querying driver version')
 options=('!debug' '!emptydirs')
 provides=('orca-slicer')
@@ -54,10 +54,6 @@ prepare() {
     sed -i -e "s/dep_${_pkg}/\"\"/" -e "s|include(${_pkg}/${_pkg}.cmake)||" deps/CMakeLists.txt
   done
 
-  # revert: Link libspnav statically (#9964)
-  #git revert --no-commit 6ed9b0817381042a63fa121c5f9b5cbcb11a3bfa 
-  git cherry-pick -n 9b7afcc6a4d1540d04deedbd5bd5d92dd8cf7487
-
   patch -Np1 -i "${srcdir}"/fixes_occt.patch
   patch -Np1 -i "${srcdir}"/fixes_opencv.patch
   patch -Np1 -i "${srcdir}"/fixes_libnoise.patch
@@ -80,7 +76,6 @@ build() {
   if (( _jobs > _mem )); then
     _jobs=$_mem
   fi
-
   export CMAKE_BUILD_PARALLEL_LEVEL="$_jobs"
   export CXXFLAGS="$CXXFLAGS -I${srcdir}/orca-slicer-git/deps/build/destdir/usr/local/include"
   cmake \
