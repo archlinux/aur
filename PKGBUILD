@@ -46,6 +46,7 @@ build() {
     -DCMAKE_Fortran_FLAGS="" \
     -DFLANG_RT_INCLUDE_TESTS=OFF \
     -DLLVM_ENABLE_RUNTIMES="flang-rt" \
+    -DLLVM_DEFAULT_TARGET_TRIPLE=$(llvm-config --host-target) \
     -B build -S "$srcdir"/llvm-project-$pkgver.src/runtimes
   cmake --build build
 }
@@ -55,7 +56,4 @@ package() {
   DESTDIR="${pkgdir}" cmake --install build
   cd "$srcdir"/llvm-project-${pkgver}.src/flang-rt
   DESTDIR="${pkgdir}" cmake --install build
-
-  # move runtime dir to match flang linker flags -L/usr/lib/clang/21/lib/linux, see flang-rt/cmake/modules/GetToolchainDirs.cmake
-  mv -v "${pkgdir}"/usr/lib/clang/${pkgver%%.*}/lib/*-unknown-linux-gnu/ "${pkgdir}"/usr/lib/clang/${pkgver%%.*}/lib/linux
 }
