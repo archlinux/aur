@@ -15,7 +15,7 @@
 
 pkgname=srelens-bin
 _pkgname=srelens
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Kubernetes IDE — an MCP-native desktop workspace for operating clusters"
 arch=('x86_64')
@@ -49,11 +49,12 @@ source=(
   "LICENSE-$pkgver::https://raw.githubusercontent.com/srelens/srelens/$_pkgname-v$pkgver/LICENSE"
 )
 # Replaced with real hashes by `updpkgsums` in CI on every release.
-sha256sums=('fc8936394e7031b0db6a3a8d6632ddd08db812b500c5a7753427f06f85409e82'
+sha256sums=('92346267518aa50d805b56801ef4f71681f16043b17107907eeddbad16a87a78'
             'be310626d05ec2f34b6ad0e0b533134d0ece9eba938d7af30e82480102481cf4')
 
 package() {
-  # The .deb payload is exactly usr/bin/srelens + a .desktop entry + hicolor icons.
+  # The .deb payload is exactly usr/bin/srelens, the sandbox launcher executable apps
+  # need beside it (usr/bin/srelens-sandbox-launch), a .desktop entry and hicolor icons.
   bsdtar -O -xf "$_pkgname-$pkgver.deb" data.tar.gz | bsdtar -xf - -C "$pkgdir"
 
   # Upstream's generated .desktop ships an empty `Categories=`, which can hide the
