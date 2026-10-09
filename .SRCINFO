@@ -1,0 +1,20 @@
+pkgbase = qsp-legacy-git
+	pkgdesc = QSP Legacy game engine library
+	pkgver = 5.7.0.r136.gd29d5eb
+	pkgrel = 1
+	url = https://github.com/QSPFoundation/qsp-legacy
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	makedepends = gcc>=8.1.0
+	makedepends = git
+	makedepends = cmake>=3.21.0
+	depends = glibc
+	depends = oniguruma
+	provides = qsp-legacy=5.7.0.r136.gd29d5eb
+	provides = libqsp-legacy.so
+	conflicts = qsp-legacy
+	source = qsp-legacy::git+https://github.com/QSPFoundation/qsp-legacy.git
+	sha256sums = SKIP
+
+pkgname = qsp-legacy-git
