@@ -6,7 +6,7 @@
 
 pkgbase=nvidia-utils-g2
 pkgname=('nvidia-utils-g2' 'opencl-nvidia-g2' 'nvidia-open-dkms-g2')
-pkgver=610.57.04
+pkgver=615.78.08
 pkgrel=1
 arch=('aarch64' 'x86_64')
 url="https://www.nvidia.com/"
@@ -25,14 +25,14 @@ source=('nvidia-drm-outputclass.conf'
         "https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/${_pkg_open}.tar.xz")
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '1bcf2c6ee71686c0d32625e746ec8c0f7cf42fc63c76c3076ff2526b2661e8b9e9f76eaa2c4b213c7cc437a6f06006cc07672c4974d7f4515b2de2fd7c47a891'
-            'f8f071f5a46c1a5ce5188e104b017808d752e61c0c20de1466feb5d693c0b55a5586314411e78cc2ab9c0e16e2c67afdd358da94c0c75df1f8233f54c280762c'
+            '7f1457dc454144fdece5abf795744c4c948a13feb8d49c20e2a1b8b8973e86f980233b521485d73eb039c396688f287a3a5b3de8cb1fb20ed70cc62e4ba91250'
             'a0183adce78e40853edf7e6b73867e7a8ea5dabac8e8164e42781f64d5232fbe869f850ab0697c3718ebced5cde760d0e807c05da50a982071dfe1157c31d6b8'
             '55def6319f6abb1a4ccd28a89cd60f1933d155c10ba775b8dfa60a2dc5696b4b472c14b252dc0891f956e70264be87c3d5d4271e929a4fc4b1a68a6902814cee'
-            'a380e5faeb19293c90f613cd92bcd1cef7597ee52f79f03ffdffe5d37d2badc05b6bdb4c26a9d610868ae4c16eafd56e7d16f769e849dc0335d0d248c6235fe9'
-            '6752f3006485aed049f3884936a4426083cf734be9b7193ca55edafb18946997e78f59487dc8550905cca6fbde1b1016273d2b340c3ad78eeebf68d095237888'
-            '11adc9cf3805a06f3e6f3b0884d2fbd92cf51c7f9348fca884c90202be2291882c459c8b5436732168c9739e7afefb9510b9b8f1193a0935f45fa5fca560b258')
-sha512sums_aarch64=('cbb632182f4096e715cf28605ca93964e7ad329b7ac5eeffc1bd9d9338606f7ffaa4267ee3fa0e92cf00f4a50b177498bcb053686e869464db0e80ddbf7b4ecd')
-sha512sums_x86_64=('4c9566625716ba7257ed2203dbbabfbc7a2dfdfc8bcb16678212ec809dc7ff470d12973ad86ce5f925b271d04239425f43088e8e591cb4ed7f77ec0c8612ffc0')
+            'ed3b16bba49bdc9394f11d63b6aaf4437e59cf973cf500d90beee4536ffc693e459ce7031cfbd955531b9ef05f9a5d48a7a7210cbeb4e9e33df4e38a60370d38'
+            '422d8e5369eed385ca7ba9eb8c2b44dc72f1058673b374ea64a9d89782a86dd45508c09431fca8a88f69a7ff66c46408d44acf1fa384612c0d9db349c1ad1cf9'
+            '5ced2c7e3e9df21f8494ea439ac2103307fcbcb295a3f11e5fdf4f1dbeda3f0b13800a06f8147ebd064f98897c24e92f5de82023a8ca43a582694d951c9620c9')
+sha512sums_aarch64=('6844c78be6e2780ad38461a6b87cfefa702d403c1d20e888003a999dffa609733d0933daa24f3bc077005b95638cc9d76f76c465bfbe9e46f7dbe832cbb90a5d')
+sha512sums_x86_64=('fb0c16c9812e60ac1f5ca663f03dd84f386ae4ad55beab4655c65fe8d094c98246c5acbcf9e385e93e38dbfb340472712fc80593a8bf0be47f34ff871bf4d83d')
 
 _pkg=NVIDIA-Linux-${CARCH}-${pkgver}
 
@@ -160,6 +160,8 @@ package_nvidia-utils-g2() {
     install -Dm755 "libnvidia-encode.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-encode.so.${pkgver}"
     install -Dm755 "libnvidia-cfg.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-cfg.so.${pkgver}"
     install -Dm755 "libnvidia-ml.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-ml.so.${pkgver}"
+    install -Dm755 "libnvidia-fmdrv.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-fmdrv.so.${pkgver}"
+    install -Dm755 "libnvidia-imex.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-imex.so.${pkgver}"
     install -Dm755 "libnvidia-glvkspirv.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-glvkspirv.so.${pkgver}"
     install -Dm755 "libnvidia-allocator.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-allocator.so.${pkgver}"
     install -Dm755 "libnvidia-gpucomp.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-gpucomp.so.${pkgver}"

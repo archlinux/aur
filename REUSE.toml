@@ -20,6 +20,7 @@ path = [
     ".gitignore",
     "nvidia-drm-outputclass.conf",
     "nvidia-sleep.conf",
+    "nvidia-utils.conf",
     "nvidia.rules",
     "systemd-homed-override.conf",
     "systemd-suspend-override.conf",
