@@ -4,7 +4,7 @@ _gitauthor=sharkthakftw
 _gitname=wikid
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="Universal test runner with auto-detection for 11 languages"
+pkgdesc="A feature-rich terminal wikipedia client"
 
 pkgver=3.2.2
 pkgrel=1

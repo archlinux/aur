@@ -1,5 +1,5 @@
 pkgbase = wikid-bin
-	pkgdesc = Universal test runner with auto-detection for 11 languages
+	pkgdesc = A feature-rich terminal wikipedia client
 	pkgver = 3.2.2
 	pkgrel = 1
 	url = https://github.com/sharkthakftw/wikid
