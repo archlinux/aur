@@ -1,0 +1,5 @@
+[rustatio-bin]
+source = "github"
+github = "takitsu21/rustatio"
+use_latest_release = "true"
+prefix = "v"
