@@ -1,6 +1,6 @@
 # Maintainer: noahlyk <noahlykins@gmail.com>
 pkgname=keymux
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Keyboard middleware for gaming with low-level input interception"
 arch=('x86_64' 'aarch64')
