@@ -1,0 +1,27 @@
+pkgbase = gxde-boot-maker-git
+	pkgdesc = Boot USB stick maker for GXDE
+	pkgver = 3.0.0.r0.g000cdb8
+	pkgrel = 1
+	url = https://github.com/GXDE-OS/gxde-boot-maker
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = qt6-tools
+	makedepends = python
+	depends = gxde-dtk2-qt6-git
+	depends = gxde-dtk6-git
+	depends = qt6-base
+	depends = 7zip
+	depends = mtools
+	depends = hicolor-icon-theme
+	depends = libstdc++
+	depends = libgcc
+	depends = glibc
+	provides = gxde-boot-maker
+	conflicts = gxde-boot-maker
+	source = gxde-boot-maker::git+https://github.com/GXDE-OS/gxde-boot-maker.git
+	sha256sums = SKIP
+	depends_x86_64 = syslinux
+
+pkgname = gxde-boot-maker-git
