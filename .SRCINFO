@@ -12,6 +12,7 @@ pkgbase = hermes-webui-desktop-appimage
 	conflicts = hermes-webui-desktop
 	noextract = hermes-webui-desktop-0.7.0.AppImage
 	options = !strip
+	options = !debug
 	source = hermes-webui-desktop-0.7.0.AppImage::https://github.com/hermes-webui/hermes-desktop-rust/releases/download/v0.7.0/Hermes.WebUI.Desktop_0.7.0_lin_x86_64.AppImage
 	sha256sums = b1b0c3b3cd56f8861ce701bb6f5f792ee271ed32648ff9b54545cc862c110c41
 
