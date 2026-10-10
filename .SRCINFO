@@ -1,6 +1,6 @@
 pkgbase = winpodx
 	pkgdesc = Windows app integration for Linux desktop (Podman/FreeRDP RemoteApp)
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/kernalix7/winpodx
 	install = winpodx.install
@@ -17,7 +17,7 @@ pkgbase = winpodx
 	optdepends = podman: default container backend
 	optdepends = docker: alternative container backend
 	optdepends = pyside6: Qt6 GUI and system tray
-	source = winpodx-0.11.0.tar.gz::https://github.com/kernalix7/winpodx/archive/v0.11.0.tar.gz
-	sha256sums = 741a5a9b237e6e40a5c2f48fd480688eb9708e4110a595a9a581fe7f0712e804
+	source = winpodx-0.12.0.tar.gz::https://github.com/kernalix7/winpodx/archive/v0.12.0.tar.gz
+	sha256sums = f1131b205af34f96954662094aab91b8085d0b69f7a38a4676627ba0e55f5ebd
 
 pkgname = winpodx

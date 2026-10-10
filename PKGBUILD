@@ -6,7 +6,7 @@
 # edit the placeholders in-tree.
 
 pkgname=winpodx
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Windows app integration for Linux desktop (Podman/FreeRDP RemoteApp)"
 arch=('any')
@@ -30,7 +30,7 @@ makedepends=(
   'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kernalix7/winpodx/archive/v$pkgver.tar.gz")
-sha256sums=('741a5a9b237e6e40a5c2f48fd480688eb9708e4110a595a9a581fe7f0712e804')
+sha256sums=('f1131b205af34f96954662094aab91b8085d0b69f7a38a4676627ba0e55f5ebd')
 install=winpodx.install
 
 build() {
@@ -49,8 +49,11 @@ package() {
   install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
   install -Dm644 data/winpodx.desktop \
     "$pkgdir/usr/share/applications/winpodx.desktop"
+  # hicolor: scalable/, not a pixel-size dir -- the source is an SVG.
   install -Dm644 data/winpodx-icon.svg \
-    "$pkgdir/usr/share/icons/hicolor/256x256/apps/winpodx.svg"
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/winpodx.svg"
+  install -Dm644 data/org.winpodx.WinPodX.metainfo.xml \
+    "$pkgdir/usr/share/metainfo/org.winpodx.WinPodX.metainfo.xml"
   install -Dm644 data/winpodx.toml.example \
     "$pkgdir/usr/share/winpodx/winpodx.toml.example"
   # #255 PR 4: post-remove cleanup helper, called from winpodx.install's
