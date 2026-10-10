@@ -3,7 +3,7 @@
 # Contributor: rbagpksr <rbagpksr@mailer.me>
 
 pkgname=jan-appimage
-pkgver=0.8.4
+pkgver=0.8.6
 pkgrel=1
 pkgdesc='An open source alternative to ChatGPT that runs 100% offline on your computer'
 arch=(x86_64)
@@ -19,9 +19,9 @@ _baseurl=https://github.com/janhq/jan/releases/download/v$pkgver
 source=($_appimage::$_baseurl/Jan_${pkgver}_amd64.AppImage
         $pkgname-$pkgver-latest.json::$_baseurl/latest.json
         $pkgname-$pkgver-tauri.conf.json::https://raw.githubusercontent.com/janhq/jan/refs/tags/v$pkgver/src-tauri/tauri.conf.json)
-b2sums=('a33bb87f419560b52c25b41cb5327f0347d8bcbe3ec185a606665ed2eb469d27eeeecccf03a26dcdde15c48699cfbf949f0b1295af2f93eec8a6ffeaa505c942'
-        'b9ff68d10d807255b59562d3e1434144cf875950a6214cc0550d5dbb508d6c64af686a9b18eb2df267df943975d7c8cf97cc97914ed5cc42cc61b07afda8280d'
-        '498ea4dc68b599d01a1e052d3bb181bebe2b171a3a8b2cea3256166e11dab4e7ea9dc133dbbd2ff9347a3677d33a618aebf8a1041e71b18803aeacffe2b57b86')
+b2sums=('26aab86e42d8ded131f48357bfdd7e89163d79944fd73a64256594d379eaa3ddfb7d079b2a2eb83b2c473cd53e02c594b23b1ed83a7269d33740f57de03f4936'
+        '2b5daaef2c2e50327ceaa657354fd806d58c24078ea645686314dfd03871724b2ee7311a686cc6015f17adeb8bf83d2fb34d0cb46922d8635d4f9559aa1e9a48'
+        'd2975b35011e825e0df80b930aa7f93105395298b241be0cbe35d5e45c15c13899b1c27b8204d3041c758cb2e78301f77af9f7482c07b27e6e57f65c3c20924c')
 
 prepare() {
     # XXX: move to verify() when devtools supports it
@@ -38,12 +38,12 @@ prepare() {
     chmod +x $_appimage.copy
     ./$_appimage.copy --appimage-extract
     rm $_appimage.copy
-}
 
-build() {
-    # Adjust .desktop so it will work outside of AppImage container
-    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/Jan|" \
-        "squashfs-root/Jan.desktop"
+    sed -i -e 's|^Exec=Jan-Desktop$|Exec=env DESKTOPINTEGRATION=false /usr/bin/Jan|' \
+        -e 's|^Icon=Jan-Desktop$|Icon=Jan|' \
+        squashfs-root/Jan.desktop
+
+    find squashfs-root/usr/share/icons -type f -name 'Jan-Desktop.png' -execdir mv '{}' Jan.png \;
 
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/usr
