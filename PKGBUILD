@@ -13,7 +13,7 @@
 # webkit2gtk-4.1 headers at build time.
 
 pkgname=nuvio-linux-git
-pkgver=r3259.g25390def
+pkgver=r3298.gbc4566a5
 pkgrel=1
 pkgdesc="Nuvio desktop media player — upstream source packaged for Arch Linux (git)"
 arch=('x86_64')
@@ -35,9 +35,8 @@ sha256sums=('SKIP')
 # AppImage; shipping "" for them breaks offline Trakt/Simkl sign-in — same
 # lesson as the main PKGBUILD's pkgrel 3. TMDB_API_KEY is new in upstream
 # 0.1.24 — extracted from upstream's 0.1.24 AppImage. MDBLIST_CLIENT_ID is
-# new in upstream 0.1.26 (MdbListConfig.kt) but upstream's own 0.1.26
-# AppImage ships it empty — mirrored here for inventory completeness; fill
-# it in if upstream ever publishes a key.)
+# new in upstream 0.1.26 (empty in 0.1.26–0.1.28 binaries) and first
+# populated in upstream's 0.1.29 AppImage — value below extracted from it.)
 NUVIO_SUPABASE_URL="https://api.nuvio.tv"
 NUVIO_SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzgxNTIxMzQ2LCJleHAiOjE5MzkyMDEzNDZ9.tmQaj682pwzehpqlgCDMnySOqiUvpgRbrE43T4VJpDI"
 NUVIO_SUPABASE_FALLBACK_URL="https://api-two.nuvioapp.space"
@@ -45,7 +44,7 @@ TRAKT_CLIENT_ID="5783db7c46a5b22f072d4b224f9bd7dc2cbaba66dbe3515d1feb59e3ca72394
 TRAKT_CLIENT_SECRET="bf6e7561dafee902f5a2a67d2b31feac1563632f331f3958c978aff6389ea384"
 SIMKL_CLIENT_ID="dc20e0db975583b15096267cee79cd23b1f56d4bd301ce3c51e4a96a49c834a6"
 TMDB_API_KEY="01926d2187b6a5d861eefc750e9df3e3"
-MDBLIST_CLIENT_ID=""
+MDBLIST_CLIENT_ID="kMMZyv8qithmUSF5102U6HTAPEDqfHtNbn1W4gkz"
 
 pkgver() {
   cd "$srcdir/NuvioDesktop"
