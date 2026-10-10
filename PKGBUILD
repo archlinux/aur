@@ -1,40 +1,38 @@
-# Maintainer: Sable Maintainers <https://github.com/SableClient/Sable>
+# Maintainer: Sable Maintainers <https://git.sable.moe/SableClient/sable-next>
 
 pkgname=sable-bin
-pkgver=1.22.11
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="An almost stable Matrix client"
+pkgdesc="A Matrix client"
 arch=('x86_64')
-url="https://github.com/SableClient/Sable"
+url="https://git.sable.moe/SableClient/sable-next"
 license=('AGPL-3.0-or-later')
+# The bundled CEF runtime needs Chromium's system libraries, not webkit2gtk.
 depends=(
   'gtk3'
   'nss'
+  'nspr'
+  'mesa'
+  'libdrm'
+  'libxkbcommon'
   'alsa-lib'
   'libcups'
-  'libdrm'
-  'mesa'
-  'libxkbcommon'
-  'libxss'
-  'libxcomposite'
-  'libxdamage'
-  'libxrandr'
-  'at-spi2-core'
-  'dbus'
+  'libpipewire'
   'libayatana-appindicator'
+  'xdg-utils'
+  'xorg-xwayland'
   'hicolor-icon-theme'
   'desktop-file-utils'
-  'xdg-utils'
 )
 provides=('sable')
 conflicts=('sable' 'sable-nightly-bin')
 options=('!strip' '!debug')
 install=${pkgname}.install
-source_x86_64=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Sable-${pkgver}-linux-x86_64.deb")
-sha256sums_x86_64=('fde53daec741b297cf206273c76134eca671706a985958170ec1c4e03f11b1e4')
+source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/sable-${pkgver}-linux-x86_64.deb")
+sha256sums_x86_64=('2a56ccd39f9da8f49a33ed7e2a59dff2f777dc8155e55e33a2cae9f5fabb86b3')
 
 package() {
-  bsdtar -O -xf "${srcdir}/${pkgname}-${pkgver}.deb" 'data.tar*' \
+  bsdtar -O -xf "${srcdir}/${pkgname}-${pkgver}-x86_64.deb" 'data.tar*' \
     | bsdtar -xp -C "${pkgdir}"
   find "${pkgdir}" -type d -exec chmod 755 {} +
 }
