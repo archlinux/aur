@@ -1,0 +1,3 @@
+[libvisio2svg]
+source = "git"
+git = "https://github.com/kakwa/libvisio2svg.git"
