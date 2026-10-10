@@ -1,6 +1,6 @@
 # Maintainer: Professor Lee <https://github.com/professor-lee>
 pkgname=cnmplayer-bin
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A terminal-based Netease cloud music player with spectrum visualizer, lyrics support. (Prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.xz::${_url_base}/CNMPlayer_v${pk
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.xz::${_url_base}/CNMPlayer_v${pkgver}_linux_aarch64.tar.xz")
 
 # pkgver 与下面两行 sha256 由 GitHub Actions 的 aur_sync.sh 每版自动重算
-sha256sums_x86_64=('c46595f187aa2ba96388244c87f2444fdf4863f1420eb955736ccdbc9de25051')
-sha256sums_aarch64=('8e94d4ce50a449e480cbf38d9d8e5dd9a5c2ab320d9f55facf7d08d32cc7081f')
+sha256sums_x86_64=('e822e448478c8d90a63e3b2c11997871abee6e9f860c8abcd1b03ea20794c42d')
+sha256sums_aarch64=('78e5e958ae565743b1b0face9c2a7ef45e89c36d205ae6e04e2ef474e1e1284e')
 
 package() {
   install -Dm755 "cnmplayer" "${pkgdir}/usr/bin/cnmplayer"
