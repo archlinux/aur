@@ -5,7 +5,7 @@ pkgver=0.1.0.r0.g0000000
 pkgrel=1
 pkgdesc="Highly customizable GTK4 bar for Wayland written in Rust (git version)"
 arch=('x86_64')
-url="https://github.com/binaryharbinger/riftbar"
+url="https://codeberg.org/sorashii/riftbar"
 license=('GPL-3.0-only')
 
 depends=(
@@ -20,7 +20,7 @@ makedepends=('git' 'cargo' 'pkg-config')
 provides=('riftbar')
 conflicts=('riftbar')
 
-source=("git+https://github.com/binaryharbinger/riftbar.git")
+source=("git+https://codeberg/sorashii/riftbar.git")
 sha256sums=('SKIP')
 
 pkgver() {
