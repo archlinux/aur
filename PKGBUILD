@@ -4,16 +4,15 @@ _pkgname=llavon-ime-fcitx5
 _srcname=ime-unix
 _model_file=llavon-ime-llama-250m-Q4_K_M.gguf
 pkgname=${_pkgname}-git
-pkgver=0.9.6.r4.gd671d92
+pkgver=0.9.7.r1.g9c04926
 pkgrel=1
 pkgdesc='Fcitx5 frontend and local inference service for Llavon IME'
 arch=('x86_64' 'aarch64')
 url='https://github.com/llavon-ime/ime-unix'
 license=('BSD-2-Clause' 'MIT' 'Apache-2.0' 'BSL-1.0' 'CC-BY-NC-4.0')
-depends=('fcitx5' 'glibc' 'libgcc' 'libstdc++' 'sqlite' 'vulkan-icd-loader' 'xdg-utils' 'curl' 'tar' 'coreutils' 'qt6-base' 'qt6-wayland')
-makedepends=('at-spi2-core' 'cmake' 'curl' 'git' 'ninja' 'python' 'tar' 'unzip' 'zip')
+depends=('at-spi2-core' 'fcitx5' 'glibc' 'libgcc' 'libstdc++' 'sqlite' 'vulkan-icd-loader' 'xdg-utils' 'curl' 'tar' 'coreutils' 'qt6-base' 'qt6-wayland')
+makedepends=('autoconf-archive' 'cmake' 'curl' 'dbus' 'git' 'ninja' 'python' 'tar' 'unzip' 'zip')
 optdepends=(
-    'at-spi2-core: read prediction context from the focused widget (AT-SPI)'
     'fcitx5-configtool: graphical configuration for fcitx5'
     'vulkan-driver: Vulkan GPU acceleration'
 )
@@ -49,6 +48,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_TOOLCHAIN_FILE="${srcdir}/${_srcname}/vcpkg/scripts/buildsystems/vcpkg.cmake" \
         -DVCPKG_MANIFEST_FEATURES=llama-vulkan \
+        -DLLAVON_IME_WARNINGS_AS_ERRORS=ON \
         -DIME_UNIX_SERVICE_BUILD_TESTS=ON
     cmake --build unix-service-build
 
@@ -58,12 +58,21 @@ build() {
         -DCMAKE_TOOLCHAIN_FILE="${srcdir}/${_srcname}/vcpkg/scripts/buildsystems/vcpkg.cmake" \
         -DLLAVON_IME_INSTALLED_MODEL_PATH="/usr/share/llavon-ime/models/${_model_file}" \
         -DLLAVON_IME_DISPLAY_VERSION="${pkgver}" \
+        -DLLAVON_IME_WARNINGS_AS_ERRORS=ON \
         -DLLAVON_IME_BUILD_TESTS=OFF
     cmake --build build
+
+    cmake -S "${_srcname}/engine" -B engine-tests -G Ninja \
+        -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_TOOLCHAIN_FILE="${srcdir}/${_srcname}/vcpkg/scripts/buildsystems/vcpkg.cmake" \
+        -DLLAVON_IME_WARNINGS_AS_ERRORS=ON \
+        -DLLAVON_IME_ENGINE_BUILD_TESTS=ON
+    cmake --build engine-tests --target llavon_ime_tests llavon_ime_rawkey_tests
 }
 
 check() {
     ctest --test-dir unix-service-build --output-on-failure
+    ctest --test-dir engine-tests --output-on-failure -R '^llavon_ime_(tests|rawkey_tests)$'
 }
 
 package() {
