@@ -1,17 +1,19 @@
 pkgbase = brother-mfct920dw
-	pkgdesc = Brother MFC-T920DW CUPS driver
+	pkgdesc = LPR and CUPS driver for Brother MFC-T920DW
 	pkgver = 3.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.brother.com
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = custom
+	license = custom:Brother
 	depends = cups
 	depends = ghostscript
-	source = https://download.brother.com/welcome/dlf105186/mfct920dwpdrv-3.5.0-1.i386.rpm
-	sha512sums = 762042c93536606e2fe620b7a0e0eeb54215d962915c10f5a249a55f27681db6fbdba47b0031762947172a3368482da006d5af68ee426ff0188d3930aecefe76
+	depends = perl
+	optdepends = brscan5: scanning support
+	source = https://download.brother.com/welcome/dlf105186/mfct920dwpdrv-3.5.0-3.i386.rpm
+	sha512sums = 8df722d021223bfb295e2ca63dae51daf73b8746f6ba799a71a1463e364c4855da4fa8832e029e5635b93ce6d0e02991620670464e7ea424b1455d11345c9346
 	depends_x86_64 = lib32-glibc
 
 pkgname = brother-mfct920dw
