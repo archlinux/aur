@@ -25,7 +25,7 @@ conflicts=("${pkgname%-bin}")
 
 depends=('glibc' 'libgcc')
 
-options=(!strip)
+options=('!strip')
 
 source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE"
         "README-${pkgver}.md::${_ghurlraw}/README.md")
