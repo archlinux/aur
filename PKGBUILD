@@ -1,6 +1,6 @@
 # Maintainer: Jenrikku (JkKU)
 pkgname=ctrstudio-git
-pkgver=r494.d359eb8
+pkgver=r502.9c0fc4f
 pkgrel=1
 pkgdesc="An editor for 3DS formats including BCH and BCRES."
 arch=('x86_64')
@@ -9,16 +9,13 @@ license=('MIT')
 depends=('dotnet-runtime>=6.0' 'hicolor-icon-theme')
 makedepends=('dotnet-sdk>=6.0' 'icoutils' 'git')
 source=("git+https://github.com/MapStudioProject/CTR-Studio.git"
-        "ctrstudio.desktop"
-        "prepare.patch")
+        "ctrstudio.desktop")
 sha256sums=('SKIP'
-            'b0eaaf5cd8ccf49b0fac1f3f2736817d8a581af3a2c8af5fefa1010bd7b831d7'
-            '1e06e2a0cbf2a12f7697b10f28f3abf1997712a61d83e4d0186c3a1f70d02c5b')
+            'b0eaaf5cd8ccf49b0fac1f3f2736817d8a581af3a2c8af5fefa1010bd7b831d7')
 options=(!strip !debug)
 
 prepare() {
 	cd "CTR-Studio"
-	patch -Np1 -i ../prepare.patch
 	git submodule update --init --recursive
 }
 
