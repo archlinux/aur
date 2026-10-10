@@ -1,16 +1,16 @@
 # Maintainer: James Willson <jsdoublel@gmail.com>
 pkgname=nw
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A TUI utility for selecting films to watch from Letterboxd"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jsdoublel/nw"
 license=('GPL-3.0-or-later')
 depends=()
-makedepends=('go>=1.25.4')
+makedepends=('go>=1.26')
 source=( "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	"$pkgname.desktop")
-sha256sums=('40dad0a71231f7100c8832d828c24b0d06d6929d7dc94b981ab0990f81adebc3'
+sha256sums=('a2e93cf6e70e073950ae07165ce8a8d7f5407810f84e06ab64fbdb09037b0518'
             'accc32248ec043a67b664a7869dac1b25dc0193e36ae59b87c54fc565668cad7')
 
 prepare() {
