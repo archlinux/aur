@@ -1,4 +1,5 @@
-# Maintainer: archcrack <johndoe.arch@outlook.com>
+# Maintainer: hiruocha <hiruocha[at]outlook[dot]com>
+# Contributor: archcrack <johndoe.arch@outlook.com>
 
 pkgname=isfree
 pkgver=0.9.1
