@@ -1,6 +1,6 @@
 pkgbase = tincan
 	pkgdesc = Serverless peer-to-peer voice and text chat for your terminal
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/bilalyazicioglu/tincan-cli
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = tincan
 	depends = glibc
 	depends = libgcc
 	depends = libopusenc
-	source = https://github.com/bilalyazicioglu/tincan-cli/archive/refs/tags/v0.3.3/tincan-cli-0.3.3.tar.gz
-	sha256sums = 593cd70756c1dde0c34bedb32586dd89e16f1762c0fd8a8afce68075ab663488
+	source = https://github.com/bilalyazicioglu/tincan-cli/archive/refs/tags/v0.3.4/tincan-cli-0.3.4.tar.gz
+	sha256sums = 5398da1a3bf20e21d90089c67c9bd1385173b0bd8943f911fd1b9163d622729b
 
 pkgname = tincan
 	depends = alsa-lib

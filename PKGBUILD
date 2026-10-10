@@ -2,7 +2,7 @@
 
 pkgname=tincan
 _pkgname=$pkgname-cli
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='Serverless peer-to-peer voice and text chat for your terminal'
 arch=(x86_64)
@@ -15,7 +15,7 @@ depends=(alsa-lib
 makedepends=(cargo)
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('593cd70756c1dde0c34bedb32586dd89e16f1762c0fd8a8afce68075ab663488')
+sha256sums=('5398da1a3bf20e21d90089c67c9bd1385173b0bd8943f911fd1b9163d622729b')
 
 _srcenv() {
 	cd "$_archive"
