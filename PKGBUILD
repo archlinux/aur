@@ -1,7 +1,7 @@
 # Maintainer: snogard <snogardb at gmail dot com>
 
 pkgname=foundryvtt-cli
-pkgver=3.0.3
+pkgver=3.0.5
 pkgrel=1
 pkgdesc='The official Foundry VTT CLI'
 arch=('any')
@@ -22,7 +22,7 @@ provides=(
 source=(
     "${url}/archive/refs/tags/${pkgver}.zip"
 )
-sha256sums=('df7367354b21eab3a67aca34dcd6b791b5167a76ff351c9a9b66252033d6d433')
+sha256sums=('cb145acc9b753faa56d8cd04ce1d99c3594509de8767014caa2d1dd8d4e7fbe3')
 options=(!strip)
 
 prepare() {
