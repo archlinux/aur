@@ -1,5 +1,5 @@
-# Maintainer: willker <wz dot willker at gmail dot com>
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: hiruocha <hiruocha[at]outlook[dot]com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=plasma-meta-deflatpak
