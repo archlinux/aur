@@ -1,26 +1,16 @@
 # Maintainer: antlis <antlis@protonmail.com>
-# Installs the prebuilt Linux binary from the GitHub release (no compiling).
+# The app was renamed to UnbloatedTube in 0.34.0, and its package to unbloatedtube-bin. This
+# package only pulls that one in, so an upgrade moves installs over by itself; once the AUR has
+# merged it into unbloatedtube-bin it can be removed (pacman -R unbloated-youtube-bin).
 pkgname=unbloated-youtube-bin
-_name=unbloated-youtube
-pkgver=0.33.0
+pkgver=0.34.0
 pkgrel=1
-pkgdesc='Lightweight, configurable YouTube desktop client: GPUI, embedded mpv, yt-dlp (prebuilt binary)'
-arch=('x86_64')
-url='https://github.com/antlis/unbloated-youtube'
+pkgdesc='Transitional package: the app is now UnbloatedTube (unbloatedtube-bin)'
+arch=('any')
+url='https://github.com/antlis/UnbloatedTube'
 license=('AGPL-3.0-only')
-depends=('gcc-libs' 'glibc' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'wayland'
-         'vulkan-icd-loader' 'vulkan-driver' 'mpv' 'yt-dlp' 'deno')
-provides=("$_name")
-conflicts=("$_name")
-options=('!strip')
-source=("$url/releases/download/v$pkgver/$_name-$pkgver-x86_64-linux.tar.gz")
-sha256sums=('09d65a112dc57590f9afb8c053e1e68170d5b251ee404b8c743a4fcba3ba0c3f')
+depends=('unbloatedtube-bin')
 
 package() {
-  cd "$_name-$pkgver-x86_64-linux"
-  install -Dm755 "$_name" "$pkgdir/usr/bin/$_name"
-  install -Dm644 "$_name.desktop" "$pkgdir/usr/share/applications/$_name.desktop"
-  install -Dm644 "$_name.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_name.svg"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  :
 }
