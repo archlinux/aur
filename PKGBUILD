@@ -1,10 +1,10 @@
 # Maintainer: Joe Pizzimenti <joe.pizzimenti2@gmail.com>
 
 pkgname=openmodelica-bin
-_omver=1.27.0
+_omver=1.27.1
 _debver=1
 pkgver=${_omver}
-pkgrel=4
+pkgrel=1
 pkgdesc="A complete Modelica modeling and simulation environment (from pre-built .deb binaries)"
 arch=('x86_64')
 url="https://openmodelica.org/"
@@ -12,7 +12,7 @@ license=('OSMC-PL')
 provides=('openmodelica' 'openmodelica-omc')
 conflicts=('openmodelica' 'openmodelica-omc' 'openmodelica-git')
 
-depends=('bash' 'blas' 'boost' 'clang' 'cmake' 'curl' 'expat' 'glibc' 'gcc-libs' 'hdf5' 'hwloc' 'icu' 'lapack' 'libcurl-gnutls' 'libglvnd' 'mesa' 'ncurses' 'omniorb' 'openmp' 'openscenegraph' 'python' 'python-numpy' 'python-simplejson' 'python-svgwrite' 'python-pyzmq' 'qt6-5compat' 'qt6-base' 'qt6-declarative' 'qt6-positioning' 'qt6-svg' 'qt6-tools' 'qt6-webchannel' 'qt6-webengine' 'readline' 'sundials' 'suitesparse' 'util-linux-libs')
+depends=('bash' 'blas' 'boost' 'clang' 'cmake' 'curl' 'expat' 'glibc' 'gcc-libs' 'hdf5' 'hwloc' 'icu' 'lapack' 'libcurl-gnutls' 'libglvnd' 'mesa' 'ncurses' 'omniorb' 'openmp' 'openscenegraph' 'python' 'python-numpy' 'python-simplejson' 'python-svgwrite' 'python-pyzmq' 'qt6-5compat' 'qt6-base' 'qt6-declarative' 'qt6-positioning' 'qt6-svg' 'qt6-tools' 'qt6-webchannel' 'qt6-webengine' 'readline' 'sundials' 'suitesparse' 'tracexec' 'util-linux-libs')
 
 optdepends=(
     'java-runtime: For Java CORBA interface'
@@ -50,24 +50,24 @@ source=(
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('dcce3ee85f8f4a59b1171f8e500b9512365f88285ada23309c968d44c988853a'
-            '48cf5f1e85be521a4e76836cc0ac311e7f2d21dc186a5651e7c64e33ed21fb5f'
-            'cceca8e0e3d2c780c082e4798f43bcf46598954a36c95b125caf454883cd3b4d'
-            'c107cd44a9e4ec66571fa36612a5aa12c647a93a1b934a86fce787906ac908d2'
-            'daffafb70c1101383e7902052ede1697ed56789eb478eca2d05d04535863b89d'
-            '62042377ee26f9e58e661d1a4fbe00be2da74add1bc94413f62d5f3ddc23387f'
-            '8630b081b82bbdfb7c4e4f58c759b23db412df55155f0afd85e900143fbb3fb3'
-            '5c4608c9a2c8078e178e84f68e995d5266dbe90d2eb7ad91547db8d5e48fd996'
-            'a25afd9a659389714fad86941d601e5d1d6835afc4fc8f46af9038e340f731ff'
-            '7a2504be7f3e9f77443d0fa302fc95d7b177ecba12cad2a5accba74c5ff6a0a5'
-            'e0c278a084e6ebc2f6bc3e3c3b1a8bbd0ecd439bd56599002aaeab50554b7400'
-            'ef571e4347ac8d6c2f0c22f8687ba5e7f2e50b332bd7f0db605fae59aa7e371c'
-            '8e200cdbe5cdf7de09de0b47fb56efd1b0d2796db279fb311055a1bcfe5e6991'
-            '5e43b6cb6992a9bac6a5fa632be901f98cd8c4bdf79eeac59c90cc02846dc205'
-            '887898bb91b5e274efc5da39b6de3f58ce75bf6e0e6aedc1bbd6fd174bcc85c3'
-            'fa011e38fcb0aba9178c2f6739f6cddb3d9168949c99824e9fca6a1b38554675'
-            '1612998509e1bb5f9b1046d88c9cabf38a6591f059229df43e5757e8ebe3a407'
-            '11d2585a729b59f2a799c2039c7ddfd4b1927b92f8ac6480a93afe515f9af67c')
+sha256sums=('b19e76c2540c9f5390d44e69781c39c00f40ab2bb4d5f4c6068331e5db5052af'
+            'ec0492f1f69c6b9e301d8f65de4f98ba5c607af7193e68d4bcb293a6faa2772b'
+            '77222b576707a227c1dbeb244beb53369ee3715d533cad99acd1caad07d1d852'
+            'f27822ce602cbd189e8cf66630ff18bf89c1b454111b1607dd8ebbc0769a2890'
+            '3117e4851d665fffb12c940cfcf67743af0e9a5f4ab1108bbb9b90e9cdcae26e'
+            '155bb5d6153e7e63572e0266a65fc28267fad5bde17b5e3f7d0212e09483d852'
+            '1c825261c691f3f081ca42ac4119f5d81b78febce1c77970fc8c68cff0ca6c78'
+            '94881aaa3f679778e3700e3d6fe7588d7071f4f6b7a0d8edaf9ca91d866d8524'
+            'b995acdf45b101b25cd3a7b56ee153a5f807be657c1825fac5dd174e8651c6a6'
+            '3c3ed6a1768f943cc2756b42306d45e1326c07cf9523817c97afbcf1723e3bba'
+            '361381af74c46860abd07d165b0f2024ef71b6b4e718ed4ba85b1d32fef80538'
+            'fd3fecb477d2c81c6ff3a548d3564d422455d83f2499dd6807b9840418309c24'
+            '56a9ae203de834fc884191aa89c007cbd3d671db200280507587213762b8cee7'
+            '57eafc8179e1ed88a005116e702a4b26c6c645b914efad8ef6a6269c6d965ed6'
+            '12f62a66f3c079b4900ef13d01e981860818d229e3bf44d861d97e68db585ab8'
+            '406b340d10e6c12bca35bbaa8d22d7dbdf00d280f41d41d60483e92a1fef84f0'
+            '11e36dd1d0b13cb7d3a5fae65fcb3c89fc7027574add5d496e1f8304fc2b8282'
+            '6048999491bc16db57fa7be76ca1e88c5feff6641242acfe996e06a2b9b4ebc0')
 
 package() {
     for deb in "${source[@]}"; do
