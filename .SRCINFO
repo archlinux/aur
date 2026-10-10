@@ -1,6 +1,6 @@
 pkgbase = aicoworker-bin
 	pkgdesc = Graphical AI assistant powered by OpenClaw (official binary)
-	pkgver = 2026.8.3
+	pkgver = 2026.8.5
 	pkgrel = 1
 	url = https://github.com/Neurons-AI/aicoworker
 	arch = x86_64
@@ -42,12 +42,12 @@ pkgbase = aicoworker-bin
 	depends = vulkan-icd-loader
 	depends = xdg-utils
 	optdepends = libappindicator: tray integration on desktops using AppIndicator
-	provides = aicoworker=2026.8.3
+	provides = aicoworker=2026.8.5
 	conflicts = aicoworker
-	noextract = AICoworker-2026.8.3-linux-amd64.deb
+	noextract = AICoworker-2026.8.5-linux-amd64.deb
 	options = !strip
 	options = !debug
-	source = https://github.com/Neurons-AI/aicoworker/releases/download/v2026.8.3/AICoworker-2026.8.3-linux-amd64.deb
-	sha256sums = ac28a6a7ab729f6bab7563f59bd8f2f8b0645cdc878805cf3b4aadfe5c462b84
+	source = https://github.com/Neurons-AI/aicoworker/releases/download/v2026.8.5/AICoworker-2026.8.5-linux-amd64.deb
+	sha256sums = f45a8458ebd9ed70a1759264cd34cce54b1c6d565e2d0d77ccb851d999111e15
 
 pkgname = aicoworker-bin

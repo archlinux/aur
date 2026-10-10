@@ -1,6 +1,6 @@
 # Maintainer: Thien An Dang Thanh <thienandangthanh at gmail dot com>
 pkgname=aicoworker-bin
-pkgver=2026.8.3
+pkgver=2026.8.5
 pkgrel=1
 pkgdesc='Graphical AI assistant powered by OpenClaw (official binary)'
 arch=('x86_64')
@@ -22,7 +22,7 @@ conflicts=('aicoworker')
 options=('!strip' '!debug')
 source=("https://github.com/Neurons-AI/aicoworker/releases/download/v${pkgver}/AICoworker-${pkgver}-linux-amd64.deb")
 noextract=("AICoworker-${pkgver}-linux-amd64.deb")
-sha256sums=('ac28a6a7ab729f6bab7563f59bd8f2f8b0645cdc878805cf3b4aadfe5c462b84')
+sha256sums=('f45a8458ebd9ed70a1759264cd34cce54b1c6d565e2d0d77ccb851d999111e15')
 
 prepare() {
   bsdtar -xf "AICoworker-${pkgver}-linux-amd64.deb" data.tar.xz
