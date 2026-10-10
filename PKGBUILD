@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=sshp
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc='Parallel SSH Executor'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url=https://github.com/bahamas10/sshp
 license=(MIT)
 depends=(glibc)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('a762956f3582724c2bd078fb277db254b420afdeb54801b641d7043acb4b0f09ce831898deee642f23f578d22618a7fa8435baf1a247da77d99e1928218e5e34')
+b2sums=('63f94f9770808dafe13c7717b88570eae27c1e6355c412aa91ba17de980566f96b50841f8f893caab0d0b4ab67327fb9fd178f5a88e04bd2b830ead6f15e5adc')
 
 prepare() {
     cd $pkgname-$pkgver
