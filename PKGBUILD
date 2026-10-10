@@ -3,7 +3,7 @@
 
 _pkgname=pymssql
 pkgname=python-pymssql
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 pkgdesc='DB-API (PEP-249) interface to Microsoft SQL Server'
 arch=('x86_64')
@@ -30,7 +30,12 @@ checkdepends=(
   python-sqlalchemy
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('6bacfe38f08ee1444a1c06ea8ba668b17eebc4e147465512065b883bb48e0a1bc904c71a3b9ae4555aa771d741d1a20537701ae4e1cab3088118652f038c609d')
+sha512sums=('e11e5c00df37cd267de7421ca017b15e291f3fa774622b665c3dcf1671027534da1205b9bd42a4378c0ab81033308f2cb32bf4fcc45dfff949210d44ba5c2d07')
+
+prepare() {
+  cd "${_pkgname}-${pkgver}"
+  sed -i 's/^license.*$/license-files = [ "LICENSE" ]/' pyproject.toml
+}
 
 build() {
   cd "${_pkgname}-${pkgver}"
