@@ -1,6 +1,6 @@
 pkgbase = obs-rust-git
 	pkgdesc = Free, open source software for live streaming and recording
-	pkgver = 32.2.2.r206.g8014a08
+	pkgver = 32.2.2.r373.gad60c0e
 	pkgrel = 1
 	url = https://github.com/obs-rust
 	arch = x86_64
@@ -36,8 +36,8 @@ pkgbase = obs-rust-git
 	depends = qrcodegencpp-cmake
 	depends = python
 	depends = luajit
-	provides = obs-studio=32.2.2.r206
 	conflicts = obs-studio
+	conflicts = obs-studio-plugin-browser
 	source = obs-rust-git::git+https://github.com/obs-rust/obs-studio.git
 	source = obs-rust-git-libdshowcapture::git+https://github.com/obs-rust/libdshowcapture.git
 	source = obs-rust-git-obs-browser::git+https://github.com/obs-rust/obs-browser.git
@@ -56,3 +56,18 @@ pkgname = obs-studio-rust-git
 	optdepends = v4l2loopback-dkms: virtual camera support
 	optdepends = xdg-desktop-portal-impl: Wayland window/screen capture
 	optdepends = obs-studio-plugin-browser: CEF-based browser plugin
+	provides = obs-studio-rust=32.2.2.r373
+	provides = obs-studio=32.2.2.r373
+
+pkgname = obs-studio-rust-plugin-browser-git
+	pkgdesc = CEF-based OBS Studio browser plugin
+	url = https://obsproject.com/kb/browser-source
+	depends = cef
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = libx11
+	depends = obs-studio-rust
+	depends = qt6-base
+	provides = obs-studio-rust-plugin-browser=32.2.2.r373.gad60c0e
+	provides = obs-studio-plugin-browser=32.2.2.r373.gad60c0e

@@ -2,8 +2,8 @@
 
 _obs_studio=obs-studio
 pkgbase=obs-rust-git
-pkgname=($_obs_studio-rust-git) # 'obs-studio-ru-plugin-browser')
-pkgver=32.2.2.r206.g8014a08
+pkgname=("$_obs_studio-rust-git" "$_obs_studio-rust-plugin-browser-git")
+pkgver=32.2.2.r373.gad60c0e
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
@@ -16,9 +16,8 @@ makedepends=('cef' 'cmake' 'libfdk-aac' 'x264' 'swig' 'sndio' 'nlohmann-json'
              'ffnvcodec-headers' 'websocketpp' 'asio' 'extra-cmake-modules'
              'git')
 conflicts=("$_obs_studio"
-          # "$_obs_studio-plugin-browser"
+           "$_obs_studio-plugin-browser"
 )
-provides=("$_obs_studio=${pkgver%%.g*}")
 source=(
   "$pkgbase::git+$url/$_obs_studio.git"
   "${pkgbase}-libdshowcapture::git+$url/libdshowcapture.git"
@@ -85,6 +84,7 @@ build() {
 }
 
 package_obs-studio-rust-git() {
+  provides=("$_obs_studio-rust=${pkgver%%.g*}" "obs-studio=${pkgver%%.g*}")
   optdepends=('libfdk-aac: FDK AAC codec support'
               'libva-intel-driver: hardware encoding for older Intel GPUs'
               'intel-media-driver: hardware encoding for recent Intel GPUs'
@@ -94,16 +94,17 @@ package_obs-studio-rust-git() {
               'xdg-desktop-portal-impl: Wayland window/screen capture'
               "$_obs_studio-plugin-browser: CEF-based browser plugin"
               )
-
   DESTDIR="$pkgdir" cmake --install build
 }
 
 package_obs-studio-rust-plugin-browser-git() {
+  provides=("$_obs_studio-rust-plugin-browser=$pkgver" "obs-studio-plugin-browser=$pkgver")
   pkgdesc="CEF-based OBS Studio browser plugin"
   url="https://obsproject.com/kb/browser-source"
   depends=('cef' 'glibc' 'libgcc' 'libstdc++' 'libx11' "$_obs_studio-rust" 'qt6-base')
 
-  install -Dm755 obs-browser-page obs-browser.so -t $pkgdir/usr/lib/obs-plugins/
+  cd build/plugins
+  install -Dm755 obs-browser/obs-browser-page obs-browser/obs-browser.so -t $pkgdir/usr/lib/obs-plugins/
   install -d $pkgdir/usr/share/obs/obs-plugins/
-  mv obs-browser $pkgdir/usr/share/obs/obs-plugins/
+  cp -a obs-browser $pkgdir/usr/share/obs/obs-plugins/
 }
