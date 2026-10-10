@@ -1,0 +1,4 @@
+binds {
+    Mod+Space { spawn "sysc-shell" "ipc" "panel.toggle" "{\"panel\":\"launcher\"}"; }
+    Mod+Comma { spawn "sysc-shell" "ipc" "panel.open" "{\"panel\":\"settings\"}"; }
+}
