@@ -8,20 +8,24 @@
 
 pkgname=python-neo4j
 _name=${pkgname#python-}
-pkgver=6.3.0
+pkgver=6.4.0
 pkgrel=0
 pkgdesc="Neo4j Bolt driver for Python"
 url="https://pypi.org/project/neo4j/"
 arch=('any')
-license=('GPLv3')
+license=('Apache-2.0' 'PSF-2.0')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('d0d3986c37ad174a549a39dfec6d22a00a061ebcb0267f1a5caf856589838e73')
+sha256sums=('056676698f080b5af5b24b0fc5abb485b8db1b95edf366d01dcfd63bcff9b71d')
 
-package() {
+build() {
     cd ${_name}-${pkgver}
     # Note: As of 5.3.0-2 we removed -O1 as part of the switch from setup.py to python -m build/installer
     python -m build
+}
+
+package() {
+    cd ${_name}-${pkgver}
     python -m installer --destdir="${pkgdir}" --prefix=/usr dist/*.whl
 }
