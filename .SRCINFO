@@ -1,6 +1,6 @@
 pkgbase = r-estimatr
 	pkgdesc = Fast Estimators for Design-Based Inference
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=estimatr
 	arch = x86_64
@@ -35,8 +35,8 @@ pkgbase = r-estimatr
 	optdepends = r-sandwich
 	optdepends = r-testthat
 	optdepends = r-texreg
-	source = https://cran.r-project.org/src/contrib/estimatr_2.0.0.tar.gz
-	md5sums = 57f66071f6ba482a6a9c626b48a76113
-	b2sums = dafad8c35d84db1fa01857f4dbec0999a6dedb8d895bc0a71e070da7db8982e3d39ef1d57c07babce9c95eae5ab8d6dfd3b57811bbfc04d4f672a6707b92c4a0
+	source = https://cran.r-project.org/src/contrib/estimatr_2.0.1.tar.gz
+	md5sums = 01c3802204417161962a6557030ec383
+	b2sums = 86b13eccfc6885db211a29f7edb3e2f4640d1de847347c033fb237d80632e88b5a5f0ee1520a6909244e70236b55a535ba506daf5f5f021cad7e4da397858956
 
 pkgname = r-estimatr
