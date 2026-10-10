@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cpeditor-bin
-pkgver=7.1.1
+pkgver=7.0.3
 pkgrel=1
-pkgdesc="The IDE for competitive programming Fetch, Code, Compile, Run, Check, Submit.(Prebuilt version)"
+pkgdesc="The IDE for competitive programming Fetch, Code, Compile, Run, Check, Submit."
 arch=('x86_64')
 url="https://cpeditor.org/"
 _ghurl="https://github.com/cpeditor/cpeditor"
@@ -33,7 +33,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('739fbb54c09f44e84b27012aa299c5c9dcb4c19df0f794e5d44e7feac74f8d6d'
+sha256sums=('be5880f41e306d107bb4d78a3968f250610936c03ae3c947b01fee466ecf3012'
             '187af44879585688a89874e74896e13840b3bb8defc9190a16ff6962adae01eb')
 prepare() {
     sed -i -e "
@@ -46,7 +46,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib"
-    cp -Pr --no-preserve=ownership "${srcdir}/usr/share/${pkgname%-bin}" "${pkgdir}/usr/lib"
+    cp -a "${srcdir}/usr/share/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/icons/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
