@@ -1,12 +1,13 @@
 pkgbase = pods
 	pkgdesc = Manage your containers
-	pkgver = 3.1.1
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/marhkb/pods
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
+	checkdepends = desktop-file-utils
 	makedepends = blueprint-compiler
 	makedepends = cargo
 	makedepends = meson
@@ -16,7 +17,7 @@ pkgbase = pods
 	depends = vte4
 	optdepends = docker: Docker container support
 	optdepends = podman: Podman container support
-	source = pods-3.1.1.tar.gz::https://github.com/marhkb/pods/archive/v3.1.1.tar.gz
-	sha256sums = 10a76ffc084ec229b2566644e54edd9037b9d23e471e36c533690f21ba90042b
+	source = pods-3.2.0.tar.gz::https://github.com/marhkb/pods/archive/v3.2.0.tar.gz
+	sha256sums = 231950d4971872e2667c3a333abd8d09b4002ef6a92b44b331ee98b054a80ffb
 
 pkgname = pods
