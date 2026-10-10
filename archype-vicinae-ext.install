@@ -1,5 +1,6 @@
 post_install() {
-  echo "Restart vicinae to load the extension: vicinae server --replace"
+  echo "Restart vicinae to load the extension, in the background the way your session starts it, e.g.:"
+  echo "  setsid vicinae server --replace >/dev/null 2>&1 &"
 }
 
 post_upgrade() {
