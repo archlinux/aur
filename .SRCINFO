@@ -1,7 +1,7 @@
 pkgbase = flectar-mail
 	pkgdesc = a lightweight, native client for email, calendars, and contacts
-	pkgver = 0.1.0alpha.6
-	pkgrel = 2
+	pkgver = 0.1.0alpha.7
+	pkgrel = 1
 	url = https://flectar.com
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -17,8 +17,8 @@ pkgbase = flectar-mail
 	optdepends = gnupg: OpenPGP signing and encryption
 	optdepends = org.freedesktop.secrets: secret service provider for storing account credentials
 	optdepends = xdg-desktop-portal: OAuth sign-in
-	source = https://github.com/flectar/mail/archive/refs/tags/v0.1.0-alpha.6/mail-0.1.0-alpha.6.tar.gz
-	sha256sums = e7c36bdbbe249feb143ec64caca4b27ebcd0a5741cb90db105856d801d0d2d57
+	source = https://github.com/flectar/mail/archive/refs/tags/v0.1.0-alpha.7/mail-0.1.0-alpha.7.tar.gz
+	sha256sums = 457f9844c30bd2548fc4bc4166426eb4d7ef6efe5a2918d6cb13b3b2f184258b
 
 pkgname = flectar-mail
 	depends = dbus

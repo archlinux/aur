@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=flectar-mail
-pkgver=0.1.0alpha.6
-pkgrel=2
+pkgver=0.1.0alpha.7
+pkgrel=1
 url="https://${pkgname%-*}.com"
 _url="https://github.com/${pkgname/-//}"
 pkgdesc='a lightweight, native client for email, calendars, and contacts'
@@ -28,7 +28,7 @@ optdepends=('gnupg: OpenPGP signing and encryption'
 _tag=${pkgver/alpha/-alpha}
 _archive="${pkgname#*-}-$_tag"
 source=("$_url/archive/refs/tags/v$_tag/$_archive.tar.gz")
-sha256sums=('e7c36bdbbe249feb143ec64caca4b27ebcd0a5741cb90db105856d801d0d2d57')
+sha256sums=('457f9844c30bd2548fc4bc4166426eb4d7ef6efe5a2918d6cb13b3b2f184258b')
 
 _srcenv() {
 	cd "$_archive"
