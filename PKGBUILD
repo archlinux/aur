@@ -156,6 +156,7 @@ conflicts=('chromium' 'chromedriver')
 declare -gA _system_libs=(
   [brotli]=brotli
   [dav1d]=dav1d
+  [double-conversion]=double-conversion
   #[ffmpeg]=ffmpeg    # YouTube playback stopped working in Chromium 120
   [flac]=flac
   [fontconfig]=fontconfig
@@ -329,9 +330,16 @@ prepare() {
   # added benefit of not having to list all the remaining libraries
   local _lib
   for _lib in ${_unwanted_bundled_libs[@]}; do
-    find "third_party/$_lib" -type f \
-      \! -path "third_party/$_lib/chromium/*" \
-      \! -path "third_party/$_lib/google/*" \
+    # Most bundled libraries live under `third_party/<lib>`, but
+    # `double-conversion` is located under `base/third_party/double_conversion`
+    local _dir="third_party/$_lib"
+    if [[ ! -d "${_dir}" ]]; then
+      _dir="base/third_party/${_lib//-/_}"
+    fi
+
+    find "$_dir" -type f \
+      \! -path "$_dir/chromium/*" \
+      \! -path "$_dir/google/*" \
       \! -path "third_party/harfbuzz-ng/utils/hb_scoped.h" \
       \! -regex '.*\.\(gn\|gni\|isolate\)' \
       -delete
