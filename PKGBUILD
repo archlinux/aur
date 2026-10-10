@@ -24,7 +24,7 @@ backup=(
 install='proxy_certificate.install'
 
 # Use debug
-export CARGO_PROFILE_RELEASE_DEBUG=2 CARGO_PROFILE_RELEASE_STRIP=false 
+#export CARGO_PROFILE_RELEASE_DEBUG=2 CARGO_PROFILE_RELEASE_STRIP=false 
 
 # Use LTO 
 export CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1 
@@ -43,12 +43,18 @@ build() {
    cargo build --frozen --release --bin dane-without-root-client --features client,logging,tofu,doh
    cargo build --frozen --release --bin dane-without-root-proxy --features proxy,logging,tofu,doh
    cargo cinstall --frozen --release --lib --features logging,tofu,doh --destdir=./target/release/ --prefix=/usr
+   upx --best --no-lzma --ultra-brute target/release/dane-without-root-proxy
+   upx --best --no-lzma --ultra-brute target/release/dane-without-root-client
+   upx --best --no-lzma --ultra-brute target/release/libdane_without_root.so
+   upx --best --no-lzma --ultra-brute target/release/libdane_without_root.a
+
 }
 check() {
     cd "$srcdir/dane_without_root"
     DANE_WITHOUT_ROOT_SYSTEM_VALID_DOMAIN_FILE=./implementation/valid_dane_domain.txt \
     DNSSEC_WITHOUT_ROOT_DIRECTORY=./dnssec_keys/usr/share/dnssec-keys/ \
-    cargo test --frozen --release --features logging,capi,wrapper_rustls,wrapper_openssl,client,tofu,doh
+    cargo test --frozen --features logging,capi,wrapper_rustls,wrapper_openssl,client,tofu,doh
+
 }
 package() {
    cd "$srcdir/dane_without_root/implementation/"
