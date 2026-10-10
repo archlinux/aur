@@ -1,0 +1,26 @@
+pkgbase = ratiomaster.net-bin
+	pkgdesc = Fake the upload and download a BitTorrent tracker sees, without a client (prebuilt)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/NikolayIT/RatioMaster.NET
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libice
+	depends = libsm
+	depends = libx11
+	provides = ratiomaster.net
+	conflicts = ratiomaster.net
+	options = !strip
+	source = LICENSE.upstream::https://raw.githubusercontent.com/NikolayIT/RatioMaster.NET/v1.1.0/LICENSE
+	sha256sums = 8b061698df912d3d7700fdd8a9ffb2b23e0c881bb41805394baf1790f47ad2dc
+	source_x86_64 = RatioMaster.NET-linux-x64.tar.gz::https://github.com/NikolayIT/RatioMaster.NET/releases/download/v1.1.0/RatioMaster.NET-linux-x64.tar.gz
+	sha256sums_x86_64 = 3bed88b85fb0287463f664951f76a203b6feaa448250168eb307cea4c93c0907
+	source_aarch64 = RatioMaster.NET-linux-arm64.tar.gz::https://github.com/NikolayIT/RatioMaster.NET/releases/download/v1.1.0/RatioMaster.NET-linux-arm64.tar.gz
+	sha256sums_aarch64 = 44e076025e77e5c51b995839332fb164bb50dd47ee06ba2ed6e0eac7e9044664
+
+pkgname = ratiomaster.net-bin
