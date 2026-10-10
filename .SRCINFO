@@ -1,7 +1,7 @@
 pkgbase = zed-globalization
 	pkgdesc = Zed editor with globalization support (pre-built binary)
 	pkgver = 1.23.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/x6nux/zed-globalization
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = zed-globalization
 	provides = zed
 	conflicts = zedg
 	conflicts = zed
+	options = !strip
 	options = !debug
 	source_x86_64 = https://github.com/x6nux/zed-globalization/releases/download/v1.23.2/zedg-zh-cn-linux-x86_64-v1.23.2.tar.gz
 	sha256sums_x86_64 = 5356a5c556e60641098fda7382ea462975822327e59de7ee7b852862fd0fb9aa
