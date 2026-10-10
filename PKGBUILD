@@ -1,7 +1,7 @@
 # Maintainer: Youcef <youcef.nafa@gmail.com>
 
 pkgname=openusage.sh
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 pkgdesc='Terminal-first local quota and usage tracking dashboard for AI coding tools'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/janekbaraniewski/openusage'
 license=('MIT')
 depends=('glibc')
 source=("https://github.com/janekbaraniewski/openusage/releases/download/v${pkgver}/openusage_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('5013e4b6bb6f120d53f4d35e74a273787b0ad2b26868c927657f7b3ec9dad68f')
+sha256sums=('1b5094acb5ffb5b7ef5123c0e598e7d20fe21b4d0f09a5cedde82d0ea175e5df')
 
 prepare() {
     cd "$srcdir"
