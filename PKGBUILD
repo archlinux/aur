@@ -9,7 +9,7 @@
 
 pkgname=alien
 pkgver=8.95.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert between package formats: deb, rpm, tgz, slp, pkg, lsb, and pacman (.pkg.tar.zst)'
 arch=('any')
 url='https://github.com/isaacangello/alien'
@@ -24,11 +24,11 @@ optdepends=(
 )
 conflicts=('alien_package_converter')
 provides=('alien_package_converter')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/isaacangello/alien/releases/download/v${pkgver}-pacman1/alien-${pkgver}.tar.gz")
-sha256sums=('ed234fcb447d26aa1c9a4174a685c06a0bfc8c2f46ec45d9bffcc01e70060665')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/isaacangello/alien/releases/download/v${pkgver}-pacman2/alien-${pkgver}.tar.gz")
+sha256sums=('31f90f3cb98f91cd2ed2aff996f5dd6d3c315462856fc0313f606006fbc3d9c0')
 
 build() {
-  cd "$srcdir/alien-$pkgver-pacman1"
+  cd "$srcdir/alien-$pkgver-pacman2"
 
   # INSTALLDIRS=vendor: install Perl modules to /usr/share/perl5/vendor_perl
   # INSTALLVENDORSCRIPT=/usr/bin: install the alien binary to /usr/bin (works with sudo)
@@ -46,7 +46,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/alien-$pkgver-pacman1"
+  cd "$srcdir/alien-$pkgver-pacman2"
   make DESTDIR="$pkgdir" install
 
   # Remove MakeMaker artifacts: pacman tracks files itself, so .packlist
