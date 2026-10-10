@@ -1,5 +1,5 @@
 # Maintainer: PastLeo <chgu82837@gmail.com>
-# AUR submission candidate; see docs/arch-linux.md.
+# AUR packaging recipe; see docs/arch-linux.md.
 pkgname=fcitx5-misstype-git
 pkgver=0.1.r212.g5135a1f
 pkgrel=1
