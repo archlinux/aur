@@ -1,6 +1,6 @@
 pkgbase = mklang
 	pkgdesc = A declarative language for LLM-driven state machines (reference interpreter)
-	pkgver = 1.3.7
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/gianlucamazza/mklang
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = mklang
 	optdepends = python-mcp>=2: mklang-mcp MCP server
 	optdepends = python-argcomplete: shell completions
 	backup = etc/mklang/runtime.yaml
-	source = https://files.pythonhosted.org/packages/d1/80/d7e676a3360a967b96a1c2c5ae85c46027614e26fbc86617f1553cd667bb/mklang-1.3.7.tar.gz
-	sha256sums = 44d46589df817d5a75d918bc995f6a9a1a1395fa5541e9c05cf43aefc7f9c8e7
+	source = https://files.pythonhosted.org/packages/d5/da/2bd03b83b03a281c89cd1918cd54cbd1ded4bd634f674955862b0d364650/mklang-1.4.0.tar.gz
+	sha256sums = e47ba3cea88d5b5ca3e64c54ecaa34d7c016a277de02a8f442e3004b1d3de57c
 
 pkgname = mklang
