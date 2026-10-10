@@ -1,0 +1,15 @@
+pkgbase = bromigos-mirrorlist
+	pkgdesc = bromigOS package repository mirrors
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/bromigos-org/bromigOS
+	arch = any
+	license = MIT OR Apache-2.0
+	options = !debug
+	backup = etc/pacman.d/bromigos-mirrorlist
+	source = bromigos-aur-bootstrap-6f8c6e3cc345.tar.gz::https://github.com/bromigos-org/bromigOS/archive/refs/tags/aur-bootstrap-6f8c6e3cc345.tar.gz
+	source = bromigos-mirrorlist
+	sha256sums = ea499760a23c382614c268f6059c78199ba3406a478fe86370cfa778722da0db
+	sha256sums = 08766898c9e796a7a0ddda69883b50dd592c078c69f864797b3bbc23d28eacc9
+
+pkgname = bromigos-mirrorlist

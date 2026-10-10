@@ -1,0 +1,2 @@
+# bromigOS stable packages. Add further Server lines below this one.
+Server = https://pkgs.bromigos.org/$repo/stable/$arch
