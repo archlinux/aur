@@ -1,6 +1,6 @@
 pkgbase = python-social-auth-core
 	pkgdesc = Python Social Auth core component
-	pkgver = 6.1.0
+	pkgver = 6.1.1
 	pkgrel = 1
 	url = https://github.com/python-social-auth/social-core
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-social-auth-core
 	depends = python-openid
 	depends = python-cryptography
 	depends = python-saml
-	source = python-social-auth-core-6.1.0.tar.gz::https://github.com/python-social-auth/social-core/archive/6.1.0.tar.gz
-	sha256sums = 82a29610976796bdb9352ecec7701d0c17965a90de550b110881b9b6f8e8f721
+	source = python-social-auth-core-6.1.1.tar.gz::https://github.com/python-social-auth/social-core/archive/6.1.1.tar.gz
+	sha256sums = c4dd8bd1d98c2ed75f059ffd55a55c04241dcb6016509055560749e75c491e7a
 
 pkgname = python-social-auth-core
