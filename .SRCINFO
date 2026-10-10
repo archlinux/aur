@@ -1,6 +1,6 @@
 pkgbase = insensical-bin
 	pkgdesc = A terminal multiplexer with a window of its own, for supervising many terminals and coding agents (prebuilt)
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://insensical.com
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = insensical-bin
 	conflicts = insensical
 	options = !strip
 	options = !debug
-	source = https://github.com/mah3uz/insensical-release/releases/download/v0.2.0/insensical-0.2.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 318de171684e189e841b89f5a408b65287196100e6a277428379af67a3c7e3e7
+	source = https://github.com/mah3uz/insensical-release/releases/download/v0.3.0/insensical-0.3.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 8239cff000f7e871fa6945eab68a02ca3964d88fbd50b5bb63b580ba38713469
 
 pkgname = insensical-bin
