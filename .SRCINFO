@@ -1,0 +1,26 @@
+pkgbase = aic8800fc-dkms
+	pkgdesc = AICSemi AIC8800FC USB Wi-Fi driver (vendor 2023-08-07 release, patched for Linux 7.x) with firmware (DKMS)
+	pkgver = 20230807
+	pkgrel = 1
+	url = https://github.com/lzwjava/aic8000
+	install = aic8800fc-dkms.install
+	arch = any
+	license = GPL-2.0-only
+	license = LicenseRef-AICSemi-firmware
+	depends = dkms
+	depends = usb_modeswitch
+	provides = aic8800
+	conflicts = aic8800
+	conflicts = aic8800-dkms
+	conflicts = aic8800-usb-dkms
+	conflicts = aic8800-linux7-dkms
+	source = aic8000-2a995e3e01ddadb80e978ddf8558bbd406d0ef89.tar.gz::https://github.com/lzwjava/aic8000/archive/2a995e3e01ddadb80e978ddf8558bbd406d0ef89.tar.gz
+	source = kernel-7.2.patch
+	source = dkms.conf
+	source = 40-aic8800fc-modeswitch.rules
+	sha256sums = b331d664a00cd94c8c30c71481fd72247036366804ce8c4489d5c8d7a440efde
+	sha256sums = c70304c56e5822c79f57ef657bc56a4a31804fbd7878a03391c95b6afd9a1e59
+	sha256sums = bea1a3d3a7f459bb53a0aea157eb5076e18ece37ce1c5f443e8ea95e7dfb67d9
+	sha256sums = 278fc452e983b4e2f49e09091b7a595a8d584273507a42beddb43be861765732
+
+pkgname = aic8800fc-dkms

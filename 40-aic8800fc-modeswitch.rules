@@ -1,0 +1,4 @@
+# AIC8800FC dongles enumerate as a virtual CD (a69c:5721) holding Windows drivers.
+# Eject it so the device re-enumerates in Wi-Fi mode (a69c:88dc). usb_modeswitch runs
+# outside udev's worker, after usb-storage has settled, or the eject is lost.
+ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="a69c", ATTR{idProduct}=="5721", RUN+="/usr/bin/systemd-run --no-block --collect /bin/sh -c 'sleep 2; /usr/bin/usb_modeswitch -K -v a69c -p 5721'"
