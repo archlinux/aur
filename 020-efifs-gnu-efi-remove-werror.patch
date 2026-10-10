@@ -1,0 +1,11 @@
+--- a/Make.defaults
++++ b/Make.defaults
+@@ -287,7 +287,7 @@ EFI_CFLAGS  += $(ARCH3264) $(OPTIMIZATION_CFLAGS) $(DEBUG_CFLAGS) \
+            -ffreestanding -fno-stack-protector
+ else
+ EFI_CFLAGS  += $(ARCH3264) $(OPTIMIZATION_CFLAGS) $(DEBUG_CFLAGS) \
+-           -Wall -Wextra -Wstrict-prototypes -Werror \
++           -Wall -Wextra -Wstrict-prototypes \
+            -fno-strict-aliasing \
+            -ffreestanding -fno-stack-protector \
+            $(if $(findstring 0,$(USING_CLANG)),-fno-merge-all-constants,)

@@ -1,55 +1,77 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=efifs-git
-pkgver=1.9.r0.g3ac43bb
+pkgver=1.13.r0.g0f1b63b
 pkgrel=1
 pkgdesc='Standalone EFI file system drivers (git version)'
 arch=('any')
 url='https://efi.akeo.ie/'
-license=('GPL3')
-makedepends=('git' 'mingw-w64-gcc' 'arm-none-eabi-gcc' 'arm-none-eabi-newlib'
-             'aarch64-linux-gnu-gcc' 'riscv64-linux-gnu-gcc')
+license=('GPL-3.0-or-later')
+makedepends=(
+    'aarch64-linux-gnu-gcc'
+    'git'
+    'loongarch64-linux-gnu-gcc'
+    'mingw-w64-gcc'
+    'riscv64-linux-gnu-gcc')
 provides=('efifs')
 conflicts=('efifs')
-source=('git+https://github.com/pbatard/efifs.git'
-        'git+https://git.savannah.gnu.org/git/grub.git'
-        'gnu-efi'::'git+https://git.code.sf.net/p/gnu-efi/code')
+source=('git+https://github.com/pbatard/EfiFs.git'
+        'git+https://gitlab.freedesktop.org/gnu-grub/grub.git'
+        'git+https://github.com/ncroxon/gnu-efi.git'
+        '010-efifs-fix-loongarch64-gcc-arch.patch'
+        '020-efifs-gnu-efi-remove-werror.patch')
 sha256sums=('SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'cae208426ca4a6edea7e103e19fd2743f5acd48267bb38ece84e00bbe2ea1d2b'
+            'e887dfe07a1ada3a22fa79308dac94976165fbcc4bd0bb76c91dc55f5121c912')
 
 prepare() {
-    git -C efifs submodule init
-    git -C efifs config --local submodule.grub.url "${srcdir}/grub"
-    git -C efifs config --local submodule.gnu-efi.url "${srcdir}/gnu-efi"
-    git -C efifs -c protocol.file.allow='always' submodule update
+    git -C EfiFs submodule init
+    git -C EfiFs config --local submodule.grub.url "${srcdir}/grub"
+    git -C EfiFs config --local submodule.gnu-efi.url "${srcdir}/gnu-efi"
+    git -C EfiFs -c protocol.file.allow='always' submodule update
     
-    patch -d efifs/grub -Np1 -i "${srcdir}/efifs/0001-GRUB-fixes.patch"
+    patch -d EfiFs/grub -Np1 -i "${srcdir}/EfiFs/0001-GRUB-fixes.patch"
+    patch -d EfiFs/gnu-efi -Np1 -i "${srcdir}/EfiFs/0001-gnu-efi-fixes.patch"
     
-    cp -af efifs{,-ia32}
-    cp -af efifs{,-arm}
-    cp -af efifs{,-aa64}
-    cp -af efifs{,-riscv64}
+    patch -d EfiFs -Np1 -i "${srcdir}/010-efifs-fix-loongarch64-gcc-arch.patch"
+    patch -d EfiFs/gnu-efi -Np1 -i "${srcdir}/020-efifs-gnu-efi-remove-werror.patch"
+    
+    cp -af EfiFs{,-ia32}
+    cp -af EfiFs{,-aa64}
+    cp -af EfiFs{,-riscv64}
+    cp -af EfiFs{,-loongarch64}
 }
 
 pkgver() {
-    git -C efifs describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    git -C EfiFs describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
     unset -v CFLAGS
     unset -v MAKEFLAGS
-    make -C efifs ARCH='x64'
-    make -C efifs-ia32 ARCH='ia32'
-    make -C efifs-arm ARCH='arm' CROSS_COMPILE='arm-none-eabi-'
-    make -C efifs-aa64 ARCH='aa64' CROSS_COMPILE='aarch64-linux-gnu-'
-    make -C efifs-riscv64 ARCH='riscv64' CROSS_COMPILE='riscv64-linux-gnu-'
+    
+    printf '%s\n' '  -> building for x64...'
+    make -C EfiFs ARCH='x64'
+    
+    printf '%s\n' '  -> building for ia32...'
+    make -C EfiFs-ia32 ARCH='ia32'
+    
+    printf '%s\n' '  -> building for aa64...'
+    make -C EfiFs-aa64 ARCH='aa64' CROSS_COMPILE='aarch64-linux-gnu-'
+    
+    printf '%s\n' '  -> building for riscv64...'
+    make -C EfiFs-riscv64 ARCH='riscv64' CROSS_COMPILE='riscv64-linux-gnu-'
+    
+    printf '%s\n' '  -> building for loongarch64...'
+    make -C EfiFs-loongarch64 ARCH='loongarch64' CROSS_COMPILE='loongarch64-linux-gnu-'
 }
 
 package() {
-    install -D -m644 efifs/src/*.efi -t "${pkgdir}/usr/lib/efifs-x64"
-    install -D -m644 efifs-ia32/src/*.efi -t "${pkgdir}/usr/lib/efifs-ia32"
-    install -D -m644 efifs-arm/src/*.efi -t "${pkgdir}/usr/lib/efifs-arm"
-    install -D -m644 efifs-aa64/src/*.efi -t "${pkgdir}/usr/lib/efifs-aa64"
-    install -D -m644 efifs-riscv64/src/*.efi -t "${pkgdir}/usr/lib/efifs-riscv64"
+    install -D -m644 EfiFs/src/*.efi -t "${pkgdir}/usr/lib/efifs-x64"
+    install -D -m644 EfiFs-ia32/src/*.efi -t "${pkgdir}/usr/lib/efifs-ia32"
+    install -D -m644 EfiFs-aa64/src/*.efi -t "${pkgdir}/usr/lib/efifs-aa64"
+    install -D -m644 EfiFs-riscv64/src/*.efi -t "${pkgdir}/usr/lib/efifs-riscv64"
+    install -D -m644 EfiFs-loongarch64/src/*.efi -t "${pkgdir}/usr/lib/efifs-loongarch64"
 }
