@@ -1,7 +1,7 @@
 # Maintainer: Ashar Khan <ashar786khan at gmail.com>
 
 pkgname=cpeditor
-pkgver=7.0.2
+pkgver=7.0.3
 _pkgdir=cpeditor-$pkgver-full-source
 pkgrel=1
 pkgdesc='The editor for competitive programming'
@@ -30,7 +30,7 @@ optdepends=(
     'wakatime: track coding stats'
 )
 source=("https://github.com/cpeditor/$pkgname/releases/download/$pkgver/cpeditor-$pkgver-full-source.tar.gz")
-sha256sums=('9cf5abdf15178f1c1c769d7c107edaaaeaab16d011220f320e9fc35fc99d2d4e')
+sha256sums=('8f88d7ab0b22b70f7843352339c2e143fa6e203904a1401a353dfed450618491')
 
 build() {
     cd "$_pkgdir"
