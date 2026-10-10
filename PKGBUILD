@@ -6,7 +6,7 @@ _appname=${_gitname%-cli}
 pkgname=${_appname}-bin
 pkgdesc="Peer-to-peer voice and text chat for the terminal"
 
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,10 +30,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums=('3fe6b813699ee0f13a54a6cc7c949b1dd129e527edaa31f5e0db6dfe340267cd'
+sha256sums=('f2c2061363463e89fdefebe33d1295d83db805278f595730bdfce451084f2aaf'
             'd8fd0feeb37abd725f571dfa751fa76f1003ec9b89ef67f480ff48e2c8535d48')
-sha256sums_x86_64=('4a51f30ea74c389678cf35ae5b35967d2cf19868eca26e4efc749fedf0fb74f4')
-sha256sums_aarch64=('36b8b8913bcb55f2f7144c50349e24ef862fd169052c28de4b43cba78489bf3d')
+sha256sums_x86_64=('36d8744f8b454e11a98240a7148c4029e9414044fc8f1ff64936d8f685f7b368')
+sha256sums_aarch64=('e4dd52a3dfb90d01ea4d5ebbe540314407496cee473ee9f714ffb8ba0cfd2e50')
 
 
 build() {
