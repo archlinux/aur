@@ -1,0 +1,4 @@
+[artcraft-launcher]
+source = "git"
+git = "https://github.com/storytold/craft-launcher.git"
+prefix = "v"

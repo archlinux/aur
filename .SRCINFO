@@ -1,0 +1,20 @@
+pkgbase = artcraft-launcher
+	pkgdesc = install and launch ArtCraft apps
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/storytold/craft-launcher
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	source = https://github.com/storytold/craft-launcher/archive/refs/tags/v0.2.0/craft-launcher-0.2.0.tar.gz
+	sha256sums = 0219fc78e232c4d4c2027bd77b696424c9d75783e14e445ebe63b81965d47392
+
+pkgname = artcraft-launcher
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libgcc_s.so
