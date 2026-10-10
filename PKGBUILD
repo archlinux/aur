@@ -52,7 +52,7 @@ source_x86_64=(
     "${_pkgname}-chromedriver-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/chromedriver-v${_pkgver//_/-}-linux-x64.zip"
     "${_pkgname}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-x64.zip"
 )
-sha256sums=('ac1e26684ffbfc7ac0993c55b9299003f6b9efea25b755b1d260bea4db440157')
+sha256sums=('cea9f99f6d0a9a8bab239ffd2192dca3adf4f769b3123a2f366983c82d572ac9')
 sha256sums_aarch64=('68a0503b0f8b1436472c1209d633f66300867262c3612ca60e61e56d3277ea6c'
                     '699b44cd0cc2ff4f16c584eb97dead38009159028a65e6376a565f26e64e4836')
 sha256sums_x86_64=('18de4f3af08ba6f595b2a78b96d153e03aee3f79466e3327d206671f33173a68'
