@@ -1,0 +1,4 @@
+[vim-dadbod]
+source = "git"
+git = "https://github.com/tpope/vim-dadbod.git"
+prefix = "v"
