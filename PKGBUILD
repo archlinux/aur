@@ -1,8 +1,8 @@
 # Maintainer: futpib-bot <futpib-bot@users.noreply.github.com>
 
 pkgname=zondd-git
-pkgver=r10.3b3c60b
-pkgrel=1
+pkgver=r26.78933ab
+pkgrel=2
 pkgdesc='SSH-authenticated operations with command policies and manual approval'
 arch=('x86_64')
 url='https://github.com/futpib/zondd'
@@ -37,7 +37,7 @@ build() {
 
 check() {
     cd "$srcdir/zondd" || return
-    cargo test --frozen --release --workspace
+    cargo test --frozen --release --workspace -- --test-threads=1
 }
 
 package() {

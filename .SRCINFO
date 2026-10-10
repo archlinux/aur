@@ -1,7 +1,7 @@
 pkgbase = zondd-git
 	pkgdesc = SSH-authenticated operations with command policies and manual approval
-	pkgver = r10.3b3c60b
-	pkgrel = 1
+	pkgver = r26.78933ab
+	pkgrel = 2
 	url = https://github.com/futpib/zondd
 	arch = x86_64
 	license = GPL-3.0-or-later
