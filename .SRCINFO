@@ -1,6 +1,6 @@
 pkgbase = tagwerk-git
 	pkgdesc = Passive time tracker for Hyprland, nothing to start or stop
-	pkgver = r87.a0b9d4a
+	pkgver = r88.35f9884
 	pkgrel = 1
 	url = https://github.com/espadat-studio/tagwerk
 	install = tagwerk-git.install
