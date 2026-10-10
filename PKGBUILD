@@ -2,7 +2,7 @@
 
 _appname=groupfolders
 pkgname=nextcloud-app-groupfolders
-pkgver=22.0.6
+pkgver=23.0.1
 pkgrel=1
 pkgdesc="Admin-configured folders shared by everyone in a group."
 arch=('any')
@@ -11,10 +11,10 @@ license=('AGPL-3.0-or-later')
 makedepends=('npm' 'jq' 'yq' 'rsync')
 source=(
     "${_appname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-    "npm-v12-unknown-deps-flag-fix.patch"
 )
-sha512sums=('683fa70306e99a375b0bdcbed85fb4af71912f47db597916c1b03c25a64b0e5218aa0d2d0cea1b3138eab4b3ce1c0ea249d9f8cf3bdc24fc648d1ea73b2aa387'
-            '882a51e0593e62d3e39fb72ad56fe5b576550125eba49eda41bf4b9ef1c3f494f4006630e800804b3a9828f075388decda32f7639d074ad24120d3eefab25b62')
+sha512sums=(
+    '8f400dd89f8cbb18de9bcd94cd9695917bd3ee20e1762d0faa7256d03fe41248fb301ec9d671115eecc59e1fd2799ea747dc16f6812ddc64099f4244a86baa90'
+)
 
 # Boilerplate nextcloud version calculation adopted from other packages
 _get_nextcloud_versions() {
@@ -39,10 +39,6 @@ prepare() {
     _tmp=$(mktemp)
     _package_json="${srcdir}/${_appname}/package.json"
     jq --arg v "${pkgver}" '.version = $v' ${_package_json} > "${_tmp}" && mv "${_tmp}" "${_package_json}"
-
-    # Apply patch to fix npm v12 unknown cli flag '--deps' issue
-    echo "Applying patch to fix npm v12 unknown deps flag issue"
-    patch -d "${srcdir}/${_appname}" -Np0 -i "${srcdir}/npm-v12-unknown-deps-flag-fix.patch"
 }
 
 build() {
