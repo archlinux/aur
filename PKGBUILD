@@ -1,7 +1,7 @@
 # Maintainer: Miguel Regueiro <miguelpr4242@gmail.com>
 
 pkgname=enzo
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Terminal video player with a graphical interface'
 arch=('x86_64')
@@ -21,7 +21,7 @@ makedepends=('cargo' 'pkgconf')
 conflicts=('enzo-bin')
 options=('!lto')
 source=("${pkgname}-${pkgver}.crate::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
-sha256sums=('fb90b4cd72a9f32b0fd70de52638477f82e3c06e42aeae08735cdcfb273427b8')
+sha256sums=('d39e9818c4391d8dfffce5e2fb41f566d9f7257a2996329ef8d82b22b8cb4c7b')
 
 prepare() {
   cd "${pkgname}-${pkgver}"

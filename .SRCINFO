@@ -1,6 +1,6 @@
 pkgbase = enzo
 	pkgdesc = Terminal video player with a graphical interface
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/MiguelRegueiro/enzo
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = enzo
 	depends = libpulse
 	conflicts = enzo-bin
 	options = !lto
-	source = enzo-1.2.0.crate::https://static.crates.io/crates/enzo/enzo-1.2.0.crate
-	sha256sums = fb90b4cd72a9f32b0fd70de52638477f82e3c06e42aeae08735cdcfb273427b8
+	source = enzo-1.3.0.crate::https://static.crates.io/crates/enzo/enzo-1.3.0.crate
+	sha256sums = d39e9818c4391d8dfffce5e2fb41f566d9f7257a2996329ef8d82b22b8cb4c7b
 
 pkgname = enzo
