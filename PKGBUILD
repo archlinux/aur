@@ -6,7 +6,7 @@
 
 pkgname=nethack-git
 _pkgname=NetHack
-pkgver=5.0.0_Release+r19759+gcb453720b
+pkgver=5.0.0_Release+r19762+gb1e2c2eaa
 pkgrel=1
 pkgdesc='A single player dungeon exploration game'
 arch=('x86_64')
@@ -18,10 +18,14 @@ makedepends=(git)
 _branch=NetHack-5.0
 source=("git+https://github.com/NetHack/NetHack.git#branch=${_branch}" nethack.tmpfiles)
 sha256sums=('SKIP'
-  'b4077a48b9ccc184014806fbdc52c2b1c709d9ab9401445751a7089e9f436645')
+  'c652b09c68a21b7beb41d78cb09ab99be4bad89a9c05c0825a3ebe9759fa62b6')
 conflicts=('nethack')
 provides=('nethack')
-backup=('etc/nethack/sysconf')
+backup=('etc/nethack/sysconf'
+  'var/games/nethack/record'
+  'var/games/nethack/logfile'
+  'var/games/nethack/xlogfile'
+  'var/games/nethack/livelog')
 
 pkgver() {
   cd "${_pkgname}"
@@ -39,11 +43,10 @@ prepare() {
     -e 's|^/\* \(#define TIMED_DELAY\) \*/|\1|' \
     -i include/unixconf.h
 
-  # we are setting up for setgid games, so modify all necessary permissions
-  # to allow full access for groups
-
-  # With thanks to bugtracker user loqs for the CFLAGS and LDFLAGS adjustments
-  sed -e 's|NHCFLAGS+=-DHACKDIR=\\".*\\"|NHCFLAGS+=-DHACKDIR=\\"/var/games/nethack/\\"|' \
+  # With thanks to bugtracker user loqs for the CFLAGS and LDFLAGS adjustments.
+  # HACKDIR must exactly match the value the /usr/bin/nethack wrapper exports
+  # (no trailing slash); NetHack drops setgid privileges on any mismatch.
+  sed -e 's|NHCFLAGS+=-DHACKDIR=\\".*\\"|NHCFLAGS+=-DHACKDIR=\\"/var/games/nethack\\"|' \
     -e 's|NHCFLAGS+=-DSYSCF -DSYSCF_FILE=\\"$(HACKDIR)/sysconf\\"|NHCFLAGS+=-DSYSCF -DSYSCF_FILE=\\"/etc/nethack/sysconf\\"|' \
     -i sys/unix/hints/linux.501
 
@@ -69,7 +72,7 @@ package() {
   cd "${_pkgname}"
 
   install -dm755 "$pkgdir"/usr/share/{man/man6,doc/nethack}
-  install -dm775 "$pkgdir"/var/games/
+  install -d "$pkgdir"/var/games
   make HACKDIR="$pkgdir/var/games/nethack" \
     SHELLDIR="$pkgdir/usr/bin" \
     VARDIR="$pkgdir/var/games/nethack" \
@@ -85,8 +88,21 @@ package() {
 
   install -dm755 "$pkgdir"/etc/nethack
   mv "$pkgdir"/var/games/nethack/sysconf "$pkgdir"/etc/nethack/sysconf
+  chmod 644 "$pkgdir"/etc/nethack/sysconf
 
-  install -vDm 644 ../nethack.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/nethack.conf"
+  # Permissions: the game runs setgid `games` and writes its data files
+  # through group permissions. Nothing is world-writable.
+  chown root:games "$pkgdir"/var/games
+  chmod 775 "$pkgdir"/var/games
+  chown -R root:games "$pkgdir"/var/games/nethack
+  find "$pkgdir"/var/games/nethack -type d -exec chmod 775 {} +
+  find "$pkgdir"/var/games/nethack -type f -exec chmod 644 {} +
+  chmod 664 "$pkgdir"/var/games/nethack/{perm,record,logfile,xlogfile,livelog}
+  chmod 2775 "$pkgdir"/var/games/nethack/save
+  chown root:games "$pkgdir"/usr/lib/nethack/nethack
+  chmod 2755 "$pkgdir"/usr/lib/nethack/nethack
+
+  install -vDm644 ../nethack.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/nethack.conf
 
   install -Dm644 doc/Guidebook.txt "$pkgdir"/usr/share/doc/nethack/Guidebook.txt
   install -Dm644 dat/license "$pkgdir"/usr/share/licenses/nethack/LICENSE

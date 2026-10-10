@@ -1,6 +1,6 @@
 pkgbase = nethack-git
 	pkgdesc = A single player dungeon exploration game
-	pkgver = 5.0.0_Release+r19759+gcb453720b
+	pkgver = 5.0.0_Release+r19762+gb1e2c2eaa
 	pkgrel = 1
 	url = https://github.com/NetHack/NetHack
 	arch = x86_64
@@ -12,9 +12,13 @@ pkgbase = nethack-git
 	provides = nethack
 	conflicts = nethack
 	backup = etc/nethack/sysconf
+	backup = var/games/nethack/record
+	backup = var/games/nethack/logfile
+	backup = var/games/nethack/xlogfile
+	backup = var/games/nethack/livelog
 	source = git+https://github.com/NetHack/NetHack.git#branch=NetHack-5.0
 	source = nethack.tmpfiles
 	sha256sums = SKIP
-	sha256sums = b4077a48b9ccc184014806fbdc52c2b1c709d9ab9401445751a7089e9f436645
+	sha256sums = c652b09c68a21b7beb41d78cb09ab99be4bad89a9c05c0825a3ebe9759fa62b6
 
 pkgname = nethack-git
