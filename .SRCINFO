@@ -1,0 +1,16 @@
+pkgbase = oh-my-pi-grammars-bin
+	pkgdesc = Prebuilt WebAssembly tree-sitter grammars for oh-my-pi
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/stencil-hq/wasm-grammars
+	arch = any
+	license = MIT
+	license = Apache-2.0
+	makedepends = python>=3.14
+	options = !strip
+	source = manifest-v1.json::https://github.com/stencil-hq/wasm-grammars/releases/download/v1/manifest.json
+	source = THIRD-PARTY-NOTICES-v1.txt::https://github.com/stencil-hq/wasm-grammars/releases/download/v1/THIRD-PARTY-NOTICES.txt
+	sha256sums = 3a2539de2f48b28569aa02e4023398a97ad3806e6a7e1891fba3be76a0288a1d
+	sha256sums = 104b20b8919282e7b559cbe68c55b50bffd18ec0ffeb2f51b9881065ad584c8d
+
+pkgname = oh-my-pi-grammars-bin
