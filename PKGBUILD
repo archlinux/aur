@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wj-markdown-editor-bin
-pkgver=2.19.8
+pkgver=2.22.1
 _electronversion=39
 pkgrel=1
 pkgdesc="An open-source desktop markup editor that supports webdav.一款支持webdav的开源桌面端markdown编辑器"
@@ -15,16 +15,19 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
+makedepends=(
+    "asar"
+)
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/${pkgver}/${pkgname%-bin}-linux-${CARCH}-${pkgver}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/nlbwqmz/wj-markdown-editor/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e1714f197ab282911331f86aa487681c471930a3de5d741009c25486e6b6f1bd'
+sha256sums=('cfacbb08bced9198776d4e92808a09182d5e228fae66cd2a67d2aeadbab19bd4'
             '4db85f2bcfa2b60623a893393a61158a562fd907cf1244a06f41fd11eb6f8605'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -41,15 +44,21 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
-        s/@cfgdirname@/${pkgname%-bin}/g
     " "${srcdir}/${pkgname%-bin}.sh"
     _check_electron_version
     sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    
+    local _app_dir="$(_get_app_dir)"
+    asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    sed -i "
+        s|const documentsPath = app.isPackaged ? path.resolve(app.getPath('documents'), 'wj-markdown-editor') : app.getAppPath()|const documentsPath = path.resolve(app.getPath('userData'), 'wj-markdown-editor')|g
+    " "${srcdir}/app.asar.unpacked/src/data/recent.js"
+    asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(_get_app_dir)
+	local _app_dir="$(_get_app_dir)"
 	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
