@@ -2,7 +2,7 @@
 _appname=sharefi
 pkgname="${_appname}-electron-bin"
 _pkgname=Sharefi
-pkgver=1.0.0
+pkgver=1.0.1
 _electronversion=44
 pkgrel=1
 pkgdesc="Effortlessly share files and folders across your local network. It is fast, secure, free, easy to use and cross platform."
@@ -17,28 +17,26 @@ conflicts=(
 )
 depends=(
     "electron${_electronversion}"
-    #'wireless_tools'
+    'wireless_tools'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgver}/${_appname}-${pkgver}.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/lucafornerone/sharefi-electron/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('224a1cbf1b6983033146e9ee5013ea945bf496c16af084a1405dc79ba7f520c4'
+sha256sums=('3934fb7c0b769e4d2e9395fa4d6104aeea4970a7ee9252c276d283977f4dc550'
             '2b0d534627dfbc884d4fbb0fbbaea1c1d5d2ff12d7b3e71b2faffd12cf990f47'
-            'fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8')
+            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
-    echo "Verifying Electron version..."
-    local _main_exe=$(find "$(_get_app_dir)" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)
-    [[ -z "${_main_exe}" ]] && echo -e "\033[1;33mNote: Could not find Electron binary.\033[0m" && return
-    local _elec_ver=$(strings "${_main_exe}" | grep -oP 'Electron/\K[0-9]+' | head -1)
-    [[ -z "${_elec_ver}" ]] && echo -e "\033[1;33mNote: Could not determine Electron version.\033[0m" && return
-    [[ "${_elec_ver}" != "${_electronversion}" ]] &&
-        echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m" ||
-        echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \
+		-executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)" \
+		| grep -oP 'Electron/\K[0-9]+' | head -1)
+	[[ -z "$_v" ]] && { echo -e "\033[1;33mNote: Could not check version.\033[0m"; return; }
+	(( _v == _electronversion )) && c=32 || c=31
+	echo -e "Electron version: \033[1;${c}m$_v$([[ $c -eq 31 ]] && echo " (expected $_electronversion)")\033[0m"
 }
 prepare() {
     _check_electron_version
