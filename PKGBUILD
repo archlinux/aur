@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=lichtfeld-studio
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Real-time 3D Gaussian Splatting studio for point cloud visualization and editing"
 arch=('x86_64')
@@ -25,8 +25,8 @@ depends=(
     'openimageio'
     'onetbb'
     'openssl'
-    'python312'
-    'python312-packaging'
+    'python'
+    'python-packaging'
     'sdl3'
     'spdlog'
     'vulkan-icd-loader'  # libvulkan.so (volk loads it; find_package(Vulkan))
@@ -42,13 +42,12 @@ makedepends=(
     'git'
     'glm'
     'libtool'
-    'nanobind'
     'nasm'
     'ninja'
     'nlohmann-json'
     'patchelf'
     'pkgconf'
-    'python312'
+    'python'
     'robin-map'
     'tar'
     'unzip'
@@ -60,13 +59,19 @@ provides=('lichtfeld-studio')
 conflicts=('lichtfeld-studio-git')
 options=(!lto !debug)  # !lto: CUDA gcc-14 can't link GCC 15 LTO; !debug: mixed vcpkg debug info unusable
 _libvtermcommit=934bc2fbf21800ac3458a499df8820ca5fb45fd3
+# Upstream pins nanobind 2.12.0 in vcpkg overrides; Arch ships 3.x, whose
+# ndarray_traits API the embedded module still specializes. Header-only, so the
+# source tree's cmake/nanobind-config.cmake is consumed directly.
+_nanobind_ver=2.12.0
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MrNeRF/LichtFeld-Studio/archive/refs/tags/v${pkgver}.tar.gz"
         'vcpkg::git+https://github.com/microsoft/vcpkg.git'
         "libvterm-${_libvtermcommit}.tar.gz::https://github.com/neovim/libvterm/archive/${_libvtermcommit}.tar.gz"
+        "nanobind-${_nanobind_ver}.tar.gz::https://github.com/wjakob/nanobind/archive/refs/tags/v${_nanobind_ver}.tar.gz"
         'lichtfeld-studio.desktop')
-sha256sums=('2f8427f685d935f71874966a952a2671a49995639bf8b769a9fcd72261243357'
+sha256sums=('83186ff8d85d44284e6c23c9c9333d6c73a94c2e52bbd35134f2d011cf45fb74'
             'SKIP'
             'f09525eb2a02679be0eb50bc1c294569e8cbaa4b59fb867d606236de2830045f'
+            '01f1f0cd0398743c18f33d07ae36ad410bd7f4a1e90683b508504de897d6e629'
             'a07642f575ad454ef6783e0a49d03afc96cc7df14d82db7a9de2ccad045fde65')
 
 latestver() {
@@ -99,22 +104,17 @@ set(VCPKG_C_FLAGS "-ffile-prefix-map=${srcdir}/=")
 set(VCPKG_CXX_FLAGS "-ffile-prefix-map=${srcdir}/=")
 EOF
 
-    # Fix vendored zep missing <cstdint> for GCC 15
-    sed -i '5i #include <cstdint>' external/zep/include/zep/glyph_iterator.h
-
-    # Remove $srcdir reference from binary (PROJECT_ROOT_PATH is a dev fallback;
-    # production path resolution uses exe/../share/LichtFeld-Studio/ which works with FHS)
-    sed -i 's|get_filename_component(PROJ_ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}" ABSOLUTE)|set(PROJ_ROOT_DIR "/usr/share/LichtFeld-Studio")|' CMakeLists.txt
-
     # Remove dev-only fallback paths that leak $srcdir into binaries
     # (runtime uses FHS paths from getAssetsDir()/getShadersDir(); these are #ifdef guards)
-    sed -i '/PROJECT_ROOT_PATH="\${PROJECT_SOURCE_DIR}"/d;
+    # PROJECT_ROOT_PATH is used unguarded in shipped sources, so repoint it at
+    # the installed prefix instead of dropping the definition.
+    sed -i 's|PROJECT_ROOT_PATH="${PROJECT_SOURCE_DIR}"|PROJECT_ROOT_PATH="/usr/share/LichtFeld-Studio"|;
             /VISUALIZER_.*_PATH="\${VISUALIZER_BUILD_RESOURCE_DIR}/d;
             /VISUALIZER_SOURCE_.*_PATH="\${VISUALIZER_SOURCE_RESOURCE_DIR}/d' \
         src/visualizer/CMakeLists.txt
     # Use the packaged interpreter path instead of whatever build-local Python
     # path CMake resolved.
-    sed -i 's|LFS_PYTHON_EXECUTABLE="\${Python_EXECUTABLE}"|LFS_PYTHON_EXECUTABLE="/usr/bin/python3.12"|' \
+    sed -i 's|LFS_PYTHON_EXECUTABLE="\${Python_EXECUTABLE}"|LFS_PYTHON_EXECUTABLE="/usr/bin/python3"|' \
         src/python/CMakeLists.txt
 
     # Point the vulkan rasterizer's dev SPV fallback at the installed shaders
@@ -125,22 +125,20 @@ EOF
 
     # Trim vcpkg.json to only deps without system equivalents.
     # Everything else comes from Arch packages (faster build, smaller footprint).
-    python3.12 -c "
+    /usr/bin/python -c "
 import json
 with open('vcpkg.json') as f:
     cfg = json.load(f)
 
 # Keep only deps that have no system equivalent or feature gaps
 keep = {
-    'imgui',              # needs docking-experimental branch
-    'implot',             # must match vcpkg imgui
     'rmlui',              # AUR package lacks SVG feature
     'args',               # tiny, no Arch package
     'nativefiledialog-extended',  # no Arch package
-    'usd',                # OpenUSD, no Arch package
     'vulkan-memory-allocator',  # not in official Arch repos
     'shader-slang',       # not in official Arch (cachyos-only); provides slangc tool
-    'glslang',            # visualizer FORCE-pins glslang_DIR to vcpkg dir
+    'glslang',            # visualizer FORCE-pins glslang_DIR to the vcpkg dir
+    'xxhash',             # Arch ships only libxxhash.pc, no CMake config for find_package(xxHash CONFIG)
 }
 
 cfg['dependencies'] = [
@@ -158,9 +156,6 @@ build() {
 
     export VCPKG_ROOT="$srcdir/LichtFeld-Studio-${pkgver}/vcpkg"
     export PATH="/opt/cuda/bin:$PATH"
-
-    local _nanobind_dir
-    _nanobind_dir=$(dirname "$(readlink -f /usr/lib/cmake/nanobind/nanobind-config.cmake)")
 
     # nvcc needs a host compiler within CUDA's supported range. Arch's cuda package
     # strips the gcc-version guard from host_config.h, so on a current system nvcc
@@ -188,10 +183,10 @@ build() {
         -DBUILD_TESTS=OFF \
         -DLFS_DEV_IMPORT_SOURCE_RESOURCES=OFF \
         -DLFS_DEV_IMPORT_SOURCE_PYTHON=OFF \
-        -DPython_EXECUTABLE=/usr/bin/python3.12 \
+        -DPython_EXECUTABLE=/usr/bin/python3 \
         -DPython_ROOT_DIR=/usr \
         -DPython_FIND_STRATEGY=LOCATION \
-        -Dnanobind_DIR="${_nanobind_dir}" \
+        -Dnanobind_DIR="$srcdir/nanobind-${_nanobind_ver}/cmake" \
         -G Ninja
 
     cmake --build build
@@ -218,18 +213,6 @@ package() {
     # needed at runtime by the main binary and the python module). No Arch package.
     install -Dm755 build/Build/lib/libOpenMeshCore.so.11.0 \
         build/Build/lib/libOpenMeshTools.so.11.0 -t "$pkgdir/usr/lib/"
-
-    # OpenUSD shared libs (vcpkg-built, not installed by cmake but needed at runtime
-    # by liblfs_mcp.so). Exact transitive closure from readelf NEEDED walk.
-    local _vcpkg_lib="build/vcpkg_installed/x64-linux/lib"
-    local _usd_libs=(
-        libusd_ar libusd_arch libusd_gf libusd_js libusd_kind libusd_pcp
-        libusd_plug libusd_sdf libusd_tf libusd_trace libusd_ts libusd_usd
-        libusd_usdGeom libusd_usdVol libusd_vt libusd_work
-    )
-    for _lib in "${_usd_libs[@]}"; do
-        install -Dm755 "$_vcpkg_lib/$_lib.so" -t "$pkgdir/usr/lib/"
-    done
 
     # Fix RUNPATH: replace vcpkg build paths with /usr/lib
     for f in $(find "$pkgdir" -type f \( -name '*.so' -o -name '*.so.*' -o -executable \)); do
