@@ -2,7 +2,7 @@
 # Contributor: David Birks <david@birks.dev>
 
 pkgname=emdash-bin
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="Run multiple coding agents in parallel"
 arch=('x86_64')
@@ -27,7 +27,7 @@ provides=('emdash')
 conflicts=('emdash')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::https://github.com/generalaction/emdash/releases/download/v${pkgver}/emdash-amd64.deb")
-sha256sums=('712cccf29417df64f7835195f58c01dec9c76459aebf75721cc4a1a24b0e6e18')
+sha256sums=('44976ee956991dc8eff9bd47931f409a7cb99c6ad83e5b39bf51442b55f1d10e')
 
 latestver() {
   gh api repos/generalaction/emdash/releases/latest --jq '.tag_name' | sed 's/^v//'
