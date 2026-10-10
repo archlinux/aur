@@ -1,6 +1,6 @@
 pkgbase = python-transonic
 	pkgdesc = Make your Python code fly at transonic speeds!
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://foss.heptapod.net/fluiddyn/transonic
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-transonic
 	optdepends = cython: compiler backend
 	optdepends = python-rich: colourful logs
 	provides = transonic
-	source = https://foss.heptapod.net/fluiddyn/transonic/-/archive/0.8.0/transonic-0.8.0.tar.gz
-	sha512sums = 8d4e33ff856a0324acf8ca2b562464765bc982770f5790d87efe947a0c2a8b9bf123325e5b54f7e6af6ceb9df124b5e1135758fd97e7db6342e8d82d29ffeb4d
+	source = https://foss.heptapod.net/fluiddyn/transonic/-/archive/0.8.1/transonic-0.8.1.tar.gz
+	sha512sums = 82f0898538cc511fcf2de6e2e18b6c9e11e854e90a1ae39cdca5f11571ba266ef2aded3b10f426400d375b43dcf6702e3ab242e086a0f311de46e391dbded746
 
 pkgname = python-transonic
