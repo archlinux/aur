@@ -1,8 +1,8 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=hyprlayout
-pkgver=1.0.1
-pkgrel=1
+pkgver=1.1.0
+pkgrel=0
 pkgdesc="LÖVE GUI to configure Hyprland monitor layouts"
 arch=(any)
 url="https://github.com/fdev31/hyprlayout"
@@ -13,7 +13,7 @@ optdepends=('hyprland: to apply the monitor configuration (hyprctl)'
 )
 makedepends=('zip')
 source=("https://github.com/fdev31/hyprlayout/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('506a331fe9fe60efc0b5ecd72cf16d1c')
+md5sums=('315eea82e2b49cc90125583a6d216d9f')
 
 build() {
 	cd "${srcdir}/hyprlayout-${pkgver}/src"
