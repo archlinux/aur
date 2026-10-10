@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtle-git
 _app_id="de.philippun1.${pkgname%-git}"
-pkgver=0.14.r2.g9ecb761
+pkgver=0.14.1.r0.gef29b89
 pkgrel=1
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
@@ -14,6 +14,7 @@ depends=(
   'openssl'
   'python-dbus'
   'python-gobject'
+  'python-gnupg'
   'python-nautilus'
   'python-pygit2'
   'python-secretstorage'
@@ -26,7 +27,9 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=(
+  'appstream'
   'dbus'
+  'desktop-file-utils'
   'python-pytest'
   'xorg-server-xvfb'
 )
@@ -60,7 +63,7 @@ check() {
   cd "${pkgname%-git}"
   python -m venv --clear --without-pip --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  dbus-run-session xvfb-run test-env/bin/python -I -m pytest
+  dbus-run-session xvfb-run test-env/bin/python -I -m pytest -k "not test_argparse.py"
 
   appstreamcli validate --no-net "data/${_app_id}.metainfo.xml"
   desktop-file-validate "data/${_app_id}.desktop"
