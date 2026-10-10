@@ -1,6 +1,6 @@
 pkgbase = lowfat
 	pkgdesc = Lightweight CLI that filters verbose command output to cut AI agent token costs
-	pkgver = 0.8.1
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/zdk/lowfat
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = lowfat
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	provides = lowfat=0.8.1
+	provides = lowfat=0.9.0
 	conflicts = lowfat-bin
 	options = !lto
 	options = !debug
-	source = lowfat-0.8.1.tar.gz::https://github.com/zdk/lowfat/archive/refs/tags/v0.8.1.tar.gz
-	sha256sums = d89db7bdb285fc7ba20f0e8c680974f3fe4ff45b301cfe865c4bab35003229ac
+	source = lowfat-0.9.0.tar.gz::https://github.com/zdk/lowfat/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = 070b4e5d0d87da3c94cd8da7cf4dd9dc921566088d85c021501860e11650d9a6
 
 pkgname = lowfat

@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=lowfat
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Lightweight CLI that filters verbose command output to cut AI agent token costs"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ conflicts=('lowfat-bin')
 # /usr/src/debug tree, and a dangling build-id symlink (namcap E).
 options=('!lto' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d89db7bdb285fc7ba20f0e8c680974f3fe4ff45b301cfe865c4bab35003229ac')
+sha256sums=('070b4e5d0d87da3c94cd8da7cf4dd9dc921566088d85c021501860e11650d9a6')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
