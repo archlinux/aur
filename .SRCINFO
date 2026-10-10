@@ -1,6 +1,6 @@
 pkgbase = oceanus-bin
 	pkgdesc = 一个 Flutter 网易云音乐客户端
-	pkgver = 1.3.7
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/cmachsocket/oceanus
 	arch = x86_64
@@ -26,9 +26,9 @@ pkgbase = oceanus-bin
 	conflicts = oceanus
 	options = strip
 	options = debug
-	source = oceanus_1.3.7+1_amd64.deb::https://github.com/cmachsocket/oceanus/releases/download/v1.3.7/oceanus_1.3.7+1_amd64.deb
+	source = oceanus_1.4.1+1_amd64.deb::https://github.com/cmachsocket/oceanus/releases/download/v1.4.1/oceanus_1.4.1+1_amd64.deb
 	source = GPL-3.0-or-later.txt::https://raw.githubusercontent.com/spdx/license-list-data/main/text/GPL-3.0-or-later.txt
-	sha512sums = ddd3cf3a4e00803526685a9dbf02dcb024f87fd6db686055b366c5258baeee22d7e559fad9b13b91f3b4d764cf8b1c067e5ba1fd3c56df609b4fd0912e40e2b3
+	sha512sums = a957bc148dbc5ff834c860190e3fe77fc773260fa3ebbcf4a2f454ad80005ca112295dd8c084ed1a107e327ddd94655bd363deef3b3297100d63dfa0a449b584
 	sha512sums = 165f8007d3397e1fd4c30a42039122c3ed8f9f5d45274d682f4707fadb093ab7a8f9336724db6eb7653acb9cee42d39fd98fb72811afce635af03a9f2ef66181
 
 pkgname = oceanus-bin
