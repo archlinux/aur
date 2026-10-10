@@ -2,7 +2,7 @@
 
 pkgname=cyberterm-bin
 _pkgname=cyberterm
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="GPU terminal for developers: splits and sessions, command blocks, searchable history, AI help, inline images and Lua scripting (prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$_base/releases/download/v$pk
 sha256sums=('ec5af8d1007d65d5fa144c2e1658a09fb900d3ccff926a306ebc950e40115337'
             'a686c4e5a39510488c378dc1820304b4d4827b1cd9bcfefe1a25eb7bf53925d1'
             '1e638aff925407a30963bd57a3a942831f5ea86b45a06941f88c23c5d684d0c3')
-sha256sums_x86_64=('e69b57267b88cd9753bdd201f49d4f7790529fa5abe4a4c53e7f6c7846cdff90')
-sha256sums_aarch64=('1ec55592e745131cce4af0a96d2852ab583ded95e274e7c138f1578f939e0da4')
+sha256sums_x86_64=('1622270184917105075a69d70919be49681a8ec8d09ca108f79fc7cdcf0643bb')
+sha256sums_aarch64=('d98a43bef32ce88f0ca65cdb19bfa300cbf9a72111e50bbfcd447f80a971fe58')
 
 package() {
   install -Dm755 "$srcdir/cyberterm" "$pkgdir/usr/bin/cyberterm"
