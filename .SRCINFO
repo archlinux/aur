@@ -1,6 +1,6 @@
 pkgbase = jaq-git
 	pkgdesc = A jq clone
-	pkgver = 3.1.0.15.gb3365b2a
+	pkgver = 3.1.1.40.g6b8cbeb7
 	pkgrel = 1
 	url = https://github.com/01mf02/jaq
 	arch = x86_64
@@ -15,10 +15,6 @@ pkgbase = jaq-git
 	conflicts = jaq
 	conflicts = jq
 	source = git+https://github.com/01mf02/jaq.git
-	source = build.rs
-	source = git+https://github.com/purpleprotocol/mimalloc_rust
-	b2sums = SKIP
-	b2sums = d0256b59336fc4bd50d594577f6f816d5ba472e2de633d81a3c52853fdf9fed7b5f08f5c8dbb9ba5a4cb7b8786bb4d1a39a6a3f7eb2227a87a755876dbbc7b0e
 	b2sums = SKIP
 
 pkgname = jaq-git
