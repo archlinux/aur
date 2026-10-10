@@ -1,6 +1,6 @@
 pkgbase = handbrake-full-va-api
 	pkgdesc = HandBrake snapshot with VA-API encoding enabled
-	pkgver = 1.11.2.r20261002.g174246f
+	pkgver = 1.11.2.r20261010.g5949d93
 	pkgrel = 1
 	url = https://handbrake.fr/
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = handbrake-full-va-api
 	optdepends = gst-plugins-good: for video previews
 	optdepends = gst-libav: for video previews
 	options = !lto
-	source = HandBrake::git+https://github.com/HandBrake/HandBrake.git#commit=174246fbee3150206c43943915301cca22981d32
+	source = HandBrake::git+https://github.com/HandBrake/HandBrake.git#commit=5949d9389b60bb9996e7d1587760dd82c111f56a
 	source = vaapi-gui-libs.patch
 	sha256sums = SKIP
 	sha256sums = cc328eba1394b87355d2d13794545fc5525ffb869b61cf83f8ca7c9817a3f6bd

@@ -10,7 +10,7 @@
 
 pkgbase=handbrake-full-va-api
 pkgname=(handbrake-full-va-api handbrake-full-va-api-cli)
-pkgver=1.11.2.r20261002.g174246f
+pkgver=1.11.2.r20261010.g5949d93
 pkgrel=1
 pkgdesc="HandBrake snapshot with VA-API encoding enabled"
 arch=(x86_64)
@@ -28,7 +28,7 @@ optdepends=('intel-media-sdk: for enabling Intel QSV'
             'libva-mesa-driver: VA-API backend for AMD/Mesa GPUs'
             'gst-plugins-good: for video previews'
             'gst-libav: for video previews')
-source=("HandBrake::git+https://github.com/HandBrake/HandBrake.git#commit=174246fbee3150206c43943915301cca22981d32"
+source=("HandBrake::git+https://github.com/HandBrake/HandBrake.git#commit=5949d9389b60bb9996e7d1587760dd82c111f56a"
         'vaapi-gui-libs.patch')
 sha256sums=('SKIP'
             'cc328eba1394b87355d2d13794545fc5525ffb869b61cf83f8ca7c9817a3f6bd')
