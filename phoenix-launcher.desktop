@@ -1,8 +1,7 @@
 [Desktop Entry]
-Name=Phoenix Launcher
-Comment=Phoenix Launcher
-Exec=/opt/phoenix-launcher/phoenix-launcher.AppImage
-Icon=phoenix-launcher
-Terminal=false
 Type=Application
+Name=Phoenix Launcher
+Comment=Fast and modern Minecraft Launcher
+Exec=phoenix-launcher
+Icon=phoenix-launcher
 Categories=Game;
