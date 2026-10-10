@@ -1,19 +1,19 @@
 pkgbase = miteiru-bin
 	pkgdesc = An open source Electron video player to learn Japanese. It has main language dictionary and tokenizer (morphological analyzer), heavily based on External software MeCab.(Prebuilt version.Use system-wide electron)
-	pkgver = 7.5.2
+	pkgver = 7.6.1
 	pkgrel = 1
 	url = https://miteiru.hocky.id/
 	arch = x86_64
 	license = CC-BY-NC-4.0
 	depends = electron41
 	optdepends = mecab
-	provides = miteiru=7.5.2
+	provides = miteiru=7.6.1
 	conflicts = miteiru
-	source = miteiru-7.5.2.deb::https://github.com/hockyy/miteiru/releases/download/v7.5.2/miteiru-7.5.2-linux-24.04-amd64.deb
-	source = LICENSE-7.5.2.md::https://raw.githubusercontent.com/hockyy/miteiru/v7.5.2/LICENSE.md
+	source = miteiru-7.6.1.deb::https://github.com/hockyy/miteiru/releases/download/v7.6.1/miteiru-7.6.1-linux-24.04-amd64.deb
+	source = LICENSE-7.6.1.md::https://raw.githubusercontent.com/hockyy/miteiru/v7.6.1/LICENSE.md
 	source = miteiru.sh
-	sha256sums = ee97a8e0e303739e2655c355593946223301d96bf3ee83b7c65eecb3a5bd585f
+	sha256sums = 211cd046ef493bc34379302a078f3abc84351857a299d3e4dbbbdf6471a7a46d
 	sha256sums = 32b8056672bc415bbd3829a9a737d776795f6b73af61ce0934107ed81ee8a7a0
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
 
 pkgname = miteiru-bin
