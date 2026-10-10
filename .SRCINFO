@@ -1,6 +1,6 @@
 pkgbase = vectorcraft
 	pkgdesc = vibe coded clean-room reimplementation of Adobe Illustrator
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://getartcraft.com/apps/vectorcraft
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = vectorcraft
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	source = https://github.com/storytold/vectorcraft/archive/refs/tags/v0.7.0/vectorcraft-0.7.0.tar.gz
-	sha256sums = 093bcc596acab0a2746e601b0b7308e66fc498ed838847b1b4fd593fb206576b
+	source = https://github.com/storytold/vectorcraft/archive/refs/tags/v0.8.0/vectorcraft-0.8.0.tar.gz
+	sha256sums = 53ba74fce74022496ae5e6087d1d02f51d06940b00bb5c78f13dc3b689d855fd
 
 pkgname = vectorcraft
 	depends = glibc

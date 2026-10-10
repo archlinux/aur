@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=vectorcraft
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -14,7 +14,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('093bcc596acab0a2746e601b0b7308e66fc498ed838847b1b4fd593fb206576b')
+sha256sums=('53ba74fce74022496ae5e6087d1d02f51d06940b00bb5c78f13dc3b689d855fd')
 
 _srcenv() {
 	cd "$_archive"
