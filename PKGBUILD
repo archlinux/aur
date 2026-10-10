@@ -1,5 +1,5 @@
 pkgname=vigaphone-piano-tuner-midi-synth-bin
-pkgver=2.0.0_beta1
+pkgver=2.0.0_beta2
 pkgrel=1
 options=('!strip' '!debug')
 groups=('pro-audio' 'vst3-plugins')
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone"
 license=('custom')
 source=("https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R${pkgver}/ViGAPhoneR_linux_amd64.tar.gz")
-sha256sums=('6f3be9e6d7320d1cd67df64d263c2d06c26925467df24e7710772e5c160baa9d')
+sha256sums=('9860bc595c47cfb8eaa67e1da8565d989c938768171398972ac364b189993080')
 
 #provides=('vigaphone-bin')
 conflicts=('vigaphone-bin')
