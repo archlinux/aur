@@ -4,7 +4,7 @@
 
 pkgname=rust-yak-bin
 _pkgname=yak
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Terminal-first AI coding agent in Rust'
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ source_aarch64=(
     "${_pkgname}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/yak-aarch64-unknown-linux-musl.tar.gz"
 )
 sha256sums=('b0adbc31ae0c3ab64ae21504359ba5e70f29886a559c99a79fb5cba762de670c')
-sha256sums_x86_64=('f0e91272439ab8f452bd1f7f20cb83dd173982b2e5948c03cd63f9e2c847f17a')
-sha256sums_aarch64=('e0559faa138cff9f0617f21122ca374fb2e288daa5e3237dd4ab383034126f72')
+sha256sums_x86_64=('753531ef3ca0779df77e0d2ac8147663354c59479876cdfc829fe36d019cab95')
+sha256sums_aarch64=('566ebe71b5d01cdd545167dad7b6ffd853a59956f11527e4f1631f1118f9f9a2')
 
 # Upstream ships a static-pie (musl) single binary, so there are no runtime
 # shared-library dependencies and no build step. The release tarball contains

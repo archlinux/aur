@@ -1,12 +1,12 @@
 pkgbase = rust-yak-bin
 	pkgdesc = Terminal-first AI coding agent in Rust
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/imjiaoyuan/yak
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = yak=0.4.0
+	provides = yak=0.4.1
 	conflicts = yak
 	conflicts = yak-bin
 	conflicts = yak-git
@@ -17,9 +17,9 @@ pkgbase = rust-yak-bin
 	options = !debug
 	source = LICENSE::https://raw.githubusercontent.com/imjiaoyuan/yak/main/LICENSE
 	sha256sums = b0adbc31ae0c3ab64ae21504359ba5e70f29886a559c99a79fb5cba762de670c
-	source_x86_64 = yak-x86_64.tar.gz::https://github.com/imjiaoyuan/yak/releases/download/v0.4.0/yak-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = f0e91272439ab8f452bd1f7f20cb83dd173982b2e5948c03cd63f9e2c847f17a
-	source_aarch64 = yak-aarch64.tar.gz::https://github.com/imjiaoyuan/yak/releases/download/v0.4.0/yak-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = e0559faa138cff9f0617f21122ca374fb2e288daa5e3237dd4ab383034126f72
+	source_x86_64 = yak-x86_64.tar.gz::https://github.com/imjiaoyuan/yak/releases/download/v0.4.1/yak-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 753531ef3ca0779df77e0d2ac8147663354c59479876cdfc829fe36d019cab95
+	source_aarch64 = yak-aarch64.tar.gz::https://github.com/imjiaoyuan/yak/releases/download/v0.4.1/yak-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 566ebe71b5d01cdd545167dad7b6ffd853a59956f11527e4f1631f1118f9f9a2
 
 pkgname = rust-yak-bin
