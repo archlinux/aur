@@ -3,7 +3,7 @@
 # VCS package: builds the tip of master. pkgver() derives the version from
 # git describe at build time; the value below only feeds the AUR web page.
 pkgname=actionlint-kjanat-git
-pkgver=1.16.1.r6.g08bb2c4
+pkgver=1.17.0.r24.ga28ae8a
 pkgrel=1
 pkgdesc='Static checker for GitHub Actions workflow files (kjanat fork, git master)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -13,7 +13,6 @@ depends=('glibc')
 makedepends=('git' 'go' 'pandoc-cli')
 optdepends=(
 	'shellcheck: check shell scripts in run steps'
-	'python-pyflakes: check Python scripts in run steps'
 )
 provides=("actionlint=$pkgver")
 conflicts=('actionlint' 'actionlint-bin' 'actionlint-git' 'actionlint-kjanat' 'actionlint-kjanat-bin')
@@ -52,7 +51,7 @@ build() {
 
 check() {
 	cd actionlint
-	# The ./scripts/... tests reach the network; the shellcheck and pyflakes
+	# The ./scripts/... tests reach the network; the shellcheck
 	# integration tests self-skip when those tools are absent.
 	go test . ./cmd/...
 }
