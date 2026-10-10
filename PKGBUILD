@@ -4,7 +4,7 @@ pkgname=electerm
 pkgver=5.5.76
 _electronversion=42
 _nodeversion=24
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open-sourced terminal/ssh/sftp/ftp/telnet/serialport/RDP/VNC/Spice client."
 arch=(
     'aarch64'
@@ -47,7 +47,7 @@ _get_project_dir() {
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -69,9 +69,10 @@ _set_build_env() {
 _get_electron_version() {
 	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
 		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
-		| grep -v '^$' | sed 's/^[^0-9]*//' | head -1)
+		| grep -oE '[0-9]+' | head -1)
 	[[ -z "${_elec_ver}" ]] && return 1
-	echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+	(( _elec_ver == _electronversion )) && c=32 || c=31
+	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
 prepare() {
     cd "$(_get_project_dir)"
@@ -92,6 +93,7 @@ prepare() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     rm -rf package-lock.json
     export NODE_ENV=development
+    npm config set legacy-peer-deps true
     npm install
     npm add -D node-gyp
 }

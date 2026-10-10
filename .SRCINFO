@@ -1,7 +1,7 @@
 pkgbase = electerm
 	pkgdesc = Free and open-sourced terminal/ssh/sftp/ftp/telnet/serialport/RDP/VNC/Spice client.
 	pkgver = 5.5.76
-	pkgrel = 1
+	pkgrel = 2
 	url = https://electerm.org/
 	arch = aarch64
 	arch = armv7h
