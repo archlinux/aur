@@ -1,0 +1,17 @@
+pkgbase = stillalive-c-git
+	pkgdesc = Terminal recreation of the Portal end credits sequence written in C
+	pkgver = r9.g140ef0e
+	pkgrel = 1
+	url = https://github.com/sidharthify/stillAlive-C
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-Unknown
+	makedepends = git
+	depends = glibc
+	depends = mpv
+	provides = stillalive-c
+	conflicts = stillalive-c
+	source = stillAlive-C::git+https://github.com/sidharthify/stillAlive-C.git#branch=main
+	sha256sums = SKIP
+
+pkgname = stillalive-c-git
