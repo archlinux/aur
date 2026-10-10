@@ -1,31 +1,167 @@
-## Version 2.3.2 release notes
+## Version 2.4.0 release notes
+
+Grafana Pyroscope 2.4.0 adds experimental deterministic profile IDs, an optional distributor inflight bytes limit, and improvements to profile replay and asynchronous queries. It also improves compaction efficiency and includes security and stability fixes.
+
+Notable changes are listed below. For the full diff, see the [2.4.0 changelog](https://github.com/grafana/pyroscope/compare/v2.3.0...v2.4.0).
+
+### Enhancements
+
+* **distributor**: Add an optional instance-level inflight bytes limit ([#5546](https://github.com/grafana/pyroscope/pull/5546))
+* **experimental**: Add opt-in deterministic profile ID generation ([#4762](https://github.com/grafana/pyroscope/pull/4762))
+* **experimental**: Support dedicated storage for asynchronous queries ([#5756](https://github.com/grafana/pyroscope/pull/5756))
+* **experimental**: Add queries to confirm externally detected profile anomalies ([#5686](https://github.com/grafana/pyroscope/pull/5686))
+* **otlp**: Detect profile language from `telemetry.sdk.language` ([#5606](https://github.com/grafana/pyroscope/pull/5606))
+* **profilecli**: Add timestamp-ordered dumps and streaming replay ([#5762](https://github.com/grafana/pyroscope/pull/5762))
+* **profilecli**: Add optional replay dump anonymization ([#5763](https://github.com/grafana/pyroscope/pull/5763))
+* **symdb**: Optimize insertion into wide stacktrace trees ([#5732](https://github.com/grafana/pyroscope/pull/5732))
+* **symdb**: Reduce compaction memory held by source symbols ([#5734](https://github.com/grafana/pyroscope/pull/5734))
+* **query-backend**: Optimize label-name queries ([#5556](https://github.com/grafana/pyroscope/pull/5556))
+* **segment-writer**: Measure ingestion bytes without re-serializing profiles ([#5312](https://github.com/grafana/pyroscope/pull/5312))
+* **Helm**: Support per-component extra labels on pod templates ([#5752](https://github.com/grafana/pyroscope/pull/5752))
+
+### Fixes
+
+* Revert the experimental symbol-reference tree query path ([#5629](https://github.com/grafana/pyroscope/pull/5629))
+* **metastore**: Reconcile Raft log writes that complete after a timeout ([#5307](https://github.com/grafana/pyroscope/pull/5307))
+* **metastore**: Fix a compaction queue statistics leak during restore ([#5676](https://github.com/grafana/pyroscope/pull/5676))
+* Clean up stale ring members on shutdown and through auto-forget ([#5434](https://github.com/grafana/pyroscope/pull/5434))
+* **query-backend**: Avoid retrying responses gRPC cannot deliver ([#5590](https://github.com/grafana/pyroscope/pull/5590))
+* **query-frontend**: Handle empty asynchronous results ([#5677](https://github.com/grafana/pyroscope/pull/5677))
+* **query-frontend**: Tolerate concurrent asynchronous-artifact cleanup ([#5679](https://github.com/grafana/pyroscope/pull/5679))
+* **symdb**: Handle line-less locations in Go PGO profiles ([#5635](https://github.com/grafana/pyroscope/pull/5635), [#5636](https://github.com/grafana/pyroscope/pull/5636))
+* **symdb**: Preserve caller lines in Go PGO aggregation ([#5637](https://github.com/grafana/pyroscope/pull/5637))
+* Validate UTF-8 before truncating symbols at rune boundaries ([#5692](https://github.com/grafana/pyroscope/pull/5692), [#5696](https://github.com/grafana/pyroscope/pull/5696))
+* Fix source lookup for installed Python packages ([#5730](https://github.com/grafana/pyroscope/pull/5730))
+* **ui**: Preserve arbitrary label matchers in profile queries ([#5464](https://github.com/grafana/pyroscope/pull/5464))
+* **profilecli**: Avoid closing replay datasets twice ([#5591](https://github.com/grafana/pyroscope/pull/5591))
+* **profilecli**: Anchor replay batch windows to due time ([#5595](https://github.com/grafana/pyroscope/pull/5595))
+* **profilecli**: Preserve replay retry errors and failure counts ([#5785](https://github.com/grafana/pyroscope/pull/5785))
+* Helm: Exclude headless services from the ServiceMonitor ([#5758](https://github.com/grafana/pyroscope/pull/5758))
 
 ### Security fixes
 
-* Updated UI `undici` to v8.10.2, addressing CVE-2026-84961, a TLS certificate validation bypass ([#5749](https://github.com/grafana/pyroscope/pull/5749)).
-* Updated `google.golang.org/grpc` to v1.83.2, addressing CVE-2026-84445 ([#5609](https://github.com/grafana/pyroscope/pull/5609), [#5610](https://github.com/grafana/pyroscope/pull/5610)).
-* Updated OpenTelemetry trace exporters to v1.45.0 ([#5649](https://github.com/grafana/pyroscope/pull/5649), [#5650](https://github.com/grafana/pyroscope/pull/5650), [#5651](https://github.com/grafana/pyroscope/pull/5651)).
-* Updated OpenTelemetry log modules to v0.21.0 ([#5722](https://github.com/grafana/pyroscope/pull/5722)).
-* Updated UI `js-yaml` to v4.3.2 ([#5616](https://github.com/grafana/pyroscope/pull/5616)).
-* Updated UI `brace-expansion` to v5.0.12 ([#5705](https://github.com/grafana/pyroscope/pull/5705)).
+* Update the Go toolchain to 1.26.9 ([#5788](https://github.com/grafana/pyroscope/pull/5788)).
+* Update `golang.org/x/net` to v0.60.0, addressing CVE-2026-78659 and CVE-2026-78660 ([#5791](https://github.com/grafana/pyroscope/pull/5791)).
+* Update UI `source-map-js` to v1.2.2, addressing CVE-2026-93749 ([#5795](https://github.com/grafana/pyroscope/pull/5795)).
+
+This release also includes the security updates delivered in [2.3.1 and 2.3.2](https://grafana.com/docs/pyroscope/latest/release-notes/v2-3/).
 
 ### Documentation
 
-* Expanded recording rules CLI documentation, added Rust jemalloc profiling documentation and a v2.0 upgrade guide, and corrected profile type documentation ([#5622](https://github.com/grafana/pyroscope/pull/5622)).
+* Document profilecli replay ([#5599](https://github.com/grafana/pyroscope/pull/5599))
+* Document profilecli exemplar queries and drill-down commands ([#5558](https://github.com/grafana/pyroscope/pull/5558))
+* Document write-path sampling and stripped-profile limits ([#5623](https://github.com/grafana/pyroscope/pull/5623))
+* Document segment-writer object storage cost tuning ([#5370](https://github.com/grafana/pyroscope/pull/5370))
+* Expand recording rules docs and add Rust jemalloc and v2.0 upgrade guides ([#5613](https://github.com/grafana/pyroscope/pull/5613))
+* Update the Pyroscope UI documentation ([#5624](https://github.com/grafana/pyroscope/pull/5624))
+* Document the call tree view ([#5625](https://github.com/grafana/pyroscope/pull/5625))
 
 ## Changelog
-* 0707df2b06343fec8b28cd464bec706c62a7a850 [release/v2.3] docs: Expand recording rules CLI, add Rust jemalloc profiling, fix profile types, add v2.0 upgrade guide (#5622)
-* 1bdb9a6a1b014bb16fdf9c0a2e3a7491c2ba5396 docs: Update release notes for v2.3.1/v2.2.2 (#5603)
-* 3c4756f665e234f52f4f9c8e0a7ee80d212d4b5f docs: add v2.3.2 release notes (#5751)
-* 7a681d2e350f6adc83c77b8b45674e0e1f857b93 fix(deps): update otel log modules to v0.21.0 [security] (release/v2.3) (#5722)
-* 729f36f80e4e78622ca8bc79b23dba84f39b6a02 fix(deps): update undici to 8.10.2 to address TLS validation bypass (#5747) (#5749)
-* a7274c2a6272b2047eab35d0602631915993dddc fix(security/high/): update module google.golang.org/grpc to v1.83.2 [security] (#5609)
-* 3ddd069c4afb8b8c109509b9e23afefa8431a96b fix(security/high/api): update module google.golang.org/grpc to v1.83.2 [security] (#5610)
-* a77692b3d57b151f8e47a0fabbfcb6c09db0149a fix(security/high/ui): update dependency brace-expansion to v5.0.12 [security] (release/v2.3) (#5705)
-* 0c751c0d1077c09d47828870029a9a8ca9762498 fix(security/high/ui): update dependency js-yaml to v4.3.2 [security] (release/v2.3) (#5616)
-* 634fe731380170c7ce8d708c5e1da179fe14d427 fix(security/low/): update module go.opentelemetry.io/otel/exporters/otlp/otlptrace to v1.45.0 [security] (#5649)
-* 287630fab61e03c915493ee9f460141395d54cd7 fix(security/unknown/): update module go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc to v1.45.0 [security] (#5650)
-* 28c325e0c43ef18719a867017f060744f8aec7ab fix(security/unknown/): update module go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp to v1.45.0 [security] (#5651)
+* df585f3c1271d66b6578f2f974d53698e9ab5e35 Add QueryAnomalies RPC: confirm externally-flagged anomalies against ingested data (#5686)
+* a3346b5f08eebfca9ac9bbb16a40ed7e9ba64879 Add Ruby example for Puma clustered mode with preload_app! (#5714)
+* e8de082ac1f76bf5d05ffaffcc2a8d3285e5b9f4 Allow dedicated object storage for asynchronous queries (#5756)
+* ff50cf3a391f7053bf8e0f56e5a2d2d348fb4366 Revert symbol ref trees (#5629)
+* f5a78634ce78087cdf7bfbdb082f5eccebc7909e Suggest min-ready-duration flag in readiness wait errors (#5741)
+* 5172d1902f128d582681214c3c7323d62052abc9 Update golang version to 1.26.9 (#5788)
+* 6576517633238096612407c59de67970bade307d block: read downloaded profile tables without read-ahead (#5733)
+* 8e1b035c4bc036baec8aed2f784a613647aaa1e1 chore(deps): jfr-praser v0.19.0 (#5642)
+* 98467b4e2f7c7d47f278cfc50bda6e428bfdd69a chore(examples): update examples (#5596)
+* 43c144962d7bbf085ea0f5e15cb7d7b64c844810 chore(examples): update examples (#5618)
+* f50d237923bae763f58dd295c50dfbe364d7112a chore(examples): update examples (#5620)
+* 8f2c8f8e7a64156640c14c6556094ee95c78663a chore(examples): update examples (#5675)
+* a35e3bf5919dae21f3b386b8d2790f6319d5f00a chore(examples): update examples (#5742)
+* b0aa472c4370e2ba4db8abaf3d51af8b2cd2d2d4 chore(examples): update examples (#5754)
+* bac7a63d6ea2ce283bde2ebc40ca0b502ad17787 chore(examples): update examples (#5784)
+* a784291206e6546e144692c1886d523ffdb101bf chore(helm): release chart 2.3.2 (#5761)
+* 4803c060253d62ecebac76d34188181534b18e18 chore(helm/alloy): Update alloy to v1.19.2 (#5681)
+* 292983f7df92af036aa876d2f077b7bb9a1ae56f chore: Bump helm version (#5554)
+* 325934cd8ce78f38ef561d4b00386c6520011383 chore: Bump renovate base branches for release v2.3 (#5552)
+* f9616ac9ca3045e1ac65c35349085ae9dfd0f148 chore: Update helm version to use v2.3.1 (#5605)
+* fe843653c7afde525dc1a833135bd1d80beaabab chore: Upgrade pyroscope/api to v1.6.0 (#5557)
+* 6ab0a60f15198f72f61fe6845284f9acf9bb8224 chore: include error in "query finished" log line (#5544)
+* 30ac60e2c6079d7013182d95e8cf270b23e40eec chore: update Go toolchain to 1.26.8 (#5589)
+* 83a78c88805a8a55fb4e9833e8f85b5da85848dd docs(config): document the retention_period limit (#5538)
+* 3a73694a1ff0849a62fe2799761fb2c54675138b docs(segment-writer): document object storage cost tuning (#5370)
+* c9303044f57920661ebdf9ca0a754496cf7310e7 docs: Add documentation for profilecli replay (#5599)
+* 33e1140b722f19c4680afe29ad499c677dd4883a docs: Add info about call tree view (#5625)
+* 67620797ba7bc8a5309f1f89f0e33b6511e2567a docs: Document the top-n flag in profilescli (#5562)
+* 66a6dfeeeed88d96e30e8ac614e9da64fe1f7ccf docs: Document write-path sampling and stripped-profile limits (#5623)
+* e65bfdcb30ac9793e8408297e8e4017576d5d816 docs: Expand recording rules CLI, add Rust jemalloc profiling, fix profile types, add v2.0 upgrade guide (#5613)
+* 738b90e2fb6a7aafa3afc45488e8f9e82cb32d91 docs: Include the client flag for utf-8 label names (#5559)
+* d1f78cd5fa69c52557cda5e3b960643fed4dea29 docs: Update release notes for v2.3.1/v2.2.2 (#5602)
+* 5edb359be01c05f91d2d447fd9658a637f14ecbb docs: add profilecli exemplar query and drill-down commands (#5558)
+* 4558440fdb7ec83ff993f6b1b624d31bde476229 docs: add project-context for Docs AI skills library (#5672)
+* ab1499cfb7bd4cb10ec41cad97caf0574387ea83 docs: add v2.2.3 and v2.3.2 release notes (#5760)
+* fb7c0cee3ac5085e2941ec05bd19daa4eb7fb802 docs: add v2.3 release notes (#5553)
+* 1c9109674636cfd5c5e61ee3b01ed93c06bff8be docs: add v2.4 release notes (#5799) (#5800)
+* 838418966428799c4cd8ddd5377c8a54409b8641 docs: document Java OTLP export limitations (#5547)
+* 3220318a9ee0a874359763d287d28a868f9fb675 docs: document OTLP language detection via telemetry.sdk.language (#5700)
+* 260c9b3a3007488fd0ac85f777618afbee0fbeb1 docs: explain what a span profile is (#5564)
+* 69828f9686fd3b4eebf165ab968d09624b4b3462 docs: remove duplicate self vs total screenshot (#5498)
+* 4fb83637fbf20bd95c95519af97ee8d546b1ef77 docs: rewrite Pyroscope UI page for the single-page query UI (#5624)
+* 0ddb2f656f72dcdad79b6e509c172ebf035fc2c8 docs: update Grafana Cloud recording rules link to new canonical URL (#5698)
+* 100a6ee123e87d1fd0f529687462692230127410 docs: updates the list of contributors in README (#5577)
+* 71d74b5c8857f0d39da7d2da4dbb148aab7e4a45 docs: updates the list of contributors in README (#5707)
+* 7fff2e94ebc767b240f76962761a96a718218b54 feat(distributor): add an instance-level inflight bytes limit (#5546)
+* 1be51fb350801b3427dbdb81eef7471af5911a45 feat(helm): allow per-component extraLabels on pod templates (#5752)
+* b864e243c61f6b4e0577d697823465e2053182b7 feat(otlp): detect profile language from telemetry.sdk.language resource attribute (#5606)
+* 9564169fa4a74e2dd552f4256738d320d3b62c37 feat(profilecli): add optional replay dump anonymization (#5763)
+* 2ccb6b307f56d8ab7650799016940321efd73929 feat(profilecli): stream timestamp-ordered replay dumps (#5762)
+* 3a90e04d8d8fb8c7c4b2843f4c8719f5f6f540dd feat: Add opt-in deterministic profile ID generation (#4762)
+* 5b97478d41457d3151005c52f8b384f932fdc437 fix(block): avoid unnecessary growth of symbolsRewriter.stacktraces (#5660)
+* 4a662543470db677686ab6ae4aa8414b79cdd693 fix(blocks): close profile datasets through iterators (#5594)
+* d1212251265e7dab4b03ef0d80af565f6d519e1b fix(ci): bump update-helm-repo to fix helm-release (#5573)
+* 3c0697ea0122acb707d24b3d3e6a57757ccf2bee fix(compactionworker): synchronize worker lifecycle tests (#5597)
+* 83381728175731febcad15c63d860e36b01bffaa fix(deps): update golang.org/x/net to v0.60.0 [security] (#5791)
+* 70528ba4774604cdc4b7d95c2f315a53d0905aaa fix(deps): update otel log modules to v0.21.0 [security] (#5721)
+* 14953b50f274aa6ea493f9b2e70f7b5e19ef97a8 fix(deps): update source-map-js to 1.2.2 [security] (#5795)
+* 40e2d23aa1c5095842885ff4cbe64d8000884fb8 fix(deps): update undici to 8.10.2 to address TLS validation bypass (#5747)
+* 15628882ea8370b77e4b61ef929099e26c1e262f fix(examples): clear the remaining java rideshare CVEs (#5570)
+* 396305ae0f144d009939c58b8bb1b0197d95d7a3 fix(examples): drop the build toolchain from the ruby rideshare image (#5565)
+* d7e9cb58898eb1011ac2c7dab9aab73fca935cf5 fix(examples): update vulnerable Node.js dependencies (#5745)
+* 9ef7eb53681ae6a4b136b608a03bc7a63294d144 fix(helm): exclude headless Services from the ServiceMonitor again (#5758)
+* b9e5598853cc53b648e86c69c7c9aaa9f6aeb526 fix(helm): remove stray character from query URL in NOTES (#5687)
+* d461a096c4e55daed0d04bddaec838fa998f2ef1 fix(helm): update MinIO image (#5664)
+* 2c65f61f2b740248757e7acfd0dc65b90a894b9e fix(metastore): prevent globalQueueStats leak on compactor Restore (#5676)
+* 3581ff3e39accf0ceb08b767c83857229cee3b75 fix(metastore): reconcile abandoned raft log writes (#5307)
+* 12f5b1336b9b981113750e3447f315b912a41d30 fix(profilecli): anchor replay batch windows to due time (#5595)
+* 865d61c5b91145884af2c4a5a772e644d44fdf81 fix(profilecli): preserve replay retry errors and failure counts (#5785)
+* 5ac0fdc89d5a2452a7f3f73d6e2bd500d93f759e fix(profilecli): stop replay dump from closing the dataset twice (#5591)
+* 0aa75e2a544faa20ac653561dfa383531b690b93 fix(query): avoid unnecessary growth of pooled parquet buffers (#5659)
+* 4f71269b01bbbbc29e5553d2d9f43cd8365a8adc fix(query-frontend): handle empty async results (#5677)
+* a883cbc5b93c2870391ac47f5e988d991a28c08d fix(query-frontend): tolerate concurrent async artifact cleanup (#5679)
+* 1dd8a7ecceee2eb53c18e7cc537e7ebe013b623a fix(querybackend): do not retry responses gRPC cannot deliver (#5590)
+* 4c7f3c2551b5fccabd773b7303cd2b2103153d3e fix(security/high/): update module google.golang.org/grpc to v1.83.1 [security] (#5579)
+* 06244402df9adb89d41f6d416cc2df5bf4af712f fix(security/high/): update module google.golang.org/grpc to v1.83.2 [security] (#5607)
+* 7a039f572f568eea85d44d7a29fee9839434929d fix(security/high/api): update module google.golang.org/grpc to v1.83.1 [security] (#5580)
+* 4ab69353ed5f09d0c5849080512fa1644bfdd349 fix(security/high/api): update module google.golang.org/grpc to v1.83.2 [security] (#5608)
+* 50bcb4e9b35ed882a27ef7f8aaab8a9ed4dbb8c5 fix(security/high/ui): update dependency brace-expansion to v5.0.12 [security] (main) (#5704)
+* 969e43ac54398b355e019dacd32a55961ab0e659 fix(security/high/ui): update dependency js-yaml to v4.3.2 [security] (main) (#5615)
+* 5e0b2fc0f04d0e01bb6db3250ce164c6602ef1ec fix(security/low/): update module go.opentelemetry.io/otel/exporters/otlp/otlptrace to v1.45.0 [security] (#5644)
+* c25a5ee465bf2deb6c88897a196c26e2ff79ee9a fix(security/unknown/): update module go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc to v1.45.0 [security] (#5645)
+* fec054fbbc4f52617f316e832aba704c60f31045 fix(security/unknown/): update module go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp to v1.45.0 [security] (#5646)
+* 4e5b714d3d3db711efbf111c1b83d1492850e0d6 fix(security/unknown/): update module golang.org/x/crypto to v0.56.0 [security] (main) (#5586)
+* 5b8176abc49480bac678775eedbebf8b61829ab5 fix(segmentwriter): probe the bucket with Upload instead of Iter (#5560)
+* 346bbfb314696cfb6632a0c31a553bb6d92afe0f fix(server): allow gRPC keepalive pings without active streams (#5685)
+* 7b23c86ac3e88ec34d44f72202549851e194b619 fix(symdb): handle line-less Go PGO callees (#5635)
+* a1181bed7a0a8144cfcb02f7ce8c637f722d2f38 fix(symdb): handle line-less call site leaves (#5636)
+* 26c71f633c5034aa946621b6dfbac29546369274 fix(symdb): preserve caller lines in Go PGO aggregation (#5637)
+* 822fb70b1640f985198b0f8a5ae563522519f87c fix(usagestats): let the segment writer create the cluster seed on v2 storage (#5542)
+* a3ae4da05e41c4f3bac3719a6825d528b8ab2c1e fix(validation): truncate symbols on rune boundaries (#5692)
+* e1dd19b1c40241755566c96c0df2d25d3722663a fix(validation): validate utf8 before truncating symbols (#5696)
+* 4bcf216941f9373a43abe3c1168022524a8f96e4 fix: clean up stale ring members on shutdown and via auto-forget (#5434)
+* b9de22a3100aef507c242d6bebf3a6bcebb86810 fix: do not treat site-packages as the Python stdlib (#5730)
+* 0abc319a888754cab7f26070145cf95abbc89dc4 fix: update vulnerable Go dependencies (#5744)
+* 0e36bb4959cc1edb1351d51781a6a24c70fac179 optimize label names query (#5556)
+* 93dc0018e3c4c446d02e2ebbee328df24ee3a68f perf(segmentwriter): observe ingest bytes without re-serializing the profile (#5312)
+* 6e3ba0f5507347512463105b766c303c07ba18f9 remove logo (#5561)
+* 54d062fab42b1d23044f44e32cac0adc49ac7fbb symdb: index children of wide stack trace tree nodes (#5732)
+* 6a48a93e36d1551dd8c31ec2e27a66a731e73af3 symdb: reduce compaction memory held by source symbols (#5734)
+* eabc7c3305ae17f2e5affb14e08cf23ebe9b5efb test(compactionworker): retain job assignment during in-progress polls (#5765)
+* 4d52d58ad90714313099f9a2967076f5a47311e1 test(helm): cover headless ServiceMonitor exclusion (#5764)
+* 01502daeb23c19b9ef1b5c0bd080d7a299eea2ae test(helm): cover per-component pod template labels (#5766)
+* 7e48500bc4fbb3b6c9862d685a5c75be8c422884 test(metastore): stabilize raft log store timeout tests (#5643)
+* 653c749078a8c06ed81cf4666ce5b6f439a16866 ui: preserve arbitrary label matchers in profile queries (#5461) (#5464)
 
 As always, feedback is more than welcome, feel free to open issues/discussions.
 You can reach out to the team using:
@@ -40,7 +176,7 @@ You can reach out to the team using:
 - [grafana/pyroscope](https://hub.docker.com/r/grafana/pyroscope/tags)
 
 ```bash
-  docker pull grafana/pyroscope:2.3.2
+  docker pull grafana/pyroscope:2.4.0
 ```
 
 
