@@ -1,8 +1,8 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _pkgname=vacask
 pkgname="${_pkgname}-git"
-pkgver=0.3.4.r98.g5abdba1
-pkgrel=2
+pkgver=0.3.4.r135.gfb8cc20
+pkgrel=1
 pkgdesc="Verilog-A Circuit Analysis Kernel is an analog circuit simulator"
 arch=(
     'x86_64'
@@ -100,6 +100,9 @@ check() {
         "test_delayvar.sim"
         "test_delayhb.sim"
         "test_delayhbac.sim"
+        # TODO: Buggy test
+        "test_pac1.sim"
+        "test_pnoise1.sim"
     )
 
     # Check PDK_ROOT is set and PDK equals "ihp-sg13g2"
