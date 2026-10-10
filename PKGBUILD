@@ -2,36 +2,31 @@
 
 _pkgname=libxfce4util
 pkgname=${_pkgname}-devel
-pkgver=4.19.5
+pkgver=4.21.0
 pkgrel=1
 pkgdesc="Basic utility non-GUI functions for Xfce (development release)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://docs.xfce.org/xfce/libxfce4util/start"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 groups=('xfce4-devel')
 depends=('glib2')
 makedepends=('gtk-doc' 'gobject-introspection' 'vala')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=(https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('3465e86749959f2a725bb3a3a4d97217f51d6e15e501650816883dee36ee8546')
+source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz")
+sha256sums=('205677cb96b778e5079eeac80f3a636d2a909b08fcf2aa05bfe4513c69c27f29')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  local meson_options=(
+    -D gtk-doc=true
+    -D vala=enabled
+  )
 
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --sbindir=/usr/bin \
-    --libexecdir=/usr/lib \
-    --localstatedir=/var \
-    --disable-static \
-    --enable-gtk-doc \
-    --disable-debug
-  make
+  arch-meson "${_pkgname}-${pkgver}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
+
 package() {
-  cd "${_pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  meson install -C build --destdir "$pkgdir"
 }
