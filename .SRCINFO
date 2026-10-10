@@ -1,6 +1,6 @@
 pkgbase = disk-commander-bin
 	pkgdesc = Disk image viewer/editor for retro computers. AppImage release
-	pkgver = 2.10.0
+	pkgver = 2.10.1
 	pkgrel = 1
 	url = https://github.com/Ptr314/dsk_commander
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = disk-commander-bin
 	depends = glibc
 	depends = zlib
 	optdepends = fuse2: mount AppImage without extraction
-	noextract = DISK_Commander-2.10.0-linux-x86_64.AppImage
+	noextract = DISK_Commander-2.10.1-linux-x86_64.AppImage
 	options = !strip
-	source = DISK_Commander-2.10.0-linux-x86_64.AppImage::https://github.com/Ptr314/dsk_commander/releases/download/2.10.0/DISK_Commander-2.10.0-linux-x86_64.AppImage
+	source = DISK_Commander-2.10.1-linux-x86_64.AppImage::https://github.com/Ptr314/dsk_commander/releases/download/2.10.1/DISK_Commander-2.10.1-linux-x86_64.AppImage
 	source = shortcut.desktop
-	sha256sums = f41e6759631782f7f32cddd1cc18936721fa76186e711b7f3427d9f75462e36e
+	sha256sums = 4f6889c0519014e86af6bea6e25a3f3198abd10729ff388db246089c78df993f
 	sha256sums = 5c49d02bb70cba3945ecdffad01f5416be779718a740a4b667df8b87ec1d8ac9
 
 pkgname = disk-commander-bin

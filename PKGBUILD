@@ -1,7 +1,7 @@
 # Maintainer: Alexander Aleschenko <alex.aleschenko@gmail.com>
 
 pkgname=disk-commander-bin
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="Disk image viewer/editor for retro computers. AppImage release"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip')
 _appimage="DISK_Commander-${pkgver}-linux-${CARCH}.AppImage"
 source=("${_appimage}::https://github.com/Ptr314/dsk_commander/releases/download/${pkgver}/${_appimage}"
         "shortcut.desktop")
-sha256sums=('f41e6759631782f7f32cddd1cc18936721fa76186e711b7f3427d9f75462e36e'
+sha256sums=('4f6889c0519014e86af6bea6e25a3f3198abd10729ff388db246089c78df993f'
             '5c49d02bb70cba3945ecdffad01f5416be779718a740a4b667df8b87ec1d8ac9')
 noextract=("${_appimage}")
 
