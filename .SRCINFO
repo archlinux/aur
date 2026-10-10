@@ -1,0 +1,20 @@
+pkgbase = holos-commander-bin
+	pkgdesc = A Total Commander alternative for the terminal
+	pkgver = 0.17.5
+	pkgrel = 1
+	url = https://github.com/xls/holos
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = hcmd
+	conflicts = holos-commander
+	options = !strip
+	source_x86_64 = hcmd-x86_64-0.17.5.tgz::https://github.com/xls/holos/releases/download/v0.17.5/hcmd-0.17.5-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = fb304c816dbb81859f9f4c9c96686950031cad0df438597ba88d1d6f9083322c
+	source_aarch64 = hcmd-aarch64-0.17.5.tgz::https://github.com/xls/holos/releases/download/v0.17.5/hcmd-0.17.5-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 45010ab04ec0ea47bdc4e0b86dafd6c4bfd01ca223ad3972e5b1f4cc694184cf
+
+pkgname = holos-commander-bin
