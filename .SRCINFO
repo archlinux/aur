@@ -1,6 +1,6 @@
 pkgbase = mozc-ut
 	pkgdesc = The Open Source edition of Google Japanese Input bundled with the UT dictionary
-	pkgver = 3.34.6239.20260701
+	pkgver = 3.34.6345.20261010
 	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = x86_64
@@ -11,11 +11,12 @@ pkgbase = mozc-ut
 	optdepends = fcitx5-mozc-ut: Fcitx5 integration
 	optdepends = ibus-mozc: IBus integration
 	optdepends = emacs-mozc: Emacs integration
-	provides = mozc=3.34.6239
+	provides = mozc=3.34.6345
 	conflicts = mozc
-	noextract = jawiki-20260601-pages-articles-multistream-index.txt.bz2
+	noextract = jawiki-20261001-pages-articles-multistream-index.txt.bz2
 	noextract = bazel-9.0.2-linux-x86_64
 	noextract = abseil-cpp-20260107.1.tar.gz
+	noextract = v2.1.0.tar.gz
 	noextract = apple_support.2.4.0.tar.gz
 	noextract = v1.10.0.tar.gz
 	noextract = bazel_features-v1.42.1.tar.gz
@@ -43,20 +44,21 @@ pkgbase = mozc-ut
 	noextract = 2025-01-25.zip
 	noextract = jigyosyo-20260403.zip
 	noextract = ken_all-20260403.zip
-	source = git+https://github.com/google/mozc.git#commit=04733c92daf891a3f3d67ba85c69fa9cc64032ba
-	source = git+https://github.com/utuhiro78/merge-ut-dictionaries.git#commit=15c1c64502b43e31d328012860376c03c3eaf633
-	source = git+https://github.com/utuhiro78/mozcdic-ut-alt-cannadic.git#commit=08e033f4558b7a0b03d8ad6920216d9473f15627
-	source = git+https://github.com/utuhiro78/mozcdic-ut-edict2.git#commit=d7279ba285fd5ddfe158b0bfd0c4fcda1f7b08c3
-	source = git+https://github.com/utuhiro78/mozcdic-ut-jawiki.git#commit=b50cabaecaf32c03d102db55fc5d0b98e334ec9e
+	source = git+https://github.com/google/mozc.git#commit=18e76511af9371a9a4409b1d13c3e30884b53e9c
+	source = git+https://github.com/utuhiro78/merge-ut-dictionaries.git#commit=6239884099ddc0c4d5bb1453b20441121d20593e
+	source = git+https://github.com/utuhiro78/mozcdic-ut-alt-cannadic.git#commit=e7230d7f6d9b72cb656a1eb23d2ccdb7c70d141f
+	source = git+https://github.com/utuhiro78/mozcdic-ut-edict2.git#commit=8fe8f7918baf513c3d7e243807dfcda2d5c30139
+	source = git+https://github.com/utuhiro78/mozcdic-ut-jawiki.git#commit=57af6adefedab262c295c4bfff71a89902cbe05c
 	source = git+https://github.com/utuhiro78/mozcdic-ut-neologd.git#commit=d8307abf02b830b185c9320822cffa0d0787c54e
-	source = git+https://github.com/utuhiro78/mozcdic-ut-personal-names.git#commit=5896ebef5f39d5772f4575fa05eb24436ce5a5f1
-	source = git+https://github.com/utuhiro78/mozcdic-ut-place-names.git#commit=6f9d9bda14f0bd2c10c1563d2aed9150ea95095c
+	source = git+https://github.com/utuhiro78/mozcdic-ut-personal-names.git#commit=b557dd4c1548cc7c2164d5f8b14170c40cbb6f81
+	source = git+https://github.com/utuhiro78/mozcdic-ut-place-names.git#commit=98cf8e9d7731695a52e5bc72ed633933c71d1913
 	source = git+https://github.com/utuhiro78/mozcdic-ut-skk-jisyo.git#commit=7c02e535bd6d999a715a53b58c3366f2401bfb7f
-	source = git+https://github.com/utuhiro78/mozcdic-ut-sudachidict.git#commit=7def3da408b1854801bd5b559273f9fb8001ef5b
-	source = https://dumps.wikimedia.org/jawiki/20260601/jawiki-20260601-pages-articles-multistream-index.txt.bz2
+	source = git+https://github.com/utuhiro78/mozcdic-ut-sudachidict.git#commit=c686771bada1d59e9b105c81b29e6ac1a239cb54
+	source = https://dumps.wikimedia.org/jawiki/20261001/jawiki-20261001-pages-articles-multistream-index.txt.bz2
 	source = git+https://github.com/bazelbuild/bazel-central-registry.git#commit=b0cb0e8ec70689252e3b35f109ffa4a32329b900
 	source = https://github.com/bazelbuild/bazel/releases/download/9.0.2/bazel-9.0.2-linux-x86_64
 	source = https://github.com/abseil/abseil-cpp/releases/download/20260107.1/abseil-cpp-20260107.1.tar.gz
+	source = https://github.com/abseil/abseil-py/archive/refs/tags/v2.1.0.tar.gz
 	source = https://github.com/bazelbuild/apple_support/releases/download/2.4.0/apple_support.2.4.0.tar.gz
 	source = https://github.com/bats-core/bats-core/archive/v1.10.0.tar.gz
 	source = https://github.com/bazel-contrib/bazel_features/releases/download/v1.42.1/bazel_features-v1.42.1.tar.gz
@@ -84,20 +86,21 @@ pkgbase = mozc-ut
 	source = https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/refs/tags/2025-01-25.zip
 	source = jigyosyo-20260403.zip::https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/621d059fbcbfae17bfca15b439692bae934268c3/jigyosyo.zip
 	source = ken_all-20260403.zip::https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/621d059fbcbfae17bfca15b439692bae934268c3/ken_all.zip
-	b2sums = 54b0fc991e390c68b3a7de3fd48005ab33f3745983f958ff5c01c105f2d085787e02a7008763f5547ba8b9c704d68d1d1a6af61192774349eda7b0bfc718f7ec
-	b2sums = 84150b8d743335d4b2801d15b74640380da0cfb95815bfc32a98f48f0fc7ac25b98ab417afee715c87a70dd8127568bd999e8e6a2c17da09d2a560fcdba030d3
-	b2sums = f320adaf559ad3b51cb323c19f1ac0155f33f1b59939bfc34577f429cfc64d589271c5b6a9fe481fa7be6b97e7043832b0b7bf339e0559a836fa5a1b62101f5d
-	b2sums = e9555a886657f237a55552f8f8aec769f0522cb54b4765f805ec1cd06dc80d8e8f735c35099132471bb46bda8219cf2991f6357b2cca5df24ff38f63c5d8f331
-	b2sums = 55a45669af70fa125127f27298f161180e7e6c4869611f6dc7a89416f0e82ed99453bdf87f674f5cd860acd174ab0ee14d3551d02fc1c2aa6ee8c38abb993a92
+	b2sums = 3a70979fb269fe21ae5bf4b2e614ada49be7132340e8cd4f2fdf0c1163d7223479b98e0e1193fde00ede88626353914ca0850deb00d52eb7eaf55c5f7d1ff4fd
+	b2sums = 33b59af8f62b51e8bdfb6eb993acab17778d77984eb2aef04592bc53e5f85775c49eae6f279b2a51ac5e35496856c40112692afeb2715b59538e611dbedbcd25
+	b2sums = a910518b0de8764f2dfbcaa3495b7c7f3047ec85381e5905cd63ee88c3dec1f286844d057b9e3c679b9ec3fbc68e3336806e8ffeb2daad8c8899faef6929bf92
+	b2sums = b71a5f768eeaab515a94df468a16ea23458b52ae0c5879cd4f79b2132aee0fe1b34538f3dcd191882d5b590ef3388760cb302438b6e405ed3b2f1701889141b3
+	b2sums = 2dcb24900f9eb294251a6400601ff5773c11429c19d8c685a3d2a3c3b720e5ff345f42a62e6ae830ea2b65b5669450e23d3ed1424efa27400110c02185ccc153
 	b2sums = 2eca0fd11c44091b2cf0a59de232a8d9b30e6c0a16cb4ece11d8a9f54457fe14b7ec9dd58aa1e67828df113d83a46b077a80b683333dc23a28617fbb3fe13fd0
-	b2sums = 83746b7d3b3cfe66e5f3b931abaf907fd37071a003d22e4d0cb065f91f554f33533104ed3b4dbe58840cdcb438dfa69882ea099fcfbfd0e8df0cf28417ae60a7
-	b2sums = a93db79ae5e75ede45217f6a3feaf2982f2c948dfe4a0695854339f6baceda1358bf98f6118c4b7291fe2a11670e4e0e4c4164328fa03e9bad6aa7fd20bf54a5
+	b2sums = 06f9c928afc3770d9b7b9617cac9b8324716cecea84bfa129a5b81d721fdbc9623bce8fbe6e3d61ad9c56f95a9b0cd4168a1df36edd5912d8f87862d2b621cde
+	b2sums = 32ecefb38b332be3ff5b5952dda1131bcb9c4f5d9033951874f781da1f3db451dbb313144ad8caa48a0d1826d8dba0b8a191d6496be8e6fecbb1c3a4593a4869
 	b2sums = 1add7e57200df1899f48e0a0ba03351523c121eee95068aa7e332c3a3967089d78c4146ffd4528f0513b2228fbd2cfb72661b41427a6e3330b275edb83e23bbd
-	b2sums = 602388543678e45d4703e6165d718265a2a9e1a6f4c5359aa090ccd6eaa901d2f329da72814fc0064e9b08b936f70a0291d29da09b5d1ef68aa272058f589d44
-	b2sums = cd4c02ee67d98084b6e4909eea77ca464d3cca838595538c5219710927aa42630fa67110f45297252c11f8e8c84d5a3c346a378b848d86ca14b4eb84505c1f74
+	b2sums = b47dd34b68ce2bfcd670dc4b74b055b9a6e40f8d6d5564d2ea4025d3a7e21556db81d7ed655db6f7a5cb83f017ba98d65b7b587c6b125d4de1216da3b17aaec0
+	b2sums = f8cb97b22032d0d8f2b46f75370647c5bd0761407c731f8bd4669007a10a9b7ed212b70274067d620c7f77c5da0fd30a3e16534a6f8b8bbe386f61523119e240
 	b2sums = 0fa68a06d930796445f215ecb16a7dba7bf9cae1004318c766269fd403ba3a44bc46035672949fc3731cf9cf778630291a078fda98ef46dce1f1c27f08b02bbb
 	b2sums = 83457d476468763e9e94ce6ea3ee7abf9ad123887e24c304067993922f0b4430786da797c27bf5b15acba57a30c5c7472fd0ff285089368b9b51ce085f33c254
 	b2sums = 1c0814eefb6181a82437128c9d3c08dec0540c2353b8a317204c49b1510b311173897de4a737da6f0cc034bf1b23717dea54f0338e3794f6a56f7292f53937bc
+	b2sums = 85232156e722cb874e29e1f92513b24836553476d5ff379e8df32d307ca21709b5869edd80a3bb7fe757ae585bb45df21c89ae6f2218147a5812f171d946e094
 	b2sums = 3b6fc965bc2b129fbf65308cfd0c64177fe6cb51ca1f1a96dcd99023e973ed8199a5f457849070b85eed2bfd9248d74a2280cb1dcf33103700483b3b8b499e7c
 	b2sums = 4d9e07f4b3da1cfadfd0ecbe00d611bc9a6ff8a6b55dba58e8ba4647e10265564d0cd64eb82a2b3ba483bc307b909f25913416057dc54ba8224c92cbff39c70e
 	b2sums = 28eb673ec695ab77ff067e20479edaba4d423b3f7f66dc00c1d30eee9a89ddc808aa1fa5e1167b679eb21ca4be941186171e79da24520d8391048b689aaac8ce
