@@ -2,7 +2,7 @@
 # based on the PKGBUILD of dzen2-git
 
 pkgname=libtexprintf
-pkgver=1.27
+pkgver=1.31
 pkgrel=1
 pkgdesc="Formatted Output with tex-like syntax support"
 arch=('i686' 'x86_64')
@@ -10,14 +10,14 @@ url='https://github.com/bartp5/libtexprintf'
 license=('GPL3')
 makedepends=(git)
 source=("https://github.com/bartp5/libtexprintf/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('68c80b7b4ac3bc69319d08d9bad6a5dc6ffa14e2ff5f68353ae111d8007ff04efba32897f81c0a537a3730d288a2e62c16978e037af6939d23f33f73479936ae')
+sha512sums=('f66c15ff50e7da12b3b26bec0042f578b1d679fb872aa1ef64db6e6448fc6bcac5b2338df7fbeb75e583fe6d2e76af19e47aaf445bac42cbf4337175ddec604e')
 conflicts=('libtexprintf-git')
 provides=('libtexprintf')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     ./configure --prefix=/usr --enable-shared=yes --enable-static=yes
-    make CFLAGS="$(echo ${CFLAGS} | sed 's_-Werror=format-security__')" all -j${nprocs}
+    make all -j${nprocs}
 }
 
 package() {
