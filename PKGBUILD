@@ -4,7 +4,7 @@
 # MIT license. See LICENSE.packaging.
 
 pkgname=openshell-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='The safe, private runtime for autonomous AI agents.'
 arch=('x86_64' 'aarch64')
@@ -49,20 +49,20 @@ source_aarch64=(
   "openshell-driver-vm-$pkgver-aarch64.tar.gz::https://github.com/NVIDIA/OpenShell/releases/download/v$pkgver/openshell-driver-vm-aarch64-unknown-linux-gnu.tar.gz"
 )
 
-sha256sums=('c4be3acebe12527d7de689933d98329b4065f8c50cd929d0365584eafe6c20dd'
+sha256sums=('d07c0367e2861e7fe70fa1b679f879f4fa2f9138ade4457d44ecf8b2e135bb45'
             'a267ac371807966057f0e5d595d6da72d04c3d6cacd604fa6e66ef275084fcfe'
             'd0fde0899d0df90c5bf2dc0054b8bcbe701198e3643239ffe77bd6a164c23d35'
-            '19eece9f13ecf050fb74a35e0767076aa30feecd6d58ad49701d19e05e695ad4'
+            'a44c5fcec95dab22dc8e125c620378913207d06593b1e26fa70e9ac0fb07799f'
             '707c93399d6af66b8f4479e5c9a4e1958958f883324f033aa7eae8d2708b8c13'
             'b21382e3e0ce1f394e66eca7ef8903c36214c9c267c5784d1ad58d96a1e6b95a')
-sha256sums_x86_64=('7eb6917285331a09e3300266a0558616481a5e9927cae2612ea07c4045b6dd6f'
-                   '218d887845b3a020ab7535c9985eb9c666d6938f144044957f8b82b42892aadb'
-                   'f07ad7177f4c3ff7743f89531eda36bb784c56b45b166f49c5a51fbcfa5274a6'
-                   '042e2d5a7b5a1f3d112ef346c45a113f331c2e39c90644d3d5001820a2a9aa12')
-sha256sums_aarch64=('9880c5776688231d5242deb046cdee361734f94901b9123949a0baf29fdadd9e'
-                    '8ec1b6ca5b71ef5085fa51f3244d719a541e8f0d58cc569c7a0d6705b6204397'
-                    '4c68f2bc8e00a0a7d5d66d7bc2d836be6b255602a8f1b1650b4262c7935894b3'
-                    '44412163b2775fb07dce9c00a498e3e6957dc7c73216172d6c357a474621c803')
+sha256sums_x86_64=('ed08ea7874c47f22d6e5dcc4b27d9ef1ef5d2060f83035b35ff725d5160830a3'
+                   'da8dce943fe01cce90243b2bf2587c71a243e4d641a4b616528829b681ced198'
+                   '8ab28e18e425f4160e99744ba74bb2a2d32a7f158ca55a2536e79f11ea1a8cf5'
+                   '22593640c6179eb87413ab099832fbd133d3a6a4979904d27679e7da6d80a0cb')
+sha256sums_aarch64=('07687dacefc52bc73b01943f5b58f7a5082c1ceaa228461b9a2a78023b8057c0'
+                    '801214322227f64f2d3faa6989daaa5e6cd9ef1ab768b5860496deeb1158c27b'
+                    '47fb89fee5997f5dfb1911ec95201346690b46580df0220458f418e4c3c6782b'
+                    '4426ee0992989060eb5987ad7072feb3eb6aecf5a628ad0284c3d7ad5f39974b')
 
 build() {
   pandoc -s -t man "$srcdir/openshell-$pkgver.1.md" -o "$srcdir/openshell.1"
