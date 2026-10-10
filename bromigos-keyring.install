@@ -1,0 +1,22 @@
+# Import and locally sign the bromigOS key into pacman's keyring, as
+# archlinux-keyring does. Skipped when pacman's keyring is not set up yet
+# (pacman-key --init), e.g. inside a fresh chroot.
+
+post_upgrade() {
+  if usr/bin/pacman-key -l >/dev/null 2>&1; then
+    usr/bin/pacman-key --populate bromigos
+  fi
+}
+
+post_install() {
+  if [ -x usr/bin/pacman-key ]; then
+    post_upgrade
+  fi
+  cat <<'NOTICE'
+To enable bromigOS, add these lines to /etc/pacman.conf:
+[bromigos]
+Include = /etc/pacman.d/bromigos-mirrorlist
+Install bromigos-mirrorlist too, then run pacman -Syu.
+After installing bromigos-core, bromigos channel can switch channels.
+NOTICE
+}

@@ -1,0 +1,16 @@
+pkgbase = bromigos-keyring
+	pkgdesc = bromigOS package-signing key for pacman
+	pkgver = 0.0.0.r3.g6f8c6e3
+	pkgrel = 1
+	url = https://github.com/bromigos-org/bromigOS
+	install = bromigos-keyring.install
+	arch = any
+	license = MIT OR Apache-2.0
+	makedepends = gnupg
+	depends = pacman
+	depends = bromigos-mirrorlist
+	options = !debug
+	source = bromigos-aur-bootstrap-6f8c6e3cc345.tar.gz::https://github.com/bromigos-org/bromigOS/archive/refs/tags/aur-bootstrap-6f8c6e3cc345.tar.gz
+	sha256sums = ea499760a23c382614c268f6059c78199ba3406a478fe86370cfa778722da0db
+
+pkgname = bromigos-keyring
