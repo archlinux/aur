@@ -22,6 +22,7 @@ or from source: `git clone https://github.com/talhacaglar/omarchy-focus && cd om
 
 - GitHub: https://github.com/talhacaglar/omarchy-focus
 - AUR: https://aur.archlinux.org/packages/omarchy-focus
+- Plugin repo (for `omarchy plugin add`): https://github.com/talhacaglar/omarchy-focus-widget
 - Release notes: https://github.com/talhacaglar/omarchy-focus/releases/tag/v0.2.0
 
 MIT licensed. Feedback and ideas welcome, especially from people on other themes or multi-monitor setups.
