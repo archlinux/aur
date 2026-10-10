@@ -1,6 +1,0 @@
-*.pkg.tar*
-src/
-pkg/
-*.tgz
-*.tar.gz
-npm-cache/
