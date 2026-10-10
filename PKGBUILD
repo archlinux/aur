@@ -54,10 +54,10 @@ _htmldocs_enable=
 _major=7.2
 _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
-_lqxpatchrel=14
+_lqxpatchrel=16
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqxcjk
-pkgver=7.2.8.lqx2
+pkgver=7.2.9.lqx2
 pkgrel=1
 pkgdesc='Linux Liquorix (with cjktty patch)'
 url='https://liquorix.net/'
@@ -108,7 +108,7 @@ validpgpkeys=(
 )
 sha512sums=('47e63679363261a864d271277340a6f2d45f544e1a056be4159df081f4f6537d0efa865c4af26611ab33a3079ee65db88ec2f6bc0e5fff43e0c043cde0cd91e1'
             'SKIP'
-            'bcfb5852159290599c456279dccaaf0181bf62e6c5fe0eeab739b29b2fe379f320ca32f58d3a8fd12ca0846cb86017f06ad78618d587d9f1cea3beabda325ae1'
+            '72db225f1f0efa39f607022cbec2551d3d2930b8dc61c7999200216b3a23c46a80ad487bba8a3e90f6721b5c95b777a7f61ea8982a1843c3cd4caf4d84d71d67'
             '770b55f7a84455f2c1b61837c2e4fcda77808f0b5a9614f8621991d6f7884c67225a268fa88dd8ce9908e55a2c8f20e605f64c05b5074854a39ec130e7e8d59d'
             'c4a443b901030097623d191731a56c87cff2ba3422385d6d7b624387ffa4f659abde07c8360f07e099cd678f8c9b542d7199e3a05febc4c7deaba9e950012cb5')
 
