@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=lightcraft
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -14,7 +14,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('2695d797c314a96c7f7c324b0b4efc112b0a2dfed0391db17e912b77da85c259')
+sha256sums=('e37b81000b6d0f234300949088da1701cb4910a6e45c50ea84b1e998483abe03')
 
 _srcenv() {
 	cd "$_archive"
