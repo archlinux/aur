@@ -1,6 +1,6 @@
 pkgbase = shorin-niri-git
 	pkgdesc = Shorin Niri Desktop Environment
-	pkgver = r231.84d6649
+	pkgver = r232.6fb25fd
 	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/shorin-niri
 	arch = any
@@ -63,7 +63,6 @@ pkgbase = shorin-niri-git
 	optdepends = bazaar: Flatpak app store
 	optdepends = bluetui: Bluetooth TUI
 	optdepends = clipnotify: Clipboard notify
-	optdepends = xclip: X11 clipboard
 	optdepends = eza: ls replacement
 	optdepends = fish: Shell
 	optdepends = starship: Shell prompt

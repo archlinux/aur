@@ -1,6 +1,6 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
-pkgver=r231.84d6649
+pkgver=r232.6fb25fd
 pkgrel=1
 pkgdesc="Shorin Niri Desktop Environment"
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
     'gst-plugins-base: GStreamer' 'gst-plugins-good: GStreamer' 'gst-libav: GStreamer'
     'thunar-archive-plugin: Thunar plugin' 'thunar-volman: Thunar volume manager'
     'bat: Cat clone' 'bazaar: Flatpak app store' 'bluetui: Bluetooth TUI' 'clipnotify: Clipboard notify'
-    'xclip: X11 clipboard' 'eza: ls replacement' 'fish: Shell' 'starship: Shell prompt' 'zoxide: cd replacement'
+    'eza: ls replacement' 'fish: Shell' 'starship: Shell prompt' 'zoxide: cd replacement'
     'satty: Screenshot editor' 'wf-recorder: Screen recorder' 'wl-screenrec-git: Screen recorder'
     'chafa: Terminal image viewer' 'timg: Terminal image viewer' 'imv: Image viewer' 'imagemagick: Image tools'
     'waifu2x-ncnn-vulkan: Image upscaler' 'jq: JSON processor' 'nwg-look: GTK settings' 'pacman-contrib: Pacman tools'
