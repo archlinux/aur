@@ -1,7 +1,7 @@
 pkgbase = clice-nightly-bin
 	pkgdesc = Nightly C++ language server and matching crash symbols
 	pkgver = 0.1.2026101008
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clice-io/clice
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = clice-nightly-bin
 	makedepends = llvm
 	options = !strip
 	options = !debug
-	source = symbolize.py::https://raw.githubusercontent.com/clice-io/clice/v0.1.2026101008/scripts/symbolize.py
+	source = symbolize-0.1.2026101008.py::https://raw.githubusercontent.com/clice-io/clice/v0.1.2026101008/scripts/symbolize.py
 	sha256sums = a77049dbaddd1a8438cbc61a0ddb5dfece58c5981a49193bb2e79c38a637a6d9
 	source_x86_64 = clice-0.1.2026101008.x86_64-unknown-linux-gnu.tar.gz::https://github.com/clice-io/clice/releases/download/v0.1.2026101008/clice-0.1.2026101008.x86_64-unknown-linux-gnu.tar.gz
 	source_x86_64 = clice-0.1.2026101008.x86_64-unknown-linux-gnu.symbols.tar.xz::https://github.com/clice-io/clice/releases/download/v0.1.2026101008/clice-0.1.2026101008.x86_64-unknown-linux-gnu.symbols.tar.xz
@@ -32,6 +32,6 @@ pkgname = clice-nightly-bin
 
 pkgname = clice-nightly-bin-debug
 	pkgdesc = Matching GSYM crash symbols for clice nightly
-	depends = clice-nightly-bin=0.1.2026101008-1
+	depends = clice-nightly-bin=0.1.2026101008-2
 	depends = python
 	depends = llvm

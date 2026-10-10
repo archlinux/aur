@@ -3,7 +3,7 @@
 pkgbase=clice-nightly-bin
 pkgname=('clice-nightly-bin' 'clice-nightly-bin-debug')
 pkgver=0.1.2026101008
-pkgrel=1
+pkgrel=2
 pkgdesc='Nightly C++ language server and matching crash symbols'
 arch=('x86_64' 'aarch64')
 url='https://github.com/clice-io/clice'
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 makedepends=('patchelf' 'python' 'llvm')
 options=('!strip' '!debug')
 
-source=("symbolize.py::https://raw.githubusercontent.com/clice-io/clice/v${pkgver}/scripts/symbolize.py")
+source=("symbolize-${pkgver}.py::https://raw.githubusercontent.com/clice-io/clice/v${pkgver}/scripts/symbolize.py")
 sha256sums=('a77049dbaddd1a8438cbc61a0ddb5dfece58c5981a49193bb2e79c38a637a6d9')
 
 source_x86_64=(
@@ -54,7 +54,7 @@ package_clice-nightly-bin-debug() {
   depends=("clice-nightly-bin=${pkgver}-${pkgrel}" 'python' 'llvm')
 
   install -Dm644 "${srcdir}/clice.gsym" "${pkgdir}/usr/share/clice-nightly-bin/clice.gsym"
-  install -Dm755 "${srcdir}/symbolize.py" "${pkgdir}/usr/share/clice-nightly-bin/symbolize.py"
+  install -Dm755 "${srcdir}/symbolize-${pkgver}.py" "${pkgdir}/usr/share/clice-nightly-bin/symbolize.py"
   install -dm755 "${pkgdir}/usr/bin"
   cat > "${pkgdir}/usr/bin/clice-symbolize" <<'EOF'
 #!/bin/sh
