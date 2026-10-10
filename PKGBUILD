@@ -1,7 +1,7 @@
 # Maintainer: monsoon <29970829+monsoon235@users.noreply.github.com>
 pkgname=llama.cpp-openvino-bin
-pkgver=b11460
-pkgrel=2
+pkgver=b11552
+pkgrel=1
 pkgdesc='llama.cpp upstream prebuilt binaries with the OpenVINO backend'
 arch=('x86_64')
 url='https://github.com/ggml-org/llama.cpp'
@@ -13,7 +13,7 @@ conflicts=('llama.cpp' 'llama.cpp-rocm-bin' 'llama.cpp-sycl-bin' 'llama.cpp-sycl
 options=('!strip' '!debug')
 _openvinover=2026.4.1
 source=("https://github.com/ggml-org/llama.cpp/releases/download/${pkgver}/llama-${pkgver}-bin-ubuntu-openvino-${_openvinover}-x64.tar.gz")
-sha256sums=('d503b0c60454fd02c14614c1803c10cad15192e7cabbe8ee7d7e630ae887f09f')
+sha256sums=('46cbf595037b29502813d3a558c2293917a0b4fe254d937ff3247b2634ebb1d3')
 
 package() {
     local upstream="$srcdir/llama-$pkgver" executable
