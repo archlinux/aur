@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Cyberterm
+GenericName=Terminal
+Comment=GPU terminal for developers
+Exec=cyberterm
+Icon=cyberterm
+Terminal=false
+Categories=System;TerminalEmulator;
+Keywords=terminal;shell;tty;command line;
+StartupWMClass=cyberterm
