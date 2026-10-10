@@ -4,7 +4,7 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="Understand File Permissions"
 arch=('x86_64')
-url="https://github.com/ronniedroid/concessio"
+url="https://apps.gnome.org/Concessio"
 license=('GPL-3.0-or-later')
 depends=(
   'gtk4'
@@ -16,7 +16,7 @@ makedepends=(
   'meson'
   'vala'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ronniedroid/concessio/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('484295fea983c1541b52c494bd8540a3a6f1fbb6e9d93be0cfcfd67674768c54')
 
 build() {
