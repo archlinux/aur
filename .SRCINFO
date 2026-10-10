@@ -18,7 +18,7 @@ pkgbase = ss14-starlight-launcher-bin
 	options = !debug
 	source = Starlight.Launcher-linux-x64-2.0.6.9.tar.gz::https://github.com/ss14Starlight/Starlight.Launcher/releases/download/v2.0.6.9/Starlight.Launcher-linux-x64-2.0.6.9.tar.gz
 	source = starlight-launcher-2.0.6.9.png::https://raw.githubusercontent.com/ss14Starlight/Starlight.Launcher/v2.0.6.9/PublishFiles/icon.png
-	sha256sums = 6a7f3c256a9912e13936b3e66f845c11b4dccc58697cef7390139e5973f37168
+	sha256sums = e11b18c8ca2a08787c409df19ea6058bd66bae42a075c99494384a88252f97ca
 	sha256sums = 1c11bfa0cd5484c807ec2f8f0a2658e4c5383566d5050d8b6fc4ddec5a925471
 
 pkgname = ss14-starlight-launcher-bin

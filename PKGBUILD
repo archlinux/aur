@@ -1,4 +1,4 @@
-# Maintanier: neomoth <admin@neomoth.dev>
+# Maintainer: neomoth <admin@neomoth.dev>
 pkgname=ss14-starlight-launcher-bin
 pkgver=2.0.6.9
 pkgrel=1
@@ -13,7 +13,7 @@ options=('!strip' '!debug')
 source=("Starlight.Launcher-linux-x64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/Starlight.Launcher-linux-x64-${pkgver}.tar.gz"
         "starlight-launcher-${pkgver}.png::https://raw.githubusercontent.com/ss14Starlight/Starlight.Launcher/v${pkgver}/PublishFiles/icon.png")
 noextract=("Starlight.Launcher-linux-x64-${pkgver}.tar.gz")
-sha256sums=('6a7f3c256a9912e13936b3e66f845c11b4dccc58697cef7390139e5973f37168'
+sha256sums=('e11b18c8ca2a08787c409df19ea6058bd66bae42a075c99494384a88252f97ca'
             '1c11bfa0cd5484c807ec2f8f0a2658e4c5383566d5050d8b6fc4ddec5a925471')
 
 package() {
