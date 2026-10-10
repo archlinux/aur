@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-notification-configurator-git
-pkgver=2.6.1.r2.g6a7c528
+pkgver=2.6.1.r4.gc90baf2
 pkgrel=1
 pkgdesc="Ultimate Notification Configurator for GNOME"
 arch=('any')
 url="https://github.com/ExposedCat/gnome-notification-configurator"
-license=('LGPL-3.0-or-later')
+license=('GPL-3.0-or-later')
 depends=(
   'gnome-shell'
   'libnotify'
