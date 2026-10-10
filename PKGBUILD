@@ -25,4 +25,3 @@ package() {
     ln -s "/usr/bin/$pkgname" "$pkgdir/usr/bin/ot"
 }
 sha256sums=('82b19185b183b2738e5b6b23e0fbbb498620ab79ec52fcbe79d739c605988716')
-sha256sums=('82b19185b183b2738e5b6b23e0fbbb498620ab79ec52fcbe79d739c605988716')
