@@ -1,6 +1,6 @@
 pkgbase = affine-canary-bin
 	pkgdesc = A privacy-focused, local-first, open-source, and ready-to-use alternative for Notion & Miro.One hyper-fused platform for wildly creative minds.
-	pkgver = 2026.9.26_canary.908
+	pkgver = 2026.10.9_canary.912
 	pkgrel = 1
 	url = https://affine.pro/
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = affine-canary-bin
 	provides = affine
 	conflicts = affine-canary
 	conflicts = affine
-	source = affine-canary-2026.9.26_canary.908.deb::https://github.com/toeverything/AFFiNE/releases/download/v2026.9.26-canary.908/affine-2026.9.26-canary.908-canary-linux-x64.deb
-	source = LICENSE-MIT-2026.9.26_canary.908::https://raw.githubusercontent.com/toeverything/AFFiNE/v2026.9.26-canary.908/LICENSE-MIT
-	source = LICENSE-2026.9.26_canary.908::https://raw.githubusercontent.com/toeverything/AFFiNE/v2026.9.26-canary.908/LICENSE
+	source = affine-canary-2026.10.9_canary.912.deb::https://github.com/toeverything/AFFiNE/releases/download/v2026.10.9-canary.912/affine-2026.10.9-canary.912-canary-linux-x64.deb
+	source = LICENSE-MIT-2026.10.9_canary.912::https://raw.githubusercontent.com/toeverything/AFFiNE/v2026.10.9-canary.912/LICENSE-MIT
+	source = LICENSE-2026.10.9_canary.912::https://raw.githubusercontent.com/toeverything/AFFiNE/v2026.10.9-canary.912/LICENSE
 	source = affine-canary.sh
-	sha256sums = 02a0945846f372f71b09604a9c42d8f5a033598650fe5c08a8b0feb019e5f2ff
+	sha256sums = d9932108e4357b8115272b8347ab3a3cce6e4ef69f687ae944eb4cd2201b92db
 	sha256sums = 1cdeca52d4f740361f103926144eb8b3f265975b2337d4e27b3313f72465897f
 	sha256sums = c107c8088fe42bce6def95d313cfe7b5984d3bb2c1608b67f855327da45f497b
-	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
+	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
 
 pkgname = affine-canary-bin
