@@ -26,6 +26,6 @@ pkgbase = sable-bin
 	options = !strip
 	options = !debug
 	source_x86_64 = sable-bin-2.0.0-x86_64.deb::https://git.sable.moe/SableClient/sable-next/releases/download/v2.0.0/sable-2.0.0-linux-x86_64.deb
-	sha256sums_x86_64 = 2a56ccd39f9da8f49a33ed7e2a59dff2f777dc8155e55e33a2cae9f5fabb86b3
+	sha256sums_x86_64 = 41715384429deed93d66a7af2f6838a897da62617ba9ee8c465409085ead36b6
 
 pkgname = sable-bin
