@@ -1,14 +1,14 @@
 # Maintainer : cmach_socket <cmach_socket@outlook.com>
 _reponame="org.kde.plasma.vutronmusic-lyrics"
 pkgname=plasma6-applets-vutronmusic-lyrics
-pkgver=26.9.20
+pkgver=26.10.8
 pkgrel=1
 arch=(any)
 url="https://github.com/cmachsocket/$_reponame"
 depends=(plasma-desktop kdeplasma-addons)
 license=(GPL-3.0-or-later)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('30dff51059ef93cc0a449f1464b1687eb3a5ae6613d8476b1b3b1a8dc074d7ad')
+sha256sums=('1bf0fd9c76c8b33cbb24255dc561bb60cd6b6181f28b53d145a0b1755b604f51')
 package() {
   _path="$pkgdir/usr/share/plasma/plasmoids/$_reponame"
   mkdir -p "$_path"
