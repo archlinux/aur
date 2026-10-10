@@ -1,6 +1,6 @@
 pkgbase = flavor
 	pkgdesc = Use multiple Tailscale and Headscale tailnets at once (desktop app, CLI, daemon)
-	pkgver = 0.1.0beta6
+	pkgver = 0.1.0beta7
 	pkgrel = 1
 	url = https://github.com/tame-gg/Flavor
 	install = flavor.install
@@ -27,7 +27,7 @@ pkgbase = flavor
 	optdepends = polkit: system-wide names through the flavor-netd helper
 	options = !debug
 	backup = etc/apparmor.d/flavor-netd
-	source = git+https://github.com/tame-gg/Flavor.git#tag=v0.1.0-beta.6?signed
+	source = git+https://github.com/tame-gg/Flavor.git#tag=v0.1.0-beta.7?signed
 	validpgpkeys = 0DFC432162BF84C0FD780619FBB96BCEC0361F01
 	sha256sums = SKIP
 
