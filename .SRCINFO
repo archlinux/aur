@@ -1,7 +1,7 @@
 pkgbase = ocd-bin
 	pkgdesc = CLI for open-compute - self-hosted Cloudflare Workers-compatible platform
-	pkgver = 0.2.4
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://open-compute.dev
 	arch = x86_64
 	arch = aarch64
@@ -10,9 +10,9 @@ pkgbase = ocd-bin
 	depends = glibc
 	provides = ocd
 	conflicts = ocd
-	source_x86_64 = ocd-v0.2.4-linux-x64::https://github.com/elliothux/open-compute/releases/download/v0.2.4/ocd-v0.2.4-linux-x64
-	sha256sums_x86_64 = 8829a5bcb334dd3bbd8dc949ad9a2afdfe0e1fef44035c041556cd12087c586f
-	source_aarch64 = ocd-v0.2.4-linux-arm64::https://github.com/elliothux/open-compute/releases/download/v0.2.4/ocd-v0.2.4-linux-arm64
-	sha256sums_aarch64 = b952e61acdedcbde9bafddc30ebd7b2d01f670fd7bc679427be020dbff4bf1b1
+	source_x86_64 = ocd-v0.3.0-linux-x64::https://github.com/elliothux/open-compute/releases/download/v0.3.0/ocd-v0.3.0-linux-x64
+	sha256sums_x86_64 = 842a38933fccba87394f42a25b5d1b9fda84001c5833e163027fbeb153caf1b0
+	source_aarch64 = ocd-v0.3.0-linux-arm64::https://github.com/elliothux/open-compute/releases/download/v0.3.0/ocd-v0.3.0-linux-arm64
+	sha256sums_aarch64 = 3ea50eb439645b51d6469d303a9bbc9e99cf0b5a7c031e7516f316ef1250b8aa
 
 pkgname = ocd-bin
