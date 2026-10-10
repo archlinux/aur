@@ -45,6 +45,10 @@ check() {
     cd "${_name}-${pkgver}"
     _dotnet_env
 
+    # GoToTests references GoToCSharp, but the first test group using it
+    # does not build it. Build it here to make sure it exists.
+    dotnet build test/${_name}.Tests.Lsp/TestCases/GoToCSharp/GoToCSharp.csproj
+
     dotnet test test/${_name}.Tests.Lsp/${_name}.Tests.Lsp.fsproj \
         --configuration Release \
         --framework "net${_sdk}" \
