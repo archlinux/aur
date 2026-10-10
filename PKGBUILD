@@ -1,6 +1,6 @@
 pkgname='alacritty-git'
 _pkgname="alacritty"
-pkgver=0.18.0.2481.g2f03c302
+pkgver=0.18.0.2494.g29dc5537
 pkgrel=1
 epoch=1
 arch=('x86_64' 'i686' 'aarch64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname/alacritty
-	echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d\- -f1).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+	echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d- -f1).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build(){
@@ -40,7 +40,7 @@ package_alacritty-git() {
 	scdoc < extra/man/alacritty.5.scd | gzip -c | tee "$pkgdir/usr/share/man/man5/alacritty.5.gz" > /dev/null
 	scdoc < extra/man/alacritty-msg.1.scd | gzip -c | tee "$pkgdir/usr/share/man/man1/alacritty-msg.1.gz" > /dev/null
 	scdoc < extra/man/alacritty-bindings.5.scd | gzip -c | tee "$pkgdir/usr/share/man/man5/alacritty-bindings.5.gz" > /dev/null
-	scdoc < extra/man/alacritty-escapes.7.scd | gzip -c | tee "$pkgdir/usr/share/man/man5/alacritty-escapes.7.gz" > /dev/null
+	scdoc < extra/man/alacritty-escapes.7.scd | gzip -c | tee "$pkgdir/usr/share/man/man7/alacritty-escapes.7.gz" > /dev/null
 
 	install -D -m755 "target/release/alacritty" "$pkgdir/usr/bin/alacritty"
 	install -D -m644 "extra/linux/org.alacritty.Alacritty.appdata.xml" "$pkgdir/usr/share/appdata/org.alacritty.Alacritty.appdata.xml"
