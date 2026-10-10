@@ -1,0 +1,18 @@
+pkgbase = hermes-webui-desktop-appimage
+	pkgdesc = Cross-platform desktop shell for Hermes WebUI, the web interface for Hermes Agent (AppImage)
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/hermes-webui/hermes-desktop-rust
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = hermes-webui-desktop
+	conflicts = hermes-webui-desktop
+	noextract = hermes-webui-desktop-0.7.0.AppImage
+	options = !strip
+	source = hermes-webui-desktop-0.7.0.AppImage::https://github.com/hermes-webui/hermes-desktop-rust/releases/download/v0.7.0/Hermes.WebUI.Desktop_0.7.0_lin_x86_64.AppImage
+	sha256sums = b1b0c3b3cd56f8861ce701bb6f5f792ee271ed32648ff9b54545cc862c110c41
+
+pkgname = hermes-webui-desktop-appimage
