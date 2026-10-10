@@ -1,0 +1,23 @@
+pkgbase = kcd-indicator
+	pkgdesc = System tray indicator and window for the kcd KDE Connect daemon
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Rishabh672003/kcd-indicator
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = kcd
+	depends = libadwaita
+	depends = libgcc
+	depends = pango
+	optdepends = zenity: file picker for Send file in the tray menu
+	optdepends = libnotify: pairing alerts
+	source = kcd-indicator-0.1.0.tar.gz::https://github.com/Rishabh672003/kcd-indicator/archive/v0.1.0.tar.gz
+	sha256sums = e2cbbbef53fefe28c36d147dfb65146b41a100e8c4ca4442d6d9789ee2f796f3
+
+pkgname = kcd-indicator
