@@ -4,7 +4,7 @@
 pkgname=azd-cli
 _pkgname=azure-dev
 pkgver=1.35.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A developer CLI for working with Azure resources to build and deploy AI applications'
 arch=('x86_64' 'aarch64')
 url="https://github.com/Azure/azure-dev"
