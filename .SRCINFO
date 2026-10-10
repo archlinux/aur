@@ -1,6 +1,6 @@
 pkgbase = encounty-bin
 	pkgdesc = Free, open-source auto shiny counter for Pokémon shiny hunting.
-	pkgver = 0.31.0
+	pkgver = 0.32.0
 	pkgrel = 1
 	url = https://github.com/ZSleyer/Encounty
 	arch = x86_64
@@ -30,19 +30,19 @@ pkgbase = encounty-bin
 	depends = nss
 	depends = systemd-libs
 	depends = zlib
-	provides = encounty=0.31.0
+	provides = encounty=0.32.0
 	conflicts = encounty
 	options = !strip
 	options = !debug
 	source = encounty.desktop
-	source = encounty-0.31.0.png::https://raw.githubusercontent.com/ZSleyer/Encounty/v0.31.0/backend/winres/icon.png
-	source = encounty-0.31.0-licenses.tar.gz::https://github.com/ZSleyer/Encounty/releases/download/v0.31.0/Encounty-licenses.tar.gz
+	source = encounty-0.32.0.png::https://raw.githubusercontent.com/ZSleyer/Encounty/v0.32.0/backend/winres/icon.png
+	source = encounty-0.32.0-licenses.tar.gz::https://github.com/ZSleyer/Encounty/releases/download/v0.32.0/Encounty-licenses.tar.gz
 	sha256sums = 91bc7bdf7bb85591c1618423208666d5e7892ae5a80270309a84f0d5b460628d
 	sha256sums = 2efee26e64e58be598aa54eee9165776fc89d9768581e2711a54f78319465158
-	sha256sums = 481f55a973e5d0dcb1486e27bf0508997f23f11c9b04657bc013a32658b28de3
-	source_x86_64 = encounty-0.31.0-x86_64.AppImage::https://github.com/ZSleyer/Encounty/releases/download/v0.31.0/Encounty-x86_64.AppImage
-	sha256sums_x86_64 = 2ba99936a6f5c774377649fa2b7e0a1eca19da64d5c690f29eff96e1ae802f6d
-	source_aarch64 = encounty-0.31.0-aarch64.AppImage::https://github.com/ZSleyer/Encounty/releases/download/v0.31.0/Encounty-arm64.AppImage
-	sha256sums_aarch64 = 467f0f6a1af7119d353d37bcf3c022dca73902789a63480fd8b7d2d0d6a403d1
+	sha256sums = 05c23320f7e51db5d42e18b3eda9b17c4d1b743fc1620a4a960ffd3e5f7e81b9
+	source_x86_64 = encounty-0.32.0-x86_64.AppImage::https://github.com/ZSleyer/Encounty/releases/download/v0.32.0/Encounty-x86_64.AppImage
+	sha256sums_x86_64 = 829f08961e8901bf2772fb9f658d3f47abec25a176de90a2c6b448e44411b886
+	source_aarch64 = encounty-0.32.0-aarch64.AppImage::https://github.com/ZSleyer/Encounty/releases/download/v0.32.0/Encounty-arm64.AppImage
+	sha256sums_aarch64 = 5e28a153f2869083bc2a5d0db223767c5248b4151fc0f7481ea13a00cfbbda49
 
 pkgname = encounty-bin
