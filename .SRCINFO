@@ -1,6 +1,6 @@
 pkgbase = wsjtx-improved-al
 	pkgdesc = WS - Digital Mode Suite (formerly WSJT-X Improved) by DG2YCB - Amateur Radio weak-signal communication (FT8, JT9, JT65, ...) - Alternative Layout Version
-	pkgver = 3.2.1.260926
+	pkgver = 3.2.1.261010
 	pkgrel = 1
 	url = https://sourceforge.net/projects/wsjt-x-improved/
 	install = wsjtx-improved.install
@@ -28,8 +28,8 @@ pkgbase = wsjtx-improved-al
 	provides = wsjtx
 	conflicts = wsjtx
 	options = !lto
-	source = https://downloads.sourceforge.net/project/wsjt-x-improved/WS_v3.2.1/Source%20code/ws-3.2.1_AL_260926.tgz
-	md5sums = e36a70c606918adc1166394b15ff8a40
-	sha1sums = ec19676850a276aa9e6931de88556a1559d9939c
+	source = https://downloads.sourceforge.net/project/wsjt-x-improved/WS_v3.2.1/Source%20code/ws-3.2.1_AL_261010.tgz
+	md5sums = 4c85d6d6f24db4d4e1c52e8f9a186f5c
+	sha1sums = 832c6832bb5ebdbd939bc4c876a60b2841116e3a
 
 pkgname = wsjtx-improved-al
