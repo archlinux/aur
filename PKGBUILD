@@ -1,6 +1,5 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-
 _gitauthor=leszek3737
 _gitname=LibreCommander
 _appoldname=lc
