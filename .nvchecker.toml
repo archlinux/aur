@@ -1,0 +1,4 @@
+[embellish]
+source = "git"
+git = "https://github.com/getnf/embellish.git"
+prefix = "v"

@@ -1,0 +1,23 @@
+pkgbase = embellish
+	pkgdesc = Install Nerd Fonts
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/getnf/embellish
+	arch = x86_64
+	license = GPL-3.0-or-later
+	checkdepends = appstream
+	checkdepends = desktop-file-utils
+	makedepends = blueprint-compiler
+	makedepends = meson
+	makedepends = vala
+	depends = gtk4
+	depends = gtksourceview5
+	depends = json-glib
+	depends = libadwaita
+	depends = libarchive
+	depends = libgee
+	depends = libsoup3
+	source = embellish-1.2.0.tar.gz::https://github.com/getnf/embellish/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = e6250047aea8974a262c778bb09dd5cc3c83268ef168f006cfc3473028dcfa51
+
+pkgname = embellish
