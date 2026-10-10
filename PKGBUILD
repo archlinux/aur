@@ -4,7 +4,7 @@
 _pkgname=SuperZSNES
 _execname=SUPERZSNES
 pkgname=superzsnes
-pkgver=0.310
+pkgver=0.320
 pkgrel=1
 pkgdesc="A GPU-powered SNES Emulator developed in Unity"
 arch=("x86_64")
@@ -19,8 +19,7 @@ source=(
 )
 sha256sums=('091fc53feea1ae09eb9cf22d1bc98b700dd5441b640586e3c0d75d663d377e43'
             '420f11c4a717d11a955b5bc64238fbd5398c5aae3676d2b531de5da7a409ee27'
-            '27ac2da138dc37fd6afb2db42c999ba94c3ce5ff65c5719f37d1a10c0492c84a')
-
+            '6ac3586ac6807c5a8bcd9ce8c9d688851a7ddcea0e1fc67f9d06137a2b73aa1f')
 package() {
 
     # create dirs
@@ -30,6 +29,7 @@ package() {
     # install binaries
     install -Dm777 "${_execname}.sh" "$pkgdir/usr/bin/$_execname"
     install -Dm777 "$srcdir/UnityPlayer.so" "$pkgdir/opt/$_pkgname/"
+    install -Dm777 "$srcdir/GameAssembly.so" "$pkgdir/opt/$_pkgname/"
     install -Dm777 "$srcdir/${_execname}" "$pkgdir/opt/$_pkgname/${_execname}"
     cp -r "$srcdir/${_execname}_Data" "$pkgdir/opt/$_pkgname/${_execname}_Data"
 
