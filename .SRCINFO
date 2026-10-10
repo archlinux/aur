@@ -1,0 +1,15 @@
+pkgbase = sysc-launch
+	pkgdesc = Application discovery and launcher diagnostic CLI for Niri
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Nomadcxx/sysc-launch
+	install = sysc-launch.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go>=1.26.4
+	depends = niri
+	source = sysc-launch-0.2.0.tar.gz::https://github.com/Nomadcxx/sysc-launch/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 95d2a38481ba71c6c65f54e7cc1224ef9912137e74f352710d2f48e504a5e6ca
+
+pkgname = sysc-launch
