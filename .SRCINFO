@@ -1,7 +1,7 @@
 pkgbase = obs-rust-git
 	pkgdesc = Free, open source software for live streaming and recording
 	pkgver = 32.2.2.r373.gad60c0e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/obs-rust
 	arch = x86_64
 	license = GPL-2.0-only
@@ -17,6 +17,7 @@ pkgbase = obs-rust-git
 	makedepends = asio
 	makedepends = extra-cmake-modules
 	makedepends = git
+	makedepends = rust
 	depends = ffmpeg
 	depends = jansson
 	depends = libxinerama

@@ -4,7 +4,7 @@ _obs_studio=obs-studio
 pkgbase=obs-rust-git
 pkgname=("$_obs_studio-rust-git" "$_obs_studio-rust-plugin-browser-git")
 pkgver=32.2.2.r373.gad60c0e
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
 url="https://github.com/${pkgbase%-git}"
@@ -14,7 +14,7 @@ depends=('ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls3' 'rnnoise
          'libdatachannel' 'uthash' 'simde' 'qrcodegencpp-cmake' 'python' 'luajit')
 makedepends=('cef' 'cmake' 'libfdk-aac' 'x264' 'swig' 'sndio' 'nlohmann-json'
              'ffnvcodec-headers' 'websocketpp' 'asio' 'extra-cmake-modules'
-             'git')
+             'git' 'rust')
 conflicts=("$_obs_studio"
            "$_obs_studio-plugin-browser"
 )
@@ -77,6 +77,7 @@ build() {
     -DOBS_VERSION_OVERRIDE="$pkgver"
     -DCALM_DEPRECATION=ON
     -DENABLE_WEBSOCKET=ON
+    -DENABLE_RUST_LIBOBS=ON
     -Wno-dev
   )
   cmake "${cmake_options[@]}"
