@@ -2,7 +2,7 @@
 pkgname=dbgate-git
 _pkgname=DbGate
 _debname="org.${pkgname%-git}.${_pkgname}"
-pkgver=7.3.1.r6.g0a0132a
+pkgver=7.3.2.r1.gf82fea1
 _electronversion=38
 _nodeversion=24
 pkgrel=1
@@ -35,7 +35,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -55,7 +55,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -88,7 +88,12 @@ _set_build_env() {
 		export YARN_HTTP_TIMEOUT=600000
 		export YARN_HTTP_RETRY=5
 		export YARN_NPM_REGISTRY_SERVER="${YARN_NPM_REGISTRY_SERVER:-${NPM_CONFIG_REGISTRY:-https://registry.yarnpkg.com}}"
-		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${COREPACK_HOME}"
+		local _yarnhome="${HOME}/.yarn/install"
+		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${COREPACK_HOME}" "${_yarnhome}"
+		if [[ -n "${_yarnver}" ]]; then
+			npm install -g "@yarnpkg/cli-dist@${_yarnver}" --prefix "${_yarnhome}" --registry "${npm_config_registry}"
+			export PATH="${_yarnhome}/bin:${PATH}"
+		fi
 	else
 		export YARN_GLOBAL_FOLDER="${HOME}/.yarn/global"
 		export YARN_LINK_FOLDER="${HOME}/.yarn/link"
@@ -110,10 +115,11 @@ _set_build_env() {
 	fi
 }
 _get_electron_version() {
-    _elec_ver=$(find "$(_get_project_dir)" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
-        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
-    [[ -z "${_elec_ver}" ]] && return 1
-    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
+		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
+		| grep -v '^$' | sed 's/^[^0-9]*//' | head -1)
+	[[ -z "${_elec_ver}" ]] && return 1
+	echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 prepare() {
     cd "$(_get_project_dir)"
@@ -122,7 +128,6 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
-        s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
@@ -132,10 +137,11 @@ prepare() {
         --exec="${pkgname%-git} %U"
     _ensure_local_nvm
     _set_build_env
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" app/package.json
+    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     export NODE_ENV=development
     node adjustPackageJson --community
     yarn install
+    find . -type d -path "*/node_modules/@types/minimatch" -exec rm -rf {} + 2>/dev/null || true
     cd "${srcdir}/${pkgname//-/.}/app"
     yarn install
     cd "${srcdir}/${pkgname//-/.}/packages/api"
@@ -161,7 +167,7 @@ build() {
         aarch64)    _arch_rem="x64"     ;;
         x86_64)     _arch_rem="arm64"   ;;
     esac
-    find "${_app_dir}/resources" \
+    find "${_app_dir}/resources" -depth \
         \( -name "*darwin*" -o -name "*win32*" -o -name "*${_arch_rem}*" \) \
         -exec rm -rf {} +
 }
