@@ -2,7 +2,7 @@
 
 pkgbase=clice-nightly-bin
 pkgname=('clice-nightly-bin' 'clice-nightly-bin-debug')
-pkgver=0.1.2026092607
+pkgver=0.1.2026101004
 pkgrel=1
 pkgdesc='Nightly C++ language server and matching crash symbols'
 arch=('x86_64' 'aarch64')
@@ -12,15 +12,15 @@ makedepends=('patchelf' 'python' 'llvm')
 options=('!strip' '!debug')
 
 source=("symbolize.py::https://raw.githubusercontent.com/clice-io/clice/v${pkgver}/scripts/symbolize.py")
-sha256sums=('a3194305755dead82d5861640f389c6f0b57883e1a337758cc4e1ffb7d224243')
+sha256sums=('a77049dbaddd1a8438cbc61a0ddb5dfece58c5981a49193bb2e79c38a637a6d9')
 
 source_x86_64=(
   "clice-${pkgver}.x86_64-unknown-linux-gnu.tar.gz::${url}/releases/download/v${pkgver}/clice-${pkgver}.x86_64-unknown-linux-gnu.tar.gz"
   "clice-${pkgver}.x86_64-unknown-linux-gnu.symbols.tar.xz::${url}/releases/download/v${pkgver}/clice-${pkgver}.x86_64-unknown-linux-gnu.symbols.tar.xz"
 )
 sha256sums_x86_64=(
-  '97839324e2c6d330bc42b61e050041755d9b7d6d2d36db984d5163f2977610fc'
-  '94b8c51b7a50c39d72663bfb6cbb56e9e2c1280ee8bc6c518652b5400158cf63'
+  '74d9c7ec4494a6eaaa18ea37d6f31de5bea5ff11c11f5a853de23356219b3f40'
+  'befc55cd85da2350b5276a20bcfbc809a3d2e3032281e1f681d11c0cf63e1626'
 )
 
 source_aarch64=(
@@ -28,8 +28,8 @@ source_aarch64=(
   "clice-${pkgver}.aarch64-unknown-linux-gnu.symbols.tar.xz::${url}/releases/download/v${pkgver}/clice-${pkgver}.aarch64-unknown-linux-gnu.symbols.tar.xz"
 )
 sha256sums_aarch64=(
-  '8bde585601df49dc3db72470bb547e0daa5ed704a2bd6b16d85f4d4e97320a45'
-  '6600d259b23559672e67515beebfd3f178e1d3e62fd0a0edef4b5ff0c19fafbf'
+  '013b4397c5383c543b2d752b976ff1ee2920e5989c08ca2b7bbf05fdb8706864'
+  '46eee7290d5ccee0aeaf9a60ff9cfaac4d0d0b69fffb52ece883dabcc47db6a6'
 )
 
 package_clice-nightly-bin() {
