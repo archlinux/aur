@@ -1,0 +1,27 @@
+pkgbase = gxde-ocr-git
+	pkgdesc = OCR tool for GXDE
+	pkgver = 2.0.1.r0.g8c9728d
+	pkgrel = 1
+	url = https://github.com/GXDE-OS/gxde-ocr
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	makedepends = deepin-gettext-tools
+	depends = gxde-dtk2-qt6-git
+	depends = gxde-dtk6-git
+	depends = qt6-base
+	depends = libgomp
+	depends = hicolor-icon-theme
+	depends = libstdc++
+	depends = libgcc
+	depends = glibc
+	provides = deepin-ocr
+	conflicts = deepin-ocr
+	source = gxde-ocr::git+https://github.com/GXDE-OS/gxde-ocr.git
+	sha256sums = SKIP
+
+pkgname = gxde-ocr-git
