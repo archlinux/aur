@@ -1,0 +1,25 @@
+pkgbase = vizard-bin
+	pkgdesc = Unity-based 3D visualization companion for the Basilisk spacecraft simulation framework (prebuilt binary)
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/AVSLab/vizard
+	arch = x86_64
+	license = ISC
+	depends = glibc
+	depends = gcc-libs
+	depends = gtk3
+	depends = libgl
+	depends = libx11
+	optdepends = vulkan-icd-loader: Vulkan rendering
+	optdepends = basilisk: simulation framework that produces the data Vizard displays
+	provides = vizard
+	conflicts = vizard
+	noextract = Vizard_Linux-2.4.0.zip
+	options = !strip
+	options = !debug
+	source = Vizard_Linux-2.4.0.zip::https://hanspeterschaub.info/bskFiles/Vizard_Linux.zip
+	source = LICENSE-2.4.0::https://raw.githubusercontent.com/AVSLab/vizard/master/LICENSE
+	sha256sums = c2482c11c4ae41eea810a44a15330623ca3bc300adab6aa8536cf9676b1e1fb0
+	sha256sums = d80ca16ce044732ac4ebdd36052eb45d44e32ae0d7baaec803c8feed5cfa3657
+
+pkgname = vizard-bin
