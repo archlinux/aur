@@ -1,6 +1,6 @@
 pkgbase = gittype-bin
 	pkgdesc = A CLI code-typing game that turns your source code into typing challenges
-	pkgver = 0.10.2
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/unhappychoice/gittype
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = gittype-bin
 	depends = git
 	provides = gittype
 	conflicts = gittype
-	source = README-0.10.2.md::https://raw.githubusercontent.com/unhappychoice/gittype/v0.10.2/README.md
-	source = LICENSE-0.10.2::https://raw.githubusercontent.com/unhappychoice/gittype/v0.10.2/LICENSE
+	source = README-0.10.3.md::https://raw.githubusercontent.com/unhappychoice/gittype/v0.10.3/README.md
+	source = LICENSE-0.10.3::https://raw.githubusercontent.com/unhappychoice/gittype/v0.10.3/LICENSE
 	sha256sums = 55e5c74ba44b9c502390384a2c2133dfc5447a6f3f4dd0736ebcd1d3825ad4ee
 	sha256sums = 7d3884e3483b0d8d53cd33e291b38317d9e80283030ef17a8ec3396b1d5efca7
-	source_x86_64 = gittype-x86_64-0.10.2.tgz::https://github.com/unhappychoice/gittype/releases/download/v0.10.2/gittype-v0.10.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 76d3b9b56554d5aab102cb98adb77f71faaa33b3d469ead585c8ccec37dc6539
-	source_aarch64 = gittype-aarch64-0.10.2.tgz::https://github.com/unhappychoice/gittype/releases/download/v0.10.2/gittype-v0.10.2-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 56d086a47524907689bec0640a140090c87fa257ad0e02e92e9c0579a743f2ae
+	source_x86_64 = gittype-x86_64-0.10.3.tgz::https://github.com/unhappychoice/gittype/releases/download/v0.10.3/gittype-v0.10.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = afb28153eaa8a6b48142d5ecc879aeda784a0e4861d21b29afa5b88170a4b710
+	source_aarch64 = gittype-aarch64-0.10.3.tgz::https://github.com/unhappychoice/gittype/releases/download/v0.10.3/gittype-v0.10.3-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7c4a6f4bd3ab77f69dca70d20ebaf5595ca453a007d08a047b7fdc0a0c92e662
 
 pkgname = gittype-bin
