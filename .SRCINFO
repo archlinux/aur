@@ -1,6 +1,6 @@
 pkgbase = nui-sftp
 	pkgdesc = NUI-based SFTP application
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/5cript/nui-sftp
 	arch = x86_64
@@ -26,11 +26,11 @@ pkgbase = nui-sftp
 	depends = zstd
 	depends = xz
 	options = !debug
-	source = nui-sftp::git+https://github.com/5cript/nui-sftp.git#tag=v1.5.1
+	source = nui-sftp::git+https://github.com/5cript/nui-sftp.git#tag=v1.5.2
 	source = https://s3.g.s4.mega.io/jgemkib4a5fte35rktt5wxrwkw4ejk4ybemkf/nui-scp/images/NUI-SFTP_Logo-01_nopad.svg
-	source = https://github.com/5cript/nui-sftp/releases/download/v1.5.1/nui-sftp-linux-frontend_1.5.1.tar.gz
-	sha256sums = b182a8ec9529632da1e123c2e74360d07ad593bc4ee2205c82ce5117b8c42ae6
+	source = https://github.com/5cript/nui-sftp/releases/download/v1.5.2/nui-sftp-linux-frontend_1.5.2.tar.gz
+	sha256sums = 97669e882d8ae851ffefd2394236febae528a9a22d5c7844624e3f9020fb33ae
 	sha256sums = cf0fc442069dfd28bd8b7769da6dfdca92111044ea9817197716ed9bfada3869
-	sha256sums = 9fa37d3f3056b049c9a998755ae7fbefcb26348ca533d7298b3b2964e1df5102
+	sha256sums = 5f9f6aa23090fe825819bfd1da88f1d729910bc199bffda295b3c5ea15addb5d
 
 pkgname = nui-sftp
