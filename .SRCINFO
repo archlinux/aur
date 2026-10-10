@@ -1,0 +1,13 @@
+pkgbase = dxvk-clang-v4-bin
+	pkgdesc = Argonforge Clang-built DXVK for x86-64-v4 (prebuilt)
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/argonforge/dxvk-builds
+	arch = x86_64
+	license = MIT
+	depends = vulkan-icd-loader
+	options = !strip
+	source = dxvk-3.1.1-x86-64-v4.tar.zst::https://github.com/argonforge/dxvk-builds/releases/download/v3.1.1/dxvk-3.1.1-x86-64-v4.tar.zst
+	sha256sums = SKIP
+
+pkgname = dxvk-clang-v4-bin
