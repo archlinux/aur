@@ -1,7 +1,7 @@
 # Maintainer: Andreas Wendleder <gonsolo@gmail.com>
 pkgname=openmoonray
 pkgver=2026.29.1
-pkgrel=1
+pkgrel=2
 pkgdesc="DreamWorks Animation's open-source Monte Carlo ray tracer"
 arch=('x86_64')
 url="https://github.com/OpenMoonRay/openmoonray"
