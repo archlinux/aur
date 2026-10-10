@@ -1,6 +1,7 @@
 # Maintainer: Johnathon Schultz <jomoschultz+aur [at] gmail [dot] com>
 pkgname=('nvidia-sync' 'nvidia-sync-terminal-fix')
-pkgver=0.100.18
+pkgver="0.117.3_12"
+debver="${pkgver/_/-}"
 pkgrel=1
 arch=('x86_64')
 url="https://build.nvidia.com/spark/connect-to-your-spark/sync"
@@ -8,10 +9,10 @@ license=('custom:NVIDIA')
 
 
 source=(
-	"https://workbench.download.nvidia.com/stable/linux/debian/pool/proprietary/n/nvidia-sync/nvidia-sync_${pkgver}_amd64.deb"
+	"https://workbench.download.nvidia.com/stable/linux/debian/pool/proprietary/n/nvidia-sync/nvidia-sync_${debver}_amd64.deb"
 	"nvidia-sync-terminal-launcher.sh"
 )
-sha256sums=('2eeee871e2db29a33ac8f75c3234b59b5804f5edea4923393224acc4b6c776ee'
+sha256sums=('a227570a55de92827b40e13782d4a074c6bd0a4a31d9b84c0fd7bf943f86a92f'
             '1cd21fa2618882fae08d26211638c53d60e54573ca8dee42803692fe71a2af4e')
 
 package_nvidia-sync() {
@@ -23,7 +24,7 @@ package_nvidia-sync() {
   )
 
   # A .deb file is just an 'ar' archive. We extract it.
-  ar -x "${srcdir}/nvidia-sync_${pkgver}_amd64.deb"
+  ar -x "${srcdir}/nvidia-sync_${debver}_amd64.deb"
 
   # The 'ar' command gives us a 'data.tar.xz'. We extract that into the package folder.
   tar -xf data.tar.xz -C "${pkgdir}/"

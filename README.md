@@ -8,16 +8,12 @@ This repository contains the `PKGBUILD` for `nvidia-sync` and its companion `nvi
 The package is based on the official NVIDIA Debian repository. To find the latest version number:
 
 ```bash
-curl -s https://workbench.download.nvidia.com/stable/linux/debian/dists/default/proprietary/binary-amd64/Packages | grep -A 1 "Package: nvidia-sync"
+curl -s https://workbench.download.nvidia.com/stable/linux/debian/dists/default/proprietary/binary-amd64/Packages | grep -A 5 "Package: nvidia-sync"
 ```
 Look for the `Version:` field. Note that the Debian version might look like `0.64.24-1408`; use the prefix `0.64.24` for the `pkgver` in the `PKGBUILD`.
 
 ### 2. Update PKGBUILD
-Edit the `PKGBUILD` file and update the `pkgver` variable to the new version. If it's a new release of the same upstream version, increment `pkgrel` instead.
-
-```bash
-nano PKGBUILD
-```
+Edit the `PKGBUILD` file and update the `pkgver` variable to the new version.
 
 ### 3. Update Checksums
 After updating the version in the `PKGBUILD`, use the `updpkgsums` tool (part of `pacman-contrib`) to automatically download the new source and update the SHA256 sums:
@@ -41,7 +37,7 @@ Verify the build process and test the resulting packages:
 makepkg -cf
 
 # Install locally for testing
-sudo pacman -U nvidia-sync-*.pkg.tar.zst nvidia-sync-terminal-fix-*.pkg.tar.zst
+sudo pacman -U nvidia-sync-*.pkg.tar.zst
 ```
 
 ### 6. Commit and Push
