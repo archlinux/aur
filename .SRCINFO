@@ -23,7 +23,7 @@ pkgbase = nipaplay-reload-bin
 	conflicts = nipaplay-reload
 	options = !debug
 	source = https://github.com/MCDFsteve/NipaPlay-Reload/releases/download/v1.11.9/NipaPlay-1.11.9-Linux-amd64.deb
-	source = https://github.com/MCDFsteve/NipaPlay-Reload/raw/main/LICENSE
+	source = LICENSE.txt::https://github.com/MCDFsteve/NipaPlay-Reload/raw/main/LICENSE
 	sha256sums = 9dc544e309d674025988eddbb4fefaa2d1440781d1b7a27c6f213d092664280c
 	sha256sums = fd1d762b5ea1f4cd690235a1b8d6b8efe4ada061f5b26c1fefbd74c156f8184b
 

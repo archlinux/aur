@@ -17,7 +17,7 @@ conflicts=("${pkgname%-reload-bin}" "${pkgname%-bin}")
 options=('!debug')
 source=(
   "${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-Linux-amd64.deb"
-  "${url}/raw/main/LICENSE"
+  "LICENSE.txt::${url}/raw/main/LICENSE"
 )
 sha256sums=('9dc544e309d674025988eddbb4fefaa2d1440781d1b7a27c6f213d092664280c'
             'fd1d762b5ea1f4cd690235a1b8d6b8efe4ada061f5b26c1fefbd74c156f8184b')
@@ -36,5 +36,5 @@ package() {
     [[ ${_new} == "${_old}" ]] || patchelf --set-rpath "${_new}" "${_f}"
   done < <(find "${pkgdir}/opt/nipaplay" -type f \( -name '*.so*' -o -name 'NipaPlay' \) -print0)
 
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
