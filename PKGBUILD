@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Process manager for AI agents"
 
-pkgver=3.8.0
+pkgver=3.9.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('046aa8305b81ba1aaf11ba2be4e201756637123fe5e1cc7c45c4a45bd304ece4')
-sha256sums_aarch64=('91c4804763f90714a528f91c755b9ca05c2f5b338b105ddcd7fa6e16ff07abf9')
+sha256sums_x86_64=('2d2ebfa584f42d63d3043b6a355ce61aaf5fae1d96a8e8ee6a85a848fcf9e790')
+sha256sums_aarch64=('0f03bf0531c50ae97e75a70a09b107d3c40f151ff9c83198ae1e56d13e8ddbfe')
 
 
 package() {
