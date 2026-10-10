@@ -1,5 +1,5 @@
 pkgname=termilyon
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="GTK4 and VTE based terminal emulator with tabs, splits, and SSH tooling"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('gcc-libs' 'glib2' 'gtk4' 'hicolor-icon-theme' 'vte4')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ba3b3ffa8e50ea2499eab2d0de4222d42674ee5d10965f0ade5b871055367add')
+sha256sums=('89678bffa67cd1905e801d9e17c221fec7dcb41bed2d96dd6f948327d6dfdbb4')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
