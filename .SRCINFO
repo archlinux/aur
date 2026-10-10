@@ -1,6 +1,6 @@
 pkgbase = drift-diff-bin
 	pkgdesc = A standalone git diff pager for the terminal.
-	pkgver = 0.0.10
+	pkgver = 0.0.11
 	pkgrel = 1
 	url = https://github.com/aymanbagabas/drift
 	license = MIT
@@ -8,10 +8,10 @@ pkgbase = drift-diff-bin
 	conflicts = drift
 	provides = drift
 	arch = aarch64
-	source_aarch64 = drift-diff-bin_0.0.10_aarch64.tar.gz::https://github.com/aymanbagabas/drift/releases/download/v0.0.10/drift_0.0.10_linux_arm64.tar.gz
-	sha256sums_aarch64 = efc78792412398d5e6d5e367164836c82d2774ea80bc430821938ccbc403f813
+	source_aarch64 = drift-diff-bin_0.0.11_aarch64.tar.gz::https://github.com/aymanbagabas/drift/releases/download/v0.0.11/drift_0.0.11_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0e1c1bbe855c13dfda01e96d73e911714c171eb48fc00d846e08602e4ca72798
 	arch = x86_64
-	source_x86_64 = drift-diff-bin_0.0.10_x86_64.tar.gz::https://github.com/aymanbagabas/drift/releases/download/v0.0.10/drift_0.0.10_linux_amd64.tar.gz
-	sha256sums_x86_64 = 1b967f3de18b25f1fe0b7155b273d964d0702a02569e12f06438ac1bbc104768
+	source_x86_64 = drift-diff-bin_0.0.11_x86_64.tar.gz::https://github.com/aymanbagabas/drift/releases/download/v0.0.11/drift_0.0.11_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4027d2f1a7e862b5676558ec14b65221ecc0b31fad5d6781d3d5a3e3075ca14d
 	
 pkgname = drift-diff-bin

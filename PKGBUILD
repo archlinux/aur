@@ -2,7 +2,7 @@
 # Maintainer: Ayman Bagabas <ayman.bagabas@gmail.com>
 
 pkgname='drift-diff-bin'
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc='A standalone git diff pager for the terminal.'
 url='https://github.com/aymanbagabas/drift'
@@ -13,10 +13,10 @@ conflicts=('drift')
 depends=('git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/aymanbagabas/drift/releases/download/v${pkgver}/drift_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('efc78792412398d5e6d5e367164836c82d2774ea80bc430821938ccbc403f813')
+sha256sums_aarch64=('0e1c1bbe855c13dfda01e96d73e911714c171eb48fc00d846e08602e4ca72798')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/aymanbagabas/drift/releases/download/v${pkgver}/drift_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('1b967f3de18b25f1fe0b7155b273d964d0702a02569e12f06438ac1bbc104768')
+sha256sums_x86_64=('4027d2f1a7e862b5676558ec14b65221ecc0b31fad5d6781d3d5a3e3075ca14d')
 
 package() {
   install -Dm755 "./drift" "${pkgdir}/usr/bin/drift"
