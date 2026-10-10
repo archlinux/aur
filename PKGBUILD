@@ -6,11 +6,11 @@
 # stable tag before pushing the result to the AUR.
 
 pkgname=encounty-bin
-pkgver=0.32.0
+pkgver=0.32.1
 pkgrel=1
 pkgdesc="Free, open-source auto shiny counter for Pokémon shiny hunting."
 arch=('x86_64' 'aarch64')
-url="https://github.com/ZSleyer/Encounty"
+url="https://github.com/Encounty/Encounty"
 # Covers everything the AppImage bundles, not just Encounty's own code. Filled
 # in from packaging/aur/licenses.spdx, which "make licenses" regenerates.
 license=('AGPL-3.0-only' 'Apache-2.0' 'BSD-2-Clause' 'BSD-3-Clause' 'BlueOak-1.0.0' 'GPL-3.0-only' 'ISC' 'MIT' 'OFL-1.1' 'Python-2.0')
@@ -29,16 +29,16 @@ _release="${url}/releases/download/v${pkgver}"
 # The icon is pinned to the release tag rather than to main so its checksum
 # stays valid for the lifetime of this package version.
 source=('encounty.desktop'
-        "encounty-${pkgver}.png::https://raw.githubusercontent.com/ZSleyer/Encounty/v${pkgver}/backend/winres/icon.png"
+        "encounty-${pkgver}.png::https://raw.githubusercontent.com/Encounty/Encounty/v${pkgver}/backend/winres/icon.png"
         "encounty-${pkgver}-licenses.tar.gz::${_release}/Encounty-licenses.tar.gz")
 source_x86_64=("encounty-${pkgver}-x86_64.AppImage::${_release}/Encounty-x86_64.AppImage")
 source_aarch64=("encounty-${pkgver}-aarch64.AppImage::${_release}/Encounty-arm64.AppImage")
 
 sha256sums=('91bc7bdf7bb85591c1618423208666d5e7892ae5a80270309a84f0d5b460628d'
             '2efee26e64e58be598aa54eee9165776fc89d9768581e2711a54f78319465158'
-            '05c23320f7e51db5d42e18b3eda9b17c4d1b743fc1620a4a960ffd3e5f7e81b9')
-sha256sums_x86_64=('829f08961e8901bf2772fb9f658d3f47abec25a176de90a2c6b448e44411b886')
-sha256sums_aarch64=('5e28a153f2869083bc2a5d0db223767c5248b4151fc0f7481ea13a00cfbbda49')
+            '8ede33e64b976cec4df8cf0c13b566856652d49bab641f98c352fe272cba6bef')
+sha256sums_x86_64=('cad4c7975ad77310ffa0236cea727e5a0fd7844754823b2264144b51470b8bd8')
+sha256sums_aarch64=('90c8c5af7baf3ca1aaf6b84c1e806756fc2e0627b79f953b3822d5e10dd113a9')
 
 package() {
   # The AppImage is self-contained, so it lives in /opt and gets reached through
