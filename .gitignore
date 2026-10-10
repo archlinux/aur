@@ -1,0 +1,7 @@
+# makepkg 下载文件、构建目录和二进制产物不上传 AUR。
+/src/
+/pkg/
+/*.deb
+/*.pkg.tar.*
+/*-LICENSE
+/*-LICENSE.details
