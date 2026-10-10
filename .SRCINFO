@@ -1,0 +1,14 @@
+pkgbase = archype-vicinae-ext
+	pkgdesc = Vicinae commands for Archype (Brave links with containers)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ahaltindis/archype-vicinae-ext
+	install = archype-vicinae-ext.install
+	arch = any
+	license = MIT
+	depends = vicinae
+	depends = brave>=1.95
+	source = archype-vicinae-ext-0.1.0.tar.gz::https://github.com/ahaltindis/archype-vicinae-ext/releases/download/v0.1.0/archype-vicinae-ext-0.1.0.tar.gz
+	sha256sums = 3e81d17e63a22bf15d45f6921126bc24201b35b37fd17944f3982b7eb06a34b4
+
+pkgname = archype-vicinae-ext

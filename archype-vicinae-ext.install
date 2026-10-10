@@ -1,0 +1,7 @@
+post_install() {
+  echo "Restart vicinae to load the extension: vicinae server --replace"
+}
+
+post_upgrade() {
+  post_install
+}
