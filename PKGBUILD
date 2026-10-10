@@ -1,5 +1,5 @@
 pkgname=mlir
-pkgver=23.1.1
+pkgver=23.1.3
 pkgrel=1
 pkgdesc="Multi-Level IR Compiler Framework for LLVM"
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=("cmake" "llvm>=${pkgver%%.*}" lld)
 options=(!lto !debug)
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/llvm-project-$pkgver.src.tar.xz{,.sig})
-sha256sums=('ebe9be46fe8756d58c5b198ffad0fa2a766257add81a4dc52179bfacc7888ee6'
+sha256sums=('c44186a7762ed28954be72e5ff6df9808e0779d4f1bf014ecc4e7e211d31ee34'
             'SKIP')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
               'D574BD5D1D0E98895E3BF90044F2485E45D59042'  # Tobias Hieta <tobias@hieta.se>
