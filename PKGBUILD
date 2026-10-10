@@ -2,8 +2,8 @@
 # Maintainer: G-grbz <gkhn.gurbuz@hotmail.com>
 
 pkgname=lurviko
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Qt Quick file manager with media libraries, cloud storage and an encrypted vault'
 arch=('x86_64')
 url='https://github.com/G-grbz/Lurviko'
@@ -16,7 +16,7 @@ depends=(
   'openssl>=3.2' 'ffmpeg' 'hicolor-icon-theme'
 )
 makedepends=('cmake>=3.21' 'extra-cmake-modules' 'ninja')
-checkdepends=('python' 'breeze-icons' 'desktop-file-utils')
+checkdepends=('python' 'python-pytest' 'breeze-icons' 'desktop-file-utils' 'libarchive')
 optdepends=(
   'qt6-wayland: Wayland desktop sessions'
   'qt6-imageformats: additional image formats'
@@ -33,10 +33,11 @@ optdepends=(
   'python-pillow: optional media worker artwork processing'
   'breeze-icons: fallback icon theme'
   'kio-extras: additional network and filesystem protocols'
+  'kio-admin: administrator authentication for file ownership and permissions'
 )
 install=lurviko.install
 source=("Lurviko-${pkgver}-${pkgrel}.tar.gz::${url}/releases/download/v${pkgver}/Lurviko-${pkgver}.tar.gz")
-sha256sums=('fda1f203689175f1ad8517c892e6ce76cd20aa92788f84d0a62c9b035c6987ee')
+sha256sums=('6147b1cbf3c7c14562b2f71fbd57f7a723300da479725c723f076e94aa1c96dc')
 
 prepare() {
   # Installed workers are found in /usr/share/Lurviko. Do not embed the
