@@ -1,0 +1,23 @@
+pkgbase = gxde-hardware-viewer-git
+	pkgdesc = Hardware and driver information viewer for GXDE
+	pkgver = 2.7.0.r0.ge28b9c8
+	pkgrel = 1
+	url = https://github.com/GXDE-OS/gxde-hardware-viewer
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = qt6-tools
+	depends = python
+	depends = python-pyqt6
+	depends = python-psutil
+	depends = python-dbus
+	depends = pciutils
+	depends = usbutils
+	depends = polkit
+	depends = bash
+	provides = gxde-hardware-viewer
+	conflicts = gxde-hardware-viewer
+	source = gxde-hardware-viewer::git+https://github.com/GXDE-OS/gxde-hardware-viewer.git
+	sha256sums = SKIP
+
+pkgname = gxde-hardware-viewer-git
