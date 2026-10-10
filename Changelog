@@ -1,14 +1,14 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 6.5.6 ➙ 6.6.1
-              : 2026-09-28 ➙ 2026-10-10
+ Tags         : 6.5.7 ➙ 6.7.0,
+              : 2026-09-29 ➙ 2026-10-10
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-10-10   : 6.6.1
+ 2026-10-10   : 6.7.0,
               - 6.6.1 : Update man page for sd-boot-find-boot-mounts
 
- 2026-10-03   : 6.6.0, origin/master
+ 2026-10-03   : 6.6.0
               - release 6.5.8
                 * Expand the kernel signing documentation.
             
@@ -22,7 +22,3 @@
  2026-09-29   : 6.5.7
               - release 6.5.7
               - doc typos
-
- 2026-09-28   : 6.5.6
-              - **6.5.6** Tue Sep 29 12:36:01 AM UTC 2026
-                * Small documentation update
