@@ -3,9 +3,9 @@ pkgname=sonarlint-ls
 arch=('x86_64')
 url=https://github.com/SonarSource/sonarlint-language-server
 pkgver=6.1.0.79799
-pkgrel=1
+pkgrel=2
 pkgdesc="Language Server for SonarQube for VSCode"
-license=('LGPLv3')
+license=('LGPL-3.0-or-later')
 depends=('java-runtime>=17')
 makedepends=('maven')
 conflicts=('sonarlint-ls-bin')
