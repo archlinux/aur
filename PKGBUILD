@@ -14,7 +14,7 @@ pkgdesc="Self-hosted media manager for movies, TV, music, ebooks and audiobooks:
 arch=('x86_64' 'aarch64')
 _barch=('linux_amd64' 'linux_arm64')
 
-url="https://filebrowser.org/"
+url="https://mediarium.app"
 _gurl="https://github.com/${_pkgauthor}/${_pkgname}"
 _gurlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
 
