@@ -2,7 +2,7 @@
 # Contributor: springtwr <springtwr@outlook.com>
 
 pkgname=trae-us
-pkgver=2.3.90453
+pkgver=2.3.91093
 pkgrel=1
 pkgdesc="AI-powered IDE by ByteDance (US CDN)"
 arch=('x86_64' 'aarch64')
@@ -18,12 +18,12 @@ optdepends=('libappindicator-gtk3: System tray support'
 options=('!strip' '!debug')
 install=trae.install
 source=("trae.sh" "trae.desktop")
-source_x86_64=("Trae-linux-x64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.90453/linux/TRAE-linux-x64.tar.gz")
-source_aarch64=("Trae-linux-arm64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.90453/linux/TRAE-linux-arm64.tar.gz")
+source_x86_64=("Trae-linux-x64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.91093/linux/TRAE-linux-x64.tar.gz")
+source_aarch64=("Trae-linux-arm64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.91093/linux/TRAE-linux-arm64.tar.gz")
 b2sums=('2331b0d37fff8478ea37cbf9e5c2e70a59631aae6efb44741fc6c1a8dce65557098e9dffa8c30148ef27432802bec3d1eda279021421e5d3f979e80900662726'
             '656c5d6bea6ef15185e0d8ee0181276f6de3bfae8e66a2c65772a5f1354727952dd020dca057246139a2bab8f4805057fa2db367a6ba0a1b90d9ffd7fcab8412')
-b2sums_x86_64=('5b4549bdb234992a3d57e56cc2eb3d37f794ef877814fe984660bb654d0637971bc67c9a6ece8d4867c6a5807470a9100a731bbce724bac25a8a9255f6d6a207')
-b2sums_aarch64=('8bb560dcba43a03f634707796670f6e43afd4d12cc78d10bca374d6c2b1dd3124addd8cbf40232dbb570060298fa2272e25770a98a98124837b5e6bcec8ffc3b')
+b2sums_x86_64=('c025f9bfdaac43b95d58bf3f4abe5eb11d57258f403977f7f6839ceba662fee10e77b318ff28b23a4d57c76715d8749d647083fc39f7e02433b09835d4582805')
+b2sums_aarch64=('4dc4cba3fedd33cfd9dde2e14ac9a5701376a784edd60f5959400962f37848b577ee2ee08edd50c221586a51f2630cc12259de8882e9c80bd2d00e2219b6bcb5')
 
 package() {
     install -d "${pkgdir}/opt/trae"
