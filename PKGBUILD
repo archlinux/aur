@@ -1,19 +1,18 @@
-# Maintainer: Gunnar Bretthauer <taijian@posteo.de>
+# Maintainer: Elia Nitsche <nitscheelia at gmail.com>
+# Contributor: Gunnar Bretthauer <taijian@posteo.de>
 # Contributor: shad0w73 <shad0w73@vmail.me>
+
 pkgname=helden-software
-pkgver=5.5.4.beta2
+pkgver=5.6.0
 pkgrel=1
-_debian_pkgver=5.5.2-1
+_debian_pkgver=5.6.0-9
 pkgdesc='Die Heldenverwaltung für das Pen&Paper-Rollenspiel "Das Schwarze Auge" (DSA)'
 arch=('any')
 url="http://www.helden-software.de"
 license=('custom')
-depends=('java-runtime' 'hicolor-icon-theme' 'bash')
-source=("http://online.helden-software.de/rep/pool/main/h/${pkgname}/${pkgname}_${_debian_pkgver}_all.deb"
-        "http://www.helden-software.de/down/devel/91529a8/helden5.jar")
-sha256sums=('15f129efc99f0ad97cc6d7956be625dc0e1aeb51a157323216f824dfda67c485'
-            'fbb4b8192d7956c20b4e4dac5b9d640b5d07bbdec03b8454e8c4b10240368548')
-noextract=('helden5.jar')
+depends=('java-runtime>21' 'hicolor-icon-theme' 'bash')
+source=("http://online.helden-software.de/rep/pool/main/h/${pkgname}/${pkgname}_${_debian_pkgver}_all.deb")
+sha256sums=('3bbe12b746dd9e76af2399635ebb1b155f245658d06134625b1b26108d23655c')
 
 prepare() {
   cd "${srcdir}"
@@ -24,20 +23,16 @@ package() {
   cd "${srcdir}"
 
   # Binary
-  # use jar file from direct download because Debian Package is not updated yet
-  #install -Dm644 usr/lib/heldensoftware/helden5.jar "${pkgdir}/usr/share/${pkgname}/helden5.jar"
-  install -Dm644 helden5.jar "${pkgdir}/usr/share/${pkgname}/helden5.jar"
+  install -Dm644 usr/lib/${pkgname}/helden5.jar "${pkgdir}/usr/share/${pkgname}/helden5.jar"
 
   # Docs
-  install -Dm644 usr/share/doc/${pkgname}/changelog.gz "${pkgdir}/usr/share/doc/${pkgname}/changelog.gz"
+  install -Dm644 usr/share/doc/${pkgname}/changelog.Debian.gz "${pkgdir}/usr/share/doc/${pkgname}/changelog.gz"
   install -Dm644 usr/share/doc/${pkgname}/copyright "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Config
   install -Dm644 etc/default/${pkgname} "${pkgdir}/etc/default/${pkgname}"
 
   # Icons
-  #install -dm755 "${pkgdir}/usr/share/${pkgname}"
-  #cp -r usr/share/icons "${pkgdir}/usr/share/"
   for _size in 16 32 48 64 72 96 128 192; do
     install -Dm644 usr/share/icons/hicolor/${_size}x${_size}/apps/${pkgname}.png \
         "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/${pkgname}.png"
@@ -49,6 +44,6 @@ package() {
 
   # Run-Script
   install -dm755 "${pkgdir}/usr/bin"
-  sed "s/lib\/heldensoftware/share\/helden-software/" usr/games/${pkgname} > "${pkgdir}/usr/bin/${pkgname}"
+  sed "s/lib/share/" usr/games/${pkgname} > "${pkgdir}/usr/bin/${pkgname}"
   chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 }

@@ -1,0 +1,6 @@
+*.pkg.tar.zst
+*.tar.gz
+src/
+pkg/
+
+helden-software_*
