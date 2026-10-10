@@ -1,0 +1,5 @@
+[gufo]
+source = "github"
+github = "gufo-org/gufo"
+use_latest_release = true
+prefix = "v"
