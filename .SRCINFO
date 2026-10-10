@@ -1,24 +1,23 @@
 pkgbase = simpleshell-git
 	pkgdesc = A modern, feature-rich SSH terminal application that combines the power of Electron's desktop capabilities with React's intuitive development experience. Designed for developers and system administrators who need efficient remote server management.
-	pkgver = 0.5.2.r0.ge81006b
+	pkgver = 0.5.3.r1.g6f5e160
 	pkgrel = 1
 	url = https://github.com/funkpopo/simpleshell
 	arch = any
 	license = Apache-2.0
 	makedepends = nvm
 	makedepends = git
-	makedepends = curl
 	makedepends = gendesk
 	makedepends = npm
 	makedepends = jq
 	makedepends = zip
 	makedepends = rustup
 	depends = electron40
-	provides = simpleshell=0.5.2
+	provides = simpleshell=0.5.3
 	conflicts = simpleshell
 	source = simpleshell.git::git+https://github.com/funkpopo/simpleshell.git
 	source = simpleshell.sh
 	sha256sums = SKIP
-	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
+	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
 
 pkgname = simpleshell-git

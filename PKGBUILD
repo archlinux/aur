@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simpleshell-git
 _pkgname=SimpleShell
-pkgver=0.5.2.r0.ge81006b
+pkgver=0.5.3.r1.g6f5e160
 _electronversion=40
 _nodeversion=22
 pkgrel=1
@@ -17,7 +17,6 @@ depends=(
 makedepends=(
     'nvm'
     'git'
-    'curl'
     'gendesk'
     'npm'
     'jq'
@@ -29,7 +28,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -49,7 +48,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -78,9 +77,10 @@ _set_build_env() {
 _get_electron_version() {
 	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
 		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
-		| grep -v '^$' | sed 's/^[^0-9]*//' | head -1)
+		| grep -oE '[0-9]+' | head -1)
 	[[ -z "${_elec_ver}" ]] && return 1
-	echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+	(( _elec_ver == _electronversion )) && c=32 || c=31
+	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
 _use_local_electron_for_forge() {
 	local _v="${SYSTEM_ELECTRON_VERSION}"
@@ -103,7 +103,6 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
-        s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
@@ -134,7 +133,7 @@ package() {
 	local _app_dir="$(_get_app_dir)"
 	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
     local _src="$(_get_project_dir)"
-    install -Dm644 "${_src}/src/assets/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "${_src}/src/renderer/assets/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${_src}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${_src}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
