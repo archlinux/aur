@@ -1,4 +1,4 @@
-# Maintainer: willker <wz.willker[at]gmail[dot]com>
+# Maintainer: hiruocha <hiruocha[at]outlook[dot]com>
 
 pkgname=cfproxy-rs
 pkgver=0.1.1
