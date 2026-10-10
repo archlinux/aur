@@ -2,7 +2,7 @@
 # Maintainer: Snowdream Tech <snowdreamtech@qq.com>
 
 pkgname='unirtm-bin'
-pkgver=0.33.2
+pkgver=0.34.0
 pkgrel=1
 pkgdesc='UniRTM (Uni Runtime and Tools Manager) is a cross-platform developer toolchain manager.'
 url='https://github.com/snowdreamtech/UniRTM'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('unirtm')
 conflicts=('unirtm')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/snowdreamtech/UniRTM/releases/download/v${pkgver}/unirtm_Linux_arm64.tar.gz")
-sha256sums_aarch64=('1395aeebc55830b4b7b9ef1a2e20e705cc25f4e30000bb9f68bc2b2749c9401d')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/snowdreamtech/UniRTM/releases/download/v${pkgver}/unirtm_${pkgver}_linux_arm64.tar.gz")
+sha256sums_aarch64=('0fc3b38cb4afdb1b2c1af498623df404e4c2739efb4811228794bf3f7033af24')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/snowdreamtech/UniRTM/releases/download/v${pkgver}/unirtm_Linux_armv7.tar.gz")
-sha256sums_armv7h=('334c448fa9be1b45770ed80becc37ec4d2caeea5cb1fc3b75231a9da961de6b0')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/snowdreamtech/UniRTM/releases/download/v${pkgver}/unirtm_${pkgver}_linux_armv7.tar.gz")
+sha256sums_armv7h=('ab3a62d03144c4f19374c51ba6f6fae625674eae41fde516e58e558069f8bb8a')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/snowdreamtech/UniRTM/releases/download/v${pkgver}/unirtm_Linux_i386.tar.gz")
-sha256sums_i686=('a2850b033deea9d92eb99e6b9376dbf689ea328670a82aa9d963d740b8e286eb')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/snowdreamtech/UniRTM/releases/download/v${pkgver}/unirtm_${pkgver}_linux_386.tar.gz")
+sha256sums_i686=('60b37bdd8815b9770c30b14fe87d84cf2c3765aa008e9e507b38cb45921968ce')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/snowdreamtech/UniRTM/releases/download/v${pkgver}/unirtm_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('43042b0c1abb53babf5b9848ce4e4b58ac22c7f83fc0278e699745409fd607aa')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/snowdreamtech/UniRTM/releases/download/v${pkgver}/unirtm_${pkgver}_linux_amd64.tar.gz")
+sha256sums_x86_64=('5e505aebbcbe1bd33b1af03788e758d9e02e4a134ddbea7bc83ddce930161f3f')
 
 package() {
   # bin
