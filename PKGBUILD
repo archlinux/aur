@@ -9,7 +9,7 @@ license=('GPL-3.0')
 makedepends=(git cargo)
 options=(!debug)
 backup=("etc/otter-launcher/config.toml")
-source=("https://github.com/kuokuo123/otter-launcher/archive/refs/tags/v0.8.0.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kuokuo123/otter-launcher/archive/v${pkgver}.tar.gz")
 
 # v0.8.0 is a generational update that comes with breaking changes. Check the github repo for config migration guide: https://github.com/kuokuo123/otter-launcher/
 
@@ -24,4 +24,5 @@ package() {
 	install -Dm644 "$pkgname-$pkgver/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
     ln -s "/usr/bin/$pkgname" "$pkgdir/usr/bin/ot"
 }
+sha256sums=('82b19185b183b2738e5b6b23e0fbbb498620ab79ec52fcbe79d739c605988716')
 sha256sums=('82b19185b183b2738e5b6b23e0fbbb498620ab79ec52fcbe79d739c605988716')
