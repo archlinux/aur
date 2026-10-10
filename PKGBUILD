@@ -1,10 +1,13 @@
 # Maintainer: Aria Vesta <dev@ariavesta.com>
 pkgname=botropolis
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Every Claude Code session on this machine, drawn as a city"
 arch=('x86_64' 'aarch64')
-url="https://github.com/auroq/botropolis"
+url="https://github.com/Botropolis-City/botropolis"
+# The Go module path, which -X needs to stamp the version. Not derived from url:
+# since 0.1.5 the module is the vanity path, and a wrong path here is silent.
+_module="botropolis.city/botropolis"
 license=('MIT')
 # Ebitengine dlopens GL and X11 rather than linking them, so the binary's only
 # NEEDED entry is libc and namcap reports every one of these as possibly
@@ -31,14 +34,14 @@ conflicts=('botropolis-bin')
 options=('!debug')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('47135c7a37e27279e770589d7add236b3c96745e9efeba4b3ec9446899121618')
+sha256sums=('8415a3989205a1459eb629e087c6d46cc0035f56742304fe8f60ae19b745adbd')
 
 build() {
     cd "${pkgname}-${pkgver}"
     export CGO_CPPFLAGS="${CPPFLAGS}" CGO_CFLAGS="${CFLAGS}" CGO_CXXFLAGS="${CXXFLAGS}" CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     for bin in botropolis botropolisd botropolis-hook; do
-        go build -ldflags "-X ${url#https://}/pkg/version.Version=${pkgver}" -o "bin/${bin}" "./cmd/${bin}"
+        go build -ldflags "-X ${_module}/pkg/version.Version=${pkgver}" -o "bin/${bin}" "./cmd/${bin}"
     done
 }
 

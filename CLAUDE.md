@@ -2,7 +2,7 @@
 
 ## Repository Overview
 
-This is the AUR package for [botropolis](https://github.com/auroq/botropolis), which draws every Claude Code session on the machine as a city.
+This is the AUR package for [botropolis](https://github.com/Botropolis-City/botropolis), which draws every Claude Code session on the machine as a city.
 It builds from the tagged source tarball, so it tracks releases rather than `main`.
 
 Upstream publishes `.deb`, `.rpm` and Arch packages on each release, built by CI.
