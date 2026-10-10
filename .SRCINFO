@@ -1,0 +1,18 @@
+pkgbase = sysc-clipboard
+	pkgdesc = Encrypted clipboard history daemon for sysc-shell
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Nomadcxx/sysc-clipboard
+	install = sysc-clipboard.install
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = go>=1.26.4
+	depends = systemd
+	optdepends = gnome-keyring: Secret Service for encrypted persistence
+	optdepends = keepassxc: alternative Secret Service provider
+	optdepends = sysc-shell: clipboard history panel
+	source = sysc-clipboard-0.1.2.tar.gz::https://github.com/Nomadcxx/sysc-clipboard/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = e111cc8deb6a1bb8c9d3f81f8a49b3638c1403d86faf9811b0f45629e1454922
+
+pkgname = sysc-clipboard
