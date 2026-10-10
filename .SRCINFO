@@ -1,18 +1,18 @@
 pkgbase = briar-headless
 	pkgdesc = Briar REST API
-	pkgver = 1.4.18
+	pkgver = 1.5.21
 	pkgrel = 1
 	url = https://code.briarproject.org/briar/briar
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = jdk11-openjdk
-	depends = java-runtime=11
+	makedepends = java-environment=21
+	depends = java-runtime=21
 	depends = bash
 	conflicts = briar-headless-git
-	source = briar-headless::git+https://code.briarproject.org/briar/briar.git#tag=release-1.4.18
-	sha256sums = SKIP
+	source = briar-headless::git+https://code.briarproject.org/briar/briar.git#tag=release-1.5.21
+	sha256sums = 4eb52d11d82f912253ff623443f874bacdadc3d961ae525bf099b23ea532b841
 
 pkgname = briar-headless
