@@ -1,19 +1,19 @@
 pkgbase = angular-electron-bin
 	pkgdesc = Project intended to be used with SAP Service.
-	pkgver = 8.2.0
+	pkgver = 8.4.0
 	pkgrel = 1
 	url = https://github.com/malacration/sap-front
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
 	depends = electron23
-	provides = angular-electron=8.2.0
+	provides = angular-electron=8.4.0
 	conflicts = angular-electron
-	source = angular-electron-8.2.0.tar.gz::https://github.com/malacration/sap-front/releases/download/v8.2.0/angular-electron-12.0.0.tar.gz
-	source = angular-electron-8.2.0.png::https://raw.githubusercontent.com/malacration/sap-front/v8.2.0/src/assets/icons/favicon.512x512.png
+	source = angular-electron-8.4.0.tar.gz::https://github.com/malacration/sap-front/releases/download/v8.4.0/angular-electron-12.0.0.tar.gz
+	source = angular-electron-8.4.0.png::https://raw.githubusercontent.com/malacration/sap-front/v8.4.0/src/assets/icons/favicon.512x512.png
 	source = angular-electron.sh
-	sha256sums = 3e801e073c776854436da5cbe828771955e89c95c0dbe98a9753ef85b0077596
+	sha256sums = 937780448a5865a5c9d4c622c281bca827a75afe6b151f8a0b90efd60fe4ce4c
 	sha256sums = e88e5f0dc9ca423464c686e2100c7ff48e88474401f099086151a3b13be52c4b
-	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
+	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
 
 pkgname = angular-electron-bin
