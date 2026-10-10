@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=android-knot-bin
 _pkgname=Knot
-pkgver=26.10.06
+pkgver=26.10.09
 pkgrel=1
 pkgdesc="An intelligent multi-scenario recording tool inspired by the minimalist concept of ancient 'knot-tying' memorization."
 arch=('x86_64')
@@ -50,7 +50,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/ic005k/Knot/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9fc1c58148d8183fb7f7d15df39c21aa633b86d91ab8110b6a112281ea518d4d'
+sha256sums=('83b5fd78faf0222b91052c9d466f0c12dd4060309fb282faf19bb367e8431483'
             '5076e0113e6e491d04559dd9ec0a80a35392bec88928393d47b8dd620aa96d66'
             '6f38e0cb252008b84532d5914cb851aa45518771db172e7f5a091fe16123e05e')
 prepare() {
@@ -71,6 +71,7 @@ prepare() {
         s/Application;/Utility;/g
         s/Name=${_pkgname}/Name=Android ${_pkgname}/g
     " "${srcdir}/squashfs-root/default.desktop"
+    find "${srcdir}/squashfs-root" -type d -perm 700 -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
