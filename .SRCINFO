@@ -1,6 +1,6 @@
 pkgbase = clawd-on-desk-bin
 	pkgdesc = A pixel desktop pet that watches Claude Code, Codex, Cursor & other AI coding agents — so you don't have to.
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://clawdondesk.com/
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = clawd-on-desk-bin
 	depends = electron41
 	depends = python
 	depends = nodejs
-	provides = clawd-on-desk=1.2.0
+	provides = clawd-on-desk=1.3.0
 	conflicts = clawd-on-desk
 	options = !emptydirs
 	options = !strip
-	source = clawd-on-desk-1.2.0.deb::https://github.com/rullerzhou-afk/clawd-on-desk/releases/download/v1.2.0/Clawd-on-Desk-1.2.0-amd64.deb
+	source = clawd-on-desk-1.3.0.deb::https://github.com/rullerzhou-afk/clawd-on-desk/releases/download/v1.3.0/Clawd-on-Desk-1.3.0-amd64.deb
 	source = clawd-on-desk.sh
-	sha256sums = 683e32d1f75a42f7b2ff573119c7c819073ac4dd15de1117a0b567e7087c984d
-	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
+	sha256sums = 467ca3d16f35a31dc6c811266bc25ecae53c5032bdc655917d4ce345afb75fed
+	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
 
 pkgname = clawd-on-desk-bin
