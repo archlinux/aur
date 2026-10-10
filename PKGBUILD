@@ -3,8 +3,8 @@
 # Contributor: Christoph Drexler <chrdr at gmx dot at>
 # Contributor: me at oguzkaganeren dot com dot tr
 pkgname=grisbi
-pkgver=3.90.1
-_pkgver=upstream_version_3_90_1
+pkgver=3.92.0
+_pkgver=upstream_version_3_92_0
 pkgrel=1
 pkgdesc="Shared files for the finance management program Grisbi."
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('imagemagick' 'libgsf' 'meson')
 conflicts=('grisbi-git')
 options=(!libtool !debug)
 source=(https://github.com/grisbi/grisbi/archive/refs/tags/$_pkgver.tar.gz)
-sha256sums=('da7c431601c273481bf606249a834fc40c362b10f8e44f2b3021fe9267a17f1c')
+sha256sums=('fbffd7eae1362419555d4511f7f26b852913880dba1ce203ab076575ce9ed5dc')
 
 prepare() {
 	cd "${srcdir}/grisbi-${_pkgver}"
