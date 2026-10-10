@@ -1,0 +1,23 @@
+pkgbase = gxde-filetransfer-git
+	pkgdesc = GXDE file transfer client
+	pkgver = 1.2.1.r0.g65a30bd
+	pkgrel = 1
+	url = https://github.com/GXDE-OS/gxde-filetransfer
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = gxde-dtk2-qt6-git
+	depends = gxde-dtk6-git
+	depends = qt6-base
+	depends = curl
+	depends = hicolor-icon-theme
+	depends = libstdc++
+	depends = libgcc
+	depends = glibc
+	provides = gxde-filetransfer
+	conflicts = gxde-filetransfer
+	source = gxde-filetransfer::git+https://github.com/GXDE-OS/gxde-filetransfer.git
+	sha256sums = SKIP
+
+pkgname = gxde-filetransfer-git
