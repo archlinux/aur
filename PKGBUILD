@@ -1,7 +1,7 @@
 # Maintainer: Snoopey <thomas@wrightconsulting.uk>
 pkgname=omnigent-cli
 pkgver=0.17.0
-pkgrel=8
+pkgrel=9
 pkgdesc='Omnigent CLI, server, and agent host with isolated Python dependencies'
 arch=('x86_64')
 url='https://github.com/omnigent-ai/omnigent'
@@ -100,7 +100,7 @@ source=(omnigent-0.17.0.tar.gz::https://files.pythonhosted.org/packages/21/ba/2b
         types_requests-2.33.0.20260906-py3-none-any.whl::https://files.pythonhosted.org/packages/60/4c/51ec821d22a45b4162fa3f3e9e94ea4c0f8c49e82363b10955baa5438391/types_requests-2.33.0.20260906-py3-none-any.whl
         typing_extensions-4.16.0-py3-none-any.whl::https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl
         typing_inspection-0.4.4-py3-none-any.whl::https://files.pythonhosted.org/packages/67/81/4add07e5172b7ac40d8ed5ff580409a7801a4fe26d529bdd915401dabfbe/typing_inspection-0.4.4-py3-none-any.whl
-        tzdata-2026.4-py2.py3-none-any.whl::https://files.pythonhosted.org/packages/f9/bc/8737e8d54cf51106118039b83f485a4783112fab49ea9d044b234978a46e/tzdata-2026.4-py2.py3-none-any.whl
+        tzdata-2026.5-py2.py3-none-any.whl::https://files.pythonhosted.org/packages/94/21/1e5995a1c920cce14e4bffae20c665ec10e7ed03ab25e006cd741092b718/tzdata-2026.5-py2.py3-none-any.whl
         urllib3-2.8.0-py3-none-any.whl::https://files.pythonhosted.org/packages/92/9d/c4e665119135114480843e7ab388fa94d8480650450e6f8e26b70d323a4c/urllib3-2.8.0-py3-none-any.whl
         uvicorn-0.54.0-py3-none-any.whl::https://files.pythonhosted.org/packages/38/0c/b54a4fdd7f90a3af8b02ebc9ce6712c2c208b7926a2f7bad95c33ebbe943/uvicorn-0.54.0-py3-none-any.whl
         uvloop-0.23.0-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/1e/20/57d63c44d32326878fcad5c63854afc9deb394ed95673c1b1a429178c79d/uvloop-0.23.0-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
@@ -199,7 +199,7 @@ sha256sums=(20bc4039f4f3d6f59e3179b3a1692ce3ea8c7be36619a437748bf2a06bfa4147
             9f53622652bd921ead7a54d665be1b8d518165c8b51cc9d68d944cd6b6bfa8fb
             481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8
             65b8397ba37ccbce054456aaccddfc91e6e3083c92824df348d96ca832f3f147
-            c2169a8b0a7a5e9674da5a135ccdfb2b3e671b333ed9fed17b41f73c34476e81
+            b683bd1b6659ddcd810ff02ad09ba821d4bf1065072805063eb35c49617905ac
             0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3
             505bdb0f318731d45f1f712071fc781a8981f6847a31c902c9f5e652d4f67faf
             31e0cf90bc8fd88784f6802cdba968a51fb1aec1cc3feec74d862b2d371d1330
@@ -208,7 +208,7 @@ sha256sums=(20bc4039f4f3d6f59e3179b3a1692ce3ea8c7be36619a437748bf2a06bfa4147
             7a6ceec4ea84469f15cf15807a747e9efe57e369c384fa86e022b3bea679b79b
             e09bb6252b6476d8d56100e8147b803befa9a12cea144bbe629dd508800d1ad0
             aac80bec8b6fe35e8480f1c335be8910fa210a0e6f735a139be205dadcacb544
-            f24f183c025ef8415b865629ec968ae8ec552e0d04f90b3db603d1e2c5f98134
+            f72770bc94022f38a24f9744df274f17a767a26d4e5230f6ca38240333dd9593
             a0bd60054eae7ce2f8fedb9c295d8137f269fedbf08220a54dde1a0d09f0e9a4
             edd22b3947e18e681e397590651edf2551024be4d53bea5fa55efc428a2acb07
             e9e49acfc1599bb114332a40479d99275e3668b34bd66a6ae2143ba93ec76315)
@@ -295,7 +295,7 @@ noextract=(alembic-1.20.0-py3-none-any.whl
            types_requests-2.33.0.20260906-py3-none-any.whl
            typing_extensions-4.16.0-py3-none-any.whl
            typing_inspection-0.4.4-py3-none-any.whl
-           tzdata-2026.4-py2.py3-none-any.whl
+           tzdata-2026.5-py2.py3-none-any.whl
            urllib3-2.8.0-py3-none-any.whl
            uvicorn-0.54.0-py3-none-any.whl
            uvloop-0.23.0-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
