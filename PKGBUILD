@@ -1,7 +1,7 @@
 # Maintainer: Daniele Bartolini <dbartolini crownengine org>
 
 pkgname=crown-nightly-bin
-pkgver=0.66.0.r9935.g3d58bd962
+pkgver=0.66.0.r9936.g067b05ca8
 pkgrel=1
 pkgdesc="A complete and cross-platform game engine designed for flexibility, performance, and fast-iterations."
 arch=(x86_64)
@@ -15,12 +15,12 @@ depends=('glib2>=2.64.6'
          'libxrandr'
          )
 _upstream_version=0.66.0
-_commit=3d58bd962
-_gdrive_id=1ryR_ziJUmXjdNwPnI0NXVi-JsuOFnYOI
+_commit=067b05ca8
+_gdrive_id=1V4bIJ6vKWauFcLNzvD_43Lc0tmDymkwD
 source=("crown-${_upstream_version}-master-${_commit}-linux-x64.tar.gz::https://drive.usercontent.google.com/download?id=${_gdrive_id}&export=download&confirm=t"
         "crown.sh"
         )
-sha256sums=('4522e4b2e4b0219d687a883934e8480dbdd6c7f4bc7ab8cb7a6c71738fd97bba'
+sha256sums=('00d30344ed9321e5e0c679a646c17b4b1c82602ed67edf14fb809ff91ca46982'
             '514892dfc9ccfb0d83c847d459642186f532a527af9f46bdb1402218820f7062')
 options=('!strip')
 
