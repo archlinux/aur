@@ -1,17 +1,17 @@
 pkgbase = chat-overlay-bin
-	pkgdesc = A modern, transparent chat overlay application for Bilibili live streaming,connects to the LAPLACE Event Bridge to display real-time chat messages, interactions, and viewer engagement metrics.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.1.1
+	pkgdesc = A modern, transparent chat overlay application for Bilibili live streaming,connects to the LAPLACE Event Bridge to display real-time chat messages, interactions, and viewer engagement metrics.
+	pkgver = 1.2.1
 	pkgrel = 1
-	url = https://github.com/laplace-live/chat-overlay
+	url = https://chat.laplace.live/
 	arch = x86_64
 	license = MIT
-	depends = electron42
-	provides = chat-overlay=1.1.1
+	depends = electron44
+	provides = chat-overlay=1.2.1
 	conflicts = chat-overlay
 	options = !emptydirs
-	source = chat-overlay-1.1.1.rpm::https://github.com/laplace-live/chat-overlay/releases/download/v1.1.1/chat-overlay-1.1.1-1.x86_64.rpm
+	source = chat-overlay-1.2.1.rpm::https://github.com/laplace-live/chat-overlay/releases/download/v1.2.1/chat-overlay-1.2.1-1.x86_64.rpm
 	source = chat-overlay.sh
-	sha256sums = 0c612c8d3e8345d8b189b4ee4c78d17c6308a96d16c64e8ac0f351230a963f9c
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = fb1801c015154bcc4d5254f341a9984ac4860a08e1fb2e38798fb9a2e005d8ca
+	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
 
 pkgname = chat-overlay-bin
