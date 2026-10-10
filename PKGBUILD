@@ -1,24 +1,7 @@
 # Maintainer: FlowOSS <https://github.com/FlowOSS>
-#
-# FlowShot - screenshot + annotation for Linux (Wayland and X11).
-# VCS package: builds the tip of `main`; the -bin sibling repackages the
-# prebuilt release asset instead.
-#
-# Build-dependency notes:
-#   clang    - bindgen (a build-dependency of libspa-sys via the pipewire
-#              crate) dlopens libclang.so, owned by `clang` on Arch.
-#   pipewire - libspa-sys/pipewire-sys pkg-config-probe libpipewire-0.3 at
-#              build time; the Arch package ships the headers and .pc files.
-#   pkgconf  - that probe is pkg-config(1).
-#   librsvg  - rsvg-convert renders the hicolor PNG sizes from the SVG source.
-#   cmake is deliberately NOT required: aws-lc-sys (via rustls) uses its cc
-#   builder on x86_64-linux unless AWS_LC_SYS_CMAKE_BUILDER=1 or `fips`.
-#
-# Never build with --all-features: the daemon's `test-drive` feature wires a
-# headless event-injection seam that must not reach user installs.
 pkgname=flowshot-git
 _pkgname=flowshot
-pkgver=0.1.0.r2.gab0d34c
+pkgver=0.1.0.r3.g6b6d7b7
 pkgrel=1
 pkgdesc='Screenshot and annotation tool for Wayland and X11 with mixed-DPI support'
 arch=('x86_64')
@@ -28,12 +11,11 @@ depends=(
   'glibc'
   'libgcc'
   'libpipewire-0.3.so'
-  # dlopen'd or data-only, so invisible to ldd/namcap (namcap will warn
-  # "may not be needed" for these; they are real runtime requirements):
-  'wayland'              # wayland-sys dlopens libwayland-client.so.0
-  'vulkan-icd-loader'    # ash dlopens libvulkan.so.1
-  'fontconfig'           # cosmic-text parses the fontconfig configuration
-  'ttf-font'             # virtual provide: cosmic-text needs at least one font
+  # dlopen'd or data-only: real runtime deps, namcap warnings are false positives
+  'wayland'
+  'vulkan-icd-loader'
+  'fontconfig'
+  'ttf-font'
   'hicolor-icon-theme'
 )
 makedepends=(
@@ -54,23 +36,11 @@ optdepends=(
   'vulkan-driver: Vulkan implementation for the GPU-accelerated overlay'
   'gnome-shell-extension-appindicator: system tray icon under GNOME'
 )
-# The test suite renders text through cosmic-text, which panics without any
-# installed fonts; same fix as the official alacritty package.
 checkdepends=('ttf-dejavu')
-# AUR submission naming: the `flowshot` pkgbase on the AUR is squatted by an
-# unrelated install script. The suffixes (-git/-bin) are a submission-level
-# workaround only - the software's package name is `flowshot`, and every
-# family member provides+conflicts it (the standard takeover pattern), so
-# installing FlowShot replaces anything else claiming the name.
 provides=("flowshot=$pkgver")
 conflicts=('flowshot')
 source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
-# Arch's default makepkg.conf enables `lto`, exporting -flto=auto to C
-# compilations. aws-lc-sys (vendored C/C++ crypto via rustls) built with slim
-# LTO objects fails to link through ld.lld (undefined aws_lc_* symbols), so C
-# LTO is disabled per the Rust package guidelines. Rust-level LTO is set in
-# build() and is unaffected.
 options=('!lto')
 
 pkgver() {
@@ -93,13 +63,8 @@ build() {
   export CARGO_TARGET_DIR=target
   export CARGO_PROFILE_RELEASE_LTO=thin
   export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
-  # The workspace profile enables line-table debug info for the release
-  # pipeline's companion split; local builds gain nothing from it (makepkg
-  # strips and splits on its own), so keep them light.
   export CARGO_PROFILE_RELEASE_DEBUG=false
   cargo build --release --frozen --bin flowshot --bin flowshot-daemon
-  # Man pages come from a dev-dependency example (clap_mangen), built
-  # separately from the shipped binaries.
   cargo build --release --frozen -p flowshot-cli --example man_pages
 }
 
@@ -112,13 +77,10 @@ check() {
 package() {
   cd "$_pkgname"
 
-  # The CLI logs a config-load warning to stderr when run without a user
-  # config (the case under fakeroot); keep the build log clean.
+  # keep the fakeroot build log clean (CLI config-load warning)
   export RUST_LOG=error
 
   install -Dm0755 target/release/flowshot "$pkgdir/usr/bin/flowshot"
-  # Optional at runtime (the CLI self-spawns as the daemon) but shipped:
-  # supervised foreground use and systemd user units reference it.
   install -Dm0755 target/release/flowshot-daemon "$pkgdir/usr/bin/flowshot-daemon"
 
   install -Dm0644 packaging/flowshot.desktop.in \
