@@ -1,0 +1,8 @@
+diff --git a/linux/fcitx5/CMakeLists.txt b/linux/fcitx5/CMakeLists.txt
+--- a/linux/fcitx5/CMakeLists.txt
++++ b/linux/fcitx5/CMakeLists.txt
+@@ -5,2 +5,3 @@
+-set(CMAKE_CXX_STANDARD 17)
++# Newer fcitx5 headers use std::source_location (C++20).
++set(CMAKE_CXX_STANDARD 20)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
