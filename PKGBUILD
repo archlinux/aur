@@ -6,7 +6,7 @@
 pkgname=tag-release
 _name="git-$pkgname"
 _name="${_name//-/_}"
-pkgver=0.4.13
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Automate creation of semantic versioning tags'
 arch=(any)
