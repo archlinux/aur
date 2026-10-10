@@ -18,13 +18,13 @@
 # That is the only reason why this package ends on "-git".
 
 pkgname=sickchill-git
-pkgver=2024.3.1.r0.20260825.latest
+pkgver=2024.3.1.r0.20261010.latest
 pkgrel=1
 pkgdesc='Automatic video library manager for TV shows'
 arch=(any)
 url=https://sickchill.github.io
 license=(GPL-3.0-or-later)
-makedepends=(git jq python-virtualenv)
+makedepends=(git jq python-packaging python-virtualenv)
 #makedepends=(git jq python-virtualenv)
 optdepends=(
   'libmediainfo: determine the resolution of MKV and AVI files with no resolution in the filename'
