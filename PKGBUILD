@@ -10,9 +10,9 @@
 
 pkgname=frenfoil-bin
 _pkgname=frenfoil
-pkgver=0.59.3
+pkgver=0.59.4
 pkgrel=1
-pkgdesc='Opinionated, e2e-only XMPP client, post-quantum by default'
+pkgdesc='e2e-only messenger on its own protocol, post-quantum'
 arch=('x86_64')
 url='https://git.josf.dev/josefandersson/frenfoil'
 license=('AGPL-3.0-only')
@@ -31,7 +31,7 @@ source=("${_pkgname}-${pkgver}-linux-x64.zip::${_relbase}/${_pkgname}-${pkgver}-
         "${_pkgname}-${pkgver}.desktop::${_rawbase}/${_pkgname}.desktop")
 # Placeholders, not SKIP: an unverified download is worse than a build that refuses to start.
 # CI substitutes the real hashes; building this dir by hand fails until `updpkgsums` is run.
-sha256sums=('0b928b8f251d3a57906bab5ace135cb86ef370ae686c8cfd47a59177850f7f68' 'd6d95f8388758754049ab11eb9d645969f8dd42476b1aa57a5488e1d6039b6f6')
+sha256sums=('30e1363a3eba434860a20e70a55104404218a06c4aeea93d109769b362530f14' '75dbb90de272ebc99a4736598fe5e8a07f0a7fe7f276916a78481849bbacf143')
 
 package() {
 	install -dm755 "$pkgdir/opt/$_pkgname"
