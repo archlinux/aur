@@ -1,6 +1,6 @@
 pkgbase = ai-flow-cli
-	pkgdesc = Fast terminal AI for Unix pipelines: wraps pi, omp, claude, codex, copilot & opencode
-	pkgver = 0.12.1
+	pkgdesc = Fast terminal AI for Unix pipelines: wraps pi, omp, claude, codex, copilot, opencode & fx
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/Codder13/ai-flow-cli
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ai-flow-cli
 	depends = python
 	depends = python-rich
 	depends = python-pylatexenc
-	source = ai-flow-cli-0.12.1.tar.gz::https://github.com/Codder13/ai-flow-cli/archive/refs/tags/v0.12.1.tar.gz
-	sha256sums = dd1f765c445b1768168cba8227d500c93dd2e29d93123a90fcce217f07698043
+	source = ai-flow-cli-0.13.0.tar.gz::https://github.com/Codder13/ai-flow-cli/archive/refs/tags/v0.13.0.tar.gz
+	sha256sums = 6855c28ca8cd94625cad0fae76e7738c47b6fb0b95f4207ca3fda2a98eb17d7b
 
 pkgname = ai-flow-cli
