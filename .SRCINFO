@@ -1,6 +1,6 @@
 pkgbase = wsjtx-improved-widescreen
 	pkgdesc = WS - Digital Mode Suite (formerly WSJT-X Improved) by DG2YCB - Amateur Radio weak-signal communication (FT8, JT9, JT65, ...) - Widescreen Layout Version
-	pkgver = 3.2.1.260926
+	pkgver = 3.2.1.261010
 	pkgrel = 1
 	url = https://sourceforge.net/projects/wsjt-x-improved/
 	install = wsjtx-improved.install
@@ -28,8 +28,8 @@ pkgbase = wsjtx-improved-widescreen
 	provides = wsjtx
 	conflicts = wsjtx
 	options = !lto
-	source = https://downloads.sourceforge.net/project/wsjt-x-improved/WS_v3.2.1/Source%20code/ws-3.2.1_widescreen_260926.tgz
-	md5sums = f899724c2089da44ac26721c164be57d
-	sha1sums = 2f5dd69dfe5f4c0a2c5372573d932faf2fc97679
+	source = https://downloads.sourceforge.net/project/wsjt-x-improved/WS_v3.2.1/Source%20code/ws-3.2.1_widescreen_261010.tgz
+	md5sums = 939c28ad534ca5957e03b992ea1149c2
+	sha1sums = 8dd5d673fadf6d4a9657e640e16b42fba118c70a
 
 pkgname = wsjtx-improved-widescreen
