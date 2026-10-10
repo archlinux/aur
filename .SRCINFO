@@ -1,14 +1,13 @@
 pkgbase = oh-my-pi
 	pkgdesc = Coding agent with the IDE wired in
 	pkgver = 18.8.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://omp.sh/
 	arch = x86_64
 	license = MIT
 	makedepends = bun
 	makedepends = cargo
 	makedepends = cmake
-	makedepends = curl
 	makedepends = clang
 	depends = gcc-libs
 	depends = glibc
@@ -24,6 +23,7 @@ pkgbase = oh-my-pi
 	optdepends = git: repository integration and isolated task worktrees
 	optdepends = julia: Julia eval backend
 	optdepends = libpulse: PulseAudio/PipeWire-Pulse client backend for live voice, STT, and TTS
+	optdepends = oh-my-pi-grammars-bin=1: preinstalled WebAssembly grammars for AST tools
 	optdepends = python: Python 3.10+ eval backend
 	optdepends = xdg-desktop-portal: Wayland ScreenCast and RemoteDesktop portals for the computer tool
 	optdepends = xdg-desktop-portal-impl: compositor-specific backend for Wayland computer tool portals
@@ -33,11 +33,9 @@ pkgbase = oh-my-pi
 	source = https://static.crates.io/crates/opus/opus-0.4.0.crate
 	source = skip-native-embed-for-aur.patch
 	source = system-grammars-for-aur.patch
-	source = prepare-grammars.sh
 	sha256sums = 4d83e33a47e3ff13509084c65c9e4f846597dfb0bc6b502f26a1aef948a7b51b
 	sha256sums = 33718946cc77d4032911d4efe03a66dbcbfbd2bb16c3da06aaeadcc637c32216
 	sha256sums = d60c5282c2eebcde70c70b67d49b3fb8105c15d232d29851c68d858a9195acb6
 	sha256sums = 724888738f0e886693d8a6aa6cfd5f6dba9a98122353e4636a9ca946ae1fa9e7
-	sha256sums = 5f4beb9da3a47af641fc4880c4c6170bd8cf3cb5aa2bbc4e99f0f98e1a593f54
 
 pkgname = oh-my-pi
