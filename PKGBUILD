@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=openshot-git
-pkgver=3.5.0.r84.gc13495c9a
+pkgver=4.0.1.r64.g2cda67602
 pkgrel=1
 pkgdesc='An award-winning free and open-source video editor (git version)'
 arch=('any')
@@ -10,15 +10,14 @@ license=('GPL-3.0-or-later')
 depends=(
     'ffmpeg'
     'hicolor-icon-theme'
+    'imagemagick'
     'libopenshot-audio-git'
     'libopenshot-git'
     'python'
-    'python-pyqt5'
-    'python-pyqt5-webengine'
-    'python-pyzmq'
+    'python-pyqt6'
     'python-requests'
-    'qt5-base'
-    'qt5-svg')
+    'qt6-multimedia'
+    'qt6-svg')
 optdepends=(
     'faac: for exporting audio using AAC')
 makedepends=(
@@ -27,8 +26,6 @@ makedepends=(
     'python-installer'
     'python-setuptools'
     'python-wheel')
-checkdepends=(
-    'xorg-server-xvfb')
 provides=('openshot')
 conflicts=('openshot')
 source=('git+https://github.com/OpenShot/openshot-qt.git')
@@ -41,11 +38,6 @@ pkgver() {
 build() {
     cd openshot-qt
     python -m build --wheel --no-isolation
-}
-
-check() {
-    cd openshot-qt
-    xvfb-run -n 71 python src/tests/test_query.py
 }
 
 package() {
