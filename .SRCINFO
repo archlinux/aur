@@ -1,0 +1,18 @@
+pkgbase = fibertools-rs
+	pkgdesc = Fiber-seq toolkit for creating and interacting with Fiber-seq BAM files
+	pkgver = 0.13.1
+	pkgrel = 1
+	url = https://github.com/fiberseq/fibertools-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cmake
+	depends = glibc
+	depends = libgcc
+	depends = bzip2
+	conflicts = fibertools-rs-bin
+	source = fibertools-rs-0.13.1.tar.gz::https://crates.io/api/v1/crates/fibertools-rs/0.13.1/download
+	sha256sums = 0ade4a43a28f5d1f9215046aef5d63b415f4385ad9a8ed554770e781737570a9
+
+pkgname = fibertools-rs
