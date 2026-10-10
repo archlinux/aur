@@ -2,9 +2,9 @@
 pkgname=jiwu-mall-chat-bin
 _pkgname=JiwuChat
 _zhsname='极物圈聊天'
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
-pkgdesc="A lightweight multi-platform chat application that can be used anytime, anywhere.一个轻量的多端随时随地的聊天应用 ✨"
+pkgdesc="A lightweight multi-platform chat application that can be used anytime, anywhere.一个轻量的多端随时随地的聊天应用"
 arch=('x86_64')
 url="https://chat.jiwu.kiwi233.top"
 _ghurl="https://github.com/KiWi233333/jiwu-mall-chat-tauri"
@@ -19,14 +19,13 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('aa3e2ec83830ea0bf5b27a361fd8224fead3f301769983d259c431b8e9e9d6d6')
+sha256sums=('9f65e821682adf3fcf75440f3487882648ef14a6105065b68923fd624dfd14bf')
 prepare() {
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
         6i\Name[zh_CN]=${_zhsname}
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
-    mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
