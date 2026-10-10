@@ -1,6 +1,6 @@
 pkgbase = omarchy-focus
 	pkgdesc = Pomodoro timer, task queue and site blocker for Omarchy, with a native bar widget, TUI and CLI
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/talhacaglar/omarchy-focus
 	install = omarchy-focus.install
@@ -16,7 +16,7 @@ pkgbase = omarchy-focus
 	optdepends = polkit: password prompt for the site guard when started from the bar
 	optdepends = libnotify: desktop notifications
 	optdepends = libcanberra: sound when a session ends
-	source = omarchy-focus-0.2.0.tar.gz::https://github.com/talhacaglar/omarchy-focus/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 1e137c0bbfc1278f736b34b423e9c0973b411ca4c486674d7a9246e6e4f90b23
+	source = omarchy-focus-0.2.1.tar.gz::https://github.com/talhacaglar/omarchy-focus/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 47040c6441db7ce1a9b323181d78137afa96509f0e0eb4096231bc1fb7590fcc
 
 pkgname = omarchy-focus
