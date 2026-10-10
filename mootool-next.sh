@@ -3,6 +3,7 @@ set -e
 _APPDIR="/usr/lib/@appname@"
 _RUNNAME="${_APPDIR}/@runname@"
 export CHROME_DESKTOP="@appname@.desktop"
+export LD_LIBRARY_PATH="${_APPDIR}/lib:${LD_LIBRARY_PATH}"
 _SANDBOX_ARG=()
 if [[ "${EUID}" -eq 0 ]] && [[ "${ELECTRON_RUN_AS_NODE}" != "1" ]]; then
 	_SANDBOX_ARG=("--no-sandbox")
