@@ -2,7 +2,7 @@
 # Maintainer: Ian Newton <i.newton@c-org.com>
 pkgname=docan-gtk-bin
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AI chat app with cloud and local LLM APIs: Gemini, ChatGPT, Claude, OpenRouter, Ollama, LM Studio; file attachment upload support"
 arch=('x86_64')
 url="https://github.com/ixnewton/docan"
