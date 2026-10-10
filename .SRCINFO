@@ -1,6 +1,6 @@
 pkgbase = parse
 	pkgdesc = Make messy Linux command output readable
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/atif-1402/parse
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = parse
 	makedepends = go
 	provides = parse
 	options = !strip
-	source = parse-0.1.0.tgz::https://github.com/atif-1402/parse/archive/v0.1.0.tar.gz
-	sha256sums = 0ee090b58a07372185717a8a812b8658702ca7becf92b5492207784f2550788f
+	source = parse-0.2.0.tgz::https://github.com/atif-1402/parse/archive/v0.2.0.tar.gz
+	sha256sums = 5c1be365d78ccd08f79ef88a516c663d77f750c7605b767791f1159ee943446d
 
 pkgname = parse
