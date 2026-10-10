@@ -3,7 +3,7 @@
 pkgname=aulos-bin
 _pkgname=aulos
 _appid=io.github.m0rf30.Aulos
-pkgver=0.4.0 # renovate: datasource=github-releases depName=M0Rf30/aulos
+pkgver=0.5.0 # renovate: datasource=github-releases depName=M0Rf30/aulos
 pkgrel=1
 pkgdesc="A modern music player for the COSMIC desktop (binary release)"
 arch=(x86_64 aarch64)
@@ -30,8 +30,8 @@ conflicts=("${_pkgname}")
 options=(!strip !debug)
 source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('8c70c7904b8b1ddce7dae1d7bdbe9424aae5336833431b77a0c27da1b94e52e1')
-sha256sums_aarch64=('7284dcae6e210939d75ef6f8d0bd77f971deab7d228b1cbcd12ee5411b95069c')
+sha256sums_x86_64=('9ef723a66b2e42dcc0eee6cc3a905a51cc1df98d0a6bf242723aa49b1331054e')
+sha256sums_aarch64=('4a7aa71047f68cc99512e5618e5203a07f6df1577e7f15c49858045bce5e4d00')
 
 package() {
   cd "${_pkgname}-${pkgver}-${CARCH}-unknown-linux-gnu"
