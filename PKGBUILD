@@ -1,6 +1,6 @@
 # Maintanier: neomoth <admin@neomoth.dev>
 pkgname=ss14-starlight-launcher-bin
-pkgver=2.0.6.8
+pkgver=2.0.6.9
 pkgrel=1
 pkgdesc="Starlight Launcher for Space Station 14"
 arch=('x86_64')
