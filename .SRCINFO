@@ -1,0 +1,18 @@
+pkgbase = dtask-bin
+	pkgdesc = A fast, mouse-first terminal task manager
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/GuestAUser/dtask
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = dtask
+	conflicts = dtask
+	options = !strip
+	source = README-1.0.0.md::https://raw.githubusercontent.com/GuestAUser/dtask/v1.0.0/README.md
+	sha256sums = cacfdf9578a2b11c8aa89c6d2ae63d79817fb86ffd088429bf54cd88878dac3c
+	source_x86_64 = dtask-x86_64-1.0.0.tgz::https://github.com/GuestAUser/dtask/releases/download/v1.0.0/dtask-v1.0.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 6bba68c5b60d99282c1714d1daad56f94ff20d940a1537fb689f65ecb4e58a3c
+
+pkgname = dtask-bin
