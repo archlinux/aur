@@ -7,9 +7,9 @@
 
 pkgname=vfio-native-qemu
 _qver=11.1.2
-_tag=1.4.2
+_tag=1.4.3
 pkgver=${_qver}
-pkgrel=4
+pkgrel=5
 pkgdesc="QEMU ${_qver} with the vfio-native platform-identity patches, in /opt/qemu-native"
 arch=('x86_64')
 url="https://git.archworks.co/sandwich/vfio-native"
