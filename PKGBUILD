@@ -1,8 +1,8 @@
 # Maintainer: insmtr <insmtr@insmtr.cn>
 
 pkgname=pumpkin-git
-pkgver=dev
-pkgrel=2
+pkgver=r3026.987b979d2
+pkgrel=1
 pkgdesc="Empowering everyone to host fast and efficient Minecraft servers"
 arch=('x86_64')
 url="https://github.com/Pumpkin-MC/Pumpkin"
@@ -24,6 +24,7 @@ prepare() {
     cd $pkgname
     git submodule update --init --recursive
     rm -f rust-toolchain rust-toolchain.toml
+    cargo fetch --locked
 }
 
 build() {
