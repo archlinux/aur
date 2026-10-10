@@ -5,7 +5,7 @@ _reponame="Nexora"
 pkgname="nexora"
 pkgdesc="Open-source cross-platform desktop audio player"
 license=("GPL-3.0-or-later")
-pkgver="0.2.8"
+pkgver="0.3.0"
 pkgrel=1
 arch=("x86_64")
 depends=("vlc")
@@ -15,7 +15,7 @@ source=(
     "nexora"
     "nexora.desktop"
 )
-sha512sums=('192db7ef351a6fba3649018c7db7b8fdee67d33be60824185a2c6c1a6ae97445029bf4d97f2d4275f4aa28dcea75f90f25b64be3b5b5f92042e2e9bfc72308cf'
+sha512sums=('a34c1394d28ef02e274b724032c93ef37e304ec0c67ec94d1e9366172567236e0de874275b6e4a2541aa5cd0c0f46cc274d850e969a11b17599d06cb47fbae08'
             'e7df54e12a9ec7bbcb4e9278f773e66c8d045634cb57fed46defd308ea2bc63c015b93c9aa8095b3e54eca318f31eab849482058a60928e9ebce38a57f4e7bcc'
             '53cec80965a1d32f5c89b81d6d3b434f44fbe7b7b544a04331a99e1f26f4847af4c4f6cd1ac43f355a9b5d9f5aca51186889995b0c1578cce62999261c6bf49d')
 url="https://github.com/$_repoowner/$_reponame"
