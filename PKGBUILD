@@ -1,7 +1,7 @@
 # Maintainer: Snoopey <thomas@wrightconsulting.uk>
 pkgname=omnigent-cli
 pkgver=0.17.0
-pkgrel=7
+pkgrel=8
 pkgdesc='Omnigent CLI, server, and agent host with isolated Python dependencies'
 arch=('x86_64')
 url='https://github.com/omnigent-ai/omnigent'
@@ -57,7 +57,7 @@ source=(omnigent-0.17.0.tar.gz::https://files.pythonhosted.org/packages/21/ba/2b
         lark-1.3.1-py3-none-any.whl::https://files.pythonhosted.org/packages/82/3d/14ce75ef66813643812f3093ab17e46d3a206942ce7376d31ec2d36229e7/lark-1.3.1-py3-none-any.whl
         mako-1.4.3-py3-none-any.whl::https://files.pythonhosted.org/packages/6d/a0/053d6af3e8f871e0073b4a36732d9e65be77a72e5434c31b94f6af78a6bb/mako-1.4.3-py3-none-any.whl
         markdown_it_py-4.2.0-py3-none-any.whl::https://files.pythonhosted.org/packages/b3/81/4da04ced5a082363ecfa159c010d200ecbd959ae410c10c0264a38cac0f5/markdown_it_py-4.2.0-py3-none-any.whl
-        markupsafe-3.0.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/41/3c/a36c2450754618e62008bf7435ccb0f88053e07592e6028a34776213d877/markupsafe-3.0.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+        markupsafe-3.0.4-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/8f/db/d7282caf7ab03af44d5d6fdbaa019b35c7d7f1c90588b839c07cba640d6a/markupsafe-3.0.4-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
         mcp-1.30.0-py3-none-any.whl::https://files.pythonhosted.org/packages/f5/f4/e58bc33317c92a0203664daaf00bf6f41166cc0149e5d6870a03f7cd004a/mcp-1.30.0-py3-none-any.whl
         mdurl-0.1.2-py3-none-any.whl::https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl
         more_itertools-11.1.0-py3-none-any.whl::https://files.pythonhosted.org/packages/e8/3d/1087453384dbde46a8c7f9356eead2c58be8a7bf156bca40243377c85715/more_itertools-11.1.0-py3-none-any.whl
@@ -91,7 +91,7 @@ source=(omnigent-0.17.0.tar.gz::https://files.pythonhosted.org/packages/21/ba/2b
         secretstorage-3.5.0-py3-none-any.whl::https://files.pythonhosted.org/packages/b7/46/f5af3402b579fd5e11573ce652019a67074317e18c1935cc0b4ba9b35552/secretstorage-3.5.0-py3-none-any.whl
         six-1.17.0-py2.py3-none-any.whl::https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl
         sniffio-1.3.1-py3-none-any.whl::https://files.pythonhosted.org/packages/e9/44/75a9c9421471a6c4805dbf2356f7c181a29c1879239abab1ea2cc8f38b40/sniffio-1.3.1-py3-none-any.whl
-        sqlalchemy-2.1.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/4a/6e/c5a397f0a81e486d41cb8f59c2d8270e01527a141d845e0287019c44f940/sqlalchemy-2.1.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+        sqlalchemy-2.1.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/60/21/818e89fe73ba4600abf5090e0d2356d92de9ca3a8aa9222d64801e510bd2/sqlalchemy-2.1.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
         sse_starlette-3.5.0-py3-none-any.whl::https://files.pythonhosted.org/packages/be/e4/cdda14023c316d71493bc54fdffc3dd006631b88866145c9d3cc33e0f1df/sse_starlette-3.5.0-py3-none-any.whl
         starlette-1.7.0-py3-none-any.whl::https://files.pythonhosted.org/packages/4e/d6/1ec1b290f9e0fb067899b61e1d37a30c923068bad260b216dbe37a7d2967/starlette-1.7.0-py3-none-any.whl
         tiktoken-0.14.0-cp314-cp314-manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/5b/7d/144af98dc5ad68108451a82e2f5a17f80e2663f5115058b8dfd215c1ad02/tiktoken-0.14.0-cp314-cp314-manylinux_2_28_x86_64.whl
@@ -156,7 +156,7 @@ sha256sums=(20bc4039f4f3d6f59e3179b3a1692ce3ea8c7be36619a437748bf2a06bfa4147
             c629b661023a014c37da873b4ff58a817398d12635d3bbb2c5a03be7fe5d1e12
             723296007c870bfd6b3f0c3230dba7198096e5269297ebf5e4eff9e7ffa39d4f
             9f7ebbcd14fe59494226453aed97c1070d83f8d24b6fc3a3bcf9a38092641c4a
-            457a69a9577064c05a97c41f4e65148652db078a3a509039e64d3467b9e7ef97
+            a8e9f292fcda89b324f2f5c91d13f1424a153e40fc2756f38ee23b15835ff300
             666edb5009503e1047c9d60346a756f94b261f05cc2625f23d41c728ffc484d0
             84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8
             4b65538ae22f6fed0ce4874efd317463a7489796a0939fa66824dd542125a192
@@ -190,7 +190,7 @@ sha256sums=(20bc4039f4f3d6f59e3179b3a1692ce3ea8c7be36619a437748bf2a06bfa4147
             0ce65888c0725fcb2c5bc0fdb8e5438eece02c523557ea40ce0703c266248137
             4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274
             2f6da418d1f1e0fddd844478f41680e794e6051915791a034ff65e5f100525a2
-            36e6a8fdbddc0635a3bb30cfddf35facaabc8d17e32060c51d50ad11cd48c4c3
+            b728c406b1b202e8998e8f9adacb56773bfeea67da74252ad3025bcb8f5863f1
             3e6e1070df3f0f5d9cea81496de92dbb72f6721871d99748ece67441dd8b7997
             67f8e99895493dd2911a03f11314af6ceebeae4e704bb9f43dfc6a9db151c93e
             e3442bbb2f0c588cec876061e37ae67b455b9df9978b003c8fe30e45f2ef5b42
@@ -208,7 +208,7 @@ sha256sums=(20bc4039f4f3d6f59e3179b3a1692ce3ea8c7be36619a437748bf2a06bfa4147
             7a6ceec4ea84469f15cf15807a747e9efe57e369c384fa86e022b3bea679b79b
             e09bb6252b6476d8d56100e8147b803befa9a12cea144bbe629dd508800d1ad0
             aac80bec8b6fe35e8480f1c335be8910fa210a0e6f735a139be205dadcacb544
-            c1f2ea2d642b0846e462b28e131d41d5f90c671003555eb0db10214352e07864
+            f24f183c025ef8415b865629ec968ae8ec552e0d04f90b3db603d1e2c5f98134
             a0bd60054eae7ce2f8fedb9c295d8137f269fedbf08220a54dde1a0d09f0e9a4
             edd22b3947e18e681e397590651edf2551024be4d53bea5fa55efc428a2acb07
             e9e49acfc1599bb114332a40479d99275e3668b34bd66a6ae2143ba93ec76315)
@@ -252,7 +252,7 @@ noextract=(alembic-1.20.0-py3-none-any.whl
            lark-1.3.1-py3-none-any.whl
            mako-1.4.3-py3-none-any.whl
            markdown_it_py-4.2.0-py3-none-any.whl
-           markupsafe-3.0.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+           markupsafe-3.0.4-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
            mcp-1.30.0-py3-none-any.whl
            mdurl-0.1.2-py3-none-any.whl
            more_itertools-11.1.0-py3-none-any.whl
@@ -286,7 +286,7 @@ noextract=(alembic-1.20.0-py3-none-any.whl
            secretstorage-3.5.0-py3-none-any.whl
            six-1.17.0-py2.py3-none-any.whl
            sniffio-1.3.1-py3-none-any.whl
-           sqlalchemy-2.1.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+           sqlalchemy-2.1.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
            sse_starlette-3.5.0-py3-none-any.whl
            starlette-1.7.0-py3-none-any.whl
            tiktoken-0.14.0-cp314-cp314-manylinux_2_28_x86_64.whl
