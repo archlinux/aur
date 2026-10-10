@@ -1,6 +1,6 @@
 # Maintainer: hup2c <hup@dr.com>
 pkgname=onemessage-bin
-pkgver=2.37.14
+pkgver=2.37.17
 pkgrel=1
 pkgdesc="OneMessage 中移集成"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://www.cmccsi.cn/product/oneoffice"
 license=('unknown')
 depends=('gtk3')
 source=("https://office.hecmcc.com:9003/cmict/file/resource/download/onemsgdownload/OneMessage2.0.deb")
-sha256sums=('de728a6b2c5a7c7513a22757e14d1c17f7e70f556698f29cab9fb56911ade3ac')
+sha256sums=('281b1e5089090a45b471e1708c68d105f477ac5325597876f0488a459dc21004')
 
 prepare() {
     ar x "$srcdir/OneMessage2.0.deb"
