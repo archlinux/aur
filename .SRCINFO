@@ -1,0 +1,17 @@
+pkgbase = hermes-webui-desktop-bin
+	pkgdesc = Cross-platform desktop shell for Hermes WebUI, the web interface for Hermes Agent
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/hermes-webui/hermes-desktop-rust
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = hermes-webui-desktop
+	conflicts = hermes-webui-desktop
+	noextract = hermes-webui-desktop-0.7.0.deb
+	options = !strip
+	source = hermes-webui-desktop-0.7.0.deb::https://github.com/hermes-webui/hermes-desktop-rust/releases/download/v0.7.0/Hermes.WebUI.Desktop_0.7.0_lin_x86_64.deb
+	sha256sums = e939304701c689a88a241c805077f69ca9bea819d0def7a3af893c0359002a7d
+
+pkgname = hermes-webui-desktop-bin
