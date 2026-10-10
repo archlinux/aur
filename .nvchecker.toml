@@ -1,0 +1,3 @@
+[qdep]
+source = "git"
+git = "https://github.com/Skycoder42/qdep.git"
