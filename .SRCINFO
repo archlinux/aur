@@ -1,7 +1,7 @@
 pkgbase = panda-iptv-bin
 	pkgdesc = Oriental Brutalist IPTV Player for Linux Desktop (MPV Accelerated)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/satodu/panda-iptv
 	arch = x86_64
 	license = MIT
