@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sokuji-bin
 _pkgname=Sokuji
-pkgver=0.43.2
+pkgver=0.43.4
 _electronversion=44
 pkgrel=1
 pkgdesc="Real-time two-way speech translation for bilingual meetings — auto-detects the spoken language and translates both directions, cloud or fully offline on-device."
@@ -20,28 +20,25 @@ depends=(
 source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8')
-sha256sums_aarch64=('d664c31cd812a063c92681b0e797be58303da5dd35683c9b74f6ec5d95b70328')
-sha256sums_x86_64=('d6bcc7754d1a07169509f220045959d011127b1e77c4dbe8cf75b3bdad304b03')
+sha256sums=('cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
+sha256sums_aarch64=('c917d6e6981042470a966446ab2a783f444298a4fbdcb02dd53af89c8a332293')
+sha256sums_x86_64=('a2e45d5193f5d1dcfd01ce224ec760d3283243c877a95ba66b578726b39c069e')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
-    echo "Verifying Electron version..."
-    local _main_exe=$(find "$(_get_app_dir)" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)
-    [[ -z "${_main_exe}" ]] && echo -e "\033[1;33mNote: Could not find Electron binary.\033[0m" && return
-    local _elec_ver=$(strings "${_main_exe}" | grep -oP 'Electron/\K[0-9]+' | head -1)
-    [[ -z "${_elec_ver}" ]] && echo -e "\033[1;33mNote: Could not determine Electron version.\033[0m" && return
-    [[ "${_elec_ver}" != "${_electronversion}" ]] &&
-        echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m" ||
-        echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \
+		-executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)" \
+		| grep -oP 'Electron/\K[0-9]+' | head -1)
+	[[ -z "$_v" ]] && { echo -e "\033[1;33mNote: Could not check version.\033[0m"; return; }
+	(( _v == _electronversion )) && c=32 || c=31
+	echo -e "Electron version: \033[1;${c}m$_v$([[ $c -eq 31 ]] && echo " (expected $_electronversion)")\033[0m"
 }
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
-        s/@cfgdirname@/${pkgname%-bin}/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
