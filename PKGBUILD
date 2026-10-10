@@ -8,7 +8,6 @@ url="https://github.com/professor-lee/CNMPlayer"
 license=('AGPL3')
 depends=('alsa-lib' 'chafa' 'glib2' 'openssl' 'pipewire')
 optdepends=(
-  'cava: spectrum visualization'
   'ttf-nerd-fonts-symbols: For icons and spectrum visualizer'
   'ttf-jetbrains-mono-nerd: Recommended monospace font'
 )
