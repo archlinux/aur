@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#1b3a5c"/>
+  <path d="M20 14c3 0 5 6 6 9 1 2-1 4-3 5 2 5 6 9 11 11 1-2 3-4 5-3 3 1 9 3 9 6 0 4-4 8-8 8C26 50 14 38 14 22c0-4 3-8 6-8z" fill="#ffd166"/>
+  <text x="44" y="24" font-family="sans-serif" font-weight="700" font-size="16" fill="#7bed9f">₺</text>
+</svg>

@@ -1,0 +1,7 @@
+Scam Call Center - private build for friends. Not for redistribution.
+
+Third-party components:
+- Godot Engine 4.7.2 (MIT) - https://godotengine.org/license
+- GodotSteam 4.23.1 (MIT) - https://codeberg.org/godotsteam/godotsteam
+- Steamworks API library (libsteam_api.so), (c) Valve Corporation,
+  distributed under the Steamworks SDK terms.
