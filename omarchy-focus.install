@@ -1,0 +1,10 @@
+post_install() {
+  echo "==> Add the bar widget (as your user, not root):"
+  echo "      omarchy-focus widget install"
+  echo "==> Then: click the pill for the panel, right-click to start, middle-click for the site guard."
+  echo "==> Coming from Clar Focus? Your data migrates on first run."
+}
+
+post_upgrade() {
+  echo "==> Refresh the bar widget with: omarchy-focus widget install"
+}
