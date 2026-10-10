@@ -1,0 +1,25 @@
+pkgbase = gxde-voice-recorder-git
+	pkgdesc = Voice recorder for GXDE
+	pkgver = 2.0.1.r0.g4a6549f
+	pkgrel = 1
+	url = https://github.com/GXDE-OS/gxde-voice-recorder
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = qt6-tools
+	depends = gxde-dtk2-qt6-git
+	depends = gxde-dtk6-git
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = ffmpeg
+	depends = hicolor-icon-theme
+	depends = libstdc++
+	depends = libgcc
+	depends = glibc
+	provides = gxde-voice-recorder
+	conflicts = gxde-voice-recorder
+	source = gxde-voice-recorder::git+https://github.com/GXDE-OS/gxde-voice-recorder.git
+	sha256sums = SKIP
+
+pkgname = gxde-voice-recorder-git
