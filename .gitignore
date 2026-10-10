@@ -1,0 +1,11 @@
+# Allowlist: this repo is the AUR package, nothing else.
+/*
+!/.gitignore
+!/.SRCINFO
+!/LICENSE
+!/README.md
+!/PKGBUILD
+!/update.sh
+!/config.x86_64
+!/0001-ipts.patch
+!/0002-surface-typecover.patch
