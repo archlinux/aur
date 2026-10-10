@@ -7,7 +7,7 @@
 pkgname=ace-of-penguins
 _pkgname=ace
 pkgver=1.4
-pkgrel=7
+pkgrel=8
 pkgdesc="A set of Unix/X solitaire games."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://www.delorie.com/store/ace/"
@@ -36,7 +36,7 @@ source=("https://www.delorie.com/store/ace/$_pkgname-$pkgver.tar.gz"
 )
 md5sums=('b80169fa59d69758bb9686f31a84ad2b'
          '9a95690a7f04cce7009373c06c898812'
-         '9dd95179f01e019795d0532e29970967'
+         'c1afb6f36a587682254393c59ff52759'
          '08fdad7928c1ace7200405508ef7dc9f'
          '11c3a9d3d1be24cdca54025ed853b0f3'
          '219096a4d8f99dd6d28cd60210e42b80'
@@ -56,11 +56,17 @@ md5sums=('b80169fa59d69758bb9686f31a84ad2b'
  
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    patch -p1 -i "${srcdir}"/ace14_fixes.patch
-    patch -p1 -i "${srcdir}"/badmatch.patch
-    patch -p1 -i "${srcdir}"/imagelib_fix.patch
-    patch -p1 -i "${srcdir}"/make-imglib_fix.patch
-    patch -p1 -i "${srcdir}"/table_fix.patch
+    
+    for p in \
+        ace14_fixes.patch \
+        badmatch.patch \
+        imagelib_fix.patch \
+        make-imglib_fix.patch \
+        table_fix.patch
+    do
+        patch -p1 -F0 -i "${srcdir}/${p}"
+    done
+    
     LDFLAGS="$LDFLAGS -lpng -lz -lm" ./configure --prefix=/usr
     make
 }

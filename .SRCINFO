@@ -1,7 +1,7 @@
 pkgbase = ace-of-penguins
 	pkgdesc = A set of Unix/X solitaire games.
 	pkgver = 1.4
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.delorie.com/store/ace/
 	arch = i686
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = ace-of-penguins
 	source = thornq.desktop
 	md5sums = b80169fa59d69758bb9686f31a84ad2b
 	md5sums = 9a95690a7f04cce7009373c06c898812
-	md5sums = 9dd95179f01e019795d0532e29970967
+	md5sums = c1afb6f36a587682254393c59ff52759
 	md5sums = 08fdad7928c1ace7200405508ef7dc9f
 	md5sums = 11c3a9d3d1be24cdca54025ed853b0f3
 	md5sums = 219096a4d8f99dd6d28cd60210e42b80
