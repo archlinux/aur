@@ -1,6 +1,6 @@
 # Maintainer: safalski <https://git.safallama.com.np/safalski>
 pkgname=typeshi
-pkgver=0.1.17
+pkgver=0.1.18
 pkgrel=1
 pkgdesc="A typing application"
 arch=('x86_64')
