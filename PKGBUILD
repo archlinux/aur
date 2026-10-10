@@ -12,7 +12,7 @@ provides=('docan')
 conflicts=('docan' 'docan-bin')
 replaces=('docan-bin')
 options=('!strip')
-source=("docan-gtk-bin-${pkgver}.zip::https://github.com/ixnewton/docan/releases/download/v${pkgver}/docan-${pkgver}-2026-10-08-linux-x64.zip")
+source=("docan-gtk-bin-${pkgver}.zip::https://github.com/ixnewton/docan/releases/download/v${pkgver}/docan-${pkgver}-2026-10-10-linux-x64.zip")
 sha256sums=('a8df39a362da3fca2c0ffb76d6e580eb4429666e0bcccbfc414a2cc39942fa68')
 
 package() {
