@@ -1,6 +1,6 @@
 pkgbase = sitra
 	pkgdesc = Install fonts on your system
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/sitraorg/sitra
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = sitra
 	depends = libsitra
 	depends = gtksourceview5
 	depends = webkitgtk-6.0
-	source = sitra::git+https://github.com/sitraorg/sitra.git#tag=v0.1.1
-	b2sums = 24f4ba99fbf22bc54f20fbb9ef3db3e24d3ebf8ab10b6bc6255088b691679689f7c0e4c75a6d7c8b6dfc17dfa8d466f7b2cfcb6357ab5da24475cc6833443165
+	source = sitra::git+https://github.com/sitraorg/sitra.git#tag=v0.2.0
+	b2sums = 553b2a9bef4f20f1c78b0478cb6e7eed1c767a0c1a3baf5480c0ed0b8462546d6387c4c666073e1a5a104f857f43dfc26e888a9a6642b2dee3bbbf4f937832fb
 
 pkgname = sitra

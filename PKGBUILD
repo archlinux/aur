@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=sitra
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Install fonts on your system'
 arch=('aarch64' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('libadwaita' 'libsitra' 'gtksourceview5' 'webkitgtk-6.0')
 makedepends=('blueprint-compiler' 'git' 'meson' 'vala')
 source=("${pkgname}::git+https://github.com/sitraorg/${pkgname}.git#tag=v${pkgver}")
-b2sums=('24f4ba99fbf22bc54f20fbb9ef3db3e24d3ebf8ab10b6bc6255088b691679689f7c0e4c75a6d7c8b6dfc17dfa8d466f7b2cfcb6357ab5da24475cc6833443165')
+b2sums=('553b2a9bef4f20f1c78b0478cb6e7eed1c767a0c1a3baf5480c0ed0b8462546d6387c4c666073e1a5a104f857f43dfc26e888a9a6642b2dee3bbbf4f937832fb')
 
 build() {
   arch-meson "${pkgname}" build
