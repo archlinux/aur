@@ -1,7 +1,7 @@
 pkgbase = vfio-native-qemu
 	pkgdesc = QEMU 11.1.2 with the vfio-native platform-identity patches, in /opt/qemu-native
 	pkgver = 11.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.archworks.co/sandwich/vfio-native
 	arch = x86_64
 	license = GPL-2.0-only
@@ -38,7 +38,7 @@ pkgbase = vfio-native-qemu
 	depends = pipewire
 	optdepends = vfio-native: the setup tooling that points a domain at this build
 	options = !strip
-	source = git+https://git.archworks.co/sandwich/vfio-native.git#tag=v1.4.0
+	source = git+https://git.archworks.co/sandwich/vfio-native.git#tag=v1.4.1
 	source = https://download.qemu.org/qemu-11.1.2.tar.xz
 	sha256sums = SKIP
 	sha256sums = 731b5681e4bb18be313231579b8efd0296c5b015fa36dc533874b639ba838016
