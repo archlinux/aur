@@ -1,7 +1,7 @@
 # Maintainer: Nirvam <marvinbeeblebrox at gmail dot com>
 
 pkgname=ashell-bin
-pkgver=0.9.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A ready to go Wayland status bar for Hyprland and Niri"
 url="https://github.com/MalpenZibo/ashell"
@@ -26,8 +26,8 @@ source=(
     "ashell-${pkgver}.tar.xz::${url}/releases/download/${pkgver}/ashell-x86_64-unknown-linux-gnu.tar.xz"
     "ashell.service"
 )
-sha512sums=('c99a879fcaa2d45e3ff2eaffe229b0479b2dd6310a30117469ab4e35dc624ddce404763ba0164a6d6cb660573c3c06eb4736a21fcf12d38dcc670d403fae2e77'
-    'dd4488aeef3bc08a82882dd69c2b470c407fa7440abb86ed79e883cc8a5e8621292861d221ee42b2ca130ecc0155660663ce41faacbf5576bbbe986189cb6287')
+sha512sums=('9f17734efd0aa051c6be61137d827954c36cc67b4b6da22fcd54f01da750f303cb841608aa75a0d46b0812feca8ad79880d9146c3f6e2a088aa4794355ac9866'
+            'dd4488aeef3bc08a82882dd69c2b470c407fa7440abb86ed79e883cc8a5e8621292861d221ee42b2ca130ecc0155660663ce41faacbf5576bbbe986189cb6287')
 
 package() {
     _output="${srcdir}/ashell-x86_64-unknown-linux-gnu"
