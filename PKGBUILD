@@ -1,16 +1,16 @@
 # Maintainer: Maxsspeaker <voidfox@maxsspeaker.space>
 
 pkgname=msmp-foxwave
-pkgver=6.0.2pre
-pkgrel=4
+pkgver=6.1.1
+pkgrel=5
 pkgdesc="MSMP FoxWave - streaming audio player for PC"
 arch=('x86_64')
 url="https://github.com/maxsspeaker/MSMP-6"
 license=('GPL3')
 
 depends=(
+    'pyside6'
     'yt-dlp' 
-    'pyside6' 
     'ffmpeg' 
     'deno'
     'python' 
@@ -28,7 +28,7 @@ makedepends=(
 )
 
 source=(
-    "git+https://github.com/maxsspeaker/MSMP-6.git#commit=b0dd7685d04559de0924"
+    "git+https://github.com/maxsspeaker/MSMP-6.git#commit=d6ee3dad1cda705d5367"
 
 )
 sha256sums=(
