@@ -1,7 +1,7 @@
 # Maintainer: chadsr <git at ross dot ch>
 
 pkgname=openshell
-pkgver=0.1.2 # renovate: datasource=github-releases depName=NVIDIA/OpenShell
+pkgver=0.1.3 # renovate: datasource=github-releases depName=NVIDIA/OpenShell
 pkgrel=1
 pkgdesc="The safe, private runtime for autonomous AI agents."
 arch=('x86_64' 'aarch64')
@@ -14,15 +14,17 @@ makedepends=(
 	'cmake'  # aws-lc-sys (TLS)
 	'pandoc' # man pages
 )
+checkdepends=('openssh') # forward_ssh_command_overrides_user_multiplexing_and_forking
 optdepends=(
 	'bash-completion: bash completions'
 	'docker: compute driver'
 	'podman: compute driver'
+	'openssh: ssh access and port forwarding'
 )
 conflicts=("$pkgname-bin" "$pkgname-git")
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('91fa81ac1088c0a2a0d6772a563f9545712ae6e257d8ffeb819070f9d8f7555d5ff5b9de77cda33df1478483cdbd9edb4fbbb493e4a3d0ad10afc27a4278c6a2')
+b2sums=('d0650d08f39c946a950ac7cb772da4626be6ddd49957069f1f64eb06fccd1d0b6fdfd7524d870bfff05794f138d0112a7d85c9a3870f781bfe45deef583879d3')
 
 prepare() {
 	cd "OpenShell-$pkgver"
