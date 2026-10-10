@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=publii-git
 _pkgname=Publii
-pkgver=0.48.0.build.17556.r0.gba194c5
+pkgver=0.48.1.build.17565.r0.gee74327
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -29,7 +29,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -82,7 +82,6 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
-        s/@cfgdirname@/${pkgname%-git}/g
     " "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
@@ -113,6 +112,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
 	local _app_dir="$(_get_app_dir)"
+    rm -rf "${_app_dir}/resources/default_app.asar"
 	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
     local _src="$(_get_project_dir)"
     install -Dm644 "${_src}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
