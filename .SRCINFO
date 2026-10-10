@@ -1,0 +1,16 @@
+pkgbase = sysc-notify
+	pkgdesc = Freedesktop notification daemon for sysc-shell
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Nomadcxx/sysc-notify
+	install = sysc-notify.install
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = go>=1.26.4
+	depends = systemd
+	optdepends = sysc-shell: notification popups and history
+	source = sysc-notify-0.1.0.tar.gz::https://github.com/Nomadcxx/sysc-notify/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = f3a22384d794f169abc6cbdd1b516f3ae4960d481c23f06e5ec75d4af05a4cb7
+
+pkgname = sysc-notify
