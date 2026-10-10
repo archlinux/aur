@@ -1,6 +1,6 @@
 pkgbase = python-mijia-api
 	pkgdesc = A Python API for Xiaomi Mijia
-	pkgver = 4.4.0
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/Do1e/mijia-api
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-mijia-api
 	depends = python-requests>=2.32.5
 	depends = python-tzlocal>=1:5.3.1
 	optdepends = python-fastmcp>=3.4.2: MCP server support for the "mijiaAPI mcp" command
-	source = python-mijia-api-4.4.0.tar.gz::https://files.pythonhosted.org/packages/ea/87/61b4835a141f5d7638d98d4373eb8f89535aa4e0a9cf5dc5ab8b46fab78b/mijiaapi-4.4.0.tar.gz
-	sha256sums = e607c08aad71d4454ee20ccc10753a9e56605168b4c320e16a6820df7c63075c
+	source = python-mijia-api-5.0.0.tar.gz::https://files.pythonhosted.org/packages/50/00/7be2da54f504f035788c84839874b8f8e525ef1df01fc4db77795936ef11/mijiaapi-5.0.0.tar.gz
+	sha256sums = ee938a938cb3b43b6ea23cc8e629707d98ed35a1d98a40b8b62ddb25c70bb9bb
 
 pkgname = python-mijia-api
