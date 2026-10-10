@@ -12,6 +12,7 @@ pkgbase = ecode-bin
 	depends = hicolor-icon-theme
 	depends = sdl2
 	provides = ecode
+	conflicts = ecode
 	source = https://github.com/SpartanJ/ecode/raw/ecode-0.9.0/LICENSE
 	sha256sums = SKIP
 	source_x86_64 = https://github.com/SpartanJ/ecode/releases/download/ecode-0.9.0/ecode-linux-0.9.0-x86_64.tar.gz
