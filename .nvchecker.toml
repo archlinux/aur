@@ -1,0 +1,3 @@
+[chess-analyzer-tui]
+source = "pypi"
+pypi = "chess-analyzer-tui"
