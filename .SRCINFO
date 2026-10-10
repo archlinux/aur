@@ -1,6 +1,6 @@
 pkgbase = filmcraft2-bin
 	pkgdesc = Video editing, color grading and audio (prebuilt binaries)
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/storytold/filmcraft
 	arch = x86_64
@@ -24,24 +24,24 @@ pkgbase = filmcraft2-bin
 	optdepends = vulkan-driver: hardware-accelerated Vulkan rendering
 	optdepends = xdg-desktop-portal: native file dialogs
 	optdepends = xdg-utils: open external links
-	provides = filmcraft=0.4.0
+	provides = filmcraft=0.5.0
 	conflicts = filmcraft
 	options = !strip
-	source = filmcraft-0.4.0-NOTICE.txt::https://raw.githubusercontent.com/storytold/filmcraft/v0.4.0/NOTICE
-	source = filmcraft-0.4.0-LICENSE-brand.txt::https://raw.githubusercontent.com/storytold/filmcraft/v0.4.0/docs/brand/LICENSE-brand.txt
-	source = filmcraft-0.4.0-LICENSE-app-icon.txt::https://raw.githubusercontent.com/storytold/filmcraft/v0.4.0/assets/app-icon/LICENSE.txt
-	source = filmcraft-0.4.0-OFL-Inter.txt::https://raw.githubusercontent.com/storytold/filmcraft/v0.4.0/assets/fonts/OFL-Inter.txt
-	source = filmcraft-0.4.0-OFL-JetBrainsMono.txt::https://raw.githubusercontent.com/storytold/filmcraft/v0.4.0/assets/fonts/OFL-JetBrainsMono.txt
-	source = filmcraft-0.4.0-OFL-NotoSerif.txt::https://raw.githubusercontent.com/storytold/filmcraft/v0.4.0/assets/fonts/OFL-NotoSerif.txt
+	source = filmcraft-0.5.0-NOTICE.txt::https://raw.githubusercontent.com/storytold/filmcraft/v0.5.0/NOTICE
+	source = filmcraft-0.5.0-LICENSE-brand.txt::https://raw.githubusercontent.com/storytold/filmcraft/v0.5.0/docs/brand/LICENSE-brand.txt
+	source = filmcraft-0.5.0-LICENSE-app-icon.txt::https://raw.githubusercontent.com/storytold/filmcraft/v0.5.0/assets/app-icon/LICENSE.txt
+	source = filmcraft-0.5.0-OFL-Inter.txt::https://raw.githubusercontent.com/storytold/filmcraft/v0.5.0/assets/fonts/OFL-Inter.txt
+	source = filmcraft-0.5.0-OFL-JetBrainsMono.txt::https://raw.githubusercontent.com/storytold/filmcraft/v0.5.0/assets/fonts/OFL-JetBrainsMono.txt
+	source = filmcraft-0.5.0-OFL-NotoSerif.txt::https://raw.githubusercontent.com/storytold/filmcraft/v0.5.0/assets/fonts/OFL-NotoSerif.txt
 	sha256sums = 5761787313b9d6c13dd5f03da2e04209ad7bd08eff8920edfd184141d791195c
 	sha256sums = d30f3aee39b72be3d1c1bdf994b75470ff53a354ca8ba6039c3a70a647b732fe
 	sha256sums = 79d32f0c9576355f9eaedf8ba8727a149cf3e42ed753ff5d25ac882bf072e27a
 	sha256sums = 262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a
 	sha256sums = a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697
 	sha256sums = cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a
-	source_x86_64 = https://github.com/storytold/filmcraft/releases/download/v0.4.0/filmcraft-0.4.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 841790ff6649f0d49daa4a8ade1cb18d948e5ca43d00771046663e06c8d8ce83
-	source_aarch64 = https://github.com/storytold/filmcraft/releases/download/v0.4.0/filmcraft-0.4.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 3fbfc9b49a02bfa8a6ba6bd7f1841773b626a2adf0918f5e6164299d3f12f144
+	source_x86_64 = https://github.com/storytold/filmcraft/releases/download/v0.5.0/filmcraft-0.5.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = be2183f9859c013cbf2e8dc29524532503a3eb75e2156af617bd4df7ffad40dd
+	source_aarch64 = https://github.com/storytold/filmcraft/releases/download/v0.5.0/filmcraft-0.5.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = b1c75878e91c80c62faabff8b617dcd41ff25a09ec43c4745f125caf699620c4
 
 pkgname = filmcraft2-bin
