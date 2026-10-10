@@ -9,11 +9,11 @@
 
 # change font directories in build() to match yours:
 #   - deJaVu and GhostScript font directories are the default ones
-#   - Windows font directory is set according to a Wiki example
+#   - Windows font directory is set according to the ArchWiki example
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.1.2.32
+pkgver=7.1.2.33
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -39,6 +39,7 @@ makedepends=(
     'graphviz'
     'gsfonts'
     'jbigkit'
+    'jemalloc'
     'lcms2'
     'libfpx'
     'libheif'
@@ -74,7 +75,7 @@ makedepends=(
     'zlib'
     'zstd')
 source=("git+https://github.com/ImageMagick/ImageMagick.git#tag=${pkgver%.*}-${pkgver##*.}")
-sha256sums=('d6f794e14cb0dd7de9935b36fa94c8258d6c77130200d4976a688c23a5701f9b')
+sha256sums=('e89052ac977ff3bbdfe425e15581df4d53aad8b6fd60f91d763451efeca44093')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
 
 build() {
@@ -118,7 +119,7 @@ build() {
         --with-gvc \
         --with-heic \
         --with-jbig \
-        --without-jemalloc \
+        --with-jemalloc \
         --with-jpeg \
         --with-jxl \
         --with-lcms \
@@ -178,6 +179,7 @@ package_imagemagick-full() {
         'graphviz'
         'gsfonts'
         'jbigkit'
+        'jemalloc'
         'lcms2'
         'libfpx'
         'libgcc'
