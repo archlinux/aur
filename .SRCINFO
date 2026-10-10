@@ -1,0 +1,23 @@
+pkgbase = nightforge
+	pkgdesc = The night light, your way: on or off, how warm, and when, with its own tray icon. For KognogOS's hypeForge desktop on Sway (wlroots); runs in any terminal, even a plain text console (Forge Suite)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jetomev/forge-suite/tree/main/nightforge
+	arch = any
+	license = GPL3
+	checkdepends = dbus
+	depends = python
+	depends = python-textual
+	depends = python-forgekit>=0.10.0
+	depends = python-gobject
+	depends = wlsunset
+	optdepends = sway: the desktop it is made for, with hypeForge (runs nightforge start at login)
+	optdepends = alacritty: the tray menu's Open nightForge
+	optdepends = libnotify: a message when the night light cannot start
+	source = nightforge-1.0.0.tar.gz::https://github.com/jetomev/forge-suite/releases/download/nightforge-v1.0.0/nightforge-1.0.0.tar.gz
+	source = nightforge-1.0.0.tar.gz.asc::https://github.com/jetomev/forge-suite/releases/download/nightforge-v1.0.0/nightforge-1.0.0.tar.gz.asc
+	validpgpkeys = 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
+	sha256sums = 4b320224fda4e747484f8ff597b746202db53af93a363ca5451b9649b7f2355a
+	sha256sums = SKIP
+
+pkgname = nightforge
