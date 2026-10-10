@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=xeve
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='MPEG-5 EVC (Essential Video Coding) encoder'
 arch=('x86_64')
@@ -15,9 +15,9 @@ options=('!emptydirs')
 source=("https://github.com/mpeg5/xeve/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         '010-xeve-disable-werror.patch'
         '020-xeve-fix-pkg-config.patch')
-sha256sums=('f60950d063f52adf11ed7196c0bbb0503fa107b0e43af06bdc81fecc24f2a62e'
+sha256sums=('5d1249212f431816b4723937c9ec8491b45ee1bb75c0f46692deaf7f59fbf19c'
             '0579f036b5f1543306c177054f749360740ac798bd2cbc20938d2717c8cd7ea2'
-            '68ae77132ec2b3dd8de641d16f3d7cc0de819ddb116484809445666b4d215187')
+            'aae6de85f948df7d6b3dc0cf5ce477c4a8e2cfd463d3a9abbdd8e85351e17722')
 
 prepare() {
     printf '%s\n' "v${pkgver}" > "${pkgname}-${pkgver}/version.txt"
