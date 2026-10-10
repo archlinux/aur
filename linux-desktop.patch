@@ -1,5 +1,5 @@
 diff --git a/.gitignore b/.gitignore
-index 86e330fc..41d3427c 100644
+index 3cb86ce8..6c9654c2 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -2,6 +2,7 @@ CLAUDE.local.md
@@ -10,16 +10,16 @@ index 86e330fc..41d3427c 100644
  apps/desktop/*.p12
  node_modules/
  lib/
-@@ -46,3 +47,4 @@ worktrees/
+@@ -47,3 +48,4 @@ worktrees/
  .agents/worktrees/
  .typert-*/
  native/system/test/bin/
 +apps/desktop/.desktop-build/
 diff --git a/apps/desktop/package.json b/apps/desktop/package.json
-index cd0def79..900f3329 100644
+index c1009cb5..9ff37b52 100644
 --- a/apps/desktop/package.json
 +++ b/apps/desktop/package.json
-@@ -33,6 +33,8 @@
+@@ -35,6 +35,8 @@
      "package:win:x64": "tsx scripts/package-target.ts win-x64",
      "package:win:x64:unsigned": "tsx scripts/package-target.ts win-x64 --unsigned",
      "package:win:x64:dir": "tsx scripts/package-target.ts win-x64 --dir",
@@ -126,13 +126,13 @@ index 4f33e804..d44bf0f3 100644
    }
  }
 diff --git a/apps/desktop/scripts/desktop-build-version-discovery.ts b/apps/desktop/scripts/desktop-build-version-discovery.ts
-index 6bb7a1b0..80b1b2b9 100644
+index fd5a2c9e..fe363b76 100644
 --- a/apps/desktop/scripts/desktop-build-version-discovery.ts
 +++ b/apps/desktop/scripts/desktop-build-version-discovery.ts
 @@ -31,7 +31,10 @@ const LISTING_DEADLINE_MS = 8_000
  const LISTING_PAGE_SIZE = 1000
  
- /** Artifact name electron-builder writes for one build, on either platform; unsigned Windows builds add a suffix. */
+ /** Artifact name electron-builder writes for one build, on either platform; unsigned builds add a suffix. */
 -const ARTIFACT = /(?:^|\/)deepseek-harness-(?<version>.+)-(?:mac|win)-(?:arm64|x64)(?:-unsigned)?\.(?:exe|dmg|zip)$/u
 +const ARTIFACT = /(?:^|\/)deepseek-harness-(?<version>.+)-(?:mac|win|linux)-(?:arm64|x64)(?:-unsigned)?\.(?:exe|dmg|zip|AppImage)$/u
 +
@@ -154,10 +154,10 @@ index 6bb7a1b0..80b1b2b9 100644
      && options.environment.DOWNLOAD_TEST_ORIGIN === undefined) return undefined
    const update = resolveDesktopUploadConfig(options.environment, platform, arch)
 diff --git a/apps/desktop/scripts/desktop-package-environment.d.mts b/apps/desktop/scripts/desktop-package-environment.d.mts
-index b0d7bc2d..eb1b9388 100644
+index a49ca46e..181049f7 100644
 --- a/apps/desktop/scripts/desktop-package-environment.d.mts
 +++ b/apps/desktop/scripts/desktop-package-environment.d.mts
-@@ -2,13 +2,14 @@
+@@ -9,13 +9,14 @@ export function localMacOSPackageEnvironment(environment?: NodeJS.ProcessEnv): N
  
  /**
   * Read the target's required UTF-8 dotenv file; release settings never fall back to ambient values.
@@ -173,7 +173,7 @@ index b0d7bc2d..eb1b9388 100644
    environment?: NodeJS.ProcessEnv,
    appRoot?: string,
  ): NodeJS.ProcessEnv
-@@ -22,6 +23,6 @@ export function loadDesktopPackageEnvironment(
+@@ -29,6 +30,6 @@ export function loadDesktopPackageEnvironment(
   */
  export function validateDesktopPackageEnvironment(
    environment: NodeJS.ProcessEnv,
@@ -182,15 +182,20 @@ index b0d7bc2d..eb1b9388 100644
    options?: { unsigned?: boolean, prepareOnly?: boolean },
  ): void
 diff --git a/apps/desktop/scripts/desktop-package-environment.mjs b/apps/desktop/scripts/desktop-package-environment.mjs
-index 3addf3ff..d6cc43e4 100644
+index 51b87810..f3de1d95 100644
 --- a/apps/desktop/scripts/desktop-package-environment.mjs
 +++ b/apps/desktop/scripts/desktop-package-environment.mjs
-@@ -19,21 +19,25 @@ const MACOS_SETTING = /^(?:DSH_DESKTOP_MACOS_(?:SIGNING_IDENTITY|TEAM_ID|PACK_CO
+@@ -19,6 +19,8 @@ const MACOS_SETTING = /^(?:DSH_DESKTOP_MACOS_(?:SIGNING_IDENTITY|TEAM_ID|PACK_CO
  const AMBIENT_RELEASE_SETTING = /^(?:DSH_DESKTOP_(?:APP_ID|AUTO_UPDATE_ENV|MANDATORY_UPDATE_.*|WINDOWS_.*|MACOS_.*)|APPLE_.*|(?:WIN_)?CSC_.*|DOWNLOAD_(?:TEST|PROD)_.*)$/iu
  const FILE_SETTINGS = ['DSH_DESKTOP_WINDOWS_CER_FILE', 'DSH_DESKTOP_WINDOWS_SIGNTOOL', 'APPLE_API_KEY', 'APPLE_KEYCHAIN', 'CSC_LINK']
  
 +const LINUX_SETTING = /^DSH_DESKTOP_LINUX_/u
 +
+ /**
+  * Select local macOS test defaults without reading dotenv files or inheriting release settings.
+  * @param {NodeJS.ProcessEnv} environment Parent environment, retained for build tools and networking.
+@@ -34,19 +36,21 @@ export function localMacOSPackageEnvironment(environment = process.env) {
+ 
  /**
   * Read the target's required UTF-8 dotenv file; release settings never fall back to ambient values.
 - * @param {'win32' | 'darwin'} platform Target platform.
@@ -214,7 +219,7 @@ index 3addf3ff..d6cc43e4 100644
    }
    let settings
    try {
-@@ -43,7 +47,7 @@ export function loadDesktopPackageEnvironment(platform, environment = process.en
+@@ -56,7 +60,7 @@ export function loadDesktopPackageEnvironment(platform, environment = process.en
      // Parser diagnostics can contain credential-bearing input.
      throw new Error(`desktop package: invalid dotenv syntax in ${path}`)
    }
@@ -223,10 +228,10 @@ index 3addf3ff..d6cc43e4 100644
    for (const name of Object.keys(settings)) {
      if (!SHARED_SETTING.test(name) && !platformSetting.test(name)) {
        throw new Error(`desktop package: unsupported setting ${name} in ${path}; use the platform template`)
-@@ -72,13 +76,15 @@ function requireReadableFile(environment, name) {
+@@ -85,13 +89,15 @@ function requireReadableFile(environment, name) {
  /**
-  * Validate release configuration before preparation without invoking a token or Apple's services.
-  * @param {NodeJS.ProcessEnv} environment File-owned release settings.
+  * Validate the packaging mode before preparation without invoking a token or Apple's services.
+  * @param {NodeJS.ProcessEnv} environment Selected local defaults or file-owned release settings.
 - * @param {{ platform: 'win32' | 'darwin', arch: string }} target Selected release target.
 + * @param {{ platform: 'win32' | 'darwin' | 'linux', arch: string }} target Selected release target.
   * @param {{ unsigned?: boolean, prepareOnly?: boolean }} options Explicit packaging mode.
@@ -237,7 +242,7 @@ index 3addf3ff..d6cc43e4 100644
    resolveNpmRegistry(environment)
 +  // Linux is built unsigned and publishes no update feed or mandatory policy service.
 +  if (target.platform === 'linux') return
-   resolveDesktopPolicyEnvironment(environment)
+   if (target.platform !== 'darwin' || !options.unsigned) resolveDesktopPolicyEnvironment(environment)
    if (target.platform === 'darwin') resolveMacOSPackageSettings(environment)
    else resolveWindowsPackageSettings(environment)
 diff --git a/apps/desktop/scripts/desktop-toolchain-preflight.ts b/apps/desktop/scripts/desktop-toolchain-preflight.ts
@@ -359,23 +364,22 @@ index d544ce6d..5ceb275d 100644
  
  function readManifest(path: string): PackageManifest {
 diff --git a/apps/desktop/scripts/electron-builder-config.mjs b/apps/desktop/scripts/electron-builder-config.mjs
-index 1fb78780..410f09f5 100644
+index f08b7838..2954332f 100644
 --- a/apps/desktop/scripts/electron-builder-config.mjs
 +++ b/apps/desktop/scripts/electron-builder-config.mjs
-@@ -51,10 +51,11 @@ export function createElectronBuilderConfig(
-   preparedRuntimeVersion = undefined,
- ) {
-   const appId = resolveDesktopAppId(env)
--  const policy = resolveDesktopPolicyEnvironment(env)
-   const targetPlatform = env.DSH_DESKTOP_TARGET_PLATFORM
-   const resolvedPlatform = targetPlatform ?? hostPlatform
-   const resolvedArch = env.DSH_DESKTOP_TARGET_ARCH ?? hostArch
+@@ -60,7 +60,10 @@ export function createElectronBuilderConfig(
+   const unsigned = env.DSH_DESKTOP_UNSIGNED === '1'
+   const packagesMacOS = targetPlatform === 'darwin' || (targetPlatform === undefined && hostPlatform === 'darwin')
+   const packagesWindows = resolvedPlatform === 'win32'
+-  const policy = packagesMacOS && unsigned ? undefined : resolveDesktopPolicyEnvironment(env)
 +  // Linux ships unsigned with no update feed and no mandatory policy service.
-+  const policy = resolvedPlatform === 'linux' ? undefined : resolveDesktopPolicyEnvironment(env)
-   if (env.DSH_DESKTOP_UNSIGNED !== undefined && !['0', '1'].includes(env.DSH_DESKTOP_UNSIGNED)) {
-     throw new Error('desktop package: DSH_DESKTOP_UNSIGNED must be 0 or 1')
-   }
-@@ -90,7 +91,9 @@ export function createElectronBuilderConfig(
++  const policy = resolvedPlatform === 'linux' || (packagesMacOS && unsigned)
++    ? undefined
++    : resolveDesktopPolicyEnvironment(env)
+   if (resolvedPlatform === 'win32') installWindowsDirectoryInstaller()
+   const macOSSigning = packagesMacOS && !unsigned ? resolveMacOSSigningEnvironment(env) : undefined
+   if (packagesMacOS && !unsigned) resolveMacOSNotarizationEnvironment(env)
+@@ -89,7 +92,9 @@ export function createElectronBuilderConfig(
    if (windowsSigner !== undefined) {
      installWindowsNsisBootstrapSigner({ sign: windowsSigner })
    }
@@ -386,7 +390,7 @@ index 1fb78780..410f09f5 100644
    if (preparedRuntime !== undefined) buildPaths.dsh = preparedRuntime
    // electron-builder merges extraMetadata into the packaged manifest, so a build version here reaches
    // the artifact names, the update feed, and the installed app.getVersion() the updater compares against.
-@@ -143,7 +146,8 @@ export function createElectronBuilderConfig(
+@@ -142,7 +147,8 @@ export function createElectronBuilderConfig(
      asarUnpack: unpack,
      extraResources: [
        { from: buildPaths.runtime, to: 'runtime' },
@@ -396,7 +400,7 @@ index 1fb78780..410f09f5 100644
        // Windows tray bitmaps; macOS keeps the Dock and ships no menu bar icon.
        ...(packagesWindows ? [{ from: fileURLToPath(new URL('../resources/tray-windows.ico', import.meta.url)), to: 'tray.ico' }] : []),
      ],
-@@ -230,8 +234,13 @@ export function createElectronBuilderConfig(
+@@ -230,8 +236,13 @@ export function createElectronBuilderConfig(
        },
        target: ['nsis'],
      },
@@ -441,10 +445,10 @@ index 7c2f3e75..1e3d2f12 100644
    }
 diff --git a/apps/desktop/scripts/linux-runtime-adjustments.ts b/apps/desktop/scripts/linux-runtime-adjustments.ts
 new file mode 100644
-index 00000000..96d98e91
+index 00000000..dd49834b
 --- /dev/null
 +++ b/apps/desktop/scripts/linux-runtime-adjustments.ts
-@@ -0,0 +1,131 @@
+@@ -0,0 +1,136 @@
 +/**
 + * Post-install adjustments the Linux release needs because neither Electron nor the
 + * published dependency set has ever been qualified against it.
@@ -472,13 +476,18 @@ index 00000000..96d98e91
 +
 +/** Package that carries the sharp rebuild matching the workspace's sharp version. */
 +const SHARP_PACKAGE = '@janhapke/sharp-electron'
-+const SHARP_VERSION = '0.35.3-electron.1'
++/**
++ * Newest published rebuild. Upstream's sharp moved to 0.35.5, which has no rebuild yet,
++ * so the Linux runtime ships the 0.35.4 rebuild, whose JavaScript and native halves are
++ * the same version and replace the registry package together.
++ */
++const SHARP_VERSION = '0.35.4-electron.1'
 +
 +/**
 + * SHA-256 of the published sharp tarball.
 + * A mismatch stops packaging instead of shipping binaries nobody verified.
 + */
-+const SHARP_SHA256 = 'f8f43f278e78702ac767c9ef441129495d046ec8fbb8bf67cd9770fdb15966f2'
++const SHARP_SHA256 = 'af967ccc9e306e36a92cd017bc6121ab06521c8fc4d3bc642d3e90f62e3e44c6'
 +
 +/** Package the sharp rebuild replaces, and the registry binaries it makes dead weight. */
 +const SHARP_DESTINATION = 'sharp'
@@ -577,7 +586,7 @@ index 00000000..96d98e91
 +  writeFileSync(path, source.replace(OFFICE_ENGINE_EXISTENCE_CHECK, OFFICE_ENGINE_EXISTENCE_FIX))
 +}
 diff --git a/apps/desktop/scripts/package-target.ts b/apps/desktop/scripts/package-target.ts
-index 62f4fcbb..95409461 100644
+index a133ccdc..05f6a444 100644
 --- a/apps/desktop/scripts/package-target.ts
 +++ b/apps/desktop/scripts/package-target.ts
 @@ -24,6 +24,7 @@ import { suggestDesktopBuildVersion } from './desktop-build-version-discovery.ts
@@ -667,7 +676,7 @@ index 62f4fcbb..95409461 100644
    if (target.platform === 'darwin' && hostPlatform !== 'darwin') {
      throw new Error(`desktop package: ${name} requires a macOS build host`)
    }
-@@ -287,13 +310,13 @@ function runPnpm(
+@@ -286,13 +309,13 @@ function runPnpm(
    cwd: string = APP_ROOT,
    run?: ReturnType<typeof createPackagingRun>,
  ): Promise<void> {
@@ -687,10 +696,10 @@ index 62f4fcbb..95409461 100644
        cwd,
        env,
        stdio: 'inherit',
-@@ -368,8 +391,10 @@ async function main(): Promise<void> {
-         notarizationProxyConfigured: settings.notarizationProxy !== undefined })
-       await packagingStep(run.directory, 'macos-package', () => withMacOSSigningKeychain(environment,
-         signingEnvironment => packageTarget(invocation, signingEnvironment, run)), secrets)
+@@ -370,8 +393,10 @@ async function main(): Promise<void> {
+       await packagingStep(run.directory, 'macos-package', () => invocation.unsigned
+         ? packageTarget(invocation, environment, run)
+         : withMacOSSigningKeychain(environment, signingEnvironment => packageTarget(invocation, signingEnvironment, run)), secrets)
 -    } else {
 +    } else if (target.platform === 'win32') {
        await packagingStep(run.directory, 'windows-package', () => packageTarget(invocation, environment, run), secrets)
@@ -699,7 +708,7 @@ index 62f4fcbb..95409461 100644
      }
      success = true
    } catch (error) {
-@@ -402,8 +427,11 @@ export async function packageTarget(
+@@ -409,8 +434,11 @@ export async function packageTarget(
    const mac = target.platform === 'darwin' ? resolveMacOSPackageSettings(environment) : undefined
    const packArguments = mac === undefined ? [] : ['--concurrency', String(mac.packConcurrency)]
    const buildPaths = desktopTargetBuildPaths(target.name)
@@ -713,7 +722,7 @@ index 62f4fcbb..95409461 100644
      rmSync(releaseRecordPath, { force: true })
      rmSync(`${releaseRecordPath}.tmp`, { force: true })
    }
-@@ -496,7 +524,9 @@ export async function packageTarget(
+@@ -504,7 +532,9 @@ export async function packageTarget(
      await signedStage('artifacts', () => execute(desktopElectronBuilderArguments(target, invocation.directory), electronBuilderEnv))
      await execute(['exec', 'tsx', 'scripts/smoke-packaged-runtime.ts', ...(invocation.unsigned ? ['--unsigned'] : [])], targetEnv)
    }
@@ -721,14 +730,14 @@ index 62f4fcbb..95409461 100644
 +  if (releaseRecordPath !== undefined && !invocation.directory && !invocation.unsigned) {
 +    writeReleaseRecord(target, electronBuilderEnv, buildPaths.artifacts)
 +  }
-   if (journal) recordPackagingEvent(journal, { type: 'artifacts', directory: buildPaths.artifacts })
+   if (journal) recordPackagingEvent(journal, { type: 'artifacts', directory: invocation.unsigned ? buildPaths.unsignedArtifacts : buildPaths.artifacts })
  }
  
 diff --git a/apps/desktop/scripts/prepare-dsh.ts b/apps/desktop/scripts/prepare-dsh.ts
-index 442e0175..dd96ef7e 100644
+index 7d290b94..fb636654 100644
 --- a/apps/desktop/scripts/prepare-dsh.ts
 +++ b/apps/desktop/scripts/prepare-dsh.ts
-@@ -30,6 +30,7 @@ import {
+@@ -31,6 +31,7 @@ import {
    signMacOSRuntime,
  } from './macos-runtime.ts'
  import { desktopTargetPlatform, resolveDesktopBuildTarget, resolveDesktopTargetBuildPaths } from './desktop-build-paths.mjs'
@@ -736,7 +745,7 @@ index 442e0175..dd96ef7e 100644
  import { desktopRuntimeFileExclusion } from './runtime-file-policy.ts'
  import { selectOfficeEngine } from '../../../scripts/libreoffice-packages.mjs'
  
-@@ -41,7 +42,10 @@ const STORE_ROOT = join(BUILD_ROOT, 'store')
+@@ -42,7 +43,10 @@ const STORE_ROOT = join(BUILD_ROOT, 'store')
  const RUNTIME_ROOT = BUILD_PATHS.runtime
  const PNPM_BUILD_STATE = BUILD_PATHS.dshPnpm
  const PACKAGE_SET_ROOT = BUILD_PATHS.packageSet
@@ -745,10 +754,10 @@ index 442e0175..dd96ef7e 100644
 +  const platform = desktopTargetPlatform(resolveDesktopBuildTarget()).platform
 +  return platform === 'win32' ? 'electron.exe' : platform === 'darwin' ? 'Electron.app/Contents/MacOS/Electron' : 'electron'
 +})())
- const PNPM = join(RUNTIME_ROOT, 'pnpm', 'bin', 'pnpm.mjs')
+ const PNPM = join(RUNTIME_ROOT, 'primary-runtime', 'dependencies', 'pnpm', 'bin', 'pnpm.mjs')
  
  function manifestVersion(path: string, subject: string): string {
-@@ -145,6 +149,15 @@ async function main(): Promise<void> {
+@@ -148,6 +152,15 @@ async function main(): Promise<void> {
        name: '@deepseek-ai/dsh-desktop-runtime', private: true, version: release.version, type: 'module',
        dependencies: Object.fromEntries(packageSet.packages.map(entry => [entry.name, entry.version])),
      }, undefined, 2)}\n`)
@@ -765,28 +774,10 @@ index 442e0175..dd96ef7e 100644
        if (!existsSync(join(DSH_OUTPUT_ROOT, 'node_modules', DESKTOP_HOST_PACKAGE, file))) {
          throw new Error(`desktop runtime: missing private Host file ${file}`)
 diff --git a/apps/desktop/scripts/prepare-runtime.ts b/apps/desktop/scripts/prepare-runtime.ts
-index 1b88f091..df3175c5 100644
+index ba92fef0..7c45eaba 100644
 --- a/apps/desktop/scripts/prepare-runtime.ts
 +++ b/apps/desktop/scripts/prepare-runtime.ts
-@@ -8,7 +8,7 @@ import { dirname, join } from 'node:path'
- import { parseArgs } from 'node:util'
- import { downloadArtifact } from '@electron/get'
- import extractZip from 'extract-zip'
--import { resolveDesktopBuildTarget, resolveDesktopTargetBuildPaths } from './desktop-build-paths.mjs'
-+import { resolveDesktopBuildTarget, desktopTargetPlatform, resolveDesktopTargetBuildPaths } from './desktop-build-paths.mjs'
- import { preparePrimaryRuntime } from './prepare-primary-runtime.ts'
- import { prepareDesktopCli } from './prepare-cli.ts'
- import { prepareCommandLink } from './prepare-command-link.ts'
-@@ -31,7 +31,7 @@ function preparePnpm(): string {
- async function main(): Promise<void> {
-   const { values } = parseArgs({ options: { 'defer-primary-runtime-smoke': { type: 'boolean', default: false } } })
-   const target = resolveDesktopBuildTarget()
--  const platform = target.startsWith('mac-') ? 'darwin' : 'win32'
-+  const { platform } = desktopTargetPlatform(target)
-   const arch = target.endsWith('arm64') ? 'arm64' : 'x64'
-   const require = createRequire(import.meta.url)
-   const { version } = require('electron/package.json') as { version: string }
-@@ -39,7 +39,9 @@ async function main(): Promise<void> {
+@@ -27,7 +27,9 @@ async function prepareElectron({ platform, arch }: DesktopTarget): Promise<strin
      () => downloadArtifact({ version, platform, arch, artifactName: 'electron', cacheRoot: BUILD_PATHS.downloads }))
    rmSync(BUILD_PATHS.electron, { recursive: true, force: true })
    await packagingStep(process.env.DSH_DESKTOP_PACKAGING_RUN_DIR, 'extract:electron', () => extractZip(archive, { dir: BUILD_PATHS.electron }))
@@ -794,30 +785,26 @@ index 1b88f091..df3175c5 100644
 +  const executable = join(BUILD_PATHS.electron, platform === 'win32' ? 'electron.exe'
 +    : platform === 'darwin' ? 'Electron.app/Contents/MacOS/Electron' : 'electron')
 +  if (platform !== 'win32') chmodSync(executable, 0o755)
-   const nodeVersion = execFileSync(executable, ['-p', 'process.versions.node'], {
+   return execFileSync(executable, ['-p', 'process.versions.node'], {
      encoding: 'utf8', env: { ...process.env, ELECTRON_RUN_AS_NODE: '1' },
    }).trim()
-@@ -55,8 +57,12 @@ async function main(): Promise<void> {
-     node: nodeVersion,
-     pnpm: pnpmVersion,
-   }, undefined, 2)}\n`)
--  await packagingStep(process.env.DSH_DESKTOP_PACKAGING_RUN_DIR, 'prepare:cli',
--    async () => prepareDesktopCli(join(RUNTIME_ROOT, 'cli'), platform))
+@@ -37,7 +39,9 @@ function prepareCli({ platform, arch }: DesktopTarget): void {
+   cpSync(join(import.meta.dirname, 'node-bin'), join(RUNTIME_ROOT, 'bin'), { recursive: true })
+   chmodSync(join(RUNTIME_ROOT, 'bin', 'node'), 0o755)
+   const cli = join(RUNTIME_ROOT, 'cli')
+-  prepareDesktopCli(cli, platform)
 +  // Installing the public `dsh` command is a macOS and Windows feature, and the POSIX
 +  // launcher this step copies addresses the macOS bundle layout, so a Linux build ships none.
-+  if (platform !== 'linux') {
-+    await packagingStep(process.env.DSH_DESKTOP_PACKAGING_RUN_DIR, 'prepare:cli',
-+      async () => prepareDesktopCli(join(RUNTIME_ROOT, 'cli'), platform))
-+  }
-   if (macosMinimumVersion !== undefined) prepareCommandLink(join(RUNTIME_ROOT, 'cli'), arch, macosMinimumVersion)
-   cpSync(join(import.meta.dirname, '..', 'lib', 'command-manager-entry.js'), join(RUNTIME_ROOT, 'cli', 'command-manager.js'))
-   cpSync(join(import.meta.dirname, 'command-path.ps1'), join(RUNTIME_ROOT, 'cli', 'command-path.ps1'))
++  if (platform !== 'linux') prepareDesktopCli(cli, platform)
+   if (platform === 'darwin') {
+     const minimumVersion = execFileSync('/usr/libexec/PlistBuddy', [
+       '-c', 'Print LSMinimumSystemVersion', join(BUILD_PATHS.electron, 'Electron.app', 'Contents', 'Info.plist'),
 diff --git a/apps/desktop/scripts/smoke-packaged-runtime.ts b/apps/desktop/scripts/smoke-packaged-runtime.ts
-index 106830b5..702361f7 100644
+index b9103000..10f29b1a 100644
 --- a/apps/desktop/scripts/smoke-packaged-runtime.ts
 +++ b/apps/desktop/scripts/smoke-packaged-runtime.ts
-@@ -14,9 +14,12 @@ const windows = target === 'win-x64'
- if (values.unsigned && !windows) throw new Error('desktop smoke: unsigned artifacts require Windows')
+@@ -13,9 +13,12 @@ const target = resolveDesktopBuildTarget()
+ const windows = target === 'win-x64'
  const artifacts = values.unsigned ? paths.unsignedArtifacts : paths.artifacts
  const application = windows ? join(artifacts, 'win-unpacked')
 -  : join(artifacts, target === 'mac-arm64' ? 'mac-arm64' : 'mac', 'DeepSeek Harness.app', 'Contents')
@@ -833,10 +820,10 @@ index 106830b5..702361f7 100644
    resolveDesktopPackageTarget(target))
  if (windows && !values.unsigned) await verifyWindowsCode(application)
 diff --git a/apps/desktop/src/main.ts b/apps/desktop/src/main.ts
-index b4b8153b..abbca86b 100644
+index 1202670a..ad79e25a 100644
 --- a/apps/desktop/src/main.ts
 +++ b/apps/desktop/src/main.ts
-@@ -203,6 +203,16 @@ function platformLoginUrl(authorizeUrl: string): string {
+@@ -204,6 +204,16 @@ function platformLoginUrl(authorizeUrl: string): string {
    return url.href
  }
  
@@ -853,7 +840,7 @@ index b4b8153b..abbca86b 100644
  function createWindow(preload: string, show = false, primary = false): BrowserWindow {
    const window = new BrowserWindow({
      width: 1280,
-@@ -226,6 +236,10 @@ function createWindow(preload: string, show = false, primary = false): BrowserWi
+@@ -227,6 +237,10 @@ function createWindow(preload: string, show = false, primary = false): BrowserWi
        visualEffectState: 'active' as const,
        backgroundColor: '#00000000',
      } : {}),
@@ -864,7 +851,7 @@ index b4b8153b..abbca86b 100644
      webPreferences: {
        preload,
        nodeIntegration: false,
-@@ -922,15 +936,13 @@ async function main(): Promise<void> {
+@@ -926,15 +940,13 @@ async function main(): Promise<void> {
      updates.dispose()
    })
  
@@ -964,7 +951,7 @@ index b7d8315f..dc8fc84d 100644
      `], { stdio: ['ignore', 'pipe', 'pipe'], env: { PATH: process.env.PATH } })
      let stdout = ''
 diff --git a/apps/desktop/tests/package-target.spec.ts b/apps/desktop/tests/package-target.spec.ts
-index c802f668..7a93f29e 100644
+index 5019841e..baebf56c 100644
 --- a/apps/desktop/tests/package-target.spec.ts
 +++ b/apps/desktop/tests/package-target.spec.ts
 @@ -26,7 +26,9 @@ describe('desktop package target', () => {
@@ -979,10 +966,10 @@ index c802f668..7a93f29e 100644
      expect(() => resolveDesktopPackageTarget('mac-arm64', 'darwin', 'x64')).toThrow(/Apple Silicon/u)
      expect(() => resolveDesktopPackageTarget('mac-arm64', 'linux', 'arm64')).toThrow(/macOS/u)
 diff --git a/package.json b/package.json
-index f4970a17..8b3f261c 100644
+index 2d768057..982c8d28 100644
 --- a/package.json
 +++ b/package.json
-@@ -38,6 +38,8 @@
+@@ -40,6 +40,8 @@
      "package:desktop:win:x64": "pnpm --filter @deepseek-ai/dsh-desktop run package:win:x64",
      "package:desktop:win:x64:unsigned": "pnpm --filter @deepseek-ai/dsh-desktop run package:win:x64:unsigned",
      "package:desktop:win:x64:dir": "pnpm --filter @deepseek-ai/dsh-desktop run package:win:x64:dir",
