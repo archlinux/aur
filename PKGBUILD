@@ -1,6 +1,6 @@
 # Maintainer: objz <me@objz.dev>
 pkgname=rmcl
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Minecraft launcher TUI"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ provides=('rmcl')
 conflicts=('rmcl-bin' 'rmcl-git' 'mcl-launcher' 'mcl-launcher-bin' 'mcl-launcher-git')
 replaces=('mcl-launcher' 'mcl-launcher-bin' 'mcl-launcher-git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('37316bd7606f433cc369382c755bdfa3dcf872145d37664cceaf85d82b00f324')
+sha256sums=('f5d7b53cb51c51199dee7fffedf08d949d2a739f438093a22450394169136d8c')
 
 build() {
   export CARGO_TARGET_DIR="$srcdir/target"
