@@ -1,23 +1,24 @@
 pkgbase = lammps
 	pkgdesc = Public development project of the LAMMPS MD software package
-	pkgver = 20250722
-	pkgrel = 8
+	pkgver = 20260930
+	pkgrel = 1
 	url = https://github.com/lammps/lammps
 	arch = x86_64
 	license = GPL
 	makedepends = cmake>=3.1
 	makedepends = python-pip
 	makedepends = python-build
+	makedepends = ffmpeg
 	depends = fftw
 	depends = openmpi
-	depends = ffmpeg
 	depends = libpng
 	depends = python
+	optdepends = ffmpeg: required for dump movie video output
 	optdepends = clang
 	optdepends = python-mpi4py
 	provides = lammps
 	conflicts = lammps-git
-	source = https://github.com/lammps/lammps/archive/refs/tags/stable_22Jul2025_update5.zip
-	sha256sums = b245412081439fb2b107d6d382400859cb77894f3037bef8d9d8068b0a4d75fd
+	source = https://github.com/lammps/lammps/archive/refs/tags/stable_30Sep2026.zip
+	sha256sums = 89c39076d492b155fd9849cb022eb30dcf125460426e3318bd8854bb44cc7cd9
 
 pkgname = lammps
