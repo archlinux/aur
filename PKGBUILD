@@ -2,9 +2,9 @@
 
 pkgname=pi-web
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Local browser UI for the pi coding agent'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/agegr/pi-web'
 license=('MIT')
 
@@ -55,7 +55,6 @@ package() {
     node_modules \
     public \
     next.config.ts \
-    server.mjs \
     package.json \
     "${pkgdir}/usr/lib/${pkgname}/"
 
@@ -67,6 +66,11 @@ package() {
 
   find "${pkgdir}/usr/lib/${pkgname}/.next" \
     -type f -name '*.js.map' -delete
+
+  # the bundled native modules (node-pty, pi-tui) ship prebuilds for every platform; only the linux ones are ever loaded.
+  find "${pkgdir}/usr/lib/${pkgname}/node_modules" \
+    -path '*/prebuilds/*' -type d \( -name 'darwin-*' -o -name 'win32-*' \) \
+    -prune -exec rm -rf {} +
 
   install -d "${pkgdir}/usr/bin"
   ln -s "../lib/${pkgname}/bin/pi-web.js" \
