@@ -1,6 +1,6 @@
 pkgbase = python-nab
 	pkgdesc = PubGrub-based dependency resolver for Python packages.
-	pkgver = 0.0.18
+	pkgver = 0.0.19
 	pkgrel = 1
 	url = https://github.com/notatallshaw/nab
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-nab
 	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
-	source = nab-0.0.18.tar.gz::https://github.com/notatallshaw/nab/archive/refs/tags/v0.0.18.tar.gz
-	sha256sums = 49461940cb22c7d1da59448e26b605e1ad58123654cc17f1f97d58d970a3c96a
+	source = nab-0.0.19.tar.gz::https://github.com/notatallshaw/nab/archive/refs/tags/v0.0.19.tar.gz
+	sha256sums = 33bf2f444780ee11e6d3d9937f5994ee57a960be5cdc9d2aa86d8b5356fd3092
 
 pkgname = python-nab
 	depends = python-nab-index
