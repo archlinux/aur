@@ -1,6 +1,6 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=klayout-pex
-pkgver=0.6.3
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="Parasitic Extraction (PEX) tool for KLayout"
 arch=("any")
@@ -39,7 +39,7 @@ optdepends=(
 )
 options=()
 source=("${pkgname}::git+${_git_url}#tag=v${pkgver}")
-b2sums=('c0b157a5acc570f9f4068ec809600631f371c693b1ecb677069db4530ecfdefc01173ed238dd3c004b11cca9a3a4d879b28e61a2eda47d69b1cedf98b24d33ef')
+b2sums=('4d94d6c9570bcfc591d3828093487a9d0cd1b656ac7ac1bccae64cab765e369c950d816bd054c33f32138c466c7781fa3b6c89b65fccfade588fa1af6f1cd841')
 
 build() {
 	cd ${pkgname}
