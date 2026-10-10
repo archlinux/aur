@@ -1,0 +1,15 @@
+pkgbase = goboscript-git
+	pkgdesc = goboscript is the Scratch compiler
+	pkgver = v3.2.1.r560.90da472
+	pkgrel = 1
+	url = https://github.com/aspizu/goboscript
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	provides = goboscript
+	conflicts = goboscript
+	source = goboscript-git::git+https://github.com/aspizu/goboscript.git
+	sha256sums = SKIP
+
+pkgname = goboscript-git
