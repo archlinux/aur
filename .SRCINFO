@@ -1,6 +1,6 @@
 pkgbase = iso-commander-bin
 	pkgdesc = The Fastest ISO Manager on the Planet, written in C++
-	pkgver = 7.6.0
+	pkgver = 7.6.1
 	pkgrel = 1
 	url = https://github.com/siyia2/iso-commander
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = iso-commander-bin
 	optdepends = parted: GPT partition layout for Windows live USB creation
 	provides = iso-commander
 	conflicts = iso-commander
-	source = isocmd::https://github.com/siyia2/iso-commander/releases/download/v7.6.0/isocmd
-	source = isocmd.1::https://raw.githubusercontent.com/siyia2/iso-commander/refs/tags/v7.6.0/man/isocmd.1
-	md5sums = 76d8f1b868245ebdb39f42aec62d0518
-	md5sums = 8dd625b7501278480499da5d48faf69d
+	source = isocmd::https://github.com/siyia2/iso-commander/releases/download/v7.6.1/isocmd
+	source = isocmd.1::https://raw.githubusercontent.com/siyia2/iso-commander/refs/tags/v7.6.1/man/isocmd.1
+	md5sums = 4b1670c778a347e81d6b9ce05765d2f1
+	md5sums = adeac393748fc6ab518fb9afbaee261a
 
 pkgname = iso-commander-bin
