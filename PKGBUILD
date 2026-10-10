@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=bibata-material-cursor-theme-bin
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bibata cursor themes using Material Design 3's tonal color system"
 arch=('any')
 url="https://github.com/SakibShahariar/material-bibata-cursor"
@@ -20,7 +20,7 @@ sha256sums=('8a0cfddd60787c65a078ce494b5708c1d68f3e576118fde0701949edb40cba04'
 package() {
   install -d "$pkgdir/usr/share/icons"
   cp -a "bibata-material-dark-v$pkgver"/* "$pkgdir/usr/share/icons/"
-  cp -a "bibata-material-dark-v$pkgver"/* "$pkgdir/usr/share/icons/"
+  cp -a "bibata-material-light-v$pkgver"/* "$pkgdir/usr/share/icons/"
 
   # Correct directory permissions
   find "${pkgdir}" -type d -exec chmod -R 755 {} \;
