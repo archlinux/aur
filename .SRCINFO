@@ -1,6 +1,6 @@
 pkgbase = zcode-redminote11tech
 	pkgdesc = ZCode desktop app repackaged from official Linux release
-	pkgver = 3.14.5
+	pkgver = 3.15.1
 	pkgrel = 1
 	url = https://zcode.z.ai/en
 	install = zcode-redminote11tech.install
@@ -20,17 +20,17 @@ pkgbase = zcode-redminote11tech
 	depends = util-linux-libs
 	depends = xdg-utils
 	optdepends = libappindicator-gtk3: system tray indicator support
-	provides = zcode=3.14.5
+	provides = zcode=3.15.1
 	conflicts = zcode
-	noextract = ZCode-3.14.5-linux-x64.deb
-	noextract = ZCode-3.14.5-linux-arm64.deb
+	noextract = ZCode-3.15.1-linux-x64.deb
+	noextract = ZCode-3.15.1-linux-arm64.deb
 	options = !strip
 	options = !lto
 	source = zcode.desktop
 	sha256sums = 510fb413274334e05901d65b28df618b1fb7216d690c136ab55173f9bf1a75e6
-	source_x86_64 = ZCode-3.14.5-linux-x64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.14.5/linux-x64/ZCode-3.14.5-linux-x64.deb
-	sha256sums_x86_64 = ac1a8dcba65bd85010f148a1e5c084ba1d41b29cba169faa2628406bc2fc5bcf
-	source_aarch64 = ZCode-3.14.5-linux-arm64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.14.5/linux-arm64/ZCode-3.14.5-linux-arm64.deb
-	sha256sums_aarch64 = 24c5755be446d555e6c16e1dbd8d09cb684876480eb5764d6f6ef453db3f7290
+	source_x86_64 = ZCode-3.15.1-linux-x64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.15.1/linux-x64/ZCode-3.15.1-linux-x64.deb
+	sha256sums_x86_64 = 8787bbe46f71a36935abe59ac4dc98387e671eebf322f73b5bc6c061a479d4f8
+	source_aarch64 = ZCode-3.15.1-linux-arm64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.15.1/linux-arm64/ZCode-3.15.1-linux-arm64.deb
+	sha256sums_aarch64 = 7a1d64e94d54ca2ab484fb6867b69fcf65fd19934fa0d4ab2a31de07ffd800c3
 
 pkgname = zcode-redminote11tech
