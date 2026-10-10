@@ -15,7 +15,6 @@ pkgbase = cnmplayer-git
 	depends = glib2
 	depends = openssl
 	depends = pipewire
-	optdepends = cava: spectrum visualization
 	optdepends = ttf-nerd-fonts-symbols: For icons and spectrum visualizer
 	optdepends = ttf-jetbrains-mono-nerd: Recommended monospace font
 	provides = cnmplayer
