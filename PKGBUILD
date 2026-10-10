@@ -1,7 +1,7 @@
 # Maintainer: darkstardevx <dev@cybercoretech.net>
 
 pkgname=cyberterm
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="GPU terminal for developers: splits and sessions, command blocks, searchable history, AI help, inline images and Lua scripting"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ conflicts=('cyberterm-bin')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cybercore-tech/cyberterm/archive/refs/tags/v$pkgver.tar.gz"
         "cyberterm.desktop")
-sha256sums=('b798ea1936239dd1bc3e72bd92fb2d47848b27bb74d1d4689485f9d4fe8d1739'
+sha256sums=('f1399f3398ed2fd43879499b546a6a997a55fbcf92c629d67a15d43d56ffd155'
             '1e638aff925407a30963bd57a3a942831f5ea86b45a06941f88c23c5d684d0c3')
 
 prepare() {
