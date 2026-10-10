@@ -21,10 +21,10 @@ pkgname=cross-cleaner
 # .github/workflows/aur.yml rewrites, and the block deliberately contains
 # nothing else -- regenerating it must not delete the explanation around it.
 # ---AUR-VERSION-BEGIN---
-pkgver=2.0.4.3
+pkgver=2.0.4.3.1
 pkgrel=1
 source=("cross-cleaner-v${pkgver}.tar.gz::https://github.com/Cross-Cleaner/Cross-Cleaner/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0ebefe6cc959df5ef9c634914630616b0213de3ca928ba1cf4e7ea1e3e636323')
+sha256sums=('ca7ab435c4beb32f03e618825be9dabadf7ff662ff58deff76aeed929078c263')
 # ---AUR-VERSION-END---
 pkgdesc='Addon-style system cleanup tool that removes temporary files, cache and other system junk'
 arch=('x86_64' 'aarch64')
@@ -102,12 +102,98 @@ prepare() {
     install -Dm644 "$frame" "$srcdir/icons/cross-cleaner.png"
     rm -rf "$extract"
 
+    # Make the binaries report this package's version.
+    #
+    # `--version` comes from CARGO_PKG_VERSION, and cargo takes that from the
+    # `version` field of each crate's [package] table. It is not overridable
+    # from the environment -- exporting CARGO_PKG_VERSION before the build
+    # changes nothing, verified on cargo 1.98.
+    #
+    # The values in the tree are whatever the release happened to leave there,
+    # and they disagree with the tag: crates/*/Cargo.toml says 2.0.1 while the
+    # tag this package is built from is 2.0.4.2.5. The cause is upstream --
+    # dev_build.yml rewrote every Cargo.toml back to a hardcoded 2.0.1 on each
+    # push while release.yml wrote the real version, so the two ping-ponged and
+    # each tag inherited whichever it landed on (v2.0.4.2.4 reports 2.0.1,
+    # v2.0.4.2.5 reports 2.0.4).
+    #
+    # Rewriting only the [package] table, not every `version = ` line: a
+    # dependency declared as
+    #     [dependencies.foo]
+    #     version = "1"
+    # is legal TOML and a plain /^version = / would rewrite that too, silently
+    # changing which version of a dependency is required.
+    # The release version has four components (2.0.4.2.5) but a cargo package
+    # version is semver: exactly three numeric components, optionally followed
+    # by -pre or +build. Passing four in is a hard parse error, which is why
+    # release.yml does the same `cut -d. -f1-3`. So the application reports
+    # 2.0.4 for a 2.0.4.2.5 package: the fourth component has no representation
+    # inside the binary and cannot be recovered from one.
+    local crate_version
+    crate_version=$(printf '%s' "$pkgver" | cut -d. -f1-3)
+    if ! printf '%s' "$crate_version" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+        printf 'pkgver %s does not reduce to a semver version (%s)\n' "$pkgver" "$crate_version" >&2
+        return 1
+    fi
+
+    find "$srcdir/$_srcdir_tag" -name Cargo.toml -print0 |
+        while IFS= read -r -d '' manifest; do
+            awk -v v="$crate_version" '
+                /^\[package\]/          { inpkg = 1 }
+                /^\[/ && !/^\[package\]/ { inpkg = 0 }
+                inpkg && /^version[[:space:]]*=/ && !seen {
+                    print "version = \"" v "\""
+                    seen = 1
+                    next
+                }
+                { print }
+            ' "$manifest" > "$manifest.tmp" && mv "$manifest.tmp" "$manifest"
+        done
+
+    # The three components alone are not the release version, so the string the
+    # binaries print is set outright. clap takes it from CARGO_PKG_VERSION when
+    # the attribute says a bare `version,`, and that can only ever hold three
+    # semver numbers. Replacing the bare form with an explicit literal is what
+    # makes `cross-cleaner-cli --version` read 2.0.4.2.5 for a 2.0.4.2.5
+    # package.
+    #
+    # The patch is verified rather than assumed: if upstream moves the clap
+    # attribute, sed would quietly match nothing and the binaries would fall
+    # back to reporting 2.0.4 with no error anywhere. Each file is checked
+    # after the substitution, so that regression fails the build loudly.
+    #
+    # Two shapes have to be covered, and both appear upstream today: a bare
+    # `version,` line inside a multi-line #[command(...)] (cli/src/args.rs) and
+    # `#[command(version, about, ...)]` on one line (tui and desktop).
+    local manifest
+    for manifest in \
+        crates/cli/src/args.rs \
+        crates/tui/src/main.rs \
+        crates/desktop/src/main.rs
+    do
+        [[ -f "$srcdir/$_srcdir_tag/$manifest" ]] || {
+            printf 'expected %s to exist; upstream moved it\n' "$manifest" >&2
+            return 1
+        }
+        sed -i \
+            -e "s/^\([[:space:]]*\)version,$/\1version = \"$pkgver\",/" \
+            -e "s/#\[command(version, /#[command(version = \"$pkgver\", /" \
+            "$srcdir/$_srcdir_tag/$manifest"
+        grep -q "version = \"$pkgver\"," "$srcdir/$_srcdir_tag/$manifest" || {
+            printf 'could not set the version string in %s\n' "$manifest" >&2
+            return 1
+        }
+    done
+
     # packaging/linux/cross-cleaner.appdata.xml carries %%VERSION%% and %%DATE%%
-    # for the release workflow to fill in. AUR builds from a git checkout rather
-    # than a release, so the same substitution happens here, against the
-    # resolved pkgver and the commit the source was cloned at.
+    # for the release workflow to fill in. The date cannot come from the
+    # commit here: the source is a tag archive, not a git checkout, so there is
+    # no .git to ask. The build date is used instead, which is the only moment
+    # this package knows about.
+    local release_date
+    release_date=$(date -u +%Y-%m-%d)
     sed -e "s/%%VERSION%%/$pkgver/g" \
-        -e "s/%%DATE%%/$(date -u -d "@$(git log -1 --format=%ct)" +%Y-%m-%d)/g" \
+        -e "s/%%DATE%%/$release_date/g" \
         packaging/linux/cross-cleaner.appdata.xml > "$srcdir/cross-cleaner.appdata.xml"
     if grep -q '%%' "$srcdir/cross-cleaner.appdata.xml"; then
         printf 'unsubstituted placeholder left in the AppStream metadata\n' >&2
