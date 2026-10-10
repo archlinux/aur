@@ -5,3 +5,7 @@ pkg/
 acc-gw.router.amd64
 ipdatacloud_country.xdb
 steamdeck_acc_monitor.sh
+.workbuddy/
+README.md
+TROUBLESHOOTING.md
+MIGRATION.md
