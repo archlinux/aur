@@ -14,7 +14,7 @@
 pkgname=elephant-desktopapplications-windowfirst
 _provider=desktopapplications
 pkgver=2.22.1
-pkgrel=2
+pkgrel=3
 pkgdesc='desktopapplications provider for elephant (an app with open windows ranks directly below its own window)'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ conflicts=('elephant-desktopapplications')
 source=("elephant-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'desktopapps-window-first.patch')
 sha256sums=('3d1d0d4c55ae531fa3f06406b96504b5165a0d7b53523d1f8351d9d93e457f44'
-            '088af5b4def6349880f3df8a6bcb47995231a48ff24f1ccd75a25260e6a9d480')
+            'f397883c766d0158245c664045daca6100435ea7cd4427ce1013b959ec10cb38')
 
 prepare() {
     cd elephant-${pkgver}

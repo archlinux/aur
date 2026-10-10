@@ -1,15 +1,15 @@
 diff --git a/internal/providers/desktopapplications/activate.go b/internal/providers/desktopapplications/activate.go
-index 8ba9c60..eca0818 100644
+index 8ba9c60..9eaa195 100644
 --- a/internal/providers/desktopapplications/activate.go
 +++ b/internal/providers/desktopapplications/activate.go
-@@ -257,15 +257,44 @@ func pinItem(identifier string) {
+@@ -257,15 +257,51 @@ func pinItem(identifier string) {
  	}
  }
  
 +func isAppWindow(f *DesktopFile, v *wlr.Window) bool {
 +	bin := strings.Fields(f.Exec)[0]
 +
-+	return v.AppID == f.StartupWMClass || v.AppID == f.Icon || v.AppID == bin || v.Title == bin
++	return v.AppID == f.StartupWMClass || v.AppID == f.Icon || v.AppID == bin || v.Title == bin || f.ID != "" && v.AppID == f.ID
 +}
 +
  func appHasWindow(f *DesktopFile) (wl.ProxyId, bool) {
@@ -36,19 +36,81 @@ index 8ba9c60..eca0818 100644
 +			continue
 +		}
 +
++		// Same as the windows provider: take the field with the highest raw
++		// score, then subtract its start. Subtracting per field first gives
++		// a different (sometimes higher) result.
++		var raw, start int32
++
 +		for _, s := range []string{v.Title, v.AppID} {
-+			score, _, start := common.FuzzyScore(runes, s, exact, slab)
++			score, _, st := common.FuzzyScore(runes, s, exact, slab)
 +
-+			if score == 0 {
-+				continue
++			if score > raw {
++				raw, start = score, st
 +			}
++		}
 +
-+			best = max(best, max(score-start, 10))
++		if raw > 0 {
++			best = max(best, max(raw-start, 10))
 +		}
 +	}
 +
 +	return best
 +}
+diff --git a/internal/providers/desktopapplications/files.go b/internal/providers/desktopapplications/files.go
+index d3e5a1d..69d0e83 100644
+--- a/internal/providers/desktopapplications/files.go
++++ b/internal/providers/desktopapplications/files.go
+@@ -86,14 +86,8 @@ func walkFunction(path string, d fs.DirEntry, err error) error {
+ 		return err
+ 	}
+ 
+-	if filepath.Ext(path) == ".desktop" {
+-		check := strings.TrimSuffix(filepath.Base(path), ".desktop")
+-
+-		for _, v := range br {
+-			if v.MatchString(check) {
+-				return nil
+-			}
+-		}
++	if filepath.Ext(path) == ".desktop" && isBlacklisted(path) {
++		return nil
+ 	}
+ 
+ 	filesMu.RLock()
+@@ -293,7 +287,25 @@ func handleFileRemove(path string) {
+ 	}
+ }
+ 
++func isBlacklisted(path string) bool {
++	check := strings.TrimSuffix(filepath.Base(path), ".desktop")
++
++	for _, v := range br {
++		if v.MatchString(check) {
++			return true
++		}
++	}
++
++	return false
++}
++
+ func addNewEntry(path string) {
++	// Files created or rewritten after startup arrive here through the
++	// watcher, not walkFunction, so the blacklist has to be checked again.
++	if isBlacklisted(path) {
++		return
++	}
++
+ 	if origin, sym := isSymlink(path); sym {
+ 		// check the file the symlink points to actually exists
+ 		// otherwise it'll panic if you point to a location that's invalid
+@@ -305,6 +317,7 @@ func addNewEntry(path string) {
+ 
+ 	filesMu.Lock()
+ 	if f, err := parseFile(path, langLocale, regionLocale); err == nil {
++		f.ID = strings.TrimSuffix(filepath.Base(path), ".desktop")
+ 		files[filepath.Base(path)] = f
+ 	} else {
+ 		slog.Error(Name, "parsing", err)
 diff --git a/internal/providers/desktopapplications/query.go b/internal/providers/desktopapplications/query.go
 index a6e32be..1fe3672 100644
 --- a/internal/providers/desktopapplications/query.go
@@ -67,3 +129,17 @@ index a6e32be..1fe3672 100644
  				}
  
  				entries = append(entries, &pb.QueryResponse_Item{
+diff --git a/internal/providers/desktopapplications/setup.go b/internal/providers/desktopapplications/setup.go
+index 8218dee..6605a66 100644
+--- a/internal/providers/desktopapplications/setup.go
++++ b/internal/providers/desktopapplications/setup.go
+@@ -21,6 +21,9 @@ import (
+ type DesktopFile struct {
+ 	Data
+ 	Actions []Data
++	// ID is the desktop file ID (file name without .desktop), which by
++	// convention is also the app_id of the app's windows.
++	ID string
+ }
+ 
+ var (
