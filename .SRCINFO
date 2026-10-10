@@ -1,5 +1,5 @@
 pkgbase = windinput-bin
-	pkgdesc = 清风输入法，适用于 Fcitx5 的官方 Linux 预览版二进制包
+	pkgdesc = 基于 Debian 发行包重打包的清风输入法 Fcitx5 Linux 预览版
 	pkgver = 0.125.0
 	pkgrel = 1
 	url = https://windinput.com
