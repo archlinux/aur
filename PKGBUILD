@@ -1,7 +1,7 @@
 # Maintainer: libuntu
 # Join-only build of a co-op AI voice comedy game: the AI runs on the host's computer.
 pkgname=do-not-redeem
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Co-op comedy game: run a scam call center with friends and talk to AI victims by voice (join-only build)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("ScamCallCenter-linux-$pkgver.tar.gz::$url/releases/download/v$pkgver/Sc
         "do-not-redeem.svg"
         "LICENSE")
 noextract=("ScamCallCenter-linux-$pkgver.tar.gz")
-sha256sums=('ab14912523ba311e88a2e02998195afbedbde27e9995663da89db52cdcb64870'
+sha256sums=('c8795386c38b931e7135dc3cef9727e2821d4aeff6d6602b8bb377f2ee07079b'
             '8da0626e5682938aacbca4af0cac464915e0737591c2b3cf54f40b177985e3c3'
             '8b130ed0677fb4ce4c39cb22a7940e0cca467c7b19bf358d73ed6664c007650a'
             'c25f14061dc8563dbcd7fefb688087dbeafc7a2f842848a2fcc90778018704d0'
