@@ -5,8 +5,8 @@
 # Regenerate checksums and .SRCINFO for a release with scripts/linux/gen-aur.sh.
 pkgname=linuxfiles-bin
 _pkgname=linuxfiles
-_tag=0.1.0-alpha3
-pkgver=0.1.0alpha3
+_tag=0.1.0-alpha4
+pkgver=0.1.0alpha4
 pkgrel=1
 pkgdesc='LinuxFiles, Files for Linux: unofficial port of Files by the Files Community (Uno Platform), prebuilt binaries'
 arch=('x86_64')
@@ -26,8 +26,8 @@ _base="$url/releases/download/linux-v$_tag"
 source=("$pkgname-$pkgver.tar.gz::$_base/files-linux-x64.tar.gz"
         "$pkgname-packaging-$pkgver.tar.gz::$_base/files-packaging.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz" "$pkgname-packaging-$pkgver.tar.gz")
-sha256sums=('e00b2f696642e0c83fd755e71b9820442cffa4d173bc9cdf4b08e5fecd881b90'
-            '3ce07f699cd7c5786ce461ae1c07c6c0f43e38b2cccffe9510e2acf2c7bf9141')  # scripts/linux/gen-aur.sh fills these in
+sha256sums=('f716d65bf78cb27b5d3cbf682dcf98d3c3e84dc3e8d97f05d85b4d6ab2f743c1'
+            'f6c4fc0a5aae971102a55cc411db6987e4adc8fde2e2097be18eba116f8c98f8')  # scripts/linux/gen-aur.sh fills these in
 
 prepare() {
   mkdir -p app packaging

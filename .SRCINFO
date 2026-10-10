@@ -1,6 +1,6 @@
 pkgbase = linuxfiles-bin
 	pkgdesc = LinuxFiles, Files for Linux: unofficial port of Files by the Files Community (Uno Platform), prebuilt binaries
-	pkgver = 0.1.0alpha3
+	pkgver = 0.1.0alpha4
 	pkgrel = 1
 	url = https://github.com/MemerGamer/LinuxFiles
 	arch = x86_64
@@ -22,13 +22,13 @@ pkgbase = linuxfiles-bin
 	optdepends = gnome-disk-utility: format and manage drives
 	provides = linuxfiles
 	conflicts = linuxfiles
-	noextract = linuxfiles-bin-0.1.0alpha3.tar.gz
-	noextract = linuxfiles-bin-packaging-0.1.0alpha3.tar.gz
+	noextract = linuxfiles-bin-0.1.0alpha4.tar.gz
+	noextract = linuxfiles-bin-packaging-0.1.0alpha4.tar.gz
 	options = !strip
 	options = !debug
-	source = linuxfiles-bin-0.1.0alpha3.tar.gz::https://github.com/MemerGamer/LinuxFiles/releases/download/linux-v0.1.0-alpha3/files-linux-x64.tar.gz
-	source = linuxfiles-bin-packaging-0.1.0alpha3.tar.gz::https://github.com/MemerGamer/LinuxFiles/releases/download/linux-v0.1.0-alpha3/files-packaging.tar.gz
-	sha256sums = e00b2f696642e0c83fd755e71b9820442cffa4d173bc9cdf4b08e5fecd881b90
-	sha256sums = 3ce07f699cd7c5786ce461ae1c07c6c0f43e38b2cccffe9510e2acf2c7bf9141
+	source = linuxfiles-bin-0.1.0alpha4.tar.gz::https://github.com/MemerGamer/LinuxFiles/releases/download/linux-v0.1.0-alpha4/files-linux-x64.tar.gz
+	source = linuxfiles-bin-packaging-0.1.0alpha4.tar.gz::https://github.com/MemerGamer/LinuxFiles/releases/download/linux-v0.1.0-alpha4/files-packaging.tar.gz
+	sha256sums = f716d65bf78cb27b5d3cbf682dcf98d3c3e84dc3e8d97f05d85b4d6ab2f743c1
+	sha256sums = f6c4fc0a5aae971102a55cc411db6987e4adc8fde2e2097be18eba116f8c98f8
 
 pkgname = linuxfiles-bin
