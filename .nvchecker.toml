@@ -1,0 +1,4 @@
+[libobjectbox]
+source = "git"
+git = "https://github.com/objectbox/objectbox-c.git"
+prefix = "v"

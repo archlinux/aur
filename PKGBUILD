@@ -5,12 +5,12 @@
 
 pkgname=libobjectbox
 pkgver=5.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='C/C++ database for objects and structs'
-arch=('x86_64' 'aarch64' 'armv7h')
+arch=(x86_64 aarch64 armv7h)
 url="https://github.com/objectbox/objectbox-c"
-license=('Apache-2.0 AND custom')
-depends=('gcc-libs')
+license=(Apache-2.0)
+depends=(glibc libgcc libstdc++)
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/objectbox-linux-x64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/objectbox-linux-aarch64.tar.gz")
 source_armv7h=("${pkgname}-${pkgver}-armv7hf.tar.gz::${url}/releases/download/v${pkgver}/objectbox-linux-armv7hf.tar.gz")
