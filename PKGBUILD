@@ -2,7 +2,7 @@
 pkgname=windinput-bin
 pkgver=0.125.0
 pkgrel=1
-pkgdesc='WindInput Chinese input method for Fcitx5 (official Linux preview binaries)'
+pkgdesc='清风输入法，适用于 Fcitx5 的官方 Linux 预览版二进制包'
 arch=('x86_64' 'aarch64')
 url='https://windinput.com'
 license=('MIT' 'LGPL-3.0-only')
