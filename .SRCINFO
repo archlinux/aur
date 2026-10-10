@@ -1,6 +1,6 @@
 pkgbase = malgel-bin
 	pkgdesc = A fast, native Markdown editor
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/rcawston/Malgel
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = malgel-bin
 	provides = malgel
 	conflicts = malgel
 	options = !strip
-	source_x86_64 = malgel-x86_64-0.1.0.tgz::https://github.com/rcawston/Malgel/releases/download/v0.1.0/malgel-0.1.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = cbab1bb460ab5bffd8ce6b6614c180b9ee1151014db40e2bc28396d6158cfa6f
+	source_x86_64 = malgel-x86_64-0.1.1.tgz::https://github.com/rcawston/Malgel/releases/download/v0.1.1/malgel-0.1.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 9fd0842e5033a6a89c2d9cc606d45ba077742e4bb5613c1d0041813e0b4eba05
 
 pkgname = malgel-bin
