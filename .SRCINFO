@@ -1,14 +1,14 @@
 pkgbase = chargeguard
 	pkgdesc = Native battery charge modes and battery diagnostics for GNOME Quick Settings and CLI
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Ca11back/ChargeGuard
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = gettext
-	source = chargeguard-0.1.1.tar.gz::https://github.com/Ca11back/ChargeGuard/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = bd504e94db6ab5bf5778ea8f5557c7f92fc69231bbf3b5d9788f6ef41be1fa1a
+	source = chargeguard-0.1.2.tar.gz::https://github.com/Ca11back/ChargeGuard/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 0ff848aeb9b28cfe69a95b1c821d69d77d4c83afa2ced6587bb21590a60797e8
 
 pkgname = chargeguard
 	pkgdesc = Native battery charge modes and battery diagnostics for GNOME Quick Settings and CLI
@@ -21,5 +21,5 @@ pkgname = chargeguard
 
 pkgname = gnome-shell-extension-chargeguard
 	pkgdesc = Native battery charge modes and battery diagnostics for GNOME Quick Settings and CLI
-	depends = chargeguard=0.1.1-1
+	depends = chargeguard=0.1.2-1
 	depends = gnome-shell
