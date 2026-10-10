@@ -1,19 +1,19 @@
 pkgbase = soulfire-bin
 	pkgdesc = A frontend for the SoulFire server , with Electron while still using the official SoulFire gRPC API.
-	pkgver = 2.10.1
+	pkgver = 2.10.4
 	pkgrel = 1
 	url = https://app.soulfiremc.com/
 	arch = aarch64
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	depends = electron44
-	provides = soulfire=2.10.1
+	provides = soulfire=2.10.4
 	conflicts = soulfire
 	source = soulfire.sh
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = soulfire-2.10.1-aarch64.rpm::https://github.com/AlexProgrammerDE/SoulFireClient/releases/download/2.10.1/SoulFire-2.10.1-aarch64.rpm
-	sha256sums_aarch64 = ce21a9e9340e58ed40895801ce676e954274b27b8b5673b4aa3d87c4754786b5
-	source_x86_64 = soulfire-2.10.1-x86_64.rpm::https://github.com/AlexProgrammerDE/SoulFireClient/releases/download/2.10.1/SoulFire-2.10.1-x86_64.rpm
-	sha256sums_x86_64 = 695aa0cf6214b054281f6ddf61fed0f64409340a505fb94404858bbcd1f4a67c
+	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
+	source_aarch64 = soulfire-2.10.4-aarch64.rpm::https://github.com/AlexProgrammerDE/SoulFireClient/releases/download/2.10.4/SoulFire-2.10.4-aarch64.rpm
+	sha256sums_aarch64 = 7fd370c9bf3fec4ceb218de6949b9ee477806f737a11465a863cbb1c02123325
+	source_x86_64 = soulfire-2.10.4-x86_64.rpm::https://github.com/AlexProgrammerDE/SoulFireClient/releases/download/2.10.4/SoulFire-2.10.4-x86_64.rpm
+	sha256sums_x86_64 = 22ba97dca638921b2f042fc4155be3f767fd7c8de29d5275b558f9cce12cef62
 
 pkgname = soulfire-bin
