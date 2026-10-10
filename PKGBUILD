@@ -1,7 +1,7 @@
 # Maintainer: moecly <moecly@users.noreply.github.com>
 pkgname=omp-ctl
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop GUI for managing omp configuration in ~/.omp-ctl'
 arch=('x86_64' 'aarch64')
 url='https://github.com/moecly/omp-ctl'
@@ -23,7 +23,12 @@ build() {
     # 前端产物必须先生成：tauri::generate_context! 在编译期读取 ../dist。
     # extra/bun 落后于仓库 web/bun.lock 的 lockfileVersion 2，读不了就退回自动解析。
     (cd web && (bun install --frozen-lockfile || bun install) && bun run build)
-    cargo build --release --locked --manifest-path src-tauri/Cargo.toml
+
+    # custom-protocol 不能省：tauri::is_dev() = !cfg!(feature = "custom-protocol")，
+    # 少了它编出来的是 dev 模式二进制，运行时去连 devUrl（127.0.0.1:1420）而不是内嵌前端，
+    # 装完打开就是「无法连接 127.0.0.1」。tauri CLI 的 tauri build 同样会加这一项。
+    cargo build --release --locked --features tauri/custom-protocol \
+        --manifest-path src-tauri/Cargo.toml
 }
 
 package() {
@@ -43,9 +48,11 @@ package() {
 	StartupWMClass=omp-ctl
 	EOF
 
-    local size
-    for size in 32:32x32 64:64x64 128:128x128 256:128x128@2x 512:icon; do
-        install -Dm644 "src-tauri/icons/${size#*:}.png" \
-            "$pkgdir/usr/share/icons/hicolor/${size%%:*}/apps/omp-ctl.png"
+    # 目录名必须是 hicolor/index.theme 里真实存在的尺寸，
+    # 否则 hicolor 主题不会索引这些图标（hicolor/32/apps 这类名字是无效的）。
+    local pair
+    for pair in 32x32:32x32 64x64:64x64 128x128:128x128 256x256:128x128@2x 512x512:icon; do
+        install -Dm644 "src-tauri/icons/${pair#*:}.png" \
+            "$pkgdir/usr/share/icons/hicolor/${pair%%:*}/apps/omp-ctl.png"
     done
 }

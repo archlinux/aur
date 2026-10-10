@@ -1,7 +1,7 @@
 pkgbase = omp-ctl
 	pkgdesc = Desktop GUI for managing omp configuration in ~/.omp-ctl
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moecly/omp-ctl
 	arch = x86_64
 	arch = aarch64
