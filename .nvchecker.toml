@@ -1,0 +1,4 @@
+[libkmip]
+source = "git"
+git = "https://github.com/OpenKMIP/libkmip.git"
+prefix = "v"
