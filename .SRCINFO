@@ -1,7 +1,7 @@
 pkgbase = kytyps5-nightly-bin
 	pkgdesc = PlayStation 5 emulator (upstream nightly binary release)
-	pkgver = 2026.10.08.aa3b2cd
-	pkgrel = 2
+	pkgver = 2026.10.10.f3836bb
+	pkgrel = 1
 	url = https://github.com/KytyPS5/KytyPS5
 	arch = x86_64
 	license = GPL-2.0-only
@@ -48,15 +48,15 @@ pkgbase = kytyps5-nightly-bin
 	optdepends = konsole: show emulator output in a terminal window
 	optdepends = kitty: show emulator output in a terminal window
 	optdepends = xterm: show emulator output in a terminal window
-	provides = kytyps5=2026.10.08.aa3b2cd
+	provides = kytyps5=2026.10.10.f3836bb
 	conflicts = kytyps5
 	options = !strip
 	options = !debug
-	source = kytyps5-nightly-bin-2026.10.08.aa3b2cd.tar.gz::https://github.com/KytyPS5/KytyPS5/releases/download/KytyPS5-2026-10-08-aa3b2cd/KytyPS5-2026-10-08-aa3b2cd-Linux-x86_64.tar.gz
-	source = LICENSE-2026.10.08.aa3b2cd::https://raw.githubusercontent.com/KytyPS5/KytyPS5/aa3b2cd57f84e414a4af0ccbc42d7eb35a8af17b/LICENSE
-	source = Kyty-MIT-2026.10.08.aa3b2cd.txt::https://raw.githubusercontent.com/KytyPS5/KytyPS5/aa3b2cd57f84e414a4af0ccbc42d7eb35a8af17b/LICENSES/Kyty-MIT.txt
+	source = kytyps5-nightly-bin-2026.10.10.f3836bb.tar.gz::https://github.com/KytyPS5/KytyPS5/releases/download/KytyPS5-2026-10-10-f3836bb/KytyPS5-2026-10-10-f3836bb-Linux-x86_64.tar.gz
+	source = LICENSE-2026.10.10.f3836bb::https://raw.githubusercontent.com/KytyPS5/KytyPS5/f3836bb831c49cfd38c63cd61ee4969e405a19ce/LICENSE
+	source = Kyty-MIT-2026.10.10.f3836bb.txt::https://raw.githubusercontent.com/KytyPS5/KytyPS5/f3836bb831c49cfd38c63cd61ee4969e405a19ce/LICENSES/Kyty-MIT.txt
 	source = kytyps5.desktop
-	sha256sums = 7e2ffb6fa84b271dc9a5b89567e389d0a30a057e44688be5b949c25e2770351b
+	sha256sums = e2074252f932c33f1ea6ca4b19ff53470075950a632b0ae02526ec253a202fba
 	sha256sums = f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505
 	sha256sums = 1bbcea0e75b3ac77b4711a12eefa3a3b7dfea43528fc0730af3178ba5cd55396
 	sha256sums = 8eeeacccbbbb858724dbaf5e40a25f0718aa2a7ab75937b3da2652cb16e85103
