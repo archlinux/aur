@@ -1,0 +1,24 @@
+pkgbase = sysc-lock
+	pkgdesc = Wayland session locker for Niri with PAM authentication
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Nomadcxx/sysc-lock
+	install = sysc-lock.install
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = go>=1.26.4
+	depends = glibc
+	depends = pam
+	depends = libglvnd
+	depends = systemd
+	depends = util-linux
+	depends = niri
+	depends = ttf-jetbrains-mono
+	optdepends = sysc-shell: lock-screen settings and theme following
+	source = sysc-lock-0.1.0.tar.gz::https://github.com/Nomadcxx/sysc-lock/archive/refs/tags/v0.1.0.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/Nomadcxx/sysc-lock/77c962e6a8886e4c465221d9ea7da48bc2c70ad5/LICENSE
+	sha256sums = 9f2499a5e3c942db8ad7b2734828bba27485f05edee0a6fa4ea75b2b809d8db9
+	sha256sums = e79b463f506ee0a390088b757cb77f6643ce3bd2319c08884335d486456a214e
+
+pkgname = sysc-lock
