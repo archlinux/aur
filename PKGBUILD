@@ -1,4 +1,4 @@
-# Maintainer: willker <wz[dot]willker[at]gmail[dot]com>
+# Maintainer: hiruocha <hiruocha[at]outlook[dot]com>
 # Contributor: Locez <locez@locez.com>
 
 pkgname=bilihud
