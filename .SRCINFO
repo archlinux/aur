@@ -1,18 +1,20 @@
 pkgbase = syng-bin
 	pkgdesc = A free, open source, cross-platform, Chinese-To-English dictionary for desktops.
-	pkgver = 2.4.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://getsyng.com/
+	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
 	license = LicenseRef-CC-CEDICT
+	license = LicenseRef-App-Store-Exception
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	provides = syng=2.4.0
+	provides = syng=2.5.1
 	conflicts = syng
-	source = syng-2.4.0.rpm::https://github.com/sotch-pr35mac/syng/releases/download/v2.4.0/Syng-2.4.0-1.x86_64.rpm
-	source = LICENSE-2.4.0::https://raw.githubusercontent.com/sotch-pr35mac/syng/v2.4.0/LICENSE-CC-CEDICT
-	sha256sums = ca6101f61b5e2ffbe5967fab7dbc42555942d9536c29354a34421c3d10354592
-	sha256sums = 997e0e57760a71dfc656727d5bc14149bae55f907990f8c75650673924434f0c
+	source_aarch64 = syng-2.5.1-aarch64.rpm::https://github.com/sotch-pr35mac/syng/releases/download/2.5.1/Syng-2.5.1-1.aarch64.rpm
+	sha256sums_aarch64 = f5d706cb5bc46b24faa9476060dbf9de3f1f4c4bc8052ffda467aa769ac43724
+	source_x86_64 = syng-2.5.1-x86_64.rpm::https://github.com/sotch-pr35mac/syng/releases/download/2.5.1/Syng-2.5.1-1.x86_64.rpm
+	sha256sums_x86_64 = b58347bf329c6c8ab66b5b4a2cb7334cebfd8e34940210bbe69c3f65c82ad98a
 
 pkgname = syng-bin

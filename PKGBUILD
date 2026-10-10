@@ -1,16 +1,20 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=syng-bin
 _pkgname=Syng
-pkgver=2.4.0
+pkgver=2.5.1
 _zhsname='词应'
 pkgrel=1
 pkgdesc="A free, open source, cross-platform, Chinese-To-English dictionary for desktops."
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://getsyng.com/"
 _ghurl="https://github.com/sotch-pr35mac/syng"
 license=(
     'GPL-3.0-only'
     'LicenseRef-CC-CEDICT'
+    'LicenseRef-App-Store-Exception'
 )
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -18,12 +22,10 @@ depends=(
     'gtk3'
     'webkit2gtk-4.1'
 )
-source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/sotch-pr35mac/syng/v${pkgver}/LICENSE-CC-CEDICT"
-)
-sha256sums=('ca6101f61b5e2ffbe5967fab7dbc42555942d9536c29354a34421c3d10354592'
-            '997e0e57760a71dfc656727d5bc14149bae55f907990f8c75650673924434f0c')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-1.aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
+sha256sums_aarch64=('f5d706cb5bc46b24faa9476060dbf9de3f1f4c4bc8052ffda467aa769ac43724')
+sha256sums_x86_64=('b58347bf329c6c8ab66b5b4a2cb7334cebfd8e34940210bbe69c3f65c82ad98a')
 prepare() {
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/
@@ -35,12 +37,13 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/usr/lib/${_pkgname}/resources/licenses/"* -t "${pkgdir}/usr/lib/${_pkgname}/resources/licenses"
+    cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
 		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
 		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
 	done
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/usr/lib/${_pkgname}/resources/licenses/CC-CEDICT-CC-BY-SA.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/usr/lib/${_pkgname}/resources/licenses/Syng-App-Store-Exception.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
