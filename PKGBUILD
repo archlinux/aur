@@ -5,7 +5,7 @@
 
 _pkgname=cwtch
 pkgname=$_pkgname-bin
-pkgver=1.17.1
+pkgver=1.17.2
 pkgrel=1
 pkgdesc="Decentralized, privacy-preserving, multi-party messaging protocol client (binary distribution)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('gtk3' 'hicolor-icon-theme' 'tor')
 optdepends=('tor: use system tor instead of bundled (required by upstream deb)')
 options=('!strip')
 source_x86_64=("https://git.openprivacy.ca/$_pkgname.im/$_pkgname-ui/releases/download/v$pkgver/cwtch-${pkgver}_amd64.deb")
-sha256sums_x86_64=('a96dbda3c937aa8998a08d93afa188de56d0406f5949b2a0776d83065058019e')
+sha256sums_x86_64=('fc696cf2880738bab2ab9aaa0c871b1f134ed337d0f50c51da7cfb94be19daaf')
 
 package() {
     # .deb is an ar archive: debian-binary + control.tar.xz + data.tar.xz.
