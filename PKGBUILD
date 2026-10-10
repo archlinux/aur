@@ -7,7 +7,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A TUI application for managing systemd services"
 
-pkgver=1.2.5
+pkgver=1.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,9 +28,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}")
-sha256sums=('bbaeb7ffeffdcdead003ed87a3d18d554b7d5669541f4d77cc622aa7a213a909'
+sha256sums=('3b7f50ec8d0b04d6006927e8b8f64f81e0afa50c8c00a0588c3822778f8888e6'
             '206b0efe09be5fb152102c47679ebb83a522e4bea18db16cd524a52e23a50db7')
-sha256sums_x86_64=('8d506bd67a9fd5419d9696ddd67ef88359e96f48a98863dc75ac0fdb6dd76639')
+sha256sums_x86_64=('942ecacc15481843d59db1c846e8996a26528a334e43eded00f0f0c202e8dfdc')
 
 
 package() {

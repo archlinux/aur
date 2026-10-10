@@ -1,6 +1,6 @@
 pkgbase = systemd-manager-tui-bin
 	pkgdesc = A TUI application for managing systemd services
-	pkgver = 1.2.5
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/matheus-git/systemd-manager-tui
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = systemd-manager-tui-bin
 	provides = systemd-manager-tui
 	conflicts = systemd-manager-tui
 	options = !strip
-	source = README-1.2.5.md::https://raw.githubusercontent.com/matheus-git/systemd-manager-tui/v1.2.5/README.md
-	source = LICENSE-1.2.5::https://raw.githubusercontent.com/matheus-git/systemd-manager-tui/v1.2.5/LICENSE
-	sha256sums = bbaeb7ffeffdcdead003ed87a3d18d554b7d5669541f4d77cc622aa7a213a909
+	source = README-1.3.0.md::https://raw.githubusercontent.com/matheus-git/systemd-manager-tui/v1.3.0/README.md
+	source = LICENSE-1.3.0::https://raw.githubusercontent.com/matheus-git/systemd-manager-tui/v1.3.0/LICENSE
+	sha256sums = 3b7f50ec8d0b04d6006927e8b8f64f81e0afa50c8c00a0588c3822778f8888e6
 	sha256sums = 206b0efe09be5fb152102c47679ebb83a522e4bea18db16cd524a52e23a50db7
-	source_x86_64 = systemd-manager-tui-1.2.5::https://github.com/matheus-git/systemd-manager-tui/releases/download/v1.2.5/systemd-manager-tui
-	sha256sums_x86_64 = 8d506bd67a9fd5419d9696ddd67ef88359e96f48a98863dc75ac0fdb6dd76639
+	source_x86_64 = systemd-manager-tui-1.3.0::https://github.com/matheus-git/systemd-manager-tui/releases/download/v1.3.0/systemd-manager-tui
+	sha256sums_x86_64 = 942ecacc15481843d59db1c846e8996a26528a334e43eded00f0f0c202e8dfdc
 
 pkgname = systemd-manager-tui-bin
