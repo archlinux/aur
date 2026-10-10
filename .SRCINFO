@@ -1,0 +1,27 @@
+pkgbase = gxde-calendar-git
+	pkgdesc = Calendar for GXDE
+	pkgver = 6.0.3.r0.gd94ef23
+	pkgrel = 1
+	url = https://github.com/GXDE-OS/gxde-calendar
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	makedepends = deepin-gettext-tools
+	depends = gxde-dtk2-qt6-git
+	depends = gxde-dtk6-git
+	depends = gxde-infra-git
+	depends = qt6-base
+	depends = libical
+	depends = libstdc++
+	depends = libgcc
+	depends = glibc
+	provides = dde-calendar
+	conflicts = dde-calendar
+	source = gxde-calendar::git+https://github.com/GXDE-OS/gxde-calendar.git
+	sha256sums = SKIP
+
+pkgname = gxde-calendar-git
