@@ -14,9 +14,9 @@ pkgbase = reels-bin
 	optdepends = konsole: terminal with Kitty graphics protocol
 	provides = reels
 	conflicts = reels
-	source_x86_64 = https://github.com/njyeung/reels/releases/download/v1.4.8/reels-linux-amd64
+	source_x86_64 = reels-1.4.8-linux-amd64::https://github.com/njyeung/reels/releases/download/v1.4.8/reels-linux-amd64
 	sha256sums_x86_64 = 94bb13ccb4acec630c947fe3ce04060137db2a6ba66827b3441c7b51e576d872
-	source_aarch64 = https://github.com/njyeung/reels/releases/download/v1.4.8/reels-linux-arm64
+	source_aarch64 = reels-1.4.8-linux-arm64::https://github.com/njyeung/reels/releases/download/v1.4.8/reels-linux-arm64
 	sha256sums_aarch64 = 52e925b64ec67be9bf7b0eb8ed800945f15998673af95638b5085bca2f3baaa7
 
 pkgname = reels-bin
