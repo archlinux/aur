@@ -3,14 +3,20 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=('mod_tile-git' 'renderd-git')
-pkgver=0.8.1.r1.gf0811e8
+pkgver=0.8.1.r20.g2df04ae
 pkgrel=1
 pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
 url='https://github.com/openstreetmap/mod_tile'
 license=('GPL-2.0-or-later')
 optdepends=('libmemcached: Memcached tile storage support')
-makedepends=('apache' 'apr' 'cmake' 'git' 'glib2' 'iniparser' 'mapnik')
+makedepends=('apache'
+             'apr'
+             'cmake'
+             'git'
+             'glib2'
+             'iniparser'
+             'mapnik')
 checkdepends=('curl' 'jq')
 source=('git+https://github.com/openstreetmap/mod_tile.git'
         'renderd.service'
@@ -30,7 +36,6 @@ pkgver() {
 prepare() {
   export CXXFLAGS CFLAGS LDFLAGS
   cmake -B build -S mod_tile \
-    -D CMAKE_CXX_STANDARD:STRING=17 \
     -D CMAKE_INSTALL_LOCALSTATEDIR:PATH=/var \
     -D CMAKE_INSTALL_PREFIX:PATH=/usr \
     -D CMAKE_INSTALL_RUNSTATEDIR:PATH=/run \
@@ -49,9 +54,9 @@ build() {
 }
 
 check() {
-  export CTEST_PARALLEL_LEVEL=${CTEST_PARALLEL_LEVEL:-$(nproc)}
   ctest \
     --output-on-failure \
+    --parallel \
     --test-dir build
 }
 
