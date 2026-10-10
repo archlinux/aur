@@ -1,16 +1,16 @@
 pkgbase = image-metahub-bin
 	pkgdesc = Local-first AI image organizer and generative media library manager for ComfyUI, A1111, InvokeAI & more. Search huge output folders by prompt, model, LoRA, metadata or visual similarity.
-	pkgver = 0.20.1
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://imagemetahub.com/
 	arch = x86_64
 	license = MPL-2.0
 	depends = electron38
-	provides = image-metahub=0.20.1
+	provides = image-metahub=0.21.0
 	conflicts = image-metahub
-	source = image-metahub-0.20.1-x86_64.AppImage::https://github.com/LuqP2/Image-MetaHub/releases/download/v0.20.1/Image.MetaHub-0.20.1.AppImage
+	source = image-metahub-0.21.0-x86_64.AppImage::https://github.com/LuqP2/Image-MetaHub/releases/download/v0.21.0/Image.MetaHub-0.21.0.AppImage
 	source = image-metahub.sh
-	sha256sums = 211e0f7fd9a2aaa867830767129854a79583bee687c9f81a387d1003a8457473
-	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
+	sha256sums = 42b80962653f3c94c6a272228fc1a8e1c13fc1dec64fed3c3436069912fecba8
+	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
 
 pkgname = image-metahub-bin
