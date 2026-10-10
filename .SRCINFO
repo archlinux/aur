@@ -3,6 +3,7 @@ pkgbase = gxde-core-git
 	pkgver = 6.0.24.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/GXDE-OS
+	install = gxde-core-git.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
@@ -209,6 +210,7 @@ pkgbase = gxde-core-git
 	source = gxde-sni-server::git+https://github.com/GXDE-OS/gxde-sni-server.git#branch=main
 	source = gxde-dock::git+https://github.com/GXDE-OS/gxde-dock.git
 	source = gxde-globalmenu-service::git+https://github.com/GXDE-OS/gxde-globalmenu-service.git
+	source = gxde-wayland-gtk-menu::git+https://github.com/GXDE-OS/gxde-wayland-gtk-menu.git
 	source = gxde-top-panel-plugins::git+https://github.com/GXDE-OS/gxde-top-panel-plugins.git#branch=d20
 	source = gxde-top-panel::git+https://github.com/GXDE-OS/gxde-top-panel.git
 	source = gxde-control-center::git+https://github.com/GXDE-OS/gxde-control-center.git
@@ -228,6 +230,7 @@ pkgbase = gxde-core-git
 	source = deepin-service-manager::git+https://github.com/GXDE-OS/deepin-service-manager.git
 	source = dde-grand-search::git+https://github.com/GXDE-OS/dde-grand-search.git
 	source = gxde-terminal::git+https://github.com/GXDE-OS/gxde-terminal.git#branch=dtk6
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

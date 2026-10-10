@@ -11,7 +11,8 @@ _mods=(gxde-account-faces gxde-icon-theme deepin-gtk-theme gxde-artwork gxde-wal
        gxde-default-settings transhell garma gxde-app-installer gxde-app-upgrader
        gxde-app-uninstaller gxde-shell-tools gxde-sound-theme gxde-polkit-agent
        dpa-ext-gnomekeyring deepin-installer-reborn deepin-daemon gxde-daemon startgxde
-       deepin-menu gxde-sni-server gxde-dock gxde-globalmenu-service gxde-top-panel-plugins
+       deepin-menu gxde-sni-server gxde-dock gxde-globalmenu-service gxde-wayland-gtk-menu
+       gxde-top-panel-plugins
        gxde-top-panel gxde-control-center gxde-launcher gxde-session-ui zipu
        gxde-shell-compressor gxde-compressor rofd gxde-file-manager
        gxde-file-manager-integration gxde-requ gxde-time-screensaver deepin-screensaver
@@ -51,6 +52,7 @@ makedepends=(git go rust cmake ninja python gettext jq
              libsecret file poppler taglib libwebp ffmpegthumbnailer libisoburn udisks2
              glibmm libmediainfo lucene++ boost lcms2 openjpeg2 libjpeg-turbo libchardet
              uchardet libutf8proc icu zlib)
+install=$pkgname.install
 source=()
 for _m in "${_mods[@]}"; do
   source+=("$_m::git+$url/$_m.git${_branch[$_m]:+#branch=${_branch[$_m]}}")
@@ -152,6 +154,7 @@ build() {
   _cmake gxde-sni-server
   _cmake gxde-dock
   _cmake gxde-globalmenu-service
+  _cmake gxde-wayland-gtk-menu
   _cmake gxde-top-panel-plugins
   # gxde-top-panel 的 CMakeLists 用 `apt --version` 判断是否走 deb.cmake 的安装规则，
   # 另一分支的规则仍是改名前的文件名（dde-top-panel），这里提供一个 apt 桩让它走 deb.cmake
@@ -262,7 +265,8 @@ package() {
   cp -a "$srcdir"/stage/usr/lib/librofd_ffi.so* "$pkgdir/usr/lib/"
   install -Dm644 rofd/crates/rofd-ffi/include/rofd.h "$pkgdir/usr/include/rofd.h"
 
-  for _m in garma gxde-sni-server gxde-dock gxde-globalmenu-service gxde-top-panel-plugins \
+  for _m in garma gxde-sni-server gxde-dock gxde-globalmenu-service gxde-wayland-gtk-menu \
+            gxde-top-panel-plugins \
             gxde-top-panel gxde-control-center gxde-launcher gxde-session-ui gxde-requ deepin-screensaver \
             util-dfm deepin-pdfium deepin-service-manager dde-grand-search gxde-terminal; do
     DESTDIR="$pkgdir" cmake --install "build-$_m"

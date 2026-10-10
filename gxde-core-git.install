@@ -1,0 +1,18 @@
+# 对应 gxde-wayland-gtk-menu 的 debian/postinst 与 prerm：
+# 在 /etc/gtk-3.0/settings.ini 的 gtk-modules 里加入或移除 appmenu-gtk-module-wayland
+_gtk_menu() {
+  usr/lib/gxde-wayland-gtk-menu/update-gtk-settings "$1" ||
+    echo "warning: could not $1 appmenu GTK module in /etc/gtk-3.0/settings.ini" >&2
+}
+
+post_install() {
+  _gtk_menu enable
+}
+
+post_upgrade() {
+  _gtk_menu enable
+}
+
+pre_remove() {
+  _gtk_menu disable
+}
