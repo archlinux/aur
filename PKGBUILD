@@ -1,8 +1,8 @@
 # Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
 
 pkgname=game-devices-udev
-pkgver=1.0
-pkgrel=0.1
+pkgver=1.1
+pkgrel=1
 pkgdesc="Udev rules for controllers"
 url='https://codeberg.org/fabiscafe/game-devices-udev'
 arch=('any')
@@ -16,7 +16,7 @@ provides=('nintendo-udev')
 install="install"
 source=("git+${url}.git?signed#tag=$pkgver"
         "uinput.conf")
-b2sums=('73ad6a33feb1199bac8d13b35d338039c13b4cb0948fcbb405e2fe5c4ddeaa3bda5030937beecd6bee0c8faceeb696975910e4c21d05d2308a8707b414825353'
+b2sums=('5b82f9046f949d7befcf1073c638db0929fece2527c748f3e1f9edca80f2ee5a389ca11d6e2e74dbf8868de13524a56ef42af510dc84bb013ec8113eb8d203de'
         '4f298ba1d1fdc19f5b90ea8d9292be9a44c85567995ea14136e401d39ce3c159b43be50f0043d1f10bed6892d24d8f7a6bf04f5a448ee2044f43b07c4c66cee0')
 
 validpgpkeys=(6E58E886A8E07538A2485FAED6A4F386B4881229) #Fabian Bornschein <fabiscafe-at-mailbox-dot-org>
