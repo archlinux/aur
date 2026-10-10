@@ -16,6 +16,7 @@ pkgbase = euphonica-git
 	depends = xdg-desktop-portal-gtk
 	depends = dconf
 	depends = openssl
+	depends = mpd
 	provides = euphonica
 	conflicts = euphonica
 	options = !lto
