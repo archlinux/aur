@@ -1,4 +1,5 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: hiruocha <hiruocha[at]outlook[dot]com>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: René Wagner < rwagner at rw-net dot de >
 # Contributor: Diab Neiroukh <lazerl0rd@thezest.dev>
 
