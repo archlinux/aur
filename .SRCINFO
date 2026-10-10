@@ -1,11 +1,11 @@
 pkgbase = hashcards-bin
 	pkgdesc = A plain text-based spaced repetition system.
-	pkgver = 0.4.0
-	pkgrel = 4
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/eudoxia0/hashcards/
 	arch = x86_64
 	license = Apache-2.0
-	source_x86_64 = hascards-0.4.0.tar.gz::https://github.com/eudoxia0/hashcards/releases/download/v0.4.0/hashcards-v0.4.0-linux-amd64.tar.gz
-	sha512sums_x86_64 = d50e7462d6563d5ef7ee6ab72ce6c7d36205cd3464da264578e464fb8d78463a603746aca11dc26adf704dde83abe4f072bd3db58acc015fb962c24a99d60d31
+	source_x86_64 = hascards-0.5.0.tar.gz::https://github.com/eudoxia0/hashcards/releases/download/v0.5.0/hashcards-v0.5.0-linux-amd64.tar.gz
+	sha512sums_x86_64 = 40d4ff19c072de150d8710616ab3c273871c2f0587dd0128c941e7392a5c58f1b82b662d4e7a384a843280838236cf5e3503de278273aa72c8c30bcda8444415
 
 pkgname = hashcards-bin
