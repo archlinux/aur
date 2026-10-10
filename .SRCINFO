@@ -1,0 +1,21 @@
+pkgbase = gxde-downloader-neo-git
+	pkgdesc = Download manager for GXDE based on AriaNG and aria2
+	pkgver = 1.1.6.r0.g13b585a
+	pkgrel = 1
+	url = https://github.com/GXDE-OS/gxde-downloader-neo
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = spark-webapp-runtime
+	depends = aria2
+	depends = bash
+	depends = unzip
+	depends = python
+	depends = python-miniupnpc
+	depends = python-requests
+	provides = gxde-downloader
+	conflicts = gxde-downloader
+	source = gxde-downloader-neo::git+https://github.com/GXDE-OS/gxde-downloader-neo.git
+	sha256sums = SKIP
+
+pkgname = gxde-downloader-neo-git
