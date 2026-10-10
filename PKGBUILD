@@ -4,16 +4,16 @@
 
 pkgname=libzlog
 _name=zlog
-pkgver=1.2.18
+pkgver=1.2.20
 pkgrel=1
-pkgdesc="a reliable pure C logging library"
+pkgdesc="A reliable pure C logging library"
 arch=('i686' 'x86_64')
 url="https://github.com/hardysimpson/zlog"
 license=('Apache-2.0')
 depends=('glibc')
 provides=('libzlog.so')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('3977dc8ea0069139816ec4025b320d9a7fc2035398775ea91429e83cb0d1ce4e')
+sha256sums=('432723ccd9a5b07ec1e4b8cc985d9011d768633b1e4c4facfc0e3e9a7ad5fcf7')
 
 build() {
   cd "$_name-$pkgver"

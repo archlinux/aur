@@ -1,0 +1,3 @@
+[libzlog]
+source = "git"
+git = "https://github.com/hardysimpson/zlog.git"
