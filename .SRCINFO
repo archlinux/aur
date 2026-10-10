@@ -1,0 +1,13 @@
+pkgbase = vkd3d-proton-clang-v4-bin
+	pkgdesc = Argonforge Clang-built vkd3d-proton for x86-64-v4 (prebuilt)
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/argonforge/vkd3d-proton-builds
+	arch = x86_64
+	license = MIT
+	depends = vulkan-icd-loader
+	options = !strip
+	source = vkd3d-proton-3.0.1-x86-64-v4.tar.zst::https://github.com/argonforge/vkd3d-proton-builds/releases/download/v3.0.1/vkd3d-proton-3.0.1-x86-64-v4.tar.zst
+	sha256sums = SKIP
+
+pkgname = vkd3d-proton-clang-v4-bin
