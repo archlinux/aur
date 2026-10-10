@@ -1,11 +1,12 @@
 pkgbase = mux-media-bin
 	pkgdesc = CLI utility to mux (merge) video, audio, and subtitles
 	pkgver = 0.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nujievik/mux-media
 	arch = x86_64
 	arch = i686
 	license = MIT OR Apache-2.0
+	options = !debug
 	source_x86_64 = https://github.com/nujievik/mux-media/releases/download/v0.19.0/mux-media-Linux-x64.zip
 	sha256sums_x86_64 = edce0229af37acf1b97f0b4a184852d68e9e5c9250159ea33c5bf64a8ce7ce5c
 	source_i686 = https://github.com/nujievik/mux-media/releases/download/v0.19.0/mux-media-Linux-x32.zip
