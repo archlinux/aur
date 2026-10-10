@@ -13,11 +13,13 @@ depends=(
   layer-shell-qt
   libcanberra
   libgcc
+  libinput
   libpulse
   libsecret
   libstdc++
   'libtde>=0.2.0'
   libxkbcommon
+  lua
   openssh
   pam
   pango
@@ -49,6 +51,7 @@ optdepends=(
   'power-profiles-daemon: the power mode'
   'pipewire-pulse: sound, with its volume in the bar'
   'gnome-keyring: remembering the passphrases of SSH keys'
+  'fprintd: unlocking the screen with a finger'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
