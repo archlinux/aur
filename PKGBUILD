@@ -27,7 +27,7 @@
 pkgname=vfio-native-kvm-dkms
 _pkgbase=vfio-native-kvm
 _kver=7.2.3
-_tag=1.4.0
+_tag=1.4.1
 pkgver=${_kver}
 pkgrel=1
 pkgdesc="KVM modules patched to raise the exceptions the architecture specifies (DKMS, 7.2.x kernels)"

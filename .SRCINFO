@@ -12,7 +12,7 @@ pkgbase = vfio-native-kvm-dkms
 	provides = vfio-native-kvm
 	conflicts = vfio-native-kvm
 	noextract = linux-7.2.3.tar.xz
-	source = git+https://git.archworks.co/sandwich/vfio-native.git#tag=v1.4.0
+	source = git+https://git.archworks.co/sandwich/vfio-native.git#tag=v1.4.1
 	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz
 	source = dkms.conf
 	source = dkms-out-of-tree.patch
