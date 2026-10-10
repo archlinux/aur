@@ -1,6 +1,6 @@
 pkgbase = novel-cli-git
 	pkgdesc = A terminal-based novel and webnovel reader with ncurses
-	pkgver = r22.9576837
+	pkgver = r35.c9ce7fd
 	pkgrel = 1
 	url = https://github.com/Rahaman146/novel-cli
 	arch = x86_64
