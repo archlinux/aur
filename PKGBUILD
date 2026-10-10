@@ -131,6 +131,8 @@ mkdir -p "${_pkgdir}/${_systemddir}"
 _msg2 'installing scripts and binaries'
 install -Dm755 "${GOBIN}/skywire" "${_pkgdir}/${_bin}/"
 ln -rTsf "${_pkgdir}/${_bin}/skywire" "${_pkgdir}/usr/bin/skywire"
+install -Dm644 "${GOBIN}/skywire.wasm.gz" "${_pkgdir}/${_bin}/"
+install -Dm644 "${GOBIN}/skywire.wasm.json" "${_pkgdir}/${_bin}/"
 install -Dm755 "${GOBIN}/skywire-cli" "${_pkgdir}/${_bin}/"
 ln -rTsf "${_pkgdir}/${_bin}/skywire-cli" "${_pkgdir}/usr/bin/skywire-cli"
 install -Dm755 "${GOBIN}/skywire-visor" "${_pkgdir}/${_bin}/"

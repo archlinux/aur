@@ -44,6 +44,12 @@ GOPROXY_MODE=${GOPROXY_MODE:-}
 # UPDATE_CHANNEL=binary-develop / binary-master override this per-run.
 BINARY_BRANCH=${BINARY_BRANCH:-develop}
 
+# WASM_MODULE_UPDATE=true keeps the js/wasm module beside the binary
+# (/opt/skywire/bin/skywire.wasm.gz) at the rolling release's on every run of
+# the binary channel. Only the host other visors fetch the module from sets
+# it; everywhere else the visor refreshes its copy when the desk is opened.
+WASM_MODULE_UPDATE=${WASM_MODULE_UPDATE:-false}
+
 # DISK_MIN_MB is the minimum free space (in MB) required on the relevant
 # filesystem before an update runs — the source-build path needs several GB
 # for the module + build cache, and even the binary path needs room for the
@@ -150,6 +156,35 @@ post_install() {
 # to the develop-latest / master-latest pre-release tags on every merge:
 #   https://github.com/skycoin/skywire/releases/download/<branch>-latest/skywire-linux-<arch>.zst
 #   https://github.com/skycoin/skywire/releases/download/<branch>-latest/SHA256SUMS
+# install_wasm_module brings the js/wasm module beside the binary up to the
+# one published at $1, checked against the sha256 in its manifest.
+install_wasm_module() {
+    local _base="$1" _dir=/opt/skywire/bin _want _have
+    _step="check the js/wasm module"
+    if ! curl -fsSL --retry 2 --retry-delay 2 --connect-timeout 15 --max-time 30 \
+        -o "${_BIN_TMPDIR}/skywire.wasm.json" "${_base}/skywire.wasm.json"; then
+        echo "warning: no skywire.wasm.json at ${_base}; module left as is"
+        return 0
+    fi
+    _want=$(grep -oE '"sha256":"[0-9a-f]{64}"' "${_BIN_TMPDIR}/skywire.wasm.json" | grep -oE '[0-9a-f]{64}' || true)
+    if [ -z "$_want" ]; then
+        echo "warning: unreadable skywire.wasm.json at ${_base}; module left as is"
+        return 0
+    fi
+    _have=$(sha256sum "${_dir}/skywire.wasm.gz" 2>/dev/null | cut -d' ' -f1 || true)
+    [ "$_want" = "$_have" ] && return 0
+
+    _step="download the js/wasm module"
+    curl -fsSL --retry 3 --retry-delay 2 --connect-timeout 20 --max-time 600 \
+        -o "${_BIN_TMPDIR}/skywire.wasm.gz" "${_base}/skywire.wasm.gz" \
+        || fail "download of skywire.wasm.gz from ${_base} failed"
+    [ "$(sha256sum "${_BIN_TMPDIR}/skywire.wasm.gz" | cut -d' ' -f1)" = "$_want" ] \
+        || fail "checksum mismatch for skywire.wasm.gz — refusing to install it"
+    install -Dm644 "${_BIN_TMPDIR}/skywire.wasm.gz" "${_dir}/skywire.wasm.gz"
+    install -Dm644 "${_BIN_TMPDIR}/skywire.wasm.json" "${_dir}/skywire.wasm.json"
+    echo "Installed the js/wasm module ${_want:0:12}"
+}
+
 install_binary() {
     _step="architecture detection"
     local _uarch _arch
@@ -179,6 +214,11 @@ install_binary() {
 
     _BIN_TMPDIR=$(mktemp -d)
     trap 'rm -rf "$_BIN_TMPDIR"' EXIT  # clean the download dir on any exit
+
+    # Before the commit gate: the module moves on its own schedule.
+    if [ "$WASM_MODULE_UPDATE" = true ]; then
+        install_wasm_module "$_base"
+    fi
 
     # Pre-download commit gate. Ask the GitHub release API what commit the
     # rolling pre-release was built from and compare it to the commit our
