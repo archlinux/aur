@@ -1,30 +1,30 @@
 pkgbase = memcastle-bin
 	pkgdesc = Local-first, always-on memory server for AI coding agents over MCP/HTTP (prebuilt binary)
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
-	url = https://github.com/noirbizarre/memcastle
+	url = https://github.com/memcastle/memcastle
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = glibc
 	depends = gcc-libs
-	provides = memcastle=0.4.0
+	provides = memcastle=0.4.1
 	conflicts = memcastle
 	options = !strip
 	options = !debug
-	source = LICENSE-0.4.0::https://github.com/noirbizarre/memcastle/raw/0.4.0/LICENSE
-	source = memcastle-0.4.0.service::https://github.com/noirbizarre/memcastle/raw/0.4.0/packaging/systemd/memcastle.service
-	source = memcastle-sources-0.4.0.tar.gz::https://github.com/noirbizarre/memcastle/releases/download/0.4.0/memcastle_0.4.0_sources.tar.gz
-	source = memcastle-integrations-0.4.0.tar.gz::https://github.com/noirbizarre/memcastle/releases/download/0.4.0/memcastle_0.4.0_integrations.tar.gz
-	source = memcastle-web-0.4.0.tar.gz::https://github.com/noirbizarre/memcastle/releases/download/0.4.0/memcastle_0.4.0_web.tar.gz
+	source = LICENSE-0.4.1::https://github.com/memcastle/memcastle/raw/0.4.1/LICENSE
+	source = memcastle-0.4.1.service::https://github.com/memcastle/memcastle/raw/0.4.1/packaging/systemd/memcastle.service
+	source = memcastle-sources-0.4.1.tar.gz::https://github.com/memcastle/memcastle/releases/download/0.4.1/memcastle_0.4.1_sources.tar.gz
+	source = memcastle-integrations-0.4.1.tar.gz::https://github.com/memcastle/memcastle/releases/download/0.4.1/memcastle_0.4.1_integrations.tar.gz
+	source = memcastle-web-0.4.1.tar.gz::https://github.com/memcastle/memcastle/releases/download/0.4.1/memcastle_0.4.1_web.tar.gz
 	sha256sums = 579ef5ffa922ce743ad6dd7ec4538389c7f66a2b945b7d6284e5b3ec04da156e
-	sha256sums = 8084d6127e526aad94907922f893f5215cfc4fd1dd113d11af6a8b3ee1a34ed1
-	sha256sums = b6781339a868c17279b9a04f15307426542ee6408f3f08afbab9138e4e04cd3f
-	sha256sums = 95276b6e076bde9a7e0a7e3108b852ea70540a338ca2c0e6a7f5d434ac5240c0
-	sha256sums = 9a4d993963991e65f4e48a779284e6181b8e10666244c25e1877afa07e7df092
-	source_x86_64 = memcastle-0.4.0-x86_64::https://github.com/noirbizarre/memcastle/releases/download/0.4.0/memcastle_0.4.0_linux-amd64
-	sha256sums_x86_64 = 9e818775c9094889045145870cf031a946e3b102d6a119d66ca7f5dc430dd2ef
-	source_aarch64 = memcastle-0.4.0-aarch64::https://github.com/noirbizarre/memcastle/releases/download/0.4.0/memcastle_0.4.0_linux-arm64
-	sha256sums_aarch64 = 1737d4270501e45d644ef964cc76cb0dc825287d053bdc3039338f74b7324a49
+	sha256sums = f97fe1b55d4357513a21820bb2b6b50c0ac6c70304bcece919e8ba8bec97fa2b
+	sha256sums = ca1e1858a12534e9e6bb766a6a2a29f1dfb989dd62126b18b17a11dcfe4080f0
+	sha256sums = f9bdc3607e097b7544660b9008a2a12a327c6164173e1c67f1bf561f44c64930
+	sha256sums = 915d4ae38536990f4510c7fd31d5f51b52bf1e5232668d871f7a99d12d8adeda
+	source_x86_64 = memcastle-0.4.1-x86_64::https://github.com/memcastle/memcastle/releases/download/0.4.1/memcastle_0.4.1_linux-amd64
+	sha256sums_x86_64 = b16bf4f04b0ba24606837da0ba0ed3c720300270ab2fbd9f15aa5c7880786eb0
+	source_aarch64 = memcastle-0.4.1-aarch64::https://github.com/memcastle/memcastle/releases/download/0.4.1/memcastle_0.4.1_linux-arm64
+	sha256sums_aarch64 = ec9178704b2623a1ed3e8a914d30d9536cd4a452106d144c79cb6fe9a70aeaae
 
 pkgname = memcastle-bin
