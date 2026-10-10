@@ -7,7 +7,7 @@
 pkgname=nethack-git
 _pkgname=NetHack
 pkgver=5.0.0_Release+r19762+gb1e2c2eaa
-pkgrel=1
+pkgrel=2
 pkgdesc='A single player dungeon exploration game'
 arch=('x86_64')
 url='https://github.com/NetHack/NetHack'
