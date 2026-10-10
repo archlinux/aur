@@ -1,0 +1,21 @@
+pkgbase = envirify-bin
+	pkgdesc = Material 3 GUI to view and edit every environment variable on your system — Arch GUI Environment Manager by Omniversify
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/phaylali/envirify
+	arch = x86_64
+	license = Unlicense
+	depends = gtk3
+	provides = envirify
+	conflicts = envirify
+	options = !strip
+	options = !lto
+	options = !debug
+	source = envirify-bin-1.0.0.tar.zst::https://github.com/phaylali/envirify/releases/download/v1.0.0/envirify-1.0.0-linux-x86_64.tar.zst
+	source = envirify.desktop::https://github.com/phaylali/envirify/raw/v1.0.0/packaging/envirify.desktop
+	source = envirify.png::https://github.com/phaylali/envirify/raw/v1.0.0/assets/icon-256.png
+	sha256sums = 499871944722232eae1c2ddb30be9c133ef0d455679d165a2b391c1f5cccf39e
+	sha256sums = 1ce23bfa235a1a740c09c188bdbbff4305287a463a37b3a33bc96b133e1c4a9e
+	sha256sums = 2c87a16962a47685b897430bb0851804aec84daa9940bf890152abe7389487ab
+
+pkgname = envirify-bin
