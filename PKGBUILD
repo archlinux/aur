@@ -3,12 +3,13 @@
 # NOTE for AUR helper users (yay, paru, ...): optional dependencies are easy to
 # miss in the build output, so please read this before installing.
 # kdotool is recommended for window management; python-rapidocr and
-# python-onnxruntime are only needed if you prefer local OCR over cloud.
+# python-onnxruntime are only needed if you prefer local OCR over cloud
+# (add python-openvino to run it on OpenVINO, at under half the CPU time).
 
 pkgname=linux-recall-git
 _pkgname=linux_recall
 pkgver=r27.4cfddc2
-pkgrel=2
+pkgrel=3
 pkgdesc='Windows Recall-style screen memory for KDE Plasma 6 on Wayland'
 arch=('any')
 url='https://github.com/junyixu/linux_recall'
@@ -29,6 +30,7 @@ makedepends=(
 optdepends=(
   'python-rapidocr: local OCR when the PaddleOCR cloud is unreachable'
   'python-onnxruntime: local OCR when the PaddleOCR cloud is unreachable'
+  'python-openvino: run local OCR on OpenVINO instead (same text, under half the CPU time)'
   'plasma-browser-integration: record the URL of the active browser tab'
   'fzf: lrf search picker'
   'jq: lrf and lr-search'

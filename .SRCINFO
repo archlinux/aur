@@ -1,7 +1,7 @@
 pkgbase = linux-recall-git
 	pkgdesc = Windows Recall-style screen memory for KDE Plasma 6 on Wayland
 	pkgver = r27.4cfddc2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/junyixu/linux_recall
 	arch = any
 	license = MIT
@@ -16,6 +16,7 @@ pkgbase = linux-recall-git
 	depends = spectacle
 	optdepends = python-rapidocr: local OCR when the PaddleOCR cloud is unreachable
 	optdepends = python-onnxruntime: local OCR when the PaddleOCR cloud is unreachable
+	optdepends = python-openvino: run local OCR on OpenVINO instead (same text, under half the CPU time)
 	optdepends = plasma-browser-integration: record the URL of the active browser tab
 	optdepends = fzf: lrf search picker
 	optdepends = jq: lrf and lr-search
