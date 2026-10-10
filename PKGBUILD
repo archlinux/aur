@@ -4,7 +4,7 @@
 _name=moderngl
 
 pkgname=python-moderngl-git
-pkgver=5.11.1.r0.g11d3e2ea
+pkgver=5.13.0.r14.gd99e5cc9
 pkgrel=1
 pkgdesc="Modern OpenGL binding for python."
 
@@ -20,6 +20,7 @@ conflicts=(python-moderngl)
 
 depends=(
     "libgl"
+    "python-opengl"
     "python"
 )
 makedepends=(
@@ -30,6 +31,9 @@ makedepends=(
     "python-wheel"
 )
 checkdepends=(
+    "python-numpy"
+    "python-pytest"
+    "python-scipy"
     "python-virtualenv"
 )
 
@@ -46,14 +50,11 @@ build () {
 check () {
     cd "$srcdir/$_name"
 
-
-    python -m venv venv
-    (
-        source venv/bin/activate
-        pip install ./dist/*.whl numpy pytest scipy setuptools
-        python setup.py build_ext -i
-        python -m pytest
-    )
+    python -m venv --system-site-packages venv
+    source venv/bin/activate
+    pip install ./dist/*.whl
+    python setup.py build_ext -i
+    pytest
     rm -rf venv
 }
 
