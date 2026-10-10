@@ -1,0 +1,4 @@
+[rawmakase]
+source = "git"
+git = "https://github.com/pch/rawmakase.git"
+prefix = "v"
