@@ -1,0 +1,45 @@
+pkgbase = windinput-bin
+	pkgdesc = WindInput Chinese input method for Fcitx5 (official Linux preview binaries)
+	pkgver = 0.125.0
+	pkgrel = 1
+	url = https://windinput.com
+	install = windinput.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = LGPL-3.0-only
+	depends = bash
+	depends = dbus
+	depends = fcitx5>=5.0.14
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libxcb
+	depends = libxkbcommon
+	depends = procps-ng
+	depends = python
+	depends = wayland
+	depends = xz
+	optdepends = fcitx5-configtool: add WindInput to your input method group
+	optdepends = fcitx5-gtk: input method support for GTK applications
+	optdepends = fcitx5-qt: input method support for Qt applications
+	optdepends = noto-fonts-cjk: Chinese text rendering, unless another CJK font is installed
+	optdepends = noto-fonts-emoji: color emoji rendering
+	optdepends = xclip: clipboard support on X11
+	optdepends = wl-clipboard: clipboard support on Wayland
+	optdepends = xdg-utils: open links and associated files
+	optdepends = xdg-desktop-portal: file dialogs, requires a desktop-specific portal backend
+	optdepends = zenity: fallback file dialogs
+	provides = windinput=0.125.0
+	conflicts = windinput
+	options = !strip
+	options = !debug
+	source = WindInput-0.125.0-LICENSE::https://raw.githubusercontent.com/huanfeng/WindInput/v0.125.0/LICENSE
+	sha256sums = 43619c691546f1967bf997b0eab75a57cb5513d5c2679d444dfd1c087e53d310
+	source_x86_64 = https://github.com/huanfeng/WindInput/releases/download/v0.125.0/WindInput-0.125.0-linux-amd64.deb
+	sha256sums_x86_64 = de54b04859c2f47ba086eab7d6fb92133e4896cfd6a54a74f6195cff9fbd3df3
+	source_aarch64 = https://github.com/huanfeng/WindInput/releases/download/v0.125.0/WindInput-0.125.0-linux-arm64.deb
+	sha256sums_aarch64 = e7a70fe5602a31ec623a11d227d3a8e5f19ab3d7f52386da275720eef037bd38
+
+pkgname = windinput-bin

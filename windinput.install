@@ -1,0 +1,16 @@
+post_install() {
+  cat <<'EOF'
+WindInput is a Linux preview release. Installing the package does not enable it.
+Ensure Fcitx5 is configured, then add WindInput using fcitx5-configtool.
+Chinese text requires a CJK font, such as noto-fonts-cjk.
+Log out and back in after configuring your input method framework.
+Optional: windinput-setup --no-im-config configures the current user, but also
+clears Fcitx5's Shift shortcut (AltTriggerKeys). Do not run it with sudo.
+EOF
+}
+
+post_upgrade() {
+  printf '%s\n' \
+    'WindInput updated. Log out and back in to load the new addon and service.' \
+    'Or run as your desktop user: pkill -u "$(id -u)" -x wind_input; fcitx5 -rd'
+}
