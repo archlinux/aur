@@ -2,7 +2,7 @@
 
 pkgbase='zl-speceq'
 pkgname=('zl-speceq-vst3' 'zl-speceq-lv2' 'zl-speceq')
-pkgver='0.0.3'
+pkgver='0.1.1'
 pkgrel=1
 pkgdesc='Dynamic spectrum equalizer audio plugin'
 arch=('x86_64' 'aarch64')
@@ -29,17 +29,17 @@ makedepends=(
   'ninja'
 )
 
-_jucecommit=4ca163dca6d55936b981e19eb93862d3272fbe9d
-_fftcommit=e702a89cd8d6dec306d337b88ca55453426650b5
+_jucecommit=e66b82515320d92a2224651f8ecc1c888a8ec3d8
+_fftcommit=b741fb7ac6ecdb9ea935730aa34fa89602f3e52f
 
 source=(
   "${pkgbase}_${pkgver}.zip::https://github.com/ZL-Audio/ZLSpectrumEqualizer/archive/refs/tags/${pkgver}.zip"
   "juce_${_jucecommit}.zip::https://github.com/ZL-Audio/JUCE/archive/${_jucecommit}.zip"
   "zldsp_fft_${_fftcommit}.zip::https://github.com/ZL-Audio/zldsp_fft/archive/${_fftcommit}.zip"
 )
-sha256sums=('738d98a7bb596fe89be92edf4e0cfea055f696b358b20a9401a0c1589fca784d'
-            '70f68473b7f6b8a3c9947cb5e9dd36dc13dde966c2fc78bf94a7335a717c1ee9'
-            '7cb22e9bf07a1c3059e0ca89dc873e846724fc836bef106c2ce1948771a18261')
+sha256sums=('7377600949dfe070d8e69528838c0ad2869ffac3d07c206288a8ffb8edd3520b'
+            '6a4189e1f3fc77ca9ff067966690f7a17ffaaee605e6711074fa6b72ef144cfd'
+            'c09372903a4d789656b82c7a248ec5c4b38fdd8b8b6786beac7973a62cc6abe7')
 
 prepare() {
   cd "ZLSpectrumEqualizer-${pkgver}/"
