@@ -1,6 +1,6 @@
 pkgbase = pumpkin-bin
 	pkgdesc = Empowering everyone to host fast and efficient Minecraft servers
-	pkgver = 0.1.0.dev.r20260301
+	pkgver = 0.2.0+26.3_26.51
 	pkgrel = 1
 	url = https://pumpkinmc.org
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = pumpkin-bin
 	provides = pumpkin
 	conflicts = pumpkin
 	options = !debug
-	source_x86_64 = pumpkin-X64-Linux::https://github.com/Pumpkin-MC/Pumpkin/releases/download/nightly/pumpkin-X64-Linux
-	sha256sums_x86_64 = SKIP
-	source_aarch64 = pumpkin-ARM64-Linux::https://github.com/Pumpkin-MC/Pumpkin/releases/download/nightly/pumpkin-ARM64-Linux
-	sha256sums_aarch64 = SKIP
+	source_x86_64 = pumpkin-X64-Linux::https://github.com/Pumpkin-MC/Pumpkin/releases/download/0.2.0+26.3-26.51/pumpkin-X64-Linux
+	sha256sums_x86_64 = 68c4416ca9fbfb3f2aeb6a8ce1de0e3fb02c5a85a53c8ba59a27941d7e43d8cd
+	source_aarch64 = pumpkin-ARM64-Linux::https://github.com/Pumpkin-MC/Pumpkin/releases/download/0.2.0+26.3-26.51/pumpkin-ARM64-Linux
+	sha256sums_aarch64 = 5cc0300f42e37d40f500b7b21d5194351939729c11b3bb0c28b4b77419dc00c9
 
 pkgname = pumpkin-bin
