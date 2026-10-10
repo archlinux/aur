@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: 2026 Krema Contributors
 
 pkgname=krema
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='A lightweight dock for KDE Plasma 6 — spiritual successor to Latte Dock'
 arch=('x86_64' 'aarch64')
@@ -12,6 +12,7 @@ depends=(
     'qt6-base>=6.8'
     'qt6-declarative>=6.8'
     'qt6-wayland'
+    'qt6-quick3d>=6.8'
     'kwindowsystem>=6.0'
     'kconfig>=6.0'
     'kcoreaddons>=6.0'
@@ -38,8 +39,8 @@ makedepends=(
     'gcc>=14'
     'qt6-shadertools'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/isac322/krema/archive/v$pkgver.tar.gz")
-sha256sums=('89612ed09921fa2990bc49f222352590e428a4fb38cd04b1cbefa87162bad7f0')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/isac322/krema/releases/download/v0.11.0/krema-0.11.0.tar.gz")
+sha256sums=('1bfb961342d3871834bb19cc68917dde4779688eed48649f4c797cf56949795c')
 
 build() {
     cmake -S "$pkgname-$pkgver" -B build \
