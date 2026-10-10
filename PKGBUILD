@@ -3,12 +3,13 @@
 _pkgname="pman"
 pkgname="${_pkgname}-helper"
 pkgver="1.4.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A pacman helper script, because you forget all the stupid flags"
 url="https://git.bjphoster.com/source/${_pkgname}"
 arch=("any")
 license=("MIT")
 depends=("bash" "pacman")
+optdepends=("sudo: run pacman as root when invoked unprivileged")
 conflicts=("pman") # Another package called `pman` currently exists in the AUR
 source=("https://git.bjphoster.com/source/${_pkgname}/archive/${pkgver}.tar.gz")
 
