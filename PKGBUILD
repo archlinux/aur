@@ -14,7 +14,7 @@ options=('!strip')
 source=("https://github.com/satodu/panda-iptv/releases/download/v${pkgver}/panda-iptv-${pkgver}-linux-x64.tar.gz"
         "panda-iptv.desktop"
         "LICENSE")
-sha256sums=('a332d94ed4ccd53de94bf4772d530aea24f3757d53b540bd24cebb9869636c17'
+sha256sums=('6164ee7a233cf0882580f5e4cb1ced68d14c7c4d471b42dc4547ada359584735'
             '267391f6971858e7235a5a30950e5d01f7abe0f1473cebd24545a149ab0788ad'
             'b3276f476122afd3ca641617539d6c95a3e4cb5cc8f943829343f075cbcf8470')
 
