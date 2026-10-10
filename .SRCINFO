@@ -1,11 +1,12 @@
 pkgbase = delta-bin
 	pkgdesc = AI coding assistant by Zed Industries (binary release)
-	pkgver = 0.18.0
+	pkgver = 0.19.2
 	pkgrel = 1
 	url = https://delta.dev
 	arch = x86_64
 	arch = aarch64
 	license = LicenseRef-Zed-Early-Access
+	makedepends = curl
 	makedepends = desktop-file-utils
 	depends = bash
 	depends = ca-certificates
@@ -22,7 +23,7 @@ pkgbase = delta-bin
 	depends = xdg-utils
 	optdepends = openssh: SSH Git remotes
 	optdepends = vulkan-driver: Vulkan graphics driver for the desktop application
-	provides = zed-delta=0.18.0
+	provides = zed-delta=0.19.2
 	conflicts = zed-delta
 	conflicts = delta-bin
 	options = !strip
@@ -31,9 +32,9 @@ pkgbase = delta-bin
 	source = zed-delta
 	sha256sums = 2178e301327b73c4e2584778af904515de418328abce2d76ef98892ab9b7b4a2
 	sha256sums = c7acfcfb28b1bc8c1c6a80137272eb32772c65b57ed073a833f4a41f69215a70
-	source_x86_64 = delta-0.18.0-x86_64.tar.gz::https://github.com/zed-industries/delta-nix/releases/download/v0.18.0/delta-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 0b34dd2fa36b3b25a6bb66caa3df5db00f6fea274717c4950327709a278d7d54
-	source_aarch64 = delta-0.18.0-aarch64.tar.gz::https://github.com/zed-industries/delta-nix/releases/download/v0.18.0/delta-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 1d82ffba540fb362573ccfd5d4036581f9f396b11d7754169ea00077280cf1ff
+	source_x86_64 = delta-0.19.2-x86_64.tar.gz::https://github.com/zed-industries/delta-nix/releases/download/v0.19.2/delta-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 82d4859f31f8e68d03071fefcb1d0df1c51092f67049cf2535c3e5ad0d0c2182
+	source_aarch64 = delta-0.19.2-aarch64.tar.gz::https://github.com/zed-industries/delta-nix/releases/download/v0.19.2/delta-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 20396a673ff0f99f00a2e996844028f0cf56a923a804912768ec498bfadad912
 
 pkgname = delta-bin

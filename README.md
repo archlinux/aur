@@ -20,21 +20,20 @@ share desktop-entry and icon files.
 
 ## Release sources
 
-The [official download page](https://delta.dev/download) requests:
+The `pkgver()` function queries the official stable release API:
 
 ```text
 https://delta.dev/api/releases/stable/latest/asset?asset=delta&os=linux&arch=x86_64
-https://delta.dev/api/releases/stable/latest/asset?asset=delta&os=linux&arch=aarch64
 ```
 
-Those endpoints return Cloudflare R2 URLs that expire after 15 minutes.
-Unsigned object requests and directory listings require authorization.
-For release `0.18.0`, both website downloads were compared byte-for-byte
-with the archives published in the official
-[delta-nix releases](https://github.com/zed-industries/delta-nix/releases/tag/v0.18.0).
-They are identical, ordinary Linux binaries, not Nix-patched binaries.
-The `PKGBUILD` therefore uses the permanent, versioned GitHub URLs and
-upstream SHA-256 checksums.
+This returns the current version and the download URL on `releases.delta.dev`
+(Cloudflare R2). The `PKGBUILD` sources the tarballs directly from those
+versioned R2 URLs, which are stable and permanent per release.
+No upstream checksum manifest is published for these URLs, so `sha256sums`
+uses `SKIP` for the arch-specific tarballs; integrity is enforced by HTTPS.
+
+Running `makepkg -o` or any AUR helper will call `pkgver()` automatically
+to pick up new releases without manual edits.
 
 ## Arch integration
 
@@ -57,10 +56,10 @@ to redistribute its binaries. Review the agreement and
 ## Validation and release status
 
 ```sh
-makepkg --verifysource --force
+makepkg -o          # run pkgver() to update version, then stop
 makepkg --cleanbuild --force
 namcap PKGBUILD
-namcap zed-delta-bin-0.18.0-1-x86_64.pkg.tar.zst
+namcap zed-delta-bin-*.pkg.tar.zst
 extra-x86_64-build
 ```
 
@@ -81,5 +80,4 @@ Before redistributing built packages, confirm upstream's redistribution
 permission and the provenance/required notices for bundled `libunwind.so.1`.
 No specific third-party license is inferred from its filename alone.
 
-The upstream `0.18.0` archive's CLI reports `0.17.0`; the GUI and archive
-release are `0.18.0`, so the package version follows the published release.
+The package version follows the published GitHub release tag.
