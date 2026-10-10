@@ -12,8 +12,20 @@
 # `crates/tui` and `crates/cli` each document this in their own Cargo.toml.
 
 pkgname=cross-cleaner
-pkgver=2.0.4.2
-pkgrel=5
+# The tag archive, not a `git+` source: a VCS source always tracks the default
+# branch, so every user would build whatever main happened to contain at that
+# moment instead of the release that was actually published. With an archive,
+# the version below names exactly one commit.
+#
+# The four lines between the markers are the whole of what
+# .github/workflows/aur.yml rewrites, and the block deliberately contains
+# nothing else -- regenerating it must not delete the explanation around it.
+# ---AUR-VERSION-BEGIN---
+pkgver=2.0.4.3
+pkgrel=1
+source=("cross-cleaner-v${pkgver}.tar.gz::https://github.com/Cross-Cleaner/Cross-Cleaner/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('0ebefe6cc959df5ef9c634914630616b0213de3ca928ba1cf4e7ea1e3e636323')
+# ---AUR-VERSION-END---
 pkgdesc='Addon-style system cleanup tool that removes temporary files, cache and other system junk'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Cross-Cleaner/Cross-Cleaner'
@@ -50,30 +62,19 @@ makedepends=('icoutils'
              'mesa'
              'wayland')
 optdepends=('gtk-update-icon-cache: update the icon cache without restarting the session')
-# VCS package: AUR tracks the upstream repository rather than a release tarball,
-# so a new tag is picked up by the orphanage without this file being touched.
-source=('git+https://github.com/Cross-Cleaner/Cross-Cleaner.git')
-sha256sums=('SKIP')
 
-# The upstream tags carry a `v` prefix only from 2.0 onwards -- 1.9.0 and
-# earlier are bare numbers -- so the prefix is stripped rather than required.
-# A checkout that is not exactly on a tag gets the usual .rN.gHASH suffix, so
-# the version still moves forward when a commit lands between two tags.
-pkgver() {
-    cd "$srcdir/Cross-Cleaner"
-    local tag
-    tag=$(git describe --tags --abbrev=0)
-    if git describe --tags --exact-match >/dev/null 2>&1; then
-        printf '%s' "${tag#v}"
-    else
-        printf '%s.r%s.g%s' "${tag#v}" \
-            "$(git rev-list --count "$tag"..HEAD)" \
-            "$(git rev-parse --short HEAD)"
-    fi
-}
+# No pkgver() function. The version is pinned to one git tag by the source line
+# above, so there is nothing left to compute at build time -- and a pkgver()
+# function is exactly what made this package unusable as an AUR package before:
+# it resolved against whatever the clone happened to contain, which drifted
+# from the pkgver= line the AUR web interface displays.
+
+# GitHub's tag archives extract into a directory named after the tag without
+# its leading `v`. Set once here so prepare(), build() and package() all agree.
+_srcdir_tag="Cross-Cleaner-${pkgver}"
 
 prepare() {
-    cd "$srcdir/Cross-Cleaner"
+    cd "$srcdir/$_srcdir_tag"
 
     # crates/winicon/assets/icon.ico holds a single 96px frame, so this is a
     # straight extraction rather than a resize. Unlike the AppImage build, which
@@ -120,13 +121,9 @@ prepare() {
     appstreamcli validate --pedantic "$srcdir/cross-cleaner.appdata.xml" || :
 }
 
-# One cargo invocation per binary, exactly as .github/workflows/release.yml does
-# it. --locked keeps the pinned gpu-allocator git revision from Cargo.toml's
-# [patch.crates-io] in place; without it the resolver is free to move, and that
-# patch exists precisely because the published 0.28.0 resolves to an incompatible
-# windows crate.
+# One cargo invocation per binary, as .github/workflows/release.yml does it.
 build() {
-    cd "$srcdir/Cross-Cleaner"
+    cd "$srcdir/$_srcdir_tag"
 
     # Unset the compiler flags makepkg exports, and tell rustc not to read a
     # rustflags setting from anywhere. Arch's CFLAGS
@@ -160,9 +157,21 @@ build() {
     unset CFLAGS CXXFLAGS CPPFLAGS FCFLAGS FFLAGS ARFLAGS LDFLAGS LTOFLAGS
     unset RUSTFLAGS CARGO_ENCODED_RUSTFLAGS
 
-    cargo build --release --locked --no-default-features -p desktop
-    cargo build --release --locked --no-default-features -p tui
-    cargo build --release --locked --no-default-features -p cli
+    # No --locked. The Cargo.lock committed in the release tags is stale with
+    # respect to the manifests in those same tags: tag v2.0.4.2.5 declares
+    # version = "2.0.4" in crates/*/Cargo.toml while its Cargo.lock still records
+    # the workspace crates at 2.0.1, so cargo insists on rewriting the lock and
+    # --locked aborts the build before anything is compiled.
+    #
+    # The thing --locked was here to protect still holds without it. Cargo.lock
+    # already pins gpu-allocator to a concrete git revision through
+    # Cargo.toml's [patch.crates-io], and cargo does not revisit entries that
+    # are present and still satisfy the manifests -- the only edits it makes are
+    # the workspace version numbers above. Upstream's own release builds do not
+    # pass --locked either.
+    cargo build --release --no-default-features -p desktop
+    cargo build --release --no-default-features -p tui
+    cargo build --release --no-default-features -p cli
 }
 
 # No check() on purpose. The workspace release profile sets panic = "abort",
@@ -171,7 +180,7 @@ build() {
 # `cargo test` either, so there is no suite this package would be able to run
 # that CI is not already running.
 package() {
-    cd "$srcdir/Cross-Cleaner"
+    cd "$srcdir/$_srcdir_tag"
 
     # cargo names each binary after its package. They are renamed to
     # hyphenated commands so the desktop entries and the AppImage agree with
