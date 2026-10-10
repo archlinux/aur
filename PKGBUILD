@@ -1,6 +1,6 @@
 # Maintainer: Nauris Steins <me@naurissteins.com>
 pkgname=matuwall
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Fast and lightweight wallpaper picker for Wayland"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 )
 conflicts=('matuwall-bin' 'matuwall-git')
 source=("$pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('7de4d081aa543a6fb49852f5d2202962c1684656138ff2402f62baaf77807794')
+sha256sums=('ad1451610cf7f95f452bc96248dc7677d2f15fb03e7b4f583333e47bfafa39a6')
 
 build() {
   cd "$pkgname-$pkgver"
