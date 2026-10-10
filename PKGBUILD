@@ -10,7 +10,7 @@
 # the builder's keyring for no benefit.
 
 pkgname=tidemark-git
-pkgver=0.6.0.r0.ga37e451
+pkgver=0.6.1.r1.g1585b98
 pkgrel=1
 pkgdesc='Track AI provider quota limits: how much of each rate-limit window is burned, when it resets, and whether the current pace reaches it'
 arch=('x86_64')
@@ -54,6 +54,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/tidemark"
+    CFLAGS="${CFLAGS//-O[0-9sz]/}"
     cargo build --release --locked --workspace
 }
 
