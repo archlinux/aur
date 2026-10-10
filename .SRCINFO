@@ -1,7 +1,7 @@
 pkgbase = cursor-clip-git
 	pkgdesc = GTK4/Libadwaita Wayland clipboard manager with dynamic cursor-positioned overlay
-	pkgver = 1.0.2
-	pkgrel = 1
+	pkgver = 1.0.3
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/Sirulex/cursor-clip
 	arch = x86_64
@@ -11,10 +11,11 @@ pkgbase = cursor-clip-git
 	makedepends = cargo
 	makedepends = rust
 	makedepends = pkgconf
+	makedepends = make
 	depends = gtk4
-	depends = libadwaita
+	depends = libadwaita>=1.5
 	depends = gtk4-layer-shell
-	provides = cursor-clip=1.0.2
+	provides = cursor-clip=1.0.3
 	conflicts = cursor-clip
 	source = cursor-clip::git+https://github.com/Sirulex/cursor-clip.git
 	sha256sums = SKIP
