@@ -4,7 +4,7 @@ _pkgname=AionUi
 pkgver=2.2.2
 _electronversion=37
 _nodeversion=22
-pkgrel=2
+pkgrel=3
 pkgdesc="Free, local, open-source 24/7 Cowork app and OpenClaw for Gemini CLI, Claude Code, Codex, OpenCode, Qwen Code, Goose CLI, Auggie, and more."
 arch=(
     'aarch64'
@@ -35,7 +35,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('a6049f5b76c7b7891a7caaf7be717d38695698b8d70985ad2a05d83658986873'
-            'fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8')
+            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -49,14 +49,15 @@ _get_project_dir() {
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _get_electron_version() {
-    _elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -name "node_modules" \
-        -exec jq -r '.devDependencies.electron // empty' {} + 2>/dev/null | grep -v "^$" | head -n 1)
-    _elec_ver=$(echo "${_elec_ver}" | sed 's/[^0-9.]//g')
-    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
-    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
+	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
+		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
+		| grep -oE '[0-9]+' | head -1)
+	[[ -z "${_elec_ver}" ]] && return 1
+	(( _elec_ver == _electronversion )) && c=32 || c=31
+	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -96,13 +97,12 @@ prepare() {
     _set_build_env
     find packages -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
+    bun install --frozen-lockfile
     bun run postinstall || true
     bunx electron-builder install-app-deps
 }
 build() {
-    cd "${_src}"
-    _set_build_env
-    _ensure_local_nvm
+    cd "$(_get_project_dir)"
     _ensure_local_nvm
     _set_build_env
     if [[ "${CARCH}" == "x86_64" ]]; then
@@ -112,20 +112,35 @@ build() {
     else
         TARGET_ARCH="x64"
     fi
+    export CI=true
+    export NODE_OPTIONS='--max-old-space-size=8192'
     bunx electron-vite build --config packages/desktop/electron.vite.config.ts
     node scripts/build-mcp-servers.js
-    node -e "const { prepareAioncore } = require('./packages/shared-scripts/src/prepare-aioncore.js'); \
-        const { resolveAioncoreVersion } = require('./scripts/resolveAioncoreVersion.js'); \
-        prepareAioncore({ projectRoot: process.cwd(), platform: 'linux', arch: '${TARGET_ARCH}'});"
+    # Skip prepareAioncore (aioncore is provided by system package)
+    # Patch afterPack.js to skip bundled-aioncore verification
+    sed -i 's/verifyBundledResources(resourcesDir, electronPlatformName, targetArch);/console.log("   Skipping bundled-aioncore verification (system package used)");/' scripts/afterPack.js
     node scripts/prepareHubResources.js
     bunx electron-builder --linux dir --"${TARGET_ARCH}" -c.electronDist="${ELECTRON_DIST}" --config packages/desktop/electron-builder.yml
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-    local _app_dir="$(_get_app_dir)"
-    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
-    rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
+	local _app_dir="$(_get_app_dir)"
+	rm -rf "${_app_dir}/resources/default_app.asar"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
+    # Replace bundled aioncore with symlink to system package
+    local _runtime_key
+    if [[ "${CARCH}" == "x86_64" ]]; then
+        _runtime_key="linux-x64"
+    elif [[ "${CARCH}" == "aarch64" ]]; then
+        _runtime_key="linux-arm64"
+    fi
+    if [[ -n "${_runtime_key}" ]]; then
+        rm -rf "${pkgdir}/usr/lib/${pkgname}/bundled-aioncore/${_runtime_key}"
+        mkdir -p "${pkgdir}/usr/lib/${pkgname}/bundled-aioncore/${_runtime_key}/managed-resources"
+        ln -sf /usr/bin/aioncore "${pkgdir}/usr/lib/${pkgname}/bundled-aioncore/${_runtime_key}/aioncore"
+        ln -sf /usr/bin/aioncore "${pkgdir}/usr/lib/${pkgname}/bundled-aioncore/${_runtime_key}/managed-resources/aioncore"
+    fi
     local _src="$(_get_project_dir)"
     install -Dm644 "${_src}/resources/app.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${_src}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
