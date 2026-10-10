@@ -1,6 +1,6 @@
 pkgbase = lazymark-bin
 	pkgdesc = Lazy markdown notes, tasks and a Kanban board in your terminal
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/MathiasDrizzy/lazymark
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = lazymark-bin
 	provides = lazymark
 	conflicts = lazymark
 	options = !strip
-	source_x86_64 = lazymark-x86_64-1.0.0.tgz::https://github.com/MathiasDrizzy/lazymark/releases/download/v1.0.0/lazymark_1.0.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = a321cba67d5c5db7552aa7d053512dbf4c18f308745219197a238c07acec56c2
-	source_aarch64 = lazymark-aarch64-1.0.0.tgz::https://github.com/MathiasDrizzy/lazymark/releases/download/v1.0.0/lazymark_1.0.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = b8fd7932236fc02cd5f0d78674421384e1ce02c80b52363248f3db4ef970e8df
+	source_x86_64 = lazymark-x86_64-1.1.0.tgz::https://github.com/MathiasDrizzy/lazymark/releases/download/v1.1.0/lazymark_1.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = cdba1bc5d67cf1267a6f5c383a08d39bc4998ca6aa822dd8622eecc0f432c418
+	source_aarch64 = lazymark-aarch64-1.1.0.tgz::https://github.com/MathiasDrizzy/lazymark/releases/download/v1.1.0/lazymark_1.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = be3c2d986762820c81066b794098b87fb73a2a48338696b6d4f60c169c3849ca
 
 pkgname = lazymark-bin
