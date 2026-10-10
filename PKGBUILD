@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=data-peek
 _pkgname=Data-Peek
-pkgver=0.33.0
+pkgver=0.34.0
 _electronversion=38
 _nodeversion=24
 pkgrel=1
@@ -28,8 +28,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('94f4d5d6e513ef1271dde6aca5ad151ee4a3d8967cbd91394ecfd7ab5ee1ad76'
-            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+sha256sums=('618d15244cd379b052384cac641a061ca78ab665d65d2f429f606e147e94986d'
+            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -95,7 +95,6 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
-        s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
@@ -106,7 +105,7 @@ prepare() {
     _ensure_local_nvm
     _set_build_env
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
-    rm -rf pnpm-lock.yaml
+    find ./ -type f -name "pnpm-lock.yaml" -exec rm -rf {} +
     export NODE_ENV=development
     pnpm install
 }
