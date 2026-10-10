@@ -1,10 +1,11 @@
 pkgbase = lundukecity-git
 	pkgdesc = A windowed city-building game (Micropolis engine) for the Lunduke Computer Operating System (LCOS)
 	pkgver = r1.b5272fb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BryanLunduke/LundukeCity
 	arch = x86_64
 	license = GPL-3.0-or-later
+	checkdepends = xorg-server-xvfb
 	makedepends = meson
 	makedepends = ninja
 	makedepends = git
