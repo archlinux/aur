@@ -4,7 +4,7 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname=mozc
-pkgver=3.34.6239
+pkgver=3.34.6345
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input'
 arch=('x86_64')
@@ -16,13 +16,14 @@ optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
             'ibus-mozc: IBus integration'
             'emacs-mozc: Emacs integration')
 install='mozc.install'
-source=('git+https://github.com/google/mozc.git#commit=04733c92daf891a3f3d67ba85c69fa9cc64032ba'
+source=('git+https://github.com/google/mozc.git#commit=18e76511af9371a9a4409b1d13c3e30884b53e9c'
         # Bazel module repo (copy of https://bcr.bazel.build/)
         'git+https://github.com/bazelbuild/bazel-central-registry.git#commit=b0cb0e8ec70689252e3b35f109ffa4a32329b900'
         # Bazel binary
         'https://github.com/bazelbuild/bazel/releases/download/9.0.2/bazel-9.0.2-linux-x86_64'
         # Bazel dependencies
         'https://github.com/abseil/abseil-cpp/releases/download/20260107.1/abseil-cpp-20260107.1.tar.gz'
+        'https://github.com/abseil/abseil-py/archive/refs/tags/v2.1.0.tar.gz'
         'https://github.com/bazelbuild/apple_support/releases/download/2.4.0/apple_support.2.4.0.tar.gz'
         'https://github.com/bats-core/bats-core/archive/v1.10.0.tar.gz'
         'https://github.com/bazel-contrib/bazel_features/releases/download/v1.42.1/bazel_features-v1.42.1.tar.gz'
@@ -53,6 +54,7 @@ source=('git+https://github.com/google/mozc.git#commit=04733c92daf891a3f3d67ba85
         'ken_all-20260403.zip::https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/621d059fbcbfae17bfca15b439692bae934268c3/ken_all.zip')
 noextract=('bazel-9.0.2-linux-x86_64'
            'abseil-cpp-20260107.1.tar.gz'
+           'v2.1.0.tar.gz'
            'apple_support.2.4.0.tar.gz'
            'v1.10.0.tar.gz'
            'bazel_features-v1.42.1.tar.gz'
@@ -80,10 +82,11 @@ noextract=('bazel-9.0.2-linux-x86_64'
            '2025-01-25.zip'
            'jigyosyo-20260403.zip'
            'ken_all-20260403.zip')
-b2sums=('54b0fc991e390c68b3a7de3fd48005ab33f3745983f958ff5c01c105f2d085787e02a7008763f5547ba8b9c704d68d1d1a6af61192774349eda7b0bfc718f7ec'
+b2sums=('3a70979fb269fe21ae5bf4b2e614ada49be7132340e8cd4f2fdf0c1163d7223479b98e0e1193fde00ede88626353914ca0850deb00d52eb7eaf55c5f7d1ff4fd'
         '0fa68a06d930796445f215ecb16a7dba7bf9cae1004318c766269fd403ba3a44bc46035672949fc3731cf9cf778630291a078fda98ef46dce1f1c27f08b02bbb'
         '83457d476468763e9e94ce6ea3ee7abf9ad123887e24c304067993922f0b4430786da797c27bf5b15acba57a30c5c7472fd0ff285089368b9b51ce085f33c254'
         '1c0814eefb6181a82437128c9d3c08dec0540c2353b8a317204c49b1510b311173897de4a737da6f0cc034bf1b23717dea54f0338e3794f6a56f7292f53937bc'
+        '85232156e722cb874e29e1f92513b24836553476d5ff379e8df32d307ca21709b5869edd80a3bb7fe757ae585bb45df21c89ae6f2218147a5812f171d946e094'
         '3b6fc965bc2b129fbf65308cfd0c64177fe6cb51ca1f1a96dcd99023e973ed8199a5f457849070b85eed2bfd9248d74a2280cb1dcf33103700483b3b8b499e7c'
         '4d9e07f4b3da1cfadfd0ecbe00d611bc9a6ff8a6b55dba58e8ba4647e10265564d0cd64eb82a2b3ba483bc307b909f25913416057dc54ba8224c92cbff39c70e'
         '28eb673ec695ab77ff067e20479edaba4d423b3f7f66dc00c1d30eee9a89ddc808aa1fa5e1167b679eb21ca4be941186171e79da24520d8391048b689aaac8ce'
@@ -117,6 +120,9 @@ prepare() {
 
     cd mozc/src
 
+    # Temp fix for Qt 6.12
+    sed -i -e 's|::mozc::gui::DictionaryContentTableWidget|mozc::gui::DictionaryContentTableWidget|g' ./gui/dictionary_tool/dictionary_tool.ui
+
     # Mozc: BSD-3-Clause
     printf '1. Mozc\n\n' > LICENSE
     sed -n 67,94p data/installer/credits_en.html >> LICENSE
@@ -141,8 +147,9 @@ prepare() {
     printf '6. Tamachi Phonetic Kanji Library\n\n' >> LICENSE
     sed -n 660,666p data/installer/credits_en.html >> LICENSE
 
-    sed -i -e "366s|jigyosyo.zip|jigyosyo-20260403.zip| ;
-               373s|ken_all.zip|ken_all-20260403.zip|" MODULE.bazel
+    # Use fixed local snapshots for the zip code data
+    sed -i -e "389s|jigyosyo.zip|jigyosyo-20260403.zip| ;
+               396s|ken_all.zip|ken_all-20260403.zip|" MODULE.bazel
 }
 
 build() {
