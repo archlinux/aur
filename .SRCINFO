@@ -1,0 +1,28 @@
+pkgbase = sysc-plugins-git
+	pkgdesc = Official plugins for sysc-shell (development version)
+	pkgver = 20261010.r495.g018ab7a
+	pkgrel = 1
+	url = https://github.com/Nomadcxx/sysc-plugins
+	install = sysc-plugins-git.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = CC-BY-4.0
+	makedepends = go>=1.26.4
+	makedepends = git
+	makedepends = pkgconf
+	depends = sysc-shell
+	depends = evolution-data-server
+	optdepends = github-cli: GitHub notifications
+	optdepends = docker: container management
+	optdepends = kdeconnect: phone integration
+	optdepends = lutris: games
+	optdepends = moonbit: system cleanup
+	optdepends = gpu-screen-recorder: screen recording
+	optdepends = python: wallpaper depth masks
+	provides = sysc-plugins
+	conflicts = sysc-plugins
+	source = sysc-plugins::git+https://github.com/Nomadcxx/sysc-plugins.git
+	sha256sums = SKIP
+
+pkgname = sysc-plugins-git
