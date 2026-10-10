@@ -2,31 +2,40 @@
 
 pkgname=hidapitester-git
 _pkgname=hidapitester
-pkgver=r76.90e4bae
+pkgver=0.7.r4.gd777f15
 pkgrel=1
-pkgdesc="Simple command-line program to test HIDAPI"
-url="https://github.com/todbot/hidapitester"
-depends=(systemd-libs hidapi)
-makedepends=('git')
-conflicts=(hidapitester)
-license=('GPL')
-arch=('x86_64' 'i686')
-source=("${pkgname}"::'git+https://github.com/todbot/hidapitester.git')
-md5sums=('SKIP')
-
-build() {
-  cd ${srcdir}/${pkgname}
-  make
-}
+pkgdesc='Simple command-line program to test HIDAPI'
+arch=('x86_64' 'aarch64')
+url='https://github.com/todbot/hidapitester'
+license=('GPL-3.0-only')
+depends=('glibc' 'hidapi')
+makedepends=('git' 'cmake')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${_pkgname}"
+  git describe --long --tags --match 'v*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cmake -B build -S "${_pkgname}" \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
+    -Wno-dev
+  cmake --build build
+}
+
+check() {
+  sh "${_pkgname}/tests/test_nohardware.sh" build/hidapitester
 }
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${srcdir}/${pkgname}/README.md" "${pkgdir}/usr/share/${_pkgname}/README.md"
+  DESTDIR="${pkgdir}" cmake --install build
+  install -Dm644 "${_pkgname}/README.md" -t "${pkgdir}/usr/share/doc/${_pkgname}/"
 }
 
 # vim:set ts=2 sw=2 et:
