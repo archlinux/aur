@@ -1,6 +1,6 @@
 pkgbase = r-ggtangle
 	pkgdesc = Draw Network with Data
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggtangle
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = r-ggtangle
 	optdepends = r-ggtree
 	optdepends = r-quarto
 	optdepends = r-scatterpie
-	source = https://cran.r-project.org/src/contrib/ggtangle_0.1.3.tar.gz
-	md5sums = 10b602e913be52b9ae09ff0198171b12
-	b2sums = cd1099dfe89bad1bb1e6ec952ba109e59235482ef8096273c69a3bf55d50f31a6ac0db65e803b324915e1e37f7008d4ba8cf6a316b75ec1a81cf775e9fb3ae0c
+	source = https://cran.r-project.org/src/contrib/ggtangle_0.1.4.tar.gz
+	md5sums = 2177ae6f63b7e918e7da2ea31b123c63
+	b2sums = 839726f8b28782847e294a6129409536a2cdd1d48c956a879784875b09cb4b161741335cad9c3dff289c0dd9086750408ab962792ef7183c0448453c100aa4fa
 
 pkgname = r-ggtangle
