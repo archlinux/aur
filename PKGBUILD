@@ -1,7 +1,7 @@
 # Maintainer: gnolruf <112510094+gnolruf@users.noreply.github.com>
 
 pkgname=assistd
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A local-model agent daemon for Linux (LLM + voice + tools + WM integration)"
 arch=('x86_64')
@@ -26,11 +26,7 @@ optdepends=(
   'hyprland: Wayland focused-window screenshot via hyprctl'
   'bubblewrap: sandboxed bash command tool'
   'pipewire-pulse: PulseAudio routing for audio playback (otherwise raw ALSA)'
-  'libxkbcommon: tray-popup GUI (dlopened at runtime)'
-  'libxcb: tray-popup GUI on X11 (dlopened at runtime)'
-  'wayland: tray-popup GUI on Wayland (dlopened at runtime)'
-  'libglvnd: tray-popup GUI OpenGL renderer (dlopened at runtime)'
-  'fontconfig: tray-popup GUI text rendering (dlopened at runtime)'
+  'notification-daemon: desktop notifications from the tray'
 )
 makedepends=(
   'rust'
@@ -42,7 +38,7 @@ makedepends=(
 backup=('etc/assistd/config.toml')
 install=assistd.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('62587b70811a258c1de3176d568ae22be49561b194ed2e38e57f90fdef0ccd59')
+sha256sums=('090a6b960860c6696b89219f9bc7cbaf29659759ec415a4843378b1afd5b4fc0')
 
 prepare() {
   cd "$pkgname-$pkgver"

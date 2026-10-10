@@ -1,6 +1,6 @@
 pkgbase = assistd
 	pkgdesc = A local-model agent daemon for Linux (LLM + voice + tools + WM integration)
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/gnolruf/assistd
 	install = assistd.install
@@ -24,14 +24,10 @@ pkgbase = assistd
 	optdepends = hyprland: Wayland focused-window screenshot via hyprctl
 	optdepends = bubblewrap: sandboxed bash command tool
 	optdepends = pipewire-pulse: PulseAudio routing for audio playback (otherwise raw ALSA)
-	optdepends = libxkbcommon: tray-popup GUI (dlopened at runtime)
-	optdepends = libxcb: tray-popup GUI on X11 (dlopened at runtime)
-	optdepends = wayland: tray-popup GUI on Wayland (dlopened at runtime)
-	optdepends = libglvnd: tray-popup GUI OpenGL renderer (dlopened at runtime)
-	optdepends = fontconfig: tray-popup GUI text rendering (dlopened at runtime)
+	optdepends = notification-daemon: desktop notifications from the tray
 	options = !lto
 	backup = etc/assistd/config.toml
-	source = assistd-1.2.1.tar.gz::https://github.com/gnolruf/assistd/archive/refs/tags/v1.2.1.tar.gz
-	sha256sums = 62587b70811a258c1de3176d568ae22be49561b194ed2e38e57f90fdef0ccd59
+	source = assistd-1.3.0.tar.gz::https://github.com/gnolruf/assistd/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = 090a6b960860c6696b89219f9bc7cbaf29659759ec415a4843378b1afd5b4fc0
 
 pkgname = assistd
