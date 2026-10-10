@@ -1,6 +1,6 @@
 pkgbase = enzo-bin
 	pkgdesc = Terminal video player with a graphical interface (prebuilt portable binary)
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/MiguelRegueiro/enzo
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = enzo-bin
 	depends = libpulse
 	depends = xz
 	depends = zlib
-	provides = enzo=1.2.0
+	provides = enzo=1.3.0
 	conflicts = enzo
-	source = enzo-1.2.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/MiguelRegueiro/enzo/releases/download/v1.2.0/enzo-1.2.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 8745e2f66911093f257584bf9fe0ab64f329b523bb6e8b34e9896f0361b194d5
+	source = enzo-1.3.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/MiguelRegueiro/enzo/releases/download/v1.3.0/enzo-1.3.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 48086322795eb84de49a4e0d8b01ccf1bf6b84a56dd87a3de92991afa8977985
 
 pkgname = enzo-bin

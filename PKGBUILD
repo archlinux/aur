@@ -2,7 +2,7 @@
 
 pkgname=enzo-bin
 _pkgname=enzo
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Terminal video player with a graphical interface (prebuilt portable binary)'
 arch=('x86_64')
@@ -23,7 +23,7 @@ depends=(
 provides=("${_pkgname}=${pkgver}")
 conflicts=('enzo')
 source=("${_pkgname}-${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz")
-sha256sums=('8745e2f66911093f257584bf9fe0ab64f329b523bb6e8b34e9896f0361b194d5')
+sha256sums=('48086322795eb84de49a4e0d8b01ccf1bf6b84a56dd87a3de92991afa8977985')
 
 package() {
   cd "${_pkgname}-${pkgver}-${CARCH}-unknown-linux-gnu"
