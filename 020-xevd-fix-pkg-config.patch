@@ -5,7 +5,7 @@
  
  Requires:
 -Libs: -L${libdir} -lxevd
--Libs.private: -lm
+-Libs.private: -L${libdir}/@LIB_NAME@ -lm
 +Libs: -L${libdir} -lxevd -lm
  
  Cflags: -I${includedir}
