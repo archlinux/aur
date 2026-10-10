@@ -4,7 +4,7 @@
 
 pkgname='therion'
 pkgver='6.4.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Cave surveying: processes survey data and generates maps or 3D models of caves"
 arch=('x86_64' 'i686')
 url="http://therion.speleo.sk"
@@ -57,6 +57,8 @@ _sourcedir="${pkgname}-${pkgver}"
 
 prepare() {
   cd "${pkgname}-${pkgver}"
+
+  sed -i 's@\<fmt/core\.h\>@fmt/format.h@' src/therion-core/*.cxx
 
   # patch to get UTF8 and available fonts
   patch -p0 -i ${srcdir}/therion_ini.patch
