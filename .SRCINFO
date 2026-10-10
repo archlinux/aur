@@ -1,6 +1,6 @@
 pkgbase = servo-bin
 	pkgdesc = A prototype web browser engine written in the Rust language
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://servo.org
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = servo-bin
 	depends = zlib
 	provides = servo
 	conflicts = servo
-	source = servo-bin-0.6.0.tar.gz::https://github.com/servo/servo/releases/download/v0.6.0/servo-x86_64-linux-gnu.tar.gz
-	sha256sums = ad951ede1a1a73899b822c9464f6bdb3ec25b531b27cd806671d79ac8b6a60d0
+	source = servo-bin-0.7.0.tar.gz::https://github.com/servo/servo/releases/download/v0.7.0/servo-x86_64-linux-gnu.tar.gz
+	sha256sums = 728eba1be1cc1851e05dfaa90e18f98ab8644dd2355bedb0b8a5e89795ebe333
 
 pkgname = servo-bin
