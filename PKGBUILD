@@ -6,7 +6,7 @@
 # placeholders; everything else is used verbatim.
 
 pkgname=linux-explorer
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A faithful recreation of Windows 7's Explorer"
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=('kio-extras: real search, and archives that open as folders'
             'kdenetwork-filesharing: Samba browsing behind Map network drive')
 makedepends=('cmake' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('04d99ba7a135fd299c6d124c5fd355d452fc2f39c5e0b1ac0cff8d09b6b5cfe3')
+sha256sums=('07aed5aa30f06a91fc7c3413178f1815657901d4be13e14d47f2718a155f6956')
 
 build() {
     cmake -S "$pkgname-$pkgver" -B build \
