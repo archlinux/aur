@@ -1,5 +1,5 @@
 pkgbase = flavor-bin
-	pkgdesc = Several Tailscale and Headscale networks side by side, in one desktop app and daemon
+	pkgdesc = Use multiple Tailscale and Headscale tailnets at once (desktop app, CLI, daemon)
 	pkgver = 0.1.0beta6
 	pkgrel = 1
 	url = https://github.com/tame-gg/Flavor
