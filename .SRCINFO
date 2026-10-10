@@ -1,7 +1,7 @@
 pkgbase = machctrl-bin
 	pkgdesc = Hardware monitor and optimizer for Linux — CPU, GPU, RAM, fans, temperature and system tuning (prebuilt)
 	pkgver = 3.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/araujo791/MachCtrl-GTK4
 	install = machctrl.install
 	arch = x86_64
