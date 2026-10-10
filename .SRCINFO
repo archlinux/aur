@@ -1,0 +1,33 @@
+pkgbase = ultra-9000-bin
+	pkgdesc = Agent harness with native Alacritty terminals in a Tauri/Svelte interface (prebuilt)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/yasen-pavlov/ultra_9000
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	depends = cairo
+	depends = dbus
+	depends = fontconfig
+	depends = freetype2
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = librsvg
+	depends = libsoup3
+	depends = libxkbcommon
+	depends = mesa
+	depends = pango
+	depends = wayland
+	depends = webkit2gtk-4.1
+	provides = ultra-9000=0.1.0
+	conflicts = ultra-9000
+	noextract = ultra-9000-0.1.0-1-x86_64.pkg.tar.zst
+	options = !strip
+	options = !debug
+	source = https://github.com/yasen-pavlov/ultra_9000/releases/download/v0.1.0/ultra-9000-0.1.0-1-x86_64.pkg.tar.zst
+	sha256sums = 4e615cacc0781669640e160043aeb08bddeb34197291656ce92bff4247fde8cc
+
+pkgname = ultra-9000-bin
