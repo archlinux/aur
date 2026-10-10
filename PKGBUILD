@@ -1,7 +1,7 @@
 # Maintainer: Phaylali <admin@omniversify.com>
 
 pkgname=omniversify-hypr-calendar
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Three-calendar (Gregorian, Hijri, Amazigh) floating overlay for Hyprland"
 arch=('any')
