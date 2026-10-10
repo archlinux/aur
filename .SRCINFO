@@ -1,7 +1,7 @@
 pkgbase = qt6curve-git
 	pkgdesc = Qt6 widget style with extensive configurability (Qt6 version only, separate from qtcurve)
 	pkgver = 1.9.1
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/ixnewton/qtcurve/tree/Qt6Curve_version
 	arch = x86_64
 	license = LGPL2.1
