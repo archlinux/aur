@@ -1,6 +1,6 @@
 pkgbase = fenriz-bar-bin
 	pkgdesc = Status bar for Wayland compositors (Binary Release)
-	pkgver = 0.1.19
+	pkgver = 0.1.20
 	pkgrel = 1
 	url = https://github.com/zackb/fenriz
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = fenriz-bar-bin
 	provides = fenriz-bar
 	conflicts = fenriz-bar
 	conflicts = fenriz-bar-git
-	source = https://github.com/zackb/fenriz/releases/download/v0.1.19/fenriz-bar-0.1.19.tar.gz
-	sha256sums = 548ae78b62897b5631d01259b07a62a9be3e781f150a25d8198959a904c3c563
+	source = https://github.com/zackb/fenriz/releases/download/v0.1.20/fenriz-bar-0.1.20.tar.gz
+	sha256sums = 99cefff33111b55f827096970686f356547160bd3d881be65fa25053ed0e00d2
 
 pkgname = fenriz-bar-bin
