@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=passwordsafe-bin
-pkgver=1.25.0
+pkgver=1.26.0
 pkgrel=1
-pkgdesc="Popular secure and convenient password manager(Prebuilt version)"
+pkgdesc="Popular secure and convenient password manager."
 arch=("x86_64")
 url="https://pwsafe.org/"
 _ghurl="https://github.com/pwsafe/pwsafe"
@@ -18,10 +18,10 @@ depends=(
     'wxwidgets-common'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-fedora43-${pkgver%.0}.rpm"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-fedora44-${pkgver//.0/}-${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/pwsafe/pwsafe/${pkgver}/LICENSE"
 )
-sha256sums=('e573b3e50e9da955fa007deb0c3dc9f2e40f8fe0213a34100d6975859d90348b'
+sha256sums=('3f64eb2bee3d163e7e0443537b56cd46fd200ccd4a5b1c15cae877ace10daa75'
             '4b78a21565152049c63fcde694cd4ba8f2205491d0e17dc4fd1a711416561013')
 package() {
     install -Dm755 "${srcdir}/usr/bin/"* -t "${pkgdir}/usr/bin"
