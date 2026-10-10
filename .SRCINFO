@@ -1,0 +1,24 @@
+pkgbase = spark-webapp-runtime-git
+	pkgdesc = Spark WebApp Runtime, a simple solution for packaging web apps
+	pkgver = 1.8.2.r0.gaf941e0
+	pkgrel = 1
+	url = https://github.com/GXDE-OS/spark-web-app-runtime
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = gxde-dtk6-git
+	depends = qt6-base
+	depends = qt6-webengine
+	depends = libstdc++
+	depends = libgcc
+	depends = glibc
+	provides = spark-webapp-runtime
+	conflicts = spark-webapp-runtime
+	source = spark-web-app-runtime::git+https://github.com/GXDE-OS/spark-web-app-runtime.git
+	sha256sums = SKIP
+
+pkgname = spark-webapp-runtime-git
