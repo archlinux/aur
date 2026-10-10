@@ -2,21 +2,85 @@
 
 _name=gradio
 pkgname=python-$_name
-pkgver=6.28.0
+pkgver=6.30.0
 pkgrel=1
 pkgdesc='Python library for easily interacting with trained machine learning models.'
 arch=('any')
 url='https://github.com/gradio-app/gradio'
 license=('Apache-2.0')
-depends=('python' 'python-anyio' 'python-audioop-lts' 'python-brotli' 'python-fastapi' 'python-groovy' 'python-gradio-client' 'python-hf-gradio' 'python-httpx' 'python-huggingface-hub' 'python-jinja' 'python-markupsafe' 'python-numpy' 'python-orjson' 'python-packaging' 'python-pandas' 'python-pillow' 'python-pydantic' 'python-python-multipart' 'python-pydub' 'python-pyyaml' 'python-safehttpx' 'python-semantic-version' 'python-starlette' 'python-tomlkit' 'python-typer' 'python-typing_extensions' 'uvicorn' 'python-pytz')
-makedepends=('python-hatchling' 'python-hatch-requirements-txt' 'python-hatch-fancy-pypi-readme' 'python-build' 'python-installer' 'python-wheel' 'pnpm' 'npm')
-checkdepends=('ipython' 'python-altair' 'python-boto3' 'python-matplotlib' 'python-hypothesis' 'jupyter-nbformat' 'python-openai' 'python-polars' 'python-email-validator' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-rerunfailures' 'python-requests' 'python-respx' 'python-scikit-image' 'python-pytorch' 'python-tqdm' 'python-transformers' 'python-vega_datasets' 'python-diffusers' 'python-authlib' 'python-itsdangerous' 'python-mcp' 'mime-types' 'ffmpeg')
-optdepends=('python-authlib: oauth' 'python-itsdangerous: oauth'
-            'python-mcp: mcp' 'python-pydantic: mcp'
+depends=('python'
+         'python-anyio'
+         'python-audioop-lts'
+         'python-brotli'
+         'python-fastapi'
+         'python-groovy'
+         'python-gradio-client'
+         'python-hf-gradio'
+         'python-httpx'
+         'python-huggingface-hub'
+         'python-jinja'
+         'python-markupsafe'
+         'python-numpy'
+         'python-orjson'
+         'python-packaging'
+         'python-pandas'
+         'python-pillow'
+         'python-pydantic'
+         'python-python-multipart'
+         'python-pydub'
+         'python-pyyaml'
+         'python-safehttpx'
+         'python-semantic-version'
+         'python-starlette'
+         'python-tomlkit'
+         'python-typer'
+         'python-typing_extensions'
+         'uvicorn'
+         'python-pytz')
+makedepends=('python-hatchling'
+             'python-hatch-requirements-txt'
+             'python-hatch-fancy-pypi-readme'
+             'python-build'
+             'python-installer'
+             'python-wheel'
+             'pnpm'
+             'npm')
+checkdepends=('ipython'
+              'python-altair'
+              'python-boto3'
+              'python-matplotlib'
+              'python-hypothesis'
+              'jupyter-nbformat'
+              'python-openai'
+              'python-polars'
+              'python-email-validator'
+              'python-pytest'
+              'python-pytest-asyncio'
+              'python-pytest-rerunfailures'
+              'python-requests'
+              'python-respx'
+              'python-scikit-image'
+              'python-pytorch'
+              'python-tqdm'
+              'python-transformers'
+              'python-vega_datasets'
+              'python-diffusers'
+              'python-authlib'
+              'python-itsdangerous'
+              'python-mcp'
+              'mime-types'
+              'ffmpeg')
+optdepends=('python-authlib: oauth'
+            'python-itsdangerous: oauth'
+
+            'python-mcp: mcp'
+            'python-pydantic: mcp'
+
             'ruff: needed for custom component docs generation'
+
             'ffmpeg: audio/video processing')
 source=("$url/archive/refs/tags/$_name@$pkgver.tar.gz")
-sha256sums=('ad07f4a87c25a35e2a69f00d7da6f21e0340211799ceb321047a547781350df7')
+sha256sums=('3707d9e88535346885f12d99aab8e408dda9f096a6432b966b223b25548ccd19')
 
 prepare(){
   cd "$srcdir"/$_name-$_name-$pkgver
