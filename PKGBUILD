@@ -1,3 +1,4 @@
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=embellish
 pkgver=1.2.0
 pkgrel=1
