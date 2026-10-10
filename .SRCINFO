@@ -1,0 +1,16 @@
+pkgbase = sysc-tray
+	pkgdesc = StatusNotifierItem and DBusMenu tray daemon for sysc-shell
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Nomadcxx/sysc-tray
+	install = sysc-tray.install
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = go>=1.26.4
+	depends = systemd
+	optdepends = sysc-shell: tray presentation
+	source = sysc-tray-0.1.1.tar.gz::https://github.com/Nomadcxx/sysc-tray/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = be9557f36bc24258b184cb4edc5df58efef504db7c20262b2eb4c2680881bc73
+
+pkgname = sysc-tray
