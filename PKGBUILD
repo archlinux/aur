@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Huang <jeremyhuang55555@gmail.com>
 pkgname=jcode-bin
-pkgver=0.93.0
+pkgver=0.94.0
 pkgrel=1
 pkgdesc="AI coding agent powered by Claude and ChatGPT"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/1jehuang/jcode"
 license=('MIT')
 provides=('jcode')
 conflicts=('jcode')
-source=("https://github.com/1jehuang/jcode/releases/download/v0.93.0/jcode-linux-x86_64.tar.gz")
-sha256sums=('e9ed183ff067bc17f530e6edfddd97eff88fd817bc2281123073377f0f7567a4')
+source=("https://github.com/1jehuang/jcode/releases/download/v0.94.0/jcode-linux-x86_64.tar.gz")
+sha256sums=('e471f61e661612cfd6da5e9c1bb8238fab0c63c3ebc96c648439816649478c1b')
 
 package() {
     install -Dm755 "${srcdir}/jcode-linux-x86_64" "${pkgdir}/usr/lib/jcode/jcode-linux-x86_64"
