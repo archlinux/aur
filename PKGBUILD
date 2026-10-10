@@ -2,7 +2,7 @@
 
 pkgauthor="leolaurindo"
 pkgname="chess-analyzer-tui"
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A lightweight chess.com-style analyzer. Runs with any UCI engine. Gets game from file, stdin or clipboard."
 
@@ -22,7 +22,7 @@ depends=('bash' 'stockfish' 'python' 'python-pyperclip' 'python-platformdirs' 'p
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f1f44151c673ecd05dec925c7e5a396bd14d775d92a0294774d45fa12e9f5dbe')
+sha256sums=('739aab668d468c4b36e9b0024d0c4468a83216a2f1aa1e1f18f0b58069daa3a0')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/" || exit
