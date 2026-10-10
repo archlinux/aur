@@ -2,7 +2,7 @@
 
 ## Repository Overview
 
-This is the AUR package for [botropolis](https://github.com/auroq/botropolis) built from the **released binaries**.
+This is the AUR package for [botropolis](https://github.com/Botropolis-City/botropolis) built from the **released binaries**.
 [`botropolis`](https://aur.archlinux.org/packages/botropolis) is the same program built from source; the two conflict and either will do.
 
 Prefer this one unless you want to compile, or you want Arch's hardening.
