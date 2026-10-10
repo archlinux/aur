@@ -13,7 +13,7 @@
 
 pkgname=cross-cleaner
 pkgver=2.0.4.2
-pkgrel=1
+pkgrel=5
 pkgdesc='Addon-style system cleanup tool that removes temporary files, cache and other system junk'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Cross-Cleaner/Cross-Cleaner'
@@ -80,17 +80,26 @@ prepare() {
     # upscales to 128 and 256 with ImageMagick, nothing is invented here: the
     # one real size is installed as-is. Dropping a >=512px master PNG into
     # crates/winicon/assets is what makes the larger hicolor slots worth filling.
-    mkdir -p "$srcdir/icons"
-    icotool -x -o "$srcdir/icons" crates/winicon/assets/icon.ico
-    local frame
+    #
+    # Extraction goes to a throwaway directory rather than straight to
+    # $srcdir/icons: prepare() has to be idempotent, because makepkg reuses an
+    # existing $srcdir whenever only the PKGBUILD changed. Writing the frame
+    # next to its destination and then `mv`-ing it onto itself fails the second
+    # time round, with "mv: ... and ... are the same file".
+    local extract
+    extract=$(mktemp -d)
+    icotool -x -o "$extract" crates/winicon/assets/icon.ico
     # icotool names its output after the source and the frame's geometry, so
     # glob rather than hardcode the name.
-    frame=$(find "$srcdir/icons" -name '*.png' -print -quit)
-    [[ -n "$frame" ]] || {
+    local frame
+    frame=$(find "$extract" -name '*.png' -print -quit)
+    if [[ -z "$frame" ]]; then
+        rm -rf "$extract"
         printf 'icotool extracted no frame from icon.ico\n' >&2
         return 1
-    }
-    mv "$frame" "$srcdir/icons/cross-cleaner.png"
+    fi
+    install -Dm644 "$frame" "$srcdir/icons/cross-cleaner.png"
+    rm -rf "$extract"
 
     # packaging/linux/cross-cleaner.appdata.xml carries %%VERSION%% and %%DATE%%
     # for the release workflow to fill in. AUR builds from a git checkout rather
@@ -116,13 +125,41 @@ prepare() {
 # [patch.crates-io] in place; without it the resolver is free to move, and that
 # patch exists precisely because the published 0.28.0 resolves to an incompatible
 # windows crate.
-#
-# The workspace release profile is lto = true, codegen-units = 1 and
-# opt-level = "z", which is tuned for a portable download and makes this one of
-# the slower Rust packages to build. That is upstream's choice, not this
-# PKGBUILD's.
 build() {
     cd "$srcdir/Cross-Cleaner"
+
+    # Unset the compiler flags makepkg exports, and tell rustc not to read a
+    # rustflags setting from anywhere. Arch's CFLAGS
+    #
+    #   -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions
+    #   -Wp,-D_FORTIFY_SOURCE=3 -fstack-clash-protection -fcf-protection ...
+    #
+    # are handed to the `cc` crate, which passes them straight to the C compiler
+    # that ring's build.rs uses for its crypto core. At least one of them makes
+    # that build produce objects whose symbols the final link cannot resolve,
+    # and the whole binary then fails to link:
+    #
+    #   ld.lld: error: undefined symbol: ring_core_0_17_14__x25519_sc_mask
+    #   ld.lld: error: undefined symbol: ring_core_0_17_14__aes_nohw_set_encrypt_key
+    #   ... every symbol of ring's native core
+    #
+    # ring's own build.rs output is correct throughout -- it emits both
+    # `rustc-link-lib=static=ring_core_0_17_14_` and `rustc-link-search`, and
+    # the archive really does contain all 157 symbols. What breaks is the link
+    # step, which sees the `-L` search path but not the `-l`.
+    #
+    # Verified by bisection on a reduced crate (ureq -> rustls -> ring): the
+    # build passes with makepkg's CFLAGS removed and fails with them set, while
+    # LTO, RUSTFLAGS, LDFLAGS and the rest of makepkg's environment are all
+    # neutral. Note this is NOT upstream's fat LTO profile causing it -- the
+    # release profile in Cargo.toml builds these binaries fine on Ubuntu.
+    #
+    # Clearing the variables is also the more correct behaviour for a package:
+    # these are the distribution's hardening flags for distribution-built
+    # software, not something a third-party package should silently inherit.
+    unset CFLAGS CXXFLAGS CPPFLAGS FCFLAGS FFLAGS ARFLAGS LDFLAGS LTOFLAGS
+    unset RUSTFLAGS CARGO_ENCODED_RUSTFLAGS
+
     cargo build --release --locked --no-default-features -p desktop
     cargo build --release --locked --no-default-features -p tui
     cargo build --release --locked --no-default-features -p cli
