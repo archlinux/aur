@@ -1,0 +1,3 @@
+[python-dbutils]
+source = "pypi"
+pypi = "dbutils"
