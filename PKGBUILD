@@ -1,6 +1,6 @@
 # Maintainer: Kuokuo123 <kuoyu1204@gmail.com>
 pkgname="otter-launcher"
-pkgver=0.7.9
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A rust-based cli/tui launcher built for keyboard-centric users, featuring vi & emacs keybinds, ascii decoration, etc"
 arch=("x86_64" "aarch64")
@@ -11,7 +11,7 @@ options=(!debug)
 backup=("etc/otter-launcher/config.toml")
 source=("https://github.com/kuokuo123/otter-launcher/archive/refs/tags/v0.8.0.tar.gz")
 
-# v0.8.0 is a generational update, check github repo for config migration guide: https://github.com/kuokuo123/otter-launcher/
+# v0.8.0 is a generational update that comes with breaking changes. Check the github repo for config migration guide: https://github.com/kuokuo123/otter-launcher/
 
 build() {
 	cd "$pkgname-$pkgver"
