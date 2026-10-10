@@ -47,12 +47,17 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     _check_electron_version
     sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    
     local _app_dir="$(_get_app_dir)"
     asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed -i "
-        s|const documentsPath = app.isPackaged ? path.resolve(app.getPath('documents'), 'wj-markdown-editor') : app.getAppPath()|const documentsPath = path.resolve(app.getPath('userData'), 'wj-markdown-editor')|g
-    " "${srcdir}/app.asar.unpacked/src/data/recent.js"
+    sed -i "s|const documentsPath = app.isPackaged ? path.resolve(app.getPath('documents'), 'wj-markdown-editor') : app.getAppPath()|const documentsPath = path.resolve(app.getPath('userData'))|g" \
+        "${srcdir}/app.asar.unpacked/src/data/recent.js"
+    # Fix configConstants.js: force true branch and use userData
+    sed -i "s|return app.isPackaged|return true \|\| app.isPackaged|g" \
+        "${srcdir}/app.asar.unpacked/src/data/config/configConstants.js"
+    sed -i "s|app.getPath('documents'), 'wj-markdown-editor'|app.getPath('userData')|g" \
+        "${srcdir}/app.asar.unpacked/src/data/config/configConstants.js"
+    sed -i "s|app.getPath('documents'), 'wj-markdown-editor/logs'|app.getPath('userData'), 'logs'|g" \
+        "${srcdir}/app.asar.unpacked/src/util/logUtil.js"
     asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
 }
 package() {
