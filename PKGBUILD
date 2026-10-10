@@ -83,7 +83,7 @@ package() {
         [[ "$base" == "parcat" ]] && continue
         [[ "$base" == "parcatStatic" ]] && continue
 
-        install -m755 "$f" "$pkgdir/usr/bin/$base"
+        install -m755 "$f" "$pkgdir/usr/bin/VTM$base"
     done
 
     # License
