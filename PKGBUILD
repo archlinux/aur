@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=rawmakase
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 url="https://$pkgname.com/"
 _url="https://github.com/pch/$pkgname"
@@ -13,8 +13,9 @@ depends=(glibc # libc.so libm.so
          libraw)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
+options=(!lto)
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('8bb21d8dd1ff8602a72cf29b87b7d6feac52d2e67547a6aefeae077c1cd04551')
+sha256sums=('e1fc5e0d6c79108d1311cfbd9f2e205c7813996e6bce7f7bab35888f1d595bd9')
 
 _srcenv() {
 	cd "$_archive"
@@ -27,6 +28,7 @@ _srcenv() {
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
 	CFLAGS+=' -fno-lto'
+	CPPFLAGS+=' -fno-lto'
 }
 
 prepare() {
