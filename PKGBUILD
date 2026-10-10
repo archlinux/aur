@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sputnik-bin
 _pkgname=Sputnik
-pkgver=2.0.0
+pkgver=2.3.2
 _electronversion=44
 pkgrel=1
 pkgdesc="A minimalist desktop music player."
@@ -18,9 +18,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/bonavida/sputnik/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c08d8953031cf854e0dc16965239f1afb21a9089e6b721b5d069a89dfdd6be86'
+sha256sums=('6f6e97d56493dd2ca8bf436ef187c3f62624b32ca81ce72fc98d119c8510d32a'
             'f229649a1d88073fe35799b89b56c229a5f4203837e5f0eb14817f0e04a80b7c'
-            'fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8')
+            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }

@@ -1,18 +1,18 @@
 pkgbase = sputnik-bin
 	pkgdesc = A minimalist desktop music player.
-	pkgver = 2.0.0
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/bonavida/sputnik
 	arch = x86_64
 	license = MIT
 	depends = electron44
-	provides = sputnik=2.0.0
+	provides = sputnik=2.3.2
 	conflicts = sputnik
-	source = sputnik-2.0.0.deb::https://github.com/bonavida/sputnik/releases/download/v2.0.0/Sputnik-2.0.0-amd64.deb
-	source = LICENSE-2.0.0::https://raw.githubusercontent.com/bonavida/sputnik/v2.0.0/LICENSE
+	source = sputnik-2.3.2.deb::https://github.com/bonavida/sputnik/releases/download/v2.3.2/Sputnik-2.3.2-amd64.deb
+	source = LICENSE-2.3.2::https://raw.githubusercontent.com/bonavida/sputnik/v2.3.2/LICENSE
 	source = sputnik.sh
-	sha256sums = c08d8953031cf854e0dc16965239f1afb21a9089e6b721b5d069a89dfdd6be86
+	sha256sums = 6f6e97d56493dd2ca8bf436ef187c3f62624b32ca81ce72fc98d119c8510d32a
 	sha256sums = f229649a1d88073fe35799b89b56c229a5f4203837e5f0eb14817f0e04a80b7c
-	sha256sums = fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8
+	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
 
 pkgname = sputnik-bin
