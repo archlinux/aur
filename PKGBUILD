@@ -2,7 +2,7 @@
 
 pkgname=qqm
 _pkgname=QQMusicApi-rs
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="go-musicfox style QQ Music terminal player with background daemon and MPRIS support"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('rust' 'cargo')
 conflicts=('qqm-bin')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('26332eb8e603e5ad870d34374ec081f57cbdfde57661ee23d420c58322275f67')
+sha256sums=('c882e86ca7b5892f2a2712222ff95a9f9c100cb1e5c02df3cb0770573bbf2bfe')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
@@ -27,7 +27,9 @@ build() {
 
     export CARGO_HOME="${srcdir}/.cargo"
     export RUSTUP_TOOLCHAIN=stable
-    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}/${_pkgname}-${pkgver}=/build/qqm --remap-path-prefix=${srcdir}/.cargo/registry=/cargo-registry"
+    local _sysroot
+    _sysroot="$(rustc --print sysroot)"
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}/${_pkgname}-${pkgver}=/build/qqm --remap-path-prefix=${srcdir}/.cargo/registry=/cargo-registry --remap-path-prefix=${_sysroot}=/rust-sysroot"
     cargo build --frozen --release -p qqmusic-tui --bin qqm
 }
 
