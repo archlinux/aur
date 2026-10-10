@@ -1,7 +1,7 @@
 # Maintainer: Zan Skamljic <zan.skamljic@gmail.com>
 
 pkgname=tde-session
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='The TDE desktop session: a wlroots compositor, overview, bar, lock screen and settings'
 arch=(x86_64 aarch64)
@@ -12,11 +12,13 @@ depends=(
   layer-shell-qt
   libcanberra
   libgcc
+  libinput
   libpulse
   libsecret
   libstdc++
   'libtde>=0.2.0'
   libxkbcommon
+  lua
   openssh
   pam
   pango
@@ -47,9 +49,10 @@ optdepends=(
   'power-profiles-daemon: the power mode'
   'pipewire-pulse: sound, with its volume in the bar'
   'gnome-keyring: remembering the passphrases of SSH keys'
+  'fprintd: unlocking the screen with a finger'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('96409919f84554a186487550afbf3ea306903fc38558b2bd418586809928f508')
+sha256sums=('8a78f699f9786f0218987bc5bd22ef10bf8540989fd5c965d1629f9103afbf4f')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" -G Ninja \
