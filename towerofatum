@@ -1,8 +1,17 @@
 #!/bin/sh
-# Tower of Atum: the game opens on its play screen (offline, host online, or join a game from the lobby) and starts
-# its own server when it needs one. Installed by pacman, so the game never updates itself (the AUR package does
-# that). The game's log goes to $XDG_STATE_HOME/towerofatum; progress and the server's log are under
-# ~/.config/unity3d. Extra arguments go to the game (for example --name Alex).
+# Tower of Atum: the launcher (/opt/towerofatum/TowerOfAtumLauncher), which shows what's new, says when a newer version
+# is out, and has the Play button. Installed by pacman, so the launcher never changes the game (a "package-managed"
+# file beside it says so): updates come with the AUR package. The game opens on its play screen (offline, host online,
+# or join a game from the lobby) and starts its own server when it needs one. Its log goes to
+# $XDG_STATE_HOME/towerofatum; progress and the server's log are under ~/.config/unity3d. Extra arguments go to the
+# game (for example --name Alex).
+# Without a display, with ATUM_NO_LAUNCHER=1, or when the launcher's window can't open (exit code 3), the game starts
+# directly, as before the launcher.
+if [ -z "$ATUM_NO_LAUNCHER" ] && [ -x /opt/towerofatum/TowerOfAtumLauncher ] && [ -n "$DISPLAY$WAYLAND_DISPLAY" ]; then
+    /opt/towerofatum/TowerOfAtumLauncher "$@"
+    status=$?
+    [ "$status" -ne 3 ] && exit "$status"
+fi
 state="${XDG_STATE_HOME:-$HOME/.local/state}/towerofatum"
 mkdir -p "$state"
 exec /opt/towerofatum/TowerOfAtum -logFile "$state/client.log" "$@"
