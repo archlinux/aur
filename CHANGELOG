@@ -1,6 +1,10 @@
 
         ChangeLog file for safeclib
 
+Changes in 3.13
+	- add make lint and pre-commit hooks
+	- Update u8scripts and u8gbreaks from Unicode 13 to 18 (forgot to regen them)
+
 Changes in 3.9.2
 	- Fix vsnprintf_s two buffer sizes by 1 (Bernd Kuhls, Khem Raj)
         - Fixes for !HAVE_VSNWPRINTF_S

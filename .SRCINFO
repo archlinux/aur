@@ -1,6 +1,6 @@
 pkgbase = libsafec
-	pkgdesc = Implementtion of C11 Annex K + ISO TR24731 Bounds Checking Interface
-	pkgver = 3.9.2
+	pkgdesc = Implementation of C11 Annex K + ISO TR24731 Bounds Checking Interface
+	pkgver = 3.13
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/rurban/safeclib
@@ -11,7 +11,7 @@ pkgbase = libsafec
 	makedepends = doxygen
 	depends = perl
 	provides = libsafec.so=3-64
-	source = libsafec-3.9.2.tar.xz::https://github.com/rurban/safeclib/releases/download/v3.9.2/safeclib-3.9.2.tar.xz
-	sha256sums = 2665a771854757fef9f102fe7ac2cdceaa4011a69b7210cdb5007577f8b7a6b3
+	source = libsafec-3.13.tar.xz::https://github.com/rurban/safeclib/releases/download/v3.13/safeclib-3.13.tar.xz
+	sha256sums = 75c2d917ad0853e378a5c580dceb71ebfcff2b8dc591f3a0afa4b0a8b36eda2c
 
 pkgname = libsafec

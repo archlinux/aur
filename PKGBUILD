@@ -2,7 +2,7 @@
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=libsafec
-pkgver=3.9.2
+pkgver=3.13
 pkgrel=1
 epoch=1
 pkgdesc='Implementation of C11 Annex K + ISO TR24731 Bounds Checking Interface'
@@ -14,16 +14,7 @@ makedepends=('doxygen')
 provides=("$pkgname.so=3-64")
 changelog=CHANGELOG
 source=("$pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/safeclib-$pkgver.tar.xz")
-sha256sums=('2665a771854757fef9f102fe7ac2cdceaa4011a69b7210cdb5007577f8b7a6b3')
-
-prepare() {
-  cd "safeclib-$pkgver"
-  # The core package man-pages already installed the towlower, towupper and
-  # wcsstr manual pages, the libsafec tries to overwrite those.
-  # In order to avoid overwriting core-package files, we remove the
-  # installation of those files.
-  sed -i '/towlower.3/d; /towupper.3/d; /wcsstr.3/d' Makefile.am
-}
+sha256sums=('75c2d917ad0853e378a5c580dceb71ebfcff2b8dc591f3a0afa4b0a8b36eda2c')
 
 build() {
   cd "safeclib-$pkgver"
