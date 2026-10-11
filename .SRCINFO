@@ -1,6 +1,6 @@
 pkgbase = postman-cli
 	pkgdesc = The Postman CLI is the command-line companion that is developed, supported, and signed by Postman. All test results will be automatically pushed to the app.
-	pkgver = 1.9.0
+	pkgver = 1.73.0
 	pkgrel = 1
 	url = https://www.postman.com/product/what-is-postman/
 	arch = x86_64
@@ -10,6 +10,6 @@ pkgbase = postman-cli
 	provides = postman-cli
 	options = !strip
 	source = postman-cli.tar.gz::https://dl-cli.pstmn.io/download/latest/linux64
-	sha256sums = c553f03f8fb0ae589fe2be438036bae76e92b8af63114df23f4fdc41fe42ee82
+	sha256sums = 8f95dfcfc113a7af796783f88e19de26cc7606c9438b414e8cc485199b205817
 
 pkgname = postman-cli
