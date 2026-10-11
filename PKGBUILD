@@ -9,7 +9,7 @@
 
 pkgname=alien
 pkgver=8.95.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Convert between package formats: deb, rpm, tgz, slp, pkg, lsb, and pacman (.pkg.tar.zst)'
 arch=('any')
 url='https://github.com/isaacangello/alien'
@@ -24,7 +24,10 @@ optdepends=(
 )
 conflicts=('alien_package_converter')
 provides=('alien_package_converter')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/isaacangello/alien/releases/download/v${pkgver}-pacman2/alien-${pkgver}.tar.gz")
+# NOTE: the local filename includes the tag suffix (-pacman2) so that a
+# new release always forces a fresh download — reusing the same filename
+# with different content breaks helpers that cache sources (yay/paru).
+source=("$pkgname-$pkgver-pacman2.tar.gz::https://github.com/isaacangello/alien/releases/download/v${pkgver}-pacman2/alien-${pkgver}.tar.gz")
 sha256sums=('31f90f3cb98f91cd2ed2aff996f5dd6d3c315462856fc0313f606006fbc3d9c0')
 
 build() {
