@@ -2,20 +2,18 @@
 # Contributor: Vojtech Horky <vojta . horky at-symbol seznam . cz>
 pkgname=qizxopen
 pkgver=4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="XML indexing and searching engine, fully supporting XQuery"
-url="http://www.axyana.com/qizxopen/"
+url="https://github.com/jose1711/qizxopen"
 arch=('any')
 license=('MPL')
 depends=('java-runtime' 'apache-ant' 'bash')
-#source=("http://www.axyana.com/${pkgname}/_download/${pkgname}-${pkgver}.zip")
-source=("https://www.dropbox.com/s/9l9qzk21l1wmtbu/qizxopen.tgz?dl=0")
-md5sums=('a48c749e441390f9d1d7ae37d6898c91')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jose1711/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('999d160180eb7631ddf42b5a38c3df921cb2f331077964f155e4fd72c3eaeb11')
 
 package() {
 	# As the tarfile does not contain any installer, the files
 	# are copied manually
-	cd $srcdir
-	cp -Rp usr ${pkgdir}
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	cp -Rp usr "${pkgdir}"
 }
-
