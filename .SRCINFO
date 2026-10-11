@@ -1,15 +1,17 @@
 pkgbase = rauri-bin
-	pkgdesc = A minimal AUR helper for written in Rust
-	pkgver = 0.1.4
+	pkgdesc = A minimal AUR helper written in Rust
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ognrdrch/rauri
 	arch = x86_64
 	license = MIT
 	depends = pacman
 	depends = git
+	depends = sudo
+	depends = util-linux
 	provides = rauri
 	conflicts = rauri
-	source_x86_64 = rauri-bin-0.1.4.tar.gz::https://github.com/ognrdrch/rauri/releases/download/v0.1.4/rauri-0.1.4-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = dcd8cbd5fa80218715750b241a450c2081853079fa56626334242247c0d1cddd
+	source_x86_64 = rauri-bin-0.2.0.tar.gz::https://github.com/ognrdrch/rauri/releases/download/v0.2.0/rauri-0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 43ea332bceb828e9f9fdf37cc76792c9004420e1f438007c6a9352a030ce7faf
 
 pkgname = rauri-bin
