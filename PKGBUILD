@@ -2,15 +2,15 @@
 
 pkgname=cranko
 pkgver=0.17.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform, cross-language release automation tool'
-arch=('x86_64' 'aarch64')
+arch=(x86_64 aarch64)
 url='https://github.com/pkgw/cranko'
-license=('MIT')
-depends=('libgcc_s.so' 'libgit2.so' 'libssl.so')
-makedepends=('cargo')
+license=(MIT)
+depends=(libgcc_s.so libgit2.so libssl.so)
+makedepends=(cargo)
 changelog=CHANGELOG.md
-options=('!lto')
+options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname@$pkgver.tar.gz")
 sha256sums=('e0ff555b96a0a39a75b3cf4ab98f3e3abfebe2a44c2b3569c2794e35be6252fb')
 
@@ -22,6 +22,9 @@ prepare() {
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export LIBGIT2_NO_VENDOR=1
+    export LIBSSH2_SYS_USE_PKG_CONFIG=1
+    export OPENSSL_NO_VENDOR=1
     cd "$pkgname-$pkgname-$pkgver"
     ## do not use --all-features; this will build using a vendored SSL library
     cargo build --frozen --release

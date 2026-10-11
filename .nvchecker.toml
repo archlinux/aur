@@ -1,0 +1,4 @@
+[cranko]
+source = "git"
+git = "https://github.com/pkgw/cranko.git"
+prefix = "cranko@"
