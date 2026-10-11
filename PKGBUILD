@@ -1,7 +1,7 @@
 # Maintainer: Mark <mark@betalupi.com>
 pkgname=beans-git
 _pkgname=beans
-pkgver=r0.0.6
+pkgver=r0.0.7
 pkgrel=1
 pkgdesc="CLI accounting"
 arch=('x86_64' 'aarch64')
