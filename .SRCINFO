@@ -1,0 +1,18 @@
+pkgbase = drag-git
+	pkgdesc = A minimal X11 drag-and-drop utility.
+	pkgver = 1.1.r0.gc952132
+	pkgrel = 1
+	url = https://codeberg.org/ayari/drag
+	arch = x86_64
+	arch = aarch64
+	license = CC0-1.0
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	depends = libx11
+	provides = drag
+	options = !debug
+	source = drag-main::git+https://codeberg.org/ayari/drag.git#branch=main
+	sha256sums = SKIP
+
+pkgname = drag-git
