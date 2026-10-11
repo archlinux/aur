@@ -1,7 +1,7 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=dn-git
 _pkgname=dawn
-pkgver=r36.359a06b
+pkgver=v1.0.0.r16.ge4575f6
 pkgrel=1
 pkgdesc="Colour-managed image browser"
 url="https://git.janouch.name/p/dawn"

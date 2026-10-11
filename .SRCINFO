@@ -1,6 +1,6 @@
 pkgbase = dn-git
 	pkgdesc = Colour-managed image browser
-	pkgver = r36.359a06b
+	pkgver = v1.0.0.r16.ge4575f6
 	pkgrel = 1
 	url = https://git.janouch.name/p/dawn
 	arch = x86_64
