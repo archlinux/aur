@@ -1,0 +1,19 @@
+pkgbase = blatt-git
+	pkgdesc = Lightweight local RSS and Atom reader
+	pkgver = 0.1.0.r21.g7c2ff2e
+	pkgrel = 1
+	url = https://github.com/niklassc-xyz/blatt
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = blatt
+	conflicts = blatt
+	options = !lto
+	source = blatt::git+https://github.com/niklassc-xyz/blatt.git
+	b2sums = SKIP
+
+pkgname = blatt-git
