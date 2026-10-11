@@ -1,4 +1,4 @@
-# Maintainer: Your Name <you@example.com>
+# Maintainer: Chef <joshuaarmenta2008@gmail.com>
 #
 # Upstream: https://github.com/nat-carbonara/NYx-2-Emulator
 #
