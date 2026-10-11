@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Lazy markdown notes, tasks and a Kanban board in your terminal"
 
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('cdba1bc5d67cf1267a6f5c383a08d39bc4998ca6aa822dd8622eecc0f432c418')
-sha256sums_aarch64=('be3c2d986762820c81066b794098b87fb73a2a48338696b6d4f60c169c3849ca')
+sha256sums_x86_64=('0eeb4704fd2903bb0b676747a95cf46bb241c067b138d1c5db902100c8da2b59')
+sha256sums_aarch64=('fbde3c6d8528ca9159c02160838b87f2bb329eb8fabef891effbb7f64ad2221f')
 
 
 package() {
