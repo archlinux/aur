@@ -1,0 +1,17 @@
+pkgbase = nemo-terminal-shortcuts
+	pkgdesc = Change Nemo Terminal Copy & Paste shortcuts to Ctrl-C and Ctrl-V from defaults
+	pkgver = 1.0
+	pkgrel = 1
+	install = nemo-terminal-shortcuts.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = nemo-terminal
+	depends = patch
+	source = https://raw.githubusercontent.com/username227/nemo-terminal-copy-paste/refs/heads/main/apply-shortcuts
+	source = https://raw.githubusercontent.com/username227/nemo-terminal-copy-paste/refs/heads/main/nemo-terminal-shortcuts.hook
+	source = https://raw.githubusercontent.com/username227/nemo-terminal-copy-paste/refs/heads/main/shortcuts.patch
+	sha256sums = 15b9f1680da6bfbc7f39f1ef114b828e6d18c2bc0bb42595baa5c03c1384757a
+	sha256sums = ba266554575688a994f8e720168b9024b4a82b3c47e3c65ecf439d64d22b60e3
+	sha256sums = 56628294807fdeb6d0aef3b31fd13119d01832a0642f622cc54328217e762e3d
+
+pkgname = nemo-terminal-shortcuts

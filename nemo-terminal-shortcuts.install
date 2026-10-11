@@ -1,0 +1,15 @@
+post_install() {
+    /usr/bin/nemo-terminal-shortcuts-apply apply
+}
+
+pre_upgrade() {
+    /usr/bin/nemo-terminal-shortcuts-apply remove
+}
+
+post_upgrade() {
+    /usr/bin/nemo-terminal-shortcuts-apply apply
+}
+
+pre_remove() {
+    /usr/bin/nemo-terminal-shortcuts-apply remove
+}
