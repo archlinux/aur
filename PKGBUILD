@@ -1,7 +1,7 @@
 # Maintainer: Ilyas Turki <turki.ilyass@gmail.com>
 pkgbase=universe
 pkgname=(universe universe-desktop)
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc='Gamepad-first game launcher: a Rust core, a PySide6 UI, games inside gamescope'
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
   "$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   'GalaxyCommunication-comet-0.3.2.exe::https://github.com/imLinguin/comet/releases/download/v0.3.2/GalaxyCommunication-dummy.exe'
 )
-sha256sums=('f3a1b4ca101ace5ce19f9014d4a514fd081845990cc9aed5969f394f94025d0f'
+sha256sums=('aba078a9258d6c5abda64b072c5e82c9479668c442367a2f189a193e0b16753d'
             'c7695267da363a861af99db95cafe68b732ae743e5830b4feea1bc7ee745f99d')
 
 prepare() {
@@ -51,8 +51,8 @@ build() {
 check() {
   cd "$pkgbase-$pkgver"
   export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
-  # the journal tests expect Paris local time, as the flake's check does
-  TZ=Europe/Paris cargo test --frozen -p universe -p universe-desktop
+  # the journal tests expect Paris local time, as the flake's check does; an unknown machine's load holds the speed budgets to their loose limits
+  TZ=Europe/Paris UNIVERSE_TEST_BUDGET_S=0 cargo test --frozen -p universe -p universe-desktop
 }
 
 package_universe() {
