@@ -1,6 +1,6 @@
 pkgbase = devserial-bin
 	pkgdesc = Serial terminal with SQLite-buffered output and CLI, TUI, GUI, REST and MCP
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/metaneutrons/devserial
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = devserial-bin
 	provides = devserial
 	conflicts = devserial
 	options = !strip
-	source_x86_64 = https://github.com/metaneutrons/devserial/releases/download/devserial-v0.2.7/devserial-0.2.7-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 0a2c724fd3fb502f06b30dd3c81c19e38b0ea72607220530e06db3c35717fea8
-	source_aarch64 = https://github.com/metaneutrons/devserial/releases/download/devserial-v0.2.7/devserial-0.2.7-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = ad585f4abf51dbd128063e6ff9e6fedc9ff633d665259c26862ec64606d76946
+	source_x86_64 = https://github.com/metaneutrons/devserial/releases/download/devserial-v0.2.8/devserial-0.2.8-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 72ea06c1859187102ef5f617ffdf0be1aa8d2cc27e4a5c755cd2d6433e07c351
+	source_aarch64 = https://github.com/metaneutrons/devserial/releases/download/devserial-v0.2.8/devserial-0.2.8-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e79ba0c4892aae5629cc92b6167024554478c957373247af50704ce728968eb4
 
 pkgname = devserial-bin
