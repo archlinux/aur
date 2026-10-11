@@ -2,7 +2,7 @@
 # Maintainer: bethropolis <bethropolis at gmail dot com>
 
 pkgname='kcd'
-pkgver=1.22.1
+pkgver=1.22.2
 pkgrel=1
 pkgdesc='Lightweight, headless implementation of the KDE Connect protocol (v8) written in Go
 '
@@ -16,10 +16,10 @@ depends=('glibc')
 makedepends=('go')
 optdepends=('libnotify: for desktop notifications' 'wl-clipboard: for Wayland clipboard sync' 'xclip: for X11 clipboard sync' 'sshfs: for SFTP mounting support' 'python-nautilus: for Nautilus file manager integration' 'ydotool: for Wayland mousepad support' 'xdotool: for X11 mousepad support' 'wtype: for Wayland keyboard emulation')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/bethropolis/kcd/releases/download/v${pkgver}/kcd-${pkgver}.tar.gz")
-sha256sums=('79a34be0983193e145b31fa7b1db8a6ed34da746b0da1b359485fd8f255562eb')
+sha256sums=('36565af36d281461f7894db30dfdd7679e1919c761a2123316ce7ba289ce8a6d')
 build() {
   export CGO_ENABLED=0
-  go build -trimpath -ldflags "-s -w -X main.version=${pkgver} -X main.commit=dbd50e0b142b691496caa88662eb8f3bafc88299 -X main.date=2026-10-05T01:46:59Z" -o kcd ./cmd/kcd
+  go build -trimpath -ldflags "-s -w -X main.version=${pkgver} -X main.commit=2ca7427af223ee108c9f8827b09e3f31e8ad490f -X main.date=2026-10-11T00:53:54Z" -o kcd ./cmd/kcd
 }
 package() {
   install -Dm755 "./kcd" "${pkgdir}/usr/bin/kcd"
