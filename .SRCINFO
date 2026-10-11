@@ -1,0 +1,19 @@
+pkgbase = ccstatus-bin
+	pkgdesc = Customizable status line formatter for Claude Code CLI (prebuilt binary)
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/moond4rk/ccstatus
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	optdepends = git: git branch, changes and worktree widgets
+	provides = ccstatus
+	conflicts = ccstatus
+	options = !strip
+	options = !debug
+	source_x86_64 = ccstatus-bin-0.3.1-x86_64.tar.gz::https://github.com/moond4rk/ccstatus/releases/download/v0.3.1/ccstatus_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 5750668f71c56de3ea11a0af9c1509cba1c1cc12de730092833ae3bf8076f446
+	source_aarch64 = ccstatus-bin-0.3.1-aarch64.tar.gz::https://github.com/moond4rk/ccstatus/releases/download/v0.3.1/ccstatus_linux_arm64.tar.gz
+	sha256sums_aarch64 = abae63c956431e0823cfb2633ef8dfa29c16a528130ae6caa3fcc424342d7cb8
+
+pkgname = ccstatus-bin
