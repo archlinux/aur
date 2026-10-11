@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Babry
-Comment=Smart boundary-aware screenshot tool for Linux Wayland
-Exec=babry
-Icon=babry
-Terminal=false
-Type=Application
-Categories=Utility;Graphics;
