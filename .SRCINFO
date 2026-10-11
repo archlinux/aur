@@ -1,0 +1,25 @@
+pkgbase = grunden-work-bin
+	pkgdesc = Grunden Cowork desktop - sovereign AI workbench (prebuilt release)
+	pkgver = 0.17.70
+	pkgrel = 1
+	url = https://grunden.ai
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libsecret
+	depends = xdg-utils
+	optdepends = gnome-keyring: Secret Service backend for sign-in credential storage
+	optdepends = kwallet: KDE keyring backend for sign-in credential storage
+	optdepends = libayatana-appindicator: system tray support
+	provides = grunden-work
+	conflicts = grunden-work
+	options = !strip
+	source = grunden-work-bin-0.17.70.tar.gz::https://work.grunden.ai/installers/grunden-work-linux-x64-0.17.70.tar.gz
+	source = grunden-work-bin-0.17.70.tar.gz.asc::https://work.grunden.ai/installers/grunden-work-linux-x64-0.17.70.tar.gz.asc
+	validpgpkeys = F0278514447EB0CC73F11D02E2773FCE0DD16E0A
+	sha256sums = b66e31111f0f8d7c8a8187d0e2b4cb550a0bfe2c1cff9c26a786756af51457a5
+	sha256sums = SKIP
+
+pkgname = grunden-work-bin
