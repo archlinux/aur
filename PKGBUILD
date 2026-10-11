@@ -17,20 +17,18 @@ optdepends=(
 makedepends=()
 
 # Upstream is a single script plus two documents, all tracked in one git
-# repository. Each is fetched from the immutable upstream commit that this
-# pkgver refers to rather than from a version tag, so nothing but the PKGBUILD
-# has to live in the AUR repository. To release, bump pkgver, replace the commit
-# below, and refresh the three checksums with:
-#
-#   updpkgsums -r
-#
-_upstream='https://codeberg.org/chefberg/digits4linux/raw/commit/560d518adfd3766a6ef27677e28088ca5c3a687c'
+# repository. Each is fetched from the immutable release tag that this pkgver
+# names, so nothing but the PKGBUILD has to live in the AUR repository. To
+# release: bump pkgver, commit, then tag that commit v<pkgver> and push the
+# tag. A tag, not a commit hash, because the PKGBUILD that pins the sources
+# cannot contain the hash of the commit that holds it.
+_upstream='https://codeberg.org/chefberg/digits4linux/raw/tag/v1.3.0'
 source=("$pkgname::$_upstream/$pkgname"
         "LICENSE::$_upstream/LICENSE"
         "README.md::$_upstream/README.md")
 sha256sums=('152c9ce8f037d4b9d705606b5d824f3d6ab2ac5bad9e6166102efd0f4977f8b1'
             '956e1905e63db22a3bef0a9b3336572800add9faa58fea8db2eae61a4e7c5480'
-            '5de207ea42a03ee5272194739aa66e0960e41f84cfede3f1959896718330deda')
+            '5a9aa9a74ac966c570c4f97cfef545c71e2d2aabe4740a69a9e258c9e7d95dbc')
 backup=()
 
 # T-Mobile ships native DIGITS clients for Android, iOS, Windows and macOS but

@@ -9,11 +9,11 @@ pkgbase = digits
 	optdepends = google-chrome: effectively required on Linux; the site accepts only Chrome or Edge
 	optdepends = microsoft-edge-stable-bin: alternative branded browser; untested here
 	optdepends = libnotify: desktop notifications with --watch
-	source = digits::https://codeberg.org/chefberg/digits4linux/raw/commit/560d518adfd3766a6ef27677e28088ca5c3a687c/digits
-	source = LICENSE::https://codeberg.org/chefberg/digits4linux/raw/commit/560d518adfd3766a6ef27677e28088ca5c3a687c/LICENSE
-	source = README.md::https://codeberg.org/chefberg/digits4linux/raw/commit/560d518adfd3766a6ef27677e28088ca5c3a687c/README.md
+	source = digits::https://codeberg.org/chefberg/digits4linux/raw/tag/v1.3.0/digits
+	source = LICENSE::https://codeberg.org/chefberg/digits4linux/raw/tag/v1.3.0/LICENSE
+	source = README.md::https://codeberg.org/chefberg/digits4linux/raw/tag/v1.3.0/README.md
 	sha256sums = 152c9ce8f037d4b9d705606b5d824f3d6ab2ac5bad9e6166102efd0f4977f8b1
 	sha256sums = 956e1905e63db22a3bef0a9b3336572800add9faa58fea8db2eae61a4e7c5480
-	sha256sums = 5de207ea42a03ee5272194739aa66e0960e41f84cfede3f1959896718330deda
+	sha256sums = 5a9aa9a74ac966c570c4f97cfef545c71e2d2aabe4740a69a9e258c9e7d95dbc
 
 pkgname = digits
