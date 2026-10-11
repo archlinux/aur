@@ -12,7 +12,7 @@
 # Keep the build steps here in sync with vega-nostr-git's. They are the same
 # build; only the source ref differs.
 pkgname=vega-nostr
-pkgver=0.15.8
+pkgver=0.15.9
 pkgrel=1
 pkgdesc="Cross-platform Nostr desktop client with Lightning integration"
 arch=('x86_64')
