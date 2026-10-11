@@ -5,11 +5,11 @@
 
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.3.25.r2.g5affbc9.pandoc.3.12
-_pandoc_type=stock
-_pandoc_ver=3.12
+pkgver=0.3.26.r9.g4366cb2.pandoc.3.12.1
+_pandoc_type=version
+_pandoc_ver=3.12.1
 _pandoc_lua_ver=0.5.4.1
-_pandoc_commit=381230ee36d8fa871c28f8982e22579f1a8f723b
+_pandoc_commit=e51c9c6054c8f4ec5c3209d5abe10939dfe2963e
 pkgrel=1
 pkgdesc='Pandoc filter for cross-references (static build)'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ depends=('gmp' "pandoc-cli=$_pandoc_ver" 'zlib')
 makedepends=('git' 'cabal-install' 'ghc' 'pandoc-cli')
 source=("$pkgname::git+$url.git" cabal.project.freeze)
 sha256sums=('SKIP'
-            '################################################################')
+            '44481c3e67ab0d004790ab70731a93712e9d79b4ddefd6dfd0c4f5214f160cd6')
 
 pkgver() {
   cd "$pkgname"
