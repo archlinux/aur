@@ -1,0 +1,21 @@
+pkgbase = solidcraft-git
+	pkgdesc = vibe coded clean-room reimplementation of Autodesk Fusion (Git HEAD)
+	pkgver = 0.2.1.r33.gd8beaed
+	pkgrel = 1
+	url = https://bherbruck.github.io/solidcraft
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = solidcraft=0.2.1.r33.gd8beaed
+	conflicts = solidcraft
+	source = git+https://github.com/bherbruck/solidcraft.git
+	sha256sums = SKIP
+
+pkgname = solidcraft-git
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so

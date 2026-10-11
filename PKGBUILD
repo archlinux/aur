@@ -1,0 +1,58 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+
+pkgname=solidcraft-git
+_pkgname=${pkgname%-git}
+pkgver=0.2.1.r33.gd8beaed
+pkgrel=1
+url="https://bherbruck.github.io/$_pkgname"
+_url="https://github.com/bherbruck/$_pkgname"
+pkgdesc='vibe coded clean-room reimplementation of Autodesk Fusion (Git HEAD)'
+arch=(x86_64)
+license=(MIT Apache-2.0)
+depends=(glibc # libc.so libm.so
+         libgcc)
+makedepends=(cargo
+             git)
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+source=("git+$_url.git")
+sha256sums=('SKIP')
+
+_srcenv() {
+	cd "$_pkgname"
+	export CARGO_HOME="$srcdir"
+	export CARGO_PROFILE_RELEASE_DEBUG=2
+	export CARGO_PROFILE_RELEASE_STRIP=false
+	export CARGO_PROFILE_RELEASE_LTO=thin
+	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
+	export CARGO_TARGET_DIR=target
+	export RUSTUP_TOOLCHAIN=stable
+	CFLAGS+=' -fno-lto'
+}
+
+prepare() {
+	_srcenv
+	cargo fetch --locked --target host-tuple
+}
+
+pkgver() {
+	cd "$_pkgname"
+	git describe --long --tags --abbrev=7 --match="v*" HEAD |
+			sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+	_srcenv
+	cargo build --frozen --release
+}
+
+package() {
+	depends+=(libgcc_s.so)
+	cd "$_pkgname"
+	_pkgname=solvecraft
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"{,-cli}
+	install -Dm0644 -t "$pkgdir/usr/share/applications/" "packaging/linux/ai.storyteller.$_pkgname.desktop"
+	install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "packaging/linux/ai.storyteller.$_pkgname.mime.xml"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-{APACHE,MIT}
+}
