@@ -1,7 +1,7 @@
 # Maintainer: grafmorkov <grafmorkov@gmail.com>
 
 pkgname=vent-cli
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A fast, simple dependency installer for repositories"
 arch=('x86_64')
