@@ -10,14 +10,14 @@ pkgname=(
 
 # Follow handbrakes most current stable branch 1.11.x
 # https://github.com/HandBrake/HandBrake/commits/1.11.x/
-readonly _commit=9eb6c936803e8b071035b1a77662cb0db58441ea
+readonly _commit=49b25b128189011c3e19a851d5ca06cb63d31233
 
 pkgver() {
   git -C HandBrake/ gc --auto --prune=now
   git -C HandBrake/ describe ${_commit} | sed -e 's/^v//g' -e 's/-/.r/' -e 's/-/./'
 }
 
-pkgver=1.11.2
+pkgver=1.11.2.r1.g49b25b128
 pkgrel=1
 arch=('x86_64')
 url="https://handbrake.fr/"
@@ -25,12 +25,13 @@ license=('GPL')
 _commondeps=(
   'bzip2'
   'fribidi'
-  'gcc-libs'
   'jansson'
   'lame'
   'libass'
+  'libgcc'
   'libjpeg-turbo'
   'libogg'
+  'libstdc++'
   'libtheora'
   'libva'
   'libvorbis'
@@ -67,7 +68,7 @@ makedepends=(
   'cmake'
   'meson'
   'git'
-  'clang>=20'
+  'clang>=23'
   'lld'
   'llvm'
   # AMD VCE encoding on Linux requires Vulkan
@@ -134,6 +135,7 @@ package_handbrake-llvm-optimized() {
   optdepends=(
     'gst-plugins-good: for video previews'
     'gst-libav: for video previews'
+    'gvfs: for CD/DVD drive access'
     'intel-media-sdk: Intel QuickSync support'
     'libdvdcss: for decoding encrypted DVDs'
   )
