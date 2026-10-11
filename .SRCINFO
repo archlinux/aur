@@ -16,6 +16,8 @@ pkgbase = pandoc-crossref-static-git
 	provides = pandoc-crossref=0.3.25
 	conflicts = pandoc-crossref
 	source = pandoc-crossref-static-git::git+https://github.com/lierdakil/pandoc-crossref.git
+	source = cabal.project.freeze
 	sha256sums = SKIP
+	sha256sums = ################################################################
 
 pkgname = pandoc-crossref-static-git

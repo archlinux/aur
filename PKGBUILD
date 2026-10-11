@@ -19,8 +19,9 @@ provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 depends=('gmp' "pandoc-cli=$_pandoc_ver" 'zlib')
 makedepends=('git' 'cabal-install' 'ghc' 'pandoc-cli')
-source=("$pkgname::git+$url.git")
-sha256sums=('SKIP')
+source=("$pkgname::git+$url.git" cabal.project.freeze)
+sha256sums=('SKIP'
+            '################################################################')
 
 pkgver() {
   cd "$pkgname"
@@ -68,13 +69,13 @@ source-repository-package
     _sourceStanzas >> cabal.project
     ;&
   version)
-    _freezeVer() {
-      sed -i "/any\.$1 ==/s/==[0-9.]*/==$2/" cabal.project.freeze
-    }
-
-    _freezeVer pandoc "$_pandoc_ver"
-    _freezeVer pandoc-cli "$_pandoc_ver"
-    _freezeVer pandoc-lua-engine "$_pandoc_lua_ver"
+    rm cabal.project.freeze && cp ../cabal.project.freeze .
+    if ! grep "any\.pandoc ==$_pandoc_ver,$" cabal.project.freeze; then
+      echo 'Freezefile out of date, regenerate it with:'
+      echo
+      echo " cabal freeze --constraint pandoc==$_pandoc_ver"
+      exit 1
+    fi
   ;;
   *)
     echo "Invalid pandoc version type: $_pandoc_type"
