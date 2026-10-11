@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Per-app network rate limiter and traffic monitor for Linux. Pure eBPF. Boring and silent but killer."
 
-pkgver=20.0.0
+pkgver=80.0.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,8 +29,8 @@ options=('!strip')
 
 source=("USAGE-${pkgver}.md::${_ghurlraw}/docs/USAGE.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
-sha256sums=('9d0490c398a428940b173435a6baec32b483149a82373b0eb8aa31c76a60b0b2')
-sha256sums_x86_64=('744d14e501ff827fd9da1a5bb97724bed40dc73bb89afe12eed0a234b02713f3')
+sha256sums=('4df3952bcd13f58f807f8c04270b53074333184df5b87495c06d2e54c9d58d6b')
+sha256sums_x86_64=('bac8b423a284679adb133c53b078cfe28a161da100297ce80d39180b7cecc383')
 
 
 package() {
