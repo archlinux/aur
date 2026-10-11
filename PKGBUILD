@@ -4,7 +4,7 @@
 # The release workflow's binaries with flea's own closure, whose reasons live beside it in the root PKGBUILD.
 pkgname=flea-bin
 _pkgname=flea
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 pkgdesc='Fast, keyboard-first file manager for Omarchy (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -28,8 +28,8 @@ options=('!strip' '!debug')
 # The local names carry pkgrel, so a rebuilt release is downloaded again, never read from a stale yay cache.
 source_x86_64=("$_pkgname-v$pkgver-$pkgrel-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-v$pkgver-$pkgrel-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('8dbd01d7ba7b9054da61bfab4c396ace756685c7c249aa869d72858aff10d9ad')
-sha256sums_aarch64=('18e691becff0476d8d320c3b570047a1901f3345f40f880149f6a18d01a6583e')
+sha256sums_x86_64=('f81ead1a0289f2f3b63e70759ac68ab97e33a3dceb6765894703fefd2aad7516')
+sha256sums_aarch64=('d8d2526f01a034f62954fb91e3ef671a9e89847f540a4c76554d9553a83a0431')
 
 # The source PKGBUILD's package() with the binary read from the tarball's root; the release workflow diffs the two.
 package() {
