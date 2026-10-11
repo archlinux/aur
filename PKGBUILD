@@ -2,7 +2,7 @@
 
 _pkgname=icy_draw
 pkgname=${_pkgname}-bin
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 groups=("icy_tools-bin")
 provides=("icy_draw")
@@ -12,8 +12,8 @@ url="https://github.com/mkrueger/icy_tools"
 license=('Apache-2.0')
 optdepends=()
 source=("$url/releases/download/IcyDraw$pkgver/icy_draw_linux_$pkgver.zip")
-sha512sums=('fd29414f8c3e1f5ea142343a5289584d48f23659653c3668cab05adb71f469e6ea5d7c5ce6f1a526d1d7eecbb47520d69b6f3471c8cdc05e53ca5b9cc7db21ef')
-b2sums=('9016e159e1f55f13fe66f0c18cb3b837ccadcff8770b5d173b5c9fc6cb8b2dd260b1be5b4c62515899de7450a9291d9e609a813afa3f966819d6e2cc9394c480')
+sha512sums=('edaa66be4e734c2fdc2ddacb9efea456890ba02e65371b8b822ac2d650cdab10080cbee4565b91ee380f7578da19e2be528dc5e9520caba7e5ee16b76e14961a')
+b2sums=('0bb54bef0fbccd821faf76a992c5d08e5ac61d04a1595749bb289c70d17785eb42a129d600cabfd55f8f36bec692140c487746db8609265bfbd1c5b8d157088f')
 
 prepare() {
 	cd "${srcdir}/"
