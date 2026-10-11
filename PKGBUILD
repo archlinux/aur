@@ -2,10 +2,10 @@
 pkgname=paintdotnet-wine-experimental
 pkgver=5.200.9775.2252
 pkgrel=1
-pkgdesc="TODO"
+pkgdesc="Experimental Paint.NET with wine specific changes"
 arch=(x86_64)
 url="https://github.com/paintdotnet/Paint.NET-on-WINE"
-license=('LicenseRef-custom ')
+license=('LicenseRef-custom')
 depends=('wine>=11.5' winetricks bash)
 noextract=("${pkgname}-${pkgver}.zip")
 
