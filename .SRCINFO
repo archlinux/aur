@@ -1,0 +1,23 @@
+pkgbase = tanin-bin
+	pkgdesc = A TUI ambient sound generator written in Rust
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/AnonMiraj/Tanin
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = alsa-lib
+	depends = openssl
+	depends = opus
+	depends = gcc-libs
+	optdepends = yt-dlp: for downloading custom sounds from YouTube
+	provides = tanin
+	conflicts = tanin
+	conflicts = tanin-git
+	options = !strip
+	source_x86_64 = https://github.com/AnonMiraj/Tanin/releases/download/v0.1.1/tanin-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 3f135a717605596635a579f6b8975d777ab9e86a80dff3ada299d2511b442068
+	source_aarch64 = https://github.com/AnonMiraj/Tanin/releases/download/v0.1.1/tanin-v0.1.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4a295caca064716929482add99947cf1c8c52ac11f46ca44b8651764caa8a84e
+
+pkgname = tanin-bin
