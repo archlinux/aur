@@ -4,7 +4,7 @@
 
 pkgname='deeplx-bin'
 _binname='deeplx'
-pkgver=1.1.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='DLX - Self-hosted translation API server. Unofficial; not affiliated with DeepL SE'
 arch=('x86_64' 'i686' 'aarch64' 'mips')
@@ -22,12 +22,12 @@ source_aarch64=("${_binname}-aarch64-${pkgver}::https://github.com/${_reponame}/
 source_i686=("${_binname}-i686-${pkgver}::https://github.com/${_reponame}/releases/download/v${pkgver}/deeplx_linux_386")
 source_mips=("${_binname}-mips-${pkgver}::https://github.com/${_reponame}/releases/download/v${pkgver}/deeplx_linux_mips")
 
-sha256sums=('4254690f52328eeb9f4c7a83485947ca024d66d6358b1cc3bf9554c8d870d434'
+sha256sums=('c78a8ea845bc8c2312a378b1d26e9d631a38022921a8ea193017f46015969654'
             '07d8087d9d722927de7a76beea85fae9f23348ce410aea1daf9159bdc7ae76c7')
-sha256sums_x86_64=('412aa76f8a5a8eb60b5367a1125d38b507db255cbfb91d95550dde1da66cfb85')
-sha256sums_i686=('0e779ceb8767f2bc84aebd4bf17caa8bb7468a29f55dfd18df6d6c1b0c3c1e4b')
-sha256sums_aarch64=('e36f9a6866311f5cd592b2b28689ed4fe52ead02618a5274fd37228b4cbf7748')
-sha256sums_mips=('8bb10e32f972bc4f58ba5f1100b062e4051c44d5fcadda1b9198eff905848a02')
+sha256sums_x86_64=('4afe47d3866e6c6b38f5ffdb702a8b9e1582e75943810e2576558e934b85ebe0')
+sha256sums_i686=('6bf26df70832af7ec8e72e077cc683ab35c02c98f6b12855fcf738b918b2aab1')
+sha256sums_aarch64=('7a22c6c0b5136f260a98150e15624a4dde5213740ba7732029349ab09bfaf8e9')
+sha256sums_mips=('962899536ab208a4045fc6986945eb70b8bf81ccd255e6086138f38620cbf670')
 
 
 package() {
