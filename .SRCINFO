@@ -1,0 +1,15 @@
+pkgbase = fgj-git
+	pkgdesc = A command-line tool for working with Forgejo instances (including Codeberg.org) -
+	pkgver = 0.5.0.r46.g755413f
+	pkgrel = 1
+	url = https://codeberg.org/romaintb/fgj
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = git+https://codeberg.org/romaintb/fgj
+	b2sums = SKIP
+
+pkgname = fgj-git
