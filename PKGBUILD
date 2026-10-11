@@ -3,7 +3,7 @@
 # shellcheck disable=2034,2148,2154,2164
 
 pkgname=riipl-git
-pkgver=0.2.r133.gf6d8851
+pkgver=0.0.r0.g0000000
 pkgrel=1
 pkgdesc="Local DeepL rip-off powered by any OpenAI-compatible API"
 arch=(x86_64 aarch64)
