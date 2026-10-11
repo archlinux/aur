@@ -1,7 +1,7 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=music-assistant-tui-git
-pkgver=20261010.0.r209.gefc8e44
+pkgver=20261011.0.r211.g4191944
 pkgrel=1
 pkgdesc="Terminal UI for Music Assistant (git version)"
 arch=('x86_64' 'aarch64')
@@ -19,6 +19,19 @@ sha256sums=('SKIP')
 sha256sums_x86_64=('25c21b91b6a0b87f4773f4d70bfc224176646dce49aeba0dc9f16c1f59d198c7')
 sha256sums_aarch64=('34772305890323a54506f0ec979ae1aeecc4da10bb7da47901dd799a1a737b20')
 
+# Keep Bun's caches in $srcdir instead of the build user's home
+_bun_env() {
+  export BUN_INSTALL="$srcdir/.bun"
+  export BUN_INSTALL_CACHE_DIR="$BUN_INSTALL/install/cache"
+  export BUN_RUNTIME_TRANSPILER_CACHE_PATH="$BUN_INSTALL/runtime-transpiler-cache"
+}
+
+prepare() {
+  cd "$pkgname"
+  _bun_env
+  bun install --frozen-lockfile
+}
+
 pkgver() {
   cd "$pkgname"
   local version
@@ -32,7 +45,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  bun install --frozen-lockfile
+  _bun_env
   bun build src/index.ts --compile --outfile music-assistant-tui
   ./music-assistant-tui completions bash > music-assistant-tui.bash
   ./music-assistant-tui completions fish > music-assistant-tui.fish
