@@ -1,11 +1,11 @@
 pkgname=passkeyd-bin
 _pkgname=passkeyd
-pkgver=1.9.2
-pkgrel=1
-pkgdesc="Opinionated WebAuthn authenticator, without telemetry or interactive prompts"
+pkgver=1.9.3
+pkgrel=0
+pkgdesc="A WebAuthn authenticator, without telemetry or interactive prompts"
 arch=('x86_64')
 license=('GPL-3.0-only')
-depends=('tpm2-tss' 'glibc' 'systemd-libs' 'libstdc++' 'pam')
+depends=('tpm2-tss' 'glibc' 'systemd-libs' 'libstdc++' 'pam' 'libxcrypt' 'libxcrypt-compat')
 optdepends=('gtk4: gtk frontend support'
             'glib2: gtk frontend support'
             'pango: gtk frontend support'
@@ -19,7 +19,7 @@ provides=("passkeyd")
 makedepends=()
 url="https://github.com/bjn7/passkeyd"
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/bjn7/passkeyd/releases/download/v$pkgver/passkeyd-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('06cf8d6836294e1ba44777f2ce2b886508b305bd1b54cf32adb61df13f379ba1')
+sha256sums=('54a298578b4d19df2a6c49e674320b31e173045082084be827cd6d181e9fda5b')
 options=('!debug')
 backup=('etc/passkeyd.conf' 'usr/share/passkeyd/theme.conf')
 
@@ -55,6 +55,9 @@ package() {
 
   # Systemd service
   install -Dm644 "$srcdir/passkeyd.service" "$pkgdir/usr/lib/systemd/system/passkeyd.service"
+
+  # PAM service
+  install -Dm644 "$srcdir/passkeyd.pam" "$pkgdir/etc/pam.d/passkeyd"
 
   # Icons
   install -Dm644 icons/32x32/passkeyd.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/passkeyd.png"
