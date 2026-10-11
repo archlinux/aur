@@ -1,4 +1,4 @@
-# Maintainer: GI_Jack <GI_Jack@hackermail.com>
+# Maintainer: Network Jack <Network_jack@null.net>
 # Poached from Arch Strike
 # Original: ArchStrike <team@archstrike.org>
 
