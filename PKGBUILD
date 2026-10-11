@@ -1,8 +1,9 @@
 # Maintainer: Noctalia Team <team@noctalia.dev>
 
 pkgname=umbriel-git
-pkgver=0.1.0.r0.0
-pkgrel=9
+pkgver=0.1.0.r1225.2339fc3
+pkgrel=1
+epoch=1
 pkgdesc='A Wayland compositor designed for daily use, with scrolling, dwindle, and master layouts, per-output workspaces, window rules, blur, shadows, and fluid animations'
 arch=('x86_64' 'aarch64')
 url='https://github.com/noctalia-dev/umbriel'
@@ -46,7 +47,7 @@ b2sums=('SKIP')
 pkgver() {
   cd "$srcdir/umbriel"
   local version
-  version=$(sed -n "s/^[[:space:]]*version: '\([^']*\)'.*/\1/p" meson.build)
+  version=$(tr -d '[:space:]' < VERSION)
   printf '%s.r%s.%s' \
     "$version" \
     "$(git rev-list --count HEAD)" \
