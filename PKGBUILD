@@ -2,7 +2,7 @@
 
 pkgname=pocketlink-git
 _pkgname=pocketlink
-pkgver=0.4.2.r0.g20f8741
+pkgver=0.5.0.r0.g05fbb8c
 pkgrel=1
 pkgdesc='Lightweight phone companion for sway, niri & co: notifications, clipboard, files, media remote and calls'
 arch=('x86_64' 'aarch64')
