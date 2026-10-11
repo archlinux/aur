@@ -1,6 +1,6 @@
 pkgbase = corralctl-bin
 	pkgdesc = Clone and organise repositories from GitHub, GitLab, Gitea, Forgejo, Codeberg and Bitbucket, and serve them to AI agents over MCP
-	pkgver = 0.0.46
+	pkgver = 0.0.47
 	pkgrel = 1
 	url = https://github.com/sebastienrousseau/corralctl
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = corralctl-bin
 	depends = git
 	provides = corralctl
 	conflicts = corralctl
-	source_x86_64 = corralctl-bin-0.0.46-x86_64.tar.gz::https://github.com/sebastienrousseau/corralctl/releases/download/v0.0.46/corralctl_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 0c4fc19ca2620b7bf9892ec05a5fda8614ce213c3c97722fe63392f85e78ce1b
-	source_aarch64 = corralctl-bin-0.0.46-aarch64.tar.gz::https://github.com/sebastienrousseau/corralctl/releases/download/v0.0.46/corralctl_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 17fc4032e3ca15e0af3d54e25e7a255a37f53bd11c1fd68d752f801a5b42096a
+	source_x86_64 = corralctl-bin-0.0.47-x86_64.tar.gz::https://github.com/sebastienrousseau/corralctl/releases/download/v0.0.47/corralctl_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 146f09725b57d792776d6629e6d240dae8477096c7da5a6405fcf31a1fa18a73
+	source_aarch64 = corralctl-bin-0.0.47-aarch64.tar.gz::https://github.com/sebastienrousseau/corralctl/releases/download/v0.0.47/corralctl_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 28ebdff470c13ebbb2c8cfb1489aeb5017adcbfc1f70cbd4de6157b1df8a3962
 
 pkgname = corralctl-bin
