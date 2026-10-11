@@ -1,16 +1,16 @@
 # Maintainer: Jose Riha < jose1711 gmail com >
 
 pkgname=perl-curses-panels-menus-forms
-pkgver=1.36
+pkgver=1.46
 pkgrel=1
 pkgdesc="Character screen handling and windowing (built with panels, menus and forms support)"
 arch=('i686' 'x86_64')
-url="http://search.cpan.org/dist/Curses"
+url="https://metacpan.org/dist/Curses"
 license=('GPL' 'PerlArtistic')
 depends=('perl' 'ncurses')
 options=('!emptydirs')
-source=(http://www.cpan.org/authors/id/G/GI/GIRAFFED/Curses-$pkgver.tar.gz)
-md5sums=('389c70ee5530b887f8e5dc1303cb5294')
+source=(https://www.cpan.org/authors/id/G/GI/GIRAFFED/Curses-$pkgver.tar.gz)
+md5sums=('a170d6e3ef0db20144c338dff52d8b09')
 provides=('perl-curses')
 conflicts=('perl-curses')
 
