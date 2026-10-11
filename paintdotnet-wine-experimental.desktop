@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Paint.NET Experimental
+Categories=Graphics
+Type=Application
+Encoding=UTF-8
+Exec=/usr/bin/pkgname %F
+Icon=/usr/share/pkgname/paintdotnet.ico
+StartupNotify=true
+Terminal=false
+StartupWMClass=paintdotnet.exe
