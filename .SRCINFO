@@ -1,6 +1,6 @@
 pkgbase = libretro-azahar
 	pkgdesc = An open-source 3DS emulator project based on Citra.
-	pkgver = 2126.1.2
+	pkgver = 2126.2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/azahar-emu/azahar
@@ -31,7 +31,7 @@ pkgbase = libretro-azahar
 	depends = boost-libs
 	depends = enet
 	depends = libbacktrace
-	source = https://github.com/azahar-emu/azahar/releases/download/2126.1.2/azahar-unified-source-2126.1.2.tar.xz
-	sha256sums = ca0626312af68370e04c70b60eab4dd95e6f3f248d1d1c6a22ee784dfce6b361
+	source = https://github.com/azahar-emu/azahar/releases/download/2126.2/azahar-unified-source-2126.2.tar.xz
+	sha256sums = 85c8b56fac703df04720125044b8ff887997911858a6cde545dfb1107ba4cd26
 
 pkgname = libretro-azahar
