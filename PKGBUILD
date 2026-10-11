@@ -8,7 +8,7 @@ _pkgname=${_gitname}-commander
 pkgname=${_pkgname}-bin
 pkgdesc="A Total Commander alternative for the terminal"
 
-pkgver=0.17.5
+pkgver=0.17.6
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,8 +30,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('fb304c816dbb81859f9f4c9c96686950031cad0df438597ba88d1d6f9083322c')
-sha256sums_aarch64=('45010ab04ec0ea47bdc4e0b86dafd6c4bfd01ca223ad3972e5b1f4cc694184cf')
+sha256sums_x86_64=('bfbce5d109587525ca506d2e8a9b700720a3d1c46e9a4fda61ec7ec77dd6ae91')
+sha256sums_aarch64=('ce18b6fd3e5e15996e6eb59ed51311db7088458915cc0cbfd29e0eb07abe3f0c')
 
 
 case ${CARCH} in
