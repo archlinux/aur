@@ -3,26 +3,66 @@
 
 _name=mistralai
 pkgname=python-$_name
-pkgver=2.10.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Python Client SDK for the Mistral AI API."
 arch=('any')
 url="https://github.com/mistralai/client-python"
 license=('MIT')
-depends=('python' 'python-httpx' 'python-pydantic' 'python-dateutil' 'python-typing-inspection' 'python-opentelemetry-api' 'python-opentelemetry-semantic-conventions' 'python-jsonpath-python')
-makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pyyaml' 'python-msgpack' 'python-opentelemetry-instrumentation-httpx' 'python-opentelemetry-sdk' 'python-opentelemetry-exporter-otlp-proto-http' 'python-pytest' 'python-pytest-asyncio' 'python-mcp' 'python-griffe' 'python-authlib' 'python-websockets' 'python-zstandard' 'python-google-auth')
-optdepends=('python-google-auth: gcp' 'python-requests: gcp'
-            'python-mcp: agents' 'python-griffe: agents' 'python-authlib: agents'
+depends=('python'
+         'python-eval-type-backport'
+         'python-httpx2'
+         'python-pydantic'
+         'python-dateutil'
+         'python-typing-inspection'
+         'python-opentelemetry-api'
+         'python-opentelemetry-semantic-conventions'
+         'python-jsonpath-python')
+makedepends=('python-hatchling'
+             'python-build'
+             'python-installer'
+             'python-wheel')
+checkdepends=('python-pyyaml'
+              'python-msgpack'
+              'python-opentelemetry-instrumentation-httpx'
+              'python-opentelemetry-sdk'
+              'python-opentelemetry-exporter-otlp-proto-http'
+              'python-pytest'
+              'python-pytest-asyncio'
+              'python-mcp'
+              'python-griffe'
+              'python-authlib'
+              'python-websockets'
+              'python-zstandard'
+              'python-google-auth')
+optdepends=('python-google-auth: gcp'
+            'python-requests: gcp'
+
+            'python-mcp: mcp'
+
+            'python-mcp: agents'
+            'python-griffe: agents'
+            'python-authlib: agents'
+
             'python-websockets: realtime'
-            'python-opentelemetry-sdk: telemetry' 'python-opentelemetry-exporter-otlp-proto-http: telemetry'
-            'python-azure-storage-blob: workflow_payload_offloading_azure' 'python-azure-identity: workflow_payload_offloading_azure' 'python-aiohttp: workflow_payload_offloading_azure'
+
+            'python-opentelemetry-sdk: telemetry'
+            'python-opentelemetry-exporter-otlp-proto-http: telemetry'
+
+            'python-azure-storage-blob: workflow_payload_offloading_azure'
+            'python-aiohttp: workflow_payload_offloading_azure'
+            'python-azure-identity: workflow_payload_offloading_azure'
+
             'python-gcloud-aio-storage: workflow_payload_offloading_gcs'
+
             'python-aioboto3: workflow_payload_offloading_s3'
+
             'python-cryptography: workflow_payload_encryption'
-            'python-msgpack: workflow_payload_compression' 'python-zstandard: workflow_payload_compression')
+
+            'python-msgpack: workflow_payload_compression'
+            'python-zstandard: workflow_payload_compression')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5968857184898130fd55b8bfde20f1326bc410ee521cad0c8d29eeb1f6840ea4')
+sha256sums=('6ca0a2de2d8683602afd2d6f67aec5a33eae82e4971d587e52f840740c97f99e')
 
 build() {
   cd "$srcdir"/client-python-$pkgver
