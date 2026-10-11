@@ -2,7 +2,7 @@
 
 pkgname=qsp-legacy-git
 _name=${pkgname%-git}
-pkgver=5.7.0.r136.gd29d5eb
+pkgver=5.7.0.r143.g3e725e1
 pkgrel=1
 pkgdesc='QSP Legacy game engine library'
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=(
 )
 depends=(
   'glibc'
-  'oniguruma'
+  'libonig.so=5-64'
 )
 makedepends=(
   'gcc>=8.1.0'

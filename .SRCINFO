@@ -10,7 +10,7 @@ pkgbase = qsp-legacy-git
 	makedepends = git
 	makedepends = cmake>=3.21.0
 	depends = glibc
-	depends = oniguruma
+	depends = libonig.so=5-64
 	provides = qsp-legacy=5.7.0.r136.gd29d5eb
 	provides = libqsp-legacy.so
 	conflicts = qsp-legacy
