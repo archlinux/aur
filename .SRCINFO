@@ -1,0 +1,22 @@
+pkgbase = lumine-capture-bin
+	pkgdesc = Screenshot and annotation tool for Wayland with built-in OCR (prebuilt)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Netflate/LumineCapture
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	license = OFL-1.1
+	depends = gcc-libs
+	depends = glibc
+	depends = libpipewire
+	depends = libxkbcommon
+	depends = openssl
+	depends = zlib
+	provides = lumine-capture=0.2.0
+	conflicts = lumine-capture
+	options = !debug
+	options = !strip
+	source = lumine-capture-0.2.0-1-x86_64.pkg.tar.zst::https://github.com/Netflate/LumineCapture/releases/download/v0.2.0/lumine-capture-0.2.0-1-x86_64.pkg.tar.zst
+	sha256sums = 2f39fac82243e8d4070b4a3b3698d14bf34d085efa9ff412b0919a93dabc9166
+
+pkgname = lumine-capture-bin
