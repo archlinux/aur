@@ -3,14 +3,14 @@
 _hgname=sms-coding-utils
 _pkgname=freecalypso-sms-coding-utils
 pkgname="${_pkgname}-hg"
-pkgver=r25.2a19b44c272e
+pkgver=r33.a91fb88a57b2
 pkgrel=1
 pkgdesc="FreeCalypso SMS encoding utilities"
 arch=('x86_64' 'i686')
 url="https://www.freecalypso.org/hg/${_hgname}"
 license=('LicenseRef-FreeCalypso')
 groups=('freecalypso')
-depends=()
+provides=("${_pkgname}=${pkgver}")
 makedepends=('mercurial')
 conflicts=("${_pkgname}")
 source=("hg+https://www.freecalypso.org/hg/${_hgname}")
