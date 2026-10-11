@@ -1,0 +1,5 @@
+[go-carpet-bin]
+source = "github"
+github = "msoap/go-carpet"
+use_latest_release = true
+prefix = "v"

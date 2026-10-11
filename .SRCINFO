@@ -1,0 +1,19 @@
+pkgbase = go-carpet-bin
+	pkgdesc = Tool for show test coverage in terminal for Go source files
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/msoap/go-carpet
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = go-carpet
+	conflicts = go-carpet
+	source_x86_64 = go-carpet-x86_64-1.10.0.tgz::https://github.com/msoap/go-carpet/releases/download/v1.10.0/go-carpet_1.10.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 319d7e116493ebda1f506fb63800f2f7bab2b5dcdc9e89caf6f7f95c1b7baa2a
+	source_i686 = go-carpet-i686-1.10.0.tgz::https://github.com/msoap/go-carpet/releases/download/v1.10.0/go-carpet_1.10.0_linux_386.tar.gz
+	sha256sums_i686 = a16473eae76270f455bb7605924e21302de93a96da40a5e0c7cc8de946adaa67
+	source_aarch64 = go-carpet-aarch64-1.10.0.tgz::https://github.com/msoap/go-carpet/releases/download/v1.10.0/go-carpet_1.10.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 89659c84e6714d846bb512c74cca6755a1e2cf3747fd6618341c4a956c12875c
+
+pkgname = go-carpet-bin
