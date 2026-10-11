@@ -2,10 +2,10 @@
 _base=pystencils
 pkgname=python-${_base}
 pkgdesc="Speeding up stencil computations on CPUs and GPUs"
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 arch=(any)
-url="https://i10git.cs.fau.de/pycodegen/${_base}"
+url="https://gitos.rrze.fau.de/cs10/pycodegen/${_base}"
 license=(AGPL-3.0-or-later)
 depends=(python-sympy python-numpy python-appdirs python-joblib python-yaml python-fasteners)
 makedepends=(python-build python-installer python-setuptools python-versioneer python-wheel)
@@ -25,13 +25,7 @@ optdepends=('python-cupy: for gpu support'
   'python-rich: for interactive support'
   'python-graphviz: for interactive support')
 source=(${url}/-/archive/release/${pkgver}/${_base}-release-${pkgver}.tar.gz)
-sha512sums=('4b072f75de00e4cca7d2d83e80f06d93a74137f59fce9368168a2a3d082ef7e5945486fb07d4f78e4c0be375c47f1ff339db6390a2af4285ec50dfe6033e51fd')
-
-prepare() {
-  cd ${_base}-release-${pkgver}
-  sed -i '1 a import math' tests/test_fvm.py
-  sed -i 's/np.math/math/' tests/test_fvm.py
-}
+sha512sums=('7e16a33610d97b72a180d570388862ba0b018a2eb2e135e8b5b30b1498bddc3b91ed6ff06916c44aff6760ad45542d9da024908f1e74791d1b795afa8f165a0c')
 
 build() {
   cd ${_base}-release-${pkgver}
