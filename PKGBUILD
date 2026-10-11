@@ -74,7 +74,8 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
 	'https://download.geonames.org/export/dump/cities500.zip'
 	'https://download.geonames.org/export/dump/admin1CodesASCII.txt'
 	'https://download.geonames.org/export/dump/admin2Codes.txt'
-	'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson')
+	'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson'
+	'https://download.geonames.org/export/dump/countryInfo.txt')
 b2sums=('66335b33ef0930d1c6e1d102a2a1280ad937f4f08f9438104ba386d24c5b6444f5fc28d5c21dc1fc39446770e21a9caeb901e1f999badaa577929b46465b87a3'
         '6c8decad88b49a2d62c1ffbcc682c26250e459c0205f2e300973a837578841d896a51dfabf9ec8a4bc288e966303cf32dae02cebb9f78fdad807b07b3fd410c6'
         '2d94fcc21861067920f0df1e6e5ac74b4413515777b204070c5d8fc01026c54e993e4eff65dabeb3629ee24d238a1a52793c061947009ddac5f0ebf64a58312d'
@@ -87,7 +88,9 @@ b2sums=('66335b33ef0930d1c6e1d102a2a1280ad937f4f08f9438104ba386d24c5b6444f5fc28d
         'SKIP'
         'SKIP'
         'SKIP'
-        'db7a138f7414d3c2c3ad9ee0e5d8ed6443b1f065fff14b899192ae9989455acf2bf7f609b6454bc8ac7680fab4299fde3f9ed655549923a9bede13f5b6fe1059')
+        'db7a138f7414d3c2c3ad9ee0e5d8ed6443b1f065fff14b899192ae9989455acf2bf7f609b6454bc8ac7680fab4299fde3f9ed655549923a9bede13f5b6fe1059'
+	'SKIP'
+)
 
 prepare() {
 	cd "${srcdir}/${pkgbase}-${pkgver}"
@@ -184,6 +187,7 @@ package_immich-server() {
 	# https://github.com/immich-app/base-images/blob/main/server/Dockerfile
 	install -dm755 "${pkgdir}/usr/lib/immich/build/geodata"
 	install -Dm644 cities500.txt "${pkgdir}/usr/lib/immich/build/geodata/cities500.txt"
+	install -Dm644 countryInfo.txt "${pkgdir}/usr/lib/immich/build/geodata/countryInfo.txt"
 	install -Dm644 admin1CodesASCII.txt "${pkgdir}/usr/lib/immich/build/geodata/admin1CodesASCII.txt"
 	install -Dm644 admin2Codes.txt "${pkgdir}/usr/lib/immich/build/geodata/admin2Codes.txt"
 	install -Dm644 ne_10m_admin_0_countries.geojson "${pkgdir}/usr/lib/immich/build/geodata/ne_10m_admin_0_countries.geojson"
