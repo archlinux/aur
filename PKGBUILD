@@ -5,7 +5,7 @@
 pkgbase=montray
 pkgname=('montray-server' 'montray-ui')
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/dimonomid/montray'
 license=('BSD-2-Clause')
@@ -65,6 +65,8 @@ package_montray-server() {
     "$pkgdir/usr/lib/sysusers.d/montray.conf"
   install -Dm644 packaging/montray-server/montray-server.yml \
     "$pkgdir/etc/montray-server.yml"
+  # makepkg runs a loop for split packages, so pkgname is actually montray-server here
+  # shellcheck disable=SC2128
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
@@ -82,5 +84,7 @@ package_montray-ui() {
     "$pkgdir/usr/share/applications/montray-ui.desktop"
   install -Dm644 packaging/montray-ui/montray-ui.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/montray-ui.svg"
+  # makepkg runs a loop for split packages, so pkgname is actually montray-ui here
+  # shellcheck disable=SC2128
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
