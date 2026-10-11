@@ -1,6 +1,6 @@
 # Maintainer: Paul Woisard <paulwoisard@gmail.com>
 pkgname=pdf-equilibrist
-pkgver=0.1.24
+pkgver=0.1.25
 pkgrel=1
 pkgdesc="Éditeur PDF de bureau, gratuit et open-source, construit avec PyQt6 et PyMuPDF"
 arch=('any')
@@ -16,6 +16,22 @@ depends=(
   'python-pptx'
   'python-pillow'
   'python-pyparsing'
+  # OCR (RapidOCR + ONNX Runtime). rapidocr lui-même n'est pas empaqueté sur Arch :
+  # sa wheel (py3-none-any, modèles .onnx inclus — rien n'est téléchargé à
+  # l'exécution) est une source du PKGBUILD, installée dans package(). Ses
+  # dépendances, elles, viennent des dépôts officiels. python-onnxruntime est
+  # fourni par python-onnxruntime-cpu / -cuda / -rocm (au choix de l'utilisateur).
+  'python-onnxruntime'
+  'python-opencv'
+  'python-numpy'
+  'python-shapely'
+  'python-pyclipper'
+  'python-omegaconf'
+  'python-colorlog'
+  'python-yaml'
+  'python-requests'
+  'python-tqdm'
+  'python-six'
   'hicolor-icon-theme'
   'desktop-file-utils'
   # Le ribbon utilise des emojis couleur comme icônes (🖨, 🖼, 🔒, 🌐…) — sans
@@ -40,13 +56,16 @@ source=(
   "io.github.BitScripts.PDFEquilibrist.metainfo.xml"
   "io.github.BitScripts.PDFEquilibrist-128.png"
   "io.github.BitScripts.PDFEquilibrist-256.png"
+  # Toujours EN DERNIER : le workflow de publication ne réécrit que la 1ʳᵉ somme (le tarball)
+  "rapidocr-3.10.0-py3-none-any.whl::https://files.pythonhosted.org/packages/59/07/203065283bba0c5e9c10af3602dc25ab3e59ee54dc2d1d22c8faeabf5ed8/rapidocr-3.10.0-py3-none-any.whl"
 )
 sha256sums=(
-  'a89cb235eb5db4ad7dd4d39416dae2899974fc9d5ca61ba266c588d24c71134d'
+  '2af1d2d767d2da569bc21930ca0b2d21bfc0710745df532415cdf626884a8e2f'
   '51e985d95bae29ed2c6fb94029f7d790d9edc8d6dfe20a6385e275670cb8c383'
   'c35f51471c5dc7b607724da79828f039b9a6649f12e1faae10053f5513e33002'
   '91debebf1a5663c6b52cb1ad101c023d6ce751d3773476448808ad50c63fc440'
   '6a7aff895621d940226c026f0ac27f75456d3a679f0505b7f244307afc0b3e1b'
+  '2fc34e26cd0f48514804a94f8832283039c7334076bff60768b1fed9ad068050'
 )
 
 prepare() {
@@ -66,6 +85,12 @@ build() {
 package() {
   cd "PDF-Equilibrist-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # OCR : wheel rapidocr (modèles PP-OCRv6 .onnx inclus, Apache-2.0). Le script
+  # /usr/bin/rapidocr n'est pas utilisé par l'application et appartiendrait au
+  # paquet python-rapidocr s'il existe un jour : on ne l'installe pas.
+  python -m installer --destdir="$pkgdir" "$srcdir/rapidocr-3.10.0-py3-none-any.whl"
+  rm -f "$pkgdir/usr/bin/rapidocr"
 
   install -Dm644 "$srcdir/io.github.BitScripts.PDFEquilibrist.desktop" \
     "$pkgdir/usr/share/applications/io.github.BitScripts.PDFEquilibrist.desktop"
