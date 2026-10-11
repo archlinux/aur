@@ -1,7 +1,7 @@
 # Maintainer: Marc Rechté <marc4@rechte.fr>
 
 pkgbase=postgresql17
-pkgver=17.10
+pkgver=17.11
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
 pkgrel=1
@@ -21,7 +21,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql-run-socket.patch
         postgresql-perl-rpath.patch)
 #        0001-WIP-track-wal-segments.patch)
-sha256sums=('078a03516dcdbdb705fecaf415ea3d13a956c589e46f09fed68a06fb00598c90'
+sha256sums=('dd27f2b3c59e73ed14aa3324901242bf69a032a6347805f274e6260322d42979'
             '1b10acff7b5f80ea39c6c122569cd461a12cf90114b777ad46d438447c5c5774'
             '55c7282fdb116741a5de1c572a1b727b6c53a38b8c13d7c4b5d7a62e654084b2'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
