@@ -1,0 +1,13 @@
+_msg() {
+  echo "==> Aliza is commercial software. To use the 30-day free trial,"
+  echo "    click 'Cancel' in the license installation dialog on startup."
+  echo "    A paid license is required after the trial period."
+}
+
+post_install() {
+  _msg
+}
+
+post_upgrade() {
+  _msg
+}

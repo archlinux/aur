@@ -3,28 +3,36 @@
 # Contributor: Thomas Roos (Roosted7) <mail [at] thomasroos [dot] nl>
 
 pkgname=aliza
-pkgver=2.7.3
+pkgver=2.8.3.1
 pkgrel=1
-pkgdesc="Medical Imaging. Open 2D, 3D and 4D images in DICOM, MetaIO, Nifti, Nrrd and other formats, incl. THIS PACKAGE REQUIRES PAID LICENSE!"
+pkgdesc="Medical imaging viewer for 2D, 3D and 4D images in DICOM, MetaIO, Nifti, Nrrd and other formats (30-day free trial, then paid license required)"
 arch=('x86_64')
-url="http://www.aliza-dicom-viewer.com"
-license=('custom')
-depends=('hicolor-icon-theme'
+url="https://www.aliza-medical-imaging.de"
+license=('LicenseRef-aliza')
+depends=('libgcc'
+         'libstdc++'
+         'glibc'
+         'hicolor-icon-theme'
+         'libglvnd'
+         'libx11'
          'libxt'
-         'libglvnd')
+         'qt5-base'
+         'qt5-svg'
+         'zlib')
 options=('!emptydirs')
-source=("https://www.aliza-medical-imaging.de/aliza_${pkgver}.1_amd64.deb"
-        "aliza.desktop")
-sha512sums=('36a8031d31f5f6bceb89b2c3b2cf0d4837f9fcd8ef5d1b01177a188cecafd2273416e2cf13d5597460b016af93ae9bccf41ca4f2f04e79aab9e12beaa7b75411'
-            'b17f64ef917e3a85fa846f57285de427a9b61baaba204172a617b6b7ef0c6a7e2c242628b80356df8245603720e95331f7de048b097acc4d09e08ece304a36a3')
-
-prepare() {
-  tar xf data.tar.xz
-}
+install=aliza.install
+source=("https://www.aliza-medical-imaging.de/aliza_${pkgver}_amd64.deb"
+        "aliza.sh")
+sha512sums=('09402f8ae810144b8264852fa02d9b6ff3a7050a84cf2f8b8c5bbf976c974c1d8b37143390e4b2e7676bcd604706d4e366b3478a273b8b3592c27b97dccc7932'
+            'bd59a261a68422ffaabd30d40aa12da46fb1faf4a48f63e5524b8d61276c036e64cbefc1d3e184d10aae87ff2cbbd7a4d51ebce9c3bcb3244d6712704ee3d1b0')
 
 package() {
-    find "${pkgdir}" -type d -exec chmod 750 {} \;
-    
-    mkdir -p "${pkgdir}${ALIZA_DIR}"
-    cp -r "usr/" "${pkgdir}"
+  bsdtar -xf data.tar.xz -C "${pkgdir}" --exclude './usr/share/lintian'
+  install -Dm644 "${pkgdir}/usr/share/doc/${pkgname}/copyright" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  install -d "${pkgdir}/usr/lib/${pkgname}"
+  mv "${pkgdir}"/usr/bin/{aliza,aliza-vtkvol} "${pkgdir}/usr/lib/${pkgname}/"
+  install -Dm755 "${srcdir}/aliza.sh" "${pkgdir}/usr/bin/aliza"
+  ln -s "/usr/lib/${pkgname}/aliza-vtkvol" "${pkgdir}/usr/bin/aliza-vtkvol"
 }
