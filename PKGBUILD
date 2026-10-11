@@ -6,7 +6,7 @@
 # Contributor: kikadf <kikadf.01@gmail.com>
 
 pkgname=mir
-pkgver=2.28.0
+pkgver=2.29.0
 pkgrel=1
 pkgdesc="Canonical's display server"
 url="https://github.com/canonical/mir"
@@ -66,11 +66,10 @@ optdepends=('qterminal: required for miral demos'
             'xcursor-dmz: opt requirement for miral demos')
 options=(!lto)
 source=("git+https://github.com/canonical/mir.git#tag=v${pkgver}") # build issue with 2.26.0 archive
-sha256sums=('89587c88303a19f5183128cc017639b7e17e935f4af0ab4935635e2c741964fa')
+sha256sums=('939612b79c86a7115a42f655c7d8d6b3f4e3ef3fa4ae2e3e1400eea43a7ebfae')
 
 build() {
   local _flags=(
-    -DMIR_FATAL_COMPILE_WARNINGS=OFF
     #-DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/mir/
     -DMIR_BUILD_INTERPROCESS_TESTS=OFF
     -DMIR_USE_PRECOMPILED_HEADERS=OFF
@@ -80,7 +79,7 @@ build() {
     -DMIR_USE_LD=ld
   )
 
-  cmake -B build -S "mir" -Wno-dev \
+  cmake -B build -S "mir" -Wno-author \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     "${_flags[@]}"
