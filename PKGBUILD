@@ -1,11 +1,12 @@
 pkgname=plasma6-themes-vapor-steamos
-pkgver=0.29
+pkgver=3.9.4
 pkgrel=1
+_upstream_pkgrel=2
 pkgdesc="Vapor theme for KDE Plasma from SteamOS 3"
 license=("GPL2")
 arch=("any")
-source=("https://steamdeck-packages.steamos.cloud/archlinux-mirror/jupiter-main/os/x86_64/steamdeck-kde-presets-${pkgver}-1-any.pkg.tar.zst")
-sha256sums=('c6f23809e4ecf0a44abf5d9829ddb3eefb733f36a0fce2f6e94922e63a4e5a0f')
+source=("https://steamdeck-packages.steamos.cloud/archlinux-mirror/jupiter-main/os/x86_64/steamdeck-kde-presets-${pkgver}-${_upstream_pkgrel}-any.pkg.tar.zst")
+sha256sums=('b593a4a7617b3c5e37f5b3fde440d17ff928db5dcbaadf391827e506e2582f72')
 
 conflicts=("plasma5-themes-vapor-steamos")
 replaces=("plasma5-themes-vapor-steamos")
