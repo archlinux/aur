@@ -5,7 +5,7 @@ pkgdesc="Epson Inkjet Printer Driver 2 (ESC/P-R) for Linux"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://support.epson.net/linux/Printer/LSB_distribution_pages/en/escpr2.php"
 # the sources are often (delayed) also available from the EPSON driver download page: https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
-license=('LGPL-2.1-only' 'LicenseRef-EPSON-EULA-2023')
+license=('LGPL-2.1-only' 'LicenseRef-EPSON-EULA')
 depends=('cups' 'ghostscript')
 optdepends=('imagescan: scanner support')
 options=('!libtool')
@@ -37,5 +37,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
-  install -Dm644 COPYING.EPSON -T "${pkgdir}/usr/share/licenses/${pkgname}/EPSON-EULA-2023"
+  install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 COPYING.LIB -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 COPYING.EPSON -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
