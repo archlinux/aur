@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A reverse engineer's binary Swiss-army knife in Rust"
 
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,7 +27,7 @@ depends=('glibc' 'libgcc')
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tgz")
-sha256sums_x86_64=('a67ce2a8314f215dfccec8a5f568c9095efcdb3add275c94e3efc8f0e3b119ed')
+sha256sums_x86_64=('5c8dd4cf5f14977428baee2a3a7e6bf0b5f58b68e6d837230276597794740089')
 
 
 package() {
