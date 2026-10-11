@@ -1,26 +1,40 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 _name=pymunk
+_munk2d_commit=47b0e6b200c1aedb7b9ee09a998a2ef0bbad8f82
 pkgname=python-$_name
-pkgver=7.3.0
+pkgver=7.3.1
 pkgrel=1
 pkgdesc='Pymunk is a easy-to-use pythonic 2D physics library.'
 arch=('any')
 url='https://github.com/viblo/pymunk'
 license=('MIT')
-depends=('python' 'python-cffi')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'cmake' 'gcc')
-checkdepends=('python-pyglet' 'python-pygame' 'python-pillow' 'python-matplotlib' 'python-numpy')
-optdepends=('python-pyglet' 'python-pygame' 'python-matplotlib')
+depends=('python'
+         'python-cffi')
+makedepends=('python-setuptools'
+             'python-build'
+             'python-installer'
+             'python-wheel'
+             'git'
+             'cmake'
+             'gcc')
+checkdepends=('python-pyglet'
+              'python-pygame'
+              'python-pillow'
+              'python-matplotlib'
+              'python-numpy')
+optdepends=('python-pyglet'
+            'python-pygame'
+            'python-matplotlib')
 source=("$url/archive/refs/tags/$pkgver.tar.gz"
-        "https://github.com/viblo/Munk2D/archive/refs/tags/2.0.1.tar.gz")
-sha256sums=('a9a1a2fba430356e39e69a56219a7e26b8bd41ecc323ef0c4ec9090df0cfbc60'
-            '622fd376e95d3adf49ff8681081ec6b4cc6b082649164633ae4ce7b86c9cce93')
+        "Munk2D::git+https://github.com/viblo/Munk2D.git#commit=$_munk2d_commit")
+sha256sums=('bca3d4b3da475e242d95b17d01404c3aa8afc235ae09850765a8e721dfeb2bd0'
+            '8de048933171aee3f10f925a85b297b5b10cafbc247845c6595c969f7506bf14')
 
 prepare(){
   cd "$srcdir"
   rm -rf $_name-$pkgver/Munk2D
-  mv Munk2D-2.0.1 $_name-$pkgver/Munk2D
+  mv Munk2D $_name-$pkgver/Munk2D
 }
 
 build(){

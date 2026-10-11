@@ -1,6 +1,6 @@
 pkgbase = python-pymunk
 	pkgdesc = Pymunk is a easy-to-use pythonic 2D physics library.
-	pkgver = 7.3.0
+	pkgver = 7.3.1
 	pkgrel = 1
 	url = https://github.com/viblo/pymunk
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = python-pymunk
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = git
 	makedepends = cmake
 	makedepends = gcc
 	depends = python
@@ -21,9 +22,9 @@ pkgbase = python-pymunk
 	optdepends = python-pyglet
 	optdepends = python-pygame
 	optdepends = python-matplotlib
-	source = https://github.com/viblo/pymunk/archive/refs/tags/7.3.0.tar.gz
-	source = https://github.com/viblo/Munk2D/archive/refs/tags/2.0.1.tar.gz
-	sha256sums = a9a1a2fba430356e39e69a56219a7e26b8bd41ecc323ef0c4ec9090df0cfbc60
-	sha256sums = 622fd376e95d3adf49ff8681081ec6b4cc6b082649164633ae4ce7b86c9cce93
+	source = https://github.com/viblo/pymunk/archive/refs/tags/7.3.1.tar.gz
+	source = Munk2D::git+https://github.com/viblo/Munk2D.git#commit=47b0e6b200c1aedb7b9ee09a998a2ef0bbad8f82
+	sha256sums = bca3d4b3da475e242d95b17d01404c3aa8afc235ae09850765a8e721dfeb2bd0
+	sha256sums = 8de048933171aee3f10f925a85b297b5b10cafbc247845c6595c969f7506bf14
 
 pkgname = python-pymunk
