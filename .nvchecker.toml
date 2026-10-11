@@ -1,0 +1,5 @@
+[git-repo-manager]
+source = "github"
+github = "hakoerber/git-repo-manager"
+use_max_tag = true
+prefix = "v"
