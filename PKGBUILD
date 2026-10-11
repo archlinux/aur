@@ -1,9 +1,10 @@
 # Maintainer: Ateles
 _pkgname=energygraph
+pkgbase=energygraph-git
 pkgname=$_pkgname-git
 pkgver=r27.gc544eda
-pkgrel=1
-pkgdesc="Graphs the power use of a host inside a text terminal, using intel-rapl data from the /sys filesystem. Uses RAPL interface in /sys to determine the energy use of different zones, and graphs it in a text terminal."
+pkgrel=2
+pkgdesc="Graphs the power use of a host inside a text terminal, using intel-rapl data from the /sys filesystem."
 arch=('x86_64')
 url="https://github.com/stolk/$_pkgname"
 license=('MIT')
