@@ -11,7 +11,7 @@
 # is published. pkgver is the tag without the leading "v" and the "-alpha" suffix.
 _tag=v1.4.0.5660
 # The launcher is a separate repository with no tags, so it is pinned by commit.
-_launcher_commit=fc0bdd8f16e3d09fd18c1d97db4dd63f9baf3fa3
+_launcher_commit=07ed6411f35bfbfeee831e19a717a06a51d567da
 pkgbase=keeperfx-tux
 pkgname=('keeperfx-tux' 'keeperfx-tux-data' 'keeperfx-tux-launcher')
 pkgver=1.4.0.5660
@@ -38,7 +38,18 @@ pkgver=1.4.0.5660
 # packages provide the exact versions earlier engines still ask for, so the
 # installs that are out there right now get across too. Also stops the build
 # directory being written into the launcher binary.
-pkgrel=1
+# 1.4.0.5660 rel 2: the same engine with the launcher's newer alpha and two
+# wrapper fixes, published by hand from this branch (docs/releasing.md):
+# - launcher 07ed641: archives can no longer write outside their folder (a
+#   symlink chain in a Workshop item could reach $HOME), a corrupt download no
+#   longer crashes it, the pre-update save backup keeps every save, and
+#   PARCHMENT_MAP_FADE=ORIGINAL survives the settings dialog;
+# - opening the launcher first on a fresh install assembles the game directory
+#   (it found no engine, offered a ~400 MB reinstall and never offered to copy
+#   the Dungeon Keeper files), and a launcher that updated itself is no longer
+#   replaced by the packaged copy on every start.
+# The engine tag is unchanged, so saved games are untouched.
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/ForkedInTime/keeperfx-linux-alpha"
 license=('GPL-2.0-or-later')
@@ -81,9 +92,9 @@ sha256sums=(
   'SKIP'
   '78a76b436ba024fe115f3dade234fbcaa8f611f6c1ec3cf76d655ce0189f2215'
   'SKIP'
-  '31a4488a90ea45828d4a4704c99b5b77e3295d519b6c0fee23c6654a2f8dcc3a'
+  'a90ad879a8281b66c08ec8b116b899e3b2976f77211f7055e5c8ee6d756a439f'
   '72d72a8e7c1221208eed0622a6e323399ba8cb139ab8840d620ef2697623a1b4'
-  '5ed02b357aee4712e5684f29c44642ddbf581280fb60ef01560da2feb5e66bba'
+  '504b74bdcd4fe3085bcd9f74e43e4cf67c562325d8f7c37fc1e5a04da745f960'
   'ee2fc0f5b3d81dd55efe7d2aef6c4d67d18baff794114e3d6e334171842601eb'
   '37e0fcb5b46aa0b178380ea8f36aa62485b75b5425c1932c7ada7f4101efc870'
   '8ec4213ccaf290f309ac6a4a0c9036531256b1db6239cb0f571062a1a2cf51e6'

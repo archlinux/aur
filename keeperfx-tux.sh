@@ -121,6 +121,14 @@ if [ ! -e "$GAMEDIR/keeperfx.cfg" ] && [ -e "$PREFIX/keeperfx.cfg" ]; then
     chmod u+w "$GAMEDIR/keeperfx.cfg"
 fi
 
+# The launcher's wrapper (keeperfx-tux-launcher.sh) runs this far and no further.
+# It needs the directory assembled -- the engine link above, above all, which is
+# how the launcher tells KeeperFX is installed -- but not the checks below:
+# copying in the missing Dungeon Keeper files is what the launcher is for.
+if [ "${KEEPERFX_TUX_ASSEMBLE_ONLY:-0}" = 1 ]; then
+    exit 0
+fi
+
 # Report what is missing in terms of what the user has to do about it, rather than
 # as an empty directory.
 missing_data=(); missing_sound=()

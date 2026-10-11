@@ -21,48 +21,34 @@ DST="$GAMEDIR/keeperfx-launcher-qt"
 
 mkdir -p "$GAMEDIR"
 
-# The launcher reads keeperfx.cfg and version.txt from the game directory to show
-# the current settings and version, so seed those if the game has never been run.
-# The engine's wrapper assembles the rest of the directory on first launch.
-if [ ! -e "$GAMEDIR/keeperfx.cfg" ] && [ -e /usr/share/keeperfx-tux/keeperfx.cfg ]; then
-    cp /usr/share/keeperfx-tux/keeperfx.cfg "$GAMEDIR/keeperfx.cfg"
-    chmod u+w "$GAMEDIR/keeperfx.cfg"
+# Assemble the game directory exactly as the engine's wrapper does, without
+# starting the game. The launcher is what players open first -- it is the
+# "KeeperFX" menu entry -- and it decides whether KeeperFX is installed by looking
+# for the engine in this directory. This used to seed only keeperfx.cfg,
+# version.txt and the two drop folders here and leave the rest to the first GAME
+# launch, so on a fresh install the launcher found no engine: it offered to
+# download and install all of KeeperFX again (~400 MB, into a directory the
+# package owns) and never offered to copy in the Dungeon Keeper files, the one
+# thing it is opened for first. The assembly also refreshes version.txt on every
+# run, which the launcher compares against the newest release.
+#
+# keeperfx-tux is only an optional dependency of this package, and a failure here
+# must not keep the launcher from starting: it reports what is missing itself.
+if [ -x /usr/bin/keeperfx-tux ]; then
+    KEEPERFX_TUX_ASSEMBLE_ONLY=1 /usr/bin/keeperfx-tux \
+        || echo "keeperfx-tux-launcher: could not fully assemble $GAMEDIR" >&2
 fi
 
-# The folders the user installs content into must be their own, not links into the
-# read-only package. The engine's wrapper does this for the whole game directory,
-# but it only runs when the GAME is launched -- and installing a workshop map
-# happens in the launcher, which a user can open without ever starting the game.
-# Left to the engine's wrapper, "Install" fails until the player happens to launch
-# the game once, with an error naming a folder they never chose.
-#
-# Only the drop folders are handled here; the rest of the assembly stays where it
-# belongs. Same reason version.txt is refreshed below rather than seeded once: the
-# launcher is what users open first.
-for drop in levels/personal levels/legacy; do
-    target="$GAMEDIR/$drop"
-    src="/usr/share/keeperfx-tux-data/$drop"
-    [ -d "$src" ] || continue
-    if [ -L "$target" ]; then
-        rm -f "$target"            # removing a link never touches what it points at
-    fi
-    mkdir -p "$target" 2>/dev/null || continue
-    cp -rn "$src/." "$target/" 2>/dev/null || true
-done
-# Refresh it every time, not just when missing. pacman upgrades the engine
-# without touching the game directory, so a seed-once copy leaves version.txt
-# reporting whatever was installed the first time the launcher ever ran. The
-# launcher compares that file against the newest release to decide whether to
-# offer an update -- so a stale copy makes it offer one that is already
-# installed, download the whole payload, and fail trying to extract it over
-# root-owned package files. The engine's own wrapper (keeperfx-tux.sh) already
-# refreshes it on every run; this only ever ran first because the launcher is
-# what users open.
-cp -f /usr/share/keeperfx-tux/version.txt "$GAMEDIR/version.txt" 2>/dev/null || true
-
-if [ ! -e "$DST" ] || ! cmp -s "$SRC" "$DST"; then
+# Refreshed when the PACKAGED launcher changes (a pacman upgrade), not whenever the
+# copy differs from it: comparing the two files replaced a launcher that had
+# updated itself in place on every single start, so it updated again, and again.
+# The stamp records which packaged build the copy came from.
+STAMP="$GAMEDIR/.keeperfx-launcher-qt.packaged"
+pkgsum="$(sha256sum "$SRC" | cut -d' ' -f1)"
+if [ ! -e "$DST" ] || [ "$(cat "$STAMP" 2>/dev/null || true)" != "$pkgsum" ]; then
     cp -f "$SRC" "$DST"
     chmod u+rwx "$DST"
+    printf '%s\n' "$pkgsum" > "$STAMP"
 fi
 
 # The launcher loads its 7-Zip library from beside its own binary, so it has to
