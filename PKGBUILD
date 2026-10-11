@@ -2,7 +2,7 @@
 
 pkgname=wolf-lang-bin
 _pkgname=wolf-lang
-pkgver=0.2.26
+pkgver=0.2.27
 pkgrel=1
 pkgdesc='The wolf systems language: the wolfgang compiler, its runtime and the C importer (release archive)'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url='https://github.com/wolffe-lang/wolf-lang'
 license=('GPL-3.0-or-later')
 # `sh` runs the /usr/bin/wolf exec script; `cc` (gcc) links every
 # program `wolf build` produces, so gcc is a runtime dependency.
-# glibc floor: the 0.2.26 archives import at most GLIBC_2.34 (objdump -T,
+# glibc floor: the 0.2.27 archives import at most GLIBC_2.34 (objdump -T,
 # x86_64 and aarch64); every Arch glibc meets that, so it stays unversioned.
 depends=('sh' 'gcc' 'gcc-libs' 'glibc')
 optdepends=(
@@ -35,8 +35,8 @@ options=('!strip' '!debug')
 # no `+dev` suffix, which a from-tarball rebuild could not manage.
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/wolf-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/wolf-$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('05acdc5ea2f261f67cf48f4a174cff780a8c765e5f447354e1712d488e5a8064')
-sha256sums_aarch64=('8b019b649575dd5770b2482bb764e8a1cc6961fefcd575ae3b98f9aeca1e5927')
+sha256sums_x86_64=('5e17eebed7ffbb3ee10bc669c653145903db7f591f250a096f791e4e6f377001')
+sha256sums_aarch64=('c475e5dc0a3748d15ae64096d6a33d52a67f0d879f30a4a11d40e72dfea955f7')
 
 package() {
     local _triple
@@ -61,6 +61,12 @@ package() {
     # runtime, which `wolf build --target x86_64-unknown-none` finds beside
     # the binary.
     install -Dm644 libwolf_rt_none.a "$pkgdir/usr/lib/$_pkgname/libwolf_rt_none.a"
+    # 0.2.27 (s204, ruling #59): every release archive carries wolf-std as
+    # `std/` (with std/STD-REV and its licenses). `wolf` reads the `std`
+    # directory beside the real binary as its default std root, so the
+    # tree goes where the binary is. cp -a keeps the archive's modes; the
+    # tree is files and directories only (dist refuses anything else).
+    cp -a std "$pkgdir/usr/lib/$_pkgname/std"
 
     install -dm755 "$pkgdir/usr/bin"
     printf '#!/bin/sh\nexec /usr/lib/%s/wolf "$@"\n' "$_pkgname" > "$pkgdir/usr/bin/wolf"
