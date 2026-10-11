@@ -1,11 +1,11 @@
 # Maintainer: Sanjaya Danushka <dsanjaya712@gmail.com>
 pkgname=neoarch
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="NeoArch Package Manager for Arch Linux (stable release, use 'neoarch-git' for latest dev builds)"
 arch=('any')
 url="https://github.com/Sanjaya-Danushka/Neoarch"
-license=('MIT')
+license=('GPL-3.0-or-later')
 # Core runtime — the app cannot work without these
 depends=('python-pyqt6' 'python-requests' 'python-keyring' 'python-defusedxml' 'qt6-svg' 'git')
 # Optional integrations — features degrade gracefully if absent
