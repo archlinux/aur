@@ -1,16 +1,17 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 
 pkgname=findimports
-pkgver=2.5.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Python module import analysis tool"
 url="https://github.com/mgedmin/findimports"
 depends=('python')
-makedepends=('python-setuptools')
-license=('GPL')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+checkdepends=('python-pytest')
+license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('c2d0705dc75fed68af32180225c95277d4f3d299d901e8f68873c28a6f073c33')
+sha256sums=('91c8b9962bccfc856562033089fb63ea41186419f0a3500e97449e85f301f615')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -18,11 +19,12 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  ./testsuite.py
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    pytest
 }
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
