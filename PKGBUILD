@@ -1,6 +1,6 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.1.49
+pkgver=0.1.50
 pkgrel=1
 pkgdesc="Control suite and PipeWire submixer for Elgato XLR interfaces, with an OpenDeck plugin"
 arch=('x86_64')
@@ -23,7 +23,7 @@ if [[ -f /usr/share/omarchy/shell/Ui/PluginBarApi.qml ]]; then
     depends+=(qt6-websockets)
 fi
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d434ee72ed56818281fac1d46ee92218b847abd0de52bf02c2c3fda4b3b61b29')
+sha256sums=('13829dbfe453f66c6277571e4253a5189372f38bcd5cef1814b865fa2cd83f20')
 
 build() {
   cd "$pkgname-$pkgver/src"
