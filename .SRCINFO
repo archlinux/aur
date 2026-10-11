@@ -1,0 +1,23 @@
+pkgbase = clauth-bin
+	pkgdesc = Claude Code multi-account manager and usage monitor with auto-switch (prebuilt binary)
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/uwuclxdy/clauth
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	optdepends = claude-code: clauth start, resume, delegate and the Claude Code plugin
+	optdepends = openai-codex: codex profiles
+	optdepends = herdr: pane tags and the herdr plugin
+	optdepends = inetutils: hostname lookup for the daemon --listen certificate
+	provides = clauth
+	conflicts = clauth
+	options = !strip
+	options = !debug
+	source = LICENSE-clauth-0.17.0::https://raw.githubusercontent.com/uwuclxdy/clauth/v0.17.0/LICENSE
+	sha256sums = cdda746ab9906de0e39936a41b1eabf9dd2c8790715c14b4ea5285abbcfec17f
+	source_x86_64 = clauth-bin-0.17.0-x86_64::https://github.com/uwuclxdy/clauth/releases/download/v0.17.0/clauth-linux-x86_64
+	sha256sums_x86_64 = 8a1e04bfc84c69dabae70b5370dc4034603e5b33b2beb62f516d19b24f77cc7c
+
+pkgname = clauth-bin
