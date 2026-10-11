@@ -15,7 +15,7 @@ url="https://codeberg.org/${_pkgauthor}/${_pkgname}"
 license=('GPL-3.0')
 
 provides=("riftbar")
-conflicts=("riftbar" "riftbar-git" "riftbar-git-debug")
+conflicts=("riftbar")
 depends=(
   'gtk4'
   'gtk4-layer-shell'
@@ -29,6 +29,7 @@ source=(
   "README.md::https://codeberg.org/${_pkgauthor}/${_pkgname}/raw/tag/${_pkgvername}/README.md"
 )
 
+options=(!debug)
 
 sha256sums=('0faaa740d75cc298cba5f498f02b3a111f7252c791ac20fb78fc8158bacc59ad'
             'SKIP'
