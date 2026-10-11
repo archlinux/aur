@@ -2,7 +2,7 @@
 
 pkgname=cwtch-ui-bin
 _pkgname=cwtch-ui
-pkgver=1.16.1
+pkgver=1.17.2
 pkgrel=1
 pkgdesc="A Flutter based Cwtch UI"
 provides=('cwtch' 'cwtch-ui')
@@ -15,7 +15,7 @@ optdepends=(
     'tor: use system tor'
 )
 
-source_x86_64=("https://git.openprivacy.ca/cwtch.im/cwtch-ui/releases/download/v1.16.1/cwtch-${pkgver}_amd64.deb")
+source_x86_64=("https://git.openprivacy.ca/cwtch.im/cwtch-ui/releases/download/v${pkgver}/cwtch-${pkgver}_amd64.deb")
 sha512sums_x86_64=('SKIP')
 options=('!strip')
 
