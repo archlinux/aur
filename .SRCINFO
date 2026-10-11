@@ -1,6 +1,6 @@
 pkgbase = libfprint-tod-goodix-55a2
 	pkgdesc = Goodix 27c6:55a2 fingerprint reader support for fprintd (libfprint TOD driver + bridge)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/mfat/goodix-55a2-linux
 	install = libfprint-tod-goodix-55a2.install
@@ -14,7 +14,7 @@ pkgbase = libfprint-tod-goodix-55a2
 	depends = python-pyusb
 	depends = python-numpy
 	depends = python-opencv
-	source = libfprint-tod-goodix-55a2-0.1.1.tar.gz::https://github.com/mfat/goodix-55a2-linux/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 9f38d4f41015dabee88e4c4752a126ffea61faba24f98cb18a573b1da6ac139e
+	source = libfprint-tod-goodix-55a2-0.1.2.tar.gz::https://github.com/mfat/goodix-55a2-linux/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 9789543cce83af016be9bcb1712e2da24274fbffb90fb2ebdb5bfb15f15e074b
 
 pkgname = libfprint-tod-goodix-55a2
