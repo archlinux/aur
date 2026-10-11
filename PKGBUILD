@@ -1,8 +1,7 @@
-# $Id$
 # Maintainer:  Radu Potop <radu at wooptoo dot com>
 
 pkgname=(zoho-cliq zoho-cliq-electron)
-pkgver=1.8.4
+pkgver=1.8.5
 pkgrel=1
 pkgdesc='Zoho Cliq communication software'
 arch=('x86_64')
@@ -15,7 +14,7 @@ optdepends=('libappindicator-gtk3: Systray indicator support'
 source=(
     "https://downloads.zohocdn.com/chat-desktop/linux/cliq_${pkgver}_amd64.deb"
 )
-sha256sums=('b22ff6ef201be5371c454417139b36280ebdc5eab669adc859e1aaa2816677dd')
+sha256sums=('c668a486c559de62115d342285d1366bd321aeffe053cd023c8bed7c24853d26')
 
 package_zoho-cliq() {
     conflicts=('zoho-cliq-electron' 'zoho-cliq-upstream-electron')
@@ -30,7 +29,7 @@ package_zoho-cliq() {
 package_zoho-cliq-electron() {
     # The only difference is that this package copies over only the resources/ folder
     # and creates a launcher wrapper.
-    electron_ver='electron39'
+    electron_ver='electron42'
     depends+=($electron_ver)
     conflicts=('zoho-cliq')
     provides=('zoho-cliq' 'zoho-cliq-upstream-electron')
