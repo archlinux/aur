@@ -2,7 +2,7 @@
 # Maintainer: Christian Kohlstedde <christian+archlinux@kohlsted.de>
 
 pkgname=connect-tunnel
-pkgver=12.50.00247
+pkgver=12.50.01108
 pkgrel=1
 pkgdesc="SonicWALL Connect Tunnel VPN Client"
 arch=('x86_64')
