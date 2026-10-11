@@ -1,0 +1,23 @@
+pkgbase = cloudreve-client
+	pkgdesc = Desktop sync client for Cloudreve (Linux/macOS fork of the official Windows client)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/cedev-1/cloudreve-client
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = pkgconf
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = hicolor-icon-theme
+	depends = sqlite
+	options = !lto
+	source = cloudreve-client-0.3.0.tar.gz::https://github.com/cedev-1/cloudreve-client/archive/refs/tags/v0.3.0.tar.gz
+	source = fix-wayland-positioner.patch
+	sha256sums = 352325d6f9a1f21b73611fd3463ae16d74fd45d26824f4cb14686e5bb015189f
+	sha256sums = 058885c8daeca4573a74be69c89fb3bcba63c374116609d676f11314cb67805b
+
+pkgname = cloudreve-client
