@@ -1,0 +1,5 @@
+[actdiag]
+source = "github"
+github = "arenevier/actdiag"
+use_max_tag = true
+prefix = "v"
