@@ -4,8 +4,8 @@
 
 pkgname=fuzzel-git
 _pkgname=fuzzel
-pkgver=1.14.1.r21.g38e1c6e
-pkgrel=1
+pkgver=1.15.0.r9.g815d438
+pkgrel=2
 pkgdesc='Application launcher for wlroots based Wayland compositors.'
 arch=(x86_64)
 url='https://codeberg.org/dnkl/fuzzel'
@@ -14,19 +14,12 @@ provides=(fuzzel)
 conflicts=(fuzzel)
 depends=(pixman wayland libxkbcommon libpng fcft resvg)
 makedepends=(git meson ninja wayland-protocols scdoc tllist)
-source=("git+$url"
-        001-meson-build.patch)
-sha256sums=('SKIP'
-            '7749577ff177bffa29623609faf9359ed8e31b308b842d49268e2d1071c7ead2')
+source=("git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
     git describe --long | sed 's/-/.r/;s/-/./'
-}
-
-prepare() {
-    ## use pkgconfig to find resvg and do not auto install license
-    patch -p1 -d "$srcdir/$_pkgname" < 001-meson-build.patch
 }
 
 build() {
