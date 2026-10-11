@@ -1,0 +1,23 @@
+post_install() {
+    cat <<'MSG'
+==> LSW: before the first VM start
+    - /dev/udmabuf: the GPU device needs it. The module loads at boot
+      (/usr/lib/modules-load.d/lsw.conf); to use it now:
+          sudo modprobe udmabuf
+          sudo udevadm trigger --sysname-match=udmabuf
+      Your login session gets access to it (udev "uaccess"); log out and
+      back in if `ls -l /dev/udmabuf` shows no ACL for your user.
+    - /dev/kvm must be usable by your user (it is, on a stock Arch).
+    - VMs run under your user's libvirt session (qemu:///session): no
+      libvirt group membership and no system libvirtd are needed.
+    - Shared folders need virtiofsd; OpenCL in the guest needs an OpenCL
+      driver on the host (optional dependencies).
+    Start "LSW Manager" from the application menu, or run lsw-manager.
+MSG
+}
+
+post_upgrade() {
+    # Nothing to migrate. A running VM keeps the QEMU it was started
+    # with until it is shut down and started again.
+    :
+}

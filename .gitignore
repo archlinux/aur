@@ -1,0 +1,7 @@
+# makepkg's working directories and outputs
+src/
+pkg/
+*.pkg.tar.*
+*.log
+# the downloaded release tarball
+lsw-*-x86_64.tar.zst
