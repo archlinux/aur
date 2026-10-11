@@ -76,7 +76,9 @@ source-repository-package
       echo " cabal freeze --constraint pandoc==$_pandoc_ver"
       exit 1
     fi
-  ;;
+    ;;
+  rolling) rm cabal.project.freeze
+    ;;
   *)
     echo "Invalid pandoc version type: $_pandoc_type"
     exit 1
@@ -90,7 +92,7 @@ source-repository-package
 
   cabal configure --prefix=/usr --docdir=/usr/share/doc/"$pkgname" \
     --enable-tests \
-    --allow-newer=pandoc
+    --allow-newer=pandoc --constraint "pandoc==$_pandoc_ver"
   cabal build --only-dependencies
 }
 
