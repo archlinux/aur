@@ -5,7 +5,7 @@
 _base=vispy
 pkgname=python-${_base}
 pkgver=0.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Interactive visualization in Python"
 arch=(any)
 url="https://${_base}.org"
@@ -23,7 +23,7 @@ optdepends=('ipython: ipython-static'
   'python-meshio: io'
   'python-pillow: io')
 source=(${_base}-${pkgver}.tar.gz::https://github.com/${_base}/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('56f24164000bdac2af7a14b83ef6b75d7abcd78ee8e0084f4692b4bdf5b080730ade17d0a7ea9d49c8e8fcb6a507d4b5d7484c5b169c312df41e7efdd693e3fb')
+sha512sums=('44da0b89af26c86d7415f7a441c17faaa9b9cfff8682e62921eb8e04f6e70619aab6c6b3b09d601a79190097c99aa3ecba32f93b4d26f6ec831fc055a6aab2f5')
 
 build() {
   cd ${_base}-${pkgver}
