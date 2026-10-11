@@ -5,7 +5,7 @@
 pkgbase=montray
 pkgname=('montray-server' 'montray-ui')
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://github.com/dimonomid/montray'
 license=('BSD-2-Clause')

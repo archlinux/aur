@@ -1,6 +1,6 @@
 pkgbase = montray
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dimonomid/montray
 	arch = x86_64
 	license = BSD-2-Clause
