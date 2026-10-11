@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=pods
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Manage your containers"
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ optdepends=(
   'podman: Podman container support'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('231950d4971872e2667c3a333abd8d09b4002ef6a92b44b331ee98b054a80ffb')
+sha256sums=('a71fb9001b95b62d7fe0d57302c8ea3241c5c9489147112025d5931957ba9a03')
 
 prepare() {
   cd "$pkgname-$pkgver"
