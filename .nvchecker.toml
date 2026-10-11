@@ -1,0 +1,4 @@
+[alsa-scarlett-gui-git]
+source = "github"
+github = "geoffreybennett/alsa-scarlett-gui"
+use_max_tag = true
