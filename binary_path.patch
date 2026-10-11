@@ -1,0 +1,13 @@
+diff --git a/app/SysTray_X.json b/app/SysTray_X.json
+index 52fe8d3..fa2c1e5 100644
+--- a/app/SysTray_X.json
++++ b/app/SysTray_X.json
+@@ -1,7 +1,7 @@
+  {
+   "name": "SysTray_X",
+   "description": "SysTray-X System Tray App",
+-  "path": "/path/to/native-messaging/app/SysTray-X",
++  "path": "/usr/bin/SysTray-X",
+   "type": "stdio",
+   "allowed_extensions": [ "systray-x@Ximi1970" ]
+ }

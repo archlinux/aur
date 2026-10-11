@@ -1,0 +1,29 @@
+diff --git a/Makefile b/Makefile
+index 9631a87..0add4ce 100644
+--- a/Makefile
++++ b/Makefile
+@@ -17,6 +17,8 @@ else
+ endif
+ endif
+ 
++APP ?=
++
+ #OPTIONS = "DEFINES += NO_KDE_INTEGRATION"
+ 
+ .PHONY:	clean \
+@@ -56,12 +58,12 @@ ifeq (Linux,$(SYSTEM))
+ systray-x-app:
+ 	@echo "Creating systray-x app" ;\
+ 	rm -f SysTray-X ;\
+-	mkdir -p app/build ;\
+-	cd app/build ;\
++	mkdir -p app/${APP}-build ;\
++	cd app/${APP}-build ;\
+ 	$(QMAKE) $(EXT_VERSION) $(OPTIONS) ../SysTray-X/SysTray-X.pro ;\
+ 	make ;\
+ 	cd ../.. ;\
+-	cp app/build/SysTray-X-app/SysTray-X .
++	cp app/${APP}-build/SysTray-X-app/SysTray-X .
+ else
+ systray-x-app:
+ 	@echo "Creating systray-x app" ;\
