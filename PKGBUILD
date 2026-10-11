@@ -2,7 +2,7 @@
 pkgname=deckcraft-bin
 _pkgname=deckcraft
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source native presentation app, PowerPoint alternative (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/storytold/deckcraft"
@@ -11,6 +11,7 @@ depends=('alsa-lib' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'libxkbcommon')
 optdepends=('vulkan-icd-loader: GPU-accelerated rendering')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+options=('!strip')
 source_x86_64=("$_pkgname-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
 sha256sums_x86_64=('c2648c6071f631ecc6639ce6b7d60f68eed83ddeaba6b1559b07c5046863117c')
