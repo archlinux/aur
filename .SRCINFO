@@ -1,0 +1,17 @@
+pkgbase = drag
+	pkgdesc = A minimal X11 drag-and-drop utility.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://codeberg.org/ayari/drag
+	arch = x86_64
+	arch = aarch64
+	license = CC0-1.0
+	makedepends = gcc
+	makedepends = make
+	depends = libx11
+	provides = drag
+	options = !debug
+	source = drag-1.1.tar.gz::https://codeberg.org/ayari/drag/archive/1.1.tar.gz
+	sha256sums = 25d9bcb97fd30362608638b780b4f6e56b0b3edfa7c52bfc35f0eaa10b840318
+
+pkgname = drag
