@@ -4,13 +4,12 @@
 _name=mistralai
 pkgname=python-$_name
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Client SDK for the Mistral AI API."
 arch=('any')
 url="https://github.com/mistralai/client-python"
 license=('MIT')
 depends=('python'
-         'python-eval-type-backport'
          'python-httpx2'
          'python-pydantic'
          'python-dateutil'
@@ -20,8 +19,7 @@ depends=('python'
          'python-jsonpath-python')
 makedepends=('python-hatchling'
              'python-build'
-             'python-installer'
-             'python-wheel')
+             'python-installer')
 checkdepends=('python-pyyaml'
               'python-msgpack'
               'python-opentelemetry-instrumentation-httpx'
