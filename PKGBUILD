@@ -7,7 +7,7 @@
 # Contributor: CountMurphy (sarif)
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
-pkgrel=1
+pkgrel=2
 pkgver=3.3.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
@@ -22,7 +22,7 @@ makedepends=('git' 'pnpm' 'ts-node' 'mise')
 # dependencies generated from base-images repository
 # https://github.com/immich-app/base-images/blob/main/server/Dockerfile
 # 1.101.0-2: liborc dep found to be not required
-depends=('redis' 'postgresql>=14' 'nodejs>=20'
+depends=('redis' 'postgresql>=14' 'nodejs>=22'
 	'vectorchord>=0.3' 'vectorchord<2'  # server/src/constants.ts
 	'zlib'
 	'glib2'
@@ -215,7 +215,7 @@ package_immich-server() {
 package_immich-cli() {
 	pkgdesc+=" (command-line client)"
 	arch=('any')
-	depends=('nodejs>=20')
+	depends=('nodejs>=22')
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/"
 	install -dm755 "${pkgdir}/usr/lib/immich/cli"
