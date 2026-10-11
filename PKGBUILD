@@ -1,5 +1,5 @@
 pkgname=bm-sidebar
-pkgver=0.2.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='GTK4/libadwaita Bluetooth sidebar for Wayland desktops'
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('GPL-3.0-or-later')
 keywords=('bluetooth' 'bluetooth-manager' 'bluez' 'wayland' 'layer-shell' 'sidebar' 'gtk4' 'libadwaita' 'obex' 'file-transfer')
 depends=(
   'glib2'
-  'gtk4'
+  'gtk4>=4.12'
   'libadwaita'
   'json-glib'
   'gtk4-layer-shell'
@@ -23,7 +23,7 @@ makedepends=(
   'pkgconf'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ff9ec9daadcd29a1c5ace23ad36bfc7b4051298579e7802d6ebaeedbfb6965c5')
+sha256sums=('9f2f1d19f7ed1af571518574733f07b0db5accf02800feb7fb2d24a906361117')
 
 _github_repo='Relz/bluetooth-manager-sidebar'
 _source_name="${_github_repo##*/}-$pkgver"
