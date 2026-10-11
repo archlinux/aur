@@ -8,7 +8,7 @@ Restart=always
 KillMode=process
 TimeoutStopSec=15
 ExecStart=/usr/bin/decky-loader
-WorkingDirectory=${HOMEBREW_FOLDER}
+WorkingDirectory=-${HOMEBREW_FOLDER}
 Environment=UNPRIVILEGED_PATH=${HOMEBREW_FOLDER}
 Environment=PRIVILEGED_PATH=${HOMEBREW_FOLDER}
 Environment=LOG_LEVEL=INFO
