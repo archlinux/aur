@@ -1,6 +1,6 @@
 pkgbase = melfpaint
 	pkgdesc = Editor de imágenes de escritorio con capas, pinceles y formas
-	pkgver = 1.2.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/movacx/MelfPaint
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = melfpaint
 	optdepends = python-pillow: guardar y abrir GIF, TIFF, WebP e ICO aunque Qt no tenga el códec
 	optdepends = qt6-imageformats: códecs nativos de WebP y TIFF
 	optdepends = qt6-translations: botones y atajos de Qt en español
-	source = melfpaint-1.2.0.tar.gz::https://github.com/movacx/MelfPaint/archive/refs/tags/v1.2.0.tar.gz
-	sha256sums = b95a84cb7c0f60af5c43a591d525c8dbeaa4097f1d92b32012089674f90c6f12
+	source = melfpaint-1.0.0.tar.gz::https://github.com/movacx/MelfPaint/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 7238169cc63412acc8d1ef38c25ff8b2b719d0de4dd6028842a6376fb0c3a280
 
 pkgname = melfpaint

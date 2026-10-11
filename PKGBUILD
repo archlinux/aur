@@ -1,6 +1,7 @@
 # Maintainer: Herlin Chavarria <253316889+movacx@users.noreply.github.com>
+# Contributor: movacx
 pkgname=melfpaint
-pkgver=1.2.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Editor de imágenes de escritorio con capas, pinceles y formas"
 arch=('any')
@@ -14,7 +15,7 @@ optdepends=(
 )
 makedepends=('make')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b95a84cb7c0f60af5c43a591d525c8dbeaa4097f1d92b32012089674f90c6f12')
+sha256sums=('7238169cc63412acc8d1ef38c25ff8b2b719d0de4dd6028842a6376fb0c3a280')
 
 build() {
   cd "MelfPaint-$pkgver"
