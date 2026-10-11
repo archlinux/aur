@@ -1,8 +1,9 @@
 # Maintainer: darkmagicsauce <caitlyn dot williams at proton dot me>
+# shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=yaabsa-bin
-pkgver=1.13.0
-pkgrel=3
+pkgver=1.14.1
+pkgrel=1
 pkgdesc="Unofficial feature rich, responsive, modern client for Audiobookshelf"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Vito0912/yaabsa"
@@ -28,5 +29,5 @@ package() {
   install -dm755 "${pkgdir}/usr/bin/"
 }
 
-sha256sums_x86_64=('3d27ba4c1d48b41f0223589586fd25447ce5825e4212734381e676557bc9aa5d')
-sha256sums_aarch64=('2d69751c0d1c251e27f32fa58dc747d289b44a49b805f3cc8f83e3e712a87412')
+sha256sums_x86_64=('c4a8e36f50d7a263b7782a4f889e3e8f89aa1b8f2e2c50ba1319c3f690c72e11')
+sha256sums_aarch64=('43fa167afeb05d962d4746bbe60bcedbc52088dbe1ba488d763d8f455717119b')
