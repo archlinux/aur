@@ -1,19 +1,21 @@
 pkgname=nm-sidebar
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='GTK4/libadwaita NetworkManager sidebar for Wayland desktops'
 arch=('x86_64')
 url='https://github.com/Relz/network-manager-sidebar'
 license=('GPL-3.0-or-later')
 keywords=('gtk4' 'layer-shell' 'libadwaita' 'network-manager' 'networkmanager' 'sidebar' 'vpn' 'wayland' 'wifi')
+# WireGuard import needs editor 1.32+ built against libnm 1.40+;
+# upgrading runtime libnm alone cannot enable an omitted import path.
 depends=(
   'glib2>=2.68'
   'json-glib>=1.6'
   'gtk4'
   'libadwaita>=1.6'
-  'networkmanager'
+  'networkmanager>=1.40'
   'gtk4-layer-shell'
-  'nm-connection-editor'
+  'nm-connection-editor>=1.32'
   'polkit'
   'dbus'
 )
@@ -23,7 +25,7 @@ makedepends=(
   'pkgconf'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cc4af29e93a3c4a04a8ec318a08c2fee2b1644b6a4574b34f2fb8d9bac124aa6')
+sha256sums=('79396e52fead68d067cd667844aa5b20d0e78860b3adb22b07e80c5d164c5f22')
 
 _github_repo='Relz/network-manager-sidebar'
 _source_name="${_github_repo##*/}-$pkgver"
