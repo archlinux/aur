@@ -1,0 +1,5 @@
+[docker-credential-helpers]
+source = "github"
+github = "docker/docker-credential-helpers"
+use_max_tag = true
+prefix = "v"
