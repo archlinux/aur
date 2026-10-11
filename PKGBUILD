@@ -1,7 +1,7 @@
 pkgname=passkeyd
 pkgver=1.9.0
 pkgrel=9
-pkgdesc="Opinionated WebAuthn authenticator"
+pkgdesc="A WebAuthn authenticator"
 arch=('x86_64')
 license=('GPL3')
 depends=("tpm2-tss" "systemd")
@@ -9,7 +9,7 @@ conflicts=("openrc" "runit")
 makedepends=()
 url="https://github.com/bjn7/passkeyd"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bjn7/passkeyd/releases/download/v$pkgver/passkeyd-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('b0b900bd6e4da5fcb8bc9babc176da893e2ff9ba89eb72316ca5b5e06247e6b2')
+sha256sums=('54a298578b4d19df2a6c49e674320b31e173045082084be827cd6d181e9fda5b')
 options=('!debug')
 backup=('etc/passkeyd.conf' 'usr/share/passkeyd/theme.conf')
 install=passkeyd.install
@@ -46,6 +46,9 @@ package() {
 
   # Systemd service
   install -Dm644 "$srcdir/passkeyd.service" "$pkgdir/usr/lib/systemd/system/passkeyd.service"
+
+  # PAM service
+  install -Dm644 "$srcdir/passkeyd.pam" "$pkgdir/etc/pam.d/passkeyd"
 
   # Icons
   install -Dm644 icons/32x32/passkeyd.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/passkeyd.png"

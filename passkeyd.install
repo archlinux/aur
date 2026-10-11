@@ -1,5 +1,8 @@
+_pkg_version="1.9.3"
+
 post_install() {
     exec > /dev/tty
+
     echo -e "\e[1m==> \e[36mSelect your preferred passkeyd user interface:\e[0m"
     echo -e "    \e[1m\e[34m1) ice\e[0m (Universal - works on any desktop)"
     echo -e "    \e[1m\e[36m2) kde\e[0m (Native KDE Plasma)"
@@ -13,95 +16,99 @@ post_install() {
         *) ui="ice" ;;
     esac
 
+    echo
+    echo -e "\e[1m==> \e[36mSelect how you want to prove your presence when a passkey is used:\e[0m"
+    echo -e "    \e[1m\e[34m1) PASS\e[0m   (Account password)"
+    echo -e "    \e[1m\e[36m2) FPRINT\e[0m (Fingerprint - falls back to password if unavailable)"
+    echo -e "    \e[1m\e[32m3) PAM\e[0m    (Custom PAM stack configured in pam.d/passkeyd)"
+    printf "\e[1m==> \e[0mEnter your choice [1-3] (default: 1): "
+    read -r auth_choice < /dev/tty
+
+    case "$auth_choice" in
+        2) auth="FPRINT" ;;
+        3) auth="PAM" ;;
+        *) auth="PASS" ;;
+    esac
+
     if [ -f /etc/passkeyd.conf ]; then
-        sed -i "s|FRONT_ENROLL=.*|FRONT_ENROLL=/usr/lib/passkeyd/passkeyd-${ui}-enroll|" /etc/passkeyd.conf
-        sed -i "s|FRONT_SELECT=.*|FRONT_SELECT=/usr/lib/passkeyd/passkeyd-${ui}-select|" /etc/passkeyd.conf
-        sed -i "s|FRONT_SELECTION=.*|FRONT_SELECTION=/usr/lib/passkeyd/passkeyd-${ui}-selection|" /etc/passkeyd.conf
+        sed -i "s|^FRONT_ENROLL=.*|FRONT_ENROLL=/usr/lib/passkeyd/passkeyd-${ui}-enroll|" /etc/passkeyd.conf
+        sed -i "s|^FRONT_SELECT=.*|FRONT_SELECT=/usr/lib/passkeyd/passkeyd-${ui}-select|" /etc/passkeyd.conf
+        sed -i "s|^FRONT_SELECTION=.*|FRONT_SELECTION=/usr/lib/passkeyd/passkeyd-${ui}-selection|" /etc/passkeyd.conf
+
+        if grep -q '^AUTH=' /etc/passkeyd.conf; then
+            sed -i "s|^AUTH=.*|AUTH=${auth}|" /etc/passkeyd.conf
+        else
+            echo "AUTH=${auth}" >> /etc/passkeyd.conf
+        fi
     fi
 
+    echo
     echo -e "\e[1m==> \e[32mConfigured passkeyd to use the '${ui}' user interface.\e[0m"
-    echo -e "\e[1m==> \e[0mThis user interface can be changed via config \e[1;31m/etc/passkeyd.conf\e[0m"
+    echo -e "\e[1m==> \e[32mConfigured passkeyd to use '${auth}' authentication.\e[0m"
+    echo -e "\e[1m==> \e[0mThese options can be changed via config \e[1;31m/etc/passkeyd.conf\e[0m"
 
-    _send_telemetry "passkeyd_installed" "$ui"
+    local distinct_id distro
+    distinct_id=$(_telemetry_distinct_id)
+    distro=$(_detect_distro)
+
+    if _ask_telemetry_consent "passkeyd_installed" "$distinct_id" "$ui" "$auth" "$distro"; then
+        _send_telemetry "passkeyd_installed" "$distinct_id" "$ui" "$auth" "$distro"
+    else
+        echo -e "\e[1m==> \e[0mNo data was sent."
+    fi
 }
 
 post_upgrade() {
-    exec > /dev/tty
-    echo -e "\e[1m==> \e[32mpasskeyd has been upgraded.\e[0m\n"
-    echo "==> Would you like to switch your user interface?"
-    echo -e "    \e[1m\e[34m1) ice\e[0m (Universal - works on any desktop)"
-    echo -e "    \e[1m\e[36m2) kde\e[0m (Native KDE Plasma)"
-    echo -e "    \e[1m\e[32m3) gtk\e[0m (Native GTK)"
-    echo "    4) Manually upgrade configuration"
-    printf "==> Enter your choice [1-4] (default: 4): "
-    read -r choice < /dev/tty
-
-    case "$choice" in
-        1) ui="ice" ;;
-        2) ui="kde" ;;
-        3) ui="gtk" ;;
-        *) ui="" ;;
-    esac
-
-    local target_file="/usr/lib/passkeyd/passkeyd-ice-enroll"
-    local days_since=0
-    local install_date="unknown"
-
-    if [ -f "$target_file" ]; then
-        local file_epoch
-        file_epoch=$(stat -c %Y "$target_file" 2>/dev/null || date +%s)
-        local current_epoch
-        current_epoch=$(date +%s)
-
-        days_since=$(( (current_epoch - file_epoch) / 86400 ))
-        [ "$days_since" -lt 0 ] && days_since=0
-
-        install_date=$(date -d "@$file_epoch" -u +%Y-%m-%d 2>/dev/null || echo "unknown")
-    fi
-
-    if [ -z "$ui" ]; then
-        ui="unknown"
-    fi
-
-    if [ -n "$ui" ] && [ "$ui" != "unknown" ]; then
-        if [ -f /etc/passkeyd.conf ]; then
-            sed -i "s|FRONT_ENROLL=.*|FRONT_ENROLL=/usr/lib/passkeyd/passkeyd-${ui}-enroll|" /etc/passkeyd.conf
-            sed -i "s|FRONT_SELECT=.*|FRONT_SELECT=/usr/lib/passkeyd/passkeyd-${ui}-select|" /etc/passkeyd.conf
-            sed -i "s|FRONT_SELECTION=.*|FRONT_SELECTION=/usr/lib/passkeyd/passkeyd-${ui}-selection|" /etc/passkeyd.conf
-        fi
-        echo -e "\e[1m==> \e[32mSwitched passkeyd user interface to '${ui}'.\e[0m"
-    else
-        echo -e "\e[1m==> \e[33mSkipping automatic configuration update.\e[0m"
-        echo -e "\e[1m==> \e[0mNote: Binary names have changed upstream:"
-        echo -e "    - \e[1;33mpasskeyd-select\e[0m is now \e[1;34mpasskeyd-ice-select\e[0m"
-        echo -e "    - \e[1;33mpasskeyd-enroll\e[0m is now \e[1;34mpasskeyd-ice-enroll\e[0m"
-        echo -e "    - \e[1;33mpasskeyd-selection\e[0m is now \e[1;34mpasskeyd-ice-selection\e[0m"
-        echo -e "\e[1m==> \e[0mUpdate \e[1;31m/etc/passkeyd.conf\e[0m manually if your configuration references the old binary names."
-    fi
-
-    _send_telemetry "passkeyd_upgraded" "$ui" "$days_since" "$install_date"
+    echo -e "\e[1m==> \e[32mpasskeyd has been upgraded.\e[0m"
 }
 
-_send_telemetry() {
-    command -v curl >/dev/null 2>&1 || return 0
+_detect_distro() {
+    local id=""
 
+    if [ -r /etc/os-release ]; then
+        id=$(. /etc/os-release 2>/dev/null; echo "${ID:-}")
+    fi
+
+    id=$(printf '%s' "$id" | tr -cd 'a-zA-Z0-9._-')
+    echo "${id:-unknown}"
+}
+
+# an explicit yes, anything else (no, empty, no terminal) is a no.
+_ask_telemetry_consent() {
     local event_name="$1"
-    local ui_val="$2"
-    local days_val="$3"
-    local install_date_val="$4"
+    local distinct_id="$2"
+    local ui_val="$3"
+    local auth_val="$4"
+    local distro_val="$5"
 
-    local posthog_key="phc_qDinqDBWQ5xXbjYT7fRjmZzBzDJWuYebZgcLiaWZXhAy"
-    local posthog_host="https://eu.i.posthog.com/capture/"
+    echo
+    echo -e "\e[1m==> \e[36mSystem Data\e[0m"
+    echo "    This is the data that would be sent:"
+    echo "      event: ${event_name}"
+    echo "      distinct_id(anonymous random id): ${distinct_id}"
+    echo "      system_language: ${LANG:-unknown}"
+    echo "      ui_installed: ${ui_val}"
+    echo "      auth_selected: ${auth_val}"
+    echo "      distro: ${distro_val}"
+    echo "      version: ${_pkg_version}"
+    echo
 
-    local sys_lang="${LANG:-unknown}"
-    local pkg_version="1.9.2"
+    local answer=""
+    printf "\e[1m==> \e[0mWould you like to contribute by sending this above listed data for the statistics purposes? yes/no: "
+    read -r answer < /dev/tty || answer=""
 
+    case "$answer" in
+        [Yy]|[Yy][Ee][Ss]) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
+# A random anonymous ID. Only generated here; stored by _send_telemetry after consent.
+_telemetry_distinct_id() {
     local id_file="/tmp/passkeyd-telemetry.id"
     local distinct_id=""
 
-    if [ -f "$id_file" ]; then
-        distinct_id=$(cat "$id_file" 2>/dev/null)
-    fi
+    [ -f "$id_file" ] && distinct_id=$(cat "$id_file" 2>/dev/null)
 
     if [ -z "$distinct_id" ]; then
         if [ -f /proc/sys/kernel/random/uuid ]; then
@@ -111,15 +118,31 @@ _send_telemetry() {
         else
             distinct_id=$(od -x /dev/urandom | head -1 | awk '{print $2$3$4$5$6}')
         fi
-
         [ -z "$distinct_id" ] && distinct_id="rand-$(date +%s%N)"
-
-        echo "$distinct_id" > "$id_file" 2>/dev/null || true
     fi
 
+    echo "$distinct_id"
+}
+
+_send_telemetry() {
+    command -v curl >/dev/null 2>&1 || return 0
+
+    local event_name="$1"
+    local distinct_id="$2"
+    local ui_val="$3"
+    local auth_val="$4"
+    local distro_val="$5"
+
+    local posthog_key="phc_qDinqDBWQ5xXbjYT7fRjmZzBzDJWuYebZgcLiaWZXhAy"
+    local posthog_host="https://eu.i.posthog.com/capture/"
+
+    local sys_lang="${LANG:-unknown}"
+    local pkg_version="$_pkg_version"
+
+    echo "$distinct_id" > /tmp/passkeyd-telemetry.id 2>/dev/null || true
+
     local json_payload
-    if [ "$event_name" = "passkeyd_installed" ]; then
-        json_payload=$(cat <<EOF
+    json_payload=$(cat <<EOF
 {
   "api_key": "$posthog_key",
   "event": "$event_name",
@@ -127,28 +150,13 @@ _send_telemetry() {
   "properties": {
     "system_language": "$sys_lang",
     "ui_installed": "$ui_val",
+    "auth_selected": "$auth_val",
+    "distro": "$distro_val",
     "version": "$pkg_version"
   }
 }
 EOF
 )
-    else
-        json_payload=$(cat <<EOF
-{
-  "api_key": "$posthog_key",
-  "event": "$event_name",
-  "distinct_id": "$distinct_id",
-  "properties": {
-    "system_language": "$sys_lang",
-    "ui_installed": "$ui_val",
-    "version": "$pkg_version",
-    "installed_on": "$install_date_val",
-    "days_since_install": "$days_val"
-  }
-}
-EOF
-)
-    fi
 
     curl -s --max-time 6 -X POST "$posthog_host" \
         -H "Content-Type: application/json" \
