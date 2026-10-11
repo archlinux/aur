@@ -1,12 +1,12 @@
 pkgbase = freecalypso-tools
 	pkgdesc = FreeCalypso host tools package
 	pkgver = r21
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.freecalypso.org/hg/freecalypso-tools
 	arch = x86_64
 	arch = i686
 	groups = freecalypso
-	license = custom
+	license = LicenseRef-FreeCalypso
 	conflicts = freecalypso-tools-hg
 	source = https://www.freecalypso.org/pub/GSM/FreeCalypso/fc-host-tools-r21.tar.bz2
 	source = rvinterf_werrorformat_security.patch

@@ -2,11 +2,11 @@
 
 pkgname=freecalypso-tools
 pkgver=r21
-pkgrel=3
+pkgrel=4
 pkgdesc="FreeCalypso host tools package"
 arch=('x86_64' 'i686')
 url="https://www.freecalypso.org/hg/${pkgname}"
-license=('custom')
+license=('LicenseRef-FreeCalypso')
 groups=('freecalypso')
 conflicts=("${pkgname}-hg")
 _tarname=fc-host-tools-${pkgver}
