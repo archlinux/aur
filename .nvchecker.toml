@@ -1,5 +1,0 @@
-[kahip]
-source = "github"
-github = "KaHIP/KaHIP"
-use_max_tag = "true"
-prefix = "v"
