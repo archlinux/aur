@@ -1,6 +1,6 @@
 # Maintainer: Roberto Alsina <roberto.alsina@gmail.com>
 pkgname=markterm
-pkgver=0.14.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Terminal markdown renderer, plus a fast self-contained Markdown/HTML-to-PDF converter."
 arch=('x86_64' 'aarch64')
@@ -9,13 +9,16 @@ license=('MIT')
 makedepends=('crystal' 'shards' 'cmake' 'git')
 install=install
 _litehtml_rev=587663441c85e0d9229f464894441631b34fc5de
+_microtex_rev=0e3707f6dafebb121d98b53c64364d16fefe481d
 _libharu_ver=2.4.6
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ralsina/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
         "litehtml-$_litehtml_rev.tar.gz::https://github.com/ralsina/litehtml/archive/$_litehtml_rev.tar.gz"
+        "microtex-$_microtex_rev.tar.gz::https://github.com/NanoMichael/MicroTex/archive/$_microtex_rev.tar.gz"
         "libharu-$_libharu_ver.tar.gz::https://github.com/libharu/libharu/archive/refs/tags/v$_libharu_ver.tar.gz")
 optdepends=("timg: image support")
-sha256sums=('7001c3d63d8f613092467251d97ddbb3d3a3c5c7f60bb1012f1076489cdc84ae'
+sha256sums=('143c265d9ac4441fe40d86feda4c7c4fce71636cb0b6e04331b027310808116b'
             '1a673ac5e2062aae2b303b181ee4526ff239c4cad011dc998aff7ac9e6fce649'
+            '47476269d29c41df322bce6bdd2daa7017cc50b9eda841b2bec1767dba28daa6'
             'ec8f327520d1d354ce58b5d2af75b64f380cddc522437c169463b39760921348')
 
 prepare() {
@@ -23,13 +26,23 @@ prepare() {
 	# litehtml submodule (ralsina fork: row boxes + draw pruning)
 	rm -rf ext/litehtml
 	cp -r "$srcdir/litehtml-$_litehtml_rev" ext/litehtml
+	# microtex submodule (MIT math engine: sources compiled, res tree
+	# embedded into the static library by ext/gen-math-res.sh).
+	# NB: the archive extracts as MicroTeX — GitHub canonicalized the
+	# repo name's casing, and this copy is case-sensitive.
+	rm -rf ext/microtex
+	cp -r "$srcdir/MicroTeX-$_microtex_rev" ext/microtex
 	# libharu is patched in a neutral directory: this PKGBUILD lives in
 	# a git work tree (the AUR repository), and git apply run inside it
 	# resolves patch paths against the repository root — silently
 	# patching nothing.
 	rm -rf /tmp/markpdf-libharu
 	cp -r "$srcdir/libharu-$_libharu_ver" /tmp/markpdf-libharu
+	# Both patches apply to pristine v2.4.6; the ActualText marked
+	# content (math LaTeX as PDF text) is generated against the
+	# CID-patched tree, so the order matters.
 	(cd /tmp/markpdf-libharu && git apply -p1 "$srcdir/markterm-$pkgver/ext/libharu-cid-fixes.patch")
+	(cd /tmp/markpdf-libharu && git apply -p1 "$srcdir/markterm-$pkgver/ext/libharu-actualtext.patch")
 	# without makepkg's CFLAGS: -flto objects are GCC-only and crystal
 	# links through ld.lld, which cannot consume them
 	env -u CFLAGS -u CXXFLAGS cmake -S /tmp/markpdf-libharu -B /tmp/markpdf-libharu/build \

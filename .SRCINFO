@@ -1,6 +1,6 @@
 pkgbase = markterm
 	pkgdesc = Terminal markdown renderer, plus a fast self-contained Markdown/HTML-to-PDF converter.
-	pkgver = 0.14.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/ralsina/markterm
 	install = install
@@ -12,11 +12,13 @@ pkgbase = markterm
 	makedepends = cmake
 	makedepends = git
 	optdepends = timg: image support
-	source = markterm-0.14.0.tar.gz::https://github.com/ralsina/markterm/archive/refs/tags/v0.14.0.tar.gz
+	source = markterm-0.16.0.tar.gz::https://github.com/ralsina/markterm/archive/refs/tags/v0.16.0.tar.gz
 	source = litehtml-587663441c85e0d9229f464894441631b34fc5de.tar.gz::https://github.com/ralsina/litehtml/archive/587663441c85e0d9229f464894441631b34fc5de.tar.gz
+	source = microtex-0e3707f6dafebb121d98b53c64364d16fefe481d.tar.gz::https://github.com/NanoMichael/MicroTex/archive/0e3707f6dafebb121d98b53c64364d16fefe481d.tar.gz
 	source = libharu-2.4.6.tar.gz::https://github.com/libharu/libharu/archive/refs/tags/v2.4.6.tar.gz
-	sha256sums = 7001c3d63d8f613092467251d97ddbb3d3a3c5c7f60bb1012f1076489cdc84ae
+	sha256sums = 143c265d9ac4441fe40d86feda4c7c4fce71636cb0b6e04331b027310808116b
 	sha256sums = 1a673ac5e2062aae2b303b181ee4526ff239c4cad011dc998aff7ac9e6fce649
+	sha256sums = 47476269d29c41df322bce6bdd2daa7017cc50b9eda841b2bec1767dba28daa6
 	sha256sums = ec8f327520d1d354ce58b5d2af75b64f380cddc522437c169463b39760921348
 
 pkgname = markterm
