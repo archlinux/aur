@@ -1,6 +1,6 @@
 pkgbase = riipl-git
 	pkgdesc = Local DeepL rip-off powered by any OpenAI-compatible API
-	pkgver = r78.81c7d93
+	pkgver = 0.0.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/KFERMercer/RiipL
 	arch = x86_64

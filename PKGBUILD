@@ -3,7 +3,7 @@
 # shellcheck disable=2034,2148,2154,2164
 
 pkgname=riipl-git
-pkgver=r78.81c7d93
+pkgver=0.2.r133.gf6d8851
 pkgrel=1
 pkgdesc="Local DeepL rip-off powered by any OpenAI-compatible API"
 arch=(x86_64 aarch64)
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$pkgname"
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
