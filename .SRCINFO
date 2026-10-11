@@ -13,7 +13,6 @@ pkgbase = marian-lite
 	depends = sqlitecpp
 	depends = yaml-cpp
 	depends = protobuf-21
-	options = !lto
 	source = marian-lite-0.2.9-2.tar.gz::https://github.com/terslang/marian-lite/archive/refs/tags/v0.2.9-2.tar.gz
 	sha256sums = 47b3f3c5897c5c8b9f156afb8618e5ab6653dc0abd460abe71e3df7deedc4efa
 
