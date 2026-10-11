@@ -3,7 +3,7 @@
 # pkgver and sha256sums are filled in by .github/workflows/aur.yml for each release.
 pkgname=spiral-file-manager
 _name=spiral
-pkgver=0.17.3
+pkgver=0.18.0
 pkgrel=1
 pkgdesc='File manager for Wayland with a file chooser portal backend'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url='https://github.com/sachesi/spiral'
 license=('GPL-3.0-or-later')
 depends=('gtk4>=1:4.22' 'libadwaita>=1:1.9' 'gtksourceview5' 'glib2' 'libseccomp'
          'gstreamer' 'gst-plugins-base-libs' 'gst-plugins-base' 'gst-plugin-gtk4'
-         'bubblewrap' 'xdg-desktop-portal' 'hicolor-icon-theme' 'libgcc' 'glibc')
+         'gtk4-layer-shell>=1.3' 'wayland' 'bubblewrap' 'xdg-desktop-portal' 'hicolor-icon-theme' 'libgcc' 'glibc')
 makedepends=('cargo' 'blueprint-compiler' 'just' 'gettext')
 optdepends=('glycin: decode pictures in glycin'\''s sandbox'
             'gst-plugins-good: play common video and sound formats'
@@ -27,7 +27,7 @@ optdepends=('glycin: decode pictures in glycin'\''s sandbox'
             'gnome-disk-utility: open drives in Disks')
 conflicts=('spiral-git')
 source=("$_name-$pkgver.tar.gz::$url/archive/v$pkgver/$_name-$pkgver.tar.gz")
-sha256sums=('ec56f1b363ccfeb11e3e7c2eb1bf49b2dec569ac149584c6dcbe71f8f74e8668')
+sha256sums=('23710e18c6c801ae332f0b9a1c6b4b8e382f46610b0f40002a677b7e4ca89669')
 
 prepare() {
   cd "$_name-$pkgver"
