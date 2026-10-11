@@ -1,6 +1,6 @@
 pkgbase = kst4contest-git
 	pkgdesc = ON4KST Chat Client for VHF/UHF contest operation (git)
-	pkgver = 1.50.0.r329.g2eb1ba22
+	pkgver = 1.50.0.r331.gf2b0fdd5
 	pkgrel = 1
 	url = https://github.com/praktimarc/kst4contest
 	arch = x86_64
