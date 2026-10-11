@@ -1,7 +1,7 @@
 # Maintainer: badcast <lmecomposer@gmail.com> or <support@imister.kz>
 # Contributor: Artem Izmaylov <support@aimp.ru>
 
-_pkver=(6.00 3088)
+_pkver=(6.00 3089)
 pkgname=aimp
 pkgver=${_pkver[0]}.${_pkver[1]}
 pkgrel=1
@@ -13,13 +13,14 @@ provides=('aimp')
 license=('custom')
 depends=('hicolor-icon-theme' 'gtk3' 'gdk-pixbuf2' 'cairo' 'pango' 'sqlite' 'libvorbis' 'harfbuzz')
 optdepends=('libappindicator: extend app-menu support'
-            'opus-tools: audio codec support')
+            'opus-tools: audio codec support'
+            'aimp-skins: external skins')
 source=(
    "https://aimp.ru/files/desktop/builds/aimp-${_pkver[0]}.${_pkver[1]}beta7-1-x86_64.pkg.tar.zst"
    "changelog"
 )
-sha256sums=('4d5cdab5e758490c57a62b10c6d6e9e2a049f250b64315c99904ec24b1cbf48f'
-            '61e62ba0f4696e46d2675ccb2c58d10c8c52c414de1a7dc6131109b5c71f6c8a')
+sha256sums=('f641ece907f0f3e95f0ea65d8217dd90a5494f62d3eb12daa1a1a4cec92fffd9'
+            'b0948c0f22a07ef0c4f14aa40113fa8cd6f10e168865adb5aea507d3660ceb95')
 changelog=changelog
 
 package(){

@@ -1,6 +1,6 @@
 pkgbase = aimp
 	pkgdesc = Powerful free audio player, converter and tag editor (v6 Beta, Unstable)
-	pkgver = 6.00.3088
+	pkgver = 6.00.3089
 	pkgrel = 1
 	url = https://www.aimp.ru
 	changelog = changelog
@@ -16,11 +16,12 @@ pkgbase = aimp
 	depends = harfbuzz
 	optdepends = libappindicator: extend app-menu support
 	optdepends = opus-tools: audio codec support
+	optdepends = aimp-skins: external skins
 	provides = aimp
 	conflicts = aimp
-	source = https://aimp.ru/files/desktop/builds/aimp-6.00.3088beta7-1-x86_64.pkg.tar.zst
+	source = https://aimp.ru/files/desktop/builds/aimp-6.00.3089beta7-1-x86_64.pkg.tar.zst
 	source = changelog
-	sha256sums = 4d5cdab5e758490c57a62b10c6d6e9e2a049f250b64315c99904ec24b1cbf48f
-	sha256sums = 61e62ba0f4696e46d2675ccb2c58d10c8c52c414de1a7dc6131109b5c71f6c8a
+	sha256sums = f641ece907f0f3e95f0ea65d8217dd90a5494f62d3eb12daa1a1a4cec92fffd9
+	sha256sums = b0948c0f22a07ef0c4f14aa40113fa8cd6f10e168865adb5aea507d3660ceb95
 
 pkgname = aimp
