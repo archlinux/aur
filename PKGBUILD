@@ -7,7 +7,7 @@
 _pkgorg=codeberg.org/mipi
 _pkgname=musictree
 pkgname=${_pkgname}-git
-pkgver=r4.068087a
+pkgver=0.1.0.r1.g42d2236
 pkgrel=1
 pkgdesc="Converts large music collections keeping the folder structure"
 arch=(
