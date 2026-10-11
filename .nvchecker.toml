@@ -1,0 +1,5 @@
+[amber-search-git]
+source = "github"
+github = "dalance/amber"
+use_max_tag = true
+prefix = "v"
