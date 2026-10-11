@@ -1,0 +1,224 @@
+--- a/drivers/aic8800/aic8800_fdrv/rwnx_main.c	2026-10-11 02:52:02.322674468 +0300
++++ b/drivers/aic8800/aic8800_fdrv/rwnx_main.c	2026-10-11 02:52:02.364412232 +0300
+@@ -180,6 +180,13 @@
+     .max_power  = 30, /* FIXME */               \
+ }
+ 
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 1, 0)
++#define RWNX_STA_EVT_DEV(vif) (&(vif)->wdev)
++#else
++#define RWNX_STA_EVT_DEV(vif) ((vif)->ndev)
++#endif
++
+ static struct ieee80211_rate rwnx_ratetable[] = {
+     RATE(10,  0x00, 0),
+     RATE(20,  0x01, IEEE80211_RATE_SHORT_PREAMBLE),
+@@ -2830,7 +2837,7 @@
+     }
+ 
+     if (type == NL80211_IFTYPE_AP_VLAN) {
+-        memcpy(ndev->dev_addr, params->macaddr, ETH_ALEN);
++        eth_hw_addr_set(ndev, params->macaddr);
+         memcpy(vif->wdev.address, params->macaddr, ETH_ALEN);
+     }
+     else {
+@@ -2839,7 +2846,7 @@
+         
+         memcpy(mac_addr, rwnx_hw->wiphy->perm_addr, ETH_ALEN);
+         mac_addr[5] ^= vif_idx;
+-        memcpy(ndev->dev_addr, mac_addr, ETH_ALEN);
++        eth_hw_addr_set(ndev, mac_addr);
+         memcpy(vif->wdev.address, ndev->dev_addr, ETH_ALEN);
+ #else
+         memcpy(ndev->dev_addr, rwnx_hw->wiphy->perm_addr, ETH_ALEN);
+@@ -3943,7 +3950,7 @@
+                 #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 0, 0)
+                 sinfo.filled |= STATION_INFO_ASSOC_REQ_IES;
+                 #endif
+-		        cfg80211_new_sta(rwnx_vif->ndev, sta->mac_addr, &sinfo, GFP_KERNEL);
++		        cfg80211_new_sta(RWNX_STA_EVT_DEV(rwnx_vif), sta->mac_addr, &sinfo, GFP_KERNEL);
+             }
+ #ifdef CONFIG_RWNX_BFMER
+             if (rwnx_hw->mod_params->bfmer)
+@@ -4048,7 +4055,7 @@
+ 				}
+ 			}
+             		if (rwnx_vif->wdev.iftype == NL80211_IFTYPE_AP || rwnx_vif->wdev.iftype == NL80211_IFTYPE_P2P_GO) {
+-                		cfg80211_del_sta(rwnx_vif->ndev, cur->mac_addr, GFP_KERNEL);
++                		cfg80211_del_sta(RWNX_STA_EVT_DEV(rwnx_vif), cur->mac_addr, GFP_KERNEL);
+             		}
+ 
+ #ifdef AICWF_RX_REORDER
+@@ -4166,7 +4173,7 @@
+ 			}
+ 		}
+ 		   // if (rwnx_vif->wdev.iftype == NL80211_IFTYPE_AP || rwnx_vif->wdev.iftype == NL80211_IFTYPE_P2P_GO) {
+-		//		cfg80211_del_sta(rwnx_vif->ndev, cur->mac_addr, GFP_KERNEL);
++		//		cfg80211_del_sta(RWNX_STA_EVT_DEV(rwnx_vif), cur->mac_addr, GFP_KERNEL);
+ 		//	}
+ 
+ #ifdef AICWF_RX_REORDER
+@@ -6411,6 +6418,83 @@
+     return 0;
+ }
+ 
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 1, 0)
++/* 7.1+: key/station ops take a wireless_dev; forward to the net_device versions. */
++static int rwnx71_add_key(struct wiphy *wiphy, struct wireless_dev *wdev, int link_id,
++                          u8 key_index, bool pairwise, const u8 *mac_addr,
++                          struct key_params *params)
++{
++    return rwnx_cfg80211_add_key(wiphy, wdev->netdev, link_id, key_index, pairwise,
++                                 mac_addr, params);
++}
++static int rwnx71_get_key(struct wiphy *wiphy, struct wireless_dev *wdev, int link_id,
++                          u8 key_index, bool pairwise, const u8 *mac_addr, void *cookie,
++                          void (*callback)(void *cookie, struct key_params *))
++{
++    return rwnx_cfg80211_get_key(wiphy, wdev->netdev, link_id, key_index, pairwise,
++                                 mac_addr, cookie, callback);
++}
++static int rwnx71_del_key(struct wiphy *wiphy, struct wireless_dev *wdev, int link_id,
++                          u8 key_index, bool pairwise, const u8 *mac_addr)
++{
++    return rwnx_cfg80211_del_key(wiphy, wdev->netdev, link_id, key_index, pairwise,
++                                 mac_addr);
++}
++static int rwnx71_set_default_mgmt_key(struct wiphy *wiphy, struct wireless_dev *wdev,
++                                       int link_id, u8 key_index)
++{
++    return rwnx_cfg80211_set_default_mgmt_key(wiphy, wdev->netdev, link_id, key_index);
++}
++static int rwnx71_add_station(struct wiphy *wiphy, struct wireless_dev *wdev,
++                              const u8 *mac, struct station_parameters *params)
++{
++    return rwnx_cfg80211_add_station(wiphy, wdev->netdev, mac, params);
++}
++static int rwnx71_del_station_compat(struct wiphy *wiphy, struct wireless_dev *wdev,
++                                     struct station_del_parameters *params)
++{
++    return rwnx_cfg80211_del_station_compat(wiphy, wdev->netdev, params);
++}
++static int rwnx71_change_station(struct wiphy *wiphy, struct wireless_dev *wdev,
++                                 const u8 *mac, struct station_parameters *params)
++{
++    return rwnx_cfg80211_change_station(wiphy, wdev->netdev, mac, params);
++}
++static int rwnx71_get_station(struct wiphy *wiphy, struct wireless_dev *wdev,
++                              const u8 *mac, struct station_info *sinfo)
++{
++    return rwnx_cfg80211_get_station(wiphy, wdev->netdev, mac, sinfo);
++}
++static int rwnx71_dump_station(struct wiphy *wiphy, struct wireless_dev *wdev,
++                               int idx, u8 *mac, struct station_info *sinfo)
++{
++    return rwnx_cfg80211_dump_station(wiphy, wdev->netdev, idx, mac, sinfo);
++}
++#else
++#define rwnx71_add_key rwnx_cfg80211_add_key
++#define rwnx71_get_key rwnx_cfg80211_get_key
++#define rwnx71_del_key rwnx_cfg80211_del_key
++#define rwnx71_set_default_mgmt_key rwnx_cfg80211_set_default_mgmt_key
++#define rwnx71_add_station rwnx_cfg80211_add_station
++#define rwnx71_del_station_compat rwnx_cfg80211_del_station_compat
++#define rwnx71_change_station rwnx_cfg80211_change_station
++#define rwnx71_get_station rwnx_cfg80211_get_station
++#define rwnx71_dump_station rwnx_cfg80211_dump_station
++#endif
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0)
++/* 7.2 added rx_addr; always NULL since we don't set NL80211_EXT_FEATURE_ROC_ADDR_FILTER. */
++static int rwnx72_remain_on_channel(struct wiphy *wiphy, struct wireless_dev *wdev,
++                                    struct ieee80211_channel *chan, unsigned int duration,
++                                    u64 *cookie, const u8 *rx_addr)
++{
++    return rwnx_cfg80211_remain_on_channel(wiphy, wdev, chan, duration, cookie);
++}
++#else
++#define rwnx72_remain_on_channel rwnx_cfg80211_remain_on_channel
++#endif
++
+ static struct cfg80211_ops rwnx_cfg80211_ops = {
+     .add_virtual_intf = rwnx_cfg80211_add_iface,
+     .del_virtual_intf = rwnx_cfg80211_del_iface,
+@@ -6420,14 +6504,14 @@
+     .scan = rwnx_cfg80211_scan,
+     .connect = rwnx_cfg80211_connect,
+     .disconnect = rwnx_cfg80211_disconnect,
+-    .add_key = rwnx_cfg80211_add_key,
+-    .get_key = rwnx_cfg80211_get_key,
+-    .del_key = rwnx_cfg80211_del_key,
++    .add_key = rwnx71_add_key,
++    .get_key = rwnx71_get_key,
++    .del_key = rwnx71_del_key,
+     .set_default_key = rwnx_cfg80211_set_default_key,
+-    .set_default_mgmt_key = rwnx_cfg80211_set_default_mgmt_key,
+-    .add_station = rwnx_cfg80211_add_station,
+-    .del_station = rwnx_cfg80211_del_station_compat,
+-    .change_station = rwnx_cfg80211_change_station,
++    .set_default_mgmt_key = rwnx71_set_default_mgmt_key,
++    .add_station = rwnx71_add_station,
++    .del_station = rwnx71_del_station_compat,
++    .change_station = rwnx71_change_station,
+     .mgmt_tx = rwnx_cfg80211_mgmt_tx,
+     .start_ap = rwnx_cfg80211_start_ap,
+     .change_beacon = rwnx_cfg80211_change_beacon,
+@@ -6440,8 +6524,8 @@
+     .set_tx_power = rwnx_cfg80211_set_tx_power,
+ //    .get_tx_power = rwnx_cfg80211_get_tx_power,
+ //    .set_power_mgmt = rwnx_cfg80211_set_power_mgmt,
+-    .get_station = rwnx_cfg80211_get_station,
+-    .remain_on_channel = rwnx_cfg80211_remain_on_channel,
++    .get_station = rwnx71_get_station,
++    .remain_on_channel = rwnx72_remain_on_channel,
+     .cancel_remain_on_channel = rwnx_cfg80211_cancel_remain_on_channel,
+     .dump_survey = rwnx_cfg80211_dump_survey,
+     .get_channel = rwnx_cfg80211_get_channel,
+@@ -6515,8 +6599,8 @@
+     if (!rwnx_mod_params.mesh)
+         return;
+ 
+-    rwnx_cfg80211_ops.get_station = rwnx_cfg80211_get_station;
+-    rwnx_cfg80211_ops.dump_station = rwnx_cfg80211_dump_station;
++    rwnx_cfg80211_ops.get_station = rwnx71_get_station;
++    rwnx_cfg80211_ops.dump_station = rwnx71_dump_station;
+     rwnx_cfg80211_ops.add_mpath = rwnx_cfg80211_add_mpath;
+     rwnx_cfg80211_ops.del_mpath = rwnx_cfg80211_del_mpath;
+     rwnx_cfg80211_ops.change_mpath = rwnx_cfg80211_change_mpath;
+--- a/drivers/aic8800/aic8800_fdrv/rwnx_msg_tx.c	2026-10-11 02:52:02.323067533 +0300
++++ b/drivers/aic8800/aic8800_fdrv/rwnx_msg_tx.c	2026-10-11 02:52:02.364571570 +0300
+@@ -3344,7 +3344,7 @@
+         return -ENOMEM;
+ 
+     /* Set parameters for the MM_DBG_TRIGGER_REQ message */
+-    strncpy(req->error, msg, sizeof(req->error));
++    memcpy(req->error, msg, strnlen(msg, sizeof(req->error)));
+ 
+     /* Send the MM_DBG_TRIGGER_REQ message to LMAC FW */
+     return rwnx_send_msg(rwnx_hw, req, 0, -1, NULL);
+--- a/drivers/aic8800/aic8800_fdrv/rwnx_tdls.c	2026-10-11 02:52:02.323510492 +0300
++++ b/drivers/aic8800/aic8800_fdrv/rwnx_tdls.c	2026-10-11 02:52:02.364633894 +0300
+@@ -115,12 +115,21 @@
+ 
+     switch (action_code) {
+     case WLAN_PUB_ACTION_TDLS_DISCOVER_RES:
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 1, 0)
++        skb_put(skb, 2 + sizeof(mgmt->u.action.tdls_discover_resp));
++        mgmt->u.action.category = WLAN_CATEGORY_PUBLIC;
++        mgmt->u.action.action_code = WLAN_PUB_ACTION_TDLS_DISCOVER_RES;
++        mgmt->u.action.tdls_discover_resp.dialog_token = dialog_token;
++        mgmt->u.action.tdls_discover_resp.capability =
++            cpu_to_le16(rwnx_get_tdls_sta_capab(rwnx_vif, status_code));
++#else
+         skb_put(skb, 1 + sizeof(mgmt->u.action.u.tdls_discover_resp));
+         mgmt->u.action.category = WLAN_CATEGORY_PUBLIC;
+         mgmt->u.action.u.tdls_discover_resp.action_code = WLAN_PUB_ACTION_TDLS_DISCOVER_RES;
+         mgmt->u.action.u.tdls_discover_resp.dialog_token = dialog_token;
+         mgmt->u.action.u.tdls_discover_resp.capability =
+             cpu_to_le16(rwnx_get_tdls_sta_capab(rwnx_vif, status_code));
++#endif
+         break;
+     default:
+         return -EINVAL;

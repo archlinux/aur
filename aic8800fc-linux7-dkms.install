@@ -1,0 +1,9 @@
+post_install() {
+    udevadm control --reload-rules 2>/dev/null || true
+    echo ">> Re-plug the AIC8800FC dongle to switch it to Wi-Fi mode."
+    echo ">> Note: AIC8800FC is a 2.4 GHz-only chip."
+}
+
+post_upgrade() {
+    udevadm control --reload-rules 2>/dev/null || true
+}
