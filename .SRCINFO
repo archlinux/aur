@@ -1,6 +1,6 @@
 pkgbase = pythonqt
 	pkgdesc = A dynamic Python binding for Qt applications
-	pkgver = 4.1.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/MeVisLab/pythonqt
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = pythonqt
 	depends = qt6-tools
 	depends = qt6-webchannel
 	depends = qt6-webengine
-	source = pythonqt-4.1.0.tar.gz::https://github.com/MeVisLab/pythonqt/archive/refs/tags/v4.1.0.tar.gz
-	sha512sums = e62b0d0c7ce9aa5a051a033a8b4d151b807fdda669dc7fbfc7fcf437bcf2b99f4338661fe360969d6bf158f6dfdd4298d76cd3796cef9d4ea2b01705e0d60c24
+	source = pythonqt-4.2.0.tar.gz::https://github.com/MeVisLab/pythonqt/archive/refs/tags/v4.2.0.tar.gz
+	sha512sums = f84d325e163cb2f2cf2dd0a0db7e341eb26acdd30820fab1c1b5c3c6a7c91860e42101b85bac71d63802b6b41ed0ef348d01281f7ae38da873e6b078c9a362d4
 
 pkgname = pythonqt

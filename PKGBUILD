@@ -6,7 +6,7 @@
 # Contributor: speps
 
 pkgname=pythonqt
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='A dynamic Python binding for Qt applications'
 arch=(x86_64)
@@ -26,7 +26,7 @@ depends=(
     qt6-webengine
     )
 source=("pythonqt-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('e62b0d0c7ce9aa5a051a033a8b4d151b807fdda669dc7fbfc7fcf437bcf2b99f4338661fe360969d6bf158f6dfdd4298d76cd3796cef9d4ea2b01705e0d60c24')
+sha512sums=('f84d325e163cb2f2cf2dd0a0db7e341eb26acdd30820fab1c1b5c3c6a7c91860e42101b85bac71d63802b6b41ed0ef348d01281f7ae38da873e6b078c9a362d4')
 
 build() {
   # Disable warning Detected locale "C" with character encoding "ANSI_X3.4-1968", which is not UTF-8.
