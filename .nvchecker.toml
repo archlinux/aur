@@ -1,0 +1,5 @@
+[pgmq]
+source = "github"
+github = "pgmq/pgmq"
+use_max_tag = true
+prefix = "v"
