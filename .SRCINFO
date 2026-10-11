@@ -1,6 +1,6 @@
 pkgbase = eclipse-mat
 	pkgdesc = Eclipse Memory Analyzer Tool (MAT), a toolkit for analyzing Java heap dumps.
-	pkgver = 1.16.1
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = http://www.eclipse.org/mat
 	install = eclipse-mat.install
@@ -8,9 +8,9 @@ pkgbase = eclipse-mat
 	arch = aarch64
 	license = EPL
 	depends = java-runtime>=17
-	source_x86_64 = eclipse-mat-1.16.1-x86_64.zip::https://www.eclipse.org/downloads/download.php?file=/mat/1.16.1/rcp/MemoryAnalyzer-1.16.1.20250109-linux.gtk.x86_64.zip&r=1
-	sha512sums_x86_64 = bf31765edbad3185d3d6a2f2ff23c23a43838b0d46566b0c1d2152dc199e7277492d62318a5b298305870673cb503040fe2ee1000a68f949f333222bdac09149
-	source_aarch64 = eclipse-mat-1.16.1-x86_64.zip::https://www.eclipse.org/downloads/download.php?file=/mat/1.16.1/rcp/MemoryAnalyzer-1.16.1.20250109-linux.gtk.aarch64.zip&r=1
-	sha512sums_aarch64 = bf31765edbad3185d3d6a2f2ff23c23a43838b0d46566b0c1d2152dc199e7277492d62318a5b298305870673cb503040fe2ee1000a68f949f333222bdac09149
+	source_x86_64 = eclipse-mat-1.17.0-x86_64.zip::https://www.eclipse.org/downloads/download.php?file=/mat/1.17.0/rcp/MemoryAnalyzer-1.17.0.20260601-linux.gtk.x86_64.zip&r=1
+	sha512sums_x86_64 = a4127c587d425cbe7167873fdc1337950ee7c01bf15dd429b6ad3f26e8ba3bbd0aee9a693aff60f25d6068c9e817b1de617ac94c85ece15a48fda17c1b9b12cd
+	source_aarch64 = eclipse-mat-1.17.0-x86_64.zip::https://www.eclipse.org/downloads/download.php?file=/mat/1.17.0/rcp/MemoryAnalyzer-1.17.0.20260601-linux.gtk.aarch64.zip&r=1
+	sha512sums_aarch64 = 8dc5c85c6f09813826c8bd3d9cf3748020d271e3e446f531fe90698a9800e91c5ad3a87a4c66a2f105dbd5d43d9919434ec2f44391dc03621050cd76f962fe4b
 
 pkgname = eclipse-mat
