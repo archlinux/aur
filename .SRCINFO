@@ -1,0 +1,24 @@
+pkgbase = tine-outliner
+	pkgdesc = A fast, local, Logseq-compatible outliner
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://tine.page/
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = rustup
+	makedepends = nodejs
+	makedepends = npm
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = libgcc
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	depends = dbus
+	depends = libx11
+	depends = glib2
+	depends = cairo
+	depends = hicolor-icon-theme
+	source = tine-outliner-0.7.1.tar.gz::https://github.com/martinkoutecky/tine/archive/refs/tags/v0.7.1.tar.gz
+	sha256sums = f89f6ce23f1c6c532fdc8d81cd9bbdf0e29f082306b1c039c302bf46861909bc
+
+pkgname = tine-outliner
