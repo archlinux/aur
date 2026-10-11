@@ -1,0 +1,16 @@
+pkgbase = lazyntfy
+	pkgdesc = A lazygit-style terminal client for ntfy
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://src.panahifar.ir/ahp/lazyntfy
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = go
+	depends = ca-certificates
+	options = !strip
+	options = !debug
+	source = lazyntfy-0.1.0.tar.gz::https://src.panahifar.ir/ahp/lazyntfy/archive/v0.1.0.tar.gz
+	sha256sums = 72c8d2675b4b3241197748793b2e16afd7e1c61102433efbaf0bf93dd59c9141
+
+pkgname = lazyntfy
