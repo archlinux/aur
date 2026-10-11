@@ -1,7 +1,7 @@
 pkgbase = cadcraft-bin
 	pkgdesc = Open-source native CAD and drafting app, AutoCAD alternative (prebuilt binary)
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/storytold/cadcraft
 	arch = x86_64
 	arch = aarch64
@@ -14,6 +14,7 @@ pkgbase = cadcraft-bin
 	optdepends = vulkan-icd-loader: GPU-accelerated rendering
 	provides = cadcraft
 	conflicts = cadcraft
+	options = !strip
 	source_x86_64 = cadcraft-0.5.0-linux-x86_64.tar.gz::https://github.com/storytold/cadcraft/releases/download/v0.5.0/cadcraft-0.5.0-linux-x86_64.tar.gz
 	sha256sums_x86_64 = 036c3b401987b6a9991b5fc7ba097d5b717e8d18522f7c3f626b0f6a363e208e
 	source_aarch64 = cadcraft-0.5.0-linux-aarch64.tar.gz::https://github.com/storytold/cadcraft/releases/download/v0.5.0/cadcraft-0.5.0-linux-aarch64.tar.gz
