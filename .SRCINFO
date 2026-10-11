@@ -1,0 +1,25 @@
+pkgbase = attackgraph-bin
+	pkgdesc = Graph-first application security testing platform — crawl, graph, analyze, report
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/0x5t4l1n/Attackgraph
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libsoup3
+	depends = gdk-pixbuf2
+	depends = cairo
+	depends = pango
+	depends = atk
+	depends = at-spi2-atk
+	depends = hicolor-icon-theme
+	optdepends = ollama: local AI assistant without an API key
+	provides = attackgraph=1.0.0
+	conflicts = attackgraph
+	noextract = AttackGraph_1.0.0_amd64.AppImage
+	options = !strip
+	source_x86_64 = AttackGraph_1.0.0_amd64.AppImage::https://github.com/0x5t4l1n/Attackgraph/releases/download/v1.0.0/AttackGraph_1.0.0_amd64.AppImage
+	sha256sums_x86_64 = 390abcf3aa5a3c73c3499a2e5db48452de10e6f51e4207dcc0a679bced92f5ef
+
+pkgname = attackgraph-bin
