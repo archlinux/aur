@@ -1,0 +1,17 @@
+#!/bin/sh
+# runit service for GoATAK. stdout/stderr go to ./log/run (svlogd).
+exec 2>&1
+
+state=/var/lib/goatak
+
+# runit runs this as root, so create and seed the state directory here.
+install -d -o goatak -g goatak -m 0750 "$state"
+if [ ! -d "$state/data" ]; then
+    cp -r /usr/share/goatak/data "$state/data"
+    chown -R goatak:goatak "$state/data"
+fi
+
+# config paths are relative (data_dir: data, ssl: cert/files/...), so start in the state dir
+cd "$state" || exit 1
+
+exec chpst -u goatak:goatak /usr/bin/goatak_server -config /etc/goatak/goatak_server.yml

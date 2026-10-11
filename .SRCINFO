@@ -1,0 +1,15 @@
+pkgbase = goatak-runit
+	pkgdesc = runit service scripts for GoATAK
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/kdudkov/goatak
+	arch = any
+	license = 0BSD
+	depends = goatak
+	depends = runit
+	source = goatak-run
+	source = goatak-log-run
+	sha256sums = 990a3e3b540d8c8a1a62579a5b3291ca11ec6faed5918d9f510bb8415ada899c
+	sha256sums = 09f0ad6ea6f971964c6406c175d224f5451b78000d4c66e71ad93595795cda88
+
+pkgname = goatak-runit

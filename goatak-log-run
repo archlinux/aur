@@ -1,0 +1,4 @@
+#!/bin/sh
+# svlogd logging for the goatak service: /var/log/goatak/current
+install -d -o goatak -g goatak -m 0750 /var/log/goatak
+exec chpst -u goatak:goatak svlogd -tt /var/log/goatak
