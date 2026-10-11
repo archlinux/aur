@@ -37,6 +37,8 @@ source=(
   "${_pkgname}::git+${url}"
   "bamboo-core::git+https://github.com/BambooEngine/bamboo-core.git#commit=${_bamboo_commit}"
 )
+provides=("$_pkgname")
+conflicts=("$_pkgname" "$_pkgname-bin")
 sha256sums=('SKIP' 'SKIP')
 options=(!debug !strip)
 
