@@ -1,7 +1,7 @@
 pkgbase = dota2-minify-git
 	pkgdesc = Dota 2 Mod Patcher & Toolkit (latest git source build)
-	pkgver = 2rc5.r8.g61881b9
-	pkgrel = 2
+	pkgver = 2rc5.r11.g0da527d
+	pkgrel = 1
 	url = https://github.com/Egezenn/dota2-minify
 	arch = x86_64
 	license = GPL-3.0-or-later
