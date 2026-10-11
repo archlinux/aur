@@ -1,25 +1,38 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=miracle-wm-git
-pkgver=0.10.1.r2.ge877210
+pkgver=0.11.1.r4.g893de69
 pkgrel=1
 pkgdesc="Wayland tiling window manager built on Mir"
 arch=(x86_64)
 url="https://github.com/miracle-wm-org/miracle-wm"
 license=(GPL-3.0-only)
 depends=(
-    mir
-    libnotify
-    wasmedge
+    cairo
+    glib2
+    glibc
     gtk4
     gtk4-layer-shell
+    json-c
+    libgcc
+    libglvnd
+    libnotify
+    libstdc++
+    libxkbcommon
+    mir
+    pcre2
+    python
+    sh
+    wasmedge
+    wayland
+    yaml-cpp
     )
 makedepends=(
-    git
-    cmake
-    nlohmann-json
-    glm
     boost
+    cmake
+    git
+    glm
+    nlohmann-json
     )
 provides=(miracle-wm)
 conflicts=(miracle-wm)
@@ -34,9 +47,10 @@ pkgver() {
 build() {
   local _flags=(
     -DSYSTEMD_INTEGRATION=ON
+    -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/miracle-wm/
   )
 
-  cmake -B build -S "miracle-wm" -Wno-dev \
+  cmake -B build -S "miracle-wm" -Wno-author \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     "${_flags[@]}"
