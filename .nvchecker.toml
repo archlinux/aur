@@ -1,0 +1,5 @@
+[python-connexion]
+source = "github"
+github = "spec-first/connexion"
+use_max_tag = true
+prefix = "v"
