@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Graph-first application security testing platform — crawl, graph, analyze, report"
 arch=('x86_64')
 url="https://github.com/0x5t4l1n/Attackgraph"
-license=('MIT')
+license=('AGPL-3.0-only')
 depends=(
     'gtk3'
     'webkit2gtk-4.1'
