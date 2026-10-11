@@ -225,7 +225,9 @@ check() {
 	# revert this patch for make test
 	patch -p0 -R -i "$srcdir/ca-dir.patch"
 
-	make test
+	# https://github.com/openssl/openssl/issues/12242
+	# https://docs.kernel.org/admin-guide/sysctl/crypto.html#af-alg-restrict
+	make TESTS=-test_afalg test
 
 	patch -p0 -i "$srcdir/ca-dir.patch"
 	# re-run make to re-generate CA.pl from th patched .in file.
