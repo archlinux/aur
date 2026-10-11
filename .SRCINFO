@@ -1,15 +1,16 @@
 pkgbase = nvidia-open-egpu
 	pkgdesc = NVIDIA open kernel modules with thunderbolt 4 force egpu and hotplug patches
-	pkgver = 615.71.09
-	pkgrel = 1
+	pkgver = 615.78.08
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/NVIDIA/open-gpu-kernel-modules
+	install = nvidia-open-egpu.install
 	arch = x86_64
 	license = MIT AND GPL-2.0-only
 	options = !buildflags
 	options = !lto
 	options = !strip
-	source = https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-kernel-module-source-615.71.09.tar.xz
+	source = https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-kernel-module-source-615.78.08.tar.xz
 	source = 110-nvidia-open-change-dkms-conf.patch
 	source = 120-nvidia-open-linux-rt-gift.patch
 	source = 130-nvidia-open-reproducible-build.patch
@@ -18,21 +19,21 @@ pkgbase = nvidia-open-egpu
 	source = 170-nvidia-open-force-external-gpu.patch
 	source = nvidia-egpu-hotplug.rules
 	source = nvidia-egpu-hotplug.sh
-	sha256sums = b038fe5d70e7c3209459a8121f231543939895145f0ad0d58d34f170e7eaf7e9
+	sha256sums = 17b4f3d195a5ab1fad9aa1f195c9d3a4ad03aceda18bb9fb68a8bd33d7a000f6
 	sha256sums = 70a13159e43b78df1fb03601cd594d9c39893e8351b0318daa7a3cf1fd692738
 	sha256sums = b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45
 	sha256sums = 5340f33cdd19024a4501fee3d475af152c39f277d44422c65d447db263a0d501
 	sha256sums = 22aa6f5be5d3c23762230df4322b1edabb16217c6b40b95b63fbe92753c33e30
-	sha256sums = a8418032ec4e7ae89e14e0f4fe20fd7faf55a84e31da038692ee244d9af1f6ac
+	sha256sums = 3f01480b81af4708b755941a2cdc8e580193eac9d9f8d58abc4d267f84831c79
 	sha256sums = fb18cacdf323f985208dae3fcd174c9f6aad42a77d06229be082849a9d7d9f42
-	sha256sums = f502e8062d6458792a08d54479eb82d16592e1981e46f3e9e3838cd7a3bd03eb
-	sha256sums = 31a057be4dce6e4e9587adf317cf2ed9df1dd2968e1e2866bad4e9fd7a6f47eb
+	sha256sums = 103d01b6652682156bbed9de16559f264f6c66671b3152046c02b0594684e612
+	sha256sums = 571f25673103df05972c32ca04734d79d89095a9a0296eff3719bf20040daa17
 
 pkgname = nvidia-open-egpu
 	depends = libglvnd
 	depends = linux
-	depends = nvidia-utils>=615.71.09
-	provides = nvidia-open=615.71.09
+	depends = nvidia-utils>=615.78.08
+	provides = nvidia-open=615.78.08
 	provides = NVIDIA-MODULE
 	conflicts = nvidia-open
 	conflicts = nvidia-open-dkms
@@ -43,8 +44,8 @@ pkgname = nvidia-open-egpu-dkms
 	pkgdesc = NVIDIA open kernel modules with thunderbolt 4 force egpu and hotplug patches
 	depends = dkms
 	depends = libglvnd
-	depends = nvidia-utils>=615.71.09
-	provides = nvidia-open=615.71.09
+	depends = nvidia-utils>=615.78.08
+	provides = nvidia-open=615.78.08
 	provides = NVIDIA-MODULE
 	conflicts = nvidia-open
 	conflicts = nvidia-open-dkms

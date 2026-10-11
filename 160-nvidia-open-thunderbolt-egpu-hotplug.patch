@@ -21,10 +21,10 @@ index f958cf85..daa6e21c 100644
       * Grab ownership of device, ownership is required to do modeset.
       *
 diff --git a/kernel-open/nvidia-drm/nvidia-drm-crtc.c b/kernel-open/nvidia-drm/nvidia-drm-crtc.c
-index 67f856f1..f1807c47 100644
+index 681fbb02..daab2aac 100644
 --- a/kernel-open/nvidia-drm/nvidia-drm-crtc.c
 +++ b/kernel-open/nvidia-drm/nvidia-drm-crtc.c
-@@ -3177,6 +3177,7 @@ static void nv_drm_vblank_enable_fn(void *t)
+@@ -3235,6 +3235,7 @@ static void nv_drm_vblank_enable_fn(void *t)
  {
      struct nv_drm_crtc *nv_crtc = t;
      struct nv_drm_device *nv_dev = to_nv_device(nv_crtc->base.dev);
@@ -32,7 +32,7 @@ index 67f856f1..f1807c47 100644
      struct drm_device *dev = nv_crtc->base.dev;
      unsigned long irqflags;
  
-@@ -3190,9 +3191,11 @@ static void nv_drm_vblank_enable_fn(void *t)
+@@ -3248,9 +3249,11 @@ static void nv_drm_vblank_enable_fn(void *t)
      nv_crtc->vblank_intr_fired = false;
      spin_unlock_irqrestore(&dev->vblank_time_lock, irqflags);
  
@@ -46,7 +46,7 @@ index 67f856f1..f1807c47 100644
                  nv_drm_crtc_vblank_callback, (NvU64)(NvUPtr)nv_crtc);
      }
  
-@@ -3204,13 +3207,17 @@ static void nv_drm_vblank_disable_fn(void *t)
+@@ -3262,13 +3265,17 @@ static void nv_drm_vblank_disable_fn(void *t)
      struct nv_drm_crtc *nv_crtc = t;
      struct drm_device *dev = nv_crtc->base.dev;
      struct nv_drm_device *nv_dev = to_nv_device(dev);
@@ -2422,7 +2422,7 @@ index 4f9b65b7..a7077d30 100644
      NVDevEvoPtr pDevEvo,
      NVDeferredRequestFifoRec *pDeferredRequestFifo)
 diff --git a/src/nvidia/arch/nvalloc/unix/src/osapi.c b/src/nvidia/arch/nvalloc/unix/src/osapi.c
-index 04d895e6..a57d9264 100644
+index 22c4ede2..e316e886 100644
 --- a/src/nvidia/arch/nvalloc/unix/src/osapi.c
 +++ b/src/nvidia/arch/nvalloc/unix/src/osapi.c
 @@ -439,6 +439,17 @@ void
@@ -2443,7 +2443,7 @@ index 04d895e6..a57d9264 100644
  
      //
      // Re-evaluate whether or not the GPU is accessible. This could be called
-@@ -4621,7 +4632,30 @@ void NV_API_CALL rm_power_source_change_event(
+@@ -4623,7 +4634,30 @@ void NV_API_CALL rm_power_source_change_event(
          OBJGPU *pGpu = gpumgrGetGpu(0);
          if (pGpu != NULL)
          {
@@ -2474,15 +2474,15 @@ index 04d895e6..a57d9264 100644
              if ((rmStatus = os_ref_dynamic_power(nv, NV_DYNAMIC_PM_FINE)) ==
                                                                           NV_OK)
              {
-@@ -4641,6 +4675,7 @@ void NV_API_CALL rm_power_source_change_event(
-         }
+@@ -4643,6 +4677,7 @@ void NV_API_CALL rm_power_source_change_event(
+         rmapiLockRelease();
      }
  
 +done:
      if (rmStatus != NV_OK)
      {
          NV_PRINTF(LEVEL_ERROR,
-@@ -6194,7 +6229,30 @@ void NV_API_CALL rm_acpi_nvpcf_notify(
+@@ -6196,7 +6231,30 @@ void NV_API_CALL rm_acpi_nvpcf_notify(
          OBJGPU *pGpu = gpumgrGetGpu(0);
          if (pGpu != NULL)
          {
@@ -2513,7 +2513,7 @@ index 04d895e6..a57d9264 100644
              if ((rmStatus = os_ref_dynamic_power(nv, NV_DYNAMIC_PM_FINE)) ==
                                                                           NV_OK)
              {
-@@ -6206,6 +6264,7 @@ void NV_API_CALL rm_acpi_nvpcf_notify(
+@@ -6208,6 +6266,7 @@ void NV_API_CALL rm_acpi_nvpcf_notify(
          rmapiLockRelease();
      }
  
@@ -2676,7 +2676,7 @@ index 88de10de..217ee439 100644
      rmapiutilFreeClientAndDeviceHandles(pRmApi, &pKernelDisplay->hInternalClient,
                                          &pKernelDisplay->hInternalDevice,
 diff --git a/src/nvidia/src/kernel/gpu/falcon/arch/turing/kernel_falcon_tu102.c b/src/nvidia/src/kernel/gpu/falcon/arch/turing/kernel_falcon_tu102.c
-index 8b828fc6..4cf70bef 100644
+index a704ec65..c2eeba5d 100644
 --- a/src/nvidia/src/kernel/gpu/falcon/arch/turing/kernel_falcon_tu102.c
 +++ b/src/nvidia/src/kernel/gpu/falcon/arch/turing/kernel_falcon_tu102.c
 @@ -184,8 +184,13 @@ kflcnReset_TU102
@@ -2718,10 +2718,10 @@ index 42a6d15c..9e4945a8 100644
      pGpu->setProperty(pGpu, PDB_PROP_GPU_IS_CONNECTED, NV_FALSE);
      pGpu->setProperty(pGpu, PDB_PROP_GPU_IN_PM_CODEPATH, NV_FALSE);
 diff --git a/src/nvidia/src/kernel/gpu/gpu_user_shared_data.c b/src/nvidia/src/kernel/gpu/gpu_user_shared_data.c
-index 6032b017..ab8cb76f 100644
+index 431e9690..c7ad5ba9 100644
 --- a/src/nvidia/src/kernel/gpu/gpu_user_shared_data.c
 +++ b/src/nvidia/src/kernel/gpu/gpu_user_shared_data.c
-@@ -259,12 +259,15 @@ _gpushareddataDestroyGsp
+@@ -260,12 +260,15 @@ _gpushareddataDestroyGsp
  
      params.bInit = NV_FALSE;
  
@@ -2743,7 +2743,7 @@ index 6032b017..ab8cb76f 100644
  }
  
  NV_STATUS
-@@ -530,9 +533,9 @@ _gpushareddataSendDataPollRpc
+@@ -531,9 +534,9 @@ _gpushareddataSendDataPollRpc
                               NV2080_CTRL_CMD_INTERNAL_USER_SHARED_DATA_SET_DATA_POLL,
                               &params, sizeof(params));
      NV_CHECK_OR_RETURN(LEVEL_ERROR,
@@ -2994,7 +2994,7 @@ index 7e89ef46..7e6d6bc2 100644
      pGpu->setProperty(pGpu, PDB_PROP_GPU_IS_EFI_INIT, pGSCI->bIsEfiInit);
      pGpu->setProperty(pGpu, PDB_PROP_GPU_LEGACY_GCOFF_SUPPORTED, pGSCI->bIsGcoffLegacyAllowed);
 diff --git a/src/nvidia/src/kernel/gpu/intr/intr.c b/src/nvidia/src/kernel/gpu/intr/intr.c
-index caf9791c..f6e52049 100644
+index 16010bfe..91f40566 100644
 --- a/src/nvidia/src/kernel/gpu/intr/intr.c
 +++ b/src/nvidia/src/kernel/gpu/intr/intr.c
 @@ -122,6 +122,18 @@ intrServiceStall_IMPL(OBJGPU *pGpu, Intr *pIntr)
@@ -3046,7 +3046,7 @@ index caf9791c..f6e52049 100644
              goto exit;
          }
      }
-@@ -1548,6 +1559,18 @@ _intrServiceStallCommonCheckBegin
+@@ -1612,6 +1623,18 @@ _intrServiceStallCommonCheckBegin
  
      if (!RMCFG_FEATURE_PLATFORM_GSP)
      {
@@ -3065,7 +3065,7 @@ index caf9791c..f6e52049 100644
          //
          // If the GPU is off the BUS or surprise removed during servicing DPC for ISRs
          // we wont know about GPU state until after we start processing DPCs for every
-@@ -1563,14 +1586,17 @@ _intrServiceStallCommonCheckBegin
+@@ -1627,14 +1650,17 @@ _intrServiceStallCommonCheckBegin
  
          if (regReadValue == GPU_REG_VALUE_INVALID)
          {
@@ -3091,7 +3091,7 @@ index caf9791c..f6e52049 100644
              return NV_ERR_GPU_IS_LOST;
          }
      }
-@@ -1628,7 +1654,16 @@ intrServiceStallList_IMPL
+@@ -1692,7 +1718,16 @@ intrServiceStallList_IMPL
      NvBool              bPending;
      CALL_CONTEXT       *pOldContext = NULL;
  
@@ -3109,7 +3109,7 @@ index caf9791c..f6e52049 100644
  
      do
      {
-@@ -1681,7 +1716,16 @@ intrServiceStallSingle_IMPL
+@@ -1745,7 +1780,16 @@ intrServiceStallSingle_IMPL
      bitVectorClrAll(&engines);
      bitVectorSet(&engines, engIdx);
  
@@ -3165,7 +3165,7 @@ index 6f779a43..132537f1 100644
  
      NV_PRINTF(LEVEL_INFO,
 diff --git a/src/nvidia/src/kernel/mem_mgr/mem.c b/src/nvidia/src/kernel/mem_mgr/mem.c
-index 9bfe6250..5db10366 100644
+index 216038b1..db4609a7 100644
 --- a/src/nvidia/src/kernel/mem_mgr/mem.c
 +++ b/src/nvidia/src/kernel/mem_mgr/mem.c
 @@ -175,7 +175,7 @@ memDestruct_IMPL
@@ -3206,7 +3206,7 @@ index 0bb8100a..a3336d66 100644
      // freeing session will free everything under it
      pRmApi->Free(pRmApi, session->handle, session->handle);
 diff --git a/src/nvidia/src/kernel/vgpu/rpc.c b/src/nvidia/src/kernel/vgpu/rpc.c
-index ac39fa01..dfd31970 100644
+index a08fdb25..414a24d1 100644
 --- a/src/nvidia/src/kernel/vgpu/rpc.c
 +++ b/src/nvidia/src/kernel/vgpu/rpc.c
 @@ -1940,6 +1940,16 @@ static NV_STATUS _issueRpcAndWait(OBJGPU *pGpu, OBJRPC *pRpc)
@@ -3240,10 +3240,10 @@ index 0fa885c9..8a475c9b 100644
      // NV_PRINTF(LEVEL_INFO, "hClient %x: Freeing hResource: %x\n",
      //          pClient->hClient, pResourceRef->hResource);
 diff --git a/src/nvidia/src/libraries/resserv/src/rs_server.c b/src/nvidia/src/libraries/resserv/src/rs_server.c
-index 1aa97dbf..51127872 100644
+index 4396ee25..7fd21352 100644
 --- a/src/nvidia/src/libraries/resserv/src/rs_server.c
 +++ b/src/nvidia/src/libraries/resserv/src/rs_server.c
-@@ -257,7 +257,7 @@ NV_STATUS serverFreeResourceTreeUnderLock(RsServer *pServer, RS_RES_FREE_PARAMS
+@@ -260,7 +260,7 @@ NV_STATUS serverFreeResourceTreeUnderLock(RsServer *pServer, RS_RES_FREE_PARAMS
              goto done;
  
          status = clientFreeResource(pResourceRef->pClient, pServer, pFreeParams);
@@ -3252,7 +3252,7 @@ index 1aa97dbf..51127872 100644
  
          serverResLock_Epilogue(pServer, LOCK_ACCESS_WRITE, pLockInfo, &releaseFlags);
      }
-@@ -1379,7 +1379,7 @@ serverFreeResourceTree
+@@ -1384,7 +1384,7 @@ serverFreeResourceTree
          freeParams.bInvalidateOnly = bInvalidateOnly;
          freeParams.pSecInfo = pParams->pSecInfo;
          status = serverFreeResourceTreeUnderLock(pServer, &freeParams);

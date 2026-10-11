@@ -10,6 +10,12 @@ ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x030200"
     ENV{NVIDIA_GPU}="1", TAG+="nvidia-egpu", \
     RUN+="/usr/lib/nvidia-egpu/nvidia-egpu-hotplug.sh add %k"
 
+# Import the optional process-termination setting for removal events.
+ACTION=="remove", SUBSYSTEM=="pci", ENV{ID_PCI_DRIVER}=="nvidia", \
+    IMPORT{file}="/etc/nvidia.env"
+ACTION=="remove", SUBSYSTEM=="thunderbolt", ENV{DEVTYPE}=="thunderbolt_device", \
+    IMPORT{file}="/etc/nvidia.env"
+
 # On remove, check for nvidia driver in ID_PCI_DRIVER (set during unbind)
 # or use the kernel device path pattern for NVIDIA GPUs
 ACTION=="remove", SUBSYSTEM=="pci", ENV{ID_PCI_DRIVER}=="nvidia", \

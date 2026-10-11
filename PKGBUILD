@@ -11,8 +11,8 @@ pkgbase=nvidia-open-egpu
 pkgname=(
     'nvidia-open-egpu'
     'nvidia-open-egpu-dkms')
-pkgver=615.71.09
-pkgrel=1
+pkgver=615.78.08
+pkgrel=2
 epoch=1
 pkgdesc='NVIDIA open kernel modules with thunderbolt 4 force egpu and hotplug patches'
 arch=('x86_64')
@@ -20,6 +20,7 @@ url='https://github.com/NVIDIA/open-gpu-kernel-modules'
 license=('MIT AND GPL-2.0-only')
 makedepends=()  # Requires kernel headers matching your kernel (linux-headers, linux-cachyos-headers, etc.)
 options=('!buildflags' '!lto' '!strip')
+install=nvidia-open-egpu.install
 source=("https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-kernel-module-source-${pkgver}.tar.xz"
         '110-nvidia-open-change-dkms-conf.patch'
         '120-nvidia-open-linux-rt-gift.patch'
@@ -29,15 +30,15 @@ source=("https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-
         '170-nvidia-open-force-external-gpu.patch'
         'nvidia-egpu-hotplug.rules'
         'nvidia-egpu-hotplug.sh')
-sha256sums=('b038fe5d70e7c3209459a8121f231543939895145f0ad0d58d34f170e7eaf7e9'
+sha256sums=('17b4f3d195a5ab1fad9aa1f195c9d3a4ad03aceda18bb9fb68a8bd33d7a000f6'
             '70a13159e43b78df1fb03601cd594d9c39893e8351b0318daa7a3cf1fd692738'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
             '5340f33cdd19024a4501fee3d475af152c39f277d44422c65d447db263a0d501'
             '22aa6f5be5d3c23762230df4322b1edabb16217c6b40b95b63fbe92753c33e30'
-        'a8418032ec4e7ae89e14e0f4fe20fd7faf55a84e31da038692ee244d9af1f6ac'
+        '3f01480b81af4708b755941a2cdc8e580193eac9d9f8d58abc4d267f84831c79'
         'fb18cacdf323f985208dae3fcd174c9f6aad42a77d06229be082849a9d7d9f42'
-        'f502e8062d6458792a08d54479eb82d16592e1981e46f3e9e3838cd7a3bd03eb'
-        '31a057be4dce6e4e9587adf317cf2ed9df1dd2968e1e2866bad4e9fd7a6f47eb')
+        '103d01b6652682156bbed9de16559f264f6c66671b3152046c02b0594684e612'
+            '571f25673103df05972c32ca04734d79d89095a9a0296eff3719bf20040daa17')
 
 prepare() {
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/110-nvidia-open-change-dkms-conf.patch"
@@ -110,7 +111,17 @@ package_nvidia-open-egpu() {
     install -D -m644 "NVIDIA-kernel-module-source-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     find "$pkgdir" -name '*.ko' -exec zstd --rm -19 {} +
     
-    install -D -m644 <(printf '%s\n' 'options nvidia NVreg_OpenRmEnableUnsupportedGpus=1') "${pkgdir}/usr/lib/modprobe.d/nvidia-open.conf"
+    install -D -m644 <(
+        printf '%s\n' \
+            '# Load NVIDIA modules through the eGPU udev handler.' \
+            'options nvidia NVreg_OpenRmEnableUnsupportedGpus=1' \
+            'blacklist nvidia' \
+            'blacklist nvidia-drm' \
+            'blacklist nvidia-uvm' \
+            'blacklist nvidia-modeset' \
+            'blacklist nvidia-nvlink' \
+            'blacklist nouveau'
+    ) "${pkgdir}/usr/lib/modprobe.d/nvidia-open.conf"
     
     # eGPU hotplug support: udev rules and handler script
     install -D -m644 "${srcdir}/nvidia-egpu-hotplug.rules" "${pkgdir}/usr/lib/udev/rules.d/90-nvidia-egpu-hotplug.rules"
@@ -134,7 +145,17 @@ package_nvidia-open-egpu-dkms() {
     cp -dr --no-preserve='ownership' dkms-src "${pkgdir}/usr/src/nvidia-${pkgver}"
     install -D -m644 "NVIDIA-kernel-module-source-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     
-    install -D -m644 <(printf '%s\n' 'options nvidia NVreg_OpenRmEnableUnsupportedGpus=1') "${pkgdir}/usr/lib/modprobe.d/nvidia-open.conf"
+    install -D -m644 <(
+        printf '%s\n' \
+            '# Load NVIDIA modules through the eGPU udev handler.' \
+            'options nvidia NVreg_OpenRmEnableUnsupportedGpus=1' \
+            'blacklist nvidia' \
+            'blacklist nvidia-drm' \
+            'blacklist nvidia-uvm' \
+            'blacklist nvidia-modeset' \
+            'blacklist nvidia-nvlink' \
+            'blacklist nouveau'
+    ) "${pkgdir}/usr/lib/modprobe.d/nvidia-open.conf"
     
     # eGPU hotplug support: udev rules and handler script
     install -D -m644 "${srcdir}/nvidia-egpu-hotplug.rules" "${pkgdir}/usr/lib/udev/rules.d/90-nvidia-egpu-hotplug.rules"

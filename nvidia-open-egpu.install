@@ -1,0 +1,31 @@
+_print_nvidia_egpu_note() {
+    cat <<'EOF'
+
+NVIDIA eGPU hotplug configuration:
+
+- The package's module settings may interfere with an internal NVIDIA GPU.
+  Override them with /etc/modprobe.d/nvidia-open.conf; an empty file disables
+  the module blacklists.
+
+- For a Thunderbolt 4/5 enclosure that is not detected automatically, add this
+  line to /etc/modprobe.d/nvidia-egpu.conf:
+
+      options nvidia NVreg_RmForceExternalGpu=1
+
+- To terminate processes using the NVIDIA GPU when it disconnects (useful after
+  an unexpected unplug), add this line to /etc/nvidia.env:
+
+      NVIDIA_EGPU_KILL_PROCESSES=1
+
+Keep NVIDIA modules out of the initramfs on eGPU-only systems. Include them
+only if the system has an internal NVIDIA GPU.
+EOF
+}
+
+post_install() {
+    _print_nvidia_egpu_note
+}
+
+post_upgrade() {
+    _print_nvidia_egpu_note
+}
