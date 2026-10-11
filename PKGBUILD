@@ -1,8 +1,8 @@
 # Maintainer: simonlinuxcraft <simonlinuxcraft at users dot noreply dot github dot com>
 # Contributor: Yilmaz4 <https://github.com/Yilmaz4>
 pkgname=kyber-launcher-unofficial-appimage
-pkgver=7.0.0_beta10
-_appver=7.0.0-beta10
+pkgver=7.0.1_beta10
+_appver=7.0.1-beta10
 pkgrel=1
 epoch=
 pkgdesc="Native binary build of the Kyber V2 mod launcher for Star Wars Battlefront II (2017). Not endorsed by the Kyber team."
@@ -23,7 +23,7 @@ install="${pkgname}.install"
 changelog=
 source=("$pkgname-$pkgver.tar.xz::$url/releases/download/v${_appver}/${pkgver}.tar.xz")
 noextract=()
-sha256sums=("e53703475eca88c98400d080da3c400c1b2873932deb4d362012c64131e82c27")
+sha256sums=("b8a8a969ae94859aa6dd28b1645d8e43a17c79126129688e120b3ed004dd5d0d")
 validpgpkeys=()
 
 package() {
