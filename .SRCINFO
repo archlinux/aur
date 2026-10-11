@@ -1,6 +1,6 @@
 pkgbase = docan-gtk-bin
 	pkgdesc = AI chat app with cloud and local LLM APIs: Gemini, ChatGPT, Claude, OpenRouter, Ollama, LM Studio; file attachment upload support
-	pkgver = 3.1.2
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/ixnewton/docan
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = docan-gtk-bin
 	conflicts = docan-bin
 	replaces = docan-bin
 	options = !strip
-	source = docan-gtk-bin-3.1.2.zip::https://github.com/ixnewton/docan/releases/download/v3.1.2/docan-3.1.2-2026-10-11-linux-x64.zip
-	sha256sums = 101557571d1c416eeb1b596a935fc258f34bee936f4c71cc9adc93a4019f343b
+	source = docan-gtk-bin-3.2.0.zip::https://github.com/ixnewton/docan/releases/download/v3.2.0/docan-3.2.0-2026-10-11-linux-x64.zip
+	sha256sums = 7449034cda8e3ed7f19c4d03771445ec611d9dbddb904172b71e3cc59ae47ebf
 
 pkgname = docan-gtk-bin
