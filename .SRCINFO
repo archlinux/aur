@@ -1,0 +1,18 @@
+pkgbase = enclavectl-git
+	pkgdesc = Control an Enclave CineHome Smart Center over Bluetooth
+	pkgver = r1.1c1b3b6
+	pkgrel = 1
+	url = https://github.com/aravance/enclavectl
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	provides = enclavectl
+	conflicts = enclavectl
+	source = enclavectl-git::git+https://github.com/aravance/enclavectl.git
+	sha256sums = SKIP
+
+pkgname = enclavectl-git
