@@ -2,8 +2,9 @@
 
 pkgname=noctalia-git
 _pkgname=noctalia
-pkgver=5.0.0.r1191.g39a4a335c
-pkgrel=25
+pkgver=5.2.1.r5789.gb409c9016
+pkgrel=1
+epoch=1
 pkgdesc='A sleek, customizable desktop shell crafted for Wayland'
 arch=('x86_64' 'aarch64')
 url='https://github.com/noctalia-dev/noctalia'
@@ -58,7 +59,7 @@ pkgver() {
   cd "${_pkgname}"
 
   local version
-  version="$(sed -n "s/^  version: '\([^']*\)',/\1/p" meson.build)"
+  version="$(tr -d '[:space:]' < VERSION)"
   printf '%s.r%s.g%s' "${version}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=9 HEAD)"
 }
 
