@@ -1,7 +1,7 @@
 pkgbase = gridcraft-bin
 	pkgdesc = Open-source native spreadsheet, Excel alternative (prebuilt binary)
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/storytold/gridcraft
 	arch = x86_64
 	arch = aarch64
@@ -14,6 +14,7 @@ pkgbase = gridcraft-bin
 	optdepends = vulkan-icd-loader: GPU-accelerated rendering
 	provides = gridcraft
 	conflicts = gridcraft
+	options = !strip
 	source_x86_64 = gridcraft-0.5.0-linux-x86_64.tar.gz::https://github.com/storytold/gridcraft/releases/download/v0.5.0/gridcraft-0.5.0-linux-x86_64.tar.gz
 	sha256sums_x86_64 = e6505c2f929f9854c350a0df26189c4e56c8adf87cc61625f80d6a8eec2b628d
 	source_aarch64 = gridcraft-0.5.0-linux-aarch64.tar.gz::https://github.com/storytold/gridcraft/releases/download/v0.5.0/gridcraft-0.5.0-linux-aarch64.tar.gz

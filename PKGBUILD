@@ -2,7 +2,7 @@
 pkgname=gridcraft-bin
 _pkgname=gridcraft
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source native spreadsheet, Excel alternative (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/storytold/gridcraft"
@@ -11,6 +11,7 @@ depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libxkbcommon')
 optdepends=('vulkan-icd-loader: GPU-accelerated rendering')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+options=('!strip')
 source_x86_64=("$_pkgname-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
 sha256sums_x86_64=('e6505c2f929f9854c350a0df26189c4e56c8adf87cc61625f80d6a8eec2b628d')
