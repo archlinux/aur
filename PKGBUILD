@@ -20,7 +20,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hyprtilt
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='TUI and CLI for Hyprland monitor layout that edits your Lua or hyprlang config in place'
 arch=('x86_64' 'aarch64')
@@ -36,7 +36,7 @@ optdepends=(
 # debug package would be empty.
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('21df6cc2a385fed4cb6f60d87956792f24a5d59ff665c04d1bd822f9e260e3af')
+sha256sums=('951b49b5acf440993e6551c57a4eb3ff5b4b9dcbf4b0f1f7d11bb599a9714580')
 
 prepare()
 {
