@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A fast, keyboard-driven Soulseek client for the terminal"
 
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,7 +27,7 @@ depends=('glibc' 'libgcc')
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('5fe6c63bac7ca8c3893d7c45a5902dbd1f715a68ce06c2f39fdecd74132b119e')
+sha256sums_x86_64=('d0d3fc9c866d2cbeeffa5fe1ba9f7f1b2a35a522a5148178d89e9b84d4df206d')
 
 
 case ${CARCH} in
