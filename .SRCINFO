@@ -1,7 +1,7 @@
 pkgbase = moonlight-qt-axi-appimage
 	pkgdesc = moonlight-qt by Axixi2233 bin from appimage
 	pkgver = 6.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Axixi2233/moonlight-qt
 	arch = x86_64
 	license = GPL3-or-later

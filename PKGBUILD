@@ -2,7 +2,7 @@
 pkgname=moonlight-qt-axi-appimage
 _pkgname=moonlight-qt-bin
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="moonlight-qt by Axixi2233 bin from appimage"
 arch=('x86_64')
 url="https://github.com/Axixi2233/moonlight-qt"
@@ -38,7 +38,7 @@ package() {
 	mkdir "${pkgdir}/opt/" -p
 	cp -r squashfs-root "${pkgdir}/opt/${_pkgname}"
 	mkdir "${pkgdir}/usr/bin/" -p
-	install -dm644 "${pkgdir}/opt/"
+	install -dm755 "${pkgdir}/opt/"
 	install -m755 "${srcdir}/launcher.sh" "${pkgdir}/usr/bin/moonlight"
 	install -m755 "squashfs-root/AppRun" "${pkgdir}/opt/${_pkgname}/AppRun"
 
