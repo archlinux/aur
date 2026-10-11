@@ -1,0 +1,16 @@
+pkgbase = pgx-bm25
+	pkgdesc = Native BM25 ranked full-text index access method for PostgreSQL (bm25_native)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/pgexperts/pgx-bm25
+	arch = x86_64
+	license = PostgreSQL
+	makedepends = make
+	makedepends = gcc
+	makedepends = clang
+	makedepends = llvm
+	depends = postgresql
+	source = pgx-bm25-1.0.0.tar.gz::https://github.com/pgexperts/pgx-bm25/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 0720e8256ba9d391517051b4ee55656f6dc87a218f5a3015c11f039e9d636381
+
+pkgname = pgx-bm25
