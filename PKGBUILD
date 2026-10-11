@@ -1,6 +1,6 @@
 # Maintainer: vmartinv <https://github.com/vmartinv>
 pkgname=opensnitch-zenity
-pkgver=0.2.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Lightweight zenity prompt UI for the OpenSnitch daemon (unofficial)"
 arch=('x86_64' 'aarch64')
@@ -8,9 +8,11 @@ url="https://github.com/vmartinv/opensnitch-zenity"
 license=('GPL-3.0-or-later')
 depends=('opensnitch' 'zenity')
 makedepends=('go')
-optdepends=('libnotify: notify_on_default desktop notifications')
+optdepends=('libnotify: notify_on_default desktop notifications'
+            'wl-clipboard: Copy details button on Wayland'
+            'xclip: Copy details button on X11')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e5f1a391c5cd8caa15462f1f493a4630369ae8342616366f4c5f7187a5d0c9e8')
+sha256sums=('132a501f2667bcb299c6b97391c3fdb25781d4cb12a19f60dc6bb0a768b6c042')
 
 build() {
     cd "$pkgname-$pkgver"
