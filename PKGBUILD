@@ -2,7 +2,7 @@
 # Maintainer:  Radu Potop <radu at wooptoo dot com>
 
 pkgname=arrow-tools
-pkgver=0.26.0
+pkgver=0.26.1
 pkgrel=1
 pkgdesc="A collection of handy CLI tools to convert CSV and JSON to Apache Arrow and Parquet"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache-2.0' 'MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'cmake')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0a684db9f3fa430dbe30de83f8ebc4c91cbd01158251571db62b2a6c4903030e')
+sha256sums=('e07431e32a90fc1b475453a51a1703406e3e475fc765c38501a22624cf0b9002')
 
 BINFILES=(
     csv2arrow
