@@ -7,6 +7,18 @@ post_install() {
 }
 
 post_upgrade() {
-    echo "monsoon upgraded — restarting user service if running:"
-    echo "    systemctl --user restart monsoon"
+    # the running daemon keeps executing the old (replaced) binary, so restart
+    # it for every logged-in user. pacman runs as root, so reach into each
+    # user's manager with --machine; try-restart leaves stopped services alone.
+    local runtime_dir user_id user_name
+    for runtime_dir in /run/user/*; do
+        [ -S "${runtime_dir}/systemd/private" ] || continue
+        user_id="${runtime_dir##*/}"
+        user_name="$(id -nu "${user_id}" 2>/dev/null)" || continue
+        systemctl --user --machine="${user_name}@.host" daemon-reload 2>/dev/null || true
+        if systemctl --user --machine="${user_name}@.host" try-restart monsoon.service 2>/dev/null; then
+            echo "monsoon upgraded — restarted user service for ${user_name}"
+        fi
+    done
+    echo "if you run the daemon outside systemd, restart it manually: monsoon kill"
 }

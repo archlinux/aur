@@ -3,6 +3,7 @@ pkgbase = monsoon-git
 	pkgver = r44.fe34af5
 	pkgrel = 1
 	url = https://gitlab.com/5unekku/monsoon
+	install = monsoon.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only

@@ -13,6 +13,7 @@ makedepends=('git' 'rust' 'boost' 'clang')
 optdepends=(
     'systemd: user service included — enable with: systemctl --user enable --now monsoon'
 )
+install=monsoon.install
 provides=("${_pkgname}")
 # disable LTO: makepkg's default `lto` option injects -Clinker-plugin-lto
 # into RUSTFLAGS, which breaks ffi to C/asm code (ring, our libtorrent
