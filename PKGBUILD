@@ -150,62 +150,8 @@ prepare() {
 	# set ca dir to /etc/ssl by default
 	patch -p0 -i "$srcdir/ca-dir.patch"
 
-	local patch
-	for patch in \
-		CVE-2023-5678 \
-		CVE-2024-0727-1 \
-		CVE-2024-0727-2 \
-		CVE-2024-2511 \
-		CVE-2024-4741 \
-		CVE-2024-5535-1 \
-		CVE-2024-5535-2 \
-		CVE-2024-5535-3 \
-		CVE-2024-5535-4 \
-		CVE-2024-5535-5 \
-		CVE-2024-5535-6 \
-		CVE-2024-5535-7 \
-		CVE-2024-5535-8 \
-		CVE-2024-9143 \
-		CVE-2024-13176 \
-		CVE-2025-9230 \
-		CVE-2025-68160 \
-		CVE-2025-69418 \
-		CVE-2025-69419-1 \
-		CVE-2025-69419-2 \
-		CVE-2025-69420 \
-		CVE-2025-69421 \
-		CVE-2026-7383 \
-		CVE-2026-9076-1 \
-		CVE-2026-9076-2 \
-		CVE-2026-22795_CVE-2026-22796 \
-		CVE-2026-28387 \
-		CVE-2026-28388-1 \
-		CVE-2026-28388-2 \
-		CVE-2026-28389-1 \
-		CVE-2026-28389-2 \
-		CVE-2026-28390-1 \
-		CVE-2026-28390-2 \
-		CVE-2026-28390-3 \
-		CVE-2026-28390-4 \
-		CVE-2026-34180 \
-		CVE-2026-42766-1 \
-		CVE-2026-42766-2 \
-		CVE-2026-45447-1 \
-		CVE-2026-45447-2 \
-		CVE-2026-63072 \
-		CVE-2026-84782 \
-		; do
-		patch -p1 -i "${srcdir}/${patch}.patch"
-	done
-
-	local tarball
-	for tarball in \
-		CVE-2026-9076 \
-		CVE-2026-28389 \
-		CVE-2026-42766 \
-		; do
-		tar xvf "${srcdir}/${tarball}.tar"
-	done
+	find ../CVE-*.patch | sort -V | xargs -n 1 -t patch -p1 -i
+	find ../CVE-*.tar   | sort -V | xargs -n 1 -t tar xvf
 }
 
 build() {
