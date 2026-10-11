@@ -1,15 +1,17 @@
 pkgbase = dirhop
 	pkgdesc = Tiny keyboard-driven terminal directory navigator
-	pkgver = 0.1.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Aspenini/dirhop
+	install = dirhop.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = xmake
 	depends = glibc
 	conflicts = dirhop-git
-	source = dirhop-0.1.0.tar.gz::https://github.com/Aspenini/dirhop/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = SKIP
+	options = !debug
+	source = dirhop-0.2.1.tar.gz::https://github.com/Aspenini/dirhop/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = fd17c507243cc855bdbaf4a1c5dd9d4a579c12c1ee73a6ee230c325ef65b4f91
 
 pkgname = dirhop

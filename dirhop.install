@@ -1,0 +1,17 @@
+_dirhop_note() {
+  cat <<'NOTE'
+==> dirhop: run `dho` once. It offers to add the shell function that lets
+    it change directory (bash, zsh, fish), or run `dho --setup`.
+NOTE
+}
+
+post_install() {
+  _dirhop_note
+}
+
+post_upgrade() {
+  # Repeat the note only for upgrades from packages that did not show it.
+  if [ "$(vercmp "$2" 0.2.1-1)" -lt 0 ]; then
+    _dirhop_note
+  fi
+}

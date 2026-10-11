@@ -1,7 +1,7 @@
 # Maintainer: Aspenini <aspeninifeltner@gmail.com>
 
 pkgname=dirhop
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Tiny keyboard-driven terminal directory navigator'
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,11 @@ license=('MIT')
 depends=('glibc')
 makedepends=('xmake')
 conflicts=('dirhop-git')
+# The build strips the binary itself, so a debug package would be empty.
+options=('!debug')
+install=dirhop.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('fd17c507243cc855bdbaf4a1c5dd9d4a579c12c1ee73a6ee230c325ef65b4f91')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
