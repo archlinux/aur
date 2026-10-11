@@ -2,8 +2,8 @@
 
 pkgname=python-spotapi
 _name=${pkgname#python-}
-pkgver=1.2.7
-pkgrel=2
+pkgver=1.2.8
+pkgrel=1
 pkgdesc="A sleek API wrapper for Spotify's private API"
 arch=('any')
 url="https://pypi.org/project/spotapi/"
@@ -27,7 +27,7 @@ optdepends=(
   'python-websockets: websocket extra'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('132b058a44386109760df57e2b7c1330e79b0bdde69a7c0e608bd0ae0f5870512513108951ab091ea55482e2c77eac0883fe20397618b3c273884742be903520')
+sha512sums=('390ad4d3268c5c22dd8234b503211700388058a97dffe711c74769c644ed92d78cc140b6637846078c26617ba3fbf973711cad8467153449448ca19caaf07190')
 
 build() {
   cd "$_name-$pkgver"
