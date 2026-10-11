@@ -2,11 +2,11 @@
 pkgname=sk-chos-tool-git
 _pkgname=sk-chos-tool
 _reponame=sk-chos-config
-pkgver=r28.4a52d21
-pkgrel=1
+pkgver=r1008.171ca55
+pkgrel=2
 pkgdesc="A custom configs tool for sk-chimeros"
 arch=('any')
-url="https://github.com/honjow/sk-holoiso-config.git"
+url="https://github.com/honjow/sk-chos-config.git"
 license=('MIT')
 makedepends=('git')
 depends=('python-gobject' 'gtk3' 'sk-chos-addon-git')
