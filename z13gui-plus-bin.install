@@ -1,13 +1,15 @@
 post_install() {
     udevadm control --reload-rules
     udevadm trigger
-    setcap cap_bpf,cap_perfmon+ep /usr/bin/z13gui 2>/dev/null || true
-    systemctl --global enable z13ctl.socket z13ctl.service
-    systemctl --global enable z13gui.service
+    setcap cap_bpf,cap_perfmon+ep /usr/bin/z13gui-plus 2>/dev/null || true
+    echo ""
+    echo ">>> z13gui-plus installed disabled so it can coexist with upstream."
+    echo ">>> After selecting the Plus controller, enable the GUI with:"
+    echo ">>>   systemctl --user enable --now z13gui-plus.service"
 }
 
 post_upgrade() {
     udevadm control --reload-rules
     udevadm trigger
-    setcap cap_bpf,cap_perfmon+ep /usr/bin/z13gui 2>/dev/null || true
+    setcap cap_bpf,cap_perfmon+ep /usr/bin/z13gui-plus 2>/dev/null || true
 }
