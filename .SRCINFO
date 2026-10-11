@@ -1,7 +1,7 @@
 pkgbase = shorin-proton-wrapper-git
 	pkgdesc = Simple Proton wrapper for running Windows executables
 	pkgver = r61.d2ec4ad
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SHORiN-KiWATA/proton-wrapper
 	arch = any
 	license = MIT
@@ -14,13 +14,13 @@ pkgbase = shorin-proton-wrapper-git
 	depends = icoextract
 	depends = python-pillow
 	depends = curl
-	depends = lib32-cairo
 	optdepends = steam: Steam runtime support
 	optdepends = lutris: Lutris runner support
 	optdepends = mangohud: performance overlay for --mangohud
 	optdepends = libnotify: desktop notifications during first run
 	optdepends = wget: alternative downloader
 	optdepends = passt: separate network namespace for game accelerators (--netns)
+	optdepends = lib32-cairo: 32-bit programs with PROTON_USE_WOW64=0
 	provides = shorin-proton-wrapper
 	conflicts = shorin-proton-wrapper
 	source = git+https://github.com/SHORiN-KiWATA/proton-wrapper.git

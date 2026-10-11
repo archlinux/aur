@@ -1,12 +1,12 @@
 # Maintainer: SHORiN-KiWATA <fcl709@outlook.com>
 pkgname=shorin-proton-wrapper-git
 pkgver=r61.d2ec4ad
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Proton wrapper for running Windows executables"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/proton-wrapper"
 license=('MIT')
-depends=('bash' 'python' 'python-gobject' 'gtk4' 'gamescope' 'icoextract' 'python-pillow' 'curl' 'lib32-cairo')
+depends=('bash' 'python' 'python-gobject' 'gtk4' 'gamescope' 'icoextract' 'python-pillow' 'curl')
 optdepends=(
   'steam: Steam runtime support'
   'lutris: Lutris runner support'
@@ -14,6 +14,7 @@ optdepends=(
   'libnotify: desktop notifications during first run'
   'wget: alternative downloader'
   'passt: separate network namespace for game accelerators (--netns)'
+  'lib32-cairo: 32-bit programs with PROTON_USE_WOW64=0'
 )
 makedepends=('git')
 provides=('shorin-proton-wrapper')
