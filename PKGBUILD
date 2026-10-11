@@ -17,7 +17,7 @@
 
 pkgname=hyprtilt-git
 _pkgname=hyprtilt
-pkgver=0.1.0.r0.g9e57335
+pkgver=0.2.0.r0.g3d81a40
 pkgrel=1
 pkgdesc='TUI and CLI for Hyprland monitor layout that edits your Lua or hyprlang config in place'
 arch=('x86_64' 'aarch64')
