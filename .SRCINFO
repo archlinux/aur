@@ -1,16 +1,20 @@
 pkgbase = axolotl-launcher-bin
 	pkgdesc = A free, cross-platform Minecraft launcher built on the Modrinth ecosystem
 	pkgver = 1.9.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Mystic-Stars/Axolotl
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
-	depends = webkit2gtk-4.1
-	depends = gtk3
+	depends = libayatana-appindicator
+	depends = shared-mime-info
 	depends = libnotify
+	depends = webkit2gtk-4.1
+	depends = xdg-utils
+	depends = gtk3
 	provides = axolotl-launcher=1.9.7
 	conflicts = axolotl-launcher
+	options = !strip
 	source = red.ghs.axolotl.xml
 	source = axolotl-launcher.desktop
 	sha256sums = a3c7ac4b8489dff5a8e558780765648dccc99c8a65b13e6dd11777de8352da7f
