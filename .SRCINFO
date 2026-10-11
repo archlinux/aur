@@ -1,19 +1,19 @@
 pkgbase = zig-waybar-contrib
 	pkgdesc = High-performance Waybar modules written in Zig for efficient system monitoring (Stable binary version)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	epoch = 1
 	url = https://codeberg.org/erenvly/zig-waybar-contrib
 	arch = x86_64
 	license = GPL3
 	optdepends = fakeroot: updates module
-	provides = zig-waybar-contrib=1.0.0
+	provides = zig-waybar-contrib=1.0.1
 	conflicts = zig-waybar-contrib
-	source = zig-waybar-contrib.zip::https://codeberg.org/erenvly/zig-waybar-contrib/releases/download/1.0.0/zig-waybar-contrib-release-1.0.0.zip
-	source = config.waybar.jsonc::https://codeberg.org/erenvly/zig-waybar-contrib/raw/tag/1.0.0/config.waybar.jsonc
-	source = LICENSE::https://codeberg.org/erenvly/zig-waybar-contrib/raw/tag/1.0.0/LICENSE
-	sha256sums = 3c53f85d5493892ae95ece5b14e3a6051c3c9583b0eb6dd6a7b6a1fd96877d5b
-	sha256sums = dcd740a429998be22dbbf6eb47e89cc4a24863af75839d0f8621c146a125575d
+	source = zig-waybar-contrib.zip::https://codeberg.org/erenvly/zig-waybar-contrib/releases/download/1.0.1/zig-waybar-contrib-release-1.0.1.zip
+	source = config.waybar.jsonc::https://codeberg.org/erenvly/zig-waybar-contrib/raw/tag/1.0.1/config.waybar.jsonc
+	source = LICENSE::https://codeberg.org/erenvly/zig-waybar-contrib/raw/tag/1.0.1/LICENSE
+	sha256sums = bc99620f9d1acd5e7ec3334ca774d1caba7551848ba8209bb79b18fe45cf1d42
+	sha256sums = 1afb0186de869cf7cd8395bd9f75eece4cb41de008072f2bfc903021fd448f59
 	sha256sums = 2299c7882f95e4d84c68a527b7473b6e086a523379bcebb38905c7758a03a472
 
 pkgname = zig-waybar-contrib
