@@ -4,7 +4,7 @@
 
 pkgname=dota2-minify-git
 pkgver=2rc5.r8.g61881b9
-pkgrel=1
+pkgrel=2
 pkgdesc="Dota 2 Mod Patcher & Toolkit (latest git source build)"
 arch=('x86_64')
 url="https://github.com/Egezenn/dota2-minify"
@@ -17,6 +17,7 @@ depends=(
     'freetype2'
     'fontconfig'
     'hicolor-icon-theme'
+    'wine'
 )
 makedepends=(
     'git'
