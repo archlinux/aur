@@ -4,13 +4,15 @@
 
 pkgname='tine-outliner-bin'
 pkgver=0.7.1
-pkgrel=1
-pkgdesc="A fast, local, Logseq-compatible outliner"
+pkgrel=2
+pkgdesc="A fast, local, Logseq-compatible outliner (prebuilt release)"
 url='https://tine.page/'
 license=('AGPL-3.0-only')
 
 arch=('x86_64' 'aarch64')
 depends=('gtk3' 'gdk-pixbuf2' 'libgcc' 'libsoup3' 'webkit2gtk-4.1' 'dbus' 'libx11' 'glib2' 'cairo' 'hicolor-icon-theme')
+
+conflicts=('tine-outliner')
 
 _source_base="https://github.com/martinkoutecky/tine/releases/download/v${pkgver}/Tine_${pkgver}"
 source_x86_64=("${_source_base}_amd64.deb")
