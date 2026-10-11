@@ -2,7 +2,7 @@
 
 pkgname=cockpit-tools
 _pkgname=cockpit-tools
-pkgver=1.3.66
+pkgver=1.3.67
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Universal AI IDE account manager for Antigravity / Codex / GitHub Copilot / Windsurf / Kiro / Cursor / Gemini-cli / CodeBuddy"
@@ -36,7 +36,7 @@ depends=(
 
 source=("${_pkgname}::git+${url}.git#tag=v${pkgver}")
 
-sha256sums=('8e70eb0ea53eb50ec3ffe37492376e613d06dc7c61a80c9fbe4a5e53c85b52e5')
+sha256sums=('cf1a56716ead55bd7f4fda8bebd71b315d1a6f6bdf4a081d4bb870d5a3548012')
 
 prepare() {
   echo "Generating .desktop file..."
