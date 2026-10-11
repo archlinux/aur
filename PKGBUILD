@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="NeoArch Package Manager for Arch Linux (Lynx Edition — development build, use 'neoarch' for stable)"
 arch=('any')
 url="https://github.com/Sanjaya-Danushka/Neoarch"
-license=('MIT')
+license=('GPL-3.0-or-later')
 # Core runtime — the app cannot work without these
 depends=('python-pyqt6' 'python-requests' 'python-keyring' 'python-defusedxml' 'qt6-svg' 'git')
 # Optional integrations — features degrade gracefully if absent

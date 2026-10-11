@@ -1,11 +1,11 @@
 pkgbase = neoarch-git
-	pkgver = 3.4.0.r802.g0745705
+	pkgver = 3.4.1.r822.gd2386ac
 	pkgrel = 1
 	pkgdesc = NeoArch Package Manager for Arch Linux (Lynx Edition — development build, use 'neoarch' for stable)
 	url = https://github.com/Sanjaya-Danushka/Neoarch
 	install = neoarch-git.install
 	arch = any
-	license = MIT
+	license = GPL-3.0-or-later
 	depends = python-pyqt6
 	depends = python-requests
 	depends = python-keyring
