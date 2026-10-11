@@ -1,0 +1,24 @@
+pkgbase = kiekje
+	pkgdesc = Capture, mark up and keep screenshots
+	pkgver = 0.1.0alpha4
+	pkgrel = 1
+	url = https://github.com/remcostoeten/kiekje
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = OFL-1.1
+	makedepends = cargo
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = wayland
+	depends = glib2
+	depends = cairo
+	depends = pango
+	depends = gcc-libs
+	depends = glibc
+	optdepends = xdg-desktop-portal: capture and global shortcuts through the portal
+	options = !lto
+	source = kiekje-0.1.0-alpha.4.tar.gz::https://github.com/remcostoeten/kiekje/archive/refs/tags/v0.1.0-alpha.4.tar.gz
+	sha256sums = b41a6e659f59d6939b535453b6dcf6266d05aeca385086d39604aa7d8d536c47
+
+pkgname = kiekje
