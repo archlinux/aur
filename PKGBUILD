@@ -4,20 +4,20 @@
 #
 # Builds rosec and all WASM providers from source (latest git HEAD).
 # rosec is a multi-provider Secret Service daemon: local encrypted vaults,
-# Bitwarden (PM and SM), GNOME Keyring, and custom WASM plugins.  It includes
+# Bitwarden (PM and SM), Proton Pass, KeePassXC, GNOME Keyring, and custom WASM plugins. It includes
 # an SSH agent with FUSE-mounted key files and PAM auto-unlock support.
 #
-# The release workflow renders this file by substituting 0.0.36.
+# The release workflow renders this file by substituting 0.0.37dev2.
 # At build time, pkgver() overrides the static version with the actual
 # git-derived version.
 
 pkgname=rosec-git
-pkgver=0.0.36
+pkgver=0.0.37dev2
 pkgrel=1
 pkgdesc="Multi-provider Secret Service daemon with SSH agent, FUSE mount, and PAM unlock (git)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jmylchreest/rosec"
-license=('MIT')
+license=('MIT' 'GPL-3.0-or-later')
 # Disable GCC LTO: makepkg appends -flto=auto to CFLAGS which produces
 # GCC LTO IR in vendored C static libs (zstd, ittapi, wasmtime helpers).
 # rust-lld cannot link GCC LTO objects, causing undefined symbol errors.
@@ -29,6 +29,7 @@ makedepends=(
     'rust'
     'cargo'
     'pkg-config'
+    'python'
     'dbus'
     'pam'
 )
@@ -45,6 +46,7 @@ provides=(
     'rosec-provider-bitwarden-sm'
     'rosec-provider-gnome-keyring'
     'rosec-provider-keepassxc-file'
+    'rosec-provider-protonpass'
 )
 conflicts=(
     'rosec'
@@ -61,6 +63,9 @@ conflicts=(
     'rosec-provider-keepassxc-file'
     'rosec-provider-keepassxc-file-bin'
     'rosec-provider-keepassxc-file-git'
+    'rosec-provider-protonpass'
+    'rosec-provider-protonpass-bin'
+    'rosec-provider-protonpass-git'
 )
 install=rosec.install
 
@@ -115,6 +120,9 @@ prepare() {
 
     cd "${srcdir}/${pkgname}/rosec-keepassxc-file"
     cargo fetch --locked 2>/dev/null || cargo fetch
+
+    cd "${srcdir}/${pkgname}/rosec-protonpass"
+    cargo fetch --locked
 }
 
 build() {
@@ -143,6 +151,14 @@ build() {
     cd "${srcdir}/${pkgname}/rosec-keepassxc-file"
     cargo build --target wasm32-wasip1 --release --locked 2>/dev/null || \
     cargo build --target wasm32-wasip1 --release
+
+    # Production guest only; never enable the test-http fixture feature.
+    cd "${srcdir}/${pkgname}/rosec-protonpass"
+    cargo build --target wasm32-wasip1 --release --locked
+
+    cd "${srcdir}/${pkgname}"
+    python contrib/package-protonpass.py --version "${pkgver}" \
+        --output "${srcdir}/protonpass-materials" --notices-only
 }
 
 check() {
@@ -193,6 +209,13 @@ package() {
         "${pkgdir}/usr/lib/rosec/providers/rosec_keepassxc_file.wasm"
     install -Dm644 rosec-keepassxc-file/rosec_keepassxc_file.wasm.policy.toml \
         "${pkgdir}/usr/lib/rosec/providers/rosec_keepassxc_file.wasm.policy.toml"
+    install -Dm644 rosec-protonpass/target/wasm32-wasip1/release/rosec_protonpass.wasm \
+        "${pkgdir}/usr/lib/rosec/providers/rosec_protonpass.wasm"
+    install -Dm644 rosec-protonpass/rosec_protonpass.wasm.policy.toml \
+        "${pkgdir}/usr/lib/rosec/providers/rosec_protonpass.wasm.policy.toml"
+    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/protonpass"
+    cp -r "${srcdir}/protonpass-materials/notices/." \
+        "${pkgdir}/usr/share/licenses/${pkgname}/protonpass/"
 
     # Service activation files are generated at runtime by `rosec enable`
     # with the correct binary paths — no static copies shipped.
