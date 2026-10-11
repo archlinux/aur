@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=photocraft
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -14,7 +14,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('e78bd4bf02b632c4b2bf94f403cbd634e433bbd06124ee4f8af75c2286be700d')
+sha256sums=('420bc64e3548579b1b255aed33be055be1688c3427f429dc5f1c28daf8639a2c')
 
 _srcenv() {
 	cd "$_archive"
