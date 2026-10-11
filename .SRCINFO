@@ -1,0 +1,14 @@
+pkgbase = rosec-provider-protonpass-bin
+	pkgdesc = Proton Pass read-only provider for rosec (prebuilt)
+	pkgver = 0.0.36
+	pkgrel = 1
+	url = https://github.com/jmylchreest/rosec
+	arch = any
+	license = GPL-3.0-or-later
+	depends = rosec>=0.0.36
+	provides = rosec-provider-protonpass
+	conflicts = rosec-provider-protonpass
+	source = rosec-provider-protonpass-0.0.36.wasm.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.36/rosec-provider-protonpass-0.0.36.wasm.tar.gz
+	sha256sums = b8d5dc4faf519035a1139738a2bf582e9380b4106e9a9eb73381cdebea1e3a62
+
+pkgname = rosec-provider-protonpass-bin
