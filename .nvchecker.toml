@@ -1,0 +1,5 @@
+[blockdiag]
+source = "github"
+github = "yuzutech/blockdiag"
+use_max_tag = true
+prefix = "v"
