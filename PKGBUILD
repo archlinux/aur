@@ -1,24 +1,30 @@
+# Maintainer: Simone Riva <simone.rva at gmail dot com>
+# Contributor: Radu Potop <radu@wooptoo.com>
 
+_name=dr14_t.meter
 pkgname=dr14_tmeter
-pkgver=1.0.16
-pkgrel=5
-pkgdesc="Compute the dynamic range DR14 value of the givens audio files"
+pkgver=2.1.0
+pkgrel=1
+pkgdesc="Compute the DR14 dynamic range value of audio files"
 arch=(any)
-license=('GPL3')
-url="http://dr14tmeter.sourceforge.net"
-depends=('python' 'flac' 'lame' 'faad2' 'ffmpeg' 'vorbis-tools' 'python-numpy' )
-optdepends=('python-matplotlib: plot support for python' 'python-scipy: dyn compression ' )
-
-source=("http://sourceforge.net/projects/dr14tmeter/files/dr14tmeter-${pkgver}/dr14tmeter-${pkgver}.tar.gz")
-sha1sums=('5f8552fd9576f1bbc3e9ca0519182df5b7fdb86d')
+url="https://github.com/simon-r/$_name"
+license=(GPL-3.0-or-later)
+depends=(python python-numpy ffmpeg lame vorbis-tools)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+optdepends=('python-matplotlib: plotting options'
+            'python-scipy: --compress option'
+            'python-mutagen: --tag option')
+conflicts=(python-dr14_tmeter)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('8f85f4e4a5c3318cf428f6eaba03b62a63281fe41492ed1e2bb2531f711897a5')
 
 build() {
-  cd "$srcdir/dr14tmeter-$pkgver"
-  python setup.py build
+  cd "$_name-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/dr14tmeter-$pkgver"
-  echo ${pkgdir}
-  python setup.py install --root=${pkgdir} --prefix=usr --optimize=1
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md dr14_algorithm.md
 }
