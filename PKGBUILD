@@ -1,7 +1,7 @@
 # Maintainer: VConet <v-conet@outlook.com>
 pkgname=open-cad-studio
 _pkgname=OpenCADStudio 
-pkgver=2026.40.1
+pkgver=2026.41
 pkgrel=1
 pkgdesc="A CAD application built with Rust — 2D/3D drawing, DWG/DXF support, and GPU-accelerated rendering"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
     "logo.png"
     "OpenCADStudio.desktop"
 )
-sha256sums=('8d031b511e9c3098090a0c57faef1558b424de75d75eedc0bb90ec25f5065d46'
+sha256sums=('3d89be39b067cb530204dcbb25edf10946969182281e6d37bebe7b54ddace01b'
             '7c0c21229d5cc12db7ee404188652adce00a3acb51ec2631221c5605c01741bf'
             '178b67c82a369bf193dfe87e26ea8cc5dab823b0dc9382466c971e5845bc1638')
 options=(!lto)
