@@ -1,0 +1,5 @@
+[nextdns-unprivileged]
+source = "github"
+github = "nextdns/nextdns"
+use_max_tag = true
+prefix = "v"
