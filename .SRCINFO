@@ -1,6 +1,6 @@
 pkgbase = holos-commander-bin
 	pkgdesc = A Total Commander alternative for the terminal
-	pkgver = 0.17.6
+	pkgver = 0.17.7
 	pkgrel = 1
 	url = https://github.com/xls/holos
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = holos-commander-bin
 	provides = hcmd
 	conflicts = holos-commander
 	options = !strip
-	source_x86_64 = hcmd-x86_64-0.17.6.tgz::https://github.com/xls/holos/releases/download/v0.17.6/hcmd-0.17.6-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = bfbce5d109587525ca506d2e8a9b700720a3d1c46e9a4fda61ec7ec77dd6ae91
-	source_aarch64 = hcmd-aarch64-0.17.6.tgz::https://github.com/xls/holos/releases/download/v0.17.6/hcmd-0.17.6-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = ce18b6fd3e5e15996e6eb59ed51311db7088458915cc0cbfd29e0eb07abe3f0c
+	source_x86_64 = hcmd-x86_64-0.17.7.tgz::https://github.com/xls/holos/releases/download/v0.17.7/hcmd-0.17.7-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 4869e482298cce99c2a78cbaa6f25e34c5fb32a938f0564321baf315e77f299c
+	source_aarch64 = hcmd-aarch64-0.17.7.tgz::https://github.com/xls/holos/releases/download/v0.17.7/hcmd-0.17.7-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 295fcd360fe8616e25a61f4732112b49e1c99fbaa3251d008a021018c1cf7054
 
 pkgname = holos-commander-bin
