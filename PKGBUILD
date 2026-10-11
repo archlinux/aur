@@ -1,13 +1,13 @@
 # Maintainer: Vladimir Alyamkin <ufna@ufna.dev>
 pkgname=zerus-ade-nightly-bin
-pkgver=0.37.0.r102.g578458c.n3
+pkgver=0.38.0.r332.g860246a.n5
 pkgrel=1
 pkgdesc='Agent development environment for AI coding agents across machines (nightly)'
 arch=('x86_64')
 url='https://github.com/ufna/zerus'
 license=('MIT')
 # Floors describe the tested binary, not the publication runner's libraries.
-depends=('qt6-base>=6.12.0' 'qt6-webengine>=6.11.2' 'qt6-svg>=6.12.0' 'kstatusnotifieritem>=6.30.0' 'kwindowsystem>=6.30.0' 'libgcc>=16.2.1+r23+gd564253eb6c8' 'libstdc++>=16.2.1+r23+gd564253eb6c8' 'glibc>=2.44+r50+g1848099f063e'
+depends=('qt6-base>=6.12.0' 'qt6-webengine>=6.11.2' 'qt6-svg>=6.12.0' 'kstatusnotifieritem>=6.30.0' 'kwindowsystem>=6.30.0' 'kidletime>=6.30.0' 'libgcc>=16.2.1+r23+gd564253eb6c8' 'libstdc++>=16.2.1+r23+gd564253eb6c8' 'glibc>=2.44+r50+g1848099f063e'
          'tmux>=3.7' 'openssh' 'python' 'curl' 'procps-ng' 'hicolor-icon-theme' 'bash' 'tar')
 optdepends=('konsole: external KDE terminal integration'
             'wl-clipboard: clipboard transfers on Wayland'
@@ -19,10 +19,10 @@ optdepends=('konsole: external KDE terminal integration'
 provides=("zerus=$pkgver" 'hgs' 'hgs-tray')
 conflicts=('zerus' 'zerus-git' 'zerus-ade-bin')
 options=('!strip' '!debug')
-source=("https://github.com/ufna/zerus/releases/download/nightly-37891961076/zerus-${pkgver}-arch-${CARCH}.tar.gz")
-sha256sums=('91646f03c66aa2a28f4a84db1f332acecf509ffaf044f83fb20a3b0de2d556b4')
+source=("https://github.com/ufna/zerus/releases/download/nightly-38115853772/zerus-${pkgver}-arch-${CARCH}.tar.gz")
+sha256sums=('fbf1269b52c51edf8a483207027e1761ec0477a65b8b8bee54feae26a108f214')
 
 package() {
-    cp -a "$srcdir/zerus-0.37.0-arch-$CARCH/usr" "$pkgdir/"
+    cp -a "$srcdir/zerus-0.38.0-arch-$CARCH/usr" "$pkgdir/"
     mv "$pkgdir/usr/share/licenses/zerus-git" "$pkgdir/usr/share/licenses/$pkgname"
 }
