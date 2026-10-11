@@ -18,6 +18,7 @@ upgrade:
 	pkgctl version upgrade
 
 verify:
+	shellcheck --shell=bash --exclude=SC2034,SC2154,SC2164 PKGBUILD
 	pkgctl license check
 	namcap PKGBUILD *.pkg.tar.zst
 

@@ -24,6 +24,6 @@ prepare() {
 
 package() {
     install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 $srcdir/LICENSE-${pkgname}_${pkgver} "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    tar xzf $srcdir/data.tar.gz -C $pkgdir
+    install -Dm644 "$srcdir/LICENSE-${pkgname}_${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    tar xzf "$srcdir/data.tar.gz" -C "$pkgdir"
 }
