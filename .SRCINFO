@@ -1,0 +1,19 @@
+pkgbase = goatak
+	pkgdesc = Fast and simple ATAK/CivTAK server (CoT router) and web client
+	pkgver = 0.24.0
+	pkgrel = 1
+	url = https://github.com/kdudkov/goatak
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = go
+	depends = bash
+	depends = openssl
+	depends = zip
+	backup = etc/goatak/goatak_server.yml
+	source = goatak-0.24.0.tar.gz::https://github.com/kdudkov/goatak/archive/refs/tags/v0.24.0.tar.gz
+	source = goatak.sysusers
+	sha256sums = 2f0cccd01db05698fada88c975c5ece6bdb1e7e54e1b42bacfd8e54d72f7ba73
+	sha256sums = 895d12d1d636d2c853ff90d598dc4a69e42985d189ec478a5b77a75edf84abd6
+
+pkgname = goatak
