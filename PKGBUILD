@@ -3,11 +3,11 @@
 _pkgname=fc-usbser-tools
 pkgname=freecalypso-usbser-tools
 pkgver=r1
-pkgrel=3
+pkgrel=4
 pkgdesc="FreeCalypso USB-serial tools"
 arch=('x86_64' 'i686')
 url="https://www.freecalypso.org/hg/${_pkgname}"
-license=('custom')
+license=('LicenseRef-FreeCalypso')
 groups=('freecalypso')
 conflicts=("${pkgname}-hg")
 depends=('libusb-compat')
