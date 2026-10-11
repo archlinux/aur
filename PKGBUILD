@@ -1,6 +1,6 @@
 # Maintainer: robserob <robin at robserob.dk>
 pkgname=vpinfe
-pkgver=2.6.1
+pkgver=2.6.6
 pkgrel=1
 epoch=33
 pkgdesc="A vpinball frontend for Linux, Mac, and Windows"
@@ -12,7 +12,7 @@ conflicts=('vpinfe')
 source=("${pkgname}-${pkgver}.zip::https://github.com/superhac/vpinfe/archive/refs/tags/v${pkgver}.zip" 
         'vpinfe.desktop' 
         'vpinfe.png')
-sha256sums=('075bf3b1ba2aa654ec8f850fb2eaf6a6d2599a103c13184423315702928d6b95'
+sha256sums=('3bbae926fc71228ced24402c5594ea34eae5809c01b6221236249d72d9416908'
             'd0c22bc258c3fbee04a31378454246f25a3360cf48e870fcb374559de6b4a072'
             '7e7e1b0854ffcf745d9cf5a643cb005bb3c1c21f58ef50dc9c889eef5e9b92bd')
 
@@ -39,7 +39,7 @@ package() {
   chmod +x "$pkgdir/usr/bin/$pkgname"
 
   # Install application entry
-  install -Dm 644 "${srcdir}/vpinfe.png"  "${pkgdir}/usr/share/icons/hicolor/512.6.1/apps/vpinfe.png"
+  install -Dm 644 "${srcdir}/vpinfe.png"  "${pkgdir}/usr/share/icons/hicolor/512.6.6/apps/vpinfe.png"
   install -Dm644 "$srcdir/vpinfe.desktop" "$pkgdir/usr/share/applications/vpinfe.desktop"
 }
 
