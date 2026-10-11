@@ -1,7 +1,7 @@
 # Maintainer: yancat <yancat_aur@icloud.com>
-pkgname=countdown-bin
+pkgname=yancat-countdown-bin
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 url='https://github.com/yan-cat/countdown'
 license=('GPL-3.0-only')
 pkgdesc='A countdown desktop application built with Kirigami / Qt 6, used to record and track important days such as birthdays, anniversaries, and deadlines.'

@@ -1,7 +1,7 @@
-pkgbase = countdown-bin
+pkgbase = yancat-countdown-bin
 	pkgdesc = A countdown desktop application built with Kirigami / Qt 6, used to record and track important days such as birthdays, anniversaries, and deadlines.
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yan-cat/countdown
 	arch = x86_64
 	license = GPL-3.0-only
@@ -32,4 +32,4 @@ pkgbase = countdown-bin
 	sha256sums_x86_64 = 7dea83d1504ef9f7ff6bd7276d04711a0a6a4c99f2c6798dfe09f267d6c1b81d
 	sha256sums_x86_64 = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
-pkgname = countdown-bin
+pkgname = yancat-countdown-bin
