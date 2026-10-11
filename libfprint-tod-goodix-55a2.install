@@ -1,0 +1,18 @@
+post_install() {
+	cat <<'EOF'
+==> Goodix 55a2: enable the bridge and restart fprintd:
+      sudo systemctl enable --now goodix55a2-bridge.service
+      sudo systemctl restart fprintd.service
+    Then enroll with: fprintd-enroll
+    NOTE: on first use the bridge overwrites the sensor's TLS pairing key
+    (PSK). Windows Hello fingerprint will stop working on dual-boot systems.
+EOF
+}
+
+post_upgrade() {
+	systemctl try-restart goodix55a2-bridge.service 2>/dev/null || true
+}
+
+pre_remove() {
+	systemctl disable --now goodix55a2-bridge.service 2>/dev/null || true
+}
