@@ -3,14 +3,28 @@
 # Contributor: Pedro <https://aur.archlinux.org/account/PedroHLC>
 
 pkgname=wlcs-git
-pkgver=1.8.1.r28.g0ef8536
-pkgrel=1
+pkgver=1.8.1.r274.g933bc61
+pkgrel=2
 pkgdesc="Canonical's protocol-conformance-verifying test suite for Wayland compositor implementations."
-arch=(x86_64 i686 armv7h aarch64)
+arch=(x86_64 armv7h aarch64)
 url="https://github.com/canonical/wlcs"
 license=('GPL-2.0-or-later OR GPL-3.0-or-later')
-depends=(glibc gcc-libs gtest wayland) #boost-libs
-makedepends=(git cmake boost wayland-protocols)
+depends=(
+    glibc
+    gtest
+    libasan
+    libgcc
+    libstdc++
+    libtsan
+    libubsan
+    wayland
+    )
+makedepends=(
+    boost
+    cmake
+    git
+    wayland-protocols
+    )
 provides=(wlcs)
 conflicts=(wlcs)
 source=("git+https://github.com/canonical/wlcs.git")
@@ -22,15 +36,15 @@ pkgver() {
 }
 
 build() {
-  #export CFLAGS+=" -Wno-error=unused-result -Wno-error=maybe-uninitialized"
-  #export CXXFLAGS+=" -Wno-error=unused-result -Wno-error=maybe-uninitialized"
+  export CFLAGS+=" -Wno-error=deprecated-declarations"
+  export CXXFLAGS+=" -Wno-error=deprecated-declarations"
 
 	local _flags=(
     -DCMAKE_INSTALL_LIBDIR=lib/
     -DCMAKE_INSTALL_LIBEXECDIR=bin/
 	)
 
-  cmake -B build -S "wlcs" -Wno-dev \
+  cmake -B build -S "wlcs" -Wno-author \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     "${_flags[@]}"
