@@ -1,0 +1,4 @@
+[solidcraft]
+source = "git"
+git = "https://github.com/bherbruck/solidcraft.git"
+prefix = "v"
