@@ -1,0 +1,19 @@
+pkgbase = tvnoms-proxy
+	pkgdesc = TV Noms Proxy Service - runs as a per-user systemd service
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/tvnoms/tvnoms-proxy
+	install = tvnoms-proxy.install
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = icu
+	depends = ffmpeg
+	optdepends = mpv: default media player
+	provides = tvnoms-proxy
+	conflicts = tvnoms-proxy
+	options = !strip
+	source = tvnoms-proxy-2.0.0.tar.gz::https://github.com/tvnoms/tvnoms-proxy/releases/download/v2.0.0/tvnoms-proxy-linux.tar.gz
+	sha256sums = SKIP
+
+pkgname = tvnoms-proxy

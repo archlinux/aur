@@ -1,0 +1,44 @@
+post_install() {
+    cat <<'EOF'
+
+==> TV Noms Proxy installed as a per-user systemd service.
+
+To start it as your desktop user:
+  systemctl --user enable --now tvnoms-proxy
+
+To start it automatically on boot (without requiring login):
+  loginctl enable-linger $USER
+
+Config will be created at ~/.config/tvnoms-proxy/appsettings.json on first run.
+Reference template: /usr/share/tvnoms-proxy/appsettings.json.example
+
+A notification-area icon showing recording status starts and stops with the
+service (whenever a graphical session is available) - nothing extra to enable.
+
+Manage the service:
+  Status:  systemctl --user status tvnoms-proxy
+  Logs:    journalctl --user -u tvnoms-proxy -f
+  Restart: systemctl --user restart tvnoms-proxy
+
+EOF
+}
+
+post_upgrade() {
+    cat <<'EOF'
+
+==> TV Noms Proxy upgraded. Restart the service to pick up changes:
+  systemctl --user restart tvnoms-proxy
+
+EOF
+}
+
+post_remove() {
+    cat <<'EOF'
+
+==> TV Noms Proxy removed.
+
+Per-user state was left untouched. To remove it manually:
+  rm -rf ~/.config/tvnoms-proxy
+
+EOF
+}
