@@ -1,11 +1,11 @@
 # Maintainer: Custom Beta Builder <custom at aur dot archlinux dot org>
 pkgname=bluebubbles-beta-bin
 _pkgname=BlueBubbles
-pkgver=2.0.0+87_desktop_b.3
-_tagver="2.0.0%2B87-desktop-b.3"
+pkgver=2.1.2+92
+_tagver="2.1.2%2B92"
 pkgrel=1
 pkgdesc="A cross-platform app ecosystem, bringing iMessage to Linux, Android, and Windows (Beta Prebuilt Release)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://bluebubbles.app/"
 _ghurl="https://github.com/BlueBubblesApp/bluebubbles-app"
 license=('Apache-2.0')
@@ -18,6 +18,7 @@ depends=(
     'libdbusmenu-glib'
     'libnotify'
     'libappindicator-gtk3'
+    'libayatana-indicator'
     'gtk3'
 )
 makedepends=(
@@ -27,9 +28,11 @@ options=(
     '!emptydirs'
 )
 source_x86_64=("bluebubbles-beta-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${_tagver}/bluebubbles-linux-x86_64.tar.gz")
+source_aarch64=("bluebubbles-beta-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${_tagver}/bluebubbles-linux-aarch64.tar.gz")
 source=("bluebubbles-beta.sh")
 sha256sums=('efe4503308a1e4e44b892065b6fb8f582bd2f7d01e3f0232e4d86539101ebbb5')
-sha256sums_x86_64=('49f592658692d68b6447edb9cbdeb39d33ca74e4b12d351ad5d811e4b3b2ed4c')
+sha256sums_x86_64=('833a5fe56dfe93a1644878bdc894832e62fca6840c6e0588b9d35e19bd04d667')
+sha256sums_aarch64=('2535bb4b23484a74f5d66a94b9a5f3bd6177f5a525bf82f2dd824934e9df0089')
 
 prepare() {
     sed -i -e "
@@ -57,7 +60,7 @@ else
 fi
 EOF
     chmod 755 "${pkgdir}/usr/lib/bluebubbles-beta/bluebubbles-beta"
-    cp -a "${srcdir}/"{data,lib} "${pkgdir}/usr/lib/bluebubbles-beta"
+    cp -r --no-preserve=ownership "${srcdir}/"{data,lib} "${pkgdir}/usr/lib/bluebubbles-beta"
     install -Dm644 "${srcdir}/data/flutter_assets/assets/icon/icon.png" "${pkgdir}/usr/share/pixmaps/bluebubbles-beta.png"
     ln -sf "/usr/lib/libmpv.so" "${pkgdir}/usr/lib/bluebubbles-beta/libmpv.so.1"
     install -Dm644 "${srcdir}/bluebubbles-beta.desktop" -t "${pkgdir}/usr/share/applications"
