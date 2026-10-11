@@ -1,7 +1,7 @@
 # Maintainer: SummerBreeze630 <xzwf2003@163.com>
 
 pkgname=bili23-downloader
-pkgver=2.15.0
+pkgver=2.20.0
 pkgrel=1
 pkgdesc="Bili23 Downloader"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("${_git_url}/releases/download/v${pkgver}/Bili23-Downloader_${pkgver//_/
 	"https://raw.githubusercontent.com/ScottSloan/Bili23-Downloader/main/LICENSE"
 
 )
-sha256sums=('41e7d7e249cf59462ec3b70d54f3bb4ccc33809d67f602d4562dd5e66e0966cf'
+sha256sums=('f171419e9f6b15b3d6d868a1de4fb60fb3e472fc9800e70fb6f5d756ac3d6b94'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
