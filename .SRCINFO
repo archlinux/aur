@@ -1,0 +1,18 @@
+pkgbase = driftmusic-git
+	pkgdesc = Music streaming client for YouTube Music with Vim keybinds
+	pkgver = r22.8a049b6
+	pkgrel = 1
+	url = https://github.com/socatlolmeow/drift
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = mpv
+	depends = yt-dlp
+	provides = driftmusic
+	conflicts = driftmusic
+	options = !lto
+	source = git+https://github.com/socatlolmeow/drift.git
+	sha256sums = SKIP
+
+pkgname = driftmusic-git
