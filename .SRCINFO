@@ -1,0 +1,18 @@
+pkgbase = kali-themes-ansulev
+	pkgdesc = Kali Linux GTK/Qt themes, Flat-Remix icons and XFCE panel profiles (maintained fork)
+	pkgver = 2026.3.0
+	pkgrel = 1
+	url = https://gitlab.com/kalilinux/packages/kali-themes
+	arch = any
+	license = GPL3
+	makedepends = optipng
+	makedepends = librsvg
+	provides = kali-themes=2026.3.0
+	conflicts = kali-themes
+	options = !strip
+	options = !buildflags
+	options = !makeflags
+	source = https://gitlab.com/kalilinux/packages/kali-themes/-/archive/kali/2026.3.0/kali-themes-kali-2026.3.0.tar.gz
+	sha512sums = 01749fc14d29b878c0dd3636c0e3c3a9edd51c6acf38fda145e937ae978cb750a285d3c30a8e578af3d6b3142eff8570ffd43080e1fbe33a617ec9f194db904d
+
+pkgname = kali-themes-ansulev
