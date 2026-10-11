@@ -1,0 +1,4 @@
+[python-django-axes]
+source = "github"
+github = "jazzband/django-axes"
+use_max_tag = true
