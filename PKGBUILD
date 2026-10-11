@@ -4,12 +4,13 @@ _hgname=themwi-ota-tools
 _pkgname=freecalypso-ota-tools
 pkgname="${_pkgname}-hg"
 pkgver=r11.b4b4a822286c
-pkgrel=1
+pkgrel=2
 pkgdesc="FreeCalypso tools for OTA SIM programming"
 arch=('x86_64' 'i686')
 url="https://www.freecalypso.org/hg/${_hgname}"
 license=('LicenseRef-FreeCalypso')
 groups=('freecalypso')
+provides=("${_pkgname}=${pkgver}")
 depends=('openssl')
 makedepends=('mercurial')
 conflicts=("${_pkgname}")
