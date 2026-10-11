@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-lite-git
-pkgver=1.2.31.r14.g5e57257d7
+pkgver=1.2.31.r14.g5e57257
 pkgrel=1
 pkgdesc="A music player aimed at audio enthusiasts and music collectors, fewer features, Gstreamer and alsa only"
 arch=(x86_64 i686 armv7h aarch64)
@@ -54,7 +54,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd strawberry
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
