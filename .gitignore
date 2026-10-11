@@ -1,0 +1,7 @@
+/src/
+/pkg/
+/build/
+*.tar.gz
+*.pkg.tar
+*.pkg.tar.*
+*.log
