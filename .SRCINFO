@@ -1,19 +1,19 @@
 pkgbase = lazyenv-bin
 	pkgdesc = TUI for managing .env files
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
-	url = https://lazynop.github.io/lazyenv/
+	url = https://lazynop.dev/lazyenv/
 	license = MIT
 	conflicts = lazyenv
 	provides = lazyenv
 	arch = aarch64
-	source_aarch64 = https://github.com/lazynop/lazyenv/releases/download/v0.9.0/lazyenv_0.9.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 4a85eec015317702bc6d3d5ed860f9b01c2c490f67b556a76abc4a62badfb0f2
+	source_aarch64 = lazyenv-bin_0.9.1_aarch64.tar.gz::https://github.com/lazynop/lazyenv/releases/download/v0.9.1/lazyenv_0.9.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0bdea1184dfe527e2ae835513679666b87fa5b4289df21265fe2563c3784bb1f
 	arch = armv7h
-	source_armv7h = https://github.com/lazynop/lazyenv/releases/download/v0.9.0/lazyenv_0.9.0_linux_arm.tar.gz
-	sha256sums_armv7h = 36a7f0849bf6b5452b057db97229eb8f9487b6e7804a6a42e11d2d7b0f93268e
+	source_armv7h = lazyenv-bin_0.9.1_armv7h.tar.gz::https://github.com/lazynop/lazyenv/releases/download/v0.9.1/lazyenv_0.9.1_linux_arm.tar.gz
+	sha256sums_armv7h = 7af955482a776548cfd63dadbaa13c01ae66761a3e03d4e0886901a94beadfff
 	arch = x86_64
-	source_x86_64 = https://github.com/lazynop/lazyenv/releases/download/v0.9.0/lazyenv_0.9.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = d94c5c13f8f3f686911c77e23f8afcf2f4c136fbf1285c95c8b4c22f24ef8fb8
+	source_x86_64 = lazyenv-bin_0.9.1_x86_64.tar.gz::https://github.com/lazynop/lazyenv/releases/download/v0.9.1/lazyenv_0.9.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2430706364bd052ad0fd4122ef5ed7d868cb607f7292a7925e70ebdebe2e0104
 	
 pkgname = lazyenv-bin
