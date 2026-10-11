@@ -10,7 +10,7 @@ _repo='AstroDogeDX/CVRX'
 pkgname='cvrx'
 _pkgname='CVRX'
 pkgver="$(echo "${_upstreamver}" | tr -d v)"
-pkgrel=1
+pkgrel=2
 pkgdesc="A standalone companion app for ChilloutVR that expands the user experience!"
 url="https://github.com/${_repo}"
 depends=(
@@ -37,7 +37,8 @@ sha256sums=('bf15e104e2f70a82e505e970e61bdbaeb219662d1d2cb5d519c021fcc46cf788'
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}/"
     patch < ../only-linux.patch
-    npm install
+    npm pkg set 'overrides.yauzl=^3'
+    npm_config_allow_git=all npm install
 }
 
 build() {
