@@ -1,0 +1,5 @@
+[ranma-bin]
+source = "github"
+github = "masshirodev/ranma"
+use_latest_release = true
+prefix = "v"
