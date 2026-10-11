@@ -1,6 +1,6 @@
 pkgbase = freecalypso-tools-hg
 	pkgdesc = FreeCalypso host tools package
-	pkgver = r1010.1d144553a5d0
+	pkgver = r1015.2fa31723e525
 	pkgrel = 1
 	url = https://www.freecalypso.org/hg/freecalypso-tools
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = freecalypso-tools-hg
 	groups = freecalypso
 	license = LicenseRef-FreeCalypso
 	makedepends = mercurial
+	provides = freecalypso-tools=r1015.2fa31723e525
 	source = hg+https://www.freecalypso.org/hg/freecalypso-tools
 	md5sums = SKIP
 

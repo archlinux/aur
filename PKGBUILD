@@ -2,14 +2,14 @@
 
 _pkgname=freecalypso-tools
 pkgname="${_pkgname}-hg"
-pkgver=r1010.1d144553a5d0
+pkgver=r1015.2fa31723e525
 pkgrel=1
 pkgdesc="FreeCalypso host tools package"
 arch=('x86_64' 'i686')
 url="https://www.freecalypso.org/hg/${_pkgname}"
 license=('LicenseRef-FreeCalypso')
 groups=('freecalypso')
-depends=()
+provides=("${_pkgname}=${pkgver}")
 makedepends=('mercurial')
 source=("hg+https://www.freecalypso.org/hg/${_pkgname}")
 md5sums=('SKIP')
