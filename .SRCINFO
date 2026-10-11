@@ -1,6 +1,6 @@
 pkgbase = revision-bin
 	pkgdesc = Lazygit for SVN - a fast, keyboard-driven TUI for SVN
-	pkgver = 1.7.5
+	pkgver = 1.7.6
 	pkgrel = 1
 	url = https://github.com/bapatchirag/revision
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = revision-bin
 	provides = revision
 	conflicts = revision
 	options = !strip
-	source = README-1.7.5.md::https://raw.githubusercontent.com/bapatchirag/revision/v1.7.5/README.md
-	source = LICENSE-1.7.5::https://raw.githubusercontent.com/bapatchirag/revision/v1.7.5/LICENSE
+	source = README-1.7.6.md::https://raw.githubusercontent.com/bapatchirag/revision/v1.7.6/README.md
+	source = LICENSE-1.7.6::https://raw.githubusercontent.com/bapatchirag/revision/v1.7.6/LICENSE
 	sha256sums = 5d22c5cd7de1ea232bf6fe7277b88a265c80213df7f7135147d5389288979617
 	sha256sums = fa0744b49963fef94ca4dcce4d4dc94b9ea7d86849675f2b411c373fe5cc1aa7
-	source_x86_64 = revision-x86_64-1.7.5::https://github.com/bapatchirag/revision/releases/download/v1.7.5/revision-linux-amd64
-	sha256sums_x86_64 = beb9d1b787b8a04cea0e3921d2211a6f556b66c70c74d102435b7956a604b353
-	source_aarch64 = revision-aarch64-1.7.5::https://github.com/bapatchirag/revision/releases/download/v1.7.5/revision-linux-arm64
-	sha256sums_aarch64 = d8a6d7b1ad3065ba1c527f6f2df79db565ae2c5f30d67a65e536bf489e7a3b94
+	source_x86_64 = revision-x86_64-1.7.6::https://github.com/bapatchirag/revision/releases/download/v1.7.6/revision-linux-amd64
+	sha256sums_x86_64 = 5d5b0d7c3fe5bd12619fa642c92462f6a84bb6de833d7134acb1d53898ef2a6c
+	source_aarch64 = revision-aarch64-1.7.6::https://github.com/bapatchirag/revision/releases/download/v1.7.6/revision-linux-arm64
+	sha256sums_aarch64 = 6220bc04ad34eae9f5685600c1d1edd8b834b92ecaac4a210bc374bd2d286238
 
 pkgname = revision-bin
