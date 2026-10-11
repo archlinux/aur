@@ -1,12 +1,14 @@
 pkgbase = freecalypso-ffs-editor-bin
 	pkgdesc = FreeCalypso FFS (Flash File System) editor firmware images
 	pkgver = r3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freecalypso.org/hg/ffs-editor
 	arch = any
 	groups = freecalypso
-	license = custom
-	conflicts = freecalypso-ffs-editor-bin-hg
+	license = LicenseRef-FreeCalypso
+	provides = freecalypso-ffs-editor=r3
+	conflicts = freecalypso-ffs-editor
+	conflicts = freecalypso-ffs-editor-hg
 	source = https://www.freecalypso.org/pub/GSM/FreeCalypso/ffs-editor-r3.tar.bz2
 	sha256sums = 62c1b5031a0c53e0522b1a798fde605f0e61b40949336e3ef60cfa932e5f4a0b
 
