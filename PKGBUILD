@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=swpui
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='Search and replace, TUI style.'
 arch=(
@@ -17,7 +17,7 @@ makedepends=('cargo')
 provides=('swp')
 conflicts=('swpui-git' 'swpui-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ddd6b37a1399a097d0bdbd59b94c28f44c9e4801c35b32e66af739b504f33992')
+sha256sums=('517a8f19498d3e5d689baabb7e48001aba81042c727010491fec27c092cd236d')
 
 prepare() {
     cd "$pkgname-$pkgver"
