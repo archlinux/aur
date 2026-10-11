@@ -1,0 +1,28 @@
+post_install() {
+    cat <<'EOF'
+Slick Mod has been installed.
+
+To make slack:// links open in Slick instead of the default Slack, set Slick as the default handler in your desktop environment's settings, or run:
+
+        xdg-mime default dev.slick.byoe.desktop x-scheme-handler/slack
+
+To check the current handler, run:
+
+        xdg-mime query default x-scheme-handler/slack
+
+EOF
+}
+post_remove(){
+    cat <<'EOF'
+Slick Mod has been removed.
+
+If you previously set Slick as your default handler for slack:// links, you may want to select another handler in your desktop environment's settings.
+
+To check the current handler, run:
+
+        xdg-mime query default x-scheme-handler/slack
+
+To put it back to Slack, run:
+
+        xdg-mime default slack.desktop x-scheme-handler/slack
+}
