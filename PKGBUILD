@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)"
 arch=('any')
@@ -21,6 +21,8 @@ optdepends=(
   'xdg-desktop-portal-gnome: screencasting portal for Niri sessions'
   'xwayland-satellite: XWayland bridge for Niri sessions'
   'kitty: terminal defaults under /etc/xdg/kitty'
+  'alacritty: optional terminal with factory defaults under /etc/alacritty'
+  'ghostty: optional terminal; Hornero defaults are seeded for new users and themes are installed system-wide'
   'exo: Hornero default application launcher and TerminalEmulator helper'
   'gtk3: GTK 3 defaults under /etc/xdg/gtk-3.0'
   'fontconfig: font defaults under /etc/xdg/fontconfig'
@@ -32,13 +34,12 @@ optdepends=(
   'handlr: default-application handler under /etc/xdg/handlr'
   'qt6ct: Qt6 platform-theme defaults under /etc/xdg/qt6ct'
   'papirus-icon-theme: Papirus-Dark factory icons'
-  'orchis-theme: Orchis factory GTK themes'
   'ttf-material-symbols-variable: Material Symbols shell icon font'
 )
 # Named "config" (not "$pkgname") so the checkout lands at
 # "${srcdir}/config", matching _hornero_repo_root() below and keeping
 # AUR chroot builds identical to local packaging/ builds.
-source=("config::git+https://github.com/HorneroOS/config.git#tag=v0.3.2")
+source=("config::git+https://github.com/HorneroOS/config.git#tag=v0.3.3")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
@@ -94,7 +95,9 @@ package() {
   mkdir -p "$stage"
   bash "$repo_root/scripts/materialize.sh" --dest "$stage"
 
-  install -dm755 "$pkgdir/etc/xdg" "$pkgdir/usr/share/hornero/bin" \
+  install -dm755 "$pkgdir/etc/xdg" "$pkgdir/etc/alacritty" \
+    "$pkgdir/etc/skel/.config/ghostty/themes" "$pkgdir/usr/share/ghostty/themes" \
+    "$pkgdir/usr/share/hornero/bin" \
     "$pkgdir/usr/share/hornero/profiles/base"
 
   # Staged per-user config -> system-wide XDG defaults. This loop is
@@ -107,6 +110,10 @@ package() {
     # Niri reads /etc/niri/config.kdl as its system fallback, not
     # /etc/xdg/niri. Install it once below at the upstream-owned path.
     [[ "$base" == niri ]] && continue
+    # Alacritty's system fallback is /etc/alacritty/alacritty.toml; it does
+    # not search /etc/xdg. Ghostty has no global config lookup, so its curated
+    # config is seeded for newly created users below.
+    [[ "$base" == alacritty || "$base" == ghostty ]] && continue
     if [[ "$base" == systemd ]]; then
       # systemd owns /etc/xdg/systemd/user as a symlink to /etc/systemd/user.
       # Putting a directory at that XDG path makes pacman refuse the package.
@@ -135,6 +142,21 @@ package() {
   fi
   install -Dm644 "$stage/.config/niri/config.kdl" \
     "$pkgdir/etc/niri/config.kdl"
+
+  # Alacritty's documented system fallback uses /etc/alacritty. The user
+  # config from materialize.sh stays XDG-aware for chezmoi installs.
+  for file in alacritty.toml hornero-dark.toml hornero-light.toml hornero-colors.toml; do
+    install -Dm644 "$stage/.config/alacritty/$file" \
+      "$pkgdir/etc/alacritty/$file"
+  done
+
+  # Ghostty reads user XDG configuration only. Seed new accounts from skel;
+  # existing users receive the same config via materialize/chezmoi. Theme
+  # lookup checks the user's XDG themes before this system fallback.
+  install -Dm644 "$stage/.config/ghostty/config.ghostty" \
+    "$pkgdir/etc/skel/.config/ghostty/config.ghostty"
+  install -Dm644 "$stage/.config/ghostty/themes/Hornero Dynamic" \
+    "$pkgdir/usr/share/ghostty/themes/Hornero Dynamic"
 
   # Thunar ships /etc/xdg/Thunar/uca.xml itself. Packaging the staged user
   # custom actions there causes a pacman ownership conflict on Arch. The
@@ -217,9 +239,13 @@ package() {
 
   # Permissions mirror scripts/materialize.sh: dirs 755, files 644,
   # with executables restored for CLI adapters and hypr helpers.
-  find "$pkgdir/etc/xdg" "$pkgdir/etc/systemd/user" "$pkgdir/usr/share/hornero" "$pkgdir/usr/share/themes" \
+  find "$pkgdir/etc/xdg" "$pkgdir/etc/alacritty" "$pkgdir/etc/skel" \
+    "$pkgdir/etc/systemd/user" "$pkgdir/usr/share/hornero" "$pkgdir/usr/share/themes" \
+    "$pkgdir/usr/share/ghostty/themes" \
     -type d -exec chmod 755 {} +
-  find "$pkgdir/etc/xdg" "$pkgdir/etc/systemd/user" "$pkgdir/usr/share/hornero" "$pkgdir/usr/share/themes" \
+  find "$pkgdir/etc/xdg" "$pkgdir/etc/alacritty" "$pkgdir/etc/skel" \
+    "$pkgdir/etc/systemd/user" "$pkgdir/usr/share/hornero" "$pkgdir/usr/share/themes" \
+    "$pkgdir/usr/share/ghostty/themes" \
     -type f -exec chmod 644 {} +
   chmod 755 "$pkgdir"/usr/share/hornero/bin/hornero-*
   chmod 755 "$pkgdir"/etc/xdg/hypr/scripts/*.sh
