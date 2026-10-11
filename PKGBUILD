@@ -1,7 +1,7 @@
-# Maintainer: BinaryHarbinger <halilefeesen@proton.me>
+# Maintainer: sorashii <sorashii@proton.me>
 
 pkgname=riftbar-git
-pkgver=0.1.0.r0.g0000000
+pkgver=0.2.7.r193.g242dc18
 pkgrel=1
 pkgdesc="Highly customizable GTK4 bar for Wayland written in Rust (git version)"
 arch=('x86_64')
@@ -20,14 +20,14 @@ makedepends=('git' 'cargo' 'pkg-config')
 provides=('riftbar')
 conflicts=('riftbar')
 
-source=("git+https://codeberg/sorashii/riftbar.git")
+source=("git+https://codeberg.org/sorashii/riftbar.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/riftbar"
 
   local tag
-  tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.0.0")
+  tag=$(git describe --tags --abbrev=0 2>/dev/null)
 
   printf "%s.r%s.g%s" \
     "${tag#v}" \
