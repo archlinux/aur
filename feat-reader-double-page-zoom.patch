@@ -1,0 +1,390 @@
+diff --git a/src/features/reader/reader-image.tsx b/src/features/reader/reader-image.tsx
+index f68b4b1..0db5615 100644
+--- a/src/features/reader/reader-image.tsx
++++ b/src/features/reader/reader-image.tsx
+@@ -1,4 +1,12 @@
+-import { useEffect, useLayoutEffect, useRef, useState, type RefObject } from 'react'
++import {
++  useCallback,
++  useEffect,
++  useLayoutEffect,
++  useRef,
++  useState,
++  type RefObject,
++  type UIEvent
++} from 'react'
+ 
+ import { cn } from '@/lib/utils'
+ import type { ReaderPageDirection } from '@/stores/settings-store'
+@@ -28,6 +36,8 @@ export function ReaderImageWindow({
+         currentIndex={currentIndex}
+         pageCount={pageCount}
+         pageDirection={pageDirection}
++        zoom={zoom}
++        scrollRef={currentScrollRef}
+       />
+     )
+   }
+@@ -73,11 +83,8 @@ function ReaderSinglePage({
+   zoom: number
+   scrollRef?: RefObject<HTMLDivElement | null>
+ }) {
+-  const containerRef = useRef<HTMLDivElement | null>(null)
+   const [naturalSize, setNaturalSize] = useState<{ width: number; height: number } | null>(null)
+   const viewport = useViewportSize()
+-  // Viewport center as a fraction of the content; null means "top, centered".
+-  const scrollAnchorRef = useRef<{ x: number; y: number } | null>(null)
+   const isZoomedIn = zoom > 1
+   const fitScale = naturalSize
+     ? Math.min(viewport.width / naturalSize.width, viewport.height / naturalSize.height)
+@@ -89,35 +96,11 @@ function ReaderSinglePage({
+           height: `${naturalSize.height * fitScale * zoom}px`
+         }
+       : { width: `${100 * zoom}vw`, height: `${100 * zoom}vh` }
+-
+-  useEffect(() => {
+-    if (scrollRef) {
+-      scrollRef.current = containerRef.current
+-    }
+-  }, [scrollRef])
+-
+-  useEffect(() => {
+-    if (isCurrent) {
+-      scrollAnchorRef.current = null
+-    }
+-  }, [isCurrent])
+-
+-  useLayoutEffect(() => {
+-    const container = containerRef.current
+-
+-    if (!container) {
+-      return
+-    }
+-
+-    const anchor = scrollAnchorRef.current
+-    container.scrollTo({
+-      left: anchor
+-        ? anchor.x * container.scrollWidth - container.clientWidth / 2
+-        : (container.scrollWidth - container.clientWidth) / 2,
+-      top: anchor ? anchor.y * container.scrollHeight - container.clientHeight / 2 : 0,
+-      behavior: 'instant'
+-    })
+-  }, [imageSize.height, imageSize.width, isCurrent])
++  const { containerRef, handleScroll } = useZoomScrollAnchor({
++    contentKey: `${imageSize.width}x${imageSize.height}`,
++    resetKey: isCurrent,
++    scrollRef
++  })
+ 
+   return (
+     <div
+@@ -126,13 +109,7 @@ function ReaderSinglePage({
+         'flex h-screen w-screen scrollbar-none',
+         isZoomedIn ? 'pointer-events-auto overflow-auto' : 'overflow-hidden'
+       )}
+-      onScroll={event => {
+-        const container = event.currentTarget
+-        scrollAnchorRef.current = {
+-          x: (container.scrollLeft + container.clientWidth / 2) / Math.max(container.scrollWidth, 1),
+-          y: (container.scrollTop + container.clientHeight / 2) / Math.max(container.scrollHeight, 1)
+-        }
+-      }}
++      onScroll={handleScroll}
+     >
+       <img
+         src={src}
+@@ -156,6 +133,63 @@ function ReaderSinglePage({
+   )
+ }
+ 
++/**
++ * Keeps the viewport center on the same spot of a zoomable scroll container
++ * while its content resizes, and returns to top-center when resetKey changes.
++ */
++function useZoomScrollAnchor({
++  contentKey,
++  resetKey,
++  scrollRef
++}: {
++  contentKey: string
++  resetKey: unknown
++  scrollRef?: RefObject<HTMLDivElement | null>
++}) {
++  const containerRef = useRef<HTMLDivElement | null>(null)
++  // Viewport center as a fraction of the content; null means "top, centered".
++  const anchorRef = useRef<{ x: number; y: number } | null>(null)
++  const resetKeyRef = useRef(resetKey)
++
++  useEffect(() => {
++    if (scrollRef) {
++      scrollRef.current = containerRef.current
++    }
++  }, [scrollRef])
++
++  useLayoutEffect(() => {
++    const container = containerRef.current
++
++    if (!container) {
++      return
++    }
++
++    if (resetKeyRef.current !== resetKey) {
++      resetKeyRef.current = resetKey
++      anchorRef.current = null
++    }
++
++    const anchor = anchorRef.current
++    container.scrollTo({
++      left: anchor
++        ? anchor.x * container.scrollWidth - container.clientWidth / 2
++        : (container.scrollWidth - container.clientWidth) / 2,
++      top: anchor ? anchor.y * container.scrollHeight - container.clientHeight / 2 : 0,
++      behavior: 'instant'
++    })
++  }, [contentKey, resetKey])
++
++  const handleScroll = useCallback((event: UIEvent<HTMLDivElement>) => {
++    const container = event.currentTarget
++    anchorRef.current = {
++      x: (container.scrollLeft + container.clientWidth / 2) / Math.max(container.scrollWidth, 1),
++      y: (container.scrollTop + container.clientHeight / 2) / Math.max(container.scrollHeight, 1)
++    }
++  }, [])
++
++  return { containerRef, handleScroll }
++}
++
+ function useViewportSize() {
+   const [size, setSize] = useState(() => ({
+     width: window.innerWidth,
+@@ -179,12 +213,16 @@ function ReaderDoublePageWindow({
+   pages,
+   currentIndex,
+   pageCount,
+-  pageDirection
++  pageDirection,
++  zoom,
++  scrollRef
+ }: {
+   pages: ReaderWindowPage[]
+   currentIndex: number
+   pageCount: number
+   pageDirection: ReaderPageDirection
++  zoom: number
++  scrollRef?: RefObject<HTMLDivElement | null>
+ }) {
+   const pageByIndex = new Map(pages.map(page => [page.index, page]))
+   const currentPage = pageByIndex.get(currentIndex) ?? null
+@@ -196,27 +234,47 @@ function ReaderDoublePageWindow({
+   const leftIndex = pageDirection === 'rtl' && showNextSlot ? nextIndex : currentIndex
+   const rightIndex = pageDirection === 'rtl' ? currentIndex : nextIndex
+   const visibleIndexes = showNextSlot ? [leftIndex, rightIndex] : [currentIndex]
++  const isZoomedIn = zoom > 1
++  const { containerRef, handleScroll } = useZoomScrollAnchor({
++    contentKey: String(zoom),
++    resetKey: currentIndex,
++    scrollRef
++  })
+ 
+   return (
+-    <div className="pointer-events-none flex h-screen w-screen items-center justify-center overflow-hidden px-6 py-6">
++    <div className="pointer-events-none relative h-screen w-screen overflow-hidden">
+       <div
++        ref={containerRef}
+         className={cn(
+-          'flex h-full w-full items-center justify-center gap-2',
+-          showNextSlot ? 'max-w-[1800px]' : 'max-w-[900px]'
++          'flex h-screen w-screen scrollbar-none p-6',
++          isZoomedIn ? 'pointer-events-auto overflow-auto' : 'overflow-hidden'
+         )}
++        onScroll={handleScroll}
+       >
+-        <ReaderDoublePageSlot
+-          page={leftPage}
+-          isCurrent={leftIndex === currentIndex}
+-          label={`第 ${leftIndex + 1} 张`}
+-        />
+-        {showNextSlot ? (
++        {/* The spread fits the padded viewport at 100% and scales as one unit; the
++            two pages meet at the spine so zooming in does not center on a gap. */}
++        <div
++          className="m-auto flex shrink-0 items-center justify-center gap-2"
++          style={{
++            width: `calc(min(100vw - 3rem, ${showNextSlot ? 1800 : 900}px) * ${zoom})`,
++            height: `calc((100vh - 3rem) * ${zoom})`
++          }}
++        >
+           <ReaderDoublePageSlot
+-            page={rightPage}
+-            isCurrent={rightIndex === currentIndex}
+-            label={`第 ${rightIndex + 1} 张`}
++            page={leftPage}
++            isCurrent={leftIndex === currentIndex}
++            label={`第 ${leftIndex + 1} 张`}
++            align={showNextSlot ? 'end' : 'center'}
+           />
+-        ) : null}
++          {showNextSlot ? (
++            <ReaderDoublePageSlot
++              page={rightPage}
++              isCurrent={rightIndex === currentIndex}
++              label={`第 ${rightIndex + 1} 张`}
++              align="start"
++            />
++          ) : null}
++        </div>
+       </div>
+       <ReaderHiddenImagePreloads pages={pages} visibleIndexes={visibleIndexes} />
+     </div>
+@@ -257,14 +315,23 @@ function ReaderHiddenImagePreloads({
+ function ReaderDoublePageSlot({
+   page,
+   isCurrent,
+-  label
++  label,
++  align
+ }: {
+   page: ReaderWindowPage | null
+   isCurrent: boolean
+   label: string
++  align: 'start' | 'center' | 'end'
+ }) {
+   return (
+-    <div className="flex h-full min-w-0 flex-1 items-center justify-center bg-neutral-950">
++    <div
++      className={cn(
++        'flex h-full min-w-0 flex-1 items-center bg-neutral-950',
++        align === 'start' && 'justify-start',
++        align === 'center' && 'justify-center',
++        align === 'end' && 'justify-end'
++      )}
++    >
+       {page ? (
+         <img
+           src={page.src}
+diff --git a/src/features/reader/reader-page.tsx b/src/features/reader/reader-page.tsx
+index 3760bec..d358620 100644
+--- a/src/features/reader/reader-page.tsx
++++ b/src/features/reader/reader-page.tsx
+@@ -180,10 +180,7 @@ export function ReaderPage({ comicId, search }: { comicId: string; search: Reade
+     zoom,
+     zoomPercent,
+     isHintVisible: isZoomHintVisible
+-  } = useReaderZoom({
+-    readMode: readerReadMode,
+-    enabled: !isDoublePageMode
+-  })
++  } = useReaderZoom(readerReadMode)
+   useNextChapterPrefetch({
+     currentIndex,
+     pageCount,
+@@ -227,7 +224,7 @@ export function ReaderPage({ comicId, search }: { comicId: string; search: Reade
+           pageDirection={readerPageDirection}
+           onPrevious={goToPreviousPage}
+           onNext={goToNextPageOrChapter}
+-          scrollTargetRef={isDoublePageMode ? undefined : singleScrollRef}
++          scrollTargetRef={singleScrollRef}
+         />
+       )}
+ 
+diff --git a/src/features/reader/reader-settings-menu.tsx b/src/features/reader/reader-settings-menu.tsx
+index 529c442..04f4217 100644
+--- a/src/features/reader/reader-settings-menu.tsx
++++ b/src/features/reader/reader-settings-menu.tsx
+@@ -62,7 +62,6 @@ export function ReaderSettingsMenu() {
+   const isSingleMode = readerReadMode === 'single'
+   const zoomPercent = isSingleMode ? readerSingleZoomPercent : readerStripZoomPercent
+   const setZoomPercent = isSingleMode ? setReaderSingleZoomPercent : setReaderStripZoomPercent
+-  const isZoomDisabled = isSingleMode && readerDoublePageMode
+ 
+   return (
+     <DropdownMenu>
+@@ -90,21 +89,17 @@ export function ReaderSettingsMenu() {
+         <div className="flex items-center justify-between gap-3 px-3 py-2">
+           <div className="min-w-0">
+             <div className="text-sm text-neutral-100">缩放</div>
+-            <div className="mt-0.5 text-xs whitespace-nowrap text-neutral-500">
+-              {isZoomDisabled ? '双页时不可用' : 'Ctrl + 滚轮'}
+-            </div>
++            <div className="mt-0.5 text-xs whitespace-nowrap text-neutral-500">Ctrl + 滚轮</div>
+           </div>
+           <div className="flex items-center gap-1">
+             <ReaderZoomButton
+               label="缩小"
+-              disabled={isZoomDisabled}
+               onClick={() => setZoomPercent(clampReaderZoomPercent(zoomPercent / READER_ZOOM_STEP))}
+             >
+               <MinusIcon className="size-3.5" />
+             </ReaderZoomButton>
+             <ReaderZoomButton
+               label="重置缩放"
+-              disabled={isZoomDisabled}
+               className="w-12 tabular-nums"
+               onClick={() => setZoomPercent(100)}
+             >
+@@ -112,7 +107,6 @@ export function ReaderSettingsMenu() {
+             </ReaderZoomButton>
+             <ReaderZoomButton
+               label="放大"
+-              disabled={isZoomDisabled}
+               onClick={() => setZoomPercent(clampReaderZoomPercent(zoomPercent * READER_ZOOM_STEP))}
+             >
+               <PlusIcon className="size-3.5" />
+@@ -247,13 +241,11 @@ function ReaderRangeSetting({
+ 
+ function ReaderZoomButton({
+   label,
+-  disabled,
+   className,
+   onClick,
+   children
+ }: {
+   label: string
+-  disabled: boolean
+   className?: string
+   onClick: () => void
+   children: ReactNode
+@@ -263,9 +255,8 @@ function ReaderZoomButton({
+       type="button"
+       aria-label={label}
+       title={label}
+-      disabled={disabled}
+       className={cn(
+-        'flex h-7 min-w-7 items-center justify-center rounded-md px-1 text-xs text-neutral-200 transition-colors hover:bg-white/10 hover:text-neutral-50 focus-visible:bg-white/10 focus-visible:text-neutral-50 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-40',
++        'flex h-7 min-w-7 items-center justify-center rounded-md px-1 text-xs text-neutral-200 transition-colors hover:bg-white/10 hover:text-neutral-50 focus-visible:bg-white/10 focus-visible:text-neutral-50 focus-visible:outline-none',
+         className
+       )}
+       onClick={onClick}
+diff --git a/src/features/reader/use-reader-zoom.ts b/src/features/reader/use-reader-zoom.ts
+index 3915243..3add2bf 100644
+--- a/src/features/reader/use-reader-zoom.ts
++++ b/src/features/reader/use-reader-zoom.ts
+@@ -18,7 +18,7 @@ export function clampReaderZoomPercent(percent: number) {
+   return Math.min(Math.max(percent, READER_ZOOM_PERCENT_RANGE[0]), READER_ZOOM_PERCENT_RANGE[1])
+ }
+ 
+-export function useReaderZoom({ readMode, enabled }: { readMode: ReaderReadMode; enabled: boolean }) {
++export function useReaderZoom(readMode: ReaderReadMode) {
+   const isStripMode = readMode === 'strip'
+   const zoomPercent = useSettingsStore(state =>
+     isStripMode ? state.readerStripZoomPercent : state.readerSingleZoomPercent
+@@ -69,10 +69,6 @@ export function useReaderZoom({ readMode, enabled }: { readMode: ReaderReadMode;
+   )
+ 
+   useEffect(() => {
+-    if (!enabled) {
+-      return
+-    }
+-
+     function handleWheel(event: WheelEvent) {
+       if (!event.ctrlKey && !event.metaKey) {
+         return
+@@ -127,7 +123,7 @@ export function useReaderZoom({ readMode, enabled }: { readMode: ReaderReadMode;
+       window.removeEventListener('gesturechange', handleGestureChange)
+       window.removeEventListener('keydown', handleKeyDown)
+     }
+-  }, [applyZoom, enabled])
++  }, [applyZoom])
+ 
+   return {
+     zoom: zoomPercent / 100,
