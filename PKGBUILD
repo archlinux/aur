@@ -2,7 +2,7 @@
 
 pkgname=gtm-player
 _pkgname=gtm
-pkgver=0.2.88
+pkgver=0.2.89
 pkgrel=2
 pkgdesc='Reimagined terminal audio player with background daemon, YouTube/Spotify, radio and podcasts'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=('yt-dlp: download YouTube audio and resolve Spotify tracks for offli
   'ffmpeg: audio conversion for downloaded tracks'
   'pipewire-alsa: PipeWire audio output through the ALSA backend')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/prjctimg/gtm/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aea86f76208c7830a58f8217a62f34326e8b28a8b9f5700e9b53dde91e030ab2')
+sha256sums=('ebcf10971dfb2cb6c6c17ba916af81fa12bed6c5d0ca28029b9d6f6bb08443fe')
 
 prepare() {
   cd "$_pkgname-$pkgver"
