@@ -1,7 +1,7 @@
 pkgbase = wordcraft-bin
 	pkgdesc = Open-source native word processor, Word alternative (prebuilt binary)
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/storytold/wordcraft
 	arch = x86_64
 	arch = aarch64
@@ -14,6 +14,7 @@ pkgbase = wordcraft-bin
 	optdepends = vulkan-icd-loader: GPU-accelerated rendering
 	provides = wordcraft
 	conflicts = wordcraft
+	options = !strip
 	source_x86_64 = wordcraft-0.5.0-linux-x86_64.tar.gz::https://github.com/storytold/wordcraft/releases/download/v0.5.0/wordcraft-0.5.0-linux-x86_64.tar.gz
 	sha256sums_x86_64 = 994bb376479ef6d76735cf4029e5ef3c2d52a85a4c9acde2b37c33b19c570203
 	source_aarch64 = wordcraft-0.5.0-linux-aarch64.tar.gz::https://github.com/storytold/wordcraft/releases/download/v0.5.0/wordcraft-0.5.0-linux-aarch64.tar.gz
