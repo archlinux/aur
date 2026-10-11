@@ -1,6 +1,6 @@
 # Maintainer: hoornet <hoornet@users.noreply.github.com>
 pkgname=vega-nostr-git
-pkgver=0.15.9
+pkgver=0.15.10
 pkgrel=1
 pkgdesc="Cross-platform Nostr desktop client with Lightning integration"
 arch=('x86_64')
