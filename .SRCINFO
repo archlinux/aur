@@ -1,0 +1,18 @@
+pkgbase = musictree
+	pkgdesc = Converts large music collections keeping the folder structure
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/mipi/musictree/
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = make
+	depends = ffmpeg
+	conflicts = musictree-git
+	options = !debug
+	options = !lto
+	source = musictree-0.1.0.tar.gz::https://codeberg.org/mipi/musictree/archive/0.1.0.tar.gz
+	sha256sums = c92d53890f555cbb1ff06d3f02646e5a794de79e22c80dd74b2d5293a2cc4771
+
+pkgname = musictree
