@@ -1,9 +1,9 @@
 # Maintainer: Huynh Thien Khiem <my_github_name 2000 at gmail dot com>
 _pkgname=euphonica
 pkgname=${_pkgname}-git
-pkgver=0.96.3.r354
+pkgver=0.99.8.r933
 pkgrel=1
-pkgdesc="Libadwaita MPD client with visualiser, wikis and synced lyrics"
+pkgdesc="Music player with visualiser, wikis and synced lyrics, powered by MPD"
 arch=("x86_64")
 url="https://github.com/htkhiem/euphonica"
 license=('GPL-3.0-or-later')
