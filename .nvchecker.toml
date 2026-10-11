@@ -1,0 +1,5 @@
+[python-dr14_tmeter]
+source = "github"
+github = "simon-r/dr14_t.meter"
+use_max_tag = true
+prefix = "v"
