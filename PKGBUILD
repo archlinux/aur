@@ -5,7 +5,7 @@
 # Contributor: Dany Martineau <dany.luc.martineau@gmail.com>
 
 pkgname=clementine
-pkgver=1.4.1+165+g1a48f6b05
+pkgver=1.4.1+279+gf42e65cc7
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 arch=(x86_64)
@@ -25,7 +25,6 @@ depends=(
     libgcc
     libglvnd
     #libgpod
-    #liblastfm-qt5 # removed from Arch repo
     #libmtp
     libpulse
     libstdc++
@@ -56,8 +55,8 @@ optdepends=(
     'gvfs: Various devices support'
     )
 # NB commits are chosen corresponding a git tag https://github.com/clementine-player/Clementine/tags
-source=("git+https://github.com/clementine-player/Clementine.git#commit=1a48f6b0581c7872844ce5bd84b9d946f52d190d")
-sha256sums=('898bcbd6d77b7aefdcd488bc04c402b348af823779826ff59e225fa0eeea4bea')
+source=("git+https://github.com/clementine-player/Clementine.git#commit=ae9d5d8cdbfe0ae7683e4a9dfbcc487409da6528")
+sha256sums=('00d86b47392e59a5965f4d762e1c03fd6f25af3102e6de0a65d74a36030536cd')
 
 pkgver() {
   cd Clementine
@@ -82,13 +81,12 @@ build() {
     -DENABLE_DROPBOX=OFF
     -DENABLE_GOOGLE_DRIVE=OFF
     -DENABLE_LIBGPOD=OFF
-    #-DENABLE_LIBLASTFM=OFF
     -DENABLE_LIBMTP=OFF
     -DENABLE_SEAFILE=OFF
     -DENABLE_SKYDRIVE=OFF
     -DENABLE_SPARKLE=OFF
     -DENABLE_WIIMOTEDEV=OFF
-    #-DUSE_SYSTEM_PROJECTM=ON
+    -DUSE_SYSTEM_PROJECTM=OFF
     -DUSE_SYSTEM_TAGLIB=ON
     )
 
