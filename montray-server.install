@@ -1,0 +1,63 @@
+_warn_manual_install() {
+  local unit=/etc/systemd/system/montray-server.service
+  local binary=/usr/local/bin/montray-server
+  local sysusers=/usr/local/lib/sysusers.d/montray.conf
+
+  # The -L checks also find broken symlinks, which -e misses.
+  if [ -e "$unit" ] || [ -L "$unit" ]; then
+    cat <<'EOF'
+WARNING: Found a system service that overrides the packaged Montray Server:
+  /etc/systemd/system/montray-server.service
+
+The package was installed, but systemd will keep using that unit instead of
+the packaged one. The old files were not changed. Check that they are old
+standalone Montray files, then remove them:
+  sudo systemctl disable --now montray-server.service
+  sudo rm -f /etc/systemd/system/montray-server.service
+  sudo rm -f /usr/local/bin/montray-server
+  sudo rm -f /usr/local/lib/sysusers.d/montray.conf
+  sudo systemctl daemon-reload
+
+Keep your config:
+  /etc/montray-server.yml
+EOF
+    return
+  fi
+
+  # The old files do not override the packaged service, so a note is enough.
+  if [ ! -e "$binary" ] && [ ! -L "$binary" ] \
+      && [ ! -e "$sysusers" ] && [ ! -L "$sysusers" ]; then
+    return
+  fi
+
+  cat <<'EOF'
+WARNING: Found possible standalone Montray Server files.
+
+They were not changed. The packaged service uses /usr/bin/montray-server, so
+these files are not used by it. Remove them if they belong to an old install:
+  sudo rm -f /usr/local/bin/montray-server
+  sudo rm -f /usr/local/lib/sysusers.d/montray.conf
+EOF
+}
+
+post_install() {
+  _warn_manual_install
+
+  cat <<'EOF'
+Edit /etc/montray-server.yml, then enable and start the service:
+  sudo systemctl enable --now montray-server.service
+EOF
+}
+
+post_upgrade() {
+  # Restart only if the service is already running.
+  if [ -d /run/systemd/system ]; then
+    systemctl try-restart montray-server.service || true
+  fi
+}
+
+pre_remove() {
+  if [ -d /run/systemd/system ]; then
+    systemctl disable --now montray-server.service || true
+  fi
+}

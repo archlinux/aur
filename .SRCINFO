@@ -1,0 +1,38 @@
+pkgbase = montray
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/dimonomid/montray
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = go
+	makedepends = cargo
+	makedepends = fontconfig
+	source = montray::git+https://github.com/dimonomid/montray.git#tag=v2.1.0
+	sha256sums = 2eefe0cede597cc6499acf188e8abbc3655c219d3824040d1c19b4eaef533426
+
+pkgname = montray-server
+	pkgdesc = Monitor system health and publish its status
+	install = montray-server.install
+	depends = systemd
+	backup = etc/montray-server.yml
+
+pkgname = montray-ui
+	pkgdesc = Show Montray status in the desktop tray
+	install = montray-ui.install
+	depends = glibc
+	depends = gcc-libs
+	depends = fontconfig
+	depends = wayland
+	depends = libx11
+	depends = libxcb
+	depends = libxext
+	depends = libxfixes
+	depends = libxi
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxrender
+	depends = libxcursor
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = hicolor-icon-theme
