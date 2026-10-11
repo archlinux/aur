@@ -3,13 +3,14 @@
 _hgname=fc-sim-tools
 _pkgname=freecalypso-sim-tools
 pkgname="${_pkgname}-hg"
-pkgver=r103.3477438b5706
-pkgrel=4
+pkgver=r180.5bb311dae978
+pkgrel=1
 pkgdesc="FreeCalypso SIM card tools"
 arch=('x86_64' 'i686')
 url="https://www.freecalypso.org/hg/${_hgname}"
 license=('LicenseRef-FreeCalypso')
 groups=('freecalypso')
+provides=("${_pkgname}=${pkgver}")
 depends=('pcsclite')
 makedepends=('mercurial')
 conflicts=("${_pkgname}")
