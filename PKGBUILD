@@ -29,7 +29,7 @@ conflicts=('sable' 'sable-nightly-bin')
 options=('!strip' '!debug')
 install=${pkgname}.install
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/sable-${pkgver}-linux-x86_64.deb")
-sha256sums_x86_64=('d2f09172a5a8758fa3fe0a7310689cd01b0be8806b7b71067d5b8ee39de772f5')
+sha256sums_x86_64=('12cf73dc50a1d3a32ae55d091a00c000d101a7efed638b128bdf0753b3881b35')
 
 package() {
   bsdtar -O -xf "${srcdir}/${pkgname}-${pkgver}-x86_64.deb" 'data.tar*' \
