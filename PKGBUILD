@@ -13,7 +13,7 @@ depends=('gtk3' 'libayatana-appindicator' 'libayatana-indicator' 'mpv' 'webkit2g
 provides=('piliplus')
 conflicts=('piliplus' 'piliplus-git')
 source_x86_64=("https://github.com/bggRGjQaUbCoE/PiliPlus/releases/download/2.1.6.2/PiliPlus_linux_2.1.6%2B5472_amd64.tar.gz"
-               "com.example.piliplus.desktop::https://raw.githubusercontent.com/bggRGjQaUbCoE/PiliPlus/main/assets/linux/com.example.piliplus.desktop")
+               "com.example.piliplus-${pkgver}.desktop::https://raw.githubusercontent.com/bggRGjQaUbCoE/PiliPlus/${pkgver}/assets/linux/com.example.piliplus.desktop")
 
 options=('!debug' '!strip')
 
@@ -32,7 +32,7 @@ package() {
   install -Dm644 "$srcdir/data/flutter_assets/assets/images/logo/logo.png" \
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
   # 安装 .desktop
-  install -Dm644 "$srcdir/com.example.piliplus.desktop" \
+  install -Dm644 "$srcdir/com.example.piliplus-${pkgver}.desktop" \
     "$pkgdir/usr/share/applications/com.example.piliplus.desktop"
   # 链接主程序
   ln -s "/opt/$_pkgname/piliplus" "$pkgdir/usr/bin/piliplus"

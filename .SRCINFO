@@ -16,7 +16,7 @@ pkgbase = piliplus-bin
 	options = !debug
 	options = !strip
 	source_x86_64 = https://github.com/bggRGjQaUbCoE/PiliPlus/releases/download/2.1.6.2/PiliPlus_linux_2.1.6%2B5472_amd64.tar.gz
-	source_x86_64 = com.example.piliplus.desktop::https://raw.githubusercontent.com/bggRGjQaUbCoE/PiliPlus/main/assets/linux/com.example.piliplus.desktop
+	source_x86_64 = com.example.piliplus-2.1.6.2.desktop::https://raw.githubusercontent.com/bggRGjQaUbCoE/PiliPlus/2.1.6.2/assets/linux/com.example.piliplus.desktop
 	sha256sums_x86_64 = 271e7911f0a4a676cce7f3584f598980e15a583e683cc39595bf13c13940a052
 	sha256sums_x86_64 = 7cf1d7180a033f0ba86cc03a0ba652f0e96095713485e25f4a5f9ebf0abbe27c
 
