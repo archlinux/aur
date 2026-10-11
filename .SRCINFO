@@ -1,15 +1,15 @@
 pkgbase = ccfe
 	pkgdesc = Tool to supply an interactive screen-oriented interface to command line scripts and commands
-	pkgver = 1.58
-	pkgrel = 2
-	url = http://ccfe.altervista.org
+	pkgver = 1.58.1
+	pkgrel = 1
+	url = https://github.com/jose1711/ccfe
 	arch = any
 	license = GPL2
 	depends = perl-curses-panels-menus-forms
-	source = ccfe.tar.gz::http://ccfe.altervista.org/dnload/dnload.php?fname=ccfe-1.58.tar.gz
+	source = ccfe-1.58.1.tar.gz::https://github.com/jose1711/ccfe/archive/refs/tags/v1.58.1.tar.gz
 	source = ccfeinstall.conf
 	source = install.patch
-	md5sums = 043617fe5331776a8aa600e505d5fdfa
+	md5sums = fb113bcb1c977575a591a04755116461
 	md5sums = 9f78a2fa9c90676d60fa9cae28393733
 	md5sums = 2c95353b53b3399ac9317a7a6fd299a4
 

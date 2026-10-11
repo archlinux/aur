@@ -2,16 +2,16 @@
 # Maintainer: Jose Riha <jose 1711 gmail com>
 
 pkgname=ccfe
-pkgver=1.58
-pkgrel=2
+pkgver=1.58.1
+pkgrel=1
 pkgdesc="Tool to supply an interactive screen-oriented interface to command line scripts and commands"
-url="http://ccfe.altervista.org"
+url="https://github.com/jose1711/ccfe"
 arch=('any')
 license=('GPL2')
 depends=('perl-curses-panels-menus-forms')
-source=("${pkgname}.tar.gz::http://ccfe.altervista.org/dnload/dnload.php?fname=${pkgname}-${pkgver}.tar.gz" 'ccfeinstall.conf' 'install.patch')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz" 'ccfeinstall.conf' 'install.patch')
 
-md5sums=('043617fe5331776a8aa600e505d5fdfa'
+md5sums=('fb113bcb1c977575a591a04755116461'
          '9f78a2fa9c90676d60fa9cae28393733'
          '2c95353b53b3399ac9317a7a6fd299a4')
 
