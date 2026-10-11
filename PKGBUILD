@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-git
-pkgver=1.2.23.r0.g1e88a0451
+pkgver=1.2.31.r14.g5e57257
 pkgrel=1
 pkgdesc="A music player aimed at audio enthusiasts and music collectors"
 arch=(x86_64 i686 armv7h aarch64)
@@ -30,6 +30,7 @@ depends=(
     libmtp
     libplist
     libpulse
+    libsecret
     libstdc++
     libusbmuxd
     libx11
@@ -37,6 +38,7 @@ depends=(
     #sparsehash
     sqlite
     taglib
+    uchardet
     udisks2
     )
 makedepends=(
@@ -60,7 +62,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd strawberry
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
