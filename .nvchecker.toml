@@ -1,0 +1,5 @@
+[seqdiag]
+source = "github"
+github = "arenevier/seqdiag"
+use_max_tag = true
+prefix = "v"
