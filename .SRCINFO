@@ -1,0 +1,29 @@
+pkgbase = python-connectrpc
+	pkgdesc = Server and client runtime library for Connect RPC.
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://github.com/connectrpc/connect-py
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-flask
+	checkdepends = python-starlette
+	checkdepends = python-brotli
+	checkdepends = python-grpcio
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-timeout
+	checkdepends = python-pyvoy
+	checkdepends = python-zstandard
+	checkdepends = python-protobuf
+	makedepends = python-uv-build
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-protobuf-py
+	depends = python-pyqwest
+	source = connectrpc::git+https://github.com/connectrpc/connect-py.git#tag=v0.12.1
+	sha256sums = bb8c564ac18b24e0c3c209b52e702c0c916f53958756d6dde8723faf7490e9c5
+
+pkgname = python-connectrpc
