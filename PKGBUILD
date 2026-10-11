@@ -2,7 +2,7 @@
 
 _pkgname=elvis
 pkgname=erlang-elvis
-pkgver=4.1.1
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Erlang Style Reviewer"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('erlang') # XXX: list specific packages?
 makedepends=('rebar3')
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/inaka/elvis/archive/${pkgver}.tar.gz")
-sha256sums=('82a42102734285d0e39a8b55bc2195752f44347b6f2ef0962834e49579d067c8')
+sha256sums=('ea0d3438062d94b686b375e98995584ed7b6b8863582f77b1966971299e400f4')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"

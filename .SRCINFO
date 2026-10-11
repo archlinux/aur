@@ -1,6 +1,6 @@
 pkgbase = erlang-elvis
 	pkgdesc = Erlang Style Reviewer
-	pkgver = 4.1.1
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://github.com/inaka/elvis
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = erlang-elvis
 	makedepends = rebar3
 	depends = erlang
 	conflicts = erlang-elvis-git
-	source = erlang-elvis-4.1.1.tar.gz::https://github.com/inaka/elvis/archive/4.1.1.tar.gz
-	sha256sums = 82a42102734285d0e39a8b55bc2195752f44347b6f2ef0962834e49579d067c8
+	source = erlang-elvis-6.0.0.tar.gz::https://github.com/inaka/elvis/archive/6.0.0.tar.gz
+	sha256sums = ea0d3438062d94b686b375e98995584ed7b6b8863582f77b1966971299e400f4
 
 pkgname = erlang-elvis
