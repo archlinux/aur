@@ -1,0 +1,18 @@
+pkgbase = xsetwall-git
+	pkgdesc = A minimal utility for setting wallpapers in X11 environment
+	pkgver = 1.0.3.r0.g9c42ca1
+	pkgrel = 1
+	url = https://codeberg.org/0x61nas/xsetwall
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	makedepends = bash
+	makedepends = git
+	depends = libx11
+	provides = xsetwall
+	options = !debug
+	source = xsetwall-aurora::git+https://codeberg.org/0x61nas/xsetwall.git#branch=aurora
+	sha256sums = SKIP
+
+pkgname = xsetwall-git
