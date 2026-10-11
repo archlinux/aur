@@ -2,7 +2,7 @@
 # Maintainer: G-grbz <gkhn.gurbuz@hotmail.com>
 
 pkgname=lurviko
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Qt Quick file manager with media libraries, cloud storage and an encrypted vault'
 arch=('x86_64')
@@ -16,8 +16,9 @@ depends=(
   'openssl>=3.2' 'ffmpeg' 'hicolor-icon-theme'
 )
 makedepends=('cmake>=3.21' 'extra-cmake-modules' 'ninja')
-checkdepends=('python' 'python-pytest' 'breeze-icons' 'desktop-file-utils' 'libarchive')
+checkdepends=('python' 'python-pytest' 'python-cryptography' 'breeze-icons' 'desktop-file-utils' 'libarchive')
 optdepends=(
+  'python-cryptography: standalone vault recovery tool'
   'qt6-wayland: Wayland desktop sessions'
   'qt6-imageformats: additional image formats'
   'ffmpegthumbnailer: video thumbnails'
@@ -37,7 +38,7 @@ optdepends=(
 )
 install=lurviko.install
 source=("Lurviko-${pkgver}-${pkgrel}.tar.gz::${url}/releases/download/v${pkgver}/Lurviko-${pkgver}.tar.gz")
-sha256sums=('6147b1cbf3c7c14562b2f71fbd57f7a723300da479725c723f076e94aa1c96dc')
+sha256sums=('8d3866e7ace9d8cfcb6985819337f8c0c079d6e9c31dc1630ef09323dc138a3b')
 
 prepare() {
   # Installed workers are found in /usr/share/Lurviko. Do not embed the
