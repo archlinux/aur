@@ -1,18 +1,16 @@
 pkgbase = fabricmc-cli-git
 	pkgdesc = Fabric modding CLI utility
-	pkgver = r222.378fb788
+	pkgver = r229.95265679
 	pkgrel = 1
 	url = https://github.com/FabricMC/fabricmc.net/tree/main/cli
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = npm
-	depends = deno
-	provides = fabricmc-cli=r222.378fb788
+	depends = nodejs
+	provides = fabricmc-cli=r229.95265679
 	conflicts = fabricmc-cli
 	source = fabricmc::git+https://github.com/FabricMC/fabricmc.net.git
-	source = no-upgrade.patch
 	sha256sums = SKIP
-	sha256sums = 1e1eb6f3176f2c58c9ce3376ea9968f68b0a156098642a6740464a1c055e9aca
 
 pkgname = fabricmc-cli-git

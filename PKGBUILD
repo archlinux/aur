@@ -1,22 +1,20 @@
 # Maintainer: Celeste <celdaemon at voidgroup dot net>
 pkgname=fabricmc-cli-git
-pkgver=r222.378fb788
+pkgver=r229.95265679
 pkgrel=1
 pkgdesc="Fabric modding CLI utility"
 arch=('any')
 url="https://github.com/FabricMC/fabricmc.net/tree/main/cli"
 license=('MIT')
-depends=('deno')
+depends=('nodejs')
 makedepends=('git' 'npm')
 provides=("fabricmc-cli=$pkgver")
 conflicts=('fabricmc-cli')
 source=(
     'fabricmc::git+https://github.com/FabricMC/fabricmc.net.git'
-    'no-upgrade.patch'
 )
 sha256sums=(
     'SKIP'
-    '1e1eb6f3176f2c58c9ce3376ea9968f68b0a156098642a6740464a1c055e9aca'
 )
 
 pkgver() {
@@ -26,21 +24,17 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/fabricmc"
-    git apply "$srcdir/no-upgrade.patch"
-    cd "$srcdir/fabricmc/scripts"
-    npm i
+    npm i -w scripts -w cli
 }
 
 build() {
-    cd "$srcdir/fabricmc/scripts"
-    npm run buildLib
-    cd "$srcdir/fabricmc/cli"
-    make build
+    cd "$srcdir/fabricmc"
+    npm run -w cli build
 }
 
 package() {
     cd "$srcdir/fabricmc/cli"
-    install -Dm755 bundled.ts "$pkgdir/usr/bin/fabric"
+    install -Dm755 bundled.mjs "$pkgdir/usr/bin/fabric"
     cd "$srcdir/fabricmc"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
