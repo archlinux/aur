@@ -3,7 +3,7 @@
 _pkgauthor=bartolli
 _pkgname=codanna
 pkgname=${_pkgname}-bin
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="X-ray vision for your agent - Code assistant with understanding of functions, relationships, and implementations"
@@ -20,7 +20,7 @@ provides=("${_pkgname}")
 source=("README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-linux-${_barch[0]}.tar.xz")
 sha256sums=('ebbb73faf514078693cb8571be277686546d64ee80c102a2ae0677d66f5fe498')
-sha256sums_x86_64=('d032476c99bc5dbcc11e82bbb8b435251e2d583f7921a3a18a16eac4a31479af')
+sha256sums_x86_64=('1e698ce22186fdf29e0f7a40494d0a12a98930fb468e16e0e2725e901c813b2e')
 
 case ${CARCH} in
 	${arch[0]})
