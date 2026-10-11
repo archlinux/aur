@@ -2,7 +2,7 @@
 # Contributor: Colin Arnott <colin@urandom.co.uk>
 
 pkgname=errcheck
-pkgver=1.20.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc="A program for checking for unchecked errors in go programs."
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/kisielk/errcheck"
 license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('e4acbf08f556dcc7642c5683277f2018660538d2d80b6845c519173862f9dafb38ec9e2a8111dbe5a87e20198b8b31fea477199e03ec37081734c2d622cde7a5')
+sha512sums=('9750ff01141ef7b7488b2864db64cf8ecb3b4a84d60cb5d06c4dd09bb998808aa8a82f6be0fa6f2c464d2b86c26c3bab20733d0962b9bc6c0ae834259e154b70')
 
 prepare() {
   mkdir -p build
