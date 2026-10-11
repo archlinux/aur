@@ -39,10 +39,6 @@ pkgver() {
 build() {
   cd "${pkgname%-git}"
 
-  # GCC 14+ treats -Wincompatible-pointer-types as a hard error; this legacy
-  # codebase passes QSP_CHAR** where void** is declared (ABI-identical).
-  local CFLAGS="${CFLAGS} -Wno-error=incompatible-pointer-types"
-
   local cmake_options=(
     -D CMAKE_BUILD_TYPE=None
     -D CMAKE_INSTALL_PREFIX=/usr
