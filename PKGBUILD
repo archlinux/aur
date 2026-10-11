@@ -23,6 +23,8 @@ provides=("${pkgname%-git}=$pkgver" "proton-drive-linux=$pkgver" 'pdfs')
 conflicts=('proton-drive-linux' 'proton-drive-for-linux' 'proton-drive-for-linux-bin')
 # LTO has broken GTK/Rust links for this workspace; the release profile keeps it off.
 options=('!lto')
+# Stops the running daemon before removal, so the mount stops mirroring deletes.
+install=proton-drive.install
 source=("$pkgname::git+$_repo.git")
 sha256sums=('SKIP')
 
