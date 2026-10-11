@@ -14,7 +14,7 @@ optdepends=('fcitx5-configtool: add Misstype to your input methods'
             'fcitx5-gtk: GTK application integration'
             'fcitx5-qt: Qt application integration')
 provides=('fcitx5-misstype')
-conflicts=('fcitx5-misstype' 'fcitx5-mistype-git')
+conflicts=('fcitx5-misstype' 'fcitx5-mistype-git' 'ibus-misstype-git' 'ibus-misstype')
 # Zig manages its own optimization and debug information.
 options=('!lto' '!debug')
 _mcbopomofo=f5ba010ce8795d283ee336ca7d16380f200bd2ec
