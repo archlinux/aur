@@ -1,0 +1,5 @@
+[python-aws-lambda-powertools]
+source = "github"
+github = "aws-powertools/powertools-lambda-python"
+use_max_tag = true
+prefix = "v"
