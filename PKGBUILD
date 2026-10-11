@@ -1,6 +1,6 @@
 # Maintainer: Jochem Kuipers <jochem@kuipers.cc>
 pkgname=skills-manager
-pkgver=1.40.3
+pkgver=1.41.0
 pkgrel=1
 pkgdesc="Manage, sync, and organize AI agent skills across coding tools"
 arch=('x86_64')
@@ -35,7 +35,7 @@ conflicts=('skills-manager-bin')
 options=('!lto' '!strip')
 install=${pkgname}.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/xingkongliang/skills-manager/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('02e74d440a7f72f1bdc5db5e2a859381831bd9438e54d3cc087d268a6091ac5c')
+sha256sums=('b3cd81351db990bff74cdb76c83c5438e80a18532fd75b3b74f1b82afb9990b2')
 
 prepare() {
   cd "$pkgname-$pkgver"
