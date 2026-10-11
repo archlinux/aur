@@ -1,7 +1,7 @@
 pkgbase = openanime-bin
 	pkgdesc = Unofficial OpenAnime Linux istemcisi - WebGPU/Vulkan destekli
-	pkgver = 1.1.9
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/tuanapi/OpenAnime-Linux
 	arch = x86_64
 	license = MIT
@@ -13,14 +13,14 @@ pkgbase = openanime-bin
 	depends = libxtst
 	depends = libxkbfile
 	depends = libxkbcommon
-	depends = cups-libs
+	depends = libcups
 	depends = mesa
 	provides = openanime
 	conflicts = openanime
-	noextract = OpenAnime-1.1.9.AppImage
+	noextract = OpenAnime-1.2.0.AppImage
 	options = !strip
 	options = !debug
-	source = OpenAnime-1.1.9.AppImage::https://github.com/tuanapi/OpenAnime-Linux/releases/download/v1.1.9-2/OpenAnime-1.1.9.AppImage
+	source = OpenAnime-1.2.0.AppImage::https://github.com/tuanapi/OpenAnime-Linux/releases/download/v1.2.0-1/OpenAnime-1.2.0.AppImage
 	sha256sums = SKIP
 
 pkgname = openanime-bin
