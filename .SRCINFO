@@ -1,6 +1,6 @@
 pkgbase = mbv
 	pkgdesc = Terminal client for Emby media server (requires x86-64-v2 CPU)
-	pkgver = 0.24.2
+	pkgver = 0.24.3
 	pkgrel = 1
 	url = https://github.com/slatkin/mbv
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mbv
 	depends = wayland
 	depends = libxkbcommon
 	depends = fontconfig
-	source = mbv-0.24.2-linux-x86_64.tar.gz::https://github.com/slatkin/mbv/releases/download/v0.24.2/mbv-0.24.2-linux-x86_64.tar.gz
-	sha256sums = 786e02a59e52eb4430b7e8a361cf6587b6a0e2f2a96a717159710fee4528fab3
+	source = mbv-0.24.3-linux-x86_64.tar.gz::https://github.com/slatkin/mbv/releases/download/v0.24.3/mbv-0.24.3-linux-x86_64.tar.gz
+	sha256sums = f06738d5049ece99ba421ee8724ed8a5dff04068f6e18899bb54ca600f4dd30e
 
 pkgname = mbv
