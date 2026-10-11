@@ -1,6 +1,6 @@
 # Maintainer: Ilyas Turki <ilyasturki at gmail dot com>
 pkgname=ordo-bin
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Terminal-first, single-user project planning tool"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/ordo-linux-x64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/ordo-linux-arm64")
 sha256sums=('SKIP')
-sha256sums_x86_64=('5e8ef51ee6843dcc70f918565585a1cf148a9e7b3f412b9743335ac5d79bb0f4')
-sha256sums_aarch64=('39cfbaf31e13c9fa8c24f4f3f6c021a6b3cab8b4470e97395fbd4288381075f2')
+sha256sums_x86_64=('73ca81673dac03c12360a4a96bd3665a2f512b501ebcd599e8073f60ae84a3db')
+sha256sums_aarch64=('0cc58aacf61f6ca0e285f73613224be770bb210a9d5b057cc41217d6ca5bd3fa')
 
 package() {
     install -Dm755 "${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/ordo"
