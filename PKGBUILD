@@ -13,7 +13,7 @@ arch=('x86_64')
 makedepends=('rustup' 'npm')
 depends=('gtk3' 'gdk-pixbuf2' 'libgcc' 'libsoup3' 'webkit2gtk-4.1' 'dbus' 'libx11' 'glib2' 'cairo' 'hicolor-icon-theme')
 
-conficts=('tine-outliner-bin')
+conflicts=('tine-outliner-bin')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/martinkoutecky/tine/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('f89f6ce23f1c6c532fdc8d81cd9bbdf0e29f082306b1c039c302bf46861909bc')
