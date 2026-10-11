@@ -1,29 +1,37 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
-_pkgname=find_libpython
-pkgname=python-$_pkgname
-pkgver=0.4.1
-pkgrel=2
-pkgdesc="Finds the libpython associated with the current Python environment, wherever it may be hiding"
-arch=(any)
+# Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
+
+_name=find_libpython
+pkgname=python-$_name
+pkgver=0.5.1
+pkgrel=1
+pkgdesc="Finds the libpython associated with your environment, wherever it may be hiding."
+arch=('any')
 url="https://github.com/ktbarrett/find_libpython"
 license=('MIT')
 depends=('python')
-makedepends=(python-build python-installer python-wheel python-setuptools-scm)
-options=(!emptydirs)
-install=
-source=("https://github.com/ktbarrett/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('43410201ffdc681aabec501e97a50e989556558cd0f63ef3775e1fb585a96e151aaa7e97132a981b0a8857e99a4d4bb1215ec0f6868770b649d260486d1194a5')
-
-prepare() {
-	echo "Version: $pkgver" > "$_pkgname-$pkgver/PKG-INFO"
-}
+makedepends=('python-setuptools'
+             'python-build'
+             'python-installer')
+checkdepends=('python-pytest')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('47935e2d0a7442d5097f74a20483297f2d5d2faf76160354b6416034494d2858')
 
 build() {
-	cd "$_pkgname-$pkgver"
-	python -m build --wheel --no-isolation
+  cd "$srcdir"/$_name-$pkgver
+  python -m build --wheel --no-isolation
+}
+
+check(){
+  local pytest_options=(
+    -vv
+    --disable-warnings
+  )
+  cd "$srcdir"/$_name-$pkgver
+  PYTHONPATH=$PWD/src pytest "${pytest_options[@]}" tests
 }
 
 package() {
-	cd "$_pkgname-$pkgver"
-	python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$srcdir"/$_name-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }

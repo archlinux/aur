@@ -1,17 +1,16 @@
 pkgbase = python-find_libpython
-	pkgdesc = Finds the libpython associated with the current Python environment, wherever it may be hiding
-	pkgver = 0.4.1
-	pkgrel = 2
+	pkgdesc = Finds the libpython associated with your environment, wherever it may be hiding.
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/ktbarrett/find_libpython
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = python-setuptools-scm
 	depends = python
-	options = !emptydirs
-	source = https://github.com/ktbarrett/find_libpython/archive/refs/tags/v0.4.1.tar.gz
-	sha512sums = 43410201ffdc681aabec501e97a50e989556558cd0f63ef3775e1fb585a96e151aaa7e97132a981b0a8857e99a4d4bb1215ec0f6868770b649d260486d1194a5
+	source = https://github.com/ktbarrett/find_libpython/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = 47935e2d0a7442d5097f74a20483297f2d5d2faf76160354b6416034494d2858
 
 pkgname = python-find_libpython
