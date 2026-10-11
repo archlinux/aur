@@ -1,6 +1,6 @@
 pkgbase = browsers-bin
 	pkgdesc = Open the right browser at the right time
-	pkgver = 0.7.5
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://browsers.software
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = browsers-bin
 	license = MIT
 	makedepends = desktop-file-utils
 	makedepends = xdg-utils
-	provides = browsers=0.7.5
+	provides = browsers=0.8.0
 	conflicts = browsers-git
-	source = browsers_linux-0.7.5.tar.xz::https://github.com/Browsers-software/browsers/releases/download/0.7.5/browsers_linux.tar.xz
-	sha256sums = 8e562bc980589e45581f837c10fba2b97f065e3b68ec752bce30dfbb37bb215f
+	source = browsers_linux-0.8.0.tar.xz::https://github.com/Browsers-software/browsers/releases/download/0.8.0/browsers_linux.tar.xz
+	sha256sums = c095e04215e6f3f34d08805aef5847e3000bcf6de64639926d23a2f2a389ee25
 
 pkgname = browsers-bin
