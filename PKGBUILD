@@ -1,7 +1,7 @@
 # Maintainer: Keith Raghubar <aur.archlinux.org.buckskin000@passmail.net>
 
 pkgname=sysforge
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Arch Linux build and maintenance suite for system setup and package management with compiler-optimized builds"
 arch=('any')
@@ -30,6 +30,8 @@ optdepends=(
     'lld: required for the optimized build profile (-fuse-ld=lld)'
     'llvm: required for sysforge run toolchain --compiler=llvm (PGO bootstrap)'
     'compiler-rt: required for sysforge run toolchain --compiler=llvm'
+    'mesa-utils: post-install mesa smoke check (eglinfo)'
+    'vulkan-tools: post-install mesa smoke check (vulkaninfo)'
 )
 conflicts=('sysforge-git')
 install=sysforge.install
@@ -48,7 +50,7 @@ backup=(
 validpgpkeys=('23774499080F9288FEFB49CE7AAE22E6E1B4B22C')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/sysforge-$pkgver.tar.gz.asc")
-sha256sums=('2b6a0d71d98b02f7afe468937119db603834d2e67943abe00904481fef4dfb16'
+sha256sums=('a9e99f76a79b537af1e75f7578c4aeffd5857fb472b06d345e395769e6b288ed'
             'SKIP')
 
 build() {
