@@ -1,7 +1,7 @@
 # Maintainer: Alexander Inglessi <inglessi glsk net>
 
 pkgname=redukt
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Command-line tool for redacting sensitive data"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3f14a0eaf026450c1220047fc9c3abd3e78a11decac90c9c870ad99f1b3acacc')
+sha256sums=('962c1871a769c32310f1def8a423f11e6d72502b9d3e3c8dae57a4fe506979c0')
 
 prepare() {
     cd "$pkgname"
