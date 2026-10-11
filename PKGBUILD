@@ -1,29 +1,31 @@
 # Maintainer: jose <jose1711 [at] gmail (dot) com>
 
 pkgname=remotebox
-pkgver=3.6
+pkgver=3.7
 pkgrel=1
 pkgdesc="Open Source VirtualBox Client with Remote Management"
 arch=('any')
-url="http://remotebox.knobgoblin.org.uk/"
-license=(GPL-2.0-only)
-install=remotebox.install
+url="https://remotebox.knobgoblin.org.uk/"
+license=('GPL-2.0-only')
 depends=('perl' 'perl-soap-lite' 'perl-gtk3' 'perl-regexp-common' 'perl-file-which')
-optdepends=('rdesktop')
-source=("http://remotebox.knobgoblin.org.uk/downloads/RemoteBox-${pkgver}.tar.bz2" "remotebox.desktop")
-md5sums=('ff986f37287ee1ec0fb6a73fe8bd16fa'
-         'b64b16d198471f9868ce7ed018295296')
+optdepends=('freerdp: RDP client used for remote display by default (xfreerdp)'
+            'rdesktop: alternative RDP client'
+            'tigervnc: VNC client for guests using a VNC server')
+source=("https://remotebox.knobgoblin.org.uk/downloads/RemoteBox-${pkgver}.tar.bz2")
+sha256sums=('66b55deb1807f897b84f2a91d2b2772f98c59da17ff038c800624cbf3393777f')
+
+prepare() {
+  cd "RemoteBox-${pkgver}"
+  sed -i 's|\$Bin/share/remotebox|/usr/share/remotebox|' remotebox
+}
 
 package() {
-  mkdir -p $pkgdir/usr/{share/{applications,doc/remotebox,remotebox},bin}
-  cd $srcdir/
-  cd RemoteBox-${pkgver}/share/remotebox
-  /bin/tar cf - * | ( cd ../../../../pkg/remotebox/usr/share/remotebox/; tar xfp - )
-  sed -i '/Bin\/share\/remotebox/s/\$Bin/\/usr/' ../../remotebox 
-  sed -i '/use FindBin/a\
-$Bin='\''/usr/'\'';' ../../remotebox
-  install -Dm755 ../../remotebox $pkgdir/usr/bin/remotebox
-  install -Dm644 icons/remotebox-about.png $pkgdir/usr/share/pixmaps/remotebox.png
-  install -Dm644 $srcdir/remotebox.desktop $pkgdir/usr/share/applications/remotebox.desktop
-  install -Dm644 ../../docs/* $pkgdir/usr/share/doc/remotebox
+  cd "RemoteBox-${pkgver}"
+  install -Dm755 remotebox remotebox-web -t "$pkgdir/usr/bin/"
+  install -dm755 "$pkgdir/usr/share/remotebox"
+  cp -r --no-preserve=ownership share/remotebox/. "$pkgdir/usr/share/remotebox/"
+  install -Dm644 share/remotebox/icons/remotebox.png "$pkgdir/usr/share/pixmaps/remotebox.png"
+  install -Dm644 packagers-readme/remotebox.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dm644 packagers-readme/remotebox.appdata.xml "$pkgdir/usr/share/metainfo/remotebox.appdata.xml"
+  install -Dm644 docs/changelog.txt docs/appliance-changelog.txt -t "$pkgdir/usr/share/doc/remotebox/"
 }

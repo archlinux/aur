@@ -1,9 +1,8 @@
 pkgbase = remotebox
 	pkgdesc = Open Source VirtualBox Client with Remote Management
-	pkgver = 3.6
+	pkgver = 3.7
 	pkgrel = 1
-	url = http://remotebox.knobgoblin.org.uk/
-	install = remotebox.install
+	url = https://remotebox.knobgoblin.org.uk/
 	arch = any
 	license = GPL-2.0-only
 	depends = perl
@@ -11,10 +10,10 @@ pkgbase = remotebox
 	depends = perl-gtk3
 	depends = perl-regexp-common
 	depends = perl-file-which
-	optdepends = rdesktop
-	source = http://remotebox.knobgoblin.org.uk/downloads/RemoteBox-3.6.tar.bz2
-	source = remotebox.desktop
-	md5sums = ff986f37287ee1ec0fb6a73fe8bd16fa
-	md5sums = b64b16d198471f9868ce7ed018295296
+	optdepends = freerdp: RDP client used for remote display by default (xfreerdp)
+	optdepends = rdesktop: alternative RDP client
+	optdepends = tigervnc: VNC client for guests using a VNC server
+	source = https://remotebox.knobgoblin.org.uk/downloads/RemoteBox-3.7.tar.bz2
+	sha256sums = 66b55deb1807f897b84f2a91d2b2772f98c59da17ff038c800624cbf3393777f
 
 pkgname = remotebox
