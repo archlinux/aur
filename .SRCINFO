@@ -1,6 +1,6 @@
 pkgbase = alise-git
 	pkgdesc = Declarative Arch Linux installer in Guile Scheme
-	pkgver = 0.3.0.r0.g51e22b3
+	pkgver = 0.3.0.r19.g71019e9
 	pkgrel = 1
 	url = https://codeberg.org/mipi/alise/
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = alise-git
 	depends = guile-ssh
 	provides = alise
 	conflicts = alise
+	options = !debug
 	source = git+https://codeberg.org/mipi/alise.git
 	md5sums = SKIP
 
