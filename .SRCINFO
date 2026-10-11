@@ -1,6 +1,6 @@
 pkgbase = pi-ext-powerline-footer
 	pkgdesc = Powerline-style status bar extension for pi coding agent
-	pkgver = 0.19.1
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/nicobailon/pi-powerline-footer
 	install = pi-ext.install
@@ -8,7 +8,7 @@ pkgbase = pi-ext-powerline-footer
 	license = MIT
 	optdepends = pi-coding-agent
 	optdepends = pi-coding-agent-git
-	source = pi-ext-powerline-footer-0.19.1.tar.gz::https://github.com/nicobailon/pi-powerline-footer/archive/refs/tags/v0.19.1.tar.gz
-	sha256sums = 4230f94d857f2633f8c19cb686b0d781ff1c0c157e81edcad9b056286bb0b66f
+	source = pi-ext-powerline-footer-0.20.0.tar.gz::https://github.com/nicobailon/pi-powerline-footer/archive/refs/tags/v0.20.0.tar.gz
+	sha256sums = 6c083471a97fbc4676e57433e04c846876a6859eb7af10b6bd360de97fb20b95
 
 pkgname = pi-ext-powerline-footer
