@@ -2,7 +2,7 @@
 
 pkgname=axolotl-launcher
 pkgver=1.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform Minecraft launcher'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Mystic-Stars/Axolotl'
@@ -10,10 +10,14 @@ license=('GPL-3.0-only')
 depends=(
   'libayatana-appindicator'
   'shared-mime-info'
+  'libnotify'
   'webkit2gtk-4.1'
   'xdg-utils'
+  'gtk3'
 )
 makedepends=('jdk17-openjdk' 'pnpm' 'cargo' 'librsvg' 'patchelf' 'clang')
+conflicts=('axolotl-launcher-bin')
+provides=("axolotl-launcher-bin=${pkgver}")
 source=(
   "$pkgname::git+${url}.git#tag=v${pkgver}"
   "git+https://github.com/Cubitect/cubiomes.git"
