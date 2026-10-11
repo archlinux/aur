@@ -3,7 +3,7 @@
 # Maintainer: Damien Flament <damien dot flament at zoho dot com>
 
 pkgname='tine-outliner-bin'
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A fast, local, Logseq-compatible outliner"
 url='https://tine.page/'
@@ -15,8 +15,8 @@ depends=('gtk3' 'gdk-pixbuf2' 'libgcc' 'libsoup3' 'webkit2gtk-4.1' 'dbus' 'libx1
 _source_base="https://github.com/martinkoutecky/tine/releases/download/v${pkgver}/Tine_${pkgver}"
 source_x86_64=("${_source_base}_amd64.deb")
 source_aarch64=("${_source_base}_arm64.deb")
-sha256sums_x86_64=('a72578e5df1fda55aaf9e3a4ebdef06e3cffae6f630c4852e9f963cca6d393f9')
-sha256sums_aarch64=('27332318e14282d0a8a39c7fba0f57dadf415b3398de62672c66457c8a7ba885')
+sha256sums_x86_64=('47770e2b66e7655667a4f264b953724cfbd8e0035ce1c9a70df02e6f603a84e1')
+sha256sums_aarch64=('0c48f9a070f431b7c4715cc929e6fe5798dbe2e3593b2540a509650d2fe6b68a')
 
 function package {
   tar -xf data.tar.gz -C "${pkgdir}"
