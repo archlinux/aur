@@ -1,0 +1,5 @@
+[tdocker]
+source = "github"
+github = "pivovarit/tdocker"
+use_max_tag = true
+prefix = "v"
