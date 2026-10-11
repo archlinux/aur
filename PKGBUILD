@@ -10,7 +10,7 @@
 # Based on community/clementine PKGBUILD
 
 pkgname=clementine-git
-pkgver=1.4.1.r131.g69ae62d68.0.g69ae62d68
+pkgver=1.4.1.r279.gf42e65cc7.1.gd1eea8132
 pkgrel=2
 pkgdesc='A modern music player and library organizer'
 arch=(x86_64)
@@ -30,7 +30,6 @@ depends=(
     libgcc
     libglvnd
     #libgpod
-    #liblastfm-qt5 # removed from Arch repo
     #libmtp
     libpulse
     libstdc++
@@ -82,21 +81,20 @@ build() {
   export CXXFLAGS+=" -w"
 
   #export CXXFLAGS+=" -Wno-error=cpp"
-  export CXXFLAGS+=" -Wno-unused-result"
-  export CXXFLAGS+=" -Wno-error=stringop-overflow"
+  #export CXXFLAGS+=" -Wno-unused-result"
+  #export CXXFLAGS+=" -Wno-error=stringop-overflow"
 
   local _flags=(
     -DENABLE_BOX=OFF
     -DENABLE_DROPBOX=OFF
     -DENABLE_GOOGLE_DRIVE=OFF
     -DENABLE_LIBGPOD=OFF
-    -DENABLE_LIBLASTFM=OFF
     -DENABLE_LIBMTP=OFF
     -DENABLE_SEAFILE=OFF
     -DENABLE_SKYDRIVE=OFF
     -DENABLE_SPARKLE=OFF
     -DENABLE_WIIMOTEDEV=OFF
-    #-DUSE_SYSTEM_PROJECTM=ON
+    -DUSE_SYSTEM_PROJECTM=OFF
     -DUSE_SYSTEM_TAGLIB=ON
   )
 
