@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Giovanni Scafora <giovanni@archlinux.org>
+# Maintainer: Felipe BF <fprgw32 at gmail dot com>
+# Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=normalize
 pkgver=0.7.7
-pkgrel=8
+pkgrel=9
 pkgdesc="A tool for adjusting the volume of WAV files to a standard level"
 arch=('x86_64')
 url="http://normalize.nongnu.org"
