@@ -1,7 +1,7 @@
 pkgname=gnome-shell-extension-screen-autorotate
 pkgver=29
 _pkgver=29
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNOME extension to auto-rotate screen regardless of touch mode"
 arch=("any")
 url="https://github.com/shyzus/gnome-shell-extension-screen-autorotate"
@@ -25,6 +25,10 @@ prepare() {
         echo "Applying patch $src..."
         patch -Np1 < "../$src"
     done
+
+    # Keep upstream support and add the GNOME 51 compatibility declaration.
+    grep -Fxq '    "45", "46", "47", "48", "49", "50"' "$_uuid/metadata.json" || return 1
+    sed -i '/"shell-version": \[/,/]/s/"50"/"50", "51"/' "$_uuid/metadata.json"
 }
 
 package() {
