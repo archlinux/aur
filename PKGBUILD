@@ -9,7 +9,7 @@
 
 pkgname=lsw-bin
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Subsystem for Windows: Windows applications as native windows, from a KVM guest with a paravirtual GPU"
 arch=('x86_64')
 url="https://github.com/acceleration3/linux-subsystem-windows"
@@ -24,9 +24,11 @@ conflicts=('lsw')
 depends=(
     # lsw-manager, remotewin. remotewin speaks Wayland below Qt and uses
     # Qt's private Gui and WaylandClient API (both in qt6-base since Qt
-    # 6.10), so a Qt update calls for a rebuild of this package; see
-    # README.md.
-    'qt6-base' 'libvirt' 'libisofs' 'libvncserver' 'wimlib' 'hivex'
+    # 6.10), so it runs on the Qt minor it was built with and no other:
+    # an older one refuses it (qt_version_tag), a newer one may have
+    # moved the private API. A Qt update calls for a rebuild of this
+    # package; see README.md.
+    'qt6-base>=6.12' 'qt6-base<6.13' 'libvirt' 'libisofs' 'libvncserver' 'wimlib' 'hivex'
     'spdlog' 'fmt' 'zlib' 'wayland' 'libxkbcommon'
     # accel-virt: the executor, QEMU and its modules
     'vulkan-icd-loader' 'ocl-icd' 'libglvnd' 'libpipewire'
