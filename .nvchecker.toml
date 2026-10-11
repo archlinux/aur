@@ -1,0 +1,4 @@
+[formatjson]
+source = "github"
+github = "tusharsadhwani/formatjson"
+use_max_tag = true
