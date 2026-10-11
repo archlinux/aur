@@ -5,9 +5,9 @@
 pkgbase=qt6-base-hifps
 pkgname=(qt6-base-hifps
          qt6-xcb-private-headers-hifps)
-_pkgver=6.11.2
+_pkgver=6.12.0
 pkgver=${_pkgver/-/}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL-3.0-only
@@ -20,7 +20,6 @@ depends=(brotli
          double-conversion
          fontconfig
          freetype2
-         gcc-libs
          glib2
          glibc
          harfbuzz
@@ -29,6 +28,7 @@ depends=(brotli
          libb2
          libcups
          libdrm
+         libgcc
          libgl
          libice
          libinput
@@ -36,6 +36,7 @@ depends=(brotli
          libpng
          libproxy
          libsm
+         libstdc++
          liburing
          libx11
          libxcb
@@ -86,14 +87,12 @@ optdepends=('freetds: MS SQL driver'
             'postgresql-libs: PostgreSQL driver'
             'unixodbc: ODBC driver')
 groups=(qt6)
-_pkgfn=${pkgbase/6-/}
-_pkgfn=${_pkgfn/-hifps/}
+_pkgfn=qtbase
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$_pkgver
         qt6-base-cflags.patch
         qt6-base-nostrip.patch
-	qt6-base-lowtimer.patch)
-# yet to be fetched again
-sha256sums=('SKIP'
+        qt6-base-lowtimer.patch)
+sha256sums=('d97ef157dc50bdf0425337e9adede8135ab508a4ab2f1abae7e9cfc42c5f86db'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
             '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094'
     	    '12d836fdfafc221a93c2877d0537651e4cf8c200e4b2fdc1390165e2f3587109')
@@ -102,6 +101,10 @@ prepare() {
   patch -d $_pkgfn -p1 < qt6-base-cflags.patch # Use system CFLAGS
   patch -d $_pkgfn -p1 < qt6-base-nostrip.patch # Don't strip binaries with qmake
   patch -d $_pkgfn -p1 < qt6-base-lowtimer.patch # Reduce timer interval
+
+
+  git -C $_pkgfn cherry-pick -n e320c929207aaea0d4c8fb2cd29b16de6cbd2b2c # Fix QtWebEngine detection in cmake
+  git -C $_pkgfn cherry-pick -n 032643f99e090e0304ef935c2ee11c109d55c8a1 # Fix build with md4c 0.6
 }
 
 build() {
@@ -130,6 +133,7 @@ build() {
     -DFEATURE_system_sqlite=ON \
     -DFEATURE_system_xcb_xinput=ON \
     -DFEATURE_no_direct_extern_access=$_no_direct_extern_access \
+    -DFEATURE_mimetype_database=OFF \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DCMAKE_MESSAGE_LOG_LEVEL=STATUS
   cmake --build build
