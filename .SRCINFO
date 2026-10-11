@@ -1,6 +1,6 @@
 pkgbase = linuxwhisper-git
 	pkgdesc = Linux desktop voice dictation tool using local Whisper
-	pkgver = 0.1.0.r72.1ca68fb
+	pkgver = 0.1.0.r75.35ccd91
 	pkgrel = 1
 	url = https://github.com/robindarlington/linuxwhisper
 	install = linuxwhisper.install
@@ -27,7 +27,7 @@ pkgbase = linuxwhisper-git
 	optdepends = ydotool: text injection on Wayland (recommended)
 	optdepends = wtype: alternative Wayland text injection for wlroots compositors
 	optdepends = xdotool: text injection on X11
-	optdepends = wl-clipboard: clipboard-based text injection fallback on Wayland
+	optdepends = wl-clipboard: clipboard paste for Chromium on Hyprland/Sway and Unicode fallback
 	optdepends = xclip: clipboard-based text injection fallback on X11
 	provides = linuxwhisper
 	conflicts = linuxwhisper
