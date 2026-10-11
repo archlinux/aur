@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=ignis
-pkgver=0.8.16+obsidian.1.13.7
+pkgver=0.8.17+obsidian.1.14.4
 _obver=$(echo "$pkgver" | awk -F '\\+obsidian.' '{print $2}')
 pkgrel=1
 pkgdesc="Run Obsidian as a self-hosted web app."
@@ -18,12 +18,12 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.tmpfiles"
         "${pkgname}.user.service"
         "obsidian-${_obver}.asar.gz::https://github.com/obsidianmd/obsidian-releases/releases/download/v${_obver}/obsidian-${_obver}.asar.gz")
-sha256sums=('ad5b3dcb837bec4d4f84f7100d5401aabb338536460acb60d63f8fac8d8d65cd'
+sha256sums=('f8c9b5d1728ea02bb1b04313518e6f1b61cc18b84b4f41ba6b2cd2e2757fc0e8'
             '75dd22bcbf0fcc96aa270bcb4726e273af36e73aff261a20f369d8f5ad65954b'
             '48b83055b593d3ab81e5e09918944f836a99f2c1e89e3810d80ce7a18e086be1'
             '36e53ddc44a502acf4576af4bbf30a2793150ace548695bd24b260104a7ff38a'
             '027f4adf77abb00a3ed2a6d59f35cb632201685b42e8b8adaab85516d2e1dbbe'
-            '69253e39aa0b980e3cf96e9e8a8a4bed6b6481ef7021cd762f67872662d8d25a')
+            'd1ed428c363968774f0f3906e67d8a53a058ece0b6cdd924b07865977b2ada21')
 
 prepare() {
     rm -rf "${pkgname}-${pkgver//+/-}/docs-src" &>/dev/null
