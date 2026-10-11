@@ -1,6 +1,6 @@
 # Maintainer: SHORiN-KiWATA <fcl709@outlook.com>
 pkgname=shorin-proton-wrapper-git
-pkgver=r60.d6a90bd
+pkgver=r61.d2ec4ad
 pkgrel=1
 pkgdesc="Simple Proton wrapper for running Windows executables"
 arch=('any')
@@ -13,6 +13,7 @@ optdepends=(
   'mangohud: performance overlay for --mangohud'
   'libnotify: desktop notifications during first run'
   'wget: alternative downloader'
+  'passt: separate network namespace for game accelerators (--netns)'
 )
 makedepends=('git')
 provides=('shorin-proton-wrapper')
