@@ -1,0 +1,14 @@
+post_install() {
+  grep -qx /bin/bnb /etc/shells || echo /bin/bnb >> /etc/shells
+  grep -qx /usr/bin/bnb /etc/shells || echo /usr/bin/bnb >> /etc/shells
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  sed -i -r '/^(\/usr)?\/bin\/bnb$/d' etc/shells
+}
+
+# vim:set ts=2 sw=2 et:

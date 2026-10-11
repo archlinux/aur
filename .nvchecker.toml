@@ -1,0 +1,5 @@
+[bnb-shell]
+source = "github"
+github = "EatSleepCode-Repeat/bnb"
+use_latest_release = true
+prefix = "v"
