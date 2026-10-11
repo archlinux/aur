@@ -2,7 +2,7 @@
 # Contributor: Matthias Baur <aur@matthiasbaur.me>
 
 pkgname=noson-app
-pkgver=5.7.1
+pkgver=5.7.6
 pkgrel=1
 pkgdesc="SONOS controller for Linux platforms"
 arch=(x86_64 aarch64 armv7h)
@@ -27,15 +27,16 @@ makedepends=(
     git
     libpulse
     vulkan-headers
+    vulkan-icd-loader
     )
 source=("git+https://github.com/janbar/noson-app.git#tag=${pkgver}")
-sha256sums=('14be259877431780b951079272cf13fc11a300bf5b5d3e0ba0446a8202e3f23c')
+sha256sums=('31f0ebd28ca1ac89a561ba9c37275e618e49ecd2ad27165c7ef0a56451938df2')
 
 build() {
   local _flags=(
   )
 
-  cmake -B build -S "noson-app" -Wno-dev \
+  cmake -B build -S "noson-app" -Wno-author \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     "${_flags[@]}"
