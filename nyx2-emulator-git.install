@@ -3,7 +3,7 @@
 post_install() {
     echo "==> NYx 2 Emulator (git) has been installed."
     echo "    - Launch with the 'nyx2' command or its application menu entry."
-    echo "    - On first run a writable data directory is created at:"
+    echo "    - Your game library and cover art are stored in:"
     echo "        ${XDG_DATA_HOME:-$HOME/.local/share}/nyx2-emulator"
     echo "    The emulator ships with no game library, and is provided with no"
     echo "    warranty. See /usr/share/doc/nyx2-emulator/README.md for details."

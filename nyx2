@@ -1,23 +1,8 @@
 #!/bin/sh
 # NYx 2 Emulator launcher
 #
-# The upstream application resolves its game library (games.json) and cover art
-# (assets/covers) against the *current working directory*, and writes to both at
-# runtime. Those paths cannot live inside the read-only installation under
-# /usr/share, so this wrapper provisions a per-user, writable XDG data directory
-# and launches the emulator with the working directory set to it.
-
+# The application resolves its data directory (games.json, assets/covers) to the
+# user's XDG data directory at import time, so there is nothing to set up here.
 set -eu
 
-APP_NAME="nyx2-emulator"
-DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/$APP_NAME"
-SHARE_DIR="/usr/share/$APP_NAME"
-
-# Ensure a writable data tree exists (first-run "starting configuration").
-mkdir -p "$DATA_DIR/assets/covers"
-if [ ! -f "$DATA_DIR/games.json" ]; then
-    printf '[]' > "$DATA_DIR/games.json"
-fi
-
-cd "$DATA_DIR"
-exec python3 "$SHARE_DIR/main.py" "$@"
+exec python3 /usr/share/nyx2-emulator/main.py "$@"

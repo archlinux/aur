@@ -1,0 +1,27 @@
+--- a/main.py
++++ b/main.py
+@@ -12,8 +12,22 @@
+ from PyQt5.QtGui import QPixmap
+ from PyQt5.QtCore import Qt
+ 
+-GAMES_FILE = "games.json"
+-ASSETS_FOLDER = "assets/covers"
++# --- nyx2-emulator-git packaging patch ------------------------------
++# Upstream resolves both paths against the current working directory and
++# writes to them at runtime. Redirect them to a per-user, writable XDG
++# data directory so the emulator behaves the same however it is launched
++# and never writes into the read-only prefix under /usr/share.
++import os
++
++_NYX2_DATA_DIR = os.environ.get("NYX2_DATA_DIR") or os.path.join(
++    os.environ.get("XDG_DATA_HOME") or os.path.expanduser("~/.local/share"),
++    "nyx2-emulator",
++)
++ASSETS_FOLDER = os.path.join(_NYX2_DATA_DIR, "assets", "covers")
++GAMES_FILE = os.path.join(_NYX2_DATA_DIR, "games.json")
++os.makedirs(_NYX2_DATA_DIR, exist_ok=True)
++os.makedirs(ASSETS_FOLDER, exist_ok=True)
++# --- end nyx2-emulator-git packaging patch --------------------------
+ 
+ class GameItem(QWidget):
+     def __init__(self, title, image_path):
