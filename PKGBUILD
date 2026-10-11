@@ -3,14 +3,15 @@ pkgname=sk-chos-addon-git
 _basename=sk-chos-tool
 _pkgname=sk-chos-addon
 _reponame=sk-chos-config
-pkgver=2.31.1.r0.g008c216
-pkgrel=1
+pkgver=2.34.1.r0.g171ca55
+pkgrel=2
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
 url="https://github.com/honjow/sk-chos-config.git"
 license=('MIT')
 makedepends=('git')
 depends=(
+    amd-debug-tools
     cage
     expect
     efibootmgr
@@ -34,10 +35,8 @@ optdepends=(
 provides=(sk-chos-addon)
 conflicts=(sk-chos-addon)
 replaces=(sk-chos-addon)
-source=("git+$url"
-        "amd_s2idle.py::https://web.git.kernel.org/pub/scm/linux/kernel/git/superm1/amd-debug-tools.git/plain/amd_s2idle.py")
-sha256sums=('SKIP'
-            'SKIP')
+source=("git+$url")
+sha256sums=('SKIP')
 options=(!strip)
 backup=('etc/sk-chos-tool/github_cdn.conf')
 install=sk-chos-addon.install
@@ -62,10 +61,6 @@ package() {
     install -m755 -t "${pkgdir}/usr/bin/" "${source_dir}/bin"/*
     # 复制软链接 覆盖
     find "${source_dir}/bin" -maxdepth 1 -type l -exec cp -P -f {} "${pkgdir}/usr/bin/" \;
-
-    # amd_s2idle.py to amd_s2idle-analysis
-    install -dm755 "${pkgdir}/usr/bin"
-    install -m755 "${srcdir}/amd_s2idle.py" "${pkgdir}/usr/bin/amd_s2idle-analysis"
 
     # conf
     install -dm755 "${pkgdir}/etc/${_basename}"
@@ -165,6 +160,10 @@ package() {
     install -dm755 "${pkgdir}/usr/share/polkit-1/rules.d"
     install -m644 -t "${pkgdir}/usr/share/polkit-1/rules.d" "${source_dir}/share/polkit-1/rules.d"/*
 
+    # alpm hooks
+    install -dm755 "${pkgdir}/usr/share/libalpm/hooks"
+    install -m644 -t "${pkgdir}/usr/share/libalpm/hooks" "${source_dir}/share/libalpm/hooks"/* || true
+    
     # udev rules
     install -dm755 "${pkgdir}/usr/lib/udev/rules.d"
     install -m644 -t "${pkgdir}/usr/lib/udev/rules.d" "${source_dir}/lib/udev/rules.d"/*
