@@ -1,0 +1,5 @@
+[lora-cyrillic-font]
+source = "github"
+github = "cyrealtype/Lora-Cyrillic"
+use_max_tag = true
+prefix = "v"
