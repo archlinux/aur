@@ -1,13 +1,13 @@
 # Maintainer: Felitendo
 # This PKGBUILD is updated automatically:
-# https://git.felo.gg/Felitendo/PKGBUILDS
+# https://github.com/Felitendo/PKGBUILDS
 
 pkgname=concat
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Free and open-source CapCut replacement, a video editor with a Rust engine"
 arch=('x86_64')
-url="https://github.com/jub0t/Concat"
+url="https://github.com/jub0t/concat"
 license=('AGPL-3.0-or-later')
 # Nothing is spawned at run time: FFmpeg is linked, whisper.cpp, sherpa-onnx
 # and Skia are compiled in. alsa-lib is cpal's playback backend;
@@ -34,7 +34,7 @@ options=('!debug' '!lto')
 # Only tags that start with a version are packaged, and pkgver drops their
 # hyphens (v0.2.2-alpha.1 -> 0.2.2alpha.1), which pacman sorts older than a
 # later plain 0.2.2, so no epoch is needed. See pkg.sh.
-_tag="v0.2.5"
+_tag="v0.2.6"
 # sherpa-onnx-sys (the text-to-speech backend) does not build its C++ side:
 # it downloads a prebuilt static-lib archive from its own release page unless
 # it is handed one. Handing it one keeps that binary under makepkg's
@@ -47,14 +47,14 @@ _sherpa="1.13.7"
 # are synced by pkg.sh.
 _skia="0.153.3"
 _skia_key="b7f043e0b1e2a850e702-x86_64-unknown-linux-gnu-ganesh-gl-jpegd-jpege-pdf-vulkan"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jub0t/Concat/archive/refs/tags/${_tag}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jub0t/concat/archive/refs/tags/${_tag}.tar.gz"
         "https://github.com/k2-fsa/sherpa-onnx/releases/download/v${_sherpa}/sherpa-onnx-v${_sherpa}-linux-x64-static-lib.tar.bz2"
         "https://github.com/rust-skia/skia-binaries/releases/download/${_skia}/skia-binaries-${_skia_key}.tar.gz")
 noextract=("sherpa-onnx-v${_sherpa}-linux-x64-static-lib.tar.bz2"
            "skia-binaries-${_skia_key}.tar.gz")
-sha256sums=('f77a4e7751f2dc60fa69829434cb2981243736dc98ebd269ba6bd1a75113b9ce' 'd1be7a69ac2b30120058d8302e624239a3064085383cfa47994a14fdc44c32d6' '9ebe4c448cc9f789bad241cbd11739cdf759e27db5719c23a7635e096d5807b3')
+sha256sums=('069899755e5de326408ba9d2347d81300fdbfbeb325e35eb9f9196443b471b90' 'd1be7a69ac2b30120058d8302e624239a3064085383cfa47994a14fdc44c32d6' '9ebe4c448cc9f789bad241cbd11739cdf759e27db5719c23a7635e096d5807b3')
 
-_srcname="Concat-${_tag#v}"
+_srcname="concat-${_tag#v}"
 
 prepare() {
   cd "$_srcname/src"
