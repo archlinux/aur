@@ -20,7 +20,7 @@ source=(
     "fix-pkg-resources.patch::https://github.com/yktoo/${pkgname}/commit/6756be87ba9a139ec3fe3d84b0300c6db04f54ba.patch"
 )
 sha256sums=('54c50b04b8a337ace3dcc5345c033e88eeaa298d54a082428e01e7467ca74930'
-            '0e797f4ef947b7c7bab73b2defb22257ae083b0fee0098b56eb826cbcfc49e4b')
+            '552f21cc9a487467a3b69967e67c5533c10fd04484f2ce26c5afe2348bfebe9f')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
