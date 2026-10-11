@@ -2,7 +2,7 @@
 _base=platformdirs
 pkgname=pypy3-${_base}
 pkgdesc="A small Python package for determining appropriate platform-specific dirs"
-pkgver=4.12.4
+pkgver=4.13.0
 pkgrel=1
 arch=(any)
 url="https://github.com/tox-dev/${_base}"
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(pypy3)
 makedepends=(pypy3-build pypy3-installer pypy3-hatch-vcs)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('6b68f06f5a20224156ebd13bd5dd2c152378e1087e389ddc83f296230f2b98a3a0c3f611a89e00a800b48888921294a9a3021bea371f1abb039fec0aed4437f0')
+sha512sums=('467b3207806aa6f0b7c85beccc2ed1f1691a9e5f4c0a903c9b73809444a207360052c834ed2b4e9bf4b02f848c4077071df1e9a18d7d01d4689ce6fa7f64160e')
 
 build() {
   cd ${_base}-${pkgver}
