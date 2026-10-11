@@ -1,0 +1,12 @@
+# ignore defs
+./*
+!.gitignore
+
+# arch & pkgbuild
+PKGBUILD
+.SRCINFO
+
+# other files
+paintdotnet-wine-experimental.desktop
+paintdotnet-wine-experimental.sh
+
