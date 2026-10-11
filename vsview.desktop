@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=VS View
+GenericName=VapourSynth Previewer
+Comment=The next-generation VapourSynth previewer
+Exec=vsview %F
+TryExec=vsview
+Icon=vsview
+Terminal=false
+Categories=AudioVideo;Video;Graphics;Viewer;
+MimeType=text/x-vpy;text/x-python;
+Keywords=VapourSynth;VapourSynth script;vpy;video;preview;script;python;
+StartupNotify=true
+StartupWMClass=vsview

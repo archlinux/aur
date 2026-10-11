@@ -2,7 +2,7 @@
 
 pkgname=vsview
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The next-generation VapourSynth previewer'
 arch=('x86_64')
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
@@ -42,8 +42,12 @@ optdepends=(
     'vsview-nativeres: Analyze and determine native resolution'
     'vsview-plugins-all: Meta package for all plugins'
 )
-source=("${pkgname}::git+${url}.git#tag=vsview/v${pkgver}")
-sha256sums=('SKIP')
+source=(
+    "${pkgname}::git+${url}.git#tag=vsview/v${pkgver}"
+    "${pkgname}.desktop"
+)
+sha256sums=('2374692b263b7fa8b5cb2605b0b4411feb1684b13007cb091cb91564a9f0a35b'
+            '20a08e239e1ccd181023f5fa51b2bc98f415b194c86a352777bd441197188755')
 
 build() {
     cd "${pkgname}"
@@ -55,4 +59,6 @@ package() {
     cd "${pkgname}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "src/vsview/assets/icon@4x.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
