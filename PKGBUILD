@@ -2,7 +2,7 @@
 pkgname=pdfcraft-bin
 _pkgname=pdfcraft
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source native PDF workbench, Acrobat alternative (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/storytold/pdfcraft"
@@ -11,6 +11,7 @@ depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libxkbcommon')
 optdepends=('vulkan-icd-loader: GPU-accelerated rendering')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+options=('!strip')
 source_x86_64=("$_pkgname-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
 sha256sums_x86_64=('9a136e71e37b459ed5746dbe19a364ce84cf5d995c6f6c98af6147d818390a53')
