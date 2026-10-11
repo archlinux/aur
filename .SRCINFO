@@ -1,6 +1,6 @@
 pkgbase = upmix-core-legacy-bin
 	pkgdesc = Stereo to 5.1 upmixer with HTDemucs separation (prebuilt for pre-AVX2 CPUs)
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/gensui-fuga/upmix-core
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = upmix-core-legacy-bin
 	provides = upmix-core
 	conflicts = upmix-core
 	options = !strip
-	source = upmix-core-linux-x86_64-legacy-v1.0.1.tar.gz::https://github.com/gensui-fuga/upmix-core/releases/download/v1.0.1-legacy/upmix-core-linux-x86_64-legacy.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/gensui-fuga/upmix-core/v1.0.1-legacy/LICENSE
-	sha256sums = e217e3387e432f3788484ea6a9e1e9775ff97426aa37f5c7bbce6243e8935a56
+	source = upmix-core-linux-x86_64-legacy-v1.0.2.tar.gz::https://github.com/gensui-fuga/upmix-core/releases/download/v1.0.2-legacy/upmix-core-linux-x86_64-legacy.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/gensui-fuga/upmix-core/v1.0.2-legacy/LICENSE
+	sha256sums = a4c34049804b2d66aa1fb8fd49081e8e9475f2e1d49f2e807ea10cca35945d44
 	sha256sums = 55aadbacf89b539c4f086c608a0f21129a0ce0c09285447e2eb356d37017bf0d
 
 pkgname = upmix-core-legacy-bin
