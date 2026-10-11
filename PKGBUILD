@@ -12,7 +12,7 @@ pkgname=(
     'nvidia-open-egpu'
     'nvidia-open-egpu-dkms')
 pkgver=615.78.08
-pkgrel=2
+pkgrel=4
 epoch=1
 pkgdesc='NVIDIA open kernel modules with thunderbolt 4 force egpu and hotplug patches'
 arch=('x86_64')
@@ -28,6 +28,10 @@ source=("https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-
         '140-nvidia-open-gcc-sls.patch'
         '160-nvidia-open-thunderbolt-egpu-hotplug.patch'
         '170-nvidia-open-force-external-gpu.patch'
+        '180-nvidia-open-bar1-unmap-overhang.patch'
+        '190-nvidia-open-bar1-kernel-client-contiguous.patch'
+        '200-nvidia-open-rebar-failure-nonfatal.patch'
+        '210-nvidia-open-bar1-mapping-reuse.patch'
         'nvidia-egpu-hotplug.rules'
         'nvidia-egpu-hotplug.sh')
 sha256sums=('17b4f3d195a5ab1fad9aa1f195c9d3a4ad03aceda18bb9fb68a8bd33d7a000f6'
@@ -37,8 +41,12 @@ sha256sums=('17b4f3d195a5ab1fad9aa1f195c9d3a4ad03aceda18bb9fb68a8bd33d7a000f6'
             '22aa6f5be5d3c23762230df4322b1edabb16217c6b40b95b63fbe92753c33e30'
         '3f01480b81af4708b755941a2cdc8e580193eac9d9f8d58abc4d267f84831c79'
         'fb18cacdf323f985208dae3fcd174c9f6aad42a77d06229be082849a9d7d9f42'
-        '103d01b6652682156bbed9de16559f264f6c66671b3152046c02b0594684e612'
-            '571f25673103df05972c32ca04734d79d89095a9a0296eff3719bf20040daa17')
+        '7762f80d131ed1a8fee86f46d86d33a3a01f9a9fd1d6a66f95336df42aa0e5a1'
+        '954254e280f819cd14b06abb219700b9b93aee4c4e50ecd01b76297fbe064c09'
+        'de65235573dce384ee4b865f4164c67af84fd11a78c4f58f7ce8d52d77c12a91'
+        '85c9dd29bca475e4d8d816191bb36d4a8c67f76a074c67c2928a0683ca3fef42'
+            '7ce1d553e9b12d6a686c00d0a88039dc29c66fdf995b5dd5e042f169d7515682'
+            '74ad7d24e2dfdce1f2b52c51c2f2f85b1857d056000fa1d27f342d9aa00d410c')
 
 prepare() {
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/110-nvidia-open-change-dkms-conf.patch"
@@ -49,6 +57,15 @@ prepare() {
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/160-nvidia-open-thunderbolt-egpu-hotplug.patch"
     # https://github.com/NVIDIA/open-gpu-kernel-modules/pull/984 - force eGPU mode for TB4/5 enclosures
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/170-nvidia-open-force-external-gpu.patch"
+
+    # BAR1 mapping fixes: https://github.com/NVIDIA/open-gpu-kernel-modules/pull/1354 and #1403
+    patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/180-nvidia-open-bar1-unmap-overhang.patch"
+    patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/190-nvidia-open-bar1-kernel-client-contiguous.patch"
+
+    # Preserve normal ReBAR attempts and continue probing if resize fails: PR #1109
+    patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/200-nvidia-open-rebar-failure-nonfatal.patch"
+    # BAR1 mapping reuse cleanup from PR #1426 (source file only)
+    patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/210-nvidia-open-bar1-mapping-reuse.patch"
     
     # Substitute version placeholder in dkms.conf
     sed -i "s/@@PKGVER@@/${pkgver}/" "NVIDIA-kernel-module-source-${pkgver}/kernel-open/dkms.conf"

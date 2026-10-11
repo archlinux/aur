@@ -1,4 +1,19 @@
 # Changelog
+## [1:615.78.08-4] - 2026-10-11
+
+### Added
+- Added opt-in sibling-bridge removal before NVIDIA module loading for eGPU ReBAR allocation, with PCI rescan after module loading and on final unload
+
+## [1:615.78.08-3] - 2026-10-11
+
+### Fixed
+- Clean up BAR1 mapping reuse state after unmap and allocation failures
+- Avoid pinning a reused BAR1 mapping when allocation of its result record fails
+- Return expected mapping failures without triggering assertions
+- Preserve normal ReBAR attempts and continue probing with the PCI-assigned BAR allocation if resizing fails
+- Reclaimed untracked BAR1 virtual address space when an unmap encounters an unrelated tracked range
+- Kept kernel RM clients' user BAR1 mappings contiguous while preserving discontiguous mappings for ordinary userspace clients
+
 ## [1:615.78.08-2] - 2026-10-11
 
 ### Added

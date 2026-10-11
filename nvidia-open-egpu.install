@@ -17,6 +17,13 @@ NVIDIA eGPU hotplug configuration:
 
       NVIDIA_EGPU_KILL_PROCESSES=1
 
+- For the eGPU ReBAR (nvidia 0000:04:00.0: BAR 1 [mem size 0x10000000 64bit pref]: can't claim; no address assigned) workaround,
+  when ReBAR option is set (options nvidia NVreg_EnableResizableBar=1) explicitly - set the sibling bridge BDF in /etc/nvidia.env.
+  Its downstream devices are removed during module loading; the handler
+  rescans PCI afterward:
+
+      NVIDIA_EGPU_DISABLE_BRIDGE=0000:03:04.0
+
 Keep NVIDIA modules out of the initramfs on eGPU-only systems. Include them
 only if the system has an internal NVIDIA GPU.
 EOF

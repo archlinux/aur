@@ -3,10 +3,12 @@
 
 # On add, tag NVIDIA GPUs so we can identify them on remove
 ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x030000", \
+    IMPORT{file}="/etc/nvidia.env", \
     ENV{NVIDIA_GPU}="1", TAG+="nvidia-egpu", \
     RUN+="/usr/lib/nvidia-egpu/nvidia-egpu-hotplug.sh add %k"
 
 ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x030200", \
+    IMPORT{file}="/etc/nvidia.env", \
     ENV{NVIDIA_GPU}="1", TAG+="nvidia-egpu", \
     RUN+="/usr/lib/nvidia-egpu/nvidia-egpu-hotplug.sh add %k"
 

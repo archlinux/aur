@@ -2,12 +2,28 @@
 # NVIDIA eGPU hotplug handler script
 # Handles module loading/unloading for Thunderbolt eGPU hotplug
 
-LOGFILE="/var/log/nvidia-egpu-hotplug.log"
 ACTION="$1"
 DEVICE="$2"
 
 log() {
-    echo "$(date '+%Y-%m-%d %H:%M:%S') [$ACTION] $*" >> "$LOGFILE"
+    /usr/bin/logger --tag nvidia-egpu-hotplug -- "[$ACTION] $*"
+}
+
+run_logged() {
+    local output status line command_name="$1"
+
+    shift
+    if output=$("$@" 2>&1); then
+        status=0
+    else
+        status=$?
+    fi
+
+    while IFS= read -r line; do
+        [ -n "$line" ] && log "$command_name: $line"
+    done <<< "$output"
+
+    return "$status"
 }
 
 NVIDIA_EGPU_KILL_PROCESSES="${NVIDIA_EGPU_KILL_PROCESSES:-0}"
@@ -18,6 +34,87 @@ case "$NVIDIA_EGPU_KILL_PROCESSES" in
         NVIDIA_EGPU_KILL_PROCESSES=0
         ;;
 esac
+
+NVIDIA_EGPU_DISABLE_BRIDGE="${NVIDIA_EGPU_DISABLE_BRIDGE:-}"
+NVIDIA_EGPU_DISABLE_BRIDGE="${NVIDIA_EGPU_DISABLE_BRIDGE,,}"
+if [ -n "$NVIDIA_EGPU_DISABLE_BRIDGE" ] &&
+   [[ ! "$NVIDIA_EGPU_DISABLE_BRIDGE" =~ ^[[:xdigit:]]{4}:[[:xdigit:]]{2}:[[:xdigit:]]{2}\.[0-7]$ ]]; then
+    log "Invalid NVIDIA_EGPU_DISABLE_BRIDGE value '$NVIDIA_EGPU_DISABLE_BRIDGE'; bridge workaround disabled"
+    NVIDIA_EGPU_DISABLE_BRIDGE=""
+fi
+
+BRIDGE_REMOVED_FOR_REBAR=0
+
+disable_configured_bridge() {
+    local device="$1"
+    local bridge_path="/sys/bus/pci/devices/$NVIDIA_EGPU_DISABLE_BRIDGE"
+    local device_path="/sys/bus/pci/devices/$device"
+    local bridge_realpath device_realpath device_upstream bridge_parent device_upstream_parent bridge_class
+
+    [ -n "$NVIDIA_EGPU_DISABLE_BRIDGE" ] || return 1
+
+    if [ ! -d "$bridge_path" ] || [ ! -d "$device_path" ]; then
+        log "Configured bridge or eGPU device is missing; cannot apply bridge workaround"
+        return 1
+    fi
+
+    bridge_realpath=$(readlink -f -- "$bridge_path")
+    device_realpath=$(readlink -f -- "$device_path")
+    device_upstream=$(dirname -- "$device_realpath")
+    bridge_parent=$(dirname -- "$bridge_realpath")
+    device_upstream_parent=$(dirname -- "$device_upstream")
+
+    if [ "$bridge_realpath" = "$device_upstream" ] ||
+       [ "$bridge_parent" != "$device_upstream_parent" ]; then
+        log "Configured bridge $NVIDIA_EGPU_DISABLE_BRIDGE is not a sibling of eGPU $device; refusing to remove it"
+        return 1
+    fi
+
+    bridge_class=$(cat "$bridge_path/class" 2>/dev/null)
+    case "$bridge_class" in
+        0x0604*) ;;
+        *)
+            log "Configured device $NVIDIA_EGPU_DISABLE_BRIDGE is not a PCI-to-PCI bridge; refusing to remove it"
+            return 1
+            ;;
+    esac
+
+    log "Removing sibling PCI bridge $NVIDIA_EGPU_DISABLE_BRIDGE before NVIDIA module load"
+    if ! printf '1\n' > "$bridge_path/remove"; then
+        log "Failed to remove configured PCI bridge $NVIDIA_EGPU_DISABLE_BRIDGE"
+        return 1
+    fi
+
+    BRIDGE_REMOVED_FOR_REBAR=1
+}
+
+restore_configured_bridge() {
+    local bridge_path="/sys/bus/pci/devices/$NVIDIA_EGPU_DISABLE_BRIDGE"
+
+    [ -n "$NVIDIA_EGPU_DISABLE_BRIDGE" ] || return 0
+    if [ -d "$bridge_path" ]; then
+        log "PCI bridge $NVIDIA_EGPU_DISABLE_BRIDGE is present"
+        return 0
+    fi
+
+    if [ ! -w /sys/bus/pci/rescan ]; then
+        log "Cannot rescan PCI to restore bridge $NVIDIA_EGPU_DISABLE_BRIDGE"
+        return 1
+    fi
+
+    log "Rescanning PCI to restore bridge $NVIDIA_EGPU_DISABLE_BRIDGE"
+    if ! printf '1\n' > /sys/bus/pci/rescan; then
+        log "PCI rescan failed while restoring bridge $NVIDIA_EGPU_DISABLE_BRIDGE"
+        return 1
+    fi
+
+    if [ -d "$bridge_path" ]; then
+        log "Restored PCI bridge $NVIDIA_EGPU_DISABLE_BRIDGE"
+    else
+        log "PCI bridge $NVIDIA_EGPU_DISABLE_BRIDGE remains absent after rescan"
+        return 1
+    fi
+}
 
 # Count remaining NVIDIA GPUs in sysfs
 count_nvidia_gpus() {
@@ -109,7 +206,7 @@ unload_nvidia_modules() {
         for mod in nvidia_uvm nvidia_drm nvidia_modeset nvidia; do
             if lsmod | grep -q "^$mod "; then
                 log "Unloading $mod..."
-                if ! modprobe -r "$mod" 2>> "$LOGFILE"; then
+                if ! run_logged modprobe modprobe -r "$mod"; then
                     log "Failed to unload $mod"
                     failed="$failed $mod"
                 fi
@@ -143,8 +240,7 @@ unload_nvidia_modules() {
 delayed_unload() {
     local pids remaining
 
-    log "Starting delayed module unload sequence..."
-    sleep 1
+    log "Starting module unload sequence..."
 
     remaining=$(count_nvidia_gpus)
     if [ "$remaining" -gt 0 ]; then
@@ -168,26 +264,28 @@ delayed_unload() {
     fi
 
     unload_nvidia_modules
+
+    if lsmod | grep -Eq '^(nvidia|nvidia_uvm|nvidia_drm|nvidia_modeset) '; then
+        log "NVIDIA modules remain loaded; deferring PCI bridge restoration"
+    else
+        restore_configured_bridge
+    fi
 }
 
 # Load NVIDIA modules
 load_nvidia_modules() {
     log "Loading NVIDIA modules..."
-    modprobe nvidia
-    modprobe nvidia_modeset
-    modprobe nvidia_drm
-    modprobe nvidia_uvm
+    run_logged modprobe modprobe nvidia
+    run_logged modprobe modprobe nvidia_modeset
+    run_logged modprobe modprobe nvidia_drm
+    run_logged modprobe modprobe nvidia_uvm
     log "Module load complete"
 }
 
 case "$ACTION" in
     remove)
         log "GPU removed: $DEVICE"
-        
-        # Wait for kernel to fully process the removal
-        # Thunderbolt removal can take several seconds to propagate
-        sleep 5
-        
+
         remaining=$(count_nvidia_gpus)
         log "Remaining NVIDIA GPUs: $remaining"
         
@@ -195,12 +293,13 @@ case "$ACTION" in
             log "No NVIDIA GPUs remaining, starting cleanup..."
             # Run unload via systemd-run to escape udev process killing
             # udev kills background processes, so we must use systemd-run
-            if systemd-run --no-block --unit="nvidia-egpu-unload-$$" \
+            if run_logged systemd-run systemd-run --no-block --unit="nvidia-egpu-unload-$$" \
                 --setenv="NVIDIA_EGPU_KILL_PROCESSES=$NVIDIA_EGPU_KILL_PROCESSES" \
+                --setenv="NVIDIA_EGPU_DISABLE_BRIDGE=$NVIDIA_EGPU_DISABLE_BRIDGE" \
                 /usr/lib/nvidia-egpu/nvidia-egpu-hotplug.sh unload; then
                 log "Spawned nvidia-egpu-unload-$$ via systemd-run"
             else
-                log "Failed to start delayed unload via systemd-run"
+                log "Failed to start unload via systemd-run"
             fi
         else
             log "Other NVIDIA GPUs still present, keeping modules loaded"
@@ -215,7 +314,16 @@ case "$ACTION" in
         log "GPU added: $DEVICE"
         # Modules should auto-load, but ensure they're loaded
         if ! lsmod | grep -q "^nvidia "; then
+            if [ -n "$NVIDIA_EGPU_DISABLE_BRIDGE" ]; then
+                disable_configured_bridge "$DEVICE" || \
+                    log "Continuing without the configured PCI bridge workaround"
+            fi
             load_nvidia_modules
+            if [ "$BRIDGE_REMOVED_FOR_REBAR" -eq 1 ]; then
+                restore_configured_bridge
+            fi
+        elif [ -n "$NVIDIA_EGPU_DISABLE_BRIDGE" ]; then
+            log "NVIDIA modules are already loaded; skipping PCI bridge workaround"
         fi
         ;;
         

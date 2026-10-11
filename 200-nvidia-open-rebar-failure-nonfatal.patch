@@ -1,0 +1,29 @@
+From: NVIDIA open-gpu-kernel-modules PR #1109 (first commit only)
+Subject: nvidia: keep probing after ReBAR resize failure
+Source: https://github.com/NVIDIA/open-gpu-kernel-modules/pull/1109
+
+Resizable BAR is an optimization. Continue probing with the BAR allocation
+provided by PCI when a resize attempt fails. The driver still attempts its
+normal resize path, including for Thunderbolt-attached devices.
+
+diff --git a/kernel-open/nvidia/nv-pci.c b/kernel-open/nvidia/nv-pci.c
+--- a/kernel-open/nvidia/nv-pci.c
++++ b/kernel-open/nvidia/nv-pci.c
+@@ -2353,9 +2353,14 @@ nv_pci_probe
+         goto err_zero_dev;
+ 
+     if (nv_resize_pcie_bars(pci_dev)) {
+-        nv_printf(NV_DBG_ERRORS,
+-            "NVRM: Fatal Error while attempting to resize PCIe BARs.\n");
+-        goto err_zero_dev;
++        /*
++         * Resizable BAR is an enhancement, not a requirement. When
++         * resizing fails, the device can still use its existing BAR
++         * allocation. Keep probe going and report the reduced mapping.
++         */
++        nv_printf(NV_DBG_WARNINGS,
++            "NVRM: PCIe BAR resize failed; continuing with the existing "
++            "BAR allocation.\n");
+     }
+ 
+     nvl->all_mappings_revoked = NV_TRUE;

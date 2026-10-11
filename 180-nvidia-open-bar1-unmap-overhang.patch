@@ -1,0 +1,51 @@
+From: NVIDIA open-gpu-kernel-modules PR #1354
+Subject: mapping_reuse: release untracked BAR1 VA after a foreign entry
+Source: https://github.com/NVIDIA/open-gpu-kernel-modules/pull/1354
+
+When reusemappingdbUnmap encounters a tracked entry outside the requested
+range after processing earlier entries, returning skips the trailing unmap
+for untracked BAR1 mappings. Clamp the trailing unmap at the foreign entry
+and use the common cleanup path.
+
+diff --git a/src/nvidia/src/libraries/mapping_reuse/mapping_reuse.c b/src/nvidia/src/libraries/mapping_reuse/mapping_reuse.c
+--- a/src/nvidia/src/libraries/mapping_reuse/mapping_reuse.c
++++ b/src/nvidia/src/libraries/mapping_reuse/mapping_reuse.c
+@@ -88,7 +88,7 @@ reusemappingdbUnmap
+ {
+     ReuseMappingDbEntry *pEntry = mapFindGEQ(&(pReuseMappingDb->virtualMap), range.start);
+     NvU64 curOffset = range.start;
+-    NvBool bFirstRange = NV_TRUE;
++    NvU64 unmapLimit = mrangeLimit(range);
+ 
+     while (pEntry != NULL)
+     {
+@@ -101,14 +101,13 @@ reusemappingdbUnmap
+         // Only unmap ranges contained within the desired unmap range
+         if (!mrangeContains(range, revRange))
+         {
+-            if (bFirstRange)
++            if (revOffset < unmapLimit)
+             {
+-                break;
++                unmapLimit = revOffset;
+             }
+-            return;
++            break;
+         }
+ 
+-        bFirstRange = NV_FALSE;
+         curOffset = mrangeLimit(revRange);
+ 
+         // Unmap any partial range not tracked by data structure
+@@ -136,9 +135,9 @@ reusemappingdbUnmap
+     }
+ 
+     // Take care of any overhang.
+-    if (mrangeLimit(range) != curOffset)
++    if (unmapLimit > curOffset)
+     {
+-        MemoryRange diffRange = mrangeMake(curOffset, mrangeLimit(range) - curOffset);
++        MemoryRange diffRange = mrangeMake(curOffset, unmapLimit - curOffset);
+         pReuseMappingDb->pUnmapCb(pReuseMappingDb->pGlobalCtx, pAllocCtx, diffRange);
+     }
+ }
