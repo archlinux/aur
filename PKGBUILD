@@ -28,31 +28,16 @@ source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('5c1be365d78ccd08f79ef88a516c663d77f750c7605b767791f1159ee943446d')
 
 
-prepare() {
-	cd "${srcdir}/${pkgname}-${pkgver}/" || exit
-
-	go mod tidy
-}
-
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}/" || exit
 
 	export CGO_ENABLED=0
-
-	if [[ -f .ldflags ]]; then
-		ldflags=$(<.ldflags)
-	else
-		# interim until commit fix is released
-		ldflags="-checklinkname=0"
-	fi
-
-	go build -trimpath -ldflags "${ldflags}" -o "${pkgname}" ./
+	go build -v -trimpath -o "${pkgname}" ./
 }
 
 check() {
 	cd "${srcdir}/${pkgname}-${pkgver}/" || exit
 
-	# Run all package tests using the offline module cache
 	export GOPROXY=off
 	go test -v ./...
 }
@@ -62,7 +47,7 @@ package() {
 
 	install -Dm755 ${_appname} -t "${pkgdir}/usr/bin/"
 
-	install -Dm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
