@@ -1,0 +1,32 @@
+pkgbase = fcitx5-misstype-bin
+	pkgdesc = Offline, fuzzy Zhuyin input method for fcitx5 (prebuilt)
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/Yukaii/misstype
+	arch = x86_64
+	license = MIT
+	license = BSD-3-Clause
+	license = CC-BY-4.0
+	license = CC-BY-SA-4.0
+	license = Unicode-3.0
+	depends = fcitx5
+	depends = gcc-libs
+	depends = glibc
+	optdepends = fcitx5-configtool: add Misstype to your input methods
+	optdepends = gtk4: misstype-dictionary-editor
+	optdepends = fcitx5-gtk: GTK application integration
+	optdepends = fcitx5-qt: Qt application integration
+	provides = fcitx5-misstype=0.4.3
+	conflicts = fcitx5-misstype
+	conflicts = fcitx5-misstype-git
+	conflicts = fcitx5-mistype-git
+	conflicts = ibus-misstype
+	conflicts = ibus-misstype-git
+	conflicts = ibus-misstype-bin
+	noextract = Misstype-0.4.3-arch-x86_64.pkg.tar.zst
+	options = !strip
+	options = !debug
+	source = https://github.com/Yukaii/misstype/releases/download/v0.4.3/Misstype-0.4.3-arch-x86_64.pkg.tar.zst
+	sha256sums = 2d041b61afc58dc7c59e0298f32b1d500e90dcf33f297037a471615b58e66d13
+
+pkgname = fcitx5-misstype-bin
