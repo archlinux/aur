@@ -1,6 +1,6 @@
 pkgbase = kiekje
 	pkgdesc = Capture, mark up and keep screenshots
-	pkgver = 0.1.0alpha4
+	pkgver = 0.1.0alpha5
 	pkgrel = 1
 	url = https://github.com/remcostoeten/kiekje
 	arch = x86_64
@@ -17,8 +17,10 @@ pkgbase = kiekje
 	depends = gcc-libs
 	depends = glibc
 	optdepends = xdg-desktop-portal: capture and global shortcuts through the portal
+	optdepends = gst-plugins-base: capture sound
+	optdepends = gst-plugins-good: capture sound through PulseAudio
 	options = !lto
-	source = kiekje-0.1.0-alpha.4.tar.gz::https://github.com/remcostoeten/kiekje/archive/refs/tags/v0.1.0-alpha.4.tar.gz
-	sha256sums = b41a6e659f59d6939b535453b6dcf6266d05aeca385086d39604aa7d8d536c47
+	source = kiekje-0.1.0-alpha.5.tar.gz::https://github.com/remcostoeten/kiekje/archive/refs/tags/v0.1.0-alpha.5.tar.gz
+	sha256sums = c5b75da01bfd54badb2786480316be0a2797ca08acf1db943611d4be5cdf54e0
 
 pkgname = kiekje
