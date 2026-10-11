@@ -2,9 +2,9 @@
 
 pkgname=open-orpheus-git
 pkgver=r974.gb4508e9
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source implementation of Netease Cloud Music's Orpheus browser host."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/YUCLing/open-orpheus"
 license=('MIT')
 _srcname=open-orpheus
@@ -26,9 +26,16 @@ makedepends=(
     'git'
     'pnpm'
     'python'
+    'zig'
+)
+makedepends_x86_64=(
     'rust'
     'rust-wasm'
     'wasm-bindgen'
+)
+makedepends_aarch64=(
+    'cargo-zigbuild'
+    'rustup'
 )
 source=(
     "${_srcname}::git+https://github.com/YUCLing/open-orpheus.git#branch=main"
@@ -51,6 +58,14 @@ pkgver() {
 prepare() {
     cd "${_srcname}"
     pnpm install --frozen-lockfile
+    # Arch Linux ARM packages neither the wasm32-unknown-unknown target nor the
+    # wasm-bindgen CLI, so provision both from the rustup toolchain, as upstream CI does.
+    if [[ ${CARCH} == aarch64 ]]; then
+        rustup target add wasm32-unknown-unknown
+        local _wasm_bindgen_version
+        _wasm_bindgen_version=$(awk '/^wasm-bindgen =/ { gsub(/"/, "", $3); print $3; exit }' Cargo.toml)
+        cargo install --locked "wasm-bindgen-cli@${_wasm_bindgen_version}"
+    fi
 }
 
 # Compiles native modules and produces the Linux Electron application bundle.
@@ -62,7 +77,13 @@ build() {
 
 # Installs the bundled application and its desktop integration in standard paths.
 package() {
-    local appdir="${srcdir}/${_srcname}/out/${_srcname}-linux-x64"
+    # Electron Forge names the packaged bundle after the build host's architecture.
+    local electron_arch
+    case "${CARCH}" in
+        x86_64) electron_arch=x64 ;;
+        aarch64) electron_arch=arm64 ;;
+    esac
+    local appdir="${srcdir}/${_srcname}/out/${_srcname}-linux-${electron_arch}"
 
     install -d "${pkgdir}/usr/lib/${_srcname}"
     cp -a "${appdir}/." "${pkgdir}/usr/lib/${_srcname}/"
