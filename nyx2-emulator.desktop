@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=NYx 2 Emulator
+GenericName=Switch 2 Emulator
+Comment=Open-source Nintendo Switch 2 emulator written in Python
+TryExec=nyx2
+Exec=nyx2
+Icon=nyx2-emulator
+Terminal=false
+Categories=Game;Emulator;
+Keywords=game;console;emulator;switch;nyx;nyx2;
+StartupNotify=true

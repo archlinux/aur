@@ -1,0 +1,11 @@
+# Build artifacts (never commit these to the AUR repo)
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.log
+
+# makepkg working directories
+/src/
+/pkg/
+
+# Local VCS source cache created by updpkgsums/makepkg
+/nyx2-emulator-git/

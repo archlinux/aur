@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b2b3c"/>
+      <stop offset="1" stop-color="#101019"/>
+    </linearGradient>
+    <linearGradient id="txt" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e60012"/>
+      <stop offset="1" stop-color="#ff6b6b"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="256" height="256" rx="48" fill="url(#bg)"/>
+  <text x="128" y="148" font-family="sans-serif" font-size="92" font-weight="bold"
+        text-anchor="middle" fill="url(#txt)">NYx</text>
+  <text x="128" y="206" font-family="sans-serif" font-size="62" font-weight="bold"
+        text-anchor="middle" fill="#f5f5f7">2</text>
+</svg>

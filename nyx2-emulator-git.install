@@ -1,0 +1,20 @@
+# Post-installation hooks for nyx2-emulator-git
+
+post_install() {
+    echo "==> NYx 2 Emulator (git) has been installed."
+    echo "    - Launch with the 'nyx2' command or its application menu entry."
+    echo "    - On first run a writable data directory is created at:"
+    echo "        ${XDG_DATA_HOME:-$HOME/.local/share}/nyx2-emulator"
+    echo "    The emulator ships with no game library, and is provided with no"
+    echo "    warranty. See /usr/share/doc/nyx2-emulator/README.md for details."
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo "==> Removing NYx 2 Emulator (git)."
+    echo "    Your personal data (games.json, cover art) is left untouched at:"
+    echo "        ${XDG_DATA_HOME:-$HOME/.local/share}/nyx2-emulator"
+}
