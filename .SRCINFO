@@ -1,0 +1,27 @@
+pkgbase = dota2-minify-git
+	pkgdesc = Dota 2 Mod Patcher & Toolkit (latest git source build)
+	pkgver = 2rc5.r8.g61881b9
+	pkgrel = 1
+	url = https://github.com/Egezenn/dota2-minify
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = uv
+	makedepends = icoutils
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = gobject-introspection
+	depends = freetype2
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	provides = dota2-minify
+	conflicts = dota2-minify
+	conflicts = dota2-minify-bin
+	conflicts = dota2-minify-rc-bin
+	options = !debug
+	source = dota2-minify-git::git+https://github.com/Egezenn/dota2-minify.git
+	sha256sums = SKIP
+
+pkgname = dota2-minify-git
