@@ -1,18 +1,18 @@
 pkgbase = pandoc-crossref-bin
 	pkgdesc = Pandoc filter for cross-references - executable only
-	pkgver = 0.3.25.a
+	pkgver = 0.3.26
 	pkgrel = 1
 	url = https://github.com/lierdakil/pandoc-crossref/
 	arch = x86_64
 	arch = aarch64
 	license = GPL-2.0-or-later
-	depends = pandoc>=3.11
+	depends = pandoc>=3.12.1
 	provides = pandoc-crossref
 	conflicts = pandoc-crossref
 	options = !strip
-	source_x86_64 = pandoc-crossref-x64-0.3.25a.tar.xz::https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.25a/pandoc-crossref-Linux-X64.tar.xz
-	sha256sums_x86_64 = 7f8b7c5c91233db2dcb1145fa580a9ee8343695589bdb0ece8661490bc12a644
-	source_aarch64 = pandoc-crossref-arm64-0.3.25a.tar.xz::https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.25a/pandoc-crossref-Linux-ARM64.tar.xz
-	sha256sums_aarch64 = a5e06fe32cce7f8bccc182ff9d88cfe0c0fc5ff2ac784422388157714ccaaff7
+	source_x86_64 = pandoc-crossref-x64-0.3.26.tar.xz::https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.26/pandoc-crossref-Linux-X64.tar.xz
+	sha256sums_x86_64 = 83d09646629234dfcd3d267e28184f46b9d468e98508efb3542b014634bfe999
+	source_aarch64 = pandoc-crossref-arm64-0.3.26.tar.xz::https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.26/pandoc-crossref-Linux-ARM64.tar.xz
+	sha256sums_aarch64 = 458a6fa28667a0e2673421b632e168218ffb4cded0dd5eea463a1b630178c1f6
 
 pkgname = pandoc-crossref-bin
