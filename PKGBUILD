@@ -1,12 +1,12 @@
 # Maintainer: Axel H. <noirbizarre@gmail.com>
 #
-# Source package. `0.13.0` and `896a9cad66d0d44d9539f7571ab537fcb8948dc5b429f879eb1420e13866a228` are substituted by
+# Source package. `0.14.0` and `b0674555ee8ea75d32362250b811963291c03418d4c78204787e022969873e41` are substituted by
 # .github/workflows/aur.yaml from the published release, and the result is
 # pushed to the AUR. Edit this template, never the PKGBUILD in the AUR
 # repository: that one is regenerated at every release.
 
 pkgname=git-tpl
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Git-native project templates"
 arch=('x86_64' 'aarch64')
@@ -39,7 +39,7 @@ options=('!lto' '!debug')
 
 # This project tags without a `v` prefix, so the tag is `$pkgver` as-is.
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('896a9cad66d0d44d9539f7571ab537fcb8948dc5b429f879eb1420e13866a228')
+sha256sums=('b0674555ee8ea75d32362250b811963291c03418d4c78204787e022969873e41')
 
 prepare() {
 	cd "$pkgname-$pkgver"
