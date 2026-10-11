@@ -4,7 +4,7 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="Modern Chess Information Database (Scid vs. PC Rewrite)"
 arch=('x86_64')
-url="https://gitlab.com/bughouse1/newscid"
+url="https://github.com/chrisfair/newscid"
 license=('GPL-3.0-or-later')
 depends=('gtk3' 'webkit2gtk-4.1' 'hicolor-icon-theme')
 makedepends=('go' 'nodejs' 'npm' 'git' 'python-pillow')
@@ -13,7 +13,7 @@ optdepends=(
     'fruit: legacy UCI chess engine'
     'scid: legacy database tools (tcscid)'
 )
-source=("git+https://gitlab.com/bughouse1/newscid.git#tag=v${pkgver}")
+source=("git+https://github.com/chrisfair/newscid.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {
