@@ -1,7 +1,7 @@
 # Maintainer: Abdelzaher Abdelgwad <abdelzaher.abdelgwad@gmail.com>
 # Auto-generated from packaging/aur/PKGBUILD.template by .github/workflows/release.yml
 pkgname=csm-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 # v0.3.0 was published to the AUR and then withdrawn in favour of v0.2.1.
 # AUR versions only move forward, so without an epoch pacman would treat the
@@ -21,8 +21,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/AbdelzaherAbdelgwa
 source_x86_64=("csm-${pkgver}-linux-x64::${url}/releases/download/v${pkgver}/csm-linux-x64")
 source_aarch64=("csm-${pkgver}-linux-arm64::${url}/releases/download/v${pkgver}/csm-linux-arm64")
 sha256sums=('ffadef1b35435bbe565d5cc82397052e5447bbace85ca53e86268f64c13f1fed')
-sha256sums_x86_64=('7b291c42b3ce14944fa054ea2b049246ddc6d6a9a0e78464d77e390bb7705b8f')
-sha256sums_aarch64=('843148a4c757207004835c74f072d5952d49bfcacd3ef53596b04fb1a79cc6ba')
+sha256sums_x86_64=('1a1b3f203418aafba356fe0d52382ab409bf5d6f39c284c838fd0466473aa840')
+sha256sums_aarch64=('0847fa910eef374ca9cd9c4dc0c26a2e33469471542652381547ef522d9dc0f5')
 
 package() {
   install -Dm755 "${srcdir}/csm-${pkgver}-linux-"* "${pkgdir}/usr/bin/csm"
