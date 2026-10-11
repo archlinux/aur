@@ -1,0 +1,100 @@
+diff --git a/src/components/comic/comic-cover.tsx b/src/components/comic/comic-cover.tsx
+index d9e8fd0..f312102 100644
+--- a/src/components/comic/comic-cover.tsx
++++ b/src/components/comic/comic-cover.tsx
+@@ -56,7 +56,7 @@ export function ComicCover({
+         <CoverPlaceholder />
+       )}
+       {showIdBadge && id ? (
+-        <div className="absolute top-2 left-2 rounded-full border bg-background/45 px-2 py-1 text-[10px] backdrop-blur">
++        <div className="absolute top-2 left-2 rounded-full border bg-background/70 px-2 py-1 text-[10px]">
+           JM {id}
+         </div>
+       ) : null}
+diff --git a/src/components/ui/alert-dialog.tsx b/src/components/ui/alert-dialog.tsx
+index 119709f..6afbc14 100644
+--- a/src/components/ui/alert-dialog.tsx
++++ b/src/components/ui/alert-dialog.tsx
+@@ -26,7 +26,7 @@ function AlertDialogOverlay({
+     <AlertDialogPrimitive.Overlay
+       data-slot="alert-dialog-overlay"
+       className={cn(
+-        'fixed inset-0 z-50 bg-black/80 duration-100 supports-backdrop-filter:backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0',
++        'fixed inset-0 z-50 bg-black/80 duration-100 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0',
+         className
+       )}
+       {...props}
+diff --git a/src/components/ui/dialog.tsx b/src/components/ui/dialog.tsx
+index 449e149..eb928e0 100644
+--- a/src/components/ui/dialog.tsx
++++ b/src/components/ui/dialog.tsx
+@@ -29,7 +29,7 @@ function DialogOverlay({
+     <DialogPrimitive.Overlay
+       data-slot="dialog-overlay"
+       className={cn(
+-        'fixed inset-0 isolate z-50 bg-black/80 duration-100 supports-backdrop-filter:backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0',
++        'fixed inset-0 isolate z-50 bg-black/80 duration-100 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0',
+         className
+       )}
+       {...props}
+diff --git a/src/components/ui/drawer.tsx b/src/components/ui/drawer.tsx
+index c65202a..06c70bf 100644
+--- a/src/components/ui/drawer.tsx
++++ b/src/components/ui/drawer.tsx
+@@ -27,7 +27,7 @@ function DrawerOverlay({
+     <DrawerPrimitive.Overlay
+       data-slot="drawer-overlay"
+       className={cn(
+-        'fixed inset-0 z-50 bg-black/80 supports-backdrop-filter:backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0',
++        'fixed inset-0 z-50 bg-black/80 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0',
+         className
+       )}
+       {...props}
+diff --git a/src/features/reader/reader-bars.tsx b/src/features/reader/reader-bars.tsx
+index 8704cad..bd96c89 100644
+--- a/src/features/reader/reader-bars.tsx
++++ b/src/features/reader/reader-bars.tsx
+@@ -28,7 +28,7 @@ export function ReaderTopBar({
+   return (
+     <header
+       className={cn(
+-        'absolute inset-x-0 top-0 z-30 grid h-16 grid-cols-[120px_minmax(0,1fr)_120px] items-center bg-neutral-950/85 px-4 backdrop-blur transition-all duration-200',
++        'absolute inset-x-0 top-0 z-30 grid h-16 grid-cols-[120px_minmax(0,1fr)_120px] items-center bg-neutral-950/95 px-4 transition-all duration-200',
+         visible ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-3 opacity-0'
+       )}
+       onClick={event => event.stopPropagation()}
+@@ -93,7 +93,7 @@ export function ReaderBottomBar({
+   return (
+     <footer
+       className={cn(
+-        'absolute bottom-8 left-1/2 z-30 flex w-[480px] max-w-[calc(100vw-48px)] -translate-x-1/2 flex-col gap-2 rounded-xl border border-white/10 bg-neutral-950/85 p-3 text-neutral-50 shadow-lg backdrop-blur transition-all duration-200',
++        'absolute bottom-8 left-1/2 z-30 flex w-[480px] max-w-[calc(100vw-48px)] -translate-x-1/2 flex-col gap-2 rounded-xl border border-white/10 bg-neutral-950/95 p-3 text-neutral-50 shadow-lg transition-all duration-200',
+         visible ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-3 opacity-0'
+       )}
+       onClick={event => event.stopPropagation()}
+diff --git a/src/features/reader/reader-chapter-drawer.tsx b/src/features/reader/reader-chapter-drawer.tsx
+index 9d179a4..e6b3f0f 100644
+--- a/src/features/reader/reader-chapter-drawer.tsx
++++ b/src/features/reader/reader-chapter-drawer.tsx
+@@ -51,7 +51,7 @@ export function ReaderChapterDrawer({
+ 
+   return (
+     <Drawer open={open} onOpenChange={onOpenChange} direction="right">
+-      <DrawerContent className="h-full w-[420px] max-w-[calc(100vw-24px)] overflow-hidden rounded-l-xl border-l border-white/10 bg-neutral-950/90 p-0 text-neutral-50 shadow-2xl backdrop-blur-xl before:hidden data-[vaul-drawer-direction=right]:w-[420px] data-[vaul-drawer-direction=right]:sm:max-w-[420px]">
++      <DrawerContent className="h-full w-[420px] max-w-[calc(100vw-24px)] overflow-hidden rounded-l-xl border-l border-white/10 bg-neutral-950/95 p-0 text-neutral-50 shadow-2xl before:hidden data-[vaul-drawer-direction=right]:w-[420px] data-[vaul-drawer-direction=right]:sm:max-w-[420px]">
+         <DrawerHeader className="relative border-b border-white/10 pr-12">
+           <DrawerTitle className="text-neutral-50">章节目录</DrawerTitle>
+           <DrawerDescription className="line-clamp-1 text-neutral-400">
+diff --git a/src/features/reader/reader-settings-menu.tsx b/src/features/reader/reader-settings-menu.tsx
+index 06a9ee6..9aeea61 100644
+--- a/src/features/reader/reader-settings-menu.tsx
++++ b/src/features/reader/reader-settings-menu.tsx
+@@ -67,7 +67,7 @@ export function ReaderSettingsMenu() {
+       <DropdownMenuContent
+         side="top"
+         align="start"
+-        className="w-56 border border-white/10 bg-neutral-950/95 text-neutral-50 shadow-2xl backdrop-blur-xl"
++        className="w-56 border border-white/10 bg-neutral-950/95 text-neutral-50 shadow-2xl"
+       >
+         <DropdownMenuLabel className="text-neutral-400">阅读模式</DropdownMenuLabel>
+         <DropdownMenuRadioGroup value={readerReadMode} onValueChange={setReaderReadMode}>

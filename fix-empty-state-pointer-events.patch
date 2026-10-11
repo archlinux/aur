@@ -1,0 +1,11 @@
+--- a/src/components/empty-state.tsx
++++ b/src/components/empty-state.tsx
+@@ -8,7 +8,7 @@
+ 
+ export function EmptyState({ emoji, title, actions }: EmptyStateProps) {
+   return (
+-    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center">
++    <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-3 text-center">
+       <p className="text-6xl font-bold">{emoji}</p>
+       <p className="text-sm text-muted-foreground">{title}</p>
+       {actions ? <div className="pointer-events-auto mt-1">{actions}</div> : null}

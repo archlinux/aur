@@ -1,0 +1,79 @@
+diff --git a/src-tauri/src/api.rs b/src-tauri/src/api.rs
+index 1299553..55b2de4 100644
+--- a/src-tauri/src/api.rs
++++ b/src-tauri/src/api.rs
+@@ -139,6 +139,12 @@ fn user_avatar_url(img_host: Option<&str>, photo: &str) -> Option<String> {
+     }
+ }
+ 
++/// Some API hosts prefix responses with a UTF-8 BOM, which `str::trim` keeps
++/// and serde_json rejects.
++pub(crate) fn trim_response_body(body: &str) -> &str {
++    body.trim().trim_start_matches('\u{feff}').trim_start()
++}
++
+ fn response_preview(value: &str) -> String {
+     value
+         .chars()
+diff --git a/src-tauri/src/api/codec.rs b/src-tauri/src/api/codec.rs
+index adeed39..c6d167c 100644
+--- a/src-tauri/src/api/codec.rs
++++ b/src-tauri/src/api/codec.rs
+@@ -43,7 +43,7 @@ where
+     let body = response.text().await.map_err(|error| {
+         ApiError::new(ApiErrorKind::Network, format!("{request_name}: {error}"))
+     })?;
+-    let body = body.trim();
++    let body = trim_response_body(&body);
+ 
+     if body.is_empty() {
+         return Err(ApiError::new(
+@@ -162,7 +162,7 @@ where
+     let body = response.text().await.map_err(|error| {
+         ApiError::new(ApiErrorKind::Network, format!("{request_name}: {error}"))
+     })?;
+-    let body = body.trim();
++    let body = trim_response_body(&body);
+ 
+     if body.is_empty() {
+         return Err(ApiError::new(
+diff --git a/src-tauri/src/api/setting.rs b/src-tauri/src/api/setting.rs
+index 12fedc7..ccf05e4 100644
+--- a/src-tauri/src/api/setting.rs
++++ b/src-tauri/src/api/setting.rs
+@@ -112,7 +112,7 @@ pub(crate) async fn request_remote_setting(
+         ApiError::new(ApiErrorKind::Network, format!("{request_name}: {error}"))
+     })?;
+ 
+-    decode_setting_payload::<RemoteSettingPayload>(body.trim(), &auth.ts).map_err(|error| {
++    decode_setting_payload::<RemoteSettingPayload>(trim_response_body(&body), &auth.ts).map_err(|error| {
+         ApiError::new(
+             ApiErrorKind::Payload,
+             format!(
+diff --git a/src-tauri/src/reader/manifest.rs b/src-tauri/src/reader/manifest.rs
+index 332c72e..ffe48a8 100644
+--- a/src-tauri/src/reader/manifest.rs
++++ b/src-tauri/src/reader/manifest.rs
+@@ -1,7 +1,7 @@
+ use super::types::{ReaderManifest, ReaderPage};
+ use crate::api::{
+     build_http_client, current_jwt_token, lossy_string_from_scalar, resolve_api_endpoint,
+-    resolve_cached_img_host, ApiError, ApiErrorKind, ApiResult,
++    resolve_cached_img_host, trim_response_body, ApiError, ApiErrorKind, ApiResult,
+ };
+ use crate::storage::runtime_cache;
+ use aes::Aes256;
+@@ -122,9 +122,11 @@ async fn request_reader_chapter(
+         ApiError::new(ApiErrorKind::Network, format!("{request_name}: {error}"))
+     })?;
+ 
+-    decode_plugin_payload::<ReaderChapterPayload>(body.trim(), &api_request.ts)
++    let body = trim_response_body(&body);
++
++    decode_plugin_payload::<ReaderChapterPayload>(body, &api_request.ts)
+         .or_else(|_| {
+-            serde_json::from_str::<ReaderChapterEnvelope>(body.trim()).map(|payload| {
++            serde_json::from_str::<ReaderChapterEnvelope>(body).map(|payload| {
+                 ReaderChapterPayload {
+                     id: read_id.to_string(),
+                     images: payload.images,

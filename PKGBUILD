@@ -2,7 +2,7 @@
 
 pkgname=jm-boom
 pkgver=0.4.6
-pkgrel=1
+pkgrel=4
 pkgdesc="Cross-platform third-party JM comic client (Tauri)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ppxb/jm-boom"
@@ -23,15 +23,24 @@ makedepends=('bun' 'cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'disable-in-app-updater.patch'
+        'fix-empty-state-pointer-events.patch'
+        'fix-response-bom.patch'
+        'fix-webkit-backdrop-blur.patch'
         'jm-boom.desktop')
 sha256sums=('ffc0d0d7ac7061530b5630e8ba2161438f9cfd038521f37b86383757f896689b'
             'e8f923d660f48e277b4708820ccfdf929b926c80bc3bc84e38a729f95e448064'
+            '2fb438e395d87e1916b06215883acf5d87f1e3bbf2fe3da175f6d7e9333a1259'
+            '240094f2ae4d45d1b5b6dfb543c0111d552c6ca442219b9128ada75c50e72818'
+            'b630a8bc1a8bb46af563092280b965c3416ec921d4840114831cb0fb3e61b83a'
             '60fa5fb473a42cf9b0e428c56bf568d06d9a65012210aca3cd8a2173867671f3')
 
 prepare() {
   cd "$pkgname-$pkgver"
 
   patch -Np1 -i ../disable-in-app-updater.patch
+  patch -Np1 -i ../fix-empty-state-pointer-events.patch
+  patch -Np1 -i ../fix-response-bom.patch
+  patch -Np1 -i ../fix-webkit-backdrop-blur.patch
 
   export BUN_INSTALL_CACHE_DIR="$srcdir/bun-cache"
   bun install --frozen-lockfile
