@@ -1,17 +1,18 @@
 pkgbase = python-jsonpath-python
-	pkgdesc = A more powerful JSONPath implementation in modern python
+	pkgdesc = A more powerful JSONPath implementation in modern python.
 	pkgver = 1.1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sean2077/jsonpath-python
 	arch = any
 	license = MIT
-	checkdepends = uv
 	checkdepends = python-pytest
+	checkdepends = python-pytest-benchmark
+	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-hatchling
+	makedepends = git
 	depends = python
-	source = git+https://github.com/sean2077/jsonpath-python.git#tag=1.1.6
+	source = jsonpath-python::git+https://github.com/sean2077/jsonpath-python.git#tag=1.1.6
 	sha256sums = 9e0ae4577526317249c34f7ed9ac27a710c4bdf927798e249bcba3e2ce6e9d04
 
 pkgname = python-jsonpath-python
