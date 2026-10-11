@@ -1,0 +1,4 @@
+[django-redis]
+source = "github"
+github = "jazzband/django-redis"
+use_max_tag = true
