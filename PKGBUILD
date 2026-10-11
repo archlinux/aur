@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034,SC2164
 
 pkgname=hdiff
-pkgver=5.0.1
+pkgver=5.1.3
 pkgrel=1
 pkgdesc='C/C++ library and CLI tool for Diff & Patch between binary files or directories'
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
@@ -16,7 +16,7 @@ provides=('hdiffpatch')
 conflicts=('hdiffpatch-bin')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('3f04cddc3c8c5f4f7ef8e2621cfffa42c337fac64c08ae8fe000e4530a5238da')
+sha256sums=('435c46447e7a1ace0327b67da2ec50a06e7f02d19960a182b493ff2e3f91c2b0')
 
 prepare() {
   for lib in libmd5 lzma bzip2; do
