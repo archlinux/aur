@@ -1,6 +1,6 @@
 pkgbase = amber-lang-git
 	pkgdesc = The programming language compiled to bash
-	pkgver = r783.b7bb71e
+	pkgver = r792.2fe3a93
 	pkgrel = 1
 	url = https://amber-lang.com/
 	arch = any
@@ -13,6 +13,8 @@ pkgbase = amber-lang-git
 	conflicts = amber-bash-bin
 	conflicts = amber-bash-git
 	conflicts = amber-lang-bin
+	options = !strip
+	options = !debug
 	source = git+https://github.com/amber-lang/amber
 	sha256sums = SKIP
 

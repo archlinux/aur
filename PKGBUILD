@@ -1,6 +1,6 @@
 pkgname=amber-lang-git
 _pkgname=amber
-pkgver=r783.b7bb71e
+pkgver=r792.2fe3a93
 pkgrel=1
 pkgdesc="The programming language compiled to bash"
 url="https://amber-lang.com/"
@@ -10,6 +10,7 @@ arch=('any')
 license=('GPL-3.0')
 provides=('amber-lang')
 conflicts=('amber-bash-bin' 'amber-bash-git' 'amber-lang-bin')
+options=('!strip' '!debug')
 
 source=("git+https://github.com/amber-lang/amber")
 sha256sums=(SKIP)
