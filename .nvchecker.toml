@@ -1,0 +1,5 @@
+[oauth2c]
+source = "github"
+github = "SecureAuthCorp/oauth2c"
+use_max_tag = true
+prefix = "v"
