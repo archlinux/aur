@@ -1,6 +1,6 @@
 pkgbase = logo-ls
 	pkgdesc = A minimal ls replacement, with git status indicators and configurable Nerd Font icons
-	pkgver = 1.7.4
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/canta2899/logo-ls
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = logo-ls
 	conflicts = logo-ls
 	provides = logo-ls
 	
-	source = https://github.com/canta2899/logo-ls/releases/download/v1.7.4/logo-ls-v1.7.4-source.tar.gz
-	sha256sums = 01d97bce910ef37f57719ab949951e404ce7b9096542473f0f931498803c355e
+	source = logo-ls_1.8.0.tar.gz::https://github.com/canta2899/logo-ls/releases/download/v1.8.0/logo-ls-v1.8.0-source.tar.gz
+	sha256sums = 6d06458a488737ba22bfc4581e2b89b228d164bd948f76bcd5e34eab71392871
 	
 pkgname = logo-ls
