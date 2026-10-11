@@ -1,6 +1,6 @@
 pkgbase = otr-git
 	pkgdesc = Decode and cut video files from Online TV Recorder (OTR)
-	pkgver = 0.12.0.r0.gfb78a4d
+	pkgver = 0.13.0.r0.g456300b
 	pkgrel = 1
 	url = https://codeberg.org/mipi/otr/
 	arch = aarch64
