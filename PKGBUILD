@@ -1,33 +1,35 @@
+# Maintainer: ankabo
 pkgname=systemd-pilot
-_app_id=io.github.mfat.systemdpilot
-pkgver=3.0
-pkgrel=3
+pkgver=4.2.1
+pkgrel=1
 pkgdesc="Desktop application for managing systemd services"
 arch=('any')
 url="https://github.com/mfat/systemd-pilot"
 license=('GPL-3.0-or-later')
 depends=(
-  'gtk3'
-  'gtksourceview4'
+  'gtk4'
+  'gtksourceview5'
+  'libadwaita'
+  'libsecret'
+  'python'
   'python-gobject'
-  'python-keyring'
   'python-paramiko'
-  'python-rich'
 )
+makedepends=('meson')
+checkdepends=('appstream' 'desktop-file-utils')
+optdepends=('org.freedesktop.secrets: store credentials for remote hosts')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bc36692ead79abb18577d7c5a64da5f2985a66e9fedd6e7f0a10cfcf1a4728ea')
+sha256sums=('ceab3ccff5bf8058a7ae125d964f0e544402ec1f38cd5b3b041d6251ce02b6ef')
 
-prepare() {
-  export PAGER=cat
-  cd "$pkgname-$pkgver"
-  desktop-file-edit --set-key=StartupWMClass --set-value="$pkgname" \
-    "data/${_app_id}.desktop"
+build() {
+  arch-meson "$pkgname-$pkgver" build -Dtests=false
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 src/main.py "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
-  install -Dm644 systemd-pilot.png "$pkgdir/usr/share/pixmaps/${_app_id}.png"
-  install -Dm644 "data/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
+  meson install -C build --destdir "$pkgdir"
 }
