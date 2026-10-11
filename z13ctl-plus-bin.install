@@ -1,16 +1,15 @@
 post_install() {
-    z13ctl setup
-    systemctl --global enable z13ctl.socket z13ctl.service || true
+    z13ctl-plus setup
     echo ""
-    echo ">>> z13ctl-plus installed (command: z13ctl). To start the daemon now:"
-    echo ">>>   systemctl --user start z13ctl.socket"
-    echo ">>> Or log out and back in — socket activation starts automatically."
+    echo ">>> z13ctl-plus installed. Its daemon is disabled so it can coexist with upstream."
+    echo ">>> After disabling any other Z13 daemon, enable this one with:"
+    echo ">>>   systemctl --user enable --now z13ctl-plus.socket z13ctl-plus.service"
 }
 
 post_upgrade() {
-    z13ctl setup
+    z13ctl-plus setup
     echo ""
-    echo ">>> z13ctl-plus upgraded. Reload the user daemon and restart the service:"
+    echo ">>> z13ctl-plus upgraded. If its daemon is enabled, reload and restart it:"
     echo ">>>   systemctl --user daemon-reload"
-    echo ">>>   systemctl --user restart z13ctl.service"
+    echo ">>>   systemctl --user restart z13ctl-plus.service"
 }
