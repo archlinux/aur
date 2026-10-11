@@ -1,6 +1,6 @@
 pkgbase = mocinha
 	pkgdesc = Small, modular, platform-aware live-system installer (work in progress)
-	pkgver = 0.1.1
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/dani-77/mocinha
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = mocinha
 	optdepends = sudo: start Mocinha from a terminal
 	optdepends = networkmanager: connect to networks from Mocinha (nmcli)
 	optdepends = iwd: connect to Wi-Fi from Mocinha (iwctl)
-	source = mocinha-0.1.1.tar.gz::https://github.com/dani-77/mocinha/archive/refs/tags/0.1.1.tar.gz
-	sha256sums = c4eca8b5a87f704416f7899a752f97d0dcb1dc0b77aed7786853f2250dafc111
+	source = mocinha-0.1.5.tar.gz::https://github.com/dani-77/mocinha/archive/refs/tags/0.1.5.tar.gz
+	sha256sums = 08579972aa4a9f63ceb6edf402e94906aa2ad76fbcffacbad85752269b5f9046
 
 pkgname = mocinha
