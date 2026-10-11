@@ -2,7 +2,7 @@
 pkgname=soundcraft-bin
 _pkgname=soundcraft
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source native digital audio workstation, Pro Tools alternative (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/storytold/soundcraft"
@@ -11,6 +11,7 @@ depends=('alsa-lib' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'libxkbcommon')
 optdepends=('vulkan-icd-loader: GPU-accelerated rendering')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+options=('!strip')
 source_x86_64=("$_pkgname-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
 sha256sums_x86_64=('b1305b1a7ba7b8563204084dc0de652ef4236769ccf46a5e7f545a4a1060e803')

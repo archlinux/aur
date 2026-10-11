@@ -1,7 +1,7 @@
 pkgbase = soundcraft-bin
 	pkgdesc = Open-source native digital audio workstation, Pro Tools alternative (prebuilt binary)
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/storytold/soundcraft
 	arch = x86_64
 	arch = aarch64
@@ -15,6 +15,7 @@ pkgbase = soundcraft-bin
 	optdepends = vulkan-icd-loader: GPU-accelerated rendering
 	provides = soundcraft
 	conflicts = soundcraft
+	options = !strip
 	source_x86_64 = soundcraft-0.5.0-linux-x86_64.tar.gz::https://github.com/storytold/soundcraft/releases/download/v0.5.0/soundcraft-0.5.0-linux-x86_64.tar.gz
 	sha256sums_x86_64 = b1305b1a7ba7b8563204084dc0de652ef4236769ccf46a5e7f545a4a1060e803
 	source_aarch64 = soundcraft-0.5.0-linux-aarch64.tar.gz::https://github.com/storytold/soundcraft/releases/download/v0.5.0/soundcraft-0.5.0-linux-aarch64.tar.gz
