@@ -8,7 +8,7 @@
 
 pkgname=localsend-bin
 pkgver=1.18.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source cross-platform alternative to AirDrop'
 url=https://github.com/localsend/localsend
 arch=('x86_64' 'aarch64')
