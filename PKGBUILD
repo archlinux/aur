@@ -36,12 +36,6 @@ prepare() {
   # https://github.com/lierdakil/pandoc-crossref/pull/403#issuecomment-1732434519
   # for how to bump
 
-  _bumpBound() {
-    _pandoc_bound="${_pandoc_ver}.1"
-    sed -i "/pandoc.*< \?$_pandoc_ver/s#< \?[0-9.]*#<$_pandoc_bound#" \
-      pandoc-crossref.cabal
-  }
-
   case "$_pandoc_type" in
   stock) if ! git diff --quiet -- cabal.project.freeze; then
     echo "cabal.project.freeze has been modified, can't use stock version selection"
@@ -72,16 +66,15 @@ source-repository-package
       exit 1
     fi
     _sourceStanzas >> cabal.project
-    _bumpBound
-    ;;
+    ;&
   version)
     _freezeVer() {
       sed -i "/any\.$1 ==/s/==[0-9.]*/==$2/" cabal.project.freeze
     }
+
     _freezeVer pandoc "$_pandoc_ver"
     _freezeVer pandoc-cli "$_pandoc_ver"
     _freezeVer pandoc-lua-engine "$_pandoc_lua_ver"
-    _bumpBound
   ;;
   *)
     echo "Invalid pandoc version type: $_pandoc_type"
@@ -92,10 +85,11 @@ source-repository-package
     awk -F': ' '$1 == "Last-modified" { print $2 }')")
   lts=$(TZ=UTC date +@%s --date='today 00:00')
   ts=$(printf '%s\n' "$rts" "$lts" | sort -n | head -n1)
-
   cabal update hackage.haskell.org,$ts
+
   cabal configure --prefix=/usr --docdir=/usr/share/doc/"$pkgname" \
-    --enable-tests
+    --enable-tests \
+    --allow-newer=pandoc
   cabal build --only-dependencies
 }
 
