@@ -10,6 +10,7 @@ pkgbase = mingw-w64-vtk-git
 	makedepends = qt6-base
 	makedepends = git
 	makedepends = ninja-makeflags
+	makedepends = lld
 	depends = mingw-w64-crt
 	depends = mingw-w64-qt6-base
 	depends = mingw-w64-jsoncpp

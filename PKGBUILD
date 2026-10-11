@@ -6,7 +6,7 @@ arch=('any')
 url='https://www.vtk.org'
 license=('BSD')
 depends=('mingw-w64-crt' 'mingw-w64-qt6-base' 'mingw-w64-jsoncpp' 'mingw-w64-expat' 'mingw-w64-netcdf' 'mingw-w64-libtiff' 'mingw-w64-libjpeg-turbo' 'mingw-w64-freetype2' 'mingw-w64-libpng' 'mingw-w64-libxml2' 'mingw-w64-hdf5' 'mingw-w64-freeglut' 'mingw-w64-lz4' 'mingw-w64-proj' 'mingw-w64-double-conversion' 'mingw-w64-pugixml' 'mingw-w64-libtheora' 'mingw-w64-gl2ps' 'mingw-w64-cgns' 'mingw-w64-libharu' 'mingw-w64-verdict' 'mingw-w64-scnlib')
-makedepends=('mingw-w64-cmake' 'mingw-w64-wine' 'qt6-base' 'git' 'ninja-makeflags')
+makedepends=('mingw-w64-cmake' 'mingw-w64-wine' 'qt6-base' 'git' 'ninja-makeflags' 'lld')
 provides=('mingw-w64-vtk')
 conflicts=('mingw-w64-vtk')
 options=('!buildflags' 'staticlibs' '!strip')
@@ -59,6 +59,7 @@ build() {
       -DVTK_MODULE_ENABLE_VTK_IOXdmf2=YES \
       -DVTK_MODULE_ENABLE_VTK_RenderingParallel=YES \
       -DVTK_MODULE_ENABLE_VTK_RenderingVolumeAMR=YES \
+      -DCMAKE_LINKER_TYPE=LLD \
       -B build-${_arch} .
     cmake --build build-${_arch}
   done
