@@ -1,7 +1,7 @@
 # Maintainer: Bryan Joshua Pedini <bryan [at] pedini [dot] dev>
 
 pkgname="skeptical-updater"
-pkgver="0.1.0"
+pkgver="0.1.1"
 pkgrel="1"
 pkgdesc="A manual, conscious update cycle for apt, dnf/yum, pacman/pman and zypper"
 url="https://git.bjphoster.com/source/${pkgname}"
@@ -12,7 +12,7 @@ optdepends=("sudo: re-exec as root when run unprivileged"
             "pman-helper: shows the pman label")
 source=("https://git.bjphoster.com/source/${pkgname}/archive/${pkgver}.tar.gz")
 
-sha256sums=("902389462d56db9ba7e3c9acd89a4b45340e00a6c2b300b778651b837d955b47")
+sha256sums=("23d0fcfaaf655d6e90567eb1aa3ed3b953b85e82e62009ae44566b4ccf8783ed")
 
 package() {
   install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
