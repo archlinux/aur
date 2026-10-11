@@ -12,7 +12,7 @@
 # release both files come from.
 pkgname=kubecom-bin
 _pkgname=kubecom
-pkgver=26.10.07
+pkgver=26.10.11
 pkgrel=1
 pkgdesc="A fast, keyboard-driven terminal UI for Kubernetes (a launcher plus a seed build: kubecom updates itself in ~/.local/kubecom with kubecom update)"
 arch=('x86_64' 'aarch64')
@@ -31,8 +31,8 @@ source_x86_64=("kubecom-launcher-${pkgver}-x86_64::${_release}/kubecom-launcher_
                "kubecom-${pkgver}-x86_64::${_release}/kubecom_linux_amd64")
 source_aarch64=("kubecom-launcher-${pkgver}-aarch64::${_release}/kubecom-launcher_linux_arm64"
                 "kubecom-${pkgver}-aarch64::${_release}/kubecom_linux_arm64")
-sha256sums_x86_64=('e6ebfab74bb7b0a46f4b1192155fa23d22414d8b92110f0781a4787f64c735c5' '761b4935da56c46f591419d32434265aeb707954b86e4e7c25bf8274be0f12de')
-sha256sums_aarch64=('59f3f87f717718ddb0f1b938efe422a9ca1771af5c9d1597c4f093287164510c' 'd16e3e25ae341c012e04a3261c55ef959a4ec7a2374518e828652c50d75fc4ba')
+sha256sums_x86_64=('a03355d7a2ebeb75e3bccb237b689e5c0827db730f12af8192f752866855a185' '7d4db86a8bf87daadb75f94c0e4523177ddd9f668b88fad01f85ff32fe117047')
+sha256sums_aarch64=('cbd7e959e8b9066f10787740b084d12acb4b3a3c8e8be0b684f89147d6e18a41' '321fe8fd82b411f090787dff069994c6bc5c49a8239e5c3c835fbc96065c0162')
 
 package() {
   install -Dm755 "kubecom-launcher-${pkgver}-${CARCH}" "$pkgdir/usr/bin/$_pkgname"
