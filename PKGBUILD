@@ -6,7 +6,7 @@ arch=('any')
 url='https://www.vtk.org'
 license=('BSD')
 depends=('mingw-w64-crt' 'mingw-w64-qt6-base' 'mingw-w64-jsoncpp' 'mingw-w64-expat' 'mingw-w64-netcdf' 'mingw-w64-libtiff' 'mingw-w64-libjpeg-turbo' 'mingw-w64-freetype2' 'mingw-w64-libpng' 'mingw-w64-libxml2' 'mingw-w64-hdf5' 'mingw-w64-freeglut' 'mingw-w64-lz4' 'mingw-w64-proj' 'mingw-w64-double-conversion' 'mingw-w64-pugixml' 'mingw-w64-libtheora' 'mingw-w64-gl2ps' 'mingw-w64-cgns' 'mingw-w64-libharu' 'mingw-w64-verdict' 'mingw-w64-scnlib')
-makedepends=('mingw-w64-cmake' 'mingw-w64-wine' 'qt6-base' 'git' 'ninja-makeflags' 'lld')
+makedepends=('mingw-w64-cmake' 'mingw-w64-wine' 'qt6-base' 'git' 'ninja-makeflags' 'lld' 'llvm')
 provides=('mingw-w64-vtk')
 conflicts=('mingw-w64-vtk')
 options=('!buildflags' 'staticlibs' '!strip')
@@ -70,7 +70,15 @@ package() {
   for _arch in ${_architectures}; do
     DESTDIR="$pkgdir" cmake --install build-${_arch}
     rm -r "$pkgdir"/usr/${_arch}/share
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    # LLD-linked DLLs must be stripped with llvm-strip; GNU strip can
+    # corrupt LLD output. LLD import libraries (*.dll.a) are skipped:
+    # they only contain short-import members which neither GNU strip
+    # ("line number table read failed" / "file truncated") nor llvm-strip
+    # ("unsupported object file format") can process.
+    llvm-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    for _lib in "$pkgdir"/usr/${_arch}/lib/*.a; do
+      [[ -e $_lib && $_lib != *.dll.a ]] || continue
+      ${_arch}-strip -g "$_lib"
+    done
   done
 }
