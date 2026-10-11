@@ -8,10 +8,10 @@ license=('MIT')
 depends=('nodejs>=22.19' 'npm')
 makedepends=('npm')
 optdepends=(
-  'hopper: native binary analysis (Hopper provider)'
+  'hopper4: native binary analysis (Hopper provider, AUR, commercial)'
   'ghidra: native binary analysis (Ghidra provider)'
   'jadx: Android APK analysis'
-  'apktool: Android resource decoding'
+  'android-apktool: Android resource decoding'
   'android-tools: ADB device analysis'
 )
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
