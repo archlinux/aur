@@ -1,0 +1,4 @@
+[sqlite-web]
+source = "github"
+github = "coleifer/sqlite-web"
+use_max_tag = true
