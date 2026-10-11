@@ -1,0 +1,5 @@
+[transcribe-cpp-vulkan]
+source = "github"
+github = "handy-computer/transcribe.cpp"
+use_max_tag = true
+prefix = "v"
