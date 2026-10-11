@@ -1,6 +1,6 @@
 pkgname=passkeyd
-pkgver=1.9.0
-pkgrel=9
+pkgver=1.9.3
+pkgrel=0
 pkgdesc="A WebAuthn authenticator"
 arch=('x86_64')
 license=('GPL3')
