@@ -1,6 +1,6 @@
 # Maintainer: VanillaGreen <brad@vanillagreen.com>
 pkgname=vsys-git
-pkgver=0.10.0.r355.ge2765aa
+pkgver=0.10.0.r377.ga41c94f
 pkgrel=1
 pkgdesc="Terminal dashboard for Linux machines that run AI agents (tracks main)"
 arch=('x86_64' 'aarch64')
