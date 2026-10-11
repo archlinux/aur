@@ -1,0 +1,5 @@
+[serena]
+source = "github"
+github = "oraios/serena"
+use_max_tag = true
+prefix = "v"
