@@ -1,0 +1,17 @@
+pkgbase = xsetwall
+	pkgdesc = A minimal utility for setting wallpapers in X11 environment
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://codeberg.org/0x61nas/xsetwall
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	makedepends = bash
+	depends = libx11
+	provides = xsetwall
+	options = !debug
+	source = xsetwall-1.0.3.tar.gz::https://codeberg.org/0x61nas/xsetwall/archive/v1.0.3.tar.gz
+	sha256sums = b366d5b9e782ceef054efe4272cccf0de040d488c4c80aa4c23ab55caf6a610f
+
+pkgname = xsetwall
