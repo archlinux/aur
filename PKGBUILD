@@ -5,7 +5,7 @@ _pkgname="creality-print"
 pkgname="${_pkgname}-bin"
 pkgver=7.3.0.6151
 _pkgver="${pkgver%.*}"
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="3D slicer for Creality printers"
 arch=(
@@ -125,5 +125,7 @@ package() {
   install -vDm644 "${_Name}.png"     -t "${pkgdir}/usr/share/pixmaps"
 
   install -vdm755 "${pkgdir}/opt/${_pkgname}"
-  cp -a --no-preserve=ownership -t "${pkgdir}/opt/${_pkgname}" "bin" "resources" "usr/lib"
+  # cp -a --no-preserve=ownership -t "${pkgdir}/opt/${_pkgname}" "bin" "resources" "usr/lib"
+  cp -a --no-preserve=ownership,mode -t "${pkgdir}/opt/${_pkgname}" "bin" "resources" "usr/lib"
+  chmod +x "${pkgdir}/opt/${_pkgname}/bin"/*
 }
