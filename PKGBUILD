@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=wolf-lang
-pkgver=0.2.26
+pkgver=0.2.27
 pkgrel=1
 pkgdesc='The wolf systems language: the wolfgang compiler, its runtime and the C importer'
 arch=('x86_64' 'aarch64')
@@ -31,8 +31,17 @@ options=('!debug')
 # archive tarball has no .git, so it builds a binary that answers
 # `0.2.6+dev.unknown` — an unstamped binary claiming to be a release is
 # exactly the provenance failure D57 exists to prevent.
-source=("git+https://github.com/wolffe-lang/wolf-lang.git#tag=v$pkgver")
-sha256sums=('SKIP')
+#
+# 0.2.27 (s204, ruling #59): the package ships wolf-std as std/ beside the
+# binary. `cargo xtask dist` stages the commit crates/wolf_driver/STD-PIN
+# names; build() is offline, so the checkout is a source here and dist is
+# handed it through WOLF_DIST_STD_SRC, which it refuses unless its HEAD is
+# the pin. A release that moves STD-PIN moves _stdpin with it.
+_stdpin=87ba16208da8ea642dd463fa89ff3a1ec80ceba1
+source=("git+https://github.com/wolffe-lang/wolf-lang.git#tag=v$pkgver"
+        "wolf-std::git+https://github.com/wolffe-lang/wolf-std.git#commit=$_stdpin")
+sha256sums=('SKIP'
+            'SKIP')
 
 prepare() {
     cd wolf-lang
@@ -54,7 +63,9 @@ build() {
     # short sha and the tag pointing at it and passes WOLF_COMMIT /
     # WOLF_RELEASE into the release build. It also stages the three files
     # that must travel together and smoke-tests the staged tree by
-    # compiling and running corpus/hello.lu from it.
+    # compiling and running corpus/hello.lu from it, and a `use std.env`
+    # program against the staged std/.
+    export WOLF_DIST_STD_SRC="$srcdir/wolf-std"
     cargo xtask dist
 }
 
@@ -78,6 +89,9 @@ package() {
     if [[ -f libwolf_rt_none.a ]]; then
         install -Dm644 libwolf_rt_none.a "$pkgdir/usr/lib/$pkgname/libwolf_rt_none.a"
     fi
+    # 0.2.27 (s204): the standard library beside the binary, where `wolf`
+    # reads its default std root (std/STD-REV names the commit).
+    cp -a std "$pkgdir/usr/lib/$pkgname/std"
 
     install -dm755 "$pkgdir/usr/bin"
     printf '#!/bin/sh\nexec /usr/lib/%s/wolf "$@"\n' "$pkgname" > "$pkgdir/usr/bin/wolf"
