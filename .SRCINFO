@@ -1,6 +1,6 @@
 pkgbase = ck-bin
 	pkgdesc = Local first semantic and hybrid BM25 grep/search tool for use by AI and humans
-	pkgver = 0.7.11
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/BeaconBay/ck
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ck-bin
 	provides = ck
 	conflicts = ck
 	options = !debug
-	source = ck-bin-0.7.11.tar.gz::https://github.com/BeaconBay/ck/releases/download/0.7.11/ck-0.7.11-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 1d88fb42ca4f3c0687b8c5cbfceeef9db032baf5897daff9d01483b36ace652a
+	source = ck-bin-0.8.1.tar.gz::https://github.com/BeaconBay/ck/releases/download/0.8.1/ck-0.8.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 042db74e0ed10cd5995024bc16ea9928de6aaef632ef6463b3b8812a8d1ba1ac
 
 pkgname = ck-bin
