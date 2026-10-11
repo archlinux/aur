@@ -1,7 +1,7 @@
 # Maintainer: jaime [at] jamezrin [dot] name
 _pkgname=fido2-manage
 pkgname=$_pkgname-git
-pkgver=r104.679b85b
+pkgver=r185.fc825a3
 pkgrel=1
 pkgdesc="Tool allowing to manage FIDO2.1 devices over USB or NFC, including Passkey (resident keys) management"
 arch=('x86_64')
@@ -11,7 +11,9 @@ depends=('libfido2' 'libcbor' 'pcsclite' 'openssl' 'systemd-libs' 'tk' 'python' 
 optdepends=('pcsc-tools: for smart card reader utilities')
 makedepends=('git' 'cmake' 'zlib' 'pkg-config')
 provides=('fido2-manage')
-source=("git+https://github.com/Token2/fido2-manage.git")
+# main is the Rust/Tauri rewrite and no longer builds with this PKGBUILD.
+# The C/Python tool lives on the legacy branch.
+source=("git+https://github.com/Token2/fido2-manage.git#branch=legacy")
 sha256sums=('SKIP')
 
 pkgver() {
