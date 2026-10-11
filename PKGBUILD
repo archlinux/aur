@@ -3,14 +3,14 @@
 _hgname=fc-sim-sniff
 _pkgname=freecalypso-sim-sniff
 pkgname="${_pkgname}-hg"
-pkgver=r58.95ed46b5f8f1
-pkgrel=2
+pkgver=r68.2b33e2920327
+pkgrel=1
 pkgdesc="FreeCalypso SIM sniffer"
 arch=('x86_64' 'i686')
 url="https://www.freecalypso.org/hg/${_hgname}"
 license=('LicenseRef-FreeCalypso')
 groups=('freecalypso')
-depends=()
+provides=("${_pkgname}=${pkgver}")
 makedepends=('mercurial')
 conflicts=("${_pkgname}")
 source=("hg+https://www.freecalypso.org/hg/${_hgname}")
