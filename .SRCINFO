@@ -1,0 +1,23 @@
+pkgbase = zcode-cli
+	pkgdesc = ZCode open-source AI coding workbench (TUI + Web) built from source
+	pkgver = 3.15.1
+	pkgrel = 1
+	url = https://github.com/zai-org/ZCode
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = pnpm
+	depends = nodejs
+	conflicts = zcode
+	conflicts = zcode-bin
+	conflicts = z-code-bin
+	conflicts = zcode-desktop-bin
+	conflicts = zcode-ce-bin
+	conflicts = zcode-pro
+	conflicts = zcode-redminote11tech
+	options = !strip
+	options = !debug
+	source = zcode-cli-3.15.1.tar.gz::https://github.com/zai-org/ZCode/archive/refs/tags/v3.15.1.tar.gz
+	sha256sums = dfab1f9fdf0d454d8fbeceae2d5454af4e4db248f74029e3a1821b1deb343139
+
+pkgname = zcode-cli
