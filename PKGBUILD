@@ -4,7 +4,7 @@
 
 _name=llm-ollama
 pkgname="python-${_name}"
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="LLM plugin providing access to models running on an Ollama server"
 arch=("any")
@@ -13,7 +13,7 @@ license=("Apache-2.0")
 depends=("python" "python-llm" "python-ollama" "python-pydantic")
 makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/taketwo/llm-ollama/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('532c2b1564be9f41c32366eb0f5208df437d4e2ab2e6af478ccf7bdb5ea41988')
+sha256sums=('45f345140e5c2b17eeb5c9878ed79a80b5a0667c69f4868f4c3160dbff3ef8c4')
 
 latestver() {
   gh api repos/taketwo/llm-ollama/releases/latest --jq '.tag_name'
