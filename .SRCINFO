@@ -1,6 +1,6 @@
 pkgbase = technitium-dns-server-git
 	pkgdesc = Open source authoritative and recursive DNS server focused on privacy and security
-	pkgver = r4277.g70495af5
+	pkgver = r4296.g8d30bab4
 	pkgrel = 1
 	url = https://technitium.com/dns/
 	install = technitium-dns-server.install
