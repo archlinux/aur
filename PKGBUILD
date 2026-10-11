@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn@gmail.com>
 
 pkgname=libpdfium-nojs
-pkgver=7871.r1.c052afb72a
+pkgver=8059.r3.39f0ed4a65
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
@@ -16,12 +16,14 @@ source=("git+https://pdfium.googlesource.com/pdfium"
     "git+https://chromium.googlesource.com/chromium/src/build.git"
     "git+https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp"
     "git+https://chromium.googlesource.com/chromium/src/third_party/simdutf"
+    "git+https://chromium.googlesource.com/external/github.com/jk-jeon/dragonbox.git#branch=upstream/master"
     "libpdfium.pc"
     )
 
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
+	 'SKIP'
 	 'SKIP'
          'feb270967925a0844b1b9a9e15288eb3')
 
@@ -43,6 +45,8 @@ prepare() {
   ln -sf $srcdir/build build
   ln -sf $srcdir/abseil-cpp third_party/abseil-cpp
   ln -sf $srcdir/simdutf third_party/simdutf
+  ln -sf $srcdir/dragonbox third_party/dragonbox/src
+
   
   # Pdfium is developed alongside Chromium and does not provide releases
   # Upstream recommends using Chromium's dev channels instead
@@ -74,9 +78,9 @@ prepare() {
   sed -i 's/component(/static_library(/' BUILD.gn
   sed -i 's/is_component_build(/false/' BUILD.gn
 
-# Use system fast_float 
-  mkdir -p third_party/fast_float/src/include/
-  ln -sf /usr/include/fast_float third_party/fast_float/src/include/
+  # Use system fast_float
+  mkdir -p "$srcdir/pdfium/third_party/fast_float/src/include/"
+  ln -sfn /usr/include/fast_float "$srcdir/pdfium/third_party/fast_float/src/include/fast_float"
 
   # Use system provided icu library (unbundling)
   mkdir -p "$srcdir/pdfium/third_party/icu"
@@ -100,7 +104,6 @@ prepare() {
 } 
 
 build() {
-
   cd "$srcdir/pdfium"
 
   local _flags=(
@@ -125,7 +128,7 @@ build() {
       'use_system_harfbuzz = true'
   )
   
-  gn gen out/Release --args="${_flags[*]}"
+  gn gen out/Release --args="${_flags[*]}" --script-executable=python3
   ninja -C out/Release pdfium
 
   # Set pdfium version in pc file
