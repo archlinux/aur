@@ -1,12 +1,12 @@
 # Maintainer: Vladimir Alyamkin <ufna@ufna.dev>
 pkgname=zerus
-pkgver=0.37.0
+pkgver=0.38.0
 pkgrel=1
 pkgdesc='Agent development environment for AI coding agents across your machines'
 arch=('x86_64')
 url='https://github.com/ufna/zerus'
 license=('MIT')
-depends=('qt6-base' 'qt6-webengine' 'qt6-svg' 'kstatusnotifieritem' 'kwindowsystem'
+depends=('qt6-base' 'qt6-webengine' 'qt6-svg' 'kstatusnotifieritem' 'kwindowsystem' 'kidletime'
          'tmux>=3.7' 'openssh' 'python' 'curl' 'procps-ng' 'libgcc' 'libstdc++' 'glibc' 'hicolor-icon-theme' 'bash' 'tar')
 makedepends=('rust' 'cmake' 'ninja')
 optdepends=('konsole: external KDE terminal integration'
@@ -20,7 +20,7 @@ provides=('hgs' 'hgs-tray')
 conflicts=('zerus-git' 'zerus-ade-bin')
 options=('!lto' '!debug')
 source=("https://github.com/ufna/zerus/releases/download/v${pkgver}/zerus-${pkgver}-source.tar.gz")
-sha256sums=('bfffca3b1df1d85216df8ca153b19c8173d068f03b4e6882d0a44bc30ce2a662')
+sha256sums=('cc15d69803ffdb20f75a89eb60202fe7f04b70f0ead918dcc7306a498b29d37d')
 
 prepare() {
     cd "$srcdir/zerus-$pkgver"
