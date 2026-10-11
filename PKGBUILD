@@ -2,7 +2,7 @@
 _base=CMasher
 pkgname=python-${_base,,}
 pkgdesc="Scientific colormaps for making accessible, informative and cmashing plots"
-pkgver=1.9.2
+pkgver=1.9.4
 pkgrel=1
 arch=(any)
 url="https://github.com/1313e/${_base}"
@@ -11,7 +11,7 @@ depends=(python-colorspacious python-matplotlib)
 makedepends=(python-build python-installer python-hatchling python-wheel)
 checkdepends=(python-pytest python-viscm)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('a69bff6f2fc61a9a0aa08c9cbe901bdda67e5f76e19df64239c4fe0e84a27a05d0d6eea8477ce5817c992ad1e09349e9d172a713231369990e472c0d7b67c96b')
+sha512sums=('6b026edfabb71960afb405d84cd88ee8f1def0fc0c9069977cd5444242d3b606806bdacabac3400e45697fdd86ee4ac3f7bb626d60dc2a979cdee5ee8a79d88b')
 
 build() {
   cd ${_base}-${pkgver}
