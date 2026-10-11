@@ -13,5 +13,31 @@ Restart=on-failure
 RestartSec=10
 ExecStart=/usr/bin/photoprism start
 
+# disable ONNX runtime telemetry
+Environment=ORT_DISABLE_TELEMETRY=1
+
+ProtectSystem=strict
+# access to video card for transcoding etc.
+ReadWritePaths=/var/lib/photoprism /dev/dri
+WorkingDirectory=/var/lib/photoprism
+RuntimeDirectory=photoprism
+
+PrivateTmp=yes
+ProtectHome=yes
+
+# allow access to video card
+PrivateDevices=no
+
+ProtectControlGroups=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectHostname=yes
+RestrictRealtime=yes
+ProtectKernelLogs=yes
+ProtectClock=yes
+
+LockPersonality=yes
+NoNewPrivileges=yes
+
 [Install]
 WantedBy=multi-user.target

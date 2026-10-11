@@ -3,8 +3,8 @@
 # Contributor: Thomas Eizinger <thomas@eizinger.io>
 
 pkgname=photoprism
-pkgver=260919
-_commit=28c46a116
+pkgver=261007
+_commit=65faaae5d
 _pkgver="${pkgver}-${_commit}"
 pkgrel=1
 pkgdesc="AI-Powered Photos App for the Decentralized Web"
@@ -24,28 +24,24 @@ optdepends=("darktable: for RAW to JPEG conversion"
 source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz"
 	"https://dl.${pkgname}.app/onnx/models/face_detection_yunet_2026may.onnx"
 	"https://dl.${pkgname}.app/onnx/models/face_recognition_sface_2021dec.onnx"
-	"https://dl.${pkgname}.app/onnx/models/scrfd_500m_bnkps_shape640x640.onnx"
-	"https://dl.${pkgname}.app/tensorflow/facenet.zip"
-	"https://dl.${pkgname}.app/tensorflow/nasnet.zip"
-	"https://dl.${pkgname}.app/tensorflow/nsfw.zip"
+	"https://dl.${pkgname}.app/onnx/models/efficientformerv2_s2.onnx"
+	"https://dl.${pkgname}.app/onnx/models/yahoo_open_nsfw.onnx"
 	"${pkgname}-import."{service,timer}
 	"${pkgname}-vision."{service,timer}
 	"${pkgname}."{service,sysusers,tmpfiles,user.service}
 	"defaults.yml"
 	"01-internal-config-config_go.patch")
 backup=("etc/${pkgname}/defaults.yml")
-b2sums=('f3d9829fecd30ff26dd3bbb09627fceebde857a1dcce9429a20f3ad5ffdd2e6e709e6724fc0e1da86c8f271d0e564d82b0c13a929c42e47f64561bf01cb96207'
+b2sums=('7a4c7f5a3a1cb251aede3cb1104d8972a6316c2172ef7ec817d1276f571cc4d2faf33c89bdc8830ff7744e4c2e67849041403186e81081067da2d93654722cd5'
         '14dc17a3321d41a557a5dc4dc75b69687d89a912b372004b750ce239bef6b3554c74022ddfcd8d737ba10b197f8a5767114edc209ae69f99c38120f1a4707ea5'
         'c52ac4bf680272a9a532249f9d0f26abf9056f88187de829fd85be7010e188c2566cd6ba621a1f7daedc37c1ffca0059fe3b9e58fb570cf7e54836a882371ac1'
-        '2cafc2c00eabba8dee5e63982c4c642c5df00975c568b37d3cff81f0da94c8db746ea3fc31c4a98086527ed2db86b2ff48c36551163d0457001913eddfdbddc4'
-        'ae3fe8162773ca9c84be2ea49dbc33e8a381d25cbbb51660c9f7a0764b89128eb8b40aceb10272e2579f277f76b8622d1f366e38e7c290266280c1db268365c5'
-        '846cc4ce2d8c170c6442cf1f3a235d49744ff704300b619947bd425861ac4312d5465c749fd1179e4c25163d3a3428cd31359b7ea1521fa6edab81dba88074a0'
-        'ca264c8ba2f999490c1335767286ddfe42a92d8606c371f17b5aa3f333bda3ade9c4f2451f7df7489946c9ae503f82351879a9876cd80e036a7991945e1242ec'
+        '39a72642ac680f32e85ee99dd9072f6d4c046eb2b84af6ae5381dc25072e8611165174425b0540933dce42497800a591223dd8e655949005f9e0c7dd4d7a35a9'
+        '0241c942a703bf712704087e8d2b1abdab9278ea339d331459e671aba5164adefa3decb7a8ceb1dc35865d7d40a0fe44aadbe91379090e7d8797691f5408a213'
         'f5a06fd26f15afa7b71bd66afba800488fad697567754b6efc0d20f55955c043ba817d280b1d80c901ccbfcf085f11ad289624946bcd4bf2c3f3ee963a431c2d'
         'e75033ee265dddf39cb4f0d1cfc1e86a540da37c9787e3c13040b6fc039437d6684be3b59d63f001864f98f46afd49847b86b4fc6bedf891be87881a4bb83cf0'
         '438f6206adaf7b1beccda7b65ea71ecc45c29b4443942b823ad4652dde40d0cdbb8d5b7e3476aaf0643e5ad4369377ae9df0682bf73ca7d2af419c3820b2ef20'
         '8b54d90d8ee721c555c3650f8c1041a5068a65aa847c0f768ce5d05a917b60e961b332fc8608ee7f3b0b8928e0606e49e85b5f3baa1e3b85d00b7decdf9f29da'
-        '3896b95ddda233270591e673f564bb3c7c537f9140d9ad0451259249d0bd956daf2b2cc70c3ba7fbd2971e97e126e13ecde368388c8e160708fbccad206c5d55'
+        'd910f3cd6f3e28e4f3f529f50b55e7ce3473f1dc51d3a76a91fd0b5c0af68616bd9fee64b574c93b0288302ba82d8a612c065dc4f15bffedd2e5a78b434dfa15'
         '02a752c8dda9c1611cac8119cf603bb8147dda1aa68fabaa9be61952e1839132d190691a68a01d0443d3750f76319a9e77e7fb9f175d5dbd0f527e5e4529ede8'
         'f8ad9373b97b6f5bda10caa193ae3f6700f8e15d82f30a2c8ad0fec02c5c25c3ad1f62ae524aa5e28b07312016d31c2918a3a9a3b172e61128fe054b129eecbe'
         '96d8d89499adfd1e3fba1b729133f3a01dbe16b2cb11deacc7e0e69620530c8f28e19911b16368816d98ce8e4ffa9645e8cb0429c82314179c335e736db87198'
@@ -95,8 +91,7 @@ build() {
 }
 
 package() {
-	find {facenet,nasnet,nsfw} -type f -exec install -Dm644 {} "$pkgdir/usr/share/$pkgname/"{} \;
-	for model in scrfd yunet sface; do
+	for model in efficientformerv2_s2 yahoo_open_nsfw yunet sface; do
 		install -Dm644 *"$model"*.onnx -t "$pkgdir/usr/share/$pkgname/$model"
 	done
 
