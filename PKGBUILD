@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-base-headless
-pkgver=6.11.2
+pkgver=6.12.0
 pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
@@ -38,13 +38,15 @@ _pkgfn=qtbase
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$pkgver
         qt6-base-cflags.patch
         qt6-base-nostrip.patch)
-sha256sums=('c27a588094ea6d47f294539dbab00a7222d9f56e2d44ac00287bb44b5eed612a'
+sha256sums=('d97ef157dc50bdf0425337e9adede8135ab508a4ab2f1abae7e9cfc42c5f86db'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
             '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
 
 prepare() {
   patch -d $_pkgfn -p1 < qt6-base-cflags.patch # Use system CFLAGS
   patch -d $_pkgfn -p1 < qt6-base-nostrip.patch # Don't strip binaries with qmake
+
+  git -C $_pkgfn cherry-pick -n e320c929207aaea0d4c8fb2cd29b16de6cbd2b2c # Fix QtWebEngine detection in cmake
 }
 
 build() {
@@ -72,7 +74,6 @@ build() {
     -DFEATURE_system_sqlite=ON \
     -DFEATURE_no_direct_extern_access=$_no_direct_extern_access \
     -DFEATURE_mimetype_database=OFF \
-    -DFEATURE_openssl_hash=ON \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DCMAKE_MESSAGE_LOG_LEVEL=STATUS \
     \
