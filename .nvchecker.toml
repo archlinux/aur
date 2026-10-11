@@ -1,0 +1,5 @@
+[arrow-tools]
+source = "github"
+github = "domoritz/arrow-tools"
+use_max_tag = true
+prefix = "v"
