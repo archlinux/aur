@@ -1,11 +1,28 @@
+setup_legion_group() {
+  # User who started installation: sudo pacman/yay/paru sets SUDO_USER, pamac (polkit) sets PKEXEC_UID
+  user="${SUDO_USER:-}"
+
+  if [ -z "$user" ] && [ -n "${PKEXEC_UID:-}" ]; then
+    user="$(getent passwd "$PKEXEC_UID" | cut -d: -f1)"
+  fi
+
+  if [ -n "$user" ] && [ "$user" != "root" ]; then
+    /opt/LenovoLegion/lenovo-legion-setup.sh "$user" -y || true
+  else
+    echo "Unable to detect installing user."
+    echo "Please run 'sudo /opt/LenovoLegion/lenovo-legion-setup.sh' to allow your user to use the GUI"
+  fi
+}
+
 post_install() {
+  setup_legion_group
   echo "Please run 'systemctl enable lenovo-legion-daemon.service' to enable the service"
   echo "Please run 'systemctl start lenovo-legion-daemon.service' to start the service"
   echo "Please run 'systemctl status lenovo-legion-daemon.service' to check the status of the service"
-
 }
 
 post_upgrade() {
+  setup_legion_group
   echo "Please run 'systemctl enable lenovo-legion-daemon.service' to enable the service"
   echo "Please run 'systemctl start lenovo-legion-daemon.service' to start the service"
   echo "Please run 'systemctl status lenovo-legion-daemon.service' to check the status of the service"

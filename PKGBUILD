@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Bolek <jarris@post.cz>
 pkgname=lenovo-legion-linux-toolkit-release
 srcname=LenovoLegion
-pkgver=1.4.0
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Lenovo Legion Linux Toolkit - for Lenovo Legion laptops"
 arch=("x86_64")
@@ -19,6 +19,7 @@ package() {
   mkdir -p $pkgdir/opt/$pkgname-$pkgver
   mkdir -p $pkgdir/usr/src/$pkgname-$pkgver
   mkdir -p $pkgdir/usr/lib/systemd/system/
+  mkdir -p $pkgdir/usr/lib/sysusers.d/
   mkdir -p $pkgdir/etc/modprobe.d/
   mkdir -p $pkgdir/etc/modules-load.d/
   mkdir -p $pkgdir/usr/share/applications/
@@ -48,6 +49,9 @@ package() {
 
   #daemon setings
   cp $srcdir/$pkgname-$pkgver/$srcname/$srcname-Daemon/lenovo-legion-daemon.service $pkgdir/usr/lib/systemd/system/
+  cp $srcdir/$pkgname-$pkgver/$srcname/$srcname-Daemon/lenovo-legion.sysusers $pkgdir/usr/lib/sysusers.d/lenovo-legion.conf
+  cp $srcdir/$pkgname-$pkgver/$srcname/$srcname-Daemon/lenovo-legion-setup.sh $pkgdir/opt/$pkgname-$pkgver/
+  chmod 755 $pkgdir/opt/$pkgname-$pkgver/lenovo-legion-setup.sh
 
   #kde menu entry
   cp $srcdir/$pkgname-$pkgver/$srcname/$srcname-Application/LenovoLegion.desktop $pkgdir/usr/share/applications/
@@ -55,5 +59,4 @@ package() {
   #command line interface
   cargo build --manifest-path $srcdir/$pkgname-$pkgver/lenovo-legion-cli/Cargo.toml -r
   cp $srcdir/$pkgname-$pkgver/lenovo-legion-cli/target/release/lenovo-legion-cli $pkgdir/opt/$pkgname-$pkgver
-
 }
