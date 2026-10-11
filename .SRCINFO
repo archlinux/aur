@@ -1,0 +1,16 @@
+pkgbase = opensnitch-zenity
+	pkgdesc = Lightweight zenity prompt UI for the OpenSnitch daemon (unofficial)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/vmartinv/opensnitch-zenity
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = go
+	depends = opensnitch
+	depends = zenity
+	optdepends = libnotify: notify_on_default desktop notifications
+	source = opensnitch-zenity-0.2.0.tar.gz::https://github.com/vmartinv/opensnitch-zenity/archive/v0.2.0.tar.gz
+	sha256sums = e5f1a391c5cd8caa15462f1f493a4630369ae8342616366f4c5f7187a5d0c9e8
+
+pkgname = opensnitch-zenity
