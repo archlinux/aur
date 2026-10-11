@@ -5,7 +5,7 @@
 # Contributor: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm
-pkgver=1.104.2
+pkgver=1.105.0
 pkgrel=1
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=('any')
@@ -138,7 +138,7 @@ optdepends=('gunicorn: proxy'
 provides=("python-${pkgname}")
 options=(!lto !strip)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f766de3dd38b977ca70f17f409df04c0a9a3e90aed82582a965d348b6e2fe399')
+sha256sums=('f4af675e480ba7cf1f43c2bf5e480564b547e0e58d31e88f724daa0a0967b065')
 
 prepare() {
   cd "${srcdir}"/${pkgname}-${pkgver}/
@@ -149,6 +149,8 @@ build() {
   cd "${srcdir}"/${pkgname}-${pkgver}/
   export PYO3_PYTHON=/usr/bin/python
   export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
+  export CARGO_PROFILE_RELEASE_LTO=off
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=16
   python -m build --wheel --no-isolation
 }
 
