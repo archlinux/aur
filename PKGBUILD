@@ -12,7 +12,7 @@
 
 pkgname=nextdns-unprivileged
 origname=nextdns
-pkgver=1.47.3
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='NextDNS DNS-over-HTTPS client running as unprivileged user'
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
     "01-socket.patch"
 )
 options=(!lto)
-sha256sums=('73a57ff41074d32a7707b751da36c0a618edc6d2b41ddf61ca565222448f567b'
+sha256sums=('ddcb5e0022d3c2c732f333666704b5c890dd57438e45f295ccd6347b943d6011'
             '44b78be27eb618e2d93b4b480c9aef38d413bde3f8bfa6af20d651f0bf8c8b62'
             '96dcfb0ccbbf30a140ff44101b90160faadca97f9aed4b1d73e2e2db52655fec'
             'df831b86096e2f06fd4b9f603a4141daef986d709fcdebb97f39493535aab7f6')
