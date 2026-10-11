@@ -3,14 +3,14 @@
 
 _pkgname=python-tls-client
 pkgname=${_pkgname}-git
-pkgver=1.0.1.r113.20240202.ab6c736
-pkgrel=5
+pkgver=2.0.0+5.r188.20261010.62d2dba
+pkgrel=1
 pkgdesc="An advanced HTTP library based on requests and tls-client"
 arch=('any')
 url="https://github.com/FlorianREGAZ/Python-Tls-Client"
 license=('MIT')
-depends=('python' 'lib-tls-client' 'python-typing_extensions')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools')
+depends=('python' 'lib-tls-client')
+makedepends=('git' 'python-build' 'python-installer' 'python-hatchling')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 replaces=('python-tls-client-bin-git')
@@ -37,17 +37,11 @@ prepare() {
   cd "$pkgname"
 
   git log > "${srcdir}/git.log"
-
-  # Do not package bundled tls-client binaries; lib-tls-client provides them.
-  sed -i \
-    -e '/^    include_package_data=True,/d' \
-    -e '/^    package_data={/,/^    },/d' \
-    setup.py
 }
 
 build() {
   cd "$pkgname"
-  python -m build --wheel --no-isolation
+  HATCH_BUILD_NO_HOOKS=true python -m build --wheel --no-isolation
 }
 
 package() {
@@ -56,19 +50,12 @@ package() {
   export PYTHONHASHSEED=0
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
-  ## Remove precompiled shared libraries -- we want to use them via a dependency:
-  find "${pkgdir}/usr/lib"/python*/site-packages/tls_client/dependencies -mindepth 1 -maxdepth 1 -name 'tls-client-*.*' -delete
-
-  ## Symlink dependencies:
   case "${CARCH}" in
     'aarch64')
-      _libarch='arm64'
+      _libarch='linux-arm64'
     ;;
-    'amd64')
-      _libarch='amd64'
-    ;;
-    'x86_64')
-      _libarch='x86'
+    'amd64'|'x86_64')
+      _libarch='linux-ubuntu-amd64'
     ;;
     *)
       error "Architecture '${CARCH}' not supported."
