@@ -1,7 +1,7 @@
 pkgname=sash
 pkgver=3.8
 pkgrel=1
-pkgdesc='A small (static) UNIX Shell ()'
+pkgdesc='A small (static) UNIX Shell'
 url='https://www.canb.auug.org.au/~dbell/'
 arch=(x86_64)
 license=(
