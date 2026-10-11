@@ -1,6 +1,6 @@
 pkgbase = zerus-ade-bin
 	pkgdesc = Agent development environment for AI coding agents across your machines
-	pkgver = 0.37.0
+	pkgver = 0.38.0
 	pkgrel = 1
 	url = https://github.com/ufna/zerus
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = zerus-ade-bin
 	depends = qt6-svg>=6.12.0
 	depends = kstatusnotifieritem>=6.30.0
 	depends = kwindowsystem>=6.30.0
+	depends = kidletime>=6.30.0
 	depends = libgcc>=16.2.1+r23+gd564253eb6c8
 	depends = libstdc++>=16.2.1+r23+gd564253eb6c8
 	depends = glibc>=2.44+r50+g1848099f063e
@@ -28,14 +29,14 @@ pkgbase = zerus-ade-bin
 	optdepends = npm: install Codex and DeepSeek Harness from Accounts
 	optdepends = git: Git repository and worktree features
 	optdepends = systemd: user service autostart and isolated DeepSeek scopes
-	provides = zerus=0.37.0
+	provides = zerus=0.38.0
 	provides = hgs
 	provides = hgs-tray
 	conflicts = zerus
 	conflicts = zerus-git
 	options = !strip
 	options = !debug
-	source = https://github.com/ufna/zerus/releases/download/v0.37.0/zerus-0.37.0-arch-x86_64.tar.gz
-	sha256sums = 29d33e73c269cdcfccbc7740282208dfde9999259a979a5a04eb9d76e9a660ed
+	source = https://github.com/ufna/zerus/releases/download/v0.38.0/zerus-0.38.0-arch-x86_64.tar.gz
+	sha256sums = 0f788a580499a9404ec87286f884a0d316f4c710f180c7176d3fea7242c41f12
 
 pkgname = zerus-ade-bin
