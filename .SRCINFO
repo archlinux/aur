@@ -1,6 +1,6 @@
 pkgbase = freecalypso-gsm-codec-lib
 	pkgdesc = FreeCalypso GSM codec libraries and utilities
-	pkgver = r4
+	pkgver = r5
 	pkgrel = 1
 	url = https://www.freecalypso.org/hg/gsm-codec-lib
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = freecalypso-gsm-codec-lib
 	groups = freecalypso
 	license = LicenseRef-FreeCalypso
 	conflicts = freecalypso-gsm-codec-lib-hg
-	source = https://www.freecalypso.org/pub/GSM/codecs/gsm-codec-lib-r4.tar.bz2
-	sha256sums = fd0c24a69ad0abaec1efbaa17bee78c1efe0f7d38718c56b018e307ee7cc1b4c
+	source = https://www.freecalypso.org/pub/GSM/codecs/gsm-codec-lib-r5.tar.bz2
+	sha256sums = e69282c361ba2a1398adf268d801e8b12cbf71667eb093d55e49a856324a2ee6
 
 pkgname = freecalypso-gsm-codec-lib
