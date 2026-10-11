@@ -1,15 +1,16 @@
 pkgbase = libdeltachat
 	pkgdesc = Deltachat-core written in Rust
-	pkgver = 2.9.0
+	pkgver = 2.63.0
 	pkgrel = 1
-	url = https://github.com/deltachat/deltachat-core-rust/
+	url = https://github.com/chatmail/core/
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = cargo
+	makedepends = cargo-nextest
 	makedepends = git
 	depends = sqlcipher
 	options = !lto
-	source = libdeltachat-2.9.0::https://github.com/deltachat/deltachat-core-rust/archive/refs/tags/v2.9.0.tar.gz
-	b2sums = 7aed9eebfeee8c8cf865120c6359176a9fc2ef410e1858699ca6482c6bd6ca0fa736d48767cfda5a2c9ccd04910861c17cc31f0078145a9252eea1406bea77d1
+	source = libdeltachat-2.63.0::https://github.com/chatmail/core/archive/refs/tags/v2.63.0.tar.gz
+	b2sums = be13b21b70e5b27838329ab7f47fb61f386f50eb687f2fcc5362bee02b0d66d7bf0a27fb628cc9866f66ccec8b8a349f9fa87914993323e90d1595af8b289fcc
 
 pkgname = libdeltachat

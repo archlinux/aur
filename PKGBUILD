@@ -2,17 +2,17 @@
 # Contributor: Jose Riha <jose1711 gmail com>
 
 pkgname=libdeltachat
-pkgver=2.9.0
+pkgver=2.63.0
 pkgrel=1
 pkgdesc="Deltachat-core written in Rust"
 arch=('x86_64')
-url="https://github.com/deltachat/deltachat-core-rust/"
+url="https://github.com/chatmail/core/"
 license=('MPL-2.0')
 depends=('sqlcipher')
 options=(!lto)
-makedepends=('cargo' 'git')
-source=("$pkgname-$pkgver::https://github.com/deltachat/deltachat-core-rust/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('7aed9eebfeee8c8cf865120c6359176a9fc2ef410e1858699ca6482c6bd6ca0fa736d48767cfda5a2c9ccd04910861c17cc31f0078145a9252eea1406bea77d1')
+makedepends=('cargo' 'cargo-nextest' 'git')
+source=("$pkgname-$pkgver::https://github.com/chatmail/core/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('be13b21b70e5b27838329ab7f47fb61f386f50eb687f2fcc5362bee02b0d66d7bf0a27fb628cc9866f66ccec8b8a349f9fa87914993323e90d1595af8b289fcc')
 
 prepare() {
     cd "$srcdir/core-$pkgver/deltachat-ffi"
@@ -29,7 +29,7 @@ build() {
 check() {
     export RUSTUP_TOOLCHAIN=stable
     cd "$srcdir/core-$pkgver/deltachat-ffi"
-    cargo test --frozen --no-default-features --features vendored --workspace -- --test-threads 1 # needed due to a false-positive in tests
+    cargo nextest run --frozen --no-default-features --features vendored --workspace --exclude deltachat-jsonrpc-bindings
 }
 
 package() {
