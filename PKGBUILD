@@ -12,7 +12,6 @@ depends=(
     'gstreamer'
     'gst-plugins-base'
     'gst-plugins-good'
-    'gst-plugins-bad'
     'libpulse'
 )
 
@@ -37,9 +36,5 @@ package() {
     if [ -d "${srcdir}/www" ]; then
         install -dm755 "${pkgdir}/usr/share/qmtui/www"
         cp -a "${srcdir}/www/"* "${pkgdir}/usr/share/qmtui/www/"
-    fi
-    if [ -d "${srcdir}/qafp" ]; then
-        install -dm755 "${pkgdir}/usr/share/qmtui"
-        cp -a "${srcdir}/qafp" "${pkgdir}/usr/share/qmtui/"
     fi
 }

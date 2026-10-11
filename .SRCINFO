@@ -9,7 +9,6 @@ pkgbase = qmtui-bin
 	depends = gstreamer
 	depends = gst-plugins-base
 	depends = gst-plugins-good
-	depends = gst-plugins-bad
 	depends = libpulse
 	optdepends = gst-libav: additional audio codecs (AAC/M4A) support
 	optdepends = wl-clipboard: Wayland clipboard support for copying song links
