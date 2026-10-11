@@ -32,3 +32,26 @@ diff -ur CalculiX_orig/cgx_2.23/src/uselibSNL.h CalculiX/cgx_2.23/src/uselibSNL.
  #include <cgx.h>
 +#undef max
 +#undef min
+--- CalculiX_orig/glut-3.5/src/glut_init.c
++++ CalculiX/glut-3.5/src/glut_init.c
+@@ -197,3 +197,3 @@
+   __glutArgc = *argcp;
+-  __glutArgv = (char **) malloc(__glutArgc * sizeof(char *));
++  __glutArgv = (char **) malloc((__glutArgc + 1) * sizeof(char *));
+   if (!__glutArgv)
+@@ -201,7 +201,13 @@
+   for (i = 0; i < __glutArgc; i++) {
+-    __glutArgv[i] = strdup(argv[i]);
++    const char *src = (argv != NULL && argv[i] != NULL) ? argv[i] : "";
++    size_t len = strlen(src) + 1;
++    
++    __glutArgv[i] = (char *) malloc(len);
+     if (!__glutArgv[i])
+       __glutFatalError("out of memory.");
++      
++    memcpy(__glutArgv[i], src, len);
+   }
+-
++  __glutArgv[__glutArgc] = NULL;
++  
+   /* determine permanent program name */

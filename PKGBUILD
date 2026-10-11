@@ -6,7 +6,7 @@
 
 pkgname=calculix-cgx
 pkgver=2.23
-pkgrel=1
+pkgrel=2
 pkgdesc="CalculiX: 3D Structural Finite Element Program - Post Processor"
 arch=('i686' 'x86_64')
 options=(!buildflags)
@@ -21,7 +21,7 @@ source=("http://www.dhondt.de/cgx_${pkgver}.all.tar.bz2"
         "calculix_cgx_${pkgver}_archlinux.patch")
 
 sha256sums=('04abbe0d2bac6a7bff018238b409568c189ede25589880e8cdd947f56ebd67c7'
-            '95d91be0aa1b50a598a9bd19eed6e08fb1016934f7d600248a987db07fe530b6')
+            '3c321594c3cff8f0f42abe599f06e26cc12d9e8bf5c308fbeb26d7b5ecffa993')
 
 prepare()
 {
