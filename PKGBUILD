@@ -1,14 +1,15 @@
 # Maintainer: Lucas Gabriel <g at 11xx dot org>
 pkgname=muzaiten-bin
 # PEP 440 version, matching the release tag and artifact.
-# Bump this, _release_tag, and sha256sums for every published release.
-pkgver=2026.9.11
-_release_tag=2026.9.11
+# Bump this, _release_tag, and sha256sums for every published release, and set
+# license to the components that release artifact ships.
+pkgver=2026.10.11
+_release_tag=2026.10.11
 pkgrel=1
 pkgdesc="Native music player for local libraries, with ratings and scrobbling"
 arch=('x86_64')
 url="https://github.com/11xx/muzaiten"
-license=('Unlicense')
+license=('Unlicense' 'Unicode-3.0' 'OGDL-Taiwan-1.0' 'Apache-2.0')
 depends=('qt6-base' 'qt6-multimedia' 'taglib' 'chromaprint' 'gstreamer' 'gst-plugins-base-libs' 'glib2' 'zstd' 'python')
 optdepends=('gst-plugins-good: extra audio decoders and sinks'
             'gst-plugin-pipewire: PipeWire audio output'
@@ -21,7 +22,7 @@ provides=('muzaiten')
 conflicts=('muzaiten' 'muzaiten-git')
 options=('!strip')  # build-release.sh already strips the native executables
 source=("muzaiten-${pkgver}-${CARCH}.tar.zst::https://github.com/11xx/muzaiten/releases/download/${_release_tag}/muzaiten-${pkgver}-${CARCH}.tar.zst")
-sha256sums=('9863a8705d5e91f5439b412d57ca751e8b5ff3fcce1897fb58309a8afd19a694')
+sha256sums=('2ee6dae252417d53aa565964cbea971e011a96f63443d2574ff774b2ab26a8d0')
 
 package() {
     # The tarball is a prefixed tree (usr/bin, usr/share/...) staged by

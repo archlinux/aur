@@ -1,10 +1,13 @@
 pkgbase = muzaiten-bin
 	pkgdesc = Native music player for local libraries, with ratings and scrobbling
-	pkgver = 2026.9.11
+	pkgver = 2026.10.11
 	pkgrel = 1
 	url = https://github.com/11xx/muzaiten
 	arch = x86_64
 	license = Unlicense
+	license = Unicode-3.0
+	license = OGDL-Taiwan-1.0
+	license = Apache-2.0
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = taglib
@@ -25,7 +28,7 @@ pkgbase = muzaiten-bin
 	conflicts = muzaiten
 	conflicts = muzaiten-git
 	options = !strip
-	source = muzaiten-2026.9.11-x86_64.tar.zst::https://github.com/11xx/muzaiten/releases/download/2026.9.11/muzaiten-2026.9.11-x86_64.tar.zst
-	sha256sums = 9863a8705d5e91f5439b412d57ca751e8b5ff3fcce1897fb58309a8afd19a694
+	source = muzaiten-2026.10.11-x86_64.tar.zst::https://github.com/11xx/muzaiten/releases/download/2026.10.11/muzaiten-2026.10.11-x86_64.tar.zst
+	sha256sums = 2ee6dae252417d53aa565964cbea971e011a96f63443d2574ff774b2ab26a8d0
 
 pkgname = muzaiten-bin
