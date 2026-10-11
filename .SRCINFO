@@ -1,16 +1,21 @@
 pkgbase = bennugd-modules
 	pkgdesc = a programming language to create games (Fenix successor) - modules
 	pkgver = 356
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/bennugd/
-	arch = i686
 	arch = x86_64
-	license = zlib
-	depends = lib32-zlib
+	license = Zlib
+	makedepends = subversion
+	makedepends = gcc-multilib
 	depends = bennugd-core
-	depends = lib32-sdl_mixer
+	depends = lib32-glibc
 	depends = lib32-libpng
-	source = https://sourceforge.net/code-snapshots/svn/b/be/bennugd/code/bennugd-code-r356.zip
+	depends = lib32-libx11
+	depends = lib32-sdl12-compat
+	depends = lib32-sdl_mixer
+	source = core::svn+https://svn.code.sf.net/p/bennugd/code/core#revision=356
+	source = modules::svn+https://svn.code.sf.net/p/bennugd/code/modules#revision=356
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = bennugd-modules
