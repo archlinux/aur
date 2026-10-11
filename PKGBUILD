@@ -5,13 +5,13 @@
 # pkgver and source checksum are replaced by prepare-aur.sh before publication
 
 pkgname=system-bridge
-pkgver=5.12.1
+pkgver=5.12.2
 epoch=2
 pkgrel=1
 pkgdesc="A bridge for your systems"
 makedepends=('git' 'mise')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.12.1.tar.gz")
-sha256sums=('1b527ec2678a8e73af9bdbea9c4d1e581a2015efee8bad6af564fb55d13e753d')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.12.2.tar.gz")
+sha256sums=('191903eeaec482b7fc1c598e25a82436ea4e9edc9bdf199610c1715636fccf0b')
 conflicts=('system-bridge-git' 'system-bridge-git-debug')
 
 arch=('x86_64')
@@ -43,8 +43,15 @@ build() {
   export CGO_ENABLED=1
   mise trust -a
   mise install
-  mise exec -C web-client -- bun install --frozen-lockfile
-  if grep -q '^\[tasks\."build:web-client"\]$' mise.toml; then
+  # Releases before the move to client/web keep the web client in web-client
+  if [ -d client/web ]; then
+    mise exec -C client/web -- bun install --frozen-lockfile
+  else
+    mise exec -C web-client -- bun install --frozen-lockfile
+  fi
+  if grep -q '^\[tasks\."build:client:web"\]$' mise.toml; then
+    mise run build:client:web
+  elif grep -q '^\[tasks\."build:web-client"\]$' mise.toml; then
     mise run build:web-client
   else
     mise run build_web_client
