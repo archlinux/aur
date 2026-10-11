@@ -1,25 +1,27 @@
 # Maintainer: Xuelin Yang <xuelin@adamanteye.cc>
 pkgname=zotero-mcp-server
-_srcname=zotero-mcp
-pkgver=0.11.0
+_srcname=zotero_mcp_server
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="A Model Context Protocol server for Zotero"
 arch=('any')
 url='https://github.com/54yyyu/zotero-mcp'
-license=('MIT')
+license=('MIT' 'AGPL-3.0-or-later')
 depends=(
-	'python'
-	'python-bibtexparser'
-	'python-dotenv'
+	'python>=3.10'
+	'python-bibtexparser1>=1.4'
+	'python-dotenv>=1.0.0'
 	'python-fastmcp-slim>=2.14.0'
+	# FastMCP 4 requires MCP 2; keep compatibility with Arch's MCP 1 SDK.
 	'python-fastmcp-slim<4'
-	'python-httpx'
-	'python-markdownify'
-	'python-pdf-inspector>=0.2.6'
-	'python-pydantic'
-	'python-pyzotero'
-	'python-requests'
-	'python-unidecode'
+	'python-httpx>=0.27'
+	'python-markdown-it-py>=2.2'
+	'python-markdownify>=1.2'
+	'python-pdf-inspector=0.2.6'
+	'python-pydantic>=2.0.0'
+	'python-pyzotero>=1.14.0'
+	'python-requests>=2.28.0'
+	'python-unidecode>=1.3.0'
 )
 makedepends=(
 	'python-build'
@@ -37,8 +39,9 @@ optdepends=(
 	'python-pymupdf: PDF outline extraction'
 	'python-ebooklib: EPUB annotation support'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e0c30850c023d4f978c54a17e0e82cc7b3f1fec54828892b19f82afc64bdc3dc')
+# The release sdist includes the built Zotero Agent plugin omitted from git tags.
+source=("https://files.pythonhosted.org/packages/source/z/${pkgname}/${_srcname}-${pkgver}.tar.gz")
+sha256sums=('556fd517459a287eb5438020fe0c9ad2837ac6db7f646346c64e14854d1fa2d5')
 
 build() {
 	cd "$_srcname-$pkgver"
@@ -47,8 +50,9 @@ build() {
 
 package() {
 	cd "$_srcname-$pkgver"
-	python -m installer --destdir="$pkgdir" dist/*.whl
+	python -m installer --destdir="$pkgdir" --prefix=/usr dist/*.whl
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 plugin/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.plugin"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 docs/getting-started.md "$pkgdir/usr/share/doc/$pkgname/getting-started.md"
 }

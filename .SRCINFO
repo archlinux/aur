@@ -1,26 +1,28 @@
 pkgbase = zotero-mcp-server
 	pkgdesc = A Model Context Protocol server for Zotero
-	pkgver = 0.11.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/54yyyu/zotero-mcp
 	arch = any
 	license = MIT
+	license = AGPL-3.0-or-later
 	makedepends = python-build
 	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python
-	depends = python-bibtexparser
-	depends = python-dotenv
+	depends = python>=3.10
+	depends = python-bibtexparser1>=1.4
+	depends = python-dotenv>=1.0.0
 	depends = python-fastmcp-slim>=2.14.0
 	depends = python-fastmcp-slim<4
-	depends = python-httpx
-	depends = python-markdownify
-	depends = python-pdf-inspector>=0.2.6
-	depends = python-pydantic
-	depends = python-pyzotero
-	depends = python-requests
-	depends = python-unidecode
+	depends = python-httpx>=0.27
+	depends = python-markdown-it-py>=2.2
+	depends = python-markdownify>=1.2
+	depends = python-pdf-inspector=0.2.6
+	depends = python-pydantic>=2.0.0
+	depends = python-pyzotero>=1.14.0
+	depends = python-requests>=2.28.0
+	depends = python-unidecode>=1.3.0
 	optdepends = zotero: local Zotero desktop library access
 	optdepends = python-chromadb: semantic search vector database support
 	optdepends = python-sentence-transformers: local semantic embeddings
@@ -29,7 +31,7 @@ pkgbase = zotero-mcp-server
 	optdepends = python-tiktoken: semantic search token counting
 	optdepends = python-pymupdf: PDF outline extraction
 	optdepends = python-ebooklib: EPUB annotation support
-	source = zotero-mcp-server-0.11.0.tar.gz::https://github.com/54yyyu/zotero-mcp/archive/refs/tags/v0.11.0.tar.gz
-	sha256sums = e0c30850c023d4f978c54a17e0e82cc7b3f1fec54828892b19f82afc64bdc3dc
+	source = https://files.pythonhosted.org/packages/source/z/zotero-mcp-server/zotero_mcp_server-0.14.1.tar.gz
+	sha256sums = 556fd517459a287eb5438020fe0c9ad2837ac6db7f646346c64e14854d1fa2d5
 
 pkgname = zotero-mcp-server
