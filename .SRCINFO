@@ -1,6 +1,6 @@
 pkgbase = kiekje-bin
 	pkgdesc = Capture, mark up and keep screenshots (release binary)
-	pkgver = 0.1.0alpha4
+	pkgver = 0.1.0alpha5
 	pkgrel = 1
 	url = https://github.com/remcostoeten/kiekje
 	arch = x86_64
@@ -18,13 +18,15 @@ pkgbase = kiekje-bin
 	depends = gcc-libs
 	depends = glibc
 	optdepends = xdg-desktop-portal: capture and global shortcuts through the portal
+	optdepends = gst-plugins-base: capture sound
+	optdepends = gst-plugins-good: capture sound through PulseAudio
 	provides = kiekje
 	conflicts = kiekje
 	options = !strip
 	options = !debug
-	source_x86_64 = kiekje-0.1.0-alpha.4-x86_64-linux.tar.gz::https://github.com/remcostoeten/kiekje/releases/download/v0.1.0-alpha.4/kiekje-0.1.0-alpha.4-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 4cff4251cb41c130613a92c14c9a0e3f7abf6f5d2fe6281264b03f4c02d2cd55
-	source_aarch64 = kiekje-0.1.0-alpha.4-aarch64-linux.tar.gz::https://github.com/remcostoeten/kiekje/releases/download/v0.1.0-alpha.4/kiekje-0.1.0-alpha.4-aarch64-linux.tar.gz
-	sha256sums_aarch64 = 2af247fa698ea620759ea151cd7523d9a36f442163564a67445060c18b6c42c3
+	source_x86_64 = kiekje-0.1.0-alpha.5-x86_64-linux.tar.gz::https://github.com/remcostoeten/kiekje/releases/download/v0.1.0-alpha.5/kiekje-0.1.0-alpha.5-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 0169f19a58da8299b0b0c7d99fdb809fab65a2fb6585c66b9a435a1fec8ffde9
+	source_aarch64 = kiekje-0.1.0-alpha.5-aarch64-linux.tar.gz::https://github.com/remcostoeten/kiekje/releases/download/v0.1.0-alpha.5/kiekje-0.1.0-alpha.5-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 285126edab2a7f78df65cfb0d23bc349a6b1fb720f1ddf1a39f2245bdb0303cd
 
 pkgname = kiekje-bin
