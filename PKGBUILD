@@ -1,7 +1,7 @@
 # Maintainer: Tyrolyean <tyrolyean@semi-professional.net>
 
 pkgname=zas
-pkgver=0.0.5
+pkgver=0.0.8
 pkgrel=1
 pkgdesc='Most simple static site generator ever.'
 arch=('any')
@@ -23,11 +23,8 @@ source=(
   "https://github.com/darccio/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha512sums=('7ba96a4ecba23052430fe8f96fd7245ba7dd23a055cf7eb777388a32d6624dd0846105b8db91e625575329173316ffa355825437d707e0fd207235f6d97e3943')
-
-sha256sums=('f46710b3922be0398a0a59bce1f6114dfe64105ec5c6280d83a9bd7827a5f487')
-
-md5sums=('2eec7409c08f5baa59b95f4550cad742')
+b2sums=('5d7a8e553212d351205d5911476f0c195b3e3c5ed403006770f30011ed414b48eaea0892b4e936844a5509bd6b57edb8e807759709c97867be9709a696f88bf4')
+sha512sum=('d4f0bde50005e2809831b78e33d778131abcd15d935c4c015d236c8ba84f40f9b3c73c24330712187f87be120c06b38472931a49bb8263ce0dfa598def93dd9b')
 
 prepare() {
   cd "$pkgname-$pkgver"
