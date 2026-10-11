@@ -1,15 +1,15 @@
 # Maintainer: Kanehekili <kanehekili.media@gmail.com>
 pkgname=mediainfogui
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="GUI for MediaInfo data — Qt6, GTK3 and GTK4"
 url="https://github.com/kanehekili/MediaInfoGui"
 license=('GPL-2.0-or-later')
 depends=('mediainfo')
 optdepends=('python-pyqt6: Qt6 interface' 'python-gobject: GTK3/GTK4 interface' 'ffmpeg: MPEG-TS program info')
 arch=('x86_64' 'aarch64')
-source=(https://github.com/kanehekili/MediaInfoGui/releases/download/1.3.1/MediaInfoGui1.3.1.tar)
-md5sums=(f2de623b28f5bf009c6a10c96ec83fbc)
+source=(https://github.com/kanehekili/MediaInfoGui/releases/download/1.3.2/MediaInfoGui1.3.2.tar)
+sha256sums=(43c4de6b43200bcd1a04812b1b91212f5a5e8ca4d9706da12a356b55d22bc637)
 
 package() {
   cd "${srcdir}/MediaInfoGui"
