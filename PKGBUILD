@@ -26,7 +26,7 @@ optdepends=(
 # Individual files rather than the archive tarball, so that every checksum is
 # verifiable before the repository is published and makepkg downloads exactly
 # the reviewed bytes.
-_commit='59f7274d76cfbf2aa9c7333b20d8aa91f7363733'
+_commit='60642331189df56503ba166366aacbd88abb19a8'
 _upstream="https://codeberg.org/chefberg/refprov/raw/commit/$_commit"
 source=("prov::$_upstream/prov"
         "provcore.py::$_upstream/provcore.py"
@@ -46,7 +46,7 @@ sha256sums=('4d674dd55c6d6e24ffd6020bdb324f4ae8590078b4720eb5cc7bd4dd60c431ea'
             'a39e02c5c0d4198140b739cb420b91f6f34fa700ebb6ce5e8cfbb65784614b22'
             '87c1369967c29d5f8dbabc19284a8e87fd4bad7404746c4d936ddeeb2b645f4c'
             '3cf078839e4ac6da9361c6eba97b7bf928754f345495a9fbf768bba66113d12a'
-            '85ee2b57ccb9f0a80940f4fd8272bbac4d97aee92bcdf0d1143925daa2591c6e'
+            '0f0293ba99dbac444b2f050bf28fe364185a6b92bd5b558ae21b24783bbcf653'
             '956e1905e63db22a3bef0a9b3336572800add9faa58fea8db2eae61a4e7c5480')
 backup=()
 
