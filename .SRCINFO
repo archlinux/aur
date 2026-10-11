@@ -1,0 +1,32 @@
+pkgbase = neodisk-git
+	pkgdesc = Disk space visualizer with treemap and sunburst views (Git version)
+	pkgver = 2.83.2.r312.g1572007
+	pkgrel = 1
+	url = https://github.com/tkslucas/Neodisk
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = patchelf
+	makedepends = pkgconf
+	depends = cairo
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = graphene
+	depends = gtk4>=4.14
+	depends = harfbuzz
+	depends = libadwaita>=1.5
+	depends = pango
+	depends = swift-bin>=6.4
+	depends = vulkan-icd-loader
+	depends = zstd
+	provides = neodisk=2.83.2.r312.g1572007
+	conflicts = neodisk
+	conflicts = neodisk-bin
+	options = !debug
+	source = Neodisk::git+https://github.com/tkslucas/Neodisk.git#branch=main
+	sha256sums = SKIP
+
+pkgname = neodisk-git
