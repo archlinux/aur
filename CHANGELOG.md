@@ -1,4 +1,26 @@
 # Changelog
+## [1:615.78.08-5] - 2026-10-11
+
+### Added
+- Expose NVIDIA's per-GPU external classification in procfs and use it to target eGPU process cleanup without selecting internal NVIDIA GPUs
+
+### Changed
+- Enable NVIDIA module unloading and process termination by default; configure them independently in `/etc/nvidia.env`
+- Document the per-device `RmForceExternalGpu` override scoped to the eGPU's PCI BDF
+
+### Fixed
+- Record the NVIDIA device minor and DRM render node names by BDF for external GPUs, targeting only recorded GPUs that disappeared without guessing from device order
+- Match open `/dev/nvidiaN` and DRM render nodes, while skipping render node names reassigned to another device
+- Keep each last-known minor in `/run` so cleanup can still identify open device files after procfs removes the GPU entry; refresh the record on reconnect
+- Replace each per-GPU record atomically and remove the separate state lock
+- Recheck device-minor ownership before signaling processes and batch SIGTERM/SIGKILL across removed GPUs
+- Give each Thunderbolt removal event its own worker and serialize cleanup with one shared lock
+- Trigger cleanup from Thunderbolt device removal while keeping PCI add events for module loading
+- Wait up to 30 seconds for PCI removal to finish after the initial five-second settle delay
+- Check for remaining or reconnected NVIDIA GPUs once before each unload attempt
+- SIGKILL NVIDIA device users and wait five seconds before recounting GPUs
+- Return an empty PID list when no process has an NVIDIA device file open
+
 ## [1:615.78.08-4] - 2026-10-11
 
 ### Added

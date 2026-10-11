@@ -12,7 +12,7 @@ pkgname=(
     'nvidia-open-egpu'
     'nvidia-open-egpu-dkms')
 pkgver=615.78.08
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc='NVIDIA open kernel modules with thunderbolt 4 force egpu and hotplug patches'
 arch=('x86_64')
@@ -32,6 +32,7 @@ source=("https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-
         '190-nvidia-open-bar1-kernel-client-contiguous.patch'
         '200-nvidia-open-rebar-failure-nonfatal.patch'
         '210-nvidia-open-bar1-mapping-reuse.patch'
+        '220-nvidia-open-procfs-external-gpu.patch'
         'nvidia-egpu-hotplug.rules'
         'nvidia-egpu-hotplug.sh')
 sha256sums=('17b4f3d195a5ab1fad9aa1f195c9d3a4ad03aceda18bb9fb68a8bd33d7a000f6'
@@ -45,8 +46,9 @@ sha256sums=('17b4f3d195a5ab1fad9aa1f195c9d3a4ad03aceda18bb9fb68a8bd33d7a000f6'
         '954254e280f819cd14b06abb219700b9b93aee4c4e50ecd01b76297fbe064c09'
         'de65235573dce384ee4b865f4164c67af84fd11a78c4f58f7ce8d52d77c12a91'
         '85c9dd29bca475e4d8d816191bb36d4a8c67f76a074c67c2928a0683ca3fef42'
-            '7ce1d553e9b12d6a686c00d0a88039dc29c66fdf995b5dd5e042f169d7515682'
-            '74ad7d24e2dfdce1f2b52c51c2f2f85b1857d056000fa1d27f342d9aa00d410c')
+        'e40eb621ef6832f7bd3f577e1c041e9fc280334040f8dc4b3c8fb32d83c6648c'
+        '570f66dd11212511193ddadf606dcda611a72584b3bf86c6e55273a6b7945567'
+        'dfbdc05ccc3af945d8429b46f06f3b6b81ecf27144dd21272109f3912e7e27b0')
 
 prepare() {
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/110-nvidia-open-change-dkms-conf.patch"
@@ -66,6 +68,8 @@ prepare() {
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/200-nvidia-open-rebar-failure-nonfatal.patch"
     # BAR1 mapping reuse cleanup from PR #1426 (source file only)
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/210-nvidia-open-bar1-mapping-reuse.patch"
+    # Export NVIDIA's existing eGPU classification for the hotplug handler.
+    patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/220-nvidia-open-procfs-external-gpu.patch"
     
     # Substitute version placeholder in dkms.conf
     sed -i "s/@@PKGVER@@/${pkgver}/" "NVIDIA-kernel-module-source-${pkgver}/kernel-open/dkms.conf"

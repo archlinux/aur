@@ -1,0 +1,18 @@
+From: local package patch
+Subject: procfs: expose NVIDIA eGPU classification
+
+Export the driver's existing external-GPU classification in the per-GPU
+information file so the hotplug helper can target only eGPU device nodes.
+
+diff --git a/kernel-open/nvidia/nv-procfs.c b/kernel-open/nvidia/nv-procfs.c
+--- a/kernel-open/nvidia/nv-procfs.c
++++ b/kernel-open/nvidia/nv-procfs.c
+@@ -158,6 +158,8 @@ nv_procfs_read_gpu_info(
+     seq_printf(s, "Bus Location: \t %04x:%02x:%02x.%x\n",
+                    nv->pci_info.domain, nv->pci_info.bus,
+                    nv->pci_info.slot, PCI_FUNC(pci_dev->devfn));
+     seq_printf(s, "Device Minor: \t %u\n", nvl->minor_num);
++    seq_printf(s, "External GPU: \t %s\n",
++               nv->is_external_gpu ? "Yes" : "No");
+
+     if (nv->cached_gpu_info.firmware_version[0] == '\0')
