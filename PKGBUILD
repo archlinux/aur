@@ -1,7 +1,7 @@
 # Maintainer: Taha YVR <https://github.com/tahayvr>
 pkgname=omarchist-bin
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI app for Omarchy Linux."
 arch=('x86_64' 'aarch64')
 url="https://github.com/tahayvr/omarchist"
@@ -22,6 +22,7 @@ depends=(
 )
 provides=('omarchist')
 conflicts=('omarchist' 'omarchist-git')
+options=('!debug')
 
 source_x86_64=("omarchist-linux-x86_64-${pkgver}.tar.gz::https://github.com/tahayvr/omarchist/releases/download/v${pkgver}/omarchist-linux-x86_64.tar.gz")
 source_aarch64=("omarchist-linux-aarch64-${pkgver}.tar.gz::https://github.com/tahayvr/omarchist/releases/download/v${pkgver}/omarchist-linux-aarch64.tar.gz")
