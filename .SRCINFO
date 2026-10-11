@@ -1,0 +1,22 @@
+pkgbase = rmpcd-git
+	pkgdesc = A companion MPD client to rmpc intended to run as a daemon
+	pkgver = 0.1.0.r801.g1506013
+	pkgrel = 1
+	url = https://rmpc.mierak.dev/
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = cargo
+	makedepends = git
+	depends = libgcc
+	depends = glibc
+	optdepends = libnotify: for the notify plugin
+	optdepends = xdg-utils: for the lastfm plugin
+	optdepends = rmpc: for the lyrics plugin
+	provides = rmpcd
+	conflicts = rmpcd
+	options = !lto
+	source = rmpcd::git+https://github.com/mierak/rmpc.git
+	sha256sums = SKIP
+
+pkgname = rmpcd-git
