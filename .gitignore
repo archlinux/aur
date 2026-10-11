@@ -1,0 +1,17 @@
+# Editor and tool noise
+*~
+*.swp
+*.bak
+*.orig
+*.rej
+*.tmp
+
+# Build artefacts from makepkg
+src/
+pkg/
+*.pkg.tar.*
+*.pkg.tar.*.sig
+
+# Credentials that must never be committed
+.makepkg-cache
+.env
