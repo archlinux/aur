@@ -7,7 +7,7 @@ _pkgname=shell2http
 pkgname=${_pkgname}-bin
 pkgdesc="HTTP-server to execute shell commands"
 
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,9 +25,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('14b314a501bafa4c3819822fb0bdd1c6d8423ec495432116af184ebfdec3b296')
-sha256sums_i686=('23720b2b1df8372c6906a4488620853479cd6efbefa757653a4717ba9a973fb1')
-sha256sums_aarch64=('f0a5ac070e32c2654283683f1553d9d9a64b2f5de65418e099a31311f8ff4e64')
+sha256sums_x86_64=('3ed8190f54bcb545087545d2eeded54088f826a4b32937559548f09607ae0769')
+sha256sums_i686=('5492bdf23865808c31ccbbf45ab6bdaa2d7343b41fa6d5927aa22e16f1d1cb07')
+sha256sums_aarch64=('e2fb1bc107ef69e61167996c3db08e1e1564761545d8570f26b744b5f4b15d81')
 
 
 package() {
