@@ -1,0 +1,5 @@
+[python-django-ipware]
+source = "github"
+github = "un33k/django-ipware"
+use_max_tag = true
+prefix = "v"
