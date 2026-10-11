@@ -1,6 +1,6 @@
 # Maintainer: restitux <restitux@ohea.xyz>
 pkgname=decky-loader
-pkgver=3.2.8
+pkgver=3.2.10
 pkgrel=1
 pkgdesc="Unofficial Arch build of Decky Loader, a homebrew plugin launcher for the Steam Deck."
 arch=('x86_64')
@@ -15,8 +15,8 @@ makedepends=('pnpm' 'python-poetry')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "decky-loader@.service"
   "decky-loader-helper")
-sha256sums=('821d97b0ab89bec5717a0162aa97f1f84cc57271c38d7d6cbd3179d9f7c704db'
-            '068f91eba3ead7fce3384d208d743acdf8ed22c0daea6d13645ff3edf7a754eb'
+sha256sums=('11945591460f44434de114eb068968f029632722c566996ddb9c3676b9fc7ecf'
+            '902c18ea31d3bfbbfa9cf38c3f4c60d04c4108c68d68f203a71399854181e255'
             '57ad5807a25f39777569982a632a87bce41c5b25d25f3a82168a14cced359f48')
 
 build() {
