@@ -1,5 +1,5 @@
 pkgbase = cec-toolbox-git
-	pkgdesc = Adjust your Moza Racing gear settings
+	pkgdesc = Easily setup CEC on your stem
 	pkgver = 0.0.1
 	pkgrel = 2
 	url = https://github.com/Lawstorant/cec-toolbox
