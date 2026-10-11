@@ -1,7 +1,7 @@
 # Maintainer: Alex Dujardin <contact@alexcrea.xyz>
 pkgname=paintdotnet-wine-experimental
 pkgver=5.200.9775.2252
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Paint.NET with wine specific changes"
 arch=(x86_64)
 url="https://github.com/paintdotnet/Paint.NET-on-WINE"
