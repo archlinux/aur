@@ -1,0 +1,5 @@
+[cshatag]
+source = "github"
+github = "rfjakob/cshatag"
+use_max_tag = true
+prefix = "v"
