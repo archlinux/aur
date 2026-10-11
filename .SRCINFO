@@ -1,6 +1,6 @@
 pkgbase = r-s2
 	pkgdesc = Spherical Geometry Operators Using the S2 Geometry Library
-	pkgver = 1.1.12
+	pkgver = 1.1.13
 	pkgrel = 1
 	url = https://cran.r-project.org/package=s2
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = r-s2
 	optdepends = r-bit64
 	optdepends = r-testthat>=3.0.0
 	optdepends = r-vctrs
-	source = https://cloud.r-project.org/src/contrib/s2_1.1.12.tar.gz
-	b2sums = 69bbd267582eab36470be3bd4305c9c6745427f240f23aabe7fbcd31a0a6e374a6e7aae3eaccb351c1d18bfdd551a4e2137a9fdf3a3f1cf85f87e7488ea15d9b
+	source = https://cloud.r-project.org/src/contrib/s2_1.1.13.tar.gz
+	b2sums = 40666e6358670a44bed724ee91483ae093d0dd93f3a37ae322f43d496d301795231b7a4570e8abd3f73aa52c83ca3f7cd5c81dd68e6760d2bacb9b3527765636
 
 pkgname = r-s2
