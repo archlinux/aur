@@ -1,6 +1,6 @@
 pkgbase = flea
 	pkgdesc = Fast, keyboard-first file manager for Omarchy
-	pkgver = 0.3.8
+	pkgver = 0.3.9
 	pkgrel = 1
 	url = https://github.com/thisisgm/flea
 	arch = x86_64
@@ -48,7 +48,7 @@ pkgbase = flea
 	optdepends = zoxide: frecent folders in the folder jump of the path bar
 	conflicts = flea-git
 	options = !debug
-	source = flea-v0.3.8-1.tar.gz::https://github.com/thisisgm/flea/releases/download/v0.3.8/flea-v0.3.8.tar.gz
-	sha256sums = d3740e8fc1f1cf2b10c97c15427c6feb595daad252fd95e5e74a1c083dd8d81f
+	source = flea-v0.3.9-1.tar.gz::https://github.com/thisisgm/flea/releases/download/v0.3.9/flea-v0.3.9.tar.gz
+	sha256sums = 2874e2f16d2bca775891111a283b378b1f8b13cf5427f79bdf750cd3f5f4b58d
 
 pkgname = flea
