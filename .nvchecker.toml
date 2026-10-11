@@ -1,0 +1,4 @@
+[simplescreenrecorder]
+source = "github"
+github = "MaartenBaert/ssr"
+use_max_tag = true
