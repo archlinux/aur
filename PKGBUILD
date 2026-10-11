@@ -1,5 +1,5 @@
 # Maintainer: yancat <yancat_aur@icloud.com>
-pkgname=Countdown-bin
+pkgname=countdown-bin
 pkgver=1.6.0
 pkgrel=1
 license=('GPL-3.0-only')
