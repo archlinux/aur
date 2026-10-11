@@ -1,14 +1,14 @@
 pkgbase = kmcaster
 	pkgdesc = On-screen display (OSD) for keyboard and mouse events
 	pkgver = 1.1.0
-	pkgrel = 1
-	url = https://github.com/DaveJarvis/kmcaster
+	pkgrel = 2
+	url = https://github.com/flathub/com.whitemagicsoftware.kmcaster
 	arch = any
 	license = GPL
 	makedepends = gendesk
 	depends = archlinux-java-run
 	noextract = kmcaster_1.1.0.jar
-	source = kmcaster_1.1.0.jar::https://github.com/DaveJarvis/kmcaster/releases/download/1.1.0/kmcaster.jar
+	source = kmcaster_1.1.0.jar::https://github.com/flathub/com.whitemagicsoftware.kmcaster/releases/download/1.1.0/kmcaster.jar
 	source = kmcaster.sh
 	md5sums = c3204fe1c0a4bdc43eb8969e88401c53
 	md5sums = c89ecb10db8a6c447a956e5f4872a8bf

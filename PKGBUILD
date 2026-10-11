@@ -2,14 +2,14 @@
 
 pkgname=kmcaster
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="On-screen display (OSD) for keyboard and mouse events"
 arch=('any')
-url="https://github.com/DaveJarvis/kmcaster"
+url="https://github.com/flathub/com.whitemagicsoftware.kmcaster"
 license=('GPL')
 depends=('archlinux-java-run')
 makedepends=('gendesk')
-source=("${pkgname}_${pkgver}.jar"::"https://github.com/DaveJarvis/kmcaster/releases/download/${pkgver}/kmcaster.jar"
+source=("${pkgname}_${pkgver}.jar"::"https://github.com/flathub/com.whitemagicsoftware.kmcaster/releases/download/${pkgver}/kmcaster.jar"
         "kmcaster.sh")
 noextract=("${pkgname}_$pkgver.jar")
 
