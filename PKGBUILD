@@ -2,7 +2,7 @@
 
 pkgname=vsview
 pkgver=0.12.1
-pkgrel=2
+pkgrel=3
 pkgdesc='The next-generation VapourSynth previewer'
 arch=('x86_64')
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
@@ -46,7 +46,7 @@ source=(
     "${pkgname}::git+${url}.git#tag=vsview/v${pkgver}"
     "${pkgname}.desktop"
 )
-sha256sums=('2374692b263b7fa8b5cb2605b0b4411feb1684b13007cb091cb91564a9f0a35b'
+sha256sums=('SKIP'
             '20a08e239e1ccd181023f5fa51b2bc98f415b194c86a352777bd441197188755')
 
 build() {
