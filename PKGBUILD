@@ -9,13 +9,13 @@
 # This provider is currently marked EXPERIMENTAL upstream — interfaces and
 # on-disk caching behaviour may change between releases.
 #
-# The release workflow renders this file by substituting 0.0.35 and
-# 3aa02ff70e53ad96795dc35d3979663ec1f4d9f9e37b0cd0b577b7158a1387c5 before committing to the AUR.
+# The release workflow renders this file by substituting 0.0.36 and
+# cfcc53a829682e212bed2f40fc21e92ee5018673a654618481f03bc9f57871cf before committing to the AUR.
 #
 # To build manually, replace the placeholders and run makepkg -si.
 
 pkgname=rosec-provider-keepassxc-file-bin
-pkgver=0.0.35
+pkgver=0.0.36
 pkgrel=1
 pkgdesc="KeePassXC (file) read-only provider for rosec (prebuilt, experimental)"
 arch=('any')
@@ -30,7 +30,7 @@ conflicts=('rosec-provider-keepassxc-file')
 source=(
     "rosec-provider-keepassxc-file-${pkgver}.wasm.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v${pkgver}/rosec-provider-keepassxc-file-${pkgver}.wasm.tar.gz"
 )
-sha256sums=('3aa02ff70e53ad96795dc35d3979663ec1f4d9f9e37b0cd0b577b7158a1387c5')
+sha256sums=('cfcc53a829682e212bed2f40fc21e92ee5018673a654618481f03bc9f57871cf')
 
 package() {
     install -Dm644 "${srcdir}/rosec_keepassxc_file.wasm" \
