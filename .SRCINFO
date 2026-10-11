@@ -1,7 +1,7 @@
 pkgbase = gtm-player
 	pkgdesc = Reimagined terminal audio player with background daemon, YouTube/Spotify, radio and podcasts
 	pkgver = 0.2.89
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gtmd.dev
 	arch = x86_64
 	arch = aarch64
