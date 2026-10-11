@@ -1,0 +1,15 @@
+pkgbase = ttfe
+	pkgdesc = 2048 game in the terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://sr.ht/~paemuri/ttfe
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	makedepends = git
+	makedepends = hare
+	options = !debug
+	source = git+https://git.sr.ht/~paemuri/ttfe#tag=v1.0.0
+	sha256sums = 54b1b9e52a11cad6e339dc5764e8900715e5c22a0c4a7ecfbe79710d2408fc58
+
+pkgname = ttfe
