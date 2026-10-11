@@ -1,0 +1,20 @@
+pkgbase = xsetwall-bin
+	pkgdesc = A minimal utility for setting wallpapers in X11 environment
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/0x61nas/xsetwall
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	provides = xsetwall
+	options = !debug
+	source = xsetwall-1.0.3-bin::https://github.com/0x61nas/xsetwall/releases/download/v1.0.3/xsetwall-x86_64-linux-gnu
+	source = LICENSE-1.0.3::https://raw.githubusercontent.com/0x61nas/xsetwall/refs/tags/v1.0.3/LICENSE
+	source = readme-1.0.3::https://raw.githubusercontent.com/0x61nas/xsetwall/refs/tags/v1.0.3/readme
+	source = xsetwall-1.0.3.1::https://raw.githubusercontent.com/0x61nas/xsetwall/refs/tags/v1.0.3/xsetwall.1
+	sha256sums = f41d9a931da9283abbc4613a2dd0222f6040d69b6488caf69ecdbdc88982ff9d
+	sha256sums = ddc49ced9f48c7402b323b4f379bf92973c44ae63f5ba047f828121efafcd319
+	sha256sums = 5974afb1900dcca039f09f8f62d4215988a2e960275f1f22aab34e6429a8ea83
+	sha256sums = 8564f58f54a4b5c2d7965aabb16b4b833837539fd4912acf4a16bc4739ccf132
+
+pkgname = xsetwall-bin
