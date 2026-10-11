@@ -1,0 +1,76 @@
+#!/bin/bash
+# Register/unregister vok_sk layout in xkeyboard-config rules (*.xml, *.lst).
+# Usage: vok_sk-register add|remove
+
+rules=/usr/share/xkeyboard-config-2/rules
+
+variants=(
+  'basic|Qwerty (national chars with AltGr)'
+  'slovak|Qwerty (digits with AltGr)'
+  'qwertz|Qwertz (national chars with AltGr)'
+  'slovak_qwertz|Qwertz (digits with AltGr)'
+)
+
+xml_remove() {
+  xmlstarlet ed -L -d "/xkbConfigRegistry/layoutList/layout[configItem/name='vok_sk']" "$1"
+}
+
+xml_add() {
+  # new layout is inserted before the first one, so it becomes layout[1]
+  local L='/xkbConfigRegistry/layoutList/layout[1]'
+  local args=(
+    -i "$L" -t elem -n layout
+    -s "$L" -t elem -n configItem
+    -s "$L/configItem" -t elem -n name -v vok_sk
+    -s "$L/configItem" -t elem -n shortDescription -v sk
+    -s "$L/configItem" -t elem -n description -v "Slovak (Vogo's keyboard)"
+    -s "$L/configItem" -t elem -n countryList
+    -s "$L/configItem/countryList" -t elem -n iso3166Id -v SK
+    -s "$L/configItem" -t elem -n languageList
+    -s "$L/configItem/languageList" -t elem -n iso639Id -v slk
+    -s "$L" -t elem -n variantList
+  )
+  local v
+  for v in "${variants[@]}"; do
+    args+=(
+      -s "$L/variantList" -t elem -n variant
+      -s "$L/variantList/variant[last()]" -t elem -n configItem
+      -s "$L/variantList/variant[last()]/configItem" -t elem -n name -v "${v%%|*}"
+      -s "$L/variantList/variant[last()]/configItem" -t elem -n description -v "Slovak (Vogo's keyboard, ${v#*|})"
+    )
+  done
+  xmlstarlet ed -L "${args[@]}" "$1"
+}
+
+lst_remove() {
+  sed -i -e '/^  vok_sk  /d' -e '/^  [a-z_]* *vok_sk: /d' "$1"
+}
+
+lst_add() {
+  local layout="  vok_sk          Slovak (Vogo's keyboard)"
+  local vlines="" v
+  for v in "${variants[@]}"; do
+    vlines+=$(printf '\\n  %-15s vok_sk: Slovak (Vogo'"'"'s keyboard, %s)' "${v%%|*}" "${v#*|}")
+  done
+  sed -i -e "s/^! layout\$/&\n${layout}/" -e "s/^! variant\$/&${vlines}/" "$1"
+}
+
+case "$1" in
+  add|remove) ;;
+  *) echo "usage: $0 add|remove" >&2; exit 1 ;;
+esac
+
+for f in "$rules"/evdev.xml "$rules"/base.xml; do
+  [ -f "$f" ] && [ ! -L "$f" ] || continue
+  xml_remove "$f"
+  [ "$1" = add ] && xml_add "$f"
+  chmod 644 "$f"
+done
+
+for f in "$rules"/evdev.lst "$rules"/base.lst; do
+  [ -f "$f" ] && [ ! -L "$f" ] || continue
+  lst_remove "$f"
+  [ "$1" = add ] && lst_add "$f"
+done
+
+exit 0

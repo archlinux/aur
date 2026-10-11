@@ -1,15 +1,19 @@
 pkgbase = vok_sk
-	pkgdesc = Vogo's Keyboard for Xorg 7 (Slovak)
+	pkgdesc = Vogo's Keyboard layout (Slovak) for X11 and Wayland
 	pkgver = 1.0
-	pkgrel = 13
+	pkgrel = 14
 	url = http://www.abclinuxu.cz/blog/origami/2006/12/21/162644
 	install = vok_sk.install
 	arch = any
 	license = custom
-	depends = grep
-	depends = qizxopen
-	depends = perl
+	depends = xkeyboard-config
+	depends = xmlstarlet
+	depends = sed
 	source = https://gitlab.com/vojta_vogo/vok/raw/master/xorg/vok_sk
+	source = vok_sk-register
+	source = vok_sk.hook
 	md5sums = 2a99ad4873dda74f1a44e16e5d603df1
+	md5sums = a204adf5eb5e4b798c0e2eb673ff459f
+	md5sums = cdf8be15cbdfa3987178b31c3d30ca38
 
 pkgname = vok_sk
