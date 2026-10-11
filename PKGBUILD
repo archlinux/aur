@@ -4,13 +4,13 @@
 
 pkgname='tine-outliner'
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, local, Logseq-compatible outliner"
 url='https://tine.page/'
 license=('AGPL-3.0-only')
 
 arch=('x86_64')
-makedepends=('rustup' 'nodejs' 'npm')
+makedepends=('rustup' 'npm')
 depends=('gtk3' 'gdk-pixbuf2' 'libgcc' 'libsoup3' 'webkit2gtk-4.1' 'dbus' 'libx11' 'glib2' 'cairo' 'hicolor-icon-theme')
 
 conficts=('tine-outliner-bin')

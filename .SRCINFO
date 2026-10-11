@@ -1,12 +1,11 @@
 pkgbase = tine-outliner
 	pkgdesc = A fast, local, Logseq-compatible outliner
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tine.page/
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = rustup
-	makedepends = nodejs
 	makedepends = npm
 	depends = gtk3
 	depends = gdk-pixbuf2
