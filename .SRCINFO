@@ -1,6 +1,6 @@
 pkgbase = pigoune
 	pkgdesc = All your graphic assets, organized and within reach
-	pkgver = 2.5.0
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://github.com/Gor3pig/Pigoune
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = pigoune
 	depends = libadwaita
 	depends = gtksourceview5
 	options = !lto
-	source = pigoune::git+https://github.com/Gor3pig/pigoune.git#tag=v2.5.0
-	b2sums = bbb245dec8757041f400545c1f37dcd9977f7925d0aef4e92db1919dd0deede46d661c2115576d8d2211503544d71180041aadf900c8a4811c1306eed590c17f
+	source = pigoune::git+https://github.com/Gor3pig/pigoune.git#tag=v2.6.1
+	b2sums = f3816d58744b360011352b6b52313899bf66fc0539b346638b10dd3848438fe3109b14a704bf908d846104ef3ba54fb72d33893d3b75d179d7309474e2155fa7
 
 pkgname = pigoune
