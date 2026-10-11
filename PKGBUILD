@@ -2,7 +2,7 @@
 
 pkgname=pocketlink-git
 _pkgname=pocketlink
-pkgver=0.3.0.r0.ga3c47e5
+pkgver=0.4.0.r2.g8242f63
 pkgrel=1
 pkgdesc='Lightweight phone companion for sway, niri & co: notifications, clipboard, files, media remote and calls'
 arch=('x86_64' 'aarch64')
@@ -13,6 +13,8 @@ makedepends=('git' 'go')
 optdepends=(
   'wireplumber: lower the volume during phone calls (wpctl)'
   'dms-shell: panel widget for pairing and settings'
+  'gvfs-dnssd: browse phone files in Thunar and Nautilus (dav://)'
+  'nautilus-python: "Send to phone" in the Nautilus context menu'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -54,6 +56,13 @@ package() {
 
   # DankMaterialShell's system-wide plugin directory.
   install -Dm644 contrib/dms/pocketlink/* -t "$pkgdir/etc/xdg/quickshell/dms-plugins/pocketlink/"
+
+  # "Send to phone" in file managers' context menus.
+  local fm=contrib/filemanager
+  install -Dm644 $fm/pocketlink-send.servicemenu.desktop "$pkgdir/usr/share/kio/servicemenus/pocketlink-send.desktop"
+  install -Dm644 $fm/pocketlink.thunar-sendto.desktop "$pkgdir/usr/share/Thunar/sendto/pocketlink.desktop"
+  install -Dm644 $fm/pocketlink-send.nemo_action -t "$pkgdir/usr/share/nemo/actions/"
+  install -Dm644 $fm/pocketlink-nautilus.py "$pkgdir/usr/share/nautilus-python/extensions/pocketlink.py"
 
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname/"
 }

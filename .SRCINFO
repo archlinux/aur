@@ -1,6 +1,6 @@
 pkgbase = pocketlink-git
 	pkgdesc = Lightweight phone companion for sway, niri & co: notifications, clipboard, files, media remote and calls
-	pkgver = 0.3.0.r0.ga3c47e5
+	pkgver = 0.4.0.r2.g8242f63
 	pkgrel = 1
 	url = https://github.com/carnager/pocketlink
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = pocketlink-git
 	depends = xdg-utils
 	optdepends = wireplumber: lower the volume during phone calls (wpctl)
 	optdepends = dms-shell: panel widget for pairing and settings
+	optdepends = gvfs-dnssd: browse phone files in Thunar and Nautilus (dav://)
+	optdepends = nautilus-python: "Send to phone" in the Nautilus context menu
 	provides = pocketlink
 	conflicts = pocketlink
 	source = git+https://github.com/carnager/pocketlink.git
