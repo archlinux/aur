@@ -1,6 +1,6 @@
 pkgbase = python-dr14_tmeter
 	pkgdesc = Compute the DR14 of a given audio file
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/simon-r/dr14_t.meter
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-dr14_tmeter
 	depends = python
 	provides = dr14_tmeter
 	conflicts = dr14_tmeter
-	source = https://github.com/simon-r/dr14_t.meter/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = 8f85f4e4a5c3318cf428f6eaba03b62a63281fe41492ed1e2bb2531f711897a5
+	source = https://github.com/simon-r/dr14_t.meter/archive/refs/tags/v2.1.1.tar.gz
+	sha256sums = 9463aefef93d7a2458bd69413ebaf01118fae1aabf13b274e2439ac9dcb59f56
 
 pkgname = python-dr14_tmeter
