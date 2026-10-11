@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.34
-pkgver=1.0.0beta34
+_tag=v1.0.0-beta.35
+pkgver=1.0.0beta35
 pkgrel=1
 pkgdesc="A desktop shell for niri, built with Quickshell: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
@@ -19,6 +19,8 @@ depends=(
     'python'
     'glib2'
     'wl-clipboard'
+    # The emoji cell draws its emoji in Noto Color Emoji.
+    'noto-fonts-emoji'
     'imagemagick'
     'libpipewire'
     'gcc-libs'
@@ -80,7 +82,7 @@ optdepends=(
     'whisper-cpp: dictation, the engine'
     'ggml-vulkan: dictation on the GPU; without it, the CPU'
     'whisper.cpp-model-large-v3-turbo-q5_0: dictation, the model (AUR)'
-    'python-evdev: dictation, pasting into the window'
+    'python-evdev: dictation and the emoji cell, pasting into the window'
     'business-network-wizard: company network setup (NTLM proxy, VPN, 802.1X, shares), opened from the connectivity cell'
 )
 # libspa builds a small C shim that makepkg's LTO turns into bitcode, which
@@ -88,7 +90,7 @@ optdepends=(
 options=('!lto')
 install=bioma-shell.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('4ad8dce603f0da35e1223b1f2e383edfe7e02b662b5c5455d67a8c32e391fe3c')
+sha256sums=('907ac47409aee33174362718041984fbfc30802816f1d144b9f0a9ee2a0560ef')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
