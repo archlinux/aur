@@ -3,7 +3,7 @@
 # Taken from the release's own SHA256SUMS, which the release workflow writes over
 # the artefacts it publishes.
 curl -sL https://github.com/Botropolis-City/botropolis/releases/download/v$1/SHA256SUMS |
-    grep -E 'linux-(amd64|arm64)\.tar\.gz$' |
+    grep -E -e "-${1//./\\.}-linux-(amd64|arm64)\.tar\.gz$" |
     while read -r sum file; do
         case "$file" in
             *amd64*) echo "x86_64:  $sum" ;;
