@@ -4,7 +4,7 @@
 pkgname=marian-lite
 pkgver=0.2.9.2
 _pkgver=0.2.9-2
-pkgrel=2
+pkgrel=3
 pkgdesc="Marian NMT lite"
 arch=('x86_64')
 url="https://github.com/terslang/marian-lite"
@@ -14,6 +14,7 @@ depends=('openblas' 'sqlitecpp' 'yaml-cpp'
 makedepends=('cmake' 'cli11' 'intgemm' 'sentencepiece-browsermt')
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/terslang/marian-lite/archive/refs/tags/v$_pkgver.tar.gz")
 sha256sums=('47b3f3c5897c5c8b9f156afb8618e5ab6653dc0abd460abe71e3df7deedc4efa')
+options=(!lto) # fast fix
 
 prepare() {
     cd "$srcdir/marian-lite-$_pkgver"
