@@ -1,0 +1,15 @@
+# 白名单式：只放行 AUR 仓库该有的那几样。
+#
+# 写成「忽略一切、再逐个放行」而不是「列出要忽略的」，是因为 makepkg 会在
+# 这里生成 src/、pkg/、*.pkg.tar.zst 等一堆东西，漏列一个就可能被推上 AUR。
+# AUR 只收 PKGBUILD 及其元数据，夹带别的会被当成违规。
+#
+# 注意这个文件在主仓库里**同样生效**（.gitignore 是递归的），所以主仓库
+# 自己要跟踪的文件也必须放行 —— README.md 就是这么来的。
+# 发布脚本只 git add 那固定的几个文件，所以放行 README.md 不会让它进 AUR。
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!LICENSE
+!README.md
