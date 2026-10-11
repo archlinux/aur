@@ -1,6 +1,6 @@
 pkgbase = penguin-mail-bin
 	pkgdesc = Mail and calendar for Linux (prebuilt binaries from the GitHub release)
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/c9dev/penguin-mail
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = penguin-mail-bin
 	provides = penguin-mail
 	conflicts = penguin-mail
 	options = !debug
-	source = penguin-mail-1.0.6-1-x86_64.pkg.tar.zst::https://github.com/c9dev/penguin-mail/releases/download/v1.0.6/penguin-mail-1.0.6-1-x86_64.pkg.tar.zst
-	sha256sums = 942e69de410545536e5108de22ad3ae34f076ab38a0a03fa163f91f018c532b9
+	source = penguin-mail-1.0.7-1-x86_64.pkg.tar.zst::https://github.com/c9dev/penguin-mail/releases/download/v1.0.7/penguin-mail-1.0.7-1-x86_64.pkg.tar.zst
+	sha256sums = 32dec3560c7595215e2fcd6c7caf778f7f1d9a4f1fe4d1078d326d25163b6b22
 
 pkgname = penguin-mail-bin
