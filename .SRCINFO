@@ -1,5 +1,5 @@
 pkgbase = lactea-bin
-	pkgdesc = MilkDrop 2 / projectM-compatible music visualizer on wgpu, with C library (binary release)
+	pkgdesc = MilkDrop 2 / 3 and projectM-compatible music visualizer on wgpu, with C library (binary release)
 	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/M0Rf30/lactea
