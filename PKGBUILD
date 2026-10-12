@@ -10,7 +10,7 @@ url="https://github.com/M0Rf30/lactea"
 license=('MIT OR Apache-2.0')
 depends=(
   alsa-lib
-  gcc-libs
+  libgcc
   glibc
   hicolor-icon-theme
   libpipewire
@@ -22,7 +22,7 @@ optdepends=(
   'projectm-presets-m0rf30-git: preset collection'
   'pipewire-pulse: capture of the default sink monitor ("what you hear")'
 )
-provides=("${_pkgname}" "lib${_pkgname}_capi.so")
+provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!strip !debug)
 source=("${_pkgname}-${pkgver}-LICENSE-MIT::https://raw.githubusercontent.com/M0Rf30/lactea/v${pkgver}/LICENSE-MIT"
@@ -42,7 +42,6 @@ package() {
   install -Dm644 "${_pkgname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
 
   install -Dm755 "lib/lib${_pkgname}_capi.so" "${pkgdir}/usr/lib/lib${_pkgname}_capi.so"
-  install -Dm644 "lib/lib${_pkgname}_capi.a" "${pkgdir}/usr/lib/lib${_pkgname}_capi.a"
   install -Dm644 "include/${_pkgname}.h" "${pkgdir}/usr/include/${_pkgname}.h"
   install -Dm644 examples/*.c -t "${pkgdir}/usr/share/doc/${pkgname}/examples"
 
