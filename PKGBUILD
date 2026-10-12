@@ -1,8 +1,8 @@
 #Maintainer: chrhasse <hasse.christopher at gmail dot com>
 _pkgname=deadlock-api-ingest
 pkgname="${_pkgname}-git"
-pkgver=0.2.9.e3e69d0
-pkgrel=1
+pkgver=0.4.2
+pkgrel=2
 pkgdesc="Client for uploading match data to deadlock-api"
 arch=('x86_64')
 url="https://github.com/deadlock-api/deadlock-api-ingest"
@@ -32,6 +32,7 @@ build() {
   CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export AWS_LC_SYS_NO_JITTER_ENTROPY=1
   cargo build --frozen --release
 }
 

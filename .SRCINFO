@@ -1,7 +1,7 @@
 pkgbase = deadlock-api-ingest-git
 	pkgdesc = Client for uploading match data to deadlock-api
-	pkgver = 0.2.9.e3e69d0
-	pkgrel = 1
+	pkgver = 0.4.2
+	pkgrel = 2
 	url = https://github.com/deadlock-api/deadlock-api-ingest
 	arch = x86_64
 	license = MIT
