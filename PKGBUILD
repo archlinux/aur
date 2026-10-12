@@ -13,7 +13,7 @@ epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
 arch=('x86_64')
 url='https://www.mumble.info'
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('glibc' 'libgcc' 'libstdc++' 'qt6-base')
 makedepends=('alsa-lib' 'avahi' 'boost' 'cli11' 'cmake' 'git' 'hicolor-icon-theme'
              'jack' 'lib32-gcc-libs' 'libpulse' 'libsndfile' 'libspeechd'
