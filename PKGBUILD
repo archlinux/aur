@@ -4,7 +4,7 @@ pkgname=gnome-shell-extension-logo-menu
 pkgver=25.2
 _pkgname=Logomenu
 _tag="280926"
-pkgrel=1
+pkgrel=2
 pkgdesc='Quick access menu for the GNOME panel that help ease the workflow for newcomers and power users alike.'
 arch=('any')
 url="https://github.com/Aryan20/Logomenu"
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('gnome-shell')
 makedepends=('unzip')
 source=("${url}/archive/refs/tags/v${pkgver}_${_tag}.tar.gz")
-sha256sums=('33191c4fdccccd6616bb7e37ccee0a12c89df7bdd1492a0afc04e2ddfb54a69b')
+sha256sums=('7897b12ebf32c2d323e20430589b08136e61138b096c38b7208cdc31efbab592')
 
 build() {
     cd "${_pkgname}-${pkgver}_${_tag}"

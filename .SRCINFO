@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-logo-menu
 	pkgdesc = Quick access menu for the GNOME panel that help ease the workflow for newcomers and power users alike.
 	pkgver = 25.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aryan20/Logomenu
 	arch = any
 	license = GPL2
 	makedepends = unzip
 	depends = gnome-shell
 	source = https://github.com/Aryan20/Logomenu/archive/refs/tags/v25.2_280926.tar.gz
-	sha256sums = 33191c4fdccccd6616bb7e37ccee0a12c89df7bdd1492a0afc04e2ddfb54a69b
+	sha256sums = 7897b12ebf32c2d323e20430589b08136e61138b096c38b7208cdc31efbab592
 
 pkgname = gnome-shell-extension-logo-menu
