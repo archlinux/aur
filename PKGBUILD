@@ -1,6 +1,6 @@
 pkgname=mbelib-neo
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.4.1
+pkgrel=1
 pkgdesc="P25 Phase 1 and ProVoice IMBE and Half-rate AMBE vocoder library (modernized fork)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/arancormonk/mbelib-neo"
@@ -10,7 +10,7 @@ makedepends=('cmake')
 conflicts=('mbelib-neo-git')
 options=('staticlibs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('55eba4021f3cf8203bb60e6141d1a78030032a5c480acc95ba5e915bd1aee76a')
+sha256sums=('e402e1c1292c8faabd9311ee2839e9d9065b521ae6ae9e5a2c015914488e037a')
 
 # BEGIN pinned PFFFT (tools/update_aur_pffft.py)
 _pffft_sha=f5ecc890d185eb33507b79d2e96f5310f9062d7f
