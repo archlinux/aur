@@ -17,8 +17,8 @@
 # (bedrock, voice, fal, …) needs a rebuild with more --extra flags or a
 # writable install — `sudo` + re-packaging, not runtime lazy install.
 pkgname=hermes-agent
-pkgver=0.21.6
-pkgrel=3
+pkgver=0.21.7
+pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
 url="https://github.com/NousResearch/hermes-agent"
@@ -41,7 +41,7 @@ optdepends=(
 # CMAKE_POLICY_VERSION_MINIMUM is raised (set in build()).
 makedepends=('npm' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1ba3500cdbe876bb9d347b3c12f41c591a421293eac58faba23571287dfe1cf8')
+sha256sums=('fcf5fc29d3088764a5a293910f75f43dc736b5655ed410d7339cf94cc1462459')
 
 build() {
   cd "${pkgname}-${pkgver}"
