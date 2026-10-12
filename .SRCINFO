@@ -31,6 +31,7 @@ pkgbase = mayaflux-dev-bin
 	depends = dbus
 	depends = ffmpeg
 	depends = assimp
+	depends = alembic
 	depends = stb
 	depends = hidapi
 	depends = asio

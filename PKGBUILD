@@ -31,6 +31,7 @@ depends=(
     'dbus'
     'ffmpeg'
     'assimp'
+    'alembic'
     'stb'
     'hidapi'
     'asio'
