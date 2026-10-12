@@ -1,6 +1,6 @@
 # Maintainer: Hein (Warky Devs) <hein@warky.dev>
 pkgname=unitdore
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc="A door you open and close for container units — manage containers via systemd"
 arch=('x86_64' 'aarch64')
@@ -12,11 +12,11 @@ optdepends=(
     'docker: Docker container runtime support'
 )
 makedepends=('go')
-source=("$pkgname-$pkgver.zip::$url/archive/v$pkgver.zip")
-sha256sums=('0325461263c9df57688292e465abdfa5be6d4991db8f2e9e478c96238971fd1d')
+source=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/$pkgname-v$pkgver-source.zip")
+sha256sums=('086b8b2ae2363c5666049845b113bf5824fed7c7cc87f36e8f2e94d21dba6b20')
 
 build() {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
     export CGO_ENABLED=0
     go build \
         -trimpath \
@@ -25,12 +25,12 @@ build() {
 }
 
 check() {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
     go test ./...
 }
 
 package() {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
 
     # Binary
     install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
