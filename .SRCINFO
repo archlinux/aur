@@ -1,15 +1,15 @@
 pkgbase = lettura-bin
 	pkgdesc = Another free and open-source feed reader designed to deliver an exceptional reading experience across multiple platforms.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://zhanglun.github.io/lettura/
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	provides = lettura=0.2.0
+	provides = lettura=0.2.1
 	conflicts = lettura
-	source = lettura-0.2.0.rpm::https://github.com/zhanglun/lettura/releases/download/v0.2.0/Lettura-0.2.0-1.x86_64.rpm
-	sha256sums = 73cdebbd3804aa2df5393a0c207048f669ef7d4373a9b9210c6092774541a6f5
+	source = lettura-0.2.1.rpm::https://github.com/zhanglun/lettura/releases/download/v0.2.1/Lettura-0.2.1-1.x86_64.rpm
+	sha256sums = bca540d265d0d2335402a5fdf15bf9c35de330d564662db60418a00f4905a94b
 
 pkgname = lettura-bin

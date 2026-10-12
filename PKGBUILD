@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lettura-bin
 _pkgname=Lettura
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Another free and open-source feed reader designed to deliver an exceptional reading experience across multiple platforms."
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('73cdebbd3804aa2df5393a0c207048f669ef7d4373a9b9210c6092774541a6f5')
+sha256sums=('bca540d265d0d2335402a5fdf15bf9c35de330d564662db60418a00f4905a94b')
 prepare() {
     mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
 }
