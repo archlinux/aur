@@ -3,7 +3,7 @@
 # Contributor: ELmoussaoui Bilal <bil dot elmoussaoui at gmail dot com>
 
 pkgname=dippi
-pkgver=5.0.2
+pkgver=5.0.4
 pkgrel=1
 pkgdesc='Calculate display info like DPI and aspect ratio'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ makedepends=(
 )
 options=('!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cassidyjames/${pkgname}/archive/${pkgver}.tar.gz")
-b2sums=('f52bd71792dd06f01db514c9988066441ed3d62e77fc8b04d684c90fe76979ede8c76d7107ac40596804c9b55d1f96410b701770747c585a17a46d83f3200d34')
+b2sums=('a08a6902ffef581115ab5685c4940b13adfa27faecd221fe5fe7a2ad8c552dd284363affc50985e934e5637fa7df618ed6ea2d320e32676c825245c0cb6b0352')
 
 build() {
   arch-meson "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/build"
