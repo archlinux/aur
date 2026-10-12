@@ -1,0 +1,33 @@
+pkgbase = pi-desktop-git
+	pkgdesc = Local-first AI coding agent desktop: Electron + Rust host core + pi Agent Harness + user-installable plugins (git, system Electron)
+	pkgver = 0.18.0beta.6.r93.g0744809
+	pkgrel = 1
+	url = https://github.com/vastsa/PI-Desktop
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = nodejs>=22.19.0
+	makedepends = pnpm
+	depends = electron43
+	depends = fd
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libsecret
+	depends = libstdc++
+	depends = ripgrep
+	depends = sqlite
+	depends = vulkan-icd-loader
+	provides = pi-desktop
+	conflicts = pi-desktop
+	options = !debug
+	source = pi-desktop::git+https://github.com/vastsa/PI-Desktop.git
+	source = pi-desktop.sh
+	source = pi-desktop.desktop
+	sha256sums = SKIP
+	sha256sums = 3ae321af6566026cc7abdf2704775f4ed3df44434c4fd6fe5f1a6bb58be59fd7
+	sha256sums = 8f4f8e5a7ba4a42e7a7391580f5c5bf734bab7aa8d4538b738b350147d44384e
+
+pkgname = pi-desktop-git

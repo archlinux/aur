@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PI-Desktop
+Comment=Local-first AI coding agent desktop
+Exec=pi-desktop %U
+Terminal=false
+Type=Application
+Icon=pi-desktop
+StartupWMClass=pi-desktop
+Categories=Development;
