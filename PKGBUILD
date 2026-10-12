@@ -1,7 +1,7 @@
 # Maintainer: Radu Potop <radu@wooptoo.com>
 
-_pkgbasename=django-axes
 pkgname=python-django-axes
+_name=${pkgname#python-}
 pkgver=8.3.2
 pkgrel=1
 pkgdesc='Keep track of failed login attempts in Django-powered sites'
@@ -11,15 +11,14 @@ license=("MIT")
 depends=("python" "python-django")
 makedepends=("python-build" "python-installer")
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('40c697a86020f866e5086f41142cd9fb6effadd78faa4389468ebfcc9150ed2c')
 
 build() {
-    cd "$_pkgbasename-$pkgver"
+    cd "$_name-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$_pkgbasename-$pkgver"
+    cd "$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
-sha256sums=('40c697a86020f866e5086f41142cd9fb6effadd78faa4389468ebfcc9150ed2c')
