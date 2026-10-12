@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/hint/bash -e
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 # Contributor: PastLeo <chgu82837@gmail.com>
