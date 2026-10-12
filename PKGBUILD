@@ -1,6 +1,6 @@
 # Maintainer: Bolt J Woofson <bolt@boop.no>
 pkgname=brum
-pkgver=1.8.7
+pkgver=1.8.8
 pkgrel=1
 pkgdesc="Multi-Pane Web Environment (File Commander/Manager) - By Woofson"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc' 'sqlite' 'libssh2' 'openssl' 'ca-certificates' 'gtk3' 'webkit2g
 makedepends=('cargo' 'rust' 'pkgconf' 'gtk3' 'webkit2gtk-4.1')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c6b45eada7649bfb222953b8120c44093781a608b2fec5b7b5eb59aff5f470f3')
+sha256sums=('273e3a7a005a2647be4ad119d784b7b22473f254a2ca3b906f912a32e4e1ca63')
 
 prepare() {
     cd "$pkgname-$pkgver"
