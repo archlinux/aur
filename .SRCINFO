@@ -7,7 +7,6 @@ pkgbase = wireview-linux
 	license = custom
 	makedepends = dotnet-sdk
 	makedepends = git
-	makedepends = imagemagick
 	depends = glibc
 	depends = gcc-libs
 	depends = zlib

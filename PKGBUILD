@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/emaspa/wireview-linux"
 license=('custom')
 depends=('glibc' 'gcc-libs' 'zlib' 'fontconfig' 'freetype2' 'libx11' 'dfu-util')
-makedepends=('dotnet-sdk' 'git' 'imagemagick')
+makedepends=('dotnet-sdk' 'git')
 options=('!strip')
 source=(
   "git+$url.git#tag=v$pkgver"
@@ -47,12 +47,16 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/WireView2" "$pkgdir/usr/bin/$pkgname"
   
-  # Install udev rules for device permissions (grants plugdev/dialout access to the device)
-  install -Dm644 udev/99-wireview.rules -t "$pkgdir/usr/lib/udev/rules.d/"
+  # udev rule (USB serial access). Arch has no dialout group, its serial group
+  # is uucp. The serial port gets uucp from Arch's default rules; the DFU
+  # bootloader line names dialout, which udev would drop with a log message.
+  # The grep fails the build if a future rule stops matching the substitution.
+  install -Dm644 udev/99-wireview.rules "$pkgdir/usr/lib/udev/rules.d/99-wireview.rules"
+  sed -i 's/GROUP="dialout"/GROUP="uucp"/g' "$pkgdir/usr/lib/udev/rules.d/99-wireview.rules"
+  grep -q 'GROUP="uucp"' "$pkgdir/usr/lib/udev/rules.d/99-wireview.rules"
   
-  # Convert the .ico to .png using ImageMagick (extracting the first/highest quality frame [0])
-  install -d "$pkgdir/usr/share/pixmaps"
-  magick WireView2/Assets/Icons/bear.ico[0] "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  # Install the 128x128 icon shipped by upstream for the AUR
+  install -Dm644 aur/wireview-linux.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
   
   # Install the desktop file from the source array
   install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
