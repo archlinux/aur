@@ -17,6 +17,12 @@ provides=(innex)
 source=("git+${url}")
 b2sums=('SKIP')
 
+prepare(){
+  cd inno-$pkgver/core
+  cargo remove flate2
+  cargo add flate2 --no-default-features --features zlib-rs
+}
+
 build(){
   cd inno
   cargo build --release
