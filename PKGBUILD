@@ -2,7 +2,7 @@
 pkgname=mootool-next-bin
 _pkgname=MooTool-Next-Electron
 _debname=com.rememberber.mootool.next.electron
-pkgver=1.3.1
+pkgver=1.3.2
 _electronversion=43
 pkgrel=1
 pkgdesc="Handy tool set for developers."
@@ -24,7 +24,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/rememberber/MooTool/next-electron-v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('bc1e71639b596ef4b646965418e6a6e8d44d3681659217ae3e000bd61bdd9fa8'
+sha256sums=('dd5fdb8c3563610dd247dd67913370f0403b3d4d7b4a31e5467b051d5c08018e'
             '91930d61ff6e2bd3ceaf0ac0de4431d4ede9a9a940ca327367820df54762e333'
             'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
 _get_app_dir() {
