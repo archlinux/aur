@@ -1,0 +1,36 @@
+pkgbase = gmpublished-bin
+	pkgdesc = Native Workshop publishing and addon inspection utility for Garry's Mod
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/charles-mills/gmpublished
+	arch = x86_64
+	license = GPL-3.0-only
+	license = LicenseRef-Steamworks-SDK
+	checkdepends = desktop-file-utils
+	depends = alsa-lib
+	depends = dbus
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libx11
+	depends = libxcb
+	depends = libxcursor
+	depends = libxi
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = vulkan-icd-loader
+	depends = wayland
+	optdepends = steam: Workshop publishing and Garry's Mod detection; must be running and signed in
+	optdepends = vulkan-driver: hardware-accelerated rendering; falls back to the OpenGL backend without one
+	optdepends = xdg-desktop-portal: required for open/save dialogs, with a backend such as xdg-desktop-portal-gtk
+	optdepends = xdg-utils: open files and folders in the file manager
+	provides = gmpublished=0.2.5
+	conflicts = gmpublished
+	options = !strip
+	options = !debug
+	source = gmpublished-0.2.5-x86_64-linux.zip::https://github.com/charles-mills/gmpublished/releases/download/v0.2.5/gmpublished-0.2.5-x86_64-linux.zip
+	sha256sums = b7178234f4dc5436e304f84a77fdf540d64123348f1eaf5f7ec293c7fc4376d4
+
+pkgname = gmpublished-bin
