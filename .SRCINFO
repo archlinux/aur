@@ -1,12 +1,13 @@
 pkgbase = bibata-material-cursor-theme-bin
 	pkgdesc = Bibata cursor themes using Material Design 3's tonal color system
 	pkgver = 1.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SakibShahariar/material-bibata-cursor
 	arch = any
 	license = MIT
 	depends = adwaita-cursors
 	provides = bibata-material-cursor-theme
+	provides = bibata-cursor-theme
 	conflicts = bibata-material-cursor-theme
 	options = !strip
 	source = https://github.com/SakibShahariar/material-bibata-cursor/releases/download/v1.5.0/bibata-material-dark-v1.5.0.tar.gz
