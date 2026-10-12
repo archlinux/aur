@@ -22,7 +22,6 @@ depends=(
 )
 optdepends=(
   'vulkan-icd-loader: GPU accelerated rendering'
-  'projectm: visualizer presets'
   'ffmpeg: lossy audio conversion'
 )
 provides=("${_pkgname}")

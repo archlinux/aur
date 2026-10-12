@@ -16,7 +16,6 @@ pkgbase = aulos-bin
 	depends = libxkbcommon
 	depends = wayland
 	optdepends = vulkan-icd-loader: GPU accelerated rendering
-	optdepends = projectm: visualizer presets
 	optdepends = ffmpeg: lossy audio conversion
 	provides = aulos
 	conflicts = aulos
