@@ -1,6 +1,6 @@
 # Maintainer: loteran <https://github.com/loteran>
 pkgname=arctis-sound-manager
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Linux GUI for SteelSeries Arctis headsets — all GG/Sonar features: mixer, EQ, ANC, mic processing, surround"
 arch=('any')
@@ -72,10 +72,10 @@ optdepends=(
     'gst-plugin-va: hardware H.264 encoding on Intel/AMD GPUs'
     'gst-plugins-bad: hardware H.264 encoding on NVIDIA GPUs (nvcodec)'
 )
-makedepends=('python-installer' 'uv')
+makedepends=('python-installer' 'uv' 'python-ruamel-yaml')
 install=arctis-sound-manager.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('bc51d3ce486d5d4a1efb850de723469ab70d8762b9b9e8c20225de4f124fe5c8')
+sha256sums=('7cc1bda428f09717490301e2ef125e3a418912b82b262c4cde0136c5fc564f00')
 
 build() {
     cd "Arctis-Sound-Manager-$pkgver"
@@ -99,11 +99,23 @@ package() {
     # udev rules (generated from device YAMLs — never hardcode PIDs here).
     # Run with the system python3 directly (no uv/venv involved): the script
     # only needs the stdlib plus the local arctis_sound_manager.udev_rules
-    # module and inserts src/ onto sys.path itself when run from the repo.
-    python3 scripts/generate_udev_rules.py \
-        | install -Dm644 /dev/stdin "$pkgdir/usr/lib/udev/rules.d/91-steelseries-arctis.rules"
-    python3 scripts/generate_udev_rules.py --uaccess \
-        | install -Dm644 /dev/stdin "$pkgdir/usr/lib/udev/rules.d/70-steelseries-arctis-uaccess.rules"
+    # module (which needs python-ruamel-yaml) and inserts src/ onto sys.path
+    # itself when run from the repo.
+    #
+    # Written to a file first, never piped into install: in a pipeline the
+    # status is install's, so a generator that crashed (ruamel missing from
+    # the CI container, built with makepkg -d) shipped both files EMPTY in
+    # 1.6.0 and the build still passed (#217). The -s test catches an
+    # empty result however it comes about.
+    mkdir -p build/udev
+    python3 scripts/generate_udev_rules.py > build/udev/91-steelseries-arctis.rules
+    python3 scripts/generate_udev_rules.py --uaccess > build/udev/70-steelseries-arctis-uaccess.rules
+    [ -s build/udev/91-steelseries-arctis.rules ]
+    [ -s build/udev/70-steelseries-arctis-uaccess.rules ]
+    install -Dm644 build/udev/91-steelseries-arctis.rules \
+        "$pkgdir/usr/lib/udev/rules.d/91-steelseries-arctis.rules"
+    install -Dm644 build/udev/70-steelseries-arctis-uaccess.rules \
+        "$pkgdir/usr/lib/udev/rules.d/70-steelseries-arctis-uaccess.rules"
 
     # Desktop entry
     install -Dm644 src/arctis_sound_manager/desktop/ArctisManager.desktop \
