@@ -1,7 +1,7 @@
 pkgbase = vcvrack-cella
 	pkgdesc = Cella VCV Rack modules
 	pkgver = 2.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/victorkashirin/CellaVCV
 	arch = aarch64
 	arch = x86_64
