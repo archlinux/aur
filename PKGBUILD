@@ -17,5 +17,5 @@ package(){
 	depends=('cairo' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libsm' 'libusb' 'libx11' 'openssl-1.1' 'pango' 'pcsclite' 'zlib')
 	optdepends=('ccid' 'pcsc-tools')
 	# Extract package data
-	tar --zstd -xf data.tar.xz -C "${pkgdir}"
+	tar --zstd -xf data.tar.zst -C "${pkgdir}"
 }
