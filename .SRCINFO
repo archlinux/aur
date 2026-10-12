@@ -1,6 +1,6 @@
 pkgbase = jumpapp-ng
-	pkgdesc = A run-or-raise application switcher for any X11 desktop
-	pkgver = 1.2.2
+	pkgdesc = A run-or-raise application switcher for X11 and Wayland (labwc)
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/musqz/jumpapp
 	arch = any
@@ -9,10 +9,12 @@ pkgbase = jumpapp-ng
 	depends = wmctrl
 	depends = xdotool
 	depends = xorg-xprop
+	optdepends = wlrctl: Wayland (labwc) support
+	optdepends = lswt: Wayland (labwc) support
 	provides = jumpapp
 	conflicts = jumpapp
 	conflicts = jumpapp-git
-	source = jumpapp-ng-1.2.2.tar.gz::https://github.com/musqz/jumpapp/archive/refs/tags/v1.2.2.tar.gz
-	sha256sums = f2eb56a203f00f2536be533355797ec1cc4ff964888c3d4aad450e10ee983107
+	source = jumpapp-ng-1.3.0.tar.gz::https://github.com/musqz/jumpapp/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = e16269f1a81eb6fbb4ea331842d385df15718ea2b8366d5f79a45964cc0ea2c5
 
 pkgname = jumpapp-ng
