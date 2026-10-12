@@ -1,0 +1,5 @@
+[casparcg-server]
+source = "github"
+github = "CasparCG/server"
+use_max_release = true
+prefix = "v"
