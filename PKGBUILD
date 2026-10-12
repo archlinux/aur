@@ -2,9 +2,9 @@
 
 _pkgname=sing-box
 pkgname="$_pkgname"-ref1nd-bin
-_pkgver_stable=1.14.2-reF1nd # renovate: datasource=github-releases depName=reF1nd/sing-box-releases
+_pkgver_stable=1.14.3-reF1nd # renovate: datasource=github-releases depName=reF1nd/sing-box-releases
 pkgver="${_pkgver_stable//-/\.}"
-pkgrel=2
+pkgrel=1
 
 pkgdesc='The universal proxy platform.'
 arch=('x86_64' 'aarch64')
@@ -31,8 +31,8 @@ sha256sums=('4da8152e6cc1b50b1eaa4ff5606510aeb6d3f6a6a5c91614d4b2c0ea9a2b1bde'
             '0b8740010bb3b2a5b65f1cc444b00127372d015f70f272ed566606949ed2b91b'
             'ebdab3b912603c44b4d76640c5db5c4bc0ca04213d7f34ccaa5e789ba40b426f'
             '0d0631619b6f680b9a80b9a8f65c7a30f2565e80279182f63c77854051c5d473')
-sha256sums_x86_64=('b9c3d2b3c64197456fb4bdf797329c10b9211f23359fcaf18137b6495a2b4479')
-sha256sums_aarch64=('6bc7eca7bd4d9e27eed0efcab1f963a79ba93f80f8c1a8fcd34d4d5caafa41e7')
+sha256sums_x86_64=('11f7d2b933057e76c82f5ecc7954efaa6d2db04081fa3cd52fcb53950419e6ad')
+sha256sums_aarch64=('b1020af33a00088fc57b765eb28de9130e064f4934474cc7761d7c8d8631c2c5')
 
 backup=("etc/$_pkgname/config.json")
 
