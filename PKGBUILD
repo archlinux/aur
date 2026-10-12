@@ -1,7 +1,7 @@
 # Maintainer: Ben Davison <benjdavison02@gmail.com>
 pkgname=linux-system-guis
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An educational, transparent, and safe desktop GUI suite for low-level Linux administration"
 arch=('any')
 url="https://github.com/BenBJD/linux-system-guis"

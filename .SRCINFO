@@ -1,7 +1,7 @@
 pkgbase = linux-system-guis
 	pkgdesc = An educational, transparent, and safe desktop GUI suite for low-level Linux administration
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BenBJD/linux-system-guis
 	arch = any
 	license = MIT
