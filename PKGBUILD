@@ -1,7 +1,7 @@
 # Maintainer: Agil Mammadov <mammadovagil@proton.me>
 pkgname=cpak-bin
 pkgver=2.14.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, decentralized, portable, powerful and low-memory footprint package format for Linux."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Containerpak/cpak"
@@ -57,8 +57,9 @@ package() {
   install -Dm755 "${srcdir}/cpak-${pkgver}-linux-${_suffix}" \
     "${pkgdir}/usr/bin/cpak"
 
+  # Upstream discovers the storage service beside cpak or on PATH.
   install -Dm755 "${srcdir}/cpak-${pkgver}-storaged-linux-${_suffix}" \
-    "${pkgdir}/usr/lib/cpak/cpak-storaged"
+    "${pkgdir}/usr/bin/cpak-storaged"
 
   chmod +x "${srcdir}/cpak-${pkgver}-linux-${_suffix}"
   "${srcdir}/cpak-${pkgver}-linux-${_suffix}" completion bash > cpak.bash

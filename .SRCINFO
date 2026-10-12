@@ -1,7 +1,7 @@
 pkgbase = cpak-bin
 	pkgdesc = A fast, decentralized, portable, powerful and low-memory footprint package format for Linux.
 	pkgver = 2.14.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Containerpak/cpak
 	arch = x86_64
 	arch = aarch64
