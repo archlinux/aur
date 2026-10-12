@@ -1,23 +1,25 @@
-_pipname=django-axes
+# Maintainer: Radu Potop <radu@wooptoo.com>
+
+_pkgbasename=django-axes
 pkgname=python-django-axes
-pkgver=6.3.0
-pkgrel=1
-pkgdesc='Keep track of failed login attempts in Django-powered sites.'
+pkgver=5.40.1
+pkgrel=2
+pkgdesc='Keep track of failed login attempts in Django-powered sites'
 arch=(any)
-url='https://pypi.org/project/django-axes'
-license=(MIT)
-depends=(python-django)
-makedepends=(python-setuptools-scm)
-source=("https://pypi.io/packages/source/d/django-axes/django-axes-${pkgver}.tar.gz")
-sha256sums=('8e415193d7881a3e517734a5ebfde92a0b00a919a0777cbae52c7f0246b30ad1')
+url="https://github.com/jazzband/django-axes"
+license=("MIT")
+depends=("python" "python-django")
+makedepends=("python-build" "python-installer")
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
 
 build() {
-  cd "$srcdir/${_pipname}-${pkgver}"
-  python setup.py build
+    cd "$_pkgbasename-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/${_pipname}-${pkgver}/"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$_pkgbasename-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
+
+sha256sums=('cc00b8acc81a3967ef129d2e0987042d0f25e1aa056ae11e91168126d38b3d53')
