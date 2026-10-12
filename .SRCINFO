@@ -1,13 +1,13 @@
 pkgbase = work-break
 	pkgdesc = Work and rest time balancer taking into account your current and today strain
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/ShadoySV/work-break
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = dbus
-	source = work-break-0.7.2.tar.gz::https://static.crates.io/crates/work-break/work-break-0.7.2.crate
-	sha256sums = 0723d2ed85caed0b8155c41f152d640be0aa6aa0e2b9bedd791403b6885e35bb
+	source = work-break-0.7.3.tar.gz::https://static.crates.io/crates/work-break/work-break-0.7.3.crate
+	sha256sums = bcc7ed659fc0032a80a99a28b0ca2cad2f3edbe7fbbb4612a4ce2938d16fe5bd
 
 pkgname = work-break
