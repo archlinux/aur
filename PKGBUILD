@@ -1,7 +1,7 @@
 # Maintainer: Snoopey <thomas@wrightconsulting.uk>
 pkgname=omnigent-cli
 pkgver=0.17.0
-pkgrel=12
+pkgrel=13
 pkgdesc='Omnigent CLI, server, and agent host with isolated Python dependencies'
 arch=('x86_64')
 url='https://github.com/omnigent-ai/omnigent'
@@ -34,7 +34,7 @@ source=(omnigent-0.17.0.tar.gz::https://files.pythonhosted.org/packages/21/ba/2b
         cryptography-50.0.2-cp311-abi3-manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/1a/f1/b474e930c4d910328780e3940da76f5aa5cbc48ce1fc14e44d239d9ea9db/cryptography-50.0.2-cp311-abi3-manylinux_2_28_x86_64.whl
         distro-1.9.0-py3-none-any.whl::https://files.pythonhosted.org/packages/12/b3/231ffd4ab1fc9d679809f356cebee130ac7daa00d6d6f3206dd4fd137e9e/distro-1.9.0-py3-none-any.whl
         fastapi-0.142.2-py3-none-any.whl::https://files.pythonhosted.org/packages/a0/b6/78aaf9141fb46742928c113f3cf6ef2259d538cb02b604b7656c1dc9883c/fastapi-0.142.2-py3-none-any.whl
-        filelock-4.0.11-py3-none-any.whl::https://files.pythonhosted.org/packages/4a/4d/2983a9fc0a412a09151299d1ec9eb7511e3d577f7213e19395fabebf9db6/filelock-4.0.11-py3-none-any.whl
+        filelock-4.0.12-py3-none-any.whl::https://files.pythonhosted.org/packages/da/a1/b047e1c486a2c66283633b7dbb73872ca16ca1ce6a426f70d4d037fc8e1c/filelock-4.0.12-py3-none-any.whl
         ftfy-6.3.1-py3-none-any.whl::https://files.pythonhosted.org/packages/ab/6e/81d47999aebc1b155f81eca4477a616a70f238a2549848c38983f3c22a82/ftfy-6.3.1-py3-none-any.whl
         google_re2-1.1.20251105-1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/03/be/a8def96aa4a80b233e105767d22e3de961dcde5a04f0a05cb4f3ddb4df78/google_re2-1.1.20251105-1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
         griffelib-2.3.0-py3-none-any.whl::https://files.pythonhosted.org/packages/41/63/e876e789525063c840ccfa8857febdabd6523bcef9ce7eb979b9305ea895/griffelib-2.3.0-py3-none-any.whl
@@ -133,7 +133,7 @@ sha256sums=(20bc4039f4f3d6f59e3179b3a1692ce3ea8c7be36619a437748bf2a06bfa4147
             4061c0079120205fb760c58acab6443e217307dcf05e3702cf970e0689972856
             7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2
             bd5f4d81f1e93a88bcd77caf4dfe3c2dbffc3805407a0007e9a114c18b3a670b
-            1cbdc4ace7fb11d2f6d073f5c3d91537a23b3d58d2bf2fdffc12c6d717a589c6
+            5f17ee83ecee8a6f3e389c75822fb70a1c2f0506b99438a6dffa1d56793588c8
             7c70eb532015cd2f9adb53f101fb6c7945988d023a085d127d1573dc49dd0083
             a7bfaa2cf55daf0c5c650e68526bb20b61e37d7f3ae53f6893013acc1c91c116
             1b8f9cd525681c26b1d6d574faa1371651e8459ca51d209684f50b8096ae06e0
@@ -208,7 +208,7 @@ sha256sums=(20bc4039f4f3d6f59e3179b3a1692ce3ea8c7be36619a437748bf2a06bfa4147
             7a6ceec4ea84469f15cf15807a747e9efe57e369c384fa86e022b3bea679b79b
             e09bb6252b6476d8d56100e8147b803befa9a12cea144bbe629dd508800d1ad0
             aac80bec8b6fe35e8480f1c335be8910fa210a0e6f735a139be205dadcacb544
-            d72b3b636c75906daeec21c8b3e4612937e6c0971822c015a6450f87818255b1
+            edb5145e1fe5558ee0fae24ea053b55a5f0886df6c665a246bfb25515f9866ea
             a0bd60054eae7ce2f8fedb9c295d8137f269fedbf08220a54dde1a0d09f0e9a4
             edd22b3947e18e681e397590651edf2551024be4d53bea5fa55efc428a2acb07
             e9e49acfc1599bb114332a40479d99275e3668b34bd66a6ae2143ba93ec76315)
@@ -229,7 +229,7 @@ noextract=(alembic-1.20.0-py3-none-any.whl
            cryptography-50.0.2-cp311-abi3-manylinux_2_28_x86_64.whl
            distro-1.9.0-py3-none-any.whl
            fastapi-0.142.2-py3-none-any.whl
-           filelock-4.0.11-py3-none-any.whl
+           filelock-4.0.12-py3-none-any.whl
            ftfy-6.3.1-py3-none-any.whl
            google_re2-1.1.20251105-1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
            griffelib-2.3.0-py3-none-any.whl
