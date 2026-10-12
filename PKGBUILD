@@ -1,7 +1,7 @@
 # Maintainer: Cristian Burneci <cburneci at gmail dot com>
 
 pkgname=tv-lite
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="IPTV player with Sopcast and Acestream handling capabilities.  It wants to be a replacement for the older TV-Maxe"
 arch=('i686' 'x86_64')
@@ -20,8 +20,7 @@ install=
 changelog=
 source=(https://gitlab.com/cburneci/tv-lite/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('86fdd6717262ed8e731fa62231607d5f') #generate with 'makepkg -g'
-
+md5sums=('ae1fc0c6195ab03f9f3d18c0798dcc78') #generate with 'makepkg -g'
 build() {
   cd "$srcdir/$pkgname-$pkgver/src"
   mkdir -p build
@@ -34,11 +33,10 @@ build() {
     wxcfg="wx-config"
   fi    
   cmake -DWX_CONFIG=$wxcfg -DCMAKE_POLICY_VERSION_MINIMUM=3.12 ..
-  make
+  make -j$(nproc)
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/src/build"
-
   make DESTDIR="$pkgdir/" install
 }
