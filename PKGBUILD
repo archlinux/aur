@@ -1,6 +1,6 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=wireview-linux-bin
-pkgver=1.3.1.0
+pkgver=1.3.1.1
 pkgrel=1
 pkgdesc="Unofficial Linux GUI for the Thermal Grizzly WireView Pro II (prebuilt binary)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/releases/download/v$pkgver/wireview-linux-$pkgver-linux-x64.tar.gz"
         "wireview-linux.desktop"
         "wireview-linux.png")
-sha256sums=('de4dcc465e46a0a3ac247867e1879eeb3dcf16c4843eaa5fc87a44b4d4c7cfb1'
+sha256sums=('306b9828c55d48254cd9a0ec4eee1a838d271d1b5ab647a999ebd74de853b218'
             '57c8565769d8ef620411bb40b2e59e82272eecd71802d5e8fd3f995591df6008'
             '5bdcde4399af5bd57824af8dcacdd05c6421eddbb18993210ddab805ef1aaff3')
 
@@ -29,8 +29,9 @@ package() {
   ln -s /usr/lib/wireview-linux/WireView2 "$pkgdir/usr/bin/wireview-linux"
 
   # udev rule (USB serial access). Arch has no dialout group, its serial group
-  # is uucp, and udev drops a rule line whose GROUP it cannot resolve. The grep
-  # fails the build if a future rule stops matching the substitution.
+  # is uucp. The serial port gets uucp from Arch's default rules; the DFU
+  # bootloader line names dialout, which udev would drop with a log message.
+  # The grep fails the build if a future rule stops matching the substitution.
   install -Dm644 "$src/99-wireview.rules" "$pkgdir/usr/lib/udev/rules.d/99-wireview.rules"
   sed -i 's/GROUP="dialout"/GROUP="uucp"/g' "$pkgdir/usr/lib/udev/rules.d/99-wireview.rules"
   grep -q 'GROUP="uucp"' "$pkgdir/usr/lib/udev/rules.d/99-wireview.rules"
