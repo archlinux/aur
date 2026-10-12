@@ -1,6 +1,6 @@
 pkgname=passkeyd
 pkgver=1.9.3
-pkgrel=0
+pkgrel=1
 pkgdesc="A WebAuthn authenticator"
 arch=('x86_64')
 license=('GPL3')
@@ -9,7 +9,7 @@ conflicts=("openrc" "runit")
 makedepends=()
 url="https://github.com/bjn7/passkeyd"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bjn7/passkeyd/releases/download/v$pkgver/passkeyd-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('54a298578b4d19df2a6c49e674320b31e173045082084be827cd6d181e9fda5b')
+sha256sums=('180f85f7a2343a8e7252d8174564bb10c0ed5d813880bf1b09da448b1f9fcd5c')
 options=('!debug')
 backup=('etc/passkeyd.conf' 'usr/share/passkeyd/theme.conf')
 install=passkeyd.install
