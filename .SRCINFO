@@ -1,0 +1,17 @@
+pkgbase = whyd-bin
+	pkgdesc = Find out why your Linux PC froze, crashed or shut down
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/vmaltarello/whyd
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	provides = whyd
+	conflicts = whyd
+	options = !strip
+	source_x86_64 = whyd-x86_64-0.1.1.tgz::https://github.com/vmaltarello/whyd/releases/download/v0.1.1/whyd_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1f59a12bfce2f0fa92f781086dbd022ab0bbb17ba62e87455724339030e92de1
+	source_aarch64 = whyd-aarch64-0.1.1.tgz::https://github.com/vmaltarello/whyd/releases/download/v0.1.1/whyd_linux_arm64.tar.gz
+	sha256sums_aarch64 = 19f487bd40b2c057b5438cec3bc4d2497acf7080f79d202c82b959429f2460f8
+
+pkgname = whyd-bin

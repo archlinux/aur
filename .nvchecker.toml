@@ -1,0 +1,5 @@
+[whyd-bin]
+source = "github"
+github = "vmaltarello/whyd"
+use_latest_release = true
+prefix = "v"
