@@ -1,12 +1,12 @@
 pkgbase = kaze
 	pkgdesc = A calm, intelligent local music player
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/selfAnnihilator/kaze
 	arch = x86_64
 	license = MIT
 	license = Apache-2.0
-	makedepends = cargo
+	makedepends = rust
 	makedepends = nodejs
 	makedepends = npm
 	depends = webkit2gtk-4.1
@@ -19,7 +19,7 @@ pkgbase = kaze
 	options = !lto
 	source = kaze-1.0.6.tar.gz::https://github.com/selfAnnihilator/kaze/archive/refs/tags/v1.0.6.tar.gz
 	source = kaze.desktop
-	sha256sums = 9f02a34d47459b04401f9aa8865f072d9407b93b43777358230d6d9451de0d82
+	sha256sums = be4c339b03be784201cdfb435aaead6a2a0ce614b3035fa3770c10362171bbda
 	sha256sums = eaf39dc7d4a05cefeb1543018e5a2ae84148343e3b5a8de50ba365087d43dd0c
 
 pkgname = kaze

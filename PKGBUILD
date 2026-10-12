@@ -1,7 +1,7 @@
 # Maintainer: Music Player Contributors <https://github.com/selfAnnihilator/kaze>
 pkgname=kaze
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A calm, intelligent local music player"
 arch=('x86_64')
 url="https://github.com/selfAnnihilator/kaze"
@@ -16,7 +16,9 @@ depends=(
     'hicolor-icon-theme'
 )
 makedepends=(
-    'cargo'
+    # Select the concrete compiler/Cargo package on fresh systems. Existing
+    # Arch rustup installations also provide rust; see INSTALL.md for setup.
+    'rust'
     'nodejs'
     'npm'
 )
@@ -25,8 +27,22 @@ source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     "kaze.desktop"
 )
-sha256sums=('9f02a34d47459b04401f9aa8865f072d9407b93b43777358230d6d9451de0d82'
-            'eaf39dc7d4a05cefeb1543018e5a2ae84148343e3b5a8de50ba365087d43dd0c')
+sha256sums=(
+    'be4c339b03be784201cdfb435aaead6a2a0ce614b3035fa3770c10362171bbda'
+    'eaf39dc7d4a05cefeb1543018e5a2ae84148343e3b5a8de50ba365087d43dd0c'
+)
+
+prepare() {
+    # A rustup package can satisfy makedepends without an installed toolchain.
+    # Check the executable toolchain before spending time on the frontend build.
+    if ! cargo --version >/dev/null 2>&1 || ! rustc --version >/dev/null 2>&1; then
+        error "Kaze needs a working Rust toolchain (Cargo and rustc)."
+        error "Fresh Arch installation: install rust with 'sudo pacman -Syu --needed rust'."
+        error "Already using rustup: run 'rustup default stable', then retry."
+        error "See INSTALL.md for Cargo provider selection and troubleshooting."
+        return 1
+    fi
+}
 
 build() {
     cd "$pkgname-$pkgver"
