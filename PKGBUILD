@@ -28,7 +28,7 @@ depends=(bzip2
 makedepends=(blueprint-compiler
              git
              pandoc-cli
-             'zig<0.16.0')
+             zig)
 source=("git+$url.git"
         ghostty-llvm.patch)
 sha256sums=('SKIP'
