@@ -3,7 +3,7 @@
 
 pkgname=mold-ai-desktop
 _binname=mold-desktop
-pkgver=0.34.0
+pkgver=0.35.0
 pkgrel=1
 pkgdesc="Mold desktop app — local AI image and video generation with a gallery, model manager and job queue (built from source, CUDA)"
 arch=('x86_64')
@@ -57,7 +57,7 @@ conflicts=('mold-ai-desktop-bin')
 options=(!lto)
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c1aa8eb536efa428f09e883eb68901bd57e04fd59c515b372ffc229a0d0af732')
+sha256sums=('3e19046aa6d5639ee62b871a175fc862703369b8953d0717b8d83bfc6243ccf9')
 
 _manifest=desktop/src-tauri/Cargo.toml
 

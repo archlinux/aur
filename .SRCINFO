@@ -1,6 +1,6 @@
 pkgbase = mold-ai-desktop
 	pkgdesc = Mold desktop app — local AI image and video generation with a gallery, model manager and job queue (built from source, CUDA)
-	pkgver = 0.34.0
+	pkgver = 0.35.0
 	pkgrel = 1
 	url = https://github.com/utensils/mold
 	arch = x86_64
@@ -28,10 +28,10 @@ pkgbase = mold-ai-desktop
 	optdepends = gst-plugins-good: in-app video playback
 	optdepends = gst-plugins-bad: in-app video playback
 	optdepends = gst-libav: H.264 in-app video playback
-	provides = mold-ai-desktop=0.34.0
+	provides = mold-ai-desktop=0.35.0
 	conflicts = mold-ai-desktop-bin
 	options = !lto
-	source = mold-ai-desktop-0.34.0.tar.gz::https://github.com/utensils/mold/archive/refs/tags/v0.34.0.tar.gz
-	sha256sums = c1aa8eb536efa428f09e883eb68901bd57e04fd59c515b372ffc229a0d0af732
+	source = mold-ai-desktop-0.35.0.tar.gz::https://github.com/utensils/mold/archive/refs/tags/v0.35.0.tar.gz
+	sha256sums = 3e19046aa6d5639ee62b871a175fc862703369b8953d0717b8d83bfc6243ccf9
 
 pkgname = mold-ai-desktop
