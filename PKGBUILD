@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=wdm
 pkgname=lib${_base}
-pkgver=0.3.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Header-only C++ library for weighted dependence measures"
 arch=(any)
@@ -10,7 +10,7 @@ url="https://github.com/tnagler/${_base}"
 license=(MIT)
 makedepends=(cmake)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('cf3c36ab125cdaa3fe6a8995eca7202ce3201318adb4c3460db85f86fa8287b13e7b173bafc7863ec2319a4f6a49070c71c705314fb564dbc69adcef67d81149')
+sha512sums=('9c93fd94c77d56d9c8060638086dd0d563c83740b5412f312fdd180853dec6e941314d3009d62df001d5b971b75f8d8b6bd573f4604d36f520511615068f1dbe')
 
 build() {
   cmake \
