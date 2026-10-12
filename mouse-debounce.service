@@ -7,6 +7,11 @@ SupplementaryGroups=input
 ExecStart=/usr/bin/mouse-debounce --config /etc/mouse-debounce/config.toml
 Restart=on-failure
 RestartSec=2
+# Exit 2 = second instance hit the singleton lock; not a crash, don't restart it.
+RestartPreventExitStatus=2
+# Retry loop is chatty at 2 Hz when the mouse is absent; keep journal bounded.
+LogRateLimitIntervalSec=30s
+LogRateLimitBurst=200
 
 [Install]
 WantedBy=multi-user.target
