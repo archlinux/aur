@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=kache
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Zero-copy, content-addressed build cache for Rust, C/C++ and more'
 url='https://kunobi.ninja/docs/kache'
@@ -11,8 +11,8 @@ depends=('libgcc')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kunobi-ninja/kache/archive/v$pkgver.tar.gz")
-sha256sums=('15eb7fc402b7d83a9587f7f273008a621ad9d68b9663a27da50f921ad1e16de8')
-b2sums=('d30ff858d8adcb17d423c0b3aacdd9267cbafeb81871ecc4d4bc50694ea1a6375750acf69bba41533783cdcefe3ce3848e554695677486784cb0f8329fe53ffc')
+sha256sums=('b9c68bd652114d44440153930bb530930d0f61a3291725625d495108ee956999')
+b2sums=('328087cc1f093198e59fdb47fb67c5612454b14067e78ff5c2156de871896d5635a7f5f31c20111639bb4070d76b7463bcf926eaa4ee3dec05e3232acb3de776')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 # Upstream's release profile sets lto = "fat" (OOM-kills the build); `!lto` only covers C flags.
