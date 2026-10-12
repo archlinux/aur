@@ -1,7 +1,7 @@
 pkgbase = ggml-cuda-12.9
 	pkgdesc = ggml CUDA backend built against CUDA 12.9 for Maxwell/Pascal/Volta GPUs (sm_50–sm_70)
-	pkgver = 0.25.3
-	pkgrel = 2
+	pkgver = 0.26.0
+	pkgrel = 1
 	url = https://github.com/ggml-org/ggml
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = ggml-cuda-12.9
 	depends = glibc
 	provides = ggml-cuda
 	conflicts = ggml-cuda
-	source = ggml-0.25.3.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v0.25.3.tar.gz
-	sha256sums = cd9b92d5652f5e4abb41603bf59e269f8fec1b2d05ce22fded981064dd25fb89
+	source = ggml-0.26.0.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v0.26.0.tar.gz
+	sha256sums = 3db46896650440531f03fd5b6f29b4dbf4f5b0a4157e6f4be4786a12d8545971
 
 pkgname = ggml-cuda-12.9

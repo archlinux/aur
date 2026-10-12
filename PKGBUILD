@@ -1,6 +1,6 @@
 pkgname=ggml-cuda-12.9
-pkgver=0.25.3
-pkgrel=2
+pkgver=0.26.0
+pkgrel=1
 pkgdesc="ggml CUDA backend built against CUDA 12.9 for Maxwell/Pascal/Volta GPUs (sm_50–sm_70)"
 arch=(x86_64)
 url="https://github.com/ggml-org/ggml"
@@ -10,7 +10,7 @@ makedepends=(cmake ninja gcc14)
 provides=(ggml-cuda)
 conflicts=(ggml-cuda)
 source=("ggml-$pkgver.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cd9b92d5652f5e4abb41603bf59e269f8fec1b2d05ce22fded981064dd25fb89')
+sha256sums=('3db46896650440531f03fd5b6f29b4dbf4f5b0a4157e6f4be4786a12d8545971')
 
 build() {
   export PATH=/opt/cuda/bin:$PATH
