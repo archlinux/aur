@@ -1,12 +1,15 @@
 # Maintainer: UPdullah895 <abdullahbomozh@gmail.com>
 pkgname=opengg-bin
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Open-source Linux gaming hub — OpenGG"
 arch=('x86_64')
 url="https://github.com/UPdullah895/opengg"
 license=('MIT')
-depends=('pipewire' 'wireplumber' 'ffmpeg' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good'
+# pipewire-pulse: the daemon and mixer drive PipeWire through `pactl`, which
+# needs a PulseAudio-protocol server. libpulse alone (pulled in by ffmpeg)
+# installs pactl but nothing for it to talk to, and every OpenGG_* sink fails.
+depends=('pipewire' 'pipewire-pulse' 'wireplumber' 'ffmpeg' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good'
          'gst-plugins-bad' 'gst-plugin-qml6' 'qt6-base' 'qt6-declarative' 'qt6-multimedia'
          'qt6-shadertools')
 optdepends=('polkit: for privileged device setup')
