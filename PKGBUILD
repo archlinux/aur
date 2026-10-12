@@ -2,7 +2,7 @@
 # Binary package: downloads prebuilt pacman package from GitHub Release.
 # Source package mark-shot builds from source; mark-shot-bin installs prebuilt binary.
 pkgname=mark-shot-bin
-pkgver=0.1.57
+pkgver=0.1.58
 pkgrel=1
 pkgdesc='Qt 6 Wayland screenshot selection and annotation tool (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -35,8 +35,8 @@ conflicts=('mark-shot')
 source_x86_64=("https://github.com/jswysnemc/mark-shot/releases/download/v${pkgver}/mark-shot-bin-${pkgver}-1-x86_64.pkg.tar.zst")
 source_aarch64=("https://github.com/jswysnemc/mark-shot/releases/download/v${pkgver}/mark-shot-bin-${pkgver}-1-aarch64.pkg.tar.zst")
 noextract=("mark-shot-bin-${pkgver}-1-x86_64.pkg.tar.zst" "mark-shot-bin-${pkgver}-1-aarch64.pkg.tar.zst")
-sha256sums_x86_64=('141b459cb19268432737c4ad8a2afdeb1a2159bde63acd2e4e63199eece7e7d4')
-sha256sums_aarch64=('2e80cebd36245a41024b61df5c974a0c804e1e18626f4d04886466e0b33c3229')
+sha256sums_x86_64=('f35995db3f3051869a6482a4c22b65ab139a6f374dc50e4f3b6daa3d59da978b')
+sha256sums_aarch64=('1fa44879bab67182ba2c5b272adc9ee1776edd5e0afc545aa6c0a0f9a66baea4')
 options=('!strip')
 
 # 解压预编译 pacman 包到 pkgdir，排除包元数据文件
