@@ -1,7 +1,7 @@
 # Maintainer: giosuel <me@giosuel.ch>
 pkgname=realer-xpad-bin
 _pkgname=realer-xpad
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Sticky notes with Markdown and drawing, native on Wayland and Hyprland (prebuilt binary)'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!debug') # the release binary is already stripped
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-$CARCH-linux.tar.gz")
-sha256sums_x86_64=('3c2fbad585a56d3e8a2a95f3be327e06b6647ca2d7381911da2c7c78ff9b8b39')
+sha256sums_x86_64=('975d89e8451bf088ac3db121628bd43c5ff2af85b2d4ff034d29afd56243726e')
 
 package() {
   cd "$_pkgname-$pkgver-$CARCH-linux"

@@ -1,6 +1,6 @@
 pkgbase = realer-xpad-bin
 	pkgdesc = Sticky notes with Markdown and drawing, native on Wayland and Hyprland (prebuilt binary)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/giosuel/realer-xpad
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = realer-xpad-bin
 	depends = libadwaita
 	depends = libgcc
 	depends = pango
-	provides = realer-xpad=0.1.1
+	provides = realer-xpad=0.1.2
 	conflicts = realer-xpad
 	options = !debug
-	source_x86_64 = https://github.com/giosuel/realer-xpad/releases/download/v0.1.1/realer-xpad-0.1.1-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 3c2fbad585a56d3e8a2a95f3be327e06b6647ca2d7381911da2c7c78ff9b8b39
+	source_x86_64 = https://github.com/giosuel/realer-xpad/releases/download/v0.1.2/realer-xpad-0.1.2-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 975d89e8451bf088ac3db121628bd43c5ff2af85b2d4ff034d29afd56243726e
 
 pkgname = realer-xpad-bin
