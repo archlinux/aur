@@ -3,7 +3,7 @@
 # Generated blocks are rewritten by packaging/sync-pkgbuild.py; do not edit them by hand.
 
 pkgname=qtgmc-6ui
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="QTGMC deinterlacer for archival video (VapourSynth) with a Qt6 GUI"
 arch=(x86_64)
@@ -49,8 +49,6 @@ makedepends=(
   "${_plugin_makedepends[@]}"
 )
 optdepends=(
-  'x264: standalone H.264 encoder for viewing copies'
-  'x265: standalone HEVC encoder (incl. high bit depth) for viewing copies'
   'kvazaar: HEVC encoder for viewing copies (not available through FFmpeg)'
   'sox: high-quality audio resampling/dithering for viewing copies'
 )
@@ -66,7 +64,7 @@ else
   source=("$_srcname.tar.gz::$url/archive/v$pkgver.tar.gz")
 fi
 # set by sync-pkgbuild.py --project-sha256 (never updpkgsums)
-_project_sha256='abaa41ae615fbe9b90b577cdfa01c8955134a6ffe83d2325e87c16e4779f62fa'
+_project_sha256='0752127b533635ce32c3e74615d05afdf70eb737a1f90f7599024b757b19afb8'
 sha256sums=("$_project_sha256")
 
 # BEGIN generated: plugin-sources (packaging/sync-pkgbuild.py from packaging/plugins/plugins.json)
