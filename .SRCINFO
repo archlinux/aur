@@ -1,0 +1,20 @@
+pkgbase = gildas-last
+	pkgdesc = GILDAS build last tag from git
+	pkgver = 2026.10.gad05e75e57
+	pkgrel = 1
+	url = https://www.iram.fr/IRAMFR/GILDAS/
+	arch = x86_64
+	license = custom
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python-numpy
+	makedepends = which
+	depends = gcc-fortran
+	depends = cfitsio
+	depends = gtk3
+	optdepends = python-numpy
+	options = !strip
+	source = git+https://git.iram.fr/gildas/gildas.git
+	sha512sums = SKIP
+
+pkgname = gildas-last
