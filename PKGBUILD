@@ -1,5 +1,5 @@
 pkgname=companion
-pkgver=5.0.7
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="Control software for the Elgato Streamdeck with a focus on broadcasting."
 arch=('x86_64' 'aarch64')
@@ -8,14 +8,14 @@ license=('custom')
 depends=('gtk3' 'alsa-lib' 'nss' 'hicolor-icon-theme' 'libusb')
 makedepends=('nvm' 'git' 'zip' 'python>=3.10.0')
 install=companion.install
-_node_version="22"
+_node_version="26"
 
 source=("${pkgname}-${pkgver}::git+https://github.com/bitfocus/companion.git#tag=v${pkgver}"
 		"bitfocus-companion.desktop")
 
-sha256sums=('1fff00885597aad77193905a3dfa04d4b2c23bb122706018bb501a285359bdd0'
+sha256sums=('f49453dfceab72c64331d492e550fd99bb2fff0ee945ed91b079236cd9434317'
             '65289895360dae94dd710e6804709c1e3f95e6bc275b1621cb88eb8a7cbd348f')
-b2sums=('4b0d944686b00bcd87c40131abfafc406bca8dd90f39029e759ec707f1013837bc69f166f25eca798ea92a19ce7f0550514dca1022603032a2b62a3d0ffbf258'
+b2sums=('1ec0c65e8b5126b9cdfb58affa87db1cbb9582b5d3cb9d804ecb811b19b2cdbe222169a7d3cb02628257de7729c94ca599e6c2bfcd7435c5a2607daaed96652c'
         '718976c7c24fa0a2a8979a6704b36650ebe71e87edec944c1cc745cfa0e7e5aba7211efb3408b1bf12dc0065f838ed976bea75a818d5abefa23471e2e4354882')
 
 _ensure_local_nvm() {
@@ -28,7 +28,6 @@ _ensure_local_nvm() {
 	# but nvm itself still gets loaded ok
 	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
 	
-	export PATH="$(npm bin):${PATH}"
 	export SHARP_IGNORE_GLOBAL_LIBVIPS=yes
 	export YARN_CACHE_FOLDER="${srcdir}/yarn"
 }
@@ -46,11 +45,22 @@ prepare() {
 	# Init submodules
 	git submodule update --init
 
+	# Node version
+	if [[ -f ".node-version" ]]; then
+		_upstream_node_version="$(<.node-version)"
+		echo "Found .node_version file, setting node version to ${_upstream_node_version}"
+		_node_version="${_upstream_node_version}"
+	else
+		echo "WARNING: could not locate .node-version file, using fallback version: ${_node_version}" >&2
+	fi
+
 	nvm install "${_node_version}"
 	npm config set cache "${srcdir}/npm"
 
 	# Enable corepack
+	npm install -g corepack
 	corepack enable
+	corepack prepare "$(node -p 'require("./package.json").packageManager')" --activate
 
 	yarn --immutable
 }
