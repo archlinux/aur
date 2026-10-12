@@ -1,21 +1,27 @@
 pkgbase = linapple-git
 	pkgdesc = Apple 2e emulator
-	pkgver = 2020.06.01.gae9fd93
+	pkgver = 2026.10.10.g86bee1c2
 	pkgrel = 1
-	url = https://github.com/linappleii/linapple.git
-	arch = i686
+	url = https://github.com/linappleii/linapple
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
+	makedepends = cmake
 	makedepends = git
-	depends = sdl
-	depends = sdl_image
-	depends = zlib
-	depends = libzip
+	makedepends = ninja
 	depends = curl
+	depends = imagemagick
+	depends = libcurl-gnutls
+	depends = libzip
+	depends = nodejs
+	depends = sdl3
+	depends = sdl3_image
+	depends = zlib
+	depends = z3
 	provides = linapple
 	conflicts = linapple
 	source = linapple::git+https://github.com/linappleii/linapple.git
+	source = fix-cmake-etc.patch::https://patch-diff.githubusercontent.com/raw/linappleii/linapple/pull/364.patch
 	sha256sums = SKIP
+	sha256sums = 2cad7ae52bbd536bb96750a6ed6b24d226aadb873da995cba7c23e7f4ff0f11f
 
 pkgname = linapple-git
-
