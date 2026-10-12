@@ -2,8 +2,8 @@
 _pkgname=eudic
 pkgname="eusoft-${_pkgname}-bin"
 pkgver=26.9.1
-pkgrel=1
-pkgdesc="Authoritative English dictionary software, an essential tool for English learners.(Prebuilt version)权威的英语词典软件,英语学习者必备的工具."
+pkgrel=2
+pkgdesc="Authoritative English dictionary software, an essential tool for English learners.权威的英语词典软件,英语学习者必备的工具."
 arch=('x86_64')
 url="https://www.eudic.net/v4/en/app/eudic"
 license=('LicenseRef-custom')
@@ -62,10 +62,9 @@ source=(
 )
 sha256sums=('7839456abede4b8a47cacf2d3fcf24ce25c4296e305f9618920bd83cc21c83a6'
             '89862f4074e530896863738bf9d49c03c8d0cd0f6a543d4ccc1cdc53e8f83a24'
-            'f8da4fa48422d34fd5e2f8e1e87c9f52b66a7308a88855c39ae03599209dcbaf')
+            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
 pkgver() {
-    cd "${srcdir}/squashfs-root"
-    grep "X-AppImage-Version" default.desktop | sed "s/X-AppImage-Version=//g"
+    cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
 }
 prepare() {
     sed -i -e "
@@ -79,7 +78,7 @@ prepare() {
         rm -rf "${srcdir}/squashfs-root"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    # Remove bundled libraries - use system components instead
+    grep "X-AppImage-Version" "${srcdir}/squashfs-root/default.desktop" | sed "s/X-AppImage-Version=//g" > "${srcdir}/.pkgver"
     _libdir="${srcdir}/squashfs-root/lib"
     find "${_libdir}" -maxdepth 1 -name "libQt5*.so*" -delete
     find "${_libdir}" -maxdepth 1 -regex ".*/lib\(X11\|Xau\|Xdmcp\|Xext\|Xrender\|Xfixes\|Xcursor\|Xi\|Xrandr\|Xss\|Xtst\|xcb\).*\.so.*" -delete
