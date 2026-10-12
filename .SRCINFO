@@ -10,7 +10,9 @@ pkgbase = kotki-models-standard
 pkgname = localtranslate-models-kotki-standard
 	pkgdesc = Kotki's standard translation models adapted for LocalTranslate
 	provides = localtranslate-models-base
+	conflicts = localtranslate-models-base
 
 pkgname = kotki-models-standard
 	pkgdesc = Kotki's standard translation models for native Kotki application
 	provides = kotki-models-base
+	conflicts = kotki-models-base

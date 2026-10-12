@@ -22,6 +22,7 @@ sha256sums=('a38e2534a400f1bab6099dfe162b367e7495bf1782616fb90fac9ae68d7aedb0')
 package_localtranslate-models-kotki-standard() {
     pkgdesc="Kotki's standard translation models adapted for LocalTranslate"
     provides=("localtranslate-models-base")
+    conflicts=("localtranslate-models-base")
 
     install -dm755 "${pkgdir}/usr/share/localtranslate/models/firefox"
     cp -a --reflink=auto "${srcdir}/${_models_ver}/." "${pkgdir}/usr/share/localtranslate/models/firefox/"
@@ -32,6 +33,7 @@ package_localtranslate-models-kotki-standard() {
 package_kotki-models-standard() {
     pkgdesc="Kotki's standard translation models for native Kotki application"
     provides=("kotki-models-base")
+    conflicts=("kotki-models-base")
 
     install -dm755 "${pkgdir}/usr/share/kotki"
     cp -a --reflink=auto "${srcdir}/${_models_ver}/." "${pkgdir}/usr/share/kotki/"
