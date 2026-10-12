@@ -2,7 +2,7 @@
 # Contributor: hawkeye116477 <hawkeye116477 at gmail dot com>
 # Contributor: Daniel Peukert <daniel@peukert.cc>
 
-upstream_name='PySimpleGUI'
+_name='PySimpleGUI'
 pkgname='python-pysimplegui'
 pkgver=6.3
 pkgrel=1
@@ -17,11 +17,11 @@ source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('2cde7cc156ea2223840eaef1685a919ec057d77347ca0eedcd3b64e091b6498b')
 
 build() {
-    cd "${upstream_name}-$pkgver"
+    cd "${_name}-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${upstream_name}-$pkgver"
+    cd "${_name}-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
