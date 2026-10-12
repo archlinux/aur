@@ -1,17 +1,19 @@
 # Maintainer: HorneroOS contributors <https://github.com/HorneroOS/shell>
 
 pkgname=hornero-shell
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="Hornero OS desktop shell, built with Quickshell, QML and Qt for Wayland"
 arch=('x86_64')
 url="https://github.com/HorneroOS/shell"
 license=('GPL-3.0-or-later')
-# Official [extra]/quickshell (>= 0.3.1): the shell only uses long-stable
+# Official [extra]/quickshell (>= 0.3.2): the shell only uses stable
 # Quickshell QML modules (core, Hyprland, Io, Bluetooth,
 # Services.Mpris/Notifications/UPower, Wayland, Widgets) and links no
-# Quickshell C++ API, so no git-HEAD feature is required. Revisit only if
-# the shell adopts an API newer than the packaged release.
+# Quickshell C++ API, so no git-HEAD feature is required. The 0.3.2 minimum
+# includes upstream's failed-session-lock acquisition guard (afb2c27), which
+# avoids a fatal path on failed/reentrant acquisition; it does not resolve
+# every orphaned-lock lifecycle issue tracked upstream in #1054.
 depends=(
   'aubio'
   'hornero-config>=0.3.0'
@@ -19,9 +21,10 @@ depends=(
   'libcava'
   'libqalculate'
   'pipewire'
+  'python'
   'qt6-base'
   'qt6-declarative'
-  'quickshell>=0.3.1'
+  'quickshell>=0.3.2'
 )
 makedepends=(
   'cmake'
@@ -41,7 +44,7 @@ optdepends=(
   'swappy: screenshot annotation'
   'wl-clipboard: clipboard integration via wl-copy'
 )
-source=("$pkgname::git+https://github.com/HorneroOS/shell.git#commit=0bebb8575c200d6519c3dd31a0c66e2a5cd00324")
+source=("$pkgname::git+https://github.com/HorneroOS/shell.git#commit=e02a65be88a81fec61bd6520a3937e4bf7de3d0c")
 sha256sums=('SKIP')
 
 build() {
