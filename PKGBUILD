@@ -1,6 +1,6 @@
 # Maintainer: Kristofer Lund <kristoferlund@users.noreply.github.com>
 pkgname=ostt-cuda-bin
-pkgver=0.0.27
+pkgver=0.0.28
 pkgrel=1
 pkgdesc="Open Speech-to-Text: terminal app for recording and transcribing audio (prebuilt binary, NVIDIA CUDA 13 build)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("ostt-${pkgver}-cuda13.tar.gz::${url}/releases/download/v${pkgver}/ostt-
         'ostt.bash'
         '_ostt'
         'ostt.fish')
-sha256sums=('d5e630d7497be3c28ea1ecef6643ed32e1e998d32098cd99e0821a9ed525b7d3'
+sha256sums=('9ea8d4bd8c6dc6b3a54d42d508313323e5a8918f2d20f948689827fb9c504f1e'
             '8bcb6bd9c06c2cce21a54db8e1455c1aa154275667828f772dd74d03272e65bd'
             'ca1e19b9f5580b1a9eec2813f5af9c41ea6aac4aa3ee2bedf85effe0399fd4c5'
             'eee8a731da1c24283ae7de21f6f748cf1c02c3e17eb38ccbd4b0aebcd93cf9a0'
