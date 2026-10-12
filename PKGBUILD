@@ -1,7 +1,7 @@
 # Maintainer:
 _pkgname=bluestar-manager
 pkgname=$_pkgname-bin
-pkgver=1.1.4
+pkgver=1.1.4.1
 pkgrel=1
 options=(!strip)
 pkgdesc="A powerful mod manager for Sonic Racing: CrossWorlds on PC"
@@ -18,7 +18,7 @@ source=("$_pkgname-$pkgver.AppImage::$url/releases/download/$pkgver/Bluestar.Man
 	"bluestar.desktop"
 	"$_pkgname"
 	)
-sha256sums=("b51ee4394faa31e7f7a26352d35ee26d56e4d0cd895a60094827a8c4fb2b198d"
+sha256sums=("fd000da2498181c3acbafd11f0c4e3c6f6060696a12ce8c62a60fdb2d2c92a0e"
 	"SKIP"
 	"SKIP")
 
