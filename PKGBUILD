@@ -2,7 +2,7 @@
 
 pkgname=voix
 _pkgname=Voix
-pkgver=4.13.2
+pkgver=4.13.3
 pkgrel=1
 pkgdesc="A secure privilege escalation tool replacing sudo/doas, using PAM for authentication"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,26 @@ provides=('sudo' 'doas')
 conflicts=('sudo' 'doas')
 backup=('etc/pam.d/voix' 'etc/voix.conf')
 install=voix.install
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b38cca2a0a85c03d3b5d45274767988c0e2e4f9a8786f7b7b94864e74fa61b8b')
+
+# The tagged source tarball is published together with a detached, armored GPG
+# signature (<artifact>.asc), which makepkg verifies against validpgpkeys before
+# anything is extracted or built.
+#
+# Primary ed25519 release key (full 40-character fingerprint):
+#   7887165D6B07DE7785BD536E5239ACB42207EE03   Dae Euhwa <daedaevibin@ik.me>
+# Published on keys.openpgp.org. Import it before building if it is missing:
+#   gpg --recv-keys 7887165D6B07DE7785BD536E5239ACB42207EE03
+# AUR helpers (paru/yay) fetch a missing validpgpkey automatically.
+validpgpkeys=('7887165D6B07DE7785BD536E5239ACB42207EE03')
+
+# The signed source archive is a byte-identical copy of the GitHub tag tarball
+# and unpacks as Voix-${pkgver}/, matching the `cd` in build() below.
+source=(
+    "voix-src-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/voix-src-${pkgver}.tar.gz"
+    "voix-src-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/voix-src-${pkgver}.tar.gz.asc"
+)
+sha256sums=('519e6835cee9b4efe1b18656a636bb37ff3e3ce8392d066ba80985f96756f32f'
+            'SKIP')
 
 build() {
     cd "$_pkgname-$pkgver"
