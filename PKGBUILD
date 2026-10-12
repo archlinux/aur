@@ -22,7 +22,7 @@
 # header comment for the coexistence rationale in full.
 
 pkgname=rkd-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="RKD desktop client"
 arch=(x86_64)
@@ -55,11 +55,11 @@ optdepends=('libayatana-appindicator: tray icon support')
 
 # _pkgver: raw semver as it appears in the .deb filename.
 # _tag: the Forgejo release tag the asset was uploaded under.
-_pkgver=0.3.0
-_tag=v0.3.0
+_pkgver=0.3.1
+_tag=v0.3.1
 
 source=("$pkgname-$pkgver.deb::https://git.rkd.nanoya.biz/rkd/releases/releases/download/${_tag}/RKD-electron-rkd_${_pkgver}_amd64.deb")
-sha256sums=('07b0bf854da65368424debc9aeaea21032252c7a7ab1ae2d6db60be0b4b288a9')
+sha256sums=('1d83f673b599451bdd45a4630da08488a2e467aad0b35aac026b4e04814e919a')
 noextract=("$pkgname-$pkgver.deb")
 # Tells whoever removes the package how to remove the rkd-activity user
 # service the app may have installed (#1145); root can't reach user units.
