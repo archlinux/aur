@@ -2,20 +2,20 @@
 _pkgname=c43
 pkgbase=c47
 pkgname=(c47 r47)
-pkgver=00.109.04.00b0
+pkgver=00.109.05.00b0
 pkgrel=1
 pkgdesc="Emulator for the C47 pocket calculator"
 arch=(x86_64)
 url="https://47calc.com"
 license=('GPL-3.0-or-later')
-depends=('glibc' 'gtk3' 'hicolor-icon-theme' 'bash' 'python' 'cairo' 'libpulse' 'glib2' 'gmp' 'python-fonttools')
+depends=('glibc' 'gtk3' 'hicolor-icon-theme' 'bash' 'python' 'cairo' 'libpulse' 'glib2' 'gmp' 'python-fonttools' 'libgcc')
 makedepends=('meson' 'python-sphinx' 'doxygen' 'python-breathe' 'xlsxio' 'gendesk' 'icoutils' 'git')
 source=("git+https://gitlab.com/rpncalculators/c43.git#tag=${pkgver}"
 	"git+https://github.com/swissmicros/DMCP_SDK.git"
 	"git+https://github.com/swissmicros/DMCP5_SDK.git"
 	"git+https://github.com/msteveb/jimtcl.git"
 	)
-sha256sums=('433e0f68269dca2938119a5bdad592eb43df934dc29b9b403b3c15f81dd8df8a'
+sha256sums=('7456b485adc8f5d119f02672116d4c823142425942c85d94216d39cf69b37f72'
             'SKIP'
             'SKIP'
             'SKIP')
