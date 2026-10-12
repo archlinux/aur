@@ -2,7 +2,7 @@
 
 pkgname='python-arrapi'
 _name=${pkgname#python-}
-pkgver=1.4.14
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A set of tools based around the requests library for safely making HTTP requests on behalf of a third party."
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('6004ea94fce98defa0165b7c0804fcb2e5279e4acfecb907c8013236b97d5745aac5fed868572fc97425b496f4b30248e52bbdbab1443e7f440e5ac35919e778')
+sha512sums=('6f29b15fd28d74cc20ccbdb0ce86174f0673aa5f16a9ab2446fdf1dce7661cfaa211e23f9ee01eea12fa41dc9525c941232a8278ef5f7598bca8b28c34d4684b')
 
 package() {
   cd arrapi-${pkgver}
