@@ -7,7 +7,6 @@ pkgdesc="Open source, compact, and material designed cursor set."
 arch=('x86_64')
 url="https://github.com/big-comm/Bibata_Cursor"
 license=('GPL-3.0-or-later')
-depends=()
 makedepends=(
   'git'
   'librsvg'
