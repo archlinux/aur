@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/hint/bash -e
 #
 # Based on https://github.com/lubo/archlinux-chromium.
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
