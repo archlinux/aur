@@ -14,7 +14,6 @@ source=("$url/releases/download/v$pkgver/firefox-models.tar.xz")
 sha256sums=('5e773a3b00ea4a6d3b9e27162c86c9a6646cb11603397a2d560f95bf2ca8f59d')
 
 package() {
-    install -d "${pkgdir}/usr/share/localtranslate/models"
-    tar -xf "${srcdir}/firefox-models.tar.xz" \
-        -C "${pkgdir}/usr/share/localtranslate/models"
+    install -dm755 "${pkgdir}/usr/share/localtranslate/models"
+    cp -a --reflink=auto "${srcdir}/firefox" "${pkgdir}/usr/share/localtranslate/models/"
 }
