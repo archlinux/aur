@@ -1,0 +1,20 @@
+pkgbase = ensor-bin
+	pkgdesc = A fast, interactive CLI for finding and redacting secrets in your codebase
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://github.com/Pratyay360/ensor
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = Apache-2.0
+	provides = ensor
+	conflicts = ensor
+	options = !strip
+	source_x86_64 = ensor-x86_64-0.4.6.tgz::https://github.com/Pratyay360/ensor/releases/download/0.4.6/ensor_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 6fd7b8dff019c132498ebf7d60a62a01b3462bbd5303e8587456a24851d11459
+	source_i686 = ensor-i686-0.4.6.tgz::https://github.com/Pratyay360/ensor/releases/download/0.4.6/ensor_Linux_i386.tar.gz
+	sha256sums_i686 = b3a5e19c11170f46aa13566c0425f2b4d40a2dbe8b1a57d57104f75046d61bfe
+	source_aarch64 = ensor-aarch64-0.4.6.tgz::https://github.com/Pratyay360/ensor/releases/download/0.4.6/ensor_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 42578c6c249336844822c60494bba93a0b8826bf391e7e0a477da5a483b9b13e
+
+pkgname = ensor-bin

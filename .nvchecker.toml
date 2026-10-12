@@ -1,0 +1,5 @@
+[ensor-bin]
+source = "github"
+github = "Pratyay360/ensor"
+use_latest_release = true
+prefix = ""
