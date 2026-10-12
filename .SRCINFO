@@ -1,14 +1,14 @@
 pkgbase = kubecolor-bin
 	pkgdesc = A tool to colorize the output of kubectl commands
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kubecolor/kubecolor
 	arch = x86_64
 	license = MIT
-	makedepends = unzip
-	provides = boundary=0.8.0
+	provides = kubecolor=0.8.0
+	conflicts = kubecolor
 	options = !strip
-	source_x86_64 = kubecolor-0.8.0.zip::https://github.com/kubecolor/kubecolor/releases/download/v0.8.0/kubecolor_0.8.0_linux_amd64.tar.gz
+	source_x86_64 = kubecolor-0.8.0.tar.gz::https://github.com/kubecolor/kubecolor/releases/download/v0.8.0/kubecolor_0.8.0_linux_amd64.tar.gz
 	sha256sums_x86_64 = 87289f8641ba18f4cb491ad6b30baa0da5f769c688aa7ce05489604da6099b28
 
 pkgname = kubecolor-bin

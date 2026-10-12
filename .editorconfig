@@ -1,0 +1,25 @@
+# This is the parent configuration within this repository
+root = true
+
+[*]
+charset = utf-8
+max_line_length = 120
+# Always use with unix-based endings and ensure all files have a new-line only at the end of the file (this can
+# occasionally cause issues with some file processing if not present)
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+# Prefer space-based indentations
+indent_style = space
+indent_size = 2
+tab_width = 2
+
+[*.yaml]
+quote_type = double
+
+[{.gitignore,.gitattributes}]
+indent_style = tab
+indent_size = 4
+
+[COMMIT_EDITMSG]
+max_line_length = 72

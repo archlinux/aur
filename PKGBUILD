@@ -2,15 +2,15 @@
 
 pkgname=kubecolor-bin
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to colorize the output of kubectl commands"
 arch=('x86_64')
 url="https://github.com/kubecolor/kubecolor"
 license=('MIT')
-makedepends=('unzip')
-provides=("boundary=${pkgver}")
+provides=("kubecolor=${pkgver}")
+conflicts=("kubecolor")
 
-source_x86_64=("kubecolor.tar.gz::https://github.com/kubecolor/kubecolor/releases/download/v${pkgver}/kubecolor_${pkgver}_linux_amd64.tar.gz")
+source_x86_64=("kubecolor-${pkgver}.tar.gz::https://github.com/kubecolor/kubecolor/releases/download/v${pkgver}/kubecolor_${pkgver}_linux_amd64.tar.gz")
 sha256sums_x86_64=('87289f8641ba18f4cb491ad6b30baa0da5f769c688aa7ce05489604da6099b28')
 options=("!strip")
 
