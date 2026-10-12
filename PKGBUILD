@@ -1,7 +1,7 @@
 # Maintainer: colegeming <collegeming@outlook.com>
 
 pkgname=snishaper-bin
-pkgver=1.29.0
+pkgver=1.29.1
 pkgrel=1
 pkgdesc='Local proxy to bypass SNI blocking via ECH injection, TLS fragmentation, QUIC and a TUN device (prebuilt binary)'
 arch=('x86_64')
@@ -20,13 +20,16 @@ options=('!strip')
 # for every release). Without the rename, makepkg/yay reuse the previous
 # version's cached download under the same filename and the sha256 check
 # fails on every upgrade.
+#
+# The icon and LICENSE come from the repo at the release tag (see [extras] in
+# metadata.toml); their URLs and checksums are filled in by the updater.
 source_x86_64=(
-    "snishaper-${pkgver}-linux-amd64.tar.gz::https://github.com/SnishaperTeam/SniShaper/releases/download/v1.29.0/snishaper-linux-amd64.tar.gz"
-    "snishaper-${pkgver}-icon.png::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/main/Assets/AppList.targetsize-256_altform-unplated.png"
-    "snishaper-${pkgver}-LICENSE::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/main/LICENSE"
+    "snishaper-${pkgver}-linux-x64.tar.gz::https://github.com/SnishaperTeam/SniShaper/releases/download/v1.29.1/snishaper-linux-x64.tar.gz"
+    "snishaper-${pkgver}-icon.png::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/v1.29.1/Assets/AppList.targetsize-256_altform-unplated.png"
+    "snishaper-${pkgver}-LICENSE::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/v1.29.1/LICENSE"
 )
 sha256sums_x86_64=(
-    '38c1bcc44baa1355160e4b5ac14cd83a202e2b4a6c75a7d785c2b37da8b05a1f'
+    '374fab3cfb9df00f506c6820ad3aa888792b6314f9189a7f18ad08bf62c68a2c'
     'c8c6fb14ef896c6fe2a3d65632445bb1d01a3c78796f3ed494e0592bf329d40b'
     '95bc608f8ed815a6a47f1c209e33c4ea991c5c5acf664fdf3ba204117a7d96b7'
 )
