@@ -53,20 +53,21 @@ prepare() {
 }
 
 build() {
-  cmake \
-    -B build-client \
-    -S "$_pkgname" \
-    -DCMAKE_BUILD_TYPE='None' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -Dwarnings-as-errors='OFF' \
-    -Dclient='ON' \
-    -Dserver='OFF' \
-    -Dbundled-rnnoise='OFF' \
-    -Dbundled-speex='OFF' \
-    -Dupdate='OFF' \
-    -Wno-author
-
-  cmake --build build-client
+  local cmake_options=(
+    -B build
+    -S "$_pkgname"
+    -W no-author
+    -D CMAKE_BUILD_TYPE='None'
+    -D CMAKE_INSTALL_PREFIX='/usr'
+    -D warnings-as-errors='OFF'
+    -D client='ON'
+    -D server='OFF'
+    -D bundled-rnnoise='OFF'
+    -D bundled-speex='OFF'
+    -D update='OFF'
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
@@ -98,6 +99,6 @@ package() {
     'pipewire: PipeWire audio support'
   )
 
-  DESTDIR="$pkgdir" cmake --install build-client
+  DESTDIR="$pkgdir" cmake --install build
   install -Dm 644 "$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }
