@@ -2,7 +2,7 @@
 
 pkgname=kubecolor-bin
 pkgver=0.8.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A tool to colorize the output of kubectl commands"
 arch=('x86_64')
 url="https://github.com/kubecolor/kubecolor"
@@ -21,15 +21,16 @@ package() {
   install -Dm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
 
   echo "Generating shell completions for ${pkgname} ${pkgver}-${pkgrel}"
+
   echo "  -> bash"
-  "${pkgdir}/usr/bin/kubecolor" completion bash > "${srcdir}/kubecolor.bash"
+  "${pkgdir}/usr/bin/kubecolor" completion bash | tee "${srcdir}/kubecolor.bash"
   install -Dm644 "${srcdir}/kubecolor.bash" "${pkgdir}/usr/share/bash-completion/completions/kubecolor"
 
   echo "  -> fish"
-  "${pkgdir}/usr/bin/kubecolor" completion fish > "${srcdir}/kubecolor.fish"
+  "${pkgdir}/usr/bin/kubecolor" completion fish | tee "${srcdir}/kubecolor.fish"
   install -Dm644 "${srcdir}/kubecolor.bash" "${pkgdir}/usr/share/fish/completions/kubecolor.fish"
 
   echo "  -> zsh"
-  "${pkgdir}/usr/bin/kubecolor" completion zsh > "${srcdir}/kubecolor.zsh"
+  "${pkgdir}/usr/bin/kubecolor" completion zsh | tee "${srcdir}/kubecolor.zsh"
   install -Dm644 "${srcdir}/kubecolor.zsh" "${pkgdir}/usr/share/zsh/site-functions/_kubecolor"
 }
