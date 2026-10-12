@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="Terminal animations for people who spend too much time in the terminal."
 
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ provides=("${_appname}")
 options=(!strip)
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/${_gitversion}.tar.gz")
-sha256sums=('2b3b58e4b0686c2ab3061f492f7163c5c76c16927f424e70df6daa681ee69169')
+sha256sums=('4e60198339620ed30c3a748d87f649b2ab9f550be0356abc3cdda78fa377fec1')
 
 
 prepare() {
