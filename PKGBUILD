@@ -1,24 +1,34 @@
-# Maintainer: Ian Douglas Scott <ian@iandouglasscott.com>
-# Contributor: Zhang Li <msfxzi at sina.com>
+# Maintainer: Deposite Pirate <dpirate at metalpunks dot info>
+#
+# Upstream: https://codeberg.org/dptpirate/arch-ports
+#
+# vim: ts=2 sw=2
+
 pkgname=bas
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 pkgdesc="A BASIC interpreter"
-arch=(i686 x86_64)
+arch=('x86_64' 'i686')
 url="http://www.moria.de/~michael/bas/"
-license=('GPL')
-depends=('glibc')
-makedepends=('gcc')
-source=("http://www.moria.de/~michael/bas/${pkgname}-${pkgver}.tar.gz")
-md5sums=('2a16491fb76ecbb848445b327b01c3ff')
+license=('MIT')
+depends=('glibc'
+         'ncurses')
+source=("${url}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('07e9c47f6cdf8eed9ac8a885dcd7d98c53b12471da996fa7f6bf135a5736783c')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" ./configure --prefix=/usr
+}
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    ./configure --prefix=/usr
-    make
+  cd "${pkgname}-${pkgver}"
+  make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    make prefix="${pkgdir}/usr" install
+  cd "${pkgname}-${pkgver}"
+  make install prefix="${pkgdir}/usr"
+  install -Dvm0644 NEWS README -t "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -Dvm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
