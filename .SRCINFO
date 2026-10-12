@@ -1,7 +1,7 @@
 pkgbase = suzuri-bin
 	pkgdesc = Writing environment built on Zed: Obsidian-style live preview, Typst/LaTeX preview, PDF pane
 	pkgver = 0.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/harrywang/suzuri
 	arch = x86_64
 	arch = aarch64

@@ -4,7 +4,7 @@
 
 pkgname=suzuri-bin
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Writing environment built on Zed: Obsidian-style live preview, Typst/LaTeX preview, PDF pane'
 arch=('x86_64' 'aarch64')
 url='https://github.com/harrywang/suzuri'
@@ -66,12 +66,23 @@ exec /usr/lib/suzuri/bin/suzuri "$@"
 EOF
   chmod 755 "${pkgdir}/usr/bin/suzuri"
 
-  # Desktop entry: point Exec/TryExec at the absolute path.
-  install -Dm644 'share/applications/app.suzuri.Suzuri.desktop' \
-    "${pkgdir}/usr/share/applications/app.suzuri.Suzuri.desktop"
+  # Desktop entry.
+  #
+  # Suzuri ships on Zed's *dev* channel, so the running binary reports
+  # ReleaseChannel::app_id() == 'dev.zed.Zed-Dev' as its Wayland app_id and as
+  # WM_CLASS on X11 (crates/release_channel/src/lib.rs). Upstream, however,
+  # names the bundled desktop file 'app.suzuri.Suzuri.desktop'
+  # (script/bundle-linux picks that name for the dev channel), so nothing
+  # matches the app_id and the compositor falls back to a generic taskbar icon.
+  # Install it under the name the compositor actually looks up, and state the
+  # class explicitly for good measure.
+  desktop="${pkgdir}/usr/share/applications/dev.zed.Zed-Dev.desktop"
+  install -Dm644 'share/applications/app.suzuri.Suzuri.desktop' "$desktop"
   sed -i -e 's|^Exec=suzuri |Exec=/usr/bin/suzuri |' \
          -e 's|^TryExec=suzuri$|TryExec=/usr/bin/suzuri|' \
-    "${pkgdir}/usr/share/applications/app.suzuri.Suzuri.desktop"
+         -e '/^StartupWMClass=/d' \
+         -e '/^Actions=/i StartupWMClass=dev.zed.Zed-Dev' \
+    "$desktop"
 
   # Icons into hicolor so the desktop entry's plain 'Icon=suzuri' resolves.
   install -Dm644 'share/icons/hicolor/512x512/apps/suzuri.png' \
