@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# config file must be in working directory
-cp --no-clobber /opt/casparcg/casparcg.config .
-
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH":/opt/casparcg/lib
-exec /opt/casparcg/bin/casparcg "$@"
