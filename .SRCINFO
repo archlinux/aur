@@ -1,6 +1,6 @@
 pkgbase = snowflake-pt-client-bin
 	pkgdesc = Pluggable Transport using WebRTC, inspired by Flashproxy
-	pkgver = 2.14.1
+	pkgver = 2.15.1
 	pkgrel = 1
 	url = https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake
 	install = snowflake-pt-client-bin.install
@@ -10,9 +10,9 @@ pkgbase = snowflake-pt-client-bin
 	optdepends = torbrowser-launcher
 	options = !debug
 	backup = etc/tor/snowflake
-	source = snowflake-v2.14.1.tar.gz::https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/-/jobs/1620354/artifacts/raw/snowflake-v2.14.1.tar.gz
+	source = snowflake-v2.15.1.tar.gz::https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/-/jobs/1774608/artifacts/raw/snowflake-v2.15.1.tar.gz
 	source = snowflake
-	b2sums = 8f39d0465703f617daf65d1140abe47b2c93a65741ff0f00ec2852e4ad74f8241c6eccd81a1cce052e17c933f719f4add31b60392f0bd43933f3e70a03b3deb3
+	b2sums = 49e214165316d61bb05fdb7e2d2ed9fe0211d6b806ffe0c262f137b947205238e90a42e2802ead46648f4413fce530f69f3302d39b467511ff97f071392a3c3c
 	b2sums = 454c607e32d8b7d868dbe2237bfd006ca6399bac0200d5693906b4d6679e661e2b6fcf569ded7d198cc1e5c899d9bcb27c5c26ee354ad46bd27e020f9f4304a3
 
 pkgname = snowflake-pt-client-bin
