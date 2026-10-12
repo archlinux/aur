@@ -1,7 +1,7 @@
 pkgbase = niri-spicy-git
 	pkgdesc = Scrollable-tiling Wayland compositor, with some out of tree spice
-	pkgver = 26.04.r87.g56b2df0
-	pkgrel = 1
+	pkgver = 26.04.r220.g1bfaa83
+	pkgrel = 2
 	url = https://github.com/niri-wm/niri
 	arch = x86_64
 	arch = aarch64
@@ -31,7 +31,7 @@ pkgbase = niri-spicy-git
 	optdepends = xdg-desktop-portal-gnome: screencasting support
 	optdepends = gnome-keyring: implements the secret portal, for certain apps to work
 	optdepends = polkit-gnome: when apps need to ask for root permissions
-	provides = niri=26.04.r87.g56b2df0
+	provides = niri=26.04.r220.g1bfaa83
 	provides = wayland-compositor
 	conflicts = niri-bin
 	conflicts = niri

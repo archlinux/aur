@@ -15,8 +15,8 @@
 : ${_sccache:=}
 
 pkgname=niri-spicy-git
-pkgver=26.04.r87.g56b2df0
-pkgrel=1
+pkgver=26.04.r220.g1bfaa83
+pkgrel=2
 pkgdesc="Scrollable-tiling Wayland compositor, with some out of tree spice"
 arch=(x86_64 aarch64)
 url="https://github.com/niri-wm/${pkgname%-spicy-git}"
