@@ -11,15 +11,16 @@ license=('MIT')
 makedepends=('cmake' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kroketio/intgemm/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('0d1b0cd471642c8e0c9160aa5ec3d1be0435d65c2f30f0df2b6651d62bb9d428')
-#options=(!lto) # fast fix
-options=(!strip)
-
-# prepare() {
-#     if check_option lto y; then
-#         CFLAGS+=" -ffat-lto-objects"
-#         CXXFLAGS+=" -ffat-lto-objects"
-#     fi
-# }
+#
+# LTO + strip breaks the static archives
+#
+# makepkg strips .gnu.lto_* sections from every .o/.a (Allan McRae, 2021).
+# With LTO, GCC emits slim objects that contain only bytecode; after strip
+# the archives become empty (libintgemm.a: 95->0 symbols,
+# libsentencepiece-browsermt.a: 811->0). Relinking then leaves the exact
+# unresolved symbols seen in the failure.
+#
+options=(!strip)  ## keeps the LTO sections intact and avoids the problem.
 
 build() {
     cd "${srcdir}/intgemm-${pkgver}"
