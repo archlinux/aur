@@ -1,7 +1,7 @@
 pkgbase = yaabsa-bin
 	pkgdesc = Unofficial feature rich, responsive, modern client for Audiobookshelf
 	pkgver = 1.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Vito0912/yaabsa
 	install = yaabsa.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = yaabsa-bin
 	depends = libmpv.so
 	depends = libsecret
 	depends = gtk3
-	depends = libayatana-appindicator
+	depends = libayatana-indicator
 	depends = hicolor-icon-theme
 	provides = yaabsa
 	conflicts = yaabsa
