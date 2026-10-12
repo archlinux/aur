@@ -5,6 +5,9 @@ pkgrel=2
 pkgdesc="This package will append proper archive url to mirrorlist"
 arch=('x86_64')
 license=('GPL')
+depends=(
+    python
+)
 source=(
     pacman-archive
     update-mirrorlist-archive
