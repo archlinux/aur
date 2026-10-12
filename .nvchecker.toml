@@ -1,0 +1,7 @@
+[pulseaudio-dlna-cygn]
+source = "github"
+github = "Cygn/pulseaudio-dlna"
+prefix = "pulseaudio-dlna-"
+from_pattern = "-"
+to_pattern = "."
+use_latest_release = true

@@ -1,0 +1,47 @@
+From 0453b12387465eb5d6ee4fce14eed8cfcb683e7f Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Mon, 12 Oct 2026 19:42:03 +0200
+Subject: [PATCH] Use pre-Python-3.14 forking semantics
+
+Python 3.14 changed the default multiprocessing start method on Linux
+from 'fork' to 'forkserver'. That breaks this application in two ways:
+
+1. it now tries to pickle everything, so it fails with:
+
+    > cannot pickle '_thread.lock' object`
+
+2. the child loses all the class-level state the parent had already
+fiddled with (e.g. stream server host and port.)
+
+To fix this, reconfigure multiprocessing so it uses the old behavior
+from Python 3.13 and earlier.
+---
+ pulseaudio_dlna/__main__.py | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/pulseaudio_dlna/__main__.py b/pulseaudio_dlna/__main__.py
+index 86d7d7a..ae51da8 100644
+--- a/pulseaudio_dlna/__main__.py
++++ b/pulseaudio_dlna/__main__.py
+@@ -117,6 +117,7 @@ Examples:
+ 
+ import sys
+ import os
++import multiprocessing
+ import docopt
+ import logging
+ import socket
+@@ -126,6 +127,10 @@ import getpass
+ def main(argv=sys.argv[1:]):
+ 
+     import pulseaudio_dlna
++
++    if multiprocessing.get_start_method(allow_none=True) is None:
++        multiprocessing.set_start_method("fork")
++
+     options = docopt.docopt(__doc__, version=pulseaudio_dlna.__version__)
+ 
+     level = logging.DEBUG
+-- 
+2.56.0
+

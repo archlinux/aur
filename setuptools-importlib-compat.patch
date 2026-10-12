@@ -1,0 +1,78 @@
+From 6543003117f226a69bec4dbf6f294ff68c931b3f Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Fri, 9 Oct 2026 12:44:42 +0200
+Subject: [PATCH] Use importlib instead of pkg_resources
+
+---
+ pulseaudio_dlna/__init__.py     |  6 +++---
+ pulseaudio_dlna/streamserver.py | 26 +++++++++++++-------------
+ 2 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/pulseaudio_dlna/__init__.py b/pulseaudio_dlna/__init__.py
+index 1ee758a..a74decd 100644
+--- a/pulseaudio_dlna/__init__.py
++++ b/pulseaudio_dlna/__init__.py
+@@ -16,13 +16,13 @@
+ # along with pulseaudio-dlna.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ import os
+-import pkg_resources
++import importlib.metadata
+ 
+ from .utils import git
+ 
+ try:
+-    version = pkg_resources.get_distribution(__package__).version
+-except pkg_resources.DistributionNotFound:
++    version = importlib.metadata.version(__package__)
++except importlib.metadata.PackageNotFoundError:
+     version = 'unknown'
+ 
+ if os.environ.get('USE_PKG_VERSION', None) == '1':
+diff --git a/pulseaudio_dlna/streamserver.py b/pulseaudio_dlna/streamserver.py
+index f431462..c56f8d9 100644
+--- a/pulseaudio_dlna/streamserver.py
++++ b/pulseaudio_dlna/streamserver.py
+@@ -29,7 +29,7 @@ import urllib.parse
+ import json
+ import os
+ import signal
+-import pkg_resources
++import importlib.resources
+ import http.server
+ import socketserver
+ import queue
+@@ -356,18 +356,18 @@ class StreamRequestHandler(http.server.BaseHTTPRequestHandler):
+         elif settings.get('type', None) == 'image':
+             image_name = settings.get('name', None)
+             if image_name:
+-                image_path = pkg_resources.resource_filename(
+-                    'pulseaudio_dlna.streamserver', os.path.join(
+-                        'images', os.path.basename(image_name)))
+-                try:
+-                    _type = pulseaudio_dlna.images.get_type_by_filepath(
+-                        image_path)
+-                    return _type(path=image_path, cached=True)
+-                except (pulseaudio_dlna.images.UnknownImageExtension,
+-                        pulseaudio_dlna.images.ImageNotAccessible,
+-                        pulseaudio_dlna.images.MissingDependencies,
+-                        pulseaudio_dlna.images.IconNotFound) as e:
+-                    logger.error(e)
++                image_ref = importlib.resources.files(
++                    'pulseaudio_dlna.streamserver') / 'images' / os.path.basename(image_name)
++                with importlib.resources.as_file(image_ref) as image_path:
++                    try:
++                        _type = pulseaudio_dlna.images.get_type_by_filepath(
++                            image_path)
++                        return _type(path=image_path, cached=True)
++                    except (pulseaudio_dlna.images.UnknownImageExtension,
++                            pulseaudio_dlna.images.ImageNotAccessible,
++                            pulseaudio_dlna.images.MissingDependencies,
++                            pulseaudio_dlna.images.IconNotFound) as e:
++                        logger.error(e)
+         elif settings.get('type', None) == 'sys-icon':
+             icon_name = settings.get('name', None)
+             if icon_name:
+-- 
+2.56.0
+
