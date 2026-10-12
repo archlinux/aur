@@ -1,7 +1,7 @@
 pkgbase = amule-git
 	pkgdesc = Client for the eD2k and Kad networks
-	pkgver = 3.0.0.r92.b5d8d40d0
-	pkgrel = 1
+	pkgver = 3.1.0.r243.5c5cdd9f8
+	pkgrel = 2
 	url = https://github.com/amule-org/amule
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -31,7 +31,6 @@ pkgbase = amule-git
 	provides = amule
 	provides = amule-daemon
 	conflicts = amule
-	options = !lto
 	source = git+https://github.com/amule-org/amule.git
 	source = amuled.systemd
 	source = amuleweb.systemd

@@ -3,8 +3,8 @@
 # Contributor: lukpod
 
 pkgname=amule-git
-pkgver=3.0.0.r92.b5d8d40d0
-pkgrel=1
+pkgver=3.1.0.r243.5c5cdd9f8
+pkgrel=2
 pkgdesc="Client for the eD2k and Kad networks"
 arch=(x86_64)
 url="https://github.com/amule-org/amule"
@@ -14,7 +14,6 @@ depends=(
     crypto++
     curl
     gd
-    #geoip
     glib2
     glibc
     gtk3
@@ -39,7 +38,7 @@ makedepends=(
     )
 provides=(amule amule-daemon)
 conflicts=(amule)
-options=(!lto)
+#options=(!lto)
 source=(
     "git+https://github.com/amule-org/amule.git"
     amuled.systemd
@@ -62,19 +61,22 @@ build() {
   local _flags=(
     -DBUILD_ALCC=ON
     -DBUILD_ALC=ON
+    -DBUILD_AMULEAPI=ON
     -DBUILD_AMULECMD=ON
     -DBUILD_CAS=ON
     -DBUILD_DAEMON=ON
     -DBUILD_FILEVIEW=ON
     -DBUILD_REMOTEGUI=ON
+    -DBUILD_TESTING=ON
     -DBUILD_WEBSERVER=ON
     -DBUILD_WXCAS=ON
     -DENABLE_IP2COUNTRY=ON
     -DENABLE_NLS=ON
     -DENABLE_UPNP=ON
+    -DBUILD_EVERYTHING=ON
   )
 
-  cmake -B build -S amule -Wno-dev \
+  cmake -B build -S amule -Wno-author \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     "${_flags[@]}"
@@ -87,9 +89,9 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
-  install -Dm644 amuled.systemd   "$pkgdir"/usr/lib/systemd/system/amuled.service
-  install -Dm644 amuleweb.systemd "$pkgdir"/usr/lib/systemd/system/amuleweb.service
-  install -Dm644 amule.sysusers   "$pkgdir"/usr/lib/sysusers.d/amule.conf
-  install -Dm644 amule.tmpfiles   "$pkgdir"/usr/lib/tmpfiles.d/amule.conf
+  DESTDIR="${pkgdir}" cmake --install build
+  install -Dm644 amuled.systemd   "${pkgdir}"/usr/lib/systemd/system/amuled.service
+  install -Dm644 amuleweb.systemd "${pkgdir}"/usr/lib/systemd/system/amuleweb.service
+  install -Dm644 amule.sysusers   "${pkgdir}"/usr/lib/sysusers.d/amule.conf
+  install -Dm644 amule.tmpfiles   "${pkgdir}"/usr/lib/tmpfiles.d/amule.conf
 }
