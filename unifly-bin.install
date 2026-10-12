@@ -1,0 +1,19 @@
+# pacman installs unifly for every user and cannot write into a home
+# directory, so point each user at the per-user skill install instead.
+
+post_install() {
+    cat <<'MSG'
+==> unifly ships an agent skill so coding agents can find it. As your own
+    user (not root), install it into ~/.agents/skills with:
+      unifly skill --install
+    Add --claude to install it into Claude Code's skills directory instead.
+MSG
+}
+
+post_upgrade() {
+    # 0.10.0 is the last release without `unifly skill --install`. The
+    # per-user skill carries no version, so later upgrades need no reminder.
+    if [ "$(vercmp "$2" 0.10.0)" -le 0 ]; then
+        post_install
+    fi
+}
