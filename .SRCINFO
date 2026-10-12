@@ -1,7 +1,7 @@
 pkgbase = kubecolor-bin
 	pkgdesc = A tool to colorize the output of kubectl commands
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kubecolor/kubecolor
 	arch = x86_64
 	license = MIT
