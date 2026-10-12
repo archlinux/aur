@@ -2,7 +2,7 @@
 
 pkgname=3x-ui
 pkgver=3.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
 url="https://github.com/MHSanaei/$pkgname"
@@ -40,6 +40,7 @@ prepare() {
   sed -i 's|&& update$|\&\& echo "Please use AUR helper for this function"|'                 ${pkgname:1}.sh
 
   sed -i 's|=/usr/local|=/usr/lib|'                                                          ${pkgname:1:4}.service.arch
+  sed -i '/^ReadWritePaths=/s|$| -/usr/lib/x-ui|'                                            ${pkgname:1:4}.service.arch
 
   cd frontend
   npm ci
@@ -48,6 +49,8 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
+  export TMPDIR="$srcdir/tmp"
+    mkdir -p "$TMPDIR"
   export GOCACHE="$srcdir"/go-build
   export GOPATH="$srcdir"/go
   export CGO_CPPFLAGS=$CPPFLAGS
