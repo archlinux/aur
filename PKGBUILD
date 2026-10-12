@@ -1,6 +1,6 @@
 # Maintainer: Joschka Thurner <git@joschkathurner.de>
 pkgname=docker-sbx
-pkgver=0.45.1
+pkgver=0.47.0
 pkgrel=1
 pkgdesc="Docker sandboxes - run AI coding agents in isolated microVM sandboxes"
 arch=('x86_64' 'aarch64')
@@ -17,15 +17,17 @@ provides=('sbx')
 conflicts=('sbx')
 options=('!debug')
 source_x86_64=("https://github.com/docker/sbx-releases/releases/download/v${pkgver}/DockerSandboxes-linux-amd64.tar.gz")
-sha256sums_x86_64=('a5470cabe32d25d242e05a10d1a2feb67a33e1e668e0e8c2488e0e02712e74f7')
+sha256sums_x86_64=('a89cb4380075ebb20938103bc98ec63327fbeabe43a71f0575ddb285a051eab4')
 source_aarch64=("https://github.com/docker/sbx-releases/releases/download/v${pkgver}/DockerSandboxes-linux-arm64.tar.gz")
-sha256sums_aarch64=('ede2c8a6f8eff34fa20820ad445ee1e874e8c9928c76491cb496b5ff488ab065')
+sha256sums_aarch64=('6a3c45df52ff32722bb33e4d2c66f9920e284b9a3adeba17afcfcea3ad346eff')
 
 package() {
     # sbx locates its helper binaries at runtime via a path relative to its
     # own executable (<dir>/../libexec)
     install -Dm755 "$srcdir/docker-sbx/sbx" \
         "$pkgdir/usr/lib/${pkgname}/bin/sbx"
+    install -Dm644 "$srcdir/docker-sbx/sbx-version.json" \
+        "$pkgdir/usr/lib/${pkgname}/bin/sbx-version.json"
     install -d "$pkgdir/usr/bin"
     ln -s "../lib/${pkgname}/bin/sbx" "$pkgdir/usr/bin/sbx"
 
@@ -38,6 +40,8 @@ package() {
     fi
     install -Dm755 "$srcdir/docker-sbx/mkfs.erofs" \
         "$pkgdir/usr/lib/${pkgname}/libexec/mkfs.erofs"
+    install -Dm755 "$srcdir/docker-sbx/mkfs.ext4" \
+        "$pkgdir/usr/lib/${pkgname}/libexec/mkfs.ext4"
     # Kernel/rootfs filenames vary by arch (e.g. nerdbox-kernel-x86_64 vs.
     # nerdbox-kernel-arm64_4k), so install whatever upstream shipped.
     for f in "$srcdir"/docker-sbx/nerdbox-kernel-* "$srcdir"/docker-sbx/nerdbox-rootfs-*.erofs; do
