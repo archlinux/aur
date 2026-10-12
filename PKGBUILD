@@ -3,7 +3,7 @@
 
 pkgname=nogforge
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Packages the KognogOS way, in a terminal: what's installed, searching and installing, and updates you can read, on top of nog"
 arch=('any')
 url="https://github.com/jetomev/nogforge"
@@ -14,7 +14,9 @@ license=('GPL3')
 depends=('python' 'python-textual' 'python-rich' 'python-forgekit>=0.10.0' 'nog>=1.7.0')
 # v1.1.0: nog runs inside nogForge and the password is asked in its own box:
 # no desktop password window needed (forgekit 0.6.0); nog 1.7.0 reports its steps
-optdepends=('archlinux-appstream-data: app names and category badges')
+optdepends=('archlinux-appstream-data: app names and category badges'
+            'flatpak: the Flatpak pages (shown only when it is installed)'
+            'snapd: the Snap pages (shown only when it is installed)')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
 sha256sums=('dd1f2d6d2809bdea85ff518b7764868d4f0ee38938a70de9d1c28c7c3eb128db'
