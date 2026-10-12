@@ -1,0 +1,29 @@
+pkgbase = somedesk-bin
+	pkgdesc = Self-hosted, end-to-end encrypted remote desktop (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/giosuel/somedesk
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = fontconfig
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libglvnd
+	depends = libpipewire
+	depends = libstdc++
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libxrandr
+	depends = wayland
+	optdepends = xdg-desktop-portal: screen sharing and remote control on Wayland
+	provides = somedesk=0.1.0
+	conflicts = somedesk
+	options = !debug
+	source_x86_64 = https://github.com/giosuel/somedesk/releases/download/v0.1.0/SomeDesk-0.1.0-linux-x64.tar.gz
+	sha256sums_x86_64 = e21e51162ba36c94d12f2c32b1dd542270b5cb497025638b4ef32dde5ee06931
+
+pkgname = somedesk-bin
