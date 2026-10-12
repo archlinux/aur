@@ -1,0 +1,18 @@
+pkgbase = big-bibata-cursor-theme
+	pkgdesc = Open source, compact, and material designed cursor set.
+	pkgver = 20260916
+	pkgrel = 1
+	url = https://github.com/big-comm/Bibata_Cursor
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = librsvg
+	makedepends = python
+	makedepends = python-clickgen>=2.0.0
+	provides = bibata-cursor-theme
+	conflicts = bibata-cursor-theme
+	options = !strip
+	source = git+https://github.com/big-comm/Bibata_Cursor.git#commit=c2383d5e5c4a3b9266cddb973e7062fd0c451457
+	sha256sums = e236ded0a0c246db66edd7af597245e7fd245027328c3a90365b21e7dce11161
+
+pkgname = big-bibata-cursor-theme
