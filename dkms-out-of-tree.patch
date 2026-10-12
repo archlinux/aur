@@ -12,8 +12,8 @@ virt/kvm makefile must come from the module tree, not from the headers.
 -include $(srctree)/virt/kvm/Makefile.kvm
 +include $(src)/../../../virt/kvm/Makefile.kvm
  
- kvm-y			+= x86.o emulate.o irq.o lapic.o cpuid.o pmu.o mtrr.o \
- 			   debugfs.o mmu/mmu.o mmu/page_track.o mmu/spte.o
+ kvm-y			+= x86.o emulate.o irq.o lapic.o cpuid.o pmu.o regs.o \
+ 			   mtrr.o debugfs.o mmu/mmu.o mmu/page_track.o mmu/spte.o
 --- a/arch/x86/kvm/trace.h
 +++ b/arch/x86/kvm/trace.h
 @@ -1968,7 +1968,7 @@

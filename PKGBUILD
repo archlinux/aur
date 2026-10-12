@@ -1,8 +1,8 @@
 # Maintainer: Sandwich <sandwich@archworks.co>
 #
 # KVM modules patched for architectural conformance, built by DKMS against
-# whichever 7.2.x kernels are installed. Three VMAware checks stop firing as a
-# direct consequence, because the fix is to raise the exception the
+# every installed kernel of _kver's release. Three VMAware checks stop firing
+# as a direct consequence, because the fix is to raise the exception the
 # architecture specifies:
 #
 #   SVM_EXCEPTIONS    a CPL>0 SVM instruction must raise #UD, not #GP
@@ -17,20 +17,23 @@
 # vanilla kernel of the same version and builds them against the installed
 # headers; the two Makefile paths that assume an in-tree build are redirected.
 # The KVM sources do not differ between the Arch flavours of one version (the
-# module srcversion is identical on linux and linux-cachyos-bore 7.2.3), so one
-# source tree serves all of them.
+# module srcversion is identical on linux and linux-cachyos-bore 7.2.3 and
+# 7.2.9), so one source tree serves all of them.
 #
-# THE PIN: the sources are 7.2.3's. They build against any 7.2.x headers and
-# are refused for anything else, so after a kernel upgrade past 7.2 the stock
+# THE PIN: the sources are one stable release's and DKMS refuses every other.
+# Stable updates change KVM too: 7.2.9 moved declarations out of the installed
+# headers into arch/x86/kvm, so 7.2.3's tree stopped compiling, and 7.2.10
+# changes svm.c and x86.c without touching a header, so 7.2.9's tree would
+# build there and silently drop those fixes. After any kernel upgrade the stock
 # modules load silently and the three checks come back. Bump _kver here.
 
 pkgname=vfio-native-kvm-dkms
 _pkgbase=vfio-native-kvm
-_kver=7.2.3
-_tag=1.4.2
+_kver=7.2.9
+_tag=1.4.3
 pkgver=${_kver}
 pkgrel=1
-pkgdesc="KVM modules patched to raise the exceptions the architecture specifies (DKMS, 7.2.x kernels)"
+pkgdesc="KVM modules patched to raise the exceptions the architecture specifies (DKMS, ${_kver} kernels)"
 arch=('x86_64')
 url="https://git.archworks.co/sandwich/vfio-native"
 license=('GPL-2.0-only')
@@ -47,7 +50,7 @@ source=("git+${url}.git#tag=v${_tag}"
         'kvm-native.hook')
 noextract=("linux-${_kver}.tar.xz")
 sha256sums=('SKIP'
-            '8ba259e8e7b13ec6ef0941c8a39ad90b24bd4a4d6c0010ba6bafb794550ecd03'
+            'b4c5dfbe51a364a6c7f03869200f88c8e1f77403539005f14b7fc6bc91b8d8ba'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -70,5 +73,6 @@ package() {
     cp -r "linux-${_kver}/arch/x86/kvm" "${dest}/arch/x86/"
     cp -r "linux-${_kver}/virt/kvm"     "${dest}/virt/"
     sed "s/@PKGVER@/${pkgver}/" dkms.conf > "${dest}/dkms.conf"
-    install -Dm644 kvm-native.hook "${pkgdir}/usr/share/libalpm/hooks/90-vfio-native-kvm.hook"
+    install -dm755 "${pkgdir}/usr/share/libalpm/hooks"
+    sed "s/@PKGVER@/${pkgver}/g" kvm-native.hook > "${pkgdir}/usr/share/libalpm/hooks/90-vfio-native-kvm.hook"
 }
