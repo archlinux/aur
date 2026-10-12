@@ -3,7 +3,7 @@
 _pkgauthor=Dark-Alex-17
 _pkgname=managarr
 pkgname=${_pkgname}-bin
-pkgver=0.8.0
+pkgver=0.8.1
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="A TUI and CLI for managing *arr servers"
@@ -27,12 +27,12 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/downloa
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
 sha256sums=('fe07b0be3b1da93a987db6ac910f0f01b2c64c46e74e13307737f7741ec26e5c'
             'c4493cb17df836cdf14570a589fc0317db18e46908fa3ed0721baf503ccbc390'
-            '7973aeb5cebdced1d53bdbf30f147257278b6ac5105b51c392332d2cf44f3f7b'
+            'fdf0971604826aa4800e652da1b9839b108c96fd047daa0f3c859558584f7337'
             '1567b9c69adab84f053e70eb684b55fa0bc2ad0e1fdd55ab49a71928961ecfe8'
             '8f65d095106dff69c3a5f2675fe8de3fe96c71cf1dc6063b9545b90194d1a00b'
             '0a587d5756acbc0e9e3377492cae59f21208107470e9dd55baa11db267e6f83f')
-sha256sums_x86_64=('c07c5d7e2fa8bbd810a8816c1d5020a5a2ee0b75a54ec9f83e9f29f8baa1b72e')
-sha256sums_aarch64=('d4f722d61d9ab99b8d2beb18d0bc1cae7301bb620bdf598b0e491c3a1a86ccdf')
+sha256sums_x86_64=('2e570c5324e4f68c85a43b405dadf94da1020642221418135fdf3216fc8fb438')
+sha256sums_aarch64=('34bc838e13c4a5f2528ed8dc9cc21f2d2b9525a1a30aad385c876556341a1ce5')
 
 
 package() {
