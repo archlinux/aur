@@ -1,5 +1,5 @@
 pkgname=opentunnel-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Public URLs for local services, end-to-end encrypted'
 url='https://opentunnel.xyz'
@@ -8,10 +8,10 @@ license=('MIT')
 provides=('opentunnel')
 conflicts=('opentunnel')
 options=('!debug' '!strip')
-source_aarch64=("opentunnel-0.5.0-aarch64.tar.gz::https://github.com/anomalyco/opentunnel/releases/download/v0.5.0/opentunnel-linux-arm64.tar.gz")
-sha256sums_aarch64=('ffefc6bfe0327ba47f4ad06d55f369838b1b84a93af8d5868a90e3f4e8e7bf39')
-source_x86_64=("opentunnel-0.5.0-x86_64.tar.gz::https://github.com/anomalyco/opentunnel/releases/download/v0.5.0/opentunnel-linux-x64.tar.gz")
-sha256sums_x86_64=('9c2b95237475c149ce7ee933d1e22f1742e32193f1498638fa80b9d47c9bd81c')
+source_aarch64=("opentunnel-0.5.1-aarch64.tar.gz::https://github.com/anomalyco/opentunnel/releases/download/v0.5.1/opentunnel-linux-arm64.tar.gz")
+sha256sums_aarch64=('b52b43f90ac253a7b4b479e22f2fcd20a981915da0d66abd02f1f94dd9512dbb')
+source_x86_64=("opentunnel-0.5.1-x86_64.tar.gz::https://github.com/anomalyco/opentunnel/releases/download/v0.5.1/opentunnel-linux-x64.tar.gz")
+sha256sums_x86_64=('8dfeb0eac9d48e02f193d0cec64b09554654882b9c5c9e4a417d2d144e626b03')
 
 package() {
   install -Dm755 opentunnel "$pkgdir/usr/bin/opentunnel"
