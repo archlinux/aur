@@ -1,39 +1,18 @@
 pkgname=verde-bin
-pkgver=0.1.124
+pkgver=0.1.125
 pkgrel=1
 pkgdesc='Desktop GUI for coding agents like Codex and OpenCode'
 arch=('x86_64')
 url='https://github.com/JonathanRiche/verde'
 license=('MIT')
 depends=(
-  'alsa-lib'
-  'at-spi2-core'
-  'cairo'
-  'cups'
-  'dbus'
-  'expat'
-  'fontconfig'
-  'freetype2'
   'gcc-libs'
-  'glib2'
   'glibc'
-  'libdrm'
-  'libglvnd'
-  'libx11'
-  'libxcomposite'
-  'libxdamage'
-  'libxext'
-  'libxfixes'
-  'libxi'
-  'libxkbcommon'
-  'libxrandr'
-  'libxrender'
-  'mesa'
-  'nspr'
-  'nss'
-  'pango'
-  'systemd-libs'
   'zlib'
+  'vulkan-icd-loader'
+  'glib2'
+  'libglvnd'
+  'libsoup3'
   'libwpe'
   'wpebackend-fdo'
   'wpewebkit'
@@ -51,7 +30,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/JonathanRiche/verde/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  'c9e2d885f7f039a3b1aa155672ba4bc6aa30dbf97b9de36b088c1e05e60e1108'
+  'ffc377e1824b33ecfbf699cd7d59f383d70ba5fe205f39f0cdebb788989f2aeb'
   '9952749c80ab34ca65ef1b4e8653dcf5760361aecc44dfd7dc398d991e7d9f3e'
 )
 
