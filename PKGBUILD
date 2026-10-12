@@ -5,8 +5,10 @@
 # https://github.com/Hkshoonya/nvidia-broadcast-linux
 
 pkgname=nvbroadcast-bin
-pkgver=1.3.0
+pkgver=1.5.3
 pkgrel=1
+pyrnnoise_ver=0.4.5
+audiolab_ver=0.5.2
 pkgdesc='Unofficial NVIDIA Broadcast for Linux — AI-powered virtual camera with background removal, blur, replacement, video enhancement, and noise cancellation. GPU accelerated. Open source.'
 arch=('x86_64')
 url='https://github.com/Hkshoonya/nvidia-broadcast-linux'
@@ -24,17 +26,25 @@ depends=(
   'libpulse'
   'psmisc'
   'python>=3.11'
+  'python-av'
   'python-click'
   'python-gobject'
+  'python-humanize'
+  'python-jinja'
   'python-mediapipe-bin'
+  'python-matplotlib'
   'python-numpy'
   'python-onnx'
   'python-onnxruntime-opt-cuda'
+  'python-packaging'
   'python-pillow'
   'python-protobuf'
   'python-psutil'
   'python-scipy'
+  'python-soundfile'
+  'python-soxr'
   'python-opencv'
+  'python-tqdm'
 )
 makedepends=(
   'python-build'
@@ -42,38 +52,57 @@ makedepends=(
   'python-wheel'
   'python-setuptools'
 )
-conflicts=('python-pyrnnoise')
+# Both wheels are vendored into site-packages; guard against a repo/AUR package
+# appearing under the same name and colliding with the copies we install.
+conflicts=('python-pyrnnoise' 'python-audiolab')
 optdepends=(
   'libayatana-appindicator: system tray icon'
   'python-pip: in-app installer for optional GPU/meeting runtimes (CuPy, TensorRT, faster-whisper)'
 )
 source=(
   "$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
-  "pyrnnoise-0.4.3-py3-none-manylinux1_x86_64.whl::https://files.pythonhosted.org/packages/04/51/993a25a8b5220e23e0a31ff98747b8fce4685336e0fc4e8e156feab5c4f1/pyrnnoise-0.4.3-py3-none-manylinux1_x86_64.whl"
+  "pyrnnoise-$pyrnnoise_ver-py3-none-manylinux1_x86_64.whl::https://files.pythonhosted.org/packages/f1/8b/6498de7ef0a4670bbeae951bec9cfd2386e57ef386f53eec28e75be39790/pyrnnoise-$pyrnnoise_ver-py3-none-manylinux1_x86_64.whl"
+  "audiolab-$audiolab_ver-py3-none-any.whl::https://files.pythonhosted.org/packages/94/81/5bff5f43003dc2b72497c85c391cb87e1a9ff0b55c359bdf774fe8779c36/audiolab-$audiolab_ver-py3-none-any.whl"
 )
 sha256sums=(
-  '8b8168366349aea5242e49e17bae8ae26547bcbca79fcf000d4b2e45b13349b6'
-  '1b094777e73797c5dd647782902c691ebb9a3c456c878e742597f5b55535a3db'
+  'd6df846534a81779cbca37f1068f2b3120fb4e1d828d5129ce4d5a84a18ea391'
+  'c095114532f9fa21f621084c879d72c93aaa0c9dbe38b662a63577bada2c214e'
+  '657cbabc358d6ff04b69f13d52ffa53288acf4cbcbc792c1cc8b112b670749da'
 )
 install=nvbroadcast.install
 
 build() {
-  cd "$srcdir"/nvidia-broadcast-linux-*/
+  cd "$srcdir/nvidia-broadcast-linux-$pkgver"
   export PYTHONNOUSERSITE=1
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir"/nvidia-broadcast-linux-*/
+  cd "$srcdir/nvidia-broadcast-linux-$pkgver"
   export PYTHONNOUSERSITE=1
 
-  # Install pyrnnoise wheel (not in repositories or AUR)
-  python -m installer --destdir="$pkgdir" "$srcdir"/pyrnnoise-*.whl
+  # Vendored: audiolab is in neither the repos nor the AUR. This pair is the one
+  # that works with the repo's python-av — audiolab >=0.5.2 falls back when PyAV
+  # 17 dropped av.option, while 0.5.1 fails to import.
+  python -m installer --destdir="$pkgdir" \
+    "$srcdir"/audiolab-$audiolab_ver-py3-none-any.whl \
+    "$srcdir"/pyrnnoise-$pyrnnoise_ver-py3-none-manylinux1_x86_64.whl
 
   # Install nvbroadcast wheel
   # Handles: Python modules, /usr/bin/{nvbroadcast,nvbroadcast-vcam},
   #          desktop entry, metainfo, SVG icon, background images
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # python-onnxruntime-opt-cuda's CUDA provider declares no NEEDED on libcudnn,
+  # so ORT only finds cuDNN when it is already in the global symbol namespace;
+  # otherwise every ONNX model silently loads on CPU. Preload it in a wrapper
+  # around both entry points, which also covers the .desktop Exec and the unit.
+  install -d "$pkgdir/usr/lib/nvbroadcast"
+  for _ep in nvbroadcast nvbroadcast-vcam; do
+    mv "$pkgdir/usr/bin/$_ep" "$pkgdir/usr/lib/nvbroadcast/$_ep.real"
+    printf '#!/bin/sh\nif [ -e /usr/lib/libcudnn.so.9 ]; then\n  export LD_PRELOAD="${LD_PRELOAD:+$LD_PRELOAD:}/usr/lib/libcudnn.so.9"\nfi\nexec /usr/lib/nvbroadcast/%s.real "$@"\n' "$_ep" > "$pkgdir/usr/bin/$_ep"
+    chmod 755 "$pkgdir/usr/bin/$_ep"
+  done
 
   # License
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
