@@ -23,6 +23,11 @@ provides=("${_appname}")
 conflicts=("${pkgname%-bin}")
 
 depends=('glibc' 'libgcc')
+optdepends=('git: hako, the plugin manager, clones itself on the first start'
+            'wl-clipboard: paste_image on Wayland'
+            'xclip: paste_image on X11'
+            'openssh: pasting files into a pane that runs ssh'
+            'xdg-utils: opening links from hint mode')
 
 options=('!strip')
 
