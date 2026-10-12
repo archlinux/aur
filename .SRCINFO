@@ -1,0 +1,27 @@
+pkgbase = vosu-bin
+	pkgdesc = Native osu! telemetry daemon with a local dashboard
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/shiruviaa/vosu
+	install = vosu.install
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = imagemagick
+	depends = glibc
+	depends = libelf
+	depends = zlib
+	depends = libcap
+	provides = vosu
+	conflicts = vosu
+	options = !strip
+	source = vosu-linux-v1.0.1.zip::https://github.com/shiruviaa/vosu/releases/download/v1.0.1/vosu-linux-v1.0.1.zip
+	source = vosu.desktop::https://raw.githubusercontent.com/shiruviaa/vosu/v1.0.1/packaging/linux/vosu.desktop
+	source = vosu.svg::https://raw.githubusercontent.com/shiruviaa/vosu/v1.0.1/assets/branding/vosu-app-icon.svg
+	source = vosu-source.png::https://raw.githubusercontent.com/shiruviaa/vosu/v1.0.1/assets/branding/vosu-app-icon.png
+	sha256sums = 5a87c69925c730658d9780b7861a79264e175f18f89010489fa6e72821961681
+	sha256sums = 05ad13ecd832a0496908530f8bb761ce4f4623773519dd5362295ea9a93fdc9c
+	sha256sums = 8db446168308b24dd86bd594166d00c3673e6e8d1cbf261cfdca38aacdf990f6
+	sha256sums = 8ed16ecf662a1ef7d548fe8da4a34bce0b85ef09c82a10fc04aaa4322499050e
+
+pkgname = vosu-bin
