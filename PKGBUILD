@@ -8,7 +8,7 @@ pkgname=(
 )
 pkgver=0.6.0
 _models_ver=0.3.3
-pkgrel=1
+pkgrel=2
 arch=("any")
 url="https://github.com/kroketio/kotki"
 license=('MPL-2.0')
