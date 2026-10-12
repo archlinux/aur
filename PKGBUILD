@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=notepad--
 _pkgname=NotePad--
-pkgver=3.9.0
+pkgver=3.9.1
 pkgrel=1
 pkgdesc="A text editor written in C++,to eventually surpass Notepad++.一个国产跨平台,轻量级的文本编辑,是替换notepad++的一种选择.其内置强大的代码对比功,让你丢掉付费的beyond compare."
 arch=('x86_64')
@@ -25,14 +25,20 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=notepad-v${pkgver}"
 )
 sha256sums=('3cd511f81bff019d6b75bc2d4eb88773e5cbcb66a81e5eb8b33e8802a9760da8')
+_get_project_dir() {
+	local d
+	while IFS= read -r d; do
+		[ -f "$d/CMakeLists.txt" ] && { echo "$d"; return; }
+	done < <(find "${srcdir}" -maxdepth 2 -mindepth 1 -type d ! -name '.*' 2>/dev/null)
+}
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "$(_get_project_dir)"
     sed -i "s/intptr_t/__intptr_t/g" src/qscint/src/xmlMatchedTagsHighlighter.cpp
     sed -i "s/intptr_t/__intptr_t/g" src/qscint/src/xmlMatchedTagsHighlighter.h
     sed -i 's/QObject::tr(u8"/QObject::tr("/g' src/plugin/helloworld/helloworldexport.cpp
 }
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "$(_get_project_dir)"
     cmake -S . -Bbuild -GNinja -DCMAKE_BUILD_TYPE=None -W no-dev
     ninja -C build
     sed -i -e "
@@ -42,14 +48,14 @@ build() {
     sed -i "s/io.gitee.cxasm.${pkgname}/${pkgname}/g" src/linux/usr/share/metainfo/io.gitee.cxasm."${pkgname}".metainfo.xml
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/build/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/linux/usr/share/applications/${_pkgname}.desktop" \
+    install -Dm755 "$(_get_project_dir)/build/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "$(_get_project_dir)/src/linux/usr/share/applications/${_pkgname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     _icon_sizes=(32x32 64x64 128x128)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/linux/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png" \
+        install -Dm644 "$(_get_project_dir)/src/linux/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/linux/usr/share/metainfo/io.gitee.cxasm.${pkgname}.metainfo.xml" \
+    install -Dm644 "$(_get_project_dir)/src/linux/usr/share/metainfo/io.gitee.cxasm.${pkgname}.metainfo.xml" \
         "${pkgdir}/usr/share/metainfo/${pkgname}.metainfo.xml"
 }
