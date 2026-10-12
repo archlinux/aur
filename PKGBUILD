@@ -11,7 +11,7 @@
 #            silently refuse the corrected package)
 
 pkgname=gotomux
-pkgver=0.4.8
+pkgver=0.4.9
 pkgrel=1
 pkgdesc='Fuzzy tmux session picker with presets, zoxide and daemon-assisted cold start'
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ install=gotomux.install
 options=('!lto' '!debug')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ca294e7aa38c2e7d05c4727a4f283e5a10f210c180b727a45097a6c5b0c7df62')
+sha256sums=('a29df136bc12a5312e94be4fc83bc8e8b080c1abe3363e0b9b46c0f2f6eb9620')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
