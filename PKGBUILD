@@ -1,13 +1,13 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 
 pkgname=keifu
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="A TUI tool to visualize Git commit graphs with branch genealogy."
 url="https://github.com/trasta298/keifu"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/trasta298/keifu/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6e8c7b23f29cc99db36bc836cc367fd1f11222b458f24591aa1f7337b8f7d940')
+sha256sums=('c437dfc24012617cb81ef74f025b5060c0a252edef749c66435cbaf220392041')
 arch=('x86_64')
 depends=('glibc' 'libgcc' 'zlib' 'git')
 makedepends=('cargo')
