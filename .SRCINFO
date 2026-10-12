@@ -1,0 +1,23 @@
+pkgbase = tomato-todo-bin
+	pkgdesc = 任务与番茄钟，一个安静的专注空间
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/AntheaLaffy/tomato-todo
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = hicolor-icon-theme
+	provides = tomato-todo
+	conflicts = tomato-todo
+	options = !strip
+	options = !debug
+	source = https://github.com/AntheaLaffy/tomato-todo/releases/download/v0.8.2/tomato-todo-0.8.2-x86_64-linux.tar.gz
+	source = tomato-todo.desktop
+	source = LICENSE
+	sha256sums = b0f0d071f3063db78852ee059795caca8017cc9e247e8af52595b7146e7106ea
+	sha256sums = 27016ccfec6a99754468979a18484c1d342dfb1d1727e118e2cf9037b0825ff5
+	sha256sums = 35ac48fb83d92346f4ea881dac8304e85111c7352aaf214b2fd9bb9169dcd001
+
+pkgname = tomato-todo-bin

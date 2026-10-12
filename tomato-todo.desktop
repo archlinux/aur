@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=番茄 Todo
+Name[en]=Tomato Todo
+Comment=任务与番茄钟，一个安静的专注空间
+Exec=tomato-todo
+Icon=tomato-todo
+Terminal=false
+Categories=Office;
+StartupWMClass=tomato-todo
+StartupNotify=true
+Keywords=Pomodoro;Todo;Focus;番茄;专注;
