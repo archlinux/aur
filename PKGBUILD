@@ -1,4 +1,8 @@
 # Maintainer: Kisaragi Fuurin <NicoleSandwich@outlook.com>
+# Template rendered by scripts/publish-aur.mjs, which downloads each release and
+# fills in the real hashes. Do not hand-edit the generated PKGBUILD in the AUR
+# repository: change this file and re-run the script.
+#
 # Upstream publishes a self-contained tarball (Tauri binary + bundled Node/Pi
 # agent runtime), so this is a -bin package; there is no source build here.
 pkgname=tomato-todo-bin
@@ -27,10 +31,9 @@ package() {
   install -d "$pkgdir/usr/lib/Tomato Todo"
   cp -a "$srcdir/agent" "$pkgdir/usr/lib/Tomato Todo/agent"
 
-  # The tarball keeps npm's absolute .bin symlinks from the CI runner
-  # (/home/runner/...), which dangle on every other machine. The runtime
-  # spawns node with explicit paths and the sandbox PATH never includes .bin,
-  # so drop the shim directory instead of shipping broken links.
+  # Releases before the bundle stopped shipping npm's absolute .bin shims carry
+  # dangling links to the CI runner; drop them if present. Harmless once the
+  # bundle is built by scripts/build-agent.mjs, which removes the directory.
   rm -rf "$pkgdir/usr/lib/Tomato Todo/agent/node_modules/.bin"
 
   install -Dm644 "$srcdir/icons/32x32.png"       "$pkgdir/usr/share/icons/hicolor/32x32/apps/tomato-todo.png"
