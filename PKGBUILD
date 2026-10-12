@@ -19,7 +19,7 @@ makedepends=('alsa-lib' 'avahi' 'boost' 'cli11' 'cmake' 'git' 'hicolor-icon-them
              'jack' 'lib32-gcc-libs' 'libpulse' 'libsndfile' 'libspeechd'
              'libx11' 'libxi' 'mesa' 'nlohmann-json' 'openssl'
              'opus' 'poco' 'protobuf' 'python' 'qt6-svg' 'qt6-tools' 'rnnoise'
-             'spdlog' 'speech-dispatcher' 'speexdsp' 'xdg-utils')
+             'spdlog' 'speech-dispatcher' 'speexdsp' 'utf8cpp' 'xdg-utils')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=('git+https://github.com/mumble-voip/mumble.git'
@@ -56,7 +56,6 @@ prepare() {
   git config submodule.3rdparty/SPSCQueue.url "$srcdir/SPSCQueue"
   git config submodule.3rdparty/cmake-compiler-flags.url "$srcdir/cmake-compiler-flags"
   git config submodule.3rdparty/flag-icons.url "$srcdir/flag-icons"
-  git config submodule.3rdparty/utfcpp.url "$srcdir/utfcpp"
   git config submodule.3rdparty/soci.url "$srcdir/soci"
   git config submodule.3rdparty/spdlog.url "$srcdir/spdlog"
   git config submodule.3rdparty/CLI11.url "$srcdir/CLI11"

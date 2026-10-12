@@ -33,6 +33,7 @@ pkgbase = mumble-git
 	makedepends = spdlog
 	makedepends = speech-dispatcher
 	makedepends = speexdsp
+	makedepends = utf8cpp
 	makedepends = xdg-utils
 	depends = glibc
 	depends = libgcc
