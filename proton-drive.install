@@ -1,0 +1,19 @@
+# pacman install script, shared by packaging/PKGBUILD and the three AUR packages
+# (each links it). The same loop is in packaging/deb/prerm and the RPM %preun.
+
+# Removing the package does not stop a running daemon: it keeps serving the
+# mount from the deleted binary, so files deleted under the mount afterwards,
+# `rm -rf ~/ProtonDrive` included, are still deleted on Proton Drive. Stop every
+# logged-in user's service first; anything still queued stays on disk for the
+# next install. Upgrades call pre_upgrade, not this.
+pre_remove() {
+  for dir in /run/user/*; do
+    user=$(id -nu "${dir##*/}" 2>/dev/null) || continue
+    if runuser -u "$user" -- env XDG_RUNTIME_DIR="$dir" \
+      systemctl --user --quiet is-active proton-drive.service 2>/dev/null; then
+      echo "Stopping Proton Drive for $user, which unmounts its drive."
+      runuser -u "$user" -- env XDG_RUNTIME_DIR="$dir" \
+        systemctl --user stop proton-drive.service 2>/dev/null || :
+    fi
+  done
+}
