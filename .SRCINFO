@@ -12,6 +12,7 @@ pkgbase = rovr-bin
 	depends = libgcc
 	depends = libstdc++
 	depends = zlib
+	depends = ttf-nerd-fonts-symbols
 	provides = rovr
 	conflicts = rovr
 	noextract = rovr-x86_64-0.10.3.zip

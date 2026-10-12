@@ -40,7 +40,7 @@ provides=("${_appname}")
 conflicts=("${_appname}")
 
 makedepends=('unzip')
-depends=('bash' 'glibc' 'libgcc' 'libstdc++' 'zlib')
+depends=('bash' 'glibc' 'libgcc' 'libstdc++' 'zlib' 'ttf-nerd-fonts-symbols')
 
 options=(!strip)
 
