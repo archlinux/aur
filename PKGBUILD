@@ -26,18 +26,6 @@ source=(
 sha256sums=('65376f2e381b5b217dd50848ce0757118673b6a0ed6472fb34fe375c8294ae72'
             'd524c128516732626fa14acff4ce74de3fcb275405a89130a0d5857d23b3c447')
 
-: "${pkgname}"
-: "${pkgver}"
-: "${pkgrel}"
-: "${pkgdesc}"
-: "${arch[@]}"
-: "${url}"
-: "${license[@]}"
-: "${makedepends[@]}"
-: "${options[@]}"
-: "${source[@]}"
-: "${sha256sums[@]}"
-
 declare -gA _depends=(
 	[libgcc]="libgcc_s.so"
 	[openssl]="libcrypto.so libssl.so"
@@ -136,3 +124,15 @@ package() {
 
 	install -Dm644 {.,"${pkgdir}/usr/share/licenses/${pkgname}"}/LICENSE-MIT
 }
+
+: "${arch[@]}"
+: "${license[@]}"
+: "${makedepends[@]}"
+: "${options[@]}"
+: "${pkgdesc}"
+: "${pkgname}"
+: "${pkgrel}"
+: "${pkgver}"
+: "${sha256sums[@]}"
+: "${source[@]}"
+: "${url}"
