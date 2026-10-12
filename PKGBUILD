@@ -1,7 +1,7 @@
 # Maintainer: CxOrg <https://github.com/ixnewton>
 # Maintainer: Ian Newton <i.newton@c-org.com>
 pkgname=docan-gtk-bin
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="AI chat app with cloud and local LLM APIs: Gemini, ChatGPT, Claude, OpenRouter, Ollama, LM Studio; file attachment upload support"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('docan' 'docan-bin')
 replaces=('docan-bin')
 options=('!strip')
 source=("docan-gtk-bin-${pkgver}.zip::https://github.com/ixnewton/docan/releases/download/v${pkgver}/docan-${pkgver}-2026-10-11-linux-x64.zip")
-sha256sums=('7449034cda8e3ed7f19c4d03771445ec611d9dbddb904172b71e3cc59ae47ebf')
+sha256sums=('24616937e3ef705633244fc45d2d02622256f3967b2417ed1b1305d2481a6965')
 
 package() {
     cd "${srcdir}"
