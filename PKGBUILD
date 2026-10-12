@@ -1,5 +1,5 @@
 pkgname=mingw-w64-vinecopulib
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="C++ vine copula library (mingw-w64)"
 license=(MIT)
@@ -9,7 +9,7 @@ depends=('mingw-w64-boost' 'mingw-w64-eigen' 'mingw-w64-libwdm')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/vinecopulib/vinecopulib/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c4decb2d6bde4bef460ad257c28609033aaa15b284bed8c86d609fc9015c57af')
+sha256sums=('9c023cf983a385b3eb2b30bc18989039cf734488745d7e1e4d5885fdfd02aad5')
 
 _architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
