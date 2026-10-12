@@ -24,20 +24,12 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=('git+https://github.com/mumble-voip/mumble.git'
         'git+https://github.com/mumble-voip/minhook.git'
-        'git+https://github.com/mumble-voip/mach_override.git'
-        'git+https://github.com/mumble-voip/SPSCQueue.git'
-        'git+https://github.com/mumble-voip/utfcpp.git'
-        'git+https://github.com/CLIUtils/CLI11.git'
-        'git+https://github.com/gabime/spdlog.git'
         'git+https://github.com/Krzmbrzl/cmake-compiler-flags.git'
         'git+https://github.com/lipis/flag-icons.git'
-        'git+https://github.com/nlohmann/json.git'
-        'git+https://github.com/SOCI/soci.git'
         'git+https://github.com/wolfpld/tracy.git'
         'git+https://github.com/xiph/rnnoise.git'
         'git+https://github.com/xiph/speexdsp.git')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-            'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -48,17 +40,11 @@ prepare() {
   cd "$_pkgname"
   git submodule init
   git config submodule.3rdparty/minhook.url "$srcdir/minhook"
-  git config submodule.3rdparty/mach-override-src.url "$srcdir/mach_override"
   git config submodule.3rdparty/speexdsp.url "$srcdir/speexdsp"
   git config submodule.3rdparty/rnnoise-src.url "$srcdir/rnnoise"
   git config submodule.3rdparty/tracy.url "$srcdir/tracy"
-  git config submodule.3rdparty/nlohmann_json.url "$srcdir/json"
-  git config submodule.3rdparty/SPSCQueue.url "$srcdir/SPSCQueue"
   git config submodule.3rdparty/cmake-compiler-flags.url "$srcdir/cmake-compiler-flags"
   git config submodule.3rdparty/flag-icons.url "$srcdir/flag-icons"
-  git config submodule.3rdparty/soci.url "$srcdir/soci"
-  git config submodule.3rdparty/spdlog.url "$srcdir/spdlog"
-  git config submodule.3rdparty/CLI11.url "$srcdir/CLI11"
 
   git -c protocol.file.allow=always submodule update
 
@@ -75,10 +61,7 @@ build() {
     -Dwarnings-as-errors='OFF' \
     -Dclient='ON' \
     -Dserver='OFF' \
-    -Dbundled-cli11='OFF' \
-    -Dbundled-json='OFF' \
     -Dbundled-rnnoise='OFF' \
-    -Dbundled-spdlog='OFF' \
     -Dbundled-speex='OFF' \
     -Dupdate='OFF' \
     -Wno-dev
