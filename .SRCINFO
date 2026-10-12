@@ -1,6 +1,6 @@
 pkgbase = omnidiff-bin
 	pkgdesc = Fast, robust, accurate diffing
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/ivankovic/omnidiff
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = omnidiff-bin
 	provides = omnidiff
 	conflicts = omnidiff
 	options = !strip
-	source_x86_64 = omnidiff-x86_64-0.2.0.tgz::https://github.com/ivankovic/omnidiff/releases/download/v0.2.0/omnidiff-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 33d7d369319529bb7802f08e921bc01287bd5a34bf39d6609808778c9561fbf4
-	source_aarch64 = omnidiff-aarch64-0.2.0.tgz::https://github.com/ivankovic/omnidiff/releases/download/v0.2.0/omnidiff-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 47e7121cdd727504ceab0241c96f0d877ec4b81e4c97f7a6b41a1be4e10b0573
+	source_x86_64 = omnidiff-x86_64-0.2.1.tgz::https://github.com/ivankovic/omnidiff/releases/download/v0.2.1/omnidiff-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = bc5dfb314403ee9bd91ef6a27163598dabf1d9b991b7f0d3b2be61540bd5962b
+	source_aarch64 = omnidiff-aarch64-0.2.1.tgz::https://github.com/ivankovic/omnidiff/releases/download/v0.2.1/omnidiff-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a7697bd737d709fc232f311ddaccb169fc5c4a07133d2dede4ed8708396c48d2
 
 pkgname = omnidiff-bin
