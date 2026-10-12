@@ -1,6 +1,6 @@
 # Maintainer: Qingxu <me@linioi.com>
 pkgname=nowledge-mem
-pkgver=0.10.99
+pkgver=0.10.100
 pkgrel=1
 pkgdesc='Local-first memory and context management system for AI-powered workflows'
 url='https://mem.nowledge.co'
@@ -39,7 +39,7 @@ source_x86_64=(
 noextract=(
     "nowledge-mem-$pkgver.deb"
 )
-sha256sums_x86_64=('99e1aa19a584dc2f58bc586b8e25ab0c4eda957f0dafb3452741cfca5c93455c')
+sha256sums_x86_64=('18a35cee3c1dcadc824d8a392d2a8bd23a68982eef747afe0a874bd8d063ecf1')
 
 package() {
     local _deb="$srcdir/nowledge-mem-$pkgver.deb"
