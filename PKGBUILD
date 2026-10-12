@@ -2,8 +2,8 @@
 
 pkgbase=immortal-barons
 pkgname=('immortal-barons' 'immortal-barons-sysop')
-pkgver=0.2.3
-pkgrel=2
+pkgver=0.2.6
+pkgrel=1
 pkgdesc='Persistent multiplayer BBS door game inspired by Barren Realms Elite'
 arch=('x86_64')
 url='https://github.com/andy5995/immortal-barons'
@@ -22,7 +22,7 @@ makedepends=(
 # The vendored-source asset, not the tag archive: the repo does not commit
 # vendor/, so this is the one that builds without downloading modules.
 source=("${url}/releases/download/v${pkgver}/${pkgbase}-v${pkgver}-vendored-source.tar.gz")
-sha256sums=('36d780a1511766d6d3ce528898cda72c021c284eca82002f1057075f5e247ee8')
+sha256sums=('029c6fe33b3e4f0a5aacef1de06b262a7ad17271c7491b43f6925f4efd0b0d39')
 
 build() {
   cd "${pkgbase}-v${pkgver}"
