@@ -1,8 +1,8 @@
 # Maintainer: Mohammed El-sayed Ahmed <MohammedEl-sayedAhmed@users.noreply.github.com>
 pkgname=clipman-clipboard
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
-pkgdesc="A clipboard history manager for Wayland (GNOME, KDE, Sway, Hyprland, etc.)"
+pkgdesc="A clipboard history manager for GNOME on Wayland"
 arch=('any')
 url="https://mohammedel-sayedahmed.github.io/clipman/"
 license=('Apache-2.0')
@@ -19,7 +19,7 @@ optdepends=(
 )
 _srcname=clipman
 source=("$_srcname-$pkgver.tar.gz::https://github.com/MohammedEl-sayedAhmed/clipman/archive/v$pkgver.tar.gz")
-sha256sums=('c129056324b3b25dbdb10989c866e69d13a511626cfa2682ce094851aa6be4d5')
+sha256sums=('1ae443fe29e43e71d97e2b669648ed8e775fc014e2fb80b5113a2e3c8a63705e')
 
 package() {
     cd "$srcdir/$_srcname-$pkgver"
@@ -35,13 +35,16 @@ package() {
     install -Dm644 extension/extension.js "$_extdir/extension.js"
     install -Dm644 extension/metadata.json "$_extdir/metadata.json"
 
-    # Install desktop file (fix Exec path), icon, and systemd service
+    # Desktop file and systemd unit get the install path; icon and metainfo
+    # are copied as they are.
     sed "s|CLIPMAN_PATH_PLACEHOLDER|/opt/$_srcname|" data/com.clipman.Clipman.desktop \
         > "$srcdir/com.clipman.Clipman.desktop"
     install -Dm644 "$srcdir/com.clipman.Clipman.desktop" "$pkgdir/usr/share/applications/com.clipman.Clipman.desktop"
     install -Dm644 data/com.clipman.Clipman.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.clipman.Clipman.svg"
     install -Dm644 data/com.clipman.Clipman.metainfo.xml "$pkgdir/usr/share/metainfo/com.clipman.Clipman.metainfo.xml"
-    install -Dm644 data/clipman.service "$pkgdir/usr/lib/systemd/user/clipman.service"
+    sed "s|CLIPMAN_PATH_PLACEHOLDER|/opt/$_srcname|" data/clipman.service \
+        > "$srcdir/clipman.service"
+    install -Dm644 "$srcdir/clipman.service" "$pkgdir/usr/lib/systemd/user/clipman.service"
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
