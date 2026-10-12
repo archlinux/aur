@@ -1,6 +1,6 @@
 pkgbase = zune-bin
 	pkgdesc = A Luau runtime, similar to Lune, Node, or Bun.
-	pkgver = 0.5.8
+	pkgver = 0.5.9
 	pkgrel = 1
 	url = https://github.com/Scythe-Technology/zune
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = zune-bin
 	provides = zune
 	conflicts = zune
 	conflicts = zune-git
-	source = https://raw.githubusercontent.com/Scythe-Technology/zune/v0.5.8/LICENSE.md
+	source = https://raw.githubusercontent.com/Scythe-Technology/zune/v0.5.9/LICENSE.md
 	sha256sums = ac044e6db7ba08069f635afc1759b0ae11a7d47f79144a4ccdd16fc94ba47d1e
-	source_x86_64 = https://github.com/Scythe-Technology/zune/releases/download/v0.5.8/zune-0.5.8-linux-x86_64.zip
-	sha256sums_x86_64 = 94a59be84741b4809c3e52b3753f384da554e1930d2abf6a0dd98e32bc76b321
-	source_aarch64 = https://github.com/Scythe-Technology/zune/releases/download/v0.5.8/zune-0.5.8-linux-aarch64.zip
-	sha256sums_aarch64 = 010fa8d6c70fd3dfdd17bba076d08bef2859e0b33cf78c2a2c579350adda38f7
+	source_x86_64 = https://github.com/Scythe-Technology/zune/releases/download/v0.5.9/zune-0.5.9-linux-x86_64.zip
+	sha256sums_x86_64 = aa266b22ec7e0ed53dcf016a8cab92fd41a1859c7ba2cee673c1cfb526411010
+	source_aarch64 = https://github.com/Scythe-Technology/zune/releases/download/v0.5.9/zune-0.5.9-linux-aarch64.zip
+	sha256sums_aarch64 = 3a848d43984c5d1f5f796fce0e33357acc38d5f86795892a743fdfb9ba57ad50
 
 pkgname = zune-bin
