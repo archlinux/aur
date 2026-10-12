@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=pdfcraft
-pkgver=0.6.0
+pkgver=0.7.1
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -17,7 +17,7 @@ conflicts=(printcraft)
 replaces=(printcraft)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('a06fb8a7594e5e19e3d2be1df747714836e0baabbe156df09adf944c1b3e4961')
+sha256sums=('92b7640b9899fccbe6b1aa5e4ced405cdc5826e443764e512fd253ee5341b5d6')
 
 _srcenv() {
 	cd "$_archive"
