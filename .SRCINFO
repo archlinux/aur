@@ -1,6 +1,6 @@
 pkgbase = omarchy-cheatsheets
 	pkgdesc = Pretty, searchable Neovim/tmux/etc cheatsheets for Omarchy Linux (Qt6/QML + Rust)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/akitaonrails/omarchy-cheatsheets
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = omarchy-cheatsheets
 	conflicts = omarchy-cheatsheets-bin
 	options = !debug
 	options = !lto
-	source = omarchy-cheatsheets-0.1.0.tar.gz::https://github.com/akitaonrails/omarchy-cheatsheets/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 07c8dfd5d7cbac1b4b0be76c0be2835e488cbd7a3108dbddab70656beacb50f1
+	source = omarchy-cheatsheets-0.1.1.tar.gz::https://github.com/akitaonrails/omarchy-cheatsheets/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = b54be7c7dbb777155c956622a79a98ec2daea4de87d4a62aa6373c8778815175
 
 pkgname = omarchy-cheatsheets

@@ -8,7 +8,7 @@
 #     curl -s 'https://aur.archlinux.org/rpc/v5/info?arg[]=omarchy-cheatsheets'
 #
 pkgname=omarchy-cheatsheets
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Pretty, searchable Neovim/tmux/etc cheatsheets for Omarchy Linux (Qt6/QML + Rust)"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ makedepends=('cargo' 'clang' 'cmake')
 conflicts=('omarchy-cheatsheets-bin')
 options=('!debug' '!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('07c8dfd5d7cbac1b4b0be76c0be2835e488cbd7a3108dbddab70656beacb50f1')
+sha256sums=('b54be7c7dbb777155c956622a79a98ec2daea4de87d4a62aa6373c8778815175')
 
 prepare() {
     cd "$pkgname-$pkgver"
