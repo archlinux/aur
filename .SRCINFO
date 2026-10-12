@@ -1,6 +1,6 @@
 pkgbase = voix-bin
 	pkgdesc = A secure privilege escalation tool replacing sudo/doas, using PAM for authentication (pre-built)
-	pkgver = 4.13.2
+	pkgver = 4.13.3
 	pkgrel = 1
 	url = https://github.com/Veridian-Zenith/Voix
 	install = voix-bin.install
@@ -18,9 +18,14 @@ pkgbase = voix-bin
 	conflicts = voix
 	backup = etc/pam.d/voix
 	backup = etc/voix.conf
-	source_x86_64 = voix-x86_64-bin.tar.gz::https://github.com/Veridian-Zenith/Voix/releases/download/v4.13.2/voix-x86_64-bin.tar.gz
+	validpgpkeys = 7887165D6B07DE7785BD536E5239ACB42207EE03
+	source_x86_64 = voix-x86_64-bin.tar.gz::https://github.com/Veridian-Zenith/Voix/releases/download/v4.13.3/voix-x86_64-bin.tar.gz
+	source_x86_64 = voix-x86_64-bin.tar.gz.asc::https://github.com/Veridian-Zenith/Voix/releases/download/v4.13.3/voix-x86_64-bin.tar.gz.asc
 	sha256sums_x86_64 = fd04524b5a5546c37b7ce7557041150c1c94dda2fe9924fe59881c575483ce6b
-	source_aarch64 = voix-aarch64-bin.tar.gz::https://github.com/Veridian-Zenith/Voix/releases/download/v4.13.2/voix-aarch64-bin.tar.gz
-	sha256sums_aarch64 = bc5ad5764a3103647611a21067e3f266a49a9edc5c73347cb5cd13ebabef10e2
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = voix-aarch64-bin.tar.gz::https://github.com/Veridian-Zenith/Voix/releases/download/v4.13.3/voix-aarch64-bin.tar.gz
+	source_aarch64 = voix-aarch64-bin.tar.gz.asc::https://github.com/Veridian-Zenith/Voix/releases/download/v4.13.3/voix-aarch64-bin.tar.gz.asc
+	sha256sums_aarch64 = d6d9a448a6fa9d10c0c47e163a11350ba544c2c9296c2b517171f77ce95edc20
+	sha256sums_aarch64 = SKIP
 
 pkgname = voix-bin

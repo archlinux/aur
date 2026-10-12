@@ -3,3 +3,4 @@ src/
 Voix/
 *.tar.gz
 *.tar.zst
+*.asc
