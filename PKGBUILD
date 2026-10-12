@@ -16,6 +16,7 @@ optdepends=('microchip-mplabxc8-bin: C compiler for PIC10 PIC12 PIC16 PIC18 MCUs
             'microchip-mplabxc16-bin: C compiler for PIC24 MCUs and dsPIC DSCs'
             'microchip-mplabxc32-bin: C Compiler for PIC32 MCUs'
             'microchip-mplabc18-bin: C compiler for PIC18 MCUs'
+            'microchip-mplabxc-dsc-bin: C compiler dsPIC33A DSC'
             'sdcc: C compiler for PIC16/18 MCUs'
             )
 provides=(mplab)

@@ -17,6 +17,7 @@ pkgbase = microchip-mplabx-bin
 	optdepends = microchip-mplabxc16-bin: C compiler for PIC24 MCUs and dsPIC DSCs
 	optdepends = microchip-mplabxc32-bin: C Compiler for PIC32 MCUs
 	optdepends = microchip-mplabc18-bin: C compiler for PIC18 MCUs
+	optdepends = microchip-mplabxc-dsc-bin: C compiler dsPIC33A DSC
 	optdepends = sdcc: C compiler for PIC16/18 MCUs
 	provides = mplab
 	conflicts = mplab
