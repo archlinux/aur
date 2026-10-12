@@ -25,17 +25,6 @@ sha256sums=('200203633806081a401e60aefdf68a8fa73fc7dc80aa854c52a69d47710a3488'
             'd8695293e5d4a814763f13e1d36ed37273040666b4b91363d6c33171df8934c7'
             'd0d790d4c3d887b10b2b155b83a58a44980b9fa638f8c0f1faec0739dc0ef473')
 
-: "${arch[@]}"
-: "${conflicts[@]}"
-: "${install}"
-: "${license[@]}"
-: "${pkgdesc}"
-: "${pkgrel}"
-: "${provides[@]}"
-: "${sha256sums[@]}"
-: "${source[@]}"
-: "${url}"
-
 package() {
   depends=(
     'docker>=1:29.5.0'
@@ -50,8 +39,6 @@ package() {
     'slirp4netns: recommended network driver'
   )
 
-  : "${depends[@]}"
-  : "${optdepends[@]}"
   : "${pkgdir:?}"
   : "${srcdir:?}"
 
@@ -78,3 +65,16 @@ package() {
   # TODO: Patch this upstream.
   sed -i '/Environment=PATH=/d' "$pkgdir/usr/lib/systemd/user/docker.service"
 }
+
+: "${arch[@]}"
+: "${conflicts[@]}"
+: "${depends[@]}"
+: "${install}"
+: "${license[@]}"
+: "${optdepends[@]}"
+: "${pkgdesc}"
+: "${pkgrel}"
+: "${provides[@]}"
+: "${sha256sums[@]}"
+: "${source[@]}"
+: "${url}"
