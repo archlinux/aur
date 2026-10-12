@@ -2,7 +2,7 @@ pkgbase = linux-system-guis
 	pkgdesc = An educational, transparent, and safe desktop GUI suite for low-level Linux administration
 	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/bendavison/linux-system-guis
+	url = https://github.com/BenBJD/linux-system-guis
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -17,7 +17,7 @@ pkgbase = linux-system-guis
 	optdepends = grub: GRUB bootloader configuration
 	optdepends = acl: POSIX Access Control Lists (getfacl/setfacl)
 	optdepends = e2fsprogs: extended file attributes (chattr/lsattr)
-	source = linux-system-guis-0.1.0.tar.gz::https://github.com/bendavison/linux-system-guis/archive/refs/tags/v0.1.0.tar.gz
+	source = linux-system-guis-0.1.0.tar.gz::https://github.com/BenBJD/linux-system-guis/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = linux-system-guis
