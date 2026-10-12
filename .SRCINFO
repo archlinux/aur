@@ -1,6 +1,6 @@
 pkgbase = ytdesk-bin
 	pkgdesc = YouTube Music desktop client (prebuilt)
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/opecko/ytdesk
 	arch = x86_64
@@ -17,12 +17,12 @@ pkgbase = ytdesk-bin
 	optdepends = gnome-keyring: stores the login cookie (Secret Service)
 	provides = ytdesk
 	conflicts = ytdesk
-	noextract = ytdesk_1.2.1_amd64.deb
+	noextract = ytdesk_1.3.0_amd64.deb
 	options = !strip
 	options = !debug
-	source = https://github.com/opecko/ytdesk/releases/download/v1.2.1/ytdesk_1.2.1_amd64.deb
-	source = LICENSE-1.2.1::https://raw.githubusercontent.com/opecko/ytdesk/v1.2.1/LICENSE
-	sha256sums = e70a5b3dab5c91a4aebe105e3ce9fc9329fad4b12e7f6525b8267220c9acee26
+	source = https://github.com/opecko/ytdesk/releases/download/v1.3.0/ytdesk_1.3.0_amd64.deb
+	source = LICENSE-1.3.0::https://raw.githubusercontent.com/opecko/ytdesk/v1.3.0/LICENSE
+	sha256sums = 2d4e7436ac023af27c5a0067bf9b6ee6e076a9bc0f411f1e166da6ef7acc1324
 	sha256sums = d8246ddc68471e6f5d5eb2bc54b9fb5878d6c362a7d99df0dd8193ec48cbdcce
 
 pkgname = ytdesk-bin
