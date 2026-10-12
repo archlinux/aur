@@ -1,7 +1,7 @@
 # Maintainer: killermoehre <killermoehre@gmx.net>
 pkgname=evolution-sieve-filters
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Evolution plugin to manage server-side Sieve filters"
 arch=("i686" "x86_64")
 url="https://github.com/cyr-ius/evolution-sieve-filters"

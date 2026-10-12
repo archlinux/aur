@@ -1,7 +1,7 @@
 pkgbase = evolution-sieve-filters
 	pkgdesc = Evolution plugin to manage server-side Sieve filters
 	pkgver = 0.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cyr-ius/evolution-sieve-filters
 	arch = i686
 	arch = x86_64
