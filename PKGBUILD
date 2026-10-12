@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=pixelmatch
-pkgver=7.2.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="The smallest and fastest pixel-level image comparison library"
 arch=('any')
@@ -13,7 +13,7 @@ options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
         "LICENSE::https://raw.githubusercontent.com/mapbox/pixelmatch/v$pkgver/LICENSE")
 noextract=("$pkgname-$pkgver.tgz")
-sha1sums=('59f4e6faca733f763756d175e2579ed71369fd72'
+sha1sums=('e1aeaa0b6e52b87603e0a6e8ae35687e1550a143'
           'd2a857dabbb49f6c578788cbe6f44940eb2f540b')
 
 package() {
