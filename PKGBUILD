@@ -3,7 +3,7 @@
 # Contributor: Merrkry <merrkry@tsubasa.moe>
 
 pkgname=tsukimi
-pkgver=26.8.4
+pkgver=26.9.2
 pkgrel=1
 pkgdesc='A simple third-party GTK4 Emby/Jellyfin client'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=('cargo' 'git' 'meson' 'blueprint-compiler')
 source=("git+https://github.com/tsukinaha/tsukimi.git#tag=v$pkgver")
-sha256sums=('c23325e4f2a4dc2b7d42fc6bdca2ebfcf482efc927f7384f361edf6cb259ac01')
+sha256sums=('27f937a89960d78fa79b0628f9620cebae336fae88ffaccb8beb000776f6ad0e')
 options=(!lto) # `ring` crate does compile with LTO
 
 build() {
