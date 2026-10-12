@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A tiling window manager for the terminal: i3's tree, Hyprland's dwindle, configured in Lua"
 
-pkgver=0.1.0
+pkgver=0.2.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,7 +27,7 @@ depends=('glibc' 'libgcc')
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('0b88a660430eedffd77a72013e1ff1f06537e530adb2da8ba26a6cfaff772313')
+sha256sums_x86_64=('77b6432594dc836f9ad054f9434ef06d36b903e8b246cbd0690541d2fa03bbe4')
 
 
 case ${CARCH} in
