@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-fast_float
 	pkgdesc = Fast and exact implementation of the C++ from_chars functions:4x faster than strtod (mingw-w64)
-	pkgver = 8.3.1
+	pkgver = 8.3.2
 	pkgrel = 1
 	url = https://github.com/fastfloat/fast_float/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mingw-w64-fast_float
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://github.com/fastfloat/fast_float/archive/refs/tags/v8.3.1.tar.gz
-	sha256sums = 7ff47ad261068517561beb0a7c1d57131f71b8be19bdbac2857c6a517a2eb53c
+	source = https://github.com/fastfloat/fast_float/archive/refs/tags/v8.3.2.tar.gz
+	sha256sums = 71bb9e865b888df01351558db5a39586d13ea97ada162156b3a07784d8c1b26b
 
 pkgname = mingw-w64-fast_float
