@@ -2,8 +2,7 @@
 pkgname=novelwriter-bin
 _pkgname=novelWriter
 pkgver=26.1.2
-_pyver=3.14
-pkgrel=2
+pkgrel=1
 pkgdesc="A markdown-like document editor for writing novels.(Prebuilt version)"
 arch=('x86_64')
 url="https://novelwriter.io/"
@@ -23,10 +22,18 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_all.deb"
 )
 sha256sums=('af44e4571280a27e25ca94cab4834aa560d2df29659d86a2679f0078910d4589')
+
+_get_pyver() {
+    python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')"
+}
 prepare() {
     bsdtar -xf "${srcdir}/data."*
+    [[ -d "${srcdir}/usr/lib/python3/dist-packages" ]] || return 1
 }
 package() {
+    local _pyver
+    _pyver="$(_get_pyver)"
+    msg "Using Python version: ${_pyver}"
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm755 -d "${pkgdir}/usr/lib/python${_pyver}/site-packages"
     cp -a "${srcdir}/usr/lib/python3/dist-packages/"* "${pkgdir}/usr/lib/python${_pyver}/site-packages"
