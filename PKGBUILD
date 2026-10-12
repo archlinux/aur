@@ -1,11 +1,11 @@
 # Maintainer: AntiApple4life <antiapple at antiapple.net>
 _pkgname=spout2pw
 pkgname=${_pkgname}-bin
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Spout2 to PipeWire bridge"
-url="https://github.com/hoshinolina/spout2pw"
+url="https://github.com/tasokait/spout2pw"
 license=('LGPL-2.1-only')
 depends=()
 makedepends=()
@@ -14,10 +14,12 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!strip)
 install=instructions.install
-source=("https://github.com/hoshinolina/spout2pw/releases/download/${pkgver}/spout2pw-${pkgver}-bin.tar.gz")
-sha256sums=('0914c8e95a4304b5386c82eb5d45f830657702860c606ea927b6a252b93709ad')
+source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('0e9bb53daa9f4913e9e4e761b94bce71cceb8055580a4eb00a680fb69b015bb3')
 
 package() {
 	mkdir -p $pkgdir/opt/${_pkgname}
-	cp -r $_pkgname-$pkgver/* $pkgdir/opt/${_pkgname}
+	cp -r spout2pw.sh $pkgdir/opt/${_pkgname}
+	cp -r spout2pw.inf $pkgdir/opt/${_pkgname}
+	cp -r spout2pw-dlls $pkgdir/opt/${_pkgname}
 }
