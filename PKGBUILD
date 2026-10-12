@@ -3,9 +3,9 @@
 _Name="CrealityPrint"
 _pkgname="creality-print"
 pkgname="${_pkgname}-bin"
-pkgver=7.3.0.6151
+pkgver=7.3.0.6157
 _pkgver="${pkgver%.*}"
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="3D slicer for Creality printers"
 arch=(
@@ -90,7 +90,7 @@ source_x86_64=(
 sha256sums=('11c4dc922dfc686a051c2169549d8934ae1a0477fdf5c225860db08eb51a8fc1'
             '83686d847e3403f7025427c411ce97257cbe522b6e95a5f5a44456c79af11d8c'
             '5537d2d539c94627446bf7eb30d30fda28d1de8aa9a41c25b83012db52ff6f8b')
-sha256sums_x86_64=('96d3b74d24745fa0d664b23e031595db4e5b79830e4d8b885e728c172ef9915c')
+sha256sums_x86_64=('55dedb43928b792e311d3223bc8072402d84ed456cc05239e027a10297c89955')
 
 prepare() {
   local source_array="source_${CARCH}[0]"
