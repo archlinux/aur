@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="pipelex-tools"
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="MTHDS/TOML formatter, linter, and LSP"
 
@@ -19,7 +19,7 @@ provides=("plxt")
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('5bbe8c1878baac974119f8bbb103ad5b503bb0b1055aa4ce827f21c5b4778e77')
+sha256sums=('8c828e0dd58029a49a60ccb821cef371214139e9354ce2f9eba85cfe6a8eecef')
 
 build() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
