@@ -32,16 +32,6 @@ checkdepends=(
 	"${!_soname_depends[@]}"
 )
 
-: "${arch[@]}"
-: "${checkdepends[@]}"
-: "${license[@]}"
-: "${options[@]}"
-: "${pkgdesc}"
-: "${pkgrel}"
-: "${sha256sums_x86_64[@]}"
-: "${source_x86_64[@]}"
-: "${url}"
-
 prepare() {
 	rm -rf "${pkgname}_${_pkgver}"
 	mkdir "${pkgname}_${_pkgver}"
@@ -77,8 +67,6 @@ package() {
 		"gnome-shell-extension-appindicator: for system tray icon on GNOME"
 	)
 
-	: "${depends[@]}"
-	: "${optdepends[@]}"
 	: "${pkgdir:?}"
 
 	cp -a "${pkgname}_${_pkgver}/." "${pkgdir}"
@@ -86,3 +74,15 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
 	ln -s /opt/disig/websigner/share/doc/copyright "${pkgdir}/usr/share/licenses/${pkgname}"
 }
+
+: "${arch[@]}"
+: "${checkdepends[@]}"
+: "${depends[@]}"
+: "${license[@]}"
+: "${optdepends[@]}"
+: "${options[@]}"
+: "${pkgdesc}"
+: "${pkgrel}"
+: "${sha256sums_x86_64[@]}"
+: "${source_x86_64[@]}"
+: "${url}"
