@@ -6,31 +6,24 @@
 # in seconds, nothing is compiled. The binary + docs come straight from
 # the release tarball below.
 pkgname=zcc
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Blazing-fast code counter (tokei clone) written in ZZ'
 arch=('x86_64')
 url='https://github.com/zaidejjo/zcc'
 license=('MIT')
 depends=('glibc' 'sqlite')
-makedepends=('python')
 source=("zcc-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/zcc-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('9f0126abbfe2fb29aa4ff4985f088b12041baf122b3849f4268856bfdd436477')
+sha256sums=('2fd108cc15b923bea0668485de2af428293cba7db31008a15507269b05b359cd')
 
 check() {
   # Prebuilt binary: smoke-test only (full suite ran in CI pre-release).
-  # The binary links the bundled libstd: run it with the tarball lib dir.
-  LD_LIBRARY_PATH="$srcdir/lib" ./zcc --version
-  LD_LIBRARY_PATH="$srcdir/lib" ./zcc --no-cache . --output json | python3 -c "import json,sys; d=json.load(sys.stdin); assert d['total']['files'] > 0"
-  bash -n zcc-wrapper.sh
+  ./zcc --version
+  ./zcc --no-cache . --output json | grep -Eq '"total"[[:space:]]*:[[:space:]]*\{[^}]*"files"[[:space:]]*:[[:space:]]*[1-9]'
 }
 
 package() {
-  # Real binary + bundled runtime libs live under /usr/lib/zcc;
-  # /usr/bin/zcc is a launcher wrapper setting LD_LIBRARY_PATH.
-  install -Dm755 zcc "$pkgdir/usr/lib/zcc/zcc"
-  install -Dm644 lib/*.so "$pkgdir/usr/lib/zcc/"
-  install -Dm755 zcc-wrapper.sh "$pkgdir/usr/bin/zcc"
+  install -Dm755 zcc "$pkgdir/usr/bin/zcc"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 config.example.json "$pkgdir/usr/share/doc/$pkgname/config.example.json"
