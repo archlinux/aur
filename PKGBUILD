@@ -1,26 +1,26 @@
-# Maintainer: Rhys Perry <rhysperry111@gmail.com>
 # Maintainer: katt <magunasu.b97@gmail.com>
+# Contributor: Rhys Perry <rhysperry111@gmail.com>
 
 pkgname=komga
-pkgver=1.28.1
+pkgver=1.29.0
 pkgrel=1
-pkgdesc='Media server for comics/mangas/BDs with API and OPDS support'
+pkgdesc='Media server for comics/mangas/BDs/magazines/eBooks with API, OPDS, Kobo Sync and KOReader Sync support'
 arch=(any)
 url=https://komga.org
 license=(MIT)
 depends=('java-runtime-headless>=17')
 optdepends=('libjxl: JPEG XL support'
-            'java-runtime-headless>=19: JPEG XL support'
+            'java-runtime-headless>=22: JPEG XL support'
             'kepubify: EPUB to KEPUB conversion')
-backup=(etc/${pkgname}.conf)
+backup=("etc/${pkgname}.conf")
 source=("https://github.com/gotson/komga/releases/download/${pkgver}/${pkgname}-${pkgver}.jar"
-        "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/gotson/komga/${pkgver}/LICENSE"
+        "${pkgname}-LICENSE::https://raw.githubusercontent.com/gotson/${pkgver}/${pkgver}/LICENSE"
         "${pkgname}"
         "${pkgname}.env"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('00d5be6953698de0ad966baab7d62db40971c51c810eb4cd9f11315c36cca2e6'
+sha256sums=('00e5791900ee9225712b6d9d5f60753e8a246e5b63f8dc825fec9e005ce7cec8'
             '0c34b357f56a8d8947e5bf153d8a02ca378611f089d8a3c371667f28c223653f'
             'ea583b007a654b24e96838033ae1ce01bd66a0aacf4bda429bb8bbec1bf400ef'
             'a0265a0b8ee1bc887033830c21915939efb6872337dccd5b79edb4ca9e403c1d'
@@ -29,11 +29,11 @@ sha256sums=('00d5be6953698de0ad966baab7d62db40971c51c810eb4cd9f11315c36cca2e6'
             '81687c1769a6dcf0df72fed1bc23146f0a36525f8a0f2c279d31bc79b4809a0f')
 
 package() {
-    install -Dm755 ${pkgname}-${pkgver}.jar ${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar
-    install -Dm755 ${pkgname} -t "${pkgdir}/usr/bin"
+    install -Dm755 "${pkgname}-${pkgver}".jar "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
+    install -Dm755 "${pkgname}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/komga.service"
     install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/komga.conf"
     install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/komga.conf"
     install -Dm644 "${srcdir}/${pkgname}.env" "${pkgdir}/etc/komga.conf"
-    install -Dm644 "${pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${pkgname}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
