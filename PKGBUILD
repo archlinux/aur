@@ -1,7 +1,7 @@
 # Maintainer: Zan Skamljic <zan.skamljic@gmail.com>
 
 pkgname=tde-session
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='The TDE desktop session: a wlroots compositor, overview, bar, lock screen and settings'
 arch=(x86_64 aarch64)
@@ -16,7 +16,7 @@ depends=(
   libpulse
   libsecret
   libstdc++
-  'libtde>=0.2.0'
+  'libtde>=0.3.0'
   libxkbcommon
   lua
   openssh
@@ -52,7 +52,7 @@ optdepends=(
   'fprintd: unlocking the screen with a finger'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8a78f699f9786f0218987bc5bd22ef10bf8540989fd5c965d1629f9103afbf4f')
+sha256sums=('5dfe382655117a09ea525d1a56a63808132cc2fb55cf15a8d047b38616f1c8c3')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" -G Ninja \
