@@ -1,6 +1,6 @@
 pkgbase = genoffice-bin
 	pkgdesc = Free, open-source AI office suite: docs, sheets, slides, PDF and markdown editors
-	pkgver = 0.11.505
+	pkgver = 0.11.564
 	pkgrel = 1
 	url = https://github.com/genspark-ai/genoffice
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = genoffice-bin
 	provides = genoffice
 	conflicts = genoffice
 	options = !debug
-	source = https://github.com/genspark-ai/genoffice/releases/download/v0.11.505/genoffice_0.11.505_amd64.deb
-	sha256sums = cf91b8c316c08ca65e0387258014e14b17bbcec5a375a6be01181583ad4b3add
+	source = https://github.com/genspark-ai/genoffice/releases/download/v0.11.564/genoffice_0.11.564_amd64.deb
+	sha256sums = f3cb4ef9641c86a609c6662ce90d34aeb2a87d0b87f474fd1c0e5d615c0ad141
 
 pkgname = genoffice-bin
