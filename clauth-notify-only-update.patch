@@ -1,0 +1,22 @@
+--- a/src/update.rs
++++ b/src/update.rs
+@@ -295,7 +295,7 @@
+     let Ok(home) = crate::profile::home_dir() else {
+         return false;
+     };
+-    exe.starts_with(home.join(".cargo").join("bin"))
++    exe.starts_with(home.join(".cargo").join("bin")) || exe.starts_with("/usr/bin")
+ }
+ 
+ fn asset_name() -> Option<&'static str> {
+--- a/src/tui/app.rs
++++ b/src/tui/app.rs
+@@ -13170,7 +13170,7 @@
+             UpdateEvent::Available(v) => {
+                 app.toast(
+                     ToastKind::Info,
+-                    format!("update available: v{v}\nreinstall with cargo install clauth"),
++                    format!("update available: v{v}\nupdate the clauth package"),
+                 );
+             }
+         }

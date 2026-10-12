@@ -1,0 +1,25 @@
+pkgbase = clauth
+	pkgdesc = Claude Code multi-account manager and usage monitor with auto-switch (CLI, TUI, MCP plugin)
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/uwuclxdy/clauth
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = inetutils
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	optdepends = claude-code: clauth start, resume, delegate and the Claude Code plugin
+	optdepends = openai-codex: codex profiles
+	optdepends = herdr: pane tags and the herdr plugin
+	optdepends = inetutils: hostname lookup for the daemon --listen certificate
+	conflicts = clauth-bin
+	options = !lto
+	options = !debug
+	source = clauth-0.17.0.tar.gz::https://github.com/uwuclxdy/clauth/archive/v0.17.0.tar.gz
+	source = clauth-notify-only-update.patch
+	sha256sums = c6f58cad159ed15a7f956f264e43911aa64d8300c60c353efabc5be11c500869
+	sha256sums = 2f02edb553775db054b5266a6ceeeeea19880baac9c96dc0cf5272a7b77715a4
+
+pkgname = clauth
