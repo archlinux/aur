@@ -1,6 +1,6 @@
 # Maintainer: giosuel <me@giosuel.ch>
 pkgname=realer-xpad
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Sticky notes with Markdown and drawing, native on Wayland and Hyprland'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('cairo' 'glib2' 'glibc' 'gtk4' 'hicolor-icon-theme' 'libadwaita' 'libgc
 makedepends=('cargo')
 options=('!debug') # the release profile strips the binary
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f1bf0e22361699dee62e75c52176daa8d924d5fc20b69f9f073c885120447f28')
+sha256sums=('a75d12a8fda773c41a401e2cadd020edfdac5d005343517c716fc8c3627cbfed')
 
 prepare() {
   cd "$pkgname-$pkgver"
