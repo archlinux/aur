@@ -14,7 +14,7 @@ options=('!strip')
 source_x86_64=("v2rayN-linux-64-${pkgver}.zip::${url}/releases/download/${pkgver}/v2rayN-linux-64.zip")
 sha256sums_x86_64=('bf1d552e7c6711e4967d570b8be7095f9519358e3ea4d7c3a18a81bda386af48')
 source_aarch64=("v2rayN-linux-arm64-${pkgver}.zip::${url}/releases/download/${pkgver}/v2rayN-linux-arm64.zip")
-sha256sums_aarch64=('641189ff33e5a02006b8f4d4ff35b0384fa4fd236dcf6664d075a44cd314e18c')
+sha256sums_aarch64=('2dd82a7a2944559ccd84c4fbab2e1573e4aca588c450d1364e0fda016dfcb209')
 
 source=("v2rayN.png" "v2rayN-bin.desktop")
 sha256sums=('f762fd95d93c2287f55ebb742716a54aa6b507ff8c8d75aec7256fabc93192ee'
