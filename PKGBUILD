@@ -62,7 +62,7 @@ source=(
 )
 sha256sums=('7839456abede4b8a47cacf2d3fcf24ce25c4296e305f9618920bd83cc21c83a6'
             '89862f4074e530896863738bf9d49c03c8d0cd0f6a543d4ccc1cdc53e8f83a24'
-            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
+            'f8da4fa48422d34fd5e2f8e1e87c9f52b66a7308a88855c39ae03599209dcbaf')
 pkgver() {
     cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
 }

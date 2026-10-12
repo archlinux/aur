@@ -1,11 +1,11 @@
 #!/bin/bash
-set -e
+set -o pipefail
 _APPDIR="/usr/lib/@appname@"
 _RUNNAME="${_APPDIR}/@runname@"
-export CHROME_DESKTOP="@appname@.desktop"
-export LD_LIBRARY_PATH="${_APPDIR}/lib:${LD_LIBRARY_PATH}"
-_SANDBOX_ARG=()
-if [[ "${EUID}" -eq 0 ]] && [[ "${ELECTRON_RUN_AS_NODE}" != "1" ]]; then
-	_SANDBOX_ARG=("--no-sandbox")
-fi
-exec electron@electronversion@ "${_SANDBOX_ARG[@]}" --app "${_RUNNAME}" "$@"
+export PATH="${_APPDIR}:${PATH}"
+export LD_LIBRARY_PATH="${_APPDIR}:${_APPDIR}/lib:${LD_LIBRARY_PATH}"
+export QT_PLUGIN_PATH="${_APPDIR}/plugins:${QT_PLUGIN_PATH}"
+export GST_PLUGIN_SYSTEM_PATH="${_APPDIR}/lib:${GST_PLUGIN_SYSTEM_PATH}"
+export GST_PLUGIN_PATH="${_APPDIR}/lib:${GST_PLUGIN_PATH}"
+cd "${_APPDIR}" || { echo "Failed to change directory to ${_APPDIR}"; exit 1; }
+exec "${_RUNNAME}" "$@" || exit $?
