@@ -1,0 +1,26 @@
+pkgbase = brightbulb-git
+	pkgdesc = Open source Philips Hue control center with screen mirroring (git)
+	pkgver = r12.c21ee2a
+	pkgrel = 1
+	url = https://github.com/LucasionGS/brightbulb
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	depends = electron43
+	optdepends = wf-recorder: prompt-free screen capture on Hyprland, Sway and other wlroots compositors
+	optdepends = gpu-screen-recorder: prompt-free screen capture on GNOME, KDE and any other desktop
+	optdepends = ffmpeg: used by the gpu-screen-recorder and X11 capture methods
+	optdepends = grim: faster screen thumbnails on wlroots compositors
+	optdepends = xorg-xrandr: screen selection on X11
+	optdepends = gnome-keyring: encrypts the bridge keys (any Secret Service provider works)
+	optdepends = libsecret: imports bridge keys saved by BrightBulb 1.x
+	optdepends = xdg-desktop-portal: last-resort screen capture that asks which screen to share
+	provides = brightbulb
+	conflicts = brightbulb
+	source = brightbulb::git+https://github.com/LucasionGS/brightbulb.git#branch=v2
+	sha256sums = SKIP
+
+pkgname = brightbulb-git
