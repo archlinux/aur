@@ -1,0 +1,23 @@
+pkgbase = timezones
+	pkgdesc = World time clocks with native GTK4 UI
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/hernantz/timezones
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = desktop-file-utils
+	checkdepends = appstream
+	makedepends = meson
+	makedepends = glib2-devel
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = adwaita-icon-theme
+	depends = tzdata
+	depends = libgweather-4
+	optdepends = iso-codes: translated country names
+	source = timezones-1.1.0.tar.gz::https://github.com/hernantz/timezones/archive/v1.1.0.tar.gz
+	sha256sums = 1c225e5ad0c56796443693ada40d7ccc499809b75c3b4d17d9aede9f72e2002c
+
+pkgname = timezones
