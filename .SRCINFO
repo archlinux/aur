@@ -1,7 +1,7 @@
 pkgbase = davinci-resolve-studio-aacfix
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design. Studio edition with AAC audio decode restored (resolve-aacfix), requires license key or license dongle.
 	pkgver = 21.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion
 	install = davinci-resolve-studio-aacfix.install
 	arch = x86_64
@@ -42,6 +42,7 @@ pkgbase = davinci-resolve-studio-aacfix
 	conflicts = davinci-resolve-beta
 	conflicts = davinci-resolve-studio
 	conflicts = davinci-resolve-studio-beta
+	noextract = ffmpeg-6.0.1.tar.xz
 	options = !strip
 	options = !debug
 	options = !lto

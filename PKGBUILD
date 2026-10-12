@@ -20,7 +20,7 @@
 _pkgname=resolve
 pkgname=davinci-resolve-studio-aacfix
 pkgver=21.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition with AAC audio decode restored (resolve-aacfix), requires license key or license dongle.'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
@@ -61,12 +61,18 @@ sha256sums=('d4f87af1a28a283bba7d824684402b7447f922e5b8f68d56d131732ea12790a5'
             'SKIP'
             'e10a8fa4c1500bed75890f559cc8962e928a7b0b450e4f880d97f73d53f4afc9')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # FFmpeg release signing key
+# Extracted from scratch in prepare(), see there.
+noextract=("ffmpeg-${_ffmpeg_ver}.tar.xz")
 install="${pkgname}.install"
 # !lto: the trampoline and FFmpeg must be plain objects; !debug: nothing here
 # gets stripped, so don't bake -g into 60 MB of FFmpeg libs.
 options=('!strip' '!debug' '!lto')
 
 prepare() {
+  # prepare() moves, deletes and relinks files in squashfs-root and build()
+  # patches it, so extracting over a previous run's tree (makepkg without -C)
+  # can't work: always start from a pristine one.
+  rm -rf squashfs-root
   chmod u+x "./DaVinci_Resolve_Studio_${pkgver}_Linux.run"
   "./DaVinci_Resolve_Studio_${pkgver}_Linux.run" --appimage-extract
 
@@ -161,6 +167,11 @@ prepare() {
   # The AV3A ("Audio Vivid") demuxer backport dev-setup.sh would apply to a
   # git checkout, applied to the release tarball instead.  Without it the
   # rebuilt libavformat silently loses a demuxer Blackmagic's build has.
+  # The patch creates new files, which survive makepkg re-extracting the
+  # tarball over a previous run's tree and make it fail, so extract a fresh
+  # tree here instead (dev-setup.sh does the same with git checkout + clean).
+  rm -rf "ffmpeg-${_ffmpeg_ver}"
+  bsdtar -xf "ffmpeg-${_ffmpeg_ver}.tar.xz"
   patch -d "ffmpeg-${_ffmpeg_ver}" -Np1 \
     -i "${srcdir}/resolve-aacfix-${_aacfix_ver}/src/ffmpeg/patches/0001-av3a-demuxer-backport.patch"
 
@@ -247,8 +258,11 @@ package() {
     "share/default_cm_config.bin"
   install -d -m 0755 "${pkgdir}/opt/${_pkgname}/.license"
   install -d -m 0755 "${pkgdir}/opt/${_pkgname}/Apple Immersive/Calibration"
+  install -d -m 0755 "${pkgdir}/opt/${_pkgname}/Extras"
+  install -d -m 0755 "${pkgdir}/opt/${_pkgname}/Fairlight"
+  install -d -m 0755 "${pkgdir}/opt/${_pkgname}/Immersive/Canon/STMap"
   # Install licenses
-  install -d -m 0644 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d -m 0755 "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -s "/opt/resolve/docs/License.html" "${pkgdir}/usr/share/licenses/${pkgname}"
   install -D -m 0644 "${srcdir}/resolve-aacfix-${_aacfix_ver}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.resolve-aacfix"
