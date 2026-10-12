@@ -2,12 +2,12 @@
 pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask-multiphysics.org'
 license=('AGPL-3.0-or-later')
-petsc_excluded='3.26' # next PETSc release (exclude because API changes are expected)
+petsc_excluded='3.27' # next PETSc release (exclude because API changes are expected)
 makedepends=('gcc-fortran' 'cmake'
              'python-build' 'python-installer' 'python-wheel' 'python-setuptools'
              "petsc<${petsc_excluded}" 'hdf5-openmpi' 'fftw-openmpi' 'zlib' 'libfyaml'
@@ -24,6 +24,7 @@ sha512sums=('7e00d655601ab1c097505e4202713f0708bd6137b01fc5e47b162d788399fb95669
 
 prepare() {
   sed -i 's#fs_case_sensitive(${CMAKE_INSTALL_PREFIX}/bin fs_is_case_sensitive)#set(fs_is_case_sensitive BOOL FALSE)#g' ${pkgname}-${pkgver}/src/CMakeLists.txt
+  sed -i '21s/25/26/g' ${pkgname}-${pkgver}/CMakeLists.txt
 }
 
 build() {
