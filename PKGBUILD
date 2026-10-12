@@ -3,7 +3,7 @@
 
 pkgname=python-unicrypto
 _pkgname=unicrypto
-pkgver=0.0.10
+pkgver=0.0.12
 pkgrel=1
 pkgdesc="Unified interface for cryptographic libraries."
 url="https://github.com/skelsec/unicrypto"
@@ -16,8 +16,8 @@ makedepends=(
   'python-wheel'
   'python-setuptools'
 )
-source=("https://github.com/skelsec/${_pkgname}/archive/refs/tags/${pkgver}.zip") 
-sha256sums=('1778e9c41ff0c372da816f6d9592991faf5ae331a2e9a2b5e389c58844a4974c')
+source=("${pkgname}-${pkgver}::https://github.com/skelsec/${_pkgname}/archive/refs/tags/${pkgver}.zip") 
+sha256sums=('a22ba531ab77d331b20cc94c549b95eda65a399e737766bf17185bd8092ea9d9')
 
 build() {
   cd ${_pkgname}-${pkgver}
@@ -28,4 +28,5 @@ build() {
 package() {
   cd ${_pkgname}-${pkgver}
   python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

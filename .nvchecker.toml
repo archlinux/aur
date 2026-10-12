@@ -1,0 +1,3 @@
+[python-unicrypto]
+source = "git"
+git = "https://github.com/skelsec/unicrypto.git"
