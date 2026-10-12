@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=jev-axi
-pkgver=0.4.2
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Agent-ergonomic CLI for TypeSafe's Jev: calibrated judgments (pick, rate, check, rank, triage, guard) from the shell"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('npm')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('5791e1a0df216de541527466818d7c3ca19f3fcc66eac6760b93c6c104bb3cca')
+sha256sums=('d08d8328500e5e0d3360abb8211224e71f605bbde0c7c6e367d03d224014454b')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
