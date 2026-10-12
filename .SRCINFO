@@ -1,6 +1,6 @@
 pkgbase = tkn-pac
 	pkgdesc = tkn-pac - A command line interface for interacting with Pipelines as Code
-	pkgver = 0.50.1
+	pkgver = 0.27.3
 	pkgrel = 1
 	url = https://pipelinesascode.com
 	arch = aarch64
@@ -8,9 +8,9 @@ pkgbase = tkn-pac
 	license = Apache 2.0
 	provides = pipelines-as-code
 	conflicts = pipelines-as-code
-	source_aarch64 = tkn-pac_0.50.1_aarch64.tar.gz::https://github.com/openshift-pipelines/pipelines-as-code/releases/download/v0.50.1/tkn-pac_0.50.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 0ee3c336c2a0eef8f596e9c44a2f916065ff8e176c1134ee34afb02172bfafa2
-	source_x86_64 = tkn-pac_0.50.1_x86_64.tar.gz::https://github.com/openshift-pipelines/pipelines-as-code/releases/download/v0.50.1/tkn-pac_0.50.1_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 1724e95abe1aeaa12aad9f0fb73be52cb98856484edffd712de64988a90048ea
+	source_aarch64 = tkn-pac_0.27.3_aarch64.tar.gz::https://github.com/openshift-pipelines/pipelines-as-code/releases/download/v0.27.3/tkn-pac_0.27.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9078aa12e1f4707417e3858b07bd88c7c1b257d1d35fe7f93b66bea549a96d9a
+	source_x86_64 = tkn-pac_0.27.3_x86_64.tar.gz::https://github.com/openshift-pipelines/pipelines-as-code/releases/download/v0.27.3/tkn-pac_0.27.3_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 8780c31a4338ae8d569ac4a8e29292102031f18d94f81848085eb292ea6533a9
 
 pkgname = tkn-pac
