@@ -2,7 +2,7 @@
 
 _pkgname="scorecard"
 pkgname="${_pkgname}-bin"
-pkgver=5.5.0
+pkgver=5.6.0
 pkgrel=1
 pkgdesc="Security health metrics for Open Source"
 arch=(
@@ -33,9 +33,9 @@ source_aarch64=(
 source_x86_64=(
   "${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_amd64.tar.gz"
 )
-sha256sums=('95ae0e8e6896b088fb1134179b9cbfc1ec1fde8622e5d8d6f4a2e45779c965b3')
-sha256sums_aarch64=('3ce59d20c1d53e540c4a14e0da1e0d96b3b294e8ddc96a3c5a7b8a637b32991e')
-sha256sums_x86_64=('83b90a05c1540ef1390db1cd5711e5fd04be9c1d8537fb84d39d02092d6a8dff')
+sha256sums=('3809c2eb615de4fcbb9dc68915082b80a6959085f246ee96fb7627cd2391a173')
+sha256sums_aarch64=('3eacaceb3fdee6d0ba5df6ede45d1ada73321949029921bb63633802e8ec5951')
+sha256sums_x86_64=('19bde07129450cb65a95c6e3b9f34e034341579e6f0e241546ec3ae6efb2dd9a')
 
 verify() {
   local source_array="source_${CARCH}[0]"
