@@ -3,7 +3,7 @@
 # Contributor: Benjamin A. Shelton <zancarius@gmail.com>
 
 pkgname=python-billiard
-pkgver=4.2.4
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="Python multiprocessing fork with improvements and bugfixes."
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest' 'python-psutil')
 source=("https://pypi.io/packages/source/b/billiard/billiard-$pkgver.tar.gz")
-sha512sums=('f05041661da59603da5bdcb3b696d75742d4cb7998f5bbf22474e001641f5be6cf693c3b329cda3e8983cc3fe56e5cc96a1d7880eefa5b2d68cd0d4ffe231626')
+sha512sums=('e4f6db60610773c7109e1faa39c30417742c40ce23e8a0fd412d9c476acc60fadf4ef812074dedc8fb3f16d37fc25e07153510a3d535172bb58e21bb2f415add')
 
 prepare() {
   cd billiard-$pkgver
