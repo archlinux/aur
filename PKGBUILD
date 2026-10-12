@@ -3,7 +3,7 @@
 pkgname=lactea
 pkgver=0.1.2 # renovate: datasource=github-releases depName=M0Rf30/lactea extractVersion=^v(?<version>.*)$
 pkgrel=1
-pkgdesc="MilkDrop 2 / projectM-compatible music visualizer on wgpu, with C library"
+pkgdesc="MilkDrop 2 / 3 and projectM-compatible music visualizer on wgpu, with C library"
 arch=(x86_64 aarch64)
 url="https://github.com/M0Rf30/lactea"
 license=('MIT OR Apache-2.0')
