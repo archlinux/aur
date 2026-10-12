@@ -1,8 +1,8 @@
 # Maintainer: Filippo Falezza <filippo dot falezza at outlook dot it>
 
 pkgname='geant4-full-debug'
-pkgver=11.4.2
-pkgrel=2
+pkgver=11.4.3
+pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
   'cmake>=3.16'
@@ -72,18 +72,16 @@ options=('!emptydirs')
 source=(
   "http://geant4-data.web.cern.ch/releases/geant4-v${pkgver}.tar.gz"
   'geant4-full-debug.install'
-  'hdf5_2_2.patch'
 )
 sha256sums=(
-  '5720f2bba6921027e206ad4f0a06f9bcc348adab36240e8b27710f20ce3e971a'
+  'f192bd580a6e3a4f606000e81c3f7d7089644de2906a42233d9f223b74b4a944'
   '5fde7b80dcfa960407b1ecb2b2a2aa817250948cc32490d8ece48a5e5b4035c1'
-  '2486b50adcf4a6ce08b1a5b38b72469926f5835a2b0322b2d962902918eff8a2'
 )
 install="geant4-full-debug.install"
 
 prepare() {
   cd "${srcdir}"
-  patch -Np0 < hdf5_2_2.patch
+  # patch -Np0 < hdf5_2_2.patch
 }
 
 build() {
