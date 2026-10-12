@@ -1,6 +1,6 @@
 pkgbase = gixy-next
 	pkgdesc = Nginx configuration static analyzer
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://gixy.io
 	arch = any
@@ -20,7 +20,8 @@ pkgbase = gixy-next
 	conflicts = gixy-git
 	conflicts = gixy-ng
 	conflicts = gixy-ng-git
-	source = https://files.pythonhosted.org/packages/source/g/gixy-next/gixy_next-0.7.1.tar.gz
-	sha256sums = 9a5e13bef40addbb4049522b8b0a4a22e4e2ae986d55879d3da86f2583419bdf
+	source = https://files.pythonhosted.org/packages/source/g/gixy-next/gixy_next-0.8.0.tar.gz
+	sha512sums = 22c5dc52fbbc2ad571ca846c2c01e4c31e4403f74de620ef091e6e592af5636e5418752c20d6d121af76004a2b841d2297682dea51e6e6d3b0cff4ede431c37a
+	b2sums = 87186b9bfe7e91a7851356f588ff92b8b907a1c5cfdc995a274b0cd0c1b164e1d7e38438b224d5721f1d5377c638661fe84416450916edfccaf2d1446a282a75
 
 pkgname = gixy-next
