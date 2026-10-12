@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=nowledge-mem-bin
-pkgver=0.10.99
+pkgver=0.10.100
 pkgrel=1
 pkgdesc="你的智能体、AI 助手、代码工具，共享一套记忆"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('gnome-keyring: for credential storage'
 provides=("nowledge-mem=${pkgver}" "nmem-cli=${pkgver}")
 conflicts=('nowledge-mem' 'nmem-cli')
 source_x86_64=("nowledge-mem-${pkgver}.deb::https://download-mem.nowledge.co/app/${pkgver}/x86_64-unknown-linux-gnu.deb")
-sha256sums_x86_64=('99e1aa19a584dc2f58bc586b8e25ab0c4eda957f0dafb3452741cfca5c93455c')
+sha256sums_x86_64=('18a35cee3c1dcadc824d8a392d2a8bd23a68982eef747afe0a874bd8d063ecf1')
 
 package() {
     local _debfile="nowledge-mem-${pkgver}.deb"
