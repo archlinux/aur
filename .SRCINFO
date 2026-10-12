@@ -1,0 +1,26 @@
+pkgbase = nauka-git
+	pkgdesc = a minimal wayland compositor with various layouts, animations and all the eye-candy
+	pkgver = r100.35ba52d
+	pkgrel = 1
+	url = https://github.com/shadowash8/nauka
+	arch = x86_64
+	license = GPLV3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = libinput
+	depends = libdrm
+	depends = pixman
+	depends = libxkbcommon
+	depends = wlroots0.20
+	depends = scenefx=0.5
+	provides = nauka
+	provides = wayland-compositor
+	conflicts = nauka
+	conflicts = nauka-debug
+	source = nauka-git::git+https://github.com/shadowash8/nauka.git#branch=main
+	sha256sums = SKIP
+
+pkgname = nauka-git
