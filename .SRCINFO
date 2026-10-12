@@ -15,6 +15,6 @@ pkgbase = kolimi-server
 	conflicts = kolimi-git
 	options = !lto
 	source = kolimi-server-0.1.5.tar.gz::https://github.com/chaitanyayeleti/kolimi/archive/refs/tags/v0.1.5.tar.gz
-	sha256sums = 0ea14f1d7c52d5eeeda53920d9afa0e0efa4a8c17146a92c67ac95ac4f0a65ad
+	sha256sums = b88b78bf2e54c092529b630e5b33e489c5bf491838a1d70d8bfdb152ecbe3cee
 
 pkgname = kolimi-server
