@@ -1,6 +1,6 @@
 pkgbase = actionlint-kjanat-git
 	pkgdesc = Static checker for GitHub Actions workflow files (kjanat fork, git master)
-	pkgver = 1.17.0.r39.ga497d26
+	pkgver = 1.17.0.r43.geb9827b
 	pkgrel = 1
 	url = https://actionlint.kjanat.dev
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = actionlint-kjanat-git
 	depends = glibc
 	optdepends = ruff: check Python scripts in run steps
 	optdepends = shellcheck: check shell scripts in run steps
-	provides = actionlint=1.17.0.r39.ga497d26
+	provides = actionlint=1.17.0.r43.geb9827b
 	conflicts = actionlint
 	conflicts = actionlint-bin
 	conflicts = actionlint-git
