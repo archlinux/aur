@@ -2,7 +2,7 @@
 # Co-maintainer: Nebulosa <nebulosa2007 at yandex dot ru>
 
 pkgname=cassette
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
 arch=(aarch64 i686 x86_64)
@@ -34,7 +34,7 @@ makedepends=(
 )
 options=(!debug)
 source=("$pkgname-$pkgver.tar.zst::$url/releases/download/v$pkgver/${pkgname^}-$pkgver.tar.zst")
-sha512sums=('43bb332150583d4369be7849d4e4980d78573846265cdc91aaeadcb46cfe32170dbfc8b317c12993ea9a589a8369e5db2e561b732470929f6faa7f7d22b31094')
+sha512sums=('a09e0298e61721ed247f519483789143d78b917bbad69b4ba1545197c27971278514f1595840186b119e220c05528dcd0335db795ab5b60b396cf6a2abae73d7')
 
 build() {
   cd "${pkgname^}-$pkgver"
