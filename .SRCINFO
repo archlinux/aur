@@ -1,0 +1,48 @@
+pkgbase = nightcap-git
+	pkgdesc = Android x86-64 Roblox compatibility runtime for Linux
+	pkgver = 0.3.4.r302.ga87373d
+	pkgrel = 1
+	url = https://github.com/CoderDayton/nightcap
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake>=3.20
+	makedepends = git
+	makedepends = lld
+	makedepends = ninja
+	makedepends = nlohmann-json
+	makedepends = pkgconf
+	makedepends = vulkan-headers
+	depends = capstone
+	depends = curl
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libadwaita
+	depends = libelf
+	depends = libglvnd
+	depends = libplacebo
+	depends = libpng
+	depends = libsoup3
+	depends = libutf8proc
+	depends = libyaml
+	depends = minizip
+	depends = openssl
+	depends = sdl3>=3.4
+	depends = sdl3_ttf
+	depends = vulkan-icd-loader
+	depends = webkitgtk-6.0
+	depends = zlib
+	optdepends = gamemode: Feral GameMode integration
+	provides = mocktail
+	provides = nightcap
+	conflicts = mocktail
+	conflicts = nightcap
+	conflicts = nightcap-bin
+	options = !debug
+	source = nightcap::git+https://github.com/CoderDayton/nightcap.git#branch=main
+	sha256sums = SKIP
+
+pkgname = nightcap-git
