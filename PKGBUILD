@@ -3,7 +3,7 @@
 _sdk=10.0
 _name="FsAutoComplete"
 pkgname="${_name,,}"
-pkgver=0.85.2
+pkgver=0.85.3
 pkgrel=1
 pkgdesc="F# language server using Language Server Protocol (LSP)"
 arch=('any')
@@ -16,7 +16,7 @@ depends=("dotnet-sdk-${_sdk}" 'sh')
 makedepends=("dotnet-sdk-${_sdk}")
 conflicts=("${pkgname}-bin")
 source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7d9a326defebb05b4bee135e8ffebb215de6d7c28495431cc2846c4cae78fb7a')
+sha256sums=('c4066f0286f9334d6a4f2509895882f999bf0fdff16a8844b8593cbe97b60ab6')
 
 _dotnet_env() {
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
@@ -25,8 +25,8 @@ _dotnet_env() {
     export DOTNET_ROLL_FORWARD_TO_PRERELEASE=1
     export DOTNET_ROLL_FORWARD=Major
     export BuildNet10=true
-    export DOTNET_CLI_HOME="${srcdir}/.dotnet-home"
-    export NUGET_PACKAGES="${srcdir}/.nuget"
+    export DOTNET_CLI_HOME="${srcdir}/dotnet-home"
+    export NUGET_PACKAGES="${DOTNET_CLI_HOME}/.nuget"
     export PATH="${DOTNET_CLI_HOME}/.dotnet/tools:${PATH}"
 }
 
