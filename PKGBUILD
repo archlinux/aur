@@ -7,7 +7,7 @@ _appalias=ch
 pkgname=${_appname}
 pkgdesc="💥 Blazing fast terminal file manager written in Rust, based on async I/O with true dual panel mode"
 
-pkgver=26.8.28
+pkgver=26.10.12
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,7 +28,7 @@ depends=('glibc' 'libgcc')
 options=('!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('4bd1c50fd83ae5536b4468b983b8a6953155898ab86e6de10b0cdc5271e53315')
+sha256sums=('b902dc1f7b3862be6a2b62abd5f243b586802d567a4a48106ed58614c9cded76')
 
 
 prepare() {
