@@ -1,7 +1,7 @@
 # Maintainer: FlowOSS <https://github.com/FlowOSS>
 pkgname=flowshot-git
 _pkgname=flowshot
-pkgver=0.2.0.r0.g9c86bd9
+pkgver=0.2.0.r11.g18736c7
 pkgrel=1
 pkgdesc='Screenshot and annotation tool for Wayland and X11 with mixed-DPI support'
 arch=('x86_64')
@@ -20,6 +20,7 @@ depends=(
 )
 makedepends=(
   'cargo'
+  'mold'
   'clang'
   'desktop-file-utils'
   'git'
