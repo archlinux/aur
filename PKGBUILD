@@ -1,5 +1,5 @@
-origname='alsa-scarlett-gui'
 pkgname='alsa-scarlett-gui-git'
+_name=${pkgname%-git}
 pkgver=1.0beta9
 pkgrel=1
 pkgdesc="GUI for the ALSA controls presented by the Scarlett2 driver, Development version"
@@ -18,19 +18,19 @@ depends=(
     'openssl'
 )
 makedepends=('gcc' 'make' 'git' 'pkgconf' 'sed')
-provides=("$origname")
-conflicts=("$origname")
+provides=("$_name")
+conflicts=("$_name")
 # If you want a specific tag add `#tag=$pkgver` to the source.
 source=("git+${url}.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$origname"
+    cd "$_name"
     git describe --abbrev=4 --always --tags | sed 's/-/./g'
 }
 
 build() {
-    cd "$srcdir/$origname"
+    cd "$srcdir/$_name"
 
     make \
         -C src \
@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$origname"
+    cd "$srcdir/$_name"
 
     make \
         -C src \
