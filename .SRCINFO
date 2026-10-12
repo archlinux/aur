@@ -1,14 +1,17 @@
 pkgbase = python-flask-themes2
 	pkgdesc = Easily theme your Flask app
-	pkgver = 1.0.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/sysr-q/flask-themes2
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-flit-core
+	depends = python
 	depends = python-flask
-	depends = python-simplejson
-	source = https://files.pythonhosted.org/packages/source/F/Flask-Themes2/Flask-Themes2-1.0.1.tar.gz
-	sha256sums = 82c3204105e38437d04619bb1f4901cbc8cac5def9598f8f84747a464fcf50fb
+	source = https://files.pythonhosted.org/packages/source/f/flask_themes2/flask_themes2-2.0.0.tar.gz
+	sha256sums = 86f8c2c6aaba7330f507ba6d2e2d04ea800b3a5ce52749efa2b3c0ea78459af5
 
 pkgname = python-flask-themes2
