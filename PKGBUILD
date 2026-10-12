@@ -17,7 +17,7 @@ source=(
 sha256sums=('c668a486c559de62115d342285d1366bd321aeffe053cd023c8bed7c24853d26')
 
 package_zoho-cliq() {
-    conflicts=('zoho-cliq-electron' 'zoho-cliq-upstream-electron')
+    conflicts=('zoho-cliq-electron')
     install -d "${pkgdir}/opt/Cliq"
     install -d "${pkgdir}/usr/share"
     cd "${srcdir}"
@@ -32,8 +32,8 @@ package_zoho-cliq-electron() {
     electron_ver='electron42'
     depends+=($electron_ver)
     conflicts=('zoho-cliq')
-    provides=('zoho-cliq' 'zoho-cliq-upstream-electron')
-    pkgdesc='Zoho Cliq running on upstream Electron (experimental)'
+    provides=('zoho-cliq')
+    pkgdesc='Zoho Cliq using the system Electron (experimental)'
 
     install -d "${pkgdir}/opt/Cliq"
     install -d "${pkgdir}/usr/share"
