@@ -1,17 +1,18 @@
-# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Radu Potop <radu@wooptoo.com>
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Federico Cinelli <cinelli@aur.archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Mcder3 <mcder3[at]gmail[dot]com>
 # Contributor: MisterFred <mister.fred[at]free[dot]fr>
 
-origname=cantata
 pkgname=cantata-legacy
+_name=${pkgname%-legacy}
 pkgver=2.5.0
 pkgrel=1
 pkgdesc='Qt5 client for the music player daemon (MPD)'
 arch=(x86_64)
-url='https://github.com/CDrummond/cantata'
+url="https://github.com/CDrummond/$_name"
 license=(GPL3)
 depends=(libcddb
          libcdio-paranoia
@@ -34,8 +35,9 @@ makedepends=(cmake
              ffmpeg
              libebur128
              qt5-tools)
-conflicts=($origname)
-source=("$url/releases/download/v$pkgver/$origname-$pkgver.tar.bz2"
+provides=("$_name")
+conflicts=("$_name")
+source=("$url/releases/download/v$pkgver/$_name-$pkgver.tar.bz2"
         "cantata-tablib-2.0-compatibility.patch::https://github.com/fenuks/cantata/commit/45bac9eb3e99ed75b6539f92418556dac1c0193d.patch"
         "cantata-ffmpeg-7.0.patch::https://github.com/eclipseo/cantata/commit/0887cf117dd791192531dca47f4ec056a02b7c8a.patch")
 sha256sums=('eb7e00ab3f567afaa02ea2c86e2fe811a475afab93182b95922c6eb126821724'
@@ -43,13 +45,13 @@ sha256sums=('eb7e00ab3f567afaa02ea2c86e2fe811a475afab93182b95922c6eb126821724'
             '6da73f25c313d328fe0d1db665469720c618ab77008f20afe4d9b9db8a8301d7')
 
 prepare() {
-  cd "$origname-$pkgver"
+  cd "$_name-$pkgver"
   patch -Np1 -i ../cantata-tablib-2.0-compatibility.patch
   patch -Np1 -i ../cantata-ffmpeg-7.0.patch
 }
 
 build() {
-  cmake -B build -S "$origname-$pkgver" -Wno-dev \
+  cmake -B build -S "$_name-$pkgver" -Wno-dev \
 	-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_INSTALL_PREFIX=/usr
 
