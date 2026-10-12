@@ -1,6 +1,6 @@
 pkgbase = kotki-models-tiny
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kroketio/kotki
 	arch = any
 	license = MPL-2.0
@@ -10,7 +10,9 @@ pkgbase = kotki-models-tiny
 pkgname = localtranslate-models-kotki-tiny
 	pkgdesc = Kotki's tiny translation models adapted for LocalTranslate
 	provides = localtranslate-models-base
+	conflicts = localtranslate-models-base
 
 pkgname = kotki-models-tiny
 	pkgdesc = Kotki's tiny translation models for native Kotki application
 	provides = kotki-models-base
+	conflicts = kotki-models-base
