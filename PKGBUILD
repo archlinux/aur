@@ -2,23 +2,13 @@
 # Contributor: Julien Desgats <julien at desgats dot fr>
 
 pkgname=osrm-backend
-pkgver=26.9.0
+pkgver=26.10.0
+_gaucherspkgver=0.1.0
 pkgrel=1
-pkgdesc="High performance routing engine written in C++14 designed to run on OpenStreetMap data."
+pkgdesc="High performance routing engine - C++ backend with gauche-rs integration designed to run on OpenStreetMap data."
 arch=('x86_64')
 url="https://github.com/Project-OSRM/${pkgname}"
 license=('BSD-2-Clause') # https://spdx.org/licenses/
-	# acl
-	# boost
-	# brotli
-	# gcc-libs
-	# git
-	# libxml2
-	# libzip
-	# lz4
-	# openssl
-	# xz
-	# zstd
 depends=(
 	boost-libs
 	bzip2
@@ -28,24 +18,26 @@ depends=(
 	onetbb
 	zlib
 )
-# libtool
-	# gcc
-	# glibc
 makedepends=(
 	cmake
+ 	curl
 	doxygen
+	git
+	rustup
+	sol2
+	vtzero
 	flatbuffers
 	fmt
 	graphviz
 	libosmium
-	ninja
 	pkgconf
 	protozero
 	qt6-base
 	rapidjson
-	sol2
-	vtzero
-)
+	tar
+	unzip
+	zip
+) 
 checkdepends=(
 	jq
 	nodejs
@@ -54,100 +46,134 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 source=("${pkgname}-${pkgver}-LICENSE::${url/github/raw.githubusercontent}/refs/heads/master/LICENSE.TXT"
-	"${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-       # "${pkgname}-${pkgver}.patch::${url}/pull/7589.diff")
-	# "${pkgname}-${pkgver}.patch")
+	"${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
+        "gauche-rs::git+https://github.com/Project-OSRM/gauche-rs.git#tag=v${_gaucherspkgver}")
 
 b2sums=('7e714e99eaea01b1ce336c74e2f4a6f5af6aa059ef16d0e353864c7e188df88682ea5a41b94d42e6daeabfd96e7f352790e04a0bb273c1633747c17e5c348f5a'
-        'c79bf965aac7e7e0a0ab91e9e579d8c247789fc2d345391c691fec132843693433e43c09a265c3c435d31e11395beedcfc1c318e0241ca4ea40bf8101600bd99')
-        # '27eaaf313bfcc8485c9d0867c79cf6871e2067ebd1d3b8b43429de101f18799dd17c10a0b301fdfd5e36a41ca4815083058083e9a50e1c1a13a17604d50aa3ec')
+        'eff2c8fc85d75157ee91d10514623bb74a45b0d7a7fe6072c352df236882751bb80a14ee0de1cf5052633c6b196dab2d8a924c3b37cbf64e1ea1b7a390644f74'
+        '5e86da1c66d44d2636ebb852d07467324f7bfd98c56606e43c7ff099debf7d6333b5c3683f6a0a8952d599d1701134aa492dff2eb90864420a8b327e1f128302')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
 	echo
+	# Installed by directly linking system files rather than using the suggested method that requires vcpkg as per instructions from 
+	# https://github.com/Project-OSRM/osrm-backend/tree/master#building-from-source
+	
+	echo "# Set up the rust toolchain"
+	rustup default stable
+	
+	echo -e "# ========== Prepare gauche-rs ============="
+	echo -e "# 1. Set up Rust environment variables for Arch compliance"
+	export CARGO_HOME="${srcdir}/cargo-home"
 
-	# cd ${pkgname}
-	# git -c protocol.file.allow=always submodule update --init --recursive --depth=1
-	# git submodule update --init --recursive --depth=1
+	echo -e "# 2. Fetch/Vendor Rust dependencies before the build step"
+	cd "${srcdir}/gauche-rs"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 
-	sed -e 's/-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2//' -i CMakeLists.txt
-	# patch -Np1 -i ../"${pkgname}-${pkgver}.patch"
 
-	# for p in ../*.patch; do
-	# 	patch -Np1 -i "$p"
-	# done
+	echo -e "# ========== Build gauche-rs ============="
+	export CARGO_HOME="${srcdir}/cargo-home"
+  
+	cd "${srcdir}/gauche-rs"
+	cargo build --release --locked
+
+	echo -e "# ============ In the cpp folder build to create the gaucheCppTargets.cmake file in the target directory ======================="
+	echo -e "PWD::$(pwd)"
+	cd "${srcdir}/gauche-rs/cpp"
+	echo -e "PWD::$(pwd)"
+	# Configure and compile the C++ portion
+	local cmake_options=(
+		-S .
+		-B build
+		-D GAUCHE_BUILD_EXAMPLES=OFF
+		-D CMAKE_BUILD_TYPE=Release
+		-D CMAKE_C_FLAGS="-fPIC"
+		-D CMAKE_CXX_FLAGS="-fPIC"
+	)
+	cmake "${cmake_options[@]}"
+	cmake --build build
+
+	echo -e "# === Install the generated target files into the local target prefix path ==="
+	cmake --install build --prefix ${srcdir}/gauche-rs/target
+
+
+	echo -e "# ============== Prepare the osrm-backend =============="
+	cd "${srcdir}/${pkgname}-${pkgver}"
+
+	echo -e "# =================== Modify CMakeLists.txt file ========================"
+
+	echo -e "# 2. Inject add_subdirectory into osrm-backend's root CMakeLists.txt"
+	echo -e "# Add add_subdirectory after add_library(osrm... - line 212"
+	sed -i "/add_library(osrm::store ALIAS osrm_store)/a # Added via PKGBUILD\nadd_subdirectory(${srcdir}/gauche-rs/cpp ${srcdir}/gauche-rs/target)" CMakeLists.txt  # First path must contain CMakeLists.txt and the second is the binary directory
+
+	echo -e "# 3. Automatically append gauche::cpp linking to osrm-routed target"
+	sed -i '/target_link_libraries(osrm/ s/)/ gauche::cpp)/' CMakeLists.txt
+
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+	echo -e "# =========== Navigate back to the main osrm-backend build directory ==========="
+	cd "${srcdir}/$pkgname-$pkgver"
+	echo -e "# ========== Build osrm-backend ============="
 
 	local cmake_options=(
-		# -B <path-to-build>           = Explicitly specify a build directory.
-		# This is relative to /src
 		-B build
-
-		# -S <path-to-source>          = Explicitly specify a source directory.
-		# -S "${srcdir}/${pkgname}-${pkgver}"
-		# Set to debug to generate debugging symbol output
-		# -D CMAKE_BUILD_TYPE=Debug
-		# -D CMAKE_BUILD_TYPE=RelWithDebInfo
-		-D CMAKE_BUILD_TYPE=None
+		-D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_INSTALL_PREFIX=/usr
+		-D CMAKE_PREFIX_PATH="${srcdir}/gauche-rs/target/lib/cmake/gauche"
 		-D CMAKE_INSTALL_LIBDIR=lib
 		-D BUILD_SHARED_LIBS=ON
 		-D LUA_INCLUDE_DIR=/usr/include/lua5.4
-		# -D LUA_LIBRARIES=/usr/lib/liblua.so
-		-W no-dev
-		# -D CMAKE_C_FLAGS="-D_FORTIFY_SOURCE=2"
-		# -D CMAKE_CXX_FLAGS="-D_FORTIFY_SOURCE=2"
+		-W no-author
+		-D CMAKE_C_FLAGS="-fPIC"
+		-D CMAKE_CXX_FLAGS="-fPIC -Wno-macro-redefined -I ${srcdir}/gauche-rs/target/include"
 	)
 	cmake "${cmake_options[@]}"
-	# make VERBOSE=1
+	cmake --build build -j$(nproc)
+	echo -e "=== #End of build() PWD::$(pwd) ==="
 
-	cmake --build build
 }
+
 check(){
 	# https://github.com/Project-OSRM/osrm-backend/blob/master/docs/testing.md
 	# https://deepwiki.com/Project-OSRM/osrm-backend/1.3-building-from-source
 	# https://github.com/Project-OSRM/osrm-backend/blob/d8ff021d/docs/testing.md?plain=1#L33-L47
 
-	# pwd is src/
 	cd "$pkgname-$pkgver"
-	echo -e "PWD::$(pwd)" # /build/osrm-backend/src/osrm-backend-26.5.0
- 
 	echo -e "# ----------------------------------------------------"
 	echo -e "# Prepare the test data by preprocessing the dataset"
 	echo -e "# ----------------------------------------------------"
 	cd test/data/
-	echo -e "PWD::$(pwd)"
 	make
 
 	
 	echo -e "# -----------------------------"
 	echo -e "# Build the unit tests"
 	echo -e "# -----------------------------"
-	echo -e "PWD::$(pwd)"
 	cd ../../build/
-	# cd build
-	echo -e "PWD::$(pwd)"
-	echo -e "------------------------- cmake .. ----------------------------"
+	echo -e "# ======================== cmake .. ======================="
 	local cmake_options=(
-		# --debug-output
 		# Code fails without these supressions
-		-D CMAKE_C_FLAGS="-Wno-error=uninitialized"
-		-D CMAKE_CXX_FLAGS="-Wno-error=uninitialized"
-		-W no-dev
+		-D CMAKE_C_FLAGS="-Wno-error=uninitialized -fno-lto" # -Wno-error"
+		-D CMAKE_CXX_FLAGS="-Wno-error=uninitialized -I ${srcdir}/gauche-rs/target/include -fno-lto" # -Wno-error"
+		-W no-author
+		-D ENABLE_LTO=OFF
 	)
-	# cmake -j$(nproc) tests
 	cmake "${cmake_options[@]}" ..
 	echo -e "PWD::$(pwd)"
 
-	echo -e "------------------------- make tests ----------------------------"
-	make tests
-	# make --debug=a tests
-	echo -e "PWD::$(pwd)"
-	# cd build
-	echo -e "PWD::$(pwd)"
+	echo -e "# ======================= make tests (ctest --output-on-failure) ========================="
+	local excluded_tests=""
+  	local ctest_flags=(
+    		--test-dir .
+		# show the stdout and stderr when the test fails
+		--output-on-failure
+		# execute tests in parallel
+		--parallel $(nproc)
+		# exclude problematic tests from above string
+		--exclude-regex "$excluded_tests"
+		)
+  	ctest "${ctest_flags[@]}"
 
 	echo -e "# ----------------------------------------------------"
 	echo -e "# Run each binary suite individually"
@@ -160,9 +186,11 @@ check(){
 }
 
 package() {
-	# echo -e "PWD: $(pwd)"
 	cd "$pkgname-$pkgver"
 	DESTDIR="${pkgdir}/" cmake --install build
-	# install -Dvm644 -T "${srcdir}/${pkgname}-${pkgver}/LICENSE.TXT" ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 	install -Dvm644 -T ./LICENSE.TXT ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+	
+	# Optional: Install standard profiles (car, bicycle, foot) to a shared environment directory
+	install -d "${pkgdir}/usr/share/osrm/profiles"
+	cp -r "${srcdir}/${pkgname}-${pkgver}/profiles/"* "${pkgdir}/usr/share/osrm/profiles/"
 }
