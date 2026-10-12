@@ -13,7 +13,7 @@ depends=(
   libarchive
   libgcc
   libstdc++
-  'libtde>=0.2.0'
+  'libtde>=0.3.0'
   qt6-base
   qt6-svg
   wayland
