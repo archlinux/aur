@@ -1,0 +1,4 @@
+[switchyard]
+source = "git"
+git = "https://tty.fail/mrus/switchyard.git"
+prefix = "v"
