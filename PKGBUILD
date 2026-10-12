@@ -120,13 +120,8 @@ package_eidklient-native() {
         "${_pkgbase}"
     )
 
-    : "${conflicts[@]}"
-    : "${depends[@]}"
-    : "${install}"
-    : "${optdepends[@]}"
     # shellcheck disable=SC2154
     : "${pkgdir}"
-    : "${provides[@]}"
     # shellcheck disable=SC2154
     : "${srcdir}"
 
@@ -199,12 +194,17 @@ package_eidklient-native-unused-libs() {
 }
 
 : "${arch[@]}"
+: "${conflicts[@]}"
+: "${depends[@]}"
+: "${install}"
 : "${license[@]}"
+: "${optdepends[@]}"
 : "${options[@]}"
 : "${pkgdesc}"
 : "${pkgname[@]}"
 : "${pkgrel}"
 : "${pkgver}"
+: "${provides[@]}"
 : "${sha256sums[@]}"
 : "${sha256sums_i686[@]}"
 : "${sha256sums_x86_64[@]}"
