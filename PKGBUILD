@@ -3,7 +3,7 @@
 # Upstream: https://github.com/Egezenn/dota2-minify
 
 pkgname=dota2-minify-git
-pkgver=2rc5.r11.g0da527d
+pkgver=2rc6.r1.g60410a2
 pkgrel=1
 pkgdesc="Dota 2 Mod Patcher & Toolkit (latest git source build)"
 arch=('x86_64')
