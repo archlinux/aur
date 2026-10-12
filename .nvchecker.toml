@@ -1,0 +1,5 @@
+[runline-bin]
+source = "github"
+github = "programmersd21/runline"
+use_latest_release = true
+prefix = "v"
