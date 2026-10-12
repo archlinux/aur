@@ -5,7 +5,7 @@
 
 pkgname=claude-desktop-extra
 pkgver=2.31226.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Claude Desktop (official Linux build) with extra features: Computer Use, custom themes, multi-profile, Quick Entry - for distros upstream does not ship"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickjaja/claude-desktop-extra"
@@ -57,10 +57,10 @@ install="$pkgname.install"
 # claude-desktop/ (Electron runtime + resources/app.asar already patched + our CU
 # bridges under resources/), plus launcher/, icons/, and copyright. No separate
 # Electron zip source.
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.31226.1-4/claude-desktop-2.31226.1-linux.tar.gz")
-sha256sums_x86_64=('aacdbe542541cb07f74e3bcf7f867cb906f9f195072a970cdeefd3e6b00e66a5')
-source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.31226.1-4/claude-desktop-2.31226.1-linux-aarch64.tar.gz")
-sha256sums_aarch64=('4a8a75cfb72185a29c5d7a4e3cc4b3a628f97a6a5513e7a73efa236a840959aa')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.31226.1-5/claude-desktop-2.31226.1-linux.tar.gz")
+sha256sums_x86_64=('c713982df0b95a30e6772843726700f29a32156b093b5663ef87976b1ab07d03')
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.31226.1-5/claude-desktop-2.31226.1-linux-aarch64.tar.gz")
+sha256sums_aarch64=('3ea0d2c5d9f8353ad6976e103bf13bde4764bb6593091397e56c854de5e916b6')
 options=('!strip' '!emptydirs')
 
 package() {
