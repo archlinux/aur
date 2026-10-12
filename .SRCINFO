@@ -5,6 +5,7 @@ pkgbase = packettracer
 	url = https://www.netacad.com/resources/lab-downloads
 	arch = x86_64
 	license = LicenseRef-Cisco-EULA
+	depends = fuse2
 	options = !strip
 	options = !emptydirs
 	source = local://CiscoPacketTracer_901_Ubuntu_64bit.deb

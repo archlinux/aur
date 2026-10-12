@@ -10,6 +10,7 @@ pkgver=9.0.1
 pkgrel=1
 pkgdesc="A cross-platform visual simulation tool designed by Cisco Systems that allows users to create network topologies and imitate modern computer network"
 arch=( 'x86_64' )
+depends=('fuse2')
 options=('!strip' '!emptydirs')
 url="https://www.netacad.com/resources/lab-downloads"
 license=('LicenseRef-Cisco-EULA')
