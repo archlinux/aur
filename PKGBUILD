@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Pretty, searchable Neovim/tmux/etc cheatsheets for Omarchy Linux (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/akitaonrails/omarchy-cheatsheets"
-license=('MIT')
+license=('GPL-2.0-only')
 depends=('gcc-libs' 'glibc' 'qt6-base' 'qt6-declarative')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "$_pkgname-debug")
