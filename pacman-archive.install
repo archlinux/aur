@@ -1,5 +1,6 @@
 post_install(){
     update-mirrorlist-archive
+    example_tips="$(pacman-archive-genconf add)"
     cat << EOF
 
     Hooks to auto update mirrorlist.archive has been installed, to disable it,
@@ -14,10 +15,13 @@ post_install(){
 
     where <repo> is core, extra, ...
 
+    ($example_tips)
+
 EOF
 }
 pre_remove(){
     rm -f /var/lib/pacman-archive/*.mirrorlist
+    example_tips="$(pacman-archive-genconf del)"
     cat << EOF
 
     /var/lib/pacman-archive/ has been removed, please remove the
@@ -27,6 +31,7 @@ pre_remove(){
 
     where <repo> is core, extra, ...
 
+    ($example_tips)
 EOF
 }
 

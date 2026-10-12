@@ -1,7 +1,7 @@
 # Maintainter: Ben Song <bensongsyz@gmail.com>
 pkgname="pacman-archive"
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="This package will append proper archive url to mirrorlist"
 arch=('x86_64')
 license=('GPL')
@@ -13,6 +13,7 @@ source=(
     update-mirrorlist-archive
     update-mirrorlist-archive.hook
     pacman-archive.toml
+    pacman-archive-genconf
     README.md
 )
 sha256sums=(
@@ -20,14 +21,17 @@ sha256sums=(
     77860d83f795f2fcf933bc561020c19265925028a8da317be90f97762fcbd7f8
     9a3942d62968249c951f4a1a65b0514bd72459655502ffd9f16098f9304767a4
     997acd67ae1ae270c9fc69e7e777afe0d8710c1fea30e1ea1ef35da983d0b2f1
+    56cd29a780e51ff6b8395ad0cb90f533b6169a6e029b5344f2839244d892d566
     SKIP
 )
 
 backup=(etc/pacman.d/hooks/update-mirrorlist-archive.hook)
 backup+=(etc/pacman-archive.toml)
 package(){
-    install -D --mode=755 --target-directory="${pkgdir}/usr/bin" "$srcdir"/pacman-archive
-    install -D --mode=755 --target-directory="${pkgdir}/usr/bin" "$srcdir"/update-mirrorlist-archive
+    install -D --mode=755 --target-directory="${pkgdir}/usr/bin" \
+        "$srcdir"/pacman-archive                                 \
+        "$srcdir"/update-mirrorlist-archive                      \
+        "$srcdir"/pacman-archive-genconf
 
     install -D --mode=644 --target-directory="${pkgdir}/etc/pacman.d/hooks/" "$srcdir"/update-mirrorlist-archive.hook
     install -D --mode=644 --target-directory="${pkgdir}/etc/" "$srcdir"/pacman-archive.toml

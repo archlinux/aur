@@ -1,0 +1,92 @@
+#!/bin/python
+import sys
+from pathlib import Path
+import re
+
+def insert_archive_line(conf:list[str], repo_info):
+    repo = repo_info["name"]
+    enable = repo_info["enable"]
+    insert_pos=len(conf)-1
+    if repo == "options" or repo == '':
+        return
+    keyword_pattern = re.compile("^#* *(Include)|(CacheServer)|(Server)|(SigLevel)|(Usage) *=.*")
+    for i in range(len(conf)):
+        if keyword_pattern.match(conf[i].strip()):
+            insert_pos=i+1
+
+    line = ''
+    if not enable:
+        line+="#"
+
+    mirrorlist_file = f"/var/lib/pacman-archive/{repo}.mirrorlist"
+    if not Path(mirrorlist_file).exists():
+        line += "#"
+
+    line += f"Include = {mirrorlist_file}\n"
+    conf.insert(insert_pos, line)
+
+def add_archive():
+    with open("/etc/pacman.conf", "r") as f:
+        pacman_conf = f.readlines()
+
+    # enabled/disabled repo
+    pattern_repo = re.compile(r"^#*\[(.*)\]$")
+    pattern_archive_line = re.compile(r"^#* *Include = /var/lib/pacman-archive/.*.mirrorlist$")
+
+    current_repo_info = { "name": "", "enable": False }
+    new_pacman_conf=[]
+
+    for line in pacman_conf:
+        if (match := pattern_repo.search(line.strip())) and (section := match.group(1)):
+            enable = False if line.startswith("#") else True
+            section_info = { "name": section, "enable": enable }
+            insert_archive_line(new_pacman_conf, current_repo_info)
+            current_repo_info = section_info
+
+        if not pattern_archive_line.match(line):
+            new_pacman_conf.append(line)
+
+    pacman_conf_new = "/var/lib/pacman-archive/pacman.conf"
+    with open(pacman_conf_new, "w") as f:
+        f.writelines(new_pacman_conf)
+    print(f"example config: {pacman_conf_new}")
+    return 0
+
+def del_archive():
+    with open("/etc/pacman.conf", "r") as f:
+        pacman_conf = f.readlines()
+
+    pattern_archive_line = re.compile(r"^#* *Include = /var/lib/pacman-archive/.*.mirrorlist$")
+
+    new_pacman_conf=[]
+
+    for line in pacman_conf:
+        if not pattern_archive_line.match(line):
+            new_pacman_conf.append(line)
+
+    pacman_conf_new = "/var/lib/pacman-archive/pacman.conf"
+    with open(pacman_conf_new, "w") as f:
+        f.writelines(new_pacman_conf)
+    print(f"example config: {pacman_conf_new}")
+    return 0
+
+
+def show_help():
+    print("Usage: pacman-archive-genconf <add|del>")
+    sys.exit(1)
+
+def main():
+    if len(sys.argv) != 2:
+        show_help()
+
+    if sys.argv[1] == "add":
+        add_archive()
+    elif sys.argv[1] == "del":
+        del_archive()
+    else:
+        show_help()
+
+
+if __name__ == '__main__':
+    sys.exit(main())
+
