@@ -1,6 +1,6 @@
 pkgbase = spw
 	pkgdesc = Secure password generator with multiple algorithms and hardware RNG support
-	pkgver = 3.0
+	pkgver = 3.3
 	pkgrel = 1
 	url = https://gitlab.com/Plague_Doctor/spw
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = spw
 	optdepends = bash-completion: bash completion support
 	optdepends = zsh-completions: zsh completion support
 	optdepends = fish: fish completion support
-	source = spw::git+https://gitlab.com/Plague_Doctor/spw
+	source = spw::git+https://gitlab.com/Plague_Doctor/spw#tag=3.3
 	validpgpkeys = A8F7858263C1E39480B731DCEAD4F103068DF8E5
 	sha256sums = SKIP
 

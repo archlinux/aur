@@ -1,8 +1,10 @@
-#Maintainer: Plague-doctor <plague <at>> privacyrequired <<dot>> com >
+#Maintainer: Plague-doctor <plague.doctor <at>> rbox <<dot>> me >
 
 pkgname=spw
-pkgver=3.0
+pkgver=3.3
 pkgrel=1
+# Git tag to build; pkgver is the tag without a leading "v" (both set by CI)
+_tag=3.3
 pkgdesc="Secure password generator with multiple algorithms and hardware RNG support"
 arch=('any')
 url="https://gitlab.com/Plague_Doctor/spw"
@@ -15,22 +17,16 @@ optdepends=('xclip: clipboard support (X11)'
             'zsh-completions: zsh completion support'
             'fish: fish completion support')
 makedepends=('git')
-source=("$pkgname::git+https://gitlab.com/Plague_Doctor/spw")
+source=("$pkgname::git+https://gitlab.com/Plague_Doctor/spw#tag=$_tag")
 sha256sums=('SKIP')
-
-pkgver() {
-    cd "$srcdir/$pkgname"
-    git describe --tags --abbrev=0 | sed 's/^v//'
-}
 
 validpgpkeys=('A8F7858263C1E39480B731DCEAD4F103068DF8E5')
 
 build() {
     cd "$srcdir/$pkgname"
-    # Update version and date in spw.py to match the git tag
-    local tag_version=$(git describe --tags --abbrev=0 | sed 's/^v//')
+    # Update version and date in spw.py to match the release
     local build_date=$(date -u '+%B %Y')
-    sed -i "s/^spw_version = .*/spw_version = \"$tag_version\"/" spw.py
+    sed -i "s/^spw_version = .*/spw_version = \"$pkgver\"/" spw.py
     sed -i "s/^spw_date = .*/spw_date = \"$build_date\"/" spw.py
 }
 
