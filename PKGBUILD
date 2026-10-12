@@ -1,3 +1,4 @@
+# Maintainer: Henry M. <henryjm11106 [at] gmail dot com>
 # Maintainer: Denis Benato <benato.denis96 [at] gmail dot com>
 # Maintainer: Chris Lane <aur at chrislane dot com>
 # Maintainer: DexterHaxxor <fox@dexterhaxxor.dev>
@@ -15,7 +16,7 @@
 # Contributor: Supdrewin <supdrewin at gmail dot com>
 
 pkgbase=lib32-mesa-amdonly-gaming-git
-pkgver=26.1.0_devel.219374.37ba573877a.d41d8cd
+pkgver=26.3.0_devel.231170.745709a0004.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 
 pkgname=(
@@ -142,7 +143,7 @@ build() {
     -D valgrind=disabled
     -D video-codecs=all
     -D vulkan-drivers=amd
-    -D vulkan-layers=device-select,overlay,anti-lag
+    -D vulkan-layers=device-select,overlay
     -D vulkan-beta=true
     --wrap-mode=nofallback
     --buildtype=release
@@ -151,7 +152,7 @@ build() {
   # Build only minimal debug info to reduce size
   #CFLAGS+=' -g1'
   #CXXFLAGS+=' -g1'
-
+  
   export BINDGEN_EXTRA_CLANG_ARGS="-m32"
 
   arch-meson mesa build "${meson_options[@]}"
@@ -197,10 +198,13 @@ package_lib32-amdonly-gaming-vulkan-mesa-layers-git() {
     'amdonly-gaming-vulkan-mesa-layers-git'
   )
   conflicts=(
+    'lib32-vulkan-mesa-device-select'
+    'lib32-vulkan-mesa-implicit-layers'
     'lib32-vulkan-mesa-layers'
     'lib32-vulkan-mesa-layer'
   )
   provides=(
+    'lib32-vulkan-mesa-implicit-layers'
     'lib32-vulkan-mesa-layers'
   )
 
@@ -251,6 +255,7 @@ package_lib32-amdonly-gaming-vulkan-radeon-git() {
     'lib32-libxshmfence'
     'lib32-llvm-libs'
     'lib32-systemd'
+    'lib32-vulkan-icd-loader'
     'lib32-wayland'
     'lib32-xcb-util-keysyms'
     'lib32-zstd'
@@ -281,7 +286,6 @@ package_lib32-amdonly-gaming-mesa-git() {
     'lib32-libxxf86vm'
     'lib32-llvm-libs'
     'lib32-lm_sensors'
-    'lib32-vulkan-icd-loader'
     'lib32-wayland'
     'lib32-zstd'
 
@@ -304,6 +308,8 @@ package_lib32-amdonly-gaming-mesa-git() {
   )
 
   rm -v fakeinstall/usr/share/drirc.d/00-mesa-defaults.conf
+  rm -v fakeinstall/usr/share/drirc.d/00-radeonsi-defaults.conf
+  rm -v fakeinstall/usr/share/drirc.d/01-radv-performance.conf
   rm -v fakeinstall/usr/share/glvnd/egl_vendor.d/50_mesa.json
 
   # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast, swr
