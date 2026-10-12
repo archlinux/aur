@@ -2,7 +2,7 @@
 # Contributor: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
 
 pkgname=zuban
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="A Mypy-compatible Python Language Server built in Rust"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("git+https://github.com/zubanls/zuban.git#tag=v${pkgver}"
         "git+https://github.com/python/typeshed.git"
         "git+https://github.com/davidhalter/mypy.git"
         "git+https://github.com/typeddjango/django-stubs.git")
-sha256sums=('5a8060d045cbc0e633a3fab4de13f885b82ddb809ea75c1be61ce7f2ca663f4a'
+sha256sums=('d68ca733122fa9fc47b1ebdedab218b5308c2aec791ac680fbac061534dce31e'
             'SKIP'
             'SKIP'
             'SKIP')
