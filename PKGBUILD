@@ -6,7 +6,7 @@
 
 pkgname=wxwidgets-gtk3-unstable
 _pkgname=wxWidgets
-pkgver=3.3.3
+pkgver=3.3.4
 _pkgver=${pkgver}
 pkg_name_ver="${_pkgname}-${_pkgver}"
 pkgrel=1
@@ -14,13 +14,13 @@ pkgdesc="GTK+3 implementation of wxWidgets API for GUI"
 arch=('x86_64')
 url="https://github.com/wxWidgets/wxWidgets"
 license=("LicenseRef-custom:wxWindows")
-depends=(libstdc++ glibc glib2 libgcc gtk3 cairo pango expat wayland zlib libwebp libnotify libjpeg-turbo libtiff libpng nanosvg fontconfig gspell pcre2 libmspack gstreamer gst-plugins-bad-libs webkit2gtk-4.1 libglvnd gdk-pixbuf2 libxtst libx11 libxkbcommon libsm sdl2-compat curl bash)
+depends=(libstdc++ glibc glib2 libgcc gtk3 cairo pango expat wayland zlib libwebp libnotify libjpeg-turbo libtiff libpng nanosvg fontconfig gspell pcre2 libmspack gstreamer gst-plugins-bad-libs webkit2gtk-4.1 libglvnd gdk-pixbuf2 libxtst libx11 libxkbcommon libsm libayatana-appindicator sdl2-compat curl bash)
 makedepends=(cmake)
 provides=()
 #provides=(wxwidgets-gtk3)
 conflicts=()
 source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('81b09d6dd9f1ed9301f8c55a968a488d0491f264dc2bab19a7e407ac67009482')
+sha256sums=("815c16cafa4fcbfcf25c5c0a3418309c62257b8a3b6f91d85a1367a134f98c98")
 
 #pkgver() {
 #  cd "${srcdir}/${pkg_name_ver}"
