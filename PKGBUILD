@@ -10,7 +10,7 @@
 # "unused"/"unassigned" heuristics don't apply to a PKGBUILD.
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=agent-glovebox
-pkgver=0.79.0
+pkgver=0.80.0
 pkgrel=1
 pkgdesc="Hardware-isolated, allowlist-firewalled sandbox for running Claude Code"
 arch=('any')
@@ -41,12 +41,7 @@ optdepends=(
 
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5c18400dc2abdd47baab8386dddb1ed1972bd9015f47596f984ac882ecce2542')
-
-# Owner this release was cut from. Synced from config/packaging.json by
-# scripts/gen-packaging.mjs (shared with the Homebrew formula and nFPM manifest)
-# — edit it there, not here.
-RELEASE_OWNER="AlexanderMattTurner"
+sha256sums=('075bdcc4660645d0e20e0bf39660e0db2048e1149ebae165bacc1faee0ab59d1')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver" || exit 1
@@ -57,8 +52,8 @@ package() {
   # names and resolves its sandbox-policy stack relative to bin/, so the whole tree ships together under libdir. Drop
   # only dev/CI artifacts the runtime never reads; the launcher reads bin/,
   # sandbox-policy/, and .claude/ at runtime. The prune list below is synced from
-  # config/packaging.json, like RELEASE_OWNER above — edit it there.
-  local prune=('tests' 'research' 'metrics' '.git' '.github' 'node_modules' '.venv' 'evals' 'inspect-glovebox' 'exploitbench-glovebox' 'glovebox-driver' 'perflib' 'config/kata/seccomp/derive' 'tools' 'bin/checks' 'bin/_perf_path.py' 'bin/persist-perf-history.sh' 'bin/lib/model_selection.py' 'bin/lib/retry-github.bash' 'scripts/prove-comment-edit-identity.py' 'bin/check-*' 'bin/probe-*' 'bin/bench-*' 'bin/refresh-models.py' 'config/bash-coverage-baseline.json' 'config/breakout-ctf-rounds.json' 'config/ci-family-inputs.json' 'config/ci-spend.json' 'config/ci-truth-serum-version' 'config/claude-budget.json' 'config/cts-tier-wide-skips.yaml' 'config/fast-checks.json' 'config/generated-consumer-waivers.json' 'config/js-coverage-baseline.json' 'config/launch-weakeners' 'config/landing-consent.json' 'config/lint-scope.json' 'config/merge-queue-mode.json' 'config/metric-series.json' 'config/pinned-tools.json' 'config/py-coverage-baseline.json' 'config/reachability-waivers.json' 'config/render-only-modules.json' 'config/review-severities.json' 'config/status-badges.json' 'config/syft-version.json' 'config/tool-pins')
+  # config/packaging.json — edit it there.
+  local prune=('tests' 'research' 'metrics' '.git' '.github' 'node_modules' '.venv' 'evals' 'inspect-glovebox' 'exploitbench-glovebox' 'glovebox-driver' 'perflib' 'config/kata/seccomp/derive' 'tools' 'bin/checks' 'bin/_perf_path.py' 'bin/persist-perf-history.sh' 'bin/lib/model_selection.py' 'bin/lib/retry-github.bash' 'scripts/prove-comment-edit-identity.py' 'bin/check-*' 'bin/bench-*' 'bin/refresh-models.py' 'config/bash-coverage-baseline.json' 'config/breakout-ctf-rounds.json' 'config/ci-family-inputs.json' 'config/ci-spend.json' 'config/ci-truth-serum-version' 'config/claude-budget.json' 'config/cts-tier-wide-skips.yaml' 'config/fast-checks.json' 'config/generated-consumer-waivers.json' 'config/js-coverage-baseline.json' 'config/launch-weakeners' 'config/landing-consent.json' 'config/lint-scope.json' 'config/merge-queue-mode.json' 'config/metric-series.json' 'config/pinned-tools.json' 'config/py-coverage-baseline.json' 'config/reachability-waivers.json' 'config/render-only-modules.json' 'config/review-severities.json' 'config/status-badges.json' 'config/syft-version.json' 'config/tool-pins')
   local pattern
   local -a matches
   for pattern in "${prune[@]}"; do
