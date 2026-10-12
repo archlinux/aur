@@ -1,10 +1,10 @@
 #Maintainer: Plague-doctor <plague.doctor <at>> rbox <<dot>> me >
 
 pkgname=spw
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 # Git tag to build; pkgver is the tag without a leading "v" (both set by CI)
-_tag=3.3
+_tag=3.4
 pkgdesc="Secure password generator with multiple algorithms and hardware RNG support"
 arch=('any')
 url="https://gitlab.com/Plague_Doctor/spw"
