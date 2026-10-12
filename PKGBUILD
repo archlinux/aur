@@ -4,12 +4,12 @@ _pkgbase=dearsql
 _vcpkg_commit=77df67cfff9c12ccfdb52284e07c87c75092f723
 _mongo_patch_commit=bd93b56711a393a3c498991e023f94b7542832bb
 pkgname=${_pkgbase}-git
-pkgver=0.4.14.r0.g1bc158f
+pkgver=0.6.0.r4.g95c5d72
 pkgrel=1
 pkgdesc="Cross-platform SQL database client (git version)"
 arch=('x86_64')
 url="https://github.com/dunkbing/dearsql"
-license=('FSL')
+license=('LicenseRef-FSL')
 depends=('freetds' 'gtk4' 'libepoxy' 'libx11')
 makedepends=(
     'autoconf'

@@ -1,10 +1,10 @@
 pkgbase = dearsql-git
 	pkgdesc = Cross-platform SQL database client (git version)
-	pkgver = 0.4.14.r0.g1bc158f
+	pkgver = 0.6.0.r4.g95c5d72
 	pkgrel = 1
 	url = https://github.com/dunkbing/dearsql
 	arch = x86_64
-	license = FSL
+	license = LicenseRef-FSL
 	makedepends = autoconf
 	makedepends = autoconf-archive
 	makedepends = automake
