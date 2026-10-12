@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=openhome-bin
 _pkgname=OpenHome
-pkgver=1.18.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc="Application for importing and transferring Pokémon between save files."
 arch=(
@@ -18,8 +18,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
-sha256sums_aarch64=('091f4c9a409ac925e6b965116c075742660788e8b19e0518faaa66cfc7eb381e')
-sha256sums_x86_64=('ebb7382dd83208cae79cab934f3565a25655242bd3ae3a57cff1b66489fedd43')
+sha256sums_aarch64=('24fcbe39615895a5be5effaa07a806747916099beeaca9293a9e93b9f5d500a5')
+sha256sums_x86_64=('121d8894b09820ba6536cbc68b60c3c025e63eaa2060d8ad10e9d9e5410c2e52')
 prepare() {
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
@@ -30,6 +30,7 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    [ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
