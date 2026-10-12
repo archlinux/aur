@@ -7,7 +7,7 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.6.870.r72.g7fba6df0e
+pkgver=1.6.870.r404.g0d15773d6
 pkgrel=1
 epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
@@ -61,6 +61,9 @@ prepare() {
   git config submodule.3rdparty/CLI11.url "$srcdir/CLI11"
 
   git -c protocol.file.allow=always submodule update
+
+  # Fix linker error due to missing symbol from abseil
+  sed -i 's|"Protobuf" REQUIRED|"Protobuf" CONFIG REQUIRED|' src/CMakeLists.txt
 }
 
 build() {
