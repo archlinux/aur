@@ -1,7 +1,7 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname="gearsystem"
-pkgver=3.9.21
+pkgver=3.9.22
 pkgrel=1
 pkgdesc="Sega Master System / Game Gear / SG-1000 Emulator"
 url="https://github.com/drhelius/Gearsystem"
@@ -13,7 +13,7 @@ source=(
     "gearsystem.desktop"
 )
 sha256sums=(
-    "a7b96fc5a8339367f189f5e0a642e405c2f8e7fff71cab2aad2e5484ceff8b3a"
+    "962c7cbe95bffcca6a577e9e3f80dfedafed670930795e0ae7f4809facda6a71"
     "214a0ff5b5d932ccde5c4cd2df1e048441981bbab928412da740b5a3ad9ed74e"
 )
 
