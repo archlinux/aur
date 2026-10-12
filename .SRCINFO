@@ -1,6 +1,6 @@
 pkgbase = horneroctl-bin
 	pkgdesc = HorneroOS system CLI (native binary)
-	pkgver = 0.2.0_preview17
+	pkgver = 0.2.0_preview18
 	pkgrel = 1
 	url = https://github.com/HorneroOS/hornero
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = horneroctl-bin
 	license = MIT
 	optdepends = xdg-terminal-exec: launch terminals using Hornero terminal preferences
 	options = !strip
-	source_x86_64 = horneroctl-0.2.0_preview17::https://github.com/HorneroOS/hornero/releases/download/horneroctl-v0.2.0-preview17/horneroctl-linux-x86_64
-	sha256sums_x86_64 = f6e7d8ffe4e502dad2bfed0eb09594d8f05b2e0418ac54c70849c953bd89193d
-	source_aarch64 = horneroctl-0.2.0_preview17::https://github.com/HorneroOS/hornero/releases/download/horneroctl-v0.2.0-preview17/horneroctl-linux-arm64
-	sha256sums_aarch64 = 6b16680138181ac9228d1672e645bec552bc1925378d28f975108c108f8a3311
+	source_x86_64 = horneroctl-0.2.0_preview18::https://github.com/HorneroOS/hornero/releases/download/horneroctl-v0.2.0-preview18/horneroctl-linux-x86_64
+	sha256sums_x86_64 = b7d545c9c1183dad1af74ddbda937dac24c53947fa6ee6cc47397c9a42fef8b6
+	source_aarch64 = horneroctl-0.2.0_preview18::https://github.com/HorneroOS/hornero/releases/download/horneroctl-v0.2.0-preview18/horneroctl-linux-arm64
+	sha256sums_aarch64 = c8923141eab2064ba6a62286002f97c0cf34fe246ae38b462ab135580180b4b0
 
 pkgname = horneroctl-bin
