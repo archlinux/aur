@@ -5,7 +5,7 @@ _pkgname=riftbar
 
 pkgname=${_pkgname}-bin
 pkgver=0.2.8
-pkgrel=0
+pkgrel=1
 _pkgvername=v${pkgver}
 
 pkgdesc='Highly customizable GTK4 bar for Wayland written in Rust'
@@ -31,7 +31,7 @@ source=(
 
 options=(!debug)
 
-sha256sums=('7490a79f133405c078cc9d5bf3f4bb5560c615b8ea573f09558b5790556dda33'
+sha256sums=('e106f635bd6a744c7f604dfbf5732c756f6f61b53cf4495ddfef28808dd47684'
             'SKIP'
             'SKIP')
 
