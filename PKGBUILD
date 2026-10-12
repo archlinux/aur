@@ -2,7 +2,7 @@
 
 pkgname=thyra-bin
 _pkgname=thyra
-pkgver=0.10.1
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="Browser and PWA door into your Herdr terminals and agents, with first-class mobile support"
 arch=('x86_64' 'aarch64')
@@ -41,7 +41,7 @@ source=(
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x64.tar.xz")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.tar.xz")
 sha256sums=('f0366103e89c5b21afe3f414c1f708dfa2e6d261e54cd2ea1b893cb2188ea61e'
-            '63456db6d1e58df6f36aef0494e074c64c1227e76e77da78d924a6d221874a94'
+            'cf3aa9dac95832e9eb86ee7834ee52b30789ed642031800840fefe4e5961bb00'
             'add9d7531d1b21646317a8958e38fc727506fa39d24bdecb44154d943c82753a'
             '15006f5caa12d350e1d4ba9e33f9c61c30a87fea96f6f4a6d46f18f9d50f990c'
             'a288de4db829f0a0b0cd028b0020bc2daef1de9f3d6b4a82790fd4ae898f26a1'
@@ -55,8 +55,8 @@ sha256sums=('f0366103e89c5b21afe3f414c1f708dfa2e6d261e54cd2ea1b893cb2188ea61e'
             '5b254c6df910a4347975080a85f64faeb2824768094bb293b6ddbee313bec376'
             '0e31760f5aa03e410af905c3d9ee852d8fb54c5889b8baf609c3c35a70bdfeba'
             'd6cd4a014074753669705195719930dd55ed8483a180dfd16318508a65f41b0c')
-sha256sums_x86_64=('a5e980d5d8d97c8c8c9d489b369bdccc0025600d93c68d6ee0185f6ede8e8138')
-sha256sums_aarch64=('e0a80b7156d42487ef63f74a00795dab2ef9ec758f211d8bdd69e44f7d48081f')
+sha256sums_x86_64=('6033af88cc597858fdb804df332a0389b0fc88b2cb9ac7295677c03f046cee10')
+sha256sums_aarch64=('185a6cd47c7507d1467e4feece8bee0faf648d843c3d89436d3bb2501b7b078e')
 
 prepare() {
   # Point upstream's user unit at the packaged binary and turn off the in-app
