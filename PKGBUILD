@@ -1,8 +1,8 @@
 # Maintainer: evv1e <evv1e@archlinux.org>
 pkgname="intiface-central-bin"
-pkgver="3.2.1"
+pkgver="3.2.2"
 pkgrel=1
-_ghtag="v$pkgver+45" # tag in github
+_ghtag="v$pkgver+46" # tag in github
 pkgdesc="Frontend application for the Buttplug Sex Toy Control Library"
 arch=(x86_64)
 url="https://github.com/intiface/intiface-central"
@@ -21,7 +21,7 @@ source=(intiface_central.desktop
 )
 sha256sums=('SKIP'
             'SKIP'
-	    '5788de6386c90a16c447990db0a34fdc0e76b367204d098f057c687240d9bffe'
+	    '302a5ae15e550ba03badefcb3fee7d6fc62487670ab9e884edeeaf6279d95ac6'
 	    'SKIP'
 )
 
@@ -30,6 +30,7 @@ package() {
 	install -Dm644 "intiface_central.desktop" "$pkgdir/usr/share/applications/intiface_central.desktop"
 	install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 
+	unzip -d intiface-central "intiface-central-v$pkgver-linux-ubuntu-24.04-x64.zip"
 	cd "intiface-central"
 	install -Dm755 "intiface_central" "$pkgdir/usr/lib/intiface_central/intiface_central"
 	cp -r "data" "$pkgdir/usr/lib/intiface_central/data"
