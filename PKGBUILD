@@ -2,8 +2,8 @@
 
 pkgname=cc-clip-bin
 _pkgname=cc-clip
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.13.1
+pkgrel=1
 pkgdesc="Clipboard bridge for pasting images into AI coding agents over SSH (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ShunmeiCho/cc-clip"
@@ -17,8 +17,8 @@ conflicts=('cc-clip')
 options=('!strip')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://github.com/ShunmeiCho/$_pkgname/releases/download/v$pkgver/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://github.com/ShunmeiCho/$_pkgname/releases/download/v$pkgver/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('3092259739a11664649c9589d8d80dcdc244407b657f8f769dc806d751940436')
-sha256sums_aarch64=('3aa5efa10b49010416a031e19c7dfd4bfefdfb337f1d05ff6a1858590b25cb70')
+sha256sums_x86_64=('a37952e0d87a52b5043979fa91abab3451478ff37eb142f5f8b4911c5ac39f11')
+sha256sums_aarch64=('46371df78d9ebf9bd4f0711eb59eac291402c02809f23d7ae2e76eb78e83160e')
 
 package() {
   install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
