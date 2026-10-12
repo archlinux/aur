@@ -1,0 +1,18 @@
+pkgbase = softty-git
+	pkgdesc = A minimal, fast Wayland terminal emulator
+	pkgver = r6.b0ff8a6
+	pkgrel = 1
+	url = https://github.com/socatlolmeow/softty
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = libxkbcommon
+	provides = softty
+	conflicts = softty
+	options = !lto
+	source = git+https://github.com/socatlolmeow/softty.git
+	sha256sums = SKIP
+
+pkgname = softty-git
