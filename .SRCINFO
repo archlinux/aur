@@ -1,6 +1,6 @@
 pkgbase = claude-vault
 	pkgdesc = Syncs Claude AI conversations and Claude Code history into searchable Markdown for Obsidian
-	pkgver = 0.8.7
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/MarioPadilla/claude-vault
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = claude-vault
 	depends = python-requests
 	depends = python-watchdog
 	depends = python-numpy
-	source = claude-vault-0.8.7.tar.gz::https://github.com/MarioPadilla/claude-vault/archive/v0.8.7.tar.gz
-	sha256sums = 897da98a9b32f5924286aaa7d6dda9eab9612646b2ac4db4f9e63cb71a46f9ac
+	source = claude-vault-0.9.1.tar.gz::https://github.com/MarioPadilla/claude-vault/archive/v0.9.1.tar.gz
+	sha256sums = 1f75b6e65722875034f9b3b256612462e635080238968028eccbf9185067a15e
 
 pkgname = claude-vault
