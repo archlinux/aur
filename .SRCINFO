@@ -1,6 +1,6 @@
 pkgbase = xjtutoolbox
 	pkgdesc = 仙交百宝箱：西安交通大学一站式校园服务工具（混合依赖模式：Official + AUR + Venv）
-	pkgver = 1.3.3
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/yan-xiaoo/XJTUToolBox
 	arch = any
@@ -43,7 +43,7 @@ pkgbase = xjtutoolbox
 	depends = python-xcffib
 	provides = xjtutoolbox
 	conflicts = xjtutoolbox
-	source = xjtutoolbox-1.3.3.tar.gz::https://github.com/yan-xiaoo/XJTUToolBox/archive/refs/tags/v1.3.3.tar.gz
-	sha256sums = 23c48f0299ac119c3219ca79d659ca921abfd5f3441e653713f137444926b681
+	source = xjtutoolbox-1.4.0.tar.gz::https://github.com/yan-xiaoo/XJTUToolBox/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = b0ae1dde5d74d3fa2959ea6525f67b6e8571789c9bb806694890cb5bf08ca3fa
 
 pkgname = xjtutoolbox
