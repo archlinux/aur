@@ -35,17 +35,6 @@ source=(
 )
 sha256sums=('2aceb602fa7e27dafd24d5bc480986e17870873c2827a2b8d720118cafac3018')
 
-: "${pkgname}"
-: "${pkgrel}"
-: "${pkgdesc}"
-: "${arch[@]}"
-: "${license[@]}"
-: "${depends[@]}"
-: "${checkdepends[@]}"
-: "${makedepends[@]}"
-: "${source[@]}"
-: "${sha256sums[@]}"
-
 build() {
 	cd "beautysh-${pkgver}"
 
@@ -79,3 +68,14 @@ package() {
 		"${python_constraints[@]}"
 	)
 }
+
+: "${arch[@]}"
+: "${checkdepends[@]}"
+: "${depends[@]}"
+: "${license[@]}"
+: "${makedepends[@]}"
+: "${pkgdesc}"
+: "${pkgname}"
+: "${pkgrel}"
+: "${sha256sums[@]}"
+: "${source[@]}"
