@@ -19,7 +19,7 @@ optdepends=('gzdoom: play your maps (or the Flatpak org.zdoom.GZDoom)'
             'sdl2: an object'"'"'s sound when pointing at it on the shelf')
 options=('!strip')   # a self-contained .NET bundle: stripping breaks it
 source=("$url/releases/download/v$pkgver/WadSmith-$pkgver-linux-x64.tar.gz")
-sha256sums=('c19b35a1b771cd755ccac34fda1f8539b4cb4daf329f8af6c747026659785565')
+sha256sums=('b7c8211469632937f44ff4c7571b169495e8e350a238e05bb9487ac93bb2b4b8')
 # The tarball unpacks flat ("./"); stage it in its own folder so package() copies the payload wholesale.
 noextract=("WadSmith-$pkgver-linux-x64.tar.gz")
 
@@ -43,7 +43,7 @@ package() {
         echo "==> ERROR: only $_dlls managed assemblies packaged (expected ~205)." >&2
         return 1
     fi
-    for _f in wadsmith wadsmith.dll WadSmith.Core.dll WadSmith.Editor.dll wadsmith.runtimeconfig.json wadsmith.deps.json libcoreclr.so libSkiaSharp.so; do
+    for _f in wadsmith wadsmith.dll wadsmith-cli wadsmith-cli.dll WadSmith.Core.dll WadSmith.Editor.dll wadsmith.runtimeconfig.json wadsmith.deps.json libcoreclr.so libSkiaSharp.so; do
         if [[ ! -f "$pkgdir/usr/lib/wadsmith/$_f" ]]; then
             echo "==> ERROR: $_f is missing from the package payload." >&2
             return 1
@@ -54,7 +54,11 @@ package() {
 #!/bin/sh
 exec /usr/lib/wadsmith/wadsmith "$@"
 WRAP
-    chmod 755 "$pkgdir/usr/bin/wadsmith"
+    cat > "$pkgdir/usr/bin/wadsmith-cli" <<'WRAP'
+#!/bin/sh
+exec /usr/lib/wadsmith/wadsmith-cli "$@"
+WRAP
+    chmod 755 "$pkgdir/usr/bin/wadsmith" "$pkgdir/usr/bin/wadsmith-cli"
 
     install -Dm644 "$srcdir/publish/wadsmith.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/wadsmith.png"
     install -Dm644 "$srcdir/publish/README.txt" "$pkgdir/usr/share/doc/wadsmith/README.txt"
