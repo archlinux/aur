@@ -1,10 +1,11 @@
 pkgbase = qoredb-bin
 	pkgdesc = Next gen database client — lightweight alternative to DBeaver/pgAdmin (binary release)
-	pkgver = 0.1.39
+	pkgver = 0.1.40
 	pkgrel = 1
 	url = https://github.com/QoreDB/QoreDB
 	arch = x86_64
 	license = Apache-2.0
+	license = BUSL-1.1
 	depends = cairo
 	depends = dbus
 	depends = gdk-pixbuf2
@@ -22,10 +23,10 @@ pkgbase = qoredb-bin
 	provides = qoredb
 	conflicts = qoredb
 	conflicts = qoredb-git
-	noextract = QoreDB_0.1.39_amd64.deb
+	noextract = QoreDB_0.1.40_amd64.deb
 	options = !strip
 	options = !debug
-	source = QoreDB_0.1.39_amd64.deb::https://github.com/QoreDB/QoreDB/releases/download/v0.1.39/QoreDB_0.1.39_amd64.deb
-	sha256sums = SKIP
+	source = QoreDB_0.1.40_amd64.deb::https://github.com/QoreDB/QoreDB/releases/download/v0.1.40/QoreDB_0.1.40_amd64.deb
+	sha256sums = 388b0f2ce68f089e3aee417bb77c0680bf33f9a1b138dea1dc939a5db60ac82f
 
 pkgname = qoredb-bin

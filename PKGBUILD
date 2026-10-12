@@ -3,12 +3,12 @@
 
 pkgname=qoredb-bin
 _pkgname=qoredb
-pkgver=0.1.39
+pkgver=0.1.40
 pkgrel=1
 pkgdesc="Next gen database client — lightweight alternative to DBeaver/pgAdmin (binary release)"
 arch=('x86_64')
 url="https://github.com/QoreDB/QoreDB"
-license=('Apache-2.0')
+license=('Apache-2.0' 'BUSL-1.1')
 depends=(
     'cairo'
     'dbus'
@@ -33,7 +33,7 @@ options=('!strip' '!debug')
 
 _deb="QoreDB_${pkgver}_amd64.deb"
 source=("${_deb}::${url}/releases/download/v${pkgver}/QoreDB_${pkgver}_amd64.deb")
-sha256sums=('SKIP')
+sha256sums=('388b0f2ce68f089e3aee417bb77c0680bf33f9a1b138dea1dc939a5db60ac82f')
 
 noextract=("${_deb}")
 
@@ -44,9 +44,11 @@ prepare() {
 }
 
 package() {
-    # Install binary
-    install -Dm755 "${srcdir}/deb/usr/bin/qoredb" \
-        "${pkgdir}/usr/bin/qoredb"
+    # The desktop discovers its CLI/MCP sidecars beside the executable.
+    for binary in qoredb qore qore-mcp; do
+        install -Dm755 "${srcdir}/deb/usr/bin/${binary}" \
+            "${pkgdir}/usr/bin/${binary}"
+    done
 
     # Install shared libraries bundled by Tauri
     if [ -d "${srcdir}/deb/usr/lib" ]; then
@@ -60,6 +62,11 @@ package() {
     # Install icons
     if [ -d "${srcdir}/deb/usr/share/icons" ]; then
         cp -a "${srcdir}/deb/usr/share/icons" "${pkgdir}/usr/share/icons"
+    fi
+
+    # Preserve the Tauri resource directory, including bundled licence texts.
+    if [ -d "${srcdir}/deb/usr/share/qoredb" ]; then
+        cp -a "${srcdir}/deb/usr/share/qoredb" "${pkgdir}/usr/share/qoredb"
     fi
 
     # Install license
