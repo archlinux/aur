@@ -2,7 +2,7 @@
 # Maintainer: Andrej Mihajlov <andrej@nymtech.net>
 
 pkgname=nym-vpnc
-pkgver=2026.13.0
+pkgver=2026.13.1
 pkgrel=1
 pkgdesc='NymVPN command-line client'
 arch=('x86_64' 'aarch64')
@@ -13,9 +13,9 @@ makedepends=('rust' 'cargo' 'protobuf')
 provides=('nym-vpnc')
 conflicts=('nym-vpnc')
 options=(!debug)
-source=("$url/archive/refs/tags/nym-vpn-v2026.13.0.tar.gz")
-sha256sums=(29b5fc9f23e887e0c7d1025bd555294396d01ace6b7a9f4103659c0f9fab4d7c)
-_srcdir="nym-vpn-client-nym-vpn-v2026.13.0"
+source=("$url/archive/refs/tags/nym-vpn-v2026.13.1.tar.gz")
+sha256sums=(e4b6c70e8d2c20b5fc7fbd51757decf0a7b7f060d69e8f0e9f06a8cf816ff2d3)
+_srcdir="nym-vpn-client-nym-vpn-v2026.13.1"
 
 prepare() {
   pushd "$_srcdir"
