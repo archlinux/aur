@@ -1,6 +1,6 @@
 pkgbase = omarchy-cheatsheets-bin
 	pkgdesc = Pretty, searchable Neovim/tmux/etc cheatsheets for Omarchy Linux (prebuilt binary)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/akitaonrails/omarchy-cheatsheets
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = omarchy-cheatsheets-bin
 	depends = glibc
 	depends = qt6-base
 	depends = qt6-declarative
-	provides = omarchy-cheatsheets=0.1.0
+	provides = omarchy-cheatsheets=0.1.1
 	conflicts = omarchy-cheatsheets
 	conflicts = omarchy-cheatsheets-debug
 	options = !strip
 	options = !debug
-	source_x86_64 = omarchy-cheatsheets-0.1.0-x86_64.tar.gz::https://github.com/akitaonrails/omarchy-cheatsheets/releases/download/v0.1.0/omarchy-cheatsheets-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 64f42eed67d294b05b94d24ba7353d1a621c2ba51801cc959c75e6f0c9cbd6de
-	source_aarch64 = omarchy-cheatsheets-0.1.0-aarch64.tar.gz::https://github.com/akitaonrails/omarchy-cheatsheets/releases/download/v0.1.0/omarchy-cheatsheets-linux-aarch64.tar.gz
-	sha256sums_aarch64 = c051e9d043a04c04b97bbcf7a28ad69c4b84fe53bbb025453d56f5d82d720c27
+	source_x86_64 = omarchy-cheatsheets-0.1.1-x86_64.tar.gz::https://github.com/akitaonrails/omarchy-cheatsheets/releases/download/v0.1.1/omarchy-cheatsheets-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 6874f6252aaefa6a56c5fcb8bfa8634ed5171b2f8ebc9ea5b5f27b66afe2e74e
+	source_aarch64 = omarchy-cheatsheets-0.1.1-aarch64.tar.gz::https://github.com/akitaonrails/omarchy-cheatsheets/releases/download/v0.1.1/omarchy-cheatsheets-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 0017629f1b9d063a1a75da1604a2d44bda4ff6fc90b270666edd930c276a9bdc
 
 pkgname = omarchy-cheatsheets-bin

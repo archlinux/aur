@@ -4,7 +4,7 @@
 # `.github/workflows/release.yml` at publish time, exactly like PKGBUILD.
 pkgname=omarchy-cheatsheets-bin
 _pkgname=omarchy-cheatsheets
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Pretty, searchable Neovim/tmux/etc cheatsheets for Omarchy Linux (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -16,9 +16,9 @@ conflicts=("$_pkgname" "$_pkgname-debug")
 options=('!strip' '!debug')
 
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz")
-sha256sums_x86_64=('64f42eed67d294b05b94d24ba7353d1a621c2ba51801cc959c75e6f0c9cbd6de')
+sha256sums_x86_64=('6874f6252aaefa6a56c5fcb8bfa8634ed5171b2f8ebc9ea5b5f27b66afe2e74e')
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64.tar.gz")
-sha256sums_aarch64=('c051e9d043a04c04b97bbcf7a28ad69c4b84fe53bbb025453d56f5d82d720c27')
+sha256sums_aarch64=('0017629f1b9d063a1a75da1604a2d44bda4ff6fc90b270666edd930c276a9bdc')
 
 package() {
     install -Dm0755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
