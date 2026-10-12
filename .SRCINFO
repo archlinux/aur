@@ -1,7 +1,7 @@
 pkgbase = localtranslate-models-official
 	pkgdesc = Official translation models for LocalTranslate (Firefox)
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/terslang/LocalTranslate
 	arch = any
 	license = MPL-2.0

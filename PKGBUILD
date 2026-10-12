@@ -3,7 +3,7 @@
 
 pkgname=localtranslate-models-official
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Official translation models for LocalTranslate (Firefox)"
 arch=("any")
 url="https://github.com/terslang/LocalTranslate"
