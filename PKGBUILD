@@ -1,6 +1,6 @@
 # Maintainer: Ayush Singh <ayush@beagleboard.org>
 pkgname=bb-imager-cli
-pkgver=1.0.18
+pkgver=1.0.20
 pkgrel=1
 pkgdesc="Tool for creating and flashing BeagleBoard OS images"
 arch=('x86_64')
@@ -12,8 +12,8 @@ makedepends=('rust' 'cpio')
 
 source=("bb-imager-cli-$pkgver::https://github.com/beagleboard/bb-imager-rs/archive/refs/tags/$pkgver.tar.gz"
         "bb-imager-cli-vendor-$pkgver::https://github.com/beagleboard/bb-imager-rs/releases/download/$pkgver/cargo-vendor.tar.zst")
-sha256sums=('d6cae0187a3dda0bbb4ccf50f4ca0ca05b363f422e6422f07952b47a0bedb6b9'
-            'f7caf9fb44c789880f0e1d9fdbdd971856a7665decc4fc402a5bccff00b0057f')
+sha256sums=('1efdbde3e56bc2ebd66c5939a440f4a2fc015996068615eafc03f6d71f4dd0d8'
+            '8d2f77e868b2178a3206202aeab97c1bbea64646cb384a4201c271b61a97272b')
 
 build() {
         cd "bb-imager-rs-$pkgver"
