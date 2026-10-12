@@ -7,7 +7,9 @@
 # Runtime tools Arch already ships (python, nodejs, uv, ffmpeg, ripgrep, and a
 # system Chrome/Chromium) stay as package dependencies. The launcher pins
 # AGENT_BROWSER_EXECUTABLE_PATH and disables lazy PM installs so Hermes does not
-# download browsers or re-fetch tools that pacman provides.
+# download browsers or re-fetch tools that pacman provides. package() writes
+# install-stamp.json (updateMechanism=external, distribution=package-manager)
+# so the sealed /opt tree is not classified as "unknown-managed".
 #
 # /opt is root-owned and HERMES_DISABLE_LAZY_INSTALLS=1, so opt-in extras that
 # users commonly hit must be preinstalled here. Ship: all + messaging, plus
@@ -17,12 +19,17 @@
 # (bedrock, voice, fal, …) needs a rebuild with more --extra flags or a
 # writable install — `sudo` + re-packaging, not runtime lazy install.
 pkgname=hermes-agent
+# Peeled v0.21.7 tag object (git rev-parse v0.21.7^{}); pin so the stamp
+# does not depend on a live network lookup during package().
+_commit=71d34bad1045610252eda02ee79549436896e784
+_commit_date=1791775030
 pkgver=0.21.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
 url="https://github.com/NousResearch/hermes-agent"
 license=('MIT')
+install=$pkgname.install
 depends=(
     'python>=3.14'
     'nodejs>=22.22'
@@ -125,6 +132,31 @@ package() {
   chmod -R a+rX "$_optdir/ui-tui/dist" "$_tuidir" 2>/dev/null || true
   # uv leaves a world-writable lock inside the venv; drop it from the package
   rm -f "$_optdir/venv/.lock"
+
+  # Declare this tree as package-manager-owned (pacman/AUR). Without a stamp,
+  # startup classifies the install as "unknown-managed" and PM drift against a
+  # leftover ~/.hermes/tools/facts.json prints a rebuild-artifact remedy.
+  # write_install_stamp.py's CLI only admits docker|nix|desktop-app|apt-termux;
+  # Arch uses the same "package-manager" steward desktop already documents.
+  _built_at="$(date -u -d "@${SOURCE_DATE_EPOCH:-$(date +%s)}" '+%Y-%m-%dT%H:%M:%SZ')"
+  cat > "$_optdir/install-stamp.json" <<EOF
+{
+  "schemaVersion": 2,
+  "commit": "${_commit}",
+  "commitDate": ${_commit_date},
+  "branch": null,
+  "builtAt": "${_built_at}",
+  "dirty": false,
+  "source": "aur",
+  "distribution": "package-manager",
+  "updateMechanism": "external",
+  "baseVersion": "${pkgver}",
+  "displayVersion": "${pkgver}",
+  "distance": 0,
+  "payload": "bootstrap",
+  "tag": null
+}
+EOF
 
   install -d "$_optdir/venv/lib/python3.14/site-packages"
   {
