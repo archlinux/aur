@@ -49,12 +49,6 @@ noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
 
-pkgver() {
-    cd "$_pkgFullName"
-    git describe --long --tags --always |
-        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
     cd "$srcdir/$_pkgFullName"
 
