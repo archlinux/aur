@@ -1,7 +1,7 @@
 # Maintainer: Charlotte <cemetery394@gmail.com>
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=citron-neo-git
-pkgver=2026.04.27.r519.g356b629
+pkgver=2026.04.27.r699.g0ec79e4
 pkgrel=1
 pkgdesc="Nintendo Switch emulator fork from citron (git version)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('citron' 'citron-git' 'citron-neo' 'citron-bin')
 depends=(
   'brotli' 'libgcc' 'lz4' 'glibc' 'zstd' 'sdl2' 'zlib' 'opus'
   'boost-libs' 'ffmpeg' 'libusb' 'openssl' 'speexdsp' 'libva'
-  'hicolor-icon-theme' 'qt6-base' 'enet' 'openal' 'fmt'
+  'hicolor-icon-theme' 'qt6-base' 'enet' 'libarchive' 'fmt'
   'libstdc++' 'qt6-webengine'
 )
 

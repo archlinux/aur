@@ -1,6 +1,6 @@
 pkgbase = citron-neo-git
 	pkgdesc = Nintendo Switch emulator fork from citron (git version)
-	pkgver = 2026.04.27.r519.g356b629
+	pkgver = 2026.04.27.r699.g0ec79e4
 	pkgrel = 1
 	url = https://github.com/citron-neo/emulator
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = citron-neo-git
 	depends = hicolor-icon-theme
 	depends = qt6-base
 	depends = enet
-	depends = openal
+	depends = libarchive
 	depends = fmt
 	depends = libstdc++
 	depends = qt6-webengine
