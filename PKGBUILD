@@ -1,3 +1,4 @@
+# Maintainer: Henry M. <henryjm11106 [at] gmail dot com>
 # Maintainer: Denis Benato <benato.denis96 [at] gmail dot com>
 # Maintainer: Chris Lane <aur at chrislane dot com>
 # Maintainer: DexterHaxxor <fox@dexterhaxxor.dev>
@@ -17,7 +18,7 @@
 # Contributor: Supdrewin <supdrewin at gmail dot com>
 
 pkgbase=mesa-amdonly-gaming-git
-pkgver=26.1.0_devel.219374.37ba573877a.d41d8cd
+pkgver=26.3.0_devel.231170.745709a0004.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 pkgname=(
   'amdonly-gaming-vulkan-mesa-layers-git'
@@ -146,7 +147,7 @@ build() {
     -D valgrind=disabled
     -D video-codecs=all
     -D vulkan-drivers=amd
-    -D vulkan-layers=device-select,overlay,anti-lag
+    -D vulkan-layers=device-select,overlay
     -D vulkan-beta=true
     --wrap-mode=nofallback
     -D sysconfdir=/etc
@@ -185,18 +186,20 @@ package_amdonly-gaming-vulkan-mesa-layers-git() {
   depends=(
     'libdrm'
     'libxcb'
-    'wayland'
-
     'python'
+    'wayland'
   )
   conflicts=(
+    'vulkan-mesa-implicit-layers'
+    'vulkan-mesa-device-select'
     'vulkan-mesa-layers'
     'vulkan-mesa-layer'
   )
   provides=(
+    'vulkan-mesa-implicit-layers'
     'vulkan-mesa-layers'
   )
-
+  
   _install fakeinstall/usr/share/vulkan/explicit_layer.d
   _install fakeinstall/usr/share/vulkan/implicit_layer.d
   _install fakeinstall/$_libdir/libVkLayer_*.so
@@ -227,7 +230,7 @@ package_amdonly-gaming-opencl-rusticl-mesa-git() {
     'opencl-rusticl-mesa'
     'opencl-mesa'
   )
-
+  
   _install fakeinstall/etc/OpenCL/vendors/rusticl.icd
   _install fakeinstall/$_libdir/libRusticlOpenCL*
 
@@ -245,6 +248,7 @@ package_amdonly-gaming-vulkan-radeon-git() {
     'libxshmfence'
     'llvm-libs'
     'systemd'
+    'vulkan-icd-loader'
     'wayland'
     'xcb-util-keysyms'
     'zstd'
@@ -273,7 +277,6 @@ package_amdonly-gaming-mesa-git() {
     'libxxf86vm'
     'llvm-libs'
     'lm_sensors'
-    'vulkan-icd-loader'
     'wayland'
     'zstd'
   )
@@ -293,6 +296,8 @@ package_amdonly-gaming-mesa-git() {
   )
 
   _install fakeinstall/usr/share/drirc.d/00-mesa-defaults.conf
+  _install fakeinstall/usr/share/drirc.d/00-radeonsi-defaults.conf
+  _install fakeinstall/usr/share/drirc.d/01-radv-performance.conf
   _install fakeinstall/usr/share/glvnd/egl_vendor.d/50_mesa.json
 
   # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast, swr
