@@ -1,14 +1,14 @@
 pkgbase = warteschlangensimulator-appimage
 	pkgdesc = A free, platform independent, discrete-event, stochastic simulator which allows to model queueing systems in form of flowcharts.
-	pkgver = 6.0.0
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = https://a-herzog.github.io/Warteschlangensimulator/
 	arch = x86_64
 	license = Apache-2.0
-	provides = warteschlangensimulator=6.0.0
+	provides = warteschlangensimulator=6.1.0
 	conflicts = warteschlangensimulator
 	options = !strip
-	source = warteschlangensimulator-6.0.0-x86_64.AppImage::https://github.com/A-Herzog/Warteschlangensimulator/releases/download/6.0.0/Warteschlangensimulator-x86_64.AppImage
-	sha256sums = ed9e5f658cd1ad32c3b142019b4f35e5efac41ea88c825e52fce81c0bd4b237f
+	source = warteschlangensimulator-6.1.0-x86_64.AppImage::https://github.com/A-Herzog/Warteschlangensimulator/releases/download/6.1.0/Warteschlangensimulator-x86_64.AppImage
+	sha256sums = ac2a22644cca6a4fa8fb654ff1979ae83530f3a2ab4a6c0fc21dc63c73e3feeb
 
 pkgname = warteschlangensimulator-appimage
