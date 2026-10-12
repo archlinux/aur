@@ -3,7 +3,7 @@
 
 pkgname=workspaceforge
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Your workspaces in the terminal: names, order and the apps that open on each. For KognogOS's hypeForge desktop on Sway; runs in any terminal, even a plain text console (Forge Suite)"
 arch=('any')
 # workspaceForge lives in the Forge Suite repository (D-60); releases are tagged workspaceforge-vX.Y.Z there
@@ -11,7 +11,8 @@ _repo="https://github.com/jetomev/forge-suite"
 url="${_repo}/tree/main/workspaceforge"
 license=('GPL3')
 # forgekit 0.10.0: the menu's keys and --hypeforge (hypeForge Settings' Workspaces page).
-depends=('python' 'python-textual' 'python-forgekit>=0.10.0')
+# python-rich: imported directly (only came through Textual; the 2026-10-11 dependency audit)
+depends=('python' 'python-textual' 'python-rich' 'python-forgekit>=0.10.0')
 optdepends=('sway: the desktop it is made for, with hypeForge (open windows follow their workspace when you save)')
 source=("${pkgname}-${pkgver}.tar.gz::${_repo}/releases/download/${pkgname}-v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${_repo}/releases/download/${pkgname}-v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
