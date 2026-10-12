@@ -1,0 +1,9 @@
+post_upgrade() {
+  if [ "$(vercmp "$2" 2.9.0)" -lt 0 ]; then
+    cat <<'MSG'
+==> Termix 26.10.0+ cannot migrate data directly from 2.8.x or older.
+==> Downgrade to termix-bin 2.9.x, start Termix once, then upgrade again.
+==> See https://github.com/Termix-SSH/Termix/releases/tag/v26.10.0
+MSG
+  fi
+}
