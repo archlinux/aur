@@ -6,7 +6,7 @@ _appname=OpenXplorer
 pkgname=${_gitname}-bin
 pkgdesc="Windows File Explorer-inspired file manager for Linux"
 
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 source=("${_appname}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_all.deb"
 		"README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
-sha256sums=('85787554d0531c19111c78bd9ef6ab3877dff2af7d930c8df93ae7fc452f5d67'
-            '4dac52552fa25a2df0ea45fc3c019d00d40e94790f0e1ba6cdf265ead2fbd3b6'
+sha256sums=('c5facd58d22c27242d5ee068076270f2af9d5db4e696e2f2226a08d0a96eadc5'
+            '021d4db0cc8aca2adb888091f9a4e97543548e774fe7442ee1d8109f799b847f'
             'fa330b7ec7715da6050bb6cd8cc5ec86c61d0671da711fcc79460cf69193d260')
 
 
