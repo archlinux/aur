@@ -49,10 +49,10 @@ build() {
 
 package() {
 	depends+=(libgcc_s.so)
+	local _binname=solvecraft
 	cd "$_pkgname"
-	_pkgname=solvecraft
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"{,-cli}
-	install -Dm0644 -t "$pkgdir/usr/share/applications/" "packaging/linux/ai.storyteller.$_pkgname.desktop"
-	install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "packaging/linux/ai.storyteller.$_pkgname.mime.xml"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_binname"{,-cli}
+	install -Dm0644 -t "$pkgdir/usr/share/applications/" "packaging/linux/ai.storyteller.$_binname.desktop"
+	install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "packaging/linux/ai.storyteller.$_binname.mime.xml"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-{APACHE,MIT}
 }
