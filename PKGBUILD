@@ -64,7 +64,7 @@ build() {
     -Dbundled-rnnoise='OFF' \
     -Dbundled-speex='OFF' \
     -Dupdate='OFF' \
-    -Wno-dev
+    -Wno-author
 
   cmake --build build-client
 }
