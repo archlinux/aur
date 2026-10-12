@@ -24,7 +24,7 @@ options=('!debug')
 _gsrvver=1.6.0
 source=("https://github.com/Teejer/trdc/archive/refs/tags/v${pkgver}.tar.gz"
         "https://github.com/apache/guacamole-server/archive/refs/tags/${_gsrvver}.tar.gz")
-sha256sums=('39093ce81a670c7658d523d46f6e016127220dd1dc1ea4637b1cecbab14c47ab'
+sha256sums=('6866e2ae2f2a2dbe4854ae38a86cffc9c37817482b199e1ae03fff9b3bc12687'
             '913b05d19beabed4a3066e6e2be3078783048f55c7a9d2e3a012897a8766c245')
 
 prepare() {
