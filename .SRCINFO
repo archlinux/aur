@@ -1,0 +1,16 @@
+pkgbase = tantivy-cli
+	pkgdesc = Command line interface for Tantivy, a full-text search engine library
+	pkgver = 0.25.0
+	pkgrel = 1
+	url = https://github.com/quickwit-oss/tantivy-cli
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	options = !debug
+	source = tantivy-cli-0.25.0.tar.gz::https://github.com/quickwit-oss/tantivy-cli/archive/refs/tags/0.25.0.tar.gz
+	sha256sums = 1f398e80d214ff53b35db3e35b7de0d6a75c9366df7c5fdce66df2e6eb0c0964
+
+pkgname = tantivy-cli
