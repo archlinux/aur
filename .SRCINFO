@@ -1,0 +1,19 @@
+pkgbase = wheels-of-aurelia
+	pkgdesc = Interactive road trip visual novel set in 1978 Italy. Itch.io version.
+	pkgver = 1
+	pkgrel = 1
+	url = https://santaragione.itch.io/wheelsofaurelia
+	arch = x86_64
+	license = LicenseRef-unknown
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-libx11
+	depends = lib32-libxrandr
+	options = !debug
+	options = !strip
+	source = file://wheelsofaurelia-linux-universal.zip
+	source = wheels-of-aurelia.desktop
+	sha512sums = a3c42e01d9796c901e6c5883f890648a58222673aa5fc3e216710101739589346bde19afa2fc3d003408869f8729817185a30614e6905248543e4a42368c28c2
+	sha512sums = b26310853e124e76abc926c71955ba1766a96a41aac8b8c9a74cb5be8ff23167734d9ba9c48e8d1d0c66cd96ffeabbeb9155a88660eb96b53e60dd8a3c1b7e52
+
+pkgname = wheels-of-aurelia

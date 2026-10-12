@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Wheels of Aurelia
+Comment=Interactive road trip visual novel set in 1978 Italy
+Exec=/opt/wheels-of-aurelia/woa.x86
+Icon=wheels-of-aurelia
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8
