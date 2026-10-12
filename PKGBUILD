@@ -17,7 +17,7 @@ depends=(
   libpulse
   libsecret
   libstdc++
-  'libtde>=0.2.0'
+  'libtde>=0.3.0'
   libxkbcommon
   lua
   openssh
