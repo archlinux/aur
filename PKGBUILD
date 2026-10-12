@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=o2-rs-git
 _pkgname=o2
-pkgver=0.3.4.r2.gbb3aa59
+pkgver=0.3.7.r0.g4c8a210
 pkgrel=1
 pkgdesc='Rust port of the ORCΛ esoteric programming language and terminal livecoding environment'
 arch=(
@@ -13,6 +13,7 @@ url='https://github.com/coignard/o2'
 license=('GPL-3.0-or-later')
 makedepends=(
     'cargo'
+    'alsa-lib'
     'git'
 )
 options=(
