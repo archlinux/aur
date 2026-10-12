@@ -5,15 +5,15 @@ pkgver=0.3.0
 pkgrel=1
 pkgdesc="A usbmuxd replacement in pure Rust"
 arch=('x86_64' 'aarch64')
-url="https://github.com/abdullah-albanna/rusbmux"
+url="https://github.com/abdubanna/rusbmux"
 license=('MIT' 'Apache-2.0')
 install=rusbmux-bin.install
 depends=('gcc-libs' 'glibc')
 provides=('rusbmux' 'usbmuxd')
 conflicts=('usbmuxd')
 
-source_x86_64=("rusbmux-${pkgver}-x86_64.tar.gz::https://github.com/abdullah-albanna/rusbmux/releases/download/v${pkgver}/rusbmux-${pkgver}-x86_64.tar.gz")
-source_aarch64=("rusbmux-${pkgver}-aarch64.tar.gz::https://github.com/abdullah-albanna/rusbmux/releases/download/v${pkgver}/rusbmux-${pkgver}-aarch64.tar.gz")
+source_x86_64=("rusbmux-${pkgver}-x86_64.tar.gz::https://github.com/abdubanna/rusbmux/releases/download/v${pkgver}/rusbmux-${pkgver}-x86_64.tar.gz")
+source_aarch64=("rusbmux-${pkgver}-aarch64.tar.gz::https://github.com/abdubanna/rusbmux/releases/download/v${pkgver}/rusbmux-${pkgver}-aarch64.tar.gz")
 sha256sums_x86_64=('fe274c7cd55db47e468c25aa9818192961694a6215ecfc3db668ac633813afdb')
 sha256sums_aarch64=('08b85efa872d795cdd122abb8c13c612b07b0b74c158757183a1b66c3d35bd4d')
 
