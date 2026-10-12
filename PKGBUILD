@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=wordcraft
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -14,7 +14,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('c51e821775bf5e00e13f01e22fae3d8930adcbc1b0c559821d98fe80a44a8881')
+sha256sums=('da04df66c0637b7fd9d8b1b0079f8cf91aa8a04dec12fa5426adaca386945a88')
 
 _srcenv() {
 	cd "$_archive"
