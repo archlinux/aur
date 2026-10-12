@@ -4,3 +4,4 @@ Name=AirHockey
 Comment=Play air hockey
 Exec=airhockey
 Categories=Game;ActionGame;
+Icon=airhockey
