@@ -21,7 +21,7 @@ pkgbase = feedback-bin
 	depends = libgcc
 	depends = libglvnd
 	depends = libstdc++
-	depends = libudev
+	depends = libudev.so=1-64
 	depends = libx11
 	depends = libxcb
 	depends = libxcomposite

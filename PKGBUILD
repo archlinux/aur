@@ -24,7 +24,7 @@ depends=(
 	'libgcc'
 	'libglvnd'
 	'libstdc++'
-	'libudev'
+	'libudev.so=1-64'
 	'libx11'
 	'libxcb'
 	'libxcomposite'
