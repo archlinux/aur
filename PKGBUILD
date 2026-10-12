@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=qianji-bin
 pkgver=4.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc="QianJi personal finance desktop application (钱迹个人记账)"
 arch=('x86_64')
 url="https://qianjiapp.com"
@@ -10,11 +10,11 @@ depends=('at-spi2-core' 'cairo' 'dbus' 'fontconfig' 'gdk-pixbuf2' 'glib2' 'glibc
 provides=('qianji')
 conflicts=('qianji')
 makedepends=('libarchive')
-_assetver="v4.5.2-2-1560-d36e8f8f"
-_tagver="4.5.2-2"
+_assetver="v4.5.2-3-1560-872d9346"
+_tagver="4.5.2-3"
 _asset="qianji_${_assetver}_x86_64.pkg.tar.zst"
 source=("${_asset}::https://github.com/litangtech/Qianji-Linux-Release/releases/download/v${_tagver}/${_asset}")
-sha256sums=('9bdc1220749896f27b4527b21cf24ae7c3dc43fb14261cbc3d08c0794c840bf3')
+sha256sums=('a4f1b4169ce91b62adb15fe241bca3742dfd857fbd620a9e71ba119dd84b223b')
 
 package() {
     # Reuse the upstream Arch package, excluding its metadata files
