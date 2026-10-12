@@ -4,7 +4,7 @@ _pkgauthor=sorashii
 _pkgname=riftbar
 
 pkgname=${_pkgname}-bin
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=0
 _pkgvername=v${pkgver}
 
@@ -31,7 +31,7 @@ source=(
 
 options=(!debug)
 
-sha256sums=('0faaa740d75cc298cba5f498f02b3a111f7252c791ac20fb78fc8158bacc59ad'
+sha256sums=('7490a79f133405c078cc9d5bf3f4bb5560c615b8ea573f09558b5790556dda33'
             'SKIP'
             'SKIP')
 
