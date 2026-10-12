@@ -1,7 +1,7 @@
 # Maintainer: giosuel <me@giosuel.ch>
 pkgname=realer-xpad-bin
 _pkgname=realer-xpad
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Sticky notes with Markdown and drawing, native on Wayland and Hyprland (prebuilt binary)'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!debug') # the release binary is already stripped
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-$CARCH-linux.tar.gz")
-sha256sums_x86_64=('975d89e8451bf088ac3db121628bd43c5ff2af85b2d4ff034d29afd56243726e')
+sha256sums_x86_64=('2445f658f1fe267c08bd01bf5131ee4c49cc034f04241619846fb5a337b7afd3')
 
 package() {
   cd "$_pkgname-$pkgver-$CARCH-linux"
@@ -21,5 +21,5 @@ package() {
   install -Dm644 extras/ch.giosuel.RealerXpad.metainfo.xml -t "$pkgdir/usr/share/metainfo"
   install -Dm644 data/icons/hicolor/scalable/apps/ch.giosuel.RealerXpad.svg \
     -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-  install -Dm644 README.md extras/hyprland.conf -t "$pkgdir/usr/share/doc/$_pkgname"
+  install -Dm644 README.md extras/hyprland.conf extras/hyprland.lua -t "$pkgdir/usr/share/doc/$_pkgname"
 }
