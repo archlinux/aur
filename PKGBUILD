@@ -2,8 +2,8 @@
 
 origname=django-ipware
 pkgname=python-django-ipware
-pkgver=7.0.1
-pkgrel=2
+pkgver=8.0.0
+pkgrel=1
 pkgdesc='A Django application to retrieve clients IP address'
 arch=(any)
 url="https://github.com/un33k/$origname"
@@ -11,7 +11,7 @@ license=("MIT")
 depends=("python" "python-django" "python-ipware")
 makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a11d83bade679ae1046176df96e5e873fe792932068bdcdd21712493bbae650b')
+sha256sums=('39c722fd977367a916d430880b6fbdf4407533ecfaf43b10d6ec6e32473dddc6')
 
 build() {
     cd "$origname-$pkgver"
