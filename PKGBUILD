@@ -5,26 +5,19 @@ _name=${pkgname#python-}
 pkgdesc="Very fast Python LineString simplification using RDP or Visvalingam-Whyatt"
 url="https://github.com/urschrei/simplification"
 
-pkgver=1.0.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 
 arch=("x86_64")
 license=("LicenseRef-Blue-Oak-Model-License-1.0.0")
 
 depends=(
-    "glibc"
-    "librdp"
     "python"
     "python-numpy"
 )
 makedepends=(
-    "cython"
-    "python-build"
-    "python-cython-cmake"
     "python-installer"
-    "python-scikit-build-core"
-    "python-setuptools-scm"
-    "python-toml"
+    "python-maturin"
     "python-wheel"
 )
 checkdepends=(
@@ -33,21 +26,14 @@ checkdepends=(
 
 source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-    "system-wide-libraries.patch"
 )
 b2sums=(
-    "f11d9ef27ac5b4e2578013d0b71b9078bf8f62ccef0526578cd540b5f047d84e06b21dad7a7cd436702b6f51270f449656408ff25c9079b27186e73ec5793a59"
-    "6516fa24f87a6a6916b914281b809d11c32973eb8f44b839a1646a6a691d2e8a5227349b90f310f52a749ab3b445783dc832526a1ffcbf72297c5c90a8d51d07"
+    "6e92d540eff3713e5b318b701516a99d19a117819b4020a153a729a14318b8d0b8109e1d7467ec3a8dc9da9619ad98acb3222a543397aceb868c3d6a44fd9c94"
 )
-
-prepare() {
-    cd "${srcdir}"/${_name}-${pkgver}
-    patch --forward --strip=1 --input="${srcdir}/system-wide-libraries.patch"
-}
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
-    python -m build --wheel --no-isolation
+    maturin build
 }
 
 check() {
@@ -55,13 +41,13 @@ check() {
 
     local TEST_VENV="${srcdir}/test-venv"
     python -m venv --system-site-packages "${TEST_VENV}"
-    "${TEST_VENV}"/bin/python -m installer dist/*.whl
+    "${TEST_VENV}"/bin/python -m installer target/wheels/${_name}-${pkgver}-*.whl
 
     "${TEST_VENV}"/bin/python -P -m pytest
 }
 
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="$pkgdir" target/wheels/${_name}-${pkgver}-*.whl
     install -Dm0644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
