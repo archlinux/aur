@@ -13,7 +13,7 @@
 # webkit2gtk-4.1 headers at build time.
 
 pkgname=nuvio-linux-git
-pkgver=r3298.gbc4566a5
+pkgver=r3400.gd2e21f20
 pkgrel=1
 pkgdesc="Nuvio desktop media player — upstream source packaged for Arch Linux (git)"
 arch=('x86_64')
