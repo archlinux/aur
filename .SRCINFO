@@ -1,0 +1,22 @@
+pkgbase = realer-xpad
+	pkgdesc = Sticky notes with Markdown and drawing, native on Wayland and Hyprland
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/giosuel/realer-xpad
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = cargo
+	depends = cairo
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libadwaita
+	depends = libgcc
+	depends = pango
+	options = !debug
+	source = realer-xpad-0.1.1.tar.gz::https://github.com/giosuel/realer-xpad/archive/v0.1.1.tar.gz
+	sha256sums = 817c168c55809c94626e8291453976ceb249694eb007b2c78f2dd485bcdfe4f6
+
+pkgname = realer-xpad
