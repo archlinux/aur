@@ -1,13 +1,13 @@
 pkgbase = agentics-desktop
 	pkgdesc = AzrOS - the Agentics agentic desktop with the Azros Agent built in
-	pkgver = 0.1.63
+	pkgver = 0.1.64
 	pkgrel = 1
 	url = https://agentics.co.za
 	arch = x86_64
 	license = custom
 	options = !strip
 	options = !debug
-	source = agentics-desktop-0.1.63-x86_64.AppImage::https://repo.agentics.co.za/x86_64/agentics-desktop-0.1.63-x86_64.AppImage
-	sha512sums = e2068ddda1b72191db18d3e01fd8a866f32d77e3bf65cf958f1b4e69dde641d90d4939123f211b760db3dcb55a745fd7ffce83d5e8bb678532e697e6f25f8de4
+	source = agentics-desktop-0.1.64-x86_64.AppImage::https://repo.agentics.co.za/x86_64/agentics-desktop-0.1.64-x86_64.AppImage
+	sha512sums = f0350b9d846cf765b464ce1a9659976827114e70ad66f52e51210a4e65055db4e0f7f5e542ead39395750ccc2e0b4cf5e8d07beb4261f7d087336fa4d600e9d2
 
 pkgname = agentics-desktop
