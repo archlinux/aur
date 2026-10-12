@@ -1,6 +1,6 @@
 # Maintainer: juddisjudd <juddisjudd at users dot noreply dot github dot com>
 pkgname=bawkterm-bin
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc='SSH, SFTP, Docker and Remote Desktop client with an encrypted vault'
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('bawkterm')
 conflicts=('bawkterm')
 options=('!strip' '!debug')
 source=("bawkterm-${pkgver}.tar.gz::https://github.com/juddisjudd/bawkterm/releases/download/v${pkgver}/bawkterm-${pkgver}.tar.gz")
-sha256sums=('334699ea498bde7ed1066bf5eb7c2b8327ef53341251f0a6e63514f8c9a8ec46')
+sha256sums=('df5196f260eb7d2744eb77bbd7dc8624a3f02e017fd5250bd48a828dea504548')
 
 package() {
   install -dm755 "${pkgdir}/opt/bawkterm"
