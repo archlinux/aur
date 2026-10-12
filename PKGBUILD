@@ -2,7 +2,7 @@
 
 pkgname=pocketlink-git
 _pkgname=pocketlink
-pkgver=0.5.1.r0.gdbc2559
+pkgver=0.6.0.r0.g76b89c0
 pkgrel=1
 pkgdesc='Lightweight phone companion for sway, niri & co: notifications, clipboard, files, media remote and calls'
 arch=('x86_64' 'aarch64')
@@ -56,6 +56,9 @@ package() {
 
   # DankMaterialShell's system-wide plugin directory.
   install -Dm644 contrib/dms/pocketlink/* -t "$pkgdir/etc/xdg/quickshell/dms-plugins/pocketlink/"
+
+  # The settings page, for app launchers.
+  install -Dm644 contrib/pocketlink-settings.desktop -t "$pkgdir/usr/share/applications/"
 
   # "Send to phone" in file managers' context menus.
   local fm=contrib/filemanager
