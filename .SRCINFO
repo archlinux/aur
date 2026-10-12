@@ -1,0 +1,27 @@
+pkgbase = nanolathe-git
+	pkgdesc = Open-source 2.5D RTS engine in Go; clean-room Total Annihilation reimplementation (requires original game data)
+	pkgver = r923.ad15dec
+	pkgrel = 1
+	url = https://nanolathe.gg/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go>=2:1.27.1
+	depends = glibc
+	depends = libglvnd
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxinerama
+	depends = libxrandr
+	depends = alsa-lib
+	provides = nanolathe
+	conflicts = nanolathe
+	options = !lto
+	source = git+https://github.com/nanolathe-gg/nanolathe.git
+	source = nanolathe.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = nanolathe-git

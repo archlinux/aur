@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Nanolathe
+Comment=Play Total Annihilation with your installed game data
+Exec=nanolathe
+Terminal=false
+Categories=Game;StrategyGame;
