@@ -1,6 +1,6 @@
 pkgbase = oscar
 	pkgdesc = Open-source, cross platform, sleep tracking software with a focus on monitoring CPAP treatment. Fork of the sleepyhead project.
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://gitlab.com/CrimsonNape/oscar-sql
 	arch = i686
@@ -17,9 +17,9 @@ pkgbase = oscar
 	depends = libstdc++
 	optdepends = qt6-wayland
 	provides = oscar
-	source = oscar-2.0.1.tar.gz::https://gitlab.com/CrimsonNape/oscar-sql/-/archive/v2.0.1/oscar-sql-v2.0.1.tar.gz
+	source = oscar-2.1.0.tar.gz::https://gitlab.com/CrimsonNape/oscar-sql/-/archive/v2.1.0/oscar-sql-v2.1.0.tar.gz
 	source = oscar.desktop
-	sha256sums = fbd8430d4f3c91f11438db1ce1c09ce7b23daca914fd95cbba5bdcd8891e9af6
+	sha256sums = 3bf9df763831824e08bd6701e11611a5ae23190800d47a35ac8fa2e3cee47401
 	sha256sums = 6b2f735622f218e2ac5ef61475886fadfeeedd5f15b04fa0d54451162ee394ad
 
 pkgname = oscar
