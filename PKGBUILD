@@ -1,7 +1,7 @@
 # Maintainer: kkernick <kkernick at protonmail dot com>
 pkgname=antimony-sandbox
 pkgdesc="Sandbox Applications"
-pkgver=5.2.1
+pkgver=6.0.0
 pkgrel=1
 
 install=antimony.install
@@ -37,7 +37,7 @@ package() {
   cd $srcdir/antimony
   install -Dm755 "target/release/antimony" "$pkgdir/usr/bin/antimony"
 
-  for binary in antimony-monitor antimony-spawn antimony-dumper antimony-open antimony-tracer antimony-notify; do
+  for binary in antimony-monitor antimony-spawn antimony-dumper antimony-open antimony-tracer antimony-notify antimony-writer antimony-lockdown antimony-landlock; do
     install -Dm755 "target/release/$binary" "$pkgdir/usr/share/antimony/utilities/$binary"
   done
 
@@ -62,15 +62,4 @@ package() {
   install -Dm644 "generated/antimony.bash" "$pkgdir/usr/share/bash-completion/antimony"
   install -Dm644 "generated/antimony.fish" "$pkgdir/usr/share/fish/vendor_completions.d/antimony.fish"
   install -Dm644 "generated/_antimony" "$pkgdir/usr/share/zsh/site-functions/_antimony"
-  install -Dm644 "generated/antimony.1.gz" "$pkgdir/usr/share/man/man1/antimony.1.gz"
-  install -Dm644 "generated/antimony-edit.1.gz" "$pkgdir/usr/share/man/man1/antimony-edit.1.gz"
-  install -Dm644 "generated/antimony-export.1.gz" "$pkgdir/usr/share/man/man1/antimony-export.1.gz"
-  install -Dm644 "generated/antimony-help.1.gz" "$pkgdir/usr/share/man/man1/antimony-help.1.gz"
-  install -Dm644 "generated/antimony-import.1.gz" "$pkgdir/usr/share/man/man1/antimony-import.1.gz"
-  install -Dm644 "generated/antimony-info.1.gz" "$pkgdir/usr/share/man/man1/antimony-info.1.gz"
-  install -Dm644 "generated/antimony-integrate.1.gz" "$pkgdir/usr/share/man/man1/antimony-integrate.1.gz"
-  install -Dm644 "generated/antimony-package.1.gz" "$pkgdir/usr/share/man/man1/antimony-package.1.gz"
-  install -Dm644 "generated/antimony-refresh.1.gz" "$pkgdir/usr/share/man/man1/antimony-refresh.1.gz"
-  install -Dm644 "generated/antimony-remove.1.gz" "$pkgdir/usr/share/man/man1/antimony-remove.1.gz"
-  install -Dm644 "generated/antimony-run.1.gz" "$pkgdir/usr/share/man/man1/antimony-run.1.gz"
 }
