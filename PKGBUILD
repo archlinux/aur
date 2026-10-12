@@ -4,7 +4,7 @@
 _repo_name=transcribe.cpp
 pkgname=transcribe-cpp-vulkan
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='C/C++ speech-to-text inference library and CLI based on ggml (Vulkan)'
 arch=('x86_64')
 url="https://github.com/handy-computer/${_repo_name}"
@@ -32,13 +32,13 @@ source=(
 sha256sums=('51b4b08bcdaa083849b626c3028a8bbc35d66e2dd992cd4f075b15f9733058d1')
 
 build() {
-  # Vulkan is enabled by the system ggml-vulkan
   cmake -S "${_repo_name}-${pkgver}" -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DTRANSCRIBE_BUILD_TESTS=OFF \
     -DTRANSCRIBE_BUILD_TOOLS=ON \
     -DTRANSCRIBE_BUILD_SHARED=OFF \
+    -DTRANSCRIBE_VULKAN=ON \
     -DTRANSCRIBE_X86_CONSERVATIVE=ON \
     -Wno-dev
 
