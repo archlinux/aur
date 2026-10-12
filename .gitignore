@@ -4,3 +4,8 @@
 
 # git cache files
 *.orig
+
+pkg/
+src/
+dpaste/
+*.tar.zst
