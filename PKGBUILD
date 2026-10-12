@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=solidcraft
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 url="https://bherbruck.github.io/$pkgname"
 _url="https://github.com/bherbruck/$pkgname"
@@ -13,7 +13,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('bd4497210b8f55239f2e6357b5b2cef006035ea45523d42942a60011f55b7c0f')
+sha256sums=('f564f607ae9d8d12261615a743586617148b41e7285509c730e3ee9f65d5b5df')
 
 _srcenv() {
 	cd "$_archive"
@@ -42,7 +42,7 @@ package() {
 	depends+=(libgcc_s.so)
 	local _binname=solvecraft
 	cd "$_archive"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_binname"{,-cli}
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"{,-cli}
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "packaging/linux/ai.storyteller.$_binname.desktop"
 	install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "packaging/linux/ai.storyteller.$_binname.mime.xml"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-{APACHE,MIT}
