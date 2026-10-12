@@ -2,7 +2,7 @@
 
 _pkgname=php-mago
 pkgname=${_pkgname}-bin
-_pkgver=1.54.0
+_pkgver=1.56.2
 pkgver=${_pkgver//-/}
 pkgrel=1
 pkgdesc="Mago is a toolchain for PHP that aims to provide a set of tools to help developers write better code"
@@ -11,8 +11,8 @@ url='https://github.com/carthage-software/mago'
 license=('MIT')
 source_x86_64=("https://github.com/carthage-software/mago/releases/download/${_pkgver}/mago-${_pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/carthage-software/mago/releases/download/${_pkgver}/mago-${_pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('74c4d096eaeeefe91103cb4223e15d15e43ef4e324fd9c36471331cbbebeed2f')
-sha256sums_aarch64=('36ce50eddb4db060d572e71c2ced2ca7ad37c4d260bdbd490bbdf9ffcbdd1fe8')
+sha256sums_x86_64=('c21e4cc37d57369cf10c066567e30b3ac7db19242cb0a072c6db0c07e7e0e4d4')
+sha256sums_aarch64=('c48e14d1e11deafa901fe7970b1c0678db1789f8dab31c45536afea24a3937dd')
 
 build() {
   cd "${srcdir}/mago-${_pkgver}-${CARCH}-unknown-linux-gnu"
