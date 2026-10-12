@@ -2,7 +2,7 @@
 
 pkgname=3x-ui-bin
 pkgver=3.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
 url="https://github.com/MHSanaei/${pkgname%-bin}"
@@ -42,6 +42,7 @@ prepare() {
   sed -i 's|&& update 0$|\&\& echo "Please use AUR helper for this function"|'               ${pkgname:1:4}.sh
   sed -i 's|&& update$|\&\& echo "Please use AUR helper for this function"|'                 ${pkgname:1:4}.sh
   sed -i 's|=/usr/local|=/usr/lib|'                                                          ${pkgname:1:4}.service.arch
+  sed -i '/^ReadWritePaths=/s|$| -/usr/lib/x-ui|'                                            ${pkgname:1:4}.service.arch
 }
 
 package() {
