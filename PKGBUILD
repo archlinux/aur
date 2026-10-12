@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=somafm-desktop-player-bin
 _pkgname='SomaFM Desktop Player'
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A small desktop player for SomaFM radio, built with Tauri and React."
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}-${pkgver}-1.x86_64.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/alechko/somafm-desktop-player/v${pkgver}/LICENSE.md"
 )
-sha256sums=('c465a102304e30d01d25ec5830a1b27497857f03fe9463f5cc3cfcfaa8235693'
+sha256sums=('7702b60abdab0c37d65cda4f0399bd5dd2bbb40004d0a087d482dc5d237b864d'
             '5e404eae8a20b20c3e2ab7e0a08d04012d2cf8d5bf266849a22d7aa810409381')
 prepare() {
     sed -i "s/Categories=/Categories=AudioVideo/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
@@ -30,6 +30,7 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+    [ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
