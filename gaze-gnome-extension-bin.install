@@ -5,12 +5,11 @@ function post_install() {
 
 set -e
 
-profile=/etc/dconf/profile/gdm
-
 insert_profile_db() {
-    db="system-db:$1"
-    after="$2"
-    required="$3"
+    profile="$1"
+    db="system-db:$2"
+    after="$3"
+    required="$4"
 
     grep -qxF "$db" "$profile" && return 0
 
@@ -30,24 +29,33 @@ insert_profile_db() {
     rm -f "$tmp"
 }
 
-ensure_gdm_dconf_profile() {
-    template=/usr/share/gaze/dconf-profile-gdm
-
-    [ -f "$template" ] || return 0
+ensure_greeter_dconf_profile() {
+    name="$1"
+    fallback="$2"
+    profile="/etc/dconf/profile/$name"
+    vendor="/usr/share/dconf/profile/$name"
 
     if [ ! -f "$profile" ]; then
+        if [ -f "$vendor" ]; then
+            seed="$vendor"
+        elif [ -n "$fallback" ] && [ -f "$fallback" ]; then
+            seed="$fallback"
+        else
+            return 0
+        fi
         mkdir -p /etc/dconf/profile
-        cp "$template" "$profile"
-        return 0
+        cat "$seed" >"$profile"
+        chmod 0644 "$profile"
     fi
 
-    insert_profile_db gdm user-db:user required
-    [ -d /etc/dconf/db/distro.d ] && insert_profile_db distro system-db:gdm optional
+    insert_profile_db "$profile" gdm user-db:user required
+    [ -d /etc/dconf/db/distro.d ] && insert_profile_db "$profile" distro system-db:gdm optional
 
     return 0
 }
 
-ensure_gdm_dconf_profile || true
+ensure_greeter_dconf_profile gdm /usr/share/gaze/dconf-profile-gdm || true
+ensure_greeter_dconf_profile Debian-gdm "" || true
 
 if [ -d /run/systemd/system ]; then
     dconf update >/dev/null 2>&1 || true
@@ -90,12 +98,11 @@ function post_upgrade() {
 
 set -e
 
-profile=/etc/dconf/profile/gdm
-
 insert_profile_db() {
-    db="system-db:$1"
-    after="$2"
-    required="$3"
+    profile="$1"
+    db="system-db:$2"
+    after="$3"
+    required="$4"
 
     grep -qxF "$db" "$profile" && return 0
 
@@ -115,24 +122,33 @@ insert_profile_db() {
     rm -f "$tmp"
 }
 
-ensure_gdm_dconf_profile() {
-    template=/usr/share/gaze/dconf-profile-gdm
-
-    [ -f "$template" ] || return 0
+ensure_greeter_dconf_profile() {
+    name="$1"
+    fallback="$2"
+    profile="/etc/dconf/profile/$name"
+    vendor="/usr/share/dconf/profile/$name"
 
     if [ ! -f "$profile" ]; then
+        if [ -f "$vendor" ]; then
+            seed="$vendor"
+        elif [ -n "$fallback" ] && [ -f "$fallback" ]; then
+            seed="$fallback"
+        else
+            return 0
+        fi
         mkdir -p /etc/dconf/profile
-        cp "$template" "$profile"
-        return 0
+        cat "$seed" >"$profile"
+        chmod 0644 "$profile"
     fi
 
-    insert_profile_db gdm user-db:user required
-    [ -d /etc/dconf/db/distro.d ] && insert_profile_db distro system-db:gdm optional
+    insert_profile_db "$profile" gdm user-db:user required
+    [ -d /etc/dconf/db/distro.d ] && insert_profile_db "$profile" distro system-db:gdm optional
 
     return 0
 }
 
-ensure_gdm_dconf_profile || true
+ensure_greeter_dconf_profile gdm /usr/share/gaze/dconf-profile-gdm || true
+ensure_greeter_dconf_profile Debian-gdm "" || true
 
 if [ -d /run/systemd/system ]; then
     dconf update >/dev/null 2>&1 || true
