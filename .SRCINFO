@@ -1,0 +1,31 @@
+pkgbase = vosu-git
+	pkgdesc = Native osu! telemetry daemon with a local dashboard (git version)
+	pkgver = 1.0.1.r4.g9c47ccb
+	pkgrel = 1
+	url = https://github.com/shiruviaa/vosu
+	install = vosu.install
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	license = CC-BY-4.0
+	makedepends = git
+	makedepends = cargo
+	makedepends = clang
+	makedepends = libbpf
+	makedepends = pkgconf
+	makedepends = dotnet-sdk-8.0
+	makedepends = python
+	makedepends = imagemagick
+	depends = glibc
+	depends = libelf
+	depends = zlib
+	depends = libcap
+	depends = icu
+	depends = hicolor-icon-theme
+	provides = vosu
+	conflicts = vosu
+	options = !lto
+	options = !debug
+	source = vosu::git+https://github.com/shiruviaa/vosu.git#branch=main
+	sha256sums = SKIP
+
+pkgname = vosu-git

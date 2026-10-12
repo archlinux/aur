@@ -1,0 +1,7 @@
+post_install() {
+    /usr/bin/vosu --setup || printf '%s\n' 'vosu: capability setup failed; run /usr/bin/vosu --setup on the host.' >&2
+}
+
+post_upgrade() {
+    post_install
+}
