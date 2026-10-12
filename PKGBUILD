@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=cc-clip
-pkgver=0.11.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="Clipboard bridge for pasting images into AI coding agents over SSH"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=('xclip: X11 clipboard support'
 conflicts=('cc-clip-bin')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ShunmeiCho/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('daf633d9e6692aed3e363ec01dde8ddf12a7e08d3a322a84da4af1aac9f3e214')
+sha256sums=('aa06022eb029b2e0e57ef6160c10f7addbf57689ea2280535eb93166888ad686')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -33,7 +33,10 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  export CGO_ENABLED=0
+  # The shim tests run a nested `go test -race`: the race detector needs cgo
+  # and refuses -buildmode=pie.
+  export CGO_ENABLED=1
+  export GOFLAGS="-trimpath -mod=readonly -modcacherw"
   export GOPATH="$srcdir/gopath"
   local test_args=()
   # This upstream test appends the host PATH while asserting that xclip is
