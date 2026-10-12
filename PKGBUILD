@@ -12,17 +12,22 @@ depends=('protobuf-21')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kroketio/sentencepiece-browsermt/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('1cdd7b4ef66efad3cfb8c0aa7ac78d648a616b37649c4919056eb94dc3202d29')
-#options=(!lto)
+options=(!strip)
 
-prepare() {
-    if check_option lto y; then
-        CFLAGS+=" -ffat-lto-objects"
-        CXXFLAGS+=" -ffat-lto-objects"
-    fi
-}
+# prepare() {
+#     if check_option lto y; then
+#         CFLAGS+=" -ffat-lto-objects"
+#         CXXFLAGS+=" -ffat-lto-objects"
+#     fi
+# }
 
 build() {
     cd "$srcdir/sentencepiece-browsermt-$pkgver"
+    # if check_option lto y; then
+    #     CFLAGS+=" -ffat-lto-objects"
+    #     CXXFLAGS+=" -ffat-lto-objects"
+    # fi
+    #printf "%s\n" "$CFLAGS" "$CXXFLAGS"
     mkdir -p build && cd build
     cmake .. \
         -D CMAKE_INSTALL_PREFIX=/usr \
