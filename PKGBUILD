@@ -3,7 +3,7 @@
 
 pkgname=qt5-nemo-qml-plugin-configuration
 pkgver=0.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Configuration plugin for Nemo Mobile (Qt5 version)"
 arch=('x86_64')
 url="https://github.com/sailfishos/nemo-qml-plugin-configuration"
@@ -22,5 +22,10 @@ build() {
 package() {
   cd nemo-qml-plugin-configuration
   make INSTALL_ROOT="$pkgdir" install
+
+  # tests/tests.pro hardcodes /opt/tests/nemo-qml-plugin-configuration-qt5
+  # regardless of actual Qt version, colliding with the official (Qt6) package
+  rm -rf "$pkgdir"/opt
+
   install -Dm644 LICENSE.BSD -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
