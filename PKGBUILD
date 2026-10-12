@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bluebubbles-bin
 _pkgname=BlueBubbles
-pkgver="2.1.1+91"
+pkgver="2.1.2+92"
 pkgrel=1
 pkgdesc="A cross-platform app ecosystem, bringing iMessage to Android, PC (Windows, Linux, & even macOS), and Web!(Prebuilt version)"
 arch=(
@@ -33,8 +33,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/do
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x86_64.tar.gz")
 source=("${pkgname%-bin}.sh")
 sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_aarch64=('4528481bc5cabd9eb95963c5c83360df418b2a30141ac54c1a77b3e29b1fe135')
-sha256sums_x86_64=('87354e08083067b920faa400a13175804c81ff52a3f1430d8c7ecf9cf0cde619')
+sha256sums_aarch64=('2535bb4b23484a74f5d66a94b9a5f3bd6177f5a525bf82f2dd824934e9df0089')
+sha256sums_x86_64=('833a5fe56dfe93a1644878bdc894832e62fca6840c6e0588b9d35e19bd04d667')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
