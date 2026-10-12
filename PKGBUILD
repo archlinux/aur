@@ -2,8 +2,8 @@
 # Contributor: Ciro Scognamiglio <ciro.scognamiglio88 at gmail dot com>
 
 pkgname='bzr-player'
-pkgver='2.0.93'
-pkgrel='2'
+pkgver='2.0.94'
+pkgrel='1'
 pkgdesc='Audio player supporting a wide array of multi-platform exotic file formats'
 arch=('x86_64')
 url="https://github.com/aargirakis/BZRPlayer"
@@ -12,7 +12,7 @@ depends=('hicolor-icon-theme' 'noto-fonts-cjk' 'qt6-base' 'qt6-svg' 'qt-advanced
 makedepends=('cmake' 'dos2unix' 'gendesk' 'git' 'libglvnd' 'ninja' 'patchutils' 'qt6-declarative'
   'sdl2-compat' 'vulkan-headers')
 source=("git+https://github.com/aargirakis/BZRPlayer.git#tag=$pkgver")
-sha256sums=('92221b57ff9ab46abffb5a48d82170b1ea3b44616de4951680fd74d3ae41a199')
+sha256sums=('ff991fc3c01e250103ceda07d997eabd58b88ec4001089cd79f5e504503d4abd')
 
 build() {
   cmake -B cmake-build -S BZRPlayer -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DOFFLINE_MODE=1 -G Ninja
