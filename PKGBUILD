@@ -1,7 +1,7 @@
 # Maintainer: aic0d3r <funforfreeapps@gmail.com>
 pkgname=z13gui-plus-bin
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Z13GUI+ GTK4 overlay companion for z13ctl-plus'
 arch=('x86_64')
 url='https://github.com/aic0d3r/z13gui-plus'
