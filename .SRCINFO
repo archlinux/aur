@@ -1,6 +1,6 @@
 pkgbase = chromium-extension-keepassxc-browser
 	pkgdesc = KeePassXC Browser Integration - Chromium
-	pkgver = 1.9.11
+	pkgver = 1.10.4
 	pkgrel = 1
 	url = https://github.com/keepassxreboot/keepassxc-browser
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = chromium-extension-keepassxc-browser
 	makedepends = jq
 	makedepends = unzip
 	depends = chromium
-	noextract = keepassxc-browser-1.9.11::https://github.com/keepassxreboot/keepassxc-browser/releases/download/1.9.11/keepassxc-browser_1.9.11_chromium.zip
-	source = keepassxc-browser-1.9.11.zip::https://github.com/keepassxreboot/keepassxc-browser/releases/download/1.9.11/keepassxc-browser_1.9.11_chromium.zip
+	noextract = keepassxc-browser-1.10.4::https://github.com/keepassxreboot/keepassxc-browser/releases/download/1.10.4.1/keepassxc-browser_1.10.4.1_chromium.zip
+	source = keepassxc-browser-1.10.4.zip::https://github.com/keepassxreboot/keepassxc-browser/releases/download/1.10.4.1/keepassxc-browser_1.10.4.1_chromium.zip
 	source = keepassxc-browser.pem
-	sha256sums = e0cad61a63a2cab1fad4443e0916a51f888c63b90c4dde262a5368fc11745a87
+	sha256sums = 3ccda612a951dd4788b424cd41adced832922d4e482ea3ee03c6013390f45842
 	sha256sums = b3fe31d0cc35b79f9b64f18e792de6b2be1fb8a94bc4d1ce8e82428faf3e35df
 
 pkgname = chromium-extension-keepassxc-browser
