@@ -1,0 +1,25 @@
+pkgbase = localtranslate
+	pkgdesc = Local, offline neural machine translation application
+	pkgver = 0.6.0
+	pkgrel = 2
+	url = https://github.com/terslang/LocalTranslate
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	makedepends = cli11
+	makedepends = rapidjson
+	makedepends = intgemm
+	makedepends = sentencepiece-browsermt
+	depends = kotki
+	depends = mecab
+	depends = mecab-ipadic
+	depends = icu
+	depends = qt6-declarative
+	depends = qt6-base
+	depends = localtranslate-models-base
+	source = localtranslate-0.6.0.tar.gz::https://github.com/terslang/LocalTranslate/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = ba10a6c930c08031af0646e3f6cd3742d2a39d72dfbdbc2666c04bf4bb6d688b
+
+pkgname = localtranslate
