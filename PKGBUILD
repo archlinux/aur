@@ -2,7 +2,7 @@
 # Contributor and Ahthor: qier22 <qier222@outlook.com>
 pkgname=yesplaymusic-git
 _pkgname=YesPlayMusic
-pkgver=0.4.10.r9.gdf075cc
+pkgver=0.4.11.r0.g5d5fa23
 _electronversion=13
 _nodeversion=16
 pkgrel=1
@@ -38,7 +38,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -52,13 +52,14 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
-    local NVM_DIR="${srcdir}/.nvm"
+    export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
+    export PATH="${NVM_DIR}/versions/node/v$(nvm version "${_nodeversion}")/bin:${PATH}"
 }
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -105,6 +106,7 @@ _set_build_env() {
 	fi
 	local _reg="${NPM_CONFIG_REGISTRY:-https://registry.yarnpkg.com}"
 	_reg="${_reg%/}"
+	export YARN_REGISTRY="${_reg}"
 	if [[ -f .yarnrc ]]; then
 		sed -i "s|^registry .*|registry \"${_reg}\"|" .yarnrc
 	fi
@@ -115,9 +117,10 @@ _set_build_env() {
 _get_electron_version() {
 	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
 		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
-		| grep -v '^$' | sed 's/^[^0-9]*//' | head -1)
+		| grep -oE '[0-9]+' | head -1)
 	[[ -z "${_elec_ver}" ]] && return 1
-	echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+	(( _elec_ver == _electronversion )) && c=32 || c=31
+	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
 prepare() {
     cd "$(_get_project_dir)"
@@ -126,7 +129,6 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
-        s/@cfgdirname@/${pkgname%-git}/g
     " "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
@@ -140,6 +142,7 @@ prepare() {
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     sed -i "/productName: 'YesPlayMusic'/a\\
         electronDist: \"${ELECTRON_DIST}\"," vue.config.js
+    find ./ -type f -name "yarn.lock" -exec rm -rf {} +
     yarn --ignore-optional
     local unm_version
     unm_version="$(node -e "console.log(require('./node_modules/@unblockneteasemusic/rust-napi/package.json').version)")"
