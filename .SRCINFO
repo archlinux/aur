@@ -1,0 +1,18 @@
+pkgbase = sdb-bin
+	pkgdesc = Samsung Smart Development Bridge (CLI tool for Tizen OS and Samsung Smart TVs)
+	pkgver = 4.2.36
+	pkgrel = 1
+	url = https://developer.samsung.com/smarttv/develop/getting-started/using-sdk/tv-device.html
+	arch = x86_64
+	license = Apache-2.0
+	license = custom
+	depends = glibc
+	depends = gcc-libs
+	provides = sdb
+	conflicts = sdb
+	conflicts = tizen-sdb
+	options = !strip
+	source = sdb-bin-4.2.36.zip::https://download.tizen.org/sdk/tizenstudio/official/binary/sdb_4.2.36_ubuntu-64.zip
+	sha256sums = addf825e1a886a9f220cb3d287e74438cae0ffafe5821b9baca9d4f6c7de5124
+
+pkgname = sdb-bin
