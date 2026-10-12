@@ -1,12 +1,11 @@
 pkgbase = clauth
 	pkgdesc = Claude Code multi-account manager and usage monitor with auto-switch (CLI, TUI, MCP plugin)
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uwuclxdy/clauth
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	checkdepends = inetutils
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
