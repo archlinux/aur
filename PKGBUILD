@@ -2,7 +2,7 @@
 
 pkgname=kimi-code-bin
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Kimi Code CLI - the starting point for next-gen agents (prebuilt binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/MoonshotAI/kimi-code'
@@ -24,9 +24,12 @@ options=('!strip')
 # for every release). Without the rename, makepkg/yay reuse the previous
 # version's cached download under the same filename and the sha256 check
 # fails on every upgrade.
+#
+# LICENSE comes from the repo at the release tag (see [extras] in
+# metadata.toml); its URL and checksum are filled in by the updater.
 source_x86_64=(
     "kimi-code-${pkgver}-linux-x64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.1.1/kimi-code-linux-x64.tar.gz"
-    "kimi-code-${pkgver}-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/main/LICENSE"
+    "kimi-code-${pkgver}-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.1.1/LICENSE"
 )
 sha256sums_x86_64=(
     'b66cc3787bc9dfa6a06761305dc8878f98e7a24f79fa4494c00714229a1486e8'
@@ -34,7 +37,7 @@ sha256sums_x86_64=(
 )
 source_aarch64=(
     "kimi-code-${pkgver}-linux-arm64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.1.1/kimi-code-linux-arm64.tar.gz"
-    "kimi-code-${pkgver}-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/main/LICENSE"
+    "kimi-code-${pkgver}-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.1.1/LICENSE"
 )
 sha256sums_aarch64=(
     '5c68d74b139b47fb3457f3805a159cdfa942a6a98a159ab158a1baf93b024bbd'
