@@ -1,11 +1,11 @@
 pkgbase = proton-drive-cli-bin
 	pkgdesc = Official Proton Drive command-line client (precompiled binary)
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://proton.me/download/drive/cli/index.html
 	arch = aarch64
 	arch = x86_64
-	license = LicenseRef-proprietary
+	license = MIT
 	depends = libsecret
 	depends = org.freedesktop.secrets
 	provides = proton-drive-cli=0.9.0
@@ -14,6 +14,8 @@ pkgbase = proton-drive-cli-bin
 	options = !strip
 	options = !debug
 	options = !lto
+	source = LICENSE-0.9.0.md::https://raw.githubusercontent.com/ProtonDriveApps/sdk/cli/v0.9.0/LICENSE.md
+	sha512sums = b568865e91743da34047bae278273cd3950826e940ec7ff15033dd35f5f4687f097a425b8cc5679e9a201524c1e45ec043e292cda6fa0ad1c6c480055afef2ad
 	source_aarch64 = proton-drive-0.9.0-aarch64::https://proton.me/download/drive/cli/0.9.0/linux-arm64/proton-drive
 	sha512sums_aarch64 = c8d5a6b174e57f06d05cb5483400b9963faf58e743b6b33706bb73ecff718047ffce6b439994255b94b5b226b90d2e91bef7418ec96c1c3f5d8bf39b6cd01321
 	source_x86_64 = proton-drive-0.9.0-x86_64::https://proton.me/download/drive/cli/0.9.0/linux-x64/proton-drive
