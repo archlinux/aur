@@ -2,7 +2,7 @@
 
 pkgname=termimus-ssh-bin
 _pkgname=termimus
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Self-hosted SSH & Server Manager desktop app (Termius alternative built with Tauri + React)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
     "LICENSE::https://raw.githubusercontent.com/termimus/termimus-ssh/v${pkgver}/LICENSE"
 )
 sha256sums=(
-    '593c2880c4347b61b1b5e22728bc9cb83c666c0fa0a03a1abc9a4df2c8a1be65'
+    'cac2c6a53515296159e2248891cb71a4356d557c5c867dd838a5a25678c84341'
     '29309b165d9ba5ce70bc0cc32696d034dca05f568cb7b20c87a41ff01ba3cf82'
 )
 
