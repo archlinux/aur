@@ -25,7 +25,7 @@ _suffix2='05'
 
 pkgver="${_pkgver}.1.${_suffix2}"
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
 arch=('x86_64' 'aarch64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
@@ -36,7 +36,7 @@ makedepends=(jbigkit gzip libxml2)
 depends=(libcups glibc libstdc++ glib2 hicolor-icon-theme libjpeg6-turbo gtk3)
 optdepends=('jbigkit: nrecessary for some printers'
             'ghostscript: necessary for printing on some devices'
-            'at-spi2-core: for cnsetuputil2'cp CNRCUPSBX540ZS.res CNRCUPSBX540ZK.res
+            'at-spi2-core: for cnsetuputil2'
             'gdk-pixbuf2: for cnsetuputil2'
             'cairo: for cnsetuputil2'
             'pango: for cnsetuputil2'
