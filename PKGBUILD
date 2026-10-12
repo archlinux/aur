@@ -8,7 +8,7 @@
 
 pkgname=ultra-9000-bin
 _pkgname=ultra-9000
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Agent harness with native Alacritty terminals in a Tauri/Svelte interface (prebuilt)'
 arch=('x86_64')
@@ -42,7 +42,7 @@ options=('!strip' '!debug')
 _asset="$_pkgname-$pkgver-1-x86_64.pkg.tar.zst"
 source=("$url/releases/download/v$pkgver/$_asset")
 noextract=("$_asset")
-sha256sums=('527f6c99e88469ec927ffecda7f97972221f165eecb43f89d49c22f85850b474')
+sha256sums=('c4bff1060cf33e60cccd6c20a7b3e1266279dad891704d6471b2d07268dac567')
 
 package() {
   bsdtar -xf "$srcdir/$_asset" -C "$pkgdir" \
