@@ -1,4 +1,4 @@
-pkgbase = ruby
+pkgbase = ruby4
 	pkgdesc = An object-oriented language for quick and easy programming
 	pkgver = 4.0.7
 	pkgrel = 1
@@ -25,7 +25,7 @@ pkgbase = ruby
 	sha512sums = d1d345c25bff43aa86f536b22cd04746a7d3372077bf47ec75ef1820c0b43d0dbe3573dd5e5c55ee517796f46f0cdbd22c7506aebd06581241eefb5ffd9d2e5f
 	b2sums = 9a315547a49fc1057d2439a6097dc04dd483bb66aa9cbc3037f246bc08f3f536c3b671fd97a142a54190252ec9be46111f12b13e0843aaf1fa8a014cad4f53a7
 
-pkgname = ruby
+pkgname = ruby4
 	depends = libgcc
 	depends = gdbm
 	depends = glibc
@@ -129,10 +129,10 @@ pkgname = ruby
 	replaces = ruby-tmpdir
 	replaces = ruby-uri
 
-pkgname = ruby-docs
+pkgname = ruby4-docs
 	pkgdesc = Documentation files for Ruby
 
-pkgname = ruby-default-gems
+pkgname = ruby4-default-gems
 	pkgdesc = Default gems which are part of Ruby StdLib
 	depends = ruby-bundler
 	depends = ruby-erb
@@ -140,7 +140,7 @@ pkgname = ruby-default-gems
 	depends = ruby-rdoc
 	depends = ruby-rubygems
 
-pkgname = ruby-bundled-gems
+pkgname = ruby4-bundled-gems
 	pkgdesc = Bundled gems which are part of Ruby StdLib
 	depends = ruby-abbrev
 	depends = ruby-base64
@@ -174,7 +174,7 @@ pkgname = ruby-bundled-gems
 	conflicts = ruby-bundledgems
 	replaces = ruby-bundledgems
 
-pkgname = ruby-stdlib
+pkgname = ruby4-stdlib
 	pkgdesc = Full Ruby StdLib including default gems, bundled gems and tools
 	depends = ruby-default-gems
 	depends = ruby-bundled-gems

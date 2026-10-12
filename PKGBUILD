@@ -1,13 +1,12 @@
 # Maintainer: Brad Arrington <bradla8@yahoo.com>
 
-# Do not re-package default gems (see https://stdgems.org/). Trying to do that will lead to multiple problems
-
+pkgbase=ruby4
 pkgname=(
-  ruby
-  ruby-docs
-  ruby-default-gems
-  ruby-bundled-gems
-  ruby-stdlib
+  ruby4
+  ruby4-docs
+  ruby4-default-gems
+  ruby4-bundled-gems
+  ruby4-stdlib
 )
 pkgver=4.0.7
 pkgrel=1
@@ -192,7 +191,7 @@ check() {
   #make test-all TESTS="--exclude=test_checkout_submodules"
 }
 
-package_ruby() {
+package_ruby4() {
   depends=(
     libgcc
     gdbm
@@ -323,7 +322,7 @@ _remove_default_tool_gems() {
   done
 }
 
-package_ruby-docs() {
+package_ruby4-docs() {
   pkgdesc='Documentation files for Ruby'
 
   cd "ruby-${pkgver}"
@@ -331,7 +330,7 @@ package_ruby-docs() {
   install --verbose -D --mode=0644 BSDL COPYING --target-directory "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-package_ruby-bundled-gems() {
+package_ruby4-bundled-gems() {
   pkgdesc='Bundled gems which are part of Ruby StdLib'
   replaces=(ruby-bundledgems)
   conflicts=(ruby-bundledgems)
@@ -341,7 +340,7 @@ package_ruby-bundled-gems() {
   install --verbose -D --mode=0644 BSDL COPYING --target-directory "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-package_ruby-default-gems() {
+package_ruby4-default-gems() {
   pkgdesc='Default gems which are part of Ruby StdLib'
   depends=("${_default_tool_gems[@]/#/ruby-}")
 
@@ -349,7 +348,7 @@ package_ruby-default-gems() {
   install --verbose -D --mode=0644 BSDL COPYING --target-directory "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-package_ruby-stdlib() {
+package_ruby4-stdlib() {
   pkgdesc='Full Ruby StdLib including default gems, bundled gems and tools'
   depends=(ruby-default-gems ruby-bundled-gems)
 
