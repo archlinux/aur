@@ -14,6 +14,6 @@ pkgbase = aurcache-sandbox
 	options = !lto
 	options = !debug
 	source = aurcache-sandbox-0.6.0.tar.gz::https://github.com/gyscos/AURCache/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 4fb8c1563b226dc9a4e3d9e13da2d6ebb92205a7582c99848bbaafacfc0b8935
 
 pkgname = aurcache-sandbox
