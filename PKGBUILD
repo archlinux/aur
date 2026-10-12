@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=o2-rs
 _pkgname=o2
-pkgver=0.3.5
+pkgver=0.3.7
 pkgrel=1
 pkgdesc='Rust port of the ORCΛ esoteric programming language and terminal livecoding environment'
 arch=(
@@ -11,7 +11,10 @@ arch=(
 )
 url='https://github.com/coignard/o2'
 license=('GPL-3.0-or-later')
-makedepends=('cargo')
+makedepends=(
+    'cargo'
+    'alsa-lib'
+)
 options=(
     !strip
     !debug
@@ -21,7 +24,7 @@ conflicts=('o2-rs-git' 'o2-rs-bin')
 source=(
     "${_pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
 )
-sha256sums=('1f9d7532d5af710ba2e8fbf5852186bf87753c04a9b8d0fe5f1f5134ff503cfc')
+sha256sums=('dccba6c58a71b0511bc58e072c741fbc954f5b78996f358d193aec3e254f5417')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
