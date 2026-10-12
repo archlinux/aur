@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Tabular data swiss-army knife CLI + world's fastest (simd) CSV parser"
 
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
-sha256sums=('3e37c0b59d6537ae885e724bc8f1ccabd9dd3340b095d6f8afd7abea3f601c58'
+sha256sums=('87ae0efb4c6f4a9e8796915132eb138ab94f3e995ec4cfb3a549d4b0001ead63'
             '2c9351020e16d46296f775e38f7ac172d5846ad9e9016272ffa0ce866920d8c2')
-sha256sums_x86_64=('88df66c3b39b42e96bbc63c632b2d158e7fd274d188544686a7e40667eb06174')
+sha256sums_x86_64=('1f5b0d16e219c5e7155b6a9037e1cc084da5a9083562d92ba71aca3e03c5284d')
 
 
 case ${CARCH} in
