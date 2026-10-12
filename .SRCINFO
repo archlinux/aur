@@ -1,12 +1,15 @@
 pkgbase = steam-beta
 	pkgdesc = Valve's digital software delivery system (64-bit client beta, no lib32)
 	pkgver = 1.0.0.87.1791686101
-	pkgrel = 4
+	pkgrel = 5
 	url = https://steampowered.com/
 	arch = x86_64
 	license = LicenseRef-steam-subscriber-agreement
+	license = MIT
 	provides = steam=1.0.0.87
+	provides = steam-devices=1.0.0.87
 	conflicts = steam
+	conflicts = steam-devices
 	noextract = tenfoot_images_all.zip.86419c7a56c12dd107b5e0d46f50c8a9b121f3cc
 	noextract = steamui_websrc_all.zip.91e126562be3c98950e90888133f80c1bb6b52c9
 	noextract = resources_misc_all.zip.99ed79ed868d732d8e9e9a45444b8f003191e3dd
@@ -122,8 +125,8 @@ pkgname = steam-beta
 	depends = lsof
 	depends = nss
 	depends = python
-	depends = steam-devices
 	depends = ttf-font
+	depends = udev
 	depends = usbutils
 	depends = vulkan-driver
 	depends = vulkan-icd-loader

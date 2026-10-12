@@ -29,13 +29,14 @@ _manifest_values() { awk -F'"' -v k="$1" '$2 == k {print $4}' $_manifest; }
 mapfile -t _client_zips < <(_manifest_values file)
 mapfile -t _client_sha256 < <(_manifest_values sha2)
 pkgver=${_launcher}.$(_manifest_values version)
-pkgrel=4
+pkgrel=5
 pkgdesc="Valve's digital software delivery system (64-bit client beta, no lib32)"
 url='https://steampowered.com/'
 arch=('x86_64')
-license=('LicenseRef-steam-subscriber-agreement')
-provides=("steam=$_launcher")
-conflicts=(steam)
+license=('LicenseRef-steam-subscriber-agreement' 'MIT')
+# steam-devices' udev rules ship here: the repo package lives in multilib only beside steam
+provides=("steam=$_launcher" "steam-devices=$_launcher")
+conflicts=(steam steam-devices)
 # the beta directory is a superset of stable and also contains the stable releases
 source=(
   https://repo.steampowered.com/steam/archive/beta/steam_${_launcher}{.tar.gz,.dsc}
@@ -114,8 +115,8 @@ package() {
     lsof
     nss
     python
-    steam-devices
     ttf-font
+    udev
     usbutils
     vulkan-driver
     vulkan-icd-loader
@@ -170,6 +171,10 @@ package() {
   # steamrt64/reaper, which starts every game, is still i386: ValveSoftware/steam-for-linux#13015
   install -Dm 755 "${srcdir}/reaper64" "${pkgdir}${_reaper64}"
   install -Dm 644 "${srcdir}/${_binfmt}.conf" -t "${pkgdir}/usr/lib/binfmt.d"
+
+  local devices=subprojects/steam-devices
+  install -Dm 644 $devices/60-steam-{input,vr}.rules -t "${pkgdir}/usr/lib/udev/rules.d"
+  install -Dm 644 $devices/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.steam-devices"
 
   # blank steamdeps because apt-get
   ln -sf true "${pkgdir}/usr/bin/steamdeps"
