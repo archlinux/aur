@@ -1,0 +1,4 @@
+kubecolor.tar.gz
+kubecolor-bin-*.pkg.tar.zst
+pkg/
+src/
