@@ -1,6 +1,6 @@
 pkgbase = yesplaymusic-bin
-	pkgdesc = A third party music application for Netease Music.Prebuilt version.Use system-wide electron.高颜值的第三方网易云播放器.
-	pkgver = 0.4.10
+	pkgdesc = A third party music application for Netease Music.高颜值的第三方网易云播放器.
+	pkgver = 0.4.11
 	pkgrel = 1
 	url = https://music.qier222.com/
 	arch = aarch64
@@ -8,7 +8,7 @@ pkgbase = yesplaymusic-bin
 	arch = x86_64
 	license = MIT
 	depends = electron13
-	provides = yesplaymusic=0.4.10
+	provides = yesplaymusic=0.4.11
 	conflicts = yesplaymusic
 	conflicts = yesplaymusic-electron
 	conflicts = yesplaymusicosd-electron
@@ -16,15 +16,15 @@ pkgbase = yesplaymusic-bin
 	conflicts = my-yesplaymusic
 	conflicts = r3play
 	conflicts = r3playx
-	source = LICENSE-0.4.10::https://raw.githubusercontent.com/qier222/YesPlayMusic/v0.4.10/LICENSE
+	source = LICENSE-0.4.11::https://raw.githubusercontent.com/qier222/YesPlayMusic/v0.4.11/LICENSE
 	source = yesplaymusic.sh
 	sha256sums = c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = yesplaymusic-0.4.10-aarch64.deb::https://github.com/qier222/YesPlayMusic/releases/download/v0.4.10/yesplaymusic_0.4.10_arm64.deb
-	sha256sums_aarch64 = b96c8c4a342b78aaba074af44755ab3ee3d8e3322472b30ee93be0b9a1fb7351
-	source_armv7h = yesplaymusic-0.4.10-armv7h.deb::https://github.com/qier222/YesPlayMusic/releases/download/v0.4.10/yesplaymusic_0.4.10_armv7l.deb
-	sha256sums_armv7h = 448a66a49f06238f3999788aee6633f67b6291a8dcdf16ea81c41301c05e148d
-	source_x86_64 = yesplaymusic-0.4.10-x86_64.deb::https://github.com/qier222/YesPlayMusic/releases/download/v0.4.10/yesplaymusic_0.4.10_amd64.deb
-	sha256sums_x86_64 = 92248cd743bf8af7e86a7b4183b9ade4a175ae0cfe88d3321a1d7022675cd314
+	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
+	source_aarch64 = yesplaymusic-0.4.11-aarch64.deb::https://github.com/qier222/YesPlayMusic/releases/download/v0.4.11/yesplaymusic_0.4.11_arm64.deb
+	sha256sums_aarch64 = e956e2fa8fa2ecc12441e3718fab4d08db3b33efbdf95a475d00fe8cd852ed42
+	source_armv7h = yesplaymusic-0.4.11-armv7h.deb::https://github.com/qier222/YesPlayMusic/releases/download/v0.4.11/yesplaymusic_0.4.11_armv7l.deb
+	sha256sums_armv7h = 507078afcd0550ab01044a38093e0e3ab87ea1db092a196b291d5507c20aada0
+	source_x86_64 = yesplaymusic-0.4.11-x86_64.deb::https://github.com/qier222/YesPlayMusic/releases/download/v0.4.11/yesplaymusic_0.4.11_amd64.deb
+	sha256sums_x86_64 = 17a39a83ba5d799cbd517c2c182994cdb9b254cfba92fd10dbfb27cdcf421714
 
 pkgname = yesplaymusic-bin
