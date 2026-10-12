@@ -9,7 +9,7 @@
 # (patches/plugin_dir.patch from the trdc source tree) lets guacd load its
 # channel plugins from that private tree, so no root install is involved.
 pkgname=trdc
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Remote desktop client with a built-in AI copilot (RDP/VNC/SSH via a private guacd sidecar)"
 arch=('x86_64')
