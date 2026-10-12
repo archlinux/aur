@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=syng-bin
 _pkgname=Syng
-pkgver=2.5.1
+pkgver=2.5.2
 _zhsname='词应'
 pkgrel=1
 pkgdesc="A free, open source, cross-platform, Chinese-To-English dictionary for desktops."
@@ -24,8 +24,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
-sha256sums_aarch64=('f5d706cb5bc46b24faa9476060dbf9de3f1f4c4bc8052ffda467aa769ac43724')
-sha256sums_x86_64=('b58347bf329c6c8ab66b5b4a2cb7334cebfd8e34940210bbe69c3f65c82ad98a')
+sha256sums_aarch64=('d06a599e2e6a5960d34c8fa3b7e708ccc506625f7963458ebff830dc4bd3ba72')
+sha256sums_x86_64=('d1528b9c13997bcd47f5226061dd715b362753ffadb651c7f8a5ab3089a28f95')
 prepare() {
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/
@@ -37,7 +37,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
+    [ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
