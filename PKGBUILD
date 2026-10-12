@@ -4,7 +4,7 @@ _appauthor="coleifer"
 _appname="cysqlite"
 
 pkgname="python-${_appname}"
-pkgver=0.3.8
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Python SQLite driver"
 
@@ -23,7 +23,7 @@ depends=('python' 'cython' 'sqlite')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz")
-sha256sums=('06f5089de2bdb9a4175a4cdd6975ec1342f726d48c20546d44a417ef33efbc1f')
+sha256sums=('723d6d1eda17ba05eaeb0261a11d91912a9ed1ce277d2a64d5cd09499de321e4')
 
 
 build() {
