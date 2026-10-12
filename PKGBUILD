@@ -142,8 +142,8 @@ build()
   #WX_CONFIG="/usr/bin/wx-config-gtk3"
   #WX_CONFIG="/usr/bin/wx-config"
   #WX_CONFIG="wx-config"
-  #WX_CONFIG="wx-config-3.3.3"
-  WX_CONFIG=$(command -v wx-config-3.3.3 wx-config-3.3.2 wx-config-3.3.1 wx-config-3.3.0 wx-config-3.3 wx-config-3.2 wx-config | head -1);
+  #WX_CONFIG="wx-config-3.3.4"
+  WX_CONFIG=$(command -v wx-config-3.3.4 wx-config-3.3.3 wx-config-3.3.2 wx-config-3.3.1 wx-config-3.3.0 wx-config-3.3 wx-config-3.2 wx-config | head -1);
 
   echo;
   echo "WX_CONFIG: ${WX_CONFIG}";
