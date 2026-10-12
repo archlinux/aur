@@ -1,44 +1,85 @@
 # Maintainer: Kazoku <k4zoku@pm.me>
 
-pkgname=dearsql
+_pkgbase=dearsql
+_tag=944826a0fcb92c2ae453f71ba751d3b08e19c630
+_vcpkg_commit=77df67cfff9c12ccfdb52284e07c87c75092f723
+_mongo_patch_commit=bd93b56711a393a3c498991e023f94b7542832bb
+pkgname=${_pkgbase}
 pkgver=0.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Cross-platform SQL database client"
 arch=('x86_64')
 url="https://github.com/dunkbing/dearsql"
-license=('FSL')
-depends=()
-makedepends=()
-options=(!strip)
-source=(
-    "${pkgname}-${pkgver}.AppImage::https://github.com/dunkbing/dearsql/releases/download/v${pkgver}/${pkgname}-${CARCH}.AppImage"
-    "${pkgname}.desktop::https://raw.githubusercontent.com/dunkbing/dearsql/refs/tags/v${pkgver}/packaging/io.gitlab.dunkbing.dearsql.desktop"
-    "${pkgname}.png::https://raw.githubusercontent.com/dunkbing/dearsql/refs/tags/v${pkgver}/assets/appicon.png"
+license=('LicenseRef-FSL')
+depends=('freetds' 'gtk4' 'libepoxy' 'libsecret' 'libx11')
+makedepends=(
+    'autoconf'
+    'autoconf-archive'
+    'automake'
+    'cmake'
+    'curl'
+    'git'
+    'gnutls'
+    'krb5'
+    'libltdl'
+    'libtirpc'
+    'ninja'
+    'pkgconf'
+    'python'
+    'unzip'
+    'zip'
 )
-sha256sums=('28c642ae70e729125e081442d0e91541fab9cebd0ce6888816475bf078247b33'
-            '8d1eb52592409db0b26abb3def7be743c926ceb4212fddffdfb13d4a5f72420c'
-            '03e01e1fe765e93f167d0870e010cd43d4fcb24fe103f7fadf50a6f540828167')
+options=('!lto' '!debug')
+source=(
+    "${_pkgbase}::git+${url}.git#commit=${_tag}"
+    "vcpkg-${_vcpkg_commit}.tar.gz::https://github.com/microsoft/vcpkg/archive/${_vcpkg_commit}.tar.gz"
+    "mongo-cmake-4.4.patch::https://raw.githubusercontent.com/microsoft/vcpkg/${_mongo_patch_commit}/ports/mongo-c-driver/cmake-4.4.patch"
+)
+sha256sums=('ec3e94f92059699f2651dfd0ba914972e7e9fab62807092036687fcf5859c561'
+            '0edebdc4f04b88ec608b1a35bff67132d4686e4059bb06a528c2664a5436937e'
+            '138092b6f9a01ea46325fa55813350578719cf901c56e69166d7466ef2d03d84')
+
+prepare() {
+    git -C "${_pkgbase}" submodule update --init --recursive
+    if [[ -d "vcpkg-${_vcpkg_commit}" ]]; then
+        rm -rf vcpkg
+        mv "vcpkg-${_vcpkg_commit}" vcpkg
+    fi
+    sed -i '/"builtin-baseline":/d' "${_pkgbase}/vcpkg.json"
+    rm -rf vcpkg-overlay
+    mkdir -p vcpkg-overlay/mongo-c-driver
+    cp -a vcpkg/ports/mongo-c-driver/. vcpkg-overlay/mongo-c-driver/
+    cp "$srcdir/mongo-cmake-4.4.patch" \
+        vcpkg/ports/mongo-c-driver/
+    cp "$srcdir/mongo-cmake-4.4.patch" \
+        vcpkg-overlay/mongo-c-driver/
+    sed -i \
+        '/remove_abs_patch.cmake/a\        mongo-cmake-4.4.patch' \
+        vcpkg-overlay/mongo-c-driver/portfile.cmake
+
+    ./vcpkg/bootstrap-vcpkg.sh -disableMetrics
+}
+
+build() {
+    export VCPKG_ROOT="$srcdir/vcpkg"
+    export VCPKG_BUILD_TYPE=release
+    export VCPKG_DISABLE_METRICS=1
+    export VCPKG_DOWNLOADS="$srcdir/vcpkg-downloads"
+    export CFLAGS="${CFLAGS} -Wno-error=override-init"
+
+    cmake -S "${srcdir}/${_pkgbase}" -B "${srcdir}/build" \
+        -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DVCPKG_BUILD_TYPE=release \
+        -DVCPKG_TARGET_TRIPLET=x64-linux \
+        -DVCPKG_OVERLAY_PORTS="${srcdir}/vcpkg-overlay" \
+        -DVCPKG_OVERLAY_TRIPLETS="${srcdir}/${_pkgbase}/cmake/triplets"
+    cmake --build "${srcdir}/build" --target "${_pkgbase}"
+}
 
 package() {
-    # Create app directory
-    mkdir -p "${pkgdir}/opt/${pkgname}"
-    chmod 777 "${pkgdir}/opt/${pkgname}"
-
-    # Install the AppImage
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" \
-        "${pkgdir}/opt/${pkgname}/${pkgname}"
-
-    # Create a wrapper script in /usr/bin
-    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<'EOF'
-#!/bin/sh
-exec /opt/dearsql/dearsql "$@"
-EOF
-
-    # Install desktop file
-    install -Dm644 "${srcdir}/${pkgname}.desktop" \
-        "${pkgdir}/usr/share/applications/io.gitlab.dunkbing.dearsql.desktop"
-
-    # Install icon
-    install -Dm644 "${srcdir}/${pkgname}.png" \
-        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/io.gitlab.dunkbing.dearsql.png"
+    DESTDIR="${pkgdir}" cmake --install "${srcdir}/build" --prefix /usr
+    install -Dm644 "${srcdir}/${_pkgbase}/LICENSE" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
