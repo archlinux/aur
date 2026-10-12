@@ -1,6 +1,6 @@
 pkgbase = gridformat
 	pkgdesc = Header-only C++-Library for grid file I/O
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/dglaeser/gridformat
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gridformat
 	depends = lz4
 	depends = xz
 	depends = hdf5-openmpi
-	source = gridformat-0.4.0.tar.gz::https://github.com/dglaeser/gridformat/archive/v0.4.0.tar.gz
+	source = gridformat-0.5.0.tar.gz::https://github.com/dglaeser/gridformat/archive/v0.5.0.tar.gz
 	sha512sums = 78b3d97ef4d3eea22cfbbd0e8679774c0509cf5d7901a26e9f6e1f76c31f13c0bf56174bae5bae793754d68957a8edd8711b6f39554ae597e60bae0c45dfe9b7
 
 pkgname = gridformat

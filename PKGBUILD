@@ -1,6 +1,6 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=gridformat
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Header-only C++-Library for grid file I/O"
 arch=(x86_64)
