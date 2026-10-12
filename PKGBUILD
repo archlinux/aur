@@ -29,7 +29,7 @@ _manifest_values() { awk -F'"' -v k="$1" '$2 == k {print $4}' $_manifest; }
 mapfile -t _client_zips < <(_manifest_values file)
 mapfile -t _client_sha256 < <(_manifest_values sha2)
 pkgver=${_launcher}.$(_manifest_values version)
-pkgrel=5
+pkgrel=6
 pkgdesc="Valve's digital software delivery system (64-bit client beta, no lib32)"
 url='https://steampowered.com/'
 arch=('x86_64')

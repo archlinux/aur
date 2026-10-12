@@ -1,7 +1,7 @@
 pkgbase = steam-beta
 	pkgdesc = Valve's digital software delivery system (64-bit client beta, no lib32)
 	pkgver = 1.0.0.87.1791686101
-	pkgrel = 5
+	pkgrel = 6
 	url = https://steampowered.com/
 	arch = x86_64
 	license = LicenseRef-steam-subscriber-agreement
