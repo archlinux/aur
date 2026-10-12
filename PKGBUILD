@@ -1,7 +1,7 @@
 # Maintainer: gradia <gradia@disroot.org>
 
 pkgname=olladesk
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Client desktop per Ollama in stile ChatGPT (PySide6/Qt), con companion web per smartphone e tablet"
 arch=('any')
@@ -43,9 +43,12 @@ package() {
   python -m compileall -q -s "$pkgdir" -p / "$pkgdir/usr/share/olladesk"
 
   install -Dm755 packaging/common/olladesk.sh "$pkgdir/usr/bin/olladesk"
-  install -Dm644 olladesk.desktop "$pkgdir/usr/share/applications/olladesk.desktop"
+  install -Dm644 io.github.gradia64.OllaDesk.desktop \
+    "$pkgdir/usr/share/applications/io.github.gradia64.OllaDesk.desktop"
   install -Dm644 olladesk/assets/olladesk.svg \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/olladesk.svg"
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.gradia64.OllaDesk.svg"
+  install -Dm644 io.github.gradia64.OllaDesk.metainfo.xml \
+    "$pkgdir/usr/share/metainfo/io.github.gradia64.OllaDesk.metainfo.xml"
 
   install -d "$pkgdir/usr/share/man/man1"
   sed -e "s/@VERSION@/$pkgver/" \
