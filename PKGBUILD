@@ -1,7 +1,7 @@
 # Maintainer: giosuel <me@giosuel.ch>
 pkgname=somedesk-bin
 _pkgname=somedesk
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Self-hosted, end-to-end encrypted remote desktop (prebuilt binary)'
 arch=('x86_64')
@@ -15,11 +15,11 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!debug') # the release binary is already stripped
 source_x86_64=("$url/releases/download/v$pkgver/SomeDesk-$pkgver-linux-x64.tar.gz")
-sha256sums_x86_64=('e21e51162ba36c94d12f2c32b1dd542270b5cb497025638b4ef32dde5ee06931')
+sha256sums_x86_64=('11a508c7174783436cd204e041e20075d8e392a2b7c9fc2d61dc5208f8264f20')
 
 package() {
   cd "SomeDesk-$pkgver-linux-x64"
-  install -Dm755 somedesk -t "$pkgdir/usr/bin"
+  install -Dm755 somedesk somedesk-agent -t "$pkgdir/usr/bin"
   install -Dm644 packaging/linux/ch.giosuel.SomeDesk.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 packaging/linux/ch.giosuel.SomeDesk.metainfo.xml -t "$pkgdir/usr/share/metainfo"
   install -Dm644 assets/brand/app-icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/ch.giosuel.SomeDesk.svg"
