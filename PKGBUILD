@@ -1,5 +1,13 @@
 # Arch's steam, but bootstrapping the 64-bit (SteamRT3) client beta so nothing needs lib32.
 # Update the client: curl -fsSO "$_cdn/$_manifest", then rebuild.
+#
+# Good to know:
+# - Building downloads the pinned client from Valve's CDN, about 740 MB.
+# - /usr/bin/steam opts every Steam install into the client beta and its 64-bit client,
+#   and defaults PROTON_USE_WOW64=1; a game's launch options can set it to 0.
+# - A system-wide binfmt_misc rule (/usr/lib/binfmt.d/steam-reaper.conf) runs Steam's
+#   i386 reaper, and only that binary, as /usr/lib/steam/reaper64.
+# - lib32 packages are optional: 32-bit native games, and Proton without WoW64, need them.
 # Maintainer: Nikolay Bryskin <nikicat@users.noreply.github.com>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
@@ -151,7 +159,7 @@ package() {
   mv "${pkgdir}/usr/bin/steam" "${pkgdir}/usr/lib/steam/steam"
   sed "s/@BRANCH@/$_branch/" "${srcdir}/steam.sh" | install -Dm 755 /dev/stdin "${pkgdir}/usr/bin/steam"
   if grep -n '@[A-Z]*@' "${pkgdir}/usr/bin/steam"; then
-    error "steam.sh has a placeholder package() does not fill"
+    echo "steam.sh has a placeholder package() does not fill" >&2
     return 1
   fi
 
