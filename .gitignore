@@ -1,0 +1,4 @@
+src/
+pkg/
+artcraft-launcher/
+*.pkg.tar.zst
