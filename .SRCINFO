@@ -1,16 +1,13 @@
 pkgbase = huebox
-	pkgdesc = A terminal theme editor with live preview
-	pkgver = 0.4.1
+	pkgdesc = Terminal theme editor with live preview
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/MikkelKappelPersson/huebox
-	arch = any
+	arch = x86_64
 	license = MIT
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-setuptools
-	depends = python-pygments
-	depends = python-textual
-	source = https://files.pythonhosted.org/packages/source/h/huebox/huebox-0.4.1.tar.gz
-	sha256sums = 650602de9618746d3ea1679feec7adeb96b8a29e00aed2859f4f846b5e2705fc
+	makedepends = cargo
+	depends = gcc-libs
+	source = huebox-0.5.0.tar.gz::https://github.com/MikkelKappelPersson/huebox/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 87fb37b4936fa844db24eecd6b246b4cdbc32c8180f14ad00c344c2f1f562fac
 
 pkgname = huebox

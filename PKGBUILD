@@ -1,24 +1,23 @@
 # Maintainer: Mikkel Kappel Persson <mikkel@kappelpersson.dk>
 pkgname=huebox
-_name=huebox
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="A terminal theme editor with live preview"
-arch=(any)
-url="https://github.com/MikkelKappelPersson/huebox"
-license=(MIT)
-depends=(python-pygments python-textual)
-makedepends=(python-build python-installer python-setuptools)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('650602de9618746d3ea1679feec7adeb96b8a29e00aed2859f4f846b5e2705fc')
+pkgdesc='Terminal theme editor with live preview'
+arch=('x86_64')
+url='https://github.com/MikkelKappelPersson/huebox'
+license=('MIT')
+depends=('gcc-libs')
+makedepends=('cargo')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('87fb37b4936fa844db24eecd6b246b4cdbc32c8180f14ad00c344c2f1f562fac')
 
 build() {
-  cd "$_name-$pkgver"
-  python -m build --wheel --no-isolation
+  cd "$pkgname-$pkgver"
+  cargo build --release --locked --manifest-path rust/Cargo.toml
 }
 
 package() {
-  cd "$_name-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$pkgname-$pkgver"
+  install -Dm755 rust/target/release/huebox "$pkgdir/usr/bin/huebox"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
