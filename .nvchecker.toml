@@ -1,0 +1,4 @@
+[proxyguard]
+source = "git"
+git = "https://codeberg.org/eduVPN/proxyguard.git"
+prefix = "v"
