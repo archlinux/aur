@@ -1,7 +1,7 @@
 pkgbase = zed-globalization
 	pkgdesc = Zed editor with globalization support (pre-built binary)
 	pkgver = 1.23.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/x6nux/zed-globalization
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,6 @@ pkgbase = zed-globalization
 	license = Apache-2.0
 	license = GPL-3.0-or-later
 	provides = zedg
-	provides = zed
 	conflicts = zedg
 	conflicts = zed
 	options = !strip

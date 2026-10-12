@@ -1,11 +1,13 @@
 pkgname=zed-globalization
 pkgver=1.23.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Zed editor with globalization support (pre-built binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/x6nux/zed-globalization"
 license=('AGPL-3.0-or-later' 'Apache-2.0' 'GPL-3.0-or-later')
-provides=('zedg' 'zed')
+# 只提供 zedg 命令:不再安装 /usr/bin/zed,故不再 provide zed。
+# 但仍需与官方 zed 包冲突——两者都会安装 dev.zed.Zed.desktop。
+provides=('zedg')
 conflicts=('zedg' 'zed')
 options=('!strip' '!debug')
 
@@ -18,27 +20,28 @@ sha256sums_aarch64=('2da95afeaf8924c622747ec25d32ac829d8841fdd003934ea983d68ea82
 package() {
   cp -r "${srcdir}/usr" "${pkgdir}/"
 
-  # CLI:直接改名顶替成 zed(真实文件,不是软链)
-  rm -f "${pkgdir}/usr/bin/zed"
-  mv "${pkgdir}/usr/libexec/zedg" "${pkgdir}/usr/bin/zed"
-
-  # 主程序:改名成 CLI 默认查找的 zed-editor。
+  # 主程序:改名成 CLI 固定查找的 zed-editor。
+  # 必须先移动,腾出 usr/bin/zedg 这个名字给下面的 CLI。
   # 放 /usr/libexec 而不是 /usr/lib/zed,是为了让二进制内置的
   # RPATH ($ORIGIN/../lib/zedg) 仍然解析到 /usr/lib/zedg(libgit2 所在处)。
   mv "${pkgdir}/usr/bin/zedg" "${pkgdir}/usr/libexec/zed-editor"
 
-  # 上游多余的产物:指向主程序的软链,以及已无用的激活脚本
+  # CLI:装成 /usr/bin/zedg(真实文件,不是软链)。
+  # 不再占用 /usr/bin/zed —— ZFS 的 zed(ZFS Event Daemon,zfs-utils 装到
+  # sbindir,而 Arch 上 /sbin -> /usr/bin)也落在 /usr/bin/zed,会文件冲突。
+  # CLI 自身文件名无关紧要,它按 ../libexec/zed-editor 定位主程序。
+  rm -f "${pkgdir}/usr/bin/zed"
+  mv "${pkgdir}/usr/libexec/zedg" "${pkgdir}/usr/bin/zedg"
+
+  # 上游多余的产物:指向 CLI 的软链,以及生态兼容开关脚本
   rm -f "${pkgdir}/usr/libexec/zed-cli" "${pkgdir}/usr/bin/zedg-activate"
 
-  # 若还想保留 `zedg` 这个命令名,再放一份 CLI(约 3MB):
-  # install -Dm755 "${pkgdir}/usr/bin/zed" "${pkgdir}/usr/bin/zedg"
-
-  # 桌面条目:必须调用 CLI(主程序在 Linux 上不会把打开请求转发给已运行实例),
-  # 同时修正 TryExec 与 MimeType
+  # 桌面条目:必须调用 CLI(主程序在 Linux 上不会把打开请求转发给已运行实例)。
+  # 上游桌面项本就用 Exec=zedg,这里按 FreeDesktop 改名并补 MimeType。
   mv "${pkgdir}/usr/share/applications/zedg.desktop" \
      "${pkgdir}/usr/share/applications/dev.zed.Zed.desktop"
-  sed -i -e 's|^Exec=.*|Exec=zed %F|' \
-         -e 's|^TryExec=.*|TryExec=zed|' \
+  sed -i -e 's|^Exec=.*|Exec=zedg %F|' \
+         -e 's|^TryExec=.*|TryExec=zedg|' \
      "${pkgdir}/usr/share/applications/dev.zed.Zed.desktop"
   sed -i 's|^MimeType=text/plain;$|MimeType=text/plain;inode/directory;|' \
      "${pkgdir}/usr/share/applications/dev.zed.Zed.desktop"
