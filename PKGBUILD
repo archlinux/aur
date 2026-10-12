@@ -96,6 +96,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-138-nodejs-version-check.patch
         chromium-145-fix-SYS_SECCOMP.patch
         chromium-147-rust-1.95-bytemuck.patch
+        chromium-147-simdutf-8.0-base-char.patch
         chromium-149-use-of-undeclared-identifier-ERROR.patch
         chromium-150-revert-avx-flag-change.patch
         chromium-152-unbundle-minizip-undo-unicode.patch
@@ -121,6 +122,7 @@ sha256sums=('2063834f528029ad02a6a3de6d229c3e8b19bc43864be397944cbda18d7ee680'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e'
             'b9e6339221efe03540ffb360c161d93604a1fc93a5a1c53e5e9849066f987d05'
+            '80e445d7a5cbd61d1252ecf46c5eaf0fb4a5e63bd1b9c976261df778a4586640'
             '951514535be65f0e2f84e82305d96292be1da353c1427ba1048ea24be70003c4'
             '5f6ccb7b945c8a13c690493723bad816b36f2f25792d47e677b56f8200907e60'
             '890e5d98088ef1c7c075a551442f03385d1db266cad8a65576704a22720683f9'
@@ -174,6 +176,7 @@ declare -gA _system_libs=(
   [openh264]=openh264
   [opus]=opus
   #[re2]=re2          # needs libstdc++
+  [simdutf]=simdutf
   #[snappy]=snappy    # needs libstdc++
   #[woff2]=woff2      # needs libstdc++
   [zlib]=minizip
@@ -240,6 +243,9 @@ prepare() {
   # Fix issue about missing AVX functions
   # Credit: https://github.com/ungoogled-software/ungoogled-chromium/pull/3837
   patch -Np1 -i ../chromium-150-revert-avx-flag-change.patch
+
+  # To unbundle simdutf
+  patch -Np1 -i ../chromium-147-simdutf-8.0-base-char.patch
 
   patch -Np1 -i ../chromium-152-unbundle-minizip-undo-unicode.patch
 
