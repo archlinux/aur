@@ -13,10 +13,8 @@ depends=(qt6-base hicolor-icon-theme)
 makedepends=(git cmake qt6-tools)
 provides=(riipl)
 conflicts=(riipl)
-source=("$pkgname::git+https://github.com/KFERMercer/RiipL.git"
-        "riipl.desktop")
-sha256sums=('SKIP'
-            '97f09da0bc6ebf851c55f391e2e3ecba1040a2a18ceab2c8264c4c1b4998ef99')
+source=("$pkgname::git+https://github.com/KFERMercer/RiipL.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
@@ -29,9 +27,9 @@ build() {
 }
 
 package() {
-  install -Dm755 build/RiipL "$pkgdir/usr/bin/riipl"
+  install -Dm755 build/riipl "$pkgdir/usr/bin/riipl"
   install -Dm644 "$pkgname/resources/icons/app.svg" \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/riipl.svg"
-  install -Dm644 riipl.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "$pkgname/resources/riipl.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "$pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
