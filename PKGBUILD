@@ -2,9 +2,9 @@
 
 # shellcheck disable=SC2164
 
-_pkgver=v0.32.2
+_pkgver=v0.33.0
 pkgver="${_pkgver#v}"
-pkgrel=5
+pkgrel=1
 
 _pkgname=cappa
 pkgname="python-${_pkgname}"
@@ -26,7 +26,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-hatch
 optdepends=('python-docstring-parser')
 
 source=("${_pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
-sha256sums=('7c87af9c905b787691b5a8e53a1ca6d55ec775b964c24473896203e9f6e1df40')
+sha256sums=('990512ffb53015ccf4a2cf90bdc1a667d8f00f0d4bfda65d60d75f9156c93cf0')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
