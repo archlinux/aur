@@ -1,7 +1,7 @@
 # Maintainer: Taha YVR <https://github.com/tahayvr>
 pkgname=omarchist-bin
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="A GUI app for Omarchy Linux."
 arch=('x86_64' 'aarch64')
 url="https://github.com/tahayvr/omarchist"
@@ -27,8 +27,8 @@ options=('!debug')
 source_x86_64=("omarchist-linux-x86_64-${pkgver}.tar.gz::https://github.com/tahayvr/omarchist/releases/download/v${pkgver}/omarchist-linux-x86_64.tar.gz")
 source_aarch64=("omarchist-linux-aarch64-${pkgver}.tar.gz::https://github.com/tahayvr/omarchist/releases/download/v${pkgver}/omarchist-linux-aarch64.tar.gz")
 
-sha256sums_x86_64=('3cf3e7807a615e7e46c257fb2ec82b3693f25274a6a3d12bd7dd90ed4c577a19')
-sha256sums_aarch64=('cf5b7f99c294bd8ca197bd9103df0e0226bfeafb407e9e7480c74f78250ae065')
+sha256sums_x86_64=('22887f3439a0cad0993dce12b2b895c7127a2cfd7cc2a7b5dd77ec3b30df25e8')
+sha256sums_aarch64=('d2cbe91227dcf3e4ff79fa46784aab6aea1e85ff207f3d238b711116400ef362')
 
 package() {
     install -Dm755 omarchist                    "${pkgdir}/usr/bin/omarchist"
