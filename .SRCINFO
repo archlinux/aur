@@ -1,0 +1,28 @@
+pkgbase = gnome-shell-extension-astra-monitor-git
+	pkgdesc = Monitor CPU, GPU, memory, storage, network activity, and sensors in the GNOME panel
+	pkgver = 43.r0.g90decfa
+	pkgrel = 1
+	url = https://github.com/AstraExt/astra-monitor
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = gettext
+	makedepends = git
+	makedepends = typescript>=5.6
+	depends = gnome-shell>=45
+	depends = libadwaita
+	depends = procps-ng
+	optdepends = libgtop: Alternative system monitoring data source
+	optdepends = pciutils: PCI device information
+	optdepends = iw: Wireless network information
+	optdepends = wireless_tools: Alternative wireless network information
+	optdepends = nethogs: Network activity per process
+	optdepends = iotop: Disk activity per process
+	optdepends = amdgpu_top: AMD GPU monitoring
+	optdepends = nvidia-utils: NVIDIA GPU monitoring
+	optdepends = intel-gpu-tools: Intel GPU monitoring
+	provides = gnome-shell-extension-astra-monitor
+	conflicts = gnome-shell-extension-astra-monitor
+	source = astra-monitor::git+https://github.com/AstraExt/astra-monitor.git#branch=main
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-astra-monitor-git
