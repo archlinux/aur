@@ -3937,11 +3937,45 @@ index 00000000..0e9e547d
 +/** @return why a call was classified as dangerous, for the approval prompt. */
 +QString dangerReason(const QString &name, const QJsonObject &arguments);
 +}
+diff --git a/core/CMakeLists.txt b/core/CMakeLists.txt
+index 778c1375..b1ba4f53 100644
+--- a/core/CMakeLists.txt
++++ b/core/CMakeLists.txt
+@@ -10,6 +10,7 @@ target_sources(krdccore PRIVATE
+     remoteviewfactory.cpp
+     remoteview.cpp
+     hostpreferences.cpp
++    smartinvert.cpp
+ )
+ 
+ kconfig_add_kcfg_files(krdccore settings.kcfgc)
+@@ -68,6 +69,7 @@ set(krdccore_HDRS
+     remoteviewfactory.h
+     remoteview.h
+     hostpreferences.h
++    smartinvert.h
+ )
+ 
+ install(FILES ${krdccore_HDRS} DESTINATION ${KDE_INSTALL_INCLUDEDIR}/krdc COMPONENT Devel)
+diff --git a/core/krdc.kcfg b/core/krdc.kcfg
+index 55c7d275..219b4b87 100644
+--- a/core/krdc.kcfg
++++ b/core/krdc.kcfg
+@@ -30,6 +30,9 @@
+     <entry name="GrabAllKeysOnFullscreen" type="Bool">
+       <default>true</default>
+     </entry>
++    <entry name="DarkModeFilter" type="Bool">
++      <default>false</default>
++    </entry>
+     <entry name="BackgroundColor" type="Color">
+       <default>#00417F</default>
+     </entry>
 diff --git a/core/remoteview.cpp b/core/remoteview.cpp
-index bd87d910..097d01ce 100644
+index bd87d910..71fc0f86 100644
 --- a/core/remoteview.cpp
 +++ b/core/remoteview.cpp
-@@ -327,6 +327,68 @@ QUrl RemoteView::url()
+@@ -327,6 +327,74 @@ QUrl RemoteView::url()
      return m_url;
  }
  
@@ -4007,10 +4041,16 @@ index bd87d910..097d01ce 100644
 +    return m_keyboardGrabSuspended;
 +}
 +
++void RemoteView::setDarkModeFilter(bool)
++{
++    // Backends that composite in their own window (or hardware) cannot
++    // intercept the image; the filter is opt-in per software-composited view.
++}
++
  QString RemoteView::readWalletPassword(bool fromUserNameOnly)
  {
      return readWalletPasswordForKey(fromUserNameOnly ? m_url.userName() : m_url.toDisplayString(QUrl::StripTrailingSlash));
-@@ -417,7 +479,7 @@ QCursor RemoteView::localDefaultCursor() const
+@@ -417,7 +485,7 @@ QCursor RemoteView::localDefaultCursor() const
  
  void RemoteView::focusInEvent(QFocusEvent *event)
  {
@@ -4019,7 +4059,7 @@ index bd87d910..097d01ce 100644
          m_keyboardIsGrabbed = true;
          grabKeyboard();
      }
-@@ -475,6 +537,14 @@ bool RemoteView::event(QEvent *event)
+@@ -475,6 +543,14 @@ bool RemoteView::event(QEvent *event)
      case QEvent::MouseButtonPress:
      case QEvent::MouseButtonRelease:
      case QEvent::MouseMove:
@@ -4035,10 +4075,10 @@ index bd87d910..097d01ce 100644
          return true;
          break;
 diff --git a/core/remoteview.h b/core/remoteview.h
-index a988f504..94b8a1d7 100644
+index a988f504..1620f348 100644
 --- a/core/remoteview.h
 +++ b/core/remoteview.h
-@@ -291,6 +291,66 @@ public:
+@@ -291,6 +291,79 @@ public:
       */
      QUrl url();
  
@@ -4102,10 +4142,23 @@ index a988f504..94b8a1d7 100644
 +    void setKeyboardGrabSuspended(bool suspended);
 +    bool keyboardGrabSuspended() const;
 +
++    // ------------------------------------------------------------------
++    // Dark mode filter
++    // ------------------------------------------------------------------
++
++    /**
++     * Enables or disables a client-side dark mode filter over the displayed
++     * image: light window chrome is recolored to a dark scheme while photo
++     * and video content keeps its colors (see SmartInvert). Nothing is sent
++     * to the remote machine. Backends that do not render in software ignore
++     * this.
++     */
++    virtual void setDarkModeFilter(bool enabled);
++
  public Q_SLOTS:
      /**
       * Called to enable or disable scaling.
-@@ -473,6 +533,7 @@ protected:
+@@ -473,6 +546,7 @@ protected:
      int m_port;
      bool m_viewOnly;
      bool m_grabAllKeys;
@@ -4113,20 +4166,204 @@ index a988f504..94b8a1d7 100644
      bool m_scale;
      bool m_keyboardIsGrabbed;
      QUrl m_url;
+diff --git a/core/smartinvert.cpp b/core/smartinvert.cpp
+new file mode 100644
+index 00000000..77cb5e3c
+--- /dev/null
++++ b/core/smartinvert.cpp
+@@ -0,0 +1,127 @@
++// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
++// SPDX-License-Identifier: GPL-2.0-or-later
++
++#include "smartinvert.h"
++
++#include <algorithm>
++#include <array>
++#include <cstring>
++
++namespace {
++/**
++ * Brightness curve for the light-to-dark remap: v -> 225 - 3v/4.
++ *
++ * White (255) becomes dark grey (34), near-black text (20) becomes light grey
++ * (210), and mid greys stay close to themselves (the curve crosses the identity
++ * at 128.5). It is continuous and monotone, so antialiased text edges - where
++ * background and text greys meet in half-tones - stay smooth instead of
++ * gaining halos. The output range stops short of pure black and pure white to
++ * keep the low-contrast, easy-on-the-eyes feel of real dark themes.
++ */
++constexpr std::array<int, 256> buildCurve()
++{
++    std::array<int, 256> curve{};
++    for (int v = 0; v < 256; ++v) {
++        curve[v] = 225 - (v * 3) / 4;
++    }
++    return curve;
++}
++
++constexpr auto s_curve = buildCurve();
++
++// Pixels with saturation below this are treated as window chrome and fully
++// recolored; above that they fade to untouched. The ramp between the two is
++// where photos with muted palettes and colorful icons land: the higher the
++// saturation, the less the filter touches them.
++constexpr int s_satKeep = 40;
++constexpr int s_satKeepRange = 60;
++}
++
++namespace SmartInvert
++{
++int medianLuma(const QImage &image)
++{
++    if (image.isNull()) {
++        return 0;
++    }
++
++    // A 256-bin histogram on a subsample: full precision is not needed to
++    // tell "mostly light" from "mostly dark", and this stays under a
++    // millisecond even at 4K.
++    std::array<int, 256> histogram{};
++    int samples = 0;
++
++    const int stepX = std::max(1, image.width() / 256);
++    const int stepY = std::max(1, image.height() / 256);
++
++    for (int y = 0; y < image.height(); y += stepY) {
++        const QRgb *line = reinterpret_cast<const QRgb *>(image.constScanLine(y));
++        for (int x = 0; x < image.width(); x += stepX) {
++            const QRgb c = line[x];
++            // Integer Rec. 601 luma.
++            const int luma = (qRed(c) * 77 + qGreen(c) * 150 + qBlue(c) * 29) >> 8;
++            ++histogram[luma];
++            ++samples;
++        }
++    }
++
++    if (samples == 0) {
++        return 0;
++    }
++
++    int half = samples / 2;
++    for (int v = 0; v < 256; ++v) {
++        half -= histogram[v];
++        if (half < 0) {
++            return v;
++        }
++    }
++    return 255;
++}
++
++void apply(QImage &image)
++{
++    if (image.isNull() || image.format() != QImage::Format_RGB32) {
++        // The RDP framebuffer is RGB32; anything else is passed through
++        // untouched rather than converted behind the caller's back.
++        return;
++    }
++
++    for (int y = 0; y < image.height(); ++y) {
++        QRgb *line = reinterpret_cast<QRgb *>(image.scanLine(y));
++        for (int x = 0; x < image.width(); ++x) {
++            const QRgb c = line[x];
++            const int r = qRed(c);
++            const int g = qGreen(c);
++            const int b = qBlue(c);
++
++            const int mx = std::max(r, std::max(g, b));
++            const int mn = std::min(r, std::min(g, b));
++            const int value = (mx + mn) / 2;
++            const int saturation = mx == 0 ? 0 : (mx - mn) * 255 / mx;
++
++            // How much of the original pixel survives: 0 for grey chrome
++            // (fully recolored), 255 for saturated content (untouched).
++            const int keep = std::clamp((saturation - s_satKeep) * 255 / s_satKeepRange, 0, 255);
++            if (keep == 255) {
++                continue;
++            }
++
++            const int recolored = s_curve[value];
++            const int blended = (keep == 0) ? recolored : (recolored * (255 - keep) + value * keep) / 255;
++
++            // Grey chrome stays grey; partially saturated pixels keep a
++            // fraction of their channels, which desaturates them towards the
++            // recolored brightness instead of shifting their hue.
++            if (keep == 0) {
++                line[x] = qRgb(blended, blended, blended);
++            } else {
++                const int blendR = (recolored * (255 - keep) + r * keep) / 255;
++                const int blendG = (recolored * (255 - keep) + g * keep) / 255;
++                const int blendB = (recolored * (255 - keep) + b * keep) / 255;
++                line[x] = qRgb(blendR, blendG, blendB);
++            }
++        }
++    }
++}
++}
+diff --git a/core/smartinvert.h b/core/smartinvert.h
+new file mode 100644
+index 00000000..2a12b1ed
+--- /dev/null
++++ b/core/smartinvert.h
+@@ -0,0 +1,44 @@
++// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
++// SPDX-License-Identifier: GPL-2.0-or-later
++
++#pragma once
++
++#include "krdccore_export.h"
++
++#include <QImage>
++
++/**
++ * A client-side "smart invert" that recolors light application windows to a
++ * dark scheme without inverting the whole screen.
++ *
++ * The filter works on the pixels that look like window chrome - near-white
++ * backgrounds, grey panels and near-black text - and remaps their brightness
++ * through a light-to-dark curve. Pixels with saturated color (photo content,
++ * colorful icons, syntax highlighting) are kept untouched, so pictures keep
++ * looking like pictures. Unlike naive full inversion, this makes a white File
++ * Explorer look like a dark-mode window while leaving images and videos alone.
++ *
++ * It cannot tell a white window background from a white document page: both
++ * are flat white pixels. Only the remote OS itself knows that difference, so
++ * for perfect results the remote should use its native dark mode; this filter
++ * is for the apps and operating systems that do not have one.
++ *
++ * medianLuma() supports an auto-bias: a screen whose median brightness shows
++ * a light theme is filtered, one that is already dark (native dark mode, or
++ * full-screen video) is passed through untouched.
++ */
++namespace SmartInvert
++{
++/**
++ * Median luminance (0-255) of the image, estimated on a subsample.
++ * Above ~150 the screen reads as a light theme, below ~110 as a dark one.
++ */
++KRDCCORE_EXPORT int medianLuma(const QImage &image);
++
++/**
++ * Recolor the image in place. Low-saturation pixels have their brightness
++ * mapped through a smooth, monotone light-to-dark curve; saturated pixels are
++ * preserved. Expects Format_RGB32; other formats are left unchanged.
++ */
++KRDCCORE_EXPORT void apply(QImage &image);
++}
 diff --git a/krdcui.rc b/krdcui.rc
-index 8dbfd755..01d6bfbf 100644
+index 8dbfd755..9928190d 100644
 --- a/krdcui.rc
 +++ b/krdcui.rc
-@@ -18,6 +18,7 @@
+@@ -18,6 +18,8 @@
      <Action name="bookmark" />
      <Menu name="settings">
          <Action name="remote_desktop_dockwidget" />
 +        <Action name="ai_assistant" />
++        <Action name="dark_mode_filter" />
      </Menu>
  </MenuBar>
  <ToolBar fullWidth="false" name="krdc_remote_view_toolbar" newline="false"><text>Remote View Toolbar</text>
 diff --git a/mainwindow.cpp b/mainwindow.cpp
-index aff87fa6..22959cd1 100644
+index aff87fa6..380dc33b 100644
 --- a/mainwindow.cpp
 +++ b/mainwindow.cpp
 @@ -7,6 +7,9 @@
@@ -4149,7 +4386,7 @@ index aff87fa6..22959cd1 100644
  #include <QClipboard>
  #include <QDockWidget>
  #include <QFontMetrics>
-@@ -100,6 +106,17 @@ MainWindow::MainWindow(QWidget *parent)
+@@ -100,8 +106,35 @@ MainWindow::MainWindow(QWidget *parent)
  
      createDockWidget();
  
@@ -4166,8 +4403,26 @@ index aff87fa6..22959cd1 100644
 +
      setupGUI(ToolBar | Keys | Save | Create);
  
++    // Client-side dark mode filter for remote windows that have no dark
++    // theme of their own (Settings menu -> Dark Mode Filter). The filter
++    // recolors light window chrome to dark in the viewer only; see
++    // SmartInvert.
++    QAction *darkFilterAction = actionCollection()->addAction(QStringLiteral("dark_mode_filter"));
++    darkFilterAction->setText(i18n("Dark Mode Filter"));
++    darkFilterAction->setCheckable(true);
++    darkFilterAction->setChecked(Settings::darkModeFilter());
++    darkFilterAction->setToolTip(i18n("Recolor light remote windows to a dark scheme, keeping photo and video content intact"));
++    connect(darkFilterAction, &QAction::toggled, this, [this](bool enabled) {
++        Settings::setDarkModeFilter(enabled);
++        for (RemoteView *view : std::as_const(m_remoteViewMap)) {
++            view->setDarkModeFilter(enabled);
++        }
++    });
++
      connect(m_tabWidget, &QTabWidget::currentChanged, this, &MainWindow::tabChanged);
-@@ -209,6 +226,22 @@ void MainWindow::setupActions()
+ 
+     if (Settings::showStatusBar())
+@@ -209,6 +242,22 @@ void MainWindow::setupActions()
  
  void MainWindow::loadAllPlugins()
  {
@@ -4190,7 +4445,15 @@ index aff87fa6..22959cd1 100644
      const QVector<KPluginMetaData> offers = KPluginMetaData::findPlugins(QStringLiteral("krdc"));
      const KConfigGroup conf = KSharedConfig::openConfig()->group(QStringLiteral("Plugins"));
  
-@@ -543,6 +576,11 @@ void MainWindow::applyFullscreenState(bool fullscreen)
+@@ -347,6 +396,7 @@ void MainWindow::newConnection(const QUrl &newUrl, bool switchFullscreenWhenConn
+         m_tabWidget->addTab(scrollArea, QIcon::fromTheme(QStringLiteral("krdc")), tabName.isEmpty() ? url.toDisplayString(QUrl::StripTrailingSlash) : tabName);
+     m_tabWidget->setCurrentIndex(newIndex);
+     m_remoteViewMap.insert(m_tabWidget->widget(newIndex), view);
++    view->setDarkModeFilter(Settings::darkModeFilter());
+     tabChanged(newIndex); // force to update m_currentRemoteView (tabChanged is not emitted when start page has been disabled)
+ 
+     view->start();
+@@ -543,6 +593,11 @@ void MainWindow::applyFullscreenState(bool fullscreen)
          m_savedGrabStatesBeforeFullscreen.clear();
  
          m_remoteDesktopsDockWidget->setVisible(m_guiItemsState.dockWidget);
@@ -4202,7 +4465,7 @@ index aff87fa6..22959cd1 100644
          menuBar()->setVisible(m_guiItemsState.menuBar);
          statusBar()->setVisible(m_guiItemsState.statusBar);
          toolBars().first()->setVisible(m_guiItemsState.toolBar);
-@@ -575,7 +613,12 @@ void MainWindow::applyFullscreenState(bool fullscreen)
+@@ -575,7 +630,12 @@ void MainWindow::applyFullscreenState(bool fullscreen)
          m_guiItemsState = {.dockWidget = !m_remoteDesktopsDockWidget->isHidden(),
                             .menuBar = !menuBar()->isHidden(),
                             .statusBar = !statusBar()->isHidden(),
@@ -4216,7 +4479,7 @@ index aff87fa6..22959cd1 100644
  
          // Keep the group while autosaving is disabled: autoSaveConfigGroup()
          // returns an invalid group until autosaving is enabled again.
-@@ -586,6 +629,9 @@ void MainWindow::applyFullscreenState(bool fullscreen)
+@@ -586,6 +646,9 @@ void MainWindow::applyFullscreenState(bool fullscreen)
          }
  
          m_remoteDesktopsDockWidget->setVisible(false);
@@ -4226,7 +4489,7 @@ index aff87fa6..22959cd1 100644
          menuBar()->setVisible(false);
          statusBar()->setVisible(false);
          toolBars().first()->setVisible(false);
-@@ -676,6 +722,9 @@ void MainWindow::disconnectHost()
+@@ -676,6 +739,9 @@ void MainWindow::disconnectHost()
      m_remoteViewMap.remove(widgetToDelete);
      m_savedGrabStatesBeforeFullscreen.remove(view);
  
@@ -4236,7 +4499,7 @@ index aff87fa6..22959cd1 100644
      saveHostPrefs(view);
      view->startQuitting(); // some deconstructors can't properly quit, so quit early
      m_tabWidget->removePage(widgetToDelete);
-@@ -706,6 +755,9 @@ void MainWindow::closeTab(int index)
+@@ -706,6 +772,9 @@ void MainWindow::closeTab(int index)
              return;
          }
          m_savedGrabStatesBeforeFullscreen.remove(view);
@@ -4246,7 +4509,7 @@ index aff87fa6..22959cd1 100644
          view->startQuitting();
          widget->deleteLater();
      }
-@@ -1284,6 +1336,12 @@ void MainWindow::tabChanged(int index)
+@@ -1284,6 +1353,12 @@ void MainWindow::tabChanged(int index)
      const QString tabTitle = m_tabWidget->tabText(index).remove(QLatin1Char('&'));
      setCaption(tabTitle == i18n("New Connection") ? QString() : tabTitle);
  
@@ -4926,10 +5189,21 @@ index 807a04fa..6e7fc6c4 100644
      void initializeDisplay(RdpContext *krdp, DispClientContext *disp);
      void destroyClipboard();
 diff --git a/rdp/rdpview.cpp b/rdp/rdpview.cpp
-index 90dd3a0e..7c598020 100644
+index 90dd3a0e..29e2f869 100644
 --- a/rdp/rdpview.cpp
 +++ b/rdp/rdpview.cpp
-@@ -403,6 +403,52 @@ QPixmap RdpView::takeScreenshot()
+@@ -10,8 +10,10 @@
+ 
+ #include "krdc_debug.h"
+ #include "rdpcursor.h"
++#include "smartinvert.h"
+ 
+ #include <algorithm>
++#include <cstring>
+ 
+ #include <KMessageDialog>
+ #include <KPasswordDialog>
+@@ -403,6 +405,52 @@ QPixmap RdpView::takeScreenshot()
      return QPixmap{};
  }
  
@@ -4982,11 +5256,99 @@ index 90dd3a0e..7c598020 100644
  bool RdpView::supportsScaling() const
  {
      return true;
+@@ -572,16 +620,23 @@ void RdpView::paintEvent(QPaintEvent *event)
+ 
+     const auto &image = *m_session->videoBuffer();
+ 
++    // Paint the recolored copy when the dark mode filter is engaged; the raw
++    // video buffer stays untouched for screenshots and the AI assistant.
++    const QImage *source = &image;
++    if (m_darkFilterEnabled && updateDarkFilter(image)) {
++        source = &m_displayBuffer;
++    }
++
+     if (!m_fullscreenMonitorRect.isEmpty()) {
+-        const QRect sourceRect = m_fullscreenMonitorRect.intersected(image.rect());
++        const QRect sourceRect = m_fullscreenMonitorRect.intersected(source->rect());
+         if (!sourceRect.isEmpty()) {
+-            painter.drawImage(rect(), image, sourceRect);
++            painter.drawImage(rect(), *source, sourceRect);
+         }
+         painter.end();
+         return;
+     }
+ 
+-    auto scaledImage = image;
++    auto scaledImage = *source;
+     const qreal outputScale = m_session->outputScale();
+     scaledImage.setDevicePixelRatio(outputScale);
+ 
+@@ -593,6 +648,52 @@ void RdpView::paintEvent(QPaintEvent *event)
+     painter.end();
+ }
+ 
++void RdpView::setDarkModeFilter(bool enabled)
++{
++    if (m_darkFilterEnabled == enabled) {
++        return;
++    }
++    m_darkFilterEnabled = enabled;
++    m_darkFilterActive = false;
++    // Force a fresh light/dark reading on the next paint (m_updateSequence
++    // only ever grows, so -1 never matches it).
++    m_displaySequence = -1;
++    update();
++}
++
++bool RdpView::updateDarkFilter(const QImage &image)
++{
++    if (m_displaySequence == m_updateSequence) {
++        // The video buffer has not changed since the last paint; the
++        // m_displayBuffer built for this sequence is still current.
++        return m_darkFilterActive;
++    }
++    m_displaySequence = m_updateSequence;
++
++    const int median = SmartInvert::medianLuma(image);
++    // Hysteresis: engage on a clearly light screen, disengage on a clearly
++    // dark one, and hold the decision in between so a screen that is half
++    // dark window / half light window does not flicker.
++    if (median > 150) {
++        m_darkFilterActive = true;
++    } else if (median < 110) {
++        m_darkFilterActive = false;
++    }
++
++    if (!m_darkFilterActive) {
++        return false;
++    }
++
++    if (m_displayBuffer.size() != image.size() || m_displayBuffer.format() != QImage::Format_RGB32) {
++        m_displayBuffer = QImage(image.size(), QImage::Format_RGB32);
++    }
++    for (int y = 0; y < image.height(); ++y) {
++        memcpy(m_displayBuffer.scanLine(y), image.constScanLine(y), image.bytesPerLine());
++    }
++    SmartInvert::apply(m_displayBuffer);
++    return true;
++}
++
+ void RdpView::handleKeyEvent(QKeyEvent *event)
+ {
+     if (m_session) {
+@@ -624,6 +725,7 @@ void RdpView::handleWheelEvent(QWheelEvent *event)
+ 
+ void RdpView::onRectangleUpdated(const QRect &remoteRect, const QSize &remoteSize)
+ {
++    ++m_updateSequence;
+     if (!m_fullscreenMonitorRect.isEmpty()) {
+         const QRect intersection = remoteRect.intersected(m_fullscreenMonitorRect);
+         if (intersection.isEmpty()) {
 diff --git a/rdp/rdpview.h b/rdp/rdpview.h
-index da117287..944423cb 100644
+index da117287..02dfdb7a 100644
 --- a/rdp/rdpview.h
 +++ b/rdp/rdpview.h
-@@ -60,6 +60,13 @@ public:
+@@ -60,6 +60,14 @@ public:
  
      QPixmap takeScreenshot() override;
  
@@ -4996,10 +5358,30 @@ index da117287..944423cb 100644
 +    void aiMouseWheel(const QPoint &pos, const QPoint &angleDelta) override;
 +    void aiKeyPress(int key, Qt::KeyboardModifiers modifiers, bool pressed) override;
 +    bool aiTypeText(const QString &text) override;
++    void setDarkModeFilter(bool enabled) override;
 +
      void savePassword(const QString &password);
  
  public Q_SLOTS:
+@@ -90,6 +98,18 @@ private:
+     void handleError(unsigned int error);
+     void updateRemoteCursor();
+ 
++    // Dark mode filter: the video buffer is kept raw (it is also what the AI
++    // assistant screenshots); m_displayBuffer holds the recolored copy that
++    // is painted, rebuilt when the session reports new updates. The
++    // light/dark decision has hysteresis so a mostly dark screen (native dark
++    // mode, full screen video) passes through untouched instead of flickering.
++    bool updateDarkFilter(const QImage &image);
++    QImage m_displayBuffer;
++    qint64 m_updateSequence = 0;
++    qint64 m_displaySequence = -1;
++    bool m_darkFilterEnabled = false;
++    bool m_darkFilterActive = false;
++
+     QString m_name;
+     QString m_user;
+     QString m_domain;
 diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
 index 1600b660..4fcfc2a4 100644
 --- a/test/CMakeLists.txt
@@ -5052,10 +5434,10 @@ index 1600b660..4fcfc2a4 100644
  endif()
 diff --git a/test/aiengine_test.cpp b/test/aiengine_test.cpp
 new file mode 100644
-index 00000000..716169cd
+index 00000000..1daf4613
 --- /dev/null
 +++ b/test/aiengine_test.cpp
-@@ -0,0 +1,436 @@
+@@ -0,0 +1,499 @@
 +/*
 +    Standalone test for the AI conversation engine. Not built by default; see
 +    test_ai.sh. Drives AiConversation against a mock OpenAI-compatible server
@@ -5068,6 +5450,7 @@ index 00000000..716169cd
 +#include "ai/aitext.h"
 +#include "ai/aitools.h"
 +#include "ai/aikeys.h"
++#include "core/smartinvert.h"
 +
 +#include <KLocalizedString>
 +
@@ -5194,6 +5577,67 @@ index 00000000..716169cd
 +    const QString asked = AiText::after(i18n("Asking for models from"), url);
 +    check(!asked.contains(QStringLiteral("ARGUMENT_MISSING")), "a percent-escaped url does not trip the scan either");
 +    check(asked.contains(url), "the url survives verbatim");
++}
++
++// The dark mode filter must darken flat light chrome, lighten dark text,
++// leave saturated content alone, and read the overall theme correctly.
++static void testSmartInvert()
++{
++    QImage img(64, 64, QImage::Format_RGB32);
++    img.fill(Qt::white);
++    for (int x = 4; x < 20; ++x) {
++        for (int y = 4; y < 10; ++y) {
++            img.setPixel(x, y, qRgb(20, 20, 20));
++        }
++    }
++    for (int x = 30; x < 46; ++x) {
++        for (int y = 30; y < 46; ++y) {
++            img.setPixel(x, y, qRgb(225, 30, 40));
++        }
++    }
++
++    check(SmartInvert::medianLuma(img) > 150, "a white window with text and an icon reads as a light theme");
++
++    SmartInvert::apply(img);
++    const QRgb background = img.pixel(60, 60);
++    check(qRed(background) < 70 && qGreen(background) < 70 && qBlue(background) < 70, "the white background becomes dark");
++    const QRgb text = img.pixel(10, 6);
++    check(qRed(text) > 170 && qGreen(text) > 170 && qBlue(text) > 170, "the dark text becomes light");
++    const QRgb icon = img.pixel(38, 38);
++    check(qRed(icon) > 180 && qGreen(icon) < 90 && qBlue(icon) < 90, "the saturated red icon keeps its color");
++
++    // Antialiased edges are grey ramps; a smooth monotone curve keeps them
++    // smooth (no banding or halos around text).
++    QImage ramp(256, 1, QImage::Format_RGB32);
++    for (int v = 0; v < 256; ++v) {
++        ramp.setPixel(v, 0, qRgb(v, v, v));
++    }
++    SmartInvert::apply(ramp);
++    bool smooth = true;
++    int previous = qRed(ramp.pixel(0, 0));
++    for (int v = 1; v < 256; ++v) {
++        const int out = qRed(ramp.pixel(v, 0));
++        if (out > previous + 1) {
++            smooth = false;
++        }
++        previous = out;
++    }
++    check(smooth, "the grey curve is monotone and step-free");
++    check(qRed(ramp.pixel(255, 0)) < qRed(ramp.pixel(0, 0)), "light greys end up darker than dark greys");
++
++    QImage dark(64, 64, QImage::Format_RGB32);
++    dark.fill(QColor(30, 32, 35));
++    check(SmartInvert::medianLuma(dark) < 110, "a native dark window reads as dark (filter will pass it through)");
++
++    QImage photo(64, 64, QImage::Format_RGB32);
++    for (int y = 0; y < 64; ++y) {
++        for (int x = 0; x < 64; ++x) {
++            photo.setPixel(x, y, qRgb(40 + x * 3, 90 + y, 200 - x));
++        }
++    }
++    const QRgb before = photo.pixel(10, 10);
++    SmartInvert::apply(photo);
++    check(qRed(photo.pixel(10, 10)) == qRed(before), "saturated photo pixels are untouched");
 +}
 +
 +static void testUrlDerivation()
@@ -5476,6 +5920,7 @@ index 00000000..716169cd
 +
 +    testUrlDerivation();
 +    testUntrustedTextInLabels();
++    testSmartInvert();
 +    testRiskClassification();
 +    testKeyNames();
 +    testApprovalLoop(config);
