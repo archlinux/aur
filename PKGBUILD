@@ -1,7 +1,7 @@
 # Maintainer: Christopher Patrick Fair <christopherpatrickfair@gmail.com>
 
 pkgname=aifreeyoutube
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Authentic human video portal filtering out AI slop, clickbait mills, and bots on YouTube"
 arch=('x86_64')
@@ -22,7 +22,7 @@ provides=('aifreeyoutube')
 conflicts=('aifreeyoutube')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chrisfair/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('98ab559835efcf6db1f3e2a1ea1a549cccb3cd3b91c7c14d38bff322c3ba22af')
+sha256sums=('384b63d9a5483cdb8fbfcf7d84907cfae9b5ae08a629bda46306b4afbfb95191')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}/frontend"
