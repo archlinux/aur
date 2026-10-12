@@ -1,6 +1,6 @@
 pkgbase = gajae-code-bin
 	pkgdesc = External coding-agent harness with deep-interview, ralplan, and ultragoal workflows (prebuilt binary)
-	pkgver = 0.18.9
+	pkgver = 0.18.10
 	pkgrel = 1
 	url = https://github.com/Yeachan-Heo/gajae-code
 	arch = x86_64
@@ -9,20 +9,20 @@ pkgbase = gajae-code-bin
 	depends = glibc
 	optdepends = tmux: tmux-backed leader sessions and team workers
 	optdepends = git: workflow integration and worktree isolation
-	provides = gajae-code=0.18.9
+	provides = gajae-code=0.18.10
 	provides = gjc
 	conflicts = gajae-code
 	conflicts = gjc
 	options = !strip
 	options = !debug
 	options = !lto
-	source = gajae-code-bin-0.18.9-LICENSE::https://raw.githubusercontent.com/Yeachan-Heo/gajae-code/v0.18.9/LICENSE
-	source = gajae-code-bin-0.18.9-NOTICE.md::https://raw.githubusercontent.com/Yeachan-Heo/gajae-code/v0.18.9/NOTICE.md
+	source = gajae-code-bin-0.18.10-LICENSE::https://raw.githubusercontent.com/Yeachan-Heo/gajae-code/v0.18.10/LICENSE
+	source = gajae-code-bin-0.18.10-NOTICE.md::https://raw.githubusercontent.com/Yeachan-Heo/gajae-code/v0.18.10/NOTICE.md
 	sha256sums = a6625a82edf7b97e90ccd713c16fc6a3cee8cd8978752b638b34a488154cb0f1
 	sha256sums = 6cafdd23a28e415958177fd7948a3c27ef59ce0ff062e18c88409bebea1ccddd
-	source_x86_64 = gajae-code-bin-0.18.9-x86_64::https://github.com/Yeachan-Heo/gajae-code/releases/download/v0.18.9/gjc-linux-x64
-	sha256sums_x86_64 = 69ff890997125c150694f121292497482351df8eacca9d2623f87eacc13dc35d
-	source_aarch64 = gajae-code-bin-0.18.9-aarch64::https://github.com/Yeachan-Heo/gajae-code/releases/download/v0.18.9/gjc-linux-arm64
-	sha256sums_aarch64 = a9c85a297ad6ebd5327669b47b3bd6529f04f5ba76f5db6c146b38101197b4c8
+	source_x86_64 = gajae-code-bin-0.18.10-x86_64::https://github.com/Yeachan-Heo/gajae-code/releases/download/v0.18.10/gjc-linux-x64
+	sha256sums_x86_64 = 54556cada0c685922c83ccd930e52314677ef43de254bcf53393e79c9c822ae4
+	source_aarch64 = gajae-code-bin-0.18.10-aarch64::https://github.com/Yeachan-Heo/gajae-code/releases/download/v0.18.10/gjc-linux-arm64
+	sha256sums_aarch64 = 2dbc24dc26c3825e284494c61fdfc8c5f2820a96ede48c8e59535bdf20fba4ef
 
 pkgname = gajae-code-bin
