@@ -1,13 +1,13 @@
 # Maintainer: Philipp Wagner <philipp@wagnersnetz.de>
 pkgname=kst4contest-git
-pkgver=1.50.0.r333.g7b44eb0c
+pkgver=1.50.0.r334.gdd9f87a7
 pkgrel=1
 pkgdesc="ON4KST Chat Client for VHF/UHF contest operation (git)"
 arch=('x86_64')
 url="https://github.com/praktimarc/kst4contest"
 license=('GPL-3.0-only')
 depends=('gst-plugins-base' 'gst-plugins-good')
-makedepends=('java-environment=21' 'gradle' 'git')
+makedepends=('java-environment=21' 'git')
 provides=('kst4contest')
 conflicts=('kst4contest' 'kst4contest-bin')
 source=("kst4contest::git+https://github.com/praktimarc/kst4contest.git")
@@ -26,7 +26,12 @@ build() {
     export JAVA_HOME=$(find /usr/lib/jvm -maxdepth 1 -name 'java-21-*' -type d | head -n 1)
     export PATH="${JAVA_HOME}/bin:${PATH}"
 
-    ./gradlew --offline -S :app-desktop:createDistributable
+    # A Gradle home inside $srcdir keeps the build independent of whatever the
+    # builder's ~/.gradle happens to hold: with --offline against the personal
+    # cache, every dependency added since the last local build broke the package.
+    export GRADLE_USER_HOME="${srcdir}/gradle-home"
+
+    ./gradlew --no-daemon -S :app-desktop:createDistributable
 
     # package() reads dist/KST4Contest. Application name, icon and the JDK
     # module list come from app-desktop/build.gradle.kts.
