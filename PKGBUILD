@@ -8,7 +8,7 @@
 _name=Rack
 pkgname=vcvrack
 pkgver=2.6.6
-pkgrel=3
+pkgrel=4
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
 license=(LicenseRef-custom GPL-3.0-or-later)
@@ -17,7 +17,7 @@ _plugin_name=Fundamental
 _plugin_ver=2.6.4
 _plugin_pkg=vcvrack-free
 _libsamplerate_ver=0.1.9
-depends=(glfw jansson nanosvg)
+depends=(glfw jansson)
 makedepends=(alsa-lib autoconf cmake curl ghc-filesystem git glew jack jq libarchive libpulse
   libxrandr openssl rtmidi simde speexdsp zstd)
 provides=("$_plugin_pkg=$_plugin_ver" vcvrack-sdk)
@@ -26,6 +26,7 @@ source=(
   "git+https://github.com/VCVRack/$_name#tag=v$pkgver"
   'git+https://bitbucket.org/j_norberg/fuzzysearchdatabase'
   'git+https://github.com/VCVRack/nanovg'
+  'git+https://github.com/memononen/nanosvg'
   'git+https://github.com/AndrewBelt/osdialog'
   'git+https://github.com/VCVRack/oui-blendish'
   'git+https://bitbucket.org/jpommier/pffft'
@@ -51,6 +52,7 @@ sha256sums=('e949a2e0a6d748c1ef038619506cd37c855828b4172f976c68c71ed23325c3ac'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             'c80f10c74848d15d9499ff602ba1b10fcfc77d87f5f578ecc4378590ef533b87'
             'd932eb4a698a968e40261d395ef4513ef0493f3797c3e49198c86bf9cda3b0fb'
             '9c981aabae8f93d09cf94aeaf904b8855abe9a94e30b32cbb6f77b00c460e3d7'
@@ -66,7 +68,7 @@ sha256sums=('e949a2e0a6d748c1ef038619506cd37c855828b4172f976c68c71ed23325c3ac'
 prepare() {
   cd $_name
   # setup submodules
-  for _module in fuzzysearchdatabase nanovg osdialog oui-blendish pffft rtaudio tinyexpr; do
+  for _module in fuzzysearchdatabase nanovg nanosvg osdialog oui-blendish pffft rtaudio tinyexpr; do
     git submodule init dep/$_module
     git config submodule.dep/$_module.url "$srcdir"/$_module
   done
@@ -92,7 +94,7 @@ build() {
   autoreconf -f -i dep/libsamplerate-$_libsamplerate_ver
   _static_deps=(lib/lib{rtaudio,samplerate}.a)
   make -C dep ${_static_deps[@]} \
-    include/{nanovg.h,blendish.h,osdialog.h,pffft.h,tinyexpr.h,FuzzySearchDatabase.hpp}
+    include/{nanovg.h,nanosvg.h,blendish.h,osdialog.h,pffft.h,tinyexpr.h,FuzzySearchDatabase.hpp}
 
   # build Rack
   _ldflags=(-Wl,--whole-archive -static-libstdc++ ${_static_deps[@]/#/dep/}
@@ -101,7 +103,6 @@ build() {
       speexdsp rtmidi alsa jack libpulse libpulse-simple)
   )
   make LDFLAGS+="${_ldflags[*]}" \
-    EXTRA_CXXFLAGS="-I/usr/include/nanosvg" \
     STANDALONE_LDFLAGS="$LDFLAGS"
 
   # build plugin
