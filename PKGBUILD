@@ -17,7 +17,7 @@ source=("${_pkgname}::git+https://github.com/CasparCG/server.git"
         "casparcg.tmpfiles")
 sha256sums=('SKIP'
             'e34e0bbeb6db378b1e074948c4fe62030b1e925a4398ac6a468209d58b54a450'
-            '83232196dc20d51cae93c7bbd3a0fd2ecf550035762f9438141926604c8ff8ac'
+            'a2b071eab6df874d6386e7ae0d1bf0f82e6af5b1645cc009146c6eb2e1fa9fff'
             'b33b6b6ead820ae17460d660b7d6953e483012cbfe0b9614ee04ffe396d3515c'
             'aeebd9644b5198d085b18b1ddbd907a27cda6f78abfb428f379d53e78de5d73a')
 

@@ -7,6 +7,7 @@ Wants=network-online.target
 Type=simple
 User=casparcg
 Group=casparcg
+Environment=EGL_PLATFORM=surfaceless
 WorkingDirectory=/opt/casparcg         
 ExecStart=/usr/bin/casparcg-server
 Restart=on-failure
