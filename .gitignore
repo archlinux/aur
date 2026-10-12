@@ -1,0 +1,16 @@
+# A packaging repo holds PKGBUILD, .SRCINFO and install/patch files. Nothing
+# else. This tree had the entire build directory committed -- 14 source
+# tarballs, makepkg's extracted src/ and staged pkg/, and the built package --
+# which is both pointless history and why the first AUR push was rejected
+# outright (maximum blob size 488.28KiB).
+#
+# src/ also carried models/yolov8n.onnx: the detector weights the rest of the
+# fleet deliberately does not track, because Ultralytics' weight licensing is
+# unresolved. They must not ride along in a packaging repo either.
+*.tar.gz
+*.tar.zst
+*.pkg.tar.*
+src/
+pkg/
+*.bak
+*.bak[0-9]
