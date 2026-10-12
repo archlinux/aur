@@ -1,12 +1,12 @@
 pkgbase = peersky-browser
-	pkgdesc = A minimal local-first p2p web browser: access, communicate, and publish offline.
-	pkgver = 1.0.0_beta.29
+	pkgdesc = A local-first, peer-to-peer web browser for a surveillance-free internet.
+	pkgver = 1.0.0_beta.30
 	pkgrel = 1
 	url = https://peersky.p2plabs.xyz/
-	arch = any
+	arch = aarch64
+	arch = x86_64
 	license = MIT
 	makedepends = npm
-	makedepends = pnpm
 	makedepends = gendesk
 	makedepends = nvm
 	makedepends = git
@@ -15,9 +15,9 @@ pkgbase = peersky-browser
 	conflicts = peersky-browser
 	options = !emptydirs
 	options = !strip
-	source = peersky-browser-1.0.0_beta.29::git+https://github.com/p2plabsxyz/peersky-browser/#tag=v1.0.0-beta.29
+	source = peersky-browser-1.0.0_beta.30.tar.gz::https://github.com/p2plabsxyz/peersky-browser/archive/refs/tags/v1.0.0-beta.30.tar.gz
 	source = peersky-browser.sh
-	sha256sums = d045c52fed3db5b9725e708f325199366429d1aa48d9397a97b2fc253f7cbb70
-	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
+	sha256sums = c9b9ef1b3392b1f50029f54b3a5303406d901293a969bdb456a16a2c21bafa57
+	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
 
 pkgname = peersky-browser

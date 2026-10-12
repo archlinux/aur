@@ -1,12 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=peersky-browser
 _pkgname='Peersky Browser'
-pkgver=1.0.0_beta.29
+_mainver=1.0.0
+_subver=beta.30
+pkgver="${_mainver}_${_subver}"
 _electronversion=43
 _nodeversion=24
 pkgrel=1
-pkgdesc="A minimal local-first p2p web browser: access, communicate, and publish offline."
-arch=("any")
+pkgdesc="A local-first, peer-to-peer web browser for a surveillance-free internet."
+arch=(
+	'aarch64'
+	'x86_64'
+)
 url="https://peersky.p2plabs.xyz/"
 _ghurl="https://github.com/p2plabsxyz/peersky-browser"
 license=('MIT')
@@ -16,22 +21,21 @@ depends=(
 )
 makedepends=(
     'npm'
-    'pnpm'
     'gendesk'
     'nvm'
     'git'
     'jq'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${_ghurl}/#tag=v${pkgver//_/-}"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${_mainver}-${_subver}.tar.gz"
     "${pkgname}.sh"
 )
 options=(
     '!emptydirs'
     '!strip'
 )
-sha256sums=('d045c52fed3db5b9725e708f325199366429d1aa48d9397a97b2fc253f7cbb70'
-            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
+sha256sums=('c9b9ef1b3392b1f50029f54b3a5303406d901293a969bdb456a16a2c21bafa57'
+            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -45,7 +49,7 @@ _get_project_dir() {
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -57,38 +61,21 @@ _set_build_env() {
 	export XDG_CACHE_HOME="${HOME}/.cache"
 	export XDG_CONFIG_HOME="${HOME}/.config"
 	export XDG_DATA_HOME="${HOME}/.local/share"
-	export XDG_STATE_HOME="${HOME}/.local/state"
-	export PNPM_HOME="${HOME}/.pnpm/bin"
-	export pnpm_config_cache_dir="${HOME}/.pnpm_cache"
-	export pnpm_config_store_dir="${HOME}/.pnpm_store"
-	export pnpm_config_global_dir="${HOME}/.pnpm/global"
-	export pnpm_config_state_dir="${HOME}/.pnpm/state"
-	export pnpm_config_node_linker=hoisted
-	export pnpm_config_minimum_release_age=0
-	export pnpm_config_update_notifier=false
+	export npm_config_cache="${HOME}/.npm_cache"
 	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
 	export COREPACK_HOME="${HOME}/.corepack"
-	mkdir -p "${HOME}" "${PNPM_HOME}" "${pnpm_config_cache_dir}" "${pnpm_config_store_dir}" "${pnpm_config_global_dir}" "${pnpm_config_state_dir}" "${COREPACK_HOME}"
-	export PATH="${PNPM_HOME}:${PATH}"
-	local _pnpmver=""
-	local _pkgjson="$(_get_project_dir)/package.json"
-	if [ -f "${_pkgjson}" ]; then
-		_pnpmver="$(grep -o '"packageManager"[^,]*' "${_pkgjson}" 2>/dev/null | grep -oE 'pnpm@[^"+]+' | head -n1 | sed 's/^pnpm@//')"
-		if [ -z "${_pnpmver}" ]; then
-			_pnpmver="$(grep -oE '"pnpm"[[:space:]]*:[[:space:]]*"[^"]+"' "${_pkgjson}" 2>/dev/null | grep -oE '[0-9][0-9.]*' | head -n1)"
-		fi
-	fi
-	if [ -n "${_pnpmver}" ]; then
-		npm install -g "pnpm@${_pnpmver}" --prefix "${HOME}/.pnpm" \
-			--registry "${COREPACK_NPM_REGISTRY}"
-	fi
+	export npm_config_audit=false
+	export npm_config_registry="${NPM_CONFIG_REGISTRY:-${npm_config_registry:-https://registry.npmjs.org}}"
+	export npm_config_dangerously_allow_all_scripts=true
+	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}"
 }
 _get_electron_version() {
 	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
 		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
-		| grep -v '^$' | sed 's/^[^0-9]*//' | head -1)
+		| grep -oE '[0-9]+' | head -1)
 	[[ -z "${_elec_ver}" ]] && return 1
-	echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+	(( _elec_ver == _electronversion )) && c=32 || c=31
+	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
 prepare() {
     cd "$(_get_project_dir)"
@@ -97,27 +84,33 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
-        s/@cfgdirname@/${pkgname}/g
     " "${srcdir}/${pkgname}.sh"
     gendesk -f -n -q \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
         --categories="Network" \
         --name="${_pkgname}" \
-        -exec="${pkgname} %U"
+        --exec="${pkgname} %U"
     _ensure_local_nvm
     _set_build_env
     sed -i "/openDevTools/d" src/main.js
+    python3 -c "
+f='scripts/afterPack.js'; c=open(f).read()
+c=c.replace('npx prebuild-install','prebuild-install')
+open(f,'w').write(c)
+"
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
+	find ./ -type f -name "package-lock.json" -delete
     export NODE_ENV=development
-    pnpm install --no-lockfile
+    npm install
 }
 build() {
     cd "$(_get_project_dir)"
     _ensure_local_nvm
     _set_build_env
     export NODE_ENV=production
-    pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
+    export PATH="$(pwd)/node_modules/.bin:$PATH"
+    npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
     local _app_dir="$(_get_app_dir)"
     case "${CARCH}" in
 		aarch64)	_archrem=x64	;;
