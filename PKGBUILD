@@ -43,7 +43,7 @@ makedepends=(
   ruby-erb
   ruby-getoptlong
   unzip
-  webkit2gtk
+  webkit2gtk-4.1
 )
 
 # Original source archive was hosted on openJDK mercurial server here:
