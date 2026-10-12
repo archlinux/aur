@@ -4,12 +4,12 @@
 # packaged or supported here.
 
 _gitname=ai-usage-widget
-# KPlugin.Id from package/metadata.json — the plasmoid install dir, the icon
+# KPlugin.Id from hosts/kde/metadata.json — the plasmoid install dir, the icon
 # name and the kpackagetool6 removal id all derive from it.
 _plasmoid=org.muddyblack.aiUsageWidget
 
 pkgname=plasma6-applets-ai-usage
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="KDE Plasma 6 panel widget tracking AI usage quotas across multiple providers"
 arch=('any')
@@ -28,23 +28,32 @@ optdepends=(
 )
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6f7954d8d6aff2151a1ebb13d7f9b903898c6f4acbc0d32ba5532a2e85791d01')
+sha256sums=('0a8d2c4b8e743fa03669126340ad9cf6e5b4eb6045b0dc2bd8c9b02feae7564e')
 
 build() {
     cd "${_gitname}-${pkgver}"
-    ./translate/build.sh
+    # Upstream assembles the plasmoid from hosts/kde, ui, backend and assets
+    # into build/kde (compiling the .mo catalogs on the way).
+    ./scripts/build-kde-package.sh
 }
 
 check() {
     cd "${_gitname}-${pkgver}"
-    # Tests import the Python modules shipped inside package/. Keep build-host
+    # Tests import the Python modules shipped inside backend/. Keep build-host
     # bytecode (and its $srcdir paths) out of the final architecture-any payload.
     export PYTHONDONTWRITEBYTECODE=1
-    # Upstream migrated the provider contract suites from shell to unittest.
-    # Keep these offline backend checks separate from the standalone frontends.
-    PYTHONPATH="${PWD}/tests/python" python -m unittest \
-        test_fixtures test_provider_values test_collect test_envelope test_muse \
-        test_credentials test_codex_stats test_codex_rate_limits test_junie test_mimo
+    # Upstream's portable backend suite (`make test-py`, what CI runs).
+    # Provider detection always appends /usr/bin and friends to the search
+    # path, so DetectionTest picks up whatever AI CLIs the build host has
+    # installed (claude-code, codex, opencode...). Empty those system dirs for
+    # the run; the test already supplies its own PATH.
+    python - <<'PY'
+import sys, unittest
+suite = unittest.defaultTestLoader.discover("tests/python")
+from aiusage import detect
+detect._SYSTEM_BIN_DIRS = ()
+sys.exit(not unittest.TextTestRunner().run(suite).wasSuccessful())
+PY
     ./tests/python-interp.test.sh
     ./tests/history-io.test.sh
 }
@@ -55,7 +64,7 @@ package() {
     local _root="${pkgdir}/usr/share/plasma/plasmoids/${_plasmoid}"
 
     install -dm755 "${_root}"
-    cp -r package/. "${_root}/"
+    cp -r build/kde/. "${_root}/"
 
     # cp carries the tarball's group-writable bits over; normalise, then put the
     # exec bit back on the launchers. main.qml drives get-ai-usage,
@@ -66,7 +75,7 @@ package() {
     # never executed.
     find "${_root}" -type d -exec chmod 755 {} +
     find "${_root}" -type f -exec chmod 644 {} +
-    chmod 755 "${_root}"/contents/tools/sh/{ai-usage-cli,get-ai-usage,export-snapshot,history-io}
+    chmod 755 "${_root}"/contents/backend/sh/{ai-usage-cli,get-ai-usage,export-snapshot,history-io}
 
     # plasmashell inherits the systemd user session's PATH, not a login shell's
     # — a `python3` that only exists via a shell rc file makes every provider
@@ -76,13 +85,13 @@ package() {
     # python-interp.sh still act as fallbacks. Patched here rather than in
     # prepare() so check() gets to run the suite against pristine sources: its
     # "no interpreter" case assumes the unpinned default.
-    grep -q '^PY_DEFAULT="python3"$' "${_root}/contents/tools/sh/python-interp.sh"
+    grep -q '^PY_DEFAULT="python3"$' "${_root}/contents/backend/sh/python-interp.sh"
     sed -i 's|^PY_DEFAULT="python3"$|PY_DEFAULT="/usr/bin/python3"|' \
-        "${_root}/contents/tools/sh/python-interp.sh"
+        "${_root}/contents/backend/sh/python-interp.sh"
 
     # Plasma's Widget Explorer looks the icon up by name in the icon theme, not
     # inside the plasmoid, so it has to be registered in hicolor as well.
-    install -Dm644 "package/contents/icons/${_plasmoid}.svg" \
+    install -Dm644 "assets/icons/${_plasmoid}.svg" \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_plasmoid}.svg"
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
