@@ -1,7 +1,7 @@
 # Maintainer: FlowOSS <https://github.com/FlowOSS>
 pkgname=flowshot-bin
 _pkgname=flowshot
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Screenshot and annotation tool for Wayland and X11 with mixed-DPI support (prebuilt binary)'
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=(
 provides=("flowshot=$pkgver")
 conflicts=('flowshot' 'flowshot-git')
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-1-x86_64-Arch.pkg.tar.zst")
-b2sums=('6c521cedd6371224c962b1c9d1bc9f3d374dedcbd6fc39ff7ec7dd14b5913ce84982be4fa7136855fe1c18ae8482ec08f7e6ff7e73b92b190153540a921b7699')
+b2sums=('382772c1aaac560aa3124d2623b773d7e433308a980501bd62d4f2f159f2a7f0eda3d0f529524b2b5dcce0e20a290ae744e208340e45f3351368b4bde46b7dd5')
 options=('!strip' '!lto' '!debug')
 
 package() {
