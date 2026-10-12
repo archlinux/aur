@@ -1,0 +1,28 @@
+post_install() {
+    cat <<'EOF'
+==> z13-tablet-kit: enable it once as your normal user (not root):
+      systemctl --user enable --now z13-tablet-switch.service z13-touch-scroll.service
+==> Reboot (or re-attach the folio) so the folio touchpad rule applies.
+==> Plasma: Quick Settings -> Auto-rotate -> right-click -> "Rotate only in tablet mode".
+==> Folio touchpad opt-in (Z13GUI+) needs: sudo usermod -aG users $USER, then log in again.
+==> Installed earlier with install.sh? Run its ./uninstall.sh first: ~/.local copies
+    override this package.
+EOF
+}
+
+post_upgrade() {
+    echo "==> z13-tablet-kit upgraded. As your user, reload and restart it:"
+    echo "      systemctl --user daemon-reload"
+    echo "      systemctl --user restart z13-tablet-switch.service z13-touch-scroll.service"
+}
+
+pre_remove() {
+    cat <<'EOF'
+==> z13-tablet-kit: pacman cannot reset per-user state. Before or right after removal, run
+    as your user:
+      systemctl --user disable --now z13-tablet-switch.service z13-touch-scroll.service
+      z13ctl-plus display rotation none
+    and re-check System Settings -> Keyboard -> Virtual Keyboard. If the touchscreen stays
+    off, enable it in System Settings -> Touchscreen.
+EOF
+}
