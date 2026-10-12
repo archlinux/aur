@@ -1,6 +1,6 @@
 pkgbase = somedesk
 	pkgdesc = Self-hosted, end-to-end encrypted remote desktop
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/giosuel/somedesk
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = somedesk
 	optdepends = xdg-desktop-portal: screen sharing and remote control on Wayland
 	options = !lto
 	options = !debug
-	source = somedesk-0.1.0.tar.gz::https://github.com/giosuel/somedesk/archive/v0.1.0.tar.gz
-	sha256sums = 9c2704395a8e0168833e34252daee1c12af33aaf69218e14172337f0d3d904b0
+	source = somedesk-0.2.0.tar.gz::https://github.com/giosuel/somedesk/archive/v0.2.0.tar.gz
+	sha256sums = d14b9cba5cdf3af944e407fe051bcc85e44e124f7a072a8399c51ef84d192bb1
 
 pkgname = somedesk

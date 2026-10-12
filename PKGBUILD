@@ -1,6 +1,6 @@
 # Maintainer: giosuel <me@giosuel.ch>
 pkgname=somedesk
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Self-hosted, end-to-end encrypted remote desktop'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=('xdg-desktop-portal: screen sharing and remote control on Wayland')
 # and openh264 would fail to link. !debug: the release profile has no debug info.
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9c2704395a8e0168833e34252daee1c12af33aaf69218e14172337f0d3d904b0')
+sha256sums=('d14b9cba5cdf3af944e407fe051bcc85e44e124f7a072a8399c51ef84d192bb1')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -40,7 +40,7 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 target/release/somedesk -t "$pkgdir/usr/bin"
+  install -Dm755 target/release/somedesk target/release/somedesk-agent -t "$pkgdir/usr/bin"
   install -Dm644 packaging/linux/ch.giosuel.SomeDesk.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 packaging/linux/ch.giosuel.SomeDesk.metainfo.xml -t "$pkgdir/usr/share/metainfo"
   install -Dm644 assets/brand/app-icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/ch.giosuel.SomeDesk.svg"
