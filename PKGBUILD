@@ -6,7 +6,7 @@
 
 pkgname=forskscope
 # Keep pkgver in sync with [workspace.package] version in Cargo.toml on each release.
-pkgver=0.187.0
+pkgver=0.188.0
 pkgrel=1
 pkgdesc="Local-first cross-platform diff and merge tool"
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/forskscope/forskscope/archi
 # here. This file is a template; do not copy it and run `makepkg -si`
 # expecting a verified download (see docs/src/users/installation.md's
 # Arch section for the supported path).
-sha256sums=('71e5eee8a0a408b3199b56df80813c36639def0423a3e8b0d40d86bc7c849b25')
+sha256sums=('20c69eea24925870846498fce5ec4bf6e1bcaed9f271ebc742a05197dcaf89e3')
 
 build() {
     cd "$pkgname-$pkgver"
