@@ -1,6 +1,6 @@
 pkgbase = python-taurus
 	pkgdesc = A framework for scientific/industrial CLIs and GUIs
-	pkgver = 5.4.0
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://gitlab.com/taurus-org/taurus
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = python-taurus
 	optdepends = python-pyqtgraph: for extra graph widgets
 	optdepends = spyder: for a qt based editor within taurus
 	optdepends = python-pytest: for testing
-	source = taurus-5.4.0.tar.gz::https://gitlab.com/taurus-org/taurus/-/archive/5.4.0/taurus-5.4.0.tar.gz
-	sha256sums = 0f868bca89742c3048f5d49268d16a9de7da921566f621787d48622ac8a2f14d
+	source = taurus-5.4.1.tar.gz::https://gitlab.com/taurus-org/taurus/-/archive/5.4.1/taurus-5.4.1.tar.gz
+	sha256sums = 68fbe1997159bd27ec132e82023cc323ec0311a6bf78e34888e97b2ca0b3de25
 
 pkgname = python-taurus
