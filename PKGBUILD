@@ -13,7 +13,7 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=18.5.0.r0.g543f6cc84
+pkgver=18.5.0.r177.g4286c273b
 pkgrel=1
 pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64' 'aarch64')
@@ -109,7 +109,7 @@ prepare()
   git submodule --quiet deinit submodules/hunspell;  # MacOS only
   git submodule --quiet deinit submodules/libssh;  # MacOS only
   git submodule --quiet deinit submodules/openssl-cmake;  # MacOS only
-  git submodule --quiet deinit submodules/wx-config-msys2;  # MSys only
+  #git submodule --quiet deinit submodules/wx-config-msys2;  # MSys only
   git submodule --quiet deinit submodules/zlib;  # MacOS only
 
   git submodule update;
