@@ -1,5 +1,5 @@
 pkgname=bookshelfng-bin
-pkgver=0.4.21.68
+pkgver=0.4.21.69
 pkgrel=1
 pkgdesc='Standalone book library manager and download automation server'
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("https://github.com/snapetech/bookshelfng/releases/download/main-v${pkgv
         'bookshelfng.env'
         'bookshelfng.sysusers'
         'bookshelfng.tmpfiles')
-sha256sums=('cf436b55a903cf2ec7d03870ad0fa7b15d6960e2d5649c2c35a4b444439c1080' '4b804dd1c8b33184af270bb1997defdc866fb8a53b8b8c4cd307c18ebc533aef' '03bb0f783c495bbc1fb137f20df104c9fa02555efbcf6e499918c3eb6a17e86e' 'd500d4bb5f2e851a0fb2123a463f205362c878b722e1d48759c3244be7036b50' '58ff38c5f0b8fc840feb2910b34cb9d4f1829805f141fd21093670932933c420')
+sha256sums=('6ff5613524c34719820b2c1805079c5c08c1fe785a678b2a2dda0a1401a280c6' '4b804dd1c8b33184af270bb1997defdc866fb8a53b8b8c4cd307c18ebc533aef' '03bb0f783c495bbc1fb137f20df104c9fa02555efbcf6e499918c3eb6a17e86e' 'd500d4bb5f2e851a0fb2123a463f205362c878b722e1d48759c3244be7036b50' '58ff38c5f0b8fc840feb2910b34cb9d4f1829805f141fd21093670932933c420')
 
 package() {
   install -d "${pkgdir}/usr/lib/bookshelfng" "${pkgdir}/usr/bin" "${pkgdir}/etc/bookshelfng"
