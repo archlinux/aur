@@ -5,9 +5,6 @@ set -euo pipefail
 DIR="$HOME/.local/share/paintdotnet"
 PREFIX="$DIR/wineprefix"
 
-export WINEPREFIX="$PREFIX"
-
-
 if [[ ! -d "$DIR" ]]; then
   mkdir -p "$PREFIX"
 
@@ -41,7 +38,11 @@ while IFS= read -r -d '' f; do
     [[ -e "$GOAL" || -L "$GOAL" ]] || ln -s "$f" "$GOAL"
 done
 
+export WINEDLLOVERRIDES="mshtml=;d3dcompiler_47=n"
+export WINEPREFIX="$PREFIX"
+export WINEDEBUG="${WINEDEBUG:--all}"
+export DXVK_LOG_LEVEL="${DXVK_LOG_LEVEL:-error}"
 
-WINEDEBUG=-all wine "$TARGET/paintdotnet.exe" "$@"
+wine "$TARGET/paintdotnet.exe" "$@"
 
 

@@ -1,7 +1,7 @@
 # Maintainer: Alex Dujardin <contact@alexcrea.xyz>
 pkgname=paintdotnet-wine-experimental
 pkgver=5.200.9775.2252
-pkgrel=2
+pkgrel=3
 pkgdesc="Experimental Paint.NET with wine specific changes"
 arch=(x86_64)
 url="https://github.com/paintdotnet/Paint.NET-on-WINE"
@@ -16,7 +16,7 @@ source=(
 )
 
 sha256sums=('0ace05b4397139f502099ab429e302938efc21eaf7db45d078b7e204e5372c6f'
-            '1097f01cd7982dcc78a3ddf68520507d3c651a4b172a3067da9fff2c2cc36ddc'
+            'f8d5bd9d2d71b060df0aa85877ada4d18ea13765cf39fca2d90520e30afa7ca5'
             '8065aaf824e0f4b7d5e4c0f32cb9e0422b2297175d1b79918ee42041f8f46479')
 
 build() {
