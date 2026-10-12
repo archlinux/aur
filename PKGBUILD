@@ -1,8 +1,8 @@
 # Maintainer: PenguinBurner contributors
 
 pkgname=penguin-burner
-pkgver=0.8.2
-pkgrel=2
+pkgver=0.8.3
+pkgrel=1
 pkgdesc='Automatic NVIDIA GPU undervolting, overclocking and adaptive per-game tuning'
 arch=('x86_64')
 url='https://github.com/jpietek/PenguinBurner'
@@ -37,6 +37,23 @@ sha256sums=('SKIP')
 
 build() {
   cd "PenguinBurner-${pkgver}"
+  # The virtual cargo dependency can be supplied by rustup, whose proxy is
+  # not a compiler. Bootstrap as the makepkg user, without replacing an
+  # existing default toolchain; preserve an explicitly selected toolchain.
+  if command -v rustup >/dev/null 2>&1 &&
+      [[ "$(command -v cargo)" -ef "$(command -v rustup)" ]]; then
+    export RUSTUP_TOOLCHAIN="${RUSTUP_TOOLCHAIN:-stable}"
+    rustup toolchain install "$RUSTUP_TOOLCHAIN" --profile minimal --no-self-update
+  fi
+  cargo --version
+  rustc --version
+
+  # Both the wheel builder and the explicit daemon build below invoke Cargo.
+  # Some Arch derivatives lack the triple-prefixed linker expected by rustc.
+  if ! command -v x86_64-linux-gnu-gcc >/dev/null 2>&1; then
+    export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=gcc
+  fi
+  export PENGUIN_BURNER_REQUIRE_DAEMON=1
   export PENGUIN_BURNER_REQUIRE_NATIVE_LAYER=1
   # Fail the build rather than quietly shipping an overlay that never appears
   # in a 32-bit game; the lib32 makedepends above provide the toolchain.
@@ -53,13 +70,6 @@ build() {
   fi
   python -m build --wheel --no-isolation --skip-dependency-check
 
-  # Arch's rust 1.98 bakes the triple-prefixed x86_64-linux-gnu-gcc in as the
-  # default linker; the matching symlink only ships with gcc 16.2.1+r23. On
-  # hosts whose gcc predates it (partial upgrades, lagging derivatives) cargo
-  # cannot exec the linker, so fall back to plain gcc there.
-  if ! command -v x86_64-linux-gnu-gcc >/dev/null 2>&1; then
-    export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=gcc
-  fi
   # Root daemon: compiled from the bundled Rust crate in burnerd/. --locked
   # pins the committed Cargo.lock; crates.io is fetched during build() (makepkg
   # allows network there by default).
