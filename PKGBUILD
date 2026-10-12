@@ -8,7 +8,7 @@
 # Asset names must stay in sync with github.ref_name and the workflow matrix.
 
 pkgname=tanin-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='A TUI ambient sound generator written in Rust'
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ options=('!strip')
 source_x86_64=("$url/releases/download/v$pkgver/tanin-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/tanin-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('3f135a717605596635a579f6b8975d777ab9e86a80dff3ada299d2511b442068')
-sha256sums_aarch64=('4a295caca064716929482add99947cf1c8c52ac11f46ca44b8651764caa8a84e')
+sha256sums_x86_64=('f0409dc98fd8d82c63a768cbf48a5b7dee8ffc2bb970729e677a7eaceb81b0bb')
+sha256sums_aarch64=('50bbc2c08d68cb65db183ed64ea571cc4a0486114c4ee3e8a564722012fd4582')
 
 package() {
   cd "$srcdir"
