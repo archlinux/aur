@@ -1,23 +1,15 @@
 # Maintainer: Mikkel Kappel Persson <mikkel@kappelpersson.dk>
 pkgname=huebox
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Terminal theme editor with live preview'
 arch=('x86_64')
 url='https://github.com/MikkelKappelPersson/huebox'
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('87fb37b4936fa844db24eecd6b246b4cdbc32c8180f14ad00c344c2f1f562fac')
-
-build() {
-  cd "$pkgname-$pkgver"
-  cargo build --release --locked --manifest-path rust/Cargo.toml
-}
+source=("huebox-$pkgver-x86_64-linux.tar.gz::$url/releases/download/v$pkgver/huebox-$pkgver-x86_64-linux.tar.gz")
+sha256sums=('29a1a0b20b80b1723b7ee71f446afe8cd591060e908ba9fdd80b1593408b33ea')
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 rust/target/release/huebox "$pkgdir/usr/bin/huebox"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 huebox "$pkgdir/usr/bin/huebox"
 }
