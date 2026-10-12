@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <!-- The game's icon for desktop menus: a ghost on a night-violet tile with an amber moon. -->
+  <rect x="8" y="8" width="240" height="240" rx="48" fill="#1a1229"/>
+  <circle cx="192" cy="66" r="26" fill="#ffc25c"/>
+  <circle cx="204" cy="58" r="22" fill="#1a1229"/>
+  <path d="M128 44c-42 0-70 32-70 74v86l17-14 17 14 18-14 18 14 18-14 18 14 17-14 17 14v-86c0-42-28-74-70-74z"
+        fill="#eef3dc"/>
+  <ellipse cx="104" cy="112" rx="11" ry="16" fill="#1a1229"/>
+  <ellipse cx="152" cy="112" rx="11" ry="16" fill="#1a1229"/>
+  <ellipse cx="128" cy="158" rx="16" ry="20" fill="#1a1229"/>
+</svg>

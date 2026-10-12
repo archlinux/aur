@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Boo! Be Afraid
+Comment=Co-op monster game: scare the visitors out of the house
+Comment[tr]=Ortak canavar oyunu: ziyaretçileri korkutup evden kaçır
+Exec=boo-be-afraid
+Icon=boo-be-afraid
+Terminal=false
+Categories=Game;ActionGame;
+Keywords=monster;scare;co-op;multiplayer;

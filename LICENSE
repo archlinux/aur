@@ -1,0 +1,55 @@
+Boo! Be Afraid
+Copyright (c) 2026 ardahzr and contributors. All rights reserved.
+
+The game is free to download and play. You may:
+  - install and play it on your own computers, at no charge;
+  - pass on the official, unmodified download;
+  - record, stream and publish videos of yourself playing it.
+
+Without written permission you may not:
+  - sell the game, or include it in anything that is sold;
+  - pass on modified versions of it;
+  - take its code, art, sounds or other contents and use them anywhere else.
+
+THE GAME IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM, OUT
+OF OR IN CONNECTION WITH THE GAME OR ITS USE.
+
+
+Third-party components
+======================
+
+The game is made with, and contains, the following. Their own licenses apply to them.
+
+Godot Engine (https://godotengine.org), MIT License
+  Copyright (c) 2014-present Godot Engine contributors.
+  Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
+  Godot contains further third-party components, listed with their licenses at
+  https://github.com/godotengine/godot/blob/master/COPYRIGHT.txt
+
+GodotSteam (https://godotsteam.com), MIT License
+  Copyright (c) 2015-Current GP Garcia, Chris Ridenour, and Contributors.
+
+Steamworks SDK redistributable (libsteam_api), Copyright Valve Corporation, distributed under the
+Steamworks SDK Access Agreement.
+
+3D models by Kenney (https://kenney.nl) and Kay Lousberg (KayKit, https://kaylousberg.com) and
+sound effects by Kenney, all CC0 1.0 (public domain).
+
+The MIT License, for Godot Engine and GodotSteam:
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+  associated documentation files (the "Software"), to deal in the Software without restriction,
+  including without limitation the rights to use, copy, modify, merge, publish, distribute,
+  sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all copies or
+  substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
+  NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+  DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT
+  OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
