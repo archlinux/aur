@@ -15,9 +15,13 @@ pkgname='cnrdrvcups-lb'
 # https://gdlp01.c-wss.com/gds/8/0100007658/41/linux-UFRII-drv-v600-m17n-00.tar.gz
 # https://gdlp01.c-wss.com/gds/8/0100007658/45/linux-UFRII-drv-v610-m17n-01.tar.gz
 # https://gdlp01.c-wss.com/gds/8/0100007658/46/linux-UFRII-drv-v610-m17n-03.tar.gz
-#https://gdlp01.c-wss.com/gds/8/0100007658/47/linux-UFRII-drv-v620-m17n-20.tar.gz
-#https://gdlp01.c-wss.com/gds/8/0100007658/48/linux-UFRII-drv-v630-m17n-07.tar.gz
-_pkgver='6.30';  _dl='8/0100007658/48';_suffix1='m17n';_suffix2='07'
+# https://gdlp01.c-wss.com/gds/8/0100007658/47/linux-UFRII-drv-v620-m17n-20.tar.gz
+# https://gdlp01.c-wss.com/gds/8/0100007658/48/linux-UFRII-drv-v630-m17n-07.tar.gz
+# https://gdlp01.c-wss.com/gds/8/0100007658/51/linux-UFRII-drv-v640-m17n-05.tar.gz
+_pkgver='6.40'
+_dl='8/0100007658/51'
+_suffix1='m17n'
+_suffix2='05'
 
 pkgver="${_pkgver}.1.${_suffix2}"
 epoch=1
@@ -30,9 +34,9 @@ license=('GPL-2.0-only' 'MIT' 'LicenseRef-custom')
 # parts of the code are GPL or MIT licensed, other parts have a custom license
 makedepends=(jbigkit gzip libxml2)
 depends=(libcups glibc libstdc++ glib2 hicolor-icon-theme libjpeg6-turbo gtk3)
-optdepends=('jbigkit: solves some cpu hangs'
+optdepends=('jbigkit: nrecessary for some printers'
             'ghostscript: necessary for printing on some devices'
-            'at-spi2-core: for cnsetuputil2'
+            'at-spi2-core: for cnsetuputil2'cp CNRCUPSBX540ZS.res CNRCUPSBX540ZK.res
             'gdk-pixbuf2: for cnsetuputil2'
             'cairo: for cnsetuputil2'
             'pango: for cnsetuputil2'
@@ -45,11 +49,8 @@ options=(emptydirs !strip !libtool !debug)
 source=(  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-${_suffix1}-${_suffix2}.tar.gz"
                 replace_incorrect_int_with_char.patch
 )
-md5sums=('fe47fb8aae918c4987117cc0eba6f888'
-         '8bc26ff46bf5877b5800b77685d5d917')
-sha512sums=('210aa05136c67a084b92e728666f1a2d6df25eb6fe94ea16f1e7d83b35a61da75ba918e157f4dabba1ef972465132cd5ae14646dfadf4945523b36896f971f8c'
+sha512sums=('59ccd40aec32faabd58e9ff6fe5a10bd856e010cfab92b8fce2b14008db11b520fe5113fcc17a4a948a3265f1118c455f166181765cec37f76995ef76330c53e'
             '1d118eeee1ce069b59db00cba5b534986ccbd1da3a9c4a4ba6892be4a478c2dac4bd83dae1b2dd28f0e58a145609c60940cd661fee87d025a12f856e161b1f65')
-
 
 # Canon provides the sourcecode in a tarball within the dowload and we need to extract the code manually
 # In order to keep the $srcdir structure tidy we put the extracted files in "extracted-${pkgname}-${_pkgver}" aka _srcdir
@@ -78,6 +79,20 @@ prepare() {
     # autoreconf converts them to a form compatible with archlinux autoconf/automake
     
     patch --directory="${srcdir}"/$_srcdir/$_driver_dir/cngplp/cngplpmod/ --forward --input="$srcdir"/replace_incorrect_int_with_char.patch
+
+    # Several *.res ending with ZK.res are missing in the source download. 
+    # There are however files ending with ZJ.res and ZS.res .
+    pushd $_driver_dir/cngplp/files
+    cp CNRCUPSCJ1128FZS.res CNRCUPSCJ1128FZK.res
+    cp CNRCUPSCJ1128PZS.res CNRCUPSCJ1128PZK.res
+    cp CNRCUPSBX770ZJ.res CNRCUPSBX770ZK.res
+    cp CNRCUPSBX710ZS.res CNRCUPSBX710ZK.res
+    cp CNRCUPSBX570ZS.res CNRCUPSBX570ZK.res
+    cp CNRCUPSBX540ZS.res CNRCUPSBX540ZK.res
+    cp CNRCUPSBX510ZS.res CNRCUPSBX510ZK.res
+    cp CNRCUPSMF102ZS.res CNRCUPSMF102ZK.res
+    cp CNRCUPSLBP101ZS.res CNRCUPSLBP101ZK.res
+    popd
     
     pushd $_common_dir
     for i in "backend" "buftool" "cngplp" "cnjbig" "rasterfilter"
@@ -114,6 +129,7 @@ prepare() {
      sed -i '1iset -e o pipefail' make.Arch
      
     # Generate make install from spec %install
+
     sed -n -e '/^%install/,/^%clean/ p' "${_specs[@]}" | \
     grep -v '^%' | \
     sed -e '# Convert spec %{VAR} to shell ${VAR}' \
@@ -181,11 +197,13 @@ package() {
     rmdir "$pkgdir"/usr/include
     
     # copy icons 
-    install -Dpm644 "cnrdrvcups-utility-${_pkgver}"/data/cngplp.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/cngplp.png
-    install -Dpm644 "cnrdrvcups-utility-${_pkgver}"/data/cnsetuputil.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/cnsetuputil.png
-    # copy .desktop files
-    install -Dpm644 "cnrdrvcups-utility-${_pkgver}"/data/cngplp2.desktop "${pkgdir}"/usr/share/applications/cngplp2.desktop
-    install -Dpm644 "cnrdrvcups-utility-${_pkgver}"/data/cnsetuputil2.desktop "${pkgdir}"/usr/share/applications/cnsetuputil2.desktop
+    install -Dpm644 cnrdrvcups-utility-${_pkgver}/data/cngplp.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/cngplp.png
+    install -Dpm644 cnrdrvcups-utility-${_pkgver}/data/cnsetuputil.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/cnsetuputil.png
+
+    # copy .desktop 
+
+    install -Dpm644 cnrdrvcups-utility-${_pkgver}/data/cngplp2.desktop "${pkgdir}"/usr/share/applications/cngplp2.desktop
+    install -Dpm644 cnrdrvcups-utility-${_pkgver}/data/cnsetuputil2.desktop "${pkgdir}"/usr/share/applications/cnsetuputil2.desktop
     
     # licensing information is spread over multiple files and folders and has changed between versions
     # while they could be done in a loop iterating through dirs/files,
@@ -193,64 +211,64 @@ package() {
     # so each file gets its own install command
     
     pushd "${_common_dir}"
-    install -Dpm644 "README" "${pkgdir}/usr/share/licenses/${pkgname}/${_common_dir}/README"
+    install -Dpm644 README "${pkgdir}"/usr/share/licenses/${pkgname}/${_common_dir}/README
     
-    install -Dpm644 "backend/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/${_common_dir}/backend/LICENSE.txt"
-    install -Dpm644 "backend/LICENSE.canon.txt" "${pkgdir}/usr/share/licenses/${pkgname}/${_common_dir}/backend/LICENSE.canon.txt"
-    install -Dpm644 "backend/README" "${pkgdir}/usr/share/licenses/${pkgname}/${_common_dir}/backend/README"
+    install -Dpm644 backend/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/${_common_dir}/backend/LICENSE.txt
+    install -Dpm644 backend/LICENSE.canon.txt "${pkgdir}"/usr/share/licenses/${pkgname}/${_common_dir}/backend/LICENSE.canon.txt
+    install -Dpm644 backend/README "${pkgdir}"/usr/share/licenses/${pkgname}/${_common_dir}/backend/README
     
-    install -Dpm644 "buftool/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/${_common_dir}/buftool/LICENSE.txt"
-    install -Dpm644 "buftool/README" "${pkgdir}/usr/share/licenses/${pkgname}/${_common_dir}/buftool/README"
+    install -Dpm644 buftool/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/${_common_dir}/buftool/LICENSE.txt
+    install -Dpm644 buftool/README "${pkgdir}"/usr/share/licenses/${pkgname}/${_common_dir}/buftool/README
 
-    install -Dpm644 "cngplp/LICENSE.canon.txt" "${pkgdir}/usr/share/licenses/${pkgname}/${_common_dir}/cngplpl/LICENSE.canon.txt"
-    install -Dpm644 "cngplp/README" "${pkgdir}/usr/share/licenses/${pkgname}/${_common_dir}/cngplpl/README"
+    install -Dpm644 cngplp/LICENSE.canon.txt "${pkgdir}"/usr/share/licenses/${pkgname}/${_common_dir}/cngplpl/LICENSE.canon.txt
+    install -Dpm644 cngplp/README "${pkgdir}"/usr/share/licenses/${pkgname}/${_common_dir}/cngplpl/README
     
-    install -Dpm644 "cnjbig/README" "${pkgdir}/usr/share/licenses/${pkgname}/${_common_dir}/cnjbig/README"
+    install -Dpm644 cnjbig/README "${pkgdir}"/usr/share/licenses/${pkgname}/${_common_dir}/cnjbig/README
     
-    install -Dpm644 "rasterfilter/README" "${pkgdir}/usr/share/licenses/${pkgname}/${_common_dir}/rasterfilter/README"
+    install -Dpm644 rasterfilter/README "${pkgdir}"/usr/share/licenses/${pkgname}/${_common_dir}/rasterfilter/README
 
     popd
     pushd "${_driver_dir}"
-    install -Dpm644 "README" "${pkgdir}/usr/share/licenses/${pkgname}/${_driver_dir}/README"
+    install -Dpm644 README "${pkgdir}"/usr/share/licenses/${pkgname}/${_driver_dir}/README
     
-    install -Dpm644 "cngplp/README" "${pkgdir}/usr/share/licenses/${pkgname}/${_driver_dir}/cngplp/README"
-    install -Dpm644 "cngplp/files/README" "${pkgdir}/usr/share/licenses/${pkgname}/${_driver_dir}/cngplp/files/README"
+    install -Dpm644 cngplp/README "${pkgdir}"/usr/share/licenses/${pkgname}/${_driver_dir}/cngplp/README
+    install -Dpm644 cngplp/files/README "${pkgdir}"/usr/share/licenses/${pkgname}/${_driver_dir}/cngplp/files/README
     
-    install -Dpm644 "cpca/README" "${pkgdir}/usr/share/licenses/${pkgname}/${_driver_dir}/cpca/README"
-    install -Dpm644 "cpca/cnpklib/LICENSE.canon.txt" "${pkgdir}/usr/share/licenses/${pkgname}/${_driver_dir}/cpca/cnpklib/LICENSE.canon.txt"
+    install -Dpm644 cpca/README "${pkgdir}"/usr/share/licenses/${pkgname}/${_driver_dir}/cpca/README
+    install -Dpm644 cpca/cnpklib/LICENSE.canon.txt "${pkgdir}"/usr/share/licenses/${pkgname}/${_driver_dir}/cpca/cnpklib/LICENSE.canon.txt
     
-    install -Dpm644 "pdftocpca/README" "${pkgdir}/usr/share/licenses/${pkgname}/${_driver_dir}/pdftocpca/README"
+    install -Dpm644 pdftocpca/README "${pkgdir}"/usr/share/licenses/${pkgname}/${_driver_dir}/pdftocpca/README
     popd 
     
     # documentation
     pushd "$srcdir/linux-UFRII-drv-v${_pkgver//\./}-m17n/Documents"
     
-    install -Dpm644 deutsch/"README-ufr2-6.3xDE.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.3xDE.html"
-    install -Dpm644 espanol/"README-ufr2-6.3xSP.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.3xSP.html"
-    install -Dpm644 francais/"README-ufr2-6.3xFR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.3xFR.html"
-    install -Dpm644 italiano/"README-ufr2-6.3xIT.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.3xIT.html"
-    install -Dpm644 korean/"README-ufr2-6.3xKR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.3xKR.html"
-    install -Dpm644 simplified_chinese/"README-ufr2-6.3xSC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.3xSC.html"
-    install -Dpm644 traditional_chinese/"README-ufr2-6.3xTC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.3xTC.html"
-    install -Dpm644 uk_eng/"README-ufr2-6.3xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.3xUK.html"
+    install -Dpm644 deutsch/README-ufr2-6.4xDE.html "${pkgdir}"/usr/share/doc/${pkgname}/README-ufr2-6.4xDE.html
+    install -Dpm644 espanol/README-ufr2-6.4xSP.html "${pkgdir}"/usr/share/doc/${pkgname}/README-ufr2-6.4xSP.html
+    install -Dpm644 francais/README-ufr2-6.4xFR.html "${pkgdir}"/usr/share/doc/${pkgname}/README-ufr2-6.4xFR.html
+    install -Dpm644 italiano/README-ufr2-6.4xIT.html "${pkgdir}"/usr/share/doc/${pkgname}/README-ufr2-6.4xIT.html
+    install -Dpm644 korean/README-ufr2-6.4xKR.html "${pkgdir}"/usr/share/doc/${pkgname}/README-ufr2-6.4xKR.html
+    install -Dpm644 simplified_chinese/README-ufr2-6.4xSC.html "${pkgdir}"/usr/share/doc/${pkgname}/README-ufr2-6.4xSC.html
+    install -Dpm644 traditional_chinese/README-ufr2-6.4xTC.html "${pkgdir}"/usr/share/doc/${pkgname}/README-ufr2-6.4xTC.html
+    install -Dpm644 uk_eng/README-ufr2-6.4xUK.html "${pkgdir}"/usr/share/doc/${pkgname}/README-ufr2-6.4xUK.html
     
-    install -Dpm644 deutsch/"UsersGuide-ufr2-DE.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-DE.html"
-    install -Dpm644 espanol/"UsersGuide-ufr2-SP.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-SP.html"
-    install -Dpm644 francais/"UsersGuide-ufr2-FR.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-FR.html"
-    install -Dpm644 italiano/"UsersGuide-ufr2-IT.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-IT.html"
-    install -Dpm644 korean/"UsersGuide-ufr2-KR.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-KR.html"
-    install -Dpm644 simplified_chinese/"UsersGuide-ufr2-SC.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-SC.html"
-    install -Dpm644 traditional_chinese/"UsersGuide-ufr2-TC.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-TC.html"
-    install -Dpm644 uk_eng/"UsersGuide-ufr2-UK.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-UK.html"
+    install -Dpm644 deutsch/UsersGuide-ufr2-DE.html "${pkgdir}"/usr/share/doc/${pkgname}/UsersGuide-ufr2-DE.html
+    install -Dpm644 espanol/UsersGuide-ufr2-SP.html "${pkgdir}"/usr/share/doc/${pkgname}/UsersGuide-ufr2-SP.html
+    install -Dpm644 francais/UsersGuide-ufr2-FR.html "${pkgdir}"/usr/share/doc/${pkgname}/UsersGuide-ufr2-FR.html
+    install -Dpm644 italiano/UsersGuide-ufr2-IT.html "${pkgdir}"/usr/share/doc/${pkgname}/UsersGuide-ufr2-IT.html
+    install -Dpm644 korean/UsersGuide-ufr2-KR.html "${pkgdir}"/usr/share/doc/${pkgname}/UsersGuide-ufr2-KR.html
+    install -Dpm644 simplified_chinese/UsersGuide-ufr2-SC.html "${pkgdir}"/usr/share/doc/${pkgname}/UsersGuide-ufr2-SC.html
+    install -Dpm644 traditional_chinese/UsersGuide-ufr2-TC.html "${pkgdir}"/usr/share/doc/${pkgname}/UsersGuide-ufr2-TC.html
+    install -Dpm644 uk_eng/UsersGuide-ufr2-UK.html "${pkgdir}"/usr/share/doc/${pkgname}/UsersGuide-ufr2-UK.html
     
-    install -Dpm644 deutsch/"LICENSE-DE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-DE.txt"
-    install -Dpm644 espanol/"LICENSE-ES.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-ES.txt"
-    install -Dpm644 francais/"LICENSE-FR.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-FR.txt"
-    install -Dpm644 italiano/"LICENSE-IT.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-IT.txt"
-    install -Dpm644 korean/"LICENSE-KO.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-KO.txt"
-    install -Dpm644 simplified_chinese/"LICENSE-CN.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-CN.txt"
-    install -Dpm644 traditional_chinese/"LICENSE-TW.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-TW.txt"
-    install -Dpm644 uk_eng/"LICENSE-EN.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-EN.txt"
+    install -Dpm644 deutsch/LICENSE-DE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE-DE.txt
+    install -Dpm644 espanol/LICENSE-ES.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE-ES.txt
+    install -Dpm644 francais/LICENSE-FR.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE-FR.txt
+    install -Dpm644 italiano/LICENSE-IT.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE-IT.txt
+    install -Dpm644 korean/LICENSE-KO.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE-KO.txt
+    install -Dpm644 simplified_chinese/LICENSE-CN.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE-CN.txt
+    install -Dpm644 traditional_chinese/LICENSE-TW.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE-TW.txt
+    install -Dpm644 uk_eng/LICENSE-EN.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE-EN.txt
     popd
     
 }
