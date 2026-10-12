@@ -30,7 +30,7 @@ makedepends=(cargo git)
 # then own for no reason.
 options=(!strip !lto !debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('4fb8c1563b226dc9a4e3d9e13da2d6ebb92205a7582c99848bbaafacfc0b8935')
 
 _srcdir="AURCache-$pkgver"
 
