@@ -15,11 +15,11 @@ optdepends=('dolphin-emu: native Dolphin support'
             'flatpak: Flatpak Dolphin support')
 conflicts=('wheelwizard')
 provides=('wheelwizard')
-source=("https://github.com/Team${_name}/${_name}/releases/download/${_pkgver}/WheelWizard_Linux"
-        "https://raw.githubusercontent.com/Team${_name}/${_name}/${_pkgver}/Flatpak/${_app_id}.desktop"
-        "https://raw.githubusercontent.com/Team${_name}/${_name}/${_pkgver}/Flatpak/${_app_id}-url-handler.desktop"
-        "https://raw.githubusercontent.com/Team${_name}/${_name}/${_pkgver}/Flatpak/${_app_id}.png"
-        "https://raw.githubusercontent.com/Team${_name}/${_name}/${_pkgver}/LICENSE")
+source=("${_name}-${pkgver}_Linux::https://github.com/Team${_name}/${_name}/releases/download/${_pkgver}/WheelWizard_Linux"
+        "${_app_id}-${pkgver}.desktop::https://raw.githubusercontent.com/Team${_name}/${_name}/${_pkgver}/Flatpak/${_app_id}.desktop"
+        "${_app_id}-url-handler-${pkgver}.desktop::https://raw.githubusercontent.com/Team${_name}/${_name}/${_pkgver}/Flatpak/${_app_id}-url-handler.desktop"
+        "${_app_id}-${pkgver}.png::https://raw.githubusercontent.com/Team${_name}/${_name}/${_pkgver}/Flatpak/${_app_id}.png"
+        "LICENSE-${pkgver}::https://raw.githubusercontent.com/Team${_name}/${_name}/${_pkgver}/LICENSE")
 sha256sums=('2a16c7d4945e7bfaf93cff3e13e5ec8395fa69571341574c9d8fd9ac0a883e9c'
             '38e89cae5e18ec818549571f98f6898f8dc72b2974a382983cb9897ac6421e01'
             'b94a3ce5115a77741ce5900738dcdac923f16738d850b2e1aa1bd7278d6d8311'
@@ -27,17 +27,17 @@ sha256sums=('2a16c7d4945e7bfaf93cff3e13e5ec8395fa69571341574c9d8fd9ac0a883e9c'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 prepare() {
-  sed -i "s/^Icon=.*$/Icon=${_name}/g" "$srcdir/${_app_id}.desktop"
-  sed -i "s/^Icon=.*$/Icon=${_name}/g" "$srcdir/${_app_id}-url-handler.desktop"
+  sed -i "s/^Icon=.*$/Icon=${_name}/g" "$srcdir/${_app_id}-${pkgver}.desktop"
+  sed -i "s/^Icon=.*$/Icon=${_name}/g" "$srcdir/${_app_id}-url-handler-${pkgver}.desktop"
 }
 
 package() {
-  install -D -m0644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -D -m0755 "$srcdir/WheelWizard_Linux" "$pkgdir/usr/bin/${_name}"
-  install -D -m0644 "$srcdir/${_app_id}.desktop" \
+  install -D -m0644 "$srcdir/LICENSE-${pkgver}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m0755 "$srcdir/${_name}-${pkgver}_Linux" "$pkgdir/usr/bin/${_name}"
+  install -D -m0644 "$srcdir/${_app_id}-${pkgver}.desktop" \
       "$pkgdir/usr/share/applications/${_name}.desktop"
-  install -D -m0644 "$srcdir/${_app_id}-url-handler.desktop" \
+  install -D -m0644 "$srcdir/${_app_id}-url-handler-${pkgver}.desktop" \
       "$pkgdir/usr/share/applications/${_name}-url-handler.desktop"
-  install -D -m0644 "$srcdir/${_app_id}.png" \
+  install -D -m0644 "$srcdir/${_app_id}-${pkgver}.png" \
       "$pkgdir/usr/share/icons/hicolor/256x256/apps/${_name}.png"
 }
