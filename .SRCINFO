@@ -1,0 +1,16 @@
+pkgbase = sinergia-webapp-manager
+	pkgdesc = Gestor gráfico para crear WebApps independientes en Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Nacho-Telmo/sinergia-webapp-manager
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-pyqt6
+	depends = python-requests
+	source = https://raw.githubusercontent.com/Nacho-Telmo/sinergia-webapp-manager/main/sinergia-webapps/main.py
+	source = sinergia-webapp-manager.desktop
+	sha256sums = 4cfd504ead7ea773679c0f9bc9cde16a1e3491b98da69fabb21c77a7f10b3711
+	sha256sums = c687611035b0405ac9cb0090752fdff4f25558640fc89506c808f6c51ba7d1b3
+
+pkgname = sinergia-webapp-manager

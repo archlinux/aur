@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Sinergia WebApp Manager
+Comment=Crea y gestiona WebApps nativas
+Exec=sinergia-webapp-manager
+Icon=applications-internet
+Terminal=false
+Categories=Utility;Network;
