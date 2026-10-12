@@ -2,10 +2,10 @@
 pkgname=hermes-agent-desktop
 _pkgname=hermes-desktop          # /usr/bin launcher name (AUR convention, lowercase)
 _upstream=Hermes                 # productName + executableName
-_pkgver_tag=v0.21.6
-_commit=818c13be1dc4fd28987e1e881a9408224afd4535
-pkgver=0.21.6
-pkgrel=5
+_pkgver_tag=v0.21.7
+_commit=71d34bad1045610252eda02ee79549436896e784
+pkgver=0.21.7
+pkgrel=1
 pkgdesc="Desktop UI for Hermes Agent (chat, voice, files, settings)"
 arch=('x86_64')
 url='https://github.com/NousResearch/hermes-agent'
@@ -41,7 +41,7 @@ source=(
   'hermes-desktop'
   'launcher.test.cjs'
 )
-sha256sums=('1ba3500cdbe876bb9d347b3c12f41c591a421293eac58faba23571287dfe1cf8'
+sha256sums=('fcf5fc29d3088764a5a293910f75f43dc736b5655ed410d7339cf94cc1462459'
             'af06707c57ae08646af03af8f05aee5b94651028b115eaaa18c7ed11ca4edb04'
             '6a11f2a21bdd3bc6e459072e681641386621b99e90f37005906f0c361fa05886'
             '047d6e615017b2bb8584383234cdfb3169694e25c10221d7a78da864884b1481'
