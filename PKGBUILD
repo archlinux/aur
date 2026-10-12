@@ -1,7 +1,7 @@
 # Maintainer: Robin Trioux <robin@trioux.eu>
 
 pkgname=mistral-vibe-bin
-pkgver=2.26.0
+pkgver=2.26.1
 pkgrel=1
 pkgdesc='Minimal CLI coding agent by Mistral (binary release)'
 arch=('x86_64' 'aarch64')
@@ -48,10 +48,10 @@ makedepends=("python-installer")
 # Upstream publishes no sdist; the official manylinux_2_28 wheels bundle the
 # prebuilt Rust artifacts (vibe/_bin/vibe-rs TUI and the
 # mistralai_vibe_local_harness native extension) and only need glibc >= 2.28.
-source_x86_64=("https://files.pythonhosted.org/packages/29/3d/9cf25425a0aecc4947099919b6b398c539768074d9b215efd3c06d152224/mistral_vibe-2.26.0-cp312-abi3-manylinux_2_28_x86_64.whl")
-source_aarch64=("https://files.pythonhosted.org/packages/35/68/502698a3122fd8606a24172e7d0216f4dc45791bb85022acba402962ee4c/mistral_vibe-2.26.0-cp312-abi3-manylinux_2_28_aarch64.whl")
-sha256sums_x86_64=('d8230b8abd7c39a8e90d60884b1f5ee8c95ffb459c62c21f3ea0e3041117a114')
-sha256sums_aarch64=('91087d3507924f44823be8567d8d051da7669b1ad2b60e549e75e91ede282a4e')
+source_x86_64=("https://files.pythonhosted.org/packages/0e/1c/e5533483eda87bb03c763487b666bc0b00d844546f5f13b28e1ffd7669ed/mistral_vibe-2.26.1-cp312-abi3-manylinux_2_28_x86_64.whl")
+source_aarch64=("https://files.pythonhosted.org/packages/31/5b/d495b78ccc69172ba7213bd785a6aa35f8b0462a7f39eba791375af64b3f/mistral_vibe-2.26.1-cp312-abi3-manylinux_2_28_aarch64.whl")
+sha256sums_x86_64=('1ceb43e38a2e82cb8c54e1032b011874f8422e998cf87b4a3fdf58704133de55')
+sha256sums_aarch64=('896a432651b922b7e16f01e26b4fce55b4ebd7a5ca122cf82c1e9d6a8a849821')
 noextract=("mistral_vibe-${pkgver}-cp312-abi3-manylinux_2_28_x86_64.whl"
            "mistral_vibe-${pkgver}-cp312-abi3-manylinux_2_28_aarch64.whl")
 
