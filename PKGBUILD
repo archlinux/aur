@@ -3,7 +3,7 @@
 
 pkgname=yaabsa-bin
 pkgver=1.14.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Unofficial feature rich, responsive, modern client for Audiobookshelf"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Vito0912/yaabsa"
@@ -17,6 +17,7 @@ depends=(
 	'libsecret'
 	'gtk3'
 	'libayatana-indicator'
+	'libayatana-appindicator'
 	'hicolor-icon-theme'
 )
 install=yaabsa.install
