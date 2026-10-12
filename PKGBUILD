@@ -4,7 +4,7 @@
 pkgname=mmx-cli
 _pkgname=mmx-cli
 _undici_ver=6.25.0
-pkgver=1.0.27
+pkgver=1.0.28
 pkgrel=1
 pkgdesc='CLI for the MiniMax AI platform'
 arch=('any')
@@ -23,7 +23,7 @@ source=(
   'LICENSE_STATUS'
 )
 sha512sums=(
-  '36997dbef4ea447ea31fe03e76d1a3476d119f4e84ffeec16f79714c05f3384d5fe487c10b4f9245d531600f7f4c5f52238f7d309b15d800e5247164e4a34356'
+  'd397e198d4a80b95a98eaf0454c3994eee247e91099218f58aeb57e79d730996eb87b194fd18084ce512a45628db589c918aaa189a9ebfa8bef1ea4653ac602a'
   '660a560c2e6098d8ae63d0a72d55c41fcae5e74c61442b8b340f7b7c05272a2f1146e57813a286df5a434ec2d550a9e88491342375c3ad3784c9d017470e3bc6'
   '64a2f6a9df905e4beceaaf4543e5d1ce13ff8de8e40effbabda052e3e67d7292b4cfeade9ea4db4761d8b8ac6e0cf1235cd6697d0eec1f92deb9dbb30c990a3b'
 )
