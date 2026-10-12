@@ -29,7 +29,18 @@ pkgbase = casparcg-server
 	depends = ttf-liberation
 	source = casparcg-server-2.5.1.tar.gz::https://github.com/CasparCG/server/archive/v2.5.1-stable.tar.gz
 	source = archlinux-cef.patch
+	source = casparcg-server.service
+	source = casparcg.sysusers
+	source = casparcg.tmpfiles
 	sha256sums = c2852873153569f5df3089dfc1aeb20e9ba62dae182436ad7691a79cce5baf78
 	sha256sums = e34e0bbeb6db378b1e074948c4fe62030b1e925a4398ac6a468209d58b54a450
+	sha256sums = a2b071eab6df874d6386e7ae0d1bf0f82e6af5b1645cc009146c6eb2e1fa9fff
+	sha256sums = b33b6b6ead820ae17460d660b7d6953e483012cbfe0b9614ee04ffe396d3515c
+	sha256sums = aeebd9644b5198d085b18b1ddbd907a27cda6f78abfb428f379d53e78de5d73a
 
 pkgname = casparcg-server
+	optdepends = casparcg-server-headless: Run casparcg as a system service
+	conflicts = cef-minimal
+
+pkgname = casparcg-server-headless
+	depends = casparcg-server

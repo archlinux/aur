@@ -1,0 +1,8 @@
+# user for headless CasparCG server
+u! casparcg - "casparcg server" /opt/casparcg
+# should already have been created by the previous command
+g  casparcg - -
+# groups needed for CasparCG to function
+m  casparcg audio
+m  casparcg render
+m  casparcg video
