@@ -1,7 +1,7 @@
 # Maintainer: Nick Nizovtsev <nizovtsevnv@gmail.com>
 
 pkgname=termide-bin
-pkgver=0.40.0
+pkgver=0.41.0
 pkgrel=1
 pkgdesc="All-in-one terminal workspace: editor, file manager, terminal, git and coding agent (binary release)"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ provides=('termide')
 conflicts=('termide')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://github.com/termide/termide/releases/download/$pkgver/termide-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://github.com/termide/termide/releases/download/$pkgver/termide-$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('16789c2251f98623105413dbd3afd7a1c426821a01730f91dc061edda234547e')
-sha256sums_aarch64=('f099796b7d70209c082653b04b0ca825306577c55fe9bf58e62421250b4e2110')
+sha256sums_x86_64=('15651d514bec5dbaac9340acf20441dd5a99b0ba25eb780f44250762db976f0c')
+sha256sums_aarch64=('1f96044f010c4841b8e9d4cd37d9d0f6fe3f2c5ba404c1a80f63e69e5637239f')
 
 package() {
     # Install binary
