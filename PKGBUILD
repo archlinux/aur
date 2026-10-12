@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$pkgname"
 	# Produces e.g. 0.4.0.r37.gabcdef0 — last tag, commits since, short hash.
-	git describe --long --tags --abbrev=7 2>/dev/null |
+	git describe --long --tags --match 'v[0-9]*' --abbrev=7 2>/dev/null |
 		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf '0.0.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
@@ -46,7 +46,7 @@ build() {
 	local _date _commit _ver
 	_date="$(date -u -d "@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y-%m-%dT%H:%M:%SZ)"
 	_commit="$(git rev-parse HEAD)"
-	_ver="$(git describe --tags --abbrev=7 2>/dev/null | sed 's/^v//' || echo SNAPSHOT)"
+	_ver="$(git describe --tags --match 'v[0-9]*' --abbrev=7 2>/dev/null | sed 's/^v//' || echo SNAPSHOT)"
 
 	local _ldflags=(
 		"-X main.version=$_ver"
