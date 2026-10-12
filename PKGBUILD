@@ -51,21 +51,6 @@ options=(
     !strip
 )
 
-: "${pkgname[@]}"
-: "${pkgver}"
-: "${pkgrel}"
-: "${pkgdesc}"
-: "${arch[@]}"
-: "${url}"
-: "${license[@]}"
-: "${source[@]}"
-: "${source_i686[@]}"
-: "${source_x86_64[@]}"
-: "${sha256sums[@]}"
-: "${sha256sums_i686[@]}"
-: "${sha256sums_x86_64[@]}"
-: "${options[@]}"
-
 prepare() {
     rm -rf "eID_klient_${pkgver}"
 
@@ -212,3 +197,18 @@ package_eidklient-native-unused-libs() {
     mkdir -p "${pkgdir}/usr/share/licenses"
     ln -s /opt/eidklient/Licenses "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
+
+: "${arch[@]}"
+: "${license[@]}"
+: "${options[@]}"
+: "${pkgdesc}"
+: "${pkgname[@]}"
+: "${pkgrel}"
+: "${pkgver}"
+: "${sha256sums[@]}"
+: "${sha256sums_i686[@]}"
+: "${sha256sums_x86_64[@]}"
+: "${source[@]}"
+: "${source_i686[@]}"
+: "${source_x86_64[@]}"
+: "${url}"
