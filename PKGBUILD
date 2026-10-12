@@ -9,7 +9,7 @@
 # (patches/plugin_dir.patch from the trdc source tree) lets guacd load its
 # channel plugins from that private tree, so no root install is involved.
 pkgname=trdc
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Remote desktop client with a built-in AI copilot (RDP/VNC/SSH via a private guacd sidecar)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ options=('!debug')
 _gsrvver=1.6.0
 source=("https://github.com/Teejer/trdc/archive/refs/tags/v${pkgver}.tar.gz"
         "https://github.com/apache/guacamole-server/archive/refs/tags/${_gsrvver}.tar.gz")
-sha256sums=('22d15ed3d452a366dc4003118112e3d715481c6276ac8edf93c08bb850de73b2'
+sha256sums=('39093ce81a670c7658d523d46f6e016127220dd1dc1ea4637b1cecbab14c47ab'
             '913b05d19beabed4a3066e6e2be3078783048f55c7a9d2e3a012897a8766c245')
 
 prepare() {
