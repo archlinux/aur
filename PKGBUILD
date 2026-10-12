@@ -1,5 +1,5 @@
 pkgname=waft-bin
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Waft central daemon and plugin ecosystem (prebuilt release binaries)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
 provides=('waft')
 conflicts=('waft' 'waft-git' 'waft-overview-git' 'waft-settings-git' 'waft-launcher-git')
 source_x86_64=("waft-${pkgver}-x86_64.tar.gz::https://github.com/ReadyPlayerNaN/waft/releases/download/v${pkgver}/waft-${pkgver}-x86_64.tar.gz")
-sha256sums_x86_64=('d7ffb579eb3ebbd4d31c15646f797637116e1b07f8448b9d522e6f3a633cef30')
+sha256sums_x86_64=('1335e7c6a938a0cab71b31b1933f42b22fe94f196f0b8dede5c895af7297ce91')
 
 package() {
   local root="$srcdir/waft-${pkgver}-x86_64"
