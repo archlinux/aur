@@ -1,3 +1,13 @@
+Mullvad Browser 15.0.25 - October 13 2026
+ * All Platforms
+   * Updated NoScript to 13.6.36.1984
+   * Bug 45382: Backport Security Fixes from 158 [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 41885: Update changelogs as a last step in relprep.py [tor-browser-build]
+   * Windows
+     * Bug 41890: Update sign-exe wrapper to use new Windows signing cert [tor-browser-build]
+
 Mullvad Browser 15.0.24 - September 29 2026
  * All Platforms
    * Updated Firefox to 140.17.0esr
