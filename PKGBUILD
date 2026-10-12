@@ -1,6 +1,6 @@
 pkgname=orangplayer-bin
-pkgver=0.1.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Media player for your files, YouTube, YT Music, SoundCloud and Spotify, with lyrics, downloads and skins"
 arch=('x86_64')
 url="https://github.com/Orang-Studio/OrangPlayer"
@@ -16,7 +16,7 @@ provides=('orangplayer')
 conflicts=('orangplayer' 'orang-player')
 options=('!strip' '!debug')
 source=("$url/releases/download/v$pkgver/orangplayer-$pkgver-x86_64.tar.zst")
-sha256sums=('07c844755c37f2c66f75c07000139d6e82328f42875bec5e138f82f85eb2d59a')
+sha256sums=('30897ff45b0fe82751e75867a152e93667de08e7138657ad439fb95f3eef72ad')
 
 package() {
     cp -a usr "$pkgdir/"
