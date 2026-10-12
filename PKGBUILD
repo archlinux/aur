@@ -7,7 +7,7 @@
 _pkgname="shadps4"
 pkgname="$_pkgname"
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sony PlayStation 4 emulator"
 url="https://github.com/shadps4-emu/shadPS4"
 license=('GPL-2.0-or-later')
@@ -18,6 +18,7 @@ depends=(
   'libavformat.so'   # ffmpeg
   'libavutil.so'     # ffmpeg
   'libcrypto.so'     # openssl
+  'libfmt.so'        # fmt
   'libfreetype.so'   # freetype2
   'libminiupnpc.so'  # miniupnpc
   'libpng16.so'      # libpng
@@ -65,6 +66,7 @@ prepare() {
   git rm -r externals/date
   git rm -r externals/ext-boost
   git rm -r externals/ffmpeg-core
+  git rm -r externals/fmt
   git rm -r externals/freetype
   git rm -r externals/glslang
   git rm -r externals/half
@@ -85,6 +87,11 @@ prepare() {
   git rm -r externals/zlib-ng
   git rm -r externals/zstd
   git submodule update --init --recursive --depth 1
+
+  # add missing header
+  sed -i -e '1i #include <cstring>' \
+    src/video_core/amdgpu/regs.cpp \
+    src/video_core/amdgpu/resource.h
 
   # allow any version
   sed -E -e '/find_package/s&(glslang) \S+ (CONFIG)&\1 \2&' -i CMakeLists.txt
@@ -114,7 +121,7 @@ build() {
 
   # no longer buildable with pure v1
   export CFLAGS+=" -msse4.1 -DNDEBUG"
-  export CXXFLAGS+=" -msse4.1 -DNDEBUG"
+  export CXXFLAGS+=" -msse4.1 -DNDEBUG -DFMT_DEPRECATED_HEAVY_CORE"
 
   local _cmake_options=(
     -B build
