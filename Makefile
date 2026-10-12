@@ -14,7 +14,7 @@ md5:
 release:
 	makepkg --printsrcinfo > .SRCINFO
 	git add .
-	git commit -m "update: 4.4.0"
+	git commit -m "update: 4.8.2"
 	git push
 
 .PHONY: test
