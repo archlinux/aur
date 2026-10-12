@@ -1,75 +1,81 @@
 # nvidia-open-egpu
 
-NVIDIA open kernel modules for Linux with external GPU (eGPU) hotplug support.
+Arch Linux packages for NVIDIA's open kernel modules with Thunderbolt eGPU hotplug support. The current package is based on NVIDIA open-gpu-kernel-modules 615.78.08; see `PKGBUILD` for the package release and `CHANGELOG.md` for recent changes.
 
-This is a patched version of the official NVIDIA open-gpu-kernel-modules that adds support for safe hot-unplug of external GPUs (eGPU) connected via Thunderbolt without kernel crashes.
+The patch set adds guards for GPU surprise removal and reconnect cleanup. Udev loads the NVIDIA modules when an NVIDIA display GPU appears and starts eGPU cleanup when a Thunderbolt device is removed. Cleanup tracks NVIDIA-classified external GPUs by PCI address and device nodes, so it can target the GPU that disappeared without relying on device numbering.
 
-## Source Code
+Package patches are maintained in [bdandy/open-gpu-kernel-modules](https://github.com/bdandy/open-gpu-kernel-modules). The upstream source is [NVIDIA/open-gpu-kernel-modules](https://github.com/NVIDIA/open-gpu-kernel-modules).
 
-This package patches are maintained at: https://github.com/bdandy/open-gpu-kernel-modules
+## Packages
 
-The upstream NVIDIA source is available at: https://github.com/NVIDIA/open-gpu-kernel-modules
+Choose one package:
 
-## What's Included
+- `nvidia-open-egpu`: modules built for Arch's `linux` kernel.
+- `nvidia-open-egpu-dkms`: DKMS source for kernels with matching headers installed.
 
-- Full NVIDIA open kernel module source
-- Thunderbolt eGPU hotplug fixes (prevents kernel crashes on hot-unplug)
-- GPU lost detection for external GPUs
-- Proper surprise removal handling
-- Stale device cleanup for reconnection
-- Suppressed noisy error messages for expected removal
-
-## Features
-
-✅ No kernel crash when Thunderbolt eGPU is hot-unplugged
-✅ Proper cleanup and recovery on reconnection
-✅ Works with safe removal (e.g., `nvoff` script)
-✅ Compatible with NVIDIA utils 580.119.02
+Both packages require NVIDIA userspace utilities at the same version as the modules or newer. The package dependencies enforce this.
 
 ## Installation
 
-```bash
-git clone https://aur.archlinux.org/nvidia-open-egpu.git
-cd nvidia-open-egpu
-makepkg -si
-```
-
-Or using an AUR helper:
+With an AUR helper, install one package:
 
 ```bash
 yay -S nvidia-open-egpu
 # or
-paru -S nvidia-open-egpu
+paru -S nvidia-open-egpu-dkms
 ```
 
-## Usage
+To build manually:
 
-Choose one of the two packages:
+```bash
+git clone https://aur.archlinux.org/nvidia-open-egpu.git
+cd nvidia-open-egpu
+makepkg -s
+sudo pacman -U ./nvidia-open-egpu-[0-9]*.pkg.tar.zst
+```
 
-- **nvidia-open-egpu**: Pre-compiled modules (recommended)
-- **nvidia-open-egpu-dkms**: DKMS modules (auto-recompiles after kernel updates)
+For the DKMS package, install its archive instead:
 
-## Requirements
+```bash
+sudo pacman -U ./nvidia-open-egpu-dkms-[0-9]*.pkg.tar.zst
+```
 
-- Linux kernel headers matching your running kernel
-- NVIDIA utilities version 580.119.02
-- GCC compiler for module compilation
+The DKMS package needs headers for each kernel you use. The prebuilt package targets Arch's `linux` kernel.
 
-## Known Issues
+## Hotplug behavior and settings
 
-- Only tested with Thunderbolt eGPUs (should work with other hotplug scenarios)
-- Requires linux-headers package installed
+On Thunderbolt removal, the handler waits for PCI removal and checks which recorded external NVIDIA GPU disappeared. Process termination and module unloading are both enabled by default and can be configured independently in `/etc/nvidia.env`:
 
-## Based On
+```ini
+# Leave applications using the removed eGPU running.
+NVIDIA_EGPU_KILL_PROCESSES=0
 
-- NVIDIA open-gpu-kernel-modules 580.119.02
-- Original AUR package by Daniel Bermond
-- Patches maintained at: https://github.com/bdandy/open-gpu-kernel-modules
+# Keep NVIDIA modules loaded after eGPU removal.
+NVIDIA_EGPU_UNLOAD_MODULES=0
+```
 
-## Maintainer
+When process termination is enabled, the handler sends `SIGTERM` to processes holding the removed eGPU's NVIDIA or DRM device nodes. After five seconds, it sends `SIGKILL` to remaining target-only processes. It leaves a process running if it also holds a device node for another active NVIDIA GPU. Module unloading is attempted only when no NVIDIA GPU remains; it retries up to three times.
 
-Bohdan Dymchenko <dmbohdan@gmail.com>
+For a Thunderbolt 4/5 enclosure the driver does not identify as external, force external mode for that eGPU's PCI address in `/etc/modprobe.d/nvidia-egpu.conf`:
+
+```conf
+options nvidia NVreg_RegistryDwordsPerDevice="pci=0000:04:00.0;RmForceExternalGpu=1"
+```
+
+Replace `0000:04:00.0` with the eGPU's PCI BDF. This per-device setting avoids forcing external mode on other NVIDIA GPUs.
+
+For systems that need the ReBAR bridge workaround, set the sibling PCI-to-PCI bridge BDF in `/etc/nvidia.env`:
+
+```ini
+NVIDIA_EGPU_DISABLE_BRIDGE=0000:03:04.0
+```
+
+The handler temporarily removes that bridge around module loading and rescans PCI afterward. Use this only when the eGPU needs the workaround; the bridge's downstream devices are temporarily removed too.
+
+The package's modprobe configuration blacklists NVIDIA and Nouveau aliases so the eGPU udev handler controls module loading. On a system with an internal NVIDIA GPU, review `/usr/lib/modprobe.d/nvidia-open.conf`; an `/etc/modprobe.d/nvidia-open.conf` override can replace it. Keep NVIDIA modules out of the initramfs on eGPU-only systems, and include them there only when needed for an internal NVIDIA GPU.
 
 ## License
 
-MIT and GPL-2.0-only (same as NVIDIA's open-gpu-kernel-modules)
+MIT and GPL-2.0-only, matching the upstream open kernel modules.
+
+Maintainer: Bohdan Dymchenko
