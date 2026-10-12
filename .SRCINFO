@@ -1,7 +1,7 @@
 pkgbase = mitex
 	pkgdesc = LaTeX support for Typst, powered by Rust and WASM
 	pkgver = 0.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mitex-rs/mitex
 	arch = x86_64
 	license = Apache-2.0

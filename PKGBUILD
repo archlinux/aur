@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 pkgname=mitex
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc='LaTeX support for Typst, powered by Rust and WASM'
 arch=(x86_64)
 url="https://github.com/mitex-rs/mitex"
@@ -35,4 +35,13 @@ package() {
 	cd "$pkgname-$pkgver"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+
+	local completions="$srcdir/completions"
+	mkdir -p "$completions"
+	"target/release/$pkgname" completion bash >"$completions/$pkgname.bash"
+	"target/release/$pkgname" completion zsh >"$completions/$pkgname.zsh"
+	"target/release/$pkgname" completion fish >"$completions/$pkgname.fish"
+	install -Dm0644 "$completions/$pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+	install -Dm0644 "$completions/$pkgname.zsh" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+	install -Dm0644 "$completions/$pkgname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
 }
