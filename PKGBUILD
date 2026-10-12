@@ -2,8 +2,8 @@
 
 _pkgbasename=django-axes
 pkgname=python-django-axes
-pkgver=5.40.1
-pkgrel=2
+pkgver=8.3.2
+pkgrel=1
 pkgdesc='Keep track of failed login attempts in Django-powered sites'
 arch=(any)
 url="https://github.com/jazzband/django-axes"
@@ -22,4 +22,4 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-sha256sums=('cc00b8acc81a3967ef129d2e0987042d0f25e1aa056ae11e91168126d38b3d53')
+sha256sums=('40c697a86020f866e5086f41142cd9fb6effadd78faa4389468ebfcc9150ed2c')
