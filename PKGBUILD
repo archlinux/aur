@@ -1,8 +1,8 @@
 # Maintainer: tmms
 
 pkgname='acados-git'
-pkgver=0.3.5.r7.gf0f474c
-pkgrel=1
+pkgver=0.6.0.r55.gf186f2a
+pkgrel=2
 pkgdesc="Fast and embedded solvers for nonlinear optimal control"
 arch=('i686' 'x86_64')
 url="https://github.com/acados/acados"
@@ -17,17 +17,17 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags --abbrev=7 main | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 prepare() {
 	if [ ! -e ./${pkgname%-git} ]
 	then
-		git clone ${url}.git -b master ${pkgname%-git}
+		git clone ${url}.git -b main ${pkgname%-git}
 	fi
 
 	cd ${pkgname%-git}
-	git pull origin master
+	git pull origin main
 	git submodule update --init external/blasfeo
 	git submodule update --init external/hpipm
 }
