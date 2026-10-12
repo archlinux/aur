@@ -3,16 +3,20 @@
 
 pkgname=nog
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tier-aware package manager for Arch Linux — pacman with a safety net, written in Rust"
 arch=('x86_64')
 url="https://github.com/jetomev/nog"
 license=('GPL-3.0-or-later')
-depends=('pacman' 'pacman-contrib' 'fakeroot')
+# sudo: every change nog makes runs through it (not in Arch's base). zstd: linked directly (the system
+# libzstd, Cargo.toml's zstd-sys pkg-config feature). Both found by the 2026-10-11 dependency audit.
+depends=('pacman' 'pacman-contrib' 'fakeroot' 'sudo' 'zstd')
 makedepends=('rust' 'cargo')
 optdepends=(
     'yay: AUR helper integration (preferred if installed)'
     'paru: AUR helper integration (alternative)'
+    'flatpak: Flatpak updates and installs (switched off when it is not installed)'
+    'snapd: Snap updates and installs (switched off when it is not installed)'
 )
 # Preserve user modifications to these files across upgrades — pacman will
 # write .pacnew next to them instead of overwriting. Without this, running
