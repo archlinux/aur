@@ -1,6 +1,6 @@
 pkgbase = python-extra-platforms
 	pkgdesc = Detect platforms and group them by family
-	pkgver = 13.11.0
+	pkgver = 13.12.0
 	pkgrel = 1
 	url = https://github.com/kdeldycke/extra-platforms
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-extra-platforms
 	makedepends = python-installer
 	makedepends = python-uv-build
 	depends = python
-	source = python-extra-platforms-13.11.0.tar.gz::https://github.com/kdeldycke/extra-platforms/archive/refs/tags/v13.11.0.tar.gz
-	sha512sums = ef5281eed87c844ca5f44de288b94478560146d599ace5b6ea1b7d320bb240b3ccdcf9709d2764912ea44c6dd725235117948f5e8f090995cabdc56f0c5142be
+	source = python-extra-platforms-13.12.0.tar.gz::https://github.com/kdeldycke/extra-platforms/archive/refs/tags/v13.12.0.tar.gz
+	sha512sums = 268f4d262d8c95b250cf9b2b9a9f043e2131087bfb38de8a93e2d8ac23c201301ef69aa2341eb66ecd10743c2737073b7a0a5832ab53f08bd7f421b5023dbbd6
 
 pkgname = python-extra-platforms
