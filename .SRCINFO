@@ -1,6 +1,6 @@
 pkgbase = jasper-km-bin
 	pkgdesc = Desktop app for Jasper Knowledge Management.
-	pkgver = 1.2.3
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/cjmalloy/jasper-app
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = jasper-km-bin
 	depends = docker
 	depends = docker-compose
 	depends = nodejs
-	provides = jasper-km=1.2.3
+	provides = jasper-km=1.2.5
 	conflicts = jasper-km
-	source = jasper-km-1.2.3-x86_64.AppImage::https://github.com/cjmalloy/jasper-app/releases/download/v1.2.3/Jasper-1.2.3.AppImage
-	source = LICENSE-1.2.3::https://raw.githubusercontent.com/cjmalloy/jasper-app/v1.2.3/LICENSE
+	source = jasper-km-1.2.5-x86_64.AppImage::https://github.com/cjmalloy/jasper-app/releases/download/v1.2.5/Jasper-1.2.5.AppImage
+	source = LICENSE-1.2.5::https://raw.githubusercontent.com/cjmalloy/jasper-app/v1.2.5/LICENSE
 	source = jasper-km.sh
-	sha256sums = f21c94769a7355139132b45b3a4e6f0d6c25b01dc1de30ee67e07967fe7e107c
+	sha256sums = 1cbdb47bc76b0b80dde92900083dd628a7703f44bc1fce01e1a20149085b9c7b
 	sha256sums = b841e587a43cbd61006192ad84d3af66c0344e51b882aa4e7efda427d2f30b73
 	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
 
