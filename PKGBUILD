@@ -1,6 +1,6 @@
 _pkgname=cyberdrop_dl_patched
 pkgname=cyberdropdownloader
-pkgver=10.11.0
+pkgver=10.11.1
 pkgrel=1
 pkgdesc="Bulk asynchronous downloader for multiple file hosts"
 arch=('any')
@@ -36,7 +36,6 @@ depends=(
     python-wcwidth
     python-xxhash
     python-yaml
-    python-yarl
 )
 makedepends=(
     python-build
@@ -47,10 +46,11 @@ makedepends=(
 optdepends=(
     'apprise: Notifications to other services'
     'flaresolverr: A proxy server to bypass Cloudflare protection'
+    'python-lxml: Faster HTML parsing'
 )
 conflicts=('cyberdrop-dl' 'cyberdrop-dl-git')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('c3f5a60e7fd80bdcb202e72079e8d1c67268a3101c29b86eeb86e4721fe52c63')
+sha256sums=('8901d3aede768cbab04c466f625dd620850f5c7e3d6631de85c23c92e311f424')
 
 build(){
     cd $_pkgname-$pkgver
