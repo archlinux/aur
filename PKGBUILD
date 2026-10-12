@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=spatialpandas
 pkgname=python-${_base}
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Pandas extension arrays for spatial/geometric operations"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python-dask python-numba python-pandas python-param python-pyarrow pyth
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-hypothesis python-geopandas python-scipy) # python-shapely python-hilbertcurve
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('7b9701c6b4a92c297dfc958c37169f135a1aad326482e9ca840d81a7bcef36bc674f4a20e0895c736c8715485d576a313c3165e9ddc8f9ef3f6d49a3e5d7dd0f')
+sha512sums=('2a30eca33ff5b7198a69f48960f1085a7f0e0342663309a77601590c9cc840d3960661a08f131091f977a2434c948df91e4fe4f3f4690dbee0f07630d08be11b')
 
 build() {
   cd ${_base}-${pkgver}
