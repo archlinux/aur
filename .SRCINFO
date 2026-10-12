@@ -1,0 +1,24 @@
+pkgbase = openmasterhub-bin
+	pkgdesc = Linux service and GTK4 app for the Cooler Master MasterHUB modular controller
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hoxton314/openmasterhub
+	install = openmasterhub.install
+	arch = x86_64
+	license = MIT
+	depends = gtk4
+	depends = libadwaita
+	depends = glibc
+	depends = gcc-libs
+	depends = systemd
+	optdepends = wireplumber: volume widget and volume actions (wpctl)
+	optdepends = nvidia-utils: NVIDIA GPU usage/temperature widgets
+	optdepends = curl: cover art for the now-playing widget
+	optdepends = hyprland: switch profiles by focused application
+	provides = openmasterhub
+	conflicts = openmasterhub
+	conflicts = openmasterhub-git
+	source = openmasterhub-0.1.0-x86_64.tar.gz::https://github.com/hoxton314/openmasterhub/releases/download/v0.1.0/openmasterhub-0.1.0-x86_64.tar.gz
+	sha256sums = 83ef40f8b193c537e87729142a914869b396fde8547d8722476b8aad09ad1939
+
+pkgname = openmasterhub-bin

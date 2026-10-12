@@ -1,0 +1,14 @@
+post_install() {
+  cat <<'EOF'
+==> OpenMasterHUB installed.
+    Start the service for your user (and at every login):
+      systemctl --user enable --now masterhubd
+    Then open "OpenMasterHUB" from your launcher to configure the hub.
+    If the keypad or dial keep showing the Cooler Master animation,
+    unplug and replug the MasterHUB once.
+EOF
+}
+
+post_upgrade() {
+  echo "==> Restart the service to use the new version: systemctl --user restart masterhubd"
+}
