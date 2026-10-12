@@ -7,19 +7,34 @@
 
 _name="libfdk-aac"
 pkgname="lib32-${_name}"
-pkgver=2.0.3
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Fraunhofer FDK AAC codec library (32-bit)"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://sourceforge.net/projects/opencore-amr/"
 _url="https://github.com/mstorsjo/fdk-aac"
-license=('custom')
-depends=('lib32-glibc' "${_name}>=${pkgver}")
-makedepends=('git' 'lib32-gcc-libs')
-provides=("${_name}.so")
-_pkgsrc="fdk-aac"
-source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}")
-b2sums=('c0256c9bb0b94451bf0a1a6699defc1fb51ea8a3c77f8dcb81bdcbb3d375bdb3a7a4eeb6965af3237e191a1ad78121198299d2974ac9f6ef7c76a2e0daf3d5cb')
+license=(
+  'LicenseRef-Fraunhofer'
+)
+depends=(
+  "${_name}>=${pkgver}"
+  'lib32-gcc-libs'
+  'lib32-glibc'
+)
+makedepends=(
+  'git'
+)
+provides=(
+  "${_name}.so"
+  'libfdk-xhe-aac.so'
+)
+_pkgsrc="${_url##*/}"
+source=(
+  "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}"
+)
+b2sums=('a7171040e5e4ba76319698565473610b954a791cace26468e3293567cbbf61b9e75eb0a400d4f5da62062ce0afe00c58751808c7958f3f229031a3d3ce69679a')
 
 build() {
   export CFLAGS+=" -m32"
