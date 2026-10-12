@@ -1,7 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
-pkgname=zlib-git
-pkgver=1.3.1.r50.g0f51fb4
+pkgbase=zlib-git
+pkgname=('zlib-git') # minizip-git
+pkgver=1.3.2.r110.g767c4c94
 pkgrel=1
 pkgdesc="A massively spiffy yet delicately unobtrusive compression library (git develop branch)"
 arch=('i686' 'x86_64')
@@ -9,8 +10,6 @@ url="https://www.zlib.net/"
 license=('Zlib')
 depends=('glibc')
 makedepends=('git')
-provides=("zlib=$pkgver" 'libz.so')
-conflicts=('zlib')
 options=('staticlibs')
 source=("git+https://github.com/madler/zlib.git#branch=develop")
 sha256sums=('SKIP')
@@ -19,7 +18,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "zlib"
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
@@ -29,18 +31,43 @@ build() {
   ./configure \
     --prefix="/usr"
   make
+
+  cd "contrib/minizip"
+
+  autoreconf -fi
+  ./configure \
+    --prefix="/usr"
+  make
 }
 
 check() {
   cd "zlib"
 
   #make test
+  #make -C "contrib/minizip" test
 }
 
-package() {
+package_zlib-git() {
+  pkgdesc="A massively spiffy yet delicately unobtrusive compression library (git develop branch)"
+  provides=("zlib=$pkgver" "zlib-static=$pkgver" 'libz.so')
+  conflicts=('zlib' 'zlib-static')
+
   cd "zlib"
 
   make DESTDIR="$pkgdir" install
 
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/zlib"
+}
+
+package_minizip-git() {
+  pkgdesc="Mini zip and unzip based on zlib"
+  depends+=('zlib')
+  provides=("minizip=$pkgver" 'libminizip.so')
+  conflicts=('minizip')
+
+  cd "zlib/contrib/minizip"
+
+  make DESTDIR="$pkgdir" install
+
+  install -Dm644 "../../LICENSE" -t "$pkgdir/usr/share/licenses/minizip"
 }
