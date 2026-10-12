@@ -11,6 +11,7 @@ makedepends=('cargo')
 arch=('x86_64' 'aarch64' 'armv7h')
 source=("$url/archive/refs/tags/basalt/v$pkgver.tar.gz")
 sha256sums=('0d9dfb1ffe26d2bbe7c4c4eb74354e17aff2c297b69df75bfa89e006fac8d011')
+options=('!lto')
 _srcdir="$pkgname-$pkgname-v$pkgver"
 
 prepare() {
@@ -39,5 +40,6 @@ check() {
 package() {
   cd "$_srcdir"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE-APACHE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
+  install -Dm644 LICENSE-GPL "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-GPL"
 }
