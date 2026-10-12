@@ -4,7 +4,7 @@
 pkgname=mold-ai-desktop-bin
 _pkgname=mold-ai-desktop
 _binname=mold-desktop
-pkgver=0.34.0
+pkgver=0.35.0
 pkgrel=1
 pkgdesc="Mold desktop app for remote GPU hosts — gallery, model manager and job queue (prebuilt, GPU-free)"
 arch=('x86_64')
@@ -43,7 +43,7 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_binname}-x86_64-unknown-l
 # Rewritten by scripts/aur/update-pkgbuild.sh on every release. SKIP is only
 # the in-tree placeholder: the first release that publishes the archive
 # replaces it with the real digest.
-sha256sums_x86_64=('b33410a961290de5c4ae910050844a5796700fe5e9d67d979a32f7466632e78c')
+sha256sums_x86_64=('d5aadc56886c2df901714036ca42b0d4bf3ae7f6997947bd5b143f90b489278c')
 
 package() {
   # The archive is the `usr/` tree scripts/install-linux-desktop-files.sh lays
