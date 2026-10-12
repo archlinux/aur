@@ -1,15 +1,22 @@
 pkgbase = python-marko
 	pkgdesc = A markdown parser with high extensibility
-	pkgver = 2.1.4
+	pkgver = 2.2.4
 	pkgrel = 1
-	url = https://pypi.org/project/marko
+	url = https://github.com/frostming/marko
 	arch = any
 	license = MIT
+	checkdepends = python-pygments
+	checkdepends = python-pytest
+	checkdepends = python-slugify
 	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-pdm-backend
-	depends = python
-	provides = python-marko
-	source = https://files.pythonhosted.org/packages/source/m/marko/marko-2.1.4.tar.gz
-	sha256sums = dd7d66f3706732bf8f994790e674649a4fd0a6c67f16b80246f30de8e16a1eac
+	makedepends = python-wheel
+	depends = python>=3.9
+	optdepends = python-objprint: enhanced AST representations
+	optdepends = python-pygments: syntax highlighting extension
+	optdepends = python-slugify: table-of-contents slug generation
+	source = marko-2.2.4.tar.gz::https://github.com/frostming/marko/archive/refs/tags/v2.2.4.tar.gz
+	b2sums = 1ed0e525729cae387488355f8b2e03f9e9745441d65b9466a12a74b0ec99b922878f4c76089b4c1998946dcf7d7766a4908eb574eff14d50338659a3b8810a12
 
 pkgname = python-marko
