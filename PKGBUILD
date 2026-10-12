@@ -6,10 +6,9 @@ pkgname=(
   libvlc-luajit
   vlc-plugin-luajit
 )
-# optional fixup version including hyphen
-pkgver=3.0.23_2
+pkgver=3.0.24
 pkgrel=1
-pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
+pkgdesc='Free and open source cross-platform multimedia player and framework built with luajit'
 url=https://www.videolan.org/vlc/
 arch=('x86_64' 'aarch64')
 license=(
@@ -52,8 +51,8 @@ makedepends=(
   libbluray
   libcaca
   libcddb
-  libdca
   libdc1394
+  libdca
   libdvbpsi
   libdvdcss
   libdvdnav
@@ -71,12 +70,13 @@ makedepends=(
   libmpcdec
   libmpeg2
   libmtp
-  libnotify
   libnfs
+  libnotify
   libogg
   libpng
   libproxy
   libpulse
+  librist
   librsvg
   libsamplerate
   libsecret
@@ -89,6 +89,7 @@ makedepends=(
   libupnp
   libva
   libvorbis
+  libvpl
   libvpx
   libx11
   libxcb
@@ -97,7 +98,7 @@ makedepends=(
   libxpm
   lirc
   live-media
-  lua
+  luajit
   mesa
   mpg123
   opus
@@ -124,7 +125,6 @@ makedepends=(
   xosd
   zlib
   zvbi
-  luajit
   vlc
   libvlc libvlccore.so
 )
@@ -136,12 +136,10 @@ source=(
   "git+https://code.videolan.org/videolan/vlc.git#tag=${pkgver//_/-}"
   0001-Use-reproducible-data-for-build-user-and-host.patch
   0002-Adjust-hardcoded-font-paths-for-ttf-dejavu.patch
-  0003-Adjust-includes-for-build-with-gstreamer-1.28.patch
 )
-sha512sums=('7a8700de9b8c458474c6d43df5306f2d59ead93a665d64ebf7d4d0b38b378abc18e065c47fa04f85ff1ea51b3aff59bf6a6d6ac346991c4cf0ad78a3d9169150'
+sha512sums=('1979f6d3a42ff2b7db588a74bcc443a99dafa358421df7636a668bce295d97ce6ec50dcb3c2ed5a6e93b2d31820806be002a549d41c1a3c23d541b57c667d4ad'
             '9d72267ac97c998a12435041ed9ff6010f422d21505b8074ebb54bc6c8ee56532e0706489415fa725c541a5271f36db1614c11ec3c82dd354c36af97c82972ad'
-            'f5452e7fdbaa273f088e3accaea46687ff7dd8479a89e266987208aff8ddae2a0bb87bd0a602508d1a7f7d7fc9447e9c69eb0e3f84de9643d6213757e9a7cfb5'
-            '232f5595356a9864f89caf36f7ff3d81ba58b9f76b2a39c5540837b705e21a7a8c6ae2980303d6ba8bc589f4664db2fe25956b1d7f8f420c4b216f354866715c')
+            'f5452e7fdbaa273f088e3accaea46687ff7dd8479a89e266987208aff8ddae2a0bb87bd0a602508d1a7f7d7fc9447e9c69eb0e3f84de9643d6213757e9a7cfb5')
 
 prepare() {
   cd $_name
@@ -210,7 +208,9 @@ build() {
     --enable-libass
     --enable-libcddb
     --enable-libmpeg2
+    --enable-librist
     --enable-libva
+    --enable-libvpl
     --enable-libxml2
     --enable-lirc
     --enable-live555
@@ -314,7 +314,7 @@ package_vlc-luajit() {
     _pick $_name-plugin-luajit usr/share/doc/vlc/lua/
   )
 
-  rm -rf $pkgdir/*
+  rm -rv $pkgdir/*
 }
 
 package_libvlc-luajit() {
@@ -328,11 +328,11 @@ package_libvlc-luajit() {
 package_vlc-plugin-luajit() {
   pkgdesc+=" - LuaJIT scripting plugins"
   depends=(
-    libgcc
-    libstdc++
     glibc
+    libgcc
     libvlc libvlccore.so
     luajit
+    vlc-plugins-base
   )
   optdepends=(
     'lua-socket: for http interface'
@@ -342,3 +342,6 @@ package_vlc-plugin-luajit() {
 
   mv -v $pkgname/* "$pkgdir"
 }
+
+# vim: ts=2 sw=2 et:
+
