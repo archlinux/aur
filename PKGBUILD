@@ -2,7 +2,7 @@
 _pkgname=backend.ai-desktop
 pkgname="${_pkgname//./-}-bin"
 _appname='Backend.AI Desktop'
-pkgver=26.9.1
+pkgver=26.9.2
 _electronversion=39
 pkgrel=1
 pkgdesc="Provides a convenient environment for users, while allowing various commands to be executed without CLI. It also provides some visual features that are not provided by the CLI, such as dashboards and statistics."
@@ -33,8 +33,8 @@ source=(
 )
 sha256sums=('c54209c33c387908bfaae40a9c5f6c96bacaa52684f2546068e2b4441f4a53b3'
             'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
-sha256sums_aarch64=('44f9679b77e40400df1a634fd063866f33c1f6f188fedb06c0179159ff9e92ec')
-sha256sums_x86_64=('e474468a0a6cc1419809f4cde0155a3fce054dc0f7af99999e42f36c89ab4905')
+sha256sums_aarch64=('78d1b5cec5d20ba8c9ef794362458d9a4faf92a7f50a8a09f17748fa07066a32')
+sha256sums_x86_64=('5395f2f98c7802c63d197daa4793c9414d6f5ef2f0d7e0dd6c85a06e469e549a')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
