@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=imagefanreloaded-avalonia-bin
 _pkgname=ImageFanReloaded
-pkgver=1.2026.10.10
+pkgver=1.2026.10.12
 pkgrel=1
 pkgdesc="ImageFan Reloaded is a light-weight image viewer, supporting multi-core processing."
 arch=(
@@ -29,8 +29,8 @@ makedepends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}_Linux_arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}_Linux_x64.tar.gz")
-sha256sums_aarch64=('998eb8478f01db23b5f60c088b3d68d0ae2aaa629906d8aea855b8ad98c4f25e')
-sha256sums_x86_64=('4711dc31da6c7321a24151440e89bb383da5b1f2743c96a8308b0853d7e94553')
+sha256sums_aarch64=('46813d1589e7483bbc9f25f850194b89d669e2dd6dbef4bbbc924c3bd7f32da8')
+sha256sums_x86_64=('9716968cffb15f7c0f332d7c14365163069b10fefd98a28c977baca6963ebbc9')
 _get_app_dir() {
 	find "${srcdir}" -maxdepth 1 -type d -name "${_pkgname}_Linux_*" -print 2>/dev/null | head -n1
 }
