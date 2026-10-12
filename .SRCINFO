@@ -1,6 +1,6 @@
 pkgbase = drew
 	pkgdesc = Image annotation for Wayland. Bells and whistles included
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/mkay/drew
 	arch = any
@@ -14,7 +14,8 @@ pkgbase = drew
 	depends = gtk4
 	depends = libadwaita
 	depends = gdk-pixbuf2
-	source = drew-0.3.0.tar.gz::https://github.com/mkay/drew/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 16239ce12138b3623063942e434c9a32004a24033afdda7d1d4917a483e947ad
+	optdepends = gtk4-layer-shell: pinned images stay above other windows
+	source = drew-0.4.0.tar.gz::https://github.com/mkay/drew/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = c18747e10b7a8a9b0d34313e5e713e5a57ccc519e9d08026ce3deda8387dc104
 
 pkgname = drew
