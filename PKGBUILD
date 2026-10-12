@@ -2,7 +2,7 @@
 
 pkgname=rawmakase
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 url="https://$pkgname.com/"
 _url="https://github.com/pch/$pkgname"
 pkgdesc='Lightroom-compatible RAW photo editor'
@@ -13,7 +13,6 @@ depends=(glibc # libc.so libm.so
          libraw)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
-options=(!lto)
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
 sha256sums=('e1fc5e0d6c79108d1311cfbd9f2e205c7813996e6bce7f7bab35888f1d595bd9')
 
@@ -27,8 +26,8 @@ _srcenv() {
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
-	CFLAGS+=' -fno-lto'
-	CPPFLAGS+=' -fno-lto'
+	CFLAGS+=' -ffat-lto-objects'
+	CPPFLAGS+=' -ffat-lto-objects'
 }
 
 prepare() {
