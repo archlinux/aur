@@ -1,6 +1,6 @@
 pkgbase = krema
 	pkgdesc = A lightweight dock for KDE Plasma 6 — spiritual successor to Latte Dock
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://krema.bhyoo.com/
 	arch = x86_64
@@ -27,6 +27,8 @@ pkgbase = krema
 	depends = kcrash>=6.0
 	depends = kxmlgui>=6.0
 	depends = kservice>=6.0
+	depends = kio>=6.0
+	depends = kjobwidgets>=6.0
 	depends = kirigami>=6.0
 	depends = kirigami-addons
 	depends = layer-shell-qt>=6.0
@@ -34,7 +36,7 @@ pkgbase = krema
 	depends = kpipewire
 	depends = pipewire
 	depends = wayland>=1.22
-	source = krema-0.11.0.tar.gz::https://github.com/isac322/krema/releases/download/v0.11.0/krema-0.11.0.tar.gz
-	sha256sums = 1bfb961342d3871834bb19cc68917dde4779688eed48649f4c797cf56949795c
+	source = krema-0.12.0.tar.gz::https://github.com/isac322/krema/releases/download/v0.12.0/krema-0.12.0.tar.gz
+	sha256sums = 44cb0256fe832a2ebe27de6801b50a26953affa76313179f303c84977c7cea4d
 
 pkgname = krema
