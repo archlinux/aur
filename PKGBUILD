@@ -1,7 +1,7 @@
 # Maintainer: bolikcraft <bolikcraft@gmail.com>
 
 pkgname=vantah-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Unofficial GUI and tray front-end for the AdGuard VPN CLI (adguardvpn-cli)"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ options=('!strip' '!debug')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/vantah-$pkgver-linux-x64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/vantah-$pkgver-linux-arm64.tar.gz")
 
-sha256sums_x86_64=('a13f037cbff1b069425d1c584a5b9d0c629bb50238c3840124fa20113a7b1d9f')
-sha256sums_aarch64=('0c4fd6ee09e809f78d0fa35cf8ab31dab0f2dfd65dc0167e1ebc5a9f8dc2eac0')
+sha256sums_x86_64=('ec692210ce3fe98d8b1c01bb1db46d4a718eb01cfea0cffc77177bdbe767259a')
+sha256sums_aarch64=('f358c57861723319fcb0d37565a834ad3a1dc4db11f0443715aee880ac99f808')
 
 package() {
   # Каталог внутри архива повторяет имя ассета, т.е. RID, а не $CARCH.
