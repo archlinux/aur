@@ -58,4 +58,13 @@ package() {
 	chmod 755 "$pkgdir"/usr/bin/*
 	chmod 644 "$pkgdir"/usr/share/applications/*.desktop "$pkgdir"/usr/share/mime/packages/*.xml
 	find "$pkgdir/usr/share/icons" -type f -exec chmod 644 {} +
+
+	# Everything under /opt is shipped executable (fonts, configs, jars, ..).
+	# Only keep the executable bit on ELF binaries/libraries and scripts.
+	find "$pkgdir/opt" -type f -print0 | while IFS= read -r -d '' f; do
+		case "$(head -c4 "$f" | tr -d '\0')" in
+			$'\x7fELF' | '#!'*) chmod 755 "$f" ;;
+			*) chmod 644 "$f" ;;
+		esac
+	done
 }
