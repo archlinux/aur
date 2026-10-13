@@ -1,16 +1,16 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname=stayorganised
 appname=stayorganised
-pkgver=0.3.3
-pkgrel=3
+pkgver=0.4.0
+pkgrel=2
 pkgdesc="Calendar-first personal agenda manager designed to replace Google Calendar, Outlook etc"
 arch=('x86_64')
 url="https://gitlab.com/nathanchere/stayorganised"
 license=('Apache-2.0')
-depends=('fmt' 'layer-shell-qt' 'qt6-base' 'qt6-svg' 'qt6-wayland' 'qtkeychain-qt6' 'spdlog' 'wayland')
+depends=('fmt' 'layer-shell-qt' 'qt6-base' 'qt6-svg' 'qtkeychain-qt6' 'spdlog' 'wayland')
 makedepends=('cmake' 'git' 'ninja' 'pkgconf' 'wayland-protocols')
 source=("${appname}::git+https://gitlab.com/nathanchere/stayorganised.git#tag=v${pkgver}")
-sha256sums=('25115b1f25ae7b0070fc3207080657c95842d534881b2dc2f6a5ab41250cd37d')
+sha256sums=('4f8dd16f7adf0e710e27ada328d533e6fbc3033a1d5148367b06a9a0e26853cb')
 
 build() {
 	cmake -S "$srcdir/$appname" -B build -G Ninja \
