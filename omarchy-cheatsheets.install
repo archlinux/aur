@@ -1,0 +1,8 @@
+post_install() {
+    echo "==> omarchy-cheatsheets: optional drop-in replacement for SUPER+K:"
+    echo "    omarchy-cheatsheets --install-bindings   (backs up bindings.lua first)"
+}
+
+post_upgrade() {
+    post_install
+}
