@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 pkgname=mesh-client-bin
 _pkgname="${pkgname%-bin}"
-pkgver=6.3.0 # renovate: datasource=github-releases depName=Colorado-Mesh/mesh-client
+pkgver=6.4.0 # renovate: datasource=github-releases depName=Colorado-Mesh/mesh-client
 pkgrel=1
 pkgdesc="Electron desktop client for Meshtastic, MeshCore and Reticulum with BLE, USB serial, TCP and MQTT transports"
 arch=('x86_64' 'aarch64')
@@ -42,5 +42,5 @@ package() {
   done
 }
 
-sha256sums_x86_64=('7f41d23890b866b44ab57680e4416ed4d4b183ef17eedf56c24057b80150d0fc')
-sha256sums_aarch64=('5de05e3ef1b4e078017ad9186768c87990e7a9632856bc06a8711575db8f024e')
+sha256sums_x86_64=('5c1339fdf41d0348ab35ec3a7bf6e79060e9a20cc29c2e9b840a5d3c25e08343')
+sha256sums_aarch64=('f1cd3fb31bc27ebf4d3dfed727edb2dd7a1920b7cdb2e49baedd2669a623f676')
