@@ -1,0 +1,12 @@
+pkgbase = sherpa-onnx-piper-voice-ru-denis
+	pkgdesc = Russian Piper TTS voice denis (medium quality) in sherpa-onnx format
+	pkgver = 20251202
+	pkgrel = 1
+	url = https://github.com/k2-fsa/sherpa-onnx/releases/tag/tts-models
+	arch = any
+	license = CC0-1.0
+	optdepends = sherpa-onnx: TTS engine that loads this voice
+	source = vits-piper-ru_RU-denis-medium-20251202.tar.bz2::https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-ru_RU-denis-medium.tar.bz2
+	sha256sums = efa4c18e0b5e32b81d1b6df36b9d312831e5d545200e27848ef926a4cd930300
+
+pkgname = sherpa-onnx-piper-voice-ru-denis
