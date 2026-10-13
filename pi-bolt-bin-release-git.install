@@ -1,0 +1,16 @@
+# Optional extensions by OpenSec (offered by the upstream installer, never
+# installed by this package). To add them later, run:
+#
+#   pi-bolt install npm:opensec-pi-subagents   # specialized agents in separate sessions
+#   pi-bolt install npm:opensec-pi-todo        # todo list for the model, shown above the editor
+#   pi-bolt install npm:opensec-pi-fff         # fast file and content search
+post_install() {
+  cat <<'EOF'
+Optional Pi-Bolt extensions by OpenSec (not installed; the release installer
+offers them, this package does not). To add them, run:
+
+  pi-bolt install npm:opensec-pi-subagents   # specialized agents in separate sessions
+  pi-bolt install npm:opensec-pi-todo        # todo list for the model, shown above the editor
+  pi-bolt install npm:opensec-pi-fff         # fast file and content search
+EOF
+}
