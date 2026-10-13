@@ -2,7 +2,7 @@
 # Maintainer: Kirill Salnikov <salnikov.k54 at gmail dot com>
 
 pkgname='monlux'
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Control external monitor brightness over DDC/CI on Linux'
 url='https://github.com/ubiqel/monlux'
@@ -11,8 +11,9 @@ license=('MIT')
 provides=('monlux')
 conflicts=('monlux')
 makedepends=('go' 'git')
+install=monlux.install
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/ubiqel/monlux/releases/download/v${pkgver}/monlux-${pkgver}.tar.gz")
-sha256sums=('c2cdeab7ef3ccf46b362b4df596bf54c04d8442dbc589ce8bd6330001e9ffa29')
+sha256sums=('505f8379e58410e97384b916498d20e186d76b0fe1e4ea2767d001aad62a639a')
 build() {
   export CGO_ENABLED=0
   export GOFLAGS="-trimpath -mod=vendor -modcacherw"
