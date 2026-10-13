@@ -2,8 +2,8 @@
 # Contributor: Phillip Schichtel <phillip@schich.tel>
 pkgname=grayjay
 _appname=grayjay
-pkgver=18
-pkgrel=3
+pkgver=20
+pkgrel=1
 pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
 url="https://grayjay.app/desktop/"
@@ -23,7 +23,7 @@ source=("${_appname}::git+${host}/Grayjay.Desktop.git#tag=${pkgver}"
         "grayjay.sh"
         "Grayjay.Desktop.CEF.csproj.user"
         "FUTO.MDNS.csproj.user")
-sha256sums=('2dbe4f19fde42da67fdc70b985caf051b50281ab028db1e58a012166785a7037'
+sha256sums=('8ea1cc18375f6d42572344c175fa703865f30a6798ec13a6b6e9a32edd25850e'
             '3d37aacfe2c23495448da3d7202abfa2e28db5a10cb69453f9b00b1e80a70f5d'
             '3a1f43abacc62ad257edbb6c7744c132f5a50d64d0725aa79e251ddc19b6e489'
             'bc13ae396e2fcd2849e4564db67fad6e1461cedebb2abdafece81fc4c00f38dd'

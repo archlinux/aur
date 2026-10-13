@@ -1,7 +1,7 @@
 pkgbase = grayjay
 	pkgdesc = Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)
-	pkgver = 18
-	pkgrel = 3
+	pkgver = 20
+	pkgrel = 1
 	url = https://grayjay.app/desktop/
 	arch = x86_64
 	license = custom:Source-First-License-1.1
@@ -16,12 +16,12 @@ pkgbase = grayjay
 	conflicts = grayjay-git
 	options = !strip
 	options = staticlibs
-	source = grayjay::git+https://gitlab.futo.org/videostreaming/Grayjay.Desktop.git#tag=18
+	source = grayjay::git+https://gitlab.futo.org/videostreaming/Grayjay.Desktop.git#tag=20
 	source = grayjay.desktop
 	source = grayjay.sh
 	source = Grayjay.Desktop.CEF.csproj.user
 	source = FUTO.MDNS.csproj.user
-	sha256sums = 2dbe4f19fde42da67fdc70b985caf051b50281ab028db1e58a012166785a7037
+	sha256sums = 8ea1cc18375f6d42572344c175fa703865f30a6798ec13a6b6e9a32edd25850e
 	sha256sums = 3d37aacfe2c23495448da3d7202abfa2e28db5a10cb69453f9b00b1e80a70f5d
 	sha256sums = 3a1f43abacc62ad257edbb6c7744c132f5a50d64d0725aa79e251ddc19b6e489
 	sha256sums = bc13ae396e2fcd2849e4564db67fad6e1461cedebb2abdafece81fc4c00f38dd
