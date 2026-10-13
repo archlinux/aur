@@ -1,6 +1,6 @@
 pkgbase = sable-next-git
 	pkgdesc = Sable rewrite in Rust and Svelte
-	pkgver = 1.22.10.nightly.261004132138.27df61cfed90
+	pkgver = 2.0.3.nightly.261013080556.d41d1d54befb
 	pkgrel = 1
 	url =  https://next.sable.moe
 	arch = x86_64
