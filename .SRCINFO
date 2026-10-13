@@ -1,11 +1,11 @@
 pkgbase = paintdotnet-wine-experimental
 	pkgdesc = Experimental Paint.NET with wine specific changes
 	pkgver = 5.200.9775.2252
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/paintdotnet/Paint.NET-on-WINE
 	arch = x86_64
 	license = LicenseRef-custom
-	makedepends = icotool
+	makedepends = icoutils
 	depends = wine>=11.5
 	depends = winetricks
 	depends = bash
