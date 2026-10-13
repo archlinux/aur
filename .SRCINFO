@@ -1,7 +1,7 @@
 pkgbase = axisforge-bin
 	pkgdesc = Linux HOTAS / joystick remapper with action graphs, trim, and an AI setup assistant
-	pkgver = 1.0.4
-	pkgrel = 2
+	pkgver = 1.0.5
+	pkgrel = 1
 	url = https://axisforge.app
 	install = axisforge.install
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = axisforge-bin
 	optdepends = xdg-utils: opens profiles/logs folders from the GUI menus
 	provides = axisforge
 	conflicts = axisforge
+	noextract = axisforge-1.0.5.AppImage
 	options = !strip
 	options = !debug
-	source = axisforge-1.0.4.AppImage::https://github.com/silentcid/axisforge-releases/releases/download/v1.0.4/AxisForge-1.0.4-x86_64.AppImage
+	source = axisforge-1.0.5.AppImage::https://github.com/silentcid/axisforge-releases/releases/download/v1.0.5/AxisForge-1.0.5-x86_64.AppImage
 	source = axisforge.desktop
 	source = 99-axisforge.rules
-	noextract = axisforge-1.0.4.AppImage
-	sha256sums = d90a9a2568530f1c6746745228e5d332e9a16b9d7c51552702e51bd64074caed
+	sha256sums = ffe86f7e96f765040504586f0d0c643e07305378f5919491011519aaabf775e4
 	sha256sums = 7b8d44f8021b81c470e80799fe73e04feba8a90e330ed53034116c07a4bc1116
 	sha256sums = 04a92c0cc0eb37ae82a466cf55a6d93d11a1b7002b51b9e4060bb6e9a18cde27
 
