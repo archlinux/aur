@@ -1,0 +1,15 @@
+pkgbase = expirito
+	pkgdesc = A utility to clean up old files and empty directories
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/mmacpherson/expirito
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-yaml
+	provides = expirito
+	source = git+https://github.com/mmacpherson/expirito.git#tag=v1.2.0
+	sha256sums = SKIP
+
+pkgname = expirito
