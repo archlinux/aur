@@ -1,11 +1,11 @@
 pkgname=gloop-bin
-pkgver=0.6.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Fast and light file manager for Wayland'
 arch=('x86_64')
 url='https://github.com/obselate/gloop'
 license=('MIT' 'Apache-2.0' 'Zlib' 'LicenseRef-HarfBuzz' 'LicenseRef-Public-Domain' 'LicenseRef-Wayland-protocols')
-depends=('glibc>=2.39' 'wayland' 'libxkbcommon' 'vulkan-icd-loader' 'vulkan-driver' 'xdg-utils' 'shared-mime-info')
+depends=('glibc>=2.38' 'wayland' 'libxkbcommon' 'vulkan-icd-loader' 'vulkan-driver' 'xdg-utils' 'shared-mime-info')
 optdepends=('xdg-desktop-portal>=1.18: use Gloop for portal file choosers')
 provides=("gloop=$pkgver")
 conflicts=('gloop')
@@ -21,11 +21,11 @@ source=(
   'gloop.portal'
 )
 sha256sums=(
-  'e4299fbf24e052c3eaf5d70fdabec2edee7c96c2e2913407d9294aae7320e6ad'
+  'c2284b919aa0e1829b477492cdf6ca209a5d81cc5df67a5fc17fd4896c0417f9'
   '8f743b0cda834e7936dbc235354d461e15921c92632edb31b09adc0c368435e9'
-  'cb572dc68bba6372b19cfa04a1810e6f89e5fb36b24fc1e22eaa601a6638f032'
+  'b70f5d88675bfcbb109fbb32ce5fdac0ec8dbfca96d373260ab3d0ed131fc73e'
   'ebbfd210cb048be0d4f2b5af60cf409b59e880517b75fa5c7913598828ca2683'
-  '63ced741c827dd8fb3f11a53550cac0f4cd04daa1f4f8f182252b8ddf7eed0ff'
+  '377d6641f2b6137a4321555bd292dccccaa0bd817767ac4b787a0a29ccbdedc0'
   '10d41a03b0e51ffc439ff43817679f9040aad84caa096e8fc62cd5b12bc0b2eb'
   '16b036ee7897168e90c85d2b2f0b66ef043121b6d5d0d01dca70db500047b8c4'
   'a2eebb7523439c238995cbc8b5fff19e89b245cdce846dbf667788912af41843'
