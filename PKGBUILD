@@ -1,6 +1,6 @@
 # Maintainer: 1000Hz <1000Hz radiowave + aur at gmail>
 pkgname=btrfs-file-restorer
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A GUI tool to recover files from damaged and unmountable btrfs filesystem"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('zlib')
 depends=('hicolor-icon-theme' 'btrfs-progs')
 
 source=("https://github.com/dsvi/Btrfs-File-Restorer/releases/download/v${pkgver}/Btrfs-File-Restorer.AppImage")
-sha256sums=('1940cadd0db019454e04c4d0592f50411c21040611d0a6f973871ba7f2fefcea')
+sha256sums=('30c5d0bcce9cb952dd1e06a9892c4ff43ebf1d2c46717eb9487e3d57c38327b5')
 
 build() {
     # Extract the AppImage payload.
