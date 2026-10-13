@@ -1,6 +1,6 @@
 pkgbase = mmu-vpn
 	pkgdesc = OpenFortiVPN tray wrapper for Multimedia University
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/KOWX712/mmu-vpn
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mmu-vpn
 	depends = polkit
 	depends = xdotool
 	options = !debug
-	source = https://github.com/KOWX712/mmu-vpn/archive/v1.0.0/mmu-vpn-1.0.0.tar.gz
-	sha256sums = ad737ecd1c8f5cad1950b205fe6e6fd0a098bb03ab171fdf3dea8769ecfc0795
+	source = https://github.com/KOWX712/mmu-vpn/archive/v1.0.1/mmu-vpn-1.0.1.tar.gz
+	sha256sums = 27651d0cbb379c202ec717465f2606ba2d95a1c5b5e799517363a3bfc8371da4
 
 pkgname = mmu-vpn
