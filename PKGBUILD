@@ -1,6 +1,6 @@
 _pkgname=DiagNG
 pkgname=diagmond
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='D-Bus daemon for DiagNG privileged actions'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
 )
 makedepends=('cargo' 'pkgconf' 'git' 'clang')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('ee2a549875d634c65aa7f8b721011ee5a58ec4041bae79ffe2ca8476535537a7')
+sha256sums=('2ed6959ee30e53d1a9091e375b4de0e25d18072a3aed993a348a83b55c62648b')
 options=('!lto')
 
 prepare() {
