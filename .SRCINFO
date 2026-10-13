@@ -1,6 +1,6 @@
 pkgbase = neosolve-daily-git
 	pkgdesc = Parametric 2D/3D CAD: SolveSpace with fillet, chamfer, shell, loft and sweep
-	pkgver = 3.2.r2302.geac98c4e
+	pkgver = 3.2.r2400.g92ea25b3
 	pkgrel = 1
 	url = https://github.com/dodox1/neosolve
 	arch = x86_64
