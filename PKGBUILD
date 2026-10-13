@@ -1,7 +1,7 @@
 # Maintainer: TNT_TS <tnt_ts@qq.com>
 
 pkgname=nginx-mod-http-flv
-pkgver=1.2.13
+pkgver=1.2.14
 pkgrel=1
 
 _modname="${pkgname#nginx-mod-}"
@@ -11,9 +11,10 @@ arch=('x86_64' 'aarch64')
 makedepends=('nginx' 'nginx-src')
 url="https://github.com/winshining/nginx-http-flv-module"
 license=('BSD-2-Clause')
-depends=('glibc' 'nginx')
+depends=('nginx')
 provides=('nginx-http-flv-module')
 conflicts=('nginx-http-flv-module')
+backup=('etc/nginx/modules.d/20-http-flv.conf')
 
 source=("${_modname}::git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
@@ -39,14 +40,13 @@ package() {
   install -Dm644 "$srcdir/$_modname/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # 安装模块
+  # 安装模块并生成加载配置
+  install -dm0755 "$pkgdir/etc/nginx/modules.d"
+
   cd build/objs
   for mod in *.so; do
-    install -Dm755 $mod "$pkgdir/usr/lib/nginx/modules/$mod"
+    install -Dm755 "$mod" "$pkgdir/usr/lib/nginx/modules/$mod"
+    echo "load_module \"/usr/lib/nginx/modules/$mod\";" \
+      >>"$pkgdir/etc/nginx/modules.d/20-http-flv.conf"
   done
-
-  # 可选：生成加载配置
-  install -dm0755 "$pkgdir/etc/nginx/modules.d"
-  echo 'load_module "/usr/lib/nginx/modules/ngx_http_flv_live_module.so";' \
-    >"$pkgdir/etc/nginx/modules.d/20-http-flv.conf"
 }
