@@ -2,7 +2,7 @@
 
 pkgname=indielinks-git
 _pkgname=${pkgname%-git}
-pkgver=r356.a594e92
+pkgver=r358.aaafc48
 pkgrel=1
 pkgdesc="del.icio.us in the Fediverse (git version)"
 arch=('x86_64')
@@ -60,9 +60,9 @@ package() {
     mv $wasm indielinks-fe.wasm
     mv $js indielinks-fe.js
     mv $css style.css
-    sed -i -e s@$wasm@fe/indielinks-fe.wasm@g index.html
-    sed -i -e s@$js@fe/indielinks-fe.js@g index.html
-    sed -i -e s@$css@fe/style.css@g index.html
+    sed -i -e "s@${wasm}@indielinks-fe.wasm@g" index.html
+    sed -i -e "s@${js}@indielinks-fe.js@g" index.html
+    sed -i -e "s@${css}@style.css@g" index.html
 
     install -Dm644 index.html         "$pkgdir/usr/share/indielinks/assets/index.html"
     install -Dm644 indielinks-fe.js   "$pkgdir/usr/share/indielinks/assets/indielinks-fe.js"

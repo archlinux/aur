@@ -1,6 +1,6 @@
 pkgbase = indielinks-git
 	pkgdesc = del.icio.us in the Fediverse (git version)
-	pkgver = r356.a594e92
+	pkgver = r358.aaafc48
 	pkgrel = 1
 	url = https://github.com/sp1ff/indielinks
 	install = .INSTALL
