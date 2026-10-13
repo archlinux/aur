@@ -52,6 +52,10 @@ package() {
   cp -rp "${srcdir}/root/opt/Rambox/." "${pkgdir}/opt/${_pkgname}/."
   cp -rp "${srcdir}/root/usr/share/icons/." "${pkgdir}/usr/share/icons/."
 
+  # Upstream debs have shipped /opt/Rambox with 0700 before; cp -rp preserves
+  # that, hiding the launcher from unprivileged users. Normalise defensively.
+  find "${pkgdir}/opt/${_pkgname}" -type d -exec chmod 0755 {} +
+
   install -m 0644 "${srcdir}/${_pkgname}-EULA" "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
   install -m 0644 "${srcdir}/root/usr/share/applications/${_pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
