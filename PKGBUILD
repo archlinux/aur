@@ -1,7 +1,7 @@
 # Maintainer: RainOrigami <rain+github@codefreak.net>
 
 pkgname=tanglewire
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="PipeWire patchbay that lays the graph out by itself"
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
 )
 makedepends=('cargo' 'clang')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b25f3f08dbb734eca6c87ce2b6f33296a88a29b38fbfda42773861348f1c388f')
+sha256sums=('c59cc97f0e5b4abaae07dc1674df4eed54b57153e53ae542dd5ee6bfea669629')
 
 prepare() {
   cd "TangleWire-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = tanglewire
 	pkgdesc = PipeWire patchbay that lays the graph out by itself
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/RainOrigami/TangleWire
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = tanglewire
 	depends = libadwaita
 	depends = libpipewire
 	depends = pango
-	source = tanglewire-0.1.0.tar.gz::https://github.com/RainOrigami/TangleWire/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = b25f3f08dbb734eca6c87ce2b6f33296a88a29b38fbfda42773861348f1c388f
+	source = tanglewire-0.1.1.tar.gz::https://github.com/RainOrigami/TangleWire/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = c59cc97f0e5b4abaae07dc1674df4eed54b57153e53ae542dd5ee6bfea669629
 
 pkgname = tanglewire
