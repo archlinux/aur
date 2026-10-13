@@ -3,12 +3,12 @@
 
 pkgname=localtranslate
 pkgver=0.6.0
-pkgrel=3
-pkgdesc="Local, offline neural machine translation application"
+pkgrel=4
+pkgdesc="Translate offline using Firefox Translation Models"
 arch=('x86_64')
 url="https://github.com/terslang/LocalTranslate"
-license=('GPL-3.0-or-later')
-depends=('kotki' 'mecab' 'mecab-ipadic' 'icu' 'qt6-declarative' 'qt6-base' 'gcc-libs' 'localtranslate-models-base')
+license=('GPL-3.0-only')
+depends=('kotki' 'mecab' 'mecab-ipadic' 'icu' 'qt6-declarative' 'qt6-base' 'localtranslate-models-base')
 makedepends=('cmake' 'ninja' 'qt6-tools' 'cli11' 'rapidjson' 'intgemm' 'sentencepiece-browsermt' 'marian-lite' 'yaml-cpp')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/terslang/LocalTranslate/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('ba10a6c930c08031af0646e3f6cd3742d2a39d72dfbdbc2666c04bf4bb6d688b')
