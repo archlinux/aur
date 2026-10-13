@@ -7,7 +7,7 @@ makedepends=(rust cargo maturin python pkgconf patchelf gtk3)
 conflicts=(linuxtoys)
 provides=("linuxtoys=$pkgver")
 source=("https://github.com/psygreg/linuxtoys/releases/download/${pkgver}/linuxtoys-${pkgver}.tar.xz")
-sha256sums=('6c3093f821b87e28374f6f5279ef74d9489ba27117712c25e06b995cc69eb2d5')
+sha256sums=('c2d19ba335d5e3e936ee94fbc8d985092e349054423a3ae0a854f24146394295')
 options=(!lto)
 
 build() {
