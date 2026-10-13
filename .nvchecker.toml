@@ -1,0 +1,4 @@
+[reld]
+source = "git"
+git = "https://github.com/zackees/reld.git"
+prefix = "v"

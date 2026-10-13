@@ -1,0 +1,18 @@
+pkgbase = reld
+	pkgdesc = fork of weld, polylinker supporting incremental linking on macOS/Windows/Linux
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/zackees/reld
+	arch = x86_64
+	license = BSD-3-Clause
+	checkdepends = clang
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	source = https://github.com/zackees/reld/archive/refs/tags/v0.2.3/reld-0.2.3.tar.gz
+	sha256sums = f3d6c7f1b538894a3f21e7fb39c33104694bd23d72a5187553eafb803cf83d38
+
+pkgname = reld
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
