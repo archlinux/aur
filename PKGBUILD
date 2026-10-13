@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=configr
-_pkgver=0.3.5
+_pkgver=0.3.6
 pkgname=r-${_pkgname,,}
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc='An Implementation of Parsing and Writing Configuration File (JSON/INI/YAML/TOML)'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('43a19fa4920f2265ac4b2e03de36c5e135d1c97dfdc1fecee0b061ee92fa8ee2')
+sha256sums=('73f1d74fcc0b12d761816a3a10ede85d4545d7a6120a77d2e2f4fb41a6e306c5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
