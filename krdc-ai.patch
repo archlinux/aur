@@ -4168,14 +4168,16 @@ index a988f504..1620f348 100644
      QUrl m_url;
 diff --git a/core/smartinvert.cpp b/core/smartinvert.cpp
 new file mode 100644
-index 00000000..8cf73a13
+index 00000000..65cd47db
 --- /dev/null
 +++ b/core/smartinvert.cpp
-@@ -0,0 +1,144 @@
+@@ -0,0 +1,222 @@
 +// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +
 +#include "smartinvert.h"
++
++#include <QVector>
 +
 +#include <algorithm>
 +#include <array>
@@ -4226,6 +4228,30 @@ index 00000000..8cf73a13
 +// saturation, the less the filter touches them.
 +constexpr int s_satKeep = 40;
 +constexpr int s_satKeepRange = 60;
++
++// ClearType neutralization. Windows renders text with subpixel
++// antialiasing, so a black glyph on white arrives with colored pixels baked
++// into every edge: warm ones ((239, 205, 75), (180, 100, 4)) on one side of
++// the stroke, cool ones ((145, 212, 247)) on the other. The RDP "no font
++// smoothing" connect request is only a suggestion - servers under group
++// policy ignore it - and the saturation rule must preserve these pixels or
++// every colorful icon goes grey too, which left them as colored sparks
++// ringing the recolored text: the halo. They give themselves away by
++// structure: a saturated pixel wedged between a dark glyph core (luma at
++// most s_fringeCore) and flat background white (luma at least s_fringeWhite,
++// nearly unsaturated) within s_fringeRadius pixels. Link-blue text has no
++// dark core within reach, and icon bodies have no white background between
++// their outline and the core, so only antialiasing matches. Matched pixels
++// are neutralized to their luma - the plain grayscale antialiasing ClearType
++// was imitating - and recolor with their glyph, halo-free.
++// The radius of 3 covers the two-pixel fringe band ClearType paints on
++// horizontal strokes; the white bound accepts light-grey chrome (MMC's
++// dialogs are luma ~206), not just pure white. The core bound stays low so
++// link-blue text (luma ~82, no dark core within reach) never matches.
++constexpr int s_fringeCore = 60;
++constexpr int s_fringeWhite = 200;
++constexpr int s_fringeWhiteSat = 50;
++constexpr int s_fringeRadius = 3;
 +}
 +
 +namespace SmartInvert
@@ -4278,22 +4304,74 @@ index 00000000..8cf73a13
 +        return;
 +    }
 +
-+    for (int y = 0; y < image.height(); ++y) {
++    const int w = image.width();
++    const int h = image.height();
++
++    // Pass 1: luma and saturation maps, and the ClearType fringe map. The
++    // fringe test must run on the untouched pixels, so it is its own pass.
++    QVector<uint8_t> luma(w * h);
++    QVector<uint8_t> saturation(w * h);
++    for (int y = 0; y < h; ++y) {
++        const QRgb *line = reinterpret_cast<const QRgb *>(image.constScanLine(y));
++        for (int x = 0; x < w; ++x) {
++            const QRgb c = line[x];
++            const int r = qRed(c);
++            const int g = qGreen(c);
++            const int b = qBlue(c);
++            const int mx = std::max(r, std::max(g, b));
++            const int mn = std::min(r, std::min(g, b));
++            luma[y * w + x] = uint8_t((r * 77 + g * 150 + b * 29) >> 8);
++            saturation[y * w + x] = uint8_t(mx == 0 ? 0 : (mx - mn) * 255 / mx);
++        }
++    }
++
++    QVector<uint8_t> fringe(w * h, 0);
++    for (int y = 0; y < h; ++y) {
++        for (int x = 0; x < w; ++x) {
++            if (saturation[y * w + x] <= s_satKeep) {
++                continue;
++            }
++            bool core = false;
++            bool white = false;
++            const int y0 = std::max(y - s_fringeRadius, 0);
++            const int y1 = std::min(y + s_fringeRadius, h - 1);
++            const int x0 = std::max(x - s_fringeRadius, 0);
++            const int x1 = std::min(x + s_fringeRadius, w - 1);
++            for (int yy = y0; yy <= y1 && !(core && white); ++yy) {
++                for (int xx = x0; xx <= x1; ++xx) {
++                    const int l = luma[yy * w + xx];
++                    core = core || (l <= s_fringeCore);
++                    white = white || (l >= s_fringeWhite && saturation[yy * w + xx] <= s_fringeWhiteSat);
++                }
++            }
++            fringe[y * w + x] = (core && white) ? 1 : 0;
++        }
++    }
++
++    // Pass 2: recolor.
++    for (int y = 0; y < h; ++y) {
 +        QRgb *line = reinterpret_cast<QRgb *>(image.scanLine(y));
-+        for (int x = 0; x < image.width(); ++x) {
++        for (int x = 0; x < w; ++x) {
 +            const QRgb c = line[x];
 +            const int r = qRed(c);
 +            const int g = qGreen(c);
 +            const int b = qBlue(c);
 +
++            if (fringe[y * w + x]) {
++                // Subpixel antialiasing: recolor from luma as plain grey.
++                const int recolored = s_curve[luma[y * w + x]];
++                line[x] = qRgb(recolored, recolored, recolored);
++                continue;
++            }
++
 +            const int mx = std::max(r, std::max(g, b));
 +            const int mn = std::min(r, std::min(g, b));
 +            const int value = (mx + mn) / 2;
-+            const int saturation = mx == 0 ? 0 : (mx - mn) * 255 / mx;
++            const int sat = saturation[y * w + x];
 +
 +            // How much of the original pixel survives: 0 for grey chrome
 +            // (fully recolored), 255 for saturated content (untouched).
-+            const int keep = std::clamp((saturation - s_satKeep) * 255 / s_satKeepRange, 0, 255);
++            const int keep = std::clamp((sat - s_satKeep) * 255 / s_satKeepRange, 0, 255);
 +            if (keep == 255) {
 +                continue;
 +            }
@@ -5538,10 +5616,10 @@ index 1600b660..4fcfc2a4 100644
  endif()
 diff --git a/test/aiengine_test.cpp b/test/aiengine_test.cpp
 new file mode 100644
-index 00000000..53773edb
+index 00000000..3d7b2779
 --- /dev/null
 +++ b/test/aiengine_test.cpp
-@@ -0,0 +1,512 @@
+@@ -0,0 +1,547 @@
 +/*
 +    Standalone test for the AI conversation engine. Not built by default; see
 +    test_ai.sh. Drives AiConversation against a mock OpenAI-compatible server
@@ -5755,6 +5833,41 @@ index 00000000..53773edb
 +    const QRgb wpBefore = wallpaper.pixel(10, 10);
 +    SmartInvert::apply(wallpaper);
 +    check(wallpaper.pixel(10, 10) == wpBefore, "colorful wallpaper pixels are untouched");
++
++    // The ClearType halo regression, measured from a real Server 2012 capture:
++    // a black glyph on white arrives with colored subpixel edges - warm
++    // (239,205,75) and cool (145,212,247) pixels. They sit between the dark
++    // core and flat white, so they flatten to grey and recolor with the
++    // glyph instead of surviving as colored sparks around the text.
++    // Link-blue text has no dark core within reach and keeps its color.
++    QImage glyph(96, 96, QImage::Format_RGB32);
++    glyph.fill(Qt::white);
++    for (int y = 40; y < 52; ++y) {
++        glyph.setPixel(40, y, qRgb(8, 8, 8)); // stem core
++        glyph.setPixel(41, y, qRgb(145, 212, 247)); // cool subpixel fringe
++        glyph.setPixel(39, y, qRgb(239, 205, 75)); // warm subpixel fringe
++    }
++    glyph.setPixel(70, 70, qRgb(0, 102, 204)); // link-blue text pixel on white
++    // The same ClearType sandwich on MMC's light-grey dialog chrome
++    // (luma ~206): the fringe must neutralize there too, not just on white.
++    for (int y = 70; y < 84; ++y) {
++        for (int x = 10; x < 30; ++x) {
++            glyph.setPixel(x, y, qRgb(212, 208, 200));
++        }
++    }
++    glyph.setPixel(15, 76, qRgb(8, 8, 8));
++    glyph.setPixel(16, 76, qRgb(145, 212, 247));
++
++    SmartInvert::apply(glyph);
++    const QRgb cool = glyph.pixel(41, 46);
++    check(qBlue(cool) - qRed(cool) < 30, "the cool ClearType fringe is neutralized to grey");
++    const QRgb warm = glyph.pixel(39, 46);
++    check(qRed(warm) - qBlue(warm) < 30, "the warm ClearType fringe is neutralized to grey");
++    check(qRed(glyph.pixel(40, 46)) > 235, "the glyph core they hug turns near-white");
++    const QRgb link = glyph.pixel(70, 70);
++    check(qBlue(link) - qRed(link) > 100, "link-blue text (no dark core nearby) keeps its color");
++    const QRgb greyFringe = glyph.pixel(16, 76);
++    check(qBlue(greyFringe) - qRed(greyFringe) < 30, "fringes on light-grey MMC chrome neutralize as well");
 +}
 +
 +static void testUrlDerivation()
