@@ -1,7 +1,7 @@
 _pkgname=xunused
 pkgname=${_pkgname}-git
 pkgver=r46.b81e0ef
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to find unused C/C++ functions and methods"
 arch=('x86_64')
 url="https://github.com/mgehre/xunused"
@@ -23,6 +23,15 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
+
+prepare() {
+	cd "$srcdir/${_pkgname}"
+
+	sed -i \
+		-e '/#include "clang\/Driver\/Options.h"/d' \
+		-e 's|clang/Index/USRGeneration.h|clang/UnifiedSymbolResolution/USRGeneration.h|g' \
+		main.cpp
+}
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
