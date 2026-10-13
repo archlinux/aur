@@ -1,6 +1,6 @@
 pkgbase = solidcraft
 	pkgdesc = vibe coded clean-room reimplementation of Autodesk Fusion
-	pkgver = 0.5.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://bherbruck.github.io/solidcraft
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = solidcraft
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
-	source = https://github.com/bherbruck/solidcraft/archive/refs/tags/v0.5.0/solidcraft-0.5.0.tar.gz
-	sha256sums = f564f607ae9d8d12261615a743586617148b41e7285509c730e3ee9f65d5b5df
+	source = https://github.com/bherbruck/solidcraft/archive/refs/tags/v0.7.0/solidcraft-0.7.0.tar.gz
+	sha256sums = 9845151849a09531a989ba4e4e7a7f7e12a7a7036de5c27b57d464f202aff103
 
 pkgname = solidcraft
 	depends = glibc
