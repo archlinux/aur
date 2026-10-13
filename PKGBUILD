@@ -4,7 +4,7 @@
 pkgname=mold-ai-bin
 _pkgname=mold-ai
 _binname=mold
-pkgver=0.35.0
+pkgver=0.36.0
 pkgrel=1
 pkgdesc="AI image/video CLI for remote GPU hosts (prebuilt GPU-free client)"
 arch=('x86_64')
@@ -42,7 +42,7 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_binname}-x86_64-unknown-l
 
 # Rewritten by scripts/aur/update-pkgbuild.sh on every release.
 sha256sums=('cd904e73d29dc7d62178ebc6def9e500c6b176e8e4c40f58e4b0b5f008380311')
-sha256sums_x86_64=('2b29e900fe720aad3ce707249b8a6f05c29d350adedf47a43509a5e4b8931d11')
+sha256sums_x86_64=('e519e002f89d240ac46c201f9f8ddf995f465656d8b17f88501acd38bdc59128')
 
 package() {
   install -Dm755 "${srcdir}/${_binname}" "${pkgdir}/usr/bin/${_binname}"
