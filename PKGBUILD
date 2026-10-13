@@ -3,7 +3,7 @@
 pkgname=opennn
 _pkgname=OpenNN
 pkgver=26.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenNN neural network library with attention and deep learning support"
 arch=('x86_64')
 url="https://www.opennn.net/"
@@ -36,9 +36,9 @@ build() {
         -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DOpenNN_BUILD_SHARED=ON \
         -DOpenNN_BUILD_TESTS=OFF \
-        -DOpenNN_BUILD_EXAMPLES=OFF \
-        -DOpenNN_BUILD_BLANK=OFF
+        -DOpenNN_BUILD_EXAMPLES=OFF
 
     cmake --build "$pkgname-$pkgver/build"
 }
