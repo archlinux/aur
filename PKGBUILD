@@ -1,7 +1,7 @@
 # Maintainer: su226 <thesu226 at outlook dot com>
 
 pkgname=dev-sidecar-git
-pkgver=2.0.2.r122.ga72b545
+pkgver=2.3.1.r15.gf50c5b8
 pkgrel=1
 epoch=
 pkgdesc="开发者边车，github打不开，github加速，git clone加速，git release下载加速，stackoverflow加速"
@@ -22,9 +22,11 @@ options=()
 install=
 changelog=
 source=("git+https://github.com/docmirror/dev-sidecar.git"
+        "git+https://github.com/Blue-Frontier/ds-core.git"
         "dev-sidecar.desktop")
 noextract=()
 sha256sums=("SKIP"
+            "SKIP"
             "4fbb8418638f73fb845e187c599b099377c340dc9a2121844ec08944378011f9")
 validpgpkeys=()
 
@@ -35,6 +37,9 @@ pkgver() {
 
 prepare() {
   cd dev-sidecar
+  git submodule init
+  git config submodule.vendor/ds-core.url "$srcdir/ds-core"
+  git -c protocol.file.allow=always submodule update
   local _electronDist="/usr/lib/$_electron"
   local _electronVersion="$(<$_electronDist/version)"
   sed -i "/^\s*builderOptions: {$/a electronDist: \"$_electronDist\", electronVersion: \"$_electronVersion\"," packages/gui/vue.config.cjs

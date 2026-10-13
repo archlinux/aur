@@ -1,4 +1,5 @@
-src/
-pkg/
-dev-sidecar/
+/src/
+/pkg/
+/dev-sidecar/
+/ds-core/
 dev-sidecar-git-*.pkg.tar*

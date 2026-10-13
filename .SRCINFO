@@ -1,6 +1,6 @@
 pkgbase = dev-sidecar-git
 	pkgdesc = 开发者边车，github打不开，github加速，git clone加速，git release下载加速，stackoverflow加速
-	pkgver = 2.0.2.r122.ga72b545
+	pkgver = 2.3.1.r15.gf50c5b8
 	pkgrel = 1
 	url = https://github.com/docmirror/dev-sidecar
 	arch = any
@@ -13,7 +13,9 @@ pkgbase = dev-sidecar-git
 	provides = dev-sidecar
 	conflicts = dev-sidecar
 	source = git+https://github.com/docmirror/dev-sidecar.git
+	source = git+https://github.com/Blue-Frontier/ds-core.git
 	source = dev-sidecar.desktop
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 4fbb8418638f73fb845e187c599b099377c340dc9a2121844ec08944378011f9
 
