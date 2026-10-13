@@ -4,13 +4,14 @@ pkgname=zcode-bin
 _pkgname=ZCode
 pkgver=3.15.1
 _electronversion=41
-pkgrel=1
+pkgrel=2
 pkgdesc="ZCode - AI-powered code editor by ZAI"
 arch=(
     'aarch64'
     'x86_64'
 )
 url="https://zcode.z.ai/"
+_ghurl="https://github.com/zai-org/ZCode"
 license=('LicenseRef-ZCode')
 depends=(
     "electron${_electronversion}"
@@ -53,7 +54,6 @@ _check_electron_version() {
 	echo -e "Electron version: \033[1;${c}m$_v$([[ $c -eq 31 ]] && echo " (expected $_electronversion)")\033[0m"
 }
 prepare() {
-    bsdtar -xf "${srcdir}/data."*
     _check_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g

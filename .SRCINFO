@@ -1,7 +1,7 @@
 pkgbase = zcode-bin
 	pkgdesc = ZCode - AI-powered code editor by ZAI
 	pkgver = 3.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zcode.z.ai/
 	arch = aarch64
 	arch = x86_64
