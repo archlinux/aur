@@ -1,10 +1,23 @@
 pkgbase = python-keyrings.google-artifactregistry-auth
 	pkgdesc = Keyring backend for Google Auth tokens
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GoogleCloudPlatform/artifact-registry-python-tools
 	arch = any
-	makedepends = python
-	makedepends = python-pip
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	depends = python-google-auth
+	depends = python-keyring
+	depends = python-pluggy
+	depends = python-requests
+	optdepends = google-cloud-cli: fall back to gcloud credentials when Application Default Credentials are unavailable
+	optdepends = python-tox: tox plugin that installs this backend into test environments
+	source = keyrings.google-artifactregistry-auth-1.1.2.tar.gz::https://files.pythonhosted.org/packages/source/k/keyrings.google-artifactregistry-auth/keyrings.google-artifactregistry-auth-1.1.2.tar.gz
+	sha256sums = bd6abb72740d2dfeb4a5c03c3b105c6f7dba169caa29dee3959694f1f02c77de
 
 pkgname = python-keyrings.google-artifactregistry-auth
