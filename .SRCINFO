@@ -1,6 +1,6 @@
 pkgbase = ncx-git
 	pkgdesc = CLI tool for system management and configuration
-	pkgver = 2.0.5a_16_gac5b273
+	pkgver = 2.0.5a_18_g807afc4
 	pkgrel = 1
 	url = https://gitlab.com/nathanchere/ncx
 	arch = x86_64

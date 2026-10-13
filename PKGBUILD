@@ -1,7 +1,7 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname=ncx-git
 appname=ncx
-pkgver=2.0.5a_16_gac5b273
+pkgver=2.0.5a_18_g807afc4
 pkgrel=1
 pkgdesc="CLI tool for system management and configuration"
 arch=('x86_64')
