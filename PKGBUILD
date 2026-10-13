@@ -1,6 +1,6 @@
 # Maintainer: ohemilyy <ohemilyy@proton.me>
 pkgname=flavor-bin
-pkgver=0.1.0beta9
+pkgver=0.1.0beta10
 _ver=${pkgver/beta/-beta.}
 pkgrel=1
 pkgdesc='Use multiple Tailscale and Headscale tailnets at once (desktop app, CLI, daemon)'
@@ -19,10 +19,10 @@ source=("SHA256SUMS-$_ver::$url/releases/download/v$_ver/SHA256SUMS"
         "SHA256SUMS-$_ver.asc::$url/releases/download/v$_ver/SHA256SUMS.asc")
 source_x86_64=("$url/releases/download/v$_ver/flavor-$_ver-linux-amd64.tar.gz")
 source_aarch64=("$url/releases/download/v$_ver/flavor-$_ver-linux-arm64.tar.gz")
-sha256sums=('35669e9d2a153269093c91be6476aaa17f7cb62cb2da030f6df82d8c109cba6f'
+sha256sums=('104ba62a154e26f8b772a224ad56b7020e800741eb2ccc7d4d098bd9daad7577'
             'SKIP')
-sha256sums_x86_64=('8f5bbe5a478e140a11f3d7ebe3947fbc3e5d2f18990b875160985b9bb4a9e9e2')
-sha256sums_aarch64=('4ebe749e90b8c178f9feb78b064d82eb157b7904467250159d905a70e6c4cefb')
+sha256sums_x86_64=('122adae0ce6113cafe2938e2280ec54b35eb26cdc61554c9ca390e094911822a')
+sha256sums_aarch64=('282c45305c0909b1967f03b3dcbe0c04ecd90fc114a6542f877d4282da2a3247')
 
 prepare() {
   sha256sum --check --ignore-missing "SHA256SUMS-$_ver"
