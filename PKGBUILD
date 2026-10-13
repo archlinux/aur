@@ -1,6 +1,6 @@
 # Maintainer: Raphael <raphamzn@gmail.com>
 pkgname=seraph-git
-pkgver=r353.g0703b4f
+pkgver=r354.g9ab8f8f
 pkgrel=1
 pkgdesc="A lightweight Qt6/QML file manager for Hyprland and niri"
 arch=('x86_64' 'aarch64')
@@ -94,6 +94,8 @@ package() {
         "${pkgdir}/usr/share/applications/io.github.raphamzn.SeraphReader.desktop"
     install -Dm644 "${pkgname}/dist/io.github.raphamzn.Seraph.svg" \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.raphamzn.Seraph.svg"
+    install -Dm644 "${pkgname}/dist/io.github.raphamzn.SeraphReader.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.raphamzn.SeraphReader.svg"
     install -Dm644 "${pkgname}/dist/io.github.raphamzn.Seraph.metainfo.xml" \
         "${pkgdir}/usr/share/metainfo/io.github.raphamzn.Seraph.metainfo.xml"
 
