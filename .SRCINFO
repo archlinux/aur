@@ -1,6 +1,6 @@
 pkgbase = ayatana-webmail-no-indicator-messages
 	pkgdesc = Webmail notifications and actions for any desktop without ayatana-indicator-messages dependency
-	pkgver = 24.5.17
+	pkgver = 26.6.13
 	pkgrel = 1
 	url = https://tari.in/www/software/ayatana-webmail/
 	install = ayatana-webmail.install
@@ -22,13 +22,13 @@ pkgbase = ayatana-webmail-no-indicator-messages
 	depends = python-urllib3
 	depends = gsettings-desktop-schemas
 	optdepends = ayatana-indicator-messages: Support for indicator messages
-	provides = ayatana-webmail=24.5.17
+	provides = ayatana-webmail=26.6.13
 	conflicts = ayatana-webmail
 	conflicts = unity-mail
 	replaces = unity-mail
-	source = ayatana-webmail-24.5.17.tar.gz::https://github.com/AyatanaIndicators/ayatana-webmail/archive/24.5.17.tar.gz
+	source = ayatana-webmail-26.6.13.tar.gz::https://github.com/AyatanaIndicators/ayatana-webmail/archive/26.6.13.tar.gz
 	source = status_icon.patch
-	md5sums = 5c202c540631443b8dead9c62cb49475
-	md5sums = eb8721b75b144ab35a8e18bb352799ab
+	sha256sums = 282bdeb40ff81a55c60143164770e387a3931b5693ba27a3cda49932d3e4e86f
+	sha256sums = 82db94477732a2df2ad5125b6a09c4349fc0d047eb5ad164ff536748d7ac02e4
 
 pkgname = ayatana-webmail-no-indicator-messages

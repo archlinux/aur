@@ -3,7 +3,7 @@
 # Maintainer: Ingo Meyer <IJ_M@gmx.de>
 
 pkgname="ayatana-webmail-no-indicator-messages"
-pkgver="24.5.17"
+pkgver="26.6.13"
 pkgrel="1"
 pkgdesc="Webmail notifications and actions for any desktop without ayatana-indicator-messages dependency"
 arch=("any")
@@ -15,8 +15,8 @@ optdepends=("ayatana-indicator-messages: Support for indicator messages")
 install="ayatana-webmail.install"
 source=("ayatana-webmail-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/ayatana-webmail/archive/${pkgver}.tar.gz"
         "status_icon.patch")
-md5sums=("5c202c540631443b8dead9c62cb49475"
-         "eb8721b75b144ab35a8e18bb352799ab")
+sha256sums=("282bdeb40ff81a55c60143164770e387a3931b5693ba27a3cda49932d3e4e86f"
+            "82db94477732a2df2ad5125b6a09c4349fc0d047eb5ad164ff536748d7ac02e4")
 provides=("ayatana-webmail=${pkgver}")
 replaces=("unity-mail")
 conflicts=("ayatana-webmail" "unity-mail")
