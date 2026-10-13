@@ -1,6 +1,6 @@
 # Maintainer: PandaDEV <contact@pandadev.net>
 pkgname=dbdelve-bin
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc='A modern and performant database client for PostgreSQL, MySQL and SQLite'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ conflicts=('dbdelve')
 options=('!strip' '!debug')
 source_x86_64=("${url}/releases/download/v${pkgver}/dbdelve-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/dbdelve-${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('7b745c9fab705288c81178fc4a0dc1a189b7abc305cd208bd69e8a2313fde118')
-sha256sums_aarch64=('72f9dd9e16bd998450bee519cde213d30b27a5ff54714a4bdc9728feb2d5f378')
+sha256sums_x86_64=('aa99fd6b8ad15ff00ec863335a61a381c4e84aef07d185adfdeadd4df6fde349')
+sha256sums_aarch64=('326c6f9e0290ad3ba02fadb6dcfd5bf243093f702dd86401596258b6f9a5550f')
 
 package() {
     cd "${srcdir}/dbdelve-${pkgver}-linux-${CARCH}"
