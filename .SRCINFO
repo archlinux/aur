@@ -13,6 +13,6 @@ pkgname = localtranslate-models-kotki-standard
 	conflicts = localtranslate-models-base
 
 pkgname = kotki-models-standard
-	pkgdesc = Kotki's standard translation models for native Kotki application
+	pkgdesc = Kotki's standard translation models for native Kotki library
 	provides = kotki-models-base
 	conflicts = kotki-models-base
