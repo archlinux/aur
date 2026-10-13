@@ -6,15 +6,15 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=qiv
-pkgver=3.0.2
-pkgrel=2
+pkgver=3.0.4
+pkgrel=1
 pkgdesc='Quick Image Viewer (qiv) is a very small and fast GDK/Imlib image viewer'
 arch=('x86_64')
-url='https://codeberg.org/ciberandy/qiv/'
-license=('GPL2')
+url="https://codeberg.org/ciberandy/qiv"
+license=('GPL-2.0-only')
 depends=('file' 'gtk3' 'gdk-pixbuf2' 'libexif' 'lcms2' 'desktop-file-utils')
 source=("$url/archive/v$pkgver.zip")
-sha512sums=('e93d03d11663b278aff1ad8a64e31d4bad67dd9988d8134dd76656ed76cada7e19353f251e00facf146bd4aa952c416fc5a4beb6cecaf960f593ad443fbeaf71')
+sha512sums=('ce388af7e66004f056dac04db5c0115b03a24ec6a235bc7d7c6d1a57b1b9d169efbfe33a9ca47b82c6705b092ef44f48e54416f9575af9d4e4207b2a0640604e')
 
 build() {
   cd "$srcdir/$pkgname"
@@ -27,9 +27,11 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   sed -i "s|^PREFIX = .*|PREFIX = $pkgdir/usr|" Makefile
-  make COMPRESS_PROG="gzip -9nf" install
+  #make COMPRESS_PROG="gzip -9nf" install
+  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-  install -D -m 0644 README "$pkgdir/usr/share/doc/qiv/README"
+  install -Dm0644 "README" "$pkgdir/usr/share/doc/$pkgname/README"
+  install -Dm0644 "README.COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -d "$pkgdir/usr/share/doc/qiv/contrib"
   cp contrib/* "$pkgdir/usr/share/doc/qiv/contrib"
 }
