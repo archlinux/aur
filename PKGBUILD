@@ -1,6 +1,6 @@
 # Maintainer: Donghui <duter2016@foxmail.com>
 pkgname=gh-proxy-manager
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=1
 pkgdesc="管理 yay/makepkg 与 git clone 的 GitHub 下载加速代理（图形/命令行）"
 arch=('any')
@@ -8,10 +8,9 @@ url="https://github.com/Duter2016/gh-proxy-manager"
 license=('MIT')
 depends=('bash' 'curl' 'git')
 optdepends=('yad: 图形界面（推荐）'
-            'zenity: 图形界面后备'
-            'polkit: 提权支持')
+            'zenity: 图形界面后备')
 source=("$pkgname-v$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('60b5c3aca9975c61467da20a4ffcf1dc640ef5319c5e881f857d37b4125186a6')
+sha256sums=('8f5c7da9bf47fca7c6ab65798047efc3f5eae3a954ca36e54b2de6c2c7065345')
 
 package() {
     _src="$srcdir/$pkgname-$pkgver"
