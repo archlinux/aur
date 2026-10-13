@@ -2,12 +2,12 @@
 
 pkgname=bazaar-git
 _pkgname=bazaar
-pkgver=0.9.4.r80.gb75c80f
+pkgver=0.9.7.r27.gcb1d58f
 pkgrel=1
 pkgdesc="A new app store for GNOME with focus on flatpaks, particularly Flathub. (git version)"
 arch=('x86_64')
 url="https://gitlab.gnome.org/World/bazaar"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 depends=(
   'appstream'
   'cairo'
@@ -34,54 +34,38 @@ depends=(
   'pango'
   'webkitgtk-6.0'
 )
-makedepends=('blueprint-compiler' 'git' 'glib2-devel' 'meson' 'python-babel' 'ninja' 'libxml2' 'vala')
+makedepends=(
+  'blueprint-compiler'
+  'git'
+  'glib2-devel'
+  'libxml2'
+  'meson'
+  'ninja'
+  'python-babel'
+  'vala'
+)
 optdepends=('krunner-bazaar: krunner integration' 'malcontent: parental controls')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=(
-  "${_pkgname}::git+https://gitlab.gnome.org/World/bazaar.git"
-  "libdex::git+https://gitlab.gnome.org/GNOME/libdex.git#tag=1.2.beta"
-)
-sha256sums=('SKIP'
-            'SKIP')
+source=("${_pkgname}::git+https://gitlab.gnome.org/World/bazaar.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "${_pkgname}"
-  # symlink libdex source into bazaars subprojects dir
-  mkdir -p subprojects
-  ln -sfT "${srcdir}/libdex" subprojects/libdex
-
-  # dummy liburing.vapi
-  mkdir -p "${srcdir}/vapi"
-  cat > "${srcdir}/vapi/liburing.vapi" <<EOF
-[CCode (cheader_filename = "liburing.h")]
-namespace liburing {
-}
-EOF
-}
-
 build() {
-  export VALAFLAGS="--vapidir=${srcdir}/vapi"
-
-  # static link libdex
   meson setup "${_pkgname}" build \
     --prefix=/usr \
-    --buildtype=release \
-    --force-fallback-for=libdex \
-    -Dlibdex:default_library=static \
-    -Dlibdex:introspection=disabled \
-    -Dlibdex:vapi=false \
-    -Dlibdex:tests=false \
-    -Dlibdex:examples=false
+    --buildtype=plain
   meson compile -C build
 }
 
+# check() {
+#   meson test -C build --print-errorlogs
+# }
+
 package() {
-  # skip libdex files
-  meson install -C build --destdir "${pkgdir}" --skip-subprojects=libdex
+  meson install -C build --destdir "${pkgdir}"
 }
