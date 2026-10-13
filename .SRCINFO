@@ -1,7 +1,7 @@
 pkgbase = clara-git
 	pkgdesc = Audio Plugin Host (fork with UI/UX enhancements, modal tools, dynamic cable gradients, and session safety)
 	pkgver = 2.5.1.r578.gc7958135
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/acropolis914/Clara
 	arch = x86_64
 	license = GPL-2.0-or-later
