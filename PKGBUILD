@@ -1,6 +1,6 @@
 # Maintainer: ohemilyy <ohemilyy@proton.me>
 pkgname=flavor
-pkgver=0.1.0beta10
+pkgver=0.1.0beta11
 _ver=${pkgver/beta/-beta.}
 pkgrel=1
 pkgdesc='Use multiple Tailscale and Headscale tailnets at once (desktop app, CLI, daemon)'
