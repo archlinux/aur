@@ -4168,10 +4168,10 @@ index a988f504..1620f348 100644
      QUrl m_url;
 diff --git a/core/smartinvert.cpp b/core/smartinvert.cpp
 new file mode 100644
-index 00000000..06d74906
+index 00000000..aa3a3859
 --- /dev/null
 +++ b/core/smartinvert.cpp
-@@ -0,0 +1,325 @@
+@@ -0,0 +1,375 @@
 +// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +
@@ -4260,6 +4260,22 @@ index 00000000..06d74906
 +// which the bilinear sampling smooths out.
 +constexpr int s_brightStart = 22;
 +constexpr int s_brightFull = 60;
++
++// ClearType subpixel rule. Windows paints the edges of every glyph with
++// subpixel rendering: alternating warm and cool pixels (a stem edge is
++// literally (149, 218, 254) cyan next to (214, 197, 174) orange). On a white
++// background the eye averages those into plain grey antialiasing, but the
++// saturation rule mistakes them for colorful content and preserves them -
++// once the background goes dark they stay as bright cyan and orange sparks
++// around every letter, which reads as blur or fuzz. The fringes give
++// themselves away by structure, not by color: warm (red at least
++// s_chromaDelta over blue) and cool (blue over red) pixels within two of each
++// other, which no real icon or photo color does at subpixel scale. Such a
++// pixel is neutralized to its luma and recolored like the grey antialiasing
++// it really is. Brightly saturated content (saturation above
++// s_fringeSatMax: link blue, folder-icon yellow) never matches and stays.
++constexpr int s_chromaDelta = 30;
++constexpr int s_fringeSatMax = 180;
 +
 +// Shadow rule. A window's drop shadow is a smooth grey gradient over the
 +// desktop; recolored like chrome, it became a light halo around dark windows.
@@ -4369,9 +4385,13 @@ index 00000000..06d74906
 +    // Pass 1: luma and horizontal extrema over a 5-pixel window; the vertical
 +    // pass happens inline in pass 3. Together they give the local brightness
 +    // range that separates flat chrome, text edges and shadow gradients.
++    // The two chroma maps do the same for the ClearType warm/cool fringe
++    // test, and must be computed here: pass 3 rewrites pixels in place.
 +    QVector<uint8_t> luma(w * h);
 +    QVector<uint8_t> hmax(w * h);
 +    QVector<uint8_t> hmin(w * h);
++    QVector<uint8_t> hwarm(w * h);
++    QVector<uint8_t> hcool(w * h);
 +
 +    for (int y = 0; y < h; ++y) {
 +        const QRgb *line = reinterpret_cast<const QRgb *>(image.constScanLine(y));
@@ -4382,17 +4402,28 @@ index 00000000..06d74906
 +        }
 +        uint8_t *rowMax = hmax.data() + y * w;
 +        uint8_t *rowMin = hmin.data() + y * w;
++        uint8_t *rowWarm = hwarm.data() + y * w;
++        uint8_t *rowCool = hcool.data() + y * w;
 +        for (int x = 0; x < w; ++x) {
 +            uint8_t mx = 0;
 +            uint8_t mn = 255;
++            uint8_t warm = 0;
++            uint8_t cool = 0;
 +            const int x0 = std::max(x - 2, 0);
 +            const int x1 = std::min(x + 2, w - 1);
 +            for (int xx = x0; xx <= x1; ++xx) {
 +                mx = std::max(mx, rowLuma[xx]);
 +                mn = std::min(mn, rowLuma[xx]);
++                const QRgb c = line[xx];
++                const int r = qRed(c);
++                const int b = qBlue(c);
++                warm = warm || (r >= b + s_chromaDelta);
++                cool = cool || (b >= r + s_chromaDelta);
 +            }
 +            rowMax[x] = mx;
 +            rowMin[x] = mn;
++            rowWarm[x] = warm;
++            rowCool[x] = cool;
 +        }
 +    }
 +
@@ -4459,6 +4490,25 @@ index 00000000..06d74906
 +
 +            int keep = std::max(pixelKeep, regionKeep);
 +
++            // ClearType fringe test: a saturation-protected pixel that has
++            // both a warm and a cool pixel within 5x5 is subpixel antialiasing
++            // of a glyph edge, not colorful content. Drop its protection and
++            // recolor it from its luma so it becomes plain grey antialiasing
++            // on the dark background.
++            int curveValue = value;
++            if (pixelKeep > 0 && saturation <= s_fringeSatMax) {
++                bool warm = false;
++                bool cool = false;
++                for (int yy = y0; yy <= y1; ++yy) {
++                    warm = warm || hwarm[yy * w + x] != 0;
++                    cool = cool || hcool[yy * w + x] != 0;
++                }
++                if (warm && cool) {
++                    keep = regionKeep;
++                    curveValue = luma[y * w + x];
++                }
++            }
++
 +            // Shadow test: mid-tone pixel whose 5x5 neighborhood varies
 +            // gently but not flatly. Flat is chrome (recolor), strongly
 +            // varying is text or a border (recolor), gently sloping is a
@@ -4480,7 +4530,7 @@ index 00000000..06d74906
 +                continue;
 +            }
 +
-+            const int recolored = s_curve[value];
++            const int recolored = s_curve[curveValue];
 +
 +            // Grey chrome stays grey; partially protected pixels keep a
 +            // fraction of their channels, which desaturates them towards the
@@ -5694,10 +5744,10 @@ index 1600b660..4fcfc2a4 100644
  endif()
 diff --git a/test/aiengine_test.cpp b/test/aiengine_test.cpp
 new file mode 100644
-index 00000000..e55a9377
+index 00000000..258ee400
 --- /dev/null
 +++ b/test/aiengine_test.cpp
-@@ -0,0 +1,636 @@
+@@ -0,0 +1,665 @@
 +/*
 +    Standalone test for the AI conversation engine. Not built by default; see
 +    test_ai.sh. Drives AiConversation against a mock OpenAI-compatible server
@@ -5949,6 +5999,35 @@ index 00000000..e55a9377
 +    const QRgb fringe = label.pixel(20, 41);
 +    check(qRed(fringe) > 170 && qGreen(fringe) > 170 && qBlue(fringe) > 170, "the saturated ClearType fringe turns light with it - no halo");
 +    check(qRed(label.pixel(80, 80)) > 170, "a dark saturated pixel in chrome is recolored too");
++
++    // The bright-fringe fuzz regression: ClearType also paints glyph edges
++    // with LIGHT saturated pixels ((149,218,254) cyan next to (214,197,174)
++    // orange). Those are too bright for the "nothing dark is content" rule and
++    // the plain saturation rule preserves them as content, so they stay as
++    // bright cyan and orange sparks around the recolored text - which the eye
++    // reads as blur. The warm-and-cool-together structure gives them away:
++    // each must neutralize to grey and recolor with its glyph. Brightly
++    // saturated content (a link-blue pixel, no cool partner nearby) survives.
++    QImage fuzz(96, 96, QImage::Format_RGB32);
++    fuzz.fill(Qt::white);
++    for (int x0 = 20; x0 < 76; x0 += 8) {
++        for (int y = 42; y < 51; ++y) {
++            fuzz.setPixel(x0, y, qRgb(8, 8, 8)); // glyph stem
++            fuzz.setPixel(x0 + 1, y, qRgb(149, 218, 254)); // light cyan fringe
++            fuzz.setPixel(x0 - 1, y, qRgb(214, 197, 174)); // warm fringe
++        }
++    }
++    // Link-blue content pixel: strongly saturated, only a cool pixel nearby,
++    // so it is not a fringe and must keep its color.
++    fuzz.setPixel(80, 80, qRgb(0, 102, 204));
++
++    SmartInvert::apply(fuzz);
++    const QRgb cyanFringe = fuzz.pixel(21, 46);
++    check(qBlue(cyanFringe) - qRed(cyanFringe) < 30, "the bright cyan ClearType fringe is neutralized, not left as a spark");
++    const QRgb warmFringe = fuzz.pixel(19, 46);
++    check(qRed(warmFringe) - qBlue(warmFringe) < 30, "the warm ClearType fringe is neutralized too");
++    const QRgb link = fuzz.pixel(80, 80);
++    check(qBlue(link) - qRed(link) > 100, "genuinely saturated content (link blue) keeps its color");
 +
 +    // The taskbar regression: a dark taskbar with colorful icons and white
 +    // labels under a white File Explorer window. The window's white chrome
