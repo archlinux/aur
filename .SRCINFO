@@ -8,6 +8,8 @@ pkgbase = rpiusbboot
 	license = Apache-2.0
 	depends = glibc
 	depends = libusb
+	provides = rpiusbboot
+	conflicts = rpiusbboot
 	source = https://github.com/raspberrypi/usbboot/archive/refs/tags/20261002-115811.tar.gz
 	sha256sums = 9312b27a85da28bf7b356f3955389f13314c3bba73f0f6bee2df95517d3d3a46
 

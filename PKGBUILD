@@ -12,7 +12,8 @@ arch=("i686" "x86_64")
 url="https://github.com/raspberrypi/usbboot"
 license=("Apache-2.0")
 depends=("glibc" "libusb")
-conflict=()
+provides=("rpiusbboot")
+conflicts=("rpiusbboot")
 
 source=("https://github.com/raspberrypi/${_pkgname}/archive/refs/tags/${_pkgver}.tar.gz")
 sha256sums=("9312b27a85da28bf7b356f3955389f13314c3bba73f0f6bee2df95517d3d3a46")
