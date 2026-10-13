@@ -1,6 +1,6 @@
 # Maintainer: giosuel <me@giosuel.ch>
 pkgname=somedesk
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Self-hosted, end-to-end encrypted remote desktop'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=('xdg-desktop-portal: screen sharing and remote control on Wayland')
 # and openh264 would fail to link. !debug: the release profile has no debug info.
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d14b9cba5cdf3af944e407fe051bcc85e44e124f7a072a8399c51ef84d192bb1')
+sha256sums=('82c86d94778a1d4328fe0ef16b96158b88f4bc28189cf07f310641a7f0914d90')
 
 prepare() {
   cd "$pkgname-$pkgver"
