@@ -12,7 +12,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=26.3.0_devel.228038.f0bcf544881.d41d8cd
+pkgver=26.3.0_devel.231264.0ad3997b86e.d41d8cd
 pkgrel=1
 arch=('x86_64')
 makedepends=(
@@ -33,6 +33,8 @@ makedepends=(
     'wayland-protocols'
     'python-packaging'
     'python-pyaml'
+    'libdisplay-info'
+    'libpng'
 )
 depends=(
     'libdrm'
@@ -57,6 +59,8 @@ depends=(
     'glibc'
     'zlib'
     'xcb-util-keysyms'
+    'libdisplay-info'
+    'libpng'
 )
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=(
@@ -94,10 +98,12 @@ license=('custom')
 # https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/29275
 source=(
     'mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
+    'venus-protocol-1.1::git+https://gitlab.freedesktop.org/virgl/venus-protocol.git'
     'LICENSE'
     "venus-protocol-1.1::git+https://gitlab.freedesktop.org/virgl/venus-protocol.git"
 )
 sha256sums=('SKIP'
+            'SKIP'
             '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2'
             'SKIP'
             '357703d41365b4b27c590e3ed91eabb1b663f07c4c084095e60cbed4362dff0d'
@@ -107,6 +113,7 @@ sha256sums=('SKIP'
             'de3145af08024dea9fa9914f381a17b8fc6034dfb00f3a84013f7ff43f29ed4c'
             '25aa4ce346d03a6dcd68dd8b4010bcb74e54e62c90c573f394c46eae99aba32d')
 b2sums=('SKIP'
+        'SKIP'
         'cc60238726b35133b5b729fb4ed1e76e04136588533615d84b4a54656d5b41727d5e7ff06ef4de3eb102eed6669d6c5c5cb8ac9fbdf6fc25aa477877c5c3ba87'
         'SKIP'
         '7a1b3b82bbbf6a123512815c3e8f068a17890cbbb8b68e88a5a492f62469942fadd776207eebd913052a1c06e1fd37a549e86526b9fc8f08b9ca7cb0044ac16b'
@@ -214,7 +221,6 @@ case $MESA_WHICH_LLVM in
             'rust-bindgen'
         )
         depends+=(
-            'libLLVM.so=22.1-64'
             'clang'
             'libclc'
             'spirv-llvm-translator'
@@ -285,7 +291,7 @@ build () {
         -D valgrind=disabled
         -D video-codecs=all
         -D vulkan-drivers=amd,intel,intel_hasvk,swrast,virtio,nouveau
-        -D vulkan-layers=device-select,intel-nullhw,overlay,anti-lag
+        -D vulkan-layers=device-select,intel-nullhw,overlay,screenshot,vram-report-limit
         -D tools=[]
         -D zstd=enabled
         -D buildtype=plain
@@ -314,6 +320,7 @@ package() {
     # remove script file from /usr/bin
     # https://gitlab.freedesktop.org/mesa/mesa/issues/2230
     rm "${pkgdir}/usr/bin/mesa-overlay-control.py"
+    rm "${pkgdir}/usr/bin/mesa-screenshot-control.py"
     rmdir "${pkgdir}/usr/bin"
 
     # indirect rendering
