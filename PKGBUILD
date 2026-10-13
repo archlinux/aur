@@ -4,9 +4,9 @@
 pkgname=clara-git
 pkgver=2.5.1.r578.gc7958135
 pkgrel=2
-pkgdesc="Audio Plugin Host (fork with UI/UX enhancements, quick search, recent projects, and node positioning)"
+pkgdesc="Audio Plugin Host (fork with UI/UX enhancements, modal tools, dynamic cable gradients, and session safety)"
 arch=('x86_64')
-url="https://github.com/acropolis914/Carla"
+url="https://github.com/acropolis914/Clara"
 license=('GPL-2.0-or-later')
 depends=(
   'alsa-lib'
@@ -43,7 +43,7 @@ optdepends=(
 )
 provides=('carla' 'carla-git' 'clara' 'clara-git' 'clap-host' 'dssi-host' 'ladspa-host' 'lv2-host' 'vst3-host' 'vst-host')
 conflicts=('carla' 'carla-git' 'clara' 'clara-git')
-source=("git+https://github.com/acropolis914/Carla.git#branch=main")
+source=("git+https://github.com/acropolis914/Clara.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -58,5 +58,5 @@ build() {
 
 package() {
   cd "$srcdir/Carla"
-  make PREFIX=/usr DESTDIR="$pkgdir" install
+  make PREFIX=/usr DESTDIR="$pkgdir" DEFAULT_QT=6 install
 }

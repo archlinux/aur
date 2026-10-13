@@ -1,8 +1,8 @@
 pkgbase = clara-git
-	pkgdesc = Audio Plugin Host (fork with UI/UX enhancements, quick search, recent projects, and node positioning)
+	pkgdesc = Audio Plugin Host (fork with UI/UX enhancements, modal tools, dynamic cable gradients, and session safety)
 	pkgver = 2.5.1.r578.gc7958135
 	pkgrel = 2
-	url = https://github.com/acropolis914/Carla
+	url = https://github.com/acropolis914/Clara
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = git
@@ -46,7 +46,7 @@ pkgbase = clara-git
 	conflicts = carla-git
 	conflicts = clara
 	conflicts = clara-git
-	source = git+https://github.com/acropolis914/Carla.git#branch=main
+	source = git+https://github.com/acropolis914/Clara.git#branch=main
 	sha256sums = SKIP
 
 pkgname = clara-git
