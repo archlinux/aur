@@ -1,0 +1,20 @@
+[Unit]
+Description=Skycoin explorer (skywire skycoin explorer)
+Wants=network-online.target
+After=network-online.target skywire-skycoin.service
+
+[Service]
+Type=simple
+# Flags for this host go in EXPLORER_ARGS. A later flag wins, so
+# EXPLORER_ARGS="--server-host 127.0.0.1:8001" moves the listener.
+EnvironmentFile=-/etc/default/skywire-skycoin-explorer
+ExecStart=/usr/bin/skywire skycoin explorer --server-host 127.0.0.1:8081 --node-addr http://127.0.0.1:6420 $EXPLORER_ARGS
+Restart=on-failure
+RestartSec=5
+DynamicUser=yes
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target

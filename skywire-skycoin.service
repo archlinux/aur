@@ -1,0 +1,22 @@
+[Unit]
+Description=Skycoin node (skywire skycoin daemon)
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+# Flags for this host go in SKYCOIN_ARGS, e.g.
+# SKYCOIN_ARGS="--enable-api-sets READ,TXN --disable-header-check"
+EnvironmentFile=-/etc/default/skywire-skycoin
+Environment=HOME=/var/lib/skywire-skycoin
+ExecStart=/usr/bin/skywire skycoin daemon --launch-browser=false --data-dir /var/lib/skywire-skycoin $SKYCOIN_ARGS
+Restart=on-failure
+RestartSec=5
+DynamicUser=yes
+StateDirectory=skywire-skycoin
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target
