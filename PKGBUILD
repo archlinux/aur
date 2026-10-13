@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair.bonnett@gmail.com>
 
 pkgname=python315
-pkgver=3.15.0rc3
+pkgver=3.15.0
 pkgrel=1
 _pyver=3.15.0
 _pybasever=3.15
@@ -42,7 +42,7 @@ source=(
   "https://www.python.org/ftp/python/${_pyver}/Python-${pkgver}.tar.xz"{,.sigstore}
 )
 sha256sums=(
-  '506630aa66d5441188f34df22c0760bfe87fc92212630493ebc9ff3b3a7a1d49'
+  'ba4bed1ba346b916890b76d9e320451420aa69f6408997d33c66482eeae3d575'
   'SKIP'
 )
 
