@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/LotusInputMethod/fcitx5-lotus"
 license=('GPL-3.0-or-later')
 source=("https://github.com/LotusInputMethod/fcitx5-lotus/releases/download/v${pkgver}/fcitx5-lotus-v${pkgver}-x86_64-archlinux.tar.zst")
-sha256sums=('c90f16a12e028410367cbd5db98ec88e3332f36d7e92982545d40354c5f9bc80')
+sha256sums=('7b8368c0fcc800df9db6c1df6dc838393ab80a25427fe6c9ebb10fa080d3ee53')
 
 package_fcitx5-lotus-bin() {
     provides=('fcitx5-lotus')
