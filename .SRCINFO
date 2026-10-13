@@ -1,0 +1,19 @@
+pkgbase = linux-clang-bin
+	pkgdesc = Kernel.org PGO-optimized LLVM/Clang toolchain
+	pkgver = 23.1.1
+	pkgrel = 1
+	url = https://www.kernel.org/pub/tools/llvm/
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	depends = zstd
+	depends = libxml2
+	noextract = llvm-23.1.1-x86_64.tar.xz
+	options = !strip
+	options = !debug
+	source = https://www.kernel.org/pub/tools/llvm/files/llvm-23.1.1-x86_64.tar.xz
+	sha256sums = 4511aee50112bf96d8f5108daa8bc1b99283fab51d37068758f91b9217940129
+
+pkgname = linux-clang-bin
