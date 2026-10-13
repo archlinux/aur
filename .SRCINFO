@@ -1,0 +1,19 @@
+pkgbase = jid-git
+	pkgdesc = JSON incremental digger
+	pkgver = 1.1.3.r0.ge5c5a9d
+	pkgrel = 1
+	url = https://github.com/simeji/jid
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = jid
+	conflicts = jid
+	source = git+https://github.com/simeji/jid
+	b2sums = SKIP
+
+pkgname = jid-git
