@@ -8,6 +8,7 @@ pkgdesc="OpenNN neural network library with attention and deep learning support 
 arch=('x86_64')
 url="https://www.opennn.net/"
 license=('AGPL-3.0-only')
+provides=('opennn')
 conflicts=('opennn')
 depends=(
     'gcc-libs'
@@ -33,25 +34,22 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     cmake -S "$pkgname" -B "$pkgname/build" \
         -G Ninja \
-        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_BUILD_TYPE=Debug \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DOpenNN_BUILD_SHARED=ON \
-        -DOpenNN_BUILD_TESTS=ON \
-        -DOpenNN_BUILD_EXAMPLES=OFF
+        -DOpenNN_BUILD_TESTS=ON
 
     cmake --build "$pkgname/build"
 }
 
 check() {
-    cd ./$pkgname/build
-    ./bin/opennn_tests
+    ctest --test-dir "$pkgname/build" --output-on-failure
 }
 
 package() {
