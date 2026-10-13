@@ -1,0 +1,17 @@
+pkgbase = wipsync-bin
+	pkgdesc = Sync work-in-progress folders between machines, through restic and ssh
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ahaltindis/wipsync
+	arch = x86_64
+	license = MIT
+	depends = restic>=0.17.1
+	depends = openssh
+	optdepends = git: tell a refreshed git index from a real change
+	provides = wipsync
+	conflicts = wipsync
+	options = !debug
+	source = wipsync-0.1.0-x86_64.tar.gz::https://github.com/ahaltindis/wipsync/releases/download/v0.1.0/wipsync-0.1.0-x86_64.tar.gz
+	sha256sums = 37c3cf07c3da574e0970ddccdd42552c03f18819fad388a9de37350afd6b2cf9
+
+pkgname = wipsync-bin
