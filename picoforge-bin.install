@@ -1,0 +1,7 @@
+post_install() {
+    printf '%s\n' \
+        'PicoForge requires PC/SC access to configure security keys.' \
+        'Enable socket activation with: sudo systemctl enable --now pcscd.socket' \
+        'For keys with an unrecognized USB VID/PID, see:' \
+        'https://github.com/librekeys/picoforge/blob/main/docs/Troubleshooting.md'
+}

@@ -1,0 +1,31 @@
+pkgbase = picoforge-bin
+	pkgdesc = Desktop tool for configuring and managing Pico FIDO security keys (prebuilt binary)
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/librekeys/picoforge
+	install = picoforge-bin.install
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = 7zip
+	depends = glibc
+	depends = libgcc
+	depends = pcsclite
+	depends = ccid
+	depends = libxcb
+	depends = util-linux-libs
+	depends = wayland
+	depends = vulkan-icd-loader
+	depends = hicolor-icon-theme
+	optdepends = vulkan-driver: Vulkan renderer for the graphical interface
+	provides = picoforge=0.9.0
+	conflicts = picoforge
+	conflicts = picoforge-git
+	noextract = picoforge_0.9.0_glibc-2.28_x86-64.AppImage
+	options = !strip
+	options = !debug
+	source = picoforge_0.9.0_glibc-2.28_x86-64.AppImage::https://github.com/librekeys/picoforge/releases/download/v0.9.0/picoforge_0.9.0_glibc-2.28_x86-64.AppImage
+	source = picoforge-LICENSE::https://raw.githubusercontent.com/librekeys/picoforge/v0.9.0/LICENSE
+	sha256sums = 81c12f129cf0e55bc932f94db9781204a25ab919d94e985ed16027014f66bff5
+	sha256sums = d8a6cc31abc16b6748c7a21f21611f5a1ec33f67d22ca23d7da1c19b95496bee
+
+pkgname = picoforge-bin
