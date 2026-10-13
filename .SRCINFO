@@ -1,7 +1,7 @@
 pkgbase = grayjay-bin
 	pkgdesc = Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)
-	pkgver = 17
-	pkgrel = 2
+	pkgver = 20
+	pkgrel = 1
 	url = https://grayjay.app/desktop/
 	arch = x86_64
 	license = Source First License 1.1
@@ -19,7 +19,7 @@ pkgbase = grayjay-bin
 	conflicts = grayjay
 	conflicts = grayjay-git
 	options = !strip
-	source = Grayjay.Desktop-linux-x64-v17.zip::https://updater.grayjay.app/Apps/Grayjay.Desktop/17/Grayjay.Desktop-linux-x64-v17.zip
-	sha256sums = 29a5b953a26c30af10dafa1727b588f19cea93c74073882fa7e1f2a9336757d4
+	source = Grayjay.Desktop-linux-x64-v20.zip::https://updater.grayjay.app/Apps/Grayjay.Desktop/20/Grayjay.Desktop-linux-x64-v20.zip
+	sha256sums = cf35fbd4adb19b4a65bc7095dbc28648c4e024438d2cf77078b3fee3a14f9b30
 
 pkgname = grayjay-bin
