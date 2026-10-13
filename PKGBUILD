@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jet-pilot-bin
 _pkgname=JET.Pilot
-pkgver=2.0.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="An open-source Kubernetes desktop client that focuses on less clutter, speed and good looks."
 arch=(
@@ -24,8 +24,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/unxsist/jet-pilot/
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
 sha256sums=('508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1')
-sha256sums_aarch64=('b9c86d0d364ba0d3704a31179920be17cdcec716e8f7951c4c9b2b9e7d9e202c')
-sha256sums_x86_64=('ffb5779d8d994e8be60559c3f74e7eae865fc7e7d9550ba1c312d54c142ba6f0')
+sha256sums_aarch64=('d60391108de7c39aa498647885be604520189432b25d8805ffe8e23d56c16193')
+sha256sums_x86_64=('87dac7821f4bf131e92b29dfc61b79b94b951ffd4639a40cddbd7a75e55c5b44')
 prepare() {
     sed -i -e "
         s/Exec=\"${_pkgname//./ }\"/Exec=${pkgname%-bin}/g
@@ -35,6 +35,7 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_pkgname//./ }" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    [ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
