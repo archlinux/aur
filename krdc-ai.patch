@@ -4168,10 +4168,10 @@ index a988f504..1620f348 100644
      QUrl m_url;
 diff --git a/core/smartinvert.cpp b/core/smartinvert.cpp
 new file mode 100644
-index 00000000..77cb5e3c
+index 00000000..8cf73a13
 --- /dev/null
 +++ b/core/smartinvert.cpp
-@@ -0,0 +1,127 @@
+@@ -0,0 +1,144 @@
 +// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +
@@ -4183,20 +4183,37 @@ index 00000000..77cb5e3c
 +
 +namespace {
 +/**
-+ * Brightness curve for the light-to-dark remap: v -> 225 - 3v/4.
++ * Brightness curve for the light-to-dark remap, in three pieces:
 + *
-+ * White (255) becomes dark grey (34), near-black text (20) becomes light grey
-+ * (210), and mid greys stay close to themselves (the curve crosses the identity
-+ * at 128.5). It is continuous and monotone, so antialiased text edges - where
-+ * background and text greys meet in half-tones - stay smooth instead of
-+ * gaining halos. The output range stops short of pure black and pure white to
-+ * keep the low-contrast, easy-on-the-eyes feel of real dark themes.
++ * - the text end (v <= s_textCutoff): near-black becomes near-white
++ *   (0 -> 248, 90 -> 228). The old linear curve landed black text at a
++ *   light grey (210), which the eye read as cloudy; real dark themes use
++ *   white text on dark grey.
++ * - the blend (to s_blendEnd): interpolates into the chrome curve so
++ *   antialiased edges between text and background stay monotone, smooth
++ *   and free of halos.
++ * - the chrome end (v >= s_blendEnd): 225 - 3v/4. White (255) becomes dark
++ *   grey (34) and mid greys cross the identity around 130, keeping the
++ *   low-contrast feel of real dark themes. The output stops short of pure
++ *   black and pure white.
 + */
++constexpr int s_textCutoff = 90;
++constexpr int s_blendEnd = 130;
++
 +constexpr std::array<int, 256> buildCurve()
 +{
 +    std::array<int, 256> curve{};
 +    for (int v = 0; v < 256; ++v) {
-+        curve[v] = 225 - (v * 3) / 4;
++        if (v <= s_textCutoff) {
++            curve[v] = 248 - v * 20 / s_textCutoff;
++        } else if (v < s_blendEnd) {
++            const int text = 248 - v * 20 / s_textCutoff;
++            const int chrome = 225 - (v * 3) / 4;
++            const int w = v - s_textCutoff; // 0..40
++            curve[v] = (text * (s_blendEnd - s_textCutoff - w) + chrome * w) / (s_blendEnd - s_textCutoff);
++        } else {
++            curve[v] = 225 - (v * 3) / 4;
++        }
 +    }
 +    return curve;
 +}
@@ -4301,10 +4318,10 @@ index 00000000..77cb5e3c
 +}
 diff --git a/core/smartinvert.h b/core/smartinvert.h
 new file mode 100644
-index 00000000..2a12b1ed
+index 00000000..e064fc7d
 --- /dev/null
 +++ b/core/smartinvert.h
-@@ -0,0 +1,44 @@
+@@ -0,0 +1,48 @@
 +// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +
@@ -4328,7 +4345,11 @@ index 00000000..2a12b1ed
 + * It cannot tell a white window background from a white document page: both
 + * are flat white pixels. Only the remote OS itself knows that difference, so
 + * for perfect results the remote should use its native dark mode; this filter
-+ * is for the apps and operating systems that do not have one.
++ * is for the apps and operating systems that do not have one. RDP sessions
++ * additionally ask the server to disable ClearType font smoothing at connect
++ * time: subpixel rendering paints glyph edges with colored pixels that this
++ * filter cannot distinguish from colorful content, and they would remain as
++ * colored halos around recolored text.
 + *
 + * medianLuma() supports an auto-bias: a screen whose median brightness shows
 + * a light theme is filtered, one that is already dark (native dark mode, or
@@ -4823,7 +4844,7 @@ index 00000000..a1960f89
 +QVector<DWORD> modifierVirtualKeys(Qt::KeyboardModifiers modifiers);
 +}
 diff --git a/rdp/rdpsession.cpp b/rdp/rdpsession.cpp
-index 963f448c..a21d9873 100644
+index 963f448c..60aeaaf9 100644
 --- a/rdp/rdpsession.cpp
 +++ b/rdp/rdpsession.cpp
 @@ -4,6 +4,7 @@
@@ -4834,7 +4855,43 @@ index 963f448c..a21d9873 100644
  #include "rdpcliprdr.h"
  #include "rdpdisp.h"
  #include "rdpgraphics.h"
-@@ -1585,6 +1586,304 @@ void RdpSession::setState(RdpSession::State newState)
+@@ -639,6 +640,35 @@ int RdpSession::clientContextStart(rdpContext *context)
+     if (!freerdp_settings_set_bool(settings, FreeRDP_FrameMarkerCommandEnabled, true)) {
+         return -1;
+     }
++    // Negotiate the session experience explicitly, with ClearType font
++    // smoothing turned off. Subpixel-rendered glyphs reach the wire as
++    // colored pixels (a black glyph edge is literally cyan or orange), and
++    // those pixels are impossible for the dark mode filter to tell apart
++    // from colorful icons - they survived recoloring as colored halos
++    // around every letter. Without font smoothing the server renders text
++    // with plain grayscale antialiasing, which recolors cleanly and looks
++    // no worse over a remote connection (it is what mstsc does when "font
++    // smoothing" is unticked). The rest of the experience stays full:
++    // wallpaper, themes, drag and animations are kept.
++    if (!freerdp_settings_set_bool(settings, FreeRDP_AllowFontSmoothing, false)) {
++        return -1;
++    }
++    if (!freerdp_settings_set_bool(settings, FreeRDP_AllowDesktopComposition, true)) {
++        return -1;
++    }
++    if (!freerdp_settings_set_bool(settings, FreeRDP_DisableWallpaper, false)) {
++        return -1;
++    }
++    if (!freerdp_settings_set_bool(settings, FreeRDP_DisableFullWindowDrag, false)) {
++        return -1;
++    }
++    if (!freerdp_settings_set_bool(settings, FreeRDP_DisableMenuAnims, false)) {
++        return -1;
++    }
++    if (!freerdp_settings_set_bool(settings, FreeRDP_DisableThemes, false)) {
++        return -1;
++    }
++    freerdp_performance_flags_make(settings);
+     if (!freerdp_settings_set_bool(settings, FreeRDP_SupportDynamicChannels, true)) {
+         return -1;
+     }
+@@ -1585,6 +1615,304 @@ void RdpSession::setState(RdpSession::State newState)
      Q_EMIT stateChanged();
  }
  
@@ -5481,10 +5538,10 @@ index 1600b660..4fcfc2a4 100644
  endif()
 diff --git a/test/aiengine_test.cpp b/test/aiengine_test.cpp
 new file mode 100644
-index 00000000..c22f8d32
+index 00000000..53773edb
 --- /dev/null
 +++ b/test/aiengine_test.cpp
-@@ -0,0 +1,511 @@
+@@ -0,0 +1,512 @@
 +/*
 +    Standalone test for the AI conversation engine. Not built by default; see
 +    test_ai.sh. Drives AiConversation against a mock OpenAI-compatible server
@@ -5651,6 +5708,7 @@ index 00000000..c22f8d32
 +          "the white background becomes dark");
 +    const QRgb text = img.pixel(10, 6);
 +    check(qRed(text) > 170 && qGreen(text) > 170 && qBlue(text) > 170, "the dark text becomes light");
++    check(qRed(text) > 235, "the text lands near white, not cloudy grey");
 +    const QRgb icon = img.pixel(38, 38);
 +    check(qRed(icon) > 180 && qGreen(icon) < 90 && qBlue(icon) < 90, "the saturated red icon keeps its color");
 +
