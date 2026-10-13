@@ -1,6 +1,6 @@
 pkgbase = subliminal
 	pkgdesc = Python library and CLI tool for searching and downloading subtitles.
-	pkgver = 2.7.1
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/Diaoul/subliminal
 	arch = any
@@ -25,9 +25,9 @@ pkgbase = subliminal
 	depends = python-srt>=3.5
 	depends = python-tomlkit>=0.13.2
 	depends = python-rarfile>=2.7
-	source = https://github.com/Diaoul/subliminal/releases/download/2.7.1/subliminal-2.7.1.tar.gz
-	sha256sums = f2649914d3067904effa2b4ce8d83aae994cd47008253311d5ae7949f467939f
-	sha512sums = 63bcd79112fbb9fbdbfef0b5cfabd06142df2cea93bafdb9f8da11d2fcf94ab79faa8c6230083a3574ac04a1f579061c8140504225310c0be92a34d7f5e3150e
-	b2sums = 4bde34be38389c8022af7cd84b09f6eea897b83869d3858b4ca12abfad8580fcd47c73ed2dab3c3be1c1dcd04e0958b102a7918a032ab76cdddd25d410b690fd
+	source = https://github.com/Diaoul/subliminal/releases/download/2.8.0/subliminal-2.8.0.tar.gz
+	sha256sums = 0d784e621d0fa7d173f75798427b3572d4ab071a90bc0b9a8a88f1925670f691
+	sha512sums = 0e9f8340f8ffd16f3fb6f77fe7c58e2d2a33ddef059dbfbed4a7f9298a8afeef2486247616d1bc293631623fad1e405191d736b4dc8dc08ff5815f4eb630a03e
+	b2sums = 18ff79d19c8eb10b5c62dd61cdc374d526f05f4218204cfb2ade3af60c949e9b738e2b425e80c333913a9e9902f9b05490d47d06286ff68fbdf848bdf7c85d09
 
 pkgname = subliminal
