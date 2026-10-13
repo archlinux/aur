@@ -10,7 +10,7 @@
 
 pkgname=zennotes-bin
 _appname=ZenNotes
-pkgver=2.68.0
+pkgver=2.69.0
 pkgrel=1
 pkgdesc="Keyboard-first, local-first Markdown notes with vim motions and live preview"
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
 
 # sha256 of the uploaded ZenNotes-${pkgver}-linux-x64.tar.gz release asset
 # (GitHub's authoritative asset digest; no Arch tooling needed).
-sha256sums=('07b25a34f5b6814550cfc13005b12d730f5ce483ab73c513a848437a1c2dddce')
+sha256sums=('4e790b5c7cb8b13aaf2f6c4a6befa566455d0c39c220f948ea5d010cb7cb208e')
 
 package() {
   cd "${srcdir}"
