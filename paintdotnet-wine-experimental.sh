@@ -46,6 +46,11 @@ while IFS= read -r -d '' f; do
     [[ -e "$GOAL" || -L "$GOAL" ]] || ln -s "$f" "$GOAL"
 done
 
+# This is kind of a workaround
+# This disable logic of VK_LAYER_MND_enable_timeline_semaphore which seems to cause issue with vulkan device creation for some users
+# using GTX 1080 using 580 driver to be exact, with monado-vulkan-layers-git installed
+export NO_ENABLE_TIMELINE_SEMAPHORE=1
+
 wine "$TARGET/paintdotnet.exe" "$@"
 
 
