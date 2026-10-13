@@ -1,0 +1,18 @@
+pkgbase = tez-bin
+	pkgdesc = A typing game with a stretchy blob
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/vyrx-dev/tez
+	license = MIT
+	depends = libffi
+	depends = libx11
+	depends = wayland
+	depends = mesa
+	depends = alsa-lib
+	conflicts = tez
+	provides = tez
+	arch = x86_64
+	source_x86_64 = tez-bin_1.0.3_x86_64.tar.gz::https://github.com/vyrx-dev/tez/releases/download/v1.0.3/tez_1.0.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 701567315f6b05e6c65f86c195e1eecbe501f93124938d7f58a4de19b21e4b63
+	
+pkgname = tez-bin
