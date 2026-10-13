@@ -2,7 +2,7 @@
 
 pkgname=bettbox-compatible-pre-bin
 _pkgname=Bettbox
-pkgver=1.19.5pre1
+pkgver=1.19.5
 pkgrel=1
 _pkgver="${pkgver/pre/-pre}"
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash. (Build with GOAMD64=v1)"
@@ -26,7 +26,7 @@ source_x86_64=(
 sha256sums=('03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2'
             'f1a21fce8675e6bd03565f56d21954e9c13991426bdc38368cd1b85f6893a593'
             'c6a494309939447475c29c83020d0ad19b12bed0b3f5aaae3c7c8b5f32942d2b')
-sha256sums_x86_64=('a8273118257592bac6f6906395e3b33ac4cdc04978f97c8a2fbbe3802088d69c')
+sha256sums_x86_64=('d1d0f156a4c1af2eeb3a092ec7c56a07460f47abc3efcdde5bc0851a434667c9')
 install=bettbox.install
 
 prepare() {
