@@ -58,7 +58,6 @@ check() {
 
 package() {
     DESTDIR="${pkgdir}" cmake --install opennn/build
-
     install -Dm644 \
         opennn/LICENSE.txt \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
