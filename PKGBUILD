@@ -25,16 +25,16 @@ package_localtranslate-models-kotki-tiny() {
     conflicts=("localtranslate-models-base")
 
     install -dm755 "${pkgdir}/usr/share/localtranslate/models/firefox"
-    cp -a --reflink=auto "${srcdir}/${_models_ver}-tiny/." "${pkgdir}/usr/share/localtranslate/models/firefox/"
+    cp -a --reflink=auto "${srcdir}/${_models_ver}-tiny" "${pkgdir}/usr/share/localtranslate/models/firefox/"
 }
 
 # --- Kotki ---
 
 package_kotki-models-tiny() {
-    pkgdesc="Kotki's tiny translation models for native Kotki application"
+    pkgdesc="Kotki's tiny translation models for native Kotki library"
     provides=("kotki-models-base")
     conflicts=("kotki-models-base")
 
     install -dm755 "${pkgdir}/usr/share/kotki/models"
-    cp -a --reflink=auto "${srcdir}/${_models_ver}-tiny/." "${pkgdir}/usr/share/kotki/models/"
+    cp -a --reflink=auto "${srcdir}/${_models_ver}-tiny" "${pkgdir}/usr/share/kotki/models/"
 }

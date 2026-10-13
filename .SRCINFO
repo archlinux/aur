@@ -13,6 +13,6 @@ pkgname = localtranslate-models-kotki-tiny
 	conflicts = localtranslate-models-base
 
 pkgname = kotki-models-tiny
-	pkgdesc = Kotki's tiny translation models for native Kotki application
+	pkgdesc = Kotki's tiny translation models for native Kotki library
 	provides = kotki-models-base
 	conflicts = kotki-models-base
