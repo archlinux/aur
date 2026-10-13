@@ -8,15 +8,14 @@ pkgbase = cuby-git
 	makedepends = npm
 	makedepends = nvm
 	makedepends = git
-	makedepends = curl
 	makedepends = gendesk
 	makedepends = jq
-	depends = electron26
+	depends = electron26-bin
 	provides = cuby=release
 	conflicts = cuby
 	source = cuby.git::git+https://github.com/Cuby-Project/Cuby-Client.git
 	source = cuby.sh
 	sha256sums = SKIP
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
 
 pkgname = cuby-git
