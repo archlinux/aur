@@ -4,7 +4,7 @@
 # shellcheck disable=SC2164
 
 pkgver=2.3.0.r1.ga470a63
-pkgrel=3
+pkgrel=4
 
 _pkgname=casual-pre-loader
 pkgname="${_pkgname}-git"
@@ -20,7 +20,7 @@ depends=(
 	'python-cappa>=0.33.0' 'python-cappa<1.0.0'
 	'python-more-itertools>=11.1.0' 'python-more-itertools<12.0.0'
 	'python-packaging>=26.2' 'python-packaging<27'
-	'python-platformdirs>=4.11' 'python-platformdirs<5'
+	'python-platformdirs>=4.13' 'python-platformdirs<5'
 	'python-pygithub>=2.10.0' 'python-pygithub<3'
 	'python-pyqt6>=6.11' 'python-pyqt6<7'
 	'python-rich>=15.0' 'python-rich<16'
