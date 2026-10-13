@@ -1,17 +1,23 @@
-pkgbase = python-mcp
-	pkgdesc = Model Context Protocol SDK
-	pkgver = 1.29.0
+pkgbase = python-mcp2
+	pkgdesc = Model Context Protocol SDK version 2.x
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/modelcontextprotocol/python-sdk
 	arch = any
 	license = MIT
+	checkdepends = python-blockbuster
+	checkdepends = python-coverage
 	checkdepends = python-dirty-equals
+	checkdepends = python-importlib-metadata
 	checkdepends = python-inline-snapshot
+	checkdepends = python-logfire
+	checkdepends = python-opentelemetry-sdk
+	checkdepends = python-pillow
 	checkdepends = python-pytest
 	checkdepends = python-pytest-examples
 	checkdepends = python-pytest-xdist
 	checkdepends = python-requests
-	checkdepends = python-websockets
+	checkdepends = python-trio
 	checkdepends = ruff
 	checkdepends = uv
 	makedepends = git
@@ -21,10 +27,11 @@ pkgbase = python-mcp
 	makedepends = python-uv-dynamic-versioning
 	depends = python
 	depends = python-anyio
+	depends = python-cryptography
 	depends = python-dotenv
-	depends = python-httpx
-	depends = python-httpx-sse
+	depends = python-httpx2
 	depends = python-jsonschema
+	depends = python-opentelemetry-api
 	depends = python-pydantic
 	depends = python-pydantic-settings
 	depends = python-pyjwt
@@ -36,8 +43,10 @@ pkgbase = python-mcp
 	depends = python-typing_extensions
 	depends = uvicorn
 	optdepends = python-rich: rich logging support
-	optdepends = python-websockets: deprecated websocket transport support
-	source = git+https://github.com/modelcontextprotocol/python-sdk.git#tag=v1.29.0
-	b2sums = f65cb4f3333d5b22644e5308d00ef4c467ff3d24894791fce2a727b845abfeed5bf6ee4844d468e27d326ed52586cfaffd499a49278c88dbbe726ab6a24b947d
+	provides = python-mcp-types=2.3.0
+	conflicts = python-mcp
+	conflicts = python-mcp-types
+	source = git+https://github.com/modelcontextprotocol/python-sdk.git#tag=v2.3.0
+	b2sums = 13a48f64e4347a2def79cb2e7bfd834da2ac8418db5deb625d9c572ed7d55dcc7ae255b14d0123fb59bd39408f32b2fa8a06b46dd5ef6bd8dad5dbc676a25bbe
 
-pkgname = python-mcp
+pkgname = python-mcp2
