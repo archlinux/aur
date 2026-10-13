@@ -1,15 +1,15 @@
+# Maintainer: Radu Potop <radu@wooptoo.com>
 # Contributor:  Paul Moffat <aur@paulmoffat.net>
 # Contributor: Silvio Fricke <silvio.fricke@gmail.com>
 # Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: Kevin Piche <kevin@archlinux.org>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
-# Maintainer: Radu Potop <radu@wooptoo.com>
 
-projname=zim-desktop-wiki
+_name=zim-desktop-wiki
 pkgname=zim-git
-pkgver=0.75.2.79.ga637
+pkgver=0.77.2.30.gf20c86
 pkgrel=1
-pkgdesc="Zim desktop wiki. Git version"
+pkgdesc="Zim desktop wiki. Develop branch from git."
 arch=(any)
 license=('GPL-2.0-or-later')
 url="https://zim-wiki.org/"
@@ -32,22 +32,22 @@ optdepends=('breezy: Version Control plugin'
             'lilypond: Insert Score plugin'
             'gtksourceview3: Source View plugin'
             'texlive-bin: Insert Equation plugin')
-source=("git+https://github.com/$projname/$projname.git#branch=develop")
+source=("git+https://github.com/$_name/$_name.git#branch=develop")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$projname"
+    cd "$_name"
     git describe --abbrev=4 --always --tags | sed 's/-/./g'
 }
 
 check() {
-    cd "${srcdir}/${projname}"
+    cd "${srcdir}/${_name}"
 
     xvfb-run -w0 ./test.py --ff
 }
 
 package() {
-    cd "${srcdir}/${projname}"
+    cd "${srcdir}/${_name}"
 
     python setup.py install --root="${pkgdir}" --optimize=1
 
