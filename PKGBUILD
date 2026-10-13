@@ -1,15 +1,25 @@
 # Maintainer: Mathieu Grenet <mathieu@mgth.fr>
 #
-# harletty-bridge — the format-decoder bridge plugin loaded at runtime by the
-# orender engine via dlopen. Installed into the fixed libdir hosts are pointed
-# at:
+# harletty-bridge — the format-decoder bridge plugins loaded at runtime by the
+# orender engine via dlopen, one library per codec family. Installed into the
+# system plugin folder the engine searches:
 #
-#     /usr/lib/orender/libharletty_bridge.so
+#     /usr/lib/orender/libharletty_dolby_bridge.so
+#     /usr/lib/orender/libharletty_dts_bridge.so
+#     /usr/lib/orender/libharletty_iamf_bridge.so
 #
-# The engine auto-discovers any `*_bridge.so` sitting next to the host
-# executable; for system installs (host in /usr/bin) point it at the plugin
-# explicitly, e.g. `render.bridge_path` in ~/.config/omniphony/config.yaml or
-# `--ad-orender-bridge-path=/usr/lib/orender/libharletty_bridge.so` in mpv.
+# With no bridge configured, the engine loads every `*_bridge.so` of the first
+# discovery folder that holds a usable one (next to the host executable,
+# $ORENDER_BRIDGE_DIR, ~/.local/share/omniphony/lib, then /usr/lib/orender), so
+# these are found with no configuration. To name them explicitly, list them in
+# `render.bridge_paths` in ~/.config/omniphony/config.yaml, or pass them to mpv
+# as a path list: `--ad-orender-bridge-path=/usr/lib/orender/libharletty_dolby_bridge.so:…`.
+#
+# Up to harletty 0.8.x this package installed one combined library,
+# /usr/lib/orender/libharletty_bridge.so. pacman removes it on upgrade, as the
+# new version no longer owns it; a config that still names it is read by the
+# engine as the family libraries in the same folder (a transition rule of the
+# release that introduced them).
 #
 # The upstream bridge source builds against a few crates from the Omniphony
 # workspace via path deps (bridge_api/spdif/sys), so the matching Omniphony
@@ -17,27 +27,35 @@
 # Cargo.toml expects.
 
 pkgname=harletty-bridge
-pkgver=0.8.0
+# The first harletty release that ships the family plugins (bridge_api 0.6).
+pkgver=0.9.0
 pkgrel=1
-pkgdesc="Format-decoder bridge plugin for the orender engine (loaded via dlopen at runtime)"
+pkgdesc="Format-decoder bridge plugins for the orender engine, one per codec family (loaded via dlopen at runtime)"
 arch=('x86_64')
 url="https://github.com/harletty/harletty-bridge"
-# The bridge's own sources are Apache-2.0, but the library packaged here links
+# The bridge's own sources are Apache-2.0, but the libraries packaged here link
 # bridge_api/spdif/sys from Omniphony, which are GPL-3.0-or-later. What ships
 # in this package is therefore a combined work under the GPL. (The upstream
 # harletty CLI has no such dependency and stays Apache-2.0; it is not part of
 # this package.)
 license=('GPL-3.0-or-later' 'Apache-2.0')
-depends=('gcc-libs')
-makedepends=('rust' 'cargo')
+# opus: the IAMF plugin links the system libopus.
+depends=('gcc-libs' 'opus')
+# git: reads the Omniphony commit out of its source archive (see build()).
+makedepends=('rust' 'cargo' 'git')
 
-# Omniphony tag providing the workspace path-deps (bridge_api/spdif/sys).
-_omniver=0.6.0
+# Omniphony tag providing the workspace path-deps (bridge_api/spdif/sys): the
+# first one with bridge_api 0.6, which the family plugins are built against.
+_omniver=0.7.0
+
+# The codec families, each a cdylib crate named harletty-<family>-bridge whose
+# library is libharletty_<family>_bridge.so.
+_families=(dolby dts iamf)
 
 source=("harletty-bridge-$pkgver.tar.gz::https://github.com/harletty/harletty-bridge/archive/refs/tags/v$pkgver.tar.gz"
         "omniphony-$_omniver.tar.gz::https://github.com/mgth/Omniphony/archive/refs/tags/v$_omniver.tar.gz")
-sha256sums=('9865dace51f4d2a763ac522bfba36658f46af590f69c21ff8cbb8d88b07617ee'
-            '2fc90db9f979710b4d4275f3da35c13ca7caddef0f0def7d30e06b21cb1ab355')
+sha256sums=('a4e40f5a98991bd0c466ac054525756d35e66511084365019aab9f09c05b3b45'
+            'ad1a093ddbd83e71ed6182a49009f66b7b5c421efdd25915cc72451c33844f38')
 
 _bridge="harletty-bridge-$pkgver"
 
@@ -51,20 +69,33 @@ build() {
     cd "$srcdir/$_bridge"
     # Keep $srcdir out of the binary (panic-location paths) for reproducibility.
     export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=$srcdir=src"
-    cargo build --release -p harletty-bridge
+    # Each library records the Omniphony commit its bridge_api came from and
+    # logs it when a host loads it. A source archive has no checkout to ask,
+    # but carries the commit of its tag in its header.
+    export HARLETTY_OMNIPHONY_COMMIT="$(zcat "$srcdir/omniphony-$_omniver.tar.gz" | git get-tar-commit-id)"
+    local packages=()
+    local family
+    for family in "${_families[@]}"; do
+        packages+=(-p "harletty-$family-bridge")
+    done
+    # --locked: the dependency versions of the release, from its Cargo.lock.
+    cargo build --release --locked "${packages[@]}"
 }
 
 package() {
     cd "$srcdir/$_bridge"
 
-    # Keep the natural cargo artifact name: the engine's plugin discovery
+    # Keep the natural cargo artifact names: the engine's plugin discovery
     # matches any `*_bridge.so`, so no rename is needed.
-    install -Dm755 target/release/libharletty_bridge.so \
-        "$pkgdir/usr/lib/orender/libharletty_bridge.so"
+    local family
+    for family in "${_families[@]}"; do
+        install -Dm755 "target/release/libharletty_${family}_bridge.so" \
+            "$pkgdir/usr/lib/orender/libharletty_${family}_bridge.so"
+    done
 
-    # Both licences the shipped library is under: Apache-2.0 for the bridge's
+    # Both licences the shipped libraries are under: Apache-2.0 for the bridge's
     # own sources, GPL-3.0-or-later for the combined work. Their texts are in
-    # the system `licenses` package, but a user holding only this .so should
+    # the system `licenses` package, but a user holding only these .so should
     # not have to go looking — the GPL requires the terms to travel with it.
     if [ -f LICENSE ]; then
         install -Dm644 LICENSE \
