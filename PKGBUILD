@@ -4,7 +4,7 @@
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=pencil-git
-pkgver=3.1.1.r30.g5a81278
+pkgver=3.1.1.r31.gac71edf
 pkgrel=1
 pkgdesc="An open-source GUI prototyping tool"
 arch=('i686' 'x86_64')
@@ -41,9 +41,8 @@ package() {
 
   install -D -m755 "$srcdir/pencil.sh" "$pkgdir/usr/bin/pencil"
   install -D -m644 "$srcdir/pencil.desktop" "$pkgdir/usr/share/applications/pencil.desktop"
-  for ICON in build/icons/* ; do
+  for ICON in app/build/icons/*.png ; do
     install -D -m644 "$ICON" \
       "$pkgdir"/usr/share/icons/hicolor/`basename $ICON .png`/apps/pencil.png
   done
 }
-
