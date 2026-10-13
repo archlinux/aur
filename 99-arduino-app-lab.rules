@@ -1,0 +1,6 @@
+# Arduino UNO Q / VENTUNO Q
+# Taken from https://docs.arduino.cc/software/app-lab/setup/linux/
+# Upstream uses GROUP="dialout", which does not exist on Arch. The Arch group
+# for serial/USB devices is uucp: https://wiki.archlinux.org/title/Users_and_groups
+SUBSYSTEM=="usb", ATTRS{idVendor}=="2341", MODE="0660", GROUP="uucp"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="05c6", MODE="0660", GROUP="uucp"

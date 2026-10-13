@@ -1,0 +1,14 @@
+# Upstream generates this file at build time and only ships a placeholder:
+# https://github.com/arduino/arduino-app-lab/blob/al-0.10.0/standalone-apps/app-lab-desktop/build/debian/arduino-app-lab/usr/share/applications/ArduinoAppLab.desktop
+# The mime type is the protocol handler declared in wails.json
+[Desktop Entry]
+Type=Application
+Name=Arduino App Lab
+GenericName=IDE
+Comment=Visual development environment for Arduino UNO Q and VENTUNO Q boards
+Exec=/usr/bin/arduino-app-lab %U
+Icon=arduino-app-lab
+Terminal=false
+Categories=Development;IDE;Electronics;
+MimeType=x-scheme-handler/arduino-app-lab
+Keywords=arduino;uno q;ventuno q;embedded;bricks;
