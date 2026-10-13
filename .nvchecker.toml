@@ -1,0 +1,4 @@
+[gradient]
+source = "git"
+git = "https://github.com/mazznoer/gradient-rs.git"
+prefix = "v"
