@@ -1,6 +1,6 @@
 pkgbase = sayall-bin
 	pkgdesc = Linux voice dictation application and CLI (prebuilt)
-	pkgver = 0.3.3
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/saiemsaeed/sayall
 	install = sayall-bin.install
@@ -17,12 +17,12 @@ pkgbase = sayall-bin
 	depends = wtype
 	depends = xdotool
 	depends = xsel
-	provides = sayall=0.3.3
+	provides = sayall=0.4.0
 	conflicts = sayall
 	conflicts = sayall-src
 	conflicts = sayall-git
 	options = !debug
-	source = sayall-0.3.3-linux-x86_64.tar.gz::https://github.com/saiemsaeed/sayall/releases/download/v0.3.3/sayall-0.3.3-linux-x86_64.tar.gz
-	sha256sums = 080a6eeb2fa99e43597f9a54d6735bcd0e72d73e31e3bac7da0db63ca4b90cda
+	source = sayall-0.4.0-linux-x86_64.tar.gz::https://github.com/saiemsaeed/sayall/releases/download/v0.4.0/sayall-0.4.0-linux-x86_64.tar.gz
+	sha256sums = f8a05e3849e785b3f64fbcb2f3c2c3de599352f0dc7ec2fe4e58db029708b1b5
 
 pkgname = sayall-bin
