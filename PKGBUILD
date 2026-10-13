@@ -1,7 +1,7 @@
 # Maintainer: Folf <folf@folf.me>
 
 pkgname=osmium
-pkgver=0.0.40
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A globally distributed community messaging and voice/video platform"
 arch=('x86_64')
@@ -13,13 +13,11 @@ optdepends=(
     'xdg-utils: Open files'
 )
 options=('!strip')
-_pkgver=0.0.40
-_suffix=alpha
-source=("https://updater.osmium.chat/Osmium-${_pkgver}-${_suffix}-x64.tar.gz")
-sha512sums=('3d00188a98b86c20ccea0171df4b5fbd85ddb32066fd5dd35023e2c56f07ed570ece394946f1f33bc771e60179d4117dba9877c34e6eeb44e48c3efb949cb512')
+source=("https://updater.osmium.chat/Osmium-${pkgver}-x64.tar.gz")
+sha512sums=('01d9590c698d0baf1495207e53ce0181e06e30e2a6144f04f43c2e51839be42df962f2e7795c385c1eee3471cd84e15435412f825a3b3fe31c28d8bed4433670')
 
 prepare() {
-    cd "Osmium-${_pkgver}-${_suffix}-x64"
+    cd "Osmium-${pkgver}-x64"
 
     sed -i \
         -e "s|Exec=.*|Exec=/usr/bin/${pkgname} --enable-features=UseOzonePlatform --ozone-platform-hint=auto %U|" \
@@ -28,7 +26,7 @@ prepare() {
 }
 
 package() {
-    cd "Osmium-${_pkgver}-${_suffix}-x64"
+    cd "Osmium-${pkgver}-x64"
 
     install -dm755 "${pkgdir}/opt/${pkgname}"
     cp -a . "${pkgdir}/opt/${pkgname}"
