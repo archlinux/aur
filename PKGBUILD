@@ -2,11 +2,11 @@
 
 _pkgname=suil
 pkgname="$_pkgname-git"
-pkgver=0.10.24.r494.58f6da4
+pkgver=0.10.27.r502.3100c21
 pkgrel=1
 pkgdesc='Lightweight C library for loading and wrapping LV2 plugin UIs (git version)'
 arch=(x86_64)
-url='http://drobilla.net/software/suil/'
+url='https://drobilla.net/software/suil/'
 license=(ISC)
 makedepends=(
   doxygen
@@ -39,7 +39,7 @@ pkgver() {
 build() {
   arch-meson $_pkgname $_pkgname-build \
     -Dcocoa=disabled \
-    -Ddocs=enabled \
+    -Ddocs=disabled \
     -Dgtk2=enabled \
     -Dgtk3=enabled \
     -Dqt5=enabled \
@@ -60,6 +60,6 @@ package() {
   # license
   install -vDm 644 $_pkgname/COPYING -t "$pkgdir"/usr/share/licenses/$pkgname
   # documentation
-  mv -v "$pkgdir"/usr/share/doc/{$_pkgname-0,$pkgname}
+  #mv -v "$pkgdir"/usr/share/doc/{$_pkgname-0,$pkgname}
   install -vDm 644 $_pkgname/{AUTHORS,NEWS,README.md} -t "$pkgdir"/usr/share/doc/$pkgname
 }
