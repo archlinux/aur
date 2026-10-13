@@ -1,0 +1,32 @@
+pkgbase = wealthfolio-git
+	pkgdesc = A beautiful, private, local-first personal finance tracker (main branch)
+	pkgver = 3.9.2.r4698.g5a6f99684
+	pkgrel = 1
+	url = https://wealthfolio.app/
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	makedepends = mise
+	depends = bzip2
+	depends = cairo
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	depends = xz
+	optdepends = org.freedesktop.secrets: secure storage for credentials and database keys
+	provides = wealthfolio
+	conflicts = wealthfolio
+	conflicts = wealthfolio-bin
+	options = !lto
+	options = !debug
+	source = wealthfolio::git+https://github.com/wealthfolio/wealthfolio.git#branch=main
+	sha256sums = SKIP
+
+pkgname = wealthfolio-git
