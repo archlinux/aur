@@ -1,6 +1,6 @@
 pkgbase = agent-sandbox
 	pkgdesc = Launch AI coding agents inside a rootless Podman sandbox
-	pkgver = 0.26.0
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://github.com/thomaspeklak/agent-sandbox
 	install = agent-sandbox.install
@@ -10,7 +10,7 @@ pkgbase = agent-sandbox
 	depends = git
 	depends = openssh
 	depends = podman
-	source = agent-sandbox-0.26.0.tar.gz::https://github.com/thomaspeklak/agent-sandbox/archive/refs/tags/v0.26.0.tar.gz
-	sha256sums = d4f249f6790fd319f3a45f0214696709320419da6092b8d82f07b87e342e5eaf
+	source = agent-sandbox-0.27.0.tar.gz::https://github.com/thomaspeklak/agent-sandbox/archive/refs/tags/v0.27.0.tar.gz
+	sha256sums = 6bdf17485f6931f738d7ad367e4e9a9aaccbeda9b211ef18b3bcdb0c75b767b8
 
 pkgname = agent-sandbox
