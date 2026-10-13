@@ -1,6 +1,6 @@
 # Maintainer: sinbud2004 <sinbud2004@gmail.com>
 pkgname=ssh_tunnel_egui
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="SSH Port Forwarding GUI application with GTK4, supporting password and SSH key authentication"
 arch=('x86_64')

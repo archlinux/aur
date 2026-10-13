@@ -1,6 +1,6 @@
 pkgbase = ssh_tunnel_egui
 	pkgdesc = SSH Port Forwarding GUI application with GTK4, supporting password and SSH key authentication
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Paul-sinbud2004/ssh-proxy-gtk
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ssh_tunnel_egui
 	depends = gtk4
 	depends = openssh
 	depends = sshpass
-	source = ssh-proxy-gtk-0.2.0.tar.gz::https://github.com/Paul-sinbud2004/ssh-proxy-gtk/archive/refs/tags/v0.2.0.tar.gz
+	source = ssh-proxy-gtk-0.2.1.tar.gz::https://github.com/Paul-sinbud2004/ssh-proxy-gtk/archive/refs/tags/v0.2.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = ssh_tunnel_egui
