@@ -5,5 +5,5 @@ pkg
 *.tar.zst
 *.log
 bootimus*
-LICENSE*
+LICENSE_*
 README*
