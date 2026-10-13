@@ -1,3 +1,9 @@
-pkg/
-src/
-goose*
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!LICENSE
+!LICENSES
+!LICENSES/**
+!REUSE.toml
+!.nvchecker.toml

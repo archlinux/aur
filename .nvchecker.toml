@@ -1,0 +1,5 @@
+[goose-cli-bin]
+source = "github"
+github = "aaif-goose/goose"
+prefix = "v"
+use_latest_release = true
