@@ -1,6 +1,6 @@
 # Maintainer: NC1107 <nickpconn@gmail.com>
 pkgname=sink-bin
-pkgver=0.1.37
+pkgver=0.1.38
 pkgrel=1
 pkgdesc="SteelSeries Sonar for Linux - per-app audio routing, mixing, and a processed virtual mic on PipeWire"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('sink')
 options=('!strip' '!debug')
 source=("https://github.com/NC1107/sink/releases/download/v${pkgver}/sink_${pkgver}_amd64.deb")
 noextract=("sink_${pkgver}_amd64.deb")
-sha256sums=('915236904e354a5ce2b47cc804b9c11618fa347b7c88a81e52bff84aee6f6528')
+sha256sums=('7edbefb9cf2bf33764b28c6bde6d94ade1ba1a7e073910b5017ef192194ead19')
 
 package() {
   cd "${srcdir}"
