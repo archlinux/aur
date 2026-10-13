@@ -3,13 +3,13 @@
 
 pkgname="git-tui"
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of human friendly terminal interface for git"
 arch=('x86_64')
 url="https://github.com/ArthurSonzogni/${pkgname}"
 license=('MIT')
-depends=('gcc-libs' 'git' 'glibc')
-makedepends=('cmake>=3.15' 'ftxui' 'ninja')
+depends=('gcc-libs' 'git' 'glibc' 'ftxui')
+makedepends=('cmake>=3.15' 'ninja')
 _pkgsrc="${pkgname}-${pkgver}"
 source=(
   "${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
