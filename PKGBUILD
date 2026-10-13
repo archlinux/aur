@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Zaoqi
 pkgname=electerm
-pkgver=5.5.76
-_electronversion=42
+pkgver=5.6.0
+_electronversion=44
 _nodeversion=24
-pkgrel=2
+pkgrel=1
 pkgdesc="Free and open-sourced terminal/ssh/sftp/ftp/telnet/serialport/RDP/VNC/Spice client."
 arch=(
     'aarch64'
@@ -17,8 +17,6 @@ license=('MIT')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'python'
-    'nodejs'
 )
 makedepends=(
     'npm'
@@ -32,8 +30,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('d1b438141bb162ac0d0ff4862ee018b5266a1d21e1ab3f848de478dfc63fcc1d'
-            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
+sha256sums=('c594c72747c8e9f4b5a187452c92e5d36df21191013ef9e5220d593544a3ef37'
+            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -45,9 +43,6 @@ _get_project_dir() {
 	while IFS= read -r d; do
 		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
-}
-_get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -66,6 +61,9 @@ _set_build_env() {
 	export npm_config_registry="${NPM_CONFIG_REGISTRY:-${npm_config_registry:-https://registry.npmjs.org}}"
 	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}"
 }
+_get_app_dir() {
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+}
 _get_electron_version() {
 	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
 		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
@@ -80,7 +78,6 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
-        s/@runname@/app.asar/g
     " "${srcdir}/${pkgname}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
@@ -105,27 +102,24 @@ build() {
     npm run clean
     npm run compile
     npm run prepare-file
-    WORKFLOW_NAME=linux-pkgbuild npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config build/electron-builder.json"
-    local _app_dir="$(_get_app_dir)"
-    find "${_app_dir}/resources" -type d -exec chmod 755 {} +
+    WORKFLOW_NAME=linux-pkgbuild npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config src/build/electron-builder.json"
+    find "$(_get_app_dir)/resources" -type d -exec chmod 755 {} +
 	case "${CARCH}" in
 		aarch64)	_archrem=x64	    ;;
         armv7h)     _archrem=64	        ;;
 		x86_64)		_archrem=arm	    ;;
 	esac
-	find "${_app_dir}/resources/app.asar.unpacked" -type d \
+	find "$(_get_app_dir)/resources/app.asar.unpacked" -type d \
 		\( -name "darwin*" -o -name "win32*" -o -name "*${_archrem}"* \) \
 		-exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-    local _app_dir="$(_get_app_dir)"
-    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
-    rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
-    local _src="$(_get_project_dir)"
-    install -Dm644 "${_src}/node_modules/@${pkgname}/${pkgname}-resource/build-res/appx/StoreLogo.png" \
+	rm -rf "$(_get_project_dir)/resources/default_app.asar"
+	cp -a "$(_get_project_dir)/resources/." "${pkgdir}/usr/lib/${pkgname}/"
+    install -Dm644 "$(_get_project_dir)/node_modules/@${pkgname}/${pkgname}-resource/build-res/appx/StoreLogo.png" \
         "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${_src}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${_src}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "$(_get_project_dir)/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
