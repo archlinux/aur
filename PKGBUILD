@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=xts
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='XML typesetting system, experimental playground for speedata Publisher next generation'
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(glibc)
 makedepends=(go)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('ba67bcb0995eb88a10c1ec719cac538b0eee6c07bb26832b6556c77bdfcb548b')
+sha256sums=('2b63a5bba5463807f26e38bd4b068b9cc46b97e13a39b4186b4fff987f1f9f5c')
 
 prepare() {
 	cd "$_archive"
