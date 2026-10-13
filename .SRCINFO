@@ -1,6 +1,6 @@
 pkgbase = tutanota-desktop-bin
 	pkgdesc = The desktop client for Tutanota, the secure e-mail service.
-	pkgver = 361.260929.0
+	pkgver = 361.261006.0
 	pkgrel = 1
 	url = https://tuta.com/secure-email
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = tutanota-desktop-bin
 	provides = tutanota-desktop
 	conflicts = tutanota-desktop
 	conflicts = tutanota-desktop-linux
-	source = tutanota-desktop-361.260929.0.AppImage::https://github.com/tutao/tutanota/releases/download/tutanota-desktop-release-361.260929.0/tutanota-desktop-linux.AppImage
-	source = linux-sig-361.260929.0.bin::https://app.tuta.com/desktop/linux-sig.bin
-	source = tutao-pub-361.260929.0.pem::https://github.com/tutao/tutanota/raw/tutanota-desktop-release-361.260929.0/tutao-pub.pem
-	sha512sums = 705f4c0d7fcfa82f37a2a985c3e9508e1a5baff2fdc8969d5197e3f5c37c44ba8dcf2070af08615915e7f14b88cae0e67459ce48f2b8ea41f2ed19c427068766
-	sha512sums = 133df331b874af5ebd98b01ca45404364263f530e6dd4b84ef7d05fa642f4ab6d072345cb6570d88361861206c6602c7e43a33bd71e8d64a6918f71ff3fea998
+	source = tutanota-desktop-361.261006.0.AppImage::https://github.com/tutao/tutanota/releases/download/tutanota-desktop-release-361.261006.0/tutanota-desktop-linux.AppImage
+	source = linux-sig-361.261006.0.bin::https://app.tuta.com/desktop/linux-sig.bin
+	source = tutao-pub-361.261006.0.pem::https://github.com/tutao/tutanota/raw/tutanota-desktop-release-361.261006.0/tutao-pub.pem
+	sha512sums = 84ee358cb477f8f6d4aa11d73c3d903160ea172726cac95e7e5ba3954102ba7a5b539d773dbb01c34ca2e1949bd2b7732925e55a521901fea4060f52a48f00e1
+	sha512sums = c5f2f2848d211813be6cd1447da9f06f32ff5fe1e08d186762adc9297c3c4a2fd8fa82fc2b09a16c01a58ea7a8aff91a24a0982f63070ef4cbf77433b762cd89
 	sha512sums = 7c6cf9f1074c08b4d38567ced95159c0809af025efe01b0163d9bb5107daabfa873064255186c071a7dc3a9177ccd0c1b2fcc8b085bdbff234965a6710b3ae45
 
 pkgname = tutanota-desktop-bin
