@@ -97,8 +97,9 @@ check() {
 _package_variant() {
   local _variant="$1" _licensedir="$2"
   install -dm755 "${pkgdir}/usr/lib/pi-bolt"
-  # cp -a fails on some layers under fakeroot; tar pipeline preserves symlinks safely.
-  tar -cf - -C "${srcdir}/pi-bolt-linux-${_variant}" . | tar --no-same-owner -xf - -C "${pkgdir}/usr/lib/pi-bolt"
+  # --no-preserve=ownership: plain -a chowns under fakeroot fail on this
+  # payload (EINVAL on docs/, export-html/); --reflink=auto keeps CoW copies.
+  cp -a --reflink=auto --no-preserve=ownership "${srcdir}/pi-bolt-linux-${_variant}/." "${pkgdir}/usr/lib/pi-bolt/"
   install -dm755 "${pkgdir}/usr/bin"
   ln -s /usr/lib/pi-bolt/pi "${pkgdir}/usr/bin/pi-bolt"
   install -Dm644 "${pkgdir}/usr/lib/pi-bolt/LICENSE" "${pkgdir}/usr/share/licenses/${_licensedir}/LICENSE"
