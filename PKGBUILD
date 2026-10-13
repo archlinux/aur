@@ -1,7 +1,7 @@
 # Maintainer: Tyrolyean <tyrolyean@escpe.net>
 pkgname=flexisip
-pkgver=2.6.1
-pkgrel=2
+pkgver=2.6.2
+pkgrel=1
 pkgdesc="A general purpose SIP proxy with media capabilities"
 arch=('x86_64')
 url="https://www.linphone.org/en/flexisip-sip-server/"
@@ -26,6 +26,9 @@ sha256sums=('SKIP')
 prepare() {
     cd "$pkgname"
 
+    # apparently makechrootpkg mounts can be cross device, which silently broke
+    # the `cp -aln`. The below functions as a plain copy as fallback.
+    _sync() { cp -aln "$1/." "$2"/ 2>/dev/null || cp -a --update=none "$1/." "$2"/; }
     # gitlab.linphone.org is dropping connections a lot, and quite a few build
     # attempts were needed to get it all the way there.
     # we now keep the submodule git dirs in SRCDEST to make
@@ -33,7 +36,7 @@ prepare() {
     # on github from there. the external/* forks exist solely on their gitlab
     local cache="${SRCDEST:-$startdir}/flexisip-submodules"
     mkdir -p "$cache" .git/modules
-    cp -aln "$cache/." .git/modules/ 2>/dev/null
+    _sync "$cache/." .git/modules/
 
     local try ret
     for try in {1..10}; do
@@ -41,7 +44,7 @@ prepare() {
         git -c url."https://github.com/BelledonneCommunications/".insteadOf="https://gitlab.linphone.org/BC/public/" \
             -c url."https://gitlab.linphone.org/BC/public/external/".insteadOf="https://gitlab.linphone.org/BC/public/external/" \
             submodule update --init --recursive --force || ret=$?
-        cp -aln .git/modules/. "$cache"/ 2>/dev/null
+        _sync .git/modules/. "$cache"/
         (( ret == 0 )) && return 0
         echo "submodule fetch failed (attempt $try/10), retrying in 15s..."
         sleep 15
