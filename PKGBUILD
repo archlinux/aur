@@ -3,7 +3,7 @@
 
 pkgname=pear-desktop-michei69-bin
 _app_id=com.github.th-ch.youtube-music
-pkgver=3.12.2
+pkgver=3.12.3
 pkgrel=1
 pkgdesc="YouTube Music Desktop App - including custom plugins (michei69's fork)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -27,9 +27,9 @@ source_aarch64=("https://github.com/michei69/pear-desktop/releases/download/v$pk
 source_armv7h=("https://github.com/michei69/pear-desktop/releases/download/v$pkgver/youtube-music_${pkgver}_armv7l.deb")
 sha256sums=('34166a5d4f182354810c18c9d568cbdd2b8ef7e95fa71d31f1d00fbe1089ac81'
             '3769e2d994ad011e8481f3ed448557cd9e5b5f1a805d84b4944639c807440d8c')
-sha256sums_x86_64=('43ee428aac927ab139cedee8aa855086015f3d9e12775923349a8328196544ca')
-sha256sums_aarch64=('2e92dc6d607bfc2b7de497f91aca9d9edc35912236d92a5744775874296e7d0d')
-sha256sums_armv7h=('59ccd3e3b03b14059a278763a703be77748c9051a501c3188928e03aa33d8a1e')
+sha256sums_x86_64=('cf5f53d905ab0dba356ca67701ab8ea04735c306f7ee296cc968ef2b1c665d19')
+sha256sums_aarch64=('7172d652784baf6423c8a310f5c550f447b009a11fddd694865859e85b6a14d1')
+sha256sums_armv7h=('45c7a3e2e9a4da7d04eb0234ffb11373741df988272cebac18fc46bb50723c5b')
 
 package() {
   bsdtar xfv data.tar.xz -C "$pkgdir"
