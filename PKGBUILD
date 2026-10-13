@@ -1,7 +1,7 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname="livebook-git"
-pkgver=nightly.r0.g8514f12d2
-pkgrel=2
+pkgver=0.9.2.r1688.g5190786bf
+pkgrel=1
 pkgdesc="Automate code & data workflows with interactive Elixir notebooks (git version)"
 arch=('any')
 url='https://livebook.dev'
@@ -16,8 +16,10 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/livebook"
-    git fetch --tags
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    # Upstream moves the nightly tag. Refresh cached tags and derive a monotonic
+    # version from stable release tags instead of the moving "nightly" label.
+    git fetch --tags --force
+    git describe --long --tags --match 'v[0-9]*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -29,6 +31,7 @@ build() {
     mix local.rebar --force --if-missing
 
     mix deps.get --only prod
+    mix assets.setup
     mix escript.build
 }
 
