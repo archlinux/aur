@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=5.5.76.r1.gb4a2dc7
-_electronversion=42
+pkgver=5.6.0.r1.g14d8dc1
+_electronversion=44
 _nodeversion=24
 pkgrel=1
 pkgdesc="Free and open-sourced terminal/ssh/sftp/ftp/telnet/serialport/RDP/VNC/Spice client."
@@ -17,7 +17,6 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
-    'nodejs'
 )
 makedepends=(
     'npm'
@@ -32,7 +31,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
+            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -51,9 +50,6 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-_get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
-}
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
 	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
@@ -71,6 +67,9 @@ _set_build_env() {
 	export npm_config_registry="${NPM_CONFIG_REGISTRY:-${npm_config_registry:-https://registry.npmjs.org}}"
 	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}"
 }
+_get_app_dir() {
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+}
 _get_electron_version() {
 	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
 		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
@@ -85,7 +84,6 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
-        s/@runname@/app.asar/g
     " "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
@@ -95,7 +93,7 @@ prepare() {
         --exec="${pkgname%-git} %U"
     _ensure_local_nvm
     _set_build_env
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
+    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     rm -rf package-lock.json
     export NODE_ENV=development
     npm config set legacy-peer-deps true
@@ -110,28 +108,27 @@ build() {
     npm run clean
     npm run compile
     npm run prepare-file
-    npx node build/bin/prepare-electron-build.js
-    WORKFLOW_NAME=linux-pkgbuild npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config build/electron-builder.json"
-    local _app_dir="$(_get_app_dir)"
-    find "${_app_dir}/resources" -type d -exec chmod 755 {} +
+    WORKFLOW_NAME=linux-pkgbuild npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config src/build/electron-builder.json"
+    find "$(_get_app_dir)/resources" -type d -exec chmod 755 {} +
     case "${CARCH}" in
         aarch64)    _archrem=x64        ;;
         armv7h)     _archrem=64         ;;
         x86_64)     _archrem=arm        ;;
     esac
-    find "${_app_dir}/resources/app.asar.unpacked" -type d \
+    find "$(_get_app_dir)/resources/app.asar.unpacked" -type d \
         \( -name "darwin*" -o -name "win32*" -o -name "*${_archrem}"* \) \
         -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-    local _app_dir="$(_get_app_dir)"
-    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
-    rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
-    local _src="$(_get_project_dir)"
-    install -Dm644 "${_src}/node_modules/@${pkgname%-git}/${pkgname%-git}-resource/build-res/appx/StoreLogo.png" \
-        "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${_src}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${_src}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    rm -rf "$(_get_app_dir)/resources/default_app.asar"
+    cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
+    _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
+	for _icons in "${_icon_sizes[@]}";do
+		install -Dm644 "$(_get_project_dir)/node_modules/@electerm/electerm-resource/build-res/linux/${_icons}.png" \
+			"${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
+	done
+    install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
