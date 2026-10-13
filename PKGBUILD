@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/The127/aibox/releases/d
 
 sha256sums=('71fa6ba468b1b79a834e8eb2e770bbbfb2c11c1c61216f927063aa89ad059394')
 
-install() {
+package() {
     cd "$pkgname-$pkgver"
     install -Dm 755 aibox -t "$pkgdir/usr/bin"
     install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
