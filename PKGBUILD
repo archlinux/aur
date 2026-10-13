@@ -2,7 +2,7 @@
 
 _pkgname="anyzig"
 pkgname="${_pkgname}-bin"
-pkgver=2026_03_26
+pkgver=2026_10_13
 pkgrel=1
 pkgdesc="One zig to rule them all"
 arch=(
@@ -46,14 +46,14 @@ source_riscv64=(
 source_x86_64=(
   "${_pkgsrc}-x86_64-linux.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-linux.tar.gz"
 )
-sha256sums=('f3be3ed086f47766a0c361876984a89e4f4c82496dfda6cb82ab8734619563fb'
+sha256sums=('ec608e2018c5daba1f6249241be4def945fbd7d367daf5cb0ba812a64e5fdf3e'
             '491fef2e3fe35219d5bd74c3b0d166d323e279678fca49bb48200348d04c769d')
-sha256sums_aarch64=('1963afb44ca0705768cba7346fc649b5b56879c5c6ab91303bc8808604ab3a3c')
-sha256sums_armv7h=('6d68787bd9877e8621b42ed80e4518f5be0004c797675ceb4753767dd64e91de')
-sha256sums_i686=('3a69a477b4640b3cdbb7f71526dce92cb81b286c2ad199720924773bd499c3ab')
-sha256sums_powerpc64le=('d255b1d33a2375a7984b5df91720b765f0abc1398183701a30541fb214a13946')
-sha256sums_riscv64=('2a97cab01553f1a92f95b2a3a3ea5ea0531ce6b8de4b6ed75b4e4b9d73887a01')
-sha256sums_x86_64=('f9d5a09fbd7c019eecef1a397613ce5baec22872a1c3eb5ab4b1132e917c3d71')
+sha256sums_aarch64=('72f90cc760169c7a958372f56866773b9cca23ae7938f12f740f042bb1264f20')
+sha256sums_armv7h=('c2aaf9a6de22a16400ea3c5bb62acbbadd081b503f43a890632b20eb1da63052')
+sha256sums_i686=('a2ec80e04fb46ef06f6548a629a4fbc662d2a5c473403b6fab090e5eba0a4fd4')
+sha256sums_powerpc64le=('692352d536ad76864e48ed229bea4d8c1c14a9c387873a262abdcbf83275ec4b')
+sha256sums_riscv64=('31f03358d969b4039d780979ee6d63199ae251b484ced93326ed05a61210f6ed')
+sha256sums_x86_64=('e4742a7ce7835828efb93d2cfa3c9d07fead33755a8bb7185d2159fda872018e')
 
 package() {
   cd "${srcdir}"
