@@ -3,7 +3,7 @@ pkgname=electronwmd-bin
 _pkgname='Electron Web MiniDisc'
 pkgver=0.5.3_1.6.1
 _electronversion=44
-pkgrel=1
+pkgrel=2
 pkgdesc="Electron version of Web MiniDisc Pro."
 arch=('x86_64')
 url="https://github.com/asivery/ElectronWMD"
@@ -14,7 +14,6 @@ depends=(
     "electron${_electronversion}"
     'nodejs'
     'perl'
-    'libdbusmenu-glib'
 )
 options=(
     '!strip'
@@ -24,25 +23,22 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('22a07e7a69d796ccae60dacae013ac610f0df96e73d436620968788715594df5'
-            'fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8')
+            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
-    echo "Verifying Electron version..."
-    local _main_exe=$(find "$(_get_app_dir)" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)
-    [[ -z "${_main_exe}" ]] && echo -e "\033[1;33mNote: Could not find Electron binary.\033[0m" && return
-    local _elec_ver=$(strings "${_main_exe}" | grep -oP 'Electron/\K[0-9]+' | head -1)
-    [[ -z "${_elec_ver}" ]] && echo -e "\033[1;33mNote: Could not determine Electron version.\033[0m" && return
-    [[ "${_elec_ver}" != "${_electronversion}" ]] &&
-        echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m" ||
-        echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \
+		-executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)" \
+		| grep -oP 'Electron/\K[0-9]+' | head -1)
+	[[ -z "$_v" ]] && { echo -e "\033[1;33mNote: Could not check version.\033[0m"; return; }
+	(( _v == _electronversion )) && c=32 || c=31
+	echo -e "Electron version: \033[1;${c}m$_v$([[ $c -eq 31 ]] && echo " (expected $_electronversion)")\033[0m"
 }
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app/g
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
@@ -55,7 +51,7 @@ prepare() {
     local _app_dir="$(_get_app_dir)"
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${_app_dir}/${pkgname%-bin}.desktop"
     find "${_app_dir}/resources/app/node_modules" \
-        \( -name "*arm*" -o -name "*ia32" -o -name "*android*" -o -name "*darwin*" \) \
+        \( -name "*ia32" -o -name "*android*" -o -name "*darwin*" \) \
         -exec rm -rf {} +
     find "${_app_dir}/resources" -type d -exec chmod 755 {} +
 }
