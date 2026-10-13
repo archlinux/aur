@@ -1,6 +1,6 @@
 pkgbase = foxtune-bin
 	pkgdesc = Open source ECU tuning for Speeduino and rusEFI
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/N1kO23/FoxTune
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = foxtune-bin
 	conflicts = foxtune
 	options = !strip
 	options = !debug
-	source = https://github.com/N1kO23/FoxTune/releases/download/v0.2.0/foxtune-linux-x64-0.2.0.tar.gz
-	sha256sums = c4f3efdab57960d80ccab8f66e3a9478cb2411ae362228e42b7387e6d7e4c89a
+	source = https://github.com/N1kO23/FoxTune/releases/download/v0.3.0/foxtune-linux-x64-0.3.0.tar.gz
+	sha256sums = 20d4f4b2d9dfd0e2e651162605d4cc9658583605adac92b3012fec3c6c64d548
 
 pkgname = foxtune-bin

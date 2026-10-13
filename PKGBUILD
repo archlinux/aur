@@ -6,7 +6,7 @@
 # then - see "Releasing" in BUILDING.md.
 
 pkgname=foxtune-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Open source ECU tuning for Speeduino and rusEFI'
 arch=('x86_64')
@@ -24,7 +24,7 @@ conflicts=('foxtune')
 # are no debug symbols to split out.
 options=('!strip' '!debug')
 source=("$url/releases/download/v$pkgver/foxtune-linux-x64-$pkgver.tar.gz")
-sha256sums=('c4f3efdab57960d80ccab8f66e3a9478cb2411ae362228e42b7387e6d7e4c89a')
+sha256sums=('20d4f4b2d9dfd0e2e651162605d4cc9658583605adac92b3012fec3c6c64d548')
 
 package() {
   cd foxtune
