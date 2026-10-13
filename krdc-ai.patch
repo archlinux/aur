@@ -4168,10 +4168,10 @@ index a988f504..1620f348 100644
      QUrl m_url;
 diff --git a/core/smartinvert.cpp b/core/smartinvert.cpp
 new file mode 100644
-index 00000000..b1c02162
+index 00000000..c00480f1
 --- /dev/null
 +++ b/core/smartinvert.cpp
-@@ -0,0 +1,142 @@
+@@ -0,0 +1,153 @@
 +// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +
@@ -4208,17 +4208,17 @@ index 00000000..b1c02162
 +constexpr int s_satKeep = 40;
 +constexpr int s_satKeepRange = 60;
 +
-+// Font antialiasing tints the edges of black glyphs with a faint color, so a
-+// fixed saturation threshold mistakes the dark glyph pixels for content and
-+// preserves them - the text stays dark and only a grey ring around it gets
-+// recolored. For pixels darker than s_darkCutoff the amount of saturation
-+// needed to count as content is ramped up to s_darkSatKeep: black and dark-grey
-+// text therefore falls through to the light end of the curve and turns white,
-+// while genuinely colorful dark content (a red logo, a dark photo region) is
-+// still preserved. The threshold is a ramp, not a step, so there is no seam
-+// between dark and mid-tone pixels.
-+constexpr int s_darkCutoff = 100;
-+constexpr int s_darkSatKeep = 150;
++// Windows draws text with ClearType: subpixel antialiasing paints the edges
++// of glyphs with strongly saturated pixels (a black glyph edge can be
++// (60, 10, 10)), which a saturation threshold mistakes for colorful content
++// and preserves. The result is black text with a light halo around it - the
++// glyph kept, its grey antialiasing ring recolored. In a light theme nothing
++// dark is content: everything below s_textCutoff is text and always
++// recolored. Above it the required saturation ramps back down to the normal
++// threshold at s_satRampEnd, so mid-tone colorful content (icons, photos) is
++// still spared as before.
++constexpr int s_textCutoff = 90;
++constexpr int s_satRampEnd = 130;
 +}
 +
 +namespace SmartInvert
@@ -4284,10 +4284,21 @@ index 00000000..b1c02162
 +            const int value = (mx + mn) / 2;
 +            const int saturation = mx == 0 ? 0 : (mx - mn) * 255 / mx;
 +
-+            // How dark this pixel is, 0 (darkest) to 255 (at or above the
-+            // cutoff): drives how much saturation is required to spare it.
-+            const int darkness = value < s_darkCutoff ? (s_darkCutoff - value) * 255 / s_darkCutoff : 0;
-+            const int requiredSaturation = s_satKeep + darkness * (s_darkSatKeep - s_satKeep) / 255;
++            // ClearType paints the edges of black glyphs with strongly
++            // saturated pixels, so a dark pixel can never be trusted as
++            // "colorful content" in a light theme: preserving it would leave
++            // black text ringed by a recolored light halo. Below s_textCutoff
++            // a pixel is always recolored; above it the required saturation
++            // ramps back down to the normal content threshold, so mid-tone
++            // colorful content (icons, photos) is still spared.
++            int requiredSaturation;
++            if (value <= s_textCutoff) {
++                requiredSaturation = 256;
++            } else if (value < s_satRampEnd) {
++                requiredSaturation = 256 - (value - s_textCutoff) * (256 - s_satKeep) / (s_satRampEnd - s_textCutoff);
++            } else {
++                requiredSaturation = s_satKeep;
++            }
 +
 +            // How much of the original pixel survives: 0 for chrome and for
 +            // dark text (fully recolored), 255 for saturated content
@@ -4316,10 +4327,10 @@ index 00000000..b1c02162
 +}
 diff --git a/core/smartinvert.h b/core/smartinvert.h
 new file mode 100644
-index 00000000..31ab1da4
+index 00000000..5914b5b8
 --- /dev/null
 +++ b/core/smartinvert.h
-@@ -0,0 +1,50 @@
+@@ -0,0 +1,52 @@
 +// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +
@@ -4340,11 +4351,13 @@ index 00000000..31ab1da4
 + * looking like pictures. Unlike naive full inversion, this makes a white File
 + * Explorer look like a dark-mode window while leaving images and videos alone.
 + *
-+ * The threshold for "content, keep it" depends on how bright the pixel is: a
-+ * dark pixel has to be strongly saturated to be spared, so black text turns
-+ * light even when it sits on a colorful background (font antialiasing tints
-+ * glyph edges, which a fixed threshold would preserve as dark text with a
-+ * recolored grey ring around it).
++ * The threshold for "content, keep it" depends on how bright the pixel is:
++ * nothing dark is ever trusted as content, because Windows draws text with
++ * ClearType - subpixel antialiasing paints glyph edges with strongly
++ * saturated pixels that a plain saturation threshold would preserve, leaving
++ * black text ringed by a recolored light halo. Black text therefore turns
++ * light even on top of colorful content, at the cost of dark saturated
++ * pixels in photos being recolored too.
 + *
 + * It cannot tell a white window background from a white document page: both
 + * are flat white pixels. Only the remote OS itself knows that difference, so
@@ -5210,7 +5223,7 @@ index 807a04fa..6e7fc6c4 100644
      void initializeDisplay(RdpContext *krdp, DispClientContext *disp);
      void destroyClipboard();
 diff --git a/rdp/rdpview.cpp b/rdp/rdpview.cpp
-index 90dd3a0e..29e2f869 100644
+index 90dd3a0e..7e8c20a3 100644
 --- a/rdp/rdpview.cpp
 +++ b/rdp/rdpview.cpp
 @@ -10,8 +10,10 @@
@@ -5224,7 +5237,34 @@ index 90dd3a0e..29e2f869 100644
  
  #include <KMessageDialog>
  #include <KPasswordDialog>
-@@ -403,6 +405,52 @@ QPixmap RdpView::takeScreenshot()
+@@ -73,6 +75,26 @@ RdpView::RdpView(QWidget *parent, const QUrl &url, KConfigGroup configGroup, con
+     }
+ 
+     m_hostPreferences = std::make_unique<RdpHostPreferences>(configGroup);
++
++    // Re-read the light/dark state every two seconds while the filter is on,
++    // so a screen that became light again without new updates (the resize or
++    // fullscreen reconnect flash leaves mostly dark frames behind on a now
++    // static desktop) re-engages the filter instead of staying white.
++    m_darkRecheckTimer.setInterval(2000);
++    connect(&m_darkRecheckTimer, &QTimer::timeout, this, [this]() {
++        if (!m_darkFilterEnabled || !m_session || m_session->videoBuffer()->isNull()) {
++            return;
++        }
++        // Same hysteresis as updateDarkFilter(): re-engage above 150, drop
++        // below 110, hold in between.
++        const int median = SmartInvert::medianLuma(*m_session->videoBuffer());
++        const bool engage = m_darkFilterActive ? median >= 110 : median > 150;
++        if (engage != m_darkFilterActive) {
++            m_darkFilterActive = engage;
++            m_displaySequence = -1;
++            update();
++        }
++    });
+ }
+ 
+ RdpView::~RdpView()
+@@ -403,6 +425,52 @@ QPixmap RdpView::takeScreenshot()
      return QPixmap{};
  }
  
@@ -5277,7 +5317,7 @@ index 90dd3a0e..29e2f869 100644
  bool RdpView::supportsScaling() const
  {
      return true;
-@@ -572,16 +620,23 @@ void RdpView::paintEvent(QPaintEvent *event)
+@@ -572,16 +640,23 @@ void RdpView::paintEvent(QPaintEvent *event)
  
      const auto &image = *m_session->videoBuffer();
  
@@ -5304,7 +5344,7 @@ index 90dd3a0e..29e2f869 100644
      const qreal outputScale = m_session->outputScale();
      scaledImage.setDevicePixelRatio(outputScale);
  
-@@ -593,6 +648,52 @@ void RdpView::paintEvent(QPaintEvent *event)
+@@ -593,6 +668,59 @@ void RdpView::paintEvent(QPaintEvent *event)
      painter.end();
  }
  
@@ -5318,6 +5358,13 @@ index 90dd3a0e..29e2f869 100644
 +    // Force a fresh light/dark reading on the next paint (m_updateSequence
 +    // only ever grows, so -1 never matches it).
 +    m_displaySequence = -1;
++    if (enabled) {
++        if (!m_darkRecheckTimer.isActive()) {
++            m_darkRecheckTimer.start();
++        }
++    } else {
++        m_darkRecheckTimer.stop();
++    }
 +    update();
 +}
 +
@@ -5357,7 +5404,7 @@ index 90dd3a0e..29e2f869 100644
  void RdpView::handleKeyEvent(QKeyEvent *event)
  {
      if (m_session) {
-@@ -624,6 +725,7 @@ void RdpView::handleWheelEvent(QWheelEvent *event)
+@@ -624,6 +752,7 @@ void RdpView::handleWheelEvent(QWheelEvent *event)
  
  void RdpView::onRectangleUpdated(const QRect &remoteRect, const QSize &remoteSize)
  {
@@ -5366,10 +5413,18 @@ index 90dd3a0e..29e2f869 100644
          const QRect intersection = remoteRect.intersected(m_fullscreenMonitorRect);
          if (intersection.isEmpty()) {
 diff --git a/rdp/rdpview.h b/rdp/rdpview.h
-index da117287..02dfdb7a 100644
+index da117287..ce81b3ac 100644
 --- a/rdp/rdpview.h
 +++ b/rdp/rdpview.h
-@@ -60,6 +60,14 @@ public:
+@@ -17,6 +17,7 @@
+ #include <QCursor>
+ #include <QHash>
+ #include <QPointer>
++#include <QTimer>
+ #include <QUrl>
+ 
+ #define TCP_PORT_RDP 3389
+@@ -60,6 +61,14 @@ public:
  
      QPixmap takeScreenshot() override;
  
@@ -5384,7 +5439,7 @@ index da117287..02dfdb7a 100644
      void savePassword(const QString &password);
  
  public Q_SLOTS:
-@@ -90,6 +98,18 @@ private:
+@@ -90,6 +99,23 @@ private:
      void handleError(unsigned int error);
      void updateRemoteCursor();
  
@@ -5394,6 +5449,11 @@ index da117287..02dfdb7a 100644
 +    // light/dark decision has hysteresis so a mostly dark screen (native dark
 +    // mode, full screen video) passes through untouched instead of flickering.
 +    bool updateDarkFilter(const QImage &image);
++    // A resize or fullscreen transition can leave the screen mostly dark for
++    // a moment (reconnect flash), which disengages the filter; if the desktop
++    // then sits still, no new updates arrive to re-evaluate it. This timer
++    // re-reads the light/dark state while the filter is enabled.
++    QTimer m_darkRecheckTimer;
 +    QImage m_displayBuffer;
 +    qint64 m_updateSequence = 0;
 +    qint64 m_displaySequence = -1;
@@ -5455,10 +5515,10 @@ index 1600b660..4fcfc2a4 100644
  endif()
 diff --git a/test/aiengine_test.cpp b/test/aiengine_test.cpp
 new file mode 100644
-index 00000000..78ca724e
+index 00000000..95bfc11f
 --- /dev/null
 +++ b/test/aiengine_test.cpp
-@@ -0,0 +1,542 @@
+@@ -0,0 +1,548 @@
 +/*
 +    Standalone test for the AI conversation engine. Not built by default; see
 +    test_ai.sh. Drives AiConversation against a mock OpenAI-compatible server
@@ -5662,33 +5722,39 @@ index 00000000..78ca724e
 +    SmartInvert::apply(photo);
 +    check(qRed(photo.pixel(10, 10)) == qRed(before), "saturated photo pixels are untouched");
 +
-+    // The reported regression: black text over colorful content. Font
-+    // antialiasing tints glyph edges with a faint color, and a fixed
-+    // saturation threshold used to preserve those dark pixels as "content",
-+    // leaving dark text ringed by a recolored grey halo. With the
-+    // brightness-dependent threshold the dark glyph pixels fall through and
-+    // turn light, while a genuinely colorful dark pixel next to them is kept.
++    // The reported regression: black text ringed by a light halo. Windows
++    // draws text with ClearType, whose subpixel antialiasing paints glyph
++    // edges with strongly saturated pixels ((60,10,10) red, (10,10,60) blue);
++    // a plain saturation threshold preserved those as "content", leaving the
++    // black core surrounded by a recolored light ring. The rule now is that
++    // nothing dark may be trusted as content, so the whole glyph goes light.
 +    QImage label(96, 96, QImage::Format_RGB32);
 +    for (int y = 0; y < 96; ++y) {
 +        for (int x = 0; x < 96; ++x) {
 +            label.setPixel(x, y, qRgb((x * 7 + y * 3) % 256, 60 + (y * 5) % 190, 255 - (x * 3) % 200));
 +        }
 +    }
-+    // A run of near-black glyph pixels carrying a slight color cast.
++    // A ClearType glyph: black core with saturated red/blue fringes, the
++    // exact pixel values subpixel antialiasing produces.
 +    for (int x = 20; x < 76; ++x) {
-+        for (int y = 40; y < 52; ++y) {
-+            label.setPixel(x, y, qRgb(18, 12, 22));
++        label.setPixel(x, 40, qRgb(60, 10, 10));
++        label.setPixel(x, 41, qRgb(10, 10, 60));
++        for (int y = 42; y < 50; ++y) {
++            label.setPixel(x, y, qRgb(8, 8, 8));
 +        }
++        label.setPixel(x, 50, qRgb(60, 10, 10));
++        label.setPixel(x, 51, qRgb(10, 10, 60));
 +    }
-+    // A dark but strongly saturated pixel: content that must survive.
++    // A dark but strongly saturated pixel: recolored too - the deliberate
++    // trade of "nothing dark is content".
 +    label.setPixel(80, 80, qRgb(60, 10, 15));
-+    const QRgb darkContentBefore = label.pixel(80, 80);
 +
 +    SmartInvert::apply(label);
-+    const QRgb glyph = label.pixel(48, 46);
-+    check(qRed(glyph) > 170 && qGreen(glyph) > 170 && qBlue(glyph) > 170,
-+          "black text over colorful content turns light, not a grey halo");
-+    check(label.pixel(80, 80) == darkContentBefore, "a dark but saturated pixel is still preserved as content");
++    const QRgb core = label.pixel(48, 46);
++    check(qRed(core) > 170 && qGreen(core) > 170 && qBlue(core) > 170, "the ClearType glyph core turns light");
++    const QRgb fringe = label.pixel(48, 40);
++    check(qRed(fringe) > 170 && qGreen(fringe) > 170 && qBlue(fringe) > 170, "the saturated ClearType fringe turns light with it - no halo");
++    check(qRed(label.pixel(80, 80)) > 170, "a dark saturated pixel is recolored too (nothing dark is content)");
 +
 +    // The same black text over plain white chrome is recolored (covered by the
 +    // "dark text becomes light" check above); white chrome around it goes dark.
