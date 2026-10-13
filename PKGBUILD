@@ -4,7 +4,7 @@ _obs_studio=obs-studio
 pkgbase=obs-rust
 pkgname=("$_obs_studio-rust" "$_obs_studio-rust-plugin-browser")
 pkgver=0.1.0beta.20261012
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
 url="https://github.com/$pkgbase"
@@ -46,6 +46,8 @@ prepare() {
 
   # set rpath to /usr/lib/cef for obs-browser plugin
   sed -e 's|INSTALL_RPATH ".*"|INSTALL_RPATH "/usr/lib/cef/"|' -i plugins/obs-browser/cmake/os-linux.cmake
+
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -75,6 +77,8 @@ build() {
   )
   cmake "${cmake_options[@]}"
   cmake --build build
+  pushd "$pkgbase"
+  cargo build --frozen --release --all-features
 }
 
 package_obs-studio-rust() {
@@ -89,6 +93,8 @@ package_obs-studio-rust() {
               "$_obs_studio-plugin-browser: CEF-based browser plugin"
               )
   DESTDIR="$pkgdir" cmake --install build
+  pushd "$pkgbase"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/obs-stream-rust"
 }
 
 package_obs-studio-rust-plugin-browser() {

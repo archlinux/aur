@@ -1,7 +1,7 @@
 pkgbase = obs-rust
 	pkgdesc = Free, open source software for live streaming and recording
 	pkgver = 0.1.0beta.20261012
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/obs-rust
 	arch = x86_64
 	license = GPL-2.0-only
