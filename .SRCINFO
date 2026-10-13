@@ -1,4 +1,4 @@
-pkgbase = windinput-bin
+pkgbase = fcitx5-windinput-bin
 	pkgdesc = 基于 Debian 发行包重打包的清风输入法 Fcitx5 Linux 预览版
 	pkgver = 0.126.0
 	pkgrel = 1
@@ -32,7 +32,9 @@ pkgbase = windinput-bin
 	optdepends = xdg-desktop-portal: file dialogs, requires a desktop-specific portal backend
 	optdepends = zenity: fallback file dialogs
 	provides = windinput=0.126.0
+	provides = windinput-bin=0.126.0
 	conflicts = windinput
+	conflicts = windinput-bin
 	options = !strip
 	options = !debug
 	source = WindInput-0.126.0-LICENSE::https://raw.githubusercontent.com/huanfeng/WindInput/v0.126.0/LICENSE
@@ -42,4 +44,4 @@ pkgbase = windinput-bin
 	source_aarch64 = https://github.com/huanfeng/WindInput/releases/download/v0.126.0/WindInput-0.126.0-linux-arm64.deb
 	sha256sums_aarch64 = 430fe0bd9815e497afabd043a9fdda3d356a0249680f61d006c89b2647cc1bc1
 
-pkgname = windinput-bin
+pkgname = fcitx5-windinput-bin

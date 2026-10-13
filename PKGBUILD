@@ -1,5 +1,5 @@
 # Maintainer: 郑祎
-pkgname=windinput-bin
+pkgname=fcitx5-windinput-bin
 pkgver=0.126.0
 pkgrel=1
 pkgdesc='基于 Debian 发行包重打包的清风输入法 Fcitx5 Linux 预览版'
@@ -33,8 +33,8 @@ optdepends=(
   'xdg-desktop-portal: file dialogs, requires a desktop-specific portal backend'
   'zenity: fallback file dialogs'
 )
-provides=("windinput=$pkgver")
-conflicts=('windinput')
+provides=("windinput=$pkgver" "windinput-bin=$pkgver")
+conflicts=('windinput' 'windinput-bin')
 options=('!strip' '!debug')
 install=windinput.install
 source=("WindInput-$pkgver-LICENSE::https://raw.githubusercontent.com/huanfeng/WindInput/v$pkgver/LICENSE")
