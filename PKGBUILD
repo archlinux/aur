@@ -2,9 +2,9 @@
 # Contributor: Sabit Maulana <sbtmul@gmail.com>
 # Maintainer: aliu <double-a, r-o-n to the 0-1-3-0 at ur gmail.com>
 pkgname=larksuite-bin
-pkgver=7.72.23
+pkgver=8.0.18
 _pkgtyp=stable
-pkgrel=2
+pkgrel=1
 pkgdesc="Collaboration suite service for office messaging, calendars, meetings, docs..."
 arch=('x86_64')
 url="https://www.larksuite.com"
@@ -22,7 +22,7 @@ source=("Lark-linux_x64-${pkgver}.deb::lark+https://www.larksuite.com/api/packag
 	"LICENSE-US-${_licensever_us}.html::https://www.larksuite.com/en_us/user-terms-of-service-us"
 	download-lark.sh
 )
-b2sums=('90845fbc95511d3661d4970be9f38202f18b96a537bc81f9db8a6e306e136bebdcf42396fc75a8ce587df2e4227cbee6ad183576e17ce0c6070b656be9b30b25'
+b2sums=('63101353a73cc9da6af300fbb0e7644bdb69551b7f9831f42e89e4d453e2352c7133e6ed2ec906eab3cce81cc24e54530b6fa8bb2ecc243c53a4c330f5fa494b'
         'SKIP'
         'SKIP'
         '22556020116e1c7df34ee12c29e60495489b5199cfb5bfc87f028b540d44ee4f10fd67495062985521bfb4b9b342de58339aeae5ddbd689640881e47ea5ee0c5')
