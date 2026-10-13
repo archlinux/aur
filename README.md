@@ -6,7 +6,7 @@ Hyper-V driver enabled. The remaining build options follow the Arch package.
 The package base produces:
 
 - `libvirt-hyperv`: replaces `libvirt`, provides its versioned dependency and
-  shared libraries, and adds `openwsman` as a runtime dependency.
+  shared libraries, and adds `libwsman` as a runtime dependency.
 - `libvirt-hyperv-storage-gluster`: replaces and provides
   `libvirt-storage-gluster`.
 - `libvirt-hyperv-storage-iscsi-direct`: replaces and provides
@@ -18,11 +18,12 @@ configuration backup entries are retained.
 
 ## Build
 
-Install the AUR dependency `openwsman` first, including its dependencies. An
+Install the AUR dependency `libwsman` first. It builds the C and C++
+client libraries without the server or language bindings. An
 AUR helper can resolve these, for example:
 
 ```sh
-paru -S openwsman
+paru -S libwsman
 makepkg -s
 ```
 

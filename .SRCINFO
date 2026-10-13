@@ -1,7 +1,7 @@
 pkgbase = libvirt-hyperv
 	pkgdesc = API for controlling virtualization engines with the Hyper-V driver enabled
 	pkgver = 12.8.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://libvirt.org/
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = libvirt-hyperv
 	depends = readline
 	depends = systemd-libs
 	depends = util-linux-libs
-	depends = openwsman
+	depends = libwsman
 	optdepends = dmidecode: DMI system info support
 	optdepends = dnsmasq: required for default NAT/DHCP for guests
 	optdepends = gettext: required for libvirt-guests.service

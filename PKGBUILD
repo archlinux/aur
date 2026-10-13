@@ -11,7 +11,7 @@ pkgname=(libvirt-hyperv libvirt-hyperv-storage-gluster libvirt-hyperv-storage-is
 _srcname=libvirt
 epoch=1
 pkgver=12.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines with the Hyper-V driver enabled"
 arch=('x86_64')
 url="https://libvirt.org/"
@@ -48,7 +48,7 @@ depends=(
   readline
   systemd-libs
   util-linux-libs
-  openwsman
+  libwsman
 )
 makedepends=(
   bash-completion
