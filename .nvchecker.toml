@@ -1,0 +1,4 @@
+[python-sourcepp]
+source = "git"
+git = "https://github.com/craftablescience/sourcepp.git"
+prefix = "v"

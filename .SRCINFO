@@ -1,0 +1,19 @@
+pkgbase = python-sourcepp
+	pkgdesc = Several modern C++20 libraries for sanely parsing Valve formats. (python bindings)
+	pkgver = 2026.9.11
+	pkgrel = 1
+	url = https://github.com/craftablescience/sourcepp
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = python-build
+	makedepends = python-scikit-build-core
+	makedepends = nanobind
+	makedepends = python-installer
+	depends = python>=3.9
+	depends = python<4.0.0
+	source = git+https://github.com/craftablescience/sourcepp#tag=v2026.9.11
+	sha256sums = 6eb11c8ea42c224e8f6a17f9fbfeee73660b1b099b5d6f791734edadd89d748d
+
+pkgname = python-sourcepp
