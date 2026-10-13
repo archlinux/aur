@@ -8,7 +8,7 @@ pkgname=(
 )
 pkgver=0.6.0
 _models_ver=0.3.3
-pkgrel=2
+pkgrel=3
 arch=("any")
 url="https://github.com/kroketio/kotki"
 license=('MPL-2.0')
@@ -35,6 +35,6 @@ package_kotki-models-tiny() {
     provides=("kotki-models-base")
     conflicts=("kotki-models-base")
 
-    install -dm755 "${pkgdir}/usr/share/kotki"
-    cp -a --reflink=auto "${srcdir}/${_models_ver}-tiny/." "${pkgdir}/usr/share/kotki/"
+    install -dm755 "${pkgdir}/usr/share/kotki/models"
+    cp -a --reflink=auto "${srcdir}/${_models_ver}-tiny/." "${pkgdir}/usr/share/kotki/models/"
 }
