@@ -4,7 +4,7 @@
 
 pkgname=portfolio-performance
 _shortname=portfolio
-pkgver=0.88.0
+pkgver=0.89.0
 pkgrel=1
 pkgdesc='Track your investment portfolio performance – XDG base directory conforming'
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('portfolio' 'portfolio-performance-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/buchen/portfolio/archive/${pkgver}.tar.gz"
         'portfolio-performance'
         'portfolio-performance.desktop')
-sha1sums=('18debd8ab7d5d1889d1cb4fa23f8bda8b8b67eb3'
+sha1sums=('5be38e3345ca44171cdb0cdb8f0cd7dae1cacf61'
           '0dd892ac5ad02ad52f12202bc986ee8685acb34e'
           'cacc120b5270555da950e4f3583daa7e1ddba17c')
 
