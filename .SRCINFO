@@ -1,0 +1,24 @@
+pkgbase = media-compressor-git
+	pkgdesc = A free, user-friendly application designed to simplify media file compression. Built with React and TypeScript, this lightweight tool helps you reduce file sizes without compromising quality.
+	pkgver = 0.4.0.r9.gf977b43
+	pkgrel = 1
+	url = https://max-im.github.io/media-compressor/
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = bun
+	makedepends = nvm
+	makedepends = git
+	makedepends = jq
+	makedepends = asar
+	depends = electron33-bin
+	depends = ffmpeg
+	depends = nodejs
+	provides = media-compressor=0.4.0
+	conflicts = media-compressor
+	source = media-compressor.git::git+https://github.com/Max-im/media-compressor
+	source = media-compressor.sh
+	sha256sums = SKIP
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
+
+pkgname = media-compressor-git
