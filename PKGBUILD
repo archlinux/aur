@@ -3,7 +3,7 @@
 _branch=main
 _pkgname=nvim-mcp
 pkgname=${_pkgname}-git
-pkgver=r323.986be68
+pkgver=r330.cf3947c
 pkgrel=1
 pkgdesc='MCP server for Neovim, git main build'
 arch=('x86_64' 'aarch64')
@@ -27,6 +27,9 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${pkgname}"
   export RUSTUP_TOOLCHAIN=stable
+  # rmcp 3.5.0 omits ttlMs and cacheScope (remove when upstream bumps it).
+  # this is needed for recent claude code versions.
+  cargo update -p rmcp --precise 3.5.1
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -35,7 +38,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
-  # build.rs reads these for `nvim-mcp --version`; the checkout is clean.
+  # build.rs reads these for `nvim-mcp --version`.
   export GIT_COMMIT_SHA="$(git rev-parse HEAD)"
   export GIT_DIRTY=false
 
@@ -53,7 +56,7 @@ check() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
-  # Integration tests drive a live Neovim instance and its LSP servers.
+  # integration tests need a live nvim instance.
   cargo test --frozen --release -- --skip integration_tests
 }
 

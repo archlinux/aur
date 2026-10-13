@@ -1,6 +1,6 @@
 pkgbase = nvim-mcp-git
 	pkgdesc = MCP server for Neovim, git main build
-	pkgver = r323.986be68
+	pkgver = r330.cf3947c
 	pkgrel = 1
 	url = https://github.com/linw1995/nvim-mcp
 	install = nvim-mcp-git.install
