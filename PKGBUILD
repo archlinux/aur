@@ -29,6 +29,12 @@ sha256sums=('SKIP')
 build() {
   cd "$pkgname-$pkgver"
 
+  # Git checkout does not preserve mtimes; without touching the generated
+  # autotools files make would try to regenerate them with aclocal-1.18,
+  # which is missing on systems with a newer automake (e.g. 1.19).
+  touch aclocal.m4 configure
+  find . -name Makefile.in -exec touch {} +
+
   ./configure --prefix=/usr --libexecdir=/usr/lib
   make
 }
