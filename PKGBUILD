@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GSVA
-_pkgver=2.6.11
+_pkgver=2.6.12
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -61,8 +61,8 @@ optdepends=(
   r-tenxvisiumdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('eedd63f95574b3c4426925057982b682')
-b2sums=('514520cd6228f98b09665274e5ab0255af5f5ef7922e064b4b8e7e67aeab508519626e79f746825b49260771d587a8db41d96adb22dcd6e4ab3eeb26bffd70e0')
+md5sums=('26906288ae8c30ee5b78cd4164309f06')
+b2sums=('a8ff6bd09b8a35682cfc2c0e2ae6346d42dedbb48089e040d1d88a7d3e5fb46247f4d2785c8a9bc7d8f87f322c072b97b88afd853fdd612a044d60a5abf527fb')
 
 build() {
   mkdir build
