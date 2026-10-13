@@ -1,0 +1,17 @@
+pkgbase = python-e2b-dockerfile-utils
+	pkgdesc = E2B Dockerfile utils - Dockerfile parser, shell lexer and .dockerignore matcher ported from BuildKit and Moby.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/e2b-dev/E2B/tree/main/packages/dockerfile-utils-python
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-uv-build
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = git
+	depends = python
+	source = e2b-dockerfile-utils::git+https://github.com/e2b-dev/E2B.git#tag=@e2b/dockerfile-utils@0.1.1
+	sha256sums = b6c9cf2da0ece5a905ea4062f4e82e607b9e74131417ea9d72441438060af963
+
+pkgname = python-e2b-dockerfile-utils
