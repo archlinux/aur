@@ -6,7 +6,7 @@ _githuborg=${FORK:-$_projectname}
 pkgdesc="Software defined networking with public keys. Skycoin.com"
 _pkggopath=github.com/${_githuborg}/${_pkgname}
 pkgver='1.3.101'
-pkgrel='1'
+pkgrel='2'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -53,12 +53,6 @@ _build() {
 _ref="${_goref:-v${pkgver}}"
 _msg2 "go install -trimpath --ldflags=\"\" --ldflags \" -s -w -linkmode external -extldflags '-static' -buildid=\" github.com/skycoin/skywire/cmd/skywire@${_ref}"
 go install -trimpath --ldflags="" --ldflags " -s -w -linkmode external -extldflags '-static' -buildid=" github.com/skycoin/skywire/cmd/skywire@${_ref}
-_msg2 "building the js/wasm module the visor serves from github.com/skycoin/skywire@${_ref}"
-_modsrc=$(go mod download -json "github.com/skycoin/skywire@${_ref}" | sed -n 's/^[[:space:]]*"Dir": "\(.*\)",$/\1/p')
-( cd "$_modsrc" && GOOS=js GOARCH=wasm CGO_ENABLED=0 go build -trimpath -tags "withoutsystray withoutgotop" -ldflags "-s -w -buildid=" -o "${GOBIN}/skywire.wasm" . )
-gzip -9 -n -f "${GOBIN}/skywire.wasm"
-_sum=$(sha256sum "${GOBIN}/skywire.wasm.gz" | cut -d' ' -f1)
-printf '{"version":"%s","revision":"","sha256":"%s","size":%s}\n' "${_ref}" "${_sum}" "$(wc -c < "${GOBIN}/skywire.wasm.gz")" > "${GOBIN}/skywire.wasm.json"
 _msg2 'creating launcher scripts'
 echo -e '#!/bin/bash\nexec /opt/skywire/bin/skywire cli "$@"' > "${GOBIN}/skywire-cli"
 echo -e '#!/bin/bash\nexec /opt/skywire/bin/skywire visor "$@"' > "${GOBIN}/skywire-visor"
@@ -93,8 +87,6 @@ mkdir -p "${_pkgdir}/${_systemddir}"
 _msg2 'installing scripts and binaries'
 install -Dm755 "${GOBIN}/skywire" "${_pkgdir}/${_bin}/"
 ln -rTsf "${_pkgdir}/${_bin}/skywire" "${_pkgdir}/usr/bin/skywire"
-install -Dm644 "${GOBIN}/skywire.wasm.gz" "${_pkgdir}/${_bin}/"
-install -Dm644 "${GOBIN}/skywire.wasm.json" "${_pkgdir}/${_bin}/"
 install -Dm755 "${GOBIN}/skywire-cli" "${_pkgdir}/${_bin}/"
 ln -rTsf "${_pkgdir}/${_bin}/skywire-cli" "${_pkgdir}/usr/bin/skywire-cli"
 install -Dm755 "${GOBIN}/skywire-visor" "${_pkgdir}/${_bin}/"
