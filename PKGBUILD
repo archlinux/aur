@@ -1,22 +1,21 @@
 # Maintainer: NorthWestWind <nw@northwestw.in>
 _pkgname=cls
 pkgname=$_pkgname-rs
-pkgver=3.3.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="cls - Command-Line Soundboard written in Rust"
 arch=("i686" "x86_64")
 url="https://codeberg.org/NorthWestWind/cls"
 license=('GPL3')
-depends=()
+depends=("ffmpeg")
 makedepends=("cargo")
 optdepends=(
-	"ffmpeg: fallback audio decoding"
 	"pulse-native-provider: null sink and auto audio loopback"
 )
 replaces=("cls-soundboard")
 conflicts=("cls-rs-git" "cls-rs-bin")
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=("a4faba6112ce6bb583122ef47f3e2059c60b869258ef20206e938aff348fe7fe")
+sha256sums=("fe9363a86b39fe8c986bc03f82e4c8219adbba002702d539d28fbb6b30d738ed")
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
