@@ -2,7 +2,7 @@
 
 pkgname=ctfile-electron
 _pkgname=CTFile
-pkgver=5.1.18
+pkgver=5.1.19
 pkgrel=1
 pkgdesc="城通网盘electron版"
 arch=('any')
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-electron}.desktop"
     "${pkgname%-electron}.sh"
 )
-sha512sums=('10d967389f084d2c7db817c19cea262241004271e45b6b0a1e546207ca56c933af22e58c0014400a593b63fe0de578dd1b8f82ef3b08ad0fa06d4b1806697c8c'
+sha512sums=('2a848fdaaef9ff85d1468739413e1e469c3554a48dadcd3fd8b2abe12228044d3b58bc11f294596c5fc3820c21b4df95c267c05cc7f63320ef02d8f4247ae8a7'
             '9f441c7fb6dadbede0dfac67a7c27e9c44ee7fd3a67a21c8fc86258a1a971c1ef5af3ff101168fb4f190242da418e986c55d2ae9ebf38254c55f2e0e4663969a'
             '81304263bd190047ce3625eac4b14494901d0b9a7ca316fd93689e8562faf575c865b1bf1823c038b9fc87248802fc2ba468e0b3a839834f0e6fd8a93352f13b'
             'cbb112207302359b6f1cec3caf1c9685466959f9037ea9c0feddb9474fb84c571d7352df46aa804838eaa761b09e3a8564068c327fb76ce83ff8ab57bf676a66')
