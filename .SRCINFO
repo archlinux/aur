@@ -1,0 +1,12 @@
+pkgbase = sherpa-onnx-piper-voice-ru-dmitri
+	pkgdesc = Russian Piper TTS voice dmitri (medium quality) in sherpa-onnx format
+	pkgver = 20251202
+	pkgrel = 1
+	url = https://github.com/k2-fsa/sherpa-onnx/releases/tag/tts-models
+	arch = any
+	license = CC0-1.0
+	optdepends = sherpa-onnx: TTS engine that loads this voice
+	source = vits-piper-ru_RU-dmitri-medium-20251202.tar.bz2::https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-ru_RU-dmitri-medium.tar.bz2
+	sha256sums = c86d0803737de13d441923ff3b3f309482fab8d7af3ec85949942809eb9a3660
+
+pkgname = sherpa-onnx-piper-voice-ru-dmitri
