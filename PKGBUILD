@@ -12,7 +12,6 @@ arch=(x86_64)
 url='https://solana.com'
 license=(Apache-2.0)
 options=(!strip)
-makedepends=(bash glibc libgcc systemd-libs)
 source=(
   "$_pkgname-$pkgver.tar.bz2::https://github.com/anza-xyz/agave/releases/download/v$pkgver/solana-release-$CARCH-unknown-linux-gnu.tar.bz2"
   "$_pkgname.sysusers"
@@ -27,7 +26,7 @@ sha256sums=('5fc8684f7430038105fde953d4308ed56addf627f658daa61709f345448247ee'
 # CLI tools for interacting with the Solana network.
 package_solana-bin() {
   pkgdesc='Solana CLI tools for wallets, staking, and token management'
-  depends=(glibc libgcc systemd-libs)
+  depends=(glibc libgcc libudev.so)
   provides=("$_pkgname=$pkgver" spl-token)
   conflicts=("$_pkgname")
   install="$pkgbase.install"
@@ -53,10 +52,10 @@ package_solana-bin() {
 # Developer tools for building and testing Solana programs.
 package_solana-dev-bin() {
   pkgdesc='Solana developer tools: SBF compiler toolchain, test validator, and ledger tool'
-  depends=(bash glibc libgcc libstdc++)
+  depends=(glibc libgcc libstdc++ openssl)
   conflicts=("$_pkgname")
   optdepends=(
-    'cargo: required for cargo-build-sbf and cargo-test-sbf'
+    'rustup: required for cargo-build-sbf and cargo-test-sbf'
     "solana-bin=$pkgver: CLI tools for interacting with clusters"
   )
 
