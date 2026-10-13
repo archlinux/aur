@@ -1,6 +1,6 @@
 # Maintainer: sougstron
 pkgname=kanban4ai
-pkgver=0.7.6
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Native kanban board CLI and TUI driven by AI coding agents'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=(
   'xclip: paste images under X11'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5e0000824734178c55b3444ffa21487b7c1fa28a3c3a0d5851a0b8ad6ba6d075')
+sha256sums=('cae2d40eb6bd20a9be0a4a654ec5ce15486b3dcbdc6fd5a49e316c4564674550')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -48,4 +48,9 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 packaging/systemd/kanban4ai.service \
     "$pkgdir/usr/lib/systemd/user/kanban4ai.service"
+  install -Dm644 packaging/systemd/kanban4ai-serve.service \
+    "$pkgdir/usr/lib/systemd/user/kanban4ai-serve.service"
+  for hook in kanban4ai-sleep@.service kanban4ai-shutdown@.service; do
+    install -Dm644 "packaging/systemd/$hook" "$pkgdir/usr/lib/systemd/system/$hook"
+  done
 }
