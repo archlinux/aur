@@ -3,8 +3,8 @@ prefix=/usr
 includedir=${prefix}/include
 libdir=${prefix}/lib
 
-Name: NuXmv
-Description: NuXmv model checker library
-Version: 1.0
+Name: nuXmv
+Description: nuXmv model checker library
+Version: @PKGVER@
 Cflags: -I${includedir}
 Libs: -L${libdir} -lnuxmv

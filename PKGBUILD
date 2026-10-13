@@ -2,7 +2,7 @@
 
 pkgname=nuxmv-bin
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="State of the art, infinite state model checker built on NuSMV"
 arch=('x86_64')
 url="https://nuxmv.fbk.eu/"
@@ -13,10 +13,10 @@ optdepends=('python: For using conversion scripts')
 makedepends=('patchelf')
 
 source_x86_64=("nuXmv-${pkgver}-linux64.tar.xz::https://nuxmv.fbk.eu/downloads/${pkgver}/nuXmv-${pkgver}-linux64.tar.xz")
-source=("nuxmv.pc")
+source=("nuxmv.pc.in")
 
-sha256sums_x86_64=('a495d6de6bb8c95dc9c5ad3368833a897ac2f14841c18624f0e10cbdf28da259')
-sha256sums=('50c47088b2d434a3d2e243ae2d54f5c157dcd044563a89ede8622d6a508041c2')
+sha256sums_x86_64=('d31709895ae2d7737e1e3c59eec9442c76527d2273380eaff6f3aea8cce9f946')
+sha256sums=('23c305bbe1e14baacca89ef7c828f63a0c65a92d6d77ee2aec59f26a0fac5f08')
 
 package() {
   _output="${srcdir}/nuXmv-${pkgver}-linux64"
@@ -54,6 +54,8 @@ package() {
   patchelf --force-rpath --set-rpath '$ORIGIN' "${pkgdir}/opt/nuXmv/lib/libicuuc.so.70"
   patchelf --force-rpath --set-rpath '$ORIGIN' "${pkgdir}/opt/nuXmv/lib/libxml2.so.2"
 
-  install -Dm644 "${srcdir}/nuxmv.pc" -t "${pkgdir}/usr/lib/pkgconfig/"
+  install -dm755 "${pkgdir}/usr/lib/pkgconfig"
+  sed "s/@PKGVER@/${pkgver}/" "${srcdir}/nuxmv.pc.in" > "${pkgdir}/usr/lib/pkgconfig/nuxmv.pc"
+  chmod 644 "${pkgdir}/usr/lib/pkgconfig/nuxmv.pc"
   install -Dm644 "${_output}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
