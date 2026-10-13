@@ -1,0 +1,20 @@
+pkgbase = caligator-git
+	pkgdesc = An open source kickass cross platform Calculator.
+	pkgver = 0.0.2.r30.g531938d
+	pkgrel = 1
+	url = https://github.com/riju-stone/caligator
+	arch = any
+	license = LicenseRef-unknown
+	makedepends = bun
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = jq
+	makedepends = gendesk
+	depends = electron28
+	source = caligator.git::git+https://github.com/riju-stone/caligator.git
+	source = caligator.sh
+	sha256sums = SKIP
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
+
+pkgname = caligator-git
