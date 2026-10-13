@@ -1,12 +1,11 @@
 # Maintainer: Icaro Motta <icarogomesmotta@proton.me>
 pkgname=autoanimedownloader-bin
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An app that automatically downloads your anime from Anilist"
 arch=('x86_64' 'aarch64')
 url="https://github.com/icarosuper/AutoAnimeDownloader"
 license=('GPL3')
-depends=('qbittorrent')
 provides=('autoanimedownloader')
 conflicts=('autoanimedownloader-git')
 source_x86_64=("https://github.com/icarosuper/AutoAnimeDownloader/releases/download/v${pkgver}/AutoAnimeDownloader_Linux_x86_v${pkgver}.zip")
