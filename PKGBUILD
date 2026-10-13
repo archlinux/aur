@@ -6,7 +6,7 @@
 # Upstream publishes a self-contained tarball (Tauri binary + bundled Node/Pi
 # agent runtime), so this is a -bin package; there is no source build here.
 pkgname=tomato-todo-bin
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc='任务与番茄钟，一个安静的专注空间'
 arch=('x86_64')
@@ -19,7 +19,7 @@ options=('!strip' '!debug')
 source=("https://github.com/AntheaLaffy/tomato-todo/releases/download/v$pkgver/tomato-todo-$pkgver-$CARCH-linux.tar.gz"
         'tomato-todo.desktop'
         'LICENSE')
-sha256sums=('815f898c2f93468802778e9b812c2fa3939e0806f3d314bd049a2b20bbcfbc98'
+sha256sums=('a462a7d6551f201f8f7c35257cea224bbb8ea3bc30707660422769dfdccebbd5'
             '27016ccfec6a99754468979a18484c1d342dfb1d1727e118e2cf9037b0825ff5'
             '35ac48fb83d92346f4ea881dac8304e85111c7352aaf214b2fd9bb9169dcd001')
 

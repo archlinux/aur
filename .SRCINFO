@@ -1,6 +1,6 @@
 pkgbase = tomato-todo-bin
 	pkgdesc = 任务与番茄钟，一个安静的专注空间
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/AntheaLaffy/tomato-todo
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = tomato-todo-bin
 	conflicts = tomato-todo
 	options = !strip
 	options = !debug
-	source = https://github.com/AntheaLaffy/tomato-todo/releases/download/v0.8.3/tomato-todo-0.8.3-x86_64-linux.tar.gz
+	source = https://github.com/AntheaLaffy/tomato-todo/releases/download/v0.8.4/tomato-todo-0.8.4-x86_64-linux.tar.gz
 	source = tomato-todo.desktop
 	source = LICENSE
-	sha256sums = 815f898c2f93468802778e9b812c2fa3939e0806f3d314bd049a2b20bbcfbc98
+	sha256sums = a462a7d6551f201f8f7c35257cea224bbb8ea3bc30707660422769dfdccebbd5
 	sha256sums = 27016ccfec6a99754468979a18484c1d342dfb1d1727e118e2cf9037b0825ff5
 	sha256sums = 35ac48fb83d92346f4ea881dac8304e85111c7352aaf214b2fd9bb9169dcd001
 
