@@ -1,6 +1,6 @@
 # Maintainer: Christof Müller <hello@deviceshelf.app>
 pkgname=deviceshelf-bin
-pkgver=1.9.64
+pkgver=1.9.76
 pkgrel=1
 pkgdesc="Local-first network scanner: discover and identify every device on your LAN, with open ports and a security report"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('deviceshelf')
 conflicts=('deviceshelf')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::https://downloads.deviceshelf.app/DeviceShelf-${pkgver}.deb")
-sha256sums=('1872097f7a207efbd0ba15f0c09665355ae95e2d56206299e1da19ca5a7b594a')
+sha256sums=('41609891e3715d771eed6a51a100737901a48e95e249e701f89343812b09ef98')
 
 package() {
   # The .deb already follows the FHS: /usr/bin/deviceshelf, a .desktop entry and
