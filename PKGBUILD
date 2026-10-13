@@ -1,6 +1,6 @@
 # Maintainer: Kritiqual
 pkgname=neovide-nightly-bin
-pkgver=nightly.r37.g3f0fcc0
+pkgver=nightly.r38.gc41276a
 pkgrel=1
 pkgdesc='No Nonsense Neovim Client in Rust (nightly build)'
 arch=('x86_64')
@@ -29,10 +29,12 @@ source=(
     'LICENSE::https://raw.githubusercontent.com/neovide/neovide/nightly/LICENSE'
 )
 
-sha256sums=('f7caac1784bb7e135f2771ea14289aec34f59ec6b6c98946c71bb9482a64b765'
-            '028fe24eee4a367dfba9cb223725055da327b1c261325cc33049192ca0fdd2f8'
-            'a6870391ded090cc5f24f0cb40a8ffa67930faf109a419753ec25ac0a03177a9'
-            '60c7b5e1d0b3daee2f2a504d622e47ca37f45e61bb2538a2a10e1c5555da1dd7')
+sha256sums=(
+    'ac6f874da11c35bb12b6594a7895012be296f7513d50e03c646966523f66833b'
+    '028fe24eee4a367dfba9cb223725055da327b1c261325cc33049192ca0fdd2f8'
+    'a6870391ded090cc5f24f0cb40a8ffa67930faf109a419753ec25ac0a03177a9'
+    '60c7b5e1d0b3daee2f2a504d622e47ca37f45e61bb2538a2a10e1c5555da1dd7'
+)
 
 prepare() {
     tar -xzf neovide-linux-x86_64.tar.gz
