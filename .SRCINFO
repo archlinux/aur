@@ -1,0 +1,17 @@
+pkgbase = knap
+	pkgdesc = Flexible template engine for creating Markdown
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/obsidianmd/knap
+	arch = any
+	license = MIT
+	depends = nodejs>=20
+	conflicts = knap-git
+	noextract = knap-0.6.0.tgz
+	noextract = dayjs-1.11.23.tgz
+	source = https://registry.npmjs.org/knap/-/knap-0.6.0.tgz
+	source = https://registry.npmjs.org/dayjs/-/dayjs-1.11.23.tgz
+	sha256sums = e4052bc897db24d4f1a44f59cd8247551a914867229a9ba1a96939f4b02442e4
+	sha256sums = 7da0ff55ddb6d4050b91ea0a11a8e9d92c048305155039387373f20be080e594
+
+pkgname = knap
