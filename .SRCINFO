@@ -1,6 +1,6 @@
 pkgbase = server-box-bin
 	pkgdesc = ServerBox - A flutter app that helps you connect to your server.
-	pkgver = 1.0.1765
+	pkgver = 1.0.1773
 	pkgrel = 1
 	url = https://github.com/lollipopkit/flutter_server_box
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = server-box-bin
 	provides = server-box
 	conflicts = server-box
 	options = !strip
-	source = ServerBox_v1.0.1765_amd64.AppImage::https://github.com/lollipopkit/flutter_server_box/releases/download/v1.0.1765/ServerBox_v1.0.1765_amd64.AppImage
-	sha256sums = 3fed7938bacdcbe68505ce557bc24ff91e6da4746b7e6102c493aecf8fad31f6
+	source = ServerBox_v1.0.1773_amd64.AppImage::https://github.com/lollipopkit/flutter_server_box/releases/download/v1.0.1773/ServerBox_v1.0.1773_amd64.AppImage
+	sha256sums = 681c459aae2ba691078d52f8c775db84739fb093b110221c38260aea44ba64a4
 
 pkgname = server-box-bin
