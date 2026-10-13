@@ -1,16 +1,16 @@
 # Maintainer: Bolt J Woofson <bolt@boop.no>
 pkgname=brum
-pkgver=1.8.8
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Multi-Pane Web Environment (File Commander/Manager) - By Woofson"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Woofson/brum"
 license=('MIT')
-depends=('glibc' 'sqlite' 'libssh2' 'openssl' 'ca-certificates' 'gtk3' 'webkit2gtk-4.1')
-makedepends=('cargo' 'rust' 'pkgconf' 'gtk3' 'webkit2gtk-4.1')
+depends=('glibc' 'sqlite' 'libssh2' 'openssl' 'ca-certificates')
+makedepends=('cargo' 'rust' 'pkgconf')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('273e3a7a005a2647be4ad119d784b7b22473f254a2ca3b906f912a32e4e1ca63')
+sha256sums=('8c84d9f7d0447743ab191c0824c94821e96878c7863b6eaa104fa110307a7cb2')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -25,7 +25,7 @@ build() {
     export LIBSSH2_SYS_USE_PKG_CONFIG=1
     export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
     export RUSTFLAGS="-C link-arg=-Wl,--no-as-needed"
-    cargo build --release --features gui
+    cargo build --release
 }
 
 package() {
