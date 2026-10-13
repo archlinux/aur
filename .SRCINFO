@@ -14,6 +14,7 @@ pkgbase = gnome-rounded-blur
 	depends = graphene
 	depends = libgcc
 	depends = mutter
+	depends = libmutter-51.so
 	source = git+https://github.com/kancko/gnome-rounded-blur.git#tag=v1.0.2
 	sha256sums = e2406139c5cbf2f0f86d393c51b410fefbbdc6ce31e0317d40f09baacce75647
 
