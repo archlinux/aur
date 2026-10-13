@@ -1,7 +1,7 @@
 # Maintainer: Luke Taylor <luket@pm.me>
 
 pkgname=fooyin-git
-pkgver=0.12.6.r75.g05fca7c
+pkgver=0.13.1.r176.g0e14101
 pkgrel=1
 pkgdesc="A customisable music player"
 url="https://github.com/fooyin/fooyin"
@@ -20,6 +20,7 @@ depends=(
     qcoro
     hicolor-icon-theme
     zlib
+    libarchive
 )
 makedepends=(
     git
@@ -29,10 +30,15 @@ makedepends=(
     cmake
     sdl2-compat
     libpipewire
+    libpulse
+    jack
+    flac
+    mpg123
+    opusfile
+    libvorbis
     libopenmpt
     libgme
     libsndfile
-    libarchive
     libcdio
     libcdio-paranoia
     libebur128
@@ -41,18 +47,23 @@ makedepends=(
     soundtouch
 )
 optdepends=(
-    'sdl2: For the SDL2 audio output plugin'
+    'sdl2-compat: For the SDL2 audio output plugin'
     'libpipewire: For the PipeWire audio output plugin'
+    'libpulse: For the PulseAudio audio output plugin'
+    'jack: For the JACK audio output plugin'
+    'flac: For the FLAC audio input plugin'
+    'mpg123: For the MPEG audio input plugin'
+    'opusfile: For the Opus audio input plugin'
+    'libvorbis: For the Vorbis audio input plugin'
     'libopenmpt: For the OpenMPT audio input plugin'
     'libgme: For the GME audio input plugin'
-    'libsndfile: For the GME audio input plugin'
-    'libarchive: For the libarchive archive plugin'
-    'libcdio: For the cdda plugin'
-    'libcdio-paranoia: For the cdda plugin'
+    'libsndfile: For the sndfile audio input plugin'
+    'libcdio: For the Audio CD plugin'
+    'libcdio-paranoia: For the Audio CD plugin'
     'libebur128: For the ReplayGain scanner plugin'
-    'libsoxr: For the SoX-based DSP plugin'
-    'libprojectm: For the ProjectM visualisation plugin'
-    'soundtouch: For the SoundTouch-based DSP plugin'
+    'libprojectm: For the projectM visualisation plugin'
+    'libsoxr: For the SoX resampler DSP plugin'
+    'soundtouch: For the SoundTouch DSP plugin'
 )
 provides=('fooyin')
 conflicts=('fooyin')
