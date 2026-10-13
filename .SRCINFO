@@ -1,7 +1,7 @@
 pkgbase = autoanimedownloader-git
 	pkgdesc = An app that automatically downloads your anime from Anilist
-	pkgver = 1.3.3.r0.g0000000
-	pkgrel = 2
+	pkgver = 2.4.0.r0.g59aa5d4
+	pkgrel = 1
 	url = https://github.com/icarosuper/AutoAnimeDownloader
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,6 @@ pkgbase = autoanimedownloader-git
 	makedepends = go
 	makedepends = npm
 	makedepends = pkg-config
-	depends = qbittorrent
 	provides = autoanimedownloader
 	conflicts = autoanimedownloader-bin
 	source = autoanimedownloader-git::git+https://github.com/icarosuper/AutoAnimeDownloader.git

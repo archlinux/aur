@@ -1,12 +1,11 @@
 # Maintainer: Icaro Motta <icarogomesmotta@proton.me>
 pkgname=autoanimedownloader-git
-pkgver=1.3.3.r0.g0000000
-pkgrel=2
+pkgver=2.4.0.r0.g59aa5d4
+pkgrel=1
 pkgdesc="An app that automatically downloads your anime from Anilist"
 arch=('x86_64' 'aarch64')
 url="https://github.com/icarosuper/AutoAnimeDownloader"
 license=('GPL3')
-depends=('qbittorrent')
 makedepends=('git' 'go' 'npm' 'pkg-config')
 provides=('autoanimedownloader')
 conflicts=('autoanimedownloader-bin')
@@ -31,13 +30,13 @@ build() {
   export CGO_ENABLED=1
   export CGO_CFLAGS="-Wno-deprecated-declarations"
   go build -installsuffix cgo \
-    -ldflags="-w -s -X AutoAnimeDownloader/src/internal/tray.currentVersion=${pkgver}" \
+    -ldflags="-w -s -X AutoAnimeDownloader/src/internal/version.Version=${pkgver}" \
     -o autoanimedownloader-daemon \
     ./src/cmd/daemon
 
   # Build CLI (no CGO)
   CGO_ENABLED=0 go build -installsuffix cgo \
-    -ldflags="-w -s" \
+    -ldflags="-w -s -X AutoAnimeDownloader/src/internal/version.Version=${pkgver}" \
     -o autoanimedownloader \
     ./src/cmd/cli
 }
