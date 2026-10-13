@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=wallust
 pkgver=3.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate colors from an image"
 arch=(x86_64 i686)
 url="https://codeberg.org/explosion-mental/wallust"
