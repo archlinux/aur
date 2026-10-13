@@ -1,0 +1,25 @@
+pkgbase = cockpit-zfs-manager-git
+	pkgdesc = Modern ZFS manager for Cockpit using React and PatternFly 6 (development snapshot)
+	pkgver = 0.1.0.r219.gbd0b01b
+	pkgrel = 1
+	url = https://github.com/brycelarge/cockpit-zfs-manager
+	arch = any
+	license = LGPL-2.1-only
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = python
+	makedepends = make
+	depends = cockpit
+	depends = zfs-utils
+	depends = util-linux
+	optdepends = smartmontools: disk S.M.A.R.T. data
+	optdepends = sanoid: automated snapshots
+	source = git+https://github.com/brycelarge/cockpit-zfs-manager.git
+	source = cockpit-lib-c137401a2b5fd8ba2088242b9ddc2f35fbb18337.tar.gz::https://github.com/cockpit-project/cockpit/archive/c137401a2b5fd8ba2088242b9ddc2f35fbb18337.tar.gz
+	source = smartctl-fix.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cockpit-zfs-manager-git

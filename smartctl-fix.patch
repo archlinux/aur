@@ -1,0 +1,88 @@
+diff --git a/src/zfsApi/disks.js b/src/zfsApi/disks.js
+index 81a1dbf..abe06c1 100644
+--- a/src/zfsApi/disks.js
++++ b/src/zfsApi/disks.js
+@@ -180,6 +180,8 @@ export class DisksApi {
+     static getDeviceType(devicePath) {
+         if (devicePath.includes('nvme')) {
+             return 'NVMe';
++        } else if (devicePath.includes('/dev/disk/by-id/ata-')) {
++            return 'SATA/SAS';
+         } else if (devicePath.match(/sd[a-z]+/)) {
+             return 'SATA/SAS';
+         } else if (devicePath.match(/hd[a-z]+/)) {
+@@ -277,10 +279,10 @@ export class DisksApi {
+                     // Ensure we only use the first path if multiple were returned
+                     const smartctlCmd = (smartctlPath || 'smartctl').split('\n')[0].trim();
+                     // For NVMe, smartctl might output to stderr, so merge stderr into stdout
+-                    // Use superuser: 'try' to gain necessary permissions
++                    // Require administrative privileges for direct device access
+                     const nvmeProc = cockpit.spawn([smartctlCmd, '-a', resolvedPath], {
+                         err: 'out',
+-                        superuser: 'try'
++                        superuser: 'require'
+                     });
+                     let nvmeOutput = '';
+ 
+@@ -762,7 +764,10 @@ export class DisksApi {
+                 // Get SMART health status - use full path if we found it
+                 // Ensure we only use the first path if multiple were returned
+                 const smartctlCmd = (smartctlPath || 'smartctl').split('\n')[0].trim();
+-                const healthProc = cockpit.spawn([smartctlCmd, '-H', devicePath], { err: 'message' });
++                const healthProc = cockpit.spawn([smartctlCmd, '-H', devicePath], {
++                    err: 'message',
++                    superuser: 'require'
++                });
+                 let healthOutput = '';
+ 
+                 healthProc.stream((data) => {
+@@ -778,7 +783,10 @@ export class DisksApi {
+                     }
+ 
+                     // Get detailed SMART attributes
+-                    const attrsProc = cockpit.spawn([smartctlCmd, '-A', devicePath], { err: 'message' });
++                    const attrsProc = cockpit.spawn([smartctlCmd, '-A', devicePath], {
++                        err: 'message',
++                        superuser: 'require'
++                    });
+                     let attrsOutput = '';
+ 
+                     attrsProc.stream((data) => {
+@@ -787,7 +795,10 @@ export class DisksApi {
+ 
+                     attrsProc.done(async (attrsExitCode) => {
+                         // Parse model and serial from info section
+-                        const infoProc = cockpit.spawn([smartctlCmd, '-i', devicePath], { err: 'message' });
++                        const infoProc = cockpit.spawn([smartctlCmd, '-i', devicePath], {
++                            err: 'message',
++                            superuser: 'require'
++                        });
+                         let infoOutput = '';
+ 
+                         infoProc.stream((data) => {
+@@ -811,10 +822,10 @@ export class DisksApi {
+                             }
+ 
+                             // Parse capacity
+-                            const capacityMatch = infoOutput.match(/User Capacity:\s*\[?(\d+)\s*bytes\]?/i) ||
+-                                                infoOutput.match(/Capacity:\s*(\d+)\s*bytes/i);
++                            const capacityMatch = infoOutput.match(/User Capacity:\s*\[?([\d,]+)\s*bytes\]?/i) ||
++                                                infoOutput.match(/Capacity:\s*([\d,]+)\s*bytes/i);
+                             if (capacityMatch) {
+-                                const bytes = parseInt(capacityMatch[1]);
++                                const bytes = parseInt(capacityMatch[1].replace(/,/g, ''), 10);
+                                 smartInfo.capacity = DisksApi.formatBytes(bytes);
+                             }
+ 
+@@ -890,8 +901,9 @@ export class DisksApi {
+                                     const threshold = parseInt(attrMatch[5]);
+ 
+                                     // Extract RAW_VALUE (last numeric field, can be very large)
+-                                    // Try to match the last number in the line, handling large numbers
+-                                    const rawMatch = line.match(/\s+(\d+)\s*$/);
++                                    // RAW_VALUE begins after WHEN_FAILED and may include text like "(Min/Max 14/47)".
++                                    // Do not confuse SMART's normalized VALUE with the physical temperature.
++                                    const rawMatch = line.match(/^\s*\d+\s+\S+\s+\S+\s+\d+\s+\d+\s+\d+\s+\S+\s+\S+\s+\S+\s+(\d+)/);
+                                     // If that doesn't work, try matching any large number at the end
+                                     const rawMatchAlt = line.match(/\s+(\d{1,20})\s*$/);
+                                     let rawValue = null;
