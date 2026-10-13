@@ -4,34 +4,21 @@
 _highlightver=11.11.1
 
 pkgname=gnome-shell-extension-copyous
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Modern Clipboard Manager for GNOME"
 arch=(any)
 url=https://github.com/boerdereinar/copyous
 license=(GPL-3.0-or-later)
 depends=(gnome-shell libgda6 gsound)
 makedepends=(git jq meson nodejs pnpm uv)
-source=($pkgname::git+$url.git#tag=v$pkgver
-  https://patch-diff.githubusercontent.com/raw/boerdereinar/copyous/pull/155.patch
+source=("$pkgname::git+$url.git#tag=v$pkgver"
   https://cdnjs.cloudflare.com/ajax/libs/highlight.js/${_highlightver}/es/highlight.min.js)
-sha256sums=('0fd69ed3188f109356521c76002775d953dcacea5fb182147bbb68774949e717'
-            '622007b2552f2f7a95f18b44040cd6011442579c53bda33cadbee9d2ea0cd9b0'
+sha256sums=('33fef54b2ae2508b4d42e61dd60f2926a3a3a626a2fc58e9f145fecee302e0bd'
             '7865839949f0764d9e0a21e311a4e2c42633eeaee8ca5ec127b86438565731fe')
 
 prepare() {
   cd $pkgname
-
-  # GNOME 51 support
-  patch -p1 -N -i "${srcdir}/155.patch"
-
-  # pnpm requires approving build scripts
-  cat <<-EOF > pnpm-workspace.yaml
----
-allowBuilds:
-  "@parcel/watcher": true
-  esbuild: true
-EOF
 
   git submodule update --init
 
