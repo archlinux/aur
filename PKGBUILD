@@ -3,7 +3,7 @@
 # Contributor: Tom < tomgparchaur at gmail dot com >
 # Contributor: David Manouchehri <d@32t.ca>
 
-pkgname=dropbox
+pkgname=dropbox-bin
 pkgver=272.4.3798
 pkgrel=1
 pkgdesc="A free service that lets you bring your photos, docs, and videos anywhere and share them easily."
@@ -56,3 +56,6 @@ package() {
   install -Dm644 "$srcdir"/dropbox.service -t "$pkgdir"/usr/lib/systemd/user
   install -Dm644 "$srcdir"/dropbox@.service -t "$pkgdir"/usr/lib/systemd/system
 }
+
+pkgrel=2
+install="$pkgname.install"
