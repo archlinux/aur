@@ -1,6 +1,6 @@
 pkgbase = hoard-bin
 	pkgdesc = Automatic, versioned game save sync across devices.
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 3
 	url = https://github.com/rleeon/hoard
 	arch = x86_64
@@ -10,10 +10,13 @@ pkgbase = hoard-bin
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	provides = hoard
+	provides = hoardd
+	provides = hoard-desktop
 	conflicts = hoard
+	conflicts = hoard-cli
 	options = !debug
-	source_x86_64 = hoard_1.2.1_x86_64.deb::https://github.com/rleeon/hoard/releases/download/v1.2.1/Hoard_1.2.1_amd64.deb
-	sha256sums_x86_64 = a118db7511e39a17fe10997a077e161d267fee0ea458bfd973d3a8449ec44df7
-	source_aarch64 = hoard_1.2.1_aarch64.deb::https://github.com/rleeon/hoard/releases/download/v1.2.1/Hoard_1.2.1_arm64.deb
+	source_x86_64 = hoard_1.2.2_x86_64.deb::https://github.com/rleeon/hoard/releases/download/v1.2.2/Hoard_1.2.2_amd64.deb
+	sha256sums_x86_64 = 3df28adb2833865102eaabbf9dd95a159ee8c5da3d8d56796a411e9d1b131c03
+	source_aarch64 = hoard_1.2.2_aarch64.deb::https://github.com/rleeon/hoard/releases/download/v1.2.2/Hoard_1.2.2_arm64.deb
 
 pkgname = hoard-bin

@@ -3,7 +3,7 @@
 _pkgname=hoard
 __pkgname=Hoard
 pkgname=${_pkgname}-bin
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=3
 pkgdesc="Automatic, versioned game save sync across devices."
 arch=('x86_64' 'aarch64')
@@ -11,13 +11,13 @@ url='https://github.com/rleeon/hoard'
 license=('AGPL3')
 depends=('libayatana-appindicator' 'webkit2gtk-4.1' 'gtk3')
 options=('!debug')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("${_pkgname}" "${_pkgname}d" "${_pkgname}-desktop")
+conflicts=("${_pkgname}" "${_pkgname}-cli")
 
 source_x86_64=("${_pkgname}_${pkgver}_x86_64.deb"::"$url/releases/download/v${pkgver}/${__pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("${_pkgname}_${pkgver}_aarch64.deb"::"$url/releases/download/v${pkgver}/${__pkgname}_${pkgver}_arm64.deb")
-sha256sums_x86_64=('a118db7511e39a17fe10997a077e161d267fee0ea458bfd973d3a8449ec44df7')
-sha246sums_aarch64=('e99a8fa8e36d702cfffb41e76e8696a0ca7e7a18d8c1247a0579ce802704050a')
+sha256sums_x86_64=('3df28adb2833865102eaabbf9dd95a159ee8c5da3d8d56796a411e9d1b131c03')
+sha246sums_aarch64=('081c1132c4cf0ae7739b2c6f8ada430e7e28fd753e0704db730511465f4f881e')
 
 prepare() {
     cd "${srcdir}" 
