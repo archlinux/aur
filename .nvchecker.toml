@@ -1,0 +1,5 @@
+[diffedit3]
+source = "github"
+github = "ilyagr/diffedit3"
+prefix = "v"
+use_latest_release = true

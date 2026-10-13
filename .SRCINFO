@@ -1,0 +1,16 @@
+pkgbase = diffedit3
+	pkgdesc = Edit diffs in a 3-pane view
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/ilyagr/diffedit3
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	source = diffedit3-0.6.1.tar.gz::https://github.com/ilyagr/diffedit3/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = 19f3b16996694bf20614abcd633af7b14a7f879497719b3eec61bdab7e21a82a
+
+pkgname = diffedit3
