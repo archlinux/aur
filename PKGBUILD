@@ -2,7 +2,7 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=mindforge
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="A working agreement between you and your AI assistant that does not decay: tiered context, explicit triggers, a closeout that can't be forgotten. Any Linux distribution, no desktop needed: a terminal tool (bash)"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('github-cli: checks that a queued task'"'"'s issue is still open (ro
             'pipewire: the chime sound (pw-play)')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('42acba0a397b156070461c2161f9d361ee7ef6e8a96a6afa5af55d5cda9cbd3e'
+sha256sums=('7965348ccadd34f203e13d7380471af4fb783ac924e398c426ce1b59bda87fc8'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
