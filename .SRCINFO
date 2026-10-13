@@ -1,7 +1,7 @@
 pkgbase = bluebubbles-beta-bin
 	pkgdesc = A cross-platform app ecosystem, bringing iMessage to Linux, Android, and Windows (Beta Prebuilt Release)
 	pkgver = 2.1.2+92
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bluebubbles.app/
 	arch = x86_64
 	arch = aarch64

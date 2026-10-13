@@ -3,7 +3,7 @@ pkgname=bluebubbles-beta-bin
 _pkgname=BlueBubbles
 pkgver=2.1.2+92
 _tagver="2.1.2%2B92"
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform app ecosystem, bringing iMessage to Linux, Android, and Windows (Beta Prebuilt Release)"
 arch=('x86_64' 'aarch64')
 url="https://bluebubbles.app/"
@@ -50,13 +50,24 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/bluebubbles-beta.sh" "${pkgdir}/usr/bin/bluebubbles-beta"
     install -Dm755 "${srcdir}/bluebubbles" "${pkgdir}/usr/lib/bluebubbles-beta/bluebubbles-beta.real"
-    cat <<EOF > "${pkgdir}/usr/lib/bluebubbles-beta/bluebubbles-beta"
+    cat <<'EOF' > "${pkgdir}/usr/lib/bluebubbles-beta/bluebubbles-beta"
 #!/bin/bash
 export GDK_BACKEND=x11
+export GTK_IM_MODULE=simple
+
+# Disable 45MB Apple Color Emoji font to prevent per-keystroke regex & font-shaping stalls on Linux
+_BB_FONT_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/app.bluebubbles.BlueBubbles/font"
+if [ -f "${_BB_FONT_DIR}/apple.ttf" ] || [ -w "${_BB_FONT_DIR}" ] || [ ! -d "${_BB_FONT_DIR}" ]; then
+    chmod u+w "${_BB_FONT_DIR}" 2>/dev/null || true
+    rm -rf "${_BB_FONT_DIR}/apple.ttf"
+    mkdir -p "${_BB_FONT_DIR}" 2>/dev/null || true
+    chmod 0555 "${_BB_FONT_DIR}" 2>/dev/null || true
+fi
+
 if command -v prime-run >/dev/null 2>&1; then
-    exec prime-run "/usr/lib/bluebubbles-beta/bluebubbles-beta.real" "\$@"
+    exec prime-run "/usr/lib/bluebubbles-beta/bluebubbles-beta.real" "$@"
 else
-    exec "/usr/lib/bluebubbles-beta/bluebubbles-beta.real" "\$@"
+    exec "/usr/lib/bluebubbles-beta/bluebubbles-beta.real" "$@"
 fi
 EOF
     chmod 755 "${pkgdir}/usr/lib/bluebubbles-beta/bluebubbles-beta"
