@@ -1,14 +1,17 @@
 # Maintainer: Antarien <dev@antarien.com>
 pkgname=ase-viewer
-# 00.00.34 traegt die Uebersetzbarkeit gegen die heutigen Bibliotheken: LANGUAGES CXX C fuer
-# die neun geholten Vorhaben, die C mitbringen, und den Header, der FcFreeTypeQuery erklaert,
-# seit fontconfig ihn aus seinem Dachheader genommen hat. Ohne diesen Stand scheitert ein
-# Fremdbau an zweiunddreissig fehlenden CMake-Variablen oder am Cairo-Backend.
-pkgver=00.00.34
-# pkgrel 2, weil -1 gebaut und dann an der eigenen Abhaengigkeitszeile scheiterte: die beiden
-# Sonames unten waren nicht erfuellbar. Der Quellstand ist unveraendert, allein das Rezept ist
-# repariert — das ist genau der Fall, fuer den pkgrel da ist.
-pkgrel=2
+# 00.00.36 traegt zwei Dinge, die ein Leser merkt. Erstens die Arena, die ihre Groesse aus der
+# Eingabe nimmt (ase-markdown): eine feste Million Bytes begrenzte ein Dokument von 196.908
+# Bytes nicht, die Zuweisung gab nullptr zurueck, und der Betrachter starb im Icon-Pass. Jetzt
+# waechst die Arena bis zur Decke und jede Zuweisungsstelle prueft ihr Ergebnis. Zweitens sagt
+# die Statuszeile, wenn die Arena doch endet, statt ein abgeschnittenes Dokument wie ein ganzes
+# zu zeigen. Dazu traegt der Stand die Uebersetzbarkeit gegen die heutigen Bibliotheken:
+# LANGUAGES CXX C fuer die geholten Vorhaben, die C mitbringen, und den Header, der
+# FcFreeTypeQuery erklaert, seit fontconfig ihn aus seinem Dachheader genommen hat.
+pkgver=00.00.36
+# pkgrel 1: der Quellstand selbst ist neu. Die Quellen werden am HEAD geholt, ein Bau bindet
+# also die heutigen Nummern der Systembibliotheken.
+pkgrel=1
 pkgdesc='ASE TECH & DESIGN Documentation Viewer — Native GTK4 Markdown renderer'
 arch=('x86_64')
 url='https://github.com/antarien/ase-client-viewer'
