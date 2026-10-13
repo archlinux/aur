@@ -3,7 +3,7 @@
 # Contributor: tee < teeaur at duck dot com >
 
 pkgname=weaviate
-pkgver=1.40.0
+pkgver=1.40.1
 pkgrel=1
 _commit=68928da
 pkgdesc='An open source vector database written in Go'
