@@ -1,6 +1,6 @@
 pkgbase = r-insight
 	pkgdesc = Easy Access to Model Information for Various Model Objects
-	pkgver = 1.5.4
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=insight
 	arch = any
@@ -45,6 +45,7 @@ pkgbase = r-insight
 	optdepends = r-gam
 	optdepends = r-gamlss
 	optdepends = r-gamlss.data
+	optdepends = r-gamlss.dist
 	optdepends = r-gamm4
 	optdepends = r-gbm
 	optdepends = r-gee
@@ -109,6 +110,7 @@ pkgbase = r-insight
 	optdepends = r-rms
 	optdepends = r-robustbase
 	optdepends = r-robustlmm
+	optdepends = r-rstan
 	optdepends = r-rstanarm
 	optdepends = r-rstantools
 	optdepends = r-rstpm2
@@ -133,8 +135,8 @@ pkgbase = r-insight
 	optdepends = r-weightit
 	optdepends = r-withr
 	optdepends = r-workflows
-	source = https://cran.r-project.org/src/contrib/insight_1.5.4.tar.gz
-	md5sums = b07580553b485ceba0969fb765087732
-	b2sums = 256a2825d33dd69efa577a5c01cf2edbfb81dbe983d45dfe277fbcab03d8fcf22ce44e81022167055469e2676ab506d8daa1062f44988fd22ce6be07b23ee85f
+	source = https://cran.r-project.org/src/contrib/insight_1.6.0.tar.gz
+	md5sums = 46cd85932575b851c618c46d589b8050
+	b2sums = 45999240085444cd5d28d546745eec85cad4c006bef723d1e9aef515a27d1630044e67ad99f1562cd85835c11a068264c79b54fece31f9c8d239c33b8653a860
 
 pkgname = r-insight
