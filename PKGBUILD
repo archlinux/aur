@@ -14,11 +14,12 @@
 #     curl -s 'https://aur.archlinux.org/rpc/v5/info?arg[]=ai-memory'
 #
 pkgname=ai-memory
-pkgver=2.6.6
+pkgver=2.6.7
 pkgrel=1
 pkgdesc="Local-first long-term memory MCP server for AI coding agents"
 arch=('x86_64' 'aarch64')
-url="https://github.com/akitaonrails/ai-memory"
+url="https://aimemory.sh"
+_repo="https://github.com/akitaonrails/ai-memory"
 license=('MIT')
 depends=('ca-certificates' 'gcc-libs' 'glibc')
 makedepends=('cargo')
@@ -29,8 +30,8 @@ backup=('etc/ai-memory/config.toml' 'etc/ai-memory/env')
 install=ai-memory.install
 options=('!debug' '!lto')
 conflicts=('ai-memory-bin')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('37eb9defd89592b471f3727a5b836e4a53501b855cd6c5da2d64ff6563943200')
+source=("$pkgname-$pkgver.tar.gz::$_repo/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('661b62fd071b143142956aef1737b05c3e049672c9f3e0a840779b4d93c48f36')
 
 prepare() {
     cd "$pkgname-$pkgver"
