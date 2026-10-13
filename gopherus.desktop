@@ -1,0 +1,24 @@
+[Desktop Entry]
+Version=1.0
+Name=Gopherus
+GenericName=Gopher browser
+GenericName[de]=Gopher-Browser
+GenericName[en_GB]=Gopher browser
+GenericName[fr]=Navigateur gopher
+GenericName[it]=Browser gopher
+GenericName[nb]=Gopherleser
+Comment=Browse gopherspace
+Comment[de]=Surf auf Gopher
+Comment[en_GB]=Browse gopherspace
+Comment[fr]=Naviguer les sites Gopher
+Comment[it]=Esplora i siti Gopher
+Comment[nb]=Surf på Gopher
+Categories=ConsoleOnly;Network;
+Keywords=gopher;browser;
+
+Type=Application
+Icon=gopherus
+Exec=gopherus %U
+Terminal=true
+StartupNotify=true
+MimeType=x-scheme-handler/gopher
