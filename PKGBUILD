@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=dbxfs
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="User-space file system for Dropbox"
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=(
 )
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
         'update-check.patch')
-sha256sums=('18f9c0410cb1ec8930e7857a12f4c5c5cc5f2ffa2262cd782ac3e9d6e6541de0'
+sha256sums=('8ee5586a4d1b13d6ac1dae81b2a5fb34f877f092302df565ae7ca99488d112d3'
             'b00af1f372b4f420d4e2cb8bf446e5e654db74aeee32636e008cab537968c755')
 
 prepare() {
