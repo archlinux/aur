@@ -1,0 +1,37 @@
+# Maintainer: Kolimi <ci@kolimi.local>
+pkgname=kolimi-desktop
+pkgver=main
+pkgrel=1
+pkgdesc="Kolimi desktop client: browse, share, and keep a local folder in sync"
+arch=('x86_64' 'aarch64')
+url="https://github.com/chaitanyayeleti/kolimi"
+license=('AGPL-3.0-or-later')
+depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator')
+makedepends=('rust' 'pkgconf')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/chaitanyayeleti/kolimi/archive/refs/tags/desktop-v$pkgver.tar.gz")
+sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+
+build() {
+  cd "kolimi-desktop-v$pkgver/apps/kolimi-desktop"
+  cargo build --release --locked
+}
+
+package() {
+  cd "kolimi-desktop-v$pkgver/apps/kolimi-desktop"
+  install -Dm755 target/release/kolimi-desktop "$pkgdir/usr/bin/kolimi-desktop"
+  for size in 32x32 128x128 256x256 512x512; do
+    install -Dm644 "icons/$size.png" \
+      "$pkgdir/usr/share/icons/hicolor/$size/apps/kolimi-desktop.png"
+  done
+  install -Dm644 icons/icon.png "$pkgdir/usr/share/pixmaps/kolimi-desktop.png"
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/kolimi-desktop.desktop" <<'EOF'
+[Desktop Entry]
+Type=Application
+Name=Kolimi
+Comment=Kolimi desktop client
+Exec=kolimi-desktop
+Icon=kolimi-desktop
+Categories=Utility;Network;
+Terminal=false
+EOF
+}
