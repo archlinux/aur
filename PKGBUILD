@@ -1,8 +1,8 @@
 # Maintainer: Octopus118 <idlansdowne at gmail dot com>
 
 pkgname=foxglove-bin
-pkgver=3.3.0
-pkgrel=2
+pkgver=3.4.0
+pkgrel=1
 pkgdesc='An integrated visualization and diagnosis tool for robotics'
 arch=('x86_64' 'aarch64')
 license=('MPL')
@@ -17,8 +17,8 @@ source_aarch64=("$pkgname-$pkgver-aarch64.deb::https://get.foxglove.dev/desktop/
 source=("foxglove-studio.desktop.patch" "foxglove-studio.xml.patch")
 sha256sums=('d908f3b083609c265f07cfb681d7c7735c4f65eecf299adbeaee63c72680cbc5'
             'c314574bc3fe3dd75290e313c2de4e3c9cb2040c3056bfb8433bfd0778484de2')
-sha256sums_x86_64=('2d64a9278967b0ba70af116f69d7b47d9977b1680080553e304770c9f15c0d2a')
-sha256sums_aarch64=('113317ac344a35fb931400f3b84e9b457f5af64e8a238ba75982b419e6ca4150')
+sha256sums_x86_64=('7060ac8ad6ccf68220b5d3a357b9f5cc4123e3ce8f0a4b7e8e2842698a5992aa')
+sha256sums_aarch64=('f894515b9af4320d0b6df80b5d2c65d1224ea5774e3532b903d59c5f63990780')
 
 package() {
     tar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
