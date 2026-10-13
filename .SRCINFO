@@ -1,13 +1,12 @@
 pkgbase = fcitx5-lotus-git
 	pkgdesc = Vietnamese input method for fcitx5
-	pkgver = 3.6.0.r1120.g91d1b9c
+	pkgver = 5.0.1.r1226.g7c69997
 	pkgrel = 1
-	epoch = 2
+	epoch = 3
 	url = https://github.com/LotusInputMethod/fcitx5-lotus
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cmake
-	makedepends = go
 	makedepends = extra-cmake-modules
 	makedepends = gcc
 	makedepends = git

@@ -1,14 +1,14 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
 pkgbase=fcitx5-lotus-git
 pkgname=('fcitx5-lotus-git' 'fcitx5-lotus-openrc-git' 'fcitx5-lotus-runit-git')
-epoch=2
-pkgver=3.6.0.r1120.g91d1b9c
+epoch=3
+pkgver=5.0.1.r1226.g7c69997
 pkgrel=1
 pkgdesc="Vietnamese input method for fcitx5"
 arch=('x86_64')
 url="https://github.com/LotusInputMethod/fcitx5-lotus"
 license=('GPL-3.0-or-later')
-makedepends=('cmake' 'go' 'extra-cmake-modules' 'gcc' 'git' 'python')
+makedepends=('cmake' 'extra-cmake-modules' 'gcc' 'git' 'python')
 source=(
     'git+https://github.com/LotusInputMethod/fcitx5-lotus.git#branch=dev'
 )
