@@ -1,7 +1,7 @@
 # Maintainer: Alex Dujardin <contact@alexcrea.xyz>
 pkgname=paintdotnet-wine-experimental
 pkgver=5.200.9775.2252
-pkgrel=5
+pkgrel=6
 pkgdesc="Experimental Paint.NET with wine specific changes"
 arch=(x86_64)
 url="https://github.com/paintdotnet/Paint.NET-on-WINE"
@@ -24,7 +24,7 @@ build() {
   mkdir -p "$srcdir/paintdotnet"
   bsdtar -xf ${pkgname}-${pkgver}.zip -C "$srcdir/paintdotnet"
 
-  icotool -x -w 256 -h 256 "$srcdir/paintdotnet.ico"
+  icotool -x -w 256 -h 256 "$srcdir/paintdotnet/paintdotnet.ico"
 }
 
 package() {
