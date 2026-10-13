@@ -1,0 +1,8 @@
+/*.log
+/*.pkg.tar.*
+/.crash-stats-api.token
+/.mkpkg_check
+/firefox
+/gecko-dev
+/log
+/mozilla-central
