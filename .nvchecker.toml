@@ -1,5 +1,0 @@
-[python-tokenizers]
-source = "git"
-git = "https://github.com/huggingface/tokenizers.git"
-include_regex = 'v[\d.]+'
-prefix = "v"
