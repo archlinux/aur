@@ -2,8 +2,8 @@
 
 pkgname=python-spsdk-pyocd
 _name=${pkgname#python-}
-pkgver=0.3.10
-pkgrel=2
+pkgver=0.3.12
+pkgrel=1
 pkgdesc="PyOCD SW Debugger. A debugger probe plugin for SPSDK."
 arch=(any)
 url="https://pypi.org/project/spsdk-pyocd"
@@ -36,7 +36,7 @@ provides=(${_name})
 conflicts=(${_name})
 replaces=(${_name})
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha512sums=('3ee968a65e5419bcd509c84615d7d3d4c277f5bd40026803dba047a0d254cea9d2bdc67df22554a62a3829fbe5839bb34a05968bc5042fdf722d43f806bc2b82')
+sha512sums=('8111edea63ac59a4c2e2f1afb7aa8520dcb9879ceb1380de435896fb14d942dcdd99ab11637d1cdefed0467175840038ceac784f74c7c7c5497b63abdc919529')
 _name=${_name//-/_}
 build() {
   cd ${srcdir}/$_name-$pkgver
