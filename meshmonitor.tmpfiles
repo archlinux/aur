@@ -1,0 +1,2 @@
+d /var/lib/meshmonitor 0700 meshmonitor meshmonitor -
+d /var/log/meshmonitor 0750 meshmonitor meshmonitor -

@@ -1,0 +1,42 @@
+[Unit]
+Description=MeshMonitor - mesh network monitoring dashboard
+Documentation=https://github.com/Yeraze/meshmonitor
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=meshmonitor
+Group=meshmonitor
+
+WorkingDirectory=/usr/lib/meshmonitor
+Environment=NODE_ENV=production
+Environment=PORT=3001
+EnvironmentFile=-/etc/default/meshmonitor
+
+ExecStart=/usr/bin/node /usr/lib/meshmonitor/dist/server/server.js
+
+Restart=on-failure
+RestartSec=10
+SyslogIdentifier=meshmonitor
+
+# Hardening
+SupplementaryGroups=uucp
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/lib/meshmonitor
+ReadWritePaths=-/var/log/meshmonitor
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+LockPersonality=yes
+
+[Install]
+WantedBy=multi-user.target

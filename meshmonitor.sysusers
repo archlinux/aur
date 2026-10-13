@@ -1,0 +1,2 @@
+u meshmonitor - "MeshMonitor service user" /var/lib/meshmonitor /usr/bin/nologin
+m meshmonitor uucp
