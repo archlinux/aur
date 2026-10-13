@@ -1,0 +1,18 @@
+pkgbase = crgx
+	pkgdesc = run and cache binary crates without installation
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/yfedoseev/crgx
+	arch = x86_64
+	license = MIT
+	depends = cargo
+	depends = glibc
+	depends = libgcc
+	source = https://github.com/yfedoseev/crgx/archive/refs/tags/v0.1.1/crgx-0.1.1.tar.gz
+	sha256sums = a4b400387e328a450c67be48f6d2b37a4d15fcec79303e3da1ece84c6fd2069d
+
+pkgname = crgx
+	depends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so

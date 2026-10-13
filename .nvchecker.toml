@@ -1,0 +1,4 @@
+[crgx]
+source = "git"
+git = "https://github.com/yfedoseev/crgx.git"
+prefix = "v"
