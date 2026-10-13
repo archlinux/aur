@@ -1,12 +1,12 @@
 # Maintainer: Vladimir Alyamkin <ufna@ufna.dev>
 pkgname=zerus
-pkgver=0.42.0
+pkgver=0.42.1
 pkgrel=1
 pkgdesc='Agent development environment for AI coding agents across your machines'
 arch=('x86_64')
 url='https://github.com/ufna/zerus'
 license=('MIT')
-depends=('qt6-base' 'qt6-webengine' 'qt6-svg' 'kstatusnotifieritem' 'kwindowsystem' 'kidletime'
+depends=('qt6-base' 'qt6-webengine' 'qt6-multimedia' 'qt6-svg' 'kstatusnotifieritem' 'kwindowsystem' 'kidletime'
          'tmux>=3.7' 'openssh' 'python' 'curl' 'procps-ng' 'libgcc' 'libstdc++' 'glibc' 'hicolor-icon-theme' 'bash' 'tar')
 makedepends=('rust' 'cmake' 'ninja')
 optdepends=('konsole: external KDE terminal integration'
@@ -20,7 +20,7 @@ provides=('hgs' 'hgs-tray')
 conflicts=('zerus-git' 'zerus-ade-bin')
 options=('!lto' '!debug')
 source=("https://github.com/ufna/zerus/releases/download/v${pkgver}/zerus-${pkgver}-source.tar.gz")
-sha256sums=('d2b0d351cc89537e05e33468176ae9a7af1982108f71094f018c4249c9bed9c5')
+sha256sums=('ab9821da3c3d33396a10ab6d7951408c343a3b424cdc8e2a13eb3d165492beef')
 
 prepare() {
     cd "$srcdir/zerus-$pkgver"
@@ -34,7 +34,7 @@ build() {
     cargo build --frozen --release
     cmake -S tray -B build -G Ninja -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr
-    cmake --build build --parallel 2
+    cmake --build build
     python scripts/collect-licenses.py "$srcdir/licenses"
 }
 
