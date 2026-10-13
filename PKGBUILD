@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=woocommerce-pos-bin
 _pkgname=WooCommerce-POS
-pkgver=1.10.31
+pkgver=1.10.33
 _electronversion=43
 pkgrel=1
 pkgdesc="Electron Desktop App for WooCommerce POS."
@@ -18,26 +18,23 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2c6964c3bdb71a451058b1ba132e90dc2e41a36cac125ee9a0f23668968fed0a'
-            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
+sha256sums=('b76298608b3fdcb7667d70aac4328eccdb0668c03dc777745268da9f13dbd2db'
+            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
-    echo "Verifying Electron version..."
-    local _main_exe=$(find "$(_get_app_dir)" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)
-    [[ -z "${_main_exe}" ]] && echo -e "\033[1;33mNote: Could not find Electron binary.\033[0m" && return
-    local _elec_ver=$(strings "${_main_exe}" | grep -oP 'Electron/\K[0-9]+' | head -1)
-    [[ -z "${_elec_ver}" ]] && echo -e "\033[1;33mNote: Could not determine Electron version.\033[0m" && return
-    [[ "${_elec_ver}" != "${_electronversion}" ]] &&
-        echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m" ||
-        echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \
+		-executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)" \
+		| grep -oP 'Electron/\K[0-9]+' | head -1)
+	[[ -z "$_v" ]] && { echo -e "\033[1;33mNote: Could not check version.\033[0m"; return; }
+	(( _v == _electronversion )) && c=32 || c=31
+	echo -e "Electron version: \033[1;${c}m$_v$([[ $c -eq 31 ]] && echo " (expected $_electronversion)")\033[0m"
 }
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app/g
     " "${srcdir}/${pkgname%-bin}.sh"
     _check_electron_version
     local _app_dir="$(_get_app_dir)"
