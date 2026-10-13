@@ -3,7 +3,7 @@
 # Contributor: da_kurlzzzzz <da_kurlzzzzz@mail.ru>
 pkgname=dh-autoreconf
 pkgver=23
-pkgrel=1
+pkgrel=2
 pkgdesc="debhelper add-on to call autoreconf and clean up after the build"
 arch=('any')
 url="https://packages.debian.org/sid/dh-autoreconf"
@@ -13,8 +13,8 @@ source=(https://deb.debian.org/debian/pool/main/d/$pkgname/${pkgname}_$pkgver.ta
 sha256sums=('de3b148be7145f3cfba64435a18b9df5987949d004aadae3baa7146023a0e56b')
 
 package() {
-#  cd "$srcdir/$pkgname-$pkgver"
-  cd "$srcdir/git"
+  cd "$srcdir/$pkgname-$pkgver"
+#  cd "$srcdir/git"
   install -Dm755 "dh_autoreconf" "$pkgdir/usr/bin/dh_autoreconf"
   install -Dm755 "dh_autoreconf_clean" "$pkgdir/usr/bin/dh_autoreconf_clean"
   install -Dm644 autoreconf.pm "$pkgdir/usr/share/perl5/vendor_perl/Debian/Debhelper/Sequence/autoreconf.pm"
