@@ -1,7 +1,7 @@
 # Maintainer: Cogumelo cogumelo@tutamail.com
 pkgname=imageviewer
 pkgver=1.9.2
-pkgrel=2
+pkgrel=3
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 pkgdesc="Simple, cross-platform image viewer"
@@ -31,6 +31,10 @@ build() {
   qmake6 \
     CONFIG+="release system_thirdparty" \
     CONFIG+="disable_libjasper disable_libbpg disable_flif disable_lerc" \
+    INCLUDEPATH+="/usr/include/libjxr/glue" \
+    INCLUDEPATH+="/usr/include/libjxr/image" \
+    INCLUDEPATH+="/usr/include/libjxr/common" \
+    INCLUDEPATH+="/usr/include/libjxr/test" \
   -r "$srcdir"/ImageViewer-"$pkgver"/ImageViewer.pro
   make
 }
