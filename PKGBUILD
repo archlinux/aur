@@ -1,12 +1,12 @@
 # Maintainer: Talha Caglar <talhacaglarr@proton.me>
 pkgname=omarchy-focus
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Pomodoro timer, task queue and site blocker for Omarchy, with a native bar widget, TUI and CLI"
 arch=('any')
 url="https://github.com/talhacaglar/omarchy-focus"
 license=('MIT')
-depends=('python' 'python-textual')
+depends=('python' 'python-textual' 'python-jeepney')
 makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-wheel')
 checkdepends=('python-pytest')
 optdepends=(
@@ -16,7 +16,7 @@ optdepends=(
 )
 install=omarchy-focus.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e655f0273a5ca794d76b6efc3c47297a920d5851592ab958d3e9763c3a3e2529')
+sha256sums=('958c787f939568e13f7e2fbd52668af6cdb031f9072692f9488e9efe684d507d')
 
 build() {
   cd "$pkgname-$pkgver"
