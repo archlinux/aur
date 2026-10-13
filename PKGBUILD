@@ -2,7 +2,7 @@
 
 pkgname=adbr-server-git
 pkgver=r2.a601e45
-pkgrel=2
+pkgrel=4
 pkgdesc="ADB Server in pure Rust."
 arch=($CARCH)
 url="https://github.com/xDvir/ADBRServer"
@@ -11,7 +11,8 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 depends=(
-    gcc-libs
+    libgcc_s.so
+    libstdc++.so
     libusb
 )
 makedepends=(
@@ -40,6 +41,10 @@ pkgver() {
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}"
+    cargo update -w
+    cargo fetch --locked --target host-tuple
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
