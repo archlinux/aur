@@ -1,5 +1,5 @@
 pkgbase = textspace-git
-	pkgdesc = A powerful Electron-based text editor designed specifically for coding and development.(Use system-wide electron)
+	pkgdesc = A powerful Electron-based text editor designed specifically for coding and development.
 	pkgver = r36.a85b49a
 	pkgrel = 1
 	url = https://github.com/muhammad-fiaz/textspace
@@ -9,13 +9,13 @@ pkgbase = textspace-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = curl
+	makedepends = jq
 	depends = electron25
 	provides = textspace=r36.a85b49a
 	conflicts = textspace
 	source = textspace.git::git+https://github.com/muhammad-fiaz/textspace.git
 	source = textspace.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
 
 pkgname = textspace-git
