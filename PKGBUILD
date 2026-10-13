@@ -2,7 +2,7 @@
 # Maintainer: G-grbz <gkhn.gurbuz@hotmail.com>
 
 pkgname=lurviko
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Qt Quick file manager with media libraries, cloud storage and an encrypted vault'
 arch=('x86_64')
@@ -16,7 +16,10 @@ depends=(
   'openssl>=3.2' 'ffmpeg' 'hicolor-icon-theme'
 )
 makedepends=('cmake>=3.21' 'extra-cmake-modules' 'ninja')
-checkdepends=('python' 'python-pytest' 'python-cryptography' 'breeze-icons' 'desktop-file-utils' 'libarchive')
+checkdepends=(
+  'python' 'python-pytest' 'python-cryptography' 'breeze-icons' 'desktop-file-utils'
+  'libarchive' '7zip' 'ttf-dejavu' 'dbus' 'mesa' 'xorg-server-xvfb' 'xorg-xauth'
+)
 optdepends=(
   'python-cryptography: standalone vault recovery tool'
   'qt6-wayland: Wayland desktop sessions'
@@ -34,17 +37,25 @@ optdepends=(
   'python-pillow: optional media worker artwork processing'
   'breeze-icons: fallback icon theme'
   'kio-extras: additional network and filesystem protocols'
-  'kio-admin: administrator authentication for file ownership and permissions'
+  'kio-admin: authenticated administrator locations'
+  'polkit: administrator authentication for file ownership and permissions'
 )
 install=lurviko.install
 source=("Lurviko-${pkgver}-${pkgrel}.tar.gz::${url}/releases/download/v${pkgver}/Lurviko-${pkgver}.tar.gz")
-sha256sums=('8d3866e7ace9d8cfcb6985819337f8c0c079d6e9c31dc1630ef09323dc138a3b')
+sha256sums=('70593b9638f36162190c56cb6dee4a935e2bd5835e0b6a6c483a14af9bd54373')
 
 prepare() {
   # Installed workers are found in /usr/share/Lurviko. Do not embed the
   # temporary source directory as a development-only fallback in the binary.
   sed -i 's/const QString sourceDir = QString::fromUtf8(LURVIKO_SOURCE_DIR);/const QString sourceDir;/' \
     "Lurviko-${pkgver}/src/subtitleaimanager.cpp"
+
+  # Match the test helper fixture to Arch's libexec installation location.
+  # Permission/authentication assertions stay unchanged.
+  sed -i \
+    -e 's|(root / "libexec").mkdir()|(root / "lib/lurviko").mkdir(parents=True)|' \
+    -e 's|root / "libexec/lurviko-access-helper"|root / "lib/lurviko/lurviko-access-helper"|' \
+    "Lurviko-${pkgver}/tests/run-properties-tests.py"
 }
 
 build() {
@@ -52,6 +63,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib/lurviko \
     -DCMAKE_SKIP_INSTALL_RPATH=ON \
     -DLURVIKO_LAUNCH_PROFILE=default
   cmake --build build
