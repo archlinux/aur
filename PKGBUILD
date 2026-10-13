@@ -1,6 +1,6 @@
 # Maintainer: PapyElGringo <adrien@pesler.be>
 pkgname=veshell-git
-pkgver=v0.1.1.r1.g57386c9
+pkgver=v0.1.2.r0.gdf1b57f
 pkgrel=1
 pkgdesc="An innovative Not-Desktop environment for Linux built with Flutter and Rust"
 arch=('x86_64')
@@ -33,11 +33,12 @@ optdepends=(
 )
 provides=('veshell' 'wayland-compositor')
 conflicts=('veshell' 'veshell-bin')
-# makepkg's global `lto` option adds -flto to CFLAGS (it is enabled by default
-# in Arch's makepkg.conf). The libspa-sys build script compiles a C shim into a
-# static archive; LTO objects there are not resolved by rustc's final (non-LTO)
-# link, which fails with undefined `*_libspa_rs` symbols. Disable LTO here, as
-# the source recipe does.
+# This silences the distribution's C LTO, and only that (makepkg enables it by
+# default in Arch's makepkg.conf). -flto would reach the libspa-sys C shim and
+# turn it into GCC LTO objects, which rustc's final link cannot resolve because
+# it does not pass -flto to the linker — the undefined `*_libspa_rs` symbols.
+# The Rust code is optimized separately with ThinLTO through Cargo's
+# [profile.release], so nothing is given up here.
 options=('!lto')
 source=('git+https://github.com/free-explorers/veshell.git')
 sha256sums=('SKIP')
