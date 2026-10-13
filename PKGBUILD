@@ -14,7 +14,7 @@ makedepends=(cargo)
 optdepends=(imagemagick)
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/explosion-mental/$pkgname/archive/$pkgver.tar.gz")
 options=(!lto)
-sha256sums=('46c2592217f0de968437850b14b2e844f2af4158b70135b2b448dc426c0309a1')
+sha256sums=('8609d27162975777797f2f625d884a6475c766ed943393219d585577ac8bfcfe')
 
 prepare() {
 	cd "$pkgname"
