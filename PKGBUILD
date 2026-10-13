@@ -1,16 +1,17 @@
 # Maintainer: Rockeyxx <ommmar310@gmail.com>
 pkgname=aj179-linux-battery-git
-pkgver=r24.98c248c
+pkgver=r44.107d742
 pkgrel=1
-pkgdesc="Battery daemon and settings tool (ajazzctl) for the Ajazz AJ179 wireless mouse; battery goes to /tmp/ajazz_battery"
+pkgdesc="Ajazz AJ179 mouse on Linux: battery service, settings tool (ajazzctl) and desktop app (renamed: aj179-linux-git)"
 arch=('x86_64')
 url="https://github.com/Rockeyxx/aj179-linux"
 license=('MIT')
-depends=()
-makedepends=('git' 'gcc' 'make' 'gawk')
+depends=('python-pyqt6')
+makedepends=('git' 'gcc' 'make')
 provides=('aj179-linux-battery')
 conflicts=('aj179-linux-battery')
 source=("git+https://github.com/Rockeyxx/aj179-linux.git")
+backup=('etc/conf.d/ajazz-battery')
 install=aj179-linux-battery.install
 sha256sums=('SKIP')
 
