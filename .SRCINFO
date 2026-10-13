@@ -1,0 +1,21 @@
+pkgbase = cuttletron-git
+	pkgdesc = Screenshots, Screen/Window Recorder, Sound/Voice Effects; For Linux.
+	pkgver = 1.0.0.r1.g103e778
+	pkgrel = 1
+	url = https://github.com/mantzaris/cuttleTron
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = jq
+	depends = electron27-bin
+	provides = cuttletron=1.0.0
+	conflicts = cuttletron
+	source = cuttletron.git::git+https://github.com/mantzaris/cuttleTron.git
+	source = cuttletron.sh
+	sha256sums = SKIP
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
+
+pkgname = cuttletron-git
