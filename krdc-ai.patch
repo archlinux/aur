@@ -4363,7 +4363,7 @@ index 8dbfd755..9928190d 100644
  </MenuBar>
  <ToolBar fullWidth="false" name="krdc_remote_view_toolbar" newline="false"><text>Remote View Toolbar</text>
 diff --git a/mainwindow.cpp b/mainwindow.cpp
-index aff87fa6..380dc33b 100644
+index aff87fa6..ba4f7c60 100644
 --- a/mainwindow.cpp
 +++ b/mainwindow.cpp
 @@ -7,6 +7,9 @@
@@ -4386,7 +4386,7 @@ index aff87fa6..380dc33b 100644
  #include <QClipboard>
  #include <QDockWidget>
  #include <QFontMetrics>
-@@ -100,8 +106,35 @@ MainWindow::MainWindow(QWidget *parent)
+@@ -100,6 +106,35 @@ MainWindow::MainWindow(QWidget *parent)
  
      createDockWidget();
  
@@ -4401,12 +4401,12 @@ index aff87fa6..380dc33b 100644
 +    m_aiPanel->dock()->hide();
 +#endif
 +
-     setupGUI(ToolBar | Keys | Save | Create);
- 
 +    // Client-side dark mode filter for remote windows that have no dark
 +    // theme of their own (Settings menu -> Dark Mode Filter). The filter
 +    // recolors light window chrome to dark in the viewer only; see
-+    // SmartInvert.
++    // SmartInvert. The action must exist before setupGUI() parses krdcui.rc,
++    // like the AI Assistant one: actions added afterwards are not inserted
++    // into the menu's placeholder.
 +    QAction *darkFilterAction = actionCollection()->addAction(QStringLiteral("dark_mode_filter"));
 +    darkFilterAction->setText(i18n("Dark Mode Filter"));
 +    darkFilterAction->setCheckable(true);
@@ -4419,10 +4419,10 @@ index aff87fa6..380dc33b 100644
 +        }
 +    });
 +
-     connect(m_tabWidget, &QTabWidget::currentChanged, this, &MainWindow::tabChanged);
+     setupGUI(ToolBar | Keys | Save | Create);
  
-     if (Settings::showStatusBar())
-@@ -209,6 +242,22 @@ void MainWindow::setupActions()
+     connect(m_tabWidget, &QTabWidget::currentChanged, this, &MainWindow::tabChanged);
+@@ -209,6 +244,22 @@ void MainWindow::setupActions()
  
  void MainWindow::loadAllPlugins()
  {
@@ -4445,7 +4445,7 @@ index aff87fa6..380dc33b 100644
      const QVector<KPluginMetaData> offers = KPluginMetaData::findPlugins(QStringLiteral("krdc"));
      const KConfigGroup conf = KSharedConfig::openConfig()->group(QStringLiteral("Plugins"));
  
-@@ -347,6 +396,7 @@ void MainWindow::newConnection(const QUrl &newUrl, bool switchFullscreenWhenConn
+@@ -347,6 +398,7 @@ void MainWindow::newConnection(const QUrl &newUrl, bool switchFullscreenWhenConn
          m_tabWidget->addTab(scrollArea, QIcon::fromTheme(QStringLiteral("krdc")), tabName.isEmpty() ? url.toDisplayString(QUrl::StripTrailingSlash) : tabName);
      m_tabWidget->setCurrentIndex(newIndex);
      m_remoteViewMap.insert(m_tabWidget->widget(newIndex), view);
@@ -4453,7 +4453,7 @@ index aff87fa6..380dc33b 100644
      tabChanged(newIndex); // force to update m_currentRemoteView (tabChanged is not emitted when start page has been disabled)
  
      view->start();
-@@ -543,6 +593,11 @@ void MainWindow::applyFullscreenState(bool fullscreen)
+@@ -543,6 +595,11 @@ void MainWindow::applyFullscreenState(bool fullscreen)
          m_savedGrabStatesBeforeFullscreen.clear();
  
          m_remoteDesktopsDockWidget->setVisible(m_guiItemsState.dockWidget);
@@ -4465,7 +4465,7 @@ index aff87fa6..380dc33b 100644
          menuBar()->setVisible(m_guiItemsState.menuBar);
          statusBar()->setVisible(m_guiItemsState.statusBar);
          toolBars().first()->setVisible(m_guiItemsState.toolBar);
-@@ -575,7 +630,12 @@ void MainWindow::applyFullscreenState(bool fullscreen)
+@@ -575,7 +632,12 @@ void MainWindow::applyFullscreenState(bool fullscreen)
          m_guiItemsState = {.dockWidget = !m_remoteDesktopsDockWidget->isHidden(),
                             .menuBar = !menuBar()->isHidden(),
                             .statusBar = !statusBar()->isHidden(),
@@ -4479,7 +4479,7 @@ index aff87fa6..380dc33b 100644
  
          // Keep the group while autosaving is disabled: autoSaveConfigGroup()
          // returns an invalid group until autosaving is enabled again.
-@@ -586,6 +646,9 @@ void MainWindow::applyFullscreenState(bool fullscreen)
+@@ -586,6 +648,9 @@ void MainWindow::applyFullscreenState(bool fullscreen)
          }
  
          m_remoteDesktopsDockWidget->setVisible(false);
@@ -4489,7 +4489,7 @@ index aff87fa6..380dc33b 100644
          menuBar()->setVisible(false);
          statusBar()->setVisible(false);
          toolBars().first()->setVisible(false);
-@@ -676,6 +739,9 @@ void MainWindow::disconnectHost()
+@@ -676,6 +741,9 @@ void MainWindow::disconnectHost()
      m_remoteViewMap.remove(widgetToDelete);
      m_savedGrabStatesBeforeFullscreen.remove(view);
  
@@ -4499,7 +4499,7 @@ index aff87fa6..380dc33b 100644
      saveHostPrefs(view);
      view->startQuitting(); // some deconstructors can't properly quit, so quit early
      m_tabWidget->removePage(widgetToDelete);
-@@ -706,6 +772,9 @@ void MainWindow::closeTab(int index)
+@@ -706,6 +774,9 @@ void MainWindow::closeTab(int index)
              return;
          }
          m_savedGrabStatesBeforeFullscreen.remove(view);
@@ -4509,7 +4509,7 @@ index aff87fa6..380dc33b 100644
          view->startQuitting();
          widget->deleteLater();
      }
-@@ -1284,6 +1353,12 @@ void MainWindow::tabChanged(int index)
+@@ -1284,6 +1355,12 @@ void MainWindow::tabChanged(int index)
      const QString tabTitle = m_tabWidget->tabText(index).remove(QLatin1Char('&'));
      setCaption(tabTitle == i18n("New Connection") ? QString() : tabTitle);
  
