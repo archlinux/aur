@@ -2,7 +2,7 @@
 # Maintainer: German Lashevich <german.lashevich@gmail.com>
 
 pkgname='cloudflare-dynamic-dns-bin'
-pkgver=4.5.11
+pkgver=4.5.12
 pkgrel=1
 pkgdesc='Dynamic DNS client for Cloudflare with IPv6/IPv4 support'
 url='https://github.com/zebradil/cloudflare-dynamic-dns'
@@ -12,16 +12,16 @@ provides=('cloudflare-dynamic-dns')
 conflicts=('cloudflare-dynamic-dns')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Zebradil/cloudflare-dynamic-dns/releases/download/${pkgver}/cloudflare-dynamic-dns_linux_arm64.tar.gz")
-sha256sums_aarch64=('2b14f461d2a1d8b48500dfc9c0a1bc9e8b03974fe1f152967600cf01d0205e5d')
+sha256sums_aarch64=('d4b94765e3df8705d09b74bc64f378f3f4d609fc3a746e5d8e6fb2bec231db4e')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Zebradil/cloudflare-dynamic-dns/releases/download/${pkgver}/cloudflare-dynamic-dns_linux_armv7.tar.gz")
-sha256sums_armv7h=('ef62c7f0b94885e154e5b7721225b4f84da802ec4d76a4fca8d7fb7dc6299836')
+sha256sums_armv7h=('f4f25243832e373163d031923451ed53f1a0f2063eb0dabfaad74301a27a91bf')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Zebradil/cloudflare-dynamic-dns/releases/download/${pkgver}/cloudflare-dynamic-dns_linux_386.tar.gz")
-sha256sums_i686=('e19aeaf5033d9818ce92efbb7416e48d87fea2243ce687c8d4b16f49ee92aad6')
+sha256sums_i686=('5f2234b182467fc5dd7e200de57dadd9ded379570f0e63e22d77ebb8f09fb16a')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Zebradil/cloudflare-dynamic-dns/releases/download/${pkgver}/cloudflare-dynamic-dns_linux_amd64.tar.gz")
-sha256sums_x86_64=('04e9f1038c97867cd800998d6ae23f27d3f403b0f97433a5702aa152779f39b2')
+sha256sums_x86_64=('1d7f91a1f2143fd4f2e21b4c496817847a35d6693cb696485ca9254901a02a68')
 
 package() {
   BIN=cloudflare-dynamic-dns
