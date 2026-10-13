@@ -2,7 +2,7 @@
 # Maintainer: vyrx-dev <dev@vyrx.dev>
 
 pkgname='tez-bin'
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='A typing game with a stretchy blob'
 url='https://github.com/vyrx-dev/tez'
@@ -13,7 +13,7 @@ conflicts=('tez')
 depends=('libffi' 'libx11' 'wayland' 'mesa' 'alsa-lib')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/vyrx-dev/tez/releases/download/v${pkgver}/tez_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('701567315f6b05e6c65f86c195e1eecbe501f93124938d7f58a4de19b21e4b63')
+sha256sums_x86_64=('878bbcb2acc96fbcaef8fb2173c92d207139c7220a6a0378792cf01a353e3af8')
 
 package() {
   install -Dm755 "./tez" "${pkgdir}/usr/bin/tez"
