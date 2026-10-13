@@ -3,10 +3,10 @@
 # pkgname, pkgver, pkgdesc, _tag and _debver per channel before publishing.
 pkgname=tabularis-bin
 _pkgname=tabularis
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
-_tag=v0.27.0
-_debver=0.27.0
+_tag=v0.28.0
+_debver=0.28.0
 pkgdesc="Open-source desktop SQL workspace for PostgreSQL, MySQL/MariaDB, SQLite and 15+ more databases, with a built-in MCP server"
 arch=('x86_64')
 url="https://github.com/TabularisDB/tabularis"
@@ -15,7 +15,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3' 'openssl' 'libsecret')
 source=("${_pkgname}_${_debver}_amd64.deb::${url}/releases/download/${_tag}/${_pkgname}_${_debver}_amd64.deb")
-sha256sums=('f9a097d53fbda70ef6827f8ee63dc8b321e4c4c7eb81e65f857cc7edac0b51de')
+sha256sums=('237649b011e63224efea02b348bb279459e2108f1c7f13697e5e1260be9d6f92')
 
 package() {
     bsdtar -xf data.tar.* -C "${pkgdir}"
