@@ -1,5 +1,5 @@
 pkgbase = vagrant-manager-git
-	pkgdesc = An electron, status bar menu app that lets you manage all of your vagrant machines from one central location.(Use system-wide electron)
+	pkgdesc = An electron, status bar menu app that lets you manage all of your vagrant machines from one central location.
 	pkgver = 2.3.2.r250.ga2d265f
 	pkgrel = 1
 	url = https://github.com/absalomedia/vagrant-manager
@@ -10,14 +10,14 @@ pkgbase = vagrant-manager-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = curl
-	depends = electron23
+	makedepends = jq
+	depends = electron23-bin
 	depends = vagrant
 	provides = vagrant-manager=2.3.2
 	conflicts = vagrant-manager
 	source = vagrant-manager.git::git+https://github.com/absalomedia/vagrant-manager.git
 	source = vagrant-manager.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
 
 pkgname = vagrant-manager-git
