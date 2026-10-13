@@ -2,7 +2,7 @@
 
 _name=pyqwest
 pkgname=python-$_name
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='A modern, high-performance HTTP client for Python and Rust.'
 arch=('x86_64' 'aarch64')
@@ -16,16 +16,15 @@ makedepends=('python-maturin'
              'python-uv-build'
              'python-build'
              'python-installer'
-             'python-wheel'
              'clang'
              'git')
 checkdepends=('python-aiohttp'
+              'python-aiodns'
               'python-anyio'
               'python-asgiref'
               'python-brotli'
               'python-httpx'
               'python-h2'
-              'python-niquests'
               'python-opentelemetry-test-utils'
               'python-outcome'
               'python-pytest'
@@ -42,7 +41,7 @@ checkdepends=('python-aiohttp'
 options=(!lto)
 source=("$_name::git+$url.git#tag=v$pkgver"
         "pyvoy::git+https://github.com/curioswitch/pyvoy.git")
-sha256sums=('b7df9e262e221fbe3b7893b7184c263b9bf0d8858d3de88534f601fdbc503dc4'
+sha256sums=('c137a5ee09086954d34a4d466ac64c61e00548673ed4f80538e47f37a846bdeb'
             'SKIP')
 
 prepare() {
