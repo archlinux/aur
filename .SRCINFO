@@ -1,6 +1,6 @@
 pkgbase = grok-build-bin
 	pkgdesc = SpaceXAI's coding agent harness and TUI. Fullscreen, mouse interactive, extensible.
-	pkgver = 1.0.50
+	pkgver = 1.0.52
 	pkgrel = 1
 	url = https://x.ai/build
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = grok-build-bin
 	source = requirements.toml
 	b2sums = d71170807c24118616aa2c4a1c2927bd4408ed6a7694bb02ad007aa5fad8939d42f586d576c1fd3d4e505e0eeb715443cdadcf268750807c860eb28c23ba53fa
 	b2sums = 37b586af90c67f7a8cfb778d3408d60c87f81cd5aff6c52ed8e091c741446543f5aaecf773160f4cf29005bded1c653f2e62868b851e9470914dded3e585c58e
-	source_x86_64 = grok-1.0.50-x86_64::https://x.ai/cli/grok-1.0.50-linux-x86_64
-	b2sums_x86_64 = 6be114fb5993909cc5cd51b5e891ff5fe79e171670f3d0cfad119965f0ad22b06eebb7d710a2ec1df63b0abed1b257eced389311295fbd5561525fe76af23eb2
-	source_aarch64 = grok-1.0.50-aarch64::https://x.ai/cli/grok-1.0.50-linux-aarch64
-	b2sums_aarch64 = e8cd494bb223295d846029ebdee8df912ea84a59825aa41509f6342f8c718ce56b39e97905e25838e5e44d9664b85b9f596a6968f3762ff7541bf416b38703c4
+	source_x86_64 = grok-1.0.52-x86_64::https://x.ai/cli/grok-1.0.52-linux-x86_64
+	b2sums_x86_64 = fa9833ef628b936e8126f40ca3cf63984044c4f9abafc98110674979b9bd79e8014e2d946738854cb1905f4adb43a69d632586b187a1fe0f5c8a938c3acf484e
+	source_aarch64 = grok-1.0.52-aarch64::https://x.ai/cli/grok-1.0.52-linux-aarch64
+	b2sums_aarch64 = 1fd22418309330eea10d28f3a7b925f7b88938ea194f587628914d904d2dba49c8a9cad68ce5f3604aa7975caef407104fb67eefbf8fcd8d74642bf494fdba8d
 
 pkgname = grok-build-bin
