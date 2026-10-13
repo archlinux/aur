@@ -1,6 +1,6 @@
 pkgbase = mdai-bin
 	pkgdesc = Local-first Markdown editor with BYOK AI (proprietary, binary)
-	pkgver = 1.2.8
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://mdai.me
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = mdai-bin
 	conflicts = mdai
 	options = !strip
 	options = !debug
-	source = mdai-bin-1.2.8.tar.gz::https://dl.mdai.me/mdai_1.2.8_x86_64-linux.tar.gz
+	source = mdai-bin-1.3.0.tar.gz::https://dl.mdai.me/mdai_1.3.0_x86_64-linux.tar.gz
 	source = mdai.sh
-	sha256sums = 865d00f53ba69e4e804709085914a462ead63e08195c2cb0da3e3f5303dcb162
+	sha256sums = 7b9027992e7c9b6939de4b6242eafa41666f33d46a7acfbb7f337ddb227d86fe
 	sha256sums = f72eed84ccf15e7bbbefa8f64eb3203bbdaeb26dd6b8ed645e299ea83050c1e2
 
 pkgname = mdai-bin
