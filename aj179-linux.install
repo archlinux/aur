@@ -6,6 +6,8 @@ post_install() {
     echo "==> Enabling and starting ajazz-mouse.service..."
     systemctl daemon-reload
     systemctl enable --now ajazz-mouse.service || true
+    # low-battery notification: a user service, on for every user from their next login
+    systemctl --global enable aj179-battery-alert.service || true
     
     echo "==> Done! Battery status will be written to /tmp/ajazz_battery"
 }
@@ -19,4 +21,5 @@ post_upgrade() {
 pre_remove() {
     echo "==> Stopping and disabling ajazz-mouse.service..."
     systemctl disable --now ajazz-mouse.service || true
+    systemctl --global disable aj179-battery-alert.service || true
 }
