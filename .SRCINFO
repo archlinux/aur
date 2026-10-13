@@ -1,6 +1,6 @@
 pkgbase = git-side-bin
 	pkgdesc = Git subcommand that versions files that should not live in the main repository (prebuilt binary)
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/Solexma/git-side
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = git-side-bin
 	conflicts = git-side
 	options = !debug
 	options = !strip
-	source = LICENSE-0.4.0::https://raw.githubusercontent.com/Solexma/git-side/v0.4.0/LICENSE
+	source = LICENSE-0.4.1::https://raw.githubusercontent.com/Solexma/git-side/v0.4.1/LICENSE
 	sha256sums = 3da1bbefd42cf407978d8a7bdfdb9d63ea14298fd2ae6e4ea0f242a802f1cf96
-	source_x86_64 = git-side-0.4.0-x86_64::https://github.com/Solexma/git-side/releases/download/v0.4.0/git-side-linux-amd64
-	sha256sums_x86_64 = 223ba7f1f90588374605358d693ca85132db8b7e6cfe9998954f0d2cb5bed0f5
+	source_x86_64 = git-side-0.4.1-x86_64::https://github.com/Solexma/git-side/releases/download/v0.4.1/git-side-linux-amd64
+	sha256sums_x86_64 = 568ee5d2317a930a3cec79d3aedd8dcd11925774b7d3b6f3c6ed23a95ba9ba12
 
 pkgname = git-side-bin
