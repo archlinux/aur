@@ -3,7 +3,7 @@
 
 pkgname=clara-git
 pkgver=2.5.1.r578.gc7958135
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio Plugin Host (fork with UI/UX enhancements, quick search, recent projects, and node positioning)"
 arch=('x86_64')
 url="https://github.com/acropolis914/Carla"
@@ -18,6 +18,7 @@ depends=(
   'libxrandr'
   'qt6-wayland'
   'wayland'
+   'python-rich'
   'python-pyqt6'
   'sdl2'
   'qt6-base'
@@ -40,8 +41,8 @@ optdepends=(
   'python-pyliblo: OSC control support'
   'python-rdflib: LADSPA-RDF support'
 )
-provides=('carla' 'carla-git' 'clap-host' 'dssi-host' 'ladspa-host' 'lv2-host' 'vst3-host' 'vst-host')
-conflicts=('carla' 'carla-git')
+provides=('carla' 'carla-git' 'clara' 'clara-git' 'clap-host' 'dssi-host' 'ladspa-host' 'lv2-host' 'vst3-host' 'vst-host')
+conflicts=('carla' 'carla-git' 'clara' 'clara-git')
 source=("git+https://github.com/acropolis914/Carla.git#branch=main")
 sha256sums=('SKIP')
 

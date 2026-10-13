@@ -1,7 +1,7 @@
 pkgbase = clara-git
 	pkgdesc = Audio Plugin Host (fork with UI/UX enhancements, quick search, recent projects, and node positioning)
 	pkgver = 2.5.1.r578.gc7958135
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/acropolis914/Carla
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -17,6 +17,7 @@ pkgbase = clara-git
 	depends = libxrandr
 	depends = qt6-wayland
 	depends = wayland
+	depends = python-rich
 	depends = python-pyqt6
 	depends = sdl2
 	depends = qt6-base
@@ -33,6 +34,8 @@ pkgbase = clara-git
 	optdepends = python-rdflib: LADSPA-RDF support
 	provides = carla
 	provides = carla-git
+	provides = clara
+	provides = clara-git
 	provides = clap-host
 	provides = dssi-host
 	provides = ladspa-host
@@ -41,6 +44,8 @@ pkgbase = clara-git
 	provides = vst-host
 	conflicts = carla
 	conflicts = carla-git
+	conflicts = clara
+	conflicts = clara-git
 	source = git+https://github.com/acropolis914/Carla.git#branch=main
 	sha256sums = SKIP
 
