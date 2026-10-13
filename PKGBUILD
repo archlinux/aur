@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=uutils-shadow-bin
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A memory-safe reimplementation of the Linux shadow-utils in Rust"
 arch=('aarch64' 'x86_64')
@@ -14,8 +14,8 @@ source=("$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/uutils/shad
 source_aarch64=("$pkgname-$pkgver-aarch64::https://github.com/uutils/shadow/releases/download/$pkgver/uu_shadow-aarch64-unknown-linux-gnu.tar.gz")
 source_x86_64=("$pkgname-$pkgver-x86_64::https://github.com/uutils/shadow/releases/download/$pkgver/uu_shadow-x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=('SKIP')
-sha256sums_aarch64=('20714824b4f65d2632a8cd38a2ba3e59c452209554d6825411c56abe85cb5a8a')
-sha256sums_x86_64=('e8aed23e97667e01059fd32fb409dc249b6969da55cfc16995895d3b699e2e23')
+sha256sums_aarch64=('8d67a9a8c64f1d0c8834541c58f1ad6fa416c443c9b29589f43837e8d9f925b4')
+sha256sums_x86_64=('e83b3f36684b4973b173a57f9ba2eade418e25a823351924e15a1eddf20fc7b3')
 
 
 package() {
