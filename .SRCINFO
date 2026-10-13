@@ -1,6 +1,6 @@
 pkgbase = python-pyrosm
 	pkgdesc = A Python tool to parse OSM data from Protobuf format into GeoDataFrame.
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://pyrosm.readthedocs.io/
 	arch = x86_64
@@ -41,9 +41,9 @@ pkgbase = python-pyrosm
 	optdepends = python-pandarm
 	optdepends = python-pyarrow
 	optdepends = python-pyyaml
-	source = https://files.pythonhosted.org/packages/source/p/pyrosm/pyrosm-0.19.0.tar.gz
-	source = python-pyrosm-0.19.0_LICENSE::https://raw.githubusercontent.com/HTenkanen/pyrosm/v0.19.0/LICENSE
-	b2sums = 59a2c9f1d259839a2b7429ac06fc016ba6e66bd3b5b12dd7cfdc8ee353f2730ca53daaf1750c3df3ed1fd609f50b5ae9bf85cdc66317f1826c4bfc1444f86b01
+	source = https://files.pythonhosted.org/packages/source/p/pyrosm/pyrosm-0.20.0.tar.gz
+	source = python-pyrosm-0.20.0_LICENSE::https://raw.githubusercontent.com/HTenkanen/pyrosm/v0.20.0/LICENSE
+	b2sums = ac2d30601af119d6f4bc2d3d16abca73cd27307ed51777182e8bf20e5b67cc1d49f4bd56ed9f204a7c9a311ec9e0decbac67ea226b25f08a2efe40f782fe081a
 	b2sums = f6b1ef1a7226efb7c32b58e56a939f0b843fa03bd0cbea401482407587aac1aec8225e83f0fc7cbf10f91dabb4953814c2edc2e0c326cbb887f25a29c7806253
 
 pkgname = python-pyrosm
