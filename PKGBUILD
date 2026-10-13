@@ -2,21 +2,20 @@
 # Contributor: Abhinav Gupta <mail@abhinavg.net>
 
 pkgname=git-spice
-pkgver=0.31.2
+pkgver=0.32.0
 pkgrel=1
-_commit=56186e4
+_commit=eb1831c
 pkgdesc='A tool for stacking Git branches.'
 url='https://github.com/abhinav/git-spice'
 arch=(aarch64 armv7h x86_64)
 license=(GPL-3.0-or-later)
 depends=(glibc)
-makedepends=(openssl git go)
+makedepends=(git go)
 source=("$pkgname::git+$url#commit=$_commit?signed")
-sha256sums=('03695cbf68ceeec5b2a309374271a87175f5c3637e345ca6793d7fee5c5e6831')
+sha256sums=('98c8e2a6cb1942d91bcd68da2d9f3d9d744341939dcd6ef88f870239a1509075')
 validpgpkeys=(968479A1AFF927E37D1A566BB5690EEEBB952194)
 
 prepare() {
-    # git -C "$pkgname" -c gpg.ssh.allowedSignersFile="$srcdir/abhinavg.keys" verify-commit "$_commit"
     cd "$pkgname"
     export GOPATH="$srcdir"
     go mod download -modcacherw
@@ -35,6 +34,9 @@ build() {
     "./build/$pkgname" shell completion bash > "$pkgname.bash"
     "./build/$pkgname" shell completion zsh > "$pkgname.zsh"
     "./build/$pkgname" shell completion fish > "$pkgname.fish"
+    for file in "$pkgname.bash" "$pkgname.zsh" "$pkgname.fish"; do
+        sed -i "s:$srcdir/$pkgname/build/$pkgname:/usr/bin/$pkgname:" "$file"
+    done
 }
 
 package() {
