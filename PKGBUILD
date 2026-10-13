@@ -9,7 +9,7 @@
 # renders PCM input; the bridge adds compressed/object-audio decoding.
 
 pkgname=orender
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Omniphony spatial audio engine (orender CLI + liborender.so)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ options=('!lto')
 # orender_engine's layouts search list (virtual_bed.rs) — a dead path on user
 # machines; the packaged /usr/share/orender/layouts candidate is used instead.
 source=("omniphony-$pkgver.tar.gz::https://github.com/mgth/Omniphony/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2fc90db9f979710b4d4275f3da35c13ca7caddef0f0def7d30e06b21cb1ab355')
+sha256sums=('ad1a093ddbd83e71ed6182a49009f66b7b5c421efdd25915cc72451c33844f38')
 
 # Workspace inside the extracted Omniphony source tree.
 _src="Omniphony-$pkgver"
@@ -73,9 +73,19 @@ package() {
         install -Dm644 "$f" "$pkgdir/usr/share/orender/layouts/legacy/${f##*/}"
     done
 
+    # The renderer as a systemd user service, not enabled: the user runs
+    # `systemctl --user enable --now omniphony-renderer`. The same unit the
+    # Studio deb ships and Studio's "Install service" writes for
+    # /usr/bin/orender. In the source tarball from v0.7.0 on: bump pkgver
+    # before building this template.
+    install -Dm644 "$srcdir/$_src/packaging/systemd/omniphony-renderer.service" \
+        "$pkgdir/usr/lib/systemd/user/omniphony-renderer.service"
+
     # NB: no config is installed — every host (CLI, Studio, mpv's ad_orender)
     # reads the SAME per-user config (~/.config/omniphony/config.yaml), which
-    # carries render.bridge_path when a decoder bridge is installed.
+    # names decoder bridges (render.bridge_paths) only when the user chose
+    # some: the ones `harletty-bridge` installs in /usr/lib/orender are
+    # discovered without it.
 
     # License text.
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
