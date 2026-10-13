@@ -1,0 +1,22 @@
+pkgbase = adaptive-coffee-wallpaper
+	pkgdesc = Wallpaper that adapts to season, time of day and weather: PyQt6 tray app + KDE Plasma 6 wallpaper plugin
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/dz-vadim/adaptive-wallpapers
+	install = adaptive-coffee-wallpaper.install
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyqt6
+	depends = qt6-svg
+	depends = hicolor-icon-theme
+	optdepends = plasma-workspace: use the native KDE Plasma 6 wallpaper plugin
+	source = adaptive-coffee-wallpaper-1.4.0.tar.gz::https://github.com/dz-vadim/adaptive-wallpapers/archive/refs/tags/v1.4.0.tar.gz
+	source = adaptive-wallpaper.desktop
+	sha256sums = 3849dc8d2c1add23339943a20e04f6a672af031dab0baa3a5af8df7fb6ac870b
+	sha256sums = b2322bd0d290f3ad30af77e9630618cb5126435d14a007a555f67d82994f2f77
+
+pkgname = adaptive-coffee-wallpaper

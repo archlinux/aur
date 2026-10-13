@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Adaptive Coffee Wallpaper
+GenericName=Adaptive Wallpaper
+Comment=Sets the desktop wallpaper by season, time of day and weather
+Comment[uk]=Змінює шпалеру робочого столу за сезоном, часом доби й погодою
+Exec=adaptive-wallpaper
+Icon=adaptive-wallpaper
+StartupWMClass=adaptive-wallpaper
+Categories=Utility;
+Keywords=wallpaper;background;weather;season;
+Terminal=false
