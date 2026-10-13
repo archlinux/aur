@@ -3,8 +3,8 @@
 # Linux release tarball so that paru/pacman can manage it.
 
 pkgname=suzuri-bin
-pkgver=0.5.4
-pkgrel=2
+pkgver=0.5.5
+pkgrel=1
 pkgdesc='Writing environment built on Zed: Obsidian-style live preview, Typst/LaTeX preview, PDF pane'
 arch=('x86_64' 'aarch64')
 url='https://github.com/harrywang/suzuri'
@@ -41,8 +41,8 @@ conflicts=('suzuri' 'suzuri-git')
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/suzuri-v${pkgver}/suzuri-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/suzuri-v${pkgver}/suzuri-linux-aarch64.tar.gz")
-sha256sums_x86_64=('276c5b08a37d7884b59b4d02a4fba9b84782dd2d1ba089307c8b0653597de67c')
-sha256sums_aarch64=('f10f49e19254b8669e7c0fe5a0c6fdd38e06a3a5021ed5a97283768ff93400bd')
+sha256sums_x86_64=('ece1c321194c2e91f10811ccff912ada94a20d374e9d4c33b01dd5e5ecf73fe9')
+sha256sums_aarch64=('c52f06f4039be5a352ddddfda2e71a3d4716d6e324663591ec161f603406b3d5')
 
 package() {
   cd 'suzuri.app'
@@ -68,20 +68,22 @@ EOF
 
   # Desktop entry.
   #
-  # Suzuri ships on Zed's *dev* channel, so the running binary reports
-  # ReleaseChannel::app_id() == 'dev.zed.Zed-Dev' as its Wayland app_id and as
-  # WM_CLASS on X11 (crates/release_channel/src/lib.rs). Upstream, however,
-  # names the bundled desktop file 'app.suzuri.Suzuri.desktop'
-  # (script/bundle-linux picks that name for the dev channel), so nothing
-  # matches the app_id and the compositor falls back to a generic taskbar icon.
-  # Install it under the name the compositor actually looks up, and state the
-  # class explicitly for good measure.
-  desktop="${pkgdir}/usr/share/applications/dev.zed.Zed-Dev.desktop"
-  install -Dm644 'share/applications/app.suzuri.Suzuri.desktop' "$desktop"
+  # A compositor resolves a window's icon by matching its app_id against a
+  # desktop file name. Through 0.5.4 those two disagreed on the dev channel
+  # (app_id 'dev.zed.Zed-Dev' vs file 'app.suzuri.Suzuri.desktop'), so this
+  # package renamed the file to compensate. Suzuri 0.5.5 fixed the runtime side
+  # (ReleaseChannel::app_id() now returns 'app.suzuri.Suzuri'), so the rename is
+  # gone. Keep whichever name upstream ships, derived from the tarball rather
+  # than hard-coded, and only make the Exec paths absolute.
+  mapfile -t desktops < <(find share/applications -maxdepth 1 -name '*.desktop')
+  if (( ${#desktops[@]} != 1 )); then
+    echo "error: expected exactly 1 .desktop file, found ${#desktops[@]}" >&2
+    return 1
+  fi
+  desktop="${pkgdir}/usr/share/applications/${desktops[0]##*/}"
+  install -Dm644 "${desktops[0]}" "$desktop"
   sed -i -e 's|^Exec=suzuri |Exec=/usr/bin/suzuri |' \
          -e 's|^TryExec=suzuri$|TryExec=/usr/bin/suzuri|' \
-         -e '/^StartupWMClass=/d' \
-         -e '/^Actions=/i StartupWMClass=dev.zed.Zed-Dev' \
     "$desktop"
 
   # Icons into hicolor so the desktop entry's plain 'Icon=suzuri' resolves.
