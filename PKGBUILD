@@ -2,7 +2,7 @@
 
 _pkgname=serd
 pkgname=$_pkgname-git
-pkgver=0.32.6.r1350.45663a8e
+pkgver=0.32.11.r1391.b6053bb2
 pkgrel=1
 pkgdesc='Lightweight C library for RDF syntax supporting reading / writing Turtle and NTriples (git version)'
 arch=(x86_64)
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson $_pkgname $_pkgname-build
+  arch-meson -D docs=disabled $_pkgname $_pkgname-build
   meson compile -C $_pkgname-build
 }
 
