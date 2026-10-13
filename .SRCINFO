@@ -1,6 +1,6 @@
 pkgbase = chess-analyzer-tui
 	pkgdesc = A lightweight chess.com-style analyzer. Runs with any UCI engine. Gets game from file, stdin or clipboard.
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/leolaurindo/chess-analyzer-tui
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = chess-analyzer-tui
 	depends = python-rich
 	depends = python-chess
 	provides = chess-analyzer
-	source = chess-analyzer-tui-0.2.4.tar.gz::https://github.com/leolaurindo/chess-analyzer-tui/archive/refs/tags/v0.2.4.tar.gz
-	sha256sums = 489ff6d705deb4f05a9152b664c978999ccaed4c69165affd122a9a9a9548018
+	source = chess-analyzer-tui-0.2.5.tar.gz::https://github.com/leolaurindo/chess-analyzer-tui/archive/refs/tags/v0.2.5.tar.gz
+	sha256sums = 2fefade72312104822e73b5b9bc10520d98c40ecc793156c949fb22df1fc8e64
 
 pkgname = chess-analyzer-tui
