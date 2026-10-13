@@ -2,7 +2,7 @@
 
 pkgname=figcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.10.0.r310.g0d0ea35
+pkgver=0.5.1.r25.ge56856f
 pkgrel=1
 url="https://getartcraft.com/apps/$_pkgname"
 _url="https://github.com/storytold/$_pkgname"
