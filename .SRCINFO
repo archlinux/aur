@@ -1,7 +1,7 @@
 pkgbase = freeblocks
 	pkgdesc = Tetris Attack-like puzzle game
 	pkgver = 0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://github.com/dorkster/freeblocks
 	arch = x86_64
 	arch = i686
@@ -14,6 +14,6 @@ pkgbase = freeblocks
 	depends = sdl2_ttf
 	depends = hicolor-icon-theme
 	source = freeblocks-0.5.tar.gz::http://github.com/dorkster/freeblocks/archive/ec356b404a0b983a2108a278b24271cab1801805.tar.gz
-	sha256sums = SKIP
+	sha256sums = e811855ec8d58b0e3fc49bdd591f7dc989356b9a9e37ea8fd6fc211a9c5e7403
 
 pkgname = freeblocks
