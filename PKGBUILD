@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=rawmakase
-pkgver=0.2.4
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 url="https://$pkgname.com/"
 _url="https://github.com/pch/$pkgname"
 pkgdesc='Lightroom-compatible RAW photo editor'
@@ -12,9 +12,10 @@ depends=(glibc # libc.so libm.so
          libgcc
          libraw)
 makedepends=(cargo)
+options=(!lto)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('e1fc5e0d6c79108d1311cfbd9f2e205c7813996e6bce7f7bab35888f1d595bd9')
+sha256sums=('0e1509fd8e8cf71f946bb76d0a93dd5fa021c9f36d3ff83f8142810b42f1dd1d')
 
 _srcenv() {
 	cd "$_archive"
