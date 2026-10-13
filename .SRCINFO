@@ -14,6 +14,7 @@ pkgbase = python-pdf2bib
 	depends = python-pyperclip
 	depends = python-unidecode
 	depends = python-pdf2doi
+	depends = python-pylatexenc
 	source = https://files.pythonhosted.org/packages/86/58/2ed869b6aab7c8f555130bafbabe50562f0c11aa486a35d608c7baef0910/pdf2bib-1.2.tar.gz
 	sha256sums = 3fd4d9e99585a3ba2115892d3e2fac132151f7bd9c7e1f2ffae5c54ec22c66cc
 
