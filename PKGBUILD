@@ -1,27 +1,23 @@
 # Maintainer: AnDenL <andenl145@gmail.com>
 pkgname=crupp-bin
-pkgver=0.2.0
-pkgrel=2
-pkgdesc="A Cargo-like build system for C++ (pre-built binary)"
+pkgver=0.4.0
+pkgrel=1
+pkgdesc="A Cargo-like build system for C and C++ with in-memory comptime (pre-built binary)"
 arch=('x86_64')
-url="https://github.com/AnDenL/crupp"
+url="https://github.com/AnDenL/crub-graper"
 license=('MIT')
-depends=('gcc' 'clang')
+depends=('glibc')
+optdepends=(
+    'gcc: GNU C/C++ compiler backend'
+    'clang: LLVM C/C++ compiler backend'
+)
 provides=('crupp')
 conflicts=('crupp')
 options=('!strip')
 
-source=("https://github.com/AnDenL/crupp/releases/download/1/crupp-x86_64.tar.gz")
-sha256sums=('13dec109aeca082f3b15a4a38f8949e7d0b540b9b5aab40df68545a7aaba5107')
+source=("crupp-x86_64.tar.gz::https://github.com/AnDenL/crub-graper/releases/download/v${pkgver}/crupp-x86_64.tar.gz")
+sha256sums=('d00ad69f7967c7877d5786f4acd1e60361f11d7b60c27d2ef3208d15149b64f0')
 
 package() {
-    cd "$srcdir"
-    
-    if [ ! -f "crupp" ] && [ ! -f "crupp-x86_64" ]; then
-        tar -xvf "${pkgname}-${pkgver}.tar.gz"
-    fi
-
-    BINARY=$(find . -maxdepth 2 -type f -name "crupp*" ! -name "*.tar.gz" | head -n 1)
-    
-    install -Dm755 "$BINARY" "$pkgdir/usr/bin/crupp"
+    install -Dm755 "$srcdir/crupp" "$pkgdir/usr/bin/crupp"
 }
