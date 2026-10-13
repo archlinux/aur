@@ -2,7 +2,7 @@
 
 pkgname=frzr-sk
 _pkgname=frzr
-pkgver=3.5.3
+pkgver=3.5.4
 pkgrel=1
 pkgdesc="A deployment and update system for read-only btrfs subvolume based operating systems"
 arch=('any')
@@ -13,8 +13,9 @@ license=('MIT')
 depends=('btrfs-progs' 'parted' 'libnewt' 'dosfstools' 'jq' 'util-linux' 'dmidecode' 'zstd' 'xz' 'aria2')
 makedepends=('fakeroot')
 
-_tag=$pkgver
-source=("git+$url#tag=${_tag}")
+# 3.5.4 release snapshot, pinned to the reviewed source commit (not a Git tag).
+_commit=ab6eb064abd963e203b7f3999b452e31385bf97f
+source=("git+$url#commit=${_commit}")
 md5sums=('SKIP')
 
 backup=('etc/frzr-sk.conf')
