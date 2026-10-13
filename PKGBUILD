@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/acados/acados"
 license=('BSD-2-Clause')
 depends=()
-optdepends=('casadi' 'coin-or-qpoases' 'osqp')
+optdepends=('casadi' 'coin-or-qpoases' 'osqp' 'blasfeo' 'hpipm')
 makedepends=('git' 'cmake')
 provides=('acados')
 
