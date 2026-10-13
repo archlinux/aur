@@ -1,6 +1,6 @@
 pkgbase = vxwm-git
 	pkgdesc = Versatile X Window Manager for X11, a modular dwm fork with infinite tags
-	pkgver = 2.2.r88.g24bbb12
+	pkgver = 2.3.r106.ge3c929a
 	pkgrel = 1
 	url = https://codeberg.org/wh1tepearl/vxwm
 	arch = x86_64

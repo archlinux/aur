@@ -1,6 +1,6 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname=vxwm-git
-pkgver=2.2.r88.g24bbb12
+pkgver=2.3.r106.ge3c929a
 pkgrel=1
 pkgdesc="Versatile X Window Manager for X11, a modular dwm fork with infinite tags"
 arch=('x86_64')
