@@ -2,7 +2,7 @@
 
 _Name="Sideband"
 pkgname="${_Name,,}"
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Communicate with people or LXMF-compatible systems over Reticulum networks"
 arch=(
@@ -62,7 +62,7 @@ source=(
   "${_url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
   # "${_pkgsrc}-manifest.rsm::${_url}/releases/download/${pkgver}/manifest.rsm"
 )
-sha256sums=('dff65365a3b650bff349c518e66b0c534b8541594cfc0e2c4f8ee1a2ecc6bb6f')
+sha256sums=('0050b5531fa012f31da4292649c75c4c19a3d963b6708c63f65cab63adf2deef')
 
 # verify() {
 #   rngit release "${_pkgsrc}-manifest.rsm" verify \
@@ -89,9 +89,9 @@ package() {
   find "sbapp" -type f -name '*.kv' -exec \
     cp -v "{}" "${pkgdir}/${site_packages}/{}" \;
 
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
 
-  install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -vsf "${site_packages}/sbapp-${pkgver}.dist-info/licenses/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vd "${pkgdir}/usr/share/licenses"
+  ln -vsf "${site_packages}/sbapp-${pkgver}.dist-info/licenses" \
+    "${pkgdir}/usr/share/licenses/${pkgname}"
 }
