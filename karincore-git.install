@@ -21,13 +21,26 @@ _add_installing_user() {
     fi
 }
 
+# Миграция со старых версий (до 1.5.0): каталог /etc/karin-proxy принадлежал
+# обычному пользователю. Теперь с ним работает только root-helper.
+_fix_conf_dir_owner() {
+    if [ -d /etc/karin-proxy ] && [ ! -L /etc/karin-proxy ]; then
+        find /etc/karin-proxy -type l -delete 2>/dev/null || true
+        chown -R root:root /etc/karin-proxy
+        chmod -R go-w /etc/karin-proxy
+    fi
+    install -d -m 0755 -o root -g root /var/log/karin-proxy
+}
+
 post_install() {
     getent group karincore >/dev/null 2>&1 || groupadd -r karincore
+    _fix_conf_dir_owner
     _add_installing_user
 }
 
 post_upgrade() {
     getent group karincore >/dev/null 2>&1 || groupadd -r karincore
+    _fix_conf_dir_owner
     # Добавляем автоматически только если в группе вообще никого нет —
     # апгрейд не должен молча менять членство в группе на уже настроенной
     # многопользовательской системе.

@@ -1,6 +1,6 @@
 pkgbase = karincore-git
 	pkgdesc = KarinCore - Modern and secure proxy client
-	pkgver = 1.4.0.r41.86048f8
+	pkgver = 1.5.0.r47.4199278
 	pkgrel = 1
 	url = https://github.com/detestern/KarinCore
 	install = karincore-git.install
