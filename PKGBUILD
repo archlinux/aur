@@ -1,6 +1,6 @@
 # Maintainer: AymanLyesri <https://github.com/AymanLyesri>
 pkgname=walleclipse-git
-pkgver=0.1.0.r29.g44bf280
+pkgver=0.1.0.r32.g130319e
 pkgrel=1
 pkgdesc="Preloaded layer-shell wallpaper daemon for Hyprland (hyprpaper replacement)"
 arch=('x86_64')
