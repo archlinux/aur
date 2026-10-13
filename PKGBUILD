@@ -2,7 +2,7 @@
 _appname=sharefi
 pkgname="${_appname}-electron-bin"
 _pkgname=Sharefi
-pkgver=1.0.1
+pkgver=1.0.2
 _electronversion=44
 pkgrel=1
 pkgdesc="Effortlessly share files and folders across your local network. It is fast, secure, free, easy to use and cross platform."
@@ -24,9 +24,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/lucafornerone/sharefi-electron/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3934fb7c0b769e4d2e9395fa4d6104aeea4970a7ee9252c276d283977f4dc550'
+sha256sums=('f268ecaf79d53d0b07f931656d08c9e36011e85f4bc6a7c2c9e01e3c7ae6c91a'
             '2b0d534627dfbc884d4fbb0fbbaea1c1d5d2ff12d7b3e71b2faffd12cf990f47'
-            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
+            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
@@ -43,15 +43,13 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app.asar/g
     " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir="$(_get_app_dir)"
-	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
