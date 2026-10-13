@@ -1,0 +1,24 @@
+pkgbase = enclose-bin
+	pkgdesc = Desktop workbench for CAD projects built from code, with a Claude handoff
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/chuma-beep/arch-enclose
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = c-ares
+	depends = ffmpeg
+	depends = gtk3
+	depends = libevent
+	depends = libvpx
+	depends = libxslt
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = re2
+	depends = snappy
+	depends = libnotify
+	options = !debug
+	source = Enclose-0.0.6-x64.pacman::https://github.com/chuma-beep/arch-enclose/releases/download/v0.0.6/Enclose-0.0.6-x64.pacman
+	sha256sums = 1d550e6e9f1e2b77a82677d1fa9e20238bf207b9af8a33f16f69ea104730d811
+
+pkgname = enclose-bin
