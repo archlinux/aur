@@ -1,6 +1,6 @@
 pkgbase = devtunnel-cli-bin
 	pkgdesc = Microsoft Dev Tunnels CLI client
-	pkgver = 1.0.2094+24665e6583
+	pkgver = 1.0.2115+e16833f284
 	pkgrel = 1
 	url = https://learn.microsoft.com/en-us/azure/developer/dev-tunnels/
 	arch = aarch64
@@ -16,8 +16,8 @@ pkgbase = devtunnel-cli-bin
 	noextract = devtunnel_arm64
 	options = !strip
 	source_aarch64 = devtunnel_arm64::https://tunnelsassetsprod.blob.core.windows.net/cli/linux-arm64-devtunnel
-	sha256sums_aarch64 = efac378f9ffb40914935fbd2361543088b50cd62248372df06c243e6f7c49cc8
+	sha256sums_aarch64 = b537f270a55d57f23b7621cec0b09806aa9ada119713b33e9255284179b76bde
 	source_x86_64 = devtunnel_x86_64::https://tunnelsassetsprod.blob.core.windows.net/cli/linux-x64-devtunnel
-	sha256sums_x86_64 = 2aa6c41aaf7840427e84b7e1e99be5b826a9966fc027ddf61dc0f69b68db060b
+	sha256sums_x86_64 = 723d6aebdc226064aef321258fb17c8a2770c9cc2bd05004c0fb83e72b302c3f
 
 pkgname = devtunnel-cli-bin
