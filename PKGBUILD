@@ -86,8 +86,14 @@ prepare() {
 check() {
   # Smoke-test each variant binary (cf. install.sh post-extract pi --version).
   # HOME is sandboxed: the TUI must not write outside ${srcdir} during checks.
+  # A builder without AVX2 cannot execute the x64 binary (SIGILL); its
+  # integrity is already proven by the SHA256SUMS check in prepare().
   local _variant
   for _variant in "${_variants[@]}"; do
+    if [[ "${_variant}" == 'x64' ]] && ! grep -q ' avx2 ' /proc/cpuinfo 2>/dev/null; then
+      warning "builder CPU lacks AVX2: skipping --version smoke test for ${_variant}"
+      continue
+    fi
     HOME="${srcdir}/check-home" "${srcdir}/pi-bolt-linux-${_variant}/${_pkgname}" --version \
       | grep -q "Pi-Bolt ${pkgver}" \
       || error "pi-bolt-linux-${_variant} binary does not report Pi-Bolt ${pkgver}"
