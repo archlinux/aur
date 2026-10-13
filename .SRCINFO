@@ -1,6 +1,6 @@
 pkgbase = rutoken-connect
 	pkgdesc = Rutoken Connect plugin for browser integration
-	pkgver = 6.2.2
+	pkgver = 6.2.4
 	pkgrel = 1
 	url = https://www.rutoken.ru/support/download/rutoken-connect/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rutoken-connect
 	makedepends = coreutils
 	depends = rutoken-pkcs11
 	options = !strip
-	source_x86_64 = https://download.rutoken.ru/Rutoken_Connect/6.2.2/Linux/x64/rtconnect-6.2.2-1.x86_64.rpm
-	sha256sums_x86_64 = 1a530b12e97caf0fc2cd3a04c8dfd9c749ed9a34d18c7f64aad8aceccb715de3
+	source_x86_64 = https://download.rutoken.ru/Rutoken_Connect/6.2.4/Linux/x64/rtconnect-6.2.4-1.x86_64.rpm
+	sha256sums_x86_64 = 33f28a87595b6e517ae6ff179d6cc47ee823a6266b79d7071441afa762ae38b8
 
 pkgname = rutoken-connect
