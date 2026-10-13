@@ -6,7 +6,7 @@
 #
 # Builds the Dart shell and the Rust compositor from source, entirely offline.
 # All external Flutter inputs are pinned and checksummed: the official Flutter
-# SDK bundle, the matching engine artifacts, and the meta-flutter embedder
+# SDK bundle, the matching engine artifacts, and the portable embedder
 # engine. `build-veshell.sh` is a copy of scripts/build-veshell.sh.
 #
 # The two generated inputs (Cargo vendor tree, Dart pub cache) are published
@@ -14,7 +14,7 @@
 # scripts/generate-inputs.sh, then re-render this recipe.
 
 pkgname=veshell
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="An innovative Not-Desktop environment for Linux built with Flutter and Rust"
 arch=('x86_64')
@@ -47,44 +47,46 @@ optdepends=(
 )
 provides=('wayland-compositor')
 conflicts=('veshell-git')
-# makepkg's global `lto` option adds -flto to CFLAGS. The libspa-sys build
-# script compiles a C shim into a static archive; LTO objects there are not
-# resolved by rustc's final (non-LTO) link. Disable LTO for this package.
+# This silences the distribution's C LTO, and only that. makepkg's global `lto`
+# option adds -flto to CFLAGS; the libspa-sys build script would then compile a C
+# shim into GCC LTO objects, which rustc's final link cannot resolve because it
+# does not pass -flto to the linker. The Rust code is optimized separately with
+# ThinLTO through Cargo's [profile.release], so nothing is given up here.
 options=('!lto')
 
 # --- pinned inputs ----------------------------------------------------------
-_veshell_commit=8de24c357d9b444a72b3820bcd9aa038c6a3a824
-_flutter_version=3.47.2
-_flutter_engine_revision=a804b261645ef8c13eb3d5c44a5c2fb0340c5539
-_input_mirror="${VESHELL_INPUT_MIRROR:-https://github.com/free-explorers/veshell-packaging/releases/download/packaging-inputs-v0.1.1}"
+_veshell_commit=df1b57fda552d7957dbb64bf05358f192c400592
+_flutter_version=3.47.7
+_flutter_engine_revision=deb287481e3ce9468f3434937ced4240a70539ca
+_input_mirror="${VESHELL_INPUT_MIRROR:-https://github.com/free-explorers/veshell-packaging/releases/download/packaging-inputs-v0.1.2}"
 
 source=(
   "veshell::git+https://github.com/free-explorers/veshell.git#commit=$_veshell_commit"
   "build-veshell.sh"
-  "flutter_linux_${_flutter_version}-stable.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.47.2-stable.tar.xz"
-  "flutter_patched_sdk.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a804b261645ef8c13eb3d5c44a5c2fb0340c5539/flutter_patched_sdk.zip"
-  "flutter_patched_sdk_product.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a804b261645ef8c13eb3d5c44a5c2fb0340c5539/flutter_patched_sdk_product.zip"
-  "linux-x64_artifacts.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a804b261645ef8c13eb3d5c44a5c2fb0340c5539/linux-x64/artifacts.zip"
-  "linux-x64-debug_flutter-gtk.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a804b261645ef8c13eb3d5c44a5c2fb0340c5539/linux-x64-debug/linux-x64-flutter-gtk.zip"
-  "linux-x64-profile_flutter-gtk.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a804b261645ef8c13eb3d5c44a5c2fb0340c5539/linux-x64-profile/linux-x64-flutter-gtk.zip"
-  "linux-x64-release_flutter-gtk.zip::https://storage.googleapis.com/flutter_infra_release/flutter/a804b261645ef8c13eb3d5c44a5c2fb0340c5539/linux-x64-release/linux-x64-flutter-gtk.zip"
-  "linux-engine-sdk-release-x86_64-${_flutter_engine_revision}.tar.gz::https://github.com/free-explorers/flutter-engine/releases/download/linux-engine-sdk-release-x86_64-a804b261645ef8c13eb3d5c44a5c2fb0340c5539/linux-engine-sdk-release-x86_64-a804b261645ef8c13eb3d5c44a5c2fb0340c5539.tar.gz"
-  "veshell-cargo-vendor-0.1.1.tar.zst::$_input_mirror/veshell-cargo-vendor-0.1.1.tar.zst"
-  "veshell-pubcache-0.1.1.tar.zst::$_input_mirror/veshell-pubcache-0.1.1.tar.zst"
+  "flutter_linux_${_flutter_version}-stable.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.47.7-stable.tar.xz"
+  "flutter_patched_sdk.zip::https://storage.googleapis.com/flutter_infra_release/flutter/deb287481e3ce9468f3434937ced4240a70539ca/flutter_patched_sdk.zip"
+  "flutter_patched_sdk_product.zip::https://storage.googleapis.com/flutter_infra_release/flutter/deb287481e3ce9468f3434937ced4240a70539ca/flutter_patched_sdk_product.zip"
+  "linux-x64_artifacts.zip::https://storage.googleapis.com/flutter_infra_release/flutter/deb287481e3ce9468f3434937ced4240a70539ca/linux-x64/artifacts.zip"
+  "linux-x64-debug_flutter-gtk.zip::https://storage.googleapis.com/flutter_infra_release/flutter/deb287481e3ce9468f3434937ced4240a70539ca/linux-x64-debug/linux-x64-flutter-gtk.zip"
+  "linux-x64-profile_flutter-gtk.zip::https://storage.googleapis.com/flutter_infra_release/flutter/deb287481e3ce9468f3434937ced4240a70539ca/linux-x64-profile/linux-x64-flutter-gtk.zip"
+  "linux-x64-release_flutter-gtk.zip::https://storage.googleapis.com/flutter_infra_release/flutter/deb287481e3ce9468f3434937ced4240a70539ca/linux-x64-release/linux-x64-flutter-gtk.zip"
+  "linux-engine-sdk-release-x86_64-${_flutter_engine_revision}.tar.gz::https://github.com/free-explorers/flutter-engine/releases/download/linux-engine-sdk-release-x86_64-deb287481e3ce9468f3434937ced4240a70539ca/linux-engine-sdk-release-x86_64-deb287481e3ce9468f3434937ced4240a70539ca.tar.gz"
+  "veshell-cargo-vendor-0.1.2.tar.zst::$_input_mirror/veshell-cargo-vendor-0.1.2.tar.zst"
+  "veshell-pubcache-0.1.2.tar.zst::$_input_mirror/veshell-pubcache-0.1.2.tar.zst"
 )
 sha256sums=(
   'SKIP'  # pinned git commit
-  '5c1b5bd5fe092615e36a9a3e958d4182c2573f2d0d06ace68f9a6ceb45cd9409'  # build-veshell.sh
-  '447878859d01ca9bfdb99a85f245af07ed8a15fedcd9d189c4749e8e92d1f185'  # Flutter SDK
-  '5f7d44ecaa2f3d219b9fdf2a1c3977e83545f6f8797fad604f564c1b4154ec8d'  # patched_sdk
-  '902bc3b27a1bd3f13b756af2660891dd996eb33ab9bc3e4b89c0c9cfdf49e2aa'  # patched_sdk_product
-  '625c7f98c62b9d495638bc71774bf94ad8cae77b070b5f34797ea83b396ebc1c'  # linux-x64 artifacts
-  'e324b676106db415bec41d211caeb7a5137d061704f7af83264f382b4e2ff354'  # linux-x64 debug gtk
-  '0a507e7c6f49c8905efc809808e1a2ac21bcf2c732b82c10e74f8f1e6d1828ea'  # linux-x64 profile gtk
-  '3b357f3df3549c69535d92e8e300a66e1057876dc8fed45a8aae7cf7681b7ec4'  # linux-x64 release gtk
-  '539254d41100c2dc338920dae968dc2cf0b7c35e5f00764ab5d24ebc37712f87'  # embedder engine
-  'a99abcb0d71d55620df66fe6a81b4543273ca6143311d6c145a204d2241af21f'  # cargo vendor
-  '90b0a95878c6735221301b38f363b8e243c679da11aa439286a302ee2c85e264'  # pub cache
+  '73dd315ec63d0087aefb1faba324a30f1cd716dcd6c220af8bebe13ca55ff458'  # build-veshell.sh
+  'af7455f540df951184c7953fbe3cf884766e7541dacf8571f9f582db03dd6230'  # Flutter SDK
+  'e80fa5e63f51751507627456294bef28419c4facd09c33f7f49a7b4d986846f3'  # patched_sdk
+  '8b2ad98bd8c2f86e647da5c3863de0ffb34dc00887a005c8074971ebd76e4454'  # patched_sdk_product
+  '1a716b779bc669def11c0ebac97d5400efa201824419fe67397802ffe5cdb756'  # linux-x64 artifacts
+  'e1ed3d3ccc0d42d1dc58fa141dc83c4be511e5a2a1cbe0319c2aa8ae6afeadc4'  # linux-x64 debug gtk
+  '853bee7a69edf5931f02121086118bd8dbfe01d081192c6d6cae232b1abede47'  # linux-x64 profile gtk
+  'a6da7b0d57c82519d7b901462344676fe089068caca336466dcf3e1c270e9aa8'  # linux-x64 release gtk
+  '7f111525f32a590d1f00526758f1fecb520424b98aecc6afac82d5014a1684c7'  # embedder engine
+  '1c1863bdf68ca0f3cb6640b8f512f000ad3e1af034feef3a7603b34e654ad703'  # cargo vendor
+  '6337e87657ff572f81ddb39067cfa46df4a5fb3852cec22f986357aa195a99f5'  # pub cache
 )
 
 # The helper extracts every archive itself (into deterministic locations);
@@ -98,8 +100,8 @@ noextract=(
   "linux-x64-profile_flutter-gtk.zip"
   "linux-x64-release_flutter-gtk.zip"
   "linux-engine-sdk-release-x86_64-${_flutter_engine_revision}.tar.gz"
-  "veshell-cargo-vendor-0.1.1.tar.zst"
-  "veshell-pubcache-0.1.1.tar.zst"
+  "veshell-cargo-vendor-0.1.2.tar.zst"
+  "veshell-pubcache-0.1.2.tar.zst"
 )
 
 prepare() {
@@ -107,8 +109,8 @@ prepare() {
   mkdir -p "$srcdir/flutter-sdk" "$srcdir/cargo-vendor" "$srcdir/pubcache"
   tar -xJf "$srcdir/flutter_linux_${_flutter_version}-stable.tar.xz" \
     -C "$srcdir/flutter-sdk" --strip-components=1
-  tar -xf "$srcdir/veshell-cargo-vendor-0.1.1.tar.zst" -C "$srcdir/cargo-vendor"
-  tar -xf "$srcdir/veshell-pubcache-0.1.1.tar.zst" -C "$srcdir/pubcache"
+  tar -xf "$srcdir/veshell-cargo-vendor-0.1.2.tar.zst" -C "$srcdir/cargo-vendor"
+  tar -xf "$srcdir/veshell-pubcache-0.1.2.tar.zst" -C "$srcdir/pubcache"
 }
 
 build() {

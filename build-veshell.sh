@@ -19,7 +19,7 @@
 #                            linux-x64-debug_flutter-gtk.zip
 #                            linux-x64-profile_flutter-gtk.zip
 #                            linux-x64-release_flutter-gtk.zip
-#   ENGINE_TARBALL         meta-flutter engine-sdk tarball (matching revision)
+#   ENGINE_TARBALL         portable Flutter engine SDK tarball (matching revision)
 #   CARGO_VENDOR_DIR       extracted `cargo vendor` tree
 #   PUB_CACHE_DIR          pre-populated Dart pub cache (used as PUB_CACHE)
 #
@@ -58,7 +58,7 @@ SHELL_BUNDLE="$VESHELL_SRC/src/shell/build/linux/$VESHELL_FLUTTER_ARCH/release/b
 require_build_inputs() {
   : "${FLUTTER_SDK_DIR:?set FLUTTER_SDK_DIR to the extracted Flutter SDK}"
   : "${FLUTTER_ARTIFACT_DIR:?set FLUTTER_ARTIFACT_DIR to the engine artifact directory}"
-  : "${ENGINE_TARBALL:?set ENGINE_TARBALL to the meta-flutter engine tarball}"
+  : "${ENGINE_TARBALL:?set ENGINE_TARBALL to the portable Flutter engine SDK tarball}"
   : "${CARGO_VENDOR_DIR:?set CARGO_VENDOR_DIR to the extracted cargo vendor tree}"
   : "${PUB_CACHE_DIR:?set PUB_CACHE_DIR to the populated pub cache}"
   [ -x "$FLUTTER_SDK_DIR/bin/flutter" ] || die "Flutter SDK binary not found: $FLUTTER_SDK_DIR/bin/flutter"
