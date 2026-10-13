@@ -1,7 +1,7 @@
 pkgbase = qb64pe
 	pkgdesc = Modern cross-platform BASIC compatible with QBasic and QuickBASIC 4.5
-	pkgver = 4.5.0
-	pkgrel = 2
+	pkgver = 4.7.0
+	pkgrel = 1
 	url = https://www.qb64phoenix.com/
 	install = qb64pe.install
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = qb64pe
 	options = staticlibs
 	options = !lto
 	options = !debug
-	source = qb64pe-4.5.0.tar.gz::https://github.com/QB64-Phoenix-Edition/QB64pe/archive/refs/tags/v4.5.0.tar.gz
+	source = qb64pe-4.7.0.tar.gz::https://github.com/QB64-Phoenix-Edition/QB64pe/archive/refs/tags/v4.7.0-GLFW.tar.gz
 	source = qb64pe.desktop
-	sha256sums = 73cc9b50acfa2d37ad53dd6ce7af28eecfdfc34989f9c3fc1b7e9bc50cdec6ad
+	sha256sums = ad1bbed754d342ebb23d04060c27ca6cccb77232a8f555c2c012e1b2ca50f0e0
 	sha256sums = aa1020c75c718720f504300fadda67642b7d840a1456efc3498bf9b3f574d2cd
 
 pkgname = qb64pe

@@ -6,8 +6,8 @@
 # cleaner way without increasingly complicated hacky syncs and links. Suggestions
 # for improvements are most welcome.
 pkgname=qb64pe
-pkgver=4.5.0
-pkgrel=2
+pkgver=4.7.0
+pkgrel=1
 pkgdesc='Modern cross-platform BASIC compatible with QBasic and QuickBASIC 4.5'
 arch=('x86_64')
 url='https://www.qb64phoenix.com/'
@@ -16,12 +16,17 @@ depends=('gcc' 'make' 'curl' 'glu' 'libpng' 'libxcb')
 optdepends=('alsa-lib: required to compile programs that use audio')
 options=('!strip' 'staticlibs' '!lto' '!debug')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/QB64-Phoenix-Edition/QB64pe/archive/refs/tags/v${pkgver}.tar.gz"
+_tag="v${pkgver}"
+# This release uses a suffixed tag; ordinary releases use v${pkgver}.
+if [[ "$pkgver" == 4.7.0 ]]; then
+    _tag+="-GLFW"
+fi
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/QB64-Phoenix-Edition/QB64pe/archive/refs/tags/${_tag}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('73cc9b50acfa2d37ad53dd6ce7af28eecfdfc34989f9c3fc1b7e9bc50cdec6ad'
+sha256sums=('ad1bbed754d342ebb23d04060c27ca6cccb77232a8f555c2c012e1b2ca50f0e0'
             'aa1020c75c718720f504300fadda67642b7d840a1456efc3498bf9b3f574d2cd')
 
-_srcdir="QB64pe-${pkgver}"
+_srcdir="QB64pe-${_tag#v}"
 
 build() {
     cd "${srcdir}/${_srcdir}"
