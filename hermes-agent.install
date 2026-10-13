@@ -1,9 +1,10 @@
 post_install() {
   cat <<'MSG'
-hermes-agent uses system ffmpeg/nodejs/ripgrep (pacman) and sets
-HERMES_DISABLE_LAZY_INSTALLS=1. If `hermes --tui` warns that those tools are
-"not installed or outdated", remove a leftover PM store from an older source
-install, e.g. ~/.hermes/tools/facts.json — then retry.
+hermes-agent ships a read-only PM store of system tools under
+/opt/hermes-agent/system-store (node, npm, ffmpeg, ripgrep, python, uv) and
+sets HERMES_DISABLE_LAZY_INSTALLS=1. If an older source install left a
+partial ~/.hermes/tools/facts.json, remove that file (or the whole tools
+dir) once, then retry — the packaged store is the source of truth.
 MSG
 }
 

@@ -4,12 +4,13 @@
 # dependency set. uv's relocatable mode keeps the packaged environment usable
 # after makepkg moves it under /opt.
 #
-# Runtime tools Arch already ships (python, nodejs, uv, ffmpeg, ripgrep, and a
-# system Chrome/Chromium) stay as package dependencies. The launcher pins
-# AGENT_BROWSER_EXECUTABLE_PATH and disables lazy PM installs so Hermes does not
-# download browsers or re-fetch tools that pacman provides. package() writes
-# install-stamp.json (updateMechanism=external, distribution=package-manager)
-# so the sealed /opt tree is not classified as "unknown-managed".
+# Runtime tools Arch already ships (python, nodejs, npm, uv, ffmpeg, ripgrep,
+# and a system Chrome/Chromium) stay as package dependencies. package() builds a
+# read-only PM store of /usr/bin symlinks (system-tools.py) and points
+# install-stamp.json runtimeDir at it, so PM treats pacman tools as installed
+# (PM never counts a bare PATH copy). The launcher disables lazy PM installs;
+# keep-venv-interpreter.patch keeps Hermes children on the venv python, not the
+# store's system python symlink (that entry exists only for uvx).
 #
 # /opt is root-owned and HERMES_DISABLE_LAZY_INSTALLS=1, so opt-in extras that
 # users commonly hit must be preinstalled here. Ship: all + messaging, plus
@@ -18,13 +19,16 @@
 # (feishu, matrix, dingtalk, wecom, teams, google-chat). Anything else
 # (bedrock, voice, fal, …) needs a rebuild with more --extra flags or a
 # writable install — `sudo` + re-packaging, not runtime lazy install.
+#
+# system-tools.py / keep-venv-interpreter.patch adapted from jabla's
+# hermes-agent-bin (thanks).
 pkgname=hermes-agent
 # Peeled v0.21.7 tag object (git rev-parse v0.21.7^{}); pin so the stamp
 # does not depend on a live network lookup during package().
 _commit=71d34bad1045610252eda02ee79549436896e784
 _commit_date=1791775030
 pkgver=0.21.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
 url="https://github.com/NousResearch/hermes-agent"
@@ -33,6 +37,7 @@ install=$pkgname.install
 depends=(
     'python>=3.14'
     'nodejs>=22.22'
+    'npm'
     'uv'
     'ripgrep'
     'ffmpeg'
@@ -46,9 +51,22 @@ optdepends=(
 # cmake: matrix → mautrix[encryption] → python-olm ships a vendored libolm that
 # still declares cmake_minimum_required < 3.5; CMake ≥ 4 refuses that unless
 # CMAKE_POLICY_VERSION_MINIMUM is raised (set in build()).
-makedepends=('npm' 'cmake')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fcf5fc29d3088764a5a293910f75f43dc736b5655ed410d7339cf94cc1462459')
+makedepends=('cmake')
+source=(
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    'keep-venv-interpreter.patch'
+    'system-tools.py'
+)
+sha256sums=('fcf5fc29d3088764a5a293910f75f43dc736b5655ed410d7339cf94cc1462459'
+            '516bee4492e4d6f6e4310703bdec7e88229a1b0ddb828542f297d4e6e226c427'
+            '5950d73a49526767dfac20084d8c5597b7ebf5c16e7bff99e31dc4d7fe0d139d')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+
+  # --fuzz=0: a hunk whose context drifted must fail loudly.
+  patch --batch --fuzz=0 -Np1 -i "${srcdir}/keep-venv-interpreter.patch"
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -138,7 +156,9 @@ package() {
   # leftover ~/.hermes/tools/facts.json prints a rebuild-artifact remedy.
   # write_install_stamp.py's CLI only admits docker|nix|desktop-app|apt-termux;
   # Arch uses the same "package-manager" steward desktop already documents.
+  # runtimeDir points PM at the system-tools store below (absolute; not relative).
   _built_at="$(date -u -d "@${SOURCE_DATE_EPOCH:-$(date +%s)}" '+%Y-%m-%dT%H:%M:%SZ')"
+  _runtime_dir="/opt/$pkgname/system-store/tools"
   cat > "$_optdir/install-stamp.json" <<EOF
 {
   "schemaVersion": 2,
@@ -150,6 +170,7 @@ package() {
   "source": "aur",
   "distribution": "package-manager",
   "updateMechanism": "external",
+  "runtimeDir": "${_runtime_dir}",
   "baseVersion": "${pkgver}",
   "displayVersion": "${pkgver}",
   "distance": 0,
@@ -157,6 +178,9 @@ package() {
   "tag": null
 }
 EOF
+
+  # PM store of tools depends=() provides (symlinks into /usr/bin).
+  venv/bin/python -B "${srcdir}/system-tools.py" "$_optdir" "$_optdir/system-store/tools"
 
   install -d "$_optdir/venv/lib/python3.14/site-packages"
   {
@@ -172,6 +196,9 @@ EOF
     # Root-owned /opt must not grow a PM store; Arch packages supply tools.
     echo 'export HERMES_DISABLE_LAZY_INSTALLS=1'
     echo 'export HERMES_LAZY_INSTALL_TARGET="$XDG_DATA_HOME/hermes-agent/python"'
+    # TUI prefers an explicit node; PM store covers the rest.
+    echo ': "${HERMES_NODE:=/usr/bin/node}"'
+    echo 'export HERMES_NODE'
     # Prefer system Chrome/Chromium — blocks PM Chromium auto-download.
     echo 'if [[ -z "${AGENT_BROWSER_EXECUTABLE_PATH:-}" ]]; then'
     echo '  for browser in google-chrome-stable google-chrome chromium; do'
@@ -188,6 +215,8 @@ EOF
   } > "$pkgdir/usr/bin/hermes"
 
   chmod 755 "$pkgdir/usr/bin/hermes"
+  # system-store + patched tree must stay world-readable
+  chmod -R a+rX "$_optdir/system-store" "$_optdir/hermes_cli/_launchers.py"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
