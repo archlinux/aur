@@ -1,6 +1,6 @@
 pkgbase = starknet-devnet-bin
 	pkgdesc = A local testnet for Starknet... in Rust
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://docs.swmansion.com/scarb
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = starknet-devnet-bin
 	license = MIT
 	provides = starknet-devnet
 	conflicts = starknet-devnet
-	source = https://github.com/0xSpaceShard/starknet-devnet/raw/v0.10.0/LICENSE
+	source = https://github.com/0xSpaceShard/starknet-devnet/raw/v0.10.1/LICENSE
 	sha256sums = c0a1b8b2d4660a9d0254cd420b6034c19ad817dd65199d574880e67127fcbb19
-	source_x86_64 = https://github.com/0xSpaceShard/starknet-devnet/releases/download/v0.10.0/starknet-devnet-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 0d27863ec959dc74ec6de985c3ec8eb093d6670bacd7672b51dc71ec8528969b
-	source_aarch64 = https://github.com/0xSpaceShard/starknet-devnet/releases/download/v0.10.0/starknet-devnet-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 63c10e289143fde9332cec086129a18e91ff45e789ecd949c62b659188b4cdad
+	source_x86_64 = https://github.com/0xSpaceShard/starknet-devnet/releases/download/v0.10.1/starknet-devnet-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 64e3258932371e6e476c59a85ab23414313a626be5b8c3f624d274d777b3f338
+	source_aarch64 = https://github.com/0xSpaceShard/starknet-devnet/releases/download/v0.10.1/starknet-devnet-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 8711ce50ae37336ceb789b1d4d866ec372ddecdb73d901a46cce506f7fd5520e
 
 pkgname = starknet-devnet-bin
