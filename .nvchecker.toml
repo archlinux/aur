@@ -1,0 +1,4 @@
+[soldr]
+source = "git"
+git = "https://github.com/zackees/soldr.git"
+prefix = "v"
