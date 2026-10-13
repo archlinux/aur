@@ -1,6 +1,6 @@
 pkgbase = element-call
 	pkgdesc = Group calls powered by Matrix
-	pkgver = 0.26.1
+	pkgver = 0.28.0
 	pkgrel = 1
 	url = https://github.com/element-hq/element-call
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = element-call
 	makedepends = pnpm
 	makedepends = nodejs-vite
 	provides = element-call
-	source = git+https://github.com/element-hq/element-call#tag=v0.26.1
-	md5sums = 855a55348a18fe197f9aa6cf18a5405b
+	source = git+https://github.com/element-hq/element-call#tag=v0.28.0
+	md5sums = acbac0ca39e89de19f423bd5ecac9773
 
 pkgname = element-call
