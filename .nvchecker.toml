@@ -1,0 +1,5 @@
+[keyb-bin]
+source = "github"
+github = "kencx/keyb"
+use_latest_release = true
+prefix = "v"
