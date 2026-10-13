@@ -1,6 +1,6 @@
 pkgbase = python-giturlparse
 	pkgdesc = A Git URL parsing module (supports parsing and rewriting)
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/nephila/giturlparse
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-giturlparse
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/nephila/giturlparse/archive/refs/tags/0.15.0/giturlparse-0.15.0.tar.gz
-	sha256sums = 7d3a56fd457546e909e56449e62343ef31041ff1b2780c4b1bcda14d66be67a8
+	source = https://github.com/nephila/giturlparse/archive/refs/tags/0.16.0/giturlparse-0.16.0.tar.gz
+	sha256sums = d28f878732f3abfb6ffe8490d6c9c9b80c4381a89b7e52a1ac802232c1e08ca5
 
 pkgname = python-giturlparse
