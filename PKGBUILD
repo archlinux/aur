@@ -2,11 +2,12 @@
 
 _name=e2b
 pkgname=python-$_name
-pkgver=2.52.0
+pkgver=2.56.0
 pkgrel=1
 pkgdesc='E2B SDK that give agents cloud environments.'
 arch=('any')
-url='https://github.com/e2b-dev/E2B'
+_repo='https://github.com/e2b-dev/E2B'
+url="$_repo/tree/main/packages/python-sdk"
 license=('MIT')
 depends=('python'
          'python-dateutil'
@@ -17,20 +18,19 @@ depends=('python'
          'python-attrs'
          'python-packaging'
          'python-typing_extensions'
-         'python-dockerfile-parse'
          'python-rich'
          'python-connectrpc'
-         'python-pyqwest')
+         'python-pyqwest'
+         'python-e2b-dockerfile-utils')
 makedepends=('python-uv-build'
              'python-build'
              'python-installer'
-             'python-wheel'
              'git')
 checkdepends=('python-pytest'
               'python-pytest-asyncio'
               'python-pytest-timeout')
-source=("$_name::git+$url.git#tag=@$_name/python-sdk@$pkgver")
-sha256sums=('52c5bf5e96e3cebfb3586f10a8824b3308dec6f2d0d6960ecc397cdc9b5cdc69')
+source=("$_name::git+$_repo.git#tag=@$_name/python-sdk@$pkgver")
+sha256sums=('b6c9cf2da0ece5a905ea4062f4e82e607b9e74131417ea9d72441438060af963')
 
 prepare() {
   cd "$srcdir"/$_name/packages/python-sdk

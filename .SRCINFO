@@ -1,8 +1,8 @@
 pkgbase = python-e2b
 	pkgdesc = E2B SDK that give agents cloud environments.
-	pkgver = 2.52.0
+	pkgver = 2.56.0
 	pkgrel = 1
-	url = https://github.com/e2b-dev/E2B
+	url = https://github.com/e2b-dev/E2B/tree/main/packages/python-sdk
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
@@ -11,7 +11,6 @@ pkgbase = python-e2b
 	makedepends = python-uv-build
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	makedepends = git
 	depends = python
 	depends = python-dateutil
@@ -22,11 +21,11 @@ pkgbase = python-e2b
 	depends = python-attrs
 	depends = python-packaging
 	depends = python-typing_extensions
-	depends = python-dockerfile-parse
 	depends = python-rich
 	depends = python-connectrpc
 	depends = python-pyqwest
-	source = e2b::git+https://github.com/e2b-dev/E2B.git#tag=@e2b/python-sdk@2.52.0
-	sha256sums = 52c5bf5e96e3cebfb3586f10a8824b3308dec6f2d0d6960ecc397cdc9b5cdc69
+	depends = python-e2b-dockerfile-utils
+	source = e2b::git+https://github.com/e2b-dev/E2B.git#tag=@e2b/python-sdk@2.56.0
+	sha256sums = b6c9cf2da0ece5a905ea4062f4e82e607b9e74131417ea9d72441438060af963
 
 pkgname = python-e2b
