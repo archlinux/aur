@@ -3,13 +3,13 @@
 
 # The root PKGBUILD of github.com/thisisgm/flea, built from the release's source tarball; its closure's reasons live there.
 pkgname=flea
-pkgver=0.3.9
+pkgver=0.3.10
 pkgrel=1
 pkgdesc='Fast, keyboard-first file manager for Omarchy'
 arch=('x86_64' 'aarch64')
 url='https://github.com/thisisgm/flea'
 license=('MIT' 'Apache-2.0' 'EPL-2.0' 'BSD-2-Clause')
-depends=('bubblewrap' 'expect' 'gcc-libs' 'glib2' 'glibc' 'gvfs' 'gvfs-afc' 'gvfs-dnssd' 'gvfs-gphoto2' 'gvfs-mtp' 'gvfs-nfs' 'gvfs-smb' 'hicolor-icon-theme' 'kimageformats' 'libheif' 'omarchy' 'python' 'python-gobject' 'qt6-multimedia' 'qt6-webengine' 'quickjs-ng' 'quickshell' 'shared-mime-info' 'usbmuxd' 'util-linux' 'wl-clipboard' 'xdg-terminal-exec' 'xdg-utils')
+depends=('bubblewrap' 'expect' 'gcc-libs' 'glib2' 'glibc' 'gvfs' 'gvfs-afc' 'gvfs-dnssd' 'gvfs-gphoto2' 'gvfs-mtp' 'gvfs-nfs' 'gvfs-smb' 'hicolor-icon-theme' 'kimageformats' 'libheif' 'omarchy' 'python' 'python-gobject' 'qt6-multimedia' 'qt6-webengine' 'quickjs-ng' 'quickshell' 'shared-mime-info' 'udisks2' 'usbmuxd' 'util-linux' 'wl-clipboard' 'xdg-terminal-exec' 'xdg-utils')
 makedepends=('cargo')
 # flea-bin declares its own conflict with this package, and pacman honours a conflict from either side.
 conflicts=('flea-git')
@@ -25,7 +25,7 @@ options=('!debug')
 # SKIP here keeps a version bump to one line; the release workflow pins it from SHASUMS256.txt before the AUR sees it.
 # The local name carries pkgrel, so a rebuilt release is downloaded again, never read from a stale yay cache.
 source=("$pkgname-v$pkgver-$pkgrel.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('2874e2f16d2bca775891111a283b378b1f8b13cf5427f79bdf750cd3f5f4b58d')
+sha256sums=('d3361a384f136cd3e991a4dba9007fbea57868d923f94b8f3ffcb9d8dd7c6d87')
 
 build() {
   export CARGO_TARGET_DIR="$srcdir/target"
@@ -46,6 +46,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 "$srcdir/target/release/flea" "$pkgdir/usr/bin/flea"
   install -Dm755 tools/flea-gio-auth "$pkgdir/usr/lib/flea/flea-gio-auth"
+  install -Dm755 tools/flea-udisks "$pkgdir/usr/lib/flea/flea-udisks"
   install -Dm755 tools/flea-portal "$pkgdir/usr/lib/flea/flea-portal"
   install -Dm644 packaging/flea.portal -t "$pkgdir/usr/share/xdg-desktop-portal/portals"
   install -Dm644 packaging/org.freedesktop.impl.portal.desktop.flea.service -t "$pkgdir/usr/share/dbus-1/services"
@@ -62,6 +63,8 @@ package() {
   install -Dm644 ui/vendor/LICENSES/* -t "$pkgdir/usr/share/flea/ui/vendor/LICENSES"
   install -Dm644 ui/boot/shell.qml ui/boot/picker.qml ui/boot/fleatab.qml ui/boot/tabtearoff.qml -t "$pkgdir/usr/share/flea/ui/boot"
   install -Dm644 shelf/manifest.json shelf/README.md shelf/*.qml shelf/*.js -t "$pkgdir/usr/share/flea/shelf"
+  sed -i "s/^  \"version\": \"[^\"]*\",\$/  \"version\": \"$pkgver-$pkgrel\",/" "$pkgdir/usr/share/flea/shelf/manifest.json"
+  grep -qF "  \"version\": \"$pkgver-$pkgrel\"," "$pkgdir/usr/share/flea/shelf/manifest.json" || { echo "$pkgname: /usr/share/flea/shelf/manifest.json does not carry the version $pkgver-$pkgrel" >&2; return 1; }
   ln -s /usr/share/omarchy/shell/Commons "$pkgdir/usr/share/flea/ui/Commons"
   ln -s /usr/share/omarchy/shell/Ui "$pkgdir/usr/share/flea/ui/Ui"
   ln -s /usr/share/omarchy/shell/Commons "$pkgdir/usr/share/flea/ui/boot/Commons"
