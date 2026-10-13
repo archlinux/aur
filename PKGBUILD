@@ -4,7 +4,7 @@
 #
 # shellcheck disable=SC2034,SC2154
 pkgname=cloudflare-dynamic-dns
-pkgver=4.5.11
+pkgver=4.5.12
 pkgrel=1
 pkgdesc='Updates AAAA records at Cloudflare according to the current IPv6 address'
 url='https://github.com/zebradil/cloudflare-dynamic-dns'
@@ -13,7 +13,7 @@ license=(MIT)
 install=''
 makedepends=(go)
 provides=(cloudflare-dynamic-dns)
-source=(cloudflare-dynamic-dns-4.5.11::https://github.com/zebradil/cloudflare-dynamic-dns/archive/4.5.11.tar.gz)
+source=(cloudflare-dynamic-dns-4.5.12::https://github.com/zebradil/cloudflare-dynamic-dns/archive/4.5.12.tar.gz)
 prepare () 
 { 
     cd "$pkgname-$pkgver" || exit 1;
@@ -39,4 +39,4 @@ package ()
     install -Dm644 systemd/* -t "$pkgdir/usr/lib/systemd/system";
     install -m700 -d "$pkgdir/etc/$pkgname/config.d"
 }
-sha256sums=('7056d254225aa23e51558b7fec1635c9036d219ca84a7d0b34e957ce717fa052')
+sha256sums=('30cc91bf61f2d37ceb09e03a0015abad2854760121f55090597d018f6bdfa303')
