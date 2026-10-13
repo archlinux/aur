@@ -15,7 +15,7 @@ conflicts=(lmstudio)
 source=("https://installers.lmstudio.ai/linux/x64/${_pkgver}/LM-Studio-${_pkgver}-x64.AppImage"
          "lmstudio.png"
          "lmstudio.desktop")
-sha256sums=('906b1db38c416a2c72eb029eb44fab1668a57d29eccca18c9226487833fbe438'
+sha256sums=('2c62a38a93ad03ca5daaef28804880be167566783ffafc173ce2e1cb10b7552e'
             '9f791789c959a11316328692807737a5f1bc1c170ae99ec04c56bfd8ee8263e5'
             '635dec12f3e3a57136b9e6fd7c2839ed6da7287fa55b482d64debf6eacf36baa')
 
