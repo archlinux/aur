@@ -1,6 +1,6 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=rtk-bin
-pkgver=0.52.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='CLI proxy that reduces LLM token consumption by 60-90% on common dev commands'
 arch=('x86_64' 'aarch64')
@@ -12,9 +12,9 @@ conflicts=('rtk')
 source=("${pkgname}-${pkgver}.LICENSE::${url}/raw/v${pkgver}/LICENSE")
 source_x86_64=("${pkgname}-x86_64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/rtk-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("${pkgname}-aarch64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/rtk-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums=('4044ade9c21d8b084d3d16a03375cf3b7e166b946a327bb37a3fbbdb53287cfd')
-sha256sums_x86_64=('46765d4e570ccb3d759e95bcec11feb42fceed5ab2453eac8d787f81d4a0cdab')
-sha256sums_aarch64=('b1de881a0381f1f059ce9dbb0cfb97e0f94f22460965f39aaff77b2956024fa9')
+sha256sums=('33f694a31d9f9df3e292a9413a3cdb0113fa72698e2c719f657ff6b53165dcc4')
+sha256sums_x86_64=('b0b69fbed72f55d8eae18587c0b6bc140a8a8b39d5b7c6e6df33795249940926')
+sha256sums_aarch64=('9438c2c99d428fa6fbe7f4d1c01a87babd5feec17ee6d7bb3372a613a21db7d3')
 
 package() {
     install -Dm755 rtk -t "${pkgdir}/usr/bin/"
