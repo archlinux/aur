@@ -1,6 +1,6 @@
 pkgbase = agy-switch-bin
 	pkgdesc = AntiGravity Switch: manage Antigravity accounts, quotas and local usage on macOS, Windows and Linux
-	pkgver = 4.10.5
+	pkgver = 4.10.7
 	pkgrel = 1
 	url = https://github.com/anglee0323/agy-switch
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = agy-switch-bin
 	conflicts = agy-switch
 	options = !strip
 	options = !debug
-	source = https://github.com/anglee0323/agy-switch/releases/download/v4.10.5/agy-switch-4.10.5-linux-amd64.deb
-	source = https://raw.githubusercontent.com/anglee0323/agy-switch/v4.10.5/LICENSE
-	sha256sums = be5355d43b2f8e6f3a7270d045542b785d206f49ea9eea79da6f30014cd78735
+	source = https://github.com/anglee0323/agy-switch/releases/download/v4.10.7/agy-switch-4.10.7-linux-amd64.deb
+	source = https://raw.githubusercontent.com/anglee0323/agy-switch/v4.10.7/LICENSE
+	sha256sums = bdb5a3a118d62abd687dafe74c7198ce5677c8534dcd1f4ff3b9c880b58e814d
 	sha256sums = 6f0afc78b16f446941c6201dcc0a53e1d19dcb96b9fc2ccb497b1bf029aa3512
 
 pkgname = agy-switch-bin
