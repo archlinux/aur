@@ -16,7 +16,7 @@ provides=("$_name" 'unbloated-youtube')
 conflicts=("$_name")
 options=('!strip')
 source=("$url/releases/download/v$pkgver/$_name-$pkgver-x86_64-linux.tar.gz")
-sha256sums=('cfcd6282ff8548e341ca73c7ea8203d5006f9c3c71cfa822713ced137253bebc')
+sha256sums=('d61c57b32ac921bc6d3069e9401e88f2fdb6161a741c31003f332bce5fc5abda')
 
 package() {
   cd "$_name-$pkgver-x86_64-linux"
