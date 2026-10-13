@@ -3,7 +3,7 @@
 
 pkgname=comfy-desktop
 _name=Comfy-Desktop
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="The desktop app for ComfyUI"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ depends=('bash' "${_electron}" 'glibc' 'hicolor-icon-theme' 'libgcc' 'libstdc++'
 makedepends=('gendesk' 'pnpm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('6b78df38d207ee9c9bc503fe03ba299ae2961116f1bb011baf8f12c150a35218'
+sha256sums=('faf9ae7259d095c764a92be191e40ed57f7c7bf5be7efb45a028e41b3c32ebe3'
             '392aa4a63d71a463dcf7345271eac74fb3ca867d57ae99bc47a3a90117805fdd')
 
 prepare() {
