@@ -4,7 +4,7 @@ pkgname='nunchuk-desktop-appimage'
 _pkgname='nunchuk-desktop'
 __pkgname='nunchuk-linux'
 ___pkgname='nunchuk'
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Desktop bitcoin wallet with multisig, hardware, nfc and air-gapped key support"
 arch=('x86_64')
@@ -20,22 +20,24 @@ optdepends=('bitbox-udev: Udev rules for Bitbox hardware wallet support'
             'trezor-udev: Udev rules for Trezor hardware wallet support')
 provides=('nunchuk-qt')
 options=('!strip')
-source=("https://github.com/nunchuk-io/$_pkgname/releases/download/$pkgver/$__pkgname-$arch-v$pkgver.zip")
-sha256sums=('9200d8f8f1dbaad5645d2990223fc35f81ea5083d204d36a5463507ebd591e19')
+source=("https://github.com/nunchuk-io/$_pkgname/releases/download/$pkgver/$__pkgname-v$pkgver-$arch.AppImage")
+sha256sums=('4e546785582bff244065f2c734e843a9b2f4ddd4a13ef60360b4caa935d85fbb')
 
 #validpgpkeys=('8C8ECD3F660CA53CD878792A6E38A462ED2EF525') # Ta Tat Tai (Nunchuk binary release signing key) <tatattai@gmail.com>
 #asc doesn't contain a detached signature, makepkg expects a detached signature
 
 prepare() {
     cd "${srcdir}"
-    7z x "${srcdir}/$__pkgname-v${pkgver}.AppImage" $___pkgname.desktop $___pkgname-qt.png
+    chmod +x "${srcdir}/$__pkgname-v$pkgver-$arch.AppImage"
+    "${srcdir}/$__pkgname-v$pkgver-$arch.AppImage" --appimage-extract usr/share/applications/nunchuk.desktop
+    "${srcdir}/$__pkgname-v$pkgver-$arch.AppImage" --appimage-extract usr/share/icons/hicolor/128x128/apps/nunchuk-qt.png
 }
 
 package() {
-    cd "${srcdir}"
-    install -Dm755 "$__pkgname-v${pkgver}.AppImage"    "${pkgdir}/opt/$_pkgname/$__pkgname.AppImage"
-    install -Dm644 "$___pkgname.desktop"               "${pkgdir}/usr/share/applications/$___pkgname.desktop"
-    install -Dm644 "$___pkgname-qt.png"                "${pkgdir}/usr/share/icons/hicolor/512x512/apps/$___pkgname-qt.png"
+    cd "${srcdir}/squashfs-root/"
+    install -Dm755 "../$__pkgname-v$pkgver-$arch.AppImage"                      "${pkgdir}/opt/$_pkgname/$__pkgname.AppImage"
+    install -Dm644 "usr/share/applications/$___pkgname.desktop"                "${pkgdir}/usr/share/applications/$___pkgname.desktop"
+    install -Dm644 "usr/share/icons/hicolor/128x128/apps/$___pkgname-qt.png"   "${pkgdir}/usr/share/icons/hicolor/512x512/apps/$___pkgname-qt.png"
     mkdir "${pkgdir}/usr/bin"
-    ln -s "/opt/$_pkgname/$__pkgname.AppImage"         "${pkgdir}/usr/bin/$___pkgname-qt"
+    ln -s "/opt/$_pkgname/$__pkgname.AppImage"                                  "${pkgdir}/usr/bin/$___pkgname-qt"
 }
