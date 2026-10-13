@@ -1,6 +1,6 @@
 pkgbase = gloop-bin
 	pkgdesc = Fast and light file manager for Wayland
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/obselate/gloop
 	arch = x86_64
@@ -18,23 +18,23 @@ pkgbase = gloop-bin
 	depends = xdg-utils
 	depends = shared-mime-info
 	optdepends = xdg-desktop-portal>=1.18: use Gloop for portal file choosers
-	provides = gloop=0.8.0
+	provides = gloop=0.8.1
 	conflicts = gloop
 	options = !strip
 	options = !debug
-	source = gloop-0.8.0-linux-x64.tar.gz::https://github.com/obselate/gloop/releases/download/v0.8.0/gloop-linux-x64.tar.gz
-	source = gloop-0.8.0.png::https://raw.githubusercontent.com/obselate/gloop/v0.8.0/assets/gloop.png
-	source = gloop-0.8.0.metainfo.xml::https://raw.githubusercontent.com/obselate/gloop/v0.8.0/assets/io.github.obselate.gloop.metainfo.xml
-	source = gloop-0.8.0.LICENSE::https://raw.githubusercontent.com/obselate/gloop/v0.8.0/LICENSE
-	source = gloop-0.8.0.ThirdPartyNotices.txt::https://raw.githubusercontent.com/obselate/gloop/v0.8.0/src/Resources/ThirdPartyNotices.txt
+	source = gloop-0.8.1-linux-x64.tar.gz::https://github.com/obselate/gloop/releases/download/v0.8.1/gloop-linux-x64.tar.gz
+	source = gloop-0.8.1.png::https://raw.githubusercontent.com/obselate/gloop/v0.8.1/assets/gloop.png
+	source = gloop-0.8.1.metainfo.xml::https://raw.githubusercontent.com/obselate/gloop/v0.8.1/assets/io.github.obselate.gloop.metainfo.xml
+	source = gloop-0.8.1.LICENSE::https://raw.githubusercontent.com/obselate/gloop/v0.8.1/LICENSE
+	source = gloop-0.8.1.ThirdPartyNotices.txt::https://raw.githubusercontent.com/obselate/gloop/v0.8.1/src/Resources/ThirdPartyNotices.txt
 	source = io.github.obselate.gloop.desktop
 	source = org.freedesktop.impl.portal.desktop.gloop.service
 	source = gloop.portal
-	sha256sums = c2284b919aa0e1829b477492cdf6ca209a5d81cc5df67a5fc17fd4896c0417f9
+	sha256sums = 7e0460081e9b461d1166e65a1f7ab27b9c9522354ba66aca538abc6f49934fc4
 	sha256sums = 8f743b0cda834e7936dbc235354d461e15921c92632edb31b09adc0c368435e9
-	sha256sums = b70f5d88675bfcbb109fbb32ce5fdac0ec8dbfca96d373260ab3d0ed131fc73e
+	sha256sums = 7e04cbf87fae594bee3d38e2c568e88045b12d5650b0a6577a228457c4aafefc
 	sha256sums = ebbfd210cb048be0d4f2b5af60cf409b59e880517b75fa5c7913598828ca2683
-	sha256sums = 377d6641f2b6137a4321555bd292dccccaa0bd817767ac4b787a0a29ccbdedc0
+	sha256sums = 17dd25377f292b55ceebebfeb77b64d9176bc174ebaf15a776dfc103f989f890
 	sha256sums = 10d41a03b0e51ffc439ff43817679f9040aad84caa096e8fc62cd5b12bc0b2eb
 	sha256sums = 16b036ee7897168e90c85d2b2f0b66ef043121b6d5d0d01dca70db500047b8c4
 	sha256sums = a2eebb7523439c238995cbc8b5fff19e89b245cdce846dbf667788912af41843
