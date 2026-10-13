@@ -2,7 +2,7 @@
 
 pkgname=solidcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.5.0.r10.gdaed268
+pkgver=0.8.0.r6.g5ef1dcb
 pkgrel=1
 url="https://bherbruck.github.io/$_pkgname"
 _url="https://github.com/bherbruck/$_pkgname"
@@ -49,10 +49,9 @@ build() {
 
 package() {
 	depends+=(libgcc_s.so)
-	local _binname=solvecraft
 	cd "$_pkgname"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"{,-cli}
-	install -Dm0644 -t "$pkgdir/usr/share/applications/" "packaging/linux/ai.storyteller.$_binname.desktop"
-	install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "packaging/linux/ai.storyteller.$_binname.mime.xml"
+	install -Dm0644 -t "$pkgdir/usr/share/applications/" "packaging/linux/ai.storyteller.$_pkgname.desktop"
+	install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "packaging/linux/ai.storyteller.$_pkgname.mime.xml"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-{APACHE,MIT}
 }
