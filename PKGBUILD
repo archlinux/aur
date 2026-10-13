@@ -2,7 +2,7 @@
 # https://github.com/AshBuk/dabri
 
 pkgname=dabri
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 pkgdesc="Offline speech-to-text desktop application using Whisper"
 arch=('x86_64' 'aarch64')
@@ -39,15 +39,15 @@ makedepends=(
 )
 options=('!lto')
 # Whisper.cpp version (pinned for reproducibility)
-_whisper_version=1.9.4
+_whisper_version=1.9.5
 
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/AshBuk/dabri/archive/refs/tags/v${pkgver}.tar.gz"
     "whisper-cpp-${_whisper_version}.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v${_whisper_version}.tar.gz"
 )
 sha256sums=(
-    'ee91302abefdd537a08eb2ef05d4c9236cb4a0fa195cf1c78944add2f7a8a8a0'
-    '57e280cee375ab02425b806ad5146b99f6eb9357e3c2b31357c8a6af2e2e44ae'
+    'dce4a1f2b342045e2b21a3f9f6f346ad2f5bfa91cbcfa98c62c1f0eb49adb24c'
+    'ff1a9053feb509ff9d7729703355541ae9690073a6b1c40eb692c962e0dc1720'
 )
 
 prepare() {
