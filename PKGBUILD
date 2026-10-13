@@ -2,7 +2,7 @@
 
 pkgname=python-repomatic
 _name=${pkgname#python-}
-pkgver=7.17.1
+pkgver=7.18.0
 pkgrel=1
 pkgdesc='Automate repository maintenance, releases, and CI/CD workflows'
 url='https://repomatic.net'
@@ -23,7 +23,7 @@ depends=(python
 license=('GPL-2.0-or-later')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kdeldycke/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('29d3e485dfa8a8dbe758754a73dad0218d59328515182d8f227a24fbd2945da802793d7840a2c6de1e3abea5b7a688bf774295e78e8d2ffe46434397549bd5e7')
+sha512sums=('bd79fc74a35c144976682dd96e4ded32a5117a27b13928d7f46554d13a678c8c4065d20c9abcc8c82f765ea84f7e1ddb0019dd62e546831fb2ec84a686b973ac')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
