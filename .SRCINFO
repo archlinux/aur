@@ -1,6 +1,6 @@
 pkgbase = lactea
 	pkgdesc = MilkDrop 2 / 3 and projectM-compatible music visualizer on wgpu, with C library
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/M0Rf30/lactea
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = lactea
 	optdepends = pipewire-pulse: capture of the default sink monitor ("what you hear")
 	conflicts = lactea-bin
 	options = !lto
-	source = lactea-0.2.0.tar.gz::https://github.com/M0Rf30/lactea/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 6af144a7466c2c6a7fe9915fb8ade5a32fba22c8cd6f41cd45d7cc99b06fd025
+	source = lactea-0.2.1.tar.gz::https://github.com/M0Rf30/lactea/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = ab6380ddbcaebe9df4c92acdb5970d353889f90541dd896559f13245cd499f60
 
 pkgname = lactea
