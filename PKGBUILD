@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=lactea
-pkgver=0.1.2 # renovate: datasource=github-releases depName=M0Rf30/lactea extractVersion=^v(?<version>.*)$
+pkgver=0.2.0 # renovate: datasource=github-releases depName=M0Rf30/lactea extractVersion=^v(?<version>.*)$
 pkgrel=1
 pkgdesc="MilkDrop 2 / 3 and projectM-compatible music visualizer on wgpu, with C library"
 arch=(x86_64 aarch64)
@@ -29,7 +29,7 @@ optdepends=(
 options=(!lto)
 conflicts=("${pkgname}-bin")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8c442763b6d9abea51ef49bbe38381864d5fd6c8d59bbee2091e85f773db70a4')
+sha256sums=('6af144a7466c2c6a7fe9915fb8ade5a32fba22c8cd6f41cd45d7cc99b06fd025')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
