@@ -1,6 +1,6 @@
 pkgbase = dalinira-bin
 	pkgdesc = DaliNira Browser native binary package
-	pkgver = 8.0.1
+	pkgver = 8.0.2
 	pkgrel = 1
 	url = https://github.com/Muhammed-Dali/DaliNira-Browser
 	arch = x86_64
@@ -95,10 +95,10 @@ pkgbase = dalinira-bin
 	conflicts = dalinira
 	conflicts = dalinira-webmedia
 	replaces = dalinira-webmedia
-	noextract = dalinira-webkit-runtime-8.0.1-arch-x86_64.tar.zst
-	source = dalinira-browser-8.0.1-linux-x86_64.tar.zst::https://github.com/Muhammed-Dali/DaliNira-Browser/releases/download/v8.0.1/dalinira-browser-8.0.1-linux-x86_64.tar.zst
-	source = dalinira-webkit-runtime-8.0.1-arch-x86_64.tar.zst::https://github.com/Muhammed-Dali/DaliNira-Browser/releases/download/v8.0.1/dalinira-webkit-runtime-8.0.1-arch-x86_64.tar.zst
-	sha256sums = b6cfc0d5b0d58f5c0170d916b27d1cf8b5e27a9418a1ea907f51a1ffa73638aa
-	sha256sums = d53d1449e97d8528837b7b4fcb8d191f19eae83af20609d820bad9c705f0f223
+	noextract = dalinira-webkit-runtime-8.0.2-arch-x86_64.tar.zst
+	source = dalinira-browser-8.0.2-linux-x86_64.tar.zst::https://github.com/Muhammed-Dali/DaliNira-Browser/releases/download/v8.0.2/dalinira-browser-8.0.2-linux-x86_64.tar.zst
+	source = dalinira-webkit-runtime-8.0.2-arch-x86_64.tar.zst::https://github.com/Muhammed-Dali/DaliNira-Browser/releases/download/v8.0.2/dalinira-webkit-runtime-8.0.2-arch-x86_64.tar.zst
+	sha256sums = 73ffa7adb04d24e8b6de6714570d5697ec240d79ec86620fd892c05321a0ec35
+	sha256sums = 9f3cde1b065f3f9306ff68b28d70ffb7111fc9611054ee6a54e78809ca8dc124
 
 pkgname = dalinira-bin
