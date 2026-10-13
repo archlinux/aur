@@ -1,6 +1,6 @@
 # DeepSeek Harness Desktop 的 Arch Linux 二进制包
 
-将[上游 v0.22.4](https://github.com/dsh-tauri/deepseek-harness-desktop/releases/tag/v0.22.4)
+将[上游 v0.23.2](https://github.com/dsh-tauri/deepseek-harness-desktop/releases/tag/v0.23.2)
 的普通 Linux `.deb` 重打包为 `dsh-tauri-desktop-bin`，仅支持 `x86_64`。
 下载文件均固定版本并校验 SHA-256，程序、插件资源和图标沿用上游内容。
 桌面入口补充 `%u`，使 `dsh://` 链接参数能传给程序。
@@ -16,11 +16,11 @@ paru -S dsh-tauri-desktop-bin
 准备好 Arch Linux 的 `base-devel` 工具组，然后执行：
 
 ```sh
-cd ~/Documents/WorkSpace/dsh-tauri-desktop
+cd ~/Documents/Aur/dsh-tauri-desktop
 makepkg -si
 ```
 
-安装后从应用菜单打开 **Deepseek Harness Desktop**，或执行：
+安装后从应用菜单打开 **DSH Tauri**，或执行：
 
 ```sh
 deepseek-harness-desktop

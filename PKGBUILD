@@ -1,9 +1,9 @@
 # Maintainer: YageGeng <icoderdev@outlook.com>
 
 pkgname=dsh-tauri-desktop-bin
-pkgver=0.22.4
-# 修正首次 AUR 发布的替代关系，让已安装的本地版本也能收到更新。
-pkgrel=2
+# 跟随上游稳定版升级，打包发行号从 1 重新开始。
+pkgver=0.23.2
+pkgrel=1
 pkgdesc='Native desktop application for DeepSeek Harness (official binary)'
 arch=('x86_64')
 url='https://github.com/dsh-tauri/deepseek-harness-desktop'
@@ -16,6 +16,9 @@ depends=(
   'gdk-pixbuf2'
   'glib2'
   'glibc'
+  # 上游新增视频桌宠播放，需与官方 deb 一致的 GStreamer 插件。
+  'gst-plugins-bad'
+  'gst-plugins-good'
   'gtk3'
   'hicolor-icon-theme'
   'libgcc'
@@ -45,17 +48,18 @@ sha256sums=(
   '3d1e8bb97f9047b71888b14c063b12ed1ee3d5980f122f02c1f150dab6e5f8d0'
 )
 source_x86_64=("${url}/releases/download/v${pkgver}/Deepseek.Harness.Desktop_${pkgver}_amd64.deb")
-sha256sums_x86_64=('dfd33fbfd9a27651f959395a83122aa9856dd6d88561789614cdc4ad4ba030c4')
+# 使用当前 GitHub 发布资产公布的 SHA-256 校验预编译包。
+sha256sums_x86_64=('75108802ee21a1bd8d6f760a380cc77be34c52cfec0f53d0d332870ea7abc931')
 
 # 安装官方 deb 的完整资源树，补全协议入口并收录上游许可。
 package() {
   bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
 
-  # 上游 Exec 缺少 URL 占位符，补上后才能把 dsh:// 链接传给程序。
+  # 上游入口更名为 DSH Tauri，但仍需补上 URL 占位符以传递 dsh:// 链接。
   sed -i \
     -e 's/^Exec=deepseek-harness-desktop$/Exec=deepseek-harness-desktop %u/' \
     -e 's|^MimeType=x-scheme-handler/dsh$|MimeType=x-scheme-handler/dsh;|' \
-    "${pkgdir}/usr/share/applications/Deepseek Harness Desktop.desktop"
+    "${pkgdir}/usr/share/applications/DSH Tauri.desktop"
 
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}-LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

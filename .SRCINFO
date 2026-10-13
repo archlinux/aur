@@ -1,7 +1,7 @@
 pkgbase = dsh-tauri-desktop-bin
 	pkgdesc = Native desktop application for DeepSeek Harness (official binary)
-	pkgver = 0.22.4
-	pkgrel = 2
+	pkgver = 0.23.2
+	pkgrel = 1
 	url = https://github.com/dsh-tauri/deepseek-harness-desktop
 	arch = x86_64
 	license = LicenseRef-MIT-with-additional-terms
@@ -11,6 +11,8 @@ pkgbase = dsh-tauri-desktop-bin
 	depends = gdk-pixbuf2
 	depends = glib2
 	depends = glibc
+	depends = gst-plugins-bad
+	depends = gst-plugins-good
 	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = libgcc
@@ -23,16 +25,16 @@ pkgbase = dsh-tauri-desktop-bin
 	depends = xdg-utils
 	optdepends = git: Git integration and workspace operations
 	optdepends = xdg-desktop-portal: Native directory selection (requires a desktop-specific backend)
-	provides = dsh-tauri-desktop=0.22.4
+	provides = dsh-tauri-desktop=0.23.2
 	conflicts = dsh-tauri-desktop
 	conflicts = deepseek-harness-desktop
 	options = !strip
 	options = !debug
-	source = dsh-tauri-desktop-bin-0.22.4-LICENSE::https://raw.githubusercontent.com/dsh-tauri/deepseek-harness-desktop/v0.22.4/LICENSE
-	source = dsh-tauri-desktop-bin-0.22.4-LICENSE.details::https://raw.githubusercontent.com/dsh-tauri/deepseek-harness-desktop/v0.22.4/LICENSE.details
+	source = dsh-tauri-desktop-bin-0.23.2-LICENSE::https://raw.githubusercontent.com/dsh-tauri/deepseek-harness-desktop/v0.23.2/LICENSE
+	source = dsh-tauri-desktop-bin-0.23.2-LICENSE.details::https://raw.githubusercontent.com/dsh-tauri/deepseek-harness-desktop/v0.23.2/LICENSE.details
 	sha256sums = a9a6b4fb724c6a42f68cc377969ee2816035367ab127aceba7f6af9da3656e5d
 	sha256sums = 3d1e8bb97f9047b71888b14c063b12ed1ee3d5980f122f02c1f150dab6e5f8d0
-	source_x86_64 = https://github.com/dsh-tauri/deepseek-harness-desktop/releases/download/v0.22.4/Deepseek.Harness.Desktop_0.22.4_amd64.deb
-	sha256sums_x86_64 = dfd33fbfd9a27651f959395a83122aa9856dd6d88561789614cdc4ad4ba030c4
+	source_x86_64 = https://github.com/dsh-tauri/deepseek-harness-desktop/releases/download/v0.23.2/Deepseek.Harness.Desktop_0.23.2_amd64.deb
+	sha256sums_x86_64 = 75108802ee21a1bd8d6f760a380cc77be34c52cfec0f53d0d332870ea7abc931
 
 pkgname = dsh-tauri-desktop-bin
