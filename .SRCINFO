@@ -1,6 +1,6 @@
 pkgbase = pi-desktop-git
 	pkgdesc = Local-first AI coding agent desktop: Electron + Rust host core + pi Agent Harness + user-installable plugins (git, system Electron)
-	pkgver = 0.18.0beta.6.r93.g0744809
+	pkgver = 0.19.1.r14.ge01dc31
 	pkgrel = 1
 	url = https://github.com/vastsa/PI-Desktop
 	arch = x86_64
