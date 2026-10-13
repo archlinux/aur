@@ -1,6 +1,6 @@
 pkgbase = molecule-plugins
 	pkgdesc = Collection of molecule plugins
-	pkgver = 26.9.28
+	pkgver = 26.10.12
 	pkgrel = 1
 	url = https://github.com/ansible-community/molecule-plugins
 	arch = any
@@ -33,8 +33,8 @@ pkgbase = molecule-plugins
 	replaces = molecule-docker
 	replaces = molecule-podman
 	replaces = molecule-vagrant
-	source = https://github.com/ansible-community/molecule-plugins/archive/v26.9.28/molecule-plugins-v26.9.28.tar.gz
-	sha512sums = 3569f41f7ba81bfaa92f28edb22687e8d146c315a10030582d8596d70c302b4bffe2a52433347890f65ecb9cfd0fa00e8d41153a4df70ad58cf6d0fd0688af92
-	b2sums = 4a9511aa2d2fc60b0bec247a9f2137ec503e34ce48d2e08722fa23bfa3421609f03aa9f315494a6c89c15040fa382692a399819c340815809cb3f6b22aba108b
+	source = https://github.com/ansible-community/molecule-plugins/archive/v26.10.12/molecule-plugins-v26.10.12.tar.gz
+	sha512sums = 18167d78f8433de1ee9dbb134908f6fa973a79b61398cb8df5c9a772a3be806a53a0ba75d9e8ed9aa1fd3978bd514c5ca13a60fc661266ef0ae6e23c63b54201
+	b2sums = 7166eb5fdc6654ef6fc53b3f3779aaf17f863afb72293e80dd1876c951f97dee95d3ab6999a73c2794dc6d073478d96cd83335e65d407d0971bb41938d3bd1fe
 
 pkgname = molecule-plugins
