@@ -1,0 +1,12 @@
+pkgbase = sherpa-onnx-piper-voices-ru
+	pkgdesc = All Russian Piper TTS voices in sherpa-onnx format (meta package)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/k2-fsa/sherpa-onnx/releases/tag/tts-models
+	arch = any
+	license = None
+	depends = sherpa-onnx-piper-voice-ru-denis
+	depends = sherpa-onnx-piper-voice-ru-dmitri
+	depends = sherpa-onnx-piper-voice-ru-ruslan
+
+pkgname = sherpa-onnx-piper-voices-ru
