@@ -4168,18 +4168,20 @@ index a988f504..1620f348 100644
      QUrl m_url;
 diff --git a/core/smartinvert.cpp b/core/smartinvert.cpp
 new file mode 100644
-index 00000000..77cb5e3c
+index 00000000..2742de80
 --- /dev/null
 +++ b/core/smartinvert.cpp
-@@ -0,0 +1,127 @@
+@@ -0,0 +1,252 @@
 +// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +
 +#include "smartinvert.h"
 +
++#include <QVector>
++
 +#include <algorithm>
 +#include <array>
-+#include <cstring>
++#include <cmath>
 +
 +namespace {
 +/**
@@ -4209,6 +4211,94 @@ index 00000000..77cb5e3c
 +// saturation, the less the filter touches them.
 +constexpr int s_satKeep = 40;
 +constexpr int s_satKeepRange = 60;
++
++// Content mask geometry. The screen is divided into s_block-sized blocks; a
++// block that is mostly saturated pixels is picture content (wallpaper, photo,
++// icon art) rather than window chrome. Text that sits on top of such a region
++// - desktop icon labels over the wallpaper, glyphs on colorful icons - is
++// itself grey or white and would otherwise be recolored like chrome, turning
++// dark-on-colorful and unreadable. Blurring the block mask by a couple of
++// blocks lets the text and its antialiased fringe inherit the protection of
++// the region around it, while chrome a finger's width away from an image is
++// still recolored.
++constexpr int s_block = 8;
++
++inline int saturationOf(int r, int g, int b)
++{
++    const int mx = std::max(r, std::max(g, b));
++    const int mn = std::min(r, std::min(g, b));
++    return mx == 0 ? 0 : (mx - mn) * 255 / mx;
++}
++
++// Content protection spread: a 3x3 max (one block of dilation) followed by a
++// [1 2 1] mean blur on each axis. The dilation is what lets a fully-white text
++// line, whose own blocks contain no saturated pixels at all, inherit the
++// content claim of the wallpaper directly above and below it; the blur turns
++// the hard one-block step into a soft ramp so there is no visible seam in the
++// chrome around picture regions. A plain mean blur without the dilation loses
++// too much: the center of a text line keeps only ~60% of its neighborhood's
++// protection and the labels turn grey instead of staying put.
++QVector<int> spreadMask(const QVector<uint8_t> &in, int w, int h)
++{
++    QVector<int> dilated(w * h);
++    for (int y = 0; y < h; ++y) {
++        for (int x = 0; x < w; ++x) {
++            int m = 0;
++            for (int dy = -1; dy <= 1; ++dy) {
++                const int sy = std::clamp(y + dy, 0, h - 1);
++                for (int dx = -1; dx <= 1; ++dx) {
++                    m = std::max(m, int(in[sy * w + std::clamp(x + dx, 0, w - 1)]));
++                }
++            }
++            dilated[y * w + x] = m;
++        }
++    }
++
++    QVector<int> tmp(w * h);
++    QVector<int> out(w * h);
++    for (int y = 0; y < h; ++y) {
++        const int *row = dilated.constData() + y * w;
++        int *dst = tmp.data() + y * w;
++        for (int x = 0; x < w; ++x) {
++            const int xm = std::max(x - 1, 0);
++            const int xp = std::min(x + 1, w - 1);
++            dst[x] = (row[xm] + 2 * row[x] + row[xp]) / 4;
++        }
++    }
++    for (int y = 0; y < h; ++y) {
++        int *dst = out.data() + y * w;
++        for (int x = 0; x < w; ++x) {
++            const int ym = std::max(y - 1, 0) * w;
++            const int yp = std::min(y + 1, h - 1) * w;
++            dst[x] = (tmp[ym + x] + 2 * tmp[y * w + x] + tmp[yp + x]) / 4;
++        }
++    }
++    return out;
++}
++
++/**
++ * Bilinear sample of the low-res mask at full-res pixel (x, y). The mask grid
++ * cell i covers pixels [i*s_block, (i+1)*s_block), and is anchored at its
++ * center, so pixel centers map back to mask coordinates with a half-cell shift.
++ */
++inline int sampleMask(const int *mask, int maskW, int maskH, int x, int y)
++{
++    const float gx = (float(x) + 0.5f) / s_block - 0.5f;
++    const float gy = (float(y) + 0.5f) / s_block - 0.5f;
++    const int ix0 = int(std::floor(gx));
++    const int iy0 = int(std::floor(gy));
++    const float tx = gx - ix0;
++    const float ty = gy - iy0;
++
++    const int ix1 = std::min(ix0 + 1, maskW - 1);
++    const int iy1 = std::min(iy0 + 1, maskH - 1);
++    const int cx0 = std::clamp(ix0, 0, maskW - 1);
++    const int cy0 = std::clamp(iy0, 0, maskH - 1);
++
++    const float top = mask[cy0 * maskW + cx0] * (1.0f - tx) + mask[cy0 * maskW + ix1] * tx;
++    const float bottom = mask[iy1 * maskW + cx0] * (1.0f - tx) + mask[iy1 * maskW + ix1] * tx;
++    return int(top * (1.0f - ty) + bottom * ty);
++}
 +}
 +
 +namespace SmartInvert
@@ -4261,6 +4351,40 @@ index 00000000..77cb5e3c
 +        return;
 +    }
 +
++    // Pass 1: mark each block with how much of it is saturated picture
++    // content, then spread that claim one block and soften it, so text
++    // standing on top of content - icon labels over the wallpaper - inherits
++    // the protection of the region around it.
++    const int maskW = std::max(1, (image.width() + s_block - 1) / s_block);
++    const int maskH = std::max(1, (image.height() + s_block - 1) / s_block);
++    QVector<uint8_t> rawMask(maskW * maskH);
++
++    for (int by = 0; by < maskH; ++by) {
++        for (int bx = 0; bx < maskW; ++bx) {
++            int saturated = 0;
++            int counted = 0;
++            const int yEnd = std::min((by + 1) * s_block, image.height());
++            const int xEnd = std::min((bx + 1) * s_block, image.width());
++            for (int y = by * s_block; y < yEnd; ++y) {
++                const QRgb *line = reinterpret_cast<const QRgb *>(image.constScanLine(y));
++                for (int x = bx * s_block; x < xEnd; ++x) {
++                    const QRgb c = line[x];
++                    saturated += saturationOf(qRed(c), qGreen(c), qBlue(c)) >= s_satKeep ? 1 : 0;
++                    ++counted;
++                }
++            }
++            // 30% saturated pixels starts the ramp, 50% (half the block is
++            // picture) fully marks it as content. Text lines over a busy
++            // wallpaper sit in between; fully-white text cores are lifted by
++            // the spread below.
++            const int frac = counted > 0 ? saturated * 255 / counted : 0;
++            rawMask[by * maskW + bx] = uint8_t(std::clamp((frac - 76) * 5, 0, 255));
++        }
++    }
++    const QVector<int> contentMask = spreadMask(rawMask, maskW, maskH);
++
++    // Pass 2: recolor. A pixel keeps the stronger of its own saturation claim
++    // and the content claim of the region around it.
 +    for (int y = 0; y < image.height(); ++y) {
 +        QRgb *line = reinterpret_cast<QRgb *>(image.scanLine(y));
 +        for (int x = 0; x < image.width(); ++x) {
@@ -4276,19 +4400,20 @@ index 00000000..77cb5e3c
 +
 +            // How much of the original pixel survives: 0 for grey chrome
 +            // (fully recolored), 255 for saturated content (untouched).
-+            const int keep = std::clamp((saturation - s_satKeep) * 255 / s_satKeepRange, 0, 255);
++            int keep = std::clamp((saturation - s_satKeep) * 255 / s_satKeepRange, 0, 255);
++            const int regionKeep = sampleMask(contentMask.constData(), maskW, maskH, x, y);
++            keep = std::max(keep, regionKeep);
 +            if (keep == 255) {
 +                continue;
 +            }
 +
 +            const int recolored = s_curve[value];
-+            const int blended = (keep == 0) ? recolored : (recolored * (255 - keep) + value * keep) / 255;
 +
 +            // Grey chrome stays grey; partially saturated pixels keep a
 +            // fraction of their channels, which desaturates them towards the
 +            // recolored brightness instead of shifting their hue.
 +            if (keep == 0) {
-+                line[x] = qRgb(blended, blended, blended);
++                line[x] = qRgb(recolored, recolored, recolored);
 +            } else {
 +                const int blendR = (recolored * (255 - keep) + r * keep) / 255;
 +                const int blendG = (recolored * (255 - keep) + g * keep) / 255;
@@ -4301,10 +4426,10 @@ index 00000000..77cb5e3c
 +}
 diff --git a/core/smartinvert.h b/core/smartinvert.h
 new file mode 100644
-index 00000000..2a12b1ed
+index 00000000..3053308b
 --- /dev/null
 +++ b/core/smartinvert.h
-@@ -0,0 +1,44 @@
+@@ -0,0 +1,49 @@
 +// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +
@@ -4322,8 +4447,13 @@ index 00000000..2a12b1ed
 + * backgrounds, grey panels and near-black text - and remaps their brightness
 + * through a light-to-dark curve. Pixels with saturated color (photo content,
 + * colorful icons, syntax highlighting) are kept untouched, so pictures keep
-+ * looking like pictures. Unlike naive full inversion, this makes a white File
-+ * Explorer look like a dark-mode window while leaving images and videos alone.
++ * looking like pictures. Text that stands on top of such a region - desktop
++ * icon labels over the wallpaper, glyphs on colorful icons - is protected too:
++ * a small content mask remembers that the neighborhood is picture, not chrome,
++ * so those labels keep their original colors instead of being recolored dark
++ * over a colorful background. Unlike naive full inversion, this makes a white
++ * File Explorer look like a dark-mode window while leaving images and videos
++ * alone.
 + *
 + * It cannot tell a white window background from a white document page: both
 + * are flat white pixels. Only the remote OS itself knows that difference, so
@@ -5434,10 +5564,10 @@ index 1600b660..4fcfc2a4 100644
  endif()
 diff --git a/test/aiengine_test.cpp b/test/aiengine_test.cpp
 new file mode 100644
-index 00000000..1daf4613
+index 00000000..820baefb
 --- /dev/null
 +++ b/test/aiengine_test.cpp
-@@ -0,0 +1,499 @@
+@@ -0,0 +1,539 @@
 +/*
 +    Standalone test for the AI conversation engine. Not built by default; see
 +    test_ai.sh. Drives AiConversation against a mock OpenAI-compatible server
@@ -5599,8 +5729,13 @@ index 00000000..1daf4613
 +    check(SmartInvert::medianLuma(img) > 150, "a white window with text and an icon reads as a light theme");
 +
 +    SmartInvert::apply(img);
++    // (60, 60) sits ~15px from the icon, inside the soft protection ramp that
++    // keeps chrome from ending in a hard seam at a picture's edge; assert the
++    // broad strokes here and check deep chrome separately below.
 +    const QRgb background = img.pixel(60, 60);
-+    check(qRed(background) < 70 && qGreen(background) < 70 && qBlue(background) < 70, "the white background becomes dark");
++    check(qRed(background) < 120, "the white background becomes dark");
++    const QRgb deepChrome = img.pixel(63, 2);
++    check(qRed(deepChrome) < 70, "chrome away from content becomes fully dark");
 +    const QRgb text = img.pixel(10, 6);
 +    check(qRed(text) > 170 && qGreen(text) > 170 && qBlue(text) > 170, "the dark text becomes light");
 +    const QRgb icon = img.pixel(38, 38);
@@ -5638,6 +5773,41 @@ index 00000000..1daf4613
 +    const QRgb before = photo.pixel(10, 10);
 +    SmartInvert::apply(photo);
 +    check(qRed(photo.pixel(10, 10)) == qRed(before), "saturated photo pixels are untouched");
++
++    // The icon-label regression: white text over a busy colorful wallpaper is
++    // itself low-saturation, but must NOT be recolored, because the region
++    // around it is picture content. Recoloring it would turn white labels
++    // dark over the preserved wallpaper.
++    QImage wallpaper(96, 96, QImage::Format_RGB32);
++    for (int y = 0; y < 96; ++y) {
++        for (int x = 0; x < 96; ++x) {
++            wallpaper.setPixel(x, y, qRgb((x * 7 + y * 3) % 256, 60 + (y * 5) % 190, 255 - (x * 3) % 200));
++        }
++    }
++    for (int x = 20; x < 76; ++x) {
++        for (int y = 40; y < 52; ++y) {
++            wallpaper.setPixel(x, y, qRgb(255, 255, 255)); // "This PC" label (Qt::white would bind the QRgb overload as the raw enum value)
++        }
++    }
++    SmartInvert::apply(wallpaper);
++    const QRgb label = wallpaper.pixel(48, 46);
++    check(qRed(label) > 230 && qGreen(label) > 230 && qBlue(label) > 230, "white icon labels over a wallpaper keep their color");
++
++    // ...and the flip side: the same white text over plain white chrome IS
++    // recolored, because the neighborhood is chrome too. (Covered by the
++    // first case above: the black text on white background became light.)
++    QImage chromeLabel(96, 96, QImage::Format_RGB32);
++    chromeLabel.fill(Qt::white);
++    for (int x = 20; x < 76; ++x) {
++        for (int y = 40; y < 52; ++y) {
++            chromeLabel.setPixel(x, y, qRgb(0, 0, 0));
++        }
++    }
++    SmartInvert::apply(chromeLabel);
++    const QRgb darkLabel = chromeLabel.pixel(48, 46);
++    check(qRed(darkLabel) > 170, "black labels over white chrome are recolored");
++    const QRgb chromeNearby = chromeLabel.pixel(48, 80);
++    check(qRed(chromeNearby) < 70, "chrome far from content is still recolored dark");
 +}
 +
 +static void testUrlDerivation()
