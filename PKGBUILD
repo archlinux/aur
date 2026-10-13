@@ -1,7 +1,7 @@
 # Maintainer: giosuel <me@giosuel.ch>
 pkgname=somedesk-bin
 _pkgname=somedesk
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Self-hosted, end-to-end encrypted remote desktop (prebuilt binary)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!debug') # the release binary is already stripped
 source_x86_64=("$url/releases/download/v$pkgver/SomeDesk-$pkgver-linux-x64.tar.gz")
-sha256sums_x86_64=('11a508c7174783436cd204e041e20075d8e392a2b7c9fc2d61dc5208f8264f20')
+sha256sums_x86_64=('d85011405fca6e0976c86ff97710290f8bcfb730b867f546744ae7e134cccf1d')
 
 package() {
   cd "SomeDesk-$pkgver-linux-x64"
