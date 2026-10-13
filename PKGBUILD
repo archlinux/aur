@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="OpenNN neural network library with attention and deep learning support (Git Version)"
 arch=('x86_64')
 url="https://www.opennn.net/"
-license=('GPL')
+license=('AGPL-3.0-only')
 conflicts=('opennn')
 depends=(
     'gcc-libs'
@@ -26,8 +26,7 @@ optdepends=(
 )
 
 source=(
-    "git+https://github.com/arkadesOrg/opennn.git#branch=install-shared-library" # temporary fork branch
-    # "git+https://github.com/Artelnics/opennn.git"
+    "git+https://github.com/Artelnics/opennn.git"
 )
 
 sha256sums=('SKIP')
@@ -35,9 +34,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd opennn
 
-    printf "r%s.%s" \
-        "$(git rev-list --count HEAD)" \
-        "$(git rev-parse --short HEAD)"
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
