@@ -2,12 +2,12 @@
 pkgname=stayorganised-git
 appname=stayorganised
 pkgver=0.2.0.r123.g2bcf4fd
-pkgrel=1
+pkgrel=2
 pkgdesc="Calendar-first personal agenda manager designed to replace Google Calendar, Outlook etc (git version)"
 arch=('x86_64')
 url="https://gitlab.com/nathanchere/stayorganised"
 license=('Apache-2.0')
-depends=('fmt' 'layer-shell-qt' 'qt6-base' 'qt6-svg' 'qtkeychain-qt6' 'spdlog' 'wayland')
+depends=('fmt' 'layer-shell-qt' 'qt6-base' 'qt6-svg' 'qt6-wayland' 'qtkeychain-qt6' 'spdlog' 'wayland')
 makedepends=('cmake' 'git' 'ninja' 'pkgconf' 'wayland-protocols')
 provides=('stayorganised')
 conflicts=('stayorganised')
