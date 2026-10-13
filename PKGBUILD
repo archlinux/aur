@@ -3,7 +3,7 @@
 
 pkgname=v2-bin
 _pkgname=v2
-pkgver=0.17.6
+pkgver=0.17.7
 pkgrel=1
 pkgdesc='A local-first, privacy oriented rich text editor with Git-style version control'
 arch=(x86_64 aarch64)
@@ -20,8 +20,8 @@ conflicts=(v2)
 options=(!strip !debug)
 source_x86_64=("$_url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.AppImage")
 source_aarch64=("$_url/releases/download/v$pkgver/$_pkgname-$pkgver-arm64.AppImage")
-sha256sums_x86_64=('99c39c600a6420f8667afa1256b5fc58412854b6be86952392c43ce242f46598')
-sha256sums_aarch64=('a23d7609bccd725687c7265c8f13190d7bf2d89be9abd6889b2faf5ec260e69f')
+sha256sums_x86_64=('422e3a910af88a8e3df917c2878f68a8ac3c1acaeb8d850ca97dc5afeb5d219c')
+sha256sums_aarch64=('b89315959d55cd7a0fc410ce6491211a9212fa20156e38328a3232643b8341bc')
 
 _source="source_$CARCH"
 _appimage=${!_source[0]##*/}
