@@ -7,14 +7,16 @@
 # Lives in packaging/ (not the repo root) so makepkg's $srcdir/$pkgdir don't
 # collide with the repo's own src/ directory.
 #
-# Self-contained: fetches the pinned upstream mpv release AND this repo's
-# release tarball (decoder source + patches), so it builds from the AUR
-# without a checkout of the mpv-omniphony repo.
+# Self-contained: fetches the tag of the mpv fork the release was built from
+# (mpv plus the orender integration, nothing to patch) and this repo's release
+# tarball (licence texts), so it builds from the AUR without a checkout of the
+# mpv-omniphony repo.
 
 pkgname=mpv-omniphony
-_tag=v0.6.0              # mpv-omniphony release tag (patches + ad_orender)
-_mpvver=0.41.0           # pinned upstream mpv release tag (without the 'v')
-pkgver=0.6.0             # $_tag without the 'v' (hyphens, if any, become '.')
+_tag=v0.7.0              # mpv-omniphony release tag
+_forktag=orender-v0.7.0.1  # mgth/mpv tag that release builds: MPV_FORK_STABLE_TAG of mpv-fork.env at $_tag
+_mpvver=0.41.0           # upstream mpv release the fork tag is based on (without the 'v')
+pkgver=0.7.0             # $_tag without the 'v' (hyphens, if any, become '.')
 pkgrel=1
 pkgdesc="mpv with the orender spatial audio decoder (object rendering via liborender)"
 arch=('x86_64')
@@ -37,7 +39,7 @@ license=('GPL-3.0-or-later')
 # Only mpv's mandatory libraries are listed as sonames; feature-dependent ones
 # (libbluray, libcdio, lcms2...) vary with what is present at build time and
 # would just warn on builds that skip them.
-depends=('orender>=0.6.0' 'ffmpeg' 'libass' 'libplacebo' 'luajit' 'libx11' 'mesa'
+depends=('orender>=0.7.0' 'ffmpeg' 'libass' 'libplacebo' 'luajit' 'libx11' 'mesa'
          'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
          'libavutil.so' 'libswresample.so' 'libswscale.so'
          'libass.so' 'libplacebo.so')
@@ -48,30 +50,17 @@ makedepends=('meson' 'ninja' 'python')
 # celluloid & co depend on it).
 provides=("mpv=1:$_mpvver" 'libmpv.so=2-64')
 conflicts=('mpv')
-source=("mpv-$_mpvver.tar.gz::https://github.com/mpv-player/mpv/archive/v$_mpvver.tar.gz"
+source=("mpv-$_forktag.tar.gz::https://github.com/mgth/mpv/archive/refs/tags/$_forktag.tar.gz"
         "mpv-omniphony-$_tag.tar.gz::https://github.com/mgth/mpv-omniphony/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('ee21092a5ee427353392360929dc64645c54479aefdb5babc5cfbb5fad626209'
-            '8561919d6a9962d197b4d9ced3f1111f0446a4602067fe10f9c5ff3ca89e1bfd')
+# Filled in by `updpkgsums` when the AUR package is bumped, once both tags exist.
+sha256sums=('0c79ade96cc497fa6bc4230e134891ddadbbd856d8876848ff8ce9c66faafc83'
+            '7529a0afba63726307982410e7f5e79cdf73bf69b5d13aa9ee649992b178ad2b')
 
-_repo="mpv-omniphony-${_tag#v}"   # extracted repo tarball (src/, patches/)
-
-prepare() {
-    cd "$srcdir/mpv-$_mpvver"
-    # patch 0001 adds audio/decode/ad_orender.c; the rest wire it in.
-    shopt -s nullglob
-    local patches=("$srcdir/$_repo"/patches/*.patch)
-    if [ ${#patches[@]} -eq 0 ]; then
-        echo "no patches in $_repo/patches — broken release tarball?" >&2
-        return 1
-    fi
-    for p in "${patches[@]}"; do
-        echo "applying ${p##*/}"
-        patch -p1 < "$p"
-    done
-}
+_mpv="mpv-$_forktag"              # extracted fork tarball
+_repo="mpv-omniphony-${_tag#v}"   # extracted repo tarball (COPYING, notices)
 
 build() {
-    cd "$srcdir/mpv-$_mpvver"
+    cd "$srcdir/$_mpv"
     # --auto-features=auto: undo arch-meson's blanket `enabled`, which would
     # force platform-foreign features (e.g. win32-threads) and fail.
     arch-meson build --auto-features=auto -Dorender=enabled
@@ -79,7 +68,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/mpv-$_mpvver"
+    cd "$srcdir/$_mpv"
     meson install -C build --destdir="$pkgdir"
 
     # License + third-party notices for the combined work (GPL-3.0-or-later,

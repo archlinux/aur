@@ -1,6 +1,6 @@
 pkgbase = mpv-omniphony
 	pkgdesc = mpv with the orender spatial audio decoder (object rendering via liborender)
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/mgth/mpv-omniphony
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = mpv-omniphony
 	makedepends = meson
 	makedepends = ninja
 	makedepends = python
-	depends = orender>=0.6.0
+	depends = orender>=0.7.0
 	depends = ffmpeg
 	depends = libass
 	depends = libplacebo
@@ -28,9 +28,9 @@ pkgbase = mpv-omniphony
 	provides = mpv=1:0.41.0
 	provides = libmpv.so=2-64
 	conflicts = mpv
-	source = mpv-0.41.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.41.0.tar.gz
-	source = mpv-omniphony-v0.6.0.tar.gz::https://github.com/mgth/mpv-omniphony/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = ee21092a5ee427353392360929dc64645c54479aefdb5babc5cfbb5fad626209
-	sha256sums = 8561919d6a9962d197b4d9ced3f1111f0446a4602067fe10f9c5ff3ca89e1bfd
+	source = mpv-orender-v0.7.0.1.tar.gz::https://github.com/mgth/mpv/archive/refs/tags/orender-v0.7.0.1.tar.gz
+	source = mpv-omniphony-v0.7.0.tar.gz::https://github.com/mgth/mpv-omniphony/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 0c79ade96cc497fa6bc4230e134891ddadbbd856d8876848ff8ce9c66faafc83
+	sha256sums = 7529a0afba63726307982410e7f5e79cdf73bf69b5d13aa9ee649992b178ad2b
 
 pkgname = mpv-omniphony
