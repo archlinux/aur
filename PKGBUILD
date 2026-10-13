@@ -1,23 +1,23 @@
 # Maintainer: Jiri Doubravsky (DoubyCz) <douby@douby.cz>
 #
 # KeeperFX (Dungeon Keeper remake) - native Linux build from upstream (dkfans),
-# built via linux.mk. Uses the system SDL2 (Arch's is recent enough for Wayland),
-# so unlike the AppImage no library bundling is needed. The freely-redistributable
+# built with upstream's CMake build against the system SDL3, so unlike the AppImage
+# no library bundling is needed. The freely-redistributable
 # KeeperFX data is bundled; the 16 original Dungeon Keeper files (copyright
 # EA/Bullfrog) must be supplied by the user from their own copy (GOG/Steam/CD)
 # via `keeperfx-install` after installation.
 
 pkgname=keeperfx-git
-pkgver=1.4.0.r0.g0000000
+pkgver=1.4.0.r5491.gfb0ab7f4d
 pkgrel=1
 pkgdesc='Dungeon Keeper remake (KeeperFX), native Linux build. Requires you own the original Dungeon Keeper.'
 arch=('x86_64')
 url='https://github.com/dkfans/keeperfx'
 license=('GPL-2.0-or-later')
-depends=('sdl2-compat' 'sdl2_mixer' 'sdl2_net' 'sdl2_image' 'ffmpeg' 'openal' 'luajit'
+depends=('sdl3' 'sdl3_mixer' 'sdl3_image' 'ffmpeg' 'openal' 'luajit' 'libglvnd'
          'libspng' 'minizip' 'miniupnpc' 'libnatpmp' 'zlib' 'openssl' 'zstd'
          'zenity')   # graphical first-run folder picker (kdialog auto-used if present instead)
-makedepends=('git' 'make' 'gcc' 'curl' '7zip')
+makedepends=('git' 'cmake' 'ninja' 'pkgconf' '7zip')
 optdepends=('dungeon-keeper-gog: a source for the original DK files needed by keeperfx-install')
 provides=('keeperfx')
 conflicts=('keeperfx')
@@ -46,23 +46,24 @@ pkgver() {
 }
 
 build() {
-  cd "$_srcname"
-  # linux.mk downloads its own prebuilt static deps (astronomy/centijson/enet6/libcurl)
-  # and links everything else against the system libraries.
+  # The CMake build downloads its own prebuilt static deps (astronomy/centijson/enet6/
+  # libcurl) and links everything else, SDL3 included, against the system libraries.
   # -ffile-prefix-map strips the build path from debug info / __FILE__ log strings, so the
   # package does not embed a reference to $srcdir (reproducible, avoids the namcap warning),
   # while keeping symbols for crash backtraces (the build is intentionally not stripped).
-  make -f linux.mk -j"$(nproc)" \
-    CC="cc -ffile-prefix-map=$srcdir/$_srcname=." \
-    CXX="g++ -ffile-prefix-map=$srcdir/$_srcname=." \
-    all
+  local map="-ffile-prefix-map=$srcdir/$_srcname=."
+  cmake -S "$_srcname" -B build -G Ninja \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_C_FLAGS="$CFLAGS $map" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS $map"
+  cmake --build build --target keeperfx
 }
 
 package() {
   cd "$_srcname"
 
   # --- engine binary ---
-  install -Dm755 bin/keeperfx "$pkgdir/usr/lib/$pkgname/keeperfx"
+  install -Dm755 "$srcdir/build/keeperfx" "$pkgdir/usr/lib/$pkgname/keeperfx"
 
   # --- free, redistributable KeeperFX data (official release; free of the 16 owned files) ---
   local fd="$srcdir/freedata"
@@ -75,6 +76,21 @@ package() {
   done
   [ -f "$fd/keeperfx.cfg" ] && install -Dm644 "$fd/keeperfx.cfg" "$pkgdir/usr/share/$pkgname/keeperfx.cfg"
 
+  # The release 7z only provides the binary assets (graphics, sound, language .dat files).
+  # The text data the engine reads (configs, Lua, campaigns, map packs) moves with the code,
+  # so take it from this same checkout, laid out like upstream's package.mk does. Otherwise
+  # a master engine would run on the configs of the last release.
+  local sd="$pkgdir/usr/share/$pkgname"
+  cp -r config/creatrs config/fxdata config/mods "$sd/"
+  install -Dm644 config/keeperfx.cfg "$sd/keeperfx.cfg"
+  cp -r campgns multiplayer "$sd/"
+  ( cd levels && find . -type f \( -name '*.cfg' -o -name '*.txt' -o -name '*.toml' \) \
+      ! -name readme.txt ! -name personal.cfg ) | while IFS= read -r f; do
+    install -Dm644 "levels/$f" "$sd/levels/$f"
+  done
+  find "$sd" -type d -exec chmod 755 {} +
+  find "$sd" -type f -exec chmod 644 {} +
+
   # --- launcher wrapper ---
   install -d "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/keeperfx" <<'WRAP'
@@ -84,9 +100,16 @@ package() {
 # run the engine. Crucially it does NOT launch the engine without data — a GUI user who
 # double-clicks the icon would otherwise see nothing happen and no error.
 GAMEDIR="${KEEPERFX_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/keeperfx}"
+SHARE=/usr/share/keeperfx-git
 mkdir -p "$GAMEDIR"
-# Deploy the free FX data (no-clobber keeps the user's original DK files, saves and config).
-cp -rn /usr/share/keeperfx-git/. "$GAMEDIR/" 2>/dev/null || true
+# Deploy the free FX data. Files a package upgrade made newer are refreshed, so the
+# configs always match the engine; the user's keeperfx.cfg, saves and the original
+# DK files are never overwritten (the package ships none of the latter two).
+( cd "$SHARE" && find . -type f ! -path ./keeperfx.cfg ) | while IFS= read -r f; do
+  [ "$SHARE/$f" -nt "$GAMEDIR/$f" ] || continue
+  mkdir -p "$GAMEDIR/${f%/*}" && cp -p "$SHARE/$f" "$GAMEDIR/$f"
+done
+[ -e "$GAMEDIR/keeperfx.cfg" ] || cp "$SHARE/keeperfx.cfg" "$GAMEDIR/keeperfx.cfg"
 cd "$GAMEDIR" || exit 1
 
 has_data() { [ -f "$GAMEDIR/sound/atlas/bullfrog.sbk" ] || [ -f "$GAMEDIR/data/cube.dat" ]; }
