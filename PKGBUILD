@@ -1,15 +1,17 @@
 # Maintainer: Mathieu Grenet <mathieu@mgth.fr>
 #
-# mpv-omniphony-fel — mpv (pinned master snapshot) built with the ad_orender
-# spatial audio decoder (liborender, from the `orender` package) AND Dolby
-# Vision Profile 7 FEL playback (enhancement-layer reconstruction).
+# mpv-omniphony-fel — mpv (master track) built with the ad_orender spatial
+# audio decoder (liborender, from the `orender` package) AND Dolby Vision
+# Profile 7 FEL playback (enhancement-layer reconstruction).
 #
-# Why a master snapshot instead of a release: the FEL feature merged into mpv
+# Why the master track instead of a release: the FEL feature merged into mpv
 # master after v0.41.0 (mpv-player/mpv#17932) and needs libplacebo
 # PL_API_VER >= 370, which no libplacebo release carries yet (latest is
-# v7.360.1). So this package pins a known-good mpv master commit and builds a
-# pinned libplacebo master as a versioned soname (libplacebo.so.371 at this
-# pin) installed alongside the system libplacebo.so.360 — no file conflict, and the system
+# v7.360.1). So this package builds the master-track tag of the mpv fork
+# (mgth/mpv, `orender-master-v*`: a pinned mpv master commit with the orender
+# integration on it, nothing to patch) and a pinned libplacebo master as a
+# versioned soname (libplacebo.so.371 at this pin) installed alongside the
+# system libplacebo.so.360 — no file conflict, and the system
 # library keeps serving every other consumer. ffmpeg needs the dovi_split BSF
 # and the DoVi stream group, both shipped in Arch's ffmpeg >= 9.0.
 #
@@ -18,10 +20,10 @@
 # `mpv-omniphony`. Install one or the other — both replace stock mpv.
 
 pkgname=mpv-omniphony-fel
-_tag=v0.6.0-fel-beta.2   # mpv-omniphony tag whose patches-master apply to _mpvcommit (the master-track rebase of 2026-09-20)
-_mpvcommit=e76a35ec95b27f5cf2d27b043b5e2e0d90e468ae   # mpv master 2026-09-18, the master-track base (patches-master rebased on it)
-_plcommit=a7a18af88ff0a17c04840dcb3246047bb6b46df3    # libplacebo master, PL_API_VER 370
-pkgver=0.6.0             # the orender content is Omniphony 0.6.0; the tag names the FEL beta channel
+_tag=v0.7.0              # mpv-omniphony release tag (patches-libplacebo/, licence texts)
+_forktag=orender-master-v0.7.0.1   # mgth/mpv tag: MPV_FORK_MASTER_TAG of mpv-fork.env at $_tag (on mpv master 413ff0b1cd)
+_plcommit=a7a18af88ff0a17c04840dcb3246047bb6b46df3    # libplacebo master, PL_API_VER 371
+pkgver=0.7.0             # $_tag without the 'v'
 pkgrel=1
 pkgdesc="mpv (master snapshot) with the orender spatial audio decoder and Dolby Vision P7 FEL playback"
 arch=('x86_64')
@@ -46,7 +48,7 @@ license=('GPL-3.0-or-later')
 # the sibling PKGBUILD. The pinned libplacebo is version-locked to this package
 # by construction, so it needs no external guard; its own runtime deps
 # (libdovi/shaderc/lcms2) do, and are listed.
-depends=('orender>=0.6.0' 'ffmpeg>=2:9.0' 'libass' 'luajit' 'libx11' 'mesa'
+depends=('orender>=0.7.0' 'ffmpeg>=2:9.0' 'libass' 'luajit' 'libx11' 'mesa'
          'shaderc' 'lcms2' 'libdovi' 'vulkan-icd-loader' 'xxhash'
          'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
          'libavutil.so' 'libswresample.so' 'libswscale.so'
@@ -58,15 +60,15 @@ makedepends=('meson' 'ninja' 'python' 'git')
 provides=("mpv=1:0.41.0" 'libmpv.so=2-64')
 conflicts=('mpv' 'mpv-omniphony')
 source=("mpv-omniphony-$_tag.tar.gz::https://github.com/mgth/mpv-omniphony/archive/refs/tags/$_tag.tar.gz"
-        "mpv-$_mpvcommit.tar.gz::https://github.com/mpv-player/mpv/archive/$_mpvcommit.tar.gz"
+        "mpv-$_forktag.tar.gz::https://github.com/mgth/mpv/archive/refs/tags/$_forktag.tar.gz"
         "libplacebo::git+https://code.videolan.org/videolan/libplacebo.git#commit=$_plcommit"
         "glad::git+https://github.com/Dav1dde/glad"
         "jinja::git+https://github.com/pallets/jinja"
         "markupsafe::git+https://github.com/pallets/markupsafe"
         "Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers"
         "fast_float::git+https://github.com/fastfloat/fast_float.git")
-sha256sums=('62e9ed07a26e8eae33b58c10837eac100d8958f93517a0d0482707d4f3a03d00'
-            '0f9ce05d33051f912ba69da51430d3fb051e8a3aa6d7c52a34f43a9f9f663e89'
+sha256sums=('7529a0afba63726307982410e7f5e79cdf73bf69b5d13aa9ee649992b178ad2b'
+            '0da2082349b86ab23f0b323fe3a450053b1c3991b7a56999b259888fc765bd66'
             'b7e37bb50668ba0d554a26db5ad21013c9dc3f9e84a2f8dd87a25114c73afdf8'
             'SKIP'
             'SKIP'
@@ -74,8 +76,8 @@ sha256sums=('62e9ed07a26e8eae33b58c10837eac100d8958f93517a0d0482707d4f3a03d00'
             'SKIP'
             'SKIP')
 
-_repo="mpv-omniphony-${_tag#v}"   # extracted repo tarball (src/, patches-master/)
-_mpv="mpv-$_mpvcommit"
+_repo="mpv-omniphony-${_tag#v}"   # extracted repo tarball (patches-libplacebo/, COPYING, notices)
+_mpv="mpv-$_forktag"              # extracted fork tarball
 
 prepare() {
     # libplacebo: wire the vendored submodules to the local clones (the
@@ -97,14 +99,6 @@ prepare() {
     for p in "$srcdir/$_repo"/patches-libplacebo/*.patch; do
         echo "applying (libplacebo) ${p##*/}"
         git apply "$p"
-    done
-
-    # mpv: patch 0001 adds audio/decode/ad_orender.c; the rest wire it in.
-    cd "$srcdir/$_mpv"
-    local patches=("$srcdir/$_repo"/patches-master/*.patch)
-    for p in "${patches[@]}"; do
-        echo "applying ${p##*/}"
-        patch -p1 < "$p"
     done
 }
 
