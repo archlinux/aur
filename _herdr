@@ -938,6 +938,13 @@ _arguments "${_arguments_options[@]}" : \
 ':plugin:_default' \
 && ret=0
 ;;
+(update)
+_arguments "${_arguments_options[@]}" : \
+'-y[]' \
+'--yes[]' \
+'*::plugins:_default' \
+&& ret=0
+;;
 (link)
 _arguments "${_arguments_options[@]}" : \
 '--disabled[]' \
@@ -1498,6 +1505,7 @@ _herdr__subcmd__plugin_commands() {
     local commands; commands=(
 'install:Install a plugin from GitHub' \
 'uninstall:Uninstall a plugin' \
+'update:Update GitHub-installed plugins' \
 'link:Link a local plugin' \
 'unlink:Unlink a local plugin' \
 'enable:Enable a plugin' \
@@ -1604,6 +1612,11 @@ _herdr__subcmd__plugin__subcmd__uninstall_commands() {
 _herdr__subcmd__plugin__subcmd__unlink_commands() {
     local commands; commands=()
     _describe -t commands 'herdr plugin unlink commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__plugin__subcmd__update_commands] )) ||
+_herdr__subcmd__plugin__subcmd__update_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr plugin update commands' commands "$@"
 }
 (( $+functions[_herdr__subcmd__server_commands] )) ||
 _herdr__subcmd__server_commands() {

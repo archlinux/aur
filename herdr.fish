@@ -1,27 +1,27 @@
 # Print an optspec for argparse to handle cmd's options that are independent of any subcommand.
 function __fish_herdr_global_optspecs
-	string join \n h/help session= machine= remote= remote-keybindings= handoff default-config skill V/version
+    string join \n h/help session= machine= remote= remote-keybindings= handoff default-config skill V/version
 end
 
 function __fish_herdr_needs_command
-	# Figure out if the current invocation already has a command.
-	set -l cmd (commandline -opc)
-	set -e cmd[1]
-	argparse -s (__fish_herdr_global_optspecs) -- $cmd 2>/dev/null
-	or return
-	if set -q argv[1]
-		# Also print the command, so this can be used to figure out what it is.
-		echo $argv[1]
-		return 1
-	end
-	return 0
+    # Figure out if the current invocation already has a command.
+    set -l cmd (commandline -opc)
+    set -e cmd[1]
+    argparse -s (__fish_herdr_global_optspecs) -- $cmd 2>/dev/null
+    or return
+    if set -q argv[1]
+        # Also print the command, so this can be used to figure out what it is.
+        echo $argv[1]
+        return 1
+    end
+    return 0
 end
 
 function __fish_herdr_using_subcommand
-	set -l cmd (__fish_herdr_needs_command)
-	test -z "$cmd"
-	and return 1
-	contains -- $cmd[1] $argv
+    set -l cmd (__fish_herdr_needs_command)
+    test -z "$cmd"
+    and return 1
+    contains -- $cmd[1] $argv
 end
 
 complete -c herdr -n "__fish_herdr_needs_command" -l session -d 'Use or create a named persistent session' -r
@@ -381,20 +381,22 @@ complete -c herdr -n "__fish_herdr_using_subcommand integration; and not __fish_
 complete -c herdr -n "__fish_herdr_using_subcommand integration; and not __fish_seen_subcommand_from install uninstall status" -f -a "uninstall" -d 'Uninstall an integration'
 complete -c herdr -n "__fish_herdr_using_subcommand integration; and not __fish_seen_subcommand_from install uninstall status" -f -a "status" -d 'Show integration status'
 complete -c herdr -n "__fish_herdr_using_subcommand integration; and __fish_seen_subcommand_from status" -l outdated-only
-complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall link unlink enable disable list config-dir action log logs pane" -f -a "install" -d 'Install a plugin from GitHub'
-complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall link unlink enable disable list config-dir action log logs pane" -f -a "uninstall" -d 'Uninstall a plugin'
-complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall link unlink enable disable list config-dir action log logs pane" -f -a "link" -d 'Link a local plugin'
-complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall link unlink enable disable list config-dir action log logs pane" -f -a "unlink" -d 'Unlink a local plugin'
-complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall link unlink enable disable list config-dir action log logs pane" -f -a "enable" -d 'Enable a plugin'
-complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall link unlink enable disable list config-dir action log logs pane" -f -a "disable" -d 'Disable a plugin'
-complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall link unlink enable disable list config-dir action log logs pane" -f -a "list" -d 'List installed plugins'
-complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall link unlink enable disable list config-dir action log logs pane" -f -a "config-dir" -d 'Print a plugin config directory'
-complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall link unlink enable disable list config-dir action log logs pane" -f -a "action" -d 'List or invoke plugin actions'
-complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall link unlink enable disable list config-dir action log logs pane" -f -a "log" -d 'Inspect plugin command logs'
-complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall link unlink enable disable list config-dir action log logs pane" -f -a "logs" -d 'Inspect plugin command logs'
-complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall link unlink enable disable list config-dir action log logs pane" -f -a "pane" -d 'Manage plugin-owned panes'
+complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall update link unlink enable disable list config-dir action log logs pane" -f -a "install" -d 'Install a plugin from GitHub'
+complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall update link unlink enable disable list config-dir action log logs pane" -f -a "uninstall" -d 'Uninstall a plugin'
+complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall update link unlink enable disable list config-dir action log logs pane" -f -a "update" -d 'Update GitHub-installed plugins'
+complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall update link unlink enable disable list config-dir action log logs pane" -f -a "link" -d 'Link a local plugin'
+complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall update link unlink enable disable list config-dir action log logs pane" -f -a "unlink" -d 'Unlink a local plugin'
+complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall update link unlink enable disable list config-dir action log logs pane" -f -a "enable" -d 'Enable a plugin'
+complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall update link unlink enable disable list config-dir action log logs pane" -f -a "disable" -d 'Disable a plugin'
+complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall update link unlink enable disable list config-dir action log logs pane" -f -a "list" -d 'List installed plugins'
+complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall update link unlink enable disable list config-dir action log logs pane" -f -a "config-dir" -d 'Print a plugin config directory'
+complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall update link unlink enable disable list config-dir action log logs pane" -f -a "action" -d 'List or invoke plugin actions'
+complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall update link unlink enable disable list config-dir action log logs pane" -f -a "log" -d 'Inspect plugin command logs'
+complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall update link unlink enable disable list config-dir action log logs pane" -f -a "logs" -d 'Inspect plugin command logs'
+complete -c herdr -n "__fish_herdr_using_subcommand plugin; and not __fish_seen_subcommand_from install uninstall update link unlink enable disable list config-dir action log logs pane" -f -a "pane" -d 'Manage plugin-owned panes'
 complete -c herdr -n "__fish_herdr_using_subcommand plugin; and __fish_seen_subcommand_from install" -l ref -r
 complete -c herdr -n "__fish_herdr_using_subcommand plugin; and __fish_seen_subcommand_from install" -s y -l yes
+complete -c herdr -n "__fish_herdr_using_subcommand plugin; and __fish_seen_subcommand_from update" -s y -l yes
 complete -c herdr -n "__fish_herdr_using_subcommand plugin; and __fish_seen_subcommand_from link" -l disabled
 complete -c herdr -n "__fish_herdr_using_subcommand plugin; and __fish_seen_subcommand_from link" -l enabled
 complete -c herdr -n "__fish_herdr_using_subcommand plugin; and __fish_seen_subcommand_from list" -l plugin -r
