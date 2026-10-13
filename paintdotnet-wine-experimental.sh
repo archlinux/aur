@@ -1,11 +1,18 @@
 #!/bin/bash
 set -euo pipefail
-
 # match the DIR and PREFIX from official install.sh
 DIR="$HOME/.local/share/paintdotnet"
 PREFIX="$DIR/wineprefix"
+# if something need to be added to prefix (like another winetricks) changing this allows me to redo "prefix creation"
+UPDATE_FILE="$PREFIX/update1"
 
-if [[ ! -d "$DIR" ]]; then
+export WINEDLLOVERRIDES="mshtml=;d3dcompiler_47=n"
+export WINEPREFIX="$PREFIX"
+export WINEDEBUG="${WINEDEBUG:--all}"
+export DXVK_LOG_LEVEL="${DXVK_LOG_LEVEL:-error}"
+
+
+if [[ ! -f "$UPDATE_FILE" ]]; then
   mkdir -p "$PREFIX"
 
   wineboot --init
@@ -15,7 +22,8 @@ if [[ ! -d "$DIR" ]]; then
 
   winetricks -q dxvk
 
-  wineboot -w
+  wineserver -w
+  touch "$UPDATE_FILE"
 fi
 
 # I don't like that but... portable Paint.NET like to write to it's instalation directory (CrashLogs)
@@ -37,11 +45,6 @@ while IFS= read -r -d '' f; do
     GOAL="$TARGET/${f#"$INSTALLED_DIR"/}"
     [[ -e "$GOAL" || -L "$GOAL" ]] || ln -s "$f" "$GOAL"
 done
-
-export WINEDLLOVERRIDES="mshtml=;d3dcompiler_47=n"
-export WINEPREFIX="$PREFIX"
-export WINEDEBUG="${WINEDEBUG:--all}"
-export DXVK_LOG_LEVEL="${DXVK_LOG_LEVEL:-error}"
 
 wine "$TARGET/paintdotnet.exe" "$@"
 
