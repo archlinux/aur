@@ -2,7 +2,7 @@
 # Maintainer: peaster
 
 pkgname='git-daily-bin'
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Extract your git activity across repos for a specific day.'
 url='https://github.com/peaster/git-daily'
@@ -13,10 +13,10 @@ conflicts=('git-daily')
 depends=('git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/peaster/git-daily/releases/download/v${pkgver}/git-daily_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('0a1ea78ee706e73d00c276eb5082790286082d02f28a8bab1344ab3860a49a80')
+sha256sums_aarch64=('3918cb0f5ea29b8da0d346809df79a4f45e54120ff55c687d34115be32b76a79')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/peaster/git-daily/releases/download/v${pkgver}/git-daily_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('0c714ae92311f617bc224db49f25b70e67be567eaeebecd2577eb9bdab7febb7')
+sha256sums_x86_64=('6b6b28d3a8201003f2606505cf66fa05219fbf59d70931cd46c55c7240bcf548')
 
 package() {
   install -Dm755 "./git-daily" "${pkgdir}/usr/bin/git-daily"
