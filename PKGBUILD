@@ -3,7 +3,7 @@ _sha1=a81dbb0478e8b73931dc2d671563204f6ac0ef82
 _channel=stable
 pkgname=defold-bin
 pkgver=1.14.0.a81dbb0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc='Defold is a completely free to use game engine for development of desktop, mobile and web games.'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://d.defold.com/archive/${_
         'Defold.desktop')
 sha256sums=('cf2d8bcb3cc816c5ba4b966e579828b6c3cfbf97fed1657f71408744f9838a64'
             'be6e9921ba01445d200ba3dc09b5cab149a58d57a76ca98376b52af87d817a7a'
-            '5c92dc2b1cf4acc81f26b6848c3bb3ee812158e80a15fb1e7f5585362acb20f2')
+            '915892954b9156c9cd8e8b85b959de897e240d438289192d973804c4cf04f9bf')
 
 package() {
     cd "$srcdir"
