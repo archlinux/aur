@@ -2,7 +2,7 @@
 
 pkgname=tuber-rs-bin
 _pkgname=tuber-rs
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="CLI and TUI to view and manage Tuber and Beanstalkd queues (prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -21,10 +21,10 @@ source_x86_64=("tuber-cli-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver
 source_aarch64=("tuber-cli-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/tuber-cli-aarch64-unknown-linux-musl.tar.gz"
                 "tuber-tui-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/tuber-tui-aarch64-unknown-linux-musl.tar.gz")
 
-sha256sums_x86_64=('59ecf70e2d7d59ff345c9410e1cfbd39a2e0171f458c71a78a5a57bebfbe5254'
-                   '3d1139b6f4979fd51a2d3c5e54aa7d348f62d7104ba634e7a295f2b8aaf5bf3a')
-sha256sums_aarch64=('c77f453ddd7123b4f46a094e00621cfc441efd4558f235b282c41eaf312052f7'
-                    '9b8a3f55ac13170294b9f1a705339766e236cdb8aeb58fd1c0de8304098c2ff8')
+sha256sums_x86_64=('0efe6611193952008cf9363309bea7602c5c568b06f502987557d30d488ed798'
+                   'c261a3c690e990b940a21c1fac4d7c8af2665e024396cb8695d996b2d59a14b1')
+sha256sums_aarch64=('c690c0cc6a0d971fa5f44b54a4a277527a0ca8e4af6d8f4dcb8c0e4f69527dfc'
+                    'ec662e57c471312dfecbe1d8eeab7a5ffcf6fed557a745431417b1a43a88253b')
 
 package() {
 	install -Dm755 "$srcdir/tuber-cli" "$pkgdir/usr/bin/tuber-cli"
