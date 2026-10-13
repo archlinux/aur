@@ -1,8 +1,9 @@
 pkgbase = veikk-tablet-bin
 	pkgdesc = Veikk tablet driver retrieved from official veikk website
-	pkgver = 3.5.8_3
-	pkgrel = 4
+	pkgver = 3.5.10_9
+	pkgrel = 1
 	url = https://www.veikk.com
+	install = veikk-tablet-bin.install
 	arch = x86_64
 	depends = libx11
 	depends = libxrandr
@@ -11,7 +12,8 @@ pkgbase = veikk-tablet-bin
 	depends = libxi
 	depends = glibc
 	depends = libusb
-	source = https://veikk.com/image/catalog/Software/vktablet-3.5.8-3.x86_64.zip
-	md5sums = 682e42a8df5d60feca7dd00623627b0b
+	options = !debug
+	source = https://macdriver.oss-us-west-1.aliyuncs.com/vktablet-3.5.10-9.x86_64.tar.gz
+	md5sums = ecc3e93577056f46b2c6d6b1fec793fc
 
 pkgname = veikk-tablet-bin
