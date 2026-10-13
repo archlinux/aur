@@ -1,6 +1,6 @@
 # Maintainer: Robert O'Neill <robertdoneill@gmail.com>
 pkgname=visipass-bin
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Password manager for coding agents: they find, use and save secrets without seeing them"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ provides=('visipass')
 conflicts=('visipass')
 source_x86_64=("$url/releases/download/v$pkgver/visipass-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/visipass-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('44718e6f32684a02e6b1cf19557ade6555a853db243124c8652754bacccb5efe')
-sha256sums_aarch64=('f4b9903267644111950d656473383e0ba168b4142b132fe256168d7a2f4ab5bf')
+sha256sums_x86_64=('5ffb0e0d3f983c280d8da698cfcf3828479f541b87cfe3c40b6ba2cf90f196bd')
+sha256sums_aarch64=('81174380866453ef8f6908db5a7f60b2499c0708d1cb25d90517f62d55e1c0aa')
 
 package() {
   cd "visipass-$pkgver-linux-$CARCH"
@@ -27,6 +27,8 @@ package() {
   install -Dm644 README.md SECURITY.md SKILL.md -t "$pkgdir/usr/share/doc/visipass/"
   install -Dm644 visipass.desktop -t "$pkgdir/usr/share/applications/"
   install -Dm644 visipass.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/visipass.svg"
+  install -d "$pkgdir/usr/share/visipass"
+  cp -r --no-preserve=ownership extension "$pkgdir/usr/share/visipass/"
   for size in 16 24 32 48 64 128 256 512; do
     install -Dm644 "icons/visipass-$size.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/visipass.png"
   done
