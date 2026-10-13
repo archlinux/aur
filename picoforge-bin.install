@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: 0BSD
+
 post_install() {
     printf '%s\n' \
         'PicoForge requires PC/SC access to configure security keys.' \

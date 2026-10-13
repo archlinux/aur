@@ -1,15 +1,19 @@
 # Maintainer: Goldbro233 <bowensun_06@outlook.com>
+# SPDX-License-Identifier: 0BSD
 
 pkgname=picoforge-bin
 pkgver=0.9.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Desktop tool for configuring and managing Pico FIDO security keys (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/librekeys/picoforge'
+# The SPDX header and local LICENSE cover packaging; this is the upstream app license.
 license=('AGPL-3.0-only')
-# PC/SC and GPUI's dynamically loaded Wayland/Vulkan backends use host libraries.
-depends=('glibc' 'libgcc' 'pcsclite' 'ccid' 'libxcb' 'util-linux-libs'
-         'wayland' 'vulkan-icd-loader' 'hicolor-icon-theme')
+# Namcap cannot see these runtime requirements from the main ELF's DT_NEEDED:
+# ccid supplies the PC/SC driver, while Wayland and Vulkan are loaded with dlopen().
+# Keep these dependencies so PC/SC access and the supported GUI backends work by default.
+depends=('glibc' 'libgcc' 'pcsclite' 'ccid' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11'
+         'util-linux-libs' 'wayland' 'vulkan-icd-loader' 'hicolor-icon-theme')
 makedepends=('7zip')
 optdepends=('vulkan-driver: Vulkan renderer for the graphical interface')
 provides=("picoforge=$pkgver")
@@ -27,10 +31,20 @@ sha256sums=('81c12f129cf0e55bc932f94db9781204a25ab919d94e985ed16027014f66bff5'
 prepare() {
     # Extract once during packaging; installed programs do not need FUSE.
     7z x -y -oAppDir "$_appimage"
+    # The AppImage's old libxkbcommon cannot parse newer system Compose keysyms
+    # such as dead_hamza. Use Arch's keyboard libraries alongside its Compose data.
+    # Remove both bundled libraries to avoid mixing versions; the dynamic loader
+    # falls back to the system libraries when they are absent from $ORIGIN/../lib.
+    rm -f AppDir/usr/lib/libxkbcommon.so* AppDir/usr/lib/libxkbcommon-x11.so*
 }
 
 package() {
-    # Preserve $ORIGIN/../lib so the upstream binary finds its bundled libraries.
+    # Arch permits large self-contained applications under /opt/<pkgname>.
+    # Namcap flags ELF files below /opt, but this package preserves the upstream
+    # AppImage's relative $ORIGIN/../lib layout for its private libraries.
+    # Keep the remaining upstream libraries: Namcap checks each ELF from /tmp,
+    # losing this relative layout. Unused-link warnings, including glibc
+    # compatibility libraries, alone do not prove a bundled file can be removed.
     install -dm755 "$pkgdir/opt/picoforge/usr"
     cp -a AppDir/usr/bin AppDir/usr/lib "$pkgdir/opt/picoforge/usr/"
     install -dm755 "$pkgdir/usr/bin"
