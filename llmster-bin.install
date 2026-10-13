@@ -1,0 +1,18 @@
+post_install() {
+  cat <<'EOF'
+==> llmster was installed to /opt/llmster.
+==> Like the upstream installer, each user has to bootstrap it once:
+      LMS_BOOTSTRAP_INSTALL_SH=1 llmster bootstrap
+==> This sets up ~/.lmstudio (runtimes, models and the 'lms' CLI).
+==> To use 'lms', add it to your PATH:
+      export PATH="$HOME/.lmstudio/bin:$PATH"
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "==> Per-user data in ~/.lmstudio was not removed."
+}

@@ -1,0 +1,21 @@
+pkgbase = llmster-bin
+	pkgdesc = LM Studio's headless daemon
+	pkgver = 0.0.25
+	pkgrel = 1
+	url = https://lmstudio.ai/docs/developer/core/headless_llmster
+	install = llmster-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = glibc
+	depends = gcc-libs
+	provides = llmster
+	conflicts = llmster
+	conflicts = lmstudio
+	noextract = llmster-bin-0.0.25-1-x86_64.tar.gz
+	options = !strip
+	options = !debug
+	source = llmster-bin-0.0.25-1-x86_64.tar.gz::https://llmster.lmstudio.ai/download/0.0.25-1-linux-x64.full.tar.gz
+	sha512sums = 4d119af740379fc7509894d761a85183420a6dd3cb994596a1b6e4b37208a5d3e8cb94ffe583115b1473a6722bab5fffc09b90eb22c755f5dde1458774ab4951
+
+pkgname = llmster-bin
