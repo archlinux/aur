@@ -2,7 +2,7 @@
 
 pkgauthor=Eoin-McMahon
 pkgname=comhad
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="S3 TUI client"
 
@@ -18,7 +18,7 @@ depends=('glibc' 'libgcc' 'openssl')
 options=('!lto')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f0667a657d7f759820a49c2aea7ede6a14c863296cf88ff9b99a4419ed38b647')
+sha256sums=('f7e986cc14c5386eebfd043909f951578893693e017bf4951db37fd26e3b8c8e')
 
 prepare() {
 	cd "${pkgname}-${pkgver}" || exit
