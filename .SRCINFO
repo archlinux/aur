@@ -45,6 +45,7 @@ pkgbase = tde-session-git
 	optdepends = pipewire-pulse: sound, with its volume in the bar
 	optdepends = gnome-keyring: remembering the passphrases of SSH keys
 	optdepends = fprintd: unlocking the screen with a finger
+	optdepends = brightnessctl: the keyboard light keys, where the keyboard does not change it itself
 	provides = tde-session
 	conflicts = tde-session
 	source = tde-session::git+https://github.com/zskamljic/tde-session.git

@@ -52,6 +52,7 @@ optdepends=(
   'pipewire-pulse: sound, with its volume in the bar'
   'gnome-keyring: remembering the passphrases of SSH keys'
   'fprintd: unlocking the screen with a finger'
+  'brightnessctl: the keyboard light keys, where the keyboard does not change it itself'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
