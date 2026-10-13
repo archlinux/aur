@@ -241,11 +241,11 @@ fi
 
 pkgbase="linux-$_pkgsuffix"
 _major=7.2
-_minor=9
+_minor=10
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-_tagrel=2
+_tagrel=1
 # Pinned to match the distro package's pkgrel (linux-cachyos 7.1.5-1) rather
 # than tracking upstream's PKGBUILD pkgrel. This fork exists to be compared
 # against the stock kernel, so the version string should differ ONLY by the
@@ -261,12 +261,12 @@ _tagrel=2
 # version bump is safe because the running kernel keeps its own directory; this
 # does not. Install only when the reboot follows immediately.
 #
-# pkgrel=2 while the distro package is at 1: a deliberate bump, made so this
-# rebuild (upstream sync of the optional nvidia/zfs pins) installs as a new
-# version and leaves the running kernel's module tree alone. `uname -r` reads
-# 7.2.8-2-cachyos-jetm until the next upstream tag resets it via
-# update-version.sh.
-pkgrel=2
+# pkgrel=3 while the distro package is at 2: a deliberate bump, made so a rebuild
+# at the same kernel version (here, porting upstream's generated-Rust headers
+# install) installs as a new version and leaves the running kernel's module
+# tree alone. `uname -r` reads 7.2.9-3-cachyos-jetm until the next upstream tag
+# resets it via update-version.sh.
+pkgrel=1
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 # Kept short: the split packages append their own suffixes to this string
 # ("... kernel and modules", "Non-stripped vmlinux file for the ..."), so a long
@@ -301,7 +301,7 @@ makedepends=(
 )
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=615.71.09
+_nv_ver=615.78.08
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
@@ -812,6 +812,13 @@ _package-headers() {
         install -Dt "$builddir/rust" rust/*.so
     fi
 
+    # Install generated Rust files
+    if [ -d rust/kernel ]; then
+        while IFS= read -r -d "" _gen; do
+            install -Dm644 "$_gen" "$builddir/$_gen"
+        done < <(find rust -type f -name 'generated_*.rs' -print0)
+    fi
+
     echo "Installing unstripped VDSO..."
     make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install \
       link=  # Suppress build-id symlinks
@@ -935,7 +942,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('8a545c8da5cc1e0d803db9f761ee159733c963b40c594ba74f3723eab68abfd7e7a4ac92139a064cff65b0a0c742bf6989c5d05cd98f057a2ad9efd154c7df25'
+b2sums=('fa5000924722ffbabe58ffd474fbf6f70f2453295a596d976a0da2699b349d35c968b0d3c736c8cba407f6a6104233630ecd115385a9577187414989876abb50'
         'SKIP'
         '475ed83f3a10cfeb9624a65b8deae00f171bfbc04b92a4aa80c546264393b6374acaa001ab19e24c1bf0adc891ac7a32af1b03476ae4d976ce16de34eb51235d'
         'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e'
