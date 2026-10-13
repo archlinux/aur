@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chaski-bin
 _pkgname=Chaski
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A content aggregator that helps you focus on what matters.(Prebuilt version)"
 arch=('x86_64')
@@ -18,12 +18,14 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/app-v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('7567a412167c3006e8a49a88bada80de7195dd8bc88a232e2f0d0f51fdfc5375')
+sha256sums=('7f1d6f73420c6d41cc3d11818b05ef1bed031a2aa3dc878196237bc24cec2ed2')
 prepare() {
     sed -i "s/Categories=/Categories=Utility;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+    [ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
