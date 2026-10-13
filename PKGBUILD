@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=boxesandglue-glu
-pkgver=0.0.44
+pkgver=0.0.46
 pkgrel=1
 pkgdesc='a command line interface for boxes and glue using Lua scripting'
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(glibc) # libc.so
 makedepends=(go)
 _archive="${pkgname#*-}-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('6f5e9a2df76618c211441cde01cc458e059f6e49f16c6bdcce6fccf9efb97938')
+sha256sums=('36bbaa9ad2d59f52897b6c82e680fc5f0724869a8d95aed56df2c81be788dcfe')
 
 prepare() {
 	cd "$_archive"
