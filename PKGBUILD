@@ -9,8 +9,8 @@ pkgdesc="Fast, disk space efficient package manager"
 arch=('x86_64')
 url="https://github.com/pnpm/pnpm"
 license=('MIT')
+depends=(sh glibc libgcc sqlite)
 makedepends=(git mold rust)
-optdepends=(nodejs)
 conflicts=(pnpm)
 provides=(pnpm)
 source=("git+${url}.git")
@@ -18,8 +18,9 @@ b2sums=('SKIP')
 
 build() {
   cd pnpm
+  export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
   export RUSTFLAGS+=" -C link-args=-fuse-ld=mold" # needed for aws-lc ?
-  cargo build --release --bin pnpm
+  cargo build --release -p pnpm-cli --bin pnpm
 }
 
 package() {
