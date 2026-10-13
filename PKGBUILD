@@ -4,12 +4,12 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)"
 arch=('any')
 url="https://github.com/HorneroOS/config"
-license=('MIT')
+license=('MIT' 'CC-BY-2.0' 'CC-BY-SA-4.0')
 # python-materialyoucolor: lib/hornero/generate-m3-colors.py (theme switching via
 # `horneroctl appearance scheme regenerate`); without it every theme set rolls back.
 depends=('bash' 'git' 'python' 'python-materialyoucolor')
@@ -39,7 +39,7 @@ optdepends=(
 # Named "config" (not "$pkgname") so the checkout lands at
 # "${srcdir}/config", matching _hornero_repo_root() below and keeping
 # AUR chroot builds identical to local packaging/ builds.
-source=("config::git+https://github.com/HorneroOS/config.git#tag=v0.3.4")
+source=("config::git+https://github.com/HorneroOS/config.git#commit=98b68bddec8faa7e8f9f0fc26b947031c4f85a27")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
@@ -253,4 +253,8 @@ package() {
   # Ship the license alongside the payload for offline inspection.
   install -Dm644 "$repo_root/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$repo_root/profiles/themes/wallpaper-provenance.json" \
+    "$pkgdir/usr/share/hornero/wallpapers/wallpaper-provenance.json"
+  install -Dm644 "$repo_root/profiles/themes/WALLPAPER-CREDITS.md" \
+    "$pkgdir/usr/share/licenses/$pkgname/WALLPAPER-CREDITS.md"
 }
