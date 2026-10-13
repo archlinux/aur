@@ -1,22 +1,22 @@
 pkgbase = gopherus-svn
 	pkgdesc = Gopher client
-	pkgver = 1.2.r221
+	pkgver = 1.2.2.r271
 	pkgrel = 1
 	url = http://gopherus.sourceforge.net
-	arch = i686
 	arch = x86_64
-	license = BSD
+	arch = i686
+	license = BSD-2-Clause
 	makedepends = subversion
+	depends = glibc
 	depends = ncurses
-	optdepends = sdl2
+	depends = hicolor-icon-theme
 	provides = gopherus
 	conflicts = gopherus
 	source = gopherus::svn://svn.code.sf.net/p/gopherus/code
-	source = gopherus-1.2-ncheader.patch
 	source = gopherus.desktop
+	source = LICENSE
 	sha256sums = SKIP
-	sha256sums = 9637df8df7dfa15232b5898170b1d1d0a485628d77c2a40150db914c4fb2b866
-	sha256sums = b01f1fa220cb788edf5c743a35aeff169f62eefee19d5f6dee96274e8c8cfd21
+	sha256sums = c30160937ee338232192721d944d1258fb2f69502a8f58a6239bcf3024fd0227
+	sha256sums = 34faddf64b63c84f0bdb12321515bce3314f9192662f57707bedf79fc1dd123d
 
 pkgname = gopherus-svn
-
