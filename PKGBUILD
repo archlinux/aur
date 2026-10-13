@@ -20,7 +20,8 @@ optdepends=(
   'tmux: for background bash capabilities'
 )
 provides=('pi-bolt' 'pi-bolt-bin' 'pi-bolt-git' 'pi-bolt-bin-git')
-conflicts=('pi-bolt' 'pi-bolt-bin' 'pi-bolt-git' 'pi-bolt-bin-git')
+conflicts=('pi-bolt' 'pi-bolt-bin' 'pi-bolt-git' 'pi-bolt-bin-git'
+           'pi-bolt-avx2' 'pi-bolt-avx2-bin' 'pi-bolt-avx2-git' 'pi-bolt-avx2-bin-git')
 options=('!strip')
 install=${pkgname}.install
 # This asset needs AVX2 (Intel Haswell / AMD Zen and later, 2013+).

@@ -20,6 +20,10 @@ pkgbase = pi-bolt-avx2-bin-release-git
 	conflicts = pi-bolt-bin
 	conflicts = pi-bolt-git
 	conflicts = pi-bolt-bin-git
+	conflicts = pi-bolt-avx2
+	conflicts = pi-bolt-avx2-bin
+	conflicts = pi-bolt-avx2-git
+	conflicts = pi-bolt-avx2-bin-git
 	options = !strip
 
 pkgname = pi-bolt-avx2-bin-release-git
