@@ -1,0 +1,13 @@
+post_install() {
+    modprobe i2c-dev >/dev/null 2>&1 || echo "monlux: could not load i2c-dev, reboot or run 'sudo modprobe i2c-dev'" >&2
+    udevadm control --reload >/dev/null 2>&1 || echo "monlux: could not reload udev rules, run 'sudo udevadm control --reload && sudo udevadm trigger'" >&2
+    udevadm trigger --subsystem-match=i2c-dev >/dev/null 2>&1 || echo "monlux: could not trigger udev for i2c-dev, run 'sudo udevadm trigger --subsystem-match=i2c-dev'" >&2
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    udevadm control --reload >/dev/null 2>&1 || echo "monlux: could not reload udev rules, run 'sudo udevadm control --reload'" >&2
+}
