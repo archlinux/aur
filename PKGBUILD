@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rayburst-git
 _pkgname=Rayburst
-pkgver=4.0.1.r0.gff30d29
+pkgver=4.1.0.beta.1.r0.g86cc8e6
 _nodeversion=24
 pkgrel=1
 pkgdesc="Redefining the open-source download manager."
