@@ -1,6 +1,6 @@
 pkgbase = subjack-bin
 	pkgdesc = Subdomain takeover tool written in Go
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/haccer/subjack
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = subjack-bin
 	provides = subjack
 	conflicts = subjack
 	options = !debug
-	source_x86_64 = subjack-3.0.0-x86_64::https://github.com/haccer/subjack/releases/download/v3.0.0/subjack-linux-amd64
-	sha256sums_x86_64 = 679ee958ec7130f74ca375c03baa9cd0d0c41f7d4b919fef7caaded8e0827150
-	source_aarch64 = subjack-3.0.0-aarch64::https://github.com/haccer/subjack/releases/download/v3.0.0/subjack-linux-arm64
-	sha256sums_aarch64 = 1a07a687916a3b70adafca9f66a7ec5c8621c389adbcb5b17081a971e1a61aba
+	source_x86_64 = subjack-3.1.0-x86_64::https://github.com/haccer/subjack/releases/download/v3.1.0/subjack-linux-amd64
+	sha256sums_x86_64 = 632bd003cd97deb77f5ce5bd4a8d9fe5e08668eb5a2016ea6c01c45e7f472a2a
+	source_aarch64 = subjack-3.1.0-aarch64::https://github.com/haccer/subjack/releases/download/v3.1.0/subjack-linux-arm64
+	sha256sums_aarch64 = 686ae108c5605adac99e71ab3260740eef736a5f48b1a74e3c18907c3b2029e5
 
 pkgname = subjack-bin
