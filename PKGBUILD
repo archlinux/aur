@@ -1,7 +1,7 @@
 # Maintainer: Kolimi contributors <chaitanyachowdary125@live.com>
 pkgname=kolimi-server
-pkgver=0.1.7
-pkgrel=2
+pkgver=0.1.8
+pkgrel=1
 pkgdesc="Pure-Rust, single-binary self-hosted cloud: files, WebDAV, CalDAV/CardDAV, sync"
 arch=('x86_64' 'aarch64')
 url="https://github.com/chaitanyayeleti/kolimi"
@@ -12,14 +12,14 @@ provides=('kolimi')
 conflicts=('kolimi-git')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('df08e68724c0b6cdd25a9c6e89fe6e31d424a769cc74fbebbb1105263dff45a6')
+sha256sums=('f3a7b3ca13e7510e5f49ac5da429b7d50595826f36cfaf87966ef37a5e612012')
 
 build() {
     cd "kolimi-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    # aws-lc-sys (via rustls) needs -O0 for its jitterentropy RNG; Arch's
-    # hardened CFLAGS force -O2, tripping a compile-time #error. Disable the
-    # jitterentropy fallback so the OS RNG is used instead.
+    # aws-lc-sys (pulled in by rustls) requires -O0 for its jitterentropy RNG,
+    # but Arch's hardened CFLAGS force -O2 afterwards, tripping a compile-time
+    # #error. Disable the jitterentropy fallback so the OS RNG is used instead.
     export AWS_LC_SYS_NO_JITTER_ENTROPY=1
     cargo build --release --locked -p kolimi-server -p kolimi-sync
 }
