@@ -1,0 +1,17 @@
+pkgbase = hyprgrid-git
+	pkgdesc = Ultra-fast 3D workspace grid manager for Hyprland (Monitor × Row × Column)
+	pkgver = 0.1.0.r2.gc60bbd3
+	pkgrel = 1
+	url = https://github.com/Mestik78/hyprgrid
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = hyprgrid
+	conflicts = hyprgrid
+	source = git+https://github.com/Mestik78/hyprgrid.git
+	sha256sums = SKIP
+
+pkgname = hyprgrid-git
