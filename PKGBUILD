@@ -10,7 +10,8 @@ arch=("i686" "x86_64")
 url="https://github.com/raspberrypi/usbboot"
 license=("Apache-2.0")
 depends=("glibc" "libusb")
-conflict=()
+provides=("rpiusbboot")
+conflicts=("rpiusbboot")
 source=("${pkgname}::git+https://github.com/raspberrypi/usbboot.git")
 md5sums=('SKIP')
 

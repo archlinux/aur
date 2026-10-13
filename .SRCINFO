@@ -8,6 +8,8 @@ pkgbase = rpiusbboot-git
 	license = Apache-2.0
 	depends = glibc
 	depends = libusb
+	provides = rpiusbboot
+	conflicts = rpiusbboot
 	source = rpiusbboot-git::git+https://github.com/raspberrypi/usbboot.git
 	md5sums = SKIP
 
