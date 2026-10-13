@@ -1,0 +1,25 @@
+pkgbase = goose-cli
+	pkgdesc = An open source, extensible AI agent that goes beyond code suggestions (CLI)
+	pkgver = 1.53.0
+	pkgrel = 1
+	url = https://github.com/aaif-goose/goose
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = clang
+	makedepends = cmake
+	makedepends = vulkan-headers
+	makedepends = shaderc
+	depends = glibc
+	depends = gcc-libs
+	depends = libgcc
+	depends = libstdc++
+	depends = xdg-utils
+	depends = vulkan-icd-loader
+	conflicts = goose-desktop
+	options = !lto
+	options = !debug
+	source = goose-cli-1.53.0.tar.gz::https://github.com/aaif-goose/goose/archive/refs/tags/v1.53.0.tar.gz
+	b2sums = 1d13d051e826561c5c4b7a88e237d567505d72ccf1a3c566027d4c1181e5dc0e027d1cc1e1f23861bf9bff7c7020fd787d774b7eb180e7641a1ce97180544b5f
+
+pkgname = goose-cli
