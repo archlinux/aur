@@ -7,26 +7,14 @@ _uinput() {
 
 # ---- The greeter ----------------------------------------------------------------
 #
-# Installing Bioma makes it the login screen. greetd starts the package's
-# greeter-session, which runs the copy of the desktop kept in
-# /var/lib/bioma-greeter and, while there is none, greetd's plain agreety.
-# Nothing is started now: greetd reads its configuration when it starts, and
-# restarting it from inside a session ends that session. It takes effect at the
-# next boot.
+# Installing Bioma no longer makes it the login screen: the setup asks, on its
+# LOGIN step, and scripts/greeter-setup does it through pkexec when the answer
+# is yes (docs/design/SETUP.md). What stays here is the way back. A beta set
+# greetd up by itself, and removing the package must still undo that.
 
 _greetd_config=/etc/greetd/config.toml
 _greetd_backup=/etc/greetd/config.toml.before-bioma
 _greeter_dir=/var/lib/bioma-greeter
-_greeter_command=/usr/share/bioma/scripts/greeter-session
-
-# Who installed the package: the copy is theirs to write, and theirs to show.
-_installer() {
-    local user="${SUDO_USER:-}"
-    if [ -z "$user" ] && [ -n "${PKEXEC_UID:-}" ]; then
-        user="$(id -nu "$PKEXEC_UID" 2>/dev/null || true)"
-    fi
-    [ -n "$user" ] && [ "$user" != root ] && printf '%s' "$user"
-}
 
 # Rewrites [default_session] to run $1 as user `greeter`, and keeps everything
 # else in the file: the terminal, an initial_session, comments.
@@ -50,48 +38,6 @@ _greetd_point_at() {
     rm -f "$tmp"
 }
 
-_greeter_install() {
-    local user home dm
-    user="$(_installer)" || true
-
-    if [ -n "$user" ] && home="$(getent passwd "$user" | cut -d: -f6)" && [ -n "$home" ]; then
-        install -d -m 2750 -o "$user" -g greeter "$_greeter_dir"
-        # The first copy, so the next boot already greets with it. The shell
-        # keeps it current from then on (services/GreeterSync.qml).
-        runuser -u "$user" -- env -i HOME="$home" USER="$user" LOGNAME="$user" \
-            PATH=/usr/local/bin:/usr/bin /usr/share/bioma/scripts/greeter-sync "$_greeter_dir" \
-            >/dev/null 2>&1 || true
-    fi
-
-    if [ -f "$_greetd_config" ] && ! grep -q 'bioma' "$_greetd_config"; then
-        [ -e "$_greetd_backup" ] || cp -p "$_greetd_config" "$_greetd_backup"
-        _greetd_point_at "$_greeter_command"
-    fi
-
-    dm="$(readlink /etc/systemd/system/display-manager.service 2>/dev/null || true)"
-    case "$dm" in
-        '') systemctl enable greetd.service >/dev/null 2>&1 || true ;;
-        */greetd.service) ;;
-        *)
-            dm="$(basename "$dm")"
-            cat <<MSG
-==> Bioma's greeter is set up in greetd, but $dm is the login manager.
-    To switch, then reboot:
-      sudo systemctl disable $dm && sudo systemctl enable greetd.service
-MSG
-            ;;
-    esac
-
-    if [ -z "$user" ]; then
-        cat <<'MSG'
-==> The greeter shows agreety until it has a copy of your desktop. Make one,
-    as your user:
-      sudo install -d -m 2750 -o "$USER" -g greeter /var/lib/bioma-greeter
-      /usr/share/bioma/scripts/greeter-sync
-MSG
-    fi
-}
-
 # A greetd left pointing at a removed package has nothing to show, and the
 # only way back in is a text console. Removing Bioma gives the login screen
 # back as it was.
@@ -104,32 +50,33 @@ _greeter_remove() {
         fi
     fi
     rm -f "$_greetd_backup"
+    # The login manager the setup's greeter replaced, back in its place: a
+    # disabled SDDM with greetd removed would leave a text console.
+    if [ -f "$_greeter_dir/.manager-before" ]; then
+        local before
+        before="$(cat "$_greeter_dir/.manager-before")"
+        if [ -n "$before" ] && systemctl cat "$before" >/dev/null 2>&1; then
+            systemctl disable greetd.service >/dev/null 2>&1 || true
+            systemctl enable "$before" >/dev/null 2>&1 || true
+        fi
+    fi
     rm -rf "$_greeter_dir"
 }
 
 post_install() {
     _uinput
-    _greeter_install
     cat <<'MSG'
-==> Bioma is installed in /usr/share/bioma. Set it up once for your user:
+==> Bioma is installed in /usr/share/bioma. Start it once, from a terminal
+    inside niri:
 
-      bioma-install --autostart
+      bioma -d
 
-    It writes Bioma's keys next to niri's config.kdl and includes Bioma's
-    niri files (config.kdl is copied aside first and checked with
-    `niri validate`). It also names the system services that are not
-    enabled yet (NetworkManager, Bluetooth, CUPS, Avahi), with the
-    command that enables them. Then start it with
-    `/usr/share/bioma/scripts/shell bioma`, or log in again.
+    It walks you through the rest: the layout, the look, its keys in niri's
+    configuration, the login screen, and what is still missing on this
+    machine. Nothing outside Bioma's own files changes until you say so there.
 
-    Bioma's greeter is greetd's login screen from the next boot. The old
-    configuration is kept as /etc/greetd/config.toml.before-bioma.
-
-    Palettes reach niri only by default; other applications are switched on
-    under APPS in the theme cell (Mod+Alt+T).
-
-    Dictation (Mod+Alt+D) is optional, for the size of its model:
-      paru -S whisper-cpp ggml-vulkan whisper.cpp-model-large-v3-turbo-q5_0 python-evdev
+    For a terminal instead, `bioma-install --autostart` writes the keys and
+    the includes, and `bioma-install --check` says what is missing.
 MSG
 }
 
@@ -137,6 +84,8 @@ post_upgrade() {
     _uinput
     cat <<'MSG'
 ==> Restart Bioma to run the new version:  /usr/share/bioma/scripts/shell restart
+    Keys the new version brings are added to your bioma-binds.kdl then;
+    the ones you removed stay removed.
 MSG
 }
 

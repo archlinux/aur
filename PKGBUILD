@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.36
-pkgver=1.0.0beta36
+_tag=v1.0.0-beta.37
+pkgver=1.0.0beta37
 pkgrel=1
 pkgdesc="A desktop shell for niri, built with Quickshell: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
@@ -17,6 +17,10 @@ depends=(
     'quickshell'
     'qt6-5compat'
     'python'
+    # The calendar's recurrences, and the feed addresses it keeps in the
+    # keyring (scripts/calendar, secret-tool).
+    'python-dateutil'
+    'libsecret'
     'glib2'
     'wl-clipboard'
     # The emoji cell draws its emoji in Noto Color Emoji.
@@ -76,6 +80,9 @@ depends=(
     'hyprlock'
     'greetd'
     'greetd-agreety'
+    # The setup's LOGIN and SYSTEM steps: the greeter and the services are
+    # changed through pkexec, never by the package itself.
+    'polkit'
 )
 makedepends=('cargo' 'clang')
 optdepends=(
@@ -84,13 +91,15 @@ optdepends=(
     'whisper.cpp-model-large-v3-turbo-q5_0: dictation, the model (AUR)'
     'python-evdev: dictation and the emoji cell, pasting into the window'
     'business-network-wizard: company network setup (NTLM proxy, VPN, 802.1X, shares), opened from the connectivity cell'
+    'gnome-online-accounts: the calendars of Google, Nextcloud and WebDAV accounts in the clock'
+    'gnome-online-accounts-gtk: adding those accounts outside GNOME Settings'
 )
 # libspa builds a small C shim that makepkg's LTO turns into bitcode, which
 # Rust's linker cannot resolve (undefined spa_format_parse_libspa_rs).
 options=('!lto')
 install=bioma-shell.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('8267c8a7d76903c367ff33c214d91efe62322f28cf2b041184b667b1cd60d754')
+sha256sums=('22d7750e36b3c0c8062c31ef44ddb000bfbf07b905b9d9fad1ca1922ae2598e8')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
