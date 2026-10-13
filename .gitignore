@@ -1,3 +1,5 @@
-*.tar.*
-/src
-/pkg
+*
+!/PKGBUILD
+!/.SRCINFO
+!/.gitignore
+!/package-local.fish
