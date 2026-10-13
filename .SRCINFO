@@ -1,0 +1,27 @@
+pkgbase = faro
+	pkgdesc = Terminal client for Signal, built for people who live in tmux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://getfaro.dev
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	license = MIT
+	makedepends = cargo
+	makedepends = protobuf
+	makedepends = cmake
+	makedepends = clang
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	optdepends = xdg-utils: open links and attachments
+	optdepends = mpv: play voice notes (or ffmpeg, pipewire, alsa-utils)
+	optdepends = ffmpeg: read voice notes that are not WAV
+	optdepends = whisper.cpp: transcribe voice notes locally
+	optdepends = libsecret: read the remote transcription API key from the keyring
+	options = !lto
+	options = !debug
+	source = faro-0.1.0.tar.gz::https://github.com/harababurel/faro/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 75de02e83d0f05cab877492e19400696142a4be7eb599a71ad51c511b8847d71
+
+pkgname = faro
