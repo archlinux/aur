@@ -6,7 +6,7 @@ pkgname=(
 pkgbase=mini-eq
 _app_id="io.github.bhack.$pkgbase"
 _uuid=mini-eq@bhack.github.io
-pkgver=0.8.8
+pkgver=0.8.9
 pkgrel=1
 pkgdesc="Compact PipeWire system-wide parametric EQ"
 arch=('any')
@@ -32,11 +32,13 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=(
+  'appstream'
+  'desktop-file-utils'
   'git'
   'python-pytest'
 )
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('775cf28293a6a24496b5c1020da54a6b0d0192850d4dc471b94f8deb3709ae85')
+sha256sums=('67f9754d0cbf22c369cd5ff1c55bc72914a67b4a53a856f0af4ba0de5f51df1a')
 
 prepare() {
   cd "$pkgbase-$pkgver"
