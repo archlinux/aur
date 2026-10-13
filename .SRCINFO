@@ -1,0 +1,17 @@
+pkgbase = dms-shell-plugin-ntfy-git
+	pkgdesc = Persistent ntfy inbox for DankMaterialShell.
+	pkgver = r12.34c091c
+	pkgrel = 1
+	url = https://github.com/arqueon/dms-ntfy
+	install = dms-shell-plugins.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = dms-shell
+	depends = curl
+	depends = libsecret
+	provides = dms-shell-plugin-ntfy
+	source = dms-ntfy::git+https://github.com/arqueon/dms-ntfy.git
+	sha256sums = SKIP
+
+pkgname = dms-shell-plugin-ntfy-git
