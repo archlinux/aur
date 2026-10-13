@@ -1,14 +1,14 @@
 # Maintainer: Mike Macpherson <mmacpherson@noreply.github.io>
 
 pkgname=expirito
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 epoch=
 pkgdesc="A utility to clean up old files and empty directories"
 arch=("any")
 url="https://github.com/mmacpherson/${pkgname}"
 license=("MIT")
-depends=("python" "python-yaml")
+depends=("python" "python-yaml" "python-pathspec")
 makedepends=("git")
 provides=("${pkgname}")
 conflicts=()
