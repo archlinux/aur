@@ -4168,10 +4168,10 @@ index a988f504..1620f348 100644
      QUrl m_url;
 diff --git a/core/smartinvert.cpp b/core/smartinvert.cpp
 new file mode 100644
-index 00000000..4c5b8e75
+index 00000000..de9332d2
 --- /dev/null
 +++ b/core/smartinvert.cpp
-@@ -0,0 +1,378 @@
+@@ -0,0 +1,449 @@
 +// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +
@@ -4233,13 +4233,43 @@ index 00000000..4c5b8e75
 +// recognizable by structure rather than color: within a 9x9 window it is
 +// uniform, whereas icons, photos and text always vary. A pixel in such a
 +// uniform, clearly light neighborhood is a surface and recolors fully,
-+// whatever its tint. Dark uniform areas (a Server 2012 taskbar is (0, 3, 8))
-+// are already dark-mode and left alone, and strongly colored uniform areas
-+// (own saturation above s_flatOwnSat) stay content.
++// whatever its tint. Surfaces land extra dark (output clamped to
++// s_surfMax): the brightness curve's identity crossing near luma 128 keeps
++// mid-tone chrome readable, but Aero-era panels (GPMC's rows are
++// (160, 186, 203)) are then "lighter than the window" instead of the
++// slightly-lighter-than-black bands a real dark theme paints. Dark uniform
++// areas (a Server 2012 taskbar is (0, 3, 8)) are already dark-mode and left
++// alone, and strongly colored uniform areas (own saturation above
++// s_flatOwnSat) stay content.
 +constexpr int s_flatRadius = 4;
 +constexpr int s_flatSpread = 28; // max minus min luma across the window
 +constexpr int s_flatMean = 130; // the window must average this bright
 +constexpr int s_flatOwnSat = 120;
++constexpr int s_surfMax = 60; // surfaces never land lighter than this
++
++// Light text protection, the mirror of the colored text lift below. Windows
++// paints desktop icon labels and the taskbar clock as white text over the
++// wallpaper, which on this remote ((0, 27, 58)) is dark before the filter
++// ever runs - and the filter dutifully turned the white glyphs dark, onto a
++// background it had (correctly) left dark: dark-on-dark. The signature is
++// the mirror too: a thin, bright, weakly saturated pixel standing in a big
++// dark region - a 15x15 window at least s_keepBroadMin dark (s_keepDarkDelta
++// below the pixel), with a 9x9 core where dark neighbors still outnumber
++// anything brighter still - is light text, and is left alone. Both halves
++// matter: the white antialiasing pixel between a black glyph and a white
++// page fails "brighter still", and the white pixel inside the counter of a
++// dark title letter fails the broad window, while the white glyph over
++// wallpaper passes both. The thinness bound is a touch looser here (5 rather
++// than 3) because label font junction pixels read 4-5 own-tone pixels on
++// both axes, and the broad-dark test already excludes the white-page cases
++// that keep the other rules strict.
++constexpr int s_keepMinLuma = 150;
++constexpr int s_keepMaxSat = 80;
++constexpr int s_keepMaxThin = 5;
++constexpr int s_keepDarkDelta = 60; // a supporting neighbor is this much darker
++constexpr int s_keepBroadRadius = 7;
++constexpr int s_keepBroadMin = 120; // dark pixels needed in the 15x15 window
++constexpr int s_keepBrightDelta = 20; // "still brighter" defeats the AA pixel
 +
 +// ClearType neutralization. Windows renders text with subpixel
 +// antialiasing, so a black glyph on white arrives with colored pixels baked
@@ -4416,17 +4446,22 @@ index 00000000..4c5b8e75
 +        }
 +    }
 +
-+    // Pass 3: classify the saturated pixels that the plain saturation rule
-+    // would preserve: ClearType fringe, colored text to lift, or content.
-+    // Both rules demand thinness, so it is computed first.
++    // Pass 3: classify pixels the plain saturation rule would get wrong:
++    // ClearType fringe and colored text to lift (both saturated), and light
++    // text to keep over dark surfaces (weakly saturated). All three rules
++    // demand thinness, so it is computed first.
 +    QVector<uint8_t> fringe(n, 0);
 +    QVector<uint8_t> lift(n, 0);
++    QVector<uint8_t> keep(n, 0);
 +    for (int y = 0; y < h; ++y) {
 +        for (int x = 0; x < w; ++x) {
 +            const int self = y * w + x;
 +            const int selfLuma = luma[self];
-+            if (saturation[self] <= s_satKeep) {
-+                continue;
++            const int selfSat = saturation[self];
++
++            const bool saturated = selfSat > s_satKeep;
++            if (!saturated && (selfLuma < s_keepMinLuma || selfSat > s_keepMaxSat)) {
++                continue; // plain chrome, or content too dim for any rule
 +            }
 +
 +            // Thinness: how far the pixel's own tone reaches along each
@@ -4436,7 +4471,6 @@ index 00000000..4c5b8e75
 +            // fringe (luma ~195) on MMC's light-grey chrome (luma ~205) is
 +            // a one-pixel band, but a luma-only test reads the grey as its
 +            // own color and calls it thick.
-+            const int selfSat = saturation[self];
 +            int horiz = 0;
 +            for (int xx = std::max(x - 4, 0); xx <= std::min(x + 4, w - 1); ++xx) {
 +                const int j = y * w + xx;
@@ -4454,6 +4488,36 @@ index 00000000..4c5b8e75
 +                    : 0;
 +            }
 +            const bool thin = std::min(horiz, vert) <= s_liftMaxThin;
++
++            if (!saturated) {
++                // Light text protection: a thin bright stroke standing in a
++                // big dark region - desktop labels, taskbar clock text -
++                // stays bright. See the constants for the two guards that
++                // keep white-on-chrome pixels out.
++                if (std::min(horiz, vert) > s_keepMaxThin) {
++                    continue;
++                }
++                int dark = 0;
++                int brighter = 0;
++                for (int yy = std::max(y - 4, 0); yy <= std::min(y + 4, h - 1); ++yy) {
++                    for (int xx = std::max(x - 4, 0); xx <= std::min(x + 4, w - 1); ++xx) {
++                        const int l = luma[yy * w + xx];
++                        dark += (l <= selfLuma - s_keepDarkDelta) ? 1 : 0;
++                        brighter += (l >= selfLuma + s_keepBrightDelta) ? 1 : 0;
++                    }
++                }
++                if (dark <= brighter) {
++                    continue;
++                }
++                int broad = 0;
++                for (int yy = std::max(y - s_keepBroadRadius, 0); yy <= std::min(y + s_keepBroadRadius, h - 1); ++yy) {
++                    for (int xx = std::max(x - s_keepBroadRadius, 0); xx <= std::min(x + s_keepBroadRadius, w - 1); ++xx) {
++                        broad += (luma[yy * w + xx] <= selfLuma - s_keepDarkDelta) ? 1 : 0;
++                    }
++                }
++                keep[self] = (broad >= s_keepBroadMin) ? 1 : 0;
++                continue;
++            }
 +
 +            bool core = false;
 +            bool white = false;
@@ -4502,11 +4566,18 @@ index 00000000..4c5b8e75
 +            }
 +
 +            if (surface[self]) {
-+                // Flat light chrome, tinted or not: fully recolored, so a
-+                // tinted row goes as dark as the white around it.
++                // Flat light chrome, tinted or not: fully recolored, and
++                // clamped dark, so a tinted row goes as dark as the white
++                // around it rather than resting at "mid grey".
 +                const int value = (std::max(r, std::max(g, b)) + std::min(r, std::min(g, b))) / 2;
-+                const int recolored = s_curve[value];
++                const int recolored = std::min(s_curve[value], s_surfMax);
 +                line[x] = qRgb(recolored, recolored, recolored);
++                continue;
++            }
++
++            if (keep[self]) {
++                // White text over an already-dark surface (wallpaper,
++                // taskbar): recoloring it dark would hide it. Untouched.
 +                continue;
 +            }
 +
@@ -5780,10 +5851,10 @@ index 1600b660..4fcfc2a4 100644
  endif()
 diff --git a/test/aiengine_test.cpp b/test/aiengine_test.cpp
 new file mode 100644
-index 00000000..14fba258
+index 00000000..4fbea2b6
 --- /dev/null
 +++ b/test/aiengine_test.cpp
-@@ -0,0 +1,590 @@
+@@ -0,0 +1,618 @@
 +/*
 +    Standalone test for the AI conversation engine. Not built by default; see
 +    test_ai.sh. Drives AiConversation against a mock OpenAI-compatible server
@@ -6072,9 +6143,37 @@ index 00000000..14fba258
 +    }
 +    SmartInvert::apply(band);
 +    const QRgb tint = band.pixel(40, 40);
-+    check(qRed(tint) < 110 && qGreen(tint) == qRed(tint), "the tinted band itself goes dark like any chrome");
++    check(qRed(tint) <= 60 && qGreen(tint) == qRed(tint), "the tinted band itself goes dark like any chrome");
 +    const QRgb onTint = band.pixel(20, 26);
 +    check(qBlue(onTint) > 200 && qRed(onTint) > 140, "dark blue text on the tinted band lifts to readable light blue");
++
++    // Light text protection, measured from the same capture: Windows paints
++    // desktop icon labels ((255,255,255)) and the taskbar clock over a
++    // wallpaper ((0,27,58)) that is dark before the filter runs. Darkening
++    // the white glyphs hid them; they must stay bright. The white page
++    // mirror case must NOT fire: a light-grey antialiasing pixel between a
++    // black glyph and a white page recolors dark with its page, or the
++    // darkened page gets white speckle around every letter.
++    QImage desktop(64, 64, QImage::Format_RGB32);
++    desktop.fill(qRgb(0, 27, 58)); // this remote's wallpaper
++    for (int y = 20; y < 32; ++y) {
++        for (int x = 10; x < 12; ++x) {
++            desktop.setPixel(x, y, qRgb(255, 255, 255)); // white label stroke
++        }
++    }
++    SmartInvert::apply(desktop);
++    check(qRed(desktop.pixel(10, 26)) > 200, "white label text over dark wallpaper stays bright");
++    check(desktop.pixel(40, 40) == qRgb(0, 27, 58), "and the wallpaper itself is untouched");
++    QImage page(64, 64, QImage::Format_RGB32);
++    page.fill(Qt::white);
++    for (int y = 20; y < 32; ++y) {
++        for (int x = 10; x < 12; ++x) {
++            page.setPixel(x, y, qRgb(8, 8, 8)); // black glyph stroke
++        }
++    }
++    page.setPixel(12, 26, qRgb(200, 200, 200)); // its antialiasing edge
++    SmartInvert::apply(page);
++    check(qRed(page.pixel(12, 26)) < 120, "white chrome beside dark text still goes dark, no speckle");
 +}
 +
 +static void testUrlDerivation()
