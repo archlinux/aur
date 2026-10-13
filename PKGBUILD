@@ -2,7 +2,7 @@
 # Contributor: skrewball <aur at joickle dot com> gitlab.com/skrewball/aur
 # Contributor: malacology <guoyizhang at malacology dot net>
 pkgname=gnome-shell-extension-blur-my-shell
-pkgver=74
+pkgver=75
 pkgrel=1
 pkgdesc="Extension that adds a blur look to different parts of the GNOME Shell"
 arch=('any')
@@ -15,11 +15,7 @@ makedepends=(
 )
 optdepends=('gnome-rounded-blur: help fix the corners issue found while using dynamic blur')
 source=("git+https://github.com/aunetx/blur-my-shell.git#tag=v$pkgver")
-sha256sums=('8671bb8dd03f3501de4eace752ca901b41e48c4bbe7fe370ea141d25131d643e')
-
-prepare() {
-  cd blur-my-shell
-}
+sha256sums=('435c4c0bc9bc5e86dd9fa3a3123c6355e7c7c729ef22d3f8bdda67438b7292e0')
 
 build() {
   cd blur-my-shell
