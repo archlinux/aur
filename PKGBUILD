@@ -1,7 +1,7 @@
 # Maintainer: Zan Skamljic <zan.skamljic@gmail.com>
 
 pkgname=tde-session
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='The TDE desktop session: a wlroots compositor, overview, bar, lock screen and settings'
 arch=(x86_64 aarch64)
@@ -50,9 +50,10 @@ optdepends=(
   'pipewire-pulse: sound, with its volume in the bar'
   'gnome-keyring: remembering the passphrases of SSH keys'
   'fprintd: unlocking the screen with a finger'
+  'brightnessctl: the keyboard light keys, where the keyboard does not change it itself'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5dfe382655117a09ea525d1a56a63808132cc2fb55cf15a8d047b38616f1c8c3')
+sha256sums=('48935324fbe447004c94586224cf975fd030c4409803b4622e48abbfdcb968d5')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" -G Ninja \
