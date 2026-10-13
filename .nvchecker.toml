@@ -1,0 +1,4 @@
+[zccache]
+source = "git"
+git = "https://github.com/zackees/zccache.git"
+prefix = "v"
