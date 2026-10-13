@@ -1,12 +1,12 @@
 # Maintainer: Ulises Jeremias <ulisescf.24@gmail.com>
 pkgname=veasel-code-bin
-pkgver=0.24.1.next.0
+pkgver=0.25.0.next.0
 pkgrel=1
 pkgdesc="V-native AI coding agent (official prebuilt Linux release)"
 arch=('x86_64')
 url="https://veasel.dev"
 license=('MIT')
-depends=('bun' 'glibc')
+depends=('glibc')
 provides=('veasel' 'veasel-code')
 conflicts=('veasel-code')
 options=('!debug' '!strip')
@@ -17,17 +17,17 @@ source=(
 )
 noextract=('veasel-Linux.tar.gz')
 sha256sums=(
-  'ff248c94b9b19833a6a12c989bd20ebe26011e739547c4c583aff98b864ad3ca'
+  '715fca7988373e70016b77fd4728c46877bb45fa94e27e3a944e8ef6b4ed7431'
   'e150ff1e9cd21b388ec966f3d77ed4731e86e4731b17f127e879f72ff5b2e3d5'
 )
 
 package() {
   local bundle="${srcdir}/veasel-bundle"
   install -d "${bundle}"
-  tar -xzf "${srcdir}/veasel-Linux.tar.gz" -C "${bundle}" veasel tui
+  tar -xzf "${srcdir}/veasel-Linux.tar.gz" -C "${bundle}" veasel veasel-tui build.json
   install -Dm755 "${bundle}/veasel" "${pkgdir}/usr/lib/veasel-code/veasel"
-  cp -R "${bundle}/tui" "${pkgdir}/usr/lib/veasel-code/tui"
-  rm -rf "${pkgdir}/usr/lib/veasel-code/tui/node_modules/@opentui/core-linux-x64-musl"
+  install -Dm755 "${bundle}/veasel-tui" "${pkgdir}/usr/lib/veasel-code/veasel-tui"
+  install -Dm644 "${bundle}/build.json" "${pkgdir}/usr/share/veasel-code/build.json"
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -d "${pkgdir}/usr/bin"
   ln -s /usr/lib/veasel-code/veasel "${pkgdir}/usr/bin/veasel"
