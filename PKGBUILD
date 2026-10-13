@@ -3,8 +3,8 @@
 
 _pkgname=Sable
 pkgname="${_pkgname/S/s}"
-pkgver=1.21.0
-pkgrel=2
+pkgver=1.22.11
+pkgrel=1
 pkgdesc="An almost stable Matrix client"
 arch=('x86_64')
 url="https://github.com/SableClient/${_pkgname}"
@@ -13,7 +13,7 @@ depends=('cairo' 'dbus' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libso
 makedepends=('cargo-tauri' 'pnpm' 'rust')
 options=('!lto') # Causes undefined ring_core_* symbol errors
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ba27303e62a89e283d47cef9171188fe0e0b57fdabc5b55fea085d1c13491a59')
+sha256sums=('d60ce0c9093ea63c970890d1f795b843f83e646856076bd3a84606a2574778e4')
 
 prepare() {
    cd "${_pkgname}-${pkgver}"
@@ -21,8 +21,8 @@ prepare() {
    # HACK: Disable unnecessary postinstall script
    sed -i 's@node scripts/install-knope.js@true@' package.json
 
-   # Fix Sable version in Cargo.lock (TODO: Remove this in the next version)
-   sed -i "s@1\.20\.0@${pkgver}@" src-tauri/Cargo.lock
+   # Fix Sable version in Cargo.lock (TODO: Fix this upstream)
+   sed -i "s@1\.22\.5@${pkgver}@" src-tauri/Cargo.lock
 }
 
 build() {
