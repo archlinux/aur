@@ -1,6 +1,6 @@
 pkgbase = octoscope-bin
 	pkgdesc = Terminal dashboard for GitHub
-	pkgver = 0.38.0
+	pkgver = 0.39.0
 	pkgrel = 1
 	url = https://github.com/gfazioli/octoscope
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = octoscope-bin
 	provides = octoscope
 	conflicts = octoscope
 	options = !strip
-	source_x86_64 = octoscope-x86_64-0.38.0.tgz::https://github.com/gfazioli/octoscope/releases/download/v0.38.0/octoscope_0.38.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 6921f1a907608f20fb31a011cf3668e018309136133a9d7056b4c42fd3dd6731
-	source_aarch64 = octoscope-aarch64-0.38.0.tgz::https://github.com/gfazioli/octoscope/releases/download/v0.38.0/octoscope_0.38.0_Linux_arm64.tar.gz
-	sha256sums_aarch64 = c6dea44649043f47c87d9aabcced4c2d13f4fd231949f08dae39e2b4cd449fbf
+	source_x86_64 = octoscope-x86_64-0.39.0.tgz::https://github.com/gfazioli/octoscope/releases/download/v0.39.0/octoscope_0.39.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 1eae557acc85f7f965644a302ea728d833bb381beb2316d12e2338a580c36878
+	source_aarch64 = octoscope-aarch64-0.39.0.tgz::https://github.com/gfazioli/octoscope/releases/download/v0.39.0/octoscope_0.39.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 9f8864da9e6f9b91efb1c28be17dd608433d7eca9e08778df173859c4f7944a8
 
 pkgname = octoscope-bin
