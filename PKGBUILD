@@ -29,9 +29,8 @@ package_kuna-bin() {
 
   local _dist="${srcdir}/${_pkgname}-v${pkgver}-linux-${CARCH/aarch64/arm64}"
 
-  # kuna finds decomp_dbg, slacomp and specs/ next to its symlink-resolved path
-  install -Dm755 -t "${pkgdir}/usr/lib/${_pkgname}" \
-    "${_dist}"/{kuna,decomp_dbg,slacomp}
+  # kuna finds specs/ next to its symlink-resolved path
+  install -Dm755 -t "${pkgdir}/usr/lib/${_pkgname}" "${_dist}/kuna"
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/lib/${_pkgname}/kuna" "${pkgdir}/usr/bin/kuna"
 
