@@ -1,6 +1,6 @@
 # Maintainer: Zeus-Deus <codemux at codemux dot org>
 pkgname=codemux-bin
-pkgver=0.23.1
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="The Agentic Development Environment for Builders"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
 provides=('codemux')
 conflicts=('codemux')
 source=("https://github.com/Zeus-Deus/codemux/releases/download/v${pkgver}/codemux_${pkgver}_amd64.AppImage")
-sha256sums=('d0c95fb02ba8dfe3afbd671d12f020b3401d640ad4e3e9b2265ab08dea6211ed')
+sha256sums=('6425e447253d7b5156c9d18db76f3bca7d90fc36a7561685351ad3aea6fdb219')
 options=('!strip')
 
 prepare() {
@@ -35,28 +35,25 @@ package() {
         install -Dm755 usr/bin/agent-browser "${pkgdir}/usr/bin/agent-browser"
     fi
 
-    # Tauri-bundled resources. Two binaries currently live here:
-    #   - codemux-claude-sidecar-<triple>: claude-agent sidecar (since
-    #     v0.2.0). Shipped as a resource (not externalBin) to avoid
-    #     linuxdeploy's patchelf corrupting the bun-compiled ~100 MB
-    #     binary. Setup hook in lib.rs pins CODEMUX_CLAUDE_SIDECAR_PATH
-    #     from here. Missing → agent-chat Claude provider fails with
-    #     `provider_not_configured: Claude` on send.
-    #   - codemux-remote-<triple>: daemon scp'd to remote SSH hosts on
-    #     first push (since v0.4.0). Resolved at runtime via
-    #     AppHandle::path().resource_dir(). Missing → push-to-host
-    #     errors out with "Codemux build doesn't include codemux-remote
-    #     for x86_64-unknown-linux-gnu".
-    # Tauri places resources under /usr/lib/<bundle-name>/ on deb/rpm,
-    # which is what resource_dir() returns at runtime.
+    # Daemon the remote-tasks feature runs beside codemux (the .deb ships
+    # it here too).
+    if [ -f usr/bin/codemux-remote ]; then
+        install -Dm755 usr/bin/codemux-remote "${pkgdir}/usr/bin/codemux-remote"
+    fi
+
+    # Tauri-bundled resources: sidecars, codemux-remote, the addon host
+    # and the @cursor/sdk node_modules tree. Tauri places resources under
+    # /usr/lib/<bundle-name>/ on deb/rpm, which is what
+    # AppHandle::path().resource_dir() returns at runtime. Copy the whole
+    # tree so new resources in tauri.conf.json ship without a PKGBUILD
+    # change. Missing files break features at runtime, e.g. Claude chat
+    # (`provider_not_configured: Claude`), push-to-host, addons, or
+    # workflows ("workflow sidecar is missing").
     if [ -d usr/lib/codemux/binaries ]; then
-        install -d "${pkgdir}/usr/lib/codemux/binaries"
-        for pattern in codemux-claude-sidecar-* codemux-remote-*; do
-            for f in usr/lib/codemux/binaries/$pattern; do
-                [ -f "$f" ] || continue
-                install -Dm755 "$f" "${pkgdir}/${f}"
-            done
-        done
+        install -d "${pkgdir}/usr/lib/codemux"
+        cp -r --no-preserve=ownership usr/lib/codemux/binaries "${pkgdir}/usr/lib/codemux/"
+        # The extracted AppImage tree can be 0700; make it world-readable.
+        chmod -R u=rwX,go=rX "${pkgdir}/usr/lib/codemux/binaries"
     fi
 
     # Desktop entry
