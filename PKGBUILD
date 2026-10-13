@@ -1,7 +1,7 @@
 # Maintainer: Muhammed Dali <dali.nira.12.1453kerinyoli@gmail.com>
 
 pkgname=dalinira
-pkgver=8.0.1
+pkgver=8.0.2
 pkgrel=1
 pkgdesc="DaliNira Browser native binary package"
 arch=('x86_64')
@@ -118,8 +118,8 @@ _runtime="dalinira-webkit-runtime-${pkgver}-arch-x86_64.tar.zst"
 source=("dalinira-browser-${pkgver}-linux-x86_64.tar.zst::https://github.com/Muhammed-Dali/DaliNira-Browser/releases/download/v${pkgver}/dalinira-browser-${pkgver}-linux-x86_64.tar.zst"
         "${_runtime}::https://github.com/Muhammed-Dali/DaliNira-Browser/releases/download/v${pkgver}/${_runtime}")
 noextract=("${_runtime}")
-sha256sums=('b6cfc0d5b0d58f5c0170d916b27d1cf8b5e27a9418a1ea907f51a1ffa73638aa'
-            'd53d1449e97d8528837b7b4fcb8d191f19eae83af20609d820bad9c705f0f223')
+sha256sums=('73ffa7adb04d24e8b6de6714570d5697ec240d79ec86620fd892c05321a0ec35'
+            '9f3cde1b065f3f9306ff68b28d70ffb7111fc9611054ee6a54e78809ca8dc124')
 
 package() {
   install -dm755 "${pkgdir}/usr"
