@@ -1,6 +1,6 @@
 pkgbase = fastcat-git
 	pkgdesc = A FastFetch Theme Pack - git version
-	pkgver = r8.e009084
+	pkgver = r271.34157a4
 	pkgrel = 1
 	url = https://github.com/m3tozz/FastCat
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = fastcat-git
 	optdepends = ttf-font-nerd: Provides Nerd Font Symbols
 	provides = fastcat
 	conflicts = fastcat
-	source = fastcat::git+https://github.com/m3tozz-reborn/FastCat
+	source = fastcat::git+https://github.com/m3tozz/FastCat
 	sha256sums = SKIP
 
 pkgname = fastcat-git

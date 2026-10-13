@@ -3,7 +3,7 @@
 
 pkgname=fastcat-git
 _pkgname=fastcat
-pkgver=r8.e009084
+pkgver=r271.34157a4
 pkgrel=1
 pkgdesc="A FastFetch Theme Pack - git version"
 arch=('any')
@@ -13,16 +13,16 @@ depends=('fastfetch')
 optdepends=('ttf-font-nerd: Provides Nerd Font Symbols')
 provides=("${_pkgname%}")
 conflicts=("${_pkgname%}")
-source=("$_pkgname::git+https://github.com/m3tozz-reborn/FastCat")
+source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/fastcat"
+	cd "fastcat"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/fastcat"
+	cd "fastcat"
 
 	install -d "$pkgdir/usr/share/fastfetch/presets"
 	install -d "$pkgdir/usr/share/fastcat"
