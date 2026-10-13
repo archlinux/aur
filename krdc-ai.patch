@@ -4168,10 +4168,10 @@ index a988f504..1620f348 100644
      QUrl m_url;
 diff --git a/core/smartinvert.cpp b/core/smartinvert.cpp
 new file mode 100644
-index 00000000..de9332d2
+index 00000000..ffa53ca0
 --- /dev/null
 +++ b/core/smartinvert.cpp
-@@ -0,0 +1,449 @@
+@@ -0,0 +1,463 @@
 +// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +
@@ -4263,6 +4263,17 @@ index 00000000..de9332d2
 +// than 3) because label font junction pixels read 4-5 own-tone pixels on
 +// both axes, and the broad-dark test already excludes the white-page cases
 +// that keep the other rules strict.
++//
++// The broad window only counts dark pixels that carry color (saturation
++// above the content threshold). A Server taskbar ((0, 3, 8)) and this
++// wallpaper ((0, 27, 58)) are saturated dark - a surface the remote already
++// renders dark-mode. Neutral dark pixels are different: they are text, or
++// the dithered translucency of a Start menu border over a white window -
++// pixels the filter itself turns light. Without this bound the dither band
++// masquerades as white-on-wallpaper text (its alternating dots make every
++// white pixel "thin" with dark neighbors), and the filter preserved a 530
++// pixel strip of it as a glowing white border. With it: zero pixels of the
++// band kept, desktop labels 117/117 and clock 171/174 still kept.
 +constexpr int s_keepMinLuma = 150;
 +constexpr int s_keepMaxSat = 80;
 +constexpr int s_keepMaxThin = 5;
@@ -4270,7 +4281,6 @@ index 00000000..de9332d2
 +constexpr int s_keepBroadRadius = 7;
 +constexpr int s_keepBroadMin = 120; // dark pixels needed in the 15x15 window
 +constexpr int s_keepBrightDelta = 20; // "still brighter" defeats the AA pixel
-+
 +// ClearType neutralization. Windows renders text with subpixel
 +// antialiasing, so a black glyph on white arrives with colored pixels baked
 +// into every edge: warm ones ((239, 205, 75), (180, 100, 4)) on one side of
@@ -4512,7 +4522,11 @@ index 00000000..de9332d2
 +                int broad = 0;
 +                for (int yy = std::max(y - s_keepBroadRadius, 0); yy <= std::min(y + s_keepBroadRadius, h - 1); ++yy) {
 +                    for (int xx = std::max(x - s_keepBroadRadius, 0); xx <= std::min(x + s_keepBroadRadius, w - 1); ++xx) {
-+                        broad += (luma[yy * w + xx] <= selfLuma - s_keepDarkDelta) ? 1 : 0;
++                        const int j = yy * w + xx;
++                        // Only colored dark pixels are a truly dark surface;
++                        // neutral dark ones are text or dither the filter
++                        // itself will flip. See the constants.
++                        broad += (luma[j] <= selfLuma - s_keepDarkDelta && saturation[j] > s_satKeep) ? 1 : 0;
 +                    }
 +                }
 +                keep[self] = (broad >= s_keepBroadMin) ? 1 : 0;
@@ -5851,10 +5865,10 @@ index 1600b660..4fcfc2a4 100644
  endif()
 diff --git a/test/aiengine_test.cpp b/test/aiengine_test.cpp
 new file mode 100644
-index 00000000..4fbea2b6
+index 00000000..6fef5f29
 --- /dev/null
 +++ b/test/aiengine_test.cpp
-@@ -0,0 +1,618 @@
+@@ -0,0 +1,637 @@
 +/*
 +    Standalone test for the AI conversation engine. Not built by default; see
 +    test_ai.sh. Drives AiConversation against a mock OpenAI-compatible server
@@ -6164,6 +6178,25 @@ index 00000000..4fbea2b6
 +    SmartInvert::apply(desktop);
 +    check(qRed(desktop.pixel(10, 26)) > 200, "white label text over dark wallpaper stays bright");
 +    check(desktop.pixel(40, 40) == qRgb(0, 27, 58), "and the wallpaper itself is untouched");
++
++    // The Start menu border trap, from a real capture: Windows paints the
++    // menu's translucent top border over the white window behind it, and
++    // over RDP it arrives as a dither - alternating light and dark neutral
++    // dots. Every white dot looks thin with dark neighbors, so the light
++    // text rule preserved 531 pixels of it as a glowing white band - until
++    // the broad dark surround was required to be colored dark (wallpaper,
++    // taskbar), not neutral dark (text, dither).
++    QImage glass(64, 64, QImage::Format_RGB32);
++    glass.fill(Qt::white);
++    for (int y = 22; y < 42; ++y) {
++        for (int x = 0; x < 64; ++x) {
++            if ((y % 4) == 0 || (x + y) % 2 == 0) {
++                glass.setPixel(x, y, qRgb(35, 35, 35));
++            }
++        }
++    }
++    SmartInvert::apply(glass);
++    check(qRed(glass.pixel(32, 31)) < 120, "a dithered translucent band over chrome darkens instead of glowing");
 +    QImage page(64, 64, QImage::Format_RGB32);
 +    page.fill(Qt::white);
 +    for (int y = 20; y < 32; ++y) {
