@@ -2,17 +2,20 @@
 # Contributor: grgergo <gergo@tutanota.de>
 pkgname=xpano-git
 pkgver=0.19.3.r4.ga5df2e0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for panorama stitching with focus on simplicity and ease of use'
 arch=('x86_64')
 url='https://krupkat.github.io/xpano/'
 license=(GPL-3.0-or-later)
-depends=(	
-	exiv2
-	gtk3
-	opencv
-	sdl3
-	spdlog
+depends=(
+  exiv2
+  fmt
+  glib2
+  gtk3
+  hicolor-icon-theme
+  opencv
+  sdl3
+  spdlog
 )
 makedepends=(
 	cmake
