@@ -1,9 +1,9 @@
-# Maintainer: Vaishnav Sabari Girish <your-email at example dot com>
+# Maintainer: vaishnav <vaishnav.sabari.girish@gmail.com>
 
 pkgname=wattpdl
 _name=wattpdl
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Download Wattpad stories as offline .txt/.docx/.epub/.md/.pdf files with a Rich CLI'
 arch=('any')
 url='https://github.com/nekonaru/wattpdl'
