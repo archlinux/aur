@@ -1,8 +1,8 @@
 # Maintainer: Radu Potop <radu@wooptoo.com>
 
 pkgname=serena
-pkgver=1.7.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="A powerful MCP server for coding, providing semantic retrieval and editing capabilities. The IDE for your agent."
 arch=(any)
 url="https://github.com/oraios/serena"
@@ -41,7 +41,7 @@ depends=(
 )
 makedepends=("python-hatch" "python-installer")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7eea6098b959b16fec12693ee27f214ab6769e68a2c7e33f4b8c0ca349eac125')
+sha256sums=('3672638ec4de6d3163b15749e874239cc7a0bf255cdd3bc25039b53eafae2ea7')
 
 build() {
     cd "${pkgname}-${pkgver}"
