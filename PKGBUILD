@@ -2,7 +2,7 @@
 pkgname=waydroid-binds
 pkgver=1.4.1
 pkgrel=1
-pkgdesc="GUI e scripts para pastas compartilhadas e firewall do Waydroid"
+pkgdesc="GUI and scripts for Waydroid shared folders and firewall"
 arch=('any')
 url="https://github.com/isaacangello/WaydroidBinds"
 license=('GPL3')

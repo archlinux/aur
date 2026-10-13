@@ -1,5 +1,5 @@
 pkgbase = waydroid-binds
-	pkgdesc = GUI e scripts para pastas compartilhadas e firewall do Waydroid
+	pkgdesc = GUI and scripts for Waydroid shared folders and firewall
 	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/isaacangello/WaydroidBinds
