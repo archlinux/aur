@@ -5,8 +5,8 @@
 # A modified version of the chatterino2-git package (https://aur.archlinux.org/packages/chatterino2-git)
 
 pkgname=chatterino2
-pkgver=2.5.5
-pkgrel=2
+pkgver=2.5.6
+pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino"'
 arch=('x86_64')
 url=https://chatterino.com
@@ -22,35 +22,35 @@ conflicts=('chatterino')
 install="${pkgname}.install"
 source=("git+https://github.com/Chatterino/${pkgname}.git#tag=v${pkgver}"
         "git+https://github.com/Chatterino/certify.git#commit=a448a3915ddac716ce76e4b8cbf0e7f4153ed1e2" # Has no tags
-        "git+https://github.com/Chatterino/libcommuni.git#commit=bb5417c451d764f57f2f1b3e1c9a81496b5521bd" # Current chatterino-cmake commit
+        "git+https://github.com/Chatterino/libcommuni.git#commit=ac0e713e5a904b6f3231c70e076f6fd67a78455e" # Last (?) non-breaking chatterino-cmake commit
         "git+https://github.com/pajlada/settings.git#tag=chatterino/2.5.5"
         "git+https://github.com/pajlada/signals.git#commit=chatterino/2.5.5"
         "git+https://github.com/pajlada/serialize.git#tag=chatterino/2.5.5"
-        "git+https://github.com/Neargye/magic_enum.git#tag=v0.9.7"
+        "git+https://github.com/Neargye/magic_enum.git#tag=v0.9.8"
         "git+https://github.com/mackron/miniaudio.git#tag=0.11.25"
         "git+https://github.com/ThePhD/sol2.git#tag=v3.5.0"
-        "git+https://github.com/google/googletest.git#tag=v1.17.0"
+        "git+https://github.com/google/googletest.git#tag=v1.18.0"
         "git+https://github.com/martinmoene/expected-lite.git#tag=v0.10.0"
         "git+https://github.com/arsenm/sanitizers-cmake.git#commit=bcb1fc68616e9645ca5acea2992412606373ab04" # Has no tags
         "git+https://github.com/lua/lua.git#tag=v5.4.8"
-        "git+https://github.com/HowardHinnant/date.git#tag=v3.0.4"
-        "git+https://github.com/fmtlib/fmt.git#tag=12.1.0"
+        "git+https://github.com/HowardHinnant/date.git#tag=v3.0.5"
+        "git+https://github.com/fmtlib/fmt.git#tag=12.2.0"
         "git+https://github.com/Chatterino/twitch-pubsub-server-test.git#tag=v1.0.12")
-sha256sums=('170180026b586567fe68328b62d01a587a63d335f8e8afe6bdef5bf6b95c873d'
+sha256sums=('82634c968aa448a337dfee3f3660ba2353712732ecec2044c9103dfd17cd746c'
             'b859e9727d4ecd9a2c9723c09f6b098dad7e6c8b76964ac3375d74a09aaa3004'
-            'a0f7d8365a99d4e59fbc857dbf127b39b3a9a3d27c15dd3b52803ed2dd4c27ac'
+            'ae3c5b5d5a40e25048ee7c42c571a18e48f902c7e6821cba44a4b96a842d01d3'
             '4ce5aadc3990c4fadec519d4ce9dc8ccf4c73e5dbbb9b135949c0ea6fb0c9c5e'
             '2b22dbc39f5b0946da63663afbfc93f60fbcc7a54e5f3078850e12127e1bcffc'
             '87078a66e951bc7926597df20b6c85a55d14a062b7d6ce1116573274c47a0588'
-            '35e3ccee2fe02c2a666680aa00982e1d6593de440b8be04a04d399dd97c3e78c'
+            '8dfa5b66f0ff2fed07ba4b57a63f1942e449979065530f3a48b89c36f1170432'
             '5c8e8abbc2a43f20324a8ae9280f4aba6ec0235923b54c99a6d1b1d999927333'
             'fbeaa53812eb9f0e1e0612da22b1f57ab429e715fd24ccf0c3892172082becd1'
-            '3a8fea2f310f73e090dbf10dc16260ab959cccf77bc5482f453d1f4bc3af4bcb'
+            '080653414b45e6dbe93380c3a65a2c6a6cbf376f9dbc488587c78d73d1b05b77'
             'faa2298961ea0b5811ef656b0fb52026d73225fa00bb7161796bdad1f016a1d2'
             'b1381cab9801476fc06ae66b99c036af15309d253560869142990179dadd8760'
             '0f72c1973ef31e1af2e302b6ab1335a8a7f08be0bf5100cb06ebbeeb8d0c7439'
-            '0677c2cac20ae98936b87a7bcedf9970459c88f57196b71b7b6758361b145ce7'
-            'e15e95cc21dba4d62489a959b459c1aa51c483c2cf94d2810a3a1555b43e30ea'
+            'e2a7052757ff4854b21de4f7409c19069ea1996410f820c7e7c4c7f374d07d8b'
+            'aaf7dd1183d13e8ce0c4ed988867c8096042e57179d238f6296871774bf6abbd'
             '8c45f050dca5c46d478b00989d9dec54bf5e12d89983d0f6166ba4f3e38fac0a')
 
 prepare() {
