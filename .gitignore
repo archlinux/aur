@@ -1,0 +1,7 @@
+*.tar.gz
+*.pkg.tar.*
+*.log
+aibox/
+pkg/
+src/
+

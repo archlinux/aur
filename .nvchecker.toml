@@ -1,0 +1,6 @@
+[aibox-bin]
+source = "github"
+github = "The127/aibox"
+use_max_release = true
+prefix = "v"
+
