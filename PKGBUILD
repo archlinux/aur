@@ -1,4 +1,5 @@
 # Maintainer: a2sc <a_aur at a2sc eu>
+# Contributor: Seppia <$(base64 -d <<< 'YXJjaGxpbnV4QHNlcHBpYS5uZXQK')>
 #
 # Arch Linux PKGBUILD for element-lk-jwt-service-bin
 # https://github.com/element-hq/lk-jwt-service
