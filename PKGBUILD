@@ -6,7 +6,6 @@ pkgdesc='Terminal diffs for humans and agents'
 pkgver=0.24.0_beta.0
 pkgrel=1
 url='https://www.hunk.dev/'
-changelog=CHANGELOG.md
 arch=(aarch64 x86_64)
 license=('MIT')
 checkdepends=('git')
