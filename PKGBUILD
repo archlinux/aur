@@ -3,11 +3,10 @@
 # Derived from the upstream installer:
 # https://raw.githubusercontent.com/opensec-git/Pi-Bolt/refs/heads/pi-bolt/install.sh
 
-pkgbase=pi-bolt-bin-release-git
-pkgname=('pi-bolt-bin-release-git' 'pi-bolt-bin-release-git-baseline')
+pkgname=pi-bolt-avx2-bin-release-git
 pkgver=0.8.5
 pkgrel=1
-pkgdesc='Pi coding agent, compiled ahead of time to native code (latest Git binary release)'
+pkgdesc='Pi coding agent, compiled ahead of time to native code (latest Git binary release, x86-64 with AVX2)'
 arch=('x86_64')
 url='https://github.com/opensec-git/Pi-Bolt'
 license=('MIT')
@@ -20,11 +19,17 @@ optdepends=(
   'ripgrep: system-provided backend for the grep tool'
   'tmux: for background bash capabilities'
 )
+provides=('pi-bolt' 'pi-bolt-bin' 'pi-bolt-git' 'pi-bolt-bin-git')
+conflicts=('pi-bolt' 'pi-bolt-bin' 'pi-bolt-git' 'pi-bolt-bin-git')
 options=('!strip')
-install=${pkgbase}.install
-# Upstream ships one asset per x86-64 microarchitecture level: x64 needs AVX2
-# (Intel Haswell / AMD Zen and later); x64-baseline runs on any x86-64 CPU.
-_variants=('x64' 'x64-baseline')
+install=${pkgname}.install
+# This asset needs AVX2 (Intel Haswell / AMD Zen and later, 2013+).
+_variant=x64
+# No baseline variant shipped. To support pre-AVX2 CPUs, publish a second AUR
+# package named pi-bolt-bin-release-git: copy this PKGBUILD, set
+# pkgname=pi-bolt-bin-release-git with _variant=x64-baseline below, keep the
+# same pkgver()/prepare()/check() logic, and add a mutual conflicts entry
+# with pi-bolt-avx2-bin-release-git (both install /usr/bin/pi-bolt).
 # Upstream binary name inside the asset; differs from pkgname.
 _pkgname=pi
 _repo=opensec-git/Pi-Bolt
@@ -72,57 +77,36 @@ prepare() {
   openssl pkeyutl -verify -pubin -inkey release.pub -rawin -in SHA256SUMS -sigfile SHA256SUMS.sig \
     || error 'release signature does not verify'
 
-  # Build directly from the latest tag: every variant asset comes from the same
+  # Build directly from the latest tag: the asset comes from the same
   # bolt-v${pkgver} release that pkgver() resolved above.
-  local _variant _asset
-  for _variant in "${_variants[@]}"; do
-    _asset="pi-bolt-linux-${_variant}.tar.xz"
-    curl -fSL --retry 2 -o "${_asset}" "${_base}/${_asset}"
-    grep " ${_asset}$" SHA256SUMS | sha256sum -c --quiet - || error "checksum mismatch: ${_asset}"
-    tar --no-same-owner -xf "${_asset}"
-  done
+  local _asset="pi-bolt-linux-${_variant}.tar.xz"
+  curl -fSL --retry 2 -o "${_asset}" "${_base}/${_asset}"
+  grep " ${_asset}$" SHA256SUMS | sha256sum -c --quiet - || error "checksum mismatch: ${_asset}"
+  tar --no-same-owner -xf "${_asset}"
 }
 
 check() {
-  # Smoke-test each variant binary (cf. install.sh post-extract pi --version).
+  # Smoke-test the binary (cf. install.sh post-extract pi --version).
   # HOME is sandboxed: the TUI must not write outside ${srcdir} during checks.
-  # A builder without AVX2 cannot execute the x64 binary (SIGILL); its
-  # integrity is already proven by the SHA256SUMS check in prepare().
-  local _variant
-  for _variant in "${_variants[@]}"; do
-    if [[ "${_variant}" == 'x64' ]] && ! grep -q ' avx2 ' /proc/cpuinfo 2>/dev/null; then
-      warning "builder CPU lacks AVX2: skipping --version smoke test for ${_variant}"
-      continue
-    fi
-    HOME="${srcdir}/check-home" "${srcdir}/pi-bolt-linux-${_variant}/${_pkgname}" --version \
-      | grep -q "Pi-Bolt ${pkgver}" \
-      || error "pi-bolt-linux-${_variant} binary does not report Pi-Bolt ${pkgver}"
-  done
+  # A builder without AVX2 cannot execute this binary (SIGILL); its integrity
+  # is already proven by the SHA256SUMS check in prepare().
+  if ! grep -q ' avx2 ' /proc/cpuinfo 2>/dev/null; then
+    echo 'builder CPU lacks AVX2: skipping --version smoke test'
+    return 0
+  fi
+  HOME="${srcdir}/check-home" "${srcdir}/pi-bolt-linux-${_variant}/${_pkgname}" --version \
+    | grep -q "Pi-Bolt ${pkgver}" \
+    || error "binary does not report Pi-Bolt ${pkgver}"
 }
 
-_package_variant() {
-  local _variant="$1" _licensedir="$2"
+package() {
   install -dm755 "${pkgdir}/usr/lib/pi-bolt"
   # --no-preserve=ownership: plain -a chowns under fakeroot fail on this
   # payload (EINVAL on docs/, export-html/); --reflink=auto keeps CoW copies.
   cp -a --reflink=auto --no-preserve=ownership "${srcdir}/pi-bolt-linux-${_variant}/." "${pkgdir}/usr/lib/pi-bolt/"
   install -dm755 "${pkgdir}/usr/bin"
   ln -s /usr/lib/pi-bolt/pi "${pkgdir}/usr/bin/pi-bolt"
-  install -Dm644 "${pkgdir}/usr/lib/pi-bolt/LICENSE" "${pkgdir}/usr/share/licenses/${_licensedir}/LICENSE"
-  install -Dm644 "${pkgdir}/usr/lib/pi-bolt/LICENSE.pi" "${pkgdir}/usr/share/licenses/${_licensedir}/LICENSE.pi"
-}
-
-package_pi-bolt-bin-release-git() {
-  pkgdesc='Pi coding agent, compiled ahead of time to native code (latest Git binary release, x86-64 with AVX2)'
-  provides=('pi-bolt' 'pi-bolt-bin' 'pi-bolt-git' 'pi-bolt-bin-git')
-  conflicts=('pi-bolt' 'pi-bolt-bin' 'pi-bolt-git' 'pi-bolt-bin-git' 'pi-bolt-bin-release-git-baseline')
-  _package_variant x64 'pi-bolt-bin-release-git'
-}
-
-package_pi-bolt-bin-release-git-baseline() {
-  pkgdesc='Pi coding agent, compiled ahead of time to native code (latest Git binary release, any x86-64 CPU)'
-  provides=('pi-bolt')
-  conflicts=('pi-bolt' 'pi-bolt-bin' 'pi-bolt-git' 'pi-bolt-bin-git' 'pi-bolt-bin-release-git')
-  _package_variant x64-baseline 'pi-bolt-bin-release-git-baseline'
+  install -Dm644 "${pkgdir}/usr/lib/pi-bolt/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${pkgdir}/usr/lib/pi-bolt/LICENSE.pi" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.pi"
 }
 # vim:set ts=2 sw=2 et ft=PKGBUILD:
