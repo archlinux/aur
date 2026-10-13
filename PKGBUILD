@@ -1,7 +1,7 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname=grayjay-git
 _appname=grayjay
-pkgver=18.r1.ge6cdf0d
+pkgver=20.r0.g5cd07f7
 pkgrel=1
 pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
@@ -49,7 +49,9 @@ prepare() {
     git lfs install --local
 
     GIT_LFS_SKIP_SMUDGE=0 git checkout -- .
-    git submodule update --init --recursive
+    # makepkg can remove submodule files while leaving the cached Git metadata.
+    # Force checkout even when the cached submodule already names this commit.
+    git submodule update --init --recursive --force
 
     git submodule foreach 'GIT_LFS_SKIP_SMUDGE=0 git checkout -- . || true'
 
