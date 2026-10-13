@@ -1,0 +1,16 @@
+pkgbase = knap-git
+	pkgdesc = Flexible template engine for creating Markdown (Git version)
+	pkgver = 0.6.0.r6.g0160089
+	pkgrel = 1
+	url = https://github.com/obsidianmd/knap
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = pnpm
+	depends = nodejs>=20
+	provides = knap=0.6.0.r6.g0160089
+	conflicts = knap
+	source = knap::git+https://github.com/obsidianmd/knap.git#branch=main
+	sha256sums = SKIP
+
+pkgname = knap-git
