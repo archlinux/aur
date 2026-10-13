@@ -2,7 +2,7 @@
 
 pkgname=bettbox-pre
 _pkgname=Bettbox
-pkgver=1.19.5pre1
+pkgver=1.19.5
 pkgrel=1
 _pkgver="${pkgver/pre/-pre}"
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash."
@@ -24,7 +24,7 @@ depends=(
 )
 makedepends=('git' 'clang' 'cmake' 'ninja' 'go' 'rustup' 'fvm' 'patchelf')
 source=("${_pkgname}-${_pkgver}.tar.gz::${url}/archive/v${_pkgver}.tar.gz" "restart-bettbox.hook" "bettbox.desktop" "99-bettbox.rules" "bettbox.install")
-sha256sums=('d392dd95917ca8cb342cb69326f44046dbc7190bb3cfa09bfc251b583b6c7b86'
+sha256sums=('3900ff09e915a9ff08fded972159e9988c9f1b1ec6e31c9d47e67fb5effee590'
             '03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2'
             'd7b7bdb64b1aabcedc8092a1498d743fad66d34b7f592194f805d039004d3e0f'
             'f1a21fce8675e6bd03565f56d21954e9c13991426bdc38368cd1b85f6893a593'
@@ -32,7 +32,7 @@ sha256sums=('d392dd95917ca8cb342cb69326f44046dbc7190bb3cfa09bfc251b583b6c7b86'
 install=bettbox.install
 prepare() {
 	cd "${_pkgname}-${_pkgver}"
-	fvm use 3.44.9
+	fvm use 3.47.7
 	fvm flutter --disable-analytics
 	fvm flutter --no-version-check pub get
 }
