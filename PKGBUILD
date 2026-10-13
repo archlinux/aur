@@ -2,7 +2,7 @@
 
 pkgname=opennn
 _pkgname=OpenNN
-pkgver=8.0.1
+pkgver=26.0.1
 pkgrel=2
 pkgdesc="OpenNN neural network library with attention and deep learning support"
 arch=('x86_64')
@@ -25,10 +25,10 @@ optdepends=(
 )
 
 source=(
-    "https://github.com/Artelnics/opennn/archive/refs/tags/v8.0.1.tar.gz"
+    "https://github.com/Artelnics/opennn/archive/refs/tags/v26.0.1.tar.gz"
 )
 
-sha256sums=('858a3cbfb598d95dd9ad8b7ff7a525ab97975934fb693beacb533d22064dd678')
+sha256sums=('457b383009b202dde4f4d25dccc840e2d0e26955b25ea345528f99b8df6ad250')
 
 build() {
     # Tests are currently turned off, until upstream fixes wrong test assertions
