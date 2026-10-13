@@ -2,7 +2,7 @@
 
 _pkgname=tde-session
 pkgname=tde-session-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='The TDE desktop session: a wlroots compositor, overview, bar, lock screen and settings'
 arch=(x86_64)
@@ -45,13 +45,14 @@ optdepends=(
   'pipewire-pulse: sound, with its volume in the bar'
   'gnome-keyring: remembering the passphrases of SSH keys'
   'fprintd: unlocking the screen with a finger'
+  'brightnessctl: the keyboard light keys, where the keyboard does not change it itself'
 )
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 # Built by the release workflow of the sources' repository, from the tag.
 source=("$_pkgname-$pkgver-x86_64.tar.zst::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.zst")
 noextract=("$_pkgname-$pkgver-x86_64.tar.zst")
-sha256sums=('9534a63a46766582d231f47f1c20f7be1f6bfc3eae7a126b846a16f0c62e0664')
+sha256sums=('985d15217e434b5958d14ecc40be810a1d405ea3d1323ddfa9a626196e0b293c')
 
 package() {
   bsdtar -xf "$_pkgname-$pkgver-x86_64.tar.zst" -C "$pkgdir"
