@@ -3,7 +3,7 @@
 # Submit by pushing this and the generated .SRCINFO (makepkg --printsrcinfo > .SRCINFO) to
 #   ssh://aur@aur.archlinux.org/wadsmith-bin.git
 pkgname=wadsmith-bin
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Map editor for Doom, Heretic, Hexen and Strife, made for GZDoom"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('gzdoom: play your maps (or the Flatpak org.zdoom.GZDoom)'
             'sdl2: an object'"'"'s sound when pointing at it on the shelf')
 options=('!strip')   # a self-contained .NET bundle: stripping breaks it
 source=("$url/releases/download/v$pkgver/WadSmith-$pkgver-linux-x64.tar.gz")
-sha256sums=('17724fb2f22c04435451613a778643ba49f3dfa6f571a3a2884d917823417f32')
+sha256sums=('fe451fd95f9fde4658190f33a145c31b649894ba46aaf1aed5d9ea3b20eea6ec')
 # The tarball unpacks flat ("./"); stage it in its own folder so package() copies the payload wholesale.
 noextract=("WadSmith-$pkgver-linux-x64.tar.gz")
 
