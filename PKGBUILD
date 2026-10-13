@@ -1,12 +1,12 @@
 # Maintainer: Vladimir Alyamkin <ufna@ufna.dev>
 pkgname=zerus-git
-pkgver=0.38.0.r331.g1492ec4
+pkgver=0.42.1.r536.ga43cade
 pkgrel=1
 pkgdesc='Agent development environment for AI coding agents across your machines'
 arch=('x86_64')
 url='https://github.com/ufna/zerus'
 license=('MIT')
-depends=('qt6-base' 'qt6-webengine' 'qt6-svg' 'kstatusnotifieritem' 'kwindowsystem' 'kidletime'
+depends=('qt6-base' 'qt6-webengine' 'qt6-multimedia' 'qt6-svg' 'kstatusnotifieritem' 'kwindowsystem' 'kidletime'
          'tmux>=3.7' 'openssh' 'python' 'curl' 'procps-ng' 'libgcc' 'libstdc++' 'glibc' 'hicolor-icon-theme' 'bash' 'tar')
 makedepends=('git' 'rust' 'cmake' 'ninja')
 optdepends=('konsole: external KDE terminal integration'
@@ -39,7 +39,7 @@ build() {
     cargo build --frozen --release
     cmake -S tray -B build -G Ninja -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr
-    cmake --build build --parallel 2
+    cmake --build build
     python scripts/collect-licenses.py "$srcdir/licenses"
 }
 
