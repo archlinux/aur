@@ -1,14 +1,14 @@
 pkgbase = r-sgt
 	pkgdesc = Skewed Generalized T Distribution Tree
-	pkgver = 2.0
-	pkgrel = 5
+	pkgver = 2.0.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=sgt
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-numderiv
 	depends = r-optimx
-	source = https://cran.r-project.org/src/contrib/sgt_2.0.tar.gz
-	sha256sums = 7dd2ba6632dea71b8a76df6d879e2fd036353fcfae5d0788768ab758a4aa6361
+	source = https://cran.r-project.org/src/contrib/sgt_2.0-2.tar.gz
+	sha256sums = 19113b6712e36277e5196262778fb0110f1166d4c9a5eaba37c37482c3dc3dbf
 
 pkgname = r-sgt
