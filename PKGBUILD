@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Transparent terminal multiplexer"
 
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('ddb8915313734292bf4eada5d1ed51d32fb6c4d78d9c6e73a1ce013a8d1d8fab')
-sha256sums_aarch64=('1af214d4059b16f5b10f62296fd92ecb3950e71fe14094d10446b2a368943298')
+sha256sums_x86_64=('a489a7eb1517584f7e68f402ef47fe8d4a21d87267e7bff672ea1d9ac656bcbe')
+sha256sums_aarch64=('fe69fe323f3142899d4095b8eff189fde3ff9068c4d1d83202daa5629e7a1705')
 
 
 case ${CARCH} in
