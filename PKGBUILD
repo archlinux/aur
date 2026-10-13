@@ -4,7 +4,7 @@
 #
 # shellcheck disable=SC2034,SC2154
 pkgname=imgpkg-bin
-pkgver=0.48.3
+pkgver=0.49.0
 pkgrel=1
 pkgdesc='Store application configuration files in Docker/OCI registries'
 url='https://carvel.dev/imgpkg'
@@ -13,10 +13,10 @@ license=(apache-2.0)
 install=''
 conflicts=(imgpkg)
 provides=(imgpkg)
-source_x86_64=(imgpkg-v0.48.3::https://github.com/carvel-dev/imgpkg/releases/download/v0.48.3/imgpkg-linux-amd64)
-source_aarch64=(imgpkg-v0.48.3::https://github.com/carvel-dev/imgpkg/releases/download/v0.48.3/imgpkg-linux-arm64)
-sha256sums_x86_64=(d177073901136b1e07741c9c7e6afdbdf8b4bcf32017c1e5bc8d184c8383ec69)
-sha256sums_aarch64=(655609325d9497096546342a4683688fc2a87a2952542b5da8105838285ec079)
+source_x86_64=(imgpkg-v0.49.0::https://github.com/carvel-dev/imgpkg/releases/download/v0.49.0/imgpkg-linux-amd64)
+source_aarch64=(imgpkg-v0.49.0::https://github.com/carvel-dev/imgpkg/releases/download/v0.49.0/imgpkg-linux-arm64)
+sha256sums_x86_64=(ea4d83bc88d5c9c6deda3951a80f621ea16769b94d4815edb1078399fdd9a5c3)
+sha256sums_aarch64=(bd6200d76c28681328ad8636071730d76c8b6cfbc700b0c53477793ca1e0a0f4)
 package () 
 { 
     set -eo pipefail;
