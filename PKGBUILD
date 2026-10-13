@@ -4,7 +4,7 @@
 
 _pkgname=lilv
 pkgname=$_pkgname-git
-pkgver=0.26.2.r1652.56e1224
+pkgver=0.28.1.r1706.4b8f300
 pkgrel=1
 pkgdesc='A C library interface to the LV2 plug-in standard with Python bindings (git version)'
 arch=(x86_64)
@@ -30,7 +30,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson $_pkgname $_pkgname-build
+  arch-meson -D docs=disabled $_pkgname $_pkgname-build
   meson compile -C $_pkgname-build
 }
 
@@ -45,6 +45,6 @@ package() {
   # license
   install -vDm 644 $_pkgname/LICENSES/* -t "$pkgdir"/usr/share/licenses/$pkgname
   # documentation
-  mv -v "$pkgdir"/usr/share/doc/{$_pkgname-0,$pkgname}
+  #mv -v "$pkgdir"/usr/share/doc/{$_pkgname-0,$pkgname}
   install -vDm 644 $_pkgname/{AUTHORS,NEWS,README.md} -t "$pkgdir"/usr/share/doc/$pkgname
 }

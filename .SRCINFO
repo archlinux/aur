@@ -1,6 +1,6 @@
 pkgbase = lilv-git
 	pkgdesc = A C library interface to the LV2 plug-in standard with Python bindings (git version)
-	pkgver = 0.26.2.r1652.56e1224
+	pkgver = 0.28.1.r1706.4b8f300
 	pkgrel = 1
 	url = http://drobilla.net/software/lilv
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = lilv-git
 	optdepends = python: for Python bindings
 	optdepends = python-numpy: for Python bindings
 	provides = lilv
-	provides = lilv=0.26.2
+	provides = lilv=0.28.1
 	provides = lilv-docs
 	provides = python-lilv
 	conflicts = lilv
@@ -36,7 +36,7 @@ pkgname = lilv-git
 	depends = libsratom-0.so
 	depends = libzix-0.so
 	provides = lilv
-	provides = lilv=0.26.2
+	provides = lilv=0.28.1
 	provides = lilv-docs
 	provides = python-lilv
 	provides = liblilv-0.so
