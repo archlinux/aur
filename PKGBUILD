@@ -1,6 +1,6 @@
 # Maintainer: monsoon <monsoon235@users.noreply.aur.archlinux.org>
 pkgname=strata-rocm
-pkgver=0.1.42
+pkgver=0.1.43.1
 pkgrel=1
 pkgdesc="Run server-grade frontier models on consumer GPUs powered by Niko1221's dynamic sparse router offloading (AMD ROCm version)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
   "llama.cpp-${_ggml_commit}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/${_ggml_commit}.tar.gz"
 )
 sha256sums=(
-  '6feefd456c9e0331d1d0486861a9114b77d357e2fcb1959bd3e47e2adb49d84d'
+  '833d4ade8b1c4079d12d219797c3ccad6a7454bcffb69a9149d3664469ff9bf9'
   'c076d7534afa0e5d0ec2a0d425b11e791c16f3de0d727221aea071cef156a280'
 )
 
