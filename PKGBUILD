@@ -47,16 +47,16 @@ source=("git+https://github.com/acropolis914/Clara.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/Carla"
+  cd "$srcdir/Clara"
   git describe --long --tags --abbrev=8 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || echo "2.6.0.r0"
 }
 
 build() {
-  cd "$srcdir/Carla"
+  cd "$srcdir/Clara"
   make DEFAULT_QT=6
 }
 
 package() {
-  cd "$srcdir/Carla"
+  cd "$srcdir/Clara"
   make PREFIX=/usr DESTDIR="$pkgdir" DEFAULT_QT=6 install
 }
