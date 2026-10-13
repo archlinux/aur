@@ -1,7 +1,7 @@
 pkgbase = infonotary-client-software
 	pkgdesc = InfoNotary client software - InfoNotary e-Doc Signer and InfoNotary Smart Card Manager.
-	pkgver = 3.0.29
-	pkgrel = 2
+	pkgver = 3.0.30
+	pkgrel = 1
 	url = http://www.infonotary.com/
 	install = infonotary-client-software.install
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = infonotary-client-software
 	optdepends = alsa-lib: sound support
 	conflicts = infonotary-scardmanager
 	replaces = infonotary-scardmanager
-	source = http://repository.infonotary.com/install/linux/DEBS24/pool/non-free/i/infonotary-client-software/infonotary-client-software_3.0.29_all.deb
-	sha256sums = 526e5984c8943f3a9c4b9ece81f0b34e5a18aacd3287840b470302c31f0f5b0c
+	source = http://repository.infonotary.com/install/linux/DEBS24/pool/non-free/i/infonotary-client-software/infonotary-client-software_3.0.30_all.deb
+	sha256sums = e2373fd175c43bc4056224acf68d4916e89d96a98caea499f8e02f995b88c00e
 
 pkgname = infonotary-client-software

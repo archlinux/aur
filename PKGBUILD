@@ -1,8 +1,8 @@
 # Maintainer: Slavi Pantaleev <slavi at devture.com>
 
 pkgname=infonotary-client-software
-pkgver=3.0.29
-pkgrel=2
+pkgver=3.0.30
+pkgrel=1
 pkgdesc="InfoNotary client software - InfoNotary e-Doc Signer and InfoNotary Smart Card Manager."
 arch=('x86_64')
 url="http://www.infonotary.com/"
@@ -46,7 +46,7 @@ optdepends=(
 # (suite taken from https://repository.infonotary.com/install/linux/infonotary_u2404.list)
 # Don't guess URLs: the server is behind a WAF (BunkerWeb) that bans the client IP after a burst of 404s.
 source=('http://repository.infonotary.com/install/linux/DEBS24/pool/non-free/i/infonotary-client-software/infonotary-client-software_'$pkgver'_all.deb')
-sha256sums=('526e5984c8943f3a9c4b9ece81f0b34e5a18aacd3287840b470302c31f0f5b0c')
+sha256sums=('e2373fd175c43bc4056224acf68d4916e89d96a98caea499f8e02f995b88c00e')
 install=$pkgname.install
 
 package() {
