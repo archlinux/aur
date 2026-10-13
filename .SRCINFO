@@ -1,0 +1,19 @@
+pkgbase = citronote-git
+	pkgdesc = Note-taking app with many features compatible with Markdown.
+	pkgver = 2.0.6.r0.gf099fe7
+	pkgrel = 1
+	url = https://github.com/citronote/citronote
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = jq
+	makedepends = gendesk
+	depends = electron39-bin
+	source = citronote.git::git+https://github.com/citronote/citronote.git
+	source = citronote.sh
+	sha256sums = SKIP
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
+
+pkgname = citronote-git
