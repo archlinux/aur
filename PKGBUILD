@@ -2,7 +2,7 @@
 pkgname=karma-dashboard-bin
 _pkgname=karma
 pkgver=0.133
-pkgrel=2
+pkgrel=3
 pkgdesc="Alert dashboard for Prometheus Alertmanager (binary, not built from source)"
 arch=(x86_64)
 url="https://github.com/prymitive/karma"
