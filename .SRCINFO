@@ -1,7 +1,7 @@
-pkgbase = dropbox
+pkgbase = dropbo
 	pkgdesc = A free service that lets you bring your photos, docs, and videos anywhere and share them easily.
 	pkgver = 272.4.3798
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dropbox.com
 	arch = x86_64
 	license = custom:Dropbox
@@ -34,4 +34,4 @@ pkgbase = dropbox
 	sha256sums = bf0b0945ace2c02fe790189fece8a2fa9c3a9c7e9fef879eb34b01098a957a01
 	sha256sums = SKIP
 
-pkgname = dropbox
+pkgname = dropbo
