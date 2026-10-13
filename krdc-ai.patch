@@ -4168,10 +4168,10 @@ index a988f504..1620f348 100644
      QUrl m_url;
 diff --git a/core/smartinvert.cpp b/core/smartinvert.cpp
 new file mode 100644
-index 00000000..65cd47db
+index 00000000..4c5b8e75
 --- /dev/null
 +++ b/core/smartinvert.cpp
-@@ -0,0 +1,222 @@
+@@ -0,0 +1,378 @@
 +// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +
@@ -4181,19 +4181,17 @@ index 00000000..65cd47db
 +
 +#include <algorithm>
 +#include <array>
-+#include <cstring>
++#include <cstdlib>
 +
 +namespace {
 +/**
 + * Brightness curve for the light-to-dark remap, in three pieces:
 + *
 + * - the text end (v <= s_textCutoff): near-black becomes near-white
-+ *   (0 -> 248, 90 -> 228). The old linear curve landed black text at a
-+ *   light grey (210), which the eye read as cloudy; real dark themes use
-+ *   white text on dark grey.
++ *   (0 -> 248, 90 -> 228). Dark theme text is white on dark grey, and
++ *   landing at "light grey" instead read as cloudy in File Explorer.
 + * - the blend (to s_blendEnd): interpolates into the chrome curve so
-+ *   antialiased edges between text and background stay monotone, smooth
-+ *   and free of halos.
++ *   antialiased edges between text and background stay monotone and smooth.
 + * - the chrome end (v >= s_blendEnd): 225 - 3v/4. White (255) becomes dark
 + *   grey (34) and mid greys cross the identity around 130, keeping the
 + *   low-contrast feel of real dark themes. The output stops short of pure
@@ -4222,12 +4220,26 @@ index 00000000..65cd47db
 +
 +constexpr auto s_curve = buildCurve();
 +
-+// Pixels with saturation below this are treated as window chrome and fully
-+// recolored; above that they fade to untouched. The ramp between the two is
-+// where photos with muted palettes and colorful icons land: the higher the
-+// saturation, the less the filter touches them.
++// Per-pixel content rule. A pixel with saturation below s_satKeep is window
++// chrome and fully recolored; above s_satKeep + s_satKeepRange it is content
++// and untouched; in between it fades.
 +constexpr int s_satKeep = 40;
 +constexpr int s_satKeepRange = 60;
++
++// Flat surface rule. Tinting window chrome is common (GPMC's rows are
++// (159, 183, 207), MMC's dialogs (192, 208, 224)) and a mild tint slips past
++// the saturation rule, so those rows stayed light while the rest of the
++// window went dark, taking their text readability with them. A surface is
++// recognizable by structure rather than color: within a 9x9 window it is
++// uniform, whereas icons, photos and text always vary. A pixel in such a
++// uniform, clearly light neighborhood is a surface and recolors fully,
++// whatever its tint. Dark uniform areas (a Server 2012 taskbar is (0, 3, 8))
++// are already dark-mode and left alone, and strongly colored uniform areas
++// (own saturation above s_flatOwnSat) stay content.
++constexpr int s_flatRadius = 4;
++constexpr int s_flatSpread = 28; // max minus min luma across the window
++constexpr int s_flatMean = 130; // the window must average this bright
++constexpr int s_flatOwnSat = 120;
 +
 +// ClearType neutralization. Windows renders text with subpixel
 +// antialiasing, so a black glyph on white arrives with colored pixels baked
@@ -4239,19 +4251,50 @@ index 00000000..65cd47db
 +// ringing the recolored text: the halo. They give themselves away by
 +// structure: a saturated pixel wedged between a dark glyph core (luma at
 +// most s_fringeCore) and flat background white (luma at least s_fringeWhite,
-+// nearly unsaturated) within s_fringeRadius pixels. Link-blue text has no
-+// dark core within reach, and icon bodies have no white background between
-+// their outline and the core, so only antialiasing matches. Matched pixels
-+// are neutralized to their luma - the plain grayscale antialiasing ClearType
-+// was imitating - and recolor with their glyph, halo-free.
-+// The radius of 3 covers the two-pixel fringe band ClearType paints on
-+// horizontal strokes; the white bound accepts light-grey chrome (MMC's
-+// dialogs are luma ~206), not just pure white. The core bound stays low so
-+// link-blue text (luma ~82, no dark core within reach) never matches.
++// nearly unsaturated) within s_fringeRadius pixels. The core must be a near
++// neutral black (saturation at most s_fringeCoreSat): ClearType fringes
++// always ring a black glyph, whereas a colorful icon's dark outline is
++// itself saturated - without that bound the fringe rule flattened the detail
++// pixels inside small icons. Matched pixels are neutralized to their luma -
++// the plain grayscale antialiasing ClearType was imitating - and recolor
++// with their glyph, halo-free.
 +constexpr int s_fringeCore = 60;
++constexpr int s_fringeCoreSat = 40;
 +constexpr int s_fringeWhite = 200;
 +constexpr int s_fringeWhiteSat = 50;
 +constexpr int s_fringeRadius = 3;
++
++// Colored text lift. Not all text is black: GPMC's blue section headers
++// arrive as (49, 49, 209) and its tree links as (0, 0, 46) - dark pixels
++// with full color, which the saturation rule protects as content (it must,
++// or every colorful icon goes grey). But protected means untouched, and a
++// dark blue glyph on a surface that just went dark is invisible. The
++// darkest pixel of such a stroke sits in the middle of the stroke itself, so
++// "is there light chrome nearby" fails exactly where the text is darkest.
++// The reliable signature is thinness: a text stroke is a few pixels wide, so
++// along at least one axis a 9-pixel line through it is mostly not its own
++// color, while any pixel of a solid icon - interior or edge - has a thick run
++// of its own color along both axes. The same thinness gate now also guards
++// the ClearType fringe rule: without it, colorful icon detail pixels sitting
++// between a dark outline pixel and light chrome were being flattened to
++// grey. A dark saturated pixel (luma at most s_liftMaxLuma) that passes the
++// thinness test, and that has at least s_liftLightMin neighbors clearly
++// brighter than itself (s_liftBgDelta luma) and not strongly colored
++// (s_liftBgSat), is colored text. The background test is deliberately
++// relative to the pixel rather than absolute: in dense text the window is
++// full of other glyphs' antialiasing and those count too - what matters is
++// that light surrounds dark - and a mid-tone surround (GPMC's luma ~115
++// rows) fails the delta, so dark text standing on a band that stays light
++// correctly stays dark itself. A matched pixel recolors through the
++// brightness curve while keeping each channel's offset from the luma, so
++// blue text lands as a readable light blue instead of vanishing.
++constexpr int s_liftMaxLuma = 140;
++constexpr int s_liftOwnColor = 50; // luma within this of the pixel is its own color
++constexpr int s_liftOwnSat = 60; // ...and saturation within this much of it
++constexpr int s_liftMaxThin = 3; // max own-color pixels on the thinner axis of 9
++constexpr int s_liftLightMin = 25; // clearly-brighter neighbors needed in 9x9
++constexpr int s_liftBgDelta = 60; // a background pixel is this much brighter...
++constexpr int s_liftBgSat = 120; // ...and no more colored than this
 +}
 +
 +namespace SmartInvert
@@ -4271,9 +4314,9 @@ index 00000000..65cd47db
 +    const int stepX = std::max(1, image.width() / 256);
 +    const int stepY = std::max(1, image.height() / 256);
 +
-+    for (int y = 0; y < image.height(); y += stepY) {
++    for (int y = 0; y < image.height(); ++y) {
 +        const QRgb *line = reinterpret_cast<const QRgb *>(image.constScanLine(y));
-+        for (int x = 0; x < image.width(); x += stepX) {
++        for (int x = 0; x < image.width(); ++x += stepX) {
 +            const QRgb c = line[x];
 +            // Integer Rec. 601 luma.
 +            const int luma = (qRed(c) * 77 + qGreen(c) * 150 + qBlue(c) * 29) >> 8;
@@ -4306,11 +4349,11 @@ index 00000000..65cd47db
 +
 +    const int w = image.width();
 +    const int h = image.height();
++    const int n = w * h;
 +
-+    // Pass 1: luma and saturation maps, and the ClearType fringe map. The
-+    // fringe test must run on the untouched pixels, so it is its own pass.
-+    QVector<uint8_t> luma(w * h);
-+    QVector<uint8_t> saturation(w * h);
++    // Pass 1: luma and saturation maps, shared by every later test.
++    QVector<uint8_t> luma(n);
++    QVector<uint8_t> saturation(n);
 +    for (int y = 0; y < h; ++y) {
 +        const QRgb *line = reinterpret_cast<const QRgb *>(image.constScanLine(y));
 +        for (int x = 0; x < w; ++x) {
@@ -4325,49 +4368,163 @@ index 00000000..65cd47db
 +        }
 +    }
 +
-+    QVector<uint8_t> fringe(w * h, 0);
++    // Pass 2: the flat surface map, as two separable passes so the window
++    // costs nine lookups per pixel per axis instead of eighty-one.
++    QVector<uint8_t> winMin(n);
++    QVector<uint8_t> winMax(n);
++    QVector<uint16_t> winSum(n);
 +    for (int y = 0; y < h; ++y) {
++        const uint8_t *row = luma.constData() + y * w;
++        uint8_t *rowMin = winMin.data() + y * w;
++        uint8_t *rowMax = winMax.data() + y * w;
++        uint16_t *rowSum = winSum.data() + y * w;
 +        for (int x = 0; x < w; ++x) {
-+            if (saturation[y * w + x] <= s_satKeep) {
-+                continue;
++            const int x0 = std::max(x - s_flatRadius, 0);
++            const int x1 = std::min(x + s_flatRadius, w - 1);
++            uint8_t mn = 255;
++            uint8_t mx = 0;
++            unsigned sum = 0;
++            for (int xx = x0; xx <= x1; ++xx) {
++                mn = std::min(mn, row[xx]);
++                mx = std::max(mx, row[xx]);
++                sum += row[xx];
 +            }
-+            bool core = false;
-+            bool white = false;
-+            const int y0 = std::max(y - s_fringeRadius, 0);
-+            const int y1 = std::min(y + s_fringeRadius, h - 1);
-+            const int x0 = std::max(x - s_fringeRadius, 0);
-+            const int x1 = std::min(x + s_fringeRadius, w - 1);
-+            for (int yy = y0; yy <= y1 && !(core && white); ++yy) {
-+                for (int xx = x0; xx <= x1; ++xx) {
-+                    const int l = luma[yy * w + xx];
-+                    core = core || (l <= s_fringeCore);
-+                    white = white || (l >= s_fringeWhite && saturation[yy * w + xx] <= s_fringeWhiteSat);
-+                }
-+            }
-+            fringe[y * w + x] = (core && white) ? 1 : 0;
++            rowMin[x] = mn;
++            rowMax[x] = mx;
++            rowSum[x] = uint16_t(sum);
 +        }
 +    }
 +
-+    // Pass 2: recolor.
++    QVector<uint8_t> surface(n, 0);
++    for (int y = 0; y < h; ++y) {
++        const int y0 = std::max(y - s_flatRadius, 0);
++        const int y1 = std::min(y + s_flatRadius, h - 1);
++        for (int x = 0; x < w; ++x) {
++            uint8_t mn = 255;
++            uint8_t mx = 0;
++            unsigned sum = 0;
++            for (int yy = y0; yy <= y1; ++yy) {
++                mn = std::min(mn, winMin[yy * w + x]);
++                mx = std::max(mx, winMax[yy * w + x]);
++                sum += winSum[yy * w + x];
++            }
++            const int count = (y1 - y0 + 1) * (std::min(x + s_flatRadius, w - 1) - std::max(x - s_flatRadius, 0) + 1);
++            if (mx - mn <= s_flatSpread && int(sum / count) >= s_flatMean
++                && saturation[y * w + x] <= s_flatOwnSat) {
++                surface[y * w + x] = 1;
++            }
++        }
++    }
++
++    // Pass 3: classify the saturated pixels that the plain saturation rule
++    // would preserve: ClearType fringe, colored text to lift, or content.
++    // Both rules demand thinness, so it is computed first.
++    QVector<uint8_t> fringe(n, 0);
++    QVector<uint8_t> lift(n, 0);
++    for (int y = 0; y < h; ++y) {
++        for (int x = 0; x < w; ++x) {
++            const int self = y * w + x;
++            const int selfLuma = luma[self];
++            if (saturation[self] <= s_satKeep) {
++                continue;
++            }
++
++            // Thinness: how far the pixel's own tone reaches along each
++            // axis. Text strokes and ClearType fringes are thin on one
++            // axis; icon bodies and icon detail are thick on both. "Own
++            // tone" must match saturation as well as luma: a bright cool
++            // fringe (luma ~195) on MMC's light-grey chrome (luma ~205) is
++            // a one-pixel band, but a luma-only test reads the grey as its
++            // own color and calls it thick.
++            const int selfSat = saturation[self];
++            int horiz = 0;
++            for (int xx = std::max(x - 4, 0); xx <= std::min(x + 4, w - 1); ++xx) {
++                const int j = y * w + xx;
++                horiz += (std::abs(int(luma[j]) - selfLuma) <= s_liftOwnColor
++                          && std::abs(int(saturation[j]) - selfSat) <= s_liftOwnSat)
++                    ? 1
++                    : 0;
++            }
++            int vert = 0;
++            for (int yy = std::max(y - 4, 0); yy <= std::min(y + 4, h - 1); ++yy) {
++                const int j = yy * w + x;
++                vert += (std::abs(int(luma[j]) - selfLuma) <= s_liftOwnColor
++                         && std::abs(int(saturation[j]) - selfSat) <= s_liftOwnSat)
++                    ? 1
++                    : 0;
++            }
++            const bool thin = std::min(horiz, vert) <= s_liftMaxThin;
++
++            bool core = false;
++            bool white = false;
++            for (int yy = std::max(y - s_fringeRadius, 0); yy <= std::min(y + s_fringeRadius, h - 1); ++yy) {
++                for (int xx = std::max(x - s_fringeRadius, 0); xx <= std::min(x + s_fringeRadius, w - 1); ++xx) {
++                    const int l = luma[yy * w + xx];
++                    core = core || (l <= s_fringeCore && saturation[yy * w + xx] <= s_fringeCoreSat);
++                    white = white || (l >= s_fringeWhite && saturation[yy * w + xx] <= s_fringeWhiteSat);
++                }
++            }
++            if (core && white && thin) {
++                fringe[self] = 1;
++                continue;
++            }
++
++            if (selfLuma > s_liftMaxLuma || !thin) {
++                continue;
++            }
++
++            int light = 0;
++            for (int yy = std::max(y - 4, 0); yy <= std::min(y + 4, h - 1); ++yy) {
++                for (int xx = std::max(x - 4, 0); xx <= std::min(x + 4, w - 1); ++xx) {
++                    const int j = yy * w + xx;
++                    light += (int(luma[j]) >= selfLuma + s_liftBgDelta && saturation[j] <= s_liftBgSat) ? 1 : 0;
++                }
++            }
++            lift[self] = (light >= s_liftLightMin) ? 1 : 0;
++        }
++    }
++
++    // Pass 4: recolor.
 +    for (int y = 0; y < h; ++y) {
 +        QRgb *line = reinterpret_cast<QRgb *>(image.scanLine(y));
 +        for (int x = 0; x < w; ++x) {
++            const int self = y * w + x;
 +            const QRgb c = line[x];
 +            const int r = qRed(c);
 +            const int g = qGreen(c);
 +            const int b = qBlue(c);
 +
-+            if (fringe[y * w + x]) {
++            if (fringe[self]) {
 +                // Subpixel antialiasing: recolor from luma as plain grey.
-+                const int recolored = s_curve[luma[y * w + x]];
++                const int recolored = s_curve[luma[self]];
 +                line[x] = qRgb(recolored, recolored, recolored);
++                continue;
++            }
++
++            if (surface[self]) {
++                // Flat light chrome, tinted or not: fully recolored, so a
++                // tinted row goes as dark as the white around it.
++                const int value = (std::max(r, std::max(g, b)) + std::min(r, std::min(g, b))) / 2;
++                const int recolored = s_curve[value];
++                line[x] = qRgb(recolored, recolored, recolored);
++                continue;
++            }
++
++            if (lift[self]) {
++                // Colored text on a surface that went dark: keep the hue,
++                // lift the brightness, the way dark themes restyle links.
++                const int l = luma[self];
++                const int target = s_curve[l];
++                line[x] = qRgb(std::clamp(target + (r - l), 0, 255),
++                               std::clamp(target + (g - l), 0, 255),
++                               std::clamp(target + (b - l), 0, 255));
 +                continue;
 +            }
 +
 +            const int mx = std::max(r, std::max(g, b));
 +            const int mn = std::min(r, std::min(g, b));
 +            const int value = (mx + mn) / 2;
-+            const int sat = saturation[y * w + x];
++            const int sat = saturation[self];
 +
 +            // How much of the original pixel survives: 0 for grey chrome
 +            // (fully recolored), 255 for saturated content (untouched).
@@ -4377,13 +4534,12 @@ index 00000000..65cd47db
 +            }
 +
 +            const int recolored = s_curve[value];
-+            const int blended = (keep == 0) ? recolored : (recolored * (255 - keep) + value * keep) / 255;
 +
-+            // Grey chrome stays grey; partially saturated pixels keep a
++            // Grey chrome stays grey; partially protected pixels keep a
 +            // fraction of their channels, which desaturates them towards the
 +            // recolored brightness instead of shifting their hue.
 +            if (keep == 0) {
-+                line[x] = qRgb(blended, blended, blended);
++                line[x] = qRgb(recolored, recolored, recolored);
 +            } else {
 +                const int blendR = (recolored * (255 - keep) + r * keep) / 255;
 +                const int blendG = (recolored * (255 - keep) + g * keep) / 255;
@@ -4396,10 +4552,10 @@ index 00000000..65cd47db
 +}
 diff --git a/core/smartinvert.h b/core/smartinvert.h
 new file mode 100644
-index 00000000..e064fc7d
+index 00000000..13793e73
 --- /dev/null
 +++ b/core/smartinvert.h
-@@ -0,0 +1,48 @@
+@@ -0,0 +1,56 @@
 +// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +
@@ -4413,12 +4569,18 @@ index 00000000..e064fc7d
 + * A client-side "smart invert" that recolors light application windows to a
 + * dark scheme without inverting the whole screen.
 + *
-+ * The filter works on the pixels that look like window chrome - near-white
-+ * backgrounds, grey panels and near-black text - and remaps their brightness
-+ * through a light-to-dark curve. Pixels with saturated color (photo content,
-+ * colorful icons, syntax highlighting) are kept untouched, so pictures keep
-+ * looking like pictures. Unlike naive full inversion, this makes a white File
-+ * Explorer look like a dark-mode window while leaving images and videos alone.
++ * The filter remaps the brightness of window chrome - near-white
++ * backgrounds, grey panels and near-black text - through a light-to-dark
++ * curve. Saturated pixels (photo content, colorful icons) are kept
++ * untouched, so pictures keep looking like pictures. Three structural rules
++ * refine that split, each keyed on pixel neighborhoods rather than color:
++ * a uniform light neighborhood is a surface whatever its tint (tinted
++ * chrome bands darken with the rest of the window); a thin band of saturated
++ * pixels between a black glyph core and light chrome is ClearType
++ * antialiasing and neutralizes to grey (no colored halos around text); and a
++ * thin dark saturated stroke standing on clearly brighter pixels is colored
++ * text and lifts to a readable light tone of its own hue (GPMC's blue
++ * section headers stay legible on darkened bands).
 + *
 + * It cannot tell a white window background from a white document page: both
 + * are flat white pixels. Only the remote OS itself knows that difference, so
@@ -4443,8 +4605,10 @@ index 00000000..e064fc7d
 +
 +/**
 + * Recolor the image in place. Low-saturation pixels have their brightness
-+ * mapped through a smooth, monotone light-to-dark curve; saturated pixels are
-+ * preserved. Expects Format_RGB32; other formats are left unchanged.
++ * mapped through a smooth, monotone light-to-dark curve; saturated pixels
++ * are preserved unless they match the structural rules described above
++ * (ClearType fringes, lifted colored text) or sit in a flat light surface.
++ * Expects Format_RGB32; other formats are left unchanged.
 + */
 +KRDCCORE_EXPORT void apply(QImage &image);
 +}
@@ -5616,10 +5780,10 @@ index 1600b660..4fcfc2a4 100644
  endif()
 diff --git a/test/aiengine_test.cpp b/test/aiengine_test.cpp
 new file mode 100644
-index 00000000..3d7b2779
+index 00000000..14fba258
 --- /dev/null
 +++ b/test/aiengine_test.cpp
-@@ -0,0 +1,547 @@
+@@ -0,0 +1,590 @@
 +/*
 +    Standalone test for the AI conversation engine. Not built by default; see
 +    test_ai.sh. Drives AiConversation against a mock OpenAI-compatible server
@@ -5865,9 +6029,52 @@ index 00000000..3d7b2779
 +    check(qRed(warm) - qBlue(warm) < 30, "the warm ClearType fringe is neutralized to grey");
 +    check(qRed(glyph.pixel(40, 46)) > 235, "the glyph core they hug turns near-white");
 +    const QRgb link = glyph.pixel(70, 70);
-+    check(qBlue(link) - qRed(link) > 100, "link-blue text (no dark core nearby) keeps its color");
++    check(qBlue(link) - qRed(link) > 100 && qBlue(link) > 200,
++          "link-blue text lifts to a readable light blue instead of vanishing");
 +    const QRgb greyFringe = glyph.pixel(16, 76);
 +    check(qBlue(greyFringe) - qRed(greyFringe) < 30, "fringes on light-grey MMC chrome neutralize as well");
++
++    // The colored text lift, measured from a real GPMC capture: blue section
++    // headers ((49,49,209)) sit on cream bands ((255,246,215)); the filter
++    // darkens the band, so the protected dark-blue glyph must rise with its
++    // hue intact or it disappears. A big solid icon block sits in the same
++    // chrome but is surrounded by its own colors, not by chrome, and must
++    // keep its color.
++    QImage gpmc(96, 96, QImage::Format_RGB32);
++    gpmc.fill(qRgb(255, 246, 215)); // cream band
++    for (int y = 20; y < 32; ++y) {
++        for (int x = 10; x < 12; ++x) {
++            gpmc.setPixel(x, y, qRgb(49, 49, 209)); // blue glyph stroke, 2px like real text
++        }
++    }
++    for (int y = 56; y < 88; ++y) {
++        for (int x = 56; x < 88; ++x) {
++            gpmc.setPixel(x, y, qRgb(49, 49, 209)); // solid icon body
++        }
++    }
++    SmartInvert::apply(gpmc);
++    const QRgb lifted = gpmc.pixel(11, 26);
++    check(qBlue(lifted) > 200 && qRed(lifted) > 140, "blue text on a cream band lifts to readable light blue");
++    check(qBlue(lifted) - qRed(lifted) > 30, "and it stays blue, not grey");
++    const QRgb solid = gpmc.pixel(72, 72);
++    check(solid == qRgb(49, 49, 209), "a solid blue icon body in the same chrome keeps its color");
++
++    // GPMC's other band flavor: a mildly tinted blue-grey surface
++    // ((159, 183, 207), saturation 59) that the plain saturation rule leaves
++    // light while the window around it goes dark. The flat surface rule
++    // darkens it, and the near-black blue text standing on it lifts to match.
++    QImage band(64, 64, QImage::Format_RGB32);
++    band.fill(qRgb(159, 183, 207));
++    for (int y = 20; y < 32; ++y) {
++        for (int x = 20; x < 22; ++x) {
++            band.setPixel(x, y, qRgb(0, 0, 46)); // "Links" text, as captured
++        }
++    }
++    SmartInvert::apply(band);
++    const QRgb tint = band.pixel(40, 40);
++    check(qRed(tint) < 110 && qGreen(tint) == qRed(tint), "the tinted band itself goes dark like any chrome");
++    const QRgb onTint = band.pixel(20, 26);
++    check(qBlue(onTint) > 200 && qRed(onTint) > 140, "dark blue text on the tinted band lifts to readable light blue");
 +}
 +
 +static void testUrlDerivation()
