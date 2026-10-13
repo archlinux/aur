@@ -3,9 +3,9 @@
 pkgname=relic-everforest-gtk-theme
 _repo=Everforest-GTK-Theme
 _commit=9b8be4d6648ae9eaae3dd550105081f8c9054825
-_fixes=2026.10.12
+_fixes=2026.10.13
 pkgver=2025.10.23
-pkgrel=1
+pkgrel=2
 pkgdesc='Everforest GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes'
 arch=('any')
 url="https://github.com/gaou-piou/${_repo}"
@@ -18,7 +18,7 @@ options=('!strip' '!debug' '!emptydirs')
 source=("${_repo}-${_commit}.tar.gz::https://github.com/gaou-piou/${_repo}/archive/${_commit}.tar.gz"
         "relic-gtk-fixes-${_fixes}.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/${_fixes}.tar.gz")
 sha256sums=('20966e9f5008efc7b23e44ca4ad1aec5e173cafdf120b9063b3687a1970500e0'
-            '7ec9f3d07ebe4896341ad76a39174b7893d01ba6a104f792c7cd9eac97442bac')
+            '895fe5ab4d59fb69cf9aaf7ee7df4f2cf716485a429eacaf02ab5d761217bb47')
 
 prepare() {
   local sass="${_repo}-${_commit}/themes/src/sass"
@@ -28,6 +28,7 @@ prepare() {
   cp "${fixes}/generic/fixes-4.0.scss" "${sass}/_fixes-4.0.scss"
   cp "${fixes}/relic/fixes-variables.scss" "${sass}/_fixes-variables.scss"
   cp "${fixes}/relic/local-fixes-4.0.scss" "${sass}/_local-fixes-4.0.scss"
+  cp "${fixes}/relic/local-fixes-gnome-shell.scss" "${sass}/_local-fixes-gnome-shell.scss"
 
   # GTK 3 has no border-spacing (GTK 4 only): every GTK 3 app warned about upstream's dropdown rule
   sed -i '/^\s*border-spacing:/d' "${sass}/gtk/_common-3.0.scss"
@@ -41,6 +42,10 @@ prepare() {
     sed -i "$(awk 'END { print NR - 2 }' "$f") a @import '../../sass/fixes-4.0';" "$f"
     sed -i "$(awk 'END { print NR - 6 }' "$f") a @import '../../sass/fixes-variables';" "$f"
     sed -i "/@import '..\/..\/sass\/fixes-4.0';/a @import '../../sass/local-fixes-4.0';" "$f"
+  done
+  # GNOME Shell fixes (notification banner hover etc.), at the end of each shell entry file
+  for f in "${_repo}-${_commit}/themes/src/main/gnome-shell/"*.scss; do
+    printf '\n%s\n' "@import '../../sass/local-fixes-gnome-shell';" >> "$f"
   done
 }
 
