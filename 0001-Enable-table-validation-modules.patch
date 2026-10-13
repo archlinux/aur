@@ -1,5 +1,5 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
-From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
 Date: Tue, 23 Jun 2015 08:40:29 +0200
 Subject: [PATCH] Enable table validation modules
 
@@ -8,10 +8,10 @@ Subject: [PATCH] Enable table validation modules
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/modules.cfg b/modules.cfg
-index 5b6c9b5a5c1d..b4933bea7654 100644
+index b9b4718f1873..cf978a1c11c2 100644
 --- a/modules.cfg
 +++ b/modules.cfg
-@@ -117,26 +117,26 @@ AUX_MODULES += cache
+@@ -123,26 +123,26 @@ AUX_MODULES += cache
  
  # TrueType GX/AAT table validation.  Needs `ftgxval.c' below.
  #

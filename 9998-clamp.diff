@@ -1,8 +1,7 @@
 diff --git a/src/smooth/ftsmooth.c b/src/smooth/ftsmooth.c
-index 25c1e5e5b..cf4555b34 100644
 --- a/src/smooth/ftsmooth.c
 +++ b/src/smooth/ftsmooth.c
-@@ -290,14 +290,28 @@
+@@ -291,15 +291,30 @@
  
  
      for ( ; count--; spans++ )
@@ -13,7 +12,8 @@ index 25c1e5e5b..cf4555b34 100644
 +      unsigned int inc3 = ( (unsigned int)spans->coverage * target->wght[3] + 85 ) >> 8;
 +      unsigned int inc4 = ( (unsigned int)spans->coverage * target->wght[4] + 85 ) >> 8;
 +
-       for ( dst = dst_line + spans->x, w = spans->len; w--; dst++ )
+       for ( dst = dst_line + (unsigned short)spans->x,
+             w = spans->len; w--; dst++ )
        {
 -        dst[0] += ( spans->coverage * target->wght[0] + 85 ) >> 8;
 -        dst[1] += ( spans->coverage * target->wght[1] + 85 ) >> 8;
@@ -21,6 +21,7 @@ index 25c1e5e5b..cf4555b34 100644
 -        dst[3] += ( spans->coverage * target->wght[3] + 85 ) >> 8;
 -        dst[4] += ( spans->coverage * target->wght[4] + 85 ) >> 8;
 +        unsigned int val;
++
 +        val = dst[0] + inc0;
 +        dst[0] = (unsigned char)( val > 255 ? 255 : val );
 +        val = dst[1] + inc1;
@@ -36,7 +37,7 @@ index 25c1e5e5b..cf4555b34 100644
    }
  
  
-@@ -385,14 +399,28 @@
+@@ -387,15 +402,30 @@
  
  
      for ( ; count--; spans++ )
@@ -47,7 +48,8 @@ index 25c1e5e5b..cf4555b34 100644
 +      unsigned int inc3 = ( (unsigned int)spans->coverage * target->wght[3] + 85 ) >> 8;
 +      unsigned int inc4 = ( (unsigned int)spans->coverage * target->wght[4] + 85 ) >> 8;
 +
-       for ( dst = dst_line + spans->x, w = spans->len; w--; dst++ )
+       for ( dst = dst_line + (unsigned short)spans->x,
+             w = spans->len; w--; dst++ )
        {
 -        dst[        0] += ( spans->coverage * target->wght[0] + 85 ) >> 8;
 -        dst[    pitch] += ( spans->coverage * target->wght[1] + 85 ) >> 8;
@@ -55,6 +57,7 @@ index 25c1e5e5b..cf4555b34 100644
 -        dst[3 * pitch] += ( spans->coverage * target->wght[3] + 85 ) >> 8;
 -        dst[4 * pitch] += ( spans->coverage * target->wght[4] + 85 ) >> 8;
 +        unsigned int val;
++
 +        val = dst[        0] + inc0;
 +        dst[        0] = (unsigned char)( val > 255 ? 255 : val );
 +        val = dst[    pitch] + inc1;
