@@ -1,0 +1,22 @@
+pkgbase = fcitx5-chengyin
+	pkgdesc = Chengyin IME (preview) - Fcitx 5 full-pinyin input method with a bundled lexicon
+	pkgver = 0.1.0.preview34
+	pkgrel = 1
+	url = https://github.com/zzttzzmyswy/chengyin-ime
+	arch = x86_64
+	license = GPL-3.0-or-later
+	license = Apache-2.0
+	license = MIT
+	checkdepends = dbus
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = python
+	makedepends = glib2
+	depends = fcitx5
+	depends = gcc-libs
+	depends = glibc
+	options = !debug
+	source = fcitx5-chengyin-0.1.0.preview34.tar.gz::https://github.com/zzttzzmyswy/chengyin-ime/archive/refs/tags/v0.1.0-preview34.tar.gz
+	sha256sums = 4a34ac8568166ab727396b008cd6878877d396a0d9b6373d0e3304e4d0bcbbaf
+
+pkgname = fcitx5-chengyin
