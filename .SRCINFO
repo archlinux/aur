@@ -1,7 +1,7 @@
 pkgbase = rpiusbboot
 	pkgdesc = Raspberry Pi USB boot
 	pkgver = 20261002_115811
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raspberrypi/usbboot
 	arch = i686
 	arch = x86_64
