@@ -4168,10 +4168,10 @@ index a988f504..1620f348 100644
      QUrl m_url;
 diff --git a/core/smartinvert.cpp b/core/smartinvert.cpp
 new file mode 100644
-index 00000000..934ccaf2
+index 00000000..06d74906
 --- /dev/null
 +++ b/core/smartinvert.cpp
-@@ -0,0 +1,241 @@
+@@ -0,0 +1,325 @@
 +// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +
@@ -4185,20 +4185,34 @@ index 00000000..934ccaf2
 +
 +namespace {
 +/**
-+ * Brightness curve for the light-to-dark remap: v -> 225 - 3v/4.
++ * Brightness curve for the light-to-dark remap, in three pieces:
 + *
-+ * White (255) becomes dark grey (34), near-black text (20) becomes light grey
-+ * (210), and mid greys stay close to themselves (the curve crosses the identity
-+ * at 128.5). It is continuous and monotone, so antialiased text edges - where
-+ * background and text greys meet in half-tones - stay smooth instead of
-+ * gaining halos. The output range stops short of pure black and pure white to
-+ * keep the low-contrast, easy-on-the-eyes feel of real dark themes.
++ * - the text end (v <= s_textCutoff): near-black becomes near-white
++ *   (255 -> 248, 90 -> 228). Dark theme text is white on dark grey, and
++ *   landing at "light grey" instead read as cloudy in File Explorer.
++ * - the blend (up to s_satRampEnd): interpolates into the chrome curve so
++ *   antialiased edges between text and background stay monotone and smooth.
++ * - the chrome end (v >= s_satRampEnd): 225 - 3v/4. White (255) becomes dark
++ *   grey (34), mid greys cross the identity around 128, keeping the
++ *   low-contrast feel of real dark themes.
 + */
++constexpr int s_textCutoff = 90;
++constexpr int s_satRampEnd = 130;
++
 +constexpr std::array<int, 256> buildCurve()
 +{
 +    std::array<int, 256> curve{};
 +    for (int v = 0; v < 256; ++v) {
-+        curve[v] = 225 - (v * 3) / 4;
++        if (v <= s_textCutoff) {
++            curve[v] = 248 - v * 20 / s_textCutoff;
++        } else if (v < s_satRampEnd) {
++            const int text = 248 - v * 20 / s_textCutoff;
++            const int chrome = 225 - (v * 3) / 4;
++            const int w = v - s_textCutoff; // 0..40
++            curve[v] = (text * (40 - w) + chrome * w) / 40;
++        } else {
++            curve[v] = 225 - (v * 3) / 4;
++        }
 +    }
 +    return curve;
 +}
@@ -4220,17 +4234,13 @@ index 00000000..934ccaf2
 +// s_textCutoff are always recolored there; the required saturation ramps back
 +// down to the normal rule at s_satRampEnd so mid-tone colorful content is
 +// still spared.
-+constexpr int s_textCutoff = 90;
-+constexpr int s_satRampEnd = 130;
 +
 +// Region rule. The screen is divided into s_block-sized blocks and each block
 +// is scored for how much of it looks like bright window chrome: bright, lowly
 +// saturated pixels (white backgrounds, grey toolbars). Pixels are only
 +// recolored in blocks that score high, which is what keeps a dark taskbar or
 +// a dark desktop background from being lightened when a white File Explorer
-+// window makes the overall screen read as light. Black text still turns
-+// light because its block is bright chrome; the taskbar's own dark pixels are
-+// in dark blocks and pass through untouched.
++// window makes the overall screen read as light.
 +//
 +// The block score is bilinearly sampled, so the transition between a white
 +// window and the dark taskbar is a one-block-wide ramp instead of a hard
@@ -4251,11 +4261,33 @@ index 00000000..934ccaf2
 +constexpr int s_brightStart = 22;
 +constexpr int s_brightFull = 60;
 +
++// Shadow rule. A window's drop shadow is a smooth grey gradient over the
++// desktop; recolored like chrome, it became a light halo around dark windows.
++// Shadows have a signature that neither text nor flat chrome has: the
++// brightness varies, but slowly. Within a 5x5 neighborhood, flat chrome
++// surfaces (panels, MMC's grey dialogs) vary by almost nothing, text strokes
++// and borders vary by a lot, and shadow gradients vary by a little. A
++// mid-tone pixel whose neighborhood range falls in that middle band is left
++// untouched: the shadow keeps its shape over the darkened desktop.
++//
++// The test only applies to mid-tone pixels (s_textCutoff < v <
++// s_lightChrome): near-white chrome is always recolored (the faint outer
++// fringe of a shadow simply blends into the darkened desktop) and dark text
++// is always recolored (the ClearType rule).
++constexpr int s_lightChrome = 216;
++constexpr int s_flatRange = 6;
++constexpr int s_edgeContrast = 70;
++
 +inline int saturationOf(int r, int g, int b)
 +{
 +    const int mx = std::max(r, std::max(g, b));
 +    const int mn = std::min(r, std::min(g, b));
 +    return mx == 0 ? 0 : (mx - mn) * 255 / mx;
++}
++
++inline int lumaOf(int r, int g, int b)
++{
++    return (r * 77 + g * 150 + b * 29) >> 8;
 +}
 +
 +/**
@@ -4304,8 +4336,7 @@ index 00000000..934ccaf2
 +        const QRgb *line = reinterpret_cast<const QRgb *>(image.constScanLine(y));
 +        for (int x = 0; x < image.width(); x += stepX) {
 +            const QRgb c = line[x];
-+            const int luma = (qRed(c) * 77 + qGreen(c) * 150 + qBlue(c) * 29) >> 8;
-+            ++histogram[luma];
++            ++histogram[lumaOf(qRed(c), qGreen(c), qBlue(c))];
 +            ++samples;
 +        }
 +    }
@@ -4332,17 +4363,50 @@ index 00000000..934ccaf2
 +        return;
 +    }
 +
-+    // Pass 1: score each block for bright window chrome.
-+    const int maskW = std::max(1, (image.width() + s_block - 1) / s_block);
-+    const int maskH = std::max(1, (image.height() + s_block - 1) / s_block);
++    const int w = image.width();
++    const int h = image.height();
++
++    // Pass 1: luma and horizontal extrema over a 5-pixel window; the vertical
++    // pass happens inline in pass 3. Together they give the local brightness
++    // range that separates flat chrome, text edges and shadow gradients.
++    QVector<uint8_t> luma(w * h);
++    QVector<uint8_t> hmax(w * h);
++    QVector<uint8_t> hmin(w * h);
++
++    for (int y = 0; y < h; ++y) {
++        const QRgb *line = reinterpret_cast<const QRgb *>(image.constScanLine(y));
++        uint8_t *rowLuma = luma.data() + y * w;
++        for (int x = 0; x < w; ++x) {
++            const QRgb c = line[x];
++            rowLuma[x] = uint8_t(lumaOf(qRed(c), qGreen(c), qBlue(c)));
++        }
++        uint8_t *rowMax = hmax.data() + y * w;
++        uint8_t *rowMin = hmin.data() + y * w;
++        for (int x = 0; x < w; ++x) {
++            uint8_t mx = 0;
++            uint8_t mn = 255;
++            const int x0 = std::max(x - 2, 0);
++            const int x1 = std::min(x + 2, w - 1);
++            for (int xx = x0; xx <= x1; ++xx) {
++                mx = std::max(mx, rowLuma[xx]);
++                mn = std::min(mn, rowLuma[xx]);
++            }
++            rowMax[x] = mx;
++            rowMin[x] = mn;
++        }
++    }
++
++    // Pass 2: score each block for bright window chrome.
++    const int maskW = std::max(1, (w + s_block - 1) / s_block);
++    const int maskH = std::max(1, (h + s_block - 1) / s_block);
 +    QVector<uint8_t> chromeMask(maskW * maskH);
 +
 +    for (int by = 0; by < maskH; ++by) {
 +        for (int bx = 0; bx < maskW; ++bx) {
 +            int bright = 0;
 +            int counted = 0;
-+            const int yEnd = std::min((by + 1) * s_block, image.height());
-+            const int xEnd = std::min((bx + 1) * s_block, image.width());
++            const int yEnd = std::min((by + 1) * s_block, h);
++            const int xEnd = std::min((bx + 1) * s_block, w);
 +            for (int y = by * s_block; y < yEnd; ++y) {
 +                const QRgb *line = reinterpret_cast<const QRgb *>(image.constScanLine(y));
 +                for (int x = bx * s_block; x < xEnd; ++x) {
@@ -4350,8 +4414,7 @@ index 00000000..934ccaf2
 +                    const int r = qRed(c);
 +                    const int g = qGreen(c);
 +                    const int b = qBlue(c);
-+                    const int luma = (r * 77 + g * 150 + b * 29) >> 8;
-+                    bright += (luma >= s_brightLuma && saturationOf(r, g, b) <= s_brightSat) ? 1 : 0;
++                    bright += (lumaOf(r, g, b) >= s_brightLuma && saturationOf(r, g, b) <= s_brightSat) ? 1 : 0;
 +                    ++counted;
 +                }
 +            }
@@ -4361,13 +4424,16 @@ index 00000000..934ccaf2
 +        }
 +    }
 +
-+    // Pass 2: recolor. A pixel survives if it is colorful content, or if its
++    // Pass 3: recolor. A pixel survives if it is colorful content, if its
 +    // neighborhood is not bright chrome (dark taskbar, dark desktop, picture
-+    // region). Inside bright chrome the ClearType rule applies: nothing dark
-+    // is content, so glyphs recolor fully and leave no halo.
-+    for (int y = 0; y < image.height(); ++y) {
++    // region), or if it is a mid-tone in a smooth gradient (window shadow).
++    // Inside bright chrome the ClearType rule applies: nothing dark is
++    // content, so glyphs recolor fully and leave no halo.
++    for (int y = 0; y < h; ++y) {
 +        QRgb *line = reinterpret_cast<QRgb *>(image.scanLine(y));
-+        for (int x = 0; x < image.width(); ++x) {
++        const int y0 = std::max(y - 2, 0);
++        const int y1 = std::min(y + 2, h - 1);
++        for (int x = 0; x < w; ++x) {
 +            const QRgb c = line[x];
 +            const int r = qRed(c);
 +            const int g = qGreen(c);
@@ -4391,7 +4457,25 @@ index 00000000..934ccaf2
 +            const int score = sampleMask(chromeMask.constData(), maskW, maskH, x, y);
 +            const int regionKeep = 255 - score;
 +
-+            const int keep = std::max(pixelKeep, regionKeep);
++            int keep = std::max(pixelKeep, regionKeep);
++
++            // Shadow test: mid-tone pixel whose 5x5 neighborhood varies
++            // gently but not flatly. Flat is chrome (recolor), strongly
++            // varying is text or a border (recolor), gently sloping is a
++            // window shadow (keep).
++            if (keep < 255 && value > s_textCutoff && value < s_lightChrome) {
++                uint8_t vmax = 0;
++                uint8_t vmin = 255;
++                for (int yy = y0; yy <= y1; ++yy) {
++                    vmax = std::max(vmax, hmax[yy * w + x]);
++                    vmin = std::min(vmin, hmin[yy * w + x]);
++                }
++                const int range = vmax - vmin;
++                if (range > s_flatRange && range < s_edgeContrast) {
++                    keep = 255;
++                }
++            }
++
 +            if (keep == 255) {
 +                continue;
 +            }
@@ -4415,10 +4499,10 @@ index 00000000..934ccaf2
 +}
 diff --git a/core/smartinvert.h b/core/smartinvert.h
 new file mode 100644
-index 00000000..a60671d2
+index 00000000..40b74f3d
 --- /dev/null
 +++ b/core/smartinvert.h
-@@ -0,0 +1,54 @@
+@@ -0,0 +1,59 @@
 +// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +
@@ -4447,7 +4531,12 @@ index 00000000..a60671d2
 + * trusted as content - because Windows draws text with ClearType: subpixel
 + * antialiasing paints glyph edges with strongly saturated pixels that a plain
 + * saturation rule would preserve, leaving black text ringed by a recolored
-+ * light halo.
++ * light halo. Text lands near white, like real dark themes.
++ *
++ * A window's drop shadow - a smooth grey gradient over the desktop - is
++ * recognized by its signature (brightness varies, but gently) and left
++ * untouched, so shadows stay dark around darkened windows instead of turning
++ * into light halos.
 + *
 + * It cannot tell a white window background from a white document page: both
 + * are flat white pixels. Only the remote OS itself knows that difference, so
@@ -5605,10 +5694,10 @@ index 1600b660..4fcfc2a4 100644
  endif()
 diff --git a/test/aiengine_test.cpp b/test/aiengine_test.cpp
 new file mode 100644
-index 00000000..b48660d4
+index 00000000..e55a9377
 --- /dev/null
 +++ b/test/aiengine_test.cpp
-@@ -0,0 +1,592 @@
+@@ -0,0 +1,636 @@
 +/*
 +    Standalone test for the AI conversation engine. Not built by default; see
 +    test_ai.sh. Drives AiConversation against a mock OpenAI-compatible server
@@ -5774,16 +5863,17 @@ index 00000000..b48660d4
 +    const QRgb background = img.pixel(60, 60);
 +    check(qRed(background) < 70 && qGreen(background) < 70 && qBlue(background) < 70,
 +          "the white background becomes dark");
-+    const QRgb text = img.pixel(10, 6);
++    const QRgb text = img.pixel(10, 9);
 +    check(qRed(text) > 170 && qGreen(text) > 170 && qBlue(text) > 170, "the dark text becomes light");
++    check(qRed(text) > 220, "the text lands near white, not cloudy grey");
 +    const QRgb icon = img.pixel(38, 38);
 +    check(qRed(icon) > 180 && qGreen(icon) < 90 && qBlue(icon) < 90, "the saturated red icon keeps its color");
 +
 +    // Antialiased edges are grey ramps; a smooth monotone curve keeps them
-+    // smooth (no banding or halos around text). The ramp lives inside a white
-+    // window: regions are only recolored in bright chrome context.
-+    QImage ramp(256, 16, QImage::Format_RGB32);
-+    ramp.fill(Qt::white);
++    // smooth (no banding or halos around text). One row tall on purpose: with
++    // more height the white field around it would make each ramp pixel look
++    // like a shadow gradient (a gentle vertical slope) and exempt it.
++    QImage ramp(256, 1, QImage::Format_RGB32);
 +    for (int v = 0; v < 256; ++v) {
 +        ramp.setPixel(v, 0, qRgb(v, v, v));
 +    }
@@ -5798,7 +5888,21 @@ index 00000000..b48660d4
 +        previous = out;
 +    }
 +    check(smooth, "the grey curve is monotone and step-free");
-+    check(qRed(ramp.pixel(255, 0)) < qRed(ramp.pixel(0, 0)), "light greys end up darker than dark greys");
++
++    // Mid-tone grey chrome sits near the identity point of the curve, so
++    // toolbars neither blow out nor stay bright. Checked at the patch edge:
++    // deep inside a grey patch the block itself reads dark and the region
++    // rule (correctly) protects it.
++    QImage identity(96, 96, QImage::Format_RGB32);
++    identity.fill(Qt::white);
++    for (int y = 40; y < 60; ++y) {
++        for (int x = 40; x < 60; ++x) {
++            identity.setPixel(x, y, qRgb(128, 128, 128));
++        }
++    }
++    SmartInvert::apply(identity);
++    const int mid = qRed(identity.pixel(56, 56));
++    check(mid > 110 && mid < 160, "mid-tone grey chrome recolors near the identity crossing");
 +
 +    QImage dark(64, 64, QImage::Format_RGB32);
 +    dark.fill(QColor(30, 32, 35));
@@ -5902,6 +6006,35 @@ index 00000000..b48660d4
 +    SmartInvert::apply(wallpaper);
 +    check(wallpaper.pixel(10, 10) == wpBefore, "colorful wallpaper pixels are untouched");
 +    check(qRed(wallpaper.pixel(48, 46)) < 40, "text baked into a colorful region is left alone");
++
++    // The window shadow regression: a drop shadow is a smooth grey gradient
++    // over the white desktop. Its slope (a few brightness steps per pixel) is
++    // the signature that neither flat chrome nor text has: the mid-tone part
++    // of the gradient must keep its colors, so the shadow stays dark under
++    // the darkened window instead of becoming a light halo.
++    QImage shadow(120, 120, QImage::Format_RGB32);
++    shadow.fill(Qt::white);
++    for (int y = 40; y <= 80; ++y) {
++        const int v = 250 - (y - 40) * 13 / 4; // gentle slope, ~3 steps/pixel
++        for (int x = 0; x < 120; ++x) {
++            shadow.setPixel(x, y, qRgb(v, v, v));
++        }
++    }
++    SmartInvert::apply(shadow);
++    check(qRed(shadow.pixel(60, 53)) == 208, "the mid-tone shadow gradient keeps its color (stays dark)");
++    check(qRed(shadow.pixel(60, 42)) < 70, "the faint outer shadow blends into the darkened desktop");
++
++    // The contrast case: a flat mid-grey panel (classic MMC dialog grey) is
++    // chrome, not shadow, and must still recolor despite the same brightness.
++    QImage panel(120, 120, QImage::Format_RGB32);
++    panel.fill(Qt::white);
++    for (int y = 30; y < 90; ++y) {
++        for (int x = 10; x < 110; ++x) {
++            panel.setPixel(x, y, qRgb(212, 208, 200));
++        }
++    }
++    SmartInvert::apply(panel);
++    check(qRed(panel.pixel(60, 60)) < 100, "a flat grey panel is chrome and recolors dark, not exempt as shadow");
 +}
 +
 +static void testUrlDerivation()
