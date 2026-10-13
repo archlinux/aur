@@ -1,6 +1,6 @@
 # Maintainer: sougstron
 pkgname=kanban4ai-bin
-pkgver=0.7.6
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Native kanban board CLI and TUI driven by AI coding agents (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ conflicts=('kanban4ai')
 options=('!strip')
 
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/kanban4ai-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('0de0f3a8c6bd45a6a2dfde6dd18a51c7b1a4037dcdf6bf78572ee8c5e7b8d834')
-sha256sums_aarch64=('ed4ae8edeb87078b8176580f16ca427d784400862d046a7b8b2d906a0e57b5ff')
+sha256sums_x86_64=('834f5263fb973b325247a4cab4e223ff6bc64c68f67190585eb5d298e476a7fb')
+sha256sums_aarch64=('05577f65a68ab4f1798bb59953f94ff2c4ef12363eff519f03b4f27feff15fd6')
 
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/kanban4ai-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
 
@@ -34,4 +34,9 @@ package() {
   install -Dm644 "$release_dir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$release_dir/kanban4ai.service" \
     "$pkgdir/usr/lib/systemd/user/kanban4ai.service"
+  install -Dm644 "$release_dir/kanban4ai-serve.service" \
+    "$pkgdir/usr/lib/systemd/user/kanban4ai-serve.service"
+  for hook in kanban4ai-sleep@.service kanban4ai-shutdown@.service; do
+    install -Dm644 "$release_dir/$hook" "$pkgdir/usr/lib/systemd/system/$hook"
+  done
 }
