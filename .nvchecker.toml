@@ -1,0 +1,4 @@
+[figcraft]
+source = "git"
+git = "https://github.com/storytold/figcraft.git"
+prefix = "v"
