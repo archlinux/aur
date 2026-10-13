@@ -1,5 +1,5 @@
 pkgname=dsd-neo-git
-pkgver=2.10.0.r69.g5c23a32
+pkgver=2.10.0.r70.ge3aeefd
 pkgrel=1
 pkgdesc="Digital Speech Decoder - A modern, modular, and performance enhanced C/C++ decoder for digital voice. DMR, P25, NXDN, YSF, and more."
 arch=('x86_64' 'aarch64')
@@ -38,9 +38,9 @@ pkgver() {
 }
 
 # BEGIN pinned PFFFT (tools/update_aur_pffft.py)
-_pffft_sha=f5ecc890d185eb33507b79d2e96f5310f9062d7f
+_pffft_sha=94d3c8323a530c5e60a2535505166366171c1fdb
 source+=("pffft-$_pffft_sha.tar.gz::https://codeload.github.com/arancormonk/pffft/tar.gz/$_pffft_sha")
-sha256sums+=('499d1382fc1fc0a15ee858d43c837965aa5c528880cc99f9203ed27d11d60467')
+sha256sums+=('18339f8f518f1837785120881857f98b3c0d028200967354bf422e9eb5181f6a')
 # END pinned PFFFT
 
 build() {
