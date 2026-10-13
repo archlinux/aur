@@ -1,0 +1,34 @@
+pkgbase = hyprwallselector-git
+	pkgdesc = Independent image and video wallpaper carousel for Hyprland
+	pkgver = 0.1.0.r3.g1156197
+	pkgrel = 1
+	url = https://github.com/MaksSuRitik/hyprwallselector
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	checkdepends = xorg-server-xvfb
+	checkdepends = xorg-xauth
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = qt6-shadertools
+	makedepends = extra-cmake-modules
+	makedepends = systemd
+	depends = qt6-base>=6.10
+	depends = qt6-declarative
+	depends = qt6-wayland
+	depends = layer-shell-qt
+	depends = mpv
+	depends = ffmpeg
+	depends = systemd-libs
+	depends = gcc-libs
+	depends = glibc
+	optdepends = hyprland: compositor, display state and fullscreen detection
+	optdepends = qt6-imageformats: additional image formats
+	optdepends = upower: pause video on battery
+	provides = hyprwallselector
+	conflicts = hyprwallselector
+	source = git+https://github.com/MaksSuRitik/hyprwallselector.git
+	sha256sums = SKIP
+
+pkgname = hyprwallselector-git
