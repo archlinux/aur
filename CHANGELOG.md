@@ -1,5 +1,117 @@
 # Changelog
 
+## 0.24.0-beta.0
+
+### Minor Changes
+
+- [#1170](https://github.com/modem-dev/hunk/pull/1170) [`8d93ef6`](https://github.com/modem-dev/hunk/commit/8d93ef691ba43f56795d44652649188828061dcd) - Add an `auto_split_min_width` config setting with a default of 160 available diff columns, accounting for side panes and outer padding so auto layout switches between unified and split as panes open, close, or resize.
+
+- [#1171](https://github.com/modem-dev/hunk/pull/1171) [`38b1231`](https://github.com/modem-dev/hunk/commit/38b1231e30c371c4ba5fe9a34ff96ab81296aca0) - Reveal left and right extension panes independently and add `ctx.panes.isVisible()` so guide toggles leave the files pane's state untouched.
+
+- [#1148](https://github.com/modem-dev/hunk/pull/1148) [`82642e0`](https://github.com/modem-dev/hunk/commit/82642e0b0d90696087dec4c72546fe0f2ab41151) - Add `hunk open` to view complete syntax-highlighted files and browse directories with lazy loading, live refresh, and keyboard/mouse navigation.
+
+- [#1167](https://github.com/modem-dev/hunk/pull/1167) [`d464cff`](https://github.com/modem-dev/hunk/commit/d464cffe527ec1725c88949613e7411c6e7b559d) - Add `hunk skill show [name]` and publish pointer skills installable with `npx skills add modem-dev/hunk -g --skill hunk-review` or `--skill hunk-extensions`, delegating agent installation to the skills CLI while loading version-matched instructions from the installed Hunk binary.
+
+- [#1162](https://github.com/modem-dev/hunk/pull/1162) [`f0aa9af`](https://github.com/modem-dev/hunk/commit/f0aa9af122c1d7203613e7dc086041b0af573f41) - Support scoped npm packages, versions, ranges, and tags in `hunk extension install` and the shared list/update/remove workflow while preserving Git installs and blocking npm lifecycle scripts.
+
+- [#1109](https://github.com/modem-dev/hunk/pull/1109) [`7828628`](https://github.com/modem-dev/hunk/commit/782862886a64e1d61b588d10bfa2b1d6fc374d34) - Add a `scroll_off` setting (and `--scroll-off <rows>` flag) that defaults to keeping five rows of context around the current line while stepping through a diff, like Vim's `scrolloff`, with `scroll_off = 0` or `--scroll-off 0` restoring edge-only scrolling.
+
+- [#962](https://github.com/modem-dev/hunk/pull/962) [`55c5ac1`](https://github.com/modem-dev/hunk/commit/55c5ac1670aae213c6ea069663e60def7d542328) - Make the note composer save shortcut remappable via `hunk.review.saveNote` (default `ctrl+s`).
+
+- [#1157](https://github.com/modem-dev/hunk/pull/1157) [`74596a0`](https://github.com/modem-dev/hunk/commit/74596a067024c71ba084dacf89e6f01e5f66e6fa) - Add `hunk completion bash` and `hunk completion zsh` to print shell completion scripts for commands, flags, and enumerated flag values.
+
+- [#1067](https://github.com/modem-dev/hunk/pull/1067) [`49bebf7`](https://github.com/modem-dev/hunk/commit/49bebf7385cf532a9beb40f8f7a32d945b456a2e) - Add a live read-only workspace status view with sibling inspection, shared-theme navigation into Log and full diff reviews, indented tracked/untracked groups with readable theme-colored staging facts and independent ten-file expansion, clearly separated sibling worktrees, and static or versioned JSON output.
+
+- [#1118](https://github.com/modem-dev/hunk/pull/1118) [`09a76af`](https://github.com/modem-dev/hunk/commit/09a76af7e6379d7e83c269704c0b5df5a450b952) - Add extension-owned, generation-scoped presentation filters for selecting runtime files and hunks without changing canonical review state.
+
+- [#1105](https://github.com/modem-dev/hunk/pull/1105) [`69d1d2f`](https://github.com/modem-dev/hunk/commit/69d1d2fe2fc86a40b28b74482347a683d5045f24) - Syntax highlighting now runs in the worker by default, and the worker starts compiling the review's grammars during startup, so the first key after the review appears is no longer blocked by highlighting. `--fast` is accepted as a no-op and will be removed in a later release; Windows compiled binaries and custom themes with `syntax_scopes` keep highlighting inline.
+
+### Patch Changes
+
+- [#1148](https://github.com/modem-dev/hunk/pull/1148) [`82642e0`](https://github.com/modem-dev/hunk/commit/82642e0b0d90696087dec4c72546fe0f2ab41151) - Store document save coordination in the account's Hunk state directory without creating a `.hunk` project marker in the user home. This preserves project discovery and reload bounds for directories beneath the home, including Windows temporary files.
+
+- [#1147](https://github.com/modem-dev/hunk/pull/1147) [`8111914`](https://github.com/modem-dev/hunk/commit/8111914e03f56063e0800ce882edbbad06ccfd93) - `{`/`}` and `hunk session navigate --next-comment`/`--prev-comment` no longer skip notes drawn outside the diff’s changed lines, such as after a reload moves the hunks.
+
+- [#1157](https://github.com/modem-dev/hunk/pull/1157) [`74596a0`](https://github.com/modem-dev/hunk/commit/74596a067024c71ba084dacf89e6f01e5f66e6fa) - Respect option arguments and the `--` pathspec separator in Bash and Zsh completions, and offer help and supported leading CLI flags.
+
+- [#1164](https://github.com/modem-dev/hunk/pull/1164) [`4acc46f`](https://github.com/modem-dev/hunk/commit/4acc46fde7ccd18c5d0b8e4a9e3716c49ad0222b) - Restore the original comment target when wheel events return the viewport in a single burst.
+
+- [#785](https://github.com/modem-dev/hunk/pull/785) [`d2e85a0`](https://github.com/modem-dev/hunk/commit/d2e85a0847fcee8911ce386ea7b03888586049e4) - Stop re-running a failed large-diff highlight on every scroll, pick up a later successful retry
+  without remounting the file, and charge worker highlight results to the cache budget by the payload
+  they actually retain.
+
+- [#1102](https://github.com/modem-dev/hunk/pull/1102) [`0871387`](https://github.com/modem-dev/hunk/commit/0871387d211dbeb0f3319db64ac6c0d5e3dbedde) - Render Git combined conflict diffs from `git diff` during paused merges and rebases.
+
+- [#1140](https://github.com/modem-dev/hunk/pull/1140) [`f4beb16`](https://github.com/modem-dev/hunk/commit/f4beb1650c7cab6ca8accc171383d2110f80f71c) - Resolve releases from `hunk.dev/api/release/latest` so macOS no longer blocks pasting the curl install command as malware.
+
+- [#1148](https://github.com/modem-dev/hunk/pull/1148) [`82642e0`](https://github.com/modem-dev/hunk/commit/82642e0b0d90696087dec4c72546fe0f2ab41151) - Capture the document editor's file and visible line when editing is requested, so later scrolling or selection during copy preparation cannot retarget the launch.
+
+- [#1148](https://github.com/modem-dev/hunk/pull/1148) [`82642e0`](https://github.com/modem-dev/hunk/commit/82642e0b0d90696087dec4c72546fe0f2ab41151) - Harden document browsing and editor saves against path replacement, reject incomplete Git ignore results, and fix Windows path checks.
+
+- [#1148](https://github.com/modem-dev/hunk/pull/1148) [`82642e0`](https://github.com/modem-dev/hunk/commit/82642e0b0d90696087dec4c72546fe0f2ab41151) - Allow document menu shortcuts to refresh, edit, and quit with configured keybindings while keeping help and theme dialogs isolated.
+
+- [#1156](https://github.com/modem-dev/hunk/pull/1156) [`9af06b3`](https://github.com/modem-dev/hunk/commit/9af06b32082a04266bbd15f7a38db00772aa54fc) - Show the directory only once in same-directory rename labels so both filenames fit more easily in review headers.
+
+- [#1163](https://github.com/modem-dev/hunk/pull/1163) [`7ca7eb9`](https://github.com/modem-dev/hunk/commit/7ca7eb90e4b1853c72e475cd4b68e6aa5ceff802) - Folder extensions resolve installed packages in compiled binaries with the correct export conditions while preserving documentation strings, unrelated method calls, and locally bound `require` functions.
+
+- [#1148](https://github.com/modem-dev/hunk/pull/1148) [`82642e0`](https://github.com/modem-dev/hunk/commit/82642e0b0d90696087dec4c72546fe0f2ab41151) - Coordinate document saves across Hunk windows in the same OS account to prevent overlapping writeback and preserve losing editors' recovery copies.
+
+- [#1148](https://github.com/modem-dev/hunk/pull/1148) [`82642e0`](https://github.com/modem-dev/hunk/commit/82642e0b0d90696087dec4c72546fe0f2ab41151) - Dismiss document-browser menus when clicking the document or tree so subsequent keys follow the newly focused content.
+
+- [#1125](https://github.com/modem-dev/hunk/pull/1125) [`e5f4a05`](https://github.com/modem-dev/hunk/commit/e5f4a05cb726dbdf39774e08d3b45c5fde539b5f) - Preserve text typed immediately after opening a note editor, including immediate saves, without triggering global shortcuts.
+
+- [#1130](https://github.com/modem-dev/hunk/pull/1130) [`9566e33`](https://github.com/modem-dev/hunk/commit/9566e33d930e8844a0fe910e7b9d0f822b0728cb) - Refresh the `terminal` theme about three times faster after a terminal color-scheme switch, pick up switches from terminals that answer slowly, and settle on the final palette instead of a mix of old and new colors after rapid switches.
+
+- [#1148](https://github.com/modem-dev/hunk/pull/1148) [`82642e0`](https://github.com/modem-dev/hunk/commit/82642e0b0d90696087dec4c72546fe0f2ab41151) - Fill initial document and tree viewports without requiring scrolling when native layout temporarily reports a negative scroll position.
+
+- [#1153](https://github.com/modem-dev/hunk/pull/1153) [`291fe75`](https://github.com/modem-dev/hunk/commit/291fe755b9161844d03b932615a69b2dbb6dc7dd) - Measure text containing U+113D1 (and other grapheme Prepend characters) with the correct terminal width instead of counting the prepend as its own cell, so slicing and wrapping agree with `string-width`.
+
+- [#1067](https://github.com/modem-dev/hunk/pull/1067) [`49bebf7`](https://github.com/modem-dev/hunk/commit/49bebf7385cf532a9beb40f8f7a32d945b456a2e) - Keep workspace-status reviews tied to launch configuration across reloads, serialize returns from history, and keep expanded status navigation responsive.
+
+- [#1148](https://github.com/modem-dev/hunk/pull/1148) [`82642e0`](https://github.com/modem-dev/hunk/commit/82642e0b0d90696087dec4c72546fe0f2ab41151) - Preserve the visible source line in complete documents when wrapping, resizing, toggling line numbers, or refreshing shortened files.
+
+- [#1161](https://github.com/modem-dev/hunk/pull/1161) [`58ecbc5`](https://github.com/modem-dev/hunk/commit/58ecbc5bf6ebb23ba3856482f81c1ac1681a3e72) - Keep the file filter focused in pager mode when files reappear after a filter matches no files.
+
+- [#1148](https://github.com/modem-dev/hunk/pull/1148) [`82642e0`](https://github.com/modem-dev/hunk/commit/82642e0b0d90696087dec4c72546fe0f2ab41151) - Allow bounded cold PowerShell startup time when locating the Windows account's document save namespace. Account lookup failures still refuse writeback and preserve recovery copies.
+
+- [#1112](https://github.com/modem-dev/hunk/pull/1112) [`606a3dc`](https://github.com/modem-dev/hunk/commit/606a3dcb9a1c8e45f886e547a241309322a71671) - Fix plain-text Git pager output being truncated or failing with EPIPE when stdout is piped.
+
+- [#1146](https://github.com/modem-dev/hunk/pull/1146) [`e1ec8c1`](https://github.com/modem-dev/hunk/commit/e1ec8c1f9d802cc6bfe2393391364b5a55e045c5) - Name the repository in every Jujutsu source-read diagnostic. A missing `jj` binary and an unreadable `jj` stream now log the repo path beside the revision and file, as a failed `jj file show` already did.
+
+- [#920](https://github.com/modem-dev/hunk/pull/920) [`f3e78cb`](https://github.com/modem-dev/hunk/commit/f3e78cb6d38203180f2b8795f774ce434b2d1ac3) - Store persistent Hunk state under the XDG state directory while preserving existing state and global extension locations.
+
+- [#1148](https://github.com/modem-dev/hunk/pull/1148) [`82642e0`](https://github.com/modem-dev/hunk/commit/82642e0b0d90696087dec4c72546fe0f2ab41151) - Preserve pending filesystem refreshes when selecting a file or changing expanded directories in the document browser.
+
+- [#1149](https://github.com/modem-dev/hunk/pull/1149) [`252f59d`](https://github.com/modem-dev/hunk/commit/252f59dd39409b2390d02b0f9e003819c9d41176) - `hunk session` commands that select a window with `--repo` or `--session-path` now say which path matched no live session, instead of failing with `protocol-validation-failed` (for example, when run from a different git worktree than the Hunk window). The session daemon produces this message, so it appears once a daemon from this release is running; an older daemon keeps answering with `protocol-validation-failed` until it restarts.
+
+- [#1080](https://github.com/modem-dev/hunk/pull/1080) [`8e0bc1a`](https://github.com/modem-dev/hunk/commit/8e0bc1af1c5c970ddd6b44712b6c050db4c0faa8) - Extension VCS operation registration now requires `watchSignature` and `watchPlan` to be absent or callable. A non-callable hook is dropped along with its operation at registration instead of throwing a `TypeError` the first time watch planning invokes it.
+
+- [#1131](https://github.com/modem-dev/hunk/pull/1131) [`8dae12f`](https://github.com/modem-dev/hunk/commit/8dae12f75e619027d08d545607705fdd0152d970) - `hunk session reload` onto a diff that leaves out a file holding a live note keeps the session connected, and the note returns when a later reload brings its file back.
+
+- [#1148](https://github.com/modem-dev/hunk/pull/1148) [`82642e0`](https://github.com/modem-dev/hunk/commit/82642e0b0d90696087dec4c72546fe0f2ab41151) - Preserve every unique document editor failure notice and print its full recovery location after terminal teardown, even after later successful edits.
+
+- [#1148](https://github.com/modem-dev/hunk/pull/1148) [`82642e0`](https://github.com/modem-dev/hunk/commit/82642e0b0d90696087dec4c72546fe0f2ab41151) - Prevent overlapping document edits and lost recovery notices on quit, preserve wrapped text beside scrollbars, release vanished directory expansions, and restore keyboard scrolling in controls help.
+
+- [#1165](https://github.com/modem-dev/hunk/pull/1165) [`529f110`](https://github.com/modem-dev/hunk/commit/529f1109efdb29c28f45e273e8b9e96dff1919c3) - Terminal editor handoffs release Hunk's stdin reader before launching the editor so Windows keyboard input does not wait for an extra Enter press.
+
+- [#1157](https://github.com/modem-dev/hunk/pull/1157) [`74596a0`](https://github.com/modem-dev/hunk/commit/74596a067024c71ba084dacf89e6f01e5f66e6fa) - Handle Bash word-break fragments, nested session reload commands, and `--fast` shorthand in shell completion, and use Zsh's native argument completion for options and values.
+
+- [#1148](https://github.com/modem-dev/hunk/pull/1148) [`82642e0`](https://github.com/modem-dev/hunk/commit/82642e0b0d90696087dec4c72546fe0f2ab41151) - Keep document browser watch subscriptions alive across unchanged refreshes so files created during directory metadata queries appear automatically.
+
+- [#1148](https://github.com/modem-dev/hunk/pull/1148) [`82642e0`](https://github.com/modem-dev/hunk/commit/82642e0b0d90696087dec4c72546fe0f2ab41151) - Keep document browsing updates live after watched directories are replaced or deleted and recreated at the same path.
+
+- [#1067](https://github.com/modem-dev/hunk/pull/1067) [`49bebf7`](https://github.com/modem-dev/hunk/commit/49bebf7385cf532a9beb40f8f7a32d945b456a2e) - Report history cursor cleanup failures when quitting during or after a refresh.
+
+- [#1134](https://github.com/modem-dev/hunk/pull/1134) [`9eb1421`](https://github.com/modem-dev/hunk/commit/9eb142125ff6832efb7b1fca3dc4ec6889e2e799) - Keep Hunk sessions alive while window is suspended.
+
+- [#1148](https://github.com/modem-dev/hunk/pull/1148) [`82642e0`](https://github.com/modem-dev/hunk/commit/82642e0b0d90696087dec4c72546fe0f2ab41151) - Keep document focus, help, themes, and menus consistent when keyboard or mouse actions arrive before the next render.
+
+- [#1160](https://github.com/modem-dev/hunk/pull/1160) [`48e6981`](https://github.com/modem-dev/hunk/commit/48e69810b72d6cdade7a83609544636b3dc1965e) - Reveal the full note composer when opening a draft near the bottom of the diff pane, scrolling only when needed to keep the input and Save/Cancel controls visible.
+
+- [#1166](https://github.com/modem-dev/hunk/pull/1166) [`7572a22`](https://github.com/modem-dev/hunk/commit/7572a2281576094ba135d4b2be65d8c9a3ca97db) - Link the matching GitHub release notes after `hunk update` installs a version, reports one as already current, or checks for a newer one.
+
+- [#1143](https://github.com/modem-dev/hunk/pull/1143) [`b237c18`](https://github.com/modem-dev/hunk/commit/b237c18c21aae2bba5f5fe5856241d5270843f7f) - Fix stale comment targets after scrolling or stepping the cursor.
+
 ## 0.23.0
 
 ### Minor Changes

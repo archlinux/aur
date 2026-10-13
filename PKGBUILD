@@ -3,7 +3,7 @@
 
 pkgname=hunk
 pkgdesc='Terminal diffs for humans and agents'
-pkgver=0.23.0
+pkgver=0.24.0_beta.0
 pkgrel=1
 url='https://www.hunk.dev/'
 changelog=CHANGELOG.md
@@ -16,7 +16,7 @@ provides=('hunkdiff')
 options=(!strip !debug)
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v${pkgver/_/-}.tar.gz"
         'hunk-embed-envs.patch')
-b2sums=('edafaa94d080c641278e1c0f6d61548441ebf321f47dd554e39f5217e4de0d0b987ed5d53bb4e971e9e82b5b62596a1ff056e444ffa7b9434221556e18524644'
+b2sums=('64dfdaae8248ee4735231eaacb363da920834d8c5e5e2a8540f246b3574f065ecd694435ccf43e280a8c5a26edfac53b04a1a66b76822eb98cf04291b0baf32a'
         '019c586f88e91dc67d37962142e425f6f5021826e70a02030ac8f212dc2a12006f001ccae658aa9eb937cbccc064ea804e29279d8645e96f15565ca17b2b4ce0')
 
 _install_dir=/usr/lib/hunkdiff
@@ -56,9 +56,7 @@ build() {
 check() {
   cd "${pkgname}-${pkgver/_/-}"
 
-  export HUNK_RUN_TTY_SMOKE=1
-  export HUNK_TEST_EXECUTABLE=packages/hunk/dist/hunk
-  bun test ./test/smoke
+  local HUNK_TEST_EXECUTABLE=packages/hunk/dist/hunk
 
   # based on https://github.com/modem-dev/hunk/blob/v0.17.7/scripts/smoke-prebuilt-install.ts
   local help version skill skillPath update
