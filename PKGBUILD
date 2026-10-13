@@ -1,16 +1,15 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname=slopquota
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI utility for viewing token quotas from AI subscriptions like OpenAI Codex, Claude Max, Grok, OpenCode etc"
 arch=('x86_64')
 url="https://gitlab.com/nathanchere/slopquota"
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('git' 'go')
-_commit=82f774828f04df5b69ca963e41ebcd2a83dee7f3
-source=("${pkgname}::git+https://gitlab.com/nathanchere/slopquota.git#commit=${_commit}")
-sha256sums=('3a8ef2b36b4177dda5891e4ae931ec2b36c0e4fea3d6e59d4d0574ee6de182e3')
+source=("${pkgname}::git+https://gitlab.com/nathanchere/slopquota.git#tag=v${pkgver}")
+sha256sums=('c1a2ae6b993ffa825798da6a18c165bc6602eef281e63d3030356fc084879359')
 
 prepare() {
 	cd "$srcdir/$pkgname/src"
