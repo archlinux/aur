@@ -1,26 +1,35 @@
-# Maintainer: Christoph J. Thompson <thompsonc at protonmail dot ch>
+# Maintainer: Deposite Pirate <dpirate at metalpunks dot info>
+#
+# Upstream: https://codeberg.org/dptpirate/arch-ports
 
+_commit=ec356b404a0b983a2108a278b24271cab1801805
 pkgname=freeblocks
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Tetris Attack-like puzzle game"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686')
 url="http://github.com/dorkster/freeblocks"
-license=('GPL3')
-depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_ttf')
+license=('GPL-3.0-or-later')
+depends=('glibc'
+         'sdl2'
+         'sdl2_image'
+         'sdl2_mixer'
+         'sdl2_ttf'
+         'hicolor-icon-theme')
 makedepends=('cmake')
-source=(https://github.com/dorkster/freeblocks/archive/v${pkgver}.tar.gz)
-sha256sums=(8da72ccf7bcba585fcd8b65943f590f51aff06286f3ed920a13c0c90fb392e06)
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${_commit}.tar.gz")
+sha256sums=('SKIP')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${_commit}"
   cmake \
    -DCMAKE_C_FLAGS="${CFLAGS}" \
-   -DCMAKE_INSTALL_PREFIX=/usr .
+   -DCMAKE_INSTALL_PREFIX="/usr" .
   make
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${_commit}"
   make DESTDIR="${pkgdir}" install
+  install -Dvm0644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}/"
 }
