@@ -1,6 +1,6 @@
 pkgbase = wechat
 	pkgdesc = Fixes and optional sandbox for WeChat.
-	pkgver = 17
+	pkgver = 18
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Kraftland/portable
