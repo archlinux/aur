@@ -1,0 +1,14 @@
+pkgbase = usc
+	pkgdesc = a tiny link shortener
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://sr.ht/~juanvel400/usc
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = meson
+	makedepends = ninja
+	depends = gdbm
+	source = https://dl.juanvel400.com/usc/usc-0.2.0.tar.xz
+	sha256sums = 68f0fb0138c5c36bdcb0fcd21279ec60263585ed0d5159235eb9a051dc1e621a
+
+pkgname = usc
