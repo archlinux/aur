@@ -1,6 +1,6 @@
 pkgbase = rencal-bin
 	pkgdesc = A calendar for Omarchy
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/t4t5/rencal
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = rencal-bin
 	conflicts = rencal
 	options = !debug
 	options = !strip
-	source_x86_64 = rencal-0.8.0.deb::https://github.com/t4t5/rencal/releases/download/v0.8.0/renCal_0.8.0_amd64.deb
-	sha256sums_x86_64 = 32263319c2edfaf3cc0b52d8a72982ab2c9437c575ac8ce8380aac361fdae2eb
-	source_aarch64 = rencal-0.8.0.deb::https://github.com/t4t5/rencal/releases/download/v0.8.0/renCal_0.8.0_arm64.deb
-	sha256sums_aarch64 = a5368626e275e52ad79a68a64cbf58f66a746fbd2259bb5aa7a8e695f065db21
+	source_x86_64 = rencal-0.8.1.deb::https://github.com/t4t5/rencal/releases/download/v0.8.1/renCal_0.8.1_amd64.deb
+	sha256sums_x86_64 = a6906f50140d3c3e154b0e2a42686a1cdb08eae5477ed119443b68a9476db3c0
+	source_aarch64 = rencal-0.8.1.deb::https://github.com/t4t5/rencal/releases/download/v0.8.1/renCal_0.8.1_arm64.deb
+	sha256sums_aarch64 = c160d60e4f1ee24c1665057adbbfd25a1ba8fcb027c89b0d0e982ec2178dd002
 
 pkgname = rencal-bin
