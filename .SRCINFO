@@ -1,0 +1,16 @@
+pkgbase = monlux-bin
+	pkgdesc = Control external monitor brightness over DDC/CI on Linux (prebuilt binary)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/ubiqel/monlux
+	license = MIT
+	conflicts = monlux
+	provides = monlux
+	arch = aarch64
+	source_aarch64 = monlux-bin_0.2.1_aarch64.tar.gz::https://github.com/ubiqel/monlux/releases/download/v0.2.1/monlux_0.2.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8e8054049f306608310d011236cef165f0fbea26cf13f1f580033940d57d741f
+	arch = x86_64
+	source_x86_64 = monlux-bin_0.2.1_x86_64.tar.gz::https://github.com/ubiqel/monlux/releases/download/v0.2.1/monlux_0.2.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = f4087cc6cca3949da2b8d9533ed0282a9fbdd8c4a8863518ad7aad62f8d6f953
+	
+pkgname = monlux-bin
