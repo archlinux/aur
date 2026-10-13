@@ -2,7 +2,7 @@
 
 pkgname=adbr-git
 pkgver=r13.baf5e48
-pkgrel=1
+pkgrel=4
 pkgdesc="ADB Client in pure Rust."
 arch=($CARCH)
 url="https://github.com/xDvir/ADBRClient"
@@ -12,8 +12,8 @@ conflicts=(${pkgname%-git})
 replaces=()
 depends=(
     #     adbr-server
-    gcc-libs
-    glibc
+    libgcc_s.so
+    libstdc++.so
     libusb
 )
 makedepends=(
@@ -42,6 +42,10 @@ pkgver() {
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}"
+    cargo update -w
+    cargo fetch --locked --target host-tuple
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
