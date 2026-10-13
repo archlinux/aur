@@ -1,6 +1,6 @@
 pkgbase = octoscode-bin
 	pkgdesc = Octoscode - Octos's Coding Agent
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/octos-org/octoscode
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = octoscode-bin
 	depends = glibc
 	depends = gcc-libs
 	depends = ca-certificates
-	provides = octoscode=0.3.0
+	provides = octoscode=0.3.1
 	conflicts = octoscode
 	options = !strip
 	options = !debug
-	source_x86_64 = octoscode-0.3.0-x86_64.tar.xz::https://github.com/octos-org/octoscode/releases/download/v0.3.0/octoscode-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 8f20bce688063769baa523ff3a7b23d748aa8e908530e6e6378607eb34e7bb01
-	source_aarch64 = octoscode-0.3.0-aarch64.tar.xz::https://github.com/octos-org/octoscode/releases/download/v0.3.0/octoscode-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = c411e5649c42ab349f1e1fb3b75c551078b12dcf23d7e97e61ae82515d374f9d
+	source_x86_64 = octoscode-0.3.1-x86_64.tar.xz::https://github.com/octos-org/octoscode/releases/download/v0.3.1/octoscode-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 5c8cb1fd208e991ab7299fd348a53ab2471f621d2418c4d58b964dd19ef3848e
+	source_aarch64 = octoscode-0.3.1-aarch64.tar.xz::https://github.com/octos-org/octoscode/releases/download/v0.3.1/octoscode-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 63a140b1a7e0ba441f34c348e684bfc6ba0c4ed93bf27796f712962fc78c7fc3
 
 pkgname = octoscode-bin

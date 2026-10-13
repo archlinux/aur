@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=octoscode-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Octoscode - Octos's Coding Agent"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ options=('!strip' '!debug')
 
 source_x86_64=("octoscode-${pkgver}-x86_64.tar.xz::${url}/releases/download/v${pkgver}/octoscode-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("octoscode-${pkgver}-aarch64.tar.xz::${url}/releases/download/v${pkgver}/octoscode-aarch64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('8f20bce688063769baa523ff3a7b23d748aa8e908530e6e6378607eb34e7bb01')
-sha256sums_aarch64=('c411e5649c42ab349f1e1fb3b75c551078b12dcf23d7e97e61ae82515d374f9d')
+sha256sums_x86_64=('5c8cb1fd208e991ab7299fd348a53ab2471f621d2418c4d58b964dd19ef3848e')
+sha256sums_aarch64=('63a140b1a7e0ba441f34c348e684bfc6ba0c4ed93bf27796f712962fc78c7fc3')
 
 package() {
   local dist="${srcdir}/octoscode-${CARCH}-unknown-linux-gnu"
