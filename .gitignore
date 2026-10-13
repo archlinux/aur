@@ -1,0 +1,7 @@
+/src/
+/pkg/
+/openwsman-*.tar.gz
+/*.pkg.tar.*
+/*.src.tar.*
+/*.log
+/*.log.*

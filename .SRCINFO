@@ -1,0 +1,24 @@
+pkgbase = libwsman
+	pkgdesc = OpenWSMAN C and C++ client libraries for WS-Management
+	pkgver = 2.8.1
+	pkgrel = 1
+	url = https://openwsman.github.io/
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	depends = curl
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = libxml2
+	depends = openssl
+	provides = libwsman.so
+	provides = libwsman_client.so
+	provides = libwsman_clientpp.so
+	provides = libwsman_curl_client_transport.so
+	conflicts = openwsman
+	backup = etc/openwsman/openwsman_client.conf
+	source = https://github.com/Openwsman/openwsman/archive/v2.8.1/openwsman-2.8.1.tar.gz
+	sha256sums = 22f7dd418eda4d6e4d1c497fcc2a3e2ee91eeff3c19f4a4447dfaec38fd2b87b
+
+pkgname = libwsman
