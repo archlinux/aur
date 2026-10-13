@@ -1,6 +1,6 @@
 pkgbase = neo-writing
 	pkgdesc = A distraction-free word processor for authors
-	pkgver = 0.8.1
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/hughhowey/neo
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = neo-writing
 	makedepends = npm
 	depends = electron43
 	options = !strip
-	source = neo::git+https://github.com/hughhowey/neo.git#tag=v0.8.1
-	sha256sums = df84f548b5b65ab4ecc6a1c796dd118094ab0f52abb162c6e3ecc154cb311348
+	source = neo::git+https://github.com/hughhowey/neo.git#tag=v1.5.1
+	sha256sums = 4a7daa0dfc9acffc251b59ecb0446d3b57a20d2dcf6184a36b755b27dd510842
 
 pkgname = neo-writing

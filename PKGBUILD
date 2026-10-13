@@ -1,7 +1,7 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname=neo-writing
 _appname=neo
-pkgver=0.8.1
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A distraction-free word processor for authors"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('electron43')
 makedepends=('git' 'npm')
 source=("${_appname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('df84f548b5b65ab4ecc6a1c796dd118094ab0f52abb162c6e3ecc154cb311348')
+sha256sums=('4a7daa0dfc9acffc251b59ecb0446d3b57a20d2dcf6184a36b755b27dd510842')
 options=('!strip')
 
 build() {
