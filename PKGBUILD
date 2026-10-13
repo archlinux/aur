@@ -72,7 +72,4 @@ package_solana-dev-bin() {
   for bin in "${_dev_bins[@]}"; do
     install -Dm755 "bin/$bin" -t "$pkgdir/usr/bin"
   done
-
-  install -dm755 "$pkgdir/usr/lib/$_pkgname/platform-tools-sdk"
-  cp -a bin/platform-tools-sdk/sbf "$pkgdir/usr/lib/$_pkgname/platform-tools-sdk"
 }
