@@ -1,7 +1,7 @@
 # Maintainer: Snoopey <thomas@wrightconsulting.uk>
 pkgname=omnigent-cli
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Omnigent CLI, server, and agent host with isolated Python dependencies'
 arch=('x86_64')
 url='https://github.com/omnigent-ai/omnigent'
@@ -37,7 +37,7 @@ source=(omnigent-0.18.0.tar.gz::https://files.pythonhosted.org/packages/51/c5/9a
         filelock-4.0.12-py3-none-any.whl::https://files.pythonhosted.org/packages/da/a1/b047e1c486a2c66283633b7dbb73872ca16ca1ce6a426f70d4d037fc8e1c/filelock-4.0.12-py3-none-any.whl
         ftfy-6.3.1-py3-none-any.whl::https://files.pythonhosted.org/packages/ab/6e/81d47999aebc1b155f81eca4477a616a70f238a2549848c38983f3c22a82/ftfy-6.3.1-py3-none-any.whl
         google_re2-1.1.20251105-1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/03/be/a8def96aa4a80b233e105767d22e3de961dcde5a04f0a05cb4f3ddb4df78/google_re2-1.1.20251105-1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
-        griffelib-2.3.0-py3-none-any.whl::https://files.pythonhosted.org/packages/41/63/e876e789525063c840ccfa8857febdabd6523bcef9ce7eb979b9305ea895/griffelib-2.3.0-py3-none-any.whl
+        griffelib-2.3.2-py3-none-any.whl::https://files.pythonhosted.org/packages/04/e5/0ae74c83c1cab2c14daadf28bd0143eb14bb81503834af987b66badc7b61/griffelib-2.3.2-py3-none-any.whl
         h11-0.16.0-py3-none-any.whl::https://files.pythonhosted.org/packages/04/4b/29cac41a4d98d144bf5f6d33995617b185d14b22401f75ca86f384e87ff1/h11-0.16.0-py3-none-any.whl
         httpcore-1.0.9-py3-none-any.whl::https://files.pythonhosted.org/packages/7e/f5/f66802a942d491edb555dd61e3a9961140fd64c90bce1eafd741609d334d/httpcore-1.0.9-py3-none-any.whl
         httptools-0.8.0-cp314-cp314-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl::https://files.pythonhosted.org/packages/ba/53/771bd891eb0f236f32145d6a1775777ec85745f3cc983a1f23d1a3b8ddfe/httptools-0.8.0-cp314-cp314-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl
@@ -63,7 +63,7 @@ source=(omnigent-0.18.0.tar.gz::https://files.pythonhosted.org/packages/51/c5/9a
         more_itertools-11.1.0-py3-none-any.whl::https://files.pythonhosted.org/packages/e8/3d/1087453384dbde46a8c7f9356eead2c58be8a7bf156bca40243377c85715/more_itertools-11.1.0-py3-none-any.whl
         openai-2.44.0-py3-none-any.whl::https://files.pythonhosted.org/packages/ae/f4/561ed79fd94876160018a5e75254cfcb9b0e62d4dded9dcb20072e86d623/openai-2.44.0-py3-none-any.whl
         openai_agents-0.13.6-py3-none-any.whl::https://files.pythonhosted.org/packages/1c/83/a991b2ad389abadabf13f6c4228bd88ac8dc363e4b50fcae8c5ea966bd41/openai_agents-0.13.6-py3-none-any.whl
-        opentelemetry_api-1.45.0-py3-none-any.whl::https://files.pythonhosted.org/packages/44/b9/040d1a1c7836922828e6480cd2366bb8fe0ebf75b413d2bb51a9b0e7f78f/opentelemetry_api-1.45.0-py3-none-any.whl
+        opentelemetry_api-1.45.1-py3-none-any.whl::https://files.pythonhosted.org/packages/1e/41/f7dcf80b81ee8e71c1a2b59f14208bc723edbd89ed027a73b175abf6348e/opentelemetry_api-1.45.1-py3-none-any.whl
         packaging-25.0-py3-none-any.whl::https://files.pythonhosted.org/packages/20/12/38679034af332785aac8774540895e234f4d07f7545804097de4b666afd8/packaging-25.0-py3-none-any.whl
         pendulum-3.2.0-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl::https://files.pythonhosted.org/packages/57/b6/333a0fcb33bf15eb879a46a11ce6300c1698a141e689665fe430783ff8d6/pendulum-3.2.0-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
         pexpect-4.9.0-py2.py3-none-any.whl::https://files.pythonhosted.org/packages/9e/c3/059298687310d527a58bb01f3b1965787ee3b40dce76752eda8b44e9a2c5/pexpect-4.9.0-py2.py3-none-any.whl
@@ -136,7 +136,7 @@ sha256sums=(3e9f73ab39de9eec9d47350a46d793b7b81650e0a56abd83a6dc547d3873bdfa
             5f17ee83ecee8a6f3e389c75822fb70a1c2f0506b99438a6dffa1d56793588c8
             7c70eb532015cd2f9adb53f101fb6c7945988d023a085d127d1573dc49dd0083
             a7bfaa2cf55daf0c5c650e68526bb20b61e37d7f3ae53f6893013acc1c91c116
-            1b8f9cd525681c26b1d6d574faa1371651e8459ca51d209684f50b8096ae06e0
+            8e710afededd5607f95bf3c8ccc175ee306e7084459faf27b9f9f44ef2a7a274
             63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86
             2d400746a40668fc9dec9810239072b40b4484b640a8c38fd654a024c7a1bf55
             c4a9f1707e4823d54dfec6c33fa3697d302aed536ed352a7ebb5a061ddb869d0
@@ -162,7 +162,7 @@ sha256sums=(3e9f73ab39de9eec9d47350a46d793b7b81650e0a56abd83a6dc547d3873bdfa
             4b65538ae22f6fed0ce4874efd317463a7489796a0939fa66824dd542125a192
             0a2a3ab2e29aeda368700f662ff9ba0f9df17ba4c54577a64e08b8115a3cc0ad
             8decb9eb0cc5dbe7749858e97a7d8316f9439526ca4e539e3bd105e0eb41115e
-            80e068aba7cd56c8b58512d6a36f8d25cb1dfaa0c0a4cc1c938ccf9f362d9cb3
+            b31553efa588ae44bc306f863c785c5333a9ecc091248c6ee68b4b6c87fdedfb
             29572ef2b1f17581046b3a2227d5c611fb25ec70ca1ba8554b24b0e69331a484
             a7d2e9bfb065727d8676e7ada3793b47a24349500a5e9637404355e482c822be
             7236d1e080e4936be2dc3e326cec0af72acf9212a7e1d060210e70a47e253523
@@ -208,7 +208,7 @@ sha256sums=(3e9f73ab39de9eec9d47350a46d793b7b81650e0a56abd83a6dc547d3873bdfa
             7a6ceec4ea84469f15cf15807a747e9efe57e369c384fa86e022b3bea679b79b
             e09bb6252b6476d8d56100e8147b803befa9a12cea144bbe629dd508800d1ad0
             aac80bec8b6fe35e8480f1c335be8910fa210a0e6f735a139be205dadcacb544
-            616fdcb83a19f7129c8cf8241ccc2076a550872a27b6a63b2b921ee60ce388be
+            5f53bb4f85066b6cf1937d744b86428196bd79c32db3fc044ffef120c8b22087
             a0bd60054eae7ce2f8fedb9c295d8137f269fedbf08220a54dde1a0d09f0e9a4
             edd22b3947e18e681e397590651edf2551024be4d53bea5fa55efc428a2acb07
             e9e49acfc1599bb114332a40479d99275e3668b34bd66a6ae2143ba93ec76315)
@@ -232,7 +232,7 @@ noextract=(alembic-1.20.0-py3-none-any.whl
            filelock-4.0.12-py3-none-any.whl
            ftfy-6.3.1-py3-none-any.whl
            google_re2-1.1.20251105-1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
-           griffelib-2.3.0-py3-none-any.whl
+           griffelib-2.3.2-py3-none-any.whl
            h11-0.16.0-py3-none-any.whl
            httpcore-1.0.9-py3-none-any.whl
            httptools-0.8.0-cp314-cp314-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl
@@ -258,7 +258,7 @@ noextract=(alembic-1.20.0-py3-none-any.whl
            more_itertools-11.1.0-py3-none-any.whl
            openai-2.44.0-py3-none-any.whl
            openai_agents-0.13.6-py3-none-any.whl
-           opentelemetry_api-1.45.0-py3-none-any.whl
+           opentelemetry_api-1.45.1-py3-none-any.whl
            packaging-25.0-py3-none-any.whl
            pendulum-3.2.0-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
            pexpect-4.9.0-py2.py3-none-any.whl
