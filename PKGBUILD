@@ -2,7 +2,7 @@
 
 pkgname=opera-developer
 pkgver=138.0.6038.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, secure, easy-to-use web browser (Developer Stream)'
 arch=('x86_64')
 url='https://www.opera.com/computer'
@@ -58,7 +58,7 @@ optdepends=(
     'upower'
 )
 
-_nwjs_ffmpeg_version=0.117.0
+_nwjs_ffmpeg_version=0.118.0
 _upstream_deb_pkg='opera-developer'
 _debfile="${_upstream_deb_pkg}_${pkgver}_amd64.deb"
 _deburl="https://get.opera.com/pub/opera-developer/${pkgver}/linux/${_debfile}"
@@ -74,7 +74,7 @@ source=(
 sha256sums=('d571b549c7bc91c9ef58835f7b8361fed24921078db29657bb049ed8bfb70185'
             '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
             '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231'
-            '5f29ea825be2692b97279d9ab7c75e5a97b13c8d965e20340d7a1c39b11ee86a')
+            '826a715d5b93585657f7a6eea441f5f23c9c10c60692b9ddf69495ce4d15ed2f')
 
 prepare() {
     sed -e 's|%pkgname%|opera-developer|g' \
