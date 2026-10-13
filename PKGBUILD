@@ -2,7 +2,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname='darkubectl-bin'
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='kubectl-like access to the Hamravesh Darkube platform'
 url='https://github.com/rahacloud/darkubectl'
@@ -12,10 +12,10 @@ provides=('darkubectl')
 conflicts=('darkubectl')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rahacloud/darkubectl/releases/download/v${pkgver}/darkubectl_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('42404b3e78cbb6d6eb0c430b14f193ea4231d729701c11c229bf1ad50e37936c')
+sha256sums_aarch64=('1219ada2a078a9bcc695268be915bfdbd9d1a8df17b4412e9529644dd87a4dcc')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rahacloud/darkubectl/releases/download/v${pkgver}/darkubectl_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('f500efc90d40f4c675e0d422ab6982a83d7fb0f3b4cdf502f7ce4703d55e5f3c')
+sha256sums_x86_64=('39ab79d92a676d853e6e06693b824a391e6591407de58c88528a013f49dd1295')
 
 package() {
   install -Dm755 "./darkubectl" "${pkgdir}/usr/bin/darkubectl"
