@@ -1,6 +1,6 @@
 # Maintainer: mryll <https://github.com/mryll>
 pkgname=meteobar-bin
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc='Weather widget for Waybar using Open-Meteo — no API key required (prebuilt binary)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('meteobar')
 options=(!debug)
 source=("meteobar-${pkgver}::https://github.com/mryll/meteobar/releases/download/v${pkgver}/meteobar-${pkgver}-x86_64-linux"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/mryll/meteobar/v${pkgver}/LICENSE")
-sha256sums=('af040f27d3b0596be6a5c3c9eb846bda543e910d6d9c83c1e3e2d971e5894f88'
+sha256sums=('2e1d59959fcc9b21cc1915b532929019ea23222c851b8fed88ebec850ae1318b'
             'aa9f3a694508cadff239e4694992eac66611723af6ce8643e80ca5c7db8c9e4e')
 
 package() {
