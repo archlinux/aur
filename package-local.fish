@@ -57,37 +57,75 @@ function package-local \
 
   set --local -- run_cwd (pwd --physical | gawk 'NR > 1 { printf "\n" } { printf "%s", $0 }' | string collect --no-trim-newlines);
 
-  set --local -- options;
-  set --local -- args;
-  set --local -- cleanbuild_used 'false';
-
-  # This dumb parser (no `argparse`, I am too lazy to model makepkg options for that to make sense)
-  #   assumes `makepkg` takes no arguments, only options.
-  # Only the first argument is utilised, to set the git coordinate in the source.
-  # The rest is ignored.
-  #
   # Usage ex. :: `package-local --cleanbuild branch=my-branch --nocheck` from a checkout or a subdir therein.
   # Normally the argument would come first or last for convenience, but this parser
   #   accepts any position under the stated no-args-for-makepkg assumption.
-  for arg in $argv
-    if string match --quiet --regex -- '^-' "$arg"
-      set --append -- options "$arg";
-      if {
-         test "$arg" = '--cleanbuild';
-      or test "$arg" = '-C';
-      }
-        # -C/--cleanbuild should nuke the repo and not tell about 'not a clone'
-        #   if the source moved.
-        set -- cleanbuild_used 'true';
-      end
-      continue;
-    end
-    set --append -- args "$arg";
-  end
+  # Every option makepkg(8) accepts, so a typo fails here instead of reaching a
+  #   makepkg that would silently ignore it. `argparse` hands back the options it
+  #   consumed -- verbatim, values included -- in `$argv_opts`, and the rest in
+  #   `$argv`: the coordinate first, then makepkg's trailing `VAR=value` overrides.
+  argparse \
+    --strict-longopts \
+      (fish_opt --short='A' --long='ignorearch') \
+      (fish_opt --short='c' --long='clean') \
+      (fish_opt --short='C' --long='cleanbuild') \
+      (fish_opt --short='d' --long='nodeps') \
+      (fish_opt --short='D' --long='dir' --required-val) \
+      (fish_opt --short='e' --long='noextract') \
+      (fish_opt --short='f' --long='force') \
+      (fish_opt --short='g' --long='geninteg') \
+      (fish_opt --short='h' --long='help') \
+      (fish_opt --short='i' --long='install') \
+      (fish_opt --short='L' --long='log') \
+      (fish_opt --short='m' --long='nocolor') \
+      (fish_opt --short='o' --long='nobuild') \
+      (fish_opt --short='p' --required-val) \
+      (fish_opt --short='r' --long='rmdeps') \
+      (fish_opt --short='R' --long='repackage') \
+      (fish_opt --short='s' --long='syncdeps') \
+      (fish_opt --short='S' --long='source') \
+      (fish_opt --short='V' --long='version') \
+      (fish_opt --long='allsource') \
+      (fish_opt --long='asdeps') \
+      (fish_opt --long='check') \
+      (fish_opt --long='config' --required-val) \
+      (fish_opt --long='holdver') \
+      (fish_opt --long='key' --required-val) \
+      (fish_opt --long='noarchive') \
+      (fish_opt --long='nocheck') \
+      (fish_opt --long='noconfirm') \
+      (fish_opt --long='noprepare') \
+      (fish_opt --long='noprogressbar') \
+      (fish_opt --long='nosign') \
+      (fish_opt --long='noverify') \
+      (fish_opt --long='needed') \
+      (fish_opt --long='packagelist') \
+      (fish_opt --long='printsrcinfo') \
+      (fish_opt --long='sign') \
+      (fish_opt --long='skipchecksums') \
+      (fish_opt --long='skipinteg') \
+      (fish_opt --long='skippgpcheck') \
+      (fish_opt --long='verifysource') \
+    -- $argv;
+  or return 3;
+
+  set --local -- cleanbuild_used 'false';
+  # -C/--cleanbuild should nuke the repo and not tell about 'not a clone'
+  #   if the source moved.
+  if set --query -- _flag_cleanbuild;
+    set -- cleanbuild_used 'true'; end
+
+  if set --query -- _flag_dir
+    echo -- "Overriding `-D`/`--dir` is not supported. Aborting." >&2;
+    return 3; end
 
   #region SourceOverrides
-  set --local -- coords "$args[1]";
+  set --local -- coords "$argv[1]"; set -- argv $argv[2..];  # shift 1
 
+  set --local --export -- REPO_PKGBUILD_NAME 'PKGBUILD';
+  if test -n "$_flag_p"
+    set -- REPO_PKGBUILD_NAME "$_flag_p";
+  end
   # set --local --export -- REPO_PACKAGING "$REPO_LOCAL"/.local/packaging;
   set --local --export -- REPO_PACKAGING "$dirname";  # this script lives in the packaging repo now
   # Uses the dir of the current shell ctx :: invoke this script from the actual source repo
@@ -118,14 +156,16 @@ function package-local \
   end
   
   if test "$REPO_PACKAGING_DEBUG" = '1'
-    set -S options args cleanbuild_used;
+    set -S argv_opts argv cleanbuild_used REPO_PKGBUILD_NAME;
     set -S REPO_PACKAGING pkgbase pkgbase_varsafe;
   end
   
   if {
       "$cleanbuild_used";
-  and test -d "$REPO_PACKAGING"/"$pkgbase";
-  and { test -f "$REPO_PACKAGING"/"$pkgbase"/HEAD; or test -f "$REPO_PACKAGING"/"$pkgbase"/FETCH_HEAD; }
+  and test -d "$REPO_PACKAGING"/.srcdest/local/"$pkgbase";
+  and {
+       test -f "$REPO_PACKAGING"/.srcdest/local/"$pkgbase"/HEAD;
+    or test -f "$REPO_PACKAGING"/.srcdest/local/"$pkgbase"/FETCH_HEAD; }
   and not test -z "$REPO_PACKAGING";
   and not test "$REPO_PACKAGING" = '/';
   and not test -z "$pkgbase";
@@ -133,15 +173,14 @@ function package-local \
   }
     # Quite a few precautions against potential bugs in the script.
     set --local -- timeout 5;
-    echo -n -- "Removing the previous source clone in `$REPO_PACKAGING/$pkgbase` due to `--cleanbuild` passed (Ctrl+C to abort) in";
+    echo -n -- "Removing the previous source clone in `$REPO_PACKAGING/.srcdest/local/$pkgbase` due to `--cleanbuild` passed (Ctrl+C to abort) in";
     for elapsed_ticker in (seq 0 (math -- "$timeout - 1"))
       echo -n -- " $(math -- "$timeout - $elapsed_ticker")";
       sleep 1s;
     end
     echo -n -- \n;
 
-    rm -rf "$REPO_PACKAGING"/"$pkgbase";
-    # rm -r "$REPO_PACKAGING"/src;
+    rm -rf "$REPO_PACKAGING"/.srcdest/local/"$pkgbase";
   end
 
   test -z "$coords";
@@ -175,11 +214,11 @@ function package-local \
   set --local -- srcdest_local     "$REPO_PACKAGING"/.srcdest/local;       # mirrors your checkout URL
 
     "$__fn__no_source_overrides" SRCDEST="$srcdest_published" \
-      updpkgsums "$REPO_PACKAGING"/PKGBUILD;
+      updpkgsums "$REPO_PACKAGING"/"$REPO_PKGBUILD_NAME";
   and env SRCDEST="$srcdest_local" \
-      makepkg  -D"$REPO_PACKAGING" -fis $options;
+      makepkg  -D"$REPO_PACKAGING" -fis $argv_opts $argv;
   and "$__fn__no_source_overrides" \
-      makepkg  -D"$REPO_PACKAGING" --printsrcinfo > "$REPO_PACKAGING"/.SRCINFO
+      makepkg  -D"$REPO_PACKAGING" -p "$REPO_PKGBUILD_NAME" --printsrcinfo $argv > "$REPO_PACKAGING"/.SRCINFO
 
   functions --erase -- "$__fn__no_source_overrides";
   functions --erase -- "$__fn__yn";
