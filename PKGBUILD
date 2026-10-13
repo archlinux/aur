@@ -2,9 +2,9 @@
 
 pkgname=tizen-cli
 _pkgname=tizen.js
-_commit=45b00106149d0c8eff74ead4a979c909dd80efd6
+_commit=bc86be41ddcc19fcd1b01988291f4f2683da7a81
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight CLI to rebuild, resign, and package Tizen applications without Tizen Studio"
 arch=('any')
 url="https://github.com/reisxd/tizen.js"
@@ -13,8 +13,8 @@ depends=('nodejs')
 makedepends=('npm')
 provides=('tizenjs' 'tizen.js')
 conflicts=('tizenjs' 'tizen.js')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/reisxd/tizen.js/archive/${_commit}.tar.gz")
-sha256sums=('3f36139d0127c0cc70a19f7855b08f81fec21489e626224b20fd364515771dd9')
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/Twilight0/tizen.js/archive/${_commit}.tar.gz")
+sha256sums=('709af4a8fe29a3c9e7578cdc38d943d115c9974595a7020e65868964c370c0fd')
 
 build() {
   cd "${_pkgname}-${_commit}"
