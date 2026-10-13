@@ -1,7 +1,7 @@
 # Maintainer: fr0stb1rd <fr0stb1rd@proton.me>
 pkgname=pdf-metadata-editor-bin
 _pkgname=pdf-metadata-editor
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="A simple, cross-platform desktop application for viewing and editing PDF metadata"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=("${_pkgname}")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-1_amd64.deb")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-1_arm64.deb")
 
-sha512sums_x86_64=('c9372628bcb060d4b65981c0f80db78175ab83aa133c346eee19519008b700c891735cbeff3aab7b53c87a4daead7e61feeb34025c6a6e944d8f49c02a208615')
-sha512sums_aarch64=('8cc26816fd21a0c5a049132124f0a7f258462b98fbfd99781b1a7b2cfb02723d3bfb7e993f747cf4eebbac1cb3a36dd96b1b8588b1ceb1dc594848374035d943')
+sha512sums_x86_64=('6a683de3dbb3f0221cd44fc59ea185af08e3ce2df59c41299afa34346aea5a9e8491a34093902b9227b0c9495adc226abe8bcff05e46a25444f5934c8355a204')
+sha512sums_aarch64=('ba005d7bf61765e54f10016ccebd9e87c7a74c06e50cb7fb32492b745a7dd1f77f2885d8b0921703f819fa77cf045100b08525e9145a9a07903b084b395039d2')
 
 package() {
     # Extract data.tar.zst from .deb
