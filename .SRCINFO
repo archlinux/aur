@@ -1,5 +1,5 @@
 pkgbase = browser-manager-git
-	pkgdesc = Multi-browser instance management tool.(Use system-wide electron)
+	pkgdesc = Multi-browser instance management tool.
 	pkgver = 1.0.0.r1.g5a22d14
 	pkgrel = 1
 	url = https://github.com/chenyk2016/Browser-Manager
@@ -9,13 +9,13 @@ pkgbase = browser-manager-git
 	makedepends = npm
 	makedepends = nvm
 	makedepends = git
-	makedepends = curl
-	depends = electron28
+	makedepends = jq
+	depends = electron28-bin
 	provides = browser-manager=1.0.0
 	conflicts = browser-manager
 	source = browser-manager.git::git+https://github.com/chenyk2016/Browser-Manager
 	source = browser-manager.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
 
 pkgname = browser-manager-git
