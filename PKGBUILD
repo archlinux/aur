@@ -6,7 +6,7 @@ _appname=dskDitto
 pkgname=dsk-ditto
 pkgdesc="Ultra fast and easy duplicate file finder. Awesome TUI/GUI to manage results."
 
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 epoch=1
 _gitversion=v${pkgver}
@@ -23,7 +23,7 @@ makedepends=('go')
 depends=('glibc')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_gitauthor}/${_gitname}/archive/${_gitversion}.tar.gz")
-sha256sums=('5202c2f0482b0496e272ced4ccd820ff47bbac73ed2237acad501091a79ec259')
+sha256sums=('bb017dea15bcd2a4b5877b33945b299afbfec903e07e75f8f3f0ec43112a0efa')
 
 
 prepare() {
