@@ -1,6 +1,6 @@
 # Maintainer: monsoon <29970829+monsoon235@users.noreply.github.com>
 pkgname=stable-diffusion.cpp-vulkan-bin
-pkgver=master_956_1b0ba10
+pkgver=master_959_d637cfb
 pkgrel=1
 pkgdesc='stable-diffusion.cpp upstream Linux x86_64 prebuilt binaries with the Vulkan backend'
 arch=('x86_64')
@@ -10,10 +10,10 @@ depends=('glibc' 'gcc-libs' 'vulkan-icd-loader')
 provides=('stable-diffusion.cpp')
 conflicts=('stable-diffusion.cpp' 'stable-diffusion.cpp-git' 'stable-diffusion.cpp-rocm-bin')
 options=('!strip' '!debug')
-_upstream_tag=master-956-1b0ba10
-_commit=1b0ba10
+_upstream_tag=master-959-d637cfb
+_commit=d637cfb
 source=("${pkgname}-${pkgver}.zip::https://github.com/leejet/stable-diffusion.cpp/releases/download/${_upstream_tag}/sd-master-${_commit}-bin-Linux-Ubuntu-24.04-x86_64-vulkan.zip")
-sha256sums=('cecacb8054b4fab56912ee7e109a5f48311cf7a8660c6b311ac3a6eb1156ef73')
+sha256sums=('09057ce221787094cd91fe34e044544d5dc20b095099eb30b901a2da727f947a')
 
 package() {
     local upstream="$srcdir" executable license_file
