@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-oda-102-stereo
-	pkgdesc = AIMP skin: Ода-102-стерео 1.05 (by McClaud)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Ода-102-стерео v1.05 (by McClaud)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-oda-102-stereo
 	options = !strip
 	options = !debug
 	source = aimp-skin-oda-102-stereo-1330.archive::https://aimp.ru/?do=catalog.download&id=1330
-	sha256sums = 4fb8b4ee85e4e17d9855c24b989c4d1ba7d855f9a0b29ef42cef089c816ee263
+	sha256sums = SKIP
 
 pkgname = aimp-skin-oda-102-stereo
