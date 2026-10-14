@@ -13,7 +13,7 @@
 
 pkgname=mesa-rk35xx-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=26.3.0_devel.231093.acf3bf76675.d41d8cd
+pkgver=26.3.0_devel.231539.d44453ce07b.d41d8cd
 pkgrel=1
 arch=($CARCH)
 makedepends=(
@@ -353,7 +353,7 @@ build () {
         -D gallium-rusticl=true
 	-D gallium-rusticl-enable-drivers=panfrost
 	#-D static-libclc=all
-	-D panfrost-rust=true
+#	-D panfrost-rust=true
         -D gallium-va=enabled
         -D gbm=enabled
         -D gles1=enabled
