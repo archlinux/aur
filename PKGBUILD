@@ -1,6 +1,6 @@
 # Maintainer: LIghtJUNction <lightjunction.me@gmail.com>
 pkgname=cpyref
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Local references, bounded test logs and source snapshots for AI agents'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('LicenseRef-AUL-1.0-draft.1')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('5a1a6e390d7556f0f9f15abaf87737bc26d7b90f4dbfd4ad692e94717534fdfd')
+sha256sums=('b6048aa7d2fe9d8af079ef72a9c5e5483f77e274c6f3d2cb9bd74e92d42fe930')
 
 prepare() {
   cd "$pkgname-$pkgver"
