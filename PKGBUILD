@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@agentics.co.za>
 # ---
 pkgname=azros-agent
-pkgver=0.1.65
+pkgver=0.1.66
 pkgrel=1
 pkgdesc="Azros Agent - the Azros coding agent on its own, building into your AzrOS Workspace"
 arch=('x86_64')
@@ -9,11 +9,11 @@ url="https://agentics.co.za"
 license=('custom')
 depends=()
 options=('!strip' '!debug')
-source=("azros-agent-0.1.65-x86_64.AppImage::https://repo.agentics.co.za/x86_64/azros-agent-0.1.65-x86_64.AppImage")
-sha512sums=('b1fd60492de32b07c863a5a97b5aaf92eea4f93fa1fb124db27c83d5f61cb7dfe937d30b6e38e44097c93764deecc24c05feea745f676e147c542967843756e1')
+source=("azros-agent-0.1.66-x86_64.AppImage::https://repo.agentics.co.za/x86_64/azros-agent-0.1.66-x86_64.AppImage")
+sha512sums=('5ec2c0a35c56383ab749c0e8d9a385153d0eefe57501f2f3c40050d81471f3ae927172419044b1584c5e39b3bf6c99806b27d18570c26479495aa11e1e925322')
 
 package() {
-  install -Dm755 "$srcdir/azros-agent-0.1.65-x86_64.AppImage" "$pkgdir/opt/agentics/azros-agent.AppImage"
+  install -Dm755 "$srcdir/azros-agent-0.1.66-x86_64.AppImage" "$pkgdir/opt/agentics/azros-agent.AppImage"
   install -dm755 "$pkgdir/usr/bin"
   printf '%s\n' '#!/bin/sh' 'exec /opt/agentics/azros-agent.AppImage "$@"' > "$pkgdir/usr/bin/azros-agent"
   chmod 755 "$pkgdir/usr/bin/azros-agent"
