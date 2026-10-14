@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-j-river-black-on-black
-	pkgdesc = AIMP skin: J.River Black on Black 2.11 (by memo-se)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: J.River Black on Black v2.11 (by memo-se)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-j-river-black-on-black
 	options = !strip
 	options = !debug
 	source = aimp-skin-j-river-black-on-black-1109.archive::https://aimp.ru/?do=catalog.download&id=1109
-	sha256sums = c0aa96fa00dc0db85697ce7ec0040d162299692ed90a1c0ddefbe1a63661fdbf
+	sha256sums = SKIP
 
 pkgname = aimp-skin-j-river-black-on-black
