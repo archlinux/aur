@@ -5,7 +5,7 @@
 pkgname=simple_backup-git
 _pkgname=simple_backup
 pkgdesc='Simple backup script that uses rsync to copy files'
-pkgver=4.2.0.r1.g2f207ef
+pkgver=4.3.0.r6.g8d08032
 pkgrel=1
 url="https://git.shouldnt.work/fuxino/${_pkgname}"
 install=simple_backup.install
@@ -20,6 +20,9 @@ depends=('python>=3.10'
 optdepends=('python-systemd: use systemd log'
             'python-dbus: for desktop notifications'
             'python-paramiko: for remote backup through ssh')
+checkdepends=('python-pytest'
+              'python-paramiko'
+              'openssh')
 conflicts=('simple_backup')
 provides=('simple_backup')
 source=(git+${url}.git?signed#branch=master)
@@ -41,6 +44,12 @@ build()
 {
     cd ${srcdir}/${_pkgname}
     python -m build --wheel --no-isolation
+}
+
+check()
+{
+    cd ${srcdir}/${_pkgname}
+    python -m pytest
 }
 
 package()
