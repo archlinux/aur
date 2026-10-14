@@ -28,7 +28,7 @@ source_ppc64=("${pkgname}-${pkgver}-ppc64.tar.gz::${_baseurl}/b4-linux-ppc64.tar
 source_ppc64le=("${pkgname}-${pkgver}-ppc64le.tar.gz::${_baseurl}/b4-linux-ppc64le.tar.gz")
 source_s390x=("${pkgname}-${pkgver}-s390x.tar.gz::${_baseurl}/b4-linux-s390x.tar.gz")
 
-sha256sums_x86_64=('4cf02a7967369c62ec592341a58b66f34b65cb83b352d57aca16b22ae38cc4f3')
+sha256sums_x86_64=('90b514d452eaa2b7c4d62a9ff6ef5d27840fa7050e14f268bd23410ba8d9b3c5')
 sha256sums_i686=('537f727c5c7e1b66fd5f673e76d6a92a04dee92e5417f8e9c8b5656c8f8cb341')
 sha256sums_aarch64=('1cc489a897b3815da227277d4b4303b88a640b106ba1953516dee055612be432')
 sha256sums_riscv64=('a5c455b279ab857dc95aa718b8ece558ca041544deebfe0957a9e0d71372e394')
