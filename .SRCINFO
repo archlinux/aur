@@ -1,0 +1,17 @@
+pkgbase = sdrtop-git
+	pkgdesc = Terminal monitor for SDR hardware - written in Rust.
+	pkgver = 0.6.6.r25.g7ee397f
+	pkgrel = 1
+	url = https://github.com/musithang/sdrtop
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = sdrtop
+	conflicts = sdrtop
+	options = !lto
+	source = sdrtop-git::git+https://github.com/musithang/sdrtop
+	sha256sums = SKIP
+
+pkgname = sdrtop-git
