@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-redgrad
-	pkgdesc = AIMP skin: REDGRAD 1.0 (by sergej.kachan.ss)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: REDGRAD 2016-03-29 (by sergej.kachan.ss)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-redgrad
 	options = !strip
 	options = !debug
 	source = aimp-skin-redgrad-784.archive::https://aimp.ru/?do=catalog.download&id=784
-	sha256sums = afeec24248dff2a1c4179801b4872f632a3aee109d49adf98fc30ccd2b445419
+	sha256sums = SKIP
 
 pkgname = aimp-skin-redgrad
