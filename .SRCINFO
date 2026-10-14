@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-xz
-	pkgdesc = AIMP skin: Xz 1.2 (by varlesh)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Xz v1.2 (by varlesh)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-xz
 	options = !strip
 	options = !debug
 	source = aimp-skin-xz-522.archive::https://aimp.ru/?do=catalog.download&id=522
-	sha256sums = 56ffee4d784ed07b31aa3f2b19e4cf025108703685876b4f2e5a9d33b837e79d
+	sha256sums = SKIP
 
 pkgname = aimp-skin-xz
