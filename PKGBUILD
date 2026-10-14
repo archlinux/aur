@@ -2,10 +2,10 @@
 
 pkgbase=cuml
 pkgname=(libcuml python-cuml)
-pkgver=26.08.00
+pkgver=26.10.00
 pkgrel=1
 pkgdesc="cuML - RAPIDS Machine Learning Library"
-url="https://github.com/rapidsai/cuml"
+url="https://github.com/NVIDIA/cuml"
 arch=('x86_64')
 license=('Apache-2.0')
 depends=('cuda' 'rmm' 'libraft' 'libcuvs' 'rapidjson' 'treelite' 'nvforest')
@@ -13,18 +13,18 @@ makedepends=('cuda' 'python-setuptools' 'cmake' 'python-scikit-build-core' 'pyth
 source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz" 
     "system-lib.patch"
-    "missing-include2.patch"
+    "missing-include.patch"
     "missing-pkg.patch"
 )
-sha256sums=('b8023c23c54e2f5c8cd104b736da8dc71d157ccb2d010767acbebcc8880cd945'
-            'ea994ead395af2537637e14e5945df3718d8d7189c03099d729aae8fde7da8ef'
+sha256sums=('cec6a85ef7bcc43863f7509dc496fbf6fad2e422344899460fb82576336c5ca6'
+            '97320c6ae6dc294b79da4b179e09712561a912805effd765d6bb29f00b8577fa'
             'e292e24a4dc3de5d0a723d61249cc547bbbdf2d3e42ee05885af54a06c07d520'
-            'ead7d88d8efd5a4c54b62ff4cc3cac4bc438fae4b0fa10d998270dca8ad3b866')
+            '3d8d3fc39d35b415792e3f9d3957c32a5d9eb7a17cb65a5c6d4f68645c1ad81c')
 
 prepare() {
     cd "$srcdir/$pkgbase-$pkgver"
     patch -p1 "cpp/CMakeLists.txt" < "$srcdir/system-lib.patch"
-    patch -p1 "cpp/include/cuml/ensemble/randomforest.hpp" < "$srcdir/missing-include2.patch"
+    patch -p1 "cpp/include/cuml/ensemble/randomforest.hpp" < "$srcdir/missing-include.patch"
     patch -p1 "python/cuml/CMakeLists.txt" < "$srcdir/missing-pkg.patch"
 }
 

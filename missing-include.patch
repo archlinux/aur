@@ -1,11 +1,10 @@
---- /home/crl/code/aur/rapidsai/cuml/src/cuml-25.06.00/cpp/src/common/cumlHandle.hpp	2025-06-06 20:44:48.000000000 +0800
-+++ /home/crl/code/aur/rapidsai/cuml/src/cuml-25.06.00/cpp/src/common/cumlHandle.hpp.new	2025-06-23 23:46:39.159852263 +0800
-@@ -16,6 +16,8 @@
+--- cpp/include/cuml/ensemble/randomforest.hpp	2025-10-09 06:37:48.000000000 +0800
++++ cpp/include/cuml/ensemble/randomforest.hpp.new	2025-10-09 19:46:15.470070234 +0800
+@@ -22,6 +22,7 @@
  
- #pragma once
- 
+ #include <map>
+ #include <memory>
 +#include <cstdint>
-+
- #include <cuml/cuml_api.h>
  
- #include <raft/core/handle.hpp>
+ namespace raft {
+ class handle_t;  // forward decl

@@ -1,0 +1,5 @@
+[cuml]
+source = "github"
+github = "NVIDIA/cuml"
+use_latest_release = true
+prefix = "v"

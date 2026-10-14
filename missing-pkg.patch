@@ -9,7 +9,7 @@
  option(USE_LIBCUML_WHEEL "Use libcuml wheel to provide some dependencies" OFF)
  
  # todo: use CMAKE_MESSAGE_CONTEXT for prefix for logging.
-@@ -69,8 +69,13 @@
+@@ -69,8 +69,14 @@
  
  set(CUML_EXCLUDE_TREELITE_FROM_ALL ON)
  
@@ -21,6 +21,7 @@
 +find_package(rmm REQUIRED)
 +find_package(raft REQUIRED)
 +find_package(cuvs REQUIRED)
++find_package(kvikio REQUIRED)
  # --- libcuml --- #
  find_package(cuml "${RAPIDS_VERSION}" REQUIRED)
  
