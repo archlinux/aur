@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Capy
+Comment=Capy runs your coding agents in the cloud.
+Exec=capy-ai %U
+Icon=capy-ai
+Terminal=false
+Categories=Development;
+StartupWMClass=capy
+MimeType=x-scheme-handler/capy;
