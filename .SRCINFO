@@ -1,0 +1,25 @@
+pkgbase = lldb22-bin
+	pkgdesc = Next generation, high-performance debugger (LLVM 22, prebuilt Arch package)
+	pkgver = 22.1.8
+	pkgrel = 1
+	url = https://lldb.llvm.org/
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	depends = clang22
+	depends = gcc-libs
+	depends = glibc
+	depends = libedit
+	depends = libxml2
+	depends = llvm22-libs
+	depends = ncurses
+	depends = python>=3.14
+	depends = python<3.15
+	depends = xz
+	depends = zlib
+	provides = liblldb.so=22.1-64
+	options = !strip
+	options = !debug
+	source = https://archive.archlinux.org/packages/l/lldb/lldb-22.1.8-1-x86_64.pkg.tar.zst
+	sha512sums = 23a761af189a7235034d4ce9af5e00b631f6f361f11843aa727f6431ae238d03f3aaa0c4f7d333a6d61863f0b3f0b6d019d1b2c9916f59463c0500e1d8065208
+
+pkgname = lldb22-bin

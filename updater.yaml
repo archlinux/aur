@@ -1,0 +1,6 @@
+# LLDB 22 is end of line in the Arch repos (lldb is 23); the Archive build never changes.
+source: github_release
+repo: llvm/llvm-project
+isEnabled: false
+verify_commands:
+  - /usr/lib/llvm22/bin/lldb --version
