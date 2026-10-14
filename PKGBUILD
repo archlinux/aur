@@ -1,6 +1,6 @@
 # Maintainer: Chris Watson (watzon)
 pkgname=sayso-bin
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Local voice dictation into any app"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ conflicts=('sayso')
 options=('!strip' '!debug')
 source_x86_64=("https://github.com/watzon/sayso/releases/download/v$pkgver/sayso-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("https://github.com/watzon/sayso/releases/download/v$pkgver/sayso-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('a15191228f09df61543d5a224d4a9718bd968c916a9c186cd8382e2542f45ed6')
-sha256sums_aarch64=('73125e791dcdbf894b77a8fbc0f10e94d448ceba1608cceb89207564315b40b5')
+sha256sums_x86_64=('ba69b1e2c5f67e6ffe1a98164bdfe9dfb2926664a7c33c3fa2c017e0334e797f')
+sha256sums_aarch64=('452c0f2f9eb46719f927c0d04f0dcdd2773c61383cad94b786cb2a62ba5bef91')
 
 package() {
   cd "sayso-$pkgver-linux-$CARCH"
@@ -29,5 +29,7 @@ package() {
   install -Dm644 share/metainfo/dev.sayso.Sayso.metainfo.xml "$pkgdir/usr/share/metainfo/dev.sayso.Sayso.metainfo.xml"
   cp -r share/icons "$pkgdir/usr/share/"
   install -Dm644 lib/udev/rules.d/70-sayso-uinput.rules "$pkgdir/usr/lib/udev/rules.d/70-sayso-uinput.rules"
+  # The app finds the AUR package by this folder, and then names an AUR helper
+  # as the way to update (crates/sayso-update/src/install/package.rs).
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

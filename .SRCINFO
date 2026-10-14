@@ -1,6 +1,6 @@
 pkgbase = sayso-bin
 	pkgdesc = Local voice dictation into any app
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://justsayso.app
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = sayso-bin
 	conflicts = sayso
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/watzon/sayso/releases/download/v0.7.1/sayso-0.7.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = a15191228f09df61543d5a224d4a9718bd968c916a9c186cd8382e2542f45ed6
-	source_aarch64 = https://github.com/watzon/sayso/releases/download/v0.7.1/sayso-0.7.1-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 73125e791dcdbf894b77a8fbc0f10e94d448ceba1608cceb89207564315b40b5
+	source_x86_64 = https://github.com/watzon/sayso/releases/download/v0.8.0/sayso-0.8.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = ba69b1e2c5f67e6ffe1a98164bdfe9dfb2926664a7c33c3fa2c017e0334e797f
+	source_aarch64 = https://github.com/watzon/sayso/releases/download/v0.8.0/sayso-0.8.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 452c0f2f9eb46719f927c0d04f0dcdd2773c61383cad94b786cb2a62ba5bef91
 
 pkgname = sayso-bin
