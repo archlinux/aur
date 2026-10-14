@@ -2,7 +2,7 @@
 
 _basename=xfce-winxp-tc
 pkgname=('xfce-winxp-tc-git' 'libwintc-git')
-pkgver=r578.97eeacb
+pkgver=r933.beefd67
 pkgrel=2
 pkgdesc="Windows XP Total Conversion for XFCE"
 arch=('x86_64' 'aarch64')
