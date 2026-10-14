@@ -5,18 +5,18 @@
 # Upstream JASP publishes installers for Windows and macOS only; the official
 # Linux channel is Flathub. The binary this package installs is therefore NOT an
 # upstream release artifact. It is compiled from the tagged JASP sources
-# (v0.98.1, commit 077322e8269c1ace3bd14b6dfe7059f606fc0bc6) against an Arch Linux userland, in an
+# (v0.98.8, commit b6cd3b0310be4e18e1b673ac11f14e55615c8fa1) against an Arch Linux userland, in an
 # archlinux:base-devel container, by an automated pipeline:
 #
 #   build recipe:  https://gitea.weircon.dk/agw/jasp-desktop-bin
-#   download:      https://asger.weirsoe.dk/tarballz/jasp-desktop-0.98.1-b36ed75bbd4f-x86_64.tar.zst
+#   download:      https://asger.weirsoe.dk/tarballz/jasp-desktop-0.98.8-4b07f349b04b-x86_64.tar.zst
 #
 # It bundles its own R 4.5.3 and the non-system libraries it links against
 # under /opt/jasp-desktop, so it does not constrain the versions of anything on
-# your system. Built against Qt 6.11.
+# your system. Built against Qt 6.12.
 
 pkgname=jasp-desktop-bin
-pkgver=0.98.1
+pkgver=0.98.8
 pkgrel=1
 pkgdesc="JASP Desktop - a fresh way to do statistics (prebuilt binary)"
 arch=('x86_64')
@@ -40,7 +40,7 @@ conflicts=('jasp-desktop')
 # ~500 MB for no real gain. A Qt 7 transition will need a rebuild.
 depends=(
   'qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-positioning' 'qt6-webchannel'
-  'qt6-webengine' 'qt6-5compat' 'qt6-httpserver'
+  'qt6-webengine' 'qt6-5compat' 'qt6-httpserver' 'qt6-networkauth'
   'fontconfig' 'freetype2' 'libxkbcommon' 'hicolor-icon-theme'
 )
 
@@ -54,8 +54,8 @@ options=('!strip' '!debug' '!libtool' '!staticlibs' '!zipman' '!purge' '!emptydi
 # The remote name is content-addressed, so it is kept as the local name too: a
 # stale download left in the build directory can never be mistaken for the
 # current tarball and fail the checksum.
-source=("https://asger.weirsoe.dk/tarballz/jasp-desktop-0.98.1-b36ed75bbd4f-x86_64.tar.zst")
-sha256sums=('b36ed75bbd4ff5b91156362ac861fcf49df9cb30b0134009f4c8d2e187777dc8')
+source=("https://asger.weirsoe.dk/tarballz/jasp-desktop-0.98.8-4b07f349b04b-x86_64.tar.zst")
+sha256sums=('4b07f349b04b258798301f83076484dfe24a1ed28a98e5cdf27b870908658f2c')
 
 package() {
   cp -a "${srcdir}/opt" "${pkgdir}/opt"
