@@ -4,7 +4,7 @@ _appname=code
 _pkgname="visual-studio-${_appname}"
 pkgname="${_pkgname}-electron-bin"
 _debname=com.microsoft.VSCode
-pkgver=1.141.0
+pkgver=1.141.1
 _electronversion=43
 pkgrel=1
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications."
@@ -51,48 +51,40 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://code.visualstudi
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-armhf")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64")
 sha256sums=('68a94e4a9d746da48f5bb990d48b434363e476dfde006394a3ced94b4a54b4a7'
-            '4eb64dab756b002c40e8e88e0f9af3238cbfeadedc382ca877363e49f0bd1f93')
-sha256sums_aarch64=('1440304b14a016f1f5064fa1bab1882e06f201cae51988cc821b7cc0f473df5b')
-sha256sums_armv7h=('f804f4bff3f8986850dbfcc1f98e95b255101f91d0bc485f7ae261e1058159ed')
-sha256sums_x86_64=('6e8ca115fbe125fc2480bd5a853140151aa636a303082d4b8c3194a5c1508b2a')
+            '95ce7d9db1ef83c0ec03a416eab865ed940aa20535893eb2e71b8524bbf1fc1a')
+sha256sums_aarch64=('4098a7669f3766a2f30c2442ff4394d2cc0c7349394ec6ea31078bb3a777ceae')
+sha256sums_armv7h=('df3c49469a2f0fa9a6b2cd612a5a30fef01cc468311746b3b7f9041b575d0751')
+sha256sums_x86_64=('3bc78c8208ce7365a0026a920b8c29be91ff7557c4395dc252a42827f5b17321')
 pkgver() {
-    cd "${srcdir}/usr/share/${_appname}/resources/app"
-    grep '"version": ' package.json | awk '{print $2}' | tr -d '"' | tr -d ','
+	cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
 }
 _get_app_dir() {
-	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
 _check_electron_version() {
-    echo "Verifying Electron version..."
-    local _main_exe=$(find "$(_get_app_dir)" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)
-    [[ -z "${_main_exe}" ]] && echo -e "\033[1;33mNote: Could not find Electron binary.\033[0m" && return
-    local _elec_ver=$(strings "${_main_exe}" | grep -oP 'Electron/\K[0-9]+' | head -1)
-    [[ -z "${_elec_ver}" ]] && echo -e "\033[1;33mNote: Could not determine Electron version.\033[0m" && return
-    [[ "${_elec_ver}" != "${_electronversion}" ]] &&
-        echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m" ||
-        echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \
+		-executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)" \
+		| grep -oP 'Electron/\K[0-9]+' | head -1)
+	[[ -z "$_v" ]] && { echo -e "\033[1;33mNote: Could not check version.\033[0m"; return; }
+	(( _v == _electronversion )) && c=32 || c=31
+	echo -e "Electron version: \033[1;${c}m$_v$([[ $c -eq 31 ]] && echo " (expected $_electronversion)")\033[0m"
 }
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app/g
-        s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
     _check_electron_version
+    grep '"version": ' "$(_get_app_dir)/resources/app/package.json" | awk '{print $2}' | tr -d '"' | tr -d ',' > "${srcdir}/.pkgver"
     sed -i "s/@ELECTRON@/electron${_electronversion}/g" "${srcdir}/${pkgname%-bin}.js"
     sed -i "s/${_debname}.desktop/${pkgname%-bin}.desktop/g" "${srcdir}/usr/share/appdata/${_debname}.appdata.xml"
     sed -i -e "
         s/\/usr\/share\/${_appname}\/${_appname}/${pkgname%-bin}/g
         s/Icon=vs${_appname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_debname}"*.desktop
-    case "${CARCH}" in
-        aarch64)    _arch_rem="x64" ;;
-        x86_64)   _arch_rem="arm64" ;;
-    esac
-    local _app_dir="$(_get_app_dir)"
-    find "${_app_dir}/resources/app" \
-        \( -name "*darwin*" -o -name "*${_arch_rem}*" -o -name "*win32*" \) \
+    local _archrem=$([[ "${CARCH}" == "x86_64" ]] && echo arm || echo x64)
+    find "$(_get_app_dir)/resources/app" \
+        \( -name "*darwin*" -o -name "*${_archrem}*" -o -name "*win32*" \) \
         -exec rm -rf {} +
 }
 package() {
