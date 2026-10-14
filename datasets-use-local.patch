@@ -1,6 +1,6 @@
---- a/photutils/datasets/load.py	2026-04-18 05:26:37.000000000 +0800
-+++ b/photutils/datasets/load.py	2026-04-19 14:13:01.707918411 +0800
-@@ -163,8 +163,12 @@
+--- a/photutils/datasets/load.py	2026-10-14 06:45:47.935285000 +0800
++++ b/photutils/datasets/load.py	2026-10-14 12:00:12.239540413 +0800
+@@ -153,8 +153,12 @@
      hdu : `~astropy.io.fits.ImageHDU`
          The 4.5 micron Spitzer image in a FITS image HDU.
      """
@@ -15,9 +15,9 @@
      return _load_fits_as_imagehdu(path)
  
  
-@@ -187,8 +191,12 @@
-     catalog : `~astropy.table.Table`
-         The catalog of sources.
+@@ -178,8 +182,12 @@
+         The catalog of sources, with Galactic coordinates, 4.5 micron
+         fluxes, and magnitudes in the four IRAC channels.
      """
 -    path = _get_path('spitzer_example_catalog.xml', location='remote',
 -                     show_progress=show_progress)
@@ -30,7 +30,7 @@
      return Table.read(path)
  
  
-@@ -249,7 +257,10 @@
+@@ -220,7 +228,10 @@
          raise ValueError(msg)
  
      filepath = f'irac_ch{channel}_flight.fits'
@@ -42,7 +42,7 @@
      return _load_fits_as_imagehdu(path)
  
  
-@@ -275,8 +286,12 @@
+@@ -246,8 +257,12 @@
      hdu : `~astropy.io.fits.ImageHDU`
          The M67 image in a FITS image HDU.
      """
@@ -57,9 +57,9 @@
      return _load_fits_as_imagehdu(path)
  
  
-@@ -312,7 +327,12 @@
-         norm = simple_norm(hdu.data, 'sqrt', percent=99.5)
-         ax.imshow(hdu.data, norm=norm, origin='lower')
+@@ -269,7 +284,12 @@
+     hdu : `~astropy.io.fits.ImageHDU`
+         A FITS image HDU containing the simulated HST star image.
      """
 -    path = _get_path('hst_wfc3ir_f160w_simulated_starfield.fits',
 -                     location='photutils-datasets',

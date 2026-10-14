@@ -1,0 +1,126 @@
+--- a/docs/user_guide/detection.rst	2026-10-14 06:45:47.927014600 +0800
++++ b/docs/user_guide/detection.rst	2026-10-14 13:27:45.960452882 +0800
+@@ -141,8 +141,7 @@
+     from photutils.datasets import make_noise_image
+     from photutils.detection import DAOStarFinder
+ 
+-    url = ('https://github.com/astropy/photutils-datasets/raw/main/'
+-           'data/hst_wfc3ir_f160w_simulated_starfield.fits')
++    url = ('hst_wfc3ir_f160w_simulated_starfield.fits')
+     data = fits.getdata(url)
+     data += make_noise_image(data.shape, distribution='gaussian', mean=10.0,
+                              stddev=5.0, seed=0)
+@@ -188,8 +187,7 @@
+     from photutils.datasets import make_noise_image
+     from photutils.detection import DAOStarFinder
+ 
+-    url = ('https://github.com/astropy/photutils-datasets/raw/main/'
+-           'data/hst_wfc3ir_f160w_simulated_starfield.fits')
++    url = ('hst_wfc3ir_f160w_simulated_starfield.fits')
+     data = fits.getdata(url)
+     data += make_noise_image(data.shape, distribution='gaussian', mean=10.0,
+                              stddev=5.0, seed=0)
+@@ -271,8 +269,7 @@
+     from photutils.datasets import make_noise_image
+     from photutils.detection import find_peaks
+ 
+-    url = ('https://github.com/astropy/photutils-datasets/raw/main/'
+-           'data/hst_wfc3ir_f160w_simulated_starfield.fits')
++    url = ('hst_wfc3ir_f160w_simulated_starfield.fits')
+     data = fits.getdata(url)
+     data += make_noise_image(data.shape, distribution='gaussian', mean=10.0,
+                              stddev=5.0, seed=0)
+--- a/docs/user_guide/epsf_building.rst	2026-10-14 06:45:47.927284700 +0800
++++ b/docs/user_guide/epsf_building.rst	2026-10-14 13:32:22.940735036 +0800
+@@ -79,8 +79,7 @@
+     from astropy.visualization import simple_norm
+     from photutils.datasets import make_noise_image
+ 
+-    url = ('https://github.com/astropy/photutils-datasets/raw/main/'
+-           'data/hst_wfc3ir_f160w_simulated_starfield.fits')
++    url = ('hst_wfc3ir_f160w_simulated_starfield.fits')
+     data = fits.getdata(url)
+     data += make_noise_image(data.shape, distribution='gaussian', mean=10.0,
+                              stddev=5.0, seed=0)
+@@ -125,8 +124,7 @@
+     from photutils.datasets import make_noise_image
+     from photutils.detection import DAOStarFinder
+ 
+-    url = ('https://github.com/astropy/photutils-datasets/raw/main/'
+-           'data/hst_wfc3ir_f160w_simulated_starfield.fits')
++    url = ('hst_wfc3ir_f160w_simulated_starfield.fits')
+     data = fits.getdata(url)
+     data += make_noise_image(data.shape, distribution='gaussian', mean=10.0,
+                              stddev=5.0, seed=0)
+@@ -260,8 +258,7 @@
+     from photutils.utils import circular_footprint
+     from scipy.ndimage import binary_dilation
+ 
+-    url = ('https://github.com/astropy/photutils-datasets/raw/main/'
+-           'data/hst_wfc3ir_f160w_simulated_starfield.fits')
++    url = ('hst_wfc3ir_f160w_simulated_starfield.fits')
+     data = fits.getdata(url)
+     data += make_noise_image(data.shape, distribution='gaussian', mean=10.0,
+                              stddev=5.0, seed=0)
+@@ -401,8 +398,7 @@
+     from photutils.utils import circular_footprint
+     from scipy.ndimage import binary_dilation
+ 
+-    url = ('https://github.com/astropy/photutils-datasets/raw/main/'
+-           'data/hst_wfc3ir_f160w_simulated_starfield.fits')
++    url = ('hst_wfc3ir_f160w_simulated_starfield.fits')
+     data = fits.getdata(url)
+     data += make_noise_image(data.shape, distribution='gaussian', mean=10.0,
+                              stddev=5.0, seed=0)
+--- a/docs/user_guide/psf_matching.rst	2026-10-14 06:45:47.927284700 +0800
++++ b/docs/user_guide/psf_matching.rst	2026-10-14 13:37:33.338121681 +0800
+@@ -484,8 +484,7 @@
+     from astropy.io import fits
+     from astropy.visualization import SimpleNorm
+ 
+-    url = ('https://github.com/astropy/photutils-datasets/raw/main/'
+-           'data/irac_ch{}_flight.fits')
++    url = ('irac_ch{}_flight.fits')
+     ch1_psf = fits.getdata(url.format(1))
+     ch4_psf = fits.getdata(url.format(4))
+ 
+@@ -551,8 +550,7 @@
+     from photutils.psf_matching import (SplitCosineBellWindow, make_kernel,
+                                         make_wiener_kernel)
+ 
+-    url = ('https://github.com/astropy/photutils-datasets/raw/main/'
+-           'data/irac_ch{}_flight.fits')
++    url = ('irac_ch{}_flight.fits')
+     ch1_psf = fits.getdata(url.format(1))
+     ch4_psf = fits.getdata(url.format(4))
+ 
+@@ -598,8 +596,7 @@
+     from photutils.psf_matching import (SplitCosineBellWindow, make_kernel,
+                                         make_wiener_kernel)
+ 
+-    url = ('https://github.com/astropy/photutils-datasets/raw/main/'
+-           'data/irac_ch{}_flight.fits')
++    url = ('irac_ch{}_flight.fits')
+     ch1_psf = fits.getdata(url.format(1))
+     ch4_psf = fits.getdata(url.format(4))
+ 
+@@ -668,8 +665,7 @@
+     from photutils.psf_matching import (SplitCosineBellWindow, make_kernel,
+                                         make_wiener_kernel)
+ 
+-    url = ('https://github.com/astropy/photutils-datasets/raw/main/'
+-           'data/irac_ch{}_flight.fits')
++    url = ('irac_ch{}_flight.fits')
+     ch1_psf = fits.getdata(url.format(1))
+     ch4_psf = fits.getdata(url.format(4))
+ 
+@@ -734,8 +730,7 @@
+     from photutils.psf_matching import (SplitCosineBellWindow, make_kernel,
+                                         make_wiener_kernel)
+ 
+-    url = ('https://github.com/astropy/photutils-datasets/raw/main/'
+-           'data/irac_ch{}_flight.fits')
++    url = ('irac_ch{}_flight.fits')
+     ch1_psf = fits.getdata(url.format(1))
+     ch4_psf = fits.getdata(url.format(4))
+ 
