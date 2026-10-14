@@ -2,7 +2,7 @@
 
 pkgname=scottbass3-shell-git
 _name=scottbass3-shell
-pkgver=r61.2e85f63
+pkgver=r86.efd6773
 pkgrel=1
 pkgdesc="Material You desktop shell for Hyprland, built on Quickshell"
 arch=('x86_64')
@@ -21,8 +21,10 @@ optdepends=(
   'khal: calendar events'
   'vdirsyncer: calendar sync'
   'curl: online wallpaper downloads'
+  'libqalculate: units and conversions in the launcher calculator'
   'libsecret: YouTube Music companion token'
   'qt6-websockets: YouTube Music companion (realtime)'
+  'scottbass3-clipd-git: clipboard history'
 )
 provides=("$_name")
 conflicts=("$_name")
