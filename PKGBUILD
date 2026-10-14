@@ -1,10 +1,26 @@
 # SPDX-License-Identifier: LGPL-3.0-only
-# Copyright (C) 2026 mplx <jennifer@mplx.dev>
+# SPDX-FileCopyrightText: Copyright (C) 2026 mplx <jennifer@mplx.dev>
 #
-# AUR PKGBUILD for `jennifer-git`: clones the upstream repository
-# and builds both binaries (`jennifer` standard Go + `jennifer-tiny`
-# TinyGo) from source. Tracks the `main` branch; rebuild to
-# follow upstream.
+# AUR PKGBUILD for `jennifer-git`: clones the upstream repository and builds
+# from source. Tracks the `main` branch; rebuild to follow upstream.
+#
+# Both binaries are built via `make build`: the standard-Go `jennifer` (always)
+# and the TinyGo `jennifer-tiny` (only when the toolchain can produce it).
+# `make build` probes the toolchain and skips `jennifer-tiny` when TinyGo cannot
+# build it; package() then installs the tiny binary, its man page, and its
+# completion symlink only when it exists. So the package ships whatever was built
+# and needs no edit to flip tiny on or off.
+#
+# Today `jennifer-tiny` is skipped: Arch ships Go 1.27, and no current TinyGo
+# release links Jennifer against it. TinyGo 0.42 accepts Go 1.27 but the
+# `-scheduler=tasks` link fails with a duplicate `tinygo_task_exit` symbol
+# (`//export` in TinyGo's internal/task/task_stack.go, emitted into both the
+# cached runtime object and the program object); it reproduces on the official
+# `tinygo/tinygo:0.42.0` image and on `tinygo/tinygo-dev` (0.43.0-dev), even on a
+# trivial goroutine program - an upstream TinyGo bug, not Arch packaging or
+# Jennifer's code. Tracked at https://github.com/tinygo-org/tinygo/issues/5652.
+# When a TinyGo release fixes it, `make build` starts producing `jennifer-tiny`
+# again and this package ships it automatically - no PKGBUILD change needed.
 #
 # Maintainer: mplx <jennifer@mplx.dev>
 
@@ -18,6 +34,11 @@ url='https://github.com/jennifer-language/jennifer'
 license=('LGPL3')
 provides=('jennifer')
 conflicts=('jennifer' 'jennifer-bin')
+# `tinygo` is a makedepend so `make build` can produce `jennifer-tiny` whenever
+# the toolchain supports it. On current Arch (Go 1.27) TinyGo cannot build it, so
+# the build skips it and only `jennifer` is packaged; the dep stays so recovery
+# is automatic once upstream (tinygo#5652) ships. Drop `tinygo` here for a lighter
+# source build that never produces the tiny binary.
 makedepends=('git' 'go' 'tinygo')
 optdepends=(
     'shared-mime-info: registers the .j file extension with file managers'
@@ -44,44 +65,47 @@ build() {
     # -trimpath drops the local $srcdir path from the binary (makepkg flags a
     # $srcdir reference otherwise); the plain dev `make build` keeps symbols,
     # so the packaged build asks for the release flag explicitly.
+    #
+    # `make build` builds the standard-Go `jennifer` and, when the toolchain can,
+    # the TinyGo `jennifer-tiny`; it skips the tiny half gracefully otherwise (see
+    # the header note / tinygo#5652), so this never fails for lack of a working
+    # TinyGo. package() installs whichever binaries were produced.
     make build GOBUILDFLAGS=-trimpath
 }
 
 check() {
     cd "$srcdir/$_realname"
-    # This -git package tracks upstream `main` directly, not a tagged release,
-    # so HEAD can carry a transient test regression between commits (e.g. a
-    # docblock-summary mismatch introduced upstream). A failing check() aborts
-    # *before* package() ever runs, which matters here because makepkg
-    # pre-creates $pkgdir in mode 0111 (--x--x--x, unreadable) expecting
-    # package() to fix it up; abort here and that unreadable "pkg" directory
-    # is all `makepkg -si` leaves behind. Report failures loudly but don't
-    # let an upstream test-suite hiccup block packaging of an otherwise
-    # buildable commit.
-    go test ./... || echo "==> WARNING: check() failed for this commit (see above); continuing to package() anyway."
+    go test ./...
 }
 
 package() {
     cd "$srcdir/$_realname"
 
-    # Binaries.
+    # Binaries. `jennifer-tiny` installs only when `make build` produced it (the
+    # TinyGo build is skipped when the toolchain can't build it - see the header).
     install -Dm755 jennifer      "$pkgdir/usr/bin/jennifer"
-    install -Dm755 jennifer-tiny "$pkgdir/usr/bin/jennifer-tiny"
+    if [[ -f jennifer-tiny ]]; then
+        install -Dm755 jennifer-tiny "$pkgdir/usr/bin/jennifer-tiny"
+    fi
 
-    # Man pages.
+    # Man pages, gzipped. The jennifer-tiny.1 page ships only when its binary did.
     install -Dm644 packaging/man/jennifer.1      "$pkgdir/usr/share/man/man1/jennifer.1"
-    install -Dm644 packaging/man/jennifer-tiny.1 "$pkgdir/usr/share/man/man1/jennifer-tiny.1"
     gzip -9n "$pkgdir/usr/share/man/man1/jennifer.1"
-    gzip -9n "$pkgdir/usr/share/man/man1/jennifer-tiny.1"
+    if [[ -f jennifer-tiny ]]; then
+        install -Dm644 packaging/man/jennifer-tiny.1 "$pkgdir/usr/share/man/man1/jennifer-tiny.1"
+        gzip -9n "$pkgdir/usr/share/man/man1/jennifer-tiny.1"
+    fi
 
     # XDG MIME info for the .j extension.
     install -Dm644 packaging/mime/jennifer.xml \
         "$pkgdir/usr/share/mime/packages/jennifer.xml"
 
-    # Bash completion (jennifer-tiny symlinks to it).
+    # Bash completion. jennifer-tiny symlinks to the same script when present.
     install -Dm644 packaging/completions/jennifer.bash \
         "$pkgdir/usr/share/bash-completion/completions/jennifer"
-    ln -sf jennifer "$pkgdir/usr/share/bash-completion/completions/jennifer-tiny"
+    if [[ -f jennifer-tiny ]]; then
+        ln -sf jennifer "$pkgdir/usr/share/bash-completion/completions/jennifer-tiny"
+    fi
 
     # Vim / Neovim syntax highlighting, so `.j` files highlight with no user
     # setup. Vim and Neovim read separate runtimepaths (/usr/share/vim/vimfiles
