@@ -2,7 +2,7 @@
 
 _name=langgraph-cli
 pkgname=python-$_name
-pkgver=0.4.34
+pkgver=0.4.35
 pkgrel=1
 pkgdesc='CLI for interacting with LangGraph API.'
 arch=('any')
@@ -25,7 +25,7 @@ checkdepends=('python-pytest'
 optdepends=('python-langgraph-api: inmem'
             'python-langgraph-runtime-inmem: inmem')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('1a280cdfd6d76de6adfe4421a69f75db7c83ee19e975728b9378466d063d2502')
+sha256sums=('48abc1bd2b277cafb80272e3a765c50f36627691662fbb5828053d46f79cab60')
 
 prepare(){
   # Fix tests
@@ -56,4 +56,5 @@ check() {
 package() {
   cd "$srcdir"/${_name//-/_}-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }

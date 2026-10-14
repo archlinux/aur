@@ -1,6 +1,6 @@
 pkgbase = python-langgraph-cli
 	pkgdesc = CLI for interacting with LangGraph API.
-	pkgver = 0.4.34
+	pkgver = 0.4.35
 	pkgrel = 1
 	url = https://github.com/langchain-ai/langgraph/tree/main/libs/cli
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-langgraph-cli
 	depends = python-dotenv
 	optdepends = python-langgraph-api: inmem
 	optdepends = python-langgraph-runtime-inmem: inmem
-	source = https://files.pythonhosted.org/packages/source/l/langgraph-cli/langgraph_cli-0.4.34.tar.gz
-	sha256sums = 1a280cdfd6d76de6adfe4421a69f75db7c83ee19e975728b9378466d063d2502
+	source = https://files.pythonhosted.org/packages/source/l/langgraph-cli/langgraph_cli-0.4.35.tar.gz
+	sha256sums = 48abc1bd2b277cafb80272e3a765c50f36627691662fbb5828053d46f79cab60
 
 pkgname = python-langgraph-cli
