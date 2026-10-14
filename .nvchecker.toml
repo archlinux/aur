@@ -1,0 +1,4 @@
+[subcraft]
+source = "git"
+git = "https://github.com/Aalzard/subcraft.git"
+prefix = "v"
