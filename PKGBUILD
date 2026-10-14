@@ -1,7 +1,7 @@
 # Maintainer: Eric Jingryd <tidynest@proton.me>
 
 pkgname=hypr-keybind-manager
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='Secure keybinding manager for Hyprland with conflict detection'
 # makepkg's lto option passes -flto=auto to the C compiler; the vendored Lua then
