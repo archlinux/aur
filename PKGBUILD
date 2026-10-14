@@ -22,7 +22,7 @@ makedepends=(
   'cargo'
   'clang'
   'librsvg'
-  'nodejs>=20'
+  'nodejs>=22.12.0'
   'pnpm'
   'rust-wasm'
   'wasm-bindgen'

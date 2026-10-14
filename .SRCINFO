@@ -9,7 +9,7 @@ pkgbase = dashbeam
 	makedepends = cargo
 	makedepends = clang
 	makedepends = librsvg
-	makedepends = nodejs>=20
+	makedepends = nodejs>=22.12.0
 	makedepends = pnpm
 	makedepends = rust-wasm
 	makedepends = wasm-bindgen
