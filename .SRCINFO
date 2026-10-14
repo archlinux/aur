@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-aimp-win7
-	pkgdesc = AIMP skin: AIMP Win7 2.2 (by Raider01)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: AIMP Win7 v2.2 (by Raider01)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-aimp-win7
 	options = !strip
 	options = !debug
 	source = aimp-skin-aimp-win7-155.archive::https://aimp.ru/?do=catalog.download&id=155
-	sha256sums = 8738cf8360bc30b4d65fb23b0d4a4a03f6e9e001ea5434fd77db592d0882a839
+	sha256sums = SKIP
 
 pkgname = aimp-skin-aimp-win7
