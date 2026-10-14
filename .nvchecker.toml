@@ -1,0 +1,5 @@
+[python-cudf]
+source = "github"
+github = "NVIDIA/cudf"
+use_latest_release = true
+prefix = "v"
