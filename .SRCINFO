@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-platitude
-	pkgdesc = AIMP skin: Platitude 1.0 (by kestiq)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Platitude 2013-10-21 (by kestiq)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-platitude
 	options = !strip
 	options = !debug
 	source = aimp-skin-platitude-409.archive::https://aimp.ru/?do=catalog.download&id=409
-	sha256sums = 5773a303fd8e08fc28e6fa309a440be52a8040c996e3b86d0f8b22bcfcc714d0
+	sha256sums = SKIP
 
 pkgname = aimp-skin-platitude
