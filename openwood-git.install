@@ -1,0 +1,22 @@
+post_install() {
+  cat <<'EOF'
+openwood ships a mosquitto drop-in ordering the broker after docker
+(/usr/lib/systemd/system/mosquitto.service.d/openwood-docker0.conf), so
+that a `listener 1883 172.17.0.1` line cannot kill the broker at boot.
+EOF
+  if grep -q '172\.17\.0\.1' /etc/mosquitto/mosquitto.conf 2>/dev/null; then
+    cat <<'EOF'
+You have such a listener configured. Apply the new ordering and restart
+the broker now:
+
+    sudo systemctl daemon-reload && sudo systemctl restart mosquitto
+
+(If mosquitto is currently in start-limit-hit after a reboot, first run
+`sudo systemctl reset-failed mosquitto`.)
+EOF
+  fi
+}
+
+post_upgrade() {
+  post_install
+}

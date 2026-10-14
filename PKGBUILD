@@ -4,8 +4,8 @@
 #   makepkg --printsrcinfo > .SRCINFO
 
 pkgname=openwood-git
-pkgver=r10.30bafa9
-pkgrel=1
+pkgver=r30.3eac734
+pkgrel=2
 pkgdesc="Control a Charnwood E-series stove (Aire 300) over BLE: CLI + MQTT bridge with Home Assistant discovery"
 arch=(any)
 url="https://github.com/trougnouf/openwood"
@@ -19,8 +19,9 @@ optdepends=(
 provides=(openwood)
 conflicts=(openwood)
 backup=(etc/openwood/mqtt.env)
-source=("git+https://github.com/trougnouf/openwood.git")
-sha256sums=("SKIP")
+install=openwood-git.install
+source=("git+https://github.com/trougnouf/openwood.git" "openwood-git.install")
+sha256sums=("SKIP" "SKIP")
 
 pkgver() {
   cd "$srcdir/openwood"
@@ -44,6 +45,12 @@ package() {
     "$pkgdir/usr/lib/sysusers.d/openwood.conf"
   install -Dm644 packaging/systemd/mqtt.env \
     "$pkgdir/etc/openwood/mqtt.env"
+
+  # mosquitto must start after docker, or a `listener 1883 172.17.0.1`
+  # line in mosquitto.conf kills it at boot (docker0 does not exist yet).
+  # Harmless without docker/mosquitto; see the file header.
+  install -Dm644 packaging/systemd/mosquitto-docker0.conf \
+    "$pkgdir/usr/lib/systemd/system/mosquitto.service.d/openwood-docker0.conf"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
