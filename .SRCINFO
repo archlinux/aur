@@ -1,6 +1,6 @@
 pkgbase = flyenv-bin
 	pkgdesc = A modern alternative to XAMPP, MAMP, Laragon and Laravel Herd, with runtimes, databases, web servers, local sites, HTTPS, AI coding tools and MCP.
-	pkgver = 4.19.0
+	pkgver = 4.20.1
 	pkgrel = 1
 	url = https://www.flyenv.com/
 	arch = aarch64
@@ -39,15 +39,15 @@ pkgbase = flyenv-bin
 	optdepends = bind
 	optdepends = pure-ftpd
 	optdepends = minio
-	provides = flyenv=4.19.0
+	provides = flyenv=4.20.1
 	conflicts = flyenv
-	source = LICENSE-4.19.0::https://raw.githubusercontent.com/xpf0000/PhpWebStudy/v4.19.0/LICENSE
+	source = LICENSE-4.20.1::https://raw.githubusercontent.com/xpf0000/PhpWebStudy/v4.20.1/LICENSE
 	source = flyenv.sh
 	sha256sums = 01d77fe9ffb39b0a9507ca8d1cae189f56efd625078c3b13b59ce7aae42a4f7d
-	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
-	source_aarch64 = flyenv-4.19.0-aarch64.rpm::https://github.com/xpf0000/FlyEnv/releases/download/v4.19.0/FlyEnv-4.19.0-arm64.rpm
-	sha256sums_aarch64 = 0c4ece6cd20648eea8c500203022fba3102493ccba40b244cdd7bbe06f59a704
-	source_x86_64 = flyenv-4.19.0-x86_64.rpm::https://github.com/xpf0000/FlyEnv/releases/download/v4.19.0/FlyEnv-4.19.0-x64.rpm
-	sha256sums_x86_64 = 88bd70eab42f12e588115ca240a2c21095755e846bcf952eccb5d36979da2b5c
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
+	source_aarch64 = flyenv-4.20.1-aarch64.rpm::https://github.com/xpf0000/FlyEnv/releases/download/v4.20.1/FlyEnv-4.20.1-arm64.rpm
+	sha256sums_aarch64 = 290791311791e08ff925d827f090fbff50af169f377a032fe606c024255f120c
+	source_x86_64 = flyenv-4.20.1-x86_64.rpm::https://github.com/xpf0000/FlyEnv/releases/download/v4.20.1/FlyEnv-4.20.1-x64.rpm
+	sha256sums_x86_64 = b634421f61b6520cf97d1d9064f42e48ed57301fd4ca7f744b4797b24407cd8e
 
 pkgname = flyenv-bin
