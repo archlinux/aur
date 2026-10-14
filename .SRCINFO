@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-radial-mini
-	pkgdesc = AIMP skin: Radial Mini 1.0 (by NikolavRj)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Radial Mini 2013-12-27 (by NikolavRj)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-radial-mini
 	options = !strip
 	options = !debug
 	source = aimp-skin-radial-mini-493.archive::https://aimp.ru/?do=catalog.download&id=493
-	sha256sums = f556a12a68c2c58166550a0e7ca879371a1c94b1eb2dcd37554a1cd90e9b8152
+	sha256sums = SKIP
 
 pkgname = aimp-skin-radial-mini
