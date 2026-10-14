@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-shell
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Desktop shell for Niri with bars, panels and settings"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,10 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-shell/arc
   'config.example.json'
   'first-run.md'
   'niri-bindings.kdl')
-sha256sums=('222a12444b405fe67adf8cc9ec8d855dbc6aade14e0847319ad9ed65a3b0cef1' '57389e844b9d71c50f6bc9907042fab411f3152b17b4161ad7ad48438fd62724' '325af3045e0781c5c71affef3024fafbb7c2a6d32a52d4c74dcb0d9f112fa8b9' 'cb1fbdb2f11eceaaa73fd7ce5a6a0866554e1d87014170290be58b8c97b9e09b')
+sha256sums=('f2bcbfc7a957ade720d9162e7b6806b5a7564932f7d7eb494ca83517e0b41d44'
+            '57389e844b9d71c50f6bc9907042fab411f3152b17b4161ad7ad48438fd62724'
+            '325af3045e0781c5c71affef3024fafbb7c2a6d32a52d4c74dcb0d9f112fa8b9'
+            'cb1fbdb2f11eceaaa73fd7ce5a6a0866554e1d87014170290be58b8c97b9e09b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
