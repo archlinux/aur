@@ -1,18 +1,18 @@
 pkgbase = scramblery-bin
 	pkgdesc = Desktop app for image and video scrambling with various methods including Fourier phase scramble: Entire image/video or just detected facial area.
-	pkgver = 4.0.2
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/altunenes/scramblery
 	arch = x86_64
 	license = MIT
-	depends = gtk3
-	depends = gdk-pixbuf2
-	depends = webkit2gtk-4.1
-	provides = scramblery=4.0.2
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	depends = fontconfig
+	provides = scramblery=4.2.0
 	conflicts = scramblery
-	source = scramblery-4.0.2.deb::https://github.com/altunenes/scramblery/releases/download/v4.0.2/scramblery_4.0.2_amd64.deb
-	source = LICENSE-4.0.2::https://raw.githubusercontent.com/altunenes/scramblery/v4.0.2/LICENSE
-	sha256sums = 7bf34e086c41fbdaf7e996d1593409a03f712e2a4470fdc25cf8104ee5a6ae96
+	source = scramblery-4.2.0.deb::https://github.com/altunenes/scramblery/releases/download/v4.2.0/scramblery_4.2.0_amd64.deb
+	source = LICENSE-4.2.0::https://raw.githubusercontent.com/altunenes/scramblery/v4.2.0/LICENSE
+	sha256sums = 73f1b55d4058e96a4a1a2f201eced81d140326d2f9f2083e8625738525adaeac
 	sha256sums = 8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b
 
 pkgname = scramblery-bin
