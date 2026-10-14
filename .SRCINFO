@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-w8-dark
-	pkgdesc = AIMP skin: W8 Dark 3.0 (by VladShip)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: W8 Dark v3.0 (by VladShip)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-w8-dark
 	options = !strip
 	options = !debug
 	source = aimp-skin-w8-dark-602.archive::https://aimp.ru/?do=catalog.download&id=602
-	sha256sums = 94f7e204bcf3058f2236f0915a0fa3d320d82a16acb2d2c4c0996cbe9a5465b5
+	sha256sums = SKIP
 
 pkgname = aimp-skin-w8-dark
