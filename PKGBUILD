@@ -1,7 +1,7 @@
 # Maintainer: Daniel Azevedo <daniazevedo77@posteo.net>
 
 pkgname=quickshell-d77
-pkgver=1.4.4
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Quickshell d77 shell for Wayland compositors"
 arch=('any')
@@ -12,8 +12,9 @@ license=('MIT')
 depends=('quickshell' 'power-profiles-daemon' 'alsa-utils' 'alsa-tools'
          'brightnessctl' 'wireless_tools')
 makedepends=('rsync')
+optdepends=('matugen: wallpaper-based color palette')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('28797d34a5447a3c1326835fa129a6701d3633b8b82a17ff5aa9f8d5c614d43e')
+sha256sums=('f3cd603de3e379bf780fe4396ae4fc4a05061797e6b458a2b8406330d54fb6af')
 
 package() {
     cd "$pkgname-$pkgver"
