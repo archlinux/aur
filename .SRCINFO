@@ -1,6 +1,6 @@
 pkgbase = ruby-winrm
 	pkgdesc = Ruby library for Windows Remote Management
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/WinRb/WinRM
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = ruby-winrm
 	depends = ruby-nori
 	depends = ruby-rubyntlm
 	depends = ruby-rexml
-	noextract = winrm-2.4.1.gem
+	noextract = winrm-2.4.2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/winrm-2.4.1.gem
-	b2sums = 873e1aa8564e9d3afc9c22c178f50ddb37f45d2197671177d7661e9c984fdcc3b1d4dc2204961a6ae79e066ae32cf86300349e89254e808bf33f16605581b0ad
+	source = https://rubygems.org/downloads/winrm-2.4.2.gem
+	b2sums = 7d4de8fe1b8d8a0fb23d88323d802004addeb076a48d27e1e9c21298fa400f1adce43cbd4f1d1d653e0525cbf41d835fdb9570456f7adf095a5bced89e6ed4d6
 
 pkgname = ruby-winrm
