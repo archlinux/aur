@@ -1,0 +1,14 @@
+Do not force -pie for shared libraries.
+
+CMake appends the global link option -pie after -shared on the linker command
+line.  GCC 16 then links the executable startup object Scrt1.o into
+libdeepin-pdfium-reader.so, and the link fails with "undefined reference to
+`main'".  PIE is the default of the Arch toolchain, so the option is redundant.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -255,4 +255,3 @@
+ add_link_options(
+-    -pie
+     -z lazy
+ )
