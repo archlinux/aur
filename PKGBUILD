@@ -1,7 +1,7 @@
 # Maintainer: yhshzh0 <yhshzh0@gmail.com>
 
 pkgname=tang-dynasty-bin
-pkgver=2026.1.SP3
+pkgver=2026.2
 pkgrel=1
 pkgdesc='Tang Dynasty FPGA development tools for Anlogic devices (binary release)'
 arch=('x86_64')
@@ -33,7 +33,7 @@ source=(
   '70-anlogic-jtag.rules'
 )
 sha256sums=(
-  '314b621cb6fc4164c245b29e78e36a22f386a5248c03502b800a37e230628280'
+  'e624280f5bbfca3d685e8527c26a45f46ae1a6f534974fb759f4d182d604de4d'
   '7cebf45bc62d5d56b4e649efcac0d90f21af64488f399243c78c274c0c98159e'
   '4da15f38fd29b8098e9337f50e0dfeafe9f1130ef724504037b87950c9e52c72'
   'c7518eb2fe0ebafbeadba36a80616892403e89338eb8392aedaeb24ecfbb6040'
