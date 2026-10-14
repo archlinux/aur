@@ -2,7 +2,7 @@
 
 pkgname=librofd-ffi
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Stable C ABI for the rofd OFD parser and renderer'
 arch=(x86_64)
 url='https://github.com/linuxdeepin/rofd'
@@ -18,14 +18,19 @@ makedepends=(
   cargo
   rust
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/linuxdeepin/rofd/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7834fb1156049b0a409a5722e6b54a31c511a4ef3c301f10913dbc495fc738ac')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/linuxdeepin/rofd/archive/refs/tags/v$pkgver.tar.gz"
+        "rofd-ffi-page-size.patch")
+sha256sums=('7834fb1156049b0a409a5722e6b54a31c511a4ef3c301f10913dbc495fc738ac'
+            '812bebb544844164d0004f9854fde1714aa9da97b4fa9ff8d0fa6a8eea96564d')
 
 # the archive of the v$pkgver tag extracts to rofd-$pkgver
 _dirname="rofd-$pkgver"
 
 prepare() {
   cd "$_dirname"
+  # 临时携带：上游 PR linuxdeepin/rofd#11 —— 元数据式页尺寸查询
+  # rofd_document_get_page_size_mm；合入正式版本后删除本行与 source 项
+  patch -Np1 -i "$srcdir/rofd-ffi-page-size.patch"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
