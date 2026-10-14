@@ -9,7 +9,8 @@ url='https://github.com/zertovitch/cbsg'
 license=('MIT')
 depends=('glibc')
 makedepends=('gcc-ada' 'gprbuild')
-source=($pkgname-master.tar.gz)
+source=("https://github.com/zertovitch/$pkgname/archive/refs/heads/master.tar.gz")
+#source=($pkgname-master.tar.gz)
 sha256sums=('c855c58a006ef78f4c27fc4c3fbd91c41b2f8c8d9d260df86f4a87528efb97e9')
 
 build() {

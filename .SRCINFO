@@ -11,7 +11,7 @@ pkgbase = cbsg
 	makedepends = gcc-ada
 	makedepends = gprbuild
 	depends = glibc
-	source = cbsg-master.tar.gz
+	source = https://github.com/zertovitch/cbsg/archive/refs/heads/master.tar.gz
 	sha256sums = c855c58a006ef78f4c27fc4c3fbd91c41b2f8c8d9d260df86f4a87528efb97e9
 
 pkgname = cbsg
