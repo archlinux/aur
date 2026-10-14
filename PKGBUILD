@@ -3,8 +3,8 @@
 
 pkgname='aimp-skin-a4'
 pkgdesc='AIMP skin: A4 3.2 (by ELECTRON!CK)'
-pkgver=20261001
-pkgrel=2
+pkgver=20261014
+pkgrel=1
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -16,7 +16,7 @@ _skinsdir='/opt/aimp/Skins'
 
 source=('aimp-skin-a4-832.archive::https://aimp.ru/?do=catalog.download&id=832')
 noextract=("${source[@]%%::*}")
-sha256sums=('c3a2e65609ff6757809d6842130f7ea403acf7ae02a64e749e37e8b304870904')
+sha256sums=('SKIP')
 
 package() {
   local dest="$pkgdir$_skinsdir"
