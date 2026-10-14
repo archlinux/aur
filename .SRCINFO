@@ -1,6 +1,6 @@
 pkgbase = mechrevo-drivers-dkms-git
 	pkgdesc = Unofficial MECHREVO laptop platform drivers based on TUXEDO drivers (DKMS, git)
-	pkgver = 4.24.0.r6.g4bbbdc9
+	pkgver = 4.24.0.r8.g90fae0c
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/mechrevo-drivers
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = mechrevo-drivers-dkms-git
 	optdepends = linux-zen-headers: build modules for the Zen kernel
 	optdepends = linux-hardened-headers: build modules for the hardened kernel
 	optdepends = udev-hid-bpf: keyboard fixes for TUXEDO Sirius 16 Gen1/2
-	provides = mechrevo-drivers-dkms=4.24.0.r6.g4bbbdc9
-	provides = tuxedo-drivers-dkms=4.24.0.r6.g4bbbdc9
+	provides = mechrevo-drivers-dkms=4.24.0.r8.g90fae0c
+	provides = tuxedo-drivers-dkms=4.24.0.r8.g90fae0c
 	provides = tuxedo-keyboard
 	provides = tuxedo-keyboard-ite
 	provides = tuxedo-io
