@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-my
 	pkgdesc = Burmese language pack for Firefox Nightly
-	pkgver = 160.0a1.20261013.094244
+	pkgver = 160.0a1.20261013.210959
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-my
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-my-160.0a1.20261013.094244.xpi
-	source = firefox-nightly-i18n-my-160.0a1.20261013.094244.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-160.0a1.my.langpack.xpi
-	sha256sums = 3b352d9aa037e0e046c6bd0008bf2bce82221c95f5fc7c00ce4b438e8005e745
+	noextract = firefox-nightly-i18n-my-160.0a1.20261013.210959.xpi
+	source = firefox-nightly-i18n-my-160.0a1.20261013.210959.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-160.0a1.my.langpack.xpi
+	sha256sums = 930e0f202c49a84911ce898d0e224efff85fc62690111bf16abe3dde6c74e16d
 
 pkgname = firefox-nightly-i18n-my
