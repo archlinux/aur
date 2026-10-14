@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-aimp-se7en
-	pkgdesc = AIMP skin: AIMP Se7en 1.0 (by Nitehost)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: AIMP Se7en 2011-09-29 (by Nitehost)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-aimp-se7en
 	options = !strip
 	options = !debug
 	source = aimp-skin-aimp-se7en-167.archive::https://aimp.ru/?do=catalog.download&id=167
-	sha256sums = a676e51bdcb302cc87ffa193ea03bc424dd9092123d7c0bcec4820f4edfb3a66
+	sha256sums = SKIP
 
 pkgname = aimp-skin-aimp-se7en
