@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-millenium-tc-classic
-	pkgdesc = AIMP skin: Millenium (TC Classic) 1.0 (by Prince)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Millenium (TC Classic) 2011-07-16 (by Prince)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-millenium-tc-classic
 	options = !strip
 	options = !debug
 	source = aimp-skin-millenium-tc-classic-152.archive::https://aimp.ru/?do=catalog.download&id=152
-	sha256sums = f3acac98ee9c690179d8fb666fa890ff6abe86efd8543d456ae74667f9e3274d
+	sha256sums = SKIP
 
 pkgname = aimp-skin-millenium-tc-classic
