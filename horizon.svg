@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <title>Horizon</title>
+  <clipPath id="tile"><rect width="16" height="16" rx="3.5"/></clipPath>
+  <g clip-path="url(#tile)">
+    <rect width="16" height="16" fill="#16181f"/>
+    <g fill="#ecedf3"><rect x="4" y="3" width="2" height="4"/><rect x="10" y="3" width="2" height="4"/></g>
+    <g fill="#ecedf3" opacity=".36"><rect x="4" y="8" width="2" height="4"/><rect x="10" y="8" width="2" height="4"/></g>
+    <rect y="7" width="16" height="1" fill="#9a86ff"/>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Horizon
+GenericName=Game launcher
+Comment=Install, prepare and play Horizon
+Exec=horizon-launcher
+TryExec=horizon-launcher
+Icon=horizon
+Terminal=false
+Categories=Game;
+StartupWMClass=horizon-launcher

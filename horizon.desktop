@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Horizon
+Comment=Horizon game window
+Exec=horizon-launcher play
+Icon=horizon
+Terminal=false
+Categories=Game;
+StartupWMClass=horizon
+NoDisplay=true
